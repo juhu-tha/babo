@@ -4,6 +4,8 @@ import { PRUEFVERFAHREN_LIST } from './pruefverfahrenData';
 import { PruefverfahrenSimulator } from './PruefverfahrenSimulatoren';
 import { Search, Info, Check, ShieldCheck, AlertTriangle, Layers, Activity, Sliders, ExternalLink, Scale, Wrench, Lightbulb } from 'lucide-react';
 import { METHOD_DIAGNOSE_DETAILS } from './diagnoseData';
+import inhalt from '@/content/bauwerksuntersuchung/PruefverfahrenKatalog.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function PruefverfahrenKatalog() {
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'zfp' | 'minimalinvasiv' | 'zerstoerend'>('all');
@@ -30,16 +32,11 @@ export default function PruefverfahrenKatalog() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
-              <Layers className="text-shiraz" /> Interaktiver Prüfverfahren-Katalog der Bauwerksdiagnostik
-            </h3>
-            <p className="text-xs text-text-main/70 mt-1">
-              Alle 14 anerkannten Vor-Ort- und Laborprüfverfahren im Detailgrad der Bohrwiderstandsmessung nach DIN, EN, WTA, DBV &amp; DGZfP
-            </p>
+              <Layers className="text-shiraz" /><MdText text={inhalt.texte.interaktiverPrüfverfahrenKatalogDer} /></h3>
+            <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.alle14AnerkanntenVor} /></p>
           </div>
           <div className="flex items-center gap-2">
-            <span className="px-3 py-1 bg-shiraz/10 text-shiraz font-bold text-xs rounded-full border border-shiraz/20">
-              14 Prüfverfahren komplett
-            </span>
+            <span className="px-3 py-1 bg-shiraz/10 text-shiraz font-bold text-xs rounded-full border border-shiraz/20"><MdText text={inhalt.texte.t14PrüfverfahrenKomplett} /></span>
           </div>
         </div>
 
@@ -65,9 +62,7 @@ export default function PruefverfahrenKatalog() {
                   ? 'bg-shiraz text-white shadow-xs'
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
-            >
-              Zerstörungsfrei ZfP (6)
-            </button>
+            ><MdText text={inhalt.texte.zerstörungsfreiZfp6} /></button>
             <button aria-pressed={selectedCategory === 'minimalinvasiv'}
               type="button"
               onClick={() => setSelectedCategory('minimalinvasiv')}
@@ -76,9 +71,7 @@ export default function PruefverfahrenKatalog() {
                   ? 'bg-shiraz text-white shadow-xs'
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
-            >
-              Minimalinvasiv (4)
-            </button>
+            ><MdText text={inhalt.texte.minimalinvasiv4} /></button>
             <button aria-pressed={selectedCategory === 'zerstoerend'}
               type="button"
               onClick={() => setSelectedCategory('zerstoerend')}
@@ -87,15 +80,13 @@ export default function PruefverfahrenKatalog() {
                   ? 'bg-shiraz text-white shadow-xs'
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
-            >
-              Zerstörend / Labor (4)
-            </button>
+            ><MdText text={inhalt.texte.zerstörendLabor4} /></button>
           </div>
 
           <div className="relative min-w-[200px]">
             <input
               type="text"
-              placeholder="Prüfverfahren suchen..."
+              placeholder={inhalt.werte.prüfverfahrenSuchen}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-8 pr-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:border-shiraz"
@@ -153,7 +144,7 @@ export default function PruefverfahrenKatalog() {
             </h3>
           </div>
           <div className="text-xs text-slate-700 bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 flex flex-col sm:flex-row sm:items-center gap-1.5 self-start md:self-center shadow-3xs max-w-md">
-            <span className="font-bold text-shiraz shrink-0">Normen &amp; Prüfregeln:</span>
+            <span className="font-bold text-shiraz shrink-0"><MdText text={inhalt.texte.normenPrüfregeln} /></span>
             <span className="font-mono text-[11px] text-slate-600 truncate">{activeMethod.standard}</span>
           </div>
         </div>
@@ -165,9 +156,7 @@ export default function PruefverfahrenKatalog() {
             {/* 1. Aufsichtsbehördliches & Physikalisches Messprinzip */}
             <div className="space-y-2 bg-slate-50 p-4 rounded-xl border border-slate-200">
               <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
-                <Info size={14} className="text-shiraz" />
-                Aufsichtsbehördliches &amp; Physikalisches Messprinzip
-              </h4>
+                <Info size={14} className="text-shiraz" /><MdText text={inhalt.texte.aufsichtsbehördlichesPhysikalischesMessp} /></h4>
               <p className="text-xs text-slate-700 leading-relaxed text-justify">
                 {activeMethod.principle}
               </p>
@@ -176,9 +165,7 @@ export default function PruefverfahrenKatalog() {
             {/* 2. Prozessschritte der Durchführung in der Baupraxis */}
             <div className="space-y-3">
               <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
-                <span className="w-1.5 h-3 bg-shiraz rounded-xs" />
-                Prozessschritte der Durchführung (Baupraxis &amp; Vor-Ort-Ablauf)
-              </h4>
+                <span className="w-1.5 h-3 bg-shiraz rounded-xs" /><MdText text={inhalt.texte.prozessschritteDerDurchführungBaupraxis} /></h4>
               <div className="grid grid-cols-1 gap-2 mt-2">
                 {activeMethod.steps.map((step, idx) => (
                   <div key={idx} className="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-100 shadow-3xs hover:border-slate-200 transition-all">
@@ -201,9 +188,7 @@ export default function PruefverfahrenKatalog() {
           <div className="lg:col-span-5 space-y-5">
             {/* Mathematisch-physikalisches Modell */}
             <div className="p-4 bg-slate-50/70 rounded-2xl border border-home-grau/25 space-y-3">
-              <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider">
-                Mathematisch-physikalisches Modell
-              </h4>
+              <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider"><MdText text={inhalt.texte.mathematischPhysikalischesModell} /></h4>
               <div className="py-3 px-4 bg-white rounded-xl border border-slate-200 shadow-3xs flex items-center justify-center text-center overflow-x-auto">
                 <BlockMath math={activeMethod.formula} />
               </div>
@@ -214,15 +199,11 @@ export default function PruefverfahrenKatalog() {
 
             {/* Verfahrensbeurteilung: Vorteile vs Grenzen */}
             <div className="space-y-3">
-              <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider">
-                Verfahrensbeurteilung im Ingenieurbau
-              </h4>
+              <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider"><MdText text={inhalt.texte.verfahrensbeurteilungImIngenieurbau} /></h4>
               <div className="grid grid-cols-1 gap-3">
                 <div className="p-4 bg-emerald-50/60 rounded-xl border border-emerald-100 space-y-1.5">
                   <h5 className="font-bold text-xs text-emerald-800 flex items-center gap-1.5">
-                    <Check size={14} className="text-emerald-700" />
-                    Unerlässliche Vorteile
-                  </h5>
+                    <Check size={14} className="text-emerald-700" /><MdText text={inhalt.texte.unerlässlicheVorteile} /></h5>
                   <ul className="space-y-1 text-[11px] text-emerald-800 list-disc list-inside leading-snug">
                     {activeMethod.pros.map((pro, i) => (
                       <li key={i} className="align-top">{pro}</li>
@@ -231,9 +212,7 @@ export default function PruefverfahrenKatalog() {
                 </div>
                 <div className="p-4 bg-rose-50/60 rounded-xl border border-rose-100 space-y-1.5">
                   <h5 className="font-bold text-xs text-rose-800 flex items-center gap-1.5">
-                    <AlertTriangle size={14} className="text-rose-700" />
-                    Echte Systemgrenzen &amp; Fehlerquellen
-                  </h5>
+                    <AlertTriangle size={14} className="text-rose-700" /><MdText text={inhalt.texte.echteSystemgrenzenFehlerquellen} /></h5>
                   <ul className="space-y-1 text-[11px] text-rose-800 list-disc list-inside leading-snug">
                     {activeMethod.cons.map((con, i) => (
                       <li key={i} className="align-top">{con}</li>
@@ -246,9 +225,7 @@ export default function PruefverfahrenKatalog() {
             {/* Richtwerte & Beurteilungskriterien */}
             <div className="p-4 bg-amber-50/50 rounded-xl border border-amber-200/80 space-y-1.5">
               <h4 className="text-xs font-bold text-amber-900 flex items-center gap-1.5">
-                <Info size={14} className="text-amber-700" />
-                Normative Richtwerte &amp; Beurteilungskriterien
-              </h4>
+                <Info size={14} className="text-amber-700" /><MdText text={inhalt.texte.normativeRichtwerteBeurteilungskriterien} /></h4>
               <p className="text-[11px] text-amber-900/90 leading-relaxed text-justify">
                 {activeMethod.referenceValues}
               </p>
@@ -261,47 +238,42 @@ export default function PruefverfahrenKatalog() {
           <div className="pt-6 border-t border-home-grau/25 space-y-6">
             <div className="flex items-center justify-between">
               <h4 className="text-sm font-bold text-text-main flex items-center gap-2">
-                <ShieldCheck className="text-shiraz" size={18} />
-                Prüfungsnormative Vorgaben &amp; Ingenieurpraxis für {activeMethod.shortName}
+                <ShieldCheck className="text-shiraz" size={18} /><MdText text={inhalt.texte.prüfungsnormativeVorgabenIngenieurpraxis} />{activeMethod.shortName}
               </h4>
-              <span className="text-[11px] font-mono text-shiraz bg-shiraz/10 px-2.5 py-0.5 rounded-full font-bold">
-                DIN EN / WTA / DBV Standard
-              </span>
+              <span className="text-[11px] font-mono text-shiraz bg-shiraz/10 px-2.5 py-0.5 rounded-full font-bold"><MdText text={inhalt.texte.dinEnWtaDbv} /></span>
             </div>
 
             {/* 1. NOTWENDIGE ANZAHL PRÜFUNGEN / PRÜFPUNKTE & ENTNAHMESTELLEN */}
             <div className="bg-slate-50/80 p-5 rounded-2xl border border-home-grau/30 space-y-3">
               <div className="flex items-center justify-between">
                 <h5 className="font-bold text-xs uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-shiraz"></span>
-                  1. Notwendige Anzahl Prüfungen / Prüfpunkte &amp; Entnahmestellen (Normative Stichprobe)
-                </h5>
+                  <span className="w-2 h-2 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t1NotwendigeAnzahlPrüfungen} /></h5>
                 <span className="text-[10px] font-mono text-slate-500 font-bold bg-white px-2 py-0.5 rounded border border-slate-200">
                   {diagnoseDetail.samplingPoints.normVorgabe}
                 </span>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
                 <div className="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
-                  <span className="text-[10px] uppercase font-bold text-slate-400 block">Normativer Mindestumfang</span>
+                  <span className="text-[10px] uppercase font-bold text-slate-400 block"><MdText text={inhalt.texte.normativerMindestumfang} /></span>
                   <p className="text-slate-800 font-semibold text-xs leading-snug">
                     {diagnoseDetail.samplingPoints.mindestAnzahl}
                   </p>
                 </div>
                 <div className="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
-                  <span className="text-[10px] uppercase font-bold text-slate-400 block">Prüfraster &amp; Geometrie</span>
+                  <span className="text-[10px] uppercase font-bold text-slate-400 block"><MdText text={inhalt.texte.prüfrasterGeometrie} /></span>
                   <p className="text-slate-800 font-semibold text-xs leading-snug">
                     {diagnoseDetail.samplingPoints.rasterMass}
                   </p>
                 </div>
                 <div className="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
-                  <span className="text-[10px] uppercase font-bold text-slate-400 block">Statistische Absicherung</span>
+                  <span className="text-[10px] uppercase font-bold text-slate-400 block"><MdText text={inhalt.texte.statistischeAbsicherung} /></span>
                   <p className="text-slate-650 text-[11px] leading-snug">
                     {diagnoseDetail.samplingPoints.statistischeBegruendung}
                   </p>
                 </div>
               </div>
               <div className="pt-2">
-                <span className="text-[11px] font-bold text-slate-700 block mb-1">Kriterien zur Verteilung der Entnahmestellen:</span>
+                <span className="text-[11px] font-bold text-slate-700 block mb-1"><MdText text={inhalt.texte.kriterienZurVerteilungDer} /></span>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-[11px] text-slate-600 list-disc list-inside">
                   {diagnoseDetail.samplingPoints.auswahlKriterien.map((k, i) => (
                     <li key={i}>{k}</li>
@@ -313,26 +285,24 @@ export default function PruefverfahrenKatalog() {
             {/* 2. PROBEN- UND PRÜFSTELLENKONDITIONIERUNG */}
             <div className="bg-slate-50/80 p-5 rounded-2xl border border-home-grau/30 space-y-3">
               <h5 className="font-bold text-xs uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-shiraz"></span>
-                2. Proben- und Prüfstellenkonditionierung (Vorbereitung &amp; Fehlervermeidung)
-              </h5>
+                <span className="w-2 h-2 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t2ProbenUndPrüfstellenkonditionierung} /></h5>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                 <div className="space-y-2">
                   <div className="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
-                    <strong className="text-slate-800 block text-xs">Oberflächen- &amp; Bauteilvorbereitung vor Ort:</strong>
+                    <strong className="text-slate-800 block text-xs"><MdText text={inhalt.texte.oberflächenBauteilvorbereitungVorOrt} /></strong>
                     <p className="text-slate-650 text-[11px] leading-relaxed">
                       {diagnoseDetail.conditioning.oberflaeche}
                     </p>
                   </div>
                   <div className="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
-                    <strong className="text-slate-800 block text-xs">Feuchte- &amp; Temperaturrandbedingungen:</strong>
+                    <strong className="text-slate-800 block text-xs"><MdText text={inhalt.texte.feuchteTemperaturrandbedingungen} /></strong>
                     <p className="text-slate-650 text-[11px] leading-relaxed">
                       {diagnoseDetail.conditioning.klimaUndFeuchte}
                     </p>
                   </div>
                   {diagnoseDetail.conditioning.vorbereitungLabor && (
                     <div className="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
-                      <strong className="text-slate-800 block text-xs">Laboraufbereitung &amp; Kalibrierung:</strong>
+                      <strong className="text-slate-800 block text-xs"><MdText text={inhalt.texte.laboraufbereitungKalibrierung} /></strong>
                       <p className="text-slate-650 text-[11px] leading-relaxed">
                         {diagnoseDetail.conditioning.vorbereitungLabor}
                       </p>
@@ -342,9 +312,7 @@ export default function PruefverfahrenKatalog() {
 
                 <div className="p-3.5 bg-rose-50/60 rounded-xl border border-rose-200 space-y-2">
                   <strong className="text-rose-900 block text-xs flex items-center gap-1.5">
-                    <AlertTriangle size={14} className="text-rose-700" />
-                    Kritische Fehlerquellen bei der Konditionierung vermeiden:
-                  </strong>
+                    <AlertTriangle size={14} className="text-rose-700" /><MdText text={inhalt.texte.kritischeFehlerquellenBeiDer} /></strong>
                   <ul className="space-y-1.5 text-[11px] text-rose-800 list-disc list-inside leading-snug">
                     {diagnoseDetail.conditioning.kritischeFehlerVermeidung.map((f, i) => (
                       <li key={i}>{f}</li>
@@ -357,9 +325,7 @@ export default function PruefverfahrenKatalog() {
             {/* 3. RELEVANTE NORMEN UND REGELWERKE MIT DIN MEDIA LINKS */}
             <div className="bg-slate-50/80 p-5 rounded-2xl border border-home-grau/30 space-y-3">
               <h5 className="font-bold text-xs uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-shiraz"></span>
-                3. Relevante Normen &amp; Regelwerke (mit Ausgabedaten &amp; DIN Media Verlinkung)
-              </h5>
+                <span className="w-2 h-2 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t3RelevanteNormenRegelwerke} /></h5>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {diagnoseDetail.standards.map((std, i) => (
                   <div key={i} className="p-3 bg-white rounded-xl border border-slate-200 space-y-1 flex flex-col justify-between">
@@ -378,8 +344,7 @@ export default function PruefverfahrenKatalog() {
                           target="_blank" 
                           rel="noopener noreferrer" 
                           className="text-[11px] text-shiraz hover:underline inline-flex items-center gap-1 font-bold"
-                        >
-                          Regelwerk öffnen <ExternalLink size={11} />
+                        ><MdText text={inhalt.texte.regelwerkÖffnen} /><ExternalLink size={11} />
                         </a>
                       </div>
                     ) : (
@@ -396,13 +361,10 @@ export default function PruefverfahrenKatalog() {
             <div className="bg-slate-50/80 p-5 rounded-2xl border-2 border-shiraz/30 space-y-4">
               <div className="flex items-center justify-between">
                 <h5 className="font-bold text-xs uppercase tracking-wider text-shiraz flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-shiraz animate-pulse"></span>
-                  4. Wichtig: Interpretation &amp; bautechnische Anwendung der Ergebnisse
-                </h5>
+                  <span className="w-2 h-2 rounded-full bg-shiraz animate-pulse"></span><MdText text={inhalt.texte.t4WichtigInterpretationBautechnische} /></h5>
               </div>
 
-              <div className="p-3 bg-white rounded-xl border border-home-grau/20 text-xs text-slate-800 leading-relaxed">
-                <strong>Ingenieurtechnische Kerndiagnose:</strong> {diagnoseDetail.interpretation.kerndiagnose}
+              <div className="p-3 bg-white rounded-xl border border-home-grau/20 text-xs text-slate-800 leading-relaxed"><MdText text={inhalt.texte.ingenieurtechnischeKerndiagnose} />{diagnoseDetail.interpretation.kerndiagnose}
               </div>
 
               {/* Grenzwerte-Tabelle */}
@@ -413,8 +375,8 @@ export default function PruefverfahrenKatalog() {
                       <th className="py-2 px-3">Parameter</th>
                       <th className="py-2 px-3">Messwertbereich</th>
                       <th className="py-2 px-3">Status</th>
-                      <th className="py-2 px-3">Bautechnische Bewertung</th>
-                      <th className="py-2 px-3">Konsequenz / Maßnahme</th>
+                      <th className="py-2 px-3"><MdText text={inhalt.texte.bautechnischeBewertung} /></th>
+                      <th className="py-2 px-3"><MdText text={inhalt.texte.konsequenzMaßnahme} /></th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">
@@ -443,9 +405,7 @@ export default function PruefverfahrenKatalog() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                 <div className="p-4 bg-white rounded-xl border border-slate-200 space-y-2">
                   <h6 className="font-bold text-xs text-slate-900 flex items-center gap-1.5">
-                    <Scale size={14} className="text-shiraz" />
-                    Tragwerksauswirkung (Statik &amp; Standsicherheit):
-                  </h6>
+                    <Scale size={14} className="text-shiraz" /><MdText text={inhalt.texte.tragwerksauswirkungStatikStandsicherheit} /></h6>
                   <p className="text-[11.5px] text-slate-650 leading-relaxed">
                     {diagnoseDetail.interpretation.tragwerksAuswirkung}
                   </p>
@@ -453,9 +413,7 @@ export default function PruefverfahrenKatalog() {
 
                 <div className="p-4 bg-white rounded-xl border border-slate-200 space-y-2">
                   <h6 className="font-bold text-xs text-slate-900 flex items-center gap-1.5">
-                    <Wrench size={14} className="text-shiraz" />
-                    Instandsetzungskonsequenz (DIBt TR Instandhaltung):
-                  </h6>
+                    <Wrench size={14} className="text-shiraz" /><MdText text={inhalt.texte.instandsetzungskonsequenzDibtTrInstandha} /></h6>
                   <p className="text-[11.5px] text-slate-650 leading-relaxed">
                     {diagnoseDetail.interpretation.instandsetzungsKonsequenz}
                   </p>
@@ -465,9 +423,7 @@ export default function PruefverfahrenKatalog() {
               {/* Praxis-Fallbeispiel */}
               <div className="p-4 bg-amber-50/70 rounded-xl border border-amber-200/80 space-y-1 text-xs">
                 <strong className="text-amber-900 block flex items-center gap-1.5">
-                  <Lightbulb size={14} className="text-amber-700" />
-                  Reales Ingenieur-Fallbeispiel aus der Baupraxis:
-                </strong>
+                  <Lightbulb size={14} className="text-amber-700" /><MdText text={inhalt.texte.realesIngenieurFallbeispielAus} /></strong>
                 <p className="text-[11.5px] text-amber-900/90 leading-relaxed">
                   {diagnoseDetail.interpretation.praxisFallbeispiel}
                 </p>
@@ -480,19 +436,17 @@ export default function PruefverfahrenKatalog() {
       {/* Comparative Matrix Table */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
         <h4 className="font-bold text-sm text-text-main flex items-center gap-2">
-          <Sliders className="text-shiraz" size={16} />
-          Synopse: Vergleichende Bewertungsmatrix aller Prüfverfahren
-        </h4>
+          <Sliders className="text-shiraz" size={16} /><MdText text={inhalt.texte.synopseVergleichendeBewertungsmatrixAlle} /></h4>
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs border-collapse">
             <thead>
               <tr className="border-b border-home-grau/30 text-slate-500 font-bold bg-slate-50">
                 <th className="py-2.5 px-3">Prüfverfahren</th>
                 <th className="py-2.5 px-3">Kategorie</th>
-                <th className="py-2.5 px-3">Baustoff / Objekt</th>
-                <th className="py-2.5 px-3">Primäre Messgröße</th>
+                <th className="py-2.5 px-3"><MdText text={inhalt.texte.baustoffObjekt} /></th>
+                <th className="py-2.5 px-3"><MdText text={inhalt.texte.primäreMessgröße} /></th>
                 <th className="py-2.5 px-3">Aussage</th>
-                <th className="py-2.5 px-3">Normative Grundlage</th>
+                <th className="py-2.5 px-3"><MdText text={inhalt.texte.normativeGrundlage} /></th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
@@ -514,31 +468,31 @@ export default function PruefverfahrenKatalog() {
                   </td>
                   <td className="py-2 px-3 text-[11px] text-slate-600">
                     {m.id === 'bohrwiderstand' ? 'Holztragwerke' :
-                     m.id === 'karsten' ? 'Putz / Mauerwerk / Fassade' :
-                     m.id === 'darrmethode' ? 'Beton, Estrich, Mauerwerk, Putz, Holz' :
-                     m.id === 'endoskopie' ? 'Hohlräume in Mauerwerk, Decken, Holzbau' :
-                     m.id === 'georadar' ? 'Beton, Mauerwerk, Fahrbahnen' :
-                     m.id === 'ultraschall' || m.id === 'impact_echo' ? 'Beton, Mauerwerk, Naturstein' :
-                     m.id === 'haftabzug' ? 'Beton, Putz, Beschichtungen' :
-                     'Stahlbeton / Spannbeton'}
+                     m.id === 'karsten' ? inhalt.werte.putzMauerwerkFassade :
+                     m.id === 'darrmethode' ? inhalt.werte.betonEstrichMauerwerkPutz :
+                     m.id === 'endoskopie' ? inhalt.werte.hohlräumeInMauerwerkDecken :
+                     m.id === 'georadar' ? inhalt.werte.betonMauerwerkFahrbahnen :
+                     m.id === 'ultraschall' || m.id === 'impact_echo' ? inhalt.werte.betonMauerwerkNaturstein :
+                     m.id === 'haftabzug' ? inhalt.werte.betonPutzBeschichtungen :
+                     inhalt.werte.stahlbetonSpannbeton}
                   </td>
                   <td className="py-2 px-3 text-[11px] font-mono">{m.badge}</td>
                   <td className="py-2 px-3 text-[11px] text-slate-600">
-                    {m.id === 'bohrkern' ? 'Referenzwert Druckfestigkeit f_c' :
-                     m.id === 'potentialfeld' ? 'Wahrscheinlichkeit aktiver Korrosion' :
-                     m.id === 'covermeter' ? 'Soll-Ist-Abgleich Betondeckung c' :
-                     m.id === 'bohrmehl' ? 'Chloridkonzentration Cl⁻ Profil' :
-                     m.id === 'bohrwiderstand' ? 'Dichteprofil & Restquerschnitt' :
-                     m.id === 'haftabzug' ? 'Abreißfestigkeit f_ct & Verbund' :
-                     m.id === 'schmidthammer' ? 'Oberflächenhärte; Festigkeit nur nach Kalibrierung an Bohrkernen' :
-                     m.id === 'ultraschall' ? 'Gefügehomogenität, Fehlstellen, dyn. E-Modul' :
-                     m.id === 'georadar' ? 'Lage von Bewehrung, Spanngliedern, Hohlräumen' :
-                     m.id === 'impact_echo' ? 'Bauteildicke, Hohlstellen, Verpressfehler' :
-                     m.id === 'karbonatisierung' ? 'Karbonatisierungstiefe d_k' :
-                     m.id === 'karsten' ? 'Wasseraufnahme der Oberfläche (orientierend)' :
-                     m.id === 'endoskopie' ? 'Sichtbefund in Hohlräumen (Schichtaufbau, Befall)' :
-                     m.id === 'darrmethode' ? 'Referenzwert Feuchtegehalt (M.-%)' :
-                     'Zerstörungsfreie Gefügeanalyse'}
+                    {m.id === 'bohrkern' ? inhalt.werte.referenzwertDruckfestigkeitFC :
+                     m.id === 'potentialfeld' ? inhalt.werte.wahrscheinlichkeitAktiverKorrosion :
+                     m.id === 'covermeter' ? inhalt.werte.sollIstAbgleichBetondeckung :
+                     m.id === 'bohrmehl' ? inhalt.werte.chloridkonzentrationClProfil :
+                     m.id === 'bohrwiderstand' ? inhalt.werte.dichteprofilRestquerschnitt :
+                     m.id === 'haftabzug' ? inhalt.werte.abreißfestigkeitFCtVerbund :
+                     m.id === 'schmidthammer' ? inhalt.werte.oberflächenhärteFestigkeitNurNach :
+                     m.id === 'ultraschall' ? inhalt.werte.gefügehomogenitätFehlstellenDynE :
+                     m.id === 'georadar' ? inhalt.werte.lageVonBewehrungSpanngliedern :
+                     m.id === 'impact_echo' ? inhalt.werte.bauteildickeHohlstellenVerpressfehler :
+                     m.id === 'karbonatisierung' ? inhalt.werte.karbonatisierungstiefeDK :
+                     m.id === 'karsten' ? inhalt.werte.wasseraufnahmeDerOberflächeOrientierend :
+                     m.id === 'endoskopie' ? inhalt.werte.sichtbefundInHohlräumenSchichtaufbau :
+                     m.id === 'darrmethode' ? inhalt.werte.referenzwertFeuchtegehaltM :
+                     inhalt.werte.zerstörungsfreieGefügeanalyse}
                   </td>
                   <td className="py-2 px-3 text-[10px] font-mono text-slate-500 truncate max-w-[200px]">{m.standard}</td>
                 </tr>

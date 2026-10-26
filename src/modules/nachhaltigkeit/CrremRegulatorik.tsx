@@ -2,6 +2,8 @@ import { Scale, TrendingDown } from 'lucide-react';
 import { RechtsrahmenKompendium } from '@/src/components/ui/RechtsrahmenKompendium';
 import CrremSimulator from './CrremSimulator';
 import type { Dispatch, SetStateAction } from 'react';
+import inhalt from '@/content/nachhaltigkeit/CrremRegulatorik.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface CrremRegulatorikProps {
   crremBuildingType: "office" | "residential";
@@ -23,7 +25,7 @@ export default function CrremRegulatorik({ crremBuildingType, crremCurrentGwp, c
         <div className="bg-white p-4 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex flex-col">
             <span className="text-[10px] font-bold text-shiraz uppercase tracking-widest">Regulatorik-Schwerpunkt</span>
-            <span className="text-sm font-extrabold text-text-main">Wählen Sie Analysebereich &amp; Werkzeug</span>
+            <span className="text-sm font-extrabold text-text-main"><MdText text={inhalt.texte.wählenSieAnalysebereichWerkzeug} /></span>
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
@@ -35,8 +37,7 @@ export default function CrremRegulatorik({ crremBuildingType, crremCurrentGwp, c
                     : 'bg-off-white text-text-main border-home-grau/30 hover:bg-white'
                 }`}
             >
-              <Scale size={16} /> 1. Rechtsrahmen-Kompendium &amp; Hierarchie
-            </button>
+              <Scale size={16} /><MdText text={inhalt.texte.t1RechtsrahmenKompendiumHierarchie} /></button>
             <button aria-pressed={regulatorikSubTab === 'crrem_sim'}
               onClick={() => setRegulatorikSubTab('crrem_sim')}
               className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border cursor-pointer ${
@@ -45,8 +46,7 @@ export default function CrremRegulatorik({ crremBuildingType, crremCurrentGwp, c
                     : 'bg-off-white text-text-main border-home-grau/30 hover:bg-white'
                 }`}
             >
-              <TrendingDown size={16} /> 2. CRREM-Dekarbonisierungssimulator
-            </button>
+              <TrendingDown size={16} /><MdText text={inhalt.texte.t2CrremDekarbonisierungssimulator} /></button>
           </div>
         </div>
 

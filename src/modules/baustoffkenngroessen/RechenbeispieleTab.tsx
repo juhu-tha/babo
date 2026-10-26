@@ -3,6 +3,8 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { InlineMath } from 'react-katex';
+import inhalt from '@/content/baustoffkenngroessen/RechenbeispieleTab.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface RechenbeispieleTabProps {
   deltaLA: number;
@@ -30,11 +32,11 @@ export default function RechenbeispieleTab({ deltaLA, handleSaeulenMaterialChang
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-fade-in">
         {/* Spalte 1: Eingabeparameter */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4 lg:col-span-1">
-          <h3 className="text-md font-bold text-text-main border-b border-home-grau/30 pb-2">Eingabeparameter (Säule)</h3>
+          <h3 className="text-md font-bold text-text-main border-b border-home-grau/30 pb-2"><MdText text={inhalt.texte.eingabeparameterSäule} /></h3>
           
           <div className="flex flex-col gap-2">
-            <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Material Preset</label>
-            <select aria-label="Material Preset" 
+            <label className="text-xs font-bold text-slate-500 uppercase tracking-wider"><MdText text={inhalt.texte.materialPreset} /></label>
+            <select aria-label={inhalt.werte.materialPreset} 
               className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz text-xs font-semibold"
               value={saeulenMaterial}
               onChange={(e) => handleSaeulenMaterialChange(e.target.value as "stahl" | "holz" | "beton" | "custom" | "alu")}
@@ -47,44 +49,44 @@ export default function RechenbeispieleTab({ deltaLA, handleSaeulenMaterialChang
             </select>
           </div>
 
-          <Slider label="Belastung (F)" min={50} max={2000} step={50} value={saeulenF} unit="kN" onChange={(e) => setSaeulenF(Number(e.target.value))} />
+          <Slider label={inhalt.werte.belastungF} min={50} max={2000} step={50} value={saeulenF} unit="kN" onChange={(e) => setSaeulenF(Number(e.target.value))} />
           
-          <Slider label="Querschnittsfläche (A)" min={10} max={2500} step={10} value={saeulenA} unit="cm²" onChange={(e) => setSaeulenA(Number(e.target.value))} />
+          <Slider label={inhalt.werte.querschnittsflächeA} min={10} max={2500} step={10} value={saeulenA} unit="cm²" onChange={(e) => setSaeulenA(Number(e.target.value))} />
           
-          <Slider label="Säulenhöhe (l₀)" min={1.0} max={15.0} step={0.5} value={saeulenL0} unit="m" onChange={(e) => setSaeulenL0(Number(e.target.value))} />
+          <Slider label={inhalt.werte.säulenhöheL} min={1.0} max={15.0} step={0.5} value={saeulenL0} unit="m" onChange={(e) => setSaeulenL0(Number(e.target.value))} />
           
           {saeulenMaterial === 'custom' && (
             <>
               <Slider label="E-Modul (E)" min={1000} max={250000} step={1000} value={saeulenE} unit="MPa" onChange={(e) => setSaeulenE(Number(e.target.value))} />
-              <Slider label="Grenzfestigkeit (f_k)" min={5} max={500} step={5} value={saeulenFy} unit="MPa" onChange={(e) => setSaeulenFy(Number(e.target.value))} />
+              <Slider label={inhalt.werte.grenzfestigkeitFK} min={5} max={500} step={5} value={saeulenFy} unit="MPa" onChange={(e) => setSaeulenFy(Number(e.target.value))} />
             </>
           )}
           
           {saeulenMaterial !== 'custom' && (
             <div className="p-3 bg-slate-50 rounded-lg border border-home-grau/30 text-xs">
-              <p className="font-semibold text-slate-700">Festgelegte Materialempfehlungen:</p>
+              <p className="font-semibold text-slate-700"><MdText text={inhalt.texte.festgelegteMaterialempfehlungen} /></p>
               <ul className="list-disc list-inside mt-1 space-y-1 text-slate-600">
                 <li>E-Modul: <strong>{saeulenE.toLocaleString('de-DE')} MPa</strong></li>
-                <li>Druckfestigkeit (<InlineMath math="f_{crit}" />): <strong>{saeulenFy.toLocaleString('de-DE')} MPa</strong></li>
+                <li><MdText text={inhalt.texte.druckfestigkeitFCrit} /><strong>{saeulenFy.toLocaleString('de-DE')} MPa</strong></li>
               </ul>
-              <p className="mt-2 text-[11px] text-slate-500">Charakteristische Werte ohne Teilsicherheitsbeiwerte und ohne Knicknachweis – das Beispiel zeigt nur den Zusammenhang σ = F/A und ε = σ/E. Bemessung siehe Module Eurocode und Knicken.</p>
+              <p className="mt-2 text-[11px] text-slate-500"><MdText text={inhalt.texte.charakteristischeWerteOhneTeilsicherheit} /></p>
             </div>
           )}
         </div>
 
         {/* Spalte 2 & 3: Berechnungen & Ergebnisse */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6 lg:col-span-2">
-          <h3 className="text-md font-bold text-text-main border-b border-home-grau/30 pb-2">Berechnung & Physikalische Auswertung</h3>
+          <h3 className="text-md font-bold text-text-main border-b border-home-grau/30 pb-2"><MdText text={inhalt.texte.berechnungPhysikalischeAuswertung} /></h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Spannung */}
             <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30">
-              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1">1. Normalspannung (<InlineMath math="\sigma" />)</span>
+              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1"><MdText text={inhalt.texte.t1NormalspannungSigma} /></span>
               <InlineMath math="\sigma = \frac{F}{A}" />
               <div className="mt-3">
                 <span className="text-[11px] text-slate-500 block">Rechnung:</span>
                 <code className="text-xs text-shiraz font-bold block bg-white p-2 rounded border border-home-grau/30 mt-1 flex flex-col">
-                  <span>({formatDeWert(saeulenF)} * 10³) N / ({formatDeWert(saeulenA)} * 100) mm²</span>
+                  <span>({formatDeWert(saeulenF)}<MdText text={inhalt.texte.t10N} />{formatDeWert(saeulenA)} * 100) mm²</span>
                   <span className="text-shiraz font-black text-sm mt-0.5">= {formatDeZahl(stressA, 2)} MPa</span>
                 </code>
               </div>
@@ -92,7 +94,7 @@ export default function RechenbeispieleTab({ deltaLA, handleSaeulenMaterialChang
 
             {/* Dehnung */}
             <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30">
-              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1">2. Elastische Dehnung (<InlineMath math="\varepsilon" />)</span>
+              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1"><MdText text={inhalt.texte.t2ElastischeDehnungVarepsilon} /></span>
               <InlineMath math="\varepsilon = \frac{\sigma}{E}" />
               <div className="mt-3">
                 <span className="text-[11px] text-slate-500 block">Rechnung:</span>
@@ -105,7 +107,7 @@ export default function RechenbeispieleTab({ deltaLA, handleSaeulenMaterialChang
 
             {/* Verkürzung */}
             <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30">
-              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1">3. Gesamte Verkürzung (<InlineMath math="\Delta l" />)</span>
+              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1"><MdText text={inhalt.texte.t3GesamteVerkürzungDelta} /></span>
               <InlineMath math="\Delta l = \varepsilon \cdot l_0" />
               <div className="mt-3">
                 <span className="text-[11px] text-slate-500 block">Rechnung:</span>
@@ -118,7 +120,7 @@ export default function RechenbeispieleTab({ deltaLA, handleSaeulenMaterialChang
 
             {/* Ausnutzung */}
             <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30">
-              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1">4. Auslastungsgrad (<InlineMath math="\eta" />)</span>
+              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1"><MdText text={inhalt.texte.t4AuslastungsgradEta} /></span>
               <InlineMath math="\eta = \frac{\sigma}{f_{crit}} \cdot 100" />
               <div className="mt-3">
                 <span className="text-[11px] text-slate-500 block">Rechnung:</span>
@@ -141,7 +143,7 @@ export default function RechenbeispieleTab({ deltaLA, handleSaeulenMaterialChang
               <p className="text-slate-600 mt-1">
                 {utilizationA > 100 
                   ? `Die Beanspruchung überschreitet die materialspezifische Druckfestigkeit von ${formatDeWert(saeulenFy)} MPa. Vergrößern Sie die Säulenfläche oder verringern Sie die Tragkraft.` 
-                  : `Die Säule trägt die Belastung problemlos im elastisch-sicheren Beanspruchungsbereich.`}
+                  : inhalt.werte.dieSäuleTrägtDie}
               </p>
             </div>
             <div className="shrink-0 text-center w-full md:w-auto">

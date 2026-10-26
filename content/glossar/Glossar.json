@@ -1,0 +1,981 @@
+{
+  "texte": {
+    "fachglossarDerBaustoffkundeWerkstofftech": "Fachglossar der Baustoffkunde & Werkstofftechnik",
+    "umfassendesFachlexikonMit": "Umfassendes Fachlexikon mit ",
+    "ingenieurtechnischenBegriffenFormelzeich": " ingenieurtechnischen Begriffen, Formelzeichen, Einheiten und Normenverweisen",
+    "keineFachbegriffeGefunden": "Keine Fachbegriffe gefunden",
+    "fürDenSuchbegriff": "Für den Suchbegriff \"",
+    "undDieKategorie": "\" und die Kategorie \"",
+    "liegenKeineEinträgeVor": "\" liegen keine Einträge vor.",
+    "filterZurücksetzen": "Filter zurücksetzen"
+  },
+  "werte": {
+    "begriffNormZB": "Begriff, Norm (z.B. DIN EN 206), Einheit oder Erklärung suchen...",
+    "suchenSieZurücksetzen": "Suchen Sie zurücksetzen"
+  },
+  "daten": {
+    "GLOSSARY_TERMS": [
+      {
+        "term": "Druckfestigkeit",
+        "category": "Mechanik & Statik",
+        "definition": "Der Widerstand eines Werkstoffs gegen einachsige oder mehrachsige Druckkräfte. Sie ist die maximale Druckspannung, die ein Baustoff vor dem Bruch ertragen kann.",
+        "unit": "N/mm² oder MPa",
+        "standards": "DIN EN 12390-3, DIN EN 772-1"
+      },
+      {
+        "term": "Zugfestigkeit",
+        "category": "Mechanik & Statik",
+        "definition": "Die maximale mechanische Zugspannung, die ein Werkstoff im Zugversuch vor dem Einschnüren bzw. Trennbruch aufnimmt.",
+        "unit": "N/mm² oder MPa",
+        "standards": "DIN EN ISO 6892-1"
+      },
+      {
+        "term": "Biegezugfestigkeit",
+        "category": "Mechanik & Statik",
+        "definition": "Die rechnerische Zugspannung am äußeren Rand eines auf Biegung beanspruchten Probekörpers unmittelbar vor dem Versagen.",
+        "unit": "N/mm² oder MPa",
+        "standards": "DIN EN 12390-5, DIN EN 1992"
+      },
+      {
+        "term": "Spaltzugfestigkeit",
+        "category": "Mechanik & Statik",
+        "definition": "Indirekte Zugfestigkeitsprüfung (Brasilianischer Test), bei der ein zylindrischer oder würfelförmiger Probekörper entlang zweier gegenüberliegender Mantellinien linienförmig auf Druck belastet wird.",
+        "unit": "N/mm² oder MPa",
+        "standards": "DIN EN 12390-6"
+      },
+      {
+        "term": "Elastizitätsmodul (E-Modul)",
+        "category": "Mechanik & Statik",
+        "definition": "Proportionalitätskonstante im Hookeschen Gesetz zwischen Normalspannung und elastischer Dehnung (E = σ / ε). Maß für die Steifigkeit des Materials.",
+        "unit": "N/mm² oder GPa",
+        "standards": "DIN EN 12390-13, DIN EN 1992-1-1"
+      },
+      {
+        "term": "Schubmodul (G-Modul)",
+        "category": "Mechanik & Statik",
+        "definition": "Materialkonstante, die das Verhältnis zwischen Schubspannung und Gleitung (Winkeländerung) im linear-elastischen Bereich beschreibt: G = E / (2 · (1 + ν)).",
+        "unit": "N/mm² oder GPa",
+        "standards": "DIN EN 1993-1-1"
+      },
+      {
+        "term": "Streckgrenze (Re / fy)",
+        "category": "Mechanik & Statik",
+        "definition": "Spannungsgrenze bei Metallen, ab der plastisches Fließen ohne merkliche Spannungserhöhung einsetzt.",
+        "unit": "N/mm² oder MPa",
+        "standards": "DIN EN ISO 6892-1, DIN EN 10025"
+      },
+      {
+        "term": "Dehngrenze (Rp0,2)",
+        "category": "Mechanik & Statik",
+        "definition": "Ersatzfließgrenze für Werkstoffe ohne ausgeprägte Streckgrenze; jene Spannung, die nach Entlastung eine bleibende plastische Dehnung von exakt 0,2 % hinterlässt.",
+        "unit": "N/mm² oder MPa",
+        "standards": "DIN EN ISO 6892-1"
+      },
+      {
+        "term": "Duktilität",
+        "category": "Mechanik & Statik",
+        "definition": "Eigenschaft eines Werkstoffs, sich unter Überlast vor dem Bruch stark plastisch verformen zu können, ohne schlagartig spröde zu versagen. Entscheidend für Erdbebensicherheit und Vorankündigung von Bauwerksschäden."
+      },
+      {
+        "term": "Bruchdehnung (A)",
+        "category": "Mechanik & Statik",
+        "definition": "Die bleibende relative Längenänderung eines Zugprüfkörpers nach dem Bruch, bezogen auf die Ausgangsmesslänge: A = ((Lu - L0) / L0) · 100 %.",
+        "unit": "%",
+        "standards": "DIN EN ISO 6892-1"
+      },
+      {
+        "term": "Querkontraktionszahl (Poissonzahl ν)",
+        "category": "Mechanik & Statik",
+        "definition": "Verhältnis der relativen Querdehnung zur relativen Längsdehnung unter einachsigem Zug: ν = - (ε_quer / ε_längs). Bei ungerissenem Beton ca. 0,20; bei Baustahl ca. 0,30.",
+        "unit": "dim.-los",
+        "standards": "DIN EN 1990"
+      },
+      {
+        "term": "Kriechen",
+        "category": "Mechanik & Statik",
+        "definition": "Die zeitabhängige, stetige Zunahme der Verformung (Dehnung) eines Werkstoffs unter konstanter mechanischer Dauerlast, maßgeblich beeinflusst durch Bauteilabmessungen, Feuchte und Zementsteinstruktur."
+      },
+      {
+        "term": "Relaxation",
+        "category": "Mechanik & Statik",
+        "definition": "Der zeitabhängige Spannungsabfall in einem Werkstoff unter festgehaltener, konstanter Dehnungsverformung (wichtig bei Spannstahl im Spannbetonbau)."
+      },
+      {
+        "term": "Bruchzähigkeit (KIc)",
+        "category": "Mechanik & Statik",
+        "definition": "Kritischer Spannungsintensitätsfaktor in der linear-elastischen Bruchmechanik, bei dessen Überschreitung ein instabiles Risswachstum (Sprödbruch) einsetzt.",
+        "unit": "MPa·m^0.5",
+        "standards": "ASTM E399"
+      },
+      {
+        "term": "Fließgelenk",
+        "category": "Mechanik & Statik",
+        "definition": "Lokaler, vollständig plastifizierter Querschnittsbereich eines biegebeanspruchten Tragglieds, der bei konstantem plastischen Grenzmoment rotiert und Schnittgrößenumlagerungen ermöglicht."
+      },
+      {
+        "term": "Kerbschlagarbeit",
+        "category": "Mechanik & Statik",
+        "definition": "Im Kerbschlagbiegeversuch nach Charpy ermittelte Bruchenergie, die Auskunft über die Zähigkeit und Kaltversprödungsneigung von Stählen bei tiefen Temperaturen gibt.",
+        "unit": "Joule (J)",
+        "standards": "DIN EN ISO 148-1"
+      },
+      {
+        "term": "Verbundspannung (fbd)",
+        "category": "Mechanik & Statik",
+        "definition": "Scherfestigkeit in der Grenzfläche zwischen Beton und profilierter Stahlbewehrung zur schubfesten Übertragung der Zugkräfte.",
+        "unit": "N/mm²",
+        "standards": "DIN EN 1992-1-1"
+      },
+      {
+        "term": "w/z-Wert (Wasserzementwert)",
+        "category": "Betontechnologie",
+        "definition": "Massenverhältnis des wirksamen Anmachwassers zum Zementgehalt: w/z = w / z. Maßgeblicher Parameter für Kapillarporosität, Festigkeit und Dauerhaftigkeit."
+      },
+      {
+        "term": "Äquivalenter Wasserzementwert (w/z)eq",
+        "category": "Betontechnologie",
+        "definition": "Wasserzementwert unter Anrechnung puzzolanischer oder latent-hydraulischer Zusatzstoffe mittels k-Wert-Konzept: (w/z)eq = w / (z + k · Zusatzstoff).",
+        "standards": "DIN EN 206 / DIN 1045-2"
+      },
+      {
+        "term": "Hydratation",
+        "category": "Betontechnologie",
+        "definition": "Exotherme chemische Reaktion zwischen Zementklinkerphasen und Wasser, die zur Kristallisation von Calciumsilikathydraten (C-S-H) führt und die Gefügeverfestigung bewirkt."
+      },
+      {
+        "term": "Expositionsklasse",
+        "category": "Betontechnologie",
+        "definition": "Klassifizierung chemischer und physikalischer Umwelteinwirkungen auf Betonbauteile nach DIN EN 206 (z.B. XC Karbonatisierung, XD Chloride, XF Frost/Tausalz, XA chemischer Angriff)."
+      },
+      {
+        "term": "Betondeckung (cnom / cmin)",
+        "category": "Betontechnologie",
+        "definition": "Mindestabstand zwischen Betonoberfläche und Bewehrungsaußenkante zur Gewährleistung des Korrosionsschutzes (Passivierung) und Brandschutzes.",
+        "unit": "mm",
+        "standards": "DIN EN 1992-1-1"
+      },
+      {
+        "term": "Zwang",
+        "category": "Betontechnologie",
+        "definition": "Spannungen in Bauteilen, die entstehen, wenn freie Verformungen (z.B. aus Temperaturwechseln, Hydratationswärme oder Schwinden) durch Auflager oder Nachbarbauteile behindert werden."
+      },
+      {
+        "term": "Schwinden (Beton)",
+        "category": "Betontechnologie",
+        "definition": "Lastunabhängige Volumenverringerung infolge Feuchtigkeitsabgabe an die Umgebung (Trocknungsschwinden) und chemischer Wasserbindung in den Hydratphasen (autogenes Schwinden)."
+      },
+      {
+        "term": "Konsistenz (Frischbeton)",
+        "category": "Betontechnologie",
+        "definition": "Maß für die Verarbeitbarkeit, Steifigkeit und Fließfähigkeit von Frischbeton, eingeteilt in Klassen F1 bis F6 (Ausbreitmaß) oder C0 bis C4 (Verdichtungsmaß).",
+        "standards": "DIN EN 12350-5"
+      },
+      {
+        "term": "Ausbreitmaß",
+        "category": "Betontechnologie",
+        "definition": "Frischbetonprüfverfahren auf dem Schocktisch: Durchmesser des zerflossenen Betonfladens nach 15 Hubstößen.",
+        "unit": "mm",
+        "standards": "DIN EN 12350-5"
+      },
+      {
+        "term": "Fließmittel (PCE)",
+        "category": "Betontechnologie",
+        "definition": "Hochleistungsbetonzusatzmittel auf Polycarboxylatether-Basis; dispergiert Zementagglomerate durch sterische Hinderung und senkt den Wasseranspruch drastisch."
+      },
+      {
+        "term": "Luftporenbildner (LP)",
+        "category": "Betontechnologie",
+        "definition": "Betonzusatzmittel zur gezielten Erzeugung von kugelförmigen Mikroluftporen (Durchmesser 10–300 µm, Abstandsfaktor L ≤ 0,20 mm) für hohen Frost-Tausalz-Widerstand (XF)."
+      },
+      {
+        "term": "Selbstverdichtender Beton (SVB / SCC)",
+        "category": "Betontechnologie",
+        "definition": "Fließfähiger Spezialbeton mit hohem Mehlkornanteil, der allein unter Schwerkraftwirkung entlüftet und dichte Schalungen ohne Rüttelenergie vollständig ausfüllt.",
+        "standards": "DIN EN 12350-8 ff."
+      },
+      {
+        "term": "Sichtbetonklassen (SB1 bis SB4)",
+        "category": "Betontechnologie",
+        "definition": "Qualitätsstufen nach DBV/VDZ-Merkblatt für architektonisch sichtbare Betonoberflächen hinsichtlich Porigkeit, Farbgleichmäßigkeit, Schalungshaut und Ebenheit."
+      },
+      {
+        "term": "R-Beton (Recyclingbeton)",
+        "category": "Betontechnologie",
+        "definition": "Beton mit rezyklierter Gesteinskörnung (Typ 1: Betonsplitt, Typ 2: Mischgranulat) nach DIN EN 12620 und DAfStb-Richtlinie zur Ressourcenschonung."
+      },
+      {
+        "term": "Ultrahochfester Beton (UHPC)",
+        "category": "Betontechnologie",
+        "definition": "Feinstkornbeton mit optimierter Packungsdichte, Quarzmehl, Mikrosilika und Faserbewehrung mit Druckfestigkeiten > 150 N/mm² und extrem dichtem Gefüge.",
+        "unit": "N/mm²"
+      },
+      {
+        "term": "Massenbeton",
+        "category": "Betontechnologie",
+        "definition": "Großvolumige Bauteile (Bodenplatten, Talsperren, Pfeiler), bei denen die adiabatische Hydratationswärme zu Rissbildung durch Temperaturgradienten führen kann."
+      },
+      {
+        "term": "Frischbetondruck",
+        "category": "Betontechnologie",
+        "definition": "Hydrostatischer bzw. thixotroper Druck von Frischbeton auf die vertikale Schalungswandung nach DIN 18218.",
+        "unit": "kN/m²"
+      },
+      {
+        "term": "Nachbehandlung (Beton)",
+        "category": "Betontechnologie",
+        "definition": "Schutz des jungen Betons vor vorzeitigem Austrocknen, extremen Temperaturen, Wind und Auswaschen (z.B. durch Folien, Nachbehandlungsmittel, Feuchthalten).",
+        "standards": "DIN EN 13670"
+      },
+      {
+        "term": "Alit (Tricalciumsilicat, C3S)",
+        "category": "Bindemittel & Chemie",
+        "definition": "Wichtigste Klinkerphase des Portlandzements (50–70 Massen-%); reagiert rasch mit Wasser und bestimmt die Frühfestigkeit bis 28 Tage maßgeblich."
+      },
+      {
+        "term": "Belit (Dicalciumsilicat, C2S)",
+        "category": "Bindemittel & Chemie",
+        "definition": "Klinkerphase (15–30 Massen-%); reagiert langsam und kontinuierlich, verleiht dem Beton hohe Nacherhärtung und Endfestigkeit nach Monaten."
+      },
+      {
+        "term": "Tricalciumaluminat (C3A)",
+        "category": "Bindemittel & Chemie",
+        "definition": "Klinkerphase (5–12 Massen-%); hydratisiert blitzartig (Flash-Set), erfordert Sulfatzusatz (Gips) zur Erstarrungsregelung; anfällig für Sulfattreiben."
+      },
+      {
+        "term": "Tetracalciumaluminatferrit (C4AF)",
+        "category": "Bindemittel & Chemie",
+        "definition": "Klinkerphase (5–15 Massen-%); wirkt im Brennofen als Flussmittel und verleiht normalem Portlandzement die charakteristische graue Färbung."
+      },
+      {
+        "term": "Portlandzementklinker",
+        "category": "Bindemittel & Chemie",
+        "definition": "Im Drehrohrofen bei ca. 1450 °C gesintertes hydraulisches Zwischenprodukt aus Kalkstein, Ton und Korrekturstoffen."
+      },
+      {
+        "term": "C-S-H-Phasen",
+        "category": "Bindemittel & Chemie",
+        "definition": "Calciumsilikathydrate; nanoskalige, faser- und folienartige Kristallisationsprodukte der Silikathydratation, die das mechanische Festigkeitsrückgrat des Zementsteins bilden."
+      },
+      {
+        "term": "Portlandit (Ca(OH)2)",
+        "category": "Bindemittel & Chemie",
+        "definition": "Calciumhydroxid; fällt bei der Zementhydratation als Nebenprodukt kristallin an und puffert das Porenwasser auf pH 12,5–13,5 für den alkalischen Passivierungsschutz."
+      },
+      {
+        "term": "Hüttensand (GGBS)",
+        "category": "Bindemittel & Chemie",
+        "definition": "Glasig erstarrte Hochofenschlacke; latent-hydraulischer Hauptbestandteil von CEM II- und CEM III-Zementen zur Steigerung des Sulfatwiderstands und Senkung der Hydratationswärme."
+      },
+      {
+        "term": "Flugasche (FA)",
+        "category": "Bindemittel & Chemie",
+        "definition": "Feinstaubförmiger, puzzolanischer Zusatzstoff; reagiert sekundär mit Calciumhydroxid (Portlandit) zu dichten C-S-H-Phasen."
+      },
+      {
+        "term": "Ettringit (AFt-Phase)",
+        "category": "Bindemittel & Chemie",
+        "definition": "Nadeliges Calciumaluminat-Trisulfat-Hydrat; bildet sich erwünscht in den ersten Hydratationsstunden zur Erstarrungssteuerung; gefürchtet als treibende Sekundärphase bei Sulfatangriff."
+      },
+      {
+        "term": "Baugips (Calciumsulfat-Halbhydrat)",
+        "category": "Bindemittel & Chemie",
+        "definition": "CaSO4 · 0,5 H2O; nicht-hydraulisches Bindemittel, erhärtet durch Rehydratation zu Calciumsulfat-Dihydrat unter leichter Volumenzunahme (ca. 1 %)."
+      },
+      {
+        "term": "Luftkalk (CL / Baukalk)",
+        "category": "Bindemittel & Chemie",
+        "definition": "Nicht-hydraulisches mineralisches Bindemittel aus Calciumoxid bzw. -hydroxid, das ausschließlich an der Luft durch Reaktion mit CO2 karbonatisiert (Kalkkreislauf)."
+      },
+      {
+        "term": "Natürlich hydraulischer Kalk (NHL)",
+        "category": "Bindemittel & Chemie",
+        "definition": "Bindemittel aus mergeligem Kalkstein gebrannt, das sowohl hydraulische Klinkerphasen für Erhärtung unter Wasser als auch freies Calciumhydroxid zur Luftcarbonatisierung enthält."
+      },
+      {
+        "term": "LC3-Zement",
+        "category": "Bindemittel & Chemie",
+        "definition": "Limestone Calcined Clay Cement; klinkerreduzierter Zement aus Klinker (ca. 50 %), calciniertem Ton (ca. 30 %) und Kalksteinmehl (ca. 15 %) mit bis zu 40 % CO2-Einsparung."
+      },
+      {
+        "term": "Geopolymer",
+        "category": "Bindemittel & Chemie",
+        "definition": "Klinkerfreies anorganisches Alumosilikat-Bindemittel, hergestellt durch alkalische Aktivierung von Flugaschen oder Metakaolin mit Wasserglas/Laugen."
+      },
+      {
+        "term": "Druckfestigkeitsklasse (DFK)",
+        "category": "Mauerwerk & Gesteine",
+        "definition": "Genormte Klassifizierung von Mauersteinen nach ihrer mittleren Druckfestigkeit (z.B. DFK 12 = mittlere Festigkeit ≥ 15 N/mm² nach DIN 20000-401).",
+        "unit": "N/mm²",
+        "standards": "DIN EN 771, DIN 20000-401"
+      },
+      {
+        "term": "Hochlochziegel (HLZ)",
+        "category": "Mauerwerk & Gesteine",
+        "definition": "Keramisch gebrannter Mauerstein mit vertikaler Lochung senkrecht zur Lagerfläche, oft porosiert oder mit mineralischen Dämmstoffen (Perlit, Mineralwolle) gefüllt."
+      },
+      {
+        "term": "Kalksandstein (KS)",
+        "category": "Mauerwerk & Gesteine",
+        "definition": "Unter Dampfdruck autoklavierter Baustein aus Kalk, Sand und Wasser; zeichnet sich durch hohe Rohdichte, sehr guten Schallschutz und hohe Druckfestigkeit aus."
+      },
+      {
+        "term": "Porenbeton (AAC)",
+        "category": "Mauerwerk & Gesteine",
+        "definition": "Dampfgehärteter Baustoff aus Quarzsand, Kalk, Zement und Aluminiumpulver als Treibmittel; besitzt geringe Rohdichte und hervorragende Wärmedämmeigenschaften."
+      },
+      {
+        "term": "Dünnbettmörtel",
+        "category": "Mauerwerk & Gesteine",
+        "definition": "Werktrockenmörtel mit Größtkorn ≤ 1 mm für plangeschliffene Plansteine; Fugendicke nur 1 bis 3 mm, minimiert Wärmebrücken in den Lagerfugen."
+      },
+      {
+        "term": "Überbindemaß (lol)",
+        "category": "Mauerwerk & Gesteine",
+        "definition": "Mindestversatz der Stoßfugen zweier übereinanderliegender Steinschichten zur Sicherstellung des Mauerwerksverbandes (lol ≥ 0,4 · hu bzw. ≥ 45 mm).",
+        "unit": "mm",
+        "standards": "DIN EN 1996-1-1"
+      },
+      {
+        "term": "Ausblühung (Effloreszenz)",
+        "category": "Mauerwerk & Gesteine",
+        "definition": "Ablagerung wasserlöslicher Salze (Sulfate, Carbonate) an Baustoffoberflächen infolge kapillaren Feuchtetransports und anschließender Verdunstung."
+      },
+      {
+        "term": "Reindichte",
+        "category": "Mauerwerk & Gesteine",
+        "definition": "Masse eines Feststoffs bezogen auf sein rein porenfreies Feststoffvolumen (Pyknometer-Verfahren).",
+        "unit": "kg/m³",
+        "standards": "DIN EN 1097-6"
+      },
+      {
+        "term": "Rohdichte",
+        "category": "Mauerwerk & Gesteine",
+        "definition": "Masse eines Baustoffs bezogen auf sein geometrisches Gesamtvolumen inklusive aller inneren Porenräume.",
+        "unit": "kg/m³",
+        "standards": "DIN EN 772-13"
+      },
+      {
+        "term": "Schüttdichte",
+        "category": "Mauerwerk & Gesteine",
+        "definition": "Masse einer unverdichteten Gesteinskörnung oder Haufwerks bezogen auf das eingenommene Schüttvolumen inklusive der Hohlräume zwischen den Körnern.",
+        "unit": "kg/m³",
+        "standards": "DIN EN 1097-3"
+      },
+      {
+        "term": "Holzfeuchte (u)",
+        "category": "Holzbau & Biogene Werkstoffe",
+        "definition": "Massenanteil des enthaltenen Wassers bezogen auf die absolute Trockenmasse (Darrmasse): u = ((m_feucht - m_darr) / m_darr) · 100 %.",
+        "unit": "%",
+        "standards": "DIN EN 13183-1"
+      },
+      {
+        "term": "Fasersättigungsbereich",
+        "category": "Holzbau & Biogene Werkstoffe",
+        "definition": "Zustand des Holzes (bei ca. 28–32 % Holzfeuchte), bei dem die Zellwände maximal mit gebundenem Wasser gesättigt sind, aber kein freies Wasser in den Zellhohlräumen vorliegt. Nur unterhalb setzt Schwinden ein.",
+        "unit": "%"
+      },
+      {
+        "term": "Anisotropie (Holz)",
+        "category": "Holzbau & Biogene Werkstoffe",
+        "definition": "Richtungsabhängigkeit der physikalischen Kennwerte. Holz schwindet axial nur 0,1–0,3 %, radial ca. 3–5 % und tangential bis zu 6–10 %."
+      },
+      {
+        "term": "Brettschichtholz (BSH / Leimholz)",
+        "category": "Holzbau & Biogene Werkstoffe",
+        "definition": "Aus mindestens drei faserparallel verleimten, technisch getrockneten Nadelholzlamellen hergestelltes Tragholz hoher Tragfähigkeit und Formstabilität.",
+        "standards": "DIN EN 14080"
+      },
+      {
+        "term": "Brettsperrholz (BSP / CLT)",
+        "category": "Holzbau & Biogene Werkstoffe",
+        "definition": "Kreuzweise orthogonal zueinander verklebte Massivholzlagen für flächige Wand-, Decken- und Dachtragelemente mit zweiachsigem Lastabtrag.",
+        "standards": "DIN EN 16351"
+      },
+      {
+        "term": "Konstruktionsvollholz (KVH)",
+        "category": "Holzbau & Biogene Werkstoffe",
+        "definition": "Präzise gehobeltes, technisch auf 15 ± 3 % getrocknetes und keilgezinktes Vollholz für den modernen Holzbau.",
+        "standards": "DIN EN 15497"
+      },
+      {
+        "term": "Modifikationsbeiwert (kmod)",
+        "category": "Holzbau & Biogene Werkstoffe",
+        "definition": "Bemessungsfaktor nach Eurocode 5 zur Abminderung der Festigkeitseigenschaften in Abhängigkeit von Nutzungsklasse (Feuchte) und Krafteinwirkungsdauer (KLED).",
+        "unit": "dim.-los",
+        "standards": "DIN EN 1995-1-1"
+      },
+      {
+        "term": "Verformungsbeiwert (kdef)",
+        "category": "Holzbau & Biogene Werkstoffe",
+        "definition": "Beiwert zur Berücksichtigung des Kriechverhaltens von Holzbauteilen im Grenzzustand der Gebrauchstauglichkeit (GZG): u_fin = u_inst · (1 + kdef).",
+        "unit": "dim.-los",
+        "standards": "DIN EN 1995-1-1"
+      },
+      {
+        "term": "Hanfkalk (Hempcrete)",
+        "category": "Holzbau & Biogene Werkstoffe",
+        "definition": "Biogener Leichtbaustoff aus Hanfschäben und hydraulischem Kalk; speichert biogenen Kohlenstoff, bietet gute Dämmwirkung und feuchteregulierende Diffusionsfähigkeit."
+      },
+      {
+        "term": "Baustahl S235 / S355",
+        "category": "Stahl, Metalle & Glas",
+        "definition": "Unlegierte Baustähle mit einer charakteristischen Mindeststreckgrenze von 235 bzw. 355 N/mm² bei Blechdicken bis 16 mm.",
+        "unit": "N/mm²",
+        "standards": "DIN EN 10025-2"
+      },
+      {
+        "term": "Betonstahl B500A / B500B / B500C",
+        "category": "Stahl, Metalle & Glas",
+        "definition": "Gerippter Bewehrungsstahl mit Streckgrenze 500 N/mm²; unterschieden in Duktilitätsklassen A (normal), B (hoch) und C (sehr hoch, erdbebensicher).",
+        "unit": "N/mm²",
+        "standards": "DIN 488, DIN EN 1992-1-1"
+      },
+      {
+        "term": "Wöhlerlinie",
+        "category": "Stahl, Metalle & Glas",
+        "definition": "Diagramm der Schwingfestigkeit (S-N-Kurve), das die ertragbare Lastwechselzahl bis zum Ermüdungsbruch in Abhängigkeit von der Spannungsschwingbreite Δσ darstellt.",
+        "standards": "DIN 50100, DIN EN 1993-1-9"
+      },
+      {
+        "term": "Kontaktkorrosion (Galvanische Korrosion)",
+        "category": "Stahl, Metalle & Glas",
+        "definition": "Elektrochemischer Korrosionsprozess, der auftritt, wenn zwei Metalle mit unterschiedlichem Normalpotenzial (z.B. Zink/Kupfer) in leitendem Elektrolytkontakt stehen."
+      },
+      {
+        "term": "Feuerverzinkung",
+        "category": "Stahl, Metalle & Glas",
+        "definition": "Aufbringen eines metallischen Zinküberzugs durch Eintauchen von vorbehandeltem Stahl in geschmolzenes Zink bei ca. 450 °C (Schutz durch Barriere und Opferanode).",
+        "standards": "DIN EN ISO 1461"
+      },
+      {
+        "term": "Floatglas",
+        "category": "Stahl, Metalle & Glas",
+        "definition": "Flachglas, hergestellt im kontinuierlichen Fließprozess auf einem flüssigen Zinnbad; planebene Oberflächen ohne optische Verzerrungen.",
+        "standards": "DIN EN 572-2"
+      },
+      {
+        "term": "Einscheibensicherheitsglas (ESG)",
+        "category": "Stahl, Metalle & Glas",
+        "definition": "Thermisch vorgespanntes Glas mit hohen Biegezug- und Temperaturwechselbeständigkeiten; zerfällt bei Bruch in stumpfkantige Krümel.",
+        "standards": "DIN EN 12150"
+      },
+      {
+        "term": "Verbundsicherheitsglas (VSG)",
+        "category": "Stahl, Metalle & Glas",
+        "definition": "Verbund aus mindestens zwei Glasscheiben mit zähelastischer PVB- oder EVA-Folie; bei Bruch bleiben die Splitter an der Folie haften (Resttragfähigkeit).",
+        "standards": "DIN EN ISO 12543"
+      },
+      {
+        "term": "Low-E-Beschichtung",
+        "category": "Stahl, Metalle & Glas",
+        "definition": "Niedrigemittierende hauchdünne Edelmetallbeschichtung auf Isolierglasscheiben zur Reflexion langwelliger Wärmestrahlung zurück in den Raum.",
+        "standards": "DIN EN 1096"
+      },
+      {
+        "term": "U-Wert (Wärmedurchgangskoeffizient)",
+        "category": "Bauphysik & Energetik",
+        "definition": "Wärmestromdichte durch 1 m² Bauteilfläche bei 1 Kelvin Temperaturdifferenz: U = 1 / (Rsi + Σ(d/λ) + Rse). Je kleiner, desto besser die Dämmwirkung.",
+        "unit": "W/(m²·K)",
+        "standards": "DIN EN ISO 6946"
+      },
+      {
+        "term": "Wärmeleitfähigkeit (Lambda λ)",
+        "category": "Bauphysik & Energetik",
+        "definition": "Materialkonstante, die den Wärmestrom pro Meter Schichtdicke bei 1 Kelvin Temperaturgefälle angibt.",
+        "unit": "W/(m·K)",
+        "standards": "DIN EN 12664, DIN 4108-4"
+      },
+      {
+        "term": "Dampfdiffusionswiderstandszahl (µ)",
+        "category": "Bauphysik & Energetik",
+        "definition": "Kennzahl, die angibt, um wievielmal dampfdichter ein Werkstoff ist als eine gleich dicke ruhende Luftschicht (Luft µ = 1; mineralische Dämmung µ = 1; Stahl µ = ∞).",
+        "unit": "dim.-los",
+        "standards": "DIN EN ISO 12572, DIN 4108-4"
+      },
+      {
+        "term": "Diffusionsäquivalente Luftschichtdicke (sd)",
+        "category": "Bauphysik & Energetik",
+        "definition": "Produkt aus Dampfdiffusionswiderstandszahl µ und Schichtdicke d: sd = µ · d. Charakterisiert diffusionsoffene (sd < 0,5 m) oder dampfbremsende/sperrende Schichten.",
+        "unit": "m",
+        "standards": "DIN 4108-3"
+      },
+      {
+        "term": "Glaser-Verfahren",
+        "category": "Bauphysik & Energetik",
+        "definition": "Stationäres Berechnungsverfahren nach DIN 4108-3 zum rechnerischen Nachweis von Tauwassermenge und Verdunstungsbilanz in Bauteilschichten während der Tau- und Verdunstungsperiode."
+      },
+      {
+        "term": "Temperaturfaktor (fRsi)",
+        "category": "Bauphysik & Energetik",
+        "definition": "Kriterium zur Beurteilung der Schimmelpilzgefahr an Wärmebrücken: fRsi = (θsi - θe) / (θi - θe). Der Mindestwert beträgt an der ungünstigsten Stelle fRsi ≥ 0,70.",
+        "unit": "dim.-los",
+        "standards": "DIN 4108-2"
+      },
+      {
+        "term": "Wärmebrückenverlustkoeffizient (Psi ψ)",
+        "category": "Bauphysik & Energetik",
+        "definition": "Zusatzwärmeverlust pro Meter Bauteillänge an einer geometrischen oder konstruktiven 2D-Wärmebrücke: Φ = (U · A + Σ(ψ · l)) · ΔT.",
+        "unit": "W/(m·K)",
+        "standards": "DIN EN ISO 10211"
+      },
+      {
+        "term": "Schalldämmmaß (Rw)",
+        "category": "Bauphysik & Energetik",
+        "definition": "Bewertetes Schalldämmmaß zur Kennzeichnung der Luftschalldämmung von trennenden Bauteilen im Labor ohne Flankenübertragung.",
+        "unit": "dB",
+        "standards": "DIN EN ISO 717-1, DIN 4109"
+      },
+      {
+        "term": "Trittschallpegel (L'n,w)",
+        "category": "Bauphysik & Energetik",
+        "definition": "Bewerteter Norm-Trittschallpegel im Empfangsraum bei Anregung der Decke durch ein genormtes Hammerwerk. Je niedriger der Wert, desto besser die Dämmung.",
+        "unit": "dB",
+        "standards": "DIN EN ISO 717-2, DIN 4109"
+      },
+      {
+        "term": "Blower-Door-Test (Luftwechselrate n50)",
+        "category": "Bauphysik & Energetik",
+        "definition": "Differenzdruck-Messverfahren zur Bestimmung der Gebäude-Luftdichtheit bei 50 Pa Druckdifferenz nach DIN EN ISO 9972.",
+        "unit": "1/h",
+        "standards": "DIN EN ISO 9972, GEG"
+      },
+      {
+        "term": "Carbonatisierung",
+        "category": "Dauerhaftigkeit & Korrosion",
+        "definition": "Reaktion von atmosphärischem Kohlendioxid (CO2) mit Calciumhydroxid des Betons zu Calciumcarbonat: Ca(OH)2 + CO2 → CaCO3 + H2O. Senkt den pH-Wert von ca. 13 auf unter 9 ab."
+      },
+      {
+        "term": "Depassivierung",
+        "category": "Dauerhaftigkeit & Korrosion",
+        "definition": "Zerstörung des schützenden mikroskopischen Eisenoxidfilms auf der Bewehrungsoberfläche durch Absinken des Porenwasser-pH-Werts (Carbonatisierung) oder Überschreitung des kritischen Chloridgehalts."
+      },
+      {
+        "term": "Chloridinduzierte Korrosion",
+        "category": "Dauerhaftigkeit & Korrosion",
+        "definition": "Gefürchtete Lochfraßkorrosion der Stahlbewehrung durch eindiffundierende Chloride (z.B. aus Tausalzen oder Meerwasser), die auch im stark alkalischen Beton auftreten kann."
+      },
+      {
+        "term": "Kritischer Chloridgehalt",
+        "category": "Dauerhaftigkeit & Korrosion",
+        "definition": "Grenzkonzentration freier Chloride im Beton bezogen auf die Zementmasse (typisch 0,40 bis 0,50 M-% für Stahlbeton), ab der mit Lochfraßkorrosion gerechnet werden muss.",
+        "unit": "M-% bez. auf Zement",
+        "standards": "Erfahrungswert (TR Instandhaltung); Chloridklassen der Ausgangsmischung nach DIN EN 206"
+      },
+      {
+        "term": "Alkali-Kieselsäure-Reaktion (AKR)",
+        "category": "Dauerhaftigkeit & Korrosion",
+        "definition": "Chemische Reaktion zwischen Alkalihydroxiden des Porenwassers und amorpher/reaktiver Kieselsäure in der Gesteinskörnung zu einem quellfähigen Gel, das Treibrisse im Betongefüge erzeugt.",
+        "standards": "DAfStb AKR-Richtlinie"
+      },
+      {
+        "term": "Sulfattreiben",
+        "category": "Dauerhaftigkeit & Korrosion",
+        "definition": "Reaktion von aus dem Grundwasser eindringenden Sulfationen mit Monosulfat- und Aluminatphasen zu voluminösem sekundärem Ettringit bzw. Thaumasit unter starkem Kristallisationsdruck."
+      },
+      {
+        "term": "CDF-Test (Frost-Tausalz-Prüfung)",
+        "category": "Dauerhaftigkeit & Korrosion",
+        "definition": "Capillary Suction, De-icing agent and Freeze-thaw Test: Präzises Laborverfahren zur Bestimmung der inneren Gefügeschädigung und Oberflächenabwitterung von Beton unter Frost-Tau-Zyklen mit 3 % NaCl-Lösung.",
+        "unit": "g/m²",
+        "standards": "DIN CEN/TS 12390-9"
+      },
+      {
+        "term": "Kathodischer Korrosionsschutz (KKS)",
+        "category": "Dauerhaftigkeit & Korrosion",
+        "definition": "Elektrochemisches Schutzverfahren für bewehrte Bauteile durch Anlegen eines kontinuierlichen Schutzstroms über Fremdstromanoden (z.B. Titan-Mischoxid-Netze), der die Bewehrung zur Kathode polarisiert.",
+        "standards": "DIN EN ISO 12696"
+      },
+      {
+        "term": "Hydrophobierung",
+        "category": "Dauerhaftigkeit & Korrosion",
+        "definition": "Imprägnierung poröser mineralischer Baustoffe mit niedermolekularen Silanen oder Siloxanen, die die Porenwandungen wasserabweisend machen, die Wasserdampfdiffusion aber aufrechterhalten.",
+        "standards": "DIN EN 1504-2"
+      },
+      {
+        "term": "GWP (Global Warming Potential)",
+        "category": "Nachhaltigkeit & Ökobilanz",
+        "definition": "Treibhauspotenzial; Indikator für den Beitrag zum Klimawandel durch Treibhausgasemissionen, bezogen auf das Referenzgas Kohlendioxid über einen Zeithorizont von 100 Jahren.",
+        "unit": "kg CO2-Äquiv.",
+        "standards": "DIN EN 15804+A2"
+      },
+      {
+        "term": "Graue Energie / Graue Emissionen",
+        "category": "Nachhaltigkeit & Ökobilanz",
+        "definition": "Der gesamte Primärenergieaufwand und die kumulierten CO2-Emissionen, die für Rohstoffgewinnung, Transport, Herstellung, Einbau und Entsorgung eines Bauteils anfallen (Lebenszyklusmodule A1–A5, C1–C4)."
+      },
+      {
+        "term": "PENRT (Nicht-erneuerbare Primärenergie)",
+        "category": "Nachhaltigkeit & Ökobilanz",
+        "definition": "Gesamter Aufwand nicht erneuerbarer Primärenergieressourcen (fossil, nuklear), eingesetzt als Energieträger und stoffliche Ressource über den Lebenszyklus.",
+        "unit": "MJ",
+        "standards": "DIN EN 15804"
+      },
+      {
+        "term": "EPD (Environmental Product Declaration)",
+        "category": "Nachhaltigkeit & Ökobilanz",
+        "definition": "Typ-III-Umweltproduktdeklaration nach ISO 14025 und DIN EN 15804; unabhängig verifizierte Ökobilanz-Datenbasis von Bauprodukten für BNB-, DGNB- und QNG-Zertifizierungen."
+      },
+      {
+        "term": "Circularity Index (CI)",
+        "category": "Nachhaltigkeit & Ökobilanz",
+        "definition": "Kennwert für den Zirkularitätsgrad eines Gebäudes nach Madaster/Ellen MacArthur Foundation (0 % linear bis 100 % voll zirkulär), basierend auf Rezyklatanteil, Langlebigkeit und Rückbaubarkeit.",
+        "unit": "%"
+      },
+      {
+        "term": "Materialpass / Ressourcenpass",
+        "category": "Nachhaltigkeit & Ökobilanz",
+        "definition": "Digitaler Nachweis über Art, Masse, Einbauort, Schadstofffreiheit und Demontierbarkeit aller in einem Bauwerk verbauten Materialien als Grundlage für Urban Mining."
+      },
+      {
+        "term": "Urban Mining",
+        "category": "Nachhaltigkeit & Ökobilanz",
+        "definition": "Konzept, den anthropogenen Baubestand als Rohstofflager für zukünftige Baustoffgenerationen systematisch zu erfassen, selektiv zurückzubauen und hochwertig wiederzuverwerten."
+      },
+      {
+        "term": "Ersatzbaustoffverordnung (EBV)",
+        "category": "Nachhaltigkeit & Ökobilanz",
+        "definition": "Bundesweit einheitliche Rechtsverordnung für den schadlosen Einbau mineralischer Ersatzbaustoffe (z.B. Recycling-Baustoffe, Schlacken, Aschen) in technischen Bauwerken.",
+        "standards": "EBV (BGBl. I)"
+      },
+      {
+        "term": "Cradle to Cradle (C2C)",
+        "category": "Nachhaltigkeit & Ökobilanz",
+        "definition": "Design- und Werkstoffkonzept, bei dem alle Produkte und Fügungen so konzipiert sind, dass sie nach Nutzungsende ohne Qualitätsverlust in biologische oder technische Kreisläufe zurückgeführt werden."
+      },
+      {
+        "term": "Kaskadennutzung",
+        "category": "Nachhaltigkeit & Ökobilanz",
+        "definition": "Mehrstufige sequentielle Nutzung eines Rohstoffs (insbesondere Holz): zunächst stoffliche Nutzung (z.B. Tragbalken → Holzwerkstoffplatte → Dämmung) und erst am Lebensende energetische Verwertung."
+      },
+      {
+        "term": "Zustandsnote (DIN 1076 / RI-EBW-PRÜF)",
+        "category": "Bauen im Bestand & WTA",
+        "definition": "Bewertung des Bauwerkszustands von Ingenieurbauwerken (z. B. Brücken) aus Standsicherheit, Verkehrssicherheit und Dauerhaftigkeit auf einer Skala von 1,0 (sehr guter Zustand) bis 4,0 (ungenügender Zustand); Hochbauten werden nach VDI 6200 über Schadensfolgeklassen und Prüfintervalle eingeordnet."
+      },
+      {
+        "term": "Zerstörungsfreie Prüfung (ZfP)",
+        "category": "Bauen im Bestand & WTA",
+        "definition": "Prüfverfahren zur Untersuchung von Gefüge, Festigkeit und Schäden ohne Substanzzerstörung (z.B. Rückprallhammer, Ultraschall, Radar, Thermografie, Wirbelstrom)."
+      },
+      {
+        "term": "Rückprallhammer (Schmidt-Hammer)",
+        "category": "Bauen im Bestand & WTA",
+        "definition": "Federgetriebenes ZfP-Schlagbolzengerät zur Messung der Oberflächenhärte von Beton und Mauerwerk, aus der über Kalibrierkurven auf die Druckfestigkeit geschlossen wird.",
+        "standards": "DIN EN 12504-2"
+      },
+      {
+        "term": "Asbest",
+        "category": "Bauen im Bestand & WTA",
+        "definition": "Gruppe silikatischer Naturfasern (Chrysotil, Krokydolith, Amosit) mit hoher Hitze- und Chemikalienbeständigkeit; bei Einatmung lungengängig und stark karzinogen (TRGS 519)."
+      },
+      {
+        "term": "Künstliche Mineralfasern (KMF)",
+        "category": "Bauen im Bestand & WTA",
+        "definition": "Synthetische Mineralwollen (Glaswolle, Steinwolle); vor 1996 hergestellte Alt-KMF gelten in der Regel als krebsverdächtig (Kanzerogenitätsindex KI < 40; TRGS 521)."
+      },
+      {
+        "term": "PAK (Polyzyklische aromatische Kohlenwasserstoffe)",
+        "category": "Bauen im Bestand & WTA",
+        "definition": "Schadstoffgruppe in Steinkohlenteer, früher häufig in Teerkork-Dämmungen, Parkettklebern und Dachpappen eingesetzt; krebserregend und sanierungsbedürftig."
+      },
+      {
+        "term": "PCB (Polychlorierte Biphenyle)",
+        "category": "Bauen im Bestand & WTA",
+        "definition": "Schwerflüchtige chlorierte Kohlenwasserstoffe, ehemals als Weichmacher in dauerelastischen Fugendichtmassen (1960–1975) und Transformatorenölen verwendet."
+      },
+      {
+        "term": "Horizontalsperre",
+        "category": "Bauen im Bestand & WTA",
+        "definition": "Nachträgliche Abdichtungsmaßnahme gegen kapillar aufsteigende Mauerwerksfeuchtigkeit durch mechanische Trennung (Bleche) oder drucklose bzw. Niederdruck-Injektion von Paraffinen/Silanen.",
+        "standards": "WTA-Merkblatt 4-4"
+      },
+      {
+        "term": "Sanierputzsystem (WTA)",
+        "category": "Bauen im Bestand & WTA",
+        "definition": "Porenhydrophobierter Spezialputz nach WTA-Merkblatt 2-9 mit extrem hohem Gesamtporenvolumen (> 40 %) zur schadensfreien Einlagerung von bauschädlichen Salzen an feuchtem Mauerwerk."
+      },
+      {
+        "term": "Phenolphthalein-Test",
+        "category": "Bauen im Bestand & WTA",
+        "definition": "Farbindikatortest auf frischen Beton-Bruchflächen: Schlägt bei pH-Werten > 9,0 violett um (intakte Passivierung); bleibt im carbonatisierten Randbereich farblos.",
+        "standards": "DIN EN 14630"
+      },
+      {
+        "term": "Reibungswinkel (Phi φ')",
+        "category": "Geotechnik & Bodenmechanik",
+        "definition": "Winkel der inneren Reibung eines Bodens; kennzeichnet die Scherfestigkeit infolge Kornverzahnung und Kornreibung nach dem Mohr-Coulombschen Bruchgesetz.",
+        "unit": "° (Grad)",
+        "standards": "DIN EN ISO 17892-7, DIN EN 1997-1"
+      },
+      {
+        "term": "Kohäsion (c')",
+        "category": "Geotechnik & Bodenmechanik",
+        "definition": "Innerer Zusammenhalt bindiger Böden (Tone, Schluffe) infolge elektrostatischer und molekularer Anziehungskräfte der Tonminerale, unabhängig von der Auflast.",
+        "unit": "kN/m² oder kPa",
+        "standards": "DIN EN 1997-1"
+      },
+      {
+        "term": "Durchlässigkeitsbeiwert (kf-Wert)",
+        "category": "Geotechnik & Bodenmechanik",
+        "definition": "Proportionalitätskonstante im Darcy-Gesetz für die Fließgeschwindigkeit von Grundwasser durch ein poröses Bodenmedium: v = kf · i.",
+        "unit": "m/s",
+        "standards": "DIN 18130-1"
+      },
+      {
+        "term": "Proctordichte (ρPr)",
+        "category": "Geotechnik & Bodenmechanik",
+        "definition": "Im genormten Proctorversuch bei optimalem Wassergehalt w_opt erzielte maximale Trockendichte eines Bodens bei definierter Verdichtungsenergie.",
+        "unit": "g/cm³ oder kg/m³",
+        "standards": "DIN 18127"
+      },
+      {
+        "term": "Verdichtungsgrad (DPr)",
+        "category": "Geotechnik & Bodenmechanik",
+        "definition": "Verhältnis der im Feld gemessenen Trockendichte zur im Labor ermittelten Proctordichte: DPr = (ρd / ρPr) · 100 % (im Erdbau meist ≥ 97 % bis 100 % gefordert).",
+        "unit": "%",
+        "standards": "ZTV E-StB"
+      },
+      {
+        "term": "Atterberg-Grenzen",
+        "category": "Geotechnik & Bodenmechanik",
+        "definition": "Wassergehaltsgrenzen feinkörniger bindiger Böden: Fließgrenze wL, Ausrollgrenze wP und Schrumpfgrenze wS zur Abgrenzung von festem, halbfestem, plastischem und flüssigem Zustand.",
+        "standards": "DIN EN ISO 17892-12"
+      },
+      {
+        "term": "Plastizitätszahl (IP)",
+        "category": "Geotechnik & Bodenmechanik",
+        "definition": "Differenz zwischen Fließgrenze und Ausrollgrenze: IP = wL - wP. Maß für den plastischen Verformungsbereich eines bindigen Bodens.",
+        "unit": "%",
+        "standards": "DIN EN ISO 17892-12"
+      },
+      {
+        "term": "Ungleichförmigkeitszahl (U)",
+        "category": "Geotechnik & Bodenmechanik",
+        "definition": "Kennwert aus der Sieblinie: U = d60 / d10. Charakterisiert die Kornabstufung (U < 3 gleichförmig; U > 5 ungleichförmig gut verdichtbar).",
+        "unit": "dim.-los",
+        "standards": "DIN EN ISO 14688-2"
+      },
+      {
+        "term": "BIM (Building Information Modeling)",
+        "category": "Digitalisierung & BIM",
+        "definition": "Methode der optimierten Planung, Ausführung und Bewirtschaftung von Bauwerken unter Einsatz konsistenter, dreidimensionaler, digitaler Gebäudedatenmodelle.",
+        "standards": "DIN EN ISO 19650"
+      },
+      {
+        "term": "Industry Foundation Classes (IFC)",
+        "category": "Digitalisierung & BIM",
+        "definition": "Offener, neutraler, international standardisierter Datenformatstandard (ISO 16739) zum herstellerunabhängigen Austausch von Gebäudegeometrie und semantischen Materialparametern."
+      },
+      {
+        "term": "openBIM",
+        "category": "Digitalisierung & BIM",
+        "definition": "Universeller, softwareneutraler BIM-Ansatz basierend auf offenen Standards (IFC, BCF, bSDD) von buildingSMART zur Verhinderung von Vendor Lock-in-Effekten."
+      },
+      {
+        "term": "Level of Information Need (LOIN / LOD)",
+        "category": "Digitalisierung & BIM",
+        "definition": "Strukturierte Definition des geometrischen Detaillierungsgrads (LOG) und des alphanumerischen Informationsgehalts (LOI) von Modellobjekten im Projektverlauf.",
+        "standards": "DIN EN 17412-1"
+      },
+      {
+        "term": "BCF (BIM Collaboration Format)",
+        "category": "Digitalisierung & BIM",
+        "definition": "Offenes XML-basiertes Datenformat zur verlustfreien Kommunikation von Prüfbefunden, Baukollisionen und Aufgaben über Softwaregrenzen hinweg."
+      },
+      {
+        "term": "Digitaler Zwilling (Digital Twin)",
+        "category": "Digitalisierung & BIM",
+        "definition": "Virtuelles Echtzeit-Abbild eines physischen Bauwerks, das durch Sensorik (IoT) mit Betriebs-, Verformungs- und Alterungsdaten kontinuierlich synchronisiert wird."
+      },
+      {
+        "term": "Punktwolke (Point Cloud)",
+        "category": "Digitalisierung & BIM",
+        "definition": "Menge von dreidimensionalen Messpunkten, erzeugt durch terrestrisches Laserscanning (TLS) oder Photogrammetrie zur zentimetergenauen As-Built-Bestandserfassung."
+      },
+      {
+        "term": "Ug-Wert (Verglasung)",
+        "category": "Glas- & Fenstertechnik",
+        "definition": "Wärmedurchgangskoeffizient der ungestörten Verglasung im Scheibenzentrum (Center of Glass) nach DIN EN 673.",
+        "unit": "W/(m²·K)",
+        "standards": "DIN EN 673, DIN EN 1279"
+      },
+      {
+        "term": "Uf-Wert (Fensterrahmen)",
+        "category": "Glas- & Fenstertechnik",
+        "definition": "Wärmedurchgangskoeffizient des Fensterrahmens ohne Glaseinfluss, bestimmt durch 2D-Wärmestromsimulation nach DIN EN ISO 10077-2.",
+        "unit": "W/(m²·K)",
+        "standards": "DIN EN ISO 10077-2"
+      },
+      {
+        "term": "Uw-Wert (Gesamtfenster)",
+        "category": "Glas- & Fenstertechnik",
+        "definition": "Gesamtwärmedurchgangskoeffizient des Fensters nach DIN EN ISO 10077-1: Uw = (Ag·Ug + Af·Uf + lg·Ψg) / (Ag + Af).",
+        "unit": "W/(m²·K)",
+        "standards": "DIN EN ISO 10077-1, GEG"
+      },
+      {
+        "term": "g-Wert (Gesamtenergiedurchlassgrad)",
+        "category": "Glas- & Fenstertechnik",
+        "definition": "Verhältnis der gesamten durch eine Verglasung übertragenen Sonnenenergie zur auftreffenden Solarstrahlung (direkte Transmission plus sekundäre Wärmeabgabe nach innen).",
+        "unit": "dim.-los oder %",
+        "standards": "DIN EN 410"
+      },
+      {
+        "term": "Lichttransmissionsgrad (Tau_v / τv)",
+        "category": "Glas- & Fenstertechnik",
+        "definition": "Prozentualer Anteil der für das menschliche Auge sichtbaren Sonnenstrahlung (Wellenlänge 380–780 nm), der ungehindert durch das Glas dringt.",
+        "unit": "%",
+        "standards": "DIN EN 410"
+      },
+      {
+        "term": "Selektivitätskennzahl (S)",
+        "category": "Glas- & Fenstertechnik",
+        "definition": "Verhältnis von Lichttransmissionsgrad τv zum Gesamtenergiedurchlassgrad g: S = τv / g. Gütemaß für Sonnenschutzgläser (S > 1,8 bedeutet maximales Tageslicht bei minimalem Wärmeeintrag).",
+        "unit": "dim.-los",
+        "standards": "DIN EN 410"
+      },
+      {
+        "term": "Warme Kante (Warm Edge / Ψg)",
+        "category": "Glas- & Fenstertechnik",
+        "definition": "Thermisch entkoppelter Randverbund-Abstandhalter aus Edelstahl oder glasfaserverstärktem Kunststoff zur Reduzierung des linearen Wärmebrückenverlusts Ψg am Scheibenrand.",
+        "unit": "W/(m·K)",
+        "standards": "DIN EN ISO 10077-1"
+      },
+      {
+        "term": "Teilvorgespanntes Glas (TVG)",
+        "category": "Glas- & Fenstertechnik",
+        "definition": "Thermisch verfestigtes Glas mit mittlerer Biegezugfestigkeit (fk = 70 N/mm²); bricht bei Zerstörung in großteilige Schollen und bietet im VSG-Verbund eine hervorragende Resttragfähigkeit.",
+        "unit": "N/mm²",
+        "standards": "DIN EN 1863-1, DIN 18008"
+      },
+      {
+        "term": "Vakuum-Isolierglas (VIG)",
+        "category": "Glas- & Fenstertechnik",
+        "definition": "Hochleistungsglas mit evakuiertem Scheibenzwischenraum (p < 0,1 Pa) und mikroskopischen Stützpfeilern; erreicht Ug = 0,4–0,7 W/(m²K) bei nur 6–10 mm Gesamtdicke.",
+        "standards": "DIN EN ISO 19916"
+      },
+      {
+        "term": "Heat-Soak-Test (ESG-H / Heißlagerungstest)",
+        "category": "Glas- & Fenstertechnik",
+        "definition": "Destruktiver Qualitätssicherungstest für ESG (mehrstündige Lagerung bei 290 °C) zur Provokation von Spontanbrüchen durch Phasenumwandlung von Nickelsulfid-Einschlüssen (NiS).",
+        "standards": "DIN EN 14179"
+      },
+      {
+        "term": "Pendelschlagversuch (Doppelreifen)",
+        "category": "Glas- & Fenstertechnik",
+        "definition": "Dynamischer Anpralltest nach DIN EN 12600 mit einem 50-kg-Doppelreifenpendel zur Klassifizierung von Sicherheitsglas und absturzsichernden Verglasungen nach DIN 18008-4.",
+        "standards": "DIN EN 12600, DIN 18008-4"
+      },
+      {
+        "term": "Belastungsklasse (RStO)",
+        "category": "Verkehrswegebau & Infrastruktur",
+        "definition": "Klassifizierung des Straßenoberbaus nach den Richtlinien für die Standardisierung des Oberbaus von Verkehrsflächen (Bk100 bis Bk0,3) basierend auf den äquivalenten 10-t-Achsübergängen.",
+        "standards": "RStO 12 (aktuelle Fassung prüfen)"
+      },
+      {
+        "term": "Erweichungspunkt Ring und Kugel (RuK)",
+        "category": "Verkehrswegebau & Infrastruktur",
+        "definition": "Normiertes Prüfverfahren zur Bestimmung der Temperaturempfindlichkeit von Straßenbaubitumen: Temperatur, bei der eine Bitumenschicht unter einer 3,5-g-Stahlkugel um 25,0 mm durchhängt.",
+        "unit": "°C",
+        "standards": "DIN EN 1427"
+      },
+      {
+        "term": "Nadelpenetration (Bitumen)",
+        "category": "Verkehrswegebau & Infrastruktur",
+        "definition": "Maß für die Härte und Konsistenz von Bitumen: Eindringtiefe einer 100-g-Prüfnadel bei 25 °C während 5 Sekunden, angegeben in 1/10 mm (z.B. Bitumen 50/70 = 50 bis 70 Zehntelmillimeter).",
+        "unit": "0,1 mm",
+        "standards": "DIN EN 1426"
+      },
+      {
+        "term": "Polymermodifiziertes Bitumen (PmB)",
+        "category": "Verkehrswegebau & Infrastruktur",
+        "definition": "Durch elastomere Kunststoffe (SBS) modifiziertes Bitumen mit vergrößerter plastischer Spannweite (niedriger Brechpunkt, hoher RuK) für hochbelastete Autobahndeckschichten.",
+        "standards": "DIN EN 14023"
+      },
+      {
+        "term": "Spurrinnenbildung",
+        "category": "Verkehrswegebau & Infrastruktur",
+        "definition": "Plastische Dauerverformung von Asphaltschichten unter schweren, langsam rollenden Radlasten im Sommer; Prüfung im Labor mittels Spurbildungsversuch im Wasser- oder Luftbad.",
+        "standards": "DIN EN 12697-22"
+      },
+      {
+        "term": "Tübbing",
+        "category": "Verkehrswegebau & Infrastruktur",
+        "definition": "Hochpräzises, bogenförmiges Stahlbetonfertigteil zum ringförmigen Ausbau von Tunnelröhren im maschinellen Schildvortrieb (TBM).",
+        "standards": "ZTV-ING Teil 5"
+      }
+    ],
+    "Glossar.literatur": [
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024",
+      "Deutscher Ausschuss für Stahlbeton (DAfStb): Begriffe im Beton- und Stahlbetonbau (Beuth / DIN Media)",
+      "Scholz, W.; Hiese, W.: Baustoffkenntnis (19. Auflage, Werner Verlag / Wolters Kluwer)"
+    ],
+    "Glossar.regelwerke": [
+      {
+        "title": "DIN EN ISO 80000-1 (Größen und Einheiten - Teil 1: Allgemeines)"
+      },
+      {
+        "title": "DIN EN 206 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)"
+      },
+      {
+        "title": "DIN EN 1990 (Eurocode 0: Grundlagen der Tragwerksplanung)"
+      },
+      {
+        "title": "DIN EN 1992-1-1 (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken)"
+      },
+      {
+        "title": "DIN 4108-3 (Wärmeschutz und Energie-Einsparung in Gebäuden - Klimabedingter Feuchteschutz)"
+      }
+    ],
+    "Glossar.weblinks": [
+      {
+        "title": "InformationsZentrum Beton – Betontechnologische Fachbegriffe & Merkblätter",
+        "url": "https://www.beton.org/"
+      },
+      {
+        "title": "Informationsdienst Holz – Holzbaufachbegriffe & Bauteilkatalog",
+        "url": "https://informationsdienst-holz.de/"
+      },
+      {
+        "title": "ift Rosenheim – Fachbegriffe & Prüfungen für Fenster, Türen & Fassaden",
+        "url": "https://www.ift-rosenheim.de/"
+      },
+      {
+        "title": "Bundesverband Flachglas (BF) – Technische Richtlinien & Glaslexikon",
+        "url": "https://www.bundesverband-flachglas.de/"
+      },
+      {
+        "title": "DAV / FGSV – Deutsches Asphaltinstitut & Straßenbau-Regelwerke",
+        "url": "https://www.asphalt.de/"
+      }
+    ],
+    "Glossar.formeln": [
+      {
+        "formel": "\\sigma = E \\cdot \\varepsilon \\quad \\iff \\quad \\varepsilon = \\frac{\\sigma}{E}",
+        "erklaerung": "Lineares Elastizitätsgesetz (Hookesches Gesetz): Zusammenhang zwischen Normalspannung σ [N/mm²], Dehnung ε [-] und Elastizitätsmodul E [N/mm²] im elastischen Verformungsbereich.",
+        "quelle": "DIN EN 1992-1-1"
+      },
+      {
+        "formel": "G = \\frac{E}{2 \\cdot (1 + \\nu)}",
+        "erklaerung": "Zusammenhang zwischen Elastizitätsmodul E, Schubmodul G und Querdehnungszahl (Poissonzahl) ν für isotrope lineare Werkstoffe.",
+        "quelle": "Elastizitätstheorie"
+      },
+      {
+        "formel": "\\rho_{\\text{rein}} = \\frac{m}{V_{\\text{fest}}} > \\rho_{\\text{roh}} = \\frac{m}{V_{\\text{geom}}} > \\rho_{\\text{schütt}} = \\frac{m}{V_{\\text{schütt}}}",
+        "erklaerung": "Hierarchie der baustofflichen Dichtedefinitionen: Reindichte (Ausschluss aller Poren) > Rohdichte (einschließlich Porenraum) > Schüttdichte (einschließlich Haufwerkshohlräumen).",
+        "quelle": "DIN EN 1097"
+      },
+      {
+        "formel": "s_d = \\mu \\cdot d \\quad [\\text{m}]",
+        "erklaerung": "Wasserdampfdiffusionsäquivalente Luftschichtdicke sd: Produkt aus dimensionsloser Wasserdampfdiffusionswiderstandszahl µ und Schichtdicke d in Metern.",
+        "quelle": "DIN 4108-3"
+      },
+      {
+        "formel": "(w/z)_{\\text{eq}} = \\frac{w}{z + k \\cdot a}",
+        "erklaerung": "Äquivalenter Wasserzementwert bei Anrechnung von Betonzusatzstoffen Typ II (Flugasche a mit Anrechnungsfaktor k = 0,4; Silikastaub mit k = 1,0).",
+        "quelle": "DIN EN 206 / DIN 1045-2"
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "werte": {
+    "baustahlS235jr": "Baustahl S235JR",
+    "duktilerStandardBaustahlMit": "Duktiler Standard-Baustahl mit ausgeprägter Fließgrenze, konstanter Dehnsteifigkeit und hoher Verformungsreserve.",
+    "baustahlS355j2": "Baustahl S355J2",
+    "höherfesterKonstruktionsbaustahlFürSchla": "Höherfester Konstruktionsbaustahl für schlanke Tragwerke im Hoch- und Brückenbau mit identischem E-Modul wie S235.",
+    "normalbetonC3037": "Normalbeton C30/37",
+    "sprödesHeterogenesMehrphasenmaterialZeig": "Sprödes, heterogenes Mehrphasenmaterial. Zeigt ausgeprägtes Kriechen und Schwinden über Monate bis Jahre.",
+    "nadelholzC24Parallel": "Nadelholz C24 (parallel)",
+    "anisotroperNaturbaustoffMitHoher": "Anisotroper Naturbaustoff mit hoher spezifischer Steifigkeit längs zur Faser und Feuchtekriechen (k_def).",
+    "aluminiumEnAw6060": "Aluminium EN AW-6060 T6",
+    "leichtmetallMitGeringemE": "Leichtmetall mit geringem E-Modul (1/3 des Stahls), aber hervorragender Korrosionsbeständigkeit.",
+    "bauglasKalkNatronFloatglas": "Bauglas (Kalk-Natron-Floatglas)",
+    "vollkommenLinearElastischesIdeal": "Vollkommen linear-elastisches, ideal sprödes Material ohne plastische Fließzone und ohne Kriechverformung.",
+    "cfkLamelleCarbonfaserverstärkt": "CFK-Lamelle (Carbonfaserverstärkt)",
+    "hochleistungsVerbundwerkstoffFürDie": "Hochleistungs-Verbundwerkstoff für die nachträgliche Bauwerksverstärkung im Bestand mit extrem geringer Relaxation."
+  }
+}

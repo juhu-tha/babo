@@ -1,0 +1,115 @@
+{
+  "texte": {
+    "betonHydratation": " Beton (Hydratation)",
+    "eigenspannungenBeton": " Eigenspannungen (Beton)",
+    "beiMassigenBetonbauteilenEntsteht": "Bei massigen Betonbauteilen entsteht durch die Hydratation des Zements Wärme. Der Kern dehnt sich aus, während die Ränder kühler bleiben. In der **Aufheizphase** entstehen dadurch **Zugeigenspannungen an den Rändern** (Gefahr von Oberflächenrissen) und Druckspannungen im Kern. In der Abkühlphase kehrt sich das Bild um; bei äußerer Behinderung drohen dann Trennrisse (siehe Reiter „Zwang & Risse“).",
+    "betonparameterAufheizphase": "Betonparameter (Aufheizphase)",
+    "imFrühenAlterAufheizphase": "Im frühen Alter (Aufheizphase) ist der E-Modul noch gering und wird durch Relaxation weiter abgemindert. Annahme: ",
+    "zusätzlicheEigenspannungenDurchUngleichm": "Zusätzliche Eigenspannungen durch ungleichmäßiges Austrocknen (außen trockener als innen).",
+    "dieTemperaturverteilungWirdIn": "Die Temperaturverteilung wird in einen konstanten Anteil (N), einen linearen Anteil (M) und einen nichtlinearen Anteil (V = Eigenspannungen) zerlegt.",
+    "maxZugeigenspannungRand": "Max. Zugeigenspannung (Rand)",
+    "gefahrVonOberflächenrissenF": "Gefahr von Oberflächenrissen! (σ > f_ctm)",
+    "keineOberflächenrisseFCtm": "Keine Oberflächenrisse (σ < f_ctm)",
+    "maxDruckeigenspannungKern": "Max. Druckeigenspannung (Kern)",
+    "ausgleichsspannungImQuerschnitt": "Ausgleichsspannung im Querschnitt",
+    "eigenspannungsverteilungÜberDieBauteildi": "Eigenspannungsverteilung über die Bauteildicke",
+    "gleichgewichtDerEigenspannungenN": " Gleichgewicht der Eigenspannungen (N = 0, M = 0)",
+    "eigenspannungenSindInnereSpannungen": "Eigenspannungen sind innere Spannungen, die **ohne das Einwirken äußerer Kräfte** im Bauteil bestehen. Daher müssen sie sich selbst im Gleichgewicht befinden. Das bedeutet für die resultierenden Schnittgrößen:",
+    "normalkraftN0": "Normalkraft (N) = 0",
+    "zugUndDruckspannungenHeben": "Zug- und Druckspannungen heben sich über den Querschnitt exakt auf.",
+    "biegemomentM0": "Biegemoment (M) = 0",
+    "dieSpannungenErzeugenKein": "Die Spannungen erzeugen kein resultierendes Moment um die Schwerachse.",
+    "bezeichnungV": "Bezeichnung „V“",
+    "vStehtHierFür": "„V“ steht hier für den verbleibenden, nichtlinearen Temperaturanteil – nicht für die Querkraft. Er erzeugt die Eigenspannungen.",
+    "zerlegungDerTemperaturZwang": "Zerlegung der Temperatur (Zwang vs. Eigenspannung)",
+    "inDerMassivbauPraxis": "In der Massivbau-Praxis wird eine beliebige (z.B. parabolische) Temperaturverteilung ",
+    "inDreiAnteileZerlegt": " in drei Anteile zerlegt:",
+    "konstanterAnteil": "Konstanter Anteil (",
+    "führtZuLängsdehnungIst": " Führt zu Längsdehnung. Ist das Bauteil an den Enden eingespannt, entsteht hieraus die **Zwangsnormalkraft N**.",
+    "linearerAnteil": "Linearer Anteil (",
+    "führtZuKrümmungIst": " Führt zu Krümmung. Ist das Bauteil an den Enden eingespannt, entsteht hieraus das **Zwangsbiegemoment M**.",
+    "nichtLinearerAnteil": "Nicht-linearer Anteil (",
+    "derVerbleibendeRestFührt": " Der verbleibende Rest führt **immer** zu den hier gezeigten Eigenspannungen (V), selbst wenn das Bauteil völlig frei beweglich ist!"
+  },
+  "werte": {
+    "eigenspannungVMpa": "Eigenspannung σ_V (MPa)",
+    "zwangsnormalkraftNMpa": "Zwangsnormalkraft σ_N (MPa)",
+    "zwangsbiegemomentMMpa": "Zwangsbiegemoment σ_M (MPa)",
+    "zugfestigkeitFCtmT": "Zugfestigkeit f_ctm(t)",
+    "temperaturAnDerInnenseite": "Temperatur an der Innenseite.",
+    "temperaturInnenTInnen": "Temperatur Innen T_{innen}",
+    "temperaturMitteTMitte": "Temperatur Mitte T_{mitte}",
+    "temperaturAnDerAußenseite": "Temperatur an der Außenseite.",
+    "temperaturAußenTAussen": "Temperatur Außen T_{aussen}",
+    "effektiverEModulE": "Effektiver E-Modul E_{c,eff}(t)",
+    "mittlereZugfestigkeitZumZeitpunkt": "Mittlere Zugfestigkeit zum Zeitpunkt t.",
+    "zugfestigkeitFCtmT2": "Zugfestigkeit f_{ctm}(t)",
+    "bauteildickeD": "Bauteildicke d",
+    "dickeDesBauteils": "Dicke des Bauteils.",
+    "positionImQuerschnitt": "Position im Querschnitt",
+    "eigenspannungMpa": "Eigenspannung (MPa)",
+    "tVTT": "T_V = T - T_N - T_M",
+    "anwendungsbeispielRandzugspannungInDer": "Anwendungsbeispiel: Randzugspannung in der Aufheizphase einer 1 m dicken Wand",
+    "lehrmodellParabolischeTemperaturverteilu": "Lehrmodell: parabolische Temperaturverteilung, Zerlegung in T_N, T_M, T_V",
+    "abhilfeTemperaturdifferenzZwischenKern": "Abhilfe: Temperaturdifferenz zwischen Kern und Rand begrenzen (wärmedämmende Schalung, späteres Ausschalen, wärmearme Rezeptur); Faustwert ΔT ≤ 20 K (Lehrannahme).",
+    "betonWikiEigenspannungen": "Beton.wiki: Eigenspannungen",
+    "zementMerkblätterÜbersicht": "Zement-Merkblätter Übersicht"
+  },
+  "daten": {
+    "Eigenspannungen.schritte": [
+      {
+        "titel": "1. Gegeben",
+        "formel": "T_{innen} = 20,\\; T_{mitte} = 45,\\; T_{aussen} = 15\\,^\\circ\\text{C};\\; E_{c,eff} = 15\\,000\\,\\text{N/mm}^2,\\; \\alpha_T = 10^{-5}\\,\\text{K}^{-1}",
+        "erklaerung": "Werte der Voreinstellung des Rechners."
+      },
+      {
+        "titel": "2. Parabelanteil",
+        "formel": "\\Delta T_{par} = 45 - \\frac{20 + 15}{2} = 27{,}5\\,\\text{K}",
+        "erklaerung": "Nur die Krümmung der Temperaturkurve erzeugt Eigenspannungen."
+      },
+      {
+        "titel": "3. Nichtlinearer Anteil",
+        "formel": "T_{V,Rand} = -\\tfrac{2}{3} \\cdot 27{,}5 = -18{,}3\\,\\text{K};\\; T_{V,Kern} = +\\tfrac{1}{3} \\cdot 27{,}5 = +9{,}2\\,\\text{K}",
+        "erklaerung": "Mittelwert und linearer Anteil sind abgezogen."
+      },
+      {
+        "titel": "4. Spannungen",
+        "formel": "\\sigma_{V,Rand} = 15\\,000 \\cdot 10^{-5} \\cdot 18{,}3 = +2{,}75\\,\\text{N/mm}^2;\\; \\sigma_{V,Kern} = -1{,}38\\,\\text{N/mm}^2",
+        "erklaerung": "Zug am Rand, Druck im Kern; N = 0 und M = 0 sind erfüllt."
+      },
+      {
+        "titel": "5. Vergleich mit der Zugfestigkeit",
+        "formel": "2{,}75 > f_{ctm}(t) = 1{,}5\\,\\text{N/mm}^2",
+        "erklaerung": "Oberflächenrisse wahrscheinlich."
+      }
+    ],
+    "Eigenspannungen.literatur": [
+      "Rostásy, F. S.; Krauß, M.: Frühe Risse in massigen Betonbauteilen – Ingenieurmodelle für die Planung von Gegenmaßnahmen. Deutscher Ausschuss für Stahlbeton, Heft 520. Berlin: Beuth 2001",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Breitenbücher, R.: Zwangsspannungen und Rißbildung infolge Hydratationswärme. Dissertation, TU München 1989"
+    ],
+    "Eigenspannungen.regelwerke": [
+      {
+        "title": "DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04 (Eurocode 2), Abschn. 7.3 Rissbreitenbegrenzung"
+      },
+      {
+        "title": "DAfStb-Richtlinie Massige Bauteile aus Beton (2010-04)"
+      },
+      {
+        "title": "DAfStb-Richtlinie Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie), 2017-12"
+      }
+    ],
+    "Eigenspannungen.formeln": [
+      {
+        "formel": "\\sigma_{\\text{res,cs}}(x) = E_{c,\\text{eff}} \\cdot \\varepsilon_{cs} \\cdot \\left(\\left(\\frac{2x}{d}\\right)^2 - \\frac{1}{3}\\right)",
+        "erklaerung": "Eigenspannungsverteilung infolge ungleichmäßigen Schwindens (Bauteilränder trocknen schneller aus als der feuchte Kern): Randbereiche stehen unter Zugspannung, der Kern unter Druckspannung.",
+        "quelle": "Lehrmodell (Zerlegung T_N, T_M, T_V)"
+      },
+      {
+        "formel": "\\sigma_t(t) = R_{\\text{ax}} \\cdot E_{c,\\text{eff}}(t) \\cdot \\alpha_T \\cdot \\Delta T(t) \\le f_{\\text{ct,eff}}(t)",
+        "erklaerung": "Thermisch induzierte Zwangsspannung bei Abkühlung massiger Betonbauteile mit Festhaltungsgrad R_ax (Restraint). Übersteigt sigma_t die wirksame Betonzugfestigkeit f_ct,eff, entstehen Trennrisse.",
+        "quelle": "Lehrmodell (Zerlegung T_N, T_M, T_V)"
+      }
+    ]
+  }
+}

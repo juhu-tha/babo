@@ -1,0 +1,231 @@
+{
+  "texte": {
+    "haltbarkeitsAlterungsSimulatorFür": "Haltbarkeits- & Alterungs-Simulator für Organik",
+    "simulierenSieDenEinfluss": "Simulieren Sie den Einfluss von Außenklima, UV-Belastung und Materialqualität auf die chemisch-biologische Zersetzungsrate organischer Bausubstanzen.",
+    "organischenBaustoffWählen": "Organischen Baustoff wählen:",
+    "bitumenbahnDach": "🛢️ Bitumenbahn (Dach)",
+    "kunststoffPvcFolie": "🧪 Kunststoff (PVC-Folie)",
+    "hanffaserdämmung": "🌱 Hanffaserdämmung",
+    "naturkorkplatte": "🪵 Naturkorkplatte",
+    "klimaUmweltbelastung": "Klima- & Umweltbelastung:",
+    "uvStrahlungsintensitätFotoAktivität": " UV-Strahlungsintensität (Foto-Aktivität)",
+    "dauernässeFeuchteklasseHydrolyserisiko": " Dauernässe / Feuchteklasse (Hydrolyserisiko)",
+    "thermischeZyklenTWechsel": " Thermische Zyklen (T-Wechsel extreme)",
+    "chemischeBeanspruchungSäurenSalze": " Chemische Beanspruchung (Säuren/Salze/Ozon)",
+    "rezepturModifikationSchutzmaßnahmen": "Rezeptur-Modifikation & Schutzmaßnahmen:",
+    "copolymerUvSchutz": "Copolymer / UV-Schutz",
+    "rußBesendungOderHals": "Ruß, Besendung oder HALS",
+    "hydrophobicImprägn": "Hydrophobic / Imprägn.",
+    "borsalzSodaOdElastomer": "Borsalz, Soda od. Elastomer-Film",
+    "lebensdauerPrognoseSchadensfortschritt": "Lebensdauer-Prognose & Schadensfortschritt",
+    "prognostizierteStandzeit": "Prognostizierte Standzeit",
+    "erwarteterFunktionserhalt": "Erwarteter Funktionserhalt",
+    "qualitätsabbruchIn10J": "Qualitätsabbruch in 10 J.",
+    "ebenenAbbauVerschleiß": "Ebenen-Abbau (Verschleiß)",
+    "zersetzungsgeschwindigkeitDegradationsra": "Zersetzungsgeschwindigkeit / Degradationsrate:",
+    "t0StabilInert": "0% (Stabil / inert)",
+    "zersetzungNachCa5": "Zersetzung nach ca. 5 Jahren",
+    "schadensmerkmaleDesWerkstoffs": "Schadensmerkmale des Werkstoffs:",
+    "optischeWarnsignale": "Optische Warnsignale:",
+    "mathematischePhysikalischChemischeAlteru": "🔬 Mathematische & Physikalisch-Chemische Alterungsmodelle & Normative Grundlagen anzeigen",
+    "wissenschaftlicheHerleitungZersetzungski": "Wissenschaftliche Herleitung & Zersetzungskinetik",
+    "t1ThermischPhysikalischeAlterung": "1. Thermisch-Physikalische Alterung (Arrhenius-Gleichung)",
+    "kTAE": "k(T) = A · e<sup>− E<sub>A</sub> / (R · T)</sup>",
+    "tInKelvin": "T (in Kelvin)",
+    "regeltDieGeschwindigkeit": "Regelt die Geschwindigkeit ",
+    "chemischerAlterungsreaktionenZB": " chemischer Alterungsreaktionen (z. B. Oxidationsvorgänge) als Funktion der absoluten Temperatur ",
+    "istDieAktivierungsenergie": " ist die Aktivierungsenergie, ",
+    "dieAllgemeineGaskonstanteUnd": " die allgemeine Gaskonstante und ",
+    "derFrequenzfaktorEineTemperaturerhöhung": " der Frequenzfaktor. Eine Temperaturerhöhung um 10 °C verdoppelt bis verdreifacht die Reaktionsrate (RGT-Regel).",
+    "t2SolarePhotooxidationUv": "2. Solare Photooxidation & UV-Kettenabbruch (Stark-Einstein-Kinetik)",
+    "vSubPhotoSub": "v<sub>Photo</sub> = Φ · I<sub>0</sub> · (1 − e<sup>− ε · c · d</sup>)",
+    "copolymerModifierfaktorFSub": "Φ (Copolymer Modifierfaktor f<sub>UV</sub> = 0,40)",
+    "beschreibtDasAusmaßDes": "Beschreibt das Ausmaß des Kettenbruchs von Polymeren (z. B. PVC, Bitumen) durch solare Strahlung. Die Abbaugeschwindigkeit ",
+    "hängtVonDerQuantenausbeute": " hängt von der Quantenausbeute ",
+    "derSolarenAnfangsintensität": ", der solaren Anfangsintensität ",
+    "demExtinktionskoeffizienten": ", dem Extinktionskoeffizienten ",
+    "undDerSchichtdicke": " und der Schichtdicke ",
+    "abIntegrierteUvStabilisatoren": " ab. Integrierte UV-Stabilisatoren (z. B. HALS) fangen gebildete Radikale ab und senken die Quantenausbeute ",
+    "t3BiologischerAbbauVon": "3. Biologischer Abbau von NaWaRo (vereinfachter Lehransatz in Anlehnung an das Isoplethenmodell nach Sedlbauer 2001)",
+    "vSubBioSub": "v<sub>Bio</sub> = M<sub>crit</sub> · [φ<sub>Wood</sub> − φ<sub>crit</sub>(T)] · f<sub>pH</sub>",
+    "subWoodSub20": "φ<sub>Wood</sub> ≥ 20 % Holzfeuchte",
+    "subCritSubT": "φ<sub>crit</sub>(T) (LIM - Lowest Isopleth for Mold)",
+    "giltFürHanffasernUnd": "Gilt für Hanffasern und Stroh. Mikrobieller Pilzabbau setzt kritische Substratfeuchte ",
+    "vorausDieWachstumsgeschwindigkeitDes": " voraus. Die Wachstumsgeschwindigkeit des Myzels ",
+    "skaliertLinearMitDer": " skaliert linear mit der Überschreitung der kritischen, temperaturabhängigen Luftfeuchtegrenze ",
+    "undWirdDurchImprägnierungen": " und wird durch Imprägnierungen (Borsalze, Soda) modifiziert (",
+    "t4BitumenStrukturtransformationsKennzahl": "4. Bitumen-Strukturtransformations-Kennzahl (Gaestel-Index I<sub>C</sub>)",
+    "iSubCSub": "I<sub>C</sub> = (Asph + Ges) / (Aro + Harz)",
+    "inDerAsphaltchemieBewertet": "In der Asphaltchemie bewertet der Gaestel-Kolloidindex ",
+    "denAlterungszustandFrischBitumen": " den Alterungszustand. Frisch-Bitumen besitzt ein Sol-Kolloidstadium (niedriger Index, hohe Duktilität). Oxidation und UV-Bewitterung überführen Maltene in polare Asphaltene, wodurch sich der Gaestel-Index ",
+    "erhöhtBitumenWandeltSich": " erhöht. Bitumen wandelt sich in einen starren Gel-Zustand um (hoher Erweichungspunkt Ring und Kugel, stark herabgesetzter Nadelpenetrations-Kennwert).",
+    "materialLehrpfadOrganischeBaustoffe": "Material-Lehrpfad: Organische Baustoffe",
+    "verbindeDieTheorieDer": "Verbinde die Theorie der Kunststoff- und Bitumenkunde mit den Korrosionsmechanismen:",
+    "chemieDerKunststoffeMaterial": "Chemie der Kunststoffe (Material)",
+    "stufenpolymerePolymerisatSyntheseThermis": "Stufenpolymere, Polymerisat-Synthese, thermische Erweichungspunkte & Normklassen.",
+    "verwitterungAlterungDauerhaftigkeit": "Verwitterung & Alterung (Dauerhaftigkeit)",
+    "bitumenalterungWeichmachermigrationBioab": "Bitumenalterung, Weichmachermigration, Bioabbaubarkeit & Schadensphänomene.",
+    "korrosionVerwitterungOrganischerBaustoff": "Korrosion & Verwitterung organischer Baustoffe",
+    "grundgesetzeDerPhysikalischChemischen": "Grundgesetze der physikalisch-chemischen Alterung und Biokorrosion von Bitumen, Baupolymeren und Naturbaustoffen.",
+    "warumAltertOrganikAnders": "Warum altert Organik anders als Metalle oder Beton?",
+    "imGegensatzZurElektrochemischen": "Im Gegensatz zur **elektrochemischen Korrosion** von Metallen (Rosten durch Ionenwanderung in galvanischen Zellen) oder der **chemisch-mineralischen Auslaugung** von Beton (Säureangriff, Ettringittreiben), beruht der Verfall organischer Baustoffe vor allem auf **makromolekularer Depolymerisation**, solarer Photooxidation sowie enzymatischem Abbau durch Mikroorganismen.",
+    "kohlenstoffbasierteBaustoffeSindThermody": "Kohlenstoffbasierte Baustoffe sind thermodynamisch metastabil. Sie streben unter dem Einfluss von solarer kurzwelligem UV-Licht-Einstrahlung, Hitze und Sauerstoff einen energetisch günstigeren, kurzkettigeren Zustand an. Diese irreversible Eigenschaftsverschlechterung wird baupraktisch als **Alterung** oder **organische Materialkorrosion** bezeichnet.",
+    "solarChemischeKorrosion": "Solar-chemische Korrosion",
+    "uvEinstrahlungInitiiertRadikalreaktionen": "UV-Einstrahlung initiiert Radikalreaktionen. Die Hochenergie-Strahlung spaltet kovalente C-C- oder C-H-Bindungen. Das Material bleicht aus, bekommt Mikrorisse und kreidet ab.",
+    "thermischPhysikalischeBeanspruchung": "Thermisch-physikalische Beanspruchung",
+    "hoheTemperaturenBeschleunigenOxidationsr": "Hohe Temperaturen beschleunigen Oxidationsreaktionen nach der van-’t-Hoff-Regel (RGT-Regel). Tiefe Temperaturen führen bei viskoelastischem Bitumen und Elastomeren zum Erreichen des Glasübergangs (Versprödung).",
+    "biologischerAbbau": "Biologischer Abbau",
+    "nachwachsendeNaturfasernUndFüllstoffe": "Nachwachsende Naturfasern und Füllstoffe (Zellulose, Stärke) besitzen Nährwert für Bakterien, Pilze und Insekten. Bei relativer Luftfeuchtigkeit über 80% (oder u > 15%) droht enzymatisch katalysierte hydrolytische Zersetzung.",
+    "kolloidalerAufbauUndAlterung": "📂 Kolloidaler Aufbau und Alterung von Bitumen",
+    "bitumenIstEinKomplexes": "Bitumen ist ein komplexes, thermoplastisches Gemisch hochmolekularer Kohlenwasserstoffe. Physikalisch lässt sich Bitumen als faszinierendes kolloidales System (Sol-Gel) beschreiben:",
+    "asphalteneDispersePhaseHochkondensierte": "**Asphaltene (Disperse Phase):** Hochkondensierte, schwerlösliche Kohlenwasserstoff-Kerne. Sie bestimmen die Viskosität und Härte des Bitumens.",
+    "malteneKontinuierlichePhaseBestehend": "**Maltene (Kontinuierliche Phase):** Bestehend aus öligen Ölen (Saturates, Aromatics) und harzigen Harzen (Resins). Das Harz stabilisiert das elastische Dispersionsgleichgewicht.",
+    "derAlterungsprozessOxidatationsalterung": "Der Alterungsprozess (Oxidatationsalterung)",
+    "durchThermischeBeaufschlagungWährend": "Durch thermische Beaufschlagung während der Verarbeitung (Heißeinbau) und jahrzehntelange solare Bewitterung oxidieren die Maltene irreversibel. Die niedermolekularen Harze und Öle bilden Brücken und überführen sich sukzessive in polare, starre **Asphaltene**.",
+    "dieMakroskopischeFolgeDer": "Die makroskopische Folge der Bitumenalterung:",
+    "derWerkstoffVerliertSeine": "📍 Der Werkstoff verliert seine plastische Dehnfähigkeit (Duktilität).",
+    "erWirdUnelastischSpröde": "📍 Er wird unelastisch, spröde und neigt bereits bei winterlichen Frostzyklen zur Thermorissbildung.",
+    "imLaborSteigtDas": "📍 Im Labor steigt das Verhältnis von Asphaltenen zu Maltenen drastisch an; die Nadelpenetration sinkt stark ab.",
+    "laborwerteAlterungsreaktion": "Laborwerte & Alterungsreaktion",
+    "zurCharakterisierungDerBitumenalterung": "Zur Charakterisierung der Bitumenalterung dienen im Bauwesen standardisierte Prüfmethoden:",
+    "rtfotVerfahrenDinEn": "RTFOT-Verfahren (DIN EN 12607-1):",
+    "rollingThinFilmOven": "Rolling Thin Film Oven Test. Simuliert die thermo-oxidative Asphalt-Alterung während des instabilen Asphalt-Heiß-Mischvorgangs.",
+    "pavAlterungDinEn": "PAV-Alterung (DIN EN 14769):",
+    "pressureAgingVesselSimuliert": "Pressure Aging Vessel. Simuliert die subsequente, 10- bis 15-jährige Feld-Alterung unter hohem Sauerstoffdruck (2,1 MPa) bei 100°C.",
+    "rheologischeKennzahlVerschiebung": "Rheologische Kennzahl-Verschiebung:",
+    "frischbitumenKlasse5070": "Frischbitumen (Klasse 50/70)",
+    "epRuk4654": "EP RuK: 46 - 54 °C",
+    "gealtertesBitumenNachPav": "Gealtertes Bitumen (nach PAV)",
+    "epRuk68C": "EP RuK > 68 °C (Hart & Spröde!)",
+    "plastikKorrosionUvInduzierte": "Plastik-Korrosion: UV-induzierte Zersetzung & Photooxydation",
+    "moderneThermoplasteWiePolyvinylchlorid": "Moderne Thermoplaste wie Polyvinylchlorid (PVC), Polyethylen (PE) und Polypropylen (PP) sowie elastomere Abdichtungsfolien (EPDM) bestehen aus Kohlenstoffketten. Ein fallgünstiger Strahl solarer UV-Strahlung (vor allem hochenergetische UV-B Strahlung mit einer Wellenlänge von 290–320 nm) reicht energetisch aus, um kovalente Verknüpfungen abzuspalten.",
+    "dieseKettenbrücheSetzenAutokatalytische": "Diese Kettenbrüche setzen autokatalytische Oxidationsreaktionen in Gang (**Autoxidation**). Das Ergebnis: Die Kettenlänge schrumpft, Moleküle vernetzen sich regellos quer, und die makroskopischen Dehnungs- und Festigkeitsreserven kollabieren.",
+    "weichmacherAuswanderungMigration": "Weichmacher-Auswanderung (Migration)",
+    "pvcIstVonNatur": "PVC ist von Natur aus spröd-hart. Biegsame Baufolien (z.B. Dachbeläge) enthalten Weichmacher (Phthalate wie DINP/DIDP), die nicht chemisch gebunden, sondern nur physikalisch in den Polymerketten eingelagert sind.",
+    "migrationVerflüchtigungPlastikversprödun": "Migration => Verflüchtigung => Plastikversprödung => Mikrorissbildung",
+    "kreidungAbkreiden": "Kreidung / Abkreiden",
+    "beiDerSolarkorrosionZersetzen": "Bei der Solarkorrosion zersetzen sich organische Polymer-Matrixanteile an der Außenfläche zuerst. Freigelegte mineralische Füllstoffe (z. B. Titandioxid, Kreide) bilden einen lose wischbaren, pulvrigen Schleier auf der Oberfläche.",
+    "fotoKettenbruchZersetzungBindemittel": "Foto-Kettenbruch => Zersetzung Bindemittel => Mineral-Auskreidung",
+    "biologischeKorrosionVonNaturbaustoffen": "🌱 Biologische Korrosion von Naturbaustoffen",
+    "nachwachsendeRohstoffeNawaroWie": "Nachwachsende Rohstoffe (NaWaRo) wie **Hanffasern, Stroh, Schilf, Zelluloseeinblasdämmung und Naturkork** werden im Sinne des nachhaltigen Bauens immer wichtiger. Doch im Gegensatz zu mineralischen Dämmstoffen (Mineralwolle, Blähton) sind diese organischen, zellulosebasierten Fasern biological abbaubar und dienen Schädlingen als Nährboden.",
+    "dieDreiMikrobiellenFeinde": "Die drei mikrobiellen Feinde dämmtechnischer Organik:",
+    "t1Schimmelpilze": "1. Schimmelpilze",
+    "zersetzenHolzOderFaserkörper": "Zersetzen Holz oder Faserkörper mechanospezifisch meist nicht primär, verfärben aber Oberflächen und schädigen die Raumluft (Mykotoxine/Sporen) massiv ab u > 15-18% Holz/Faserfeuchte.",
+    "t2Moderfäule": "2. Moderfäule",
+    "wirdDurchAscomycetenIm": "Wird durch Ascomyceten im direkten Erdkontakt (Dauernässe) hervorgerufen. Sie dringen in sekundäre Zellwände ein und erweichen Faserbündel vollständig hydroenzymatisch.",
+    "t3Trockenfäule": "3. Trockenfäule",
+    "erregerWieDerBraunk": "Erreger wie der Braunk things (Kellerschwamm) bauen Zellulose unter Freisetzung von Säuren ab - es verbleibt der typische würfelartige Bruch („Staubende Zerstörung“).",
+    "derChemischeHolzUnd": "*„Der chemische Holz- und Faserschutz (Biozide, Fungizide) kann konstruktive Planungsfehler nie langfristig korrigieren. Nur der konsequente, bauliche Feuchteschutz (Hinterlüftung, Trockenhalten, Verhinderung stehender Nässe) schützt Naturbaustoffe dauerhaft vor biologischer Korrosion.“*",
+    "zentralerLeitsatzDerÖkologischen": "**Zentraler Leitsatz der Ökologischen Bauchemie:**",
+    "brandschutzVsBioschutz": "Brandschutz vs. Bioschutz",
+    "mineralisierungImprägnierung": "Mineralisierung & Imprägnierung",
+    "umHanfwollmattenOderEinblaszellulose": "Um Hanfwollmatten oder Einblaszellulose feuer- und verrottungsresistent zu machen, müssen sie industriell modifiziert werden (sogenannte **Mineralisierung**):",
+    "zellulosefasernWerdenMitBorsalzen": "Zellulosefasern werden mit Borsalzen umgeben. Wirkt fungizid, insektizid und brandhemmend. Steht jedoch aus humantoxikologischen Gründen in der Diskussion.",
+    "sodaAmmoniumsalze": "Soda & Ammoniumsalze",
+    "ökologischeAlternativeErhöhtDen": "Ökologische Alternative. Erhöht den pH-Wert der organischen Struktur weit in den alkalischen Bereich. Pilze und Enzyme sterben ab."
+  },
+  "werte": {
+    "schliessen": "SCHLIESSEN ▲",
+    "übersicht": "📊 Übersicht",
+    "bitumenAsphalte": "🛢️ Bitumen & Asphalte",
+    "polymereKunststoffe": "🧪 Polymere & Kunststoffe",
+    "nawaroNaturfasern": "🌱 NaWaRo & Naturfasern",
+    "beispiel1BeschleunigungDer": "Beispiel 1: Beschleunigung der thermischen Alterung einer Dachbahn (Arrhenius)",
+    "dasBestätigtDieRgt": "Das bestätigt die RGT-Regel (Faktor 2 bis 3 je 10 K). Dunkle, unbekieste Dachbahnen erreichen im Sommer über 70 °C – helle Oberflächen, Bekiesung oder Begrünung verlängern die Nutzungsdauer deutlich.",
+    "arrhenius1889Iso15686": "Arrhenius (1889); ISO 15686-2 (beschleunigte Prüfung)",
+    "beispiel2FaktorenmethodeFür": "Beispiel 2: Faktorenmethode für die Nutzungsdauer einer Kunststoff-Dichtungsbahn",
+    "dieFaktorenABis": "Die Faktoren A bis G stehen für Material-, Planungs-, Ausführungs-, Innen- und Außenumgebungs-, Nutzungs- und Instandhaltungsqualität. Die Werte sind projektspezifisch und begründet festzulegen.",
+    "iso156861Faktorenmethode": "ISO 15686-1 (Faktorenmethode)",
+    "oktober2026Ap10": "Oktober 2026 (AP 10 Dauerhaftigkeit: Alterungskinetik, Faktorenmethode und Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "organischeChemie": "Organische Chemie"
+  },
+  "daten": {
+    "DynamicInteractiveDegradationCalculator.materialDetails": {
+      "bitumen": {
+        "title": "Bitumen & Bitumenbahnen",
+        "agingMechanism": "Oxidation (Verlust geschmeidiger Maltene, Akkumulation spröder Asphaltene), thermische Rissbildung.",
+        "warningSign": "Haarrisse, Blasenbildung, Elastizitätsverlust (Versprödung am Winter-Biegepunkt).",
+        "remedy": "Kiesabdeckung (Sonnenschutz), Schieferungsbesendung, Elastomer-Modifizierung (SBS/APP)."
+      },
+      "pvc": {
+        "title": "Kunststoffe / PVC & Polyolefine",
+        "agingMechanism": "Weichmacher-Migration (Verflüchtigung), UV-Kettenbruch (Photooxidation), Chlorabspaltung.",
+        "warningSign": "Gelbverfärbung, Abkreiden, Versprödung der Außenseite, Festigkeitsverlust.",
+        "remedy": "Soot (carbon black) Additive, UV-Stabilisatoren (HALS Co-Polymere), phtalatfreie Trägerpolymere."
+      },
+      "hemp": {
+        "title": "NaWaRo / Hanf- & Strohdämmstoffe",
+        "agingMechanism": "Biologischer Pilzabbau (Zellulose-Zersetzung bei u > 15%), Kapillarfäule, Schimmelbildung.",
+        "warningSign": "Dunkelbraune Zersetzungsflecken, modriger Geruch, Bausch-Volumenkollaps, Feuchtenester.",
+        "remedy": "Konstruktive Entwässerung (Hinterlüftung), Soda- oder Ammoniumsalz-Imprägnierung (Borratsalze)."
+      },
+      "cork": {
+        "title": "Naturkorkplatten (Naturmaterial)",
+        "agingMechanism": "Frost-Sprengung bei stehender Nässe, chemisch-hydrolytischer Suberin-Abbau bei Dauernässe.",
+        "warningSign": "Bröseln der Ecken, Schimmelpilz-Rasenbelag, Formänderung (Wölbung).",
+        "remedy": "Diffusionsoffene Einbaudetails, diffusionsoffener Sorptionsschutz, bituminöse Bindung."
+      }
+    },
+    "WeitereOrganik.schritte": [
+      {
+        "titel": "Eingangswerte",
+        "erklaerung": "Aktivierungsenergie der Oxidation E_A = 80 kJ/mol (Lehrwert), Temperaturerhöhung der Bahnoberfläche von 20 °C auf 30 °C:",
+        "formel": "T_1 = 293{,}15\\,\\text{K}, \\quad T_2 = 303{,}15\\,\\text{K}"
+      },
+      {
+        "titel": "Exponent",
+        "erklaerung": "Mit R = 8,314 J/(mol·K):",
+        "formel": "\\frac{80\\,000}{8{,}314}\\left(\\frac{1}{293{,}15} - \\frac{1}{303{,}15}\\right) = 1{,}083"
+      },
+      {
+        "titel": "Faktor",
+        "erklaerung": "Die Reaktionsgeschwindigkeit steigt um:",
+        "formel": "e^{1{,}083} = 2{,}95"
+      }
+    ],
+    "WeitereOrganik.schritte_2": [
+      {
+        "titel": "Referenznutzungsdauer",
+        "erklaerung": "Herstellerangabe unter Referenzbedingungen:",
+        "formel": "RSL = 25\\,\\text{a}"
+      },
+      {
+        "titel": "Faktoren",
+        "erklaerung": "Außenklima mit hoher UV-Belastung (E = 0,8), sorgfältige Ausführung mit Schutzlage (C = 1,2), übrige Faktoren 1,0:",
+        "formel": "\\prod = 1{,}0^5 \\cdot 0{,}8 \\cdot 1{,}2 = 0{,}96"
+      },
+      {
+        "titel": "Geschätzte Nutzungsdauer",
+        "erklaerung": "Einsetzen:",
+        "formel": "ESL = 25 \\cdot 0{,}96 = 24\\,\\text{a}"
+      }
+    ],
+    "WeitereOrganik.regelwerke": [
+      {
+        "title": "DIN EN ISO 12944 (Korrosionsschutz durch Beschichtungssysteme)"
+      },
+      {
+        "title": "DIN 68800-1 bis -4 (Holzschutz; Teil 1:2019-06, Teil 2:2022-02)"
+      },
+      {
+        "title": "DIN 18531-1 bis -5 (Abdichtung von Dächern sowie von Balkonen, Loggien und Laubengängen; Teil 1:2025-08)"
+      }
+    ],
+    "WeitereOrganik.literatur": [
+      "Schunck, E.; Oster, H. J.; Barthel, R.; Kießl, K.: Dach Atlas – Geneigte Dächer. München: Edition Detail (aktuelle Auflage)",
+      "Sedlbauer, K.: Vorhersage von Schimmelpilzbildung auf und in Bauteilen. Dissertation, Universität Stuttgart 2001"
+    ],
+    "WeitereOrganik.formeln": [
+      {
+        "formel": "k = A \\cdot \\exp\\left(-\\frac{E_a}{R \\cdot T}\\right)",
+        "erklaerung": "Arrhenius-Gleichung zur Modellierung der temperaturabhängigen Alterungs- und Depolymerisationskinetik organischer Bindemittel und Kunststoffe.",
+        "quelle": "Reaktionskinetik / Bauchemie"
+      },
+      {
+        "formel": "t_{\\text{Life}} = t_0 \\cdot \\prod f_i \\quad [\\text{Jahre}]",
+        "erklaerung": "Prognostizierte Nutzungsdauer organischer Werkstoffe unter Berücksichtigung von Reduktionsfaktoren für UV-Strahlung, Feuchte, Temperaturzyklen und Additive.",
+        "quelle": "ISO 15686-1 (Faktorenmethode)"
+      }
+    ]
+  }
+}

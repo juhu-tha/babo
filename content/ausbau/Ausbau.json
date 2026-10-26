@@ -1,0 +1,143 @@
+{
+  "texte": {
+    "estricheBöden": " Estriche & Böden",
+    "keramikFliesen": " Keramik & Fliesen",
+    "derTrockenbauUmfasstRaumbegrenzende": "Der Trockenbau umfasst raumbegrenzende, aber meist nicht tragende Bauteile, die in trockener Bauweise montiert werden. Er zeichnet sich durch schnelle Montage, geringes Gewicht und Flexibilität aus.",
+    "gipskartonplattenGkb": "Gipskartonplatten (GKB)",
+    "bestehenAusEinemGipskern": "Bestehen aus einem Gipskern, der beidseitig mit Kartonagen ummantelt ist. Der Karton übernimmt die Zugkräfte, der Gips die Druckkräfte.",
+    "standardGkbFürNormale": "**Standard (GKB):** Für normale Innenräume.",
+    "imprägniertGkbiFürFeuchträume": "**Imprägniert (GKBI):** Für Feuchträume (grüner Karton).",
+    "feuerschutzGkfMitGlasfasern": "**Feuerschutz (GKF):** Mit Glasfasern armierter Kern für besseren Brandschutz.",
+    "bestehenAusEinemGemisch": "Bestehen aus einem Gemisch aus Gips und Zellulosefasern (Altpapier). Sie benötigen keine Kartonummantelung.",
+    "höhereMechanischeFestigkeitAls": "Höhere mechanische Festigkeit als Gipskarton.",
+    "bessererSchallschutzDurchHöhere": "Besserer Schallschutz durch höhere Rohdichte.",
+    "wenigerFeuchteempfindlichAlsGkb": "Weniger feuchteempfindlich als GKB; als nichtbrennbare Platte (A2) erhältlich.",
+    "estricheBöden2": "Estriche & Böden",
+    "estricheDienenAlsUntergrund": "Estriche dienen als Untergrund für Fußbodenbeläge, zur Lastverteilung, zur Aufnahme einer Fußbodenheizung oder zum Erreichen einer vorgegebenen Höhenlage.",
+    "zementestrichCt": "Zementestrich (CT)",
+    "derAmHäufigstenVerwendete": "Der am häufigsten verwendete Estrich. Besteht aus Zement, Gesteinskörnung und Wasser.",
+    "unempfindlichGegenFeuchtigkeitAuch": "Unempfindlich gegen Feuchtigkeit (auch für außen geeignet).",
+    "hoheFestigkeit": "Hohe Festigkeit.",
+    "neigtZumSchwindenFugen": "Neigt zum Schwinden (Fugen erforderlich).",
+    "langeTrocknungszeitBelegreife": "Lange Trocknungszeit (Belegreife).",
+    "calciumsulfatestrichCa": "Calciumsulfatestrich (CA)",
+    "bindemittelIstCalciumsulfatAnhydrit": "Bindemittel ist Calciumsulfat (Anhydrit oder α-Halbhydrat). Wird oft als Fließestrich (CAF) eingebracht.",
+    "sehrSchwindarmGroßeFugenlose": "Sehr schwindarm (große fugenlose Flächen möglich).",
+    "umschließtHeizrohreAlsFließestrich": "Umschließt Heizrohre als Fließestrich hohlraumfrei – gut geeignet für Fußbodenheizungen.",
+    "empfindlichGegenFeuchtigkeitNicht": "**Empfindlich gegen Feuchtigkeit** (nicht für Nassräume).",
+    "parkettLaminat": "Parkett & Laminat",
+    "holzbasierteBelägeParkettBesteht": "Holzbasierte Beläge. Parkett besteht aus Echtholz (massiv oder mehrschichtig), Laminat aus einer HDF-Trägerplatte mit Dekorschicht.",
+    "verlegungSchwimmendMitTrittschalldämmung": "**Verlegung:** Schwimmend (mit Trittschalldämmung) oder vollflächig verklebt (besser für Fußbodenheizung).",
+    "elastischeBeläge": "Elastische Beläge",
+    "dazuGehörenPvcPolyvinylchlorid": "Dazu gehören PVC (Polyvinylchlorid), Linoleum (Naturprodukt aus oxidiertem Leinöl, Harzen, Holz- und/oder Korkmehl und Kalksteinmehl auf Jutegewebe) und Kautschuk.",
+    "eigenschaftenFußwarmUndPflegeleicht": "**Eigenschaften:** Fußwarm und pflegeleicht; Trittschallminderung je nach Rückenbeschichtung gering bis mittel. Linoleum besteht überwiegend aus nachwachsenden Rohstoffen.",
+    "textileBeläge": "Textile Beläge",
+    "teppichbödenAusSynthetischenFasern": "Teppichböden aus synthetischen Fasern (Polyamid, Polypropylen) oder Naturfasern (Schurwolle).",
+    "eigenschaftenSehrGuteSchallabsorption": "**Eigenschaften:** Sehr gute Schallabsorption, staubbindend, hoher Gehkomfort.",
+    "keramikFliesen2": "Keramik & Fliesen",
+    "keramischeFliesenUndPlatten": "Keramische Fliesen und Platten werden aus tonigen Rohstoffen geformt und gebrannt. Sie unterscheiden sich primär durch ihre Wasseraufnahme.",
+    "wasseraufnahme10": "Wasseraufnahme > 10%",
+    "poröserScherbenLeichtZu": "Poröser Scherben. Leicht zu schneiden und zu bohren. Geringe mechanische Festigkeit. **Nicht frostsicher**. Wird ausschließlich als Wandfliese im Innenbereich verwendet.",
+    "wasseraufnahme3": "Wasseraufnahme < 3%",
+    "dichtGesinterterScherbenHohe": "Dicht gesinterter Scherben. Hohe mechanische Festigkeit und Verschleißfestigkeit. Frostsicher. Als Boden- und Wandfliese im Innen- und Außenbereich einsetzbar.",
+    "wasseraufnahme05": "Wasseraufnahme < 0,5%",
+    "sehrDichtGesintertSehr": "Sehr dicht gesintert. Sehr niedrige Wasseraufnahme, hohe Festigkeit und Abriebfestigkeit. Frostsicher. Für stark beanspruchte Böden (auch gewerblich).",
+    "anstricheDienenDemSchutz": "Anstriche dienen dem Schutz (z.B. vor Witterung, Korrosion) und der optischen Gestaltung von Oberflächen. Sie bestehen aus Bindemitteln, Pigmenten, Füllstoffen und Löse- bzw. Verdünnungsmitteln.",
+    "bindemittelKunstharzeSindAls": "Bindemittel (Kunstharze) sind als feine Tröpfchen in Wasser dispergiert. Trocknen durch Verdunstung des Wassers (Filmbildung).",
+    "meistverwendeteInnenwandfarbe": "Meistverwendete Innenwandfarbe.",
+    "wasserverdünnbarGeruchsarm": "Wasserverdünnbar, geruchsarm.",
+    "bildetEinenFilmAuf": "Bildet einen Film auf der Oberfläche.",
+    "silikatfarbenMineralfarben": "Silikatfarben (Mineralfarben)",
+    "bindemittelIstKaliwasserglasTrocknen": "Bindemittel ist Kaliwasserglas. Trocknen durch chemische Reaktion (Verkieselung) mit mineralischen Untergründen.",
+    "verbindenSichUnlösbarMit": "Verbinden sich unlösbar mit dem Untergrund.",
+    "sehrDiffusionsoffenAtmungsaktiv": "Sehr diffusionsoffen (atmungsaktiv).",
+    "natürlichAlkalischSchimmelhemmend": "Natürlich alkalisch (schimmelhemmend).",
+    "nurAufMineralischenUntergründen": "Nur auf mineralischen Untergründen (Putz, Beton) anwendbar.",
+    "bauwerksabdichtungenSchützenDasGebäude": "Bauwerksabdichtungen schützen das Gebäude vor eindringendem Wasser (Bodenfeuchte, Sickerwasser, drückendes Wasser) und Feuchtigkeit.",
+    "bituminöseAbdichtungen": "Bituminöse Abdichtungen",
+    "bitumenWirdAlsRückstand": "Bitumen wird als Rückstand der Vakuumdestillation von Erdöl gewonnen. Es ist wasserabweisend und thermoplastisch.",
+    "bitumenbahnenWerdenGeflämmtOder": "**Bitumenbahnen:** Werden geflämmt oder geklebt (z.B. Flachdach, Keller).",
+    "pmbcPolymerbitumendickbeschichtungSpacht": "**PMBC (Polymerbitumendickbeschichtung):** Spachtelbare Masse für erdberührte Bauteile. Nahtlose Abdichtung.",
+    "kunststoffUndElastomerbahnen": "Kunststoff- und Elastomerbahnen",
+    "hochpolymereBahnenZB": "Hochpolymere Bahnen (z.B. PVC, FPO, EPDM).",
+    "meistEinlagigeVerlegungFlachdach": "Meist einlagige Verlegung (Flachdach).",
+    "verbindungDurchHeißluftschweißenOder": "Verbindung durch Heißluftschweißen oder Quellschweißen.",
+    "sehrFlexibelUndWitterungsbeständig": "Sehr flexibel und witterungsbeständig.",
+    "klebenSchäumenImBauwesen": "Kleben & Schäumen im Bauwesen",
+    "klebenIstEinStoffschlüssiges": "Kleben ist ein stoffschlüssiges Fügeverfahren. Es ermöglicht die flächige Kraftübertragung und die Verbindung unterschiedlicher Materialien, ohne diese zu schwächen (wie beim Bohren). Bauschäume dienen zum Füllen, Dämmen und Fixieren.",
+    "bindemittelInWasserDispergiert": "Bindemittel in Wasser dispergiert. Abbinden durch Verdunstung des Wassers.",
+    "einsatzBodenbelägePvcTeppich": "**Einsatz:** Bodenbeläge (PVC, Teppich), Holzleim (Weißleim). Mindestens ein Fügeteil muss saugfähig sein.",
+    "abbindenDurchChemischeReaktion": "Abbinden durch chemische Reaktion (Polymerisation, Polyaddition). 1- oder 2-komponentig (z.B. Epoxidharz, Polyurethan).",
+    "einsatzHochfesteVerbindungenStrukturelle": "**Einsatz:** Hochfeste Verbindungen, strukturelles Kleben (z.B. CFK-Lamellen auf Beton), Metalle, dichte Untergründe.",
+    "zementäreKleber": "Zementäre Kleber",
+    "hydraulischAbbindendZementWasser": "Hydraulisch abbindend (Zement + Wasser). Oft kunststoffvergütet (Flexkleber).",
+    "einsatzFliesenkleberNatursteinWdvs": "**Einsatz:** Fliesenkleber, Naturstein, WDVS-Platten.",
+    "bauschaumMontageschaum": "Bauschaum (Montageschaum)",
+    "meistPolyurethanPuSchaum": "Meist Polyurethan (PU-Schaum). Expandiert nach dem Austritt und härtet durch Reaktion mit Luftfeuchtigkeit (1-K) oder durch einen Härter (2-K) aus.",
+    "t1KSchaumBenötigt": "**1-K-Schaum:** Benötigt Feuchtigkeit zum Aushärten (Untergrund anfeuchten).",
+    "t2KSchaumHärtet": "**2-K-Schaum:** Härtet unabhängig von Feuchtigkeit sehr schnell und fest aus.",
+    "einsatzFensterUndTürenmontage": "**Einsatz:** Fenster- und Türenmontage (Fixieren, Dämmen), Füllen von Hohlräumen.",
+    "achtungNichtUvBeständig": "**Achtung:** Nicht UV-beständig, muss abgedeckt werden."
+  },
+  "werte": {
+    "anwendungsbeispielLängenänderungEinesHei": "Anwendungsbeispiel: Längenänderung eines Heizestrichfeldes",
+    "tUndCsAls": "α_T und ε_cs als Lehrwerte für Zementestrich",
+    "rund3MmDehnung": "Rund 3 mm Dehnung und 2–3 mm Verkürzung je Feldseite: Randdämmstreifen und Bewegungsfugen müssen diese Bewegungen aufnehmen."
+  },
+  "daten": {
+    "Ausbau.schritte": [
+      {
+        "titel": "1. Gegeben",
+        "formel": "L_0 = 8\\,\\text{m},\\; \\alpha_T = 12 \\cdot 10^{-6}\\,\\text{K}^{-1},\\; \\Delta T = 30\\,\\text{K},\\; \\varepsilon_{cs} = 0{,}3\\,\\text{mm/m}",
+        "erklaerung": "Aufheizen von 15 °C auf 45 °C Vorlauftemperatur im Estrich (vereinfacht)."
+      },
+      {
+        "titel": "2. Temperaturdehnung",
+        "formel": "\\Delta L_T = 8000 \\cdot 12 \\cdot 10^{-6} \\cdot 30 = 2{,}9\\,\\text{mm}",
+        "erklaerung": "Ausdehnung beim Heizen."
+      },
+      {
+        "titel": "3. Schwinden",
+        "formel": "\\Delta L_{cs} = 8 \\cdot 0{,}3 = 2{,}4\\,\\text{mm}",
+        "erklaerung": "Verkürzung beim Austrocknen."
+      }
+    ],
+    "Ausbau.literatur": [
+      "Wricke, G.; Müller, S.: Handbuch Trockenbau – planen, konstruieren, ausführen. Haan-Gruiten: Europa-Lehrmittel 2014",
+      "Unger, A.: Fußboden-Atlas – Fußböden richtig planen und ausführen. 7., in Teilen neu bearb. Aufl., 2 Bde., Donauwörth: QUO-VADO 2011",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "Ausbau.regelwerke": [
+      {
+        "title": "DIN 18560 (Estriche im Bauwesen, Teile 1 bis 7)"
+      },
+      {
+        "title": "DIN EN 13813 (Estrichmörtel und Estrichmassen – Eigenschaften und Anforderungen)"
+      },
+      {
+        "title": "DIN EN 12004-1 (Mörtel und Klebstoffe für keramische Fliesen und Platten)"
+      },
+      {
+        "title": "DIN EN 14411 (Keramische Fliesen und Platten – Begriffe, Klassifizierung)"
+      },
+      {
+        "title": "DIN 18157-1 bis -3 (Ausführung von Bekleidungen und Belägen im Dünnbettverfahren; Teil 1: hydraulisch erhärtende Dünnbettmörtel, Teil 2: Dispersionsklebstoffe, Teil 3: Reaktionsharzklebstoffe)"
+      },
+      {
+        "title": "DIN 18202 (Toleranzen im Hochbau - Bauwerke)"
+      }
+    ],
+    "Ausbau.formeln": [
+      {
+        "formel": "\\Delta L = L_0 \\cdot \\alpha_T \\cdot \\Delta T + L_0 \\cdot \\varepsilon_{cs}",
+        "erklaerung": "Längenänderung eines Estrichfeldes aus Temperatur- und Schwindverformung; Grundlage für Rand- und Bewegungsfugen. Richtwerte für Zement-Heizestrichfelder (ca. ≤ 40 m², Seitenlänge ≤ 8 m, Seitenverhältnis ≤ 1:2; Calciumsulfatestrich bis ca. 100 m² bzw. 10 m) nach Herstellerangaben/BEB-Hinweisblatt („vereinfachtes Verfahren“) – maßgebend sind Fugenplan und Herstellervorgaben.",
+        "quelle": "DIN 18560 / BEB-Hinweise"
+      },
+      {
+        "formel": "f_{\\text{ct,Haft}} = \\frac{F_{\\text{Bruch}}}{A_{\\text{Prüf}}} \\ge 1{,}0\\,\\text{N/mm}^2 \\quad (\\text{Klasse C2})",
+        "erklaerung": "Haftzugfestigkeit von zementärem Fliesenkleber (Klasse C2: ≥ 1,0 N/mm², C1: ≥ 0,5 N/mm²) im Abreißversuch auf Betonuntergrund.",
+        "quelle": "DIN EN 12004-1"
+      }
+    ]
+  }
+}

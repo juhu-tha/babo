@@ -1,0 +1,203 @@
+{
+  "texte": {
+    "messenPrüfenImBaulabor": " Messen & Prüfen im Baulabor",
+    "metrologischeGrundlagenDerBaustoffprüfun": "Metrologische Grundlagen der Baustoffprüfung: Begriffe und Normen zur Genauigkeit von Messverfahren (ISO 5725-1), zur Kalibrierung von Prüfmaschinen (DIN EN ISO 7500-1) und zur Ermittlung der Messunsicherheit nach GUM (JCGM 100) im Rahmen der DIN EN ISO/IEC 17025.",
+    "begriffeDefinitionen": " Begriffe & Definitionen",
+    "richtigkeitVsPräzision": " Richtigkeit vs. Präzision",
+    "gumMessunsicherheit": " GUM Messunsicherheit",
+    "prüfstreuungenRR": " Prüfstreuungen (r/R)",
+    "ringversucheRoundRobin": " Ringversuche (Round-Robin)",
+    "prüfstreuungenWiederholpräzisionVsVergle": " Prüfstreuungen: Wiederholpräzision vs. Vergleichspräzision",
+    "wennPrüfungenUnterGeringfügig": "Wenn Prüfungen unter geringfügig wechselnden Randbedingungen durchgeführt werden (anderer Bediener, geändertes Prüfgerät, andere Kalibrierniveaus), nimmt die Streuung der Messergebnisse zu. Nach ISO 5725 wird zwischen der Wiederholgrenze ",
+    "undVergleichsgrenze": "und Vergleichsgrenze ",
+    "wiederholpräzisionR": "Wiederholpräzision (r)",
+    "gleichesLaborEngsterRaum": "Gleiches Labor, engster Raum",
+    "gibtDasAusmaßDer": "Gibt das Ausmaß der Abweichung zwischen unabhängigen Prüfergebnissen an, die mit derselben Methode unter identischen Bedingungen ermittelt werden:",
+    "gleicherPrüferDerselbeBediener": " Gleicher Prüfer / derselbe Bediener",
+    "gleichePrüfmaschineDasselbeMesssystem": " Gleiche Prüfmaschine / dasselbe Messsystem",
+    "kurzerZeitlicherAbstandUnmittelbarer": " Kurzer zeitlicher Abstand (unmittelbarer Versuchsnachlauf)",
+    "statistischGiltDieWiederholgrenze": "Statistisch gilt die Wiederholgrenze: ",
+    "alsWiederholstandardabweichungDieDiffere": " als Wiederholstandardabweichung). Die Differenz zweier Einzelergebnisse überschreitet r nur mit etwa 5 % Wahrscheinlichkeit (2,8 ≈ 1,96 · √2).",
+    "wirdZurInternenQualitätskontrolle": "Wird zur internen Qualitätskontrolle des Labors (Überprüfung von Bedienerfehlern) genutzt.",
+    "vergleichspräzisionR": "Vergleichspräzision (R)",
+    "unterschiedlicheLaboreRingversuche": "Unterschiedliche Labore, Ringversuche",
+    "gibtDasAusmaßDer2": "Gibt das Ausmaß der Abweichung zwischen unabhängigen Prüfergebnissen an, die mit derselben Methode in verschiedenen Institutionen ermittelt werden:",
+    "unterschiedlicheLaboranten": " Unterschiedliche Laboranten",
+    "völligUnterschiedlichePrüfmaschinenHerst": " Völlig unterschiedliche Prüfmaschinen / Hersteller",
+    "größererZeitlicherVerzugZ": " Größerer zeitlicher Verzug (z. B. Wochen oder Monate)",
+    "statistischGiltDieVergleichsgrenze": "Statistisch gilt die Vergleichsgrenze: ",
+    "alsVergleichsstandardabweichungDieDiffer": " als Vergleichsstandardabweichung). Die Differenz zweier Ergebnisse aus verschiedenen Laboren überschreitet R nur mit etwa 5 % Wahrscheinlichkeit.",
+    "dieSystematischeRelevanzZeigt": "Die systematische Relevanz zeigt sich bei Schiedsuntersuchungen und Ringversuchen (Cross-Testing).",
+    "praktischeRelevanzBeiBaustoff": "**Praktische Relevanz bei Baustoff-Konformität:**Bei der Festigkeitsbewertung von Transportbeton oder Asphaltbelägen sind die Vergleichs- und Wiederholgrenzen von herausragender Bedeutung. Weichen die Zylinderfestigkeiten zwischen dem Herstellerwerk und einem externen Prüflabor ab, ist zuerst zu prüfen, ob die Differenz die Vergleichsgrenze (",
+    "überhauptÜberschreitetErstDann": ") überhaupt überschreitet – erst dann ist sie messtechnisch signifikant und als Grundlage für Mängelansprüche (z. B. nach VOB/B) belastbar.",
+    "ringversucheEignungsprüfungenRoundRobin": " Ringversuche & Eignungsprüfungen (Round-Robin Tests)",
+    "dinEnIsoIec": "DIN EN ISO/IEC 17043 • DIN ISO 13528",
+    "ringversucheProficiencyTestingInterlabor": "**Ringversuche (Proficiency Testing / Interlaboratory Comparisons)** sind das zentrale externe Instrument zur Sicherung der Prüfqualität akkreditierter Baustoffprüfstellen nach **DIN EN ISO/IEC 17025**. Homogene, identische Proben (z. B. Betonwürfel, Zementnormmörtel, Bitumenchargen) werden an Dutzende unabhängige Labore versandt und „blind“ nach genormten Prüfverfahren untersucht. Die Auswertung deckt systematische Prüfmaschinenfehler, Kalibrierdrifts und Bedienerabweichungen auf.",
+    "eingangsdatenDesPrüflabors": " Eingangsdaten des Prüflabors",
+    "eigenesPrüfergebnis": "Eigenes Prüfergebnis (",
+    "zBZylinderdruckfestigkeitDin": "z. B. Zylinderdruckfestigkeit (DIN EN 12390-3)",
+    "referenzwertDesRingversuchs": "Referenzwert des Ringversuchs (",
+    "zBRobusterMittelwert": "z. B. robuster Mittelwert der Teilnehmer (Algorithmus A nach DIN ISO 13528)",
+    "zielStandardabweichung": "Ziel-Standardabweichung (",
+    "vomAnbieterFestgelegteStandardabweichung": "Vom Anbieter festgelegte Standardabweichung für die Eignungsbeurteilung",
+    "unsicherheitLabor": "Unsicherheit Labor",
+    "unsicherheitReferenz": "Unsicherheit Referenz",
+    "testSzenarienLaden": "Test-Szenarien laden:",
+    "exzellentZ02": "Exzellent (|z| < 0,2)",
+    "warnsignal2Z3": "Warnsignal (2 < |z| < 3)",
+    "nichtkonformZ30": "Nichtkonform (|z| ≥ 3,0)",
+    "standardisierterKennwert": "Standardisierter Kennwert:",
+    "z20Zufriedenstellende": " |z| ≤ 2,0: zufriedenstellende Leistung nach DIN ISO 13528.",
+    "t20Z3": " 2,0 < |z| < 3,0: fragwürdiges Ergebnis (Warnsignal). Laborinterne Prüfung empfohlen.",
+    "z30Nicht": " |z| ≥ 3,0: nicht zufriedenstellend (Eingriffssignal). Nach DIN EN ISO/IEC 17025 sind Ursachenanalyse & Korrekturmaßnahmen erforderlich.",
+    "metrologischeEnZahl": "Metrologische En-Zahl:",
+    "dieDeklarierteMessunsicherheitDeckt": " Die deklarierte Messunsicherheit deckt die Abweichung statistisch plausibel ab.",
+    "messunsicherheitUnterschätztOderSignifik": " Messunsicherheit unterschätzt oder signifikante systematische Kalibrierabweichung!",
+    "interaktiverYoudenPlotZwei": " Interaktiver Youden-Plot (Zwei-Proben-Diagnostik)",
+    "wJYoudenMethode": "W. J. Youden-Methode: Trennung von systematischen Laborfehlern von zufälligen Streuungen.",
+    "probeAVsProbe": "Probe A vs. Probe B",
+    "grauePunkte18Teilnehmende": "• Graue Punkte = 18 teilnehmende Baustofflabore",
+    "grüneEllipseSchematischerBereich": "• Grüne Ellipse = schematischer Bereich üblicher Streuung",
+    "entlangDer45Achse": "Entlang der 45°-Achse (Diagonale):",
+    "beideProbenLiegenGemeinsam": "Beide Proben liegen gemeinsam zu hoch oder zu niedrig. Ursache ist ein **systematischer Laborfehler** (z. B. Kraftmesszelle falsch kalibriert, Trockenofentemperatur fehlerhaft).",
+    "querZur45Achse": "Quer zur 45°-Achse:",
+    "eineProbeIstHoch": "Eine Probe ist hoch, die andere niedrig. Ursache ist ein **zufälliger Fehler** (z. B. schiefe Druckflächen des Prüfkörpers, unvollständige Verdichtung, Bedienerfehler).",
+    "akkreditierungRecht": "Akkreditierung & Recht",
+    "dinEnIsoIec2": "**DIN EN ISO/IEC 17025 (Abschn. 7.7.2)** verlangt, dass Laboratorien ihre Leistung durch Vergleich mit anderen Laboratorien überwachen, soweit verfügbar und angemessen – in der Praxis durch Eignungsprüfungen, deren Teilnahme die DAkkS bei Akkreditierungen einfordert. Im Straßenbau setzt die Anerkennung von Prüfstellen nach **RAP Stra** die regelmäßige erfolgreiche Teilnahme an Vergleichsprüfungen voraus.",
+    "robusteStatistikAlgorithmusA": "Robuste Statistik (Algorithmus A)",
+    "damitGrobeAusreißerEinzelner": "Damit grobe Ausreißer einzelner Labore das Gesamtergebnis nicht verzerren, berechnet der Ringversuchsveranstalter den Referenzwert ",
+    "undDieStandardabweichung": " und die Standardabweichung ",
+    "häufigMittelsRobusterStatistik": " häufig mittels **robuster Statistik (Algorithmus A nach DIN ISO 13528)** statt eines einfachen arithmetischen Mittels.",
+    "typischeFehlerquellenImBaulabor": "Typische Fehlerquellen im Baulabor",
+    "häufigeUrsachenFürNicht": "Häufige Ursachen für „Nicht zufriedenstellende“ Ringversuchsergebnisse: nicht ebene Druckflächen (Ebenheitstoleranz nach DIN EN 12390-1: ",
+    "falscheBelastungsgeschwindigkeitSollNach": "), falsche Belastungsgeschwindigkeit (Soll nach DIN EN 12390-3: ",
+    "oderReibungImKugelgelenk": ") oder Reibung im Kugelgelenk der oberen Druckplatte."
+  },
+  "werte": {
+    "nichtAkzeptabel": "Nicht akzeptabel",
+    "en10Zufriedenstellend": "|En| ≤ 1,0 (zufriedenstellend)",
+    "en10Nicht": "|En| > 1,0 (nicht zufriedenstellend)",
+    "beispiel1UnsicherheitsbudgetEiner": "Beispiel 1: Unsicherheitsbudget einer Würfeldruckprüfung",
+    "ergebnis388Mpa": "Ergebnis: 38,8 MPa ± 0,6 MPa (k = 2). Der Typ-A-Anteil dominiert – mehr Probekörper verringern die Unsicherheit stärker als eine feinere Anzeige.",
+    "jcgm1002008Gum": "JCGM 100:2008 (GUM), Abschn. 4.2, 4.3.7, 5.1.2, 6.2",
+    "beispiel2RingversuchZ": "Beispiel 2: Ringversuch – z-Score und En-Zahl bewerten",
+    "beideKennzahlenZeigenEine": "Beide Kennzahlen zeigen eine zu niedrige Festigkeit. |En| > 1 bedeutet zusätzlich, dass die angegebene Laborunsicherheit die Abweichung nicht erklärt – Kalibrierung der Presse und Probenvorbereitung prüfen.",
+    "dinIso135282025": "DIN ISO 13528:2025-07; DIN EN ISO/IEC 17043:2023-10",
+    "dkdDeutscherKalibrierdienstRichtlinien": "DKD - Deutscher Kalibrierdienst Richtlinien",
+    "gumBipmOfficialGuide": "GUM - BIPM Official Guide",
+    "oktober2026Ap4": "Oktober 2026 (AP 4 Labor: Begriffe nach ISO 5725-1/MessEG, GUM-Budget, Präzisionsgrenzen und Eignungsprüfung nach DIN ISO 13528:2025-07 geprüft; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "MessenPruefen.schritte": [
+      {
+        "titel": "Messreihe",
+        "erklaerung": "Fünf Würfel derselben Charge: 38,5 / 39,2 / 37,8 / 38,9 / 39,6 MPa. Mittelwert und Standardabweichung:",
+        "formel": "\\bar{x} = 38{,}80\\,\\text{MPa},\\quad s = 0{,}69\\,\\text{MPa}"
+      },
+      {
+        "titel": "Typ A (Streuung des Mittelwerts)",
+        "erklaerung": "Standardunsicherheit des Mittelwerts aus n = 5 Werten:",
+        "formel": "u_A = \\frac{0{,}69}{\\sqrt{5}} = 0{,}31\\,\\text{MPa}"
+      },
+      {
+        "titel": "Typ B (Auflösung und Kalibrierung)",
+        "erklaerung": "Anzeigeauflösung d = 0,1 MPa (Rechteckverteilung) und Kalibrierschein U_cal = 0,15 MPa mit k = 2:",
+        "formel": "u_{B,1} = \\frac{0{,}1}{\\sqrt{12}} = 0{,}029,\\quad u_{B,2} = \\frac{0{,}15}{2} = 0{,}075\\,\\text{MPa}"
+      },
+      {
+        "titel": "Kombinieren und erweitern",
+        "erklaerung": "Quadratische Addition, dann Erweiterung mit k = 2:",
+        "formel": "u_c = \\sqrt{0{,}31^2 + 0{,}029^2 + 0{,}075^2} = 0{,}32,\\quad U = 0{,}64\\,\\text{MPa}"
+      }
+    ],
+    "MessenPruefen.schritte_2": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Eigenes Ergebnis 46,0 MPa, zugewiesener Wert X = 50,0 MPa, σ_pt = 1,8 MPa, U_lab = 1,4 MPa, U_ref = 0,6 MPa (jeweils k = 2).",
+        "formel": "x_{lab} - X = -4{,}0\\,\\text{MPa}"
+      },
+      {
+        "titel": "z-Score",
+        "erklaerung": "Nach DIN ISO 13528: |z| ≤ 2 zufriedenstellend, 2 < |z| < 3 fragwürdig, |z| ≥ 3 nicht zufriedenstellend.",
+        "formel": "z = \\frac{-4{,}0}{1{,}8} = -2{,}22 \\;\\Rightarrow\\; \\text{Warnsignal}"
+      },
+      {
+        "titel": "En-Zahl",
+        "erklaerung": "Bezieht die angegebenen Messunsicherheiten ein; |En| ≤ 1 ist zufriedenstellend.",
+        "formel": "E_n = \\frac{-4{,}0}{\\sqrt{1{,}4^2 + 0{,}6^2}} = \\frac{-4{,}0}{1{,}52} = -2{,}63"
+      }
+    ],
+    "MessenPruefen.weblinks.2": {
+      "title": "DAkkS - Deutsche Akkreditierungsstelle Ringversuche",
+      "url": "https://www.dakks.de"
+    },
+    "MessenPruefen.regelwerke": [
+      {
+        "title": "DIN EN ISO/IEC 17025:2018-03 (Allgemeine Anforderungen an die Kompetenz von Prüf- und Kalibrierlaboratorien)"
+      },
+      {
+        "title": "DIN EN ISO/IEC 17043:2023-10 + A11:2024-09 (Konformitätsbewertung – Anforderungen an Anbieter von Eignungsprüfungen)"
+      },
+      {
+        "title": "DIN ISO 13528:2025-07 (Statistische Verfahren für Eignungsprüfungen durch Vergleiche zwischen Laboratorien)"
+      },
+      {
+        "title": "ISO 5725-1:2023-07 (Genauigkeit (Richtigkeit und Präzision) von Messverfahren und Messergebnissen – Teil 1); DIN ISO 5725-1:1997-11 zurückgezogen"
+      },
+      {
+        "title": "DIN EN ISO 7500-1:2018-06 (Kalibrierung und Überprüfung von Zug- und Druckprüfmaschinen – Kraftmesssystem)"
+      },
+      {
+        "title": "DIN EN ISO 13385-1:2020-03 (Messschieber; ersetzt DIN 862:2015-03)"
+      },
+      {
+        "title": "DIN ISO 17123-2:2023-12 (Feldprüfverfahren geodätischer Instrumente – Nivelliere)"
+      },
+      {
+        "title": "Mess- und Eichgesetz (MessEG) und Mess- und Eichverordnung (MessEV)",
+        "url": "https://www.gesetze-im-internet.de/messeg/"
+      },
+      {
+        "title": "JCGM 100:2008 (Guide to the expression of uncertainty in measurement - GUM)",
+        "url": "https://www.bipm.org/en/committees/jc/jcgm/publications"
+      }
+    ],
+    "MessenPruefen.literatur": [
+      "Gerlach, G.; Sommer, K.-D.: Messunsicherheit – kurz und praktisch für Ingenieure und Naturwissenschaftler. Berlin: De Gruyter 2024",
+      "Funk, W.; Dammann, V.; Donnevert, G.: Qualitätssicherung in der Analytischen Chemie. 2. Aufl., Weinheim: Wiley-VCH 2005",
+      "JCGM 100:2008: Evaluation of measurement data – Guide to the expression of uncertainty in measurement (GUM). BIPM 2008"
+    ],
+    "MessenPruefen.formeln": [
+      {
+        "formel": "z = \\frac{x_i - X}{\\sigma_{pt}}",
+        "erklaerung": "z-Score zur Bewertung der Laborleistung in Eignungsprüfungen. |z| ≤ 2 zufriedenstellend, 2 < |z| < 3 fragwürdig, |z| ≥ 3 nicht zufriedenstellend.",
+        "quelle": "DIN ISO 13528:2025-07"
+      },
+      {
+        "formel": "E_n = \\frac{x_{lab} - X_{ref}}{\\sqrt{U_{lab}^2 + U_{ref}^2}}",
+        "erklaerung": "En-Zahl zur Beurteilung der Messwertübereinstimmung unter Berücksichtigung der erweiterten Messunsicherheiten (k=2). Werte |En| ≤ 1,0 sind zufriedenstellend.",
+        "quelle": "DIN ISO 13528:2025-07"
+      },
+      {
+        "formel": "u_A = \\frac{s}{\\sqrt{n}}",
+        "erklaerung": "Standardunsicherheit Typ A (empirische Standardabweichung des Mittelwerts).",
+        "quelle": "JCGM 100:2008 (GUM) Abschn. 4.2.3"
+      },
+      {
+        "formel": "u_{B,1} = \\frac{d}{2\\sqrt{3}}",
+        "erklaerung": "Standardunsicherheit Typ B aus der Auflösung d unter Annahme einer Rechteckverteilung.",
+        "quelle": "JCGM 100:2008 (GUM) Abschn. 4.3.7, F.2.2.1"
+      },
+      {
+        "formel": "u_c = \\sqrt{u_A^2 + u_{B,1}^2 + u_{B,2}^2}",
+        "erklaerung": "Kombinierte Standardunsicherheit nach dem Fortpflanzungsgesetz bei unkorrelierten Eingangsgrößen (Empfindlichkeitskoeffizienten hier 1).",
+        "quelle": "JCGM 100:2008 (GUM) Abschn. 5.1.2"
+      },
+      {
+        "formel": "U = k \\cdot u_c",
+        "erklaerung": "Erweiterte Messunsicherheit mit dem Erweiterungsfaktor k = 2 für eine Überdeckungswahrscheinlichkeit von etwa 95 % (bei Normalverteilung).",
+        "quelle": "JCGM 100:2008 (GUM) Abschn. 6.2"
+      }
+    ]
+  }
+}

@@ -5,6 +5,8 @@ import React from 'react';
 import { Layers, ChevronDown, ChevronUp, Info } from 'lucide-react';
 import { Line } from 'react-chartjs-2';
 import { BlockMath, InlineMath } from 'react-katex';
+import inhalt from '@/content/historischematerialkennwerte/DatenbankTab.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface DatenbankTabProps {
   setActiveCategory: Dispatch<SetStateAction<MaterialCategory>>;
@@ -20,9 +22,7 @@ export function DatenbankTab({ setActiveCategory, setExpandedIndex, activeCatego
   return (
     <div>
       <div className="text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-home-grau/30 mb-6">
-        <p>
-          <strong>Für Studierende &amp; Prüfingenieure:</strong> Ein ordentliches Tragfähigkeitsgutachten setzt voraus, dass alte Gliederungen, wie z.B. visuelle Holzgüteklassen nach DIN 4074 oder die frühere Beton-Bezeichnungsart Bn/B nach DIN 1045, präzise in aktuelle Eurocode-Nenngrößen übersetzt werden.
-        </p>
+        <p><MdText text={inhalt.texte.fürStudierendePrüfingenieureEin} /></p>
       </div>
     
       <div className="flex flex-wrap gap-2 mb-8">
@@ -51,11 +51,11 @@ export function DatenbankTab({ setActiveCategory, setExpandedIndex, activeCatego
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div className="bg-white p-4 rounded-lg border border-home-grau/30">
-            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Alte Normenlandschaft</span>
+            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider"><MdText text={inhalt.texte.alteNormenlandschaft} /></span>
             <div className="font-semibold text-slate-800 mt-1">{currentData.normOld}</div>
           </div>
           <div className="bg-white p-4 rounded-lg border border-home-grau/30">
-            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Aktueller Status</span>
+            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider"><MdText text={inhalt.texte.aktuellerStatus} /></span>
             <div className="font-semibold text-shiraz mt-1">{currentData.normNew}</div>
           </div>
         </div>
@@ -65,12 +65,12 @@ export function DatenbankTab({ setActiveCategory, setExpandedIndex, activeCatego
         <table className="w-full text-left border-collapse min-w-[600px]">
           <thead>
             <tr className="border-b border-home-grau/30 bg-slate-50">
-              <th className="py-3 px-4 font-bold text-text-main">Alte Bezeichnung</th>
-              <th className="py-3 px-4 font-bold text-shiraz">Neue Entsprechung (EC)</th>
+              <th className="py-3 px-4 font-bold text-text-main"><MdText text={inhalt.texte.alteBezeichnung} /></th>
+              <th className="py-3 px-4 font-bold text-shiraz"><MdText text={inhalt.texte.neueEntsprechungEc} /></th>
               {activeCategory === 'beton' && (
                 <>
-                  <th className="py-3 px-4 font-bold text-text-main"><FormulaText text="f_{ck,cube}" /> (Alt-Wert) [MPa]</th>
-                  <th className="py-3 px-4 font-bold text-shiraz"><FormulaText text="f_{ck,cyl}" /> (Neu-Wert) [MPa]</th>
+                  <th className="py-3 px-4 font-bold text-text-main"><FormulaText text="f_{ck,cube}" /><MdText text={inhalt.texte.altWertMpa} /></th>
+                  <th className="py-3 px-4 font-bold text-shiraz"><FormulaText text="f_{ck,cyl}" /><MdText text={inhalt.texte.neuWertMpa} /></th>
                 </>
               )}
               {(activeCategory === 'betonstahl' || activeCategory === 'baustahl') && (
@@ -85,14 +85,14 @@ export function DatenbankTab({ setActiveCategory, setExpandedIndex, activeCatego
               )}
               {activeCategory === 'holz' && (
                 <>
-                  <th className="py-3 px-4 font-bold text-text-main">Zul. Biegespannung (Alt) [MPa]</th>
+                  <th className="py-3 px-4 font-bold text-text-main"><MdText text={inhalt.texte.zulBiegespannungAltMpa} /></th>
                   <th className="py-3 px-4 font-bold text-shiraz"><FormulaText text="f_{m,k}" /> (Neu) [MPa]</th>
                 </>
               )}
               {activeCategory === 'mauerwerk' && (
                 <>
-                  <th className="py-3 px-4 font-bold text-text-main">SFK Steinklasse (Alt)</th>
-                  <th className="py-3 px-4 font-bold text-shiraz">SFK Steinklasse (Neu)</th>
+                  <th className="py-3 px-4 font-bold text-text-main"><MdText text={inhalt.texte.sfkSteinklasseAlt} /></th>
+                  <th className="py-3 px-4 font-bold text-shiraz"><MdText text={inhalt.texte.sfkSteinklasseNeu} /></th>
                 </>
               )}
               <th className="py-3 px-4 font-bold text-slate-500 text-right w-12">Info</th>
@@ -123,7 +123,7 @@ export function DatenbankTab({ setActiveCategory, setExpandedIndex, activeCatego
                       <td colSpan={5} className="p-4">
                         <div className="bg-white p-4 rounded-xl border border-shiraz/15 shadow-sm space-y-2">
                           <h5 className="font-bold text-shiraz flex items-center gap-1.5 text-xs uppercase tracking-wider">
-                            <Info size={14} /> Praxis- &amp; Diagnostikhinweis für {row.old}
+                            <Info size={14} /><MdText text={inhalt.texte.praxisDiagnostikhinweisFür} />{row.old}
                           </h5>
                           <p className="text-slate-750 leading-relaxed text-sm font-normal">
                             {row.explanation}
@@ -144,7 +144,7 @@ export function DatenbankTab({ setActiveCategory, setExpandedIndex, activeCatego
     
       {(activeCategory === 'betonstahl' || activeCategory === 'baustahl') && chartData && (
         <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm mb-8">
-          <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-4">Chronologische Festigkeitsentwicklung</h3>
+          <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-4"><MdText text={inhalt.texte.chronologischeFestigkeitsentwicklung} /></h3>
           <div className="h-[280px] w-full">
             <Line data={chartData} options={chartOptions} />
           </div>
@@ -154,29 +154,24 @@ export function DatenbankTab({ setActiveCategory, setExpandedIndex, activeCatego
       {/* Sicherheitskonzepte Block */}
       <div className="bg-white p-6 rounded-2xl border border-home-grau/30 my-4">
         <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
-          <Layers className="text-shiraz" size={20} /> Umrechnung auf Eurocode (Sicherheitskonzepte)
-        </h3>
+          <Layers className="text-shiraz" size={20} /><MdText text={inhalt.texte.umrechnungAufEurocodeSicherheitskonzepte} /></h3>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-slate-50 p-5 rounded-xl border border-home-grau/30">
-            <h4 className="text-md font-bold text-slate-900 mb-3">Historisch: Globale Sicherheit</h4>
-            <p className="text-xs md:text-sm text-slate-700 mb-4 leading-relaxed">
-              Bis ca. 2004 galt das <strong>globale Sicherheitskonzept</strong> (z.B. DIN 1045:1988). Die Beanspruchungen wurden unskaliert verglichen mit herabgesetzten Festigkeiten. Ein einziger mittlerer Beiwert deckte alle Lastschwankungen ab:
-            </p>
+            <h4 className="text-md font-bold text-slate-900 mb-3"><MdText text={inhalt.texte.historischGlobaleSicherheit} /></h4>
+            <p className="text-xs md:text-sm text-slate-700 mb-4 leading-relaxed"><MdText text={inhalt.texte.bisCa2004Galt} /></p>
             <div className="bg-white p-3 rounded border border-home-grau/30 text-center font-serif text-sm">
               <BlockMath math="\sigma_{vorh} \le \sigma_{zul} = \frac{f_k}{\gamma_{global}}" />
             </div>
             <ul className="list-disc pl-5 mt-4 text-xs text-slate-500 space-y-1">
-              <li>Sicherheitsfaktor meist <InlineMath math="\gamma \approx 1{,}75\text{ bis }2{,}1" />.</li>
-              <li>Keine separate Sicherheit für ständige (G) und variable (Q) Lasten.</li>
+              <li><MdText text={inhalt.texte.sicherheitsfaktorMeistGammaApprox} /></li>
+              <li><MdText text={inhalt.texte.keineSeparateSicherheitFür} /></li>
             </ul>
           </div>
     
           <div className="bg-shiraz/5 p-5 rounded-xl border border-shiraz/20">
-            <h4 className="text-md font-bold text-shiraz mb-3">Modern: Teilsicherheitsbeiwerte</h4>
-            <p className="text-xs md:text-sm text-slate-750 mb-4 leading-relaxed">
-              Die heutigen Eurocodes verwenden das <strong>Teilsicherheitskonzept</strong>. Einwirkungen werden mit Lastfaktoren (<InlineMath math="\gamma_F" />) erhöht, Werkstoffeigenschaften durch Materialfaktoren (<InlineMath math="\gamma_M" />) gemindert:
-            </p>
+            <h4 className="text-md font-bold text-shiraz mb-3"><MdText text={inhalt.texte.modernTeilsicherheitsbeiwerte} /></h4>
+            <p className="text-xs md:text-sm text-slate-750 mb-4 leading-relaxed"><MdText text={inhalt.texte.dieHeutigenEurocodesVerwenden} /></p>
             <div className="bg-white p-3 rounded border border-shiraz/20 text-center font-serif text-sm">
               <BlockMath math="E_d \le R_d" />
             </div>
@@ -184,9 +179,9 @@ export function DatenbankTab({ setActiveCategory, setExpandedIndex, activeCatego
               <InlineMath math="(E_k \cdot \gamma_F) \le \frac{R_k}{\gamma_M}" />
             </div>
             <ul className="list-disc pl-5 mt-4 text-xs text-shiraz/80 space-y-1">
-              <li><InlineMath math="\gamma_G = 1{,}35" /> für Eigengewichte</li>
-              <li><InlineMath math="\gamma_Q = 1{,}50" /> für Verkehrslasten (Nutz-, Schnee-, Windlast)</li>
-              <li>Materialbeiwerte: Beton (<InlineMath math="\gamma_C = 1{,}5" />), Stahl (<InlineMath math="\gamma_{M0} = 1{,}0" />), Holz (<InlineMath math="\gamma_M = 1{,}3" />).</li>
+              <li><MdText text={inhalt.texte.gammaG135} /></li>
+              <li><MdText text={inhalt.texte.gammaQ150} /></li>
+              <li><MdText text={inhalt.texte.materialbeiwerteBetonGammaC} /></li>
             </ul>
           </div>
         </div>

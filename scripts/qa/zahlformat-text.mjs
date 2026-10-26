@@ -1,5 +1,5 @@
 // AP 2: Dezimalpunkt → Dezimalkomma in Anzeige-Texten (nur Zahl+Einheit, keine 3er-Gruppen)
-import ts from 'typescript'; import fs from 'fs'; import path from 'path';
+import ts from 'typescript'; import fs from 'fs'; import path from 'path'; import { inhaltsDateien, inhaltsTexte, relativ } from './inhaltDateien.mjs';
 const ROOT=path.resolve(path.dirname(new URL(import.meta.url).pathname),'../../src'); const files=[];
 (function w(d){for(const f of fs.readdirSync(d)){const p=path.join(d,f);fs.statSync(p).isDirectory()?w(p):/\.tsx?$/.test(f)&&files.push(p);}})(ROOT);
 const UNIT='(?:MPa|GPa|N\\/mm|kN|MN|mm|cm|dm|µm|μm|nm|m²|m³|m\\/s|m\\b|kg|g\\/|t\\b|%|‰|°C|K\\b|W\\/|kWh|kJ|dB|Hz|kHz|M\\.-%|Vol\\.-%|M\\.-|d\\b|h\\b|min\\b|l\\/|bar\\b|Pa\\b)';
@@ -30,4 +30,13 @@ for(const f of files){ if(/numberFormat|labExportUtils|BimBaustoffe/.test(f)) co
   visit(sf);
   if(APPLY&&edits.length){ let s=src; edits.sort((a,b)=>b[0]-a[0]); for(const [a,b,t] of edits) s=s.slice(0,a)+t+s.slice(b); fs.writeFileSync(f,s); }
 }
+// Ausgelagerte Fachtexte (AP 5.3): dieselben Regeln für Zeichenketten in content/**/*.json (nur Prüfung)
+{ const conv=(seg,sep)=>{ let o=seg.replace(RE,(m,a,b,s)=>`${a}${sep}${b}${s}`); for(let k=0;k<3;k++) o=o.replace(RANGE,(m,a,b)=>`${a}${sep}${b}`); return o; };
+  const TEXNUM=/(?<![\d.,\w\\]|Gl\.\s?\(?|Tab\.\s?|Abs\.\s?|Kap\.\s?|Abschn\.\s?|Abschnitt\s|Bild\s|\()(\d+)\.(\d{1,2}|\d{4,}|(?<=\b0\.)\d{3})(?![\d.])/g;
+  const convTex=(seg)=>conv(seg,'{,}').replace(TEXNUM,(m,a,b)=>`${a}{,}${b}`).replace(/(?<![\d,])(\d+),(\d+)(?!\d|,\d)/g,(m,a,b)=>`${a}{,}${b}`);
+  for(const datei of inhaltsDateien()) for(const t of inhaltsTexte(datei)){
+    if(t.eigenschaft&&/^(url|href|id|key|className|value|unitKey)$/.test(t.eigenschaft)) continue;
+    if(/https?:|www\.|\.(png|jpg|svg|pdf|tsx?|json)/.test(t.text)) continue;
+    const out=t.eigenschaft&&/^(formel|formula|math|latex|tex)$/.test(t.eigenschaft)?convTex(t.text):t.text.split(/(\$\$[\s\S]*?\$\$|\$[^$\n]+?\$|\\\\\([\s\S]*?\\\\\))/).map((seg,i)=>i%2?convTex(seg):conv(seg,',')).join('');
+    if(out!==t.text){ n++; console.log(`${relativ(datei)} [${t.gruppe}.${t.schluessel}] |`,t.text.slice(0,90),'→',out.slice(0,90)); } } }
 console.log(APPLY?'Literale geändert:':'Literale mit Dezimalpunkt+Einheit:',n); if(process.argv[2]==='--check') process.exit(n?1:0); if(process.argv[3]==='--amb') console.log(amb.join('\n'));

@@ -18,6 +18,8 @@ import {
   Activity,
   Radio
 } from 'lucide-react';
+import inhalt from '@/content/spannbeton/SpannbetonDauerhaftigkeit.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function SpannbetonDauerhaftigkeit() {
   // Configurator state
@@ -110,26 +112,14 @@ export default function SpannbetonDauerhaftigkeit() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-home-grau/20 pb-4 mb-4">
           <div>
             <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
-              <ShieldCheck className="text-shiraz h-5 w-5" />
-              Dauerhaftigkeit, Korrosionsschutz &amp; Dekompression
-            </h3>
-            <p className="text-xs text-text-main/70 mt-1">
-              Normative Anforderungen nach DIN EN 1992-1-1 (EC2) Kap. 4 &amp; 7, DIN EN 1992-2 (Brücken), DIN EN 445/447 (Einpressmörtel)
-            </p>
+              <ShieldCheck className="text-shiraz h-5 w-5" /><MdText text={inhalt.texte.dauerhaftigkeitKorrosionsschutzDekompres} /></h3>
+            <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.normativeAnforderungenNachDin} /></p>
           </div>
-          <span className="self-start sm:self-center px-3 py-1 rounded-full text-xs font-semibold bg-shiraz/10 text-shiraz border border-shiraz/20 whitespace-nowrap">
-            Sicherheitskritisches Tragverhalten
-          </span>
+          <span className="self-start sm:self-center px-3 py-1 rounded-full text-xs font-semibold bg-shiraz/10 text-shiraz border border-shiraz/20 whitespace-nowrap"><MdText text={inhalt.texte.sicherheitskritischesTragverhalten} /></span>
         </div>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed mb-6">
-          <p>
-            Im Spannbetonbau ist der Korrosionsschutz von existentieller Bedeutung: Weil der hochfeste Spannstahl unter 
-            extremer Zugspannung (<InlineMath math="\sigma_{p0} \approx 1200 \dots 1500\text{ N/mm²}" />) steht, kündigt sich ein 
-            Korrosionsangriff <strong>nicht</strong> durch harmlose Rostfahnen und Betonabplatzungen an. Stattdessen droht 
-            <strong>Spannungsrisskorrosion (SpRK) oder Wasserstoffversprödung</strong>, die zum 
-            schlagartigen, spröden Abriss des Spannglieds ohne jegliche Vorwarnung führt.
-          </p>
+          <p><MdText text={inhalt.texte.imSpannbetonbauIstDer} /></p>
         </div>
 
         {/* Sub-Tabs Navigation */}
@@ -143,8 +133,7 @@ export default function SpannbetonDauerhaftigkeit() {
             }`}
             onClick={() => setActiveTab('uebersicht')}
           >
-            <ShieldAlert size={15} /> 1. Spannungsrisskorrosion &amp; Gefahren
-          </button>
+            <ShieldAlert size={15} /><MdText text={inhalt.texte.t1SpannungsrisskorrosionGefahren} /></button>
 
           <button aria-pressed={activeTab === 'betondeckung'}
             type="button"
@@ -155,8 +144,7 @@ export default function SpannbetonDauerhaftigkeit() {
             }`}
             onClick={() => setActiveTab('betondeckung')}
           >
-            <Scale size={15} /> 2. Betondeckung &amp; Rechner (c_nom)
-          </button>
+            <Scale size={15} /><MdText text={inhalt.texte.t2BetondeckungRechnerC} /></button>
 
           <button aria-pressed={activeTab === 'injektion'}
             type="button"
@@ -167,8 +155,7 @@ export default function SpannbetonDauerhaftigkeit() {
             }`}
             onClick={() => setActiveTab('injektion')}
           >
-            <Droplets size={15} /> 3. Einpressmörtel (DIN EN 447)
-          </button>
+            <Droplets size={15} /><MdText text={inhalt.texte.t3EinpressmörtelDinEn} /></button>
 
           <button aria-pressed={activeTab === 'risse_dekompression'}
             type="button"
@@ -179,8 +166,7 @@ export default function SpannbetonDauerhaftigkeit() {
             }`}
             onClick={() => setActiveTab('risse_dekompression')}
           >
-            <Layers size={15} /> 4. Dekompression &amp; Rissbreiten
-          </button>
+            <Layers size={15} /><MdText text={inhalt.texte.t4DekompressionRissbreiten} /></button>
 
           <button aria-pressed={activeTab === 'zfp'}
             type="button"
@@ -191,8 +177,7 @@ export default function SpannbetonDauerhaftigkeit() {
             }`}
             onClick={() => setActiveTab('zfp')}
           >
-            <Search size={15} /> 5. ZfP-Prüfverfahren (Ultraschall, MFL, Radar, EIT)
-          </button>
+            <Search size={15} /><MdText text={inhalt.texte.t5ZfpPrüfverfahrenUltraschall} /></button>
 
           <button aria-pressed={activeTab === 'schadensfaelle'}
             type="button"
@@ -203,8 +188,7 @@ export default function SpannbetonDauerhaftigkeit() {
             }`}
             onClick={() => setActiveTab('schadensfaelle')}
           >
-            <Flame size={15} /> 6. Historische Havarien &amp; Lehren
-          </button>
+            <Flame size={15} /><MdText text={inhalt.texte.t6HistorischeHavarienLehren} /></button>
         </div>
       </div>
 
@@ -214,36 +198,22 @@ export default function SpannbetonDauerhaftigkeit() {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-5">
             <div className="flex items-center justify-between border-b border-home-grau/15 pb-3">
               <h4 className="text-base font-bold text-text-main flex items-center gap-2">
-                <ShieldAlert className="text-shiraz h-5 w-5" />
-                Spannungsrisskorrosion (SpRK) &amp; Wasserstoffversprödung
-              </h4>
-              <span className="text-xs font-mono font-bold bg-rose-50 text-rose-800 border border-rose-200 px-2.5 py-1 rounded-md">
-                Sprödbruch ohne Vorwarnung
-              </span>
+                <ShieldAlert className="text-shiraz h-5 w-5" /><MdText text={inhalt.texte.spannungsrisskorrosionSprkWasserstoffver} /></h4>
+              <span className="text-xs font-mono font-bold bg-rose-50 text-rose-800 border border-rose-200 px-2.5 py-1 rounded-md"><MdText text={inhalt.texte.sprödbruchOhneVorwarnung} /></span>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div className="space-y-3 text-sm text-text-main/80 leading-relaxed">
-                <p>
-                  <strong>Was unterscheidet Spannstahlkorrosion von normalem Rost?</strong><br />
-                  Bei schlaffem Betonstahl (B500B) führt Korrosion zu voluminösen Eisenoxiden (<InlineMath math="\text{Fe}_2\text{O}_3 \cdot x\text{H}_2\text{O}" />), 
-                  die den Beton absprengen und sichtbare Rostfahnen bilden. Der Träger kündigt sein Versagen durch große Risse und Durchbiegungen an.
-                </p>
+                <p><MdText text={inhalt.texte.wasUnterscheidetSpannstahlkorrosionVon} /></p>
                 <p>
                   Bei Spannstahl (z. B. Y1860) reichen mikroskopisch kleine Korrosionsnarben oder der Eintritt von 
-                  <strong> atomarem Wasserstoff (<InlineMath math="\text{H}^0" />)</strong> in das Kristallgitter aus. An Fehlstellen und Korngrenzen 
+                  <strong><MdText text={inhalt.texte.atomaremWasserstoffTextH} /></strong> in das Kristallgitter aus. An Fehlstellen und Korngrenzen 
                   entstehen extrem hohe mikroskopische Spannungsspitzen, die bei Erreichen der Spaltfestigkeit zu einem 
-                  <strong> schlagartigen Trennbruch</strong> des Stahls führen – ohne Querschnittsverengung und ohne sichtbare Vorwarnung!
+                  <strong><MdText text={inhalt.texte.schlagartigenTrennbruch} /></strong> des Stahls führen – ohne Querschnittsverengung und ohne sichtbare Vorwarnung!
                 </p>
-                <div className="p-3 bg-amber-50/80 rounded-xl border border-amber-200 text-amber-950 text-xs space-y-1">
-                  <strong>Zwei Hauptmechanismen der Spannungsrisskorrosion:</strong>
-                  <ul className="list-disc list-inside space-y-1 mt-1">
-                    <li>
-                      <strong>Anodische Spannungsrisskorrosion:</strong> Lokaler anodischer Metallabtrag in winzigen Rissen unter Anwesenheit aggressiver Ionen (insb. Chloride <InlineMath math="\text{Cl}^-" />).
-                    </li>
-                    <li>
-                      <strong>Kathodische Wasserstoffversprödung:</strong> Freigesetzte Wasserstoff-Protonen (<InlineMath math="\text{H}^+" />) nehmen Elektronen auf und diffundieren atomar in das Gefüge. Atomarer Wasserstoff reichert sich in Zonen hoher Zugspannung (Rissspitzen, Gitterdefekte) an und setzt die Kohäsion bzw. Bruchzähigkeit herab (wasserstoffinduzierte SpRK).
-                    </li>
+                <div className="p-3 bg-amber-50/80 rounded-xl border border-amber-200 text-amber-950 text-xs space-y-1"><MdText text={inhalt.texte.zweiHauptmechanismenDerSpannungsrisskorr} /><ul className="list-disc list-inside space-y-1 mt-1">
+                    <li><MdText text={inhalt.texte.anodischeSpannungsrisskorrosionLokalerAn} /></li>
+                    <li><MdText text={inhalt.texte.kathodischeWasserstoffversprödungFreiges} /></li>
                   </ul>
                 </div>
               </div>
@@ -252,49 +222,27 @@ export default function SpannbetonDauerhaftigkeit() {
               <div className="space-y-4">
                 <div className="p-4 bg-rose-50/70 border border-rose-200/80 rounded-xl space-y-2">
                   <h5 className="font-bold text-xs uppercase tracking-wider text-rose-900 flex items-center gap-1.5">
-                    <AlertTriangle className="h-4 w-4 text-rose-600" />
-                    Strikte Verbote &amp; Regeln im Spannbetonbau
-                  </h5>
+                    <AlertTriangle className="h-4 w-4 text-rose-600" /><MdText text={inhalt.texte.strikteVerboteRegelnIm} /></h5>
                   <div className="space-y-2 text-xs text-rose-950">
-                    <div className="p-2.5 bg-white rounded-lg border border-rose-200">
-                      <strong>1. Absolutes Schweißverbot:</strong>
-                      <p className="mt-0.5">
-                        Lichtbogen-Funken oder Schweißen in der Nähe von Spanngliedern erzeugen martensitische Härtegefüge mit Mikrorissen. Spannglieder reißen an solchen Stellen sofort ab.
-                      </p>
+                    <div className="p-2.5 bg-white rounded-lg border border-rose-200"><MdText text={inhalt.texte.t1AbsolutesSchweißverbot} /><p className="mt-0.5"><MdText text={inhalt.texte.lichtbogenFunkenOderSchweißen} /></p>
                     </div>
-                    <div className="p-2.5 bg-white rounded-lg border border-rose-200">
-                      <strong>2. Verbot von Feuerverzinkung bei hochfestem Spannstahl:</strong>
-                      <p className="mt-0.5">
-                        Zink reagiert im alkalischen Nassbeton mit Zementleim unter starker Wasserstoffentwicklung (<InlineMath math="\text{Zn} + 2\text{OH}^- + 2\text{H}_2\text{O} \to [\text{Zn(OH)}_4]^{2-} + \text{H}_2 \uparrow" />). Dies führt zur sofortigen Wasserstoffversprödung!
-                      </p>
+                    <div className="p-2.5 bg-white rounded-lg border border-rose-200"><MdText text={inhalt.texte.t2VerbotVonFeuerverzinkung} /><p className="mt-0.5"><MdText text={inhalt.texte.zinkReagiertImAlkalischen} /></p>
                     </div>
-                    <div className="p-2.5 bg-white rounded-lg border border-rose-200">
-                      <strong>3. Verbot von vergütetem Spannstahl &amp; Zulassungsregeln:</strong>
-                      <p className="mt-0.5">
-                        Früher verwendete vergütete Stähle zeigten interkristalline SpRK. Heute werden kaltgezogene Drähte und Litzen sowie warmgewalzte Stäbe mit abZ des DIBt verwendet; vergütete Spannstähle (z. B. Neptun, Sigma oval, Hennigsdorfer Spannstahl) gelten als SpRK-gefährdet.
-                      </p>
-                      <p className="mt-1 text-slate-700 font-medium">
-                        Für Bestandsbrücken mit SpRK-gefährdetem Spannstahl: BMVI-Handlungsanweisung (Ankündigungsverhalten, Riss-vor-Bruch-Nachweis).
-                      </p>
+                    <div className="p-2.5 bg-white rounded-lg border border-rose-200"><MdText text={inhalt.texte.t3VerbotVonVergütetem} /><p className="mt-0.5"><MdText text={inhalt.texte.früherVerwendeteVergüteteStähle} /></p>
+                      <p className="mt-1 text-slate-700 font-medium"><MdText text={inhalt.texte.fürBestandsbrückenMitSprk} /></p>
                     </div>
                   </div>
                 </div>
 
                 <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs space-y-1">
-                  <span className="font-bold text-slate-800 block">Die 3 Barrieren des Korrosionsschutzes:</span>
+                  <span className="font-bold text-slate-800 block"><MdText text={inhalt.texte.die3BarrierenDes} /></span>
                   <div className="grid grid-cols-3 gap-2 text-center pt-1">
                     <div className="p-2 bg-white rounded border border-slate-200">
-                      <strong className="text-shiraz block">1. Barriere</strong>
-                      Ausreichende dichte Betondeckung (<InlineMath math="c_{nom}" />)
-                    </div>
+                      <strong className="text-shiraz block">1. Barriere</strong><MdText text={inhalt.texte.ausreichendeDichteBetondeckungC} /></div>
                     <div className="p-2 bg-white rounded border border-slate-200">
-                      <strong className="text-shiraz block">2. Barriere</strong>
-                      Dichtes Hüllrohr (Stahl/Kunststoff)
-                    </div>
+                      <strong className="text-shiraz block">2. Barriere</strong><MdText text={inhalt.texte.dichtesHüllrohrStahlKunststoff} /></div>
                     <div className="p-2 bg-white rounded border border-slate-200">
-                      <strong className="text-shiraz block">3. Barriere</strong>
-                      Alkalische Verpressung (<InlineMath math="pH \ge 12{,}5" />)
-                    </div>
+                      <strong className="text-shiraz block">3. Barriere</strong><MdText text={inhalt.texte.alkalischeVerpressungPhGe} /></div>
                   </div>
                 </div>
               </div>
@@ -309,46 +257,32 @@ export default function SpannbetonDauerhaftigkeit() {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-5">
             <div className="flex items-center justify-between border-b border-home-grau/15 pb-3">
               <h4 className="text-base font-bold text-text-main flex items-center gap-2">
-                <Scale className="text-shiraz h-5 w-5" />
-                Normative Mindestbetondeckung für Spannglieder (DIN EN 1992-1-1 / DIN EN 1992-2)
-              </h4>
-              <span className="text-xs font-mono font-bold bg-blue-50 text-blue-900 border border-blue-200 px-2.5 py-1 rounded-md">
-                EC2 Kap. 4.4 &amp; NA
-              </span>
+                <Scale className="text-shiraz h-5 w-5" /><MdText text={inhalt.texte.normativeMindestbetondeckungFürSpannglie} /></h4>
+              <span className="text-xs font-mono font-bold bg-blue-50 text-blue-900 border border-blue-200 px-2.5 py-1 rounded-md"><MdText text={inhalt.texte.ec2Kap44} /></span>
             </div>
 
             <div className="bg-white p-4 rounded-xl border border-home-grau/25 space-y-2">
-              <div className="text-xs font-mono text-text-main/70 uppercase tracking-wider font-semibold">
-                Normative Bemessungsformel nach DIN EN 1992-1-1 Gl. (4.1):
-              </div>
+              <div className="text-xs font-mono text-text-main/70 uppercase tracking-wider font-semibold"><MdText text={inhalt.texte.normativeBemessungsformelNachDin} /></div>
               <div className="py-2.5 px-4 bg-off-white/70 rounded-xl border border-home-grau/20 text-center overflow-x-auto">
                 <BlockMath math="c_{nom} = c_{min} + \Delta c_{dev} \quad \text{mit} \quad c_{min} = \max\left\{c_{min,b}; \; c_{min,dur} + \Delta c_{dur,\gamma} - \Delta c_{dur,fck}; \; 10\text{ mm}\right\}" />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-xs text-text-main/80 pt-1">
-                <div className="p-2 bg-slate-50 rounded border border-slate-200">
-                  <strong>Verbundmaß <InlineMath math="c_{min,b}" />:</strong> Bei runden Hüllrohren gleich dem Hüllrohrdurchmesser <InlineMath math="\phi" />, jedoch maximal 80 mm (EC2 Tab. 4.2)! Bei sofortigem Verbund 2,0·Ø (Litzen/glatte Drähte) bzw. 3,0·Ø (gerippte Drähte).
-                </div>
-                <div className="p-2 bg-slate-50 rounded border border-slate-200">
-                  <strong>Dauerhaftigkeit <InlineMath math="c_{min,dur}" />:</strong> Erhöhungszuschlag <InlineMath math="\Delta c_{dur,\gamma} = +10\text{ mm}" /> für Spannglieder im Verbund!
-                </div>
-                <div className="p-2 bg-slate-50 rounded border border-slate-200">
-                  <strong>Vorhaltemaß <InlineMath math="\Delta c_{dev}" />:</strong> Nach NA(DE) 10 mm bei XC1, sonst 15 mm (im Brückenbau nach ZTV-ING 15 mm).
-                </div>
+                <div className="p-2 bg-slate-50 rounded border border-slate-200"><MdText text={inhalt.texte.verbundmaßCMinB} /></div>
+                <div className="p-2 bg-slate-50 rounded border border-slate-200"><MdText text={inhalt.texte.dauerhaftigkeitCMinDur} /></div>
+                <div className="p-2 bg-slate-50 rounded border border-slate-200"><MdText text={inhalt.texte.vorhaltemaßDeltaCDev} /></div>
               </div>
             </div>
 
             {/* Interaktiver Betondeckungs-Konfigurator */}
             <div className="p-5 bg-off-white/80 rounded-2xl border border-home-grau/30 space-y-5">
               <h5 className="font-bold text-sm text-text-main flex items-center gap-2">
-                <Building className="text-shiraz h-4 w-4" />
-                Interaktiver Betondeckungs-Rechner für Spannglieder
-              </h5>
+                <Building className="text-shiraz h-4 w-4" /><MdText text={inhalt.texte.interaktiverBetondeckungsRechnerFür} /></h5>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
                 {/* 1. Bauwerksart */}
                 <div className="space-y-1.5">
-                  <label className="font-bold text-slate-700 block">Bauwerksart &amp; Regelwerk:</label>
-                  <select aria-label="Bauwerksart &amp; Regelwerk"
+                  <label className="font-bold text-slate-700 block"><MdText text={inhalt.texte.bauwerksartRegelwerk} /></label>
+                  <select aria-label={inhalt.werte.bauwerksartRegelwerk}
                     value={structureType}
                     onChange={(e) => setStructureType(e.target.value as typeof structureType)}
                     className="w-full p-2 border border-home-grau/30 rounded-lg bg-white font-medium"
@@ -422,8 +356,8 @@ export default function SpannbetonDauerhaftigkeit() {
               {/* Expositionsklassen Wähler */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs pt-1 border-t border-home-grau/15">
                 <div className="space-y-1.5">
-                  <label className="font-bold text-slate-700 block">Karbonatisierung (XC):</label>
-                  <select aria-label="Karbonatisierung (XC)"
+                  <label className="font-bold text-slate-700 block"><MdText text={inhalt.texte.karbonatisierungXc} /></label>
+                  <select aria-label={inhalt.werte.karbonatisierungXc}
                     value={carbonationClass}
                     onChange={(e) => setCarbonationClass(e.target.value as typeof carbonationClass)}
                     className="w-full p-2 border border-home-grau/30 rounded-lg bg-white font-medium"
@@ -436,8 +370,8 @@ export default function SpannbetonDauerhaftigkeit() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="font-bold text-slate-700 block">Chloride aus Taumitteln (XD):</label>
-                  <select aria-label="Chloride aus Taumitteln (XD)"
+                  <label className="font-bold text-slate-700 block"><MdText text={inhalt.texte.chlorideAusTaumittelnXd} /></label>
+                  <select aria-label={inhalt.werte.chlorideAusTaumittelnXd}
                     value={chlorideClass}
                     onChange={(e) => setChlorideClass(e.target.value as typeof chlorideClass)}
                     className="w-full p-2 border border-home-grau/30 rounded-lg bg-white font-medium"
@@ -450,8 +384,8 @@ export default function SpannbetonDauerhaftigkeit() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="font-bold text-slate-700 block">Frost-Tau-Angriff (XF):</label>
-                  <select aria-label="Frost-Tau-Angriff (XF)"
+                  <label className="font-bold text-slate-700 block"><MdText text={inhalt.texte.frostTauAngriffXf} /></label>
+                  <select aria-label={inhalt.werte.frostTauAngriffXf}
                     value={frostClass}
                     onChange={(e) => setFrostClass(e.target.value as typeof frostClass)}
                     className="w-full p-2 border border-home-grau/30 rounded-lg bg-white font-medium"
@@ -468,57 +402,44 @@ export default function SpannbetonDauerhaftigkeit() {
               {/* Ergebnis-Dashboard */}
               <div className="p-4 bg-white rounded-xl border border-home-grau/30 shadow-xs space-y-4">
                 <div className="flex flex-wrap items-center justify-between gap-3 border-b border-home-grau/15 pb-2">
-                  <span className="font-bold text-xs uppercase tracking-wider text-slate-500">
-                    Berechnungsergebnis Betondeckung nach Eurocode 2:
-                  </span>
-                  <span className="text-xs bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">
-                    Normkonform nach DIN EN 1992-1-1 / DIN EN 1992-2
-                  </span>
+                  <span className="font-bold text-xs uppercase tracking-wider text-slate-500"><MdText text={inhalt.texte.berechnungsergebnisBetondeckungNachEuroc} /></span>
+                  <span className="text-xs bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded"><MdText text={inhalt.texte.normkonformNachDinEn} /></span>
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
                   <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                    <span className="text-[10px] uppercase font-bold text-slate-500 block">Verbundmaß c_min,b</span>
+                    <span className="text-[10px] uppercase font-bold text-slate-500 block"><MdText text={inhalt.texte.verbundmaßCMinB2} /></span>
                     <span className="text-xl font-black text-slate-800 font-mono mt-0.5 block">{formatDeWert(coverCalculation.c_min_b)} mm</span>
                     <span className="text-[10px] text-slate-500">Hüllrohr-Kriterium</span>
                   </div>
 
                   <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                    <span className="text-[10px] uppercase font-bold text-slate-500 block">Dauerhaftigkeit c_min,dur</span>
+                    <span className="text-[10px] uppercase font-bold text-slate-500 block"><MdText text={inhalt.texte.dauerhaftigkeitCMinDur2} /></span>
                     <span className="text-xl font-black text-slate-800 font-mono mt-0.5 block">{formatDeWert(coverCalculation.c_min_dur)} mm</span>
-                    <span className="text-[10px] text-slate-500">inkl. +{formatDeWert(coverCalculation.delta_dur_gamma)} mm Spannstahlschutz</span>
+                    <span className="text-[10px] text-slate-500">inkl. +{formatDeWert(coverCalculation.delta_dur_gamma)}<MdText text={inhalt.texte.mmSpannstahlschutz} /></span>
                   </div>
 
                   <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                    <span className="text-[10px] uppercase font-bold text-slate-500 block">Vorhaltemaß Δc_dev</span>
+                    <span className="text-[10px] uppercase font-bold text-slate-500 block"><MdText text={inhalt.texte.vorhaltemaßCDev} /></span>
                     <span className="text-xl font-black text-slate-800 font-mono mt-0.5 block">+{formatDeWert(coverCalculation.delta_c_dev)} mm</span>
-                    <span className="text-[10px] text-slate-500">{structureType === 'bruecke' ? 'ZTV-ING Brückenbau' : 'Hochbau-Toleranz'}</span>
+                    <span className="text-[10px] text-slate-500">{structureType === 'bruecke' ? inhalt.werte.ztvIngBrückenbau : 'Hochbau-Toleranz'}</span>
                   </div>
 
                   <div className="p-3 bg-shiraz/10 rounded-xl border border-shiraz/30">
-                    <span className="text-[10px] uppercase font-bold text-shiraz block">Nennmaß c_nom</span>
+                    <span className="text-[10px] uppercase font-bold text-shiraz block"><MdText text={inhalt.texte.nennmaßCNom} /></span>
                     <span className="text-2xl font-black text-shiraz font-mono mt-0.5 block">{formatDeWert(coverCalculation.c_nom)} mm</span>
-                    <span className="text-[10px] text-shiraz/80 font-bold">In den Plänen Verlegemaß c_v ≥ c_nom angeben</span>
+                    <span className="text-[10px] text-shiraz/80 font-bold"><MdText text={inhalt.texte.inDenPlänenVerlegemaß} /></span>
                   </div>
                 </div>
 
-                <div className="p-3 bg-slate-50/70 rounded-lg text-xs text-text-main/80 space-y-1">
-                  <strong>Erklärung des maßgebenden Werts:</strong>
-                  <p>
+                <div className="p-3 bg-slate-50/70 rounded-lg text-xs text-text-main/80 space-y-1"><MdText text={inhalt.texte.erklärungDesMaßgebendenWerts} /><p>
                     {coverCalculation.c_min_b >= coverCalculation.c_min_dur ? (
-                      <span>
-                        Das Verbundmaß <InlineMath math="c_{min,b} = \phi_{Hüllrohr} = " /> <strong>{formatDeWert(coverCalculation.c_min_b)} mm</strong> ist 
-                        maßgebend gegenüber der Umweltanforderung (<InlineMath math="c_{min,dur} = " /> {formatDeWert(coverCalculation.c_min_dur)} mm). 
-                        Mit dem Vorhaltemaß <InlineMath math="\Delta c_{dev} = " /> {formatDeWert(coverCalculation.delta_c_dev)} mm muss das Nennmaß 
-                        mindestens <strong>{formatDeWert(coverCalculation.c_nom)} mm</strong> betragen.
+                      <span><MdText text={inhalt.texte.dasVerbundmaßCMin} /><strong>{formatDeWert(coverCalculation.c_min_b)} mm</strong><MdText text={inhalt.texte.istMaßgebendGegenüberDer} />{formatDeWert(coverCalculation.c_min_dur)}<MdText text={inhalt.texte.mmMitDemVorhaltemaß} />{formatDeWert(coverCalculation.delta_c_dev)}<MdText text={inhalt.texte.mmMussDasNennmaß} /><strong>{formatDeWert(coverCalculation.c_nom)} mm</strong> betragen.
                       </span>
                     ) : (
-                      <span>
-                        Die Dauerhaftigkeitsanforderung <InlineMath math="c_{min,dur} = " /> <strong>{formatDeWert(coverCalculation.c_min_dur)} mm</strong> 
-                        (Basis {formatDeWert(coverCalculation.baseDur)} mm + {formatDeWert(coverCalculation.delta_dur_gamma)} mm Spanngliedzuschlag 
-                        {coverCalculation.delta_dur_100 > 0 ? ` + ${formatDeWert(coverCalculation.delta_dur_100)} mm für 100a Nutzungsdauer` : ''} 
-                        {coverCalculation.delta_dur_fck > 0 ? ` - ${formatDeWert(coverCalculation.delta_dur_fck)} mm Festigkeitsabzug` : ''}) ist maßgebend. 
-                        Das erforderliche Nennmaß beträgt <strong>{formatDeWert(coverCalculation.c_nom)} mm</strong>.
+                      <span><MdText text={inhalt.texte.dieDauerhaftigkeitsanforderungCMin} /><strong>{formatDeWert(coverCalculation.c_min_dur)} mm</strong> 
+                        (Basis {formatDeWert(coverCalculation.baseDur)} mm + {formatDeWert(coverCalculation.delta_dur_gamma)}<MdText text={inhalt.texte.mmSpanngliedzuschlag} />{coverCalculation.delta_dur_100 > 0 ? ` + ${formatDeWert(coverCalculation.delta_dur_100)} mm für 100a Nutzungsdauer` : ''} 
+                        {coverCalculation.delta_dur_fck > 0 ? ` - ${formatDeWert(coverCalculation.delta_dur_fck)} mm Festigkeitsabzug` : ''}<MdText text={inhalt.texte.istMaßgebendDasErforderliche} /><strong>{formatDeWert(coverCalculation.c_nom)} mm</strong>.
                       </span>
                     )}
                   </p>
@@ -535,9 +456,7 @@ export default function SpannbetonDauerhaftigkeit() {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-5">
             <div className="flex items-center justify-between border-b border-home-grau/15 pb-3">
               <h4 className="text-base font-bold text-text-main flex items-center gap-2">
-                <Droplets className="text-shiraz h-5 w-5" />
-                Verpressung von Spanngliedern (DIN EN 445 / 447) &amp; ZfP-Integritätsprüfung
-              </h4>
+                <Droplets className="text-shiraz h-5 w-5" /><MdText text={inhalt.texte.verpressungVonSpanngliedernDin} /></h4>
               <span className="text-xs font-mono font-bold bg-amber-50 text-amber-900 border border-amber-200 px-2.5 py-1 rounded-md">
                 Zementeinpressmörtel
               </span>
@@ -545,51 +464,40 @@ export default function SpannbetonDauerhaftigkeit() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-3 text-sm text-text-main/80 leading-relaxed">
-                <p>
-                  <strong>Warum ist die Injektion so entscheidend?</strong><br />
-                  Bei Spanngliedern im nachträglichen Verbund liegen die hochfesten Litzen in einem gewellten Blech- 
-                  oder Kunststoffhüllrohr. Nach dem Spannen müssen die Hohlräume vollständig mit Zementeinpressmörtel verfüllt werden. 
-                  Der Einpressmörtel erfüllt zwei unverzichtbare Aufgaben:
-                </p>
+                <p><MdText text={inhalt.texte.warumIstDieInjektion} /></p>
                 <ol className="list-decimal list-inside space-y-1 text-xs pl-1">
-                  <li><strong>Mechanischer Verbund:</strong> Kraftübertragung zwischen Spannglied und Betonquerschnitt.</li>
-                  <li><strong>Dauerhafter Korrosionsschutz:</strong> Das hochalkalische Porenwasser (<InlineMath math="\text{pH} \ge 12{,}5" />) bildet eine mikroskopische Passivschicht auf dem Spannstahl.</li>
+                  <li><MdText text={inhalt.texte.mechanischerVerbundKraftübertragungZwisc} /></li>
+                  <li><MdText text={inhalt.texte.dauerhafterKorrosionsschutzDasHochalkali} /></li>
                 </ol>
-                <div className="p-3 bg-rose-50/70 border border-rose-200 rounded-xl text-rose-950 text-xs">
-                  <strong>Die Gefahr unvollständiger Verpressung:</strong> Verbleiben im Hüllrohr Lufteinschlüsse oder bildet 
-                  sich durch Wasserabsondern (Bluten) freies Wasser an Rohrhochpunkten, bricht die Passivierung zusammen. 
-                  Sauerstoff und Kondenswasser führen an diesen Stellen zu extrem schneller Lochfraß- und Spannungsrisskorrosion.
-                </div>
+                <div className="p-3 bg-rose-50/70 border border-rose-200 rounded-xl text-rose-950 text-xs"><MdText text={inhalt.texte.dieGefahrUnvollständigerVerpressung} /></div>
               </div>
 
               {/* Anforderungen nach DIN EN 447 */}
               <div className="space-y-3">
-                <h5 className="font-bold text-xs uppercase tracking-wider text-slate-700">
-                  Qualitätskriterien nach DIN EN 447 &amp; DIN EN 445:
-                </h5>
+                <h5 className="font-bold text-xs uppercase tracking-wider text-slate-700"><MdText text={inhalt.texte.qualitätskriterienNachDinEn} /></h5>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                   <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
                     <strong className="text-shiraz block">Wasserzementwert:</strong>
-                    <span className="font-mono font-bold text-sm block">w/z ≈ 0,35–0,40 (Grenzwert nach DIN EN 447 bzw. Zulassung prüfen)</span>
-                    <span className="text-[11px] text-slate-500">Geringer Wassergehalt mindert Porosität.</span>
+                    <span className="font-mono font-bold text-sm block"><MdText text={inhalt.texte.wZ035} /></span>
+                    <span className="text-[11px] text-slate-500"><MdText text={inhalt.texte.geringerWassergehaltMindertPorosität} /></span>
                   </div>
 
                   <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-                    <strong className="text-shiraz block">Fließvermögen (Trichterverfahren DIN EN 445):</strong>
-                    <span className="font-mono font-bold text-sm block">t₀, t₃₀ ≤ 25 s (DIN EN 447)</span>
-                    <span className="text-[11px] text-slate-500">Hohe Fließfähigkeit auch nach 30 min.</span>
+                    <strong className="text-shiraz block"><MdText text={inhalt.texte.fließvermögenTrichterverfahrenDinEn} /></strong>
+                    <span className="font-mono font-bold text-sm block"><MdText text={inhalt.texte.tT25S} /></span>
+                    <span className="text-[11px] text-slate-500"><MdText text={inhalt.texte.hoheFließfähigkeitAuchNach} /></span>
                   </div>
 
                   <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-                    <strong className="text-shiraz block">Wasserabsondern (Bluten):</strong>
-                    <span className="font-mono font-bold text-sm block">≤ 0,3 % Volumen</span>
-                    <span className="text-[11px] text-slate-500">Nach 24h kein freies Wasser an Hochpunkten!</span>
+                    <strong className="text-shiraz block"><MdText text={inhalt.texte.wasserabsondernBluten} /></strong>
+                    <span className="font-mono font-bold text-sm block"><MdText text={inhalt.texte.t03Volumen} /></span>
+                    <span className="text-[11px] text-slate-500"><MdText text={inhalt.texte.nach24hKeinFreies} /></span>
                   </div>
 
                   <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-                    <strong className="text-shiraz block">Volumenänderung (Quellen):</strong>
-                    <span className="font-mono font-bold text-sm block">−1 % … +5 % (DIN EN 447)</span>
-                    <span className="text-[11px] text-slate-500">Leichtes Quellen kompensiert Schwinden.</span>
+                    <strong className="text-shiraz block"><MdText text={inhalt.texte.volumenänderungQuellen} /></strong>
+                    <span className="font-mono font-bold text-sm block"><MdText text={inhalt.texte.t15DinEn} /></span>
+                    <span className="text-[11px] text-slate-500"><MdText text={inhalt.texte.leichtesQuellenKompensiertSchwinden} /></span>
                   </div>
                 </div>
               </div>
@@ -598,33 +506,23 @@ export default function SpannbetonDauerhaftigkeit() {
             {/* ZfP Methoden zur Hohlraumerkennung */}
             <div className="pt-2 border-t border-home-grau/15 space-y-3">
               <h5 className="font-bold text-xs uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
-                <Search className="h-4 w-4 text-shiraz" />
-                Zerstörungsfreie Prüfverfahren (ZfP) zur Erkennung von Verpressfehlern
-              </h5>
+                <Search className="h-4 w-4 text-shiraz" /><MdText text={inhalt.texte.zerstörungsfreiePrüfverfahrenZfpZur} /></h5>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
                 <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-                  <strong className="text-slate-900 block">1. Impact-Echo (Schall)</strong>
-                  <p className="text-slate-600 text-[11px] leading-relaxed">
-                    Mechanischer Impuls regt Resonanzschwingungen an. Fehlstellen zeigen Frequenzverschiebungen (oft Erstindikation).
-                  </p>
+                  <strong className="text-slate-900 block"><MdText text={inhalt.texte.t1ImpactEchoSchall} /></strong>
+                  <p className="text-slate-600 text-[11px] leading-relaxed"><MdText text={inhalt.texte.mechanischerImpulsRegtResonanzschwingung} /></p>
                 </div>
                 <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-                  <strong className="text-slate-900 block">2. Ultraschall-Echo (Phased Array)</strong>
-                  <p className="text-slate-600 text-[11px] leading-relaxed">
-                    Hochauflösende Schnittbilder der Spanngliedlage und Reflexion an Luft-Hohlräumen (Impedanzsprung).
-                  </p>
+                  <strong className="text-slate-900 block"><MdText text={inhalt.texte.t2UltraschallEchoPhased} /></strong>
+                  <p className="text-slate-600 text-[11px] leading-relaxed"><MdText text={inhalt.texte.hochauflösendeSchnittbilderDerSpannglied} /></p>
                 </div>
                 <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-                  <strong className="text-slate-900 block">3. Radiometrie (Röntgen)</strong>
-                  <p className="text-slate-600 text-[11px] leading-relaxed">
-                    Durchstrahlung liefert zweifelsfreien photographischen Nachweis von Hohlräumen in Hüllrohren (aufwendig).
-                  </p>
+                  <strong className="text-slate-900 block"><MdText text={inhalt.texte.t3RadiometrieRöntgen} /></strong>
+                  <p className="text-slate-600 text-[11px] leading-relaxed"><MdText text={inhalt.texte.durchstrahlungLiefertZweifelsfreienPhoto} /></p>
                 </div>
                 <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-                  <strong className="text-slate-900 block">4. Video-Endoskopie</strong>
-                  <p className="text-slate-600 text-[11px] leading-relaxed">
-                    Minimalinvasive optische Inspektion über angebohrte Entlüftungsventile bei Verdachtsfällen.
-                  </p>
+                  <strong className="text-slate-900 block"><MdText text={inhalt.texte.t4VideoEndoskopie} /></strong>
+                  <p className="text-slate-600 text-[11px] leading-relaxed"><MdText text={inhalt.texte.minimalinvasiveOptischeInspektionÜber} /></p>
                 </div>
               </div>
             </div>
@@ -638,64 +536,44 @@ export default function SpannbetonDauerhaftigkeit() {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-5">
             <div className="flex items-center justify-between border-b border-home-grau/15 pb-3">
               <h4 className="text-base font-bold text-text-main flex items-center gap-2">
-                <Layers className="text-shiraz h-5 w-5" />
-                Dekompressionsnachweis &amp; Rissbreitenbegrenzung nach EC2 Tab. 7.1N
-              </h4>
-              <span className="text-xs font-mono font-bold bg-purple-50 text-purple-900 border border-purple-200 px-2.5 py-1 rounded-md">
-                Gebrauchstauglichkeit (SLS)
-              </span>
+                <Layers className="text-shiraz h-5 w-5" /><MdText text={inhalt.texte.dekompressionsnachweisRissbreitenbegrenz} /></h4>
+              <span className="text-xs font-mono font-bold bg-purple-50 text-purple-900 border border-purple-200 px-2.5 py-1 rounded-md"><MdText text={inhalt.texte.gebrauchstauglichkeitSls} /></span>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 text-sm text-text-main/80 leading-relaxed">
               <div className="space-y-3">
                 <p>
-                  <strong>Was bedeutet „Dekompression“?</strong><br />
+                  <strong><MdText text={inhalt.texte.wasBedeutetDekompression} /></strong><br />
                   Der Dekompressionsnachweis verlangt, dass unter der maßgebenden Einwirkungskombination (meist der 
-                  <strong> quasi-ständigen Kombination</strong>) innerhalb eines Bereichs von <strong>25 mm</strong> um das Hüllrohr bzw. die Litze (EN-Empfehlung) keine Zugspannungen auftreten; der NA(DE) fordert stattdessen, dass der Beton um das Spannglied im Bereich von <strong>100 mm bzw. h/10</strong> (der größere Wert ist maßgebend) unter Druckspannungen steht.
+                  <strong><MdText text={inhalt.texte.quasiStändigenKombination} /></strong>) innerhalb eines Bereichs von <strong>25 mm</strong> um das Hüllrohr bzw. die Litze (EN-Empfehlung) keine Zugspannungen auftreten; der NA(DE) fordert stattdessen, dass der Beton um das Spannglied im Bereich von <strong><MdText text={inhalt.texte.t100MmBzwH} /></strong> (der größere Wert ist maßgebend) unter Druckspannungen steht.
                 </p>
                 <div className="p-3 bg-white rounded-xl border border-home-grau/30 text-center font-mono">
                   <BlockMath math="\sigma_{c,\text{Spannglied}} \le 0 \quad (\text{nur Betondruckspannung zulässig!})" />
                 </div>
-                <p className="text-xs">
-                  Dies stellt sicher, dass eventuelle Mikrorisse im Beton niemals bis an die Spannglieder heranreichen. 
-                  Chloride und Feuchtigkeit können so nicht kapillar an den Spannstahl vordringen.
-                </p>
+                <p className="text-xs"><MdText text={inhalt.texte.diesStelltSicherDass} /></p>
               </div>
 
               {/* Rissbreitenbegrenzung im Vergleich */}
               <div className="space-y-2">
-                <h5 className="font-bold text-xs uppercase tracking-wider text-slate-700">
-                  Grenzwerte der Rissbreite im Vergleich (EC2 Tab. 7.1N):
-                </h5>
+                <h5 className="font-bold text-xs uppercase tracking-wider text-slate-700"><MdText text={inhalt.texte.grenzwerteDerRissbreiteIm} /></h5>
                 <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2 text-xs">
                   <div className="flex justify-between items-center border-b border-slate-200 pb-1.5">
-                    <span className="font-bold text-slate-800">Schlaffer Stahlbeton (XC2–XC4):</span>
-                    <span className="font-mono font-bold text-slate-900 bg-white px-2 py-0.5 rounded border border-slate-200">
-                      w_max ≤ 0,3 mm (0,4 mm nur XC0/XC1)
-                    </span>
+                    <span className="font-bold text-slate-800"><MdText text={inhalt.texte.schlafferStahlbetonXc2Xc4} /></span>
+                    <span className="font-mono font-bold text-slate-900 bg-white px-2 py-0.5 rounded border border-slate-200"><MdText text={inhalt.texte.wMax03} /></span>
                   </div>
                   <div className="flex justify-between items-center border-b border-slate-200 pb-1.5">
-                    <span className="font-bold text-amber-900">Spannbeton im Verbund (XC2–XC4):</span>
-                    <span className="font-mono font-bold text-amber-900 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
-                      w_max ≤ 0,2 mm
-                    </span>
+                    <span className="font-bold text-amber-900"><MdText text={inhalt.texte.spannbetonImVerbundXc2} /></span>
+                    <span className="font-mono font-bold text-amber-900 bg-amber-50 px-2 py-0.5 rounded border border-amber-200"><MdText text={inhalt.texte.wMax02} /></span>
                   </div>
                   <div className="flex justify-between items-center pt-0.5">
-                    <span className="font-bold text-rose-900">Spannbeton bei Taumitteln (XD1–XD3):</span>
+                    <span className="font-bold text-rose-900"><MdText text={inhalt.texte.spannbetonBeiTaumittelnXd1} /></span>
                     <span className="font-mono font-bold text-rose-900 bg-rose-50 px-2 py-0.5 rounded border border-rose-200">
                       Dekompressionsnachweis!
                     </span>
                   </div>
                 </div>
-                <p className="text-[11px] text-slate-500 leading-normal">
-                  * Bei Tausalzeinwirkung (XD/XS) gilt die Dekompression unter der häufigen Kombination, bei XC2–XC4 unter der quasi-ständigen (EC2 Tab. 7.1N, NA Tab. 7.1DE).
-                </p>
-                <div className="p-2.5 bg-amber-50/80 rounded-lg border border-amber-200 text-[11px] text-amber-950 space-y-1 mt-2">
-                  <strong>Verschärfung an Koppelstellen (DIN EN 1992-1-1 Abs. 8.10.4):</strong>
-                  <p>
-                    An Koppelankern und Arbeitsfugen muss die Dekompression (<InlineMath math="\sigma_c \le 0" />) bereits 
-                    unter der <strong>häufigen Einwirkungskombination</strong> eingehalten werden (nicht erst unter quasi-ständig).
-                  </p>
+                <p className="text-[11px] text-slate-500 leading-normal"><MdText text={inhalt.texte.beiTausalzeinwirkungXdXs} /></p>
+                <div className="p-2.5 bg-amber-50/80 rounded-lg border border-amber-200 text-[11px] text-amber-950 space-y-1 mt-2"><MdText text={inhalt.texte.verschärfungAnKoppelstellenDin} /><p><MdText text={inhalt.texte.anKoppelankernUndArbeitsfugen} /></p>
                 </div>
               </div>
             </div>
@@ -710,36 +588,24 @@ export default function SpannbetonDauerhaftigkeit() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-home-grau/15 pb-4">
               <div>
                 <h4 className="text-base font-bold text-text-main flex items-center gap-2">
-                  <Search className="text-shiraz h-5 w-5" />
-                  5. Zerstörungsfreie Prüfverfahren (ZfP) im Spannbetonbau
-                </h4>
-                <p className="text-xs text-text-main/70 mt-1">
-                  Hohlraumortung in Hüllrohren, Spanndrahtbruchdetektion (MFL), Georadar, Ultraschall-Echo (Phased Array) &amp; Dauermonitoring nach DGZfP / BASt / ZTV-ING
-                </p>
+                  <Search className="text-shiraz h-5 w-5" /><MdText text={inhalt.texte.t5ZerstörungsfreiePrüfverfahrenZfp} /></h4>
+                <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.hohlraumortungInHüllrohrenSpanndrahtbruc} /></p>
               </div>
-              <span className="self-start sm:self-center px-3 py-1 rounded-full text-xs font-semibold bg-shiraz/10 text-shiraz border border-shiraz/20 whitespace-nowrap">
-                DGZfP-Merkblätter (Reihe B) &amp; BASt-Berichte
-              </span>
+              <span className="self-start sm:self-center px-3 py-1 rounded-full text-xs font-semibold bg-shiraz/10 text-shiraz border border-shiraz/20 whitespace-nowrap"><MdText text={inhalt.texte.dgzfpMerkblätterReiheB} /></span>
             </div>
 
             {/* Didaktische Einleitung */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
               <div>
-                <strong className="text-text-main block mb-1">Warum stoßen Standard-Prüfmethoden an ihre Grenzen?</strong>
-                <p>
-                  Im normalen Stahlbetonbau kündigt sich Korrosion durch Abplatzungen und Rostspuren an. 
-                  Im <strong>Spannbetonbau</strong> liegen die Spannglieder in 50–150 mm Tiefe im Inneren von Hüllrohren. 
-                  Spanndrahtbrüche infolge Spannungsrisskorrosion verlaufen <strong>ohne visuelle Vorwarnung</strong> 
-                  an der Bauteiloberfläche. ZfP-Verfahren müssen Hüllrohrwand und dichte schlaffe Bewehrungslagen 
-                  durchdringen, um Fehlstellen und Brüche zerstörungsfrei aufzudecken.
-                </p>
+                <strong className="text-text-main block mb-1"><MdText text={inhalt.texte.warumStoßenStandardPrüfmethoden} /></strong>
+                <p><MdText text={inhalt.texte.imNormalenStahlbetonbauKündigt} /></p>
               </div>
               <div>
-                <strong className="text-text-main block mb-1">Die 3 Kern-Fragestellungen der Bauwerksdiagnostik:</strong>
+                <strong className="text-text-main block mb-1"><MdText text={inhalt.texte.die3KernFragestellungen} /></strong>
                 <ul className="list-disc pl-4 space-y-1">
-                  <li><strong>Wo liegt das Spannglied exakt?</strong> (Georadar &amp; elektromagnetische Ortung vor Bohrarbeiten).</li>
-                  <li><strong>Ist das Hüllrohr hohlraumfrei verpresst?</strong> (Ultraschall-Echo &amp; Impact-Echo).</li>
-                  <li><strong>Sind Drähte bereits gerissen oder korrodiert?</strong> (Magnetischer Streufluss MFL &amp; Schallemission).</li>
+                  <li><MdText text={inhalt.texte.woLiegtDasSpannglied} /></li>
+                  <li><MdText text={inhalt.texte.istDasHüllrohrHohlraumfrei} /></li>
+                  <li><MdText text={inhalt.texte.sindDrähteBereitsGerissen} /></li>
                 </ul>
               </div>
             </div>
@@ -748,21 +614,17 @@ export default function SpannbetonDauerhaftigkeit() {
             <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
-                  <Activity size={14} className="text-shiraz" />
-                  ZfP-Methoden-Konfigurator: Prüfaufgabe wählen
-                </span>
-                <span className="text-[11px] font-mono text-slate-500">
-                  Empfehlungen nach DGZfP &amp; BASt
-                </span>
+                  <Activity size={14} className="text-shiraz" /><MdText text={inhalt.texte.zfpMethodenKonfiguratorPrüfaufgabe} /></span>
+                <span className="text-[11px] font-mono text-slate-500"><MdText text={inhalt.texte.empfehlungenNachDgzfpBast} /></span>
               </div>
 
               {/* 5 Aufgaben-Buttons */}
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
                 {[
-                  { id: 'hohlraum', label: 'Hohlraumerkennung', desc: 'Verpressqualität Hüllrohr' },
-                  { id: 'drahtbruch', label: 'Drahtbruchprüfung', desc: 'Gerissene Litzen / Drähte' },
-                  { id: 'korrosion', label: 'Aktive Korrosionsortung', desc: 'Depassivierung & Chloride' },
-                  { id: 'geometrie', label: 'Spanngliedortung', desc: 'Lage & Betondeckung' },
+                  { id: 'hohlraum', label: 'Hohlraumerkennung', desc: inhalt.werte.verpressqualitätHüllrohr },
+                  { id: 'drahtbruch', label: 'Drahtbruchprüfung', desc: inhalt.werte.gerisseneLitzenDrähte },
+                  { id: 'korrosion', label: inhalt.werte.aktiveKorrosionsortung, desc: inhalt.werte.depassivierungChloride },
+                  { id: 'geometrie', label: 'Spanngliedortung', desc: inhalt.werte.lageBetondeckung },
                   { id: 'monitoring', label: 'Dauermonitoring', desc: 'Echtzeit-Überwachung' }
                 ].map((task) => (
                   <button
@@ -785,48 +647,7 @@ export default function SpannbetonDauerhaftigkeit() {
 
               {/* Dynamische Detail-Karte zur gewählten Prüfaufgabe */}
               {(() => {
-                const zfpDetails = {
-                  hohlraum: {
-                    title: 'Hohlraumerkennung & Verpressqualität in Hüllrohren',
-                    primary: 'Ultraschall-Echo mit Phased-Array-Technik (A1040 MIRA / Pundit Array)',
-                    secondary: 'Impact-Echo (Schallresonanz) + Endoskopische Verifikation',
-                    principle: 'Akustischer Impedanzsprung: Zementmörtel (Z ≈ 8.5·10⁶ kg/(m²s)) vs. Luftporen (Z ≈ 400). An Luft entsteht Totalreflexion (R ≈ -1.0) mit starkem Phasensprung.',
-                    limits: 'Detektiert Hohlräume ab ca. 15–20 mm Ausdehnung bei Betondeckungen bis 50–100 cm. Schlaffe Querbewehrung kann Streuechos erzeugen.',
-                    standards: 'DGZfP-Merkblätter B 04 / B 11 & BASt-Leitfaden ZfP'
-                  },
-                  drahtbruch: {
-                    title: 'Detektion gerissener Spannstahldrähte im Hüllrohr',
-                    primary: 'Magnetische Streuflussprüfung (MFL - Magnetic Flux Leakage)',
-                    secondary: 'Remanenzmagnetismus-Verfahren (Restfeldmessung)',
-                    principle: 'Ein starker Elektromagnet magnetisiert das Spannglied bis zur magnetischen Sättigung. Ein Drahtbruch erzeugt magnetische Gegenpole und einen Streufluss an der Betonoberfläche.',
-                    limits: 'Erkennt Einzel- und Mehrfachdrahtbrüche ab 1 gerissenem Draht bei Betondeckungen bis ca. 120–150 mm. Bei dicken Bauteilen oder sehr dichter Querbewehrung abnehmende Empfindlichkeit.',
-                    standards: 'Magnetische Streufeldmessung: kein DGZfP-Merkblatt; Verfahrensbeschreibung in BASt-/BAM-Forschungsberichten'
-                  },
-                  korrosion: {
-                    title: 'Lokalisierung aktiver Korrosionsherde (Lochfraß / Chloridangriff)',
-                    primary: 'Potenzialfeldmessung (Half-Cell Potential / Referenzelektrode Cu/CuSO₄)',
-                    secondary: 'Polarisationswiderstandsmessung (Rp / galvanostatische Puls-Methode)',
-                    principle: 'Elektrochemische Potenzialdifferenz zwischen intaktem passiviertem Stahl (-100 bis -200 mV) und aktiv korrodierendem Stahl (< -350 mV) an der Betonoberfläche.',
-                    limits: 'Zeigt aktive Korrosion zuverlässig an, erfordert jedoch leitfähigen Kontakt zum Beton. Bei Hüllrohren aus Kunststoff (fib PL2/PL3) nur außerhalb des Rohrs messbar.',
-                    standards: 'DIN EN ISO 12696 & DGZfP-Merkblatt B 03 (2025)'
-                  },
-                  geometrie: {
-                    title: 'Spanngliedachslage & Kollisionsprüfung vor Bohrarbeiten',
-                    primary: 'Georadar (GPR, bodengekoppelt, 1,5–2,6 GHz)',
-                    secondary: 'Niederfrequente elektromagnetische Wirbelstromsonden (Profometer)',
-                    principle: 'Emission hochfrequenter elektromagnetischer Radarwellen. An metallischen Hüllrohren erfolgt Totalreflexion (Dielektrizitätskonstante ε_r Beton ≈ 6–9 vs. Metall ∞).',
-                    limits: 'Lagegenauigkeit ±5 mm bis 40 cm Tiefe. Bei feuchtem oder stark salzbelastetem Beton hohe Signaldämpfung.',
-                    standards: 'DGZfP-Merkblätter B 10 (Radar) / B 02 (Bewehrungsortung)'
-                  },
-                  monitoring: {
-                    title: 'Permanentes Echtzeit-Monitoring gefährdeter Spannbetonbrücken',
-                    primary: 'Schallemissionsanalyse (Acoustic Emission - AE)',
-                    secondary: 'Elektrisch isolierte Spannglieder (EIT - Widerstandsüberwachung)',
-                    principle: 'Piezosensoren erfassen die transiente Ultraschall-Schockwelle (50–200 kHz) im exakten Moment des Reißens eines Spannstahldrahts. 3D-Laufzeittriangulation ortet die Bruchstelle.',
-                    limits: 'Reines Aktiv-Monitoring (erfasst nur neue Drahtbrüche ab Montage, keine Altschäden). Hoher Aufwand bei Signalfilterung gegen Verkehrsrauschen.',
-                    standards: 'DIN EN 13554 (Schallemissionsprüfung) & fib Bulletin 33'
-                  }
-                }[selectedZfpTask];
+                const zfpDetails = inhalt.daten.SpannbetonDauerhaftigkeit[selectedZfpTask];
 
                 return (
                   <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs space-y-3">
@@ -842,16 +663,16 @@ export default function SpannbetonDauerhaftigkeit() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                       <div className="p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-1">
-                        <strong className="text-slate-900 block font-semibold">1. Primäres Prüfverfahren (Goldstandard):</strong>
+                        <strong className="text-slate-900 block font-semibold"><MdText text={inhalt.texte.t1PrimäresPrüfverfahrenGoldstandard} /></strong>
                         <p className="text-shiraz font-bold">{zfpDetails.primary}</p>
-                        <strong className="text-slate-900 block font-semibold pt-1">2. Sekundäres / Bestätigungsverfahren:</strong>
+                        <strong className="text-slate-900 block font-semibold pt-1"><MdText text={inhalt.texte.t2SekundäresBestätigungsverfahren} /></strong>
                         <p className="text-slate-600">{zfpDetails.secondary}</p>
                       </div>
 
                       <div className="p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-1">
-                        <strong className="text-slate-900 block font-semibold">Physikalisches Wirkprinzip:</strong>
+                        <strong className="text-slate-900 block font-semibold"><MdText text={inhalt.texte.physikalischesWirkprinzip} /></strong>
                         <p className="text-slate-600 leading-relaxed text-[11px]">{zfpDetails.principle}</p>
-                        <strong className="text-slate-900 block font-semibold pt-1">Praktische Nachweisgrenzen &amp; Störungen:</strong>
+                        <strong className="text-slate-900 block font-semibold pt-1"><MdText text={inhalt.texte.praktischeNachweisgrenzenStörungen} /></strong>
                         <p className="text-slate-600 leading-relaxed text-[11px]">{zfpDetails.limits}</p>
                       </div>
                     </div>
@@ -865,19 +686,15 @@ export default function SpannbetonDauerhaftigkeit() {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-home-grau/15 pb-2">
                 <div>
                   <h5 className="font-bold text-sm text-text-main flex items-center gap-2">
-                    <Radio className="text-shiraz h-4 w-4" />
-                    Ultraschall-Echo (Phased Array) &amp; Rekonstruktions-Simulator
-                  </h5>
-                  <p className="text-[11px] text-text-main/70">
-                    Simulation des A-Scan (Laufzeit-Amplitude) und B-Scan (SAFT-Tiefenschnitt) für verschiedene Hüllrohrzustände
-                  </p>
+                    <Radio className="text-shiraz h-4 w-4" /><MdText text={inhalt.texte.ultraschallEchoPhasedArray} /></h5>
+                  <p className="text-[11px] text-text-main/70"><MdText text={inhalt.texte.simulationDesAScan} /></p>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <span className="text-xs font-semibold text-text-main mr-1">Verpresszustand:</span>
                   {[
-                    { id: 'voll_verpresst', label: 'Voll verpresst' },
-                    { id: 'lufteinschluss', label: 'Lufteinschluss (Hohlraum)' },
-                    { id: 'wasserblase', label: 'Wasserblase (Bluten)' }
+                    { id: 'voll_verpresst', label: inhalt.werte.vollVerpresst },
+                    { id: 'lufteinschluss', label: inhalt.werte.lufteinschlussHohlraum },
+                    { id: 'wasserblase', label: inhalt.werte.wasserblaseBluten }
                   ].map((cond) => (
                     <button
                       key={cond.id}
@@ -1071,16 +888,7 @@ export default function SpannbetonDauerhaftigkeit() {
                 </div>
               </div>
 
-              <div className="p-3 bg-slate-50/80 rounded-lg text-xs text-text-main/80 space-y-1">
-                <strong>Erklärung des akustischen Phänomens (Impedanzgrenze):</strong>
-                <p>
-                  Trifft die Ultraschall-Transversalwelle auf ein <strong>voll verpresstes Hüllrohr</strong>, 
-                  besitzt der Einpressmörtel eine ähnliche akustische Impedanz wie der umgebende Beton (<InlineMath math="Z \approx 8{,}5 \times 10^6\text{ kg/(m}^2\text{s)}" />). 
-                  Die Welle dringt durch das Rohr hindurch; das Rückwandecho des Bauteils bleibt klar erkennbar. 
-                  Trifft sie dagegen auf einen <strong>Lufteinschluss (<InlineMath math="Z_{Luft} \approx 400" />)</strong>, 
-                  wird die Schallenergie zu fast <strong>100 % reflektiert</strong>. Dahinterliegende Litzen und die 
-                  Bauteilrückwand verschwinden vollständig im <strong>akustischen Schatten</strong>.
-                </p>
+              <div className="p-3 bg-slate-50/80 rounded-lg text-xs text-text-main/80 space-y-1"><MdText text={inhalt.texte.erklärungDesAkustischenPhänomens} /><p><MdText text={inhalt.texte.trifftDieUltraschallTransversalwelle} /></p>
               </div>
             </div>
 
@@ -1088,10 +896,8 @@ export default function SpannbetonDauerhaftigkeit() {
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-3">
               <div className="flex items-center justify-between border-b border-home-grau/15 pb-2">
                 <h5 className="font-bold text-sm text-text-main flex items-center gap-2">
-                  <BookOpen className="text-shiraz h-4 w-4" />
-                  Vergleichende Übersicht aller 6 ZfP-Verfahren im Spannbetonbau
-                </h5>
-                <span className="text-[11px] text-slate-500">DGZfP &amp; BASt Leitfaden</span>
+                  <BookOpen className="text-shiraz h-4 w-4" /><MdText text={inhalt.texte.vergleichendeÜbersichtAller6} /></h5>
+                <span className="text-[11px] text-slate-500"><MdText text={inhalt.texte.dgzfpBastLeitfaden} /></span>
               </div>
 
               <div className="overflow-x-auto">
@@ -1102,70 +908,64 @@ export default function SpannbetonDauerhaftigkeit() {
                       <th className="p-2.5">Zielgröße</th>
                       <th className="p-2.5 font-mono">Messtiefe</th>
                       <th className="p-2.5">Nachweisgrenze</th>
-                      <th className="p-2.5">Einfluss Querbewehrung</th>
-                      <th className="p-2.5">Richtlinie / Norm</th>
+                      <th className="p-2.5"><MdText text={inhalt.texte.einflussQuerbewehrung} /></th>
+                      <th className="p-2.5"><MdText text={inhalt.texte.richtlinieNorm} /></th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-home-grau/20 text-text-main/80">
                     <tr className="hover:bg-off-white">
                       <td className="p-2.5 font-bold flex items-center gap-1.5">
-                        <Radio size={13} className="text-shiraz" /> Ultraschall Phased Array
-                      </td>
-                      <td className="p-2.5">Hohlräume, Verpressfehler, Dicke</td>
+                        <Radio size={13} className="text-shiraz" /><MdText text={inhalt.texte.ultraschallPhasedArray} /></td>
+                      <td className="p-2.5"><MdText text={inhalt.texte.hohlräumeVerpressfehlerDicke} /></td>
                       <td className="p-2.5 font-mono">bis 100 cm</td>
-                      <td className="p-2.5">Hohlraum ≥ 15 mm</td>
-                      <td className="p-2.5 text-amber-700">Mäßig (Streuechos möglich)</td>
+                      <td className="p-2.5"><MdText text={inhalt.texte.hohlraum15Mm} /></td>
+                      <td className="p-2.5 text-amber-700"><MdText text={inhalt.texte.mäßigStreuechosMöglich} /></td>
                       <td className="p-2.5 font-mono text-[11px]">DGZfP B 04</td>
                     </tr>
                     <tr className="hover:bg-off-white">
                       <td className="p-2.5 font-bold flex items-center gap-1.5">
-                        <Activity size={13} className="text-shiraz" /> Magnetischer Streufluss (MFL)
-                      </td>
-                      <td className="p-2.5 font-semibold text-shiraz">Spanndrahtbrüche im Hüllrohr</td>
+                        <Activity size={13} className="text-shiraz" /><MdText text={inhalt.texte.magnetischerStreuflussMfl} /></td>
+                      <td className="p-2.5 font-semibold text-shiraz"><MdText text={inhalt.texte.spanndrahtbrücheImHüllrohr} /></td>
                       <td className="p-2.5 font-mono">bis 15 cm</td>
-                      <td className="p-2.5 font-bold text-shiraz">ab 1 Einzeldrahtbruch</td>
-                      <td className="p-2.5 text-rose-700">Stark (Bügel überlagern Streufluss)</td>
-                      <td className="p-2.5 font-mono text-[11px]">DGZfP B 11 / BASt</td>
+                      <td className="p-2.5 font-bold text-shiraz"><MdText text={inhalt.texte.ab1Einzeldrahtbruch} /></td>
+                      <td className="p-2.5 text-rose-700"><MdText text={inhalt.texte.starkBügelÜberlagernStreufluss} /></td>
+                      <td className="p-2.5 font-mono text-[11px]"><MdText text={inhalt.texte.dgzfpB11Bast} /></td>
                     </tr>
                     <tr className="hover:bg-off-white">
                       <td className="p-2.5 font-bold flex items-center gap-1.5">
-                        <Search size={13} className="text-shiraz" /> Impact-Echo (Schallresonanz)
-                      </td>
-                      <td className="p-2.5">Großflächige Fehlstellen, Dicke</td>
+                        <Search size={13} className="text-shiraz" /><MdText text={inhalt.texte.impactEchoSchallresonanz} /></td>
+                      <td className="p-2.5"><MdText text={inhalt.texte.großflächigeFehlstellenDicke} /></td>
                       <td className="p-2.5 font-mono">bis 150 cm</td>
-                      <td className="p-2.5">Fehlstellen ≥ 50 mm</td>
-                      <td className="p-2.5 text-emerald-700">Sehr gering (P-Wellen unempfindlich)</td>
-                      <td className="p-2.5 font-mono text-[11px]">ASTM C1383 / DGZfP B 06</td>
+                      <td className="p-2.5"><MdText text={inhalt.texte.fehlstellen50Mm} /></td>
+                      <td className="p-2.5 text-emerald-700"><MdText text={inhalt.texte.sehrGeringPWellen} /></td>
+                      <td className="p-2.5 font-mono text-[11px]"><MdText text={inhalt.texte.astmC1383DgzfpB} /></td>
                     </tr>
                     <tr className="hover:bg-off-white">
                       <td className="p-2.5 font-bold flex items-center gap-1.5">
-                        <Layers size={13} className="text-shiraz" /> Georadar (bodengekoppelt, 1,5–2,6 GHz)
-                      </td>
-                      <td className="p-2.5">Spanngliedachse, Betondeckung</td>
+                        <Layers size={13} className="text-shiraz" /><MdText text={inhalt.texte.georadarBodengekoppelt15} /></td>
+                      <td className="p-2.5"><MdText text={inhalt.texte.spanngliedachseBetondeckung} /></td>
                       <td className="p-2.5 font-mono">bis 50 cm</td>
                       <td className="p-2.5">Lage ± 5 mm</td>
-                      <td className="p-2.5 text-amber-700">Dichte Lagen schirmen tiefere Rohre ab</td>
+                      <td className="p-2.5 text-amber-700"><MdText text={inhalt.texte.dichteLagenSchirmenTiefere} /></td>
                       <td className="p-2.5 font-mono text-[11px]">DGZfP B 10</td>
                     </tr>
                     <tr className="hover:bg-off-white">
                       <td className="p-2.5 font-bold flex items-center gap-1.5">
-                        <Zap size={13} className="text-shiraz" /> Schallemissionsanalyse (AE)
-                      </td>
-                      <td className="p-2.5">Dauermonitoring (Drahtrisserkennung)</td>
-                      <td className="p-2.5 font-mono">Gesamtes Feld</td>
-                      <td className="p-2.5 font-bold text-shiraz">Sofortige Riss-Detektion</td>
-                      <td className="p-2.5 text-emerald-700">Kein Einfluss auf Schallleitung</td>
+                        <Zap size={13} className="text-shiraz" /><MdText text={inhalt.texte.schallemissionsanalyseAe} /></td>
+                      <td className="p-2.5"><MdText text={inhalt.texte.dauermonitoringDrahtrisserkennung} /></td>
+                      <td className="p-2.5 font-mono"><MdText text={inhalt.texte.gesamtesFeld} /></td>
+                      <td className="p-2.5 font-bold text-shiraz"><MdText text={inhalt.texte.sofortigeRissDetektion} /></td>
+                      <td className="p-2.5 text-emerald-700"><MdText text={inhalt.texte.keinEinflussAufSchallleitung} /></td>
                       <td className="p-2.5 font-mono text-[11px]">DGZfP B 07</td>
                     </tr>
                     <tr className="hover:bg-off-white">
                       <td className="p-2.5 font-bold flex items-center gap-1.5">
-                        <ShieldCheck size={13} className="text-shiraz" /> Elektrisch isoliertes Spannglied (EIT)
-                      </td>
-                      <td className="p-2.5">Hüllrohrdichtigkeit, Feuchte/Salz</td>
+                        <ShieldCheck size={13} className="text-shiraz" /><MdText text={inhalt.texte.elektrischIsoliertesSpanngliedEit} /></td>
+                      <td className="p-2.5"><MdText text={inhalt.texte.hüllrohrdichtigkeitFeuchteSalz} /></td>
                       <td className="p-2.5 font-mono">Gesamtlänge</td>
-                      <td className="p-2.5 text-emerald-700">R ≥ 1 MΩ·m (Intakt)</td>
-                      <td className="p-2.5 text-emerald-700">Kein Einfluss (vollständig entkoppelt)</td>
-                      <td className="p-2.5 font-mono text-[11px]">fib Bulletin 33 &amp; 75</td>
+                      <td className="p-2.5 text-emerald-700"><MdText text={inhalt.texte.r1MM} /></td>
+                      <td className="p-2.5 text-emerald-700"><MdText text={inhalt.texte.keinEinflussVollständigEntkoppelt} /></td>
+                      <td className="p-2.5 font-mono text-[11px]"><MdText text={inhalt.texte.fibBulletin3375} /></td>
                     </tr>
                   </tbody>
                 </table>
@@ -1175,33 +975,23 @@ export default function SpannbetonDauerhaftigkeit() {
             {/* 4. PRAXIS-LEITFADEN BESTANDSPRÜFUNG NACH BAST */}
             <div className="p-4 rounded-xl bg-off-white border border-home-grau/30 space-y-3">
               <h5 className="font-bold text-xs uppercase tracking-wider text-text-main flex items-center gap-1.5">
-                <FileText className="h-4 w-4 text-shiraz" />
-                4-Stufen-Untersuchungskonzept bei Bestandsbrücken (DIN 1076 / BASt)
-              </h5>
+                <FileText className="h-4 w-4 text-shiraz" /><MdText text={inhalt.texte.t4StufenUntersuchungskonzeptBei} /></h5>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
                 <div className="p-3 bg-white rounded-xl border border-home-grau/20 space-y-1">
-                  <span className="font-bold text-slate-900 block">Stufe 1: Vorerkundung</span>
-                  <p className="text-[11px] text-slate-600">
-                    Sichtung der Bestandsstatik, Identifikation gefährdeter Spannstähle (z. B. Neptun 145/160) und flächiges Georadar-Screening.
-                  </p>
+                  <span className="font-bold text-slate-900 block"><MdText text={inhalt.texte.stufe1Vorerkundung} /></span>
+                  <p className="text-[11px] text-slate-600"><MdText text={inhalt.texte.sichtungDerBestandsstatikIdentifikation} /></p>
                 </div>
                 <div className="p-3 bg-white rounded-xl border border-home-grau/20 space-y-1">
-                  <span className="font-bold text-slate-900 block">Stufe 2: ZfP-Hohlraumanalyse</span>
-                  <p className="text-[11px] text-slate-600">
-                    Ultraschall-Echo (MIRA) und Impact-Echo an Rohrhochpunkten und Koppelstellen zur Lokalisierung von Verpressdefiziten.
-                  </p>
+                  <span className="font-bold text-slate-900 block"><MdText text={inhalt.texte.stufe2ZfpHohlraumanalyse} /></span>
+                  <p className="text-[11px] text-slate-600"><MdText text={inhalt.texte.ultraschallEchoMiraUnd} /></p>
                 </div>
                 <div className="p-3 bg-white rounded-xl border border-home-grau/20 space-y-1">
-                  <span className="font-bold text-slate-900 block">Stufe 3: Streufluss &amp; Endoskopie</span>
-                  <p className="text-[11px] text-slate-600">
-                    MFL-Prüfung bei Verdacht auf Drahtbrüche sowie 8 mm Minimal-Bohrung zur optischen Video-Endoskopie.
-                  </p>
+                  <span className="font-bold text-slate-900 block"><MdText text={inhalt.texte.stufe3StreuflussEndoskopie} /></span>
+                  <p className="text-[11px] text-slate-600"><MdText text={inhalt.texte.mflPrüfungBeiVerdacht} /></p>
                 </div>
                 <div className="p-3 bg-white rounded-xl border border-home-grau/20 space-y-1">
-                  <span className="font-bold text-slate-900 block">Stufe 4: Nachrechnung &amp; Monitoring</span>
-                  <p className="text-[11px] text-slate-600">
-                    Nachweis des Ankündigungsverhaltens (Riss-vor-Bruch) nach Handlungsanweisung SpRK und Nachrechnungsrichtlinie, ggf. Schallemissionsüberwachung.
-                  </p>
+                  <span className="font-bold text-slate-900 block"><MdText text={inhalt.texte.stufe4NachrechnungMonitoring} /></span>
+                  <p className="text-[11px] text-slate-600"><MdText text={inhalt.texte.nachweisDesAnkündigungsverhaltensRiss} /></p>
                 </div>
               </div>
             </div>
@@ -1215,70 +1005,49 @@ export default function SpannbetonDauerhaftigkeit() {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-5">
             <div className="flex items-center justify-between border-b border-home-grau/15 pb-3">
               <h4 className="text-base font-bold text-text-main flex items-center gap-2">
-                <Flame className="text-shiraz h-5 w-5" />
-                Historische Schadensfälle &amp; Folgerungen für den Spannbetonbau
-              </h4>
-              <span className="text-xs font-mono font-bold bg-rose-100 text-rose-900 border border-rose-200 px-2.5 py-1 rounded-md">
-                Forensische Werkstoffkunde
-              </span>
+                <Flame className="text-shiraz h-5 w-5" /><MdText text={inhalt.texte.historischeSchadensfälleFolgerungenFür} /></h4>
+              <span className="text-xs font-mono font-bold bg-rose-100 text-rose-900 border border-rose-200 px-2.5 py-1 rounded-md"><MdText text={inhalt.texte.forensischeWerkstoffkunde} /></span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs text-text-main/80">
               {/* Fall 1: Kongresshalle Berlin */}
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
                 <div className="flex items-center justify-between">
-                  <strong className="text-slate-900 text-sm">Kongresshalle Berlin (1980)</strong>
+                  <strong className="text-slate-900 text-sm"><MdText text={inhalt.texte.kongresshalleBerlin1980} /></strong>
                   <span className="text-[10px] bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-bold">Dacheinsturz</span>
                 </div>
-                <p className="leading-relaxed">
-                  <strong>Ursache (Untersuchungen nach dem Einsturz 1980):</strong> Bau- und Planungsmängel. Die Spannglieder im Übergang zwischen Dachschale und Randbogen versagten durch Korrosion in Verbindung mit wechselnder Beanspruchung (Ermüdung); Feuchte gelangte über Risse und unzureichend verpresste Bereiche an den Spannstahl.
-                </p>
-                <div className="p-2 bg-white rounded border border-slate-200 font-semibold text-rose-950">
-                  Konsequenz: Schärfere Anforderungen an Verpressung, Fugenausbildung und die Prüfung vorgespannter Bauwerke.
-                </div>
+                <p className="leading-relaxed"><MdText text={inhalt.texte.ursacheUntersuchungenNachDem} /></p>
+                <div className="p-2 bg-white rounded border border-slate-200 font-semibold text-rose-950"><MdText text={inhalt.texte.konsequenzSchärfereAnforderungenAn} /></div>
               </div>
 
               {/* Fall 2: Carolabrücke Dresden */}
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
                 <div className="flex items-center justify-between">
-                  <strong className="text-slate-900 text-sm">Carolabrücke Dresden (2024)</strong>
+                  <strong className="text-slate-900 text-sm"><MdText text={inhalt.texte.carolabrückeDresden2024} /></strong>
                   <span className="text-[10px] bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-bold">Trägerversagen</span>
                 </div>
-                <p className="leading-relaxed">
-                  <strong>Ursache (Gutachten MKP GmbH für die Stadt Dresden, Kurzfassung 27.05.2025):</strong> Einsturz des Brückenzugs C am 11.09.2024 über Strompfeiler D. Wasserstoffinduzierte Spannungsrisskorrosion des Spannstahls; die Anrisse entstanden höchstwahrscheinlich schon in der Bauzeit (Spannglieder lange unverpresst im Hüllrohr) und wuchsen über Jahrzehnte durch Ermüdung, bis die letzten Drähte ohne Vorankündigung brachen. Chloridkorrosion wird im Gutachten nicht als Ursache genannt.
-                </p>
-                <div className="p-2 bg-white rounded border border-slate-200 font-semibold text-rose-950">
-                  Konsequenz: Überprüfung aller Brücken mit SpRK-gefährdetem Spannstahl nach Handlungsanweisung SpRK (Ankündigungsverhalten), verstärkte ZfP und Monitoring.
-                </div>
+                <p className="leading-relaxed"><MdText text={inhalt.texte.ursacheGutachtenMkpGmbh} /></p>
+                <div className="p-2 bg-white rounded border border-slate-200 font-semibold text-rose-950"><MdText text={inhalt.texte.konsequenzÜberprüfungAllerBrücken} /></div>
               </div>
 
               {/* Fall 3: Brücke von Ninove */}
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
                 <div className="flex items-center justify-between">
-                  <strong className="text-slate-900 text-sm">Ynys-y-Gwas-Brücke, Wales (1985)</strong>
+                  <strong className="text-slate-900 text-sm"><MdText text={inhalt.texte.ynysYGwasBrücke} /></strong>
                   <span className="text-[10px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded font-bold">Sprödbruch</span>
                 </div>
-                <p className="leading-relaxed">
-                  <strong>Ursache:</strong> Plötzlicher Einsturz einer segmentären Spannbetonbrücke durch Korrosion der Spannglieder an den Segmentfugen; Tausalzwasser drang über die Fugen in unvollständig verpresste Hüllrohre ein.
-                </p>
-                <div className="p-2 bg-white rounded border border-slate-200 font-semibold text-amber-950">
-                  Konsequenz: UK-Moratorium für Spannglieder im nachträglichen Verbund (1992) und deutlich verschärfte Anforderungen an Einpressmörtel (z. B. Wasserabsondern ≤ 0,3 % nach DIN EN 447) und Verpresstechnik.
-                </div>
+                <p className="leading-relaxed"><MdText text={inhalt.texte.ursachePlötzlicherEinsturzEiner} /></p>
+                <div className="p-2 bg-white rounded border border-slate-200 font-semibold text-amber-950"><MdText text={inhalt.texte.konsequenzUkMoratoriumFür} /></div>
               </div>
 
               {/* Fall 4: Schweißschäden */}
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
                 <div className="flex items-center justify-between">
-                  <strong className="text-slate-900 text-sm">Baustellenschäden durch Schweißfunken</strong>
+                  <strong className="text-slate-900 text-sm"><MdText text={inhalt.texte.baustellenschädenDurchSchweißfunken} /></strong>
                   <span className="text-[10px] bg-slate-200 text-slate-800 px-2 py-0.5 rounded font-bold">Gefügefehler</span>
                 </div>
-                <p className="leading-relaxed">
-                  <strong>Ursache:</strong> Unbeabsichtigtes Berühren von Spannstählen mit Schweißelektroden beim 
-                  Anheften von Einbauteilen oder Schließen von Fugen. Die lokale thermische Selbstabschreckung erzeugt Martensit.
-                </p>
-                <div className="p-2 bg-white rounded border border-slate-200 font-semibold text-slate-900">
-                  Konsequenz: Schweiß- und Trennarbeiten in der Nähe von Spannstahl sind nach den Zulassungen/ETA der Spannverfahren und Spannstähle verboten.
-                </div>
+                <p className="leading-relaxed"><MdText text={inhalt.texte.ursacheUnbeabsichtigtesBerührenVon} /></p>
+                <div className="p-2 bg-white rounded border border-slate-200 font-semibold text-slate-900"><MdText text={inhalt.texte.konsequenzSchweißUndTrennarbeiten} /></div>
               </div>
             </div>
           </div>

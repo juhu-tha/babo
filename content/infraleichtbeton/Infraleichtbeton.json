@@ -1,0 +1,13 @@
+{
+  "texte": {
+    "infraleichtbetonIlb": " Infraleichtbeton (ILB)",
+    "durchSehrLeichteGesteinskörnungen": "Durch sehr leichte Gesteinskörnungen (z. B. Blähglas) ermöglicht Infraleichtbeton eine drastische Gewichtsreduktion und extrem hohe Wärmedämmung, sodass wärmebrückenfreie, einschalige Wandkonstruktionen möglich werden.",
+    "sehrLeichteGesteinskörnungenBlähglas": "Sehr leichte Gesteinskörnungen (Blähglas, Blähton, Aerogele), Zement und eventuell Mikrohohlkugeln. Ziel-Rohdichte oft unter 800 kg/m³.",
+    "feineGesteinskörperUndEmpfindliche": "Feine Gesteinskörper und empfindliche Leichtzuschläge dürfen beim Mischen nicht zerquetscht werden. Vornässen der leichten Zuschläge ist wichtig für den (inneren) Wasserhaushalt.",
+    "ausreichendeTragfähigkeitFürMehrgeschoss": "Ausreichende Tragfähigkeit für mehrgeschossigen Wohnungsbau bei gleichzeitig extrem guter Wärmedämmung. Monolithische Wandaufbauten (ohne WDVS) sind möglich.",
+    "monolithischeEinschaligeWärmedämmendeAuß": "Monolithische (einschalige) wärmedämmende Außenwände von Bauwerken, Leichtbauelemente.",
+    "sehrGutJedochMuss": "Sehr gut, jedoch muss die wärmedämmende Außenhülle oft durch Hydrophobierung oder wasserabweisenden Anstrich/Putz vor Durchfeuchtung geschützt werden, um die Langlebigkeit der Dämmeigenschaften zu sichern.",
+    "beispielrezepturRichtwerte": "Beispielrezeptur (Richtwerte)",
+    "blähglasAerogele": "Blähglas / Aerogele"
+  }
+}

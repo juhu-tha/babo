@@ -1,0 +1,219 @@
+{
+  "texte": {
+    "ausgangsstoffeDesBetons": " Ausgangsstoffe des Betons",
+    "betonBestehtAusZement": "Beton besteht aus Zement, Zugabewasser und Gesteinskörnung, ergänzt um Zusatzstoffe und Zusatzmittel. Dieses Modul beschreibt die Ausgangsstoffe und ihre Kennwerte für den Mischungsentwurf; Festlegung, Eigenschaften und Konformität regeln DIN EN 206 und DIN 1045-2.",
+    "eigeneModule": "Eigene Module:",
+    "zugabewasserDinEn1008": " Zugabewasser (DIN EN 1008)",
+    "dasZugabewasserLöstDie": "Das Zugabewasser löst die Hydratation des Zements aus und stellt zusammen mit der Oberflächenfeuchte der Gesteinskörnung den wirksamen Wassergehalt, auf den sich der w/z-Wert bezieht. Die Eignung von Wasser regelt DIN EN 1008; maßgebend sind vor allem Stoffe, die das Erstarren, die Festigkeitsentwicklung oder den Korrosionsschutz der Bewehrung beeinträchtigen.",
+    "eignungNachDinEn": "Eignung nach DIN EN 1008",
+    "geeignetEinePrüfungIst": "Geeignet, eine Prüfung ist nicht erforderlich.",
+    "restwasserAusDerBetonherstellung": "Restwasser aus der Betonherstellung",
+    "geeignetWennDieAnforderungen": "Geeignet, wenn die Anforderungen der Norm (u. a. Begrenzung des zusätzlichen Feststoffeintrags) eingehalten werden.",
+    "grundwasserNatürlichesOberflächenwasserB": "Grundwasser, natürliches Oberflächenwasser, Brauchwasser aus der Industrie",
+    "kannGeeignetSeinVor": "Kann geeignet sein; vor der Verwendung zu prüfen.",
+    "meerwasserBrackwasser": "Meerwasser, Brackwasser",
+    "allenfallsFürUnbewehrtenBeton": "Allenfalls für unbewehrten Beton; für Stahl- und Spannbeton wegen der Chloride nicht geeignet.",
+    "häuslichesAbwasser": "Häusliches Abwasser",
+    "nichtGeeignet": "Nicht geeignet.",
+    "vorprüfungÖleUndFette": "**Vorprüfung:** Öle und Fette, Detergenzien, Farbe, Schwebstoffe, Geruch, Säuregehalt (pH-Wert) und Huminstoffe.",
+    "chemischePrüfungChloridSulfat": "**Chemische Prüfung:** Chlorid-, Sulfat- und Alkaligehalt sowie schädliche Verunreinigungen wie Zucker, Phosphate, Nitrate, Blei und Zink.",
+    "vergleichsprüfungErstarrungszeitUndDruck": "**Vergleichsprüfung:** Erstarrungszeit und Druckfestigkeit gegenüber einer Mischung mit destilliertem bzw. Trinkwasser.",
+    "wirksamerWassergehalt": "Wirksamer Wassergehalt",
+    "fürDenWZ": "Für den w/z-Wert zählt das Zugabewasser zuzüglich des Oberflächenwassers der Gesteinskörnung (und des Wassers aus Zusatzmitteln). Das von der Gesteinskörnung aufgenommene Kernwasser zählt nicht dazu – poröse Körnungen (Leicht- oder RC-Gesteinskörnung) sind deshalb vorzunässen oder ihr Wasseranspruch ist bei der Zugabe zu berücksichtigen.",
+    "gesteinskörnungenFürBetonDin": "Gesteinskörnungen für Beton (DIN EN 12620 / DIN 1045-2)",
+    "gesteinskörnungenMachenCa70": "Gesteinskörnungen machen ca. 70-80% des Betonvolumens aus und bilden das formstabile Gerüst (Kapitel 2 der Betontechnischen Daten).",
+    "begriffeKategorien": "Begriffe & Kategorien",
+    "dmaxGrößtkornObererSiebdurchgang": "**Dmax (Größtkorn):** Oberer Siebdurchgang. Typischerweise 8, 16 oder 32 mm. Beeinflusst den Mehlkorn- und Wasserbedarf (je größer das Korn, desto weniger Hohlraum und Oberfläche).",
+    "gesteinsartenNatürlicheSandKies": "**Gesteinsarten:** Natürliche (Sand, Kies), rezyklierte (RC-Beton) oder leichte Gesteinskörnungen (z.B. Blähton, Bims für Leichtbeton nach DIN EN 13055).",
+    "kornformKubischIstIdeal": "**Kornform:** Kubisch ist ideal. Längliche, plattige Körner erhöhen den Wasseranspruch und verschlechtern die Verarbeitbarkeit.",
+    "alkalikieselsäurereaktionAkrBetonkrebs": "Alkalikieselsäurereaktion (AKR) / \"Betonkrebs\"",
+    "zusammentreffenVonFeuchterUmgebung": "Zusammentreffen von feuchter Umgebung (WF, WA, WS), reaktiver Kieselsäure in der Gesteinskörnung (z.B. Opalsandstein, gebrochener Flint) und hohen Alkalien aus dem Zement.",
+    "vorbeugendeMaßnahmenNachDafstb": "**Vorbeugende Maßnahmen nach DAfStb-Richtlinie:** <br>- Unbedenkliche Gesteinskörnung verwenden (Alkaliempfindlichkeitsklasse E I statt E III)<br>- NA-Zemente (niedriger wirksamer Alkaligehalt, DIN 1164-10) verwenden<br>- Alkalieintrag von außen unterbinden (z.B. hydrophobieren)<br>- Nutzung von Hüttensand (CEM III)",
+    "eigenschaftenKennwerte": "Eigenschaften & Kennwerte",
+    "sieblinienZBA": "Sieblinien (z.B. A/B/C)",
+    "idealeKornzusammensetzungDieSieblinie": "Ideale Kornzusammensetzung. Die **Sieblinie A** ist sehr grob, die **Sieblinie C** sehr fein. Der günstige Bereich (z.B. AB) liegt dazwischen. Ein kontinuierlicher Kornaufbau fördert die Festigkeit und Dichtigkeit.",
+    "feinanteileUndPoröseGesteinskörnungen": "Feinanteile und poröse Gesteinskörnungen saugen Wasser auf. Dies muss bei der w/z-Wert-Berechnung als **Kernfeuchte** berücksichtigt werden, ansonsten sinkt die wirksame Wassermenge (schlechte Verarbeitbarkeit).",
+    "rezyklierteKörnungen": "Rezyklierte Körnungen",
+    "dürfenNachDin1045": "Dürfen nach DIN 1045-2:2023-08 (Typ 1/Typ 2) begrenzt beigemischt werden: z. B. X0–XC4, XF1, XF3 ≤ 45/35 Vol.-%, XA1 ≤ 25/25 Vol.-%, XD1/XD2/XS1/XS2/XF2/XF4 ≤ 30/20 Vol.-% der groben Gesteinskörnung; nicht in XA2, XA3, XM (MVV TB 2025/1). Problematisch ist oft der höhere Wasseranspruch.",
+    "zementartenNachDinEn": "Zementarten nach DIN EN 197-1 / DIN EN 197-5",
+    "übersichtDerHauptzementartenUnd": "Übersicht der Hauptzementarten und ihrer wesentlichen Zusätze. Zement ist ein hydraulisches Bindemittel: Portlandzementklinker aus Kalkstein und Ton, fein gemahlen mit Gips bzw. Anhydrit als Erstarrungsregler und je nach Zementart weiteren Hauptbestandteilen. Herstellung, Klinkerphasen und Hydratation stehen im Modul ",
+    "festigkeitsklassenZement": "Festigkeitsklassen (Zement)",
+    "dieNormfestigkeitNach28": "Die Normfestigkeit (nach 28 Tagen) wird in N/mm² angegeben. Zusätzlich wird die Anfangsfestigkeit klassifiziert:",
+    "t325425": "**32,5 / 42,5 / 52,5:** Normfestigkeit",
+    "lLowNiedrigeAnfangsfestigkeit": "**L (Low):** Niedrige Anfangsfestigkeit (nur CEM III)",
+    "nNormalNormaleAnfangsfestigkeit": "**N (Normal):** Normale Anfangsfestigkeit",
+    "rRapidHoheAnfangsfestigkeit": "**R (Rapid):** Hohe Anfangsfestigkeit",
+    "beispielCemIiA": "Beispiel: CEM II/A-LL 42,5 R (Portlandkalksteinzement, Normfestigkeit 42,5 N/mm², hohe Anfangsfestigkeit)",
+    "alsMehlkornGeltenAlle": "Als Mehlkorn gelten alle festen Partikel im Beton, die kleiner oder gleich 0,125 mm sind (Zement, Zusatzstoffe, feinster Sand). Ein korrekter Mehlkorngehalt ist essenziell für die Verarbeitbarkeit, das Wasserrückhaltevermögen (Pumpbarkeit) und die Dichtigkeit des Betons.",
+    "höchstzulässigerMehlkorngehaltDin1045": "Höchstzulässiger Mehlkorngehalt (DIN 1045-2, Tab. F.4.1 / F.4.2; Größtkorn 16–63 mm)",
+    "maxMehlkorngehaltKgM": "Max. Mehlkorngehalt [kg/m³]",
+    "xfXmBisC50": "XF, XM; bis C50/60 bzw. LC50/55",
+    "xfXmBisC502": "XF, XM; bis C50/60 bzw. LC50/55",
+    "alleExpositionsklassenAbC55": "Alle Expositionsklassen; ab C55/67 bzw. LC55/60",
+    "alleExpositionsklassenAbC552": "Alle Expositionsklassen; ab C55/67 bzw. LC55/60",
+    "alleExpositionsklassenAbC553": "Alle Expositionsklassen; ab C55/67 bzw. LC55/60",
+    "zwischenwerteWerdenLinearInterpoliert": "Zwischenwerte werden linear interpoliert. Die Werte entsprechen DIN 1045-2:2008-08 (Tab. F.4.1/F.4.2). In DIN 1045-2:2023-08 sind Höchstwerte des Mehlkorngehalts entfallen; stattdessen gilt ab F3 und C25/30 ein Mindest-Leimvolumen (z. B. 280–310 l/m³ bei D_max 16) oder eine erweiterte Erstprüfung. Hinweise: Wird Zement mit hohem Zusatzstoffanteil (z.B. CEM III oder CEM II/B) verwendet oder Zusatzstoffe (FA, SF) zugegeben, verschiebt sich die Leimgemischzusammensetzung. Um Klebrigkeit oder Rissneigung zu vermeiden, darf das Mehlkorn in Abhängigkeit der Gesteinsgrößen nicht beliebig überschritten werden. Bei Sichtbeton, hochgepumptem Beton oder selbstverdichtendem Beton (SCC) können Werte bis 600 kg/m³ gezielt eingesetzt werden.",
+    "betonzusatzstoffeStUndZusatzmittel": "Betonzusatzstoffe (ST) und -zusatzmittel (ZM)",
+    "übersichtDerÜblichenWirkstoffe": "Übersicht der üblichen Wirkstoffe (in Anlehnung an DIN EN 934 und betontechnische-daten.de Kapitel 3/4).",
+    "zusatzmittelZm": "Zusatzmittel (ZM)",
+    "betonverflüssigerVerringerungDesWasserbe": " **Betonverflüssiger:** Verringerung des Wasserbedarfs, Verbesserung der Verarbeitbarkeit.",
+    "fließmittelStarkeVerflüssigungFür": " **Fließmittel:** Starke Verflüssigung für Pumpbeton/SVB.",
+    "verzögererVerlängerungDerVerarbeitungsze": " **Verzögerer:** Verlängerung der Verarbeitungszeit (hilfreich im Sommer oder bei massigen Bauteilen, Verzögerung der Hydratation).",
+    "luftporenbildnerErzeugenKleinerVerteilte": " **Luftporenbildner:** Erzeugen kleiner, verteilter künstlicher Luftporen zur Erhöhung des Frost-Tausalz-Widerstands (XF4).",
+    "beschleunigerErstarrungsOderErhärtungsbe": " **Beschleuniger:** Erstarrungs- oder Erhärtungsbeschleuniger (z.B. für Spritzbeton).",
+    "stabilisiererVerhindernVonEntmischung": " **Stabilisierer:** Verhindern von Entmischung und Bluten.",
+    "zusatzstoffeTypIiReaktiv": "Zusatzstoffe (Typ II - reaktiv)",
+    "flugascheSfaPuzzolanischVerbessert": " **Flugasche (SFA):** Puzzolanisch, verbessert Verarbeitbarkeit, verringert Hydratationswärme. Anrechenbar auf w/z-Wert.",
+    "silikastaubMicrosilicaHochreaktivStark": " **Silikastaub (Microsilica):** Hochreaktiv, stark festigkeitssteigernd, stark erhöhter Wasseranspruch. Für UHPC/HPC.",
+    "hüttensandHsmLatentHydraulisch": " **Hüttensand (HSM):** Latent-hydraulisch, sehr hell, hoher Sulfatwiderstand.",
+    "zusatzstoffeTypIInert": "Zusatzstoffe (Typ I - inert)",
+    "kalksteinmehlLlFüllerVerbessert": " **Kalksteinmehl (LL):** Füller, verbessert die Packungsdichte und Helligkeit.",
+    "eisenoxidEtcFürArchitekturbeton": " **(Eisenoxid etc.):** Für Architekturbeton.",
+    "wirkungsmechanismenDerZusatzstoffeHydrat": "Wirkungsmechanismen der Zusatzstoffe: Hydratationswärme & ITZ",
+    "gefügeThermomechanik": "Gefüge- & Thermomechanik",
+    "t1HydratationswärmeMassenbeton": "1. Hydratationswärme & Massenbeton",
+    "problemstellungDieKlinkerbestandteile": "**Problemstellung:** Die Klinkerbestandteile (",
+    "reagierenStarkExothermWärmefreisetzung": ") reagieren stark exotherm (Wärmefreisetzung bis ca. 500 J/g). In massigen Bauteilen (z. B. dicke Sohlplatten, Brückenpfeiler, Talsperren) staut sich die Reaktionswärme infolge der geringen Temperaturleitfähigkeit des Betons im Kern (oft 60–80 °C), während die Randzonen abkühlen. Übersteigt die Temperaturdifferenz ",
+    "entstehenMassiveThermischeZwangspannunge": ", entstehen massive thermische Zwangspannungen und klaffende Trennrisse.",
+    "einflussDerZusatzstoffe": "**Einfluss der Zusatzstoffe:**",
+    "flugascheFaHüttensandmehlHüs": "**Flugasche (FA) & Hüttensandmehl (HüS):** Reagieren puzzolanisch bzw. latent-hydraulisch mit deutlicher Verzögerung (Tage bis Wochen). Die adiabatische Temperaturspitze sinkt deutlich (Lehrwert: 30–50 %, abhängig von der Austauschrate). Die Wärme kann schadlos entweichen (Grundlage für LH-Zemente nach DIN EN 197-1 und VLH-Zemente nach DIN EN 14216).",
+    "silikastaubSfBeschleunigtDurch": "**Silikastaub (SF):** Beschleunigt durch extreme Keimbildungsflächen die Frühhydratation in den ersten 24–48 h (erfordert sorgfältige frühe Nachbehandlung gegen Schwindrisse).",
+    "richtwertePraxisMaxKerntemperatur": "Richtwerte (Praxis): Max. Kerntemperatur < 65–70 °C | Gradient ΔT ≤ 15–20 K",
+    "t2ItzInterfacialTransition": "2. ITZ (Interfacial Transition Zone / Kontaktzone)",
+    "wasIstDieItz": "**Was ist die ITZ?** Die Kontakt- bzw. Übergangszone (ca. 10–50 μm um jedes Gesteinskorn) ist naturgemäß die *Sollbruchstelle („Achillesferse“)* des Betons. Durch den sogenannten **„Wandeffekt“ (Wall Effect)** können sich die relativ großen Zementkörner (10–50 μm) nicht dicht an die feste Kornoberfläche anlagern.",
+    "schwachstelleOhneZusatzstoffeAn": "**Schwachstelle ohne Zusatzstoffe:** An der Kornoberfläche sammelt sich freies Wasser (lokal stark überhöhter w/z-Wert). Es bilden sich großkristalliner, weicher Portlandit (",
+    "undEttringitDieFolge": ") und Ettringit. Die Folge: hohe Kapillarporosität, geringe Verbundfestigkeit und durchgängige Kanäle für Chloride, Frost und Säuren.",
+    "optimierungDurchZusatzstoffe": "**Optimierung durch Zusatzstoffe:**",
+    "mikroFüllereffektNanofeinerSilikastaub": "**Mikro-Füllereffekt:** Nanofeiner Silikastaub (Ø ca. 0,1 μm = 100-mal kleiner als Zement), Feinstflugasche dringen direkt in die Kornzwischenräume ein und verdrängen den Wasserfilm.",
+    "caOhSioH": "Ca(OH)₂ + SiO₂ + H₂O → C-S-H",
+    "puzzolanischePhasenumwandlungSieWandeln": "**Puzzolanische Phasenumwandlung:** Sie wandeln den löslichen Portlandit chemisch in extrem dichte, feste C-S-H-Phasen um: ",
+    "ergebnisHomogeneKontaktzoneDeutlich": "Ergebnis: Homogene Kontaktzone | Deutlich höhere Biegezug-, Spaltzug- & Abriebfestigkeit"
+  },
+  "werte": {
+    "zementherstellungHydratation": "Zementherstellung & Hydratation",
+    "expositionsFeuchtigkeitsklassen": "Expositions- & Feuchtigkeitsklassen",
+    "normenRegelwerke": "Normen & Regelwerke",
+    "anwendungsbeispielMehlkorngehaltPrüfen": "Anwendungsbeispiel: Mehlkorngehalt prüfen",
+    "din104522008": "DIN 1045-2:2008-08, Tab. F.4.1 (in DIN 1045-2:2023-08 entfallen; dort Mindest-Leimvolumen)",
+    "t381KgM420": "381 kg/m³ ≤ 420 kg/m³ – Mehlkorngehalt zulässig.",
+    "anwendungsbeispielÄquivalenterWZ": "Anwendungsbeispiel: Äquivalenter w/z-Wert mit Flugasche",
+    "din10452Anrechnung": "DIN 1045-2 (Anrechnung von Flugasche, k_f = 0,4; f/z ≤ 0,33)",
+    "wZEq0": "(w/z)eq = 0,51 ≤ 0,60 – die Flugasche verbessert den rechnerischen Wasserzementwert.",
+    "obUndInWelchem": "Ob und in welchem Umfang Zusatzstoffe angerechnet und rezyklierte Gesteinskörnungen verwendet werden dürfen, hängt von der Expositionsklasse ab. Grenzwerte (w/z, Mindestfestigkeit, Zementgehalt) stehen im Modul Expositionsklassen."
+  },
+  "daten": {
+    "Grundlagen": [
+      {
+        "typ": "CEM I",
+        "name": "Portlandzement",
+        "desc": "Mindestens 95% Portlandzementklinker. Hohe Frühfestigkeit, hohe Wärmeentwicklung."
+      },
+      {
+        "typ": "CEM II",
+        "name": "Portlandkompositzement",
+        "desc": "Klinker + Hüttensand (S), Flugasche (V/W), Kalkstein (LL) etc. (bis 35%). Umweltfreundlicher Standardzement im Hochbau."
+      },
+      {
+        "typ": "CEM III",
+        "name": "Hochofenzement",
+        "desc": "Viel Hüttensand (36 - 95%). Geringe Wärmeentwicklung, hoher Widerstand gegen chemischen Angriff, sehr gut für Massenbeton."
+      },
+      {
+        "typ": "CEM IV",
+        "name": "Puzzolanzement",
+        "desc": "Enthält Puzzolane oder Flugasche. Eher selten in DACH, genutzt für spezielle chemische Beständigkeiten."
+      },
+      {
+        "typ": "CEM V",
+        "name": "Kompositzement",
+        "desc": "Klinker + Flugasche + Hüttensand. Umweltfreundlich, niedrige Hydratationswärme."
+      },
+      {
+        "typ": "CEM VI",
+        "name": "Kompositzement (DIN EN 197-5)",
+        "desc": "Seit 2021 genormt (DIN EN 197-5) mit weiter reduziertem Klinkeranteil (hoher Anteil Hüttensand und Kalkstein) für minimalen CO2-Fußabdruck."
+      }
+    ],
+    "Grundlagen.schritte": [
+      {
+        "titel": "1. Gegeben (Lehrwerte)",
+        "formel": "\\text{C30/37, XF1},\\; D_{max} = 16\\,\\text{mm},\\; z = 320\\,\\text{kg/m}^3",
+        "erklaerung": "Zusätzlich 40 kg/m³ Kalksteinmehl; Sand 0/2 mit 700 kg/m³ und 3 % Anteil ≤ 0,125 mm."
+      },
+      {
+        "titel": "2. Grenzwert interpolieren",
+        "formel": "m_{Mk,max} = 400 + \\frac{320 - 300}{350 - 300} \\cdot 50 = 420\\,\\text{kg/m}^3",
+        "erklaerung": "Zwischen 300 kg/m³ (400) und 350 kg/m³ (450) Zementgehalt linear interpoliert."
+      },
+      {
+        "titel": "3. Ist-Wert",
+        "formel": "m_{Mk} = 320 + 40 + 0{,}03 \\cdot 700 = 381\\,\\text{kg/m}^3",
+        "erklaerung": "Zement, Zusatzstoff und Feinstanteil der Gesteinskörnung zählen zum Mehlkorn."
+      },
+      {
+        "titel": "4. Nachweis",
+        "formel": "381 \\le 420\\,\\text{kg/m}^3",
+        "erklaerung": "Anforderung erfüllt."
+      }
+    ],
+    "Grundlagen.schritte_2": [
+      {
+        "titel": "1. Gegeben (Lehrwerte)",
+        "formel": "z = 280\\,\\text{kg/m}^3,\\; f = 80\\,\\text{kg/m}^3,\\; w = 160\\,\\text{kg/m}^3",
+        "erklaerung": "Bauteil der Expositionsklasse XC4, Flugasche als Zusatzstoff Typ II."
+      },
+      {
+        "titel": "2. Anrechenbare Flugaschemenge prüfen",
+        "formel": "f/z = 80/280 = 0{,}29 \\le 0{,}33",
+        "erklaerung": "Die gesamte Flugasche darf angerechnet werden."
+      },
+      {
+        "titel": "3. Einsetzen",
+        "formel": "(w/z)_{eq} = \\frac{160}{280 + 0{,}4 \\cdot 80} = \\frac{160}{312} = 0{,}51",
+        "erklaerung": "Der k-Wert berücksichtigt die geringere Wirksamkeit der Flugasche gegenüber Zement."
+      },
+      {
+        "titel": "4. Nachweis",
+        "formel": "0{,}51 \\le (w/z)_{max} = 0{,}60\\;(\\text{XC4})",
+        "erklaerung": "Anforderung erfüllt. Ohne Anrechnung ergäbe sich w/z = 160/280 = 0,57."
+      }
+    ],
+    "Grundlagen.literatur": [
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Grübl, P., Weigler, H., Karl, S.: Beton – Arten, Herstellung und Eigenschaften (Ernst & Sohn)",
+      "Zement-Taschenbuch (Verein Deutscher Zementwerke e.V., Verlag Bau+Technik)"
+    ],
+    "Grundlagen.regelwerke": [
+      {
+        "title": "DIN EN 206:2021-06 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)"
+      },
+      {
+        "title": "DIN 1045-2:2023-08 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Teil 2: Beton)"
+      },
+      {
+        "title": "DIN EN 197-1 (Zement - Teil 1: Zusammensetzung, Anforderungen und Konformitätskriterien)"
+      },
+      {
+        "title": "DIN EN 1008:2002-10 (Zugabewasser für Beton – Festlegung für die Probenahme, Prüfung und Beurteilung der Eignung)"
+      },
+      {
+        "title": "DIN EN 12620:2008-07 (Gesteinskörnungen für Beton)"
+      },
+      {
+        "title": "DAfStb-Richtlinie Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton (Alkali-Richtlinie)"
+      }
+    ],
+    "Grundlagen.formeln": [
+      {
+        "formel": "(w/z)_{eq} = \\frac{w}{z + k \\cdot f}",
+        "erklaerung": "Äquivalenter Wasserzementwert unter Berücksichtigung reaktiver puzzolanischer oder latent-hydraulischer Betonzusatzstoffe Typ II (Flugasche, Silikastaub) mit dem Anrechnungsfaktor k.",
+        "quelle": "DIN 1045-2 / DIN EN 206"
+      },
+      {
+        "formel": "m_{Mehlkorn} = m_z + m_{ST} + m_{Gestein \\le 0{,}125\\,\\text{mm}}",
+        "erklaerung": "Mehlkorngehalt zur Sicherung des Wasserhaltevermögens und der Gefügedichtigkeit im Frischbeton.",
+        "quelle": "DIN 1045-2"
+      }
+    ]
+  }
+}

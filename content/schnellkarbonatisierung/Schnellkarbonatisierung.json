@@ -1,0 +1,190 @@
+{
+  "texte": {
+    "schnellkarbonatisierungNachDinEn": " Schnellkarbonatisierung nach DIN EN 12390-12",
+    "beschleunigtePrüfungDesKarbonatisierungs": "Beschleunigte Prüfung des Karbonatisierungswiderstands: Prüfablauf, Karbonatisierungskoeffizient K_AC, Umrechnung und Prognose gegenüber der Betondeckung",
+    "projekthinweisDerKarbonatisierungswiders": "**Projekthinweis:** Der Karbonatisierungswiderstand neuer Betonrezepturen ist ein Forschungsthema an der TH Augsburg und im TTZ Aichach. Das Modul stützt sich ausschließlich auf veröffentlichte Normen und Fachliteratur; die Messreihen im Rechner sind Lehrwerte.",
+    "coAusDerLuft": "CO₂ aus der Luft dringt durch die Poren in den Beton ein, löst sich im Porenwasser und reagiert mit dem Calciumhydroxid des Zementsteins. Der pH-Wert der Porenlösung sinkt dabei von etwa 12,5 bis 13,5 auf Werte unter 9. Erreicht diese **Karbonatisierungsfront** die Bewehrung, geht die schützende Passivschicht des Stahls verloren – bei ausreichender Feuchte beginnt die Korrosion.",
+    "mehrKlinkerBedeutetMehr": "Mehr Klinker bedeutet mehr Calciumhydroxid, das CO₂ bindet. Zemente mit hohem Anteil an Hüttensand, Flugasche oder Kalksteinmehl karbonatisieren bei gleichem w/z-Wert in der Regel schneller.",
+    "niedrigerWZWert": "Niedriger w/z-Wert und gute Nachbehandlung verringern die Diffusion. Die oberflächennahe Randzone ist dabei maßgebend.",
+    "amSchnellstenVerläuftDie": "Am schnellsten verläuft die Karbonatisierung bei mittlerer Luftfeuchte (etwa 50 bis 70 %). In wassergesättigtem Beton ist die Diffusion behindert, in sehr trockenem fehlt das Reaktionswasser.",
+    "elektrochemieDerBewehrungskorrosionEinle": "Elektrochemie der Bewehrungskorrosion, Einleitungs- und Schädigungsphase (Tuutti-Modell) sowie den Vergleich mit chloridinduzierter Korrosion behandelt das Modul Bewehrungskorrosion.",
+    "dinEn1239012": "DIN EN 12390-12 beschleunigt die Karbonatisierung durch eine erhöhte, aber noch moderate CO₂-Konzentration. Bei sehr hohen Konzentrationen entstehen andere Reaktionsprodukte und Gefüge als unter natürlichen Bedingungen; 3 % gelten als Kompromiss zwischen Prüfdauer und Übertragbarkeit. Die Übersicht nennt die Kernpunkte – maßgebend ist der Normtext.",
+    "festlegungKernpunkte": "Festlegung (Kernpunkte)",
+    "prismenZB100": "Prismen, z. B. 100 mm × 100 mm × 400 mm; Ausschalen nach etwa einem Tag",
+    "mehrereSpaltflächenAusEinem": "mehrere Spaltflächen aus einem Probekörper",
+    "wasserlagerungBisZumAlter": "Wasserlagerung bis zum Alter von 28 Tagen, anschließend mindestens 14 Tage im Laborklima",
+    "definierteHydratationFeuchteIm": "definierte Hydratation; Feuchte im Porensystem auf ein prüfgerechtes Niveau absenken",
+    "lagerungImPrüfschrank": "**Lagerung im Prüfschrank**",
+    "t3005": "(3,0 ± 0,5) Vol.-% CO₂, (57 ± 3) % relative Luftfeuchte, (20 ± 2) °C; Abstand zu den Wänden für freie Umströmung",
+    "gleichmäßigeBeschleunigteKarbonatisierun": "gleichmäßige, beschleunigte Karbonatisierung",
+    "mehrereZeitpunkteWährendDer": "mehrere Zeitpunkte während der Lagerung, z. B. nach 7, 28 und 70 Tagen; optional eine Nullmessung vor Beginn",
+    "regressionÜberTStatt": "Regression über √t statt Einzelwert",
+    "scheibeAbspaltenFrischeBruchfläche": "Scheibe abspalten, frische Bruchfläche mit Phenolphthaleinlösung besprühen, Tiefe des farblosen Bereichs an mehreren Stellen je Seite messen und mitteln",
+    "mittlereKarbonatisierungstiefeDK": "mittlere Karbonatisierungstiefe d_k je Zeitpunkt",
+    "lineareRegressionDerTiefen": "lineare Regression der Tiefen über √t; die Steigung ist der Karbonatisierungskoeffizient K_AC in mm/√d",
+    "vergleichbarerKennwertDesKarbonatisierun": "vergleichbarer Kennwert des Karbonatisierungswiderstands",
+    "phenolphthaleinFärbtSichOberhalb": "Phenolphthalein färbt sich oberhalb von etwa pH 9 rotviolett und bleibt darunter farblos. Der farblose Saum markiert den karbonatisierten Bereich. Das Verfahren ist auch für Bauwerksuntersuchungen in DIN EN 14630 beschrieben. Zu beachten: Der Umschlag zeigt einen pH-Bereich, nicht die vollständige Karbonatisierung – eine Teilkarbonatisierung reicht über die sichtbare Front hinaus. Die Messung erfolgt an frischen Bruchflächen, nicht an gesägten Flächen, weil Sägeschlamm die Grenze verschmiert.",
+    "beiDunkelGefärbtenBetonen": "Bei dunkel gefärbten Betonen, etwa mit Pflanzenkohle, ist der Farbumschlag schwer abzulesen. Warum der Karbonatisierungswiderstand solcher Rezepturen geprüft werden sollte, erläutert das Modul Biokohlebeton.",
+    "regressionÜberT": "Regression über √t",
+    "umrechnungAufNatürlicheBedingungen": "Umrechnung auf natürliche Bedingungen – Näherung",
+    "nachDemFickschenGesetz": "Nach dem Fickschen Gesetz wächst K mit der Wurzel der CO₂-Konzentration. Mit der Umrechnung der Zeiteinheit von Tagen auf Jahre ergibt sich ein Faktor in der Größenordnung von 2:",
+    "nurEineGrößenordnungDie": "**Nur eine Größenordnung:** Die Umrechnung erfasst allein die CO₂-Konzentration. Im Bauwerk wirken zusätzlich die Luftfeuchte (Prüfung bei 57 %, außen meist höher), Beregnung und Austrocknung, Temperatur, die Nachbehandlung auf der Baustelle und die Streuung der Betondeckung. Vor Regen geschützte Außenbauteile karbonatisieren meist schneller als beregnete, Innenbauteile mit trockener Luft je nach Feuchte ebenfalls schneller. Probabilistische Modelle (fib Model Code for Service Life Design, DAfStb Heft 510) verwenden den Prüfwert deshalb nur als Materialkennwert und ergänzen Faktoren für Umwelt, Ausführung und Prüfverfahren.",
+    "prognoseGegenüberDerBetondeckung": "Prognose gegenüber der Betondeckung",
+    "doppelteDeckungBedeutetDie": "Doppelte Deckung bedeutet die vierfache Zeit bis zur Depassivierung – der wirksamste Hebel neben einem dichten Beton. Nach der eingeführten Fassung des Eurocode 2 wird die Dauerhaftigkeit deskriptiv über Expositionsklasse, Mindestbetondeckung c_min,dur und Betonzusammensetzung nach DIN 1045-2 sichergestellt, nicht über eine solche Prognose. Die 2. Generation (DIN EN 1992-1-1:2025-09) führt Expositionswiderstandsklassen ein, die sich auf Prüfwerte des Karbonatisierungswiderstands stützen.",
+    "cMinDurBetonstahl": "c_min,dur Betonstahl (NA DE)",
+    "beispielreiheLaden": "Beispielreihe laden",
+    "regressionMitAchsenabschnittA": "Regression mit Achsenabschnitt a",
+    "umrechnungUndBauteil": "Umrechnung und Bauteil",
+    "betondeckungCVorgabeC": "Betondeckung c (Vorgabe c_min,dur nach NA DE)",
+    "messwerteUndRegressionsgeradeDie": "Messwerte und Regressionsgerade; die Steigung ist K_AC.",
+    "prognoseXCK": "Prognose x_c = K_nat · √t (Näherung) gegenüber der Betondeckung.",
+    "erreichtDieFrontRechnerisch": " erreicht die Front rechnerisch ",
+    "dieDeckungVon": "; die Deckung von ",
+    "mmWäreNachEtwa": " mm wäre nach etwa ",
+    "keineAuswertungEingabenPrüfen": "Keine Auswertung – Eingaben prüfen.",
+    "näherungOhneFeuchteBeregnungs": "Näherung ohne Feuchte-, Beregnungs- und Ausführungseinflüsse; kein Dauerhaftigkeitsnachweis.",
+    "wasDiePrüfungLeistet": "Was die Prüfung leistet",
+    "sieLiefertUnterFestgelegten": "Sie liefert unter festgelegten Laborbedingungen einen vergleichbaren Kennwert für den Karbonatisierungswiderstand verschiedener Betone – etwa um neue Bindemittel oder Zusatzstoffe gegenüber einem Referenzbeton einzuordnen.",
+    "wasSieNichtLeistet": "Was sie nicht leistet",
+    "sieIstKeinVerfahren": "Sie ist kein Verfahren zur Bestimmung der Karbonatisierungstiefe bestehender Bauwerke und kein Nachweis der Dauerhaftigkeit. Die Übertragung auf das Bauwerk erfordert Annahmen zu Feuchte, Beregnung, Nachbehandlung und Deckungsstreuung.",
+    "natürlicheLagerungAlsGegenprobe": "Natürliche Lagerung als Gegenprobe",
+    "dinEn1239010": "DIN EN 12390-10 beschreibt die Prüfung bei atmosphärischer CO₂-Konzentration. Sie dauert deutlich länger, vermeidet aber die Umrechnung von der erhöhten Konzentration.",
+    "typischeFehlerquellen": "Typische Fehlerquellen",
+    "gesägteStattGespalteneMessflächen": "gesägte statt gespaltene Messflächen, zu spät besprühte Flächen",
+    "messungAnEckenUnd": "Messung an Ecken und groben Gesteinskörnern statt im Mittelbereich der Seiten",
+    "zuFeuchteProbekörperNach": "zu feuchte Probekörper nach verkürzter Vorlagerung (langsame Karbonatisierung)",
+    "einheitenVerwechseltKAc": "Einheiten verwechselt: K_AC in mm/√d, K_nat in mm/√a",
+    "en199211": "EN 1992-1-1:2023 ordnet Betone Expositionswiderstandsklassen zu; die XRC-Klassenzahl ist wie K_nat eine Rate in mm/√a. Stand der Einführung und Rolle von DIN EN 12390-12 fasst das Ausblick-Modul zusammen."
+  },
+  "werte": {
+    "auswertungUmrechnung": "Auswertung & Umrechnung",
+    "rechnerKAcPrognose": "Rechner K_AC & Prognose",
+    "bereicheDesModulsSchnellkarbonatisierung": "Bereiche des Moduls Schnellkarbonatisierung",
+    "wasNachDerDepassivierung": "Was nach der Depassivierung geschieht",
+    "zumModulBewehrungskorrosion": "Zum Modul Bewehrungskorrosion",
+    "anwendungsfallNeueBetonrezepturen": "Anwendungsfall: neue Betonrezepturen",
+    "zumModulBiokohlebeton": "Zum Modul Biokohlebeton",
+    "beispielreiheLaden": "Beispielreihe laden",
+    "coImPrüfschrankC": "CO₂ im Prüfschrank c_acc",
+    "coNatürlichCNat": "CO₂ natürlich c_nat",
+    "vorgabeBetondeckung": "Vorgabe Betondeckung",
+    "betondeckungC": "Betondeckung c",
+    "nutzungsdauerTN": "Nutzungsdauer t_N",
+    "kAcPrüfung": "K_AC (Prüfung)",
+    "bestimmtheitsmaßR": "Bestimmtheitsmaß R²",
+    "kNatNäherung": "K_nat (Näherung)",
+    "achsenabschnittA": "Achsenabschnitt a",
+    "karbonatisierungstiefeÜberWurzelDer": "Karbonatisierungstiefe über Wurzel der Zeit mit Regressionsgerade",
+    "prognoseDerKarbonatisierungstiefeÜber": "Prognose der Karbonatisierungstiefe über die Jahre im Vergleich zur Betondeckung",
+    "dieDeckungReichtIn": "Die Deckung reicht in dieser Näherung für die Nutzungsdauer.",
+    "dieDeckungReichtIn2": "Die Deckung reicht in dieser Näherung nicht für die Nutzungsdauer.",
+    "ihrRechenwegKAc": "Ihr Rechenweg: K_AC, Umrechnung und Prognose",
+    "messwerteÜberT": "Messwerte über √t",
+    "kleinsteQuadrateMitAchsenabschnitt": "Kleinste Quadrate mit Achsenabschnitt:",
+    "kleinsteQuadrateDurchDen": "Kleinste Quadrate durch den Ursprung:",
+    "umrechnungNäherung": "Umrechnung (Näherung)",
+    "coKonzentrationUndZeiteinheit": "CO₂-Konzentration und Zeiteinheit (Tage → Jahre):",
+    "prognoseFürDieNutzungsdauer": "Prognose für die Nutzungsdauer",
+    "wurzelTGesetzMit": "Wurzel-t-Gesetz mit dem umgerechneten Koeffizienten:",
+    "zeitBisZurBewehrung": "Zeit bis zur Bewehrung",
+    "umgestelltNachDerZeit": "Umgestellt nach der Zeit:",
+    "derAchsenabschnittAStammt": "Der Achsenabschnitt a stammt aus der Vorlagerung und wird in der Prognose nicht fortgeschrieben; maßgebend ist die Steigung.",
+    "dinEn1239012": "DIN EN 12390-12:2020-04 (Prüfung, Regression); Umrechnung nach dem 1. Fickschen Gesetz (Näherung)",
+    "beispielReichtDieDeckung": "Beispiel: Reicht die Deckung von 25 mm für 50 Jahre?",
+    "rechnerischAusreichendAberNur": "Rechnerisch ausreichend – aber nur als Größenordnung. Eine um 10 mm geringere Deckung (15 mm) würde schon nach rund 57 Jahren erreicht.",
+    "lehrbeispielPrüfungNachDin": "Lehrbeispiel; Prüfung nach DIN EN 12390-12:2020-04",
+    "ausblickKarbonatisierungswiderstandAlsKl": "Ausblick: Karbonatisierungswiderstand als Klasse (XRC)",
+    "zumModulAusblickNeue": "Zum Modul Ausblick: neue Normengeneration",
+    "oktober2026Ap6": "Oktober 2026 (AP 6.2: Modul neu erstellt; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "REIHEN": [
+      {
+        "id": "a",
+        "name": "Beispiel A: dichter Beton, CEM I (Lehrwerte)",
+        "x": [
+          0.5,
+          2.5,
+          4.8,
+          7.5
+        ]
+      },
+      {
+        "id": "b",
+        "name": "Beispiel B: Beton mit hohem Hüttensandanteil (Lehrwerte)",
+        "x": [
+          1,
+          4.5,
+          8.5,
+          13.4
+        ]
+      },
+      {
+        "id": "c",
+        "name": "Beispiel C: Messreihe mit Ausreißer (Lehrwerte)",
+        "x": [
+          0.5,
+          5.5,
+          4,
+          7.8
+        ]
+      }
+    ],
+    "Schnellkarbonatisierung.schritte": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Messwerte nach 7, 28 und 70 Tagen bei 3 % CO₂ (Lehrwerte), Regression durch den Ursprung:",
+        "formel": "d_7 = 2{,}5\\,\\text{mm}, \\quad d_{28} = 4{,}8\\,\\text{mm}, \\quad d_{70} = 7{,}5\\,\\text{mm}"
+      },
+      {
+        "titel": "Steigung",
+        "erklaerung": "Mit s = √t: Σ s·d = 2,646 · 2,5 + 5,292 · 4,8 + 8,367 · 7,5 = 94,76 und Σ s² = 7 + 28 + 70 = 105:",
+        "formel": "K_{AC} = \\frac{94{,}76}{105} = 0{,}903\\,\\tfrac{\\text{mm}}{\\sqrt{\\text{d}}}"
+      },
+      {
+        "titel": "Umrechnung",
+        "erklaerung": "Auf 0,04 % CO₂ und Jahre (Näherung):",
+        "formel": "K_{nat} = 0{,}903 \\cdot \\sqrt{\\tfrac{0{,}04}{3}} \\cdot \\sqrt{365} = 0{,}903 \\cdot 2{,}206 = 1{,}99\\,\\tfrac{\\text{mm}}{\\sqrt{\\text{a}}}"
+      },
+      {
+        "titel": "Prognose",
+        "erklaerung": "Tiefe nach 50 Jahren und Zeit bis 25 mm:",
+        "formel": "x_c = 1{,}99 \\cdot \\sqrt{50} = 14{,}1\\,\\text{mm} < 25\\,\\text{mm}, \\qquad t_c = \\left(\\tfrac{25}{1{,}99}\\right)^2 = 158\\,\\text{a}"
+      }
+    ],
+    "Schnellkarbonatisierung.literatur": [
+      "von Greve-Dierfeld, S.; Lothenbach, B.; Vollpracht, A. et al.: Understanding the carbonation of concrete with supplementary cementitious materials: a critical review by RILEM TC 281-CCC. Materials and Structures 53 (2020), Art. 136",
+      "Gehlen, C.: Probabilistische Lebensdauerbemessung von Stahlbetonbauwerken – Zuverlässigkeitsbetrachtungen zur wirksamen Vermeidung von Bewehrungskorrosion. DAfStb Heft 510. Berlin: Beuth 2000",
+      "fib – International Federation for Structural Concrete: Model Code for Service Life Design. fib Bulletin 34. Lausanne: fib 2006",
+      "Tuutti, K.: Corrosion of steel in concrete. CBI Research Report 4:82. Stockholm: Swedish Cement and Concrete Research Institute 1982"
+    ],
+    "Schnellkarbonatisierung.regelwerke": [
+      {
+        "title": "DIN EN 12390-12:2020-04 (Prüfung von Festbeton - Teil 12: Bestimmung des Karbonatisierungswiderstandes von Beton - Beschleunigtes Karbonatisierungsverfahren)"
+      },
+      {
+        "title": "DIN EN 12390-10:2019-02 (Prüfung von Festbeton - Teil 10: Bestimmung des Karbonatisierungswiderstandes von Beton bei atmosphärischer Konzentration von Kohlenstoffdioxid)"
+      },
+      {
+        "title": "DIN EN 14630:2007-01 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken - Prüfverfahren - Bestimmung der Karbonatisierungstiefe im Festbeton mit der Phenolphthalein-Prüfung)"
+      },
+      "DIN_EN_206",
+      "DIN_EN_1992_1_1"
+    ],
+    "Schnellkarbonatisierung.formeln": [
+      {
+        "formel": "d_k = a + K_{AC} \\cdot \\sqrt{t}",
+        "erklaerung": "Karbonatisierungstiefe über der Wurzel der Lagerungsdauer; K_AC in mm/√d aus linearer Regression.",
+        "quelle": "DIN EN 12390-12:2020-04"
+      },
+      {
+        "formel": "K_{nat} \\approx K_{AC} \\cdot \\sqrt{c_{nat}/c_{acc}} \\cdot \\sqrt{365}",
+        "erklaerung": "Näherungsweise Umrechnung auf natürliche CO₂-Konzentration und Jahre (nur Konzentrationseinfluss)."
+      },
+      {
+        "formel": "t_c = \\left(c / K_{nat}\\right)^2",
+        "erklaerung": "Zeit, bis die Karbonatisierungsfront die Betondeckung c erreicht."
+      }
+    ]
+  }
+}

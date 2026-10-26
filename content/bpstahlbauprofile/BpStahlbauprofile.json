@@ -1,0 +1,91 @@
+{
+  "texte": {
+    "stahlbauprofileProfileQuerschnittswerte": "Stahlbauprofile (Profile & Querschnittswerte)",
+    "interaktiveBibliothekUndStatischer": "Interaktive Bibliothek und statischer Querschnittrechner für europäische Normprofile im Stahlbau",
+    "profilreiheWählen": "Profilreihe wählen",
+    "profilGrößeSchieberegler": "Profil-Größe (Schieberegler)",
+    "typischeProfilanwendungen": "Typische Profilanwendungen:",
+    "ipeTrägerMittelbreiteI": "**IPE-Träger (Mittelbreite I-Träger):** Ideal auf reine Biegung um die starke y-y Achse dimensioniert. Finden breiten Einsatz als Deckenträger, Riegel oder Hallenrahmen, wenn Knicken quer zum Träger konstruktiv verhindert wird.",
+    "heaTrägerLeichtesBreitflanschprofil": "**HEA-Träger (Leichtes Breitflanschprofil):** Besitzen im Verhältnis zum Bauteileigengewicht sehr günstige Tragfähigkeiten. Werden häufig bei Platzersparnis oder moderaten Knicklasten als Stützen und Riegel verwendet.",
+    "hebTrägerNormalesBreitflanschprofil": "**HEB-Träger (Normales Breitflanschprofil):** Häufiger Stützenquerschnitt im Hochbau. Durch breite Flansche haben HEB-Profile deutlich größere Trägheitsmomente um die schwache z-z Achse im Vergleich zu IPE.",
+    "hemTrägerVerstärktesBreitflanschprofil": "**HEM-Träger (Verstärktes Breitflanschprofil):** Für hoch belastete Stützen und schwere Abfangträger; sehr dicke Flansche und Stege für große Einzel- und Stützlasten.",
+    "upnTrägerUStahl": "**UPN-Träger (U-Stahl Standard):** Asymmetrischer Querschnitt. Oft paarweise zusammengeschweißt (\"gekuppelt\") für Stützen oder eingesetzt bei Treppenwangen, Randeinfassungen und Schlosserarbeiten.",
+    "berechnungsformelnFürNormalspannung": "Berechnungsformeln für Normalspannung:",
+    "dieÜberlagerungVonNormalkraft": "Die Überlagerung von Normalkraft und Biegung (Navier) führt zur elastischen Randspannung:",
+    "derTragfähigkeitsnachweisGztVerlangt": "Der Tragfähigkeitsnachweis (GZT) verlangt, dass die maximale kombinierte Randspannung unter der bemessenen Grenzkraft liegt:",
+    "edFYd100": "η = σ_Ed / f_yd ≤ 100%",
+    "trägheitIY": "Trägheit I_y",
+    "widerstandWY": "Widerstand W_y",
+    "trägheitIZ": "Trägheit I_z",
+    "widerstandWZ": "Widerstand W_z",
+    "profilgeometrieHauptachsenSkaliert": "Profilgeometrie & Hauptachsen (Skaliert)",
+    "starkeBiegeachseYY": "Starke Biegeachse = **y-y** • Schwache Achse = **z-z**",
+    "interaktiveSpannungsüberlagerungTragfähi": "Interaktive Spannungsüberlagerung & Tragfähigkeit",
+    "normalkraftNEd": "Normalkraft N_Ed",
+    "biegungMYEd": "Biegung M_y,Ed",
+    "beiwertM0": "Beiwert γ_M0",
+    "spannungsaufteilungAmRand": "Spannungsaufteilung am Rand:",
+    "anteilNormalspannungN": "Anteil Normalspannung (σ_N):",
+    "anteilBiegespannungMy": "Anteil Biegespannung (σ_My):",
+    "gesamtRandspannungEdMax": "Gesamt Randspannung (σ_Ed,max):",
+    "nachweisErfülltDieMaximale": "**Nachweis erfüllt!** Die maximale Randspannung σ_Ed (",
+    "nMmLiegtUnter": " N/mm²) liegt unter der zulässigen Festigkeit f_yd (",
+    "tragfähigkeitÜberschrittenDieRandspannun": "**Tragfähigkeit überschritten:** Die Randspannung liegt über f<sub>yd</sub>. Größeres Profil, höhere Stahlgüte oder geringere Beanspruchung wählen."
+  },
+  "werte": {
+    "normalkraftNEd": "Normalkraft N_Ed",
+    "biegungMYEd": "Biegung M_y,Ed",
+    "beiwertM0": "Beiwert γ_M0",
+    "anwendungsbeispielIpe300Aus": "Anwendungsbeispiel: IPE 300 aus S235 als Deckenträger",
+    "dinEn19931": "DIN EN 1993-1-1 mit NA (elastischer Nachweis, Profilwerte nach Tabelle)",
+    "tragfähigkeitUndDurchbiegungSind": "Tragfähigkeit und Durchbiegung sind deutlich erfüllt – ein IPE 270 wäre zu prüfen; Biegedrillknicken ist gesondert nachzuweisen."
+  },
+  "daten": {
+    "BpStahlbauprofile.schritte": [
+      {
+        "titel": "1. Gegeben",
+        "formel": "L = 6{,}0\\,\\text{m},\\; q_d = 10\\,\\text{kN/m},\\; q_k = 7\\,\\text{kN/m};\\; W_{el,y} = 557\\,\\text{cm}^3,\\; I_y = 8356\\,\\text{cm}^4",
+        "erklaerung": "Einfeldträger unter Gleichlast."
+      },
+      {
+        "titel": "2. Biegespannung",
+        "formel": "M_{Ed} = 10 \\cdot 6^2/8 = 45\\,\\text{kNm};\\; \\sigma = 45 \\cdot 10^6 / 557 \\cdot 10^3 = 81\\,\\text{N/mm}^2 \\le 235",
+        "erklaerung": "Ausnutzung rund 34 %."
+      },
+      {
+        "titel": "3. Durchbiegung (charakteristisch)",
+        "formel": "w = \\frac{5 \\cdot 7 \\cdot 6000^4}{384 \\cdot 210\\,000 \\cdot 8356 \\cdot 10^4} = 6{,}7\\,\\text{mm} \\le L/300 = 20\\,\\text{mm}",
+        "erklaerung": "Gebrauchstauglichkeit erfüllt."
+      }
+    ],
+    "BpStahlbauprofile.literatur": [
+      "Wagenknecht, G.: Stahlbau-Praxis nach Eurocode 3. Band 1: Tragwerksplanung, Grundlagen, 6., überarb. u. erw. Aufl.; Band 2: Verbindungen und Konstruktionen, 5., überarb. u. erw. Aufl.; Band 3: Komponentenmethode, 2. Aufl. Berlin: Beuth 2021",
+      "Kuhlmann, U. (Hrsg.): Stahlbau-Kalender. Berlin: Ernst & Sohn (jährlich)"
+    ],
+    "BpStahlbauprofile.regelwerke": [
+      {
+        "title": "DIN EN 10025 (Warmgewalzte Erzeugnisse aus Baustählen)"
+      },
+      {
+        "title": "DIN EN 1993-1-1 / NA (Eurocode 3: Bemessung und Konstruktion von Stahlbauten)"
+      }
+    ],
+    "BpStahlbauprofile.formeln": [
+      {
+        "formel": "\\sigma = \\frac{M_{y,Ed}}{W_{el,y}} \\le f_{y,d} = \\frac{f_y}{\\gamma_{M0}}",
+        "erklaerung": "Elastischer Biegespannungsnachweis für einfach-symmetrische oder doppeltsymmetrische I-Profile nach EC3 (γ_M0 = 1,0 nach NA).",
+        "quelle": "DIN EN 1993-1-1 Abs. 6.2.5"
+      },
+      {
+        "formel": "\\tau = \\frac{V_{z,Ed} \\cdot S_y}{I_y \\cdot t_w} \\le \\frac{f_y}{\\sqrt{3} \\cdot \\gamma_{M0}}",
+        "erklaerung": "Schubspannungsnachweis im Steg des I-Profils unter Querkraftbeanspruchung V_z,Ed.",
+        "quelle": "DIN EN 1993-1-1 Abs. 6.2.6"
+      },
+      {
+        "formel": "w = \\frac{5 \\cdot q \\cdot L^4}{384 \\cdot E \\cdot I_y} \\le \\frac{L}{300}",
+        "erklaerung": "Mittendurchbiegung des Einfeldträgers; der Grenzwert (z. B. L/300) ist eine übliche Empfehlung und wird projektbezogen vereinbart.",
+        "quelle": "Technische Mechanik / DIN EN 1993-1-1 (Abschn. 7)"
+      }
+    ]
+  }
+}

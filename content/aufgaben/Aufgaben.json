@@ -1,0 +1,41 @@
+{
+  "texte": {
+    "fachQuizWissenscheck": "Fach-Quiz & Wissenscheck: ",
+    "prüfenSieIhrVerständnis": "Prüfen Sie Ihr Verständnis mit didaktisch geprüften Multiple-Choice-Fragen und automatischer Wissenslücken-Analyse.",
+    "fachQuizStarten": "Fach-Quiz starten",
+    "praxisbezogeneRechenbeispieleNachweiseUn": "Praxisbezogene Rechenbeispiele, Nachweise und Klausuraufgaben.",
+    "alleAufklappen": "Alle aufklappen",
+    "alleZuklappen": "Alle zuklappen",
+    "keineAufgabenGefundenFür": "Keine Aufgaben gefunden für \"",
+    "lösungErklärung": "Lösung & Erklärung"
+  },
+  "werte": {
+    "übungsaufgabenBemessungsnachweiseFallstu": "Übungsaufgaben, Bemessungsnachweise & Fallstudien",
+    "suchergebnisseÜbungsaufgaben": "Suchergebnisse: Übungsaufgaben",
+    "übungsaufgabenFallstudien": "Übungsaufgaben & Fallstudien",
+    "aufgabenDurchsuchen": "Aufgaben durchsuchen..."
+  },
+  "daten": {
+    "Aufgaben.regelwerke": [
+      {
+        "title": "Rahmenprüfungsordnung für Ingenieurstudiengänge (APO)",
+        "url": "https://www.tha.de/"
+      },
+      {
+        "title": "DIN EN Normenreihe Baustoffe und Konstruktiver Ingenieurbau"
+      }
+    ],
+    "Aufgaben.formeln": [
+      {
+        "formel": "\\text{Note} = 1{,}0 + 3{,}0 \\cdot \\left(1 - \\frac{P_{\\text{erreicht}} - P_{\\text{bestehen}}}{P_{\\text{max}} - P_{\\text{bestehen}}}\\right)",
+        "erklaerung": "Lineare Notenberechnungsskala für akademische Klausuren und Übungsaufgaben im Bauingenieurwesen mit 50 % Bestehensgrenze.",
+        "quelle": "Allgemeine Prüfungsordnung"
+      },
+      {
+        "formel": "w/z = \\frac{m_w}{m_z} \\quad \\text{und} \\quad \\rho_c = \\frac{m_{\\text{dry}}}{V_{\\text{geom}}}",
+        "erklaerung": "Grundlegende bauchemische und physikalische Berechnungsgleichungen zur Prüfungsvorbereitung.",
+        "quelle": "Wendehorst Baustoffkunde"
+      }
+    ]
+  }
+}

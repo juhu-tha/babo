@@ -4,6 +4,8 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { BlockMath, InlineMath } from 'react-katex';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
+import inhalt from '@/content/einheiten/Einheiten.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 type UnitCategory = 'Länge' | 'Fläche' | 'Volumen' | 'Kraft' | 'Spannung/Druck' | 'Masse' | 'Dichte' | 'Moment' | 'Energie' | 'Temperatur';
 
@@ -29,7 +31,7 @@ const units: Record<UnitCategory, { name: string; factor: number; offset?: numbe
     { name: 'm³', factor: 1 },
     { name: 'mm³', factor: 0.000000001 },
     { name: 'cm³', factor: 0.000001 },
-    { name: 'dm³ / Liter (l)', factor: 0.001 },
+    { name: inhalt.werte.dmLiterL, factor: 0.001 },
   ],
   'Kraft': [
     { name: 'N', factor: 1 },
@@ -113,14 +115,10 @@ export default function Einheiten() {
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Scale className="text-shiraz" /> Einheiten im Bauwesen
-        </h2>
+          <Scale className="text-shiraz" /><MdText text={inhalt.texte.einheitenImBauwesen} /></h2>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Das Internationale Einheitensystem (SI) bildet die Grundlage für alle physikalischen und technischen Berechnungen im Bauwesen.
-            Neben den SI-Basiseinheiten sind abgeleitete Einheiten (wie Newton oder Pascal) und Vorsätze (wie Kilo oder Mega) von zentraler Bedeutung.
-          </p>
+          <p><MdText text={inhalt.texte.dasInternationaleEinheitensystemSi} /></p>
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
@@ -132,8 +130,7 @@ export default function Einheiten() {
             }`}
             onClick={() => setActiveTab('grundlagen')}
           >
-            <Scale size={16} /> Grundlagen &amp; SI-System
-          </button>
+            <Scale size={16} /><MdText text={inhalt.texte.grundlagenSiSystem} /></button>
           <button aria-pressed={activeTab === 'umrechner'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'umrechner' 
@@ -181,13 +178,13 @@ export default function Einheiten() {
                   <td className="px-4 py-2">s</td>
                 </tr>
                 <tr className="hover:bg-home-grau/5">
-                  <td className="px-4 py-2 font-bold">Thermodynamische Temperatur</td>
+                  <td className="px-4 py-2 font-bold"><MdText text={inhalt.texte.thermodynamischeTemperatur} /></td>
                   <td className="px-4 py-2"><InlineMath math="T" /></td>
                   <td className="px-4 py-2">Kelvin</td>
                   <td className="px-4 py-2">K</td>
                 </tr>
                 <tr className="hover:bg-home-grau/5">
-                  <td className="px-4 py-2 font-bold">Elektrische Stromstärke</td>
+                  <td className="px-4 py-2 font-bold"><MdText text={inhalt.texte.elektrischeStromstärke} /></td>
                   <td className="px-4 py-2"><InlineMath math="I" /></td>
                   <td className="px-4 py-2">Ampere</td>
                   <td className="px-4 py-2">A</td>
@@ -207,13 +204,11 @@ export default function Einheiten() {
               </tbody>
             </table>
           </div>
-          <div className="mt-2 p-3 bg-off-white rounded-lg text-xs text-text-main/80 border border-home-grau/20">
-            Seit der SI-Revision 2019 sind alle sieben Basiseinheiten über festgelegte Naturkonstanten definiert (z. B. das Kilogramm über die Planck-Konstante). Die <strong>Celsius-Temperatur</strong> ist eine abgeleitete Größe: <InlineMath math="\vartheta / {}^\circ\text{C} = T/\text{K} - 273{,}15" />. Temperatur<em>differenzen</em> sind in K und °C zahlengleich – deshalb stehen Wärmedehnzahlen und U-Werte mit „K“ im Nenner.
-          </div>
+          <div className="mt-2 p-3 bg-off-white rounded-lg text-xs text-text-main/80 border border-home-grau/20"><MdText text={inhalt.texte.seitDerSiRevision} /></div>
         </div>
 
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
-          <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2">Wichtige abgeleitete Einheiten</h3>
+          <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2"><MdText text={inhalt.texte.wichtigeAbgeleiteteEinheiten} /></h3>
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left">
               <thead className="bg-home-grau/10 text-text-main">
@@ -230,12 +225,12 @@ export default function Einheiten() {
                   <td className="px-4 py-2"><InlineMath math="1 \text{ N} = 1 \frac{\text{kg} \cdot \text{m}}{\text{s}^2}" /></td>
                 </tr>
                 <tr className="hover:bg-home-grau/5">
-                  <td className="px-4 py-2 font-bold">Druck / Spannung (<InlineMath math="p, \sigma" />)</td>
+                  <td className="px-4 py-2 font-bold"><MdText text={inhalt.texte.druckSpannungPSigma} /></td>
                   <td className="px-4 py-2">Pascal (Pa)</td>
                   <td className="px-4 py-2"><InlineMath math="1 \text{ Pa} = 1 \frac{\text{N}}{\text{m}^2}" /></td>
                 </tr>
                 <tr className="hover:bg-home-grau/5">
-                  <td className="px-4 py-2 font-bold">Energie / Arbeit (<InlineMath math="E, W" />)</td>
+                  <td className="px-4 py-2 font-bold"><MdText text={inhalt.texte.energieArbeitEW} /></td>
                   <td className="px-4 py-2">Joule (J)</td>
                   <td className="px-4 py-2"><InlineMath math="1 \text{ J} = 1 \text{ N} \cdot \text{m}" /></td>
                 </tr>
@@ -248,20 +243,18 @@ export default function Einheiten() {
             </table>
           </div>
           <div className="mt-2 p-3 bg-shiraz/10 rounded-lg text-sm text-text-main space-y-2">
-            <div>
-              <strong>Wichtig im Bauwesen:</strong> Spannungen und Festigkeiten werden meist in <strong>N/mm²</strong> oder <strong>MPa</strong> angegeben.
-            </div>
+            <div><MdText text={inhalt.texte.wichtigImBauwesenSpannungen} /></div>
             <div className="text-xs text-text-main/90 bg-white/70 p-2.5 rounded-lg border border-shiraz/10 grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <div>🍫 <strong className="text-shiraz">1 N</strong> ≈ Gewichtskraft einer Tafel Schokolade (100 g)</div>
-              <div>👷 <strong className="text-shiraz">1 kN</strong> ≈ Gewichtskraft eines Bauarbeiters mit Ausrüstung (100 kg)</div>
-              <div>🐋 <strong className="text-shiraz">1 MN</strong> ≈ Gewichtskraft eines großen Wals (100 t)</div>
+              <div>🍫 <strong className="text-shiraz">1 N</strong><MdText text={inhalt.texte.gewichtskraftEinerTafelSchokolade} /></div>
+              <div>👷 <strong className="text-shiraz">1 kN</strong><MdText text={inhalt.texte.gewichtskraftEinesBauarbeitersMit} /></div>
+              <div>🐋 <strong className="text-shiraz">1 MN</strong><MdText text={inhalt.texte.gewichtskraftEinesGroßenWals} /></div>
             </div>
             <BlockMath math="1 \text{ MPa} = 1 \frac{\text{N}}{\text{mm}^2} = 10^6 \text{ Pa} = 1000 \frac{\text{kN}}{\text{m}^2}" />
           </div>
         </div>
 
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
-          <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2">SI-Vorsätze (Präfixe)</h3>
+          <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2"><MdText text={inhalt.texte.siVorsätzePräfixe} /></h3>
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left">
               <thead className="bg-home-grau/10 text-text-main">
@@ -290,12 +283,12 @@ export default function Einheiten() {
                 <tr className="hover:bg-home-grau/5">
                   <td className="px-4 py-2 font-bold">Hekto</td>
                   <td className="px-4 py-2">h</td>
-                  <td className="px-4 py-2"><InlineMath math="10^2" /> (Hundert, z. B. Hektar)</td>
+                  <td className="px-4 py-2"><MdText text={inhalt.texte.t102HundertZ} /></td>
                 </tr>
                 <tr className="hover:bg-home-grau/5">
                   <td className="px-4 py-2 font-bold">Dezi</td>
                   <td className="px-4 py-2">d</td>
-                  <td className="px-4 py-2"><InlineMath math="10^{-1}" /> (Zehntel, z. B. dm³ = Liter)</td>
+                  <td className="px-4 py-2"><MdText text={inhalt.texte.t101ZehntelZ} /></td>
                 </tr>
                 <tr className="hover:bg-home-grau/5">
                   <td className="px-4 py-2 font-bold">Zenti</td>
@@ -310,12 +303,12 @@ export default function Einheiten() {
                 <tr className="hover:bg-home-grau/5">
                   <td className="px-4 py-2 font-bold">Mikro</td>
                   <td className="px-4 py-2">µ</td>
-                  <td className="px-4 py-2"><InlineMath math="10^{-6}" /> (Millionstel, z. B. µm Rissbreite)</td>
+                  <td className="px-4 py-2"><MdText text={inhalt.texte.t106MillionstelZ} /></td>
                 </tr>
                 <tr className="hover:bg-home-grau/5">
                   <td className="px-4 py-2 font-bold">Nano</td>
                   <td className="px-4 py-2">n</td>
-                  <td className="px-4 py-2"><InlineMath math="10^{-9}" /> (Milliardstel, z. B. nm Gelporen)</td>
+                  <td className="px-4 py-2"><MdText text={inhalt.texte.t109MilliardstelZ} /></td>
                 </tr>
               </tbody>
             </table>
@@ -326,7 +319,7 @@ export default function Einheiten() {
 
       {activeTab === 'umrechner' && (
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6 animate-in fade-in duration-300">
-          <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2">Interaktiver Einheitenumrechner</h3>
+          <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2"><MdText text={inhalt.texte.interaktiverEinheitenumrechner} /></h3>
           
           <div className="flex flex-col gap-4 max-w-2xl mx-auto w-full">
             <div className="flex flex-col gap-2">
@@ -391,40 +384,27 @@ export default function Einheiten() {
       )}
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-2">
-        <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2">Anwendung: Einheiten sicher durch eine Rechnung führen</h3>
-        <p className="text-sm text-text-main/80">
-          Die häufigsten Fehler in Prüfungen und Statik entstehen nicht in der Formel, sondern beim Umrechnen. Bewährte Regel: <strong>alle Größen zuerst in N und mm</strong> umrechnen – dann ergibt sich jede Spannung direkt in N/mm² (= MPa).
-        </p>
+        <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2"><MdText text={inhalt.texte.anwendungEinheitenSicherDurch} /></h3>
+        <p className="text-sm text-text-main/80"><MdText text={inhalt.texte.dieHäufigstenFehlerIn} /></p>
         <FormulaDerivationBox
-          title="Beispiel 1: Druckspannung in einer Stütze"
+          title={inhalt.werte.beispiel1DruckspannungIn}
           zielGleichung="\sigma = \frac{F}{A}"
-          schritte={[
-            { titel: 'Gegeben', erklaerung: 'Normalkraft F = 500 kN, Querschnitt 30 cm × 30 cm.', formel: 'F = 500\\,\\text{kN} = 500\\,000\\,\\text{N},\\quad A = 300 \\cdot 300 = 90\\,000\\,\\text{mm}^2' },
-            { titel: 'Spannung', erklaerung: 'Division in N und mm liefert direkt N/mm²:', formel: '\\sigma = \\frac{500\\,000\\,\\text{N}}{90\\,000\\,\\text{mm}^2} = 5{,}56\\,\\frac{\\text{N}}{\\text{mm}^2} = 5{,}56\\,\\text{MPa}', einheit: 'N/mm²' },
-            { titel: 'Typischer Fehler', erklaerung: 'Wer kN durch cm² teilt, erhält kN/cm² – das Ergebnis 0,556 ist um den Faktor 10 kleiner als der MPa-Wert (1 kN/cm² = 10 N/mm²).', formel: '\\frac{500\\,\\text{kN}}{900\\,\\text{cm}^2} = 0{,}556\\,\\frac{\\text{kN}}{\\text{cm}^2} = 5{,}56\\,\\frac{\\text{N}}{\\text{mm}^2}' }
-          ]}
-          ergebnisHinweis="Vergleich mit der Festigkeit: Ein C30/37 hat f_ck = 30 N/mm² – die Stütze ist gering ausgenutzt."
-          normQuelle="DIN 1301-1 (Einheitenzeichen), DIN EN 1992-1-1 (Bezeichnungen)"
+          schritte={inhalt.daten["Einheiten.schritte"]}
+          ergebnisHinweis={inhalt.werte.vergleichMitDerFestigkeit}
+          normQuelle={inhalt.werte.din13011Einheitenzeichen}
         />
         <FormulaDerivationBox
-          title="Beispiel 2: Biegespannung eines Balkens – Moment in Nmm"
+          title={inhalt.werte.beispiel2BiegespannungEines}
           zielGleichung="\sigma = \frac{M}{W},\quad W = \frac{b\,h^2}{6}"
-          schritte={[
-            { titel: 'Moment', erklaerung: 'Einfeldträger, Streckenlast q = 10 kN/m, Spannweite l = 6 m:', formel: 'M = \\frac{q\\,l^2}{8} = \\frac{10 \\cdot 6^2}{8} = 45\\,\\text{kNm} = 45 \\cdot 10^6\\,\\text{Nmm}' },
-            { titel: 'Widerstandsmoment', erklaerung: 'Rechteck b = 30 cm, h = 50 cm, in mm:', formel: 'W = \\frac{300 \\cdot 500^2}{6} = 12{,}5 \\cdot 10^6\\,\\text{mm}^3' },
-            { titel: 'Spannung', erklaerung: 'Die Zehnerpotenzen kürzen sich:', formel: '\\sigma = \\frac{45 \\cdot 10^6\\,\\text{Nmm}}{12{,}5 \\cdot 10^6\\,\\text{mm}^3} = 3{,}6\\,\\frac{\\text{N}}{\\text{mm}^2}', einheit: 'N/mm²' }
-          ]}
-          ergebnisHinweis="1 kNm = 10⁶ Nmm – diese Umrechnung prüfen Sie im Einheitenumrechner unter „Moment“."
-          normQuelle="Technische Mechanik; Einheiten nach DIN 1301-1"
+          schritte={inhalt.daten["Einheiten.schritte_2"]}
+          ergebnisHinweis={inhalt.werte.t1Knm10Nmm}
+          normQuelle={inhalt.werte.technischeMechanikEinheitenNach}
         />
         <FormulaDerivationBox
-          title="Beispiel 3: Flächenlast in Spannung umrechnen"
+          title={inhalt.werte.beispiel3FlächenlastIn}
           zielGleichung="1\,\frac{\text{kN}}{\text{m}^2} = 10^{-3}\,\frac{\text{N}}{\text{mm}^2}"
-          schritte={[
-            { titel: 'Umrechnung', erklaerung: '1 kN = 10³ N und 1 m² = 10⁶ mm²:', formel: '1\\,\\frac{\\text{kN}}{\\text{m}^2} = \\frac{10^3\\,\\text{N}}{10^6\\,\\text{mm}^2} = 0{,}001\\,\\frac{\\text{N}}{\\text{mm}^2} = 1\\,\\text{kPa}' },
-            { titel: 'Anwendung', erklaerung: 'Eine Nutzlast von 5 kN/m² entspricht einem Flächendruck von nur 0,005 N/mm² – Bodenpressungen und Lasten werden deshalb in kN/m², Materialspannungen in N/mm² angegeben.', formel: '5\\,\\frac{\\text{kN}}{\\text{m}^2} = 0{,}005\\,\\frac{\\text{N}}{\\text{mm}^2}' }
-          ]}
-          normQuelle="DIN EN 1991-1-1 (Nutzlasten in kN/m²)"
+          schritte={inhalt.daten["Einheiten.schritte_3"]}
+          normQuelle={inhalt.werte.dinEn19911}
         />
       </div>
 
@@ -432,34 +412,14 @@ export default function Einheiten() {
 
       <ModuleFooter 
         wikipedia={[
-          { title: 'Internationales Einheitensystem', url: 'https://de.wikipedia.org/wiki/Internationales_Einheitensystem' },
+          { title: inhalt.werte.internationalesEinheitensystem, url: 'https://de.wikipedia.org/wiki/Internationales_Einheitensystem' },
           { title: 'Basiseinheit', url: 'https://de.wikipedia.org/wiki/SI-Basiseinheit' },
-          { title: 'Pascal (Einheit)', url: 'https://de.wikipedia.org/wiki/Pascal_(Einheit)' }
+          { title: inhalt.werte.pascalEinheit, url: 'https://de.wikipedia.org/wiki/Pascal_(Einheit)' }
         ]}
-        literatur={[
-          'BIPM: Le Système international d’unités (SI-Broschüre), 9. Auflage 2019',
-          'PTB: Die gesetzlichen Einheiten in Deutschland. Braunschweig: Physikalisch-Technische Bundesanstalt (aktuelle Fassung unter ptb.de)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        regelwerke={[
-          { title: 'DIN 1301-1:2010-10 (Einheiten – Einheitennamen, Einheitenzeichen)' },
-          { title: 'DIN 1301-2:1978-02 (Einheiten – Allgemein angewendete Teile und Vielfache)' },
-          { title: 'DIN EN ISO 80000-1 (Größen und Einheiten – Teil 1: Allgemeines; Deutsche Fassung EN ISO 80000-1:2022)' },
-          { title: 'Einheiten- und Zeitgesetz (EinhZeitG) und Einheitenverordnung (EinhV)', url: 'https://www.gesetze-im-internet.de/einhv/' }
-        ]}
-        formeln={[
-          {
-            formel: '1\\,\\text{MPa} = 1\\,\\frac{\\text{N}}{\\text{mm}^2} = 10^6\\,\\frac{\\text{N}}{\\text{m}^2} = 10\\,\\text{bar} = 1000\\,\\text{kN/m}^2',
-            erklaerung: 'Spannungs- und Druckäquivalenzen im Bauingenieurwesen: 1 Megapascal entspricht exakt einem Newton pro Quadratmillimeter.',
-            quelle: 'DIN 1301-1'
-          },
-          {
-            formel: '1\\,\\text{W/(m}\\cdot\\text{K)} = 1\\,\\frac{\\text{J}}{\\text{s}\\cdot\\text{m}\\cdot\\text{K}} \\quad \\text{und} \\quad 1\\,\\text{kN} = 1000\\,\\text{kg}\\cdot\\frac{\\text{m}}{\\text{s}^2} \\approx 102\\,\\text{kp}',
-            erklaerung: 'Zusammenhang zwischen Wärmeleitfähigkeits- und Krafteinheiten im SI-System (Kraft F = m · a). Das Kilopond (kp) ist keine gesetzliche Einheit mehr, begegnet aber in Altstatiken (1 kp = 9,806 65 N).',
-            quelle: 'DIN EN ISO 80000-1'
-          }
-        ]}
-        lastReviewed="Oktober 2026 (AP 3 Grundlagen: DIN 1301, DIN EN ISO 80000-1, SI-Broschüre geprüft; fachliche Freigabe durch den Autor ausstehend)"
+        literatur={inhalt.daten["Einheiten.literatur"]}
+        regelwerke={inhalt.daten["Einheiten.regelwerke"]}
+        formeln={inhalt.daten["Einheiten.formeln"]}
+        lastReviewed={inhalt.werte.oktober2026Ap3}
       />
     </div>
   );

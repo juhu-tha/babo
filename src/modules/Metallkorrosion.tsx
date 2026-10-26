@@ -15,12 +15,8 @@ function MetalThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 
   return (
     <div className="bg-shiraz/5 border border-shiraz/35 rounded-2xl p-4 sm:p-5 flex flex-col gap-4">
       <div>
-        <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider">
-          Material-Lehrpfad: Metalle im Bauwesen
-        </h4>
-        <p className="text-xs text-slate-700 font-medium mt-0.5">
-          Wechseln Sie nahtlos zwischen den drei Säulen der Baustofflehre (Basis, Anwendung und Alterung):
-        </p>
+        <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider"><MdText text={inhalt.texte.materialLehrpfadMetalleIm} /></h4>
+        <p className="text-xs text-slate-700 font-medium mt-0.5"><MdText text={inhalt.texte.wechselnSieNahtlosZwischen} /></p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {/* Säule 1: Baustoffe */}
@@ -35,11 +31,9 @@ function MetalThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <BookOpen size={16} className={current === 'baustoff' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>1. Baustoff-Kennwerte</span>
+            <span><MdText text={inhalt.texte.t1BaustoffKennwerte} /></span>
           </div>
-          <span className="text-xs text-slate-500 font-normal leading-relaxed">
-            Physikalische Eigenschaften, Schmelzpunkt & Legierungen der Metalle.
-          </span>
+          <span className="text-xs text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.physikalischeEigenschaftenSchmelzpunktLe} /></span>
           {current !== 'baustoff' && (
             <span className="text-xs font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -59,11 +53,9 @@ function MetalThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <Layers size={16} className={current === 'bauprodukt' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>2. Mechanik & Praxis</span>
+            <span><MdText text={inhalt.texte.t2MechanikPraxis} /></span>
           </div>
-          <span className="text-xs text-slate-500 font-normal leading-relaxed">
-            Plattenrechner, Kontaktkorrosions-Prüfung & Lieferantenlisten der BauPVO.
-          </span>
+          <span className="text-xs text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.plattenrechnerKontaktkorrosionsPrüfungLi} /></span>
           {current !== 'bauprodukt' && (
             <span className="text-xs font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -83,11 +75,9 @@ function MetalThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 
         >
           <div className="flex items-center gap-2 font-bold text-sm">
             <ShieldAlert size={16} className={current === 'dauerhaftigkeit' ? 'text-shiraz' : 'text-slate-400'} />
-            <span>3. Dauerhaftigkeit</span>
+            <span><MdText text={inhalt.texte.t3Dauerhaftigkeit} /></span>
           </div>
-          <span className="text-xs text-slate-500 font-normal leading-relaxed">
-            Galvanische Zellen, Korrosionsarten & Schutz nach DIN EN ISO 12944.
-          </span>
+          <span className="text-xs text-slate-500 font-normal leading-relaxed"><MdText text={inhalt.texte.galvanischeZellenKorrosionsartenSchutz} /></span>
           {current !== 'dauerhaftigkeit' && (
             <span className="text-xs font-bold text-shiraz mt-auto flex items-center gap-1">
               Ansehen <ArrowRight size={12} />
@@ -100,6 +90,8 @@ function MetalThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 
 }
 
 import { DeckschichtenVergleich } from '@/src/components/korrosion/DeckschichtenVergleich';
+import inhalt from '@/content/metallkorrosion/Metallkorrosion.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function Metallkorrosion() {
   const { activeTab, setActiveTab } = useTabContext();
@@ -127,28 +119,7 @@ export default function Metallkorrosion() {
   const clipPath = `polygon(0% 0%, 100% 0%, ${formatDeWert(100 - anodeErosion / 2)}% ${formatDeWert(anodeErosion / 3)}%, ${formatDeWert(100 - anodeErosion)}% 50%, 100% 100%, 0% 100%)`;
   const electronSpeed = env === 'salty' ? 1.0 : env === 'wet' ? 2.5 : env === 'moist' ? 5.0 : 0;
 
-  const envInfo = {
-    dry: {
-      title: 'Trocken (keine Korrosion)',
-      desc: 'Ohne flüssigen Elektrolyten (Wasserfilm) ist der elektrische Stromkreis vollständig unterbrochen. Es findet trotz Anwesenheit von Sauerstoff keine messbare Korrosion statt.',
-      color: 'border-home-grau/30 text-slate-700 bg-slate-50'
-    },
-    moist: {
-      title: 'Feuchte Luft (langsam)',
-      desc: 'Ein winziger, meist unsichtbarer Kondensatfilm (z. B. durch hohe Luftfeuchtigkeit bzw. Taupunktunterschreitung) auf der Oberfläche dient als schwacher Elektrolyt. Die Korrosion schreitet langsam voran.',
-      color: 'border-home-grau/30 text-slate-750 bg-slate-50/50'
-    },
-    wet: {
-      title: 'Nass / Regen (aktiv)',
-      desc: 'Ein durchgehender, stabile Wasserfilm bildet einen hervorragenden Elektrolyten. Ionen diffundieren ungehindert, die galvanische Rostzelle läuft unter Sauerstoffverbrauch auf Hochtouren.',
-      color: 'border-home-grau/30 text-slate-800 bg-slate-100'
-    },
-    salty: {
-      title: 'Salzhaltig / Chloride + (sehr rasant)',
-      desc: 'Chloride (z.B. aus Tausalz oder Meerluft) zerstören unvollständige Passivschutzschichten und erhöhen die Leitfähigkeit des Elektrolyten massiv. Es kommt zu rasantem Rosten und lokalem Lochfraß!',
-      color: 'border-shiraz/35 text-shiraz bg-rose-50/40'
-    }
-  };
+  const envInfo = inhalt.daten["Metallkorrosion.envInfo"];
 
   return (
     <div className="flex flex-col gap-8">
@@ -163,7 +134,7 @@ export default function Metallkorrosion() {
             }`}
           >
             <Zap size={14} />
-            <span>Grundlagen & Simulation</span>
+            <span><MdText text={inhalt.texte.grundlagenSimulation} /></span>
           </button>
           <button aria-pressed={activeSection === 'deckschichten'}
             onClick={() => setActiveSection('deckschichten')}
@@ -174,7 +145,7 @@ export default function Metallkorrosion() {
             }`}
           >
             <Layers size={14} />
-            <span>Deckschichten & Passivierung</span>
+            <span><MdText text={inhalt.texte.deckschichtenPassivierung} /></span>
           </button>
           <button aria-pressed={activeSection === 'arten'}
             onClick={() => setActiveSection('arten')}
@@ -196,38 +167,29 @@ export default function Metallkorrosion() {
             }`}
           >
             <ShieldCheck size={14} />
-            <span>Korrosionsschutz (DIN EN ISO 12944)</span>
+            <span><MdText text={inhalt.texte.korrosionsschutzDinEnIso} /></span>
           </button>
         </div>
         <h2 className="text-xl font-bold text-text-main mb-6 flex items-center gap-2">
-          <ShieldAlert className="text-shiraz" /> Korrosion und Schutz von Metallen
-        </h2>
+          <ShieldAlert className="text-shiraz" /><MdText text={inhalt.texte.korrosionUndSchutzVon} /></h2>
         
         <div className="flex flex-col gap-6 animate-in fade-in duration-300">
           {/* DIN EN ISO 8044 Definition & Systemcharakter Panel */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-sm text-text-main">
             <div className="md:col-span-2 bg-off-white p-5 rounded-xl border border-home-grau/30 flex flex-col gap-2.5">
               <span className="text-xs font-black text-shiraz uppercase tracking-wider flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-shiraz"></span>
-                Normative Definition nach DIN EN ISO 8044
-              </span>
-              <p className="text-xs leading-relaxed font-normal text-slate-700">
-                Unter metallischer Korrosion versteht man die <strong>physikochemische Wechselwirkung</strong> zwischen einem Metall und seiner Umgebung. Diese führt zu einer Veränderung der Eigenschaften des Metalls und kann gravierende Funktionsbeeinträchtigungen des metallischen Bauteils, der Systemumgebung oder des gesamten Tragwerks verursachen.
-              </p>
-              <p className="text-xs text-slate-500 italic font-medium mt-1">
-                Elektrochemische Korrosion erfordert einen geschlossenen ionenleitenden (Elektrolyt) und elektronenleitenden (metallischer Kontakt) Stromkreis zwischen Anode und Kathode.
-              </p>
+                <span className="w-1.5 h-1.5 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.normativeDefinitionNachDin} /></span>
+              <p className="text-xs leading-relaxed font-normal text-slate-700"><MdText text={inhalt.texte.unterMetallischerKorrosionVersteht} /></p>
+              <p className="text-xs text-slate-500 italic font-medium mt-1"><MdText text={inhalt.texte.elektrochemischeKorrosionErfordertEinen} /></p>
             </div>
             
             <div className="bg-rose-50/20 p-5 rounded-xl border border-rose-200/40 flex flex-col gap-2.5">
-              <span className="text-xs font-black text-shiraz uppercase tracking-wider">Der Systemcharakter</span>
-              <p className="text-xs leading-relaxed text-slate-700 font-medium">
-                Als Kernprinzip nach BGRCI gilt: Korrosion ist <strong>keine Werkstoffeigenschaft allein</strong>. Sie entsteht erst im Zusammenwirken eines komplexen Dreiecks:
-              </p>
+              <span className="text-xs font-black text-shiraz uppercase tracking-wider"><MdText text={inhalt.texte.derSystemcharakter} /></span>
+              <p className="text-xs leading-relaxed text-slate-700 font-medium"><MdText text={inhalt.texte.alsKernprinzipNachBgrci} /></p>
               <ul className="text-xs space-y-1 text-slate-650 font-bold list-disc pl-4 mt-0.5">
-                <li><span className="font-medium">Werkstoff & Oberflächenzustand</span></li>
-                <li><span className="font-medium">Elektrolyt & Umgebungsmedium</span></li>
-                <li><span className="font-medium">Bauliche Konstruktion / Zugspannung</span></li>
+                <li><span className="font-medium"><MdText text={inhalt.texte.werkstoffOberflächenzustand} /></span></li>
+                <li><span className="font-medium"><MdText text={inhalt.texte.elektrolytUmgebungsmedium} /></span></li>
+                <li><span className="font-medium"><MdText text={inhalt.texte.baulicheKonstruktionZugspannung} /></span></li>
               </ul>
             </div>
           </div>
@@ -236,46 +198,31 @@ export default function Metallkorrosion() {
             <section className="animate-in fade-in duration-300 flex flex-col gap-6">
               <div className="bg-stone-50 p-5 rounded-xl border border-home-grau/30 text-sm text-text-main/80 flex flex-col gap-4">
                 <h3 className="text-lg font-extrabold text-home-prim flex items-center gap-2">
-                  <Zap className="w-5 h-5 text-shiraz" /> Grundlagen der elektrochemischen Korrosion
-                </h3>
-                <p className="font-medium text-slate-700">
-                  Damit ein elektrochemischer Korrosionsprozess (Rosten) angetrieben wird, müssen drei physikalische Hauptvoraussetzungen gleichzeitig vorliegen:
-                </p>
+                  <Zap className="w-5 h-5 text-shiraz" /><MdText text={inhalt.texte.grundlagenDerElektrochemischenKorrosion} /></h3>
+                <p className="font-medium text-slate-700"><MdText text={inhalt.texte.damitEinElektrochemischerKorrosionsproze} /></p>
                 
                 {/* 3 Pillars of Electrochemistry */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-1 mb-2">
                   <div className="bg-white p-4 rounded-xl border border-home-grau/20 shadow-xs flex flex-col gap-1.5">
                     <strong className="text-xs text-slate-900 font-bold flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-red-500"></span>
-                      1. Potenzialdifferenz (Anode / Kathode)
-                    </strong>
-                    <span className="text-xs text-slate-600 leading-relaxed block font-medium">
-                      Zwei leitend verbundene Bereiche unterschiedlichen Standardpotenzials (<InlineMath math="E^0" />). Dies entsteht durch Kontakt unedler/edler Metalle, Gefügegrenzen, Korngrenzen, Eigenspannungen oder ungleiche Belüftung (Konzentrationszellen).
-                    </span>
+                      <span className="w-2 h-2 rounded-full bg-red-500"></span><MdText text={inhalt.texte.t1PotenzialdifferenzAnodeKathode} /></strong>
+                    <span className="text-xs text-slate-600 leading-relaxed block font-medium"><MdText text={inhalt.texte.zweiLeitendVerbundeneBereiche} /></span>
                   </div>
                   <div className="bg-white p-4 rounded-xl border border-home-grau/20 shadow-xs flex flex-col gap-1.5">
                     <strong className="text-xs text-slate-900 font-bold flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-sky-500"></span>
-                      2. Elektrolyt (Ionenleiter)
-                    </strong>
-                    <span className="text-xs text-slate-600 leading-relaxed block font-medium">
-                      Ein flüssiger Feuchtigkeitsfilm (Wasser, Regen, Schwitzwasser). Salze wie Chloride (<InlineMath math="\text{Cl}^-" />) oder saure Ablagerungen steigern die Ionenleitfähigkeit dramatisch und reduzieren den Ohmschen Widerstand des Systems.
-                    </span>
+                      <span className="w-2 h-2 rounded-full bg-sky-500"></span><MdText text={inhalt.texte.t2ElektrolytIonenleiter} /></strong>
+                    <span className="text-xs text-slate-600 leading-relaxed block font-medium"><MdText text={inhalt.texte.einFlüssigerFeuchtigkeitsfilmWasser} /></span>
                   </div>
                   <div className="bg-white p-4 rounded-xl border border-home-grau/20 shadow-xs flex flex-col gap-1.5">
                     <strong className="text-xs text-slate-900 font-bold flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-amber-500"></span>
-                      3. Kathodischer Elektronenakzeptor
-                    </strong>
-                    <span className="text-xs text-slate-600 leading-relaxed block font-medium">
-                      Ein Reaktionspartner an der Kathode, der e⁻ aufnimmt: Gelöster <strong className="text-slate-800">Sauerstoff</strong> (Sauerstofftyp, in neutralen/alkalischen Medien) oder <strong className="text-slate-800">Hydronium-Ionen</strong> (<InlineMath math="\text{H}^+" />, Wasserstofftyp/Säuretyp in saurem Milieu).
-                    </span>
+                      <span className="w-2 h-2 rounded-full bg-amber-500"></span><MdText text={inhalt.texte.t3KathodischerElektronenakzeptor} /></strong>
+                    <span className="text-xs text-slate-600 leading-relaxed block font-medium"><MdText text={inhalt.texte.einReaktionspartnerAnDer} /><strong className="text-slate-800">Sauerstoff</strong><MdText text={inhalt.texte.sauerstofftypInNeutralenAlkalischen} /><strong className="text-slate-800">Hydronium-Ionen</strong><MdText text={inhalt.texte.textHWasserstofftypSäuretyp} /></span>
                   </div>
                 </div>
 
                 <div className="my-4 bg-slate-150 p-5 sm:p-6 rounded-2xl border border-home-grau/35 shadow-inner relative overflow-hidden">
                   <h4 className="text-center font-extrabold text-slate-800 mb-4 text-sm sm:text-base flex items-center justify-center gap-2">
-                    <span>Das Korrosionselement (Galvanische Zelle) - Live-Simulation</span>
+                    <span><MdText text={inhalt.texte.dasKorrosionselementGalvanischeZelle} /></span>
                     <span className="animate-pulse flex h-2 w-2 rounded-full bg-shiraz"></span>
                   </h4>
                   
@@ -289,8 +236,8 @@ export default function Metallkorrosion() {
                         transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
                         style={{ clipPath: env !== 'dry' ? clipPath : undefined }}
                       >
-                        <span className="font-bold text-slate-700 text-xs tracking-wide uppercase">Anode (Eisen)</span>
-                        <FormulaText text={"$\\mathrm{Fe} \\rightarrow \\mathrm{Fe}^{2+} + 2\\mathrm{e}^-$"} className="text-xs text-slate-650 font-mono font-semibold mt-1.5 text-center px-1" />
+                        <span className="font-bold text-slate-700 text-xs tracking-wide uppercase"><MdText text={inhalt.texte.anodeEisen} /></span>
+                        <FormulaText text={inhalt.werte.mathrmFeRightarrowMathrm} className="text-xs text-slate-650 font-mono font-semibold mt-1.5 text-center px-1" />
                         
                         {/* Rostkruste (Rust crust) growing on anode */}
                         {env !== 'dry' && rustThickness > 0 && (
@@ -329,7 +276,7 @@ export default function Metallkorrosion() {
                       {/* Elektronenfluss (Draht) */}
                       <div className="w-full relative h-7 mb-3 bg-slate-200 rounded-lg border border-home-grau/30 overflow-hidden flex items-center shadow-inner">
                         <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-slate-400"></div>
-                        <div className="absolute left-2 text-[8px] text-slate-600 font-bold uppercase tracking-wider z-10 font-semibold">Leiter (Fluss e⁻)</div>
+                        <div className="absolute left-2 text-[8px] text-slate-600 font-bold uppercase tracking-wider z-10 font-semibold"><MdText text={inhalt.texte.leiterFlussE} /></div>
                         
                         {env !== 'dry' && (
                           <motion.div 
@@ -453,7 +400,7 @@ export default function Metallkorrosion() {
 
                          <Droplets size={16} className={`text-sky-500 mb-1.5 z-10 ${env !== 'dry' ? 'animate-bounce' : 'opacity-35'}`} />
                          <span className="text-slate-800 font-bold text-xs z-20 bg-white/95 border border-home-grau/30 px-2 py-0.5 rounded shadow-xs font-semibold">
-                           Elektrolyt {env === 'dry' ? '(Fehlt)' : env === 'moist' ? '(Feuchte)' : env === 'salty' ? '(Salzwasser + Cl⁻)' : '(Wasserfilm)'}
+                           Elektrolyt {env === 'dry' ? '(Fehlt)' : env === 'moist' ? '(Feuchte)' : env === 'salty' ? inhalt.werte.salzwasserCl : '(Wasserfilm)'}
                          </span>
                       </div>
                     </div>
@@ -465,9 +412,9 @@ export default function Metallkorrosion() {
                         animate={{ borderColor: env !== 'dry' ? ['#2563eb', '#1e3a8a', '#2563eb'] : '#cbd5e1' }}
                         transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 0.5 }}
                       >
-                        <span className="font-bold text-slate-700 text-xs tracking-wide uppercase">Kathode (Stahl)</span>
-                        <FormulaText text={"$\\mathrm{O}_2 + 2\\mathrm{H}_2\\mathrm{O} + 4\\mathrm{e}^-$"} className="text-xs text-slate-650 font-mono font-semibold mt-1 text-center" />
-                        <FormulaText text={"$\\rightarrow 4\\mathrm{OH}^-$"} className="text-xs text-slate-650 font-mono font-semibold text-center" />
+                        <span className="font-bold text-slate-700 text-xs tracking-wide uppercase"><MdText text={inhalt.texte.kathodeStahl} /></span>
+                        <FormulaText text={inhalt.werte.mathrmO22} className="text-xs text-slate-650 font-mono font-semibold mt-1 text-center" />
+                        <FormulaText text={inhalt.werte.rightarrow4MathrmOh} className="text-xs text-slate-650 font-mono font-semibold text-center" />
                         
                         <div className="absolute -top-1.5 -left-1.5 bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold shadow z-10 border border-white">+</div>
 
@@ -499,7 +446,7 @@ export default function Metallkorrosion() {
                   {/* Control Panel inside Simulation Box */}
                   <div className="mt-8 border-t border-home-grau/30 pt-4 flex flex-col gap-4">
                     <div className="flex flex-col gap-1">
-                      <span className="text-xs font-bold text-slate-850 uppercase tracking-wide font-bold">Umgebungsklima wählen:</span>
+                      <span className="text-xs font-bold text-slate-850 uppercase tracking-wide font-bold"><MdText text={inhalt.texte.umgebungsklimaWählen} /></span>
                       <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 mt-1.5">
                         {(['dry', 'moist', 'wet', 'salty'] as const).map(k => (
                           <button
@@ -511,7 +458,7 @@ export default function Metallkorrosion() {
                                 : 'bg-white hover:bg-slate-50 border-home-grau/30 text-slate-700 hover:border-home-grau/30'
                             }`}
                           >
-                            {k === 'dry' ? '🏜️ Trocken' : k === 'moist' ? '🌫️ Feucht' : k === 'wet' ? '🌧️ Nass / Regen' : '🌊 Salzwasser'}
+                            {k === 'dry' ? '🏜️ Trocken' : k === 'moist' ? '🌫️ Feucht' : k === 'wet' ? inhalt.werte.nassRegen : inhalt.werte.salzwasser}
                           </button>
                         ))}
                       </div>
@@ -531,12 +478,12 @@ export default function Metallkorrosion() {
                             <span className="text-xs text-slate-400 uppercase font-black tracking-wider">Oberflächenzustand:</span>
                             <span className="text-xs font-extrabold text-slate-700">
                               {rustThickness > 70 
-                                ? '⚠️ Schwere Krustenbildung (Gefahr von Betonabplatzungen!)' 
+                                ? inhalt.werte.schwereKrustenbildungGefahrVon 
                                 : rustThickness > 35 
-                                  ? '⚠️ Deutlich angerostet' 
+                                  ? inhalt.werte.deutlichAngerostet 
                                   : rustThickness > 5 
-                                    ? 'Leichter Flugrost' 
-                                    : 'Einwandfreier Zustand'}
+                                    ? inhalt.werte.leichterFlugrost 
+                                    : inhalt.werte.einwandfreierZustand}
                             </span>
                           </div>
                         </div>
@@ -546,9 +493,7 @@ export default function Metallkorrosion() {
                             setAnodeErosion(0);
                           }}
                           className="px-3.5 py-1.5 bg-slate-850 hover:bg-slate-900 text-xs text-white rounded-lg font-bold transition-all shadow-sm active:scale-95 flex items-center gap-1 shrink-0 cursor-pointer"
-                        >
-                          ⚡ Rost reinigen (entfernen)
-                        </button>
+                        ><MdText text={inhalt.texte.rostReinigenEntfernen} /></button>
                       </div>
                     )}
                   </div>
@@ -558,56 +503,44 @@ export default function Metallkorrosion() {
               {/* Chemical Reaction Pathway */}
               <div className="bg-stone-50 p-5 rounded-xl border border-home-grau/30 flex flex-col gap-4">
                 <h4 className="font-extrabold text-slate-800 flex items-center gap-1.5 text-sm">
-                  <span className="w-1.5 h-1.5 rounded-full bg-shiraz animate-pulse"></span>
-                  Chemische Reaktionskette der Rostbildung (nach BGRCI 2025)
-                </h4>
-                <p className="text-xs text-slate-700 leading-relaxed font-normal">
-                  Die primäre Metallauflösung (<InlineMath math="\mathrm{Fe} \rightarrow \mathrm{Fe}^{2+}" />) und der kathodische Elektroneneinfang sind nur der chemische Auslöser. Erst durch sekundäre Folgereaktionen im Elektrolytwasser schlägt sich das typische braune Oxidhydrat (Rost) nieder. Die Kette verläuft in drei thermodynamischen Teilschritten:
-                </p>
+                  <span className="w-1.5 h-1.5 rounded-full bg-shiraz animate-pulse"></span><MdText text={inhalt.texte.chemischeReaktionsketteDerRostbildung} /></h4>
+                <p className="text-xs text-slate-700 leading-relaxed font-normal"><MdText text={inhalt.texte.diePrimäreMetallauflösungMathrm} /></p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {/* Schritt 1 */}
                   <div className="bg-white p-3.5 rounded-xl border border-home-grau/15 flex flex-col gap-2 shadow-xs">
-                    <span className="text-xs font-bold text-shiraz uppercase tracking-wider">Schritt 1: Ausfällung von Eisen(II)-hydroxid</span>
-                    <p className="text-xs text-slate-650 leading-relaxed font-medium">
-                      Die anodisch emittierten <FormulaText text={"$\\mathrm{Fe}^{2+}$"} />-Ionen verbinden sich im wässrigen Elektrolyt mit den kathodischen Hydroxid-Ionen (<FormulaText text={"$\\mathrm{OH}^-$"} />) zu unlöslichem Eisen(II)-hydroxid (weiß-grüner Primärniederschlag):
-                    </p>
+                    <span className="text-xs font-bold text-shiraz uppercase tracking-wider"><MdText text={inhalt.texte.schritt1AusfällungVon} /></span>
+                    <p className="text-xs text-slate-650 leading-relaxed font-medium"><MdText text={inhalt.texte.dieAnodischEmittierten} /><FormulaText text={"$\\mathrm{Fe}^{2+}$"} /><MdText text={inhalt.texte.ionenVerbindenSichIm} /><FormulaText text={"$\\mathrm{OH}^-$"} /><MdText text={inhalt.texte.zuUnlöslichemEisenIi} /></p>
                     <div className="bg-slate-50 p-3 rounded-lg border border-home-grau/35 text-center font-mono text-xs text-slate-850 mt-1">
-                      <FormulaText text={"$\\mathrm{Fe}^{2+} + 2\\mathrm{OH}^- \\longrightarrow \\mathrm{Fe(OH)}_2 \\downarrow$"} />
+                      <FormulaText text={inhalt.werte.mathrmFe22} />
                     </div>
                   </div>
 
                   {/* Schritt 2 */}
                   <div className="bg-white p-3.5 rounded-xl border border-home-grau/15 flex flex-col gap-2 shadow-xs">
-                    <span className="text-xs font-bold text-shiraz uppercase tracking-wider">Schritt 2: Oxidation zu Eisen(III)-hydroxid</span>
-                    <p className="text-xs text-slate-650 leading-relaxed font-medium">
-                      In Gegenwart von im Elektrolytwasser gelöstem Luft-Sauerstoff (<FormulaText text={"$\\mathrm{O}_2$"} />) wird das instabile Eisen(II)-hydroxid rasch zu dunkelbraunem Eisen(III)-hydroxid oxidiert:
-                    </p>
+                    <span className="text-xs font-bold text-shiraz uppercase tracking-wider"><MdText text={inhalt.texte.schritt2OxidationZu} /></span>
+                    <p className="text-xs text-slate-650 leading-relaxed font-medium"><MdText text={inhalt.texte.inGegenwartVonIm} /><FormulaText text={"$\\mathrm{O}_2$"} /><MdText text={inhalt.texte.wirdDasInstabileEisen} /></p>
                     <div className="bg-slate-50 p-3 rounded-lg border border-home-grau/35 text-center font-mono text-xs text-slate-850 mt-1">
-                      <FormulaText text={"$4\\mathrm{Fe(OH)}_2 + \\mathrm{O}_2 + 2\\mathrm{H}_2\\mathrm{O} \\longrightarrow 4\\mathrm{Fe(OH)}_3 \\downarrow$"} />
+                      <FormulaText text={inhalt.werte.t4MathrmFeOh} />
                     </div>
                   </div>
 
                   {/* Schritt 3 Endprodukt */}
                   <div className="bg-white p-3.5 rounded-xl border border-home-grau/15 md:col-span-2 flex flex-col gap-2 shadow-xs">
-                    <span className="text-xs font-bold text-shiraz uppercase tracking-wider">Schritt 3: Dehydratisierung zum Endprodukt (Rost)</span>
-                    <p className="text-xs text-slate-650 leading-relaxed font-medium">
-                      Das instabile Eisen(III)-hydroxid spaltet unter Wasserverlust molekulare Anteile ab und geht in stabiles Goethit (FeO(OH)) bzw. wasserhaltige Eisen(III)-oxide über (Endstufe "Rost"):
-                    </p>
+                    <span className="text-xs font-bold text-shiraz uppercase tracking-wider"><MdText text={inhalt.texte.schritt3DehydratisierungZum} /></span>
+                    <p className="text-xs text-slate-650 leading-relaxed font-medium"><MdText text={inhalt.texte.dasInstabileEisenIii} /></p>
                     <div className="bg-slate-50 p-3 rounded-lg border border-home-grau/35 flex flex-col sm:flex-row justify-around items-center font-mono text-xs text-slate-850 gap-2 mt-1">
                       <div className="flex flex-col items-center">
-                        <span className="text-xs text-slate-500 font-sans font-medium mb-1">Goethit (Eisen(III)-hydroxidoxid)</span>
-                        <FormulaText text={"$\\mathrm{Fe(OH)}_3 \\longrightarrow \\mathrm{FeO(OH)} + \\mathrm{H}_2\\mathrm{O}$"} />
+                        <span className="text-xs text-slate-500 font-sans font-medium mb-1"><MdText text={inhalt.texte.goethitEisenIiiHydroxidoxid} /></span>
+                        <FormulaText text={inhalt.werte.mathrmFeOh3} />
                       </div>
                       <div className="hidden sm:block h-8 w-px bg-slate-200"></div>
                       <div className="flex flex-col items-center">
                         <span className="text-xs text-slate-500 font-sans font-medium mb-1">Eisen(III)-oxid-Hydrat</span>
-                        <FormulaText text={"$2\\mathrm{FeO(OH)} \\longrightarrow \\mathrm{Fe}_2\\mathrm{O}_3 \\cdot \\mathrm{H}_2\\mathrm{O}$"} />
+                        <FormulaText text={inhalt.werte.t2MathrmFeoOh} />
                       </div>
                     </div>
-                    <div className="p-3 bg-red-500/5 rounded-lg border border-shiraz/20 text-xs text-slate-800 leading-relaxed mt-1.5">
-                      <strong>Volumendehnungseffekt & Bauteilsprengung:</strong> Rost beansprucht je nach Hydratationsgrad das <strong>4- bis 6-fache Volumen</strong> des ursprünglichen Eisengitters. Im Stahlbetonbau führt dieser expansive Kristallisationsdruck (oft weit über 100 MPa) zu einer gewaltigen Radialspannung um die Bewehrung. Sobald dieser Druck die Betonzugfestigkeit (ca. 2–4 MPa) überschreitet, reißt die Betondeckung auf und platzt flächig ab (Sprengeffekt).
-                    </div>
+                    <div className="p-3 bg-red-500/5 rounded-lg border border-shiraz/20 text-xs text-slate-800 leading-relaxed mt-1.5"><MdText text={inhalt.texte.volumendehnungseffektBauteilsprengungRos} /></div>
                   </div>
                 </div>
               </div>
@@ -615,40 +548,28 @@ export default function Metallkorrosion() {
               {/* BGRCI Influencing Factors on Corrosion Rate */}
               <div className="bg-stone-50 p-5 rounded-xl border border-home-grau/30 flex flex-col gap-4">
                 <h4 className="font-extrabold text-slate-800 flex items-center gap-1.5 text-sm">
-                  <span className="w-1.5 h-1.5 rounded-full bg-shiraz"></span>
-                  Einflussfaktoren auf die Korrosionsgeschwindigkeit
-                </h4>
-                <p className="text-xs text-slate-700 leading-relaxed font-normal">
-                  Die Kinetik der Korrosion wird nach den BGRCI-Richtlinien maßgeblich durch vier thermodynamische und chemische Leitgrößen gesteuert:
-                </p>
+                  <span className="w-1.5 h-1.5 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.einflussfaktorenAufDieKorrosionsgeschwin} /></h4>
+                <p className="text-xs text-slate-700 leading-relaxed font-normal"><MdText text={inhalt.texte.dieKinetikDerKorrosion} /></p>
 
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                   <div className="bg-white p-3.5 rounded-xl border border-home-grau/20 shadow-xs flex flex-col gap-1">
-                    <span className="text-xs font-bold text-slate-900 block border-b border-slate-100 pb-1 mb-1">pH-Wert (Säuregrad)</span>
-                    <p className="text-xs text-slate-650 leading-relaxed font-medium">
-                      Unterhalb von <strong>pH 5</strong> (Säuren) wird jede schützende Metall-Passivschicht zersetzt. Es tritt die extrem schnelle <strong>Wasserstoffkorrosion</strong> ein. Über <strong>pH 12</strong> (z. B. in unkarbonatisiertem Normalbeton durch Calciumhydroxid) passiviert Stahl spontan, wodurch der Abtrag nahezu erlischt (pH-Passivierung).
-                    </p>
+                    <span className="text-xs font-bold text-slate-900 block border-b border-slate-100 pb-1 mb-1"><MdText text={inhalt.texte.phWertSäuregrad} /></span>
+                    <p className="text-xs text-slate-650 leading-relaxed font-medium"><MdText text={inhalt.texte.unterhalbVonPh5} /></p>
                   </div>
 
                   <div className="bg-white p-3.5 rounded-xl border border-home-grau/20 shadow-xs flex flex-col gap-1">
                     <span className="text-xs font-bold text-slate-900 block border-b border-slate-100 pb-1 mb-1">Temperatur-Paradoxon</span>
-                    <p className="text-xs text-slate-650 leading-relaxed font-medium">
-                      Chemische Reaktionen verdoppeln sich pro <strong>10 K Erwärmung</strong> (Arrhenius). Aber: In <em>offenen Systemen</em> sinkt ab ca. <strong>80 °C</strong> die Sauerstofflöslichkeit im Wasser drastisch, wodurch die Sauerstoffkorrosion abnimmt. In *geschlossenen, unter Druck stehenden Systemen* (Rohrleitungen) steigt sie hingegen ungebremst weiter!
-                    </p>
+                    <p className="text-xs text-slate-650 leading-relaxed font-medium"><MdText text={inhalt.texte.chemischeReaktionenVerdoppelnSich} /></p>
                   </div>
 
                   <div className="bg-white p-3.5 rounded-xl border border-home-grau/20 shadow-xs flex flex-col gap-1">
-                    <span className="text-xs font-bold text-slate-900 block border-b border-slate-100 pb-1 mb-1">Salzgehalt (Chloride)</span>
-                    <p className="text-xs text-slate-650 leading-relaxed font-medium">
-                      Ionen wie Chlorid (Cl⁻) erhöhen nicht nur die elektrische Leitfähigkeit des Wassers (verringerter Ohmscher Bahnwiderstand), sondern durchbrechen gezielt die Oxidhaut von Edelstahl und rufen aggressive Lochfraßkeime hervor.
-                    </p>
+                    <span className="text-xs font-bold text-slate-900 block border-b border-slate-100 pb-1 mb-1"><MdText text={inhalt.texte.salzgehaltChloride} /></span>
+                    <p className="text-xs text-slate-650 leading-relaxed font-medium"><MdText text={inhalt.texte.ionenWieChloridCl} /></p>
                   </div>
 
                   <div className="bg-white p-3.5 rounded-xl border border-home-grau/20 shadow-xs flex flex-col gap-1">
                     <span className="text-xs font-bold text-slate-900 block border-b border-slate-100 pb-1 mb-1">Sauerstoffzutritt</span>
-                    <p className="text-xs text-slate-650 leading-relaxed font-medium">
-                      Bei der Sauerstoffkorrosion ist die Zufuhr von gelöstem Sauerstoff (O₂) an der Kathodenoberfläche der geschwindigkeitsbestimmende Schritt (Diffusionskontrolle). Hohe Strömungsgeschwindigkeiten spülen frischen Sauerstoff heran und beschleunigen die kathodische Reduktion.
-                    </p>
+                    <p className="text-xs text-slate-650 leading-relaxed font-medium"><MdText text={inhalt.texte.beiDerSauerstoffkorrosionIst} /></p>
                   </div>
                 </div>
               </div>
@@ -662,109 +583,72 @@ export default function Metallkorrosion() {
           {activeSection === 'arten' && (
             <section className="animate-in fade-in duration-300 flex flex-col gap-6">
               <h3 className="text-lg font-extrabold text-slate-850 border-l-2 border-shiraz pl-1.5 flex items-center gap-2">
-                <ShieldAlert className="w-5 h-5 text-shiraz" /> Korrosionsmechanismen im Detail (nach DIN-Klassifikation)
-              </h3>
-              <p className="text-xs text-slate-700 leading-relaxed font-medium">
-                Metallische Korrosion bricht sich in unterschiedlichen geometrischen und thermodynamischen Mustern Bahn. Die Abgrenzung ist für Werkstoffprüfer essenziell:
-              </p>
+                <ShieldAlert className="w-5 h-5 text-shiraz" /><MdText text={inhalt.texte.korrosionsmechanismenImDetailNach} /></h3>
+              <p className="text-xs text-slate-700 leading-relaxed font-medium"><MdText text={inhalt.texte.metallischeKorrosionBrichtSich} /></p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* 1. Flächenkorrosion */}
                 <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/30 shadow-xs flex flex-col gap-1.5">
                   <span className="text-xs font-black text-shiraz uppercase tracking-wider flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-shiraz"></span>
-                    1. Gleichmäßige Flächenkorrosion
-                  </span>
-                  <p className="text-xs text-slate-650 leading-relaxed font-normal">
-                    Der metallische Abtrag schreitet gleichmäßig über die Gesamtoberfläche fort. Diese Form ist rechnerisch hervorragend prognostizierbar (v_corr = konstant). Korrosionszuschläge (Opferblechdicken) in der Tragwerksbemessung fangen diesen berechenbaren Verlust sicher auf.
-                  </p>
+                    <span className="w-1.5 h-1.5 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t1GleichmäßigeFlächenkorrosion} /></span>
+                  <p className="text-xs text-slate-650 leading-relaxed font-normal"><MdText text={inhalt.texte.derMetallischeAbtragSchreitet} /></p>
                 </div>
 
                 {/* 2. Kontaktkorrosion */}
                 <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/30 shadow-xs flex flex-col gap-1.5">
                   <span className="text-xs font-black text-shiraz uppercase tracking-wider flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-shiraz"></span>
-                    2. Kontaktkorrosion (Bimetallkorrosion)
-                  </span>
-                  <p className="text-xs text-slate-650 leading-relaxed font-normal">
-                    Zwei Metalle mit signifikant unterschiedlichen Standardpotenzialen sind im Elektrolyten direkt verbunden. Das <strong>unedlere</strong> Metall oxidiert als Opferanode, während das <strong>edlere</strong> kathodisch geschützt wird. 
-                  </p>
-                  <p className="text-xs text-red-650 font-bold bg-white p-2 rounded-lg border border-home-grau/20 mt-1">
-                    <strong>Katastrophaler Flächeneffekt:</strong> Ist die Anodenfläche (z. B. unedle Stahlschraube) sehr klein im Verhältnis zur Kathodenfläche (z. B. große Edelstahlplatte), konzentriert sich der Elektronenabfluss extrem lokal, was zu raschem mechanischen Versagen der Schraube führt!
-                  </p>
+                    <span className="w-1.5 h-1.5 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t2KontaktkorrosionBimetallkorrosion} /></span>
+                  <p className="text-xs text-slate-650 leading-relaxed font-normal"><MdText text={inhalt.texte.zweiMetalleMitSignifikant} /></p>
+                  <p className="text-xs text-red-650 font-bold bg-white p-2 rounded-lg border border-home-grau/20 mt-1"><MdText text={inhalt.texte.katastrophalerFlächeneffektIstDie} /></p>
                 </div>
 
                 {/* 3. Lochfraßkorrosion */}
                 <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/30 shadow-xs flex flex-col gap-1.5">
                   <span className="text-xs font-black text-shiraz uppercase tracking-wider flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-shiraz"></span>
-                    3. Lochfraßkorrosion (Pitting)
-                  </span>
-                  <p className="text-xs text-slate-650 leading-relaxed font-normal">
-                    Extrem heimtückische Korrosionsform, die tiefen Lochfraß im Material erzeugt, während die Oberfläche unversehrt scheint. Sie Sie betrifft vor allem passive Metalle (nichtrostender Stahl, Aluminium) in Gegenwart von Chlorid-Ionen. Die Ionen durchbrechen die Passivschicht (bei Edelstahl Chromoxid, bei Aluminium Aluminiumoxid) an mikroskopischen Schwachstellen. in Gegenwart von Chlorid-Ionen. Die Ionen infiltrieren an mikroskopischen Schwachstellen die Chromoxidschicht.
-                  </p>
+                    <span className="w-1.5 h-1.5 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t3LochfraßkorrosionPitting} /></span>
+                  <p className="text-xs text-slate-650 leading-relaxed font-normal"><MdText text={inhalt.texte.extremHeimtückischeKorrosionsformDie} /></p>
                   <div className="bg-white p-2.5 rounded-lg border border-home-grau/20 mt-1.5 text-xs text-slate-700">
-                    <strong className="block mb-1 text-xs text-slate-800 uppercase tracking-wide">Pitting Resistance Equivalent Number (PREN-Index)</strong>
-                    <span>Bestimmt die Widerstandskraft hochlegierter Edelstähle gegen Lochfraß:</span>
+                    <strong className="block mb-1 text-xs text-slate-800 uppercase tracking-wide"><MdText text={inhalt.texte.pittingResistanceEquivalentNumber} /></strong>
+                    <span><MdText text={inhalt.texte.bestimmtDieWiderstandskraftHochlegierter} /></span>
                     <div className="bg-slate-50 p-2 text-center text-xs font-mono rounded border border-home-grau/30 my-1 font-bold overflow-x-auto">
                       <BlockMath math="\mathrm{PREN} = \%\,\mathrm{Cr} + 3{,}3 \cdot (\%\,\mathrm{Mo} + 0{,}5 \cdot \%\,\mathrm{W}) + 16 \cdot \%\,\mathrm{N}" />
                     </div>
-                    <span className="text-xs text-slate-500 italic font-medium block">Als Faustregel gelten PREN-Werte ab etwa 40 als meerwasserbeständig (z. B. Superduplex 1.4410); 1.4404 erreicht nur etwa 24.</span>
+                    <span className="text-xs text-slate-500 italic font-medium block"><MdText text={inhalt.texte.alsFaustregelGeltenPren} /></span>
                   </div>
                 </div>
 
                 {/* 4. Spaltkorrosion */}
                 <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/30 shadow-xs flex flex-col gap-1.5">
                   <span className="text-xs font-black text-shiraz uppercase tracking-wider flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-shiraz"></span>
-                    4. Spaltkorrosion (Belüftungselement)
-                  </span>
-                  <p className="text-xs text-slate-650 leading-relaxed font-normal">
-                    Tritt in engen Spalten (Spaltbreite &lt; 0,1 mm, z. B. Schraubenauflagen, Flansche) auf, in denen Wasser steht. Da der Spaltgrund kaum Sauerstoff erhält (Belüftungselement nach Evans), verarmt diese Zone an Sauerstoff und wird zur Anode. Die gut belüftete äußere Metallfläche fungiert als Kathode.
-                  </p>
+                    <span className="w-1.5 h-1.5 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t4SpaltkorrosionBelüftungselement} /></span>
+                  <p className="text-xs text-slate-650 leading-relaxed font-normal"><MdText text={inhalt.texte.trittInEngenSpalten} /></p>
                 </div>
 
                 {/* 5. Interkristalline Korrosion */}
                 <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/30 shadow-xs flex flex-col gap-1.5">
                   <span className="text-xs font-black text-shiraz uppercase tracking-wider flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-shiraz"></span>
-                    5. Interkristalline Korrosion (IK)
-                  </span>
-                  <p className="text-xs text-slate-650 leading-relaxed font-medium">
-                    Tritt bei nichtrostendem Chrom-Nickel-Stahl auf, wenn dieser thermisch beansprucht wird (z. B. im Bereich von <strong>450 °C bis 850 °C</strong> durch unkontrolliertes Schweißen). Kohlenstoff diffundiert an die Korngrenzen und verbindet sich dort mit Chrom zu unlöslichen <strong>Chromcarbiden</strong> (<InlineMath math="\mathrm{Cr}_{23}\mathrm{C}_6" />).
-                  </p>
-                  <p className="text-xs text-red-700 font-bold bg-white p-2.5 rounded-lg border border-home-grau/25 mt-1">
-                    <strong>Die Folge:</strong> Direkt neben den Korngrenzen fällt der freie Chromgehalt unter die kritische Passivierungsschwelle von <strong>12 %</strong>. Hier wird der Werkstoff ungeschützt und löst sich entlang der Kornpfade pulverförmig auf.
-                  </p>
-                  <p className="text-xs text-emerald-800 bg-emerald-50/50 p-2 rounded-lg border border-emerald-100 font-bold">
-                    <strong>Gegenmaßnahmen:</strong> Verwendung von LC-Stählen (Low Carbon, C &lt; 0,03 %, z. B. Werkstoff 1.4404) oder stabilisierten Qualitäten mit Niob (Nb) oder Titan (Ti, z. B. 1.4571), da Ti/Nb den Kohlenstoff effektiver binden als Chrom.
-                  </p>
+                    <span className="w-1.5 h-1.5 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t5InterkristallineKorrosionIk} /></span>
+                  <p className="text-xs text-slate-650 leading-relaxed font-medium"><MdText text={inhalt.texte.trittBeiNichtrostendemChrom} /></p>
+                  <p className="text-xs text-red-700 font-bold bg-white p-2.5 rounded-lg border border-home-grau/25 mt-1"><MdText text={inhalt.texte.dieFolgeDirektNeben} /></p>
+                  <p className="text-xs text-emerald-800 bg-emerald-50/50 p-2 rounded-lg border border-emerald-100 font-bold"><MdText text={inhalt.texte.gegenmaßnahmenVerwendungVonLc} /></p>
                 </div>
 
                 {/* 6. Spannungsrisskorrosion */}
                 <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/30 shadow-xs flex flex-col gap-1.5">
                   <span className="text-xs font-black text-shiraz uppercase tracking-wider flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-shiraz"></span>
-                    6. Spannungsrisskorrosion (SpRK / SCC)
-                  </span>
-                  <p className="text-xs text-slate-650 leading-relaxed font-normal">
-                    Kombination aus <strong>Zugspannung</strong> (intern durch Eigenspannung beim Abkühlen/Biegen oder extern durch Nutzlasten) und einem <strong>spezifischen Korrosionsmedium</strong>. Sie führt zu einem extrem plötzlichen, spröden Phänomen (transkristalline oder interkristalline Risse) <strong>ohne plastische Verformung oder Flugrost-Vorankündigung</strong>.
-                  </p>
+                    <span className="w-1.5 h-1.5 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t6SpannungsrisskorrosionSprkScc} /></span>
+                  <p className="text-xs text-slate-650 leading-relaxed font-normal"><MdText text={inhalt.texte.kombinationAusZugspannungIntern} /></p>
                   <ul className="text-xs text-slate-650 font-bold space-y-0.5 list-disc pl-4 mt-1">
-                    <li><span className="font-semibold">Austenitische Edelstähle:</span> Sensibilisiert durch chloridhaltige Medien (klassischer Einsturz von Schwimmbaddächern).</li>
-                    <li><span className="font-semibold">Kupfer-Zink-Legierungen (Messing):</span> Reagiert empfindlich auf Ammoniak oder Ammonium-Ionen.</li>
+                    <li><span className="font-semibold"><MdText text={inhalt.texte.austenitischeEdelstähle} /></span><MdText text={inhalt.texte.sensibilisiertDurchChloridhaltigeMedien} /></li>
+                    <li><span className="font-semibold"><MdText text={inhalt.texte.kupferZinkLegierungenMessing} /></span><MdText text={inhalt.texte.reagiertEmpfindlichAufAmmoniak} /></li>
                   </ul>
                 </div>
 
                 {/* 7. Corrosion Under Insulation */}
                 <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/30 shadow-xs flex flex-col gap-1.5 md:col-span-2">
                   <span className="text-xs font-black text-shiraz uppercase tracking-wider flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-shiraz"></span>
-                    7. Corrosion Under Insulation (CUI / Korrosion unter Isolierungen)
-                  </span>
-                  <p className="text-xs text-slate-650 leading-relaxed font-normal">
-                    Ein enormes, verdecktes Schadensbild in Chemie- und Heizungsanlagen. Unter Dämmstoffen (z. B. Mineralwolle), die unbemerkt Feuchtigkeit aufsaugen (Leckage, Regen, Kondensat), bilden sich dauerhafte Feuchtigkeitsnester. Salze (Chloride, Sulfate) reichern sich zyklisch an und konzentrieren sich im Temperaturbereich von <strong>50 °C bis 150 °C</strong>, was die lokale Korrosionsgeschwindigkeit exponentiell eskaliert. Da die Rohre optisch verdeckt sind, wird CUI meist erst bei Leckagen entdeckt.
-                  </p>
+                    <span className="w-1.5 h-1.5 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.t7CorrosionUnderInsulation} /></span>
+                  <p className="text-xs text-slate-650 leading-relaxed font-normal"><MdText text={inhalt.texte.einEnormesVerdecktesSchadensbild} /></p>
                 </div>
               </div>
             </section>
@@ -773,53 +657,42 @@ export default function Metallkorrosion() {
           {activeSection === 'schutz' && (
             <section className="animate-in fade-in duration-300 flex flex-col gap-6">
               <h3 className="text-lg font-extrabold text-slate-850 border-l-2 border-shiraz pl-1.5 flex items-center gap-2">
-                <ShieldCheck className="w-5 h-5 text-shiraz" /> Korrosionsschutz nach Systematik der DIN EN ISO 12944
-              </h3>
-              <p className="text-xs text-slate-700 leading-relaxed font-medium">
-                Der wirksame Korrosionsschutz von Stählen gliedert sich nach ISO 12944 in die quantitative Erfassung der Umgebungsschärfe, die konstruktive Reduktion von Schadstellen und die gezielte Werkstoffbarriere:
-              </p>
+                <ShieldCheck className="w-5 h-5 text-shiraz" /><MdText text={inhalt.texte.korrosionsschutzNachSystematikDer} /></h3>
+              <p className="text-xs text-slate-700 leading-relaxed font-medium"><MdText text={inhalt.texte.derWirksameKorrosionsschutzVon} /></p>
 
               {/* Korrosivitätskategorien ISO 12944-2 */}
               <div className="bg-stone-50 p-5 rounded-xl border border-home-grau/30 flex flex-col gap-3">
-                <span className="text-xs font-black text-slate-800 uppercase tracking-wider leading-none">
-                  1. Korrosivitätskategorien nach DIN EN ISO 12944-2
-                </span>
-                <p className="text-xs text-slate-600 leading-relaxed font-medium">
-                  Der Planer muss die Umwelt vorab in standardisierte Kategorien einordnen (Schutzdauerklassen L, M, H, VH):
-                </p>
+                <span className="text-xs font-black text-slate-800 uppercase tracking-wider leading-none"><MdText text={inhalt.texte.t1KorrosivitätskategorienNachDin} /></span>
+                <p className="text-xs text-slate-600 leading-relaxed font-medium"><MdText text={inhalt.texte.derPlanerMussDie} /></p>
 
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-3 mt-1 text-xs">
                   <div className="bg-white p-3 rounded-lg border border-slate-200 flex flex-col gap-1">
-                    <span className="font-extrabold text-slate-900 block border-b border-slate-100 pb-0.5">C1 (Unbedeutend)</span>
-                    <span className="text-xs text-slate-500 leading-normal font-medium">Beheizte Innenräume (z. B. Schulen, Büros) ohne Kondensationsgefahr.</span>
+                    <span className="font-extrabold text-slate-900 block border-b border-slate-100 pb-0.5"><MdText text={inhalt.texte.c1Unbedeutend} /></span>
+                    <span className="text-xs text-slate-500 leading-normal font-medium"><MdText text={inhalt.texte.beheizteInnenräumeZB} /></span>
                   </div>
                   <div className="bg-white p-3 rounded-lg border border-slate-200 flex flex-col gap-1">
                     <span className="font-extrabold text-slate-900 block border-b border-slate-100 pb-0.5">C2 (Gering)</span>
-                    <span className="text-xs text-slate-500 leading-normal font-medium">Ländliche Bereiche mit geringer atmosphärischer Schadstoffbelastung. Ungeheizte Hallen.</span>
+                    <span className="text-xs text-slate-500 leading-normal font-medium"><MdText text={inhalt.texte.ländlicheBereicheMitGeringer} /></span>
                   </div>
                   <div className="bg-white p-3 rounded-lg border border-slate-200 flex flex-col gap-1">
                     <span className="font-extrabold text-slate-950 block border-b border-slate-100 pb-0.5">C3 (Mäßig)</span>
-                    <span className="text-xs text-slate-500 leading-normal font-medium">Stadt- & Industrieatmosphäre mit mäßiger Schwefeldioxid-Belastung. Brauereien, Molkereien.</span>
+                    <span className="text-xs text-slate-500 leading-normal font-medium"><MdText text={inhalt.texte.stadtIndustrieatmosphäreMitMäßiger} /></span>
                   </div>
                   <div className="bg-white p-3 rounded-lg border border-slate-200 flex flex-col gap-1">
                     <span className="font-extrabold text-red-650 block border-b border-slate-100 pb-0.5">C4 (Stark)</span>
-                    <span className="text-xs text-slate-500 leading-normal font-medium">Industriegebiete und maritime Küstengebiete mit signifikanter Salzbelastung. Schwimmbäder.</span>
+                    <span className="text-xs text-slate-500 leading-normal font-medium"><MdText text={inhalt.texte.industriegebieteUndMaritimeKüstengebiete} /></span>
                   </div>
                   <div className="bg-white p-3 rounded-lg border border-red-200 bg-rose-50/10 flex flex-col gap-1">
-                    <span className="font-extrabold text-red-700 block border-b border-red-100 pb-0.5">C5 / CX (Sehr Stark / Extrem)</span>
-                    <span className="text-xs text-slate-500 leading-normal font-medium">Offshore-Windkraftanlagen, tropische Meeresatmosphären, Extrembereiche mit permanenter Feuchte.</span>
+                    <span className="font-extrabold text-red-700 block border-b border-red-100 pb-0.5"><MdText text={inhalt.texte.c5CxSehrStark} /></span>
+                    <span className="text-xs text-slate-500 leading-normal font-medium"><MdText text={inhalt.texte.offshoreWindkraftanlagenTropischeMeeresa} /></span>
                   </div>
                 </div>
               </div>
 
               {/* Konstruktiver Korrosionsschutz ISO 12944-3 */}
               <div className="bg-stone-50 p-5 rounded-xl border border-home-grau/30 flex flex-col gap-3">
-                <span className="text-xs font-black text-slate-800 uppercase tracking-wider leading-none">
-                  2. Konstruktive Gestaltungsregeln nach DIN EN ISO 12944-3
-                </span>
-                <p className="text-xs text-slate-650 leading-relaxed font-medium mb-1">
-                  Der wirksamste Schutz beginnt auf dem Reißbrett des Konstrukteurs. Fehlerhafte Metallgeometrien lassen sich durch spätere Beschichtungen nicht heilen:
-                </p>
+                <span className="text-xs font-black text-slate-800 uppercase tracking-wider leading-none"><MdText text={inhalt.texte.t2KonstruktiveGestaltungsregelnNach} /></span>
+                <p className="text-xs text-slate-650 leading-relaxed font-medium mb-1"><MdText text={inhalt.texte.derWirksamsteSchutzBeginnt} /></p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="bg-white p-4 rounded-xl border border-home-grau/15 flex gap-3 shadow-xs">
@@ -827,10 +700,8 @@ export default function Metallkorrosion() {
                       1
                     </span>
                     <div className="flex flex-col gap-1">
-                      <strong className="text-xs text-slate-900 font-bold">Kantenabrundung (Kantenflucht vermeiden)</strong>
-                      <span className="text-xs text-slate-600 leading-normal font-medium">
-                        Flüssige Lacke ziehen sich beim Trocknen durch Oberflächenspannung von scharfen Ecken zusammen. Kanten müssen zwingend mit einem Radius von <strong>r ≥ 2 mm</strong> abgerundet oder gefast werden, um eine homogene Schutzschichtdicke zu sichern (Norm ISO 12944-3).
-                      </span>
+                      <strong className="text-xs text-slate-900 font-bold"><MdText text={inhalt.texte.kantenabrundungKantenfluchtVermeiden} /></strong>
+                      <span className="text-xs text-slate-600 leading-normal font-medium"><MdText text={inhalt.texte.flüssigeLackeZiehenSich} /></span>
                     </div>
                   </div>
 
@@ -839,10 +710,8 @@ export default function Metallkorrosion() {
                       2
                     </span>
                     <div className="flex flex-col gap-1">
-                      <strong className="text-xs text-slate-900 font-bold">Vermeidung von Wassertaschen (Nestern)</strong>
-                      <span className="text-xs text-slate-600 leading-normal font-medium">
-                        Offene U-, C- oder L-Profile müssen nach oben entwässert oder gedreht werden. Ist das nicht möglich, sind wirksame Entwässerungsbohrungen (Ablauflöcher) an den tiefsten Punkten vorzusehen, damit Elektrolyt rückstandsfrei fließen kann.
-                      </span>
+                      <strong className="text-xs text-slate-900 font-bold"><MdText text={inhalt.texte.vermeidungVonWassertaschenNestern} /></strong>
+                      <span className="text-xs text-slate-600 leading-normal font-medium"><MdText text={inhalt.texte.offeneUCOder} /></span>
                     </div>
                   </div>
 
@@ -851,10 +720,8 @@ export default function Metallkorrosion() {
                       3
                     </span>
                     <div className="flex flex-col gap-1">
-                      <strong className="text-xs text-slate-900 font-bold">Durchgehendes Schweißen statt Heftnähte</strong>
-                      <span className="text-xs text-slate-600 leading-normal font-medium">
-                        Schweißnähte müssen absolut porenfrei und voll durchgeschweißt sein (keine offenen überlappenden Bleche). Enge, nicht verschweißte Hohlräume ziehen über Kapillareffekte aggressive Feuchtigkeit ein und rufen unkontrollierbare Spaltkorrosion hervor.
-                      </span>
+                      <strong className="text-xs text-slate-900 font-bold"><MdText text={inhalt.texte.durchgehendesSchweißenStattHeftnähte} /></strong>
+                      <span className="text-xs text-slate-600 leading-normal font-medium"><MdText text={inhalt.texte.schweißnähteMüssenAbsolutPorenfrei} /></span>
                     </div>
                   </div>
 
@@ -863,10 +730,8 @@ export default function Metallkorrosion() {
                       4
                     </span>
                     <div className="flex flex-col gap-1">
-                      <strong className="text-xs text-slate-900 font-bold">Isolierende Zwischenlagen an Kontaktstellen</strong>
-                      <span className="text-xs text-slate-600 leading-normal font-medium">
-                        Verbindet man unterschiedliche Werkstoffe (z. B. Aluminium-Verbundfassade mit Edelstahlunterkonstruktion), sind elektrochemisch isolierende Scheiben oder Hülsen (z. B. EPDM, Elastomere) einzubauen, um den Stromfluss des galvanischen Elements wirksam zu trennen.
-                      </span>
+                      <strong className="text-xs text-slate-900 font-bold"><MdText text={inhalt.texte.isolierendeZwischenlagenAnKontaktstellen} /></strong>
+                      <span className="text-xs text-slate-600 leading-normal font-medium"><MdText text={inhalt.texte.verbindetManUnterschiedlicheWerkstoffe} /></span>
                     </div>
                   </div>
                 </div>
@@ -876,34 +741,20 @@ export default function Metallkorrosion() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div className="bg-stone-50 p-5 rounded-xl border border-home-grau/30 shadow-xs flex flex-col gap-3">
                   <h4 className="font-extrabold text-slate-800 text-xs uppercase tracking-wider flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-shiraz"></span>
-                    Passive Schutzmaßnahmen
-                  </h4>
+                    <span className="w-1.5 h-1.5 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.passiveSchutzmaßnahmen} /></h4>
                   <ul className="list-disc pl-5 space-y-2 text-xs text-slate-650 font-medium">
-                    <li>
-                      <strong>Barrieremembranen (Beschichtungen):</strong> Kunstharze, Acrylate und Epoxide trennen das Basismetall makroskopisch von der äußeren Sauerstoff- und Wasserexpansionszone.
-                    </li>
-                    <li>
-                      <strong>Passivierende Legierungen:</strong> Zulegieren von Chrom (&gt; 12 %) erzeugt unter Luftzutritt spontan eine atomar dünne Chromoxidschicht (Cr2O3), welche die Diffusion von Eisenionen blockiert.
-                    </li>
-                    <li>
-                      <strong>Inhibitoren:</strong> Chemische Additive im Kreislaufwasser. Anodische Inhibitoren passivieren Fehlstellen lokal, während kathodische Inhibitoren chemisch schwerlösliche Deckschichten (z. B. Calciumcarbonate) auf der Oberfläche anlagern.
-                    </li>
+                    <li><MdText text={inhalt.texte.barrieremembranenBeschichtungenKunstharz} /></li>
+                    <li><MdText text={inhalt.texte.passivierendeLegierungenZulegierenVon} /></li>
+                    <li><MdText text={inhalt.texte.inhibitorenChemischeAdditiveIm} /></li>
                   </ul>
                 </div>
 
                 <div className="bg-stone-50 p-5 rounded-xl border border-home-grau/30 shadow-xs flex flex-col gap-3">
                   <h4 className="font-extrabold text-slate-800 text-xs uppercase tracking-wider flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-shiraz"></span>
-                    Aktive (Kathodische) Schutzmaßnahmen
-                  </h4>
+                    <span className="w-1.5 h-1.5 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.aktiveKathodischeSchutzmaßnahmen} /></h4>
                   <ul className="list-disc pl-5 space-y-2 text-xs text-slate-650 font-medium">
-                    <li>
-                      <strong>Opferanoden (Galvanischer Schutz):</strong> Metalle wie Zink oder Magnesium, die ein signifikant negativeres elektrochemisches Potenzial als Eisen aufweisen, werden fest montiert. Selbst bei Haarrissen in der äußeren Zinkhaut fängt das unedle Zink den Ionenstrom ab und opfert sich unter Massenverlust auf, um den Stahl zu schützen (Fernwirkung).
-                    </li>
-                    <li>
-                      <strong>Fremdstromanoden:</strong> Ein künstlicher elektrischer Gleichstrom aus einer externen Gleichspannungsquelle polarisiert den Werkstoff als Kathode in den Bereich der thermodynamischen Immunität. Einsatz vor allem bei Brückenpfeilern, Pipelines und Tankbehältern im Erdboden.
-                    </li>
+                    <li><MdText text={inhalt.texte.opferanodenGalvanischerSchutzMetalle} /></li>
+                    <li><MdText text={inhalt.texte.fremdstromanodenEinKünstlicherElektrisch} /></li>
                   </ul>
                 </div>
               </div>
@@ -916,83 +767,37 @@ export default function Metallkorrosion() {
       
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Schutzdauer einer Feuerverzinkung in Korrosivitätskategorie C3"
+        title={inhalt.werte.beispiel1SchutzdauerEiner}
         zielGleichung="t_{Schutz} \approx \frac{s_{Zn}}{r_{corr,Zn}}"
-        schritte={[
-          { titel: 'Schichtdicke', erklaerung: 'Stückverzinkter Stahlträger, mittlere Zinkschichtdicke 85 µm (Bauteildicke über 6 mm).', formel: 's_{Zn} = 85\\,\\mu\\text{m}' },
-          { titel: 'Abtragsrate', erklaerung: 'C3 nach DIN EN ISO 9223: Zinkabtrag 0,7 bis 2,1 µm/a; gewählt wird der obere Wert:', formel: 'r_{corr,Zn} = 2{,}1\\,\\mu\\text{m/a}' },
-          { titel: 'Schutzdauer', erklaerung: 'Bis zum Verbrauch der Zinkschicht:', formel: 't_{Schutz} \\approx \\frac{85}{2{,}1} = 40\\,\\text{a}' }
-        ]}
-        ergebnisHinweis="Mit einer zusätzlichen Beschichtung (Duplex-System) verlängert sich die Schutzdauer deutlich über die Summe beider Einzelschutzdauern hinaus. Für C5 (Zink 4,2 bis 8,4 µm/a) reichen 85 µm nur etwa 10 bis 20 Jahre."
-        normQuelle="DIN EN ISO 9223:2012-05; DIN EN ISO 14713-1; DIN EN ISO 1461"
+        schritte={inhalt.daten["Metallkorrosion.schritte"]}
+        ergebnisHinweis={inhalt.werte.mitEinerZusätzlichenBeschichtung}
+        normQuelle={inhalt.werte.dinEnIso9223}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Lochfraßbeständigkeit nichtrostender Stähle (PREN)"
+        title={inhalt.werte.beispiel2LochfraßbeständigkeitNichtroste}
         zielGleichung="\mathrm{PREN} = \%\mathrm{Cr} + 3{,}3 \cdot \%\mathrm{Mo} + 16 \cdot \%\mathrm{N}"
-        schritte={[
-          { titel: '1.4404 (316L)', erklaerung: 'Cr 17,0 %, Mo 2,0 %, N 0,05 %:', formel: '\\mathrm{PREN} = 17{,}0 + 6{,}6 + 0{,}8 = 24{,}4' },
-          { titel: '1.4462 (Duplex 2205)', erklaerung: 'Cr 22,0 %, Mo 3,0 %, N 0,17 %:', formel: '\\mathrm{PREN} = 22{,}0 + 9{,}9 + 2{,}7 = 34{,}6' },
-          { titel: 'Vergleich', erklaerung: 'Höherer PREN bedeutet höheren Widerstand gegen chloridinduzierten Lochfraß:', formel: '34{,}6 > 24{,}4' }
-        ]}
-        ergebnisHinweis="Für Schwimmhallen und Meerwasserbereiche reichen Mo-haltige austenitische Stähle oft nicht; die Werkstoffwahl erfolgt bauaufsichtlich über die Korrosionsbeständigkeitsklassen (CRC) nach DIN EN 1993-1-4 bzw. abZ Z-30.3-6."
-        normQuelle="DIN EN 1993-1-4 mit NA; abZ Z-30.3-6 (DIBt)"
+        schritte={inhalt.daten["Metallkorrosion.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.fürSchwimmhallenUndMeerwasserbereiche}
+        normQuelle={inhalt.werte.dinEn19931}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="metallkorrosion" />
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 10 Dauerhaftigkeit: PREN-Formel korrigiert, Korrosivitätskategorien und Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)" 
+        lastReviewed={inhalt.werte.oktober2026Ap10} 
         wikipedia={[
           { title: "Korrosion", url: "https://de.wikipedia.org/wiki/Korrosion" },
           { title: "Pilling-Bedworth-Verhältnis", url: "https://de.wikipedia.org/wiki/Pilling-Bedworth-Verh%C3%A4ltnis" },
-          { title: "Wetterfester Baustahl (Corten)", url: "https://de.wikipedia.org/wiki/Wetterfester_Baustahl" },
+          { title: inhalt.werte.wetterfesterBaustahlCorten, url: "https://de.wikipedia.org/wiki/Wetterfester_Baustahl" },
           { title: "Patina", url: "https://de.wikipedia.org/wiki/Patina" },
           { title: "Korrosionsschutz", url: "https://de.wikipedia.org/wiki/Korrosionsschutz" },
           { title: "Pitting-Korrosion", url: "https://de.wikipedia.org/wiki/Lochfra%C3%9Fkorrosion" },
           { title: "Spannungsrisskorrosion", url: "https://de.wikipedia.org/wiki/Spannungsrisskorrosion" }
         ]} 
-        literatur={[
-          'Pilling, N. B.; Bedworth, R. E. (1923): The Oxidation of Metals at High Temperatures (J. Inst. Met. 29, S. 529–591)',
-          'Kaesche, H.: Die Korrosion der Metalle. 3. Aufl., Berlin: Springer 1990',
-          'Bargel, H.-J.; Schulze, G. (Hrsg.): Werkstoffkunde. 12. Aufl., Berlin: Springer Vieweg 2018',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]} 
-        regelwerke={[
-          { title: "DIN EN ISO 12944 (Korrosionsschutz von Stahlbauten durch Beschichtungssysteme – Teile 1 bis 9; Teil 2:2018-04)" },
-          { title: "DIN EN 10025-5 (Warmgewalzte Erzeugnisse aus Baustählen - Teil 5: Wetterfeste Baustähle)" },
-          { title: "DIN EN 1172 (Kupfer und Kupferlegierungen - Bleche und Bänder für das Bauwesen)" },
-          { title: "DIN EN 485 / DIN EN 573 (Aluminium und Aluminiumlegierungen für das Bauwesen)" },
-          { title: "DIN EN ISO 8044 (Korrosion von Metallen und Legierungen - Grundbegriffe)" },
-          { title: "DIN EN ISO 9223:2012-05 (Korrosion von Metallen – Korrosivität von Atmosphären)" }
-        ]} 
-        formeln={[
-          {
-            formel: '\\text{Anode: } \\text{Fe} \\rightarrow \\text{Fe}^{2+} + 2\\,e^- \\quad | \\quad \\text{Kathode: } \\text{O}_2 + 2\\,\\text{H}_2\\text{O} + 4\\,e^- \\rightarrow 4\\,\\text{OH}^-',
-            erklaerung: 'Elektrochemische Sauerstoffkorrosion von Eisen in neutralem/alkalischem wässrigem Elektrolyt unter Bildung von Rost (FeO(OH) bzw. Fe2O3·H2O).',
-            quelle: 'DIN EN ISO 8044'
-          },
-          {
-            formel: '\\mathrm{PBR} = \\frac{V_{\\text{Oxid}}}{V_{\\text{Metall}}} = \\frac{M_{\\text{Oxid}} \\cdot \\rho_{\\text{Metall}}}{n \\cdot M_{\\text{Metall}} \\cdot \\rho_{\\text{Oxid}}}',
-            erklaerung: 'Pilling-Bedworth-Verhältnis: Kriterium für Deckschichten. 1,0 <= PBR <= 2,0 kennzeichnet dichte, passivierende Schutzschichten (z. B. Aluminium 1,28, Kupfer/Cu₂O 1,68). PBR > 2,0 erzeugt schuppiges Abblättern (Eisen/Fe₂O₃ ca. 2,1). Wetterfeste Stähle schützen nicht über den PBR, sondern über die Legierungselemente Cu, Cr, Ni, P in der Rostschicht.',
-            quelle: 'Pilling & Bedworth (1923)'
-          },
-          {
-            formel: '2\\,\\text{Cu} + \\text{O}_2 + \\text{CO}_2 + \\text{H}_2\\text{O} \\longrightarrow \\text{Cu}_2[(\\text{OH})_2|\\text{CO}_3] \\; (\\text{Malachit})',
-            erklaerung: 'Bildung der dichten, langlebigen Patina an Kupferbauteilen (Dächer, Rinnen) durch Reaktion mit Luftsauerstoff, Kohlendioxid und Feuchtigkeit.',
-            quelle: 'DIN EN 1172'
-          },
-          {
-            formel: '4\\,\\text{Al} + 3\\,\\text{O}_2 \\longrightarrow 2\\,\\text{Al}_2\\text{O}_3',
-            erklaerung: 'Spontane Bildung der porenfreien, amorphen Aluminiumoxidschicht (PBR = 1,28, Dicke 2–10 nm). Verhindert weiteren Sauerstoffzutritt im pH-Bereich 4,5–8,5.',
-            quelle: 'DIN EN 573'
-          },
-          {
-            formel: 'm = \\frac{M \\cdot I \\cdot t}{z \\cdot F}',
-            erklaerung: 'Faradaysches Gesetz für den elektrolytischen Metallabtrag: m = abgebaute Masse, M = molare Masse, I = Korrosionsstrom, t = Zeit, z = Wertigkeit der Ionen, F = Faraday-Konstante (96.485 C/mol).',
-            quelle: 'Elektrochemie / Werkstoffkunde'
-          }
-        ]} 
+        literatur={inhalt.daten["Metallkorrosion.literatur"]} 
+        regelwerke={inhalt.daten["Metallkorrosion.regelwerke"]} 
+        formeln={inhalt.daten["Metallkorrosion.formeln"]} 
       />
     </div>
   );

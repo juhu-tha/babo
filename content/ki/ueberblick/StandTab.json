@@ -1,0 +1,30 @@
+{
+  "texte": {
+    "woKiHeuteIn": "Wo KI heute in der Baupraxis tatsächlich Mehrwert stiftet",
+    "vierEtablierteEinsatzbereicheDie": "Vier etablierte Einsatzbereiche, die bereits heute in modernen Ingenieurbüros und auf Baustellen genutzt werden:",
+    "materialRezepturoptimierung": "Material- & Rezepturoptimierung",
+    "entwicklungKlinkerreduzierterZementeCem": "Entwicklung klinkerreduzierter Zemente (CEM II/C, CEM VI) und RC-Betone. Machine-Learning-Modelle sagen Festigkeitsentwicklung, Hydratationswärme und Schwinden anhand von Gesteins- und Zusatzmittelkombinationen präzise vorher – und sparen hunderte zeitaufwendige Laborversuche.",
+    "nutzenSchnellereZulassungenBis": "Nutzen: Schnellere Zulassungen, bis zu 40% CO₂-Einsparung",
+    "visuelleBauwerksdiagnoseDrohnen": "Visuelle Bauwerksdiagnose & Drohnen",
+    "automatisierteSchadenserkennungNachDin": "Automatisierte Schadenserkennung nach DIN 1076 oder VDI 6200. Hochauflösende Kamerabilder von Brückenunterbauten oder Kühltürmen werden per Convolutional Neural Networks (CNNs) auf Risse, Ausblühungen und Betonabplatzungen gescannt und ins Schadenskataster eingepflegt.",
+    "nutzen80ZeitersparnisBei": "Nutzen: 80% Zeitersparnis bei der Vor-Ort-Risskartierung",
+    "dokumentenAusschreibungsprüfung": "Dokumenten- & Ausschreibungsprüfung",
+    "ragGestützteLlmsPrüfen": "RAG-gestützte LLMs prüfen Leistungsverzeichnisse (LV), Baugrundgutachten und Verträge nach VOB/B. Widersprüche zwischen Leistungsbeschreibung und statischen Vorbemerkungen werden in Minuten aufgespürt, bevor teure Nachträge auf der Baustelle entstehen.",
+    "nutzenNachtragsrisikenDrastischReduziere": "Nutzen: Nachtragsrisiken drastisch reduzieren",
+    "predictiveMaintenanceShmSensorik": "Predictive Maintenance & SHM-Sensorik",
+    "strukturierteSchwingungsanalyseAnBestehe": "Strukturierte Schwingungsanalyse an bestehenden Tragwerken. Algorithmen lernen das \"gesunde\" Schwingungsverhalten einer Brücke unter Temperatur- und Verkehrslast. Weicht die Eigenfrequenz plötzlich ab, schlägt die KI Alarm, bevor ein Riss mit bloßem Auge sichtbar ist.",
+    "nutzenFrühwarnsystemZurEinsturzpräventio": "Nutzen: Frühwarnsystem zur Einsturzprävention",
+    "reifegradCheckWasFunktioniert": "Reifegrad-Check: Was funktioniert verlässlich – und was nicht?",
+    "bereitsPraxistauglichVerlässlich": "Bereits praxistauglich & verlässlich:",
+    "texterfassungStrukturierungZusammenfassu": "**Texterfassung & Strukturierung:** Zusammenfassung von Protokollen, GAEB-Dateien, Gutachten.",
+    "codeAutomatisierungErstellungVon": "**Code & Automatisierung:** Erstellung von Python-Skripten für Plotter, Excel-Makros, Statik-Schnittstellen.",
+    "bilderkennungAuffindenVonRissen": "**Bilderkennung:** Auffinden von Rissen, Abplatzungen und geometrischen Abweichungen in Punktwolken.",
+    "normenrechercheMitRagAuffinden": "**Normenrecherche mit RAG:** Auffinden exakter Paragraphen in kuratierten Normensammlungen.",
+    "vorentwurfsvariantenGenerierenVielerGebä": "**Vorentwurfsvarianten:** Generieren vieler Gebäudegeometrien zur Beschattungs- und Windoptimierung.",
+    "aktuelleGrenzenNoGos": "Aktuelle Grenzen & No-Gos:",
+    "keineUngeprüfteStatikEine": "**Keine ungeprüfte Statik:** Eine KI haftet nicht nach BGB/HOAI. Jede statische Berechnung muss von einem bauvorlageberechtigten Ingenieur gegengezeichnet werden.",
+    "blackboxProblemNeuronaleNetze": "**Blackbox-Problem:** Neuronale Netze können meist nicht begründen, *warum* sie eine Festigkeit vorhersagen (mangelnde Nachvollziehbarkeit).",
+    "halluzinationenBeiZahlenReines": "**Halluzinationen bei Zahlen:** Reines LLM ohne RAG erfindet bei Spezialnormen mitunter fiktive Beiwerte ($\\gamma_c$, $\\alpha_{cc}$).",
+    "datenschutzBetriebsgeheimnisKeineVertrau": "**Datenschutz & Betriebsgeheimnis:** Keine vertraulichen Pläne in öffentliche Cloud-Chats hochladen (Lösung: Lokale LLMs oder Enterprise-Lizenzen)."
+  }
+}

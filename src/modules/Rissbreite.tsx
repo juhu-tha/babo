@@ -24,6 +24,8 @@ import { bemesseRiss, rissbreiteFuerAs, type RissEingabe } from '@/src/calc/riss
 import { betonNachKlasse } from '@/src/data/kennwerte';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
+import inhalt from '@/content/rissbreite/Rissbreite.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   LinearScale,
@@ -82,7 +84,7 @@ export default function Rissbreite() {
       datasets: [
         {
           type: 'line' as const,
-          label: 'Berechnete Rissbreite w_k',
+          label: inhalt.werte.berechneteRissbreiteWK,
           data: dataWk,
           borderColor: '#A3113E',
           backgroundColor: 'rgba(163, 17, 62, 0.1)',
@@ -93,7 +95,7 @@ export default function Rissbreite() {
         },
         {
           type: 'line' as const,
-          label: 'Zulässige Rissbreite w_k,req',
+          label: inhalt.werte.zulässigeRissbreiteWK,
           data: dataWkReq,
           borderColor: '#A3113E',
           borderDash: [5, 5],
@@ -103,7 +105,7 @@ export default function Rissbreite() {
         },
         {
           type: 'scatter' as const,
-          label: 'Aktueller A_s',
+          label: inhalt.werte.aktuellerAS,
           data: [{ x: as, y: wkCalc }],
           borderColor: '#475569',
           backgroundColor: '#475569',
@@ -147,13 +149,13 @@ export default function Rissbreite() {
         type: 'linear' as const,
         title: {
           display: true,
-          text: 'Bewehrungsquerschnitt A_s [mm²]'
+          text: inhalt.werte.bewehrungsquerschnittASMm
         }
       },
       y: {
         title: {
           display: true,
-          text: 'Rissbreite w_k [mm]'
+          text: inhalt.werte.rissbreiteWKMm
         },
         beginAtZero: true,
         max: Math.max(1.0, wkReq * 1.5, wkCalc * 1.1)
@@ -166,23 +168,18 @@ export default function Rissbreite() {
       <div className="lg:col-span-4 bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
         <div className="flex items-center justify-between gap-2 flex-wrap">
           <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-            <Layers className="text-shiraz" /> Rissbreitenbegrenzung (EC2)
-          </h2>
-          <span className="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-700 rounded-full border border-slate-300">
-            Berechnet nach DIN EN 1992-1-1 + NA (DE)
-          </span>
+            <Layers className="text-shiraz" /><MdText text={inhalt.texte.rissbreitenbegrenzungEc2} /></h2>
+          <span className="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-700 rounded-full border border-slate-300"><MdText text={inhalt.texte.berechnetNachDinEn} /></span>
         </div>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Risse im Beton sind unvermeidbar, müssen aber begrenzt werden, um Dauerhaftigkeit und Gebrauchstauglichkeit sicherzustellen. Die Berechnung erfolgt nach DIN EN 1992-1-1 mit dem Nationalen Anhang für Deutschland (NA DE).
-          </p>
+          <p><MdText text={inhalt.texte.risseImBetonSind} /></p>
         </div>
 
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2">
-            <label className="text-sm font-medium text-text-main"><FormulaText text="Zulässige Rissbreite (w_{k,max})" /></label>
-            <InfoTooltip text="Anforderung an w_k,max nach DIN EN 1992-1-1/NA für Stahlbeton (ohne Vorspannung). In Deutschland gilt für alle Klassen außer X0 und XC1 der Grenzwert 0,3 mm." />
+            <label className="text-sm font-medium text-text-main"><FormulaText text={inhalt.werte.zulässigeRissbreiteWK2} /></label>
+            <InfoTooltip text={inhalt.werte.anforderungAnWK} />
           </div>
           <select 
             className="p-2 border border-home-grau rounded-md bg-off-white focus:outline-none focus:border-shiraz text-sm"
@@ -195,47 +192,47 @@ export default function Rissbreite() {
         </div>
 
         <Slider
-          info="Nennmaß der Betondeckung nach DIN EN 1992-1-1/NA. Schützt den Bewehrungsstahl vor Umwelteinflüssen."
-          label={<FormulaText text="Betondeckung (c_{nom})" />}
+          info={inhalt.werte.nennmaßDerBetondeckungNach}
+          label={<FormulaText text={inhalt.werte.betondeckungCNom} />}
           min={10} max={70} step={1}
           value={cNom} unit="mm"
           onChange={(e) => setCNom(Number(e.target.value))}
         />
         
         <Slider
-          info="Außendurchmesser des gewählten Bewehrungsstabs der Zugbewehrung."
-          label={<FormulaText text="Stabdurchmesser (Ø_s)" />}
+          info={inhalt.werte.außendurchmesserDesGewähltenBewehrungsst}
+          label={<FormulaText text={inhalt.werte.stabdurchmesserS} />}
           min={6} max={40} step={2}
           value={phiS} unit="mm"
           onChange={(e) => setPhiS(Number(e.target.value))}
         />
         
         <Slider
-          info="Spannung in der Zugbewehrung im gerissenen Zustand (Zustand II) unter der maßgebenden quasi-ständigen bzw. häufigen Lastkombination."
-          label={<FormulaText text="Stahlspannung (σ_s)" />}
+          info={inhalt.werte.spannungInDerZugbewehrung}
+          label={<FormulaText text={inhalt.werte.stahlspannungS} />}
           min={50} max={400} step={10}
           value={sigmaS} unit="MPa"
           onChange={(e) => setSigmaS(Number(e.target.value))}
         />
 
         <Slider
-          label={<FormulaText text="Bauteildicke (h)" />}
+          label={<FormulaText text={inhalt.werte.bauteildickeH} />}
           min={100} max={1000} step={10}
           value={h} unit="mm"
-          info="Gesamtdicke des Bauteils."
+          info={inhalt.werte.gesamtdickeDesBauteils}
           onChange={(e) => setH(Number(e.target.value))}
         />
 
         <Slider
-          label={<FormulaText text="Bauteilbreite (b)" />}
+          label={<FormulaText text={inhalt.werte.bauteilbreiteB} />}
           min={100} max={2000} step={50}
           value={b} unit="mm"
           onChange={(e) => setB(Number(e.target.value))}
         />
 
         <Slider
-          info="Stababstand in cm für die Verteilung der Bewehrung."
-          label="Stababstand (s)"
+          info={inhalt.werte.stababstandInCmFür}
+          label={inhalt.werte.stababstandS}
           min={5} max={50} step={1}
           value={spacing} unit="cm"
           onChange={(e) => setSpacing(Number(e.target.value))}
@@ -257,7 +254,7 @@ export default function Rissbreite() {
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2">
             <label className="text-sm font-medium text-text-main">Betonfestigkeitsklasse</label>
-            <InfoTooltip text="Auswahl der Standard-Festigkeitsklasse nach EC2. Aktualisiert f_ct,eff und den Elastizitätsmodul E_cm." />
+            <InfoTooltip text={inhalt.werte.auswahlDerStandardFestigkeitsklasse} />
           </div>
           <select aria-label="Betonfestigkeitsklasse" 
             className="p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz text-sm"
@@ -275,8 +272,8 @@ export default function Rissbreite() {
         </div>
 
         <Slider
-          info="Effektive Betonzugfestigkeit im Risszeitpunkt (kann manuell angepasst werden)."
-          label={<FormulaText text="Betonzugfestigkeit (f_{ct,eff})" />}
+          info={inhalt.werte.effektiveBetonzugfestigkeitImRisszeitpun}
+          label={<FormulaText text={inhalt.werte.betonzugfestigkeitFCtEff} />}
           min={1.0} max={5.0} step={0.1}
           value={fctEff} unit="MPa"
           onChange={(e) => setFctEff(Number(e.target.value))}
@@ -286,7 +283,7 @@ export default function Rissbreite() {
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2">
               <label className="text-sm font-medium text-text-main">Beanspruchungsart</label>
-              <InfoTooltip text="Für Biegung gilt kc = 0,4 mit Act = 0,5 * b * h. Für reinen Zug gilt kc = 1,0 mit Act = b * h." />
+              <InfoTooltip text={inhalt.werte.fürBiegungGiltKc} />
             </div>
             <select aria-label="Beanspruchungsart" 
               className="p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz text-sm"
@@ -306,15 +303,14 @@ export default function Rissbreite() {
               onChange={(e) => setZwangNach28d(e.target.checked)}
               className="rounded text-shiraz focus:ring-shiraz cursor-pointer"
             />
-            <label htmlFor="zwang28d" className="text-xs text-text-main cursor-pointer">
-              <strong>Zwang nach 28 d möglich</strong>: <FormulaText text="f_{ct,eff} \ge 3{,}0\text{ MPa}" /> (NA DE)
+            <label htmlFor="zwang28d" className="text-xs text-text-main cursor-pointer"><MdText text={inhalt.texte.zwangNach28D} /><FormulaText text="f_{ct,eff} \ge 3{,}0\text{ MPa}" /> (NA DE)
             </label>
           </div>
 
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2">
-              <label className="text-sm font-medium text-text-main"><FormulaText text="Lasteinwirkungsdauer (k_t)" /></label>
-              <InfoTooltip text="Berücksichtigt den Abbau der Mitwirkung des Betons auf Zug zwischen den Rissen durch Kriechen." />
+              <label className="text-sm font-medium text-text-main"><FormulaText text={inhalt.werte.lasteinwirkungsdauerKT} /></label>
+              <InfoTooltip text={inhalt.werte.berücksichtigtDenAbbauDer} />
             </div>
             <select 
               className="p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz text-sm"
@@ -331,9 +327,9 @@ export default function Rissbreite() {
       <div className="lg:col-span-8 flex flex-col gap-6">
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col items-center justify-center">
           <div className="flex justify-between items-start w-full mb-4">
-            <h3 className="text-sm font-bold text-text-main">Querschnitt &amp; Wirksame Zugzone</h3>
+            <h3 className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.querschnittWirksameZugzone} /></h3>
             <div className="text-xs text-home-grau bg-off-white px-2 py-1 rounded">
-              <FormulaText text="$h_{c,ef} = \min\{2{,}5\,(h-d);\; (h-x)/3;\; h/2\}$" /> mit der Druckzonenhöhe <FormulaText text="x" /> im Zustand II ({formatDeZahl(ergebnis.x, 1)} mm, bei zentrischem Zug ohne den Term <FormulaText text="$(h-x)/3$" />).
+              <FormulaText text="$h_{c,ef} = \min\{2{,}5\,(h-d);\; (h-x)/3;\; h/2\}$" /><MdText text={inhalt.texte.mitDerDruckzonenhöhe} /><FormulaText text="x" /><MdText text={inhalt.texte.imZustandIi} />{formatDeZahl(ergebnis.x, 1)}<MdText text={inhalt.texte.mmBeiZentrischemZug} /><FormulaText text="$(h-x)/3$" />).
             </div>
           </div>
           <svg width="100%" height="250" viewBox="0 0 500 250" className="max-w-md">
@@ -386,41 +382,41 @@ export default function Rissbreite() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col">
-            <h3 className="text-sm font-bold text-text-main mb-3">Berechnungsergebnisse (NA DE)</h3>
+            <h3 className="text-sm font-bold text-text-main mb-3"><MdText text={inhalt.texte.berechnungsergebnisseNaDe} /></h3>
             <EingabeHinweise hinweise={ergebnis.hinweise.filter(x => x.feld !== 'as')} />
             <div className="flex flex-col gap-3 text-sm">
               <div className="flex justify-between items-center">
                 <span className="text-text-main/80 flex items-center gap-1">
-                  <FormulaText text="Wirksame Zugzone (A_{ct,eff}):" />
-                  <InfoTooltip text="Abgeminderte wirksame Zugzone des Betons um die Bewehrungslagen nach DIN EN 1992-1-1." />
+                  <FormulaText text={inhalt.werte.wirksameZugzoneACt} />
+                  <InfoTooltip text={inhalt.werte.abgeminderteWirksameZugzoneDes} />
                 </span>
                 <span className="text-text-main font-bold">{formatDeZahl(actEff, 0)} mm²</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-text-main/80"><FormulaText text="Effektiver Bewehrungsgrad (ρ_{p,eff}):" /></span>
+                <span className="text-text-main/80"><FormulaText text={inhalt.werte.effektiverBewehrungsgradPEff} /></span>
                 <span className="text-text-main font-bold">{formatDeZahl((rhoPEff * 100), 2)} %</span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-text-main/80 flex items-center gap-1">
-                  <FormulaText text="Max. Rissabstand (s_{r,max}):" />
-                  <InfoTooltip text="In Deutschland (NA DE) gilt die EC-Empfehlung mit k3 = 3,4 und k4 = 0,425 nicht. Nach DIN EN 1992-1-1/NA Gl. (7.11DE) gilt: sr,max = min( Ø / (3.6*rho_p,eff) ; sigma_s*Ø / (3.6*fct,eff) )." />
+                  <FormulaText text={inhalt.werte.maxRissabstandSR} />
+                  <InfoTooltip text={inhalt.werte.inDeutschlandNaDe} />
                 </span>
                 <span className="text-text-main font-bold">{formatDeZahl(srMax, 1)} mm</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-text-main/80"><FormulaText text="Mittlere Dehnungsdifferenz (ε_{sm} - ε_{cm}):" /></span>
+                <span className="text-text-main/80"><FormulaText text={inhalt.werte.mittlereDehnungsdifferenzSmCm} /></span>
                 <span className="text-text-main font-bold">{formatDeZahl((epsSmEpsCm * 1000), 3)} ‰</span>
               </div>
               
               <div className="flex justify-between items-center border-t border-home-grau/25 pt-2 mt-1">
                 <span className="text-text-main/80 flex items-center gap-1">
-                  <FormulaText text="Mindestbewehrung (A_{s,min}):" />
-                  <InfoTooltip text="Erforderliche Mindestbewehrung zur Begrenzung der Rissbreite nach DIN EN 1992-1-1/NA mit k aus kAsMin(h)." />
+                  <FormulaText text={inhalt.werte.mindestbewehrungASMin} />
+                  <InfoTooltip text={inhalt.werte.erforderlicheMindestbewehrungZurBegrenzu} />
                 </span>
                 <span className="text-text-main font-bold">{formatDeZahl(asMinReq, 0)} mm²</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-text-main/80">Vorhandene Bewehrung:</span>
+                <span className="text-text-main/80"><MdText text={inhalt.texte.vorhandeneBewehrung} /></span>
                 <span className="font-semibold text-slate-800 font-sans">
                   Ø {formatDeWert(phiS)} in {formatDeWert(spacing)} cm Abstand
                 </span>
@@ -428,12 +424,12 @@ export default function Rissbreite() {
               <div className="flex justify-between items-center">
                 <span className="text-text-main/80">Vorhandenes <FormulaText text="A_s" />:</span>
                 <span className={`font-bold text-xs px-2 py-0.5 rounded ${as >= asMinReq ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}`}>
-                  {formatDeZahl(as, 0)} mm² {as >= asMinReq ? ' (Ausreichend)' : ' (Zu gering!)'}
+                  {formatDeZahl(as, 0)} mm² {as >= asMinReq ? ' (Ausreichend)' : inhalt.werte.zuGering}
                 </span>
               </div>
 
               <div className="flex justify-between items-center border-t border-home-grau/30 pt-3 mt-1">
-                <span className="text-text-main font-bold text-base"><FormulaText text="Berechnete Rissbreite (w_{k}):" /></span>
+                <span className="text-text-main font-bold text-base"><FormulaText text={inhalt.werte.berechneteRissbreiteWK2} /></span>
                 <span className={`font-bold text-lg ${isOk ? 'text-emerald-600' : 'text-torch-red'}`}>
                   {formatDeZahl(wkCalc, 3)} mm
                 </span>
@@ -454,16 +450,14 @@ export default function Rissbreite() {
               )}
             </div>
             <h3 className={`text-xl font-bold ${isOk ? 'text-emerald-600' : 'text-torch-red'}`}>
-              {isOk ? 'Nachweis erfüllt' : 'Nachweis nicht erfüllt'}
+              {isOk ? inhalt.werte.nachweisErfüllt : inhalt.werte.nachweisNichtErfüllt}
             </h3>
             <p className="text-sm text-text-main/80 mt-2">
               {isOk 
                 ? `Die berechnete Rissbreite (${formatDeZahl(wkCalc, 3)} mm) ist kleiner oder gleich der zulässigen Rissbreite (${formatDeZahl(wkReq, 3)} mm).` 
                 : `Die berechnete Rissbreite (${formatDeZahl(wkCalc, 3)} mm) überschreitet die zulässige Rissbreite (${formatDeZahl(wkReq, 3)} mm). Erhöhen Sie den Bewehrungsgrad (A_s) oder verringern Sie den Stabdurchmesser (Ø_s).`}
               {as < asMinReq && (
-                <span className="block mt-2 text-amber-600 font-semibold text-xs bg-amber-50 p-2 rounded border border-amber-200">
-                  Hinweis: Der vorhandene Bewehrungsquerschnitt ({formatDeZahl(as, 0)} mm²) unterschreitet die rechnerische Mindestbewehrung zur Rissbegrenzung A_s,min ({formatDeZahl(asMinReq, 0)} mm²) nach DIN EN 1992-1-1/NA.
-                </span>
+                <span className="block mt-2 text-amber-600 font-semibold text-xs bg-amber-50 p-2 rounded border border-amber-200"><MdText text={inhalt.texte.hinweisDerVorhandeneBewehrungsquerschnit} />{formatDeZahl(as, 0)}<MdText text={inhalt.texte.mmUnterschreitetDieRechnerische} />{formatDeZahl(asMinReq, 0)}<MdText text={inhalt.texte.mmNachDinEn} /></span>
               )}
             </p>
           </div>
@@ -471,17 +465,17 @@ export default function Rissbreite() {
 
         <FormulaDerivationBox
           live
-          title="Ihr Rechenweg: Rissbreite mit den aktuellen Eingaben"
+          title={inhalt.werte.ihrRechenwegRissbreiteMit}
           zielGleichung={`w_k = s_{r,max} \\cdot (\\varepsilon_{sm} - \\varepsilon_{cm}) = ${formatDeTeX(wkCalc, 3)}\\,\\text{mm} \\;${isOk ? '\\le' : '>'}\\; ${formatDeTeX(wkReq, 2)}\\,\\text{mm}`}
-          normQuelle="DIN EN 1992-1-1 mit NA (DE), 7.3.2 und 7.3.4"
+          normQuelle={inhalt.werte.dinEn19921}
           schritte={[
             {
-              titel: 'Vorhandene Bewehrung',
+              titel: inhalt.werte.vorhandeneBewehrung,
               erklaerung: `Stäbe Ø ${formatDeZahl(phiS, 0)} mm im Abstand ${formatDeZahl(spacing, 1)} cm auf der Breite b = ${formatDeZahl(b, 0)} mm.`,
               formel: `A_s = \\frac{b}{s} \\cdot \\frac{\\pi \\cdot \\varnothing^2}{4} = \\frac{${formatDeTeX(b, 0)}}{${formatDeTeX(spacing * 10, 0)}} \\cdot \\frac{\\pi \\cdot ${formatDeTeX(phiS, 0)}^2}{4} = ${formatDeTeX(as, 0)}\\,\\text{mm}^2`,
             },
             {
-              titel: 'Wirksame Zugzone',
+              titel: inhalt.werte.wirksameZugzone,
               erklaerung: beanspruchung === 'biegung'
                 ? `Biegung: Druckzonenhöhe im Zustand II x = ${formatDeZahl(ergebnis.x, 1)} mm, Nutzhöhe d = ${formatDeZahl(ergebnis.d, 1)} mm.`
                 : `Zentrischer Zug: h_c,ef je Seite, Nutzhöhe d = ${formatDeZahl(ergebnis.d, 1)} mm.`,
@@ -490,26 +484,26 @@ export default function Rissbreite() {
                 : `h_{c,ef} = \\min\\left(2{,}5 \\cdot ${formatDeTeX(h - ergebnis.d, 1)};\\; \\tfrac{${formatDeTeX(h, 0)}}{2}\\right) = ${formatDeTeX(hc_ef, 1)}\\,\\text{mm};\\quad \\rho_{p,eff} = \\frac{${formatDeTeX(as, 0)}}{${formatDeTeX(b, 0)} \\cdot ${formatDeTeX(hc_ef, 1)}} = ${formatDeTeX(rhoPEff, 4)}`,
             },
             {
-              titel: 'Maximaler Rissabstand',
-              erklaerung: `Gl. (7.11DE) nach NA (DE) mit f_ct,eff = ${formatDeZahl(ergebnis.effectiveFct, 2)} N/mm²${zwangNach28d ? ' (Zwang nach 28 Tagen: mindestens 3,0 N/mm²)' : ''}.`,
+              titel: inhalt.werte.maximalerRissabstand,
+              erklaerung: `Gl. (7.11DE) nach NA (DE) mit f_ct,eff = ${formatDeZahl(ergebnis.effectiveFct, 2)} N/mm²${zwangNach28d ? inhalt.werte.zwangNach28Tagen : ''}.`,
               formel: `s_{r,max} = \\min\\left(\\frac{${formatDeTeX(phiS, 0)}}{3{,}6 \\cdot ${formatDeTeX(rhoPEff, 4)}};\\; \\frac{${formatDeTeX(sigmaS, 0)} \\cdot ${formatDeTeX(phiS, 0)}}{3{,}6 \\cdot ${formatDeTeX(ergebnis.effectiveFct, 2)}}\\right) = ${formatDeTeX(srMax, 1)}\\,\\text{mm}`,
             },
             {
-              titel: 'Mittlere Dehnungsdifferenz',
+              titel: inhalt.werte.mittlereDehnungsdifferenz,
               erklaerung: `Gl. (7.9) mit k_t = ${formatDeZahl(kt, 1)} und α_e = E_s/E_cm = ${formatDeZahl(200000 / ecm, 2)}; Untergrenze 0,6 · σ_s/E_s.`,
               formel: `\\varepsilon_{sm} - \\varepsilon_{cm} = \\max\\left(\\frac{${formatDeTeX(sigmaS, 0)} - ${formatDeTeX(kt, 1)} \\cdot \\frac{${formatDeTeX(ergebnis.effectiveFct, 2)}}{${formatDeTeX(rhoPEff, 4)}} \\cdot (1 + ${formatDeTeX(200000 / ecm, 2)} \\cdot ${formatDeTeX(rhoPEff, 4)})}{200\\,000};\\; \\frac{0{,}6 \\cdot ${formatDeTeX(sigmaS, 0)}}{200\\,000}\\right) = ${formatDeTeX(epsSmEpsCm * 1000, 3)} \\cdot 10^{-3}`,
             },
             {
-              titel: 'Rechnerische Rissbreite',
-              erklaerung: isOk ? 'Die zulässige Rissbreite ist eingehalten.' : 'Die zulässige Rissbreite ist überschritten.',
+              titel: inhalt.werte.rechnerischeRissbreite,
+              erklaerung: isOk ? inhalt.werte.dieZulässigeRissbreiteIst : inhalt.werte.dieZulässigeRissbreiteIst2,
               formel: `w_k = ${formatDeTeX(srMax, 1)} \\cdot ${formatDeTeX(epsSmEpsCm * 1000, 3)} \\cdot 10^{-3} = ${formatDeTeX(wkCalc, 3)}\\,\\text{mm} \\;${isOk ? '\\le' : '>'}\\; w_{max} = ${formatDeTeX(wkReq, 2)}\\,\\text{mm}`,
             },
           ]}
-          ergebnisHinweis={`Berechnete Rissbreite w_k = ${formatDeZahl(wkCalc, 3)} mm (${isOk ? 'Nachweis erfüllt' : 'Nachweis nicht erfüllt'})`}
+          ergebnisHinweis={`Berechnete Rissbreite w_k = ${formatDeZahl(wkCalc, 3)} mm (${isOk ? inhalt.werte.nachweisErfüllt2 : inhalt.werte.nachweisNichtErfüllt2})`}
         />
 
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col">
-          <h3 className="text-sm font-bold text-text-main mb-4">Rissbreite in Abhängigkeit vom Bewehrungsquerschnitt</h3>
+          <h3 className="text-sm font-bold text-text-main mb-4"><MdText text={inhalt.texte.rissbreiteInAbhängigkeitVom} /></h3>
           <div className="h-[300px] w-full">
             <Chart type="line" data={chartData} options={chartOptions} />
           </div>

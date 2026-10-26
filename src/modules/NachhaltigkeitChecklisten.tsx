@@ -9,6 +9,8 @@ import {
   ShieldAlert
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import inhalt from '@/content/nachhaltigkeitchecklisten/NachhaltigkeitChecklisten.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface ChecklistItem {
   id: string;
@@ -29,144 +31,144 @@ interface ChecklistSection {
 const INITIAL_CHECKLISTS: Record<string, ChecklistSection> = {
   planning: {
     id: 'planning',
-    title: '1. Tragwerksplanung & Vorentwurf',
-    description: 'Frühzeitige Weichenstellungen im Vorentwurf und in der Tragsystemoptimierung für ein kreislauffähiges und ressourcenschonendes Gebäude.',
+    title: inhalt.werte.t1TragwerksplanungVorentwurf,
+    description: inhalt.werte.frühzeitigeWeichenstellungenImVorentwurf,
     icon: Building2,
     items: [
       {
         id: 'plan_1',
-        task: 'Tragwerks- und Querschnittsoptimierung',
-        description: 'Wurde das statische System hinsichtlich minimaler Materialstärken optimiert? Z.B. flache Wandstärken, schlankere Deckenquerschnitte durch höherfeste Baustoffe oder Vorspannung zur Reduzierung des Beton- und Stahlvolumens.',
+        task: inhalt.werte.tragwerksUndQuerschnittsoptimierung,
+        description: inhalt.werte.wurdeDasStatischeSystem,
         ref: 'LNB & BNB',
         status: 'mandatory'
       },
       {
         id: 'plan_2',
-        task: 'Klinkerarmut & Zementsubstitution',
-        description: 'Erfolgt der Einsatz von CO₂-reduzierten Bindemitteln? Substitution von reinem Portlandzement (CEM I) durch hüttensand- oder puzzolanreiche Zemente (CEM II/B, CEM III/A oder CEM III/B) zur Einsparung von bis zu 60% der Klinkeremissionen.',
-        ref: 'DIN EN 197-1/-5, EPD bzw. ÖKOBAUDAT',
+        task: inhalt.werte.klinkerarmutZementsubstitution,
+        description: inhalt.werte.erfolgtDerEinsatzVon,
+        ref: inhalt.werte.dinEn1971,
         status: 'critical'
       },
       {
         id: 'plan_3',
-        task: 'Integration Nachwachsender Rohstoffe (NaWaRo)',
-        description: 'Prüfung, ob nicht-tragende Innenwände, Dämmebenen, Deckenbekleidungen oder auch tragende Rahmenbauteile in Holz, Holzwerkstoffen, Stroh-, Lehm- oder Hanfprodukten ausgeführt werden können, um biogenen Kohlenstoff einzulagern.',
-        ref: 'QNG-Anforderungen / KfW 40',
+        task: inhalt.werte.integrationNachwachsenderRohstoffeNawaro,
+        description: inhalt.werte.prüfungObNichtTragende,
+        ref: inhalt.werte.qngAnforderungenKfw40,
         status: 'mandatory'
       },
       {
         id: 'plan_4',
-        task: 'Rückbaufreundliche Fügung (Design for Disassembly)',
-        description: 'Sind Verbindungspunkte mechanisch lösbar geplant? Vermeidung von vollflächig verklebten Schichten im Ausbau (z.B. geklebte Parkette, Vermeidung vollflächig verklebter Schichten im Ausbau (z. B. geklebtes Parkett). Besser: schwimmend verlegte Beläge, Estriche auf Trennlage, mechanisch montierte Trockenbausysteme statt nasser Putze. anstelle nasser Putze).',
-        ref: 'DIN EN ISO 20887',
+        task: inhalt.werte.rückbaufreundlicheFügungDesignFor,
+        description: inhalt.werte.sindVerbindungspunkteMechanischLösbar,
+        ref: inhalt.werte.dinEnIso20887,
         status: 'recommended'
       }
     ]
   },
   chemistry: {
     id: 'chemistry',
-    title: '2. Bauchemie & Schadstoffvermeidung',
-    description: 'Vorgabe emissionsarmer Bauprodukte und konsequenter Ausschluss kritischer Inhaltsstoffe gemäß dem QNG-Steckbrief 313.',
+    title: inhalt.werte.t2BauchemieSchadstoffvermeidung,
+    description: inhalt.werte.vorgabeEmissionsarmerBauprodukteUnd,
     icon: Leaf,
     items: [
       {
         id: 'ausschreibung_1',
-        task: 'Qualitätsstufe 4 für Innenwandbeschichtungen',
-        description: 'Werden für Innenwandbeschichtungen (Farben, Lasuren, Grundierungen) ausschließlich Produkte mit extrem niedrigen VOC-Gehalten nach QS4 (z.B. ausschließlich emissionsarme Produkte (z. B. Blauer Engel DE-UZ 102 für Innenwandfarben) gemäß QNG-Anlage 3.1.3 vorgegeben?) vorgegeben?',
-        ref: 'QNG Steckbrief 313 Anhang 1',
+        task: inhalt.werte.qualitätsstufe4FürInnenwandbeschichtunge,
+        description: inhalt.werte.werdenFürInnenwandbeschichtungenFarben,
+        ref: inhalt.werte.qngSteckbrief313Anhang,
         status: 'critical'
       },
       {
         id: 'ausschreibung_2',
-        task: 'Ausschluss halogenierter Treibmittel in Dämmstoffen',
-        description: 'Wird in der Leistungsbeschreibung garantiert, dass Schaumdämmstoffe (XPS, PU-Ortschäume) ohne halogenierte Treibmittel (insbesondere HFKW) hergestellt werden? hergestellt werden? Bevorzugung von CO₂-, luft- oder wassergetriebenen Schäumen.',
-        ref: 'QNG Steckbrief 313 Anhang 3',
+        task: inhalt.werte.ausschlussHalogenierterTreibmittelIn,
+        description: inhalt.werte.wirdInDerLeistungsbeschreibung,
+        ref: inhalt.werte.qngSteckbrief313Anhang2,
         status: 'critical'
       },
       {
         id: 'ausschreibung_3',
-        task: 'Schadstoffarme Klebstoffe & Dichtstoffe',
-        description: 'Einsatz von schadstofffreien, weichmacher- und lösemittelfreien elastischen Dichtstoffen an Fenstern, Fassaden und im Sanitärbereich gemäß den anspruchsvollen Bedingungen von DGNB/QNG Qualitätsstufe 3 oder 4.',
-        ref: 'QNG Steckbrief 313',
+        task: inhalt.werte.schadstoffarmeKlebstoffeDichtstoffe,
+        description: inhalt.werte.einsatzVonSchadstofffreienWeichmacher,
+        ref: inhalt.werte.qngSteckbrief313,
         status: 'mandatory'
       },
       {
         id: 'ausschreibung_4',
-        task: 'Formaldehydklassen im Innenausbau',
-        description: 'Wird spezifiziert, dass Holzwerkstoffe (OSB-, Span- und Faserplatten) im Innenbereich die strengen Anforderungen der Halbierten E1-Grenzwerte (≤ 0.05 ppm Luftkonzentration) belegen?',
-        ref: 'DIN EN 16516 / ChemVerbotsV',
+        task: inhalt.werte.formaldehydklassenImInnenausbau,
+        description: inhalt.werte.wirdSpezifiziertDassHolzwerkstoffe,
+        ref: inhalt.werte.dinEn16516Chemverbotsv,
         status: 'mandatory'
       }
     ]
   },
   operation: {
     id: 'operation',
-    title: '3. Energie, Technik & Betrieb',
-    description: 'Systemische Optimierung der Bauphysik und Anlagentechnik zur langfristigen CO₂-Emissionsbegrenzung im Betrieb.',
+    title: inhalt.werte.t3EnergieTechnikBetrieb,
+    description: inhalt.werte.systemischeOptimierungDerBauphysik,
     icon: Zap,
     items: [
       {
         id: 'betrieb_1',
-        task: 'Systemische Optimierung der Gebäudehülle',
-        description: 'Erzielen alle Außenbauteile hervorragende U-Werte, die die gesetzlichen Standards des Gebäudemodernisierungsgesetzes (GModG, in Kraft seit 29.07.2026, vormals GEG) um mindestens 45% unterbieten? Dies ist der bauphysikalische Kern zur Erlangung des energetischen "KfW Effizienzhaus 40"-Niveaus.',
-        ref: 'GModG (vormals GEG) / KfW 40',
+        task: inhalt.werte.systemischeOptimierungDerGebäudehülle,
+        description: inhalt.werte.erzielenAlleAußenbauteileHervorragende,
+        ref: inhalt.werte.gmodgVormalsGegKfw,
         status: 'mandatory'
       },
       {
         id: 'betrieb_2',
-        task: 'Fossilfreie, hocheffiziente Wärmeversorgung',
-        description: 'Wurden Verbrennungsheizungen (Gas/Öl/Biomasse) komplett ausgeschlossen? Stattdessen Auslegung einer geothermischen oder luftbasierten Wärmepumpe mit hoher Jahresarbeitszahl (JAZ ≥ 4,0) oder Anschluss an kalte Nahwärmenetze.',
-        ref: 'GModG (vormals GEG) / BEG-Förderung',
+        task: inhalt.werte.fossilfreieHocheffizienteWärmeversorgung,
+        description: inhalt.werte.wurdenVerbrennungsheizungenGasÖl,
+        ref: inhalt.werte.gmodgVormalsGegBeg,
         status: 'critical'
       },
       {
         id: 'betrieb_3',
-        task: 'Lüftungsanlage mit hocheffektiver Wärmerückgewinnung',
-        description: 'Ist eine kontrollierte mechanische Be- und Entlüftungsanlage mit einem zertifizierten Wärmebereitstellungsgrad von mindestens 85% zur Minimierung der Lüftungswärmeverluste projektiert?',
-        ref: 'DIN EN 13141 / Passivhaus',
+        task: inhalt.werte.lüftungsanlageMitHocheffektiverWärmerück,
+        description: inhalt.werte.istEineKontrollierteMechanische,
+        ref: inhalt.werte.dinEn13141Passivhaus,
         status: 'mandatory'
       },
       {
         id: 'betrieb_4',
-        task: 'PV-Großanlage & Batteriespeicher-Kombination',
-        description: 'Ermittlung des theoretischen Stromertrags zur Deckung des Hilfs- und Betriebsstrombedarfs. Auslegung der PV-Module auf allen geeigneten Dach- und ggf. Fassadenflächen kombiniert mit anforderungsgerechter Batteriespeichergröße.',
-        ref: 'DIN V 18599 / QNG',
+        task: inhalt.werte.pvGroßanlageBatteriespeicherKombination,
+        description: inhalt.werte.ermittlungDesTheoretischenStromertrags,
+        ref: inhalt.werte.dinV18599Qng,
         status: 'mandatory'
       }
     ]
   },
   circularity: {
     id: 'circularity',
-    title: '4. Rückbau & Kreislaufwirtschaft',
-    description: 'Konsequente Ausrichtung auf Ressourcenschonung, Sekundärbaustoffe und die spätere Recyclingfähigkeit.',
+    title: inhalt.werte.t4RückbauKreislaufwirtschaft,
+    description: inhalt.werte.konsequenteAusrichtungAufRessourcenschon,
     icon: RefreshCw,
     items: [
       {
         id: 'kreislauf_1',
-        task: 'BIM-basierter Circularity-Materialpass',
-        description: 'Wurde im Zuge der Bauplanung ein digitaler Gebäudematerialpass (z. B. Madaster oder vordefinierter BIM-Export) angelegt? Dieser dokumentiert detailliert Schichtaufbauten, Massen, EPD-Referenzen und sortenreine Entsorgungswege.',
-        ref: 'Gebäuderessourcenpass / Materialpass (Produktdaten aus dem Digitalen Produktpass, DPP)',
+        task: inhalt.werte.bimBasierterCircularityMaterialpass,
+        description: inhalt.werte.wurdeImZugeDer,
+        ref: inhalt.werte.gebäuderessourcenpassMaterialpassProdukt,
         status: 'recommended'
       },
       {
         id: 'kreislauf_2',
-        task: 'Einsatz von Recycling-Beton (R-Beton)',
-        description: 'Werden für die Bauteile der Gründungen, Sohlplatten oder Decken qualitätsgesicherte R-Betone (Typ 1 oder Typ 2 nach DAfStb-Richtlinie) mit mindestens 25 M.-% Gesteinskörnung-Substitut durch Rezyklate ausgeschrieben?',
+        task: inhalt.werte.einsatzVonRecyclingBeton,
+        description: inhalt.werte.werdenFürDieBauteile,
         ref: 'DAfStb-Richtlinie',
         status: 'mandatory'
       },
       {
         id: 'kreislauf_3',
-        task: 'Sortenreine Trennbarkeit an WDVS-Fassaden',
-        description: 'Befürwortung mechanisch verdübelter Dämmsysteme, hinterlüfteter Fassadenstrukturen oder mineralischer Wärmedämmputze, um die unlösbare Verklebung monolithischer Dämmungen mit der Tragwand zu umgehen.',
-        ref: 'VDI 6205 / Rückbaubarkeit',
+        task: inhalt.werte.sortenreineTrennbarkeitAnWdvs,
+        description: inhalt.werte.befürwortungMechanischVerdübelterDämmsys,
+        ref: inhalt.werte.vdi6205Rückbaubarkeit,
         status: 'mandatory'
       },
       {
         id: 'kreislauf_4',
-        task: 'Mineralische Ersatzbaustoffe & EBV-Konformität',
-        description: 'Werden anfallende mineralische Baustoffe oder RC-Baustoffe im Tiefbau, Gründungs- oder Straßenbau gemäß der Ersatzbaustoffverordnung (EBV, seit 01.08.2023) gemäß der Ersatzbaustoffverordnung (EBV, seit 01.08.2023) mit Güteüberwachung und unter Einhaltung der Materialwerte nach Anlage 1 EBV (Materialklassen, z. B. RC-1 bis RC-3) eingesetzt? eingesetzt?',
-        ref: 'Ersatzbaustoffverordnung (EBV)',
+        task: inhalt.werte.mineralischeErsatzbaustoffeEbvKonformitä,
+        description: inhalt.werte.werdenAnfallendeMineralischeBaustoffe,
+        ref: inhalt.werte.ersatzbaustoffverordnungEbv,
         status: 'mandatory'
       }
     ]
@@ -183,12 +185,9 @@ export default function NachhaltigkeitChecklisten() {
       {/* Header Info-Bereich */}
       <div className="bg-white text-text-main rounded-2xl p-6 border border-home-grau/30 shadow-sm">
         <h2 className="text-xl font-bold tracking-tight text-text-main flex items-center gap-2">
-          <Leaf className="text-shiraz" /> Checklisten: Nachhaltiges Bauen &amp; QNG
-        </h2>
+          <Leaf className="text-shiraz" /><MdText text={inhalt.texte.checklistenNachhaltigesBauenQng} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-3 leading-relaxed">
-          <p>
-            Stufenweise Qualitätssicherung zur Erreichung anspruchsvoller Gebäudeauszeichnungen (z.B. DGNB, QNG Steckbrief 313, LNB) und zur Optimierung der Kreislauffähigkeit und Schadstoffvermeidung.
-          </p>
+          <p><MdText text={inhalt.texte.stufenweiseQualitätssicherungZurErreichu} /></p>
         </div>
       </div>
 
@@ -250,15 +249,15 @@ export default function NachhaltigkeitChecklisten() {
               if (item.status === 'critical') {
                 borderStyle = 'border-home-grau/20 border-l-2 border-l-rose-500/80';
                 badgeStyle = 'bg-rose-50/50 text-shiraz border-rose-100/40';
-                badgeLabel = 'Kritisch / Veto-Punkt';
+                badgeLabel = inhalt.werte.kritischVetoPunkt;
               } else if (item.status === 'mandatory') {
                 borderStyle = 'border-home-grau/20 border-l-2 border-l-amber-500/80';
                 badgeStyle = 'bg-amber-50/50 text-amber-700 border-amber-100/40';
-                badgeLabel = 'Hohe Relevanz';
+                badgeLabel = inhalt.werte.hoheRelevanz;
               } else {
                 borderStyle = 'border-home-grau/20 border-l-2 border-l-emerald-500/80';
                 badgeStyle = 'bg-emerald-50/50 text-emerald-700 border-emerald-100/40';
-                badgeLabel = 'Präzisierung / Empfohlen';
+                badgeLabel = inhalt.werte.präzisierungEmpfohlen;
               }
 
               return (
@@ -304,9 +303,7 @@ export default function NachhaltigkeitChecklisten() {
           <div className="flex flex-col md:flex-row gap-2.5 justify-between items-center text-xs text-home-grau">
             <div className="flex items-center gap-1.5">
               <ShieldAlert className="w-3.5 h-3.5 text-home-grau/60 shrink-0" />
-              <p className="font-normal text-home-grau/80">
-                Diese Checklisten dienen als praxisorientierte Planungshilfe für das Erreichen anspruchsvoller Gebäudeauszeichnungen (z. B. DGNB Gold/Platin oder das staatliche QNG).
-              </p>
+              <p className="font-normal text-home-grau/80"><MdText text={inhalt.texte.dieseChecklistenDienenAls} /></p>
             </div>
             <div className="flex gap-1">
               <a 
@@ -326,34 +323,14 @@ export default function NachhaltigkeitChecklisten() {
       {/* Module Footer Links */}
       <ModuleFooter 
         wikipedia={[
-          { title: 'Nachhaltiges Bauen', url: 'https://de.wikipedia.org/wiki/Nachhaltiges_Bauen' },
+          { title: inhalt.werte.nachhaltigesBauen, url: 'https://de.wikipedia.org/wiki/Nachhaltiges_Bauen' },
           { title: 'Gebäudeenergiegesetz' },
           { title: 'Kreislaufwirtschaft', url: 'https://de.wikipedia.org/wiki/Kreislaufwirtschaft' },
-          { title: 'Graue Energie', url: 'https://de.wikipedia.org/wiki/Graue_Energie' }
+          { title: inhalt.werte.graueEnergie, url: 'https://de.wikipedia.org/wiki/Graue_Energie' }
         ]}
-        regelwerke={[
-          { title: 'QNG Handbuch: Qualitätssiegel Nachhaltiges Gebäude', url: 'https://www.qng.info/' },
-          { title: 'Leitfaden Nachhaltiges Bauen (LNB - BMWSB)', url: 'https://www.nachhaltigesbauen.de/' },
-          { title: 'Ersatzbaustoffverordnung (EBV 2023)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
-          { title: 'Gebäudemodernisierungsgesetz (GModG, in Kraft seit 29.07.2026, vormals GEG)', url: 'https://www.gesetze-im-internet.de/geg/' }
-        ]}
-        literatur={[
-          'BMWSB: Nachhaltiges Bauen – Leitfaden für Bundesbauten',
-          'DGNB Handbuch für nachhaltiges Bauen (Deutsche Gesellschaft für Nachhaltiges Bauen e.V.)',
-          'Hegger, M. et al.: Baustoff-Atlas (Detail Verlag)'
-        ]} 
-        formeln={[
-          {
-            formel: 'MCI = 1 - LFI \\cdot F(X) \\in [0; 1] \\quad (\\text{Material Circularity Index})',
-            erklaerung: 'Material-Zirkularitätsindex der Ellen MacArthur Foundation zur quantitativen Bewertung des Rezyklatanteils und der Recyclingfähigkeit eines Bauteils.',
-            quelle: 'Ellen MacArthur Foundation / DGNB'
-          },
-          {
-            formel: 'Q_P = \\left(Q_h + Q_{tw}\\right) \\cdot f_p \\le Q_{P,\\text{zul}} \\quad [\\text{kWh/(m}^2\\cdot\\text{a)}]',
-            erklaerung: 'Jahres-Primärenergiebedarf eines Gebäudes nach § 15 Gebäudemodernisierungsgesetz (GModG, vormals GEG; Nummerierung unverändert, in Kraft gestaffelt ab 29.07.2026) aus Heizwärme- und Warmwasserbedarf mit Primärenergiefaktor fp.',
-            quelle: 'GModG § 15 / DIN V 18599:2018-09'
-          }
-        ]}
+        regelwerke={inhalt.daten["NachhaltigkeitChecklisten.regelwerke"]}
+        literatur={inhalt.daten["NachhaltigkeitChecklisten.literatur"]} 
+        formeln={inhalt.daten["NachhaltigkeitChecklisten.formeln"]}
       />
 
     </div>

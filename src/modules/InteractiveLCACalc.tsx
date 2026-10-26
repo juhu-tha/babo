@@ -20,6 +20,8 @@ import {
 import { MATERIAL_DATABASE, CustomRow, ScenarioPreset, PRESETS } from './interactivelcacalc/daten';
 import { CalculationDashboard } from './interactivelcacalc/CalculationDashboard';
 import { ModulDLabor } from './interactivelcacalc/ModulDLabor';
+import inhalt from '@/content/interactivelcacalc/InteractiveLCACalc.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function InteractiveLCACalc() {
   const [calcView, setCalcView] = useState<'konfigurator' | 'modul_d_labor' | 'vergleich'>('konfigurator');
@@ -42,16 +44,11 @@ export default function InteractiveLCACalc() {
       return {
         plus: 24.0,
         premium: 20.0,
-        label: "Wohngebäude (WG23)",
+        label: inhalt.werte.wohngebäudeWg23,
         areaUnit: "m² NRF"
       };
     } else {
-      return {
-        plus: 32.0,
-        premium: 26.0,
-        label: "Nichtwohngebäude (Lehrwert; QNG: projektspezifisch)",
-        areaUnit: "m² NRF"
-      };
+      return inhalt.daten.InteractiveLCACalc;
     }
   }, [buildingType]);
 
@@ -303,21 +300,21 @@ export default function InteractiveLCACalc() {
 
     if (valAC <= premium) {
       return {
-        label: "unter QNG-PREMIUM-Anforderungswert (orientierend)",
+        label: inhalt.werte.unterQngPremiumAnforderungswert,
         color: "text-emerald-700 border-emerald-300 bg-emerald-50/70",
         badge: "bg-emerald-600 text-white",
         desc: `Orientierend sehr gut. Der vereinfachte Wert von ${formatDeZahl(valAC, 2)} kg CO₂-eq/(m²a) unterschreitet den Schwellenwert von ${formatDeZahl(premium, 1)} kg CO₂-eq/(m²a) deutlich. Für einen QNG-Nachweis ist eine vollständige Bilanz nach QNG-Bilanzierungsregeln (inkl. B4 und B6) nötig.`
       };
     } else if (valAC <= plus) {
       return {
-        label: "unter QNG-PLUS-Anforderungswert (orientierend)",
+        label: inhalt.werte.unterQngPlusAnforderungswert,
         color: "text-teal-700 border-teal-300 bg-teal-50/70",
         badge: "bg-teal-600 text-white",
         desc: `Orientierend gut. Der vereinfachte Wert von ${formatDeZahl(valAC, 2)} kg CO₂-eq/(m²a) liegt unter dem Anforderungswert von ${formatDeZahl(plus, 1)} kg CO₂-eq/(m²a). Eine Förderberechtigung ergibt sich erst aus einem vollständigen QNG-Nachweis.`
       };
     } else {
       return {
-        label: "Standard-Neubau ⚙️",
+        label: inhalt.werte.standardNeubau,
         color: "text-amber-700 border-amber-300 bg-amber-50/70",
         badge: "bg-amber-600 text-white",
         desc: `Der berechnete Treibhausgaswert von ${formatDeZahl(valAC, 2)} kg CO₂-eq/(m²a) liegt über dem QNG-PLUS Grenzwert (${formatDeZahl(plus, 1)} kg CO₂-eq/(m²a)). Ersetzen Sie CEM I-Beton und EPS durch CEM III/A, RC-Beton, Lehm oder Holzbau, um Förderniveau zu erreichen.`
@@ -381,16 +378,16 @@ export default function InteractiveLCACalc() {
     ]);
 
     const rate = (v: number) => {
-      if (v <= qngThresholds.premium) return "≤ PREMIUM-Wert (orientierend)";
-      if (v <= qngThresholds.plus) return "≤ PLUS-Wert (orientierend)";
+      if (v <= qngThresholds.premium) return inhalt.werte.premiumWertOrientierend;
+      if (v <= qngThresholds.plus) return inhalt.werte.plusWertOrientierend;
       return "Standard ⚙️";
     };
 
     return [
       {
         id: "var1",
-        name: "Variante I: Konventioneller Massivbau",
-        description: "CEM I Normalbeton, Hintermauerziegel, EPS-Dämmung.",
+        name: inhalt.werte.varianteIKonventionellerMassivbau,
+        description: inhalt.werte.cemINormalbetonHintermauerziegel,
         gwp: gwpVar1,
         colorClass: "bg-rose-600",
         rating: rate(gwpVar1),
@@ -398,8 +395,8 @@ export default function InteractiveLCACalc() {
       },
       {
         id: "var2",
-        name: "Variante II: Klinkeroptimierter Massivbau",
-        description: "CEM III/A Hüttensandzement, RC-Beton, Zellulosedämmung.",
+        name: inhalt.werte.varianteIiKlinkeroptimierterMassivbau,
+        description: inhalt.werte.cemIiiAHüttensandzement,
         gwp: gwpVar2,
         colorClass: "bg-amber-600",
         rating: rate(gwpVar2),
@@ -407,8 +404,8 @@ export default function InteractiveLCACalc() {
       },
       {
         id: "var3",
-        name: "Variante III: Moderner Holz-Hybridbau",
-        description: "CLT-Wände, HBV-Decken, druckfeste Holzfaserdämmung.",
+        name: inhalt.werte.varianteIiiModernerHolz,
+        description: inhalt.werte.cltWändeHbvDecken,
         gwp: gwpVar3,
         colorClass: "bg-emerald-600",
         rating: rate(gwpVar3),
@@ -416,8 +413,8 @@ export default function InteractiveLCACalc() {
       },
       {
         id: "var4",
-        name: "Variante IV: Zirkulärer Lehm- & Naturbaustoffbau",
-        description: "Lehmbauplatten, Hanfkalk, Stroh und Schaumglasschotter.",
+        name: inhalt.werte.varianteIvZirkulärerLehm,
+        description: inhalt.werte.lehmbauplattenHanfkalkStrohUnd,
         gwp: gwpVar4,
         colorClass: "bg-teal-600",
         rating: rate(gwpVar4),
@@ -425,8 +422,8 @@ export default function InteractiveLCACalc() {
       },
       {
         id: "active",
-        name: "Ihr aktueller Entwurf (Benutzerdefiniert)",
-        description: "Dynamisch aus Ihrer Baustofftabelle berechneter QNG-Nachweiswert (Module A-C).",
+        name: inhalt.werte.ihrAktuellerEntwurfBenutzerdefiniert,
+        description: inhalt.werte.dynamischAusIhrerBaustofftabelle,
         gwp: results.gwpPerSqmYearAC,
         colorClass: "bg-shiraz",
         rating: rate(results.gwpPerSqmYearAC),
@@ -441,13 +438,9 @@ export default function InteractiveLCACalc() {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div className="space-y-2 max-w-2xl">
           <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-            <Calculator className="text-shiraz shrink-0" /> 
-            Interaktiver Ökobilanz-Rechner (LCA, QNG 2026 &amp; Modul D)
-          </h2>
+            <Calculator className="text-shiraz shrink-0" /><MdText text={inhalt.texte.interaktiverÖkobilanzRechnerLca} /></h2>
           <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-2">
-            <p>
-              Ganzheitliche Lebenszyklusanalyse nach <strong>DIN EN 15978</strong> (Gebäude), <strong>DIN EN 17472</strong> (Infrastruktur) und <strong>DIN EN 15804+A2</strong>. Berechnen Sie das Treibhauspotenzial (Module A1–C), prüfen Sie die <strong>QNG-2026-Grenzwerte</strong> und analysieren Sie in der <strong>Modul-D-Eingabemaske</strong> dynamisch alle Zirkularitäts-Gutschriften und kreislauffähigen Stoffanteile nach <strong>VDI 6210 / DIN SPEC 91484</strong>.
-            </p>
+            <p><MdText text={inhalt.texte.ganzheitlicheLebenszyklusanalyseNachDin} /></p>
           </div>
         </div>
         <div className="flex md:flex-col gap-2 shrink-0">
@@ -466,19 +459,18 @@ export default function InteractiveLCACalc() {
               setStudyPeriod(50);
             }} 
             className="flex items-center gap-1.5 text-xs bg-white hover:bg-slate-50 border border-home-grau/30 hover:border-slate-400 py-2 px-3.5 rounded-xl text-slate-700 transition cursor-pointer font-bold"
-            title="Werte auf Initialzustand zurücksetzen"
+            title={inhalt.werte.werteAufInitialzustandZurücksetzen}
           >
-            <RotateCcw size={14} /> Rechner Reset
-          </button>
+            <RotateCcw size={14} /><MdText text={inhalt.texte.rechnerReset} /></button>
         </div>
       </div>
 
       {/* Main View Mode Selector (Konfigurator vs. Modul D Eingabemaske vs. Szenarien-Vergleich) */}
       <div className="bg-white p-2 rounded-2xl border border-home-grau/30 shadow-xs flex flex-wrap gap-2">
         {[
-          { id: 'konfigurator' as const, label: '1. Baustoffe, Massen & Logistik (A1–C4)', icon: Layers, badge: `${rows.length} Baustoffe` },
-          { id: 'modul_d_labor' as const, label: '2. Eingabemaske Modul D: Kreislauf & Gutschriften', icon: Recycle, badge: `${formatDeZahl(results.overallCircularityRate, 0)}% Zirkulär` },
-          { id: 'vergleich' as const, label: '3. QNG-Benchmark & Szenarienvergleich', icon: Activity, badge: benchmarkStatus.label.split(' ')[0] }
+          { id: 'konfigurator' as const, label: inhalt.werte.t1BaustoffeMassenLogistik, icon: Layers, badge: `${rows.length} Baustoffe` },
+          { id: 'modul_d_labor' as const, label: inhalt.werte.t2EingabemaskeModulD, icon: Recycle, badge: `${formatDeZahl(results.overallCircularityRate, 0)}% Zirkulär` },
+          { id: 'vergleich' as const, label: inhalt.werte.t3QngBenchmarkSzenarienvergleich, icon: Activity, badge: benchmarkStatus.label.split(' ')[0] }
         ].map((v) => {
           const Icon = v.icon;
           const isActive = calcView === v.id;
@@ -510,9 +502,7 @@ export default function InteractiveLCACalc() {
       <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <span className="text-xs font-bold text-text-main flex items-center gap-1.5">
-            <Building2 size={15} className="text-shiraz" />
-            Gebäudekategorie (QNG 2026):
-          </span>
+            <Building2 size={15} className="text-shiraz" /><MdText text={inhalt.texte.gebäudekategorieQng2026} /></span>
           <div className="flex items-center bg-slate-100 p-1 rounded-lg">
             <button
               onClick={() => setBuildingType("wohnbau")}
@@ -521,9 +511,7 @@ export default function InteractiveLCACalc() {
                   ? "bg-shiraz text-white shadow-xs"
                   : "text-text-main/70 hover:text-shiraz"
               }`}
-            >
-              Wohngebäude (WG)
-            </button>
+            ><MdText text={inhalt.texte.wohngebäudeWg} /></button>
             <button
               onClick={() => setBuildingType("nichtwohnbau")}
               className={`px-3 py-1.5 text-xs font-bold rounded-md transition-all cursor-pointer flex items-center gap-1.5 ${
@@ -531,9 +519,7 @@ export default function InteractiveLCACalc() {
                   ? "bg-shiraz text-white shadow-xs"
                   : "text-text-main/70 hover:text-shiraz"
               }`}
-            >
-              Nichtwohngebäude (NWG)
-            </button>
+            ><MdText text={inhalt.texte.nichtwohngebäudeNwg} /></button>
           </div>
         </div>
 
@@ -549,9 +535,7 @@ export default function InteractiveLCACalc() {
 
       {/* Quick Presets / Click-Scenarios */}
       <div className="space-y-2">
-        <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 font-mono block">
-          Lern-Szenarien laden (Vergleich konventionell vs. zirkulär):
-        </span>
+        <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 font-mono block"><MdText text={inhalt.texte.lernSzenarienLadenVergleich} /></span>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {PRESETS.map((p, idx) => (
             <div 
@@ -585,19 +569,14 @@ export default function InteractiveLCACalc() {
             <div className="bg-white border border-home-grau/30 rounded-2xl p-4 md:p-5 shadow-sm space-y-4">
               <div className="flex justify-between items-center border-b pb-2">
                 <div>
-                  <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider block font-mono">
-                    1. Verbaute Baustoffmassen &amp; direkte Zirkularität
-                  </span>
-                  <span className="text-xs text-slate-500">
-                    Wählen Sie Baustoffe, Mengen und passen Sie den kreislauffähigen Stoffanteil direkt an.
-                  </span>
+                  <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider block font-mono"><MdText text={inhalt.texte.t1VerbauteBaustoffmassenDirekte} /></span>
+                  <span className="text-xs text-slate-500"><MdText text={inhalt.texte.wählenSieBaustoffeMengen} /></span>
                 </div>
                 <button 
                   onClick={addRow}
                   className="flex items-center gap-1 text-xs bg-shiraz text-white font-bold px-3 py-1.5 rounded-lg hover:bg-shiraz/90 shadow transition cursor-pointer"
                 >
-                  <Plus size={14} /> Baustoff hinzufügen
-                </button>
+                  <Plus size={14} /><MdText text={inhalt.texte.baustoffHinzufügen} /></button>
               </div>
 
               {/* Material Rows Table */}
@@ -640,7 +619,7 @@ export default function InteractiveLCACalc() {
                             onClick={() => removeRow(row.id)}
                             disabled={rows.length <= 1}
                             className="p-2 border border-slate-200 text-slate-400 hover:text-red-600 hover:bg-red-50 hover:border-red-200 rounded-lg transition disabled:opacity-30 cursor-pointer"
-                            title="Zeile entfernen"
+                            title={inhalt.werte.zeileEntfernen}
                           >
                             <Trash2 size={13} />
                           </button>
@@ -651,9 +630,7 @@ export default function InteractiveLCACalc() {
                       <div className="bg-white p-2.5 rounded-lg border border-slate-200/80 space-y-1.5">
                         <div className="flex items-center justify-between text-[11px]">
                           <span className="font-bold text-slate-700 flex items-center gap-1">
-                            <Recycle size={13} className="text-teal-600" />
-                            Kreislauffähiger Stoffanteil:
-                            <InfoTooltip text="Anteil des Baustoffs, der am Lebensende stofflich oder hochwertig im Sinne der Zirkularität (Modul D) wiederverwertet oder rezykliert werden kann." />
+                            <Recycle size={13} className="text-teal-600" /><MdText text={inhalt.texte.kreislauffähigerStoffanteil} /><InfoTooltip text={inhalt.werte.anteilDesBaustoffsDer} />
                           </span>
                           <span className="font-mono font-bold text-teal-800 bg-teal-50 px-2 py-0.5 rounded border border-teal-200">
                             {formatDeZahl(row.circularQuota, 0)} %
@@ -703,15 +680,12 @@ export default function InteractiveLCACalc() {
             <div className="bg-white border border-home-grau/30 rounded-2xl p-4 md:p-5 shadow-sm grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Phase A4: Transport */}
               <div className="space-y-4">
-                <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider block font-mono border-b pb-1">
-                  2. Phase A4: Logistik-Transport
-                </span>
+                <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider block font-mono border-b pb-1"><MdText text={inhalt.texte.t2PhaseA4Logistik} /></span>
                 
                 <div className="space-y-3">
                   <div className="flex justify-between items-center text-xs font-bold text-slate-700">
                     <span className="flex items-center gap-1">
-                      <Truck size={13} className="text-amber-500" /> Distanz zur Baustelle:
-                    </span>
+                      <Truck size={13} className="text-amber-500" /><MdText text={inhalt.texte.distanzZurBaustelle} /></span>
                     <span className="font-mono bg-slate-50 px-2 py-0.5 rounded border">{formatDeZahl(transportDistance, 0)} km</span>
                   </div>
                   <input
@@ -724,14 +698,14 @@ export default function InteractiveLCACalc() {
                     className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
                   />
                   <div className="flex justify-between text-[9px] text-slate-400 font-mono">
-                    <span>10 km (Regional)</span>
-                    <span>800 km (Überregional)</span>
+                    <span><MdText text={inhalt.texte.t10KmRegional} /></span>
+                    <span><MdText text={inhalt.texte.t800KmÜberregional} /></span>
                   </div>
 
                   <div className="grid grid-cols-2 gap-2 text-center text-[10px] pt-1">
                     {[
-                      { id: "lkw" as const, label: "🚛 LKW Diesel", desc: "0,15 kg CO₂/t·km" },
-                      { id: "bahn" as const, label: "🚊 Güterzug", desc: "0,03 kg CO₂/t·km" }
+                      { id: "lkw" as const, label: inhalt.werte.lkwDiesel, desc: inhalt.werte.t015KgCo },
+                      { id: "bahn" as const, label: "🚊 Güterzug", desc: inhalt.werte.t003KgCo }
                     ].map((trans) => (
                       <button aria-pressed={transportType === trans.id}
                         key={trans.id}
@@ -752,15 +726,12 @@ export default function InteractiveLCACalc() {
 
               {/* Building Area (BGF) & Study Period */}
               <div className="space-y-4">
-                <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider block font-mono border-b pb-1">
-                  3. Bezugsfläche &amp; Normzeitraum
-                </span>
+                <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider block font-mono border-b pb-1"><MdText text={inhalt.texte.t3BezugsflächeNormzeitraum} /></span>
 
                 <div className="space-y-3">
                   <div className="flex justify-between items-center text-xs font-bold text-slate-700">
                     <span className="flex items-center gap-1">
-                      <Building2 size={13} className="text-indigo-600" /> Netto-Raumfläche (NRF):
-                    </span>
+                      <Building2 size={13} className="text-indigo-600" /><MdText text={inhalt.texte.nettoRaumflächeNrf} /></span>
                     <span className="font-mono bg-slate-50 px-2 py-0.5 rounded border">{formatDeZahl(buildingArea, 0)} m²</span>
                   </div>
                   <input
@@ -780,10 +751,10 @@ export default function InteractiveLCACalc() {
                   <div className="bg-slate-50 border border-slate-200 p-2.5 rounded-xl text-[10px] text-slate-600 leading-relaxed space-y-1">
                     <div className="flex items-center gap-1 font-bold text-slate-800">
                       <Info size={12} className="text-indigo-600" />
-                      <span>Normative Berechnung nach DIN EN 15978 / DIN EN 17472</span>
+                      <span><MdText text={inhalt.texte.normativeBerechnungNachDin} /></span>
                     </div>
                     <p>
-                      Betrachtungszeitraum: <strong>{formatDeZahl(studyPeriod, 0)} Jahre</strong>. Die Umweltlasten werden auf 1 Jahr und 1 m² Netto-Raumfläche (NRF nach DIN 277) normiert: <strong className="font-mono text-slate-800">kg CO₂-eq / (m²·a)</strong>.
+                      Betrachtungszeitraum: <strong>{formatDeZahl(studyPeriod, 0)} Jahre</strong><MdText text={inhalt.texte.dieUmweltlastenWerdenAuf} /><strong className="font-mono text-slate-800"><MdText text={inhalt.texte.kgCoEqM} /></strong>.
                     </p>
                   </div>
                 </div>
@@ -809,11 +780,9 @@ export default function InteractiveLCACalc() {
           <div className="border-b pb-3 flex flex-col md:flex-row items-start md:items-center justify-between gap-2">
             <div className="space-y-1">
               <h4 className="text-xs font-bold font-sans text-slate-900 uppercase flex items-center gap-1.5">
-                <Activity size={15} className="text-shiraz" />
-                Szenarien-Vergleich nach QNG 2026 ({qngThresholds.label})
+                <Activity size={15} className="text-shiraz" /><MdText text={inhalt.texte.szenarienVergleichNachQng} />{qngThresholds.label})
               </h4>
-              <p className="text-[11px] text-slate-500 leading-normal">
-                Normierter Lebenszyklus-Vergleich (Module A-C) mit festen Schwellenwerten für QNG-PLUS (&le; {formatDeZahl(qngThresholds.plus, 1)}) und QNG-PREMIUM (&le; {formatDeZahl(qngThresholds.premium, 1)}).
+              <p className="text-[11px] text-slate-500 leading-normal"><MdText text={inhalt.texte.normierterLebenszyklusVergleichModule} />{formatDeZahl(qngThresholds.plus, 1)}<MdText text={inhalt.texte.undQngPremium} />{formatDeZahl(qngThresholds.premium, 1)}).
               </p>
             </div>
           </div>
@@ -863,37 +832,10 @@ export default function InteractiveLCACalc() {
           { title: "Treibhauspotenzial", url: "https://de.wikipedia.org/wiki/Treibhauspotenzial" },
           { title: "Umweltproduktdeklaration" }
         ]}
-        literatur={[
-          "König, H. et al. (2012): Lebenszyklusanalyse von Gebäuden (Detail Green Books)",
-          "Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen (BMWSB): Leitfaden Nachhaltiges Bauen",
-          "Wendehorst Baustoffkunde (37. Auflage, Springer Vieweg)"
-        ]}
+        literatur={inhalt.daten["InteractiveLCACalc.literatur"]}
         normIds={['DIN_EN_15804', 'DIN_EN_15978', 'DIN_EN_17472']}
-        regelwerke={[
-          { title: "DIN EN 15804:2022-03+A2:2019 (Nachhaltigkeit von Bauwerken - EPD-Grundregeln)" },
-          { title: "DIN EN 15978:2026-09 (Bewertung der Umweltqualität von Gebäuden – Methodik; ersetzt DIN EN 15978:2012-10)" },
-          { title: "DIN EN 17472:2024-06 (Nachhaltigkeit von Ingenieurbauwerken - Berechnungsmethoden)" },
-          { title: "Qualitätssiegel Nachhaltiges Gebäude (QNG Anhangdokument 3.1.1, Stand 2026)", url: "https://www.qng.info/" },
-          { title: "VDI 6210 / DIN SPEC 91484 (Rückbau- und Zirkularitätsbewertung)" },
-          { title: "ÖKOBAUDAT Plattform (BMWSB EPD-Datenbank)", url: "https://www.oekobaudat.de/" }
-        ]}
-        formeln={[
-          {
-            formel: "\\text{GWP}_{\\text{Bauwerk}} = \\frac{\\sum_{i} m_i \\cdot \\text{GWP}_{\\text{spez},i}}{A_{\\text{NRF}} \\cdot t_{\\text{Studie}}} \\quad [\\text{kg CO}_2\\text{-eq}/(\\text{m}^2\\cdot\\text{a})]",
-            erklaerung: "Normativer Jahres-Treibhausgasbezugswert der Errichtungs- und Entsorgungsphasen (Module A1-C) über die Standardlebensdauer von t = 50 Jahren.",
-            quelle: "DIN EN 15978 / QNG 2026"
-          },
-          {
-            formel: "\\text{GWP}_{D,i} = - \\left( m_i \\cdot \\frac{r_{\\text{circ},i}}{100} \\cdot \\frac{s_{\\text{sort},i}}{100} \\cdot \\eta_{\\text{subst}} \\cdot \\text{GWP}_{\\text{primär,verdrängt}} \\right) \\quad [\\text{kg CO}_2\\text{-eq}]",
-            erklaerung: "Gutschrift für Vermeidungs- und Recyclingpotenziale außerhalb der Systemgrenze (Modul D) basierend auf kreislauffähigem Stoffanteil und Sortenreinheit.",
-            quelle: "DIN EN 15804+A2 / DIN EN 17472"
-          },
-          {
-            formel: "\\text{UMI} = \\frac{\\sum (m_i \\cdot \\text{UMI}_i)}{\\sum m_i} \\quad [\\%]",
-            erklaerung: "Gewichteter Urban Mining Index des Bauwerks zur Erfassung der stofflichen Rezyklierbarkeit und Zirkularität im Sinne der VDI 6210.",
-            quelle: "VDI 6210 / DIN SPEC 91484"
-          }
-        ]}
+        regelwerke={inhalt.daten["InteractiveLCACalc.regelwerke"]}
+        formeln={inhalt.daten["InteractiveLCACalc.formeln"]}
       />
     </div>
   );

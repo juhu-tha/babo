@@ -1,0 +1,62 @@
+{
+  "texte": {
+    "ergebnisseJeWürfel": "Ergebnisse je Würfel",
+    "fCCubeIn": "f_c,cube in MPa",
+    "rohdichteInKgM": "Rohdichte in kg/m³",
+    "fCkCube": " (f_ck,cube = ",
+    "mpaKriterium1F": " MPa): Kriterium 1 f_cm ≥ ",
+    "kriterium2FCi": ", Kriterium 2 f_ci ≥ ",
+    "lehrvereinfachungNachDenKriterien": "Lehrvereinfachung nach den Kriterien für die Erstherstellung (n = 3) der DIN EN 206 / DIN 1045-2 – keine Konformitätsbewertung einer Produktion.",
+    "versuchsHandoutDruckfestigkeitAn": " Versuchs-Handout: Druckfestigkeit an Würfeln",
+    "prüfungNachDinEn": "Prüfung nach DIN EN 12390-3, Umrechnung der Lagerung, vereinfachte Klassenzuordnung nach DIN EN 206 / DIN 1045-2",
+    "dieWürfeldruckfestigkeitIstDer": "Die Würfeldruckfestigkeit ist der wichtigste Kennwert des Festbetons. Der Versuch verbindet die Herstellung der Probekörper mit der Prüfung und einer ersten Einordnung in die Festigkeitsklassen – die eigentliche Konformitätskontrolle bleibt dem Modul Festbeton (Statistik) vorbehalten.",
+    "dieKriterien1Und": "Die Kriterien 1 und 2 für Erst- und Dauerproduktion mit Standardabweichung behandelt das Modul Festbeton (Statistik)."
+  },
+  "werte": {
+    "mittelwertFCmWürfel": "Mittelwert f_cm (Würfel)",
+    "kleinsterEinzelwertFCi": "kleinster Einzelwert f_ci",
+    "erreichteKlasseLehrvereinfachung": "erreichte Klasse (Lehrvereinfachung)",
+    "kriterienErfüllt": "Kriterien erfüllt",
+    "kriterienNichtErfüllt": "Kriterien nicht erfüllt",
+    "fCmWürfel": "f_cm (Würfel)",
+    "standardabweichungS": "Standardabweichung s",
+    "erreichteKlasse": "erreichte Klasse",
+    "nichtErfüllt": "nicht erfüllt",
+    "nichtErfüllt2": "nicht erfüllt",
+    "gemesseneKantenlängenStattNennmaß": "Gemessene Kantenlängen statt Nennmaß:",
+    "höchstkraftInNDurch": "Höchstkraft in N durch die Fläche, auf 0,1 MPa gerundet:",
+    "trockenlagerungUmrechnungAufWasserlageru": "Trockenlagerung → Umrechnung auf Wasserlagerung:",
+    "wasserlagerungReferenzKeineUmrechnung": "Wasserlagerung (Referenz), keine Umrechnung:",
+    "mittelwertUndKleinsterWert": "Mittelwert und kleinster Wert",
+    "klassenzuordnungLehrvereinfachung": "Klassenzuordnung (Lehrvereinfachung)",
+    "höchsteKlasseDerenBeide": "Höchste Klasse, deren beide Kriterien erfüllt sind:",
+    "fürDieKonformitätEiner": "Für die Konformität einer laufenden Produktion gelten andere Kriterien (u. a. mit Standardabweichung und mindestens 15 Ergebnissen).",
+    "dinEn123903": "DIN EN 12390-3:2019-10; Umrechnung nach DIN EN 12390-2:2019-10, nationaler Anhang; Kriterien nach DIN EN 206 / DIN 1045-2 (vereinfacht)",
+    "konformitätEinerProduktion": "Konformität einer Produktion",
+    "zumModulFestbetonStatistik": "Zum Modul Festbeton (Statistik)",
+    "oktober2026Ap6": "Oktober 2026 (AP 6.4: Handout neu erstellt; Pilot im Labor und fachliche Freigabe ausstehend)",
+    "festigkeitsklasseBeton": "Festigkeitsklasse (Beton)"
+  },
+  "daten": {
+    "DruckfestigkeitWuerfel.literatur": [
+      "Verein Deutscher Zementwerke (Hrsg.): Zement-Taschenbuch. Düsseldorf: Verlag Bau+Technik (jeweils aktuelle Ausgabe)",
+      "Neville, A. M.: Properties of Concrete. 5. Aufl. Harlow: Pearson 2011"
+    ],
+    "DruckfestigkeitWuerfel.formeln": [
+      {
+        "formel": "f_c = F / A_c",
+        "erklaerung": "Druckfestigkeit, auf 0,1 MPa gerundet.",
+        "quelle": "DIN EN 12390-3:2019-10"
+      },
+      {
+        "formel": "f_{c,cube} = 0{,}92 \\cdot f_{c,dry}",
+        "erklaerung": "Umrechnung trocken gelagerter Würfel auf Wasserlagerung (Normalbeton bis C50/60; darüber 0,95)."
+      },
+      {
+        "formel": "f_{cm} \\ge f_{ck} + 4, \\; f_{ci} \\ge f_{ck} - 4",
+        "erklaerung": "Kriterien für die Erstherstellung (n = 3), hier als Lehrvereinfachung.",
+        "quelle": "DIN EN 206"
+      }
+    ]
+  }
+}

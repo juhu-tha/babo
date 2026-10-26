@@ -7,6 +7,8 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { useTabContext } from '@/src/contexts/TabContext';
 
 import type { TabId } from '@/src/contexts/TabContext';
+import inhalt from '@/content/weitertha/WeiterTHA.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 interface Program {
   id: 'bauing' | 'pm' | 'ausbau' | 'fassade' | 'holzbau' | 'ttz' | 'mapr';
   title: string;
@@ -36,248 +38,178 @@ interface Program {
 const PROGRAMS: Program[] = [
   {
     id: 'bauing',
-    title: 'Bauingenieurwesen (Master)',
-    subtitle: 'Fakultät für Architektur und Bauwesen',
+    title: inhalt.werte.bauingenieurwesenMaster,
+    subtitle: inhalt.werte.fakultätFürArchitekturUnd,
     icon: GraduationCap,
     iconColor: 'text-shiraz',
     iconBgColor: 'bg-shiraz/5',
     bgColor: 'bg-white',
     borderColor: 'border-slate-200 hover:border-shiraz/40',
-    badge: 'Architektur & Bauwesen • THA',
+    badge: inhalt.werte.architekturBauwesenTha,
     badgeBgColor: 'bg-shiraz/5',
     badgeTextColor: 'text-shiraz',
     btnBg: 'bg-shiraz hover:bg-shiraz/90',
     link: 'https://www.tha.de/hochschule/fakultaet/ab/studienangebot/bauingenieurwesen-meng/',
-    degree: 'Master of Engineering (M.Eng.)',
-    duration: '3 Semester (Vollzeit) / 5 Semester (Teilzeit)',
-    format: 'Vollzeit, Teilzeit oder Studium mit vertiefter Praxis; Beginn jedes Semester',
-    summary: 'Der forschungs- und praxisorientierte Masterstudiengang vertieft und erweitert das im Bachelor erworbene ingenieurwissenschaftliche Fachwissen. Er befähigt Sie zur eigenständigen Lösung komplexer Aufgabenstellungen des modernen Bauwesens, vom Konstruktiven Ingenieurbau über Digitales Bauen (BIM) bis hin zu Infrastruktur und Umwelttechnik. Das Studium ist flexibel gestaltbar und auch in Teilzeit möglich.',
-    description: 'Bereiten Sie sich auf anspruchsvolle Entwicklungs-, Planungs- und Führungsaufgaben vor. Absolventen übernehmen hochqualifizierte Positionen in renommierten Ingenieurbüros, führenden Bauunternehmungen, staatlichen Baubehörden sowie Prüfämtern.',
-    modulesTitle: 'Studienschwerpunkte & Fächer',
-    modules: [
-      'Infrastrukturbau und Verkehrsinfrastruktur',
-      'Konstruktiver Ingenieurbau',
-      'Geotechnik und Spezialtiefbau',
-      'Wasserwirtschaft und Wasserbau',
-      'Digitales Planen und Bauen',
-      'Nachhaltiges Bauen und Klimaschutz',
-      'Vertiefte Statik und numerische Methoden',
-      'Interdisziplinäre Projektarbeit'
-    ],
-    benefitsTitle: 'Berufsfelder & Karriere',
-    benefitsIntro: 'Absolventen übernehmen hochqualifizierte Fach- und Führungsaufgaben in Ingenieurbüros, Bauunternehmungen, Prüfämtern und der öffentlichen Bauverwaltung:',
-    benefits: [
-      'Fach- und Führungsaufgaben in Ingenieurbüros, Bauunternehmen und Bauverwaltung',
-      'Zugang zum höheren technischen Dienst (Laufbahnvoraussetzungen des Dienstherrn beachten)',
-      'Grundlage für eine Promotion; die Bauvorlageberechtigung richtet sich nach Landesrecht (z. B. Kammereintragung und Berufserfahrung)'
-    ]
+    degree: inhalt.werte.masterOfEngineeringM,
+    duration: inhalt.werte.t3SemesterVollzeit5,
+    format: inhalt.werte.vollzeitTeilzeitOderStudium,
+    summary: inhalt.werte.derForschungsUndPraxisorientierte,
+    description: inhalt.werte.bereitenSieSichAuf,
+    modulesTitle: inhalt.werte.studienschwerpunkteFächer,
+    modules: inhalt.daten["PROGRAMS.bauing.modules"],
+    benefitsTitle: inhalt.werte.berufsfelderKarriere,
+    benefitsIntro: inhalt.werte.absolventenÜbernehmenHochqualifizierteFa,
+    benefits: inhalt.daten["PROGRAMS.bauing.benefits"]
   },
   {
     id: 'pm',
-    title: 'Projektmanagement Bau (Master)',
-    subtitle: 'THA_ibi – Institut für Bau und Immobilie (berufsbegleitender Weiterbildungsmaster)',
+    title: inhalt.werte.projektmanagementBauMaster,
+    subtitle: inhalt.werte.thaIbiInstitutFür,
     icon: BookOpen,
     iconColor: 'text-shiraz',
     iconBgColor: 'bg-shiraz/5',
     bgColor: 'bg-white',
     borderColor: 'border-slate-200 hover:border-shiraz/40',
-    badge: 'Weiterbildungsstudiengang • ibi',
+    badge: inhalt.werte.weiterbildungsstudiengangIbi,
     badgeBgColor: 'bg-slate-100',
     badgeTextColor: 'text-slate-850',
     btnBg: 'bg-shiraz hover:bg-shiraz/90',
     link: 'https://www.tha.de/hochschule/fakultaet/ab/studienangebot/projektmanagement-bau-meng/',
-    degree: 'Master of Engineering (M.Eng.)',
-    duration: '5 Semester (berufsbegleitend)',
-    format: 'Freitag/Samstag-Präsenz plus 1–2 Blockseminare je Semester; Gebühren 5 × 2.800 € (Stand 10/2026)',
-    summary: 'Dieser berufsbegleitende Weiterbildungsstudiengang ist interdisziplinär angelegt und richtet sich an Architekten, Bauingenieure, Wirtschaftsingenieure und Absolventen verwandter Studiengänge mit erster Berufserfahrung. Er verknüpft technisches Know-how mit juristischer Kompetenz, Projektsteuerung, BIM-Management und Teamführung.',
-    description: 'Der Masterstudiengang qualifiziert Sie für Führungsrollen in der Bau- und Immobilienwirtschaft. Der Schwerpunkt liegt auf ganzheitlicher Projektleitung und -steuerung im Einklang mit wirtschaftlichen, ökologischen und rechtlichen Parametern.',
-    modulesTitle: 'Kerninhalte der PM-Module',
-    modules: [
-      'Master Basis: Schlüsselkompetenzen, Baurecht, International Project Management',
-      'Vertiefung Bau und Immobilie: Methoden des Projektmanagements, Projektentwicklung, Nachhaltiges Bauen und Zertifizierung, Baubetrieb und KLR',
-      'Alternativ Vertiefung Ausbau und Bestand, Fassade oder Holzbau (entspricht den Zertifikatsstudiengängen)',
-      'Master Final: Masterseminar und Masterarbeit'
-    ],
-    benefitsTitle: 'Nutzen für Ihre Praxis',
-    benefitsIntro: 'Die enge Verknüpfung mit erfahrenen Dozierenden aus Planung, Bauwirtschaft, Recht und Immobilienwirtschaft bietet wertvolles Praxis-Networking:',
-    benefits: [
-      'Karrieresprung zum Projektleiter, PM-Director oder Niederlassungsleiter',
-      'Umfassendes Verständnis von immobilienwirtschaftlichen Zusammenhängen',
-      'Unmittelbare Übertragbarkeit von erlernten Modulen in den Berufsalltag'
-    ]
+    degree: inhalt.werte.masterOfEngineeringM2,
+    duration: inhalt.werte.t5SemesterBerufsbegleitend,
+    format: inhalt.werte.freitagSamstagPräsenzPlus,
+    summary: inhalt.werte.dieserBerufsbegleitendeWeiterbildungsstu,
+    description: inhalt.werte.derMasterstudiengangQualifiziertSie,
+    modulesTitle: inhalt.werte.kerninhalteDerPmModule,
+    modules: inhalt.daten["PROGRAMS.pm.modules"],
+    benefitsTitle: inhalt.werte.nutzenFürIhrePraxis,
+    benefitsIntro: inhalt.werte.dieEngeVerknüpfungMit,
+    benefits: inhalt.daten["PROGRAMS.pm.benefits"]
   },
   {
     id: 'ausbau',
-    title: 'Ausbau und Bestand (Zertifikat)',
-    subtitle: 'THA_ibi – Institut für Bau und Immobilie (berufsbegleitendes Zertifikatsstudium)',
+    title: inhalt.werte.ausbauUndBestandZertifikat,
+    subtitle: inhalt.werte.thaIbiInstitutFür2,
     icon: Award,
     iconColor: 'text-shiraz',
     iconBgColor: 'bg-shiraz/5',
     bgColor: 'bg-white',
     borderColor: 'border-slate-200 hover:border-shiraz/40',
-    badge: 'Zertifikatslehrgang • ibi',
+    badge: inhalt.werte.zertifikatslehrgangIbi,
     badgeBgColor: 'bg-slate-100',
     badgeTextColor: 'text-slate-850',
     btnBg: 'bg-shiraz hover:bg-shiraz/90',
     link: 'https://www.tha.de/hochschule/fakultaet/ab/studienangebot/ausbau-und-bestand-zertifikat/',
-    degree: 'Zertifikat Fachingenieur:in / Fachplaner:in Ausbau und Bestand (30 ECTS)',
-    duration: '2 Semester (berufsbegleitend)',
-    format: 'Berufsbegleitend, Beginn im Wintersemester; Gebühren 2 × 3.200 € (Stand 10/2026); voll anrechenbar als Vertiefung im Master Projektmanagement Bau',
-    summary: 'Berufsbegleitendes Zertifikatsstudium für Ausbau und Bauen im Bestand. Schwerpunkte sind Nachhaltigkeit, Schadstoffe, Kreislaufwirtschaft und Projektmanagement sowie aktuelle Systeme des Aus- und Leichtbaus; Projektarbeiten und Fallstudien in interdisziplinären Gruppen.',
-    description: 'Bauen im Bestand und anspruchsvolle Innenausbauten erfordern lückenlose technische Detailkompetenz. Gewinnen Sie Vertrauen bei komplexesten Schnittstellenkoordinationen am Bau.',
+    degree: inhalt.werte.zertifikatFachingenieurInFachplaner,
+    duration: inhalt.werte.t2SemesterBerufsbegleitend,
+    format: inhalt.werte.berufsbegleitendBeginnImWintersemester,
+    summary: inhalt.werte.berufsbegleitendesZertifikatsstudiumFürA,
+    description: inhalt.werte.bauenImBestandUnd,
     modulesTitle: 'Lehrplanthemen',
-    modules: [
-      'A 1: Projektmodul Ausbau und Bestand',
-      'A 2: Konzeption und Konstruktion im Ausbau und Bestand',
-      'A 3: Bauphysik und TGA im Ausbau und Bestand',
-      'Schwerpunkte: Nachhaltigkeit, Schadstoffe, Kreislaufwirtschaft, Projektmanagement, Aus- und Leichtbausysteme'
-    ],
-    benefitsTitle: 'Wer profitiert am meisten?',
-    benefitsIntro: 'Die praxisnahe Weiterbildung verbindet Planung und Ausführung:',
-    benefits: [
-      'Planenden Architekten und Bauingenieure zur Erstellung haftungssicherer Details',
-      'Bauleiter, Bauherrenbeauftragte & Gutachter zur Früherkennung von Ausbaufehlern',
-      'Projektsteuerer zur zeitlichen & kostengünstigen Koordination der Gewerke'
-    ]
+    modules: inhalt.daten["PROGRAMS.ausbau.modules"],
+    benefitsTitle: inhalt.werte.werProfitiertAmMeisten,
+    benefitsIntro: inhalt.werte.diePraxisnaheWeiterbildungVerbindet,
+    benefits: inhalt.daten["PROGRAMS.ausbau.benefits"]
   },
   {
     id: 'fassade',
-    title: 'Fassade (Zertifikat)',
-    subtitle: 'THA_ibi – Institut für Bau und Immobilie (berufsbegleitendes Zertifikatsstudium)',
+    title: inhalt.werte.fassadeZertifikat,
+    subtitle: inhalt.werte.thaIbiInstitutFür3,
     icon: LayoutGrid,
     iconColor: 'text-shiraz',
     iconBgColor: 'bg-shiraz/5',
     bgColor: 'bg-white',
     borderColor: 'border-slate-200 hover:border-shiraz/40',
-    badge: 'Zertifikatslehrgang • ibi (NEU)',
+    badge: inhalt.werte.zertifikatslehrgangIbiNeu,
     badgeBgColor: 'bg-slate-100',
     badgeTextColor: 'text-slate-850',
     btnBg: 'bg-shiraz hover:bg-shiraz/90',
     link: 'https://www.tha.de/hochschule/fakultaet/ab/studienangebot/fassade-zertifikat/',
-    degree: 'Zertifikat Fachingenieur:in / Fachplaner:in Fassade (30 ECTS)',
-    duration: '2 Semester (berufsbegleitend)',
-    format: 'Berufsbegleitend, Beginn im Wintersemester; Gebühren 2 × 3.200 € (Stand 10/2026); voll anrechenbar als Vertiefung im Master Projektmanagement Bau',
-    summary: 'Die Gebäudehülle bzw. Vorhangfassade stellt als Schnittstelle zwischen Tragwerk, Bauphysik und architektonischem Ausdruck eines der komplexesten Bauteile dar. Dieser praxisnahe Zertifikatslehrgang vertieft Konstruktionsdetails von Glas-, Metall- und Elementfassaden, thermische Bauphysik sowie brandschutztechnische Anforderungen im modernen Fassadenbau.',
-    description: 'Effizientes Planen moderner System- und Elementfassaden setzt herstellerunabhängiges, vertieftes technisches Spezialwissen voraus, insbesondere bei der Bewertung thermischer Effekte, Strömungsverhalten und Tragstruktur-Anschlüssen.',
-    modulesTitle: 'Lehrplanthemen / Module',
-    modules: [
-      'F 1: Projektmodul Fassade',
-      'F 2: Konzeption und Konstruktion in der Fassade',
-      'F 3: Bauphysik und TGA in der Fassade',
-      'F 4: Bauabwicklung in der Fassade (Kosten und Abwicklung; Regelwerke, Prüfmethoden, Schäden)'
-    ],
-    benefitsTitle: 'Wer profitiert am meisten?',
-    benefitsIntro: 'Die Fortbildung bringt Sie auf Augenhöhe mit spezialisierten Systemherstellern und schützt Sie vor kostspieligen Haftungsfällen:',
-    benefits: [
-      'Planungsbüros für Fassadentechnik sowie Bauingenieure und Architekten in der Tragwerksplanung',
-      'Bauleiter & QS-Beauftragte von Fassadenbauunternehmen zur Schadensvermeidung',
-      'Spezialisten für thermische Hüllensanierungen, Energieberater und Bauherrenvertreter'
-    ]
+    degree: inhalt.werte.zertifikatFachingenieurInFachplaner2,
+    duration: inhalt.werte.t2SemesterBerufsbegleitend2,
+    format: inhalt.werte.berufsbegleitendBeginnImWintersemester2,
+    summary: inhalt.werte.dieGebäudehülleBzwVorhangfassade,
+    description: inhalt.werte.effizientesPlanenModernerSystem,
+    modulesTitle: inhalt.werte.lehrplanthemenModule,
+    modules: inhalt.daten["PROGRAMS.fassade.modules"],
+    benefitsTitle: inhalt.werte.werProfitiertAmMeisten2,
+    benefitsIntro: inhalt.werte.dieFortbildungBringtSie,
+    benefits: inhalt.daten["PROGRAMS.fassade.benefits"]
   },
   {
     id: 'holzbau',
-    title: 'Holzbau (Zertifikat)',
-    subtitle: 'THA_ibi – Institut für Bau und Immobilie (berufsbegleitendes Zertifikatsstudium)',
+    title: inhalt.werte.holzbauZertifikat,
+    subtitle: inhalt.werte.thaIbiInstitutFür4,
     icon: Trees,
     iconColor: 'text-shiraz',
     iconBgColor: 'bg-shiraz/5',
     bgColor: 'bg-white',
     borderColor: 'border-slate-200 hover:border-shiraz/40',
-    badge: 'Zertifikatslehrgang • ibi (NEU)',
+    badge: inhalt.werte.zertifikatslehrgangIbiNeu2,
     badgeBgColor: 'bg-slate-100',
     badgeTextColor: 'text-slate-850',
     btnBg: 'bg-shiraz hover:bg-shiraz/90',
     link: 'https://www.tha.de/hochschule/fakultaet/ab/studienangebot/holzbau-zertifikat/',
-    degree: 'Zertifikat Fachingenieur:in / Fachplaner:in Holzbau (30 ECTS)',
-    duration: '2 Semester (berufsbegleitend)',
-    format: 'Berufsbegleitend, Beginn im Wintersemester; Gebühren 2 × 3.200 € (Stand 10/2026); voll anrechenbar als Vertiefung im Master Projektmanagement Bau',
-    summary: 'Der moderne Holzbau und mehrgeschossige Holz-Hybridbau boomen im Zuge des nachhaltigen Bauens. Dieser Zertifikatslehrgang bereitet Sie auf die anspruchsvolle Detailplanung vor, von Tragfähigkeit und Bemessung, Feuchtelast- und Schwingungsschutz bis hin zu Schallschutz und Brandschutz nach anspruchsvollen Landesbauordnungen.',
-    description: 'Nachhaltiges, schnelles und präzises zirkuläres Bauen gelingt am besten im Holzbau. Das interdisziplinäre Planen mehrgeschossiger Holzbauten verlangt jedoch höchste Fachkunde bezüglich Verformungen, Schallbrücken und Fluchtwegevorsorge.',
-    modulesTitle: 'Lehrplanthemen / Module',
-    modules: [
-      'H 1: Projektmodul Integrale Planung',
-      'H 2: Bauen mit Holz',
-      'H 3: Schutzmaßnahmen',
-      'Schwerpunkte: Ökonomie, Ökologie, Kreislauffähigkeit, Feuchteschutz, digitale Planung, Bauen im Bestand mit Holz'
-    ],
-    benefitsTitle: 'Wer profitiert am meisten?',
-    benefitsIntro: 'Rüsten Sie sich für die Bauwende durch echtes Holz-Tragwerks- und Ausführungswissen:',
-    benefits: [
-      'Tragwerksplaner & Statiker zur Erweiterung auf komplexe und klimafreundliche Holz-Tragstrukturen',
-      'Zimmerermeister, Holzbautechniker, Bauleiter & Planer im modernen Zimmereihandwerk',
-      'Architekten für ressourcen-, kreislaufbewusstes, modulares und klimabewusstes Entwerfen'
-    ]
+    degree: inhalt.werte.zertifikatFachingenieurInFachplaner3,
+    duration: inhalt.werte.t2SemesterBerufsbegleitend3,
+    format: inhalt.werte.berufsbegleitendBeginnImWintersemester3,
+    summary: inhalt.werte.derModerneHolzbauUnd,
+    description: inhalt.werte.nachhaltigesSchnellesUndPräzises,
+    modulesTitle: inhalt.werte.lehrplanthemenModule2,
+    modules: inhalt.daten["PROGRAMS.holzbau.modules"],
+    benefitsTitle: inhalt.werte.werProfitiertAmMeisten3,
+    benefitsIntro: inhalt.werte.rüstenSieSichFür,
+    benefits: inhalt.daten["PROGRAMS.holzbau.benefits"]
   },
   {
     id: 'ttz',
-    title: 'TTZ Aichach (Technologietransferzentrum)',
-    subtitle: 'Technologietransferzentrum für Digitales Planen und Fertigen im Bauwesen (gegründet 2023)',
+    title: inhalt.werte.ttzAichachTechnologietransferzentrum,
+    subtitle: inhalt.werte.technologietransferzentrumFürDigitalesPl,
     icon: Sparkles,
     iconColor: 'text-shiraz',
     iconBgColor: 'bg-shiraz/5',
     bgColor: 'bg-white',
     borderColor: 'border-slate-200 hover:border-shiraz/40',
-    badge: 'Forschung & Transfer • THA',
+    badge: inhalt.werte.forschungTransferTha,
     badgeBgColor: 'bg-shiraz/5',
     badgeTextColor: 'text-shiraz',
     btnBg: 'bg-shiraz hover:bg-shiraz/90',
     link: 'https://www.tha.de/forschung/technologietransfer/technologietransferzentren/ttz-aichach/',
-    degree: 'Forschung, Transfer & Innovation',
-    duration: 'Forschung & Transfer',
-    format: 'Kooperationsprojekte mit Bauwirtschaft und Handwerk',
-    summary: 'Das Technologietransferzentrum (TTZ) Aichach der Technischen Hochschule Augsburg (THA) ist auf Digitales Planen und Fertigen im Bauwesen spezialisiert (Fachbereiche Massivbau und Digitaler Holzbau). Es verbindet angewandte Forschung mit der Praxis von Bauwirtschaft und Handwerk in der Region.',
-    description: 'In Kooperation mit Unternehmen werden praxisorientierte Lösungen für moderne Fertigungstechniken im Holzbau, Automatisierung, CO2-neutrale Baumaterialien und kreislaufgerechtes Konstruieren erprobt. Ein forschen-fokussiertes Umfeld bietet sehr gute Bedingungen für Doktoranden.',
-    modulesTitle: 'Forschungs- & Fokusthemen',
-    modules: [
-      'Fachbereiche Massivbau und Digitaler Holzbau',
-      'Ressourcenschonende Baumaterialien',
-      'Additive und digitale Produktionsmethoden, automatisierte Fertigung',
-      'Digitale Planungstools',
-      'Aus- und Weiterbildung von Fachkräften'
-    ],
-    benefitsTitle: 'Zusammenarbeit & Transfer',
-    benefitsIntro: 'Das TTZ bietet ein lebendiges Innovationsökosystem für Studierende, Forschende und Partnerunternehmen:',
-    benefits: [
-      'Abschlussarbeiten und Projektarbeiten mit Praxispartnern',
-      'Gemeinsame drittmittelgeförderte Forschungs- und Entwicklungsprojekte',
-      'Promotion in Kooperation (Voraussetzungen und Formate bei der THA prüfen)',
-      'Gefördert im Rahmen der Hightech Agenda Bayern sowie von Landkreis Aichach-Friedberg und Stadt Aichach'
-    ]
+    degree: inhalt.werte.forschungTransferInnovation,
+    duration: inhalt.werte.forschungTransfer,
+    format: inhalt.werte.kooperationsprojekteMitBauwirtschaftUnd,
+    summary: inhalt.werte.dasTechnologietransferzentrumTtzAichach,
+    description: inhalt.werte.inKooperationMitUnternehmen,
+    modulesTitle: inhalt.werte.forschungsFokusthemen,
+    modules: inhalt.daten["PROGRAMS.ttz.modules"],
+    benefitsTitle: inhalt.werte.zusammenarbeitTransfer,
+    benefitsIntro: inhalt.werte.dasTtzBietetEin,
+    benefits: inhalt.daten["PROGRAMS.ttz.benefits"]
   },
   {
     id: 'mapr',
-    title: 'Master of Applied Research (MAPR)',
-    subtitle: 'Forschungsorientierter Master der Fakultät Elektrotechnik (fakultätsübergreifend)',
+    title: inhalt.werte.masterOfAppliedResearch,
+    subtitle: inhalt.werte.forschungsorientierterMasterDerFakultät,
     icon: GraduationCap,
     iconColor: 'text-shiraz',
     iconBgColor: 'bg-shiraz/5',
     bgColor: 'bg-white',
     borderColor: 'border-slate-200 hover:border-shiraz/40',
-    badge: 'Master of Science (M.Sc.)',
+    badge: inhalt.werte.masterOfScienceM,
     badgeBgColor: 'bg-shiraz/5',
     badgeTextColor: 'text-shiraz',
     btnBg: 'bg-shiraz hover:bg-shiraz/90',
     link: 'https://www.tha.de/hochschule/fakultaet/elektrotechnik/studienangebot/master-applied-research/',
-    degree: 'Master of Science (M.Sc.)',
-    duration: '3 Semester (Vollzeit)',
-    format: 'Vollzeit; Beginn jedes Semester',
-    summary: 'Der interdisziplinäre Masterstudiengang Angewandte Forschung und Entwicklung wendet sich an überdurchschnittlich qualifizierte Absolventen technischer Studiengänge. Sie bearbeiten ab dem ersten Tag ein konkretes Forschungs- und Entwicklungsprojekt und erlangen tiefes wissenschaftliches Know-how.',
-    description: 'Dieser Studiengang kombiniert anspruchsvolle angewandte Forschungsprojekte in enger Zusammenarbeit mit Instituten oder Industriepartnern mit einem flexibel gestaltbaren technologisch-wissenschaftlichen Curriculum.',
-    modulesTitle: 'Studien- & Forschungsstruktur',
-    modules: [
-      'Selbstständiges Forschungs- und Entwicklungsprojekt (ca. 50% des Studiums)',
-      'Vertiefende Fachvorlesungen nach individuellem Studienplan',
-      'Wissenschaftliche Methodik, Projektmanagement & Patentrecht',
-      'Verfassen wissenschaftlicher Publikationen & Teilnahme an Fachkongressen',
-      'Interdisziplinäres Forschungsseminar der bayerischen Hochschulen'
-    ],
-    benefitsTitle: 'Herausragende Perspektiven',
-    benefitsIntro: 'Bereitet Sie zielgerichtet auf forschungsintensive Aufgaben oder eine anschließende Promotion vor:',
-    benefits: [
-      'Direkte Anbindung an modernste Forschungsaktivitäten und sehr gute Labore der THA',
-      'Hervorragende Vorbereitung auf F&E-Leitungsfunktionen in der High-Tech-Industrie',
-      'Idealer Wegbereiter für eine anschließende kooperative Promotion (Dr.-Ing. / Dr. rer. nat.)'
-    ]
+    degree: inhalt.werte.masterOfScienceM2,
+    duration: inhalt.werte.t3SemesterVollzeit,
+    format: inhalt.werte.vollzeitBeginnJedesSemester,
+    summary: inhalt.werte.derInterdisziplinäreMasterstudiengangAng,
+    description: inhalt.werte.dieserStudiengangKombiniertAnspruchsvoll,
+    modulesTitle: inhalt.werte.studienForschungsstruktur,
+    modules: inhalt.daten["PROGRAMS.mapr.modules"],
+    benefitsTitle: inhalt.werte.herausragendePerspektiven,
+    benefitsIntro: inhalt.werte.bereitetSieZielgerichtetAuf,
+    benefits: inhalt.daten["PROGRAMS.mapr.benefits"]
   }
 ];
 
@@ -313,15 +245,9 @@ export default function WeiterTHA() {
           <GraduationCap size={300} className="text-shiraz" />
         </div>
         <div className="relative z-10 flex flex-col gap-4 max-w-2xl">
-          <span className="bg-shiraz/5 text-shiraz border border-shiraz/15 font-semibold text-xs tracking-wider uppercase px-2.5 py-1 rounded-full self-start font-mono">
-            Fakultät für Architektur und Bauwesen • THA
-          </span>
-          <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-text-main">
-            Weiterführende Studienangebote (THA &amp; ibi)
-          </h2>
-          <p className="text-sm md:text-base text-text-main/70 leading-relaxed font-light">
-            Bereiten Sie sich auf Führungsaufgaben vor! Die Technische Hochschule Augsburg (THA) bietet Absolventinnen und Absolventen herausragende Masterstudiengänge sowie maßgeschneiderte berufsbegleitende Weiterbildungen über das <strong>ibi - Institut für Bau und Immobilie</strong> an.
-          </p>
+          <span className="bg-shiraz/5 text-shiraz border border-shiraz/15 font-semibold text-xs tracking-wider uppercase px-2.5 py-1 rounded-full self-start font-mono"><MdText text={inhalt.texte.fakultätFürArchitekturUnd} /></span>
+          <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-text-main"><MdText text={inhalt.texte.weiterführendeStudienangeboteThaIbi} /></h2>
+          <p className="text-sm md:text-base text-text-main/70 leading-relaxed font-light"><MdText text={inhalt.texte.bereitenSieSichAuf} /></p>
           <div className="flex flex-wrap gap-2.5 mt-2">
             <a 
               href="https://www.tha.de/TTZ-Aichach.html" 
@@ -336,7 +262,7 @@ export default function WeiterTHA() {
               className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 border border-home-grau/20 rounded-xl text-xs font-semibold text-text-main/80 shadow-xs"
             >
               <GraduationCap size={12} className="text-shiraz" />
-              <span>MAPR (Applied Research)</span>
+              <span><MdText text={inhalt.texte.maprAppliedResearch} /></span>
             </span>
           </div>
         </div>
@@ -348,9 +274,7 @@ export default function WeiterTHA() {
           <span className="text-xs uppercase font-bold tracking-wider text-text-main/50 flex items-center gap-1 font-mono">
             <SlidersHorizontal size={12} /> Programm-Auswahl
           </span>
-          <h3 className="text-sm font-bold text-text-main">
-            Wählen Sie ein akademisches Angebot zur Detailansicht aus:
-          </h3>
+          <h3 className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.wählenSieEinAkademisches} /></h3>
         </div>
 
         {/* Program selection buttons including Master, Fachingenieure, TTZ and MAPR */}
@@ -366,7 +290,7 @@ export default function WeiterTHA() {
           >
             <Layers size={18} />
             <div className="flex flex-col items-center">
-              <span>Alle Angebote</span>
+              <span><MdText text={inhalt.texte.alleAngebote} /></span>
               <span className={`text-xs font-medium block mt-0.5 ${activeProgram === 'all' ? 'text-white/80' : 'text-text-main/55'}`}>Gesamtübersicht</span>
             </div>
           </button>
@@ -387,7 +311,7 @@ export default function WeiterTHA() {
               >
                 <Icon size={18} className={isActive ? 'text-white' : program.iconColor} />
                 <div className="flex flex-col items-center">
-                  <span className="line-clamp-1 font-semibold">{program.title.replace(' (Zertifikatslehrgang)', '').replace(' (Master - Bau & Immobilie)', '').replace(' (Master)', '')}</span>
+                  <span className="line-clamp-1 font-semibold">{program.title.replace(' (Zertifikatslehrgang)', '').replace(inhalt.werte.masterBauImmobilie, '').replace(' (Master)', '')}</span>
                   <span className={`text-xs font-medium block mt-0.5 ${isActive ? 'text-white/80' : 'text-text-main/55'}`}>{program.duration}</span>
                 </div>
               </button>
@@ -429,13 +353,11 @@ export default function WeiterTHA() {
                     rel="noopener noreferrer"
                     className={`flex items-center gap-2 px-4 py-2 ${program.btnBg} text-white font-medium text-xs rounded-xl transition-all shadow-sm shrink-0`}
                   >
-                    <span>Zur Webseite</span>
+                    <span><MdText text={inhalt.texte.zurWebseite} /></span>
                     <ExternalLink size={14} />
                   </a>
                 ) : (
-                  <span className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 text-slate-500 font-medium text-xs rounded-xl border border-slate-200 shrink-0">
-                    Bewerbung / Information an der THA
-                  </span>
+                  <span className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 text-slate-500 font-medium text-xs rounded-xl border border-slate-200 shrink-0"><MdText text={inhalt.texte.bewerbungInformationAnDer} /></span>
                 )}
               </div>
 
@@ -445,9 +367,7 @@ export default function WeiterTHA() {
                     {program.badge}
                   </span>
                   {program.id === 'ausbau' && (
-                    <span className="self-start text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider bg-slate-100 text-slate-800 border border-slate-200">
-                      Studiengangsleiter: Prof. Huber
-                    </span>
+                    <span className="self-start text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider bg-slate-100 text-slate-800 border border-slate-200"><MdText text={inhalt.texte.studiengangsleiterProfHuber} /></span>
                   )}
                 </div>
                 <p className="text-sm text-text-main/80 leading-relaxed font-light">
@@ -459,7 +379,7 @@ export default function WeiterTHA() {
                       <span className="p-1 px-2.5 bg-shiraz/10 text-shiraz border border-shiraz/20 font-bold rounded-lg text-xs uppercase tracking-wider shrink-0">
                         Hinweis
                       </span>
-                      <span>Studiengangsleiter: <strong>Prof. Huber</strong></span>
+                      <span><MdText text={inhalt.texte.studiengangsleiterProfHuber2} /></span>
                     </div>
                     <span className="text-xs text-slate-500 font-medium font-mono">ibi / THA</span>
                   </div>
@@ -472,20 +392,17 @@ export default function WeiterTHA() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="bg-stone-50 p-4 border border-home-grau/15 rounded-2xl flex flex-col gap-1.5">
                   <span className="text-xs uppercase font-bold tracking-wider text-text-main/40 flex items-center gap-1 font-mono">
-                    <Award size={12} /> Akademischer Grad / Abschluss
-                  </span>
+                    <Award size={12} /><MdText text={inhalt.texte.akademischerGradAbschluss} /></span>
                   <strong className="text-sm font-bold text-text-main">{program.degree}</strong>
                 </div>
                 <div className="bg-stone-50 p-4 border border-home-grau/15 rounded-2xl flex flex-col gap-1.5">
                   <span className="text-xs uppercase font-bold tracking-wider text-text-main/40 flex items-center gap-1 font-mono">
-                    <Calendar size={12} /> Regelstudienzeit / Struktur
-                  </span>
+                    <Calendar size={12} /><MdText text={inhalt.texte.regelstudienzeitStruktur} /></span>
                   <strong className="text-sm font-bold text-text-main">{program.duration}</strong>
                 </div>
                 <div className="bg-stone-50 p-4 border border-home-grau/15 rounded-2xl flex flex-col gap-1.5">
                   <span className="text-xs uppercase font-bold tracking-wider text-text-main/40 flex items-center gap-1 font-mono">
-                    <Clock size={12} /> Format &amp; Präsenz
-                  </span>
+                    <Clock size={12} /><MdText text={inhalt.texte.formatPräsenz} /></span>
                   <strong className="text-sm font-bold text-text-main">{program.format}</strong>
                 </div>
               </div>
@@ -527,26 +444,18 @@ export default function WeiterTHA() {
       </div>
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 17: Studiendaten, Gebühren, Module und Links mit tha.de abgeglichen, Stand 22.10.2026; Angaben können sich ändern)"
+        lastReviewed={inhalt.werte.oktober2026Ap17}
         wikipedia={[
-          { title: 'Technische Hochschule Augsburg', url: 'https://de.wikipedia.org/wiki/Technische_Hochschule_Augsburg' },
+          { title: inhalt.werte.technischeHochschuleAugsburg, url: 'https://de.wikipedia.org/wiki/Technische_Hochschule_Augsburg' },
           { title: 'Bauingenieurwesen', url: 'https://de.wikipedia.org/wiki/Bauingenieurwesen' }
         ]}
-        literatur={[
-          'Kochendörfer, B.; Liebchen, J. H.; Viering, M. G.: Bau-Projektmanagement: Grundlagen und Vorgehensweisen (Springer Vieweg)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        regelwerke={[
-          { title: 'AHO-Heft Nr. 9 (Projektmanagementleistungen in der Bau- und Immobilienwirtschaft)', url: 'https://www.aho.de/' },
-          { title: 'VOB/B (Allgemeine Vertragsbedingungen für die Ausführung von Bauleistungen)' },
-          { title: 'DIN 68800 (Holzschutz im Hochbau)' },
-          { title: 'DIN 18516 (Außenwandbekleidungen, hinterlüftet)' }
-        ]}
+        literatur={inhalt.daten["WeiterTHA.literatur"]}
+        regelwerke={inhalt.daten["WeiterTHA.regelwerke"]}
         weblinks={[
-          { title: 'THA_ibi – Institut für Bau und Immobilie', url: 'https://www.tha.de/ibi' },
-          { title: 'Bachelor Bauingenieurwesen - THA', url: 'https://www.tha.de/hochschule/fakultaet/ab/studienangebot/bauingenieurwesen-beng/' },
-          { title: 'TTZ Aichach - Technologietransferzentrum', url: 'https://www.tha.de/forschung/technologietransfer/technologietransferzentren/ttz-aichach/' },
-          { title: 'MAPR - Master of Applied Research', url: 'https://www.tha.de/hochschule/fakultaet/elektrotechnik/studienangebot/master-applied-research/' }
+          inhalt.daten["WeiterTHA.weblinks.0"],
+          { title: inhalt.werte.bachelorBauingenieurwesenTha, url: 'https://www.tha.de/hochschule/fakultaet/ab/studienangebot/bauingenieurwesen-beng/' },
+          { title: inhalt.werte.ttzAichachTechnologietransferzentrum2, url: 'https://www.tha.de/forschung/technologietransfer/technologietransferzentren/ttz-aichach/' },
+          { title: inhalt.werte.maprMasterOfApplied, url: 'https://www.tha.de/hochschule/fakultaet/elektrotechnik/studienangebot/master-applied-research/' }
         ]}
         hideFormeln={true}
       />

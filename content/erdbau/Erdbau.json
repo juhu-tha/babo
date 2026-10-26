@@ -1,0 +1,174 @@
+{
+  "texte": {
+    "erdbauBöden": " Erdbau & Böden",
+    "derErdbauBefasstSich": "Der Erdbau befasst sich mit allen Baumaßnahmen, bei denen Bodenveränderungen vorgenommen werden. Hierzu gehören Erdarbeiten wie Lösen, Laden, Fördern, Einbauen und Verdichten von Boden und Fels sowie die Herstellung von Tragschichten.",
+    "grundlagenErdbau": " Grundlagen Erdbau",
+    "bodenklassifikationDin18196": " Bodenklassifikation (DIN 18196)",
+    "frostschutzRsto": " Frostschutz (RStO)",
+    "bödenWerdenInDer": "Böden werden in der Geotechnik nach DIN EN ISO 14688 in Hauptfraktionen eingeteilt:",
+    "grobkörnigeBödenNichtBindig": "**Grobkörnige Böden (nicht bindig):** Kies (Gr), Sand (Sa). Gute Tragfähigkeit, geringe Setzungen, gut wasserdurchlässig.",
+    "feinkörnigeBödenBindigSchluff": "**Feinkörnige Böden (bindig):** Schluff (Si), Ton (Cl). Geringe und witterungsabhängige Tragfähigkeit, setzungsempfindlich, schwach bis sehr schwach wasserdurchlässig, frostempfindlich.",
+    "gemischtkörnigeBödenMischungenAus": "**Gemischtkörnige Böden:** Mischungen aus grob- und feinkörnigen Anteilen (z.B. kiesiger Schluff, toniger Sand).",
+    "organischeBödenTorfPt": "**Organische Böden:** Torf (Pt), Mudde. Sehr geringe Tragfähigkeit, stark setzungsanfällig (als Baugrund meist ungeeignet).",
+    "verdichtungProctorversuch": " Verdichtung (Proctorversuch)",
+    "dieTragfähigkeitVonBöden": "Die Tragfähigkeit von Böden wird durch mechanische Verdichtung (z.B. Walzen, Rüttelplatten) erhöht.",
+    "proctordichtePrMaximaleErreichbare": "**Proctordichte (ρPr):** Maximale erreichbare Trockendichte bei einem bestimmten (optimalen) Wassergehalt unter definierter Verdichtungsarbeit.",
+    "optimalerWassergehaltWPr": "**Optimaler Wassergehalt (w_pr):** Bei diesem Wassergehalt wirkt das Wasser wie ein Schmiermittel, wodurch die Reibung zwischen den Körnern reduziert und die Packungsdichte maximiert wird.",
+    "verdichtungsgradDprVerhältnisDer": "**Verdichtungsgrad (DPr):** Verhältnis der erreichten Trockendichte auf der Baustelle zur Proctordichte (üblich: 97 - 100%).",
+    "hydraulischGebundeneTragschichtenHgt": " Hydraulisch gebundene Tragschichten (HGT)",
+    "zurErhöhungDerTragfähigkeit": "Zur Erhöhung der Tragfähigkeit im Straßen- und Wegebau werden mineralische Stoffgemische mit hydraulischen Bindemitteln (meist Zement) gemischt.",
+    "hgtHydraulischGebundeneTragschicht": "HGT (Hydraulisch gebundene Tragschicht) bildet einen tragfähigen und frostsicheren Unterbau unter der Asphalt- oder Betondeckschicht.",
+    "zusammensetzungMineralstoffgemischeZB": "**Zusammensetzung:** Mineralstoffgemische (z.B. Frostschutzschicht) + Zement (meist 3 - 5 M.-%) + Wasser.",
+    "bodenverfestigungEinmischenVonZement": "**Bodenverfestigung:** Einmischen von Zement oder Kalk in den anstehenden Boden (z.B. mittels Bodenfräse), um Tragfähigkeit und Frostbeständigkeit zu erhöhen (Mixed-in-Place Verfahren).",
+    "frostschädenZBFrosthebungen": "Frostschäden (z.B. Frosthebungen im Winter und Tragfähigkeitsverlust beim Auftauen) entstehen durch Eislinsenbildung im Boden.",
+    "bedingungenFürFrostschädenFrostempfindli": "Bedingungen für Frostschäden: Frostempfindlicher Boden + Wasserangebot + Frosttemperaturen.",
+    "f1NichtFrostempfindlichZ": "F1: Nicht frostempfindlich (z.B. reiner Kies/Sand)",
+    "f2GeringBisMittel": "F2: Gering bis mittel frostempfindlich (gemischtkörnige Böden mit 5-15% Feinanteil < 0,063mm)",
+    "f3SehrFrostempfindlichSchluff": "F3: Sehr frostempfindlich (Schluff, Ton, Böden mit hohem Feinanteil > 15%)",
+    "frostempfindlichkeitsklassenF1F3": "**Frostempfindlichkeitsklassen (F1 - F3):**",
+    "verschneidenSieKornverteilungSieblinie": "Verschneiden Sie Kornverteilung (Sieblinie) und Plastizität, um den Boden in Bodengruppen (z.B. GW, SU, TL) einzuteilen. Dies bestimmt die Eignung als Baugrundstoff.",
+    "aufteilungGrobkornÜber0": "Aufteilung Grobkorn (über 0,063 mm)",
+    "weitereEigenschaften": "Weitere Eigenschaften",
+    "plastizitätDerFeinanteile": "Plastizität der Feinanteile",
+    "organischeBeimengungen": "Organische Beimengungen",
+    "bodengruppeNachDin18196": "Bodengruppe nach DIN 18196 (vereinfachte Zuordnung)",
+    "bautechnischeEignung": "Bautechnische Eignung",
+    "straßenbaulicheBemessungErfordertEine": "Straßenbauliche Bemessung erfordert eine ausreichende Dicke des frostsicheren Oberbaus, um ein Auffrieren des Planums zu verhindern. Sie ist abhängig von Frostzone, Belastung (Belastungsklasse Bk nach RStO 12/24/24) und anstehendem Boden (Frostempfindlichkeitsklasse F1 bis F3) und anstehendem Boden.",
+    "belastungsklasseRsto": "Belastungsklasse (RStO)",
+    "frostzoneKlimaregionInDe": "Frostzone (Klimaregion in DE)",
+    "bodenklasseDesAnstehendenPlanums": "Bodenklasse des anstehenden Planums",
+    "hinweisF1ErfordertKeine": "Hinweis: F1 erfordert keine Frostschutzmaßnahmen.",
+    "gestaltungWasserverhältnisse": "Gestaltung / Wasserverhältnisse",
+    "frostsichererOberbau": "Frostsicherer Oberbau",
+    "deckUndTragschichtenAsphalt": "Deck- und Tragschichten (Asphalt)",
+    "frostschutzschichtUngebundenKiesSchotter": "Frostschutzschicht (ungebunden, Kies/Schotter)",
+    "planumAnstehenderBoden": "Planum (Anstehender Boden ",
+    "gesamtdickeFrostsichererAufbau": "Gesamtdicke Frostsicherer Aufbau: "
+  },
+  "werte": {
+    "organischeBödenTorfMudde": "Organische Böden (Torf/Mudde)",
+    "ungeeignetAlsBaugrund": "Ungeeignet als Baugrund.",
+    "feinanteil0063Mm": "Feinanteil < 0,063 mm",
+    "nachDin18196Grobkörnig": "Nach DIN 18196: grobkörnig (≤ 5 %), gemischtkörnig (5–15 %: GU/GT/SU/ST; 15–40 %: GU*/GT*/SU*/ST*) oder feinkörnig/bindig (> 40 %).",
+    "plastizitätDerFeinanteile": "Plastizität der Feinanteile",
+    "organischeBeimengungen": "Organische Beimengungen",
+    "belastungsklasseRsto": "Belastungsklasse (RStO)",
+    "frostzoneKlimaregionInDe": "Frostzone (Klimaregion in DE)",
+    "bodenklasseDesAnstehendenPlanums": "Bodenklasse des anstehenden Planums",
+    "gestaltungWasserverhältnisse": "Gestaltung / Wasserverhältnisse",
+    "anwendungsbeispielVerdichtungsgradAusEin": "Anwendungsbeispiel: Verdichtungsgrad aus einer Ersatzmessung",
+    "din181252Dichte": "DIN 18125-2 (Dichte), DIN 18127 (Proctorversuch); Anforderungswert projektbezogen nach ZTV E-StB",
+    "häufigerFehlerFeuchtdichteDirekt": "Häufiger Fehler: Feuchtdichte direkt mit ρ_Pr verglichen – das täuscht einen zu hohen Verdichtungsgrad vor (hier 105 %)."
+  },
+  "daten": {
+    "Erdbau": {
+      "gruppe": "GW / GI / GE",
+      "name": "Kies, weitgestuft bis enggestuft",
+      "frost": "F1",
+      "tauglich": "Sehr gut tragfähig, frostsicher."
+    },
+    "Erdbau_2": {
+      "gruppe": "SW / SI / SE",
+      "name": "Sand, weitgestuft bis enggestuft",
+      "frost": "F1",
+      "tauglich": "Gut tragfähig, frostsicher."
+    },
+    "Erdbau_3": {
+      "gruppe": "GU / GT",
+      "name": "Kies-Schluff- / Kies-Ton-Gemisch",
+      "frost": "F2",
+      "tauglich": "Tragfähig, aber bedingt frostempfindlich."
+    },
+    "Erdbau_4": {
+      "gruppe": "SU / ST",
+      "name": "Sand-Schluff- / Sand-Ton-Gemisch",
+      "frost": "F2",
+      "tauglich": "Tragfähig, aber bedingt frostempfindlich."
+    },
+    "Erdbau_5": {
+      "gruppe": "GU* / GT*",
+      "name": "Kies-Schluff- / Kies-Ton-Gemisch (hoher Feinanteil)",
+      "frost": "F3",
+      "tauglich": "Eingeschränkt tragfähig, witterungs- und sehr frostempfindlich."
+    },
+    "Erdbau_6": {
+      "gruppe": "SU* / ST*",
+      "name": "Sand-Schluff- / Sand-Ton-Gemisch (hoher Feinanteil)",
+      "frost": "F3",
+      "tauglich": "Eingeschränkt tragfähig, witterungs- und sehr frostempfindlich."
+    },
+    "Erdbau_7": {
+      "gruppe": "TA",
+      "name": "Ausgeprägt plastischer Ton",
+      "frost": "F3",
+      "tauglich": "Stark setzungsempfindlich, sehr frostempfindlich."
+    },
+    "Erdbau_8": {
+      "gruppe": "UL / UM",
+      "name": "Feinkörniger Schluff",
+      "frost": "F3",
+      "tauglich": "Extrem witterungsempfindlich (fließt bei Wasserzutritt), frostempfindlich."
+    },
+    "Erdbau.schritte": [
+      {
+        "titel": "1. Messwerte vor Ort",
+        "formel": "\\rho = 2{,}05\\,\\text{t/m}^3,\\; w = 8{,}0\\,\\%",
+        "erklaerung": "Feuchtdichte (z. B. Ballon- oder Sandersatzverfahren) und Wassergehalt (Ofentrocknung)."
+      },
+      {
+        "titel": "2. Trockendichte",
+        "formel": "\\rho_d = \\frac{2{,}05}{1{,}08} = 1{,}90\\,\\text{t/m}^3",
+        "erklaerung": "Der Wassergehalt ist auf die Trockenmasse bezogen."
+      },
+      {
+        "titel": "3. Verdichtungsgrad",
+        "formel": "D_{Pr} = \\frac{1{,}898}{1{,}95} = 97{,}3\\,\\%",
+        "erklaerung": "Laborwert ρ_Pr = 1,95 t/m³ (Proctorversuch am selben Boden)."
+      },
+      {
+        "titel": "4. Bewertung",
+        "formel": "D_{Pr} = 97{,}3\\,\\% \\ge 97\\,\\%",
+        "erklaerung": "Erfüllt eine Anforderung von 97 %; für 100 % (z. B. Planum bei grobkörnigen Böden) müsste nachverdichtet werden."
+      }
+    ],
+    "Erdbau.literatur": [
+      "Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011",
+      "Scholz, W. (Begr.); Möhring, R. (Hrsg.): Baustoffkenntnis. Köln: Bundesanzeiger 2016",
+      "FGSV: RStO 12/24 – Richtlinien für die Standardisierung des Oberbaus von Verkehrsflächen, Ausgabe 2012/Fassung 2024 (eingeführt mit ARS Nr. 2/2024 des BMDV)"
+    ],
+    "Erdbau.regelwerke": [
+      {
+        "title": "DIN 18196:2023-02 (Erd- und Grundbau - Bodenklassifikation für bautechnische Zwecke)"
+      },
+      {
+        "title": "DIN 18127:2012-09 (Baugrund - Versuche und Versuchsgeräte - Proctorversuch)"
+      },
+      {
+        "title": "DIN 18134:2012-04 (Baugrund - Versuche und Versuchsgeräte - Plattendruckversuch)"
+      },
+      {
+        "title": "DIN EN ISO 14688-1:2020-11 / DIN EN ISO 14688-2:2020-11 (Geotechnische Erkundung - Benennung und Klassifizierung von Boden)"
+      },
+      {
+        "title": "ZTV E-StB 17:2017 (Zusätzliche Technische Vertragsbedingungen und Richtlinien für Erdarbeiten im Straßenbau)",
+        "url": "https://www.fgsv-verlag.de/"
+      },
+      {
+        "title": "RStO 12/24 (Richtlinien für die Standardisierung des Oberbaus von Verkehrsflächen, Ausgabe 2012/Fassung 2024)",
+        "url": "https://www.fgsv-verlag.de/"
+      }
+    ],
+    "Erdbau.formeln": [
+      {
+        "formel": "D_{Pr} = \\frac{\\rho_d}{\\rho_{Pr}} \\cdot 100\\%",
+        "erklaerung": "Verdichtungsgrad D_Pr. Verhältnis der trockenen Rohdichte des vor Ort eingebauten Bodens zur im Labor ermittelten optimalen Proctor-Trockendichte.",
+        "quelle": "DIN 18127:2012-09"
+      },
+      {
+        "formel": "\\frac{E_{v2}}{E_{v1}} \\le 2{,}2 \\quad (\\text{bei } D_{Pr} \\ge 100\\,\\%)",
+        "erklaerung": "Verhältniswert der Verformungsmoduln aus Erst- und Zweitbelastung beim statischen Plattendruckversuch als Kriterium für ausreichende Verdichtung ohne Überverdichtung.",
+        "quelle": "DIN 18134:2012-04 / ZTV E-StB 17"
+      }
+    ]
+  }
+}

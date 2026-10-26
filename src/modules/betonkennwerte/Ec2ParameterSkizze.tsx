@@ -3,6 +3,8 @@ import { Compass } from 'lucide-react';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { EC2_CONCRETE_CLASSES } from './daten';
 import type { RechnerTabProps } from './RechnerTab';
+import inhalt from '@/content/betonkennwerte/Ec2ParameterSkizze.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface Ec2ParameterSkizzeProps {
   baseConcrete: typeof EC2_CONCRETE_CLASSES[0];
@@ -46,12 +48,8 @@ export function Ec2ParameterSkizze({
             <Compass size={18} />
           </span>
           <div>
-            <h4 className="font-bold text-sm text-text-main dark:text-slate-100 flex items-center gap-2">
-              Systemskizze: Einwirkende Größen, Bauteilgeometrie &amp; Zeitparameter (Abschnitt 1 – 6)
-            </h4>
-            <p className="text-[11px] text-text-main/70 dark:text-slate-400">
-              Veranschaulichung der normativen Zusammenhänge nach DIN EN 1992-1-1 (EC2) mit aktuellen Werten
-            </p>
+            <h4 className="font-bold text-sm text-text-main dark:text-slate-100 flex items-center gap-2"><MdText text={inhalt.texte.systemskizzeEinwirkendeGrößenBauteilgeom} /></h4>
+            <p className="text-[11px] text-text-main/70 dark:text-slate-400"><MdText text={inhalt.texte.veranschaulichungDerNormativenZusammenhä} /></p>
           </div>
         </div>
         <div className="flex items-center gap-2">
@@ -331,25 +329,25 @@ export function Ec2ParameterSkizze({
       {/* Kompakte 6-teilige Formelsammlungs-Matrix darunter */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mt-3 pt-3 border-t border-home-grau/20 text-xs">
         <div className="p-2 rounded-lg bg-white dark:bg-slate-800 border border-home-grau/25 shadow-2xs">
-          <span className="text-[10px] text-shiraz font-bold block">① Druckfestigkeit</span>
+          <span className="text-[10px] text-shiraz font-bold block"><MdText text={inhalt.texte.druckfestigkeit} /></span>
           <span className="font-mono font-bold text-text-main dark:text-slate-100">{formatDeWert(baseConcrete.fck)} / {formatDeWert(baseConcrete.fcm)} MPa</span>
           <span className="text-[10px] text-text-main/60 block">s = {cementClass === 'R' ? '0,20' : cementClass === 'S' ? '0,38' : '0,25'}</span>
         </div>
 
         <div className="p-2 rounded-lg bg-white dark:bg-slate-800 border border-home-grau/25 shadow-2xs">
-          <span className="text-[10px] text-shiraz font-bold block">② Zugfestigkeit</span>
+          <span className="text-[10px] text-shiraz font-bold block"><MdText text={inhalt.texte.zugfestigkeit} /></span>
           <span className="font-mono font-bold text-text-main dark:text-slate-100">{formatDeZahl(calcResults.fctm, 2)} MPa</span>
           <span className="text-[10px] text-text-main/60 block">fctk;0,05 = {formatDeZahl(calcResults.fctk005, 2)}</span>
         </div>
 
         <div className="p-2 rounded-lg bg-white dark:bg-slate-800 border border-home-grau/25 shadow-2xs">
-          <span className="text-[10px] text-shiraz font-bold block">③ E-Modul &amp; G</span>
+          <span className="text-[10px] text-shiraz font-bold block"><MdText text={inhalt.texte.eModulG} /></span>
           <span className="font-mono font-bold text-text-main dark:text-slate-100">{formatDeZahl(calcResults.Ecm / 1000, 1)} GPa</span>
           <span className="text-[10px] text-text-main/60 block">αE = {formatDeZahl(calcResults.alphaE, 2)} ({aggregateType})</span>
         </div>
 
         <div className="p-2 rounded-lg bg-white dark:bg-slate-800 border border-home-grau/25 shadow-2xs">
-          <span className="text-[10px] text-shiraz font-bold block">④ Dehnungen σ-ε</span>
+          <span className="text-[10px] text-shiraz font-bold block"><MdText text={inhalt.texte.dehnungen} /></span>
           <span className="font-mono font-bold text-text-main dark:text-slate-100">{formatDeWert(baseConcrete.epsC1)} / {formatDeWert(baseConcrete.epsCu1)} ‰</span>
           <span className="text-[10px] text-text-main/60 block">εc2 = {formatDeWert(baseConcrete.epsC2)} ‰</span>
         </div>

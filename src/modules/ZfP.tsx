@@ -32,6 +32,8 @@ import ElektromagnetischTab from './zfp/ElektromagnetischTab';
 import ElektrochemischTab from './zfp/ElektrochemischTab';
 import ThermischTab from './zfp/ThermischTab';
 import HolzTab from './zfp/HolzTab';
+import inhalt from '@/content/zfp/ZfP.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -174,13 +176,13 @@ export default function ZfP() {
 
   // Berechnungen Potentialmessung
   const potentialResults = useMemo(() => {
-    let risk = "Gering (< 10%)";
+    let risk = inhalt.werte.gering10;
     let color = "bg-green-500";
     if (potential < -350) {
-      risk = "Hoch (> 90%)";
+      risk = inhalt.werte.hoch90;
       color = "bg-red-500";
     } else if (potential < -200) {
-      risk = "Mittel (unsicher)";
+      risk = inhalt.werte.mittelUnsicher;
       color = "bg-yellow-500";
     }
     return { risk, color };
@@ -197,23 +199,23 @@ export default function ZfP() {
     let rate = "Vernachlässigbar";
     let color = "bg-green-600";
     let textClass = "text-green-800 bg-green-50";
-    let description = "Sehr trockenes Bauteil oder extrem dichtes Gefüge (z.B. Silicafume/HSPC). Eine Korrosionsinitiierung ist thermodynamisch extrem unwahrscheinlich.";
+    let description = inhalt.werte.sehrTrockenesBauteilOder;
 
     if (rho < 120) {
       rate = "Sehr hoch";
       color = "bg-red-600";
       textClass = "text-red-800 bg-red-50 border-red-200";
-      description = "Feuchter, chloridbelasteter oder karbonatisierter Beton. Aktiver Korrosionsstrom kann ungehindert fließen (Lochfraßgefahr).";
+      description = inhalt.werte.feuchterChloridbelasteterOderKarbonatisi;
     } else if (rho < 500) {
       rate = "Mittel";
       color = "bg-amber-500";
       textClass = "text-amber-800 bg-amber-50 border-amber-200";
-      description = "Durchschnittlicher Feuchte- und Carbonatisierungsgrad. Geringe bis moderate Ausbreitungsgeschwindigkeit.";
+      description = inhalt.werte.durchschnittlicherFeuchteUndCarbonatisie;
     } else if (rho < 1000) {
       rate = "Niedrig";
       color = "bg-emerald-500";
       textClass = "text-emerald-800 bg-emerald-50 border-emerald-100";
-      description = "Vorwiegend trocken, hohe Betondichte. Sehr geringe Schädigungsdynamik.";
+      description = inhalt.werte.vorwiegendTrockenHoheBetondichte;
     }
 
     return { rho, rhoKohmCm, rate, color, textClass, description };
@@ -221,41 +223,41 @@ export default function ZfP() {
 
   // Berechnungen Gaspermeationsmessung (Torrent)
   const torrentResults = useMemo(() => {
-    let klassifizierung = "Klasse I (Sehr niedrig)";
-    let bewertung = "Hervorragend dicht";
+    let klassifizierung = inhalt.werte.klasseISehrNiedrig;
+    let bewertung = inhalt.werte.hervorragendDicht;
     let textClass = "text-green-800 bg-green-50 border-green-200";
-    let description = "Maximale Dauerhaftigkeit. Das Bauteil besitzt einen sehr guten Widerstand gegen Karbonatisierung und Chlorideindringung.";
+    let description = inhalt.werte.maximaleDauerhaftigkeitDasBauteil;
 
     if (torrentKt >= 10.0) {
-      klassifizierung = "Klasse V (Sehr hoch)";
-      bewertung = "Ungenügend / Sehr offenporig";
+      klassifizierung = inhalt.werte.klasseVSehrHoch;
+      bewertung = inhalt.werte.ungenügendSehrOffenporig;
       textClass = "text-red-800 bg-red-50 border-red-200";
-      description = "Extrem durchlässiges Porensystem. Dringender Sanierungsbedarf oder zusätzliche hydrophobierende Applikation angeraten.";
+      description = inhalt.werte.extremDurchlässigesPorensystemDringender;
     } else if (torrentKt >= 1.0) {
-      klassifizierung = "Klasse IV (Hoch)";
-      bewertung = "Minderwertiger Schutz";
+      klassifizierung = inhalt.werte.klasseIvHoch;
+      bewertung = inhalt.werte.minderwertigerSchutz;
       textClass = "text-rose-700 bg-rose-50 border-rose-200";
-      description = "Erhöhtes Risiko für Bewehrungskorrosion. Die Karbonatisierungsfront schreitet beschleunigt voran.";
+      description = inhalt.werte.erhöhtesRisikoFürBewehrungskorrosion;
     } else if (torrentKt >= 0.1) {
-      klassifizierung = "Klasse III (Mittel)";
+      klassifizierung = inhalt.werte.klasseIiiMittel;
       bewertung = "Durchschnittlich";
       textClass = "text-amber-700 bg-amber-50 border-amber-200";
-      description = "Durchschnittlicher Betonüberdeckungswiderstand. Standardbeton ohne gesonderte Expositionsklassenschutz-Vorgaben.";
+      description = inhalt.werte.durchschnittlicherBetonüberdeckungswider;
     } else if (torrentKt >= 0.01) {
-      klassifizierung = "Klasse II (Niedrig)";
-      bewertung = "Gute Qualität";
+      klassifizierung = inhalt.werte.klasseIiNiedrig;
+      bewertung = inhalt.werte.guteQualität;
       textClass = "text-emerald-700 bg-emerald-50 border-emerald-200";
-      description = "Sicheres Bauteilverhalten. Ausreichender Porenwiderstand für reguläre Umwelteinflüsse.";
+      description = inhalt.werte.sicheresBauteilverhaltenAusreichenderPor;
     }
 
     // Feuchtigkeitseinfluss bestimmen
     let moistureWarning = null;
     let moistureCritical = false;
     if (torrentMoisture > 85) {
-      moistureWarning = "Kritische Betonfeuchte (> 85%): Die Messung ist extrem fehleranfällig und ungültig! Wasser blockiert den Porenraum, wodurch der gemessene kT-Wert künstlich gegen Null fällt.";
+      moistureWarning = inhalt.werte.kritischeBetonfeuchte85Die;
       moistureCritical = true;
     } else if (torrentMoisture > 70) {
-      moistureWarning = "Hohe Betonfeuchte (> 70%): Die tatsächliche Gaspermeabilität ist durch okkludiertes Porenwasser beeinträchtigt. Der reale kT-Wert ist schätzungsweise um den Faktor 2-5 höher.";
+      moistureWarning = inhalt.werte.hoheBetonfeuchte70Die;
     }
 
     return { klassifizierung, bewertung, textClass, description, moistureWarning, moistureCritical };
@@ -267,21 +269,21 @@ export default function ZfP() {
     const tHours = karstenTime / 60;
     const w = karstenAbsorbed / (0.491 * Math.sqrt(tHours)); // kg/(m² * h^0.5)
 
-    let eingruppierung = "Wasserabweisend (Hydrophob)";
+    let eingruppierung = inhalt.werte.wasserabweisendHydrophob;
     let textClass = "text-green-800 bg-green-50 border-green-200";
     let color = "bg-green-600";
-    let detailtext = "Sehr gute Sperrwirkung gegen eindringende Flüssigkeiten. Extrem hohe Lebensdauer bei Schlagregenbelastung.";
+    let detailtext = inhalt.werte.sehrGuteSperrwirkungGegen;
 
     if (w > 0.5) {
-      eingruppierung = "Stark saugend (Absorbierend)";
+      eingruppierung = inhalt.werte.starkSaugendAbsorbierend;
       textClass = "text-red-800 bg-red-50 border-red-200";
       color = "bg-red-600";
-      detailtext = "Baustoff saugt Feuchtigkeit gierig auf. Extreme Frost-Tau-Schadensgefahr und beschleunigter Carbonatisierungsgrad.";
+      detailtext = inhalt.werte.baustoffSaugtFeuchtigkeitGierig;
     } else if (w > 0.1) {
       eingruppierung = "Wasserhemmend";
       textClass = "text-amber-700 bg-amber-50 border-amber-200";
       color = "bg-amber-500";
-      detailtext = "Ausreichende Reduzierung der Saugwirkung. Regellösung für gut ausgeführte mineralische Außenputze.";
+      detailtext = inhalt.werte.ausreichendeReduzierungDerSaugwirkung;
     }
 
     return { w, tHours, eingruppierung, textClass, color, detailtext };
@@ -289,13 +291,13 @@ export default function ZfP() {
 
   // Berechnungen Thermografie
   const thermographyResults = useMemo(() => {
-    let indication = "Keine Auffälligkeiten";
+    let indication = inhalt.werte.keineAuffälligkeiten;
     let color = "bg-green-500";
     if (tempDiff > 2.0) {
-      indication = "Deutlicher Hohlraum / Ablösung";
+      indication = inhalt.werte.deutlicherHohlraumAblösung;
       color = "bg-red-500";
     } else if (tempDiff > 0.5) {
-      indication = "Mögliche Fehlstelle";
+      indication = inhalt.werte.möglicheFehlstelle;
       color = "bg-yellow-500";
     }
     return { indication, color };
@@ -319,7 +321,7 @@ export default function ZfP() {
     let quality = "Gut";
     let color = "bg-green-500";
     if (transmission < 1) {
-      quality = "Schlecht (zu dick/dicht)";
+      quality = inhalt.werte.schlechtZuDickDicht;
       color = "bg-red-500";
     } else if (transmission < 5) {
       quality = "Ausreichend";
@@ -347,7 +349,7 @@ export default function ZfP() {
       labels,
       datasets: [
         {
-          label: 'Horizontal (0°)',
+          label: inhalt.werte.horizontal0,
           data: data0,
           borderColor: '#E63946',
           backgroundColor: 'rgba(230, 57, 70, 0.1)',
@@ -355,7 +357,7 @@ export default function ZfP() {
           tension: 0.4,
         },
         {
-          label: 'Nach unten (+90°)',
+          label: inhalt.werte.nachUnten90,
           data: data90,
           borderColor: '#457B9D',
           backgroundColor: 'rgba(69, 123, 157, 0.1)',
@@ -364,7 +366,7 @@ export default function ZfP() {
           tension: 0.4,
         },
         {
-          label: 'Nach oben (-90°)',
+          label: inhalt.werte.nachOben90,
           data: dataMinus90,
           borderColor: '#1D3557',
           backgroundColor: 'rgba(29, 53, 87, 0.1)',
@@ -381,12 +383,12 @@ export default function ZfP() {
     maintainAspectRatio: false,
     scales: {
       y: {
-        title: { display: true, text: 'Druckfestigkeit f_c [N/mm²]' },
+        title: { display: true, text: inhalt.werte.druckfestigkeitFCN },
         min: 0,
         max: 100
       },
       x: {
-        title: { display: true, text: 'Rückprallzahl R [-]' }
+        title: { display: true, text: inhalt.werte.rückprallzahlR }
       }
     },
     plugins: {
@@ -420,12 +422,8 @@ export default function ZfP() {
       <div className="bg-slate-50/50 p-6 rounded-2xl border border-home-grau/20 mt-8 flex flex-col gap-6 animate-in fade-in duration-300">
         <div className="flex flex-col gap-1 border-b border-home-grau/20 pb-4">
           <h3 className="text-lg font-bold text-slate-950 flex items-center gap-2">
-            <Wrench className="text-shiraz" size={20} />
-            Praxis-Gerätepool &amp; Fach-Datenblätter
-          </h3>
-          <p className="text-xs text-slate-500">
-            Wählen Sie ein Prüfgerät aus, um detaillierte normative und bautechnische Spezifikationen einzusehen.
-          </p>
+            <Wrench className="text-shiraz" size={20} /><MdText text={inhalt.texte.praxisGerätepoolFachDatenblätter} /></h3>
+          <p className="text-xs text-slate-500"><MdText text={inhalt.texte.wählenSieEinPrüfgerät} /></p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -468,17 +466,17 @@ export default function ZfP() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                   <div className="flex flex-col gap-1">
-                    <span className="font-bold text-slate-500 uppercase tracking-wider text-[9px]">Relevante Norm / Regelwerk</span>
-                    <span className="text-slate-800 font-medium">{currentDevice.norm || 'Keine Angabe'}</span>
+                    <span className="font-bold text-slate-500 uppercase tracking-wider text-[9px]"><MdText text={inhalt.texte.relevanteNormRegelwerk} /></span>
+                    <span className="text-slate-800 font-medium">{currentDevice.norm || inhalt.werte.keineAngabe}</span>
                   </div>
                   <div className="flex flex-col gap-1">
-                    <span className="font-bold text-slate-500 uppercase tracking-wider text-[9px]">Typischer Einsatzzweck</span>
+                    <span className="font-bold text-slate-500 uppercase tracking-wider text-[9px]"><MdText text={inhalt.texte.typischerEinsatzzweck} /></span>
                     <span className="text-slate-800 font-medium">{currentDevice.useCase}</span>
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <span className="font-bold text-slate-500 uppercase tracking-wider text-[9px]">Technische &amp; Methodische Details</span>
+                  <span className="font-bold text-slate-500 uppercase tracking-wider text-[9px]"><MdText text={inhalt.texte.technischeMethodischeDetails} /></span>
                   <ul className="list-disc list-inside text-xs text-slate-700 space-y-1.5 bg-slate-50 p-3 rounded-lg border border-home-grau/10">
                     {currentDevice.details.map((detail, idx) => (
                       <li key={idx} className="indent-[-12px] pl-[12px] text-slate-700">
@@ -506,8 +504,7 @@ export default function ZfP() {
           }`}
           onClick={() => setActiveTab('mechanisch')}
         >
-          <Hammer size={16} /> Mechanisch (Rückprall)
-        </button>
+          <Hammer size={16} /><MdText text={inhalt.texte.mechanischRückprall} /></button>
         <button aria-pressed={activeTab === 'akustisch'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'akustisch' 
@@ -516,8 +513,7 @@ export default function ZfP() {
           }`}
           onClick={() => setActiveTab('akustisch')}
         >
-          <Waves size={16} /> Akustisch (US, IE)
-        </button>
+          <Waves size={16} /><MdText text={inhalt.texte.akustischUsIe} /></button>
         <button aria-pressed={activeTab === 'elektromagnetisch'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'elektromagnetisch' 
@@ -546,8 +542,7 @@ export default function ZfP() {
           }`}
           onClick={() => setActiveTab('thermisch')}
         >
-          <Thermometer size={16} /> Thermisch &amp; Strahlung
-        </button>
+          <Thermometer size={16} /><MdText text={inhalt.texte.thermischStrahlung} /></button>
         <button aria-pressed={activeTab === 'holz'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'holz' 
@@ -556,8 +551,7 @@ export default function ZfP() {
           }`}
           onClick={() => setActiveTab('holz')}
         >
-          <Trees size={16} /> Holz &amp; Feuchte
-        </button>
+          <Trees size={16} /><MdText text={inhalt.texte.holzFeuchte} /></button>
         <button aria-pressed={activeTab === 'dgzfp'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'dgzfp' 
@@ -567,8 +561,7 @@ export default function ZfP() {
           onClick={() => setActiveTab('dgzfp')}
           id="dgzfp-tab-btn"
         >
-          <Award size={16} /> DGZfP &amp; Richtlinien
-        </button>
+          <Award size={16} /><MdText text={inhalt.texte.dgzfpRichtlinien} /></button>
       </div>
 
       {activeTab === 'mechanisch' && <MechanischTab angle={angle} chartData={chartData} karstenAbsorbed={karstenAbsorbed} karstenResults={karstenResults} karstenTime={karstenTime} options={options} rebound={rebound} reboundResults={reboundResults} renderEmbeddedGeraete={renderEmbeddedGeraete} setAngle={setAngle} setKarstenAbsorbed={setKarstenAbsorbed} setKarstenTime={setKarstenTime} setRebound={setRebound} setTorrentKt={setTorrentKt} setTorrentMoisture={setTorrentMoisture} torrentKt={torrentKt} torrentMoisture={torrentMoisture} torrentResults={torrentResults} />}
@@ -584,53 +577,18 @@ export default function ZfP() {
       {activeTab === 'holz' && <HolzTab renderEmbeddedGeraete={renderEmbeddedGeraete} />}
 
       <ModuleFooter 
-        weblinks={[
-          { title: "Deutsche Gesellschaft für Zerstörungsfreie Prüfung e.V. (DGZfP)", url: "https://www.dgzfp.de" }
-        ]}
+        weblinks={inhalt.daten["ZfP.weblinks"]}
         wikipedia={[
-          { title: 'Zerstörungsfreie Prüfung', url: 'https://de.wikipedia.org/wiki/Zerst%C3%B6rungsfreie_Pr%C3%BCfung' },
+          { title: inhalt.werte.zerstörungsfreiePrüfung, url: 'https://de.wikipedia.org/wiki/Zerst%C3%B6rungsfreie_Pr%C3%BCfung' },
           { title: 'Rückprallhammer', url: 'https://de.wikipedia.org/wiki/R%C3%BCckprallhammer' },
           { title: 'Ultraschallprüfung', url: 'https://de.wikipedia.org/wiki/Ultraschallpr%C3%BCfung' },
           { title: 'Bodenradar', url: 'https://de.wikipedia.org/wiki/Bodenradar' }
         ]}
-        literatur={[
-          'Schickert, M.: Verfahren der zerstörungsfreien Prüfung im Bauwesen.',
-          'DGZfP-Merkblatt B 04: Ultraschallverfahren zur Zerstörungsfreien Prüfung im Bauwesen.'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 12504-2 (Prüfung von Beton - Bestimmung der Rückprallzahl)' },
-          { title: 'DIN EN 12504-4 (Prüfung von Beton - Bestimmung der Ultraschalllaufzeit)' },
-          { title: 'DGZfP-Merkblätter der Reihe B (ZfP im Bauwesen)', url: 'https://publikationen.dgzfp.de/' }
-        ]}
-        formeln={[
-          {
-            formel: 'E_{dyn} = \\rho \\cdot v^2 \\cdot \\frac{(1+\\nu)(1-2\\nu)}{1-\\nu}',
-            erklaerung: 'Dynamischer Elastizitätsmodul E_{dyn} aus der Ultraschall-Impulsgeschwindigkeit v (mit Dichte \\rho und Querdehnzahl \\nu).',
-            quelle: 'DIN EN 12504-4'
-          },
-          {
-            formel: 'd = \\frac{v \\cdot t}{2}',
-            erklaerung: 'Tiefenberechnung beim akustischen Impuls-Echo-Verfahren aus Ultraschallgeschwindigkeit v und Reflexionslaufzeit t.',
-            quelle: 'DGZfP-Merkblatt B 04'
-          },
-          {
-            formel: 'd = \\frac{c_0}{\\sqrt{\\varepsilon_r}} \\cdot \\frac{t}{2}',
-            erklaerung: 'Tiefenberechnung beim Boden- und Betonradar (GPR): c_0 = Lichtgeschwindigkeit im Vakuum, \\varepsilon_r = relative Dielektrizitätskonstante des Baustoffs, t = Signallaufzeit.',
-            quelle: 'DGZfP Richtlinie B1'
-          },
-          {
-            formel: 'I = I_0 \\cdot e^{-\\mu \\cdot d}',
-            erklaerung: 'Lambert-Beersches Schwächungsgesetz für Durchstrahlungsprüfungen (Röntgen- / Gammametrie): I_0 = Ursprungsintensität, \\mu = linearer Schwächungskoeffizient, d = Bauteildicke.',
-            quelle: 'DIN EN ISO 5579'
-          }
-        ]}
+        literatur={inhalt.daten["ZfP.literatur"]}
+        regelwerke={inhalt.daten["ZfP.regelwerke"]}
+        formeln={inhalt.daten["ZfP.formeln"]}
       />
-      <style>{`
-        @keyframes scan {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(1000%); }
-        }
-      `}</style>
+      <style>{inhalt.werte.keyframesScan0Transform}</style>
     </div>
   );
 }

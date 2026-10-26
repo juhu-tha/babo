@@ -1,6 +1,8 @@
 // Ausgelagert aus src/modules/Stahlbetoninstandhaltung.tsx (AP 5.2)
 import React from 'react';
 import { Wrench, Info } from 'lucide-react';
+import inhalt from '@/content/stahlbetoninstandhaltung/ProdukteTab.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface ProdukteTabProps {
   productApp: 'wall' | 'deck' | 'balcony' | 'sewage';
@@ -14,62 +16,13 @@ export default function ProdukteTab({ productApp, setProductApp, setStatikRequir
     <div className="space-y-6 animate-in fade-in duration-300">
       <div className="bg-white border border-home-grau/30 text-text-main p-5 rounded-2xl shadow-sm">
         <h3 className="font-bold text-text-main text-base flex items-center gap-2">
-          <Wrench className="text-shiraz" size={20} />
-          Systematik der Instandsetzungsprodukte &amp; Betonersatzsysteme
-        </h3>
-        <p className="text-xs text-text-main/70 mt-1 leading-relaxed border-t border-home-grau/20 pt-2">
-          Je nach Schadensbild, statischer Beanspruchung und Umgebungsfeuchte kommen verschiedene Mörtelsysteme nach DIN EN 1504-3 und der TR Instandhaltung (DIBt / ehemals DAfStb) zum Einsatz: CC, PCC, SPCC oder PC.
-        </p>
+          <Wrench className="text-shiraz" size={20} /><MdText text={inhalt.texte.systematikDerInstandsetzungsprodukteBeto} /></h3>
+        <p className="text-xs text-text-main/70 mt-1 leading-relaxed border-t border-home-grau/20 pt-2"><MdText text={inhalt.texte.jeNachSchadensbildStatischer} /></p>
       </div>
 
       {/* Mörtelsysteme Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {[
-          {
-            title: 'CC-Mörtel (RM)',
-            sub: 'Cementitious Mortar / Reparaturmörtel',
-            desc: 'Reine zementgebundene Mörtelsysteme ohne nennenswerten Polymerzusatz. Nur für statisch ruhende Bauteile geeignet.',
-            binder: 'Zement (starr)',
-            density: 'Sehr hoch (~2,2 kg/dm³)',
-            thickness: '10 - 50 mm (einlagig)',
-            eMod: 'Hoch (~25-35 GPa)',
-            shrink: 'Mittel bis hoch',
-            color: 'border-home-grau/30'
-          },
-          {
-            title: 'PCC-Mörtel',
-            sub: 'Polymer Cement Concrete',
-            desc: 'Kunststoffmodifizierter zementgebundener Mörtel (zweikomponentig). Standard bei dymamisch / thermisch belasteten Bauwerken.',
-            binder: 'Zement + Dispersionspulver/Acrylat',
-            density: 'Mittel (~2,0 kg/dm³)',
-            thickness: '5 - 40 mm (mehrlagig)',
-            eMod: 'Reduziert (~18-25 GPa)',
-            shrink: 'Sehr gering (durch Polymere)',
-            color: 'border-shiraz/50'
-          },
-          {
-            title: 'SPCC-Mörtel',
-            sub: 'Sprayed Polymer Cement Concrete',
-            desc: 'Spritzbarer, polymer-zementgebundener Mörtel. Ideal für großflächige Schichtdicken und maschinellen Einbau (z.B. Tunnel, Brücken).',
-            binder: 'Zement + spritzbare polymere Additive',
-            density: 'Hoch (durch Verdichtung)',
-            thickness: '20 - 80 mm (spritztechnisch)',
-            eMod: 'Mittel (~22-28 GPa)',
-            shrink: 'Gering',
-            color: 'border-home-grau/30'
-          },
-          {
-            title: 'PC-Mörtel',
-            sub: 'Polymer Concrete / Harzmörtel',
-            desc: 'Vollständig reaktionsharzgebundener Mörtel ohne Zementanteil. Extrem widerstandsfähig, chemisch hochresistent und wasserdicht.',
-            binder: 'Epoxidharz (EP) oder PUR + Sand',
-            density: 'Gering (~1,8 kg/dm³)',
-            thickness: '5 - 30 mm',
-            eMod: 'Sehr hoch / variabel (~15-40 GPa)',
-            shrink: 'Extrem gering',
-            color: 'border-amber-500'
-          }
-        ].map((m, idx) => (
+        {inhalt.daten.ProdukteTab.map((m, idx) => (
           <div key={idx} className={`bg-white p-5 rounded-2xl border ${m.color} shadow-sm space-y-3 flex flex-col justify-between`}>
             <div>
               <h4 className="font-extrabold text-base text-slate-950">{m.title}</h4>
@@ -104,21 +57,16 @@ export default function ProdukteTab({ productApp, setProductApp, setStatikRequir
         {/* Product Finder Panel */}
         <div className="lg:col-span-5 bg-white p-5 sm:p-6 rounded-2xl border border-home-grau/25 shadow-sm space-y-4">
           <div className="border-b border-home-grau/30 pb-2">
-            <h4 className="font-bold text-slate-900 text-sm uppercase tracking-wider text-shiraz">Interaktiver System-Finder</h4>
-            <p className="text-xs text-home-grau">Ermitteln Sie das passende Instandsetzungsprodukt für Ihren Anwendungsfall</p>
+            <h4 className="font-bold text-slate-900 text-sm uppercase tracking-wider text-shiraz"><MdText text={inhalt.texte.interaktiverSystemFinder} /></h4>
+            <p className="text-xs text-home-grau"><MdText text={inhalt.texte.ermittelnSieDasPassende} /></p>
           </div>
 
           <div className="space-y-3.5 text-xs">
             {/* Select Application area */}
             <div>
-              <label className="block font-bold text-slate-800 mb-1.5">1. Bauteiltyp / Belastungsszenario:</label>
+              <label className="block font-bold text-slate-800 mb-1.5"><MdText text={inhalt.texte.t1BauteiltypBelastungsszenario} /></label>
               <div className="space-y-2">
-                {[
-                  { id: 'wall', label: 'Feuchte Vertikalflächen (Wände, Pfeiler)', desc: 'Statischer Lastabtrag, vertikal oder Überkopf' },
-                  { id: 'deck', label: 'Befahrbare Horizontalflächen', desc: 'Parkdecks, Rampen, mechanische Abnutzung' },
-                  { id: 'balcony', label: 'Kosmetische Bauteile (Balkone, Brüstungen)', desc: 'Geringe statische Einwirkung, Witterung' },
-                  { id: 'sewage', label: 'Chemischer Angriff (Kläranlagen, Kanäle)', desc: 'Säuren, Laugen, starke Zersetzungsgefahr' }
-                ].map((item) => (
+                {inhalt.daten.ProdukteTab_2.map((item) => (
                   <button
                     key={item.id}
                     type="button"
@@ -134,23 +82,19 @@ export default function ProdukteTab({ productApp, setProductApp, setStatikRequir
 
             {/* Statische Mitwirkung */}
             <div>
-              <label className="block font-bold text-slate-800 mb-1.5">2. Statische Mitwirkung erforderlich? (Lastfortleitung)</label>
+              <label className="block font-bold text-slate-800 mb-1.5"><MdText text={inhalt.texte.t2StatischeMitwirkungErforderlich} /></label>
               <div className="grid grid-cols-2 gap-2">
                 <button
                   type="button"
                   onClick={() => setStatikRequired(true)}
                   className={`py-2 px-3 rounded-lg border text-center transition-all ${statikRequired ? 'bg-slate-800 text-white border-home-grau/30 font-bold' : 'bg-slate-50 text-slate-700 hover:bg-slate-100'}`}
-                >
-                  Ja (Tragend)
-                </button>
+                ><MdText text={inhalt.texte.jaTragend} /></button>
                 <button
                   type="button"
                   onClick={() => setStatikRequired(false)}
                   className={`py-2 px-3 rounded-lg border text-center transition-all ${!statikRequired ? 'bg-slate-800 text-white border-home-grau/30 font-bold' : 'bg-slate-50 text-slate-700 hover:bg-slate-100'}`}
                   style={{ background: !statikRequired ? '#1e293b' : '', color: !statikRequired ? '#ffffff' : '', borderColor: !statikRequired ? '#1e293b' : '' }}
-                >
-                  Nein (Nicht tragend)
-                </button>
+                ><MdText text={inhalt.texte.neinNichtTragend} /></button>
               </div>
             </div>
 
@@ -164,42 +108,42 @@ export default function ProdukteTab({ productApp, setProductApp, setStatikRequir
 
               if (productApp === 'wall') {
                 if (statikRequired) {
-                  recommendedType = 'PCC II / SPCC';
-                  mortarClass = 'R4 (statisch relevant)';
-                  detailDesc = 'Verwendung von spritzbarem oder zweikomponentigem kunststoffmodifiziertem Zementmörtel (PCC/SPCC). Gewährleistet sehr guten Verankerungsverbund und Karbonatisierungsschutz.';
-                  minBond = '≥ 2,0 MPa (nach Frost-Tausalz-Wechsel)';
-                  protectiveMeasure = 'OS-System (z.B. OS 4 oder OS 2/3)';
+                  recommendedType = inhalt.werte.pccIiSpcc;
+                  mortarClass = inhalt.werte.r4StatischRelevant;
+                  detailDesc = inhalt.werte.verwendungVonSpritzbaremOder;
+                  minBond = inhalt.werte.t20MpaNach;
+                  protectiveMeasure = inhalt.werte.osSystemZB;
                 } else {
-                  recommendedType = 'CC-Mörtel oder PCC I';
-                  mortarClass = 'R3 (statisch relevant oder nicht-statisch)';
-                  detailDesc = 'Händischer Einbau eines CC-Reparaturmörtels (Klasse R3) möglich. Geringe Zugkräfte zu erwarten.';
+                  recommendedType = inhalt.werte.ccMörtelOderPcc;
+                  mortarClass = inhalt.werte.r3StatischRelevantOder;
+                  detailDesc = inhalt.werte.händischerEinbauEinesCc;
                   minBond = '≥ 1,5 MPa';
-                  protectiveMeasure = 'Standard-Acrylatbeschichtung (Prinzip C)';
+                  protectiveMeasure = inhalt.werte.standardAcrylatbeschichtungPrinzipC;
                 }
               } else if (productApp === 'deck') {
-                recommendedType = 'PCC I (Fließmörtel) / PC (Epoxid)';
-                mortarClass = 'R4 (Extrem verschleißfest)';
-                detailDesc = 'Hohe Anforderungen an dynamische Raddrucklasten und Tausalzbeständigkeit. Ein herkömmlicher CC-Mörtel bricht hier auf.';
+                recommendedType = inhalt.werte.pccIFließmörtelPc;
+                mortarClass = inhalt.werte.r4ExtremVerschleißfest;
+                detailDesc = inhalt.werte.hoheAnforderungenAnDynamische;
                 minBond = '≥ 2,0 MPa';
-                protectiveMeasure = 'Zwingend OS 8 oder OS 11 (befahrbarer Oberflächenschutz)';
+                protectiveMeasure = inhalt.werte.zwingendOs8Oder;
               } else if (productApp === 'sewage') {
-                recommendedType = 'PC-Mörtel (Epoxidharzmörtel)';
-                mortarClass = 'R4 (Chemisch beständig, pH-Wert < 4)';
-                detailDesc = 'Säuren im Abwasser zerstören das zementöse Zementstein-Gefüge (Säureangriff/Entkalkung). Harzbindung ist absolut resistent.';
-                minBond = '≥ 2,0 MPa (Haftuntergrund meist staub- und ölfrei)';
-                protectiveMeasure = 'Chemische Beschichtung oder GFK-Systemausmauerung';
+                recommendedType = inhalt.werte.pcMörtelEpoxidharzmörtel;
+                mortarClass = inhalt.werte.r4ChemischBeständigPh;
+                detailDesc = inhalt.werte.säurenImAbwasserZerstören;
+                minBond = inhalt.werte.t20MpaHaftuntergrund;
+                protectiveMeasure = inhalt.werte.chemischeBeschichtungOderGfk;
               } else {
-                recommendedType = 'PCC / Händischer RM-Mörtel';
-                mortarClass = 'R2 / R3 (nicht statisch)';
-                detailDesc = 'Kosmetische Ausbrüche im Außenbereich können gut händisch mit gebrauchsfertigem PCC-Reparaturmörtel ausgebessert werden.';
-                minBond = '≥ 0,8 bis 1,5 MPa';
-                protectiveMeasure = 'Dünner carbonatisierungsbremsender Schutzanstrich (OS 1/4)';
+                recommendedType = inhalt.werte.pccHändischerRmMörtel;
+                mortarClass = inhalt.werte.r2R3NichtStatisch;
+                detailDesc = inhalt.werte.kosmetischeAusbrücheImAußenbereich;
+                minBond = inhalt.werte.t08Bis1;
+                protectiveMeasure = inhalt.werte.dünnerCarbonatisierungsbremsenderSchutza;
               }
 
               return (
                 <div className="p-3 bg-slate-50 border border-home-grau/30 rounded-xl space-y-2 mt-2">
                   <div className="text-xs">
-                    <span className="text-slate-500 uppercase block font-bold text-xs">Empfohlene Systematik:</span>
+                    <span className="text-slate-500 uppercase block font-bold text-xs"><MdText text={inhalt.texte.empfohleneSystematik} /></span>
                     <strong className="text-sm font-bold text-slate-900 block mt-0.5">{recommendedType}</strong>
                     <span className="inline-block mt-1 px-1.5 py-0.5 bg-shiraz/10 text-shiraz font-semibold text-xs rounded-md">{mortarClass}</span>
                   </div>
@@ -224,8 +168,8 @@ export default function ProdukteTab({ productApp, setProductApp, setStatikRequir
         <div className="lg:col-span-7 bg-white p-5 sm:p-6 rounded-2xl border border-home-grau/25 shadow-sm space-y-3">
           <div className="border-b border-home-grau/30 pb-2 flex justify-between items-center">
             <div>
-              <h4 className="font-bold text-slate-900 text-sm uppercase tracking-wider text-slate-800">Prüfnachweise &amp; Mindest-Anforderungen</h4>
-              <p className="text-xs text-home-grau">Technische Leistungskriterien nach DIN EN 1504-3 (Tragfähigkeit)</p>
+              <h4 className="font-bold text-slate-900 text-sm uppercase tracking-wider text-slate-800"><MdText text={inhalt.texte.prüfnachweiseMindestAnforderungen} /></h4>
+              <p className="text-xs text-home-grau"><MdText text={inhalt.texte.technischeLeistungskriterienNachDin} /></p>
             </div>
             <span className="text-xs bg-slate-100 font-mono px-2 py-0.5 rounded font-bold">Instandsetzungs-Zulassung</span>
           </div>
@@ -243,21 +187,21 @@ export default function ProdukteTab({ productApp, setProductApp, setStatikRequir
               </thead>
               <tbody className="divide-y divide-slate-100 text-[11.5px] text-slate-700">
                 <tr>
-                  <td className="p-2 font-bold text-slate-800">Druckfestigkeit (MPa)</td>
+                  <td className="p-2 font-bold text-slate-800"><MdText text={inhalt.texte.druckfestigkeitMpa} /></td>
                   <td className="p-2 text-center font-mono">≥ 10</td>
                   <td className="p-2 text-center font-mono">≥ 15</td>
                   <td className="p-2 text-center font-mono font-semibold text-slate-800 bg-slate-100/40">≥ 25</td>
                   <td className="p-2 text-center font-mono font-semibold text-shiraz bg-shiraz/5">≥ 45</td>
                 </tr>
                 <tr>
-                  <td className="p-2 font-bold text-slate-800">Chloridgehalt (%)</td>
+                  <td className="p-2 font-bold text-slate-800"><MdText text={inhalt.texte.chloridgehalt} /></td>
                   <td className="p-2 text-center font-mono">≤ 0,05</td>
                   <td className="p-2 text-center font-mono">≤ 0,05</td>
                   <td className="p-2 text-center font-mono font-semibold text-slate-800 bg-slate-100/40">≤ 0,05</td>
                   <td className="p-2 text-center font-mono font-semibold text-shiraz bg-shiraz/5">≤ 0,05</td>
                 </tr>
                 <tr>
-                  <td className="p-2 font-bold text-slate-800">Adhäsions-Haftzug (MPa)</td>
+                  <td className="p-2 font-bold text-slate-800"><MdText text={inhalt.texte.adhäsionsHaftzugMpa} /></td>
                   <td className="p-2 text-center font-mono">-</td>
                   <td className="p-2 text-center font-mono">≥ 0,8</td>
                   <td className="p-2 text-center font-mono font-semibold text-slate-800 bg-slate-100/40">≥ 1,5</td>
@@ -271,7 +215,7 @@ export default function ProdukteTab({ productApp, setProductApp, setStatikRequir
                   <td className="p-2 text-center font-semibold text-emerald-700 bg-shiraz/5">Erforderlich</td>
                 </tr>
                 <tr>
-                  <td className="p-2 font-bold text-slate-800">Modul Elastizität (GPa)</td>
+                  <td className="p-2 font-bold text-slate-800"><MdText text={inhalt.texte.modulElastizitätGpa} /></td>
                   <td className="p-2 text-center">-</td>
                   <td className="p-2 text-center">-</td>
                   <td className="p-2 text-center font-mono font-semibold text-slate-800 bg-slate-100/40">≥ 15</td>
@@ -286,9 +230,7 @@ export default function ProdukteTab({ productApp, setProductApp, setStatikRequir
               <Info size={13} />
               Regelwerkzusammenhang:
             </div>
-            <p>
-              Die Klassen <strong>R3</strong> und <strong>R4</strong> stellen statisch relevante Mörtelsysteme dar. Nach der Instandhaltungsrichtlinie (IhR) der DAfStb müssen Mörtelsysteme nicht nur Druckkräfte, sondern auch den Verbundnachweis under dynamischen Einflüssen fehlerfrei bestehen.
-            </p>
+            <p><MdText text={inhalt.texte.dieKlassenR3Und} /></p>
           </div>
         </div>
 

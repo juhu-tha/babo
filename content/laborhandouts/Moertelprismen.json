@@ -1,0 +1,50 @@
+{
+  "texte": {
+    "rCHälfte1": "R_c Hälfte 1 in MPa",
+    "rCHälfte2": "R_c Hälfte 2 in MPa",
+    "normfestigkeitNach28Tagen": "Normfestigkeit nach 28 Tagen (DIN EN 197-1)",
+    "untergrenzeInMpa": "Untergrenze in MPa",
+    "obergrenzeInMpa": "Obergrenze in MPa",
+    "versuchsHandoutMörtelprismenNach": " Versuchs-Handout: Mörtelprismen nach DIN EN 196-1",
+    "normmörtelPrismen40Mm": "Normmörtel, Prismen 40 mm × 40 mm × 160 mm, Biegezug- und Druckfestigkeit, Zuordnung zur Zementfestigkeitsklasse",
+    "mitDemNormmörtelWird": "Mit dem Normmörtel wird die Festigkeit des Zements unter festgelegten Bedingungen bestimmt – unabhängig von Gesteinskörnung und Betonrezeptur. Die Prismenprüfung ist damit die Grundlage der Festigkeitsklassen 32,5, 42,5 und 52,5.",
+    "zementartenNachDinEn": "Zementarten nach DIN EN 197-1, Hydratation und Festigkeitsentwicklung behandelt das Modul Bindemittel."
+  },
+  "werte": {
+    "biegezugfestigkeitRFMittel": "Biegezugfestigkeit R_f (Mittel)",
+    "druckfestigkeitRCMittel": "Druckfestigkeit R_c (Mittel)",
+    "serieZuVerwerfen": " – Serie zu verwerfen",
+    "rFMittel": "R_f (Mittel)",
+    "rCMittel": "R_c (Mittel)",
+    "verhältnisRCR": "Verhältnis R_c / R_f",
+    "klasse28D": "Klasse (28 d)",
+    "druckfestigkeitDerHälften": "Druckfestigkeit der Hälften",
+    "druckfläche40Mm40": "Druckfläche 40 mm × 40 mm:",
+    "alleEinzelwerteLiegenInnerhalb": "Alle Einzelwerte liegen innerhalb ±10 % des Mittels:",
+    "biegezugMittelwertUndKlasse": "Biegezug-Mittelwert und Klasse",
+    "mittelDerBiegezugwerteKlasse": "Mittel der Biegezugwerte; Klasse nach der Untergrenze der Normfestigkeit:",
+    "dieNormGibtDie": "Die Norm gibt die Ergebnisse auf 0,1 MPa an. Die Anfangsfestigkeit (2 bzw. 7 Tage) unterscheidet zusätzlich die Klassen L, N und R.",
+    "dinEn1961": "DIN EN 196-1:2016-11; Klassen nach DIN EN 197-1:2011-11",
+    "zementeUndIhreFestigkeitsentwicklung": "Zemente und ihre Festigkeitsentwicklung",
+    "zumModulBindemittel": "Zum Modul Bindemittel",
+    "oktober2026Ap6": "Oktober 2026 (AP 6.4: Handout neu erstellt; Pilot im Labor und fachliche Freigabe ausstehend)"
+  },
+  "daten": {
+    "Moertelprismen.literatur": [
+      "Verein Deutscher Zementwerke (Hrsg.): Zement-Taschenbuch. Düsseldorf: Verlag Bau+Technik (jeweils aktuelle Ausgabe)",
+      "Locher, F. W.: Zement – Grundlagen der Herstellung und Verwendung. Düsseldorf: Verlag Bau+Technik 2000"
+    ],
+    "Moertelprismen.formeln": [
+      {
+        "formel": "R_f = \\frac{1{,}5 \\cdot F_f \\cdot l}{b^3}",
+        "erklaerung": "Biegezugfestigkeit im Dreipunkt-Biegeversuch (l = 100 mm, b = 40 mm).",
+        "quelle": "DIN EN 196-1:2016-11"
+      },
+      {
+        "formel": "R_c = F_c / 1600\\,\\text{mm}^2",
+        "erklaerung": "Druckfestigkeit an der Prismenhälfte.",
+        "quelle": "DIN EN 196-1:2016-11"
+      }
+    ]
+  }
+}

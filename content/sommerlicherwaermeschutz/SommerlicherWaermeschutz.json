@@ -1,0 +1,219 @@
+{
+  "texte": {
+    "sommerlicherWärmeschutzDin4108": " Sommerlicher Wärmeschutz (DIN 4108-2)",
+    "sonneneintragskennwertVerfahrenNachDin": "Sonneneintragskennwert-Verfahren nach DIN 4108-2:2013-02, Abschnitt 8 – Anforderung nach § 14 GModG (vormals GEG)",
+    "vorhandenenSonneneintragskennwert": "vorhandenen Sonneneintragskennwert",
+    "zulässigenWert": " zulässigen Wert",
+    "zielUndRechtlicheAnforderung": "Ziel und rechtliche Anforderung",
+    "nach14Abs1": "Nach **§ 14 Abs. 1 GModG** (bis 28.07.2026 Gebäudeenergiegesetz GEG) ist ein zu errichtendes Gebäude so auszuführen, dass der Sonneneintrag durch einen ausreichenden baulichen sommerlichen Wärmeschutz begrenzt wird. Die Anforderungen an die Tageslichtversorgung bleiben unberührt.",
+    "ausreichendIstDerSommerliche": "Ausreichend ist der sommerliche Wärmeschutz nach **§ 14 Abs. 2**, wenn die Anforderungen nach DIN 4108-2:2013-02, Abschnitt 8, eingehalten sind: Der nach 8.3.2 bestimmte Sonneneintragskennwert darf den zulässigen Wert nach 8.3.3 nicht überschreiten. Alternativ erlaubt **Abs. 3** eine thermische Gebäudesimulation nach 8.4; die Übertemperaturgradstunden nach Tab. 9 dürfen dann nicht überschritten werden. Nach **Abs. 5** entfallen die Berechnungen unter den Voraussetzungen von Abschnitt 8.2.2.",
+    "wirdEinWohngebäudeMit": "Wird ein Wohngebäude mit Kühlanlage über die Simulation nachgewiesen, sind nach **Abs. 4** bauliche Maßnahmen nach DIN 4108-2, Abschnitt 4.3, vorzusehen, soweit sich die Investitionen über eingesparte Kühlenergie innerhalb der üblichen Nutzungsdauer erwirtschaften.",
+    "normenstand14GmodgVerweist": "**Normenstand:** § 14 GModG verweist ausdrücklich auf DIN 4108-2:2013-02. Die Neuausgabe DIN 4108-2:2026-05 ist erschienen und gliedert den sommerlichen Wärmeschutz neu (Sonneneintragskennwerte, Simulation und Abminderungsfaktoren in eigenen Abschnitten). Alle Werte dieses Moduls folgen der Ausgabe 2013-02; vor einer Anwendung nach der Neuausgabe sind Tabellen und Abschnittsnummern abzugleichen.",
+    "dieTrägheitEinzelnerBauteile": "Die Trägheit einzelner Bauteile (Phasenverschiebung, TAV) beschreibt das Modul Bauphysik. Sie ist **kein** Kriterium des Nachweises nach DIN 4108-2: Maßgebend sind Sonneneintrag, Speichermasse des Raums und Lüftung.",
+    "vorhandenerSonneneintragskennwert": "Vorhandener Sonneneintragskennwert",
+    "nachzuweisenIstDerKritische": "Nachzuweisen ist der **kritische Raum** an der Fassade – in der Regel ein Raum mit großem Fensterflächenanteil, Fenstern nach zwei oder mehr Richtungen (Südost, Südwest) oder mit Dachflächenfenstern. Ist er nachgewiesen, gelten die übrigen Räume als erfüllt.",
+    "zulässigerSonneneintragskennwert": "Zulässiger Sonneneintragskennwert",
+    "dieAnteiligenKennwerteNach": "Die anteiligen Kennwerte nach Tab. 8 bilden die Einflüsse ab: ",
+    "klimaregionBauartUndNachtlüftung": " Klimaregion, Bauart und Nachtlüftung;",
+    "korrekturFürDenGrundflächenbezogenen": " Korrektur für den grundflächenbezogenen Fensterflächenanteil (S1 gilt für etwa 25 %);",
+    "geneigteFenster": " geneigte Fenster; ",
+    "nordorientierungOderDauerndeEigenverscha": " Nordorientierung oder dauernde Eigenverschattung; ",
+    "passiveKühlungBeiUnterschiedlichen": " passive Kühlung. Bei unterschiedlichen Fenstern eines Raums dürfen die Anteile flächenanteilig ermittelt werden.",
+    "sommerklimaregionenABC": "Sommerklimaregionen A, B, C",
+    "dieKarteInAbschnitt": "Die Karte in Abschnitt 8.1 teilt Deutschland nach Lufttemperatur und Solarstrahlung in drei Regionen. Jeder Region ist ein Bezugswert der Innentemperatur zugeordnet: A sommerkühl ",
+    "cBGemäßigt": " °C, B gemäßigt ",
+    "cCSommerheiß": " °C, C sommerheiß ",
+    "cDieHöherenBezugswerte": " °C. Die höheren Bezugswerte berücksichtigen die Gewöhnung der Menschen an das regionale Sommerklima. Ist die Zuordnung nicht eindeutig, gilt die höhere Region (B statt A, C statt A oder B).",
+    "bauartUndWirksameWärmespeicherfähigkeit": "Bauart und wirksame Wärmespeicherfähigkeit",
+    "speicherfähigeBauteileNehmenTagsüber": "Speicherfähige Bauteile nehmen tagsüber Wärme auf und geben sie nachts ab. Eingestuft wird über",
+    "leichtUnter50Mittel": ": leicht unter 50, mittel 50 bis 130, schwer über 130 Wh/(m²K). Angerechnet werden nur raumnahe Schichten (Außenbauteile höchstens die inneren 10 cm, nur bis zur ersten Dämmschicht). Pauschal **mittel** bei Stahlbetondecke und massiven Bauteilen mit gemittelter Rohdichte ≥ 600 kg/m³, **schwer** ab 1.600 kg/m³ – jeweils ohne Innendämmung, abgehängte Decke und Räume über 4,5 m Höhe. Ohne Nachweis gilt **leicht**.",
+    "nachtlüftungUndPassiveKühlung": "Nachtlüftung und passive Kühlung",
+    "passiveKühlung": " Passive Kühlung",
+    "thermischeGebäudesimulationAbschnitt8": "Thermische Gebäudesimulation (Abschnitt 8.4)",
+    "fürRäumeAufDie": "Für Räume, auf die das vereinfachte Verfahren nicht passt (Doppelfassaden, transparente Wärmedämmung, Hallen, mehrgeschossige offene Räume) oder um Spielräume auszuloten, wird mit einem dynamischen Simulationsprogramm und dem Testreferenzjahr der Region gerechnet. Ausgewertet werden die **Übertemperaturgradstunden**: Für jede Stunde der Anwesenheitszeit wird die Überschreitung der operativen Raumtemperatur über den Bezugswert der Region aufsummiert. Zulässig sind nach Tab. 9 höchstens ",
+    "khAFürWohngebäude": " Kh/a für Wohngebäude und ",
+    "khAFürNichtwohngebäude": " Kh/a für Nichtwohngebäude.",
+    "beispiel1200Kh": "Beispiel: 1.200 Kh/a entsprechen 1.200 Stunden mit 1 K oder 300 Stunden mit 4 K über dem Bezugswert.",
+    "din41082Regelt": "DIN 4108-2 regelt neben dem Sommerfall den Mindestwärmeschutz im Winter (Temperaturfaktor, 80-%-Schimmelkriterium). Taupunkt, Schimmelgrenze und Glaser-Verfahren rechnet das Modul Feuchteschutz.",
+    "tab6FensterflächenanteilBis": "Tab. 6 – Fensterflächenanteil, bis zu dem der Nachweis entfallen kann",
+    "neigungGegenüberDerHorizontalen": "Neigung gegenüber der Horizontalen",
+    "über60Bis90": "über 60° bis 90°",
+    "nordwestÜberSüdBis": "Nordwest über Süd bis Nordost",
+    "alleAnderenNordorientierungen": "alle anderen Nordorientierungen",
+    "von0Bis60": "von 0° bis 60°",
+    "alleOrientierungen": "alle Orientierungen",
+    "mitDerSummeAller": " mit der Summe aller Fensterflächen des Raums; bei Fenstern unterschiedlicher Orientierung gilt der kleinere Grenzwert. Zusätzlich entfällt der Nachweis nach 8.2.2 bei **Wohnnutzung**, wenn der kritische Raum höchstens 35 % Fensterflächenanteil hat und seine Ost-, Süd- und Westfenster außenliegenden Sonnenschutz mit ",
+    "glasG040": " (Glas g > 0,40) bzw.",
+    "g040Haben": " (g ≤ 0,40) haben – praktisch Rollläden oder Raffstores.",
+    "tab7AnhaltswerteFür": "Tab. 7 – Anhaltswerte für Abminderungsfaktoren F_C",
+    "sonnenschutzvorrichtungFestInstalliert": "Sonnenschutzvorrichtung (fest installiert)",
+    "g040Zweifach": "g ≤ 0,40 zweifach (Sonnenschutzglas)",
+    "g040Dreifach": "g > 0,40 dreifach",
+    "g040Zweifach2": "g > 0,40 zweifach",
+    "tab8AnteiligeSonneneintragskennwerte": "Tab. 8 – Anteilige Sonneneintragskennwerte S_x",
+    "s1Nachtlüftung": "S1: Nachtlüftung",
+    "wiedergabeNachKalksandsteinPlanungshandb": "Wiedergabe nach KALKSANDSTEIN-Planungshandbuch, Kap. 11 (Tafel 3) und TR Sonnenschutz des BVRS (Tabelle 3); maßgebend ist der Normtext DIN 4108-2:2013-02, Tab. 8.",
+    "gebäudeUndRaum": "Gebäude und Raum",
+    "nettogrundflächeAGM": "Nettogrundfläche A_G [m²]",
+    "passiveKühlungS6": " Passive Kühlung (S6)",
+    "fensterDesKritischenRaums": "Fenster des kritischen Raums",
+    "fensterHinzufügen": " Fenster hinzufügen",
+    "sonnenschutzTab7": "Sonnenschutz (Tab. 7)",
+    "neigung90SenkrechtesFassadenfenster": "Neigung 90° = senkrechtes Fassadenfenster; bis 60° zählt ein Fenster als geneigt (Dachflächenfenster). F_C-Spalte nach g und Scheibenzahl.",
+    "nachweisverzichtNach82": "**Nachweisverzicht nach 8.2.2:** Tab. 6: f_WG = ",
+    "t35Regel": " % · 35-%-Regel: "
+  },
+  "werte": {
+    "kennwerteTabellen": "Kennwerte & Tabellen",
+    "erhöhtN2H": "erhöht (n ≥ 2 h⁻¹)",
+    "hochN5H": "hoch (n ≥ 5 h⁻¹)",
+    "aSommerkühl": "A – sommerkühl",
+    "bGemäßigt": "B – gemäßigt",
+    "cSommerheiß": "C – sommerheiß",
+    "fensterWest": "Fenster West",
+    "bereicheSommerlicherWärmeschutz": "Bereiche Sommerlicher Wärmeschutz",
+    "phasenverschiebungUndTemperaturamplitude": "Phasenverschiebung und Temperaturamplitudendämpfung → Modul Bauphysik",
+    "zumModulBauphysik": "Zum Modul Bauphysik",
+    "aWJFensterfläche": "$A_{w,j}$: Fensterfläche (lichtes Rohbaumaß) des Fensters j in m²",
+    "gGesamtenergiedurchlassgradDerVerglasung": "$g$: Gesamtenergiedurchlassgrad der Verglasung (senkrechter Strahlungseinfall, Herstellerangabe)",
+    "fCAbminderungsfaktorDer": "$F_C$: Abminderungsfaktor der fest installierten Sonnenschutzvorrichtung nach Tab. 7; alternativ ein produktspezifischer Wert für $g_{tot}$ (z. B. nach DIN EN 14501 bzw. DIN EN ISO 52022)",
+    "aGNettogrundflächeDes": "$A_G$: Nettogrundfläche des Raums aus den lichten Raummaßen; bei sehr tiefen Räumen ist die Raumtiefe auf das Dreifache der lichten Raumhöhe begrenzt",
+    "winterlicherWärmeUndFeuchteschutz": "Winterlicher Wärme- und Feuchteschutz → Modul Feuchteschutz",
+    "zumModulFeuchteschutz": "Zum Modul Feuchteschutz",
+    "fWgAW": "$f_{WG} = A_W / A_G$",
+    "nachweisErfüllt": "Nachweis erfüllt",
+    "nachweisNichtErfüllt": "Nachweis nicht erfüllt",
+    "wirksamSindAußenliegenderSonnenschutz": " Wirksam sind außenliegender Sonnenschutz, kleinere oder anders orientierte Fenster, mehr Speichermasse und Nachtlüftung.",
+    "fensterflächeGrundfläche": "Fensterfläche / Grundfläche",
+    "passiveKühlung": "passive Kühlung",
+    "keinePassiveKühlung": "keine passive Kühlung",
+    "nichtErfüllt": "nicht erfüllt",
+    "nurFürWohnnutzung": "nur für Wohnnutzung",
+    "dieBerechnungWäreEntbehrlich": " Die Berechnung wäre entbehrlich.",
+    "derRechnerischeNachweisIst": " Der rechnerische Nachweis ist zu führen.",
+    "ihrRechenwegSonneneintragskennwerte": "Ihr Rechenweg: Sonneneintragskennwerte",
+    "gesamtenergiedurchlassgradMitSonnenschut": "Gesamtenergiedurchlassgrad mit Sonnenschutz",
+    "vorhandenerSonneneintragskennwert": "Vorhandener Sonneneintragskennwert",
+    "grundflächenbezogenerFensterflächenantei": "Grundflächenbezogener Fensterflächenanteil",
+    "summeDerFensterflächenGeteilt": "Summe der Fensterflächen geteilt durch die Nettogrundfläche:",
+    "anteilskennwerteS1UndS2": "Anteilskennwerte S1 und S2",
+    "anteilskennwerteS3BisS6": "Anteilskennwerte S3 bis S6",
+    "sonnenschutzglasFlächenanteiligGeneigteF": "Sonnenschutzglas (flächenanteilig), geneigte Fenster, Nordorientierung bzw. Eigenverschattung, passive Kühlung:",
+    "derVorhandeneWertHält": "Der vorhandene Wert hält den zulässigen ein:",
+    "derVorhandeneWertÜberschreitet": "Der vorhandene Wert überschreitet den zulässigen:",
+    "derNachweisGiltFür": "Der Nachweis gilt für den kritischen Raum; maßgebend sind die Tabellenwerte der DIN 4108-2 bzw. produktspezifische g_tot-Werte.",
+    "din410822013": "DIN 4108-2:2013-02, 8.3, Tab. 7 und 8; § 14 GModG",
+    "beispiel1WohnzimmerMit": "Beispiel 1: Wohnzimmer mit großer Südverglasung (Region B)",
+    "sonnenschutzAlleinSenktS": "Sonnenschutz allein senkt S_vorh nur auf 0,065 – erst zusammen mit mehr Speichermasse wird der Nachweis erfüllt. Hohe Nachtlüftung (S1 = 0,152) hätte ebenfalls genügt.",
+    "din4108220132": "DIN 4108-2:2013-02, Tab. 7 und 8; Rechengang nach TR Sonnenschutz (BVRS, 2024), Beispiel 3.5.2",
+    "beispiel2DachgeschossIn": "Beispiel 2: Dachgeschoss in Holzbauweise mit Dachflächenfenster",
+    "erfülltDankKleinemFensterflächenanteil": "Erfüllt dank kleinem Fensterflächenanteil und Nachtlüftung. Ohne Nachtlüftung (S1 = 0,056) wäre S_zul = 0,052 < 0,059 – im Holzbau entscheidet die Lüftung.",
+    "din4108220133": "DIN 4108-2:2013-02, 8.2.2, Tab. 6 bis 8",
+    "oktober2026Ap3": "Oktober 2026 (AP 3.13 neu erstellt; Tabellenwerte gegen zwei Sekundärquellen geprüft, Abgleich mit DIN 4108-2:2026-05 und fachliche Freigabe durch den Autor ausstehend)",
+    "bvrsTrSonnenschutzPdf": "BVRS: TR Sonnenschutz (PDF, April 2024)",
+    "kalksandsteinPlanungshandbuchKap11": "KALKSANDSTEIN-Planungshandbuch, Kap. 11 Sommerlicher Wärmeschutz (PDF)"
+  },
+  "daten": {
+    "SommerlicherWaermeschutz": [
+      {
+        "t": "1 · Nachweisverzicht",
+        "d": "Kleiner Fensterflächenanteil nach Tab. 6 oder Wohnraum mit außenliegendem Sonnenschutz (35-%-Regel, 8.2.2)."
+      },
+      {
+        "t": "2 · Sonneneintragskennwerte",
+        "d": "Handrechenverfahren nach 8.3 für den kritischen Raum: $S_{vorh} \\le S_{zul}$."
+      },
+      {
+        "t": "3 · Thermische Simulation",
+        "d": "Dynamische Gebäudesimulation nach 8.4: Übertemperaturgradstunden unter dem Anforderungswert der Tab. 9."
+      }
+    ],
+    "SommerlicherWaermeschutz.schritte": [
+      {
+        "titel": "Eingangswerte",
+        "erklaerung": "Wohnzimmer 5 × 5 m (A_G = 25 m²), Fensterfläche 11 m² (f_WG = 0,44), Zweifach-Wärmeschutzglas g = 0,59, Rollladen ¾ geschlossen; mittlere Bauart, erhöhte Nachtlüftung, Region B.",
+        "formel": "F_C = 0{,}30 \\;\\Rightarrow\\; g_{tot} = 0{,}59 \\cdot 0{,}30 = 0{,}177"
+      },
+      {
+        "titel": "Vorhandener Kennwert",
+        "erklaerung": "Fensterfläche mal g_tot, bezogen auf die Grundfläche:",
+        "formel": "S_{vorh} = \\frac{11 \\cdot 0{,}177}{25} = 0{,}078"
+      },
+      {
+        "titel": "Zulässiger Kennwert",
+        "erklaerung": "S1 aus Tab. 8 (Wohnen, B, mittel, erhöhte Nachtlüftung); S2 mit f_WG = 0,44; S3 bis S6 entfallen:",
+        "formel": "S_{zul} = 0{,}103 + (0{,}060 - 0{,}231 \\cdot 0{,}44) = 0{,}103 - 0{,}042 = 0{,}061"
+      },
+      {
+        "titel": "Bewertung",
+        "erklaerung": "Der Nachweis ist nicht erfüllt; auch die 35-%-Regel greift nicht (f_WG = 44 %).",
+        "formel": "S_{vorh} = 0{,}078 > S_{zul} = 0{,}061"
+      },
+      {
+        "titel": "Verbesserung",
+        "erklaerung": "Raffstore mit 45°-Lamellen (F_C = 0,25) und schwere Bauart (Stahlbetondecke, Kalksandstein):",
+        "formel": "S_{vorh} = \\frac{11 \\cdot 0{,}59 \\cdot 0{,}25}{25} = 0{,}065 \\le S_{zul} = 0{,}113 - 0{,}042 = 0{,}071"
+      }
+    ],
+    "SommerlicherWaermeschutz.schritte_2": [
+      {
+        "titel": "Eingangswerte",
+        "erklaerung": "Kinderzimmer A_G = 14 m², leichte Bauart, erhöhte Nachtlüftung, Region B. Dachflächenfenster Süd 1,5 m² (45°, Dreifachglas g = 0,50, Außenrollladen ¾: F_C = 0,30); Giebelfenster West 1,2 m² ohne Sonnenschutz.",
+        "formel": "g_{tot,1} = 0{,}50 \\cdot 0{,}30 = 0{,}150, \\quad g_{tot,2} = 0{,}50"
+      },
+      {
+        "titel": "Vorhandener Kennwert",
+        "erklaerung": "Beide Fenster zusammen:",
+        "formel": "S_{vorh} = \\frac{1{,}5 \\cdot 0{,}150 + 1{,}2 \\cdot 0{,}50}{14} = \\frac{0{,}825}{14} = 0{,}059"
+      },
+      {
+        "titel": "Nachweisverzicht?",
+        "erklaerung": "Mit Dachflächenfenster gilt nach Tab. 6 die Grenze 7 %; das Westfenster hat keinen Außenschutz, die 35-%-Regel greift nicht.",
+        "formel": "f_{WG} = \\frac{2{,}7}{14} = 0{,}193 > 0{,}07"
+      },
+      {
+        "titel": "Anteilskennwerte",
+        "erklaerung": "S1 (Wohnen, B, leicht, erhöht) = 0,088; S2 mit f_WG; S4 mit dem Anteil geneigter Fenster f_neig = 1,5 / 2,7 = 0,556:",
+        "formel": "S_2 = 0{,}060 - 0{,}231 \\cdot 0{,}193 = 0{,}015, \\quad S_4 = -0{,}035 \\cdot 0{,}556 = -0{,}019"
+      },
+      {
+        "titel": "Nachweis",
+        "erklaerung": "Summe der Anteile und Vergleich:",
+        "formel": "S_{zul} = 0{,}088 + 0{,}015 - 0{,}019 = 0{,}084 \\ge S_{vorh} = 0{,}059"
+      }
+    ],
+    "SommerlicherWaermeschutz.regelwerke": [
+      {
+        "title": "DIN 4108-2:2026-05 (Wärmeschutz und Energie-Einsparung in Gebäuden – Teil 2: Wärmeschutz – Anforderungen, Berechnungsverfahren und Hinweise für Planung und Ausführung; sommerlicher Wärmeschutz neu gegliedert, Werte dieses Moduls noch nicht abgeglichen)"
+      },
+      {
+        "title": "DIN 4108-2:2013-02 (Vorgängerausgabe „Mindestanforderungen an den Wärmeschutz“; Abschnitt 8 mit Tab. 6 bis 9, in § 14 GModG in Bezug genommen)"
+      },
+      {
+        "title": "Gebäudemodernisierungsgesetz (GModG, vormals GEG), § 14 Sommerlicher Wärmeschutz",
+        "url": "https://www.gesetze-im-internet.de/geg/__14.html"
+      }
+    ],
+    "SommerlicherWaermeschutz.literatur": [
+      "Bundesverband Rollladen + Sonnenschutz e. V. (Hrsg.): TR Sonnenschutz – Nachweisverfahren, Energieeinsparung, Tageslichtversorgung. Ausgabe April 2024, Bonn",
+      "Bundesverband Kalksandsteinindustrie e. V. (Hrsg.): KALKSANDSTEIN – Planungshandbuch, Kapitel 11 „Sommerlicher Wärmeschutz“. Stand 01/2018"
+    ],
+    "SommerlicherWaermeschutz.formeln": [
+      {
+        "formel": "S_{vorh} = \\frac{\\sum_j A_{w,j} \\cdot g_{tot,j}}{A_G}",
+        "erklaerung": "Vorhandener Sonneneintragskennwert des kritischen Raums; A_w Fensterfläche, g_tot Gesamtenergiedurchlassgrad einschließlich Sonnenschutz, A_G Nettogrundfläche.",
+        "quelle": "DIN 4108-2:2013-02, 8.3.2"
+      },
+      {
+        "formel": "g_{tot} = g \\cdot F_C",
+        "erklaerung": "Gesamtenergiedurchlassgrad mit Sonnenschutz; F_C Abminderungsfaktor der fest installierten Sonnenschutzvorrichtung.",
+        "quelle": "DIN 4108-2:2013-02, Tab. 7"
+      },
+      {
+        "formel": "S_{zul} = \\sum_x S_x, \\quad S_2 = a - b \\cdot f_{WG}",
+        "erklaerung": "Zulässiger Sonneneintragskennwert als Summe der anteiligen Kennwerte S1 bis S6; f_WG grundflächenbezogener Fensterflächenanteil.",
+        "quelle": "DIN 4108-2:2013-02, 8.3.3, Tab. 8"
+      }
+    ]
+  }
+}

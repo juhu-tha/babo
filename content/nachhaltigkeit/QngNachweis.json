@@ -1,0 +1,62 @@
+{
+  "texte": {
+    "gebäudekonfigurationPrimärenergetik": "Gebäudekonfiguration & Primärenergetik",
+    "stellenSieBausubstanzUnd": "Stellen Sie Bausubstanz und Betriebsenergie ein, um die QNG-Jahresbilanz zu berechnen.",
+    "bruttogrundflächeBgf": "Bruttogrundfläche (BGF):",
+    "einfamilienhaus150M": "Einfamilienhaus (150 m²)",
+    "mehrfamilienhaus800M": "Mehrfamilienhaus (> 800 m²)",
+    "hauptsächlicheBauweiseTragwerkDecken": "Hauptsächliche Bauweise (Tragwerk & Decken):",
+    "energieträgerPrimärHeizungssystem": "Energieträger / Primär-Heizungssystem:",
+    "ökostromvertragZertifiziert": "Ökostromvertrag (Zertifiziert)",
+    "senktDenEmissionsfaktorDer": "Senkt den Emissionsfaktor der Wärmepumpenschleife.",
+    "erzeugtStromFürEigenverbrauch": "Erzeugt Strom für Eigenverbrauch & Netzeinspeisung.",
+    "prognostizierteJahresbilanz": "PROGNOSTIZIERTE JAHRESBILANZ",
+    "kgCoEqM": "kg CO₂-eq / m² NRF / Jahr",
+    "qngPremiumGrenzwert": "QNG-Premium Grenzwert:",
+    "qngPlusGrenzwert": "QNG-Plus Grenzwert:",
+    "projektlaufzeitReferenzwert": "Projektlaufzeit Referenzwert:",
+    "fossileEnergieBlockiertDas": "Fossile Energie blockiert das Siegel:",
+    "lösungInstalliereEineWärmepumpe": "Lösung: Installiere eine Wärmepumpe.",
+    "derErdgaskesselErzeugtExtreme": "Der Erdgaskessel erzeugt extreme Verbrennungsfrachten von ca. 28 kg CO₂/(m² NRF · a). Das QNG-Siegel ist so unmöglich zu erreichen.",
+    "graueEnergieDesMassivbaus": "Graue Energie des Massivbaus senken:",
+    "lösungErsetzeKlassischenBeton": "Lösung: Ersetze klassischen Beton durch Öko- oder RC-Beton bzw. wandle tragende Wände in Holzständerbauweisen um, um Negativgutschriften zu erwirtschaften.",
+    "deckenUndPfahlgründungenAus": "Decken und Pfahlgründungen aus Standardbeton binden Enormen Zement-Footprint.",
+    "pvPotenzialeAusschöpfen": "PV-Potenziale ausschöpfen:",
+    "lösungPvLeistungAuf": "Lösung: PV-Leistung auf mindestens 12 kWp auslegen.",
+    "diePhotovoltaikanlageSpeistWertvollen": "Die Photovoltaikanlage speist wertvollen Grünstrom ins Netz und verringert die eigene rechnerische Deckungslücke der QNG-Zertifizierung.",
+    "ausgezeichneteKfw40Qng": "Ausgezeichnete KfW 40 QNG-Förderfähigkeit:",
+    "ihrEntwurfErzieltMit": "Ihr Entwurf erzielt mit ",
+    "kgCoEqLocker": " kg CO₂-eq locker die Premium-Stufe. Sie erfüllen alle Anforderungen des BMWSB zur Beantragung zinsgünstiger Kredite."
+  },
+  "werte": {
+    "holzrahmenMassivholzbau": "Holzrahmen- & Massivholzbau",
+    "niedrigeGraueEnergie": "Niedrige graue Energie",
+    "ausgewogeneGraueEnergie": "Ausgewogene graue Energie",
+    "klassischerMassivbauMauerwerkBeton": "Klassischer Massivbau (Mauerwerk/Beton)",
+    "hoheGraueEnergie": "Hohe graue Energie"
+  },
+  "daten": {
+    "QngNachweis": [
+      {
+        "id": "waermepumpe",
+        "name": "Zentrale Luft-Wasser-Wärmepumpe",
+        "details": "Hocheffizienter Stromprozess"
+      },
+      {
+        "id": "fernwaerme",
+        "name": "Fern- / Nahwärmenetz mit Kraft-Wärme-Kopplung",
+        "details": "Fernwärme fossiler/regenerativer Mix"
+      },
+      {
+        "id": "biomasse",
+        "name": "Pelletkessel / Holzbiomasse",
+        "details": "CO2-neutraler Holzbrennstoff"
+      },
+      {
+        "id": "gasherdfossil",
+        "name": "Fossil-Brennwertkessel (Erdgas)",
+        "details": "Zukunftskritische fossile Verbrennung"
+      }
+    ]
+  }
+}

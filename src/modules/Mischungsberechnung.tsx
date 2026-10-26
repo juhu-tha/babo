@@ -22,6 +22,8 @@ import { GrenzwerteSection } from './mischungsberechnung/GrenzwerteSection';
 import { WalzKurvenSection } from './mischungsberechnung/WalzKurvenSection';
 import MischungEingaben from './mischungsberechnung/MischungEingaben';
 import MischungErgebnisse from './mischungsberechnung/MischungErgebnisse';
+import inhalt from '@/content/mischungsberechnung/Mischungsberechnung.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function Mischungsberechnung() {
   const [activeTab, setActiveTab] = useState<'berechnung' | 'anleitung' | 'walzkurven' | 'grenzwerte' | 'packungsdichte' | 'beispiele'>('berechnung');
@@ -346,7 +348,7 @@ export default function Mischungsberechnung() {
             xf4OhneLp = true;
             clsWz = 0.50;
             clsMinZ = 320;
-            clsMinC = 'C30/37 (nur mit LP zulässig)';
+            clsMinC = inhalt.werte.c3037NurMit;
             clsMinFestNum = 30;
           }
         }
@@ -381,7 +383,7 @@ export default function Mischungsberechnung() {
     const estimatedWater = Math.max(130, Math.round(KORN_WATER_BASE[groesstkorn] + KONSISTENZ_DATA[konsistenz].waterMod - lpWaterReduction));
 
     const radarChartData = {
-      labels: ['Karbonatisierung (XC)', 'Chloride (XD/XS)', 'Frost (XF)', 'Chemie (XA)', 'Verschleiß (XM)'],
+      labels: [inhalt.werte.karbonatisierungXc, inhalt.werte.chlorideXdXs, 'Frost (XF)', 'Chemie (XA)', inhalt.werte.verschleißXm],
       datasets: [
         {
           label: 'Beanspruchungsintensität',
@@ -482,8 +484,7 @@ export default function Mischungsberechnung() {
           }`}
           onClick={() => setActiveTab('grenzwerte')}
         >
-          <ShieldAlert size={16} /> Grenzwerte &amp; Klassen
-        </button>
+          <ShieldAlert size={16} /><MdText text={inhalt.texte.grenzwerteKlassen} /></button>
         <button aria-pressed={activeTab === 'berechnung'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'berechnung' 
@@ -502,8 +503,7 @@ export default function Mischungsberechnung() {
           }`}
           onClick={() => setActiveTab('beispiele')}
         >
-          <BookOpen size={16} /> Geprüfte Beispielrechnungen
-        </button>
+          <BookOpen size={16} /><MdText text={inhalt.texte.geprüfteBeispielrechnungen} /></button>
         <button aria-pressed={activeTab === 'walzkurven'}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'walzkurven' 
@@ -551,19 +551,13 @@ export default function Mischungsberechnung() {
       {activeTab === 'berechnung' && (
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <div className="flex items-center justify-between gap-2 flex-wrap mb-4">
-          <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-            Mischungsberechnung &amp; Betonrezeptur
-            <InfoTooltip text="Berechnung der volumetrischen Zusammensetzung, Rezeptur mit Gesteinsfeuchte und detailliertem CO2-Fußabdruck." />
+          <h2 className="text-xl font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.mischungsberechnungBetonrezeptur} /><InfoTooltip text={inhalt.werte.berechnungDerVolumetrischenZusammensetzu} />
           </h2>
-          <span className="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-700 rounded-full border border-slate-300">
-            Berechnet nach DIN EN 1992-1-1 + NA (DE)
-          </span>
+          <span className="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-700 rounded-full border border-slate-300"><MdText text={inhalt.texte.berechnetNachDinEn} /></span>
         </div>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 my-4">
-          <p>
-            Die Mischungsberechnung (Stoffraumrechnung) ermittelt die Volumina aller Betonbestandteile, die zusammen genau 1 m³ (1000 dm³) ergeben müssen. Hierbei werden auch Zusatzstoffe (mit k-Wert-Ansatz), die Gesteinsfeuchte (für das Zugabewasser) und der detaillierte CO₂-Fußabdruck berücksichtigt. Zudem wird geprüft, ob die normativen Grenzwerte für Zementgehalt und w/z-Wert eingehalten werden.
-          </p>
+          <p><MdText text={inhalt.texte.dieMischungsberechnungStoffraumrechnungE} /></p>
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -574,19 +568,19 @@ export default function Mischungsberechnung() {
 
         <NachErstemBild minHoehe="12rem">
         <FormulaDerivationBox
-          title="Rechenweg: Nachweis der Grenzwerte für die gewählte Mischung"
+          title={inhalt.werte.rechenwegNachweisDerGrenzwerte}
           zielGleichung="(w/z)_{eq} = \frac{w}{z + k_{FA} \cdot f + k_{SF} \cdot s + k_{HS} \cdot h + k_{PK} \cdot b} \le (w/z)_{max}"
-          normQuelle="DIN 1045-2:2023-08 (Grenzwerte je Expositionsklasse); k-Werte siehe Eingabe"
+          normQuelle={inhalt.werte.din104522023}
           schritte={(() => {
             const t = (x: number, d = 2) => formatDeZahl(x, d).replace(',', '{,}');
             return [
-              { titel: '1. Wasserzementwert', formel: `w/z = ${t(results.wasserTrocken, 0)} / ${t(zement, 0)} = ${t(results.wz)}`, erklaerung: 'Wirksamer Wassergehalt bezogen auf den Zementgehalt.' },
-              { titel: '2. Äquivalenter Wasserzementwert', formel: `(w/z)_{eq} = \\frac{${t(results.wasserTrocken, 0)}}{${t(zement, 0)} + ${t(kFa, 1)} \\cdot ${t(results.anrechenbarFa, 0)} + ${t(kSf, 1)} \\cdot ${t(results.anrechenbarSf, 0)} + ${t(kKsm, 1)} \\cdot ${t(hues, 0)} + ${t(kBiochar, 1)} \\cdot ${t(biochar, 0)}} = ${t(results.wzEq)}`, erklaerung: 'Angerechnet werden nur die zulässigen Mengen der Zusatzstoffe (Flugasche f/z ≤ 0,33).' },
-              { titel: '3. Maßgebende Anforderungen', formel: `(w/z)_{max} = ${t(results.reqMaxWz)};\\; z_{min} = ${t(results.reqMinZ, 0)}\\,\\text{kg/m}^3;\\; \\text{${results.reqMinC || '–'}}`, erklaerung: `Strengster Wert aus den gewählten Expositionsklassen (${expClasses.join(', ') || '–'}).` },
-              { titel: '4. Nachweis', formel: `${t(results.wzEq)} ${results.wzEq <= results.reqMaxWz ? '\\le' : '>'} ${t(results.reqMaxWz)};\\quad ${t(zement, 0)} ${zement >= results.reqMinZ ? '\\ge' : '<'} ${t(results.reqMinZ, 0)}\\,\\text{kg/m}^3`, erklaerung: results.isWzOk && results.isZOk ? 'Beide Anforderungen sind erfüllt.' : 'Mindestens eine Anforderung ist nicht erfüllt – Rezeptur anpassen.' },
+              { titel: inhalt.werte.t1Wasserzementwert, formel: `w/z = ${t(results.wasserTrocken, 0)} / ${t(zement, 0)} = ${t(results.wz)}`, erklaerung: inhalt.werte.wirksamerWassergehaltBezogenAuf },
+              { titel: inhalt.werte.t2ÄquivalenterWasserzementwert, formel: `(w/z)_{eq} = \\frac{${t(results.wasserTrocken, 0)}}{${t(zement, 0)} + ${t(kFa, 1)} \\cdot ${t(results.anrechenbarFa, 0)} + ${t(kSf, 1)} \\cdot ${t(results.anrechenbarSf, 0)} + ${t(kKsm, 1)} \\cdot ${t(hues, 0)} + ${t(kBiochar, 1)} \\cdot ${t(biochar, 0)}} = ${t(results.wzEq)}`, erklaerung: inhalt.werte.angerechnetWerdenNurDie },
+              { titel: inhalt.werte.t3MaßgebendeAnforderungen, formel: `(w/z)_{max} = ${t(results.reqMaxWz)};\\; z_{min} = ${t(results.reqMinZ, 0)}\\,\\text{kg/m}^3;\\; \\text{${results.reqMinC || '–'}}`, erklaerung: `Strengster Wert aus den gewählten Expositionsklassen (${expClasses.join(', ') || '–'}).` },
+              { titel: '4. Nachweis', formel: `${t(results.wzEq)} ${results.wzEq <= results.reqMaxWz ? '\\le' : '>'} ${t(results.reqMaxWz)};\\quad ${t(zement, 0)} ${zement >= results.reqMinZ ? '\\ge' : '<'} ${t(results.reqMinZ, 0)}\\,\\text{kg/m}^3`, erklaerung: results.isWzOk && results.isZOk ? inhalt.werte.beideAnforderungenSindErfüllt : inhalt.werte.mindestensEineAnforderungIst },
             ];
           })()}
-          ergebnisHinweis="Der Rechenweg folgt den aktuellen Eingaben des Rechners."
+          ergebnisHinweis={inhalt.werte.derRechenwegFolgtDen}
         />
         </NachErstemBild>
       </div>
@@ -604,45 +598,18 @@ export default function Mischungsberechnung() {
 
       <ModuleFooter 
         weblinks={[
-          { title: "Beton.wiki: Mischungsberechnung", url: "https://beton.wiki/index.php?title=Mischungsberechnung" }, 
-          { title: "Zement-Merkblatt B12: Entwurf und Herstellung von Beton", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }, 
-          { title: "Beton.wiki: Mischungsentwurf", url: "https://beton.wiki/index.php?title=Mischungsentwurf" }, 
-          { title: "Zement-Merkblätter Übersicht", url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }
+          { title: inhalt.werte.betonWikiMischungsberechnung, url: "https://beton.wiki/index.php?title=Mischungsberechnung" }, 
+          { title: inhalt.werte.zementMerkblattB12Entwurf, url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }, 
+          { title: inhalt.werte.betonWikiMischungsentwurf, url: "https://beton.wiki/index.php?title=Mischungsentwurf" }, 
+          { title: inhalt.werte.zementMerkblätterÜbersicht, url: "https://www.beton.org/betonbau/planungshilfen/zementmerkblaetter/" }
         ]} 
         wikipedia={[
           { title: 'Beton', url: 'https://de.wikipedia.org/wiki/Beton' },
           { title: 'Stoffraumrechnung' }
         ]}
-        literatur={[
-          'Grübl, P.; Weigler, H.; Karl, S. (2001): Beton - Arten, Herstellung und Eigenschaften (Ernst & Sohn)',
-          'Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch (52. Auflage, Verlag Bau+Technik)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Tragwerke aus Beton: Festlegung, Eigenschaften, Herstellung und Konformität)' },
-          { title: 'DIN EN 14889-1:2006-11 (Stahlfasern) & DIN EN 14889-2:2006-11 (Polymerfasern für Beton)' },
-          { title: 'DAfStb-Richtlinie: Stahlfaserbeton:2021-06', url: 'https://www.dafstb.de/' },
-          { title: 'DIN EN 197-1:2011-11 & DIN EN 197-5:2021-07 (Zement)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+197' },
-          { title: 'DIN EN 12620:2008-07 (Gesteinskörnungen für Beton)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+12620' },
-          { title: 'DAfStb-Richtlinie: Massige Bauteile aus Beton:2010-04', url: 'https://www.dafstb.de/' }
-        ]}
-        formeln={[
-          {
-            formel: 'V_{ges} = \\frac{z}{\\rho_z} + \\frac{w_{eff}}{\\rho_w} + \\frac{g}{\\rho_g} + \\frac{f}{\\rho_f} + \\frac{zm}{\\rho_{zm}} + \\frac{m_{\\text{faser}}}{\\rho_{\\text{faser}}} + v_l = 1000\\,\\text{dm}^3',
-            erklaerung: 'Stoffraumgleichung für 1 m³ Beton nach DIN EN 206:2021-06 / DIN 1045-2:2023-08: Summe der Feststoffvolumina (Zement z, Gestein g, Zusatzstoff f, Zusatzmittel zm, Fasern) sowie wirksamem Wasser weff und Eigenluftgehalt vl.',
-            quelle: 'DIN EN 206:2021-06 / DIN 1045-2:2023-08 / DIN EN 14889:2006-11'
-          },
-          {
-            formel: 'w/z_{eq} = \\frac{w_{eff}}{z + k \\cdot f}',
-            erklaerung: 'Äquivalenter Wasserzementwert (w/z)eq unter Anrechnung von Zusatzstoffen (z.B. Flugasche mit k = 0,4 oder Silikastaub mit k = 1,0 nach DIN 1045-2:2023-08; der Wert k = 2,0 ist eine EC-Empfehlung und in DE nicht zulässig).',
-            quelle: 'DIN 1045-2:2023-08 / DIN EN 206:2021-06'
-          },
-          {
-            formel: 'w_{zugabe} = w_{eff} - \\sum \\left( g_i \\cdot \\frac{h_i}{100} \\right)',
-            erklaerung: 'Tatsächlich beizumischendes Zugabewasser unter Abzug der in der feuchten Gesteinskörnung bereits enthaltenen Eigenfeuchte hi [%].',
-            quelle: 'DIN 1045-2:2023-08 / DBV-Merkblatt Beton'
-          }
-        ]}
+        literatur={inhalt.daten["Mischungsberechnung.literatur"]}
+        regelwerke={inhalt.daten["Mischungsberechnung.regelwerke"]}
+        formeln={inhalt.daten["Mischungsberechnung.formeln"]}
       />
     </div>
   );

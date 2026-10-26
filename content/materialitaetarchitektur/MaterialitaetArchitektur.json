@@ -1,0 +1,146 @@
+{
+  "texte": {
+    "architekturEntwurf": "Architektur & Entwurf",
+    "fachbereichIi": "Fachbereich II",
+    "materialitätArchitektonischeÄsthetik": " Materialität & Architektonische Ästhetik",
+    "dieSinnlicheDimensionDer": "Die sinnliche Dimension der Baustoffe: Haptik, Lichtwirkung, Oberflächentextur, Schalungsstrukturen, Fugenrhythmen und die würdevolle Alterung (Patina) im architektonischen Entwurf.",
+    "zuSichtbetonKlassenSb": " Zu Sichtbeton-Klassen (SB 1–4)",
+    "t1OptikTextur": " 1. Optik & Textur",
+    "korngefügeFugenmusterFarbnuancenPorigkei": "Korngefüge, Fugenmuster, Farbnuancen, Porigkeit und Schalungsabdrücke.",
+    "t2TaktilitätHaptik": " 2. Taktilität & Haptik",
+    "wärmeeindringzahlWarmVsKühl": "Wärmeeindringzahl (warm vs. kühl), Rauheit, Schärfe, Samtigkeit und Griffgefühl.",
+    "t3LichtReflexion": " 3. Licht & Reflexion",
+    "spiegelungDiffuseStreuungTransluzenz": "Spiegelung, diffuse Streuung, Transluzenz, Streiflicht-Schattentiefe im Tagesverlauf.",
+    "t4WürdeDesAlterns": " 4. Würde des Alterns",
+    "patinaAuswitterungVergrauungVerharzung": "Patina, Auswitterung, Vergrauung, Verharzung und konstruktiver Witterungsschutz.",
+    "typischeHaptik": " | Typische Haptik: ",
+    "sinnlicheOberflächenwirkung": "Sinnliche Oberflächenwirkung (",
+    "thermischerKontakt": "Thermischer Kontakt: ",
+    "optikTexturFügung": " Optik, Textur & Fügung",
+    "taktilitätHaptikBerührung": " Taktilität, Haptik & Berührung",
+    "lichtwirkungSchattenzeichnung": " Lichtwirkung & Schattenzeichnung",
+    "alterungPatinaVerwitterung": " Alterung, Patina & Verwitterung",
+    "architekturikonenBaukunstReferenzen": "Architekturikonen & Baukunst-Referenzen:",
+    "detailliertesSteckbriefProfilAufrufen": "Detailliertes Steckbrief-Profil aufrufen:",
+    "zumFachmodul": "Zum Fachmodul \""
+  },
+  "werte": {
+    "sichtbetonArchitekturbeton": "Sichtbeton & Architekturbeton",
+    "kircheDesLichtsOsaka": "Kirche des Lichts (Osaka) & Bruder-Klaus-Feldkapelle (Wachendorf)",
+    "tadaoAndoPeterZumthor": "Tadao Ando / Peter Zumthor",
+    "abdrückeVonHolzschalungshautAnkerloch": "Abdrücke von Holzschalungshaut, Ankerloch-Konusmuster und Faseleisten als Fassadenrhythmus.",
+    "mauerziegelKlinker": "Mauerziegel & Klinker",
+    "chilehausHamburgBauakademieBerlin": "Chilehaus (Hamburg) & Bauakademie (Berlin)",
+    "fritzHögerKarlFriedrich": "Fritz Höger / Karl Friedrich Schinkel",
+    "plastischeSchattenspieleDurchZurückliege": "Plastische Schattenspiele durch zurückliegende Lagerfugen und Zierverbände (Kreuz- & Gotischer Verband).",
+    "natursteinGneisGranitKalkstein": "Naturstein (Gneis, Granit, Kalkstein)",
+    "thermeValsGraubündenNeue": "Therme Vals (Graubünden) & Neue Nationalgalerie (Berlin, Granitterrasse; Sanierung Chipperfield)",
+    "peterZumthorDavidChipperfield": "Peter Zumthor / David Chipperfield",
+    "geschichtetePlattenAusValser": "Geschichtete Platten aus Valser Quarzit (Gneis) mit feinen Fugen, die das Licht des Thermalwassers aufnehmen.",
+    "baukalkSumpfkalkTadelakt": "Baukalk, Sumpfkalk & Tadelakt",
+    "venezianischePalazziRömischeBauten": "Venezianische Palazzi & Römische Bauten",
+    "andreaPalladioCarloScarpa": "Andrea Palladio / Carlo Scarpa",
+    "transparenterTiefenglanzDurchCalcit": "Transparenter Tiefenglanz durch Calcit-Kristallisation (Fresko- und Marmorino-Technik).",
+    "stampflehmLehmputze": "Stampflehm & Lehmputze",
+    "kapelleDerVersöhnungBerlin": "Kapelle der Versöhnung (Berlin) & Alnatura Campus (Darmstadt)",
+    "martinRauchAnnaHeringer": "Martin Rauch / Anna Heringer",
+    "schichtweiseGestampfteSedimentstreifenMi": "Schichtweise gestampfte Sedimentstreifen mit natürlichem Farbübergang und offener Porigkeit.",
+    "architekturglasGlashüllen": "Architekturglas & Glashüllen",
+    "bauhausDessauLouvrePyramide": "Bauhaus Dessau & Louvre-Pyramide (Paris)",
+    "walterGropiusIM": "Walter Gropius / I. M. Pei",
+    "entmaterialisierungDerWandWechselwirkung": "Entmaterialisierung der Wand; Wechselwirkung zwischen Innenbeleuchtung bei Nacht und Spiegelung bei Tag.",
+    "baustahlCortenstahlWetterfest": "Baustahl & Cortenstahl (Wetterfest)",
+    "neueNationalgalerieBerlinJohn": "Neue Nationalgalerie (Berlin) & John Deere World Headquarters (Moline, Cortenstahl)",
+    "miesVanDerRohe": "Mies van der Rohe / Eero Saarinen",
+    "konstruktiveEhrlichkeitSichtbareSchweißn": "Konstruktive Ehrlichkeit: Sichtbare Schweißnähte, I-Träger-Schlankheit oder samtige Rostpatina.",
+    "aluminiumEloxiertPulverbeschichtet": "Aluminium (Eloxiert & Pulverbeschichtet)",
+    "hongKongAndShanghai": "Hong Kong and Shanghai Bank (Hongkong) & Willis Tower",
+    "normanFosterSom": "Norman Foster / SOM",
+    "schlankePfostenRiegelRaster": "Schlanke Pfosten-Riegel-Raster, aerodynamische Lamellenprofile mit reflexionsarmer Eloxalfärbung.",
+    "kupferTitanzink": "Kupfer & Titanzink",
+    "jüdischesMuseumBerlinStellwerk": "Jüdisches Museum (Berlin) & Stellwerk Basel",
+    "danielLibeskindHerzogDe": "Daniel Libeskind / Herzog & de Meuron",
+    "alterungKupferVonMetallischem": "Alterung: Kupfer von metallischem Glanz über Braun zur grünen Patina, Titanzink zur blaugrauen Patina.",
+    "massivholzBrettsperrholzClt": "Massivholz & Brettsperrholz (CLT)",
+    "mjStRnetNorwegen": "Mjøstårnet (Norwegen), Roots (Hamburg) & Tamedia (Zürich)",
+    "shigeruBanVollArkitekter": "Shigeru Ban / Voll Arkitekter",
+    "sichtbareJahrringeAstbilderUnd": "Sichtbare Jahrringe, Astbilder und natürliche Witterungsvergrauung als bewusster Entwurfsbestandteil.",
+    "holzwerkstoffeOsbFurnierschichtholzBsh": "Holzwerkstoffe (OSB, Furnierschichtholz, BSH)",
+    "centrePompidouMetzGolfclub": "Centre Pompidou-Metz & Golfclub Haesley Nine Bridges",
+    "shigeruBanFreiOtto": "Shigeru Ban / Frei Otto",
+    "geometrischPräziseHolzgitterUnd": "Geometrisch präzise Holzgitter und filigrane Freiformschalen mit industrieller Holztextur.",
+    "membranenEtfePtfePolymere": "Membranen (ETFE, PTFE) & Polymere",
+    "allianzArenaMünchenEden": "Allianz Arena (München) & Eden Project (Cornwall)",
+    "herzogDeMeuronNicholas": "Herzog & de Meuron / Nicholas Grimshaw",
+    "pneumatischAufgeblaseneLuftkissenkubenMi": "Pneumatisch aufgeblasene Luftkissenkuben mit variierbarer Lichtdurchlässigkeit und Farbillumination.",
+    "synthetischVerbund": "Synthetisch & Verbund",
+    "baustoffArchitektBauwerkSuchen": "Baustoff, Architekt, Bauwerk suchen...",
+    "streiflichtDirekteSonneSimulieren": "Streiflicht / Direkte Sonne simulieren",
+    "diffusesHimmelslicht": "Diffuses Himmelslicht",
+    "kunstlichtNachtbeleuchtung": "Kunstlicht / Nachtbeleuchtung",
+    "anwendungsbeispielWarumFühltSich": "Anwendungsbeispiel: Warum fühlt sich Holz wärmer an als Stahl?",
+    "kontakttemperaturZweierHalbunendlicherKö": "Kontakttemperatur zweier halbunendlicher Körper (Bauphysik); b_Haut ≈ 1000 als Lehrwert",
+    "beiGleicherRaumtemperaturFühlt": "Bei gleicher Raumtemperatur fühlt sich Holz rund 9 K wärmer an als Stahl – die Haptik folgt aus b, nicht aus der Temperatur."
+  },
+  "daten": {
+    "MaterialitaetArchitektur": {
+      "optikTextur": "Texturierte Oberflächenbeschaffenheit mit charakteristischem Relief.",
+      "haptikOberflaeche": "Taktile Wahrnehmung je nach handwerklicher oder industrieller Vorbehandlung.",
+      "lichtReflexion": "Spezifisches Streu- und Reflexionsverhalten unter natürlichem Tageslicht.",
+      "alterungPatina": "Entwicklung von materialspezifischen Altersspuren und Oberflächenschutzschichten.",
+      "architekturBezug": "Zahlreiche Meilensteine moderner und historischer Baukunst."
+    },
+    "MaterialitaetArchitektur.schritte": [
+      {
+        "titel": "1. Wärmeeindringkoeffizienten",
+        "formel": "b_{Holz} \\approx 306,\\; b_{Beton} \\approx 2\\,191,\\; b_{Stahl} \\approx 13\\,290\\;\\text{J/(m}^2\\text{K}\\sqrt{\\text{s}})",
+        "erklaerung": "Holz: λ = 0,13, ρ = 450, c = 1600; Beton: 2,0 / 2400 / 1000; Stahl: 50 / 7850 / 450."
+      },
+      {
+        "titel": "2. Holz",
+        "formel": "\\vartheta_K = \\frac{1000 \\cdot 33 + 306 \\cdot 20}{1306} = 30{,}0\\,^\\circ\\text{C}",
+        "erklaerung": "Hand 33 °C, Material 20 °C."
+      },
+      {
+        "titel": "3. Beton",
+        "formel": "\\vartheta_K = \\frac{1000 \\cdot 33 + 2191 \\cdot 20}{3191} = 24{,}1\\,^\\circ\\text{C}",
+        "erklaerung": "Deutlich kühlerer Eindruck."
+      },
+      {
+        "titel": "4. Stahl",
+        "formel": "\\vartheta_K = \\frac{1000 \\cdot 33 + 13\\,290 \\cdot 20}{14\\,290} = 20{,}9\\,^\\circ\\text{C}",
+        "erklaerung": "Die Haut nimmt fast die Materialtemperatur an."
+      }
+    ],
+    "MaterialitaetArchitektur.literatur": [
+      "Zumthor, Peter: Atmosphären. Basel: Birkhäuser 2006",
+      "Pallasmaa, Juhani: Die Augen der Haut – Architektur und die Sinne. Los Angeles: Atara Press 2012",
+      "Hegger, M.; Auch-Schwelk, V.; Fuchs, M.; Rosenkranz, T.: Baustoff Atlas. München: Edition Detail 2005",
+      "Deplazes, A. (Hrsg.): Architektur konstruieren – Vom Rohmaterial zum Bauwerk. Basel: Birkhäuser 2018 (Neuauflage 2022)"
+    ],
+    "MaterialitaetArchitektur.regelwerke": [
+      {
+        "title": "DBV/VDZ-Merkblatt Sichtbeton (Fassung Juni 2015)",
+        "url": "https://www.beton.org/"
+      },
+      {
+        "title": "DIN EN 13914-1/-2 mit DIN 18550-1/-2 (Planung, Zubereitung und Ausführung von Außen- und Innenputzen)"
+      },
+      {
+        "title": "DIN 18330 (VOB/C: Mauerarbeiten)"
+      }
+    ],
+    "MaterialitaetArchitektur.formeln": [
+      {
+        "formel": "b = \\sqrt{\\lambda \\cdot \\rho \\cdot c} \\quad [\\text{J} / (\\text{m}^2 \\text{K} \\sqrt{\\text{s}})]",
+        "erklaerung": "Wärmeeindringkoeffizient b des Baustoffs: Bestimmt die taktile Temperaturwahrnehmung bei Berührung. Niedriges b (z. B. Nadelholz b ≈ 300–400) fühlt sich sofort handwarm an; hohes b (z. B. Stahl b ≈ 14.000 oder Beton b ≈ 2.000) entzieht der Haut rasch Wärme und fühlt sich kühl/kalt an.",
+        "quelle": "Bauphysik & Thermodynamik"
+      },
+      {
+        "formel": "\\rho_d + \\rho_s = 1 - \\alpha \\quad (\\tau = 0)",
+        "erklaerung": "Optische Strahlungsbilanz der Baustoffoberfläche: Bei lichtundurchlässigen Oberflächen (Transmission τ = 0) entspricht die Summe aus diffuser Reflexion ρ_d und gerichteter Spiegelung ρ_s der nicht absorbierten Strahlung (1 − α).",
+        "quelle": "Lichttechnik & Optik"
+      }
+    ]
+  }
+}

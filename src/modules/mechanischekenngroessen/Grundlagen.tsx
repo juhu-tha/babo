@@ -1,5 +1,7 @@
 import { Scale, Activity, Sparkles } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
+import inhalt from '@/content/mechanischekenngroessen/Grundlagen.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function Grundlagen() {
   return (
@@ -10,65 +12,56 @@ export default function Grundlagen() {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col justify-between">
             <div>
               <h3 className="text-base font-bold text-text-main flex items-center gap-2 mb-3 pb-2 border-b border-home-grau/20">
-                <Scale className="text-shiraz" size={18} /> 1. Was ist Spannung (<InlineMath math="\sigma, \tau" />)?
-              </h3>
+                <Scale className="text-shiraz" size={18} /><MdText text={inhalt.texte.t1WasIstSpannung} /></h3>
               <p className="text-xs text-text-main/80 leading-relaxed mb-3">
                 Spannung ist die auf eine infinitesimale Querschnittsfläche bezogene Schnittkraft. Sie misst die 
-                <strong> innere Beanspruchungsintensität</strong> eines Körpers unter äußerer Last.
+                <strong><MdText text={inhalt.texte.innereBeanspruchungsintensität} /></strong> eines Körpers unter äußerer Last.
               </p>
 
               <div className="bg-off-white p-3.5 rounded-xl border border-home-grau/25 mb-4 space-y-2">
-                <div className="text-xs font-bold text-text-main">Normalspannung (Zug/Druck senkrecht zur Fläche):</div>
+                <div className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.normalspannungZugDruckSenkrecht} /></div>
                 <BlockMath math="\sigma = \frac{F_N}{A_0} \quad \left[\frac{\text{N}}{\text{mm}^2} = \text{MPa}\right]" />
-                <div className="text-xs font-bold text-text-main pt-1">Schubspannung (Tangential zur Schnittfläche):</div>
+                <div className="text-xs font-bold text-text-main pt-1"><MdText text={inhalt.texte.schubspannungTangentialZurSchnittfläche} /></div>
                 <BlockMath math="\tau = \frac{V}{A_0} \quad \left[\frac{\text{N}}{\text{mm}^2} = \text{MPa}\right]" />
               </div>
 
               <div className="space-y-2 text-xs text-text-main/80">
-                <div><strong>Technische vs. wahre Spannung:</strong></div>
+                <div><MdText text={inhalt.texte.technischeVsWahreSpannung} /></div>
                 <ul className="list-disc list-inside space-y-1 pl-1 text-[11px] text-text-main/75">
-                  <li><strong>Technische Spannung (<InlineMath math="\sigma_{\text{eng}}" />):</strong> Kraft bezogen auf den unberührten Ausgangsquerschnitt <InlineMath math="A_0" />. Standard für den Ingenieurbau nach DIN EN ISO 6892-1.</li>
-                  <li><strong>Wahre Spannung (<InlineMath math="\sigma_{\text{true}}" />):</strong> Kraft bezogen auf den aktuellen, sich einschnürenden Querschnitt <InlineMath math="A(t)" />: <InlineMath math="\sigma_{\text{true}} = \sigma_{\text{eng}} (1 + \varepsilon_{\text{eng}})" />.</li>
+                  <li><MdText text={inhalt.texte.technischeSpannungSigmaText} /></li>
+                  <li><MdText text={inhalt.texte.wahreSpannungSigmaText} /></li>
                 </ul>
               </div>
             </div>
 
-            <div className="mt-4 pt-3 border-t border-home-grau/20 text-[11px] text-slate-500 font-mono">
-              Einheiten-Konvention: 1 MPa = 1 N/mm² = 1 MN/m² = 10 bar = 1000 kN/m²
-            </div>
+            <div className="mt-4 pt-3 border-t border-home-grau/20 text-[11px] text-slate-500 font-mono"><MdText text={inhalt.texte.einheitenKonvention1Mpa} /></div>
           </div>
 
           {/* Box 2: Dehnung */}
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col justify-between">
             <div>
               <h3 className="text-base font-bold text-text-main flex items-center gap-2 mb-3 pb-2 border-b border-home-grau/20">
-                <Activity className="text-shiraz" size={18} /> 2. Was ist Dehnung (<InlineMath math="\varepsilon" />)?
-              </h3>
-              <p className="text-xs text-text-main/80 leading-relaxed mb-3">
-                Die Dehnung ist die relative Längenänderung bezogen auf die Ausgangslänge <InlineMath math="L_0" />. 
-                Sie ist eine dimensionslose Verhältniszahl und quantifiziert die geometrische Verzerrung.
-              </p>
+                <Activity className="text-shiraz" size={18} /><MdText text={inhalt.texte.t2WasIstDehnung} /></h3>
+              <p className="text-xs text-text-main/80 leading-relaxed mb-3"><MdText text={inhalt.texte.dieDehnungIstDie} /></p>
 
               <div className="bg-off-white p-3.5 rounded-xl border border-home-grau/25 mb-4 space-y-2">
-                <div className="text-xs font-bold text-text-main">Technische Ingenieurdehnung:</div>
+                <div className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.technischeIngenieurdehnung} /></div>
                 <BlockMath math="\varepsilon = \frac{\Delta L}{L_0} = \frac{L - L_0}{L_0} \quad [-] \text{ oder } [\%] \text{ bzw. } [\text{‰}]" />
-                <div className="text-xs font-bold text-text-main pt-1">Logarithmische (wahre) Dehnung:</div>
+                <div className="text-xs font-bold text-text-main pt-1"><MdText text={inhalt.texte.logarithmischeWahreDehnung} /></div>
                 <BlockMath math="\varepsilon_{\text{true}} = \int_{L_0}^{L} \frac{dL}{L} = \ln\left(\frac{L}{L_0}\right) = \ln(1 + \varepsilon)" />
               </div>
 
               <div className="space-y-2 text-xs text-text-main/80">
-                <div><strong>Elastisch vs. Plastisch:</strong></div>
+                <div><MdText text={inhalt.texte.elastischVsPlastisch} /></div>
                 <ul className="list-disc list-inside space-y-1 pl-1 text-[11px] text-text-main/75">
-                  <li><strong>Elastische Dehnung (<InlineMath math="\varepsilon_{\text{el}}" />):</strong> Vollständig reversibel. Nach Entlastung kehren die Atome in ihre Ruhelage zurück.</li>
-                  <li><strong>Plastische Dehnung (<InlineMath math="\varepsilon_{\text{pl}}" />):</strong> Bleibende Gefügeverformung infolge Versetzungsbewegungen im Kristallgitter.</li>
-                  <li><strong>Gesamtdehnung:</strong> <InlineMath math="\varepsilon_{\text{tot}} = \varepsilon_{\text{el}} + \varepsilon_{\text{pl}}" />.</li>
+                  <li><MdText text={inhalt.texte.elastischeDehnungVarepsilonText} /></li>
+                  <li><MdText text={inhalt.texte.plastischeDehnungVarepsilonText} /></li>
+                  <li><MdText text={inhalt.texte.gesamtdehnungVarepsilonTextTot} /></li>
                 </ul>
               </div>
             </div>
 
-            <div className="mt-4 pt-3 border-t border-home-grau/20 text-[11px] text-slate-500 font-mono">
-              Umrechnung: 1 ‰ = 0,001 = 0,1 % = 1 mm/m Verformung
-            </div>
+            <div className="mt-4 pt-3 border-t border-home-grau/20 text-[11px] text-slate-500 font-mono"><MdText text={inhalt.texte.umrechnung10001} /></div>
           </div>
 
         </div>
@@ -76,26 +69,18 @@ export default function Grundlagen() {
         {/* Querdehnung & Poisson-Effekt */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
           <h3 className="text-base font-bold text-text-main flex items-center gap-2 mb-3 pb-2 border-b border-home-grau/20">
-            <Sparkles className="text-shiraz" size={18} /> 3. Querdehnung &amp; Poisson-Zahl (<InlineMath math="\nu" />)
-          </h3>
+            <Sparkles className="text-shiraz" size={18} /><MdText text={inhalt.texte.t3QuerdehnungPoissonZahl} /></h3>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             <div className="lg:col-span-7 text-xs text-text-main/80 space-y-3">
-              <p className="leading-relaxed">
-                Wird ein Stab in Längsrichtung gedehnt (<InlineMath math="\varepsilon_{\text{ax}} > 0" />), verengt sich sein Querschnitt 
-                senkrecht zur Belastungsachse (<InlineMath math="\varepsilon_q < 0" />). Dieses Phänomen heißt <strong>Querkontraktion</strong>. 
-                Die Querdehnzahl <InlineMath math="\nu" /> (Poissonzahl) ist das negative Verhältnis von Quer- zu Längsdehnung:
-              </p>
+              <p className="leading-relaxed"><MdText text={inhalt.texte.wirdEinStabIn} /></p>
               <BlockMath math="\nu = - \frac{\varepsilon_q}{\varepsilon_{\text{ax}}} = - \frac{\Delta d / d_0}{\Delta L / L_0}" />
-              <p className="leading-relaxed">
-                Für homogene, isotrope Festkörper ist die Querdehnzahl thermodynamisch streng auf den Bereich 
-                <InlineMath math="0 \le \nu \le 0{,}5" /> begrenzt.
-              </p>
+              <p className="leading-relaxed"><MdText text={inhalt.texte.fürHomogeneIsotropeFestkörper} /></p>
               <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 text-[11px] space-y-1.5">
-                <div><strong>Spezialfälle der Poissonzahl:</strong></div>
-                <div>• <InlineMath math="\nu = 0{,}50" />: <em>Inkompressibles Material</em> (z. B. Gummi, Fließzustand im Stahl). Die Volumendehnung <InlineMath math="\varepsilon_V = \varepsilon (1 - 2\nu) = 0" />!</div>
-                <div>• <InlineMath math="\nu \approx 0{,}00" />: <em>Kork</em> (keine Querdehnung; daher ideal als Flaschenkorken, da er beim Hineindrücken nicht klemmt).</div>
-                <div>• <InlineMath math="\nu < 0" />: <em>Auxetische Strukturen</em> (dehnen sich bei Zugbelastung auch quer aus!).</div>
+                <div><MdText text={inhalt.texte.spezialfälleDerPoissonzahl} /></div>
+                <div><MdText text={inhalt.texte.nu050Inkompressibles} /></div>
+                <div><MdText text={inhalt.texte.nuApprox000} /></div>
+                <div><MdText text={inhalt.texte.nu0AuxetischeStrukturen} /></div>
               </div>
             </div>
 
@@ -123,9 +108,7 @@ export default function Grundlagen() {
                 <line x1="120" y1="104" x2="120" y2="96" stroke="#b45309" strokeWidth="1.5" />
                 <text x="126" y="112" fill="#b45309" fontSize="9" className="font-mono">Einschnürung -Δd</text>
               </svg>
-              <span className="text-[10px] text-text-main/70 text-center mt-2">
-                Querkontraktion bei Zugbeanspruchung (<InlineMath math="\nu = -\varepsilon_q / \varepsilon_{\text{ax}}" />)
-              </span>
+              <span className="text-[10px] text-text-main/70 text-center mt-2"><MdText text={inhalt.texte.querkontraktionBeiZugbeanspruchungNu} /></span>
             </div>
           </div>
         </div>

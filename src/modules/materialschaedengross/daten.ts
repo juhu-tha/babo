@@ -1,3 +1,4 @@
+import inhalt from '@/content/materialschaedengross/daten.json';
 export interface DamageCaseStudy {
   id: string;
   name: string;
@@ -52,1029 +53,1029 @@ export interface DamageCaseStudy {
 export const DAMAGE_CASES: DamageCaseStudy[] = [
   {
     id: 'bad_reichenhall',
-    name: 'Einsturz der Eishalle Bad Reichenhall',
-    subTitle: 'Kollaps unter Schneelast infolge von Harnstoff-Leimversagen und Bauwerksfeuchte',
+    name: inhalt.werte.einsturzDerEishalleBad,
+    subTitle: inhalt.werte.kollapsUnterSchneelastInfolge,
     category: 'hallen',
     year: '2006',
-    location: 'Bad Reichenhall, Bayern, Deutschland',
-    structureType: 'Dachtragwerk aus Brettschichtholz-Kastenträgern (Kerven/Kehlbalken)',
-    keyMaterialMechanism: 'Urea-Formaldehyd-Leimversagen (UF-Leim Typ Kaurit) unter dauerhaft hoher relativer Luftfeuchte (hydrolytischer Bindungsabbau) + Tauwasserausfall',
-    summary: 'Am 2. Januar 2006 stürzte das hölzerne Dachtragwerk der 1971 bis 1973 errichteten Eislaufhalle während des Publikumsbetriebs plötzlich ein. 15 Menschen starben, darunter 12 Kinder, 34 Personen wurden verletzt. Ursache war ein ungeeigneter Harnstoffharzklebstoff in Verbindung mit Feuchte in den Kastenträgern, zusätzlich Mängel in Konstruktion und Ausführung der Träger von Anfang an sowie über Jahrzehnte unterlassene Instandhaltung.',
+    location: inhalt.werte.badReichenhallBayernDeutschland,
+    structureType: inhalt.werte.dachtragwerkAusBrettschichtholzKastenträ,
+    keyMaterialMechanism: inhalt.werte.ureaFormaldehydLeimversagenUf,
+    summary: inhalt.werte.am2Januar2006,
     projectData: {
       baujahr: '1971–1973',
-      schadensdatum: '02. Januar 2006 (ca. 15:54 Uhr)',
-      ort: 'Bad Reichenhall (Berchtesgadener Land)',
-      tragwerkstyp: 'Dachkonstruktion aus Brettschichtholz-Hauptträgern und Kastenträgern, Spannweite ca. 48 m',
-      beteiligteBaustoffe: ['Brettschichtholz (BSH, Fichte)', 'Urea-Formaldehyd-Harzleim (nicht wasserbeständig)', 'Mineralwolle-Dämmung (durchnässt)'],
-      spannweiteAbmessungen: 'Hallengröße ca. 75 m × 48 m, Hauptträgerstützweite 48,0 m',
-      opferZahlen: '15 Todesopfer, 34 Verletzte',
-      gesamtschaden: 'Vollständiger Totalschaden, strafrechtliche und zivilrechtliche Prozesse, Neubauverzicht'
+      schadensdatum: inhalt.werte.t02Januar2006Ca,
+      ort: inhalt.werte.badReichenhallBerchtesgadenerLand,
+      tragwerkstyp: inhalt.werte.dachkonstruktionAusBrettschichtholzHaupt,
+      beteiligteBaustoffe: [inhalt.werte.brettschichtholzBshFichte, inhalt.werte.ureaFormaldehydHarzleimNicht, inhalt.werte.mineralwolleDämmungDurchnässt],
+      spannweiteAbmessungen: inhalt.werte.hallengrößeCa75M,
+      opferZahlen: inhalt.werte.t15Todesopfer34Verletzte,
+      gesamtschaden: inhalt.werte.vollständigerTotalschadenStrafrechtliche
     },
     historie: [
       {
-        phase: '1. Planung & Errichtung (1971–1973)',
+        phase: inhalt.werte.t1PlanungErrichtung1971,
         zeitraum: '1971–1973',
-        details: 'Errichtung der Eishalle. Für die Verleimung der Hohlkasten-Dachträger wurde ein säurehärtender Harnstoff-Formaldehyd-Harzleim (UF-Harz, Kaurit) eingesetzt. Dieser Leim war nach damaliger Normung (DIN 1052 alt) für geschlossene Bauten zwar zugelassen, jedoch absolut ungeeignet für dauerfeuchte Klimaten und Eishallenatmosphäre (ständige Eisbereitung, hohe Luftfeuchte).'
+        details: inhalt.werte.errichtungDerEishalleFür
       },
       {
-        phase: '2. Betriebsphase & Kondensatakkumulation (1974–2005)',
+        phase: inhalt.werte.t2BetriebsphaseKondensatakkumulation1974,
         zeitraum: '1974–2005',
-        details: 'Über Jahrzehnte drang feuchtwarme Innenluft ohne funktionsfähige Dampfbremse in die isolierten Hohlkästen der Dachträger ein. Bei niedrigen Außentemperaturen kondensierte massiv Tauwasser an den kalten Bauteilschichten. Das Holz erreichte kontinuierlich Feuchtegehalte von über 20–25 M-%, wodurch der UF-Leim durch Säurehydrolyse irreversibel zersetzt wurde.'
+        details: inhalt.werte.überJahrzehnteDrangFeuchtwarme
       },
       {
-        phase: '3. Ignorierte Warnsignale & Mängelberichte (2000–2005)',
+        phase: inhalt.werte.t3IgnorierteWarnsignaleMängelberichte,
         zeitraum: '2000–2005',
-        details: 'Wiederholt tropfte Kondenswasser von der Decke. Bei Dachöffnungen wurden vermoderte Holzpartien und lose Leimfugen festgestellt. Ein fundiertes Monitoring oder eine Überprüfung durch baustatische Sachverständige (z.B. nach der späteren VDI 6200) unterblieb oder wurde aus Kostengründen vertagt.'
+        details: inhalt.werte.wiederholtTropfteKondenswasserVon
       },
       {
-        phase: '4. Katastrophaler Einsturz (02.01.2006)',
+        phase: inhalt.werte.t4KatastrophalerEinsturz02,
         zeitraum: '02.01.2006',
-        details: 'Nach starkem Schneefall lag eine erhebliche Schneelast auf dem Dach (die genauen Werte sind dem Gutachten zu entnehmen). Gegen 15:54 Uhr rissen die versprödeten Leimfugen schlagartig auf. Das Tragsystem verlor seine Biegesteifigkeit und stürzte innerhalb von Sekunden vollständig in sich zusammen.'
+        details: inhalt.werte.nachStarkemSchneefallLag
       }
     ],
     ursachen: [
       {
-        titel: 'Hydrolytischer Zerfall des Harnstoff-Leims (UF-Leim)',
+        titel: inhalt.werte.hydrolytischerZerfallDesHarnstoff,
         kategorie: 'Material/Werkstoff',
-        beschreibung: 'Harnstoff-Formaldehyd-Polymere (Urea-Formaldehyd) besitzen keine hydrolytische Langzeitstabilität. Unter Anwesenheit von flüssigem Wasser und Luftsäure zerfallen die Methylenether-Brücken. Die Leimfugen verloren dadurch einen großen Teil ihrer Festigkeit.',
+        beschreibung: inhalt.werte.harnstoffFormaldehydPolymereUrea,
         formelOrMechanismus: '-\\text{NH}-\\text{CH}_2-\\text{NH}- + \\text{H}_2\\text{O} \\xrightarrow{\\text{pH} < 5, \\, \\text{Feuchte}} -\\text{NH}_2 + \\text{HCHO} + \\text{H}_2\\text{N}-'
       },
       {
-        titel: 'Bauphysikalische Fehldimensionierung (Dampfdiffusion)',
+        titel: inhalt.werte.bauphysikalischeFehldimensionierungDampf,
         kategorie: 'Planung/Statik',
-        beschreibung: 'Fehlende oder durch Perforationen unwirksame Dampfsperre an der Trägerunterseite. Das Mikroklima über der offenen Eisfläche erzeugte einen dauerhaft hohen Wasserdampfteildruck, der direkt in die Hohlträger diffundierte.',
+        beschreibung: inhalt.werte.fehlendeOderDurchPerforationen,
         formelOrMechanismus: 'p_i > p_e \\implies g = -\\delta_0 \\cdot \\frac{\\Delta p}{s_d} \\quad \\text{(permanenter Feuchtestrom in Hohlträger)}'
       },
       {
-        titel: 'Mängel in Konstruktion und Ausführung der Träger',
+        titel: inhalt.werte.mängelInKonstruktionUnd,
         kategorie: 'Ausführung',
-        beschreibung: 'Nach den Ermittlungen lagen von Anfang an Mängel in Konstruktion und Ausführung der Kastenträger vor (u. a. Verklebung). Einzelheiten zum Versagensablauf sind den Gutachten zu entnehmen.'
+        beschreibung: inhalt.werte.nachDenErmittlungenLagen
       },
       {
-        titel: 'Fehlende regelmäßige Bauwerksprüfung (Prüfdefizit)',
+        titel: inhalt.werte.fehlendeRegelmäßigeBauwerksprüfungPrüfde,
         kategorie: 'Unterhalt/Monitoring',
-        beschreibung: 'Zum Unglückszeitpunkt gab es keine bundesweit verbindliche Pflicht zur periodischen statischen Überprüfung weitgespannter Dächer kommunaler Sonderbauten.'
+        beschreibung: inhalt.werte.zumUnglückszeitpunktGabEs
       }
     ],
     folgen: [
       {
-        bereich: 'Regelwerke & Normung',
-        auswirkung: 'Klebstoffe für tragende Holzbauteile müssen nach Nutzungsklasse gewählt werden: UF (Typ II) nur NKL 1; für NKL 2/3 und feuchte Hallenklimate Typ-I-Klebstoffe (MUF, PRF, 1K-PUR). Regelungen in DIN 1052:2004/2008 und im Eurocode 5 (bauaufsichtlich eingeführt seit 2012).',
-        normativeKonsequenz: 'DIN EN 1995-1-1 & DIN EN 301 / DIN EN 15425 (Klebstoffe für tragende Holzbauteile)'
+        bereich: inhalt.werte.regelwerkeNormung,
+        auswirkung: inhalt.werte.klebstoffeFürTragendeHolzbauteile,
+        normativeKonsequenz: inhalt.werte.dinEn19951
       },
       {
-        bereich: 'Bauwerksinspektion & Standsicherheit',
-        auswirkung: 'ARGEBAU-Hinweise für die Überprüfung der Standsicherheit (2006) und VDI 6200 (2010, Empfehlung). Eine bundesweite Prüfpflicht wurde nicht eingeführt; einzelne Länder regeln Überprüfungen für bestimmte Sonderbauten.',
-        normativeKonsequenz: 'VDI 6200: Begehung / Inspektion / eingehende Überprüfung; Bauwerksbuch'
+        bereich: inhalt.werte.bauwerksinspektionStandsicherheit,
+        auswirkung: inhalt.werte.argebauHinweiseFürDie,
+        normativeKonsequenz: inhalt.werte.vdi6200BegehungInspektion
       },
       {
-        bereich: 'Rechtsprechung & Justiz',
-        auswirkung: 'Strafverfahren wegen fahrlässiger Tötung: Der für die Konstruktion zuständige Bauleiter wurde rechtskräftig zu einer Bewährungsstrafe verurteilt; ein Bauingenieur, der 2003 ein Gutachten zur Halle erstellt hatte, wurde vom LG Traunstein zweimal freigesprochen (der BGH hob den ersten Freispruch auf).',
-        normativeKonsequenz: 'BGH, Urt. v. 12.01.2010 – 1 StR 272/09'
+        bereich: inhalt.werte.rechtsprechungJustiz,
+        auswirkung: inhalt.werte.strafverfahrenWegenFahrlässigerTötung,
+        normativeKonsequenz: inhalt.werte.bghUrtV12
       }
     ],
     lessonsLearned: [
-      'In Dauernassbereichen oder Eishallen dürfen keine feuchteempfindlichen Klebstoffe eingesetzt werden: UF (Typ II) nur NKL 1; für NKL 2/3 und feuchte Hallenklimate Typ-I-Klebstoffe (MUF, PRF, 1K-PUR).',
-      'Versteckte Hohlkastenträger ohne Inspektionsöffnungen verhindern die visuelle Kontrolle von Traggliedern und müssen mit Revisionsöffnungen versehen werden.',
-      'Sonderbauten mit großen Spannweiten erfordern ein lückenloses Bauwerksbuch und zyklische Bauwerksprüfungen nach VDI 6200.'
+      inhalt.werte.inDauernassbereichenOderEishallen,
+      inhalt.werte.versteckteHohlkastenträgerOhneInspektion,
+      inhalt.werte.sonderbautenMitGroßenSpannweiten
     ],
-    quellenlage: 'Gutachten im Strafverfahren (nicht öffentlich) und Gerichtsentscheidungen; hier über Sekundärquellen wiedergegeben.',
+    quellenlage: inhalt.werte.gutachtenImStrafverfahrenNicht,
     typischeBauschaedenLink: {
       subTab: 'feuchtigkeit',
-      label: 'Feuchtigkeit, Tauwasserausfall & Schimmel',
-      description: 'Bauphysikalische Feuchteakkumulation, Taupunktunterschreitung und Zersetzung von Baustoffen unter Dauerfeuchte.'
+      label: inhalt.werte.feuchtigkeitTauwasserausfallSchimmel,
+      description: inhalt.werte.bauphysikalischeFeuchteakkumulationTaupu
     },
     sources: [
       {
-        title: 'Eishalle Bad Reichenhall (Übersicht mit Nachweisen zu Gutachten und Strafverfahren)',
+        title: inhalt.werte.eishalleBadReichenhallÜbersicht,
         institutionOrAuthor: 'Wikipedia',
-        details: 'Sekundärquelle; die Gutachten selbst sind nicht öffentlich.'
+        details: inhalt.werte.sekundärquelleDieGutachtenSelbst
       },
       {
-        title: 'BGH, Urteil vom 12.01.2010 – 1 StR 272/09',
+        title: inhalt.werte.bghUrteilVom12,
         institutionOrAuthor: 'Bundesgerichtshof',
-        details: 'Revisionsentscheidung im Strafverfahren (Aufhebung des ersten Freispruchs).'
+        details: inhalt.werte.revisionsentscheidungImStrafverfahrenAuf
       },
       {
-        title: 'Hinweise für die Überprüfung der Standsicherheit von baulichen Anlagen durch den Eigentümer/Verfügungsberechtigten',
-        institutionOrAuthor: 'ARGEBAU (Bauministerkonferenz)',
-        details: 'Fassung September 2006; Grundlage der späteren VDI 6200 (2010).'
+        title: inhalt.werte.hinweiseFürDieÜberprüfung,
+        institutionOrAuthor: inhalt.werte.argebauBauministerkonferenz,
+        details: inhalt.werte.fassungSeptember2006Grundlage
       },
       {
-        title: 'Standsicherheit von Bauwerken – Regelmäßige Überprüfung (VDI 6200:2010-02)',
-        institutionOrAuthor: 'Verein Deutscher Ingenieure (VDI)',
-        details: 'Empfehlung zur periodischen Überprüfung; keine Rechtsnorm.',
+        title: inhalt.werte.standsicherheitVonBauwerkenRegelmäßige,
+        institutionOrAuthor: inhalt.werte.vereinDeutscherIngenieureVdi,
+        details: inhalt.werte.empfehlungZurPeriodischenÜberprüfung,
         url: 'https://www.vdi.de/richtlinien/details/vdi-6200-standsicherheit-von-bauwerken-regelmaessige-ueberpruefung'
       }
     ]
   },
   {
     id: 'polcevera_genua',
-    name: 'Einsturz des Polcevera-Viadukts (Ponte Morandi)',
-    subTitle: 'Katastrophales Versagen korrodierter Spannstahllitzen in schräg abgespannten Zugbändern',
+    name: inhalt.werte.einsturzDesPolceveraViadukts,
+    subTitle: inhalt.werte.katastrophalesVersagenKorrodierterSpanns,
     category: 'bruecken',
     year: '2018',
-    location: 'Genua, Ligurien, Italien',
-    structureType: 'Schrägkabelbrücke / Spannbetonbrücke nach dem System Riccardo Morandi',
-    keyMaterialMechanism: 'Fortgeschrittene Korrosion (Querschnittsverlust) der Spannstahllitzen in den betonummantelten Schrägabspannungen, begünstigt durch Verpressfehler und Chloride/Industrieatmosphäre',
-    summary: 'Am 14. August 2018 stürzte das System des Pfeilers 9 des 1967 eröffneten Ponte Morandi ein (zum Zeitpunkt herrschte ein Unwetter, das jedoch nicht als Ursache belegt ist). Ein ca. 200 m langer Überbauabschnitt fiel über 45 Meter in die Tiefe. 43 Menschen starben. Das Bauwerk wies eine weltweit einzigartige Konstruktion mit betonummantelten Spannbeton-Schrägabspannungen auf, in denen der Spannstahl über Jahrzehnte unbemerkt korrodierte.',
+    location: inhalt.werte.genuaLigurienItalien,
+    structureType: inhalt.werte.schrägkabelbrückeSpannbetonbrückeNachDem,
+    keyMaterialMechanism: inhalt.werte.fortgeschritteneKorrosionQuerschnittsver,
+    summary: inhalt.werte.am14August2018,
     projectData: {
       baujahr: '1963–1967',
-      schadensdatum: '14. August 2018 (ca. 11:36 Uhr)',
-      ort: 'Genua (Autostrada A10)',
-      tragwerkstyp: 'Spannbeton-Schrägseilbrücke mit Dreibein-Pylonen und externen, betonummantelten Zugbändern',
-      beteiligteBaustoffe: ['Hochfester Spannstahl (Patentstahldraht)', 'Portlandzementbeton', 'Injektionsmörtel (Zementleim mit Hohlräumen)'],
-      spannweiteAbmessungen: 'Gesamtlänge 1.182 m, Pylonhöhe 90 m, Hauptspannweiten bis zu 210 m',
-      opferZahlen: '43 Todesopfer, 16 Verletzte',
-      gesamtschaden: 'Mehrere hundert Millionen Euro direkter Bauschaden, Verkehrschaos in Norditalien, Abriss der Restpfeiler'
+      schadensdatum: inhalt.werte.t14August2018Ca,
+      ort: inhalt.werte.genuaAutostradaA10,
+      tragwerkstyp: inhalt.werte.spannbetonSchrägseilbrückeMitDreibein,
+      beteiligteBaustoffe: [inhalt.werte.hochfesterSpannstahlPatentstahldraht, 'Portlandzementbeton', inhalt.werte.injektionsmörtelZementleimMitHohlräumen],
+      spannweiteAbmessungen: inhalt.werte.gesamtlänge1182M,
+      opferZahlen: inhalt.werte.t43Todesopfer16Verletzte,
+      gesamtschaden: inhalt.werte.mehrereHundertMillionenEuro
     },
     historie: [
       {
-        phase: '1. Innovation & Entwurf Morandi (1963–1967)',
+        phase: inhalt.werte.t1InnovationEntwurfMorandi,
         zeitraum: '1963–1967',
-        details: 'Riccardo Morandi entwarf eine kühne Brücke mit sehr wenigen Schrägabspannungen. Besonderheit: Die Zugseile (Spannstahlbündel) wurden mit Beton ummantelt und nachträglich vorgespannt, um Schwingungen zu dämpfen und den Stahl vor Korrosion zu schützen. Allerdings führte dies zu einer extremen Inspektionsunfreundlichkeit.'
+        details: inhalt.werte.riccardoMorandiEntwarfEine
       },
       {
-        phase: '2. Aggressives Meeres- und Industrie-Klima (1970–1993)',
+        phase: inhalt.werte.t2AggressivesMeeresUnd,
         zeitraum: '1970–1993',
-        details: 'Die Brücke lag direkt im Einflussbereich der marinen Salzgischt des Mittelmeers sowie der Schwefel- und Industrieabgase benachbarter Stahlwerke. Bereits in den 1970er Jahren zeigten sich Risse im Betonmantel. Anfang der 1990er Jahre wurden die Abspannungen von Pfeiler 11 wegen Korrosion mit externen Stahlseilen nachgerüstet; Pfeiler 9 wurde nicht ertüchtigt.'
+        details: inhalt.werte.dieBrückeLagDirekt
       },
       {
-        phase: '3. Injektionsdefizite & unvollständiger Verpressmörtel (1995–2018)',
+        phase: inhalt.werte.t3InjektionsdefiziteUnvollständigerVerpre,
         zeitraum: '1995–2018',
-        details: 'Untersuchungen zeigten Verpressfehler (Hohlräume) in den Abspannungen. Feuchtigkeit und Chloride führten dort zu erheblichen Querschnittsverlusten der Spannstahllitzen durch Korrosion.'
+        details: inhalt.werte.untersuchungenZeigtenVerpressfehlerHohlr
       },
       {
-        phase: '4. Reißender Bruch & Pylonkollaps (14.08.2018)',
+        phase: inhalt.werte.t4ReißenderBruchPylonkollaps,
         zeitraum: '14.08.2018',
-        details: 'Eine Abspannung des Systems 9 versagte (zum Zeitpunkt herrschte ein Unwetter, als Ursache ist es nicht belegt). Durch die asymmetrische Lastumlagerung knickte der Pylon seitlich weg, wodurch die gesamte Brückentafel auf Autobahntrasse, Bahngleise und Industrieanlagen herabstürzte.'
+        details: inhalt.werte.eineAbspannungDesSystems
       }
     ],
     ursachen: [
       {
-        titel: 'Korrosion der Spannstahllitzen in den Abspannungen',
+        titel: inhalt.werte.korrosionDerSpannstahllitzenIn,
         kategorie: 'Material/Werkstoff',
-        beschreibung: 'Fortgeschrittene Korrosion mit Querschnittsverlust der Litzen, begünstigt durch Chloride aus Seeluft und Industrieatmosphäre. Spannungsrisskorrosion ist als Hauptmechanismus nicht gesichert belegt.'
+        beschreibung: inhalt.werte.fortgeschritteneKorrosionMitQuerschnitts
       },
       {
-        titel: 'Injektionsfehler & Hohlräume in den Spanngliedern',
+        titel: inhalt.werte.injektionsfehlerHohlräumeInDen,
         kategorie: 'Ausführung',
-        beschreibung: 'Unvollständiges Verpressen der vertikalen und geneigten Spannglieder. Durch Ausbluten des Einpressmörtels entstanden Luft- und Wassertaschen, die den alkalischen Korrosionsschutz (Passivierung) durch den Zementstein aufhoben.',
+        beschreibung: inhalt.werte.unvollständigesVerpressenDerVertikalen,
         formelOrMechanismus: '\\text{pH-Wert sinkt von } > 12{,}5 \\text{ auf } < 9 \\implies \\text{Depassivierung des Stahls}'
       },
       {
-        titel: 'Mangelnde Redundanz des Tragsystems',
+        titel: inhalt.werte.mangelndeRedundanzDesTragsystems,
         kategorie: 'Planung/Statik',
-        beschreibung: 'Die Konstruktion besaß nur ein einziges Zugbandpaar pro Pylonseite. Der Bruch eines einzigen Bauteils führte unweigerlich zum progressiven Einsturz des Gesamtsystems (Single-Point-of-Failure).',
+        beschreibung: inhalt.werte.dieKonstruktionBesaßNur,
         formelOrMechanismus: '\\text{Redundanzgrad } R = 0 \\implies \\text{Kein alternativer Lastabtragungspfad}'
       },
       {
-        titel: 'Verdeckte Spannglieder ohne ZfP-Überwachung',
+        titel: inhalt.werte.verdeckteSpanngliederOhneZfp,
         kategorie: 'Unterhalt/Monitoring',
-        beschreibung: 'Die dicke Betonummantelung verhinderte eine visuelle Inspektion der Spanndrähte. Zerstörungsfreie Prüfmethoden (z.B. Radiographie, Ultraschall-Echo, Remanenzmagnetismus) wurden nicht rechtzeitig oder unzureichend ausgewertet.'
+        beschreibung: inhalt.werte.dieDickeBetonummantelungVerhinderte
       }
     ],
     folgen: [
       {
-        bereich: 'Brückenbau & Konstruktionsprinzipien',
-        auswirkung: 'Vollständige Ächtung monolithisch betonummantelter Spannglieder ohne Zugänglichkeit. Moderne Schrägkabelbrücken nutzen heute ausschließlich einzeln austauschbare Litzenbündel in PE-Hüllrohren mit mehrfachem Korrosionsschutz (Galvanisierung, Wachs, PE-Mantel).',
-        normativeKonsequenz: 'fib Model Code & DIN EN 1992-2 (Brückenbau)'
+        bereich: inhalt.werte.brückenbauKonstruktionsprinzipien,
+        auswirkung: inhalt.werte.vollständigeÄchtungMonolithischBetonumma,
+        normativeKonsequenz: inhalt.werte.fibModelCodeDin
       },
       {
-        bereich: 'Brückeninspektion & Monitoring',
-        auswirkung: 'Verschärfung der Brückenprüfungen in ganz Europa (in Deutschland DIN 1076). Ausbau von Monitoring- und Prüfprogrammen; in Italien neue Leitlinien zur Risikoklassifizierung bestehender Brücken (Linee Guida 2020).',
-        normativeKonsequenz: 'DIN 1076 (Neuausgabe 2026-01 mit Sonderprüfung, Bauwerksbuch und Qualifikationsanforderungen)'
+        bereich: inhalt.werte.brückeninspektionMonitoring,
+        auswirkung: inhalt.werte.verschärfungDerBrückenprüfungenIn,
+        normativeKonsequenz: inhalt.werte.din1076Neuausgabe2026
       },
       {
         bereich: 'Infrastrukturpolitik',
-        auswirkung: 'Rücknahme von Autobahnkonzessionen, massive Investitionsprogramme zur Ertüchtigung von Spannbetonbrücken der Nachkriegsjahrzehnte.',
-        normativeKonsequenz: 'Neubau des Viadotto Genova-San Giorgio (Entwurf Renzo Piano) in Rekordzeit (2020)'
+        auswirkung: inhalt.werte.rücknahmeVonAutobahnkonzessionenMassive,
+        normativeKonsequenz: inhalt.werte.neubauDesViadottoGenova
       }
     ],
     lessonsLearned: [
-      'Tragwerke müssen redundant ausgelegt sein; der Ausfall eines Einzelelements darf keinen Domino-Einsturz auslösen.',
-      'Spannbetonbauteile müssen für zerstörungsfreie Prüfungen (ZfP) zugänglich und inspizierbar sein.',
-      'Schrägseile und Spannglieder müssen austauschbar konzipiert werden.'
+      inhalt.werte.tragwerkeMüssenRedundantAusgelegt,
+      inhalt.werte.spannbetonbauteileMüssenFürZerstörungsfr,
+      inhalt.werte.schrägseileUndSpanngliederMüssen
     ],
-    quellenlage: 'Bericht der ministeriellen Kommission (2018) und Fachliteratur; Gerichtsverfahren in Italien laufend.',
+    quellenlage: inhalt.werte.berichtDerMinisteriellenKommission,
     typischeBauschaedenLink: {
       subTab: 'tief_ingenieurbau',
-      label: 'Tief- & Ingenieurbau / Brückenschäden',
-      description: 'Zerstörungsfreie Prüfverfahren (ZfP), Injektionsdefizite in Hüllrohren und Brückenmonitoring nach DIN 1076.'
+      label: inhalt.werte.tiefIngenieurbauBrückenschäden,
+      description: inhalt.werte.zerstörungsfreiePrüfverfahrenZfpInjektio
     },
     sources: [
       {
-        title: 'Relazione Tecnica della Commissione Ispettiva sul Crollo del Viadotto Polcevera',
-        institutionOrAuthor: 'Ministero delle Infrastrutture e dei Trasporti (MIT Italia)',
-        details: 'Bericht der ministeriellen Untersuchungskommission, 2018 (Link: Übersichtsartikel mit Nachweisen).',
+        title: inhalt.werte.relazioneTecnicaDellaCommissione,
+        institutionOrAuthor: inhalt.werte.ministeroDelleInfrastruttureE,
+        details: inhalt.werte.berichtDerMinisteriellenUntersuchungskom,
         url: 'https://de.wikipedia.org/wiki/Polcevera-Viadukt'
       },
       {
-        title: 'Once upon a Time in Italy: The Tale of the Morandi Bridge',
-        institutionOrAuthor: 'Calvi, G. M. et al. (Structural Engineering International 29, IABSE)',
-        details: 'Fachaufsatz zu Entwurf, Zustand und Versagen, 2019.',
+        title: inhalt.werte.onceUponATime,
+        institutionOrAuthor: inhalt.werte.calviGMEt,
+        details: inhalt.werte.fachaufsatzZuEntwurfZustand,
         url: 'https://www.tandfonline.com/doi/abs/10.1080/10168664.2018.1558033'
       },
       {
-        title: 'fib Bulletin 89: Acceptance of stay cable systems using prestressing steels',
-        institutionOrAuthor: 'International Federation for Structural Concrete (fib)',
-        details: 'Internationale Richtlinie für Schrägkabel und Korrosionsschutzsysteme.'
+        title: inhalt.werte.fibBulletin89Acceptance,
+        institutionOrAuthor: inhalt.werte.internationalFederationForStructural,
+        details: inhalt.werte.internationaleRichtlinieFürSchrägkabel
       }
     ]
   },
   {
     id: 'carolabrücke_dresden',
-    name: 'Teileinsturz der Carolabrücke Dresden',
-    subTitle: 'Wasserstoffinduzierte Spannungsrisskorrosion des Hennigsdorfer Spannstahls im Brückenzug C',
+    name: inhalt.werte.teileinsturzDerCarolabrückeDresden,
+    subTitle: inhalt.werte.wasserstoffinduzierteSpannungsrisskorros,
     category: 'bruecken',
     year: '2024',
-    location: 'Dresden, Sachsen, Deutschland',
-    structureType: 'Spannbeton-Hohlkastenbrücke mit Vouten (3 Brückenzüge A, B, C)',
-    keyMaterialMechanism: 'Wasserstoffinduzierte Spannungsrisskorrosion des Hennigsdorfer Spannstahls; Anrisse mit hoher Wahrscheinlichkeit bereits in der Bauzeit (lange unverpresste Spannglieder); über Jahrzehnte Ermüdung und sukzessive Drahtbrüche bis zum Versagen',
-    summary: 'In der Nacht zum 11. September 2024 stürzte der rund 100 m lange Brückenzug C der Dresdner Carolabrücke (auf dem Straßenbahngleise und ein Fußweg verliefen) plötzlich und ohne Vorankündigung in die Elbe. Es gab keine Personenschäden. Nach dem Gutachten (2025) war wasserstoffinduzierte Spannungsrisskorrosion des in der DDR hergestellten Spannstahls ursächlich; die Anrisse entstanden mit hoher Wahrscheinlichkeit bereits in der Bauzeit, danach führten Ermüdung und sukzessive Drahtbrüche zum Versagen. Chloride sind als Ursache nicht belegt.',
+    location: inhalt.werte.dresdenSachsenDeutschland,
+    structureType: inhalt.werte.spannbetonHohlkastenbrückeMitVouten,
+    keyMaterialMechanism: inhalt.werte.wasserstoffinduzierteSpannungsrisskorros2,
+    summary: inhalt.werte.inDerNachtZum,
     projectData: {
       baujahr: '1967–1971',
-      schadensdatum: '11. September 2024 (ca. 02:58 Uhr)',
-      ort: 'Dresden (Elbeüberquerung B 170)',
-      tragwerkstyp: 'Spannbeton-Durchlaufträger mit veränderlicher Bauhöhe (Gerberträger / Hohlkasten)',
-      beteiligteBaustoffe: ['DDR-Spannstahl St 140/160 (vergütet in Hennigsdorf)', 'B 450 (Portlandzementbeton)', 'Einpressmörtel (Spannglieder in der Bauzeit lange unverpresst)'],
-      spannweiteAbmessungen: 'Hauptöffnung über der Elbe ca. 120 m, Gesamtbrückenlänge ca. 375 m',
-      opferZahlen: 'Keine Personenschäden (Einsturz erfolgte nachts kurz nach der letzten Straßenbahn)',
-      gesamtschaden: 'Verlust der Brückenhälfte, Schifffahrtssperre der Elbe, Abriss des Einsturzzuges und akute Sanierungspflicht'
+      schadensdatum: inhalt.werte.t11September2024Ca,
+      ort: inhalt.werte.dresdenElbeüberquerungB170,
+      tragwerkstyp: inhalt.werte.spannbetonDurchlaufträgerMitVeränderlich,
+      beteiligteBaustoffe: [inhalt.werte.ddrSpannstahlSt140, inhalt.werte.b450Portlandzementbeton, inhalt.werte.einpressmörtelSpanngliederInDer],
+      spannweiteAbmessungen: inhalt.werte.hauptöffnungÜberDerElbe,
+      opferZahlen: inhalt.werte.keinePersonenschädenEinsturzErfolgte,
+      gesamtschaden: inhalt.werte.verlustDerBrückenhälfteSchifffahrtssperr
     },
     historie: [
       {
-        phase: '1. Bauwerkserrichtung mit Hennigsdorfer Spannstahl (1967–1971)',
+        phase: inhalt.werte.t1BauwerkserrichtungMitHennigsdorfer,
         zeitraum: '1967–1971',
-        details: 'Die Carolabrücke galt als ingenieurtechnische Spitzenleistung der DDR. Als Spannstahl kam der thermisch vergütete Kohlenstoffstahl "St 140/160" aus dem Stahl- und Walzwerk Hennigsdorf zum Einsatz. Dieser Stahl ist heute dafür berüchtigt, unter Feuchte und Zugspannung zu wasserstoffinduzierter Spannungsrisskorrosion ohne Vorankündigung zu neigen.'
+        details: inhalt.werte.dieCarolabrückeGaltAls
       },
       {
-        phase: '2. Sanierungsmaßnahmen der Züge A & B (2019–2023)',
+        phase: inhalt.werte.t2SanierungsmaßnahmenDerZüge,
         zeitraum: '2019–2023',
-        details: 'Die Züge A und B (Straßenverkehr) wurden instand gesetzt; die Instandsetzung von Zug C (Straßenbahn) war für die Folgejahre vorgesehen. Aus den Bauwerksprüfungen nach DIN 1076 ergab sich keine Einsturzwarnung.'
+        details: inhalt.werte.dieZügeAUnd
       },
       {
-        phase: '3. Ermüdung und sukzessive Drahtbrüche (1971–2024)',
+        phase: inhalt.werte.t3ErmüdungUndSukzessive,
         zeitraum: '1971–2024',
-        details: 'Ausgehend von den in der Bauzeit entstandenen Anrissen führten Verkehrs- und Temperaturbeanspruchungen über Jahrzehnte zu fortschreitenden Drahtbrüchen, ohne dass dies an der Oberfläche erkennbar wurde.'
+        details: inhalt.werte.ausgehendVonDenIn
       },
       {
-        phase: '4. Versagen im Stützquerschnitt (11.09.2024)',
+        phase: inhalt.werte.t4VersagenImStützquerschnitt,
         zeitraum: '11.09.2024',
-        details: 'Das Versagen trat im Stützquerschnitt am Strompfeiler D ein. Der lastverteilende Querträgeranschluss verhinderte eine ankündigende Rissbildung; der Überbau von Zug C stürzte in die Elbe.'
+        details: inhalt.werte.dasVersagenTratIm
       }
     ],
     ursachen: [
       {
-        titel: 'Wasserstoffinduzierte Spannungsrisskorrosion (H-SpRK)',
+        titel: inhalt.werte.wasserstoffinduzierteSpannungsrisskorros3,
         kategorie: 'Material/Werkstoff',
-        beschreibung: 'Der verwendete vergütete Hennigsdorfer Spannstahl St 140/160 besitzt ein martensitisches/bainitisches Gefüge, das extrem empfindlich auf atomaren Wasserstoff reagiert. Korrosionsreaktionen setzen Wasserstoff frei, der in das Kristallgitter diffundiert und Versetzungen blockiert, was zum schlagartigen Sprödbruch führt.',
+        beschreibung: inhalt.werte.derVerwendeteVergüteteHennigsdorfer,
         formelOrMechanismus: '\\text{H}^+ + e^- \\rightarrow \\text{H}_{\\text{ad}} \\xrightarrow{\\text{Diffusion}} \\text{Gitterversprödung an Korngrenzen}'
       },
       {
-        titel: 'Anrisse in der Bauzeit und Ermüdung',
+        titel: inhalt.werte.anrisseInDerBauzeit,
         kategorie: 'Ausführung',
-        beschreibung: 'Lange unverpresste Spannglieder in der Bauzeit ermöglichten mit hoher Wahrscheinlichkeit erste Anrisse; Verkehrs- und Temperaturwechsel führten anschließend zu Ermüdung und sukzessiven Drahtbrüchen.'
+        beschreibung: inhalt.werte.langeUnverpressteSpanngliederIn
       },
       {
-        titel: 'Fehlendes Ankündigungsverhalten im Stützbereich',
+        titel: inhalt.werte.fehlendesAnkündigungsverhaltenImStützber,
         kategorie: 'Planung/Statik',
-        beschreibung: 'Am Strompfeiler D verhinderte der lastverteilende Querträgeranschluss eine ankündigende Rissbildung (kein „Riss-vor-Bruch“-Verhalten).'
+        beschreibung: inhalt.werte.amStrompfeilerDVerhinderte
       },
       {
-        titel: 'Grenzen der visuellen Brückenprüfung (DIN 1076)',
+        titel: inhalt.werte.grenzenDerVisuellenBrückenprüfung,
         kategorie: 'Unterhalt/Monitoring',
-        beschreibung: 'Die Spannungsrisskorrosion lief unsichtbar im Inneren der Hüllrohre ab. An der Betonoberfläche traten vor dem Kollaps kaum Warnrisse oder Abplatzungen auf (Versagen ohne Ankündigung).'
+        beschreibung: inhalt.werte.dieSpannungsrisskorrosionLiefUnsichtbar
       }
     ],
     folgen: [
       {
-        bereich: 'Bundesweite Brückenüberprüfung',
-        auswirkung: 'Überprüfung von Spannbetonbrücken mit spannungsrisskorrosionsgefährdetem Spannstahl (z. B. Hennigsdorfer Spannstahl, Neptun N 40, Sigma oval; gefährdete Stähle und Herstellzeiträume nach der Handlungsanweisung).',
-        normativeKonsequenz: 'Handlungsanweisung zur Überprüfung und Beurteilung von älteren Brückenbauwerken, die mit vergütetem, spannungsrisskorrosionsgefährdetem Spannstahl erstellt wurden (BMVBS 2011)'
+        bereich: inhalt.werte.bundesweiteBrückenüberprüfung,
+        auswirkung: inhalt.werte.überprüfungVonSpannbetonbrückenMit,
+        normativeKonsequenz: inhalt.werte.handlungsanweisungZurÜberprüfungUnd
       },
       {
-        bereich: 'ZfP & Dauermonitoring',
-        auswirkung: 'Verstärkter Einsatz von Schallemissionsmonitoring an gefährdeten Spannbetonbauwerken zur Registrierung von Drahtbrüchen.',
-        normativeKonsequenz: 'Einsatz von Schallemissionsanalyse (SEA) und magnetischen Streuflussverfahren'
+        bereich: inhalt.werte.zfpDauermonitoring,
+        auswirkung: inhalt.werte.verstärkterEinsatzVonSchallemissionsmoni,
+        normativeKonsequenz: inhalt.werte.einsatzVonSchallemissionsanalyseSea
       },
       {
-        bereich: 'Verkehrs- & Städtebau',
-        auswirkung: 'Vollständiger Abriss von Brückenzug C, Neubauplanung und gravierende Verkehrsbehinderungen im Straßenbahn- und Fernverkehr Dresdens.',
-        normativeKonsequenz: 'Ersatzneubau in Planung (aktueller Stand: Landeshauptstadt Dresden)'
+        bereich: inhalt.werte.verkehrsStädtebau,
+        auswirkung: inhalt.werte.vollständigerAbrissVonBrückenzug,
+        normativeKonsequenz: inhalt.werte.ersatzneubauInPlanungAktueller
       }
     ],
     lessonsLearned: [
-      'Bauwerke mit spannungsrisskorrosionsgefährdetem Spannstahl erfordern den Nachweis des Ankündigungsverhaltens bzw. eine Überwachung.',
-      'Visuelle Brückenprüfungen stoßen bei verdeckten Spannstahlbrüchen an fundamentale physikalische Grenzen; Sensorik ist unverzichtbar.',
-      'Schäden aus der Bauzeit (z. B. lange unverpresste Spannglieder) können Jahrzehnte später zum Versagen führen.'
+      inhalt.werte.bauwerkeMitSpannungsrisskorrosionsgefähr,
+      inhalt.werte.visuelleBrückenprüfungenStoßenBei,
+      inhalt.werte.schädenAusDerBauzeit
     ],
-    quellenlage: 'Gutachten im Auftrag der Landeshauptstadt Dresden (Zwischenbericht 2024, Kurzfassung 05/2025).',
+    quellenlage: inhalt.werte.gutachtenImAuftragDer,
     typischeBauschaedenLink: {
       subTab: 'korrosion',
-      label: 'Korrosion & Betonschäden',
-      description: 'Spannungsrisskorrosion, Depassivierung des Bewehrungsstahls und Rissbildung.'
+      label: inhalt.werte.korrosionBetonschäden,
+      description: inhalt.werte.spannungsrisskorrosionDepassivierungDesB
     },
     sources: [
       {
-        title: 'Erster Zwischenbericht zum Einsturz des Brückenzugs C der Carolabrücke',
-        institutionOrAuthor: 'Landeshauptstadt Dresden / Prof. Dr.-Ing. Steffen Marx (TU Dresden)',
-        details: 'Zwischenbericht 2024; Gutachten/Kurzfassung der Landeshauptstadt Dresden, 27.05.2025.',
+        title: inhalt.werte.ersterZwischenberichtZumEinsturz,
+        institutionOrAuthor: inhalt.werte.landeshauptstadtDresdenProfDr,
+        details: inhalt.werte.zwischenbericht2024GutachtenKurzfassung,
         url: 'https://de.wikipedia.org/wiki/Carolabr%C3%BCcke_(Dresden)'
       },
       {
-        title: 'Handlungsanweisung zur Überprüfung und Beurteilung von älteren Brückenbauwerken, die mit vergütetem, spannungsrisskorrosionsgefährdetem Spannstahl erstellt wurden',
-        institutionOrAuthor: 'BMVBS (2011), heute BMV',
-        details: 'Nachweis des Ankündigungsverhaltens für Bauwerke mit SpRK-gefährdeten Spannstählen.',
+        title: inhalt.werte.handlungsanweisungZurÜberprüfungUnd2,
+        institutionOrAuthor: inhalt.werte.bmvbs2011HeuteBmv,
+        details: inhalt.werte.nachweisDesAnkündigungsverhaltensFür,
         url: 'https://bmdv.bund.de/'
       }
     ]
   },
   {
     id: 'silver_bridge',
-    name: 'Einsturz der Silver Bridge (Point Pleasant)',
-    subTitle: 'Sprödbruch einer einzigen Augenstab-Lasche infolge von Spannungsrisskorrosion',
+    name: inhalt.werte.einsturzDerSilverBridge,
+    subTitle: inhalt.werte.sprödbruchEinerEinzigenAugenstab,
     category: 'bruecken',
     year: '1967',
-    location: 'Point Pleasant (West Virginia) / Gallipolis (Ohio), USA',
-    structureType: 'Kettenhängebrücke mit Augenstäben (Eyebar-Chain Suspension Bridge)',
-    keyMaterialMechanism: 'Spannungskorrosion und Schwingungsrisskorrosion (Korrosionsermüdung) in hochfestem Mangan-Kohlenstoffstahl',
-    summary: 'Am 15. Dezember 1967 stürzte die 1928 erbaute Silver Bridge über den Ohio River während des abendlichen Berufsverkehrs ein. 46 Menschen kamen ums Leben. Der Einsturz gilt als die Geburtsstunde der modernen Bruchmechanik und des systematischen Brückenprüfwesens (National Bridge Inspection Standards). Ursache war ein mikroskopisch kleiner Riss in einer einzigen Augenstablasche, der zum spröden Gewaltbruch der gesamten Tragekette führte.',
+    location: inhalt.werte.pointPleasantWestVirginia,
+    structureType: inhalt.werte.kettenhängebrückeMitAugenstäbenEyebar,
+    keyMaterialMechanism: inhalt.werte.spannungskorrosionUndSchwingungsrisskorr,
+    summary: inhalt.werte.am15Dezember1967,
     projectData: {
       baujahr: '1928',
-      schadensdatum: '15. Dezember 1967 (ca. 17:00 Uhr)',
-      ort: 'Point Pleasant, West Virginia, USA',
-      tragwerkstyp: 'Augenstab-Kettenhängebrücke mit Versteifungsfachwerk, Spannweite 213 m',
-      beteiligteBaustoffe: ['Wärmebehandelter Kohlenstoffstahl (≈ AISI 1060)', 'Kettenbolzen'],
-      spannweiteAbmessungen: 'Hauptstützweite 213 m, Gesamtlänge 680 m',
-      opferZahlen: '46 Todesopfer, 9 Schwerverletzte',
-      gesamtschaden: 'Vollständiger Brückenverlust, Neuordnung der US-Brückeninfrastruktur'
+      schadensdatum: inhalt.werte.t15Dezember1967Ca,
+      ort: inhalt.werte.pointPleasantWestVirginia2,
+      tragwerkstyp: inhalt.werte.augenstabKettenhängebrückeMitVersteifung,
+      beteiligteBaustoffe: [inhalt.werte.wärmebehandelterKohlenstoffstahlAisi1060, 'Kettenbolzen'],
+      spannweiteAbmessungen: inhalt.werte.hauptstützweite213MGesamtlänge,
+      opferZahlen: inhalt.werte.t46Todesopfer9Schwerverletzte,
+      gesamtschaden: inhalt.werte.vollständigerBrückenverlustNeuordnungDer
     },
     historie: [
       {
-        phase: '1. Pionierbauwerk mit neuartigem Augenstabstahl (1928)',
+        phase: inhalt.werte.t1PionierbauwerkMitNeuartigem,
         zeitraum: '1928',
-        details: 'Die Brücke wurde statt mit gewickelten Drahtseilen mit Ketten aus hochfesten, wärmebehandelten Augenstäben gebaut. Durch die hohe Festigkeit des Stahls konnte Material gespart werden. Die Kette bestand aus jeweils nur zwei parallelen Augenstäben pro Glied.'
+        details: inhalt.werte.dieBrückeWurdeStatt
       },
       {
-        phase: '2. Verkehrszunahme & Lkw-Gewichte (1930–1967)',
+        phase: inhalt.werte.t2VerkehrszunahmeLkwGewichte,
         zeitraum: '1930–1967',
-        details: 'Das Verkehrsaufkommen und die Einzellasten von Lastkraftwagen stiegen im Laufe der Jahrzehnte um ein Vielfaches über die ursprünglichen Lastannahmen von 1928 an. Es traten kontinuierliche dynamische Wechselbeanspruchungen auf.'
+        details: inhalt.werte.dasVerkehrsaufkommenUndDie
       },
       {
-        phase: '3. Mikrorissbildung im Bolzenloch (unbemerkt)',
-        zeitraum: 'ca. 1950–1967',
-        details: 'Im Inneren des Auges von Stab 330 bildete sich durch Reibkorrosion (Fretting) und Schwefeldioxid-Luftverschmutzung ein kleiner Korrosionsriss von ca. 2,5 mm Tiefe. Da der Bolzen das Loch verdeckte, war der Riss mit bloßem Auge unmöglich zu erkennen.'
+        phase: inhalt.werte.t3MikrorissbildungImBolzenloch,
+        zeitraum: inhalt.werte.ca19501967,
+        details: inhalt.werte.imInnerenDesAuges
       },
       {
-        phase: '4. Schlagartiger Sprödbruch (15.12.1967)',
+        phase: inhalt.werte.t4SchlagartigerSprödbruch15,
         zeitraum: '15.12.1967',
-        details: 'Bei niedrigen Außentemperaturen (-1 °C) erreichte der Werkstoff seine Übergangstemperatur zur Kaltversprödung. Unter Spitzenverkehrslast überschritt der Riss die kritische Risslänge. Die Lasche brach blitzartig, die verbliebene Nachbarlasche wurde überlastet, und die gesamte Brücke stürzte binnen 60 Sekunden in den Ohio River.'
+        details: inhalt.werte.beiNiedrigenAußentemperaturen1
       }
     ],
     ursachen: [
       {
-        titel: 'Bruchmechanischer Sprödbruch (K_I ≥ K_Ic)',
+        titel: inhalt.werte.bruchmechanischerSprödbruchKI,
         kategorie: 'Material/Werkstoff',
-        beschreibung: 'Der verwendete Stahl besaß eine sehr geringe Bruchzähigkeit KIc bei tiefen Temperaturen. Bereits ein Riss von nur 2,5 mm reichte aus, um die kritische Spannungsintensität zu erreichen.',
+        beschreibung: inhalt.werte.derVerwendeteStahlBesaß,
         formelOrMechanismus: 'K_I = Y \\cdot \\sigma \\cdot \\sqrt{\\pi a} \\ge K_{Ic} \\implies \\text{katastrophales instabiles Risswachstum}'
       },
       {
-        titel: 'Fehlende Redundanz (Bruchkritischer Bauteil / Fracture Critical Member)',
+        titel: inhalt.werte.fehlendeRedundanzBruchkritischerBauteil,
         kategorie: 'Planung/Statik',
-        beschreibung: 'Ein Tragsystem aus nur zwei parallelen Augenstäben ist nicht fehlertolerant. Bricht eine Lasche, verdreht sich der Bolzen, wodurch auch die zweite Lasche schlagartig versagt.',
+        beschreibung: inhalt.werte.einTragsystemAusNur,
         formelOrMechanismus: '\\text{FCM-Klassifizierung: Kein Sekundärtragpfad vorhanden}'
       },
       {
-        titel: 'Unzugängliche Bolzenverbindung',
+        titel: inhalt.werte.unzugänglicheBolzenverbindung,
         kategorie: 'Unterhalt/Monitoring',
-        beschreibung: 'Der Riss befand sich auf der Innenseite des Bolzenlochs, vollständig verdeckt durch Laschen und Bolzenköpfe.'
+        beschreibung: inhalt.werte.derRissBefandSich
       }
     ],
     folgen: [
       {
-        bereich: 'US-Bundesgesetze & Prüfvorschriften',
-        auswirkung: 'Verabschiedung des Federal-Aid Highway Act of 1968 und Schaffung der National Bridge Inspection Standards (NBIS). Erstmalige gesetzliche Pflicht zur Brückenprüfung alle 2 Jahre.',
-        normativeKonsequenz: 'NBIS (National Bridge Inspection Standards) & FHWA Richtlinien'
+        bereich: inhalt.werte.usBundesgesetzePrüfvorschriften,
+        auswirkung: inhalt.werte.verabschiedungDesFederalAid,
+        normativeKonsequenz: inhalt.werte.nbisNationalBridgeInspection
       },
       {
-        bereich: 'Werkstoffkunde & Bruchmechanik',
-        auswirkung: 'Rasanter Aufstieg der linearen elastischen Bruchmechanik (LEBM) nach Griffith und Irwin als verbindliches Ingenieurfach. Einführung von Kerbschlagbiegeversuchen bei tiefen Temperaturen für Brückenstähle (Charpy-V-Notch).',
-        normativeKonsequenz: 'ASTM-Normen zur Bruchzähigkeit $K_{Ic}$ und Kerbschlagarbeit $A_V$'
+        bereich: inhalt.werte.werkstoffkundeBruchmechanik,
+        auswirkung: inhalt.werte.rasanterAufstiegDerLinearen,
+        normativeKonsequenz: inhalt.werte.astmNormenZurBruchzähigkeit
       }
     ],
     lessonsLearned: [
-      'Hochfeste Stähle dürfen niemals ohne Nachweis ausreichender Bruchzähigkeit KIc bei tiefen Einsatztemperaturen verwendet werden.',
-      'Konstruktionen müssen so ausgelegt sein, dass kritische Bereiche visuell oder mit ZfP geprüft werden können.',
-      'Brücken ohne Redundanz (Fracture Critical Members) erfordern Sonderprüfungen oder müssen substituiert werden.'
+      inhalt.werte.hochfesteStähleDürfenNiemals,
+      inhalt.werte.konstruktionenMüssenSoAusgelegt,
+      inhalt.werte.brückenOhneRedundanzFracture
     ],
-    quellenlage: 'Amtlicher Untersuchungsbericht NTSB-HAR-71-1 (1970/71).',
+    quellenlage: inhalt.werte.amtlicherUntersuchungsberichtNtsbHar,
     typischeBauschaedenLink: {
       subTab: 'risse',
-      label: 'Risse, Sprödbruch & Verformungen',
-      description: 'Spannungsintensität KI, elastische Bruchmechanik und Rissfortschritt nach Griffith-Irwin.'
+      label: inhalt.werte.risseSprödbruchVerformungen,
+      description: inhalt.werte.spannungsintensitätKiElastischeBruchmech
     },
     sources: [
       {
-        title: 'Highway Accident Report: Collapse of U.S. 35 Highway Bridge, Point Pleasant, West Virginia',
-        institutionOrAuthor: 'National Transportation Safety Board (NTSB Report NTSB-HAR-71-1)',
-        details: 'Offizieller US-Bundesuntersuchungsbericht zum Einsturz der Silver Bridge, Washington D.C., 1971.',
+        title: inhalt.werte.highwayAccidentReportCollapse,
+        institutionOrAuthor: inhalt.werte.nationalTransportationSafetyBoard,
+        details: inhalt.werte.offiziellerUsBundesuntersuchungsberichtZ,
         url: 'https://de.wikipedia.org/wiki/Silver_Bridge'
       },
       {
-        title: 'Analysis of the Eyebar Fracture of the Point Pleasant Bridge',
-        institutionOrAuthor: 'National Bureau of Standards (NBS / NIST)',
-        details: 'Grundlegende metallurgische und bruchmechanische Werkstoffuntersuchung des gebrochenen Stabs 330.'
+        title: inhalt.werte.analysisOfTheEyebar,
+        institutionOrAuthor: inhalt.werte.nationalBureauOfStandards,
+        details: inhalt.werte.grundlegendeMetallurgischeUndBruchmechan
       },
       {
-        title: 'National Bridge Inspection Standards (NBIS)',
-        institutionOrAuthor: 'Federal Highway Administration (FHWA)',
-        details: 'Historische Einführung bundesweiter Prüfvorschriften infolge des Silver-Bridge-Kollapses.',
+        title: inhalt.werte.nationalBridgeInspectionStandards,
+        institutionOrAuthor: inhalt.werte.federalHighwayAdministrationFhwa,
+        details: inhalt.werte.historischeEinführungBundesweiterPrüfvor,
         url: 'https://www.fhwa.dot.gov/bridge/nbis.cfm'
       }
     ]
   },
   {
     id: 'kongresshalle_berlin',
-    name: 'Teileinsturz der Kongresshalle Berlin (Haus der Kulturen der Welt)',
-    subTitle: 'Korrosion von Spanngliedern im Übergang Dachschale/Randbogen bei mangelhafter Verpressung',
+    name: inhalt.werte.teileinsturzDerKongresshalleBerlin,
+    subTitle: inhalt.werte.korrosionVonSpanngliedernIm,
     category: 'hallen',
     year: '1980',
-    location: 'Berlin (Tiergarten), Deutschland',
-    structureType: 'Hängedach-Schalenkonstruktion (Sattelfläche mit Randbögen)',
-    keyMaterialMechanism: 'Korrosion der Spannglieder im Übergangsbereich Dachschale/Randbogen: mangelhafte Verpressung, Wasserzutritt über Risse und Fugen, die durch Zwang und wechselnde Biegung (Temperatur, Wind) entstanden; fehlende Inspizierbarkeit',
-    summary: 'Am 21. Mai 1980 stürzte der weit auskragende südliche Randbogen der Berliner Kongresshalle ("Schwangere Auster") plötzlich ein. Ein Mensch wurde getötet, mehrere Personen verletzt. Die Ursachenuntersuchung (Gutachten 1980, u. a. J. Schlaich) ergab Korrosion der Spannglieder im Übergang zwischen Dachschale und Randbogen bei mangelhafter Verpressung; Wasser gelangte über Risse und Fugen, die sich durch Zwang und wechselnde Biegung öffneten, an den Spannstahl.',
+    location: inhalt.werte.berlinTiergartenDeutschland,
+    structureType: inhalt.werte.hängedachSchalenkonstruktionSattelfläche,
+    keyMaterialMechanism: inhalt.werte.korrosionDerSpanngliederIm,
+    summary: inhalt.werte.am21Mai1980,
     projectData: {
       baujahr: '1956–1957',
-      schadensdatum: '21. Mai 1980 (ca. 10:15 Uhr)',
-      ort: 'Berlin-Tiergarten (John-Foster-Dulles-Allee)',
-      tragwerkstyp: 'Sattelförmig gekrümmtes Hängedach (hyperbolisches Paraboloid) mit zwei massiven geneigten Stahlbetonbögen',
-      beteiligteBaustoffe: ['Vergüteter Spannstahl', 'B225 / B300 Beton', 'Zementeinpressmörtel'],
-      spannweiteAbmessungen: 'Bogenspannweite ca. 60 m, Dachauskragung ca. 20 m',
-      opferZahlen: '1 Todesopfer (ein Rundfunkjournalist), mehrere Verletzte',
-      gesamtschaden: 'Einsturz des Südbogens, aufwändiger Wiederaufbau 1987 zum 750. Stadtjubiläum'
+      schadensdatum: inhalt.werte.t21Mai1980Ca,
+      ort: inhalt.werte.berlinTiergartenJohnFoster,
+      tragwerkstyp: inhalt.werte.sattelförmigGekrümmtesHängedachHyperboli,
+      beteiligteBaustoffe: [inhalt.werte.vergüteterSpannstahl, inhalt.werte.b225B300Beton, 'Zementeinpressmörtel'],
+      spannweiteAbmessungen: inhalt.werte.bogenspannweiteCa60M,
+      opferZahlen: inhalt.werte.t1TodesopferEinRundfunkjournalist,
+      gesamtschaden: inhalt.werte.einsturzDesSüdbogensAufwändiger
     },
     historie: [
       {
-        phase: '1. Bau als Symbol der Moderne (1956–1957)',
+        phase: inhalt.werte.t1BauAlsSymbol,
         zeitraum: '1956–1957',
-        details: 'US-Beitrag zur internationalen Bauausstellung "Interbau 57". Die kühne Konstruktion nach Entwurf von Hugh Stubbins spannte das Seilnetz zwischen zwei geneigten Stahlbetonbögen auf. Aus baurechtlichen Gründen wurde das Hängedach nachträglich mit einer Betonschale versteift.'
+        details: inhalt.werte.usBeitragZurInternationalen
       },
       {
-        phase: '2. Zwängungen & unvollständige Fugenabdichtung (1958–1979)',
+        phase: inhalt.werte.t2ZwängungenUnvollständigeFugenabdichtung,
         zeitraum: '1958–1979',
-        details: 'Zwischen der Dachhaut und dem massiven Randbogen kam es infolge von Temperaturunterschieden und Kriechen zu unerwartet hohen Zwangskräften. Wasser drang über undichte Fugen in die Spannkanäle der Bögen ein.'
+        details: inhalt.werte.zwischenDerDachhautUnd
       },
       {
-        phase: '3. Bruch der Spannglieder (21.05.1980)',
+        phase: inhalt.werte.t3BruchDerSpannglieder,
         zeitraum: '21.05.1980',
-        details: 'Die korrodierten Spannglieder brachen; der südliche Dachrandbogen und Teile des Dachs stürzten ab.'
+        details: inhalt.werte.dieKorrodiertenSpanngliederBrachen
       }
     ],
     ursachen: [
       {
-        titel: 'Korrosion der Spannglieder im Übergangsbereich',
+        titel: inhalt.werte.korrosionDerSpanngliederIm2,
         kategorie: 'Material/Werkstoff',
-        beschreibung: 'Wasser gelangte über Risse und Fugen an unzureichend verpresste Spannglieder im Übergang Dachschale/Randbogen; die Spannglieder korrodierten über Jahre unbemerkt. Es handelte sich nicht um einen Fall von Spannungsrisskorrosion an DDR-Stahl St 140/160.'
+        beschreibung: inhalt.werte.wasserGelangteÜberRisse
       },
       {
-        titel: 'Injektionsmängel (Fehlstellen im Verpressmörtel)',
+        titel: inhalt.werte.injektionsmängelFehlstellenImVerpressmör,
         kategorie: 'Ausführung',
-        beschreibung: 'Die Spannstahl-Spannglieder waren abschnittsweise unzureichend mit Zementmörtel verfüllt. Es verblieben Hohlräume, in denen sich Kondenswasser sammeln konnte.'
+        beschreibung: inhalt.werte.dieSpannstahlSpanngliederWaren
       },
       {
-        titel: 'Nicht berücksichtigte Zwangsbeanspruchungen',
+        titel: inhalt.werte.nichtBerücksichtigteZwangsbeanspruchunge,
         kategorie: 'Planung/Statik',
-        beschreibung: 'Die statische Kopplung zwischen Bogen und Dachfläche erzeugte Biegemomente und Querkräfte an Stellen, die im ursprünglichen Seilnetzmodell nicht vorgesehen waren.'
+        beschreibung: inhalt.werte.dieStatischeKopplungZwischen
       }
     ],
     folgen: [
       {
-        bereich: 'Spannstahlzulassungen in Deutschland',
-        auswirkung: 'Verschärfte Anforderungen an das Verpressen von Spanngliedern und an die Inspizierbarkeit; Neubewertung älterer Spannbetonbauten. (Vergütete Spannstähle wurden noch Jahre danach eingesetzt; Zulassungen einzelner Stähle wurden widerrufen. Die Handlungsanweisung zur Spannungsrisskorrosion folgte erst 1993 bzw. 2011.)',
-        normativeKonsequenz: 'DIN 4227 (Spannbeton) – Anforderungen an Einpressmörtel und Verpressen'
+        bereich: inhalt.werte.spannstahlzulassungenInDeutschland,
+        auswirkung: inhalt.werte.verschärfteAnforderungenAnDas,
+        normativeKonsequenz: inhalt.werte.din4227SpannbetonAnforderungen
       },
       {
-        bereich: 'Wiederaufbau & Denkmalpflege',
-        auswirkung: 'Wiederaufbau mit modifizierter Konstruktion (echtes, mechanisch entkoppeltes Hängedach ohne Zwangskräfte).',
-        normativeKonsequenz: 'Eröffnung als Haus der Kulturen der Welt (HKW) 1987'
+        bereich: inhalt.werte.wiederaufbauDenkmalpflege,
+        auswirkung: inhalt.werte.wiederaufbauMitModifizierterKonstruktion,
+        normativeKonsequenz: inhalt.werte.eröffnungAlsHausDer
       }
     ],
     lessonsLearned: [
-      'Spannglieder müssen vollständig verpresst und konstruktiv vor Wasserzutritt geschützt sein; kritische Bereiche müssen inspizierbar bleiben.',
-      'Kombinierte Tragwerke (Hängedach + biegesteifer Betonbogen) erfordern eine präzise Berücksichtigung von Nichtlinearitäten und Zwang.',
-      'Zwang an Übergängen zwischen Bauteilen unterschiedlicher Steifigkeit öffnet Fugen und Risse – Wasserwege zum Spannstahl.'
+      inhalt.werte.spanngliederMüssenVollständigVerpresst,
+      inhalt.werte.kombinierteTragwerkeHängedachBiegesteife,
+      inhalt.werte.zwangAnÜbergängenZwischen
     ],
-    quellenlage: 'Gutachten 1980 (nicht frei verfügbar) und Sekundärliteratur.',
+    quellenlage: inhalt.werte.gutachten1980NichtFrei,
     typischeBauschaedenLink: {
       subTab: 'korrosion',
-      label: 'Korrosion & Betonschäden',
-      description: 'Passivierung, Depassivierung und Korrosion von Spanngliedern bei mangelhafter Verpressung.'
+      label: inhalt.werte.korrosionBetonschäden2,
+      description: inhalt.werte.passivierungDepassivierungUndKorrosion
     },
     sources: [
       {
-        title: 'Gutachten über die Ursachen des Teileinsturzes der Kongresshalle Berlin',
-        institutionOrAuthor: 'Gutachter u. a. Prof. Dr.-Ing. Jörg Schlaich',
-        details: 'Gutachten 1980 (Link: Übersichtsartikel mit Nachweisen).',
+        title: inhalt.werte.gutachtenÜberDieUrsachen,
+        institutionOrAuthor: inhalt.werte.gutachterUAProf,
+        details: inhalt.werte.gutachten1980LinkÜbersichtsartikel,
         url: 'https://de.wikipedia.org/wiki/Haus_der_Kulturen_der_Welt'
       },
       {
-        title: 'Versagen von Bauwerken, Band 2: Hochbauten und Sonderbauwerke',
-        institutionOrAuthor: 'Scheer, J. (Ernst & Sohn)',
-        details: 'Fallsammlung mit Darstellung der Einsturzursachen.'
+        title: inhalt.werte.versagenVonBauwerkenBand,
+        institutionOrAuthor: inhalt.werte.scheerJErnstSohn,
+        details: inhalt.werte.fallsammlungMitDarstellungDer
       }
     ]
   },
   {
     id: 'sankt_marx_wien',
-    name: 'Einsturz der Reichsbrücke Wien (1976)',
-    subTitle: 'Schlagartiger Einsturz des Hauptstromfeldes infolge von Pfeilerkernzerfall',
+    name: inhalt.werte.einsturzDerReichsbrückeWien,
+    subTitle: inhalt.werte.schlagartigerEinsturzDesHauptstromfeldes,
     category: 'bruecken',
     year: '1976',
-    location: 'Wien, Österreich',
-    structureType: 'Kettenbrücke (in sich verankerte Zügelgurtbrücke) über die Donau',
-    keyMaterialMechanism: 'Fortschreitende Zerrüttung des unbewehrten Pfeilersockels und minderwertigen Füllbetons durch eindringendes Wasser (u. a. Frost), verdeckt durch die Granitverkleidung',
-    summary: 'Am Sonntagmorgen des 1. August 1976 stürzte die Wiener Reichsbrücke, eines der bekanntesten Wahrzeichen Wiens, auf voller Strombreite in die Donau. Ein Fahrer kam ums Leben. Die Kettenbrücke von 1937 versagte nicht an den Stahlketten: Der Pfeiler unter dem nordöstlichen Pylon scherte knapp unter dem Brückenauflager ab, weil der unbewehrte Betonsockel und der umhüllende minderwertige Füllbeton durch eingedrungenes Wasser zerrüttet waren.',
+    location: inhalt.werte.wienÖsterreich,
+    structureType: inhalt.werte.kettenbrückeInSichVerankerte,
+    keyMaterialMechanism: inhalt.werte.fortschreitendeZerrüttungDesUnbewehrten,
+    summary: inhalt.werte.amSonntagmorgenDes1,
     projectData: {
       baujahr: '1934–1937',
-      schadensdatum: '01. August 1976 (zwischen 4:53 und 4:55 Uhr)',
-      ort: 'Wien (Donau-Überquerung)',
-      tragwerkstyp: 'Kettenbrücke mit an den Hauptträgern rückverankerten Ketten (unechte Hängebrücke), Hauptspannweite ca. 241 m',
-      beteiligteBaustoffe: ['Stampfbeton im Pfeilerkern', 'Granit-Verblendmauerwerk', 'Hochfester Baustahl'],
-      spannweiteAbmessungen: 'Hauptspannweite 241,2 m, Gesamtlänge 1.255 m',
-      opferZahlen: '1 Todesopfer',
-      gesamtschaden: 'Verlust der wichtigsten Donau-Verkehrsachse, Neubau der heutigen Reichsbrücke'
+      schadensdatum: inhalt.werte.t01August1976Zwischen,
+      ort: inhalt.werte.wienDonauÜberquerung,
+      tragwerkstyp: inhalt.werte.kettenbrückeMitAnDen,
+      beteiligteBaustoffe: [inhalt.werte.stampfbetonImPfeilerkern, 'Granit-Verblendmauerwerk', inhalt.werte.hochfesterBaustahl],
+      spannweiteAbmessungen: inhalt.werte.hauptspannweite2412M,
+      opferZahlen: inhalt.werte.t1Todesopfer,
+      gesamtschaden: inhalt.werte.verlustDerWichtigstenDonau
     },
     historie: [
       {
-        phase: '1. Bau in wirtschaftlicher Notzeit (1934–1937)',
+        phase: inhalt.werte.t1BauInWirtschaftlicher,
         zeitraum: '1934–1937',
-        details: 'Errichtung der Brücke während der Weltwirtschaftskrise. Um Zement und Kosten zu sparen, wurden die monumentalen Pfeilerkerne aus minderwertigem Magerbeton (Stampfbeton mit hohem Wasser-Bindemittel-Wert und inhomogenen Zuschlägen) geschüttet und lediglich mit Granitquadern verkleidet. Hinzu kam eine Umplanung von einer Hänge- zu einer in sich verankerten Brücke.'
+        details: inhalt.werte.errichtungDerBrückeWährend
       },
       {
-        phase: '2. Kriegseinwirkungen & Überflutungen (1945–1975)',
+        phase: inhalt.werte.t2KriegseinwirkungenÜberflutungen1945,
         zeitraum: '1945–1975',
-        details: '1945 entging die Brücke knapp der Sprengung, trug jedoch Erschütterungen davon. Über die Granitfugen drang Wasser in den Pfeilerkern ein; der Beton zerrüttete fortschreitend (u. a. durch Frost). Frühe Risse blieben hinter der Verkleidung vermutlich unentdeckt.'
+        details: inhalt.werte.t1945EntgingDieBrücke
       },
       {
-        phase: '3. Versagen des Strompfeilers (01.08.1976)',
+        phase: inhalt.werte.t3VersagenDesStrompfeilers,
         zeitraum: '01.08.1976',
-        details: 'Der Pfeiler unter dem nordöstlichen Pylon scherte knapp unter dem Brückenauflager ab; der zweite Pylon wurde mitgerissen, das Tragwerk stürzte in die Donau.'
+        details: inhalt.werte.derPfeilerUnterDem
       }
     ],
     ursachen: [
       {
-        titel: 'Zerrüttung des Pfeilersockels und Füllbetons',
+        titel: inhalt.werte.zerrüttungDesPfeilersockelsUnd,
         kategorie: 'Material/Werkstoff',
-        beschreibung: 'Unbewehrter Betonsockel, umhüllt von minderwertigem Füllbeton; eindringendes Wasser führte zu fortschreitender Zerrüttung, unter anderem durch Frost.'
+        beschreibung: inhalt.werte.unbewehrterBetonsockelUmhülltVon
       },
       {
-        titel: 'Täuschung durch intakte Naturstein-Verblendung',
+        titel: inhalt.werte.täuschungDurchIntakteNaturstein,
         kategorie: 'Unterhalt/Monitoring',
-        beschreibung: 'Von außen wirkte der Pfeiler durch die makellosen Granitquader massiv und unversehrt. Der Verbund zwischen Schale und Kern war jedoch längst verlorengegangen.'
+        beschreibung: inhalt.werte.vonAußenWirkteDer
       },
       {
-        titel: 'Ungünstige konstruktive Randbedingungen',
+        titel: inhalt.werte.ungünstigeKonstruktiveRandbedingungen,
         kategorie: 'Planung/Statik',
-        beschreibung: 'Schlanke Pfeiler mit kleiner Auflagerfläche, Festlager auf der stromabwärts gelegenen Seite und die Umplanung zur in sich verankerten Brücke. Die Kommission stufte den Einsturz als mit damaligen Mitteln nicht vorhersehbar ein.'
+        beschreibung: inhalt.werte.schlankePfeilerMitKleiner
       }
     ],
     folgen: [
       {
-        bereich: 'Österreichisches & europäisches Brückenprüfwesen',
-        auswirkung: 'Einführung systematischer Untersuchungen von Pfeilerkernen (Kernbohrungen, später auch ZfP) im Rahmen der Brückenprüfung.',
-        normativeKonsequenz: 'RVS 13.03.11 (Überwachung und Prüfung von Kunstbauten in Österreich)'
+        bereich: inhalt.werte.österreichischesEuropäischesBrückenprüfw,
+        auswirkung: inhalt.werte.einführungSystematischerUntersuchungenVo,
+        normativeKonsequenz: inhalt.werte.rvs130311
       },
       {
-        bereich: 'Stadtentwicklung Wien',
-        auswirkung: 'Planung und Bau der neuen Reichsbrücke mit integrierter U-Bahn-Trasse (U1).',
-        normativeKonsequenz: 'Neubau mit U-Bahn (U1), eröffnet am 8. November 1980'
+        bereich: inhalt.werte.stadtentwicklungWien,
+        auswirkung: inhalt.werte.planungUndBauDer,
+        normativeKonsequenz: inhalt.werte.neubauMitUBahn
       }
     ],
     lessonsLearned: [
-      'Verblendete Bauteile (z.B. Natursteinmauerwerk vor Beton) verschleiern den inneren Zustand und erfordern Kernbohrungen oder ZfP-Sonden.',
-      'Minderwertiger, unbewehrter Füllbeton in massiven Bauteilen kann über Jahrzehnte unbemerkt zerrütten.',
-      'Wasserzutritt in Pfeilerkerne muss durch einwandfreie Fugenversiegelung und funktionierende Drainagen verhindert werden.'
+      inhalt.werte.verblendeteBauteileZB,
+      inhalt.werte.minderwertigerUnbewehrterFüllbetonIn,
+      inhalt.werte.wasserzutrittInPfeilerkerneMuss
     ],
-    quellenlage: 'Bericht der Untersuchungskommission (1976/77); hier über Sekundärquellen wiedergegeben.',
+    quellenlage: inhalt.werte.berichtDerUntersuchungskommission1976,
     typischeBauschaedenLink: {
       subTab: 'tief_ingenieurbau',
-      label: 'Tief- & Ingenieurbau',
-      description: 'Pfeilerkerne, Gründungs- und Substruktionsschäden sowie zerstörungsfreie Ultraschallprüfungen.'
+      label: inhalt.werte.tiefIngenieurbau,
+      description: inhalt.werte.pfeilerkerneGründungsUndSubstruktionssch
     },
     sources: [
       {
-        title: 'Bericht der Sachverständigenkommission zur Ermittlung der Einsturzursachen der Wiener Reichsbrücke',
-        institutionOrAuthor: 'Magistrat der Stadt Wien / Bundesministerium für Bauten und Technik',
-        details: 'Untersuchungsbericht der Kommission (Link: Übersichtsartikel mit Zusammenfassung).',
+        title: inhalt.werte.berichtDerSachverständigenkommissionZur,
+        institutionOrAuthor: inhalt.werte.magistratDerStadtWien,
+        details: inhalt.werte.untersuchungsberichtDerKommissionLink,
         url: 'https://de.wikipedia.org/wiki/Reichsbr%C3%BCcke'
       },
       {
-        title: 'Richtlinien und Vorschriften für das Straßenwesen (RVS 13.03.11)',
-        institutionOrAuthor: 'Österreichische Forschungsgesellschaft Straße · Schiene · Verkehr (FSV)',
-        details: 'Regelwerk zur systematischen Bauwerksprüfung und Klassifizierung von Massivbrücken in Österreich.',
+        title: inhalt.werte.richtlinienUndVorschriftenFür,
+        institutionOrAuthor: inhalt.werte.österreichischeForschungsgesellschaftStr,
+        details: inhalt.werte.regelwerkZurSystematischenBauwerksprüfun,
         url: 'https://www.fsv.at/'
       }
     ]
   },
   {
     id: 'akr_bahnschwellen_garmisch',
-    name: 'Alkali-Kieselsäure-Reaktion (AKR) an Betonschwellen (Garmisch-Partenkirchen)',
-    subTitle: 'Betonkrebs durch alkalireaktive Gesteinskörnung und Zugunglück von Burgrain',
+    name: inhalt.werte.alkaliKieselsäureReaktionAkr,
+    subTitle: inhalt.werte.betonkrebsDurchAlkalireaktiveGesteinskör,
     category: 'infrastruktur',
     year: '2022',
-    location: 'Burgrain bei Garmisch-Partenkirchen, Bayern & bundesweites Schienennetz',
-    structureType: 'Spannbeton-Gleisschwellen (B70-Schwellen mit Vorspannung im Sofortverbund)',
-    keyMaterialMechanism: 'Alkali-Kieselsäure-Reaktion (AKR, "Betonkrebs"): Reaktion von Alkalien des Zementsteins (Na₂O_äq) mit reaktiver opalischer Kieselsäure der Gesteinskörnung zu quellfähigem Alkalisilicat-Gel + innere Treibrisse',
-    summary: 'Am 3. Juni 2022 entgleiste ein Regionalzug der Deutschen Bahn bei Burgrain (Garmisch-Partenkirchen). Fünf Menschen starben, 16 wurden schwer und 62 leicht verletzt. Nach den Zwischenberichten der Bundesstelle für Eisenbahnunfalluntersuchung (BEU, 2023/2024) wiesen die Spannbetonschwellen Schäden auf, die auf einen Verlust der Vorspannung schließen lassen; als Ursache der Schwellenschäden wurde eine Kombination aus Alkali-Kieselsäure-Reaktion (AKR) und sekundärer Ettringitbildung (SEB) identifiziert. Die Schäden waren von außen nicht erkennbar. Die Deutsche Bahn tauschte bundesweit Betonschwellen in großem Umfang aus (Mai 2023: rund 480.000 Schwellen).',
+    location: inhalt.werte.burgrainBeiGarmischPartenkirchen,
+    structureType: inhalt.werte.spannbetonGleisschwellenB70Schwellen,
+    keyMaterialMechanism: inhalt.werte.alkaliKieselsäureReaktionAkr2,
+    summary: inhalt.werte.am3Juni2022,
     projectData: {
-      baujahr: 'Herstellung der Schwellen 2006',
-      schadensdatum: '03. Juni 2022 (12:16 Uhr) / Folgeuntersuchungen 2022–2024',
-      ort: 'Burgrain bei Garmisch-Partenkirchen (Bahnstrecke München–Garmisch)',
-      tragwerkstyp: 'Spannbetonschwellen Typ B 70 W 60 mit Spannstahldrähten und Schienenbefestigung W-Oberbau',
-      beteiligteBaustoffe: ['Portlandzement mit hohem wirksamen Alkaligehalt', 'Alkalireaktive Kieselsäure-Gesteinskörnung (reaktiver Quarz/Flint/Grauwacke)', 'Spannstahl St 1570/1770'],
-      spannweiteAbmessungen: 'Schwellenlänge 2,60 m, Gewicht ca. 280 kg pro Schwelle, betroffene Strecken > 500 km',
-      opferZahlen: '5 Todesopfer, 16 Schwer- und 62 Leichtverletzte',
-      gesamtschaden: 'Hunderte Millionen Euro für bundesweiten Schwellenaustausch, Langsamfahrstellen und Streckensperrungen'
+      baujahr: inhalt.werte.herstellungDerSchwellen2006,
+      schadensdatum: inhalt.werte.t03Juni202212,
+      ort: inhalt.werte.burgrainBeiGarmischPartenkirchen2,
+      tragwerkstyp: inhalt.werte.spannbetonschwellenTypB70,
+      beteiligteBaustoffe: [inhalt.werte.portlandzementMitHohemWirksamen, inhalt.werte.alkalireaktiveKieselsäureGesteinskörnung, inhalt.werte.spannstahlSt15701770],
+      spannweiteAbmessungen: inhalt.werte.schwellenlänge260M,
+      opferZahlen: inhalt.werte.t5Todesopfer16Schwer,
+      gesamtschaden: inhalt.werte.hunderteMillionenEuroFür
     },
     historie: [
       {
-        phase: '1. Produktion & Zulassung der B70-Schwellen (2000–2007)',
+        phase: inhalt.werte.t1ProduktionZulassungDer,
         zeitraum: '2000–2007',
-        details: 'Für die automatisierte Fertigung der Schwellen wurde hochfester Beton mit schneller Festigkeitsentwicklung eingesetzt. Die Schwellen der Unfallstelle wurden 2006 hergestellt. Welche Prüfungen die Reaktivität der Gesteinskörnung damals nicht erkannten, ist Gegenstand der Untersuchungen.'
+        details: inhalt.werte.fürDieAutomatisierteFertigung
       },
       {
-        phase: '2. Inkubationszeit & Gel-Genese im Schotterbett (2007–2021)',
+        phase: inhalt.werte.t2InkubationszeitGelGenese,
         zeitraum: '2007–2021',
-        details: 'Die Schwellen lagen im ungeschützten Gleisbett direkt Niederschlag, Taumitteln und dynamischen Schwingungen aus. Die Feuchte und Porenlösung mit OH⁻-Ionen drangen in die Gesteinspartikel ein. Es bildete sich quellfähiges Alkali-Silicat-Gel; zusätzlich trat sekundäre Ettringitbildung auf.'
+        details: inhalt.werte.dieSchwellenLagenIm
       },
       {
-        phase: '3. Schwellenversagen & Ausreißkräfte (2021–2022)',
+        phase: inhalt.werte.t3SchwellenversagenAusreißkräfte2021,
         zeitraum: '2021–2022',
-        details: 'Der Quelldruck überschritt die Betonzugfestigkeit; es entstanden Risse, die auf einen Verlust der Vorspannung schließen lassen. Die Schienenauflager konnten wegbrechen.'
+        details: inhalt.werte.derQuelldruckÜberschrittDie
       },
       {
-        phase: '4. Entgleisung Burgrain (03.06.2022)',
+        phase: inhalt.werte.t4EntgleisungBurgrain03,
         zeitraum: '03.06.2022',
-        details: 'Der Zug entgleiste in einem Linksbogen bei etwa 100 km/h. Die geschädigten Schwellen versagten strukturell, die Schienenauflager brachen weg.'
+        details: inhalt.werte.derZugEntgleisteIn
       }
     ],
     ursachen: [
       {
-        titel: 'Alkali-Kieselsäure-Reaktion (AKR) mit Expansivgel',
+        titel: inhalt.werte.alkaliKieselsäureReaktionAkr3,
         kategorie: 'Material/Werkstoff',
-        beschreibung: 'Reaktion der Alkalihydroxide (Na⁺, K⁺, OH⁻) der Zementporenlösung mit amorpher Kieselsäure (SiO₂) der Gesteinskörnung. Das resultierende C-S-H/Alkali-Silicat-Gel nimmt Wasser auf und expandiert massiv.',
+        beschreibung: inhalt.werte.reaktionDerAlkalihydroxideNa,
         formelOrMechanismus: '\\equiv\\!\\text{Si}-\\text{O}-\\text{Si}\\!\\equiv + 2\\text{OH}^- \\rightarrow 2[\\equiv\\!\\text{Si}-\\text{O}]^- + \\text{H}_2\\text{O} \\xrightarrow{+ \\text{Na}^+/\\text{K}^+} \\text{Expansives Quellgel}'
       },
       {
-        titel: 'Überlagerung von Vorspannung und Quelldruck',
+        titel: inhalt.werte.überlagerungVonVorspannungUnd,
         kategorie: 'Planung/Statik',
-        beschreibung: 'Die in Längsrichtung wirkende Vorspannkraft lenkte die Rissbildung parallel zu den Spanndrähten ("Spaltungsrisse"). Dadurch ging der mechanische Verbund zwischen Vorspanndraht und Beton exakt in der Dübelzone verloren.',
+        beschreibung: inhalt.werte.dieInLängsrichtungWirkende,
         formelOrMechanismus: 'p_{\\text{Quellung}} > f_{ctm} \\implies \\text{Längsspaltung entlang der Spanndrahtebene}'
       },
       {
-        titel: 'Fehlende Früherkennung bei Routine-Gleisinspektion',
+        titel: inhalt.werte.fehlendeFrüherkennungBeiRoutine,
         kategorie: 'Unterhalt/Monitoring',
-        beschreibung: 'Messzüge erfassen vorrangig Geometriedaten der Schienenoberkante. Rissbildung an der Schwellenunterseite und im Dübelbereich unter Schotterbedeckung ist optisch von außen extrem schwer feststellbar.'
+        beschreibung: inhalt.werte.messzügeErfassenVorrangigGeometriedaten
       },
       {
-        titel: 'Sekundäre Ettringitbildung (SEB)',
+        titel: inhalt.werte.sekundäreEttringitbildungSeb,
         kategorie: 'Material/Werkstoff',
-        beschreibung: 'Neben der AKR identifizierte die BEU sekundäre Ettringitbildung als Schadensmechanismus der Schwellen.'
+        beschreibung: inhalt.werte.nebenDerAkrIdentifizierte
       }
     ],
     folgen: [
       {
-        bereich: 'Bundesweites Notprogramm Deutsche Bahn',
-        auswirkung: 'Bundesweite Prüfung von Betonschwellen (ab Juli 2022) und Austausch in großem Umfang (Mai 2023: rund 480.000 Schwellen), verbunden mit Langsamfahrstellen und Sperrungen.',
-        normativeKonsequenz: 'Austauschprogramm der DB InfraGO'
+        bereich: inhalt.werte.bundesweitesNotprogrammDeutscheBahn,
+        auswirkung: inhalt.werte.bundesweitePrüfungVonBetonschwellen,
+        normativeKonsequenz: inhalt.werte.austauschprogrammDerDbInfrago
       },
       {
-        bereich: 'Regelwerke & Normung Betontechnologie',
-        auswirkung: 'Die DAfStb-Alkali-Richtlinie regelt vorbeugende Maßnahmen über Feuchtigkeitsklassen (WO, WF, WA, WS) und die Einstufung der Gesteinskörnungen; der Fall verstärkte die Diskussion um die Prüfung hochbeanspruchter Fertigteile.',
-        normativeKonsequenz: 'DAfStb-Richtlinie „Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton“ (Alkali-Richtlinie) & DIN EN 12620'
+        bereich: inhalt.werte.regelwerkeNormungBetontechnologie,
+        auswirkung: inhalt.werte.dieDafstbAlkaliRichtlinie,
+        normativeKonsequenz: inhalt.werte.dafstbRichtlinieVorbeugendeMaßnahmen
       },
       {
-        bereich: 'ZfP & Inspektionstechnik',
-        auswirkung: 'Die Schäden waren von außen nicht erkennbar; die Inspektion von Schwellen im Gleisbett wurde ausgeweitet.',
-        normativeKonsequenz: 'Anpassung der Inspektionspraxis im Gleisoberbau'
+        bereich: inhalt.werte.zfpInspektionstechnik,
+        auswirkung: inhalt.werte.dieSchädenWarenVon,
+        normativeKonsequenz: inhalt.werte.anpassungDerInspektionspraxisIm
       }
     ],
     lessonsLearned: [
-      'Treibende Reaktionen (AKR, SEB) können nach vielen Jahren unauffälligen Betriebs zum Versagen vorgespannter Fertigteile führen.',
-      'Für hochdynamisch beanspruchte Betonbauteile (Schwellen, Flugplatzpisten, Autobahnen) dürfen nur geprüfte NA-Zemente (Low-Alkali, $Na_2O_{äq} \\le 0{,}60\\%$) und unbedenkliche Gesteinskörnungen (E1) verwendet werden.',
-      'Verdeckte Risse im Schotterbett erfordern bildgebende zerstörungsfreie Prüfverfahren.'
+      inhalt.werte.treibendeReaktionenAkrSeb,
+      inhalt.werte.fürHochdynamischBeanspruchteBetonbauteil,
+      inhalt.werte.verdeckteRisseImSchotterbett
     ],
-    quellenlage: 'Zwischenberichte der BEU (2023, 2024); Strafverfahren der Staatsanwaltschaft München II anhängig.',
+    quellenlage: inhalt.werte.zwischenberichteDerBeu2023,
     typischeBauschaedenLink: {
       subTab: 'korrosion',
-      label: 'Korrosion & "Betonkrebs" (AKR)',
-      description: 'Alkali-Kieselsäure-Reaktion, Kieselsäure-Gelquellung und Sprengdrücke im Festbeton.'
+      label: inhalt.werte.korrosionBetonkrebsAkr,
+      description: inhalt.werte.alkaliKieselsäureReaktionKieselsäure
     },
     sources: [
       {
-        title: 'Untersuchungsbericht zur Zugentgleisung bei Burgrain / Garmisch-Partenkirchen',
-        institutionOrAuthor: 'Bundesstelle für Eisenbahnunfalluntersuchung (BEU)',
-        details: 'Zwischenberichte Version 1.0 (01.06.2023) und 2.0 (Stand 03.06.2024); Link: Übersichtsartikel mit Nachweisen.',
+        title: inhalt.werte.untersuchungsberichtZurZugentgleisungBei,
+        institutionOrAuthor: inhalt.werte.bundesstelleFürEisenbahnunfalluntersuchu,
+        details: inhalt.werte.zwischenberichteVersion10,
         url: 'https://de.wikipedia.org/wiki/Eisenbahnunfall_von_Burgrain'
       },
       {
-        title: 'DAfStb-Richtlinie: Vorbeugende Maßnahmen gegen schädigende Alkalireaktion im Beton (Alkali-Richtlinie)',
-        institutionOrAuthor: 'Deutscher Ausschuss für Stahlbeton (DAfStb)',
-        details: 'Klassifizierung der Feuchteklassen (WO, WF, WA, WS) und Eignungsprüfungen von Gesteinskörnungen.',
+        title: inhalt.werte.dafstbRichtlinieVorbeugendeMaßnahmen2,
+        institutionOrAuthor: inhalt.werte.deutscherAusschussFürStahlbeton,
+        details: inhalt.werte.klassifizierungDerFeuchteklassenWo,
         url: 'https://www.dafstb.de/'
       }
     ]
   },
   {
     id: 'hyatt_regency_walkway',
-    name: 'Einsturz der Hyatt-Regency-Verbindungsgänge (Kansas City)',
-    subTitle: 'Schubversagen von Aufhängungsbolzen nach nicht freigegebener Detailänderung',
+    name: inhalt.werte.einsturzDerHyattRegency,
+    subTitle: inhalt.werte.schubversagenVonAufhängungsbolzenNach,
     category: 'hochbau',
     year: '1981',
-    location: 'Kansas City, Missouri, USA',
-    structureType: 'Abgehängte Fußgängerbrücken / Stege im Hotel-Atrium',
-    keyMaterialMechanism: 'Querzugscherung und Durchstanzversagen der Schweißträger-Profilgurte an Gewindestangen infolge Lastverdopplung durch Umkonstruktion',
-    summary: 'Am 17. Juli 1981 stürzten im Atrium des Hyatt Regency Hotels in Kansas City zwei übereinanderliegende Fußgängerbrücken während eines Tanzwettbewerbs ein. 114 Menschen starben, über 180 wurden verletzt (je nach Quelle bis 216). Es war der bis dahin schwerste strukturelle Gebäudeeinsturz in der US-Geschichte. Ursache war eine scheinbar geringfügige werkstattseitige Änderung der Bolzenaufhängung, die die statische Scherspannung auf den Doppel-U-Träger verdoppelte.',
+    location: inhalt.werte.kansasCityMissouriUsa,
+    structureType: inhalt.werte.abgehängteFußgängerbrückenStegeIm,
+    keyMaterialMechanism: inhalt.werte.querzugscherungUndDurchstanzversagenDer,
+    summary: inhalt.werte.am17Juli1981,
     projectData: {
       baujahr: '1978–1980',
-      schadensdatum: '17. Juli 1981 (ca. 19:05 Uhr)',
-      ort: 'Kansas City, Missouri, USA',
-      tragwerkstyp: 'Schwebende Stahlstege (Länge ca. 36 m), abgehängt an Rundstahl-Gewindestangen im Atrium',
-      beteiligteBaustoffe: ['Baustahl ASTM A36', 'Kastenträger aus zwei verschweißten U-Profilen MC 8×8.5', 'Hochfeste Stahl-Gewindestangen'],
-      spannweiteAbmessungen: 'Spannweite 36,5 m, Breite 2,6 m, Eigengewicht ca. 32 Tonnen pro Brücke',
-      opferZahlen: '114 Todesopfer, über 180 Verletzte (je nach Quelle bis 216)',
-      gesamtschaden: 'Eines der teuersten Schadensereignisse im US-Hochbau, Entzug der Ingenieurlizenzen der leitenden Statiker'
+      schadensdatum: inhalt.werte.t17Juli1981Ca,
+      ort: inhalt.werte.kansasCityMissouriUsa2,
+      tragwerkstyp: inhalt.werte.schwebendeStahlstegeLängeCa,
+      beteiligteBaustoffe: [inhalt.werte.baustahlAstmA36, inhalt.werte.kastenträgerAusZweiVerschweißten, inhalt.werte.hochfesteStahlGewindestangen],
+      spannweiteAbmessungen: inhalt.werte.spannweite365M,
+      opferZahlen: inhalt.werte.t114TodesopferÜber180,
+      gesamtschaden: inhalt.werte.einesDerTeuerstenSchadensereignisse
     },
     historie: [
       {
-        phase: '1. Ursprüngliche Planung des Statikers (1978)',
+        phase: inhalt.werte.t1UrsprünglichePlanungDes,
         zeitraum: '1978',
-        details: 'Der ursprüngliche Entwurf sah vor, dass durchgehende Gewindestangen von der Decke des Atriums bis zum unteren Gehweg (2. Etage) reichen und dabei den oberen Gehweg (4. Etage) durchdringen. Jede Brücke hätte ihre Last separat in die Stange eingeleitet.'
+        details: inhalt.werte.derUrsprünglicheEntwurfSah
       },
       {
-        phase: '2. Verhängnisvolle Werkstattänderung (1979)',
+        phase: inhalt.werte.t2VerhängnisvolleWerkstattänderung1979,
         zeitraum: '1979',
-        details: 'Der Stahlbaufertiger (Havens Steel) wollte keine 14 m langen Gewindestangen mit durchgehendem Gewinde fertigen. Er schlug vor, die Stangen zu teilen: Eine Stange von der Decke zum 4. Stock und eine separate Stange vom 4. zum 2. Stock. Die Änderung wurde vom Tragwerksplaner (Engineer of Record) nach Darstellung im Verfahren telefonisch grundsätzlich gebilligt, aber nicht nachgerechnet; die Werkstattzeichnungen wurden ohne Nachrechnung freigegeben.'
+        details: inhalt.werte.derStahlbaufertigerHavensSteel
       },
       {
-        phase: '3. Verdopplung der Belastung (Wirkung)',
+        phase: inhalt.werte.t3VerdopplungDerBelastung,
         zeitraum: '1980–1981',
-        details: 'Durch die Kopplung musste der Querträger des oberen Gehwegs nun das gesamte Gewicht des unteren Gehwegs zuzüglich der Verkehrslast mittragen. Die Last am Anschluss des Kastenträgers im 4. OG verdoppelte sich (≈ 2·P). Schon die ursprüngliche Ausführung erfüllte die Anforderungen des Kansas City Building Code nicht (NBS BSS 143).'
+        details: inhalt.werte.durchDieKopplungMusste
       },
       {
-        phase: '4. Durchstanzversagen beim Teetanz (17.07.1981)',
+        phase: inhalt.werte.t4DurchstanzversagenBeimTeetanz,
         zeitraum: '17.07.1981',
-        details: 'Rund 1.600 Menschen versammelten sich im Atrium. Als sich Dutzende Personen auf den Stegen rhythmisch bewegten, riss die Mutter der Aufhängung mitsamt einer Schweißnaht durch den unteren Flansch des U-Profils. Beide Stege stürzten übereinander in die voll besetzte Hotellobby.'
+        details: inhalt.werte.rund1600Menschen
       }
     ],
     ursachen: [
       {
-        titel: 'Detailänderung verdoppelt lokale Auflagerlast',
+        titel: inhalt.werte.detailänderungVerdoppeltLokaleAuflagerla,
         kategorie: 'Planung/Statik',
-        beschreibung: 'Im Originalentwurf trug die Verbindung am 4. Stockwerk nur die Last $P_4$. Durch das Einhängen der unteren Stange an denselben Querträger wirkte an der Mutter die kombinierte Last $P_{\\text{gesamt}} = P_4 + P_2$.',
+        beschreibung: inhalt.werte.imOriginalentwurfTrugDie,
         formelOrMechanismus: 'P_{\\text{original}} = P_4 \\quad \\longrightarrow \\quad P_{\\text{ausgeführt}} = P_4 + P_2 \\approx 2 \\cdot P_4'
       },
       {
-        titel: 'Querzugscherung und Flanschdurchstanzen',
+        titel: inhalt.werte.querzugscherungUndFlanschdurchstanzen,
         kategorie: 'Material/Werkstoff',
-        beschreibung: 'Der Kastenträger aus zwei verschweißten U-Profilen (MC 8×8.5) besaß keine Aussteifungsrippen. Unter der verdoppelten Punktlast knickte der Flansch auf und die Unterlegscheibe wurde mitsamt Mutter durch den Stahlträger gezogen.',
+        beschreibung: inhalt.werte.derKastenträgerAusZwei,
         formelOrMechanismus: '\\tau = \\frac{P_{\\text{komb}}}{A_{\\text{Scher,Flansch}}} > f_u \\quad \\text{(Stanzscherversagen)}'
       },
       {
-        titel: 'Verletzung von Prüf- und Freigabepflichten',
+        titel: inhalt.werte.verletzungVonPrüfUnd,
         kategorie: 'Ausführung',
-        beschreibung: 'Die Werkstattzeichnung wurde weder vom Tragwerksplaner (GCE) noch von der Bauüberwachung rechnerisch überprüft, sondern blind abgestempelt.'
+        beschreibung: inhalt.werte.dieWerkstattzeichnungWurdeWeder
       }
     ],
     folgen: [
       {
-        bereich: 'Berufsethik & Ingenieurverantwortung',
-        auswirkung: 'Entzug der Berufszulassung für die verantwortlichen Ingenieure durch den Missouri Board of Architects. Der Fall wurde zum weltweiten Standardlehrbeispiel für Ingenieurethik und Qualitätssicherung.',
-        normativeKonsequenz: 'ASCE Code of Ethics (Verschärfung der Ingenieurhaftung)'
+        bereich: inhalt.werte.berufsethikIngenieurverantwortung,
+        auswirkung: inhalt.werte.entzugDerBerufszulassungFür,
+        normativeKonsequenz: inhalt.werte.asceCodeOfEthics
       },
       {
         bereich: 'Stahlbau-Bemessungsrichtlinien',
-        auswirkung: 'Verpflichtende statische Prüfung und Kennzeichnung von "Connections" (Knotenpunktdetails) in Stahlbauplänen; Verbot von Detailänderungen ohne formelle schriftliche Prüfstatik.',
-        normativeKonsequenz: 'AISC Steel Construction Manual (Kapitel Connections)'
+        auswirkung: inhalt.werte.verpflichtendeStatischePrüfungUnd,
+        normativeKonsequenz: inhalt.werte.aiscSteelConstructionManual
       }
     ],
     lessonsLearned: [
-      'Scheinbar kleine konstruktive Fertigungsänderungen an Knotenpunkten können Lastabtragungspfade komplett verändern und erfordern immer eine vollwertige statische Neuberechnung.',
-      'Punktförmige Krafteinleitungen in dünnwandige Trägerflansche erfordern stets Steifen oder Druckverteilungsplatten.',
-      'Vier-Augen-Prinzip und formelle Freigabeprozesse dürfen niemals durch informelle Telefonabsprachen ersetzt werden.'
+      inhalt.werte.scheinbarKleineKonstruktiveFertigungsänd,
+      inhalt.werte.punktförmigeKrafteinleitungenInDünnwandi,
+      inhalt.werte.vierAugenPrinzipUnd
     ],
-    quellenlage: 'Amtlicher Untersuchungsbericht NBS Building Science Series 143 (1982) und Disziplinarverfahren in Missouri.',
+    quellenlage: inhalt.werte.amtlicherUntersuchungsberichtNbsBuilding,
     typischeBauschaedenLink: {
       subTab: 'risse',
-      label: 'Risse & Verformungen / Knotenversagen',
-      description: 'Scherspannungen, Stanzscherversagen und Überlastung von Stahlknotenpunkten.'
+      label: inhalt.werte.risseVerformungenKnotenversagen,
+      description: inhalt.werte.scherspannungenStanzscherversagenUndÜber
     },
     sources: [
       {
-        title: 'Investigation of the Kansas City Hyatt Regency Walkways Collapse',
-        institutionOrAuthor: 'National Bureau of Standards (NBS Building Science Series 143, heute NIST)',
-        details: 'Umfassender technischer Untersuchungsbericht des NBS zur rechnerischen und experimentellen Analyse des Trägerversagens, 1982.'
+        title: inhalt.werte.investigationOfTheKansas,
+        institutionOrAuthor: inhalt.werte.nationalBureauOfStandards2,
+        details: inhalt.werte.umfassenderTechnischerUntersuchungsberic
       },
       {
-        title: 'AISC Code of Standard Practice for Steel Buildings and Bridges',
-        institutionOrAuthor: 'American Institute of Steel Construction (AISC)',
-        details: 'Festlegung der Verantwortlichkeiten zwischen ausführendem Stahlbauunternehmen und verantwortlichem Tragwerksplaner (EOR).',
+        title: inhalt.werte.aiscCodeOfStandard,
+        institutionOrAuthor: inhalt.werte.americanInstituteOfSteel,
+        details: inhalt.werte.festlegungDerVerantwortlichkeitenZwische,
         url: 'https://www.aisc.org/'
       },
       {
-        title: 'Ethics in Engineering: The Hyatt Regency Walkway Collapse',
-        institutionOrAuthor: 'American Society of Civil Engineers (ASCE)',
-        details: 'Grundlegende Fallstudie zur Berufsethik und Qualitätssicherung in Ingenieurbüros.'
+        title: inhalt.werte.ethicsInEngineeringThe,
+        institutionOrAuthor: inhalt.werte.americanSocietyOfCivil,
+        details: inhalt.werte.grundlegendeFallstudieZurBerufsethik
       }
     ]
   },
   {
     id: 'stava_dammbruch',
-    name: 'Katastrophe von Stava (Bruch der Absetzbecken-Dämme)',
-    subTitle: 'Verflüssigung von Schlämmen und Böschungsversagen von Flotationsrückständen',
+    name: inhalt.werte.katastropheVonStavaBruch,
+    subTitle: inhalt.werte.verflüssigungVonSchlämmenUnd,
     category: 'infrastruktur',
     year: '1985',
-    location: 'Stava (Gemeinde Tesero, Fleimstal), Trentino, Italien',
-    structureType: 'Aufgespülte Absetzbecken-Dämme für Fluorit-Flotationsberge (Upstream Tailings Dam)',
-    keyMaterialMechanism: 'Bodenmechanische Scherverflüssigung (Static Liquefaction): Zusammenbruch des Porengefüges wassergesättigter, schluffiger Schlämme mit vollständigem Verlust der Scherfestigkeit ($s = c + \\sigma\'\\tan\\varphi \\rightarrow 0$)',
-    summary: 'Am 19. Juli 1985 brachen im Val di Stava die zwei kaskadenartig übereinanderliegenden Dämme von Absetzbecken eines Flussspat-Bergwerks. Rund 180.000 m³ toxischer, flüssiger Schlamm rasten mit bis zu 90 km/h talwärts und zerstörten das Dorf Stava sowie Teile von Tesero. 268 Menschen verloren ihr Leben. Die Katastrophe gilt als Paradebeispiel für werkstofflich-bodenmechanisches Versagen bei hydraulischer Schüttung ohne suffiziente Porenwasserdruck-Drainage.',
+    location: inhalt.werte.stavaGemeindeTeseroFleimstal,
+    structureType: inhalt.werte.aufgespülteAbsetzbeckenDämmeFür,
+    keyMaterialMechanism: inhalt.werte.bodenmechanischeScherverflüssigungStatic,
+    summary: inhalt.werte.am19Juli1985,
     projectData: {
-      baujahr: '1961 (unteres Becken), 1969 (oberes Becken), ständige Aufhöhung',
-      schadensdatum: '19. Juli 1985 (ca. 12:22 Uhr)',
-      ort: 'Stava bei Tesero, Trentino, Italien',
-      tragwerkstyp: 'Upstream-Tailings-Dämme (Höhe ca. 34 m, Kronenlänge > 200 m)',
-      beteiligteBaustoffe: ['Fluorit-Flotationsberge (Schluff- und Feinstsandfraktionen)', 'Porenwasser', 'Drainagerohre (gebrochen)'],
-      spannweiteAbmessungen: 'Dammhöhe kombiniert ca. 34 m, Neigung bis zu 80 %, 180.000 m³ Schlammmasse',
-      opferZahlen: '268 Todesopfer, hunderte zerstörte Gebäude',
-      gesamtschaden: 'Vollständige Auslöschung zweier Talsiedlungen, strafrechtliche Verurteilungen von 10 Verantwortlichen'
+      baujahr: inhalt.werte.t1961UnteresBecken1969,
+      schadensdatum: inhalt.werte.t19Juli1985Ca,
+      ort: inhalt.werte.stavaBeiTeseroTrentino,
+      tragwerkstyp: inhalt.werte.upstreamTailingsDämmeHöhe,
+      beteiligteBaustoffe: [inhalt.werte.fluoritFlotationsbergeSchluffUnd, 'Porenwasser', inhalt.werte.drainagerohreGebrochen],
+      spannweiteAbmessungen: inhalt.werte.dammhöheKombiniertCa34,
+      opferZahlen: inhalt.werte.t268TodesopferHunderteZerstörte,
+      gesamtschaden: inhalt.werte.vollständigeAuslöschungZweierTalsiedlung
     },
     historie: [
       {
-        phase: '1. Improvisierter Dammaufbau (1961–1975)',
+        phase: inhalt.werte.t1ImprovisierterDammaufbau1961,
         zeitraum: '1961–1975',
-        details: 'Dämme wurden im sogenannten "Upstream-Verfahren" direkt auf die noch nicht konsolidierten, feinkörnigen Schlämme der Vorperiode aufgespült. Die Dammneigung war mit ca. 80 % (ca. 39 Grad) extrem steil und weit jenseits geotechnischer Sicherheitsmargen.'
+        details: inhalt.werte.dämmeWurdenImSogenannten
       },
       {
-        phase: '2. Drainagekollaps & Einstau (1980–1985)',
+        phase: inhalt.werte.t2DrainagekollapsEinstau1980,
         zeitraum: '1980–1985',
-        details: 'Die inneren Abfluss- und Drainagerohre brachen unter der Auflast des Schlamms zusammen oder verstopften. Das Porenwasser konnte nicht mehr entweichen, sodass der Grundwasserspiegel im Dammkörper bis nahe an die Dammkrone anstieg.'
+        details: inhalt.werte.dieInnerenAbflussUnd
       },
       {
-        phase: '3. Bruch des oberen Damms (19.07.1985)',
-        zeitraum: '19.07.1985 (12:22 Uhr)',
-        details: 'Infolge des extrem hohen Porenwasserdrucks sank die effektive Spannung im Schlammskelett auf null. Der obere Damm verflüssigte sich schlagartig und stürzte in das untere Becken, das der dynamischen Stoßwelle keine Sekunde standhielt.'
+        phase: inhalt.werte.t3BruchDesOberen,
+        zeitraum: inhalt.werte.t1907198512,
+        details: inhalt.werte.infolgeDesExtremHohen
       }
     ],
     ursachen: [
       {
-        titel: 'Spontane Scherverflüssigung (Static Liquefaction)',
+        titel: inhalt.werte.spontaneScherverflüssigungStaticLiquefac,
         kategorie: 'Material/Werkstoff',
-        beschreibung: 'Wassergesättigte, locker gelagerte Schluff-/Feinsandfraktionen neigen bei Schubspannungszunahme zur Kontraktion. Kann das Porenwasser nicht abfließen, steigt der Porenwasserdruck u an, bis die effektive Normalspannung $\\sigma\' = \\sigma - u = 0$ wird. Der Boden verhält sich wie eine Flüssigkeit.',
+        beschreibung: inhalt.werte.wassergesättigteLockerGelagerteSchluff,
         formelOrMechanismus: '\\tau_f = c\' + (\\sigma - u) \\cdot \\tan\\varphi\' \\xrightarrow{u \\rightarrow \\sigma} \\tau_f \\approx 0'
       },
       {
-        titel: 'Unzulässige Dammneigung & Upstream-Schüttung',
+        titel: inhalt.werte.unzulässigeDammneigungUpstreamSchüttung,
         kategorie: 'Planung/Statik',
-        beschreibung: 'Aufbau eines Dammes auf weichem, wassergesättigtem Sediment mit Sicherheitsbeiwerten nahe 1,0. Es existierten keine bodenmechanischen Standsicherheitsnachweise nach heutigen Standards.'
+        beschreibung: inhalt.werte.aufbauEinesDammesAuf
       },
       {
-        titel: 'Mangelndes Porenwasserdruck-Monitoring',
+        titel: inhalt.werte.mangelndesPorenwasserdruckMonitoring,
         kategorie: 'Unterhalt/Monitoring',
-        beschreibung: 'Es gab keine Piezometer (Porenwasserdruckgeber) oder Inklinometer zur Kontrolle des Wasserspiegels im Damm.'
+        beschreibung: inhalt.werte.esGabKeinePiezometer
       }
     ],
     folgen: [
       {
-        bereich: 'Internationale Talsperren- und Tailings-Normen',
-        auswirkung: 'Weltweite Neubewertung von Tailings-Dämmen; in vielen Ländern Verbot des "Upstream-Verfahrens" für Bergbau-Absetzbecken ohne massive mechanische Entwässerung.',
-        normativeKonsequenz: 'ICOLD Guidelines on Tailings Dams & Global Industry Standard on Tailings Management (GISTM)'
+        bereich: inhalt.werte.internationaleTalsperrenUndTailings,
+        auswirkung: inhalt.werte.weltweiteNeubewertungVonTailings,
+        normativeKonsequenz: inhalt.werte.icoldGuidelinesOnTailings
       },
       {
-        bereich: 'Bodenmechanik & Geotechnik',
-        auswirkung: 'Forschungsschwerpunkt zu zyklischer und statischer Verflüssigung feinkörniger Sedimente im Erd- und Grundbau.',
-        normativeKonsequenz: 'Für Absetzbecken maßgeblich: Bergrecht und ICOLD-Empfehlungen (Eurocode 7 nur ergänzend)'
+        bereich: inhalt.werte.bodenmechanikGeotechnik,
+        auswirkung: inhalt.werte.forschungsschwerpunktZuZyklischerUnd,
+        normativeKonsequenz: inhalt.werte.fürAbsetzbeckenMaßgeblichBergrecht
       }
     ],
     lessonsLearned: [
-      'Wassergesättigte Schluffe und Flotationsberge verlieren bei Porenwasserüberdruck schlagartig jegliche Scherfestigkeit.',
-      'Das Upstream-Verfahren für Absetzdämme birgt unkalkulierbare Risiken und erfordert ein lückenloses geotechnisches Monitoring.',
-      'Entwässerungsleitungen in Erdbauwerken müssen dimensionsstabil und prüfbar sein.'
+      inhalt.werte.wassergesättigteSchluffeUndFlotationsber,
+      inhalt.werte.dasUpstreamVerfahrenFür,
+      inhalt.werte.entwässerungsleitungenInErdbauwerkenMüss
     ],
-    quellenlage: 'Gerichtsverfahren in Italien (10 Verurteilte) und Fachliteratur; ICOLD Bulletin 121 (2001).',
+    quellenlage: inhalt.werte.gerichtsverfahrenInItalien10,
     typischeBauschaedenLink: {
       subTab: 'tief_ingenieurbau',
-      label: 'Tief- & Ingenieurbau / Geotechnik',
-      description: 'Porenwasserdruck, Scherfestigkeit nach Mohr-Coulomb, hydraulischer Grundbruch und Bodenverflüssigung.'
+      label: inhalt.werte.tiefIngenieurbauGeotechnik,
+      description: inhalt.werte.porenwasserdruckScherfestigkeitNachMohr
     },
     sources: [
       {
-        title: 'The Stava Tailings Dams Failure, Italy, July 19, 1985',
-        institutionOrAuthor: 'Fondazione Stava 1985 onlus / Prof. Giovanni Tosatti (University of Modena)',
-        details: 'Offizielle Dokumentation und geotechnische Aufarbeitung des Dammbruchs.',
+        title: inhalt.werte.theStavaTailingsDams,
+        institutionOrAuthor: inhalt.werte.fondazioneStava1985Onlus,
+        details: inhalt.werte.offizielleDokumentationUndGeotechnische,
         url: 'https://www.stava1985.it/'
       },
       {
-        title: 'Static Liquefaction of Fine-Grained Sediments in Tailings Dams',
-        institutionOrAuthor: 'International Commission on Large Dams (ICOLD)',
-        details: 'Bulletin 121: Tailings Dams – Risk of Dangerous Occurrences, Lessons Learnt from Practical Experiences.',
+        title: inhalt.werte.staticLiquefactionOfFine,
+        institutionOrAuthor: inhalt.werte.internationalCommissionOnLarge,
+        details: inhalt.werte.bulletin121TailingsDams,
         url: 'https://www.icold-cigb.org/'
       },
       {
-        title: 'Bodenmechanische Schadensmechanismen im Erd- und Talsperrenbau',
-        institutionOrAuthor: 'Deutsche Gesellschaft für Geotechnik (DGGT)',
-        details: 'Fachpublikation zur Verflüssigung und Porenwasserdruckentwicklung in künstlichen Aufschüttungen.'
+        title: inhalt.werte.bodenmechanischeSchadensmechanismenImErd,
+        institutionOrAuthor: inhalt.werte.deutscheGesellschaftFürGeotechnik,
+        details: inhalt.werte.fachpublikationZurVerflüssigungUnd
       }
     ]
   },
   {
     id: 'schiersteiner_bruecke',
-    name: 'Havarie der Schiersteiner Brücke (A 643)',
-    subTitle: 'Pfeilerschiefstellung der Vorlandbrücke Mombach infolge Baugrundauflockerung',
+    name: inhalt.werte.havarieDerSchiersteinerBrücke,
+    subTitle: inhalt.werte.pfeilerschiefstellungDerVorlandbrückeMom,
     category: 'bruecken',
     year: '2015',
-    location: 'Wiesbaden / Mainz (Rheinland-Pfalz / Hessen), Deutschland',
-    structureType: 'Vorlandbrücke Mombach: Stahlbeton-Plattenbalken (Strombrücke: Stahlträger)',
-    keyMaterialMechanism: 'Auflockerung des Baugrunds durch die Herstellung von GEWI-Pfählen für den Neubau; Setzung unter dem Fundament, Schiefstellung von Fundament und Stütze, Lagerschaden',
-    summary: 'Am 10. Februar 2015 wurden an der Vorlandbrücke der Schiersteiner Brücke (A 643) bei Mainz-Mombach Schäden festgestellt: Ein Pfeiler hatte sich um etwa 20 cm geneigt, ein Lager war herausgerutscht, die Fahrbahn um etwa 30 cm abgesackt. Die Brücke wurde unverzüglich gesperrt. Nach dem Gutachten für den Landesbetrieb hatte die Herstellung von GEWI-Pfählen für den Neubau Auflockerungen im Baugrund verursacht.',
+    location: inhalt.werte.wiesbadenMainzRheinlandPfalz,
+    structureType: inhalt.werte.vorlandbrückeMombachStahlbetonPlattenbal,
+    keyMaterialMechanism: inhalt.werte.auflockerungDesBaugrundsDurch,
+    summary: inhalt.werte.am10Februar2015,
     projectData: {
       baujahr: '1959–1962',
-      schadensdatum: '10./11. Februar 2015',
-      ort: 'Wiesbaden-Schierstein / Mainz-Mombach (Rhein)',
-      tragwerkstyp: 'Vorlandbrücke als Stahlbeton-Plattenbalken auf Stahlbetonstützen',
-      beteiligteBaustoffe: ['Stahlbeton (Überbau und Stützen)', 'Rheinsedimente (Sand/Kies)', 'GEWI-Pfähle (Neubau)'],
-      spannweiteAbmessungen: 'Gesamtlänge der Rheinquerung ca. 1.280 m',
-      opferZahlen: 'Keine Personenschäden (sofortige Sperrung)',
-      gesamtschaden: 'Vollsperrung bis 12.04.2015, danach nur für Fahrzeuge bis 3,5 t; erhebliche Verkehrsbehinderungen im Raum Mainz/Wiesbaden'
+      schadensdatum: inhalt.werte.t1011Februar2015,
+      ort: inhalt.werte.wiesbadenSchiersteinMainzMombach,
+      tragwerkstyp: inhalt.werte.vorlandbrückeAlsStahlbetonPlattenbalken,
+      beteiligteBaustoffe: [inhalt.werte.stahlbetonÜberbauUndStützen, inhalt.werte.rheinsedimenteSandKies, inhalt.werte.gewiPfähleNeubau],
+      spannweiteAbmessungen: inhalt.werte.gesamtlängeDerRheinquerungCa,
+      opferZahlen: inhalt.werte.keinePersonenschädenSofortigeSperrung,
+      gesamtschaden: inhalt.werte.vollsperrungBis1204
     },
     historie: [
       {
-        phase: '1. Errichtung in den Wirtschaftswunderjahren (1959–1962)',
+        phase: inhalt.werte.t1ErrichtungInDen,
         zeitraum: '1959–1962',
-        details: 'Errichtung der Rheinquerung mit Strombrücke und Vorlandbrücken auf Rheinsedimenten.'
+        details: inhalt.werte.errichtungDerRheinquerungMit
       },
       {
-        phase: '2. Bauarbeiten für den Ersatzneubau (Februar 2015)',
-        zeitraum: 'Februar 2015',
-        details: 'In der Nähe des Altpfeilers wurden GEWI-Pfähle für die Pfeiler der neuen Brücke hergestellt. Dadurch entstanden nach dem Gutachten Auflockerungen im Baugrund.'
+        phase: inhalt.werte.t2BauarbeitenFürDen,
+        zeitraum: inhalt.werte.februar2015,
+        details: inhalt.werte.inDerNäheDes
       },
       {
-        phase: '3. Pfeilerschiefstellung (10.02.2015)',
+        phase: inhalt.werte.t3Pfeilerschiefstellung1002,
         zeitraum: '10.02.2015',
-        details: 'Setzungen unter dem Fundament führten zur Schiefstellung von Fundament und Stütze (ca. 20 cm); ein Lager rutschte heraus, die Fahrbahn sackte um etwa 30 cm ab.'
+        details: inhalt.werte.setzungenUnterDemFundament
       },
       {
-        phase: '4. Anheben und eingeschränkte Freigabe',
-        zeitraum: 'Februar–April 2015',
-        details: 'Anfang April 2015 wurde der Überbau mit 20 Pressen in 2-cm-Schritten in die ursprüngliche Lage gehoben. Am 12.04.2015 wurde die Brücke für Fahrzeuge bis 3,5 t und 2,2 m Breite wieder freigegeben (Wiegesensoren und Schranken).'
+        phase: inhalt.werte.t4AnhebenUndEingeschränkte,
+        zeitraum: inhalt.werte.februarApril2015,
+        details: inhalt.werte.anfangApril2015Wurde
       }
     ],
     ursachen: [
       {
-        titel: 'Baugrundauflockerung durch Nachbararbeiten',
+        titel: inhalt.werte.baugrundauflockerungDurchNachbararbeiten,
         kategorie: 'Umwelteinfluss',
-        beschreibung: 'Nach dem Gutachten entstanden durch die Herstellung der GEWI-Pfähle Auflockerungen im Baugrund, die zu Setzungen unter dem Fundament führten.'
+        beschreibung: inhalt.werte.nachDemGutachtenEntstanden
       },
       {
-        titel: 'Lückenhafte Bestandsstatik & Gründungsunterlagen',
+        titel: inhalt.werte.lückenhafteBestandsstatikGründungsunterl,
         kategorie: 'Planung/Statik',
-        beschreibung: 'Die Auswirkungen der Pfahlherstellung auf die benachbarte Bestandsgründung wurden nicht ausreichend erfasst.'
+        beschreibung: inhalt.werte.dieAuswirkungenDerPfahlherstellung
       }
     ],
     folgen: [
       {
-        bereich: 'Baugruben & Nachbarbauwerke an Brücken',
-        auswirkung: 'Empfehlung, bei Arbeiten an oder neben Bestandsgründungen Verformungsmessungen vorzusehen.',
-        normativeKonsequenz: 'DIN EN 1997-1 / ZTV-ING; DIN 4123 gilt für Gebäude'
+        bereich: inhalt.werte.baugrubenNachbarbauwerkeAnBrücken,
+        auswirkung: inhalt.werte.empfehlungBeiArbeitenAn,
+        normativeKonsequenz: inhalt.werte.dinEn19971
       },
       {
         bereich: 'Infrastruktur-Beschleunigung',
-        auswirkung: 'Der Fall trug zur Diskussion über den Zustand der Autobahnbrücken bei.',
-        normativeKonsequenz: 'Brückenmodernisierungsprogramm des Bundes'
+        auswirkung: inhalt.werte.derFallTrugZur,
+        normativeKonsequenz: inhalt.werte.brückenmodernisierungsprogrammDesBundes
       }
     ],
     lessonsLearned: [
-      'Tiefbauarbeiten neben Bestandsgründungen erfordern eine lückenlose geotechnische Bestandsaufnahme und permanente Deformationsmessungen.',
-      'Sofortige Sperrung bei auffälligen Verformungen verhindert Personenschäden.',
-      'Verkehrsadern mit hoher Netzbedeutung benötigen standardisierte Havariepläne für Sofortabstützungen.'
+      inhalt.werte.tiefbauarbeitenNebenBestandsgründungenEr,
+      inhalt.werte.sofortigeSperrungBeiAuffälligen,
+      inhalt.werte.verkehrsadernMitHoherNetzbedeutung
     ],
-    quellenlage: 'Gutachten für den Landesbetrieb (2015), hier über Sekundärquellen wiedergegeben.',
+    quellenlage: inhalt.werte.gutachtenFürDenLandesbetrieb,
     typischeBauschaedenLink: {
       subTab: 'tief_ingenieurbau',
-      label: 'Tief- & Ingenieurbau / Gründungen',
-      description: 'Setzungen, Baugruben und Sicherung von Nachbarfundamenten.'
+      label: inhalt.werte.tiefIngenieurbauGründungen,
+      description: inhalt.werte.setzungenBaugrubenUndSicherung
     },
     sources: [
       {
-        title: 'Gutachten zur Ursache der Schäden an der Vorlandbrücke Mombach',
-        institutionOrAuthor: 'im Auftrag des Landesbetriebs Mobilität Rheinland-Pfalz (LBM)',
-        details: 'Ergebnis: Auflockerungen im Baugrund durch Herstellung der GEWI-Pfähle (Link: Übersichtsartikel mit Nachweisen).',
+        title: inhalt.werte.gutachtenZurUrsacheDer,
+        institutionOrAuthor: inhalt.werte.imAuftragDesLandesbetriebs,
+        details: inhalt.werte.ergebnisAuflockerungenImBaugrund,
         url: 'https://de.wikipedia.org/wiki/Schiersteiner_Br%C3%BCcke'
       },
       {
-        title: 'DIN 4123: Ausschachtungen, Gründungen und Unterfangungen im Bereich bestehender Gebäude',
-        institutionOrAuthor: 'Deutsches Institut für Normung (DIN)',
-        details: 'Normative Vorgaben zur Sicherung benachbarter Gründungen bei Tief- und Gründungsarbeiten.',
+        title: inhalt.werte.din4123AusschachtungenGründungen,
+        institutionOrAuthor: inhalt.werte.deutschesInstitutFürNormung,
+        details: inhalt.werte.normativeVorgabenZurSicherung,
         url: 'https://www.din.de/'
       }
     ]

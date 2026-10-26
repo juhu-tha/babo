@@ -16,6 +16,8 @@ import {
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
+import inhalt from '@/content/preisentwicklung/Preisentwicklung.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -52,7 +54,7 @@ const RAW_PRICE_DATA = {
       tension: 0.3,
     },
     {
-      label: 'Dämmstoffe (EPS)',
+      label: inhalt.werte.dämmstoffeEps,
       data: [60, 65, 70, 75, 80, 85, 95, 100, 105, 120, 145, 135],
       borderColor: 'rgb(59, 130, 246)', // blue
       backgroundColor: 'rgba(59, 130, 246, 0.5)',
@@ -73,7 +75,7 @@ const RAW_PRICE_DATA = {
       tension: 0.3,
     },
     {
-      label: 'Kupfer (Rohre)',
+      label: inhalt.werte.kupferRohre,
       data: [30, 35, 45, 50, 60, 85, 110, 100, 120, 160, 150, 145],
       borderColor: 'rgb(245, 158, 11)', // amber-500
       backgroundColor: 'rgba(245, 158, 11, 0.5)',
@@ -101,7 +103,7 @@ const RAW_PRICE_DATA = {
       tension: 0.3,
     },
     {
-      label: 'Baulöhne (Tarif)',
+      label: inhalt.werte.baulöhneTarif,
       data: [30, 38, 45, 55, 62, 68, 75, 85, 100, 102, 106, 112],
       borderColor: 'rgb(139, 92, 246)', // violet
       backgroundColor: 'rgba(139, 92, 246, 0.5)',
@@ -176,14 +178,11 @@ export default function Preisentwicklung() {
           <div className="p-2 bg-blue-100 rounded-lg text-blue-700">
             <TrendingUp size={24} />
           </div>
-          <h2 className="text-xl font-bold text-text-main">Preisentwicklung Baustoffe</h2>
+          <h2 className="text-xl font-bold text-text-main"><MdText text={inhalt.texte.preisentwicklungBaustoffe} /></h2>
         </div>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Die Preisentwicklung von Baustoffen unterliegt starken Schwankungen, die durch globale Krisen, Energiekosten, Rohstoffknappheit und Lieferkettenprobleme beeinflusst werden. 
-            Die folgende Grafik zeigt die exemplarische Entwicklung der Erzeugerpreise für ausgewählte Baustoffe seit 1980.
-          </p>
+          <p><MdText text={inhalt.texte.diePreisentwicklungVonBaustoffen} /></p>
         </div>
 
         {/* Chart Section */}
@@ -193,7 +192,7 @@ export default function Preisentwicklung() {
               <BarChart3 size={20} className="text-shiraz" /> Erzeugerpreisindex
             </h3>
             <div className="flex items-center gap-2">
-              <div className="flex items-center gap-2"><label htmlFor="baseYear" className="text-sm font-medium text-text-main">Basisjahr:</label><InfoTooltip text="Referenzjahr für die Preisentwicklung." /></div>
+              <div className="flex items-center gap-2"><label htmlFor="baseYear" className="text-sm font-medium text-text-main">Basisjahr:</label><InfoTooltip text={inhalt.werte.referenzjahrFürDiePreisentwicklung} /></div>
               <select 
                 id="baseYear"
                 value={baseYear}
@@ -213,11 +212,7 @@ export default function Preisentwicklung() {
           
           <div className="mt-4 text-xs text-text-main/60 flex items-start gap-2 bg-off-white p-3 rounded-lg">
             <Info size={16} className="shrink-0 mt-0.5" />
-            <p>
-              <strong>Hinweis:</strong> Die dargestellten Werte sind exemplarische Indexwerte zur Veranschaulichung der Trends. 
-              Ein Wert von 100 entspricht dem durchschnittlichen Preisniveau im Basisjahr {baseYear}. 
-              Reale Baupreise können regional und projektspezifisch abweichen.
-            </p>
+            <p><MdText text={inhalt.texte.hinweisDieDargestelltenWerte} />{baseYear}<MdText text={inhalt.texte.realeBaupreiseKönnenRegional} /></p>
           </div>
         </div>
 
@@ -230,43 +225,42 @@ export default function Preisentwicklung() {
             <ul className="space-y-3 text-sm text-text-main/80">
               <li className="flex gap-2">
                 <span className="text-torch-red font-bold">•</span>
-                <span><strong>Energiekosten:</strong> Besonders energieintensive Baustoffe wie Zement, Ziegel und Stahl reagieren stark auf schwankende Strom- und Gaspreise.</span>
+                <span><MdText text={inhalt.texte.energiekostenBesondersEnergieintensiveBa} /></span>
               </li>
               <li className="flex gap-2">
                 <span className="text-torch-red font-bold">•</span>
-                <span><strong>Globale Nachfrage:</strong> Ein Bauboom in anderen Teilen der Welt (z.B. USA, China) kann zu lokaler Verknappung und Preissteigerungen führen (z.B. bei Bauholz 2021).</span>
+                <span><MdText text={inhalt.texte.globaleNachfrageEinBauboom} /></span>
               </li>
               <li className="flex gap-2">
                 <span className="text-torch-red font-bold">•</span>
-                <span><strong>Lieferketten:</strong> Störungen in globalen Lieferketten (Pandemien, Konflikte) verzögern Materiallieferungen und treiben Preise.</span>
+                <span><MdText text={inhalt.texte.lieferkettenStörungenInGlobalen} /></span>
               </li>
               <li className="flex gap-2">
                 <span className="text-torch-red font-bold">•</span>
-                <span><strong>CO₂-Bepreisung:</strong> Zunehmende Kosten für CO₂-Zertifikate verteuern emissionsintensive Materialien (Zement, Stahl).</span>
+                <span><MdText text={inhalt.texte.coBepreisungZunehmendeKosten} /></span>
               </li>
               <li className="flex gap-2">
                 <span className="text-torch-red font-bold">•</span>
-                <span><strong>Lohnkosten:</strong> Tarifliche Anpassungen und der generelle Fachkräftemangel führen zu einem stetigen, langfristig planbaren Anstieg der Bau- und Baunebenlöhne.</span>
+                <span><MdText text={inhalt.texte.lohnkostenTariflicheAnpassungenUnd} /></span>
               </li>
             </ul>
           </div>
 
           <div className="border border-home-grau/30 rounded-xl p-5 bg-white">
             <h3 className="font-bold text-text-main text-lg mb-4 flex items-center gap-2">
-              <Calendar size={20} className="text-shiraz" /> Historische Ereignisse
-            </h3>
+              <Calendar size={20} className="text-shiraz" /><MdText text={inhalt.texte.historischeEreignisse} /></h3>
             <div className="space-y-4 text-sm">
               <div className="border-l-2 border-shiraz pl-3">
-                <h4 className="font-bold text-text-main">2021/2022: Die "Holzkrise"</h4>
-                <p className="text-text-main/70 mt-1">Extreme Preisspitzen bei Bauholz durch hohe Nachfrage aus den USA, Borkenkäferbefall und gestörte Lieferketten während der Corona-Pandemie.</p>
+                <h4 className="font-bold text-text-main"><MdText text={inhalt.texte.t20212022DieHolzkrise} /></h4>
+                <p className="text-text-main/70 mt-1"><MdText text={inhalt.texte.extremePreisspitzenBeiBauholz} /></p>
               </div>
               <div className="border-l-2 border-shiraz pl-3">
-                <h4 className="font-bold text-text-main">2022: Energiekrise</h4>
-                <p className="text-text-main/70 mt-1">Massiver Anstieg der Gas- und Strompreise in Folge des Ukraine-Kriegs führte zu historischen Preissprüngen bei Zement, Ziegeln und Stahl.</p>
+                <h4 className="font-bold text-text-main"><MdText text={inhalt.texte.t2022Energiekrise} /></h4>
+                <p className="text-text-main/70 mt-1"><MdText text={inhalt.texte.massiverAnstiegDerGas} /></p>
               </div>
               <div className="border-l-2 border-shiraz pl-3">
-                <h4 className="font-bold text-text-main">Langfristiger Trend</h4>
-                <p className="text-text-main/70 mt-1">Stetiger, moderater Anstieg der Baupreise seit den 1980er Jahren, überlagert von konjunkturellen Zyklen und jüngsten Krisen.</p>
+                <h4 className="font-bold text-text-main"><MdText text={inhalt.texte.langfristigerTrend} /></h4>
+                <p className="text-text-main/70 mt-1"><MdText text={inhalt.texte.stetigerModeraterAnstiegDer} /></p>
               </div>
             </div>
           </div>
@@ -280,27 +274,9 @@ export default function Preisentwicklung() {
           { title: 'Preisindex', url: 'https://de.wikipedia.org/wiki/Preisindex' },
           { title: 'Inflation', url: 'https://de.wikipedia.org/wiki/Inflation' }
         ]}
-        regelwerke={[
-          { title: 'Baupreisindizes des Statistischen Bundesamtes (Destatis Fachserie 17 Reihe 4)', url: 'https://www.destatis.de/' },
-          { title: 'VOB/B § 2 Abs. 3 (Mehr- und Minderkostenberechnung bei Mengenabweichungen)', url: 'https://www.gesetze-im-internet.de/' }
-        ]}
-        literatur={[
-          'Destatis: Methodische Erläuterungen zu den Baupreis- und Immobilienpreisindizes',
-          'Hauptverband der Deutschen Bauindustrie: Bauwirtschaftliche Zahlen und Trends',
-          'Wendehorst Bautechnische Zahlentafeln: Kapitel Kostenplanung und Preisentwicklung'
-        ]}
-        formeln={[
-          {
-            formel: 'I_L = \\frac{\\sum p_{t,i} \\cdot q_{0,i}}{\\sum p_{0,i} \\cdot q_{0,i}} \\cdot 100',
-            erklaerung: 'Laspeyres-Preisindex: Gesetzliche Grundlage für amtliche Preisindizes (z.B. Destatis Baupreisindex). Vergleicht die Kosten eines festen Warenkorbs (q_0) aus der Basisperiode bei aktuellen Preisen p_t mit den Basispreisen p_0.',
-            quelle: 'Statistisches Bundesamt (Destatis)'
-          },
-          {
-            formel: 'K_t = K_0 \\cdot \\frac{I_t}{I_0} \\quad \\text{bzw.} \\quad \\Delta K = K_0 \\cdot \\left(\\frac{I_t - I_0}{I_0}\\right)',
-            erklaerung: 'Preisgleitklausel-Berechnung zur Anpassung von Bauwerksverträgen bei unvorhersehbaren Baustoffpreiserhöhungen.',
-            quelle: 'VOB/B § 2 / BGB'
-          }
-        ]}
+        regelwerke={inhalt.daten["Preisentwicklung.regelwerke"]}
+        literatur={inhalt.daten["Preisentwicklung.literatur"]}
+        formeln={inhalt.daten["Preisentwicklung.formeln"]}
       />
     </div>
   );

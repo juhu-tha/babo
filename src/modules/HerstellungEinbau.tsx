@@ -4,6 +4,8 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { Factory, Truck, Waves, ArrowRight, AlertTriangle, Settings, Combine } from 'lucide-react';
+import inhalt from '@/content/herstellungeinbau/HerstellungEinbau.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function HerstellungEinbau() {
   const { setActiveTab } = useTabContext();
@@ -15,20 +17,16 @@ export default function HerstellungEinbau() {
           <div className="p-2 bg-shiraz/10 rounded-lg text-shiraz">
             <Factory size={24} />
           </div>
-          <h2 className="text-xl font-bold text-text-main flex items-center gap-2">Herstellung & Transport</h2>
+          <h2 className="text-xl font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.herstellungTransport} /></h2>
       
 
         </div>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Beton wird meist als <strong>Transportbeton</strong> in stationären Mischanlagen industriell hergestellt und durch Fahrmischer (Trommelmischer) zur Baustelle transportiert. Seltener wird <strong>Baustellenbeton</strong> direkt vor Ort gemischt. 
-            Während des Transports wird die Mischtrommel langsam gedreht (Agitieren), um ein Entmischen zu verhindern. Die Zugabe von Wasser oder Zusatzmitteln bei Lieferung ist im Allgemeinen verboten, weil sie den w/z-Wert und damit Festigkeit und Dauerhaftigkeit verschlechtert. Nur in besonderen Fällen darf die Konsistenz unter Verantwortung des Herstellers innerhalb der festgelegten Grenzen angepasst werden; die Mengen sind auf dem Lieferschein zu vermerken (DIN 1045-2, 7.5).
-          </p>
+          <p><MdText text={inhalt.texte.betonWirdMeistAls} /></p>
           <p className="mt-2 flex flex-wrap items-center gap-1 text-xs">
-            <strong className="mr-1">Lernpfad:</strong> 1. Mischen <span className="text-text-main/40">→</span> 2. Transport <span className="text-text-main/40">→</span> 3. Pumpen <span className="text-text-main/40">→</span> 4. Verdichten
-            <span className="text-text-main/40 mx-1">|</span> weiter:
-            <button onClick={() => setActiveTab('frischbeton')} className="underline decoration-dotted hover:text-shiraz cursor-pointer">Frischbeton (Konsistenz)</button>
+            <strong className="mr-1">Lernpfad:</strong> 1. Mischen <span className="text-text-main/40">→</span><MdText text={inhalt.texte.t2Transport} /><span className="text-text-main/40">→</span> 3. Pumpen <span className="text-text-main/40">→</span><MdText text={inhalt.texte.t4Verdichten} /><span className="text-text-main/40 mx-1">|</span> weiter:
+            <button onClick={() => setActiveTab('frischbeton')} className="underline decoration-dotted hover:text-shiraz cursor-pointer"><MdText text={inhalt.texte.frischbetonKonsistenz} /></button>
             <span className="text-text-main/40">·</span>
             <button onClick={() => setActiveTab('nachbehandlung')} className="underline decoration-dotted hover:text-shiraz cursor-pointer">Nachbehandlung</button>
           </p>
@@ -36,22 +34,18 @@ export default function HerstellungEinbau() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="p-4 border border-home-grau/30 rounded-xl bg-white">
-             <h3 className="font-bold text-text-main flex items-center gap-2 mb-2"><Truck size={18} className="text-shiraz"/> Transport & Fahrmischer</h3>
+             <h3 className="font-bold text-text-main flex items-center gap-2 mb-2"><Truck size={18} className="text-shiraz"/><MdText text={inhalt.texte.transportFahrmischer} /></h3>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Fahrmischer und Fahrzeuge mit Rührwerk sollen spätestens <strong>90 Minuten</strong> nach der ersten Wasserzugabe vollständig entladen sein, Fahrzeuge ohne Rührwerk (nur steifer Beton) nach <strong>45 Minuten</strong> (DIN 1045-2, 7.6).
-          </p>
+          <p><MdText text={inhalt.texte.fahrmischerUndFahrzeugeMit} /></p>
         </div>
-             <p className="text-sm text-text-main/70"><strong>Mischwirkung im Fahrmischer:</strong> Fortwährendes Mischen oder längere Standzeiten (Agitieren) wirken sich auf den Beton aus. So kann beispielsweise der künstliche Luftporengehalt bei LP-Beton durch das stetige Mischen und die Reibung (Herausschlagen der Poren) stark absinken.</p>
+             <p className="text-sm text-text-main/70"><MdText text={inhalt.texte.mischwirkungImFahrmischerFortwährendes} /></p>
           </div>
           <div className="p-4 border border-home-grau/30 rounded-xl bg-white">
              <h3 className="text-xl font-bold text-text-main flex items-center gap-2"><Combine size={18} className="text-shiraz"/> Mischen</h3>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Zwangsmischer gewährleisten eine starke Homogenisierung. Empfohlene Mischzeiten: 30 bis 90 Sekunden (bei komplexen HPC- oder SCC-Betonen teils deutlich länger).
-          </p>
+          <p><MdText text={inhalt.texte.zwangsmischerGewährleistenEineStarke} /></p>
         </div>
-             <p className="text-sm text-text-main/70"><strong>Überwachung:</strong> Der Mischprozess und die Betonviskosität werden über die <em>Leistungsaufnahme der Mischermotoren</em> überwacht. Eine abflachende Wirkstromkurve signalisiert die vollständige Homogenisierung.</p>
+             <p className="text-sm text-text-main/70"><MdText text={inhalt.texte.überwachungDerMischprozessUnd} /></p>
           </div>
         </div>
       </div>
@@ -62,50 +56,37 @@ export default function HerstellungEinbau() {
           <div className="p-2 border-2 border-shiraz text-shiraz rounded-lg">
             <Waves size={24} />
           </div>
-          <h2 className="text-2xl font-bold text-text-main">Einbauverfahren: Pumpen von Beton</h2>
+          <h2 className="text-2xl font-bold text-text-main"><MdText text={inhalt.texte.einbauverfahrenPumpenVonBeton} /></h2>
         </div>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Das Fördern von Beton mittels Autobetonpumpen ist heute die Standardmethode für den Höhen- und Weitertransport auf vielen Baustellen. 
-            Damit der Beton pumpbar ist, muss er spezielle rheologische Eigenschaften aufweisen. 
-            Das Kernprinzip des Pumpens beruht auf der Ausbildung einer <strong>Gleitschicht</strong> (Schmierfilm) an der Rohrwandung.
-          </p>
+          <p><MdText text={inhalt.texte.dasFördernVonBeton} /></p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Gleitschicht & Mechanismus */}
           <div className="border border-home-grau/30 rounded-xl p-5 bg-white">
             <h3 className="font-bold text-text-main text-lg mb-4 flex items-center gap-2">
-              <ArrowRight className="text-shiraz" size={20} />
-              Wirkprinzip: Die Gleitschicht
-            </h3>
-            <p className="text-sm text-text-main/80 mb-4">
-              Beim Pumpen bewegt sich der Beton als kompakter "Pfropfen" (Plug-Flow) durch das Förderrohr. 
-              Die Reibung entsteht fast ausschließlich in einer 1-3 mm dünnen Schicht an der Rohrwandung.
-            </p>
+              <ArrowRight className="text-shiraz" size={20} /><MdText text={inhalt.texte.wirkprinzipDieGleitschicht} /></h3>
+            <p className="text-sm text-text-main/80 mb-4"><MdText text={inhalt.texte.beimPumpenBewegtSich} /></p>
             <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2">
-              <li><strong>Zusammensetzung:</strong> Die Gleitschicht besteht aus Wasser, Zement und feinsten Sandpartikeln (Zementleim/Mörtel).</li>
-              <li><strong>Entstehung:</strong> Durch den Pumpdruck wird Wasser und Leim an die Rohrwandung gepresst (Scherinduzierte Partikelmigration).</li>
-              <li><strong>Bedeutung:</strong> Ohne intakte Gleitschicht kommt es zu extrem hoher Reibung und zum "Stopfer" (Blockade).</li>
+              <li><MdText text={inhalt.texte.zusammensetzungDieGleitschichtBesteht} /></li>
+              <li><MdText text={inhalt.texte.entstehungDurchDenPumpdruck} /></li>
+              <li><MdText text={inhalt.texte.bedeutungOhneIntakteGleitschicht} /></li>
             </ul>
           </div>
 
           {/* Anforderungen an den Beton */}
           <div className="border border-home-grau/30 rounded-xl p-5 bg-white">
             <h3 className="font-bold text-text-main text-lg mb-4 flex items-center gap-2">
-              <Settings className="text-shiraz" size={20} />
-              Anforderungen an die Rezeptur
-            </h3>
-            <p className="text-sm text-text-main/80 mb-4">
-              Nicht jeder Beton ist pumpbar. Die Mischung muss stabil sein und darf unter Druck nicht entmischen oder ausbluten.
-            </p>
+              <Settings className="text-shiraz" size={20} /><MdText text={inhalt.texte.anforderungenAnDieRezeptur} /></h3>
+            <p className="text-sm text-text-main/80 mb-4"><MdText text={inhalt.texte.nichtJederBetonIst} /></p>
             <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2">
-              <li><strong>Mehlkorngehalt:</strong> Ausreichend Feinstoffe (zwingend erforderlich für die Gleitschichtbildung, oft &gt; 350-400 kg/m³).</li>
-              <li><strong>Kornzusammensetzung:</strong> Eine stetige Sieblinie ist optimal. Ausfallkörnungen neigen eher zum Entmischen.</li>
-              <li><strong>Konsistenz:</strong> Meist F3 bis F5 (weich bis fließfähig). Zu steifer Beton ist schwer ansaugbar, zu flüssiger Beton blutet/entmischt.</li>
-              <li><strong>Wasserhaltevermögen:</strong> Der Beton darf das Wasser unter Druck nicht abgeben.</li>
-              <li><strong>Hochfester Beton (HPC):</strong> Besitzt einen sehr niedrigen w/z-Wert und extrem hohe dynamische Viskosität (sehr "klebrig"). Um diesen zu pumpen, sind sehr hohe Pumpdrücke notwendig, weshalb der Anlagenverschleiß stark zunimmt.</li>
+              <li><MdText text={inhalt.texte.mehlkorngehaltAusreichendFeinstoffeZwing} /></li>
+              <li><MdText text={inhalt.texte.kornzusammensetzungEineStetigeSieblinie} /></li>
+              <li><MdText text={inhalt.texte.konsistenzMeistF3Bis} /></li>
+              <li><MdText text={inhalt.texte.wasserhaltevermögenDerBetonDarf} /></li>
+              <li><MdText text={inhalt.texte.hochfesterBetonHpcBesitzt} /></li>
             </ul>
           </div>
         </div>
@@ -113,27 +94,19 @@ export default function HerstellungEinbau() {
         {/* Risiken und Probleme */}
         <div className="mt-2 border border-shiraz/20 bg-off-white rounded-xl p-5">
           <h3 className="font-bold text-shiraz text-lg mb-3 flex items-center gap-2">
-            <AlertTriangle size={20} />
-            Typische Probleme beim Pumpen (Stopfer)
-          </h3>
+            <AlertTriangle size={20} /><MdText text={inhalt.texte.typischeProblemeBeimPumpen} /></h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="bg-white p-4 rounded-lg border border-shiraz/10 shadow-sm">
-              <h4 className="font-bold text-text-main text-sm mb-1">Verbluten (Bleeding)</h4>
-              <p className="text-xs text-text-main/70">
-                Wasser wird herausgepresst und fließt vorweg. Zurück bleibt ein trockener, unpumpbarer Kies-Sand-Pfropfen.
-              </p>
+              <h4 className="font-bold text-text-main text-sm mb-1"><MdText text={inhalt.texte.verblutenBleeding} /></h4>
+              <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.wasserWirdHerausgepresstUnd} /></p>
             </div>
             <div className="bg-white p-4 rounded-lg border border-shiraz/10 shadow-sm">
-              <h4 className="font-bold text-text-main text-sm mb-1">Anpumpen (Schmieren)</h4>
-              <p className="text-xs text-text-main/70">
-                Vorlaufmörtel fehlt, wodurch das trockene Rohr dem ersten Beton das Wasser entleert und es zur Blockade kommt.
-              </p>
+              <h4 className="font-bold text-text-main text-sm mb-1"><MdText text={inhalt.texte.anpumpenSchmieren} /></h4>
+              <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.vorlaufmörtelFehltWodurchDas} /></p>
             </div>
             <div className="bg-white p-4 rounded-lg border border-shiraz/10 shadow-sm">
               <h4 className="font-bold text-text-main text-sm mb-1">Rohrleitungs-Geometrie</h4>
-              <p className="text-xs text-text-main/70">
-                Enge Bögen oder undichte Kupplungen führen zu Wasserverlust und Druckpeaks.
-              </p>
+              <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.engeBögenOderUndichte} /></p>
             </div>
           </div>
         </div>
@@ -141,89 +114,60 @@ export default function HerstellungEinbau() {
 
       {/* 3. Verdichten und Einbau */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
-        <h2 className="text-2xl font-bold text-text-main">Einbau & Verdichtung</h2>
+        <h2 className="text-2xl font-bold text-text-main"><MdText text={inhalt.texte.einbauVerdichtung} /></h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
            <div className="space-y-4">
-             <p className="text-sm text-text-main/80">
-               Nachdem der Beton in die Schalung eingebracht wurde, muss er verdichtet werden, um die eingeschlossene Verdichtungsluft aus der Misch- und Transportphase fast vollständig auszutreiben. Dies verbessert die Dichtigkeit, Festigkeit und den Verbund zum Bewehrungsstahl.
-             </p>
+             <p className="text-sm text-text-main/80"><MdText text={inhalt.texte.nachdemDerBetonIn} /></p>
              <ul className="list-disc list-inside text-sm text-text-main/70 space-y-1">
-               <li><strong>Flaschenrüttler (Innenrüttler):</strong> Das gängigste Verfahren. Der Rüttler wird schnell eingeführt und langsam herausgezogen.</li>
-               <li><strong>Außenrüttler (Schalungsrüttler):</strong> Direkt an der Schalung befestigt, oft im Fertigteilwerk oder bei eng bewehrten Bauteilen.</li>
-               <li><strong>Rüttelbohlen:</strong> Zum Abziehen und Verdichten von oben (z. B. bei Sohlplatten oder Decken).</li>
+               <li><MdText text={inhalt.texte.flaschenrüttlerInnenrüttlerDasGängigste} /></li>
+               <li><MdText text={inhalt.texte.außenrüttlerSchalungsrüttlerDirektAn} /></li>
+               <li><MdText text={inhalt.texte.rüttelbohlenZumAbziehenUnd} /></li>
              </ul>
            </div>
            
            <div className="bg-home-grau/5 rounded-xl border border-home-grau/30 p-5">
-              <h3 className="font-bold text-text-main text-sm mb-2 text-shiraz">Achtung: Fehler beim Verdichten</h3>
+              <h3 className="font-bold text-text-main text-sm mb-2 text-shiraz"><MdText text={inhalt.texte.achtungFehlerBeimVerdichten} /></h3>
               <ul className="space-y-3">
-                <li className="text-xs text-text-main/70 flex gap-2"><ArrowRight size={14} className="shrink-0 text-shiraz mt-0.5" /> <strong>Überrütteln (Sedimentation & Bluten):</strong> Zu langes Rütteln führt zum Entmischen. Grobe Körner sinken ab (Sedimentation), während Wasser und Zementschlämme an die Oberfläche aufsteigen (Bluten). Die wasserreiche Schicht an der Oberfläche besitzt keine Festigkeit und neigt zu Rissen/Abplatzungen.</li>
-                <li className="text-xs text-text-main/70 flex gap-2"><ArrowRight size={14} className="shrink-0 text-shiraz mt-0.5" /> <strong>Unterrütteln:</strong> Lufteinschlüsse bleiben im Beton, die Festigkeit sinkt massiv, offene Poren an der Oberfläche (Lunker).</li>
-                <li className="text-xs text-text-main/70 flex gap-2"><ArrowRight size={14} className="shrink-0 text-shiraz mt-0.5" /> <strong>Eigenfließen:</strong> Beton darf nicht mit dem Rüttler "gezogen" oder "geschoben" werden, dies entmischt ihn.</li>
+                <li className="text-xs text-text-main/70 flex gap-2"><ArrowRight size={14} className="shrink-0 text-shiraz mt-0.5" /><MdText text={inhalt.texte.überrüttelnSedimentationBlutenZu} /></li>
+                <li className="text-xs text-text-main/70 flex gap-2"><ArrowRight size={14} className="shrink-0 text-shiraz mt-0.5" /><MdText text={inhalt.texte.unterrüttelnLufteinschlüsseBleibenIm} /></li>
+                <li className="text-xs text-text-main/70 flex gap-2"><ArrowRight size={14} className="shrink-0 text-shiraz mt-0.5" /><MdText text={inhalt.texte.eigenfließenBetonDarfNicht} /></li>
               </ul>
            </div>
         </div>
       </div>
 
       <FormulaDerivationBox
-        title="Anwendungsbeispiel: Förderdruck einer Betonpumpe"
+        title={inhalt.werte.anwendungsbeispielFörderdruckEinerBetonp}
         zielGleichung="p = \frac{2\,\tau_0\,L}{R} + \frac{8\,\mu_p\,v\,L}{R^2} + \rho\,g\,H"
-        normQuelle="Bingham-Ansatz für Rohrströmung, vereinfacht (Lehrmodell; Gleitschicht vernachlässigt)"
-        schritte={[
-          { titel: '1. Gegeben (Lehrwerte)', formel: '\\tau_0 = 200\\,\\text{Pa},\\; \\mu_p = 20\\,\\text{Pa s},\\; R = 0{,}0625\\,\\text{m},\\; L = 50\\,\\text{m},\\; H = 20\\,\\text{m},\\; Q = 30\\,\\text{m}^3/\\text{h}', erklaerung: 'Förderleitung DN 125, Frischbetonrohdichte 2 400 kg/m³.' },
-          { titel: '2. Fließgeschwindigkeit', formel: 'v = \\frac{Q}{\\pi R^2} = \\frac{0{,}00833}{0{,}01227} = 0{,}68\\,\\text{m/s}', erklaerung: '30 m³/h = 0,00833 m³/s.' },
-          { titel: '3. Druckanteile', formel: '\\frac{2 \\cdot 200 \\cdot 50}{0{,}0625} = 3{,}2\\,\\text{bar};\\; \\frac{8 \\cdot 20 \\cdot 0{,}68 \\cdot 50}{0{,}0625^2} = 13{,}9\\,\\text{bar};\\; 2400 \\cdot 9{,}81 \\cdot 20 = 4{,}7\\,\\text{bar}', erklaerung: 'Fließgrenze, Viskosität und Förderhöhe.' },
-          { titel: '4. Ergebnis', formel: 'p \\approx 3{,}2 + 13{,}9 + 4{,}7 \\approx 22\\,\\text{bar}', erklaerung: 'Der Viskositätsanteil überwiegt: Ein zäher Beton (hohes μ_p, z. B. HPC) erhöht den Pumpdruck stark.' },
-        ]}
-        ergebnisHinweis="Erforderlicher Förderdruck rund 22 bar (Lehrwerte)."
+        normQuelle={inhalt.werte.binghamAnsatzFürRohrströmung}
+        schritte={inhalt.daten["HerstellungEinbau.schritte"]}
+        ergebnisHinweis={inhalt.werte.erforderlicherFörderdruckRund22}
       />
 
       <FormulaDerivationBox
-        title="Anwendungsbeispiel: Zulässige Transportzeit"
+        title={inhalt.werte.anwendungsbeispielZulässigeTransportzeit}
         zielGleichung="t_{\text{Entladen}} - t_{\text{Wasserzugabe}} \le 90\,\text{min}"
-        normQuelle="DIN 1045-2, 7.6"
-        schritte={[
-          { titel: '1. Lieferschein', formel: 't_{\\text{Wasserzugabe}} = 8{:}10\\,\\text{Uhr};\\; t_{\\text{Entladen}} = 9{:}50\\,\\text{Uhr}', erklaerung: 'Fahrmischer mit Stau auf der Anfahrt.' },
-          { titel: '2. Zeitdifferenz', formel: '\\Delta t = 100\\,\\text{min} > 90\\,\\text{min}', erklaerung: 'Die Sollzeit ist überschritten.' },
-          { titel: '3. Bewertung', formel: '\\Rightarrow \\text{Rücksprache mit dem Betonwerk}', erklaerung: 'Ansteifen und Temperatur prüfen; bei zu steifem Beton nicht einbauen. Keine eigenmächtige Wasserzugabe.' },
-        ]}
-        ergebnisHinweis="100 min > 90 min – Beton nur nach Freigabe durch das Betonwerk verwenden."
+        normQuelle={inhalt.werte.din104527}
+        schritte={inhalt.daten["HerstellungEinbau.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.t100Min90Min}
       />
 
       <ModulTest moduleId="herstellung_einbau" />
 
       <ModuleFooter weblinks={[
-          { title: "Beton.wiki: Betonherstellung", url: "https://beton.wiki/index.php?title=Betonherstellung" }, 
-          { title: "Zement-Merkblatt B 7: Bereiten und Verarbeiten von Beton (BauNetz Wissen)", url: "https://www.baunetzwissen.de/beton/tipps/planungshilfen/b--7--bereiten-und-verarbeiten-von-beton-151304" }, 
-          { title: "Beton.wiki: Betonieren", url: "https://beton.wiki/index.php?title=Betonieren" },
-          { title: "Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch", url: "https://www.vdz-online.de/publikationen/zement-taschenbuch" }
+          { title: inhalt.werte.betonWikiBetonherstellung, url: "https://beton.wiki/index.php?title=Betonherstellung" }, 
+          { title: inhalt.werte.zementMerkblattB7, url: "https://www.baunetzwissen.de/beton/tipps/planungshilfen/b--7--bereiten-und-verarbeiten-von-beton-151304" }, 
+          { title: inhalt.werte.betonWikiBetonieren, url: "https://beton.wiki/index.php?title=Betonieren" },
+          { title: inhalt.werte.vereinDeutscherZementwerkeVdz, url: "https://www.vdz-online.de/publikationen/zement-taschenbuch" }
         ]} 
         wikipedia={[
           { title: 'Transportbeton', url: 'https://de.wikipedia.org/wiki/Transportbeton' },
           { title: 'Pumpbeton', url: 'https://de.wikipedia.org/wiki/Pumpbeton' },
           { title: 'Betonmischer', url: 'https://de.wikipedia.org/wiki/Betonmischer' }
         ]}
-        regelwerke={[
-          { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)' },
-          { title: 'DIN 1045-3 (Tragwerke aus Beton - Bauausführung)' },
-          { title: 'DBV-Merkblatt Pumpbeton' }
-        ]}
-        literatur={[
-          'Lohmeyer, G.; Ebeling, K.: Betonböden für Produktions- und Lagerhallen. Erkrath: Verlag Bau+Technik 2019',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        formeln={[
-          {
-            formel: 'p_{\\text{Förder}} = \\frac{2 \\cdot \\tau_0 \\cdot L}{R} + \\frac{8 \\cdot \\mu_p \\cdot v \\cdot L}{R^2} + \\rho \\cdot g \\cdot H',
-            erklaerung: 'Förderdruckbedarf für Betonpumpen nach Bingham-Modell: Abhängig von Fließgrenze tau_0, plastischer Viskosität mu_p, Rohrleitungsradius R, Länge L und Förderhöhe H.',
-            quelle: 'Bingham-Ansatz für Rohrströmung, vereinfacht (Lehrmodell)'
-          },
-          {
-            formel: '(w/z)_{eq} = \\frac{w}{z + 0{,}4 \\cdot f} \\le (w/z)_{max}',
-            erklaerung: 'Äquivalenter Wasserzementwert mit Anrechnung von Flugasche (k = 0,4; f/z ≤ 0,33). Nach DIN 1045-2:2023-08 ist nur Flugasche anrechenbar; Herleitung im Reiter Grundlagen.',
-            quelle: 'DIN 1045-2:2023-08'
-          }
-        ]}
+        regelwerke={inhalt.daten["HerstellungEinbau.regelwerke"]}
+        literatur={inhalt.daten["HerstellungEinbau.literatur"]}
+        formeln={inhalt.daten["HerstellungEinbau.formeln"]}
       />
     </div>
   );

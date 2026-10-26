@@ -1,0 +1,147 @@
+{
+  "texte": {
+    "derBrandschutzGliedertSich": "Der Brandschutz gliedert sich in das Brandverhalten von Baustoffen (Baustoffklassen) und den baulichen Brandschutz von Bauteilen (Feuerwiderstandsdauer).",
+    "baulicherBrandschutz": " Baulicher Brandschutz",
+    "holzabbrandSimulation": " Holzabbrand (Simulation)",
+    "brandverhaltenVonBaustoffenBaustoffklass": "Brandverhalten von Baustoffen (Baustoffklassen)",
+    "dieKlassifizierungVonBaustoffen": "Die Klassifizierung von Baustoffen beschreibt deren Beitrag zum Brandgeschehen (Entflammbarkeit, Rauchentwicklung, brennendes Abtropfen). In Deutschland gelten parallel die nationale Norm **DIN 4102-1** und die europäische Norm **DIN EN 13501-1**.",
+    "aNichtbrennbareBaustoffe": "A - Nichtbrennbare Baustoffe",
+    "ohneBrennbareBestandteileZ": "Ohne brennbare Bestandteile (z.B. Beton, Ziegel, Glas, Stahl)",
+    "mitGeringenBrennbarenBestandteilen": "Mit geringen brennbaren Bestandteilen (z.B. Gipskartonplatten)",
+    "bBrennbareBaustoffe": "B - Brennbare Baustoffe",
+    "schwerentflammbarZBBrandschutzbehandelte": "Schwerentflammbar (z.B. brandschutzbehandeltes Holz, HWL-Platten)",
+    "normalentflammbarZBHolz": "Normalentflammbar (z.B. Holz ab best. Dicke, normale Kunststoffe)",
+    "leichtentflammbarZBPapier": "Leichtentflammbar (z.B. Papier, Stroh - im Bauwesen unzulässig!)",
+    "dinEn135011": "DIN EN 13501-1",
+    "nichtbrennbarA2NurMit": "Nichtbrennbar (A2 nur mit s1, d0; Zuordnung nach MVV TB, Anhang 4)",
+    "schwerentflammbarAbhängigVonRauch": "Schwerentflammbar (abhängig von Rauch- und Abtropfklasse)",
+    "leichtentflammbarBzwKeineLeistung": "Leichtentflammbar bzw. keine Leistung festgestellt",
+    "rauchentwicklungSSmoke": "Rauchentwicklung (s - smoke)",
+    "geringeRauchentwicklung": " Geringe Rauchentwicklung",
+    "mittlereRauchentwicklung": " Mittlere Rauchentwicklung",
+    "hoheRauchentwicklung": " Hohe Rauchentwicklung",
+    "brennendesAbtropfenDDroplets": "Brennendes Abtropfen (d - droplets)",
+    "keinAbtropfen": " Kein Abtropfen",
+    "begrenztesAbtropfen": " Begrenztes Abtropfen",
+    "starkesAbtropfen": " Starkes Abtropfen",
+    "nichtbrennbarKaumRauchKein": "(Nichtbrennbar, kaum Rauch, kein Abtropfen)",
+    "baulicherBrandschutzFeuerwiderstandsdaue": "Baulicher Brandschutz (Feuerwiderstandsdauer)",
+    "derBaulicheBrandschutzBewertet": "Der bauliche Brandschutz bewertet nicht das Material selbst, sondern das Verhalten von **Bauteilen** (z.B. Wände, Decken, Stützen) im Brandfall. Ziel ist es, die Tragfähigkeit und den Raumabschluss für eine bestimmte Zeitdauer (Feuerwiderstandsdauer) sicherzustellen, um Flucht und Rettung zu ermöglichen.",
+    "europäischeKlassifizierungDinEn": "Europäische Klassifizierung (DIN EN 13501-2)",
+    "dieEuropäischeNormVerwendet": "Die europäische Norm verwendet Buchstaben zur Beschreibung der Leistungsmerkmale eines Bauteils im Brandfall:",
+    "tragfähigkeitRSistanceBr": "**Tragfähigkeit (Résistance)**<br>Das Bauteil (z.B. Stütze, Träger) trägt die anliegenden Lasten weiterhin ohne einzustürzen.",
+    "raumabschlussTanchItBr": "**Raumabschluss (Étanchéité)**<br>Das Bauteil (z.B. Wand, Tür) verhindert den Durchtritt von Flammen und heißen Gasen auf die brandabgewandte Seite.",
+    "wärmedämmungIsolationBrDas": "**Wärmedämmung (Isolation)**<br>Das Bauteil begrenzt die Temperaturerhöhung auf der brandabgewandten Seite (meist max. 140K im Mittel), sodass sich dort keine brennbaren Materialien entzünden.",
+    "beispielRei90": "Beispiel REI 90:",
+    "eineTragendeUndRaumabschließende": " Eine tragende und raumabschließende Wand, die für 90 Minuten ihre Tragfähigkeit (R), ihren Raumabschluss (E) und ihre Wärmedämmung (I) behält.",
+    "nationalVsEuropäisch": "National vs. Europäisch",
+    "bauaufsichtlicheBenennung": "Bauaufsichtliche Benennung",
+    "din41022National": "DIN 4102-2 (National)",
+    "dinEn135012": "DIN EN 13501-2 (Europa)",
+    "r30Rei30": "R 30 / REI 30",
+    "r60Rei60": "R 60 / REI 60",
+    "r90Rei90": "R 90 / REI 90",
+    "keinBegriffDerMbo": "(kein Begriff der MBO; z. B. Sonderbauten)",
+    "r120Rei120": "R 120 / REI 120",
+    "hinweisDieNationaleBezeichnung": "Hinweis: Die nationale Bezeichnung \"F\" (z.B. F90) impliziert bei tragenden, raumabschließenden Bauteilen automatisch die Eigenschaften R, E und I. In der europäischen Norm werden diese explizit angegeben (z.B. REI90). Für eine reine Stütze ohne Raumabschluss reicht \"R90\".",
+    "holzabbrandSimulation2": "Holzabbrand (Simulation)",
+    "holzquerschnitt3SeitigBeflammt": "Holzquerschnitt (3-seitig beflammt)",
+    "gastemperaturIso": "Gastemperatur (ISO)",
+    "abbrandtiefeHolz": "Abbrandtiefe Holz",
+    "restquerschnittHolz": "Restquerschnitt Holz",
+    "schematischeDarstellungHolzabbrand3": "Schematische Darstellung: Holzabbrand (3-seitig)",
+    "beiDreiseitigerBrandbeanspruchungZ": "Bei dreiseitiger Brandbeanspruchung (z.B. Deckenbalken) brennt das Holz von unten und den Seiten ab. Es entsteht eine schützende Holzkohleschicht (schwarz). Der innere Restquerschnitt (grau) bleibt tragfähig. Dargestellt ist die Abbrandtiefe mit β_n = 0,7 mm/min (Nadel-Brettschichtholz); für die Bemessung nach DIN EN 1995-1-2 kommt die Schicht ohne Festigkeit k₀ · d₀ = 7 mm hinzu."
+  },
+  "werte": {
+    "isoNormbrandkurveC": "ISO-Normbrandkurve (°C)",
+    "aktuelleBranddauer": "Aktuelle Branddauer",
+    "branddauerT": "Branddauer t",
+    "dauerDerBrandeinwirkungIn": "Dauer der Brandeinwirkung in Minuten.",
+    "höheDesBauteilquerschnitts": "Höhe des Bauteilquerschnitts.",
+    "zeitTMin": "Zeit t (min)",
+    "temperaturC": "Temperatur (°C)",
+    "beispiel1BrandraumtemperaturNach": "Beispiel 1: Brandraumtemperatur nach der Einheitstemperaturzeitkurve",
+    "dieKurveSteigtAnfangs": "Die Kurve steigt anfangs steil und flacht dann ab: Zwischen 30 und 90 Minuten kommen nur rund 160 K hinzu. Für die Bauteile zählt deshalb vor allem die Dauer der Beanspruchung.",
+    "dinEn13631": "DIN EN 1363-1; DIN EN 1991-1-2",
+    "beispiel2RestquerschnittEines": "Beispiel 2: Restquerschnitt eines BSH-Deckenbalkens nach 30 und 60 Minuten",
+    "imBrandfallWirkenGeringere": "Im Brandfall wirken geringere Lasten (außergewöhnliche Kombination) und höhere Festigkeiten (k_mod,fi = 1, 20-%-Fraktile); ob 39 % Restwiderstand für R 60 reichen, entscheidet der Nachweis nach DIN EN 1995-1-2.",
+    "dinEn19951": "DIN EN 1995-1-2:2010-12, 4.2.2 (Methode mit reduziertem Querschnitt)",
+    "oktober2026Ap6": "Oktober 2026 (AP 6 Bauphysik: Euroklassen-Zuordnung, Feuerwiderstandsbegriffe, Abbrand und Normausgaben geprüft; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "Brandschutz.schritte": [
+      {
+        "titel": "30 Minuten",
+        "erklaerung": "Feuerhemmend (F 30 / R 30):",
+        "formel": "\\theta_g = 20 + 345 \\cdot \\lg 241 = 842\\,^\\circ\\text{C}"
+      },
+      {
+        "titel": "60 Minuten",
+        "erklaerung": "Hochfeuerhemmend (F 60 / R 60):",
+        "formel": "\\theta_g = 20 + 345 \\cdot \\lg 481 = 945\\,^\\circ\\text{C}"
+      },
+      {
+        "titel": "90 Minuten",
+        "erklaerung": "Feuerbeständig (F 90 / R 90):",
+        "formel": "\\theta_g = 20 + 345 \\cdot \\lg 721 = 1\\,006\\,^\\circ\\text{C}"
+      }
+    ],
+    "Brandschutz.schritte_2": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "BSH-Balken b/h = 200/400 mm, dreiseitig beflammt (unten und seitlich), β_n = 0,7 mm/min, d₀ = 7 mm:",
+        "formel": "b = 200\\,\\text{mm},\\; h = 400\\,\\text{mm}"
+      },
+      {
+        "titel": "Nach 30 Minuten",
+        "erklaerung": "Effektive Abbrandtiefe und Restquerschnitt:",
+        "formel": "d_{ef} = 21 + 7 = 28\\,\\text{mm} \\Rightarrow b_{ef} \\times h_{ef} = 144 \\times 372\\,\\text{mm}"
+      },
+      {
+        "titel": "Nach 60 Minuten",
+        "erklaerung": "Doppelte Branddauer:",
+        "formel": "d_{ef} = 42 + 7 = 49\\,\\text{mm} \\Rightarrow b_{ef} \\times h_{ef} = 102 \\times 351\\,\\text{mm}"
+      },
+      {
+        "titel": "Biegewiderstand",
+        "erklaerung": "Verhältnis der Widerstandsmomente W = b · h²/6:",
+        "formel": "\\frac{W_{ef,30}}{W_0} = \\frac{144 \\cdot 372^2}{200 \\cdot 400^2} = 0{,}62, \\quad \\frac{W_{ef,60}}{W_0} = \\frac{102 \\cdot 351^2}{200 \\cdot 400^2} = 0{,}39"
+      }
+    ],
+    "Brandschutz.literatur": [
+      "Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Hosser, D. (Hrsg.): Leitfaden Ingenieurmethoden des Brandschutzes. vfdb-Technischer Bericht TB 04-01, 3. Aufl. 2013"
+    ],
+    "Brandschutz.regelwerke": [
+      {
+        "title": "DIN EN 13501-1:2019-05 (Klassifizierung von Bauprodukten und Bauarten zu ihrem Brandverhalten – Euroklassen A1 bis F)"
+      },
+      {
+        "title": "DIN 4102-4:2016-05 (Brandverhalten von Baustoffen und Bauteilen – Zusammenstellung klassifizierter Baustoffe, Bauteile und Sonderbauteile)"
+      },
+      {
+        "title": "DIN EN 1995-1-2:2010-12 mit NA (Eurocode 5, Tragwerksbemessung für den Brandfall; bauaufsichtlich eingeführt); neue Generation DIN EN 1995-1-2:2026-10"
+      },
+      {
+        "title": "Musterbauordnung (MBO, Fassung November 2002, zuletzt geändert durch Beschluss der Bauministerkonferenz vom 26./27.09.2024; Gebäudeklassen § 2 Abs. 3, Brandschutzanforderungen §§ 26–32)",
+        "url": "https://www.bauministerkonferenz.de/"
+      },
+      {
+        "title": "DIN EN 13501-2:2023-12 (Klassifizierung nach Feuerwiderstandsprüfungen, R/E/I)"
+      }
+    ],
+    "Brandschutz.formeln": [
+      {
+        "formel": "d_{\\text{ef}} = d_{\\text{char,n}} + k_0 \\cdot d_0 = \\beta_n \\cdot t + k_0 \\cdot d_0",
+        "erklaerung": "Effektive Abbrandtiefe def von Holz nach Eurocode 5 (DIN EN 1995-1-2): Rechnerische Berücksichtigung der durch Erwärmung geschwächten Übergangsschicht d0 = 7 mm (k0 = 1 ab 20 min bei ungeschützten Oberflächen).",
+        "quelle": "DIN EN 1995-1-2:2010-12, Gl. (4.1)"
+      },
+      {
+        "formel": "\\theta_g - 20 = 345 \\cdot \\log_{10}(8t + 1) \\quad [^\\circ\\text{C}]",
+        "erklaerung": "Einheitstemperaturzeitkurve (ETK) nach DIN EN 1363-1 / DIN 4102 zur standardisierten Brandprüfung von Bauteilen im Ofen.",
+        "quelle": "DIN EN 1363-1; DIN EN 1991-1-2"
+      }
+    ]
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "texte": {
+    "histBauweisen": " Hist. Bauweisen",
+    "fachlicheSystematikHistorischerTragwerke": "Fachliche Systematik historischer Tragwerke und Bauteile. Das Erkennen und Verstehen historischer Lastabtragungsmechanismen, traditioneller Holzverbindungen und Fügungstechniken bildet das unabdingbare Fundament für Standsicherheitsnachweise und substanzschonende Sanierungsplanungen im Bestand.",
+    "historischeMauerwerksSteinkonstruktionen": " Historische Mauerwerks- & Steinkonstruktionen",
+    "derHistorischeMassivbauStützt": "Der historische Massivbau stützt sich statisch primär auf das Prinzip des reinen Druckabtrags. Da herkömmliche Kalk- und Luftmörtel keine nennenswerte Zugfestigkeit besitzen, durften in Decken- und Wandöffnungen keine nennenswerten Biegespannungen auftreten. Öffnungen wurden konsequent mittels gemauerter Bögen und Gewölbe überspannt.",
+    "vollziegelReichsformat": "Vollziegel & Reichsformat",
+    "ziegelmauerwerkWurdeVor1950": "Ziegelmauerwerk wurde vor 1950 im Regelfall im **Reichsformat RF (250 × 120 × 65 mm)** (zum Vergleich heute: Normalformat NF 240 × 115 × 71 mm, Dünnformat DF 240 × 115 × 52 mm) und im vollfugigen Verband gemauert. Die Steinfestigkeit lag oft hoch ($f_b \\ge 10 - 20\\text{ N/mm}^2$), wohingegen die historische Mörtelfestigkeit ($f_m$) mangels Zementanteil oft unter $1{,}0 - 2{,}5\\text{ N/mm}^2$ liegt. Dies führt zu einem weichen, verformungsfähigen Tragverhalten.",
+    "imSpäten19Und": "Im späten 19. und frühen 20. Jahrhundert weit verbreitet für Fundamente, Kellerwände und schwere Stützwände. Ohne oder mit nur minimaler Bewehrung eingebracht, erfordert dieser Baustoff die konsequente Vermeidung exzentrischer Belastungen und klaffender Fugen, da sonst schlagartig Zugrisse auftreten.",
+    "statischeBesonderheitenSchwachstellen": " Statische Besonderheiten & Schwachstellen",
+    "zweischaligesMauerwerkOhneLuftschichtank": "**Zweischaliges Mauerwerk ohne Luftschichtanker:** Bei historischen Vorsatzschalen (z.B. Sichtmauerwerk der Gründerzeit) fehlen oft korrosionsbeständige Drahtanker. Unter Windsog können Vorsatzschalen dann abgelöst werden; Verankerung prüfen.",
+    "spreizdruckVonGewölbenJeder": "**Spreizdruck von Gewölben:** Jeder gemauerte Bogen leitet beträchtliche horizontale Schubkräfte in die Auflagerwände ein. Setzen sich diese Wände seitlich ab, stürzt das Gewölbe ein.",
+    "sulfattreibenImMörtelEttringit": "**Sulfattreiben im Mörtel:** Ettringit- bzw. Thaumasittreiben entsteht, wenn gipshaltige Mörtel oder Steine mit zementhaltigen (aluminathaltigen) Reparaturmörteln in Kontakt kommen und durchfeuchtet werden; das Gefüge kann dabei vollständig zerstört werden.",
+    "gewölbeschubStatischesGrundmodell": "Gewölbeschub (statisches Grundmodell)",
+    "derStatischWirksameHorizontalschub": "Der statisch wirksame Horizontalschub $H$ eines Bogens unter Gleichlast $w$ und Kronenpunktlast $P$ berechnet sich näherungsweise zu:",
+    "wobeiLDieLichte": "Wobei $L$ die lichte Spannweite und $f$ die Stichhöhe (Bogenaufstieg) darstellen.",
+    "bogenGewölbeschubrechner": " Bogen- & Gewölbeschubrechner",
+    "berechnenSieDieResultierenden": "Berechnen Sie die resultierenden Lagerkräfte eines historischen Tonnengewölbes oder Segmentbogens pro Meter Gewölbebreite.",
+    "lichteSpannweiteL": "Lichte Spannweite L:",
+    "bogenstichhöheF": "Bogenstichhöhe f:",
+    "bogenstärkeDickeD": "Bogenstärke / Dicke d:",
+    "wichteMauerwerk": "Wichte Mauerwerk:",
+    "gleichmäßigeAuflastQAuffüllung": "Gleichmäßige Auflast q (Auffüllung + Nutzlast):",
+    "einzellastImBogenscheitelP": "Einzellast im Bogenscheitel P:",
+    "vektormodellDerBogenstatik": "Vektormodell der Bogenstatik",
+    "hSchubSpreizdruck": " H-Schub (Spreizdruck)",
+    "ergebnisseProLfdMeter": "Ergebnisse (pro lfd. Meter):",
+    "vertikalkraftV": "Vertikalkraft V:",
+    "horizontalschubH": "Horizontalschub H:",
+    "dieserSchubMussÜber": "Dieser Schub muss über Zugbänder oder ausreichend dimensionierte Strebepfeiler (Widerlager) abgetragen werden!",
+    "resultierendeKraftR": "Resultierende Kraft R:",
+    "eintragswinkelDesDruckvektors": "Eintragswinkel des Druckvektors: ",
+    "zurHorizontalen": " zur Horizontalen",
+    "fachwerkbauweiseHistorischeHolzskelette": " Fachwerkbauweise & historische Holzskelette",
+    "derFachwerkbauIstEin": "Der Fachwerkbau ist ein hocheffizientes, dreidimensionales Stabtragwerk. Horizontalkräfte (Wind, Auslenkung) werden primär durch schräge Streben, Kopf- und Fußbänder in die massiven Fundamentschwellen geleitet. Die Verbindungen beruhen ausschließlich auf passgenauen, formschlüssigen Holzverbindungen, gesichert mit Holznägeln aus Eiche.",
+    "dieHauptkomponentenEinesFachwerks": "Die Hauptkomponenten eines Fachwerks:",
+    "t1SchwelleGrundschwelle": "1. Schwelle (Grundschwelle):",
+    "liegtMeistAufEinem": "Liegt meist auf einem flachen Steinsockel auf. Verteilt alle Vertikal- und Horizontalkräfte auf das Fundament. Extrem gefährdet durch aufsteigende Feuchtigkeit.",
+    "t2StänderSäulenPfosten": "2. Ständer (Säulen/Pfosten):",
+    "dieVertikalenTragendenHölzer": "Die vertikalen, tragenden Hölzer, die Druckkräfte aufnehmen. Ständerbau: Ständer laufen geschossübergreifend durch; Rähmbau (Stockwerkbau): Ständer werden je Geschoss abgezimmert und auf Rähm bzw. Schwelle gestellt.",
+    "t3RiegelBrustSturzriegel": "3. Riegel (Brust-/Sturzriegel):",
+    "dieHorizontalenQuerhölzerWelche": "Die horizontalen Querhölzer, welche die Gefache begrenzen und Fenster- und Türöffnungen ausbilden.",
+    "t4StrebenBänder": "4. Streben & Bänder:",
+    "dieSchrägGestelltenHölzer": "Die schräg gestellten Hölzer zur Aussteifung. Sichern das Fachwerk gegen parallelogrammartige Verschiebung unter seitlicher Einwirkung.",
+    "bauschädenFäulnisAusfachungsprobleme": " Bauschäden, Fäulnis & Ausfachungsprobleme",
+    "einFachwerkAtmetUnd": "Ein Fachwerk atmet und arbeitet. Historische Gefache wurden traditionell mit einer elastischen, weichen Ausfachung (Flechtwerk mit Stroh-Lehm-Bewurf) versehen. Ein häufiger, folgenschwerer Sanierungsfehler der Nachkriegszeit ist das Ausmauern der Gefache mit harten, zementhaltigen Steinen und Mörteln:",
+    "flankenabrisseZementmörtelVerbindetSich": "**Flankenabrisse:** Zementmörtel verbindet sich nicht elastisch mit Holz. Regen dringt in die Haarrisse zwischen Holz und Gefach ein.",
+    "feuchtestauZementUndDispersionsfarben": "**Feuchtestau:** Zement und Dispersionsfarben behindern die Austrocknung. Das eingedrungene Wasser staut sich am Holzgefüge, was zu rasanter **Schwellenfäule** durch Echten Hausschwamm oder den Braunen Kellerschwamm führt.",
+    "insektenbefallFeuchtesHolzZieht": "**Insektenbefall:** Feuchtes Holz zieht Schadinsekten wie den Hausbock (Hylotrupes bajulus) oder den Gewöhnlichen Nagekäfer (Anobium punctatum, „Holzwurm“) an, welche die statischen Restquerschnitte aushöhlen.",
+    "holzSchwindetUndQuillt": "Holz schwindet und quillt hygroskopisch unterhalb des Fasersättigungsbereichs ($u \\approx 30\\%$). Das differentielle Schwindmaß $\\Delta d$ einer Holzdimension $d_0$ berechnet sich über:",
+    "wobeiAlphaDerSchwindbeiwert": "Wobei $\\alpha$ der Schwindbeiwert (% Maßänderung pro 1% Feuchteänderung) und $u_1, u_2$ die Holzfeuchten ($u \\le 30\\%$) sind.",
+    "holzfeuchteSchwindungsRechner": " Holzfeuchte & Schwindungs-Rechner",
+    "berechnenSieDasHygrische": "Berechnen Sie das hygrische Arbeiten und Maßänderungen historischer Holzbauteile beim Austrocknen oder Wiederbefeuchten.",
+    "ausrichtungsrichtungDesHolzquerschnitts": "Ausrichtungsrichtung des Holzquerschnitts:",
+    "anfangsHolzfeuchteU": "Anfangs-Holzfeuchte u₁:",
+    "frischesFeuchtesHolzLiegt": "Frisches/feuchtes Holz liegt oft bei > 25-30%",
+    "zielHolzfeuchteZB": "Ziel-Holzfeuchte (z.B. Innenraumklima) u₂:",
+    "ausgleichsfeuchteImBeheiztenWohnraum": "Ausgleichsfeuchte im beheizten Wohnraum liegt bei ~ 8-12%",
+    "bauteilNennmaßDDicke": "Bauteil-Nennmaß d₀ (Dicke/Höhe):",
+    "effektivesUUnterhalbSättigung": "Effektives Δu unterhalb Sättigung:",
+    "spezifischerSchwindbeiwert": "Spezifischer Schwindbeiwert α:",
+    "erwarteteRelativeMaßänderung": "Erwartete relative Maßänderung:",
+    "maßänderungSchwund": "Maßänderung (Schwund):",
+    "dasBauteilVerringertSeine": "Das Bauteil verringert seine Abmessung von ehemals ",
+    "imFachwerkFührtDieser": ". Im Fachwerk führt dieser Schwund zu Spalten an den Verbindungen und Flankenabrissen an Ausfachungen!",
+    "historischeDeckenkonstruktionen": " Historische Deckenkonstruktionen",
+    "deckenInAltbautenVariieren": "Decken in Altbauten variieren stark je nach Bauzeitklasse und regionalen Ressourcen. Die statische Ertüchtigung erfordert genaue Materialkenntnisse und das Wissen über den Schichtenaufbau zur Beurteilung des Eigenklimas sowie der Schall- und Brandschutzeigenschaften.",
+    "holzbalkendeckenMitEinschub": "Holzbalkendecken mit Einschub",
+    "klassischeDeckeDerGründerzeit": "Klassische Decke der Gründerzeit. Tragende Deckenbalken im Abstand von ca. 70-100 cm. Dazwischen liegt auf Fehlboden-Leisten der hölzerne Einschub (Fehlboden), gedeckt mit Lehm-Stroh-Füllung oder trockenem Bauschutt/Sand zur Beschwerung (Luftschalldämpfung).",
+    "dippelbalkendeckenDübelbalken": "Dippelbalkendecken (Dübelbalken)",
+    "ganzholzdeckenAusDichtAn": "Ganzholzdecken aus dicht an dicht nebeneinander liegenden, zweiseitig abgeflachten Balken, die durch Holzdübel miteinander verbunden sind. Finden sich häufig in barocken Altbauten oder historischen Kornspeichern. Enorm massiv, schwer und hochbelastbar.",
+    "preußischeKappenKappendecke": "Preußische Kappen (Kappendecke)",
+    "flachGewölbteZiegelschalenZwischen": "Flach gewölbte Ziegelschalen zwischen stählernen oder gusseisernen I-Trägern. Sie kamen ab ca. 1870 vor allem in feuchtegefährdeten Kellern oder Gewerbebauten zum Einsatz. Erfordern statisch zwingend ein stabiles Randwiderlager oder Zugbänder (Zugbänder).",
+    "tragfähigkeitsschwundVerfallsgefahren": " Tragfähigkeitsschwund & Verfallsgefahren",
+    "erlöschenDesAuflagerbereichsBalkenköpfe": "**Erlöschen des Auflagerbereichs (Balkenköpfe):** Holzbalkenköpfe liegen oft direkt in kalten Außenmauern. Durch Kondensation der Raumluft fault das Hirnholz unbemerkt ab (Fäulnis im Mauerauflager).",
+    "korrosionAnITrägern": "**Korrosion an I-Trägern bei Kappendecken:** Feuchtigkeit in Kellern lässt die Flansche der Stahlträger rosten. Rost nimmt je nach Oxid das 2- bis 6-fache Volumen des Stahls ein, sprengt die Ziegelkappe ab und destabilisiert das Gewölbe.",
+    "durchhangHistorischerDeckenDurch": "**Durchhang historischer Decken:** Durch jahrzehntelanges Kriechen des Holzes verformen sich Holzbalkendecken massiv plastisch. Das führt zu unebenen Fußböden und Rissen in den Deckenputzen darunter.",
+    "gewölbeschubEinerPreußischenKappe": "Gewölbeschub einer Preußischen Kappe",
+    "derStatischeHorizontalschubH": "Der statische Horizontalschub $H$ einer flach gewölbten Kappendecke unter Vollbelastung $q$ (kN/m²) je Meter Trägerlänge beträgt:",
+    "wobeiADerAbstand": "Wobei $a$ der Abstand der Stahlträger (Kappen-Spannweite) und $f$ die Stichhöhe des Gewölbes ist.",
+    "kappendeckenSchubZugbandRechner": " Kappendecken-Schub & Zugband-Rechner",
+    "ermittelnSieDenHorizontalen": "Ermitteln Sie den horizontalen Spreizdruck einer Preußischen Kappe auf die Randträger und berechnen Sie den erforderlichen Querschnitt der stählernen Zugbänder.",
+    "abstandDerStahlträgerA": "Abstand der Stahlträger a:",
+    "spannweiteDesTrägersS": "Spannweite des Trägers s:",
+    "stichhöheDesGewölbesF": "Stichhöhe des Gewölbes f:",
+    "gesamtlastQEigenlastFüllung": "Gesamtlast q (Eigenlast + Füllung + Verkehrslast):",
+    "durchmesserDerRundenZugstangen": "Durchmesser der runden Zugstangen d_rod:",
+    "lagerkräfteZugbandBemessung": "Lagerkräfte & Zugband-Bemessung:",
+    "gleichlastAufTrägerW": "Gleichlast auf Träger w:",
+    "horizontalschubJeMeterTräger": "Horizontalschub je Meter Träger:",
+    "gesamteSpreizkraftJeFeldträger": "Gesamte Spreizkraft je Feldträger:",
+    "tragfähigkeitJeZugstange": "Tragfähigkeit je Zugstange:",
+    "erforderlicheAnzahlZugbänder": "Erforderliche Anzahl Zugbänder:",
+    "fürDieTrägergesamtlängeVon": "Für die Trägergesamtlänge von ",
+    "mSindMindestens": " m sind mindestens ",
+    "mmAnzuordnenHistorischerVergleich": " mm anzuordnen (historischer Vergleich mit zulässiger Spannung $\\sigma_{zul} = 120\\text{ N/mm}^2$ für Schweißeisen/Flussstahl; ein Nachweis nach Eurocode 3 erfolgt dagegen mit Bemessungslasten und $f_y/\\gamma_{M0}$, bei Gewindestangen mit dem Spannungsquerschnitt im Gewinde). Zugbänder sind nur in Endfeldern und an freien Rändern erforderlich; in Innenfeldern heben sich die Horizontalschübe benachbarter Kappen weitgehend auf.",
+    "historischeHolzdachwerkeTypologieUnd": " Historische Holzdachwerke: Typologie und Tragverhalten",
+    "derHistorischeZimmermannEntwickelte": "Der historische Zimmermann entwickelte hochkomplexe Systeme zur schadfreien Überbrückung weiter Spannweiten. Grundsätzlich unterscheidet man zwischen zwei statischen Grundsystemen, die bis heute den Großteil des Altbaubestands ausmachen.",
+    "dasSparrenKehlbalkendach": "Das Sparren- & Kehlbalkendach",
+    "bestehtAusDreiecksförmigenSparrenpaaren": "Besteht aus dreiecksförmigen Sparrenpaaren (Gebinden), die sich gegenseitig stützen. Es gibt keine tragenden Pfetten oder Zwischenstützen im Dachraum. Die Sparren leiten neben Vertikallasten auch erhebliche **Spreizkräfte (horizontale Schubkräfte)** am Fußpunkt ein.",
+    "tragwirkungDetails": "Tragwirkung & Details:",
+    "fußpunktanschlussMussZwingendÜber": "**Fußpunktanschluss:** Muss zwingend über einen Deckenbalken geschlossen werden (Zugbandwirkung). Fehlt oder verrottet der Deckenbalkenkopf, drückt das Dach die Traufwände nach außen weg.",
+    "kehlbalkenVerkürzenDieKnicklänge": "**Kehlbalken:** Verkürzen die Knicklänge der Sparren bei Schnee- und Windlasten und dienen als mittiges Lager.",
+    "dasPfettendachMitStuhlkonstruktion": "Das Pfettendach mit Stuhlkonstruktion",
+    "dieSparrenLiegenAuf": "Die Sparren liegen auf horizontal verlaufenden Längshölzern, den **Pfetten** (First-, Mittel-, Fußpfetten), auf. Die Pfetten leiten die Lasten vertikal nach unten ab. Das System ist weitgehend frei von horizontalen Spreizkräften am Traufpunkt.",
+    "stuhlkonstruktionenStehendLiegend": "Stuhlkonstruktionen (Stehend & Liegend):",
+    "stehenderDachstuhlDiePfetten": "**Stehender Dachstuhl:** Die Pfetten ruhen auf vertikalen Stuhlsäulen. Diese übertragen erhebliche Einzellasten direkt vertikal in die darunter liegenden tragenden Wände.",
+    "liegenderDachstuhlDieStuhlsäulen": "**Liegender Dachstuhl:** Die Stuhlsäulen sind schräg gestellt. Dadurch wird der Dachinnenraum weitgehend stützenfrei gehalten, die Lasten werden an die Außenwände geleitet.",
+    "bauforschungSubstanzschonendeSanierungsp": " Bauforschung & Substanzschonende Sanierungsplanung",
+    "beiDerBeurteilungHistorischer": "Bei der Beurteilung historischer Holzdachwerke sind folgende handwerkliche Eingriffe von hoher Bedeutung für Tragfähigkeit und Denkmalwert:",
+    "abbundzeichenEntziffern": "Abbundzeichen entziffern",
+    "dieEingehauenenRömischenZiffern": "Die eingehauenen römischen Ziffern, Reiß- oder Ritzzeichen dienten dem Zimmermann zum lagegenauen Zusammenbau am Boden. Sie erlauben Rückschlüsse auf Umbauten oder nachträgliche Veränderungen im Tragwerk.",
+    "passgenaueSchäftungen": "Passgenaue Schäftungen",
+    "verrotteteBalkenabschnitteMüssenNicht": "Verrottete Balkenabschnitte müssen nicht komplett getauscht werden. Durch zimmermannsmäßige Schäftungen (z. B. schräges Hakenblatt, Jupiterstoß) wird das Holz formschlüssig unter minimalem Materialverlust repariert.",
+    "dasEntnehmenKleinerBohrkerne": "Das Entnehmen kleiner Bohrkerne zur Analyse der Jahrringbreiten ermöglicht eine jahrgenaue Datierung der Fällung des Bauholzes und liefert wertvolle Nachweise über historische Bauphasen."
+  },
+  "werte": {
+    "massivbauMauerwerk": "Massivbau & Mauerwerk",
+    "fachwerkHolzskelett": "Fachwerk & Holzskelett",
+    "historischeDecken": "Historische Decken",
+    "historischeDachwerke": "Historische Dachwerke",
+    "ausrichtungsrichtungDesHolzquerschnitts": "Ausrichtungsrichtung des Holzquerschnitts",
+    "beispiel1BiegespannungIn": "Beispiel 1: Biegespannung in einer Holzbalkendecke um 1900",
+    "dieBiegungIstBei": "Die Biegung ist bei historischen Decken selten maßgebend; kritisch sind Durchbiegung, Schwingungen und Balkenkopffäule im Mauerwerksauflager.",
+    "technischeMechanikNachweisNach": "Technische Mechanik; Nachweis nach DIN EN 1995-1-1 mit NA",
+    "beispiel2SchwindmaßEines": "Beispiel 2: Schwindmaß eines Deckenbalkens nach dem Austrocknen",
+    "rund1CmSchwinden": "Rund 1 cm Schwinden erklärt typische Risse, lockere Verbindungen und Fugen in Fachwerk und Dielenböden. Schwindrisse sind meist unkritisch, Verbindungsmittel sind aber nachzuziehen.",
+    "din68100201007": "DIN 68100:2010-07 (Schwind- und Quellmaße)",
+    "oktober2026Ap8": "Oktober 2026 (AP 8 Bestand: Konstruktionsbeispiele und Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "HistorischeBauweisen.schritte": [
+      {
+        "titel": "System",
+        "erklaerung": "Balken 16/22 cm im Abstand 0,80 m, Spannweite 4,50 m; Eigenlast 1,5 kN/m² (mit Schüttung), Nutzlast 2,0 kN/m² (charakteristisch):",
+        "formel": "q = (1{,}5 + 2{,}0) \\cdot 0{,}80 = 2{,}8\\,\\text{kN/m}"
+      },
+      {
+        "titel": "Moment und Widerstandsmoment",
+        "erklaerung": "Einfeldträger:",
+        "formel": "M = \\frac{2{,}8 \\cdot 4{,}5^2}{8} = 7{,}09\\,\\text{kNm}, \\quad W = \\frac{160 \\cdot 220^2}{6} = 1{,}29 \\cdot 10^6\\,\\text{mm}^3"
+      },
+      {
+        "titel": "Spannung",
+        "erklaerung": "Charakteristische Biegespannung:",
+        "formel": "\\sigma_m = \\frac{7{,}09 \\cdot 10^6}{1{,}29 \\cdot 10^6} = 5{,}5\\,\\text{N/mm}^2"
+      }
+    ],
+    "HistorischeBauweisen.schritte_2": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Fichte, tangentiale Querschnittsabmessung 220 mm; Einbau mit u = 30 %, Ausgleichsfeuchte im beheizten Gebäude u = 12 %; differentielles Schwindmaß tangential ≈ 0,27 % je % Holzfeuchte (Richtwert, wie im Rechner).",
+        "formel": "\\Delta u = 30 - 12 = 18\\,\\%"
+      },
+      {
+        "titel": "Schwindmaß",
+        "erklaerung": "Lineare Näherung unterhalb des Fasersättigungsbereichs:",
+        "formel": "\\Delta b = 220 \\cdot 0{,}0027 \\cdot 18 = 10{,}7\\,\\text{mm}"
+      }
+    ],
+    "HistorischeBauweisen.literatur": [
+      "Breymann, G. A.: Allgemeine Bau-Constructions-Lehre, mehrere Bände (ab 1849; Nachdrucke verfügbar).",
+      "WTA-Merkblatt 8-1-14/D: Fachwerkinstandsetzung nach WTA I – Bauphysikalische Anforderungen an Fachwerkgebäude (Ausgabe 09.2014)"
+    ],
+    "HistorischeBauweisen.regelwerke": [
+      {
+        "title": "DIN 1053-1:1996-11 (zurückgezogen; Mauerwerk – Berechnung und Ausführung, für Altstatiken relevant)"
+      },
+      {
+        "title": "WTA-Merkblätter Reihe 8 (Fachwerkinstandsetzung, u. a. Ausfachungen)",
+        "url": "https://www.wta-gmbh.de"
+      },
+      {
+        "title": "DIN 68100:2010-07 (Toleranzsystem für Holzbe- und -verarbeitung – Schwind- und Quellmaße)"
+      },
+      {
+        "title": "DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA (Eurocode 5)"
+      }
+    ],
+    "HistorischeBauweisen.formeln": [
+      {
+        "formel": "H_G = \\frac{w \\cdot L^2}{8 \\cdot f}",
+        "erklaerung": "Grundhorizontalschub eines gleichmäßig belasteten dreigelenkigen Gewölbes oder Segmentbogens zur Bemessung der Widerlager.",
+        "quelle": "Breymann: Baukonstruktionslehre"
+      },
+      {
+        "formel": "\\epsilon_{hyg} = \\alpha \\cdot \\Delta u",
+        "erklaerung": "Hygrische Quell- und Schwindverformung von Holz quer zur Faserrichtung bei Feuchteänderungen unterhalb des Fasersättigungsbereichs.",
+        "quelle": "DIN 68100 / Holzkunde-Literatur"
+      }
+    ]
+  }
+}

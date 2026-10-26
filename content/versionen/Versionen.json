@@ -1,0 +1,25 @@
+{
+  "texte": {
+    "changelogRevisionshistorie": "Changelog & Revisionshistorie",
+    "dokumentationsprotokollUndKontinuierlich": "Dokumentationsprotokoll und kontinuierliche Weiterentwicklung der akademischen Plattform.",
+    "aktuellerStand": "Aktueller Stand: "
+  },
+  "werte": {
+    "semanticVersioning": "Semantic Versioning"
+  },
+  "daten": {
+    "Versionen.literatur": [
+      "Sommerville, I.: Software Engineering (Pearson Studium)",
+      "Preston-Werner, T.: Semantic Versioning 2.0.0 Spezifikation"
+    ],
+    "Versionen.regelwerke": [
+      {
+        "title": "SemVer 2.0.0 (Semantic Versioning Specification)",
+        "url": "https://semver.org/"
+      },
+      {
+        "title": "DIN EN ISO 9001 (Qualitätsmanagementsysteme - Dokumentierte Information)"
+      }
+    ]
+  }
+}

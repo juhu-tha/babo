@@ -1,0 +1,139 @@
+{
+  "texte": {
+    "knickenStabilitätsversagenEulerFälle": " Knicken & Stabilitätsversagen (Euler-Fälle 1–4)",
+    "dinEn19931": "DIN EN 1993-1-1 / Eurocode 3",
+    "dasKnickenIstEin": "Das **Knicken** ist ein plötzliches Stabilitätsversagen schlanker Druckstäbe (z. B. Stützen, Fachwerkstäbe, Bogenträger). Sobald die axial wirkende Druckkraft $N_{\\text{Ed}}$ die ideale Knicklast $F_K$ nach Euler erreicht, verliert der Stab sein stabiles Gleichgewicht und knickt seitlich aus. Die Knicklänge $l_k = \\beta \\cdot l$ wird entscheidend durch die Lagerung (Einspannung vs. Gelenk) bestimmt.",
+    "interaktiverKnickprüfstandLiveLast": " Interaktiver Knickprüfstand (Live Last)",
+    "biegelinieIiOrdnungDiagramm": " Biegelinie II. Ordnung (Diagramm)",
+    "die4EulerFälle": " Die 4 Euler-Fälle im Vergleich",
+    "t1LastGeometrie": " 1. Last & Geometrie",
+    "normalkraftNEd": "Normalkraft N_Ed:",
+    "t0KnEntlastet": "0 kN (Entlastet)",
+    "lagerungsbedingungEulerFall": "Lagerungsbedingung (Euler-Fall):",
+    "elastizitätsmodulE": "Elastizitätsmodul E:",
+    "knicklängeLK": "Knicklänge l_k",
+    "eulerKnicklastFk": "Euler-Knicklast FK",
+    "t2LiveKnickfigurAuslenkung": " 2. Live Knickfigur & Auslenkung",
+    "theorieIiOrdnungVerformungsrückkopplung": "Theorie II. Ordnung (Verformungsrückkopplung):",
+    "mitSteigenderNormalkraftN": "Mit steigender Normalkraft $N_{\\text{Ed}}$ erzeugt die Querverschiebung $w(x)$ zusätzliche Biegemomente $\\Delta M = N \\cdot w$. Bei $N \\rightarrow F_K$ wächst die Verformung theoretisch über alle Grenzen; in der Realität versagt der Stab vorher durch Fließen bzw. Bruch des Querschnitts. Hier angenommen: Vorkrümmung w₀ = l/300.",
+    "biegelinienverlaufÜberDieStablänge": " Biegelinienverlauf über die Stablänge (Theorie II. Ordnung)"
+  },
+  "werte": {
+    "lagerungsbedingungEulerFall": "Lagerungsbedingung (Euler-Fall)",
+    "trägheitsmomentI": "Trägheitsmoment I",
+    "stabilitätsversagenIdealeKnicklastErreic": "STABILITÄTSVERSAGEN: ideale Knicklast erreicht (N_Ed ≥ F_K)",
+    "ihrRechenwegEulerKnicklast": "Ihr Rechenweg: Euler-Knicklast mit den aktuellen Eingaben",
+    "eulerKnickfälleTheorieIi": "Euler-Knickfälle; Theorie II. Ordnung (Lehrmodell)",
+    "idealeKnicklast": "Ideale Knicklast",
+    "einwirkendeNormalkraft": "Einwirkende Normalkraft",
+    "dieLastWirdAls": "Die Last wird als Anteil der idealen Knicklast eingestellt.",
+    "ausbiegungNachTheorieIi": "Ausbiegung nach Theorie II. Ordnung",
+    "nEdFK": "N_Ed ≥ F_K: Der Stab ist instabil, die Ausbiegung wächst theoretisch unbegrenzt (Darstellung auf den 12,5-fachen Wert begrenzt).",
+    "angenommeneVorkrümmungWL": "Angenommene Vorkrümmung w₀ = l/300; der Vergrößerungsfaktor ist für die Darstellung auf 12,5 begrenzt.",
+    "beidseitigEingespannt": "Beidseitig eingespannt",
+    "beispiel1EulerKnicklast": "Beispiel 1: Euler-Knicklast einer Stahlstütze – gelenkig vs. Kragarm",
+    "dieLagerungWirktQuadratisch": "Die Lagerung wirkt quadratisch: Die Kragstütze trägt nur ein Viertel, die beidseitig eingespannte Stütze (β = 0,5) das Vierfache des Grundfalls.",
+    "euler1744KnicklängenbeiwerteDer": "Euler (1744); Knicklängenbeiwerte der vier Euler-Fälle",
+    "beispiel2WieStark": "Beispiel 2: Wie stark vergrößert sich eine Vorkrümmung bei 65 % der Knicklast?",
+    "dasZusatzmomentNW": "Das Zusatzmoment N · w kann den Querschnitt zum Fließen bringen, lange bevor F_K erreicht ist – deshalb rechnet der Eurocode mit Abminderungsbeiwerten χ < 1.",
+    "stabilitätstheorieNachweisNachDin": "Stabilitätstheorie; Nachweis nach DIN EN 1993-1-1, 6.3.1",
+    "bemessungNachEurocode3": "Bemessung nach Eurocode 3: Abminderungsbeiwert χ",
+    "zumModulStahlbauNach": "Zum Modul Stahlbau nach Eurocode 3",
+    "dieEulerLastIst": "Die Euler-Last ist die ideale Obergrenze. Den Bemessungswert N_b,Rd mit Knicklinien und χ berechnet das Modul Stahlbau nach Eurocode 3.",
+    "oktober2026Ap5": "Oktober 2026 (AP 5 Mechanik: Euler-Fälle, Theorie II. Ordnung und Normbezüge geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "eulerscheKnickfälle": "Eulersche Knickfälle"
+  },
+  "daten": {
+    "Knicken": [
+      {
+        "fall": 1,
+        "beta": 2,
+        "name": "Euler-Fall 1",
+        "lk": "lk = 2 · l",
+        "desc": "Kragarm (unten fest eingespannt, oben völlig frei verschieblich). Kleinste Knicklast aller Fälle."
+      },
+      {
+        "fall": 2,
+        "beta": 1,
+        "name": "Euler-Fall 2",
+        "lk": "lk = 1 · l",
+        "desc": "Grundfall: Beidseitig gelenkig gelagert. Sinushalbwelle über die volle Stablänge."
+      },
+      {
+        "fall": 3,
+        "beta": 0.7,
+        "name": "Euler-Fall 3",
+        "lk": "lk ≈ 0,7 · l",
+        "desc": "Unten starr eingespannt, oben unverschieblich gelenkig gelagert. Der Abstand zwischen Wendepunkt der Knickfigur und Gelenk beträgt ≈ 0,7 l (rund doppelte Knicklast gegenüber Fall 2)."
+      },
+      {
+        "fall": 4,
+        "beta": 0.5,
+        "name": "Euler-Fall 4",
+        "lk": "lk = 0,5 · l",
+        "desc": "Beidseitig starr eingespannt. Höchste Knicklast (4-fache Knicklast im Vergleich zu Fall 2!)."
+      }
+    ],
+    "Knicken.schritte": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Stahlstütze l = 3,5 m, E = 210 000 N/mm², maßgebendes Trägheitsmoment I = 850 cm⁴ = 8,5 · 10⁶ mm⁴.",
+        "formel": "E \\cdot I = 210\\,000 \\cdot 8{,}5 \\cdot 10^{6}\\,\\text{Nmm}^2"
+      },
+      {
+        "titel": "Euler-Fall 2 (β = 1,0)",
+        "erklaerung": "Beidseitig gelenkig, Knicklänge 3500 mm:",
+        "formel": "F_K = \\frac{\\pi^2 \\cdot 210\\,000 \\cdot 8{,}5 \\cdot 10^{6}}{3\\,500^2} = 1\\,438\\,\\text{kN}"
+      },
+      {
+        "titel": "Euler-Fall 1 (β = 2,0)",
+        "erklaerung": "Kragstütze: doppelte Knicklänge, also ein Viertel der Knicklast:",
+        "formel": "F_K = \\frac{1\\,438}{4} = 360\\,\\text{kN}"
+      }
+    ],
+    "Knicken.schritte_2": [
+      {
+        "titel": "Vorkrümmung",
+        "erklaerung": "Angenommene Vorkrümmung l/300 bei l = 3,5 m:",
+        "formel": "w_0 = \\frac{3\\,500}{300} = 11{,}7\\,\\text{mm}"
+      },
+      {
+        "titel": "Vergrößerungsfaktor",
+        "erklaerung": "Bei N_Ed/F_K = 0,65:",
+        "formel": "\\frac{1}{1 - 0{,}65} = 2{,}86"
+      },
+      {
+        "titel": "Gesamtausmitte",
+        "erklaerung": "Ausbiegung in Stabmitte nach Theorie II. Ordnung:",
+        "formel": "w = 2{,}86 \\cdot 11{,}7 = 33{,}3\\,\\text{mm}"
+      }
+    ],
+    "Knicken.regelwerke": [
+      {
+        "title": "DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (bauaufsichtlich eingeführt; 6.3 Biegeknicken); neue Generation DIN EN 1993-1-1:2025-04"
+      },
+      {
+        "title": "DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (5.8 Theorie II. Ordnung); neue Generation DIN EN 1992-1-1:2025-09"
+      },
+      {
+        "title": "DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA (6.3 Ersatzstabverfahren, Biegeknicken); Neue Ausgabe 2026-09 erschienen; bauaufsichtlich noch nicht eingeführt"
+      }
+    ],
+    "Knicken.literatur": [
+      "Gross, D.; Hauger, W.; Schröder, J.; Wall, W. A.: Technische Mechanik 2 – Elastostatik. Berlin: Springer Vieweg (aktuelle Auflage)",
+      "Kindmann, R.; Kraus, M.: Finite-Elemente-Methoden im Stahlbau. Berlin: Ernst & Sohn 2007"
+    ],
+    "Knicken.formeln": [
+      {
+        "formel": "F_K = \\frac{\\pi^2 \\cdot E \\cdot I}{l_k^2} = \\frac{\\pi^2 \\cdot E \\cdot I}{(\\beta \\cdot l)^2}",
+        "erklaerung": "Ideale Euler-Knicklast FK eines schlanken Druckstabs unter Berücksichtigung des Knicklängenbeiwerts β.",
+        "quelle": "Gross et al.: Technische Mechanik 2"
+      },
+      {
+        "formel": "w(x) = \\frac{w_0(x)}{1 - \\frac{N_{\\text{Ed}}}{F_K}}",
+        "erklaerung": "Theorie II. Ordnung: Vergrößerung einer sinusförmigen Vorverformung w₀ unter der Längsdruckkraft N_Ed (Näherung, Dischinger-Faktor 1/(1 − N/F_K)).",
+        "quelle": "Technische Mechanik / Stabilitätstheorie"
+      }
+    ]
+  }
+}

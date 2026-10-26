@@ -1,0 +1,97 @@
+{
+  "texte": {
+    "dieOptimierungDerPackungsdichte": "Die Optimierung der Packungsdichte aller Feststoffe (Gesteinskörnung + Feinteile) ist entscheidend für leistungsfähigen und ressourcenschonenden Beton (z.B. UHPC oder Eco-Beton). Eine optimale Sieblinie minimiert den Hohlraumgehalt, wodurch weniger Wasser und Zementleim zur Verfüllung benötigt wird.",
+    "kontinuierlicheModelleSieblinien": "Kontinuierliche Modelle (Sieblinien)",
+    "diskreteModelleZweikornmischung": "Diskrete Modelle (Zweikornmischung)",
+    "feststoffanteileVol": "Feststoffanteile (Vol.-%)",
+    "kies816Mm": "Kies (8/16 mm) - Rest",
+    "massenProMBeton": "Massen pro m³ Beton",
+    "zement31Kg": "Zement (ρ = 3,1 kg/l)",
+    "zusatzstoff265Kg": "Zusatzstoff (ρ = 2,65 kg/l)",
+    "sand022": "Sand 0/2 (ρ = 2,65 kg/l)",
+    "kies282": "Kies 2/8 (ρ = 2,65 kg/l)",
+    "kies8162": "Kies 8/16 (ρ = 2,65 kg/l)",
+    "modellparameterEigenschaften": "Modellparameter & Eigenschaften",
+    "kornformDerGesteinskörnung": "Kornform der Gesteinskörnung",
+    "rundFlusskies": "Rund (Flusskies)",
+    "gebrochenSplitt": "Gebrochen (Splitt)",
+    "bewertungVisualisierung": "Bewertung & Visualisierung",
+    "rmseZuFuller": "RMSE zu Fuller",
+    "estPackungsdichte": "Est. Packungsdichte",
+    "schematischesGefügemodell": "Schematisches Gefügemodell",
+    "visualisierungStarkVereinfacht": "Visualisierung stark vereinfacht",
+    "einGeringerRmseWert": "Ein geringer RMSE-Wert bedeutet eine gute Annäherung an die Idealsieblinie. Die Feinteile (Zement, Zusatzstoffe) füllen die Hohlräume zwischen den Sand- und Kieskörnern. Runde Körner ermöglichen eine dichtere Packung als gebrochene Körner.",
+    "diskretePackungsdichtemodelle": "Diskrete Packungsdichtemodelle",
+    "währendKontinuierlicheModelleWie": "Während kontinuierliche Modelle (wie A&A) eine ideale Kornverteilungskurve vorgeben, betrachten diskrete Modelle (wie das Toufar-Modell oder CPM) die Interaktion einzelner Korngrößenklassen. Sie berechnen die resultierende Packungsdichte basierend auf den Eigenpackungsdichten und den Größenverhältnissen (d₁/d₂).",
+    "compressiblePackingModelCpm": "Compressible Packing Model (CPM)",
+    "nachDeLarrard1999": "Nach de Larrard (1999). Berücksichtigt zusätzlich zu idealen geometrischen Modellen den Wandeffekt (Wall effect) und den Auflockerungseffekt (Loosening effect) über einen Verdichtungsindex K.",
+    "toufarKloseUndBorn": "Toufar-, Klose- und Born-Modell (1976)",
+    "beschreibtDieÄnderungDer": "Beschreibt die Änderung der Packungsdichte einer binären Mischung in Abhängigkeit des Durchmessers der beiden Fraktionen und ihres Mischungsverhältnisses.",
+    "eingabeparameterFeinkornIndex1": "Eingabeparameter Feinkorn (Index 1)",
+    "eingabeparameterGrobkornIndex2": "Eingabeparameter Grobkorn (Index 2)",
+    "wandeffektUndAuflockerung": "Wandeffekt und Auflockerung",
+    "wandeffektWennEinKleines": "**Wandeffekt:** Wenn ein kleines Korn an ein sehr großes Korn stößt (Grobkorn als \"Wand\"), entsteht dort ein asymmetrischer Hohlraum, weil sich Feinkörner nicht perfekt an ebene Wände anlegen können.",
+    "auflockerungseffektWennDasGrößenverhältn": "**Auflockerungseffekt:** Wenn das Größenverhältnis (d₁/d₂) zu groß ist, passen feine Partikel nicht mehr in die Poren der Grobkörner. Sie drücken die Grobkörner auseinander, was das Gesamtvolumen vergrößert.",
+    "verhältnisDerDurchmesserD": "Verhältnis der Durchmesser (d₁/d₂): ",
+    "jeNäherDasVerhältnis": "Je näher das Verhältnis an 0 ist, desto mehr nähert sich die reale Packungsdichte der idealen Theorieküste an. Je näher es an 1 ist, desto flacher verläuft die Kurve.",
+    "zweikornmischungPackungsdichte": "Zweikornmischung Packungsdichte (φ)"
+  },
+  "werte": {
+    "aktuellesGemisch": "Aktuelles Gemisch",
+    "idealeTheorieMooneyFurnas": "Ideale Theorie (Mooney/Furnas)",
+    "theoretischLinearGleicheGrößen": "Theoretisch linear (Gleiche Größen)",
+    "mengeDesZements": "Menge des Zements.",
+    "zusatzstoffZBKalksteinmehl": "Zusatzstoff (z.B. Kalksteinmehl)",
+    "sand02Mm": "Sand (0/2 mm)",
+    "mengeDerFeinenGesteinskörnung": "Menge der feinen Gesteinskörnung.",
+    "kies28Mm": "Kies (2/8 mm)",
+    "volumenanteilAllerFestenBestandteile": "Volumenanteil aller festen Bestandteile im Beton.",
+    "feststoffvolumenImBeton": "Feststoffvolumen im Beton",
+    "formDerGesteinskörnerZ": "Form der Gesteinskörner (z.B. gedrungen, plattig).",
+    "exponentQDerModifizierten": "Exponent q der modifizierten Andreasen-Gleichung. Ein kleineres q erhöht die Packungsdichte durch einen höheren Feinstoffanteil (Feinsand/Zement).",
+    "verteilungsmodulQ": "Verteilungsmodul (q)",
+    "partikelgrößeDMm": "Partikelgröße d (mm)",
+    "durchgang": "Durchgang (%)",
+    "durchmesserD": "Durchmesser (d₁)",
+    "packungsdichte": "Packungsdichte (φ₁)",
+    "durchmesserD2": "Durchmesser (d₂)",
+    "packungsdichte2": "Packungsdichte (φ₂)",
+    "volumenanteilFeinkorn": "Volumenanteil Feinkorn (%)",
+    "packungsdichte3": "Packungsdichte (%)"
+  },
+  "daten": {
+    "Packungsdichte.literatur": [
+      "De Larrard, F. (1999): Concrete Mixture Proportioning: A Scientific Approach (E & FN Spon)",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Frings, K.: Optimierung von Betonzusammensetzungen mittels Kornpackungsmodellen (RWTH Aachen)"
+    ],
+    "Packungsdichte.regelwerke": [
+      {
+        "title": "DIN EN 12620: Gesteinskörnungen für Beton"
+      },
+      {
+        "title": "DIN EN 933: Prüfverfahren für geometrische Eigenschaften von Gesteinskörnungen (Kornverteilung - Siebverfahren)"
+      },
+      {
+        "title": "DIN 1045-2: Anhang L (Kornzusammensetzung der Gesteinskörnung)"
+      }
+    ],
+    "Packungsdichte.formeln": [
+      {
+        "formel": "P(d) = \\frac{d^q - d_{\\text{min}}^q}{D_{\\text{max}}^q - d_{\\text{min}}^q} \\cdot 100\\,\\%",
+        "erklaerung": "Modifiziertes Andreasen & Andersen Modell (A&A): Kontinuierliche Kornpackungsoptimierung unter Einbeziehung des Feinstkornbereichs d_min mit Verteilungsmodul q (für UHPC oft q = 0.23 bis 0.28).",
+        "quelle": "Andreasen & Andersen / Funk & Dinger"
+      },
+      {
+        "formel": "P(d) = \\left(\\frac{d}{D_{\\text{max}}}\\right)^n \\cdot 100\\,\\% \\quad (n = 0{,}5 \\implies \\text{Fuller-Kurve})",
+        "erklaerung": "Fuller-Gleichung: Idealisierte stetige Sieblinie mit Exponent n = 0.5 für maximale Dichte und minimale Hohlraumvolumina.",
+        "quelle": "DIN 1045-2 / Fuller-Thompson"
+      },
+      {
+        "formel": "\\Phi = \\frac{V_{\\text{Fest}}}{V_{\\text{Gesamt}}} = 1 - \\varepsilon",
+        "erklaerung": "Packungsdichte Phi: Verhältnis des Feststoffvolumens zum Gesamtvolumen (wobei epsilon der Hohlraumgehalt ist).",
+        "quelle": "De Larrard"
+      }
+    ]
+  }
+}

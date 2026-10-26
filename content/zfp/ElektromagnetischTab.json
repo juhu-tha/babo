@@ -1,0 +1,16 @@
+{
+  "texte": {
+    "elektromagnetischerBewehrungssucher": "Elektromagnetischer Bewehrungssucher",
+    "nutztDasWirbelstromverfahrenZur": "Nutzt das Wirbelstromverfahren zur Ortung von Bewehrungsstäben und Messung der Betondeckung.",
+    "relativeSignalstärke": "Relative Signalstärke",
+    "georadarGpr": "Georadar (GPR)",
+    "sendetElektromagnetischeImpulseAus": "Sendet elektromagnetische Impulse aus. Reflexionen an Materialgrenzen (z.B. Stahl, Hohlräume) werden gemessen.",
+    "berechneteTiefeDesObjekts": "Berechnete Tiefe des Objekts"
+  },
+  "werte": {
+    "abstandDerBewehrungZur": "Abstand der Bewehrung zur Oberfläche.",
+    "parameterZurAnpassungDer": "Parameter zur Anpassung der Berechnung.",
+    "laufzeitT": "Laufzeit (t)",
+    "zeitVomSendenBis": "Zeit vom Senden bis zum Empfang des Echos."
+  }
+}

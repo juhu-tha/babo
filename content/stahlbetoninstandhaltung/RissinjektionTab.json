@@ -1,0 +1,38 @@
+{
+  "texte": {
+    "rissinjektionImStahlbetonbauDin": "Rissinjektion im Stahlbetonbau (DIN EN 1504-5 / DIN V 18028 / ZTV-ING)",
+    "prinzip1PiPrinzip": "Prinzip 1 (PI) • Prinzip 4 (SS)",
+    "dasFüllenVonRissen": "Das Füllen von Rissen dient dem **Schließen gegen das Eindringen korrosionsfördernder Stoffe** (Feuchte, Chloride, CO₂), dem **dauerhaft dehnfähigen Abdichten** oder der **kraftschlüssigen Wiederherstellung des statischen Bauteilverbundes**. Die Wahl des Füllguts (Epoxidharz, Polyurethan, Feinzementsuspension oder Acrylatgel) richtet sich streng nach Rissursache, Rissweitenänderung und Feuchtezustand.",
+    "rissdiagnostikParameter": " Rissdiagnostik & Parameter",
+    "t1PrimäresInjektionsziel": "1. Primäres Injektionsziel:",
+    "t2KinetikDerRissbewegung": "2. Kinetik der Rissbewegung:",
+    "ruhenderRissW0": "Ruhender Riss (Δw ≤ 0,05 mm)",
+    "dynamischBewegtW0": "Dynamisch / Bewegt (Δw > 0,05 mm)",
+    "t3FeuchtegradImRissquerschnitt": "3. Feuchtegrad im Rissquerschnitt:",
+    "t4RissbreiteW": "4. Rissbreite (w):",
+    "t010MmHaarriss": "0,10 mm (Haarriss)",
+    "t050MmTrennrisse": "0,50 mm (Trennrisse)",
+    "t150MmKlaffend": "1,50 mm (Klaffend)",
+    "t5BauteildickeH": "5. Bauteildicke (h):",
+    "t150MmWandDecke": "150 mm (Wand/Decke)",
+    "t400MmBodenplatte": "400 mm (Bodenplatte)",
+    "t800MmMassivbau": "800 mm (Massivbau)",
+    "technologischerInjektionsplan": "Technologischer Injektionsplan",
+    "packerAbstandL": "Packer-Abstand (Δl)",
+    "regelLH2": "Regel: Δl = h / 2",
+    "zulVerpressdruckPMax": "Zul. Verpressdruck (p_max)",
+    "schutzVorHydrofraktur": "Schutz vor Hydrofraktur",
+    "t45ZurRissebene": "45° zur Rissebene",
+    "wechselseitigVersetzt": "Wechselseitig versetzt",
+    "prinzipschnittHochdruckRissinjektionMit": "Prinzipschnitt: Hochdruck-Rissinjektion mit Schraubpackern",
+    "ztvIngDinEn": "• ZTV-ING / DIN EN 1504-5",
+    "harzflussVonUntenNach": "• Harzfluss von unten nach oben",
+    "nachinjektionBisBlasenfreierAustritt": "• Nachinjektion bis blasenfreier Austritt"
+  },
+  "werte": {
+    "kraftschlüssigF": "Kraftschlüssig (F)",
+    "dehnfähigD": "Dehnfähig (D)",
+    "quellfähigS": "Quellfähig (S)",
+    "drückendWasser": "Drückend Wasser"
+  }
+}

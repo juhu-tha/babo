@@ -1,0 +1,106 @@
+{
+  "texte": {
+    "interaktiverÖkobilanzRechnerLca": "Interaktiver Ökobilanz-Rechner (LCA, QNG 2026 & Modul D)",
+    "ganzheitlicheLebenszyklusanalyseNachDin": "Ganzheitliche Lebenszyklusanalyse nach **DIN EN 15978** (Gebäude), **DIN EN 17472** (Infrastruktur) und **DIN EN 15804+A2**. Berechnen Sie das Treibhauspotenzial (Module A1–C), prüfen Sie die **QNG-2026-Grenzwerte** und analysieren Sie in der **Modul-D-Eingabemaske** dynamisch alle Zirkularitäts-Gutschriften und kreislauffähigen Stoffanteile nach **VDI 6210 / DIN SPEC 91484**.",
+    "rechnerReset": " Rechner Reset",
+    "gebäudekategorieQng2026": "Gebäudekategorie (QNG 2026):",
+    "wohngebäudeWg": "Wohngebäude (WG)",
+    "nichtwohngebäudeNwg": "Nichtwohngebäude (NWG)",
+    "lernSzenarienLadenVergleich": "Lern-Szenarien laden (Vergleich konventionell vs. zirkulär):",
+    "t1VerbauteBaustoffmassenDirekte": "1. Verbaute Baustoffmassen & direkte Zirkularität",
+    "wählenSieBaustoffeMengen": "Wählen Sie Baustoffe, Mengen und passen Sie den kreislauffähigen Stoffanteil direkt an.",
+    "baustoffHinzufügen": " Baustoff hinzufügen",
+    "kreislauffähigerStoffanteil": "Kreislauffähiger Stoffanteil:",
+    "t2PhaseA4Logistik": "2. Phase A4: Logistik-Transport",
+    "distanzZurBaustelle": " Distanz zur Baustelle:",
+    "t10KmRegional": "10 km (Regional)",
+    "t800KmÜberregional": "800 km (Überregional)",
+    "t3BezugsflächeNormzeitraum": "3. Bezugsfläche & Normzeitraum",
+    "nettoRaumflächeNrf": " Netto-Raumfläche (NRF):",
+    "normativeBerechnungNachDin": "Normative Berechnung nach DIN EN 15978 / DIN EN 17472",
+    "kgCoEqM": "kg CO₂-eq / (m²·a)",
+    "dieUmweltlastenWerdenAuf": ". Die Umweltlasten werden auf 1 Jahr und 1 m² Netto-Raumfläche (NRF nach DIN 277) normiert: ",
+    "szenarienVergleichNachQng": "Szenarien-Vergleich nach QNG 2026 (",
+    "normierterLebenszyklusVergleichModule": "Normierter Lebenszyklus-Vergleich (Module A-C) mit festen Schwellenwerten für QNG-PLUS (≤ ",
+    "undQngPremium": ") und QNG-PREMIUM (≤ "
+  },
+  "werte": {
+    "wohngebäudeWg23": "Wohngebäude (WG23)",
+    "unterQngPremiumAnforderungswert": "unter QNG-PREMIUM-Anforderungswert (orientierend)",
+    "unterQngPlusAnforderungswert": "unter QNG-PLUS-Anforderungswert (orientierend)",
+    "standardNeubau": "Standard-Neubau ⚙️",
+    "premiumWertOrientierend": "≤ PREMIUM-Wert (orientierend)",
+    "plusWertOrientierend": "≤ PLUS-Wert (orientierend)",
+    "varianteIKonventionellerMassivbau": "Variante I: Konventioneller Massivbau",
+    "cemINormalbetonHintermauerziegel": "CEM I Normalbeton, Hintermauerziegel, EPS-Dämmung.",
+    "varianteIiKlinkeroptimierterMassivbau": "Variante II: Klinkeroptimierter Massivbau",
+    "cemIiiAHüttensandzement": "CEM III/A Hüttensandzement, RC-Beton, Zellulosedämmung.",
+    "varianteIiiModernerHolz": "Variante III: Moderner Holz-Hybridbau",
+    "cltWändeHbvDecken": "CLT-Wände, HBV-Decken, druckfeste Holzfaserdämmung.",
+    "varianteIvZirkulärerLehm": "Variante IV: Zirkulärer Lehm- & Naturbaustoffbau",
+    "lehmbauplattenHanfkalkStrohUnd": "Lehmbauplatten, Hanfkalk, Stroh und Schaumglasschotter.",
+    "ihrAktuellerEntwurfBenutzerdefiniert": "Ihr aktueller Entwurf (Benutzerdefiniert)",
+    "dynamischAusIhrerBaustofftabelle": "Dynamisch aus Ihrer Baustofftabelle berechneter QNG-Nachweiswert (Module A-C).",
+    "werteAufInitialzustandZurücksetzen": "Werte auf Initialzustand zurücksetzen",
+    "t1BaustoffeMassenLogistik": "1. Baustoffe, Massen & Logistik (A1–C4)",
+    "t2EingabemaskeModulD": "2. Eingabemaske Modul D: Kreislauf & Gutschriften",
+    "t3QngBenchmarkSzenarienvergleich": "3. QNG-Benchmark & Szenarienvergleich",
+    "zeileEntfernen": "Zeile entfernen",
+    "anteilDesBaustoffsDer": "Anteil des Baustoffs, der am Lebensende stofflich oder hochwertig im Sinne der Zirkularität (Modul D) wiederverwertet oder rezykliert werden kann.",
+    "lkwDiesel": "🚛 LKW Diesel",
+    "t015KgCo": "0,15 kg CO₂/t·km",
+    "t003KgCo": "0,03 kg CO₂/t·km"
+  },
+  "daten": {
+    "InteractiveLCACalc": {
+      "plus": 32,
+      "premium": 26,
+      "label": "Nichtwohngebäude (Lehrwert; QNG: projektspezifisch)",
+      "areaUnit": "m² NRF"
+    },
+    "InteractiveLCACalc.literatur": [
+      "König, H. et al. (2012): Lebenszyklusanalyse von Gebäuden (Detail Green Books)",
+      "Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen (BMWSB): Leitfaden Nachhaltiges Bauen",
+      "Wendehorst Baustoffkunde (37. Auflage, Springer Vieweg)"
+    ],
+    "InteractiveLCACalc.regelwerke": [
+      {
+        "title": "DIN EN 15804:2022-03+A2:2019 (Nachhaltigkeit von Bauwerken - EPD-Grundregeln)"
+      },
+      {
+        "title": "DIN EN 15978:2026-09 (Bewertung der Umweltqualität von Gebäuden – Methodik; ersetzt DIN EN 15978:2012-10)"
+      },
+      {
+        "title": "DIN EN 17472:2024-06 (Nachhaltigkeit von Ingenieurbauwerken - Berechnungsmethoden)"
+      },
+      {
+        "title": "Qualitätssiegel Nachhaltiges Gebäude (QNG Anhangdokument 3.1.1, Stand 2026)",
+        "url": "https://www.qng.info/"
+      },
+      {
+        "title": "VDI 6210 / DIN SPEC 91484 (Rückbau- und Zirkularitätsbewertung)"
+      },
+      {
+        "title": "ÖKOBAUDAT Plattform (BMWSB EPD-Datenbank)",
+        "url": "https://www.oekobaudat.de/"
+      }
+    ],
+    "InteractiveLCACalc.formeln": [
+      {
+        "formel": "\\text{GWP}_{\\text{Bauwerk}} = \\frac{\\sum_{i} m_i \\cdot \\text{GWP}_{\\text{spez},i}}{A_{\\text{NRF}} \\cdot t_{\\text{Studie}}} \\quad [\\text{kg CO}_2\\text{-eq}/(\\text{m}^2\\cdot\\text{a})]",
+        "erklaerung": "Normativer Jahres-Treibhausgasbezugswert der Errichtungs- und Entsorgungsphasen (Module A1-C) über die Standardlebensdauer von t = 50 Jahren.",
+        "quelle": "DIN EN 15978 / QNG 2026"
+      },
+      {
+        "formel": "\\text{GWP}_{D,i} = - \\left( m_i \\cdot \\frac{r_{\\text{circ},i}}{100} \\cdot \\frac{s_{\\text{sort},i}}{100} \\cdot \\eta_{\\text{subst}} \\cdot \\text{GWP}_{\\text{primär,verdrängt}} \\right) \\quad [\\text{kg CO}_2\\text{-eq}]",
+        "erklaerung": "Gutschrift für Vermeidungs- und Recyclingpotenziale außerhalb der Systemgrenze (Modul D) basierend auf kreislauffähigem Stoffanteil und Sortenreinheit.",
+        "quelle": "DIN EN 15804+A2 / DIN EN 17472"
+      },
+      {
+        "formel": "\\text{UMI} = \\frac{\\sum (m_i \\cdot \\text{UMI}_i)}{\\sum m_i} \\quad [\\%]",
+        "erklaerung": "Gewichteter Urban Mining Index des Bauwerks zur Erfassung der stofflichen Rezyklierbarkeit und Zirkularität im Sinne der VDI 6210.",
+        "quelle": "VDI 6210 / DIN SPEC 91484"
+      }
+    ]
+  }
+}

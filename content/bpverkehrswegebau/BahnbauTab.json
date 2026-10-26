@@ -1,0 +1,33 @@
+{
+  "texte": {
+    "systemkomponentenTrassierungImBahnbau": " Systemkomponenten & Trassierung im Bahnbau",
+    "gleisschotterDinEn13450": "Gleisschotter (DIN EN 13450)",
+    "derKlassischeSchotteroberbauVerteilt": "Der klassische Schotteroberbau verteilt die hohen Lasten der Achsen elastisch auf das Planum. Eisenbahnschotter muss aus zähelastischem Hartgestein (z. B. Basalt oder Granit) bestehen, um den hohen Schlag- und Abriebbeanspruchungen standzuhalten. Wichtigste Kriterien: Flachheitskennzahl (≤ 20 %) und Widerstand gegen Schlagzertrümmerung (SZ ≤ 20 %).",
+    "festeFahrbahnSlabTrack": "Feste Fahrbahn (Slab Track)",
+    "aufHochgeschwindigkeitsstreckenWirdHäufi": "Auf Hochgeschwindigkeitsstrecken wird häufig die Feste Fahrbahn eingesetzt (z. B. System Rheda 2000 oder ÖBB-PORR). Dabei entfällt der elastische Schotter; die Schwellen bzw. Stützpunkte werden in eine Betontragplatte eingebunden.",
+    "vorteilHoheLagestabilitätUnd": "**Vorteil:** Hohe Lagestabilität und geringer Instandhaltungsaufwand.",
+    "nachteilHoheInvestitionskostenSchwierige": "**Nachteil:** Hohe Investitionskosten, schwierige Körperschallisolation, extrem aufwendiger Rückbau bei Setzungen.",
+    "uic60Schienenprofil": "UIC 60 Schienenprofil",
+    "dasSchienenprofilUic60": "Das Schienenprofil UIC 60 hat ein Metergewicht von 60,34 kg/m und eine Querschnittsfläche von A = 76,86 cm² (heutiges Profil 60E1: ca. 60,2 kg/m). Schienenstahl R260 hat eine Zugfestigkeit von mind. 880 N/mm²; die Schienen sind lückenlos verschweißt.",
+    "interaktivesLaborThermischeEigenspannung": " Interaktives Labor: Thermische Eigenspannung & Verwerfungsrisiko",
+    "dasKontinuierlichVerschweißteGleis": "Das kontinuierlich verschweißte Gleis (lückenloses Gleis) verhindert Stoßlücken, erzwingt jedoch bei Erwärmung Schienenlängskräfte. Berechnen Sie die statischen Zwangsspannungen und evaluieren Sie das Risiko elastischer Ausknickungen (Gleisverwerfungen).",
+    "aktuelleSchienentemperaturTSchiene": "Aktuelle Schienentemperatur (T_Schiene):",
+    "imSommerKönnenAbsorbierende": "Im Sommer können absorbierende Stahlschienen bis zu 25°C über der Lufttemperatur liegen!",
+    "herstellungsNeutralisationstemperaturTNe": "Herstellungs- / Neutralisationstemperatur (T_Neutral):",
+    "oberbaubettungQuerverschiebewiderstandQV": "Oberbaubettung & Querverschiebewiderstand (Q_vw):",
+    "temperaturdifferenzT": "Temperaturdifferenz (ΔT):",
+    "eigenspannungT": "Eigenspannung (σ_T):",
+    "längskraftProSchiene": "Längskraft pro Schiene:",
+    "gleislängskraft2Schienen": "Gleislängskraft (2 Schienen):",
+    "berechnungsformelTET": "Berechnungsformel: σ_T = E · α_T · (T_Schiene - T_Neutral) mit E = 210.000 N/mm² und α_T = 1,2 · 10⁻⁵ / K."
+  },
+  "werte": {
+    "oberbaubettungQuerverschiebewiderstandQV": "Oberbaubettung & Querverschiebewiderstand (Q_vw)",
+    "kritischeZugspannungErhöhteGefahr": "Kritische Zugspannung! Erhöhte Gefahr von spröden Schienenbrüchen im Schweißnahtbereich bei Frost.",
+    "zugspannungsbereichWinterbetriebSchienen": "Zugspannungsbereich (Winterbetrieb). Schienenkontraktion ist weitgehend stabil.",
+    "formstabileVerankerungFesteFahrbahn": "Formstabile Verankerung. Feste Fahrbahn verhindert elastisches Verwerfen mechanisch.",
+    "akuteGefahrVonGleisverwerfung": "AKUTE GEFAHR VON GLEISVERWERFUNG! Die thermische Druckspannung übersteigt den Querverschiebewiderstand des Schotters. Geschwindigkeitsreduzierung bzw. Gleisüberwachung dringend erforderlich!",
+    "erhöhtesRisikoGeringerQuerverschiebesich": "Erhöhtes Risiko. Geringer Querverschiebesicherheitsbeiwert. Schotterbettfeuchtigkeit & Flanke penibel prüfen.",
+    "thermischeEigenspannungUnkritischAusreic": "Thermische Eigenspannung unkritisch. Ausreichend elastische Rückhaltekraft im Gleiskörper vorhanden."
+  }
+}

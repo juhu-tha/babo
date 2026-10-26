@@ -13,6 +13,8 @@ import {
   GitCommit,
   Check
 } from 'lucide-react';
+import inhalt from '@/content/spannbeton/SpannbetonDehnungsAnimation.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export type TendonTrajectoryType = 'centric' | 'straight_bottom' | 'parabolic';
 
@@ -173,30 +175,30 @@ export default function SpannbetonDehnungsAnimation() {
 
     if (hasSupportHeadCracks) {
       phaseKey = 'support_crack';
-      phaseTitle = 'Gefahr: Kopfzugrisse am Auflager! (σ_o,Auflager > f_ctm)';
+      phaseTitle = inhalt.werte.gefahrKopfzugrisseAmAuflager;
       phaseColor = 'text-red-800 bg-red-50 border-red-300';
       phaseBadge = 'bg-red-700 text-white';
     } else if (sigma_top <= 0 && sigma_bot <= 0) {
       // Voller Querschnitt überdrückt (reiner Druck an beiden Rändern)
       if (w_net_mm < -0.5) {
         phaseKey = 'camber';
-        phaseTitle = '✓ Voll überdrückt mit Überhöhung (Zustand I: σ_o ≤ 0 und σ_u ≤ 0)';
+        phaseTitle = inhalt.werte.vollÜberdrücktMitÜberhöhung;
         phaseColor = 'text-blue-900 bg-blue-50 border-blue-200';
         phaseBadge = 'bg-blue-600 text-white';
       } else {
         phaseKey = 'full';
-        phaseTitle = '✓ Voll überdrückt (Zustand I: σ_o ≤ 0 und σ_u ≤ 0, homogener Druck)';
+        phaseTitle = inhalt.werte.vollÜberdrücktZustandI;
         phaseColor = 'text-emerald-800 bg-emerald-50 border-emerald-200';
         phaseBadge = 'bg-emerald-600 text-white';
       }
     } else if (sigma_max <= fctm) {
       phaseKey = 'limited';
-      phaseTitle = 'Zustand I mit Zugspannungen (ungerissen, σ_max ≤ f_ctm)';
+      phaseTitle = inhalt.werte.zustandIMitZugspannungen;
       phaseColor = 'text-amber-800 bg-amber-50 border-amber-200';
       phaseBadge = 'bg-amber-500 text-white';
     } else {
       phaseKey = 'cracked';
-      phaseTitle = 'Rissbildung (Zustand II: σ_max > f_ctm)';
+      phaseTitle = inhalt.werte.rissbildungZustandIiMax;
       phaseColor = 'text-red-700 bg-red-50 border-red-200';
       phaseBadge = 'bg-red-600 text-white';
     }
@@ -286,18 +288,12 @@ export default function SpannbetonDehnungsAnimation() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-shiraz text-white font-mono">
-                Interaktiver Spannkraft- &amp; Lagen-Simulator
-              </span>
-              <span className="text-xs text-slate-500 font-mono">DIN EN 1992-1-1 / Eurocode 2</span>
+              <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-shiraz text-white font-mono"><MdText text={inhalt.texte.interaktiverSpannkraftLagenSimulator} /></span>
+              <span className="text-xs text-slate-500 font-mono"><MdText text={inhalt.texte.dinEn19921} /></span>
             </div>
             <h3 className="text-lg font-bold text-text-main mt-1 flex items-center gap-2">
-              <Compass className="text-shiraz h-5 w-5" />
-              Spanngliedlage, Dehnungsüberlagerung &amp; Spannungsverteilung
-            </h3>
-            <p className="text-xs text-text-main/70 mt-0.5">
-              Untersuchen Sie den Einfluss der Spanngliedlage (zentrisch vs. gerade unten vs. parabolisch) auf Dehnung <InlineMath math="\varepsilon(z)" />, Biegemomente, Umlenkkräfte <InlineMath math="u" /> und Kopfzugspannungen am Auflager.
-            </p>
+              <Compass className="text-shiraz h-5 w-5" /><MdText text={inhalt.texte.spanngliedlageDehnungsüberlagerungSpannu} /></h3>
+            <p className="text-xs text-text-main/70 mt-0.5"><MdText text={inhalt.texte.untersuchenSieDenEinfluss} /></p>
           </div>
 
           {/* Aktueller Tragwerkszustand Badge */}
@@ -313,12 +309,8 @@ export default function SpannbetonDehnungsAnimation() {
       <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2.5">
         <div className="flex items-center justify-between">
           <span className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-            <GitCommit size={15} className="text-shiraz" />
-            Wahl der Spanngliedlage (Spanngliedführung im Träger):
-          </span>
-          <span className="text-[11px] font-mono text-slate-500">
-            Tragwerkstheorie &amp; Vormomentenverlauf
-          </span>
+            <GitCommit size={15} className="text-shiraz" /><MdText text={inhalt.texte.wahlDerSpanngliedlageSpanngliedführung} /></span>
+          <span className="text-[11px] font-mono text-slate-500"><MdText text={inhalt.texte.tragwerkstheorieVormomentenverlauf} /></span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -333,12 +325,10 @@ export default function SpannbetonDehnungsAnimation() {
             }`}
           >
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold">a) Zentrisch in Schwerachse</span>
+              <span className="text-xs font-bold"><MdText text={inhalt.texte.aZentrischInSchwerachse} /></span>
               {tendonTrajectory === 'centric' && <Check size={14} className="text-white" />}
             </div>
-            <p className={`text-[10.5px] mt-1 leading-snug ${tendonTrajectory === 'centric' ? 'text-white/90' : 'text-slate-500'}`}>
-              <InlineMath math="e_p = 0" /> über gesamte Länge. Reine Längsdruckkraft <InlineMath math="\sigma_N" />, kein Vormoment (<InlineMath math="M_P = 0" />), keine Umlenkkräfte (<InlineMath math="u = 0" />).
-            </p>
+            <p className={`text-[10.5px] mt-1 leading-snug ${tendonTrajectory === 'centric' ? 'text-white/90' : 'text-slate-500'}`}><MdText text={inhalt.texte.eP0Über} /></p>
           </button>
 
           {/* b) Gerade unten */}
@@ -352,12 +342,10 @@ export default function SpannbetonDehnungsAnimation() {
             }`}
           >
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold">b) Gerade unten (Abstand Betondeckung)</span>
+              <span className="text-xs font-bold"><MdText text={inhalt.texte.bGeradeUntenAbstand} /></span>
               {tendonTrajectory === 'straight_bottom' && <Check size={14} className="text-white" />}
             </div>
-            <p className={`text-[10.5px] mt-1 leading-snug ${tendonTrajectory === 'straight_bottom' ? 'text-white/90' : 'text-slate-500'}`}>
-              <InlineMath math="e_p = \text{konst.}" /> unten. Wirksames Vormoment im Feld, aber <strong>Gefahr von Kopfzugrissen am Auflager</strong> (<InlineMath math="M_q=0 \rightarrow \sigma_o > 0" />).
-            </p>
+            <p className={`text-[10.5px] mt-1 leading-snug ${tendonTrajectory === 'straight_bottom' ? 'text-white/90' : 'text-slate-500'}`}><MdText text={inhalt.texte.ePTextKonst} /></p>
           </button>
 
           {/* c) Parabolisch */}
@@ -371,12 +359,10 @@ export default function SpannbetonDehnungsAnimation() {
             }`}
           >
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold">c) Parabolisch (Momenteneinwirkung)</span>
+              <span className="text-xs font-bold"><MdText text={inhalt.texte.cParabolischMomenteneinwirkung} /></span>
               {tendonTrajectory === 'parabolic' && <Check size={14} className="text-white" />}
             </div>
-            <p className={`text-[10.5px] mt-1 leading-snug ${tendonTrajectory === 'parabolic' ? 'text-white/90' : 'text-slate-500'}`}>
-              Spannglied folgt der Biegelinie. An Auflagern zentrisch (<InlineMath math="e_p=0" />), in Feldmitte maximaler Stich <InlineMath math="f" />. <strong>Gleichmäßige Umlenkkräfte <InlineMath math="u \uparrow" /> (Lastausgleich)!</strong>
-            </p>
+            <p className={`text-[10.5px] mt-1 leading-snug ${tendonTrajectory === 'parabolic' ? 'text-white/90' : 'text-slate-500'}`}><MdText text={inhalt.texte.spanngliedFolgtDerBiegelinie} /></p>
           </button>
         </div>
       </div>
@@ -390,7 +376,7 @@ export default function SpannbetonDehnungsAnimation() {
               type="button"
               onClick={handleReset}
               className="px-3 py-1.5 rounded-xl bg-white text-text-main border border-slate-300 hover:bg-slate-100 text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer shadow-2xs"
-              title="Auf ungespannten Ausgangszustand zurücksetzen"
+              title={inhalt.werte.aufUngespanntenAusgangszustandZurücksetz}
             >
               <RotateCcw size={13} /> Reset
             </button>
@@ -466,8 +452,7 @@ export default function SpannbetonDehnungsAnimation() {
                   : 'text-text-main/70 hover:text-text-main'
               }`}
             >
-              <Layers size={13} /> Superposition (<InlineMath math="N + M_p + M_q" />)
-            </button>
+              <Layers size={13} /><MdText text={inhalt.texte.superpositionNMP} /></button>
           </div>
         </div>
 
@@ -476,9 +461,7 @@ export default function SpannbetonDehnungsAnimation() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-shiraz" />
-              <span className="text-sm font-bold text-slate-900">
-                Vorspannkraft P manuell einstellen:
-              </span>
+              <span className="text-sm font-bold text-slate-900"><MdText text={inhalt.texte.vorspannkraftPManuellEinstellen} /></span>
               <span className="font-mono text-base font-bold text-shiraz bg-shiraz/10 px-2.5 py-0.5 rounded border border-shiraz/20">
                 {formatDeZahl(prestressForce, 0)} kN
               </span>
@@ -486,9 +469,7 @@ export default function SpannbetonDehnungsAnimation() {
                 (σ_N = {formatDeZahl(calc.sigma_N, 2)} MPa, ε_N = {formatDeZahl(calc.eps_N, 3)} ‰)
               </span>
             </div>
-            <div className="text-xs font-mono text-slate-600 bg-slate-50 px-2.5 py-1 rounded border border-slate-200">
-              Ausnutzung <InlineMath math="\sigma_p / \sigma_{pm0,zul}" />: <strong>{formatDeZahl((prestressForce / 2720) * 100, 0)} %</strong> (bei 14 Litzen Y1860)
-            </div>
+            <div className="text-xs font-mono text-slate-600 bg-slate-50 px-2.5 py-1 rounded border border-slate-200"><MdText text={inhalt.texte.ausnutzungSigmaPSigma} /><strong>{formatDeZahl((prestressForce / 2720) * 100, 0)} %</strong><MdText text={inhalt.texte.bei14LitzenY1860} /></div>
           </div>
 
           {/* Der interaktive Schieberegler */}
@@ -516,9 +497,7 @@ export default function SpannbetonDehnungsAnimation() {
 
           {/* MEILENSTEIN-SCHNELLWAHL-BUTTONS */}
           <div className="flex flex-wrap gap-1.5 pt-1 border-t border-slate-100">
-            <span className="text-[11px] text-slate-500 font-bold self-center mr-1">
-              Grenzzustände direkt anspringen:
-            </span>
+            <span className="text-[11px] text-slate-500 font-bold self-center mr-1"><MdText text={inhalt.texte.grenzzuständeDirektAnspringen} /></span>
             <button
               type="button"
               onClick={() => handleJumpTo(0)}
@@ -527,9 +506,7 @@ export default function SpannbetonDehnungsAnimation() {
                   ? 'bg-slate-800 text-white border-slate-800 shadow-2xs'
                   : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-300'
               }`}
-            >
-              1. P = 0 kN (Ungespannt)
-            </button>
+            ><MdText text={inhalt.texte.t1P0Kn} /></button>
             <button
               type="button"
               onClick={() => handleJumpTo(calc.P_cr)}
@@ -539,8 +516,7 @@ export default function SpannbetonDehnungsAnimation() {
                   : 'bg-red-50 hover:bg-red-100 text-red-800 border-red-300'
               }`}
             >
-              2. P_cr = {formatDeZahl(calc.P_cr, 0)} kN (Rissgrenze)
-            </button>
+              2. P_cr = {formatDeZahl(calc.P_cr, 0)}<MdText text={inhalt.texte.knRissgrenze} /></button>
             <button
               type="button"
               onClick={() => handleJumpTo(calc.P_dek)}
@@ -550,8 +526,7 @@ export default function SpannbetonDehnungsAnimation() {
                   : 'bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border-emerald-300'
               }`}
             >
-              3. P_dek = {formatDeZahl(calc.P_dek, 0)} kN (Dekompressionspunkt)
-            </button>
+              3. P_dek = {formatDeZahl(calc.P_dek, 0)}<MdText text={inhalt.texte.knDekompressionspunkt} /></button>
             {tendonTrajectory === 'parabolic' && (
               <button
                 type="button"
@@ -562,8 +537,7 @@ export default function SpannbetonDehnungsAnimation() {
                     : 'bg-blue-50 hover:bg-blue-100 text-blue-800 border-blue-300'
                 }`}
               >
-                4. P_bal = {formatDeZahl(calc.P_bal, 0)} kN (Lastausgleich w=0)
-              </button>
+                4. P_bal = {formatDeZahl(calc.P_bal, 0)}<MdText text={inhalt.texte.knLastausgleichW0} /></button>
             )}
             <button
               type="button"
@@ -573,9 +547,7 @@ export default function SpannbetonDehnungsAnimation() {
                   ? 'bg-purple-600 text-white border-purple-600 shadow-2xs'
                   : 'bg-purple-50 hover:bg-purple-100 text-purple-800 border-purple-300'
               }`}
-            >
-              5. P = 2.400 kN (hohe Vorspannung)
-            </button>
+            ><MdText text={inhalt.texte.t5P2400} /></button>
           </div>
         </div>
 
@@ -583,7 +555,7 @@ export default function SpannbetonDehnungsAnimation() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs pt-1">
           <div className="bg-white p-3 rounded-lg border border-slate-200">
             <div className="flex justify-between text-slate-700 font-semibold mb-1">
-              <span>Zusatzlast q (ohne Eigengewicht g = 12,5 kN/m):</span>
+              <span><MdText text={inhalt.texte.zusatzlastQOhneEigengewicht} /></span>
               <span className="font-mono text-slate-900 font-bold">{formatDeZahl(loadQ, 0)} kN/m</span>
             </div>
             <input
@@ -596,8 +568,8 @@ export default function SpannbetonDehnungsAnimation() {
               className="w-full accent-slate-600 cursor-pointer h-1.5 bg-slate-200 rounded-lg"
             />
             <div className="flex justify-between text-[10px] text-slate-400 font-mono mt-0.5">
-              <span>0 kN/m (Nur Eigengewicht)</span>
-              <span>Gesamtmoment M_k (g + q) = {formatDeZahl(calc.Mq_mid, 0)} kNm</span>
+              <span><MdText text={inhalt.texte.t0KnMNur} /></span>
+              <span><MdText text={inhalt.texte.gesamtmomentMKG} />{formatDeZahl(calc.Mq_mid, 0)} kNm</span>
               <span>50 kN/m</span>
             </div>
           </div>
@@ -606,10 +578,10 @@ export default function SpannbetonDehnungsAnimation() {
             <div className="flex justify-between text-slate-700 font-semibold mb-1">
               <span>
                 {tendonTrajectory === 'centric' 
-                  ? 'Exzentrizität e_p (zentrisch gesperrt):' 
+                  ? inhalt.werte.exzentrizitätEPZentrisch 
                   : tendonTrajectory === 'parabolic'
-                  ? 'Parabelstich f (Tiefpunkt Feldmitte):'
-                  : 'Spanngliedabstand e_p (unten):'}
+                  ? inhalt.werte.parabelstichFTiefpunktFeldmitte
+                  : inhalt.werte.spanngliedabstandEPUnten}
               </span>
               <span className="font-mono text-slate-900 font-bold">
                 {tendonTrajectory === 'centric' ? '0 mm' : `${formatDeZahl(eccentricity, 0)} mm`}
@@ -629,8 +601,8 @@ export default function SpannbetonDehnungsAnimation() {
             />
             <div className="flex justify-between text-[10px] text-slate-400 font-mono mt-0.5">
               <span>150 mm</span>
-              <span>Kernweite k_u = 167 mm</span>
-              <span>380 mm (max. Betondeckung)</span>
+              <span><MdText text={inhalt.texte.kernweiteKU167} /></span>
+              <span><MdText text={inhalt.texte.t380MmMaxBetondeckung} /></span>
             </div>
           </div>
         </div>
@@ -642,12 +614,9 @@ export default function SpannbetonDehnungsAnimation() {
         <div className="lg:col-span-6 bg-slate-50 p-4 rounded-xl border border-slate-200/90 flex flex-col justify-between space-y-3">
           <div className="flex items-center justify-between border-b border-slate-200 pb-2">
             <span className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-slate-700" />
-              1. Längsschnitt: Spanngliedführung &amp; Lastwirkung
-            </span>
+              <span className="w-2 h-2 rounded-full bg-slate-700" /><MdText text={inhalt.texte.t1LängsschnittSpanngliedführungLastwirkun} /></span>
             <span className="font-mono text-[11px] font-bold text-slate-600">
-              L = {formatDeZahl(L, 1)} m | Querschnitt 500 × 1.000 mm
-            </span>
+              L = {formatDeZahl(L, 1)}<MdText text={inhalt.texte.mQuerschnitt5001} /></span>
           </div>
 
           {/* SVG LÄNGSSCHNITT DES EINFELDTRÄGERS */}
@@ -865,7 +834,7 @@ export default function SpannbetonDehnungsAnimation() {
           {/* KPI-LEISTE DES TRÄGERS */}
           <div className="grid grid-cols-3 gap-2 text-center text-xs">
             <div className="bg-white p-2.5 rounded-lg border border-slate-200">
-              <span className="text-[10px] text-slate-500 uppercase tracking-wider block">Netto-Moment (Feld)</span>
+              <span className="text-[10px] text-slate-500 uppercase tracking-wider block"><MdText text={inhalt.texte.nettoMomentFeld} /></span>
               <span className="font-mono font-bold text-slate-900 text-sm">
                 {formatDeZahl(calc.Mnet_mid, 0)} kNm
               </span>
@@ -875,7 +844,7 @@ export default function SpannbetonDehnungsAnimation() {
             </div>
 
             <div className="bg-white p-2.5 rounded-lg border border-slate-200">
-              <span className="text-[10px] text-slate-500 uppercase tracking-wider block">Biegelinie Feldmitte</span>
+              <span className="text-[10px] text-slate-500 uppercase tracking-wider block"><MdText text={inhalt.texte.biegelinieFeldmitte} /></span>
               <span className={`font-mono font-bold text-sm flex items-center justify-center gap-1 ${
                 calc.w_net_mm > 0 ? 'text-amber-800' : 'text-purple-800'
               }`}>
@@ -887,18 +856,17 @@ export default function SpannbetonDehnungsAnimation() {
                 ) : (
                   <>
                     <ArrowUp size={14} className="text-purple-600" />
-                    {formatDeZahl(calc.w_net_mm, 1)} mm (Überhöhung)
-                  </>
+                    {formatDeZahl(calc.w_net_mm, 1)}<MdText text={inhalt.texte.mmÜberhöhung} /></>
                 )}
               </span>
               <span className="text-[10px] text-slate-400 block font-mono">
-                {Math.abs(calc.w_net_mm) < 1.0 ? 'Exakt horizontal' : calc.w_net_mm > 0 ? 'Durchbiegung ↓' : 'Überhöhung ↑'}
+                {Math.abs(calc.w_net_mm) < 1.0 ? inhalt.werte.exaktHorizontal : calc.w_net_mm > 0 ? inhalt.werte.durchbiegung : inhalt.werte.überhöhung}
               </span>
             </div>
 
             <div className="bg-white p-2.5 rounded-lg border border-slate-200">
               <span className="text-[10px] text-slate-500 uppercase tracking-wider block">
-                {viewSection === 'midspan' ? 'Unterrand σ_u (Feld)' : 'Oberrand σ_o (Auflager)'}
+                {viewSection === 'midspan' ? inhalt.werte.unterrandUFeld : inhalt.werte.oberrandOAuflager}
               </span>
               <span className={`font-mono font-bold text-sm ${
                 (viewSection === 'midspan' ? calc.sigma_bot : calc.sigma_top) > fctm ? 'text-red-600' :
@@ -919,9 +887,7 @@ export default function SpannbetonDehnungsAnimation() {
         <div className="lg:col-span-6 bg-slate-50 p-4 rounded-xl border border-slate-200/90 flex flex-col justify-between space-y-3">
           <div className="flex items-center justify-between border-b border-slate-200 pb-2">
             <span className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-shiraz" />
-              2. Querschnittsschnitt betrachten:
-            </span>
+              <span className="w-2 h-2 rounded-full bg-shiraz" /><MdText text={inhalt.texte.t2QuerschnittsschnittBetrachten} /></span>
 
             {/* Toggle Feldmitte vs. Auflager */}
             <div className="flex items-center bg-white p-0.5 rounded-lg border border-slate-300">
@@ -933,9 +899,7 @@ export default function SpannbetonDehnungsAnimation() {
                     ? 'bg-shiraz text-white shadow-2xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
-              >
-                Feldmitte (x = L/2)
-              </button>
+              ><MdText text={inhalt.texte.feldmitteXL2} /></button>
               <button aria-pressed={viewSection === 'support'}
                 type="button"
                 onClick={() => setViewSection('support')}
@@ -944,9 +908,7 @@ export default function SpannbetonDehnungsAnimation() {
                     ? 'bg-shiraz text-white shadow-2xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
-              >
-                Auflager (x = 0)
-              </button>
+              ><MdText text={inhalt.texte.auflagerX0} /></button>
             </div>
           </div>
 
@@ -1136,18 +1098,18 @@ export default function SpannbetonDehnungsAnimation() {
             {activeDisplayMode === 'superposition' && (
               <div className="grid grid-cols-4 gap-2 text-center text-xs py-2">
                 <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200 space-y-1">
-                  <span className="text-[10px] font-bold text-slate-600 block">1. Längskraft P</span>
+                  <span className="text-[10px] font-bold text-slate-600 block"><MdText text={inhalt.texte.t1LängskraftP} /></span>
                   <div className="text-xs font-mono font-bold text-shiraz">
                     σ_N = {formatDeZahl(calc.sigma_N, 1)} MPa
                   </div>
                   <div className="text-[10px] text-slate-500 font-mono">
                     ε_N = {formatDeZahl(calc.eps_N, 3)} ‰
                   </div>
-                  <span className="text-[9px] text-slate-400 block">Zentrischer Druck über gesamten Querschnitt</span>
+                  <span className="text-[9px] text-slate-400 block"><MdText text={inhalt.texte.zentrischerDruckÜberGesamten} /></span>
                 </div>
 
                 <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200 space-y-1">
-                  <span className="text-[10px] font-bold text-slate-600 block">2. Vormoment M_p</span>
+                  <span className="text-[10px] font-bold text-slate-600 block"><MdText text={inhalt.texte.t2VormomentMP} /></span>
                   <div className="text-xs font-mono font-bold text-purple-700">
                     M_p = {formatDeZahl(calc.Mp, 0)} kNm
                   </div>
@@ -1155,12 +1117,12 @@ export default function SpannbetonDehnungsAnimation() {
                     σ_Mp = {formatDeZahl((-calc.Mp * 1e6) / Wc, 1)} MPa
                   </div>
                   <span className="text-[9px] text-slate-400 block">
-                    {tendonTrajectory === 'centric' ? 'Kein Vormoment (ep = 0)' : 'Gegenkrümmung durch Exzentrizität'}
+                    {tendonTrajectory === 'centric' ? inhalt.werte.keinVormomentEp0 : inhalt.werte.gegenkrümmungDurchExzentrizität}
                   </span>
                 </div>
 
                 <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200 space-y-1">
-                  <span className="text-[10px] font-bold text-slate-600 block">3. Lastmoment M_q</span>
+                  <span className="text-[10px] font-bold text-slate-600 block"><MdText text={inhalt.texte.t3LastmomentMQ} /></span>
                   <div className="text-xs font-mono font-bold text-slate-800">
                     M_q = +{formatDeZahl(calc.Mq, 0)} kNm
                   </div>
@@ -1168,12 +1130,12 @@ export default function SpannbetonDehnungsAnimation() {
                     σ_Mq = {formatDeZahl((calc.Mq * 1e6) / Wc, 1)} MPa
                   </div>
                   <span className="text-[9px] text-slate-400 block">
-                    {viewSection === 'support' ? 'Am Auflager M_q = 0' : 'Biegemoment aus Gleichlast q'}
+                    {viewSection === 'support' ? inhalt.werte.amAuflagerMQ : inhalt.werte.biegemomentAusGleichlastQ}
                   </span>
                 </div>
 
                 <div className="bg-emerald-50 p-2.5 rounded-lg border border-emerald-300 space-y-1">
-                  <span className="text-[10px] font-bold text-emerald-900 block">Σ Resultierende</span>
+                  <span className="text-[10px] font-bold text-emerald-900 block"><MdText text={inhalt.texte.resultierende} /></span>
                   <div className="text-xs font-mono font-bold text-emerald-800">
                     σ_u = {formatDeZahl(calc.sigma_bot, 2)} MPa
                   </div>
@@ -1181,7 +1143,7 @@ export default function SpannbetonDehnungsAnimation() {
                     ε_u = {formatDeZahl(calc.eps_bot, 3)} ‰
                   </div>
                   <span className="text-[9px] text-emerald-600 font-bold block">
-                    {calc.sigma_bot <= 0 ? '✓ Voll überdrückt' : 'Zug am Unterrand'}
+                    {calc.sigma_bot <= 0 ? inhalt.werte.vollÜberdrückt : inhalt.werte.zugAmUnterrand}
                   </span>
                 </div>
               </div>
@@ -1191,7 +1153,7 @@ export default function SpannbetonDehnungsAnimation() {
           {/* DETAIL-KENNZAHLEN DES QUERSCHNITTS */}
           <div className="grid grid-cols-3 gap-2 text-center text-xs">
             <div className="bg-white p-2.5 rounded-lg border border-slate-200">
-              <span className="text-[10px] text-slate-500 uppercase tracking-wider block">Oberrand-Dehnung ε_o</span>
+              <span className="text-[10px] text-slate-500 uppercase tracking-wider block"><MdText text={inhalt.texte.oberrandDehnungO} /></span>
               <span className="font-mono font-bold text-shiraz text-sm">
                 {formatDeZahl(calc.eps_top, 3)} ‰
               </span>
@@ -1201,29 +1163,29 @@ export default function SpannbetonDehnungsAnimation() {
             </div>
 
             <div className="bg-white p-2.5 rounded-lg border border-slate-200">
-              <span className="text-[10px] text-slate-500 uppercase tracking-wider block">Unterrand-Dehnung ε_u</span>
+              <span className="text-[10px] text-slate-500 uppercase tracking-wider block"><MdText text={inhalt.texte.unterrandDehnungU} /></span>
               <span className={`font-mono font-bold text-sm ${
                 calc.eps_bot > 0 ? 'text-red-600' : 'text-emerald-700'
               }`}>
                 {calc.eps_bot > 0 ? `+${formatDeZahl(calc.eps_bot, 3)}` : formatDeZahl(calc.eps_bot, 3)} ‰
               </span>
               <span className="text-[10px] text-slate-400 block font-mono">
-                {calc.eps_bot <= 0 ? 'Voll überdrückt' : 'Zugdehnung'}
+                {calc.eps_bot <= 0 ? inhalt.werte.vollÜberdrückt2 : 'Zugdehnung'}
               </span>
             </div>
 
             <div className="bg-white p-2.5 rounded-lg border border-slate-200">
-              <span className="text-[10px] text-slate-500 uppercase tracking-wider block">Nulllinie Tiefe x</span>
+              <span className="text-[10px] text-slate-500 uppercase tracking-wider block"><MdText text={inhalt.texte.nulllinieTiefeX} /></span>
               <span className="font-mono font-bold text-slate-800 text-sm">
                 {calc.sigma_top <= 0 && calc.sigma_bot <= 0
-                  ? 'Außerhalb (Voll überdrückt)'
+                  ? inhalt.werte.außerhalbVollÜberdrückt
                   : calc.sigma_top > 0 && calc.sigma_bot > 0
-                  ? 'Außerhalb (Vollzug)'
+                  ? inhalt.werte.außerhalbVollzug
                   : `${formatDeZahl(calc.neutralAxisDepth, 0)} mm`}
               </span>
               <span className="text-[10px] text-slate-400 block font-mono">
                 {calc.sigma_top <= 0 && calc.sigma_bot <= 0
-                  ? '100% Druckzone'
+                  ? inhalt.werte.t100Druckzone
                   : calc.sigma_top > 0 && calc.sigma_bot <= 0
                   ? `${formatDeZahl(Math.max(0, Math.min(100, (1 - calc.neutralAxisDepth / h) * 100)), 0)}% Druckzone (unten)`
                   : `${formatDeZahl(Math.max(0, Math.min(100, (calc.neutralAxisDepth / h) * 100)), 0)}% Druckzone (oben)`}
@@ -1237,15 +1199,13 @@ export default function SpannbetonDehnungsAnimation() {
       <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 space-y-3">
         <div className="flex items-center justify-between">
           <h4 className="font-bold text-xs uppercase tracking-wider text-slate-800 flex items-center gap-2">
-            <Sparkles className="text-shiraz h-4 w-4" />
-            Tragwerksmechanischer Vergleich der 3 Spanngliedlagen:
-          </h4>
+            <Sparkles className="text-shiraz h-4 w-4" /><MdText text={inhalt.texte.tragwerksmechanischerVergleichDer3} /></h4>
           <button
             type="button"
             onClick={() => setShowExplanation(!showExplanation)}
             className="text-[11px] text-shiraz font-bold hover:underline flex items-center gap-1 cursor-pointer"
           >
-            {showExplanation ? 'Erläuterung einklappen' : 'Erläuterung ausklappen'}
+            {showExplanation ? inhalt.werte.erläuterungEinklappen : inhalt.werte.erläuterungAusklappen}
           </button>
         </div>
 
@@ -1253,41 +1213,23 @@ export default function SpannbetonDehnungsAnimation() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs leading-relaxed text-slate-700 pt-1">
             <div className={`p-3 bg-white rounded-lg border space-y-1.5 ${tendonTrajectory === 'centric' ? 'border-shiraz shadow-xs' : 'border-slate-200'}`}>
               <span className="font-bold text-slate-900 block flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-slate-600" />
-                a) Zentrisch in Schwerachse
-              </span>
-              <p>
-                <strong>Prinzip:</strong> <InlineMath math="e_p = 0 \rightarrow M_P = 0" />. Reine Längsdruckspannung <InlineMath math="\sigma_N = -P/A_c" /> ohne Vorkrümmung und ohne Umlenkkräfte (<InlineMath math="u = 0" />).
-              </p>
-              <p className="text-[11px] text-slate-500">
-                <strong>Einsatzgebiet:</strong> Reine Zugglieder (z. B. Hängestangen, Behälterringvorspannung, Pfähle). Bei Biegung ineffizient, da kein innerer Hebelarm zur Zugentlastung genutzt wird.
-              </p>
+                <span className="w-2 h-2 rounded-full bg-slate-600" /><MdText text={inhalt.texte.aZentrischInSchwerachse2} /></span>
+              <p><MdText text={inhalt.texte.prinzipEP0} /></p>
+              <p className="text-[11px] text-slate-500"><MdText text={inhalt.texte.einsatzgebietReineZuggliederZ} /></p>
             </div>
 
             <div className={`p-3 bg-white rounded-lg border space-y-1.5 ${tendonTrajectory === 'straight_bottom' ? 'border-shiraz shadow-xs' : 'border-slate-200'}`}>
               <span className="font-bold text-slate-900 block flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-amber-600" />
-                b) Gerade unten (Abstand Betondeckung)
-              </span>
-              <p>
-                <strong>Prinzip:</strong> <InlineMath math="e_p = \text{konst.}" />. Hohes entlastendes Vormoment in Feldmitte (<InlineMath math="-P \cdot e_p" />), jedoch <strong>konstant über die gesamte Trägerlänge</strong>.
-              </p>
-              <p className="text-[11px] text-red-800">
-                <strong>Auflagerproblem:</strong> Da am Auflager <InlineMath math="M_q = 0" /> ist, erzeugt das Vormoment hohe <strong>Kopfzugspannungen an der Trägeroberseite</strong> (<InlineMath math="\sigma_o > 0" />). Abhilfe erfordert Hüllrohre („debonding“) oder Abbiegungen.
-              </p>
+                <span className="w-2 h-2 rounded-full bg-amber-600" /><MdText text={inhalt.texte.bGeradeUntenAbstand2} /></span>
+              <p><MdText text={inhalt.texte.prinzipEPText} /></p>
+              <p className="text-[11px] text-red-800"><MdText text={inhalt.texte.auflagerproblemDaAmAuflager} /></p>
             </div>
 
             <div className={`p-3 bg-white rounded-lg border space-y-1.5 ${tendonTrajectory === 'parabolic' ? 'border-shiraz shadow-xs' : 'border-slate-200'}`}>
               <span className="font-bold text-slate-900 block flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-600" />
-                c) Parabolisch (Momenteneinwirkung)
-              </span>
-              <p>
-                <strong>Prinzip (Idealfall):</strong> Das Kabel folgt dem Parabelverlauf des Feldmoments. Am Auflager zentrisch (<InlineMath math="e_p = 0 \rightarrow \sigma_o = \sigma_N < 0" /> keine Kopfzugrisse!), in Feldmitte maximaler Stich <InlineMath math="f" />.
-              </p>
-              <p className="text-[11px] text-emerald-800">
-                <strong>Lastausgleich:</strong> Die kontinuierlichen Umlenkkräfte <InlineMath math="u = 8 P f / L^2" /> heben die äußere Last <InlineMath math="q" /> direkt auf. Bei <InlineMath math="u = q" /> bleibt der Träger vollkommen eben!
-              </p>
+                <span className="w-2 h-2 rounded-full bg-emerald-600" /><MdText text={inhalt.texte.cParabolischMomenteneinwirkung2} /></span>
+              <p><MdText text={inhalt.texte.prinzipIdealfallDasKabel} /></p>
+              <p className="text-[11px] text-emerald-800"><MdText text={inhalt.texte.lastausgleichDieKontinuierlichenUmlenkkr} /></p>
             </div>
           </div>
         )}

@@ -25,6 +25,8 @@ import {
   Legend,
   Filler
 } from 'chart.js';
+import inhalt from '@/content/feuchteschutz/Feuchteschutz.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 // Register necessary Chart.js components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
@@ -39,17 +41,17 @@ interface Material {
 }
 
 const MAT_LIBRARY: Material[] = [
-  { id: 'gipskarton', name: 'Gipskartonplatte (GKB)', mu: 10, defaultD: 0.0125, lambda: 0.25 },
+  { id: 'gipskarton', name: inhalt.werte.gipskartonplatteGkb, mu: 10, defaultD: 0.0125, lambda: 0.25 },
   { id: 'innenputz_gips', name: 'Gips-Innenputz', mu: 10, defaultD: 0.015, lambda: 0.35 },
   { id: 'kalksandstein', name: 'Kalksandstein-Mauerwerk', mu: 15, defaultD: 0.175, lambda: 0.99 },
   { id: 'ziegel_hochloch', name: 'Hochlochziegel-Mauerwerk', mu: 5, defaultD: 0.24, lambda: 0.42 },
-  { id: 'beton_arm', name: 'Stahlbeton (tragend, μ 80/130 – hier 80)', mu: 80, defaultD: 0.20, lambda: 2.30 },
+  inhalt.daten["MAT_LIBRARY.beton_arm"],
   { id: 'porenbeton', name: 'Porenbeton-Planstein', mu: 10, defaultD: 0.305, lambda: 0.11 },
-  { id: 'mineralwolle', name: 'Mineralwolle (MW) Dämmung', mu: 1, defaultD: 0.16, lambda: 0.035 },
-  { id: 'eps', name: 'EPS (Polystyrol, WLS 035)', mu: 50, defaultD: 0.16, lambda: 0.035 },
-  { id: 'holz', name: 'Nadelholz (quer)', mu: 40, defaultD: 0.024, lambda: 0.13 },
-  { id: 'dampfbremse_var', name: 'Feuchtevariable Dampfbremsbahn', mu: 15000, defaultD: 0.0002, lambda: 0.20 },
-  { id: 'pe_folie', name: 'Dampfsperre PE-Folie', mu: 100000, defaultD: 0.0002, lambda: 0.50 },
+  { id: 'mineralwolle', name: inhalt.werte.mineralwolleMwDämmung, mu: 1, defaultD: 0.16, lambda: 0.035 },
+  inhalt.daten["MAT_LIBRARY.eps"],
+  { id: 'holz', name: inhalt.werte.nadelholzQuer, mu: 40, defaultD: 0.024, lambda: 0.13 },
+  { id: 'dampfbremse_var', name: inhalt.werte.feuchtevariableDampfbremsbahn, mu: 15000, defaultD: 0.0002, lambda: 0.20 },
+  { id: 'pe_folie', name: inhalt.werte.dampfsperrePeFolie, mu: 100000, defaultD: 0.0002, lambda: 0.50 },
   { id: 'aussenputz_zement', name: 'Kalk-Zement-Außenputz', mu: 25, defaultD: 0.02, lambda: 1.00 },
 ];
 
@@ -119,7 +121,7 @@ export default function Feuchteschutz() {
     const actualSurfaceRH = (indoorClimate.p_act / calcPsat(Tsi)) * 100;
 
     let level: 'safe' | 'warning' | 'danger' = 'safe';
-    let text = 'Hygienisch einwandfreier Bereich. Keine Gefahr für Kondensat oder biologisches Wachstum.';
+    let text = inhalt.werte.hygienischEinwandfreierBereichKeine;
 
     if (Tsi <= dewPoint) {
       level = 'danger';
@@ -150,7 +152,7 @@ export default function Feuchteschutz() {
       labels: temps.map(t => `${formatDeWert(t)}°C`),
       datasets: [
         {
-          label: 'Sättigungsdampfdruck psat(T) [Pa]',
+          label: inhalt.werte.sättigungsdampfdruckPsatTPa,
           data: psatValues,
           borderColor: '#3b82f6', // custom blue
           backgroundColor: 'rgba(59, 130, 246, 0.05)',
@@ -160,7 +162,7 @@ export default function Feuchteschutz() {
           fill: true,
         },
         {
-          label: 'Ist-Dampfdruck p_innen [Pa]',
+          label: inhalt.werte.istDampfdruckPInnen,
           data: pActValues,
           borderColor: '#10b981', // custom green
           borderWidth: 1.5,
@@ -265,12 +267,8 @@ export default function Feuchteschutz() {
         <div className="flex items-start justify-between gap-4">
           <div>
             <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-              <Droplets className="w-5 h-5 text-shiraz" />
-              Feuchteschutz &amp; Wasserdampf-Taupunkt
-            </h2>
-            <p className="text-xs text-text-main/50 font-mono mt-1">
-              Berechnungsverfahren nach DIN 4108-3 &amp; Sättigungsdampfdruck nach der Magnus-Formel
-            </p>
+              <Droplets className="w-5 h-5 text-shiraz" /><MdText text={inhalt.texte.feuchteschutzWasserdampfTaupunkt} /></h2>
+            <p className="text-xs text-text-main/50 font-mono mt-1"><MdText text={inhalt.texte.berechnungsverfahrenNachDin4108} /></p>
           </div>
           <span className="hidden md:inline-flex items-center gap-1 bg-shiraz/10 text-shiraz px-2.5 py-1 rounded-full text-xs font-bold border border-shiraz/20">
             <Sparkles size={12} /> Interaktiv
@@ -278,11 +276,7 @@ export default function Feuchteschutz() {
         </div>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-4 leading-relaxed">
-          <p>
-            Feuchtigkeit im Bauwerk führt zu Bauschäden und gesundheitsschädlichem Schimmel. 
-            Mit diesem Berechnungs- und Demonstrationstool lassen sich die Luftfeuchte, der <strong>Taupunkt (Kondensation)</strong> 
-            sowie der Diffusionswiderstand geschichteter Konstruktionen nach dem <strong>Periodenbilanzverfahren (Glaser-Verfahren)</strong> analysieren.
-          </p>
+          <p><MdText text={inhalt.texte.feuchtigkeitImBauwerkFührt} /></p>
         </div>
       </div>
 
@@ -293,14 +287,13 @@ export default function Feuchteschutz() {
         <div className="lg:col-span-5 flex flex-col gap-6">
           <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
             <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-400 border-b border-slate-100 pb-2.5 flex items-center gap-1.5">
-              <Thermometer size={14} className="text-orange-800" /> Raumklima &amp; Bauteiloberfläche
-            </h4>
+              <Thermometer size={14} className="text-orange-800" /><MdText text={inhalt.texte.raumklimaBauteiloberfläche} /></h4>
 
             {/* Inputs: T_i and phi_i */}
             <div className="space-y-4">
               <div>
                 <div className="flex justify-between items-center mb-1.5">
-                  <label className="text-xs font-bold text-slate-700">Innen-Lufttemperatur (T_i):</label>
+                  <label className="text-xs font-bold text-slate-700"><MdText text={inhalt.texte.innenLufttemperaturTI} /></label>
                   <span className="text-xs font-mono font-bold text-slate-800 bg-slate-100 px-1.5 py-0.5 rounded">{formatDeZahl(Ti, 1)} °C</span>
                 </div>
                 <input 
@@ -313,7 +306,7 @@ export default function Feuchteschutz() {
 
               <div>
                 <div className="flex justify-between items-center mb-1.5">
-                  <label className="text-xs font-bold text-slate-700">Rel. Raumluftfeuchte (φ_i):</label>
+                  <label className="text-xs font-bold text-slate-700"><MdText text={inhalt.texte.relRaumluftfeuchteI} /></label>
                   <span className="text-xs font-mono font-bold text-slate-800 bg-slate-100 px-1.5 py-0.5 rounded">{formatDeZahl(phiI, 0)} %</span>
                 </div>
                 <input 
@@ -326,9 +319,7 @@ export default function Feuchteschutz() {
 
               <div className="pt-2 border-t border-slate-100">
                 <div className="flex justify-between items-center mb-1.5">
-                  <label className="text-xs font-black text-orange-900 flex items-center gap-1">
-                    Bauteil-Oberfläche (T_si):
-                  </label>
+                  <label className="text-xs font-black text-orange-900 flex items-center gap-1"><MdText text={inhalt.texte.bauteilOberflächeTSi} /></label>
                   <span className="text-xs font-mono font-bold text-rose-800 bg-orange-50 px-1.5 py-0.5 rounded border border-orange-200">{formatDeZahl(Tsi, 1)} °C</span>
                 </div>
                 <input 
@@ -337,31 +328,29 @@ export default function Feuchteschutz() {
                   onChange={(e) => setTsi(parseFloat(e.target.value))}
                   className="w-full accent-rose-600 cursor-pointer"
                 />
-                <p className="text-[10px] text-slate-500 mt-1 italic">
-                  Temperatur der Wandinnenseite (simuliert eine ungedämmte Wärmebrücke / Ecke).
-                </p>
+                <p className="text-[10px] text-slate-500 mt-1 italic"><MdText text={inhalt.texte.temperaturDerWandinnenseiteSimuliert} /></p>
               </div>
             </div>
 
             {/* Results Table */}
             <div className="mt-5 bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3">
-              <div className="text-[10px] uppercase font-extrabold tracking-wider text-slate-400">Berechnete Werte (Innenklima)</div>
+              <div className="text-[10px] uppercase font-extrabold tracking-wider text-slate-400"><MdText text={inhalt.texte.berechneteWerteInnenklima} /></div>
               
               <div className="grid grid-cols-2 gap-3 text-xs">
                 <div className="bg-white p-2.5 rounded-lg border border-slate-150">
-                  <span className="text-slate-400 text-[10px] block font-bold">Sättigungsdruck p_sat:</span>
+                  <span className="text-slate-400 text-[10px] block font-bold"><MdText text={inhalt.texte.sättigungsdruckPSat} /></span>
                   <span className="font-mono font-bold text-slate-800 text-[13px]">{formatDeZahl(indoorClimate.psat, 1)} Pa</span>
                 </div>
                 <div className="bg-white p-2.5 rounded-lg border border-slate-150">
-                  <span className="text-slate-400 text-[10px] block font-bold">Ist-Teildruck p:</span>
+                  <span className="text-slate-400 text-[10px] block font-bold"><MdText text={inhalt.texte.istTeildruckP} /></span>
                   <span className="font-mono font-bold text-slate-800 text-[13px]">{formatDeZahl(indoorClimate.p_act, 1)} Pa</span>
                 </div>
                 <div className="bg-white p-2.5 rounded-lg border border-slate-150">
-                  <span className="text-slate-400 text-[10px] block font-bold">Absolute Luftfeuchte:</span>
+                  <span className="text-slate-400 text-[10px] block font-bold"><MdText text={inhalt.texte.absoluteLuftfeuchte} /></span>
                   <span className="font-mono font-bold text-slate-800 text-[13px]">{formatDeZahl(indoorClimate.absHum, 2)} g/m³</span>
                 </div>
                 <div className="bg-white p-2.5 rounded-lg border border-slate-150 focus-within:ring-2">
-                  <span className="text-blue-500 text-[10px] block font-extrabold">Taupunkt T_dp (100%):</span>
+                  <span className="text-blue-500 text-[10px] block font-extrabold"><MdText text={inhalt.texte.taupunktTDp100} /></span>
                   <span className="font-mono font-black text-blue-600 text-[13px]">{formatDeZahl(indoorClimate.dewPoint, 1)} °C</span>
                 </div>
               </div>
@@ -369,12 +358,10 @@ export default function Feuchteschutz() {
               {/* Mold Limit Temperature indicator (80% boundary block) */}
               <div className="p-2.5 bg-yellow-50/50 border border-yellow-100 rounded-lg text-[10.5px]">
                 <div className="flex justify-between items-center text-yellow-800 font-bold mb-1">
-                  <span>Schimmelgrenze T_schimmel (80% r.f.):</span>
+                  <span><MdText text={inhalt.texte.schimmelgrenzeTSchimmel80} /></span>
                   <span className="font-mono">{formatDeZahl(indoorClimate.schimmelPoint, 1)} °C</span>
                 </div>
-                <p className="text-slate-500 leading-relaxed text-[9.5px]">
-                  Fällt die Wandoberfläche unter diesen Wert, herrscht direkt auf der Wand eine Feuchte von &gt; 80%. Hält dieser Zustand mehrere Tage an, können Schimmelpilze wachsen.
-                </p>
+                <p className="text-slate-500 leading-relaxed text-[9.5px]"><MdText text={inhalt.texte.fälltDieWandoberflächeUnter} /></p>
               </div>
             </div>
           </div>
@@ -394,13 +381,13 @@ export default function Feuchteschutz() {
             </div>
             <div className="flex-1">
               <h5 className="font-extrabold uppercase tracking-wide text-[10px] text-slate-400 mb-1">
-                {surfaceAuditStatus.level === 'danger' && 'KRITISCHER REZESS: TAUKONDENSAT'}
-                {surfaceAuditStatus.level === 'warning' && 'VORSICHT: BIOLOGISCHES SCHIMMELRISIKO'}
-                {surfaceAuditStatus.level === 'safe' && 'AUDIT: OBERFLÄCHE OPTIMAL'}
+                {surfaceAuditStatus.level === 'danger' && inhalt.werte.kritischerRezessTaukondensat}
+                {surfaceAuditStatus.level === 'warning' && inhalt.werte.vorsichtBiologischesSchimmelrisiko}
+                {surfaceAuditStatus.level === 'safe' && inhalt.werte.auditOberflächeOptimal}
               </h5>
               <p className="font-medium text-[11px]">{surfaceAuditStatus.text}</p>
               <div className="mt-2 text-[10px] font-mono font-bold text-slate-500 border-t border-slate-200/50 pt-1 flex justify-between">
-                <span>Rel. Oberflächenfeuchte:</span>
+                <span><MdText text={inhalt.texte.relOberflächenfeuchte} /></span>
                 <span className={
                   surfaceAuditStatus.level === 'danger' 
                     ? 'text-red-700 font-black' 
@@ -415,37 +402,37 @@ export default function Feuchteschutz() {
           {/* Live-Rechenweg (AP 3.7) mit dem aktuellen Innenklima */}
           <FormulaDerivationBox
             live
-            title="Ihr Rechenweg: Taupunkt und Oberflächenfeuchte"
+            title={inhalt.werte.ihrRechenwegTaupunktUnd}
             zielGleichung="\varphi_{si} = \frac{\varphi_i \cdot p_{sat}(\theta_i)}{p_{sat}(\theta_{si})}"
             schritte={[
               {
-                titel: 'Sättigungsdampfdruck der Raumluft',
+                titel: inhalt.werte.sättigungsdampfdruckDerRaumluft,
                 erklaerung: `Magnus-Formel nach DIN 4108-3 für θ_i = ${formatDeZahl(Ti, 1)} °C:`,
                 formel: `p_{sat}(\\theta_i) = ${magnusTeX(Ti)} = ${tex(indoorClimate.psat, 1)}\\,\\text{Pa}`
               },
               {
-                titel: 'Vorhandener Wasserdampfteildruck',
+                titel: inhalt.werte.vorhandenerWasserdampfteildruck,
                 erklaerung: `Relative Feuchte φ_i = ${formatDeZahl(phiI, 0)} % mal Sättigungsdruck:`,
                 formel: `p = ${tex(phiI / 100, 2)} \\cdot ${tex(indoorClimate.psat, 1)} = ${tex(indoorClimate.p_act, 1)}\\,\\text{Pa}`
               },
               {
                 titel: 'Taupunkttemperatur',
-                erklaerung: 'Umkehrung der Magnus-Formel: Bei dieser Temperatur ist die Luft gesättigt (φ = 100 %):',
+                erklaerung: inhalt.werte.umkehrungDerMagnusFormel,
                 formel: `\\theta_s = ${taupunktTeX(indoorClimate.p_act)} = ${tex(indoorClimate.dewPoint, 1)}\\,^{\\circ}\\text{C}`
               },
               {
-                titel: 'Schimmelgrenze (80 % r. F.)',
-                erklaerung: 'Gesucht ist die Temperatur, bei der p genau 80 % des Sättigungsdrucks beträgt:',
+                titel: inhalt.werte.schimmelgrenze80RF,
+                erklaerung: inhalt.werte.gesuchtIstDieTemperatur,
                 formel: `p_{sat} = \\frac{${tex(indoorClimate.p_act, 1)}}{0{,}8} = ${tex(indoorClimate.p_act / 0.8, 1)}\\,\\text{Pa} \\;\\Rightarrow\\; \\theta_{80} = ${tex(indoorClimate.schimmelPoint, 1)}\\,^{\\circ}\\text{C}`
               },
               {
-                titel: 'Relative Feuchte an der Oberfläche',
+                titel: inhalt.werte.relativeFeuchteAnDer,
                 erklaerung: `An der ${formatDeZahl(Tsi, 1)} °C kalten Oberfläche ist der Sättigungsdruck kleiner, die relative Feuchte steigt:`,
                 formel: `\\varphi_{si} = \\frac{${tex(indoorClimate.p_act, 1)}}{${tex(calcPsat(Tsi), 1)}} = ${tex(surfaceAuditStatus.actualSurfaceRH, 0)}\\,\\%`
               }
             ]}
-            ergebnisHinweis="Liegt φ_si dauerhaft über 80 %, droht Schimmelpilzwachstum; bei θ_si ≤ θ_s fällt Tauwasser aus."
-            normQuelle="DIN 4108-3:2024-03 (Magnus-Formel); DIN 4108-2 (80-%-Kriterium); § 11 GModG nimmt DIN 4108-2:2013-02 und DIN 4108-3:2018-10 in Bezug"
+            ergebnisHinweis={inhalt.werte.liegtSiDauerhaftÜber}
+            normQuelle={inhalt.werte.din410832024}
           />
         </div>
 
@@ -454,8 +441,8 @@ export default function Feuchteschutz() {
         <div className="lg:col-span-7 flex flex-col gap-6">
           <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col h-full">
             <h4 className="text-xs font-extrabold uppercase tracking-widest text-slate-800 border-b border-slate-100 pb-2.5 mb-4 flex items-center justify-between">
-              <span>Magnus-Sättigungskurve &amp; Dampfdruck</span>
-              <span className="text-[10px] text-slate-400 font-mono tracking-normal capitalize">Zustand vs. Sättigungsdruck</span>
+              <span><MdText text={inhalt.texte.magnusSättigungskurveDampfdruck} /></span>
+              <span className="text-[10px] text-slate-400 font-mono tracking-normal capitalize"><MdText text={inhalt.texte.zustandVsSättigungsdruck} /></span>
             </h4>
 
             {/* Coordinates Chart */}
@@ -467,12 +454,12 @@ export default function Feuchteschutz() {
                   maintainAspectRatio: false,
                   scales: {
                     x: {
-                      title: { display: true, text: 'Temperatur T (°C)', font: { size: 10, weight: 'bold' } },
+                      title: { display: true, text: inhalt.werte.temperaturTC, font: { size: 10, weight: 'bold' } },
                       grid: { display: false },
                       ticks: { font: { size: 9, weight: 'bold' }, color: '#64748b' }
                     },
                     y: {
-                      title: { display: true, text: 'Wasserdampfpartialdruck p (Pa)', font: { size: 10, weight: 'bold' } },
+                      title: { display: true, text: inhalt.werte.wasserdampfpartialdruckPPa, font: { size: 10, weight: 'bold' } },
                       ticks: { font: { size: 9, weight: 'bold' }, color: '#64748b' }
                     }
                   },
@@ -490,19 +477,13 @@ export default function Feuchteschutz() {
             <div className="mt-4 pt-3 border-t border-slate-100 grid grid-cols-1 md:grid-cols-2 gap-4 text-[11px] text-slate-600">
               <div>
                 <p className="font-bold text-slate-800 mb-1 flex items-center gap-1">
-                  <Wind size={12} className="text-blue-500" /> Was zeigt diese Kurve?
-                </p>
-                <p className="leading-relaxed text-[11px]">
-                  Die blaue Begrenzungslinie stellt den <strong>Sättigungsdampfdruck p_sat(T)</strong> dar. Luft kann bei hohen Temperaturen exponentiell mehr Wasserdampf tragen als bei Kälte. 
-                </p>
+                  <Wind size={12} className="text-blue-500" /><MdText text={inhalt.texte.wasZeigtDieseKurve} /></p>
+                <p className="leading-relaxed text-[11px]"><MdText text={inhalt.texte.dieBlaueBegrenzungslinieStellt} /></p>
               </div>
               <div>
                 <p className="font-bold text-slate-800 mb-1 flex items-center gap-1">
-                  <HelpCircle size={12} className="text-emerald-600" /> Was ist der Taupunkt?
-                </p>
-                <p className="leading-relaxed text-[11px]">
-                  Die grüne gestrichelte Linie ist der aktuelle Dampfdruck (p) im Raum. Fällt die Temperatur unter den Schnittpunkt mit der blauen Linie (<strong>Taupunkt T_dp</strong>), kondensiert überschüssiger Dampf zu flüssigem Bautauwasser.
-                </p>
+                  <HelpCircle size={12} className="text-emerald-600" /><MdText text={inhalt.texte.wasIstDerTaupunkt} /></p>
+                <p className="leading-relaxed text-[11px]"><MdText text={inhalt.texte.dieGrüneGestrichelteLinie} /></p>
               </div>
             </div>
           </div>
@@ -517,19 +498,15 @@ export default function Feuchteschutz() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-150 pb-4 mb-5 gap-3">
           <div>
             <h4 className="text-md font-extrabold text-slate-800 flex items-center gap-2">
-              <Beaker className="text-blue-600" size={18} /> s_d-Wert Sandbox: Schichtenfeuchte-Prüfer
-            </h4>
-            <p className="text-xs text-slate-500 mt-1">
-              Testen Sie Ihre Konstruktion im Hinblick auf den Diffusionswiderstand und die goldene Bauphysikregel.
-            </p>
+              <Beaker className="text-blue-600" size={18} /><MdText text={inhalt.texte.sDWertSandbox} /></h4>
+            <p className="text-xs text-slate-500 mt-1"><MdText text={inhalt.texte.testenSieIhreKonstruktion} /></p>
           </div>
           
           <button 
             onClick={addLayer}
             className="px-3 py-1.5 bg-orange-800 hover:bg-slate-900 text-white rounded-lg text-xs font-extrabold flex items-center gap-1 transition-all cursor-pointer shadow-sm uppercase tracking-wider"
           >
-            <Plus size={14} /> Neue Schicht hinzufügen
-          </button>
+            <Plus size={14} /><MdText text={inhalt.texte.neueSchichtHinzufügen} /></button>
         </div>
 
         {/* Sandbox Content Wrapper */}
@@ -539,7 +516,7 @@ export default function Feuchteschutz() {
           <div className="lg:col-span-7 space-y-3.5">
             <div className="flex items-center text-[10px] font-black uppercase text-slate-400 px-3">
               <span className="w-10">Reihen.</span>
-              <span className="flex-1 pl-4">Zuständiger Baustoff</span>
+              <span className="flex-1 pl-4"><MdText text={inhalt.texte.zuständigerBaustoff} /></span>
               <span className="w-24 text-center">Dicke d (m)</span>
               <span className="w-20 text-center">µ-Wert [-]</span>
               <span className="w-24 text-right">sd-Wert (m)</span>
@@ -557,7 +534,7 @@ export default function Feuchteschutz() {
                       onClick={() => moveLayer(index, 'up')} 
                       disabled={index === 0}
                       className="hover:text-orange-800 disabled:opacity-25 cursor-pointer"
-                      aria-label="Schicht nach oben verschieben"
+                      aria-label={inhalt.werte.schichtNachObenVerschieben}
                     >
                       <ArrowUp size={13} />
                     </button>
@@ -565,7 +542,7 @@ export default function Feuchteschutz() {
                       onClick={() => moveLayer(index, 'down')} 
                       disabled={index === layers.length - 1}
                       className="hover:text-orange-800 disabled:opacity-25 cursor-pointer"
-                      aria-label="Schicht nach unten verschieben"
+                      aria-label={inhalt.werte.schichtNachUntenVerschieben}
                     >
                       <ArrowDown size={13} />
                     </button>
@@ -614,7 +591,7 @@ export default function Feuchteschutz() {
                   <button 
                     onClick={() => removeLayer(index)}
                     className="text-slate-450 hover:text-red-500 cursor-pointer p-1"
-                    aria-label="Schicht entfernen"
+                    aria-label={inhalt.werte.schichtEntfernen}
                   >
                     <Trash2 size={14} />
                   </button>
@@ -623,7 +600,7 @@ export default function Feuchteschutz() {
             </div>
 
             <div className="flex justify-between items-center bg-slate-50 border border-slate-200 rounded-xl p-3 px-4 text-xs font-bold text-slate-600 mt-2">
-              <span className="uppercase tracking-wide text-slate-400 font-black text-[10px]">Laufrichtung der Schichten:</span>
+              <span className="uppercase tracking-wide text-slate-400 font-black text-[10px]"><MdText text={inhalt.texte.laufrichtungDerSchichten} /></span>
               <span className="flex items-center gap-1 text-slate-700">
                 <span className="bg-white border border-slate-200 rounded px-2 py-0.5 text-[10px]">Zimmer-Innenseite</span> 
                 → 
@@ -637,12 +614,10 @@ export default function Feuchteschutz() {
             
             {/* Computed total value banner */}
             <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-4">
-              <span className="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 block mb-1">
-                DIFFUSIONSTECHNISCHE AUSWERTUNG
-              </span>
+              <span className="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 block mb-1"><MdText text={inhalt.texte.diffusionstechnischeAuswertung} /></span>
               
               <div className="flex justify-between items-baseline select-all">
-                <span className="text-xs text-slate-600 font-bold">Äquivalente Gesamtluftdicke (s_d,ges):</span>
+                <span className="text-xs text-slate-600 font-bold"><MdText text={inhalt.texte.äquivalenteGesamtluftdickeSD} /></span>
                 <span className="text-xl font-mono font-black text-slate-900 border-b border-2 border-slate-200/50">
                   {formatDeZahl(layerCalculations.totalSd, 3)} m
                 </span>
@@ -661,17 +636,15 @@ export default function Feuchteschutz() {
                   }
                 </div>
                 <div className="flex-1">
-                  <h6 className="font-extrabold uppercase tracking-wide text-[9.5px] text-slate-400">
-                    Regel-Check "Innen dichter als außen"
-                  </h6>
+                  <h6 className="font-extrabold uppercase tracking-wide text-[9.5px] text-slate-400"><MdText text={inhalt.texte.regelCheckInnenDichter} /></h6>
                   <p className="font-medium mt-1">
                     {layerCalculations.isInnerTighter && !layerCalculations.hasGlaserTauwasser
-                      ? 'Konstruktion günstig: Die innenseitigen Schichten bieten einen höheren Wasserdampfwiderstand als die Bauteilaußenseite. Feuchte dringt schwer ein, aber leicht nach außen ab.'
+                      ? inhalt.werte.konstruktionGünstigDieInnenseitigen
                       : layerCalculations.isInnerTighter
-                        ? 'Innen dichter als außen, aber im Glaser-Klima rechnerisch Tauwasser: Tauwassermasse und Verdunstung nach DIN 4108-3 nachweisen (Grenzwerte u. a. 1,0 kg/m² gesamt, 0,5 kg/m² an nicht kapillar wasseraufnahmefähigen Schichtgrenzen).'
+                        ? inhalt.werte.innenDichterAlsAußen
                       : layerCalculations.hasGlaserTauwasser
-                        ? 'Kritischer Konstruktionsfehler! Die äußeren Bauteilschichten bremsen den Dampf stärker als die inneren Schichten. Feuchte sammelt sich im Inneren an und kann nicht austrocknen.'
-                        : 'Außen diffusionsdichter als innen – für diesen Aufbau rechnerisch unkritisch. Wärmedämmverbundsysteme auf Mauerwerk sind nach DIN 4108-3 ohne Nachweis zulässig.'
+                        ? inhalt.werte.kritischerKonstruktionsfehlerDieÄußeren
+                        : inhalt.werte.außenDiffusionsdichterAlsInnen
                     }
                   </p>
                 </div>
@@ -680,21 +653,19 @@ export default function Feuchteschutz() {
 
             {/* Physic equations with LaTeX rendering */}
             <div className="bg-stone-50 border border-stone-200 rounded-2xl p-4 space-y-3">
-              <h5 className="text-[10px] uppercase font-extrabold tracking-widest text-slate-400">Die physikalischen Grundlagen</h5>
+              <h5 className="text-[10px] uppercase font-extrabold tracking-widest text-slate-400"><MdText text={inhalt.texte.diePhysikalischenGrundlagen} /></h5>
               
               <div className="space-y-3.5 text-xs text-slate-600 leading-relaxed">
                 <div>
-                  <span className="font-bold text-slate-800">1. Äquivalente Luftschichtdicke:</span>
+                  <span className="font-bold text-slate-800"><MdText text={inhalt.texte.t1ÄquivalenteLuftschichtdicke} /></span>
                   <div className="my-1.5 p-1 bg-white border border-slate-100 rounded text-center">
                     <FormulaText text="s_d = \mu \cdot d" />
                   </div>
-                  <p className="text-[10px] text-slate-500">
-                    Beschreibt, wie viel dicker eine ruhende Luftschicht sein müsste, um denselben Dampfdiffusionswiderstand wie die Bauteilschicht zu erzeugen.
-                  </p>
+                  <p className="text-[10px] text-slate-500"><MdText text={inhalt.texte.beschreibtWieVielDicker} /></p>
                 </div>
 
                 <div>
-                  <span className="font-bold text-slate-800">2. Dampfdruck-Magnusgleichung (über Wasser, DIN 4108-3 / DIN EN ISO 13788):</span>
+                  <span className="font-bold text-slate-800"><MdText text={inhalt.texte.t2DampfdruckMagnusgleichungÜber} /></span>
                   <div className="my-1.5 p-1 bg-white border border-slate-100 rounded text-center overflow-x-auto text-xs">
                     <BlockMath math="p_{\text{sat}}(T) \approx 610{,}5 \cdot \exp\left( \frac{17{,}269 \cdot T}{237{,}3 + T} \right)" />
                   </div>
@@ -717,11 +688,8 @@ export default function Feuchteschutz() {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-5" id="glaser-diagramm">
             <div>
               <h4 className="text-md font-extrabold text-slate-800 flex items-center gap-2">
-                <Droplets className="text-shiraz" size={18} /> Glaser-Diagramm &amp; Tauwasserbilanz (DIN 4108-3)
-              </h4>
-              <p className="text-xs text-slate-500 mt-1 leading-relaxed">
-                Schichtaufbau aus der s_d-Sandbox, Klima aus den Reglern oben (Wand: R_si = 0,13, R_se = 0,04 m²K/W). Aufgetragen über der diffusionsäquivalenten Luftschichtdicke s_d: Sättigungsdampfdruck p_sat aus dem Temperaturverlauf und Partialdampfdruck p. Berührt p die Sättigungslinie, fällt in dieser Ebene Tauwasser aus.
-              </p>
+                <Droplets className="text-shiraz" size={18} /><MdText text={inhalt.texte.glaserDiagrammTauwasserbilanzDin} /></h4>
+              <p className="text-xs text-slate-500 mt-1 leading-relaxed"><MdText text={inhalt.texte.schichtaufbauAusDerS} /></p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -731,16 +699,16 @@ export default function Feuchteschutz() {
                     data={{
                       labels: g.sd.map(x => `${formatDeZahl(x, 2)} m`),
                       datasets: [
-                        { label: 'Sättigungsdampfdruck p_sat [Pa]', data: g.psat, borderColor: '#A3113E', borderDash: [4, 4], borderWidth: 2, pointRadius: 4, fill: false, tension: 0.1 },
-                        { label: 'Partialdampfdruck p [Pa]', data: g.p, borderColor: '#475569', backgroundColor: 'rgba(59, 130, 246, 0.07)', fill: true, borderWidth: 3, pointRadius: 4, tension: 0 },
+                        { label: inhalt.werte.sättigungsdampfdruckPSatPa, data: g.psat, borderColor: '#A3113E', borderDash: [4, 4], borderWidth: 2, pointRadius: 4, fill: false, tension: 0.1 },
+                        { label: inhalt.werte.partialdampfdruckPPa, data: g.p, borderColor: '#475569', backgroundColor: 'rgba(59, 130, 246, 0.07)', fill: true, borderWidth: 3, pointRadius: 4, tension: 0 },
                       ],
                     }}
                     options={{
                       responsive: true,
                       maintainAspectRatio: false,
                       scales: {
-                        x: { title: { display: true, text: 'Diffusionsäquivalente Luftschichtdicke s_d (kumuliert, innen → außen)', font: { size: 10, weight: 'bold' } } },
-                        y: { title: { display: true, text: 'Dampfdruck (Pa)', font: { size: 10, weight: 'bold' } } },
+                        x: { title: { display: true, text: inhalt.werte.diffusionsäquivalenteLuftschichtdickeSD, font: { size: 10, weight: 'bold' } } },
+                        y: { title: { display: true, text: inhalt.werte.dampfdruckPa, font: { size: 10, weight: 'bold' } } },
                       },
                       plugins: { legend: { labels: { font: { size: 11, weight: 'bold' } } } },
                     }}
@@ -748,16 +716,16 @@ export default function Feuchteschutz() {
                 </div>
                 <div className="mt-3 p-3 bg-slate-50 border border-slate-200 rounded-xl">
                   <div className="flex justify-between text-[11px] font-bold text-slate-700 mb-1">
-                    <span>Dauer der Tauperiode:</span>
+                    <span><MdText text={inhalt.texte.dauerDerTauperiode} /></span>
                     <span className="text-shiraz font-mono">{formatDeWert(tauperiodeTage)} Tage ({formatDeWert(tauperiodeTage * 24)} h)</span>
                   </div>
                   <input
                     type="range" min="30" max="150" step="5" value={tauperiodeTage}
-                    aria-label="Dauer der Tauperiode in Tagen"
+                    aria-label={inhalt.werte.dauerDerTauperiodeIn}
                     onChange={(e) => setTauperiodeTage(Number(e.target.value))}
                     className="w-full accent-shiraz h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer"
                   />
-                  <p className="text-[10px] text-slate-400 mt-1">Klassisches Glaser-Klima: 90 Tage Tauperiode, 90 Tage Verdunstungsperiode (12 °C / 70 % r. F.).</p>
+                  <p className="text-[10px] text-slate-400 mt-1"><MdText text={inhalt.texte.klassischesGlaserKlima90} /></p>
                 </div>
               </div>
 
@@ -766,26 +734,22 @@ export default function Feuchteschutz() {
                   <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl flex items-start gap-3">
                     <CheckCircle className="text-emerald-600 shrink-0 mt-0.5" size={18} />
                     <div className="text-xs text-emerald-900 leading-relaxed">
-                      <h5 className="font-extrabold text-sm text-emerald-800">Kein Tauwasser in der Tauperiode</h5>
-                      An keiner Schichtgrenze erreicht p den Sättigungsdampfdruck (<FormulaText text="p < p_{sat}" />). Rechnerische Tauwassermasse 0 g/m².
-                    </div>
+                      <h5 className="font-extrabold text-sm text-emerald-800"><MdText text={inhalt.texte.keinTauwasserInDer} /></h5><MdText text={inhalt.texte.anKeinerSchichtgrenzeErreicht} /><FormulaText text="p < p_{sat}" /><MdText text={inhalt.texte.rechnerischeTauwassermasse0G} /></div>
                   </div>
                 ) : (
                   <>
                     <div className="p-4 bg-red-50/60 border border-red-200 rounded-xl flex items-start gap-3">
                       <AlertTriangle className="text-red-600 shrink-0 mt-0.5" size={18} />
                       <div className="text-xs text-red-950 leading-relaxed">
-                        <h5 className="font-extrabold text-sm text-red-800">Tauwasser an Grenzfläche {formatDeWert(g.ebene)}</h5>
-                        Tauwasserebene hinter der Schicht <strong>„{namen[g.ebene - 1]}“</strong>: Dort ist p gleich p_sat; der Dampf, der innen zuströmt, kann außen nicht vollständig abgeführt werden.
-                      </div>
+                        <h5 className="font-extrabold text-sm text-red-800"><MdText text={inhalt.texte.tauwasserAnGrenzfläche} />{formatDeWert(g.ebene)}</h5><MdText text={inhalt.texte.tauwasserebeneHinterDerSchicht} /><strong>„{namen[g.ebene - 1]}“</strong><MdText text={inhalt.texte.dortIstPGleich} /></div>
                     </div>
                     <div className="grid grid-cols-3 gap-2 text-center">
                       <div className="p-2.5 bg-slate-50 border border-slate-200 rounded-xl">
-                        <div className="text-[9.5px] text-slate-500 font-bold uppercase">Tauwasser m_c</div>
+                        <div className="text-[9.5px] text-slate-500 font-bold uppercase"><MdText text={inhalt.texte.tauwasserMC} /></div>
                         <div className="text-base font-black text-red-700 font-mono mt-0.5">{formatDeZahl(g.mc, 1)} <span className="text-[10px]">g/m²</span></div>
                       </div>
                       <div className="p-2.5 bg-slate-50 border border-slate-200 rounded-xl">
-                        <div className="text-[9.5px] text-slate-500 font-bold uppercase">Verdunstung m_ev</div>
+                        <div className="text-[9.5px] text-slate-500 font-bold uppercase"><MdText text={inhalt.texte.verdunstungMEv} /></div>
                         <div className="text-base font-black text-emerald-700 font-mono mt-0.5">{formatDeZahl(g.mev, 1)} <span className="text-[10px]">g/m²</span></div>
                       </div>
                       <div className="p-2.5 bg-slate-50 border border-slate-200 rounded-xl">
@@ -795,20 +759,18 @@ export default function Feuchteschutz() {
                     </div>
                     <p className="text-[11px] text-slate-600 leading-relaxed">
                       {ok
-                        ? 'Grundkriterien nach DIN 4108-3 erfüllt: m_c ≤ 1 000 g/m² und m_ev > m_c. Zusätzlich gilt 500 g/m² an Grenzflächen nicht kapillar wasseraufnahmefähiger Schichten; bei Holz und Holzwerkstoffen die zulässige Feuchteerhöhung beachten.'
-                        : 'Das Bauteil trocknet in der Verdunstungsperiode nicht sicher aus oder die Tauwassermasse ist zu groß. Abhilfe: raumseitig diffusionshemmende Schicht (Dampfbremse) oder außen diffusionsoffenere Schichten.'}
+                        ? inhalt.werte.grundkriterienNachDin4108
+                        : inhalt.werte.dasBauteilTrocknetIn}
                     </p>
                   </>
                 )}
                 <div className="text-[11px] text-slate-500 bg-off-white border border-home-grau/30 rounded-xl p-3 leading-relaxed">
-                  U = {formatDeZahl(g.U, 3)} W/(m²K) · s_d,ges = {formatDeZahl(g.sdGes, 2)} m · p_i = {formatDeZahl(g.pi, 0)} Pa · p_e = {formatDeZahl(g.pe, 0)} Pa
+                  U = {formatDeZahl(g.U, 3)}<MdText text={inhalt.texte.wMKS} />{formatDeZahl(g.sdGes, 2)} m · p_i = {formatDeZahl(g.pi, 0)} Pa · p_e = {formatDeZahl(g.pe, 0)} Pa
                 </div>
                 <EingabeHinweise hinweise={g.hinweise} />
               </div>
             </div>
-            <p className="text-[10px] text-slate-400 leading-relaxed">
-              Vereinfachtes Lehrmodell mit einer Tauwasserebene; die Verdunstungsrandbedingungen der DIN 4108-3:2024-03 weichen vom klassischen Glaser-Klima ab. Ersetzt keinen normgerechten Nachweis bzw. keine hygrothermische Simulation nach DIN EN 15026.
-            </p>
+            <p className="text-[10px] text-slate-400 leading-relaxed"><MdText text={inhalt.texte.vereinfachtesLehrmodellMitEiner} /></p>
           </div>
         );
       })()}
@@ -817,27 +779,18 @@ export default function Feuchteschutz() {
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <NachErstemBild minHoehe="20rem">
       <FormulaDerivationBox
-        title="Beispiel 1: Taupunkt und Schimmelgrenze eines Wohnraums"
+        title={inhalt.werte.beispiel1TaupunktUnd}
         zielGleichung="\theta_{d} = \frac{237{,}3 \cdot \ln(p/610{,}5)}{17{,}269 - \ln(p/610{,}5)}"
-        schritte={[
-          { titel: 'Dampfdruck', erklaerung: 'Raumklima 20 °C / 50 % r. F.:', formel: 'p_{sat}(20\\,^\\circ\\text{C}) = 2\\,337\\,\\text{Pa}, \\quad p = 0{,}50 \\cdot 2\\,337 = 1\\,169\\,\\text{Pa}' },
-          { titel: 'Taupunkt', erklaerung: 'Umkehrung der Magnus-Formel:', formel: '\\ln\\frac{1\\,169}{610{,}5} = 0{,}650 \\Rightarrow \\theta_d = \\frac{237{,}3 \\cdot 0{,}650}{17{,}269 - 0{,}650} = 9{,}3\\,^\\circ\\text{C}' },
-          { titel: 'Schimmelgrenze (80 % r. F.)', erklaerung: 'Sättigungsdampfdruck, bei dem die Oberflächenfeuchte 80 % erreicht:', formel: 'p_{sat} = \\frac{1\\,169}{0{,}80} = 1\\,461\\,\\text{Pa} \\Rightarrow \\theta_{si,min} = 12{,}6\\,^\\circ\\text{C}' },
-          { titel: 'Bei höherer Raumfeuchte', erklaerung: 'Bad oder schlecht gelüftetes Schlafzimmer mit 65 % r. F.:', formel: 'p = 1\\,519\\,\\text{Pa} \\Rightarrow \\theta_d = 13{,}2\\,^\\circ\\text{C}, \\quad \\theta_{si,min} = 16{,}7\\,^\\circ\\text{C}' }
-        ]}
-        ergebnisHinweis="Schimmel droht deutlich oberhalb des Taupunkts. Mehr Lüften senkt p und damit beide Grenztemperaturen; Dämmung hebt die Oberflächentemperatur."
-        normQuelle="DIN 4108-3:2024-03; DIN EN ISO 13788:2013-05"
+        schritte={inhalt.daten["Feuchteschutz.schritte"]}
+        ergebnisHinweis={inhalt.werte.schimmelDrohtDeutlichOberhalb}
+        normQuelle={inhalt.werte.din4108320242}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: s_d-Werte und die Regel „innen dichter als außen“"
+        title={inhalt.werte.beispiel2SD}
         zielGleichung="s_d = \mu \cdot d"
-        schritte={[
-          { titel: 'Innen', erklaerung: 'Gipsputz 1,5 cm (µ = 10) und Hochlochziegel 24 cm (µ = 5):', formel: 's_{d,innen} = 10 \\cdot 0{,}015 + 5 \\cdot 0{,}24 = 0{,}15 + 1{,}20 = 1{,}35\\,\\text{m}' },
-          { titel: 'Außen', erklaerung: 'EPS 16 cm (µ = 50) und Kalk-Zement-Putz 2 cm (µ = 25):', formel: 's_{d,außen} = 50 \\cdot 0{,}16 + 25 \\cdot 0{,}02 = 8{,}0 + 0{,}5 = 8{,}5\\,\\text{m}' },
-          { titel: 'Bewertung', erklaerung: 'Außen ist diffusionsdichter, die Dämmung liegt aber außen und hält die Tauebene warm. Das Glaser-Diagramm oben zeigt für 20 °C/50 % und −5 °C/80 % kein Tauwasser.', formel: 's_{d,außen} > s_{d,innen}, \\quad \\text{trotzdem tauwasserfrei}' }
-        ]}
-        ergebnisHinweis="Die Faustregel gilt vor allem für Holzbau und Innendämmung. WDVS auf Mauerwerk zählt nach DIN 4108-3 zu den Konstruktionen ohne rechnerischen Tauwassernachweis; maßgebend ist der Temperaturverlauf, nicht allein das s_d-Verhältnis."
-        normQuelle="Bemessungswerte nach DIN 4108-4:2020-11; Nachweisfreiheit nach DIN 4108-3:2024-03"
+        schritte={inhalt.daten["Feuchteschutz.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.dieFaustregelGiltVor}
+        normQuelle={inhalt.werte.bemessungswerteNachDin4108}
       />
       </NachErstemBild>
 
@@ -846,39 +799,15 @@ export default function Feuchteschutz() {
 
       {/* Footer-Integration mit normenbezogenen Vorgaben */}
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 6 Bauphysik: Magnus-Formel über Eis ergänzt, Glaser-Bewertung korrigiert, Normausgaben aktualisiert; fachliche Freigabe durch den Autor ausstehend)"
+        lastReviewed={inhalt.werte.oktober2026Ap6}
         wikipedia={[
           { title: 'Feuchteschutz', url: 'https://de.wikipedia.org/wiki/Feuchteschutz' },
           { title: 'Wasserdampfdiffusionswiderstand', url: 'https://de.wikipedia.org/wiki/Wasserdampfdiffusionswiderstand' },
           { title: 'Glaser-Verfahren', url: 'https://de.wikipedia.org/wiki/Glaser-Verfahren' }
         ]}
-        literatur={[
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Hens, H.: Building Physics – Heat, Air and Moisture. 3. Aufl., Berlin: Ernst & Sohn 2017'
-        ]}
-        regelwerke={[
-          { title: 'DIN 4108-3:2024-03 (Wärmeschutz und Energie-Einsparung in Gebäuden – Teil 3: Klimabedingter Feuchteschutz; ersetzt 2018-10)' },
-          { title: 'DIN EN ISO 13788:2013-05 (Wärme- und feuchtetechnisches Verhalten von Bauteilen – Raumseitige Oberflächentemperatur zur Vermeidung kritischer Oberflächenfeuchte und Tauwasserbildung im Bauteilinneren)' },
-          { title: 'DIN 4108-2:2026-05 (Wärmeschutz – Anforderungen, Berechnungsverfahren und Hinweise für Planung und Ausführung; ersetzt DIN 4108-2:2013-02 „Mindestanforderungen an den Wärmeschutz“)' },
-          { title: 'DIN 4108-4:2020-11 (Bemessungswerte µ und λ)' }
-        ]}
-        formeln={[
-          {
-            formel: 's_d = \\mu \\cdot d',
-            erklaerung: 'Äquivalente Luftschichtdicke [m] zur Charakterisierung des Dampfdiffusionswiderstandes einer Schicht mit Dicke d und Wasserdampfdiffusionswiderstandszahl µ.',
-            quelle: 'DIN 4108-3'
-          },
-          {
-            formel: 'p_{sat}(T) \\approx 610{,}5 \\cdot e^{\\frac{17{,}269 \\cdot T}{237{,}3 + T}} \\; (T \\ge 0), \\quad 610{,}5 \\cdot e^{\\frac{21{,}875 \\cdot T}{265{,}5 + T}} \\; (T < 0)',
-            erklaerung: 'Sättigungsdampfdruck [Pa] von Wasserdampf über Wasser (T ≥ 0 °C) bzw. über Eis (T < 0 °C) in Abhängigkeit von der Temperatur T in °C nach der Magnus-Formel.',
-            quelle: 'DIN 4108-3:2024-03; DIN EN ISO 13788:2013-05'
-          },
-          {
-            formel: 'm_c = \\delta_0 \\cdot \\Delta t \\cdot \\left( \\frac{p_i - p_{sat}(T_C)}{s_{d,1}} - \\frac{p_{sat}(T_C) - p_e}{s_{d,2}} \\right)',
-            erklaerung: 'Tauwassermasse m_c [g/m²] der Tauperiode an der Tauwasserebene C (Periodenbilanzverfahren); δ_0 = 7,2 · 10⁻⁷ kg/(m·h·Pa), Δt = Dauer der Tauperiode in h, s_d,1 bzw. s_d,2 = s_d-Wert raumseitig bzw. außenseitig der Tauwasserebene.',
-            quelle: 'DIN 4108-3:2024-03'
-          }
-        ]}
+        literatur={inhalt.daten["Feuchteschutz.literatur"]}
+        regelwerke={inhalt.daten["Feuchteschutz.regelwerke"]}
+        formeln={inhalt.daten["Feuchteschutz.formeln"]}
       />
     </div>
   );

@@ -1,0 +1,62 @@
+{
+  "texte": {
+    "auswertungJeProbe": "Auswertung je Probe",
+    "rInGM": "r in g/(m²·d)",
+    "abtragInM": "Abtrag in µm",
+    "mittelwerteJeMedium": "Mittelwerte je Medium",
+    "rInGM2": "r̄ in g/(m²·d)",
+    "versuchsHandout4Wochen": " Versuchs-Handout: 4-Wochen-Auslagerungsversuch",
+    "massenverlustUndAbtragsrateVon": "Massenverlust und Abtragsrate von Betonstahl in alkalischen und chloridhaltigen Medien – Gravimetrie mit Blindprobe",
+    "derAuslagerungsversuchErgänztDie": "Der Auslagerungsversuch ergänzt die Potentialmessung: Das Potential zeigt, *ob* der Stahl aktiv korrodiert, der Massenverlust zeigt, *wie viel* Metall verloren geht. Die Werte sind Vergleichswerte für die gewählten Medien und lassen sich nicht unmittelbar auf Stahl im Beton übertragen.",
+    "probenAusDerselbenCharge": "Proben aus derselben Charge eignen sich für die Potentialmessung mit schrittweiser NaCl-Zugabe – so lassen sich Potentialabfall und Massenverlust vergleichen."
+  },
+  "werte": {
+    "unvollständigeZeilenMaßeOder": "Unvollständige Zeilen (Maße oder Massen fehlen) werden nicht ausgewertet.",
+    "mindestensEinMediumHat": "Mindestens ein Medium hat weniger als drei Parallelproben – keine belastbare Streuungsangabe.",
+    "oberflächeDesStabs": "Oberfläche des Stabs",
+    "mantelUndZweiStirnflächen": "Mantel und zwei Stirnflächen, Umrechnung mm² → cm²:",
+    "korrigierterMassenverlust": "Korrigierter Massenverlust",
+    "masseVorherMinusMasse": "Masse vorher minus Masse nach dem Beizen minus Blindwert:",
+    "bezogenAufFlächeCm": "Bezogen auf Fläche (cm² → m²) und Dauer:",
+    "volumenverlustJeFlächeErgibt": "Volumenverlust je Fläche ergibt die Dicke (cm → µm), hochgerechnet auf ein Jahr:",
+    "gleichwertigZurFormK": "Gleichwertig zur Form K · Δm/(A · t · ρ) mit K = 8,76 · 10⁷ für µm/a, t in Stunden. Die Rate setzt gleichmäßigen Abtrag voraus.",
+    "auswertungNachAstmG1": "Auswertung nach ASTM G1/G31 (Leitfaden); Beizen nach DIN EN ISO 8407:2025-08",
+    "parallelerVersuch": "Paralleler Versuch",
+    "zumHandoutPotentialmessung": "Zum Handout Potentialmessung",
+    "oktober2026Ap6": "Oktober 2026 (AP 6.4: Handout neu erstellt; Pilot im Labor und fachliche Freigabe ausstehend)"
+  },
+  "daten": {
+    "Auslagerung.literatur": [
+      "Kaesche, H.: Die Korrosion der Metalle. 3. Aufl. Berlin: Springer 1990",
+      "Raupach, M.; Orlowsky, J.: Erhaltung von Betonbauwerken. Wiesbaden: Vieweg+Teubner 2008",
+      "Bertolini, L.; Elsener, B.; Pedeferri, P.; Redaelli, E.; Polder, R.: Corrosion of Steel in Concrete. 2. Aufl. Weinheim: Wiley-VCH 2013"
+    ],
+    "Auslagerung.regelwerke": [
+      "DIN_EN_ISO_8407",
+      {
+        "title": "ASTM G1 (Standard Practice for Preparing, Cleaning, and Evaluating Corrosion Test Specimens)"
+      },
+      {
+        "title": "ASTM G31 (Guide for Laboratory Immersion Corrosion Testing of Metals)"
+      },
+      {
+        "title": "DIN EN ISO 8044 (Korrosion von Metallen und Legierungen - Grundbegriffe)"
+      }
+    ],
+    "Auslagerung.formeln": [
+      {
+        "formel": "\\Delta m = m_0 - m_1 - m_{Blind}",
+        "erklaerung": "Massenverlust durch Korrosion, korrigiert um den Beizabtrag der Blindprobe."
+      },
+      {
+        "formel": "r = \\Delta m / (A \\cdot t)",
+        "erklaerung": "Massenverlustrate in g/(m²·d)."
+      },
+      {
+        "formel": "v_{korr} = \\frac{\\Delta m}{\\rho A} \\cdot 10^4 \\cdot \\frac{365}{t}",
+        "erklaerung": "gleichmäßige Abtragsrate in µm/a (A in cm², ρ in g/cm³, t in Tagen).",
+        "quelle": "ASTM G1"
+      }
+    ]
+  }
+}

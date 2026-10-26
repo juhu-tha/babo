@@ -1,0 +1,385 @@
+{
+  "texte": {
+    "hoaiLeistungsphase8Objektüberwachung": "HOAI Leistungsphase 8 (Objektüberwachung) • Haftungsminimierung nach VOB",
+    "leitfadenVobRegeln": "Leitfaden (VOB-Regeln)",
+    "berichtErstellen": "Bericht erstellen",
+    "gespeicherteBerichte": "Gespeicherte Berichte (",
+    "projektSteckbriefWählenBaustellenprojekt": "Projekt-Steckbrief wählen (Baustellenprojekt)",
+    "jedesProjektFordertUnterschiedliche": "Jedes Projekt fordert unterschiedliche QS-Verfahren und birgt spezifische Anfängerrisiken.",
+    "aktivesBauprojekt": "Aktives Bauprojekt",
+    "leitfadenDasVobBautagebuch": "Leitfaden: Das VOB-Bautagebuch im Bauwesen",
+    "wasIstEinBautagebuch": " Was ist ein Bautagebuch?",
+    "einBautagebuchIstDie": "Ein Bautagebuch ist die **beweissichere, tagesaktuelle Dokumentation** aller Vorgänge und Bedingungen auf einer Baustelle. Nach HOAI gehört es zu den Grundleistungen der **Leistungsphase 8 (Objektüberwachung)**.",
+    "die4UnverzichtbarenPflichtinhalte": "Die 4 unverzichtbaren Pflichtinhalte",
+    "witterungMindestUndHöchsttemperaturen": "**Witterung:** Mindest- und Höchsttemperaturen (extrem kritisch für Betonierung bzgl. Gefrierpunkt und Rissbildung).",
+    "personalGewerkeAnzahlDer": "**Personal & Gewerke:** Anzahl der Arbeiter aller Firmen zur Überprüfung der Baukapazitäten und Fristen.",
+    "tagesleistungBaufortschrittRäumlichGenau": "**Tagesleistung & Baufortschritt:** Räumlich genau lokalisierte Tätigkeiten (z.B. Deckenbewehrung über 1. OG).",
+    "abweichungenStörungenEventuelleVerzögeru": "**Abweichungen & Störungen:** Eventuelle Verzögerungen durch Schäden, unzureichende Vorleistungen oder Planungsfehler.",
+    "baurechtlicheKernfehlerBeiUnvollständige": " Baurechtliche Kernfehler bei unvollständigen Logbüchern:",
+    "t1BeweisnotImStreitfall": "1. Beweisnot im Streitfall:",
+    "kannDieBauüberwachungKeine": "Kann die Bauüberwachung keine Temperaturaufzeichnungen vorlegen, fehlt der Nachweis ordnungsgemäßer Überwachung – die Abwehr von Ansprüchen wegen Frost- oder Feuchteschäden wird erheblich erschwert.",
+    "t2VerlustVonVerzugs": "2. Verlust von Verzugs-Ansprüchen (§ 6 VOB/B):",
+    "ohneSchriftlicheBehinderungsanzeigeWerde": "Ohne schriftliche Behinderungsanzeige werden Behinderungen nur berücksichtigt, wenn sie dem Auftraggeber offenkundig bekannt waren (§ 6 Abs. 1 VOB/B) – Ansprüche auf Bauzeitverlängerung und Ersatz sind dann gefährdet.",
+    "interaktivesPraxismodulThAugsburg": "Interaktives Praxismodul TH Augsburg",
+    "weiterZuDenLernszenarien": "Weiter zu den Lernszenarien ",
+    "studierendenLernszenarienBaustellenHerau": "Studierenden-Lernszenarien & Baustellen-Herausforderungen",
+    "realeKonfliktsituationenAufDer": "Reale Konfliktsituationen auf der Baustelle: Lade ein Szenario, löse die Aufgabenstellung im Bautagebuch-Editor und lassen Sie Ihre Eingabe vom \"Professor\" bewerten.",
+    "szenarioStarten": "Szenario starten →",
+    "archivierteBewerteteTagesberichte": "Archivierte & bewertete Tagesberichte (",
+    "bislangWurdenKeineTagesprotokolle": "Bislang wurden keine Tagesprotokolle erstellt.",
+    "zuDenLernszenarien": "Zu den Lernszenarien",
+    "minMaxTemp": "Min/Max Temp: ",
+    "behinderungAktiv": "⚠ Behinderung aktiv",
+    "bedenkenAngemeldet": "⚠ Bedenken angemeldet",
+    "szenarioModusAktiv": "Szenario-Modus aktiv",
+    "tragenSieAlleRelevanten": "Tragen Sie alle relevanten Witterungs- und baubetrieblichen Werte ein.",
+    "t1AllgemeineBerichtangaben": "1. Allgemeine Berichtangaben",
+    "berichtsnummerFortlaufend": "Berichtsnummer (Fortlaufend)",
+    "datumDerAufzeichnung": "Datum der Aufzeichnung",
+    "innereBauleitungMitarbeiter": "Innere Bauleitung (Mitarbeiter)",
+    "t2WitterungUndKlimatologische": "2. Witterung und klimatologische Belastungen",
+    "dinEn13670Din": "DIN EN 13670 / DIN 1045",
+    "temperaturMinC": "Temperatur Min (°C)",
+    "temperaturMaxC": "Temperatur Max (°C)",
+    "frostgefahrNachbehandlungspflichtMinTemp": "**Frostgefahr / Nachbehandlungspflicht!** Min-Temperatur liegt unter +5°C. Betonaktivitäten erfordern Thermoplanung und Abdeckung, um Einfrieren oder Erstarrungsabbrüche zu verhindern.",
+    "witterungsbedingungenAuswahl": "Witterungsbedingungen (Auswahl)",
+    "einflussAufDieBaustelle": "Einfluss auf die Baustelle",
+    "t3FremdfirmenSubunternehmerPersonalstärke": "3. Fremdfirmen & Subunternehmer-Personalstärken",
+    "fremdfirmenVerzeichnisMitarbeiterPro": "Fremdfirmen-Verzeichnis & Mitarbeiter (pro Zeile)",
+    "gebenSieDasExakte": "Geben Sie das exakte Gewerk, Firma und Anzahl an. Unbesetzte Positionen sind ein wichtiger Verzugsindikator.",
+    "t4AusgeführteTagesleistungQualitätsprüfun": "4. Ausgeführte Tagesleistung & Qualitätsprüfungen",
+    "tagesarbeitBaufortschrittSchnittstellenG": "Tagesarbeit / Baufortschritt (Schnittstellen-genau beschreiben)",
+    "vorgeschlageneTätigkeitenFürDieses": " Vorgeschlagene Tätigkeiten für dieses Projekt:",
+    "eingeleiteteGüteprüfungenSchnelltestsGew": "Eingeleitete Güteprüfungen / Schnelltests (Gewerke-QS)",
+    "t5BesondereVorkommnisseBaurechtliches": "5. Besondere Vorkommnisse & Baurechtliches",
+    "vobB46": "VOB/B § 4 & § 6",
+    "mündlicheAnweisungenBaustellenbeschlüsse": "Mündliche Anweisungen / Baustellenbeschlüsse (z.B. Schmidt)",
+    "unvorhergeseheneStörungenHavarienGerätes": "Unvorhergesehene Störungen / Havarien / Geräteschäden",
+    "formelleBehinderungsanzeigeErforderlich": "Formelle Behinderungsanzeige erforderlich?",
+    "bedenkenanmeldungErhebenSicherheitsaussc": "Bedenkenanmeldung erheben (Sicherheitsausschluss)?",
+    "bautagebuchÜberprüfenArchivieren": " Bautagebuch überprüfen & archivieren",
+    "virtuelleProfessurAuswertungFeedback": "Virtuelle Professur: Auswertung & Feedback",
+    "wartenAufBerichtsabgabe": "Warten auf Berichtsabgabe...",
+    "tragenSieIhreWerte": "Tragen Sie Ihre Werte links ein und klicken Sie unten auf Überprüfen. Ihre Arbeit wird sofort nach HOAI und VOB Kriterien analysiert.",
+    "erhobenePrüfungsnote": "Erhobene Prüfungsnote",
+    "t100Punkte": " / 100 Punkte",
+    "szenarioHinweiseLösungen": "Szenario-Hinweise & Lösungen",
+    "empfohleneBaustoffParameter": "Empfohlene Baustoff-Parameter:",
+    "vobAusdruckVorschau": "VOB-Ausdruck (Vorschau)",
+    "tagesberichtGerichtsicherZertifiziert": " Tagesbericht gerichtsicher zertifiziert",
+    "dieserTagesbericht": "Dieser Tagesbericht #",
+    "fürDasProjekt": " für das Projekt “",
+    "wurdeInDerDatenbank": "” wurde in der Datenbank verschlüsselt und für die Bauakte ablagefertig vorbereitet.",
+    "berichtDruckenPdf": " Bericht drucken / PDF"
+  },
+  "werte": {
+    "keineBeeinflussung": "Keine Beeinflussung",
+    "bauunternehmungMüllerGmbh1": "Bauunternehmung Müller GmbH: 1 Polier, 4 Betonbauer\nTGA-Elektro Schmidt: 2 Monteure",
+    "deckeÜberUgBewehrungsabnahme": "Decke über UG: Bewehrungsabnahme durch Prüfstatiker ohne gravierende Rügen erfolgt. Beginn Vorbereitungen Betonguss.",
+    "keineBeeinflussung2": "Keine Beeinflussung",
+    "temperaturangabenVorhanden": "Temperaturangaben vorhanden",
+    "winterbaumaßnahmenNachDin1045": "Winterbaumaßnahmen nach DIN 1045-3 bei Betonarbeiten",
+    "frischbetontemperaturGemessen": "Frischbetontemperatur gemessen",
+    "cmMessungDurchgeführt": "CM-Messung durchgeführt",
+    "herausragendeLeistungIhrBautagebuch": "Herausragende Leistung! Ihr Bautagebuch entspricht vollumfänglich den rechtlichen Ansprüchen nach VOB/B, der HOAI Leistungsphase 8 sowie den einschlägigen technischen DIN-Normen. Damit ist der Bauablauf beweissicher dokumentiert.",
+    "sehrGuteAusarbeitungAlle": "Sehr gute Ausarbeitung. Alle sicherheitsrelevanten Witterungsverhältnisse und wesentlichen Bauabschnitte wurden erfasst. Kleinste formale Lücken.",
+    "guteBauleiterqualitätDerBericht": "Gute Bauleiterqualität. Der Bericht ist absolut brauchbar und gerichtsverwertbar. Einige praxisnahe Detailhinweise zur Schadensminderung könnten tiefer ausfallen.",
+    "durchsetzungsfähigAberMitMerklichen": "Durchsetzungsfähig, aber mit merklichen Auslassungen. Die Dokumentation ist im alltäglichen Regelbetrieb ausreichend, birgt aber feine rechtliche Schnittstellenschwächen im Streitfall.",
+    "ausreichendGeradeNochBestanden": "Ausreichend (Gerade noch bestanden). Sie haben den Bericht ausgefüllt, jedoch gravierende Aspekte wie Mindest-Betonpflegeregeln oder formale VOB-Fristhinderungen vernachlässigt. Bitte überarbeiten!",
+    "mangelhaftIhrBerichtIst": "Mangelhaft. Ihr Bericht ist rechtlich lückenhaft und bautechnisch fahrlässig. Bei Schadensfällen am Tragwerk oder Feuchtigkeitseinbruch haftet Ihre Bauleitung vollumfänglich. Nutzen Sie die Tipps und probieren Sie es erneut!",
+    "keineBeeinflussung3": "Keine Beeinflussung",
+    "bauunternehmungMüllerGmbh12": "Bauunternehmung Müller GmbH: 1 Polier, 4 Betonbauer\nTGA-Elektro Schmidt: 2 Monteure",
+    "carbonbeton": "🔺 Carbonbeton",
+    "mensaUmbau": "🏛️ Mensa Umbau",
+    "berichtLöschen": "Bericht löschen",
+    "temperaturMinC": "Temperatur Min (°C)",
+    "temperaturMaxC": "Temperatur Max (°C)",
+    "schneefall": "❄️ Schneefall",
+    "windSturm": "💨 Wind/Sturm",
+    "beschreibenSieRäumlichPräzise": "Beschreiben Sie räumlich präzise, welche Abschnitte heute geschalt, bewehrt, betoniert oder saniert wurden...",
+    "frischbetontemperaturGemessen2": "Frischbetontemperatur gemessen",
+    "ausbreitversuchDurchgeführt": "Ausbreitversuch durchgeführt",
+    "probekörperWürfelZylinderGegossen": "Probekörper (Würfel/Zylinder) gegossen",
+    "cmMessungDurchgeführt2": "CM-Messung durchgeführt",
+    "haftzugprüfungVorgenommen": "Haftzugprüfung vorgenommen",
+    "holzfeuchtigkeitsbestimmungGemessen": "Holzfeuchtigkeitsbestimmung gemessen",
+    "werHatWasVeranlasst": "Wer hat was veranlasst? (z.B. Herr Schmidt ordnete mündlich den Verzicht auf...)",
+    "zBRohrbruchIm": "z.B. Rohrbruch im Kellerbereich, Ausfall Hauptkran Liebherr...",
+    "begründungNach6Abs": "Begründung nach § 6 Abs. 1 VOB/B...",
+    "technischeBedenkenNach4": "Technische Bedenken nach § 4 Abs. 3 VOB/B...",
+    "beispiel1AusschalfristBei": "Beispiel 1: Ausschalfrist bei kühler Witterung abschätzen",
+    "ohneDokumentierteTemperaturenIst": "Ohne dokumentierte Temperaturen ist die Verlängerung nicht begründbar. Verbindlich sind die Vorgaben der Tragwerksplanung; im Zweifel die Festigkeit am Bauwerk oder an mitgelagerten Probekörpern prüfen.",
+    "reifegradansatzNachSaulDin": "Reifegradansatz nach Saul; DIN 1045-3:2023-08",
+    "beispiel2FestigkeitsentwicklungAus": "Beispiel 2: Festigkeitsentwicklung aus dem Lieferschein einordnen",
+    "festigkeitsentwicklungUndTemperaturGehör": "Festigkeitsentwicklung und Temperatur gehören deshalb in jedes Betonier-Protokoll; sie begründen Nachbehandlungs- und Ausschalfristen.",
+    "dinEn206Din": "DIN EN 206 / DIN 1045-2; DIN 1045-3:2023-08",
+    "oktober2026Ap15": "Oktober 2026 (AP 15 Praxiswissen: Normbezüge (DIN 1045-2/-3:2023-08, DIN EN 206, EN 12390-2, DIN 18014, HOAI 2021, VOB/B 2016), Bauvertragsrecht und Qualifikationen geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "mediaPrintBodyBackground": "\n        @media print {\n          body {\n            background: white !important;\n            color: black !important;\n          }\n          #bautagebuch-root {\n            padding: 0 !important;\n          }\n          .md\\:flex-row, .grid, .flex {\n            display: block !important;\n          }\n          button, select, input[type=\"range\"], #tab-btn-guide, #tab-btn-scenarios, #tab-btn-editor, #tab-btn-saved, #project-selector-group {\n            display: none !important;\n          }\n          .lg\\:col-span-12, .lg\\:col-span-7, .lg\\:col-span-5 {\n            width: 100% !important;\n            margin: 0 !important;\n            padding: 0 !important;\n            border: none !important;\n            box-shadow: none !important;\n          }\n          textarea, input {\n            border: none !important;\n            background: none !important;\n            padding: 0 !important;\n            margin: 0 !important;\n            font-size: 11pt !important;\n            color: black !important;\n            font-family: monospace !important;\n          }\n          textarea {\n            white-space: pre-wrap !important;\n          }\n          .bg-slate-50, .bg-slate-50\\/50, .bg-gradient-to-r, .bg-slate-900 {\n            background: none !important;\n            color: black !important;\n            border: 1px solid #cbd5e1 !important;\n          }\n          .text-white {\n            color: black !important;\n          }\n        }\n      "
+  },
+  "daten": {
+    "PROJECTS": [
+      {
+        "id": "carbon-beton",
+        "name": "Neubau Laborgebäude Carbonbeton (C³)",
+        "location": "Campus TH Augsburg, Halle 4b",
+        "client": "Staatliches Bauamt Augsburg / Freistaat Bayern",
+        "structuralEngineer": "Ingenieurbüro Dr. Vrabec & Partner",
+        "budget": "€4.200.000",
+        "timeline": "12 Monate (Rohbau)",
+        "description": "Forschungsbauwerk unter Verwendung von Carbonbeton. Erfordert hochfesten Feinbeton (Zementgehalt ≥ 450 kg/m³, w/z-Wert = 0.35) mit abgestimmter 2mm-Feingesteinskörnung, Hochleistungsfließmittel auf Polycarboxylatether-Basis (PCE) und korrosionsfreien Carbonfasergelegen.",
+        "defaultTasks": [
+          "Einbau der korrosionsfreien Carbonfaser-Gelege (Zugbewehrung)",
+          "Prüfung des Feinbeton-Ausbreitmaßes bzgl. Fließverhalten (dsp ≥ 700 mm)",
+          "Dokumentation der adiabatischen Hydratationswärme im Bauteilkern",
+          "Messen der Mindestbetondeckung an Deckenunterseiten (cmin = 10 mm)",
+          "Ausschalen der Sichtbetonträger nach Erreichen der Festigkeit"
+        ]
+      },
+      {
+        "id": "mensa-sanierung",
+        "name": "Denkmalschutz-Sanierung Mensa TH Augsburg",
+        "location": "An der Hochschule 1, Augsburg",
+        "client": "Technische Hochschule Augsburg (THA) (Körperschaft des öff. Rechts)",
+        "structuralEngineer": "Tragwerksplanung Dipl.-Ing. Keller",
+        "budget": "€1.850.000",
+        "timeline": "6 Monate (Sommersemester)",
+        "description": "Tragwerkssanierung im historischen Bestand. Einbau von Holz-Beton-Verbunddecken mit Trass-Kalk-Mörtel im Mauerwerksbereich zur Vermeidung alkalischer Ausblühungen sowie mineralischem Fließestrich (CA-C25-F5 auf Anhydritbasis) mit Belegreife-Analysen.",
+        "defaultTasks": [
+          "Einbringen der selbstschneidenden Schrauben für Holz-Beton-Verbund",
+          "CM-Restfeuchtemessung des frisch hergestellten Calciumsulfatestrichs (Soll < 0,5%)",
+          " NHL-Trassmörtelmischung am historischen Sichtmauerwerk prüfen",
+          "Rissverpressung (Epoxidharz-Injektion nach DIN EN 1504) im Außenmauerwerk",
+          "Auftragen der bitumenfreien Bauwerks-Reaktivabdichtung (MDS) an Sockelanschlüssen"
+        ]
+      },
+      {
+        "id": "parkhaus-fertigteil",
+        "name": "Neubau Studierenden-Parkhaus (Fertigteilbau)",
+        "location": "Brunnenlechgässchen, Augsburg",
+        "client": "Parkhaus GmbH Augsburg",
+        "structuralEngineer": "Büro für Baustatik Müller & Co.",
+        "budget": "€3.100.000",
+        "timeline": "8 Monate (Schnellmontage)",
+        "description": "Montage von großformatigen Fertigteilen hoher Festigkeitsklassen (C50/60). Kritische Schnittstellen sind das schwindkompensierte Ausgießen der lastübertragenden Fugen mit quellfähigem Vergussmörtel, Expositionsklassen XD3/XS3 sowie Tausalzbeständigkeit durch Hydrophobierung.",
+        "defaultTasks": [
+          "Montage der vorgefertigten C50/60 Spannbetonträger (Takt 3)",
+          "Ausgießen der Ringanker-Schnittstellen mit quellfähigem Vergussmörtel",
+          "Haftzugprüfung der rissüberbrückenden OS-11-Fahrbahnbeschichtung",
+          "Verbundfugen-Rauheit vor Schwindfugenverguss nach Eurocode 2 prüfen",
+          "Auftrag der hydrophobierenden Silan-Imprägnierung auf Sichtbeton-Randträgern"
+        ]
+      }
+    ],
+    "SCENARIOS": [
+      {
+        "id": "schlechtwetter",
+        "name": "Betonieren bei Frostgefahr",
+        "title": "Herausforderung: Hydratation & Gefrierschutz nach DIN 1045-3",
+        "description": "Es ist November. Die Temperaturen sinken nachts auf +1,5°C ab, begleitet von starkem Wind (erhöhte Verdunstungsgefahr!). Heute wird die hochfeste Carbonbeton-Bodenplatte betoniert. Der Polier verlangt eigenmächtig Wasserzugabe am Fahrmischer bzgl. Verarbeitbarkeit. Ein fehlerhaftes Protokoll oder mangelnde Curing-Maßnahmen ruinieren die Festigkeitsklasse des Betons irreparabel.",
+        "date": "15. November 2026",
+        "tempMin": 1.5,
+        "tempMax": 4.5,
+        "weatherConditions": [
+          "Rain",
+          "Frost"
+        ],
+        "objective": "Dokumentieren Sie die kalte Witterung, untersagen Sie jegliche unkontrollierte Wasserzugabe (Vermeidung von w/z-Werterhöhung), veranlassen Sie das Auflegen von Thermomatten (Wärme-Haltevorkehrung der Hydratationswärme) und messen Sie die Frischbetontemperatur (Soll ≥ +5°C nach DIN 1045-3).",
+        "hints": [
+          "Geben Sie die Min-Temperatur exakt auf 1,5 °C an, um die Frost-Hydratationswarnung auszulösen.",
+          "Wählen Sie im Prüfverfahren-Bereich \"Frischbetontemperatur gemessen\" und \"Ausbreitversuch durchgeführt\" aus.",
+          "Ergänzen Sie im Freitext \"Auflegen von Thermomatten (Wärmeschutz und Nachbehandlung nach DIN 1045-3)\".",
+          "Dokumentieren Sie das Verbot des Wasserzusatzes: Er erhöht den w/z-Wert und mindert Festigkeit und Dauerhaftigkeit."
+        ]
+      },
+      {
+        "id": "claim_conflict",
+        "name": "Feuchtigkeitsschutz & Baurecht",
+        "title": "Herausforderung: Weglassen der Sockelabdichtung (MDS)",
+        "description": "Bei der denkmalgeschützten Mensa-Sanierung fordert der Projektleiter mündlich den Verzicht auf die rissüberbrückende mineralische Dichtungsschlämme (MDS) am feuchtebeanspruchten Sockelbereich wg. Budgetkürzungen. Das widerspricht den Anforderungen der Abdichtungsnorm DIN 18533 und dem vereinbarten Leistungssoll.",
+        "date": "28. Juni 2026",
+        "tempMin": 19,
+        "tempMax": 26.5,
+        "weatherConditions": [
+          "Sunny"
+        ],
+        "objective": "Tragen Sie die gefahrvolle baustoffliche Abweichung ein. Melden Sie als ausführendes Unternehmen schriftlich Bedenken nach VOB/B § 4 Abs. 3 an und begründen Sie diese baustofflich (Kapillarer Feuchtigkeitstransport, Frostabplatzungen im Trass-Kalk-Mörtel und massive Zerstörung des Putzgefüges).",
+        "hints": [
+          "Wer schreibt, der bleibt! Notieren Sie den Namen des Projektleiters Schmidt und die unsachgemäße Anordnung.",
+          "Setzen Sie den Haken bei \"Bedenkenanmeldung erheben\" auf AKTIV.",
+          "Begründen Sie baustofflich mit den Verletzungen der DIN 18533 (Bauwerksabdichtung) und drohenden Schädlings- und Schimmelbefällen."
+        ]
+      },
+      {
+        "id": "delay_excavator",
+        "name": "Güteabnahme Fugenmörtel verzögert",
+        "title": "Herausforderung: Baustopp wg. Fugenverguss im Fertigteilbau",
+        "description": "Im Studierenden-Parkhaus ist der Spezialmörtel zum schwindkompensierten Ausgießen der Stützen-Vergussfugen (Festigkeitsklasse C50/60 gefordert) verzögert geliefert worden. Ohne Festigkeitsnachweis der Vorleistung im Takt 1 darf der Autokran keine weiteren Spannbetonträger auflegen. Der Kran-Stillstand kostet täglich hohe Mieten.",
+        "date": "04. Mai 2026",
+        "tempMin": 12,
+        "tempMax": 17.5,
+        "weatherConditions": [
+          "Cloudy"
+        ],
+        "objective": "Protokollieren Sie die Baustörung. Aktivieren Sie die \"Behinderungsanzeige\" nach VOB/B § 6, um Verzugsstrafen abzuwenden und fordern Sie den Festigkeitsnachweis (Prüfbericht) sowie den Verwendbarkeitsnachweis des Vergussmörtels an.",
+        "hints": [
+          "Grenzfälle im Fertigteilbau sind sicherheitskritisch: Markieren Sie die Behinderungsanzeige auf JA.",
+          "Erfassen Sie im Störungsfeld die genaue Ursache: ausstehender Festigkeitsnachweis für den Vergussmörtel.",
+          "Weisen Sie darauf hin, dass erst nach Erreichen der von der Tragwerksplanung geforderten Fugenfestigkeit (z. B. 70 % von f_ck) weiter belastet werden darf."
+        ]
+      }
+    ],
+    "handleAnalyzeAndSubmit": {
+      "title": "Detaillierungsgrad Baufortschritt (DIN 1045 / VOB)",
+      "success": false,
+      "detail": "Die Dokumentation des täglichen Arbeitsfortschritts ist unvollständig oder leer. Gemäß HOAI Lph 8 ist eine lückenlose Dokumentation gefordert."
+    },
+    "handleAnalyzeAndSubmit_2": {
+      "title": "Detaillierungsgrad Baufortschritt (DIN 1045 / VOB)",
+      "success": true,
+      "detail": "Sehr gut! Sie haben den täglichen Arbeitsfortschritt plausibel beschrieben."
+    },
+    "handleAnalyzeAndSubmit_3": {
+      "title": "Temperaturangaben unterliegen logischer Plausibilität",
+      "success": false,
+      "detail": "Die Mindesttemperatur darf nicht größer als die Maximaltemperatur sein."
+    },
+    "handleAnalyzeAndSubmit_4": {
+      "title": "Winterbaumaßnahmen nach DIN 1045-3 bei Betonarbeiten",
+      "success": true,
+      "detail": "Hervorragend! Sie haben trotz Temperaturen unter 5 °C angemessene Wärmeschutz- und Nachbehandlungsmaßnahmen nach DIN 1045-3 dokumentiert."
+    },
+    "handleAnalyzeAndSubmit_5": {
+      "title": "Frischbetontemperatur-Messkontrolle",
+      "success": false,
+      "detail": "Zementhydratation verlangt bei Frischbeton einen Mindesteinbauwert von +5°C. Bei Frostgefahr muss die Frischbetontemperatur gemessen und im Prüfprotokoll eingetragen werden."
+    },
+    "handleAnalyzeAndSubmit_6": {
+      "title": "Frischbetontemperatur-Messkontrolle",
+      "success": true,
+      "detail": "Sehr gut. Die Frischbeton-Kerntemperaturüberwachung wurde vorgenommen."
+    },
+    "handleAnalyzeAndSubmit_7": {
+      "title": "Szenario-Ziel: Versuchter Wasserzusatz",
+      "success": false,
+      "detail": "Mangelhafte Beurteilung. Sie haben dem Polier nicht schriftlich verboten, Wasser hinzuzufügen, oder den Vorfall stillschweigend übergangen. Wasserzugabe erhöht w/z-Wert exzessiv!"
+    },
+    "handleAnalyzeAndSubmit_8": {
+      "title": "Szenario-Ziel: Versuchter Wasserzusatz",
+      "success": true,
+      "detail": "Perfekt! Sie haben das illegale Hinzufügen von Baustellenwasser explizit untersagt und auf eine normgerechte Konsistenzregelung per Fließmittel verwiesen."
+    },
+    "handleAnalyzeAndSubmit_9": {
+      "title": "Szenario-Ziel: Bedenkenanmeldung nach VOB/B § 4 Abs. 3",
+      "success": false,
+      "detail": "Baurechtliches Risiko! Eine mündliche Weisung des Bauherrn zum Weglassen von Kernabdichtungen erfordert eine unverzügliche schriftliche Bedenkenanmeldung; ohne sie haftet das ausführende Unternehmen für den entstehenden Mangel (§ 13 Abs. 3 VOB/B)."
+    },
+    "handleAnalyzeAndSubmit_10": {
+      "title": "Präzision der Bedenkenanmeldung",
+      "success": false,
+      "detail": "Sie haben Bedenken angekreuzt aber die bautechnische Begründung (z.B. Verletzung der DIN 18533, Feuchteschäden) nicht detailliert beschrieben."
+    },
+    "handleAnalyzeAndSubmit_11": {
+      "title": "Szenario-Ziel: Bedenkenanmeldung nach VOB/B § 4 Abs. 3",
+      "success": true,
+      "detail": "Exzellent abgefangen! Die formale schriftliche Anmeldung von Bedenken schützt Ihr Büro und den Auftraggeber vor kostspieligen Überraschungen und Schimmelbildung."
+    },
+    "handleAnalyzeAndSubmit_12": {
+      "title": "Szenario-Ziel: Behinderungsanzeige (VOB/B § 6)",
+      "success": false,
+      "detail": "Gestörtes Bau-Soll! Wenn Fremdfirmen nicht plangemäß leisten und dadurch teure Maschinen (z.B. Autokran) stillstehen, müssen Sie unverzüglich eine formale schriftliche Behinderungsanzeige einreichen, um Ansprüche auf Bauzeitverlängerung zu sichern."
+    },
+    "handleAnalyzeAndSubmit_13": {
+      "title": "Schadensminderung im Baubetrieb",
+      "success": false,
+      "detail": "Sie haben die Behinderung markiert, aber den betroffenen Verursacher und die genauen wirtschaftlichen Konsequenzen (Verzug, Stillstandskosten Kran) nicht hinreichend spezifiziert."
+    },
+    "handleAnalyzeAndSubmit_14": {
+      "title": "Szenario-Ziel: Behinderungsanzeige (VOB/B § 6)",
+      "success": true,
+      "detail": "Sehr klug reagiert. Die Behinderungsanzeige sichert dem ausführenden Unternehmen die Verlängerung der Ausführungsfristen (§ 6 Abs. 2 VOB/B) und schützt vor Vertragsstrafen wegen nicht zu vertretender Verzögerung."
+    },
+    "handleAnalyzeAndSubmit_15": {
+      "title": "Belegreifeprüfung (CM-Methode, VOB/C DIN 18365/18356)",
+      "success": false,
+      "detail": "Achtung! Vor der Belegung eines Estrichs mit feuchteempfindlichen Belägen (Holz/Vinyl) muss eine Calciumcarbid-Messung (CM) zur Restfeuchtebestimmung stattfinden und protokolliert werden."
+    },
+    "handleAnalyzeAndSubmit_16": {
+      "title": "Belegreifeprüfung (CM-Methode, VOB/C DIN 18365/18356)",
+      "success": true,
+      "detail": "Klassenbeste Entscheidung: CM-Protokoll erhoben, damit der Parkettleger die Haftung wegen aufsteigender Feuchtigkeit nicht abwälzen kann."
+    },
+    "handleAnalyzeAndSubmit_17": {
+      "title": "Dokumentation am Bau - Personalstärke",
+      "success": false,
+      "detail": "Unvollständige Berichterstattung! Für die Dokumentation der Leistungsfähigkeit und Streitigkeiten müssen alle tätigen Mitarbeiter der Fremdfirmen sowie deren Gewerke täglich namentlich oder nach Qualifikation gezählt werden."
+    },
+    "handleAnalyzeAndSubmit_18": {
+      "title": "Dokumentation am Bau - Personalstärke",
+      "success": true,
+      "detail": "Personalstand der Fremdfirmen und Subunternehmer wurde erfolgreich erfasst."
+    },
+    "Bautagebuch.schritte": [
+      {
+        "titel": "Bezugswert",
+        "erklaerung": "Planerische Ausschalfrist bei 20 °C (Lehrwert):",
+        "formel": "t_{min} = 3\\,\\text{d}"
+      },
+      {
+        "titel": "Temperaturfaktor",
+        "erklaerung": "Mittlere Betontemperatur aus dem Bautagebuch 5 °C:",
+        "formel": "f_T = \\frac{30}{5 + 10} = 2{,}0"
+      },
+      {
+        "titel": "Ausschalfrist",
+        "erklaerung": "Verlängerte Frist:",
+        "formel": "t_{Ausschal} \\ge 3 \\cdot 2{,}0 = 6\\,\\text{d}"
+      }
+    ],
+    "Bautagebuch.schritte_2": [
+      {
+        "titel": "Angaben",
+        "erklaerung": "Lieferwerk: mittlere Festigkeit nach 2 Tagen 18 N/mm², nach 28 Tagen 40 N/mm²:",
+        "formel": "r = \\frac{18}{40} = 0{,}45"
+      },
+      {
+        "titel": "Einordnung",
+        "erklaerung": "Grenzen: schnell ≥ 0,50, mittel ≥ 0,30, langsam ≥ 0,15:",
+        "formel": "0{,}30 \\le 0{,}45 < 0{,}50 \\Rightarrow \\text{mittel}"
+      },
+      {
+        "titel": "Folge",
+        "erklaerung": "Die Mindestdauer der Nachbehandlung wird mit der Klasse mittel und der Oberflächentemperatur aus der Tabelle der DIN 1045-3 bestimmt:",
+        "formel": "\\text{mittel} + \\bar T \\to t_{NB}"
+      }
+    ],
+    "Bautagebuch.literatur": [
+      "Wendehorst Baustoffkunde. Wiesbaden: Springer Vieweg (aktuelle Auflage)",
+      "Bauleiter-Handbuch: Ausführung, Dokumentation und Abnahme (Werner Verlag)",
+      "Kochendörfer, B.; Liebchen, J. H.; Viering, M. G. (2018): Bau-Projekt-Management (Springer Vieweg)"
+    ],
+    "Bautagebuch.regelwerke": [
+      {
+        "title": "VOB/B 2016 § 4 Abs. 3 & § 6 (Bedenken und Behinderung)"
+      },
+      {
+        "title": "HOAI 2021, Anlage 10 Lph 8 (Objektüberwachung: Dokumentation des Bauablaufs)",
+        "url": "https://www.gesetze-im-internet.de/hoai_2021/"
+      },
+      {
+        "title": "DIN 1045-3:2023-08 (Tragwerke aus Beton, Stahlbeton und Spannbeton – Bauausführung)"
+      }
+    ],
+    "Bautagebuch.formeln": [
+      {
+        "formel": "t_{\\text{Ausschal}} \\ge t_{\\text{min}} \\cdot f_T \\quad \\text{mit} \\quad f_T = \\frac{30}{\\bar{T} + 10}",
+        "erklaerung": "Näherung für die Verlängerung von Ausschalfristen bei niedriger mittlerer Betontemperatur (Bezug 20 °C); verbindlich sind die Vorgaben der Tragwerksplanung und die Festigkeitskontrolle.",
+        "quelle": "Reifegradansatz nach Saul (Näherung)"
+      },
+      {
+        "formel": "r_{\\text{fest}} = \\frac{f_{\\text{cm},2}}{f_{\\text{cm},28}} \\implies \\text{Festigkeitsentwicklung: schnell (} \\ge 0{,}50 \\text{), mittel, langsam}",
+        "erklaerung": "Festigkeitsentwicklungsverhältnis r nach DIN EN 206 zur Bestimmung der Mindestnachbehandlungsdauer von Betonoberflächen.",
+        "quelle": "DIN EN 206 / DIN 1045-3"
+      }
+    ]
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "texte": {
+    "einheitenImBauwesen": " Einheiten im Bauwesen",
+    "dasInternationaleEinheitensystemSi": "Das Internationale Einheitensystem (SI) bildet die Grundlage für alle physikalischen und technischen Berechnungen im Bauwesen. Neben den SI-Basiseinheiten sind abgeleitete Einheiten (wie Newton oder Pascal) und Vorsätze (wie Kilo oder Mega) von zentraler Bedeutung.",
+    "grundlagenSiSystem": " Grundlagen & SI-System",
+    "thermodynamischeTemperatur": "Thermodynamische Temperatur",
+    "elektrischeStromstärke": "Elektrische Stromstärke",
+    "seitDerSiRevision": "Seit der SI-Revision 2019 sind alle sieben Basiseinheiten über festgelegte Naturkonstanten definiert (z. B. das Kilogramm über die Planck-Konstante). Die **Celsius-Temperatur** ist eine abgeleitete Größe: $\\vartheta / {}^\\circ\\text{C} = T/\\text{K} - 273{,}15$. Temperatur*differenzen* sind in K und °C zahlengleich – deshalb stehen Wärmedehnzahlen und U-Werte mit „K“ im Nenner.",
+    "wichtigeAbgeleiteteEinheiten": "Wichtige abgeleitete Einheiten",
+    "druckSpannungPSigma": "Druck / Spannung ($p, \\sigma$)",
+    "energieArbeitEW": "Energie / Arbeit ($E, W$)",
+    "wichtigImBauwesenSpannungen": "**Wichtig im Bauwesen:** Spannungen und Festigkeiten werden meist in **N/mm²** oder **MPa** angegeben.",
+    "gewichtskraftEinerTafelSchokolade": " ≈ Gewichtskraft einer Tafel Schokolade (100 g)",
+    "gewichtskraftEinesBauarbeitersMit": " ≈ Gewichtskraft eines Bauarbeiters mit Ausrüstung (100 kg)",
+    "gewichtskraftEinesGroßenWals": " ≈ Gewichtskraft eines großen Wals (100 t)",
+    "siVorsätzePräfixe": "SI-Vorsätze (Präfixe)",
+    "t102HundertZ": "$10^2$ (Hundert, z. B. Hektar)",
+    "t101ZehntelZ": "$10^{-1}$ (Zehntel, z. B. dm³ = Liter)",
+    "t106MillionstelZ": "$10^{-6}$ (Millionstel, z. B. µm Rissbreite)",
+    "t109MilliardstelZ": "$10^{-9}$ (Milliardstel, z. B. nm Gelporen)",
+    "interaktiverEinheitenumrechner": "Interaktiver Einheitenumrechner",
+    "anwendungEinheitenSicherDurch": "Anwendung: Einheiten sicher durch eine Rechnung führen",
+    "dieHäufigstenFehlerIn": "Die häufigsten Fehler in Prüfungen und Statik entstehen nicht in der Formel, sondern beim Umrechnen. Bewährte Regel: **alle Größen zuerst in N und mm** umrechnen – dann ergibt sich jede Spannung direkt in N/mm² (= MPa)."
+  },
+  "werte": {
+    "dmLiterL": "dm³ / Liter (l)",
+    "beispiel1DruckspannungIn": "Beispiel 1: Druckspannung in einer Stütze",
+    "vergleichMitDerFestigkeit": "Vergleich mit der Festigkeit: Ein C30/37 hat f_ck = 30 N/mm² – die Stütze ist gering ausgenutzt.",
+    "din13011Einheitenzeichen": "DIN 1301-1 (Einheitenzeichen), DIN EN 1992-1-1 (Bezeichnungen)",
+    "beispiel2BiegespannungEines": "Beispiel 2: Biegespannung eines Balkens – Moment in Nmm",
+    "t1Knm10Nmm": "1 kNm = 10⁶ Nmm – diese Umrechnung prüfen Sie im Einheitenumrechner unter „Moment“.",
+    "technischeMechanikEinheitenNach": "Technische Mechanik; Einheiten nach DIN 1301-1",
+    "beispiel3FlächenlastIn": "Beispiel 3: Flächenlast in Spannung umrechnen",
+    "dinEn19911": "DIN EN 1991-1-1 (Nutzlasten in kN/m²)",
+    "internationalesEinheitensystem": "Internationales Einheitensystem",
+    "pascalEinheit": "Pascal (Einheit)",
+    "oktober2026Ap3": "Oktober 2026 (AP 3 Grundlagen: DIN 1301, DIN EN ISO 80000-1, SI-Broschüre geprüft; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "Einheiten.schritte": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Normalkraft F = 500 kN, Querschnitt 30 cm × 30 cm.",
+        "formel": "F = 500\\,\\text{kN} = 500\\,000\\,\\text{N},\\quad A = 300 \\cdot 300 = 90\\,000\\,\\text{mm}^2"
+      },
+      {
+        "titel": "Spannung",
+        "erklaerung": "Division in N und mm liefert direkt N/mm²:",
+        "formel": "\\sigma = \\frac{500\\,000\\,\\text{N}}{90\\,000\\,\\text{mm}^2} = 5{,}56\\,\\frac{\\text{N}}{\\text{mm}^2} = 5{,}56\\,\\text{MPa}",
+        "einheit": "N/mm²"
+      },
+      {
+        "titel": "Typischer Fehler",
+        "erklaerung": "Wer kN durch cm² teilt, erhält kN/cm² – das Ergebnis 0,556 ist um den Faktor 10 kleiner als der MPa-Wert (1 kN/cm² = 10 N/mm²).",
+        "formel": "\\frac{500\\,\\text{kN}}{900\\,\\text{cm}^2} = 0{,}556\\,\\frac{\\text{kN}}{\\text{cm}^2} = 5{,}56\\,\\frac{\\text{N}}{\\text{mm}^2}"
+      }
+    ],
+    "Einheiten.schritte_2": [
+      {
+        "titel": "Moment",
+        "erklaerung": "Einfeldträger, Streckenlast q = 10 kN/m, Spannweite l = 6 m:",
+        "formel": "M = \\frac{q\\,l^2}{8} = \\frac{10 \\cdot 6^2}{8} = 45\\,\\text{kNm} = 45 \\cdot 10^6\\,\\text{Nmm}"
+      },
+      {
+        "titel": "Widerstandsmoment",
+        "erklaerung": "Rechteck b = 30 cm, h = 50 cm, in mm:",
+        "formel": "W = \\frac{300 \\cdot 500^2}{6} = 12{,}5 \\cdot 10^6\\,\\text{mm}^3"
+      },
+      {
+        "titel": "Spannung",
+        "erklaerung": "Die Zehnerpotenzen kürzen sich:",
+        "formel": "\\sigma = \\frac{45 \\cdot 10^6\\,\\text{Nmm}}{12{,}5 \\cdot 10^6\\,\\text{mm}^3} = 3{,}6\\,\\frac{\\text{N}}{\\text{mm}^2}",
+        "einheit": "N/mm²"
+      }
+    ],
+    "Einheiten.schritte_3": [
+      {
+        "titel": "Umrechnung",
+        "erklaerung": "1 kN = 10³ N und 1 m² = 10⁶ mm²:",
+        "formel": "1\\,\\frac{\\text{kN}}{\\text{m}^2} = \\frac{10^3\\,\\text{N}}{10^6\\,\\text{mm}^2} = 0{,}001\\,\\frac{\\text{N}}{\\text{mm}^2} = 1\\,\\text{kPa}"
+      },
+      {
+        "titel": "Anwendung",
+        "erklaerung": "Eine Nutzlast von 5 kN/m² entspricht einem Flächendruck von nur 0,005 N/mm² – Bodenpressungen und Lasten werden deshalb in kN/m², Materialspannungen in N/mm² angegeben.",
+        "formel": "5\\,\\frac{\\text{kN}}{\\text{m}^2} = 0{,}005\\,\\frac{\\text{N}}{\\text{mm}^2}"
+      }
+    ],
+    "Einheiten.literatur": [
+      "BIPM: Le Système international d’unités (SI-Broschüre), 9. Auflage 2019",
+      "PTB: Die gesetzlichen Einheiten in Deutschland. Braunschweig: Physikalisch-Technische Bundesanstalt (aktuelle Fassung unter ptb.de)",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "Einheiten.regelwerke": [
+      {
+        "title": "DIN 1301-1:2010-10 (Einheiten – Einheitennamen, Einheitenzeichen)"
+      },
+      {
+        "title": "DIN 1301-2:1978-02 (Einheiten – Allgemein angewendete Teile und Vielfache)"
+      },
+      {
+        "title": "DIN EN ISO 80000-1 (Größen und Einheiten – Teil 1: Allgemeines; Deutsche Fassung EN ISO 80000-1:2022)"
+      },
+      {
+        "title": "Einheiten- und Zeitgesetz (EinhZeitG) und Einheitenverordnung (EinhV)",
+        "url": "https://www.gesetze-im-internet.de/einhv/"
+      }
+    ],
+    "Einheiten.formeln": [
+      {
+        "formel": "1\\,\\text{MPa} = 1\\,\\frac{\\text{N}}{\\text{mm}^2} = 10^6\\,\\frac{\\text{N}}{\\text{m}^2} = 10\\,\\text{bar} = 1000\\,\\text{kN/m}^2",
+        "erklaerung": "Spannungs- und Druckäquivalenzen im Bauingenieurwesen: 1 Megapascal entspricht exakt einem Newton pro Quadratmillimeter.",
+        "quelle": "DIN 1301-1"
+      },
+      {
+        "formel": "1\\,\\text{W/(m}\\cdot\\text{K)} = 1\\,\\frac{\\text{J}}{\\text{s}\\cdot\\text{m}\\cdot\\text{K}} \\quad \\text{und} \\quad 1\\,\\text{kN} = 1000\\,\\text{kg}\\cdot\\frac{\\text{m}}{\\text{s}^2} \\approx 102\\,\\text{kp}",
+        "erklaerung": "Zusammenhang zwischen Wärmeleitfähigkeits- und Krafteinheiten im SI-System (Kraft F = m · a). Das Kilopond (kp) ist keine gesetzliche Einheit mehr, begegnet aber in Altstatiken (1 kp = 9,806 65 N).",
+        "quelle": "DIN EN ISO 80000-1"
+      }
+    ]
+  }
+}

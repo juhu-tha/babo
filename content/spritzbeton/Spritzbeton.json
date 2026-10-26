@@ -1,0 +1,20 @@
+{
+  "texte": {
+    "spritzbetonShotcrete": " Spritzbeton (Shotcrete)",
+    "spritzbetonIstBetonDer": "Spritzbeton ist Beton, der in einer geschlossenen Schlauchleitung zur Einbaustelle gefördert wird und dort durch Aufspritzen aufgetragen und durch die Aufprallenergie gleichzeitig verdichtet wird. Dabei wird zwischen dem Trockenspritzverfahren (Wasserzugabe an der Düse) und dem Nassspritzverfahren (Fertiger Frischbeton wird gespritzt) unterschieden.",
+    "besonderheitenTechnologie": " Besonderheiten & Technologie",
+    "damitDerBetonNicht": "Damit der Beton nicht abfällt (besonders über Kopf), werden an der Düse Erstarrungsbeschleuniger zudosiert, die ein \"Blitz-Erstarren\" bewirken.",
+    "einTeilDesMaterials": "Ein Teil des Materials prallt von der Applikationsfläche ab. Gröbere Körnung prallt stärker ab (bis zu 30%). Dadurch wird die verbleibende Schicht fettreicher an Zement, was zu hohem Schwinden führt.",
+    "derRückprall": "**Der Rückprall:**",
+    "tunnelbauNeueÖsterreichischeTunnelbauwei": "Tunnelbau (Neue Österreichische Tunnelbauweise), Baugrubensicherung, Instandsetzung (Reprofilierung), Freiformarchitektur (Skateparks).",
+    "trockenVsNassspritzen": "Trocken- vs. Nassspritzen",
+    "trockenGeringererAufwandBei": "**Trocken:** + Geringerer Aufwand bei kleinen Mengen, + Beliebig lange Unterbrechungen, - Hohe Staubentwicklung, - Geringere Leistung.<br>**Nass:** + Hohe Spritzleistung, + Konstanter w/z-Wert, + Weniger Rückprall und Staub.",
+    "schemaAuftragEinerSpritzbetonlage": "Schema: Auftrag einer Spritzbetonlage",
+    "üblicheSchichtdickenProSpritzgang": "Übliche Schichtdicken pro Spritzgang liegen zwischen 3 und 10 cm. Größere Dicken erfordern Erstarrungsbeschleuniger und Bewehrung (Erfahrungswerte).",
+    "beispielrezepturRichtwerte": "Beispielrezeptur (Richtwerte)",
+    "t1600KgM": "~ 1600 kg/m³"
+  },
+  "werte": {
+    "polygon040100": "polygon(0 40%, 100% 0, 100% 100%, 0 60%)"
+  }
+}

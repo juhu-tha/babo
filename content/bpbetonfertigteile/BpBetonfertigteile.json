@@ -1,0 +1,178 @@
+{
+  "texte": {
+    "interaktiveHotspots": "Interaktive Hotspots",
+    "fahrenSieMitDer": "Fahren Sie mit der Maus über die rot oder blau eingefärbten Bereiche der Skizze oder klicken Sie auf die Schaltflächen unten, um detaillierte Werkstoff- und Funktionseigenschaften einzublenden.",
+    "betonfertigteileBauprodukte": " Betonfertigteile (Bauprodukte)",
+    "industriellVorgefertigteBetonbauteileBie": "Industriell vorgefertigte Betonbauteile bieten hohe Präzision, gute Sichtbetonqualität und kurze Bauzeiten durch optimierten Logistikdurchlauf und standardisierte Montageknoten im Hoch- und Ingenieurbau.",
+    "basiswissenElementkatalog": " Basiswissen & Elementkatalog",
+    "betonfertigteileSindTragendeOder": "Betonfertigteile sind tragende oder nichttragende Elemente aus Beton, Stahlbeton oder Spannbeton, die werkstattmäßig unter kontrollierten, witterungsunabhängigen Klimabedingungen vorgefertigt, gehärtet und anschließend montagefertig auf die Baustelle geliefert werden.",
+    "dieWesentlichenVorteileLiegen": "Die wesentlichen Vorteile liegen in der sehr hohen Produktionsgeschwindigkeit, der exakten geometrischen Maßhaltigkeit (Maßtoleranzen im Millimeterbereich) und dem Wegfall aufwändiger Vor-Ort-Schalungsarbeiten.",
+    "interaktivesElementenStudioMit": " Interaktives Elementen-Studio (mit bautechnischen Skizzen)",
+    "klickenSieAufEin": "Klicken Sie auf ein Element, um die 2D-Querschnittszeichnung zu laden und dessen Aufbau im Detail zu analysieren.",
+    "t5cmSchalungsplatte": "5cm Schalungsplatte",
+    "c5060Hohlplattenkörper": "C50/60 Hohlplattenkörper",
+    "technischeKennwerteDinNormung": " Technische Kennwerte & DIN-Normung",
+    "dieFiligrandeckeElementdeckeNach": "Die **Filigrandecke (Elementdecke nach DIN EN 13747)** ist eines der verbreitetsten und wirtschaftlichsten Deckensysteme im Hochbau.",
+    "dinEn13747": "DIN EN 13747",
+    "t47CmFertigteil": "4 – 7 cm (Fertigteil)",
+    "stützweitenMax": "Stützweiten (Max):",
+    "bis750M": "bis ~7,50 m (schlaff)",
+    "zwingendNötig": "Zwingend nötig!",
+    "dieDoppelwandHohlwandNach": "Die **Doppelwand (Hohlwand nach DIN EN 14992)** vereint den massiven Schall- und Brandschutz von monolithischem Beton mit der hochwertigen Ästhetik von Fertigteilen.",
+    "dinEn14992": "DIN EN 14992",
+    "t20243036": "20, 24, 30, 36,5 cm",
+    "bemessungNachDin18218": "Bemessung nach DIN 18218",
+    "maxV15": "Max. v ≤ 1,5 m/h",
+    "dieSpannbetonHohlplatteNach": "Die **Spannbeton-Hohlplatte (nach DIN EN 1168)** ermöglicht sehr schlanke, weitgespannte und komplett unterstellungsfreie Tragwerkslösungen.",
+    "stützweitenMax2": "Stützweiten (Max):",
+    "bisZu20Meter": "Bis zu 20 Meter!",
+    "ca4045Einsparung": "ca. 40 - 45 % Einsparung",
+    "sofortBelastbar": "Sofort belastbar",
+    "filigrandeckeElementdecke": " Filigrandecke (Elementdecke)",
+    "dasHalbfertigteilVereintDie": "Das Halbfertigteil vereint die Vorteile der Schalungsfreiheit mit der monolithischen Steifigkeit einer Ortbetondecke. Bauseits wird eine Stoßfugenbewehrung eingebracht, um Risse an den Plattenübergängen im Putzbereich zu verhindern.",
+    "montageAxiom": "⚠️ Montage-Axiom:",
+    "bauseitigeMontagestützenMüssenVor": "Bauseitige Montagestützen müssen vor dem Auflegen exakt eingemessen und dürfen erst entfernt werden, wenn der Ortbeton ausreichend erhärtet ist (Zeitpunkt nach Tragwerksplanung bzw. DIN EN 13670/DIN 1045-3, nicht pauschal 28 Tage).",
+    "doppelwandHohlwand": " Doppelwand (Hohlwand)",
+    "dieHohlwandErsetztDie": "Die Hohlwand ersetzt die traditionelle Wandschalung auf der Baustelle. Die Werksplatten weisen eine sehr gute Porenstruktur auf. Eine Kernbetonierung mit der vorgeschriebenen Steiggeschwindigkeit ist zwingend und wird statisch berechnet.",
+    "einbauAxiom": "⚠️ Einbau-Axiom:",
+    "wandanschlusseisenAnschlussschwerterOder": "Wandanschlusseisen (Anschlussschwerter oder L-Verbinder) müssen exakt aus der Bodenplatte ragen, um die Wandscheibe am Fußpunkt starr zu verankern und abzustützen.",
+    "sofortVollTragfähigeDeckenelemente": "Sofort voll tragfähige Deckenelemente ohne bauseitige Montagestützen. Ideal für weite stützenfreie Räume (Sporthallen, Industriegebäude). Der Lastübertrag zwischen den Platten geschieht über profilierten Längstfugen-Mörtelverguss.",
+    "frostgefahrAxiom": "⚠️ Frostgefahr-Axiom:",
+    "imWinterMussBauseits": "Im Winter muss bauseits in den Hohlräumen stehendes Kondenswasser durch werkseitige Entwässerungslöcher abgelassen werden, um Eissprengungen des Betons zu verhindern!",
+    "konstruktionsklassenVonFertigteilenIm": "Konstruktionsklassen von Fertigteilen im Hoch- und Tiefbau",
+    "konstruktiverSkelettbauMassivbauten": " Konstruktiver Skelettbau & Massivbauten",
+    "skelettStützenWerdenMeist": "**Skelett-Stützen:** Werden meist liegend in Stahlschalungen hergestellt. Mit Köcherfundamenten oder Schraubverbindungen (z. B. Stützenschuhe) starr oder gelenkig angeschlossen.",
+    "spannbetonTrägerGroßeI": "**Spannbeton-Träger:** Große I- oder T-Querschnitte mit Spanngliedern. Sie decken weitgespannte Binderkonstruktionen im Industriehallenbau ab.",
+    "treppenläufePodesteIndustriellMit": "**Treppenläufe & Podeste:** Industriell mit vollflächigem Schalglanz gegossen, minimiert Schalungs- und Verlegezeit auf der Baustelle extrem.",
+    "tiefbauSpezialSchwerlastfertigteile": " Tiefbau & Spezial-Schwerlastfertigteile",
+    "tunnelTübbingeKreissegmenteAus": "**Tunnel-Tübbinge:** Kreissegmente aus Stahlbeton oder Stahlfaserbeton mit hoher Maßgenauigkeit und eingelegten Dichtungsprofilen gegen Bergwasser.",
+    "eisenbahnschwellenHoheErmüdungsfestigkei": "**Eisenbahnschwellen:** Hohe Ermüdungsfestigkeit bei dynamischer Schwellenbelastung, meist aus hochwertigem Spannbeton gefertigt.",
+    "verkehrsLeitelementeLärmschutzModule": "**Verkehrs-Leitelemente & Lärmschutz:** Module zur Absperrung oder Lärmminderung mit werkseitig unebenen, schallschluckenden Oberflächenstrukturen.",
+    "bilanzVorUndNachteile": "Bilanz: Vor- und Nachteile von Fertigteilsystemen",
+    "vorteileDerIndustriellenFertigung": " Vorteile der industriellen Fertigung",
+    "gütekontrolleWpkWitterungsunabhängigesGi": "**Gütekontrolle (WPK):** Witterungsunabhängiges Gießen und thermisches Härten führen zu gut reproduzierbaren Betongüten.",
+    "monolithischerSichtbetonStandardGlatte": "**Monolithischer Sichtbeton-Standard:** Glatte Schaltafeln und Vibrationsstraßen sichern Lunkerfreiheit und Sichtbetonklassen SB3/SB4 ohne bauseitige Nachbesserung.",
+    "einsparungVonSchalarbeitenElementdecken": "**Einsparung von Schalarbeiten:** Elementdecken und Hohlwände dienen als verlorene Schalung; Schal- und Rüstaufwand auf der Baustelle sinken deutlich.",
+    "spannbettVorspannungSichertSchlanke": "**Spannbett-Vorspannung:** Sichert schlanke Querschnitte bei großen Gewichts- und Materialeinsparungen.",
+    "ingenieurmäßigeHerausforderungen": " Ingenieurmäßige Herausforderungen",
+    "hoherPlanerischerVorlaufSämtliche": "**Hoher planerischer Vorlauf:** Sämtliche Einbauteile, Aussparungen, Kabelführungen und Sanitärauslässe müssen vor dem Betonier-Werksprozess endgültig festgelegt sein. Nachträgliches Bohren nur nach Freigabe durch die Tragwerksplanung (Spannglieder, Bewehrung).",
+    "schwertransportLogistikTransportVon": "**Schwertransport-Logistik:** Transport von tonnenschweren Hohlwänden, Bindern oder sperrigen Raumzellen bedarf polizeilicher Routenfreigaben und logistischer Just-In-Time-Genauigkeit.",
+    "statischeFugenproblematikKnotenpunkteAn": "**Statische Fugenproblematik:** Knotenpunkte an Bauteilgrenzen (Vergussfugen, Koppelstellen, Scherkraftdübel) sind konstruktive Schwachstellen bezüglich Kraftfluss, Feuchtigkeit, Dichtigkeit und mechanischer Dauerhaftigkeit.",
+    "bauaufsichtlicheZulassungGemäßDin": "**Bauaufsichtliche Zulassung:** Gemäß **DIN 1045-4** sowie der harmonisierten europäischen Grundnorm **DIN EN 13369** unterliegen alle tragenden Fertigteile strengen Konformitätsnachweisen. Der Hersteller deklariert die mechanische Tragfähigkeit und Dauerhaftigkeit über das CE-Kennzeichen und die Leistungserklärung (DoP)."
+  },
+  "werte": {
+    "anwendungsbeispielEigengewichtSpannbeton": "Anwendungsbeispiel: Eigengewicht Spannbeton-Hohlplatte vs. Massivdecke",
+    "dinEn1168Hohlraumanteil": "DIN EN 1168 (Hohlraumanteil als Lehrwert)",
+    "maßgebendSindDieHerstellerangaben": "Maßgebend sind die Herstellerangaben für den konkreten Plattentyp (Typenstatik)."
+  },
+  "daten": {
+    "BpBetonfertigteile.elementParts": {
+      "gittertraeger": {
+        "title": "Gitterträger (Schubträger & Montagebewehrung)",
+        "description": "Zweidimensionale oder dreidimensionale verschweißte Stahlgitter-Fachwerke (DIN 488). Sie sichern die Steifigkeit gegen Durchbiegung beim Transport und Heben, tragen die bauseitige Belastung durch Frischbeton und Montage-Arbeiter und stellen im ausgemixten Endzustand den kraftschlüssigen Verbund (Schubübertragung / Schubverbund) zwischen Fertigteil und Ortbetonschicht her.",
+        "type": "Statik & Verbundwirkung"
+      },
+      "ortbeton": {
+        "title": "Ortbeton-Ergänzung",
+        "description": "Wird auf der Baustelle nach dem Verlegen der Elementdecken aufbetoniert (meist Konsistenzklasse F4/F5, Festigkeitsklasse C25/30 oder C30/37). Nach dem Erhärten verschmilzt er mit der rauen Oberfläche der Fertigteilplatte zu einer tragenden Massivdecke (monolithisches Gesamttragwerk).",
+        "type": "bauseitige Bauleistung"
+      },
+      "fertigteilplatte": {
+        "title": "Vorgefertigte Betonplatte (Schalungsplatte)",
+        "description": "Eine 4 bis 7 cm dicke Platte aus hochwertigem Werksbeton. Sie enthält bereits die untere Biegezugbewehrung (Tragfläche) sowie Versteifungselemente. Sichert eine vollständig glatte, putzfreie Untersicht (Sichtbeton-Eignung) und ersetzt die gesamte herkömmliche Deckenschalung (Spares Zeit und Rüstholz).",
+        "type": "Werksseitige Vorfertigung"
+      },
+      "bewehrung": {
+        "title": "Zusatz- & Stoßfugenbewehrung",
+        "description": "Ergänzende Bewehrung, die bauseits eingelegt wird. Dazu gehören querverlaufende Bewehrungsstreifen über den Plattenstößen (Stoßfugenbewehrung zur Rissvermeidung), Zulagen für negative Biegemomente an Stützenauflagern (Stützbewehrung) und gegebenenfalls Ringanker-Eisen.",
+        "type": "Rissbegrenzung"
+      },
+      "doppelwand-schale": {
+        "title": "Werksseitige Außenschalen",
+        "description": "Zwei glatte Wandplatten (je 5 bis 6 cm dick) aus C30/37 Werksbeton. Sie bilden die Sichtflächen der Wand und fungieren im Montagezustand als „verlorene“ Schalung; vor Ort entfällt die Wandschalung.",
+        "type": "Werksseitige Vorfertigung"
+      },
+      "doppelwand-ortbeton": {
+        "title": "Ortbeton-Fließkern (Kernverguss)",
+        "description": "Flüssiger Kernbeton, der bauseits verfüllt wird. Um irreversible Schäden oder Sprengungen der dünnen Schalen durch physikalischen hydrostatischen Schalungsdruck zu vermeiden, ist die Steiggeschwindigkeit des Frischbetons stark reguliert (maximal 1,0 bis 1,5 Meter pro Stunde, abschnittsweise Verdichtung).",
+        "type": "Sicherheit & Montagegeschwindigkeit"
+      },
+      "doppelwand-truss": {
+        "title": "Verbindungsbolzen / Gitterträger",
+        "description": "Gitterträger, die beide Außenschalen im exakten lichten Abstand fixieren. Übernehmen im Einbauzustand die Zugkräfte, welche durch den hydrostatischen Innendruck des flüssigen Frischbetons die Wandschalen nach außen drücken wollen.",
+        "type": "Zulassungsrelevante Statik"
+      },
+      "doppelwand-fugen": {
+        "title": "Fugen-Stabstahl & Eckzulagen",
+        "description": "Spannungs- und Zuganker, die an Plattenstößen, Innenecken und Fundamentanschlüssen bauseits eingefädelt werden. Gewährleisten, dass die Einzelwandelemente statisch wie eine lückenlose, tragende Wandscheibe oder Gesamtbox wirken.",
+        "type": "Gefügestabilität"
+      },
+      "hohldiele-voids": {
+        "title": "Gewichtsreduzierende Kreis-Hohlkanäle (Voids)",
+        "description": "Runde, röhrenförmige Aussparungen, die sich über die gesamte Bauteillänge erstrecken. Reduzieren das Bauteileigengewicht um ca. 40 % im Vergleich zu massiven Decken. Dadurch sinken die Biegespannungen sowie die Lasten auf Stützen und Fundamente drastisch, während enorm viel Zement und CO2 eingespart werden.",
+        "type": "Leichtbau & Ökologie"
+      },
+      "hohldiele-cables": {
+        "title": "Vorspannstähle / Spannstahllitzen",
+        "description": "Hochfeste Spannstähle (St 1660/1860) im Bereich des Untergurtes. Werden im Werk hydraulisch vorgespannt, bevor der Beton gegossen wird (Vorspannung mit sofortigem Verbund im Spannbett). Ermöglichen große Stützweiten (bis 20m) und extreme Tragfähigkeiten bei minimaler Deckenhöhe – ganz ohne baustellenseitige Rüststützen.",
+        "type": "Vorspannung & Tragkraft-Multiplikator"
+      },
+      "hohldiele-body": {
+        "title": "Deckenkörper aus hochfestem Werksbeton",
+        "description": "Gefertigt aus hochfestem C45/55 oder C50/60 Beton mittels kontinuierlich ziehendem Gleitfertiger (Gleitfertigungsverfahren). Sehr witterungsbeständig und dicht. Die rauen Flanken besitzen profilierte Längsnuten, in welche die Fugen der Nachbardielen kraftschlüssig mit Vergussmörtel eingebunden werden.",
+        "type": "Betontechnologie Werk"
+      }
+    },
+    "BpBetonfertigteile.schritte": [
+      {
+        "titel": "1. Massivdecke",
+        "formel": "g = 0{,}265\\,\\text{m} \\cdot 25\\,\\text{kN/m}^3 = 6{,}6\\,\\text{kN/m}^2",
+        "erklaerung": "Bauhöhe 26,5 cm, Stahlbeton γ = 25 kN/m³."
+      },
+      {
+        "titel": "2. Hohlplatte (η ≈ 0,40)",
+        "formel": "g = 0{,}60 \\cdot 6{,}6 = 4{,}0\\,\\text{kN/m}^2",
+        "erklaerung": "Hohlräume sparen rund 40 % Masse."
+      },
+      {
+        "titel": "3. Einsparung",
+        "formel": "\\Delta g = 6{,}6 - 4{,}0 = 2{,}6\\,\\text{kN/m}^2",
+        "erklaerung": "Weniger Last für Unterzüge, Stützen und Fundamente."
+      }
+    ],
+    "BpBetonfertigteile.literatur": [
+      "Bachmann, H.; Tillmann, M.; Urban, S.: Bauen mit Betonfertigteilen im Hochbau. 4., aktual. Aufl., Berlin: Ernst & Sohn 2024 (Bauingenieur-Praxis)",
+      "Fachvereinigung Deutscher Betonfertigteilbau (FDB): Merkblätter zum Betonfertigteilbau",
+      "Wendehorst Bautechnische Zahlentafeln. Wiesbaden: Springer Vieweg (aktuelle Auflage)"
+    ],
+    "BpBetonfertigteile.regelwerke": [
+      {
+        "title": "DIN EN 13369 (Allgemeine Regeln für Betonfertigteile)"
+      },
+      {
+        "title": "DIN EN 1168 (Betonfertigteile - Hohlplatten)"
+      },
+      {
+        "title": "DIN EN 13747 (Betonfertigteile - Deckensysteme mit Ortbetonergänzung)"
+      },
+      {
+        "title": "DIN EN 14992 (Betonfertigteile - Wandelemente)"
+      },
+      {
+        "title": "DIN 1045-4:2023-08 (Zusatzregeln für Herstellung und Konformität von Fertigteilen)"
+      }
+    ],
+    "BpBetonfertigteile.formeln": [
+      {
+        "formel": "v_{Rdi} = c \\cdot f_{ctd} + \\mu \\cdot \\sigma_n + \\rho \\cdot f_{yd} \\cdot (\\mu \\cdot \\sin\\alpha + \\cos\\alpha) \\le 0{,}5 \\, \\nu \\, f_{cd}",
+        "erklaerung": "Bemessungswert der Schubtragfähigkeit in der Verbundfuge zwischen Fertigteil und Ortbetonschicht nach Eurocode 2 (DIN EN 1992-1-1 Abs. 6.2.5).",
+        "quelle": "DIN EN 1992-1-1"
+      },
+      {
+        "formel": "G_{\\text{Hohl}} \\approx (1 - \\eta) \\cdot G_{\\text{Voll}} \\quad (\\eta \\approx 0{,}35 - 0{,}45)",
+        "erklaerung": "Gewichtsersparnis einer Spannbeton-Hohlplatte gegenüber einer Vollbeton-Massivdecke gleicher Bauhöhe durch innenliegende Hohlkanäle.",
+        "quelle": "DIN EN 1168"
+      }
+    ]
+  }
+}

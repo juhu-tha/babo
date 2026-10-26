@@ -23,6 +23,8 @@ import { BarChart3 } from 'lucide-react';
 import { formatDeZahl } from '@/src/utils/numberFormat';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
+import inhalt from '@/content/festbetonstatistik/FestbetonStatistik.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -86,7 +88,7 @@ export default function FestbetonStatistik() {
     return {
       datasets: [
         {
-          label: '5%-Fraktil (Ausschuss)',
+          label: inhalt.werte.t5FraktilAusschuss,
           data: redAreaX.map((x, i) => ({ x: x, y: redAreaY[i] })),
           backgroundColor: 'rgba(255, 3, 80, 0.6)', // Torch Red
           borderColor: 'transparent',
@@ -168,12 +170,11 @@ export default function FestbetonStatistik() {
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <BarChart3 className="text-shiraz" /> Festbeton Statistik & Konformität
-        </h2>
+          <BarChart3 className="text-shiraz" /><MdText text={inhalt.texte.festbetonStatistikKonformität} /></h2>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
-            <FormulaText text="Beton ist ein Naturprodukt, dessen Festigkeit streut. Dieses Modul zeigt, wie aus vielen Einzelprüfungen (Mittelwert f_{cm} und Streuung σ) der verlässliche charakteristische Wert (f_{ck}) berechnet wird, der für die statische Bemessung (f_{cd}) verwendet wird." />
+            <FormulaText text={inhalt.werte.betonIstEinNaturprodukt} />
           </p>
         </div>
       </div>
@@ -184,15 +185,15 @@ export default function FestbetonStatistik() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="flex flex-col gap-4">
-              <Slider info="Der statistische Mittelwert aller ermittelten Druckfestigkeiten aus der Probekörperserie."
-                label={<FormulaText text="Mittlere Festigkeit (f_{cm,cyl})" />}
+              <Slider info={inhalt.werte.derStatistischeMittelwertAller}
+                label={<FormulaText text={inhalt.werte.mittlereFestigkeitFCm} />}
                 min={20} max={100} step={1}
                 value={fcm} unit="N/mm²"
                 onChange={(e) => setFcm(Number(e.target.value))}
               />
               
-              <Slider info="Maß für die Streuung der Festigkeitswerte um den Mittelwert. Höhere Werte bedeuten stärkere Produktionsschwankungen."
-                label={<FormulaText text="Standardabweichung (σ_{cyl})" />}
+              <Slider info={inhalt.werte.maßFürDieStreuung}
+                label={<FormulaText text={inhalt.werte.standardabweichungCyl} />}
                 min={1.0} max={10.0} step={0.1}
                 value={sigma} unit="N/mm²"
                 onChange={(e) => setSigma(Number(e.target.value))}
@@ -201,7 +202,7 @@ export default function FestbetonStatistik() {
               <div className="flex flex-col gap-2 mt-2">
                 <div className="flex items-center gap-2">
                   <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Anzeigeformat</label></div>
-                  <InfoTooltip text="Wählen Sie das geometrische Prüf-Format für die Auswertung." />
+                  <InfoTooltip text={inhalt.werte.wählenSieDasGeometrische} />
                 </div>
                 <div className="flex gap-4">
                   <label className="flex items-center gap-2 cursor-pointer">
@@ -231,17 +232,17 @@ export default function FestbetonStatistik() {
             </div>
 
             <div className="flex flex-col gap-4">
-              <h3 className="text-sm font-bold text-text-main mb-2">Bemessungswerte (Design)</h3>
+              <h3 className="text-sm font-bold text-text-main mb-2"><MdText text={inhalt.texte.bemessungswerteDesign} /></h3>
               
-              <Slider info="Beiwert zur Berücksichtigung von Langzeitwirkungen auf die Druckfestigkeit und ungünstiger Lasteinflüsse (nach DIN EN 1992-1-1/NA für Normalbeton 0,85)."
-                label={<FormulaText text="Beiwert (α_{cc})" />}
+              <Slider info={inhalt.werte.beiwertZurBerücksichtigungVon}
+                label={<FormulaText text={inhalt.werte.beiwertCc} />}
                 min={0.8} max={1.0} step={0.05}
                 value={alphaCc} unit=""
                 onChange={(e) => setAlphaCc(Number(e.target.value))}
               />
               
-              <Slider info="Teilsicherheitsbeiwert für Beton (DIN EN 1992-1-1/NA: 1,5 für ständige und vorübergehende, 1,2 für außergewöhnliche Bemessungssituationen)."
-                label={<FormulaText text="Teilsicherheitsbeiwert (γ_c)" />}
+              <Slider info={inhalt.werte.teilsicherheitsbeiwertFürBetonDin}
+                label={<FormulaText text={inhalt.werte.teilsicherheitsbeiwertC} />}
                 min={1.2} max={1.5} step={0.1}
                 value={gammaC} unit=""
                 onChange={(e) => setGammaC(Number(e.target.value))}
@@ -250,8 +251,8 @@ export default function FestbetonStatistik() {
 
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-2 mb-2">
-                <h3 className="text-sm font-bold text-text-main">Konformitätskriterien (DIN EN 206, Tab. 14)</h3>
-                <InfoTooltip text="Wählen Sie die Herstellungsart: Erstherstellung (bis zum Vorliegen von 35 Ergebnissen, Gruppen von n = 3) oder stetige Herstellung (n ≥ 15 bei bekannter Standardabweichung σ)." />
+                <h3 className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.konformitätskriterienDinEn206} /></h3>
+                <InfoTooltip text={inhalt.werte.wählenSieDieHerstellungsart} />
               </div>
               <div className="flex flex-col gap-2 mb-2">
                 <label className="flex items-center gap-2 cursor-pointer text-sm">
@@ -262,9 +263,7 @@ export default function FestbetonStatistik() {
                     checked={pruefArt === 'erst'}
                     onChange={() => setPruefArt('erst')}
                     className="accent-shiraz"
-                  />
-                  Erstherstellung (n = 3)
-                </label>
+                  /><MdText text={inhalt.texte.erstherstellungN3} /></label>
                 <label className="flex items-center gap-2 cursor-pointer text-sm">
                   <input 
                     type="radio" 
@@ -273,38 +272,28 @@ export default function FestbetonStatistik() {
                     checked={pruefArt === 'stetig'}
                     onChange={() => setPruefArt('stetig')}
                     className="accent-shiraz"
-                  />
-                  Stetige Herstellung (n ≥ 15)
-                </label>
+                  /><MdText text={inhalt.texte.stetigeHerstellungN15} /></label>
               </div>
               
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/50 text-sm">
                 {pruefArt === 'stetig' ? (
                   <>
-                    <p className="text-text-main/80 mb-2">
-                      Für die stetige Herstellung (n ≥ 15, σ aus mindestens 35 Ergebnissen, σ ≥ 3 N/mm²) gelten:
-                    </p>
+                    <p className="text-text-main/80 mb-2"><MdText text={inhalt.texte.fürDieStetigeHerstellung} /></p>
                     <div className="bg-white p-2 rounded border border-home-grau text-center font-mono text-shiraz mb-2">
                       <FormulaText text="f_{cm} \ge f_{ck} + 1{,}48 \cdot \sigma" /><br/>
                       <FormulaText text="f_{ci} \ge f_{ck} - 4" />
                     </div>
-                    <p className="text-text-main/80">
-                      Bei einem angestrebten 5%-Fraktil von <strong>{formatDeZahl(displayFck, 1)} N/mm²</strong> 
-                      muss der Mittelwert von n ≥ 15 Ergebnissen mindestens <strong>{formatDeZahl(displayFck + 1.48 * displaySigma, 1)} N/mm²</strong> betragen, und kein Einzelwert darf <strong>{formatDeZahl(displayFck - 4, 1)} N/mm²</strong> unterschreiten.
+                    <p className="text-text-main/80"><MdText text={inhalt.texte.beiEinemAngestrebten5} /><strong>{formatDeZahl(displayFck, 1)} N/mm²</strong><MdText text={inhalt.texte.mussDerMittelwertVon} /><strong>{formatDeZahl(displayFck + 1.48 * displaySigma, 1)} N/mm²</strong><MdText text={inhalt.texte.betragenUndKeinEinzelwert} /><strong>{formatDeZahl(displayFck - 4, 1)} N/mm²</strong> unterschreiten.
                     </p>
                   </>
                 ) : (
                   <>
-                    <p className="text-text-main/80 mb-2">
-                      Für die Erstherstellung (Gruppen von n = 3 Ergebnissen) gelten die Kriterien:
-                    </p>
+                    <p className="text-text-main/80 mb-2"><MdText text={inhalt.texte.fürDieErstherstellungGruppen} /></p>
                     <div className="bg-white p-2 rounded border border-home-grau text-center font-mono text-shiraz mb-2">
                       <FormulaText text="Kriterium 1: f_{cm} \ge f_{ck} + 4" /><br/>
                       <FormulaText text="Kriterium 2: f_{ci} \ge f_{ck} - 4" />
                     </div>
-                    <p className="text-text-main/80">
-                      Bei einem angestrebten 5%-Fraktil von <strong>{formatDeZahl(displayFck, 1)} N/mm²</strong> 
-                      muss der Mittelwert aus 3 Proben mindestens <strong>{formatDeZahl(displayFck + 4, 1)} N/mm²</strong> betragen, und kein Einzelwert darf <strong>{formatDeZahl(displayFck - 4, 1)} N/mm²</strong> unterschreiten.
+                    <p className="text-text-main/80"><MdText text={inhalt.texte.beiEinemAngestrebten52} /><strong>{formatDeZahl(displayFck, 1)} N/mm²</strong><MdText text={inhalt.texte.mussDerMittelwertAus} /><strong>{formatDeZahl(displayFck + 4, 1)} N/mm²</strong><MdText text={inhalt.texte.betragenUndKeinEinzelwert2} /><strong>{formatDeZahl(displayFck - 4, 1)} N/mm²</strong> unterschreiten.
                     </p>
                   </>
                 )}
@@ -316,60 +305,56 @@ export default function FestbetonStatistik() {
         <div className="flex flex-col gap-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col">
-              <h3 className="text-sm font-bold text-text-main mb-3">Charakteristischer Wert (5% Fraktile)</h3>
+              <h3 className="text-sm font-bold text-text-main mb-3"><MdText text={inhalt.texte.charakteristischerWert5Fraktile} /></h3>
               <div className="flex flex-col gap-2 text-sm">
                 <div className="flex justify-between items-center">
-                  <span className="text-text-main/80"><FormulaText text="Mittelwert (f_{cm}):" /></span>
+                  <span className="text-text-main/80"><FormulaText text={inhalt.werte.mittelwertFCm} /></span>
                   <span className="text-text-main font-bold">{formatDeZahl(displayFcm, 1)} MPa</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-text-main/80"><FormulaText text="Standardabweichung (σ):" /></span>
+                  <span className="text-text-main/80"><FormulaText text={inhalt.werte.standardabweichung} /></span>
                   <span className="text-text-main font-bold">{formatDeZahl(displaySigma, 1)} MPa</span>
                 </div>
                 <div className="flex justify-between items-center border-t border-home-grau/30 pt-2 mt-1">
-                  <span className="text-text-main font-bold"><FormulaText text="Charakteristische Festigkeit (f_{ck}):" /></span>
+                  <span className="text-text-main font-bold"><FormulaText text={inhalt.werte.charakteristischeFestigkeitFCk} /></span>
                   <span className="text-shiraz font-bold text-lg">{formatDeZahl(displayFck, 1)} MPa</span>
                 </div>
-                <div className="mt-2 text-xs text-shiraz font-medium bg-shiraz/10 p-2 rounded">
-                  Bei Normalverteilung unterschreiten 5 % der Grundgesamtheit diesen Wert.
-                </div>
+                <div className="mt-2 text-xs text-shiraz font-medium bg-shiraz/10 p-2 rounded"><MdText text={inhalt.texte.beiNormalverteilungUnterschreiten5} /></div>
               </div>
             </div>
 
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col">
-              <h3 className="text-sm font-bold text-text-main mb-3">Bemessungswert (Design)</h3>
+              <h3 className="text-sm font-bold text-text-main mb-3"><MdText text={inhalt.texte.bemessungswertDesign} /></h3>
               <div className="flex flex-col gap-2 text-sm">
                 <div className="flex justify-between items-center">
-                  <span className="text-text-main/80"><FormulaText text="Charakteristischer Wert (f_{ck,cyl}):" /></span>
+                  <span className="text-text-main/80"><FormulaText text={inhalt.werte.charakteristischerWertFCk} /></span>
                   <span className="text-text-main font-bold">{formatDeZahl(fckCyl, 1)} MPa</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-text-main/80"><FormulaText text="Faktoren (α_{cc} / γ_c):" /></span>
+                  <span className="text-text-main/80"><FormulaText text={inhalt.werte.faktorenCcC} /></span>
                   <span className="text-text-main font-bold">{formatDeZahl(alphaCc, 2)} / {formatDeZahl(gammaC, 2)}</span>
                 </div>
                 <div className="flex justify-between items-center border-t border-home-grau/30 pt-2 mt-1">
-                  <span className="text-text-main font-bold"><FormulaText text="Bemessungswert (f_{cd}):" /></span>
+                  <span className="text-text-main font-bold"><FormulaText text={inhalt.werte.bemessungswertFCd} /></span>
                   <span className="text-emerald-600 font-bold text-lg">{formatDeZahl(fcd, 1)} MPa</span>
                 </div>
-                <div className="mt-2 text-xs text-emerald-600 font-medium bg-emerald-50 p-2 rounded">
-                  Dieser Wert wird für die Bemessung im Grenzzustand der Tragfähigkeit (GZT) verwendet und basiert auf der Zylinderfestigkeit.
-                </div>
+                <div className="mt-2 text-xs text-emerald-600 font-medium bg-emerald-50 p-2 rounded"><MdText text={inhalt.texte.dieserWertWirdFür} /></div>
               </div>
             </div>
           </div>
 
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col h-[500px]">
-            <h2 className="text-xl font-bold text-text-main mb-2">Gaußsche Normalverteilung der Festigkeit</h2>
+            <h2 className="text-xl font-bold text-text-main mb-2"><MdText text={inhalt.texte.gaußscheNormalverteilungDerFestigkeit} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p>
-            <FormulaText text="Das 5%-Fraktil (f_{ck}) markiert den Wert, der nur von 5% der Proben unterschritten wird (rote Fläche)." />
+            <FormulaText text={inhalt.werte.das5FraktilF} />
           </p>
         </div>
             
             <div className="flex justify-between items-center mb-4 text-sm bg-off-white p-3 rounded-lg border border-home-grau/30">
-              <div><span className="font-bold text-text-main">Mittelwert (μ):</span> {formatDeZahl(displayFcm, 1)} N/mm²</div>
-              <div><span className="font-bold text-text-main">Standardabweichung (σ):</span> {formatDeZahl(displaySigma, 1)} N/mm²</div>
-              <div><span className="font-bold text-shiraz">5%-Fraktil (f_ck):</span> {formatDeZahl(displayFck, 1)} N/mm²</div>
+              <div><span className="font-bold text-text-main"><MdText text={inhalt.texte.mittelwert} /></span> {formatDeZahl(displayFcm, 1)} N/mm²</div>
+              <div><span className="font-bold text-text-main"><MdText text={inhalt.texte.standardabweichung} /></span> {formatDeZahl(displaySigma, 1)} N/mm²</div>
+              <div><span className="font-bold text-shiraz"><MdText text={inhalt.texte.t5FraktilFCk} /></span> {formatDeZahl(displayFck, 1)} N/mm²</div>
             </div>
 
             <div className="flex-1 relative w-full h-full">
@@ -379,11 +364,11 @@ export default function FestbetonStatistik() {
 
           {/* Schematische Darstellung Zylinder vs Würfel */}
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-            <h3 className="font-semibold mb-4 text-text-main">Schematische Darstellung: Zylinder- vs. Würfeldruckfestigkeit</h3>
+            <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungZylinderVs} /></h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Zylinder */}
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-                <div className="text-sm font-bold mb-2">Zylinder (150 x 300 mm)</div>
+                <div className="text-sm font-bold mb-2"><MdText text={inhalt.texte.zylinder150X300} /></div>
                 <svg width="100%" height="150" viewBox="0 0 200 150">
                   {/* Druckplatten */}
                   <rect x="60" y="10" width="80" height="10" fill="#64748b" />
@@ -404,14 +389,12 @@ export default function FestbetonStatistik() {
                   <path d="M 70 20 L 130 20 L 100 50 Z" fill="#94a3b8" opacity="0.5" />
                   <path d="M 70 130 L 130 130 L 100 100 Z" fill="#94a3b8" opacity="0.5" />
                 </svg>
-                <div className="text-xs text-text-main/70 text-center mt-2">
-                  Der mittlere Bereich bleibt weitgehend unbeeinflusst von der Reibung an den Druckplatten; die Querdehnung ist dort kaum behindert. Geringere gemessene Festigkeit (f_ck,cyl).
-                </div>
+                <div className="text-xs text-text-main/70 text-center mt-2"><MdText text={inhalt.texte.derMittlereBereichBleibt} /></div>
               </div>
 
               {/* Würfel */}
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
-                <div className="text-sm font-bold mb-2">Würfel (150 x 150 x 150 mm)</div>
+                <div className="text-sm font-bold mb-2"><MdText text={inhalt.texte.würfel150X150} /></div>
                 <svg width="100%" height="150" viewBox="0 0 200 150">
                   {/* Druckplatten */}
                   <rect x="50" y="25" width="100" height="10" fill="#64748b" />
@@ -432,9 +415,7 @@ export default function FestbetonStatistik() {
                   <path d="M 60 35 L 140 35 L 100 75 Z" fill="#94a3b8" opacity="0.5" />
                   <path d="M 60 115 L 140 115 L 100 75 Z" fill="#94a3b8" opacity="0.5" />
                 </svg>
-                <div className="text-xs text-text-main/70 text-center mt-2">
-                  Die Reibungskegel der Druckplatten durchdringen den gesamten Probekörper und behindern die Querdehnung. Höhere gemessene Festigkeit (f_ck,cube).
-                </div>
+                <div className="text-xs text-text-main/70 text-center mt-2"><MdText text={inhalt.texte.dieReibungskegelDerDruckplatten} /></div>
               </div>
             </div>
           </div>
@@ -442,76 +423,37 @@ export default function FestbetonStatistik() {
 
         {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
         <FormulaDerivationBox
-          title="Beispiel 1: Konformität bei Erstherstellung (C30/37, Würfel)"
+          title={inhalt.werte.beispiel1KonformitätBei}
           zielGleichung="f_{cm} \ge f_{ck} + 4,\qquad f_{ci} \ge f_{ck} - 4"
-          schritte={[
-            { titel: 'Gegeben', erklaerung: 'Drei Würfelergebnisse einer neuen Betonsorte C30/37 (f_ck,cube = 37 N/mm²): 41,0 / 39,5 / 43,2 N/mm².', formel: 'f_{ck,cube} = 37\\,\\text{N/mm}^2' },
-            { titel: 'Kriterium 1 (Mittelwert)', erklaerung: 'Mittelwert der Gruppe:', formel: 'f_{cm} = \\frac{41{,}0 + 39{,}5 + 43{,}2}{3} = 41{,}2 \\geq 37 + 4 = 41{,}0 \\;\\checkmark' },
-            { titel: 'Kriterium 2 (Einzelwert)', erklaerung: 'Kleinster Einzelwert:', formel: 'f_{ci,min} = 39{,}5 \\geq 37 - 4 = 33{,}0 \\;\\checkmark' }
-          ]}
-          ergebnisHinweis="Beide Kriterien sind erfüllt – die Gruppe ist konform. Ein Mittelwert von nur 40,9 N/mm² hätte Kriterium 1 knapp verfehlt."
-          normQuelle="DIN EN 206:2021-06, 8.2.1, Tab. 14"
+          schritte={inhalt.daten["FestbetonStatistik.schritte"]}
+          ergebnisHinweis={inhalt.werte.beideKriterienSindErfüllt}
+          normQuelle={inhalt.werte.dinEn2062021}
         />
         <FormulaDerivationBox
-          title="Beispiel 2: Konformität bei stetiger Herstellung und Bemessungswert"
+          title={inhalt.werte.beispiel2KonformitätBei}
           zielGleichung="f_{cm} \ge f_{ck} + 1{,}48\,\sigma,\qquad f_{cd} = \alpha_{cc} \cdot \frac{f_{ck}}{\gamma_c}"
-          schritte={[
-            { titel: 'Gegeben', erklaerung: 'C30/37, n = 15 Würfelergebnisse, Mittelwert 44,5 N/mm², kleinster Einzelwert 34,1 N/mm², Standardabweichung aus 35 Vorwerten σ = 4,0 N/mm².', formel: '\\sigma = 4{,}0 \\geq 3{,}0\\,\\text{N/mm}^2' },
-            { titel: 'Mittelwertkriterium', erklaerung: 'Erforderlicher Mittelwert:', formel: '37 + 1{,}48 \\cdot 4{,}0 = 42{,}9 \\leq 44{,}5 \\;\\checkmark' },
-            { titel: 'Einzelwertkriterium', erklaerung: 'Kleinster Einzelwert:', formel: '34{,}1 \\geq 37 - 4 = 33{,}0 \\;\\checkmark' },
-            { titel: 'Bemessungswert', erklaerung: 'Der Statiker rechnet mit der Zylinderfestigkeit f_ck = 30 N/mm² (α_cc = 0,85; γ_c = 1,5):', formel: 'f_{cd} = 0{,}85 \\cdot \\frac{30}{1{,}5} = 17{,}0\\,\\text{N/mm}^2' }
-          ]}
-          ergebnisHinweis="Die Konformität wird im Format der Prüfkörper (hier Würfel) nachgewiesen, die Bemessung erfolgt immer mit der Zylinderfestigkeit."
-          normQuelle="DIN EN 206:2021-06, Tab. 14; DIN EN 1992-1-1/NA, 3.1.6"
+          schritte={inhalt.daten["FestbetonStatistik.schritte_2"]}
+          ergebnisHinweis={inhalt.werte.dieKonformitätWirdIm}
+          normQuelle={inhalt.werte.dinEn20620212}
         />
 
         {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
-        <Querverweis ziel="normen_ausblick" titel="Neue Ausgaben erschienen: DIN EN 206-1/-2:2026 und EC2 2. Generation" linkText="Zum Modul Ausblick: neue Normengeneration">
-          <p>Maßgebend bleiben DIN EN 206:2021-06 mit DIN 1045-2:2023-08 und DIN EN 1992-1-1:2011-01 mit NA. Was die Neuausgaben ändern – etwa Expositionswiderstandsklassen (ERC) und CO₂-Klassen – und was zur Einführung bekannt ist, fasst das Ausblick-Modul zusammen.</p>
+        <Querverweis ziel="normen_ausblick" titel={inhalt.werte.neueAusgabenErschienenDin} linkText={inhalt.werte.zumModulAusblickNeue}>
+          <p><MdText text={inhalt.texte.maßgebendBleibenDinEn} /></p>
         </Querverweis>
 
         <ModulTest moduleId="festbeton_statistik" />
 
         <ModuleFooter 
-          lastReviewed="Oktober 2026 (AP 4 Labor: Konformitätskriterien DIN EN 206, Tab. 14, Fraktilwert und Bemessungswert nach DIN EN 1992-1-1/NA geprüft; fachliche Freigabe durch den Autor ausstehend)"
+          lastReviewed={inhalt.werte.oktober2026Ap4}
           wikipedia={[
             { title: 'Druckfestigkeit', url: 'https://de.wikipedia.org/wiki/Druckfestigkeit' },
             { title: 'Normalverteilung', url: 'https://de.wikipedia.org/wiki/Normalverteilung' },
             { title: 'Teilsicherheitskonzept', url: 'https://de.wikipedia.org/wiki/Teilsicherheitskonzept' }
           ]}
-          regelwerke={[
-            { title: 'DIN EN 206:2021-06 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)' },
-            { title: 'DIN 1045-2:2023-08 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Teil 2: Beton)' },
-            { title: 'DIN EN 12390-3:2019-10 (Prüfung von Festbeton - Teil 3: Druckfestigkeit von Probekörpern)' },
-            { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit DIN EN 1992-1-1/NA:2013-04 (bauaufsichtlich eingeführt); neue Generation DIN EN 1992-1-1:2025-09' }
-          ]}
-          literatur={[
-            'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-            'Zilch, K.; Zehetmaier, G.: Bemessung im konstruktiven Betonbau. 2. Aufl., Berlin: Springer 2010',
-            'Grübl, P.; Weigler, H.; Karl, S.: Beton – Arten, Herstellung und Eigenschaften. 2. Aufl., Berlin: Ernst & Sohn 2001'
-          ]}
-          formeln={[
-            {
-              formel: 'f_{ck} = f_{cm} - 1{,}645 \\cdot \\sigma',
-              erklaerung: 'Charakteristische Druckfestigkeit (5 %-Fraktil bei angenommener Gaußscher Normalverteilung): fcm = Mittelwert, σ = Standardabweichung, 1,645 = Quantilwert.',
-              quelle: 'DIN EN 206:2021-06 / DIN EN 1990, Anhang D'
-            },
-            {
-              formel: 'f_{cd} = \\alpha_{cc} \\cdot \\frac{f_{ck}}{\\gamma_c}',
-              erklaerung: 'Bemessungswert der Druckfestigkeit nach Eurocode 2: αcc = Langzeitbeiwert (im Nationalen Anhang Deutschland meist 0,85), γc = 1,50 (Teilsicherheitsbeiwert).',
-              quelle: 'DIN EN 1992-1-1, 3.1.6 mit NA'
-            },
-            {
-              formel: 'f_{cm} \\ge f_{ck} + 4 \\quad \\text{und} \\quad f_{ci} \\ge f_{ck} - 4',
-              erklaerung: 'Konformitätskriterien nach DIN EN 206:2021-06, Tabelle 14, für die Erstherstellung (Gruppen von n = 3 Ergebnissen, Werte in N/mm²).',
-              quelle: 'DIN EN 206:2021-06 Tab. 14'
-            },
-            {
-              formel: 'f_{cm} \\ge f_{ck} + 1{,}48 \\cdot \\sigma \\quad \\text{und} \\quad f_{ci} \\ge f_{ck} - 4',
-              erklaerung: 'Konformitätskriterien nach DIN EN 206:2021-06, Tabelle 14, für die stetige Herstellung (n ≥ 15 Ergebnisse, Standardabweichung σ aus mindestens 35 Ergebnissen).',
-              quelle: 'DIN EN 206:2021-06 Tab. 14'
-            }
-          ]}
+          regelwerke={inhalt.daten["FestbetonStatistik.regelwerke"]}
+          literatur={inhalt.daten["FestbetonStatistik.literatur"]}
+          formeln={inhalt.daten["FestbetonStatistik.formeln"]}
         />
       </div>
     </div>

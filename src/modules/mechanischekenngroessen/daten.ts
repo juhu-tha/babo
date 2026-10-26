@@ -1,3 +1,4 @@
+import inhalt from '@/content/mechanischekenngroessen/daten.json';
 export interface MaterialData {
   id: string;
   name: string;
@@ -17,7 +18,7 @@ export interface MaterialData {
 export const MATERIALIEN: Record<string, MaterialData> = {
   s235: {
     id: 's235',
-    name: 'Baustahl S235JR',
+    name: inhalt.werte.baustahlS235jr,
     kategorie: 'Metall',
     E: 210000,
     nu: 0.30,
@@ -28,11 +29,11 @@ export const MATERIALIEN: Record<string, MaterialData> = {
     alphaT: 12.0,
     phiKriechen: 0.0, // bei Raumtemperatur vernachlässigbar
     epsSchwinden: 0.0,
-    beschreibung: 'Duktiler Standard-Baustahl mit ausgeprägter Fließgrenze, konstanter Dehnsteifigkeit und hoher Verformungsreserve.'
+    beschreibung: inhalt.werte.duktilerStandardBaustahlMit
   },
   s355: {
     id: 's355',
-    name: 'Baustahl S355J2',
+    name: inhalt.werte.baustahlS355j2,
     kategorie: 'Metall',
     E: 210000,
     nu: 0.30,
@@ -43,11 +44,11 @@ export const MATERIALIEN: Record<string, MaterialData> = {
     alphaT: 12.0,
     phiKriechen: 0.0,
     epsSchwinden: 0.0,
-    beschreibung: 'Höherfester Konstruktionsbaustahl für schlanke Tragwerke im Hoch- und Brückenbau mit identischem E-Modul wie S235.'
+    beschreibung: inhalt.werte.höherfesterKonstruktionsbaustahlFürSchla
   },
   beton_c30: {
     id: 'beton_c30',
-    name: 'Normalbeton C30/37',
+    name: inhalt.werte.normalbetonC3037,
     kategorie: 'Mineralisch',
     E: 33000,
     nu: 0.20,
@@ -58,11 +59,11 @@ export const MATERIALIEN: Record<string, MaterialData> = {
     alphaT: 10.0,
     phiKriechen: 2.2, // Kriechzahl φ ca. 2,0 bis 2,5
     epsSchwinden: -0.45, // ca. -0,45 ‰
-    beschreibung: 'Sprödes, heterogenes Mehrphasenmaterial. Zeigt ausgeprägtes Kriechen und Schwinden über Monate bis Jahre.'
+    beschreibung: inhalt.werte.sprödesHeterogenesMehrphasenmaterialZeig
   },
   holz_c24: {
     id: 'holz_c24',
-    name: 'Nadelholz C24 (parallel)',
+    name: inhalt.werte.nadelholzC24Parallel,
     kategorie: 'Organisch',
     E: 11000,
     nu: 0.05,
@@ -73,11 +74,11 @@ export const MATERIALIEN: Record<string, MaterialData> = {
     alphaT: 5.0,
     phiKriechen: 0.8, // k_def Beiwert 0,6 bis 2,0
     epsSchwinden: -0.20, // hygroskopisches Schwindmaß parallel zur Faser
-    beschreibung: 'Anisotroper Naturbaustoff mit hoher spezifischer Steifigkeit längs zur Faser und Feuchtekriechen (k_def).'
+    beschreibung: inhalt.werte.anisotroperNaturbaustoffMitHoher
   },
   alu_6060: {
     id: 'alu_6060',
-    name: 'Aluminium EN AW-6060 T6',
+    name: inhalt.werte.aluminiumEnAw6060,
     kategorie: 'Metall',
     E: 70000,
     nu: 0.33,
@@ -88,11 +89,11 @@ export const MATERIALIEN: Record<string, MaterialData> = {
     alphaT: 23.0,
     phiKriechen: 0.0,
     epsSchwinden: 0.0,
-    beschreibung: 'Leichtmetall mit geringem E-Modul (1/3 des Stahls), aber hervorragender Korrosionsbeständigkeit.'
+    beschreibung: inhalt.werte.leichtmetallMitGeringemE
   },
   glas_float: {
     id: 'glas_float',
-    name: 'Bauglas (Kalk-Natron-Floatglas)',
+    name: inhalt.werte.bauglasKalkNatronFloatglas,
     kategorie: 'Glas',
     E: 70000,
     nu: 0.23,
@@ -103,11 +104,11 @@ export const MATERIALIEN: Record<string, MaterialData> = {
     alphaT: 9.0,
     phiKriechen: 0.0,
     epsSchwinden: 0.0,
-    beschreibung: 'Vollkommen linear-elastisches, ideal sprödes Material ohne plastische Fließzone und ohne Kriechverformung.'
+    beschreibung: inhalt.werte.vollkommenLinearElastischesIdeal
   },
   cfk_lamelle: {
     id: 'cfk_lamelle',
-    name: 'CFK-Lamelle (Carbonfaserverstärkt)',
+    name: inhalt.werte.cfkLamelleCarbonfaserverstärkt,
     kategorie: 'Verbund',
     E: 165000,
     nu: 0.30,
@@ -118,6 +119,6 @@ export const MATERIALIEN: Record<string, MaterialData> = {
     alphaT: -0.2,
     phiKriechen: 0.05,
     epsSchwinden: 0.0,
-    beschreibung: 'Hochleistungs-Verbundwerkstoff für die nachträgliche Bauwerksverstärkung im Bestand mit extrem geringer Relaxation.'
+    beschreibung: inhalt.werte.hochleistungsVerbundwerkstoffFürDie
   }
 };

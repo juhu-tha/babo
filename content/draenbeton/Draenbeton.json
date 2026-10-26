@@ -1,0 +1,14 @@
+{
+  "texte": {
+    "dränbetonOffenporigerBeton": " Dränbeton (Offenporiger Beton)",
+    "dränbetonEinkornbetonWirdAls": "Dränbeton (Einkornbeton) wird als hohlraumreicher Beton ausgeführt. Sein charakteristisches, offenporiges Gefüge wird durch den Verzicht auf feine Gesteinskörnung (Sand) erreicht, wodurch Wasser ungehindert abfließen kann.",
+    "einkörnigeGesteinskörnungenZB": "Einkörnige Gesteinskörnungen (z.B. 4/8 oder 8/16 mm) ohne oder mit sehr geringem Sandanteil, Zement und Wasser. Oft Einsatz von Polymerzusätzen zur Erhöhung der Haftung an den Kontaktpunkten.",
+    "vorsichtigesMischenUmZementleim": "Vorsichtiges Mischen, um Zementleim nicht abzuwaschen. Beim Einbau nur leicht verdichten (häufig mit leichten Rüttelbohlen oder Walzen), um das Hohlraumgefüge (oft 15-25 %) nicht zu zerstören.",
+    "sehrHoheWasserdurchlässigkeitSchallabsor": "Sehr hohe Wasserdurchlässigkeit, schallabsorbierend. Geringere Druckfestigkeiten, da die Körner nur an den Kontaktpunkten durch Zementleim verbunden sind.",
+    "wasserdurchlässigeVerkehrsflächenZB": "Wasserdurchlässige Verkehrsflächen (z.B. Parkplätze), Lärmschutzwände, Hinterfüllungen zur Drainage an Bauwerken, Tennissplätze, Tragschichten unter Pflaster.",
+    "frostTausalzWiderstandIst": "Frost-Tausalz-Widerstand ist ein kritisches Thema, da das Porengefüge offen ist und eiskaltes, salzhaltiges Wasser im Winter eindringen kann. Der Einsatz spezieller Frost-Tausalz-beständiger Rezepturen ist nötig.",
+    "beispielrezepturRichtwerteLehrbeispiel": "Beispielrezeptur (Richtwerte, Lehrbeispiel)",
+    "t0KgMEinkorn": "0 kg/m³ (Einkorn)",
+    "t1550KgM": "~ 1550 kg/m³"
+  }
+}

@@ -1,0 +1,308 @@
+{
+  "texte": {
+    "deponieverordnungDepvZuordnungsanalyse": "Deponieverordnung (DepV) & Zuordnungsanalyse",
+    "mineralischeAbfälleDieNicht": "Mineralische Abfälle, die nicht verwertet werden können (z.B. fehlendes Recycling-Potential, Überschreitung der EBV-Werte), müssen deponiert werden. Die DepV teilt Deponien in 5 Klassen ein, basierend auf Schadstoffpotential und Auslaugverhalten.",
+    "fürUnbelasteteInerteBauabfälle": "Für unbelastete, inerte Bauabfälle, die sich chemisch, biologisch und physikalisch nicht verändern.",
+    "beispielReinerBodenKiese": "Beispiel: Reiner Boden, Kiese.",
+    "nichtGefährlichGering": "Nicht-gefährlich (Gering)",
+    "geringBelasteteMineralischeBaustoffe": "Gering belastete mineralische Baustoffe mit sehr moderaten Abdichtungsbarrieren.",
+    "beispielLeichtKontaminierterSchutt": "Beispiel: Leicht kontaminierter Schutt.",
+    "hausmüllähnlichMäßig": "Hausmüllähnlich (Mäßig)",
+    "klassischeSiedlungsUndBauabfälle": "Klassische Siedlungs- und Bauabfälle. Höhere Anforderungen an Sickerwassererfassung und Basisabdichtungen.",
+    "beispielBelasteteSchlackenGipsbauteile": "Beispiel: Belastete Schlacken, Gipsbauteile.",
+    "überwachungspflichtigeGefährlicheAbfälle": "Überwachungspflichtige, gefährliche Abfälle. Extreme Sicherheitsstandards und doppelte Barrieren.",
+    "beispielAsbestplattenTeerigeBahnen": "Beispiel: Asbestplatten, teerige Bahnen.",
+    "dauerhafteKapselungInTiefen": "Dauerhafte Kapselung in tiefen geologischen Steinsalz-Formationen, isoliert von Biosphäre.",
+    "beispielFiltrieraschenHochtoxischeSchluf": "Beispiel: Filtrieraschen, hochtoxische Schluffe.",
+    "interactiveDepvGrenzwertPrüfer": "Interactive DepV Grenzwert-Prüfer",
+    "wählenSieEinenAnalysenwert": "Wählen Sie einen Analysenwert aus dem Laborprüfbericht (Eluat oder Feststoff), um die Mindest-Deponieklasse (nach DepV Anhang 3) sofort zu bestimmen.",
+    "parameterSchadstoff": "Parameter / Schadstoff:",
+    "gesetzlicheGrenzwerteImVergleich": "Gesetzliche Grenzwerte im Vergleich (",
+    "einhaltbar": "✓ Einhaltbar",
+    "überschritten": "❌ Überschritten",
+    "wichtigerHinweisInDer": "ℹ️ **Wichtiger Hinweis:** In der Praxis werden nach DepV Anhang 3 über 40 Parameter zeitgleich analysiert. Überschreitet auch nur ein einziger Parameter den Grenzwert (z.B. hohe TOC-Werte durch Holzspäne oder hoher Sulfatwert durch Gips), stuft dies den gesamten Abfallkörper unweigerlich in die nächsthöhere Klasse ein!",
+    "analytischeNachweisverfahrenEluatherstel": "Analytische Nachweisverfahren & Eluatherstellung",
+    "schüttelversuchDinEn12457": "Schüttelversuch (DIN EN 12457-4):",
+    "dasStandardLaborverfahrenZur": "Das Standard-Laborverfahren zur Bestimmung wasserlöslicher Stoffe. Der mechanisch zerkleinerte Feststoff wird im Gewichtsverhältnis 1:10 (1 kg Probe auf 10 Liter entionisiertes Wasser) über 24 Stunden rotatorisch geschüttelt. Die anschließende Membranfiltration liefert das \"Eluat\", das chemisch analysiert wird.",
+    "säulenperkolationsprüfungDin19528": "Säulenperkolationsprüfung (DIN 19528):",
+    "imZugeDerMantelverordnung": "Im Zuge der Mantelverordnung 2023 massiv aufgewertet. Repräsentiert die realistische Freisetzungsdynamik besser als das statische Schütteln. Wasser sickert kontinuierlich von unten nach oben durch eine vertikal präparierte Materialsäule. Die Auswertung erfolgt fraktioniert nach dem Flüssigkeits-Feststoff-Verhältnis (L/S 2 bis L/S 4).",
+    "gipsSulfatDieBiologische": "Gips, Sulfat & die biologische Gefahrenkette",
+    "derHoheSulfatgehaltIn": "Der hohe Sulfatgehalt in Gipsplatten und Gipsfaserplatten stellt den Erd- und Deponiebau vor erhebliche chemisch-biologische Probleme:",
+    "gipsdeponierungsverbotAufDk0": "**Gipsdeponierungsverbot auf DK 0:** Da DK 0 Deponien keine dichten geotechnischen Barrieren oder Sickerwasserreinigungen haben, führt die freie Auswaschung von Gips zu extrem hohen Sulfatkonzentrationen im Grundwasser.",
+    "anaerobeFäulnisgasbildungH2sWerden": "**Anaerobe Fäulnisgasbildung (H2S):** Werden Gipsrückstände unkontrolliert mit organischen Abfallbestandteilen (z.B. Holzresten) vermischt, wandeln sulfatreduzierende Bakterien unter Luftabschluss im feuchten Deponiekörper das Sulfat in hochgiftigen, metallkorrosiven und stark riechenden **Schwefelwasserstoff (H2S)** um.",
+    "ausschließlicheEntsorgungAlsMonofraktion": "**Ausschließliche Entsorgung als Monofraktion:** Gips muss am Abbruchort strikt getrennt gesammelt werden. Größere Bauteilmengen werden zur Kreislauf-Verwertung in Gipsrecyclingwerke transportiert oder sortenrein in abgeschotteten Monokompartimenten auf DK II / DK III Deponien abgelagert.",
+    "aufbauUndBarriereprinzipVon": "Aufbau- und Barriereprinzip von Deponien (§ 3-14 DepV)",
+    "dasSchutzkonzeptModernerDeponietechnisch": "Das Schutzkonzept moderner deponietechnischer Anlagen in Deutschland basiert auf dem **Multibarrierenkonzept** (Sicherheitsbarrieren) sowie einem hochpräzisen, regelkonformen **Schichtenaufbau** an Basis und Oberfläche.",
+    "dasMultibarrierenkonzeptDie5": "Das Multibarrierenkonzept (Die 5 Sicherheitsbarrieren)",
+    "durchDasIneinandergreifenVon": "Durch das Ineinandergreifen von fünf voneinander unabhängigen Sicherheitsbarrieren wird gewährleistet, dass selbst bei Ausfall einzelner Komponenten (z. B. einer Dichtungsbahn) keine Schadstoffe in die Biosphäre oder das Grundwasser gelangen können.",
+    "gesetzlicheNorm": "Gesetzliche Norm:",
+    "geotechnischerSchichtenaufbauNachDepv": "Geotechnischer Schichtenaufbau nach DepV Anhang 1",
+    "vergleichenSieDenNormativen": "Vergleichen Sie den normativen Aufbau der wissenschaftlich fundierten Dichtungsschichten an der Deponiebasis und der Oberfläche.",
+    "geotechnischeHauptfunktion": "🔍 Geotechnische Hauptfunktion:",
+    "gesetzlicheMindestanforderungDepvAnhang": "⚖️ Gesetzliche Mindestanforderung (DepV Anhang 1):",
+    "klickenSieAufEine": "Klicken Sie auf eine Schicht im linken Stapel, um die hydraulischen Eigenschaften und materialtechnischen Parameter einzusehen."
+  },
+  "werte": {
+    "chloridClImEluat": "Chlorid (Cl im Eluat)",
+    "mgLImEluat": "mg/l im Eluat",
+    "bleiPbImEluat": "Blei (Pb im Eluat)",
+    "mgLImEluat2": "mg/l im Eluat",
+    "arsenAsImEluat": "Arsen (As im Eluat)",
+    "mgLImEluat3": "mg/l im Eluat",
+    "cadmiumCdImEluat": "Cadmium (Cd im Eluat)",
+    "mgLImEluat4": "mg/l im Eluat",
+    "kupferCuImEluat": "Kupfer (Cu im Eluat)",
+    "mgLImEluat5": "mg/l im Eluat",
+    "nickelNiImEluat": "Nickel (Ni im Eluat)",
+    "mgLImEluat6": "mg/l im Eluat",
+    "zinkZnImEluat": "Zink (Zn im Eluat)",
+    "mgLImEluat7": "mg/l im Eluat",
+    "mineralölkohlenwasserstoffeC10C40Nur": "Mineralölkohlenwasserstoffe C10–C40 (nur DK 0 begrenzt)",
+    "mgKgTmFeststoff": "mg/kg TM (Feststoff)",
+    "überschreitungDkIiiGrenzwert": "⛔ Überschreitung DK III Grenzwert: DK IV (Untertägige Einlagerung) oder Sondermüllvorbehandlung erforderlich!",
+    "unbedenklichGeeignetFürDk": "💚 Unbedenklich: Geeignet für DK 0 (sowie DK I, DK II, DK III)",
+    "zulässigAbDeponieklasseDk": "✓ Zulässig ab Deponieklasse DK I (sowie DK II, DK III)",
+    "erhöhtZulässigAbDeponieklasse": "⚠️ Erhöht: Zulässig ab Deponieklasse DK II (sowie DK III)",
+    "gefährlichStarkBelastetZulässig": "🚨 Gefährlich / Stark Belastet: Zulässig erst ab Deponieklasse DK III (Sondermüll)",
+    "parameterSchadstoff": "Parameter / Schadstoff",
+    "keinZuordnungswert": "kein Zuordnungswert",
+    "barriere1Geologie": "Barriere 1: Geologie",
+    "standortUntergrund": "Standort & Untergrund",
+    "derGeologischeUntergrundFungiert": "Der geologische Untergrund fungiert als natürlicher Schadstofffänger. Er muss homogen und gering durchlässig sein (DepV Anhang 1 Tab. 1: kf ≤ 1 · 10⁻⁹ m/s bei DK I–III, kf ≤ 1 · 10⁻⁷ m/s bei DK 0) und mind. 1 m (DK III: 5 m) mächtig sein, um einen hydrogeologischen Sicherheitsabstand zum nutzbaren Grundwasserleiter zu wahren.",
+    "barriere2Abfallkörper": "Barriere 2: Abfallkörper",
+    "tocReaktivitätssperre": "TOC- & Reaktivitätssperre",
+    "verbotDerAblagerungVon": "Verbot der Ablagerung von organischen, biologisch abbaubaren Altabfällen (TOC ≤ 3% auf DK II). Dies stoppt mikrobielle Gärungen, saure Sickerwasserphasen sowie explosive Gaskonzentrationen im Kern.",
+    "barriere3Basisabdichtung": "Barriere 3: Basisabdichtung",
+    "doppelteSperreDränung": "Doppelte Sperre & Dränung",
+    "kombinationsabdichtungAmDeponiebodenEine": "Kombinationsabdichtung am Deponieboden: Eine mindestens 50 cm dicke, mehrlagig eingebaute mineralische Dichtung (kf ≤ 5 · 10⁻¹⁰ m/s) wirkt direkt unter einer 2,5 mm starken HDPE-Kunststoffdichtungsbahn (KDB). Kiesdräns (16/32) leiten Eluate aktiv ab.",
+    "barriere4Oberflächenabdichtung": "Barriere 4: Oberflächenabdichtung",
+    "kapselungRekultivierung": "Kapselung & Rekultivierung",
+    "nachVerfüllungErfolgtDer": "Nach Verfüllung erfolgt der hermetische Verschluss von oben. Ein mehrteiliges System aus Tonschicht, KDB, Entwässerungsdrän und 1m Mutterboden leitet Regenwasser ab und stoppt das Einsickern vollständig.",
+    "barriere5Überwachung": "Barriere 5: Überwachung",
+    "monitoringNachsorge": "Monitoring & Nachsorge",
+    "kontrollierterMessstellenbetriebImAn": "Kontrollierter Messstellenbetrieb im An- und Abstrom des Grundwassers, Sickerwasserreinigung und Gasverbrennung/Verwertung. Die Nachsorgephase läuft jahrzehntelang bis zur behördlichen Entlassung.",
+    "innenAbfallkörper": "➔ INNEN (ABFALLKÖRPER)",
+    "aussenAtmosphäre": "➔ AUSSEN (ATMOSPHÄRE)",
+    "rekultivierungsschichtMutterboden": "Rekultivierungsschicht (Mutterboden)",
+    "mutterbodenBepflanzungFrostschutz": "Mutterboden + Bepflanzung (Frostschutz)",
+    "dichtungskomponenteKdbTon": "Dichtungskomponente (KDB / Ton)",
+    "verbunddichtungPolymerBentonit": "Verbunddichtung (Polymer/Bentonit)",
+    "gasdränschichtGasschliff": "Gasdränschicht (Gasschliff)",
+    "gasleitungEntgasungsSandschicht": "Gasleitung (Entgasungs-Sandschicht)",
+    "ausgleichsschichtPlanum": "Ausgleichsschicht (Planum)",
+    "planierteProfilAusgleichsschicht": "Planierte Profil-Ausgleichsschicht",
+    "aussenGrundwasserpfad": "➔ AUSSEN (GRUNDWASSERPFAD)",
+    "innenAbfallkern": "➔ INNEN (ABFALLKERN)"
+  },
+  "daten": {
+    "Deponie.deponieParams.toc": {
+      "name": "TOC (Gesamter organisch gebundener Kohlenstoff)",
+      "unit": "Masse-% TM",
+      "limits": [
+        1,
+        1,
+        3,
+        6
+      ],
+      "isEluat": false
+    },
+    "Deponie.deponieParams.loi": {
+      "name": "Glühverlust (Anteil an brennbaren organischen Stoffen)",
+      "unit": "Masse-%",
+      "limits": [
+        3,
+        3,
+        5,
+        10
+      ],
+      "isEluat": false
+    },
+    "Deponie.deponieParams.sulfat": {
+      "name": "Sulfat (SO4 im Sickerwasser/Eluat)",
+      "unit": "mg/l im Eluat",
+      "limits": [
+        100,
+        2000,
+        2000,
+        5000
+      ],
+      "isEluat": true
+    },
+    "Deponie.classes": [
+      {
+        "label": "DK 0 (Inert)",
+        "desc": "Unbelastete Boden- und Bauschuttfraktionen",
+        "color": "bg-slate-100",
+        "text": "text-slate-800"
+      },
+      {
+        "label": "DK I (Gering)",
+        "desc": "Gering belastete mineralische Abfälle",
+        "color": "bg-slate-100",
+        "text": "text-slate-700"
+      },
+      {
+        "label": "DK II (Mäßig)",
+        "desc": "Höher belastete mineralische und vorbehandelte Siedlungsabfälle",
+        "color": "bg-slate-100",
+        "text": "text-slate-700 font-medium"
+      },
+      {
+        "label": "DK III (Gefährlich)",
+        "desc": "Gefährliche Abfälle, oberirdische Deponie",
+        "color": "bg-slate-150",
+        "text": "text-slate-800 font-bold"
+      }
+    ],
+    "Deponie": [
+      {
+        "num": 1,
+        "label": "Barriere 1: Geologische Barriere (Standortwahllogik)",
+        "desc": "Die erste Linie der Verteidigung ist der gewählte Bodenstandort selbst. Ein erstklassiger Deponiestandort befindet sich auf natürlichen Sedimentationsbecken (z.B. dicke Ton- oder Mergeldecken). Nach DepV Anhang 1 muss diese Schicht eine hohe Adsorptionskapazität aufweisen, um Kationen (z.B. Schwermetalle) durch Ionenaustausch an die Tonminerale (z.B. Montmorillonit) zu binden, falls es im Extremfall zu einer Sickerwasser-Migration kommen sollte.",
+        "norm": "§ 5 DepV sowie DepV Anhang 1 i.V.m. TA Abfall."
+      },
+      {
+        "num": 2,
+        "label": "Barriere 2: Reaktivitätsminderung im Deponiekörper (Abfallbeschaffenheit)",
+        "desc": "Bevor Müll deponiert wird, muss sein biologisches und chemisches Reaktionspotenzial kontrolliert werden. Durch das strikte Verbot unvorbehandelter organischer Siedlungsabfälle wird der Deponiekörper biologisch inert gehalten. Geringe TOC-Grenzwerte (DK 0: ≤ 1%, DK II: ≤ 3%) verhindern die Bildung hochpathogener organischer Säuren, die ansonsten mineralische Bauteile und Tonschichten angreifen und dichte Barrieren chemisch zersetzen würden.",
+        "norm": "§ 6 DepV (Annahmekriterien) und Anhang 3 Grenzwerttabellen."
+      },
+      {
+        "num": 3,
+        "label": "Barriere 3: Das deponietechnische Basisabdichtungssystem",
+        "desc": "Diese Barriere trennt den kontaminierten Abfall physisch vom darunterliegenden Boden. Sie besteht aus einer Kombinationsdichtung: Auf einer extrem dichten, mehrlagig feucht gewalzten mineralischen Dichtung (Ton, Dicke d ≥ 50 cm, kf ≤ 5 · 10⁻¹⁰ m/s) liegt direkt eine hochdichte Kunststoffdichtungsbahn (KDB, d ≥ 2,5 mm, HDPE). Eine mindestens 50 cm dicke mineralische Entwässerungsschicht (DK 0: 30 cm) fängt Sickerwässer ab, bevor diese hydrostatischen Druck auf die KDB ausüben können.",
+        "norm": "Anhang 1 Nr. 2 DepV (Anforderungen an die Kombinationsabdichtung)."
+      },
+      {
+        "num": 4,
+        "label": "Barriere 4: Das mehrschichtige Oberflächenabdichtungssystem",
+        "desc": "Nach vollständiger Verfüllung einer Deponiezelle wird diese 'gedeckelt', um das Eindringen von Regenwasser dauerhaft zu verhindern. Ohne Regenwasser entsteht kein nennenswertes Schadstoffeluat mehr im Abfallkörper. Die Oberfläche besteht von oben nach unten aus: mind. 1 Meter Rekultivierungsboden (Mutterboden + Bepflanzung), einer Entwässerungsschicht (Geodrän/Kies) zur schnellen Zuleitung fließenden Hangwassers nach außen, einem Dichtungselement (KDB oder Bentonitmatte) und einer Gasdränschicht zur sicheren Fassung von Diffusionsgasen.",
+        "norm": "Anhang 1 Nr. 2, Tab. 2 DepV (Anforderungen an das Oberflächenabdichtungssystem)."
+      },
+      {
+        "num": 5,
+        "label": "Barriere 5: Systematisches Sickerwasser- & Grundwassermonitoring (Nachsorge)",
+        "desc": "Regelmäßige Beprobungen an eigens dafür errichteten Grundwassermessstellen im direkten Anstrom (Referenzwert) und im Abstrom (Leckage-Detektion) der Deponie werden vierteljährlich durchgeführt. Das Sickerwasser wird über das Basisgefälle erfasst, in Schächten gesammelt und in speziellen physikalisch-chemischen und biologischen Reinigungsanlagen aufbereitet, bevor es in Vorfluter geleitet werden darf.",
+        "norm": "§ 12 - 14 DepV (Abschluss, Nachsorge und Monitoring)."
+      }
+    ],
+    "Deponie_2": [
+      {
+        "index": 0,
+        "name": "Abfallkörper (Deponiegut, verdichtet)",
+        "thickness": "variabel",
+        "color": "bg-stone-400 hover:bg-stone-500 border-stone-500 text-stone-900",
+        "previewText": "Abfallkörper (DK II / DK III)"
+      },
+      {
+        "index": 1,
+        "name": "Sickerwasserdränschicht (Kies-Leitschicht)",
+        "thickness": "≥ 50 cm",
+        "color": "bg-sky-200 hover:bg-sky-300 border-sky-400 text-sky-950",
+        "previewText": "Kies-Filterträgdrän (16/32, kf ≥ 1e-3)"
+      },
+      {
+        "index": 2,
+        "name": "HDPE-Kunststoffdichtungsbahn (KDB)",
+        "thickness": "≥ 2,5 mm",
+        "color": "bg-slate-950 hover:bg-slate-900 border-slate-900 text-slate-100",
+        "previewText": "Kunststoffdichtungsbahn (KDB - HDPE)"
+      },
+      {
+        "index": 3,
+        "name": "Mineralische Tonsperre (Mehrlagig)",
+        "thickness": "≥ 50 cm",
+        "color": "bg-amber-100 hover:bg-amber-200 border-amber-300 text-amber-800",
+        "previewText": "Mineralische Dichtung (mehrlagig)"
+      },
+      {
+        "index": 4,
+        "name": "Geologischer Barriereuntergrund (Tonmergel)",
+        "thickness": "≥ 1,0 m (DK III: ≥ 5 m)",
+        "color": "bg-amber-200/50 hover:bg-amber-200/70 border-amber-300/50 text-amber-900",
+        "previewText": "Natürlicher Baugrund (kf ≤ 1 · 10⁻⁹ m/s)"
+      }
+    ],
+    "Deponie.1": {
+      "index": 1,
+      "name": "Leitdränschicht (Dränmatte / Kies)",
+      "thickness": "≥ 30 cm",
+      "color": "bg-sky-150 hover:bg-sky-200 border-sky-300 text-sky-900",
+      "previewText": "Sicker- & Hangwasserdrän (kf ≥ 1e-3)"
+    },
+    "Deponie.basisLayers": {
+      "0": {
+        "name": "Abfallkörper (Deponiegut, verdichtet)",
+        "thickness": "Variabel (Betriebsphase)",
+        "material": "Mineralischer Bauschutt, Schluffe, Asche etc. der DK II / III",
+        "requirement": "Einhaltung der Zuordnungswerte Anhang 3 DepV",
+        "function": "Einbau und kontrollierte biologisch-physikalische Verdichtung des Abfalls zur Vermeidung von späteren großflächigen Sackungen."
+      },
+      "1": {
+        "name": "Sickerwasserdränschicht (Kiesfilter)",
+        "thickness": "≥ 50 cm (DK I–III; DK 0: ≥ 30 cm)",
+        "material": "Grobkies (Körnung 16/32), karbonatarm (< 10% CaCO3)",
+        "requirement": "Durchlässigkeit kf ≥ 1 · 10⁻³ m/s nach DepV",
+        "function": "Rasche Erfassung und schadlose Ableitung von Sickerwasser zur Vermeidung von hydrostatischem Druck auf das empfindliche Abdichtungssystem."
+      },
+      "2": {
+        "name": "HDPE-Kunststoffdichtungsbahn (KDB)",
+        "thickness": "≥ 2,5 mm",
+        "material": "PE-HD (Polyethylen hoher Dichte) mit BAM-Zulassung",
+        "requirement": "Heißluft- oder Extruderschweißung, vollständige geoelektrische Lecksuchprüfung, Schutz durch schwere Geotextil-Schutzvliese (GRK 5)",
+        "function": "Die primäre, absolut wasserdichte stoffliche Barriere gegen den Durchstrom und die Diffusion schadstoffbelasteter Wässer."
+      },
+      "3": {
+        "name": "Mineralische Tonsperre (Kombinationsdichtung)",
+        "thickness": "≥ 50 cm (mehrlagig eingebaut)",
+        "material": "Spezialtone (Silt / Ton im Verbund)",
+        "requirement": "kf ≤ 5 · 10⁻¹⁰ m/s nach Einbau und Walzenverdichtung (Proctor-Dichte ≥ 95%)",
+        "function": "Kombinationsdichtung im hohlraumfreien Direktverbund mit der darüberliegenden KDB zur geotechnischen Selbstdichtung durch Quellung bei eventuellen Mikrorissen der Bahn."
+      },
+      "4": {
+        "name": "Geologischer Barriereuntergrund (Natürliche Barriere)",
+        "thickness": "≥ 1,0 m (DK III: ≥ 5 m)",
+        "material": "Homogener Fest- oder Lockergesteinskörper (z.B. Tonmergel, feiner Ton)",
+        "requirement": "kf ≤ 1 · 10⁻⁹ m/s bei DK I–III (DK 0: ≤ 1 · 10⁻⁷ m/s); fehlende Mächtigkeit darf durch technische Maßnahmen ergänzt werden (DepV Anhang 1 Tab. 1)",
+        "function": "Letzter massiver Schutz des lokalen Wasserspiegels durch hohes chemisch-physikalisches Schadstoff-Rückhalte- und Absorptionsvermögen geologischer Massivschichten."
+      }
+    },
+    "Deponie.oberflaecheLayers": {
+      "0": {
+        "name": "Rekultivierungsschicht (Mutterboden)",
+        "thickness": "≥ 1,0 m",
+        "material": "Humusreicher Bodenaushub, wurzelfähiges Substrat",
+        "requirement": "Vermeidung tiefwurzelnder Gehölze nach Bepflanzungsordnung (Dichtungsschutz)",
+        "function": "Sichert ein stabiles Pflanzenwachstum als Erosionsschutz, schützt das Dichtungssystem vor winterlichem Frost/Dürre und speichert Regenwasser zur Verdunstung."
+      },
+      "1": {
+        "name": "Leitdränschicht (Oberflächendränung)",
+        "thickness": "≥ 30 cm",
+        "material": "Grobkies oder geosynthetische Dränmatte / Dränelemente",
+        "requirement": "Durchlässigkeit kf ≥ 1 · 10⁻³ m/s",
+        "function": "Zügiges horizontales Ableiten des durch den Oberboden sickernden Niederschlagswassers, damit kein Stauwasser über der Dichtungsschicht entsteht."
+      },
+      "2": {
+        "name": "Dichtungselement (KDB & Tonverbund)",
+        "thickness": "KDB ≥ 2,5 mm und/oder Tonschicht",
+        "material": "PE-HD Folie o. geosynthetische Tonsubstratbahn (Bento)",
+        "requirement": "Zulassung nach Bundesanstalt für Materialforschung (BAM)",
+        "function": "Verhindert verlässlich und dauerhaft das Einsickern von Oberflächen- bzw. Regenwasser in den darunterliegenden Deponiekörper, um so die Sickerwasserbildung im Kern zu stoppen."
+      },
+      "3": {
+        "name": "Gasdränschicht (Gasschliff)",
+        "thickness": "≥ 30 cm",
+        "material": "Sand oder feinkörniger Kies (kf ≥ 1 · 10⁻⁴ m/s)",
+        "requirement": "Erhalt der Porenstruktur zur unbeeinträchtigten Gasströmung zur Absaugung",
+        "function": "Sammelt aufsteigendes Deponiegas (Methan, Kohlendioxid) flächig unter der Dichtung ab und leitet es kontrolliert zu den Gasbrunnen für die BHKW-Verwertung."
+      },
+      "4": {
+        "name": "Ausgleichsschicht (Planum)",
+        "thickness": "≥ 20 cm",
+        "material": "Mineralstoffe (z.B. schluffarmer Sand, aufbereitetes RC-Material)",
+        "requirement": "Lagestabilität und Verformungsausgleich",
+        "function": "Gleicht lokale Verformungen des Abfallkörpers aus, schützt das Gassystem vor Müllkantendurchbrüchen und stellt ein geordnetes Mindestgefälle von 5% her."
+      }
+    }
+  }
+}

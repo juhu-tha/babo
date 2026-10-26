@@ -1,0 +1,19 @@
+{
+  "texte": {
+    "ausbreitversuchRheologie": " Ausbreitversuch & Rheologie",
+    "derAusbreitversuchNachDin": "Der Ausbreitversuch nach DIN EN 12350-5 dient zur Bestimmung der Konsistenz von Frischbeton. Gleichzeitig lässt sich das Fließverhalten von Beton rheologisch durch das **Bingham-Modell** beschreiben, welches durch die Fließgrenze (τ₀) und die plastische Viskosität (μ) definiert ist.",
+    "t1Versuchskonfiguration": "1. Versuchskonfiguration",
+    "konsistenzklasseWählen": "Konsistenzklasse wählen",
+    "rheologischeParameter": "Rheologische Parameter",
+    "fließgrenze": "Fließgrenze (τ₀):",
+    "plastischeViskosität": "Plastische Viskosität (μ):",
+    "testStarten": " Test Starten",
+    "t2Versuchsdurchführung": "2. Versuchsdurchführung",
+    "t3RheologischesModellBingham": "3. Rheologisches Modell (Bingham)"
+  },
+  "werte": {
+    "schergeschwindigkeit1S": "Schergeschwindigkeit γ̇ (1/s)",
+    "scherspannungPa": "Scherspannung τ (Pa)",
+    "konsistenzklasseWählen": "Konsistenzklasse wählen"
+  }
+}

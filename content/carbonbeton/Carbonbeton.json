@@ -1,0 +1,95 @@
+{
+  "texte": {
+    "carbonbetonTextilbeton": "Carbonbeton (Textilbeton)",
+    "carbonbetonIstEinInnovativer": "Carbonbeton ist ein innovativer Verbundwerkstoff, bei dem die klassische Stahlbewehrung durch Carbonfasermatten (Textilien) ersetzt wird. Da Carbon nicht rostet, kann die Betondeckung auf ein statisches Minimum (z.B. 10 mm) reduziert werden. Dies ermöglicht extrem schlanke, leichte und ressourcenschonende Bauteile.",
+    "geometrieBeton": "Geometrie & Beton",
+    "carbonbewehrungTextil": "Carbonbewehrung (Textil)",
+    "biegebemessungVereinfacht": "Biegebemessung (vereinfacht)",
+    "aufnehmbaresMoment": "Aufnehmbares Moment ",
+    "lehrannahmeXc4CNom": "Lehrannahme: XC4, c_nom = 40 mm beidseitig statt der Carbon-Deckung c.",
+    "brStahlbetonMin": "<br>Stahlbeton: min. ",
+    "schematischeDarstellungQuerschnittDehnun": "Schematische Darstellung: Querschnitt & Dehnungen",
+    "carbonbetonErmöglichtSehrGeringe": "Carbonbeton ermöglicht sehr geringe Betondeckungen, da Carbon nicht rostet. Dies führt zu deutlich schlankeren Bauteilen (geringeres h) bei gleichem Hebelarm (z) im Vergleich zu Stahlbeton.",
+    "imGegensatzZuBetonstahl": "Im Gegensatz zu Betonstahl (B500B), der nach Erreichen der Fließgrenze ein duktiles Plateau aufweist, verhält sich Carbonbewehrung bis zum Bruch streng linear-elastisch. Dies erfordert besondere Sicherheitskonzepte bei der Bemessung, da sich ein Versagen nicht durch große Verformungen ankündigt.",
+    "materialHerstellungUndAnwendungen": "Material, Herstellung und Anwendungen von Carbonbeton finden Sie im Modul "
+  },
+  "werte": {
+    "betonstahlB500b": "Betonstahl (B500B)",
+    "bauteildickeH": "Bauteildicke (h)",
+    "dickeDesBetrachtetenBauteils": "Dicke des betrachteten Bauteils (bspw. für schlanke Sandwichelemente).",
+    "betondeckungC": "Betondeckung (c)",
+    "derMinimaleAbstandZwischen": "Der minimale Abstand zwischen der Betonoberfläche und dem Carbonbewehrungstextil.",
+    "betonfestigkeitFCk": "Betonfestigkeit (f_{ck})",
+    "charakteristischeZylinderdruckfestigkeit": "Charakteristische Zylinderdruckfestigkeit des Betons nach 28 Tagen (oft Feinkornbeton).",
+    "effektiveQuerschnittsflächeDesBewehrungs": "Effektive Querschnittsfläche des Bewehrungstextils pro Meter Breite.",
+    "querschnittsflächeATex": "Querschnittsfläche (a_{tex})",
+    "zugfestigkeitFTk": "Zugfestigkeit (f_{tk})",
+    "charakteristischeZugfestigkeitDesVerwend": "Charakteristische Zugfestigkeit des verwendeten Carbonfasergewebes.",
+    "elastizitätsmodulDesCarbontextilsIn": "Elastizitätsmodul des Carbontextils in Faserrichtung.",
+    "eModulETex": "E-Modul (E_{tex})",
+    "spannungMpa": "Spannung (MPa)",
+    "anwendungsbeispielCarbonbetonplatteStand": "Anwendungsbeispiel: Carbonbetonplatte (Standardwerte)",
+    "gleichgewichtAmRechteckquerschnittTex": "Gleichgewicht am Rechteckquerschnitt; γ_tex = 1,3 als Lehrannahme",
+    "mRd51": "m_Rd ≈ 5,1 kNm/m bei nur 40 mm Plattendicke.",
+    "betonWikiTextilbetonCarbonbeton": "Beton.wiki: Textilbeton / Carbonbeton",
+    "kohlenstofffaserverstärkterKunststoff": "Kohlenstofffaserverstärkter Kunststoff"
+  },
+  "daten": {
+    "Carbonbeton.schritte": [
+      {
+        "titel": "1. Gegeben",
+        "formel": "h = 40\\,\\text{mm},\\; c = 10\\,\\text{mm},\\; d = 30\\,\\text{mm},\\; a_{tex} = 100\\,\\text{mm}^2/\\text{m},\\; \\text{C50/60}",
+        "erklaerung": "Textile Carbonbewehrung, f_tk = 2 500 N/mm²."
+      },
+      {
+        "titel": "2. Bemessungswerte",
+        "formel": "f_{td} = 2\\,500/1{,}3 = 1\\,923\\,\\text{N/mm}^2;\\; f_{cd} = 0{,}85 \\cdot 50/1{,}5 = 28{,}3\\,\\text{N/mm}^2",
+        "erklaerung": "α_cc = 0,85 nach NA."
+      },
+      {
+        "titel": "3. Druckzone",
+        "formel": "y = \\frac{100 \\cdot 1\\,923}{1\\,000 \\cdot 28{,}3} = 6{,}8\\,\\text{mm};\\; z = 30 - 6{,}8/2 = 26{,}6\\,\\text{mm}",
+        "erklaerung": "Gleichgewicht F_c = F_t."
+      },
+      {
+        "titel": "4. Biegewiderstand",
+        "formel": "m_{Rd} = 100 \\cdot 1\\,923 \\cdot 26{,}6 \\cdot 10^{-6} = 5{,}1\\,\\text{kNm/m}",
+        "erklaerung": "Je Meter Plattenbreite."
+      }
+    ],
+    "Carbonbeton.weblinks.0": {
+      "title": "C³ - Carbon Concrete Composite e.V.",
+      "url": "https://www.bauen-neu-denken.de/"
+    },
+    "Carbonbeton.regelwerke": [
+      {
+        "title": "DAfStb-Richtlinie Betonbauteile mit nichtmetallischer Bewehrung (Ausgabe 2024-01)",
+        "url": "https://www.dinmedia.de/en/technical-rule/dafstb-betonbauteile-nichtmetallische-bewehrung/377433845"
+      },
+      {
+        "title": "DIN EN 1992-1-1:2011-01 + NA:2013-04 (Eurocode 2, Grundlage der Bemessungslogik)"
+      }
+    ],
+    "Carbonbeton.literatur": [
+      "DAfStb (Hrsg.): Erläuterungen und Beispiele zur DAfStb-Richtlinie Betonbauteile mit nichtmetallischer Bewehrung. Berlin: DIN Media 2024",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "Carbonbeton.formeln": [
+      {
+        "erklaerung": "Bemessungswert der Zugfestigkeit der Carbonbewehrung [MPa]: f_tk geteilt durch γ_tex (hier 1,3 als Lehrannahme; maßgebend Richtlinie bzw. Zulassung).",
+        "formel": "f_{td} = \\frac{f_{tk}}{\\gamma_{tex}}",
+        "quelle": "DAfStb-Richtlinie Nichtmetallische Bewehrung"
+      },
+      {
+        "erklaerung": "Aufnehmbares Biegemoment m_Rd [kNm/m]: Bewehrungsquerschnitt a_tex multipliziert mit Bemessungszugfestigkeit f_td und innerem Hebelarm z.",
+        "formel": "m_{Rd} = a_{tex} \\cdot f_{td} \\cdot z",
+        "quelle": "Gleichgewicht am Rechteckquerschnitt (analog EC2)"
+      },
+      {
+        "erklaerung": "Linear-elastisches Spannungs-Dehnungs-Verhalten bis zum Sprödbruch ohne plastisches Fließplateau.",
+        "formel": "\\sigma_{tex} = E_{tex} \\cdot \\varepsilon_{tex} \\quad (\\varepsilon_{tex} \\le \\varepsilon_{u})",
+        "quelle": "Werkstoffverhalten Carbonbewehrung"
+      }
+    ]
+  }
+}

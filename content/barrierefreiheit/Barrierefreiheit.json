@@ -1,0 +1,49 @@
+{
+  "texte": {
+    "erklärungZurBarrierefreiheit": " Erklärung zur Barrierefreiheit",
+    "dieTechnischeHochschuleAugsburg": "Die Technische Hochschule Augsburg ist bemüht, ihre Webangebote im Einklang mit Art. 13 des Bayerischen Behindertengleichstellungsgesetzes (BayBGG) und der Bayerischen Digitalverordnung (BayDiV) barrierefrei zugänglich zu machen. Diese Erklärung gilt für die Webanwendung BaustoffBoard (baustoffboard.de).",
+    "dieWebanwendungIstMit": "Die Webanwendung ist mit den Anforderungen der Barrierefreien-Informationstechnik-Verordnung (BITV 2.0) bzw. der harmonisierten Norm EN 301 549 (WCAG 2.1, Stufe AA) **teilweise vereinbar**. Die unten aufgeführten Inhalte sind nicht barrierefrei. Die Mängel werden nach dem veröffentlichten Umsetzungsplan bis Januar 2027 behoben.",
+    "beiEinigenSchaltflächenStimmt": "Bei einigen Schaltflächen stimmt der für Screenreader hinterlegte Name nicht mit der sichtbaren Beschriftung überein; auf Mobilgeräten fehlt bei einzelnen Symbol-Schaltflächen ein Name.",
+    "einzelneTexteUndErgebnisfelder": "Einzelne Texte und Ergebnisfelder erreichen nicht das geforderte Kontrastverhältnis, insbesondere im Dunkelmodus von Rechnern.",
+    "einLinkZumÜberspringen": "Ein Link zum Überspringen der Navigation fehlt; Hauptüberschrift und Hauptbereich sind auf einer Seite mehrfach ausgezeichnet.",
+    "ausgeklappteUndEingeklappteMenügruppen": "Ausgeklappte und eingeklappte Menügruppen werden Screenreadern nicht mitgeteilt; das geschlossene Menü ist auf Mobilgeräten noch per Tastatur erreichbar.",
+    "aufSchmalenBildschirmenUnter": "Auf schmalen Bildschirmen (unter 400 px) werden Teile der Kopfzeile und einzelne Tabellen und Diagramme abgeschnitten; einige Bedienelemente sind kleiner als 24 × 24 Pixel.",
+    "diagrammeUndInteraktiveGrafiken": "Diagramme und interaktive Grafiken haben teilweise keine gleichwertige Textalternative.",
+    "dieSucheFindetNur": "Die Suche findet nur Menüeinträge, nicht den Inhalt der Module.",
+    "dieseErklärungWurdeAm": "Diese Erklärung wurde am ",
+    "erstelltGrundlageIstEine": " erstellt. Grundlage ist eine Selbstbewertung: eine automatisierte Prüfung mit axe-core auf 13 repräsentativen Seiten in Desktop- und Mobilansicht, jeweils im Hell- und Dunkelmodus, ergänzt um eine manuelle Prüfung der Tastaturbedienung.",
+    "sindIhnenMängelBeim": "Sind Ihnen Mängel beim barrierefreien Zugang aufgefallen? Dann melden Sie sich gern, wir antworten innerhalb von sechs Wochen. Auf Wunsch stellen wir Inhalte auch in einer barrierefreien Form zur Verfügung.",
+    "profDrIngJürgen": "Prof. Dr.-Ing. Jürgen Huber",
+    "technischeHochschuleAugsburgAn": "Technische Hochschule Augsburg · An der Hochschule 1 · 86161 Augsburg",
+    "wennSieAufIhre": "Wenn Sie auf Ihre Rückmeldung keine zufriedenstellende Antwort erhalten, können Sie sich an die Durchsetzungsstelle wenden und eine Prüfung nach § 11 BayDiV beantragen:",
+    "landesamtFürDigitalisierungBreitband": "Landesamt für Digitalisierung, Breitband und Vermessung",
+    "itDienstleistungszentrumDesFreistaats": "IT-Dienstleistungszentrum des Freistaats Bayern",
+    "durchsetzungsUndÜberwachungsstelleFür": "Durchsetzungs- und Überwachungsstelle für barrierefreie Informationstechnik",
+    "stMartinStraße47": "St.-Martin-Straße 47 · 81541 München"
+  },
+  "werte": {
+    "standDerVereinbarkeitMit": "Stand der Vereinbarkeit mit den Anforderungen",
+    "nichtBarrierefreieInhalte": "Nicht barrierefreie Inhalte",
+    "erstellungDieserErklärung": "Erstellung dieser Erklärung",
+    "feedbackUndKontakt": "Feedback und Kontakt"
+  },
+  "daten": {
+    "Barrierefreiheit.regelwerke": [
+      {
+        "title": "Richtlinie (EU) 2016/2102 über den barrierefreien Zugang zu Websites öffentlicher Stellen",
+        "url": "https://eur-lex.europa.eu/eli/dir/2016/2102/oj"
+      },
+      {
+        "title": "Bayerisches Behindertengleichstellungsgesetz (BayBGG), Art. 13",
+        "url": "https://www.gesetze-bayern.de/Content/Document/BayBGG"
+      },
+      {
+        "title": "Bayerische Digitalverordnung (BayDiV)",
+        "url": "https://www.gesetze-bayern.de/Content/Document/BayDiV"
+      },
+      {
+        "title": "EN 301 549 V3.2.1 (2021-03) Barrierefreiheitsanforderungen für IKT-Produkte und -Dienstleistungen"
+      }
+    ]
+  }
+}

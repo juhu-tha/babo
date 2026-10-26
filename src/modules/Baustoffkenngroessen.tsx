@@ -29,6 +29,8 @@ import RechenbeispieleTab from './baustoffkenngroessen/RechenbeispieleTab';
 import PhysikalischTab from './baustoffkenngroessen/PhysikalischTab';
 import HygrischTab from './baustoffkenngroessen/HygrischTab';
 import ThermischTab from './baustoffkenngroessen/ThermischTab';
+import inhalt from '@/content/baustoffkenngroessen/Baustoffkenngroessen.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -87,36 +89,7 @@ export default function Baustoffkenngroessen() {
 
   const [selectedMaterial, setSelectedMaterial] = useState<'holz' | 'beton' | 'stahl' | 'glas' | 'mauerwerk' | 'asphalt'>('holz');
 
-  const dichtePresets = {
-    ziegel: {
-      name: "Ziegelscherben (Vollziegel)",
-      rhoR: 2650,
-      rho: 1800,
-      rhoS: 1100,
-      desc: "Der gebrannte Ziegelscherben hat eine Reindichte von etwa 2650 kg/m³. Durch die Brennporen sinkt die Scherbenrohdichte eines Vollziegels auf ca. 1800 kg/m³ (Lochziegel: Steinrohdichte durch die Lochung deutlich geringer). Geschütteter Ziegelsplitt erreicht ca. 1100 kg/m³."
-    },
-    blaehton: {
-      name: "Blähtongranulat",
-      rhoR: 2500,
-      rho: 650,
-      rhoS: 380,
-      desc: "Die Mineralsubstanz hat ca. 2500 kg/m³ Reindichte. Beim Brennen bei ca. 1200 °C blähen Gase den erweichten Ton auf; die Kornrohdichte sinkt dadurch auf ca. 650 kg/m³. Die lose Schüttung mit Haufwerksporen wiegt nur ca. 380 kg/m³."
-    },
-    granit: {
-      name: "Monolithischer Granit",
-      rhoR: 2700,
-      rho: 2650,
-      rhoS: 1600,
-      desc: "Quarzreiches Tiefengestein mit vernachlässigbar kleiner Porigkeit. Reindichte und Rohdichte sind quasi identisch (~2650 kg/m³). Als gebrochener Schotter (Haufwerk) bildet Granit eine Schüttdichte von ca. 1600 kg/m³."
-    },
-    porenbeton: {
-      name: "Porenbeton",
-      rhoR: 2400,
-      rho: 500,
-      rhoS: 310,
-      desc: "Das Feststoffgerüst (Tobermorit, Quarz) hat ca. 2400 kg/m³ Reindichte. Aluminiumpulver reagiert in der alkalischen Mischung unter Wasserstoffbildung und treibt den Mörtel auf; die Steinrohdichte sinkt dadurch auf ca. 500 kg/m³. Als Granulatschüttung wiegt der Baustoff nur noch ca. 310 kg/m³."
-    }
-  };
+  const dichtePresets = inhalt.daten["Baustoffkenngroessen.dichtePresets"];
 
   const [selectedDichtePreset, setSelectedDichtePreset] = useState<'ziegel' | 'blaehton' | 'granit' | 'porenbeton' | 'custom'>('ziegel');
   const [physRhoR, setPhysRhoR] = useState(2650);
@@ -221,7 +194,7 @@ export default function Baustoffkenngroessen() {
     labels: [0, dehnungPromille / 2, dehnungPromille, dehnungPromille * 1.5],
     datasets: [
       {
-        label: 'Spannung (Hookesches Gesetz)',
+        label: inhalt.werte.spannungHookeschesGesetz,
         data: [0, (eModul * (dehnung / 2)), spannungHooke, (eModul * (dehnung * 1.5))],
         borderColor: '#A3113E',
         tension: 0,
@@ -263,7 +236,7 @@ export default function Baustoffkenngroessen() {
     labels: timeLabels.map(d => `${formatDeWert(d)} d`),
     datasets: [
       {
-        label: 'Elastische Dehnung',
+        label: inhalt.werte.elastischeDehnung,
         data: timeLabels.map(d => calcTimedValues(d).eps_el),
         borderColor: '#94a3b8',
         backgroundColor: '#94a3b8',
@@ -282,7 +255,7 @@ export default function Baustoffkenngroessen() {
         pointRadius: 2,
       },
       {
-        label: 'Schwindverkürzung |ε_cs|',
+        label: inhalt.werte.schwindverkürzungCs,
         data: timeLabels.map(d => Math.abs(calcTimedValues(d).eps_cs)),
         borderColor: '#1e293b',
         backgroundColor: '#1e293b',
@@ -291,7 +264,7 @@ export default function Baustoffkenngroessen() {
         pointRadius: 2,
       },
       {
-        label: 'Gesamtstauchung (Betrag)',
+        label: inhalt.werte.gesamtstauchungBetrag,
         data: timeLabels.map(d => calcTimedValues(d).eps_total),
         borderColor: '#A3113E',
         backgroundColor: '#A3113E',
@@ -306,7 +279,7 @@ export default function Baustoffkenngroessen() {
     labels: timeLabels.map(d => `${formatDeWert(d)} d`),
     datasets: [
       {
-        label: 'Spannungsverlauf (Relaxation)',
+        label: inhalt.werte.spannungsverlaufRelaxation,
         data: timeLabels.map(d => calcTimedValues(d).sigma_t),
         borderColor: '#A3113E',
         backgroundColor: '#A3113E',
@@ -325,9 +298,7 @@ export default function Baustoffkenngroessen() {
         </h2>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Baustoffkenngrößen beschreiben die physikalischen, mechanischen, hygrischen und thermischen Eigenschaften von Materialien. Sie sind die Grundlage für jede statische und bauphysikalische Bemessung.
-          </p>
+          <p><MdText text={inhalt.texte.baustoffkenngrößenBeschreibenDiePhysikal} /></p>
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
@@ -389,8 +360,7 @@ export default function Baustoffkenngroessen() {
             }`}
             onClick={() => setActiveTab('zeitlich')}
           >
-            <Clock size={16} /> Zeitabh. Eigenschaften
-          </button>
+            <Clock size={16} /><MdText text={inhalt.texte.zeitabhEigenschaften} /></button>
           <button aria-pressed={activeTab === 'rechenbeispiele'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'rechenbeispiele' 
@@ -430,34 +400,10 @@ export default function Baustoffkenngroessen() {
           { title: 'Wärmeeindringkoeffizient', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmeeindringkoeffizient' },
           { title: 'Wasserdampfdiffusionswiderstandszahl', url: 'https://de.wikipedia.org/wiki/Wasserdampfdiffusionswiderstandszahl' }
         ]}
-        literatur={[
-          'Willems, W. M. (Hrsg.): Lehrbuch der Bauphysik. 9. Aufl., Wiesbaden: Springer Vieweg 2022',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Stark, J.; Wicht, B.: Dauerhaftigkeit von Beton. 2. Aufl., Berlin/Heidelberg: Springer Vieweg 2013'
-        ]}
-        regelwerke={[
-          { title: 'DIN 4108-3 (Wärmeschutz und Energie-Einsparung in Gebäuden - Klimabedingter Feuchteschutz)' },
-          { title: 'DIN EN ISO 6946 (Bauteile - Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)' },
-          { title: 'DIN EN ISO 10456 (Baustoffe und Bauprodukte - Wärme- und feuchtetechnische Eigenschaften)' },
-          { title: 'DIN 4108-4 (Wärme- und feuchteschutztechnische Bemessungswerte)' },
-          { title: 'DIN EN ISO 12570 (Bestimmung des Feuchtegehaltes durch Trocknen bei erhöhter Temperatur)' },
-          { title: 'DIN EN ISO 12572 (Bestimmung der Wasserdampfdurchlässigkeit)' },
-          { title: 'DIN EN ISO 15148 (Bestimmung des Wasseraufnahmekoeffizienten bei teilweisem Eintauchen)' },
-          { title: 'DIN EN 1992-1-1 (Eurocode 2) – Kriechen und Schwinden (3.1.4, Anhang B)' }
-        ]}
-        formeln={[
-          {
-            formel: 'b = \\sqrt{\\lambda \\cdot \\rho \\cdot c} \\quad \\left[\\frac{\\text{J}}{\\text{m}^2 \\cdot \\text{K} \\cdot \\text{s}^{1/2}}\\right]',
-            erklaerung: 'Wärmeeindringkoeffizient b: Beschreibt die Geschwindigkeit und Intensität, mit der ein Baustoff bei Kontakt Wärme aufnimmt (maßgeblich für Fußwärme von Bodenbelägen).',
-            quelle: 'Bauphysik / Willems'
-          },
-          {
-            formel: 's_d = \\mu \\cdot d \\quad [\\text{m}] \\quad \\text{und} \\quad a = \\frac{\\lambda}{\\rho \\cdot c} \\quad \\left[\\frac{\\text{m}^2}{\\text{s}}\\right]',
-            erklaerung: 'Diffusionsäquivalente Luftschichtdicke s_d (Wasserdampfdiffusionswiderstand) und Temperaturleitfähigkeit a (thermische Trägheit des Bauteils).',
-            quelle: 'DIN 4108-3 / DIN EN ISO 13788'
-          }
-        ]}
-        lastReviewed="Oktober 2026 (AP 3 Grundlagen: Dichten, Feuchte, Diffusion, Kapillarität, Wärme und Zeitverhalten gegen DIN 4108-3/-4, DIN EN ISO 10456, 12570, 15148 und DIN EN 1992-1-1 geprüft; fachliche Freigabe durch den Autor ausstehend)"
+        literatur={inhalt.daten["Baustoffkenngroessen.literatur"]}
+        regelwerke={inhalt.daten["Baustoffkenngroessen.regelwerke"]}
+        formeln={inhalt.daten["Baustoffkenngroessen.formeln"]}
+        lastReviewed={inhalt.werte.oktober2026Ap3}
       />
     </div>
   );

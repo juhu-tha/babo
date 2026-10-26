@@ -20,6 +20,8 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeWert, formatDeTeX, formatDeTeXWert } from '@/src/utils/numberFormat';
 import { GMODG_ANLAGE7, savings, dRequired, type Bauteil } from '@/src/utils/bestandKern';
+import inhalt from '@/content/modernisierung/Modernisierung.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 type TabKey = 'begriffe' | 'nachruestpflichten' | 'bauphysik' | 'gebaeudetechnik' | 'isfp';
 
@@ -35,19 +37,19 @@ interface BuildingComponentLimit {
 const GMODG_COMPONENT_LIMITS: BuildingComponentLimit[] = [
   { 
     id: 'wall', 
-    name: 'Außenwand (Putz / WDVS / Bekleidung)', 
+    name: inhalt.werte.außenwandPutzWdvsBekleidung, 
     bauteil: 'aussenwand',
     limitU: GMODG_ANLAGE7.aussenwand, 
     typicalOldU: 1.40,
-    description: 'Außenwände gegen Außenluft (Anlage 7 Nr. 1, § 36 GModG). Innendämmung: keine Höchstwertanforderung, Nachweis Tauwasserfreiheit nach DIN 4108-3 / WTA 6-4/6-5.'
+    description: inhalt.werte.außenwändeGegenAußenluftAnlage
   },
   { 
     id: 'roof_pitched', 
-    name: 'Steildach / Oberste Geschossdecke', 
+    name: inhalt.werte.steildachObersteGeschossdecke, 
     bauteil: 'steildach_oGD',
     limitU: GMODG_ANLAGE7.steildach_oGD, 
     typicalOldU: 1.20,
-    description: 'Steildächer, Gauben, oberste Geschossdecken und Wände zu unbeheiztem Dachraum (Anlage 7 Nr. 5a/5b; § 35 / § 36 GModG).'
+    description: inhalt.werte.steildächerGaubenObersteGeschossdecken
   },
   { 
     id: 'roof_flat', 
@@ -55,23 +57,23 @@ const GMODG_COMPONENT_LIMITS: BuildingComponentLimit[] = [
     bauteil: 'flachdach',
     limitU: GMODG_ANLAGE7.flachdach, 
     typicalOldU: 1.10,
-    description: 'Flachdächer gegen Außenluft inklusive Warm- und Umkehrdächer (§ 36 GModG).'
+    description: inhalt.werte.flachdächerGegenAußenluftInklusive
   },
   { 
     id: 'basement_ceiling', 
-    name: 'Kellerdecke (gegen unbeheizt / Erdreich)', 
+    name: inhalt.werte.kellerdeckeGegenUnbeheiztErdreich, 
     bauteil: 'kellerdecke_erdreich',
     limitU: GMODG_ANLAGE7.kellerdecke_erdreich, 
     typicalOldU: 1.50,
-    description: 'Decken nach unten gegen Erdreich oder unbeheizte Kellerräume (§ 36 GModG).'
+    description: inhalt.werte.deckenNachUntenGegen
   },
   { 
     id: 'windows', 
-    name: 'Fenster & Fenstertüren (Uw)', 
+    name: inhalt.werte.fensterFenstertürenUw, 
     bauteil: 'fenster',
     limitU: GMODG_ANLAGE7.fenster, 
     typicalOldU: 2.80,
-    description: 'Vertikale Fenster im Wohnungsbestand (DIN EN ISO 10077-1, § 36 GModG).'
+    description: inhalt.werte.vertikaleFensterImWohnungsbestand
   }
 ];
 
@@ -83,14 +85,7 @@ interface InsulationMaterial {
   ecoclass: string;
 }
 
-const INSULATION_MATERIALS: Record<string, InsulationMaterial> = {
-  eps_035: { name: 'EPS-Hartschaum WLG 035 (Standard weiß)', wlg: 0.035, costPerM3: 95, co2Eq: 75, ecoclass: 'Synthetisch' },
-  eps_032: { name: 'EPS-Grau WLG 032 (Grafit-verstärkt)', wlg: 0.032, costPerM3: 125, co2Eq: 82, ecoclass: 'Synthetisch' },
-  mineral_035: { name: 'Mineralwolle / Steinwolle WLG 035 (Nichtbrennbar A1)', wlg: 0.035, costPerM3: 130, co2Eq: 45, ecoclass: 'Mineralisch' },
-  pur_024: { name: 'Polyurethan (PUR/PIR) WLG 024 (Hochleistung)', wlg: 0.024, costPerM3: 210, co2Eq: 110, ecoclass: 'Synthetisch' },
-  resol_022: { name: 'Phenolharz / Resol WLG 022 (Super-Schlank)', wlg: 0.022, costPerM3: 260, co2Eq: 120, ecoclass: 'Synthetisch' },
-  holzfaser_040: { name: 'Holzfaserdämmplatte WLG 040 (Ökologisch)', wlg: 0.040, costPerM3: 180, co2Eq: -60, ecoclass: 'Nachwachsend' }
-};
+const INSULATION_MATERIALS: Record<string, InsulationMaterial> = inhalt.daten.INSULATION_MATERIALS;
 
 export default function Modernisierung() {
   const [activeTab, setActiveTab] = useState<TabKey>('begriffe');
@@ -171,36 +166,18 @@ export default function Modernisierung() {
         <div className="flex flex-col gap-4 mb-6 border-b border-home-grau/30 pb-6" id="modernisierung-header">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-              <RefreshCw className="text-shiraz" size={24} /> Modernisierung &amp; Gebäudemodernisierungsgesetz (GModG)
-            </h2>
-            <span className="text-xs font-mono bg-shiraz/10 text-shiraz border border-shiraz/25 px-3 py-1 rounded-full font-bold">
-              Rechtsstand: 29.07.2026 (vormals GEG)
-            </span>
+              <RefreshCw className="text-shiraz" size={24} /><MdText text={inhalt.texte.modernisierungGebäudemodernisierungsgese} /></h2>
+            <span className="text-xs font-mono bg-shiraz/10 text-shiraz border border-shiraz/25 px-3 py-1 rounded-full font-bold"><MdText text={inhalt.texte.rechtsstand29072026} /></span>
           </div>
 
           <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
-            <p>
-              Wissenschaftliche und baupraktische Grundlagen der energetischen Bestandssanierung (SANREMO), normative Nachrüst- 
-              und Sanierungspflichten nach dem <strong>Gebäudemodernisierungsgesetz (GModG, in Kraft seit 29.07.2026, BGBl. 2026 I Nr. 226)</strong>, 
-              die neue gestaffelte Bio-Treppe für Heizungsanlagen sowie bauphysikalische Bilanzierungsmodelle (DIN EN ISO 6946 / Gradtagzahlen nach VDI 4710) 
-              zur Amortisationsermittlung.
-            </p>
+            <p><MdText text={inhalt.texte.wissenschaftlicheUndBaupraktischeGrundla} /></p>
           </div>
 
           {/* GModG Reform-Infobox */}
           <div className="p-4 bg-amber-50/70 border border-amber-200 rounded-xl text-xs text-amber-950 flex items-start gap-3">
             <Info className="text-amber-700 shrink-0 mt-0.5" size={18} />
-            <div className="space-y-1">
-              <strong>Kerninhalte der GModG-Novelle (Ablösung GEG 2024 / „Heizungsgesetz“):</strong>
-              <p className="leading-relaxed text-amber-900">
-                1. <strong>Entfall des starren 65-%-EE-Zwangs:</strong> Beim Heizungstausch entfällt die unmittelbare 65-%-Erneuerbaren-Pflicht sowie die Bindung an kommunale Wärmepläne.
-                <br />
-                2. <strong>Einführung der verbindlichen Bio-Treppe:</strong> Neue Gas- und Ölheizungen dürfen weiterhin installiert werden, müssen jedoch ab 2029 steigende Anteile klimaneutraler Brennstoffe (Biomethan, biogenes Flüssiggas, Wasserstoff) nutzen (§ 43 Abs. 1 GModG: 2029: 10 %, 2030: 15 %, 2035: 30 %, 2040: 60 %; ein Ziel von 100 % in 2045 ist über eine gesondert angekündigte Grüngas-/Grünheizöl-Quote vorgesehen).
-                <br />
-                3. <strong>Wegfall des Betriebsverbots 2045:</strong> Das Betriebsverbot fossiler Heizungen ab 2045 (§ 72 Abs. 4 GEG a. F.) ist entfallen, ebenso die Austauschpflicht für über 30 Jahre alte Konstanttemperaturkessel (§ 72 Abs. 1–2 GEG a. F.).
-                <br />
-                4. <strong>Neuordnung der Hüllanforderungen:</strong> Nachrüstpflicht für oberste Geschossdecken (§ 35 GModG, <InlineMath math="U \le 0{,}24" />) und Bauteilanforderungen bei &gt; 10 % Sanierung (§ 36 GModG).
-              </p>
+            <div className="space-y-1"><MdText text={inhalt.texte.kerninhalteDerGmodgNovelle} /><p className="leading-relaxed text-amber-900"><MdText text={inhalt.texte.t1EntfallDesStarren} /></p>
             </div>
           </div>
         </div>
@@ -216,8 +193,7 @@ export default function Modernisierung() {
             }`}
             onClick={() => setActiveTab('begriffe')}
           >
-            <Target size={16} /> SANREMO-Systematik (Merkhilfe)
-          </button>
+            <Target size={16} /><MdText text={inhalt.texte.sanremoSystematikMerkhilfe} /></button>
           
           <button aria-pressed={activeTab === 'nachruestpflichten'}
             id="tab-nachruest-btn"
@@ -228,8 +204,7 @@ export default function Modernisierung() {
             }`}
             onClick={() => setActiveTab('nachruestpflichten')}
           >
-            <Scale size={16} /> GModG Pflichten &amp; Grenzwerte
-          </button>
+            <Scale size={16} /><MdText text={inhalt.texte.gmodgPflichtenGrenzwerte} /></button>
 
           <button aria-pressed={activeTab === 'bauphysik'}
             id="tab-bauphysik-btn"
@@ -240,8 +215,7 @@ export default function Modernisierung() {
             }`}
             onClick={() => setActiveTab('bauphysik')}
           >
-            <Calculator size={16} /> U-Wert- &amp; Amortisations-Rechner
-          </button>
+            <Calculator size={16} /><MdText text={inhalt.texte.uWertAmortisationsRechner} /></button>
 
           <button aria-pressed={activeTab === 'gebaeudetechnik'}
             id="tab-technik-btn"
@@ -252,8 +226,7 @@ export default function Modernisierung() {
             }`}
             onClick={() => setActiveTab('gebaeudetechnik')}
           >
-            <Leaf size={16} /> Heizungstechnik &amp; Bio-Treppe
-          </button>
+            <Leaf size={16} /><MdText text={inhalt.texte.heizungstechnikBioTreppe} /></button>
 
           <button aria-pressed={activeTab === 'isfp'}
             id="tab-isfp-btn"
@@ -264,18 +237,14 @@ export default function Modernisierung() {
             }`}
             onClick={() => setActiveTab('isfp')}
           >
-            <FileText size={16} /> Sanierungsfahrplan (iSFP)
-          </button>
+            <FileText size={16} /><MdText text={inhalt.texte.sanierungsfahrplanIsfp} /></button>
         </div>
 
         {/* TAB 1: SANREMO-SYSTEMATIK & BEGRIFFE */}
         {activeTab === 'begriffe' && (
           <div className="space-y-6 animate-in fade-in duration-200" id="content-begriffe">
             <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-              <p>
-                Das Akronym <strong>SANREMO</strong> (Sanierung – Renovierung – Modernisierung) strukturiert bauliche Eingriffe im Bestand 
-                nach ihrem Zielsetzungstyp, ihrer Eingriffstiefe sowie den baurechtlichen, mietrechtlichen (§ 555b BGB) und steuerrechtlichen Konsequenzen.
-              </p>
+              <p><MdText text={inhalt.texte.dasAkronymSanremoSanierung} /></p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -283,46 +252,28 @@ export default function Modernisierung() {
               <div className="bg-white p-5 rounded-xl border border-home-grau/25 shadow-xs flex flex-col justify-between">
                 <div>
                   <h3 className="font-bold text-shiraz flex items-center gap-1.5 text-sm uppercase tracking-wider mb-2">
-                    <Target size={18} /> 1. Sanierung („Reparatur“)
-                  </h3>
-                  <p className="text-xs text-text-main/80 leading-relaxed mb-3">
-                    Systematische Beseitigung erheblicher bautechnischer Mängel, Gefahren oder Substanzschäden, um die 
-                    Standsicherheit, Gebrauchstauglichkeit und Lebensdauer der Bausubstanz wiederherzustellen.
-                  </p>
+                    <Target size={18} /><MdText text={inhalt.texte.t1SanierungReparatur} /></h3>
+                  <p className="text-xs text-text-main/80 leading-relaxed mb-3"><MdText text={inhalt.texte.systematischeBeseitigungErheblicherBaute} /></p>
                 </div>
-                <div className="bg-slate-50 p-3 rounded-lg text-[11px] font-mono border text-slate-700">
-                  <strong>Typische Maßnahmen:</strong> Betoninstandsetzung nach DAfStb-Richtlinie / TR Instandhaltung, Mauerwerks-Rissverpressung, Abdichtungserneuerung gegen drückendes Wasser (DIN 18533).
-                </div>
+                <div className="bg-slate-50 p-3 rounded-lg text-[11px] font-mono border text-slate-700"><MdText text={inhalt.texte.typischeMaßnahmenBetoninstandsetzungNach} /></div>
               </div>
 
               <div className="bg-white p-5 rounded-xl border border-home-grau/25 shadow-xs flex flex-col justify-between">
                 <div>
                   <h3 className="font-bold text-shiraz flex items-center gap-1.5 text-sm uppercase tracking-wider mb-2">
-                    <RefreshCw size={18} /> 2. Renovierung („Schönung“)
-                  </h3>
-                  <p className="text-xs text-text-main/80 leading-relaxed mb-3">
-                    Optische und oberflächliche Erneuerung von Verschleißerscheinungen ohne gravierende Eingriffe 
-                    in das Gefüge der Baustoffe, die Wärmeschutzhülle oder das statische Tragwerk.
-                  </p>
+                    <RefreshCw size={18} /><MdText text={inhalt.texte.t2RenovierungSchönung} /></h3>
+                  <p className="text-xs text-text-main/80 leading-relaxed mb-3"><MdText text={inhalt.texte.optischeUndOberflächlicheErneuerung} /></p>
                 </div>
-                <div className="bg-slate-50 p-3 rounded-lg text-[11px] font-mono border text-slate-700">
-                  <strong>Typische Maßnahmen:</strong> Schönheitsreparaturen, Neuanstrich, Tapezieren, Schleifen und Einölen von Parkettböden, Fugenerneuerung im Sanitärbereich.
-                </div>
+                <div className="bg-slate-50 p-3 rounded-lg text-[11px] font-mono border text-slate-700"><MdText text={inhalt.texte.typischeMaßnahmenSchönheitsreparaturenNe} /></div>
               </div>
 
               <div className="bg-white p-5 rounded-xl border border-home-grau/25 shadow-xs flex flex-col justify-between">
                 <div>
                   <h3 className="font-bold text-shiraz flex items-center gap-1.5 text-sm uppercase tracking-wider mb-2">
-                    <Layers size={18} /> 3. Modernisierung („Aufwertung“)
-                  </h3>
-                  <p className="text-xs text-text-main/80 leading-relaxed mb-3">
-                    Bauliche Maßnahmen zur nachhaltigen Erhöhung des Gebrauchswerts, zur Einsparung von Primärenergie 
-                    und Treibhausgasen sowie zur Anpassung an moderne technische Standards (§ 555b BGB).
-                  </p>
+                    <Layers size={18} /><MdText text={inhalt.texte.t3ModernisierungAufwertung} /></h3>
+                  <p className="text-xs text-text-main/80 leading-relaxed mb-3"><MdText text={inhalt.texte.baulicheMaßnahmenZurNachhaltigen} /></p>
                 </div>
-                <div className="bg-slate-50 p-3 rounded-lg text-[11px] font-mono border text-slate-700">
-                  <strong>Typische Maßnahmen:</strong> Fassadendämmung (WDVS), Fenstertausch auf 3-fach-Verglasung, Einbau einer Wärmepumpe, Installation einer kontrollierten Wohnraumlüftung mit WRG.
-                </div>
+                <div className="bg-slate-50 p-3 rounded-lg text-[11px] font-mono border text-slate-700"><MdText text={inhalt.texte.typischeMaßnahmenFassadendämmungWdvs} /></div>
               </div>
 
             </div>
@@ -330,20 +281,12 @@ export default function Modernisierung() {
             {/* Steuerliche Abgrenzung nach EStG */}
             <div className="bg-white p-5 rounded-xl border border-home-grau/25 space-y-3">
               <h4 className="font-bold text-sm text-text-main flex items-center gap-2">
-                <Coins size={16} className="text-shiraz" /> Steuerrechtliche Einstufung: Erhaltungsaufwand vs. Herstellungskosten
-              </h4>
+                <Coins size={16} className="text-shiraz" /><MdText text={inhalt.texte.steuerrechtlicheEinstufungErhaltungsaufw} /></h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-text-main/80 leading-relaxed">
                 <div className="p-3.5 bg-slate-50 rounded-xl border border-home-grau/20">
-                  <strong className="text-slate-900 block mb-1">Erhaltungsaufwand (Sofortabzug):</strong>
-                  Aufwendungen zur ordnungsgemäßen Instandhaltung des Gebäudes ohne Wesensveränderung. Sie sind im Jahr der Zahlung 
-                  in voller Höhe als Werbungskosten oder Betriebsausgaben steuerlich abzugsfähig (wahlweise Verteilung auf 2–5 Jahre nach § 82b EStDV bei Wohngebäuden).
-                </div>
+                  <strong className="text-slate-900 block mb-1"><MdText text={inhalt.texte.erhaltungsaufwandSofortabzug} /></strong><MdText text={inhalt.texte.aufwendungenZurOrdnungsgemäßenInstandhal} /></div>
                 <div className="p-3.5 bg-amber-50/70 rounded-xl border border-amber-200">
-                  <strong className="text-amber-950 block mb-1">Anschaffungsnahe Herstellungskosten (§ 6 Abs. 1 Nr. 1a EStG):</strong>
-                  Instandsetzungs- und Modernisierungsmaßnahmen, die <em>innerhalb von 3 Jahren</em> nach Anschaffung durchgeführt werden und 
-                  in Summe <strong>15 % der Anschaffungskosten des Gebäudes (ohne Grundstück)</strong> übersteigen, gelten zwingend als Herstellungskosten 
-                  und müssen linear über die Gebäude-AfA (in der Regel 33 bis 50 Jahre) abgeschrieben werden!
-                </div>
+                  <strong className="text-amber-950 block mb-1"><MdText text={inhalt.texte.anschaffungsnaheHerstellungskosten6Abs} /></strong><MdText text={inhalt.texte.instandsetzungsUndModernisierungsmaßnahm} /></div>
               </div>
             </div>
           </div>
@@ -355,12 +298,8 @@ export default function Modernisierung() {
             
             <div className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl">
               <h3 className="font-bold text-text-main flex items-center gap-1.5 text-base">
-                <Scale className="text-shiraz" size={20} /> Gesetzliche Nachrüst- und Sanierungspflichten nach GModG
-              </h3>
-              <p className="text-xs text-text-main/70 mt-1 leading-relaxed">
-                Das Gebäudemodernisierungsgesetz (GModG, bis 28.07.2026 GEG) unterscheidet zwischen <em>unbedingten Nachrüstpflichten</em> (die Eigentümer unabhängig von Bauarbeiten erfüllen müssen) 
-                und <em>bedingten Sanierungspflichten</em> (die greifen, wenn mehr als 10 % eines Außenbauteils saniert oder erneuert werden – § 36 GModG).
-              </p>
+                <Scale className="text-shiraz" size={20} /><MdText text={inhalt.texte.gesetzlicheNachrüstUndSanierungspflichte} /></h3>
+              <p className="text-xs text-text-main/70 mt-1 leading-relaxed"><MdText text={inhalt.texte.dasGebäudemodernisierungsgesetzGmodgBis} /></p>
             </div>
 
             {/* Die 3 unbedingten Nachrüstpflichten */}
@@ -370,50 +309,33 @@ export default function Modernisierung() {
                 <div>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="w-8 h-8 rounded-full bg-rose-50 text-shiraz flex items-center justify-center font-bold font-mono text-sm">1</span>
-                    <h4 className="font-bold text-text-main text-sm">Dämmung oberste Geschossdecke (§ 35 GModG)</h4>
+                    <h4 className="font-bold text-text-main text-sm"><MdText text={inhalt.texte.dämmungObersteGeschossdecke35} /></h4>
                   </div>
-                  <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                    Begehbare sowie nicht begehbare oberste Geschossdecken, die beheizte Räume gegen einen unbeheizten Dachraum abgrenzen, 
-                    müssen so gedämmt sein, dass der Wärmedurchgangskoeffizient den Grenzwert einhält.
-                  </p>
+                  <p className="text-xs text-slate-600 leading-relaxed mb-4"><MdText text={inhalt.texte.begehbareSowieNichtBegehbare} /></p>
                 </div>
-                <div className="bg-slate-100 p-2.5 rounded text-[11px] font-mono border">
-                  <strong>Grenzwert (§ 35 GModG):</strong> <InlineMath math="U \le 0{,}24 \text{ W/(m}^2\text{K)}" /><br />
-                  Alternativ kann das darüberliegende Dach wärmetechnisch gleichwertig gedämmt werden.
-                </div>
+                <div className="bg-slate-100 p-2.5 rounded text-[11px] font-mono border"><MdText text={inhalt.texte.grenzwert35GmodgU} /></div>
               </div>
 
               <div className="bg-white p-5 rounded-xl border border-home-grau/25 shadow-xs flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="w-8 h-8 rounded-full bg-rose-50 text-shiraz flex items-center justify-center font-bold font-mono text-sm">2</span>
-                    <h4 className="font-bold text-text-main text-sm">Dämmung wärmeführender Leitungen (§ 69 GModG)</h4>
+                    <h4 className="font-bold text-text-main text-sm"><MdText text={inhalt.texte.dämmungWärmeführenderLeitungen69} /></h4>
                   </div>
-                  <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                    Ungedämmte, zugängliche Heizungs- und Warmwasserrohrleitungen sowie Armaturen in unbeheizten Räumen (z. B. Keller) 
-                    müssen nach Anlage 8 GModG gedämmt werden, um Verteilungsverluste zu minimieren.
-                  </p>
+                  <p className="text-xs text-slate-600 leading-relaxed mb-4"><MdText text={inhalt.texte.ungedämmteZugänglicheHeizungsUnd} /></p>
                 </div>
-                <div className="bg-slate-100 p-2.5 rounded text-[11px] font-mono border">
-                  <strong>Dämmschichtdicke (bei <InlineMath math="\lambda = 0{,}035" />):</strong><br />
-                  Innendurchmesser bis 22 mm: 20 mm; bis 35 mm: 30 mm; bis 100 mm: 100 % des Innendurchmessers; ab 100 mm: 100 mm.
-                </div>
+                <div className="bg-slate-100 p-2.5 rounded text-[11px] font-mono border"><MdText text={inhalt.texte.dämmschichtdickeBeiLambda0} /></div>
               </div>
 
               <div className="bg-white p-5 rounded-xl border border-home-grau/25 shadow-xs flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="w-8 h-8 rounded-full bg-rose-50 text-shiraz flex items-center justify-center font-bold font-mono text-sm">3</span>
-                    <h4 className="font-bold text-text-main text-sm">Rechtsstand Heizkessel (bisher § 72 GEG)</h4>
+                    <h4 className="font-bold text-text-main text-sm"><MdText text={inhalt.texte.rechtsstandHeizkesselBisher72} /></h4>
                   </div>
-                  <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                    Gestrichen wurden das Betriebsverbot fossiler Heizungen ab 2045 (§ 72 Abs. 4 GEG a. F.) und die Austauschpflicht für über 30 Jahre alte Konstanttemperaturkessel (§ 72 Abs. 1–2 GEG a. F.). 
-                    Bestehende Anlagen dürfen weiterbetrieben werden; bei Neuerrichtung greift die Bio-Treppe ab 2029.
-                  </p>
+                  <p className="text-xs text-slate-600 leading-relaxed mb-4"><MdText text={inhalt.texte.gestrichenWurdenDasBetriebsverbot} /></p>
                 </div>
-                <div className="bg-slate-100 p-2.5 rounded text-[11px] font-mono border">
-                  <strong>GModG Neuregelung:</strong> Kein pauschales 30-Jahre-Betriebsverbot mehr; Übergang über die Bio-Treppe ab 2029 (10 % bis 60 % in 2040).
-                </div>
+                <div className="bg-slate-100 p-2.5 rounded text-[11px] font-mono border"><MdText text={inhalt.texte.gmodgNeuregelungKeinPauschales} /></div>
               </div>
 
             </div>
@@ -421,81 +343,69 @@ export default function Modernisierung() {
             {/* Ausnahme für Selbstnutzer & Eigentümerwechsel */}
             <div className="bg-emerald-50/50 border border-emerald-200 p-4 rounded-xl text-xs text-emerald-950 leading-relaxed flex items-start gap-3">
               <Info className="text-emerald-700 shrink-0 mt-0.5" size={18} />
-              <div>
-                <strong>Befreiung für Alt-Eigentümer &amp; Nachrüstfrist bei Eigentümerwechsel (§ 35 Abs. 3 &amp; § 69 Abs. 3 GModG):</strong>
-                <br />
-                Eigentümer von Ein- und Zweifamilienhäusern, die ihre Wohnung am <strong>1. Februar 2002 selbst bewohnt</strong> haben, 
-                sind von den Nachrüstpflichten (Geschossdeckendämmung und Rohrdämmung) persönlich befreit. 
-                Bei einem <strong>Eigentümerwechsel</strong> (Verkauf, Schenkung, Erbe) entfällt dieses Privileg: Der neue Eigentümer muss die 
-                gesetzlichen Nachrüstpflichten innerhalb einer Frist von <strong>zwei Jahren ab Eigentumsübergang</strong> (Grundbucheintrag) vollständig erfüllen.
-              </div>
+              <div><MdText text={inhalt.texte.befreiungFürAltEigentümer} /></div>
             </div>
 
             {/* Bedingte Pflicht: 10-%-Regel und Bauteil-Grenzwerte nach § 36 GModG */}
             <div className="bg-white p-5 rounded-xl border border-home-grau/25 space-y-4">
               <div>
                 <h4 className="font-bold text-sm text-text-main flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-shiraz" /> Bedingte Sanierungspflicht: Die 10-%-Regel (§ 36 GModG)
-                </h4>
-                <p className="text-xs text-text-main/70 mt-1">
-                  Werden an einem bestehenden Gebäude bei Außenbauteilen mehr als <strong>10 % der jeweiligen Bauteilfläche</strong> erneuert, 
-                  ersetzt oder erstmalig eingebaut (z. B. Neuverputzen einer Fassade, Neueindeckung eines Daches), müssen die betroffenen Bauteile 
-                  zwingend die gesetzlichen Höchstwerte des Wärmedurchgangskoeffizienten (<InlineMath math="U_{\text{max}}" />) nach § 36 GModG einhalten:
-                </p>
+                  <CheckCircle2 size={16} className="text-shiraz" /><MdText text={inhalt.texte.bedingteSanierungspflichtDie10} /></h4>
+                <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.werdenAnEinemBestehenden} /></p>
               </div>
 
               <div className="overflow-x-auto">
                 <table className="w-full text-xs text-left border-collapse font-sans">
                   <thead>
                     <tr className="bg-slate-100 text-slate-800 border-b border-home-grau/30">
-                      <th className="p-3 font-bold">Bauteil (Außenhülle)</th>
-                      <th className="p-3 font-bold">Max. U-Wert nach § 36 GModG</th>
-                      <th className="p-3 font-bold">Altbestand (typisch vor 1977)</th>
-                      <th className="p-3 font-bold">Erforderliche Dämmstärke (ca.)</th>
+                      <th className="p-3 font-bold"><MdText text={inhalt.texte.bauteilAußenhülle} /></th>
+                      <th className="p-3 font-bold"><MdText text={inhalt.texte.maxUWertNach} /></th>
+                      <th className="p-3 font-bold"><MdText text={inhalt.texte.altbestandTypischVor1977} /></th>
+                      <th className="p-3 font-bold"><MdText text={inhalt.texte.erforderlicheDämmstärkeCa} /></th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-home-grau/20 text-text-main/80">
                     <tr className="hover:bg-slate-50">
-                      <td className="p-3 font-medium">Außenwand (Putz, WDVS, Bekleidung)</td>
-                      <td className="p-3 font-mono font-bold text-shiraz">U ≤ 0,24 W/(m²K)</td>
-                      <td className="p-3 font-mono">1,20 – 1,80 W/(m²K)</td>
-                      <td className="p-3 font-mono">14 – 16 cm (WLG 035)</td>
+                      <td className="p-3 font-medium"><MdText text={inhalt.texte.außenwandPutzWdvsBekleidung} /></td>
+                      <td className="p-3 font-mono font-bold text-shiraz"><MdText text={inhalt.texte.u024W} /></td>
+                      <td className="p-3 font-mono"><MdText text={inhalt.texte.t120180} /></td>
+                      <td className="p-3 font-mono"><MdText text={inhalt.texte.t1416CmWlg} /></td>
                     </tr>
                     <tr className="hover:bg-slate-50">
-                      <td className="p-3 font-medium">Steildach / oberste Geschossdecke</td>
-                      <td className="p-3 font-mono font-bold text-shiraz">U ≤ 0,24 W/(m²K)</td>
-                      <td className="p-3 font-mono">1,00 – 1,60 W/(m²K)</td>
-                      <td className="p-3 font-mono">12 – 14 cm (WLG 035)</td>
+                      <td className="p-3 font-medium"><MdText text={inhalt.texte.steildachObersteGeschossdecke} /></td>
+                      <td className="p-3 font-mono font-bold text-shiraz"><MdText text={inhalt.texte.u024W2} /></td>
+                      <td className="p-3 font-mono"><MdText text={inhalt.texte.t100160} /></td>
+                      <td className="p-3 font-mono"><MdText text={inhalt.texte.t1214CmWlg} /></td>
                     </tr>
                     <tr className="hover:bg-slate-50">
-                      <td className="p-3 font-medium">Flachdach (Warm-/Umkehrdach)</td>
-                      <td className="p-3 font-mono font-bold text-shiraz">U ≤ 0,20 W/(m²K)</td>
-                      <td className="p-3 font-mono">0,90 – 1,40 W/(m²K)</td>
-                      <td className="p-3 font-mono">16 – 18 cm (WLG 035)</td>
+                      <td className="p-3 font-medium"><MdText text={inhalt.texte.flachdachWarmUmkehrdach} /></td>
+                      <td className="p-3 font-mono font-bold text-shiraz"><MdText text={inhalt.texte.u020W} /></td>
+                      <td className="p-3 font-mono"><MdText text={inhalt.texte.t090140} /></td>
+                      <td className="p-3 font-mono"><MdText text={inhalt.texte.t1618CmWlg} /></td>
                     </tr>
                     <tr className="hover:bg-slate-50">
-                      <td className="p-3 font-medium">Fenster, Balkon- &amp; Fenstertüren</td>
-                      <td className="p-3 font-mono font-bold text-shiraz">Uw ≤ 1,30 W/(m²K)</td>
-                      <td className="p-3 font-mono">2,70 – 3,20 W/(m²K)</td>
+                      <td className="p-3 font-medium"><MdText text={inhalt.texte.fensterBalkonFenstertüren} /></td>
+                      <td className="p-3 font-mono font-bold text-shiraz"><MdText text={inhalt.texte.uw130W} /></td>
+                      <td className="p-3 font-mono"><MdText text={inhalt.texte.t270320} /></td>
                       <td className="p-3 font-mono">3-fach-Wärmeschutzverglasung</td>
                     </tr>
                     <tr className="hover:bg-slate-50">
                       <td className="p-3 font-medium">Dachflächenfenster</td>
-                      <td className="p-3 font-mono font-bold text-shiraz">Uw ≤ 1,40 W/(m²K)</td>
-                      <td className="p-3 font-mono">2,50 – 3,00 W/(m²K)</td>
-                      <td className="p-3 font-mono">Moderne Dachfensterelemente</td>
+                      <td className="p-3 font-mono font-bold text-shiraz"><MdText text={inhalt.texte.uw140W} /></td>
+                      <td className="p-3 font-mono"><MdText text={inhalt.texte.t250300} /></td>
+                      <td className="p-3 font-mono"><MdText text={inhalt.texte.moderneDachfensterelemente} /></td>
                     </tr>
                     <tr className="hover:bg-slate-50">
-                      <td className="p-3 font-medium">Kellerdecke / Decke gegen Erdreich</td>
-                      <td className="p-3 font-mono font-bold text-shiraz">U ≤ 0,30 W/(m²K)</td>
-                      <td className="p-3 font-mono">1,30 – 1,70 W/(m²K)</td>
-                      <td className="p-3 font-mono">10 – 12 cm (WLG 035)</td>
+                      <td className="p-3 font-medium"><MdText text={inhalt.texte.kellerdeckeDeckeGegenErdreich} /></td>
+                      <td className="p-3 font-mono font-bold text-shiraz"><MdText text={inhalt.texte.u030W} /></td>
+                      <td className="p-3 font-mono"><MdText text={inhalt.texte.t130170} /></td>
+                      <td className="p-3 font-mono"><MdText text={inhalt.texte.t1012CmWlg} /></td>
                     </tr>
                     <tr className="hover:bg-slate-50">
-                      <td className="p-3 font-medium">Außentüren / Hauseingangstüren</td>
-                      <td className="p-3 font-mono font-bold text-shiraz">Ud ≤ 1,80 W/(m²K)</td>
-                      <td className="p-3 font-mono">3,00 – 4,50 W/(m²K)</td>
-                      <td className="p-3 font-mono">Gedämmte Türblätter mit Dichtung</td>
+                      <td className="p-3 font-medium"><MdText text={inhalt.texte.außentürenHauseingangstüren} /></td>
+                      <td className="p-3 font-mono font-bold text-shiraz"><MdText text={inhalt.texte.ud180W} /></td>
+                      <td className="p-3 font-mono"><MdText text={inhalt.texte.t300450} /></td>
+                      <td className="p-3 font-mono"><MdText text={inhalt.texte.gedämmteTürblätterMitDichtung} /></td>
                     </tr>
                   </tbody>
                 </table>
@@ -512,13 +422,8 @@ export default function Modernisierung() {
             <div className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl flex flex-col lg:flex-row gap-6 justify-between items-start">
               <div className="max-w-2xl space-y-2">
                 <h3 className="font-bold text-text-main flex items-center gap-1.5 text-base">
-                  <Calculator className="text-shiraz" size={20} /> Bauphysikalische U-Wert- &amp; Amortisations-Simulation
-                </h3>
-                <p className="text-xs text-text-main/70 leading-relaxed">
-                  Berechnung des Wärmedurchgangskoeffizienten (<InlineMath math="U" />) nach DIN EN ISO 6946 und Prüfung 
-                  der gesetzlichen Grenzwerte nach <strong>§ 36 GModG</strong>. Simulieren Sie Einsparungen an Heizenergie, 
-                  Heizkosten und Treibhausgasen sowie die statische Amortisationsdauer der Maßnahme.
-                </p>
+                  <Calculator className="text-shiraz" size={20} /><MdText text={inhalt.texte.bauphysikalischeUWertAmortisations} /></h3>
+                <p className="text-xs text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.berechnungDesWärmedurchgangskoeffiziente} /></p>
               </div>
               <div className="bg-white p-3.5 rounded-lg border border-home-grau/25 shadow-xs font-mono text-[11px] text-text-main space-y-1">
                 <div><InlineMath math="R_T = R_{si} + \frac{1}{U_0} + \frac{d}{\lambda} + R_{se}" /></div>
@@ -528,7 +433,7 @@ export default function Modernisierung() {
 
             {/* Bauteil-Wahl */}
             <div className="space-y-2">
-              <span className="text-xs font-bold text-text-main/70 uppercase tracking-wide block">Zu sanierendes Bauteil wählen:</span>
+              <span className="text-xs font-bold text-text-main/70 uppercase tracking-wide block"><MdText text={inhalt.texte.zuSanierendesBauteilWählen} /></span>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-semibold">
                 {GMODG_COMPONENT_LIMITS.filter(c => c.id !== 'windows').map(comp => (
                   <button
@@ -560,7 +465,7 @@ export default function Modernisierung() {
 
                 <div className="space-y-1">
                   <label className="text-xs font-bold text-text-main/80 flex justify-between">
-                    <span>Ausgangs-U-Wert Bestand (<InlineMath math="U_0" />):</span>
+                    <span><MdText text={inhalt.texte.ausgangsUWertBestand} /></span>
                     <span className="text-shiraz font-mono font-bold">{formatDeZahl(originalU, 2)} W/(m²K)</span>
                   </label>
                   <input
@@ -573,9 +478,9 @@ export default function Modernisierung() {
                     className="w-full accent-shiraz cursor-pointer"
                   />
                   <div className="flex justify-between text-[10px] text-slate-500 font-mono">
-                    <span>0,50 (teilsaniert)</span>
-                    <span>1,40 (Standard Altbau)</span>
-                    <span>2,50 (Vollziegel ungedämmt)</span>
+                    <span><MdText text={inhalt.texte.t050Teilsaniert} /></span>
+                    <span><MdText text={inhalt.texte.t140StandardAltbau} /></span>
+                    <span><MdText text={inhalt.texte.t250VollziegelUngedämmt} /></span>
                   </div>
                 </div>
 
@@ -597,7 +502,7 @@ export default function Modernisierung() {
 
                 <div className="space-y-1">
                   <label className="text-xs font-bold text-text-main/80 flex justify-between">
-                    <span>Dämmstoffdicke (<InlineMath math="d" />):</span>
+                    <span><MdText text={inhalt.texte.dämmstoffdickeD} /></span>
                     <span className="text-shiraz font-mono font-bold">{formatDeWert(thicknessMm)} mm</span>
                   </label>
                   <input
@@ -611,16 +516,16 @@ export default function Modernisierung() {
                   />
                   <div className="flex justify-between text-[10px] text-slate-500 font-mono">
                     <span>40 mm</span>
-                    <span>140 mm (Standard)</span>
-                    <span>300 mm (Passivhaus)</span>
+                    <span><MdText text={inhalt.texte.t140MmStandard} /></span>
+                    <span><MdText text={inhalt.texte.t300MmPassivhaus} /></span>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3 pt-1">
                   <div className="space-y-1">
-                    <label className="text-[11px] font-bold text-text-main/80 block">Bauteilfläche (<InlineMath math="A" />):</label>
+                    <label className="text-[11px] font-bold text-text-main/80 block"><MdText text={inhalt.texte.bauteilflächeA} /></label>
                     <div className="flex items-center gap-1.5">
-                      <input aria-label="Bauteilfläche ()"
+                      <input aria-label={inhalt.werte.bauteilfläche}
                         type="number"
                         min="20"
                         max="1000"
@@ -651,7 +556,7 @@ export default function Modernisierung() {
 
                 <div className="grid grid-cols-2 gap-3">
                   <div className="space-y-1">
-                    <label className="text-[11px] font-bold text-text-main/80 block">Gradtagzahl <InlineMath math="G_{t20/15}" />:</label>
+                    <label className="text-[11px] font-bold text-text-main/80 block"><MdText text={inhalt.texte.gradtagzahlGT2015} /></label>
                     <div className="flex items-center gap-1.5">
                       <input aria-label="Gradtagzahl "
                         type="number"
@@ -666,7 +571,7 @@ export default function Modernisierung() {
                     </div>
                   </div>
                   <div className="space-y-1">
-                    <label className="text-[11px] font-bold text-text-main/80 block">Anlagennutzungsgrad <InlineMath math="\eta_{sys}" />:</label>
+                    <label className="text-[11px] font-bold text-text-main/80 block"><MdText text={inhalt.texte.anlagennutzungsgradEtaSys} /></label>
                     <div className="flex items-center gap-1.5">
                       <input aria-label="Anlagennutzungsgrad "
                         type="number"
@@ -684,7 +589,7 @@ export default function Modernisierung() {
 
                 <label className="flex items-start gap-2 text-[11px] text-text-main/80 cursor-pointer">
                   <input type="checkbox" checked={sowiesoAktiv} onChange={(e) => setSowiesoAktiv(e.target.checked)} className="mt-0.5 accent-shiraz" />
-                  <span>Gerüst/Putz fallen ohnehin an (Sowieso-Kosten, Kopplungsprinzip) – Amortisation nur auf die energiebedingten Mehrkosten beziehen.</span>
+                  <span><MdText text={inhalt.texte.gerüstPutzFallenOhnehin} /></span>
                 </label>
 
               </div>
@@ -693,8 +598,8 @@ export default function Modernisierung() {
               <div className="lg:col-span-7 bg-slate-50 border border-home-grau/25 p-5 rounded-xl flex flex-col justify-between space-y-4">
                 <div>
                   <h4 className="font-bold text-sm text-text-main pb-2 border-b border-home-grau/20 flex items-center justify-between">
-                    <span>Berechnungsbericht &amp; Amortisation</span>
-                    <span className="text-xs font-mono text-slate-500 font-normal">G_t20/15 = {formatDeWert(hgtVal)} Kd/a · F_x = {formatDeZahl(simResults.fx, 1)} · η = {formatDeZahl(etaSys, 2)}</span>
+                    <span><MdText text={inhalt.texte.berechnungsberichtAmortisation} /></span>
+                    <span className="text-xs font-mono text-slate-500 font-normal">G_t20/15 = {formatDeWert(hgtVal)}<MdText text={inhalt.texte.kdAFX} />{formatDeZahl(simResults.fx, 1)} · η = {formatDeZahl(etaSys, 2)}</span>
                   </h4>
                   
                   {/* 4 Kennwerte */}
@@ -706,7 +611,7 @@ export default function Modernisierung() {
                     </div>
 
                     <div className="bg-white p-3 rounded-lg border border-home-grau/20 text-center">
-                      <span className="text-[10px] text-slate-500 uppercase font-semibold block">Neuer U-Wert</span>
+                      <span className="text-[10px] text-slate-500 uppercase font-semibold block"><MdText text={inhalt.texte.neuerUWert} /></span>
                       <span className={`font-mono font-bold text-sm mt-0.5 block ${simResults.isCompliant ? 'text-emerald-700' : 'text-red-700'}`}>
                         {formatDeZahl(simResults.newU, 3)}
                       </span>
@@ -726,15 +631,15 @@ export default function Modernisierung() {
                       <span className="font-mono font-bold text-sm text-shiraz mt-0.5 block">
                         ~{formatDeZahl(simResults.amortizationYears, 1)} a
                       </span>
-                      <span className="text-[9px] text-slate-400">auf {formatDeZahl(simResults.mehrkosten, 0)} € Mehrkosten</span>
+                      <span className="text-[9px] text-slate-400">auf {formatDeZahl(simResults.mehrkosten, 0)}<MdText text={inhalt.texte.mehrkosten} /></span>
                     </div>
                   </div>
 
                   {/* Detaillierte Formel-Zwischenschritte */}
                   <div className="bg-white p-3.5 rounded-xl border border-home-grau/20 mt-4 space-y-1 text-xs">
-                    <span className="text-[11px] font-bold text-slate-700 block mb-1">Physikalische Zwischenschritte (DIN EN ISO 6946):</span>
+                    <span className="text-[11px] font-bold text-slate-700 block mb-1"><MdText text={inhalt.texte.physikalischeZwischenschritteDinEn} /></span>
                     <div className="text-[11.5px] font-mono text-slate-700 space-y-1 overflow-x-auto py-1">
-                      <div>R_Bestand = 1 / {formatDeZahl(originalU, 2)} = {formatDeZahl(simResults.R_orig, 3)} m²K/W</div>
+                      <div><MdText text={inhalt.texte.rBestand1} />{formatDeZahl(originalU, 2)} = {formatDeZahl(simResults.R_orig, 3)} m²K/W</div>
                       <div>R_Dämmung = {formatDeWert(thicknessMm / 1000)} m / {formatDeWert(activeMaterial.wlg)} = {formatDeZahl(simResults.R_ins, 3)} m²K/W</div>
                       <div>R_Gesamt = {formatDeZahl(simResults.R_orig, 3)} + {formatDeZahl(simResults.R_ins, 3)} = {formatDeZahl(simResults.R_tot, 3)} m²K/W</div>
                       <div className="text-shiraz font-bold">U_neu = 1 / {formatDeZahl(simResults.R_tot, 3)} = {formatDeZahl(simResults.newU, 3)} W/(m²K)</div>
@@ -773,41 +678,41 @@ export default function Modernisierung() {
                 {/* Live-Rechenweg (AP 3.7) mit den aktuellen Simulator-Eingaben */}
                 <FormulaDerivationBox
                   live
-                  title="Ihr Rechenweg: Einsparung und Amortisation"
+                  title={inhalt.werte.ihrRechenwegEinsparungUnd}
                   zielGleichung="t_A = \frac{K_{\text{Mehr}}}{\Delta U \cdot A \cdot F_x \cdot G_t \cdot 24/1000 \,/\, \eta \cdot p}"
                   schritte={[
                     {
-                      titel: 'U-Wert nach der Dämmung',
+                      titel: inhalt.werte.uWertNachDer,
                       erklaerung: `Zusätzlicher Wärmedurchlasswiderstand der ${formatDeZahl(thicknessMm, 0)} mm dicken Dämmschicht (λ = ${formatDeWert(activeMaterial.wlg)} W/(mK)):`,
                       formel: `U_{neu} = \\frac{1}{\\frac{1}{${formatDeTeX(originalU, 2)}} + \\frac{${formatDeTeXWert(thicknessMm / 1000)}}{${formatDeTeXWert(activeMaterial.wlg)}}} = ${formatDeTeX(simResults.newU, 3)}\\,\\text{W/(m}^2\\text{K)}`
                     },
                     {
-                      titel: 'Eingesparte Nutzwärme',
+                      titel: inhalt.werte.eingesparteNutzwärme,
                       erklaerung: `Mit Temperatur-Korrekturfaktor F_x = ${formatDeZahl(simResults.fx, 1)} und Gradtagzahl G_t = ${formatDeWert(hgtVal)} Kd/a (24 h/d, Umrechnung in kWh):`,
                       formel: `Q_N = (${formatDeTeX(originalU, 2)} - ${formatDeTeX(simResults.newU, 3)}) \\cdot ${formatDeTeX(componentArea, 0)} \\cdot ${formatDeTeX(simResults.fx, 1)} \\cdot ${formatDeTeX(hgtVal, 0)} \\cdot \\frac{24}{1000} = ${formatDeTeX(simResults.qNutz, 0)}\\,\\text{kWh/a}`
                     },
                     {
-                      titel: 'Endenergie und Kosten',
+                      titel: inhalt.werte.endenergieUndKosten,
                       erklaerung: `Geteilt durch den Anlagennutzungsgrad η = ${formatDeZahl(etaSys, 2)}, multipliziert mit dem Energiepreis:`,
                       formel: `Q_E = \\frac{${formatDeTeX(simResults.qNutz, 0)}}{${formatDeTeX(etaSys, 2)}} = ${formatDeTeX(simResults.annualKwhSaved, 0)}\\,\\text{kWh/a} \\;\\Rightarrow\\; ${formatDeTeX(simResults.annualKwhSaved, 0)} \\cdot ${formatDeTeX(energyPriceKwh, 2)} = ${formatDeTeX(simResults.annualEuroSaved, 0)}\\,\\text{€/a}`
                     },
                     {
-                      titel: 'Energiebedingte Mehrkosten',
+                      titel: inhalt.werte.energiebedingteMehrkosten,
                       erklaerung: sowiesoAktiv
-                        ? 'Gerüst, Putz und Montage fallen ohnehin an (Kopplungsprinzip) – nur der Dämmstoff zählt:'
-                        : 'Dämmstoff plus Montage (85 €/m² für Gerüst, Armierung, Putz):',
+                        ? inhalt.werte.gerüstPutzUndMontage
+                        : inhalt.werte.dämmstoffPlusMontage85,
                       formel: sowiesoAktiv
                         ? `K_{\\text{Mehr}} = ${formatDeTeX(simResults.totalInvestEuro, 0)} - ${formatDeTeX(simResults.baseLaborCost, 0)} = ${formatDeTeX(simResults.mehrkosten, 0)}\\,\\text{€}`
                         : `K_{\\text{Mehr}} = ${formatDeTeX(simResults.materialCost, 0)} + ${formatDeTeX(simResults.baseLaborCost, 0)} = ${formatDeTeX(simResults.mehrkosten, 0)}\\,\\text{€}`
                     },
                     {
-                      titel: 'Statische Amortisationszeit',
-                      erklaerung: 'Mehrkosten geteilt durch die jährliche Kosteneinsparung (ohne Preissteigerung und Zinsen):',
+                      titel: inhalt.werte.statischeAmortisationszeit,
+                      erklaerung: inhalt.werte.mehrkostenGeteiltDurchDie,
                       formel: `t_A = \\frac{${formatDeTeX(simResults.mehrkosten, 0)}}{${formatDeTeX(simResults.annualEuroSaved, 0)}} = ${formatDeTeX(simResults.amortizationYears, 1)}\\,\\text{a}`
                     }
                   ]}
-                  ergebnisHinweis="Statische Betrachtung; eine dynamische Barwertrechnung finden Sie im Modul Lebenszykluskosten."
-                  normQuelle="DIN EN ISO 6946:2018-03; DIN V 4108-6 (F_x); VDI 4710 (Gradtagzahlen)"
+                  ergebnisHinweis={inhalt.werte.statischeBetrachtungEineDynamische}
+                  normQuelle={inhalt.werte.dinEnIso6946}
                 />
 
               </div>
@@ -822,61 +727,47 @@ export default function Modernisierung() {
             
             <div className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl">
               <h3 className="font-bold text-text-main flex items-center gap-1.5 text-base">
-                <Leaf className="text-shiraz" size={20} /> Heizungstechnik, Bio-Treppe &amp; BEG-Förderung nach dem GModG
-              </h3>
-              <p className="text-xs text-text-main/70 mt-1 leading-relaxed">
-                Mit dem Gebäudemodernisierungsgesetz (GModG, in Kraft seit 29.07.2026) ist die 65-%-EE-Pflicht des GEG 2024 für neue Heizungsanlagen 
-                entfallen. Heizungen mit flüssigen oder gasförmigen Brennstoffen dürfen weiter neu eingebaut werden, müssen jedoch schrittweise 
-                über die gesetzliche <strong>Bio-Treppe</strong> auf klimaneutrale Brennstoffe umgestellt werden. Wärmepumpen, Biomasse und Fernwärme 
-                bleiben die technologisch zukunftssichersten und höchstgeförderten Optionen.
-              </p>
+                <Leaf className="text-shiraz" size={20} /><MdText text={inhalt.texte.heizungstechnikBioTreppeBeg} /></h3>
+              <p className="text-xs text-text-main/70 mt-1 leading-relaxed"><MdText text={inhalt.texte.mitDemGebäudemodernisierungsgesetzGmodg} /></p>
             </div>
 
             {/* Die gesetzliche Bio-Treppe */}
             <div className="bg-white p-5 rounded-xl border border-home-grau/25 shadow-xs space-y-4">
               <h4 className="font-bold text-sm text-text-main border-b border-home-grau/15 pb-2 flex items-center gap-2">
-                <Zap size={16} className="text-shiraz" /> Die gesetzliche Bio-Treppe für Gas- &amp; Öl-Neuanlagen
-              </h4>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Wer nach dem 29.07.2026 eine neue Gas- oder Ölheizung einbaut, muss <strong>ab 2029</strong> sicherstellen, dass die bezogenen Brennstoffe 
-                folgende Mindestanteile an erneuerbaren Energien (Biomethan, biogenes Flüssiggas, Wasserstoff) aufweisen:
-              </p>
+                <Zap size={16} className="text-shiraz" /><MdText text={inhalt.texte.dieGesetzlicheBioTreppe} /></h4>
+              <p className="text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.werNachDem29} /></p>
 
               <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5 text-center text-xs">
                 <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
                   <span className="text-[10px] text-slate-500 uppercase font-bold block">Ab 2029</span>
                   <strong className="text-sm text-text-main block mt-1">mind. 10 %</strong>
-                  <span className="text-[10px] text-slate-500">Erneuerbarer Brennstoff</span>
+                  <span className="text-[10px] text-slate-500"><MdText text={inhalt.texte.erneuerbarerBrennstoff} /></span>
                 </div>
                 <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
                   <span className="text-[10px] text-slate-500 uppercase font-bold block">Ab 2030</span>
                   <strong className="text-sm text-text-main block mt-1">mind. 15 %</strong>
-                  <span className="text-[10px] text-slate-500">Erneuerbarer Brennstoff</span>
+                  <span className="text-[10px] text-slate-500"><MdText text={inhalt.texte.erneuerbarerBrennstoff2} /></span>
                 </div>
                 <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
                   <span className="text-[10px] text-slate-500 uppercase font-bold block">Ab 2035</span>
                   <strong className="text-sm text-text-main block mt-1">mind. 30 %</strong>
-                  <span className="text-[10px] text-slate-500">Erneuerbarer Brennstoff</span>
+                  <span className="text-[10px] text-slate-500"><MdText text={inhalt.texte.erneuerbarerBrennstoff3} /></span>
                 </div>
                 <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
                   <span className="text-[10px] text-slate-500 uppercase font-bold block">Ab 2040</span>
                   <strong className="text-sm text-text-main block mt-1">mind. 60 %</strong>
-                  <span className="text-[10px] text-slate-500">Erneuerbarer Brennstoff</span>
+                  <span className="text-[10px] text-slate-500"><MdText text={inhalt.texte.erneuerbarerBrennstoff4} /></span>
                 </div>
                 <div className="p-3 bg-emerald-50 rounded-xl border border-emerald-300 col-span-2 sm:col-span-1">
                   <span className="text-[10px] text-emerald-800 uppercase font-bold block">Ziel 2045</span>
                   <strong className="text-sm text-emerald-950 block mt-1">100 %</strong>
-                  <span className="text-[10px] text-emerald-700">keine Stufe der Bio-Treppe – geplante Quote (§ 42a)</span>
+                  <span className="text-[10px] text-emerald-700"><MdText text={inhalt.texte.keineStufeDerBio} /></span>
                 </div>
               </div>
 
               <div className="p-3 bg-amber-50 rounded-lg border border-amber-200 text-xs text-amber-900 leading-normal flex items-start gap-2">
                 <AlertTriangle className="text-amber-600 shrink-0 mt-0.5" size={16} />
-                <div>
-                  <strong>Wirtschaftliche Kostenfalle:</strong> Der Einbau fossiler Heizkessel birgt durch den nationalen CO₂-Preis (BEHG) 
-                  und das europäische Emissionshandelssystem für Gebäude (EU-ETS 2, Start auf 2028 verschoben) sowie die knappen und teuren Biomethan-Kontingente 
-                  ein hohes Risiko drastisch steigender Betriebskosten.
-                </div>
+                <div><MdText text={inhalt.texte.wirtschaftlicheKostenfalleDerEinbau} /></div>
               </div>
             </div>
 
@@ -884,60 +775,50 @@ export default function Modernisierung() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               
               <div className="bg-white p-5 rounded-xl border border-home-grau/25 shadow-xs space-y-3">
-                <h4 className="font-bold text-sm text-text-main border-b border-home-grau/15 pb-2">Erfüllungsoptionen im Überblick</h4>
+                <h4 className="font-bold text-sm text-text-main border-b border-home-grau/15 pb-2"><MdText text={inhalt.texte.erfüllungsoptionenImÜberblick} /></h4>
                 <ul className="space-y-2.5 text-xs text-slate-600">
                   <li className="flex gap-2 items-start">
                     <CheckCircle2 className="text-shiraz shrink-0 mt-0.5" size={16} />
-                    <div>
-                      <strong>Elektrische Wärmepumpe (Luft/Wasser, Sole/Wasser):</strong> Hohe Jahresarbeitszahl (<InlineMath math="JAZ \ge 3{,}5" />). Optimal in Kombination mit Fußbodenheizung oder Niedertemperatur-Heizkörpern.
-                    </div>
+                    <div><MdText text={inhalt.texte.elektrischeWärmepumpeLuftWasser} /></div>
                   </li>
                   <li className="flex gap-2 items-start">
                     <CheckCircle2 className="text-shiraz shrink-0 mt-0.5" size={16} />
-                    <div>
-                      <strong>Wärmenetz / Fernwärmeanschluss:</strong> Vollständige Entlastung von eigener Heizanlagentechnik; Primärenergiefaktor abhängig vom Netzbetreiber.
-                    </div>
+                    <div><MdText text={inhalt.texte.wärmenetzFernwärmeanschlussVollständigeE} /></div>
                   </li>
                   <li className="flex gap-2 items-start">
                     <CheckCircle2 className="text-shiraz shrink-0 mt-0.5" size={16} />
-                    <div>
-                      <strong>Biomasse (Holzpellets / Scheitholz):</strong> Hohe Vorlauftemperaturen für ungedämmte Bestandsbauten; erfordert Feinstaubfilter und Pelletlagerraum.
-                    </div>
+                    <div><MdText text={inhalt.texte.biomasseHolzpelletsScheitholzHohe} /></div>
                   </li>
                   <li className="flex gap-2 items-start">
                     <CheckCircle2 className="text-shiraz shrink-0 mt-0.5" size={16} />
-                    <div>
-                      <strong>Hybrid-Heizung:</strong> Wärmepumpe zur Grundlastabdeckung (ca. 70–80 % der Heizstunden) kombiniert mit Spitzenlast-Gaskessel.
-                    </div>
+                    <div><MdText text={inhalt.texte.hybridHeizungWärmepumpeZur} /></div>
                   </li>
                 </ul>
               </div>
 
               <div className="bg-white p-5 rounded-xl border border-home-grau/25 shadow-xs space-y-3">
-                <h4 className="font-bold text-sm text-text-main border-b border-home-grau/15 pb-2">BEG-Förderstruktur für Heizungstausch</h4>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Über die Bundesförderung für effiziente Gebäude (KfW-Programm 458) werden Heizungstausche mit bis zu <strong>70 % Zuschuss</strong> gefördert:
-                </p>
+                <h4 className="font-bold text-sm text-text-main border-b border-home-grau/15 pb-2"><MdText text={inhalt.texte.begFörderstrukturFürHeizungstausch} /></h4>
+                <p className="text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.überDieBundesförderungFür} /></p>
                 <div className="space-y-1.5 text-xs text-text-main/80">
                   <div className="flex justify-between p-2 bg-slate-50 rounded-lg border">
-                    <span>30 % Grundförderung</span>
-                    <strong className="font-mono">für alle Eigentümer</strong>
+                    <span><MdText text={inhalt.texte.t30Grundförderung} /></span>
+                    <strong className="font-mono"><MdText text={inhalt.texte.fürAlleEigentümer} /></strong>
                   </div>
                   <div className="flex justify-between p-2 bg-slate-50 rounded-lg border">
-                    <span>+ 20 % Klimageschwindigkeitsbonus</span>
-                    <strong className="font-mono">nur Selbstnutzer; Tausch von Öl-, Kohle-, Nachtspeicher- oder ≥ 20 Jahre alten Gas-/Biomasseheizungen (Konditionen vor Antragstellung bei KfW/BAFA prüfen)</strong>
+                    <span><MdText text={inhalt.texte.t20Klimageschwindigkeitsbonus} /></span>
+                    <strong className="font-mono"><MdText text={inhalt.texte.nurSelbstnutzerTauschVon} /></strong>
                   </div>
                   <div className="flex justify-between p-2 bg-slate-50 rounded-lg border">
-                    <span>+ 30 % Einkommensbonus</span>
-                    <strong className="font-mono">Haushaltseinkommen ≤ 40.000 €/a</strong>
+                    <span><MdText text={inhalt.texte.t30Einkommensbonus} /></span>
+                    <strong className="font-mono"><MdText text={inhalt.texte.haushaltseinkommen40000A} /></strong>
                   </div>
                   <div className="flex justify-between p-2 bg-slate-50 rounded-lg border">
-                    <span>+ 5 % Effizienzbonus</span>
-                    <strong className="font-mono">für Erdwärme oder natürliches Kältemittel (R290)</strong>
+                    <span><MdText text={inhalt.texte.t5Effizienzbonus} /></span>
+                    <strong className="font-mono"><MdText text={inhalt.texte.fürErdwärmeOderNatürliches} /></strong>
                   </div>
                   <div className="flex justify-between p-2.5 bg-emerald-50 text-emerald-950 rounded-lg border border-emerald-300 font-bold">
-                    <span>Maximaler Fördersatz:</span>
-                    <span className="font-mono">70 % (max. 21.000 € Zuschuss auf 30.000 €)</span>
+                    <span><MdText text={inhalt.texte.maximalerFördersatz} /></span>
+                    <span className="font-mono"><MdText text={inhalt.texte.t70Max21000} /></span>
                   </div>
                 </div>
               </div>
@@ -953,52 +834,42 @@ export default function Modernisierung() {
             
             <div className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl">
               <h3 className="font-bold text-text-main flex items-center gap-1.5 text-base">
-                <FileText className="text-shiraz" size={20} /> Der Individuelle Sanierungsfahrplan (iSFP)
-              </h3>
-              <p className="text-xs text-text-main/70 mt-1 leading-relaxed">
-                Der <strong>Individuelle Sanierungsfahrplan (iSFP)</strong> nach BAFA-/DENA-Standard ist das zentrale Instrument für eine schrittweise, 
-                wirtschaftlich und bauphysikalisch aufeinander abgestimmte Gesamtsanierung von Wohngebäuden. Er vermeidet Bauschäden durch falsche Sanierungsreihenfolgen 
-                (z. B. Schimmelbildung nach dichtem Fenstertausch ohne Wanddämmung) und sichert finanzielle Förderboni.
-              </p>
+                <FileText className="text-shiraz" size={20} /><MdText text={inhalt.texte.derIndividuelleSanierungsfahrplanIsfp} /></h3>
+              <p className="text-xs text-text-main/70 mt-1 leading-relaxed"><MdText text={inhalt.texte.derIndividuelleSanierungsfahrplanIsfp2} /></p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               
               <div className="bg-white p-5 rounded-xl border border-home-grau/25 shadow-xs space-y-3">
-                <h4 className="font-bold text-sm text-text-main border-b border-home-grau/15 pb-2">Die goldene Sanierungsregel: „Hülle vor Technik“</h4>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Wird zuerst die Heizung dimensioniert und erst Jahre später die Gebäudehülle gedämmt, ist der neue Wärmeerzeuger anschließend 
-                  massiv überdimensioniert. Dies führt zu taktendem Teillastbetrieb, verringerter Jahresarbeitszahl und vorzeitigem Verschleiß.
-                </p>
+                <h4 className="font-bold text-sm text-text-main border-b border-home-grau/15 pb-2"><MdText text={inhalt.texte.dieGoldeneSanierungsregelHülle} /></h4>
+                <p className="text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.wirdZuerstDieHeizung} /></p>
                 <div className="space-y-2 text-xs">
                   <div className="p-2.5 bg-slate-50 rounded-lg border flex items-start gap-2">
                     <span className="font-bold text-shiraz font-mono">1.</span>
-                    <div><strong>Schritt 1: Oberste Geschossdecke &amp; Kellerdecke</strong> – Geringe Investition, sofort spürbare Heizkostenminderung.</div>
+                    <div><MdText text={inhalt.texte.schritt1ObersteGeschossdecke} /></div>
                   </div>
                   <div className="p-2.5 bg-slate-50 rounded-lg border flex items-start gap-2">
                     <span className="font-bold text-shiraz font-mono">2.</span>
-                    <div><strong>Schritt 2: Außenwanddämmung &amp; Fenster</strong> – Absenkung der Heizlast um bis zu 50 %, warme Innenwandoberflächen gegen Schimmel.</div>
+                    <div><MdText text={inhalt.texte.schritt2AußenwanddämmungFenster} /></div>
                   </div>
                   <div className="p-2.5 bg-slate-50 rounded-lg border flex items-start gap-2">
                     <span className="font-bold text-shiraz font-mono">3.</span>
-                    <div><strong>Schritt 3: Heizungstausch auf Wärmepumpe</strong> – Präzise Auslegung auf die reduzierte Heizlast mit niedrigen Vorlauftemperaturen (<InlineMath math="\le 45^\circ\text{C}" />).</div>
+                    <div><MdText text={inhalt.texte.schritt3HeizungstauschAuf} /></div>
                   </div>
                 </div>
               </div>
 
               <div className="bg-white p-5 rounded-xl border border-home-grau/25 shadow-xs space-y-3">
-                <h4 className="font-bold text-sm text-text-main border-b border-home-grau/15 pb-2">Der iSFP-Bonus in der Bundesförderung (BEG EM)</h4>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Für Maßnahmen an der Gebäudehülle (Dämmung, Fenstertausch, Lüftungsanlagen) bietet ein vorliegender iSFP erhebliche finanzielle Vorteile:
-                </p>
+                <h4 className="font-bold text-sm text-text-main border-b border-home-grau/15 pb-2"><MdText text={inhalt.texte.derIsfpBonusIn} /></h4>
+                <p className="text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.fürMaßnahmenAnDer} /></p>
                 <div className="space-y-2 text-xs">
                   <div className="p-3 bg-rose-50/50 rounded-xl border border-shiraz/20">
-                    <strong className="text-shiraz block mb-0.5">+ 5 % iSFP-Zuschussbonus</strong>
-                    <span className="text-slate-700">Der Regelfördersatz für Hüllmaßnahmen steigt von 15 % auf <strong>20 % direkte Zuschussförderung</strong>.</span>
+                    <strong className="text-shiraz block mb-0.5"><MdText text={inhalt.texte.t5IsfpZuschussbonus} /></strong>
+                    <span className="text-slate-700"><MdText text={inhalt.texte.derRegelfördersatzFürHüllmaßnahmen} /></span>
                   </div>
                   <div className="p-3 bg-emerald-50 rounded-xl border border-emerald-300">
-                    <strong className="text-emerald-950 block mb-0.5">Verdopplung des Förderbudgets</strong>
-                    <span className="text-emerald-900">Die maximal anrechenbaren Ausgaben pro Kalenderjahr steigen von 30.000 € auf <strong>60.000 € je Wohneinheit</strong> (max. 12.000 € Zuschuss/a statt 4.500 €).</span>
+                    <strong className="text-emerald-950 block mb-0.5"><MdText text={inhalt.texte.verdopplungDesFörderbudgets} /></strong>
+                    <span className="text-emerald-900"><MdText text={inhalt.texte.dieMaximalAnrechenbarenAusgaben} /></span>
                   </div>
                 </div>
               </div>
@@ -1013,71 +884,34 @@ export default function Modernisierung() {
       {/* Structured Footer nach RULE[GEMINI_md] */}
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Erforderliche Dämmdicke für eine Außenwand nach § 36 GModG"
+        title={inhalt.werte.beispiel1ErforderlicheDämmdicke}
         zielGleichung="d_{erf} = \lambda \cdot \left(\frac{1}{U_{max}} - \frac{1}{U_{alt}}\right)"
-        schritte={[
-          { titel: 'Gegeben', erklaerung: 'Bestandswand U_alt = 1,40 W/(m²K); WDVS mit EPS 032; Höchstwert Anlage 7 Nr. 1: 0,24 W/(m²K).', formel: 'U_{alt} = 1{,}40,\\; \\lambda = 0{,}032,\\; U_{max} = 0{,}24' },
-          { titel: 'Erforderlicher Zusatzwiderstand', erklaerung: 'Differenz der Gesamtwiderstände:', formel: '\\Delta R = \\frac{1}{0{,}24} - \\frac{1}{1{,}40} = 4{,}167 - 0{,}714 = 3{,}45\\,\\text{m}^2\\text{K/W}' },
-          { titel: 'Dämmdicke', erklaerung: 'Mindestdicke und gewählte Lieferdicke:', formel: 'd_{erf} = 3{,}45 \\cdot 0{,}032 = 0{,}110\\,\\text{m} \\Rightarrow \\text{gewählt } 14\\,\\text{cm}' },
-          { titel: 'Kontrolle', erklaerung: 'U-Wert mit 14 cm:', formel: 'U = \\frac{1}{0{,}714 + 0{,}14/0{,}032} = \\frac{1}{5{,}09} = 0{,}20\\,\\text{W/(m}^2\\text{K)} \\le 0{,}24' }
-        ]}
-        ergebnisHinweis="Die Pflicht greift nur, wenn mehr als 10 % der Bauteilfläche geändert werden. Die Berechnung berücksichtigt neue und vorhandene Schichten (§ 37 GModG)."
-        normQuelle="GModG §§ 36, 37 und Anlage 7 (Lesefassung Stand 29.07.2026); DIN EN ISO 6946"
+        schritte={inhalt.daten["Modernisierung.schritte"]}
+        ergebnisHinweis={inhalt.werte.diePflichtGreiftNur}
+        normQuelle={inhalt.werte.gmodg3637Und}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Energieeinsparung und Amortisation der Fassadendämmung"
+        title={inhalt.werte.beispiel2EnergieeinsparungUnd}
         zielGleichung="\Delta Q_E = \frac{\Delta U \cdot A \cdot F_x \cdot G_{t20/15} \cdot 24}{1000 \cdot \eta_{sys}}"
-        schritte={[
-          { titel: 'Einsparung', erklaerung: 'ΔU = 1,40 − 0,197 = 1,20 W/(m²K), A = 160 m², F_x = 1,0, G = 3 500 Kd/a, η = 0,90:', formel: '\\Delta Q_E = \\frac{1{,}20 \\cdot 160 \\cdot 3\\,500 \\cdot 24}{1\\,000 \\cdot 0{,}90} = 17\\,970\\,\\text{kWh/a}' },
-          { titel: 'Kosten', erklaerung: 'Energiepreis 0,12 €/kWh; Vollkosten 16 400 € (Dämmstoff 14 cm EPS 032 und 85 €/m² für Gerüst, Armierung, Putz):', formel: '17\\,970 \\cdot 0{,}12 = 2\\,156\\,\\text{€/a}' },
-          { titel: 'Statische Amortisation', erklaerung: 'Vollkosten bzw. nur energiebedingte Mehrkosten, wenn Gerüst und Putz ohnehin anfallen (Kopplungsprinzip):', formel: 't = \\frac{16\\,400}{2\\,156} = 7{,}6\\,\\text{a}, \\qquad t_{Kopplung} = \\frac{2\\,800}{2\\,156} = 1{,}3\\,\\text{a}' }
-        ]}
-        ergebnisHinweis="Die Kopplung an ohnehin nötige Instandsetzungen macht Dämmung hoch wirtschaftlich. Rebound- und Prebound-Effekte können die reale Einsparung deutlich verändern."
-        normQuelle="VDI 4710 / VDI 2067; F_x nach DIN V 4108-6"
+        schritte={inhalt.daten["Modernisierung.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.dieKopplungAnOhnehin}
+        normQuelle={inhalt.werte.vdi4710Vdi2067}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="modernisierung" />
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 8 Bestand: GModG-Paragrafen §§ 35–37, Anlage 7 und Bio-Treppe gegen die Lesefassung geprüft; fachliche Freigabe durch den Autor ausstehend)" 
+        lastReviewed={inhalt.werte.oktober2026Ap8} 
         wikipedia={[
           { title: "Gebäudeenergiegesetz", url: "https://de.wikipedia.org/wiki/Geb%C3%A4udeenergiegesetz" },
           { title: "Wärmedurchgangskoeffizient", url: "https://de.wikipedia.org/wiki/W%C3%A4rmedurchgangskoeffizient" },
           { title: "Wärmedämmung", url: "https://de.wikipedia.org/wiki/W%C3%A4rmed%C3%A4mmung" },
           { title: "Wärmepumpe", url: "https://de.wikipedia.org/wiki/W%C3%A4rmepumpe" }
         ]} 
-        literatur={[
-          "Hens, H.: Applied Building Physics – Ambient Conditions, Building Performance and Material Properties. 2. Aufl., Berlin: Ernst & Sohn 2016"
-        ]} 
-        regelwerke={[
-          { title: "Gebäudemodernisierungsgesetz (GModG, vormals GEG; geändert und umbenannt durch Gesetz vom 23.07.2026, BGBl. 2026 I Nr. 226, verkündet 28.07.2026) – Nachrüstung § 35, Änderung § 36, U-Wert-Berechnung § 37, Anlage 7", url: "https://www.gesetze-im-internet.de/geg/" },
-          { title: "DIN EN ISO 6946:2018-03 (Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)" },
-          { title: "DIN 4108-2 (Mindestanforderungen an den Wärmeschutz; Neuausgabe 2026-05, bisher 2013-02)" },
-          { title: "DIN V 18599:2018-09 (Energetische Bewertung von Gebäuden; im GModG referenziert, Nachfolge DIN/TS 18599 seit 2025-10)" }
-        ]} 
-        formeln={[
-          {
-            formel: "R_T = R_{si} + \\sum_{i=1}^{n} \\frac{d_i}{\\lambda_i} + R_{se}",
-            erklaerung: "Gesamtwärmedurchgangswiderstand eines mehrschichtigen Außenbauteils (R_si: innerer, R_se: äußerer Wärmeübergangswiderstand).",
-            quelle: "DIN EN ISO 6946"
-          },
-          {
-            formel: "U = \\frac{1}{R_T} \\quad \\le U_{\\text{max, GModG}}",
-            erklaerung: "Wärmedurchgangskoeffizient des Bauteils und Abgleich mit dem Grenzwert nach § 36 GModG (z.B. 0,24 W/(m²K) für Außenwände).",
-            quelle: "DIN EN ISO 6946 / § 36 GModG"
-          },
-          {
-            formel: "\\Delta Q_E = \\frac{\\Delta U \\cdot A \\cdot F_x \\cdot G_{t20/15} \\cdot 24}{1000 \\cdot \\eta_{sys}} \\quad [\\text{kWh/a}]",
-            erklaerung: "Endenergieeinsparung über die Gradtagzahl G_t20/15 (Kd/a) mit Temperatur-Korrekturfaktor F_x und Anlagennutzungsgrad η_sys.",
-            quelle: "VDI 4710 / DWD-Gradtagzahlen; F_x nach DIN V 4108-6"
-          },
-          {
-            formel: "t_{\\text{Amort}} = \\frac{\\text{Investitionserstkosten [€]}}{\\text{Jährliche Energiekosteneinsparung [€/a]}}",
-            erklaerung: "Statische Amortisationsdauer einer energetischen Modernisierungsmaßnahme.",
-            quelle: "VDI 2067"
-          }
-        ]} 
+        literatur={inhalt.daten["Modernisierung.literatur"]} 
+        regelwerke={inhalt.daten["Modernisierung.regelwerke"]} 
+        formeln={inhalt.daten["Modernisierung.formeln"]} 
       />
     </div>
   );

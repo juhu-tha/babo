@@ -1,6 +1,8 @@
 // Ausgelagert aus src/modules/Betonkennwerte.tsx (AP 5.2)
 import { CheckCircle2, XCircle, RefreshCw } from 'lucide-react';
 import { formatDeWert } from '@/src/utils/numberFormat';
+import inhalt from '@/content/betonkennwerte/TestTab.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface TestTabProps {
   QUIZ_ITEMS: { q: string; options: string[]; correct: number; feedback: string; }[];
@@ -15,12 +17,8 @@ export default function TestTab({ QUIZ_ITEMS, quizAnswers, setQuizAnswers }: Tes
         <div className="flex items-center justify-between pb-4 border-b border-home-grau/20 mb-4">
           <div>
             <h3 className="font-bold text-slate-900 text-base flex items-center gap-2">
-              <CheckCircle2 size={18} className="text-shiraz" />
-              Stufe 4: Didaktischer Wissenstest zu EC2-Betonkennwerten
-            </h3>
-            <p className="text-xs text-slate-500">
-              Überprüfen Sie Ihr Verständnis zu Normformeln, Kriechmechanismen und Grenzwerten mit begründetem Feedback
-            </p>
+              <CheckCircle2 size={18} className="text-shiraz" /><MdText text={inhalt.texte.stufe4DidaktischerWissenstest} /></h3>
+            <p className="text-xs text-slate-500"><MdText text={inhalt.texte.überprüfenSieIhrVerständnis} /></p>
           </div>
           <button
             onClick={() => setQuizAnswers({})}
@@ -83,7 +81,7 @@ export default function TestTab({ QUIZ_ITEMS, quizAnswers, setQuizAnswers }: Tes
                       ? 'bg-emerald-50/80 border-emerald-200 text-emerald-900' 
                       : 'bg-rose-50/80 border-rose-200 text-rose-900'
                   }`}>
-                    <strong>{isCorrect ? '✓ Richtig!' : '✗ Leider nicht richtig.'}</strong> {item.feedback}
+                    <strong>{isCorrect ? '✓ Richtig!' : inhalt.werte.leiderNichtRichtig}</strong> {item.feedback}
                   </div>
                 )}
               </div>

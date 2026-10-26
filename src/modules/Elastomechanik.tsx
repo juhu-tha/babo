@@ -4,6 +4,8 @@ import { Activity, Ruler, Weight, ArrowRight, Sparkles } from 'lucide-react';
 import { BlockMath, InlineMath } from 'react-katex';
 import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import inhalt from '@/content/elastomechanik/Elastomechanik.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 // List of preset materials for physical and mechanical properties comparison
 interface MaterialPreset {
@@ -13,13 +15,7 @@ interface MaterialPreset {
   description: string;
 }
 
-const MATERIAL_PRESETS: MaterialPreset[] = [
-  { name: 'Baustahl (S235)', eModul: 210000, f_yk: 235, description: 'Klassischer Konstruktionsstahl mit hoher Steifigkeit und ausgeprägtem Fließbereichen.' },
-  { name: 'Normalbeton (C30/37)', eModul: 33000, f_yk: 30, description: 'Spröder Verbundbaustoff, hohe Druckfestigkeit, aber geringe Zugfestigkeit (ca. 10%).' },
-  { name: 'Nadelholz (C24)', eModul: 11000, f_yk: 24, description: 'Anisotroper Faserwerkstoff (Werte faserparallel; Festigkeit hier: Biegefestigkeit f_m,k = 24 N/mm²). Hohes Verhältnis von E-Modul zu Eigengewicht.' },
-  { name: 'Floatglas', eModul: 70000, f_yk: 45, description: 'Amorpher, rein elastischer Werkstoff (Festigkeit: charakteristische Biegezugfestigkeit 45 N/mm²). Versagt ohne Vorwarnung spröde.' },
-  { name: 'CFK (Kohlenstofffaser)', eModul: 150000, f_yk: 1200, description: 'Hochleistungswerkstoff mit extrem hoher Zugfestigkeit und geringem Eigengewicht.' },
-];
+const MATERIAL_PRESETS: MaterialPreset[] = inhalt.daten.MATERIAL_PRESETS;
 
 export interface ElastomechanikProps {
   embedMode?: boolean;
@@ -112,9 +108,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
             <Activity className="text-shiraz" /> Elastomechanik
           </h2>
           <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-3 leading-relaxed">
-            <p>
-              Grundlagen der Elastomechanik: Spannungen, Dehnungen &amp; Hooke&apos;sches Gesetz. Das mechanische Verhalten von Baustoffen beschreibt, wie ein Körper auf äußere mechanische Belastungen (Kräfte, Verformungen) reagiert. Mithilfe der Grundgrößen <strong>Spannung (<InlineMath math="\sigma" /> oder <InlineMath math="\tau" />)</strong>, <strong>Dehnung (<InlineMath math="\varepsilon" />)</strong> und dem Proportionalitätsfaktor <strong>E-Modul (<InlineMath math="E" />)</strong> lässt sich das Tragverhalten im elastischen Bereich exakt berechnen.
-            </p>
+            <p><MdText text={inhalt.texte.grundlagenDerElastomechanikSpannungen} /></p>
           </div>
         </div>
       )}
@@ -129,9 +123,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
               : 'border-transparent text-text-main/60 hover:text-text-main hover:bg-slate-50'
           }`}
         >
-          <Weight className="w-4 h-4" />
-          1. Spannungen (Stress)
-        </button>
+          <Weight className="w-4 h-4" /><MdText text={inhalt.texte.t1SpannungenStress} /></button>
         <button aria-pressed={activeTab === 'dehnungen'}
           onClick={() => setActiveTab('dehnungen')}
           className={`px-4 py-2 text-xs font-semibold rounded-t-xl transition-all border-b-2 flex items-center gap-1.5 ${
@@ -140,9 +132,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
               : 'border-transparent text-text-main/60 hover:text-text-main hover:bg-slate-50'
           }`}
         >
-          <Ruler className="w-4 h-4" />
-          2. Dehnungen (Strain)
-        </button>
+          <Ruler className="w-4 h-4" /><MdText text={inhalt.texte.t2DehnungenStrain} /></button>
         <button aria-pressed={activeTab === 'emodul'}
           onClick={() => setActiveTab('emodul')}
           className={`px-4 py-2 text-xs font-semibold rounded-t-xl transition-all border-b-2 flex items-center gap-1.5 ${
@@ -151,9 +141,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
               : 'border-transparent text-text-main/60 hover:text-text-main hover:bg-slate-50'
           }`}
         >
-          <Sparkles className="w-4 h-4" />
-          3. E-Modul & Elastizität (Hooke)
-        </button>
+          <Sparkles className="w-4 h-4" /><MdText text={inhalt.texte.t3EModulElastizität} /></button>
       </div>
 
       {/* Tab 1: Spannungen (Stress) */}
@@ -163,35 +151,25 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
           <div className="space-y-6">
             <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm space-y-4">
               <h2 className="text-sm font-bold text-slate-800 flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-shiraz"></span>
-                Was ist eine mechanische Spannung?
-              </h2>
-              <p className="text-xs text-text-main/80 leading-relaxed">
-                Wird ein Bauteil durch eine äußere Kraft belastet, reagiert der Werkstoff mit einer inneren Gegenkraft.
-                Die <strong>mechanische Spannung (<InlineMath math="\sigma" />)</strong> gibt diese Belastung bezogen auf die zur Kraftrichtung senkrechte Querschnittsfläche an.
-              </p>
+                <span className="w-2.5 h-2.5 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.wasIstEineMechanische} /></h2>
+              <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.wirdEinBauteilDurch} /></p>
               
               <div className="bg-slate-50 p-3 rounded-xl border border-home-grau/25 text-center">
                 <BlockMath math="\sigma = \frac{F}{A}" />
-                <p className="text-[10px] text-slate-500 mt-1 font-mono">
-                  \sigma = Nennspannung [N/mm² = MPa] | F = Normalkraft [N] | A = Querschnittsfläche [mm²]
-                </p>
+                <p className="text-[10px] text-slate-500 mt-1 font-mono"><MdText text={inhalt.texte.sigmaNennspannungNMm} /></p>
               </div>
 
               <div className="p-3 bg-indigo-50/60 rounded-xl border border-indigo-100/50 text-[11px] leading-relaxed text-slate-700">
-                <span className="font-bold text-indigo-900 block mb-0.5">💡 Normal- vs. Schubspannung:</span>
-                • <strong>Normalspannungen (<InlineMath math="\sigma" />):</strong> Wirken senkrecht auf der Schnittfläche (Zug oder Druck).<br/>
-                • <strong>Schub- oder Scherspannungen (<InlineMath math="\tau" />):</strong> Wirken tangential in der Schnittebene (z.B. bei Querkraft oder Torsion).
-              </div>
+                <span className="font-bold text-indigo-900 block mb-0.5"><MdText text={inhalt.texte.normalVsSchubspannung} /></span><MdText text={inhalt.texte.normalspannungenSigmaWirkenSenkrecht} /></div>
             </div>
 
             <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm space-y-4">
-              <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider">Interaktiver Spannungsrechner</h3>
+              <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider"><MdText text={inhalt.texte.interaktiverSpannungsrechner} /></h3>
               
               <div className="space-y-4">
                 {/* Kraft Slider */}
                 <Slider 
-                  label="Äußere Last / Normalkraft (F)" 
+                  label={inhalt.werte.äußereLastNormalkraftF} 
                   min={1} 
                   max={2000} 
                   step={1} 
@@ -200,12 +178,12 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                   onChange={(e) => setForceKn(Number(e.target.value))} 
                 />
                 <div className="text-[11px] text-slate-500 italic mt-px pl-2">
-                  (= { formatDeWert((forceKn * 1000)) } N | entsprechend dem Gewicht von ca. {formatDeWert(Math.round(forceKn * 1.0197))} Bauarbeitern)
+                  (= { formatDeWert((forceKn * 1000)) }<MdText text={inhalt.texte.nEntsprechendDemGewicht} />{formatDeWert(Math.round(forceKn * 1.0197))} Bauarbeitern)
                 </div>
 
                 {/* Querschnitts-Geometriewähler */}
                 <div className="space-y-2 pt-2">
-                  <label className="text-xs font-bold text-text-main/80 block">Querschnittsgeometrie (A):</label>
+                  <label className="text-xs font-bold text-text-main/80 block"><MdText text={inhalt.texte.querschnittsgeometrieA} /></label>
                   <div className="grid grid-cols-3 gap-2">
                     <button aria-pressed={shapeInputType === 'rectangle'}
                       onClick={() => setShapeInputType('rectangle')}
@@ -234,9 +212,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                           ? 'border-shiraz bg-shiraz/5 text-shiraz font-bold'
                           : 'border-slate-200 text-slate-700 hover:bg-slate-50'
                       }`}
-                    >
-                      Fläche (direkt)
-                    </button>
+                    ><MdText text={inhalt.texte.flächeDirekt} /></button>
                   </div>
                 </div>
 
@@ -267,7 +243,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                 {shapeInputType === 'circle' && (
                   <div className="pt-2">
                     <Slider 
-                      label="Durchmesser (d)" 
+                      label={inhalt.werte.durchmesserD} 
                       min={10} 
                       max={600} 
                       step={5} 
@@ -303,7 +279,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                 
                 {/* Mathematical result badge */}
                 <div className="p-5 bg-shiraz/5 rounded-2xl border border-shiraz/10 text-center space-y-2">
-                  <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold block">Vorhandene Normalspannung (σ)</span>
+                  <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold block"><MdText text={inhalt.texte.vorhandeneNormalspannung} /></span>
                   <div className="text-4xl font-black text-shiraz tracking-tight font-mono">
                     {formatDeZahl(stressMpa, 2)} <span className="text-lg font-normal">N/mm²</span>
                   </div>
@@ -312,7 +288,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                   </div>
                   
                   <div className="mt-4 pt-3 border-t border-shiraz/10 text-xs font-mono text-slate-600 bg-white/75 rounded p-2 text-left">
-                    <div className="font-bold text-slate-800 mb-1">🔢 Berechnungsschritt:</div>
+                    <div className="font-bold text-slate-800 mb-1"><MdText text={inhalt.texte.berechnungsschritt} /></div>
                     F = {formatDeWert(forceKn)} kN = {formatDeWert((forceKn * 1000))} N <br />
                     A = {formatDeZahl(areaCalculated.mm2, 0)} mm² (= {formatDeZahl(areaCalculated.cm2, 1)} cm²)<br />
                     σ = {formatDeWert((forceKn * 1000))} N / {formatDeZahl(areaCalculated.mm2, 1)} mm² = <span className="text-shiraz font-bold">{formatDeZahl(stressMpa, 2)} N/mm²</span>
@@ -321,14 +297,14 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
 
                 {/* Practical comparison table */}
                 <div className="space-y-2">
-                  <span className="text-xs font-bold text-slate-700 block">Grenzwert-Einordnung bei typischen Baustoffen:</span>
+                  <span className="text-xs font-bold text-slate-700 block"><MdText text={inhalt.texte.grenzwertEinordnungBeiTypischen} /></span>
                   <div className="grid grid-cols-1 gap-2 text-[11px]">
                     <div className="flex items-center justify-between p-2 rounded-lg bg-orange-50 border border-orange-100">
-                      <span>🧱 C30/37 Beton (charakteristische Zylinderdruckfestigkeit f_ck):</span>
+                      <span><MdText text={inhalt.texte.c3037BetonCharakteristische} /></span>
                       <span className="font-mono font-bold text-orange-950">30 N/mm²</span>
                     </div>
                     <div className="flex items-center justify-between p-2 rounded-lg bg-emerald-50 border border-emerald-100">
-                      <span>🏗️ S235 Baustahl (Streckgrenze f_y, t ≤ 40 mm):</span>
+                      <span><MdText text={inhalt.texte.s235BaustahlStreckgrenzeF} /></span>
                       <span className="font-mono font-bold text-emerald-950">235 N/mm²</span>
                     </div>
                   </div>
@@ -337,7 +313,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
 
               {/* Dynamic SVG illustrating the tension specimen */}
               <div className="bg-slate-50 rounded-xl p-4 border border-home-grau/25 mt-4 space-y-2">
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Visuelle Analogie: Einwirkendes Kraftverhältnis</span>
+                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block"><MdText text={inhalt.texte.visuelleAnalogieEinwirkendesKraftverhält} /></span>
                 <div className="h-28 flex items-center justify-center relative">
                   {/* Anchor block */}
                   <div className="absolute left-4 w-8 h-12 bg-slate-300 rounded border border-slate-400 flex items-center justify-center text-[10px]">Lager</div>
@@ -372,35 +348,24 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
           <div className="space-y-6">
             <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm space-y-4">
               <h2 className="text-sm font-bold text-slate-800 flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-shiraz"></span>
-                Was ist eine mechanische Dehnung?
-              </h2>
-              <p className="text-xs text-text-main/80 leading-relaxed">
-                Unter einer mechanischer Zugbelastung verlängert sich ein Bauteil um die Länge <InlineMath math="\Delta l" />.
-                Die <strong>Dehnung (<InlineMath math="\varepsilon" />)</strong> definiert diese relative Längenänderung bezogen auf die Ursprungslänge <InlineMath math="l_0" />.
-                Da sich gleichartige Einheiten kürzen (mm/mm), ist die Dehnung <strong>dimensionslos</strong> (wird aber oft in Promille ‰ oder Prozent % angegeben).
-              </p>
+                <span className="w-2.5 h-2.5 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.wasIstEineMechanische2} /></h2>
+              <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.unterEinerMechanischerZugbelastung} /></p>
               
               <div className="bg-slate-50 p-3 rounded-xl border border-home-grau/25 text-center">
                 <BlockMath math="\varepsilon = \frac{\Delta l}{l_0}" />
-                <p className="text-[10px] text-slate-500 mt-1 font-mono">
-                  \varepsilon = Dehnung [- oder ‰] | \Delta l = Längenänderung [mm] | l_0 = Ursprungslänge [mm]
-                </p>
+                <p className="text-[10px] text-slate-500 mt-1 font-mono"><MdText text={inhalt.texte.varepsilonDehnungOderDelta} /></p>
               </div>
 
               <div className="p-3 bg-amber-50 rounded-xl border border-amber-200 text-[11px] leading-relaxed text-amber-950">
-                <span className="font-bold block mb-0.5">⚠️ Vorzeichenregel:</span>
-                • <strong>Positive Dehnung (<InlineMath math="\varepsilon > 0" />):</strong> Entspricht einer Zugbeanspruchung (Zunahme der Bauteillänge).<br />
-                • <strong>Negative Dehnung (<InlineMath math="\varepsilon < 0" />):</strong> Entspricht einer Stauchung (Druckbeanspruchung / Verkürzung).
-              </div>
+                <span className="font-bold block mb-0.5"><MdText text={inhalt.texte.vorzeichenregel} /></span><MdText text={inhalt.texte.positiveDehnungVarepsilon0} /></div>
             </div>
 
             <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm space-y-4">
-              <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider">Interaktiver Dehnungsrechner</h3>
+              <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider"><MdText text={inhalt.texte.interaktiverDehnungsrechner} /></h3>
               
               <div className="space-y-4">
                 <Slider 
-                  label="Ursprungslänge des Bauteils (l₀)" 
+                  label={inhalt.werte.ursprungslängeDesBauteilsL} 
                   min={0.1} 
                   max={25.0} 
                   step={0.1} 
@@ -413,7 +378,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                 </div>
 
                 <Slider 
-                  label="Längenänderung (Δl)" 
+                  label={inhalt.werte.längenänderungL} 
                   min={-50} 
                   max={50} 
                   step={0.1} 
@@ -422,7 +387,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                   onChange={(e) => setElongationMm(Number(e.target.value))} 
                 />
                 <div className="text-[11px] text-slate-500 italic mt-px pl-2">
-                  {elongationMm < 0 ? 'Negative Längenänderung (Stauchung)' : 'Positive Längenänderung (Zug-Verlängerung)'}
+                  {elongationMm < 0 ? inhalt.werte.negativeLängenänderungStauchung : inhalt.werte.positiveLängenänderungZugVerlängerung}
                 </div>
               </div>
             </div>
@@ -437,7 +402,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                 {/* Result box in Shiraz theme */}
                 <div className="p-5 bg-shiraz/5 rounded-2xl border border-shiraz/10 text-center space-y-2">
                   <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold block">
-                    {elongationMm < 0 ? 'Errechnete Stauchung' : 'Errechnete Dehnung'} (<InlineMath math="\varepsilon" />)
+                    {elongationMm < 0 ? inhalt.werte.errechneteStauchung : inhalt.werte.errechneteDehnung} (<InlineMath math="\varepsilon" />)
                   </span>
                   <div className="text-4xl font-black text-shiraz tracking-tight font-mono">
                     {formatDeZahl(strainCalculated.permille, 3)} <span className="text-lg font-normal">‰</span>
@@ -448,7 +413,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                   </div>
                   
                   <div className="mt-4 pt-3 border-t border-shiraz/10 text-xs font-mono text-slate-600 bg-white/75 rounded p-2 text-left">
-                    <div className="font-bold text-slate-800 mb-1">🔢 Berechnungsschritt:</div>
+                    <div className="font-bold text-slate-800 mb-1"><MdText text={inhalt.texte.berechnungsschritt2} /></div>
                     l₀ = {formatDeWert(originalLengthM)} m = {formatDeWert((originalLengthM * 1000))} mm<br />
                     Δl = {formatDeWert(elongationMm)} mm <br />
                     ε = {formatDeWert(elongationMm)} mm / {formatDeWert((originalLengthM * 1000))} mm = <span className="text-shiraz font-bold">{formatDeZahl(strainCalculated.raw, 6)}</span> = <span className="text-shiraz font-bold">{formatDeZahl(strainCalculated.permille, 3)} ‰</span>
@@ -457,18 +422,18 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
 
                 {/* Engineering strain benchmarks */}
                 <div className="space-y-2">
-                  <span className="text-xs font-bold text-slate-700 block">Dehnungsgrenzwerte im Baustoffbereich:</span>
+                  <span className="text-xs font-bold text-slate-700 block"><MdText text={inhalt.texte.dehnungsgrenzwerteImBaustoffbereich} /></span>
                   <div className="grid grid-cols-1 gap-2 text-[11px]">
                     <div className="flex items-center justify-between p-2 rounded-lg bg-red-50 border border-red-100">
-                      <span>🧱 Beton: Stauchung bei Erreichen der Festigkeit (<InlineMath math="\varepsilon_{c2}" />, bis C50/60):</span>
-                      <span className="font-mono font-bold text-red-950">−2,0 ‰ (Parabel-Rechteck-Diagramm)</span>
+                      <span><MdText text={inhalt.texte.betonStauchungBeiErreichen} /></span>
+                      <span className="font-mono font-bold text-red-950"><MdText text={inhalt.texte.t20ParabelRechteck} /></span>
                     </div>
                     <div className="flex items-center justify-between p-2 rounded-lg bg-pink-50 border border-pink-100">
-                      <span>🏗️ Beton-Bruchstauchung (<InlineMath math="\varepsilon_{cu2}" />):</span>
-                      <span className="font-mono font-bold text-pink-950">−3,5 ‰ (Grenzstauchung, bis C50/60)</span>
+                      <span><MdText text={inhalt.texte.betonBruchstauchungVarepsilonCu2} /></span>
+                      <span className="font-mono font-bold text-pink-950"><MdText text={inhalt.texte.t35GrenzstauchungBis} /></span>
                     </div>
                     <div className="flex items-center justify-between p-2 rounded-lg bg-emerald-50 border border-emerald-100">
-                      <span>🏗️ Stahldehnung bei Streckgrenze S235 (<InlineMath math="\varepsilon_{y} = f_y / E" />):</span>
+                      <span><MdText text={inhalt.texte.stahldehnungBeiStreckgrenzeS235} /></span>
                       <span className="font-mono font-bold text-emerald-950">235 / 210.000 = 1,12 ‰</span>
                     </div>
                   </div>
@@ -477,11 +442,11 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
 
               {/* Dynamic SVG elongation display */}
               <div className="bg-slate-50 rounded-xl p-4 border border-home-grau/25 mt-4 space-y-1">
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Visuelle Elongations-Übertreibung</span>
+                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block"><MdText text={inhalt.texte.visuelleElongationsÜbertreibung} /></span>
                 <div className="h-16 flex items-center justify-center relative bg-white rounded border border-slate-200">
                   {/* Original outline */}
                   <div className="absolute h-4 border border-dashed border-slate-300 w-2/3 flex items-center justify-center bg-slate-50 opacity-60">
-                    <span className="text-[8px] text-slate-400">Ausgangszustand (l₀ = {formatDeZahl(originalLengthM, 1)}m)</span>
+                    <span className="text-[8px] text-slate-400"><MdText text={inhalt.texte.ausgangszustandL} />{formatDeZahl(originalLengthM, 1)}m)</span>
                   </div>
                   {/* Stretched specimen */}
                   <div 
@@ -492,7 +457,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                     }`}
                     style={{ width: `${Math.max(10, Math.min(95, 66.6 + (elongationMm * 1.5)))}%` }}
                   >
-                    <span>Länge neu (+ {formatDeZahl(elongationMm, 1)} mm)</span>
+                    <span><MdText text={inhalt.texte.längeNeu} />{formatDeZahl(elongationMm, 1)} mm)</span>
                   </div>
                 </div>
               </div>
@@ -508,29 +473,20 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
           <div className="space-y-6">
             <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm space-y-4">
               <h2 className="text-sm font-bold text-slate-800 flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-shiraz"></span>
-                Das Hooke&apos;sche Gesetz &amp; der E-Modul
-              </h2>
-              <p className="text-xs text-text-main/80 leading-relaxed">
-                Der <strong>Elastizitätsmodul (<InlineMath math="E" />)</strong> beschreibt den proportionalen Zusammenhang zwischen Spannung (<InlineMath math="\sigma" />)
-                und Dehnung (<InlineMath math="\varepsilon" />) im elastischen Verformungsbereich. Er ist die Steifigkeits-Kenngröße eines Werkstoffs.
-              </p>
+                <span className="w-2.5 h-2.5 rounded-full bg-shiraz"></span><MdText text={inhalt.texte.dasHookeScheGesetz} /></h2>
+              <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.derElastizitätsmodulEBeschreibt} /></p>
               
               <div className="bg-slate-50 p-3 rounded-xl border border-home-grau/25 text-center">
                 <BlockMath math="\sigma = E \cdot \varepsilon" />
-                <p className="text-[10px] text-slate-500 mt-1 font-mono">
-                  \sigma = Elastische Spannung [N/mm²] | E = E-Modul [N/mm² oder MPa] | \varepsilon = Relative Verformung [-]
-                </p>
+                <p className="text-[10px] text-slate-500 mt-1 font-mono"><MdText text={inhalt.texte.sigmaElastischeSpannungN} /></p>
               </div>
 
               <div className="p-3 bg-indigo-50/60 rounded-xl border border-indigo-100/50 text-[11px] leading-relaxed text-slate-700">
-                <span className="font-bold text-indigo-900 block mb-0.5">🧠 Merksatz:</span>
-                Je <strong>höher</strong> der E-Modul eines Baustoffs, desto <strong>größer</strong> ist der mechanische Widerstand gegen Verformung (Standsicherheit & Steifigkeit).
-              </div>
+                <span className="font-bold text-indigo-900 block mb-0.5"><MdText text={inhalt.texte.merksatz} /></span><MdText text={inhalt.texte.jeHöherDerE} /></div>
             </div>
 
             <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm space-y-4">
-              <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider">Material-Stiffness Vergleiche</h3>
+              <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider"><MdText text={inhalt.texte.materialStiffnessVergleiche} /></h3>
               
               <div className="grid grid-cols-1 gap-2">
                 {MATERIAL_PRESETS.map((preset, idx) => (
@@ -557,7 +513,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
               {/* Custom manual parameter controller */}
               <div className="pt-4 border-t border-slate-100 space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-slate-800">Eigenen E-Modul festlegen:</span>
+                  <span className="text-xs font-bold text-slate-800"><MdText text={inhalt.texte.eigenenEModulFestlegen} /></span>
                   {isCustomMaterial && (
                     <span className="text-[9px] bg-amber-500/10 text-amber-700 border border-amber-500/20 px-2 py-0.5 rounded font-bold uppercase tracking-wider">Aktiv</span>
                   )}
@@ -579,12 +535,12 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
           <div className="space-y-6">
             <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col justify-between h-full">
               <div className="space-y-4">
-                <h3 className="text-xs font-bold text-slate-80s uppercase tracking-wider block">Berechnung von Hookes Bereich</h3>
+                <h3 className="text-xs font-bold text-slate-80s uppercase tracking-wider block"><MdText text={inhalt.texte.berechnungVonHookesBereich} /></h3>
                 
                 {/* Strain slider for simulation */}
                 <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
                   <Slider 
-                    label="Gewählte Dehnung (ε)" 
+                    label={inhalt.werte.gewählteDehnung} 
                     min={0.1} 
                     max={10.0} 
                     step={0.1} 
@@ -593,16 +549,14 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                     onChange={(e) => setHookeStrainPermille(Number(e.target.value))} 
                   />
                   <div className="text-[10px] text-slate-500 mt-2 italic flex justify-between">
-                    <span>(= {formatDeZahl(hookeStrainPermille, 1)} mm Verlängerung pro Meter Länge)</span>
+                    <span>(= {formatDeZahl(hookeStrainPermille, 1)}<MdText text={inhalt.texte.mmVerlängerungProMeter} /></span>
                     <span>= {formatDeZahl((hookeStrainPermille / 1000), 4)} [-]</span>
                   </div>
                 </div>
 
                 {/* Computed Hooke Stress representation */}
                 <div className="p-5 bg-shiraz/5 rounded-2xl border border-shiraz/10 text-center space-y-1">
-                  <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold block">
-                    Errechnete Elastische Spannung (σ)
-                  </span>
+                  <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold block"><MdText text={inhalt.texte.errechneteElastischeSpannung} /></span>
                   <div className="text-4xl font-black text-shiraz tracking-tight font-mono">
                     {formatDeZahl(stressHooke, 2)} <span className="text-lg font-normal">N/mm²</span>
                   </div>
@@ -611,9 +565,8 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                   </div>
 
                   <div className="mt-4 pt-3 border-t border-shiraz/10 text-xs font-mono text-slate-600 bg-white/75 rounded p-2 text-left">
-                    <div className="font-bold text-slate-800 mb-1">🔢 Berechnungsschritt:</div>
-                    E = {formatDeWert(E_to_use)} MPa (N/mm²)<br />
-                    ε = {formatDeWert(hookeStrainPermille)} ‰ = {formatDeZahl((hookeStrainPermille / 1000), 4)} <br />
+                    <div className="font-bold text-slate-800 mb-1"><MdText text={inhalt.texte.berechnungsschritt3} /></div>
+                    E = {formatDeWert(E_to_use)}<MdText text={inhalt.texte.mpaNMmBr} />{formatDeWert(hookeStrainPermille)} ‰ = {formatDeZahl((hookeStrainPermille / 1000), 4)} <br />
                     σ = {formatDeWert(E_to_use)} · {formatDeZahl((hookeStrainPermille / 1000), 4)} = <span className="text-shiraz font-bold">{formatDeZahl(stressHooke, 2)} N/mm²</span>
                   </div>
                 </div>
@@ -621,7 +574,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
 
               {/* Stress-strain physical visual illustration via simple react state lines */}
               <div className="bg-slate-50 rounded-xl p-4 border border-home-grau/25 mt-4 space-y-2">
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Graphischer Steifigkeit-Vergleich (σ / ε Steigung)</span>
+                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block"><MdText text={inhalt.texte.graphischerSteifigkeitVergleichSteigung} /></span>
                 
                 <div className="h-64 bg-white rounded-lg border border-slate-200 relative p-2 flex items-end">
                   {/* Axis line vertical */}
@@ -715,30 +668,13 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
       {!embedMode && (
         <ModuleFooter 
           wikipedia={[
-            { title: 'Hookesches Gesetz', url: 'https://de.wikipedia.org/wiki/Hookesches_Gesetz' },
+            { title: inhalt.werte.hookeschesGesetz, url: 'https://de.wikipedia.org/wiki/Hookesches_Gesetz' },
             { title: 'Elastizitätsmodul', url: 'https://de.wikipedia.org/wiki/Elastizit%C3%A4tsmodul' },
             { title: 'Poissonzahl', url: 'https://de.wikipedia.org/wiki/Poissonzahl' }
           ]}
-          literatur={[
-            'Gross, D.; Hauger, W.; Schröder, J.; Wall, W. A. (2021): Technische Mechanik 2: Elastostatik (Springer Vieweg)',
-            'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-          ]}
-          regelwerke={[
-            { title: 'DIN EN 1992-1-1 (Eurocode 2: Bemessung von Stahlbeton- und Spannbetontragwerken)' },
-            { title: 'DIN EN 12390-13 (Prüfung von Festbeton - Teil 13: Bestimmung des Elastizitätsmoduls unter Druckbelastung)' }
-          ]}
-          formeln={[
-            {
-              formel: '\\sigma = E \\cdot \\varepsilon',
-              erklaerung: 'Hookesches Gesetz (eindimensional): Normalspannung sigma ist im linear-elastischen Bereich direkt proportional zur bezogenen Dehnung epsilon über den Elastizitätsmodul E.',
-              quelle: 'DIN EN 1992-1-1'
-            },
-            {
-              formel: '\\nu = -\\frac{\\varepsilon_{\\text{quer}}}{\\varepsilon_{\\text{längs}}}',
-              erklaerung: 'Querkontraktionszahl (Poissonzahl nu): Verhältnis der relativen Querdehnung zur Längsdehnung unter einachsiger Normalbeanspruchung.',
-              quelle: 'DIN EN 12390-13'
-            }
-          ]}
+          literatur={inhalt.daten["Elastomechanik.literatur"]}
+          regelwerke={inhalt.daten["Elastomechanik.regelwerke"]}
+          formeln={inhalt.daten["Elastomechanik.formeln"]}
         />
       )}
     </div>

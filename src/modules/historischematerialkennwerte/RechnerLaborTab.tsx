@@ -2,6 +2,8 @@ import type { Dispatch, SetStateAction } from 'react';
 import { Settings, CheckCircle, Ruler, BookOpen, Activity, Layers } from 'lucide-react';
 import { formatDeZahl, formatDeTeX, formatDeWert } from '@/src/utils/numberFormat';
 import { BlockMath, InlineMath } from 'react-katex';
+import inhalt from '@/content/historischematerialkennwerte/RechnerLaborTab.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 type TestProbeType = 'beton_bohrkern' | 'mauerwerk_ziegel' | 'stahl_zugprobe';
 
@@ -53,9 +55,7 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
     <div className="animate-fadeIn">
       {/* Context manual */}
       <div className="text-sm bg-slate-50 text-slate-700 p-4 rounded-xl border border-home-grau/30 mb-8">
-        <p>
-          <strong>Laborprüfungs- &amp; Beprobungsauswertung:</strong> Prüfen Sie gewonnene Proben aus Bauteilen und überführen Sie diese nach geltenden Normen (z.B. DIN EN 13791 für Bohrkerne, DIN EN 772-1 für Mauersteine und Zugprüfungen nach ISO 6892-1) in charakteristische Kenngrößen.
-        </p>
+        <p><MdText text={inhalt.texte.laborprüfungsBeprobungsauswertungPrüfenS} /></p>
       </div>
     
       {/* Test type selector */}
@@ -68,8 +68,7 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                     : 'bg-slate-50 text-slate-850 border-home-grau/30 hover:bg-slate-100'
                 }`}
         >
-          <Activity size={16} /> Beton-Bohrkerne (EC2)
-        </button>
+          <Activity size={16} /><MdText text={inhalt.texte.betonBohrkerneEc2} /></button>
         <button aria-pressed={probeType === 'mauerwerk_ziegel'}
           onClick={() => setProbeType('mauerwerk_ziegel')}
           className={`py-3 px-4 rounded-xl font-bold flex items-center justify-center gap-2 border text-sm transition-all ${
@@ -78,8 +77,7 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                     : 'bg-slate-50 text-slate-850 border-home-grau/30 hover:bg-slate-100'
                 }`}
         >
-          <Layers size={16} /> Mauersteine &amp; f_k (EC6)
-        </button>
+          <Layers size={16} /><MdText text={inhalt.texte.mauersteineFKEc6} /></button>
         <button aria-pressed={probeType === 'stahl_zugprobe'}
           onClick={() => setProbeType('stahl_zugprobe')}
           className={`py-3 px-4 rounded-xl font-bold flex items-center justify-center gap-2 border text-sm transition-all ${
@@ -88,8 +86,7 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                     : 'bg-slate-50 text-slate-850 border-home-grau/30 hover:bg-slate-100'
                 }`}
         >
-          <Ruler size={16} /> Stahl-Zerreißversuch (EC3)
-        </button>
+          <Ruler size={16} /><MdText text={inhalt.texte.stahlZerreißversuchEc3} /></button>
       </div>
     
       {/* TWO-COLUMN LAYOUT: Input and Output */}
@@ -98,14 +95,13 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
         {/* Left Column: Parameter configuration */}
         <div className="lg:col-span-5 bg-slate-50 p-5 rounded-2xl border border-home-grau/30">
           <h3 className="text-md font-bold text-slate-900 mb-6 uppercase tracking-wider flex items-center gap-2 border-b border-home-grau/30 pb-2">
-            <Settings size={18} className="text-shiraz" /> Eingabewerte &amp; Parameter
-          </h3>
+            <Settings size={18} className="text-shiraz" /><MdText text={inhalt.texte.eingabewerteParameter} /></h3>
     
           {/* 1. BETON BOHRKERN CONTROLS */}
           {probeType === 'beton_bohrkern' && (
             <div className="space-y-5 text-sm">
               <div>
-                <label className="block text-xs font-bold text-home-grau uppercase mb-2">Kern-Soll-Durchmesser (d)</label>
+                <label className="block text-xs font-bold text-home-grau uppercase mb-2"><MdText text={inhalt.texte.kernSollDurchmesserD} /></label>
                 <div className="grid grid-cols-4 gap-2">
                   {[50, 80, 100, 150].map((dia) => (
                     <button
@@ -130,7 +126,7 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
     
               <div>
                 <div className="flex justify-between text-xs font-bold text-home-grau uppercase mb-2">
-                  <span>Länge des Bohrkerns (h)</span>
+                  <span><MdText text={inhalt.texte.längeDesBohrkernsH} /></span>
                   <span className="text-shiraz font-mono">{formatDeWert(coreHeight)} mm</span>
                 </div>
                 <input
@@ -144,14 +140,14 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                 />
                 <div className="flex justify-between text-xs text-home-grau mt-1">
                   <span>50 mm</span>
-                  <span>Verhältnis h/d = <strong className="font-mono text-text-main">{formatDeZahl((coreHeight / coreDiameter), 2)}</strong></span>
+                  <span><MdText text={inhalt.texte.verhältnisHD} /><strong className="font-mono text-text-main">{formatDeZahl((coreHeight / coreDiameter), 2)}</strong></span>
                   <span>300 mm</span>
                 </div>
               </div>
     
               <div>
                 <div className="flex justify-between text-xs font-bold text-home-grau uppercase mb-2">
-                  <span>Prüfkraft Zylinderpresse (F)</span>
+                  <span><MdText text={inhalt.texte.prüfkraftZylinderpresseF} /></span>
                   <span className="text-shiraz font-mono font-bold text-sm bg-white px-2 py-0.5 rounded border border-home-grau/30">{formatDeWert(failureForceKn)} kN</span>
                 </div>
                 <input
@@ -171,7 +167,7 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
               </div>
     
               <div>
-                <label className="block text-xs font-bold text-home-grau uppercase mb-2">Lagerung & Feuchtigkeit</label>
+                <label className="block text-xs font-bold text-home-grau uppercase mb-2"><MdText text={inhalt.texte.lagerungFeuchtigkeit} /></label>
                 <div className="grid grid-cols-3 gap-2">
                   {(['standard', 'nass', 'trocken'] as const).map((mode) => (
                     <button
@@ -183,15 +179,13 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                                 : 'bg-white text-text-main border-home-grau/25 hover:bg-home-grau/5'
                             }`}
                     >
-                      {mode === 'standard' && 'Raumklima (1.0)'}
-                      {mode === 'nass' && 'Nass / Wasser (1.09)'}
-                      {mode === 'trocken' && 'Ofentrocken (0.92)'}
+                      {mode === 'standard' && inhalt.werte.raumklima10}
+                      {mode === 'nass' && inhalt.werte.nassWasser109}
+                      {mode === 'trocken' && inhalt.werte.ofentrocken092}
                     </button>
                   ))}
                 </div>
-                <p className="text-xs text-home-grau mt-1 leading-normal">
-                  Ofentrockener Beton weist künstlich höhere Bruchspannungen auf; nasse Proben brechen mechanisch früher.
-                </p>
+                <p className="text-xs text-home-grau mt-1 leading-normal"><MdText text={inhalt.texte.ofentrockenerBetonWeistKünstlich} /></p>
               </div>
     
               <div>
@@ -208,14 +202,12 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                             }`}
                     >
                       {mode === 'none' && 'Keine (1.0)'}
-                      {mode === 'minor' && '1 Stab (1.04)'}
-                      {mode === 'critical' && '2 Stäbe (1.10)'}
+                      {mode === 'minor' && inhalt.werte.t1Stab104}
+                      {mode === 'critical' && inhalt.werte.t2Stäbe110}
                     </button>
                   ))}
                 </div>
-                <p className="text-xs text-home-grau mt-1 leading-normal">
-                  Stahlstangen schwächen die Nettodruckfläche des Zylinders. Die ermittelte Last muss rechnerisch korrigiert werden.
-                </p>
+                <p className="text-xs text-home-grau mt-1 leading-normal"><MdText text={inhalt.texte.stahlstangenSchwächenDieNettodruckfläche} /></p>
               </div>
             </div>
           )}
@@ -254,20 +246,16 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
               </div>
     
               <div className="bg-white/80 p-3 rounded-lg border border-home-grau/30">
-                <span className="text-xs font-bold text-home-grau block mb-1">Format-Vorschläge (Ziegelformat)</span>
+                <span className="text-xs font-bold text-home-grau block mb-1"><MdText text={inhalt.texte.formatVorschlägeZiegelformat} /></span>
                 <div className="flex flex-wrap gap-1.5">
                   <button
                     onClick={() => { setBrickWidth(115); setBrickLength(240); setBrickHeight(71); }}
                     className="px-2 py-1 text-xs font-bold bg-off-white hover:bg-home-grau/10 border rounded"
-                  >
-                    NF (Normalformat)
-                  </button>
+                  ><MdText text={inhalt.texte.nfNormalformat} /></button>
                   <button
                     onClick={() => { setBrickWidth(115); setBrickLength(240); setBrickHeight(52); }}
                     className="px-2 py-1 text-xs font-bold bg-off-white hover:bg-home-grau/10 border rounded"
-                  >
-                    DF (Dünnformat)
-                  </button>
+                  ><MdText text={inhalt.texte.dfDünnformat} /></button>
                   <button
                     onClick={() => { setBrickWidth(175); setBrickLength(240); setBrickHeight(113); }}
                     className="px-2 py-1 text-xs font-bold bg-off-white hover:bg-home-grau/10 border rounded"
@@ -279,7 +267,7 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
     
               <div>
                 <div className="flex justify-between text-xs font-bold text-home-grau uppercase mb-2">
-                  <span>Zylinder-/Stempelprüfkraft (F_c)</span>
+                  <span><MdText text={inhalt.texte.zylinderStempelprüfkraftFC} /></span>
                   <span className="text-shiraz font-mono font-bold text-sm bg-white px-2 py-0.5 rounded border border-home-grau/30">{formatDeWert(brickForceKn)} kN</span>
                 </div>
                 <input
@@ -295,7 +283,7 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
     
               <div>
                 <div className="flex justify-between text-xs font-bold text-home-grau uppercase mb-2">
-                  <span>Mörtelfestigkeitsklasse (f_m)</span>
+                  <span><MdText text={inhalt.texte.mörtelfestigkeitsklasseFM} /></span>
                   <span className="text-shiraz font-mono font-bold text-sm bg-white px-2 py-0.5 rounded border border-home-grau/30">{formatDeZahl(mortarStrength, 1)} MPa</span>
                 </div>
                 <input
@@ -308,9 +296,9 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                   className="w-full accent-shiraz"
                 />
                 <div className="flex justify-between text-xs mt-1 text-home-grau">
-                  <span>M 1 (historischer Kalkmörtel)</span>
-                  <span>M 5.0 (Standard)</span>
-                  <span>M 15 (Hochfest)</span>
+                  <span><MdText text={inhalt.texte.m1HistorischerKalkmörtel} /></span>
+                  <span><MdText text={inhalt.texte.m50Standard} /></span>
+                  <span><MdText text={inhalt.texte.m15Hochfest} /></span>
                 </div>
               </div>
             </div>
@@ -320,7 +308,7 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
           {probeType === 'stahl_zugprobe' && (
             <div className="space-y-5 text-sm">
               <div>
-                <label className="block text-xs font-bold text-home-grau uppercase mb-2">Geometrische Form der Probe</label>
+                <label className="block text-xs font-bold text-home-grau uppercase mb-2"><MdText text={inhalt.texte.geometrischeFormDerProbe} /></label>
                 <div className="grid grid-cols-2 gap-2">
                   <button aria-pressed={steelForm === 'round'}
                     onClick={() => setSteelForm('round')}
@@ -348,8 +336,8 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
               {steelForm === 'flat' ? (
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-home-grau uppercase mb-1">Breite w (mm)</label>
-                    <input aria-label="Breite w (mm)"
+                    <label className="block text-xs font-bold text-home-grau uppercase mb-1"><MdText text={inhalt.texte.breiteWMm} /></label>
+                    <input aria-label={inhalt.werte.breiteWMm}
                       type="number"
                       min="1"
                       max="60"
@@ -359,8 +347,8 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-home-grau uppercase mb-1">Dicke t (mm)</label>
-                    <input aria-label="Dicke t (mm)"
+                    <label className="block text-xs font-bold text-home-grau uppercase mb-1"><MdText text={inhalt.texte.dickeTMm} /></label>
+                    <input aria-label={inhalt.werte.dickeTMm}
                       type="number"
                       min="1"
                       max="30"
@@ -373,7 +361,7 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
               ) : (
                 <div>
                   <div className="flex justify-between text-xs font-bold text-home-grau uppercase mb-2">
-                    <span>Nenndurchmesser d</span>
+                    <span><MdText text={inhalt.texte.nenndurchmesserD} /></span>
                     <span className="text-shiraz font-mono">{formatDeWert(steelDiameter)} mm</span>
                   </div>
                   <input
@@ -390,7 +378,7 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
     
               <div>
                 <div className="flex justify-between text-xs font-bold text-home-grau uppercase mb-2">
-                  <span>Kraft an der Streckgrenze (F_eH / F_p0.2)</span>
+                  <span><MdText text={inhalt.texte.kraftAnDerStreckgrenze} /></span>
                   <span className="text-shiraz font-mono font-bold text-sm bg-white px-2 py-0.5 rounded border border-home-grau/30">{formatDeWert(steelForceYieldKn)} kN</span>
                 </div>
                 <input
@@ -406,7 +394,7 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
     
               <div>
                 <div className="flex justify-between text-xs font-bold text-home-grau uppercase mb-2">
-                  <span>Zerreißkraft / Plastisch (F_m)</span>
+                  <span><MdText text={inhalt.texte.zerreißkraftPlastischFM} /></span>
                   <span className="text-shiraz font-mono font-bold text-sm bg-white px-2 py-0.5 rounded border border-home-grau/30">{formatDeWert(steelForceTensileKn)} kN</span>
                 </div>
                 <input
@@ -418,9 +406,7 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                   onChange={(e) => setSteelForceTensileKn(Math.max(steelForceYieldKn + 1, Number(e.target.value)))}
                   className="w-full accent-shiraz"
                 />
-                <div className="text-xs text-home-grau text-right mt-1">
-                  Muss über der Elastic-Streckgrenze liegen.
-                </div>
+                <div className="text-xs text-home-grau text-right mt-1"><MdText text={inhalt.texte.mussÜberDerElastic} /></div>
               </div>
             </div>
           )}
@@ -433,48 +419,47 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
           {probeType === 'beton_bohrkern' && (
             <div className="bg-white rounded-2xl border border-shiraz/20 shadow-lg p-6 animate-pulseOnce">
               <div className="flex items-center justify-between border-b pb-4 mb-4">
-                <span className="text-xs font-bold text-shiraz uppercase tracking-widest block">Protokoll: DIN EN 13791</span>
-                <div className="px-3 py-1 text-xs font-semibold bg-shiraz/10 text-shiraz rounded-full border border-shiraz/20">
-                  Einzelkern – Klasse: <strong className="font-bold">{coreSeries.valid ? `${coreSeries.cls} (aus n = ${coreSeries.n})` : 'erst ab n ≥ 3'}</strong>
+                <span className="text-xs font-bold text-shiraz uppercase tracking-widest block"><MdText text={inhalt.texte.protokollDinEn13791} /></span>
+                <div className="px-3 py-1 text-xs font-semibold bg-shiraz/10 text-shiraz rounded-full border border-shiraz/20"><MdText text={inhalt.texte.einzelkernKlasse} /><strong className="font-bold">{coreSeries.valid ? `${coreSeries.cls} (aus n = ${coreSeries.n})` : inhalt.werte.erstAbN3}</strong>
                 </div>
               </div>
     
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6 text-center">
                 <div className="bg-off-white/80 p-3 rounded-xl border border-home-grau/15">
-                  <span className="text-xs font-bold text-home-grau block uppercase">Nettomessfläche A</span>
+                  <span className="text-xs font-bold text-home-grau block uppercase"><MdText text={inhalt.texte.nettomessflächeA} /></span>
                   <span className="text-md font-extrabold text-text-main font-mono">{formatDeZahl(calculatedConcrete.areaSqCm, 1)} cm²</span>
                 </div>
                 <div className="bg-off-white/80 p-3 rounded-xl border border-home-grau/15">
-                  <span className="text-xs font-bold text-home-grau block uppercase">Bruchspannung f_c,core</span>
+                  <span className="text-xs font-bold text-home-grau block uppercase"><MdText text={inhalt.texte.bruchspannungFCCore} /></span>
                   <span className="text-md font-extrabold text-text-main font-mono">{formatDeZahl(calculatedConcrete.rawStrengthMpa, 1)} MPa</span>
                 </div>
                 <div className="bg-shiraz/10 p-3 rounded-xl border border-shiraz/25">
-                  <span className="text-xs font-bold text-shiraz block uppercase">Equiv Cylinder f_is,cyl</span>
+                  <span className="text-xs font-bold text-shiraz block uppercase"><MdText text={inhalt.texte.equivCylinderFIs} /></span>
                   <span className="text-lg font-black text-shiraz font-mono">{formatDeZahl(calculatedConcrete.fIsCyl, 1)} N/mm²</span>
                 </div>
               </div>
     
               {/* Equations section */}
               <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 space-y-3 font-serif text-sm">
-                <h4 className="font-sans font-bold text-xs text-text-main uppercase tracking-wider mb-2">Rechnerische Zwischenschritte & Minderungskoeffizienten:</h4>
+                <h4 className="font-sans font-bold text-xs text-text-main uppercase tracking-wider mb-2"><MdText text={inhalt.texte.rechnerischeZwischenschritteMinderungsko} /></h4>
                 <div className="text-[12px] space-y-2 leading-relaxed font-mono text-text-main/90">
                   <div>
-                    <span className="font-sans text-home-grau">1. Schlankheitskorrektur: </span>
+                    <span className="font-sans text-home-grau"><MdText text={inhalt.texte.t1Schlankheitskorrektur} /></span>
                     <InlineMath math={`k_{ ratio} = ${formatDeTeX(calculatedConcrete.kRatioToCylinder, 2)}`} /> 
                     <span className="font-sans text-xs text-home-grau ml-1">
-                      (h/d = {formatDeZahl(calculatedConcrete.ratioHd, 2)} → {calculatedConcrete.ratioHd >= 2 ? 'Kompakter Zylinder' : 'Interpoliert zu Zylinderstärke'})
+                      (h/d = {formatDeZahl(calculatedConcrete.ratioHd, 2)} → {calculatedConcrete.ratioHd >= 2 ? inhalt.werte.kompakterZylinder : inhalt.werte.interpoliertZuZylinderstärke})
                     </span>
                   </div>
                   <div>
-                    <span className="font-sans text-home-grau">2. Feuchtigkeitskorrektur: </span>
+                    <span className="font-sans text-home-grau"><MdText text={inhalt.texte.t2Feuchtigkeitskorrektur} /></span>
                     <InlineMath math={`k_{moist} = ${formatDeTeX(calculatedConcrete.kMoist, 2)}`} />
                   </div>
                   <div>
-                    <span className="font-sans text-home-grau">3. Stahleinlagenminderung: </span>
+                    <span className="font-sans text-home-grau"><MdText text={inhalt.texte.t3Stahleinlagenminderung} /></span>
                     <InlineMath math={`k_{rebar} = ${formatDeTeX(calculatedConcrete.kRebar, 2)}`} />
                   </div>
                   <div>
-                    <span className="font-sans text-home-grau">4. Maßstabsfaktor (Ø-Bohrkern): </span>
+                    <span className="font-sans text-home-grau"><MdText text={inhalt.texte.t4MaßstabsfaktorBohrkern} /></span>
                     <InlineMath math={`k_{dia} = ${formatDeTeX(calculatedConcrete.kDia, 2)}`} />
                   </div>
                   <hr className="my-1 border-home-grau/30" />
@@ -484,16 +469,12 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                 </div>
               </div>
     
-              <p className="mt-3 text-[11px] text-home-grau leading-relaxed">
-                Hinweis: Die Faktoren k_moist, k_rebar und k_dia stehen nicht in DIN EN 13791 (Literaturwerte, z. B. Concrete Society TR 11 / ACI 214.4R – Quelle prüfen). DIN EN 13791 verlangt bewehrungsfreie Kerne.
-              </p>
+              <p className="mt-3 text-[11px] text-home-grau leading-relaxed"><MdText text={inhalt.texte.hinweisDieFaktorenK} /></p>
     
               {/* Stichprobe: charakteristischer Wert und Klasse */}
               <div className="mt-6 border-t pt-4 space-y-3">
-                <h4 className="text-xs font-bold text-text-main uppercase">Stichprobe: charakteristischer Wert und Druckfestigkeitsklasse</h4>
-                <label className="text-xs text-home-grau block">
-                  In-situ-Festigkeiten aller Kerne f_is [N/mm²], getrennt durch Semikolon:
-                  <input
+                <h4 className="text-xs font-bold text-text-main uppercase"><MdText text={inhalt.texte.stichprobeCharakteristischerWertUnd} /></h4>
+                <label className="text-xs text-home-grau block"><MdText text={inhalt.texte.inSituFestigkeitenAller} /><input
                     type="text"
                     value={coreSeriesText}
                     onChange={(e) => setCoreSeriesText(e.target.value)}
@@ -503,26 +484,22 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                 {coreSeries.valid ? (
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                     <div className="p-3 bg-home-grau/5 rounded-lg border border-home-grau/30">
-                      <span className="text-xs font-bold text-home-grau block uppercase">n = {coreSeries.n} · Mittelwert</span>
+                      <span className="text-xs font-bold text-home-grau block uppercase">n = {coreSeries.n}<MdText text={inhalt.texte.mittelwert} /></span>
                       <div className="text-md font-bold text-text-main">{formatDeZahl(coreSeries.mean, 1)} N/mm²</div>
                     </div>
                     <div className="p-3 bg-home-grau/5 rounded-lg border border-home-grau/30">
-                      <span className="text-xs font-bold text-home-grau block uppercase">f_ck,is (k_n = {formatDeZahl(coreSeries.kn, 2)})</span>
+                      <span className="text-xs font-bold text-home-grau block uppercase"><MdText text={inhalt.texte.fCkIsK} />{formatDeZahl(coreSeries.kn, 2)})</span>
                       <div className="text-md font-bold text-text-main">{formatDeZahl(coreSeries.fckIs, 1)} N/mm²</div>
                     </div>
                     <div className="p-3 bg-emerald-50 rounded-lg border border-emerald-250">
-                      <span className="text-xs font-bold text-emerald-800 block uppercase">f_ck = f_ck,is / 0,85</span>
+                      <span className="text-xs font-bold text-emerald-800 block uppercase"><MdText text={inhalt.texte.fCkFCk} /></span>
                       <div className="text-md font-bold text-emerald-800">{formatDeZahl(coreSeries.fck, 1)} N/mm² → {coreSeries.cls}</div>
                     </div>
                   </div>
                 ) : (
-                  <div className="p-3 bg-amber-50 rounded-lg border border-amber-200 text-xs text-amber-900">
-                    Mindestens 3 Kernwerte eingeben – aus einem einzelnen Kern darf weder eine Festigkeitsklasse noch ein Bemessungswert abgeleitet werden.
-                  </div>
+                  <div className="p-3 bg-amber-50 rounded-lg border border-amber-200 text-xs text-amber-900"><MdText text={inhalt.texte.mindestens3KernwerteEingeben} /></div>
                 )}
-                <p className="text-[11px] text-home-grau leading-relaxed">
-                  Charakteristischer Wert als 5-%-Fraktile (log-normal, V unbekannt) nach DIN EN 1990 Anhang D; Umrechnung auf die Druckfestigkeitsklasse nach DIN EN 13791. Für die verbindliche Bewertung Verfahren und Mindestanzahl der geltenden DIN EN 13791:2020-02 + A20 anwenden.
-                </p>
+                <p className="text-[11px] text-home-grau leading-relaxed"><MdText text={inhalt.texte.charakteristischerWertAls5} /></p>
               </div>
             </div>
           )}
@@ -531,56 +508,52 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
           {probeType === 'mauerwerk_ziegel' && (
             <div className="bg-white rounded-2xl border border-shiraz/20 shadow-lg p-6 animate-pulseOnce">
               <div className="flex items-center justify-between border-b pb-4 mb-4">
-                <span className="text-xs font-bold text-amber-800 uppercase tracking-widest block">Protokoll: DIN EN 772-1 & EC6</span>
-                <div className="px-3 py-1 text-xs font-semibold bg-amber-55/10 text-amber-800 rounded-full border border-amber-800/20">
-                  Normfestigkeit Stein <strong className="font-bold">{formatDeZahl(calculatedBrick.fB, 1)} N/mm²</strong>
+                <span className="text-xs font-bold text-amber-800 uppercase tracking-widest block"><MdText text={inhalt.texte.protokollDinEn772} /></span>
+                <div className="px-3 py-1 text-xs font-semibold bg-amber-55/10 text-amber-800 rounded-full border border-amber-800/20"><MdText text={inhalt.texte.normfestigkeitStein} /><strong className="font-bold">{formatDeZahl(calculatedBrick.fB, 1)} N/mm²</strong>
                 </div>
               </div>
     
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6 text-center">
                 <div className="bg-off-white/80 p-3 rounded-xl border border-home-grau/15">
-                  <span className="text-xs font-bold text-home-grau block uppercase">Druckfläche A</span>
+                  <span className="text-xs font-bold text-home-grau block uppercase"><MdText text={inhalt.texte.druckflächeA} /></span>
                   <span className="text-md font-extrabold text-text-main font-mono">{formatDeZahl((calculatedBrick.areaSqMm / 100), 1)} cm²</span>
                 </div>
                 <div className="bg-off-white/80 p-3 rounded-xl border border-home-grau/15">
-                  <span className="text-xs font-bold text-home-grau block uppercase">Mauerstein-Druckfestigkeit f_p</span>
+                  <span className="text-xs font-bold text-home-grau block uppercase"><MdText text={inhalt.texte.mauersteinDruckfestigkeitFP} /></span>
                   <span className="text-md font-extrabold text-text-main font-mono">{formatDeZahl(calculatedBrick.rawStrengthMpa, 1)} MPa</span>
                 </div>
                 <div className="bg-white p-3 rounded-xl border border-amber-300">
-                  <span className="text-xs font-bold text-amber-800 block uppercase">Wanddruckfestigkeit f_k</span>
+                  <span className="text-xs font-bold text-amber-800 block uppercase"><MdText text={inhalt.texte.wanddruckfestigkeitFK} /></span>
                   <span className="text-lg font-black text-amber-800 font-mono">{formatDeZahl(calculatedBrick.fK, 2)} N/mm²</span>
                 </div>
               </div>
     
               <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 space-y-3 font-serif text-sm">
-                <h4 className="font-sans font-bold text-xs text-text-main uppercase tracking-wider mb-2">Rechnerischer Ansatz nach Eurocode 6 (DIN EN 1996-1-1)</h4>
+                <h4 className="font-sans font-bold text-xs text-text-main uppercase tracking-wider mb-2"><MdText text={inhalt.texte.rechnerischerAnsatzNachEurocode} /></h4>
                 <div className="text-[12px] space-y-2 leading-relaxed font-mono text-text-main/90">
                   <div>
-                    <span className="font-sans text-home-grau">1. Proben-Formbeiwert d: </span>
+                    <span className="font-sans text-home-grau"><MdText text={inhalt.texte.t1ProbenFormbeiwertD} /></span>
                     <InlineMath math={`d = ${formatDeTeX(calculatedBrick.dFactor, 2)}`} />
                     <span className="font-sans text-xs text-home-grau ml-1">
                       (h / w = {formatDeZahl(calculatedBrick.ratioHw, 2)})
                     </span>
                   </div>
                   <div>
-                    <span className="font-sans text-home-grau">2. Deklarierte Steinfestigkeit f_b: </span>
+                    <span className="font-sans text-home-grau"><MdText text={inhalt.texte.t2DeklarierteSteinfestigkeitF} /></span>
                     <InlineMath math={`f_b = f_p \\cdot d = ${formatDeTeX(calculatedBrick.fB, 2)} \\text{ MPa}`} />
                   </div>
                   <hr className="my-1 border-home-grau/30" />
                   <div>
-                    <span className="font-sans font-bold text-text-main">Mauerwerkgrundformel (Mörtelklasse M{formatDeWert(mortarStrength)}):</span>
+                    <span className="font-sans font-bold text-text-main"><MdText text={inhalt.texte.mauerwerkgrundformelMörtelklasseM} />{formatDeWert(mortarStrength)}):</span>
                     <BlockMath math={`f_k = K \\cdot f_b^{0{,}7} \\cdot f_m^{0{,}3} = 0{,}55 \\cdot (${formatDeTeX(calculatedBrick.fB, 2)})^{0{,}7} \\cdot (${formatDeTeX(mortarStrength, 1)})^{0{,}3} = ${formatDeTeX(calculatedBrick.fK, 2)} \\text{ N/mm}^2`} />
                   </div>
                 </div>
               </div>
     
               <div className="mt-6 border-t pt-4">
-                <h4 className="text-xs font-bold text-text-main uppercase mb-2">Statisch zulässiges Spannungsniveau (<InlineMath math="f_{d} = f_k / \gamma_M" />)</h4>
-                <div className="p-4 bg-white rounded-xl border border-amber-300 text-sm leading-relaxed text-amber-900">
-                  Bemessungswert der Wandfestigkeit: <strong className="font-mono font-bold text-md text-amber-950">{formatDeZahl(calculatedBrick.fD, 2)} N/mm²</strong> 
-                  <span className="text-xs text-amber-800 block mt-1">
-                    (Mit <InlineMath math="f_d = \zeta \cdot f_k / \gamma_M" />, <InlineMath math="\zeta = 0{,}85" /> und <InlineMath math="\gamma_M = 1{,}5" /> nach DIN EN 1996-1-1/NA.)
-                  </span>
+                <h4 className="text-xs font-bold text-text-main uppercase mb-2"><MdText text={inhalt.texte.statischZulässigesSpannungsniveauF} /></h4>
+                <div className="p-4 bg-white rounded-xl border border-amber-300 text-sm leading-relaxed text-amber-900"><MdText text={inhalt.texte.bemessungswertDerWandfestigkeit} /><strong className="font-mono font-bold text-md text-amber-950">{formatDeZahl(calculatedBrick.fD, 2)} N/mm²</strong> 
+                  <span className="text-xs text-amber-800 block mt-1"><MdText text={inhalt.texte.mitFDZeta} /></span>
                 </div>
               </div>
             </div>
@@ -590,23 +563,22 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
           {probeType === 'stahl_zugprobe' && (
             <div className="bg-white rounded-2xl border border-shiraz/20 shadow-lg p-6 animate-pulseOnce">
               <div className="flex items-center justify-between border-b pb-4 mb-4">
-                <span className="text-xs font-bold text-indigo-800 uppercase tracking-widest block">Protokoll: DIN EN ISO 6892-1</span>
-                <div className="px-3 py-1 text-xs font-semibold bg-indigo-50 text-indigo-700 rounded-full border border-indigo-200">
-                  Klasse Einstufung: <strong className="font-bold">{calculatedSteel.designation}</strong>
+                <span className="text-xs font-bold text-indigo-800 uppercase tracking-widest block"><MdText text={inhalt.texte.protokollDinEnIso} /></span>
+                <div className="px-3 py-1 text-xs font-semibold bg-indigo-50 text-indigo-700 rounded-full border border-indigo-200"><MdText text={inhalt.texte.klasseEinstufung} /><strong className="font-bold">{calculatedSteel.designation}</strong>
                 </div>
               </div>
     
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6 text-center">
                 <div className="bg-off-white/80 p-3 rounded-xl border border-home-grau/15">
-                  <span className="text-xs font-bold text-home-grau block uppercase">Probenquerschnitt A_0</span>
+                  <span className="text-xs font-bold text-home-grau block uppercase"><MdText text={inhalt.texte.probenquerschnittA0} /></span>
                   <span className="text-md font-extrabold text-text-main font-mono">{formatDeZahl(calculatedSteel.areaSqMm, 1)} mm²</span>
                 </div>
                 <div className="bg-off-white/80 p-3 rounded-xl border border-home-grau/15">
-                  <span className="text-xs font-bold text-home-grau block uppercase">Streckgrenze R_eH</span>
+                  <span className="text-xs font-bold text-home-grau block uppercase"><MdText text={inhalt.texte.streckgrenzeREh} /></span>
                   <span className="text-md font-extrabold text-text-main font-mono">{formatDeZahl(calculatedSteel.yieldStrengthMpa, 1)} MPa</span>
                 </div>
                 <div className="bg-indigo-50 p-3 rounded-xl border border-indigo-200">
-                  <span className="text-xs font-bold text-indigo-800 block uppercase">Zugfestigkeit R_m</span>
+                  <span className="text-xs font-bold text-indigo-800 block uppercase"><MdText text={inhalt.texte.zugfestigkeitRM} /></span>
                   <span className="text-lg font-black text-indigo-800 font-mono">{formatDeZahl(calculatedSteel.tensileStrengthMpa, 1)} MPa</span>
                 </div>
               </div>
@@ -619,27 +591,24 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                     <InlineMath math={`R_{eH} = \\frac{F_{eH}}{A_0} = \\frac{${steelForceYieldKn} \\text{ kN}}{${formatDeTeX(calculatedSteel.areaSqMm, 1)} \\text{ mm}^2} = ${formatDeTeX(calculatedSteel.yieldStrengthMpa, 1)} \\text{ N/mm}^2`} />
                   </div>
                   <div>
-                    <span className="font-sans text-home-grau">Maximale Reißspannung plastisch: </span>
+                    <span className="font-sans text-home-grau"><MdText text={inhalt.texte.maximaleReißspannungPlastisch} /></span>
                     <InlineMath math={`R_{m} = \\frac{F_m}{A_0} = \\frac{${steelForceTensileKn} \\text{ kN}}{${formatDeTeX(calculatedSteel.areaSqMm, 1)} \\text{ mm}^2} = ${formatDeTeX(calculatedSteel.tensileStrengthMpa, 1)} \\text{ N/mm}^2`} />
                   </div>
                   <hr className="my-1 border-home-grau/30" />
                   <div>
-                    <span className="font-sans text-home-grau">Duktilitätsmaß (Streckgrenzenverhältnis): </span>
+                    <span className="font-sans text-home-grau"><MdText text={inhalt.texte.duktilitätsmaßStreckgrenzenverhältnis} /></span>
                     <InlineMath math={`\\frac{R_{eH}}{R_m} = ${formatDeTeX(calculatedSteel.yieldRatio, 3)}`} />
                     <span className="font-sans text-xs text-home-grau ml-1">
-                      (Duktilität {calculatedSteel.yieldRatio <= 0.85 ? 'Hoch / Ausreichend' : 'Achtung: Spröde!'})
+                      (Duktilität {calculatedSteel.yieldRatio <= 0.85 ? inhalt.werte.hochAusreichend : inhalt.werte.achtungSpröde})
                     </span>
                   </div>
                 </div>
               </div>
     
               <div className="mt-6 border-t pt-4">
-                <h4 className="text-xs font-bold text-text-main uppercase mb-2">Bemessungsstreckgrenze Eurocode 3 (<InlineMath math="f_{yd} = f_y / \gamma_{M0}" />)</h4>
-                <div className="p-4 bg-indigo-50/50 rounded-xl border border-indigo-200 text-sm leading-relaxed text-indigo-900">
-                  Bemessungsspannung für Tragfähigkeitsnachweise: <strong className="font-mono font-bold text-md text-indigo-950">{formatDeZahl(calculatedSteel.fYd, 1)} N/mm²</strong> 
-                  <span className="text-xs text-indigo-800 block mt-1">
-                    (Nach DIN EN 1993-1-1 beträgt der Teilsicherheitsbeiwert <InlineMath math="\gamma_{M0} = 1{,}00" />).
-                  </span>
+                <h4 className="text-xs font-bold text-text-main uppercase mb-2"><MdText text={inhalt.texte.bemessungsstreckgrenzeEurocode3F} /></h4>
+                <div className="p-4 bg-indigo-50/50 rounded-xl border border-indigo-200 text-sm leading-relaxed text-indigo-900"><MdText text={inhalt.texte.bemessungsspannungFürTragfähigkeitsnachw} /><strong className="font-mono font-bold text-md text-indigo-950">{formatDeZahl(calculatedSteel.fYd, 1)} N/mm²</strong> 
+                  <span className="text-xs text-indigo-800 block mt-1"><MdText text={inhalt.texte.nachDinEn1993} /></span>
                 </div>
               </div>
             </div>
@@ -650,39 +619,26 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
       {/* ----------------- SUBSECTION: THEORY AND MANUAL CALCS ----------------- */}
       <div className="bg-white p-6 rounded-2xl border border-home-grau/30 mt-8">
         <h3 className="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
-          <BookOpen className="text-shiraz" size={20} /> Handrechnungs-Beispiele &amp; Schritt-für-Schritt Rechenwege
-        </h3>
+          <BookOpen className="text-shiraz" size={20} /><MdText text={inhalt.texte.handrechnungsBeispieleSchrittFür} /></h3>
     
         <div className="space-y-8 text-sm text-slate-700 leading-relaxed">
           {/* Example 1: Concrete */}
           <div className="bg-slate-50 p-5 rounded-xl border border-home-grau/30">
             <div className="flex items-center gap-2 text-shiraz mb-2">
               <CheckCircle size={16} />
-              <h4 className="font-bold text-sm uppercase">Beispiel 1: Betonstütze Baujahr 1974 (Einstufung Bn 250)</h4>
+              <h4 className="font-bold text-sm uppercase"><MdText text={inhalt.texte.beispiel1BetonstützeBaujahr} /></h4>
             </div>
-            <p className="mb-4">
-              Ein Statiker findet in historischen Bauakten eines Bürogebäudes von 1974 eine Betonklassifizierung der Stützpfeiler als <strong>"Bn 250"</strong> nach DIN 1045 (Fassung 1972). Er soll die Stütze mit dem aktuellen Eurocode 2 nachrechnen. Der vollständige Rechenweg gestaltet sich wie folgt:
-            </p>
+            <p className="mb-4"><MdText text={inhalt.texte.einStatikerFindetIn} /></p>
             
             <div className="space-y-3 font-serif pl-2 border-l-2 border-shiraz/40 my-3">
               <div>
-                <strong className="font-sans text-xs text-home-grau block uppercase">Schritt 1: Bestimmung der Würfelfestigkeit (alt)</strong>
-                Die alte Klasse bezieht sich auf die Würfeldruckfestigkeit <InlineMath math="\beta_{WN}" />. Das Nennmaß Bn 250 garantiert eine 5%-Fraktilfestigkeit von:
-                <BlockMath math="\beta_{WN} = 25{,}0 \text{ N/mm}^2 \text{ (auf einen 200 mm Würfel)}" />
+                <strong className="font-sans text-xs text-home-grau block uppercase"><MdText text={inhalt.texte.schritt1BestimmungDer} /></strong><MdText text={inhalt.texte.dieAlteKlasseBezieht} /><BlockMath math="\beta_{WN} = 25{,}0 \text{ N/mm}^2 \text{ (auf einen 200 mm Würfel)}" />
               </div>
               <div>
-                <strong className="font-sans text-xs text-home-grau block uppercase">Schritt 2: Umrechnung auf standardisierten Zylinder (f_ck)</strong>
-                Die aktuellen Eurocode 2 Klassen basieren auf der Zylinderdruckfestigkeit <InlineMath math="f_{ck}" /> (Durchmesser 150 mm/Länge 300 mm). Die Festigkeit verhält sich bei unbeschädigtem Beton konstruktiv wie folgt:
-                <BlockMath math="f_{ck} = \beta_{WN} \cdot 0{,}80 = 25{,}0 \cdot 0{,}80 = 20{,}0 \text{ N/mm}^2" />
-                Damit entspricht der Bestandsbeton exakt der aktuellen Festigkeitsklasse <strong>C20/25</strong> (<InlineMath math="f_{ck} = 20{,}0 \text{ N/mm}^2, f_{ck,cube} = 25{,}0 \text{ N/mm}^2" />).
-              </div>
+                <strong className="font-sans text-xs text-home-grau block uppercase"><MdText text={inhalt.texte.schritt2UmrechnungAuf} /></strong><MdText text={inhalt.texte.dieAktuellenEurocode2} /><BlockMath math="f_{ck} = \beta_{WN} \cdot 0{,}80 = 25{,}0 \cdot 0{,}80 = 20{,}0 \text{ N/mm}^2" /><MdText text={inhalt.texte.damitEntsprichtDerBestandsbeton} /></div>
               <div>
-                <strong className="font-sans text-xs text-home-grau block uppercase">Schritt 3: Berechnung des Bemessungswerts (Eurocode 2)</strong>
-                Der materialspezifische Bemessungswert <InlineMath math="f_{cd}" /> unter ständigen axialen Druckspannungen wird unter Berücksichtigung des Dauerstandseffekts (<InlineMath math="\alpha_{cc} = 0{,}85" />) ermittelt:
-                <BlockMath math="f_{cd} = \alpha_{cc} \cdot \frac{f_{ck}}{\gamma_c} = 0{,}85 \cdot \frac{20{,}0 \text{ N/mm}^2}{1{,}50} = 11{,}33 \text{ N/mm}^2" />
-                <span className="font-sans text-xs text-home-grau block mt-1">
-                  *Tipp: Werden im Bestand systematisch Bohrkerne entnommen und so die Geometrie und Güte direkt experimentell verifiziert, darf der Sicherheitsfaktor gemindert werden (<InlineMath math="\gamma_c = 1{,}35 \rightarrow f_{cd} = 12{,}59 \text{ N/mm}^2" />).
-                </span>
+                <strong className="font-sans text-xs text-home-grau block uppercase"><MdText text={inhalt.texte.schritt3BerechnungDes} /></strong><MdText text={inhalt.texte.derMaterialspezifischeBemessungswertF} /><BlockMath math="f_{cd} = \alpha_{cc} \cdot \frac{f_{ck}}{\gamma_c} = 0{,}85 \cdot \frac{20{,}0 \text{ N/mm}^2}{1{,}50} = 11{,}33 \text{ N/mm}^2" />
+                <span className="font-sans text-xs text-home-grau block mt-1"><MdText text={inhalt.texte.tippWerdenImBestand} /></span>
               </div>
             </div>
           </div>
@@ -691,29 +647,19 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
           <div className="bg-slate-50 p-5 rounded-xl border border-home-grau/30">
             <div className="flex items-center gap-2 text-shiraz mb-2">
               <CheckCircle size={16} />
-              <h4 className="font-bold text-sm uppercase">Beispiel 2: Alten Stahlträger nachweisen (Baujahr 1968, St 37-2)</h4>
+              <h4 className="font-bold text-sm uppercase"><MdText text={inhalt.texte.beispiel2AltenStahlträger} /></h4>
             </div>
-            <p className="mb-4">
-              In einer Decke soll ein Profilträger aus Walzstahl mit der Markierung <strong>St 37-2</strong> nach DIN 17100 tragfähig nachgewiesen werden.
-            </p>
+            <p className="mb-4"><MdText text={inhalt.texte.inEinerDeckeSoll} /></p>
     
             <div className="space-y-3 font-serif pl-2 border-l-2 border-shiraz/40 my-3">
               <div>
-                <strong className="font-sans text-xs text-slate-400 block uppercase">Schritt 1: Ermittlung der alten Normfestigkeiten</strong>
-                Zulässige Tragspannungen wurden historisch nach dem globalen System berechnet (<InlineMath math="\sigma_{zul} = 140 \text{ N/mm}^2" />). Zur heutigen Nachrechnung benötigen wir jedoch die charakteristische Fließgrenze <InlineMath math="f_y" />:
-                <BlockMath math="f_y = 235 \text{ N/mm}^2 \quad (\text{für Träger-Flanschdicke } t \le 16\text{ mm})" />
+                <strong className="font-sans text-xs text-slate-400 block uppercase"><MdText text={inhalt.texte.schritt1ErmittlungDer} /></strong><MdText text={inhalt.texte.zulässigeTragspannungenWurdenHistorisch} /><BlockMath math="f_y = 235 \text{ N/mm}^2 \quad (\text{für Träger-Flanschdicke } t \le 16\text{ mm})" />
               </div>
               <div>
-                <strong className="font-sans text-xs text-slate-400 block uppercase">Schritt 2: Zuordnung im Eurocode 3 System</strong>
-                In DIN EN 10025-2 entspricht dies der heutigen Standardgüte <strong>S235JR</strong>.
-                <span className="block mt-1 text-[12px] font-sans text-amber-800">
-                  Achtung: Ohne Materialprüfung ist bei Stählen vor ca. 1970 mit Thomasstahl zu rechnen (Alterung, Sprödbruch, eingeschränkte Schweißeignung). Vor Ansatz von S235 und vor Schweißarbeiten Werkstoffprüfung durchführen (Zugversuch, Kerbschlagarbeit, chemische Analyse).
-                </span>
+                <strong className="font-sans text-xs text-slate-400 block uppercase"><MdText text={inhalt.texte.schritt2ZuordnungIm} /></strong><MdText text={inhalt.texte.inDinEn10025} /><span className="block mt-1 text-[12px] font-sans text-amber-800"><MdText text={inhalt.texte.achtungOhneMaterialprüfungIst} /></span>
               </div>
               <div>
-                <strong className="font-sans text-xs text-slate-400 block uppercase">Schritt 3: Bemessungswert-Ermittlung</strong>
-                Für die Tragfähigkeitsnachweise gilt mit Teilsicherheitsbeiwert <InlineMath math="\gamma_{M0} = 1{,}00" />:
-                <BlockMath math="f_{yd} = \frac{f_y}{\gamma_{M0}} = \frac{235 \text{ N/mm}^2}{1{,}00} = 235{,}0 \text{ N/mm}^2" />
+                <strong className="font-sans text-xs text-slate-400 block uppercase"><MdText text={inhalt.texte.schritt3BemessungswertErmittlung} /></strong><MdText text={inhalt.texte.fürDieTragfähigkeitsnachweiseGilt} /><BlockMath math="f_{yd} = \frac{f_y}{\gamma_{M0}} = \frac{235 \text{ N/mm}^2}{1{,}00} = 235{,}0 \text{ N/mm}^2" />
               </div>
             </div>
           </div>
@@ -722,28 +668,20 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
           <div className="bg-slate-50 p-5 rounded-xl border border-home-grau/30">
             <div className="flex items-center gap-2 text-shiraz mb-2">
               <CheckCircle size={16} />
-              <h4 className="font-bold text-sm uppercase">Beispiel 3: Ziegelwand von 1920 (Berechnung für Wanddruck)</h4>
+              <h4 className="font-bold text-sm uppercase"><MdText text={inhalt.texte.beispiel3ZiegelwandVon} /></h4>
             </div>
-            <p className="mb-4">
-              Es soll eine tragende Altbauwand aus Vollziegeln im Reichsformat (RF) und Kalkmörtel statisch bewertet werden.
-            </p>
+            <p className="mb-4"><MdText text={inhalt.texte.esSollEineTragende} /></p>
     
             <div className="space-y-3 font-serif pl-2 border-l-2 border-shiraz/40 my-3">
               <div>
-                <strong className="font-sans text-xs text-slate-400 block uppercase">Schritt 1: Stein-Druckfestigkeit &amp; Formbeiwert (DIN EN 772-1)</strong>
-                Durch Probeentnahmen von drei unbeschädigten Reichsformat-Mauersteinen im Labor wird das arithmetische Mittel der Druckfestigkeit ermittelt: <InlineMath math="f_p = 15{,}0 \text{ N/mm}^2" />. Das Reichsformat hat ca. h = 65 mm und w = 120 mm (<InlineMath math="h/w = 0{,}54" />). Für eine belastbare Aussage sind mindestens 6 Steine (DIN EN 772-1) und eine Mörtelprüfung erforderlich. Der zugehörige Formfaktor beträgt <InlineMath math="d = 0{,}82" />. Damit lautet die normierte Steinfestigkeit <InlineMath math="f_b" />:
-                <BlockMath math="f_b = f_p \cdot d = 15{,}0 \cdot 0{,}82 = 12{,}3 \text{ N/mm}^2" />
+                <strong className="font-sans text-xs text-slate-400 block uppercase"><MdText text={inhalt.texte.schritt1SteinDruckfestigkeit} /></strong><MdText text={inhalt.texte.durchProbeentnahmenVonDrei} /><BlockMath math="f_b = f_p \cdot d = 15{,}0 \cdot 0{,}82 = 12{,}3 \text{ N/mm}^2" />
               </div>
               <div>
-                <strong className="font-sans text-xs text-slate-400 block uppercase">Schritt 2: Mörtelfestigkeit &amp; charakteristische Festigkeit (f_k) nach EC6</strong>
-                Für den alten Kalksand-Mörtel (historisch weich, entspr. heute ca. Festigkeitsklasse <InlineMath math="f_m = 2{,}5 \text{ N/mm}^2" />) liefert die empirische EC6-Formel:
-                <BlockMath math="f_k = K \cdot f_b^{0{,}7} \cdot f_m^{0{,}3} = 0{,}55 \cdot (12.3)^{0{,}7} \cdot (2.5)^{0{,}3} = 4{,}19 \text{ N/mm}^2" />
+                <strong className="font-sans text-xs text-slate-400 block uppercase"><MdText text={inhalt.texte.schritt2MörtelfestigkeitCharakteristisch} /></strong><MdText text={inhalt.texte.fürDenAltenKalksand} /><BlockMath math="f_k = K \cdot f_b^{0{,}7} \cdot f_m^{0{,}3} = 0{,}55 \cdot (12.3)^{0{,}7} \cdot (2.5)^{0{,}3} = 4{,}19 \text{ N/mm}^2" />
               </div>
               <div>
-                <strong className="font-sans text-xs text-slate-400 block uppercase">Schritt 3: Bemessungswert (f_d) nach DIN EN 1996-1-1/NA</strong>
-                Mit dem Dauerstandsbeiwert <InlineMath math="\zeta = 0{,}85" /> und dem Regelwert <InlineMath math="\gamma_M = 1{,}5" /> (DIN EN 1996-1-1/NA, keine Modifikation) ergibt sich:
-                <BlockMath math="f_d = \frac{\zeta \cdot f_k}{\gamma_M} = \frac{0{,}85 \cdot 4{,}19}{1{,}5} = 2{,}37 \text{ N/mm}^2" />
-                <span className="block text-[12px] font-sans text-slate-500">Für Bestandsmauerwerk mit Kalkmörtel die Anwendbarkeit der EC6-Formel und die K-Werte des NA prüfen.</span>
+                <strong className="font-sans text-xs text-slate-400 block uppercase"><MdText text={inhalt.texte.schritt3BemessungswertF} /></strong><MdText text={inhalt.texte.mitDemDauerstandsbeiwertZeta} /><BlockMath math="f_d = \frac{\zeta \cdot f_k}{\gamma_M} = \frac{0{,}85 \cdot 4{,}19}{1{,}5} = 2{,}37 \text{ N/mm}^2" />
+                <span className="block text-[12px] font-sans text-slate-500"><MdText text={inhalt.texte.fürBestandsmauerwerkMitKalkmörtel} /></span>
               </div>
             </div>
           </div>

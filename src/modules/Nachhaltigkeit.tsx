@@ -20,6 +20,8 @@ import QngNachweis from './nachhaltigkeit/QngNachweis';
 import CrremRegulatorik from './nachhaltigkeit/CrremRegulatorik';
 import PraxisInnovationen from './nachhaltigkeit/PraxisInnovationen';
 import Leitfaden from './nachhaltigkeit/Leitfaden';
+import inhalt from '@/content/nachhaltigkeit/Nachhaltigkeit.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 export type { NachhaltigkeitBereich } from './nachhaltigkeit/daten';
 
 ChartJS.register(
@@ -175,10 +177,10 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
 
   // Chart configuration for dynamic GWP breakdown
   const chartData: ChartData<'bar'> = {
-    labels: ['Herstellung (A1-A3)', 'Entsorgung (C3-C4)', 'Gutschriften (Modul D)', 'Ökobilanz Netto-Gesamt'],
+    labels: [inhalt.werte.herstellungA1A3, inhalt.werte.entsorgungC3C4, inhalt.werte.gutschriftenModulD, inhalt.werte.ökobilanzNettoGesamt],
     datasets: [
       {
-        label: 'Treibhauspotenzial (kg CO₂-eq/m² Wand)',
+        label: inhalt.werte.treibhauspotenzialKgCoEq,
         data: [
           computedWall.gwpTotalA1A3,
           computedWall.gwpC3C4,
@@ -211,7 +213,7 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
     scales: {
       y: {
         grid: { color: '#e2e8f0' },
-        title: { display: true, text: 'kg CO₂-eq / m² Wand' }
+        title: { display: true, text: inhalt.werte.kgCoEqM }
       }
     }
   };
@@ -220,20 +222,20 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
   const getGegRating = (uVal: number) => {
     if (uVal <= 0.15) {
       return {
-        label: 'Passivhaus-Niveau (U ≤ 0,15)',
+        label: inhalt.werte.passivhausNiveauU0,
         color: 'bg-slate-100 text-slate-800 border-slate-300',
         rating: 'Exzellent'
       };
     }
     if (uVal <= 0.24) {
       return {
-        label: 'Erfüllt GEG-Höchstwert Sanierung (0,24)',
+        label: inhalt.werte.erfülltGegHöchstwertSanierung,
         color: 'bg-slate-50 text-slate-700 border-slate-200',
         rating: 'Konform'
       };
     }
     return {
-      label: 'Über GEG-Höchstwert Sanierung (0,24 W/(m²K))',
+      label: inhalt.werte.überGegHöchstwertSanierung,
       color: 'bg-shiraz/5 text-shiraz border-shiraz/20',
       rating: 'Kritisch'
     };
@@ -264,16 +266,16 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
 
     // QNG certification thresholds (residential new builds)
     // Limits WG23: QNG-Plus <= 24,0, QNG-Premium <= 20,0 kg CO₂-eq / (m² NRF · a) (QNG-Handbuch Anlage 3, v1.4)
-    let label = 'Nicht gefördert';
+    let label = inhalt.werte.nichtGefördert;
     let ratingColor = 'text-shiraz bg-shiraz/5 border-shiraz/20';
     let status = 'failed';
 
     if (totalYearlyGwp <= 20.0) {
-      label = 'QNG-PREMIUM Siegel erreicht';
+      label = inhalt.werte.qngPremiumSiegelErreicht;
       ratingColor = 'text-slate-900 bg-slate-100 border-slate-300';
       status = 'premium';
     } else if (totalYearlyGwp <= 24.0) {
-      label = 'QNG-PLUS Siegel erreicht';
+      label = inhalt.werte.qngPlusSiegelErreicht;
       ratingColor = 'text-slate-800 bg-slate-50 border-slate-200';
       status = 'plus';
     }
@@ -292,21 +294,21 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
   // CRREM Decarbonization Pathway Simulator Calculations (Paris 1.5°C v2 for Germany)
   const crremResult = useMemo(() => {
     let effectiveGwp = crremCurrentGwp;
-    let reductionLabel = 'Keine Sanierungsmaßnahme (Status Quo)';
+    let reductionLabel = inhalt.werte.keineSanierungsmaßnahmeStatusQuo;
     let reductionPct = 0;
 
     if (crremRetrofit === 'opex') {
       reductionPct = 15;
       effectiveGwp *= 0.85;
-      reductionLabel = 'Opex: Betriebsoptimierung & Smart Metering (-15 %)';
+      reductionLabel = inhalt.werte.opexBetriebsoptimierungSmartMetering;
     } else if (crremRetrofit === 'capex_huelle') {
       reductionPct = 35;
       effectiveGwp *= 0.65;
-      reductionLabel = 'Capex Hülle: Fassaden-, Dach- & Fensterdämmung (-35 %)';
+      reductionLabel = inhalt.werte.capexHülleFassadenDach;
     } else if (crremRetrofit === 'capex_deep') {
       reductionPct = 75;
       effectiveGwp *= 0.25;
-      reductionLabel = 'Deep Capex: Hülle + Wärmepumpe + PV-Eigenstrom (-75 %)';
+      reductionLabel = inhalt.werte.deepCapexHülleWärmepumpe;
     }
 
     const isOffice = crremBuildingType === 'office';
@@ -372,8 +374,7 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-            <Building className="text-shiraz" /> LCA-Praxiswerkstatt &amp; Nachhaltigkeit
-          </h2>
+            <Building className="text-shiraz" /><MdText text={inhalt.texte.lcaPraxiswerkstattNachhaltigkeit} /></h2>
 
           {/* Workspace select button group */}
           <div className="flex flex-wrap gap-2">
@@ -409,9 +410,7 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
                   ? 'bg-shiraz text-white border-shiraz shadow-md'
                   : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
               }`}
-            >
-              CRREM &amp; Regulatorik
-            </button>
+            ><MdText text={inhalt.texte.crremRegulatorik} /></button>
             )}
             {zeige('praxis_innovationen') && (
             <button aria-pressed={activeWorkspace === 'praxis_innovationen'}
@@ -421,9 +420,7 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
                   ? 'bg-shiraz text-white border-shiraz shadow-md'
                   : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
               }`}
-            >
-              Praxis &amp; Gebäudetyp E
-            </button>
+            ><MdText text={inhalt.texte.praxisGebäudetypE} /></button>
             )}
             {zeige('leitfaden') && (
             <button aria-pressed={activeWorkspace === 'leitfaden'}
@@ -433,17 +430,13 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
                   ? 'bg-shiraz text-white border-shiraz shadow-md'
                   : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
               }`}
-            >
-              EPD- &amp; QNG-Leitfaden
-            </button>
+            ><MdText text={inhalt.texte.epdQngLeitfaden} /></button>
             )}
           </div>
         </div>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-4 leading-relaxed">
-          <p>
-            Führen Sie akademische Bauteil- und Gebäude-Ökobilanzierungen (LCA) durch, simulieren Sie Dekarbonisierungspfade (CRREM / EPBD 2024/1275), prüfen Sie QNG-Nachweise und erkunden Sie zirkuläre Innovationen von tragendem Lehmbau (DIN 18940) bis zum Gebäudetyp E (§ 650o BGB).
-          </p>
+          <p><MdText text={inhalt.texte.führenSieAkademischeBauteil} /></p>
         </div>
       </div>
 
@@ -452,8 +445,8 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
         <div className="flex items-center gap-3 border-b border-home-grau/20 pb-3">
           <Leaf className="text-shiraz w-6 h-6 shrink-0" />
           <div>
-            <h3 className="text-base font-bold text-slate-900">Wissenschaftlicher Leitfaden: THG, CO₂ &amp; CO₂-äq im Bauwesen</h3>
-            <p className="text-xs text-slate-500">Klimawirkungsindikatoren verstehen und mit standardisierten GWP-Faktoren umrechnen.</p>
+            <h3 className="text-base font-bold text-slate-900"><MdText text={inhalt.texte.wissenschaftlicherLeitfadenThgCo} /></h3>
+            <p className="text-xs text-slate-500"><MdText text={inhalt.texte.klimawirkungsindikatorenVerstehenUndMit} /></p>
           </div>
         </div>
         
@@ -462,51 +455,36 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
           <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col gap-2">
             <div className="flex items-center gap-2">
               <span className="text-xs bg-slate-200 text-slate-800 font-bold px-2 py-0.5 rounded">Definition</span>
-              <strong className="text-sm text-slate-900 font-bold">1. Treibhausgase (THG)</strong>
+              <strong className="text-sm text-slate-900 font-bold"><MdText text={inhalt.texte.t1TreibhausgaseThg} /></strong>
             </div>
-            <p className="text-xs text-slate-700 leading-relaxed">
-              Treibhausgase sind Infrarotstrahlung absorbierende gasförmige Moleküle in der Erdatmosphäre. 
-              Im Bauwesen spielen vor allem Kohlendioxid (<strong>CO₂</strong>) durch Zemententsäuerung, Methan (<strong>CH₄</strong>) aus vorgelagerten Energieversorgungsketten sowie Distickstoffmonoxid (<strong>N₂O</strong>, Lachgas) eine entscheidende ökologische Rolle.
-            </p>
+            <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.treibhausgaseSindInfrarotstrahlungAbsorb} /></p>
           </div>
 
           {/* Card 2: CO2 */}
           <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col gap-2">
             <div className="flex items-center gap-2">
               <span className="text-xs bg-slate-200 text-slate-800 font-bold px-2 py-0.5 rounded">Referenz</span>
-              <strong className="text-sm text-slate-900 font-bold">2. Kohlendioxid (CO₂)</strong>
+              <strong className="text-sm text-slate-900 font-bold"><MdText text={inhalt.texte.t2KohlendioxidCo} /></strong>
             </div>
-            <p className="text-xs text-slate-700 leading-relaxed">
-              Kohlendioxid dient als internationaler Referenzmaßstab der Klimawirkung mit einem Treibhauspotenzial (Global Warming Potential, <strong>GWP</strong>) von exakt <strong>1,0</strong>. 
-              Mehr als die Hälfte der CO₂-Emissionen im Massivbau entsteht direkt chemisch-prozessbedingt während des Klinker-Brennens (Kalkstein-Entsäuerung im Zementwerk).
-            </p>
+            <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.kohlendioxidDientAlsInternationaler} /></p>
           </div>
 
           {/* Card 3: CO2-eq */}
           <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col gap-2">
             <div className="flex items-center gap-2">
               <span className="text-xs bg-slate-200 text-slate-800 font-bold px-2 py-0.5 rounded">Äquivalent</span>
-              <strong className="text-sm text-slate-900 font-bold">3. CO₂-Äquivalent (CO₂-eq)</strong>
+              <strong className="text-sm text-slate-900 font-bold"><MdText text={inhalt.texte.t3CoÄquivalentCo} /></strong>
             </div>
-            <p className="text-xs text-slate-700 leading-relaxed">
-              Da verschiedene Gase die Atmosphäre um ein Vielfaches intensiver erwärmen als CO₂, normiert man ihre spezifische Treibhauswirkung über das relative Massenverhältnis zu CO₂ in einem 100-Jahre-Zeitfenster (<strong>GWP₁₀₀</strong>). 
-              Dadurch lassen sich alle relevanten THG-Einflüsse zu einem einzigen LCA-Summenwert vergleichen.
-            </p>
+            <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.daVerschiedeneGaseDie} /></p>
           </div>
         </div>
 
         {/* Umrechnungsfaktoren Subgrid */}
         <div className="mt-2 pt-4 border-t border-home-grau/20">
           <h4 className="text-xs font-bold text-slate-900 mb-2.5 flex items-center gap-1.5 uppercase tracking-wider">
-            <Percent size={14} className="text-shiraz" /> Standardisierte GWP₁₀₀-Umrechnungsfaktoren (IPCC AR6):
-          </h4>
+            <Percent size={14} className="text-shiraz" /><MdText text={inhalt.texte.standardisierteGwpUmrechnungsfaktorenIpc} /></h4>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {[
-              { gas: 'CO₂', name: 'Kohlendioxid', factor: '1.0', units: '1,0 kg CO₂-eq', desc: 'Referenzgas' },
-              { gas: 'CH₄', name: 'Methan', factor: '29.8', units: '29,8 kg CO₂-eq', desc: 'z.B. aus Erdgas-Leitungen' },
-              { gas: 'N₂O', name: 'Distickstoffmonoxid', factor: '273.0', units: '273,0 kg CO₂-eq', desc: 'z.B. durch Dünger/Klinkerprozesse' },
-              { gas: 'SF₆', name: 'Schwefelhexafluorid', factor: '24.300', units: '24.300 kg CO₂-eq', desc: 'stärkstes THG (z.B. Isoliergase)' }
-            ].map((u, i) => (
+            {inhalt.daten.Nachhaltigkeit.map((u, i) => (
               <div key={i} className="bg-slate-50 p-3 rounded-lg border border-slate-200 flex flex-col justify-between hover:shadow-xs transition-shadow">
                 <div>
                   <div className="flex items-baseline justify-between">
@@ -543,77 +521,24 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
       {/* Embedded Reference Rules Footnote */}
       <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30 text-[10px] text-slate-500 leading-normal flex items-start gap-1.5">
         <span className="text-shiraz font-bold block shrink-0 select-none">HINWEIS:</span>
-        <span>
-          Die dargestellten U-Werte und Ökobilanzindikatoren basieren auf vereinfachten Charakterisierungsfaktoren gemäß ÖKOBAUDAT-Referenzen 2023 und standardisierten Berechnungsverfahren der DIN EN ISO 6946 und DIN EN 15978 für Bauteilschichten. Sie dienen dem akademischen Verständnis bauphysikalischer und ökologischer Zusammenhänge und ersetzen keinen offiziellen bautechnischen Nachweis nach dem Gebäudemodernisierungsgesetz (GModG, vormals GEG/EnEV) oder QNG-Nachweis durch staatlich zugelassene Energieauditer.
-        </span>
+        <span><MdText text={inhalt.texte.dieDargestelltenUWerte} /></span>
       </div>
 
       <ModuleFooter
         wikipedia={[
           { title: 'Passivhaus', url: 'https://de.wikipedia.org/wiki/Passivhaus' },
           { title: 'U-Wert', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmedurchgangskoeffizient' },
-          { title: 'Graue Energie', url: 'https://de.wikipedia.org/wiki/Graue_Energie' },
+          { title: inhalt.werte.graueEnergie, url: 'https://de.wikipedia.org/wiki/Graue_Energie' },
           { title: 'Bauprodukte-Verordnung' },
-          { title: 'European Green Deal', url: 'https://de.wikipedia.org/wiki/European_Green_Deal' },
-          { title: 'Europäischer Emissionshandel', url: 'https://de.wikipedia.org/wiki/EU-Emissionshandel' },
+          { title: inhalt.werte.europeanGreenDeal, url: 'https://de.wikipedia.org/wiki/European_Green_Deal' },
+          { title: inhalt.werte.europäischerEmissionshandel, url: 'https://de.wikipedia.org/wiki/EU-Emissionshandel' },
           { title: 'CO2-Grenzausgleichssystem', url: 'https://de.wikipedia.org/wiki/CO2-Grenzausgleichssystem' },
           { title: 'Ersatzbaustoffverordnung', url: 'https://de.wikipedia.org/wiki/Ersatzbaustoffverordnung' },
           { title: 'Lehmbau', url: 'https://de.wikipedia.org/wiki/Lehmbau' }
         ]}
-        literatur={[
-          'Hegger, M. et al.: Baustoff-Atlas (Detail Verlag / Birkhäuser)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Nagler, F.; Auer, T.: Einfach Bauen – Forschungshäuser Bad Aibling (Detail Verlag)',
-          'Fraunhofer IBP: Graue Emissionen im Gebäudesektor – Bilanzierungsregeln und Grenzwerte für Embodied Carbon (2024)',
-          'JRC Science for Policy Report: Level(s) – Taking action on the total carbon footprint of buildings (European Commission)'
-        ]}
-        regelwerke={[
-          { title: 'Revidierte BauPVO (VO EU 2024/3110 CPR – Grundanforderung 7 & DPP)', url: 'https://eur-lex.europa.eu/' },
-          { title: 'EPBD IV (Richtlinie EU 2024/1275 – ZEB, Lebenszyklus-GWP & MEPS)', url: 'https://eur-lex.europa.eu/' },
-          { title: 'ESPR (Ökodesign-Verordnung EU 2024/1781 – Digitaler Produktpass)', url: 'https://eur-lex.europa.eu/' },
-          { title: 'CBAM (CO2-Grenzausgleichsmechanismus VO EU 2023/956 für Zement & Stahl)', url: 'https://eur-lex.europa.eu/' },
-          { title: 'EU-Klimagesetz (VO EU 2021/1119 – 55 % bis 2030, Net-Zero 2050)', url: 'https://eur-lex.europa.eu/' },
-          { title: 'EU-ETS I & II (Richtlinie EU 2023/958 & 2023/959)', url: 'https://eur-lex.europa.eu/' },
-          { title: 'EU-Taxonomie-Verordnung (VO EU 2020/852 mit DNSH-Kriterien)', url: 'https://eur-lex.europa.eu/' },
-          { title: 'Gebäudemodernisierungsgesetz (GModG, verkündet 28.07.2026; vormals GEG – 65-%-Vorgabe entfallen, Bio-Treppe)', url: 'https://www.gesetze-im-internet.de/geg/' },
-          { title: 'Wärmeplanungsgesetz (WPG vom 20.12.2023)', url: 'https://www.gesetze-im-internet.de/wpg/' },
-          { title: 'Bundes-Klimaschutzgesetz (KSG – Treibhausgasneutralität 2045)', url: 'https://www.gesetze-im-internet.de/ksg/' },
-          { title: 'Ersatzbaustoffverordnung (EBV – Mineralische Sekundärbaustoffe)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
-          { title: 'Qualitätssiegel Nachhaltiges Gebäude (QNG Kriterienkatalog)', url: 'https://www.qng.info/' },
-          { title: 'DIN EN 15978 / DIN EN 15804 (Ökobilanzierung von Gebäuden & EPDs)' }
-        ]}
-        formeln={[
-          {
-            formel: 'U = \\frac{1}{R_{si} + \\sum_{i=1}^n \\frac{d_i}{\\lambda_i} + R_{se}} \\quad [\\text{W/(m}^2\\cdot\\text{K)}]',
-            erklaerung: 'Berechnung des Wärmedurchgangskoeffizienten U für mehrschichtige Bauteile mit Wärmeübergangswiderständen Rsi und Rse.',
-            quelle: 'DIN EN ISO 6946'
-          },
-          {
-            formel: 'GWP_{\\text{tot}} = \\sum_{i=1}^n \\left( d_i \\cdot \\rho_i \\cdot gwp_{\\text{spec},i} \\right) \\quad [\\text{kg CO}_2\\text{-eq/m}^2]',
-            erklaerung: 'Flächenbezogene Herstellungs-Treibhausgasemissionen der Bauteilschichten aus Schichtdicke di, Rohdichte ρi und EPD-Kennwert gwp.',
-            quelle: 'DIN EN 15804 / QNG'
-          },
-          {
-            formel: '\\text{GWP}_{\\text{life-cycle}} = \\frac{\\text{GWP}_{\\text{emb}} + \\sum_{t=1}^{50} \\text{GWP}_{\\text{use}}(t) + \\text{GWP}_{\\text{EoL}}}{A_{\\text{NFA}} \\cdot 50\\,\\text{a}} \\quad [\\text{kg CO}_2\\text{e/(m}^2\\cdot\\text{a})]',
-            erklaerung: 'Lebenszyklus-GWP nach EPBD (EU 2024/1275) Art. 7 und Anhang III: Berechnung und Offenlegung für Neubauten ab 01.01.2028 (Nutzfläche > 1 000 m²) bzw. ab 01.01.2030 (alle Neubauten), Betrachtungszeitraum 50 Jahre.',
-            quelle: 'EPBD (EU 2024/1275) / DIN EN 15978'
-          },
-          {
-            formel: '\\text{CBAM-Abgabe} = M_{\\text{Import}} \\cdot \\text{GWP}_{\\text{spec}} \\cdot \\left( P_{\\text{ETS}} - P_{\\text{Herkunft}} \\right) \\quad [\\text{€}]',
-            erklaerung: 'CO2-Grenzausgleichsabgabe für importierte emissionsintensive Baustoffe (Zement, Stahl, Aluminium) zur Vermeidung von Carbon Leakage.',
-            quelle: 'VO (EU) 2023/956 (CBAM) Art. 21'
-          },
-          {
-            formel: '\\text{GHG-Intensität} = \\frac{\\sum_{j} E_j \\cdot f_{\\text{CO2},j}}{\\text{NFA}} \\le \\text{Target}_{\\text{CRREM}}(t) \\quad [\\text{kg CO}_2\\text{e/(m}^2_{\\text{NFA}}\\cdot\\text{a})]',
-            erklaerung: 'CRREM-Dekarbonisierungspfad: Zulässige flächenbezogene Treibhausgasemissionen des Gebäudebetriebs pro Jahr im 1,5°C-Pariser-Klimaziel bis zum Zielwert 0 im Jahr 2050.',
-            quelle: 'CRREM v2 / EU-Taxonomie'
-          },
-          {
-            formel: 'f_k = K \\cdot f_{\\text{st}}^{\\alpha} \\cdot f_m^{\\beta} \\quad [\\text{N/mm}^2]',
-            erklaerung: 'Charakteristische Mauerwerksdruckfestigkeit nach DIN 18940 für tragendes Lehmsteinmauerwerk analog DIN EN 1996-1-1 (Eurocode 6).',
-            quelle: 'DIN 18940:2023-06'
-          }
-        ]}
+        literatur={inhalt.daten["Nachhaltigkeit.literatur"]}
+        regelwerke={inhalt.daten["Nachhaltigkeit.regelwerke"]}
+        formeln={inhalt.daten["Nachhaltigkeit.formeln"]}
       />
     </div>
   );

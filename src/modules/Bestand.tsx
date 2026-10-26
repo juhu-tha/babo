@@ -33,6 +33,8 @@ import {
   Info,
   SlidersHorizontal
 } from 'lucide-react';
+import inhalt from '@/content/bestand/Bestand.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -58,145 +60,14 @@ interface Baualtersklasse {
   uValueWindow: number;
 }
 
-const BAUALTERSKLASSEN: Baualtersklasse[] = [
-  {
-    id: 'vor-1919',
-    vintage: 'Vor 1919',
-    label: 'Gründerzeit & Kaiserreich',
-    description: 'Bauten aus der Vorkriegszeit. Typisch sind massive, oft ungedämmte Vollziegelmauerwerk-Konstruktionen, repräsentative Putz- oder Klinkerfassaden, Holzbalkendecken mit Einschub-Fehlböden sowie historische Fachwerkbauten.',
-    typicalConstruction: 'Massives Ziegelmauerwerk (38-51 cm), Fachwerk, Holzbalkendecken mit Lehm/Sand-Verfüllung, preußische Kappen über Kellern, einfache Kastenfenster.',
-    characteristicMaterials: ['Lehm- & Kalkmörtel', 'Vollziegel (Ziegelstein)', 'Nadelholz (historisch)', 'Natursteine', 'Gusseisen'],
-    windows: 'Einfachfenster oder historische Kastenfenster (ungedämmt)',
-    uValueWall: 1.60,
-    uValueRoof: 1.80,
-    uValueFloor: 1.40,
-    uValueWindow: 4.50,
-  },
-  {
-    id: '1919-1948',
-    vintage: '1919 - 1948',
-    label: 'Weimarer Republik & Weltkriegsära',
-    description: 'Geprägt durch den genossenschaftlichen Wohnungsbau der 20er Jahre und den späteren kriegsbedingten Mangelbau. Vermehrt zweischalige Mauerwerkswelt (Ziegel mit Luftschicht) und erste einfache Betonfertigung oder Hohlsteindecken.',
-    typicalConstruction: 'Hohlmauerwerk, zweischaliges Mauerwerk (Schlitzmauerwerk), Holzbalkendecken, Steineisendecken (Kleine Decke), Verbundfenster.',
-    characteristicMaterials: ['Zementmörtel (frühe Formen)', 'Kalksandstein', 'Hüttensandziegel', 'Bimsbetonsteine'],
-    windows: 'Holzverbundfenster mit Einfachverglasung',
-    uValueWall: 1.40,
-    uValueRoof: 1.60,
-    uValueFloor: 1.20,
-    uValueWindow: 3.20,
-  },
-  {
-    id: '1949-1957',
-    vintage: '1949 - 1957',
-    label: 'Nachkriegszeit & Wiederaufbau',
-    description: 'Konstruktionen der unmittelbaren Nachkriegszeit. Baustoffe waren Mangelware, weshalb häufig Trümmerschuttbeton (Trümmerziegel-Zuschläge) und Schlackenbetonblöcke verwendet wurden. Extrem minimierte Bauteildicken.',
-    typicalConstruction: 'Mauerwerk aus Trümmerbetonsteinen, dünne einschalige Außenwände (oft 24-30 cm), Rippendecken, Holzbalkendecken, einfache Verbundfenster.',
-    characteristicMaterials: ['Trümmerbeton', 'Schlackenbeton', 'Heraklith (Holzwolle-Platten)', 'Schlackendämmstoffe'],
-    windows: 'Holzrahmen-Verbundfenster oder Einfachfenster',
-    uValueWall: 1.70,
-    uValueRoof: 1.50,
-    uValueFloor: 1.30,
-    uValueWindow: 3.00,
-  },
-  {
-    id: '1958-1968',
-    vintage: '1958 - 1968',
-    label: 'Frühes Wirtschaftswunder',
-    description: 'Industrialisierung des Bauens. Erste Hohlblocksteine aus Bims oder Leichtbeton verbesserten die Wärmedämmung leicht, allerdings bei nach wie vor dünnen Bauteilquerschnitten. Erste Isolierglasfenster kommen auf.',
-    typicalConstruction: 'Porenbetonmauerwerk, Leichtbetonhohlblöcke, Einblasdämmung in zweischaligem Mauerwerk, Stahlbeton-Rippendecken, frühe Isolierglasfenster.',
-    characteristicMaterials: ['Porenbeton (Ytong)', 'Gitterziegel', 'Asbestzement (Eternit-Platten)', 'Künstliche Mineralfasern (KMF)'],
-    windows: 'Isolierfenster der 1. Generation ohne Metallbeschichtung',
-    uValueWall: 1.20,
-    uValueRoof: 1.10,
-    uValueFloor: 1.00,
-    uValueWindow: 2.80,
-  },
-  {
-    id: '1969-1978',
-    vintage: '1969 - 1978',
-    label: 'System- & Großtafelbauten',
-    description: 'Die Ära des Massenwohnungsbaus in West und Ost (Plattenbauten). Standardisierte Betonelemente, oft ungedämmt oder mit sehr geringer Kerndämmung. Erarbeitung der ersten Wärmeschutzverordnung (WSchV 1977) gegen Ende dieser Epoche.',
-    typicalConstruction: 'Großtafelbauweise (Plattenbau), Ziegelgitterstein-Mauerwerk, ungedämmte Flachdächer (Kaltdach/Warmdach), Stahlbeton-Massivdecken.',
-    characteristicMaterials: ['Stahlbetonfertigteile', 'Kerndämmung (Styropor/KMF)', 'Fugenabdichtungen (Thiokol)', 'PU-Schäume'],
-    windows: 'Isolierglasfenster in Holz- oder Metallrahmen',
-    uValueWall: 1.10,
-    uValueRoof: 0.90,
-    uValueFloor: 0.90,
-    uValueWindow: 2.70,
-  },
-  {
-    id: '1979-1994',
-    vintage: '1979 - 1994',
-    label: 'Früher Wärmeschutz (WSchV \'77/\'82)',
-    description: 'Unter dem Eindruck der Ölkrisen traten die Wärmeschutzverordnungen von 1977 und 1982 in Kraft. Erste gezielte Dämmschichten an Außenwänden (WDVS) und Dächern sowie beschichtete Fenstersysteme.',
-    typicalConstruction: 'Mauerwerk mit zusätzlichem Wärmedämmverbundsystem (WDVS), mehrschichtige Wandkonstruktionen, Zwischensparrendämmung im Dachgerüst.',
-    characteristicMaterials: ['Polystyrol (EPS/Styropor)', 'Mineralwolle (Steinwolle)', 'Putzsysteme auf Dämmung', 'Zweischeiben-Isolierglas'],
-    windows: 'Zwei-Scheiben-Isolierverglasung, erste Kunststofffenster',
-    uValueWall: 0.60,
-    uValueRoof: 0.45,
-    uValueFloor: 0.60,
-    uValueWindow: 2.00,
-  },
-  {
-    id: '1995-2001',
-    vintage: '1995 - 2001',
-    label: 'Niedrigenergie-Standard (WSchV \'95)',
-    description: 'Einführung des rechnerischen Heizwärmebedarfs. Fokus verlagert sich auf verbesserte Luftdichtheit (erste Blower-Door-Tests) und gezielte Vermeidung von Wärmebrücken im Übergangsbereich.',
-    typicalConstruction: 'Kerndämmung 8-10 cm, verbesserte Außenwanddämmung, Mineralwolledämmung der Dachsparren (12-16 cm), optimierte Bauteilanschlüsse.',
-    characteristicMaterials: ['Calcium-Silikat-Platten', 'Dampfsperrfolien/Dichtbänder', 'Edelgasmischungen (Argon)', 'Mineralwolle WLG 035'],
-    windows: 'Zwei-Scheiben-Wärmeschutzverglasung mit selektiver Beschichtung & Gasfüllung',
-    uValueWall: 0.35,
-    uValueRoof: 0.30,
-    uValueFloor: 0.40,
-    uValueWindow: 1.40,
-  },
-  {
-    id: '2002-2013',
-    vintage: '2002 - 2013',
-    label: 'EnEV-Ära (EnEV 2002 - 2009)',
-    description: 'Einführung der Energieeinsparverordnung (EnEV). Ganzheitliche energetische Bilanzierung von Gebäudehülle und Heizungsanlagentechnik sowie Einführung des gesetzlichen Energieausweises.',
-    typicalConstruction: 'WDVS (12-16 cm) mit EPS/Steinwolle, hochgedämmtes Hintermauerwerk (Planziegel oder Porenbeton), Dreifachverglasung setzt sich am Markt langsam durch.',
-    characteristicMaterials: ['Poroton Planziegelsysteme', 'Holzfaserdämmstoffe', 'Klimamembranen', 'PUR/PIR Aufsparrendämmung'],
-    windows: 'Hochwertiges 2-Scheiben-Wärmeschutzglas oder frühe 3-Scheiben-Dämmgläser',
-    uValueWall: 0.28,
-    uValueRoof: 0.22,
-    uValueFloor: 0.32,
-    uValueWindow: 1.20,
-  },
-  {
-    id: '2014-2020',
-    vintage: '2014 - 2020',
-    label: 'Verschärfter EnEV-Standard (EnEV 2014/2016)',
-    description: 'Verschärfung der primärenergetischen Grenzwerte um 25 % und des baulichen Wärmeschutzes um 20 %. Massive Zunahme von Dreifachverglasung, kontrollierter Wohnraumlüftung mit Wärmerückgewinnung und PV-Integration.',
-    typicalConstruction: 'WDVS (16-20 cm), monolitische Ziegel- oder Porenbetonwände mit Dämmfüllung (Perlit, Mineralwolle), hochgedämmte Dächer (20-26 cm).',
-    characteristicMaterials: ['Perlit-gefüllte Ziegel', 'Vakuum-Isolations-Paneele (VIP)', 'Extrudierter Polystyrol-Hartschaum (XPS)', 'Aerogel-Dämmputze'],
-    windows: '3-Scheiben-Wärmeschutzverglasung mit thermisch getrenntem Randverbund („Warme Kante“)',
-    uValueWall: 0.22,
-    uValueRoof: 0.18,
-    uValueFloor: 0.25,
-    uValueWindow: 0.90,
-  },
-  {
-    id: 'ab-2020',
-    vintage: 'Ab 2020',
-    label: 'GEG / Niedrigstenergiegebäude',
-    description: 'Zusammenführung von EnEV, EnEG und EEWärmeG im Gebäudeenergiegesetz (GEG) und dem novellierten GModG. Gesetzlicher Niedrigstenergie-Gebäudestandard mit Fokus auf Lebenszyklusemissionen und 65-%-EE-Heizungsvorgaben.',
-    typicalConstruction: 'Hochgedämmte Hülle (Passivhaus- oder KfW-40-Niveau), Holz-Massivbauweise mit Zellulose-/Holzfaserdämmung, thermisch entkoppelte Fundamente.',
-    characteristicMaterials: ['Zellulose-Einblasdämmung', 'Holzweichfaserplatten', 'Recycling-Betone', 'Vakuum-Dämmung'],
-    windows: 'Hocheffiziente 3-Scheiben-Isolierverglasung (Ug ≤ 0,5 W/(m²K), Uw ≤ 0,8 W/(m²K))',
-    uValueWall: 0.18,
-    uValueRoof: 0.14,
-    uValueFloor: 0.20,
-    uValueWindow: 0.80,
-  }
-];
+const BAUALTERSKLASSEN: Baualtersklasse[] = inhalt.daten.BAUALTERSKLASSEN;
 
 const HEATING_SOURCES = [
   { id: 'gas', label: 'Erdgas-Heizung', co2Factor: 0.22, costPerKwh: 0.11 },
   { id: 'oil', label: 'Heizöl', co2Factor: 0.28, costPerKwh: 0.12 },
-  { id: 'district', label: 'Fernwärme (Mix)', co2Factor: 0.16, costPerKwh: 0.14 },
+  { id: 'district', label: inhalt.werte.fernwärmeMix, co2Factor: 0.16, costPerKwh: 0.14 },
   { id: 'electricity', label: 'Direkt-Elektroheizung', co2Factor: 0.38, costPerKwh: 0.35 },
-  { id: 'heatpump', label: 'Wärmepumpe (JAZ 3.5)', co2Factor: 0.11, costPerKwh: 0.09 },
+  { id: 'heatpump', label: inhalt.werte.wärmepumpeJaz35, co2Factor: 0.11, costPerKwh: 0.09 },
 ];
 
 export default function Bestand() {
@@ -269,7 +140,7 @@ export default function Bestand() {
     labels: BAUALTERSKLASSEN.map(b => b.vintage),
     datasets: [
       {
-        label: 'Außenwand U-Wert [W/(m²K)]',
+        label: inhalt.werte.außenwandUWertW,
         data: BAUALTERSKLASSEN.map(b => b.uValueWall),
         borderColor: '#9E2A2B',
         backgroundColor: '#9E2A2B',
@@ -277,7 +148,7 @@ export default function Bestand() {
         tension: 0.1,
       },
       {
-        label: 'Dach U-Wert [W/(m²K)]',
+        label: inhalt.werte.dachUWertW,
         data: BAUALTERSKLASSEN.map(b => b.uValueRoof),
         borderColor: '#334155',
         backgroundColor: '#334155',
@@ -285,7 +156,7 @@ export default function Bestand() {
         tension: 0.1,
       },
       {
-        label: 'GModG Grenzwert Außenwand (0,24 W/(m²K))',
+        label: inhalt.werte.gmodgGrenzwertAußenwand0,
         data: Array(BAUALTERSKLASSEN.length).fill(0.24),
         borderColor: '#64748B',
         borderDash: [6, 4],
@@ -294,7 +165,7 @@ export default function Bestand() {
         fill: false,
       },
       {
-        label: 'GModG Grenzwert Steildach / oberste Geschossdecke (0,24 W/(m²K))',
+        label: inhalt.werte.gmodgGrenzwertSteildachOberste,
         data: Array(BAUALTERSKLASSEN.length).fill(0.24),
         borderColor: '#94A3B8',
         borderDash: [4, 4],
@@ -322,7 +193,7 @@ export default function Bestand() {
       },
       y: {
         type: 'linear' as const,
-        title: { display: true, text: 'U-Wert [W/(m²K)]' },
+        title: { display: true, text: inhalt.werte.uWertWM },
         beginAtZero: true,
         max: 2.2
       }
@@ -334,13 +205,9 @@ export default function Bestand() {
       {/* Header Panel */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Building2 className="text-shiraz" /> Altbau-Bestand &amp; energetische Sanierung
-        </h2>
+          <Building2 className="text-shiraz" /><MdText text={inhalt.texte.altbauBestandEnergetischeSanierung} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-3">
-          <p>
-            Wissenschaftliche U-Wert-Abschätzungen nach Baualtersklassen entsprechend den Basisdaten der Fachinfoplattform <strong>Altbau-Atlas</strong>.
-            Analysieren Sie historische Baustoffgefüge von 1880 bis heute, simulieren Sie energetische Modernisierungsmaßnahmen nach den gesetzlichen Grenzwerten des <strong>Gebäudemodernisierungsgesetzes (GModG / GEG)</strong> und bilanzieren Sie Amortisationszeiten mit normgerechter deutscher Zahlenformatierung.
-          </p>
+          <p><MdText text={inhalt.texte.wissenschaftlicheUWertAbschätzungen} /></p>
         </div>
 
         {/* Tab Navigation following GEMINI_md */}
@@ -353,8 +220,7 @@ export default function Bestand() {
             }`}
             onClick={() => setActiveTab('steckbrief')}
           >
-            <Calendar size={16} /> Baualtersklassen &amp; Epochen
-          </button>
+            <Calendar size={16} /><MdText text={inhalt.texte.baualtersklassenEpochen} /></button>
           <button aria-pressed={activeTab === 'sanierung'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'sanierung' 
@@ -363,8 +229,7 @@ export default function Bestand() {
             }`}
             onClick={() => setActiveTab('sanierung')}
           >
-            <Calculator size={16} /> Sanierungs-Simulator (GModG)
-          </button>
+            <Calculator size={16} /><MdText text={inhalt.texte.sanierungsSimulatorGmodg} /></button>
           <button aria-pressed={activeTab === 'vergleich'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'vergleich' 
@@ -373,8 +238,7 @@ export default function Bestand() {
             }`}
             onClick={() => setActiveTab('vergleich')}
           >
-            <BarChart3 size={16} /> Epochen-Vergleich &amp; U-Werte
-          </button>
+            <BarChart3 size={16} /><MdText text={inhalt.texte.epochenVergleichUWerte} /></button>
           <button aria-pressed={activeTab === 'theorie'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'theorie' 
@@ -383,8 +247,7 @@ export default function Bestand() {
             }`}
             onClick={() => setActiveTab('theorie')}
           >
-            <BookOpen size={16} /> Konstruktive Typologie &amp; Feuchteschutz
-          </button>
+            <BookOpen size={16} /><MdText text={inhalt.texte.konstruktiveTypologieFeuchteschutz} /></button>
         </div>
 
         {/* Tab 1: Baualtersklassen */}
@@ -394,9 +257,7 @@ export default function Bestand() {
               {/* Left Column: Era Buttons */}
               <div className="lg:col-span-4 flex flex-col gap-2.5">
                 <h3 className="text-sm font-bold text-text-main flex items-center gap-2 mb-1">
-                  <Calendar className="w-4 h-4 text-shiraz" />
-                  Baualtersklasse auswählen
-                </h3>
+                  <Calendar className="w-4 h-4 text-shiraz" /><MdText text={inhalt.texte.baualtersklasseAuswählen} /></h3>
                 <div className="grid grid-cols-2 lg:grid-cols-1 gap-2">
                   {BAUALTERSKLASSEN.map((era) => (
                     <button aria-pressed={selectedEra === era.id}
@@ -432,9 +293,7 @@ export default function Bestand() {
                         {currentEraData.label}
                       </h3>
                     </div>
-                    <div className="px-3 py-1 bg-white border border-home-grau/30 rounded-lg text-xs font-semibold text-slate-700">
-                      Standardwerte nach Altbau-Atlas
-                    </div>
+                    <div className="px-3 py-1 bg-white border border-home-grau/30 rounded-lg text-xs font-semibold text-slate-700"><MdText text={inhalt.texte.standardwerteNachAltbauAtlas} /></div>
                   </div>
 
                   <p className="text-sm text-text-main/80 leading-relaxed">
@@ -444,8 +303,7 @@ export default function Bestand() {
                   <div className="space-y-4">
                     <div className="bg-white p-4 rounded-xl border border-home-grau/20">
                       <span className="text-xs font-bold text-slate-700 block mb-1 flex items-center gap-1.5">
-                        <Layers size={14} className="text-shiraz" /> Typische Konstruktionsmerkmale:
-                      </span>
+                        <Layers size={14} className="text-shiraz" /><MdText text={inhalt.texte.typischeKonstruktionsmerkmale} /></span>
                       <p className="text-xs text-text-main/80 leading-relaxed">
                         {currentEraData.typicalConstruction}
                       </p>
@@ -453,8 +311,7 @@ export default function Bestand() {
 
                     <div className="bg-white p-4 rounded-xl border border-home-grau/20">
                       <span className="text-xs font-bold text-slate-700 block mb-2 flex items-center gap-1.5">
-                        <Construction size={14} className="text-shiraz" /> Charakteristische Baustoffe &amp; Komponenten:
-                      </span>
+                        <Construction size={14} className="text-shiraz" /><MdText text={inhalt.texte.charakteristischeBaustoffeKomponenten} /></span>
                       <div className="flex flex-wrap gap-1.5">
                         {currentEraData.characteristicMaterials.map((mat, i) => (
                           <span key={i} className="px-2.5 py-1 bg-slate-50 text-slate-800 border border-slate-200 rounded-lg text-xs font-medium">
@@ -465,9 +322,7 @@ export default function Bestand() {
                     </div>
 
                     <div className="bg-white p-4 rounded-xl border border-home-grau/20">
-                      <span className="text-xs font-bold text-slate-700 block mb-1">
-                        Historische Verglasung &amp; Fenster:
-                      </span>
+                      <span className="text-xs font-bold text-slate-700 block mb-1"><MdText text={inhalt.texte.historischeVerglasungFenster} /></span>
                       <p className="text-xs text-text-main/80">
                         {currentEraData.windows}
                       </p>
@@ -476,9 +331,7 @@ export default function Bestand() {
 
                   {/* Thermal Metrics Grid */}
                   <div>
-                    <h4 className="text-xs font-bold text-slate-700 mb-3 uppercase tracking-wider">
-                      Typische ungedämmte Bauteil-Kennwerte (U-Werte nach Altbau-Atlas)
-                    </h4>
+                    <h4 className="text-xs font-bold text-slate-700 mb-3 uppercase tracking-wider"><MdText text={inhalt.texte.typischeUngedämmteBauteilKennwerte} /></h4>
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                       <div className="bg-white p-3.5 rounded-xl border border-home-grau/20 flex flex-col items-center text-center">
                         <span className="text-[11px] text-slate-500 font-medium mb-1">Außenwand</span>
@@ -524,19 +377,15 @@ export default function Bestand() {
               <div className="lg:col-span-5 flex flex-col gap-5">
                 <div className="bg-off-white p-5 rounded-2xl border border-home-grau/30 space-y-4">
                   <h3 className="text-sm font-bold text-text-main flex items-center gap-2">
-                    <SlidersHorizontal className="w-4 h-4 text-shiraz" />
-                    Sanierungsparameter konfigurieren
-                  </h3>
+                    <SlidersHorizontal className="w-4 h-4 text-shiraz" /><MdText text={inhalt.texte.sanierungsparameterKonfigurieren} /></h3>
 
                   {/* Component selector */}
                   <div>
-                    <label className="text-xs font-semibold text-slate-700 block mb-1.5">
-                      Bauteil für die Sanierungsmaßnahme:
-                    </label>
+                    <label className="text-xs font-semibold text-slate-700 block mb-1.5"><MdText text={inhalt.texte.bauteilFürDieSanierungsmaßnahme} /></label>
                     <div className="grid grid-cols-3 gap-2">
                       {[
                         { id: 'wall' as const, label: 'Außenwand' },
-                        { id: 'roof' as const, label: 'Steildach / oGD' },
+                        { id: 'roof' as const, label: inhalt.werte.steildachOgd },
                         { id: 'floor' as const, label: 'Kellerdecke' }
                       ].map(c => (
                         <button aria-pressed={selectedComp === c.id}
@@ -555,7 +404,7 @@ export default function Bestand() {
                   </div>
 
                   <Slider
-                    label="Bauteilfläche A [m²]"
+                    label={inhalt.werte.bauteilflächeAM}
                     value={area}
                     min={20}
                     max={500}
@@ -565,7 +414,7 @@ export default function Bestand() {
                   />
 
                   <Slider
-                    label="Zusätzliche Dämmstoffdicke d [mm]"
+                    label={inhalt.werte.zusätzlicheDämmstoffdickeDMm}
                     value={thickness}
                     min={40}
                     max={300}
@@ -575,10 +424,8 @@ export default function Bestand() {
                   />
 
                   <div>
-                    <label className="text-xs font-semibold text-slate-700 block mb-1">
-                      Wärmeleitfähigkeit λ_D [W/(mK)]:
-                    </label>
-                    <select aria-label="Wärmeleitfähigkeit λ_D [W/(mK)]"
+                    <label className="text-xs font-semibold text-slate-700 block mb-1"><MdText text={inhalt.texte.wärmeleitfähigkeitDWMk} /></label>
+                    <select aria-label={inhalt.werte.wärmeleitfähigkeitDWMk}
                       value={lambda}
                       onChange={(e) => setLambda(parseFloat(e.target.value))}
                       className="w-full text-xs p-2.5 rounded-lg border border-home-grau/30 bg-white"
@@ -592,7 +439,7 @@ export default function Bestand() {
                   </div>
 
                   <Slider
-                    label="Spezifische Sanierungskosten [€/m²]"
+                    label={inhalt.werte.spezifischeSanierungskostenM}
                     value={insulationCostM2}
                     min={40}
                     max={300}
@@ -602,10 +449,8 @@ export default function Bestand() {
                   />
 
                   <div>
-                    <label className="text-xs font-semibold text-slate-700 block mb-1">
-                      Bestehendes Heizsystem:
-                    </label>
-                    <select aria-label="Bestehendes Heizsystem"
+                    <label className="text-xs font-semibold text-slate-700 block mb-1"><MdText text={inhalt.texte.bestehendesHeizsystem} /></label>
+                    <select aria-label={inhalt.werte.bestehendesHeizsystem}
                       value={heatingSource}
                       onChange={(e) => setHeatingSource(e.target.value)}
                       className="w-full text-xs p-2.5 rounded-lg border border-home-grau/30 bg-white"
@@ -625,22 +470,20 @@ export default function Bestand() {
                 <div className="bg-white rounded-2xl border border-home-grau/30 p-6 shadow-sm flex flex-col gap-5">
                   <div className="flex justify-between items-center border-b border-home-grau/20 pb-3">
                     <h3 className="text-sm font-bold text-text-main flex items-center gap-2">
-                      <TrendingUp className="w-4 h-4 text-shiraz" />
-                      Energetische &amp; Ökonomische Sanierungsbilanz
-                    </h3>
+                      <TrendingUp className="w-4 h-4 text-shiraz" /><MdText text={inhalt.texte.energetischeÖkonomischeSanierungsbilanz} /></h3>
                     <span className={`px-2.5 py-1 rounded-full text-xs font-bold border ${
                       sanierungResults.gegCompliant
                         ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
                         : 'bg-rose-50 text-rose-800 border-rose-300'
                     }`}>
-                      {sanierungResults.gegCompliant ? '✓ GModG-konform (Anlage 7)' : `⚠ Grenzwert überschritten – ca. ${formatDeWert(sanierungResults.dReqMm)} mm mehr Dämmung`}
+                      {sanierungResults.gegCompliant ? inhalt.werte.gmodgKonformAnlage7 : `⚠ Grenzwert überschritten – ca. ${formatDeWert(sanierungResults.dReqMm)} mm mehr Dämmung`}
                     </span>
                   </div>
 
                   {/* U-Value Comparison */}
                   <div className="grid grid-cols-3 gap-3">
                     <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200 text-center">
-                      <span className="text-[11px] text-slate-500 font-medium block">U-Wert Altbau</span>
+                      <span className="text-[11px] text-slate-500 font-medium block"><MdText text={inhalt.texte.uWertAltbau} /></span>
                       <span className="text-base font-bold text-slate-900 font-mono">
                         {formatDeZahl(sanierungResults.originalU, 2)}
                       </span>
@@ -648,7 +491,7 @@ export default function Bestand() {
                     </div>
 
                     <div className="bg-rose-50/50 p-3.5 rounded-xl border border-shiraz/30 text-center">
-                      <span className="text-[11px] text-shiraz font-medium block">U-Wert Saniert</span>
+                      <span className="text-[11px] text-shiraz font-medium block"><MdText text={inhalt.texte.uWertSaniert} /></span>
                       <span className="text-base font-black text-shiraz font-mono">
                         {formatDeZahl(sanierungResults.newU, 3)}
                       </span>
@@ -656,7 +499,7 @@ export default function Bestand() {
                     </div>
 
                     <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200 text-center">
-                      <span className="text-[11px] text-slate-500 font-medium block">GModG Grenzwert</span>
+                      <span className="text-[11px] text-slate-500 font-medium block"><MdText text={inhalt.texte.gmodgGrenzwert} /></span>
                       <span className="text-base font-bold text-slate-700 font-mono">
                         {formatDeZahl(sanierungResults.gegLimit, 2)}
                       </span>
@@ -698,14 +541,12 @@ export default function Bestand() {
                   {/* Amortization banner */}
                   <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
                     <div>
-                      <span className="text-xs font-bold text-slate-700 block">Statische Amortisationszeit:</span>
-                      <span className="text-[11px] text-slate-500">
-                        Investition geteilt durch jährliche Energiekosteneinsparung
-                      </span>
+                      <span className="text-xs font-bold text-slate-700 block"><MdText text={inhalt.texte.statischeAmortisationszeit} /></span>
+                      <span className="text-[11px] text-slate-500"><MdText text={inhalt.texte.investitionGeteiltDurchJährliche} /></span>
                     </div>
                     <span className="text-sm font-extrabold text-shiraz font-mono">
                       {sanierungResults.paybackYears > 60 
-                        ? 'Keine Amortisation' 
+                        ? inhalt.werte.keineAmortisation 
                         : `${formatDeZahl(sanierungResults.paybackYears, 1)} Jahre`}
                     </span>
                   </div>
@@ -716,33 +557,24 @@ export default function Bestand() {
                     className="text-xs font-bold text-shiraz hover:underline flex items-center gap-1.5 self-start cursor-pointer"
                   >
                     <Info size={14} />
-                    {showCalculations ? 'Rechenweg & Formeln ausblenden' : 'Ausführlichen Rechenweg (DIN EN ISO 6946) anzeigen'}
+                    {showCalculations ? inhalt.werte.rechenwegFormelnAusblenden : inhalt.werte.ausführlichenRechenwegDinEn}
                   </button>
 
                   {showCalculations && (
                     <div className="p-4 bg-slate-50/70 rounded-xl border border-slate-200 space-y-3 text-xs text-slate-700 animate-in fade-in">
-                      <span className="font-bold text-slate-900 block">
-                        Schrittweise Herleitung des sanierungsbedingten Wärmedurchgangs:
-                      </span>
+                      <span className="font-bold text-slate-900 block"><MdText text={inhalt.texte.schrittweiseHerleitungDesSanierungsbedin} /></span>
                       
-                      <p>
-                        1. Wärmedurchgangswiderstand des ungedämmten Bestandsbauteils:
-                      </p>
+                      <p><MdText text={inhalt.texte.t1WärmedurchgangswiderstandDesUngedämmten} /></p>
                       <BlockMath math={`R_{\\text{alt}} = \\frac{1}{U_{\\text{alt}}} = \\frac{1}{${formatDeZahl(sanierungResults.originalU, 2)}} \\approx ${formatDeZahl(1 / sanierungResults.originalU, 3)} \\text{ m}^2\\text{K/W}`} />
 
-                      <p>
-                        2. Zusätzlicher Wärmedurchlasswiderstand der Dämmschicht (Dicke d = {formatDeWert(thickness)} mm = {formatDeZahl(thickness / 1000, 3)} m):
+                      <p><MdText text={inhalt.texte.t2ZusätzlicherWärmedurchlasswiderstandDer} />{formatDeWert(thickness)} mm = {formatDeZahl(thickness / 1000, 3)} m):
                       </p>
                       <BlockMath math={`R_{\\text{Dämm}} = \\frac{d}{\\lambda_D} = \\frac{${formatDeZahl(thickness / 1000, 3)}}{${formatDeZahl(lambda, 3)}} \\approx ${formatDeZahl((thickness / 1000) / lambda, 3)} \\text{ m}^2\\text{K/W}`} />
 
-                      <p>
-                        3. Gesamtwiderstand und neuer Wärmedurchgangskoeffizient:
-                      </p>
+                      <p><MdText text={inhalt.texte.t3GesamtwiderstandUndNeuer} /></p>
                       <BlockMath math={`U_{\\text{neu}} = \\frac{1}{R_{\\text{alt}} + R_{\\text{Dämm}}} = \\frac{1}{${formatDeZahl(1 / sanierungResults.originalU, 3)} + ${formatDeZahl((thickness / 1000) / lambda, 3)}} \\approx ${formatDeZahl(sanierungResults.newU, 3)} \\text{ W/(m}^2\\text{K)}`} />
 
-                      <p>
-                        4. Jährliche Heizwärmeeinsparung mit Gradtagzahl G_t20/15 = 3 500 Kd/a und Temperatur-Korrekturfaktor F_x (DIN V 4108-6):
-                      </p>
+                      <p><MdText text={inhalt.texte.t4JährlicheHeizwärmeeinsparungMit} /></p>
                       <BlockMath math={`\\Delta Q = \\Delta U \\cdot A \\cdot F_x \\cdot G_t \\cdot 0{,}024 = (${formatDeZahl(sanierungResults.originalU, 2)} - ${formatDeZahl(sanierungResults.newU, 3)}) \\cdot ${area} \\cdot ${formatDeZahl(sanierungResults.fx, 1)} \\cdot 3500 \\cdot 0{,}024 \\approx ${formatDeZahl(sanierungResults.annualEnergySavings, 0)} \\text{ kWh/a}`} />
                     </div>
                   )}
@@ -757,12 +589,8 @@ export default function Bestand() {
           <div className="space-y-6 animate-in fade-in duration-200">
             <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm">
               <h3 className="text-sm font-bold text-text-main flex items-center gap-2 mb-2">
-                <BarChart3 className="w-4 h-4 text-shiraz" />
-                Historischer Trend der Bauteil-U-Werte von 1880 bis heute
-              </h3>
-              <p className="text-xs text-slate-500 mb-6">
-                Entwicklung des thermischen Standards über 10 Baualtersklassen im Vergleich zu den heutigen Sanierungsanforderungen des GModG / GEG.
-              </p>
+                <BarChart3 className="w-4 h-4 text-shiraz" /><MdText text={inhalt.texte.historischerTrendDerBauteil} /></h3>
+              <p className="text-xs text-slate-500 mb-6"><MdText text={inhalt.texte.entwicklungDesThermischenStandards} /></p>
 
               <div className="h-80 w-full">
                 <Line data={chartData} options={chartOptions} />
@@ -770,18 +598,10 @@ export default function Bestand() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs text-slate-700 leading-relaxed">
-                  <span className="font-bold text-slate-900 block mb-1">
-                    Bauphysikalische Epochensprünge:
-                  </span>
-                  Bis in die 1970er Jahre lagen die U-Werte von Außenwänden meist über 1,1 W/(m²K). WDVS gibt es seit den 1960er Jahren; die Wärmeschutzverordnung 1977 brachte erstmals verbindliche Wärmeschutzanforderungen. Das GModG verlangt heute bei Sanierungen Höchstwerte von 0,24 W/(m²K) für Außenwände und Steildächer/oberste Geschossdecken sowie 0,20 W/(m²K) für Flachdächer.
-                </div>
+                  <span className="font-bold text-slate-900 block mb-1"><MdText text={inhalt.texte.bauphysikalischeEpochensprünge} /></span><MdText text={inhalt.texte.bisInDie1970er} /></div>
 
                 <div className="bg-rose-50/40 p-4 rounded-xl border border-shiraz/20 text-xs text-slate-700 leading-relaxed">
-                  <span className="font-bold text-shiraz block mb-1">
-                    Grenzwerte nach Gebäudemodernisierungsgesetz (GModG, vormals GEG):
-                  </span>
-                  Nach § 36 GModG (vormals § 48 GEG / Anlage 7) dürfen bei Änderungen an Außenbauteilen bestehender Gebäude die Höchstwerte des Wärmedurchgangskoeffizienten nicht überschritten werden, sofern mehr als 10 % der jeweiligen Bauteilfläche saniert oder erneuert werden (Bagatellgrenze). Außenwände und Steildächer/oberste Geschossdecken müssen höchstens 0,24 W/(m²K), Flachdächer 0,20 W/(m²K), Kellerdecken 0,30 W/(m²K) und Fenster U_w = 1,30 W/(m²K) einhalten (Anlage 7 GModG).
-                </div>
+                  <span className="font-bold text-shiraz block mb-1"><MdText text={inhalt.texte.grenzwerteNachGebäudemodernisierungsgese} /></span><MdText text={inhalt.texte.nach36GmodgVormals} /></div>
               </div>
             </div>
           </div>
@@ -793,38 +613,26 @@ export default function Bestand() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col gap-4">
                 <h3 className="text-base font-bold text-text-main flex items-center gap-2">
-                  <AlertTriangle className="text-amber-600" size={18} />
-                  Schadenspotenziale im Altbaubestand
-                </h3>
+                  <AlertTriangle className="text-amber-600" size={18} /><MdText text={inhalt.texte.schadenspotenzialeImAltbaubestand} /></h3>
                 <ul className="space-y-2.5 text-xs text-slate-700 leading-relaxed">
-                  <li className="p-2.5 bg-slate-50 rounded-xl border border-slate-200">
-                    <strong>Holzbalkenköpfe in Außenwänden:</strong> Durch nachträgliche Innendämmung kühlt das Mauerwerk im Winter stärker aus. Die Verdunstungskapazität sinkt, was bei unzureichendem Schlagregenschutz zu Pilzbefall und Fäulnis der Balkenauflager führen kann.
-                  </li>
-                  <li className="p-2.5 bg-slate-50 rounded-xl border border-slate-200">
-                    <strong>Preußische Kappendecken:</strong> Korrosion der freiliegenden I-Träger-Unterflansche durch aufsteigende Feuchte in Altbaukellern oder hygroskopische Salze.
-                  </li>
-                  <li className="p-2.5 bg-slate-50 rounded-xl border border-slate-200">
-                    <strong>Schadstoffe der Nachkriegsepochen:</strong> Asbestzement (etwa 1930–1993, Verbot 1993), teerhaltige Kleber und Bitumenpappen (PAK), sowie künstliche Mineralfasern (alte KMF: vor 1996 hergestellt, Einbau bis 06/2000 möglich).
-                  </li>
+                  <li className="p-2.5 bg-slate-50 rounded-xl border border-slate-200"><MdText text={inhalt.texte.holzbalkenköpfeInAußenwändenDurch} /></li>
+                  <li className="p-2.5 bg-slate-50 rounded-xl border border-slate-200"><MdText text={inhalt.texte.preußischeKappendeckenKorrosionDer} /></li>
+                  <li className="p-2.5 bg-slate-50 rounded-xl border border-slate-200"><MdText text={inhalt.texte.schadstoffeDerNachkriegsepochenAsbestzem} /></li>
                 </ul>
               </div>
 
               <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col gap-4">
                 <h3 className="text-base font-bold text-text-main flex items-center gap-2">
-                  <ShieldCheck className="text-emerald-700" size={18} />
-                  Innendämmung nach WTA-Merkblatt 6-5
-                </h3>
+                  <ShieldCheck className="text-emerald-700" size={18} /><MdText text={inhalt.texte.innendämmungNachWtaMerkblatt} /></h3>
                 <div className="text-xs text-slate-700 space-y-3 leading-relaxed">
-                  <p>
-                    Bei denkmalgeschützten Fassaden ist eine Außendämmung meist unzulässig. Die Sanierung muss raumseitig erfolgen. Hierbei unterscheidet man zwei wesentliche bauphysikalische Systeme:
-                  </p>
+                  <p><MdText text={inhalt.texte.beiDenkmalgeschütztenFassadenIst} /></p>
                   <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
-                    <span className="font-bold text-slate-900 block">1. Kapillaraktive, diffusionsoffene Systeme (z. B. Calciumsilikat, Holzfaser):</span>
-                    <span>Anfallendes Kondensat wird durch kapillare Saugspannung aufgenommen und im Sommer schadlos in den Raum zurückverdunstet. Funktioniert ohne feuchteblockierende Dampfsperren.</span>
+                    <span className="font-bold text-slate-900 block"><MdText text={inhalt.texte.t1KapillaraktiveDiffusionsoffeneSysteme} /></span>
+                    <span><MdText text={inhalt.texte.anfallendesKondensatWirdDurch} /></span>
                   </div>
                   <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
-                    <span className="font-bold text-slate-900 block">2. Diffusionsdichte Systeme mit Dampfbremse:</span>
-                    <span>Erfordern absolute Luftdichtheit der raumseitigen Membran. Kleinste Fehlstellen führen durch Konvektion zu massivem Schimmelschaden.</span>
+                    <span className="font-bold text-slate-900 block"><MdText text={inhalt.texte.t2DiffusionsdichteSystemeMit} /></span>
+                    <span><MdText text={inhalt.texte.erfordernAbsoluteLuftdichtheitDer} /></span>
                   </div>
                 </div>
               </div>
@@ -836,70 +644,34 @@ export default function Bestand() {
       {/* ModuleFooter following GEMINI_md */}
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Innendämmung einer Gründerzeitwand mit Calciumsilikat"
+        title={inhalt.werte.beispiel1InnendämmungEiner}
         zielGleichung="U_{neu} = \frac{1}{1/U_{alt} + d/\lambda}"
-        schritte={[
-          { titel: 'Gegeben', erklaerung: 'Vollziegelwand U_alt = 1,50 W/(m²K); 6 cm Calciumsilikatplatte (λ = 0,060 W/(mK)), kapillaraktiv.', formel: 'R_{D} = \\frac{0{,}06}{0{,}060} = 1{,}00\\,\\text{m}^2\\text{K/W}' },
-          { titel: 'Neuer U-Wert', erklaerung: 'Gesamtwiderstand alt plus Dämmschicht:', formel: 'U_{neu} = \\frac{1}{0{,}667 + 1{,}00} = 0{,}60\\,\\text{W/(m}^2\\text{K)}' },
-          { titel: 'Oberflächentemperatur', erklaerung: 'θ_i = 20 °C, θ_e = −5 °C, R_si = 0,13:', formel: '\\theta_{si,alt} = 20 - 0{,}13 \\cdot 1{,}50 \\cdot 25 = 15{,}1\\,^\\circ\\text{C}, \\quad \\theta_{si,neu} = 20 - 0{,}13 \\cdot 0{,}60 \\cdot 25 = 18{,}1\\,^\\circ\\text{C}' }
-        ]}
-        ergebnisHinweis="Moderate Innendämmung verbessert Behaglichkeit und Schimmelschutz deutlich; die Grenzschicht wird aber kälter. Feuchtenachweis nach WTA-Merkblatt 6-5 bzw. DIN 4108-3 und Schlagregenschutz der Fassade sind Voraussetzung."
-        normQuelle="DIN EN ISO 6946:2018-03; WTA-Merkblätter 6-4/6-5"
+        schritte={inhalt.daten["Bestand.schritte"]}
+        ergebnisHinweis={inhalt.werte.moderateInnendämmungVerbessertBehaglichk}
+        normQuelle={inhalt.werte.dinEnIso6946}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Transmissionswärmeverlust vor und nach der Innendämmung"
+        title={inhalt.werte.beispiel2TransmissionswärmeverlustVor}
         zielGleichung="\Delta Q = \Delta U \cdot A \cdot HGT \cdot 24 / 1000"
-        schritte={[
-          { titel: 'Gegeben', erklaerung: '100 m² Außenwand, Heizgradtage 3 500 Kd/a:', formel: '\\Delta U = 1{,}50 - 0{,}60 = 0{,}90\\,\\text{W/(m}^2\\text{K)}' },
-          { titel: 'Einsparung Nutzwärme', erklaerung: 'Umrechnung von Kd in kWh:', formel: '\\Delta Q = 0{,}90 \\cdot 100 \\cdot 3\\,500 \\cdot 24 / 1\\,000 = 7\\,560\\,\\text{kWh/a}' },
-          { titel: 'Einordnung', erklaerung: 'Bei Gas (≈ 0,24 kg CO₂-Äq./kWh) entspricht das rund 1,8 t CO₂-Äq. pro Jahr.', formel: '7\\,560 \\cdot 0{,}24 = 1\\,814\\,\\text{kg CO}_2\\text{-Äq./a}' }
-        ]}
-        ergebnisHinweis="Wärmebrücken an einbindenden Innenwänden und Decken mindern die Einsparung; bei Holzbalkendecken ist die Balkenkopfzone besonders zu prüfen."
-        normQuelle="VDI 2067 / VDI 4710 (Gradtagzahlverfahren)"
+        schritte={inhalt.daten["Bestand.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.wärmebrückenAnEinbindendenInnenwänden}
+        normQuelle={inhalt.werte.vdi2067Vdi4710}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="bestand" />
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 8 Bestand: GModG-Bestandsanforderungen, Normausgaben und Literatur geprüft; fachliche Freigabe durch den Autor ausstehend)" 
+        lastReviewed={inhalt.werte.oktober2026Ap8} 
         wikipedia={[
           { title: "Altbau", url: "https://de.wikipedia.org/wiki/Altbau" },
           { title: "Wärmedurchgangskoeffizient", url: "https://de.wikipedia.org/wiki/W%C3%A4rmedurchgangskoeffizient" },
-          { title: "Innendämmung nach WTA", url: "https://de.wikipedia.org/wiki/Innend%C3%A4mmung" }
+          { title: inhalt.werte.innendämmungNachWta, url: "https://de.wikipedia.org/wiki/Innend%C3%A4mmung" }
         ]}
-        literatur={[
-          "BMWi/BMI (2020): Bekanntmachung der Regeln zur Datenaufnahme und Datenverwendung im Wohngebäudebestand (pauschale U-Werte nach Baualtersklassen).",
-          "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
-          "Klopfer, H.: Wassertransport durch Diffusion in Feststoffen. Wiesbaden: Bauverlag 1974"
-        ]}
-        regelwerke={[
-          { title: "Gebäudemodernisierungsgesetz (GModG, vormals GEG) – §§ 35–37 und Anlage 7 (bestehende Gebäude)", url: "https://www.gesetze-im-internet.de/geg/" },
-          { title: "DIN 4108-3:2024-03 (Klimabedingter Feuchteschutz; ersetzt 2018-10)" },
-          { title: "DIN EN ISO 6946:2018-03 (Bauteile - Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient)" },
-          { title: "WTA-Merkblatt 6-4-16/D: Innendämmung nach WTA I – Planungsleitfaden (Ausgabe 10.2016)", url: "https://www.wta-gmbh.de" },
-          { title: "WTA-Merkblatt 6-5-14/D: Innendämmung nach WTA II – Nachweis von Innendämmsystemen mittels numerischer Berechnungsverfahren (Ausgabe 2014)", url: "https://www.wta-gmbh.de" }
-        ]}
-        formeln={[
-          {
-            formel: "R_{\\text{Dämm}} = \\frac{d_{\\text{Dämm}}}{\\lambda_{\\text{Dämm}}} \\quad [\\text{m}^2\\text{K/W}]",
-            erklaerung: "Wärmedurchlasswiderstand einer Dämmschicht mit Schichtdicke d und Bemessungswert der Wärmeleitfähigkeit lambda.",
-            quelle: "DIN EN ISO 6946"
-          },
-          {
-            formel: "U_{\\text{neu}} = \\frac{1}{\\frac{1}{U_{\\text{alt}}} + R_{\\text{Dämm}}} \\quad [\\text{W/(m}^2\\text{K)}]",
-            erklaerung: "Berechnung des reduzierten Wärmedurchgangskoeffizienten nach Aufbringung einer zusätzlichen Dämmschicht auf ein Bestandsbauteil.",
-            quelle: "DIN EN ISO 6946"
-          },
-          {
-            formel: "\\Delta Q = \\Delta U \\cdot A \\cdot HGT \\cdot 24 \\div 1000 \\quad [\\text{kWh/a}]",
-            erklaerung: "Berechnung der jährlichen Transmissionswärmeverlust-Reduktion basierend auf der U-Wert-Differenz und Heizgradtagen.",
-            quelle: "VDI 2067"
-          }
-        ]}
-        weblinks={[
-          { title: 'Bundesarbeitskreis Altbauerneuerung e.V. (BAKA)', url: 'https://www.bakaberlin.de' }
-        ]}
+        literatur={inhalt.daten["Bestand.literatur"]}
+        regelwerke={inhalt.daten["Bestand.regelwerke"]}
+        formeln={inhalt.daten["Bestand.formeln"]}
+        weblinks={inhalt.daten["Bestand.weblinks"]}
       />
     </div>
   );

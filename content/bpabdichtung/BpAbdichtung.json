@@ -1,0 +1,465 @@
+{
+  "texte": {
+    "abdichtungenBauprodukte": " Abdichtungen (Bauprodukte)",
+    "regelkonformeAbdichtungssystemeFugentech": "Regelkonforme Abdichtungssysteme, Fugentechnik im Betonbau und professionelle Bauwerksinstandsetzung durch Rissinjektion.",
+    "planungsgrundlageDeutscheBauchemieE": "Planungsgrundlage: Deutsche Bauchemie e.V.",
+    "erdberührteBauwerksabdichtungenSowieSock": "Erdberührte Bauwerksabdichtungen sowie Sockel- und Nassraumabdichtungen müssen nach den neuesten Normen und anerkannten Regeln der Technik geplant werden. Als herstellerneutrale Fachregeln gelten hierzu insbesondere die Richtlinien der **Deutsche Bauchemie e.V.** für die Stoffklassen **PMBC**, **MDS** und **FPD**.",
+    "pmbcPolymermodifizierteBitumendickbeschi": "PMBC (Polymermodifizierte Bitumendickbeschichtungen)",
+    "lösemittelfreieOrganischePastenAuf": "Lösemittelfreie, organische Pasten auf Bitumenemulsionsbasis (früher KMB). Genormt in **DIN 18533**. Optimal für feuchtigkeitsdichte, hochflexible Rissüberbrückungen auf rauen mineralischen Untergründen.",
+    "untergrundvorbereitungKratzspachtelungAu": "**Untergrundvorbereitung (Kratzspachtelung):** Auf Beton und Mauerwerk ist eine vollflächige Kratzspachtelung (Porenverschluss) zwingend vorgeschrieben. Dies verhindert wirksam den gefährlichen ",
+    "blasenUndPorenbildungDurch": " (Blasen- und Porenbildung durch thermische Ausgasungen der Poren bei Sonneneinstrahlung).",
+    "sollschichtdickeMessungW1E": "**Sollschichtdicke & Messung:** W1-E / W4-E verlangen Trockenschichtdicke ",
+    "w21EVerlangt": "; W2.1-E verlangt ",
+    "mitVollflächigerGewebeeinbettungSchichtd": " mit vollflächiger Gewebeeinbettung. Schichtdickenkontrolle muss nass (mit Schichtdickenkamm) und trocken zerstörungsfrei oder per Keilschnittprüfung am Referenzkörper dokumentiert werden.",
+    "flankenEckenbehandlungInneneckenUnd": "**Flanken- & Eckenbehandlung:** Innenecken und Fundament-Wand-Übergänge dürfen nicht scharfkantig ausgeführt werden. Eine Hohlkehle (Radius 4 - 6 cm) aus Zementmörtel oder PMBC selbst ist vor dem Flächenauftrag herzustellen.",
+    "witterungseinschränkungenVerarbeitungNur": "**Witterungseinschränkungen:** Verarbeitung nur bei Luft- und Wandtemperaturen von +5°C bis +30°C. Der frische Film ist vor Frost, Regen sowie direkter extremer Prallsonne zu schützen.",
+    "regelwerkRichtlinieFürDie": "**Regelwerk:** „Richtlinie für die Planung und Ausführung von Abdichtungen mit polymermodifizierten Bitumendickbeschichtungen (PMBC), Deutsche Bauchemie e. V., 4. Ausgabe, Dezember 2018“.",
+    "mineralischesSystem": "Mineralisches System",
+    "mdsMineralischeDichtungsschlämmen": "MDS (Mineralische Dichtungsschlämmen)",
+    "zementgebundeneBauwerksabdichtungssystem": "Zementgebundene Bauwerksabdichtungssysteme mit sandigen Zuschlägen und dispergierten organischen Polymeradditiven. Hervorragend geeignet für starre bis zugfeste Feuchtigkeitsabsperrungen im erdberührten Verbund.",
+    "untergrundsteuerungVornässenMineralische": "**Untergrundsteuerung (Vornässen):** Mineralische Untergründe müssen unmittelbar vor dem MDS-Auftrag gründlich vorgenässt werden, bis sie matt-feucht sind (kein stehendes Wasser!). Ein trockener Untergrund entzieht der Schlämme Wasser, was zum \"Aufbrennen\" (Minderfestigkeiten und kreidendes Abstauben des Zements) führt.",
+    "schichtdickenRegularienJedeStelle": "**Schichtdicken-Regularien:** Jede Stelle des Abdichtungsfeldes muss eine Mindesttrockenschichtdicke von ",
+    "aufweisenDerEinbauErfolgt": " aufweisen. Der Einbau erfolgt porenfrei in mindestens zwei bis drei Arbeitsgängen per Schlämmbürste, Quast oder Kelle.",
+    "schwindrissProphylaxeZuDicke": "**Schwindriss-Prophylaxe:** Zu dicke Einzelaufträge (> 2 mm pro Arbeitsgang) bergen akutes Risiko von Schwindrissen durch Schereigenspannungen. Die frisch fertiggestellte Dichtungsschlämme muss vor raschem Wind- und Sonnenentzug geschützt werden.",
+    "regelwerkRichtlinieFürDie2": "**Regelwerk:** „Richtlinie für die Planung und Ausführung von Abdichtungen mit mineralischen Dichtungsschlämmen (MDS), Deutsche Bauchemie e. V., 1. Ausgabe, Juli 2020“.",
+    "hybridSystemZukunft": "Hybrid-System (Zukunft)",
+    "fpdFlexiblePolymermodifizierteDickbeschi": "FPD (Flexible polymermodifizierte Dickbeschichtungen)",
+    "bitumenfreieFlexibleSchnellErhärtende": "Bitumenfreie, flexible, schnell erhärtende Flüssigabdichtungen (Reaktivsysteme). Sie verbinden die Rissüberbrückung von PMBC mit dem guten Haftverbund mineralischer Dichtungsschlämmen.",
+    "haftungMultifunktionalitätGuteHaftung": "**Haftung & Multifunktionalität:** Gute Haftung auf Beton, Mauerwerk, Metall, Kunststoffen und tragfähigen bituminösen Altabdichtungen (Untergrund sauber und staubfrei). Geeignet für Sanierungen und Übergänge.",
+    "bauökologieSystemvorteileLösemittelfreiG": "**Bauökologie & Systemvorteile:** Lösemittelfrei, geruchsneutral, UV-beständig und verputzfähig. Durch Reaktionshärtung schnell regenfest und früh hinterfüllbar (Zeiten nach Herstellerangabe).",
+    "musterSchichtdickenTrockenschichtdicke": "**Muster-Schichtdicken:** Trockenschichtdicke ",
+    "beiW1EW4": " bei W1-E / W4-E. Unter mäßigem drückendem Wasser (W2.1-E) sind regelkonforme ",
+    "einzuhaltenUndBauaufsichtlichZu": " einzuhalten und bauaufsichtlich zu belegen (abP).",
+    "regelwerkRichtlinieFürDie3": "**Regelwerk:** „Richtlinie für die Planung und Ausführung von Abdichtungen mit flexiblen polymermodifizierten Dickbeschichtungen (FPD), Deutsche Bauchemie e. V., 1. Ausgabe, Februar 2020“.",
+    "synthetischeBahnenFlüssigkunststoff": "SYNTHETISCHE BAHNEN & FLÜSSIGKUNSTSTOFF",
+    "kunststoffbahnenEpdmFpoPvc": "Kunststoffbahnen (EPDM, FPO, PVC) & FLK",
+    "rollenversiegelungenUndDichteHarzanstric": "Rollenversiegelungen und dichte Harzanstriche bieten nahtlose, witterungsbeständige Langzeitabsicherungen für Flachdächer und komplizierte TGA-Durchführungsgeometrien:",
+    "epdmFpoKunststoffbahnenEinlagige": "**EPDM & FPO Kunststoffbahnen:** Einlagige Rollenbahnen mit extremer Alterungsstabilität. EPDM-Kautschukbahnen weisen dauerhafte Dehnungsreserven von über 400 % auf.",
+    "flüssigkunststoffeFlkPmmaPur": "**Flüssigkunststoffe (FLK - PMMA / PUR):** Gemäß den FLK-Richtlinien der Deutschen Bauchemie ist eine **vollflächige Vliesarmierung (Spezial-Polyestervlies)** zwingend vorgeschrieben, die vollkommen blasenfrei in zwei Harzlagen nass-in-nass eingebettet wird. Dies garantiert sichere Rissüberbrückungen an komplexen Schnittstellen, Fensterbänken, Türschwellen und Gullys. Auf kritischen Untergründen (Asphalt, Metall) sind systemadäquate Primersysteme (Haftbrücken) einzusetzen.",
+    "mineralischerBentonitTonmineralien": "MINERALISCHER BENTONIT (TONMINERALIEN)",
+    "trägergestützteQuelltonAbdichtungssystem": "Trägergestützte Quellton-Abdichtungssysteme",
+    "kompletterÖkologischerFeuchteschutzIm": "Kompletter ökologischer Feuchteschutz im Grundwasser- und Gründungsbereich durch quellfähige Mineralien ohne den Einsatz chemischer Lösungsmittel:",
+    "bentonitbahnenBrauneWanneRobuste": "**Bentonitbahnen (\"Braune Wanne\"):** Robuste Geotextilbahnen, zwischen deren Gewebeschichten pulverförmiges Natriumbentonit fest gekapselt ist. Unter Erdanpressdruck quillt das Bentonit bei Wasserkontakt und bildet eine sehr dichte, gelartige Tonschicht.",
+    "bentonitquellbänderBiegsameDichtbänderZu": "**Bentonitquellbänder:** Biegsame Dichtbänder zur zuverlässigen Primär-Abdichtung in rauen Betonierarbeitsfugen.",
+    "bauaufsichtlichePrüfnachweiseLeistungsna": "Bauaufsichtliche Prüfnachweise & Leistungsnachweise (Herstellerneutral)",
+    "daVieleModerneBauwerksabdichtungen": "Da viele moderne Bauwerksabdichtungen (wie Verbundabdichtungen, Frischbetonverbundfolien oder Quellbänder) im nationalen Regelwerk nicht abschließend genormt sind, verlangt die VOB/C im öffentlichen Bauwesen herstellerneutrale Konformitätsnachweise:",
+    "allgemeinesBauaufsichtlichesPrüfzeugnisA": " allgemeines bauaufsichtliches Prüfzeugnis (abP)",
+    "nachweisFürRegelungsbedürftigeBauprodukt": "Nachweis für regelungsbedürftige Bauprodukte und Abdichtungssysteme mit geringem Risikopotenzial (z. B. flüssige Verbundabdichtungen im Bad). Bestätigt die Brauchbarkeit anhand festgeschriebener Prüfverfahren.",
+    "europäischeTechnischeBewertungEta": " Europäische Technische Bewertung (ETA)",
+    "wegbereiterFürCeKennzeichnungen": "Wegbereiter für CE-Kennzeichnungen von innovativen Abdichtungsprodukten ohne harmonisierte EN-Norm (z. B. hochelastische EPDM-Bahnen, Bentonitmembranen oder Flüssigkunststoffe mit langen Nutzungsdauern).",
+    "allgemeineBauaufsichtlicheZulassungAbz": " allgemeine bauaufsichtliche Zulassung (abZ)",
+    "erteiltDurchDasDeutsche": "Erteilt durch das Deutsche Institut für Bautechnik (DIBt) für hochinnovative Sonderkonstruktionen (z. B. druckwasserdichte Rohrdurchführungen, bauwerksübergreifende Fugenkonstruktionen im Bahnbau).",
+    "wtaZertifikateMerkblätter": " WTA-Zertifikate & Merkblätter",
+    "merkblätterUndZertifizierungenDer": "Merkblätter und Zertifizierungen der Wissenschaftlich-Technischen Arbeitsgemeinschaft für Bauwerkserhaltung und Denkmalpflege (WTA), z. B. für Sanierputze und Injektionsverfahren gegen kapillar aufsteigende Feuchte. Keine bauaufsichtlichen Zulassungen.",
+    "fugenUnterteilenGroßeBauteile": "Fugen unterteilen große Bauteile zur Rissvermeidung oder Bewegungskompensation. Im WU-Stahlbetonbau (Weiße Wanne) ist jede Fuge eine potenzielle Schwachstelle und muss mit geprüften Fugenabdichtungen fachgerecht gesichert werden.",
+    "t1FugenartenUndKonstruktive": " 1. Fugenarten und konstruktive Ausbildungen",
+    "arbeitsfugenBetonierfugen": "Arbeitsfugen (Betonierfugen)",
+    "schnittstelleZwischenZeitversetztenBeton": "Schnittstelle zwischen zeitversetzten Betonierabschnitten (z.B. Sohlplatte zu aufstehender Kellerwand). Keine Relativbewegungen erwünscht.",
+    "konstruktionAufrauungDerFuge": "**Konstruktion:** Aufrauung der Fuge, Reinigung von Zementschlämmen zur Erzielung eines guten Verbunds.",
+    "dehnungsBewegungsfugen": "Dehnungs- & Bewegungsfugen",
+    "trennenBauteileVollständigUm": "Trennen Bauteile vollständig, um thermisch oder setzungsbedingte Bewegungen und Längenänderungen zwangsfrei abzubauen.",
+    "konstruktionVollständigeEntkopplungAusge": "**Konstruktion:** Vollständige Entkopplung, ausgefüllt mit komprimierbarer Füllplatte (z.B. Styropor oder PE).",
+    "sollrissfugenSchrumpffugen": "Sollrissfugen (Schrumpffugen)",
+    "querschnittsschwächungenZurGezieltenÖrtl": "Querschnittsschwächungen zur gezielten örtlichen Zuweisung des Schwindrisses. Verhindert unkontrollierte wilde Risse.",
+    "konstruktionEingelegteProfilleistenSchwä": "**Konstruktion:** Eingelegte Profilleisten schwächen die Wandstärke um min. 1/3. Im Kern sitzt ein Dichtelement.",
+    "t2FugenabdichtmaterialienEinbauprodukteIm": " 2. Fugenabdichtmaterialien & Einbauprodukte im Überblick",
+    "fugenbänderPvcPElastomer": "Fugenbänder (PVC-P / Elastomer)",
+    "klassischeMechanischeAbdichtungFür": "Klassische mechanische Abdichtung für Dehnungs- und Arbeitsfugen. Es gibt **innenliegende** Fugenbänder (durch Beton umschlossen) und **außenliegende** Fugenbänder (auf dem Erdreich oder Schalung aufliegend). Geregelt in **DIN 18197**.",
+    "materialienWeichpolyvinylchloridPvcP": "**Materialien:** Weichpolyvinylchlorid (PVC-P) oder hochelastischer Kautschuk (SBR/EPDM für Dehnungsfugen).",
+    "einbauSchweißverbindungAufDer": "**Einbau:** Schweißverbindung auf der Baustelle mittels Schweißschwert erforderlich.",
+    "perforierteMitSpezialGewebe": "Perforierte, mit Spezial-Gewebe umhüllte Kunststoffschläuche, die direkt mittig in der Arbeitsfuge auf dem ersten Betonierabschnitt fixiert werden. Sie dienen als 'Sicherheits-Backup': Zeigt die Fuge später eine Leckage, wird flüssiges Dichtungsharz über die stirnseitigen Schlauchenden eingepresst.",
+    "typEinfachinjektionssystemeOderMehrfach": "**Typ:** Einfachinjektionssysteme oder mehrfach injizierbare Varianten (über Vakuum).",
+    "kombianwendungHäufigAlsRedundante": "**Kombianwendung:** Häufig als redundante Zusatzabdichtung neben Fugenblechen.",
+    "fugenblecheBeschichtet": "Fugenbleche (beschichtet)",
+    "verzinkteBlechstreifenMitEin": "Verzinkte Blechstreifen mit ein- oder beidseitiger Spezialbeschichtung (Bitumen oder thermoplastische Spezialbeschichtung). Sie verkleben dauerhaft mit dem Frischbeton und versperren kriechendem Sickerwasser den Kriechweg.",
+    "vorteilSchnelleMontageAuf": "**Vorteil:** Schnelle Montage auf der oberen Bewehrungslage der Sohlplatte vor Wandbetonage.",
+    "quelldichtungenFugendichtstoffe": "Quelldichtungen & Fugendichtstoffe",
+    "quellbänderProfileAusBentonit": "**Quellbänder:** Profile aus Bentonit oder quellfähigen Polymeren quellen bei Kontakt mit Feuchtigkeit auf und verpressen mechanisch den Hohlraum.**Fugendichtstoffe:** Hochelastische, einkomponentige Dichtstoffe (Polyurethan, MS-Polymer) für sichtbare Anschlussfugen an Fassaden und Böden.",
+    "wichtigQuellbänderBenötigenEine": "**Wichtig:** Quellbänder benötigen eine ausreichende Betonüberdeckung gegen Abplatzen durch den Quelldruck (Mindestmaße nach abP/Herstellerangabe, häufig ca. 8–10 cm).",
+    "t3InteraktiverFugenbandPlaner": "3. Interaktiver Fugenband-Planer (DIN 18197 & DIN 18533)",
+    "gebenSieDieBauteilabmessungen": "Geben Sie die Bauteilabmessungen und Wassereinwirkungen an, um die konforme Bandbreite und die Mindestbauteildicke nach DIN 18197 zu prüfen.",
+    "arbeitsfugeStatisch": "Arbeitsfuge (statisch)",
+    "dehnungsfugeBeweglich": "Dehnungsfuge (beweglich)",
+    "barHydrostatischerDruck": " bar hydrostatischer Druck)",
+    "wandSohldickeD": "Wand-/Sohldicke (d):",
+    "empfohlenWandMin24": "Empfohlen Wand min. 24 cm",
+    "gk16MmFeiner": "GK 16 mm (feiner)",
+    "gk32MmStandard": "GK 32 mm (Standard)",
+    "prüfberichtFugenbandEignungNach": "Prüfbericht Fugenband-Eignung nach DIN 18197:",
+    "empfohleneMindestbreiteA": "Empfohlene Mindestbreite (a):",
+    "normativeProduktbezeichnung": "Normative Produktbezeichnung:",
+    "geforderteMindestdeckendicke": "Geforderte Mindestdeckendicke:",
+    "cmSollDA": " cm (Soll: d ≥ a)",
+    "mindestRandabstandGrößtkornCheck": "Mindest-Randabstand (Größtkorn check):",
+    "bauteildickeKonformDieBauteildicke": "✓ **Bauteildicke konform:** Die Bauteildicke von d = ",
+    "cmIstAusreichendGroß": " cm ist ausreichend groß, damit das Fugenband (",
+    "mmVollständigBetoniertUnd": " mm) vollständig betoniert und porenfrei ummantelt wird.",
+    "bauteilZuDünnDie": "✗ **Bauteil zu dünn:** Die Bauteildicke (",
+    "cmReichtFürEin": " cm) reicht für ein ",
+    "mmBreitesFugenbandNicht": " mm breites Fugenband nicht aus – Gefahr von Fehlstellen beim Einbetonieren (Lehrannahme). Mindestens ",
+    "cmDickeEinplanen": " cm Dicke einplanen.",
+    "kornverkrallungGesichertRandabstandVon": "✓ **Kornverkrallung gesichert:** Randabstand von ca. ",
+    "cmBietetGenügendFließraum": " cm bietet genügend Fließraum für Beton mit GK ",
+    "mmMinErforderlich": " mm (min. erforderlich: ",
+    "engerEinbauraumDerFreiraum": "⚠ **Enger Einbauraum:** Der Freiraum an den Fugenbandflanken ist knapp für Größtkorn ",
+    "mmKleineresGrößtkornWählen": " mm. Kleineres Größtkorn wählen oder besonders sorgfältig verdichten.",
+    "t4InteraktiverInjektionsschlauchPlanungsp": "4. Interaktiver Injektionsschlauch-Planungsplaner",
+    "prüfenSieDieMachbarkeit": "Prüfen Sie die Machbarkeit und Detailierungsrichtlinien für Verpressschläuche, um Ausbrüche und mangelhafte Injektionen auf der Baustelle zu vermeiden.",
+    "standardrolleTypisch10M": "Standardrolle typisch 10 m",
+    "abstandZumRand": "Abstand zum Rand:",
+    "wuRlFordertMin": "WU-RL fordert min. 8-10 cm",
+    "maxAbstandZurLagestabilität": "Max. Abstand zur Lagestabilität",
+    "evaluierungDesInjektionssystems": "Evaluierung des Injektionssystems:",
+    "schlauchlänge": "Schlauchlänge (",
+    "sichererVerpressbarerKreislaufDer": "Sicherer verpressbarer Kreislauf. Der Fließdruck bleibt innerhalb des zulässigen Fensters der Verpresspumpe.",
+    "kritischLangeSchlauchabschnitteLehrannah": "**Kritisch!** Lange Schlauchabschnitte (Lehrannahme > 10 m; Herstellerangaben beachten) erschweren die vollständige Füllung, weil das Material vor dem Ende reagieren kann. Abschnitte begrenzen.",
+    "betonüberdeckung": "Betonüberdeckung (",
+    "sichererTiefenhaltKeineBeschädigung": "Sicherer Tiefenhalt. Keine Beschädigung des Betonrandes beim Hochdruck-Füllvorgang.",
+    "achtungAusbrücheBeiGeringer": "**Achtung Ausbrüche!** Bei geringer Überdeckung (",
+    "cmKannDerInjektionsdruck": " cm) kann der Injektionsdruck Abplatzungen verursachen. Verpressschläuche werden mit vergleichsweise geringem Druck nach Herstellerangabe injiziert.",
+    "montageabstand": "Montageabstand (",
+    "derSchlauchFließtUnd": "Der Schlauch fließt und treibt im zähen Betonstrom nicht auf (perfekter mittiger Sitz gewährleistet).",
+    "ungesicherteLageDurchWeite": "**Ungesicherte Lage!** Durch weite Clipabstände kann der Schlauch aufschwimmen oder an die Außenwand rutschen, wodurch die dichte Betonschutzdecke unterschritten wird.",
+    "wirkungsweiseDesInjektionsmediums": "**Wirkungsweise des Injektionsmediums:** ",
+    "fehlerrisikoFugenbänder": "Fehlerrisiko Fugenbänder:",
+    "fugenbänderNeigenBeimBetoneinbau": "Fugenbänder neigen beim Betoneinbau unter Rütteldruck zum Umknicken ('Faltbildung'). Wird der Beton nicht extrem sorgfältig an den Flanken gestochert, kommt es zu Kiesnestern direkt um das Band. Folge: Sickerwasser kriecht um das Fugenband herum direkt ins Gebäudeinnere!",
+    "risseImStahlbetonSind": "Risse im Stahlbeton sind werkstofftypische Begleierscheinungen. Überschreiten sie das zulässige Maß (z.B. > 0,2 mm bei WU-Konstruktionen), drohen Bewehrungskorrosion und Wasseraustritte. Die Sanierung erfolgt regelkonform durch **Rissinjektion (Rissverpressung)** nach der **DIN EN 1504-5**.",
+    "risseigenschaftenFürDieInjektionsauswahl": " Risseigenschaften für die Injektionsauswahl",
+    "bevorEinVerpressstoffGewählt": "Bevor ein Verpressstoff gewählt wird, muss der Zustand des Risses klassifiziert werden:",
+    "feuchtigkeitszustandTrockenFeuchtWasserf": "**Feuchtigkeitszustand:** Trocken, feucht, wasserführend oder unter hydrostatischem Druck stehend.",
+    "zweckDerMaßnahmeDehnfähiges": "**Zweck der Maßnahme:** Dehnfähiges, abdichtendes Schließen (Zäh-elastisch) vs. tragendes, wiederherstellendes Verbinden (Kraftschlüssig).",
+    "rissbreitenschwankungDynamischBeanspruch": "**Rissbreitenschwankung:** Dynamisch beanspruchte Risse verlangen flexiblen Verschluss.",
+    "packerLeitenDieInjektionsflüssigkeit": "Packer leiten die Injektionsflüssigkeit hochdrucksicher direkt in den Riss:",
+    "bohrpackerSchraubpackerSchrägVersetzt": "**Bohrpacker (Schraubpacker):** Schräg versetzt in einem Winkel von 45° bis zur Rissmitte gebohrte Metall- oder Kunststoffdübel. Für hohe Drücke (>100 bar).",
+    "klebepackerOberflächenpackerWerdenDirekt": "**Klebepacker (Oberflächenpacker):** Werden direkt auf den gereinigten Rissspalt geklebt. Nur bei geringen Einpressdrücken (Niederdruckverfahren) verwendbar oder um mechanische Bauteilbeschädigungen zu vermeiden.",
+    "die4KernInjektionsstoffe": "Die 4 Kern-Injektionsstoffe nach DIN EN 1504-5",
+    "epoxidharzeEp": "Epoxidharze (EP)",
+    "hoheHaftfestigkeitAufTrockenen": "Hohe Haftfestigkeit auf trockenen Rissflanken; kraftschlüssiges Schließen von Rissen (nicht bei wasserführenden oder sich bewegenden Rissen).",
+    "anwendungTrockenFeuchtTragwerksstabilisi": "Anwendung: Trocken/Feucht, Tragwerksstabilisierung",
+    "elastischDichtend": "ELASTISCH / DICHTEND",
+    "polyurethanharzePur": "Polyurethanharze (PUR)",
+    "elastischesHarzFürDehnfähiges": "Elastisches Harz für dehnfähiges Abdichten; schäumende PUR-Varianten (SPUR) stoppen akute Wasserzutritte vorübergehend.",
+    "anwendungWasserführendeRisseRisse": "Anwendung: Wasserführende Risse, Risse unter Bewegung",
+    "mineralischFüllend": "MINERALISCH FÜLLEND",
+    "zementsuspensionenZs": "Zementsuspensionen (ZS)",
+    "feinstzementleimZurMineralischenAuffüllu": "Feinstzementleim zur mineralischen Auffüllung breiterer Risse, Poren und großer Fehlstellen im Verbund.",
+    "anwendungHohlraumverfüllungDenkmalpflege": "Anwendung: Hohlraumverfüllung, Denkmalpflege, Mauerwerk",
+    "gelbildungExtern": "GELBILDUNG EXTERN",
+    "acrylatgeleAy": "Acrylatgele (AY)",
+    "wasserquellfähigeGeleMitExtrem": "Wasserquellfähige Gele mit extrem niedriger Viskosität. Dringen tief in feinste Kavernen und Mikrorisse ein.",
+    "anwendungSchleierinjektionenErdseitigKel": "Anwendung: Schleierinjektionen (erdseitig), Kellerwandsanierung",
+    "ablaufDerAkutInjektion": " Ablauf der Akut-Injektion (Wasserführender Riss)",
+    "t1Rissvorbereitung": "1. Rissvorbereitung",
+    "rissverlaufReinigenLockereSchichten": "Rissverlauf reinigen, lockere Schichten entfernen. Bohrungen schräg im 45°-Winkel versetzt anlegen, sodass Bohrkanal den Riss auf halber Bauteiltiefe schneidet.",
+    "t2PackerSetzen": "2. Packer setzen",
+    "bohrstaubGründlichAusblasenSonst": "Bohrstaub gründlich ausblasen (sonst Verstopfungsgefahr!). Bohrpacker einsetzen und druckfest festziehen. Freie Rissbereiche oberflächlich abdämmen (Zementmörtel spachteln).",
+    "t3VordichtungPurSchaum": "3. Vordichtung (PUR-Schaum)",
+    "beiStarkemWasseraustrittVorinjizieren": "Bei starkem Wasseraustritt: Vorinjizieren mit einkomponentigem PU-Schnellschaum. Nach Kontakt mit Wasser quillt dieser extrem schnell auf und stoppt den Wasserfluss zeitweise.",
+    "t4HauptinjektionDauerhaft": "4. Hauptinjektion (Dauerhaft)",
+    "dauerhaftElastisches2kPolyurethanharz": "Dauerhaft elastisches 2K-Polyurethanharz durch die Packer pressen (von unten nach oben arbeiten). Sobald Harz am Nachbarpacker austritt, Pumpe umkoppeln. Nach Erhärtung Packer abschlagen.",
+    "interaktiverDin18533Planungsberater": "**Interaktiver DIN 18533 Planungsberater:** Ermitteln Sie die normgerechte Wasserbeanspruchungsklasse (W-E; bis 2017-07 „Wassereinwirkungsklasse“) sowie Anforderungsklasse für Ihr Kellerbauteil und erhalten Sie eine herstellerneutrale, wissenschaftlich fundierte Produkt- und Systemempfehlung.",
+    "t1WasserverhältnisseBaugrund": "1. Wasserverhältnisse & Baugrund",
+    "welcheGeohydrologischenGewässerOder": "Welche geohydrologischen Gewässer- oder Sickerwasserverhältnisse liegen am Gebäude an?",
+    "t2RaumnutzungAnforderungsklasse": "2. Raumnutzung & Anforderungsklasse",
+    "welcherGradAnFeuchtetoleranz": "Welcher Grad an Feuchtetoleranz oder Trockenheit ist vertraglich einzuhalten?",
+    "berechneteSystemempfehlungNachDin": "Berechnete Systemempfehlung nach DIN 18533",
+    "bauaufsichtlicheEinstufung": "Bauaufsichtliche Einstufung",
+    "zugelasseneSystemBauprodukteHerstellerne": "Zugelassene System-Bauprodukte (Herstellerneutral):",
+    "sollDimensionierungEinbaurichtlinien": "Soll-Dimensionierung & Einbaurichtlinien:",
+    "vorgeschriebenerParameter": "Vorgeschriebener Parameter",
+    "technischeMindestanforderungWert": "Technische Mindestanforderung / Wert",
+    "konformitätAnwendbaresBaurecht": "Konformität & anwendbares Baurecht:"
+  },
+  "werte": {
+    "bodenfeuchteUndNichtstauendesSickerwasse": "Bodenfeuchte und nichtstauendes Sickerwasser bei hochdurchlässigen Böden (z. B. Sand, Kies).",
+    "mäßigeEinwirkungVonAußen": "Mäßige Einwirkung von außen drückendem Wasser (aufstauendes Sickerwasser auf tonigen Böden ohne Drainage).",
+    "bodenfeuchteUndNichtstauendesSickerwasse2": "Bodenfeuchte und nichtstauendes Sickerwasser bei wenig durchlässigen Böden mit funktionstüchtiger Drainage nach DIN 4095.",
+    "mäßigeEinwirkungVonAußen2": "Mäßige Einwirkung von außen drückendem Wasser (Eintauchtiefe ≤ 3,0 m).",
+    "hoheEinwirkungVonAußen": "Hohe Einwirkung von außen drückendem Wasser (Grundwasserstand dauerhaft > 3,0 m über der Fundamentsohle).",
+    "spritzwasserAmWandsockelSowie": "Spritzwasser am Wandsockel sowie Kapillarwasser in und unter Wänden.",
+    "flankenschutzSockelabdichtungFassadenübe": "Flankenschutz & Sockelabdichtung (Fassadenübergang)",
+    "robusterSchutzAnErdberührten": "Robuster Schutz an erdberührten Wandsockeln gegen herabspritzendes Regenwasser, aufsteigende Feuchte und Tausalze im Winter.",
+    "kWanneSystemergänzungWu": "K-Wanne / Systemergänzung (WU-Beton + Frischbetonverbundfolie - FBV)",
+    "hinterlaufstabileFrischbetonverbundfolie": "Hinterlaufstabile Frischbetonverbundfolie (FBV) auf einer dichten \"Weißen Wanne\" (Stahlbetontragwerk). Da WU-Beton Wasserdampfdiffusion im ständigen Kontakt mit drückendem Wasser nicht vollständig stoppen kann, sperrt das FBV-System jegliche Feuchtetransporte für sensible Wohn- und Arbeitsräume absolut ab.",
+    "moderneWeißeWanneWasserundurchlässiges": "Moderne \"Weiße Wanne\" (Wasserundurchlässiges Betonbauwerk)",
+    "dasTragwerkÜbernimmtDie": "Das Tragwerk übernimmt die statischen Lasten und dient gleichzeitig als Abdichtung (Primärsystem). Einteilig betoniert mit integrierten Arbeits- und Dehnungsfugen-Abdichtungen.",
+    "betonkonstruktionOhneWuAnforderung": "Betonkonstruktion ohne WU-Anforderung (keine Nutzungsklasse nach WU-Richtlinie)",
+    "betonkonstruktionOhneBesondereDichtheits": "Betonkonstruktion ohne besondere Dichtheitsanforderung für Bereiche, in denen Feuchtstellen hingenommen werden (z. B. offene Tiefgaragen).",
+    "klassischeSchwarzeWanneMit": "Klassische \"Schwarze Wanne\" mit Premium-Materialmix",
+    "vollflächigDichteFlexibleAbdichtungsscha": "Vollflächig dichte, flexible Abdichtungsschale auf der Außenseite von Beton- oder Mauerwerkswänden. Hervorragende Absicherung hochwertiger Kellerräume.",
+    "schwarzeWanneStandardBitumen": "Schwarze Wanne (Standard Bitumen- oder Mineralkomponente)",
+    "hautabdichtungFürKellerNutzzonen": "Hautabdichtung für Keller-Nutzzonen mit Standard-Feuchtigkeitssperre gegen Erdreichfeuchte.",
+    "din18533Teil3": "DIN 18533 Teil 3",
+    "minimalFeuchteschutzBrauneWanne": "Minimal-Feuchteschutz (Braune Wanne oder Starre MDS)",
+    "kostengünstigerMineralischerFeuchteschut": "Kostengünstiger mineralischer Feuchteschutz für Abstellflächen.",
+    "mindestschichtdickeMds": "Mindestschichtdicke (MDS)",
+    "bereicheAbdichtung": "Bereiche Abdichtung",
+    "themenBasiswissenAbdichtung": "Themen Basiswissen Abdichtung",
+    "materialienBaustoffe": "Materialien & Baustoffe",
+    "fugenKonstruktionMaterial": "Fugen (Konstruktion & Material)",
+    "risseVerpressungen": "Risse & Verpressungen",
+    "dinKlassenBeraterSysteme": "DIN-Klassen-Berater & Systeme",
+    "a200BitumenkompatibelPvc": "A 200 (Bitumenkompatibel / PVC-P)",
+    "a240PvcP": "A 240 (PVC-P) oder FM 250 (Hochelastomer)",
+    "a320PvcP": "A 320 (PVC-P) bzw. FM 350 (Elastomer-Spezial)",
+    "d240PvcP": "D 240 (PVC-P) / FM 250 (Dehnungsfuge Elastomer)",
+    "d320StandardPvc": "D 320 (Standard-PVC-P) oder FM 350",
+    "fm400HochelastomerDehnfugenband": "FM 400 (Hochelastomer-Dehnfugenband) / D 500",
+    "acrylatgelHatEineSehr": "Acrylatgel hat eine sehr niedrige Viskosität. Mehrfach verpressbare Schläuche können nach dem Spülen bzw. Vakuumieren erneut injiziert werden; Acrylatgele dichten dauerhaft, solange sie feucht bleiben.",
+    "polyurethanPurReagiertZäh": "Polyurethan (PUR) reagiert zäh-elastisch und bildet eine geschlossenzellige, wasserunlösliche Struktur. Es fängt dynamische Spannungsbewegungen in der Arbeitsfuge elastisch ab.",
+    "epoxidharzEpHärtetVollkommen": "Epoxidharz (EP) härtet vollkommen spröde und starr aus. Es stellt ein hohes mechanisches Verbundleistungsvermögen dar, kann aber bei witterungsbedingten Fugendehnungen schnell erneut reißen.",
+    "hochwertigKlasseA": "Hochwertig (Klasse A)",
+    "standardKlasseB": "Standard (Klasse B)",
+    "einfachKlasseC": "Einfach (Klasse C)",
+    "feuchtstellenAufInnenflächenVertraglich": "Feuchtstellen auf Innenflächen vertraglich ausgeschlossen (Wohnen).",
+    "dunkleVerfärbungenAufWänden": "Dunkle Verfärbungen auf Wänden zeitweise gestattet.",
+    "lokaleTropfenbildungenUndFeuchte": "Lokale Tropfenbildungen und feuchte Betonoberflächen unkritisch.",
+    "anwendungsbeispielNassschichtdickeEinerP": "Anwendungsbeispiel: Nassschichtdicke einer PMBC-Abdichtung (W2.1-E)",
+    "din185333Mindesttrockenschichtdicke": "DIN 18533-3 (Mindesttrockenschichtdicke); Feststoffanteil als Lehrannahme",
+    "rund6MmNass": "Rund 6 mm nass, in zwei Arbeitsgängen mit eingebetteter Einlage – die Trockenschichtdicke wird zusätzlich an Referenzproben kontrolliert."
+  },
+  "daten": {
+    "getAdvisorRecommendation": [
+      "Flexible mineralische Dichtungsschlämme (MDS) als rissüberbrückender Feuchteschutz",
+      "Zweikomponentige flexible polymermodifizierte Dickbeschichtung (FPD) im erdberührten Übergang",
+      "Kapillarsperren (Dichtungsschlämmen oder Bitumenbahnen) unter der ersten Steinlage"
+    ],
+    "getAdvisorRecommendation_2": [
+      {
+        "label": "Mindesthöhe",
+        "value": "Min. 30 cm über geplanter Geländeoberkante (GOK)"
+      },
+      {
+        "label": "Mindestschichtdicke (MDS)",
+        "value": "Trockenschichtdicke ≥ 2,0 mm"
+      },
+      {
+        "label": "Arbeitsgänge",
+        "value": "Zweilagiger Auftrag mit Bürste, Schlämmkelle oder Spritzgerät"
+      }
+    ],
+    "getAdvisorRecommendation_3": [
+      "DIN 18533 Teil 1: Anforderungen an den Sockelbereich",
+      "WTA-Merkblatt 4-6: Nachträgliche Abdichtung erdberührter Bauteile"
+    ],
+    "getAdvisorRecommendation_4": [
+      "Vlies- oder sandbeschichtete FPO-Dichtungsbahnen (Frischbetonverbundfolie)",
+      "Hinterlaufschutz-Klebekomponenten (Zementleim-Verkrallung)",
+      "System-Dichtbänder für Bauteilecken und Anschlüsse",
+      "Wasserundurchlässiger Beton (WU-Beton) als tragendes, abdichtendes Primärtragwerk"
+    ],
+    "getAdvisorRecommendation_5": [
+      {
+        "label": "Rissbreitenbegrenzung wk",
+        "value": "Begrenzung auf ≤ 0,15 mm bis 0,20 mm zur Vermeidung freien Wasserdurchtritts"
+      },
+      {
+        "label": "Wasserdiffusionswiderstand",
+        "value": "Diffusionsoffene bis diffusionsdichte FPO-Bahnen verhindern Feuchtepeaks"
+      },
+      {
+        "label": "Mindestdicke Betonsohle",
+        "value": "≥ 25 cm (empfohlen nach WU-Richtlinie)"
+      }
+    ],
+    "getAdvisorRecommendation_6": [
+      "WU-Richtlinie des DAfStb (Stahlbetonbauwerke für Wasserundurchlässigkeit)",
+      "DBV-Merkblatt Frischbetonverbundsysteme (FBV)",
+      "DIN 18533: Abdichtung erdberührter Bauteile"
+    ],
+    "getAdvisorRecommendation_7": [
+      "WU-Beton mit dichtem Zementsteingefüge und geringem Wasserbindemittelwert (w/z ≤ 0,55)",
+      "Fugenbleche bzw. Fugenbänder zur Verlängerung des Wasserwegs in Arbeitsfugen",
+      "Hochelastische PVC-P Fugenbänder für Dehnungsfugen",
+      "Injektionsschläuche im Betonierstoß zur nachträglichen Verpressung im Schadensfall"
+    ],
+    "getAdvisorRecommendation_8": [
+      {
+        "label": "Trennrisse (Nutzungsklasse A)",
+        "value": "Trennrisse vermeiden (Entwurfsgrundsatz a) oder zulassen und planmäßig abdichten/verpressen (c); Selbstheilung über begrenzte Rissbreiten (b) nur in Nutzungsklasse B"
+      },
+      {
+        "label": "Mindestdicke Wand",
+        "value": "≥ 24 cm (besser 30 cm)"
+      },
+      {
+        "label": "Kiesnestervermeidung",
+        "value": "Sorgfältiger Rüttlereinsatz an den Bewehrungsflanken unabdingbar"
+      }
+    ],
+    "getAdvisorRecommendation_9": [
+      "Richtlinie Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie DAfStb)",
+      "DIN EN 206 / DIN 1045-2: Tragwerke aus Beton"
+    ],
+    "getAdvisorRecommendation_10": [
+      "WU-Beton (Standardgüte)",
+      "Integrierte Fugenbleche oder Bentonit-Quellbänder in den Arbeitsfugen"
+    ],
+    "getAdvisorRecommendation_11": [
+      {
+        "label": "Rissbreite wk",
+        "value": "Rissbreite nach EC2/Expositionsklasse (z. B. w_max = 0,3 mm), keine WU-Anforderung"
+      },
+      {
+        "label": "Mindestdicke Wand",
+        "value": "≥ 24 cm"
+      }
+    ],
+    "getAdvisorRecommendation_12": [
+      "Standard-Tragwerksplanung nach DIN EN 1992-1-1"
+    ],
+    "getAdvisorRecommendation_13": [
+      "Zweilagige Polymerbitumen-Dickbeschichtung (PMBC) mit vollflächig eingebetteter Gittergewebeeinlage",
+      "Umlaufendes Noppenschutzbahn-System mit aufkaschiertem Geotextilvlies zur Filterung von Feinstteilen",
+      "Perimeterdämmung aus druckfestem und wasserabweisendem XPS (Extrudiertes Polystyrol)"
+    ],
+    "getAdvisorRecommendation_14": [
+      {
+        "label": "Mindesttrockenschichtdicke",
+        "value": "≥ 4,0 mm (PMBC) bei stauendem Einbau"
+      },
+      {
+        "label": "Rissklasse",
+        "value": "Rissüberbrückung passend zur Rissklasse R1-E bis R4-E (seit DIN 18533:2026-06 ohne eigene RÜ-Klassen)"
+      },
+      {
+        "label": "Gewebeschutz",
+        "value": "Gewebe nimmt thermische Kontraktionesbewegungen des Untergrunds rissfrei auf"
+      }
+    ],
+    "getAdvisorRecommendation_15": [
+      "DIN 18533 Teil 3 (Stoffe für Bitumendickbeschichtungen)",
+      "DIN 4095: Dränung zum Schutz von baulichen Anlagen"
+    ],
+    "getAdvisorRecommendation_16": [
+      "Polymermodifizierte Dickbeschichtung (PMBC) oder rissüberbrückende Reaktivabdichtung (FPD)",
+      "Mineralische Dichtungsschlämmen (MDS, flexibel) als Sockel- und Bodenabdichtungen"
+    ],
+    "getAdvisorRecommendation_17": [
+      {
+        "label": "Mindesttrockenschichtdicke",
+        "value": "≥ 3,0 mm"
+      },
+      {
+        "label": "Untergrundqualität",
+        "value": "Frei von Graten, Löcher spachteln (Kratzspachtelung)"
+      }
+    ],
+    "getAdvisorRecommendation_18": [
+      "Starre mineralische Dichtungsschlämmen (MDS) zur Absperrung kapillarer Feuchtebahnen",
+      "Ökologischer Natriumbentonit als Braune Wanne (Quelltonschicht)"
+    ],
+    "getAdvisorRecommendation_19": [
+      "DIN 18533 Teil 1 / WTA-Richtlinien"
+    ],
+    "BpAbdichtung": [
+      {
+        "id": "bodenfeuchte",
+        "label": "Bodenfeuchte / Sickerwasser",
+        "detail": "Durchlässiger Kies-/Sandboden (W1.1-E). Kein stauendes Wasser."
+      },
+      {
+        "id": "stauend_drain",
+        "label": "Schwach durchlässig + Dränung nach DIN 4095",
+        "detail": "Lehm-/Tonboden mit voll funktionsfähigem Drainagesystem (W1.2-E)."
+      },
+      {
+        "id": "stauend",
+        "label": "Aufstauendes Sickerwasser (O-Drain)",
+        "detail": "Wenig durchlässiger Lehmboden OHNE dränendes Leitungssystem (W2.1-E)."
+      },
+      {
+        "id": "drueckend_flach",
+        "label": "Drückendes Grundwasser (≤ 3,0 m)",
+        "detail": "Grundwasserstand liegt dauerhaft bis zu 3,0 m über Kellerebene (W2.1-E)."
+      },
+      {
+        "id": "drueckend_tief",
+        "label": "Drückendes Grundwasser (> 3,0 m)",
+        "detail": "Dauerhafter Wasserdruck bei tiefer Gründungssohle im Grundwasser (W2.2-E)."
+      },
+      {
+        "id": "spritzwasser",
+        "label": "Spritzwasser im Sockelquerschnitt",
+        "detail": "Oberflächenwasser und Spritzzone im Außen-Bodenanschluss (W4-E)."
+      }
+    ],
+    "BpAbdichtung_2": [
+      {
+        "id": "hochwertig",
+        "label": "Hochwertig (Anforderungsklasse A)",
+        "detail": "Wohnräume, Einliegerwohnungen, Büros, Archive. Absolut staubtrocken, keine Feuchtstellen."
+      },
+      {
+        "id": "standard",
+        "label": "Standard (Anforderungsklasse B)",
+        "detail": "Nutzungskeller, Technikräume, Werkbänke. Geringfügiger Feuchtefilm tolerierbar."
+      },
+      {
+        "id": "kriechkeller",
+        "label": "Gering (Anforderungsklasse C)",
+        "detail": "Kriechkeller, Installationsgänge oder offene Tiefgaragen."
+      }
+    ],
+    "BpAbdichtung.schritte": [
+      {
+        "titel": "1. Anforderung",
+        "formel": "d_{dry} \\ge 4{,}0\\,\\text{mm}",
+        "erklaerung": "W2.1-E: Mindesttrockenschichtdicke mit Verstärkungseinlage."
+      },
+      {
+        "titel": "2. Flüchtige Anteile",
+        "formel": "V_{fl} = 30\\,\\%",
+        "erklaerung": "Wasser der Bitumenemulsion, das verdunstet (Lehrannahme; Herstellerangabe maßgebend)."
+      },
+      {
+        "titel": "3. Nassschichtdicke",
+        "formel": "d_{wet} = 4{,}0 / 0{,}70 = 5{,}7\\,\\text{mm}",
+        "erklaerung": "Mit dem Schichtdickenkamm im frischen Zustand prüfen."
+      },
+      {
+        "titel": "4. Mit Zuschlag für Unebenheit",
+        "formel": "d_{wet,Soll} \\approx 6\\,\\text{mm}",
+        "erklaerung": "Kein Punkt darf unter dem Mindestmaß liegen."
+      }
+    ],
+    "BpAbdichtung.literatur": [
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Lohmeyer, G.; Ebeling, K.: Weiße Wannen – einfach und sicher. Planung und Konstruktion wasserundurchlässiger Bauwerke aus Beton. 11., überarb. Aufl., Düsseldorf: Verlag Bau+Technik 2018",
+      "Deutsche Bauchemie e. V.: Richtlinien für die Planung und Ausführung von Abdichtungen mit PMBC (4. Ausgabe, Dezember 2018), MDS (1. Ausgabe, Juli 2020) und FPD (1. Ausgabe, Februar 2020)"
+    ],
+    "BpAbdichtung.regelwerke": [
+      {
+        "title": "DIN 18533-1 bis -3:2026-06 (Abdichtung von erdberührten Bauteilen; Riss- und Rissüberbrückungsklassen zusammengeführt, „Wasserbeanspruchungsklassen“)"
+      },
+      {
+        "title": "DIN 18534-1 bis -6:2025-10 (Abdichtung von Innenräumen)"
+      },
+      {
+        "title": "DIN EN 1504-5 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken – Injektion von Betonbauteilen)"
+      },
+      {
+        "title": "DIN 18197 (Abdichten von Fugen in Beton mit Fugenbändern)"
+      },
+      {
+        "title": "ZTV-ING Teil 3 Abschnitt 5 (Füllen von Rissen und Hohlräumen in Betonbauteilen)"
+      },
+      {
+        "title": "DAfStb-Richtlinie Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie)",
+        "url": "https://www.dafstb.de/"
+      }
+    ],
+    "BpAbdichtung.formeln": [
+      {
+        "formel": "d_{\\text{dry}} = d_{\\text{wet}} \\cdot \\left(1 - \\frac{\\text{Flüchtige Anteile}}{100}\\right) \\ge d_{\\text{min,Norm}}",
+        "erklaerung": "Trockenschichtdicke von polymermodifizierten Bitumendickbeschichtungen (PMBC): Muss nach DIN 18533-3 an jeder Stelle das Mindestmaß einhalten (z. B. 3 mm bei W1-E, 4 mm mit Verstärkungseinlage bei W2.1-E).",
+        "quelle": "DIN 18533-3"
+      },
+      {
+        "formel": "V_{\\text{Riss}} \\approx w \\cdot t \\cdot l",
+        "erklaerung": "Theoretisches Füllvolumen eines Risses (Rissbreite w, Bauteildicke t, Risslänge l) zur Abschätzung der Injektionsmenge; der tatsächliche Verbrauch ist wegen Verlusten höher. Der zulässige Injektionsdruck richtet sich nach Material, Rissbreite und Bauteil (Herstellerangaben, ZTV-ING).",
+        "quelle": "Lehrmodell"
+      }
+    ]
+  }
+}

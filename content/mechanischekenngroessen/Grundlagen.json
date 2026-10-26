@@ -1,0 +1,29 @@
+{
+  "texte": {
+    "t1WasIstSpannung": " 1. Was ist Spannung ($\\sigma, \\tau$)?",
+    "innereBeanspruchungsintensität": " innere Beanspruchungsintensität",
+    "normalspannungZugDruckSenkrecht": "Normalspannung (Zug/Druck senkrecht zur Fläche):",
+    "schubspannungTangentialZurSchnittfläche": "Schubspannung (Tangential zur Schnittfläche):",
+    "technischeVsWahreSpannung": "**Technische vs. wahre Spannung:**",
+    "technischeSpannungSigmaText": "**Technische Spannung ($\\sigma_{\\text{eng}}$):** Kraft bezogen auf den unberührten Ausgangsquerschnitt $A_0$. Standard für den Ingenieurbau nach DIN EN ISO 6892-1.",
+    "wahreSpannungSigmaText": "**Wahre Spannung ($\\sigma_{\\text{true}}$):** Kraft bezogen auf den aktuellen, sich einschnürenden Querschnitt $A(t)$: $\\sigma_{\\text{true}} = \\sigma_{\\text{eng}} (1 + \\varepsilon_{\\text{eng}})$.",
+    "einheitenKonvention1Mpa": "Einheiten-Konvention: 1 MPa = 1 N/mm² = 1 MN/m² = 10 bar = 1000 kN/m²",
+    "t2WasIstDehnung": " 2. Was ist Dehnung ($\\varepsilon$)?",
+    "dieDehnungIstDie": "Die Dehnung ist die relative Längenänderung bezogen auf die Ausgangslänge $L_0$. Sie ist eine dimensionslose Verhältniszahl und quantifiziert die geometrische Verzerrung.",
+    "technischeIngenieurdehnung": "Technische Ingenieurdehnung:",
+    "logarithmischeWahreDehnung": "Logarithmische (wahre) Dehnung:",
+    "elastischVsPlastisch": "**Elastisch vs. Plastisch:**",
+    "elastischeDehnungVarepsilonText": "**Elastische Dehnung ($\\varepsilon_{\\text{el}}$):** Vollständig reversibel. Nach Entlastung kehren die Atome in ihre Ruhelage zurück.",
+    "plastischeDehnungVarepsilonText": "**Plastische Dehnung ($\\varepsilon_{\\text{pl}}$):** Bleibende Gefügeverformung infolge Versetzungsbewegungen im Kristallgitter.",
+    "gesamtdehnungVarepsilonTextTot": "**Gesamtdehnung:** $\\varepsilon_{\\text{tot}} = \\varepsilon_{\\text{el}} + \\varepsilon_{\\text{pl}}$.",
+    "umrechnung10001": "Umrechnung: 1 ‰ = 0,001 = 0,1 % = 1 mm/m Verformung",
+    "t3QuerdehnungPoissonZahl": " 3. Querdehnung & Poisson-Zahl ($\\nu$)",
+    "wirdEinStabIn": "Wird ein Stab in Längsrichtung gedehnt ($\\varepsilon_{\\text{ax}} > 0$), verengt sich sein Querschnitt senkrecht zur Belastungsachse ($\\varepsilon_q < 0$). Dieses Phänomen heißt **Querkontraktion**. Die Querdehnzahl $\\nu$ (Poissonzahl) ist das negative Verhältnis von Quer- zu Längsdehnung:",
+    "fürHomogeneIsotropeFestkörper": "Für homogene, isotrope Festkörper ist die Querdehnzahl thermodynamisch streng auf den Bereich$0 \\le \\nu \\le 0{,}5$ begrenzt.",
+    "spezialfälleDerPoissonzahl": "**Spezialfälle der Poissonzahl:**",
+    "nu050Inkompressibles": "• $\\nu = 0{,}50$: *Inkompressibles Material* (z. B. Gummi, Fließzustand im Stahl). Die Volumendehnung $\\varepsilon_V = \\varepsilon (1 - 2\\nu) = 0$!",
+    "nuApprox000": "• $\\nu \\approx 0{,}00$: *Kork* (keine Querdehnung; daher ideal als Flaschenkorken, da er beim Hineindrücken nicht klemmt).",
+    "nu0AuxetischeStrukturen": "• $\\nu < 0$: *Auxetische Strukturen* (dehnen sich bei Zugbelastung auch quer aus!).",
+    "querkontraktionBeiZugbeanspruchungNu": "Querkontraktion bei Zugbeanspruchung ($\\nu = -\\varepsilon_q / \\varepsilon_{\\text{ax}}$)"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "texte": {
+    "abschnitt8WesentlicheNeuerungen": "Abschnitt 8: Wesentliche Neuerungen in Eurocode 2 der 2. Generation (DIN EN 1992-1-1:2025-09)",
+    "inDer2Generation": "In der 2. Generation des Eurocode 2 (Abschnitt 5.1 & Anhang B) wurden zentrale Formulierungen für hochfeste Betone, alternative Bindemittel und Klinkerersatzstoffe präzisiert:",
+    "t1NeuerEModul": "1. Neuer E-Modul-Ansatz",
+    "dieGleichungBasiertNun": "Die Gleichung basiert nun auf der 3. Wurzel der mittleren Druckfestigkeit:",
+    "mitDemGesteinsbeiwertK": "Mit dem Gesteinsbeiwert $k_E = 9500$ für Quarzit. Aktueller Rechnerwert für ",
+    "mpaImEc21": " MPa im EC2 1. Gen).",
+    "t2KontinuierlicherSprödigkeitsfaktor": "2. Kontinuierlicher Sprödigkeitsfaktor",
+    "anstelleDesSprunghaftenEinsetzens": "Anstelle des sprunghaften Einsetzens ab C55/67 wird der stetige Faktor eingeführt:",
+    "aktuellerWertFür": "Aktueller Wert für ",
+    "t3KonsistenteKriechSchwindteilung": "3. Konsistente Kriech-/Schwindteilung",
+    "einheitlicheAufspaltungInGrund": "Einheitliche Aufspaltung in Grund- und Trocknungskomponenten:",
+    "bessereModellierungVonCem": "Bessere Modellierung von CEM II/III-Betonen und Flugasche/Silica-Zusätzen."
+  }
+}

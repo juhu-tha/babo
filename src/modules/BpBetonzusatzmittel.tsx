@@ -21,6 +21,8 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath } from 'react-katex';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
+import inhalt from '@/content/bpbetonzusatzmittel/BpBetonzusatzmittel.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface AdmixtureProduct {
   name: string;
@@ -37,190 +39,7 @@ export interface AdmixtureProduct {
   classificationCode: string;
 }
 
-const admixtureProducts: AdmixtureProduct[] = [
-  {
-    name: 'Betonverflüssiger',
-    abbreviation: 'BV',
-    standard: 'DIN EN 934-2 (Tabelle 2)',
-    chemicalBase: 'Ligninsulfonate (LSA), Melaminsulfonate (MFS), Naphthalinsulfonate (NFS)',
-    dosageCode: '0,2 - 0,5 M.-% vom Zementgewicht',
-    primaryEffect: 'Wasserreduktion um ca. 5 bis 12 % bei konstantem Ausbreitmaß.',
-    secondaryEffect: 'Verbesserte Frischbetonkonsistenz und glattere Sichtbetonoberflächen.',
-    mechanism: 'Reine elektrostatische Abstoßung durch Adsorption negativ geladener Tensidgruppen auf den Klinkeroberflächen (Zeta-Potenzial-Verschiebung).',
-    description: 'Klassische Zusatzmittel der ersten und zweiten Generation. Durch die Ladungsabstoßung werden Zementagglomerate mechanisch aufgebrochen, wodurch eingeschlossenes Trennwasser mobilisiert wird. Ideal für normale Festigkeitsklassen im Transportbetonwerk.',
-    advantages: [
-      'Günstige Rohstoffbasis',
-      'Breite bewährte Kompatibilität mit Standard-Portlandzementen',
-      'Leichte Dosierbarkeit im Transportbeton'
-    ],
-    disadvantages: [
-      'Geringes Verflüssigungspotenzial bei niedrigen w/z-Werten (< 0,45)',
-      'Neigung zu verzögerter Anfangshydratation bei Überdosierung (speziell LSA)'
-    ],
-    classificationCode: 'Wirkungsgruppe BV - DIN EN 934-2 Tab. 2'
-  },
-  {
-    name: 'Fließmittel',
-    abbreviation: 'FM',
-    standard: 'DIN EN 934-2 (Tabelle 3.1 & 3.2)',
-    chemicalBase: 'Polycarboxylatether (PCE), modifizierte Polycarboxylate',
-    dosageCode: '0,2 - 2,5 M.-% vom Zementgewicht',
-    primaryEffect: 'Wasserreduktion um bis zu ca. 30 % bei deutlich höherer Fließfähigkeit.',
-    secondaryEffect: 'Dichte Zementsteinmatrix bis hin zu hoch- und ultrahochfestem Beton.',
-    mechanism: 'Kombinierter Wirkmechanismus: Elektrostatische Abstoßung gepaart mit raumgreifender, sterischer Hinderung durch weitreichende flexible Polyether-Seitenketten (PEG).',
-    description: 'Hochleistungspolymere der neuesten Generation (3. Generation). Während das negativ geladene Acrylsäure-Rückgrat am positiv geladenen Klinker adsorbiert, schieben die neutralen Polyether-Seitenketten die Zementkörner physisch auf Distanz. Ermöglicht SVB (selbstverdichtenden Beton), UHPC und HPC.',
-    advantages: [
-      'Enormes Wasserreduktionsvermögen (bis 30 %)',
-      'Steuerung der Offenzeit (Consistence Retention) durch molekulare Architekturanpassungen',
-      'Feinstporiger, makelloser Sichtbeton (Klassen SB 3 / SB 4) ohne Schwindrisse'
-    ],
-    disadvantages: [
-      'Empfindlich gegenüber Tonmineralen in der Gesteinskörnung (Wirkstoffverlust)',
-      'Hoher Erstellungsaufwand der Erstprüfung aufgrund ausgeprägter Zementspezifität'
-    ],
-    classificationCode: 'Wirkungsgruppe FM - DIN EN 934-2 Tab. 3.1'
-  },
-  {
-    name: 'Betonverzögerer',
-    abbreviation: 'VZ',
-    standard: 'DIN EN 934-2 (Tabelle 8)',
-    chemicalBase: 'Phosphate, Saccharoseborate, Gluconate, Hydroxycarbonsäuren',
-    dosageCode: '0,2 - 1,0 M.-% vom Zementgewicht',
-    primaryEffect: 'Künstliche Verschiebung und Dehnung der Zeitspanne zwischen Erstarrungsbeginn und -ende.',
-    secondaryEffect: 'Verminderung der adiabatischen Hydratations-Wärmespitze im Bauteilkern.',
-    mechanism: 'Temporäre Blockade der Kristallkeimbildung durch Fällung schwerlöslicher Calciumverbindungen auf den reaktiven Aluminatphasen (C3A).',
-    description: 'Wird zur Steuerung der Einbau- und Transportzeit zugesetzt. Verhindert das vorzeitige Versteifen während langer Fahrzeiten, bei komplexen ununterbrochenen Bauteilgossen (Massenbeton, Schleusenwände) oder extrem heißen Witterungen über +30 °C.',
-    advantages: [
-      'Fehlstellenfreie Betonagen ohne kalte Arbeitsfugen',
-      'Gut steuerbare Wärmeentwicklung bei massigen Bauteilen zur Vermeidung von Thermorissen'
-    ],
-    disadvantages: [
-      'Gefahr der Hydratationssperre bei Überdosierung (Beton bleibt tagelang flüssig)',
-      'Erhöhte Gefahr von Frührissen durch plastisches Schwinden (Nachbehandlung!)'
-    ],
-    classificationCode: 'Wirkungsgruppe VZ - DIN EN 934-2 Tab. 8'
-  },
-  {
-    name: 'Erhärtungsbeschleuniger',
-    abbreviation: 'BE / SBE',
-    standard: 'DIN EN 934-2 (Tabelle 7)',
-    chemicalBase: 'Calciumnitrat, Triethanolamine, nanostrukturierte C-S-H Keimsuspensionen',
-    dosageCode: '1,0 - 3,5 M.-% vom Zementgewicht',
-    primaryEffect: 'Beschleunigung der Festigkeitsentwicklung im frühen Stadium (0 bis 24 Stunden).',
-    secondaryEffect: 'Drastische Absenkung der erforderlichen Ausschalfristen vor allem im Fertigteilwerk.',
-    mechanism: 'Physikalische und chemische Erhöhung der Keimbildungsgeschwindigkeit von Calcium-Silicat-Hydraten; nanostrukturierte Suspensionen dienen als Direktsaat-Kristallisationskeime.',
-    description: 'Beschleunigt die Bildung von C-S-H-Phasen (Hydratation). Ideal für Betonagen bei unvorhergesehenem Kälteeinbruch, Winterbaustellen, zur Einsparung von Dampfhärtungsenergie im Fertigteilwerk oder bei Schnellreparaturbetonen.',
-    advantages: [
-      'Höhere Frühfestigkeit; ersetzt keine Schutzmaßnahmen bei Frost',
-      'Effizienzsteigerung im Schalungsumlauf der Fertigteilproduktion'
-    ],
-    disadvantages: [
-      'Minderung der 28-Tage-Enddruckfestigkeit um ca. 5 bis 10 %',
-      'Mögliche Verschlechterung der rheologischen Verarbeitbarkeit im Frischbeton (Slump-Loss)'
-    ],
-    classificationCode: 'Wirkungsgruppe BE - DIN EN 934-2 Tab. 7'
-  },
-  {
-    name: 'Erstarrungsbeschleuniger',
-    abbreviation: 'SB',
-    standard: 'DIN EN 934-2 (Tabelle 6); Spritzbetonbeschleuniger: DIN EN 934-5',
-    chemicalBase: 'Aluminiumhydroxid, Alkalicarbonate, Alkalisilicate (Wasserglas)',
-    dosageCode: '3,0 - 6,0 M.-% vom Zementgewicht',
-    primaryEffect: 'Sehr schnelles Ansteifen (Sekunden bis Minuten) nach dem Aufspritzen',
-    secondaryEffect: 'Frühe Standfestigkeit am anstehenden Fels im Tunnelbau.',
-    mechanism: 'Rasche Bildung von Ettringit bzw. Aluminathydraten, die Wasser binden und das Gefüge versteifen.',
-    description: 'Spezialzusatzmittel für Spritzbetonarbeiten (Tunnelvortrieb nach Neuer Österreichischer Tunnelbaumethode - NÖT, Baugrubensicherungen). Ermöglicht das Anhaften und Überkopfspritzen des flüssigen Nassgemischs an Felswänden.',
-    advantages: [
-      'Dicke Lagen in einem Arbeitsgang möglich',
-      'Sofortiger statischer Verbund zur Firstensicherung'
-    ],
-    disadvantages: [
-      'Erhöhte Staubentwicklung und signifikanter Spritzrückprall (Rebound)',
-      'Mögliche Einbußen bei der Endfestigkeit (heute meist alkalifreie Beschleuniger)'
-    ],
-    classificationCode: 'Wirkungsgruppe SB - DIN EN 934-2 Tab. 6 / DIN EN 934-5'
-  },
-  {
-    name: 'Luftporenbildner',
-    abbreviation: 'LP',
-    standard: 'DIN EN 934-2 (Tabelle 5)',
-    chemicalBase: 'Synthetische Tenside, sulfonierte Kohlenwasserstoffe, Wurzelharzseifen',
-    dosageCode: '0,05 - 0,15 M.-% vom Zementgewicht',
-    primaryEffect: 'Einführung von gleichmäßig verteilten, kugelrunden, stabilen Luftbläschen.',
-    secondaryEffect: 'Bessere Verarbeitbarkeit (Kugellagereffekt), geringeres Bluten.',
-    mechanism: 'Tensid-Grenzflächenspannungssenkung stabilisiert beim Mischvorgang eingezogene Luftblasen im Schlämmemantel.',
-    description: 'Essentielles Werkzeug zur Erreichung des Frost-Tausalz-Widerstandes im Verkehrsflächenbau, Brückenkappen und Flugbetriebsflächen (Expositionsklassen XF3/XF4). Die Poren weisen exakt definierte Kugeldurchmesser von 10 µm bis 300 µm auf. Der Abstand der Bläschen (Abstandsfaktor L) muss im erhärteten Zementstein unter 0,20 mm liegen.',
-    advantages: [
-      'Abbruch des kapillaren Saugvermögens gefrierbaren Wassers',
-      'Effektive Dehnungsräume für volumenerweiternde Eiskristalle',
-      'Bessere Verarbeitbarkeit und Pumpbarkeit'
-    ],
-    disadvantages: [
-      'Druckfestigkeitsreduktion: Jedes zusätzliche Vol.-% Luftporen mindert die Festigkeit um ca. 5 %',
-      'Sehr reaktive Störanfälligkeit bei Änderungen der Temperatur, der Mischzeit oder feinsten Flugaschen'
-    ],
-    classificationCode: 'Wirkungsgruppe LP - DIN EN 934-2 Tab. 5'
-  },
-  {
-    name: 'Dichtungsmittel',
-    abbreviation: 'DM',
-    standard: 'DIN EN 934-2 (Tabelle 9)',
-    chemicalBase: 'Metallsalze von Speisefettsäuren (z.B. Calciumstearat), Alkylsiliconate, Emulsionen',
-    dosageCode: '0,5 - 2,0 M.-% vom Zementgewicht',
-    primaryEffect: 'Erhebliche Verringerung der kapillaren Wasseraufnahme des Festbetons.',
-    secondaryEffect: 'Vermeidung unschöner weißer Ausblühungen sowie Salzsprengungen im Bauteilquerschnitt.',
-    mechanism: 'Physikalische Porenauskleidung und chemische Hydrophobierung der kapillaren Innenwandflächen.',
-    description: 'Typisches Einsatzgebiet sind wasser- und feuchtigkeitsbeanspruchte Bauteile wie im Tunnelbau, Keller-Außenwände (WU-Beton-Schnittstellen) oder hoch beanspruchte Betonpflastersteine und Betonwaren.',
-    advantages: [
-      'Geringere kapillare Wasseraufnahme (ersetzt keine WU-Konstruktion)',
-      'Deutliche Farbbeständigkeit bei Sichtbetonwaren im Außenbereich'
-    ],
-    disadvantages: [
-      'Keine Wirkung bei Rissen oder Kiesnestern',
-      'Mögliche Minderung des Fließverhaltens im Frischbeton'
-    ],
-    classificationCode: 'Wirkungsgruppe DM - DIN EN 934-2 Tab. 9'
-  },
-  {
-    name: 'Stabilisierer',
-    abbreviation: 'ST',
-    standard: 'DIN EN 934-2 (Tabelle 4)',
-    chemicalBase: 'Modifizierte Celluloseether, natürliche Biopolymere (Welan-Gum), Polyacrylamide',
-    dosageCode: '0,1 - 1,0 M.-% vom Zementgewicht',
-    primaryEffect: 'Vermeidung von Entmischung (Sedimentation der Gesteinskörnung) und unruhigem Bluten.',
-    secondaryEffect: 'Erhöhung des inneren Zusammenhalts (Kohäsion) von hochflüssigen Suspensionen.',
-    mechanism: 'Physikalische Molekülknäuelbindungen erzeugen ein stabiles viskoses Gelgerüst im freien Anmachwasser.',
-    description: 'Verwendet bei selbstverdichtenden Betonen (SVB), um Trennungserscheinungen der groben Gesteine im Fließstrom zu verhindern, sowie im Unterwasserbeton (Auswaschschutz im strömenden Gewässer).',
-    advantages: [
-      'Verhindert Entmischung auch bei langen Fließwegen',
-      'Ermöglicht rüttelfreien Einbau auch in dicht bewehrten Schalungszonen'
-    ],
-    disadvantages: [
-      'Verringert die Entlüftungswilligkeit (Luftblasen können schlechter aufsteigen)',
-      'Unerwünschte Viskositätserhöhung bei fehlerhafter Feineinstellung'
-    ],
-    classificationCode: 'Wirkungsgruppe ST - DIN EN 934-2 Tab. 4'
-  },
-  {
-    name: 'Einpresshilfen',
-    abbreviation: 'EH',
-    standard: 'DIN EN 934-4 (Zusatzmittel für Einpressmörtel)',
-    chemicalBase: 'Alkylsulfonate, organische Geliermittel, Quellstoffe',
-    dosageCode: '0,5 - 1,5 M.-% vom Zementgewicht',
-    primaryEffect: 'Inhibierung der schädlichen Wasserabsonderung (Hohlraumbildung) in engen Spannkanälen.',
-    secondaryEffect: 'Gezieltes, kontrolliertes, minimales Volumenschwellen (Quellen) vor Erhärtungsbeginn.',
-    mechanism: 'Wasserretentive Wirkung gekoppelt mit kontrollierter Gasfreisetzung (meist Mikro-Wasserstoffbläschen) zur Porenschließung.',
-    description: 'Spezielle Zusatzmittel für den Korrosionsschutz von Spanngliedern im Spannbetonbau. Der Einpressmörtel muss die engen Hüllrohre hohlraumfrei ausfüllen. Die Einpresshilfe verhindert das schwerkraftbedingte Absetzen.',
-    advantages: [
-      'Lückenloser aktiver Korrosionsschutz der Spannstähle',
-      'Ausgleich des plastischen Volumenschwindens im Bauteilkern'
-    ],
-    disadvantages: [
-      'Mischzeiten und Verarbeitungsregeln (DIN EN 447) genau einhalten'
-    ],
-    classificationCode: 'Wirkungsgruppe EH - DIN EN 934-4'
-  }
-];
+const admixtureProducts: AdmixtureProduct[] = inhalt.daten.admixtureProducts;
 
 // System kategorien herstellerneutral dargelegt
 interface SystemCategory {
@@ -232,40 +51,7 @@ interface SystemCategory {
   specialties: string;
 }
 
-const systemCategories: SystemCategory[] = [
-  {
-    category: 'Systemklasse A: Standard-Transportbeton',
-    fmName: 'Standard-Fließmittel (PCE-Kombinationen)',
-    lpName: 'Mikro-Luftporenbildner (Tensid- oder Wurzelharzbasis)',
-    vzName: 'Standard-Verzögerer (Phosphate / Gluconate)',
-    beName: 'Standard-Beschleuniger (Calciumnitrat)',
-    specialties: 'Optimiert für Standard-Festigkeitsklassen, universelle Kompatibilität mit Standard-Zementen.'
-  },
-  {
-    category: 'Systemklasse B: Fertigteilwerke',
-    fmName: 'Schnellansprechende Hochleistungs-Fließmittel (Kurzketten-PCE)',
-    lpName: 'Hochstabile Luftschaum-Tensidsysteme',
-    vzName: 'Milde Erstarrungsregler zur Konsistenzhaltung',
-    beName: 'Wärmesparende Nanokristall-Beschleuniger (CSH-Suspensionen)',
-    specialties: 'Maximale Frühfestigkeiten zur Reduktion von Ofenheizenergie und Schalungsumlaufzeiten.'
-  },
-  {
-    category: 'Systemklasse C: Massenbeton & Großbaustellen',
-    fmName: 'Konsistenzhaltende Fließmittel (Long-Retention-PCE)',
-    lpName: 'Kombinierte mikrobläschenbildende Additive',
-    vzName: 'Hochpräzise Langzeitverzögerer (Zuckersäuren)',
-    beName: 'Keine (i.d.R. Kontraproduktiv)',
-    specialties: 'Verzögertes Erstarren bei langen Transportzeiten; flacherer Wärmeverlauf.'
-  },
-  {
-    category: 'Systemklasse D: Spezialtief- & Spritzbeton',
-    fmName: 'Viskositätsmodifizierte Fließmittel',
-    lpName: 'Einschlägige Entschäumer bzw. Bläschenstabilisatoren',
-    vzName: 'Spezielle Ansteifungsregler',
-    beName: 'Flüssige Erstarrungsbeschleuniger (SBE / Aluminiumsalze)',
-    specialties: 'Für Spritzbeton nach NÖT, sofortige Haftung und rasches Ansteifen über Kopf.'
-  }
-];
+const systemCategories: SystemCategory[] = inhalt.daten.systemCategories;
 
 export default function BpBetonzusatzmittel() {
   const [activeTab, setActiveTab] = useState<'allgemein' | 'wirkstoffe' | 'dosierung' | 'praxis' | 'innovation'>('allgemein');
@@ -303,15 +89,10 @@ export default function BpBetonzusatzmittel() {
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-home-grau/20 pb-4">
           <div>
             <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-              <Droplet className="text-shiraz animate-pulse" /> Betonzusatzmittel &amp; Bauchemie
-            </h2>
-            <p className="text-xs text-text-main/60 mt-1">
-              Normung nach DIN EN 934-2, bauchemische Steuerung und Bemessungsregeln des E-Schein-Lehrgangs (DBC-Lehrmaterialien)
-            </p>
+              <Droplet className="text-shiraz animate-pulse" /><MdText text={inhalt.texte.betonzusatzmittelBauchemie} /></h2>
+            <p className="text-xs text-text-main/60 mt-1"><MdText text={inhalt.texte.normungNachDinEn} /></p>
           </div>
-          <span className="text-[10px] font-mono bg-stone-100 text-stone-700 px-3 py-1 rounded border border-stone-200 self-start lg:self-center">
-            DBC-Lehrvortrag E-Schein (rev. 2021)
-          </span>
+          <span className="text-[10px] font-mono bg-stone-100 text-stone-700 px-3 py-1 rounded border border-stone-200 self-start lg:self-center"><MdText text={inhalt.texte.dbcLehrvortragESchein} /></span>
         </div>
 
         {/* Primary Tabs Navigation */}
@@ -324,8 +105,7 @@ export default function BpBetonzusatzmittel() {
             }`}
             onClick={() => setActiveTab('allgemein')}
           >
-            <BookOpen size={16} /> Einführung &amp; Wirkprinzipien
-          </button>
+            <BookOpen size={16} /><MdText text={inhalt.texte.einführungWirkprinzipien} /></button>
           <button aria-pressed={activeTab === 'wirkstoffe'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'wirkstoffe' 
@@ -334,8 +114,7 @@ export default function BpBetonzusatzmittel() {
             }`}
             onClick={() => setActiveTab('wirkstoffe')}
           >
-            <Atom size={16} /> Wirkstoff-Katalog DIN 934-2
-          </button>
+            <Atom size={16} /><MdText text={inhalt.texte.wirkstoffKatalogDin934} /></button>
           <button aria-pressed={activeTab === 'dosierung'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'dosierung' 
@@ -344,8 +123,7 @@ export default function BpBetonzusatzmittel() {
             }`}
             onClick={() => setActiveTab('dosierung')}
           >
-            <Gauge size={16} /> E-Schein w/z-Anrechner
-          </button>
+            <Gauge size={16} /><MdText text={inhalt.texte.eScheinWZ} /></button>
           <button aria-pressed={activeTab === 'praxis'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'praxis' 
@@ -373,36 +151,30 @@ export default function BpBetonzusatzmittel() {
           <div className="space-y-6 animate-in fade-in duration-300">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 leading-relaxed text-sm">
               <div className="lg:col-span-7 space-y-4">
-                <h3 className="font-extrabold text-slate-800 text-lg">Zusatzmittel vs. Zusatzstoffe (Klarer E-Schein-Fokus)</h3>
-                <p className="text-text-main/80">
-                  Die betontechnologische Steuerung stützt sich auf zwei unterschiedliche Säulen. Für Betontechnologen und Betonprüfer (E-Schein) ist die folgende Einteilung grundlegend:
-                </p>
+                <h3 className="font-extrabold text-slate-800 text-lg"><MdText text={inhalt.texte.zusatzmittelVsZusatzstoffeKlarer} /></h3>
+                <p className="text-text-main/80"><MdText text={inhalt.texte.dieBetontechnologischeSteuerungStützt} /></p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="bg-sky-50/50 p-4 rounded-xl border border-sky-100 flex flex-col justify-between">
                     <div>
-                      <span className="text-sky-800 font-extrabold text-xs uppercase tracking-wider block mb-1">Betonzusatzstoffe BZS</span>
-                      <p className="text-xs text-slate-700 leading-normal">
-                        Pulverförmige Stoffe wie Flugasche (DIN EN 450), Silikastaub (DIN EN 13263) oder inertes Gesteinsmehl. Sie werden in größeren Mengen (oft 10 bis 100 kg/m³) zugegeben, im Stoffraum berücksichtigt und wirken über die Packungsdichte oder puzzolanisch.
-                      </p>
+                      <span className="text-sky-800 font-extrabold text-xs uppercase tracking-wider block mb-1"><MdText text={inhalt.texte.betonzusatzstoffeBzs} /></span>
+                      <p className="text-xs text-slate-700 leading-normal"><MdText text={inhalt.texte.pulverförmigeStoffeWieFlugasche} /></p>
                     </div>
                   </div>
 
                   <div className="bg-shiraz/5 p-4 rounded-xl border border-shiraz/10 flex flex-col justify-between">
                     <div>
-                      <span className="text-shiraz font-extrabold text-xs uppercase tracking-wider block mb-1">Betonzusatzmittel BZM</span>
-                      <p className="text-xs text-slate-700 leading-normal">
-                        Meist flüssige, selten pulverförmige Wirkstoffe in kleinen Mengen (Promille bis wenige Prozent), höchstens 50 g je kg Zement (5,0 M.-%). Sie greifen chemisch und physikalisch in die Hydratation und das Oberflächenladungsprofil der Zementteilchen ein.
-                      </p>
+                      <span className="text-shiraz font-extrabold text-xs uppercase tracking-wider block mb-1"><MdText text={inhalt.texte.betonzusatzmittelBzm} /></span>
+                      <p className="text-xs text-slate-700 leading-normal"><MdText text={inhalt.texte.meistFlüssigeSeltenPulverförmige} /></p>
                     </div>
                   </div>
                 </div>
 
                 <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/20 space-y-2 text-xs">
-                  <h4 className="font-bold text-slate-800">Grundlegende Ziele der BZM-Nutzung:</h4>
+                  <h4 className="font-bold text-slate-800"><MdText text={inhalt.texte.grundlegendeZieleDerBzm} /></h4>
                   <ul className="list-disc list-inside text-text-main/80 space-y-1 pl-1">
-                    <li><strong>Frischbeton:</strong> Einstellen der Verarbeitbarkeit, lang anhaltende Fließfähigkeit, geringere innere Reibung.</li>
-                    <li><strong>Hydratation:</strong> Steuerung des Erstarrens: Verzögerung für lange Transporte, Beschleunigung für frühes Ausschalen.</li>
-                    <li><strong>Festbeton:</strong> Höhere Dichte durch niedrigen w/z-Wert; Frost-Tausalz-Widerstand durch Mikroluftporen.</li>
+                    <li><MdText text={inhalt.texte.frischbetonEinstellenDerVerarbeitbarkeit} /></li>
+                    <li><MdText text={inhalt.texte.hydratationSteuerungDesErstarrens} /></li>
+                    <li><MdText text={inhalt.texte.festbetonHöhereDichteDurch} /></li>
                   </ul>
                 </div>
               </div>
@@ -411,26 +183,19 @@ export default function BpBetonzusatzmittel() {
               <div className="lg:col-span-5 space-y-4">
                 <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200">
                   <h4 className="font-extrabold text-slate-850 text-xs uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                    <CheckCircle2 className="text-emerald-600" size={16} /> Konformitaet und Normenbezug
-                  </h4>
+                    <CheckCircle2 className="text-emerald-600" size={16} /><MdText text={inhalt.texte.konformitaetUndNormenbezug} /></h4>
                   <ul className="space-y-3.5 text-xs text-text-main/90">
                     <li className="flex gap-2 items-start">
                       <ChevronRight size={14} className="text-shiraz mt-0.5 flex-none" />
-                      <div>
-                        <strong>Harmonisierung DIN EN 934-2:</strong> Betonzusatzmittel nach DIN EN 934-2 tragen die CE-Kennzeichnung mit Leistungserklärung (DoP).
-                      </div>
+                      <div><MdText text={inhalt.texte.harmonisierungDinEn934} /></div>
                     </li>
                     <li className="flex gap-2 items-start">
                       <ChevronRight size={14} className="text-shiraz mt-0.5 flex-none" />
-                      <div>
-                        <strong>Nicht harmonisierte Zusatzmittel:</strong> Für Produkte ohne harmonisierte Norm ist ein nationaler Verwendbarkeitsnachweis nötig (z. B. abZ des DIBt).
-                      </div>
+                      <div><MdText text={inhalt.texte.nichtHarmonisierteZusatzmittelFür} /></div>
                     </li>
                     <li className="flex gap-2 items-start">
                       <ChevronRight size={14} className="text-shiraz mt-0.5 flex-none" />
-                      <div>
-                        <strong>Verträglichkeit in der Erstprüfung:</strong> Werden mehrere Zusatzmittel kombiniert (z. B. FM und LP), ist ihr Zusammenwirken in der Erstprüfung nachzuweisen. Zusatzmittel getrennt dosieren und nicht vorab miteinander mischen.
-                      </div>
+                      <div><MdText text={inhalt.texte.verträglichkeitInDerErstprüfung} /></div>
                     </li>
                   </ul>
                 </div>
@@ -438,11 +203,9 @@ export default function BpBetonzusatzmittel() {
                 <div className="bg-amber-50 border border-amber-200 text-xs text-amber-950 p-4 rounded-xl leading-relaxed space-y-1">
                   <div className="flex gap-1.5 items-center font-bold text-amber-900">
                     <AlertTriangle size={14} className="text-amber-800" />
-                    <span>Lagerungsvorschriften &amp; Qualitätspflege</span>
+                    <span><MdText text={inhalt.texte.lagerungsvorschriftenQualitätspflege} /></span>
                   </div>
-                  <p className="text-[11px] text-amber-900 leading-normal">
-                    Zusatzmittel frostfrei und nicht zu warm lagern (Herstellerangaben). Frost oder Entmischung können die Wirkung und die Dosierung beeinträchtigen.
-                  </p>
+                  <p className="text-[11px] text-amber-900 leading-normal"><MdText text={inhalt.texte.zusatzmittelFrostfreiUndNicht} /></p>
                 </div>
               </div>
             </div>
@@ -450,15 +213,9 @@ export default function BpBetonzusatzmittel() {
             {/* INTERACTIVE COMPONENT: ELECTROSTATIC VS STERIC REPULSION */}
             <div className="bg-slate-50/50 p-6 rounded-2xl border border-slate-200 space-y-6">
               <div className="max-w-2xl">
-                <span className="text-xs font-bold text-shiraz bg-shiraz/10 px-2 py-0.5 rounded-sm uppercase tracking-wider block w-fit mb-2">
-                  Mikroskopischer Wirkmechanismus
-                </span>
-                <h3 className="text-base font-extrabold text-slate-800">
-                  Die physikalischen Kräfte der Verflüssigung
-                </h3>
-                <p className="text-xs text-text-main/70 leading-relaxed mt-1">
-                  Fein gemahlene Zementkörner weisen im Anmachwasser elektrostatisch unterschiedlich geladene Bereiche auf. Ohne Dispergierung ballen sie sich spontan zusammen (Flockungsgerüst), wodurch wertvolles Wasser ungenutzt eingeschlossen wird. Zusatzmittel brechen diese Flocken auf.
-                </p>
+                <span className="text-xs font-bold text-shiraz bg-shiraz/10 px-2 py-0.5 rounded-sm uppercase tracking-wider block w-fit mb-2"><MdText text={inhalt.texte.mikroskopischerWirkmechanismus} /></span>
+                <h3 className="text-base font-extrabold text-slate-800"><MdText text={inhalt.texte.diePhysikalischenKräfteDer} /></h3>
+                <p className="text-xs text-text-main/70 leading-relaxed mt-1"><MdText text={inhalt.texte.feinGemahleneZementkörnerWeisen} /></p>
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
@@ -473,10 +230,8 @@ export default function BpBetonzusatzmittel() {
                     }`}
                   >
                     <div className="font-extrabold text-sm flex items-center gap-1.5">
-                      <Atom size={16} className={activeRepulsionType === 'electrostatic' ? 'text-shiraz' : 'text-slate-400'} />
-                      1. Elektrostatische Abstoßung
-                    </div>
-                    <span className="text-xxs text-text-main/50 block mt-1">Typisch bei klassischen BV (LSA, Melamin- / Naphthalinsulfonat)</span>
+                      <Atom size={16} className={activeRepulsionType === 'electrostatic' ? 'text-shiraz' : 'text-slate-400'} /><MdText text={inhalt.texte.t1ElektrostatischeAbstoßung} /></div>
+                    <span className="text-xxs text-text-main/50 block mt-1"><MdText text={inhalt.texte.typischBeiKlassischenBv} /></span>
                   </button>
 
                   <button aria-pressed={activeRepulsionType === 'steric'}
@@ -488,10 +243,8 @@ export default function BpBetonzusatzmittel() {
                     }`}
                   >
                     <div className="font-extrabold text-sm flex items-center gap-1.5">
-                      <Sparkles size={16} className={activeRepulsionType === 'steric' ? 'text-shiraz' : 'text-slate-400'} />
-                      2. Sterische Abstoßung
-                    </div>
-                    <span className="text-xxs text-text-main/50 block mt-1">Die Revolution durch PCE-Hochleistungs-Fließmittel (3. Generation)</span>
+                      <Sparkles size={16} className={activeRepulsionType === 'steric' ? 'text-shiraz' : 'text-slate-400'} /><MdText text={inhalt.texte.t2SterischeAbstoßung} /></div>
+                    <span className="text-xxs text-text-main/50 block mt-1"><MdText text={inhalt.texte.dieRevolutionDurchPce} /></span>
                   </button>
                 </div>
 
@@ -500,7 +253,7 @@ export default function BpBetonzusatzmittel() {
                   {activeRepulsionType === 'electrostatic' ? (
                     <div className="space-y-4">
                       <div className="flex items-center justify-between border-b border-dashed border-slate-200 pb-2">
-                        <span className="text-xs font-bold text-indigo-850">Mechanik: Polare Ladungsreaktion</span>
+                        <span className="text-xs font-bold text-indigo-850"><MdText text={inhalt.texte.mechanikPolareLadungsreaktion} /></span>
                         <span className="text-[10px] font-mono bg-indigo-100 text-indigo-850 px-2 py-0.5 rounded">Zeta-Potenzial-Verschiebung</span>
                       </div>
                       
@@ -512,31 +265,27 @@ export default function BpBetonzusatzmittel() {
                             <span className="absolute -top-1 -right-1 bg-indigo-500 text-white rounded-full w-4 h-4 text-[9px] flex items-center justify-center font-bold font-mono">-</span>
                             <span className="absolute -bottom-1 -left-1 bg-indigo-500 text-white rounded-full w-4 h-4 text-[9px] flex items-center justify-center font-bold font-mono">-</span>
                           </div>
-                          <span className="text-[9px] font-bold text-indigo-800 mt-1 uppercase">Negativ geladen</span>
+                          <span className="text-[9px] font-bold text-indigo-800 mt-1 uppercase"><MdText text={inhalt.texte.negativGeladen} /></span>
                         </div>
-                        <span className="text-lg font-mono text-indigo-500 animate-pulse font-extrabold">&lt;— ( ⚡ Abstoßung ⚡ ) —&gt;</span>
+                        <span className="text-lg font-mono text-indigo-500 animate-pulse font-extrabold"><MdText text={inhalt.texte.abstoßung} /></span>
                         <div className="flex flex-col items-center">
                           <div className="w-10 h-10 rounded-full bg-slate-400 border border-slate-500 flex items-center justify-center text-xs font-bold text-white relative shadow-sm">
                             Zement
                             <span className="absolute -top-1 -left-1 bg-indigo-500 text-white rounded-full w-4 h-4 text-[9px] flex items-center justify-center font-bold font-mono">-</span>
                             <span className="absolute -bottom-1 -right-1 bg-indigo-500 text-white rounded-full w-4 h-4 text-[9px] flex items-center justify-center font-bold font-mono">-</span>
                           </div>
-                          <span className="text-[9px] font-bold text-indigo-800 mt-1 uppercase">Negativ geladen</span>
+                          <span className="text-[9px] font-bold text-indigo-800 mt-1 uppercase"><MdText text={inhalt.texte.negativGeladen2} /></span>
                         </div>
                       </div>
 
-                      <p className="text-xs text-text-main/80 leading-normal">
-                        <strong>Wie es funktioniert:</strong> Die Sulfonat-Monomere (Ligninsulfonat, MFS) lagern sich flächig auf der Zementrohmasse an. Dadurch wird die Oberfläche einheitlich negativ aufgeladen. Gleichnamige Ladungen stoßen einander kräftig ab (gemessen als Zeta-Potenzial). Das Zementgerüst bricht auf und das ungenutzte Füllwasser quillt hervor. 
-                      </p>
-                      <div className="text-[10px] bg-indigo-50 border border-indigo-250 p-2.5 rounded-lg text-indigo-900 leading-tight">
-                        <strong>Praxisregel:</strong> Elektrostatische Abstoßungskräfte wirken zwar unmittelbar, klingen jedoch durch fortschreitende Kristallisation (Hydratationsprodukte überwuchern das Additiv) meist rascher ab. Slump-Loss tritt nach circa 30 bis 60 Minuten ein.
-                      </div>
+                      <p className="text-xs text-text-main/80 leading-normal"><MdText text={inhalt.texte.wieEsFunktioniertDie} /></p>
+                      <div className="text-[10px] bg-indigo-50 border border-indigo-250 p-2.5 rounded-lg text-indigo-900 leading-tight"><MdText text={inhalt.texte.praxisregelElektrostatischeAbstoßungskrä} /></div>
                     </div>
                   ) : (
                     <div className="space-y-4">
                       <div className="flex items-center justify-between border-b border-dashed border-slate-200 pb-2">
-                        <span className="text-xs font-bold text-emerald-850">Mechanik: Molekularer Stoßdämpfer</span>
-                        <span className="text-[10px] font-mono bg-emerald-100 text-emerald-850 px-2 py-0.5 rounded">PCE-Copolymer mit PEG-Seitenketten</span>
+                        <span className="text-xs font-bold text-emerald-850"><MdText text={inhalt.texte.mechanikMolekularerStoßdämpfer} /></span>
+                        <span className="text-[10px] font-mono bg-emerald-100 text-emerald-850 px-2 py-0.5 rounded"><MdText text={inhalt.texte.pceCopolymerMitPeg} /></span>
                       </div>
 
                       {/* Diagram representation */}
@@ -548,25 +297,21 @@ export default function BpBetonzusatzmittel() {
                             <span className="absolute -top-1.5 inset-x-0 mx-auto text-emerald-600 font-extrabold text-[15px] animate-pulse">〰️</span>
                             <span className="absolute -bottom-1.5 inset-x-0 mx-auto text-emerald-600 font-extrabold text-[15px] animate-pulse">〰️</span>
                           </div>
-                          <span className="text-[9px] font-bold text-emerald-800 mt-1 uppercase">Adsorbiertes Rückgrat</span>
+                          <span className="text-[9px] font-bold text-emerald-800 mt-1 uppercase"><MdText text={inhalt.texte.adsorbiertesRückgrat} /></span>
                         </div>
-                        <span className="text-lg font-mono text-emerald-600 animate-pulse font-extrabold">|| ( Schutzzone ) ||</span>
+                        <span className="text-lg font-mono text-emerald-600 animate-pulse font-extrabold"><MdText text={inhalt.texte.schutzzone} /></span>
                         <div className="flex flex-col items-center">
                           <div className="w-11 h-11 rounded-full bg-slate-400 border border-slate-500 flex items-center justify-center text-xs font-bold text-white relative shadow-sm">
                             Zement
                             <span className="absolute -top-1.5 inset-x-0 mx-auto text-emerald-600 font-extrabold text-[15px] animate-pulse">〰️</span>
                             <span className="absolute -bottom-1.5 inset-x-0 mx-auto text-emerald-600 font-extrabold text-[15px] animate-pulse">〰️</span>
                           </div>
-                          <span className="text-[9px] font-bold text-emerald-800 mt-1 uppercase">Sterischer Puffer</span>
+                          <span className="text-[9px] font-bold text-emerald-800 mt-1 uppercase"><MdText text={inhalt.texte.sterischerPuffer} /></span>
                         </div>
                       </div>
 
-                      <p className="text-xs text-text-main/80 leading-normal">
-                        <strong>Wie es funktioniert:</strong> Polycarboxylatether (PCE) ähneln einem winzigen Kamm. Der anionische Polyelektrolytrücken verankert sich fest auf dem Klinkermehl. Die langen neutralen Seitenglieder (Polyethylenglycol-Ketten) ragen in die wässrige Porenlösung hinein. Stoßen zwei Zementpartikel aneinander, kollidieren die Ketten und bewirken bei minimalem Kraftaufwand mechanischen Pufferraum.
-                      </p>
-                      <div className="text-[10px] bg-emerald-50 border border-emerald-250 p-2.5 rounded-lg text-emerald-900 leading-tight">
-                        <strong>Baukasten-Steuerung:</strong> Durch gezielte Abstimmung der Seitenketten-Anzahl und -Länge im Herstellungsverfahren können Fließmittel entweder auf blitzschnelle Anfangsverflüssigung (Fertigbeton) oder langanhaltende Konsistenzhaltung (transportierte Fernmischungen) modelliert werden.
-                      </div>
+                      <p className="text-xs text-text-main/80 leading-normal"><MdText text={inhalt.texte.wieEsFunktioniertPolycarboxylatether} /></p>
+                      <div className="text-[10px] bg-emerald-50 border border-emerald-250 p-2.5 rounded-lg text-emerald-900 leading-tight"><MdText text={inhalt.texte.baukastenSteuerungDurchGezielte} /></div>
                     </div>
                   )}
                 </div>
@@ -579,16 +324,14 @@ export default function BpBetonzusatzmittel() {
         {activeTab === 'wirkstoffe' && (
           <div className="space-y-6 animate-in fade-in duration-300">
             <div className="text-sm text-text-main/80 bg-off-white p-5 rounded-xl border border-home-grau/30 leading-relaxed">
-              <h3 className="font-bold text-shiraz text-base mb-2">Die 9 grundlegenden Wirkungsgruppen nach DIN EN 934-2 / DIN EN 934-4</h3>
-              <p>
-                In der europäischen Bauprodukt-Regulierung sind die zulässigen Zusatzmittel penibel klassifiziert. Die jeweiligen Tabellen- Anhänge der DIN EN 934-2 regeln die verbindlichen Anforderungen sowie die herstellerneutralen Testzemente für den Konformitätsnachweis.
-              </p>
+              <h3 className="font-bold text-shiraz text-base mb-2"><MdText text={inhalt.texte.die9GrundlegendenWirkungsgruppen} /></h3>
+              <p><MdText text={inhalt.texte.inDerEuropäischenBauprodukt} /></p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
               {/* Left Column Selector */}
               <div className="lg:col-span-5 space-y-2">
-                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block pl-1">Auswahl Wirkungsgruppe (EN 934-2):</span>
+                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block pl-1"><MdText text={inhalt.texte.auswahlWirkungsgruppeEn934} /></span>
                 <div className="flex flex-col gap-2 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
                   {admixtureProducts.map((prod) => (
                     <button
@@ -616,12 +359,8 @@ export default function BpBetonzusatzmittel() {
 
                 <div className="p-4 bg-indigo-50/50 rounded-xl border border-indigo-200 text-xs text-indigo-950 space-y-2">
                   <h5 className="font-bold flex items-center gap-1.5">
-                    <FileText size={14} className="text-indigo-800" /> 
-                    Gleichmäßigkeitsprüfung (Chargenkontrolle)
-                  </h5>
-                  <p className="leading-relaxed text-[11px] text-indigo-900">
-                    Jede hergestellte Charge eines Betonzusatzmittels unterliegt einer ununterbrochenen werkseigenen Produktionskontrolle (WPK). Gemessen werden im Labor der <strong>Infrarotspektralbereich (IR-Fingerabdruck)</strong>, der <strong>Trockenrückstand</strong>, der <strong>pH-Wert</strong> sowie die <strong>Dichte</strong> mit dem hydrostatischen Messverfahren.
-                  </p>
+                    <FileText size={14} className="text-indigo-800" /><MdText text={inhalt.texte.gleichmäßigkeitsprüfungChargenkontrolle} /></h5>
+                  <p className="leading-relaxed text-[11px] text-indigo-900"><MdText text={inhalt.texte.jedeHergestellteChargeEines} /></p>
                 </div>
               </div>
 
@@ -630,7 +369,7 @@ export default function BpBetonzusatzmittel() {
                 <div className="flex flex-wrap items-center justify-between gap-3 border-b border-home-grau/20 pb-4">
                   <div>
                     <span className="text-[10px] font-bold text-shiraz uppercase tracking-widest bg-shiraz/10 px-2.5 py-1 rounded">
-                      Tabelle: {selectedAdmixture.standard.split(' (')[1]?.replace(')', '') || 'DIN EN 934-2'}
+                      Tabelle: {selectedAdmixture.standard.split(' (')[1]?.replace(')', '') || inhalt.werte.dinEn9342}
                     </span>
                     <h4 className="text-lg font-bold text-text-main mt-2">{selectedAdmixture.name} ({selectedAdmixture.abbreviation})</h4>
                   </div>
@@ -641,17 +380,17 @@ export default function BpBetonzusatzmittel() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="bg-stone-50 p-3 rounded-lg border border-home-grau/15">
-                    <span className="text-[10px] font-bold text-text-main/50 uppercase block mb-1">Chemische Hauptwirkstoffe:</span>
+                    <span className="text-[10px] font-bold text-text-main/50 uppercase block mb-1"><MdText text={inhalt.texte.chemischeHauptwirkstoffe} /></span>
                     <span className="text-xs font-semibold text-text-main/90 leading-tight block">{selectedAdmixture.chemicalBase}</span>
                   </div>
                   <div className="bg-stone-50 p-3 rounded-lg border border-home-grau/15">
-                    <span className="text-[10px] font-bold text-text-main/50 uppercase block mb-1">Normative Richtdosierung:</span>
+                    <span className="text-[10px] font-bold text-text-main/50 uppercase block mb-1"><MdText text={inhalt.texte.normativeRichtdosierung} /></span>
                     <span className="text-xs font-semibold text-text-main/90 leading-tight block font-mono">{selectedAdmixture.dosageCode}</span>
                   </div>
                 </div>
 
                 <div className="space-y-1.5">
-                  <span className="text-[10px] font-bold text-text-main/50 uppercase tracking-wider block">Funktion &amp; Prozessbeschreibung:</span>
+                  <span className="text-[10px] font-bold text-text-main/50 uppercase tracking-wider block"><MdText text={inhalt.texte.funktionProzessbeschreibung} /></span>
                   <p className="text-xs text-text-main/80 leading-relaxed bg-off-white/40 p-3 rounded-lg border border-home-grau/10">
                     {selectedAdmixture.description}
                   </p>
@@ -663,7 +402,7 @@ export default function BpBetonzusatzmittel() {
                     <span className="text-xs text-text-main/80 leading-tight block">{selectedAdmixture.primaryEffect}</span>
                   </div>
                   <div>
-                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1">Sekundär- &amp; Nebeneffekte:</span>
+                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1"><MdText text={inhalt.texte.sekundärNebeneffekte} /></span>
                     <span className="text-xs text-text-main/80 leading-tight block">{selectedAdmixture.secondaryEffect}</span>
                   </div>
                 </div>
@@ -685,8 +424,7 @@ export default function BpBetonzusatzmittel() {
 
                   <div className="bg-amber-50/50 p-4 rounded-xl border border-amber-100 space-y-2">
                     <span className="text-xs font-bold text-amber-800 flex items-center gap-1">
-                      <AlertTriangle size={14} className="text-amber-700" /> Anwendungsrisiken &amp; Limitierungen:
-                    </span>
+                      <AlertTriangle size={14} className="text-amber-700" /><MdText text={inhalt.texte.anwendungsrisikenLimitierungen} /></span>
                     <ul className="space-y-1.5">
                       {selectedAdmixture.disadvantages.map((dis, idx) => (
                         <li key={idx} className="text-xxs text-amber-950 flex gap-1.5 items-start">
@@ -703,12 +441,8 @@ export default function BpBetonzusatzmittel() {
             {/* NEUTRAL SYSTEM MATRIX SECTION */}
             <div className="bg-slate-50 p-5 rounded-2xl border border-home-grau/30 space-y-4">
               <div>
-                <h3 className="font-extrabold text-slate-800 text-sm uppercase tracking-wider">
-                  Systemklassen &amp; Wirkstoffkombinationen
-                </h3>
-                <p className="text-xs text-text-main/60 mt-1">
-                  Typische, bewährte Kombinationskonzepte nach DIN EN 934-2 zur herstellerneutralen Orientierung bei Planungsaufgaben und Mischungsentwürfen:
-                </p>
+                <h3 className="font-extrabold text-slate-800 text-sm uppercase tracking-wider"><MdText text={inhalt.texte.systemklassenWirkstoffkombinationen} /></h3>
+                <p className="text-xs text-text-main/60 mt-1"><MdText text={inhalt.texte.typischeBewährteKombinationskonzepteNach} /></p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -719,9 +453,9 @@ export default function BpBetonzusatzmittel() {
                       <span className="text-[9px] font-mono bg-stone-100 text-stone-600 px-1.5 rounded">Genormt</span>
                     </div>
                     <div className="grid grid-cols-1 gap-1 text-xxs text-text-main/85 leading-tight">
-                      <p><strong>Konsistenz / Verflüssigung (FM/BV):</strong> {sys.fmName}</p>
-                      <p><strong>Sonderporen (LP):</strong> {sys.lpName}</p>
-                      <p><strong>Kinetiksteuerung (VZ/BE):</strong> {sys.vzName} / {sys.beName}</p>
+                      <p><MdText text={inhalt.texte.konsistenzVerflüssigungFmBv} />{sys.fmName}</p>
+                      <p><MdText text={inhalt.texte.sonderporenLp} />{sys.lpName}</p>
+                      <p><MdText text={inhalt.texte.kinetiksteuerungVzBe} />{sys.vzName} / {sys.beName}</p>
                       <p className="text-[10px] text-text-main/50 italic mt-1 pt-1 border-t border-dashed border-stone-100">
                         {sys.specialties}
                       </p>
@@ -737,35 +471,27 @@ export default function BpBetonzusatzmittel() {
         {activeTab === 'dosierung' && (
           <div className="space-y-6 animate-in fade-in duration-300">
             <div className="bg-shiraz/5 p-5 rounded-xl border border-shiraz/10 text-sm leading-relaxed text-text-main/80">
-              <h3 className="font-extrabold text-shiraz text-base mb-1.5">E-Schein Prüfungsrelevanz: Die Wasser- &amp; Mengenschranken</h3>
-              <p className="mb-2">
-                Bei der Bemessung hochpräziser Betonschlämmen greifen strikte normative Schranken aus <strong>DIN EN 206 / DIN 1045-2</strong> sowie der <strong>Zusatzmittelrichtlinie</strong>. Verwenden Sie den nachfolgenden Simulator, um die Grenzbereiche zu prüfen. Er prüft Dosiergrenzen und berechnet das anrechenbare Wasser von verflüssigendem Additivwasser auf den korrigierten w/z-Wert.
-              </p>
+              <h3 className="font-extrabold text-shiraz text-base mb-1.5"><MdText text={inhalt.texte.eScheinPrüfungsrelevanzDie} /></h3>
+              <p className="mb-2"><MdText text={inhalt.texte.beiDerBemessungHochpräziser} /></p>
               <div className="flex flex-wrap gap-4 mt-3 text-xs bg-white p-4 rounded-lg border border-shiraz/10 text-slate-800">
                 <div className="flex items-center gap-1">
-                  <span className="w-2.5 h-2.5 bg-yellow-400 rounded-full block"></span>
-                  <strong>Mindestlimit: &lt; 0,2 M.-%</strong> (Vorwaschung erforderlich für homogene Schlämme)
-                </div>
+                  <span className="w-2.5 h-2.5 bg-yellow-400 rounded-full block"></span><MdText text={inhalt.texte.mindestlimit02M} /></div>
                 <div className="flex items-center gap-1">
-                  <span className="w-2.5 h-2.5 bg-red-500 rounded-full block"></span>
-                  <strong>Höchstlimit: &gt; 5,0 M.-%</strong> (Normgrenze überschritten, abZ o. Eignungsprüfung)
-                </div>
+                  <span className="w-2.5 h-2.5 bg-red-500 rounded-full block"></span><MdText text={inhalt.texte.höchstlimit50M} /></div>
                 <div className="flex items-center gap-1">
-                  <span className="w-2.5 h-2.5 bg-blue-500 rounded-full block"></span>
-                  <strong>DBC-Regel: Wasseranrechnung</strong> (Pflichtige Anrechnung ab 3 Liter Aditivvolumen je m³)
-                </div>
+                  <span className="w-2.5 h-2.5 bg-blue-500 rounded-full block"></span><MdText text={inhalt.texte.dbcRegelWasseranrechnungPflichtige} /></div>
               </div>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               {/* Left Column - Inputs Form */}
               <div className="lg:col-span-5 bg-stone-50 border border-slate-200 rounded-2xl p-5 space-y-4">
-                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block border-b pb-1.5 mb-3">Rezeptur-Eckdaten eingeben</span>
+                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block border-b pb-1.5 mb-3"><MdText text={inhalt.texte.rezepturEckdatenEingeben} /></span>
                 
                 <div className="space-y-1">
-                  <label className="text-xs font-bold text-slate-700 block">Zementgehalt (<InlineMath math="Z" />):</label>
+                  <label className="text-xs font-bold text-slate-700 block"><MdText text={inhalt.texte.zementgehaltZ} /></label>
                   <div className="relative">
-                    <input aria-label="Zementgehalt ()"
+                    <input aria-label={inhalt.werte.zementgehalt}
                       type="number"
                       step="5"
                       min="100"
@@ -780,9 +506,9 @@ export default function BpBetonzusatzmittel() {
 
                 <div className="grid grid-cols-2 gap-3">
                   <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-700 block">Zusatzmittel Menge:</label>
+                    <label className="text-xs font-bold text-slate-700 block"><MdText text={inhalt.texte.zusatzmittelMenge} /></label>
                     <div className="relative">
-                      <input aria-label="Zusatzmittel Menge"
+                      <input aria-label={inhalt.werte.zusatzmittelMenge}
                         type="number"
                         step="0.1"
                         min="0"
@@ -796,9 +522,9 @@ export default function BpBetonzusatzmittel() {
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-700 block">Zusatzmittel Dichte (<InlineMath math="\rho" />):</label>
+                    <label className="text-xs font-bold text-slate-700 block"><MdText text={inhalt.texte.zusatzmittelDichteRho} /></label>
                     <div className="relative">
-                      <input aria-label="Zusatzmittel Dichte ()"
+                      <input aria-label={inhalt.werte.zusatzmittelDichte}
                         type="number"
                         step="0.01"
                         min="0.9"
@@ -814,9 +540,9 @@ export default function BpBetonzusatzmittel() {
 
                 <div className="grid grid-cols-2 gap-3">
                   <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-700 block">Wassergehalt im Additiv:</label>
+                    <label className="text-xs font-bold text-slate-700 block"><MdText text={inhalt.texte.wassergehaltImAdditiv} /></label>
                     <div className="relative">
-                      <input aria-label="Wassergehalt im Additiv"
+                      <input aria-label={inhalt.werte.wassergehaltImAdditiv}
                         type="number"
                         step="1"
                         min="20"
@@ -830,8 +556,8 @@ export default function BpBetonzusatzmittel() {
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-700 block">Gewünschter Ziel-w/z:</label>
-                    <input aria-label="Gewünschter Ziel-w/z"
+                    <label className="text-xs font-bold text-slate-700 block"><MdText text={inhalt.texte.gewünschterZielWZ} /></label>
+                    <input aria-label={inhalt.werte.gewünschterZielWZ}
                       type="number"
                       step="0.01"
                       min="0.30"
@@ -844,9 +570,9 @@ export default function BpBetonzusatzmittel() {
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-xs font-bold text-slate-700 block">Abgemessene Frischwasser-Zugabe:</label>
+                  <label className="text-xs font-bold text-slate-700 block"><MdText text={inhalt.texte.abgemesseneFrischwasserZugabe} /></label>
                   <div className="relative">
-                    <input aria-label="Abgemessene Frischwasser-Zugabe"
+                    <input aria-label={inhalt.werte.abgemesseneFrischwasserZugabe}
                       type="number"
                       step="5"
                       min="50"
@@ -860,7 +586,7 @@ export default function BpBetonzusatzmittel() {
                 </div>
 
                 <div className="space-y-3 pt-2 border-t">
-                  <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block">Bewehrungskategorie &amp; Chloridschranke</span>
+                  <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block"><MdText text={inhalt.texte.bewehrungskategorieChloridschranke} /></span>
                   <div className="flex gap-2">
                     <button aria-pressed={concreteApplication === 'spann'}
                       onClick={() => setConcreteApplication('spann')}
@@ -895,9 +621,9 @@ export default function BpBetonzusatzmittel() {
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-xxs font-bold text-slate-600 block">Chloridgehalt im Additiv (<InlineMath math="\text{Cl}^-" />):</label>
+                    <label className="text-xxs font-bold text-slate-600 block"><MdText text={inhalt.texte.chloridgehaltImAdditivText} /></label>
                     <div className="relative">
-                      <input aria-label="Chloridgehalt im Additiv ()"
+                      <input aria-label={inhalt.werte.chloridgehaltImAdditiv}
                         type="number"
                         step="0.01"
                         min="0"
@@ -916,9 +642,7 @@ export default function BpBetonzusatzmittel() {
               <div className="lg:col-span-7 bg-white rounded-2xl border border-slate-200 p-6 space-y-6">
                 <div>
                   <h4 className="font-extrabold text-slate-800 text-sm border-b pb-1.5 mb-4 flex items-center gap-1.5">
-                    <Activity size={16} className="text-shiraz animate-pulse" />
-                    Technischer Prüfbericht für Betonprüfer
-                  </h4>
+                    <Activity size={16} className="text-shiraz animate-pulse" /><MdText text={inhalt.texte.technischerPrüfberichtFürBetonprüfer} /></h4>
 
                   {/* Warning Flags */}
                   <div className="space-y-3 mb-6">
@@ -927,14 +651,12 @@ export default function BpBetonzusatzmittel() {
                       <div className="bg-yellow-50 border border-yellow-200 p-3.5 rounded-xl flex items-start gap-2.5 text-xs text-yellow-950">
                         <AlertTriangle className="text-yellow-700 mt-0.5 flex-none" size={16} />
                         <div>
-                          <span className="font-bold block">Achtung: Sehr geringe Rezeptdosierung ({formatDeWert(dosagePercent)} M.-%)</span>
-                          Unter <strong>0,2 M.-%</strong> Zementgewicht ist eine gleichmäßige Verteilung des Zusatzmittels im Standard-Mischprozess gefährdet. Das Zusatzmittel sollte zwingend in einem Teil des Zugabewassers vorverdünnt eingedüst werden.
-                        </div>
+                          <span className="font-bold block"><MdText text={inhalt.texte.achtungSehrGeringeRezeptdosierung} />{formatDeWert(dosagePercent)} M.-%)</span><MdText text={inhalt.texte.unter02M} /></div>
                       </div>
                     ) : (
                       <div className="bg-emerald-50/50 border border-emerald-100 p-2.5 rounded-xl flex items-center gap-2 text-xxs text-emerald-950">
                         <Check className="text-emerald-600" size={14} />
-                        <span>Soll-Mindestdosierung eingehalten (≥ 0,2 M.-%). Homogene Dispersion im Zementleim gesichert.</span>
+                        <span><MdText text={inhalt.texte.sollMindestdosierungEingehalten0} /></span>
                       </div>
                     )}
 
@@ -943,14 +665,12 @@ export default function BpBetonzusatzmittel() {
                       <div className="bg-red-50 border border-red-200 p-3.5 rounded-xl flex items-start gap-2.5 text-xs text-red-950 animate-bounce">
                         <ShieldAlert className="text-red-700 mt-0.5 flex-none" size={16} />
                         <div>
-                          <span className="font-bold block">Fehler: Höchstdosierung nach DIN EN 206 verletzt!</span>
-                          Die Dosierung von <strong>{formatDeWert(dosagePercent)} M.-%</strong> ist zu hoch. Zusatzmittel dürfen nach Norm grundsätzlich <strong>nicht über 5,0 M.-%</strong> bezogen auf den Zementgehalt dosiert werden. Ein genehmigter Sonder-Eignungsnachweis (abZ vom DIBt) ist zwingend bereitzuhalten.
-                        </div>
+                          <span className="font-bold block"><MdText text={inhalt.texte.fehlerHöchstdosierungNachDin} /></span><MdText text={inhalt.texte.dieDosierungVon} /><strong>{formatDeWert(dosagePercent)} M.-%</strong><MdText text={inhalt.texte.istZuHochZusatzmittel} /></div>
                       </div>
                     ) : (
                       <div className="bg-emerald-50/50 border border-emerald-100 p-2.5 rounded-xl flex items-center gap-2 text-xxs text-emerald-950">
                         <Check className="text-emerald-600" size={14} />
-                        <span>Maximaldosierung nach DIN EN 206 unbedenklich (≤ 5,0 M.-%).</span>
+                        <span><MdText text={inhalt.texte.maximaldosierungNachDinEn} /></span>
                       </div>
                     )}
 
@@ -959,14 +679,12 @@ export default function BpBetonzusatzmittel() {
                       <div className="bg-red-50 border border-red-200 p-3.5 rounded-xl flex items-start gap-2.5 text-xs text-red-950">
                         <ShieldAlert className="text-red-700 mt-0.5 flex-none" size={16} />
                         <div>
-                          <span className="font-bold block">Fehler: Unzulässige Korrosionsgefährdung (Spannbeton)</span>
-                          Für Spannbeton (vorgespannte Glieder) muss der Chloridgehalt von Zusatzmitteln <strong>≤ 0,10 M.-%</strong> betragen. Der eingegebene Wert von <strong>{formatDeWert(admixtureChlorideContent)} M.-%</strong> birgt akute Gefahren von katalytischem Lochfraß unter Zugspannung.
-                        </div>
+                          <span className="font-bold block"><MdText text={inhalt.texte.fehlerUnzulässigeKorrosionsgefährdungSpa} /></span><MdText text={inhalt.texte.fürSpannbetonVorgespannteGlieder} /><strong>{formatDeWert(admixtureChlorideContent)} M.-%</strong><MdText text={inhalt.texte.birgtAkuteGefahrenVon} /></div>
                       </div>
                     ) : (
                       <div className="bg-emerald-50/50 border border-emerald-100 p-2.5 rounded-xl flex items-center gap-2 text-xxs text-emerald-950">
                         <Check className="text-emerald-600" size={14} />
-                        <span>Chlorid-Grenzwert ({concreteApplication === 'spann' ? '≤ 0,10 % für Spannbeton' : 'Keine kritischen Schranken'}) eingehalten.</span>
+                        <span><MdText text={inhalt.texte.chloridGrenzwert} />{concreteApplication === 'spann' ? inhalt.werte.t010FürSpannbeton : inhalt.werte.keineKritischenSchranken}<MdText text={inhalt.texte.eingehalten} /></span>
                       </div>
                     )}
                   </div>
@@ -979,12 +697,12 @@ export default function BpBetonzusatzmittel() {
                     </div>
 
                     <div className="bg-stone-50 p-4 rounded-xl border border-slate-200 text-center space-y-0.5">
-                      <span className="text-[10px] text-slate-400 uppercase font-bold block">Zubehörtes Volumen</span>
+                      <span className="text-[10px] text-slate-400 uppercase font-bold block"><MdText text={inhalt.texte.zubehörtesVolumen} /></span>
                       <span className="text-base font-extrabold text-slate-800 block">{formatDeZahl(admixtureVolume, 2)} l/m³</span>
                     </div>
 
                     <div className="bg-stone-50 p-4 rounded-xl border border-slate-200 text-center space-y-0.5">
-                      <span className="text-[10px] text-slate-400 uppercase font-bold block">Anteiliges Wasser (W_Eigenwasser)</span>
+                      <span className="text-[10px] text-slate-400 uppercase font-bold block"><MdText text={inhalt.texte.anteiligesWasserWEigenwasser} /></span>
                       <span className="text-base font-extrabold text-slate-800 block">{formatDeZahl(admixtureWaterMass, 2)} Liter</span>
                     </div>
                   </div>
@@ -993,48 +711,40 @@ export default function BpBetonzusatzmittel() {
                   <div className={`p-5 rounded-2xl border ${isWaterAnrechnungMandatory ? 'bg-sky-50 border-sky-200 text-sky-950' : 'bg-stone-50 border-stone-200 text-slate-700'} space-y-3`}>
                     <div className="flex items-center gap-2 font-extrabold">
                       <Scale className={isWaterAnrechnungMandatory ? 'text-sky-700' : 'text-slate-500'} size={18} />
-                      <h5>Die 3-Liter-Wasseranrechnungsregel (E-Schein)</h5>
+                      <h5><MdText text={inhalt.texte.die3LiterWasseranrechnungsregel} /></h5>
                     </div>
                     {isWaterAnrechnungMandatory ? (
-                      <p className="text-xs leading-relaxed font-normal">
-                        <strong>Pflichtiges Prüfungskriterium!</strong> Da das zugegebene flüssige Zusatzmittelvolumen mit <strong>{formatDeZahl(admixtureVolume, 2)} Litern</strong> die Grenze von <strong>3,0 Litern je m³</strong> überschreitet, muss das im Zusatzmittel enthaltene Eigenwasser (W_Eigenwasser = {formatDeZahl(admixtureWaterMass, 1)} l) <strong>zwingend</strong> als Mischwasser angerechnet werden!
-                      </p>
+                      <p className="text-xs leading-relaxed font-normal"><MdText text={inhalt.texte.pflichtigesPrüfungskriteriumDaDas} /><strong>{formatDeZahl(admixtureVolume, 2)} Litern</strong><MdText text={inhalt.texte.dieGrenzeVon3} />{formatDeZahl(admixtureWaterMass, 1)}<MdText text={inhalt.texte.lZwingendAlsMischwasser} /></p>
                     ) : (
-                      <p className="text-xs leading-relaxed font-normal">
-                        Da das zugegebene Volumen mit <strong>{formatDeZahl(admixtureVolume, 2)} Litern</strong> die Grenze von <strong>3,0 Litern je m³</strong> nicht überschreitet, ist eine rechnerische Wasseranrechnung nach deutscher Norm nicht explizit verpflichtend (für Standardbeton). Für anspruchsvolle HPC/UHPC-Rezepturen wird die Anrechnung dennoch dringend unaufgefordert durchgeführt.
-                      </p>
+                      <p className="text-xs leading-relaxed font-normal"><MdText text={inhalt.texte.daDasZugegebeneVolumen} /><strong>{formatDeZahl(admixtureVolume, 2)} Litern</strong><MdText text={inhalt.texte.dieGrenzeVon32} /></p>
                     )}
 
                     {/* Compare W/C Ratio */}
                     <div className="bg-white p-4 rounded-xl border border-slate-200 mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <span className="text-[9px] text-slate-400 uppercase font-bold block">Wasserzementwert ohne Anrechnung (rechnerisch)</span>
+                        <span className="text-[9px] text-slate-400 uppercase font-bold block"><MdText text={inhalt.texte.wasserzementwertOhneAnrechnungRechnerisc} /></span>
                         <span className="text-sm font-extrabold text-slate-800 block font-mono">{formatDeZahl(rawWcRatio, 3)}</span>
-                        <span className="text-[10px] text-slate-400 italic block mt-0.5">Frischwasser / Zement</span>
+                        <span className="text-[10px] text-slate-400 italic block mt-0.5"><MdText text={inhalt.texte.frischwasserZement} /></span>
                       </div>
                       <div>
-                        <span className="text-[9px] text-slate-400 uppercase font-semibold block flex items-center gap-1">
-                          Tatsächlicher (effektiver) w/z-Wert {isWaterAnrechnungMandatory && <span className="bg-sky-500 text-white font-mono font-bold text-[8px] px-1 py-0.2 px-1 rounded">VORSCHRIFT</span>}
+                        <span className="text-[9px] text-slate-400 uppercase font-semibold block flex items-center gap-1"><MdText text={inhalt.texte.tatsächlicherEffektiverWZ} />{isWaterAnrechnungMandatory && <span className="bg-sky-500 text-white font-mono font-bold text-[8px] px-1 py-0.2 px-1 rounded">VORSCHRIFT</span>}
                         </span>
                         <span className={`text-sm font-extrabold block font-mono ${effectiveWcRatio > targetWcValue ? 'text-red-600' : 'text-emerald-700'}`}>
                           {formatDeZahl(effectiveWcRatio, 3)}
                         </span>
-                        <span className="text-[10px] text-slate-400 italic block mt-0.5">Effektives Wasser ({formatDeZahl(effectiveWater, 1)} l) / Zement</span>
+                        <span className="text-[10px] text-slate-400 italic block mt-0.5"><MdText text={inhalt.texte.effektivesWasser} />{formatDeZahl(effectiveWater, 1)} l) / Zement</span>
                       </div>
                     </div>
 
                     {effectiveWcRatio > targetWcValue ? (
                       <div className="p-3 bg-red-50 border border-red-200 text-red-950 font-semibold rounded-lg text-xxs leading-relaxed mt-2 flex gap-1.5 items-start">
                         <AlertTriangle size={14} className="text-red-700 flex-none mt-0.5" />
-                        <div>
-                          <strong>Gefahr: Ziel-w/z-Wert überschritten!</strong> Der tatsächliche w/z-Wert ({formatDeZahl(effectiveWcRatio, 3)}) übersteigt den Grenzwert von {formatDeZahl(targetWcValue, 2)} durch das Eigenwasser des Zusatzmittels. 
-                          Reduziere die Frischwasserzugabe im Mischer auf maximal <strong>{formatDeZahl((targetWcValue * cementContent - (isWaterAnrechnungMandatory ? admixtureWaterMass : 0)), 0)} l/m³</strong>, um die Rezeptvorgabe zu halten.
-                        </div>
+                        <div><MdText text={inhalt.texte.gefahrZielWZ} />{formatDeZahl(effectiveWcRatio, 3)}<MdText text={inhalt.texte.übersteigtDenGrenzwertVon} />{formatDeZahl(targetWcValue, 2)}<MdText text={inhalt.texte.durchDasEigenwasserDes} /><strong>{formatDeZahl((targetWcValue * cementContent - (isWaterAnrechnungMandatory ? admixtureWaterMass : 0)), 0)} l/m³</strong><MdText text={inhalt.texte.umDieRezeptvorgabeZu} /></div>
                       </div>
                     ) : (
                       <div className="p-3 bg-emerald-50 border border-emerald-100 text-emerald-950 font-semibold rounded-lg text-xxs leading-relaxed mt-2 flex gap-1.5 items-center">
                         <Check size={14} className="text-emerald-700" />
-                        <span>Der tatsächliche w/z-Wert ({formatDeZahl(effectiveWcRatio, 3)}) hält den geforderten Grenzwert von ≤ {formatDeZahl(targetWcValue, 2)} sicher ein.</span>
+                        <span><MdText text={inhalt.texte.derTatsächlicheWZ} />{formatDeZahl(effectiveWcRatio, 3)}<MdText text={inhalt.texte.hältDenGefordertenGrenzwert} />{formatDeZahl(targetWcValue, 2)} sicher ein.</span>
                       </div>
                     )}
                   </div>
@@ -1061,53 +771,26 @@ export default function BpBetonzusatzmittel() {
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <FormulaDerivationBox
-          title="Anwendungsbeispiel: Wasseranrechnung eines Fließmittels"
+          title={inhalt.werte.anwendungsbeispielWasseranrechnungEinesF}
           zielGleichung="(w/z)_{eq} = \frac{w_{Zugabe} + w_{FM}}{z}"
-          normQuelle="DIN EN 206 / DIN 1045-2 (Anrechnung bei > 3 l/m³ flüssiger Zusatzmittel); Werte als Lehrbeispiel"
-          schritte={[
-            { titel: '1. Gegeben', formel: 'z = 340\\,\\text{kg/m}^3,\\; w_{Zugabe} = 160\\,\\text{l/m}^3,\\; FM = 1{,}5\\,\\%\\; \\text{v. z.},\\; \\rho_{FM} = 1{,}05,\\; \\text{Wasseranteil } 70\\,\\%', erklaerung: 'Ziel: w/z ≤ 0,50.' },
-            { titel: '2. Fließmittelmenge', formel: 'm_{FM} = 0{,}015 \\cdot 340 = 5{,}1\\,\\text{kg} \\;\\Rightarrow\\; V_{FM} = 5{,}1/1{,}05 = 4{,}9\\,\\text{l} > 3\\,\\text{l}', erklaerung: 'Wasseranteil muss angerechnet werden.' },
-            { titel: '3. Wasser aus dem Fließmittel', formel: 'w_{FM} = 0{,}70 \\cdot 5{,}1 = 3{,}6\\,\\text{kg}', erklaerung: 'Wasseranteil × Fließmittelmasse.' },
-            { titel: '4. Wirksamer w/z-Wert', formel: '(w/z) = (160 + 3{,}6)/340 = 0{,}481 \\le 0{,}50', erklaerung: 'Grenzwert eingehalten; ohne Anrechnung ergäbe sich 0,471.' },
-          ]}
-          ergebnisHinweis="Die Anrechnung verschiebt den w/z-Wert hier nur um 0,01 – bei knapp bemessenen Rezepturen kann genau das über die Konformität entscheiden."
+          normQuelle={inhalt.werte.dinEn206Din}
+          schritte={inhalt.daten["BpBetonzusatzmittel.schritte"]}
+          ergebnisHinweis={inhalt.werte.dieAnrechnungVerschiebtDen}
         />
       </div>
 
       <ModulTest moduleId="bp_betonzusatzmittel" />
 
       <ModuleFooter
-        weblinks={[
-          { title: "Deutsche Bauchemie e.V. (Portal für Betonzusatzmittel & Vortragsreihen)", url: "https://www.deutsche-bauchemie.de" },
-          { title: "Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch.", url: "https://www.vdz-online.de/publikationen/zement-taschenbuch" }
-        ]}
+        weblinks={inhalt.daten["BpBetonzusatzmittel.weblinks"]}
         wikipedia={[
           { title: 'Betonzusatzmittel', url: 'https://de.wikipedia.org/wiki/Betonzusatzmittel' },
           { title: 'Wasserzementwert', url: 'https://de.wikipedia.org/wiki/Wasserzementwert' },
           { title: 'Zement', url: 'https://de.wikipedia.org/wiki/Zement' }
         ]}
-        literatur={[
-          'Stark, J.; Wicht, B.: Dauerhaftigkeit von Beton. 2. Aufl., Berlin: Springer Vieweg 2013',
-          'Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch. 51. Ausgabe, Düsseldorf: Verlag Bau+Technik 2008',
-          'Deutsche Bauchemie e. V.: Betonzusatzmittel und Umwelt (Sachstandsbericht, 6. Ausgabe, Dezember 2016); Lagerung und Dosierung von Beton- und Mörtelzusatzmitteln (Merkblatt, 3. Ausgabe, März 2018); Moderne Fließmittel in der Betontechnologie (Informationsschrift, 1. Ausgabe, Januar 2007)'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 934-2:2012-08 (Zusatzmittel für Beton, Mörtel und Einpressmörtel - Teil 2: Betonzusatzmittel)' },
-          { title: 'DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)' },
-          { title: 'DIN EN 480-Reihe (Prüfverfahren für Betonzusatzmittel)' }
-        ]}
-        formeln={[
-          { 
-            formel: '(w/z)_{\\text{eff}} = \\frac{w_{\\text{Wasser}} + w_{\\text{ZM}}}{z} \\le (w/z)_{\\max}', 
-            erklaerung: 'Wasseraufrechnungsregel nach DIN EN 206 / DIN 1045-2: Übersteigt die Gesamtmenge flüssiger Zusatzmittel 3 l/m³, ist ihr Wasseranteil dem wirksamen Wassergehalt zuzurechnen.',
-            quelle: 'DIN 1045-2:2023-08 / DIN EN 206'
-          },
-          { 
-            formel: 'L_{300} \\ge 1{,}5\\,\\% \\quad \\text{und} \\quad a \\le 0{,}20\\,\\text{mm}', 
-            erklaerung: 'Mikroluftporengehalt (Poren ≤ 0,30 mm) und Abstandsfaktor im Festbeton als Kenngrößen des Frost-Tausalz-Widerstands (Prüfung nach DIN EN 480-11; Grenzwerte als Lehrwerte, maßgebend DIN 1045-2/ZTV – manuell prüfen).',
-            quelle: 'DIN EN 480-11'
-          }
-        ]}
+        literatur={inhalt.daten["BpBetonzusatzmittel.literatur"]}
+        regelwerke={inhalt.daten["BpBetonzusatzmittel.regelwerke"]}
+        formeln={inhalt.daten["BpBetonzusatzmittel.formeln"]}
       />
     </div>
   );

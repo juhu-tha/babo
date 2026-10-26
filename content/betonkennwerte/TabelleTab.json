@@ -1,0 +1,8 @@
+{
+  "texte": {
+    "dinEn19921": "DIN EN 1992-1-1 Tabelle 3.1: Festigkeits- und Verformungseigenschaften",
+    "vergleichendeÜbersichtAller15": "Vergleichende Übersicht aller 15 genormten Betonfestigkeitsklassen von Normal- bis Ultra-Hochleistungsbeton",
+    "abschnitt7DerFormelsammlung": "Abschnitt 7 der Formelsammlung",
+    "hinweisZuHochleistungsbetonenC50": "**Hinweis zu Hochleistungsbetonen (> C50/60):** Beachten Sie das veränderte Verformungsverhalten. Die Bruchdehnung $\\varepsilon_{cu2}$ sinkt von 3,5 ‰ kontinuierlich auf bis zu 2,6 ‰ ab (spröderes Bruchverhalten), und der Exponent des Parabel-Rechteck-Diagramms $n$ sinkt von 2,0 auf 1,4."
+  }
+}

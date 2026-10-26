@@ -1,0 +1,11 @@
+{
+  "werte": {
+    "betonMaterialeigenschaftenFckEcm": "Beton-Materialeigenschaften (fck, Ecm)",
+    "kriechenSchwindenCs": "Kriechen (φ) & Schwinden (εcs)",
+    "stahlrelaxationPr": "Stahlrelaxation (Δσpr)",
+    "elastischeStauchungReibungKeilschlupf": "Elastische Stauchung, Reibung & Keilschlupf",
+    "einpressmörtelSystembaustoffeDinEn": "Einpressmörtel & Systembaustoffe (DIN EN 447)",
+    "ec2KopplungCS": "EC2-Kopplung (c+s+r) & Beispielrechnung",
+    "beiwerteKatalogSchnellrechner": "Beiwerte-Katalog & Schnellrechner"
+  }
+}

@@ -14,6 +14,8 @@ import {
   Hammer
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import inhalt from '@/content/fortbildungen/Fortbildungen.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 // Types representing specialized certifications
 type CertificateID = 
@@ -55,12 +57,12 @@ interface Certificate {
 }
 
 const categories = [
-  { id: 'all', name: 'Alle Bereiche' },
+  { id: 'all', name: inhalt.werte.alleBereiche },
   { id: 'beton', name: 'Betontechnologie' },
-  { id: 'schadstoffe', name: 'Schadstoffe & Umwelt' },
-  { id: 'denkmal', name: 'Baubestand & Denkmal' },
-  { id: 'bauphysik', name: 'Bauphysik & Diagnostik' },
-  { id: 'baubetrieb', name: 'Baubetrieb & Sicherheit' },
+  { id: 'schadstoffe', name: inhalt.werte.schadstoffeUmwelt },
+  { id: 'denkmal', name: inhalt.werte.baubestandDenkmal },
+  { id: 'bauphysik', name: inhalt.werte.bauphysikDiagnostik },
+  { id: 'baubetrieb', name: inhalt.werte.baubetriebSicherheit },
 ] as const;
 
 export default function Fortbildungen() {
@@ -84,500 +86,500 @@ export default function Fortbildungen() {
   const certs: Record<CertificateID, Certificate> = {
     eschein: {
       id: 'eschein',
-      title: 'Erweiterte technologische Ausbildung im Betonbau',
-      abbreviation: 'E-Schein (Betontechnologe)',
-      authority: 'Deutscher Beton- und Bautechnik-Verein e.V. (DBV)',
-      scope: 'Nachweis fortgeschrittener betontechnologischer Fachkenntnis für die Herstellung, Überwachung und den Einbau von Beton.',
-      legalBase: 'DIN 1045-3:2023-08 (Leitung der ständigen Betonprüfstelle bei Überwachungsklasse 2 und 3); Ausbildungsbeirat beim DBV.',
-      targetGroup: 'Architekten, Planer, Bauingenieure, Bauleiter, Techniker, Betonwerksmeister, Betonlaborleiter.',
-      duration: 'Mehrwöchiger Lehrgang mit schriftlicher und mündlicher Prüfung (Umfang beim jeweiligen Bildungsträger prüfen).',
-      validity: 'Regelungen zu Gültigkeit und Fortbildung beim Ausbildungsbeirat prüfen.',
+      title: inhalt.werte.erweiterteTechnologischeAusbildungIm,
+      abbreviation: inhalt.werte.eScheinBetontechnologe,
+      authority: inhalt.werte.deutscherBetonUndBautechnik,
+      scope: inhalt.werte.nachweisFortgeschrittenerBetontechnologi,
+      legalBase: inhalt.werte.din104532023,
+      targetGroup: inhalt.werte.architektenPlanerBauingenieureBauleiter,
+      duration: inhalt.werte.mehrwöchigerLehrgangMitSchriftlicher,
+      validity: inhalt.werte.regelungenZuGültigkeitUnd,
       difficulty: 'Hoch',
       prerequisites: [
-        'Bauingenieur-/Architekturstudium (Diplom, B.Sc., M.Sc.)',
-        'Oder Ausbildung als staatlich geprüfter Techniker im Bauwesen',
-        'Oder Bauhandwerksmeister (z. B. Maurer-/Betonbauer-Meister) mit einschlägiger Berufserfahrung',
-        'Nachweis über grundlegende betontechnologische Kenntnisse vor Lehrgangsbeginn'
+        inhalt.werte.bauingenieurArchitekturstudiumDiplomB,
+        inhalt.werte.oderAusbildungAlsStaatlich,
+        inhalt.werte.oderBauhandwerksmeisterZB,
+        inhalt.werte.nachweisÜberGrundlegendeBetontechnologis
       ],
       modules: [
-        'Zement, Gesteinskörnungen, Betonzusatzstoffe und Betonzusatzmittel',
-        'Anforderungen an Frisch- und Festbeton, Einteilung der Expositionsklassen (z. B. Carbonatisierung, Frost-Tau, Chloride)',
-        'Betonmischungsberechnung nach neuesten DBV-Richtlinien',
-        'Besondere Betonprüfverfahren (z. B. Konsistenzprüfung, Luftporengehalt, Würfeldruckfestigkeit)',
-        'Herstellen von Beton auf Baustellen und in Transportbetonwerken',
-        'Sonderbetone (z. B. Leichtbeton, Schwerbeton, Sichtbeton, SVB/SCC, Faserbeton, Massenbeton)',
-        'Konstruktionsregeln für schwind- und temperaturrissminimierte Tragwerke'
+        inhalt.werte.zementGesteinskörnungenBetonzusatzstoffe,
+        inhalt.werte.anforderungenAnFrischUnd,
+        inhalt.werte.betonmischungsberechnungNachNeuestenDbv,
+        inhalt.werte.besondereBetonprüfverfahrenZB,
+        inhalt.werte.herstellenVonBetonAuf,
+        inhalt.werte.sonderbetoneZBLeichtbeton,
+        inhalt.werte.konstruktionsregelnFürSchwindUnd
       ],
-      relevance: 'Auf Baustellen mit anspruchsvollen Bauteilen (z. B. Brücken, hohe Hochbauten mit Festigkeiten ≥ C30/37 oder wasserundurchlässigen Bauteilen, WU-Beton) is ein E-Schein-Inhaber als sachkundige Person zur Überwachung vorgeschrieben. Ohne ihn greifen Baustopps durch die Bauaufsicht.',
+      relevance: inhalt.werte.aufBaustellenMitAnspruchsvollen,
       category: 'beton'
     },
     sivv: {
       id: 'sivv',
-      title: 'Schützen, Instandsetzen, Verbinden und Verstärken von Betonbauteilen',
-      abbreviation: 'SIVV-Schein (Kolonne / Fachkraft)',
-      authority: 'Ausbildungsbeirat Sachkundige Planer und SIVV-Fachpersonal beim DBV',
-      scope: 'Nachweis der praktischen und theoretischen Sachkunde für bauausführende Handwerker bei der Betoninstandhaltung.',
-      legalBase: 'Instandhaltungs-Richtlinie des DAfStb bzw. neue TR Instandhaltung (DIBt), ZTV-ING, VOB/C DIN 18349.',
-      targetGroup: 'Vorarbeiter, Poliere, Kolonnenführer, anwendende Facharbeiter auf Instandsetzungsbaustellen.',
-      duration: 'Lehrgang mit theoretischer und praktischer Prüfung nach Prüfungsordnung des Ausbildungsbeirats (Fassung Juli 2022); Umfang beim Ausbildungszentrum prüfen.',
-      validity: 'Regelungen zu Gültigkeit und Auffrischung beim Ausbildungsbeirat Schutz und Instandsetzung im Betonbau (DBV) prüfen.',
+      title: inhalt.werte.schützenInstandsetzenVerbindenUnd,
+      abbreviation: inhalt.werte.sivvScheinKolonneFachkraft,
+      authority: inhalt.werte.ausbildungsbeiratSachkundigePlanerUnd,
+      scope: inhalt.werte.nachweisDerPraktischenUnd,
+      legalBase: inhalt.werte.instandhaltungsRichtlinieDesDafstb,
+      targetGroup: inhalt.werte.vorarbeiterPoliereKolonnenführerAnwenden,
+      duration: inhalt.werte.lehrgangMitTheoretischerUnd,
+      validity: inhalt.werte.regelungenZuGültigkeitUnd2,
       difficulty: 'Mittel',
       prerequisites: [
-        'Erfolgreich abgeschlossene gewerblich-technische Berufsausbildung im Bauwesen (z.B. Maurer, Betonbauer, Gipser, Maler)',
-        'Mindestens 3 Jahre Berufspraxis in der Bauausführung',
-        'Ausnahmegenehmigung für Quereinsteiger mit extrem langjähriger, nachgewiesener Betonsanierungspraxis möglich'
+        inhalt.werte.erfolgreichAbgeschlosseneGewerblichTechn,
+        inhalt.werte.mindestens3JahreBerufspraxis,
+        inhalt.werte.ausnahmegenehmigungFürQuereinsteigerMit
       ],
       modules: [
-        'Grundlagen des Korrosionsschutzes von Bewehrungsstählen (Alkalität des Passivraums)',
-        'Untergrundvorbereitung (Hochdruckwasserstrahlen ≥ 1200 bar, Sandstrahlen, Stemmen)',
-        'Verbindungstechniken: Verpressen und Verfugen mit mineralischen und epoxidgefüllten Bindemitteln rissüberbrückend',
-        'Korrosionsbeschichtung und Haftbrückenmörtel',
-        'Instandsetzungsmörtel in Handapplikation (PCC / RM) und Spritzbetonapplikation (SPCC)',
-        'Verarbeitung und Aufbringen von Oberflächenschutzsystemen (OS 1 bis OS 11)',
-        'Faserverstärkte Kunststofflamellen (CFK-Lamellen) zur externen Tragstärkung ankleben'
+        inhalt.werte.grundlagenDesKorrosionsschutzesVon,
+        inhalt.werte.untergrundvorbereitungHochdruckwasserstr,
+        inhalt.werte.verbindungstechnikenVerpressenUndVerfuge,
+        inhalt.werte.korrosionsbeschichtungUndHaftbrückenmört,
+        inhalt.werte.instandsetzungsmörtelInHandapplikationPc,
+        inhalt.werte.verarbeitungUndAufbringenVon,
+        inhalt.werte.faserverstärkteKunststofflamellenCfkLame
       ],
-      relevance: 'Qualitätssicherung bei der Betoninstandsetzung. Fast alle öffentlichen (z.B. Brücken nach ZTV-ING) und privaten Ausschreibungen (z.B. Parkhausdecken) fordern pro Kolonne mindestens einen handwerklich aktiven Eigner des gültigen SIVV-Scheins.',
+      relevance: inhalt.werte.qualitätssicherungBeiDerBetoninstandsetz,
       category: 'beton'
     },
     skp: {
       id: 'skp',
-      title: 'Sachkundiger Planer für Schutz und Instandsetzung von Betonbauteilen',
-      abbreviation: 'Sachkundiger Planer (SKP) / QP',
-      authority: 'Ausbildungsbeirat Sachkundige Planer beim DBV',
-      scope: 'Höchste planerische Zertifizierungsstufe für Ingenieure zur herstellerneutralen Diagnose und Instandsetzung von Betonbauwerken.',
-      legalBase: 'TR Instandhaltung des Deutschen Instituts für Bautechnik (DIBt) und DAfStb-Instandsetzungsrichtlinie.',
-      targetGroup: 'Freischaffende und angestellte Tragwerksplaner, Bauingenieure, Werkstoffprüfer, erfahrene Bauzustand-Gutachter.',
-      duration: 'Ausbildungslehrgang in mehreren zeitlichen Blöcken (ca. 100-120 Stunden) plus komplexe Projektarbeit und mündliche Kolloquiums-Prüfung.',
-      validity: 'Unbefristet, wobei Fortbildungspflichten der Ingenieurkammern der Länder für eingetragene Listen zwingend greifen.',
+      title: inhalt.werte.sachkundigerPlanerFürSchutz,
+      abbreviation: inhalt.werte.sachkundigerPlanerSkpQp,
+      authority: inhalt.werte.ausbildungsbeiratSachkundigePlanerBeim,
+      scope: inhalt.werte.höchstePlanerischeZertifizierungsstufeFü,
+      legalBase: inhalt.werte.trInstandhaltungDesDeutschen,
+      targetGroup: inhalt.werte.freischaffendeUndAngestellteTragwerkspla,
+      duration: inhalt.werte.ausbildungslehrgangInMehrerenZeitlichen,
+      validity: inhalt.werte.unbefristetWobeiFortbildungspflichtenDer,
       difficulty: 'Sehr Hoch',
       prerequisites: [
-        'Abschluss eines Studiums des Bauingenieurwesens (Universität / Fachhochschule)',
-        'Mindestens 3 Jahre nachgewiesene praktische Berufserfahrung in der Planung oder Ausführung von Bauwerkssanierungen',
-        'E-Schein oder vertiefte Vorkenntnisse sind hochgradig empfohlen, um dem dichten Lehrplan folgen zu können'
+        inhalt.werte.abschlussEinesStudiumsDes,
+        inhalt.werte.mindestens3JahreNachgewiesene,
+        inhalt.werte.eScheinOderVertiefte
       ],
       modules: [
-        'Zustandserfassung und Schadensursachen-Eingrenzung (Karbonatisierungstiefe, Chloridprofile, elektrische Leitfähigkeit)',
-        'Zerstörungsfreie Diagnoseverfahren (z. B. Potenzialfeldmessung zur Ortung anodischer Korrosionsherde)',
-        'Erstellen von herstellerneutralen Sanierungskonzepten basierend auf den Prinzipien W, C, K, M, B nach DAfStb',
-        'Tragfähigkeitsprüfung korrodierter Bauteile (Rückverankerung, Querschnittsverluste)',
-        'Nachträgliche Verstärkungskonzepte (CFK, Vergussmörtelschalen, Einzelfundamentverbreiterung)',
-        'Auswahl geeigneter Baustoffe (Zementmörtel, Epoxidharze, Kathodischer Korrosionsschutz)',
-        'Rechtliche Verantwortung und Haftung des Planers bei Fehldiagnosen'
+        inhalt.werte.zustandserfassungUndSchadensursachenEing,
+        inhalt.werte.zerstörungsfreieDiagnoseverfahrenZB,
+        inhalt.werte.erstellenVonHerstellerneutralenSanierung,
+        inhalt.werte.tragfähigkeitsprüfungKorrodierterBauteil,
+        inhalt.werte.nachträglicheVerstärkungskonzepteCfkVerg,
+        inhalt.werte.auswahlGeeigneterBaustoffeZementmörtel,
+        inhalt.werte.rechtlicheVerantwortungUndHaftung
       ],
-      relevance: 'Die Richtlinien fordern, dass jede Sanierung eines statisch relevanten Betontragwerks von einem zertifizierten Sachkundigen Planer (SKP) entworfen, begleitet und abgenommen wird. Ein genereller Tragwerksplaner (Statiker) darf dies ohne diesen Spezialschein rechtlich nicht ausschreiben.',
+      relevance: inhalt.werte.dieRichtlinienFordernDass,
       category: 'beton'
     },
     kks: {
       id: 'kks',
-      title: 'Kathodischer Korrosionsschutz im Betonbau nach ISO 15257',
-      abbreviation: 'KKS-Fachkraft (Sektor Beton)',
-      authority: 'FKKS (Fachverband Kathodischer Korrosionsschutz e.V.) / DIN CERTCO',
-      scope: 'Spezialausbildung zur Planung, Errichtung und Überwachung elektrochemischer Korrosionsschutzsysteme an Stahlbetonbauwerken.',
-      legalBase: 'DIN EN ISO 15257 (Anforderungsprofil an KKS-Personal), DIN EN ISO 12696 (KKS im Beton).',
-      targetGroup: 'Elektrochemiker, Werkstoffwissenschaftler, Bauingenieure im Bereich Dauerhaftigkeit, Fachplaner für Parkhaus-Instandsetzung.',
-      duration: 'Gestuft nach Kompetenzstufen der DIN EN ISO 15257; je Stufe Lehrgang mit Prüfung (Umfang beim Zertifizierer prüfen).',
-      validity: 'Befristet; Rezertifizierung nach den Regeln des Zertifizierers.',
+      title: inhalt.werte.kathodischerKorrosionsschutzImBetonbau,
+      abbreviation: inhalt.werte.kksFachkraftSektorBeton,
+      authority: inhalt.werte.fkksFachverbandKathodischerKorrosionssch,
+      scope: inhalt.werte.spezialausbildungZurPlanungErrichtung,
+      legalBase: inhalt.werte.dinEnIso15257,
+      targetGroup: inhalt.werte.elektrochemikerWerkstoffwissenschaftlerB,
+      duration: inhalt.werte.gestuftNachKompetenzstufenDer,
+      validity: inhalt.werte.befristetRezertifizierungNachDen,
       difficulty: 'Sehr Hoch',
       prerequisites: [
-        'Ingenieurtechnische Ausbildung oder elektrotechnische Meisterausbildung',
-        'Langjährige praktische Mitarbeit bei KKS-Messungen (Referenznachweise vorzulegen)',
-        'Bestandenes Level-Zertifikat des jeweils untergeordneten Levels'
+        inhalt.werte.ingenieurtechnischeAusbildungOderElektro,
+        inhalt.werte.langjährigePraktischeMitarbeitBei,
+        inhalt.werte.bestandenesLevelZertifikatDes
       ],
       modules: [
-        'Physikalisch-chemische und elektrochemische Grundlagen des Korrosionsschutzes',
-        'Messung und Auswertung von halbelektrischen Potenzialen und Depolarisationsraten',
-        'Systeme: Fremdstromanoden (z. B. platinierter Titandraht, Titan-Anodennetze) und galvanische Opferanoden (Zink)',
-        'Auslegung von Transformator- und Gleichrichtersteuerungen für feuchte Umgebungen',
-        'Störspannungen und vagabundierende Ströme (Interferenz)',
-        'Installation, Inbetriebnahme, messtechnische Fernkontrolle (Datenlogger) und Wartung'
+        inhalt.werte.physikalischChemischeUndElektrochemische,
+        inhalt.werte.messungUndAuswertungVon,
+        inhalt.werte.systemeFremdstromanodenZB,
+        inhalt.werte.auslegungVonTransformatorUnd,
+        inhalt.werte.störspannungenUndVagabundierendeStröme,
+        inhalt.werte.installationInbetriebnahmeMesstechnische
       ],
-      relevance: 'KKS is bei chloridbelasteten Brücken und Parkhäusern oft die einzige physikalische Methode, die Bewehrung ohne massiven, teuren Betonabtrag wirksam zu retten. Nur zertifizierte Personen nach Level 2 (Instandhaltungspfleger) und Level 3 (KKS-Planer) dürfen diese hochsensiblen Steuerstromsysteme einregulieren.',
+      relevance: inhalt.werte.kksIsBeiChloridbelasteten,
       category: 'beton'
     },
     duesenfuehrer: {
       id: 'duesenfuehrer',
-      title: 'Zertifikat für Spritzbeton-Düsenführer (Düsenführerschein)',
-      abbreviation: 'Spritzbeton-Schein (Düsenführer)',
-      authority: 'Deutscher Beton- und Bautechnik-Verein e.V. (DBV)',
-      scope: 'Qualifikationsnachweis für das manuelle und rechnergestützte Aufspritzen von Spritzbeton im Tunnelbau und bei Sanierungen.',
-      legalBase: 'DIN 18551 (Spritzbeton), Nationaler Anhang zur DIN EN 14487.',
-      targetGroup: 'Bauhandwerker, Tunnelbauer, Spezialtiefbauer, Kolonnenarbeiter im Brückensanierungsbereich.',
-      duration: '5 Tage Kompaktkurs, theoretischer Unterricht gefolgt von intensiven Spritzprüfungen (Überkopf-Spritzkiste).',
-      validity: 'Unbefristet, wobei Arbeitsschutz-Unterweisungen jährlich aufgefrischt werden müssen.',
+      title: inhalt.werte.zertifikatFürSpritzbetonDüsenführer,
+      abbreviation: inhalt.werte.spritzbetonScheinDüsenführer,
+      authority: inhalt.werte.deutscherBetonUndBautechnik2,
+      scope: inhalt.werte.qualifikationsnachweisFürDasManuelle,
+      legalBase: inhalt.werte.din18551SpritzbetonNationaler,
+      targetGroup: inhalt.werte.bauhandwerkerTunnelbauerSpezialtiefbauer,
+      duration: inhalt.werte.t5TageKompaktkursTheoretischer,
+      validity: inhalt.werte.unbefristetWobeiArbeitsschutzUnterweisun,
       difficulty: 'Mittel',
       prerequisites: [
-        'Absolvierte Gesellenprüfung im Bauhauptgewerbe',
-        'Mindestens 1 Jahr nachgewiesene praktische Mitarbeit in einer Spritzbetonkolonne (Nachweis über Baustellenreferenzen)'
+        inhalt.werte.absolvierteGesellenprüfungImBauhauptgewe,
+        inhalt.werte.mindestens1JahrNachgewiesene
       ],
       modules: [
-        'Maschinentechnik der Förderung (Trocken- und Nassspritzverfahren)',
-        'Strömungsmechanik der Förderleitung und Auswahl geeigneter Spritzdüsen',
-        'Einflussfaktoren des Rückpralls (Rebound-Verlust minimieren)',
-        'Richtiges Auftragen in Schichten zur Vermeidung von Trennlagen und Lufttaschen hinter der Bewehrung',
-        'Arbeitsschutz, Atemschutz, Entstaubung, Handhabung alkalischer Erstarrungsbeschleuniger',
-        'Sonderspritzbetone (z. B. stahlfaserverstärkter Spritzbeton zur Hangsicherung)'
+        inhalt.werte.maschinentechnikDerFörderungTrocken,
+        inhalt.werte.strömungsmechanikDerFörderleitungUnd,
+        inhalt.werte.einflussfaktorenDesRückprallsRebound,
+        inhalt.werte.richtigesAuftragenInSchichten,
+        inhalt.werte.arbeitsschutzAtemschutzEntstaubungHandha,
+        inhalt.werte.sonderspritzbetoneZBStahlfaserverstärkte
       ],
-      relevance: 'Qualitativ unzureichend gespritzter Beton neigt zu massiver Hohlraumbildung hinter den Stahlstäben. Das DBV-Düsenführerzertifikat sichert ab, dass der Spritzbeton hohlraumfrei und haftungsverstärkt verdichtet aufgetragen wird. Für Traggerüste und Tunnelschalen gesetzlich ausnahmslos gefordert.',
+      relevance: inhalt.werte.qualitativUnzureichendGespritzterBeton,
       category: 'beton'
     },
     trgs519: {
       id: 'trgs519',
-      title: 'Sachkundenachweis für Asbest-Abbruch, Sanierungs- und Instandhaltungsarbeiten',
-      abbreviation: 'TRGS 519 (Asbest-Schein)',
-      authority: 'Staatliches Gewerbeaufsichtsamt / Bezirksregierung (durch Lehrgangsträger)',
-      scope: 'Gesetzlich vorgeschriebene Sachkunde zum Umgang mit asbesthaltigen Baustoffen beim Bauen im Bestand.',
-      legalBase: 'Gefahrstoffverordnung (GefStoffV), Technische Regel für Gefahrstoffe TRGS 519 (Anlage 3 o. 4).',
-      targetGroup: 'Objektplaner, Baustoffprüfer, Denkmalschützer, Sanierungsunternehmer, Bauleiter, Abbruchpoliere.',
-      duration: 'Mehrtägiger behördlich anerkannter Lehrgang nach TRGS 519 Anlage 3 (große Sachkunde) bzw. Anlage 4 (kleine Sachkunde) mit Prüfung.',
-      validity: '6 Jahre. Muss vor Ablauf dieser Frist durch einen behördlich anerkannten Fortbildungslehrgang um weitere 6 Jahre verlängert werden.',
+      title: inhalt.werte.sachkundenachweisFürAsbestAbbruch,
+      abbreviation: inhalt.werte.trgs519AsbestSchein,
+      authority: inhalt.werte.staatlichesGewerbeaufsichtsamtBezirksreg,
+      scope: inhalt.werte.gesetzlichVorgeschriebeneSachkundeZum,
+      legalBase: inhalt.werte.gefahrstoffverordnungGefstoffvTechnische,
+      targetGroup: inhalt.werte.objektplanerBaustoffprüferDenkmalschütze,
+      duration: inhalt.werte.mehrtägigerBehördlichAnerkannterLehrgang,
+      validity: inhalt.werte.t6JahreMussVor,
       difficulty: 'Mittel',
       prerequisites: [
-        'Keine akademischen Voraussetzungen. Mindestalter 18 Jahre',
-        'Für die tatsächliche Ausführung ist ein Nachweis der persönlichen Atemschutztauglichkeit (Arbeitsmedizinischer Check G26) obligatorisch'
+        inhalt.werte.keineAkademischenVoraussetzungenMindesta,
+        inhalt.werte.fürDieTatsächlicheAusführung
       ],
       modules: [
-        'Eigenschaften von Asbestsorten (Chrysotil, Amphibolasbest) und gesundheitliche Akutrisiken (Asbestose, Mesotheliome)',
-        'Gesetzliche Vorgaben, Anzeige- und Meldepflichten bei den Aufsichtsbehörden',
-        'Messtechnische Raumluftüberwachung vor und nach der Sanierung',
-        'Schutzmaßnahmen bei Arbeiten an schwach gebundenem Asbest (z. B. Spritzasbest) vs. fest gebundenem Asbest (Asbestzement)',
-        'Errichtung von Unterdruckbereichen (Schleusensysteme, 3- und 5-Kammersysteme) und Absauganlagen',
-        'Entsorgung asbesthaltiger Sonderabfälle'
+        inhalt.werte.eigenschaftenVonAsbestsortenChrysotil,
+        inhalt.werte.gesetzlicheVorgabenAnzeigeUnd,
+        inhalt.werte.messtechnischeRaumluftüberwachungVorUnd,
+        inhalt.werte.schutzmaßnahmenBeiArbeitenAn,
+        inhalt.werte.errichtungVonUnterdruckbereichenSchleuse,
+        inhalt.werte.entsorgungAsbesthaltigerSonderabfälle
       ],
-      relevance: 'Beim Bauen im Altbestand (Gebäude vor Bj. 1995) stößt man fast immer auf verdeckten Asbest (z.B. in Fliesenklebern, Spachtelmassen, Dichtungsschnüren). Jeder, der diese Arbeiten leitet, ausschreibt oder bauüberwacht, begibt sich ohne diesen Schein in die akute strafrechtliche Haftung nach StGB § 324a (Boden- und Luftverunreinigung).',
+      relevance: inhalt.werte.beimBauenImAltbestand,
       category: 'schadstoffe'
     },
     trgs524: {
       id: 'trgs524',
-      title: 'Sicherheit und Gesundheitsschutz bei der Arbeit in kontaminierten Bereichen',
-      abbreviation: 'TRGS 524 / DGUV Regel 101-004 (Altlasten)',
-      authority: 'Berufsgenossenschaften (BG Bau) / Staatlich anerkannte Prüfungsinstitute',
-      scope: 'Sachkundenachweis für Bauleiter, Planer und Gutachter bei der Erkundung, Sanierung und Beprobung von kontaminierten Liegenschaften, Deponien und Altlasten-Untergründen.',
-      legalBase: 'TRGS 524 (Technische Regel kontaminierte Bereiche), DGUV Regel 101-004 (früher BGR 128) für Arbeiten im Erdreich.',
-      targetGroup: 'SiGeKo (Sicherheits- und Gesundheitsschutzkoordinatoren), Geologen, Bodengutachter, Rückbauplaner.',
-      duration: '2 bis 5 Tage (je nach Modulausprägung Aufbau 6A/6B), Abschlussprüfung.',
-      validity: 'Unbefristet (regelmäßige betriebliche Nachprüfung empfohlen).',
+      title: inhalt.werte.sicherheitUndGesundheitsschutzBei,
+      abbreviation: inhalt.werte.trgs524DguvRegel,
+      authority: inhalt.werte.berufsgenossenschaftenBgBauStaatlich,
+      scope: inhalt.werte.sachkundenachweisFürBauleiterPlaner,
+      legalBase: inhalt.werte.trgs524TechnischeRegel,
+      targetGroup: inhalt.werte.sigekoSicherheitsUndGesundheitsschutzkoo,
+      duration: inhalt.werte.t2Bis5Tage,
+      validity: inhalt.werte.unbefristetRegelmäßigeBetrieblicheNachpr,
       difficulty: 'Mittel',
       prerequisites: [
-        'Erfahrung im Erdbau oder in der Altlastensanierung vorteilhaft',
-        'Fachkenntnisse im Arbeitsschutz (z.B. Sicherheitskoordinator-Ausbildung)'
+        inhalt.werte.erfahrungImErdbauOder,
+        inhalt.werte.fachkenntnisseImArbeitsschutzZ
       ],
       modules: [
-        'Gefahrstoffanalyse kontaminierter Standorte (z.B. PAK, LCKW, Schwermetalle, Dioxine)',
-        'Erstellung von detaillierten Arbeits- und Sicherheitsplänen (A+S-Pläne)',
-        'Messtechnische Gasdetektion im Arbeitsbereich (PID-Messgeräte, Gasprüfröhrchen)',
-        'Festlegung der Schwarz-Weiß-Bereiche auf Großbaustellen',
-        'Gefahrenprävention bezüglich Brand- und Explosionsrisiken bei Deponie-Rückbauarbeiten',
-        'Umweltschonender Umgang mit kontaminiertem Grundwasser und Sickerleitungskonzepten'
+        inhalt.werte.gefahrstoffanalyseKontaminierterStandort,
+        inhalt.werte.erstellungVonDetailliertenArbeits,
+        inhalt.werte.messtechnischeGasdetektionImArbeitsberei,
+        inhalt.werte.festlegungDerSchwarzWeiß,
+        inhalt.werte.gefahrenpräventionBezüglichBrandUnd,
+        inhalt.werte.umweltschonenderUmgangMitKontaminiertem
       ],
-      relevance: 'Dieser Schein ist unabdingbar für Bauingenieure im Erdbau und in der Baugrundsondierung. Tauchen beim Aushub Kampfmittel, Teeröle oder kontaminierte Haldenstoffe op, muss der Bauleiter die Arbeiten sichern - dies darf rechtlich nur eine nach TRGS 524 sachkondige Person tun.',
+      relevance: inhalt.werte.dieserScheinIstUnabdingbar,
       category: 'schadstoffe'
     },
     trgs521: {
       id: 'trgs521',
-      title: 'Abbruch-, Sanierungs- und Instandhaltungsarbeiten mit künstlichen Mineralfasern',
-      abbreviation: 'TRGS 521 (KMF-Schein)',
-      authority: 'Berufsgenossenschaften und staatlich anerkannte Institutionen',
-      scope: 'Regelt Schutzmaßnahmen und arbeitsmedizinische Richtlinien beim Umgang mit krebserzeugender alter Mineralwolle (Glas- und Steinwolle).',
-      legalBase: 'TRGS 521 (Mineralfasern), Gefahrstoffverordnung (GefStoffV).',
-      targetGroup: 'Bauleiter, Architekten, Energieberater, Trockenbaubetriebe, Entsorgungsbeauftragte, Zimmerer.',
-      duration: '1 Tag Kompaktlehrgang inklusive schriftlicher Sachkundeprüfung.',
-      validity: 'Unbefristet (Auffrischungen bezüglich Gefahrstoffverordnung und PSA werden im 5-Jahres-Turnus angeraten).',
+      title: inhalt.werte.abbruchSanierungsUndInstandhaltungsarbei,
+      abbreviation: inhalt.werte.trgs521KmfSchein,
+      authority: inhalt.werte.berufsgenossenschaftenUndStaatlichAnerka,
+      scope: inhalt.werte.regeltSchutzmaßnahmenUndArbeitsmedizinis,
+      legalBase: inhalt.werte.trgs521MineralfasernGefahrstoffverordnun,
+      targetGroup: inhalt.werte.bauleiterArchitektenEnergieberaterTrocke,
+      duration: inhalt.werte.t1TagKompaktlehrgangInklusive,
+      validity: inhalt.werte.unbefristetAuffrischungenBezüglichGefahr,
       difficulty: 'Mittel',
       prerequisites: [
-        'Mindestalter 18 Jahre',
-        'Eignungsnachweis für Atemschutzgeräte (G26-Zertifikat für Maskenträger)'
+        inhalt.werte.mindestalter18Jahre,
+        inhalt.werte.eignungsnachweisFürAtemschutzgeräteG26
       ],
       modules: [
-        'Faserklassifizierung: Alte krebserzeugende Wolle (KI-Wert < 40) vs. neue gesundheitlich unbedenkliche Bioloswolle',
-        'Staubarme Demontagetechniken: Befeuchten mit Entstaubungsmitteln, Schneiden statt Reiß-Aktivität',
-        'Erforderliche persönliche Schutzausrüstung (PSA): Partikelfiltrierende Halbmaske FFP2/FFP3, Einwegschutzanzüge Typ 5/6',
-        'Sackverpackung vor Transport sowie die exklusive Deklarations- und Ablagerungspflicht auf Deponien',
-        'Einrichten staubarmer Sanierungsbereiche und Trennungen zum Wohnraum'
+        inhalt.werte.faserklassifizierungAlteKrebserzeugendeW,
+        inhalt.werte.staubarmeDemontagetechnikenBefeuchtenMit,
+        inhalt.werte.erforderlichePersönlicheSchutzausrüstung,
+        inhalt.werte.sackverpackungVorTransportSowie,
+        inhalt.werte.einrichtenStaubarmerSanierungsbereicheUn
       ],
-      relevance: 'Alte gesundheitlich bedenkliche Mineralfasern sind in Gebäuden vor Bj. 2000 flächendeckend verbaut. Wer deren Abbruch leitet oder ausschreibt, muss zwingend über Fachkunde nach TRGS 521 verfügen, um Baustellenstilllegungen durch das Gewerbeaufsichtsamt abzuwenden.',
+      relevance: inhalt.werte.alteGesundheitlichBedenklicheMineralfase,
       category: 'schadstoffe'
     },
     sfi: {
       id: 'sfi',
-      title: 'Schweißfachingenieur (International Welding Engineer)',
-      abbreviation: 'SFI / IWE (Schweißaufsicht)',
-      authority: 'DVS (Deutscher Verband für Schweißen) / International Institute of Welding (IIW)',
-      scope: 'Weltweit anerkanntes Spitzenzertifikat zur Schweißaufsicht über geschweißte Stahlbauten und Brücken.',
-      legalBase: 'DIN EN ISO 14731 (Schweißaufsicht - Aufgaben und Verantwortung), Bauprodukt-Herstellungsnorm DIN EN 1090 (Ausführungsklassen EXC 1 bis EXC 4).',
-      targetGroup: 'Tragwerksplaner im Metall- und Stahlbau, Brückenbau-Überwachungsorgane, Werksproduktionsleiter.',
-      duration: 'Sehr umfangreich: 3 Module (SFI 1 - Grundlagen, SFI 2 - Praxis, SFI 3 - Vertiefung), ca. 440 Stunden Gesamtunterricht, mehrere anspruchsvolle Fachprüfungen.',
-      validity: 'Unbefristet. Kontinuierliche Weiterbildung muss nach ISO 14731 nachweisbar sein.',
+      title: inhalt.werte.schweißfachingenieurInternationalWelding,
+      abbreviation: inhalt.werte.sfiIweSchweißaufsicht,
+      authority: inhalt.werte.dvsDeutscherVerbandFür,
+      scope: inhalt.werte.weltweitAnerkanntesSpitzenzertifikatZur,
+      legalBase: inhalt.werte.dinEnIso14731,
+      targetGroup: inhalt.werte.tragwerksplanerImMetallUnd,
+      duration: inhalt.werte.sehrUmfangreich3Module,
+      validity: inhalt.werte.unbefristetKontinuierlicheWeiterbildungM,
       difficulty: 'Sehr Hoch',
       prerequisites: [
-        'Abgeschlossenes anerkanntes Ingenieurstudium (FH, Universität oder technische Hochschule, Fachrichtung Maschinenbau, Bauingenieurwesen o. ä.)',
-        'Zulassungsprüfung bei der anerkannter DVS-SLV Bildungseinrichtung'
+        inhalt.werte.abgeschlossenesAnerkanntesIngenieurstudi,
+        inhalt.werte.zulassungsprüfungBeiDerAnerkannter
       ],
       modules: [
-        'Schweißverfahren und deren Physik (Lichtbogenschweißen, MIG/MAG, TIG, Laser, Unterpulverschweißen)',
-        'Werkstoffe und ihr metallurgisches Verhalten (Gefügestrukturen, Heißrissempfindlichkeit, Vorwärmtemperaturen für hochfeste Stähle)',
-        'Konstruktion und Berechnung geschweißter Verbindungen im Hoch-, Kran- und Brückenbau',
-        'Werkstoffprüfung des Schmelzbads (Röntgenprüfung, Farbeindringverfahren, Ultraschalldiagnostik von Schweißnähten)',
-        'Auslegung und Qualitätskontrolle im Rahmen der DIN EN 1090 (Werkseigene Produktionskontrolle - WPK)'
+        inhalt.werte.schweißverfahrenUndDerenPhysik,
+        inhalt.werte.werkstoffeUndIhrMetallurgisches,
+        inhalt.werte.konstruktionUndBerechnungGeschweißter,
+        inhalt.werte.werkstoffprüfungDesSchmelzbadsRöntgenprü,
+        inhalt.werte.auslegungUndQualitätskontrolleIm
       ],
-      relevance: 'Verantwortlicher Ingenieur im Sinne der EN 1090. Bei großen Tragsystemen im Hoch- und Brückenbau (Überwachungsklassen EXC 3 und 4) darf ohne die Freigabe und Werksüberwachung eines qualifizierten Schweißfachingenieurs (SFI) keine tragende Naht geschweißt oder zugewiesen werden.',
+      relevance: inhalt.werte.verantwortlicherIngenieurImSinne,
       category: 'baubetrieb'
     },
     wood_protection: {
       id: 'wood_protection',
-      title: 'Sachkundiger für Holzschutz am Bau (Bekämpfender Holzschutz)',
-      abbreviation: 'Sachkundenachweis Holzschutz (DIN 68800-4)',
-      authority: 'Deutscher Holz- und Bautenschutzverband e.V. (DHBV) / WTA',
-      scope: 'Spezialisierter Nachweis zur fachgerechten Untersuchung, statischen Schadensanalyse und Bekämpfung pilz- und insektenbedingter Holzschäden im Altbau.',
-      legalBase: 'DIN 68800-4 (Vorbeugende und bekämpfende Maßnahmen gegen holzzerstörende Pilze und Insekten am Bau), WTA-Merkblätter.',
-      targetGroup: 'Denkmalpfleger, Architekten, Gutachter, Bauingenieure im Sanierungsbereich, Zimmerermeister.',
-      duration: 'Ca. 80 Unterrichtsstunden zzgl. umfangreicher schriftlicher und mündlicher Sachkundeprüfung vor dem Fachprüfungsausschuss.',
-      validity: 'Lebenslang gültig, wobei regelmäßige Aktualisierungsseminare zur DIN 68800 und Gefahrstoffverordnung gefordert werden.',
+      title: inhalt.werte.sachkundigerFürHolzschutzAm,
+      abbreviation: inhalt.werte.sachkundenachweisHolzschutzDin68800,
+      authority: inhalt.werte.deutscherHolzUndBautenschutzverband,
+      scope: inhalt.werte.spezialisierterNachweisZurFachgerechten,
+      legalBase: inhalt.werte.din688004Vorbeugende,
+      targetGroup: inhalt.werte.denkmalpflegerArchitektenGutachterBauing,
+      duration: inhalt.werte.ca80UnterrichtsstundenZzgl,
+      validity: inhalt.werte.lebenslangGültigWobeiRegelmäßige,
       difficulty: 'Hoch',
       prerequisites: [
-        'Kandidat aus dem Bauhauptgewerbe (z. B. Zimmerer, Bautenschützer) oder ein einschlägiges Architektur-/Bauingenieurstudium',
-        'Mindestens 3 Jahre Berufserfahrung im Holz- und Bautenschutz'
+        inhalt.werte.kandidatAusDemBauhauptgewerbe,
+        inhalt.werte.mindestens3JahreBerufserfahrung
       ],
       modules: [
-        'Biologische Bestimmung holzzerstörender Pilze (Echter Hausschwamm, Brauner Kellerschwamm, Porenschwämme)',
-        'Erkennung und Differenzierung von Insektenfrass (Hausbockkäfer, Gewöhnlicher Nagekäfer, Buntkäfer)',
-        'Mechanische, thermische (Heißluftverfahren) und chemische Bekämpfungstechniken im Baubestand',
-        'Sanierung von hausschwammbefallenem Mauerwerk (Abflammen, Bohrlochinjektion mit Schwammsperrmitteln)',
-        'Untersuchungsmethoden, Schadenskartierung und Beurteilung der statischen Resttragfähigkeit von Alt-Dachstühlen',
-        'Gefahrstoffverordnung, gesetzliche Anwendungsbeschränkungen für chemische Biozide und Holzschutzmittel'
+        inhalt.werte.biologischeBestimmungHolzzerstörenderPil,
+        inhalt.werte.erkennungUndDifferenzierungVon,
+        inhalt.werte.mechanischeThermischeHeißluftverfahrenUn,
+        inhalt.werte.sanierungVonHausschwammbefallenemMauerwe,
+        inhalt.werte.untersuchungsmethodenSchadenskartierungU,
+        inhalt.werte.gefahrstoffverordnungGesetzlicheAnwendun
       ],
-      relevance: 'Der Schein ist rechtlich zwingend erforderlich, um Hausschwammsanierungen oder chemische Holzbekämpfungen auszuschreiben oder den Einsatz baurechtlich freizugeben. Ohne Sachkundenachweis droht dem Bauunternehmen vollständiger Haftungsausschluss bei Folgeschäden.',
+      relevance: inhalt.werte.derScheinIstRechtlich,
       category: 'denkmal'
     },
     masonry_restoration: {
       id: 'masonry_restoration',
-      title: 'Zertifizierter Fachplaner für Bauwerkserhaltung & Mauerwerksinstandsetzung',
-      abbreviation: 'Fachplaner Mauerwerk (WTA)',
-      authority: 'WTA e.V. (Wissenschaftlich-Technische Arbeitsgemeinschaft für Bauwerkserhaltung)',
-      scope: 'Höchste herstellerneutrale Weiterbildung im Altbaubereich für ingenieurtechnische Mauerwerksdiagnostik und Sanierungsentwürfe.',
-      legalBase: 'WTA-Merkblätter (Referat Mauerwerk), DIN EN 1996 mit NA (Mauerwerksbemessung).',
-      targetGroup: 'Tragwerksplaner, Gutachter für Bauwerksschäden, Restauratoren im Handwerk, Denkmalschutz-Ingenieure.',
-      duration: 'Modulares Aufbaustudium (ca. 45-60 Stunden) mit Projektarbeit und Fachkolloquium beim Wissenschaftsausschuss.',
-      validity: 'Gültigkeit und Fortbildungspflichten nach den Zertifizierungsregeln der WTA.',
+      title: inhalt.werte.zertifizierterFachplanerFürBauwerkserhal,
+      abbreviation: inhalt.werte.fachplanerMauerwerkWta,
+      authority: inhalt.werte.wtaEVWissenschaftlich,
+      scope: inhalt.werte.höchsteHerstellerneutraleWeiterbildungIm,
+      legalBase: inhalt.werte.wtaMerkblätterReferatMauerwerk,
+      targetGroup: inhalt.werte.tragwerksplanerGutachterFürBauwerksschäd,
+      duration: inhalt.werte.modularesAufbaustudiumCa45,
+      validity: inhalt.werte.gültigkeitUndFortbildungspflichtenNach,
       difficulty: 'Hoch',
       prerequisites: [
-        'Studienabschluss im Bauingenieurwesen, Bauphysik oder der Architektur',
-        'Oder anerkannter Restaurator im Handwerk mit mindestens 4 Jahren Berufserfahrung in der Denkmalsanierung'
+        inhalt.werte.studienabschlussImBauingenieurwesenBauph,
+        inhalt.werte.oderAnerkannterRestauratorIm
       ],
       modules: [
-        'Grundlagen der bauphysikalischen Feuchtigkeitsmessung (Darr-Verfahren, CM-Methode, hydrische Ausdehnungsanalysen)',
-        'Untersuchung von schädlichen Salzanreicherungen (Nitrate, Sulfate, Chloride) und deren Kristallisationsdrücke im Gefüge',
-        'Mauerwerkstrockenlegung: Mechanische Horizontalsperren, druckbehaftete Injektionsverfahren (Paraffine, Silikonmikroemulsionen)',
-        'Sanierung von statischen Mauerwerksrissen (Nachträgliches Verpressen, kraftschlüssiges Vernadeln mit Spiralankern)',
-        'Historische Bindemittel und Mörtelrezepturen (Trass-Kalkmischungen vs. Zementsysteme) bei Denkmalen',
-        'Sanierputz-Systeme nach WTA-Merkblatt 2-9 zur schadensfreien Salzeinlagerung im Bauteil'
+        inhalt.werte.grundlagenDerBauphysikalischenFeuchtigke,
+        inhalt.werte.untersuchungVonSchädlichenSalzanreicheru,
+        inhalt.werte.mauerwerkstrockenlegungMechanischeHorizo,
+        inhalt.werte.sanierungVonStatischenMauerwerksrissen,
+        inhalt.werte.historischeBindemittelUndMörtelrezepture,
+        inhalt.werte.sanierputzSystemeNachWta
       ],
-      relevance: 'Historisches Mauerwerk reagiert hochgradig empfindlich auf moderne Sanierungsmaterialien. Fachplaner WTA verhindern irreparable Schäden, indem sie Instandsetzungssysteme materialtechnisch optimal auf die Bestandsmörtel abstimmen.',
+      relevance: inhalt.werte.historischesMauerwerkReagiertHochgradig,
       category: 'denkmal'
     },
     mold_remediation: {
       id: 'mold_remediation',
-      title: 'Sachkundenachweis für die Erkennung, Bewertung und Sanierung von Schimmelpilzbelastungen',
-      abbreviation: 'Schimmel-Sachkunde (TÜV / WTA)',
-      authority: 'Verband der TÜV e.V. / WTA-Akademie (anerkannt nach UBA)',
-      scope: 'Nachweis der fachtechnischen und gesundheitsbezogenen Eignung zur Beseitigung von mikrobiellen Schäden im Bestand.',
-      legalBase: 'Schimmelpilz-Leitfaden des Umweltbundesamtes (UBA), Biostoffverordnung (BioStoffV), DGUV Information 201-028 (Biostoffe bei der Schimmelpilzsanierung).',
-      targetGroup: 'Bauleiter, Schadensgutachter, Malermeister, Trockenbauer, Verwerter von Feuchtigkeitsschäden.',
-      duration: '3 bis 5 Tage Kompaktkurs inklusive mündlicher und schriftlicher Sachkundeprüfung nach staatlichem Prüfstandard.',
-      validity: 'Unbefristet (regelmäßige eintägige Refresher-Seminare werden aufgrund neuer Regelungen des UBA dringend empfohlen).',
+      title: inhalt.werte.sachkundenachweisFürDieErkennung,
+      abbreviation: inhalt.werte.schimmelSachkundeTüvWta,
+      authority: inhalt.werte.verbandDerTüvE,
+      scope: inhalt.werte.nachweisDerFachtechnischenUnd,
+      legalBase: inhalt.werte.schimmelpilzLeitfadenDesUmweltbundesamte,
+      targetGroup: inhalt.werte.bauleiterSchadensgutachterMalermeisterTr,
+      duration: inhalt.werte.t3Bis5Tage,
+      validity: inhalt.werte.unbefristetRegelmäßigeEintägigeRefresher,
       difficulty: 'Mittel',
       prerequisites: [
-        'Fachliche Ausbildung im Bau- oder Ausbaugewerbe (z. B. Maler, Stuckateur, Isolierer) oder Fachplanerausbildung',
-        'Sicherer Umgang mit grundlegendem Werkzeug zur Probeentnahme'
+        inhalt.werte.fachlicheAusbildungImBau,
+        inhalt.werte.sichererUmgangMitGrundlegendem
       ],
       modules: [
-        'Mikrobiologie: Unterscheidung von Schimmelpilzen (Penicillium, Aspergillus, Stachybotrys) und Bakterien (Strukturen, Gefahren)',
-        'Messtechnische Erfassung der Bauwerkshygrothermik (Infrarot-Thermografie, relative Luftfeuchten, Datenloggerauswertung)',
-        'Ursachenanalyse von Schimmelbildung (Wärmebrücken im Bestand, unzureichende Lüftungskonzepte nach DIN 1946-6)',
-        'Schadensklassifizierung (Kategorie 1 bis 3 nach UBA) und Gefährdungsbeurteilung der Arbeitnehmer',
-        'Sanierungskonzepte: Errichtung staubdichter Unterdruck-Schwarzbereiche, Abschleif- und Absaugtechniken (Filterklasse H)',
-        'Desinfektion und Reinigung mit Isopropanol, Wasserstoffperoxid, mechanische Entfernung befallener Putzschichten'
+        inhalt.werte.mikrobiologieUnterscheidungVonSchimmelpi,
+        inhalt.werte.messtechnischeErfassungDerBauwerkshygrot,
+        inhalt.werte.ursachenanalyseVonSchimmelbildungWärmebr,
+        inhalt.werte.schadensklassifizierungKategorie1Bis,
+        inhalt.werte.sanierungskonzepteErrichtungStaubdichter,
+        inhalt.werte.desinfektionUndReinigungMit
       ],
-      relevance: 'Beim nachträglichen Einbau dichter Fenster im Altbestand entstehen ohne Lüftungskonzept hochgradige Schimmelschadensfälle. Unternehmen ohne diese qualifizierte Sachkunde haften unbeschränkt bei misslungener Sporenbeseitigung oder gesundheitlicher Gefährdung.',
+      relevance: inhalt.werte.beimNachträglichenEinbauDichter,
       category: 'schadstoffe'
     },
     heritage_energy: {
       id: 'heritage_energy',
-      title: 'Energieberater für Baudenkmale und erhaltenswerte Bausubstanz',
-      abbreviation: 'Energieberater Denkmal (dena / WTA)',
-      authority: 'dena (Deutsche Energie-Agentur) / WTA-Akademie',
-      scope: 'Zertifizierter Sachverständiger zur thermisch-energetischen Effizienzsteigerung denkmalgeschützter Bauwerke ohne baustoffliche Gefährdung.',
-      legalBase: 'Gebäudemodernisierungsgesetz (GModG; geändertes GEG, Art. 1 in Kraft seit 29.07.2026, weitere Teile ab 01.01.2027) – Ausnahmen für Baudenkmale, KfW-Förderung Effizienzhaus Denkmal.',
-      targetGroup: 'Architekten, Bauphysiker, Tragwerksplaner, gelistete Energieeffizienz-Experten.',
-      duration: 'Spezifisches Aufbaustudium (ca. 160 Unterrichtsstunden) inklusive einer komplexen Fach-Projektarbeit zur Modernisierung eines Denkmals.',
-      validity: '3 Jahre. Verlängerung durch dena-Punkteprüfung und den Nachweis aktiver Denkmal-Modernisierungsplanungen im Register.',
+      title: inhalt.werte.energieberaterFürBaudenkmaleUnd,
+      abbreviation: inhalt.werte.energieberaterDenkmalDenaWta,
+      authority: inhalt.werte.denaDeutscheEnergieAgentur,
+      scope: inhalt.werte.zertifizierterSachverständigerZurThermis,
+      legalBase: inhalt.werte.gebäudemodernisierungsgesetzGmodgGeänder,
+      targetGroup: inhalt.werte.architektenBauphysikerTragwerksplanerGel,
+      duration: inhalt.werte.spezifischesAufbaustudiumCa160,
+      validity: inhalt.werte.t3JahreVerlängerungDurch,
       difficulty: 'Sehr Hoch',
       prerequisites: [
-        'Zulassung als regulärer dena-Energieeffizienz-Experte (Wohn- oder Nichtwohngebäude)',
-        'Bauhauptstudienabschluss oder handwerkliche Meisterstufe mit nachweisbarer Bauphysik-Zertifizierung'
+        inhalt.werte.zulassungAlsRegulärerDena,
+        inhalt.werte.bauhauptstudienabschlussOderHandwerklich
       ],
       modules: [
-        'Einfluss historischer Baustoffe (Lehm, Massivholz, Fachwerkausmauerung) auf hygrothermische Feuchtebilanzen',
-        'Simulationsverfahren für kapillaraktive Innendämmungen (WUFI-Simulationen) zur Vermeidung kritischer Taupunktlagen',
-        'Denkmalpflegerische Kernkriterien (Fassadenerhalt, historische Verglasungen, Kastenfenstersanierungen)',
-        'Wärmebrückenberechnung an Holzbalkenauflagern im gedämmten Mauerwerk zur Verhinderung von Fäulnis',
-        'Konzeptionierung behutsamer Anlagentechnik (z. B. Bauteil- und Wandflächentemperierung, Solarpaneel-Integration)',
-        'Beantragung und Nachweisführung geförderter Sanierungsstufen ("KfW-Effizienzhaus Denkmal")'
+        inhalt.werte.einflussHistorischerBaustoffeLehm,
+        inhalt.werte.simulationsverfahrenFürKapillaraktiveInn,
+        inhalt.werte.denkmalpflegerischeKernkriterienFassaden,
+        inhalt.werte.wärmebrückenberechnungAnHolzbalkenauflag,
+        inhalt.werte.konzeptionierungBehutsamerAnlagentechnik,
+        inhalt.werte.beantragungUndNachweisführungGeförderter
       ],
-      relevance: 'Standardmäßige Außendämmungen (WDVS) sind auf Denkmalfassaden verboten. Die energetische Sanierung muss extrem anspruchsvoll über bauphysikalische Innendämmungen geplant werden. Dies dürfen rechtlich belastbar und im Förderungsrahmen NUR gelistete Energieberater Denkmal tun.',
+      relevance: inhalt.werte.standardmäßigeAußendämmungenWdvsSind,
       category: 'denkmal'
     },
     sigeko: {
       id: 'sigeko',
-      title: 'Sicherheits- und Gesundheitsschutzkoordinator nach BaustellV',
-      abbreviation: 'SiGeKo (RAB 30)',
-      authority: 'Bau-Berufsgenossenschaften (BG) / Staatlich anerkannte Zertifizierungsstellen',
-      scope: 'Zulassung zur gesetzlich vorgeschriebenen Arbeitsschutzkoordinierung auf Baustellen mit mehreren Gewerken.',
-      legalBase: 'Verordnung über Sicherheit und Gesundheitsschutz auf Baustellen (Baustellenverordnung - BaustellV), Regeln für den Arbeitsschutz auf Baustellen (RAB 30).',
-      targetGroup: 'Bauleiter, Projektsteuerer, Architekten, Bauingenieure, Poliere mit Baustellenerfahrung.',
-      duration: 'Lehrgänge zu arbeitsschutzfachlichen und koordinatorenspezifischen Kenntnissen nach RAB 30 (Anlagen B und C) mit Prüfungen.',
-      validity: 'Unbefristet (fortlaufende informelle Aktualisierungsseminare bezüglich Arbeitsschutzregelungen dringend empfohlen).',
+      title: inhalt.werte.sicherheitsUndGesundheitsschutzkoordinat,
+      abbreviation: inhalt.werte.sigekoRab30,
+      authority: inhalt.werte.bauBerufsgenossenschaftenBgStaatlich,
+      scope: inhalt.werte.zulassungZurGesetzlichVorgeschriebenen,
+      legalBase: inhalt.werte.verordnungÜberSicherheitUnd,
+      targetGroup: inhalt.werte.bauleiterProjektsteuererArchitektenBauin,
+      duration: inhalt.werte.lehrgängeZuArbeitsschutzfachlichenUnd,
+      validity: inhalt.werte.unbefristetFortlaufendeInformelleAktuali,
       difficulty: 'Mittel',
       prerequisites: [
-        'Baufachliche Berufsausbildung (Techniker, Meister, Ingenieur)',
-        'Mindestens 2 Jahre einschlägige Berufserfahrung in der operativen Bauausführung oder Bauüberwachung vor Ort'
+        inhalt.werte.baufachlicheBerufsausbildungTechnikerMei,
+        inhalt.werte.mindestens2JahreEinschlägige
       ],
       modules: [
-        'Grundlagen des Arbeitsschutzrechts (ArbSchG, BaustellV, ArbStättV) und Pflichten des Bauherren',
-        'Erstellung des gesetzlich geforderten Sicherheits- und Gesundheitsschutzplans (SiGe-Plan)',
-        'Entwurf der Unterlagen für spätere Arbeiten am Gebäude (Sicherheitsvorkehrungen für Instandsetzungen)',
-        'Koordinierungsmethodik in der Planungsphase (Wohnungs- und Industriebau) sowie in der Ausführungsphase',
-        'Praktischer Arbeitsschutz auf Baustellen: Absturzhöhen, Gerüstabnahmen, Lärmemittlung, Gefahrenbereiche',
-        'Haftungsrechtliche Verpflichtungen und Strafrechtstatbestände bei der Übernahme von Koordinierungsaufgaben'
+        inhalt.werte.grundlagenDesArbeitsschutzrechtsArbschg,
+        inhalt.werte.erstellungDesGesetzlichGeforderten,
+        inhalt.werte.entwurfDerUnterlagenFür,
+        inhalt.werte.koordinierungsmethodikInDerPlanungsphase,
+        inhalt.werte.praktischerArbeitsschutzAufBaustellen,
+        inhalt.werte.haftungsrechtlicheVerpflichtungenUndStra
       ],
-      relevance: 'Sobald Beschäftigte mehrerer Firmen gleichzeitig oder nacheinander auf einer Baustelle tätig sind und ein bestimmter Projektumfang überschritten wird, ist die SiGeKo-Bestellung gesetzliche Pflicht. Ein Fehlen führt zu unmittelbaren Bußgeldern oder behördlich verfügtem Baustopp.',
+      relevance: inhalt.werte.sobaldBeschäftigteMehrererFirmen,
       category: 'baubetrieb'
     },
     crack_injection: {
       id: 'crack_injection',
-      title: 'Fachkraft für das Füllen und Verpressen von Rissen in Betonbauteilen (Injektionsschein)',
-      abbreviation: 'Injektions-Schein (Rissverpressung)',
-      authority: 'Akademien der Bauwirtschaft / DBV-konforme Qualifizierungszentren',
-      scope: 'Zertifizierter Nachweis zur fachgerechten handwerklichen Ausführung von Füll- und Verpressarbeiten im Zuge der Bauwerkssanierung.',
-      legalBase: 'TR Instandhaltung des DIBt (Teil 2), DAfStb-Instandsetzungsrichtlinie, DIN EN 1504-5 (Injektionsstoffe für Betoninstandhaltung).',
-      targetGroup: 'Sanierungshandwerker, Poliere, Kolonnenführer im Hoch-, Tief- und Kanalbau, bauüberwachende Sachkundige.',
-      duration: 'Praxisorientierter Lehrgang mit Applikationsprüfung (Umfang beim Ausbildungszentrum prüfen).',
-      validity: 'Regelungen zu Gültigkeit und Auffrischung beim Ausbildungsbeirat prüfen.',
+      title: inhalt.werte.fachkraftFürDasFüllen,
+      abbreviation: inhalt.werte.injektionsScheinRissverpressung,
+      authority: inhalt.werte.akademienDerBauwirtschaftDbv,
+      scope: inhalt.werte.zertifizierterNachweisZurFachgerechten,
+      legalBase: inhalt.werte.trInstandhaltungDesDibt,
+      targetGroup: inhalt.werte.sanierungshandwerkerPoliereKolonnenführe,
+      duration: inhalt.werte.praxisorientierterLehrgangMitApplikation,
+      validity: inhalt.werte.regelungenZuGültigkeitUnd3,
       difficulty: 'Mittel',
       prerequisites: [
-        'Erfolgreich absolvierter SIVV-Schein (bevorzugt)',
-        'Oder eine abgeschlossene Ausbildung als Beton- und Stahlbetonbauer, Maurer oder artverwandte Baufugen-Gewerke'
+        inhalt.werte.erfolgreichAbsolvierterSivvSchein,
+        inhalt.werte.oderEineAbgeschlosseneAusbildung
       ],
       modules: [
-        'Einteilung von Haarrissen, Gefügestörungen sowie Ursachenermittlung (Zwangspannungen, statische Verschiebungen)',
-        'Materialeigenschaften von Injektionsstoffen: Polyurethanharze (PUR), Epoxidharze (EP), Zementleim bzw. Zementsuspensionen (ZS)',
-        'Mechanische Bohrpackertechnik vs. Klebe-Oberflächenpacker (Auswahl, packerfreie Injektionen, Anordnung)',
-        'Maschinentechnik: Wirkungsweisen von 1-Komponenten-Handhebelpressen und pneumatischen 2-Komponenten-Mischpumpen',
-        'Sanierungsmethoden: Kraftschlüssiges Verbinden (EP-Harz), dehnfähiges Abdichten (PUR-Harze), dehnfähiges Füllen mit Schäumen',
-        'Qualitätssicherung: Überwachung der Bauteiltemperatur, Verbrauchsmessungen, Festigkeits- und Drucküberwachung'
+        inhalt.werte.einteilungVonHaarrissenGefügestörungen,
+        inhalt.werte.materialeigenschaftenVonInjektionsstoffe,
+        inhalt.werte.mechanischeBohrpackertechnikVsKlebe,
+        inhalt.werte.maschinentechnikWirkungsweisenVon1,
+        inhalt.werte.sanierungsmethodenKraftschlüssigesVerbin,
+        inhalt.werte.qualitätssicherungÜberwachungDerBauteilt
       ],
-      relevance: 'Verpressungen im Rissbereich hängen unmittelbar von der handwerklichen Präzision ab (z. B. unzureichender Druck führt zu Hohlräumen, falscher Stoff zu erneutem Bauteilriss). Für Rissverpressungen an Ingenieurtragwerken fordert die ZTV-ING zwingend qualifizierte Injektionistennachweise.',
+      relevance: inhalt.werte.verpressungenImRissbereichHängen,
       category: 'beton'
     },
     thermography: {
       id: 'thermography',
-      title: 'Zertifizierter Thermograf der Stufe 1 / 2 (Sektor Bau)',
-      abbreviation: 'Bauthermograf (DIN EN ISO 9712)',
-      authority: 'Zertifizierungsstellen nach DIN EN ISO 9712 (z. B. Sector Cert, TÜV)',
-      scope: 'Nachweis der messtechnischen und physikalischen Eignung zur berührungslosen Erkennung von Wärmebrücken, Feuchteschäden und Leckagen mittels Infrarot-Kamerasystemen.',
-      legalBase: 'DIN EN ISO 9712 (Zerstörungsfreie Prüfung - Qualifizierung und Zertifizierung von ZfP-Personal).',
-      targetGroup: 'Energieberater, Bauphysiker, Gebäude-Diagnostiker, Sachverständige für Bauschäden.',
-      duration: 'Je Stufe 40-80 Unterrichtsstunden zzgl. einer ganztägigen theoretischen und praktischen Qualifizierungsprüfung.',
-      validity: '5 Jahre, Verlängerung durch Rezertifizierungsprüfung oder Nachweis kontinuierlicher praktischer Tätigkeit.',
+      title: inhalt.werte.zertifizierterThermografDerStufe,
+      abbreviation: inhalt.werte.bauthermografDinEnIso,
+      authority: inhalt.werte.zertifizierungsstellenNachDinEn,
+      scope: inhalt.werte.nachweisDerMesstechnischenUnd,
+      legalBase: inhalt.werte.dinEnIso9712,
+      targetGroup: inhalt.werte.energieberaterBauphysikerGebäudeDiagnost,
+      duration: inhalt.werte.jeStufe4080,
+      validity: inhalt.werte.t5JahreVerlängerungDurch,
       difficulty: 'Hoch',
       prerequisites: [
-        'Nachweis über ausreichendes Sehvermögen (Jaeger-Sehtest)',
-        'Praktische Erfahrungszeiten im Bereich Bauthermographie vor der Fachprüfung (Nachweis über Gutachten-Beispiele)'
+        inhalt.werte.nachweisÜberAusreichendesSehvermögen,
+        inhalt.werte.praktischeErfahrungszeitenImBereich
       ],
       modules: [
-        'Physikalische Grundlagen der Infrarotstrahlung (Emission, Reflexion, Transmission)',
-        'Messtechnische Parameter: Bestimmung des Emissionsgrads (ε) und der reflektierten Umgebungstemperatur',
-        'Bauphysikalische Zusammenhänge: Wärmewiderstand, Feuchtigkeitseinlagerungen, Taupunkt- und Schimmelpilzgrenzen',
-        'Einfluss von Luftströmungen und Druckunterschieden (Synergien mit dem Blower-Door-Verfahren)',
-        'Gerätekunde: Detektorauflösung (NETD), Wellenlängenbereiche (Langwelle 7,5 - 14 µm für den Hochbau)',
-        'Erstellung normgerechter thermografischer Berichte und Defekt-Kartierung'
+        inhalt.werte.physikalischeGrundlagenDerInfrarotstrahl,
+        inhalt.werte.messtechnischeParameterBestimmungDes,
+        inhalt.werte.bauphysikalischeZusammenhängeWärmewiders,
+        inhalt.werte.einflussVonLuftströmungenUnd,
+        inhalt.werte.gerätekundeDetektorauflösungNetdWellenlä,
+        inhalt.werte.erstellungNormgerechterThermografischerB
       ],
-      relevance: 'Gutachterliche Thermografieberichte sind vor Gericht im Schadensfall nur haltbar, wenn der Durchführende ein anerkanntes Personenzertifikat nach DIN EN ISO 9712 nachweisen kann. Das Zertifikat schützt vor falschen Temperaturdeutungen (z. B. Reflexion statt Kältebrücke).',
+      relevance: inhalt.werte.gutachterlicheThermografieberichteSindVo,
       category: 'bauphysik'
     },
     waterproofing: {
       id: 'waterproofing',
-      title: 'Zertifizierter Fachplaner und Sachverständiger für Bauwerksabdichtung',
-      abbreviation: 'Abdichtungs-Planer (DHBV / TÜV)',
-      authority: 'Deutscher Holz- und Bautenschutzverband e.V. (DHBV) / TÜV Bauakademie',
-      scope: 'Spezialisierter Sachkunde- und Planernachweis für anspruchsvolle erdberührte Abdichtungen, Flachdächer und Nassräume im Hoch- und Bestandbau.',
-      legalBase: 'DIN 18531 bis DIN 18535 (Neues Abdichtungsregelwerk, insbesondere DIN 18533 für erdberührte Bauteile), WTA-Merkblätter.',
-      targetGroup: 'Architekten, Tragwerksplaner, beratende Ingenieure, Bauleiter, Bauwerksdiagnostiker.',
-      duration: 'Speziallehrgang in mehreren Fachblöcken (ca. 60-80 Stunden) zzgl. Praxisprojekt und Abschlussbeirat-Prüfung.',
-      validity: 'Unbefristet (kontinuierliche Anpassungsfortbildungen bezüglich neuer Werkstoffentwicklungen zwingend erforderlich).',
+      title: inhalt.werte.zertifizierterFachplanerUndSachverständi,
+      abbreviation: inhalt.werte.abdichtungsPlanerDhbvTüv,
+      authority: inhalt.werte.deutscherHolzUndBautenschutzverband2,
+      scope: inhalt.werte.spezialisierterSachkundeUndPlanernachwei,
+      legalBase: inhalt.werte.din18531BisDin,
+      targetGroup: inhalt.werte.architektenTragwerksplanerBeratendeIngen,
+      duration: inhalt.werte.speziallehrgangInMehrerenFachblöcken,
+      validity: inhalt.werte.unbefristetKontinuierlicheAnpassungsfort,
       difficulty: 'Hoch',
       prerequisites: [
-        'Ingenieurtechnische Bauausbildung oder handwerkliche Meisterprüfungen im Bauwesen',
-        'Mindestens 2 Jahre nachgewiesene Berufserfahrung in der Bauphysik oder im Bautenschützergewerbe'
+        inhalt.werte.ingenieurtechnischeBauausbildungOderHand,
+        inhalt.werte.mindestens2JahreNachgewiesene
       ],
       modules: [
-        'Wasserbeanspruchungsklassen (W1-E bis W4-E), Riss- und Raumnutzungsklassen nach DIN 18533',
-        'Moderne Abdichtungsstoffe: Kunststoffmodifizierte Bitumendickbeschichtungen (PMBC), polymermodifizierte Dickbeschichtungen (FPD), Dichtungsschlämmen (MDS)',
-        'Detailplanung für die Bauausführung: Sockelausbildung, Rohrdurchlässe, Dehnungsfugen und Übergänge',
-        'Bauwerksbeurteilungen bei drückendem Wasser, Schichtenwasser und Bodenfeuchtigkeit',
-        'Nachträgliche Schleierinjektionen und innenliegende druckwasserdichte Sanierungsabdichtungen'
+        inhalt.werte.wasserbeanspruchungsklassenW1EBis,
+        inhalt.werte.moderneAbdichtungsstoffeKunststoffmodifi,
+        inhalt.werte.detailplanungFürDieBauausführung,
+        inhalt.werte.bauwerksbeurteilungenBeiDrückendemWasser,
+        inhalt.werte.nachträglicheSchleierinjektionenUndInnen
       ],
-      relevance: 'Wassereintritte und feuchte Keller sind die Schadensursache Nummer 1 an Alt- und Neubauten. Zertifizierte Abdichtungsplaner minimieren das enorme rechtliche Ausführungsrisiko der statischen Tragsicherungsgefährdung.',
+      relevance: inhalt.werte.wassereintritteUndFeuchteKeller,
       category: 'bauphysik'
     },
     drone_inspection: {
       id: 'drone_inspection',
-      title: 'EU-Fernpilotenzeugnis A2 für Bauwerksinspektion',
-      abbreviation: 'Drohneninspektor A2 (LBA)',
-      authority: 'Luftfahrt-Bundesamt (LBA) / Anerkannte Prüfstellen des Bundes',
-      scope: 'Rechtlicher und praktischer Befähigungsnachweis zum sicheren Betrieb unbemannter Luftfahrtsysteme (UAS) für hochauflösende optische und thermische Bauwerkskartierungen.',
-      legalBase: 'EU-Verordnung 2019/947 (Betrieb von unbemannten Luftfahrzeugen), Luftverkehrsgesetz (LuftVG).',
-      targetGroup: 'Gebäudediagnostiker, Brückenprüfingenieure nach DIN 1076, Schadensgutachter, Vermesser.',
-      duration: '3-4 Tage Theorie- und Praxisausbildung inkl. anspruchsvoller Fachprüfung bei einer zertifizierten Prüfstelle des LBA.',
-      validity: '5 Jahre; Verlängerung nach den Vorgaben des Luftfahrt-Bundesamts.',
+      title: inhalt.werte.euFernpilotenzeugnisA2Für,
+      abbreviation: inhalt.werte.drohneninspektorA2Lba,
+      authority: inhalt.werte.luftfahrtBundesamtLbaAnerkannte,
+      scope: inhalt.werte.rechtlicherUndPraktischerBefähigungsnach,
+      legalBase: inhalt.werte.euVerordnung2019947,
+      targetGroup: inhalt.werte.gebäudediagnostikerBrückenprüfingenieure,
+      duration: inhalt.werte.t34TageTheorie,
+      validity: inhalt.werte.t5JahreVerlängerungNach,
       difficulty: 'Mittel',
       prerequisites: [
-        'Vorgeschalteter EU-Kompetenznachweis A1/A3 (kleiner Drohnenführerschein) obligatorisch',
-        'Erklärung der Absolvierung eines eigenständigen praktischen Flugtrainings',
-        'Haftpflicht-Versicherungsschutz für Fluggeräte im gewerblichen Einsatz'
+        inhalt.werte.vorgeschalteterEuKompetenznachweisA1,
+        inhalt.werte.erklärungDerAbsolvierungEines,
+        inhalt.werte.haftpflichtVersicherungsschutzFürFlugger
       ],
       modules: [
-        'Aerodynamische Windschatten- und Turbulenzeffekte im engebebauten Raum und an Brückenpfeilern',
-        'LBA-Richtlinien bezüglich des Mindestabstands zu Wohngebieten und Verkehrswegen (Kategorie "Open A2")',
-        'Grundlagen der bildgestützten Bauwerks-Vermessung (Photogrammetrie und 3D-Rekonstruktionen)',
-        'Sicherheits-Notfallsteuerungen und Signalstörungs-Gegenmaßnahmen bei GPS-Ausfällen im Stahlgitterschatten',
-        'Datenschutzrechtliche Aspekte (DSGVO) bei der Befliegung bewohnter Fassadenteile'
+        inhalt.werte.aerodynamischeWindschattenUndTurbulenzef,
+        inhalt.werte.lbaRichtlinienBezüglichDes,
+        inhalt.werte.grundlagenDerBildgestütztenBauwerks,
+        inhalt.werte.sicherheitsNotfallsteuerungenUndSignalst,
+        inhalt.werte.datenschutzrechtlicheAspekteDsgvoBei
       ],
-      relevance: 'Die Inspektion hoher Schornsteine, Brückenunterseiten oder weitläufiger Dächer mittels Kameradrohnen ist kostengünstiger und sicherer als Rüstungen oder Steiger. Die A2-Zulassung ist rechtlich unumgänglich für den nahen, genehmigungsfreien Betrieb im städtischen Raum.',
+      relevance: inhalt.werte.dieInspektionHoherSchornsteine,
       category: 'bauphysik'
     },
     building_damage_expert: {
       id: 'building_damage_expert',
-      title: 'Zertifizierter Sachverständiger für Schäden an Gebäuden',
-      abbreviation: 'Bauschadens-Gutachter (IHK / ISO 17024)',
-      authority: 'IHK / Personenzertifizierungsstellen nach DIN EN ISO/IEC 17024',
-      scope: 'Höchststufe der bautechnischen Zertifizierung zur unabhängigen, beweissicheren Bewertung, Ursachenforschung und Schadensbewertung an Konstruktionen.',
-      legalBase: '§ 36 GewO (öffentliche Bestellung), §§ 402 ff. ZPO (gerichtliche Gutachten), DIN EN ISO/IEC 17024 (Personenzertifizierung), BGB/VOB Werkvertragsrecht.',
-      targetGroup: 'Freiberufliche Bausachverständige, planende Ingenieure, Tragwerksprüfer, Versicherungsingenieure.',
-      duration: 'Modulares Studium über ca. 1-2 Jahre (ca. 180-240 Stunden) inkl. Fachgutachten-Hausarbeiten und Abschlusskolloquium.',
-      validity: 'Personenzertifikate nach DIN EN ISO/IEC 17024 meist 5 Jahre; öffentliche Bestellung befristet; Fortbildung nachzuweisen.',
+      title: inhalt.werte.zertifizierterSachverständigerFürSchäden,
+      abbreviation: inhalt.werte.bauschadensGutachterIhkIso,
+      authority: inhalt.werte.ihkPersonenzertifizierungsstellenNachDin,
+      scope: inhalt.werte.höchststufeDerBautechnischenZertifizieru,
+      legalBase: inhalt.werte.t36GewoÖffentlicheBestellung,
+      targetGroup: inhalt.werte.freiberuflicheBausachverständigePlanende,
+      duration: inhalt.werte.modularesStudiumÜberCa,
+      validity: inhalt.werte.personenzertifikateNachDinEn,
       difficulty: 'Sehr Hoch',
       prerequisites: [
-        'Abgeschlossenes Ingenieur- oder Architekturstudium mit mindestens 5 Jahren fundierter Berufserfahrung',
-        'Oder qualifizierter Handwerksmeister (z. B. Maurer, Betonbauer, Zimmerer) mit 10-jähriger Praxis'
+        inhalt.werte.abgeschlossenesIngenieurOderArchitekturs,
+        inhalt.werte.oderQualifizierterHandwerksmeisterZ
       ],
       modules: [
-        'Werkvertragsrecht und Mängelzuweisung nach BGB § 633 und VOB/B',
-        'Schadensmechanik: Thermisch-hygrische Bauwerkspannungen, Setzungserscheinungen und Baugrundfehler',
-        'Bautechnische Bauwerksdiagnostik: Rissbreitenanalysen, Rissmonitoring, zerstörungsfreie Festigkeitsprüfungen',
-        'Dach- und Bauwerksabdichtungskonstruktionen, fehlerhafte Einbauten von Dichtbändern',
-        'Gutachtenmethodik: Unabhängigkeit, Nachvollziehbarkeit für baulaie Gerichte und sachverständige Abgrenzung'
+        inhalt.werte.werkvertragsrechtUndMängelzuweisungNach,
+        inhalt.werte.schadensmechanikThermischHygrischeBauwer,
+        inhalt.werte.bautechnischeBauwerksdiagnostikRissbreit,
+        inhalt.werte.dachUndBauwerksabdichtungskonstruktionen,
+        inhalt.werte.gutachtenmethodikUnabhängigkeitNachvollz
       ],
-      relevance: 'Gerichtliche Beweisbeschlüsse und Versicherungssanierungen berufen sich im Kern auf Gutachten zertifizierter Sachverständiger. Das Siegel nach ISO 17024 oder IHK garantiert höchste Fachkompetenz und genießt absolutes Vertrauen vor deutschen Zivilgerichten.',
+      relevance: inhalt.werte.gerichtlicheBeweisbeschlüsseUndVersicher,
       category: 'baubetrieb'
     }
   };
@@ -590,80 +592,80 @@ export default function Fortbildungen() {
     
     if (userBackground === 'engineer') {
       if (userGoal === 'sanierung') {
-        recs.push({ cert: certs.skp, reason: 'Als Bauingenieur ist der "Sachkundige Planer" der absolute Goldstandard für die Ausarbeitung und Abrechnung von Betoninstandsetzungsprojekten.' });
-        recs.push({ cert: certs.eschein, reason: 'Der E-Schein bildet die technologische Voraussetzung, damit Sie betonüberwachte Großprojekte (z. B. Großbrücken) planen und leiten können.' });
-        recs.push({ cert: certs.building_damage_expert, reason: 'Der Bauschadens-Gutachter (IHK/ISO 17024) vervollständigt Ihr kaufmännisches und beweissicherndes technisches Profil vor Gerichten.' });
+        recs.push({ cert: certs.skp, reason: inhalt.werte.alsBauingenieurIstDer });
+        recs.push({ cert: certs.eschein, reason: inhalt.werte.derEScheinBildet });
+        recs.push({ cert: certs.building_damage_expert, reason: inhalt.werte.derBauschadensGutachterIhk });
       } else if (userGoal === 'bauleitung') {
-        recs.push({ cert: certs.eschein, reason: 'Als bauüberwachende Ingenieurin oder bauüberwachender Ingenieur müssen Sie bei Überwachungsklasse 2 und 3 technisches Know-how auf Prüfklassenniveau nachweisen. Der E-Schein ist hier Pflicht.' });
-        recs.push({ cert: certs.trgs519, reason: 'Bei Sanierungsbauleitungen im Altbestand ist der Asbest-Schein (TRGS 519) ein Muss zur sicheren Überwachung staubfreier Absauganlagen.' });
-        recs.push({ cert: certs.sigeko, reason: 'Der SiGeKo-Schein RAB 30 liefert das rechtliche Rüstzeug, um operative Baustellenabsicherungen parallel zu koordinieren.' });
+        recs.push({ cert: certs.eschein, reason: inhalt.werte.alsBauüberwachendeIngenieurinOder });
+        recs.push({ cert: certs.trgs519, reason: inhalt.werte.beiSanierungsbauleitungenImAltbestand });
+        recs.push({ cert: certs.sigeko, reason: inhalt.werte.derSigekoScheinRab });
       } else if (userGoal === 'stahlbau') {
-        recs.push({ cert: certs.sfi, reason: 'Im konstruktiven Ingenieurbau / Stahlbrückenbau bildet die Qualifikation zum Schweißfachingenieur (SFI/IWE) die rechtliche Grundbedingung für Schweißprüfungen nach EN 1090.' });
+        recs.push({ cert: certs.sfi, reason: inhalt.werte.imKonstruktivenIngenieurbauStahlbrückenb });
       } else if (userGoal === 'spezialwerke') {
-        recs.push({ cert: certs.kks, reason: 'Für die dauerhafte Instandhaltung hochexponierter Ingenieurwerke (Salzbelastung in Parkhäusern, Kappenbereiche von Brücken) empfiehlt sich die elektrochemische KKS-Ausbildung nach ISO 15257.' });
+        recs.push({ cert: certs.kks, reason: inhalt.werte.fürDieDauerhafteInstandhaltung });
       } else if (userGoal === 'holzschutz') {
-        recs.push({ cert: certs.wood_protection, reason: 'Der Sachkundenachweis für Holzschutz am Bau (DIN 68800-4) ist für den planenden Ingenieur zur Schadensbeurteilung und Sanierungsfreigabe von Holzbauten essenziell.' });
+        recs.push({ cert: certs.wood_protection, reason: inhalt.werte.derSachkundenachweisFürHolzschutz });
       } else if (userGoal === 'schadstoffe') {
-        recs.push({ cert: certs.trgs519, reason: 'Der Asbest-Schein TRGS 519 ist gesetzlich vorgeschrieben zur Bauherrenabsicherung bei Schadstoffsanierung.' });
-        recs.push({ cert: certs.trgs524, reason: 'Für Arbeiten im kontaminierten Bereich (Altlasten, gefährlicher Bodeneingriff) ist die Ausbildung nach TRGS 524 zwingend erforderlich.' });
-        recs.push({ cert: certs.trgs521, reason: 'Mit der Fachkunde nach TRGS 521 leiten und koordinieren Sie KMF-Sanierungen staubarm und entsorgungsrechtlich unbedenklich.' });
-        recs.push({ cert: certs.mold_remediation, reason: 'Die Schimmel-Sachkunde liefert den biologisch-technischen Leitfaden zur Desinfektion, Beurteilung und Sanierungsbegleitung im Bestand.' });
+        recs.push({ cert: certs.trgs519, reason: inhalt.werte.derAsbestScheinTrgs });
+        recs.push({ cert: certs.trgs524, reason: inhalt.werte.fürArbeitenImKontaminierten });
+        recs.push({ cert: certs.trgs521, reason: inhalt.werte.mitDerFachkundeNach });
+        recs.push({ cert: certs.mold_remediation, reason: inhalt.werte.dieSchimmelSachkundeLiefert });
       } else if (userGoal === 'denkmal_energie') {
-        recs.push({ cert: certs.heritage_energy, reason: 'Als dena-gelisteter Energieberater Denkmal können Sie hochempfindliche, geförderte energetische Modernisierungspläne rechtlich belastbar unterbreiten.' });
-        recs.push({ cert: certs.masonry_restoration, reason: 'Die WTA-Instandsetzungsplanung liefert die nötige materialspezifische Abstimmung auf historische Trasskalk- und Natursteingefüge zur Schadensvermeidung.' });
+        recs.push({ cert: certs.heritage_energy, reason: inhalt.werte.alsDenaGelisteterEnergieberater });
+        recs.push({ cert: certs.masonry_restoration, reason: inhalt.werte.dieWtaInstandsetzungsplanungLiefert });
       } else if (userGoal === 'baustellen_sicherheit') {
-        recs.push({ cert: certs.sigeko, reason: 'Als Planer/Ingenieur qualifiziert Sie der RAB-30-Nachweis direkt als gesetzlich anerkannter SiGeKo zur Koordinierung paralleler Bauabläufe.' });
+        recs.push({ cert: certs.sigeko, reason: inhalt.werte.alsPlanerIngenieurQualifiziert });
       } else if (userGoal === 'rissinjektion') {
-        recs.push({ cert: certs.skp, reason: 'Planerische Entwürfe, Bauteilauswahlen und Risskartierungen bedürfen des tiefgreifenden betontechnischen SKP-Wissens.' });
-        recs.push({ cert: certs.crack_injection, reason: 'Der handwerkliche Injektionsschein vermittelt Ihnen tiefes Systemwissen über Harze, Zementsuspensionen und Bohrpacker zur besseren Detailüberwachung.' });
+        recs.push({ cert: certs.skp, reason: inhalt.werte.planerischeEntwürfeBauteilauswahlenUnd });
+        recs.push({ cert: certs.crack_injection, reason: inhalt.werte.derHandwerklicheInjektionsscheinVermitte });
       } else if (userGoal === 'bauwerk_diagnose') {
-        recs.push({ cert: certs.thermography, reason: 'Erwirb ein anerkanntes Bauthermografen-Zertifikat nach ISO 9712, um beweissichere thermodynamische Bauwerksbeurteilungen zu verfassen.' });
-        recs.push({ cert: certs.drone_inspection, reason: 'Der große Drohnenführerschein A2 des Luftfahrt-Bundesamtes legitimiert dichte Bauwerküberwachungsflüge im urbanen Raum ohne Strafbarkeitsrisiko.' });
+        recs.push({ cert: certs.thermography, reason: inhalt.werte.erwirbEinAnerkanntesBauthermografen });
+        recs.push({ cert: certs.drone_inspection, reason: inhalt.werte.derGroßeDrohnenführerscheinA2 });
       } else if (userGoal === 'abdichtung') {
-        recs.push({ cert: certs.waterproofing, reason: 'Als zertifizierter Fachplaner für Bauwerksabdichtungen nach DIN 18533 entwerfen Sie horizontal/vertikale Kellersperren lückenlos und schadensfrei.' });
-        recs.push({ cert: certs.masonry_restoration, reason: 'Ergänze WTA-Spezialwissen für historische, feuchtebelastete Bruchstein- oder Altbaumauerwerke bei der nachträglichen Bauwerksabdichtung.' });
+        recs.push({ cert: certs.waterproofing, reason: inhalt.werte.alsZertifizierterFachplanerFür });
+        recs.push({ cert: certs.masonry_restoration, reason: inhalt.werte.ergänzeWtaSpezialwissenFür });
       }
     } else if (userBackground === 'handwerker') {
       if (userGoal === 'sanierung') {
-        recs.push({ cert: certs.sivv, reason: 'Als Maurermeister, Polier oder geschickter Geselle ist der SIVV-Schein essenziell. Jede aktive Kolonne auf Baustellen nach ZTV-ING muss einen SIVV-Eigner führen.' });
-        recs.push({ cert: certs.duesenfuehrer, reason: 'Spritzbeton aufzubringen verlangt äußerste Fingerfertigkeit bezüglich Rückprallminimierung. Der Düsenführerschein sichert Ihre handwerkliche Position.' });
+        recs.push({ cert: certs.sivv, reason: inhalt.werte.alsMaurermeisterPolierOder });
+        recs.push({ cert: certs.duesenfuehrer, reason: inhalt.werte.spritzbetonAufzubringenVerlangtÄußerste });
       } else if (userGoal === 'bauleitung') {
-        recs.push({ cert: certs.sivv, reason: 'Polieren im Bestand wird fast immer durch den SIVV-Schein legitimiert.' });
-        recs.push({ cert: certs.trgs519, reason: 'Wer asbesthaltige Gefahrstoffe (z.B. Fliesenkleber) aktiv abschleift, benötigt zwingend den Sachkundenachweis TRGS 519 zur Genehmigungsabsicherung.' });
+        recs.push({ cert: certs.sivv, reason: inhalt.werte.polierenImBestandWird });
+        recs.push({ cert: certs.trgs519, reason: inhalt.werte.werAsbesthaltigeGefahrstoffeZ });
       } else if (userGoal === 'holzschutz') {
-        recs.push({ cert: certs.wood_protection, reason: 'Als ausführender Handwerker (z. B. Zimmerer) qualifiziert Sie dieser Schein zur bauaufsichtlich konformen Bekämpfung von Hausschwamm und Hausbock nach DIN 68800-4.' });
+        recs.push({ cert: certs.wood_protection, reason: inhalt.werte.alsAusführenderHandwerkerZ });
       } else if (userGoal === 'schadstoffe') {
-        recs.push({ cert: certs.trgs519, reason: 'TRGS 519 Anlage 3/4 ist gesetzlich zwingend gefordert für das manuelle Abschlagen und Schleifen asbesthaltiger Klebstoffe im Sanierungsausbau.' });
-        recs.push({ cert: certs.trgs521, reason: 'Der KMF-Schein sichert Sie beim staubigen Ausbau alter Dämmmaterialien (Glas-/Steinwolle) rechtsschutzrechtlich ab.' });
-        recs.push({ cert: certs.mold_remediation, reason: 'Die Schimmelpilz-Sanierungssachkunde berechtigt Sie zur sicheren und ordnungsgemäßen Beseitigung schwerer Wohnraum-Schimmelpilzschäden.' });
+        recs.push({ cert: certs.trgs519, reason: inhalt.werte.trgs519Anlage3 });
+        recs.push({ cert: certs.trgs521, reason: inhalt.werte.derKmfScheinSichert });
+        recs.push({ cert: certs.mold_remediation, reason: inhalt.werte.dieSchimmelpilzSanierungssachkundeBerech });
       } else if (userGoal === 'baustellen_sicherheit') {
-        recs.push({ cert: certs.sigeko, reason: 'Mit baufachlichem Hintergrund als Meister oder Polier eröffnet Ihnen der RAB-30-Nachweis lukrative SiGeKo-Zusatzaufträge zur Baustellensicherheit.' });
+        recs.push({ cert: certs.sigeko, reason: inhalt.werte.mitBaufachlichemHintergrundAls });
       } else if (userGoal === 'rissinjektion') {
-        recs.push({ cert: certs.crack_injection, reason: 'Der Rissinjektion-Schein ist das handwerkliche Gütesiegel zur kraftschlüssigen oder dehnfähigen Abdichtung von Kellerrissen und Tunnelgewölben.' });
-        recs.push({ cert: certs.sivv, reason: 'Für qualifizierte Injektionen rissbelasteter Bauwerke ist die generelle Mörtelsachkunde der SIVV-Fachkraft eine hervorragende normative Ergänzung.' });
+        recs.push({ cert: certs.crack_injection, reason: inhalt.werte.derRissinjektionScheinIst });
+        recs.push({ cert: certs.sivv, reason: inhalt.werte.fürQualifizierteInjektionenRissbelastete });
       } else if (userGoal === 'bauwerk_diagnose') {
-        recs.push({ cert: certs.drone_inspection, reason: 'Befliege komplexe Steildachflächen oder unzugängliche Simse mit einer A2-Drohnenberechtigung zur schnellen handwerklichen Schadensprüfung.' });
+        recs.push({ cert: certs.drone_inspection, reason: inhalt.werte.befliegeKomplexeSteildachflächenOder });
       } else if (userGoal === 'abdichtung') {
-        recs.push({ cert: certs.waterproofing, reason: 'Bautenschützer und Sanierungshandwerker weisen mit dem Abdichtungs-Zertifikat meisterliche Qualität bei der Kellersanierung nach.' });
-        recs.push({ cert: certs.crack_injection, reason: 'Sie führen hochdruckverpressende Rissabdichtungen mit PUR- oder Acrylatgelen meisterlich aus.' });
+        recs.push({ cert: certs.waterproofing, reason: inhalt.werte.bautenschützerUndSanierungshandwerkerWei });
+        recs.push({ cert: certs.crack_injection, reason: inhalt.werte.sieFührenHochdruckverpressendeRissabdich });
       } else {
-        recs.push({ cert: certs.sivv, reason: 'Zur Weiterbildung im Handwerk bildet der SIVV-Mörtelschein die solide, anerkannte Grundlage.' });
+        recs.push({ cert: certs.sivv, reason: inhalt.werte.zurWeiterbildungImHandwerk });
       }
     } else if (userBackground === 'student') {
-      recs.push({ cert: certs.eschein, reason: 'Studierende des Bauingenieurwesens können oft direkt im Anschluss an ihr Studium den E-Schein an kooperierenden Instituten zu stark vergünstigten Konditionen ablegen.' });
-      recs.push({ cert: certs.skp, reason: 'Berufsziel Instandsetzungsplanung? Bereiten Sie sich akademisch darauf vor: Nach 3 Jahren praktischer Berufserfahrung können Sie die SKP-Aufbaufachprüfung absolvieren.' });
+      recs.push({ cert: certs.eschein, reason: inhalt.werte.studierendeDesBauingenieurwesensKönnen });
+      recs.push({ cert: certs.skp, reason: inhalt.werte.berufszielInstandsetzungsplanungBereiten });
       
       if (userGoal === 'holzschutz') {
-        recs.push({ cert: certs.wood_protection, reason: 'Bietet Architektur- und Baustudierenden ein wertvolles Spezialwissen im anspruchsvollen Holzbau und der historischen Bausubstanz.' });
+        recs.push({ cert: certs.wood_protection, reason: inhalt.werte.bietetArchitekturUndBaustudierenden });
       } else if (userGoal === 'schadstoffe') {
-        recs.push({ cert: certs.trgs524, reason: 'Altlasten und Geotechnik sind sehr gute Vertiefungsfelder des Umwelt- und Bauingenieurwesens am Berufseinstieg.' });
-        recs.push({ cert: certs.trgs521, reason: 'Wichtiges Kompakt-Fachwissen für hiwi-Tätigkeiten (Studentische Hilfskraft) auf Sanierungsbaustellen.' });
+        recs.push({ cert: certs.trgs524, reason: inhalt.werte.altlastenUndGeotechnikSind });
+        recs.push({ cert: certs.trgs521, reason: inhalt.werte.wichtigesKompaktFachwissenFür });
       } else if (userGoal === 'denkmal_energie') {
-        recs.push({ cert: certs.heritage_energy, reason: 'Idealer Einstieg bereits während des Masterstudiums zur zukunftsträchtigen, hocheffizienten bauphysikalischen Denkmalsanierung.' });
+        recs.push({ cert: certs.heritage_energy, reason: inhalt.werte.idealerEinstiegBereitsWährend });
       } else if (userGoal === 'bauwerk_diagnose') {
-        recs.push({ cert: certs.thermography, reason: 'Nutzen Sie thermografische Qualifikationen der Stufe 1 als starkes bauphysikalisches Alleinstellungsmerkmal bei der Bewerbung in renommierten Ingenieurbüros.' });
+        recs.push({ cert: certs.thermography, reason: inhalt.werte.nutzenSieThermografischeQualifikationen });
       } else if (userGoal === 'abdichtung') {
-        recs.push({ cert: certs.waterproofing, reason: 'Vertiefen Sie Ihr Wissen über das anspruchsvolle neue Abdichtungsregelwerk DIN 18533 bereits vor dem Berufseinstieg.' });
+        recs.push({ cert: certs.waterproofing, reason: inhalt.werte.vertiefenSieIhrWissen });
       }
     }
     
@@ -685,19 +687,14 @@ export default function Fortbildungen() {
       {/* Header and overview */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-            <Award className="text-shiraz" /> Relevante Fortbildungen, Scheine &amp; Qualifikationsnachweise
-          </h2>
+            <Award className="text-shiraz" /><MdText text={inhalt.texte.relevanteFortbildungenScheineQualifikati} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Detailliertes und umfassendes Verzeichnis deutscher Fortbildungen, Handwerker- und Ingenieurscheine in den Bereichen Baustofftechnologie, Bautechnik, Schadstoffsanierung und Bauwerksinstandsetzung im Bestand.
-          </p>
+          <p><MdText text={inhalt.texte.detailliertesUndUmfassendesVerzeichnis} /></p>
         </div>
 
         <div className="text-sm text-text-main/80 bg-off-white p-5 rounded-xl border border-home-grau/25 flex gap-3 leading-relaxed">
           <GraduationCap className="text-shiraz shrink-0 mt-0.5" size={20} />
-          <p>
-            Im deutschen Bauwesen sind Qualifikationsnachweise und Zertifizierungen von herausragender rechtlicher Tragkraft. Sie verknüpfen bauphysikalische Kenntnisse mit haftungsrechtlicher Befugnis. Viele Ausschreibungen verlangen herstellerunabhängige Qualifikationsnachweise (z. B. nach Richtlinien des Deutschen Ausschusses für Stahlbeton - DAfStb, der WTA e.V. oder der Berufsgenossenschaften). Ein Nichtvorliegen dieser Nachweise führt regelmäßig zu haftungsrechtlichen Klagen oder Baustopps durch Landesbauordnungen.
-          </p>
+          <p><MdText text={inhalt.texte.imDeutschenBauwesenSind} /></p>
         </div>
 
         {/* Category Filter Bar */}
@@ -788,8 +785,7 @@ export default function Fortbildungen() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
                 <div className="bg-white p-3.5 rounded-xl border border-home-grau/30 shadow-sm space-y-2">
                   <div className="flex items-center gap-1.5 text-gray-900 font-bold border-b pb-1">
-                    <FileText size={14} className="text-shiraz" /> Gesetzliche / Normative Verknüpfung
-                  </div>
+                    <FileText size={14} className="text-shiraz" /><MdText text={inhalt.texte.gesetzlicheNormativeVerknüpfung} /></div>
                   <p className="text-gray-750 leading-relaxed text-xs sm:text-sm">{activeCert.legalBase}</p>
                 </div>
 
@@ -803,7 +799,7 @@ export default function Fortbildungen() {
 
               {/* Scope & Syllabus */}
               <div className="space-y-2.5">
-                <h4 className="font-bold text-xs sm:text-sm text-gray-900 uppercase tracking-wide">Ausbildungsnutzen &amp; Studieninhalte</h4>
+                <h4 className="font-bold text-xs sm:text-sm text-gray-900 uppercase tracking-wide"><MdText text={inhalt.texte.ausbildungsnutzenStudieninhalte} /></h4>
                 <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm space-y-3">
                   <p className="text-xs sm:text-sm text-gray-700 leading-relaxed italic border-l-2 border-shiraz pl-2">
                     "{activeCert.scope}"
@@ -833,7 +829,7 @@ export default function Fortbildungen() {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-bold text-xs sm:text-sm text-gray-900 uppercase tracking-wide mb-1.5">Gültigkeit &amp; Rezertifizierung</h4>
+                  <h4 className="font-bold text-xs sm:text-sm text-gray-900 uppercase tracking-wide mb-1.5"><MdText text={inhalt.texte.gültigkeitRezertifizierung} /></h4>
                   <div className="p-3 bg-stone-100 rounded-xl space-y-2 text-xs sm:text-sm border border-gray-200">
                     <div className="flex justify-between items-center text-[11px] font-mono border-b pb-1">
                       <span className="font-bold text-gray-500">DAUER:</span>
@@ -851,7 +847,7 @@ export default function Fortbildungen() {
               <div className="bg-indigo-50 border border-indigo-200/50 p-4 rounded-xl flex gap-2.5 text-xs sm:text-sm text-indigo-900">
                 <AlertTriangle className="text-indigo-600 shrink-0 mt-0.5" size={16} />
                 <div className="space-y-0.5">
-                  <span className="font-bold block text-indigo-950">Bedeutung für die Praxis:</span>
+                  <span className="font-bold block text-indigo-950"><MdText text={inhalt.texte.bedeutungFürDiePraxis} /></span>
                   <p className="leading-relaxed">{activeCert.relevance}</p>
                 </div>
               </div>
@@ -866,13 +862,9 @@ export default function Fortbildungen() {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <div className="flex items-center gap-2 mb-4 border-b border-home-grau/30 pb-3">
           <span className="p-1.5 bg-shiraz/10 text-shiraz rounded-lg"><Sparkles size={18} /></span>
-          <h3 className="text-xl font-bold text-text-main flex items-center gap-2">
-              Qualifizierungs-Pfadfinder (Welche Ausbildung passt zu mir?)
-            </h3>
+          <h3 className="text-xl font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.qualifizierungsPfadfinderWelcheAusbildun} /></h3>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Geben Sie Ihren Hintergrund und Ihr konkretes Projektziel ein, um Ihren optimalen Weg zu Spezialzertifikaten am Bau zu filtern.
-          </p>
+          <p><MdText text={inhalt.texte.gebenSieIhrenHintergrund} /></p>
         </div>
         </div>
 
@@ -881,9 +873,7 @@ export default function Fortbildungen() {
           {/* Inputs */}
           <div className="md:col-span-5 space-y-4">
             <div>
-              <label className="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-1.5">
-                1. Ihr beruflicher / akademischer Hintergrund:
-              </label>
+              <label className="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-1.5"><MdText text={inhalt.texte.t1IhrBeruflicherAkademischer} /></label>
               <div className="grid grid-cols-1 gap-2">
                 <button
                   onClick={() => { setUserBackground('engineer'); setUserGoal(''); }}
@@ -893,8 +883,7 @@ export default function Fortbildungen() {
                       : 'bg-stone-50 border-gray-200 text-gray-700 hover:bg-stone-100'
                   }`}
                 >
-                  <span className="font-mono">🎓</span> Absolvent / Bauingenieur / Werkstoffwissenschaftler
-                </button>
+                  <span className="font-mono">🎓</span><MdText text={inhalt.texte.absolventBauingenieurWerkstoffwissenscha} /></button>
                 <button
                   onClick={() => { setUserBackground('handwerker'); setUserGoal(''); }}
                   className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center gap-2 ${
@@ -903,8 +892,7 @@ export default function Fortbildungen() {
                       : 'bg-stone-50 border-gray-200 text-gray-700 hover:bg-stone-100'
                   }`}
                 >
-                  <span className="font-mono">🛠️</span> Handwerker / Meister / Polier / Quereinsteiger
-                </button>
+                  <span className="font-mono">🛠️</span><MdText text={inhalt.texte.handwerkerMeisterPolierQuereinsteiger} /></button>
                 <button
                   onClick={() => { setUserBackground('student'); setUserGoal(''); }}
                   className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center gap-2 ${
@@ -913,16 +901,13 @@ export default function Fortbildungen() {
                       : 'bg-stone-50 border-gray-200 text-gray-700 hover:bg-stone-100'
                   }`}
                 >
-                  <span className="font-mono font-bold">📖</span> Studierender der Architektur / Bauingenieurwesen
-                </button>
+                  <span className="font-mono font-bold">📖</span><MdText text={inhalt.texte.studierenderDerArchitekturBauingenieurwe} /></button>
               </div>
             </div>
 
             {userBackground && (
               <div className="animate-in fade-in duration-300">
-                <label className="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-1.5">
-                  2. Ihr primäres Einsatz- oder Karriereziel im Bestand:
-                </label>
+                <label className="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-1.5"><MdText text={inhalt.texte.t2IhrPrimäresEinsatz} /></label>
                 <div className="grid grid-cols-1 gap-2 max-h-[300px] overflow-y-auto pr-1">
                   
                   {/* Shared/Universal goals tailored contextually */}
@@ -934,7 +919,7 @@ export default function Fortbildungen() {
                         : 'bg-stone-50 border-gray-200 text-gray-700 hover:bg-stone-100'
                     }`}
                   >
-                    <span>Betonbau- / Parkhaus- / Brückeninstandsetzung leiten</span>
+                    <span><MdText text={inhalt.texte.betonbauParkhausBrückeninstandsetzungLei} /></span>
                     <Hammer size={12} className="shrink-0 text-shiraz" />
                   </button>
                   <button aria-pressed={userGoal === 'bauleitung'}
@@ -945,7 +930,7 @@ export default function Fortbildungen() {
                         : 'bg-stone-50 border-gray-200 text-gray-700 hover:bg-stone-100'
                     }`}
                   >
-                    <span>Bauüberwachung auf anspruchsvollen Sanierungsbaustellen</span>
+                    <span><MdText text={inhalt.texte.bauüberwachungAufAnspruchsvollenSanierun} /></span>
                     <Zap size={12} className="shrink-0 text-shiraz" />
                   </button>
                   <button aria-pressed={userGoal === 'holzschutz'}
@@ -956,7 +941,7 @@ export default function Fortbildungen() {
                         : 'bg-stone-50 border-gray-200 text-gray-700 hover:bg-stone-100'
                     }`}
                   >
-                    <span>Historischen Holzbau &amp; Dachstühle sanieren und begutachten</span>
+                    <span><MdText text={inhalt.texte.historischenHolzbauDachstühleSanieren} /></span>
                     <Hammer size={12} className="shrink-0 text-shiraz" />
                   </button>
                   <button aria-pressed={userGoal === 'schadstoffe'}
@@ -967,7 +952,7 @@ export default function Fortbildungen() {
                         : 'bg-stone-50 border-gray-200 text-gray-700 hover:bg-stone-100'
                     }`}
                   >
-                    <span>Schadstoffsanierung &amp; Innenraumhygiene (Asbest/Schimmel) leiten</span>
+                    <span><MdText text={inhalt.texte.schadstoffsanierungInnenraumhygieneAsbes} /></span>
                     <Zap size={12} className="shrink-0 text-shiraz" />
                   </button>
                   <button aria-pressed={userGoal === 'rissinjektion'}
@@ -978,7 +963,7 @@ export default function Fortbildungen() {
                         : 'bg-stone-50 border-gray-200 text-gray-700 hover:bg-stone-100'
                     }`}
                   >
-                    <span>Rissabdichtungen &amp; Harzinjektionen fachgerecht ausführen</span>
+                    <span><MdText text={inhalt.texte.rissabdichtungenHarzinjektionenFachgerec} /></span>
                     <Hammer size={12} className="shrink-0 text-shiraz" />
                   </button>
                   <button aria-pressed={userGoal === 'baustellen_sicherheit'}
@@ -989,7 +974,7 @@ export default function Fortbildungen() {
                         : 'bg-stone-50 border-gray-200 text-gray-700 hover:bg-stone-100'
                     }`}
                   >
-                    <span>Sicherheitskoordination nach BaustellV (SiGeKo RAB 30)</span>
+                    <span><MdText text={inhalt.texte.sicherheitskoordinationNachBaustellvSige} /></span>
                     <Zap size={12} className="shrink-0 text-shiraz" />
                   </button>
                   <button aria-pressed={userGoal === 'bauwerk_diagnose'}
@@ -1000,7 +985,7 @@ export default function Fortbildungen() {
                         : 'bg-stone-50 border-gray-200 text-gray-700 hover:bg-stone-100'
                     }`}
                   >
-                    <span>Bauwerksdiagnostik, Inspektion &amp; Messtechnik (z. B. Drohne/Thermografie)</span>
+                    <span><MdText text={inhalt.texte.bauwerksdiagnostikInspektionMesstechnikZ} /></span>
                     <Zap size={12} className="shrink-0 text-shiraz" />
                   </button>
                   <button aria-pressed={userGoal === 'abdichtung'}
@@ -1011,7 +996,7 @@ export default function Fortbildungen() {
                         : 'bg-stone-50 border-gray-200 text-gray-700 hover:bg-stone-100'
                     }`}
                   >
-                    <span>Bauwerksabdichtungen &amp; Feuchtigkeitsschutz planen / ausführen</span>
+                    <span><MdText text={inhalt.texte.bauwerksabdichtungenFeuchtigkeitsschutzP} /></span>
                     <Hammer size={12} className="shrink-0 text-shiraz" />
                   </button>
 
@@ -1026,7 +1011,7 @@ export default function Fortbildungen() {
                             : 'bg-stone-50 border-gray-200 text-gray-700 hover:bg-stone-100'
                         }`}
                       >
-                        <span>Stahlbau- / Schweißaufsicht nach DIN EN 1090 übernehmen</span>
+                        <span><MdText text={inhalt.texte.stahlbauSchweißaufsichtNachDin} /></span>
                         <Zap size={12} className="shrink-0 text-shiraz" />
                       </button>
                       <button aria-pressed={userGoal === 'spezialwerke'}
@@ -1037,7 +1022,7 @@ export default function Fortbildungen() {
                             : 'bg-stone-50 border-gray-200 text-gray-700 hover:bg-stone-100'
                         }`}
                       >
-                        <span>Elektrochemischen KKS-Schutz für Chloridschäden planen</span>
+                        <span><MdText text={inhalt.texte.elektrochemischenKksSchutzFür} /></span>
                         <Zap size={12} className="shrink-0 text-shiraz" />
                       </button>
                       <button aria-pressed={userGoal === 'denkmal_energie'}
@@ -1048,7 +1033,7 @@ export default function Fortbildungen() {
                             : 'bg-stone-50 border-gray-200 text-gray-700 hover:bg-stone-100'
                         }`}
                       >
-                        <span>Energetische Sanierung historischer Baudenkmale planen</span>
+                        <span><MdText text={inhalt.texte.energetischeSanierungHistorischerBaudenk} /></span>
                         <Zap size={12} className="shrink-0 text-shiraz" />
                       </button>
                     </>
@@ -1063,7 +1048,7 @@ export default function Fortbildungen() {
                           : 'bg-stone-50 border-gray-200 text-gray-700 hover:bg-stone-100'
                       }`}
                     >
-                      <span>Energetische Sanierung historischer Baudenkmale planen</span>
+                      <span><MdText text={inhalt.texte.energetischeSanierungHistorischerBaudenk2} /></span>
                       <Zap size={12} className="shrink-0 text-shiraz" />
                     </button>
                   )}
@@ -1077,11 +1062,9 @@ export default function Fortbildungen() {
           <div className="md:col-span-7 bg-stone-50 p-5 rounded-2xl border border-home-grau/30 flex flex-col justify-center min-h-[350px]">
             {userBackground && userGoal ? (
               <div className="space-y-4 animate-in fade-in duration-300">
-                <span className="text-[10px] font-bold text-shiraz uppercase tracking-widest block">Unsere Analyse &amp; Zertifizierungspfad</span>
+                <span className="text-[10px] font-bold text-shiraz uppercase tracking-widest block"><MdText text={inhalt.texte.unsereAnalyseZertifizierungspfad} /></span>
                 <h4 className="font-bold text-sm text-gray-900 border-b pb-1.5 flex items-center gap-1.55">
-                  <CheckCircle size={16} className="text-emerald-600" />
-                  Empfohlene Qualifikationsnachweise &amp; Zusatzstufen
-                </h4>
+                  <CheckCircle size={16} className="text-emerald-600" /><MdText text={inhalt.texte.empfohleneQualifikationsnachweiseZusatzs} /></h4>
                 
                 {recommendedCerts.length > 0 ? (
                   <div className="space-y-3 max-h-[400px] overflow-y-auto pr-1">
@@ -1100,25 +1083,20 @@ export default function Fortbildungen() {
                         <button 
                           onClick={() => setActiveCertId(rec.cert.id)}
                           className="text-[9.5px] font-bold text-shiraz hover:underline flex items-center gap-1 mt-1.5"
-                        >
-                          Details im Verzeichnis ansehen <ArrowRight size={10} />
+                        ><MdText text={inhalt.texte.detailsImVerzeichnisAnsehen} /><ArrowRight size={10} />
                         </button>
                       </div>
                     ))}
                   </div>
                 ) : (
-                  <p className="text-xs text-gray-500 italic">
-                    Keine direkten Spezifikationsübereinstimmungen gefunden. Wählen Sie ein anderes Karriereziel, um das dichte Richtlinienprüfungsnetz des DBV abzugleichen.
-                  </p>
+                  <p className="text-xs text-gray-500 italic"><MdText text={inhalt.texte.keineDirektenSpezifikationsübereinstimmu} /></p>
                 )}
               </div>
             ) : (
               <div className="text-center text-home-grau flex flex-col items-center justify-center gap-2">
                 <HelpCircle size={36} className="text-gray-300" />
-                <p className="font-medium text-xs">Pfadfinder inaktiv</p>
-                <p className="text-[11px] max-w-sm leading-relaxed text-gray-500">
-                  Bitte wählen Sie links Ihre Ausbildungsstufe und Ihr Sanierungs- oder Planungsziel im Bestand aus, um eine passgenaue Laufbahnsimulation und die rechtlich verknüpften Lehrgangsscheine zu generieren.
-                </p>
+                <p className="font-medium text-xs"><MdText text={inhalt.texte.pfadfinderInaktiv} /></p>
+                <p className="text-[11px] max-w-sm leading-relaxed text-gray-500"><MdText text={inhalt.texte.bitteWählenSieLinks} /></p>
               </div>
             )}
           </div>
@@ -1127,39 +1105,15 @@ export default function Fortbildungen() {
       </div>
 
       <ModuleFooter 
-        weblinks={[
-          { title: "Deutscher Beton- und Bautechnik-Verein e.V. (DBV)", url: "https://www.betonverein.de/" },
-          { title: "WTA Publications (WTA GmbH) – Merkblätter der WTA e.V.", url: "https://www.wta-gmbh.de/" },
-          { title: "dena - Deutsche Energie-Agentur Expertenliste", url: "https://www.energie-effizienz-experten.de/" },
-          { title: "FKKS e.V. - Kathodischer Korrosionsschutz Ausbildung", url: "https://www.fkks.de/" }
-        ]} 
+        weblinks={inhalt.daten["Fortbildungen.weblinks"]} 
         wikipedia={[
           { title: "Betontechnologe" },
           { title: "Hausschwamm", url: "https://de.wikipedia.org/wiki/Echter_Hausschwamm" },
-          { title: "Kathodischer Korrosionsschutz", url: "https://de.wikipedia.org/wiki/Kathodischer_Korrosionsschutz" }
+          { title: inhalt.werte.kathodischerKorrosionsschutz, url: "https://de.wikipedia.org/wiki/Kathodischer_Korrosionsschutz" }
         ]} 
-        literatur={[
-          'Deutscher Beton- und Bautechnik-Verein e.V. (DBV): DBV-Merkblattsammlung und Schulungshandbücher',
-          'WTA e.V.: Wissenschaftlich-Technische Arbeitsgemeinschaft für Bauwerkserhaltung und Denkmalpflege Merkblätter',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]} 
-        regelwerke={[
-          { title: 'Ausbildungsbeirat Sachkundiger Planer für Betonerhaltung (ABB-SKP)' },
-          { title: 'DVS / EWF Richtlinien für Schweiß- und Verbindungstechnik', url: 'https://www.dvs-home.de/' },
-          { title: 'dena Regelheft Energieeffizienz-Expertenliste', url: 'https://www.energie-effizienz-experten.de/' }
-        ]} 
-        formeln={[
-          {
-            formel: 'U_{\\text{vorh}} \\le U_{\\text{GEG}} \\implies \\Delta Q = (U_{\\text{Bestand}} - U_{\\text{Saniert}}) \\cdot A \\cdot F_x \\cdot H_T',
-            erklaerung: 'Heizwärmebedarfseinsparung bei energetischer Sanierung (Berechnungsgrundlage für Gebäudeenergieberater nach dem Gebäudemodernisierungsgesetz (GModG, in Kraft seit 29.07.2026, vormals GEG) und dena-Expertenliste).',
-            quelle: 'GModG (vormals GEG) / Energieberater-Leitfaden'
-          },
-          {
-            formel: 'E_{\\text{KKS}} \\le -850\\,\\text{mV}_{\\text{CSE}} \\implies \\text{Schutzpotentialkriterium für kathodisch geschützten Stahlbeton}',
-            erklaerung: 'KKS-Schutzkriterium nach DIN EN ISO 12696 zur Vermeidung von Lochfraßkorrosion der Bewehrung bei Chloridbeaufschlagung.',
-            quelle: 'DIN EN ISO 12696'
-          }
-        ]} 
+        literatur={inhalt.daten["Fortbildungen.literatur"]} 
+        regelwerke={inhalt.daten["Fortbildungen.regelwerke"]} 
+        formeln={inhalt.daten["Fortbildungen.formeln"]} 
       />
     </div>
   );

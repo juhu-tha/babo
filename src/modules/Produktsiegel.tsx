@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Award, Leaf, Trees, ShieldCheck, Building, FileText, CheckCircle2, Info, HelpCircle } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import inhalt from '@/content/produktsiegel/Produktsiegel.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function Produktsiegel() {
   const [activeIsoType, setActiveIsoType] = useState<'type1' | 'type2' | 'type3'>('type1');
@@ -8,48 +10,33 @@ export default function Produktsiegel() {
   const isoTypes = [
     {
       id: 'type1' as const,
-      title: 'Typ I (ISO 14024)',
-      subtitle: 'Klassische Umweltzeichen',
-      desc: 'Freiwillige, auf Kriterien basierende Umweltkennzeichnungen, die von unabhängigen Dritten (Dritterhebung) verifiziert werden. Sie betrachten den gesamten Lebensweg eines Produkts und zeichnen die ökologischen Spitzenreiter einer Produktgruppe aus.',
-      criteria: [
-        'Prüfung durch unabhängige Zertifizierungsstellen',
-        'Ganzheitlicher Ansatz (Multi-Criteria)',
-        'Erhöhtes Vertrauen durch objektive Kriterien',
-        'Zielgruppe: Planer, Endverbraucher, Bauherren'
-      ],
-      examples: 'Blauer Engel, natureplus, EU-Ecolabel',
+      title: inhalt.werte.typIIso14024,
+      subtitle: inhalt.werte.klassischeUmweltzeichen,
+      desc: inhalt.werte.freiwilligeAufKriterienBasierende,
+      criteria: inhalt.daten["Produktsiegel.isoTypes.0.criteria"],
+      examples: inhalt.werte.blauerEngelNatureplusEu,
       textColor: 'text-blue-700 bg-blue-50 border-blue-200',
-      badge: 'Zertifiziert durch Dritte'
+      badge: inhalt.werte.zertifiziertDurchDritte
     },
     {
       id: 'type2' as const,
-      title: 'Typ II (ISO 14021)',
+      title: inhalt.werte.typIiIso14021,
       subtitle: 'Hersteller-Selbstdeklarationen',
-      desc: 'Umweltbezogene Anbietererklärungen, die vom Hersteller selbst formuliert und veröffentlicht werden (z. B. auf Verpackungen oder Datenblättern). Sie sind oft nicht zertifiziert, müssen aber sachlich richtig, prüfbar und wissenschaftlich fundiert sein.',
-      criteria: [
-        'Keine obligatorische Drittprüfung erforderlich',
-        'Fokus meist auf Einzeleigenschaften (Single-Issue)',
-        'Beispiele: "100% recyclingfähig", "30% Recyclatanteil"',
-        'Zielgruppe: Direktabnehmer, Verarbeiter'
-      ],
-      examples: 'Selbsterklärungen zu Recyclatgehalt, Recyclingfähigkeit, Schadstofffreiheit',
+      desc: inhalt.werte.umweltbezogeneAnbietererklärungenDieVom,
+      criteria: inhalt.daten["Produktsiegel.isoTypes.1.criteria"],
+      examples: inhalt.werte.selbsterklärungenZuRecyclatgehaltRecycli,
       textColor: 'text-amber-700 bg-amber-50 border-amber-200',
-      badge: 'Eigenerklärung des Herstellers'
+      badge: inhalt.werte.eigenerklärungDesHerstellers
     },
     {
       id: 'type3' as const,
-      title: 'Typ III (ISO 14025)',
-      subtitle: 'Umweltproduktdeklarationen (EPD)',
-      desc: 'Standardisierte, quantifizierte Umweltinformationen auf Basis einer wissenschaftlichen Ökobilanz (LCA) nach EN 15804. Sie enthalten keine Bewertung ("gut/schlecht"), sondern stellen lediglich verifizierte ökologische Fakten zur Verfügung.',
-      criteria: [
-        'Obligatorische Prüfung durch unabhängigen Verifizierer',
-        'Grundlage: Umfassende quantitative Ökobilanzierung (LCA)',
-        'Voraussetzung für Gebäudezertifikationen (DGNB, QNG, LEED)',
-        'Zielgruppe: Fachplaner, Ökobilanzierer, Auditoren'
-      ],
-      examples: 'EPD vom Institut Bauen und Umwelt (IBU), EPD-Musterdatenbanken',
+      title: inhalt.werte.typIiiIso14025,
+      subtitle: inhalt.werte.umweltproduktdeklarationenEpd,
+      desc: inhalt.werte.standardisierteQuantifizierteUmweltinfor,
+      criteria: inhalt.daten["Produktsiegel.isoTypes.2.criteria"],
+      examples: inhalt.werte.epdVomInstitutBauen,
       textColor: 'text-purple-700 bg-purple-50 border-purple-200',
-      badge: 'Unabhängig verifiziert'
+      badge: inhalt.werte.unabhängigVerifiziert
     }
   ];
 
@@ -62,17 +49,11 @@ export default function Produktsiegel() {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-home-grau/30 pb-4 mb-6 gap-4">
           <h3 className="text-xl font-bold text-text-main flex items-center gap-2">
-              <Info className="text-shiraz" size={20} />
-              Klassifizierung nach ISO 14020 Serie
-            </h3>
+              <Info className="text-shiraz" size={20} /><MdText text={inhalt.texte.klassifizierungNachIso14020} /></h3>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Die internationale Normenserie ISO 14020 unterscheidet drei formalisierte Typen von Umweltdeklarationen für Bauprodukte.
-          </p>
+          <p><MdText text={inhalt.texte.dieInternationaleNormenserieIso} /></p>
         </div>
-          <span className="text-[10px] font-mono font-bold uppercase tracking-wider bg-slate-100 text-slate-600 px-2.5 py-1 rounded">
-            ISO 14420 SERIES
-          </span>
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider bg-slate-100 text-slate-600 px-2.5 py-1 rounded"><MdText text={inhalt.texte.iso14420Series} /></span>
         </div>
 
         {/* Dynamic Buttons for Types */}
@@ -132,8 +113,7 @@ export default function Produktsiegel() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
             <div>
               <h5 className="font-bold text-slate-900 text-xs uppercase tracking-wider mb-2 flex items-center gap-1">
-                <CheckCircle2 size={14} className="text-shiraz" /> Kerneigenschaften &amp; Kriterien:
-              </h5>
+                <CheckCircle2 size={14} className="text-shiraz" /><MdText text={inhalt.texte.kerneigenschaftenKriterien} /></h5>
               <ul className="space-y-1.5">
                 {selectedIso.criteria.map((crt, idx) => (
                   <li key={idx} className="text-xs text-slate-600 flex items-start gap-1.5">
@@ -145,9 +125,7 @@ export default function Produktsiegel() {
             </div>
             <div className="bg-white p-4 rounded-lg border border-home-grau/30 flex flex-col justify-between h-full">
               <div>
-                <h5 className="font-bold text-slate-900 text-xs uppercase tracking-wider mb-1">
-                  Typische Beispiele im Bauwesen:
-                </h5>
+                <h5 className="font-bold text-slate-900 text-xs uppercase tracking-wider mb-1"><MdText text={inhalt.texte.typischeBeispieleImBauwesen} /></h5>
                 <p className="text-xs text-shiraz font-medium leading-relaxed">
                   {selectedIso.examples}
                 </p>
@@ -156,10 +134,10 @@ export default function Produktsiegel() {
                 <HelpCircle size={12} className="text-slate-400 shrink-0 mt-0.5" />
                 <span>
                   {selectedIso.id === 'type3' 
-                    ? 'EPDs sind rein informative Produktdeklarationen ohne absolute Bewertungsstufe.' 
+                    ? inhalt.werte.epdsSindReinInformative 
                     : selectedIso.id === 'type2' 
-                    ? 'Selbstdeklarationen decken oft einzelne Recycling-Anteile im R-Beton oder Mauerwerk ab.'
-                    : 'Umweltzeichen bewerten das Bauteil bezüglich Wohngesundheit und Chemikalien.'
+                    ? inhalt.werte.selbstdeklarationenDeckenOftEinzelne
+                    : inhalt.werte.umweltzeichenBewertenDasBauteil
                   }
                 </span>
               </div>
@@ -170,14 +148,10 @@ export default function Produktsiegel() {
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-          <Award className="text-shiraz animate-pulse" /> Etablierte Siegel &amp; Kennzeichnungen
-        </h2>
+          <Award className="text-shiraz animate-pulse" /><MdText text={inhalt.texte.etablierteSiegelKennzeichnungen} /></h2>
         
         <div className="text-xs text-slate-600 bg-slate-50 p-5 rounded-xl border border-home-grau/30 mb-6">
-          <p>
-            Im Gegensatz zu Gebäudezertifizierungen (für das gesamte Bauwerk) bewerten Produktsiegel und Zertifikate einzelne Baustoffe und Bauprodukte.
-            Sie geben zuverlässig Auskunft über Umweltverträglichkeit, Schadstoffemissionen, gesundheitliche Auswirkungen und Kreislauffähigkeit.
-          </p>
+          <p><MdText text={inhalt.texte.imGegensatzZuGebäudezertifizierungen} /></p>
         </div>
 
         <div className="grid grid-cols-1 gap-6">
@@ -188,11 +162,9 @@ export default function Produktsiegel() {
               </div>
               <div>
                 <a href="https://www.blauer-engel.de/" target="_blank" rel="noopener noreferrer" className="hover:underline text-blue-700">
-                  <h4 className="font-bold text-base mb-1">Blauer Engel <span className="text-xs font-mono text-slate-400 font-normal ml-1">(Typ I)</span></h4>
+                  <h4 className="font-bold text-base mb-1"><MdText text={inhalt.texte.blauerEngel} /><span className="text-xs font-mono text-slate-400 font-normal ml-1">(Typ I)</span></h4>
                 </a>
-                <p className="text-xs text-slate-500">
-                  Das älteste Umweltzeichen der Welt (seit 1978). Kennzeichnet Produkte, die umweltfreundlicher sind als vergleichbare konventionelle Produkte. Im Bauwesen oft für emissionsarme Bodenbeläge, Farben, Lacke und Holzwerkstoffe relevant.
-                </p>
+                <p className="text-xs text-slate-500"><MdText text={inhalt.texte.dasÄltesteUmweltzeichenDer} /></p>
               </div>
             </div>
             
@@ -202,11 +174,9 @@ export default function Produktsiegel() {
               </div>
               <div>
                 <a href="https://c2ccertified.org/" target="_blank" rel="noopener noreferrer" className="hover:underline text-emerald-600">
-                  <h4 className="font-bold text-base mb-1">Cradle to Cradle (C2C) <span className="text-xs font-mono text-slate-400 font-normal ml-1">(Typ I artig)</span></h4>
+                  <h4 className="font-bold text-base mb-1"><MdText text={inhalt.texte.cradleToCradleC2c} /><span className="text-xs font-mono text-slate-400 font-normal ml-1"><MdText text={inhalt.texte.typIArtig} /></span></h4>
                 </a>
-                <p className="text-xs text-slate-500">
-                  Bewertet die Kreislauffähigkeit von Produkten (Cradle to Cradle). Ziel ist es, Produkte so zu gestalten, dass sie am Ende ihrer Nutzung als "technische "oder "biologische Nährstoffe" in Kreisläufe zurückfließen, ohne Qualitätsverlust. Stufen: Basic, Bronze, Silver, Gold, Platinum.
-                </p>
+                <p className="text-xs text-slate-500"><MdText text={inhalt.texte.bewertetDieKreislauffähigkeitVon} /></p>
               </div>
             </div>
 
@@ -218,9 +188,7 @@ export default function Produktsiegel() {
                 <h4 className="font-bold text-slate-900 text-base mb-1">
                   <a href="https://fsc.org/" target="_blank" rel="noopener noreferrer" className="hover:underline text-amber-600">FSC</a> &amp; <a href="https://pefc.org/" target="_blank" rel="noopener noreferrer" className="hover:underline text-amber-600">PEFC</a>
                 </h4>
-                <p className="text-xs text-slate-500">
-                  Zertifikate für nachhaltige Waldwirtschaft (Anbieterkettenzertifikate). Sie stellen sicher, dass Holzprodukte (z. B. für Dachstühle, tragende Balken, Parkett) aus Wäldern stammen, die nach ökologischen und sozialen Standards verantwortungsvoll bewirtschaftet werden.
-                </p>
+                <p className="text-xs text-slate-500"><MdText text={inhalt.texte.zertifikateFürNachhaltigeWaldwirtschaft} /></p>
               </div>
             </div>
 
@@ -232,9 +200,7 @@ export default function Produktsiegel() {
                 <a href="https://www.natureplus.org/" target="_blank" rel="noopener noreferrer" className="hover:underline text-purple-600">
                   <h4 className="font-bold text-base mb-1">natureplus <span className="text-xs font-mono text-slate-400 font-normal ml-1">(Typ I)</span></h4>
                 </a>
-                <p className="text-xs text-slate-500">
-                  Internationales Qualitätszeichen für nachhaltige Wohn- und Bauprodukte (z.B. Dämmstoffe aus nachwachsenden Rohstoffen). Prüft streng auf Gesundheitsverträglichkeit, umweltgerechte Produktion und Schonung endlicher Ressourcen.
-                </p>
+                <p className="text-xs text-slate-500"><MdText text={inhalt.texte.internationalesQualitätszeichenFürNachha} /></p>
               </div>
             </div>
 
@@ -244,11 +210,9 @@ export default function Produktsiegel() {
               </div>
               <div>
                 <a href="https://www.csc-zertifizierung.de/" target="_blank" rel="noopener noreferrer" className="hover:underline text-slate-700">
-                  <h4 className="font-bold text-base mb-1">CSC (Concrete Sustainability Council)</h4>
+                  <h4 className="font-bold text-base mb-1"><MdText text={inhalt.texte.cscConcreteSustainabilityCouncil} /></h4>
                 </a>
-                <p className="text-xs text-slate-500">
-                  Weltweites Zertifizierungssystem speziell für Unternehmen der Beton-, Zement- und Gesteinskörnungsindustrie. Bewertet die ökologische, soziale und ökonomische Verantwortung sowie umweltbewusste Lieferketten.
-                </p>
+                <p className="text-xs text-slate-500"><MdText text={inhalt.texte.weltweitesZertifizierungssystemSpeziellF} /></p>
               </div>
             </div>
 
@@ -260,9 +224,7 @@ export default function Produktsiegel() {
                 <a href="https://www.emicode.com/" target="_blank" rel="noopener noreferrer" className="hover:underline text-teal-600">
                   <h4 className="font-bold text-base mb-1">EMICODE</h4>
                 </a>
-                <p className="text-xs text-slate-500">
-                  Wichtiges Siegel für Verlegewerkstoffe (Klebstoffe, Abdichtungsbänder) und flüssige Bauprodukte. Bewertet die Emissionsarmut ("EC 1" oder "EC 1 PLUS"). Schützt Verarbeiter und Bewohner vor VOCs in der Raumluft.
-                </p>
+                <p className="text-xs text-slate-500"><MdText text={inhalt.texte.wichtigesSiegelFürVerlegewerkstoffe} /></p>
               </div>
             </div>
 
@@ -274,9 +236,7 @@ export default function Produktsiegel() {
                 <a href="https://www.eco-institut-label.de/" target="_blank" rel="noopener noreferrer" className="hover:underline text-green-600">
                   <h4 className="font-bold text-base mb-1">eco-INSTITUT-Label</h4>
                 </a>
-                <p className="text-xs text-slate-500">
-                  Verlässliche Auszeichnung für besonders schadstoff- und emissionsarme Produkte. Es werden strenge Prüfkammerprüfungen an Fertigprodukten wie Matratzen, Bodenbelägen und Dämmstoffen durchgeführt.
-                </p>
+                <p className="text-xs text-slate-500"><MdText text={inhalt.texte.verlässlicheAuszeichnungFürBesonders} /></p>
               </div>
             </div>
 
@@ -286,11 +246,9 @@ export default function Produktsiegel() {
               </div>
               <div>
                 <a href="https://ibu-epd.com/" target="_blank" rel="noopener noreferrer" className="hover:underline text-indigo-600">
-                  <h4 className="font-bold text-base mb-1">EPD (Environmental Product Declaration) <span className="text-xs font-mono text-slate-400 font-normal ml-1">(Typ III)</span></h4>
+                  <h4 className="font-bold text-base mb-1"><MdText text={inhalt.texte.epdEnvironmentalProductDeclaration} /><span className="text-xs font-mono text-slate-400 font-normal ml-1">(Typ III)</span></h4>
                 </a>
-                <p className="text-xs text-slate-500">
-                  Standardisierte Umweltproduktdeklaration (nach ISO 14025 / EN 15804), die quantitative Sachdaten über den gesamten Lebenszyklus eines Bauprodukts transparent bereithält. Die entscheidende Grundlage jeder Gebäude-Ökobilanzierung.
-                </p>
+                <p className="text-xs text-slate-500"><MdText text={inhalt.texte.standardisierteUmweltproduktdeklarationN} /></p>
               </div>
             </div>
             
@@ -301,25 +259,12 @@ export default function Produktsiegel() {
       <ModuleFooter 
         wikipedia={[
           { title: 'Umweltdeklaration' },
-          { title: 'Blauer Engel', url: 'https://de.wikipedia.org/wiki/Blauer_Engel' },
+          { title: inhalt.werte.blauerEngel, url: 'https://de.wikipedia.org/wiki/Blauer_Engel' },
           { title: 'FSC', url: 'https://de.wikipedia.org/wiki/Forest_Stewardship_Council' }
         ]}
-        literatur={[
-          'Wendehorst Baustoffkunde: Kapitel "Labels, Produktsiegel und gesetzliche Baustoffdeklarationen".',
-          'Umweltbundesamt (UBA): Praxis-Leitfaden zur umweltfreundlichen öffentlichen Beschaffung von Bauprodukten.'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN ISO 14020:2023-07 (ISO 14020:2022; Umweltaussagen für Produkte und deren Programme – Grundsätze und allgemeine Anforderungen)' },
-          { title: 'ISO 14024:2018 (Umweltkennzeichnungen Typ I – Grundsätze und Verfahren)' },
-          { title: 'DIN EN ISO 14025:2011-10 (Umweltkennzeichnungen und -deklarationen – Typ III Umweltdeklarationen – Grundsätze und Verfahren)' }
-        ]}
-        formeln={[
-          {
-            formel: "\\text{Score}_{\\text{Siegel}} = \\sum_{j} w_j \\cdot R_j \\quad [-]",
-            erklaerung: "Gewichtete Gesamtbewertung von materialökologischen Vergabekriterien (R_j) bei Typ-I-Produktsiegeln.",
-            quelle: "natureplus Vergaberichtlinie"
-          }
-        ]}
+        literatur={inhalt.daten["Produktsiegel.literatur"]}
+        regelwerke={inhalt.daten["Produktsiegel.regelwerke"]}
+        formeln={inhalt.daten["Produktsiegel.formeln"]}
       />
     </div>
   );

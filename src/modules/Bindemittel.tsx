@@ -18,6 +18,8 @@ import {
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import { BlockMath, InlineMath } from 'react-katex';
+import inhalt from '@/content/bindemittel/Bindemittel.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -57,112 +59,112 @@ export const NORM_CEMENTS: NormCement[] = [
     name: 'Portlandzement',
     klinkerMin: 95,
     klinkerMax: 100,
-    components: 'Nur Klinker (K) + bis zu 5 % Nebenbestandteile.',
-    co2Reduction: 'Referenz (0 % CO₂-Minderung)',
-    anwendungDin1045: 'Uneingeschränkt für alle Expositionsklassen zulässig.',
-    frostSuitability: 'Sehr gut (hohe Frost- und Frost-Tausalz-Beständigkeit XF1–XF4).',
-    normReference: 'DIN EN 197-1:2011-11 / DIN 1045-2:2023-08'
+    components: inhalt.werte.nurKlinkerKBis,
+    co2Reduction: inhalt.werte.referenz0CoMinderung,
+    anwendungDin1045: inhalt.werte.uneingeschränktFürAlleExpositionsklassen,
+    frostSuitability: inhalt.werte.sehrGutHoheFrost,
+    normReference: inhalt.werte.dinEn1971
   },
 
   // CEM II
   {
     code: 'CEM II/A-S',
     family: 'CEM II',
-    name: 'Portlandhüttenzement (Typ A)',
+    name: inhalt.werte.portlandhüttenzementTypA,
     klinkerMin: 80,
     klinkerMax: 94,
-    components: 'Hüttensand (S): 6–20 %.',
-    co2Reduction: 'ca. 10–18 % Minderung',
-    anwendungDin1045: 'Uneingeschränkt für alle Expositionsklassen zulässig.',
-    frostSuitability: 'Sehr gut; hohe Dichtigkeit.',
-    normReference: 'DIN EN 197-1:2011-11 / DIN 1045-2'
+    components: inhalt.werte.hüttensandS620,
+    co2Reduction: inhalt.werte.ca1018Minderung,
+    anwendungDin1045: inhalt.werte.uneingeschränktFürAlleExpositionsklassen2,
+    frostSuitability: inhalt.werte.sehrGutHoheDichtigkeit,
+    normReference: inhalt.werte.dinEn19712
   },
   {
     code: 'CEM II/B-S',
     family: 'CEM II',
-    name: 'Portlandhüttenzement (Typ B)',
+    name: inhalt.werte.portlandhüttenzementTypB,
     klinkerMin: 65,
     klinkerMax: 79,
-    components: 'Hüttensand (S): 21–35 %.',
-    co2Reduction: 'ca. 25–32 % Minderung',
-    anwendungDin1045: 'Zulässig für alle Expositionsklassen. Bei XF2/XF4 mit LP-Beton.',
-    frostSuitability: 'Gut; langsamere Frühfestigkeit, dichte Endstruktur.',
-    normReference: 'DIN EN 197-1:2011-11 / DIN 1045-2'
+    components: inhalt.werte.hüttensandS2135,
+    co2Reduction: inhalt.werte.ca2532Minderung,
+    anwendungDin1045: inhalt.werte.zulässigFürAlleExpositionsklassen,
+    frostSuitability: inhalt.werte.gutLangsamereFrühfestigkeitDichte,
+    normReference: inhalt.werte.dinEn19713
   },
   {
     code: 'CEM II/A-LL',
     family: 'CEM II',
-    name: 'Portlandkalksteinzement (Typ A)',
+    name: inhalt.werte.portlandkalksteinzementTypA,
     klinkerMin: 80,
     klinkerMax: 94,
-    components: 'Kalkstein (LL, TOC ≤ 0,20 M.-%): 6–20 %.',
-    co2Reduction: 'ca. 10–18 % Minderung',
-    anwendungDin1045: 'Zulässig für Innen- und Außenbauteile (XC1–XC4, XF1, XA1). Bei XF4 nur mit Nachweis.',
-    frostSuitability: 'Gut bis mäßig (Füllereffekt, feine Porenstruktur).',
-    normReference: 'DIN EN 197-1:2011-11 / DIN 1045-2'
+    components: inhalt.werte.kalksteinLlToc0,
+    co2Reduction: inhalt.werte.ca1018Minderung2,
+    anwendungDin1045: inhalt.werte.zulässigFürInnenUnd,
+    frostSuitability: inhalt.werte.gutBisMäßigFüllereffekt,
+    normReference: inhalt.werte.dinEn19714
   },
   {
     code: 'CEM II/B-LL',
     family: 'CEM II',
-    name: 'Portlandkalksteinzement (Typ B)',
+    name: inhalt.werte.portlandkalksteinzementTypB,
     klinkerMin: 65,
     klinkerMax: 79,
-    components: 'Kalkstein (LL): 21–35 %.',
-    co2Reduction: 'ca. 25–32 % Minderung',
-    anwendungDin1045: 'Bevorzugt für XC1–XC3 und mäßige Bewitterung. Einschränkungen bei hoher Tausalzbeaufschlagung.',
-    frostSuitability: 'Mäßig (nicht für XF4 empfohlen).',
-    normReference: 'DIN EN 197-1:2011-11 / DIN 1045-2'
+    components: inhalt.werte.kalksteinLl2135,
+    co2Reduction: inhalt.werte.ca2532Minderung2,
+    anwendungDin1045: inhalt.werte.bevorzugtFürXc1Xc3,
+    frostSuitability: inhalt.werte.mäßigNichtFürXf4,
+    normReference: inhalt.werte.dinEn19715
   },
   {
     code: 'CEM II/A-V',
     family: 'CEM II',
-    name: 'Portlandflugaschezement (Typ A)',
+    name: inhalt.werte.portlandflugaschezementTypA,
     klinkerMin: 80,
     klinkerMax: 94,
-    components: 'Kieselsäurereiche Flugasche (V): 6–20 %.',
-    co2Reduction: 'ca. 12–20 % Minderung',
-    anwendungDin1045: 'Zulässig für XC1–XC4, XD1–XD3, XA1–XA2. Puzzolanische Nacherhärtung.',
-    frostSuitability: 'Gut; dichtet das Porengefüge gegen Chloride ab.',
-    normReference: 'DIN EN 197-1:2011-11 / DIN 1045-2'
+    components: inhalt.werte.kieselsäurereicheFlugascheV6,
+    co2Reduction: inhalt.werte.ca1220Minderung,
+    anwendungDin1045: inhalt.werte.zulässigFürXc1Xc4,
+    frostSuitability: inhalt.werte.gutDichtetDasPorengefüge,
+    normReference: inhalt.werte.dinEn19716
   },
   {
-    code: 'CEM II/A-M & B-M',
+    code: inhalt.werte.cemIiAM,
     family: 'CEM II',
     name: 'Portlandkompositzement',
     klinkerMin: 65,
     klinkerMax: 94,
-    components: 'Mehrere Hauptbestandteile (z. B. S-LL, S-V, V-LL): 6–35 % Zumahlung.',
-    co2Reduction: 'ca. 15–35 % Minderung',
-    anwendungDin1045: 'Standardzement im modernen Hoch- und Tiefbau.',
-    frostSuitability: 'Gut (Kombinationseffekt aus Reaktivität und Füllerdichte).',
-    normReference: 'DIN EN 197-1:2011-11 / DIN 1045-2'
+    components: inhalt.werte.mehrereHauptbestandteileZB,
+    co2Reduction: inhalt.werte.ca1535Minderung,
+    anwendungDin1045: inhalt.werte.standardzementImModernenHoch,
+    frostSuitability: inhalt.werte.gutKombinationseffektAusReaktivität,
+    normReference: inhalt.werte.dinEn19717
   },
 
   // NEUE KLINKEREFFIZIENTE ZEMENTE (DIN EN 197-5 / DIN 1045-2:2023-08)
   {
     code: 'CEM II/C-M',
     family: 'CEM II/C-M & CEM VI',
-    name: 'Portland-Kompositzement (Klinkereffizient)',
+    name: inhalt.werte.portlandKompositzementKlinkereffizient,
     klinkerMin: 50,
     klinkerMax: 64,
-    components: 'Klinkersparend: 36–50 % mineralische Zumahlstoffe (z. B. Hüttensand S + Kalkstein LL).',
-    co2Reduction: 'ca. 38–50 % Minderung (Öko-Zement)',
-    anwendungDin1045: 'Zulässig nach DIN 1045-2:2023-08 für definierte Expositionsklassen (XC1–XC4, XF1, WF). Bei XF2/XF4/XD3 nur mit Anwendungsnachweis.',
-    frostSuitability: 'Sorgfältige Nachbehandlung zwingend; gute Gefügedichtigkeit.',
-    normReference: 'DIN EN 197-5:2021-07 & DIN 1045-2:2023-08',
+    components: inhalt.werte.klinkersparend3650Mineralische,
+    co2Reduction: inhalt.werte.ca3850Minderung,
+    anwendungDin1045: inhalt.werte.zulässigNachDin1045,
+    frostSuitability: inhalt.werte.sorgfältigeNachbehandlungZwingendGute,
+    normReference: inhalt.werte.dinEn1975,
     isNewStandard: true
   },
   {
     code: 'CEM VI',
     family: 'CEM II/C-M & CEM VI',
-    name: 'Kompositzement (Hochklinkersparend)',
+    name: inhalt.werte.kompositzementHochklinkersparend,
     klinkerMin: 35,
     klinkerMax: 49,
-    components: 'Hüttensand (S): 31–59 % + Kalkstein (LL): 6–20 %.',
-    co2Reduction: 'bis zu 60 % Minderung',
-    anwendungDin1045: 'Neu genormt in DIN EN 197-5; Einsatz nach nationalem Anwendungsdokument DIN 1045-2 für CO₂-optimierte Bauteile.',
-    frostSuitability: 'Langsame Erhärtung, niedrige Hydratationswärme (ideal für massige Bauteile ohne Frost).',
-    normReference: 'DIN EN 197-5:2021-07 & DIN 1045-2:2023-08',
+    components: inhalt.werte.hüttensandS3159,
+    co2Reduction: inhalt.werte.bisZu60Minderung,
+    anwendungDin1045: inhalt.werte.neuGenormtInDin,
+    frostSuitability: inhalt.werte.langsameErhärtungNiedrigeHydratationswär,
+    normReference: inhalt.werte.dinEn19752,
     isNewStandard: true
   },
 
@@ -170,64 +172,64 @@ export const NORM_CEMENTS: NormCement[] = [
   {
     code: 'CEM III/A',
     family: 'CEM III',
-    name: 'Hochofenzement (Typ A)',
+    name: inhalt.werte.hochofenzementTypA,
     klinkerMin: 35,
     klinkerMax: 64,
-    components: 'Hüttensand (S): 36–65 %.',
-    co2Reduction: 'ca. 40–55 % Minderung',
-    anwendungDin1045: 'Sehr breites Anwendungsspektrum. Hoher Chloridwiderstand (XD/XS), niedrige Wärme (LH).',
-    frostSuitability: 'Gut (bei XF4 mit speziellem LP-Nachweis).',
-    normReference: 'DIN EN 197-1:2011-11 / DIN 1045-2'
+    components: inhalt.werte.hüttensandS3665,
+    co2Reduction: inhalt.werte.ca4055Minderung,
+    anwendungDin1045: inhalt.werte.sehrBreitesAnwendungsspektrumHoher,
+    frostSuitability: inhalt.werte.gutBeiXf4Mit,
+    normReference: inhalt.werte.dinEn19718
   },
   {
     code: 'CEM III/B',
     family: 'CEM III',
-    name: 'Hochofenzement (Typ B)',
+    name: inhalt.werte.hochofenzementTypB,
     klinkerMin: 20,
     klinkerMax: 34,
-    components: 'Hüttensand (S): 66–80 %.',
-    co2Reduction: 'ca. 60–75 % Minderung',
-    anwendungDin1045: 'Hoher Sulfatwiderstand (gilt naturgemäß als SR-Zement). Ideal für Massenbeton und Wasserbau.',
-    frostSuitability: 'Langsame Festigkeitsentwicklung; längere Nachbehandlung obligatorisch.',
-    normReference: 'DIN EN 197-1:2011-11 / DIN 1045-2'
+    components: inhalt.werte.hüttensandS6680,
+    co2Reduction: inhalt.werte.ca6075Minderung,
+    anwendungDin1045: inhalt.werte.hoherSulfatwiderstandGiltNaturgemäß,
+    frostSuitability: inhalt.werte.langsameFestigkeitsentwicklungLängereNac,
+    normReference: inhalt.werte.dinEn19719
   },
   {
     code: 'CEM III/C',
     family: 'CEM III',
-    name: 'Hochofenzement (Typ C)',
+    name: inhalt.werte.hochofenzementTypC,
     klinkerMin: 5,
     klinkerMax: 19,
-    components: 'Hüttensand (S): 81–95 %.',
-    co2Reduction: 'bis zu 85 % Minderung',
-    anwendungDin1045: 'Extrem niedrige Hydratationswärme (VLH), hoher chemischer Widerstand.',
-    frostSuitability: 'Nur für frostfreie Spezialanwendungen (Deponiebau, Schlitzwände).',
-    normReference: 'DIN EN 197-1:2011-11 / DIN 1045-2'
+    components: inhalt.werte.hüttensandS8195,
+    co2Reduction: inhalt.werte.bisZu85Minderung,
+    anwendungDin1045: inhalt.werte.extremNiedrigeHydratationswärmeVlh,
+    frostSuitability: inhalt.werte.nurFürFrostfreieSpezialanwendungen,
+    normReference: inhalt.werte.dinEn197110
   },
 
   // CEM IV & V
   {
-    code: 'CEM IV/A & IV/B',
+    code: inhalt.werte.cemIvAIv,
     family: 'CEM IV & V',
     name: 'Puzzolanzement',
     klinkerMin: 45,
     klinkerMax: 89,
-    components: 'Puzzolanische Stoffe (Flugasche, Trass): 11–55 %.',
-    co2Reduction: 'ca. 30–50 % Minderung',
-    anwendungDin1045: 'Wasserbau, Massenbeton, chemischer Angriff.',
-    frostSuitability: 'Mäßig (in Deutschland seltener verwendet als CEM III).',
-    normReference: 'DIN EN 197-1:2011-11'
+    components: inhalt.werte.puzzolanischeStoffeFlugascheTrass,
+    co2Reduction: inhalt.werte.ca3050Minderung,
+    anwendungDin1045: inhalt.werte.wasserbauMassenbetonChemischerAngriff,
+    frostSuitability: inhalt.werte.mäßigInDeutschlandSeltener,
+    normReference: inhalt.werte.dinEn197111
   },
   {
-    code: 'CEM V/A & V/B',
+    code: inhalt.werte.cemVAV,
     family: 'CEM IV & V',
     name: 'Kompositzement',
     klinkerMin: 20,
     klinkerMax: 64,
-    components: 'Hüttensand (18–49 %) + Puzzolane/Flugasche (18–49 %).',
-    co2Reduction: 'ca. 50–70 % Minderung',
-    anwendungDin1045: 'Spezialanwendungen mit geringer Wärmeentwicklung.',
-    frostSuitability: 'Langsame Erhärtung.',
-    normReference: 'DIN EN 197-1:2011-11'
+    components: inhalt.werte.hüttensand1849Puzzolane,
+    co2Reduction: inhalt.werte.ca5070Minderung,
+    anwendungDin1045: inhalt.werte.spezialanwendungenMitGeringerWärmeentwic,
+    frostSuitability: inhalt.werte.langsameErhärtung,
+    normReference: inhalt.werte.dinEn197112
   }
 ];
 
@@ -237,7 +239,7 @@ export const STRENGTH_CLASSES_TABLE = [
     klasse: '32,5 N',
     earlyDays: '7 Tage',
     earlyStrength: '≥ 16,0 MPa',
-    normStrength: '32,5 – 52,5 MPa',
+    normStrength: inhalt.werte.t325525,
     initialSettingMin: '≥ 75 min',
     soundnessMax: '≤ 10 mm'
   },
@@ -245,7 +247,7 @@ export const STRENGTH_CLASSES_TABLE = [
     klasse: '32,5 R',
     earlyDays: '2 Tage',
     earlyStrength: '≥ 10,0 MPa',
-    normStrength: '32,5 – 52,5 MPa',
+    normStrength: inhalt.werte.t3255252,
     initialSettingMin: '≥ 75 min',
     soundnessMax: '≤ 10 mm'
   },
@@ -253,7 +255,7 @@ export const STRENGTH_CLASSES_TABLE = [
     klasse: '42,5 N',
     earlyDays: '2 Tage',
     earlyStrength: '≥ 10,0 MPa',
-    normStrength: '42,5 – 62,5 MPa',
+    normStrength: inhalt.werte.t425625,
     initialSettingMin: '≥ 60 min',
     soundnessMax: '≤ 10 mm'
   },
@@ -261,7 +263,7 @@ export const STRENGTH_CLASSES_TABLE = [
     klasse: '42,5 R',
     earlyDays: '2 Tage',
     earlyStrength: '≥ 20,0 MPa',
-    normStrength: '42,5 – 62,5 MPa',
+    normStrength: inhalt.werte.t4256252,
     initialSettingMin: '≥ 60 min',
     soundnessMax: '≤ 10 mm'
   },
@@ -291,7 +293,7 @@ export default function Bindemittel() {
     labels: [0, 1, 3, 7, 14, 28],
     datasets: [
       {
-        label: 'C3A (Aluminat)',
+        label: inhalt.werte.c3aAluminat,
         data: [0, 600, 750, 820, 850, 900],
         borderColor: '#A3113E',
         tension: 0.4
@@ -303,7 +305,7 @@ export default function Bindemittel() {
         tension: 0.4
       },
       {
-        label: 'C4AF (Ferrit)',
+        label: inhalt.werte.c4afFerrit,
         data: [0, 100, 150, 200, 250, 300],
         borderColor: '#64748b',
         tension: 0.4
@@ -321,18 +323,14 @@ export default function Bindemittel() {
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Layers className="text-shiraz" /> Bindemittel & Zusatzstoffe
-        </h2>
+          <Layers className="text-shiraz" /><MdText text={inhalt.texte.bindemittelZusatzstoffe} /></h2>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Bindemittel wie Zement sind hydraulisch erhärtende Baustoffe, die zusammen mit Wasser ein festes Gestein (Zementstein) bilden. 
-            Durch die Zugabe von Betonzusatzstoffen lassen sich die Eigenschaften im Frisch- und Festbeton gezielt steuern und optimieren.
-          </p>
+          <p><MdText text={inhalt.texte.bindemittelWieZementSind} /></p>
           <p className="mt-2 flex flex-wrap items-center gap-1 text-xs">
             <strong className="mr-1">Lernpfad:</strong>
             {([
-              ['herstellung', 'Herstellung'], ['zement', 'Klinkerphasen & Hydratation'], ['zementchemie_bogue', 'Zementchemie (Bogue, Gefüge)'],
+              ['herstellung', 'Herstellung'], ['zement', inhalt.werte.klinkerphasenHydratation], ['zementchemie_bogue', inhalt.werte.zementchemieBogueGefüge],
               ['normzemente', 'Normzemente'], ['zusatzstoffe', 'Zusatzstoffe'],
             ] as const).map(([id, label], i) => (
               <React.Fragment key={id}>
@@ -340,7 +338,7 @@ export default function Bindemittel() {
                 <button onClick={() => setActiveTab(id)} className="underline decoration-dotted hover:text-shiraz cursor-pointer">{i + 1}. {label}</button>
               </React.Fragment>
             ))}
-            <span className="text-text-main/60 ml-1">Die Zementherstellung ist im Reiter Grundlagen ausführlicher beschrieben.</span>
+            <span className="text-text-main/60 ml-1"><MdText text={inhalt.texte.dieZementherstellungIstIm} /></span>
           </p>
         </div>
 
@@ -353,8 +351,7 @@ export default function Bindemittel() {
             }`}
             onClick={() => setActiveTab('herstellung')}
           >
-            <Factory size={16} /> Herstellung &amp; Eigenschaften
-          </button>
+            <Factory size={16} /><MdText text={inhalt.texte.herstellungEigenschaften} /></button>
           <button aria-pressed={activeTab === 'zement'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'zement' 
@@ -363,8 +360,7 @@ export default function Bindemittel() {
             }`}
             onClick={() => setActiveTab('zement')}
           >
-            <Layers size={16} /> Zement &amp; Hydratation
-          </button>
+            <Layers size={16} /><MdText text={inhalt.texte.zementHydratation} /></button>
           <button aria-pressed={activeTab === 'normzemente'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'normzemente' 
@@ -373,8 +369,7 @@ export default function Bindemittel() {
             }`}
             onClick={() => setActiveTab('normzemente')}
           >
-            <BookOpen size={16} /> Normzemente (DIN EN 197 / DIN 1045-2)
-          </button>
+            <BookOpen size={16} /><MdText text={inhalt.texte.normzementeDinEn197} /></button>
           <button aria-pressed={activeTab === 'zementchemie_bogue'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'zementchemie_bogue' 
@@ -400,35 +395,29 @@ export default function Bindemittel() {
       {activeTab === 'herstellung' && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
-            <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2">Herstellung von Zement</h3>
-            <p className="text-sm text-text-main/80">
-              Die Herstellung von Zement ist ein energie- und ressourcenintensiver Prozess, bestehend aus mehreren Phasen:
-            </p>
+            <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2"><MdText text={inhalt.texte.herstellungVonZement} /></h3>
+            <p className="text-sm text-text-main/80"><MdText text={inhalt.texte.dieHerstellungVonZement} /></p>
             <ol className="list-decimal list-inside text-sm text-text-main/80 space-y-3">
-              <li><strong>Rohstoffgewinnung & Aufbereitung:</strong> Kalkstein (CaCO₃) und Ton bzw. Mergel (Silikate, Aluminate) werden im Steinbruch gewonnen, zerkleinert, homogenisiert und zu feinem Rohmehl vermahlen.</li>
-              <li><strong>Zyklonvorwärmer & Kalzinator:</strong> Das Rohmehl wird auf 800-900 °C erhitzt. Dabei findet die Entsäuerung (Kalzinierung) statt: Kalkstein spaltet CO₂ ab und wird zu Branntkalk (CaO). Diese rohstoffbedingten Emissionen machen rund zwei Drittel der CO₂-Emissionen der Klinkerherstellung aus (Umweltbundesamt).</li>
-              <li><strong>Sintern im Drehrohrofen:</strong> Bei ca. 1.450 °C Brenngut-Temperatur schmelzen die Rohstoffe ansatzweise und reagieren zu den Klinkerphasen Alit (C₃S), Belit (C₂S), Aluminat (C₃A) und Ferrit (C₄AF) – dem Portlandzementklinker.</li>
-              <li><strong>Kühlen & Mahlen:</strong> Der Klinker wird rasch abgekühlt und zusammen mit Gips bzw. Anhydrit (Erstarrungsregler) sowie je nach Zementart weiteren Hauptbestandteilen (Hüttensand, Flugasche, Kalkstein) fein vermahlen.</li>
+              <li><MdText text={inhalt.texte.rohstoffgewinnungAufbereitungKalksteinCa} /></li>
+              <li><MdText text={inhalt.texte.zyklonvorwärmerKalzinatorDasRohmehl} /></li>
+              <li><MdText text={inhalt.texte.sinternImDrehrohrofenBei} /></li>
+              <li><MdText text={inhalt.texte.kühlenMahlenDerKlinker} /></li>
             </ol>
-            <div className="bg-torch-red/10 border border-torch-red/20 p-4 rounded-xl mt-2 text-sm text-text-main/90">
-              <strong>CO₂-Emissionen:</strong> Die Zementherstellung verursacht hohe Emissionen, teilweise brennstoffbedingt, aber überwiegend prozessbedingt durch das Entsäuern des Kalksteins (CaCO₃ → CaO + CO₂).
-              <ul className="list-disc pl-5 mt-2 space-y-1">
-                <li><strong>Alternative Brennstoffe:</strong> Biomasse und Ersatzbrennstoffe statt Kohle.</li>
-                <li><strong>Klinkerreduktion:</strong> Mehr Kompositzemente (CEM II bis CEM VI), Klinkerersatz durch Hüttensand oder calcinierte Tone.</li>
-                <li><strong>Carbon Capture (CCS/CCU):</strong> Abscheidung des Prozess-CO₂ mit Speicherung oder Nutzung.</li>
+            <div className="bg-torch-red/10 border border-torch-red/20 p-4 rounded-xl mt-2 text-sm text-text-main/90"><MdText text={inhalt.texte.coEmissionenDieZementherstellung} /><ul className="list-disc pl-5 mt-2 space-y-1">
+                <li><MdText text={inhalt.texte.alternativeBrennstoffeBiomasseUnd} /></li>
+                <li><MdText text={inhalt.texte.klinkerreduktionMehrKompositzementeCem} /></li>
+                <li><MdText text={inhalt.texte.carbonCaptureCcsCcu} /></li>
               </ul>
             </div>
           </div>
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
-            <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2">Eigenschaften von Bindemitteln</h3>
-            <p className="text-sm text-text-main/80">
-              Zement ist ein hydraulisches Bindemittel, was bedeutet, dass er sowohl an der Luft als auch unter Wasser erhärtet und nach dem Erhärten wasserbeständig ist.
-            </p>
+            <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2"><MdText text={inhalt.texte.eigenschaftenVonBindemitteln} /></h3>
+            <p className="text-sm text-text-main/80"><MdText text={inhalt.texte.zementIstEinHydraulisches} /></p>
             <ul className="list-disc list-inside text-sm text-text-main/80 space-y-2 mt-2">
-              <li><strong>Hydraulische Eigenschaft:</strong> Eigenständige Erhärtung bei Anmischen mit Wasser.</li>
-              <li><strong>Mahlfeinheit:</strong> Je feiner der Zement gemahlen ist, desto schneller hydratisiert er und desto höher ist die Frühfestigkeit.</li>
-              <li><strong>Dichte:</strong> Portlandzement hat eine Reindichte von ca. 3,1 bis 3,2 kg/dm³. Bei zementären Zusatzstoffen wie Flugasche oder Hüttensand liegt diese abweichend (ca. 2,2 bis 2,9 kg/dm³).</li>
-              <li><strong>Hydratationswärme:</strong> Durch die exotherme Reaktion entsteht Wärme, die bei massigen Bauteilen problematisch sein kann, aber beim Winterbau nützlich ist.</li>
+              <li><MdText text={inhalt.texte.hydraulischeEigenschaftEigenständigeErhä} /></li>
+              <li><MdText text={inhalt.texte.mahlfeinheitJeFeinerDer} /></li>
+              <li><MdText text={inhalt.texte.dichtePortlandzementHatEine} /></li>
+              <li><MdText text={inhalt.texte.hydratationswärmeDurchDieExotherme} /></li>
             </ul>
           </div>
         </div>
@@ -438,18 +427,16 @@ export default function Bindemittel() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
             <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2">Zementklinkerphasen</h3>
-            <p className="text-sm text-text-main/80">
-              Portlandzementklinker besteht hauptsächlich aus vier mineralogischen Phasen (Zementchemische Kurzschreibweise: C=CaO, S=SiO₂, A=Al₂O₃, F=Fe₂O₃, H=H₂O):
-            </p>
+            <p className="text-sm text-text-main/80"><MdText text={inhalt.texte.portlandzementklinkerBestehtHauptsächlic} /></p>
             <ul className="list-disc list-inside text-sm text-text-main/80 space-y-3">
-              <li><strong>Alit (<InlineMath math="C_3S" />, Tricalciumsilicat):</strong> 50-70%. Reagiert schnell, maßgeblich für die frühe und späte Festigkeitsentwicklung. Hohe Hydratationswärme (ca. 500 J/g).</li>
-              <li><strong>Belit (<InlineMath math="C_2S" />, Dicalciumsilicat):</strong> 15-30%. Reagiert langsam, trägt zur späten Festigkeit (nach 28 Tagen) bei. Geringe Hydratationswärme (ca. 250 J/g).</li>
-              <li><strong>Aluminat (<InlineMath math="C_3A" />, Tricalciumaluminat):</strong> 5-10%. Reagiert extrem schnell (Flash-Set), erfordert Sulfatzugabe (Gips/Anhydrit) zur Verzögerung. Anfällig für Sulfatangriff. Sehr hohe Hydratationswärme (ca. 1350 J/g).</li>
-              <li><strong>Ferrit (<InlineMath math="C_4AF" />, Tetracalciumaluminatferrit):</strong> 5-15%. Geringer Beitrag zur Festigkeit, wirkt als Flussmittel beim Brennen, gibt dem Zement die graue Farbe.</li>
+              <li><MdText text={inhalt.texte.alitC3sTricalciumsilicat} /></li>
+              <li><MdText text={inhalt.texte.belitC2sDicalciumsilicat} /></li>
+              <li><MdText text={inhalt.texte.aluminatC3aTricalciumaluminat} /></li>
+              <li><MdText text={inhalt.texte.ferritC4afTetracalciumaluminatferrit} /></li>
             </ul>
 
             <div className="mt-4 border border-home-grau/30 rounded-xl p-4 bg-off-white">
-              <h4 className="font-bold text-sm text-text-main mb-2">Wärmeentwicklung der Klinkerphasen (schematische Lehrkurve)</h4>
+              <h4 className="font-bold text-sm text-text-main mb-2"><MdText text={inhalt.texte.wärmeentwicklungDerKlinkerphasenSchemati} /></h4>
               <div className="h-48 w-full">
                 <Line 
                   id="hydratation-chart"
@@ -458,7 +445,7 @@ export default function Bindemittel() {
                     responsive: true,
                     maintainAspectRatio: false,
                     scales: {
-                      y: { title: { display: true, text: 'Hydratationswärme (J/g)' } },
+                      y: { title: { display: true, text: inhalt.werte.hydratationswärmeJG } },
                       x: { title: { display: true, text: 'Zeit (Tage)' } }
                     },
                     plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 10 } } } }
@@ -468,22 +455,18 @@ export default function Bindemittel() {
             </div>
           </div>
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
-            <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2">Hydratation & Gefügebildung</h3>
-            <p className="text-sm text-text-main/80">
-              Die Erhärtung des Zements beruht auf der exothermen Reaktion der Klinkerphasen mit Wasser (Hydratation). Dabei entstehen neue, festigkeitsbildende Kristalle.
-            </p>
+            <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2"><MdText text={inhalt.texte.hydratationGefügebildung} /></h3>
+            <p className="text-sm text-text-main/80"><MdText text={inhalt.texte.dieErhärtungDesZements} /></p>
             <div className="bg-off-white p-4 rounded-lg border border-home-grau/30">
-              <p className="text-xs font-bold text-text-main mb-2">Beispiel: Hydratation von Alit</p>
+              <p className="text-xs font-bold text-text-main mb-2"><MdText text={inhalt.texte.beispielHydratationVonAlit} /></p>
               <BlockMath math="2 C_3S + 6 H \rightarrow C_3S_2H_3 + 3 CH" />
-              <p className="text-xs text-text-main/80 mt-2">
-                Tricalciumsilicat + Wasser → C-S-H-Gel + Calciumhydroxid (Portlandit)
-              </p>
+              <p className="text-xs text-text-main/80 mt-2"><MdText text={inhalt.texte.tricalciumsilicatWasserCS} /></p>
             </div>
             <ul className="list-disc list-inside text-sm text-text-main/80 space-y-2 mt-2">
-              <li><strong>C-S-H-Phasen (Calciumsilicathydrate):</strong> Bilden ein dichtes, amorphes bis mikrokristallines Netzwerk. Sie sind der Hauptträger der Festigkeit (ca. 60-70% des Volumens).</li>
-              <li><strong>Portlandit (<InlineMath math="Ca(OH)_2" />):</strong> Großkristallin, trägt kaum zur Festigkeit bei, sorgt aber für den hohen pH-Wert (Alkalidepot).</li>
-              <li><strong>Ettringit (AFt-Phase):</strong> Entsteht früh aus der Reaktion von <InlineMath math="C_3A" /> mit Sulfat. Verhindert das sofortige Erstarren. Nadelige Kristalle.</li>
-              <li><strong>Monosulfat (AFm-Phase):</strong> Entsteht später, wenn das Sulfat aufgebraucht ist, durch Umwandlung von Ettringit. Bei erneutem Sulfatangriff von außen kann sich wieder Ettringit bilden (sekundäre Ettringitbildung), was zu Treiberscheinungen führt.</li>
+              <li><MdText text={inhalt.texte.cSHPhasen} /></li>
+              <li><MdText text={inhalt.texte.portlanditCaOh2} /></li>
+              <li><MdText text={inhalt.texte.ettringitAftPhaseEntsteht} /></li>
+              <li><MdText text={inhalt.texte.monosulfatAfmPhaseEntsteht} /></li>
             </ul>
           </div>
         </div>
@@ -500,38 +483,24 @@ export default function Bindemittel() {
                   <BookOpen size={20} />
                 </div>
                 <div>
-                  <h3 className="text-base sm:text-lg font-bold text-text-main">
-                    Normzemente nach DIN EN 197-1 / DIN EN 197-5 &amp; DIN 1045-2:2023-08
-                  </h3>
-                  <p className="text-xs text-text-main/70">
-                    Gegenüberstellung: Stand <em>Betontechnische Daten (Ausgabe 2022)</em> vs. Neuausgabe der aktuellen Normengeneration
-                  </p>
+                  <h3 className="text-base sm:text-lg font-bold text-text-main"><MdText text={inhalt.texte.normzementeNachDinEn} /></h3>
+                  <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.gegenüberstellungStandBetontechnischeDat} /></p>
                 </div>
               </div>
-              <span className="text-xs font-mono font-bold px-3 py-1 bg-off-white text-shiraz border border-home-grau/20 rounded-lg self-start sm:self-auto">
-                DIN 1045-2:2023-08
-              </span>
+              <span className="text-xs font-mono font-bold px-3 py-1 bg-off-white text-shiraz border border-home-grau/20 rounded-lg self-start sm:self-auto"><MdText text={inhalt.texte.din104522023} /></span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
               <div className="p-3.5 bg-slate-50 rounded-xl border border-home-grau/20 space-y-1.5">
                 <span className="font-bold text-slate-700 block flex items-center gap-1.5">
-                  <Info size={14} className="text-slate-500" />
-                  Stand „Betontechnische Daten“ (Heidelberg Materials / IZB, 2022):
-                </span>
-                <p className="text-text-main/75 leading-relaxed">
-                  Basierte auf der 27-Normalzement-Klassifikation nach DIN EN 197-1:2011 (CEM I bis CEM V). Zemente mit stark abgesenktem Klinkergehalt (wie CEM II/C-M) waren damals nur über allgemeine bauaufsichtliche Zulassungen (abZ) oder Vorab-Entwürfe anwendbar.
-                </p>
+                  <Info size={14} className="text-slate-500" /><MdText text={inhalt.texte.standBetontechnischeDatenHeidelberg} /></span>
+                <p className="text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.basierteAufDer27} /></p>
               </div>
 
               <div className="p-3.5 bg-shiraz/5 rounded-xl border border-shiraz/20 space-y-1.5">
                 <span className="font-bold text-shiraz block flex items-center gap-1.5">
-                  <CheckCircle2 size={14} className="text-shiraz" />
-                  Gültiger aktueller Normenstand (DIN 1045-2:2023-08 &amp; DIN EN 197-5:2021):
-                </span>
-                <p className="text-text-main/85 leading-relaxed">
-                  Vollständige bauaufsichtliche Aufnahme der klinkereffizienten Öko-Zemente <strong>CEM II/C-M</strong> (nur 50–64 % Klinker) und <strong>CEM VI</strong> (35–49 % Klinker) in das deutsche Regelwerk DIN 1045-2 zur Reduzierung des CO₂-Fußabdrucks im Betonbau.
-                </p>
+                  <CheckCircle2 size={14} className="text-shiraz" /><MdText text={inhalt.texte.gültigerAktuellerNormenstandDin} /></span>
+                <p className="text-text-main/85 leading-relaxed"><MdText text={inhalt.texte.vollständigeBauaufsichtlicheAufnahmeDer} /></p>
               </div>
             </div>
           </div>
@@ -541,14 +510,12 @@ export default function Bindemittel() {
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 pb-3 border-b border-home-grau/20">
               <div>
                 <h4 className="text-base font-bold text-text-main flex items-center gap-2">
-                  <Filter size={18} className="text-shiraz" />
-                  Zementarten &amp; Zusammensetzung nach DIN EN 197-1 und DIN EN 197-5
-                </h4>
-                <p className="text-xs text-text-main/70">Wählen Sie eine Zementfamilie zur selektiven Ansicht:</p>
+                  <Filter size={18} className="text-shiraz" /><MdText text={inhalt.texte.zementartenZusammensetzungNachDin} /></h4>
+                <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.wählenSieEineZementfamilie} /></p>
               </div>
 
               <div className="flex flex-wrap gap-1 p-1 bg-off-white rounded-xl border border-home-grau/20 text-xs">
-                {['ALLE', 'CEM I', 'CEM II', 'CEM II/C-M & CEM VI', 'CEM III', 'CEM IV & V'].map(f => (
+                {['ALLE', 'CEM I', 'CEM II', inhalt.werte.cemIiCM, 'CEM III', 'CEM IV & V'].map(f => (
                   <button
                     key={f}
                     type="button"
@@ -584,9 +551,7 @@ export default function Bindemittel() {
                           {cement.code}
                         </span>
                         {cement.isNewStandard && (
-                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-shiraz text-white">
-                            Neu: DIN EN 197-5
-                          </span>
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-shiraz text-white"><MdText text={inhalt.texte.neuDinEn197} /></span>
                         )}
                         <span className="text-[11px] text-text-main/60 font-mono">
                           {cement.normReference.split('/')[0].trim()}
@@ -613,13 +578,13 @@ export default function Bindemittel() {
 
                       <div className="text-xs text-text-main/80 space-y-1 pt-1 border-t border-home-grau/15">
                         <p><strong>Hauptbestandteile:</strong> {cement.components}</p>
-                        <p><strong>CO₂-Potenzial (Richtwert):</strong> <span className="text-emerald-800 font-bold">{cement.co2Reduction}</span></p>
+                        <p><MdText text={inhalt.texte.coPotenzialRichtwert} /><span className="text-emerald-800 font-bold">{cement.co2Reduction}</span></p>
                         <p><strong>Frost-Eignung:</strong> {cement.frostSuitability}</p>
                       </div>
                     </div>
 
                     <div className="pt-2 border-t border-home-grau/20 text-[11px] text-text-main/75 bg-white p-2.5 rounded-lg border border-home-grau/15">
-                      <strong className="text-text-main block mb-0.5">Anwendung (Kurzfassung; maßgebend sind die Anwendungstabellen der DIN 1045-2:2023-08 – manuell prüfen):</strong>
+                      <strong className="text-text-main block mb-0.5"><MdText text={inhalt.texte.anwendungKurzfassungMaßgebendSind} /></strong>
                       {cement.anwendungDin1045}
                     </div>
                   </div>
@@ -630,22 +595,18 @@ export default function Bindemittel() {
           {/* FESTIGKEITSKLASSEN NACH DIN EN 197-1 TABELLE 7 */}
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
             <h4 className="text-base font-bold text-text-main flex items-center gap-2 pb-2 border-b border-home-grau/20">
-              <ShieldCheck className="text-shiraz" size={18} />
-              Genormte Festigkeitsklassen nach DIN EN 197-1
-            </h4>
+              <ShieldCheck className="text-shiraz" size={18} /><MdText text={inhalt.texte.genormteFestigkeitsklassenNachDin} /></h4>
 
-            <p className="text-xs text-text-main/75 leading-relaxed">
-              Die Festigkeitsklassen von Zement werden an genormtem Mörtel nach DIN EN 196-1 geprüft. Der Buchstabe <strong>N</strong> steht für normale Anfangsfestigkeit (Standard), <strong>R</strong> für hohe Anfangsfestigkeit (Rapid):
-            </p>
+            <p className="text-xs text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.dieFestigkeitsklassenVonZement} /></p>
 
             <div className="overflow-x-auto">
               <table className="w-full text-xs text-left border-collapse">
                 <thead>
                   <tr className="bg-off-white text-text-main font-bold border-b border-home-grau/25">
                     <th className="p-3">Festigkeitsklasse</th>
-                    <th className="p-3">Prüfalter Frühfestigkeit</th>
+                    <th className="p-3"><MdText text={inhalt.texte.prüfalterFrühfestigkeit} /></th>
                     <th className="p-3">Mindest-Frühfestigkeit</th>
-                    <th className="p-3">Normfestigkeit (28 Tage)</th>
+                    <th className="p-3"><MdText text={inhalt.texte.normfestigkeit28Tage} /></th>
                     <th className="p-3">Erstarrungsbeginn</th>
                     <th className="p-3">Raumbeständigkeit</th>
                   </tr>
@@ -669,54 +630,46 @@ export default function Bindemittel() {
           {/* SONDERZEMENTE & ZUSATZBEZEICHNUNGEN */}
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
             <h4 className="text-base font-bold text-text-main flex items-center gap-2 pb-2 border-b border-home-grau/20">
-              <AlertTriangle className="text-amber-800" size={18} />
-              Besondere Eigenschaften &amp; normative Zusatzbezeichnungen (DIN EN 197-1 &amp; DIN 1164-10)
-            </h4>
+              <AlertTriangle className="text-amber-800" size={18} /><MdText text={inhalt.texte.besondereEigenschaftenNormativeZusatzbez} /></h4>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
               
               {/* SR-Zement */}
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/20 space-y-2">
-                <span className="font-bold text-shiraz uppercase tracking-wider block text-[11px]">Sulfatwiderstand (SR)</span>
-                <h5 className="font-bold text-sm text-text-main">SR 0, SR 3, SR 5 &amp; CEM III</h5>
-                <p className="text-text-main/80 leading-relaxed">
-                  Begrenzung des reaktiven Tricalciumaluminats (<InlineMath math="C_3A" />) im Klinker zur Verhinderung von zerstörendem Sulfattreiben (Ettringitbildung).
-                </p>
+                <span className="font-bold text-shiraz uppercase tracking-wider block text-[11px]"><MdText text={inhalt.texte.sulfatwiderstandSr} /></span>
+                <h5 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.sr0Sr3} /></h5>
+                <p className="text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.begrenzungDesReaktivenTricalciumaluminat} /></p>
                 <div className="p-2.5 bg-white rounded-lg border border-home-grau/15 text-[11px] text-text-main/75 space-y-1">
                   <p>• <strong>SR 0:</strong> <InlineMath math="C_3A = 0\,\%" /></p>
                   <p>• <strong>SR 3:</strong> <InlineMath math="C_3A \le 3\,\%" /></p>
                   <p>• <strong>SR 5:</strong> <InlineMath math="C_3A \le 5\,\%" /></p>
-                  <p>• <strong>Normative Pflicht:</strong> Ab <InlineMath math="\text{SO}_4^{2-} > 600\text{ mg/l}" /> im Wasser (Klasse XA2/XA3 nach DIN 1045-2).</p>
+                  <p><MdText text={inhalt.texte.normativePflichtAbText} /></p>
                 </div>
               </div>
 
               {/* LH-Zement */}
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/20 space-y-2">
-                <span className="font-bold text-cyan-800 uppercase tracking-wider block text-[11px]">Hydratationswärme (LH / VLH)</span>
-                <h5 className="font-bold text-sm text-text-main">Low Heat &amp; Very Low Heat</h5>
-                <p className="text-text-main/80 leading-relaxed">
-                  Reduziert die Temperaturspitzen und Temperaturgradienten in massigen Betonbauteilen (z. B. Sohlplatten &gt; 1 m, Talsperren, Wehrbauten) zur Rissvermeidung.
-                </p>
+                <span className="font-bold text-cyan-800 uppercase tracking-wider block text-[11px]"><MdText text={inhalt.texte.hydratationswärmeLhVlh} /></span>
+                <h5 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.lowHeatVeryLow} /></h5>
+                <p className="text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.reduziertDieTemperaturspitzenUnd} /></p>
                 <div className="p-2.5 bg-white rounded-lg border border-home-grau/15 text-[11px] text-text-main/75 space-y-1">
-                  <p>• <strong>LH (Low Heat):</strong> <InlineMath math="\le 270\text{ J/g}" /> nach 7 Tagen</p>
-                  <p>• <strong>VLH (Very Low Heat):</strong> <InlineMath math="\le 220\text{ J/g}" /> nach 7 Tagen</p>
-                  <p>• <strong>Zementbasis:</strong> Typischerweise hüttensandreich (CEM III/A oder CEM III/B).</p>
+                  <p><MdText text={inhalt.texte.lhLowHeatLe} /></p>
+                  <p><MdText text={inhalt.texte.vlhVeryLowHeat} /></p>
+                  <p><MdText text={inhalt.texte.zementbasisTypischerweiseHüttensandreich} /></p>
                 </div>
               </div>
 
               {/* NA-Zement */}
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/20 space-y-2">
-                <span className="font-bold text-emerald-800 uppercase tracking-wider block text-[11px]">Alkaligehalt (NA)</span>
-                <h5 className="font-bold text-sm text-text-main">DIN 1164-10 (AKR-Schutz)</h5>
-                <p className="text-text-main/80 leading-relaxed">
-                  Zement mit niedrigem wirksamen Alkaligehalt (<InlineMath math="\text{Na}_2\text{O}_{\text{eq}}" />) zur Unterbindung der schädigenden Alkali-Kieselsäure-Reaktion (Betonkrebs).
-                </p>
+                <span className="font-bold text-emerald-800 uppercase tracking-wider block text-[11px]"><MdText text={inhalt.texte.alkaligehaltNa} /></span>
+                <h5 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.din116410Akr} /></h5>
+                <p className="text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.zementMitNiedrigemWirksamen} /></p>
                 <div className="p-2.5 bg-white rounded-lg border border-home-grau/15 text-[11px] text-text-main/75 space-y-1">
-                  <p>• <strong>CEM I, CEM II (außer CEM II/B-S), CEM IV, CEM V:</strong> <InlineMath math="\text{Na}_2\text{O}_{\text{eq}} \le 0{,}60\text{ M.-\%}" /></p>
-                  <p>• <strong>CEM II/B-S</strong> (21–35 % S): <InlineMath math="\le 0{,}70\text{ M.-\%}" /></p>
-                  <p>• <strong>CEM III/A</strong> (36–49 % S): <InlineMath math="\le 0{,}95\text{ M.-\%}" />; (50–65 % S): <InlineMath math="\le 1{,}10\text{ M.-\%}" /></p>
-                  <p>• <strong>CEM III/B, CEM III/C:</strong> <InlineMath math="\le 2{,}00\text{ M.-\%}" /></p>
-                  <p>• <strong>Erforderlich:</strong> je nach Alkaliempfindlichkeitsklasse der Gesteinskörnung (E II, E III) und Feuchtigkeitsklasse nach Alkali-Richtlinie.</p>
+                  <p><MdText text={inhalt.texte.cemICemIi} /></p>
+                  <p><MdText text={inhalt.texte.cemIiBS} /></p>
+                  <p><MdText text={inhalt.texte.cemIiiA36} /></p>
+                  <p><MdText text={inhalt.texte.cemIiiBCem} /></p>
+                  <p><MdText text={inhalt.texte.erforderlichJeNachAlkaliempfindlichkeits} /></p>
                 </div>
               </div>
 
@@ -724,16 +677,11 @@ export default function Bindemittel() {
           </div>
 
           <FormulaDerivationBox
-            title="Anwendungsbeispiel: Ist der Zement ein NA-Zement?"
+            title={inhalt.werte.anwendungsbeispielIstDerZement}
             zielGleichung="\text{Na}_2\text{O}_{eq} = \text{Na}_2\text{O} + 0{,}658 \cdot \text{K}_2\text{O}"
-            normQuelle="DIN 1164-10:2023-02"
-            schritte={[
-              { titel: '1. Gegeben (Lehrwerte)', formel: '\\text{Na}_2\\text{O} = 0{,}25\\,\\%,\\; \\text{K}_2\\text{O} = 0{,}80\\,\\%', erklaerung: 'Chemische Analyse des Zements in M.-%.' },
-              { titel: '2. Na₂O-Äquivalent', formel: '\\text{Na}_2\\text{O}_{eq} = 0{,}25 + 0{,}658 \\cdot 0{,}80 = 0{,}78\\,\\%', erklaerung: 'Kalium wird über das Molmassenverhältnis in Natrium umgerechnet.' },
-              { titel: '3. Als CEM I', formel: '0{,}78\\,\\% > 0{,}60\\,\\%', erklaerung: 'Kein NA-Zement.' },
-              { titel: '4. Als CEM III/A mit 50–65 % Hüttensand', formel: '0{,}78\\,\\% \\le 1{,}10\\,\\%', erklaerung: 'NA-Anforderung erfüllt: Hüttensand bindet Alkalien und senkt die Porenlösungsalkalität.' },
-            ]}
-            ergebnisHinweis="Derselbe Alkaligehalt ist beim Portlandzement unzulässig, beim Hochofenzement CEM III/A (50–65 % S) zulässig."
+            normQuelle={inhalt.werte.din1164102023}
+            schritte={inhalt.daten["Bindemittel.schritte"]}
+            ergebnisHinweis={inhalt.werte.derselbeAlkaligehaltIstBeim}
           />
         </div>
       )}
@@ -752,74 +700,52 @@ export default function Bindemittel() {
               <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700 font-extrabold mb-1">
                 Typ I
               </div>
-              <h3 className="font-bold text-text-main text-lg">Inerte Zusatzstoffe (Typ I)</h3>
-              <p className="text-sm text-text-main/80 leading-relaxed">
-                Diese Stoffe nehmen chemisch nahezu nicht am Hydratationsprozess teil. Sie wirken primär physikalisch über ihren Füllereffekt und stellen Kristallisationskeime bereit.
-              </p>
-              <div className="bg-slate-50 p-3 rounded-lg border border-home-grau/10 text-xs text-text-main/70 mt-auto">
-                <strong>Typische Vertreter:</strong> Kalksteinmehl, Quarzmehl, Farbpigmente (z.B. Eisenoxid-Pigmente).
-              </div>
+              <h3 className="font-bold text-text-main text-lg"><MdText text={inhalt.texte.inerteZusatzstoffeTypI} /></h3>
+              <p className="text-sm text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.dieseStoffeNehmenChemisch} /></p>
+              <div className="bg-slate-50 p-3 rounded-lg border border-home-grau/10 text-xs text-text-main/70 mt-auto"><MdText text={inhalt.texte.typischeVertreterKalksteinmehlQuarzmehl} /></div>
             </div>
 
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-3">
-              <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-700 font-extrabold mb-1">
-                Typ II (latent)
-              </div>
-              <h3 className="font-bold text-text-main text-lg">Latent-hydraulische Stoffe</h3>
-              <p className="text-sm text-text-main/80 leading-relaxed">
-                Besitzen ein eigenes, eigenständiges hydraulisches Festigkeitspotenzial, reagieren allein aber extrem träge. Sie benötigen einen chemischen Anreger (Aktivator wie Portlandit), um zu hydratisieren.
-              </p>
-              <div className="bg-indigo-50/50 p-3 rounded-lg border border-indigo-100/50 text-xs text-text-main/70 mt-auto">
-                <strong>Typische Vertreter:</strong> Hüttensand (gemahlene Hochofenschlacke / GGBS).
-              </div>
+              <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-700 font-extrabold mb-1"><MdText text={inhalt.texte.typIiLatent} /></div>
+              <h3 className="font-bold text-text-main text-lg"><MdText text={inhalt.texte.latentHydraulischeStoffe} /></h3>
+              <p className="text-sm text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.besitzenEinEigenesEigenständiges} /></p>
+              <div className="bg-indigo-50/50 p-3 rounded-lg border border-indigo-100/50 text-xs text-text-main/70 mt-auto"><MdText text={inhalt.texte.typischeVertreterHüttensandGemahlene} /></div>
             </div>
 
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-3">
-              <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-700 font-extrabold mb-1">
-                Typ II (puzzolanisch)
-              </div>
-              <h3 className="font-bold text-text-main text-lg">Puzzolanische Stoffe</h3>
-              <p className="text-sm text-text-main/80 leading-relaxed">
-                Sind selbständig nicht hydraulisch erhartend. Sie können jedoch bei Anwesenheit von Feuchtigkeit das freigesetzte Calciumhydroxid (<InlineMath math="Ca(OH)_2" />) chemisch binden und stabile C-S-H-Phasen aufbauen.
-              </p>
-              <div className="bg-amber-50/50 p-3 rounded-lg border border-amber-100/55 text-xs text-text-main/70 mt-auto">
-                <strong>Typische Vertreter:</strong> Steinkohlenflugasche, Silikastaub (Microsilica), Trass, Metakaolin.
-              </div>
+              <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-700 font-extrabold mb-1"><MdText text={inhalt.texte.typIiPuzzolanisch} /></div>
+              <h3 className="font-bold text-text-main text-lg"><MdText text={inhalt.texte.puzzolanischeStoffe} /></h3>
+              <p className="text-sm text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.sindSelbständigNichtHydraulisch} /></p>
+              <div className="bg-amber-50/50 p-3 rounded-lg border border-amber-100/55 text-xs text-text-main/70 mt-auto"><MdText text={inhalt.texte.typischeVertreterSteinkohlenflugascheSil} /></div>
             </div>
           </div>
 
           {/* Deep Dive Chemical Reactions */}
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
-            <h3 className="text-xl font-bold text-text-main border-b border-home-grau/30 pb-3">Chemisches Reaktionsverhalten &amp; Reaktionsmechanismen</h3>
+            <h3 className="text-xl font-bold text-text-main border-b border-home-grau/30 pb-3"><MdText text={inhalt.texte.chemischesReaktionsverhaltenReaktionsmec} /></h3>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Pozzolanic Reaction Details */}
               <div className="space-y-4">
                 <div className="bg-amber-50/40 p-5 rounded-xl border border-amber-200/55 h-full flex flex-col justify-between">
                   <div>
-                    <h4 className="font-bold text-text-main text-base mb-2 text-amber-900">1. Die Puzzolanische Reaktion (Typ II)</h4>
-                    <p className="text-xs text-text-main/80 leading-relaxed mb-3">
-                      Bei der primären Hydratation des Portlandzements (insbes. Alit <InlineMath math="C_3S" /> und Belit <InlineMath math="C_2S" />) entsteht als Nebenprodukt kristallines Calciumhydroxid (<InlineMath math="Ca(OH)_2" />, auch Portlandit oder <InlineMath math="CH" /> genannt). Portlandit ist sehr gut wasserlöslich, besitzt praktisch keine mechenische Bindekraft und bildet physikalisch-chemische Schwachstellen im Betongefüge (vor allem am Interface zur Gesteinskörnung - Interfacial Transition Zone, ITZ).
-                    </p>
-                    <p className="text-xs text-text-main/80 leading-relaxed mb-4 font-normal">
-                      Puzzolanische Zusatzstoffe wie <strong>Flugasche</strong> oder <strong>Silikastaub</strong> (reich an amorphem, reaktivem Siliziumdioxid <InlineMath math="SiO_2" /> und Aluminiumoxid <InlineMath math="Al_2O_3" />) reagieren im alkalischen Milieu der Porenlösung schleichend mit diesem Portlandit zu unlöslichen, festigkeitsbildenden Hydratphasen:
-                    </p>
+                    <h4 className="font-bold text-text-main text-base mb-2 text-amber-900"><MdText text={inhalt.texte.t1DiePuzzolanischeReaktion} /></h4>
+                    <p className="text-xs text-text-main/80 leading-relaxed mb-3"><MdText text={inhalt.texte.beiDerPrimärenHydratation} /></p>
+                    <p className="text-xs text-text-main/80 leading-relaxed mb-4 font-normal"><MdText text={inhalt.texte.puzzolanischeZusatzstoffeWieFlugasche} /></p>
                     
                     <div className="bg-white p-3.5 rounded-lg border border-amber-200/80 mb-3 shadow-2xs">
-                      <span className="text-[10px] uppercase font-mono font-bold text-amber-700 block mb-1">A) Kieselsäure-Reaktion (Zusätzliche C-S-H Genese):</span>
+                      <span className="text-[10px] uppercase font-mono font-bold text-amber-700 block mb-1"><MdText text={inhalt.texte.aKieselsäureReaktionZusätzliche} /></span>
                       <BlockMath math="\text{SiO}_2 + \text{Ca(OH)}_2 + \text{H}_2\text{O} \rightarrow \text{C-S-H} \ (x\text{CaO} \cdot y\text{SiO}_2 \cdot z\text{H}_2\text{O})" />
                     </div>
 
                     <div className="bg-white p-3.5 rounded-lg border border-amber-200/80 shadow-2xs">
-                      <span className="text-[10px] uppercase font-mono font-bold text-amber-700 block mb-1">B) Tonerde-Reaktion (Zusätzliche C-A-H Genese):</span>
+                      <span className="text-[10px] uppercase font-mono font-bold text-amber-700 block mb-1"><MdText text={inhalt.texte.bTonerdeReaktionZusätzliche} /></span>
                       <BlockMath math="\text{Al}_2\text{O}_3 + \text{Ca(OH)}_2 + \text{H}_2\text{O} \rightarrow \text{C-A-H} \ (x\text{CaO} \cdot y\text{Al}_2\text{O}_3 \cdot z\text{H}_2\text{O})" />
                     </div>
                   </div>
                   
                   <div className="mt-4 text-xs text-amber-950 font-medium bg-amber-100/30 p-3 rounded-lg border border-amber-200/35">
-                    <strong className="text-amber-900 border-l-2 border-amber-600 pl-2 block mb-1">Gefügevorteil:</strong>
-                    Der Abbau des kristallinen, groben Portlandits und die Bildung von feligranem, fein verteiltem Calcium-Silikat-Hydrat (C-S-H)-Gel verdichtet das Mikrogefüge der ITZ dauerhaft. Dies verhindert kapillare Wanderwege und erhöht die Säure- und Frostbeständigkeit signifikant.
-                  </div>
+                    <strong className="text-amber-900 border-l-2 border-amber-600 pl-2 block mb-1">Gefügevorteil:</strong><MdText text={inhalt.texte.derAbbauDesKristallinen} /></div>
                 </div>
               </div>
 
@@ -827,37 +753,27 @@ export default function Bindemittel() {
               <div className="space-y-4">
                 <div className="bg-indigo-50/40 p-5 rounded-xl border border-indigo-200/55 h-full flex flex-col justify-between">
                   <div>
-                    <h4 className="font-bold text-text-main text-base mb-2 text-indigo-900">2. Die Latent-Hydraulische Hydratation (Typ II)</h4>
-                    <p className="text-xs text-text-main/80 leading-relaxed mb-3">
-                      Latent-hydraulische Zusatzstoffe wie <strong>Hüttensand</strong> haben einen Aufbau, der dem Portlandzement ähnlicher ist, da sie bereits einen beträchtlichen Anteil an Calciumoxid (<InlineMath math="CaO" />) sowie Silicium- und Aluminiumoxid in ihrer glasartigen Schmelzstruktur tragen. Da diese Struktur jedoch im Ofen schockartig zu einer amorphen Glasschmelze erstarrt ist, bildet sich bei reinem Wasserkontakt eine dichte Alumosilikat-Passivierungsschicht aus, die den Reaktionsfortgang sofort blockiert.
-                    </p>
-                    <p className="text-xs text-text-main/80 leading-relaxed mb-4">
-                      Um diese Blockade zu brechen, wird eine Anregung (Breakdown des Glasnetzwerks durch Hydroxidionen) in der Porenlösung benötigt. Das Zirkulieren von Basen/Alkalien aktiviert die Schlacke:
-                    </p>
+                    <h4 className="font-bold text-text-main text-base mb-2 text-indigo-900"><MdText text={inhalt.texte.t2DieLatentHydraulische} /></h4>
+                    <p className="text-xs text-text-main/80 leading-relaxed mb-3"><MdText text={inhalt.texte.latentHydraulischeZusatzstoffeWie} /></p>
+                    <p className="text-xs text-text-main/80 leading-relaxed mb-4"><MdText text={inhalt.texte.umDieseBlockadeZu} /></p>
 
                     <div className="bg-white p-3.5 rounded-lg border border-indigo-200/80 mb-3 shadow-2xs space-y-3">
                       <div>
-                        <span className="text-[10px] uppercase font-mono font-bold text-indigo-700 block mb-1">Alkalische Anregung (durch Ca(OH)2 des Zements):</span>
-                        <p className="text-[10px] text-text-main/70 mb-1 leading-normal">
-                          Das bei der Alithydratation freigesetzte Portlandit liefert die nötigen Hydroxidionen (<InlineMath math="OH^-" />), um das Silikatglas-Netzwerk aufzuspalten und C-S-H Phasen freizusetzen:
-                        </p>
+                        <span className="text-[10px] uppercase font-mono font-bold text-indigo-700 block mb-1"><MdText text={inhalt.texte.alkalischeAnregungDurchCa} /></span>
+                        <p className="text-[10px] text-text-main/70 mb-1 leading-normal"><MdText text={inhalt.texte.dasBeiDerAlithydratation} /></p>
                         <BlockMath math="\text{Hüttensand-Glas} \xrightarrow{\text{pH } > 12{,}0} \text{C-S-H} + \text{C-A-S-H}" />
                       </div>
                     </div>
 
                     <div className="bg-white p-3.5 rounded-lg border border-indigo-200/80 shadow-2xs">
-                      <span className="text-[10px] uppercase font-mono font-bold text-indigo-700 block mb-1">Sulfatische Anregung (z.B. Gips/Anhydrit):</span>
-                      <p className="text-[10px] text-text-main/70 mb-1 leading-normal">
-                        Calciumsulfat reagiert mit den reaktiven Aluminium-Anteilen des Hüttensands zu expansivem, aber gefügestabilisierendem Ettringit:
-                      </p>
+                      <span className="text-[10px] uppercase font-mono font-bold text-indigo-700 block mb-1"><MdText text={inhalt.texte.sulfatischeAnregungZB} /></span>
+                      <p className="text-[10px] text-text-main/70 mb-1 leading-normal"><MdText text={inhalt.texte.calciumsulfatReagiertMitDen} /></p>
                       <BlockMath math="\text{Alumosilikat} + \text{CaSO}_4 + \text{H}_2\text{O} \rightarrow \text{Ettringit}" />
                     </div>
                   </div>
 
                   <div className="mt-4 text-xs text-indigo-950 font-medium bg-indigo-100/30 p-3 rounded-lg border border-indigo-200/35">
-                    <strong className="text-indigo-900 border-l-2 border-indigo-600 pl-2 block mb-1">Gefügevorteil:</strong>
-                    Der Reaktionsfortgang ist zwar verlangsamt, hält dafür aber extrem langfristig an. In späten Phasen (monatelang) entsteht ein hochverdichtetes Zementsteingefüge mit sehr gutem Sulfatwiderstand und minimaler Porenweite. Dies ist die Grundlage von modernen klinkerreduzierten Zementen (z.B. CEM III).
-                  </div>
+                    <strong className="text-indigo-900 border-l-2 border-indigo-600 pl-2 block mb-1">Gefügevorteil:</strong><MdText text={inhalt.texte.derReaktionsfortgangIstZwar} /></div>
                 </div>
               </div>
             </div>
@@ -865,23 +781,16 @@ export default function Bindemittel() {
             {/* Special Nucleation & Carboaluminate effect of Inert additives */}
             <div className="bg-stone-50 border border-home-grau/25 p-5 rounded-xl space-y-3 text-sm">
               <h4 className="font-bold text-text-main text-base flex items-center gap-1.5 border-b border-home-grau/15 pb-2">
-                <span className="shrink-0 text-shiraz font-mono font-bold">ℹ</span> 3. Reaktivitätsfinessen scheinbar inerter Stoffe (Typ I)
-              </h4>
-              <p className="text-xs text-text-main/80 leading-relaxed">
-                Obwohl <strong>Kalksteinmehl (Calciumcarbonat <InlineMath math="CaCO_3" />)</strong> traditionell als rein physikalischer Füller deklariert ist, zeigt die metallurgische Forschung, dass es eine subtile, aber wertvolle chemisch-physikalische Aktivität entfaltet:
-              </p>
+                <span className="shrink-0 text-shiraz font-mono font-bold">ℹ</span><MdText text={inhalt.texte.t3ReaktivitätsfinessenScheinbarInerter} /></h4>
+              <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.obwohlKalksteinmehlCalciumcarbonatCaco} /></p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-1">
                 <div className="space-y-1 bg-white p-4 rounded-xl border border-home-grau/10">
-                  <strong className="text-xs uppercase font-bold text-shiraz block">A) Beschleunigte Keimbildung (Nucleation Effect):</strong>
-                  <p className="text-[11px] text-text-main/75 leading-relaxed">
-                    Die ultrafeinen Kalksteinpartikel lagern sich direkt an die Klinkerkörner an. Sie wirken als ideale Oberflächen-Kristallisationskeime, an denen sich C-S-H-Phasen bevorzugt und beschleunigt abscheiden können. Dies treibt die Hydratationsgeschwindigkeit des Zements in den ersten 24 Stunden deutlich an.
-                  </p>
+                  <strong className="text-xs uppercase font-bold text-shiraz block"><MdText text={inhalt.texte.aBeschleunigteKeimbildungNucleation} /></strong>
+                  <p className="text-[11px] text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.dieUltrafeinenKalksteinpartikelLagern} /></p>
                 </div>
                 <div className="space-y-1 bg-white p-4 rounded-xl border border-home-grau/10">
-                  <strong className="text-xs uppercase font-bold text-shiraz block">B) Carboaluminatchemie:</strong>
-                  <p className="text-[11px] text-text-main/75 leading-relaxed font-normal">
-                    Karbonationen (<InlineMath math="CO_3^{2-}" />) aus dem fein vermahlenen Kalksteinmehl reagieren geringfügig, aber signifikant mit den Aluminatkomponenten des Tricalciumaluminats (<InlineMath math="C_3A" />) im Klinker. Sie bilden stabiles Mono- und Hemicarbonat. Dadurch wird verhindert, dass sich Ettringit vorzeitig in Monosulfat umwandelt, was das Gesamtvolumen des Zementsteins leicht vergrößert und schließt so Mikroporen.
-                  </p>
+                  <strong className="text-xs uppercase font-bold text-shiraz block"><MdText text={inhalt.texte.bCarboaluminatchemie} /></strong>
+                  <p className="text-[11px] text-text-main/75 leading-relaxed font-normal"><MdText text={inhalt.texte.karbonationenCo32} /></p>
                 </div>
               </div>
             </div>
@@ -889,31 +798,23 @@ export default function Bindemittel() {
 
           {/* Microstructural and Workability Effects */}
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
-            <h3 className="text-xl font-bold text-text-main border-b border-home-grau/30 pb-3">Physische &amp; Gefügespezifische Effekte im Beton</h3>
+            <h3 className="text-xl font-bold text-text-main border-b border-home-grau/30 pb-3"><MdText text={inhalt.texte.physischeGefügespezifischeEffekteIm} /></h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/15 space-y-2">
-                <strong className="text-sm text-text-main font-bold block text-shiraz">1. Füllereffekt (Filler Effect)</strong>
-                <p className="text-xs text-text-main/70 leading-relaxed">
-                  Zusatzstoffe füllen Porenräume zwischen den deutlich größeren Zement- und Sandkörnern aus. Das optimiert die Packungsdichte, verdrängt gebundenes Porenwasser und erhöht die Gefügedichtigkeit im erhärteten Zustand.
-                </p>
+                <strong className="text-sm text-text-main font-bold block text-shiraz"><MdText text={inhalt.texte.t1FüllereffektFillerEffect} /></strong>
+                <p className="text-xs text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.zusatzstoffeFüllenPorenräumeZwischen} /></p>
               </div>
               <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/15 space-y-2">
-                <strong className="text-sm text-text-main font-bold block text-shiraz">2. Kugellagereffekt</strong>
-                <p className="text-xs text-text-main/70 leading-relaxed">
-                  Kugelige Partikel (wie aus Steinkohlenflugasche) verringern die viskose Reibung im Frischbeton und verbessern die Fließfähigkeit und Pumpbarkeit ohne eine Erhöhung des w/z-Wertes.
-                </p>
+                <strong className="text-sm text-text-main font-bold block text-shiraz"><MdText text={inhalt.texte.t2Kugellagereffekt} /></strong>
+                <p className="text-xs text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.kugeligePartikelWieAus} /></p>
               </div>
               <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/15 space-y-2">
-                <strong className="text-sm text-text-main font-bold block text-shiraz">3. Reaktivitätsgefälle</strong>
-                <p className="text-xs text-text-main/70 leading-relaxed">
-                  Die moderat beigemischten Hüttensand- und Flugaschepartikel strecken die Hydratationsreaktion zeitlich. Dadurch verteilt sich die Hydratationswärme rissmindernd bei dicken Betonquerschnitten.
-                </p>
+                <strong className="text-sm text-text-main font-bold block text-shiraz"><MdText text={inhalt.texte.t3Reaktivitätsgefälle} /></strong>
+                <p className="text-xs text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.dieModeratBeigemischtenHüttensand} /></p>
               </div>
               <div className="bg-stone-50 p-4 rounded-xl border border-home-grau/15 space-y-2">
-                <strong className="text-sm text-text-main font-bold block text-shiraz">4. k-Wert Konzept</strong>
-                <p className="text-xs text-text-main/70 leading-relaxed">
-                  Flugasche darf mit dem Anrechnungsfaktor <InlineMath math="k = 0{,}4" /> auf Mindestzementgehalt und w/z-Wert angerechnet werden. In Deutschland gilt nach DIN 1045-2:2023-08 k = 1,0 für Silikastaub (s ≤ 0,11·z); in XF2/XF4 ist nur Flugasche anrechenbar. Die Anrechnung spart Zement und verbessert die CO₂-Bilanz.
-                </p>
+                <strong className="text-sm text-text-main font-bold block text-shiraz"><MdText text={inhalt.texte.t4KWertKonzept} /></strong>
+                <p className="text-xs text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.flugascheDarfMitDem} /></p>
               </div>
             </div>
           </div>
@@ -926,43 +827,13 @@ export default function Bindemittel() {
       <ModuleFooter 
         wikipedia={[
           { title: 'Zement', url: 'https://de.wikipedia.org/wiki/Zement' },
-          { title: 'Bindemittel (Baustoff)', url: 'https://de.wikipedia.org/wiki/Bindemittel' },
+          { title: inhalt.werte.bindemittelBaustoff, url: 'https://de.wikipedia.org/wiki/Bindemittel' },
           { title: 'Betonzusatzstoff', url: 'https://de.wikipedia.org/wiki/Betonzusatzstoff' },
           { title: 'Alkali-Kieselsäure-Reaktion', url: 'https://de.wikipedia.org/wiki/Alkali-Kiesels%C3%A4ure-Reaktion' }
         ]}
-        literatur={[
-          'Heidelberg Materials / InformationsZentrum Beton (IZB): Betontechnische Daten (Ausgabe 2022 / Folgeauflagen)',
-          'Stark, J.; Wicht, B.: Zement und Kalk – Der Baustoff als Werkstoff. Basel: Birkhäuser 2000',
-          'Locher, F. W.: Zement – Grundlagen der Herstellung und Verwendung. Düsseldorf: Verlag Bau+Technik 2000',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Bogue, R. H.: Calculation of the Compounds in Portland Cement. Industrial & Engineering Chemistry, Analytical Edition 1 (1929) 4, S. 192–197',
-          'Taylor, H. F. W.: Cement Chemistry. 2. Aufl., London: Thomas Telford 1997'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 197-1:2011-11 (Zement - Teil 1: Zusammensetzung, Anforderungen und Konformitätskriterien von Normalzement)' },
-          { title: 'DIN EN 197-5:2021-07 (Zement - Teil 5: Portland-Kompositzement CEM II/C-M und Kompositzement CEM VI)' },
-          { title: 'DIN 1045-2:2023-08 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Teil 2: Beton)' },
-          { title: 'DIN 1164-10:2023-02 (Zement mit besonderen Eigenschaften - Teil 10: Zement mit niedrigem wirksamen Alkaligehalt NA)' },
-          { title: 'DIN EN 450-1:2012-10 (Flugasche für Beton - Teil 1: Definitionen, Anforderungen und Qualitätskontrolle)' },
-          { title: 'DIN EN 13263-1:2009-07 (Silikastaub für Beton - Teil 1: Definitionen, Anforderungen und Konformitätskriterien)' }
-        ]}
-        formeln={[
-          {
-            formel: '\\left(\\frac{w}{c}\\right)_{\\text{eq}} = \\frac{w}{c + k_F \\cdot f + k_S \\cdot s}',
-            erklaerung: 'Äquivalenter Wasserzementwert nach DIN EN 206 / DIN 1045-2: Anrechnung von Steinkohlenflugasche (k_F = 0,40 bei CEM I) und Silikastaub (k_S = 1,0 nach DIN 1045-2:2023-08, s ≤ 0,11·z) auf den Zementgehalt c.',
-            quelle: 'DIN EN 206 Tab. 15 / DIN 1045-2'
-          },
-          {
-            formel: '2(3\\text{CaO} \\cdot \\text{SiO}_2) + 6\\text{H}_2\\text{O} \\rightarrow 3\\text{CaO} \\cdot 2\\text{SiO}_2 \\cdot 3\\text{H}_2\\text{O} + 3\\text{Ca(OH)}_2',
-            erklaerung: 'Alit-Hydratation (2 C3S + 6 H -> C-S-H + 3 CH): Bildung von festigkeitsbildendem C-S-H-Gel und basischem Portlandit (pH-Puffer).',
-            quelle: 'Stark/Wicht: Zementchemie'
-          },
-          {
-            formel: '\\text{Na}_2\\text{O}_{\\text{eq}} = \\%\\text{Na}_2\\text{O} + 0{,}658 \\cdot \\%\\text{K}_2\\text{O}',
-            erklaerung: 'Äquivalenter Alkaligehalt nach DIN 1164-10: Maßgeblich für NA-Zemente zum Schutz vor schädigender Alkali-Kieselsäure-Reaktion (AKR) in den Feuchteklassen WA und WS.',
-            quelle: 'DIN 1164-10 / DAfStb Alkali-Richtlinie'
-          }
-        ]}
+        literatur={inhalt.daten["Bindemittel.literatur"]}
+        regelwerke={inhalt.daten["Bindemittel.regelwerke"]}
+        formeln={inhalt.daten["Bindemittel.formeln"]}
       />
     </div>
   );

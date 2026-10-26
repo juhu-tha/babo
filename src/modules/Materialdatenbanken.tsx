@@ -4,61 +4,63 @@ import { Database, Leaf, Search, Globe, FileText, CheckCircle2, ShieldAlert, Fil
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
+import inhalt from '@/content/materialdatenbanken/Materialdatenbanken.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 const DATABASES = [
   {
     name: 'ÖKOBAUDAT',
-    origin: 'Deutschland (BBSR)',
+    origin: inhalt.werte.deutschlandBbsr,
     url: 'https://www.oekobaudat.de/',
     icon: <Database className="text-blue-600" size={24} />,
     color: 'bg-blue-50 border-blue-200',
-    description: 'Die ÖKOBAUDAT ist die verbindliche Datenbasis für die Ökobilanzierung von Gebäuden des Bundes (BNB) und für das QNG-Siegel. Sie enthält generische und spezifische Ökobilanzdatensätze (EPDs) für Bauprodukte.',
-    features: ['Kostenlos', 'Verbindlich für QNG/BNB', 'DIN EN 15804 konform', 'XML-Schnittstelle']
+    description: inhalt.werte.dieÖkobaudatIstDie,
+    features: ['Kostenlos', inhalt.werte.verbindlichFürQngBnb, inhalt.werte.dinEn15804Konform, 'XML-Schnittstelle']
   },
   {
     name: 'WECOBIS',
-    origin: 'Deutschland (BMWSB / BÄK)',
+    origin: inhalt.werte.deutschlandBmwsbBäk,
     url: 'https://www.wecobis.de/',
     icon: <Leaf className="text-green-600" size={24} />,
     color: 'bg-green-50 border-green-200',
-    description: 'Das Ökologische Baustoffinformationssystem (WECOBIS) liefert herstellerneutrale Informationen zu gesundheitlichen und ökologischen Aspekten von Bauprodukten über deren gesamten Lebenszyklus.',
-    features: ['Gesundheitsaspekte', 'Herstellerneutral', 'Lebenszyklusphasen', 'Textbasierte Infos']
+    description: inhalt.werte.dasÖkologischeBaustoffinformationssystem,
+    features: ['Gesundheitsaspekte', 'Herstellerneutral', 'Lebenszyklusphasen', inhalt.werte.textbasierteInfos]
   },
   {
     name: 'GESTIS-Stoffdatenbank',
-    origin: 'Deutschland (IFA / DGUV)',
+    origin: inhalt.werte.deutschlandIfaDguv,
     url: 'https://www.dguv.de/ifa/gestis/gestis-stoffdatenbank/index.jsp',
     icon: <ShieldAlert className="text-red-600" size={24} />,
     color: 'bg-red-50 border-red-200',
-    description: 'Die GESTIS-Stoffdatenbank enthält Informationen für den sicheren Umgang mit chemischen Stoffen am Arbeitsplatz, wie z.B. physikalisch-chemische Daten, Einstufung und Kennzeichnung (GHS) sowie technische Schutzmaßnahmen.',
+    description: inhalt.werte.dieGestisStoffdatenbankEnthält,
     features: ['Gefahrstoffe', 'Arbeitsschutz', 'GHS-Kennzeichnung', 'Kostenlos']
   },
   {
-    name: 'DGNB Navigator',
-    origin: 'Deutschland (DGNB)',
+    name: inhalt.werte.dgnbNavigator,
+    origin: inhalt.werte.deutschlandDgnb,
     url: 'https://www.dgnb-navigator.de/',
     icon: <Search className="text-orange-600" size={24} />,
     color: 'bg-orange-50 border-orange-200',
-    description: 'Der DGNB Navigator ist eine Online-Datenbank für Bauprodukte, die detaillierte Informationen zu Nachhaltigkeitsaspekten liefert und direkt mit dem DGNB Zertifizierungssystem verknüpft ist.',
+    description: inhalt.werte.derDgnbNavigatorIst,
     features: ['Herstellerspezifisch', 'DGNB-Kriterien', 'Zertifikate-Download', 'Produktsuche']
   },
   {
     name: 'Ecoinvent',
-    origin: 'Schweiz (Global)',
+    origin: inhalt.werte.schweizGlobal,
     url: 'https://ecoinvent.org/',
     icon: <Globe className="text-teal-600" size={24} />,
     color: 'bg-teal-50 border-teal-200',
-    description: 'Ecoinvent ist eine der weltweit größten und umfassendsten LCI-Datenbanken (Life Cycle Inventory). Sie wird oft als Hintergrunddatenbank für die Erstellung von EPDs und komplexen Ökobilanzen genutzt.',
-    features: ['Kostenpflichtig', 'Globaler Standard', 'Sehr detailliert', 'Hintergrunddaten']
+    description: inhalt.werte.ecoinventIstEineDer,
+    features: ['Kostenpflichtig', inhalt.werte.globalerStandard, inhalt.werte.sehrDetailliert, 'Hintergrunddaten']
   },
   {
-    name: 'EPD-Programme (z.B. IBU)',
+    name: inhalt.werte.epdProgrammeZB,
     origin: 'International',
     url: 'https://ibu-epd.com/',
     icon: <FileText className="text-purple-600" size={24} />,
     color: 'bg-purple-50 border-purple-200',
-    description: 'Programmhalter wie das Institut Bauen und Umwelt e.V. (IBU) veröffentlichen verifizierte Umweltproduktdeklarationen (EPDs) von Herstellern. Diese Daten fließen oft in die ÖKOBAUDAT ein.',
-    features: ['Verifizierte Daten', 'Herstellerspezifisch', 'PDF & XML', 'Primärdaten']
+    description: inhalt.werte.programmhalterWieDasInstitut,
+    features: [inhalt.werte.verifizierteDaten, 'Herstellerspezifisch', 'PDF & XML', 'Primärdaten']
   }
 ];
 
@@ -80,101 +82,101 @@ interface OekobaudatRecord {
 const MOCK_MOCK_RECORDS: OekobaudatRecord[] = [
   {
     id: 'o-1',
-    name: 'Normalbeton C25/30',
-    category: 'Mineralisch / Beton',
+    name: inhalt.werte.normalbetonC2530,
+    category: inhalt.werte.mineralischBeton,
     type: 'Generisch',
-    manufacturer: 'BBSR Generischer Datensatz',
+    manufacturer: inhalt.werte.bbsrGenerischerDatensatz,
     unit: '1 m³',
     gwp: 245.0,
     penrt: 1350,
     ap: 0.28,
     ep: 0.08,
     recycledContent: 0,
-    wecobisSafety: ['Frei von organischen Lösemitteln', 'Kein VOC-Dampf', 'Nicht brennbar A1']
+    wecobisSafety: [inhalt.werte.freiVonOrganischenLösemitteln, inhalt.werte.keinVocDampf, inhalt.werte.nichtBrennbarA1]
   },
   {
     id: 'o-2',
-    name: 'Brettschichtholz (Nadelholz)',
-    category: 'Nachwachsend / Holz',
+    name: inhalt.werte.brettschichtholzNadelholz,
+    category: inhalt.werte.nachwachsendHolz,
     type: 'Generisch',
-    manufacturer: 'BBSR Generischer Datensatz',
+    manufacturer: inhalt.werte.bbsrGenerischerDatensatz2,
     unit: '1 m³',
     gwp: -482.0, // Biogenes CO2
     penrt: 2600,
     ap: 0.45,
     ep: 0.15,
     recycledContent: 0,
-    wecobisSafety: ['Biogener CO2-Speicher', 'Formaldehyd Klasse E1', 'PEFC/FSC zertifiziert']
+    wecobisSafety: [inhalt.werte.biogenerCo2Speicher, inhalt.werte.formaldehydKlasseE1, inhalt.werte.pefcFscZertifiziert]
   },
   {
     id: 'o-3',
-    name: 'Flachprodukt Stahl (B500B)',
+    name: inhalt.werte.flachproduktStahlB500b,
     category: 'Metall',
     type: 'Spezifisch (EPD)',
-    manufacturer: 'Wirtschaftsvereinigung Stahl',
+    manufacturer: inhalt.werte.wirtschaftsvereinigungStahl,
     unit: '1 t',
     gwp: 1120.0,
     penrt: 14200,
     ap: 1.85,
     ep: 0.54,
     recycledContent: 85,
-    wecobisSafety: ['unbegrenzt recyclingfähig', 'Schwermetallfrei', 'DGNB VOC konform']
+    wecobisSafety: [inhalt.werte.unbegrenztRecyclingfähig, 'Schwermetallfrei', inhalt.werte.dgnbVocKonform]
   },
   {
     id: 'o-4',
-    name: 'Steinwolle-Dämmplatte (generisch)',
+    name: inhalt.werte.steinwolleDämmplatteGenerisch,
     category: 'Dämmstoffe',
     type: 'Generisch',
-    manufacturer: 'BBSR Generischer Datensatz',
+    manufacturer: inhalt.werte.bbsrGenerischerDatensatz3,
     unit: '1 m³',
     gwp: 45.5,
     penrt: 820,
     ap: 0.12,
     ep: 0.03,
     recycledContent: 15,
-    wecobisSafety: ['Biopersistenzfrei', 'Recyclingfähig', 'Ausgezeichneter Brandschutz']
+    wecobisSafety: ['Biopersistenzfrei', 'Recyclingfähig', inhalt.werte.ausgezeichneterBrandschutz]
   },
   {
     id: 'o-5',
-    name: 'Portlandzement CEM I 42,5 R (Muster-Zement)',
-    category: 'Mineralisch / Bindemittel',
+    name: inhalt.werte.portlandzementCemI42,
+    category: inhalt.werte.mineralischBindemittel,
     type: 'Spezifisch (EPD)',
-    manufacturer: 'Deutscher Zementhersteller (Musterwert)',
+    manufacturer: inhalt.werte.deutscherZementherstellerMusterwert,
     unit: '1 t',
     gwp: 680.0,
     penrt: 3340,
     ap: 0.98,
     ep: 0.24,
     recycledContent: 5,
-    wecobisSafety: ['Chromatarm nach EG-VO', 'Aerosolarm bei Anmischung']
+    wecobisSafety: [inhalt.werte.chromatarmNachEgVo, inhalt.werte.aerosolarmBeiAnmischung]
   },
   {
     id: 'o-6',
-    name: 'Porenbeton-Planstein (Muster-EPD)',
-    category: 'Mineralisch / Mauerwerk',
+    name: inhalt.werte.porenbetonPlansteinMusterEpd,
+    category: inhalt.werte.mineralischMauerwerk,
     type: 'Spezifisch (EPD)',
-    manufacturer: 'Inländisches Mauersteinkombinat',
+    manufacturer: inhalt.werte.inländischesMauersteinkombinat,
     unit: '1 m³',
     gwp: 110.0,
     penrt: 780,
     ap: 0.15,
     ep: 0.04,
     recycledContent: 8,
-    wecobisSafety: ['Eco-Institut Certified', 'Frei von krebserzeugenden Stoffen', 'Sehr emissionsarm']
+    wecobisSafety: [inhalt.werte.ecoInstitutCertified, inhalt.werte.freiVonKrebserzeugendenStoffen, inhalt.werte.sehrEmissionsarm]
   },
   {
     id: 'o-7',
-    name: 'Gipskartonplatte GKB 12,5',
-    category: 'Ausbau / Trockenbau',
+    name: inhalt.werte.gipskartonplatteGkb125,
+    category: inhalt.werte.ausbauTrockenbau,
     type: 'Spezifisch (EPD)',
-    manufacturer: 'Musterhersteller Trockenbausysteme',
+    manufacturer: inhalt.werte.musterherstellerTrockenbausysteme,
     unit: '1 m²',
     gwp: 1.85,
     penrt: 34.0,
     ap: 0.005,
     ep: 0.001,
     recycledContent: 25,
-    wecobisSafety: ['FGD Gips Anteil (REA)', 'Institut Bauen und Umwelt verifiziert', 'Geringe TVOC Emissionen']
+    wecobisSafety: [inhalt.werte.fgdGipsAnteilRea, inhalt.werte.institutBauenUndUmwelt, inhalt.werte.geringeTvocEmissionen]
   }
 ];
 
@@ -189,21 +191,21 @@ export interface QngMaterial {
 }
 
 export const QNG_DATA: QngMaterial[] = [
-  { name: 'Normalbeton C25/30 (CEM I, Standard)', category: 'Mineralisch', unit: 'm³', gwp: 235, penrt: 1250, rec: 'Sehr gut (rezyklierte Gesteinskörnung Typ 1/2 für r-Beton)' },
-  { name: 'Sonderbeton C30/37 (CEM III, CO₂-reduziert)', category: 'Mineralisch', unit: 'm³', gwp: 145, penrt: 950, rec: 'Sehr gut (Hüttensandmischung, ressourcensparend)' },
-  { name: 'Kalksandstein (KS-Planstein, Rohdichte 1.8)', category: 'Mineralisch', unit: 't', gwp: 110, penrt: 980, rec: 'Mittel (Rein aufbereitet zu Kalksandsteinmehl)' },
-  { name: 'Porenbetonplanstein', category: 'Mineralisch', unit: 'm³', gwp: 185, penrt: 1850, rec: 'Mittel (Richten für sortenreines Werksrecycling)' },
-  { name: 'Hochlochziegel (unverfüllt)', category: 'Mineralisch', unit: 'm³', gwp: 220, penrt: 2300, rec: 'Mittel (Verwendung als Ziegelmehl/Veg-Substrat)' },
-  { name: 'Bewehrungsstahl (Sekundärroute, 100% Elektro-Stahlschrott)', category: 'Metalle', unit: 't', gwp: 450, penrt: 5800, rec: 'Hervorragend (unendlich oft einschmelzbar)' },
-  { name: 'Bewehrungsstahl (Primärroute, Hochofen mit Eisenerz)', category: 'Metalle', unit: 't', gwp: 1850, penrt: 24500, rec: 'Hervorragend (Stahlschrott rückgewinnbar)' },
-  { name: 'Konstruktionsvollholz (KVH / Nadelholz)', category: 'Holz & Organisch', unit: 'm³', gwp: -620, penrt: 1950, biogenicC: -780, rec: 'Hochwertig (Langfristige stoffliche Kaskadennutzung)' },
-  { name: 'Brettschichtholz (BSH, Brettschichtholz)', category: 'Holz & Organisch', unit: 'm³', gwp: -580, penrt: 2400, biogenicC: -760, rec: 'Hochwertig (Langfristige stoffliche Kaskadennutzung)' },
-  { name: 'Strohballendämmung (Baustroh gepresst)', category: 'Dämmstoffe', unit: 't', gwp: -1100, penrt: 2100, biogenicC: -1300, rec: 'Exzellent (Biologischer Abbau, vollständige Kreislaufrückführung)' },
-  { name: 'Holzweichfaserdämmplatte (WF, flexibel)', category: 'Dämmstoffe', unit: 'm³', gwp: -210, penrt: 4100, biogenicC: -460, rec: 'Gut (Thermische Verwertbarkeit nach Kaskade)' },
-  { name: 'Mineralwolle (Steinwolle-Dämmplatte)', category: 'Dämmstoffe', unit: 'm³', gwp: 45, penrt: 750, rec: 'Mittel (Schmelz-Recycling im Aufbau)' },
-  { name: 'EPS-Hartschaumplatte (erdölbasiert)', category: 'Dämmstoffe', unit: 'm³', gwp: 95, penrt: 2800, rec: 'Gering (Meist thermische Verwertung d. HBCD-Problemtechnik)' },
-  { name: 'Zweifach-Wärmeschutzglas (Ug 1.1)', category: 'Fenster & Glas', unit: 'm²', gwp: 32, penrt: 580, rec: 'Gut (Sauerstoff-Schmelzkreislauf im Floatwerk)' },
-  { name: 'Dreifach-Wärmeschutzglas (Ug 0.6 premium)', category: 'Fenster & Glas', unit: 'm²', gwp: 48, penrt: 850, rec: 'Gut (Sauerstoff-Schmelzkreislauf im Floatwerk)' }
+  { name: inhalt.werte.normalbetonC2530Cem, category: 'Mineralisch', unit: 'm³', gwp: 235, penrt: 1250, rec: inhalt.werte.sehrGutRezyklierteGesteinskörnung },
+  { name: inhalt.werte.sonderbetonC3037Cem, category: 'Mineralisch', unit: 'm³', gwp: 145, penrt: 950, rec: inhalt.werte.sehrGutHüttensandmischungRessourcenspare },
+  { name: inhalt.werte.kalksandsteinKsPlansteinRohdichte, category: 'Mineralisch', unit: 't', gwp: 110, penrt: 980, rec: inhalt.werte.mittelReinAufbereitetZu },
+  { name: 'Porenbetonplanstein', category: 'Mineralisch', unit: 'm³', gwp: 185, penrt: 1850, rec: inhalt.werte.mittelRichtenFürSortenreines },
+  { name: inhalt.werte.hochlochziegelUnverfüllt, category: 'Mineralisch', unit: 'm³', gwp: 220, penrt: 2300, rec: inhalt.werte.mittelVerwendungAlsZiegelmehl },
+  { name: inhalt.werte.bewehrungsstahlSekundärroute100Elektro, category: 'Metalle', unit: 't', gwp: 450, penrt: 5800, rec: inhalt.werte.hervorragendUnendlichOftEinschmelzbar },
+  { name: inhalt.werte.bewehrungsstahlPrimärrouteHochofenMit, category: 'Metalle', unit: 't', gwp: 1850, penrt: 24500, rec: inhalt.werte.hervorragendStahlschrottRückgewinnbar },
+  { name: inhalt.werte.konstruktionsvollholzKvhNadelholz, category: 'Holz & Organisch', unit: 'm³', gwp: -620, penrt: 1950, biogenicC: -780, rec: inhalt.werte.hochwertigLangfristigeStofflicheKaskaden },
+  { name: inhalt.werte.brettschichtholzBshBrettschichtholz, category: 'Holz & Organisch', unit: 'm³', gwp: -580, penrt: 2400, biogenicC: -760, rec: inhalt.werte.hochwertigLangfristigeStofflicheKaskaden2 },
+  { name: inhalt.werte.strohballendämmungBaustrohGepresst, category: 'Dämmstoffe', unit: 't', gwp: -1100, penrt: 2100, biogenicC: -1300, rec: inhalt.werte.exzellentBiologischerAbbauVollständige },
+  { name: inhalt.werte.holzweichfaserdämmplatteWfFlexibel, category: 'Dämmstoffe', unit: 'm³', gwp: -210, penrt: 4100, biogenicC: -460, rec: inhalt.werte.gutThermischeVerwertbarkeitNach },
+  { name: inhalt.werte.mineralwolleSteinwolleDämmplatte, category: 'Dämmstoffe', unit: 'm³', gwp: 45, penrt: 750, rec: inhalt.werte.mittelSchmelzRecyclingIm },
+  { name: inhalt.werte.epsHartschaumplatteErdölbasiert, category: 'Dämmstoffe', unit: 'm³', gwp: 95, penrt: 2800, rec: inhalt.werte.geringMeistThermischeVerwertung },
+  { name: inhalt.werte.zweifachWärmeschutzglasUg1, category: 'Fenster & Glas', unit: 'm²', gwp: 32, penrt: 580, rec: inhalt.werte.gutSauerstoffSchmelzkreislaufIm },
+  { name: inhalt.werte.dreifachWärmeschutzglasUg0, category: 'Fenster & Glas', unit: 'm²', gwp: 48, penrt: 850, rec: inhalt.werte.gutSauerstoffSchmelzkreislaufIm2 }
 ];
 
 export default function Materialdatenbanken() {
@@ -215,7 +217,7 @@ export default function Materialdatenbanken() {
   const [qngQuantities, setQngQuantities] = useState<Record<string, string>>({});
   const [qngCategoryFilter, setQngCategoryFilter] = useState<string>('Alle');
 
-  const categories = ['Alle', 'Mineralisch / Beton', 'Nachwachsend / Holz', 'Metall', 'Dämmstoffe', 'Ausbau / Trockenbau'];
+  const categories = ['Alle', inhalt.werte.mineralischBeton2, inhalt.werte.nachwachsendHolz2, 'Metall', 'Dämmstoffe', inhalt.werte.ausbauTrockenbau2];
 
   const filteredRecords = MOCK_MOCK_RECORDS.filter(record => {
     const matchesSearch = record.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
@@ -230,20 +232,14 @@ export default function Materialdatenbanken() {
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6 font-normal">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Database className="text-shiraz" size={24} /> Materialdatenbanken &amp; Informationssysteme
-        </h2>
+          <Database className="text-shiraz" size={24} /><MdText text={inhalt.texte.materialdatenbankenInformationssysteme} /></h2>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Professionelle Materialdatenbanken und Informationssysteme bilden das Fundament für verlässliche Kennwertermittlung, Ausschreibung und BIM-Modellierung.
-          </p>
+          <p><MdText text={inhalt.texte.professionelleMaterialdatenbankenUndInfo} /></p>
         </div>
         
         <div className="text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-home-grau/30 leading-relaxed font-normal">
-          <p>
-            Für die Berechnung der Umweltwirkungen von Gebäuden (Ökobilanzierung / LCA) werden verlässliche Daten zu den eingesetzten Baumaterialien benötigt. 
-            Verschiedene Datenbanken stellen diese Informationen in Form von generischen Datensätzen oder spezifischen Umweltproduktdeklarationen (EPDs) zur Verfügung.
-          </p>
+          <p><MdText text={inhalt.texte.fürDieBerechnungDer} /></p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
@@ -294,11 +290,9 @@ export default function Materialdatenbanken() {
           <div className="flex items-center gap-2">
             <span className="p-1 px-2.5 bg-blue-100 text-blue-800 text-xs font-bold rounded-lg uppercase tracking-wider">Sandbox</span>
             <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-              <Database className="text-blue-600" size={20} />
-              Interaktive ÖKOBAUDAT Suchkonsole (Simuliert)
-            </h3>
+              <Database className="text-blue-600" size={20} /><MdText text={inhalt.texte.interaktiveÖkobaudatSuchkonsoleSimuliert} /></h3>
           </div>
-          <p className="text-xs text-slate-500">Direktabfrage normgerechter Kennwerte nach DIN EN 15804.</p>
+          <p className="text-xs text-slate-500"><MdText text={inhalt.texte.direktabfrageNormgerechterKennwerteNach} /></p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 font-normal">
@@ -308,8 +302,8 @@ export default function Materialdatenbanken() {
               <Search className="absolute left-3 top-3 text-slate-400" size={16} />
               <input 
                 type="text" 
-                placeholder="Baustoff oder Hersteller suchen..." 
-                title="Nach bestimmten Baustoffen oder Herstellern in der ÖKOBAUDAT filtern (z.B. Beton, Gips)"
+                placeholder={inhalt.werte.baustoffOderHerstellerSuchen} 
+                title={inhalt.werte.nachBestimmtenBaustoffenOder}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-9 pr-4 py-2 text-xs border border-home-grau/30 rounded-xl focus:outline-none focus:ring-1 focus:ring-shiraz h-10 bg-slate-50"
@@ -343,12 +337,11 @@ export default function Materialdatenbanken() {
 
             {/* Results selection list */}
             <div className="flex flex-col gap-1.5 flex-1 min-h-[180px]">
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                Suchergebnisse ({filteredRecords.length}):
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider"><MdText text={inhalt.texte.suchergebnisse} />{filteredRecords.length}):
               </span>
               <div className="flex flex-col gap-1.5 overflow-y-auto max-h-[250px] pr-1">
                 {filteredRecords.length === 0 ? (
-                  <div className="text-center py-6 text-xs text-slate-400">Keine Datensätze gefunden.</div>
+                  <div className="text-center py-6 text-xs text-slate-400"><MdText text={inhalt.texte.keineDatensätzeGefunden} /></div>
                 ) : (
                   filteredRecords.map((record) => (
                     <button aria-pressed={selectedRecordId === record.id}
@@ -384,7 +377,7 @@ export default function Materialdatenbanken() {
               <div className="flex items-center justify-between border-b border-gray-800 pb-3 mb-4">
                 <div className="flex items-center gap-2">
                   <FileSpreadsheet className="text-emerald-400 shrink-0" size={16} />
-                  <span className="text-xs font-bold text-emerald-300 uppercase">ÖKOBAUDAT DATASHEET VIEW</span>
+                  <span className="text-xs font-bold text-emerald-300 uppercase"><MdText text={inhalt.texte.ökobaudatDatasheetView} /></span>
                 </div>
                 <span className="text-[10px] text-gray-500 font-mono">ID: {activeRecord.id.toUpperCase()}-LCA</span>
               </div>
@@ -399,38 +392,38 @@ export default function Materialdatenbanken() {
 
               {/* LCIA indicators block */}
               <div className="space-y-2 mt-4">
-                <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider block">Wirkungsabschätzungsindikatoren (LCIA, Modul A1-A3):</span>
+                <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider block"><MdText text={inhalt.texte.wirkungsabschätzungsindikatorenLciaModul} /></span>
                 <div className="grid grid-cols-2 gap-3 mt-1.5 text-xs font-sans">
                   <div className="bg-gray-900 border border-gray-850 p-2.5 rounded-xl">
-                    <span className="text-[9px] text-gray-400 uppercase font-semibold block">GWP (Treibhauspotenzial)</span>
+                    <span className="text-[9px] text-gray-400 uppercase font-semibold block"><MdText text={inhalt.texte.gwpTreibhauspotenzial} /></span>
                     <strong className="text-base text-emerald-400 font-bold block mt-0.5">
                       {formatDeZahl(activeRecord.gwp, 2)} <span className="text-[10px] text-gray-300 font-normal">kg CO₂-eq/{activeRecord.unit.split(' ').pop()}</span>
                     </strong>
-                    <span className="text-[9px] text-gray-500 leading-tight block mt-0.5">Einfluss auf die Erderwärmung.</span>
+                    <span className="text-[9px] text-gray-500 leading-tight block mt-0.5"><MdText text={inhalt.texte.einflussAufDieErderwärmung} /></span>
                   </div>
 
                   <div className="bg-gray-900 border border-gray-850 p-2.5 rounded-xl">
-                    <span className="text-[9px] text-gray-400 uppercase font-semibold block">PENRT (Primärenergie)</span>
+                    <span className="text-[9px] text-gray-400 uppercase font-semibold block"><MdText text={inhalt.texte.penrtPrimärenergie} /></span>
                     <strong className="text-base text-amber-500 font-bold block mt-0.5">
                       {activeRecord.penrt.toLocaleString('de-DE')} <span className="text-[10px] text-gray-300 font-normal">MJ/{activeRecord.unit.split(' ').pop()}</span>
                     </strong>
-                    <span className="text-[9px] text-gray-500 leading-tight block mt-0.5">Nicht-erneuerbare Primärenergie.</span>
+                    <span className="text-[9px] text-gray-500 leading-tight block mt-0.5"><MdText text={inhalt.texte.nichtErneuerbarePrimärenergie} /></span>
                   </div>
 
                   <div className="bg-gray-900 border border-gray-850 p-2.5 rounded-xl">
-                    <span className="text-[9px] text-gray-400 uppercase font-semibold block">AP (Versauerung)</span>
+                    <span className="text-[9px] text-gray-400 uppercase font-semibold block"><MdText text={inhalt.texte.apVersauerung} /></span>
                     <strong className="text-base text-blue-400 font-bold block mt-0.5">
                       {formatDeZahl(activeRecord.ap, 3)} <span className="text-[10px] text-gray-300 font-normal">kg SO₂-eq</span>
                     </strong>
-                    <span className="text-[9px] text-gray-500 leading-tight block mt-0.5">Saurer Regen Belastung.</span>
+                    <span className="text-[9px] text-gray-500 leading-tight block mt-0.5"><MdText text={inhalt.texte.saurerRegenBelastung} /></span>
                   </div>
 
                   <div className="bg-gray-900 border border-gray-850 p-2.5 rounded-xl">
-                    <span className="text-[9px] text-gray-400 uppercase font-semibold block">EP (Eutrophierung)</span>
+                    <span className="text-[9px] text-gray-400 uppercase font-semibold block"><MdText text={inhalt.texte.epEutrophierung} /></span>
                     <strong className="text-base text-purple-400 font-bold block mt-0.5">
                       {formatDeZahl(activeRecord.ep, 3)} <span className="text-[10px] text-gray-300 font-normal">kg PO₄-eq</span>
                     </strong>
-                    <span className="text-[9px] text-gray-500 leading-tight block mt-0.5">Nährstoffeintrag in Gewässer.</span>
+                    <span className="text-[9px] text-gray-500 leading-tight block mt-0.5"><MdText text={inhalt.texte.nährstoffeintragInGewässer} /></span>
                   </div>
                 </div>
               </div>
@@ -439,9 +432,7 @@ export default function Materialdatenbanken() {
             {/* Wecobis safety profiles */}
             <div className="mt-4 pt-3 border-t border-gray-900 font-sans">
               <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 flex items-center gap-1">
-                <Leaf size={12} className="text-green-500" />
-                Ökologische Begleitinformation (WECOBIS Schnittstelle):
-              </span>
+                <Leaf size={12} className="text-green-500" /><MdText text={inhalt.texte.ökologischeBegleitinformationWecobisSchn} /></span>
               <div className="flex flex-wrap gap-1">
                 {activeRecord.wecobisSafety.map((saf, sIdx) => (
                   <span key={sIdx} className="text-[9px] font-semibold bg-gray-900 border border-gray-800 text-green-300 px-2.5 py-0.5 rounded-lg">
@@ -449,8 +440,7 @@ export default function Materialdatenbanken() {
                   </span>
                 ))}
                 {activeRecord.recycledContent > 0 && (
-                  <span className="text-[9px] font-semibold bg-gray-900 border border-gray-800 text-blue-300 px-2.5 py-0.5 rounded-lg">
-                    ♻ Post-Consumer Recycling: {formatDeWert(activeRecord.recycledContent)}%
+                  <span className="text-[9px] font-semibold bg-gray-900 border border-gray-800 text-blue-300 px-2.5 py-0.5 rounded-lg"><MdText text={inhalt.texte.postConsumerRecycling} />{formatDeWert(activeRecord.recycledContent)}%
                   </span>
                 )}
               </div>
@@ -465,21 +455,18 @@ export default function Materialdatenbanken() {
           <div className="flex items-center gap-3">
             <Leaf className="text-emerald-600 animate-pulse" size={24} />
             <div>
-              <h2 className="text-xl font-bold text-text-main">QNG-Rechenwerttabelle &amp; LCA-Schätzer</h2>
-              <p className="text-xs text-text-main/60">
-                Offizielle Standarddaten der Ökobau.dat für das Qualitätssiegel Nachhaltiges Gebäude (QNG)
-              </p>
+              <h2 className="text-xl font-bold text-text-main"><MdText text={inhalt.texte.qngRechenwerttabelleLcaSchätzer} /></h2>
+              <p className="text-xs text-text-main/60"><MdText text={inhalt.texte.offizielleStandarddatenDerÖkobau} /></p>
             </div>
           </div>
           {/* Quick action to clear calculator */}
           {Object.keys(qngQuantities).some(k => qngQuantities[k] !== '') && (
             <button 
               onClick={() => setQngQuantities({})}
-              title="Alle Mengeneinschätzungen im Rechner zurücksetzen"
+              title={inhalt.werte.alleMengeneinschätzungenImRechner}
               className="py-1.5 px-3 rounded-lg text-xs font-semibold bg-rose-50 text-rose-700 hover:bg-rose-100 flex items-center gap-1 cursor-pointer transition-colors"
             >
-              <RotateCcw size={13} /> Rechner zurücksetzen
-            </button>
+              <RotateCcw size={13} /><MdText text={inhalt.texte.rechnerZurücksetzen} /></button>
           )}
         </div>
 
@@ -487,16 +474,12 @@ export default function Materialdatenbanken() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 text-sm text-text-main/80 bg-slate-50 p-4 rounded-xl border border-home-grau/30 leading-relaxed flex flex-col justify-between">
             <div className="space-y-2">
-              <p>
-                Das <strong>Qualitätssiegel Nachhaltiges Gebäude (QNG)</strong> ist ein staatliches deutsches Gütesiegel. Es setzt anspruchsvolle Grenzwerte für die Treibhausgasemissionen (GWP) und den Primärenergiebedarf (PENRT) im Lebenszyklus eines Gebäudes (A1-A3 Herstellung, A4-A5 Errichtung, B4-B6 Nutzung, C1-C4 Entsorgung).
-              </p>
-              <p className="text-xs text-text-main/70">
-                Diese Rechenwerttabelle bietet Lehrenden und Studierenden der TH Augsburg eine interaktive Arbeitsdatei, um Baustoffentscheidungen bereits im Vorentwurf quantitativ zu bewerten. Tragen Sie einfach die geschätzten projektbezogenen Mengen ein, um die kumulierten Werte in Echtzeit zu überschauen.
-              </p>
+              <p><MdText text={inhalt.texte.dasQualitätssiegelNachhaltigesGebäude} /></p>
+              <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.dieseRechenwerttabelleBietetLehrenden} /></p>
             </div>
             <div className="flex flex-wrap gap-2 pt-3 border-t border-slate-200 text-xs text-slate-500 mt-3">
-              <span className="flex items-center gap-1 bg-white px-2 py-1 rounded-md border text-[11px]"><span className="w-2 h-2 rounded-full bg-emerald-500"></span> GWP: Global Warming Potential</span>
-              <span className="flex items-center gap-1 bg-white px-2 py-1 rounded-md border text-[11px]"><span className="w-2 h-2 rounded-full bg-blue-500"></span> PENRT: Primary Energy Non-Renewable</span>
+              <span className="flex items-center gap-1 bg-white px-2 py-1 rounded-md border text-[11px]"><span className="w-2 h-2 rounded-full bg-emerald-500"></span><MdText text={inhalt.texte.gwpGlobalWarmingPotential} /></span>
+              <span className="flex items-center gap-1 bg-white px-2 py-1 rounded-md border text-[11px]"><span className="w-2 h-2 rounded-full bg-blue-500"></span><MdText text={inhalt.texte.penrtPrimaryEnergyNon} /></span>
             </div>
           </div>
 
@@ -515,7 +498,7 @@ export default function Materialdatenbanken() {
               {/* GWP indicator */}
               <div className="space-y-1">
                 <div className="flex justify-between text-xs text-slate-600 font-medium">
-                  <span>Treibhausgaspotenzial (A1-A3):</span>
+                  <span><MdText text={inhalt.texte.treibhausgaspotenzialA1A3} /></span>
                 </div>
                 <div className="flex items-baseline gap-1 font-mono">
                   <span className="text-2xl font-bold text-slate-800">
@@ -546,12 +529,12 @@ export default function Materialdatenbanken() {
                 if (totalBiogenic < 0) {
                   return (
                     <div className="space-y-1 bg-white/70 p-2 rounded-lg border border-emerald-100">
-                      <span className="text-[10px] text-emerald-800 block font-bold uppercase">Biogene Kohlenstoff-Senke:</span>
+                      <span className="text-[10px] text-emerald-800 block font-bold uppercase"><MdText text={inhalt.texte.biogeneKohlenstoffSenke} /></span>
                       <div className="flex items-baseline gap-1 font-mono text-emerald-700">
                         <span className="text-sm font-bold">
                           {formatDeZahl((totalBiogenic / 1000), 2)}
                         </span>
-                        <span className="text-[10px] font-sans font-medium">t CO₂ (interne Einlagerung)</span>
+                        <span className="text-[10px] font-sans font-medium"><MdText text={inhalt.texte.tCoInterneEinlagerung} /></span>
                       </div>
                     </div>
                   );
@@ -562,7 +545,7 @@ export default function Materialdatenbanken() {
               {/* PENRT indicator */}
               <div className="space-y-1 pt-1.5 border-t border-emerald-500/10">
                 <div className="flex justify-between text-xs text-slate-600 font-medium">
-                  <span>Primärenergiebedarf (PENRT):</span>
+                  <span><MdText text={inhalt.texte.primärenergiebedarfPenrt} /></span>
                 </div>
                 <div className="flex items-baseline gap-1 font-mono">
                   <span className="text-xl font-bold text-blue-800">
@@ -577,14 +560,12 @@ export default function Materialdatenbanken() {
                       return formatDeZahl(totalPenrt / 1000, 1);
                     })()}
                   </span>
-                  <span className="text-xs text-blue-500 font-sans font-bold">GJ (Gigajoule)</span>
+                  <span className="text-xs text-blue-500 font-sans font-bold"><MdText text={inhalt.texte.gjGigajoule} /></span>
                 </div>
               </div>
             </div>
 
-            <div className="text-[10px] font-sans text-slate-500 italic leading-snug mt-4 pt-2 border-t border-emerald-500/10">
-              Mengen eintragen zur Live-Berechnung. Alle Werte beziehen sich auf die Herstellungs-Ökobilanzierung (A1-A3).
-            </div>
+            <div className="text-[10px] font-sans text-slate-500 italic leading-snug mt-4 pt-2 border-t border-emerald-500/10"><MdText text={inhalt.texte.mengenEintragenZurLive} /></div>
           </div>
         </div>
 
@@ -592,7 +573,7 @@ export default function Materialdatenbanken() {
         <div className="bg-slate-50 p-4 rounded-xl border border-slate-200/60 flex flex-col md:flex-row gap-4 items-center justify-between">
           {/* Search category filters */}
           <div className="flex flex-wrap gap-1.5 w-full md:w-auto">
-            {(['Alle', 'Mineralisch', 'Metalle', 'Holz & Organisch', 'Dämmstoffe', 'Fenster & Glas'] as const).map(cat => (
+            {(['Alle', 'Mineralisch', 'Metalle', inhalt.werte.holzOrganisch, 'Dämmstoffe', inhalt.werte.fensterGlas] as const).map(cat => (
               <button
                 key={cat}
                 onClick={() => setQngCategoryFilter(cat)}
@@ -605,9 +586,7 @@ export default function Materialdatenbanken() {
           </div>
           
           {/* Disclaimer */}
-          <span className="text-[11px] font-medium text-slate-500 font-mono">
-            Datenquelle: Ökobau.dat / QNG-Rechenwerte
-          </span>
+          <span className="text-[11px] font-medium text-slate-500 font-mono"><MdText text={inhalt.texte.datenquelleÖkobauDatQng} /></span>
         </div>
 
         {/* QNG Materials List Table */}
@@ -615,11 +594,11 @@ export default function Materialdatenbanken() {
           <table className="w-full text-xs text-left text-slate-800">
             <thead className="bg-slate-100 text-[11px] font-bold text-slate-700 uppercase border-b border-home-grau/20">
               <tr>
-                <th className="p-3 w-1/3">Baustoff / Konstruktionsmaterial</th>
+                <th className="p-3 w-1/3"><MdText text={inhalt.texte.baustoffKonstruktionsmaterial} /></th>
                 <th className="p-3">Kategorie</th>
-                <th className="p-3 text-right">GWP100 (A1-A3)</th>
-                <th className="p-3 text-right">PENRT (A1-A3)</th>
-                <th className="p-3 text-right w-32">Menge eingeben</th>
+                <th className="p-3 text-right"><MdText text={inhalt.texte.gwp100A1A3} /></th>
+                <th className="p-3 text-right"><MdText text={inhalt.texte.penrtA1A3} /></th>
+                <th className="p-3 text-right w-32"><MdText text={inhalt.texte.mengeEingeben} /></th>
                 <th className="p-3 text-right font-mono">GWP Summe</th>
               </tr>
             </thead>
@@ -697,39 +676,31 @@ export default function Materialdatenbanken() {
         <div className="bg-sky-50 border border-sky-200 p-4 rounded-xl flex items-start gap-3">
           <Info className="text-sky-600 shrink-0 mt-0.5" size={16} />
           <div className="text-xs text-sky-950 space-y-1">
-            <span className="font-bold block">Didaktischer Hinweis zur Ökobilanzierung:</span>
-            <p className="leading-relaxed font-normal">
-              Negative GWP-Werte (z.B. beim Holz oder Stroh) beruhen auf dem Photosynthese-Effekt: Pflanzen speichern atmosphärischen Kohlenstoff während ihres Wachstums. Bei der Berechnung der Netto-LCA über das gesamte Gebäudeleben (Module A-D) müssen diese Speicher im Rückbau (Modul C3/C4) im Falle thermischer Verwertung bilanziell wieder freigelassen werden. Die nachhaltige Kaskadennutzung (z.B. Weiternutzung statt Verbrennung) ist der Schlüssel zur dauerhaften Kohlenstoffspeicherung.
-            </p>
+            <span className="font-bold block"><MdText text={inhalt.texte.didaktischerHinweisZurÖkobilanzierung} /></span>
+            <p className="leading-relaxed font-normal"><MdText text={inhalt.texte.negativeGwpWerteZ} /></p>
           </div>
         </div>
       </div>
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-        <h3 className="text-base font-bold text-slate-900 mb-4">Datenarten in der Ökobilanzierung</h3>
+        <h3 className="text-base font-bold text-slate-900 mb-4"><MdText text={inhalt.texte.datenartenInDerÖkobilanzierung} /></h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 leading-relaxed">
           <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/30">
-            <h4 className="font-bold text-slate-900 text-sm mb-2">Generische Daten</h4>
-            <p className="text-xs text-slate-700 mb-3 leading-relaxed">
-              Durchschnittswerte für eine bestimmte Produktgruppe (z.B. "Normalbeton C25/30"). 
-              Sie werden oft in frühen Planungsphasen verwendet, wenn das genaue Fabrikat noch nicht feststeht.
-            </p>
+            <h4 className="font-bold text-slate-900 text-sm mb-2"><MdText text={inhalt.texte.generischeDaten} /></h4>
+            <p className="text-xs text-slate-700 mb-3 leading-relaxed"><MdText text={inhalt.texte.durchschnittswerteFürEineBestimmte} /></p>
             <ul className="text-[11px] text-slate-500 space-y-1 list-disc list-inside">
-              <li>Oft konservative (schlechtere) Annahmen</li>
-              <li>Kostenlos in ÖKOBAUDAT verfügbar</li>
-              <li>Gut für erste Abschätzungen</li>
+              <li><MdText text={inhalt.texte.oftKonservativeSchlechtereAnnahmen} /></li>
+              <li><MdText text={inhalt.texte.kostenlosInÖkobaudatVerfügbar} /></li>
+              <li><MdText text={inhalt.texte.gutFürErsteAbschätzungen} /></li>
             </ul>
           </div>
           <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/30">
-            <h4 className="font-bold text-slate-900 text-sm mb-2">Spezifische Daten (EPDs)</h4>
-            <p className="text-xs text-slate-700 mb-3 leading-relaxed">
-              Herstellerspezifische Daten für ein konkretes Produkt (z.B. "Zement CEM II/A-LL 42.5 R vom Werk X"). 
-              Sie basieren auf realen Produktionsdaten des Herstellers.
-            </p>
+            <h4 className="font-bold text-slate-900 text-sm mb-2"><MdText text={inhalt.texte.spezifischeDatenEpds} /></h4>
+            <p className="text-xs text-slate-700 mb-3 leading-relaxed"><MdText text={inhalt.texte.herstellerspezifischeDatenFürEin} /></p>
             <ul className="text-[11px] text-slate-500 space-y-1 list-disc list-inside">
-              <li>Meist bessere Umweltwerte als generische Daten</li>
-              <li>Wichtig für die finale Zertifizierung</li>
-              <li>Müssen von unabhängigen Dritten verifiziert sein</li>
+              <li><MdText text={inhalt.texte.meistBessereUmweltwerteAls} /></li>
+              <li><MdText text={inhalt.texte.wichtigFürDieFinale} /></li>
+              <li><MdText text={inhalt.texte.müssenVonUnabhängigenDritten} /></li>
             </ul>
           </div>
         </div>
@@ -737,60 +708,43 @@ export default function Materialdatenbanken() {
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 mt-0">
         <h3 className="text-base font-bold text-slate-900 mb-4 flex items-center gap-2">
-          <Search className="text-shiraz" size={20} />
-          Konkretes Praxisbeispiel: Suchen Sie in der ÖKOBAUDAT
-        </h3>
+          <Search className="text-shiraz" size={20} /><MdText text={inhalt.texte.konkretesPraxisbeispielSuchenSie} /></h3>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Stellen Sie sich vor, Sie planen ein Gebäude und benötigen den <span className="font-semibold cursor-help" title="Global Warming Potential">GWP-Wert</span> (Treibhausgaspotenzial) für die verwendeten Stahlbetonstützen. So gehe vor:
-          </p>
+          <p><MdText text={inhalt.texte.stellenSieSichVor} /><span className="font-semibold cursor-help" title={inhalt.werte.globalWarmingPotential}>GWP-Wert</span><MdText text={inhalt.texte.treibhausgaspotenzialFürDieVerwendeten} /></p>
         </div>
         
         <div className="space-y-4">
           <div className="flex gap-4 p-4 bg-slate-50 rounded-xl border border-home-grau/30">
             <div className="flex bg-shiraz/10 text-shiraz w-8 h-8 rounded-full items-center justify-center font-bold shrink-0 text-xs">1</div>
             <div>
-              <h4 className="font-bold text-slate-900 text-xs">Schritt 1: Suchbegriff & Filter</h4>
-              <p className="text-[11px] text-slate-500 mt-1 leading-normal">
-                Sie öffnen die ÖKOBAUDAT und suchen nach <code>Beton C25/30</code>. Sie filtern nach "Generische Datensätze", da Sie sich in der frühen Leistungsphase 2 (Vorplanung) befinden und den genauen Lieferanten noch nicht kennen.
-          </p>
+              <h4 className="font-bold text-slate-900 text-xs"><MdText text={inhalt.texte.schritt1SuchbegriffFilter} /></h4>
+              <p className="text-[11px] text-slate-500 mt-1 leading-normal"><MdText text={inhalt.texte.sieÖffnenDieÖkobaudat} /></p>
         </div>
           </div>
 
           <div className="flex gap-4 p-4 bg-slate-50 rounded-xl border border-home-grau/30">
             <div className="flex bg-shiraz/10 text-shiraz w-8 h-8 rounded-full items-center justify-center font-bold shrink-0 text-xs">2</div>
             <div>
-              <h4 className="font-bold text-slate-900 text-xs">Schritt 2: Datensatz auswählen</h4>
-              <p className="text-[11px] text-slate-500 mt-1 leading-normal">
-                Sie wählen den Datensatz <span className="font-mono text-xs bg-white px-1 py-0.5 rounded border border-gray-200">Normalbeton (C25/30)</span> aus der Kategorie <i>Betonbauteile</i>. Die Deklarationseinheit (Bezugsgröße) ist <code>1 m³</code>.
-              </p>
+              <h4 className="font-bold text-slate-900 text-xs"><MdText text={inhalt.texte.schritt2DatensatzAuswählen} /></h4>
+              <p className="text-[11px] text-slate-500 mt-1 leading-normal"><MdText text={inhalt.texte.sieWählenDenDatensatz} /><span className="font-mono text-xs bg-white px-1 py-0.5 rounded border border-gray-200"><MdText text={inhalt.texte.normalbetonC2530} /></span><MdText text={inhalt.texte.ausDerKategorie} /><i>Betonbauteile</i><MdText text={inhalt.texte.dieDeklarationseinheitBezugsgrößeIst} /></p>
             </div>
           </div>
 
           <div className="flex gap-4 p-4 bg-slate-50 rounded-xl border border-home-grau/30">
             <div className="flex bg-shiraz/10 text-shiraz w-8 h-8 rounded-full items-center justify-center font-bold shrink-0 text-xs">3</div>
             <div>
-              <h4 className="font-bold text-slate-900 text-xs">Schritt 3: Umweltindikatoren auslesen</h4>
-              <p className="text-[11px] text-slate-500 mt-1 leading-normal">
-                Im Tab "Umweltindikatoren" lies für die Herstellungsphase (A1-A3) den Wert für das Treibhausgaspotenzial (GWP) ab:
-              </p>
-              <div className="mt-2 bg-white p-2.5 rounded-lg border border-home-grau/30 text-xs font-mono text-center max-w-sm">
-                GWP (A1-A3) = 245 kg CO₂-Äqv. / m³
-              </div>
+              <h4 className="font-bold text-slate-900 text-xs"><MdText text={inhalt.texte.schritt3UmweltindikatorenAuslesen} /></h4>
+              <p className="text-[11px] text-slate-500 mt-1 leading-normal"><MdText text={inhalt.texte.imTabUmweltindikatorenLies} /></p>
+              <div className="mt-2 bg-white p-2.5 rounded-lg border border-home-grau/30 text-xs font-mono text-center max-w-sm"><MdText text={inhalt.texte.gwpA1A3245} /></div>
             </div>
           </div>
 
           <div className="flex gap-4 p-4 bg-slate-50 rounded-xl border border-home-grau/30 items-start">
              <div className="flex bg-shiraz/10 text-shiraz w-8 h-8 rounded-full items-center justify-center font-bold shrink-0 text-xs">4</div>
              <div>
-              <h4 className="font-bold text-slate-900 text-xs">Schritt 4: Anwendung in der Bauwerksbilanz</h4>
-              <p className="text-[11px] text-slate-500 mt-1 leading-normal">
-                Sie multiplizieren Ihre abgerufene Kubatur aus dem CAD-Modell (z. B. 10 m³) mit dem Datenbankwert, um die CO₂-Emissionen der Stützen zu ermitteln: <br/>
-                <code>10 m³ × 245 kg CO₂/m³ = 2.450 kg CO₂</code>.
-              </p>
-              <p className="text-[11px] text-shiraz font-semibold mt-2">
-                Tipp: Später im Bauprojekt, wenn der reale Hersteller feststeht, suchen Sie nach der herstellerspezifischen EPD dieses Zementwerks, die oft deutlich niedriger liegt (z. B. 180 kg CO₂-Äqv. / m³), um Ihre Ökobilanz zu verbessern.
-              </p>
+              <h4 className="font-bold text-slate-900 text-xs"><MdText text={inhalt.texte.schritt4AnwendungIn} /></h4>
+              <p className="text-[11px] text-slate-500 mt-1 leading-normal"><MdText text={inhalt.texte.sieMultiplizierenIhreAbgerufene} /></p>
+              <p className="text-[11px] text-shiraz font-semibold mt-2"><MdText text={inhalt.texte.tippSpäterImBauprojekt} /></p>
             </div>
           </div>
         </div>
@@ -798,56 +752,31 @@ export default function Materialdatenbanken() {
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Flächenbezogenes Treibhauspotenzial einer Außenwand"
+        title={inhalt.werte.beispiel1FlächenbezogenesTreibhauspotenz}
         zielGleichung="GWP_{A} = \sum_k d_k \cdot \rho_k \cdot gwp_{m,k}"
-        schritte={[
-          { titel: 'Kalksandstein', erklaerung: 'd = 0,175 m, ρ = 1 800 kg/m³, gwp = 0,13 kg CO₂e/kg (Lehrwert):', formel: '0{,}175 \\cdot 1\\,800 \\cdot 0{,}13 = 40{,}95\\,\\text{kg CO}_2\\text{e/m}^2' },
-          { titel: 'EPS-Dämmung', erklaerung: 'd = 0,14 m, ρ = 20 kg/m³, gwp = 3,3 kg CO₂e/kg (Lehrwert):', formel: '0{,}14 \\cdot 20 \\cdot 3{,}3 = 9{,}24\\,\\text{kg CO}_2\\text{e/m}^2' },
-          { titel: 'Summe A1–A3', erklaerung: 'Ohne Putz und Befestigung:', formel: 'GWP_A = 50{,}2\\,\\text{kg CO}_2\\text{e/m}^2' }
-        ]}
-        ergebnisHinweis="Werte stets mit Datensatz-ID, Version und Modul (A1–A3, C, D) aus der aktuellen ÖKOBAUDAT übernehmen. Massebezogene und volumenbezogene Deklarationen nicht verwechseln."
-        normQuelle="DIN EN 15804+A2; ÖKOBAUDAT (BMWSB/BBSR)"
+        schritte={inhalt.daten["Materialdatenbanken.schritte"]}
+        ergebnisHinweis={inhalt.werte.werteStetsMitDatensatz}
+        normQuelle={inhalt.werte.dinEn15804A2}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Umrechnung einer massebezogenen EPD auf die funktionale Einheit"
+        title={inhalt.werte.beispiel2UmrechnungEiner}
         zielGleichung="GWP_{m^2} = d \cdot \rho \cdot gwp_m"
-        schritte={[
-          { titel: 'EPD-Angabe', erklaerung: 'Mineralwolle: 1,20 kg CO₂e je kg (A1–A3), Rohdichte 30 kg/m³:', formel: 'gwp_m = 1{,}20\\,\\text{kg CO}_2\\text{e/kg}' },
-          { titel: 'Dicke', erklaerung: 'Für U ≈ 0,20 W/(m²K) gewählt:', formel: 'd = 0{,}16\\,\\text{m}' },
-          { titel: 'Ergebnis', erklaerung: 'Flächenbezogen:', formel: 'GWP = 0{,}16 \\cdot 30 \\cdot 1{,}20 = 5{,}76\\,\\text{kg CO}_2\\text{e/m}^2' }
-        ]}
-        ergebnisHinweis="Dämmstoffe nur bei gleicher Wärmeschutzwirkung (gleicher R-Wert) vergleichen – ein besser dämmender Stoff braucht weniger Dicke."
-        normQuelle="DIN EN 15804+A2; DIN EN ISO 6946"
+        schritte={inhalt.daten["Materialdatenbanken.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.dämmstoffeNurBeiGleicher}
+        normQuelle={inhalt.werte.dinEn15804A22}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="materialdatenbanken" />
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 13 Digitales: EN 15804+A2, ÖKOBAUDAT-Nutzung und Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)" 
+        lastReviewed={inhalt.werte.oktober2026Ap13} 
         wikipedia={[
           { title: 'Materialdatenbanken', url: 'https://de.wikipedia.org/wiki/Werkstoffdatenbank' }
         ]}
-        regelwerke={[
-          { title: 'DIN EN 15804:2022-03 (EN 15804:2012+A2:2019+AC:2021; Umweltproduktdeklarationen)' },
-          { title: 'BNB-Kriterium 1.1.1 (Treibhausgaspotenzial und Primärenergiebedarf)', url: 'https://www.bnb-nachhaltigesbauen.de/' }
-        ]}
-        literatur={[
-          'BBSR/BMWSB: ÖKOBAUDAT – Informationsportal und Dokumentation (www.oekobaudat.de)',
-          'IBU (Institut Bauen und Umwelt e. V.): Allgemeine EPD-Programmanleitung (aktuelle Fassung)'
-        ]}
-        formeln={[
-          {
-            formel: '\\text{GWP}_{\\text{Bauteil}} = \\sum_{k=1}^m A_k \\cdot d_k \\cdot \\rho_k \\cdot \\text{GWP}_{100,k} \\quad [\\text{kg CO}_2\\text{-Äquiv.}]',
-            erklaerung: 'Berechnung des Treibhauspotenzials eines mehrschichtigen Bauteils aus den spezifischen ÖKOBAUDAT-Datensätzen über Fläche, Schichtdicke und Rohdichte.',
-            quelle: 'ÖKOBAUDAT / DIN EN 15804'
-          },
-          {
-            formel: 'U = \\frac{1}{R_{si} + \\sum_{j=1}^n \\frac{d_j}{\\lambda_j} + R_{se}} \\quad [\\text{W/(m}^2\\cdot\\text{K)}]',
-            erklaerung: 'Wärmedurchgangskoeffizient unter Verwendung der Nenn- und Bemessungswerte der Wärmeleitfähigkeit aus Materialdatenbanken.',
-            quelle: 'DIN EN ISO 6946'
-          }
-        ]}
+        regelwerke={inhalt.daten["Materialdatenbanken.regelwerke"]}
+        literatur={inhalt.daten["Materialdatenbanken.literatur"]}
+        formeln={inhalt.daten["Materialdatenbanken.formeln"]}
       />
     </div>
   );

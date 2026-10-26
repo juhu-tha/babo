@@ -11,14 +11,16 @@ import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { Querverweis } from '@/src/components/ui/Querverweis';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import inhaltJson from '@/content/laborhandouts/Potentialmessung.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 const th = 'p-2 text-left text-xs font-bold text-text-main border-b border-home-grau/30 bg-off-white';
 const td = 'p-2 text-xs text-text-main/85 border-b border-home-grau/15 font-mono';
 
 const BEREICH_TEXT: Record<PotentialBereich, string> = {
-  gering: 'geringe Korrosionswahrscheinlichkeit',
-  unsicher: 'unsicherer Bereich',
-  hoch: 'hohe Korrosionswahrscheinlichkeit',
+  gering: inhaltJson.werte.geringeKorrosionswahrscheinlichkeit,
+  unsicher: inhaltJson.werte.unsichererBereich,
+  hoch: inhaltJson.werte.hoheKorrosionswahrscheinlichkeit,
 };
 
 function auswerten(stand: ProtokollStand): AuswertungsAnsicht {
@@ -46,10 +48,10 @@ function auswerten(stand: ProtokollStand): AuswertungsAnsicht {
 
   const ergebnisse = erg.gueltig ? [
     { label: 'Bezugselektrode', wert: `${bezug.name} (+${formatDeZahl(bezug.eSHE, 0)} mV gegen SHE)` },
-    { label: 'Ruhepotential (Nullmessung)', wert: `${formatDeZahl(p0.eMess, 0)} mV gegen Bezug = ${formatDeZahl(p0.eSHE, 0)} mV SHE = ${formatDeZahl(p0.eCSE, 0)} mV CSE` },
-    { label: 'Hydroxidionen c(OH⁻)', wert: `${formatDeZahl(erg.cOH, 4)} mol/L (pH ${formatDeZahl(pH, 2)})` },
+    { label: inhaltJson.werte.ruhepotentialNullmessung, wert: `${formatDeZahl(p0.eMess, 0)} mV gegen Bezug = ${formatDeZahl(p0.eSHE, 0)} mV SHE = ${formatDeZahl(p0.eCSE, 0)} mV CSE` },
+    { label: inhaltJson.werte.hydroxidionenCOh, wert: `${formatDeZahl(erg.cOH, 4)} mol/L (pH ${formatDeZahl(pH, 2)})` },
     ps
-      ? { label: 'Potentialabfall (Depassivierung vermutet)', wert: `bei ${formatDeZahl(ps.mNaCl, 2)} g NaCl: c(Cl⁻) = ${formatDeZahl(ps.cCl, 4)} mol/L, Cl⁻/OH⁻ = ${formatDeZahl(ps.clOh, 2)}, ΔE = ${formatDeZahl(ps.delta, 0)} mV` }
+      ? { label: inhaltJson.werte.potentialabfallDepassivierungVermutet, wert: `bei ${formatDeZahl(ps.mNaCl, 2)} g NaCl: c(Cl⁻) = ${formatDeZahl(ps.cCl, 4)} mol/L, Cl⁻/OH⁻ = ${formatDeZahl(ps.clOh, 2)}, ΔE = ${formatDeZahl(ps.delta, 0)} mV` }
       : { label: 'Potentialabfall', wert: `kein Abfall ≥ ${formatDeZahl(sprung, 0)} mV zwischen zwei Stufen` },
   ] : [];
 
@@ -59,19 +61,19 @@ function auswerten(stand: ProtokollStand): AuswertungsAnsicht {
       {erg.gueltig && (
         <>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <Kennwert label="Ruhepotential (CSE)" wert={formatDeZahl(p0.eCSE, 0)} einheit="mV" />
+            <Kennwert label={inhaltJson.werte.ruhepotentialCse} wert={formatDeZahl(p0.eCSE, 0)} einheit="mV" />
             <Kennwert label="c(OH⁻)" wert={formatDeZahl(erg.cOH, 4)} einheit="mol/L" />
-            <Kennwert label="Abfall bei NaCl" wert={ps ? formatDeZahl(ps.mNaCl, 2) : '–'} einheit="g" />
-            <Kennwert label="Cl⁻/OH⁻ beim Abfall" wert={ps ? formatDeZahl(ps.clOh, 2) : '–'} />
+            <Kennwert label={inhaltJson.werte.abfallBeiNacl} wert={ps ? formatDeZahl(ps.mNaCl, 2) : '–'} einheit="g" />
+            <Kennwert label={inhaltJson.werte.clOhBeimAbfall} wert={ps ? formatDeZahl(ps.clOh, 2) : '–'} />
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <div className="overflow-x-auto">
               <table className="w-full border-collapse min-w-[460px]">
-                <caption className="text-left text-sm font-bold text-text-main pb-2">Umgerechnete Messwerte</caption>
+                <caption className="text-left text-sm font-bold text-text-main pb-2"><MdText text={inhaltJson.texte.umgerechneteMesswerte} /></caption>
                 <thead>
                   <tr>
                     <th scope="col" className={th}>NaCl in g</th><th scope="col" className={th}>E SHE in mV</th><th scope="col" className={th}>E CSE in mV</th>
-                    <th scope="col" className={th}>c(Cl⁻) in mol/L</th><th scope="col" className={th}>Cl⁻/OH⁻</th><th scope="col" className={th}>Bereich (Richtwert)</th>
+                    <th scope="col" className={th}><MdText text={inhaltJson.texte.cClInMol} /></th><th scope="col" className={th}>Cl⁻/OH⁻</th><th scope="col" className={th}><MdText text={inhaltJson.texte.bereichRichtwert} /></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -89,7 +91,7 @@ function auswerten(stand: ProtokollStand): AuswertungsAnsicht {
               </table>
             </div>
             <figure className="flex flex-col gap-1">
-              <svg viewBox={`0 0 ${B} ${H}`} className="w-full h-auto bg-off-white rounded-lg" role="img" aria-label="Potential gegen CSE über der kumulierten NaCl-Zugabe mit den Grenzen −200 mV und −350 mV">
+              <svg viewBox={`0 0 ${B} ${H}`} className="w-full h-auto bg-off-white rounded-lg" role="img" aria-label={inhaltJson.werte.potentialGegenCseÜber}>
                 <line x1={L} y1={H - U} x2={B - R} y2={H - U} stroke="#64748b" strokeWidth="1" />
                 <line x1={L} y1={O} x2={L} y2={H - U} stroke="#64748b" strokeWidth="1" />
                 {[-200, -350].map(g => (
@@ -105,40 +107,39 @@ function auswerten(stand: ProtokollStand): AuswertungsAnsicht {
                 <text x={4} y={O + 8} fontSize="9" fill="#334155">{formatDeZahl(eMax, 0)}</text>
                 <text x={L + 4} y={O + 10} fontSize="10" fill="#334155">E gegen CSE in mV</text>
               </svg>
-              <figcaption className="text-[10px] text-text-main/70">Gestrichelt die Bereichsgrenzen nach ASTM C876 (Richtwerte für Bauwerke, im Lösungsversuch nur zur Orientierung).</figcaption>
+              <figcaption className="text-[10px] text-text-main/70"><MdText text={inhaltJson.texte.gestricheltDieBereichsgrenzenNach} /></figcaption>
             </figure>
           </div>
           <div className={`p-4 rounded-xl border text-sm leading-relaxed ${ps ? 'border-rose-300 bg-rose-50' : 'border-emerald-300 bg-emerald-50'}`}>
             {ps ? (
               <p>
-                Zwischen {formatDeZahl(vor?.mNaCl, 2)} g und {formatDeZahl(ps.mNaCl, 2)} g NaCl fällt das Potential um <strong>{formatDeZahl(-ps.delta, 0)} mV</strong> – eine Depassivierung ist wahrscheinlich.
-                {' '}Das Verhältnis Cl⁻/OH⁻ liegt dann bei <strong>{formatDeZahl(ps.clOh, 2)}</strong> (vorherige Stufe {formatDeZahl(vor?.clOh, 2)}); Hausmann nennt als Richtwert {formatDeZahl(CL_OH_KRITISCH, 1)}.
+                Zwischen {formatDeZahl(vor?.mNaCl, 2)} g und {formatDeZahl(ps.mNaCl, 2)}<MdText text={inhaltJson.texte.gNaclFälltDas} /><strong>{formatDeZahl(-ps.delta, 0)} mV</strong><MdText text={inhaltJson.texte.eineDepassivierungIstWahrscheinlich} /><strong>{formatDeZahl(ps.clOh, 2)}</strong><MdText text={inhaltJson.texte.vorherigeStufe} />{formatDeZahl(vor?.clOh, 2)}<MdText text={inhaltJson.texte.hausmannNenntAlsRichtwert} />{formatDeZahl(CL_OH_KRITISCH, 1)}.
               </p>
-            ) : <p>Kein Potentialabfall über der Sprungschwelle – der Stahl ist nach dieser Auswertung noch passiv. Weitere NaCl-Stufen messen oder die Schwelle prüfen.</p>}
-            <p className="text-[11px] text-text-main/70 mt-1.5">Maßgebend ist der Verlauf (Sprung) und die Begutachtung der Probe, nicht ein einzelner Grenzwert.</p>
+            ) : <p><MdText text={inhaltJson.texte.keinPotentialabfallÜberDer} /></p>}
+            <p className="text-[11px] text-text-main/70 mt-1.5"><MdText text={inhaltJson.texte.maßgebendIstDerVerlauf} /></p>
           </div>
           <FormulaDerivationBox
             live
-            title="Ihr Rechenweg: Umrechnung und Cl⁻/OH⁻-Verhältnis"
+            title={inhaltJson.werte.ihrRechenwegUmrechnungUnd}
             zielGleichung="E_{SHE} = E_{mess} + E_{Bezug}, \quad E_{CSE} = E_{SHE} - 316\,\text{mV}, \quad \frac{c_{Cl^-}}{c_{OH^-}} = \frac{m_{NaCl}/(M_{NaCl}\,V)}{10^{pH-14}}"
             schritte={[
               {
-                titel: 'Nullmessung auf SHE und CSE',
+                titel: inhaltJson.werte.nullmessungAufSheUnd,
                 erklaerung: `Bezugselektrode ${bezug.name} mit +${formatDeZahl(bezug.eSHE, 0)} mV gegen SHE:`,
                 formel: `E_{SHE} = ${tex(p0.eMess, 0)} + ${tex(bezug.eSHE, 0)} = ${tex(p0.eSHE, 0)}\\,\\text{mV}, \\quad E_{CSE} = ${tex(p0.eSHE, 0)} - ${tex(E_CSE_GEGEN_SHE, 0)} = ${tex(p0.eCSE, 0)}\\,\\text{mV}`,
               },
               {
-                titel: 'Hydroxidionen aus dem pH-Wert',
-                erklaerung: 'Lehrvereinfachung: Aktivität gleich Konzentration:',
+                titel: inhaltJson.werte.hydroxidionenAusDemPh,
+                erklaerung: inhaltJson.werte.lehrvereinfachungAktivitätGleichKonzentr,
                 formel: `c_{OH^-} = 10^{${tex(pH, 2)} - 14} = ${tex(erg.cOH, 4)}\\,\\tfrac{\\text{mol}}{\\text{L}}`,
               },
               ps ? {
-                titel: 'Chloridionen beim Potentialabfall',
+                titel: inhaltJson.werte.chloridionenBeimPotentialabfall,
                 erklaerung: `Kumulierte Zugabe ${formatDeZahl(ps.mNaCl, 2)} g NaCl in ${formatDeZahl(vol, 2)} L Lösung:`,
                 formel: `c_{Cl^-} = \\frac{${tex(ps.mNaCl, 2)}}{${tex(M_NACL, 2)} \\cdot ${tex(vol, 2)}} = ${tex(ps.cCl, 4)}\\,\\tfrac{\\text{mol}}{\\text{L}}, \\quad \\frac{c_{Cl^-}}{c_{OH^-}} = \\frac{${tex(ps.cCl, 4)}}{${tex(erg.cOH, 4)}} = ${tex(ps.clOh, 2)}`,
               } : {
-                titel: 'Chloridionen der letzten Stufe',
-                erklaerung: 'Kein Sprung erkannt; Verhältnis der letzten Stufe:',
+                titel: inhaltJson.werte.chloridionenDerLetztenStufe,
+                erklaerung: inhaltJson.werte.keinSprungErkanntVerhältnis,
                 formel: `\\frac{c_{Cl^-}}{c_{OH^-}} = ${tex(erg.punkte[erg.punkte.length - 1].clOh, 2)}`,
               },
               {
@@ -147,8 +148,8 @@ function auswerten(stand: ProtokollStand): AuswertungsAnsicht {
                 formel: ps ? `\\Delta E = ${tex(ps.eMess, 0)} - (${tex(vor?.eMess, 0)}) = ${tex(ps.delta, 0)}\\,\\text{mV} \\le -${tex(sprung, 0)}\\,\\text{mV}` : `\\Delta E > -${tex(sprung, 0)}\\,\\text{mV}\\ \\text{in allen Stufen}`,
               },
             ]}
-            ergebnisHinweis="Elektrodenpotentiale bei 25 °C (Literaturwerte ±3 mV); bei anderer Temperatur verschieben sie sich um etwa 0,5 bis 1 mV/K."
-            normQuelle="Bewertung nach ASTM C876-22b (Richtwerte); Cl⁻/OH⁻-Richtwert nach Hausmann (1967)"
+            ergebnisHinweis={inhaltJson.werte.elektrodenpotentialeBei25C}
+            normQuelle={inhaltJson.werte.bewertungNachAstmC876}
           />
         </>
       )}
@@ -163,45 +164,27 @@ export default function Potentialmessung() {
       <div className="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-5">
         <div>
           <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-            <Activity className="w-5 h-5 text-shiraz" aria-hidden="true" /> Versuchs-Handout: Potentialmessung an Betonstahl
-          </h2>
-          <p className="text-xs text-text-main/70 font-mono mt-1">
-            Ruhepotential in gesättigter Ca(OH)₂-Lösung, schrittweise NaCl-Zugabe, Umrechnung auf SHE/CSE und Bewertung nach Potentialbereichen
-          </p>
+            <Activity className="w-5 h-5 text-shiraz" aria-hidden="true" /><MdText text={inhaltJson.texte.versuchsHandoutPotentialmessungAn} /></h2>
+          <p className="text-xs text-text-main/70 font-mono mt-1"><MdText text={inhaltJson.texte.ruhepotentialInGesättigterCa} /></p>
         </div>
-        <p className="text-sm text-text-main/80 leading-relaxed">
-          Die gesättigte Calciumhydroxidlösung bildet vereinfacht die alkalische Porenlösung des Betons nach. Der Stahl bildet darin eine Passivschicht; Chloridionen können sie örtlich durchbrechen. Der Versuch macht diesen Übergang am Potential sichtbar – ohne Beton, Feuchtegradienten und Chloridbindung, also als Modellversuch.
-        </p>
+        <p className="text-sm text-text-main/80 leading-relaxed"><MdText text={inhaltJson.texte.dieGesättigteCalciumhydroxidlösungBildet} /></p>
         <VersuchsHandout daten={POTENTIAL_HANDOUT} auswertung={auswerten} />
-        <Querverweis ziel="korrosion" titel="Hintergrund: chloridinduzierte Korrosion" linkText="Zum Modul Bewehrungskorrosion">
-          <p>Passivierung, Lochfraß, kritischer Chloridgehalt im Beton und die Potentialfeldmessung am Bauwerk behandelt das Modul Bewehrungskorrosion.</p>
+        <Querverweis ziel="korrosion" titel={inhaltJson.werte.hintergrundChloridinduzierteKorrosion} linkText={inhaltJson.werte.zumModulBewehrungskorrosion}>
+          <p><MdText text={inhaltJson.texte.passivierungLochfraßKritischerChloridgeh} /></p>
         </Querverweis>
       </div>
 
       <ModulTest moduleId="labor_potentialmessung" />
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 6.4: Handout neu erstellt; Pilot im Labor und fachliche Freigabe ausstehend)"
+        lastReviewed={inhaltJson.werte.oktober2026Ap6}
         wikipedia={[
           { title: 'Bezugselektrode', url: 'https://de.wikipedia.org/wiki/Bezugselektrode' },
           { title: 'Passivierung', url: 'https://de.wikipedia.org/wiki/Passivierung' },
         ]}
-        literatur={[
-          'Hausmann, D. A.: Steel corrosion in concrete – How does it occur? Materials Protection 6 (1967), Nr. 11, S. 19–23',
-          'Angst, U.; Elsener, B.; Larsen, C. K.; Vennesland, Ø.: Critical chloride content in reinforced concrete – A review. Cement and Concrete Research 39 (2009), S. 1122–1138',
-          'Elsener, B.; Andrade, C.; Gulikers, J.; Polder, R.; Raupach, M.: Half-cell potential measurements – Potential mapping on reinforced concrete structures. RILEM TC 154-EMC Recommendations. Materials and Structures 36 (2003), S. 461–471',
-          'DGZfP-Merkblatt B 3: Elektrochemische Potentialmessungen zur Detektion von Bewehrungsstahlkorrosion. Berlin: DGZfP 2014',
-        ]}
-        regelwerke={[
-          { title: 'ASTM C876-22b (Standard Test Method for Corrosion Potentials of Uncoated Reinforcing Steel in Concrete)' },
-          { title: 'DIN EN ISO 8044 (Korrosion von Metallen und Legierungen - Grundbegriffe)' },
-          'DIN_EN_1992_1_1',
-        ]}
-        formeln={[
-          { formel: 'E_{SHE} = E_{mess} + E_{Bezug,SHE}', erklaerung: 'Umrechnung eines gegen eine Bezugselektrode gemessenen Potentials auf die Standardwasserstoffelektrode.' },
-          { formel: 'E_{CSE} = E_{SHE} - 316\\,\\text{mV}', erklaerung: 'Umrechnung auf die gesättigte Kupfer/Kupfersulfat-Elektrode (Bezugssystem der ASTM C876).' },
-          { formel: 'c_{Cl^-}/c_{OH^-}', erklaerung: 'Verhältnis von Chlorid- zu Hydroxidionen; Richtwert für die Depassivierung in Lösung etwa 0,6 (Hausmann).', quelle: 'Hausmann 1967' },
-        ]}
+        literatur={inhaltJson.daten["Potentialmessung.literatur"]}
+        regelwerke={inhaltJson.daten["Potentialmessung.regelwerke"]}
+        formeln={inhaltJson.daten["Potentialmessung.formeln"]}
       />
     </div>
   );

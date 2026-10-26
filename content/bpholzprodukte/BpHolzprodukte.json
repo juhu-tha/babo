@@ -1,0 +1,251 @@
+{
+  "texte": {
+    "materialLehrpfadHolzIm": "Material-Lehrpfad: Holz im Bauwesen",
+    "weiterZuDenAnderen": "Weiter zu den anderen Teilen des Lehrpfads Holz:",
+    "t1BaustoffKennwerte": "1. Baustoff-Kennwerte",
+    "anisotropesQuellenSchwinden3d": "Anisotropes Quellen/Schwinden (3D-Modell), Holzfestigkeiten (EC5) & Kennwerte.",
+    "t2HolzproduktePraxis": "2. Holzprodukte & Praxis",
+    "konstruktionsvollholzCltVorUnd": "Konstruktionsvollholz, CLT, Vor- und Nachteile & Vorbemessungsrechner.",
+    "t3Dauerhaftigkeit": "3. Dauerhaftigkeit",
+    "holzzerstörendePilzeInsektenWitterung": "Holzzerstörende Pilze/Insekten, Witterung & baulicher Holzschutz nach DIN 68800.",
+    "holzprodukteImKonstruktivenHolzbau": "Holzprodukte im konstruktiven Holzbau",
+    "technischeKenngrößenBauaufsichtlicheVerl": "Technische Kenngrößen, bauaufsichtliche Verlässlichkeit und vereinfachte Vordimensionierung nach Eurocode 5 (DIN EN 1995-1-1)",
+    "holzwerkstoffeHabenSichVon": "Holzwerkstoffe haben sich von rein handwerklichen Balkenhölzern zu hochentwickelten, industriellen Verbundbaustoffen gewandelt. Sie weisen durch gezielte Homogenisierung, Trocknung und schichtweise Verklebung weit kalkulierbarere mechanische Gütestufen und geringere Schwind- und Quellverformungen auf als klassisches Bauholz.",
+    "verfügbareHolzwerkstoffKlassen": "Verfügbare Holzwerkstoff-Klassen:",
+    "nutzungsklassenNklNachEc": "Nutzungsklassen (NKL) nach EC 5",
+    "nkl1HolzfeuchteEntspricht": "• **NKL 1:** Holzfeuchte entspricht max 12% (z.B. allseitig geschlossene beheizte Räume).<br>• **NKL 2:** Holzfeuchte entspricht max 20% (z.B. überdachte offene Bauwerke, Carports).<br>• **NKL 3:** Größere Feuchten (z.B. freie Bewitterung unter freiem Himmel). Hier sind die k_mod-Werte kleiner (stärkere Abminderung).",
+    "technischesDatenblatt": "TECHNISCHES DATENBLATT",
+    "typischesBiegeFM": "Typisches Biege-f_m,k",
+    "dichteK": "Dichte (ρ_k)",
+    "eModulEMean": "E-Modul (E_mean)",
+    "vorteileStärken": "Vorteile & Stärken:",
+    "einschränkungenRisiken": "Einschränkungen & Risiken:",
+    "häufigeAnwendungsbereicheBaupraxis": "Häufige Anwendungsbereiche (Baupraxis):",
+    "ec5HolzbalkenPre": "EC 5 Holzbalken-Pre-Dimensionierung",
+    "einfacheAbschätzungFürEinfeldträger": "Einfache Abschätzung für Einfeldträger unter Gleichlast (ULS & SLS Nachweis der Durchbiegung/Spannung)",
+    "spannweiteL": "Spannweite L:",
+    "achsabstandDerBalkenS": "Achsabstand der Balken s:",
+    "einflussFlächenlastQK": "Einfluss-Flächenlast q_k:",
+    "inklVerkehrlicheNutzlastenRaumbildende": "Inkl. verkehrliche Nutzlasten & raumbildende Fußbodenaufbauten.",
+    "querschnittHolzgüte": "Querschnitt & Holzgüte",
+    "verwendeteHolzgüte": "Verwendete Holzgüte:",
+    "balkenbreiteB": "Balkenbreite b:",
+    "balkenhöheH": "Balkenhöhe h:",
+    "t1BiegespannungUls": "1. Biegespannung (ULS):",
+    "nMmVsF": " N/mm² vs. f_md = ",
+    "t2SchubspannungUls": "2. Schubspannung (ULS):",
+    "nMmBEf": " N/mm² (b_ef = k_cr · b, k_cr = ",
+    "vsFVd": ") vs. f_vd = ",
+    "t3DurchbiegungSlsComfort": "3. Durchbiegung (SLS comfort):",
+    "mmVsMaxL": " mm vs. Max (L/300) = ",
+    "eigengewicht": "• Eigengewicht: ",
+    "kgMDensity": " kg/m³ density)",
+    "teilsicherheitsbeiwerteG135": "• Teilsicherheitsbeiwerte: γ_G = 1,35, γ_Q = 1,50",
+    "kModBeiwert0": "• k_mod Beiwert = 0,8 / Material-γ_M = ",
+    "produktgruppenSystemtechnikenDesHolzbaus": " Produktgruppen & Systemtechniken des Holzbaus (Herstellerneutral)",
+    "hinweisZurHerstellerneutralitätZur": "Hinweis zur Herstellerneutralität: Zur Wahrung vollständiger Produkt- und herstellerneutralität im Rahmen der akademischen Lehre und VOB-gerechten Ausschreibung werden nachfolgend standardisierte Systemklassen deklariert.",
+    "holzbauprodukteErfordernEineCe": "Holzbauprodukte erfordern eine CE-Konformitätskennzeichnung bzw. eine ETA (European Technical Assessment) und werden nach harmonisierten europäischen Standards klassifiziert:",
+    "systemwerkstoffProduktgruppe": "Systemwerkstoff / Produktgruppe",
+    "kernkompetenzenAnwendungsbereiche": "Kernkompetenzen & Anwendungsbereiche",
+    "zertifikateNormenHolzarten": "Zertifikate, Normen & Holzarten",
+    "rolleImModernenIngenieurholzbau": "Rolle im modernen Ingenieurholzbau",
+    "brettsperrholzCltBsp": "Brettsperrholz (CLT / BSP)",
+    "flächigeTragelementeAusKreuzweise": "Flächige Tragelemente aus kreuzweise verklebten Nadelholzbrettern für Decken, Wände und Dachscheiben.",
+    "pefcFscDinEn": "PEFC, FSC, DIN EN 16351 (ETA-Zulassungen, meist Fichte / Kiefer)",
+    "hochbelastbarerMassivholzbauFürMehrgesch": "Hochbelastbarer Massivholzbau für mehrgeschossige urbane Wohn- und Zweckgebäude.",
+    "holzwerkstoffplattenOsbSpanplattenMdf": "Holzwerkstoffplatten (OSB, Spanplatten, MDF)",
+    "ausgerichteteFlachpressplattenUndSpanpla": "Ausgerichtete Flachpressplatten und Spanplatten für aussteifende Wandbeplankungen, Schalungen und Baubretter.",
+    "fscCeNachDin": "FSC, CE nach DIN EN 13986 / EN 300 (Güteüberwachung)",
+    "standardPlattenwerkstoffeFürDen": "Standard-Plattenwerkstoffe für den trockenen Innenausbau und konstruktive Scheibenwirkung bei Ständerwerken.",
+    "ökologischeHolzfaserDämmsysteme": "Ökologische Holzfaser-Dämmsysteme",
+    "flexibleUndDruckfesteDämmplatten": "Flexible und druckfeste Dämmplatten aus verfilzten Holzfasern (Nass- oder Trockenverfahren), Putzträgerplatten.",
+    "fscDinEn13171": "FSC, DIN EN 13171, ETA-Zulassungen für WDVS",
+    "guterSommerlicherWärmeschutzUnd": "Guter sommerlicher Wärmeschutz und diffusionsoffene Aufbauten im Holzrahmenbau.",
+    "brettschichtholzBshStegträger": "Brettschichtholz (BSH) & Stegträger",
+    "faserparallelVerklebteHolzlamellenFür": "Faserparallel verklebte Holzlamellen für Träger mit großen Spannweiten, schlanke I-Träger (Stegträger) mit Furnierschichtgurt.",
+    "pefcDinEn14080": "PEFC, DIN EN 14080 (ETA-Zulassungen für Sonderformen)",
+    "ingenieurholzbaulösungenFürWeitgespannte": "Ingenieurholzbaulösungen für weitgespannte Skeletttragwerke, Hallenbauten und hochgedämmte Dachsparrenstücke."
+  },
+  "werte": {
+    "verwendeteHolzgüte": "Verwendete Holzgüte",
+    "tragfähigOk": "Tragfähig (OK)",
+    "überlastetNichtOk": "Überlastet (Nicht OK)",
+    "anwendungsbeispielDeckenbalkenC24Vordime": "Anwendungsbeispiel: Deckenbalken C24 vordimensionieren",
+    "dinEn19951": "DIN EN 1995-1-1 mit NA (NKL 1, KLED mittel, k_mod = 0,8); Eigenlast vereinfacht",
+    "beiHolzbalkendeckenWirdOft": "Bei Holzbalkendecken wird oft die Durchbiegung oder das Schwingungsverhalten maßgebend, nicht die Biegespannung."
+  },
+  "daten": {
+    "woodProducts": [
+      {
+        "id": "kvh",
+        "name": "Konstruktionsvollholz (KVH)",
+        "short": "KVH C24",
+        "density": 420,
+        "eModulus": 11000,
+        "f_mk": 24,
+        "f_vk": 4,
+        "advantages": [
+          "Geringe Holzfeuchte (15% ± 3%), dadurch formstabil & rissminimiert",
+          "In großen Längen durch Keilzinkung lieferbar (bis zu 16m)",
+          "Technisch getrocknet (u ≤ 15 %); in Gebrauchsklasse 0 nach DIN 68800 ohne chemischen Holzschutz",
+          "Definierte Oberflächenqualitäten (NSi für nicht-sichtbar, Si für sichtbar)"
+        ],
+        "disadvantages": [
+          "Begrenzte Bauteildicken (meist max. 14 cm)",
+          "Geringere Tragfähigkeit im Vergleich zu BSH",
+          "Keilzinkungsstellen im Sichtbereich sichtbar"
+        ],
+        "usecases": [
+          "Holzrahmenbau / Holztafelbau",
+          "Dachstühle & Sparrenkonstruktionen",
+          "Unterkonstruktionen im Innenausbau",
+          "Garten- und Carportbau"
+        ],
+        "dimensions": "Breiten 40-140 mm, Höhen 60-240 mm, Längen bis 16m"
+      },
+      {
+        "id": "bsh",
+        "name": "Brettschichtholz (BSH / Leimbinder)",
+        "short": "BSH GL24h",
+        "density": 450,
+        "eModulus": 11500,
+        "f_mk": 24,
+        "f_vk": 3.5,
+        "advantages": [
+          "Höhere Tragfähigkeit und größere Querschnitte als Vollholz",
+          "Sehr formstabil und rissminimiert durch Schicht-Verklebung",
+          "Große Spannweiten für Hallenbau (Träger bis >30m)",
+          "Sehr hohe Feuerwiderstandsdauer (berechenbarer Abbrand)",
+          "Hervorragend gestaltbar (auch gebogene oder gekrümmte Formen)"
+        ],
+        "disadvantages": [
+          "Spürbar teurer als KVH",
+          "Nur mit geeigneten Klebstoffen (z. B. MUF, PRF, PUR nach DIN EN 301/DIN EN 15425)"
+        ],
+        "usecases": [
+          "Weitgespannte Hallentragwerke und Deckenunterzüge",
+          "Hochbelastete Stützen und Hauptträger",
+          "Ingenieurholzbau & Skelettbauten",
+          "Brückenbau (mit witterungsschützenden Bekleidungen)"
+        ],
+        "dimensions": "Breiten 80-280 mm, Höhen 120-2000 mm, Längen bis 30m+"
+      },
+      {
+        "id": "clt",
+        "name": "Brettsperrholz (BSP / CLT)",
+        "short": "CLT - Cross Laminated Timber",
+        "density": 480,
+        "eModulus": 11000,
+        "f_mk": 21,
+        "f_vk": 2.5,
+        "advantages": [
+          "Flächige Lastabtragung (Schnittgrößen in zwei Richtungen)",
+          "Hohe Formstabilität in Plattenebene durch kreuzweise Lagen",
+          "Hoher Vorfertigungsgrad (CNC-Abbund von Fensterausschnitten im Werk)",
+          "Sofort tragfähig, trockene Bauweise (keine Einbaufeuchte)"
+        ],
+        "disadvantages": [
+          "Hohes Eigengewicht (erfordert Mobilkräne auf Baustelle)",
+          "Wandstärken nehmen viel Grundfläche ein bei mehrgeschossigen Bauten",
+          "Aufwendige Schallschutz-Detailpunkte an Plattenstößen"
+        ],
+        "usecases": [
+          "Massivholz-Wände und Massivholz-Decken",
+          "Mehrgeschossiger Holzwohnbau (Gebäudeklasse 1 bis 5)",
+          "Kragarme und aussteifende Deckenscheiben",
+          "Aufstockungen im urbanen Raum (geringeres Gewicht als Beton)"
+        ],
+        "dimensions": "Plattenbreiten bis 3,5 m, Längen bis 16 m, Stärken 60-350 mm"
+      },
+      {
+        "id": "lvl",
+        "name": "Furnierschichtholz (FSH / LVL)",
+        "short": "LVL (eg. Kerto)",
+        "density": 500,
+        "eModulus": 13800,
+        "f_mk": 44,
+        "f_vk": 4.6,
+        "advantages": [
+          "Homogenes Gefüge (Äste und Fehlstellen sind verteilt)",
+          "Höchste mechanische Tragfähigkeiten aller Holzwerkstoffe",
+          "Sehr dünne, schlanke Querschnitte möglich",
+          "Hohe Plattenstabilität bei Scheibenbeanspruchung"
+        ],
+        "disadvantages": [
+          "Verlegeaufwand an Kanten (Kopplung)",
+          "Hoher Klebstoffanteil",
+          "Aufwendigerer Zuschnitt (harte Leimfugen)"
+        ],
+        "usecases": [
+          "Hochbelastete Unterzüge und Verstärkungen",
+          "Sparren und Pfetten bei großen Spannweiten",
+          "Schalungsplatten und Gerüstbohlen",
+          "Gurtmaterial für I-Beams (Stegträger)"
+        ],
+        "dimensions": "Dicken 21-75 mm, Breiten bis 1,8 m, Längen bis 20m+"
+      }
+    ],
+    "BpHolzprodukte.schritte": [
+      {
+        "titel": "1. Last je Balken",
+        "formel": "q_k = 2{,}5 \\cdot 0{,}625 = 1{,}56\\,\\text{kN/m},\\; g_k \\approx 0{,}08\\,\\text{kN/m}",
+        "erklaerung": "Rasterabstand 62,5 cm, Balken 10/20 cm."
+      },
+      {
+        "titel": "2. Bemessungslast und Moment",
+        "formel": "q_d = 1{,}35 \\cdot 0{,}08 + 1{,}5 \\cdot 1{,}56 = 2{,}45\\,\\text{kN/m};\\; M_{Ed} = 2{,}45 \\cdot 4{,}5^2/8 = 6{,}2\\,\\text{kNm}",
+        "erklaerung": "Spannweite 4,5 m."
+      },
+      {
+        "titel": "3. Spannung",
+        "formel": "\\sigma_{m,d} = 6{,}2 \\cdot 10^6 / 666\\,667 = 9{,}3\\,\\text{N/mm}^2",
+        "erklaerung": "W = 100 · 200² / 6."
+      },
+      {
+        "titel": "4. Nachweis",
+        "formel": "f_{m,d} = 0{,}8 \\cdot 24/1{,}3 = 14{,}8\\,\\text{N/mm}^2 \\Rightarrow \\eta = 0{,}63",
+        "erklaerung": "Tragfähigkeit erfüllt; Durchbiegung gesondert prüfen."
+      }
+    ],
+    "BpHolzprodukte.literatur": [
+      "Kaufmann, H.; Krötsch, S.; Winter, S.: Atlas Mehrgeschossiger Holzbau. München: Edition Detail 2017",
+      "Blaß, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. Karlsruhe: KIT Scientific Publishing 2016"
+    ],
+    "BpHolzprodukte.regelwerke": [
+      {
+        "title": "DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA:2013-08 (Eurocode 5; bauaufsichtlich eingeführt); 2. Generation DIN EN 1995-1-1:2026-09 (Deutsche Fassung EN 1995-1-1:2025, NA noch ausstehend, nicht eingeführt)"
+      },
+      {
+        "title": "DIN EN 14080:2013-09 (Holzbauwerke - Brettschichtholz und Balkenschichtholz)"
+      },
+      {
+        "title": "DIN EN 15497:2014-07 (Keilgezinktes Vollholz für tragende Zwecke - KVH)"
+      },
+      {
+        "title": "DIN EN 16351:2025-07 (Holzbauwerke - Brettsperrholz - Anforderungen)"
+      }
+    ],
+    "BpHolzprodukte.formeln": [
+      {
+        "formel": "M_{Ed} = \\frac{q_d \\cdot L^2}{8}",
+        "erklaerung": "Maximales Biegemoment Med eines statisch bestimmt gelagerten Einfeldträgers unter Gleichstreckenlast qd.",
+        "quelle": "Statik / Technische Mechanik"
+      },
+      {
+        "formel": "\\sigma_{m,y,d} = \\frac{M_{y,Ed}}{W_y} \\le f_{m,y,d} = k_{\\text{mod}} \\cdot \\frac{f_{m,y,k}}{\\gamma_M}",
+        "erklaerung": "Biegespannungsnachweis (ULS) nach EC 5 unter Berücksichtigung von Modifikationsbeiwert kmod und Teilsicherheitsbeiwert gamma_M (γ_M = 1,3 für Vollholz und BSH nach DIN EN 1995-1-1/NA).",
+        "quelle": "DIN EN 1995-1-1 Abs. 6.1.6"
+      },
+      {
+        "formel": "\\tau_d = \\frac{1{,}5 \\cdot V_{Ed}}{k_{cr} \\cdot b \\cdot h} \\le f_{v,d}",
+        "erklaerung": "Schubnachweis mit Rissbeiwert k_cr (wirksame Breite b_ef = k_cr · b); nach NA: k_cr = 2,0/f_v,k für Nadelvollholz, 2,5/f_v,k für BSH.",
+        "quelle": "DIN EN 1995-1-1 Abs. 6.1.7 mit NA"
+      },
+      {
+        "formel": "w_{\\text{inst}} = \\frac{5 \\cdot q_{\\text{inst}} \\cdot L^4}{384 \\cdot E_{0,\\text{mean}} \\cdot I_y} \\le \\frac{L}{300} \\dots \\frac{L}{500}",
+        "erklaerung": "Gebrauchstauglichkeit: elastische Anfangsdurchbiegung unter der charakteristischen Kombination; Grenzwerte L/300 bis L/500 als Empfehlungen (NA).",
+        "quelle": "DIN EN 1995-1-1 Abs. 7.2"
+      }
+    ]
+  }
+}

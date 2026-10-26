@@ -1,6 +1,8 @@
 import type { Dispatch, SetStateAction } from 'react';
 import { FileCode, Sliders, Code, AlertTriangle, Table, CheckSquare } from 'lucide-react';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import inhalt from '@/content/ki/LlmPraxisTeile/MarkdownTab.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface MarkdownTabProps {
   markdownView: "vergleich" | "syntax" | "rechner";
@@ -19,11 +21,8 @@ export function MarkdownTab({ markdownView, setMarkdownView, calcDocPages, setCa
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div className="space-y-1">
                     <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
-                      <FileCode size={20} className="text-shiraz" /> Markdown (.md) als nativer Standard für Bau-LLMs
-                    </h3>
-                    <p className="text-xs text-text-main/70">
-                      Warum Markdown das mit Abstand effizienteste, kostengünstigste und fehlerresistenteste Format für KI-Workflows ist
-                    </p>
+                      <FileCode size={20} className="text-shiraz" /><MdText text={inhalt.texte.markdownMdAlsNativer} /></h3>
+                    <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.warumMarkdownDasMit} /></p>
                   </div>
     
                   {/* View toggle */}
@@ -43,9 +42,7 @@ export function MarkdownTab({ markdownView, setMarkdownView, calcDocPages, setCa
                     <button aria-pressed={markdownView === 'rechner'}
                       onClick={() => setMarkdownView('rechner')}
                       className={`px-3 py-1.5 rounded-lg transition-all ${markdownView === 'rechner' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
-                    >
-                      Token- &amp; Kosten-Rechner
-                    </button>
+                    ><MdText text={inhalt.texte.tokenKostenRechner} /></button>
                   </div>
                 </div>
     
@@ -55,75 +52,49 @@ export function MarkdownTab({ markdownView, setMarkdownView, calcDocPages, setCa
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                       <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 space-y-1.5">
                         <div className="text-shiraz font-black text-xl">1.</div>
-                        <h4 className="font-bold text-sm text-text-main">60-80% Tokenersparnis</h4>
-                        <p className="text-xs text-text-main/70 leading-relaxed">
-                          Keine unsichtbaren XML-Tags, Schriftarten-Definitionen oder Vektorpfade. Jedes Byte ist echter semantischer Inhalt.
-                        </p>
+                        <h4 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.t6080Tokenersparnis} /></h4>
+                        <p className="text-xs text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.keineUnsichtbarenXmlTags} /></p>
                       </div>
     
                       <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 space-y-1.5">
                         <div className="text-shiraz font-black text-xl">2.</div>
-                        <h4 className="font-bold text-sm text-text-main">Perfekte Hierarchie</h4>
-                        <p className="text-xs text-text-main/70 leading-relaxed">
-                          Überschriften mit <code className="font-mono text-xs">#</code>, <code className="font-mono text-xs">##</code> signalisieren den Attention-Heads des Modells sofort den logischen Dokumentenaufbau.
-                        </p>
+                        <h4 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.perfekteHierarchie} /></h4>
+                        <p className="text-xs text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.überschriftenMit} /><code className="font-mono text-xs">#</code>, <code className="font-mono text-xs">##</code><MdText text={inhalt.texte.signalisierenDenAttentionHeads} /></p>
                       </div>
     
                       <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 space-y-1.5">
                         <div className="text-shiraz font-black text-xl">3.</div>
-                        <h4 className="font-bold text-sm text-text-main">Robuste Tabellen</h4>
-                        <p className="text-xs text-text-main/70 leading-relaxed">
-                          Markdown-Pipes (<code className="font-mono text-xs">| A | B |</code>) werden spalten- und zeilengetreu geparst. Kein Verrutschen von Zeilen wie bei OCR-PDFs.
-                        </p>
+                        <h4 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.robusteTabellen} /></h4>
+                        <p className="text-xs text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.markdownPipes} /><code className="font-mono text-xs">| A | B |</code><MdText text={inhalt.texte.werdenSpaltenUndZeilengetreu} /></p>
                       </div>
     
                       <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 space-y-1.5">
                         <div className="text-shiraz font-black text-xl">4.</div>
                         <h4 className="font-bold text-sm text-text-main">LaTeX-Kompatibilität</h4>
-                        <p className="text-xs text-text-main/70 leading-relaxed">
-                          Mathematische Formeln werden nahtlos in <code className="font-mono text-xs">$...$</code> eingebettet und fehlerfrei interpretiert.
-                        </p>
+                        <p className="text-xs text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.mathematischeFormelnWerdenNahtlos} /><code className="font-mono text-xs">$...$</code><MdText text={inhalt.texte.eingebettetUndFehlerfreiInterpretiert} /></p>
                       </div>
                     </div>
     
                     {/* SIDE-BY-SIDE COMPARISON: OCR VS CLEAN MARKDOWN */}
                     <div className="space-y-2">
-                      <h4 className="font-bold text-xs uppercase tracking-wider text-slate-600">
-                        Live-Vergleich: Schlechter PDF-OCR-Scan vs. Strukturiertes Markdown
-                      </h4>
+                      <h4 className="font-bold text-xs uppercase tracking-wider text-slate-600"><MdText text={inhalt.texte.liveVergleichSchlechterPdf} /></h4>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                         <div className="p-4 bg-rose-50/50 rounded-xl border border-rose-200 space-y-2 font-mono text-[11px] text-rose-900">
                           <div className="font-bold text-rose-800 flex items-center justify-between">
-                            <span>❌ Schlechter PDF-Text (OCR-Artefakte)</span>
-                            <span className="text-[10px] bg-rose-200/60 px-1.5 py-0.5 rounded">~1.400 Tokens</span>
+                            <span><MdText text={inhalt.texte.schlechterPdfTextOcr} /></span>
+                            <span className="text-[10px] bg-rose-200/60 px-1.5 py-0.5 rounded"><MdText text={inhalt.texte.t1400Tokens} /></span>
                           </div>
-                          <p className="leading-relaxed bg-white/80 p-2.5 rounded border border-rose-200/60">
-                            [Header: Baugrundinstitut Dr. Muelller S. 42]<br/>
-                            Schicht 2.... Sand Kies k_f = 1,4 * 10^-4 m/s?<br/>
-                            c=0 phi = 32,5? Wichte gamma=19kN/m3?<br/>
-                            [Footer: DIN 4020 Vertraulichkeitsvermerk...]
-                          </p>
-                          <span className="text-[10px] text-rose-700 block">
-                            Gefahr: Fragmente im Tabellenumbruch werden fehlinterpretiert; hohe Token-Verschwendung.
-                          </span>
+                          <p className="leading-relaxed bg-white/80 p-2.5 rounded border border-rose-200/60"><MdText text={inhalt.texte.headerBaugrundinstitutDrMuelller} /></p>
+                          <span className="text-[10px] text-rose-700 block"><MdText text={inhalt.texte.gefahrFragmenteImTabellenumbruch} /></span>
                         </div>
     
                         <div className="p-4 bg-emerald-50/50 rounded-xl border border-emerald-200 space-y-2 font-mono text-[11px] text-emerald-900">
                           <div className="font-bold text-emerald-800 flex items-center justify-between">
-                            <span>✅ Reines Markdown (.md)</span>
-                            <span className="text-[10px] bg-emerald-200/60 px-1.5 py-0.5 rounded">~280 Tokens (-80%)</span>
+                            <span><MdText text={inhalt.texte.reinesMarkdownMd} /></span>
+                            <span className="text-[10px] bg-emerald-200/60 px-1.5 py-0.5 rounded"><MdText text={inhalt.texte.t280Tokens80} /></span>
                           </div>
-                          <p className="leading-relaxed bg-white/80 p-2.5 rounded border border-emerald-200/60">
-                            ### Schicht 2: Quartär-Kies (Tiefe 1,20 - 8,50 m)<br/>
-                            | Parameter | Symbol | Wert | Einheit |<br/>
-                            |---|---|---|---|<br/>
-                            | Reibungswinkel | $\varphi'$ | 35,0 | ° |<br/>
-                            | Kohäsion | $c'$ | 0,0 | kN/m² |<br/>
-                            | Durchlässigkeit | $k_f$ | {"$1{,}4 \\cdot 10^{-4}$"} | m/s |
-                          </p>
-                          <span className="text-[10px] text-emerald-700 block">
-                            Vorteil: Perfekte maschinelle Lesbarkeit, kein Halluzinationsrisiko durch Zeilenverschiebungen.
-                          </span>
+                          <p className="leading-relaxed bg-white/80 p-2.5 rounded border border-emerald-200/60"><MdText text={inhalt.texte.schicht2QuartärKies} /></p>
+                          <span className="text-[10px] text-emerald-700 block"><MdText text={inhalt.texte.vorteilPerfekteMaschinelleLesbarkeit} /></span>
                         </div>
                       </div>
                     </div>
@@ -136,36 +107,25 @@ export function MarkdownTab({ markdownView, setMarkdownView, calcDocPages, setCa
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 space-y-2">
                         <span className="font-bold text-text-main flex items-center gap-1.5">
-                          <Table size={14} className="text-shiraz" /> Tabellen mit Ausrichtung &amp; Einheiten
-                        </span>
+                          <Table size={14} className="text-shiraz" /><MdText text={inhalt.texte.tabellenMitAusrichtungEinheiten} /></span>
                         <pre className="p-2.5 bg-slate-900 text-slate-100 rounded font-mono text-[11px] overflow-x-auto">
-    {`| Bauteil | Beton | Dicke [cm] | Bewehrung |
-|:---|:---:|---:|:---|
-| Decke 1.OG | C30/37 | 24,0 | B500B d12-15 |
-| Außenwand | C25/30 | 30,0 | B500B d10-20 |`}
+    {inhalt.werte.bauteilBetonDickeCm}
                         </pre>
                       </div>
     
                       <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 space-y-2">
                         <span className="font-bold text-text-main flex items-center gap-1.5">
-                          <Code size={14} className="text-shiraz" /> Formelsatz nach Eurocode
-                        </span>
+                          <Code size={14} className="text-shiraz" /><MdText text={inhalt.texte.formelsatzNachEurocode} /></span>
                         <pre className="p-2.5 bg-slate-900 text-slate-100 rounded font-mono text-[11px] overflow-x-auto">
-    {`Bemessungswert der Betondruckfestigkeit:
-$$f_{cd} = \\alpha_{cc} \\cdot \\frac{f_{ck}}{\\gamma_C}$$
-
-Mit $\\alpha_{cc} = 0{,}85$ und $\\gamma_C = 1{,}50$.`}
+    {inhalt.werte.bemessungswertDerBetondruckfestigkeitF}
                         </pre>
                       </div>
     
                       <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 space-y-2">
                         <span className="font-bold text-text-main flex items-center gap-1.5">
-                          <AlertTriangle size={14} className="text-amber-600" /> Bedenken- &amp; Gefahrenhinweise
-                        </span>
+                          <AlertTriangle size={14} className="text-amber-600" /><MdText text={inhalt.texte.bedenkenGefahrenhinweise} /></span>
                         <pre className="p-2.5 bg-slate-900 text-slate-100 rounded font-mono text-[11px] overflow-x-auto">
-    {`> ⚠️ **VOB/B Bedenkenhinweis gem. § 4 Abs. 3:**
-> Vorleistung uneben. Höhenversatz > 15 mm.
-> Rissgefahr für Folgegewerk Estrich.`}
+    {inhalt.werte.vobBBedenkenhinweisGem}
                         </pre>
                       </div>
     
@@ -174,9 +134,7 @@ Mit $\\alpha_{cc} = 0{,}85$ und $\\gamma_C = 1{,}50$.`}
                           <CheckSquare size={14} className="text-emerald-600" /> Baustellen-Abnahmechecklisten
                         </span>
                         <pre className="p-2.5 bg-slate-900 text-slate-100 rounded font-mono text-[11px] overflow-x-auto">
-    {`- [x] Bewehrungsabnahme Achse A-D erfolgt
-- [ ] Betondeckung c_nom = 35 mm nachgemessen
-- [ ] Rüttelgaschen freigehalten`}
+    {inhalt.werte.xBewehrungsabnahmeAchseA}
                         </pre>
                       </div>
                     </div>
@@ -188,9 +146,8 @@ Mit $\\alpha_{cc} = 0{,}85$ und $\\gamma_C = 1{,}50$.`}
                   <div className="p-5 bg-off-white rounded-2xl border border-home-grau/20 space-y-5 animate-in fade-in duration-200">
                     <div className="flex items-center justify-between">
                       <h4 className="font-bold text-sm text-text-main flex items-center gap-2">
-                        <Sliders size={16} className="text-shiraz" /> Interaktiver Format- &amp; Token-Kostenrechner
-                      </h4>
-                      <span className="text-xs text-text-main/60">Vergleich: Dokumentgröße vs. Modell-Kontext</span>
+                        <Sliders size={16} className="text-shiraz" /><MdText text={inhalt.texte.interaktiverFormatTokenKostenrechner} /></h4>
+                      <span className="text-xs text-text-main/60"><MdText text={inhalt.texte.vergleichDokumentgrößeVsModell} /></span>
                     </div>
     
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -208,9 +165,9 @@ Mit $\\alpha_{cc} = 0{,}85$ und $\\gamma_C = 1{,}50$.`}
                           className="w-full accent-shiraz cursor-pointer" 
                         />
                         <div className="flex justify-between text-[10px] text-text-main/50 mt-1">
-                          <span>5 Seiten (Kurzbericht)</span>
+                          <span><MdText text={inhalt.texte.t5SeitenKurzbericht} /></span>
                           <span>75 S.</span>
-                          <span>150 S. (Baugrundgutachten)</span>
+                          <span><MdText text={inhalt.texte.t150SBaugrundgutachten} /></span>
                         </div>
                       </div>
     
@@ -222,33 +179,25 @@ Mit $\\alpha_{cc} = 0{,}85$ und $\\gamma_C = 1{,}50$.`}
                             className={`px-3 py-1.5 text-xs rounded-lg font-medium transition-all border ${
                           calcDocType === 'pdf_scan' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-text-main border-home-grau/30'
                         }`}
-                          >
-                            PDF-Scan (OCR)
-                          </button>
+                          ><MdText text={inhalt.texte.pdfScanOcr} /></button>
                           <button aria-pressed={calcDocType === 'pdf_text'}
                             onClick={() => setCalcDocType('pdf_text')}
                             className={`px-3 py-1.5 text-xs rounded-lg font-medium transition-all border ${
                           calcDocType === 'pdf_text' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-text-main border-home-grau/30'
                         }`}
-                          >
-                            PDF (Digital)
-                          </button>
+                          ><MdText text={inhalt.texte.pdfDigital} /></button>
                           <button aria-pressed={calcDocType === 'word_docx'}
                             onClick={() => setCalcDocType('word_docx')}
                             className={`px-3 py-1.5 text-xs rounded-lg font-medium transition-all border ${
                           calcDocType === 'word_docx' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-text-main border-home-grau/30'
                         }`}
-                          >
-                            Word (.docx)
-                          </button>
+                          ><MdText text={inhalt.texte.wordDocx} /></button>
                           <button aria-pressed={calcDocType === 'markdown'}
                             onClick={() => setCalcDocType('markdown')}
                             className={`px-3 py-1.5 text-xs rounded-lg font-medium transition-all border ${
                           calcDocType === 'markdown' ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm' : 'bg-white text-text-main border-home-grau/30'
                         }`}
-                          >
-                            ✨ Markdown (.md)
-                          </button>
+                          ><MdText text={inhalt.texte.markdownMd} /></button>
                         </div>
                       </div>
                     </div>
@@ -256,14 +205,14 @@ Mit $\\alpha_{cc} = 0{,}85$ und $\\gamma_C = 1{,}50$.`}
                     {/* STATS TILES */}
                     <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 pt-2">
                       <div className="p-3 bg-white rounded-xl border border-home-grau/20">
-                        <span className="text-[10px] uppercase font-bold text-text-main/60 block">Geschätzte Token</span>
+                        <span className="text-[10px] uppercase font-bold text-text-main/60 block"><MdText text={inhalt.texte.geschätzteToken} /></span>
                         <span className="text-lg font-black text-text-main font-mono">
                           {tokenStats.totalTokens.toLocaleString('de-DE')}
                         </span>
                       </div>
     
                       <div className="p-3 bg-white rounded-xl border border-home-grau/20">
-                        <span className="text-[10px] uppercase font-bold text-text-main/60 block">Auslastung 200k Kontext</span>
+                        <span className="text-[10px] uppercase font-bold text-text-main/60 block"><MdText text={inhalt.texte.auslastung200kKontext} /></span>
                         <div className="flex items-center gap-2 mt-1">
                           <div className="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
                             <div 
@@ -276,14 +225,14 @@ Mit $\\alpha_{cc} = 0{,}85$ und $\\gamma_C = 1{,}50$.`}
                       </div>
     
                       <div className="p-3 bg-white rounded-xl border border-home-grau/20">
-                        <span className="text-[10px] uppercase font-bold text-text-main/60 block">Kosten Standard</span>
+                        <span className="text-[10px] uppercase font-bold text-text-main/60 block"><MdText text={inhalt.texte.kostenStandard} /></span>
                         <span className="text-lg font-black text-shiraz font-mono">
                           ${formatDeZahl(tokenStats.costInputClaude, 3)}
                         </span>
                       </div>
     
                       <div className="p-3 bg-white rounded-xl border border-home-grau/20">
-                        <span className="text-[10px] uppercase font-bold text-emerald-700 block">Mit Prompt Caching</span>
+                        <span className="text-[10px] uppercase font-bold text-emerald-700 block"><MdText text={inhalt.texte.mitPromptCaching} /></span>
                         <span className="text-lg font-black text-emerald-700 font-mono">
                           ${formatDeZahl(tokenStats.costCachedClaude, 3)} (-90%)
                         </span>

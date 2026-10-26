@@ -27,6 +27,8 @@ import type { ExtendedSteelGrade, StructuralProfile, SteelCurveDefinition } from
 import StahlWerkstoffkunde from './stahl/StahlWerkstoffkunde';
 import SpannungsDehnung from './stahl/SpannungsDehnung';
 import Stahlsorten from './stahl/Stahlsorten';
+import inhalt from '@/content/stahl/Stahl.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 export type { ExtendedSteelGrade } from './stahl/daten';
 export type { StructuralProfile } from './stahl/daten';
 export { extendedSteelGrades } from './stahl/daten';
@@ -142,7 +144,7 @@ export default function Stahl() {
         labels,
         datasets: [
           {
-            label: 'Eigenspannung σ_res (MPa)',
+            label: inhalt.werte.eigenspannungResMpa,
             data: stressData,
             borderColor: '#475569',
             backgroundColor: (context: ScriptableContext<'line'>) => {
@@ -157,7 +159,7 @@ export default function Stahl() {
             pointRadius: 0
           },
           {
-            label: 'Fließgrenze f_y (Zug)',
+            label: inhalt.werte.fließgrenzeFYZug,
             data: labels.map(() => fy),
             borderColor: '#A3113E',
             borderDash: [5, 5],
@@ -166,7 +168,7 @@ export default function Stahl() {
             fill: false
           },
           {
-            label: 'Fließgrenze -f_y (Druck)',
+            label: inhalt.werte.fließgrenzeFYDruck,
             data: labels.map(() => -fy),
             borderColor: '#A3113E',
             borderDash: [5, 5],
@@ -213,7 +215,7 @@ export default function Stahl() {
         labels,
         datasets: [
           {
-            label: 'Längs-Eigenspannung σ_res (MPa)',
+            label: inhalt.werte.längsEigenspannungResMpa,
             data: stressData,
             borderColor: '#64748b',
             backgroundColor: 'rgba(249, 115, 22, 0.1)',
@@ -222,7 +224,7 @@ export default function Stahl() {
             pointRadius: 0
           },
           {
-            label: 'Fließgrenze f_y',
+            label: inhalt.werte.fließgrenzeFY,
             data: labels.map(() => fy),
             borderColor: '#A3113E',
             borderDash: [5, 5],
@@ -260,7 +262,7 @@ export default function Stahl() {
       labels: eps.map(e => (e * 100).toFixed(1)),
       datasets: [
         {
-          label: `Spannung bei 20°C`,
+          label: inhalt.werte.spannungBei20C,
           data: sig20,
           borderColor: '#cbd5e1',
           borderDash: [5, 5],
@@ -324,7 +326,7 @@ export default function Stahl() {
           fill: false,
         },
         {
-          label: 'Aktuelle Belastung',
+          label: inhalt.werte.aktuelleBelastung,
           data: N_values.map(n => (Math.abs(Math.log10(n) - Math.log10(nR)) < 0.2) ? deltaSigma : null),
           borderColor: '#A3113E',
           backgroundColor: '#A3113E',
@@ -467,7 +469,7 @@ export default function Stahl() {
           max: maxX,
           title: {
             display: true,
-            text: 'Dehnung ε (%)',
+            text: inhalt.werte.dehnung,
             font: { family: 'Work Sans', weight: 'bold' as const, size: 12 },
             color: '#1e293b'
           },
@@ -484,7 +486,7 @@ export default function Stahl() {
           max: suggestedMaxY,
           title: {
             display: true,
-            text: 'Spannung σ (MPa bzw. N/mm²)',
+            text: inhalt.werte.spannungMpaBzwN,
             font: { family: 'Work Sans', weight: 'bold' as const, size: 12 },
             color: '#A3113E'
           },
@@ -527,13 +529,10 @@ export default function Stahl() {
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Activity className="text-shiraz" /> Stahl im Bauwesen
-        </h2>
+          <Activity className="text-shiraz" /><MdText text={inhalt.texte.stahlImBauwesen} /></h2>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Stahl ist einer der leistungsfähigsten und flexibelsten Baustoffe im modernen Ingenieurbau. Seine hervorragende Tragfähigkeit bei Zug- wie Druckbeanspruchung und sein ausgeprägtes plastisches Verformungsverhalten sind die Säulen weitgespannter Tragwerke.
-          </p>
+          <p><MdText text={inhalt.texte.stahlIstEinerDer} /></p>
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
@@ -565,8 +564,7 @@ export default function Stahl() {
             }`}
             onClick={() => setActiveTab('stahlsorten')}
           >
-            <Layers size={16} /> Stahlwerkstoffe &amp; Güten
-          </button>
+            <Layers size={16} /><MdText text={inhalt.texte.stahlwerkstoffeGüten} /></button>
           <button aria-pressed={activeTab === 'allgemein'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'allgemein' 
@@ -575,8 +573,7 @@ export default function Stahl() {
             }`}
             onClick={() => setActiveTab('allgemein')}
           >
-            <Shield size={16} /> Allgemein &amp; Ermüdung
-          </button>
+            <Shield size={16} /><MdText text={inhalt.texte.allgemeinErmüdung} /></button>
           <button aria-pressed={activeTab === 'walzen'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'walzen' 
@@ -585,8 +582,7 @@ export default function Stahl() {
             }`}
             onClick={() => setActiveTab('walzen')}
           >
-            <Minimize2 size={16} /> Walzprofile (Eigenspannungen)
-          </button>
+            <Minimize2 size={16} /><MdText text={inhalt.texte.walzprofileEigenspannungen} /></button>
           <button aria-pressed={activeTab === 'schweissen'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'schweissen' 
@@ -605,8 +601,7 @@ export default function Stahl() {
             }`}
             onClick={() => setActiveTab('legierungen')}
           >
-            <Sparkles size={16} /> Legierungen &amp; Edelstahl
-          </button>
+            <Sparkles size={16} /><MdText text={inhalt.texte.legierungenEdelstahl} /></button>
         </div>
 
         {(activeTab === 'allgemein' || activeTab === 'walzen' || activeTab === 'schweissen' || activeTab === 'legierungen') && <StahlWerkstoffkunde activeTab={activeTab} alloyC={alloyC} alloyCr={alloyCr} alloyMo={alloyMo} alloyNi={alloyNi} corrosion={corrosion} deltaSigma={deltaSigma} detailCategory={detailCategory} fy={fy} grade={grade} heatInput={heatInput} kE={kE} ky={ky} m1={m1} nR={nR} plateThickness={plateThickness} profileType={profileType} setAlloyC={setAlloyC} setAlloyCr={setAlloyCr} setAlloyMo={setAlloyMo} setAlloyNi={setAlloyNi} setCorrosion={setCorrosion} setDeltaSigma={setDeltaSigma} setDetailCategory={setDetailCategory} setGrade={setGrade} setHeatInput={setHeatInput} setM1={setM1} setPlateThickness={setPlateThickness} setProfileType={setProfileType} setTemp={setTemp} stressStrainData={stressStrainData} temp={temp} walzResults={walzResults} weldResults={weldResults} woehlerData={woehlerData} />}
@@ -625,15 +620,11 @@ export default function Stahl() {
       </div>
     
       <FormulaDerivationBox
-        title="Anwendungsbeispiel: Plastischer Biegewiderstand eines IPE 300 aus S355"
+        title={inhalt.werte.anwendungsbeispielPlastischerBiegewiders}
         zielGleichung="M_{pl,Rd} = \frac{W_{pl,y} \cdot f_y}{\gamma_{M0}}"
-        normQuelle="DIN EN 1993-1-1 mit NA, 6.2.5 (Querschnittsklasse 1, γ_M0 = 1,0)"
-        schritte={[
-          { titel: '1. Gegeben', formel: 'W_{pl,y} = 628{,}4\\,\\text{cm}^3,\\; f_y = 355\\,\\text{N/mm}^2,\\; M_{Ed} = 120\\,\\text{kNm}', erklaerung: 'Querschnittswerte nach Profiltabelle.' },
-          { titel: '2. Widerstand', formel: 'M_{pl,Rd} = 628{,}4 \\cdot 35{,}5 / 1{,}0 = 22\\,308\\,\\text{kNcm} = 223\\,\\text{kNm}', erklaerung: 'f_y = 35,5 kN/cm².' },
-          { titel: '3. Ausnutzung', formel: '\\eta = 120 / 223 = 0{,}54 \\le 1', erklaerung: 'Ohne Stabilitätsnachweis (Biegedrillknicken separat).' },
-        ]}
-        ergebnisHinweis="Ausnutzung 54 % – Biegedrillknicken und Gebrauchstauglichkeit sind gesondert nachzuweisen."
+        normQuelle={inhalt.werte.dinEn19931}
+        schritte={inhalt.daten["Stahl.schritte"]}
+        ergebnisHinweis={inhalt.werte.ausnutzung54BiegedrillknickenUnd}
       />
 
       <ModulTest moduleId="stahl" />
@@ -641,50 +632,14 @@ export default function Stahl() {
       <ModuleFooter 
         wikipedia={[
           { title: 'Stahlbau', url: 'https://de.wikipedia.org/wiki/Stahlbau' },
-          { title: 'Ermüdung (Werkstoff)', url: 'https://de.wikipedia.org/wiki/Materialerm%C3%BCdung' },
+          { title: inhalt.werte.ermüdungWerkstoff, url: 'https://de.wikipedia.org/wiki/Materialerm%C3%BCdung' },
           { title: 'Schweißen', url: 'https://de.wikipedia.org/wiki/Schwei%C3%9Fen' },
           { title: 'Stahlsorte', url: 'https://de.wikipedia.org/wiki/Stahlsorte' }
         ]}
-        literatur={[
-          'Petersen, Chr. (2013): Stahlbau - Grundlagen der Berechnung und baulichen Ausbildung (Springer Vieweg)',
-          'Kindmann, R.; Krahwinkel, M.: Stahl- und Verbundkonstruktionen – Hallen-, Geschoss- und Brückenbau. 3., vollst. überarb. u. aktual. Aufl., Wiesbaden: Springer Vieweg 2016',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (Eurocode 3, Teil 1-1; bauaufsichtlich eingeführt); 2. Generation DIN EN 1993-1-1:2025-04 mit DIN EN 1993-1-1/NA:2026-04 noch nicht eingeführt' },
-          { title: 'DIN EN 1993-1-2:2010-12 mit NA (Eurocode 3, Teil 1-2: Brandfall)' },
-          { title: 'DIN EN 1993-1-9:2010-12 mit NA (Eurocode 3, Teil 1-9: Ermüdung)' },
-          { title: 'DIN EN 10025-2:2019-10 (Warmgewalzte Erzeugnisse aus unlegierten Baustählen)' },
-          { title: 'DIN EN 1090-2:2018-09 (Ausführung von Stahltragwerken und Aluminiumtragwerken - Technische Regeln für Stahltragwerke)' },
-          { title: 'DIN 488-1:2009-08 (Betonstahl – Sorten, Eigenschaften, Kennzeichen)' },
-          { title: 'DIN EN ISO 12944-2 (Korrosionsschutz – Einteilung der Umgebungsbedingungen)' }
-        ]}
-        weblinks={[
-          { title: 'Dlubal Querschnittswerte – Online-Profilrechner für Walzprofile', url: 'https://www.dlubal.com/de/querschnittswerte/' },
-          { title: 'SkyCiv Free Beam Calculator – Momenten- & Querkraftverläufe', url: 'https://skyciv.com/free-beam-calculator/' }
-        ]}
-        formeln={[
-          {
-            formel: 'E_{a,\\theta} = k_{E,\\theta} \\cdot E_a \\quad \\text{und} \\quad f_{y,\\theta} = k_{y,\\theta} \\cdot f_y',
-            erklaerung: 'Thermische Abminderung von E-Modul und Streckgrenze im Brandfall nach Eurocode 3 Teil 1-2 (E_a = 210\\,000\\text{ N/mm²}).',
-            quelle: 'DIN EN 1993-1-2 Tab. 3.1'
-          },
-          {
-            formel: '\\Delta\\sigma_R^m \\cdot N = \\Delta\\sigma_c^m \\cdot 2\\cdot 10^6',
-            erklaerung: 'Wöhlerlinie für Ermüdungsfestigkeit nach EC3-1-9: \\Delta\\sigma_c = Kerbdetailkategorie (bei 2 Millionen Schwingspielen), m = Steigungsexponent (m = 3 für N \\le 5\\cdot 10^6).',
-            quelle: 'DIN EN 1993-1-9'
-          },
-          {
-            formel: '\\sigma_{\\text{res},c} \\approx -0{,}3 \\dots -0{,}5 \\cdot f_y',
-            erklaerung: 'Charakteristische Druckeigenspannungen an den Flanschaußenkanten von warmgewalzten I-Profilen durch differenzielle Abkühlung nach dem Walzgang.',
-            quelle: 'Petersen: Stahlbau'
-          },
-          {
-            formel: 'E_s = \\eta \\cdot \\frac{U \\cdot I}{v} \\quad [\\text{kJ/mm}]',
-            erklaerung: 'Streckenenergie beim Lichtbogenschweißen: \\eta = thermischer Wirkungsgrad, U = Schweißspannung [V], I = Schweißstrom [A], v = Schweißgeschwindigkeit [mm/s]. Bestimmt die Ausdehnung der Wärmeeinflusszone (WEZ).',
-            quelle: 'DIN EN 1011-1'
-          }
-        ]}
+        literatur={inhalt.daten["Stahl.literatur"]}
+        regelwerke={inhalt.daten["Stahl.regelwerke"]}
+        weblinks={inhalt.daten["Stahl.weblinks"]}
+        formeln={inhalt.daten["Stahl.formeln"]}
       />
     </div>
   );

@@ -1,0 +1,34 @@
+{
+  "texte": {
+    "bemessungEinesRechteckquerschnittsFür": "Bemessung eines Rechteckquerschnitts für reine Biegung im GZT",
+    "wasBerechnetWirdDie": "**Was?** Berechnet wird die erforderliche Längszugbewehrung $A_s$ in $\\text{cm}^2$ für einen einachsig beanspruchten Stahlbetonbalken. <br>**Warum?** Beton besitzt eine sehr geringe Zugfestigkeit. Bei Biegung entstehen an der Bauteilunterseite Zugspannungen, die durch eingelegte Stahlstäbe rissminimierend und tragfähig aufgenommen werden müssen. <br>**Wie?** Über das dimensionslose Beiwert-Verfahren ($\\mu$-Tabelle) für den Grenzzustand der Tragfähigkeit (GZT) nach **Eurocode 2 (DIN EN 1992-1-1)**.",
+    "tragwerksparameterEinstellen": " Tragwerksparameter einstellen",
+    "bemessungsmomentMEdKnm": "Bemessungsmoment $M_{Ed}$ (kNm):",
+    "abmessungenBalkenBTimes": "Abmessungen Balken $b \\times h$ (cm):",
+    "biegungBemessungsverfahrenDinEn": "Biegung-Bemessungsverfahren (DIN EN 1992-1-1) Schritt für Schritt",
+    "zylinderdruckfestigkeitDesBetons": "Zylinderdruckfestigkeit des Betons ",
+    "brBemessungswertDerBetondruckfestigkeit": ". <br>Bemessungswert der Betondruckfestigkeit $f_{cd}$ (mit Teilsicherheitsbeiwert $\\gamma_C = 1{,}5$ und Beiwert für Langzeitwirkungen $\\alpha_{cc} = 0{,}85$):",
+    "bemessungswertDerStahlstreckgrenzeF": "Bemessungswert der Stahlstreckgrenze $f_{yd}$ (mit $f_{yk} = 500 \\, \\text{N/mm}^2$ und Teilsicherheitsbeiwert $\\gamma_S = 1{,}15$):",
+    "schritt1RechnerischeMaterialfestigkeiten": "**Schritt 1: Rechnerische Materialfestigkeiten ermitteln**",
+    "dieNutzhöheDIst": "Die Nutzhöhe $d$ ist der Abstand des am stärksten gedrückten Betonrandes zum Schwerpunkt der Zugbewehrung. Wir nehmen einen Vorhaltemaß-Abstand von ",
+    "schritt2NutzhöheD": "**Schritt 2: Nutzhöhe d bestimmen**",
+    "hiermitWirdGeprüftOb": "Hiermit wird geprüft, ob die Druckzone des Querschnitts ohne zusätzliche Druckbewehrung ausreicht:",
+    "schritt3DimensionslosesBiegemoment": "**Schritt 3: Dimensionsloses Biegemoment $\\mu_{Ed}$ berechnen**",
+    "istGrenzeFürXi": " ist (Grenze für $\\xi_{lim} = 0{,}45$ nach NA DE), ist keine Druckbewehrung erforderlich. Der mechanische Bewehrungsbeiwert $\\omega$ und der Hebelarmbeiwert $\\zeta$ ergeben sich hier vereinfacht aus einem rechteckigen Spannungsblock über die gesamte Druckzonenhöhe (Näherung; genauer: Parabel-Rechteck-Diagramm bzw. Spannungsblock mit λ = 0,8 nach DIN EN 1992-1-1, 3.1.7) zu:",
+    "achtungEd": "Achtung! μ_Ed (",
+    "lim045Nach": ", ξ_lim = 0,45 nach NA DE). Druckbewehrung erforderlich! Ohne Druckbewehrung müssen die Balkenabmessungen (b, h) vergrößert werden, damit die Bewehrung fließt und ein sprödes Betonversagen ausgeschlossen ist.",
+    "schritt4HebelarmDer": "**Schritt 4: Hebelarm der inneren Kräfte z ermitteln**",
+    "berechnungGesperrtWegenQuerschnitts": "Berechnung gesperrt wegen Querschnitts-Überbeanspruchung!",
+    "schritt5ErforderlicheStahlfläche": "**Schritt 5: Erforderliche Stahlfläche A_s berechnen**",
+    "ergebnisInterpretationKonstruktionsvorsc": "Ergebnis-Interpretation & Konstruktionsvorschlag:",
+    "dieStatischErforderlicheLängsbewehrung": "Die statisch erforderliche Längsbewehrung an der Balkenunterseite beträgt ",
+    "imIngenieurbüroMussDiese": ". Im Ingenieurbüro muss diese Fläche nun in konkrete Bewehrungsdurchmesser umgesetzt werden.",
+    "optionAStandard": "Option A (Standard):",
+    "optionBKompakt": "Option B (Kompakt):",
+    "optionCMinimalistisch": "Option C (Minimalistisch):"
+  },
+  "werte": {
+    "bemessungsmomentKnm": "Bemessungsmoment (kNm)",
+    "flächeUnzureichend": "Fläche unzureichend!"
+  }
+}

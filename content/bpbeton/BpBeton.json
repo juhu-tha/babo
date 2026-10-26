@@ -1,0 +1,77 @@
+{
+  "texte": {
+    "materialLehrpfadBetonIm": "Material-Lehrpfad: Beton im Bauwesen",
+    "weiterZuDenAnderen": "Weiter zu den anderen Beton-Lehrbereichen:",
+    "t1BetontechnologiePraxis": "1. Betontechnologie & Praxis",
+    "expositionsklassenKonfiguratorNachbehand": "Expositionsklassen-Konfigurator, Nachbehandlungsrechner & Betondeckung.",
+    "t2BetonzulassungBauprodukt": "2. Betonzulassung (Bauprodukt)",
+    "transportVsBaustellenbetonWpk": "Transport- vs. Baustellenbeton, WPK-Überwachung, Ü-Zeichen & Abnahme.",
+    "t3DauerhaftungSchäden": "3. Dauerhaftung & Schäden",
+    "karbonatisierungFrostTausalzAngriff": "Karbonatisierung, Frost-Tausalz-Angriff, AKR-Treiben & Bewehrungskorrosion.",
+    "betonBauprodukte": " Beton (Bauprodukte)",
+    "derBaustoffBetonZeichnet": "Der Baustoff Beton zeichnet sich durch hohe Druckfestigkeit und Vielseitigkeit aus. Dieses Kapitel behandelt Zusammensetzung, Frischbetoneigenschaften und Festbetonauswertung.",
+    "betonIstDerWeltweit": "Beton ist der weltweit am häufigsten verwendete Baustoff. Als Bauprodukt wird er meist als Transportbeton (Frischbeton) auf die Baustelle geliefert oder vor Ort gemischt (Baustellenbeton).",
+    "gemäßDinEn206": "Gemäß DIN EN 206 / DIN 1045-2 wird Beton u. a. anhand seiner Druckfestigkeitsklasse, Expositionsklassen, Konsistenzklasse, des Größtkorns der Gesteinskörnung und der Chloridklasse definiert.",
+    "wirdInEinemStationären": "Wird in einem stationären Betonwerk industriell nach genauen Rezepturen gemischt und im Fahrmischer auf die Baustelle geliefert. Unterliegt einer strengen werkseigenen Produktionskontrolle (WPK) und Fremdüberwachung, was eine hohe und konstante Qualität sicherstellt.",
+    "wirdDirektAufDer": "Wird direkt auf der Baustelle gemischt. Eignet sich für kleinere Mengen oder abgelegene Baustellen. Die Qualitätssicherung (z. B. genaue Verwiegung von Zement und Wasser) ist hier anspruchsvoller als im stationären Werk.",
+    "normativeAnforderungenAlsBauprodukt": "Normative Anforderungen als Bauprodukt",
+    "eigenschaftenDieLieferungErfolgt": "**Eigenschaften:** Die Lieferung erfolgt in der Regel als \"Beton nach Eigenschaften\". Der Besteller legt bestimmte Eigenschaften (Festigkeit, Konsistenz, Expositionsklassen), fest, und das Betonwerk ist für die Rezeptur verantwortlich.",
+    "zusammensetzungSeltenerIstBeton": "**Zusammensetzung:** Seltener ist \"Beton nach Zusammensetzung\", bei dem der Besteller dem Werk die exakte Rezeptur (z. B. Zementgehalt, w/z-Wert) vorgibt.",
+    "üZeichenBetonNach": "**Ü-Zeichen:** Beton nach DIN 1045-2 ist ein geregeltes Bauprodukt und wird in Deutschland mit dem Übereinstimmungszeichen (Ü-Zeichen) gekennzeichnet (Lieferschein).",
+    "nachhaltigkeitCscImmerÖfter": "**Nachhaltigkeit (CSC):** Immer öfter wird von Herstellern ein CSC-Zertifikat (Concrete Sustainability Council) gefordert, welches die ökologisch, sozial und ökonomisch verantwortungsvolle Herstellung belegt (relevant für QNG/DGNB).",
+    "detaillierteInformationenZuFrischbeton": "Detaillierte Informationen zu Frischbeton, Festbeton, Dauerhaftigkeit und Mischungsberechnungen finden Sie in den entsprechenden Hauptmodulen zur Baustoffkunde."
+  },
+  "werte": {
+    "anwendungsbeispielErreichtEinePrüfserie": "Anwendungsbeispiel: Erreicht eine Prüfserie C30/37?",
+    "statistischeDefinitionDerCharakteristisc": "Statistische Definition der charakteristischen Festigkeit (Lehrbeispiel, Zylinderwerte)",
+    "jeGrößerDieStreuung": "Je größer die Streuung s, desto höher muss der Mittelwert liegen – gute Produktionskontrolle spart Zement."
+  },
+  "daten": {
+    "BpBeton.schritte": [
+      {
+        "titel": "1. Prüfergebnisse",
+        "formel": "f_{cm} = 38{,}5\\,\\text{N/mm}^2,\\; s = 5{,}0\\,\\text{N/mm}^2",
+        "erklaerung": "Mittelwert und Standardabweichung einer Produktionsserie."
+      },
+      {
+        "titel": "2. 5-%-Quantil",
+        "formel": "f_{ck} = 38{,}5 - 1{,}645 \\cdot 5{,}0 = 30{,}3\\,\\text{N/mm}^2",
+        "erklaerung": "Nur 5 % der Ergebnisse liegen darunter."
+      },
+      {
+        "titel": "3. Bewertung",
+        "formel": "30{,}3 \\ge 30\\,\\text{N/mm}^2 \\;\\Rightarrow\\; \\text{C30/37 erreicht}",
+        "erklaerung": "Für die formale Konformität gelten die Kriterien der DIN EN 206 / DIN 1045-2."
+      }
+    ],
+    "BpBeton.literatur": [
+      "Grübl, P.; Weigler, H.; Karl, S.: Beton – Arten, Herstellung und Eigenschaften. 2. Aufl., Berlin: Ernst & Sohn 2001",
+      "Weber, R.: Guter Beton – Ratschläge für die richtige Betonherstellung. 25., überarb. Aufl., Erkrath: Verlag Bau+Technik 2019",
+      "Verein Deutscher Zementwerke (VDZ): Zement-Taschenbuch. 51. Ausgabe, Düsseldorf: Verlag Bau+Technik 2008"
+    ],
+    "BpBeton.regelwerke": [
+      {
+        "title": "DIN EN 206 / DIN 1045-2 (Beton - Festlegung, Eigenschaften, Herstellung und Konformität)"
+      },
+      {
+        "title": "DIN 1045-3 / DIN EN 13670 (Ausführung von Tragwerken aus Beton)"
+      },
+      {
+        "title": "Deutscher Ausschuss für Stahlbeton (DAfStb): Richtlinien und Regelwerke",
+        "url": "https://www.dafstb.de/"
+      }
+    ],
+    "BpBeton.formeln": [
+      {
+        "formel": "w/z = \\frac{m_w}{m_z} \\le (w/z)_{\\max}",
+        "erklaerung": "Wasserzementwert als zentrales Qualitätskriterium für Dauerhaftigkeit und Dichtigkeit des Zementsteins nach Expositionsklassen.",
+        "quelle": "DIN EN 206 / DIN 1045-2"
+      },
+      {
+        "formel": "f_{ck} = f_{cm} - 1{,}645 \\cdot s",
+        "erklaerung": "Charakteristische Festigkeit als 5-%-Quantil (Normalverteilung, bekannte Standardabweichung s). Die Konformitätskriterien der DIN EN 206 (z. B. f_cm ≥ f_ck + 4 bei n = 3) sind daraus abgeleitet.",
+        "quelle": "DIN EN 206"
+      }
+    ]
+  }
+}

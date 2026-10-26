@@ -1,0 +1,90 @@
+{
+  "texte": {
+    "dinEnIso12944": "DIN EN ISO 12944-2: Werkstoffabtragungs-Projektion",
+    "stahlUndZinkKorrodieren": "Stahl und Zink korrodieren abhängig von der Schadstoffbelastung in unterschiedlichen Millimeterraten. Wählen Sie die Korrosivitätskategorie und simulieren Sie den Schichtabtrag über Jahre:",
+    "luftreinheitsKlasseIso12944": "Luftreinheits-Klasse (ISO 12944)",
+    "gerechneterSubstanzverlust": "Gerechneter Substanzverlust",
+    "baustahlUnlegiert": "Baustahl unlegiert",
+    "aSchutzzeitBei80": " a Schutzzeit bei 80 μm Zink)",
+    "bimetallVerträglichkeitsPrüferDin": "Bimetall-Verträglichkeits-Prüfer (DIN EN ISO 14713)",
+    "wirdEinEdleresMetall": "Wird ein edleres Metall leitend mit einem unedleren Metall verbunden, opfert sich das unedlere Metall als Anode auf. Prüfen Sie Metallunverträglichkeiten im Baubetrieb:",
+    "großteilZBBlech": "Großteil (z.B. Blech/Fassade)",
+    "verbindungsmittelSchraubeNiet": "Verbindungsmittel (Schraube/Niet)",
+    "feuchtigkeitUmgebung": "Feuchtigkeit / Umgebung",
+    "korrosionsschritteGalvanischerLeitfaden": "Korrosionsschritte & Galvanischer Leitfaden",
+    "schritt1RechnerischerAbtrag": "Schritt 1: Rechnerischer Abtrag unlegierter Baustahl (",
+    "nachDinEnIso": "Nach DIN EN ISO 12944-2 wird der jährliche Korrosionsverlust für unlegierten Stahl als konstanter Wert angenommen. Für die ausgewählte Klasse ",
+    "beträgtDieserImErsten": " beträgt dieser im ersten Jahr ",
+    "jahreRechnetManLinear": " Jahre rechnet man linear:",
+    "schritt2RechnerischerZinkabtrag": "Schritt 2: Rechnerischer Zinkabtrag und theoretische Schutzdauer (",
+    "zinkBesitztEineErheblich": "Zink besitzt eine erheblich niedrigere elektrochemische Abtragsrate von ",
+    "mABeiEiner": " μm/a. Bei einer handelsüblichen Standardfeuerverzinkung mit z.B. 80 μm (Z80) berechnet sich die rechnerische Schutzzeit bis zur vollkommenen Aufzehrung des Zinks durch:",
+    "tSchutz80M": "t_Schutz = 80 μm / ",
+    "jahreSchutzdauer": " Jahre Schutzdauer",
+    "schritt3BimetallVerbindung": "Schritt 3: Bimetall-Verbindung & Anoden-/Kathodenverhältnis",
+    "dasRisikoAusKontaktkorrosion": "Das Risiko aus Kontaktkorrosion beruht auf dem elektrochemischen Potenzialunterschied und dem Flächenverhältnis. Ein verhängnisvoller Fehler im Stahlbau ist das Platzieren eines unedlen Fasteners (z.B. Schraube aus Baustahl/Zink) in einem riesigen edlen Bauteil (z.B. Edelstahl-Träger). Die Schraube wirkt als punktuelle, winzige Opferanode und korrodiert extrem schnell, was zum standsicherheits-gefährdenden Abscheren führt.",
+    "schritt4KorrosionsminderndeVorkehrungen": "Schritt 4: Korrosionsmindernde Vorkehrungen",
+    "galvanischeEntkopplungVerwendungNicht": "**Galvanische Entkopplung:** Verwendung nicht-leitender EPDM- bzw. Polyamid-Unterlegscheiben zur Unterbrechung des elektrischen Feststoffkontakts.",
+    "katodischeOpferbarrierenEinsatzOpferbere": "**Katodische Opferbarrieren:** Einsatz opferbereiter galvanischer Schutzschichten (z.B. Zink-Staub-Grundierung oder Sherardisieren)."
+  },
+  "werte": {
+    "inTrockenenInnenbereichenFindet": "In trockenen Innenbereichen findet kein nennenswerter Elektrolytfluss statt. Korrosionsrisiko vernachlässigbar.",
+    "homogeneVerbindungAusIdentischen": "Homogene Verbindung aus identischen Metallen besitzt keine Potentialdifferenz.",
+    "geringesBisMäßigesRisiko": "Geringes bis mäßiges Risiko",
+    "klassischeMontageausnahmeDasEdle": "Klassische Montageausnahme! Das edle Schraubenmetall (Edelstahl) besitzt ein mäßiges Risiko, führt aber wegen der winzigen Kathodenfläche (Schraube) im Vergleich zur großen Anode (Platte) meist zu keinem katastrophalen Versagen der Platte.",
+    "kritischesRisikoAbsolutesNo": "Kritisches Risiko / Absolutes No-Go!",
+    "schraubverbindungVerbotenDasEdle": "Schraubverbindung verboten! Das edle Kupfer wird die unedle Platte (Alu, Verzinkt, Stahl) lokal zerstören. Durch abgewaschene Kupferionen droht verheerender Lochfraß (Fließregel!).",
+    "extremesVersagensrisikoSichererBruch": "Extremes Versagensrisiko! (Sicherer Bruch)",
+    "gefährlicheKonstellationDieUnedle": "Gefährliche Konstellation! Die unedle Schraube fungiert als winzige Opferanode für die riesige Inox-Platte. Das Verbindungsmittel wird extrem schnell unter Spannung korrodieren und abscheren!",
+    "kritischesRisikoNoGo": "Kritisches Risiko / No-Go",
+    "aluminiumNieteOderSchrauben": "Aluminium-Niete oder Schrauben werden in direktem Kupferkontakt rasend schnell elektrolytisch aufgelöst.",
+    "mäßigesRisiko": "Mäßiges Risiko",
+    "mäßigePotentialdifferenzUnverzinkteStahl": "Mäßige Potentialdifferenz. Unverzinkte Stahlbauteile rosten beschleunigt, falls sie von Feuchtigkeit umgeben sind.",
+    "luftreinheitsKlasseIso12944": "Luftreinheits-Klasse (ISO 12944)",
+    "großteilZBBlech": "Großteil (z.B. Blech/Fassade)",
+    "verbindungsmittelSchraubeNiet": "Verbindungsmittel (Schraube/Niet)",
+    "feuchtigkeitUmgebung": "Feuchtigkeit / Umgebung",
+    "formelnKorrosionsschritteAusblenden": "▲ Formeln & Korrosionsschritte ausblenden",
+    "formelnInteraktiverKorrosionswegSchritt": "▼ Formeln & interaktiver Korrosionsweg (Schritt für Schritt)"
+  },
+  "daten": {
+    "MetalDurabilitySimulator.isoData": {
+      "C1": {
+        "label": "C1 (Kleinstes Risiko / Innen beheizt)",
+        "steelLoss": 0.1,
+        "zincLoss": 0.02,
+        "desc": "Trockene Büros, Schulen, geringe Kondensation."
+      },
+      "C2": {
+        "label": "C2 (Gering / Unbeheizte Depots, ländlich)",
+        "steelLoss": 10,
+        "zincLoss": 0.5,
+        "desc": "Geringe Verschmutzung, offene Garagen."
+      },
+      "C3": {
+        "label": "C3 (Mäßig / Stadtgase, mäßige Küste)",
+        "steelLoss": 35,
+        "zincLoss": 1.2,
+        "desc": "Urbane u. industrielle Bereiche, mäßiges Chlorid."
+      },
+      "C4": {
+        "label": "C4 (Stark / Chemieparks, Küstenregion)",
+        "steelLoss": 65,
+        "zincLoss": 2.8,
+        "desc": "Chemieanlagen, Schwimmbäder, Küstenbereiche mit mäßiger Salzbelastung."
+      },
+      "C5": {
+        "label": "C5 (Sehr stark / Industrie, Küste)",
+        "steelLoss": 140,
+        "zincLoss": 5.5,
+        "desc": "Industrie mit hoher Feuchte und aggressiver Atmosphäre, Küste mit hoher Salzbelastung (Offshore: CX)."
+      },
+      "CX": {
+        "label": "CX (Extrem / Tropische u. marine Bereiche)",
+        "steelLoss": 450,
+        "zincLoss": 15,
+        "desc": "Extreme Salzbelastung und andauernd hohe Luftfeuchte."
+      }
+    }
+  }
+}

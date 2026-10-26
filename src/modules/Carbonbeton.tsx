@@ -19,6 +19,8 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import inhalt from '@/content/carbonbeton/Carbonbeton.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -141,7 +143,7 @@ export default function Carbonbeton() {
             pointRadius: 0,
           },
           {
-            label: 'Betonstahl (B500B)',
+            label: inhalt.werte.betonstahlB500b,
             data: stressSteel,
             borderColor: '#64748b',
             backgroundColor: 'rgba(100, 116, 139, 0.1)',
@@ -158,24 +160,17 @@ export default function Carbonbeton() {
   return (
     <div className="space-y-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-        <h2 className="text-xl font-bold text-text-main flex items-center gap-2"><Layers className="text-shiraz" />
-          Carbonbeton (Textilbeton)
-        </h2>
+        <h2 className="text-xl font-bold text-text-main flex items-center gap-2"><Layers className="text-shiraz" /><MdText text={inhalt.texte.carbonbetonTextilbeton} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Carbonbeton ist ein innovativer Verbundwerkstoff, bei dem die klassische Stahlbewehrung durch 
-          Carbonfasermatten (Textilien) ersetzt wird. Da Carbon nicht rostet, kann die Betondeckung auf ein 
-          statisches Minimum (z.B. 10 mm) reduziert werden. Dies ermöglicht extrem schlanke, leichte und 
-          ressourcenschonende Bauteile.
-          </p>
+          <p><MdText text={inhalt.texte.carbonbetonIstEinInnovativer} /></p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="space-y-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="font-semibold mb-4 text-text-main">Geometrie & Beton</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.geometrieBeton} /></h3>
               <Slider
-                label="Bauteildicke (h)" info="Dicke des betrachteten Bauteils (bspw. für schlanke Sandwichelemente)."
+                label={inhalt.werte.bauteildickeH} info={inhalt.werte.dickeDesBetrachtetenBauteils}
                 value={h}
                 min={20}
                 max={150}
@@ -184,7 +179,7 @@ export default function Carbonbeton() {
                 unit="mm"
               />
               <Slider
-                label="Betondeckung (c)" info="Der minimale Abstand zwischen der Betonoberfläche und dem Carbonbewehrungstextil."
+                label={inhalt.werte.betondeckungC} info={inhalt.werte.derMinimaleAbstandZwischen}
                 value={c}
                 min={5}
                 max={30}
@@ -192,7 +187,7 @@ export default function Carbonbeton() {
                 onChange={(e) => setC(Number(e.target.value))}
                 unit="mm"
               />
-              <Slider label={<FormulaText text="Betonfestigkeit (f_{ck})" />} info="Charakteristische Zylinderdruckfestigkeit des Betons nach 28 Tagen (oft Feinkornbeton)."
+              <Slider label={<FormulaText text={inhalt.werte.betonfestigkeitFCk} />} info={inhalt.werte.charakteristischeZylinderdruckfestigkeit}
                 value={fCk}
                 min={30}
                 max={100}
@@ -203,8 +198,8 @@ export default function Carbonbeton() {
             </div>
 
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="font-semibold mb-4 text-text-main">Carbonbewehrung (Textil)</h3>
-              <Slider info="Effektive Querschnittsfläche des Bewehrungstextils pro Meter Breite." label={<FormulaText text="Querschnittsfläche (a_{tex})" />}
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.carbonbewehrungTextil} /></h3>
+              <Slider info={inhalt.werte.effektiveQuerschnittsflächeDesBewehrungs} label={<FormulaText text={inhalt.werte.querschnittsflächeATex} />}
                 value={aTex}
                 min={50}
                 max={300}
@@ -212,7 +207,7 @@ export default function Carbonbeton() {
                 onChange={(e) => setATex(Number(e.target.value))}
                 unit="mm²/m"
               />
-              <Slider label={<FormulaText text="Zugfestigkeit (f_{tk})" />} info="Charakteristische Zugfestigkeit des verwendeten Carbonfasergewebes."
+              <Slider label={<FormulaText text={inhalt.werte.zugfestigkeitFTk} />} info={inhalt.werte.charakteristischeZugfestigkeitDesVerwend}
                 value={fTk}
                 min={1500}
                 max={4000}
@@ -220,7 +215,7 @@ export default function Carbonbeton() {
                 onChange={(e) => setFTk(Number(e.target.value))}
                 unit="MPa"
               />
-              <Slider info="Elastizitätsmodul des Carbontextils in Faserrichtung." label={<FormulaText text="E-Modul (E_{tex})" />}
+              <Slider info={inhalt.werte.elastizitätsmodulDesCarbontextilsIn} label={<FormulaText text={inhalt.werte.eModulETex} />}
                 value={eTex}
                 min={150}
                 max={300}
@@ -233,11 +228,11 @@ export default function Carbonbeton() {
 
           <div className="space-y-6">
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm">
-              <h3 className="font-semibold mb-4 text-text-main">Biegebemessung (vereinfacht)</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.biegebemessungVereinfacht} /></h3>
               
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div className="p-4 bg-off-white rounded-lg border border-home-grau/30">
-                  <div className="text-sm text-text-main/70 mb-1">Aufnehmbares Moment <FormulaText text="m_{Rd}" /></div>
+                  <div className="text-sm text-text-main/70 mb-1"><MdText text={inhalt.texte.aufnehmbaresMoment} /><FormulaText text="m_{Rd}" /></div>
                   <div className="text-3xl font-bold text-text-main">
                     {formatDeZahl(results.mRd, 2)} <span className="text-lg">kNm/m</span>
                   </div>
@@ -245,9 +240,8 @@ export default function Carbonbeton() {
                 <div className="p-4 bg-emerald-50 rounded-lg border border-emerald-200">
                   <div className="text-sm text-emerald-800 mb-1">Dickenvergleich</div>
                   <div className="text-sm font-medium text-emerald-900">
-                    Carbonbeton: <strong>{formatDeZahl(h, 0)} mm</strong><br/>
-                    Stahlbeton: min. <strong>{formatDeZahl(results.hStahl, 0)} mm</strong>
-                    <span className="block text-[11px] text-emerald-800/70 mt-1">Lehrannahme: XC4, c_nom = 40 mm beidseitig statt der Carbon-Deckung c.</span>
+                    Carbonbeton: <strong>{formatDeZahl(h, 0)} mm</strong><MdText text={inhalt.texte.brStahlbetonMin} /><strong>{formatDeZahl(results.hStahl, 0)} mm</strong>
+                    <span className="block text-[11px] text-emerald-800/70 mt-1"><MdText text={inhalt.texte.lehrannahmeXc4CNom} /></span>
                   </div>
                 </div>
               </div>
@@ -277,7 +271,7 @@ export default function Carbonbeton() {
 
               {/* Graphic */}
               <div className="mt-6 border-t border-home-grau/30 pt-6">
-                <h4 className="font-semibold text-sm text-text-main mb-4">Schematische Darstellung: Querschnitt & Dehnungen</h4>
+                <h4 className="font-semibold text-sm text-text-main mb-4"><MdText text={inhalt.texte.schematischeDarstellungQuerschnittDehnun} /></h4>
                 <div className="relative w-full h-48 bg-off-white rounded-lg border border-home-grau/30 overflow-hidden flex items-center justify-center">
                   <svg width="100%" height="100%" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
                     <defs>
@@ -339,9 +333,7 @@ export default function Carbonbeton() {
 
                   </svg>
                 </div>
-                <div className="text-xs text-text-main/70 text-center mt-2">
-                  Carbonbeton ermöglicht sehr geringe Betondeckungen, da Carbon nicht rostet. Dies führt zu deutlich schlankeren Bauteilen (geringeres h) bei gleichem Hebelarm (z) im Vergleich zu Stahlbeton.
-                </div>
+                <div className="text-xs text-text-main/70 text-center mt-2"><MdText text={inhalt.texte.carbonbetonErmöglichtSehrGeringe} /></div>
               </div>
             </div>
 
@@ -356,7 +348,7 @@ export default function Carbonbeton() {
                     scales: {
                       y: {
                         beginAtZero: true,
-                        title: { display: true, text: 'Spannung (MPa)' }
+                        title: { display: true, text: inhalt.werte.spannungMpa }
                       },
                       x: {
                         title: { display: true, text: 'Dehnung (‰)' }
@@ -372,11 +364,7 @@ export default function Carbonbeton() {
                   }} 
                 />
               </div>
-              <p className="text-xs text-text-main/60 mt-3">
-                Im Gegensatz zu Betonstahl (B500B), der nach Erreichen der Fließgrenze ein duktiles Plateau aufweist, 
-                verhält sich Carbonbewehrung bis zum Bruch streng linear-elastisch. Dies erfordert besondere 
-                Sicherheitskonzepte bei der Bemessung, da sich ein Versagen nicht durch große Verformungen ankündigt.
-              </p>
+              <p className="text-xs text-text-main/60 mt-3"><MdText text={inhalt.texte.imGegensatzZuBetonstahl} /></p>
             </div>
           </div>
         </div>
@@ -385,54 +373,27 @@ export default function Carbonbeton() {
       <CarbonVerweis />
 
       <FormulaDerivationBox
-        title="Anwendungsbeispiel: Carbonbetonplatte (Standardwerte)"
+        title={inhalt.werte.anwendungsbeispielCarbonbetonplatteStand}
         zielGleichung="m_{Rd} = a_{tex} \cdot f_{td} \cdot z"
-        normQuelle="Gleichgewicht am Rechteckquerschnitt; γ_tex = 1,3 als Lehrannahme"
-        schritte={[
-          { titel: '1. Gegeben', formel: 'h = 40\\,\\text{mm},\\; c = 10\\,\\text{mm},\\; d = 30\\,\\text{mm},\\; a_{tex} = 100\\,\\text{mm}^2/\\text{m},\\; \\text{C50/60}', erklaerung: 'Textile Carbonbewehrung, f_tk = 2 500 N/mm².' },
-          { titel: '2. Bemessungswerte', formel: 'f_{td} = 2\\,500/1{,}3 = 1\\,923\\,\\text{N/mm}^2;\\; f_{cd} = 0{,}85 \\cdot 50/1{,}5 = 28{,}3\\,\\text{N/mm}^2', erklaerung: 'α_cc = 0,85 nach NA.' },
-          { titel: '3. Druckzone', formel: 'y = \\frac{100 \\cdot 1\\,923}{1\\,000 \\cdot 28{,}3} = 6{,}8\\,\\text{mm};\\; z = 30 - 6{,}8/2 = 26{,}6\\,\\text{mm}', erklaerung: 'Gleichgewicht F_c = F_t.' },
-          { titel: '4. Biegewiderstand', formel: 'm_{Rd} = 100 \\cdot 1\\,923 \\cdot 26{,}6 \\cdot 10^{-6} = 5{,}1\\,\\text{kNm/m}', erklaerung: 'Je Meter Plattenbreite.' },
-        ]}
-        ergebnisHinweis="m_Rd ≈ 5,1 kNm/m bei nur 40 mm Plattendicke."
+        normQuelle={inhalt.werte.gleichgewichtAmRechteckquerschnittTex}
+        schritte={inhalt.daten["Carbonbeton.schritte"]}
+        ergebnisHinweis={inhalt.werte.mRd51}
       />
 
       <ModulTest moduleId="carbonbeton" />
 
       <ModuleFooter
         weblinks={[
-          { title: 'C³ - Carbon Concrete Composite e.V.', url: 'https://www.bauen-neu-denken.de/' },
-          { title: 'Beton.wiki: Textilbeton / Carbonbeton', url: 'https://beton.wiki/index.php?title=Textilbeton' }
+          inhalt.daten["Carbonbeton.weblinks.0"],
+          { title: inhalt.werte.betonWikiTextilbetonCarbonbeton, url: 'https://beton.wiki/index.php?title=Textilbeton' }
         ]}
         wikipedia={[
           { title: 'Carbonbeton', url: 'https://de.wikipedia.org/wiki/Carbonbeton' },
-          { title: 'Kohlenstofffaserverstärkter Kunststoff', url: 'https://de.wikipedia.org/wiki/Kohlenstofffaserverst%C3%A4rkter_Kunststoff' }
+          { title: inhalt.werte.kohlenstofffaserverstärkterKunststoff, url: 'https://de.wikipedia.org/wiki/Kohlenstofffaserverst%C3%A4rkter_Kunststoff' }
         ]}
-        regelwerke={[
-          { title: 'DAfStb-Richtlinie Betonbauteile mit nichtmetallischer Bewehrung (Ausgabe 2024-01)', url: 'https://www.dinmedia.de/en/technical-rule/dafstb-betonbauteile-nichtmetallische-bewehrung/377433845' },
-          { title: 'DIN EN 1992-1-1:2011-01 + NA:2013-04 (Eurocode 2, Grundlage der Bemessungslogik)' }
-        ]}
-        literatur={[
-          'DAfStb (Hrsg.): Erläuterungen und Beispiele zur DAfStb-Richtlinie Betonbauteile mit nichtmetallischer Bewehrung. Berlin: DIN Media 2024',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        formeln={[
-          {
-            erklaerung: "Bemessungswert der Zugfestigkeit der Carbonbewehrung [MPa]: f_tk geteilt durch γ_tex (hier 1,3 als Lehrannahme; maßgebend Richtlinie bzw. Zulassung).",
-            formel: "f_{td} = \\frac{f_{tk}}{\\gamma_{tex}}",
-            quelle: "DAfStb-Richtlinie Nichtmetallische Bewehrung"
-          },
-          {
-            erklaerung: "Aufnehmbares Biegemoment m_Rd [kNm/m]: Bewehrungsquerschnitt a_tex multipliziert mit Bemessungszugfestigkeit f_td und innerem Hebelarm z.",
-            formel: "m_{Rd} = a_{tex} \\cdot f_{td} \\cdot z",
-            quelle: "Gleichgewicht am Rechteckquerschnitt (analog EC2)"
-          },
-          {
-            erklaerung: "Linear-elastisches Spannungs-Dehnungs-Verhalten bis zum Sprödbruch ohne plastisches Fließplateau.",
-            formel: "\\sigma_{tex} = E_{tex} \\cdot \\varepsilon_{tex} \\quad (\\varepsilon_{tex} \\le \\varepsilon_{u})",
-            quelle: "Werkstoffverhalten Carbonbewehrung"
-          }
-        ]}
+        regelwerke={inhalt.daten["Carbonbeton.regelwerke"]}
+        literatur={inhalt.daten["Carbonbeton.literatur"]}
+        formeln={inhalt.daten["Carbonbeton.formeln"]}
       />
     </div>
   );
@@ -441,9 +402,7 @@ export default function Carbonbeton() {
 function CarbonVerweis() {
   const { setActiveTab } = useTabContext();
   return (
-    <p className="text-xs text-text-main/70">
-      Material, Herstellung und Anwendungen von Carbonbeton finden Sie im Modul{' '}
-      <button type="button" onClick={() => setActiveTab('innovative_werkstoffe')} className="text-shiraz font-bold underline cursor-pointer">
+    <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.materialHerstellungUndAnwendungen} /><button type="button" onClick={() => setActiveTab('innovative_werkstoffe')} className="text-shiraz font-bold underline cursor-pointer">
         Entwicklungen
       </button>.
     </p>

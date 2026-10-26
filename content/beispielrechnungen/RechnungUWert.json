@@ -1,0 +1,33 @@
+{
+  "texte": {
+    "wärmedurchgangskoeffizientUWertEiner": "Wärmedurchgangskoeffizient (U-Wert) einer gedämmten Betonwand",
+    "wasBerechnetWirdDer": "**Was?** Berechnet wird der Wärmedurchgangskoeffizient $U$ einer mehrschichtigen Wandkonstruktion in $\\text{W/(m}^2\\text{K)}$. <br>**Warum?** Der U-Wert beschreibt den stationären Wärmestrom durch ein Bauteil bei einer Temperaturdifferenz von 1 Kelvin. Ein kleinerer Wert bedeutet eine bessere Wärmedämmung. Er ist das fundamentale Kriterium zur Begrenzung von Transmissionswärmeverlusten nach dem **Gebäudeenergiegesetz (GEG)**. <br>**Wie?** Durch die Addition der inneren und äußeren Wärmeübergangswiderstände $R_{si}$ und $R_{se}$ mit den Wärmedurchlasswiderständen der einzelnen Baustoffschichten $R_i = d_i / \\lambda_i$.",
+    "parameterAnpassenEchtzeitNachweis": " Parameter anpassen (Echtzeit-Nachweis)",
+    "schicht1Normalbeton": "Schicht 1: Normalbeton",
+    "dickeD1Cm": "Dicke $d_1$ (cm):",
+    "schicht2EpsDämmung": "Schicht 2: EPS-Dämmung",
+    "dickeD2Cm": "Dicke $d_2$ (cm):",
+    "schicht3Kalkgipsputz": "Schicht 3: Kalkgipsputz",
+    "dickeD3Cm": "Dicke $d_3$ (cm):",
+    "schrittFürSchrittBerechnung": "Schritt-für-Schritt Berechnung gemäß DIN EN ISO 6946",
+    "nachDinEnIso": "Nach DIN EN ISO 6946 werden für horizontale Wärmeströme durch Außenwände folgende Standardwerte angesetzt:",
+    "schritt1WärmeübergangswiderständeFestleg": "**Schritt 1: Wärmeübergangswiderstände festlegen**",
+    "dieEinzelwiderständeRI": "Die Einzelwiderstände $R_i$ ergeben sich aus $R_i = d_i / \\lambda_i$ (mit Dicke $d_i$ in Metern):",
+    "schicht1NormalbetonR": "• Schicht 1 (Normalbeton): R₁ = ",
+    "schicht2EpsDämmung2": "• Schicht 2 (EPS-Dämmung): R₂ = ",
+    "schicht3KalkgipsputzR": "• Schicht 3 (Kalkgipsputz): R₃ = ",
+    "schritt2WärmedurchlasswiderständeDer": "**Schritt 2: Wärmedurchlasswiderstände der Baustoffschichten berechnen**",
+    "schritt3GesamtwärmedurchlasswiderstandR": "**Schritt 3: Gesamtwärmedurchlasswiderstand R_T aufsummieren**",
+    "derKehrwertDesGesamtwiderstands": "Der Kehrwert des Gesamtwiderstands liefert den gesuchten U-Wert:",
+    "schritt4WärmedurchgangskoeffizientU": "**Schritt 4: Wärmedurchgangskoeffizient U ermitteln**",
+    "ergebnisbewertungInterpretation": "Ergebnisbewertung & Interpretation:",
+    "ihrBerechneterUWert": "Ihr berechneter U-Wert beträgt ",
+    "dasGebäudeenergiegesetzGegAnlage": ". Das Gebäudeenergiegesetz (GEG), Anlage 7 fordert bei nachträglicher Sanierung oder Neuerrichtung von Außenwänden einen maximalen U-Wert von **0,24 W/(m²K)**."
+  },
+  "werte": {
+    "bestandenGegKonform": "Bestanden (GEG-konform)",
+    "nichtBestandenGegenGeg": "Nicht bestanden (Gegen GEG)",
+    "dieDämmstoffstärkeIstEnergetisch": "Die Dämmstoffstärke ist energetisch ausreichend dimensioniert. Das Risiko von Oberflächenkondensat an der Innenseite bei üblichen Raumklimaten (20°C, 50% r.F.) ist extrem gering, wodurch Schimmelpilzbildung konstruktiv unterbunden wird.",
+    "dieDämmwirkungIstUnzureichend": "Die Dämmwirkung ist unzureichend. Erhöhen Sie die Dicke der EPS-Dämmung (Schicht 2) im interaktiven Regler auf mindestens 14 cm, um den Mindestwärmeschutz einzuhalten und Tauwasserausfall zu verhindern."
+  }
+}

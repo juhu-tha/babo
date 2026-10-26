@@ -1,0 +1,273 @@
+{
+  "texte": {
+    "bauwerkserfassungAufmaßtechniken": " Bauwerkserfassung & Aufmaßtechniken",
+    "methodenZurGeometrischenUnd": "Methoden zur geometrischen und strukturellen Erfassung von Bestandsbauten. Vom analogen Handaufmaß über hochpräzises 3D-LiDAR-Scanning (Leica BLK360) bis zur schadens- und verformungsgerechten BIM/Statik-Aufbereitung.",
+    "hinweisGiltFürDie": "Hinweis: Gilt für die an der TH Augsburg vorhandenen Geräte und verwendeten Softwaretools.",
+    "toleranzDin18202Din": "📐 Toleranz: DIN 18202 / DIN 18710",
+    "leitfadenDenkmalpflegeRichtlinien": "🏛️ Leitfaden: Denkmalpflege-Richtlinien",
+    "grundlagenGenauigkeitsstufen": " Grundlagen & Genauigkeitsstufen",
+    "messverfahrenImVergleich": " Messverfahren im Vergleich",
+    "leicaPunktwolkenWorkflow": " Leica Punktwolken-Workflow",
+    "bimStatikRevitRstab": " BIM & Statik (Revit + RSTAB)",
+    "warumVerformungsgerechtesAufmaß": " Warum \"verformungsgerechtes Aufmaß\"?",
+    "imNeubauWirdVon": "Im Neubau wird von idealisierten Ebenen und rechten Winkeln ausgegangen. Bestandsgebäude überdauern jedoch oft Jahrhunderte und reagieren auf Bodensenkungen, Feuchtigkeit, Kriechen und Schwinden oder temperaturbedingte Querdehnungen. Sie verformen sich. Ein idealisiertes Aufmaß vernachlässigt schräge Wände, hängende Decken und gekrümmte Dachtragwerke. Das verformungsgerechte Aufmaß hingegen registriert diese Abweichungen exakt und überführt sie in die Bauwerksakte, um teure Überraschungen beim Modernisieren oder statische Fehleinschätzungen zu vermeiden.",
+    "metrologischeDetailsZuStufe": "Metrologische Details zu Stufe ",
+    "genauigkeitseignungAusreichendFürMachbar": "**Genauigkeitseignung:** Ausreichend für Machbarkeitsstudien, Heizkostenabrechnung oder grobe Grundrissaufaufteilungen.",
+    "typischeHandgeräteRollbandmaßGliedermaßs": "**Typische Handgeräte:** Rollbandmaß, Gliedermaßstab (Zollstock), einfacher Handlaser.",
+    "kritikpunkUnsicherBeiKomplexer": "**Kritikpunk:** Unsicher bei komplexer Tragwerkserfassung. Schrägen können gar nicht oder nur stark verzerrt erkannt werden.",
+    "genauigkeitseignungStandardImUmbau": "**Genauigkeitseignung:** Standard im Umbau-Wohnungsbau. Ausreichend, wenn keine größeren Verformungen durch Risse oder Setzungen vorliegen.",
+    "gerätespektrumLaserEntfernungsmesserMit": "**Gerätespektrum:** Laser-Entfernungsmesser mit Zusatzabstützungen, Diagonaldistanzmessungen per Einzelschuss.",
+    "einsatzgrenzeDachstühleMitKrummem": "**Einsatzgrenze:** Dachstühle mit krummem Gebälk führen hier bereits zu unrealistischen Bemaßungen in Plänen.",
+    "genauigkeitseignungVonDenLandesdenkmaläm": "**Genauigkeitseignung:** Von den Landesdenkmalämtern empfohlener Standard bei schützenswerten Bauwerken (Eckstein; Toleranzwerte dort prüfen).",
+    "gerätespektrumTachymeterTotalstationZur": "**Gerätespektrum:** Tachymeter (Totalstation) zur Festpunktnetzmessung kombiniert mit verzugsarmer Fotogrammetrie oder lokalem Multipunktscanning.",
+    "besonderheitVerbiegungenUndKrumme": "**Besonderheit:** Verbiegungen und krumme Wandfluchten werden geometrisch korrekt in Form von deformierten Schnitten dargestellt.",
+    "genauigkeitseignungPremiumAnalyseFür": "**Genauigkeitseignung:** Premium-Analyse für komplexe Bausanierungen, historische Kirchenkuppeln, deformierte Holzdachstühle und Riss-Fluchtungsmessungen.",
+    "gerätespektrumTerrestrischeLaserscanSyst": "**Gerätespektrum:** Terrestrische Laserscan-Systeme (TLS), mobile SLAM-LiDAR-Scanner sowie dichte Luftphotogrammetrie (UAV).",
+    "vorteilSchafftEineLückenlose": "**Vorteil:** Schafft eine lückenlose 3D-Geometrie als Punktwolke. Perfekt für Finite-Elemente-Berechnungen (RSTAB) des de facto Ist-Zustandes.",
+    "messtechnischeVisualisierung": "Messtechnische Visualisierung",
+    "vergleichAusführungstoleranzDin18202": "Vergleich Ausführungstoleranz DIN 18202 (keine Aufmaßgenauigkeit):",
+    "vorUndNachteileModerner": " Vor- und Nachteile moderner Erfassungstechnologien",
+    "dieAuswahlDesOptimalen": "Die Auswahl des optimalen Erfassungsverfahrens hängt vom Budget, der Komplexität des Bauwerks, der Zugänglichkeit und den geforderten Ziel-Toleranzen (Aufmaßstufen) ab. Oft werden Verfahren gewinnbringend kombiniert, z. B. ein geodätisches Rahmennetz aus Tachymetrie mit einer dichten LiDAR-Punktwolkenaufladung.",
+    "typischeGenauigkeit": "Typische Genauigkeit",
+    "geschwindigkeitVorOrt": "Geschwindigkeit vor Ort",
+    "aufarbeitungBüro": "Aufarbeitung (Büro)",
+    "punktwolkenAufbereitungLeicaBlk360": " Punktwolken-Aufbereitung: Leica BLK360 & Leica Cyclone",
+    "umDatenAusEinem": "Um Daten aus einem terrestrischen Laserscanner (TLS) wie dem ultrakompakten **Leica BLK360** nutzbar zu machen, müssen die Scandaten einen strengen Filter- und Registrierungsprozess durchlaufen. Erst das Zusammenfügen mehrerer Scanstandorte ergibt eine lückenlose Wolke.",
+    "cloudToCloudC2c": " Cloud-to-cloud (C2C)-Registrierung in Cyclone",
+    "inModernenErfassungenVerzichtet": "In modernen Erfassungen verzichtet man immer häufiger auf aufwendige Zielmarken (Kugeln) am Mauerwerk. Das **Cloud-to-Cloud**-Verfahren berechnet Flächenpassungen.",
+    "überlappungskriteriumMindestens30Geometr": "**Überlappungskriterium:** Mindestens 30 % geometrische Überlappung zwischen Standort A und B ist erforderlich.",
+    "vorteilKeinZeitaufwendigesEinmessen": "**Vorteil:** Kein zeitaufwendiges Einmessen von Referenzen per Hand auf riskantem Gerüstgebälk notwendig.",
+    "typischeExportformateFürCad": "Typische Exportformate für CAD/BIM",
+    "autodeskRecapPflichtFür": "Autodesk ReCap (Pflicht für Revit-Direktimport)",
+    "leicasUniversellesHochleistungPunktwolke": "Leicas universelles Hochleistung-Punktwolkenformat",
+    "herstellerneutralerAstmStandardHochkompa": "Herstellerneutraler ASTM-Standard (hochkompatibel)",
+    "standardFürGeländemodellePunktaufmaße": "Standard für Geländemodelle & Punktaufmaße",
+    "datendurchgängigkeitVom3dScan": " Datendurchgängigkeit: Vom 3D-Scan zur Stab-Statik",
+    "ausDerRegistriertenPunktwolke": "Aus der registrierten Punktwolke entsteht kein automatisches statisches System. Hierzu bedarf es einer Brücke zwischen CAD-Modellierung (Revit) und mechanischer Berechnung (RSTAB).",
+    "t1BimModellierungIn": " 1. BIM-Modellierung in Autodesk Revit",
+    "punktwolkenVerlinkungDieRcp": "**Punktwolken-Verlinkung:** Die .RCP-Datei wird über \"Punktwolke einfügen\" referenziert.",
+    "schnittführungRevitErmöglichtEs": "**Schnittführung:** Revit ermöglicht es, Schnitte exakt durch die Deckenkrümmungen zu legen, um diese nachzukonstruieren.",
+    "modellierungsregelnModellierungVerformte": "**Modellierungsregeln:** Modellierung verformter Wände als \"schräge Wand\" (Tapered Wall) oder per Freiformflächen, anstatt sie als starr orthogonale Standardbauteile zu definieren.",
+    "t2StatischeErfassungIn": " 2. Statische Erfassung in Dlubal RSTAB",
+    "systemachsenexzentrizitätenInRstabWird": "**Systemachsenexzentrizitäten:** In RSTAB wird das Tragwerk aus Stabelementen zusammengesetzt. Durchbiegungen werden als EXZENTRIZITÄTEN e_0 auf Modellebene eingearbeitet.",
+    "theorieIiOrdnungBei": "**Theorie II. Ordnung:** Bei der Berechnung werden Schnittgrößen infolge der gemessenen geometrischen Vorverformung nach Theorie II. Ordnung einbezogen.",
+    "nachweiseSpannungsUndStabilitätsnachweis": "**Nachweise:** Spannungs- und Stabilitätsnachweise nach DIN EN 1995-1-1 für Holzrafter-Dächer und Fachwerkstrukturen.",
+    "eurocode5HolzDachstuhlnachweis": "Eurocode 5 Holz-Dachstuhlnachweis mit Vorverformung hocheffizient simulieren",
+    "sehenSieLiveWie": "Sehen Sie live, wie eine vernachlässigte Vorverformung (Schiefstellung des Sparrens) aus einem unpräzisen Aufmaß zu deutlichen Spannungserhöhungen führen kann.",
+    "tragwerkEinwirkungEurocode5": "Tragwerk & Einwirkung (Eurocode 5 & C24)",
+    "holzkennwertklasseNh": "Holzkennwertklasse (NH):",
+    "breiteBMm": "Breite b (mm):",
+    "höheHMm": "Höhe h (mm):",
+    "sparrenlängeLMm": "Sparrenlänge L (mm):",
+    "axialdruckNDKn": "Axialdruck N_d (kN):",
+    "biegelastQDKn": "Biegelast q_d (kN/m):",
+    "gemesseneVerformungE0": "Gemessene Verformung e_0 (mm):",
+    "dieserWertStehtFür": "Dieser Wert steht für die reale Biegung/Durchbiegung des Sparrens, ermittelt über das verformungsgerechte Aufmaß (z.B. Leica BLK360 Punktwolke).",
+    "spannungsTragfähigkeitsnachweise": "Spannungs- & Tragfähigkeitsnachweise",
+    "querschnittsflächeA": "Querschnittsfläche A: ",
+    "trägheitsmomentI": "Trägheitsmoment I: ",
+    "spannungSigmaCD": "Spannung sigma_c_d (Druck): ",
+    "sparrenAuslastungC24Ec5": "Sparren-Auslastung (C24/EC5 Limit): ",
+    "statikNachIdealisiertemAufmaß": "Statik nach Idealisiertem Aufmaß (e_0 = 0)",
+    "statikNachVerformungsgerechtemAufmaß": "Statik nach Verformungsgerechtem Aufmaß (e_0 = ",
+    "einsturzgefahrExzentrischDurchDen": "**⚠ EINSTURZGEFAHR EXZENTRISCH!** Durch den exzentrischen Kraftangriff (sigma_m_d_eccentric = ",
+    "nMmÜberschreitetDas": " N/mm²) überschreitet das Gebälk die zulässige Tragfähigkeit um ",
+    "dieBerechnungMitIdealisierten": ". Die Berechnung mit idealisierten Werten (Auslastung: ",
+    "hätteEinVermeintlichSicheres": " %) hätte ein vermeintlich sicheres Tragwerk vorgegeben!",
+    "tragverhaltenStabilDasVerformte": "**Tragverhalten stabil:** Das verformte Bauteil hält den Lasten noch stand (Auslastung: ",
+    "dieAuslastungSteigtDurch": " %). Die Auslastung steigt durch die Exzentrizität von ",
+    "interaktionCDF": " (Interaktion σ_c,d/f_c,0,d + σ_m,d/f_m,d ≤ 1 mit Moment nach Theorie II. Ordnung; vereinfachte, auf der sicheren Seite liegende lineare Form des Querschnittsnachweises nach EC5 6.2.4).",
+    "berechnungsverfahrenNachDinEn": "Berechnungsverfahren nach DIN EN 1995-1-1 (Eurocode 5) unter Berücksichtigung der Biegespannung aus asymmetrischem Kraftangriff nach Theorie II. Ordnung."
+  },
+  "werte": {
+    "idealisiertOrthogonal": "Idealisiert (Orthogonal)",
+    "realitätsnahToleranzgerecht": "Realitätsnah (Toleranzgerecht)",
+    "nANichtNachprüfbar": "N/A (nicht nachprüfbar)",
+    "grenzeSpalte516mm": "Grenze Spalte 5 (± 16mm auf 4m)",
+    "grenzeSpalte66mm": "Grenze Spalte 6 (± 6mm auf 4m)",
+    "hochpräziseSpezialtoleranz2mm": "Hochpräzise Spezialtoleranz (< 2mm)",
+    "durchDieVerortungDeformierter": "✓ Durch die Verortung deformierter Bauteile (z.B. durchbeugender Firstpfetten) können Knickeffekte und Exzentrizitätsmomente in der Statik korrekt zugewiesen werden.",
+    "achtungVerformungenVonBauteilen": "⚠ Achtung: Verformungen von Bauteilen werden bei diesem Erfassungsgrad weg-idealisiert. Dies birgt Risiken beim nachträglichen Aufbringen neuer Dachlasten!",
+    "holzkennwertklasseNh": "Holzkennwertklasse (NH)",
+    "breiteBMm": "Breite b (mm)",
+    "sparrenlängeLMm": "Sparrenlänge L (mm)",
+    "axialdruckNDKn": "Axialdruck N_d (kN)",
+    "biegelastQDKn": "Biegelast q_d (kN/m)",
+    "beispiel1BiegeausnutzungEines": "Beispiel 1: Biegeausnutzung eines aufgemessenen Sparrens (C24)",
+    "derTatsächlicheQuerschnittAus": "Der tatsächliche Querschnitt aus dem verformungsgetreuen Aufmaß (Fehlquerschnitte, Fäulnis, Schwächungen) ist maßgebend – nicht die Planzeichnung.",
+    "dinEn19951": "DIN EN 1995-1-1:2010-12 mit NA, 6.1.6",
+    "beispiel2GemesseneVorverformung": "Beispiel 2: Gemessene Vorverformung als Zusatzmoment",
+    "dieGemesseneVerformungErhöht": "Die gemessene Verformung erhöht die Ausnutzung um rund 17 Prozentpunkte. Der Stabilitätsnachweis (Knicken, Kippen) nach DIN EN 1995-1-1, 6.3 ist zusätzlich zu führen. Der interaktive Rechner verwendet abweichend die lineare Interaktion (ohne Quadrat des Druckanteils) mit Momenten nach Theorie II. Ordnung und liefert daher etwas höhere Ausnutzungen.",
+    "dinEn199512": "DIN EN 1995-1-1:2010-12, Gl. (6.19)",
+    "oktober2026Ap8": "Oktober 2026 (AP 8 Bestand: Holznachweise und Quellen geprüft; Genauigkeitsstufen nach Eckstein manuell abgleichen; fachliche Freigabe durch den Autor ausstehend)",
+    "eurocode5Holzbau": "Eurocode 5 (Holzbau)"
+  },
+  "daten": {
+    "Bauwerkserfassung": [
+      {
+        "level": 1,
+        "name": "Stufe I (Grobaufmaß)",
+        "tol": "± 5 bis 10 cm",
+        "scale": "1:100 / 1:200",
+        "desc": "Verformungen werden ignoriert. Erfassung mit reiner Skizzierung, Handentfernungsmessern oder grobem Bandmaß, vor allem für erste Raumschnitte und Mietflächenberechnungen."
+      },
+      {
+        "level": 2,
+        "name": "Stufe II (Standardaufmaß)",
+        "tol": "± 1 bis 3 cm",
+        "scale": "1:100",
+        "desc": "Sichtbare Schrägen oder unregelmäßige Bauteile werden durch Kontrollmaße punktuell erfasst, ansonsten werden idealtypische rechte Winkel dargestellt."
+      },
+      {
+        "level": 3,
+        "name": "Stufe III (Detaillierte Bauaufnahme)",
+        "tol": "± 5 mm",
+        "scale": "1:50 / 1:25",
+        "desc": "Zentral für Denkmalschutz und historische Bausubstanz. Alle wesentlichen Bauteilverformungen (Wandneigungen, Balkendurchbiegungen) werden geodätisch/fotogrammetrisch eingemessen."
+      },
+      {
+        "level": 4,
+        "name": "Stufe IV (Umfassende Verformungsanalyse)",
+        "tol": "± 1 bis 2 mm",
+        "scale": "1:20 / 1:10",
+        "desc": "Absolute Spitzenklasse. Dreidimensionale LiDAR-Registrierung jeder Krümmung, Beule und Senkung. Unverzichtbare metrologische Basis für die Simulation von Lastumlagerungen und Standsicherheitsnachweisen."
+      }
+    ],
+    "Bauwerkserfassung_2": [
+      {
+        "name": "Handaufmaß",
+        "tol": "± 20 - 50 mm",
+        "speed": "Sehr langsam",
+        "work": "Sofort (Skizze) / Mittelschwer (CAD-Eingabe)",
+        "pros": "Geringe Hardware-Kosten, Prüfer hat direkten Bauteilkontakt (Haptik) und erkennt Schäden.",
+        "cons": "Hoher manueller Aufwand, ungeeignet für verformte Dächer, Gefahr von Vergessensmaßen.",
+        "bg": "bg-white"
+      },
+      {
+        "name": "Laser-Entfernungsmesser",
+        "tol": "± 1,0 - 5,0 mm",
+        "speed": "Mittel",
+        "work": "Manuelle Eingabe in CAD-Zeichnungen",
+        "pros": "Schnelle Einzelschüsse, hohe Präzision am Einzelpunkt, hohe Mobilität auf der Baustelle.",
+        "cons": "Schwerpunkt liegt auf Einzelpunkten, keine kontinuierlichen Kurvendarstellungen möglich.",
+        "bg": "bg-slate-50/10"
+      },
+      {
+        "name": "Tachymetrie (Totalstation)",
+        "tol": "± 1,0 - 2,0 mm",
+        "speed": "Mittel-Langsam",
+        "work": "Direktimport von Festpunkthöhen",
+        "pros": "Höchste geodätische Genauigkeit, perfektes, verzugfreies Koordinatennetz an Festpunkten.",
+        "cons": "Teure Ausbildung nötig, hoher Zeitaufwand für den Aufbau des Geräts.",
+        "bg": "bg-white"
+      },
+      {
+        "name": "Terrestrisches LiDAR (TLS)",
+        "tol": "± 1,0 - 3,0 mm",
+        "speed": "Sehr schnell",
+        "work": "Hoch (Registrierung, Filterung in Leica Cyclone)",
+        "pros": "Bis 680.000 Punkte/s (BLK360 G2), lückenlose 3D-Erfassung, Genauigkeit laut Datenblatt im Bereich weniger Millimeter (z. B. 4 mm @ 10 m).",
+        "cons": "Hohe Anschaffungskosten, enorme Datenmengen, Abschattung (tote Winkel) erfordern viele Standpunkte.",
+        "bg": "bg-slate-50/15"
+      },
+      {
+        "name": "3D-Photogrammetrie (SfM)",
+        "tol": "± 5,0 - 15,0 mm",
+        "speed": "Schnell (Kameradrohne)",
+        "work": "Sehr hoch (Bildrekonstruktion auf GPU)",
+        "pros": "Zusätzliche dichte RGB-Farbinformationen, hervorragend für Dachaußenseiten & Stuckverzierungen.",
+        "cons": "Stark licht- und oberflächenabhängig, unpräzise bei spiegelnden oder einfarbigen Wandflächen.",
+        "bg": "bg-white"
+      }
+    ],
+    "Bauwerkserfassung_3": [
+      {
+        "step": "01",
+        "title": "Erfassung am Objekt",
+        "detail": "Der Leica BLK360 wird auf einem stabilen Stativ platziert. Er emittiert 680.000 Laserpunkte pro Sekunde und nimmt ein HDR-Farbpanorama auf. Pro Standpunkt dauert die kombinierte Aufnahme ca. 1-2 Minuten."
+      },
+      {
+        "step": "02",
+        "title": "Import & Vorfilterung",
+        "detail": "Übertragen der RAW-Scandaten in Leica Cyclone Register 360. Automatische Reinigung von offensichtlichem Rauschen (Vorbeiziehender Verkehr, Vogelschlag) über vordefinierte Distanz-Grenzbereiche."
+      },
+      {
+        "step": "03",
+        "title": "Registrierung (Verknüpfung)",
+        "detail": "Verknüpfen der Scanpunkte per Cloud-to-cloud (C2C) Abgleich. Algorithmen suchen nach Kantenüberlappungen im Raum. Alternativ werden physisch auf der Baustelle angebrachte Target-Kugeln zugewiesen."
+      },
+      {
+        "step": "04",
+        "title": "Export & Formate",
+        "detail": "Validierung der Abweichungsmatrix (Zielwert: < 3mm Gesamtfehler). Finale Ausdünnung der Punktwolke und Export in Bau-BIM-Standardformate wie RCP/RCS (Autodesk) oder LGS."
+      }
+    ],
+    "Bauwerkserfassung.schritte": [
+      {
+        "titel": "Querschnitt aus dem Aufmaß",
+        "erklaerung": "b/h = 100/140 mm, Stützweite 4,0 m:",
+        "formel": "A = 14\\,000\\,\\text{mm}^2, \\quad W = \\frac{100 \\cdot 140^2}{6} = 326\\,667\\,\\text{mm}^3"
+      },
+      {
+        "titel": "Moment",
+        "erklaerung": "Bemessungslast q_d = 2,0 kN/m:",
+        "formel": "M_d = \\frac{2{,}0 \\cdot 4{,}0^2}{8} = 4{,}0\\,\\text{kNm} \\Rightarrow \\sigma_{m,d} = 12{,}2\\,\\text{N/mm}^2"
+      },
+      {
+        "titel": "Festigkeit",
+        "erklaerung": "C24, k_mod = 0,9 (kurze Lasteinwirkung, NKL 1/2), γ_M = 1,3:",
+        "formel": "f_{m,d} = \\frac{0{,}9 \\cdot 24}{1{,}3} = 16{,}6\\,\\text{N/mm}^2 \\Rightarrow \\eta = 0{,}74"
+      }
+    ],
+    "Bauwerkserfassung.schritte_2": [
+      {
+        "titel": "Normalkraft und Ausmitte",
+        "erklaerung": "N_d = 20 kN; im Aufmaß gemessene Durchbiegung e₀ = 45 mm:",
+        "formel": "M_{e,d} = 20 \\cdot 0{,}045 = 0{,}9\\,\\text{kNm} \\Rightarrow \\Delta\\sigma_{m,d} = 2{,}8\\,\\text{N/mm}^2"
+      },
+      {
+        "titel": "Spannungen",
+        "erklaerung": "f_c,0,d = 0,9 · 21/1,3 = 14,5 N/mm²:",
+        "formel": "\\sigma_{c,0,d} = \\frac{20\\,000}{14\\,000} = 1{,}43, \\quad \\sigma_{m,d} = 12{,}2 + 2{,}8 = 15{,}0\\,\\text{N/mm}^2"
+      },
+      {
+        "titel": "Interaktion",
+        "erklaerung": "Querschnittsnachweis Druck und Biegung:",
+        "formel": "\\left(\\frac{1{,}43}{14{,}5}\\right)^2 + \\frac{15{,}0}{16{,}6} = 0{,}01 + 0{,}90 = 0{,}91 \\le 1"
+      }
+    ],
+    "Bauwerkserfassung.literatur": [
+      "Neuhaus, H.: Ingenieurholzbau – Grundlagen, Bemessung, Nachweise, Beispiele. Wiesbaden: Springer Vieweg (aktuelle Auflage)",
+      "Eckstein, G.: Empfehlungen für Baudokumentationen. Bauaufnahme – Bauuntersuchung. Landesdenkmalamt Baden-Württemberg, Arbeitsheft 7."
+    ],
+    "Bauwerkserfassung.regelwerke": [
+      {
+        "title": "DIN 18710-1:2025-08 (Ingenieurgeodäsie – Teil 1: Allgemeine Anforderungen)"
+      },
+      {
+        "title": "DIN EN 1995-1-1:2010-12 + A2:2014-07 mit NA (Eurocode 5)"
+      },
+      {
+        "title": "Eckstein, G.: Empfehlungen für Baudokumentationen – Genauigkeitsstufen I–IV (Landesdenkmalamt Baden-Württemberg; Toleranzangaben im Modul als Richtwerte, manuell abgleichen)",
+        "url": "https://www.denkmalpflege-bw.de/"
+      }
+    ],
+    "Bauwerkserfassung.formeln": [
+      {
+        "formel": "I_y = \\frac{b \\cdot h^3}{12}",
+        "erklaerung": "Flächenträgheitsmoment des rechteckigen Sparrenquerschnitts für Biegung um die y-Achse.",
+        "quelle": "DIN EN 1995-1-1"
+      },
+      {
+        "formel": "\\sigma_{c,0,d} = \\frac{N_d}{A}",
+        "erklaerung": "Rechnerische Druckspannung unter zentrischer Normalkraft parallel zur Holzfaser.",
+        "quelle": "DIN EN 1995-1-1"
+      },
+      {
+        "formel": "M_d = \\frac{q_d \\cdot L^2}{8} + N_d \\cdot e_0",
+        "erklaerung": "Kombiniertes Biegemoment aus Gleichlast (q_d) und exzentrischem Kraftangriff infolge gemessener Vorverformung (e_0); im Rechner zusätzlich mit dem Vergrößerungsfaktor α_cr/(α_cr − 1) nach Theorie II. Ordnung beaufschlagt (α_cr = N_cr/N_d).",
+        "quelle": "Eurocode 5"
+      }
+    ]
+  }
+}

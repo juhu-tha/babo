@@ -4,6 +4,8 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
+import inhalt from '@/content/bpbetonwaren/BpBetonwaren.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function BpBetonwaren() {
   const [activeTab, setActiveTab] = useState<'allgemein' | 'praxis' | 'innovation'>('allgemein');
@@ -13,60 +15,7 @@ export default function BpBetonwaren() {
   const [hoveredHotspot, setHoveredHotspot] = useState<string | null>(null);
 
   // Hotspot explanations for paving and pipes
-  const studioData: Record<string, { title: string; description: string; tag: string }> = {
-    // Paving & Sofortentschalung hotspots
-    'paving-vorsatz': {
-      title: 'Vorsatzbeton (Edelvorsatzschicht)',
-      description: 'Eine einige Millimeter dicke Oberflächenschicht aus zementreichem Feinbeton (häufig CEM I) mit Hartgesteinskörnungen (Granit, Quarz, Basalt) bis ca. 4 mm. Sichert Abriebwiderstand, Frost-Tausalz-Widerstand und eine dauerhafte Farbe (Eisenoxidpigmente).',
-      tag: 'Oberflächenschutz & Ästhetik'
-    },
-    'paving-kern': {
-      title: 'Kernbeton (Hinterbeton / Tragschicht)',
-      description: 'Bildet den tragenden, dicken Unterkörper des Pflasters. Besteht aus wirtschaftlichen, gröberen Gesteinskörnungen (bis 8 oder 11 mm) und hat einen etwas geringeren Zementanteil als der Vorsatz. Sichert die Stoß- und Auflastdämpfung sowie den lückenlosen Verbund zur Tragschicht auf der Baustelle.',
-      tag: 'Tragfähigkeit & Massenoptimierung'
-    },
-    'paving-interface': {
-      title: 'Monolithischer Verbund (Grenzschicht)',
-      description: 'Trotz zweier separater Einbringungsprozesse im Fertiger (Doppelfüllwagen im Werk) härtet der Stein vollfugig und monolithisch aus. Es darf im Bauteilleben niemals zum Abscheren oder Abblättern des Vorsatzes kommen! Dies wird durch das Nass-in-Nass-Verpressen erzielt.',
-      tag: 'Bauteilsicherheit'
-    },
-    'paving-compact': {
-      title: 'Erdfeuchte Konsistenz & Grünfestigkeit',
-      description: 'Zentralschlüssel der Fertigung: Der Beton hat einen w/z-Wert von nur ca. 0.30 bis 0.38 (sehr trocken / erdfeucht). Bei Vibration verflüssigt sich die dichte Packung kurzzeitig (thixotroper Effekt) und verkeilt sich unter hohem Rütteldruck. Dies schafft hohe Kapillarkohäsion und die so genannte „Grünfestigkeit“.',
-      tag: 'Verarbeitungstechnik'
-    },
-    'paving-demold': {
-      title: 'Sofortentschalung im Taktverfahren',
-      description: 'Die frisch gepressten, noch nassen Steine haben sofort eine so hohe Kantenstabilität („Grünstand“), dass die stählerne Hohlform maschinell nach oben abgezogen wird. Der formstabile „grüne“ Betonling verbleibt ohne Schutzrahmen auf dem Fertigungsbrett und fährt direkt in die Klimakammer zur Hydratation.',
-      tag: 'Produktions-Wirtschaftlichkeit'
-    },
-    // Pipes & Manholes
-    'pipe-wall': {
-      title: 'Hochfester Rohrkörper (Beton/Stahlbeton)',
-      description: 'Betonrohre werden aus hochfestem, dichten Beton (meist C40/50 bis C60/75) im Radialpress- oder Rüttelverfahren hergestellt. Sie sind dicht und tragen Erd- und Verkehrslasten (z. B. SLW 60) nach statischer Berechnung (z. B. ATV-DVWK-A 127).',
-      tag: 'Schwerlast-Festigkeit'
-    },
-    'pipe-spigot': {
-      title: 'Spitzende (Pointy Tip)',
-      description: 'Das angeschrägte Ende des Rohres, das in die nachfolgende Glockenmuffe eingeschoben wird. Es besitzt eine exakte Passmaße mit einer profilierten Nut zur Aufnahme der Gleitdichtung.',
-      tag: 'Präzisions-Knoten'
-    },
-    'pipe-socket': {
-      title: 'Glockenmuffe (Socket Bell)',
-      description: 'Das aufgeweitete Rohrende, das die Lasten übertragen und Platz für die Dichtung bieten muss. Einbauseitig fängt die Muffe die vertikalen Scherkräfte durch umliegende Bodensetzungen ab.',
-      tag: 'Geometrische Führung'
-    },
-    'pipe-seal': {
-      title: 'Keilgleitdichtung (Integrierte Elastomerdichtung)',
-      description: 'Ein hochpräziser Dichtring aus EPDM oder SBR. Beim Zusammenschieben der Rohre wird die Dichtung elastisch komprimiert und gleitet spaltfrei in das Gelenk. Sichert zuverlässig gegen Exfiltration (Abwasseraustritt in den Boden) und Infiltration (Grundwassereintritt in den Kanal) gemäß DIN EN 1916.',
-      tag: 'Wasser- & Dichtheit'
-    },
-    'pipe-bsk': {
-      title: 'Gefahr: Biogene Schwefelsäurekorrosion (BSK)',
-      description: 'Im Abwasser bilden Bakterien unter Sauerstoffmangel Schwefelwasserstoff (H₂S). Im Kondenswasser an der Rohrdecke oxidieren andere Bakterien das H₂S zu Schwefelsäure, die den Zementstein auflöst (biogene Schwefelsäurekorrosion). Abhilfe: Faulprozesse vermeiden (Belüftung, Gefälle), säurewiderstandsfähiger Beton oder Auskleidung (z. B. PE-HD). SR-Zemente allein schützen nicht vor Säureangriff.',
-      tag: 'Dauerhaftigkeits-Schnittstelle'
-    }
-  };
+  const studioData: Record<string, { title: string; description: string; tag: string }> = inhalt.daten["BpBetonwaren.studioData"];
 
   const currentStudioInfo = () => {
     if (!hoveredHotspot || !studioData[hoveredHotspot]) {
@@ -74,10 +23,8 @@ export default function BpBetonwaren() {
         <div className="flex items-center justify-center h-full p-4 text-center border border-dashed border-slate-200 rounded-xl bg-slate-50/50">
           <div className="text-slate-400 space-y-1.5 py-6">
             <Info className="w-5 h-5 mx-auto text-slate-350" />
-            <p className="text-xs font-bold text-slate-600">Interaktive Materialanalyse</p>
-            <p className="text-[10px] leading-snug text-slate-500">
-              Bewegen Sie die Maus über die markierten Hotspots der technischen Skizze, um die physikalischen, mechanischen und chemischen Eigenschaften einzublenden.
-            </p>
+            <p className="text-xs font-bold text-slate-600"><MdText text={inhalt.texte.interaktiveMaterialanalyse} /></p>
+            <p className="text-[10px] leading-snug text-slate-500"><MdText text={inhalt.texte.bewegenSieDieMaus} /></p>
           </div>
         </div>
       );
@@ -109,12 +56,9 @@ export default function BpBetonwaren() {
         {/* HEADER SECTION */}
         <div className="bg-home-grau/5 border-b border-home-grau/10 px-6 py-5">
           <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-            <Layers className="text-shiraz" /> Betonwaren (Bauprodukte &amp; Tiefbau)
-          </h2>
+            <Layers className="text-shiraz" /><MdText text={inhalt.texte.betonwarenBauprodukteTiefbau} /></h2>
           <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-3">
-            <p>
-              Geprägt durch unbewehrte Profile, hohe Stückproduktion im erdfeuchten Rüttel-Press-Druckverfahren sowie optimierte Frost-Tausalz-Dauerhaftigkeiten gehören Betonwaren zu den am stärksten automatisierten Standard-Baukomponenten des modernen Stadt- und Kanalkonstrukts.
-            </p>
+            <p><MdText text={inhalt.texte.geprägtDurchUnbewehrteProfile} /></p>
           </div>
         </div>
 
@@ -128,8 +72,7 @@ export default function BpBetonwaren() {
             }`}
             onClick={() => setActiveTab('allgemein')}
           >
-            <BookOpen size={16} /> Basiswissen &amp; Materialanalyse
-          </button>
+            <BookOpen size={16} /><MdText text={inhalt.texte.basiswissenMaterialanalyse} /></button>
           <button aria-pressed={activeTab === 'praxis'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm ${
               activeTab === 'praxis' 
@@ -159,12 +102,8 @@ export default function BpBetonwaren() {
               
               {/* INTRODUCTORY SECTION */}
               <div>
-                <p className="lead text-base font-medium text-slate-800 leading-relaxed">
-                  Im Gegensatz zu großformatigen, hochgradig konstruktiv bewehrten Betonfertigteilen zeichnet sich die Warengruppe der <strong>Betonwaren</strong> durch eine massenweise, serielle Fertigung meist unbewehrter Produkte aus. Hierzu zählen Pflastersteine, Gehwegplatten, Straßenborde sowie Rohr- und Schachtsysteme des Abwasserwesens.
-                </p>
-                <p className="mt-2 text-xs md:text-sm text-slate-600 leading-relaxed">
-                  Die wesentlichen fertigungstechnischen Errungenschaften der Betonwarenindustrie ruhen auf dem physikalischen Prinzip der <strong>Sofortentschalung erdfeuchter Gemische</strong> und dem zweischichtigen Werkstoffaufbau durch den formgetreuen Einsatz von <strong>Vorsatzbeton</strong>.
-                </p>
+                <p className="lead text-base font-medium text-slate-800 leading-relaxed"><MdText text={inhalt.texte.imGegensatzZuGroßformatigen} /></p>
+                <p className="mt-2 text-xs md:text-sm text-slate-600 leading-relaxed"><MdText text={inhalt.texte.dieWesentlichenFertigungstechnischenErru} /></p>
               </div>
 
               {/* INTERACTIVE BETONWAREN STUDIO WITH DETAILED VECTOR SCHEMATICS */}
@@ -173,11 +112,8 @@ export default function BpBetonwaren() {
                   <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-slate-200 pb-4 mb-4">
                     <div>
                       <h4 className="text-sm font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-2">
-                        <Sparkles className="text-shiraz w-4.5 h-4.5" /> Interaktives Betonwaren-Zertifizierungsstudio
-                      </h4>
-                      <p className="text-xs text-slate-650 font-medium">
-                        Wählen Sie eine Bauteilskizze aus, um den Werkstoffaufbau, Fertigungszonen und Anschlussdetails zu untersuchen.
-                      </p>
+                        <Sparkles className="text-shiraz w-4.5 h-4.5" /><MdText text={inhalt.texte.interaktivesBetonwarenZertifizierungsstu} /></h4>
+                      <p className="text-xs text-slate-650 font-medium"><MdText text={inhalt.texte.wählenSieEineBauteilskizze} /></p>
                     </div>
 
                     {/* STUDIO TOGGLE BUTTONS */}
@@ -193,8 +129,7 @@ export default function BpBetonwaren() {
                             : 'text-slate-600 hover:text-slate-800 hover:bg-slate-100'
                         }`}
                       >
-                        <GripHorizontal className="w-3.5 h-3.5" /> 1. Pflasterstein &amp; Vorsatz
-                      </button>
+                        <GripHorizontal className="w-3.5 h-3.5" /><MdText text={inhalt.texte.t1PflastersteinVorsatz} /></button>
                       <button
                         onClick={() => {
                           setSelectedStudio('pipe');
@@ -206,8 +141,7 @@ export default function BpBetonwaren() {
                             : 'text-slate-600 hover:text-slate-800 hover:bg-slate-100'
                         }`}
                       >
-                        <RefreshCw className="w-3.5 h-3.5 animate-spin-slow" /> 2. Betonrohr &amp; Muffung
-                      </button>
+                        <RefreshCw className="w-3.5 h-3.5 animate-spin-slow" /><MdText text={inhalt.texte.t2BetonrohrMuffung} /></button>
                     </div>
                   </div>
 
@@ -432,15 +366,12 @@ export default function BpBetonwaren() {
 
                         {/* Interactive hint */}
                         <div className="absolute bottom-2.5 right-2.5 text-[8.5px] text-slate-400 font-mono flex items-center gap-1.5 bg-slate-50 px-2 py-0.5 rounded">
-                          <Eye size={10} className="text-shiraz" /> Interaktiv – Bewege den Mauszeiger über Elemente.
-                        </div>
+                          <Eye size={10} className="text-shiraz" /><MdText text={inhalt.texte.interaktivBewegeDenMauszeiger} /></div>
                       </div>
 
                       {/* QUICK NAVIGATION HOTSPOT CHIPS */}
                       <div className="bg-white p-3 rounded-xl border border-slate-200">
-                        <span className="text-[9px] font-extrabold text-slate-400 block uppercase tracking-wider mb-2">
-                          Funktionale Detailauswahl:
-                        </span>
+                        <span className="text-[9px] font-extrabold text-slate-400 block uppercase tracking-wider mb-2"><MdText text={inhalt.texte.funktionaleDetailauswahl} /></span>
                         
                         <div className="flex flex-wrap gap-1.5">
                           {selectedStudio === 'paving' ? (
@@ -470,16 +401,12 @@ export default function BpBetonwaren() {
                                 onMouseEnter={() => setHoveredHotspot('paving-compact')} 
                                 onMouseLeave={() => setHoveredHotspot(null)}
                                 className="px-2 py-1 text-[10px] rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 font-bold transition-all cursor-pointer"
-                              >
-                                Erdfeuchte Thixotropie
-                              </button>
+                              ><MdText text={inhalt.texte.erdfeuchteThixotropie} /></button>
                               <button 
                                 onMouseEnter={() => setHoveredHotspot('paving-demold')} 
                                 onMouseLeave={() => setHoveredHotspot(null)}
                                 className="px-2 py-1 text-[10px] rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 font-bold transition-all cursor-pointer"
-                              >
-                                Sofortentschalung (Grünstandsfestigkeit)
-                              </button>
+                              ><MdText text={inhalt.texte.sofortentschalungGrünstandsfestigkeit} /></button>
                             </>
                           ) : (
                             <>
@@ -515,9 +442,7 @@ export default function BpBetonwaren() {
                                 onMouseEnter={() => setHoveredHotspot('pipe-bsk')} 
                                 onMouseLeave={() => setHoveredHotspot(null)}
                                 className="px-2 py-1 text-[10px] rounded-lg bg-red-50 hover:bg-red-100 border border-red-200 text-red-700 font-bold transition-all cursor-pointer"
-                              >
-                                BSK (Zementsäurekorrosion)
-                              </button>
+                              ><MdText text={inhalt.texte.bskZementsäurekorrosion} /></button>
                             </>
                           )}
                         </div>
@@ -534,14 +459,11 @@ export default function BpBetonwaren() {
                       {/* Technical Norm Database Card */}
                       <div className="bg-slate-50 text-slate-800 p-4 rounded-xl border border-slate-200 shadow-xs space-y-3">
                         <span className="text-[10px] font-bold text-rose-700 tracking-wider uppercase flex items-center gap-1 border-b border-slate-200 pb-1.5">
-                          <Zap size={11} className="text-rose-600" /> Regelwerkskonforme Parameter
-                        </span>
+                          <Zap size={11} className="text-rose-600" /><MdText text={inhalt.texte.regelwerkskonformeParameter} /></span>
 
                         {selectedStudio === 'paving' ? (
                           <div className="space-y-2 text-[11px] leading-relaxed">
-                            <p className="font-light text-slate-600">
-                              Der mechanisch verpresste, sofortentschalte Betonwarenkörper ist bei richtiger Verlegung sehr dauerhaft.
-                            </p>
+                            <p className="font-light text-slate-600"><MdText text={inhalt.texte.derMechanischVerpressteSofortentschalte} /></p>
                             <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-200 text-[10px]">
                               <div>
                                 <span className="text-slate-500 block font-mono">Pflaster-Norm:</span>
@@ -553,35 +475,33 @@ export default function BpBetonwaren() {
                               </div>
                               <div>
                                 <span className="text-slate-500 block font-mono">Biegewiderstand:</span>
-                                <strong className="text-slate-900 block font-semibold">≥ 5,0 MPa (Klasse 3, Kennz. U)</strong>
+                                <strong className="text-slate-900 block font-semibold"><MdText text={inhalt.texte.t50MpaKlasse} /></strong>
                               </div>
                               <div>
                                 <span className="text-slate-500 block font-mono">Frost-Tausalz-Axiom:</span>
-                                <strong className="text-emerald-700 block font-bold">XF4 (≤ 1,0 kg/m² Abwitterung)</strong>
+                                <strong className="text-emerald-700 block font-bold"><MdText text={inhalt.texte.xf410Kg} /></strong>
                               </div>
                             </div>
                           </div>
                         ) : (
                           <div className="space-y-2 text-[11px] leading-relaxed">
-                            <p className="font-light text-slate-600">
-                              Beton- und Stahlbetonrohre nach DIN EN 1916 tragen statisch schwere Erdlasten und bleiben durch gedichtete Muffen bei kleinen Setzungen beweglich.
-                            </p>
+                            <p className="font-light text-slate-600"><MdText text={inhalt.texte.betonUndStahlbetonrohreNach} /></p>
                             <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-200 text-[10px]">
                               <div>
                                 <span className="text-slate-500 block font-mono">Rohr-Normen:</span>
-                                <strong className="text-slate-900 block font-semibold">DIN EN 1916 / DIN V 1201</strong>
+                                <strong className="text-slate-900 block font-semibold"><MdText text={inhalt.texte.dinEn1916Din} /></strong>
                               </div>
                               <div>
                                 <span className="text-slate-500 block font-mono">Dichtheitsprüfung:</span>
-                                <strong className="text-slate-900 block font-semibold">Prüfdruck ≥ 0,5 bar (Kanal)</strong>
+                                <strong className="text-slate-900 block font-semibold"><MdText text={inhalt.texte.prüfdruck05Bar} /></strong>
                               </div>
                               <div>
                                 <span className="text-slate-500 block font-mono">Scheiteldruckkraft:</span>
-                                <strong className="text-slate-900 block font-semibold">Tragfähigkeitsklasse (Fn)</strong>
+                                <strong className="text-slate-900 block font-semibold"><MdText text={inhalt.texte.tragfähigkeitsklasseFn} /></strong>
                               </div>
                               <div>
                                 <span className="text-slate-500 block font-mono">Säureschutz:</span>
-                                <strong className="text-rose-700 block font-bold">Innentemperung / SR-Zement</strong>
+                                <strong className="text-rose-700 block font-bold"><MdText text={inhalt.texte.innentemperungSrZement} /></strong>
                               </div>
                             </div>
                           </div>
@@ -594,9 +514,7 @@ export default function BpBetonwaren() {
               </div>
 
               {/* THREE-COLUMN DEEP DIVE: VORSATZBETON | SOFORTENTSCHALUNG | ROHRE */}
-              <h3 className="text-lg font-bold text-slate-800 mt-8 mb-4 border-b border-slate-200 pb-2">
-                Detaillierte Werkstoff- und Produktionstheorie
-              </h3>
+              <h3 className="text-lg font-bold text-slate-800 mt-8 mb-4 border-b border-slate-200 pb-2"><MdText text={inhalt.texte.detaillierteWerkstoffUndProduktionstheor} /></h3>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
@@ -604,78 +522,44 @@ export default function BpBetonwaren() {
                 <div className="bg-stone-50 p-5 rounded-xl border border-home-grau/30 space-y-3 shadow-xxs">
                   <span className="text-[9px] font-bold text-shiraz bg-rose-50 px-2 py-0.5 rounded tracking-wide uppercase">Werkstofftechnik</span>
                   <h3 className="font-extrabold text-slate-800 text-sm flex items-center gap-1.5 mt-1">
-                    <GripHorizontal className="w-4 h-4 text-rose-600 shrink-0" />
-                    Vorsatzbeton (Edelvorsatz)
-                  </h3>
-                  <p className="text-[11px] text-slate-650 leading-relaxed font-normal">
-                    Pflastersteine werden fast ausnahmslos in <strong>Zweischicht-Bauweise</strong> gefertigt. Vorsatzbeton bildet die bewitterte Sichtseite. Er besteht aus feinen Edel-Hartgesteinskörnungen (Körnung meist 0/2 bis 0/4 aus Granit, Basalt, Diabas oder Quarzsand).
-                  </p>
+                    <GripHorizontal className="w-4 h-4 text-rose-600 shrink-0" /><MdText text={inhalt.texte.vorsatzbetonEdelvorsatz} /></h3>
+                  <p className="text-[11px] text-slate-650 leading-relaxed font-normal"><MdText text={inhalt.texte.pflastersteineWerdenFastAusnahmslos} /></p>
                   <ul className="text-[11.5px] leading-relaxed text-slate-650 space-y-1.5 pl-4 list-decimal">
-                    <li>
-                      <strong>Tausalz-Resistenz:</strong> Höherer Zementgehalt und optimiertes Porensystem schützen wirksam vor dem winterlichen Frostangriff.
-                    </li>
-                    <li>
-                      <strong>Abriebwiderstand:</strong> Edel-Hartgesteine verhindern ein "Glattpolieren" des Gehwegkörpers über Jahrzehnte.
-                    </li>
-                    <li>
-                      <strong>Wasserdichtheit:</strong> Oft werkseitig durch Zugabe von flüssigen Hydrophobierungsmitteln im Mischer vergütet (Core-Hydrophobierung).
-                    </li>
+                    <li><MdText text={inhalt.texte.tausalzResistenzHöhererZementgehalt} /></li>
+                    <li><MdText text={inhalt.texte.abriebwiderstandEdelHartgesteineVerhinde} /></li>
+                    <li><MdText text={inhalt.texte.wasserdichtheitOftWerkseitigDurch} /></li>
                   </ul>
-                  <div className="bg-slate-100 p-2 text-[10px] italic rounded border-l-2 border-l-rose-600 text-slate-600 font-medium">
-                    Schützt die Farbpigmente (meist anorganische Metalloxide wie Fe₂O₃ oder Cr₂O₃) vor saurem Regen.
-                  </div>
+                  <div className="bg-slate-100 p-2 text-[10px] italic rounded border-l-2 border-l-rose-600 text-slate-600 font-medium"><MdText text={inhalt.texte.schütztDieFarbpigmenteMeist} /></div>
                 </div>
 
                 {/* COLUMN 2: SOFORTENTSCHALUNG */}
                 <div className="bg-stone-50 p-5 rounded-xl border border-home-grau/30 space-y-3 shadow-xxs">
                   <span className="text-[9px] font-bold text-shiraz bg-rose-50 px-2 py-0.5 rounded tracking-wide uppercase">Produktionsverfahren</span>
                   <h3 className="font-extrabold text-slate-800 text-sm flex items-center gap-1.5 mt-1">
-                    <Zap className="w-4 h-4 text-amber-500 shrink-0" />
-                    Sofortentschalung (Rüttel-Press)
-                  </h3>
-                  <p className="text-[11px] text-slate-650 leading-relaxed font-normal">
-                    Der Schlüssel zur rasanten Taktzeit (wenige Sekunden pro Palette) ist die <strong>Sofortentschalung im erdfeuchten Frischzustand</strong>. Es wird kein teures Gussformensystem je Stein benötigt.
-                  </p>
+                    <Zap className="w-4 h-4 text-amber-500 shrink-0" /><MdText text={inhalt.texte.sofortentschalungRüttelPress} /></h3>
+                  <p className="text-[11px] text-slate-650 leading-relaxed font-normal"><MdText text={inhalt.texte.derSchlüsselZurRasanten} /></p>
                   <ul className="text-[11.5px] leading-relaxed text-slate-650 space-y-1.5 pl-4 list-decimal">
-                    <li>
-                      <strong>Konsistenzbereich erdfeucht:</strong> Der Wasserzementwert wird sehr niedrig eingestellt (<span className="font-mono font-bold text-slate-800">w/z ≤ 0,38</span>). Der Frischbeton verhält sich wie leicht feuchter Sand.
-                    </li>
-                    <li>
-                      <strong>Rüttelpress-Verdichtung:</strong> Der Beton wird in die Gussform gefüllt. Ein Rütteltisch versetzt das System in Schwingung, wodurch die Körner dicht gleiten. Gleichzeitig presst ein Hydraulikschuh (Auflast) mechanisch von oben.
-                    </li>
-                    <li>
-                      <strong>Grünstandsfestigkeit:</strong> Nach Beendigung des Rüttelns bewirkt die innere Reibung der dichten Gesteinskörnung, dass die Steinlinge sofort standsicher sind. Die Stahlform wird nach oben gezogen („Sofortentschalung“).
-                    </li>
+                    <li><MdText text={inhalt.texte.konsistenzbereichErdfeuchtDerWasserzemen} /><span className="font-mono font-bold text-slate-800">w/z ≤ 0,38</span><MdText text={inhalt.texte.derFrischbetonVerhältSich} /></li>
+                    <li><MdText text={inhalt.texte.rüttelpressVerdichtungDerBeton} /></li>
+                    <li><MdText text={inhalt.texte.grünstandsfestigkeitNachBeendigungDes} /></li>
                   </ul>
-                  <div className="bg-slate-100 p-2 text-[10px] text-slate-600 italic rounded border-l-2 border-l-amber-500 font-medium">
-                     Taktzyklus: Eine Form fertigt je Takt ein ganzes Brett voller Steine in wenigen Sekunden.
-                  </div>
+                  <div className="bg-slate-100 p-2 text-[10px] text-slate-600 italic rounded border-l-2 border-l-amber-500 font-medium"><MdText text={inhalt.texte.taktzyklusEineFormFertigt} /></div>
                 </div>
 
                 {/* COLUMN 3: ROHRE & SCHACHTBAUTEILE */}
                 <div className="bg-stone-50 p-5 rounded-xl border border-home-grau/30 space-y-3 shadow-xxs">
                   <span className="text-[9px] font-bold text-indigo-750 bg-indigo-50 px-2 py-0.5 rounded tracking-wide uppercase">Tiefbau-Schnittstelle</span>
                   <h3 className="font-extrabold text-slate-800 text-sm flex items-center gap-1.5 mt-1">
-                    <Droplet className="w-4 h-4 text-blue-500 shrink-0" />
-                    Rohre &amp; Schachtsysteme
-                  </h3>
-                  <p className="text-[11px] text-slate-650 leading-relaxed font-normal">
-                    Betonrohre bilden die unterirdische Infrastruktur der Entwässerung (DIN EN 1916). Sie müssen Erd- und Verkehrslasten aufnehmen.
-                  </p>
+                    <Droplet className="w-4 h-4 text-blue-500 shrink-0" /><MdText text={inhalt.texte.rohreSchachtsysteme} /></h3>
+                  <p className="text-[11px] text-slate-650 leading-relaxed font-normal"><MdText text={inhalt.texte.betonrohreBildenDieUnterirdische} /></p>
                   <ul className="text-[11.5px] leading-relaxed text-slate-650 space-y-1.5 pl-4 list-decimal">
-                    <li>
-                      <strong>Falzmuffenverbindung:</strong> Die Spitzenden gleiten flexibel in die Glockenmuffen des Nachbarrohres. Sichert elastische Winkelbeweglichkeit bei Geländesetzungen.
-                    </li>
-                    <li>
-                      <strong>Dichtungstechnik:</strong> Die standardisierte *Keilgleitdichtung* (aus Synthesekautschuk) dichtet das Gelenk dauerhaft gegen einsickerndes Grundwasser und austretendes Schmutzwasser (Exfiltration) ab.
-                    </li>
-                    <li>
-                      <strong>Säureangriff (BSK):</strong> Bakterieller Abbau von organischem Abwasser setzt Schwefelwasserstoff (H₂S) frei. Bakterien oxidieren ihn an der Rohrdecke zu Schwefelsäure, die den Zementstein auflöst.
-                    </li>
+                    <li><MdText text={inhalt.texte.falzmuffenverbindungDieSpitzendenGleiten} /></li>
+                    <li><MdText text={inhalt.texte.dichtungstechnikDieStandardisierteKeilgl} /></li>
+                    <li><MdText text={inhalt.texte.säureangriffBskBakteriellerAbbau} /></li>
                   </ul>
                   <div className="bg-amber-100/60 p-2 text-[10px] text-amber-900 rounded border-l-2 border-l-amber-600 font-medium flex items-start gap-1">
                     <AlertTriangle size={11} className="shrink-0 mt-0.5 text-amber-800" />
-                    <span>Lösung: Faulprozesse vermeiden, säurewiderstandsfähiger Beton oder Auskleidung – SR-Zement allein genügt nicht.</span>
+                    <span><MdText text={inhalt.texte.lösungFaulprozesseVermeidenSäurewidersta} /></span>
                   </div>
                 </div>
 
@@ -685,38 +569,37 @@ export default function BpBetonwaren() {
               <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xxs mt-6">
                 <div className="bg-slate-50 px-4 py-3 border-b border-slate-200">
                   <h4 className="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
-                    <ShieldCheck className="text-emerald-600" size={14} /> Qualitätskontrolle und Schadensbilder bei Betonwaren
-                  </h4>
+                    <ShieldCheck className="text-emerald-600" size={14} /><MdText text={inhalt.texte.qualitätskontrolleUndSchadensbilderBei} /></h4>
                 </div>
                 <div className="overflow-x-auto text-[11px] md:text-xs">
                   <table className="min-w-full divide-y divide-slate-200">
                     <thead className="bg-slate-100 text-slate-700 font-bold font-sans">
                       <tr>
-                        <th className="px-4 py-2 text-left">Phänomen / Prüfung</th>
-                        <th className="px-4 py-2 text-left">Ursache im Werk/Baustelle</th>
-                        <th className="px-4 py-2 text-left">Hintergrund &amp; Vermeidung</th>
+                        <th className="px-4 py-2 text-left"><MdText text={inhalt.texte.phänomenPrüfung} /></th>
+                        <th className="px-4 py-2 text-left"><MdText text={inhalt.texte.ursacheImWerkBaustelle} /></th>
+                        <th className="px-4 py-2 text-left"><MdText text={inhalt.texte.hintergrundVermeidung} /></th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-200 text-slate-650 font-normal">
                       <tr>
-                        <td className="px-4 py-2.5 font-bold text-slate-900">Ausblühungen (Kalkschleier)</td>
-                        <td className="px-4 py-2.5">Aufsteigen von freiem Ca(OH)₂ an die bewitterte Oberfläche, Reaktion mit H₂CO₃ zu schwerlöslichem CaCO₃.</td>
-                        <td className="px-4 py-2.5">Niedrige Zementhydratation im frühen Alter begünstigt diesen Effekt. Vermeidung durch dichte Gefügepackung, puzzolanische Zusatzstoffe (Trass) oder Hydrophobierungen.</td>
+                        <td className="px-4 py-2.5 font-bold text-slate-900"><MdText text={inhalt.texte.ausblühungenKalkschleier} /></td>
+                        <td className="px-4 py-2.5"><MdText text={inhalt.texte.aufsteigenVonFreiemCa} /></td>
+                        <td className="px-4 py-2.5"><MdText text={inhalt.texte.niedrigeZementhydratationImFrühen} /></td>
                       </tr>
                       <tr>
-                        <td className="px-4 py-2.5 font-bold text-slate-900">Kantenabplatzungen nach Pflasterung</td>
-                        <td className="px-4 py-2.5">Fehlende oder zu enge Fuge bei der Verlegung im Sand/Splittbett. Knirsch-Verlegung führt zu Scherdruckspitzen.</td>
-                        <td className="px-4 py-2.5">Betonflächen leiten Spannungen bei Ausdehnung ab. Fugenbreite 3 bis 5 mm (DIN 18318 / ZTV Wegebau). Pflasterabstandhalter weisen darauf hin, ersetzen die Fuge jedoch nicht.</td>
+                        <td className="px-4 py-2.5 font-bold text-slate-900"><MdText text={inhalt.texte.kantenabplatzungenNachPflasterung} /></td>
+                        <td className="px-4 py-2.5"><MdText text={inhalt.texte.fehlendeOderZuEnge} /></td>
+                        <td className="px-4 py-2.5"><MdText text={inhalt.texte.betonflächenLeitenSpannungenBei} /></td>
                       </tr>
                       <tr>
-                        <td className="px-4 py-2.5 font-bold text-slate-900">Spaltzugprüfung (DIN EN 1338)</td>
-                        <td className="px-4 py-2.5">Spaltzugprüfung nach DIN EN 1338 entlang der Längsachse des Steins.</td>
-                        <td className="px-4 py-2.5">Mittelwert ≥ 3,6 N/mm², Einzelwert ≥ 2,9 N/mm², Bruchlast je Länge ≥ 250 N/mm.</td>
+                        <td className="px-4 py-2.5 font-bold text-slate-900"><MdText text={inhalt.texte.spaltzugprüfungDinEn1338} /></td>
+                        <td className="px-4 py-2.5"><MdText text={inhalt.texte.spaltzugprüfungNachDinEn} /></td>
+                        <td className="px-4 py-2.5"><MdText text={inhalt.texte.mittelwert36N} /></td>
                       </tr>
                       <tr>
-                        <td className="px-4 py-2.5 font-bold text-slate-900">Biogene Schwefelsäurekorrosion</td>
-                        <td className="px-4 py-2.5">Stagnierendes Abwasser in teilgefüllten Abwasserrohren, H₂S Oxidation im Gasraum oberhalb der Wasserlinie.</td>
-                        <td className="px-4 py-2.5">Es handelt sich um einen Säureangriff (pH bis &lt; 2), nicht um einen Sulfattreiben-Angriff – SR-Zemente allein helfen daher nicht. Maßnahmen: Vermeidung von H₂S (Belüftung, kurze Aufenthaltszeiten), dichter säurewiderstandsfähiger Beton (niedriger w/z-Wert, ggf. Calciumaluminatzement) sowie Schutzauskleidungen (Epoxidharz-Lining, HDPE-Inliner).</td>
+                        <td className="px-4 py-2.5 font-bold text-slate-900"><MdText text={inhalt.texte.biogeneSchwefelsäurekorrosion} /></td>
+                        <td className="px-4 py-2.5"><MdText text={inhalt.texte.stagnierendesAbwasserInTeilgefüllten} /></td>
+                        <td className="px-4 py-2.5"><MdText text={inhalt.texte.esHandeltSichUm} /></td>
                       </tr>
                     </tbody>
                   </table>
@@ -734,16 +617,11 @@ export default function BpBetonwaren() {
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <FormulaDerivationBox
-          title="Anwendungsbeispiel: Spaltzugfestigkeit eines Pflastersteins"
+          title={inhalt.werte.anwendungsbeispielSpaltzugfestigkeitEine}
           zielGleichung="T = 0{,}637 \cdot k \cdot \frac{P}{S}, \quad S = l \cdot t"
-          normQuelle="DIN EN 1338, Anhang F (k = Dickenfaktor, für t = 80 mm: k = 1,0)"
-          schritte={[
-            { titel: '1. Gegeben', formel: 'P = 72\\,000\\,\\text{N},\\; l = 200\\,\\text{mm},\\; t = 80\\,\\text{mm},\\; k = 1{,}0', erklaerung: 'Bruchlast und Spaltlänge eines Rechtecksteins.' },
-            { titel: '2. Bruchfläche', formel: 'S = 200 \\cdot 80 = 16\\,000\\,\\text{mm}^2', erklaerung: 'Spaltfläche = Spaltlänge × Dicke.' },
-            { titel: '3. Spaltzugfestigkeit', formel: 'T = 0{,}637 \\cdot 1{,}0 \\cdot 72\\,000 / 16\\,000 = 2{,}87\\,\\text{N/mm}^2', erklaerung: 'Unter dem Einzelwert 2,9 N/mm².' },
-            { titel: '4. Bruchlast je Länge', formel: 'F = P/l = 72\\,000/200 = 360\\,\\text{N/mm} \\ge 250', erklaerung: 'Dieses Kriterium ist erfüllt.' },
-          ]}
-          ergebnisHinweis="Der Stein verfehlt den Einzelwert knapp – die Serie ist mit Mittelwert (≥ 3,6) und allen Einzelwerten zu bewerten."
+          normQuelle={inhalt.werte.dinEn1338Anhang}
+          schritte={inhalt.daten["BpBetonwaren.schritte"]}
+          ergebnisHinweis={inhalt.werte.derSteinVerfehltDen}
         />
       </div>
 
@@ -752,33 +630,12 @@ export default function BpBetonwaren() {
       {/* FOOTER METADATA */}
       <ModuleFooter
         wikipedia={[
-          { title: 'Pflaster (Bodenbelag)', url: 'https://de.wikipedia.org/wiki/Pflaster_(Bodenbelag)' },
+          { title: inhalt.werte.pflasterBodenbelag, url: 'https://de.wikipedia.org/wiki/Pflaster_(Bodenbelag)' },
           { title: 'Kanalisation', url: 'https://de.wikipedia.org/wiki/Kanalisation' }
         ]}
-        literatur={[
-          'FGSV: ZTV Wegebau – Zusätzliche Technische Vertragsbedingungen und Richtlinien für den Bau von Wegen und Plätzen außerhalb von Flächen des Straßenverkehrs (Ausgabe 2013)',
-          'FGSV: Merkblatt für Flächenbefestigungen mit Pflasterdecken und Plattenbelägen in ungebundener Ausführung (M FP), FGSV 618/1, Ausgabe 2024',
-          'ATV-DVWK-A 127:2000-08 (Statische Berechnung von Abwasserkanälen und -leitungen, 3. Aufl.) bzw. DWA-A 127-1:2022-12 (Statische Berechnung von Entwässerungsanlagen – Teil 1: Grundlagen)'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 1338 (Pflastersteine aus Beton - Anforderungen und Prüfverfahren)' },
-          { title: 'DIN EN 1339 (Platten aus Beton - Anforderungen und Prüfverfahren)' },
-          { title: 'DIN EN 1340 (Bordsteine aus Beton - Anforderungen und Prüfverfahren)' },
-          { title: 'DIN EN 1916 (Rohre und Formstücke aus Beton, Stahlfaserbeton und Stahlbeton)' },
-          { title: 'DIN V 1201 (Rohre und Formstücke aus Beton, Stahlfaserbeton und Stahlbeton für Abwasserleitungen)' }
-        ]}
-        formeln={[
-          {
-            formel: 'T = \\frac{2 \\cdot F}{\\pi \\cdot l \\cdot t} \\ge 3{,}6\\,\\text{N/mm}^2',
-            erklaerung: 'Spaltzugfestigkeit von Betonpflastersteinen nach DIN EN 1338: F = Bruchlast [N], l = Länge der Bruchlinie [mm], t = Steindicke [mm]. Einzelwert ≥ 2,9 N/mm²; Bruchlast je Länge ≥ 250 N/mm.',
-            quelle: 'DIN EN 1338 Anhang F'
-          },
-          {
-            formel: 'w/z \\approx 0{,}30 - 0{,}38 \\quad (\\text{Konsistenz: erdfeucht})',
-            erklaerung: 'Niedriger Wasserzementwert zur Gewährleistung der sofortigen Entschalung und Formstabilität (Grünstandsfestigkeit).',
-            quelle: 'Betonwaren-Technologie'
-          }
-        ]}
+        literatur={inhalt.daten["BpBetonwaren.literatur"]}
+        regelwerke={inhalt.daten["BpBetonwaren.regelwerke"]}
+        formeln={inhalt.daten["BpBetonwaren.formeln"]}
       />
     </div>
   );

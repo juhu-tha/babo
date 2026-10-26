@@ -1,0 +1,23 @@
+{
+  "texte": {
+    "bohrpfahlbetonIstEinSpezieller": "Bohrpfahlbeton ist ein spezieller Transportbeton für den Spezialtiefbau, der zur Herstellung von Bohrpfählen (oft im Bereich von Grundwasser) eingesetzt wird. Er muss über einen längeren Zeitraum sehr gut fließfähig bleiben, ohne sich zu entmischen.",
+    "bohrpfahlbetonMussÜberExtrem": "Bohrpfahlbeton muss über extrem gute Frischbetoneigenschaften verfügen. Die Rezeptur wird speziell auf längere Verarbeitbarkeitszeiten eingestellt:",
+    "hoherMehlkorngehaltFürOptimales": "Hoher Mehlkorngehalt für optimales Zusammenhaltungsvermögen (Kohäsion).",
+    "sicheresUndVollständigesUmschließen": "Sicheres und vollständiges Umschließen der Bewehrungskörbe.",
+    "keinEntmischenOderBlockieren": "Kein Entmischen oder Blockieren (Stopfer) während des Einbaus.",
+    "mindestzementgehalt325KgM": "Mindestzementgehalt ≥ 325 kg/m³ (trocken) bzw. ≥ 375 kg/m³ (unter Wasser/Stützflüssigkeit), Mehlkorn ≥ 400 kg/m³ (D > 8 mm) bzw. ≥ 450 kg/m³ (D ≤ 8 mm), w/z(eq) ≤ 0,60 (DIN EN 1536 i. V. m. DIN 1045-2:2023-08).",
+    "herstellungEinbau": "Herstellung & Einbau",
+    "beimEinbauUnterWasser": "Beim Einbau unter Wasser oder unter stützender Bentonit-Suspension erfolgt dieser in der Regel mit dem Contractor-Verfahren:",
+    "dasBetonierrohrReichtBis": "Das Betonierrohr reicht bis auf den Grund der Bohrung.",
+    "derBetonDrücktDas": "Der Beton drückt das Grundwasser bzw. die Stützflüssigkeit von unten nach oben aus dem Bohrloch (kein freies Fallen, kein Auswaschen).",
+    "eineGleichmäßigeZufuhrOhne": "Eine gleichmäßige Zufuhr ohne Unterbrechungen ist kritisch.",
+    "eigenschaftenFrischbeton": "Eigenschaften (Frischbeton)",
+    "esWerdenStarkFließfähige": "Es werden stark fließfähige (Konsistenz oft F5 oder F6), weiche bis flüssige Gemische gefordert. Typische Größtkörnungen liegen bei 16 oder 32 mm, angepasst an die engen Maschenweiten der Bewehrungskörbe und die Überdeckung.",
+    "tiefgründungenAllerArtStützen": "Tiefgründungen aller Art: Stützen von Hochhausfundamenten, Brückenpfeiler, Lärmschutzwände, Hangsicherungen, sowie überschnittene Bohrpfahlwände als wasserundurchlässige Baugrubenumschließung.",
+    "typischeMischungszusammensetzungProM": "Typische Mischungszusammensetzung (pro m³, Lehrbeispiel)",
+    "t350380Kg": "~ 350 - 380 kg",
+    "wasserWZ0": "Wasser (w/z ~0,50)",
+    "gesteinskörnungGrößtkornMax16": "Gesteinskörnung (Größtkorn max. 16 mm oder 32 mm)",
+    "zusatzmittelVerzögererFürLange": "Zusatzmittel (Verzögerer für lange Verarbeitbarkeit, oft > 4h)"
+  }
+}

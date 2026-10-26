@@ -1,0 +1,275 @@
+{
+  "texte": {
+    "zirkuläresBauenKreislaufwirtschaft": "Zirkuläres Bauen & Kreislaufwirtschaft",
+    "baukörperRückbauMaterial": "Baukörper-Rückbau & Material",
+    "bayerischenLandesamtesFürUmwelt": " Bayerischen Landesamtes für Umwelt (LfU)",
+    "ersatzbaustoffverordnungEbv2023": " Ersatzbaustoffverordnung (EBV) 2023",
+    "gesetzlicherStatus": "Gesetzlicher Status",
+    "bundesweitHarmonisiertEbv": "Bundesweit harmonisiert (EBV)",
+    "lfuRückbauLeitfaden": " LfU Rückbau-Leitfaden",
+    "schadstoffErkundungVdi": " Schadstoff-Erkundung (VDI)",
+    "masseAbfallrechner": " Masse- & Abfallrechner",
+    "aktualitätsCheckEbv": " Aktualitäts-Check (EBV)",
+    "praxisSzenarienBehörden": " Praxis-Szenarien & Behörden",
+    "phasenDesSelektivenRückbaus": " Phasen des selektiven Rückbaus",
+    "derLfuLeitfadenEmpfiehlt": "Der LfU-Leitfaden empfiehlt ein stufenweises Vorgehen, um schadstofffreien Bauschutt zu erhalten.",
+    "getrennthaltungUndSchadstoffentfrachtung": " Getrennthaltung und Schadstoffentfrachtung vor dem Abbruch (Vermischungsverbot, § 9 Abs. 2 KrWG / GewAbfV)",
+    "bauschuttGiltAbfallrechtlichNach": "Bauschutt gilt abfallrechtlich nach dem Vermischungsverbot bereits als kontaminiert, wenn er vor dem Abbruch nicht ordnungsgemäß von anhaftenden Fremd- und Schadstoffen (wie asbesthaltigem Putz, PAK-Kleber oder Bitumen) entfrachtet wurde!",
+    "checklisteZurUmsetzung": "Checkliste zur Umsetzung",
+    "originalAnforderungLfuLeitfaden": " Original-Anforderung (LfU Leitfaden)",
+    "wählenSieDieBauwerksepoche": "Wählen Sie die Bauwerksepoche aus, um die baujahrtypischen Schadstoffquellen nach VDI 6202 und LfU-Kriterien zu visualisieren.",
+    "dominierendeTragwerkstypen": "Dominierende Tragwerkstypen:",
+    "sanierungDemontageschutz": "Sanierung & Demontageschutz:",
+    "trgs519Asbest": " TRGS 519 (Asbest)",
+    "regeltAbbruchSanierungsUnd": "Regelt Abbruch-, Sanierungs- und Instandhaltungsarbeiten (ASI) mit Asbest. Fachkunde nach Anlage 3 oder 4 ist zwingend erforderlich. Arbeiten müssen 7 Tage vorab beim Gewerbeaufsichtsamt angemeldet werden.",
+    "trgs521Mineralfasern": " TRGS 521 (Mineralfasern)",
+    "regeltDenSchutzBei": "Regelt den Schutz bei mineralischen Dämmstoffen. Für krebserzeugendes \"altes\" KMF (Einbau vor 2000) gelten strikte Schutzmaßnahmen (Staubschutzstufe II: Ganzkörperanzug, Masken, Staubunterdrückung).",
+    "trgs524Dguv101": " TRGS 524 / DGUV 101-004",
+    "sicherheitUndGesundheitsschutzBei": "Sicherheit und Gesundheitsschutz bei der Arbeit in kontaminierten Bereichen (z.B. PCB in dauerelastischen Fugen oder PAK-kontaminierte Böden und Untergründe). Erfordert Sachkundennachweis.",
+    "behördenwegweiserBayern": " Behördenwegweiser Bayern",
+    "dieBauordnungsUndAbfallrechtliche": "Die bauordnungs- und abfallrechtliche Vorbereitung eines Rückbaus in einer bayerischen Gemeinde / Kreisstadt erfordert feste Schritte:",
+    "gemeindeBauordnungsamt": "Gemeinde / Bauordnungsamt",
+    "beseitigungBaulicherAnlagenNach": "Beseitigung baulicher Anlagen nach BayBO Art. 57 Abs. 5 (verfahrensfrei, je nach Anlage mit Anzeige vorab; Fristen im Gesetzestext prüfen).",
+    "untereUmweltschutzbehörde": "Untere Umweltschutzbehörde",
+    "vorlageDesSchadstoffkatastersVdi": "Vorlage des Schadstoffkatasters (VDI 6202 Blatt 1) für asbestbelastete Putze oder PCB-Fugen.",
+    "gewerbeaufsichtsamtGaa": "Gewerbeaufsichtsamt (GAA)",
+    "anzeigeDerAsbesttätigkeitenMindestens": "Anzeige der Asbesttätigkeiten mindestens eine Woche vor Beginn (§ 11a GefStoffV, TRGS 519).",
+    "lfuAbfallregisterEanv": "LfU / Abfallregister (eANV)",
+    "elektronischesNachweisverfahrenBegleitsc": "Elektronisches Nachweisverfahren (Begleitscheine und Übernahmescheine gefährlicher Abfälle).",
+    "typischeRückbaufehlerPitfallsAus": "Typische Rückbaufehler & Pitfalls aus der Praxis",
+    "schadstoffverschleppungImPutzAsbestfalle": " Schadstoffverschleppung im Putz (Asbestfalle)",
+    "szenarioEinAltesBürogebäude": "**Szenario:** Ein altes Bürogebäude (Baujahr 1978) wird maschinell abgebrochen. Der Putz enthält flächig verteilt 0,1 % Asbest (früher üblich als Haftvermittler).",
+    "dieLfuKonsequenzOhne": "**Die LfU-Konsequenz:** Ohne vorherige Entfrachtung des asbesthaltigen Putzes (durch Fräsverfahren) kontaminiert der Abbruch den gesamten Ziegel- und Betonabbruch. Tonnenweise Material muss unter extrem hohen Kosten als Sondermüll auf Deponien (DK III) entsorgt werden, anstatt hochwertig aufbereitet zu werden.",
+    "mangelhafteDokumentationDerGewabfv": " Mangelhafte Dokumentation der GewAbfV",
+    "szenarioEinGeneralunternehmerMischt": "**Szenario:** Ein Generalunternehmer mischt Altholz (A II-Fensterrahmen) und Gipskartonplatten im Bauschuttcontainer, um Transportkosten zu sparen.",
+    "dieKontrollreaktionDerDeponiebetreiber": "**Die Kontrollreaktion:** Der Deponiebetreiber bzw. die Aufbereitungsanlage weist die Charge zurück (Gipsstaub sulfatiert Asphaltdeckschichten). Das LfU ordnet ein empfindliches Bußgeld an und beschlagnahmt die nicht deklarierten Transportfahrzeuge.",
+    "verwertungVonAsphaltIm": " Verwertung von Asphalt im Wegebau",
+    "szenarioAusbauasphaltAusEiner": "**Szenario:** Ausbauasphalt aus einer alten Betriebseinfahrt wird ohne Voruntersuchung (Teerfreiheit) aufbereitet und als Frostschutzschicht im Wegebau wieder eingebaut.",
+    "dieGesetzlicheHürdeEbv": "**Die gesetzliche Hürde (EBV):** Teerhaltiger Straßenaufbruch (PAK-reich) hat im Erdbau absolut nichts verloren (Gefahr der Auswaschung ins Grundwasser). Vor Einbau ist eine Bindemittelanalyse zwingend erforderlich. Belasteter Asphalt muss thermisch dekarbonisiert werden."
+  },
+  "werte": {
+    "bis1970HochrisikoEpoche": "Bis 1970 (Hochrisiko-Epoche)",
+    "inDieserPhaseGab": "In dieser Phase gab es kaum Einschränkungen für asbesthaltige Baustoffe, Steinkohlenteer-Produkte und hochgiftige Holzschutzmittel. Viele Schadstoffe sind unsichtbar im Putz, Estrich, Bitumen oder in Fugendichtungen verbaut.",
+    "naturwerksteineZiegelmauerwerk": "Naturwerksteine, Ziegelmauerwerk",
+    "bimsbetonSchlackenbetonAlsFüllstoffe": "Bimsbeton, Schlackenbeton als Füllstoffe",
+    "geradeUndGenieteteStahlträger": "Gerade und genietete Stahlträger",
+    "ersteGenerationVonStahlbetonplatten": "Erste Generation von Stahlbetonplatten (dünne Decken)",
+    "asbestFestSchwachGebunden": "Asbest (fest & schwach gebunden)",
+    "silikatmineraleChrysotilKrokydolith": "Silikatminerale (Chrysotil, Krokydolith)",
+    "faserzementplattenEternitSpritzasbestAn": "Faserzementplatten (Eternit), Spritzasbest an Trägern, Fliesenkleber, Putz, Fensterkitte.",
+    "staubfreierAusbauUnterUnterdruck": "Staubfreier Ausbau unter Unterdruck, Personenschleusen, Vollschutz, TRGS 519 Zertifikat zwingend.",
+    "gefahrstoffverordnungGefstoffvTrgs519": "Gefahrstoffverordnung (GefStoffV), TRGS 519",
+    "teerPechPak": "Teer & Pech (PAK)",
+    "polyzyklischeAromatischeKohlenwasserstof": "Polyzyklische Aromatische Kohlenwasserstoffe",
+    "estrichkleberAsphaltkleberDachpappenTeer": "Estrichkleber (Asphaltkleber), Dachpappen, teerhaltiger Holzpflasterkleber, Kaltbitumen-Anstriche.",
+    "fräsUndStemmarbeitenNur": "Fräs- und Stemmarbeiten nur unter Atemschutz. PAK-verdächtiger Bauschutt darf nicht in normale Brechanlagen (Krebsgefahr!).",
+    "dguvRegel101004": "DGUV Regel 101-004 (ehemals BGR 128), Ruva-StB (in Bayern historisch)",
+    "polychlorierteBiphenylePcb": "Polychlorierte Biphenyle (PCB)",
+    "pcbGemischeWeichmacher": "PCB-Gemische (Weichmacher)",
+    "dauerelastischeFugendichtungsmassenThiok": "Dauerelastische Fugendichtungsmassen (Thiokolfugen), Flammschutzanstriche, Deckenplatten kleber.",
+    "herausschneidenDerFugenflankenUnterdruck": "Herausschneiden der Fugenflanken, Unterdruck, PCB-Richtlinie: Raumluft ≤ 300 ng/m³ Zielwert (langfristig tolerierbar), 300–3000 ng/m³ Quellensuche und mittelfristige Sanierung, > 3000 ng/m³ unverzügliche Sanierung (Gefahrenwert).",
+    "pcbRichtlinieBayernTrgs": "PCB-Richtlinie (Bayern), TRGS 524",
+    "bleiSchwermetalle": "Blei & Schwermetalle",
+    "roteBleimennigeAnstricheRostschutz": "Rote Bleimennige-Anstriche (Rostschutz auf Altstahl), Bleirohre in Sanitärinstallationen.",
+    "staubarmesAbsaugenKeinMechanisches": "Staubarmes Absaugen, kein mechanisches Schleifen ohne Absaugung der Staubklasse M/H.",
+    "trgs505Blei": "TRGS 505 (Blei)",
+    "t19701990KonsolidierungsUnd": "1970 - 1990 (Konsolidierungs- und Übergangsphase)",
+    "zunehmendeIndustrialisierungDesBauens": "Zunehmende Industrialisierung des Bauens (Fertigteile, Sandwichwände). Beginnende Verbote von Spritzasbest (1979) und PCP (1989), jedoch extrem hoher Einsatz von künstlichen Mineralfasern (alte lungenvergängliche Steinwolle) und Formaldehyd-Platten.",
+    "großtafelbauwerkePlattenbau": "Großtafelbauwerke (Plattenbau)",
+    "standardisierteFertigteildecken": "Standardisierte Fertigteildecken",
+    "extremVielGipskartonUnd": "Extrem viel Gipskarton und Leichtbauplatten",
+    "gegossenerTransportbetonNormiert": "Gegossener Transportbeton (normiert)",
+    "asbestVAIn": "Asbest (v.a. in Bauchemikalien)",
+    "putzträgerSpachtelmassenFliesenkleberDic": "Putzträger, Spachtelmassen, Fliesenkleber, Dichtungsbänder, Vinyl-Asbest-Bodenplatten (Flex-Platten).",
+    "bohrUndSchleifverfahrenNur": "Bohr- und Schleifverfahren nur unter anerkannten staubarmen Schutzverfahren (BT-Verfahren gem. DGUV).",
+    "künstlicheMineralfasernKmfAlt": "Künstliche Mineralfasern (KMF - alt)",
+    "glaswolleSteinwolleKi40": "Glaswolle/Steinwolle (KI < 40)",
+    "loseDachbodendämmungenTrittschalldämmung": "Lose Dachbodendämmungen, Trittschalldämmungen unter Estrich, Rohrleitungsisolierungen.",
+    "alteMineralwolleGiltAls": "Alte Mineralwolle gilt als krebserzeugend. Ausbau nur im Schutzanzug und mit Atemschutz (Stb-Maske P2), Staubbindung durch Benetzung.",
+    "holzschutzmittelPcpLindan": "Holzschutzmittel (PCP & Lindan)",
+    "pentachlorphenolHexachlorcyclohexan": "Pentachlorphenol, Hexachlorcyclohexan",
+    "imprägnierteHolzkonstruktionenDachstühle": "Imprägnierte Holzkonstruktionen (Dachstühle, Fachwerk), Holzzäune, Holzpaneele.",
+    "belasteteHölzerMüssenSepariert": "Belastete Hölzer müssen separiert und als gefährlicher Abfall (Altholzkategorie A IV) in Spezial-Müllverbrennungsanlagen verbrannt werden.",
+    "altholzverordnungAltholzvPcpRichtlinie": "Altholzverordnung (AltholzV), PCP-Richtlinie",
+    "methanalGasförmigGelöst": "Methanal (Gasförmig gelöst)",
+    "spanplattenFertighäuserTrennwändeSpanpla": "Spanplatten (Fertighäuser, Trennwände), Spanplatten-Klebstoff (Harnstoff-Formaldehyd-Harz).",
+    "guteDurchlüftungBeimAbbruch": "Gute Durchlüftung beim Abbruch, staubarmes Schneiden zur Vermeidung freigesetzter Formaldehydstäube.",
+    "gefahrstoffverordnungGrenzwerteFürLuftbe": "Gefahrstoffverordnung, Grenzwerte für Luftbelastung",
+    "ab1990ModerneBauära": "Ab 1990 (Moderne Bauära mit Restrisiken)",
+    "asbestverbotAb1993In": "Asbestverbot ab 1993 in Deutschland. Die Schadstoffbelastung sinkt drastisch, allerdings müssen neuere Verbundstoffe, Flammschutzmittel wie HBCD (in EPS) und künstliche Mineralfasern (ohne Krebspotenzial, aber lungengängig) beachtet werden.",
+    "hochfesterStahlbetonC5060": "Hochfester Stahlbeton (C50/60+), filigrane Elementdecken",
+    "wärmedämmverbundsystemeWdvs": "Wärmedämmverbundsysteme (WDVS)",
+    "schnittstellenmauerwerkePorenbetonPlanzi": "Schnittstellenmauerwerke (Porenbeton, Planziegel)",
+    "verbundwerkstoffeGfkCarbonbewehrterBeton": "Verbundwerkstoffe (GFK, carbonbewehrter Beton)",
+    "hbcdDämmstoffe": "HBCD (Dämmstoffe)",
+    "hexabromcyclododecanFlammschutzmittel": "Hexabromcyclododecan (Flammschutzmittel)",
+    "polystyrolDämmplattenEpsXps": "Polystyrol-Dämmplatten (EPS/XPS) in Wärmedämmverbundsystemen (WDVS) vor Baujahr 2014.",
+    "giltAlsPopPersistent": "Gilt als POP (Persistent Organic Pollutant). Abfallschlüssel für gefährliche Baustoffe bei HBCD-Gehalt > 1000 mg/kg. Getrennthaltungspflicht vom normalen Bauschutt!",
+    "popVerordnungDerEu": "POP-Verordnung der EU, Abfallverzeichnis-Verordnung (AVV)",
+    "fluorierteTreibgaseFckwHfkw": "Fluorierte Treibgase (FCKW/HFKW)",
+    "puHartschaumdämmstoffeOrtschaumIsolierun": "PU-Hartschaumdämmstoffe (Ortschaum-Isolierungen, Rohrschalen, Sandwichpaneele).",
+    "geordneterAusbauOhneZerstückelung": "Geordneter Ausbau ohne Zerstückelung, um Ausgasen zu verhindern. Spezialentsorgung zur Zerstörung der Treibgase.",
+    "fckwHalonVerordnungPop": "FCKW-Halon-Verordnung / POP-V",
+    "künstlicheMineralfasernKmfNeu": "Künstliche Mineralfasern (KMF - neu)",
+    "glasUndSteinwolleKi": "Glas- und Steinwolle (KI >= 40)",
+    "wärmeUndBrandschutzdämmungen": "Wärme- und Brandschutzdämmungen.",
+    "verschärfterStaubschutzDaFasern": "Verschärfter Staubschutz, da Fasern mechanisch reizend sind. Jedoch bio-löslich und nicht krebserzeugend nachgewiesen.",
+    "trgs521SchutzstufeIi": "TRGS 521 (Schutzstufe II)",
+    "beispiel1MassenbilanzFür": "Beispiel 1: Massenbilanz für den Rückbau eines Bürogebäudes",
+    "dieMineralischenFraktionenBestimmen": "Die mineralischen Fraktionen bestimmen Logistik und Verwertung. Nach § 8 GewAbfV sind Beton (17 01 01) und Ziegel (17 01 02) getrennt zu halten, soweit technisch möglich und wirtschaftlich zumutbar; ab 10 m³ Abfall ist die Getrennthaltung zu dokumentieren.",
+    "gewabfv8DinSpec": "GewAbfV § 8; DIN SPEC 91484:2023-09",
+    "beispiel2KostenvergleichSelektiver": "Beispiel 2: Kostenvergleich selektiver Rückbau gegen Gemischentsorgung",
+    "regionaleAnnahmepreiseSchwankenStark": "Regionale Annahmepreise schwanken stark; die Rechnung zeigt das Prinzip. Bei Schadstofffunden (z. B. asbesthaltiger Putz) kann die gesamte Charge als gefährlicher Abfall gelten – deshalb Schadstofferkundung vor dem Abbruch.",
+    "gewabfv89Vdi": "GewAbfV §§ 8, 9; VDI 6210 Blatt 1:2025-10",
+    "oktober2026Ap9": "Oktober 2026 (AP 9 Rückbau & Schadstoffe: GewAbfV §§ 8/9, EBV §§ 19/22, GefStoffV § 5a, Normausgaben DIN 18007, VDI 6210, DIN SPEC 91484/91525 geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "rückbauBauwesen": "Rückbau (Bauwesen)"
+  },
+  "daten": {
+    "Rueckbau.processPhases": [
+      {
+        "num": 1,
+        "title": "Bestandsaufnahme & Historische Erkundung",
+        "subtitle": "Voruntersuchung & Archivrecherche",
+        "description": "Zusammentragen von Altunterlagen (Statik, Pläne, Baugenehmigungen), Baujahr-Recherche und Analyse früherer Nutzungen (z.B. Gewerbebetriebe mit Ölen, Lösungsmitteln). Erstbegehung zur Feststellung von offensichtlich schadstoffverdächtigen Bauteilen.",
+        "checklists": [
+          "Prüfung der Bauakte (Baujahr, Umbauten, Sanierungen)",
+          "Ermittlung früherer Funktionen (z.B. chemische Reinigung, Werkstatt, Zahnarzt)",
+          "Erfassen sichtbarer Schadstoffe (Leuchtstoffröhren, Kondensatoren, Asbestwellplatten)",
+          "Erste Abstimmung mit der Kreisverwaltungsbehörde (Landratsamt/kreisfreie Stadt)"
+        ],
+        "lfuStandard": "Leitfaden Kap. 2.1: Grundlage für das weitere Vorgehen ist die lückenlose Dokumentation der Nutzungsgeschichte."
+      },
+      {
+        "num": 2,
+        "title": "Schadstoffkataster & Rückbaukonzept",
+        "subtitle": "Baustoff- und Schadstoffinventar",
+        "description": "Systematische Beprobung aller fraglichen Materialien durch akkreditierte Gutachter. Erstellung eines Schadstoffkatasters nach VDI 6202 Blatt 1 sowie eines strukturierten Rückbau- und Entsorgungskonzepts, das Mengen, Schadstoffklassen und Ziel-Recycling-Anlagen festlegt.",
+        "checklists": [
+          "Probenahme von Wandputzen, Fliesenklebern (Asbestverdacht) und Fugendichtungsmassen (PCB)",
+          "Quantifizierung aller schadstoffhaltigen Abfälle (Einstufung nach AVV)",
+          "Erstellung des Abbruch- und Rückbaukonzepts (Anzeige bei der Unteren Bauaufsichtsbehörde)",
+          "Ausarbeitung von Arbeits- und Sicherheitsplänen (AaS) gem. TRGS 524 / DGUV Regel 101-004"
+        ],
+        "lfuStandard": "Leitfaden Kap. 2.2: Beprobungspflicht für Lacke, Estriche, Kleber und künstliche Mineralfasern (KMF) vor Vergabe von Abbruchleistungen."
+      },
+      {
+        "num": 3,
+        "title": "Schadstoffsanierung & Entfrachtung",
+        "subtitle": "Ausbau schadstoffbelasteter Bauteile vor dem Abbruch",
+        "description": "Sämtliche Gefahrstoffe müssen staubdicht abgereiht, unter Unterdruckbedingungen ausgebaut und separat verpackt und entsorgt werden. Erst nach erfolgreicher Freigabemessung darf der mineralische Abbruch (Rohbauabbruch) beginnen, um Kreuzkontaminationen zu verhindern.",
+        "checklists": [
+          "Fachgerechte Sanierung von Asbest (TRGS 519) und KMF (TRGS 521) durch zertifizierte Fachbetriebe",
+          "Separierte Verpackung (z.B. Asbest in BigBags, KMF in staubdichten Säcken)",
+          "Ausschleusen aus dem Gebäude, Vorlegen der Entsorgungsbelege (eANV für gefährliche Abfälle)",
+          "Freigabe und Staubprüfung des entfrachteten Rohbaus"
+        ],
+        "lfuStandard": "Leitfaden Kap. 3.1 & 4.1: Eine Kontamination unbelasteten Bauschutts durch Schadstoffe beim Abbruch ist durch strikte Trennung zu verhindern."
+      },
+      {
+        "num": 4,
+        "title": "Sortenreiner Rückbau & Demontage",
+        "subtitle": "Der selektive Rohbau-Rückbau",
+        "description": "Der tatsächliche mineralische Abbruch erfolgt \"von oben nach unten\" und \"von innen nach außen\". Die Getrennthaltungspflichten der Gewerbeabfallverordnung (GewAbfV) greifen hier strikt: Ziegel, Beton, Holz, Metalle und Kunststoffe werden getrennt erfasst.",
+        "checklists": [
+          "Abbruch in koordinierten Phasen: Zuerst Dachstuhl (Holz), dann nichttragendes Mauerwerk, zuletzt Stahlbetontragwerk",
+          "Strikte stoffliche Trennung unmittelbar an der Abbruchstelle (keine Mischcontainer!)",
+          "Gewährleistung von Staub- und Lärmschutz (Wasserberieselung zum Binden feiner Partikel)",
+          "Erhalt von recyclingfähigem, hochwertigem Bauschutt zur Aufbereitung in RC-Großanlagen"
+        ],
+        "lfuStandard": "Leitfaden Kap. 4.2: Demontage von Fensterrahmen, Gipskarton und Bitumenbahnen ist zwingend vor dem Betonabbruch auszuführen."
+      },
+      {
+        "num": 5,
+        "title": "Aufbereitung, Verwertung & Deponierung",
+        "subtitle": "Umgang mit den Abbruchstoffen",
+        "description": "Der gewonnene mineralische Bauschutt wird zu güteüberwachtem Recycling-Baustoff (RC-Baustoffe) gebrochen und gesiebt. Nicht verwertbare Reststoffe (z.B. Gipsstaub, stark kontaminierte Mineralik) werden ordnungsgemäß auf Deponien (DK 0 bis DK III) entsorgt.",
+        "checklists": [
+          "Transport mit Entsorgungsnachweisen an zugelassene stationäre oder mobile Recyclinganlagen",
+          "Prüfung der Einbaufähigkeit nach der neuen Ersatzbaustoffverordnung (EBV) 2023",
+          "Deponierung unlösbarer mineralischer Verbundstoffe unter Einhaltung der Grenzwerte der DepV",
+          "Abschließende Dokumentation und Einreichen des Verwertungsnachweises bei den Aufsichtsbehörden"
+        ],
+        "lfuStandard": "Leitfaden Kap. 5 & 6: Bevorzugung von gütegesichertem RC-Material im Straßen- und Erdbau. Letzte Instanz ist die Deponie."
+      }
+    ],
+    "Rueckbau.schritte": [
+      {
+        "titel": "Mengen aus dem Rückbaukonzept",
+        "erklaerung": "Beton 1 200 m³ (ρ = 2,4 t/m³), Mauerwerk 300 m³ (1,6 t/m³), Holz 60 m³ (0,5 t/m³), Metalle 40 t:",
+        "formel": "m_B = 2\\,880\\,\\text{t}, \\; m_Z = 480\\,\\text{t}, \\; m_H = 30\\,\\text{t}, \\; m_M = 40\\,\\text{t}"
+      },
+      {
+        "titel": "Gesamtmasse",
+        "erklaerung": "Summe der Hauptfraktionen:",
+        "formel": "\\sum m_i = 2\\,880 + 480 + 30 + 40 = 3\\,430\\,\\text{t}"
+      },
+      {
+        "titel": "Mineralischer Anteil",
+        "erklaerung": "Beton und Mauerwerk:",
+        "formel": "Q_{min} = \\frac{3\\,360}{3\\,430} = 0{,}98 = 98\\,\\%"
+      }
+    ],
+    "Rueckbau.schritte_2": [
+      {
+        "titel": "Ansatz",
+        "erklaerung": "Mauerwerks- und Betonabbruch 3 360 t; Annahmepreis RC-Anlage sortenrein 12 €/t, Bauschuttgemisch mit Störstoffen 35 €/t (Lehrwerte):",
+        "formel": "p_{Gemisch} - p_{getrennt} = 23\\,\\text{€/t}"
+      },
+      {
+        "titel": "Mehrkosten Entkernung",
+        "erklaerung": "Zusätzlicher Personal- und Geräteeinsatz für die Entkernung: 40 000 €.",
+        "formel": "K_{Sortierung} = 40\\,000\\,\\text{€}"
+      },
+      {
+        "titel": "Ergebnis",
+        "erklaerung": "Einsparung durch selektiven Rückbau:",
+        "formel": "\\Delta K = 3\\,360 \\cdot 23 - 40\\,000 = 37\\,280\\,\\text{€}"
+      }
+    ],
+    "Rueckbau.literatur": [
+      "Bayerisches Landesamt für Umwelt (LfU): Leitfaden für den umweltgerechten Rückbau von Gebäuden (Augsburg)",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "Rueckbau.regelwerke": [
+      {
+        "title": "DIN 18007:2022-09 (Abbrucharbeiten – Begriffe, Verfahren, Anwendungsbereiche)"
+      },
+      {
+        "title": "VDI 6210 Blatt 1:2025-10 (Abbruch von baulichen und technischen Anlagen)"
+      },
+      {
+        "title": "DIN SPEC 91484:2023-09 (Erfassung von Bauprodukten vor Abbruch- und Renovierungsarbeiten, Pre-Demolition Audit)"
+      },
+      {
+        "title": "DIN SPEC 91525:2026-02 (Anschlussnutzungskonzept für Bauprodukte aus Bestandsgebäuden)"
+      },
+      {
+        "title": "VDI/GVSS 6202 Blatt 1:2013-10 (Schadstoffbelastete bauliche und technische Anlagen – Abbruch-, Sanierungs- und Instandhaltungsarbeiten)"
+      },
+      {
+        "title": "Ersatzbaustoffverordnung (EBV)",
+        "url": "https://www.gesetze-im-internet.de/ersatzbaustoffv/"
+      },
+      {
+        "title": "Gewerbeabfallverordnung (GewAbfV)",
+        "url": "https://www.gesetze-im-internet.de/gewabfv_2017/"
+      },
+      {
+        "title": "TRGS 519 (Asbest), Fassung 2014, zuletzt geändert 28.01.2025",
+        "url": "https://www.baua.de/DE/Angebote/Regelwerk/TRGS/TRGS-519"
+      }
+    ],
+    "Rueckbau.formeln": [
+      {
+        "formel": "Q_{\\text{getrennt}} = \\frac{\\sum m_{\\text{getrennt}}}{\\sum m_{\\text{gesamt}}}",
+        "erklaerung": "Getrenntsammlungsquote als Kennzahl zur Dokumentation der Getrennthaltung der zehn Fraktionen nach § 8 GewAbfV. Eine feste Mindestquote gibt es für Bauabfälle nicht; die 90-%-Quote des § 4 Abs. 3 betrifft gewerbliche Siedlungsabfälle.",
+        "quelle": "GewAbfV §§ 4, 8"
+      },
+      {
+        "formel": "C_{\\text{Eluat}} \\le C_{\\text{MEW}} \\quad [\\mu\\text{g/l bzw. mg/l}]",
+        "erklaerung": "Eluat-Grenzwerteinhaltung nach Ersatzbaustoffverordnung (EBV) zur Klassifizierung mineralischer Ersatzbaustoffe (z.B. RC-1, RC-2) und Vermeidung von Grundwassereinträgen.",
+        "quelle": "EBV Anlage 1 & 2"
+      }
+    ]
+  }
+}

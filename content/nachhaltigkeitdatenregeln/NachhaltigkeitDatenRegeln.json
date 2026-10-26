@@ -1,0 +1,295 @@
+{
+  "texte": {
+    "nachhaltigkeitDatenRegeln": "Nachhaltigkeit: Daten & Regeln",
+    "globaleUmweltkennzahlenUnSdgs": "Globale Umweltkennzahlen, UN-SDGs, EU-Taxonomie, EPBD 2024/1275, EPD, Digitaler Produktpass (DPP) & deutsches Baurecht",
+    "stand20252026": "Stand: 2025 / 2026",
+    "dasBauUndImmobilienwesen": "Das Bau- und Immobilienwesen steht im Zentrum der globalen Umwelt- und Klimapolitik. Dieses Modul bündelt alle relevanten **statistischen Kennzahlen (THG-Emissionen, Ressourcenabbau, Abfallströme)**, internationale Abkommen und Leitlinien (**UN-Klimakonferenzen, SDGs**), europäische Richtlinien (**EU-Taxonomie, EPBD 2024/1275, CSRD**), zirkuläre Deklarationssysteme (**EPD nach DIN EN 15804+A2, Digitaler Produktpass DPP, Madaster**) sowie das geltende nationale Gesetzesgefüge (**GModG (vormals GEG), QNG, EBV, KrWG und das Gebäudetyp-E-Vorhaben**).",
+    "t1DefinitionenLeitprinzipien": " 1. Definitionen & Leitprinzipien",
+    "t2AnteileStoffströme": " 2. Anteile & Stoffströme",
+    "t3KlimakonferenzenSdgs": " 3. Klimakonferenzen & SDGs",
+    "t4EuTaxonomieEpbd": " 4. EU-Taxonomie & EPBD",
+    "t5EpdDppMaterialpass": " 5. EPD, DPP & Materialpass",
+    "t6DeutschesBaurechtGmodg": " 6. Deutsches Baurecht (GModG, QNG, EBV, Gebäudetyp E)",
+    "treibhausgaseThg": "Treibhausgase (THG)",
+    "derGlobalenEnergiebedCo": "der globalen energiebed. CO₂-Emissionen",
+    "davonCa28Aus": "Davon ca. 28 % aus dem laufenden Gebäudebetrieb (Heizung, Warmwasser, Kühlung) und ca. 11–12 % als *graue Emissionen* aus der Baustoffherstellung.",
+    "ressourcenRohstoffe": "Ressourcen & Rohstoffe",
+    "desWeltweitenRohstoffverbrauchs": "des weltweiten Rohstoffverbrauchs",
+    "massenrohstoffeSandKiesKalkstein": "Massenrohstoffe Sand, Kies, Kalkstein, Tone, Gips und Natursteine übersteigen global das Fördervolumen aller anderen Wirtschaftszweige zusammen.",
+    "abfallaufkommenDeutschland": "Abfallaufkommen (Deutschland)",
+    "desGesamtenDeutschenAbfalls": "des gesamten deutschen Abfalls",
+    "mitRund220Bis": "Mit rund **220 bis 230 Millionen Tonnen** jährlich stellen Bau- und Abbruchabfälle den mit Abstand größten nationalen Abfallstrom dar.",
+    "täglicherFlächenverbrauchDe": "täglicher Flächenverbrauch (DE)",
+    "siedlungsUndVerkehrsflächeWächst": "Siedlungs- und Verkehrsfläche wächst täglich. Ziel der Bundes-Nachhaltigkeitsstrategie: Reduktion auf unter **30 ha/Tag** bis 2030 (Netto-Null bis 2050).",
+    "zusammensetzungDer220230": "Zusammensetzung der 220–230 Mio. Tonnen Bauabfälle in Deutschland",
+    "datenquelleUmweltbundesamtUbaBundesverba": "Datenquelle: Umweltbundesamt (UBA) & Bundesverband Baustoffe – Steine und Erden (BBS)",
+    "t1Bodenaushub": "1. Bodenaushub",
+    "größteEinzelfraktionCa58": "Größte Einzelfraktion (ca. 58 % der Bauabfälle). Häufig Verfüllung in Tagebauen oder Deponien, statt hochwertiger Wiederaufbereitung im Tiefbau.",
+    "ebvKlasseBm0": "EBV-Klasse: BM-0 bis BM-F3",
+    "t2Bauschutt": "2. Bauschutt",
+    "betonZiegelFliesenKeramik": "Beton, Ziegel, Fliesen, Keramik. Wird heute zu ca. 80 % zu RC-Schotter für ungebundene Tragschichten im Straßenbau „downgecycelt“.",
+    "ebvKlasseRc1": "EBV-Klasse: RC-1 bis RC-3",
+    "t3Straßenaufbruch": "3. Straßenaufbruch",
+    "t1520MioT": "~15–20 Mio. t",
+    "asphaltUndSchotterHohe": "Asphalt und Schotter. Hohe stoffliche Recyclingquote (oft > 90 % als Heißmischgut), problematisch sind historische teer-/PAK-haltige Schichten.",
+    "ebvKlasseRcAsphalt": "EBV-Klasse: RC-Asphalt",
+    "t4BaustellenabfälleGips": "4. Baustellenabfälle & Gips",
+    "gemischteFraktionenDämmstoffeHolz": "Gemischte Fraktionen, Dämmstoffe, Holz, Metalle, Gipsplatten. Gipsabfälle müssen sulfatbedingt getrennt werden (Gips-zu-Gips-Recycling).",
+    "gewabfvTrennpflicht": "GewAbfV Trennpflicht",
+    "interaktiverStoffstromRechnerUrban": "Interaktiver Stoffstrom-Rechner: Urban Mining Potenzial",
+    "tonnenBauschutt": " Tonnen Bauschutt",
+    "hochwertigerRBetonTyp": "Hochwertiger R-Beton (Typ 1/2):",
+    "alsGesteinskörnung": "als Gesteinskörnung",
+    "tragschichtenUnterbau": "Tragschichten / Unterbau:",
+    "frostschutzWege": "Frostschutz / Wege",
+    "restfraktionDeponie": "Restfraktion (Deponie):",
+    "feinanteileStörstoffe": "Feinanteile / Störstoffe",
+    "eingespartesPrimärCo": "Eingespartes Primär-CO₂:",
+    "vermiedeneTransporteAbbau": "vermiedene Transporte/Abbau",
+    "dieInternationaleKlimadiplomatieUnd": "Die internationale Klimadiplomatie und ihre Auswirkung auf das Bauen",
+    "vonDerUnKlimarahmenkonvention": "Von der UN-Klimarahmenkonvention (UNFCCC) bis zum Pariser 1,5 °C-Ziel.",
+    "die17UnNachhaltigkeitsziele": "Die 17 UN-Nachhaltigkeitsziele (SDGs) im Bauingenieurwesen",
+    "wählenSieEinSdg": "Wählen Sie ein SDG, um die konkreten baupraktischen Handlungsfelder anzuzeigen.",
+    "unAgenda2030": "UN Agenda 2030",
+    "dünnerRoterRand": "Dünner roter Rand:",
+    "direkteKernPraxisrelevanzFür": " Direkte Kern- & Praxisrelevanz für das Bauwesen, Baustoffe & Planung (9 von 17 SDGs)",
+    "grauerRandÜbergreifendeGlobale": "Grauer Rand: Übergreifende globale Entwicklungsziele",
+    "sektorübergreifendesRahmenziel": "Sektorübergreifendes Rahmenziel",
+    "unLeitsatz": "UN-Leitsatz: „",
+    "konkreteHandlungsfelderMaßnahmenIm": "Konkrete Handlungsfelder & Maßnahmen im Bauwesen:",
+    "neuVollständigesRechtsrahmenHierarchie": " Neu: Vollständiges Rechtsrahmen- & Hierarchie-Kompendium",
+    "hierarchische5EbenenSystematik": "Hierarchische 5-Ebenen-Systematik aller 21 Rechtsakte (Green Deal, EU-Klimagesetz, Fit for 55, BauPVO 2024, EPBD, ESPR, CBAM, EU-ETS I/II, GEG, Gebäudetyp E u.v.m.) mit interaktiver Zeitleiste, Synopse-Matrix und Stichtags-Filtern.",
+    "zumRechtsrahmenKompendium": "Zum Rechtsrahmen-Kompendium ",
+    "euTaxonomieVerordnungEu": "EU-Taxonomie-Verordnung (EU 2020/852) im Bausektor",
+    "dasEuKlassifikationssystemFür": "Das EU-Klassifikationssystem für ökologisch nachhaltige Wirtschaftsaktivitäten und Green Finance.",
+    "wesentlichenBeitragSubstantialContributi": " wesentlichen Beitrag (\\*Substantial Contribution\\*)",
+    "doNoSignificantHarm": "\\*Do No Significant Harm (DNSH)\\*",
+    "bedeutungFürProjektentwicklerBanken": "Bedeutung für Projektentwickler & Banken:",
+    "taxonomiequoteCapexOpexBestimmt": "Taxonomiequote (CapEx/OpEx) bestimmt Zinssätze und ESG-Fonds-Fähigkeit",
+    "dieNeueEuGebäuderichtlinie": "Die neue EU-Gebäuderichtlinie (EPBD 2024/1275): Roadmap bis 2050",
+    "inkrafttretenImMai2024": "Inkrafttreten im Mai 2024 mit zwingender Transformation im nationalen GEG.",
+    "epbdNovelle2024": "EPBD Novelle 2024",
+    "stufe1Ab2028": "Stufe 1 (ab 2028)",
+    "öffentlicheNullemissionsgebäude": "Öffentliche Nullemissionsgebäude",
+    "alleNeuenGebäudeIm": "Alle neuen Gebäude im Eigentum oder in der Nutzung öffentlicher Einrichtungen müssen als **Zero Emission Buildings (ZEB)** errichtet werden.",
+    "vorbildfunktionDerÖffentlichenHand": "Vorbildfunktion der öffentlichen Hand",
+    "stufe2Ab2030": "Stufe 2 (ab 2030)",
+    "zebWholeLifeCarbon": "ZEB & Whole-Life Carbon für alle Neubauten",
+    "ausnahmslosAlleNeuenGebäude": "Ausnahmslos alle neuen Gebäude müssen Nullemissionsgebäude sein. Pflicht zur Ermittlung und Ausweisung des **Lebenszyklus-GWP** im Energieausweis!",
+    "gwpGrenzenImBauantrag": "GWP-Grenzen im Bauantrag",
+    "fossilAusstieg20252040": "Fossil-Ausstieg (2025–2040)",
+    "ab2025KeineStaatlichen": "Ab **2025** keine staatlichen Subventionen mehr für eigenständige fossile Kessel. Bis spätestens **2040** vollständiger Ausstieg aus fossilen Brennstoffen zur Gebäudeheizung.",
+    "verbotVonGasÖlheizungen": "Verbot von Gas-/Ölheizungen",
+    "umweltproduktdeklarationenEpdNachDin": "Umweltproduktdeklarationen (EPD) nach DIN EN 15804+A2",
+    "typIiiUmweltdeklarationenNach": "Typ-III-Umweltdeklarationen nach ISO 14025 als mathematische Datenbasis der Gebäude-Ökobilanz.",
+    "dinEn15804A2": "DIN EN 15804+A2",
+    "die4NormativenGwp": "Die 4 normativen GWP-Kernindikatoren:",
+    "summenwertAllerTreibhausgasemissionenUnd": " Summenwert aller Treibhausgasemissionen und -senken.",
+    "emissionenAusVerbrennungFossiler": " Emissionen aus Verbrennung fossiler Brennstoffe und Klinkerbrennprozessen.",
+    "coAufnahmeImPflanzenwachstum": " CO₂-Aufnahme im Pflanzenwachstum (als negativer Wert verbucht) und thermische Freisetzung in C3/C4.",
+    "treibhauspotenzialInfolgeVonLandnutzung": " Treibhauspotenzial infolge von Landnutzung und Landnutzungsänderung (\\*Land use & land-use change\\*).",
+    "generischeVsSpezifischeEpds": "Generische vs. Spezifische EPDs:",
+    "generischÖkobaudat": "Generisch (ÖKOBAUDAT):",
+    "durchschnittswerteFürFrüheEntwurfsphasen": " Durchschnittswerte für frühe Entwurfsphasen (LPH 1–3). Im QNG/BNB mit +10 % Sicherheitsaufschlag belegt!",
+    "herstellerspezifischZBIbu": "Herstellerspezifisch (z.B. IBU):",
+    "geprüftePrimärdatenEinesKonkreten": " Geprüfte Primärdaten eines konkreten Zement- oder Holzwerks ohne Sicherheitsaufschlag; zwingend für Endzertifizierung.",
+    "digitalerProduktpassDppGebäude": "Digitaler Produktpass (DPP) & Gebäude-Materialpass",
+    "rechtsrahmenEuÖkodesignVerordnung": "Rechtsrahmen: EU-Ökodesign-Verordnung (ESPR 2024) und novellierte Bauprodukteverordnung (CPR 2024).",
+    "digitalProductPassportDpp": "Digital Product Passport (DPP)",
+    "jedesBauproduktErhältEinen": "Jedes Bauprodukt erhält einen maschinenlesbaren Datenträger (z.B. QR-Code). Ermöglicht die Rückverfolgbarkeit von Inhaltsstoffen, Rezyklatanteilen, Demontageanleitungen und CO₂-Fußabdruck über die gesamte Lieferkette.",
+    "rechtspflichtNachEuÖkodesign": "Rechtspflicht nach EU-Ökodesign",
+    "gebäudeMaterialpassMadaster": "Gebäude-Materialpass (Madaster)",
+    "dokumentiertArtMasseEinbauort": "Dokumentiert Art, Masse, Einbauort und Lösbarkeit aller Bauteile eines Gebäudes. Berechnet den **Circularity Index (CI)** und den monetären Restwert der Materialien am Lebensende.",
+    "grundlageFürUrbanMining": "Grundlage für Urban Mining",
+    "designForDisassembly": "Design for Disassembly",
+    "konstruierenMitTrennbarenMechanischen": "Konstruieren mit trennbaren mechanischen Verbindungen (Verschrauben, Stecken) statt vollflächiger chemischer Verklebung. Ermöglicht sortenreinen Rückbau ohne Downcycling.",
+    "zirkularitätsgrad80": "Zirkularitätsgrad > 80 %",
+    "dieFünfSäulenDes": "Die fünf Säulen des deutschen Nachhaltigkeits-Baurechts",
+    "vomGebäudemodernisierungsgesetzGmodgVorm": "Vom Gebäudemodernisierungsgesetz (GModG, vormals GEG) über die Ersatzbaustoffverordnung bis zum Gebäudetyp-E-Vorhaben.",
+    "t1GebäudemodernisierungsgesetzGmodgVormal": "1. Gebäudemodernisierungsgesetz (GModG, vormals GEG 2024)",
+    "regeltDenPrimärenergetischenEffizienzhau": "Regelt den primärenergetischen Effizienzhausstandard (EH 55 als Neubaustandard) und die **65 %-Erneuerbare-Energien-Vorgabe** für neu eingebaute Heizungsanlagen (Kopplung an die kommunale Wärmeplanung).",
+    "maxTransmissionswärmeverlust": "Max. Transmissionswärmeverlust",
+    "t2QualitätssiegelNachhaltigesGebäude": "2. Qualitätssiegel Nachhaltiges Gebäude (QNG)",
+    "staatlichesGütesiegelDesBmwsb": "Staatliches Gütesiegel des BMWSB für zinsgünstige KfW-Förderdarlehen (Klimafreundlicher Neubau KFN) und degressive AfA (5 %). Grenzwerte: **QNG-Plus ($\\le 24\\,\\text{kg CO}_2\\text{e}/(\\text{m}^2\\cdot\\text{a})$)** und **QNG-Premium ($\\le 20\\,\\text{kg CO}_2\\text{e}/(\\text{m}^2_{\\text{NRF}}\\cdot\\text{a})$)** für Wohngebäude (WG23) über 50 Jahre Betrachtungszeitraum.",
+    "t3ErsatzbaustoffverordnungEbvSeit": "3. Ersatzbaustoffverordnung (EBV seit 01.08.2023)",
+    "bundesweitHarmonisierteQualitätsanforder": "Bundesweit harmonisierte Qualitätsanforderungen für mineralische Ersatzbaustoffe (RC-1 bis RC-3, Bodenmaterial BM-0 bis BM-F3, Gleisschotter). Regelt Grundwasserschutz und Kataster-Anzeigepflicht nach § 25 EBV bei Einbaumengen ab **250 m³**.",
+    "schwellenwertKataster": "Schwellenwert Kataster",
+    "t4KreislaufwirtschaftsgesetzKrwg": "4. Kreislaufwirtschaftsgesetz (KrWG)",
+    "verbindliche5StufigeAbfallhierarchie": "Verbindliche 5-stufige Abfallhierarchie: 1. Vermeidung > 2. Vorbereitung zur Wiederverwendung > 3. Recycling > 4. sonstige Verwertung > 5. Beseitigung (Deponierung als Ultima Ratio).",
+    "vermeidungVorBeseitigung": "Vermeidung vor Beseitigung",
+    "t5GebäudetypEGesetzesvorhaben": "5. Gebäudetyp E (Gesetzesvorhaben)",
+    "sollFachkundigenBaupartnernDas": "Soll fachkundigen Baupartnern das rechtlich belastbare Abweichen von reinen Komfort- und Ausstattungsnormen ohne Sachmangelrisiko nach § 633 BGB ermöglichen. Der Entwurf von 2024 (BT-Drs. 20/13959) ist mit der 20. Wahlperiode erledigt; nach Eckpunkten vom 20.11.2025 befindet sich ein neuer Gesetzentwurf in der Ressortabstimmung, ist aber noch nicht veröffentlicht (Stand 10/2026). Grundlegende öffentlich-rechtliche Schutzziele (Standsicherheit, Brandschutz, Gesundheit, Schall- und Wärmeschutz) bleiben gewahrt.",
+    "kabinettNov2024": "Kabinett Nov. 2024",
+    "einfachesBauen": "Einfaches Bauen"
+  },
+  "werte": {
+    "direkteKernrelevanzFürDas": "Direkte Kernrelevanz für das Bauwesen",
+    "beispiel1EuTaxonomie": "Beispiel 1: EU-Taxonomie – Primärenergie-Kriterium für einen Neubau",
+    "fürGebäudeÜber5": "Für Gebäude über 5 000 m² ist zusätzlich das Lebenszyklus-GWP zu berechnen und offenzulegen; außerdem gelten Luftdichtheits- bzw. Thermografie-Nachweise und die DNSH-Kriterien.",
+    "delegierteVoEu2021": "Delegierte VO (EU) 2021/2139, Anhang I, Abschnitt 7.1 (Stand manuell prüfen)",
+    "beispiel2CrremPfad": "Beispiel 2: CRREM-Pfad – wann wird ein Bürogebäude „stranded“?",
+    "crremPfadeSindLänder": "CRREM-Pfade sind länder- und nutzungsspezifisch; für Investitionsentscheidungen sind die aktuellen veröffentlichten Pfade zu verwenden, nicht diese Lehrwerte.",
+    "crremMethodikLehrbeispiel": "CRREM-Methodik (Lehrbeispiel)",
+    "oktober2026Ap7": "Oktober 2026 (AP 7 Nachhaltigkeit: QNG, EPBD, Taxonomie, ETS II, Gebäudetyp E und GModG auf Rechtsstand Oktober 2026 geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "zieleFürNachhaltigeEntwicklung": "Ziele für nachhaltige Entwicklung (SDGs)",
+    "umweltproduktdeklarationEpd": "Umweltproduktdeklaration (EPD)",
+    "ersatzbaustoffverordnungEbv": "Ersatzbaustoffverordnung (EBV)"
+  },
+  "daten": {
+    "NachhaltigkeitDatenRegeln": [
+      {
+        "year": "1987",
+        "title": "Brundtland-Bericht („Our Common Future“)",
+        "desc": "Formulierung des Drei-Säulen-Modells der Nachhaltigkeit (Ökologie, Ökonomie, Soziales). Grundsatz: Bedürfnisse der Gegenwart befriedigen, ohne die Möglichkeiten zukünftiger Generationen zu gefährden."
+      },
+      {
+        "year": "1992",
+        "title": "UN-Erdgipfel in Rio de Janeiro (Agenda 21)",
+        "desc": "Verabschiedung der Klimarahmenkonvention (UNFCCC) und der Agenda 21. Startschuss für nationale Nachhaltigkeitsstrategien; in Deutschland folgte 2001 der erste Leitfaden Nachhaltiges Bauen des Bundes."
+      },
+      {
+        "year": "1997",
+        "title": "Kyoto-Protokoll (COP 3)",
+        "desc": "Erstmals völkerrechtlich verbindliche Reduktionsziele für Treibhausgase in Industrieländern. Einführung der Marktmechanismen (Emissionszertifikatehandel)."
+      },
+      {
+        "year": "2015",
+        "title": "Pariser Klimaschutzabkommen (COP 21)",
+        "desc": "Völkerrechtliche Verpflichtung zur Begrenzung der globalen Erwärmung auf deutlich unter 2,0 °C, möglichst 1,5 °C gegenüber vorindustriellen Werten. Grundlage für den CRREM-Dekarbonisierungspfad im Gebäudesektor."
+      },
+      {
+        "year": "2019",
+        "title": "European Green Deal",
+        "desc": "Fahrplan der EU-Kommission zur Transformation Europas zum ersten klimaneutralen Kontinent bis 2050. Start der „Renovation Wave“ (Renovierungswelle zur Verdopplung der Sanierungsrate)."
+      },
+      {
+        "year": "2023 / 2024",
+        "title": "Dubai COP 28 & Novelle der EPBD (EU 2024/1275)",
+        "desc": "Historischer Konsens zur Abkehr von fossilen Brennstoffen („Transitioning away from fossil fuels“). Gesetzliche Festschreibung von Zero Emission Buildings (ZEB) im EU-Recht."
+      }
+    ],
+    "NachhaltigkeitDatenRegeln_2": [
+      {
+        "id": 1,
+        "title": "1. Klimaschutz (Climate Mitigation)",
+        "desc": "Neubau: Primärenergiebedarf mind. 10 % unter NZEB/GEG. Bei Gebäuden > 5 000 m² zusätzlich Berechnung und Offenlegung des Lebenszyklus-GWP (Delegierte VO (EU) 2021/2139, Anhang I, 7.1)."
+      },
+      {
+        "id": 2,
+        "title": "2. Anpassung an Klimawandel (Adaptation)",
+        "desc": "Klimarisiko- und Vulnerabilitätsanalyse (Hitze, Hochwasser, Sturm) über 30 Jahre; Umsetzung physischer Anpassungsmaßnahmen."
+      },
+      {
+        "id": 3,
+        "title": "3. Wasser- & Meeresressourcen",
+        "desc": "Wassersparende Armaturen (Durchflussbegrenzer, Grauwassernutzung); Schutz vor Schadstoffeinträgen in Grundwasser."
+      },
+      {
+        "id": 4,
+        "title": "4. Übergang zur Kreislaufwirtschaft",
+        "desc": "Mindestens 70 % der nicht gefährlichen Bau- und Abbruchabfälle müssen stofflich wiederverwendet oder recycelt werden (Design for Deconstruction)."
+      },
+      {
+        "id": 5,
+        "title": "5. Vermeidung von Umweltverschmutzung",
+        "desc": "Strikter Ausschluss gefährlicher Stoffe (Asbest, FCKW, SVHC nach REACH, schädliche Weichmacher und Biozide in Putzen)."
+      },
+      {
+        "id": 6,
+        "title": "6. Schutz von Biodiversität & Ökosystemen",
+        "desc": "Bauen nur auf vorbelasteten/ausgewiesenen Flächen; Ausschluss von Schutzgebieten, Mooren und wertvollen Agrarflächen."
+      }
+    ],
+    "NachhaltigkeitDatenRegeln.schritte": [
+      {
+        "titel": "NZEB-Schwelle",
+        "erklaerung": "In Deutschland entspricht der Niedrigstenergiegebäude-Standard der Neubauanforderung nach GModG § 15 (0,55 · Referenzgebäude). Angenommen: zulässiger Wert 40 kWh/(m²a).",
+        "formel": "Q_{P,\\text{NZEB}} = 40\\,\\text{kWh/(m}^2\\text{a)}"
+      },
+      {
+        "titel": "Taxonomie-Schwelle",
+        "erklaerung": "Neubau, Klimaschutz-Kriterium: mindestens 10 % unter NZEB:",
+        "formel": "Q_{P,\\text{Tax}} = 0{,}90 \\cdot 40 = 36\\,\\text{kWh/(m}^2\\text{a)}"
+      },
+      {
+        "titel": "Prüfung",
+        "erklaerung": "Planungswert 34 kWh/(m²a):",
+        "formel": "34 \\le 36 \\Rightarrow \\text{Kriterium erfüllt}"
+      }
+    ],
+    "NachhaltigkeitDatenRegeln.schritte_2": [
+      {
+        "titel": "Pfad (Lehrwerte)",
+        "erklaerung": "Linear zwischen 52 kg CO₂e/(m²a) im Jahr 2020 und 18 kg CO₂e/(m²a) im Jahr 2030:",
+        "formel": "I_{\\text{Ziel}}(2026) = 52 - 3{,}4 \\cdot 6 = 31{,}6\\,\\text{kg CO}_2\\text{e/(m}^2\\text{a)}"
+      },
+      {
+        "titel": "Ist-Intensität",
+        "erklaerung": "Betriebsemissionen des Gebäudes:",
+        "formel": "I_{\\text{Ist}} = 32{,}0 > 31{,}6"
+      },
+      {
+        "titel": "Misalignment Year",
+        "erklaerung": "Ohne Maßnahmen liegt das Gebäude bereits 2026 über dem Pfad; eine Senkung auf 20 kg CO₂e/(m²a) verschiebt den Schnittpunkt:",
+        "formel": "52 - 3{,}4 \\cdot (t - 2020) = 20 \\Rightarrow t \\approx 2029{,}4"
+      }
+    ],
+    "NachhaltigkeitDatenRegeln.wikipedia.2": {
+      "title": "Richtlinie über die Gesamtenergieeffizienz von Gebäuden (EPBD)"
+    },
+    "NachhaltigkeitDatenRegeln.literatur": [
+      "Hegger, M.; Auch-Schwelk, V.; Fuchs, M.; Rosenkranz, T.: Baustoff Atlas. München: Edition Detail 2005",
+      "Klöpffer, W.; Grahl, B.: Ökobilanz (LCA) – Ein Leitfaden für Ausbildung und Beruf. Weinheim: Wiley-VCH 2009",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Bundesministerium des Innern, für Bau und Heimat (BMI) (Hrsg.): Leitfaden Nachhaltiges Bauen – Zukunftsfähiges Planen, Bauen und Betreiben von Gebäuden. Stand Januar 2019. Berlin 2019",
+      "Nagler, F.; Jarmer, T.; Niemann, A. et al.: Einfach Bauen – Ganzheitliche Strategien für energieeffizientes, einfaches Bauen. Untersuchung der Wechselwirkung von Raum, Technik, Material und Konstruktion. Stuttgart: Fraunhofer IRB 2019 (Forschungsinitiative Zukunft Bau F 3151)"
+    ],
+    "NachhaltigkeitDatenRegeln.regelwerke": [
+      {
+        "title": "DIN EN 15643:2021-12 (Nachhaltigkeit von Bauwerken – Allgemeine Rahmenbedingungen zur Bewertung von Gebäuden und Ingenieurbauwerken)"
+      },
+      {
+        "title": "ISO 15392:2019 (Nachhaltiges Bauen – Allgemeine Grundsätze)"
+      },
+      {
+        "title": "EPBD – Richtlinie (EU) 2024/1275 (Neufassung; Nullemissionsgebäude ab 2028/2030, Lebenszyklus-GWP Art. 7)",
+        "url": "https://eur-lex.europa.eu/"
+      },
+      {
+        "title": "EU-Taxonomie-Verordnung (EU) 2020/852 mit Delegierter VO (EU) 2021/2139 (Klimaschutz-Kriterien)",
+        "url": "https://eur-lex.europa.eu/"
+      },
+      {
+        "title": "DIN EN 15804:2022-03 (EN 15804:2012+A2:2019+AC:2021; Umweltproduktdeklarationen)"
+      },
+      {
+        "title": "DIN EN 15978:2026-09 (Bewertung der Umweltqualität von Gebäuden; ersetzt 2012-10)"
+      },
+      {
+        "title": "Gebäudemodernisierungsgesetz (GModG, seit 29.07.2026; vormals GEG)",
+        "url": "https://www.gesetze-im-internet.de/geg/"
+      },
+      {
+        "title": "Ersatzbaustoffverordnung (EBV, in Kraft seit 01.08.2023; Novelle in Vorbereitung)",
+        "url": "https://www.gesetze-im-internet.de/ersatzbaustoffv/"
+      }
+    ],
+    "NachhaltigkeitDatenRegeln.formeln": [
+      {
+        "formel": "GWP_{\\text{Gebäude}} = \\sum_{i} m_i \\cdot GWP_{\\text{A1-A3},i} + \\sum_{t=1}^{50} E_t \\cdot f_{\\text{CO2},t} \\quad [\\text{kg CO}_2\\text{-eq}]",
+        "erklaerung": "Vereinfachte Lebenszyklus-Treibhausgasbilanz über 50 Jahre (QNG, EPBD) mit Herstellung (A1–A3) und Betrieb (B6); vollständig zusätzlich Austausch (B4) und Lebensende (C3/C4).",
+        "quelle": "DIN EN 15978 / QNG"
+      },
+      {
+        "formel": "\\text{MCI} = 1 - \\text{LFI} \\cdot \\frac{0{,}9}{X}, \\quad X = \\frac{L}{L_{av}} \\cdot \\frac{U}{U_{av}}",
+        "erklaerung": "Material Circularity Indicator: LFI = Linear Flow Index (Anteil linearer Stoffflüsse aus Primärrohstoff und Abfall), X = Nutzungsfaktor aus Lebensdauer L und Nutzungsintensität U relativ zum Branchendurchschnitt. Der Madaster-Zirkularitätsindex baut auf diesem Ansatz auf.",
+        "quelle": "Ellen MacArthur Foundation / Granta Design: Material Circularity Indicator"
+      },
+      {
+        "formel": "\\text{GHG-Intensität} = \\frac{\\sum_{j} E_j \\cdot f_{\\text{CO2},j}}{\\text{NFA}} \\le \\text{Target}_{\\text{CRREM}}(t) \\quad [\\text{kg CO}_2\\text{e/(m}^2_{\\text{NFA}}\\cdot\\text{a})]",
+        "erklaerung": "CRREM-Dekarbonisierungspfad: Zulässige flächenbezogene Treibhausgasemissionen des Gebäudebetriebs pro Jahr im Pariser 1,5°C-Ziel bis zum Zielwert 0 im Jahr 2050.",
+        "quelle": "CRREM v2 / EU-Taxonomie"
+      }
+    ]
+  }
+}

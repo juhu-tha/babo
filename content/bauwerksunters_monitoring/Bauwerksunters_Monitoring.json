@@ -1,0 +1,208 @@
+{
+  "texte": {
+    "mängelSchädenStrukturüberwachung": "Mängel & Schäden • Strukturüberwachung",
+    "tragwerksMonitoringSchadenssensorikShm": "Tragwerks-Monitoring & Schadenssensorik (SHM)",
+    "dasSchadensmanagementAkutBeanspruchter": "Das Schadensmanagement akut beanspruchter Tragwerke beruht auf kontinuierlicher **Sensorik (Structural Health Monitoring - SHM)**, messtechnischer Rissbreitenüberwachung (LVDT), Dehnungsmessungen (DMS) und forensischer Holz-Resistographie. Zerstörungsfreie Prüfverfahren (ZfP) sind mit dem zentralen Prüfkatalog konsolidiert.",
+    "tragwerksMonitoringSensorikShm": "Tragwerks-Monitoring & Sensorik (SHM)",
+    "holzdiagnostikResistographie": "Holzdiagnostik & Resistographie",
+    "schadensFeuchterechner": "Schadens- & Feuchterechner",
+    "zfpPrüfkatalogKonsolidiert": "ZfP-Prüfkatalog (Konsolidiert)",
+    "zentralerZfpDiagnosemethodenkatalog": "Zentraler ZfP- & Diagnosemethodenkatalog",
+    "konsolidierterKatalogSämtlicher14": "Konsolidierter Katalog sämtlicher 14 Vor-Ort- und Laborprüfverfahren nach DGZfP, DBV und DIN EN – synchronisiert mit dem Modul *Bauen im Bestand > Bauwerksuntersuchung*. Hier stehen alle physikalischen Wirkprinzipien, Auswerteformeln, Systemgrenzen und interaktiven Rechner zur Verfügung.",
+    "interaktiverBohrwiderstandsSimulatorHolz": "Interaktiver Bohrwiderstands-Simulator (Holzuntersuchung)",
+    "simulierenSieDasMechanische": "Simulieren Sie das mechanische Kraftprofil von **Resistographen-Prüfungen** im Inneren tragender Holzbauteile (z.B. Deckenbalken, Fachwerk, Brückenpfähle). Durch die Dichteunterschiede zwischen dichtem Spätholz und weicherem Frühholz oszilliert die Kurve; Fehlstellen, Fäule oder Insektenfraß führen zu charakteristischen Kurveneinbrüchen.",
+    "holzartAuswählen": "Holzart auswählen:",
+    "strukturellerWerkstoffzustand": "Struktureller Werkstoffzustand:",
+    "eineRotierendeStahlnadelEmptyset": "Eine rotierende Stahlnadel ($\\emptyset \\approx 1{,}5\\,\\text{mm}$) wird mit einer kontinuierlichen Eintriebsgeschwindigkeit ins Holz gedrückt. Der Stromverbrauch des Elektromotors korreliert mit der lokalen Rohdichte; Absolutwerte sind gerätespezifisch, ausgewertet wird relativ (Profilvergleich).",
+    "activeSimulatorMonitor": "Active Simulator Monitor",
+    "querschnittsModell120Mm": "Querschnitts-Modell (120 mm):",
+    "zersetzungPilz": "Zersetzung (Pilz)",
+    "gefügeGesundKraftschlüssig": "Gefüge Gesund / Kraftschlüssig",
+    "amplitudenhöheInBohrwiderstand": "Amplitudenhöhe in % (Bohrwiderstand)",
+    "t0MmEintritt": "0 mm (Eintritt)",
+    "t120MmAustritt": "120 mm (Austritt)",
+    "echtzeitMonitoringShm": "Echtzeit-Monitoring (SHM)",
+    "beimStructuralHealthMonitoring": "Beim **Structural Health Monitoring (SHM)** verbleiben physikalische Sensoren dauerhaft am oder im Bauwerk. Sie erfassen kontinuierlich den Beanspruchungsverlauf aus dynamischen Lasten (Verkehr, Wind) und thermohygrischen Dehnungen.",
+    "klassischeMessgrößenSensortypologie": "Klassische Messgrößen & Sensortypologie:",
+    "prüfvorschriftKalibrierungNachHersteller": "Prüfvorschrift: Kalibrierung nach Herstellerangabe bzw. DAkkS-Kalibrierschein; Messkonzept nach Bauwerksmonitoring-Literatur (DGZfP). Rissbreitenkriterien ggf. nach TR Instandhaltung",
+    "induktiveWegaufnehmerLvdtsErfassen": "**Induktive Wegaufnehmer (LVDTs):** Erfassen Rissbreitenbewegungen im Mikrometerbereich ($\\mu\\text{m}$).",
+    "prüfvorschriftVdiVde2635": "Prüfvorschrift: VDI/VDE 2635 Blatt 1 (Dehnungsmessstreifen mit metallischem Messgitter)",
+    "dehnungsmesstreifenDmsWerdenAuf": "**Dehnungsmesstreifen (DMS):** Werden auf Stahlträger oder Betonflächen geklebt zur Bestimmung realer mikro-elastischer Spannungen ($\\sigma_s$).",
+    "prüfvorschriftDin456691": "Prüfvorschrift: DIN 45669-1, VDI 2038 Blatt 1",
+    "piezokeramischeBeschleunigungsgeberRegis": "**Piezokeramische Beschleunigungsgeber:** Registrieren von Eigenfrequenzen zur frühzeitigen Feststellung von Tragfähigkeitsminderungen.",
+    "prüfvorschriftWtaMerkblatt4": "Prüfvorschrift: WTA-Merkblatt 4-11-16/D (Messung des Wassergehalts bzw. der Feuchte von mineralischen Baustoffen)",
+    "tdrFeuchtesondenMessenZeitlich": "**TDR-Feuchtesonden:** Messen zeitlich aufgelöste elektrolytische Bauwerksfeuchten direkt im Gefügeinneren.",
+    "ingenieurVorteilMonitoringErgänzt": "**Ingenieur-Vorteil:** Monitoring ergänzt die Prüfungen nach DIN 1076, ersetzt oder verlängert die Regelintervalle aber nicht; es kann Sonderprüfungen gezielt auslösen und Nutzungsauflagen absichern, da das Risikopotential transparent überwacht wird.",
+    "dynamischesRissbreitenMonitoringTemperat": " Dynamisches Rissbreiten-Monitoring & Temperaturgang-Simulator",
+    "risseInBauwerkenStehen": "Risse in Bauwerken stehen unter mechanischer Dehnung. Die größte Bewegungsamplitude entsteht jedoch meist nicht durch die Nutzlast, sondern durch die thermische Längenänderung der Bauteilkörper (**\"Riss-Atmung\"**). Betrachten Sie die periodische 24h-Kurve zwischen Bauteiltemperatur und LVDT-Rissöffnung:",
+    "sensorIdLvdtC12": "Sensor ID: LVDT_C12_401 (Zementestrich/Trägergelenk)",
+    "streamOnline": "Stream: Online",
+    "mittagshitzeTMax": "Mittagshitze (T_max)",
+    "t0600Morgen": "06:00 (Morgen)",
+    "t0600NächsterTag": "06:00 (Nächster Tag)",
+    "bauteilTemperaturC": "Bauteil-Temperatur (°C)",
+    "rissöffnungsWeiteMm": "Rissöffnungs-Weite (mm)",
+    "diagnostischeErkenntnis": "Diagnostische Erkenntnis:",
+    "imSommerDehntSich": "Im Sommer dehnt sich das Tragwerk infolge solarer Aufheizung aus $\\Delta l = \\alpha_t \\cdot l_0 \\cdot \\Delta T$. Dadurch schließen sich Risse und Dehnfugen mechanisch (LVDT-Kurve sinkt). Bei winterlichem Frost zieht sich das Bauteil zusammen, Dehnfugen und Risse öffnen sich maximal (Vorsicht bei Frost-Tausalz-Angriffen!). Ein Rissgitter ohne Einbezug dieses Dehneffekts ist extrem fehleranfällig. Für eine Trendaussage müssen die Messwerte temperaturkompensiert werden. Nimmt die Rissöffnung über mehrere Zyklen bleibend zu, deutet das auf aktive Ursachen hin (Setzung, Kriechen, Korrosion, Überlast).",
+    "feuchtigkeitsrechnerBelegreifeCmMethode": "Feuchtigkeitsrechner (Belegreife, CM-Methode)",
+    "estricheMauerwerkeBewerten": "Estriche & Mauerwerke bewerten",
+    "estrichBaustoffKlassifizierung": "Estrich / Baustoff-Klassifizierung",
+    "beheizteEstrichkonstruktionFußbodenheizu": "Beheizte Estrichkonstruktion (Fußbodenheizung)",
+    "messergebnisCalciumcarbidMethode": "Messergebnis Calciumcarbid-Methode:",
+    "zerstörungsfreieHfMessungEindringtiefe": "Zerstörungsfreie HF-Messung (Eindringtiefe ca. 3cm):",
+    "normhinweisDasKapazitiveHochfrequenz": "**Normhinweis:** Das kapazitive Hochfrequenz-Verfahren (HF) dient ausschließlich der schnellen, zerstörungsfreien Eingrenzung feuchter Zonen. Die **CM-Messung** ist das in der Praxis vereinbarte Prüfverfahren für die Belegreife; Darr- und KRL-Verfahren sind Referenz- bzw. alternative Verfahren. Die CM-Richtwerte (CT ≤ 2,0 / beheizt ≤ 1,8; CA ≤ 0,5 / beheizt ≤ 0,3 CM-%) stammen aus der Schnittstellenkoordination und hängen vom Belag ab.",
+    "rückprallhammerKarbonatisierung": "Rückprallhammer & Karbonatisierung",
+    "dinEn125042": "DIN EN 12504-2 · Festigkeit nur mit Kalibrierung (DIN EN 13791)",
+    "gemessenerSchlagrückprallRMittelwert": "Gemessener Schlagrückprall R (Mittelwert):",
+    "mitPhenolphthaleinBestimmteKarbonatisier": "Mit Phenolphthalein bestimmte Karbonatisierungstiefe:",
+    "alterDesTragwerks": "Alter des Tragwerks:",
+    "rückprallzahlR": "Rückprallzahl R:",
+    "qualitativeEinordnungRelativvergleich": "Qualitative Einordnung (Relativvergleich):",
+    "progressKoeffizientFKarbonatfront": "**Progress-Koeffizient f. Karbonatfront:** k_c = ",
+    "hintergrundDurchAufnahmeVon": "**Hintergrund:** Durch Aufnahme von atmosphärischem $\\text{CO}_2$ wandelt sich Calciumhydroxid $\\text{Ca(OH)}_2$ im Beton unter Oberflächenhärtung in Kalkstein $\\text{CaCO}_3$ um. Ein Sklerometer (Rückprallhammer) prallt dort härter ab und liefert dort höhere Rückprallzahlen. Deshalb Prüffläche abschleifen, Karbonatisierungstiefe dokumentieren und die Rückprallzahl nur über Bohrkerne kalibriert in Festigkeit umrechnen.",
+    "didaktischesFormelregisterRissDiagnostik": " Didaktisches Formelregister riss- & diagnostikspezifischer Tragwerksprozesse",
+    "t1ElastomechanischeImpulslaufzeitE": "1. Elastomechanische Impulslaufzeit (E-Modul)",
+    "zurZerstörungsfreienBestimmungDer": "Zur zerstörungsfreien Bestimmung der homogenen Betoneigenschaften in-situ wird die Ultraschall-Laufzeit ermittelt:",
+    "wobeiRhoDieRohdichte": "Wobei $\\rho$ die Rohdichte des Betons ($\\text{kg/m}^3$), $v_p$ die Schallgeschwindigkeit ($\\text{m/s}$) und $\\nu$ die Querdehnzahl (ca. 0,2) repräsentieren.",
+    "t2DiffusionsfortschrittDerKarbonatisierun": "2. Diffusionsfortschritt der Karbonatisierung",
+    "dieZeitlicheEntwicklungDer": "Die zeitliche Entwicklung der Karbonatisierungsfront folgt näherungsweise dem √t-Gesetz (aus dem Fick’schen Gesetz mit wandernder Reaktionsfront abgeleitet):",
+    "hierBezeichnetXC": "Hier bezeichnet $x_c$ die Karbonatisierungstiefe ($\\text{mm}$), $k_c$ den stoff- und umweltabhängigen Karbonatisierungsbeiwert und $t$ das Alter (Jahre)."
+  },
+  "werte": {
+    "trockenUnter40Digits": "Trocken (unter 40 Digits - oberflächennah unkritisch)",
+    "feuchtigkeitsgrenzbereich4080Digits": "Feuchtigkeitsgrenzbereich (40-80 Digits - Messung in der Tiefe empfohlen)",
+    "nassÜber80Digits": "Nass (über 80 Digits - Akute Feuchtebelastung)",
+    "randzoneKarbonatisiert": "Randzone karbonatisiert",
+    "randzoneNichtKarbonatisiert": "Randzone nicht karbonatisiert",
+    "dieUngestörteDämpfungskurveBeweist": "Die ungestörte Dämpfungskurve beweist eine intakte Faserstruktur des tragenden Bauteils. Die kleinen lokalen Ausschläge belegen die härteren Spätholzbänder, wodurch das Jahrringalter des Holzes gezählt werden kann.",
+    "derCharakteristischeLanganhaltendeDichte": "Der charakteristische langanhaltende Dichteeinbruch zwischen 40mm und 95mm zeigt tiefgreifende Braunfäule oder Moderfäule im Kernbereich auf. Trotz anscheinend intakter Randschichten ist die Biegetragfähigkeit um bis zu 60% gemindert!",
+    "einTypischesSchadbildBei": "Ein typisches Schadbild bei historischem Nadelholz. Die äußeren Millimeter weisen extrem geringen Bohrwiderstand auf, was einem vollständigen Gefügebearbeitungsverlust durch Anobien (Holzwurm) entspricht.",
+    "derPlötzlicheAbfallDes": "Der plötzliche Abfall des Bohrwiderstands auf den Reibungswert der bloßen Nadelwelle (nahe 0%) signalisiert eine vollständige mechanische Entkopplung im Inneren (Spaltriss oder Hohlstamm).",
+    "estrichBaustoffKlassifizierung": "Estrich / Baustoff-Klassifizierung",
+    "mauerwerkKeineBelegreifeGrenze": "ℹ Mauerwerk: keine Belegreife-Grenze",
+    "freigabeErteiltBelegreif": "✔ Freigabe erteilt (Belegreif)",
+    "verlegeSperreNichtBelegreif": "⚠ Verlege-Sperre (Nicht Belegreif)",
+    "karbonatisierteRandzonenErhöhenR": "Karbonatisierte Randzonen erhöhen R – Prüffläche abschleifen bzw. Karbonatisierungstiefe dokumentieren.",
+    "inFestigkeitUmrechnenNur": "In Festigkeit umrechnen nur über eine Kalibrierung an Bohrkernen desselben Bauteils (DIN EN 13791).",
+    "beispiel1DynamischerE": "Beispiel 1: Dynamischer E-Modul aus der Ultraschalllaufzeit",
+    "derDynamischeEModul": "Der dynamische E-Modul liegt über dem statischen. Deutlich geringere Laufzeiten-Geschwindigkeiten in Teilbereichen weisen auf Gefügestörungen, Kiesnester oder Risse hin.",
+    "dinEn125044": "DIN EN 12504-4",
+    "beispiel2ElektrolytischerBetonwiderstand": "Beispiel 2: Elektrolytischer Betonwiderstand nach dem Wenner-Verfahren",
+    "dieGrenzwerteHängenVon": "Die Grenzwerte hängen von Zementart, Feuchte und Temperatur ab; der Widerstand wird mit Potentialfeldmessung und Chloridanalytik kombiniert. Bewehrung nahe der Messstrecke verfälscht das Ergebnis.",
+    "rilemTc154Emc": "RILEM TC 154-EMC; DGZfP-Merkblatt B 03",
+    "oktober2026Ap11": "Oktober 2026 (AP 11 Mängel & Schäden: DIN 1076:2026-01, ZfP-Kennwerte und Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "zerstörungsfreieWerkstoffprüfung": "Zerstörungsfreie Werkstoffprüfung"
+  },
+  "daten": {
+    "TIMBER_TYPES": {
+      "fichte": {
+        "name": "Fichte (Gemeine Fichte)",
+        "density": "380–470 kg/m³",
+        "baseResistance": 48,
+        "description": "Häufigstes Nadelbauholz im Tragwerksbereich. Zeigt ausgeprägte Frühholz-Spätholz-Dichteunterschiede."
+      },
+      "kiefer": {
+        "name": "Kiefer (Waldkiefer)",
+        "density": "490–550 kg/m³",
+        "baseResistance": 58,
+        "description": "Kernholzbaum mit harzreichem Holz. Deutliche Härteunterschiede im Jahresringübergang."
+      },
+      "eiche": {
+        "name": "Eiche (Stieleiche)",
+        "density": "650–760 kg/m³",
+        "baseResistance": 78,
+        "description": "Sehr dichtes, zähes Laubholz mit hervorragender biologischer Dauerhaftigkeit im Kernbereich."
+      }
+    },
+    "TIMBER_STATES": {
+      "gesund": {
+        "name": "Gesunder Querschnitt",
+        "desc": "Homogene Dichteverteilung über den gesamten Holzquerschnitt mit normalen Jahresring-Oszillationen."
+      },
+      "kernfaeule": {
+        "name": "Kernfäule (Pilzbefall)",
+        "desc": "Ausgeprägte Zersetzung des Holzgefüges im inneren Bereich. Festigkeitsverlust im tragenden Zentrum."
+      },
+      "kaefer": {
+        "name": "Nagekäferbefall (Anobien, Anobium punctatum) bzw. Splintholzkäferbefall (Lyctus spp.)",
+        "desc": "Zerstörung der weicheren äußeren Splintholzzone durch Fraßgänge. Innerer Kern bleibt vorerst intakt."
+      },
+      "hohl": {
+        "name": "Hohler Stamm / Riss",
+        "desc": "Vollständiger Materialausfall (Hohlraum oder breiter Schwindriss) im mittleren Tiefenbereich."
+      }
+    },
+    "Bauwerksunters_Monitoring.schritte": [
+      {
+        "titel": "Messung",
+        "erklaerung": "Durchschallung einer 300 mm dicken Wand, Laufzeit 71,4 µs:",
+        "formel": "v_L = \\frac{0{,}300}{71{,}4 \\cdot 10^{-6}} = 4\\,200\\,\\text{m/s}"
+      },
+      {
+        "titel": "Kennwerte",
+        "erklaerung": "ρ = 2 400 kg/m³, ν = 0,2:",
+        "formel": "\\frac{1{,}2 \\cdot 0{,}6}{0{,}8} = 0{,}90"
+      },
+      {
+        "titel": "E-Modul",
+        "erklaerung": "Einsetzen:",
+        "formel": "E_{dyn} = 4\\,200^2 \\cdot 2\\,400 \\cdot 0{,}90 = 38{,}1\\,\\text{GPa}"
+      }
+    ],
+    "Bauwerksunters_Monitoring.schritte_2": [
+      {
+        "titel": "Messanordnung",
+        "erklaerung": "Elektrodenabstand a = 50 mm; gemessene Spannung 0,40 V bei 1,0 mA:",
+        "formel": "\\frac{U}{I} = \\frac{0{,}40}{0{,}001} = 400\\,\\Omega"
+      },
+      {
+        "titel": "Widerstand",
+        "erklaerung": "Einsetzen:",
+        "formel": "\\rho = 2\\pi \\cdot 0{,}05 \\cdot 400 = 126\\,\\Omega\\text{m}"
+      },
+      {
+        "titel": "Einordnung",
+        "erklaerung": "Orientierungswerte: hoher Widerstand bedeutet geringe Korrosionsgeschwindigkeit.",
+        "formel": "\\rho > 100\\,\\Omega\\text{m} \\Rightarrow \\text{eher geringes Risiko}"
+      }
+    ],
+    "Bauwerksunters_Monitoring.literatur": [
+      "DGZfP-Merkblätter der Reihe B (ZfP im Bauwesen); DIN 1076 und RI-EBW-PRÜF: Zustandserfassung, Analyse und Bauwerksdiagnostik im Bestand.",
+      "DGZfP-Merkblätter B 02, B 03 (2025), B 04, B 10, B 11 (2022) – Deutsche Gesellschaft für Zerstörungsfreie Prüfung.",
+      "DIN 68800-4: Holzschutz – Bekämpfungs- und Sanierungsmaßnahmen gegen Holz zerstörende Pilze und Insekten."
+    ],
+    "Bauwerksunters_Monitoring.regelwerke": [
+      {
+        "title": "VDI 6200:2010-02 (Standsicherheit von Bauwerken – Regelmäßige Überprüfung); Blatt 1.1:2026-06",
+        "url": "https://www.vdi.de/"
+      },
+      {
+        "title": "DIN 1076:2026-01 (Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung)"
+      },
+      {
+        "title": "DIN 18560-1 (Estriche im Bauwesen – Allgemeine Anforderungen, Prüfung und Ausführung); Belegreife nach Schnittstellenkoordination (BVF/ZDB) bzw. DIN 18356/18365"
+      },
+      {
+        "title": "RILEM TC 154-EMC: Test methods for on-site measurement of resistivity of concrete (Polder, Materials and Structures 33, 2000)",
+        "url": "https://www.rilem.net/"
+      }
+    ],
+    "Bauwerksunters_Monitoring.formeln": [
+      {
+        "formel": "v_L = \\sqrt{\\frac{E \\cdot (1-\\nu)}{\\rho \\cdot (1+\\nu)(1-2\\nu)}} \\quad [\\text{m/s}]",
+        "erklaerung": "Longitudinalwellen-Geschwindigkeit bei Ultraschallprüfungen an Beton und Mauerwerk zur Detektion von Fehlstellen, Hohlräumen und Festigkeitsgradienten.",
+        "quelle": "DIN EN 12504-4"
+      },
+      {
+        "formel": "\\rho_{\\text{app}} = 2\\pi \\cdot a \\cdot \\frac{U}{I} \\quad [\\Omega\\cdot\\text{m}]",
+        "erklaerung": "Spezifischer elektrischer Widerstand nach dem Wenner-Vier-Punkt-Verfahren zur Bewertung des Korrosionsrisikos der Bewehrung (RILEM TC 154-EMC).",
+        "quelle": "RILEM TC 154-EMC"
+      },
+      {
+        "formel": "R_B = \\frac{\\Delta W}{\\Delta x} \\implies \\text{Holzgüteprofil nach Resistographie}",
+        "erklaerung": "Bohrwiderstandsmessung (Resistographie) an Holzkonstruktionen: Verlauf des Drehmoments über die Bohrtiefe zur Identifizierung von Fäulnis, Fraßgängen und Jahrringdichten.",
+        "quelle": "WTA / DGZfP"
+      }
+    ]
+  }
+}

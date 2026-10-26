@@ -1,0 +1,155 @@
+{
+  "texte": {
+    "achtungErhöhtesVerletzungsrisikoZersplit": "Achtung: Erhöhtes Verletzungsrisiko (Zersplitterung)",
+    "floatglasBrichtInGroße": "Floatglas bricht in große, scharfkantige Bruchstücke. Für absturzsichernde Verglasungen und Überkopfverglasungen ist es allein nicht zulässig (DIN 18008).",
+    "sicherheitsbauteilVorzugFürBrüstungen": "Sicherheitsbauteil: Vorzug für Brüstungen und Überkopf",
+    "diePvbZwischenfolieHält": "Die PVB-Zwischenfolie hält die Bruchstücke zusammen und sorgt für Resttragfähigkeit. Wie lange ein gebrochenes VSG Lasten trägt, hängt von Glasart, Lagerung und Last ab und ist ggf. nachzuweisen (DIN 18008).",
+    "frostwarnungVerlegefehlerDroht": "Frostwarnung / Verlegefehler droht",
+    "mit15WasseraufnahmeWirkt": "Mit 15% Wasseraufnahme wirkt Steingut wie ein Schwamm. Bei Außenwitterung füllt sich das Porensystem bei Schlagregen. Frost dehnt dieses gefrorene Wasser um ca. 9% aus - die Fliese löst sich im ersten Winter von der Wand ab und zerspringt!",
+    "mineralischeWerkstoffeImHochbau": "Mineralische Werkstoffe im Hochbau",
+    "gläserKeramikbaustoffeUndNaturwerksteine": "Gläser, Keramikbaustoffe und Naturwerksteine - Festigkeiten, Verlegeregeln und Trass-Zementation",
+    "mineralischeWerkstoffeWieBaukunstgläser": "Mineralische Werkstoffe wie Baukunstgläser, feingesinterte Fliesen und Natursteine haben hohe Druckfestigkeiten, sind temperaturbeständig und sehr dauerhaft. Wegen ihrer Sprödigkeit fehlen plastische Reserven; Zwangs- und Biegezugspannungen (z. B. aus Temperatur) sind kritisch.",
+    "kategoriematerialAuswählen": "Kategoriematerial auswählen:",
+    "sonderfallNatursteinAusblühungen": "Sonderfall: Naturstein Ausblühungen",
+    "herkömmlicherPortlandzementSetztBei": "Herkömmlicher Portlandzement setzt bei der Hydratation große Mengen an **Calciumhydroxid (Portlandit)** frei. Dieses gelangt durch das Mischwasser an die Natursteinoberfläche, reagiert mit dem CO₂ der Luft zu Calciumcarbonat und kann Verfärbungen bzw. Ausblühungen verursachen. **Praxisregel:** Empfindliche Natursteine mit verfärbungsarmen Verlegemörteln (z. B. trasshaltig) verlegen.",
+    "kennwertdatenblattMineralisch": "KENNWERTDATENBLATT MINERALISCH",
+    "mohshärteKratzfest": "Mohshärte (Kratzfest)",
+    "dichteRohdichte": "Dichte (Rohdichte)",
+    "teilwWasserabs": "Teilw. Wasserabs.",
+    "wärmeleitgefühlt": "Wärmeleitgefühlt λ",
+    "gefügeEigenschaftenVorteile": "Gefüge-Eigenschaften & Vorteile:",
+    "normativEinzuhaltendeVerlegepraxis": "Normativ einzuhaltende Verlegepraxis:",
+    "flächengewichtWasseraufnahmelastRechner": "Flächengewicht & Wasseraufnahmelast Rechner",
+    "berechnungDerEigenlastTrocken": "Berechnung der Eigenlast (trocken) im Vergleich zur wassergesättigten Volllast bei Mineralbelägen",
+    "geometrischeKenngrößen": "Geometrische Kenngrößen",
+    "gesamtflächeDesBelagsA": "Gesamtfläche des Belags A:",
+    "plattenBzwBelagsstärkeMm": "Platten- bzw. Belagsstärke (mm):",
+    "typischFeinsteinzeugFliesen8": "Typisch: Feinsteinzeug-Fliesen ~8-12 mm, Naturwerksteine ~20-40 mm.",
+    "mineralischeDeckenschicht": "Mineralische Deckenschicht",
+    "verlegterWerkstoff": "Verlegter Werkstoff:",
+    "mineralischeWerkstoffeLagernFlüssiges": "Mineralische Werkstoffe lagern flüssiges Wasser im kapillaren Porensystem ab. Dadurch erhöht sich das Eigengewicht – bei leichten Tragwerken (z. B. Holzbalkendecken) ist das zu berücksichtigen.",
+    "ergebnisseStatikAuszug": "Ergebnisse Statik-Auszug:",
+    "volumenGestein": "Volumen Gestein:",
+    "nassgewichtGesättigt": "Nassgewicht (gesättigt):",
+    "bemessungslastTrocken": "* Bemessungslast trocken: ",
+    "knMZusätzlichesGewicht": " kN/m²). Zusätzliches Gewicht bei Sättigung: +",
+    "kgInsgesamt": " kg insgesamt.",
+    "mineralischeProduktgruppenSystemtechnike": " Mineralische Produktgruppen & Systemtechniken (Herstellerneutral)",
+    "keramikenUndGläserWerden": "Keramiken und Gläser werden anspruchsvollen Konformitätsprüfungen nach europäischen Normen unterzogen, um z. B. Frostbeständigkeit, Abriebklassen glasierter Fliesen und die Eignung von Verglasungen zu deklarieren:",
+    "produktgruppeSystem": "Produktgruppe / System",
+    "spezifikationenLeistungsklassen": "Spezifikationen & Leistungsklassen",
+    "güteklassenNormen": "Güteklassen / Normen",
+    "bedeutungImModernenFassaden": "Bedeutung im modernen Fassaden- & Innenbau",
+    "sicherheitsVsgVerbundgläser": "Sicherheits- & VSG-Verbundgläser",
+    "einscheibensicherheitsglasEsgUndVerbunds": "Einscheibensicherheitsglas (ESG) und Verbundsicherheitsglas (VSG) mit zähelastischen PVB-Zwischenfolien sowie Sonnenschutzbeschichtungen.",
+    "dinEn12150Esg": "DIN EN 12150 (ESG), DIN EN ISO 12543 (VSG)",
+    "standardFürAbsturzsicherndeVerglasungen": "Standard für absturzsichernde Verglasungen, Überkopfbereiche, Pfosten-Riegel-Fassaden und Schallschutzgläser.",
+    "brandschutzSpezialgläser": "Brandschutz- & Spezialgläser",
+    "feuerwiderstandsklassifizierteVerglasung": "Feuerwiderstandsklassifizierte Verglasungen mit lichtdurchlässigen Dämmschichten zur Hitzeabsorption im Brandfall.",
+    "din410213Brandschutzverglasung": "DIN 4102-13 (Brandschutzverglasung), Klassen EI30 / EI90 (F30 / F90)",
+    "schnittstellenVonFluchtwegenTreppenräume": "Schnittstellen von Fluchtwegen, Treppenräumen und Brandabschnitten zur Verhinderung von Flammenübertragungen.",
+    "feinsteinzeugBaukeramik": "Feinsteinzeug & Baukeramik",
+    "gepressteExtremDichteKeramikfliesen": "Gepresste, extrem dichte Keramikfliesen mit minimaler kapillarer Wasseraufnahme, glasierte und unglasierte Formate.",
+    "dinEn14411Keramische": "DIN EN 14411 (Keramische Fliesen), Abriebgruppen PEI I bis PEI V",
+    "bodenUndWandbelägeIn": "Boden- und Wandbeläge in stark strapazierten Feucht- und Nassräumen sowie dekorative Fassadenverkleidungen."
+  },
+  "werte": {
+    "floatglasStandardKalknatronglas": "Floatglas (Standard-Kalknatronglas)",
+    "keinerleiOptischeVerzerrung": "Keinerlei optische Verzerrung",
+    "kostengünstigHerstellbar": "Kostengünstig herstellbar",
+    "sehrPlaneOberfläche": "Sehr plane Oberfläche",
+    "nurFürVertikaleVerglasungen": "Nur für vertikale Verglasungen ohne Absturzgefahr. Splittert scharfkantig und birgt hohes Verletzungsrisiko.",
+    "esgEinscheibensicherheitsglas": "ESG (Einscheibensicherheitsglas)",
+    "hoheBiegezugfestigkeitCa120": "Hohe Biegezugfestigkeit (ca. 120 N/mm²)",
+    "sehrTemperaturwechselbeständig": "Sehr temperaturwechselbeständig",
+    "zerfälltBeiStoßbruchIn": "Zerfällt bei Stoßbruch in harmlose, stumpfe Kleinkrümel",
+    "nachträglichesSchneidenOderBohren": "Nachträgliches Schneiden oder Bohren ist nicht möglich (das Glas zerspringt). Gegen Spontanbrüche durch Nickelsulfid-Einschlüsse wird heißgelagertes ESG-H eingesetzt (in Deutschland für Fassaden i. d. R. gefordert).",
+    "vsgVerbundsicherheitsglas": "VSG (Verbundsicherheitsglas)",
+    "splitterbindendDurchZähelastischeReißfes": "Splitterbindend durch zähelastische Reißfest-PVB-Folie (0,76-1,52 mmstärke)",
+    "schallschützendeEigenschaften": "Schallschützende Eigenschaften",
+    "hoheEinbruchhemmung": "Hohe Einbruchhemmung",
+    "erforderlichFürÜberkopfverglasungenUnter": "Erforderlich für Überkopfverglasungen (untere Scheibe) und in der Regel für absturzsichernde Verglasungen (DIN 18008-2/-4). Nach Glasbruch bleibt eine Resttragfähigkeit.",
+    "feinsteinzeugFlieseBisPlattenware": "Feinsteinzeug (Fliese bis Plattenware)",
+    "sehrDichteSinterungWasseraufnahme": "Sehr dichte Sinterung (Wasseraufnahme ≤ 0,5 %)",
+    "hoheAbriebUndBruchfestigkeit": "Hohe Abrieb- und Bruchfestigkeit",
+    "imAußenbereichWerdenVerformbare": "Im Außenbereich werden verformbare Dünnbettmörtel (z. B. C2 S1 nach DIN EN 12004) eingesetzt, um Verformungen aufzunehmen.",
+    "steinzeugFliesenSpaltklinker": "Steinzeug-Fliesen (Spaltklinker)",
+    "rustikaleOptik": "Rustikale Optik",
+    "guteFrostbeständigkeit": "Gute Frostbeständigkeit",
+    "säurefestGegenDieMeisten": "Säurefest gegen die meisten Reiniger",
+    "häufigAlsIndustriebodenOder": "Häufig als Industrieboden oder Werkstattboden eingesetzt. Verfugung muss auf die chemische Belastung abgestimmt sein (z.B. Epoxidharzfugen).",
+    "steingutFliesenKlassischeWandfliese": "Steingut-Fliesen (Klassische Wandfliese)",
+    "leichtZuzuschneidenUndZu": "Leicht zuzuschneiden und zu bohren (Muffenlöcher)",
+    "guteHaftungVerglasterGlasuren": "Gute Haftung verglaster Glasuren",
+    "helleScherbenfarbenFürBrillante": "Helle Scherbenfarben für brillante Designs",
+    "nurFürInnenwändeGeeignet": "Nur für Innenwände geeignet. Im Freien würde gefrierendes Porenwasser die Glasur und den Scherben schädigen.",
+    "granitTiefengestein": "Granit (Tiefengestein)",
+    "extremWitterungsUndAbriebbeständig": "Extrem witterungs- und abriebbeständig",
+    "säurefestImGegensatzZu": "Säurefest im Gegensatz zu Kalksteinen",
+    "hervorragendPolierbar": "Hervorragend polierbar",
+    "universellerAußenUndInnenstein": "Universeller Außen- und Innenstein. Bei hellem Granit ist auf trasszementhaltige Verlegemörtel zu achten, um dunkle Verfärbungen (Ausblühungen / Fleckenbildung) zu vermeiden.",
+    "marmorMetamorphesKalkgestein": "Marmor (Metamorphes Kalkgestein)",
+    "exquisiteEdleAderungUnd": "Exquisite, edle Aderung und Optik",
+    "hygienischeDichte": "Hygienische Dichte",
+    "tolleHaptikImBadbereich": "Tolle Haptik im Badbereich",
+    "säureempfindlichEssigZitroneOder": "Säureempfindlich! Essig, Zitrone oder säurehaltige Reiniger zerstören die Politur sofort und hinterlassen matte blasse Flecken. Nicht tausalzbeständig im Außenbereich.",
+    "verlegterWerkstoff": "Verlegter Werkstoff",
+    "anwendungsbeispielNasslastEinesSteingut": "Anwendungsbeispiel: Nasslast eines Steingut- und eines Feinsteinzeugbelags",
+    "lehrbeispielRohdichtenUndWasseraufnahme": "Lehrbeispiel (Rohdichten und Wasseraufnahme als Lehrwerte)",
+    "steingutNimmtRund46": "Steingut nimmt rund 46 kg Wasser auf, Feinsteinzeug nur etwa 2 kg – das Wasser im Porenraum ist auch die Ursache für Frostschäden bei Steingut im Freien."
+  },
+  "daten": {
+    "BpMineralisch.schritte": [
+      {
+        "titel": "1. Steingut",
+        "formel": "20 \\cdot 0{,}008 \\cdot 1900 \\cdot 1{,}15 = 350\\,\\text{kg}",
+        "erklaerung": "20 m², 8 mm, ρ = 1900 kg/m³, w_abs = 15 %."
+      },
+      {
+        "titel": "2. Feinsteinzeug",
+        "formel": "20 \\cdot 0{,}008 \\cdot 2400 \\cdot 1{,}005 = 386\\,\\text{kg}",
+        "erklaerung": "ρ = 2400 kg/m³, w_abs = 0,5 %."
+      },
+      {
+        "titel": "3. Wasseranteil",
+        "formel": "\\Delta W_{Steingut} = 304 \\cdot 0{,}15 = 46\\,\\text{kg};\\; \\Delta W_{FSZ} = 384 \\cdot 0{,}005 = 2\\,\\text{kg}",
+        "erklaerung": "Trockenmassen 304 bzw. 384 kg."
+      }
+    ],
+    "BpMineralisch.literatur": [
+      "Weller, B.; Härth, K.; Tasche, S.; Unnewehr, S.: Konstruktiver Glasbau – Grundlagen, Anwendung, Beispiele. München: Edition Detail 2008",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "BpMineralisch.regelwerke": [
+      {
+        "title": "DIN 18008-1 bis -5 (Glas im Bauwesen – Bemessungs- und Konstruktionsregeln)"
+      },
+      {
+        "title": "DIN EN 12150 (Glas im Bauwesen – Thermisch vorgespanntes Kalknatron-Einscheibensicherheitsglas)"
+      },
+      {
+        "title": "DIN EN 14411 (Keramische Fliesen und Platten - Definitionen, Klassifizierung, Eigenschaften)"
+      },
+      {
+        "title": "DIN 18516-3 (Außenwandbekleidungen, hinterlüftet - Naturwerkstein)"
+      }
+    ],
+    "BpMineralisch.formeln": [
+      {
+        "formel": "V_{mat} = A \\cdot \\frac{t_{mm}}{1000}",
+        "erklaerung": "Volumen eines Plattenbelags (Fläche A in m², Dicke t in mm).",
+        "quelle": "Lehrformel"
+      },
+      {
+        "formel": "W_{dry} = V_{mat} \\cdot \\rho_{dry}",
+        "erklaerung": "Trockenmasse aus Volumen und Rohdichte.",
+        "quelle": "Lehrformel"
+      },
+      {
+        "formel": "W_{wet} = W_{dry} \\cdot \\left(1 + \\frac{w_{abs}}{100}\\right)",
+        "erklaerung": "Masse bei Wassersättigung (Wasseraufnahme w_abs in M.-%).",
+        "quelle": "Lehrformel"
+      }
+    ]
+  }
+}

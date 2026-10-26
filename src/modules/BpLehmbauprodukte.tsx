@@ -15,6 +15,8 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { BlockMath } from 'react-katex';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
+import inhalt from '@/content/bplehmbauprodukte/BpLehmbauprodukte.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface LoamStandardInfo {
   id: string;
@@ -28,68 +30,7 @@ interface LoamStandardInfo {
   pros: string[];
 }
 
-const LOAM_STANDARDS_DB: LoamStandardInfo[] = [
-  {
-    id: 'stein',
-    norm: 'DIN 18945',
-    title: 'Lehmsteine',
-    classes: 'Anwendungsklassen nach DIN 18945: AK Ia (verputztes, bewittertes Außenmauerwerk von Sichtfachwerk), AK Ib (durchgängig verputztes, bewittertes Außenmauerwerk), AK II (verkleidetes, witterungsgeschütztes Außenmauerwerk und Innenmauerwerk), AK III (trockene Anwendungen) – sie beschreiben die Feuchtebeanspruchung, nicht die Tragfähigkeit.',
-    density: '0,90 - 2,20 g/cm³ (Leicht- bis Schwersysteme)',
-    strength: 'Druckfestigkeitsklassen nach DIN 18945: 2 – 2,5 – 3 – 4 – 5 – 6 (mittlere Steindruckfestigkeit in N/mm²); die charakteristische Mauerwerksdruckfestigkeit fk ergibt sich nach DIN 18940 aus Steinklasse und Mörtel.',
-    rules: 'Müssen trocken gelagert und vor Feuchtigkeit geschützt werden. Werden im Verband mit Dünnbett- oder Normalmörtel vermauert.',
-    application: 'Ausfachung von historischen Fachwerkhäusern, Bau von schweren, wärmespeichernden Innenwänden, tragendes Mauerwerk nach DIN 18940.',
-    pros: [
-      'Guter Schallschutz bei hohen Rohdichten',
-      'Hervorragendes Raumklimaregulationsverhalten (Wasseraufnahmevermögen WSIII)',
-      'Einfach mit Handwerkzeugen säg- und bearbeitbar'
-    ]
-  },
-  {
-    id: 'moertel',
-    norm: 'DIN 18946',
-    title: 'Lehmmauermörtel',
-    classes: 'Lehmmauermörtel nach DIN 18946:2024-03 (Normal-, Leicht- und Dünnbettmörtel; Festigkeitsklassen z. B. M 2,5 mit Druckfestigkeit ≥ 2,5 N/mm²)',
-    density: '1,40 - 1,80 g/cm³',
-    strength: 'Druckfestigkeitsklassen nach DIN 18946 (z. B. M 2,5: ≥ 2,5 N/mm²)',
-    rules: 'Bindet nur über die Tonminerale; Zusätze wie Zement oder Kalk sind nicht zulässig, sonst geht die Wiederverarbeitbarkeit verloren.',
-    application: 'Vermauern von Lehmsteinen, Verfüllen von historischen Fugen im Fachwerkbestand.',
-    pros: [
-      'Lange Verarbeitungszeit (erhärtet nur durch Trocknen)',
-      'Kann bei Bedarf durch bloßes Hinzufügen von Wasser wieder verflüssigt werden',
-      'Absolut materialschonend (salz- und säurefrei, schützt historisches Holz)'
-    ]
-  },
-  {
-    id: 'putz',
-    norm: 'DIN 18947',
-    title: 'Lehmputzmörtel',
-    classes: 'Anforderungsklassen: S I (Standard-Lehmputzmörtel), S II (Putze für erhöhte mechanische Belastung)',
-    density: '1,20 - 1,70 g/cm³',
-    strength: 'Biegezugfestigkeit: Klasse I (≥ 0,3 MPa), Klasse II (≥ 0,4 MPa)',
-    rules: 'Mehrlagiger Auftrag empfohlen. Rissempfindlichkeit durch Faserzugabe (Stroh, Flachs, Tierhaare) oder Gewebearmierung (Jute, Glasfaser) verringern.',
-    application: 'Innenputz auf mineralischen Untergründen (Ziegel, Beton, KS) oder Holzfaser- und Lehmbauplatten.',
-    pros: [
-      'Bindet keine Schadstoffe, absorbiert luftgetragene Gerüche und Rauch',
-      'Puffert Schwankungen der Raumluftfeuchte (Sorptionsklassen nach DIN 18947)',
-      'Hält angrenzende Holzbauteile trocken'
-    ]
-  },
-  {
-    id: 'platte',
-    norm: 'DIN 18948',
-    title: 'Lehmbauplatten',
-    classes: 'Typen: LPL1 (Reine Lehmplatten), LPL2 (Faser- oder Schilfrohr-armiert), LPL3 (Gipskarton-Alternative)',
-    density: '0,80 - 1,40 g/cm³',
-    strength: 'Biegebeanspruchung: Bruchkraft ≥ 100 N pro 10 mm Plattenstärke',
-    rules: 'Montage auf Holz- oder Metall-Unterkonstruktionen im Trockenbauverfahren mittels Tellerkopfschrauben.',
-    application: 'Ökologischer, atmungsaktiver Trockenbau bei Trennwänden, Deckenabhängungen, Vorsatzschalen und Sanierungen.',
-    pros: [
-      'Verbessert den Schallschutz durch zusätzliche Masse',
-      'Je nach Produkt ohne synthetische Bindemittel',
-      'Sofort trocken montierbar, wodurch wochenlange Bau-Trocknungszeiten entfallen'
-    ]
-  }
-];
+const LOAM_STANDARDS_DB: LoamStandardInfo[] = inhalt.daten.LOAM_STANDARDS_DB;
 
 export default function BpLehmbauprodukte() {
   const [activeTab, setActiveTab] = useState<'steckbrief' | 'standards' | 'bemessung' | 'dauerhaftigkeit'>('steckbrief');
@@ -144,14 +85,10 @@ export default function BpLehmbauprodukte() {
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Layers className="text-shiraz" /> Industrielle Lehmbauprodukte (Bauprodukte)
-        </h2>
+          <Layers className="text-shiraz" /><MdText text={inhalt.texte.industrielleLehmbauprodukteBauprodukte} /></h2>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-3 mb-6">
-          <p>
-            Der moderne Lehmbau verbindet traditionelle, kreislauffähige Baustoffqualitäten mit industrieller Präzision und Normensicherheit. 
-            Durch die Produktnormen DIN 18945–18948 und die Bemessungsnorm DIN 18940 (2023) ist tragendes Lehmsteinmauerwerk im Anwendungsbereich der Norm ohne Einzelfallgenehmigung möglich; andere Bauweisen (z. B. tragender Stampflehm) benötigen weiterhin vBG bzw. ZiE.
-          </p>
+          <p><MdText text={inhalt.texte.derModerneLehmbauVerbindet} /></p>
         </div>
 
         {/* Primary Tabs Navigation */}
@@ -184,8 +121,7 @@ export default function BpLehmbauprodukte() {
             }`}
             onClick={() => setActiveTab('bemessung')}
           >
-            <Calculator size={16} /> Tragfähigkeit (DIN 18940)
-          </button>
+            <Calculator size={16} /><MdText text={inhalt.texte.tragfähigkeitDin18940} /></button>
           <button aria-pressed={activeTab === 'dauerhaftigkeit'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'dauerhaftigkeit' 
@@ -194,8 +130,7 @@ export default function BpLehmbauprodukte() {
             }`}
             onClick={() => setActiveTab('dauerhaftigkeit')}
           >
-            <Droplets size={16} /> Feuchteschutz &amp; Konstruktion
-          </button>
+            <Droplets size={16} /><MdText text={inhalt.texte.feuchteschutzKonstruktion} /></button>
         </div>
 
         {/* Tab 1: Steckbrief */}
@@ -239,8 +174,7 @@ export default function BpLehmbauprodukte() {
                     <p className="text-xs font-mono text-slate-600 mt-1">Produktnorm: {currentStandard.norm}</p>
                   </div>
                   <span className="text-xs bg-emerald-100 text-emerald-800 font-bold px-3 py-1.5 rounded-full flex items-center gap-1 shrink-0 self-start md:self-center">
-                    <ShieldCheck size={14} /> Amtlich geregelt
-                  </span>
+                    <ShieldCheck size={14} /><MdText text={inhalt.texte.amtlichGeregelt} /></span>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -250,7 +184,7 @@ export default function BpLehmbauprodukte() {
                   </div>
 
                   <div className="bg-white p-4 rounded-xl border border-home-grau/20 shadow-xs">
-                    <h4 className="text-xs font-bold text-text-main/70 uppercase tracking-wider mb-1">Technische Rohdichten</h4>
+                    <h4 className="text-xs font-bold text-text-main/70 uppercase tracking-wider mb-1"><MdText text={inhalt.texte.technischeRohdichten} /></h4>
                     <p className="text-sm text-text-main leading-relaxed">{currentStandard.density}</p>
                   </div>
 
@@ -266,12 +200,12 @@ export default function BpLehmbauprodukte() {
                 </div>
 
                 <div className="bg-white p-5 rounded-xl border border-home-grau/25 shadow-xs">
-                  <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider mb-2">Spezifische Verarbeitungsvorschrift</h4>
+                  <h4 className="text-xs font-bold text-shiraz uppercase tracking-wider mb-2"><MdText text={inhalt.texte.spezifischeVerarbeitungsvorschrift} /></h4>
                   <p className="text-sm text-text-main/90 leading-relaxed font-sans">{currentStandard.rules}</p>
                 </div>
 
                 <div className="space-y-2 mt-4">
-                  <h4 className="text-xs font-bold text-slate-600 uppercase tracking-wider">Werkstoffliche Vorteile</h4>
+                  <h4 className="text-xs font-bold text-slate-600 uppercase tracking-wider"><MdText text={inhalt.texte.werkstofflicheVorteile} /></h4>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                     {currentStandard.pros.map((pro, index) => (
                       <div key={index} className="bg-emerald-50/40 p-3 rounded-lg border border-emerald-500/15 flex gap-2 items-start">
@@ -291,11 +225,8 @@ export default function BpLehmbauprodukte() {
           <div className="space-y-6 animate-in fade-in duration-200">
             <div className="bg-slate-50 border border-home-grau/30 p-4 sm:p-5 rounded-xl">
               <h3 className="font-bold text-text-main flex items-center gap-1.5 text-base">
-                <Calculator className="text-shiraz" size={20} /> Tragfähigkeitsprüfung nach DIN 18940 (Mauerwerksbemessung)
-              </h3>
-              <p className="text-xs text-text-main/70 mt-1">
-                Ermitteln Sie die maximale Tragfähigkeit von massiven Innen- und geschützten Außenwänden aus genormten Lehmplansteinen unter mäßiger horizontaler Halterung im vereinfachten Berechnungskonzept.
-              </p>
+                <Calculator className="text-shiraz" size={20} /><MdText text={inhalt.texte.tragfähigkeitsprüfungNachDin18940} /></h3>
+              <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.ermittelnSieDieMaximale} /></p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -305,7 +236,7 @@ export default function BpLehmbauprodukte() {
 
                 <div className="space-y-1">
                   <label className="text-xs font-bold text-text-main/80 flex justify-between">
-                    <span>Lichte Wandhöhe (h):</span>
+                    <span><MdText text={inhalt.texte.lichteWandhöheH} /></span>
                     <span className="text-shiraz">{formatDeZahl(height, 2)} m</span>
                   </label>
                   <input
@@ -325,7 +256,7 @@ export default function BpLehmbauprodukte() {
 
                 <div className="space-y-1">
                   <label className="text-xs font-bold text-text-main/80 flex justify-between">
-                    <span>Wandstärke (t):</span>
+                    <span><MdText text={inhalt.texte.wandstärkeT} /></span>
                     <span className="text-shiraz">{formatDeWert(thickness)} cm</span>
                   </label>
                   <div className="grid grid-cols-3 gap-2">
@@ -347,7 +278,7 @@ export default function BpLehmbauprodukte() {
 
                 <div className="space-y-1">
                   <label className="text-xs font-bold text-text-main/80 flex justify-between">
-                    <span>Festigkeitsklasse (FK):</span>
+                    <span><MdText text={inhalt.texte.festigkeitsklasseFk} /></span>
                     <span className="text-shiraz">Klasse {formatDeWert(strengthClass)}</span>
                   </label>
                   <div className="grid grid-cols-6 gap-1">
@@ -365,13 +296,11 @@ export default function BpLehmbauprodukte() {
                       </button>
                     ))}
                   </div>
-                  <span className="text-[10px] text-slate-500 leading-normal block pt-1">
-                    Charakteristische Mauerwerksdruckfestigkeit f<sub>k</sub> = {formatDeZahl(getFk(strengthClass), 1)} N/mm² (nach DIN 18940)
-                  </span>
+                  <span className="text-[10px] text-slate-500 leading-normal block pt-1"><MdText text={inhalt.texte.charakteristischeMauerwerksdruckfestigke} />{formatDeZahl(getFk(strengthClass), 1)}<MdText text={inhalt.texte.nMmNachDin} /></span>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-text-main/80 block">Oben &amp; unten horizontal gehalten?</label>
+                  <label className="text-xs font-bold text-text-main/80 block"><MdText text={inhalt.texte.obenUntenHorizontalGehalten} /></label>
                   <div className="flex gap-4">
                     <label className="flex items-center gap-2 text-xs font-medium cursor-pointer">
                       <input
@@ -380,7 +309,7 @@ export default function BpLehmbauprodukte() {
                         onChange={() => setHoldsTopAndBottom(true)}
                         className="accent-shiraz"
                       />
-                      <span>Ja (Slab-Halterung, β = 0,75)</span>
+                      <span><MdText text={inhalt.texte.jaSlabHalterung0} /></span>
                     </label>
                     <label className="flex items-center gap-2 text-xs font-medium cursor-pointer">
                       <input
@@ -389,14 +318,14 @@ export default function BpLehmbauprodukte() {
                         onChange={() => setHoldsTopAndBottom(false)}
                         className="accent-shiraz"
                       />
-                      <span>Nein (Frei/Auskragend, β = 1,0)</span>
+                      <span><MdText text={inhalt.texte.neinFreiAuskragend1} /></span>
                     </label>
                   </div>
                 </div>
 
                 <div className="space-y-1 pt-1 border-t border-home-grau/10">
                   <label className="text-xs font-bold text-text-main/80 flex justify-between">
-                    <span>Bemessungslast (N<sub>Ed</sub>):</span>
+                    <span><MdText text={inhalt.texte.bemessungslastNSubEd} /></span>
                     <span className="text-amber-800 font-bold">{formatDeWert(designLoad)} kN/m</span>
                   </label>
                   <input
@@ -422,17 +351,17 @@ export default function BpLehmbauprodukte() {
 
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
                     <div className="bg-white p-3 rounded-lg border border-home-grau/20 text-center">
-                      <span className="text-[10px] text-slate-500 block">Knicklänge h<sub>ef</sub></span>
+                      <span className="text-[10px] text-slate-500 block"><MdText text={inhalt.texte.knicklängeHSubEf} /></span>
                       <span className="font-mono font-bold text-sm text-text-main">{formatDeZahl(effectiveHeight, 2)} m</span>
                     </div>
 
                     <div className="bg-white p-3 rounded-lg border border-home-grau/20 text-center">
-                      <span className="text-[10px] text-slate-500 block">Schlankheitsgrad λ</span>
+                      <span className="text-[10px] text-slate-500 block"><MdText text={inhalt.texte.schlankheitsgrad} /></span>
                       <span className="font-mono font-bold text-sm text-text-main">{formatDeZahl(slenderness, 1)}</span>
                     </div>
 
                     <div className="bg-white p-3 rounded-lg border border-home-grau/20 text-center">
-                      <span className="text-[10px] text-slate-500 block">Reduktionsbeiwert &Phi;</span>
+                      <span className="text-[10px] text-slate-500 block"><MdText text={inhalt.texte.reduktionsbeiwert} /></span>
                       <span className="font-mono font-bold text-sm text-text-main">{formatDeZahl(phi, 3)}</span>
                     </div>
 
@@ -444,7 +373,7 @@ export default function BpLehmbauprodukte() {
 
                   {/* Math representation */}
                   <div className="bg-white p-4 rounded-xl border border-home-grau/20 mt-5 space-y-3">
-                    <h5 className="text-xs font-bold text-slate-600">Rechnerischer Festigkeitsbezug (LaTeX):</h5>
+                    <h5 className="text-xs font-bold text-slate-600"><MdText text={inhalt.texte.rechnerischerFestigkeitsbezugLatex} /></h5>
                     <div className="text-[13px] overflow-x-auto py-1">
                       <BlockMath math={`h_{ef} = \\beta \\cdot h = ${formatDeTeX(effectiveHeightBeiwert, 2)} \\cdot ${formatDeTeX(height, 2)} = ${formatDeTeX(effectiveHeight, 2)}\\text{ m}`} />
                       <BlockMath math={`\\lambda = \\frac{h_{ef}}{t} = \\frac{${formatDeTeX(effectiveHeight, 2)}}{${formatDeTeX(wallThicknessM, 3)}} = ${formatDeTeX(slenderness, 1)} \\leq 21`} />
@@ -469,9 +398,9 @@ export default function BpLehmbauprodukte() {
                       <h4 className="font-bold text-sm">
                         {isSlendernessOk ? (
                           isCapacityOk 
-                            ? 'Tragfähigkeitsnachweis ERFÜLLT' 
-                            : 'TRAGFÄHIGKEIT NICHT ERFÜLLT'
-                        ) : 'SCHLANKHEIT GREIFT NICHT (Überschritten!)'}
+                            ? inhalt.werte.tragfähigkeitsnachweisErfüllt 
+                            : inhalt.werte.tragfähigkeitNichtErfüllt
+                        ) : inhalt.werte.schlankheitGreiftNichtÜberschritten}
                       </h4>
                       <p className="text-xs leading-normal opacity-90">
                         {isSlendernessOk ? (
@@ -492,54 +421,36 @@ export default function BpLehmbauprodukte() {
         {activeTab === 'dauerhaftigkeit' && (
           <div className="space-y-6 animate-in fade-in duration-200">
             <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-              <p>
-                Da Lehm rein physikalisch bindet und wasserlöslich ist, ist der konstruktive Feuchteschutz entscheidend. Mit einfachen Regeln („guter Stiefel und guter Hut“) sind Lehmbauten sehr dauerhaft.
-              </p>
+              <p><MdText text={inhalt.texte.daLehmReinPhysikalisch} /></p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-white p-5 rounded-xl border border-home-grau/25 shadow-xs flex flex-col gap-3">
                 <h3 className="font-bold text-shiraz flex items-center gap-1.5 text-sm uppercase tracking-wider">
-                  <ShieldCheck size={18} /> 1. Spritzwasserschutz („Der Stiefel“)
-                </h3>
-                <p className="text-xs text-text-main/80 leading-relaxed flex-1">
-                  Der sensible Fußpunkt der Lehmwand im erdberührten Sockelbereich muss zwingend aus wasserfesten Baustoffen (z. B. Beton, Mauerwerk aus Klinker, Schaumglas) hergestellt werden.
-                </p>
-                <div className="bg-slate-100 p-3 rounded-lg text-[11px] font-mono border text-slate-700">
-                  <strong>Vorgabe (DIN 18940 / WTA):</strong> Sockelhöhe min. 30 cm über Geländeoberfläche im fertigen Zustand.
-                </div>
+                  <ShieldCheck size={18} /><MdText text={inhalt.texte.t1SpritzwasserschutzDerStiefel} /></h3>
+                <p className="text-xs text-text-main/80 leading-relaxed flex-1"><MdText text={inhalt.texte.derSensibleFußpunktDer} /></p>
+                <div className="bg-slate-100 p-3 rounded-lg text-[11px] font-mono border text-slate-700"><MdText text={inhalt.texte.vorgabeDin18940Wta} /></div>
               </div>
 
               <div className="bg-white p-5 rounded-xl border border-home-grau/25 shadow-xs flex flex-col gap-3">
                 <h3 className="font-bold text-shiraz flex items-center gap-1.5 text-sm uppercase tracking-wider">
-                  <HardHat size={18} /> 2. Niederschlagsschutz („Der Hut“)
-                </h3>
-                <p className="text-xs text-text-main/80 leading-relaxed flex-1">
-                  Gegen direkten Schlagregen sind breite architektonische Schutzflächen unerlässlich, damit Lehmoberflächen nicht ausgewaschen werden.
-                </p>
-                <div className="bg-slate-100 p-3 rounded-lg text-[11px] font-mono border text-slate-700">
-                  <strong>Schutzmaßnahme:</strong> Großzügige Dachüberstände. Alternativ hydrophobe Bekleidungen oder Holzverschalungen.
-                </div>
+                  <HardHat size={18} /><MdText text={inhalt.texte.t2NiederschlagsschutzDerHut} /></h3>
+                <p className="text-xs text-text-main/80 leading-relaxed flex-1"><MdText text={inhalt.texte.gegenDirektenSchlagregenSind} /></p>
+                <div className="bg-slate-100 p-3 rounded-lg text-[11px] font-mono border text-slate-700"><MdText text={inhalt.texte.schutzmaßnahmeGroßzügigeDachüberständeAl} /></div>
               </div>
 
               <div className="bg-white p-5 rounded-xl border border-home-grau/25 shadow-xs flex flex-col gap-3">
                 <h3 className="font-bold text-shiraz flex items-center gap-1.5 text-sm uppercase tracking-wider">
-                  <Droplets size={18} /> 3. Diffusionsoffenheit („Die Lunge“)
-                </h3>
-                <p className="text-xs text-text-main/80 leading-relaxed flex-1">
-                  Lehmwände müssen diffusionsoffen und sorptionsfähig bleiben. Diffusionsdichte Folien, Dispersions- oder Kunstharzbeschichtungen sind ungeeignet.
-                </p>
-                <div className="bg-slate-100 p-3 rounded-lg text-[11px] font-mono border text-slate-700">
-                  <strong>Kompatibilität:</strong> Sumpfkalkfarben, Rein-Silikatfarben oder spezielle, diffusionsoffene Lehm-Designputze.
-                </div>
+                  <Droplets size={18} /><MdText text={inhalt.texte.t3DiffusionsoffenheitDieLunge} /></h3>
+                <p className="text-xs text-text-main/80 leading-relaxed flex-1"><MdText text={inhalt.texte.lehmwändeMüssenDiffusionsoffenUnd} /></p>
+                <div className="bg-slate-100 p-3 rounded-lg text-[11px] font-mono border text-slate-700"><MdText text={inhalt.texte.kompatibilitätSumpfkalkfarbenReinSilikat} /></div>
               </div>
             </div>
 
             <div className="bg-amber-50/50 border-l-4 border-l-amber-500 p-4 rounded-xl flex gap-3 text-sm text-stone-900 mt-4 shadow-3xs">
               <AlertTriangle className="text-amber-600 shrink-0 mt-0.5" />
               <div>
-                <strong className="font-bold block text-sm">Feuchtebegrenzung:</strong> Lehmbauteile dürfen nicht dauerhaft hoher Feuchte oder stehendem Wasser ausgesetzt sein, da Festigkeit und Schimmelresistenz mit steigendem Wassergehalt sinken (Anwendungsgrenzen nach DIN 18940 beachten).
-              </div>
+                <strong className="font-bold block text-sm">Feuchtebegrenzung:</strong><MdText text={inhalt.texte.lehmbauteileDürfenNichtDauerhaft} /></div>
             </div>
           </div>
         )}
@@ -554,32 +465,11 @@ export default function BpLehmbauprodukte() {
           { title: 'Lehmstein', url: 'https://de.wikipedia.org/wiki/Lehmstein' }
         ]}
         weblinks={[
-          { title: 'Dachverband Lehm e. V.', url: 'https://www.dachverband-lehm.de/' }
+          { title: inhalt.werte.dachverbandLehmEV, url: 'https://www.dachverband-lehm.de/' }
         ]}
-        literatur={[
-          'Minke, Gernot: Handbuch Lehmbau - Baustoffkunde, Techniken und Architektur (Ökobuch Verlag)',
-          'Dachverband Lehm e. V. (Hrsg.): Lehmbau Regeln – Begriffe, Baustoffe, Bauteile. 3., überarb. Aufl., Wiesbaden: Vieweg+Teubner 2009',
-          'Dachverband Lehm e. V.: Technische Merkblätter TM01 Anforderungen an Lehmputz als Bauteil (2. Aufl., Juni 2014), TM05 Qualitätsüberwachung von Baulehm (Juni 2011), TM06 Lehmdünnlagenbeschichtungen (Juni 2015)'
-        ]}
-        regelwerke={[
-          { title: 'DIN 18940:2023-06: Tragendes Lehmsteinmauerwerk – Konstruktion, Bemessung und Ausführung' },
-          { title: 'DIN 18945:2024-03: Lehmsteine - Anforderungen, Prüfung und Kennzeichnung' },
-          { title: 'DIN 18946:2024-03: Lehmmauermörtel - Anforderungen, Prüfung und Kennzeichnung' },
-          { title: 'DIN 18947:2024-03: Lehmputzmörtel - Anforderungen, Prüfung und Kennzeichnung' },
-          { title: 'DIN 18948:2024-03: Lehmplatten - Anforderungen, Prüfung und Kennzeichnung' }
-        ]}
-        formeln={[
-          {
-            formel: '\\lambda = \\frac{h_{ef}}{t} \\leq 21',
-            erklaerung: 'Schlankheit der Wand (Grenzwert 21 als Lehrannahme; maßgebender Wert nach DIN 18940 manuell prüfen).',
-            quelle: 'DIN 18940 Kap. 6.2'
-          },
-          {
-            formel: 'N_{Rd} = \\Phi \\cdot t \\cdot f_d',
-            erklaerung: 'Bemessungswert des vertikalen Tragwiderstands pro Längeneinheit unter Berücksichtigung von Ausbiegungen.',
-            quelle: 'DIN 18940 Kap. 6.1'
-          }
-        ]}
+        literatur={inhalt.daten["BpLehmbauprodukte.literatur"]}
+        regelwerke={inhalt.daten["BpLehmbauprodukte.regelwerke"]}
+        formeln={inhalt.daten["BpLehmbauprodukte.formeln"]}
       />
     </div>
   );

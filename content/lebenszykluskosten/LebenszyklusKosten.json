@@ -1,0 +1,84 @@
+{
+  "texte": {
+    "lebenszykluskostenLccBauteillebensdauern": "Lebenszykluskosten (LCC) & Bauteillebensdauern",
+    "berechnungNachBarwertmethodeKapitalwert": "Berechnung nach Barwertmethode (Kapitalwert), Lebensdauerprognosen über BNB-Referenzen und historische/aktuelle Entwicklung der Realbaupreise in Deutschland."
+  },
+  "werte": {
+    "lebenszykluskostenLcc": "Lebenszykluskosten (LCC)",
+    "beispiel1BarwertJährlicher": "Beispiel 1: Barwert jährlicher Energiekosten über 30 Jahre",
+    "ohneAbzinsungWärenEs": "Ohne Abzinsung wären es 60 000 €. Je höher der Zins, desto weniger zählen Betriebskosten gegenüber der Investition – die Zinswahl beeinflusst den Variantenvergleich erheblich.",
+    "iso1568652017": "ISO 15686-5:2017; DIN EN 16627:2015-09",
+    "beispiel2ErsatzinvestitionFür": "Beispiel 2: Ersatzinvestition für Fenster nach 30 Jahren",
+    "langlebigeBauteileMitSpäten": "Langlebige Bauteile mit späten Ersatzzeitpunkten erscheinen im Barwert günstig; die Nutzungsdauern nach BNB bzw. VDI 2067 bestimmen daher maßgeblich das Ergebnis.",
+    "iso15686520172": "ISO 15686-5:2017; BNB-Nutzungsdauern von Bauteilen",
+    "oktober2026Ap7": "Oktober 2026 (AP 7 Nachhaltigkeit: Barwertmethode, Normausgaben und Literatur geprüft; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "LebenszyklusKosten.schritte": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Heizkosten 2 000 € pro Jahr (real konstant), Kalkulationszins r = 2 %, T = 30 Jahre.",
+        "formel": "C = 2\\,000\\,\\text{€/a},\\; r = 0{,}02,\\; T = 30"
+      },
+      {
+        "titel": "Rentenbarwertfaktor",
+        "erklaerung": "Summe der abgezinsten Jahre:",
+        "formel": "\\frac{1 - 1{,}02^{-30}}{0{,}02} = \\frac{1 - 0{,}552}{0{,}02} = 22{,}40"
+      },
+      {
+        "titel": "Barwert",
+        "erklaerung": "Heutiger Wert aller künftigen Zahlungen:",
+        "formel": "BW = 2\\,000 \\cdot 22{,}40 = 44\\,800\\,\\text{€}"
+      }
+    ],
+    "LebenszyklusKosten.schritte_2": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Fenstertausch nach angenommener Nutzungsdauer von 30 Jahren für 20 000 €, r = 3 %.",
+        "formel": "C_{30} = 20\\,000\\,\\text{€}"
+      },
+      {
+        "titel": "Abzinsungsfaktor",
+        "erklaerung": "Einmalzahlung im Jahr 30:",
+        "formel": "(1{,}03)^{30} = 2{,}427"
+      },
+      {
+        "titel": "Barwert",
+        "erklaerung": "In der LCC-Bilanz anzusetzender Wert:",
+        "formel": "BW = \\frac{20\\,000}{2{,}427} = 8\\,240\\,\\text{€}"
+      }
+    ],
+    "LebenszyklusKosten.literatur": [
+      "Pelzeter, A.: Lebenszykluskosten von Immobilien – Einfluss von Lage, Gestaltung und Umwelt. Köln: Rudolf Müller 2006 (Schriften zur Immobilienökonomie, Bd. 36)",
+      "König, H.; Kohler, N.; Kreißig, J.; Lützkendorf, T.: Lebenszyklusanalyse in der Gebäudeplanung. München: Edition Detail 2009"
+    ],
+    "LebenszyklusKosten.regelwerke": [
+      {
+        "title": "DIN EN 15643:2021-12 (Nachhaltigkeit von Bauwerken – Allgemeine Rahmenbedingungen)"
+      },
+      {
+        "title": "ISO 15686-5:2017 (Buildings and constructed assets – Service life planning – Part 5: Life-cycle costing)",
+        "url": "https://www.iso.org/"
+      },
+      {
+        "title": "DIN EN 16627:2015-09 (Bewertung der ökonomischen Qualität von Gebäuden)"
+      },
+      {
+        "title": "BNB Leitfaden Nachhaltiges Bauen (Anlage 1: Nutzungsdauern von Bauteilen)",
+        "url": "https://www.nachhaltigesbauen.de/"
+      }
+    ],
+    "LebenszyklusKosten.formeln": [
+      {
+        "formel": "BW = \\sum_{t=0}^{T} \\frac{C_t}{(1 + r)^t} \\quad [\\text{€}]",
+        "erklaerung": "Barwertmethode (Net Present Value NPV) der kumulierten Lebenszykluskosten über Betrachtungszeitraum T bei Diskontierungszinssatz r und periodischen Kosten Ct.",
+        "quelle": "ISO 15686-5 / DIN EN 16627"
+      },
+      {
+        "formel": "K_{\\text{LCC}} = C_{\\text{Herstellung}} + \\sum_{t=1}^T \\frac{C_{\\text{Betrieb},t} + C_{\\text{Instand},t}}{(1 + r)^t} + \\frac{C_{\\text{Rückbau}} - R_{\\text{Rest}}}{(1 + r)^T}",
+        "erklaerung": "Ganzheitliche Lebenszykluskostenstruktur unter Berücksichtigung von Errichtung, Nutzung, periodischer Instandhaltung sowie Restwerten am Lebensdauerende.",
+        "quelle": "BNB Modul LCC"
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "werte": {
+    "aHBauphysikBauakustik": "a) + h) Bauphysik & Bauakustik",
+    "aBauphysikUWert": "a) Bauphysik: U-Wert",
+    "hBauakustikSchallschutz": "h) Bauakustik: Schallschutz",
+    "bBetonMischungsentwurf": "b) Beton: Mischungsentwurf",
+    "bBetonMischungsentwurf2": "b) Beton: Mischungsentwurf",
+    "cETragwerksnachweise": "c)–e) Tragwerksnachweise",
+    "cMassivbauBiegungIm": "c) Massivbau: Biegung im GZT",
+    "dHolzbauStützenknicken": "d) Holzbau: Stützenknicken",
+    "eMauerwerkTragfähigkeit": "e) Mauerwerk: Tragfähigkeit",
+    "fNachhaltigkeitÖkobilanz": "f) Nachhaltigkeit & Ökobilanz",
+    "fNachhaltigkeitÖkobilanz2": "f) Nachhaltigkeit & Ökobilanz",
+    "gBauenImBestand": "g) Bauen im Bestand",
+    "gBauenImBestand2": "g) Bauen im Bestand",
+    "iBrandschutzHeißbemessung": "i) Brandschutz: Heißbemessung",
+    "iBrandschutzHeißbemessung2": "i) Brandschutz: Heißbemessung"
+  }
+}

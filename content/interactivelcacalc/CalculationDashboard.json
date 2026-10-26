@@ -1,0 +1,26 @@
+{
+  "texte": {
+    "ergebnisZusammenfassungQngLca": "Ergebnis-Zusammenfassung (QNG & LCA)",
+    "orientierungswertInAnlehnungAn": "Orientierungswert in Anlehnung an QNG (vereinfacht: A1–A4, C, ohne B4/B6 – kein Nachweis)",
+    "kgCoEqM": "kg CO₂-eq / (m² NRF · a)",
+    "modulDRecyclingGutschrift": "Modul D: Recycling-Gutschrift außerhalb der Systemgrenze",
+    "kgCoEqM2": " kg CO₂-eq/(m²·a)",
+    "nettoBilanzUnterEinrechnung": "Netto-Bilanz unter Einrechnung zukünftiger Wertstoff-Gutschriften: ",
+    "hinweisNachQngUnd": ". *Hinweis: Nach QNG und DGNB muss der formale Nachweis auf Modul A–C ohne Abzug von D erbracht werden.*",
+    "urbanMiningIndex": "Urban Mining Index",
+    "biogenerPuffer": "Biogener Puffer",
+    "kwhMAPenrt": "kWh/(m²a) PENRT",
+    "coBilanzNachLebenszyklusphasen": "CO₂-Bilanz nach Lebenszyklusphasen (kg CO₂-eq)",
+    "nettobilanzCoAusstoßA1": "Nettobilanz CO₂-Ausstoß (A1-D):"
+  },
+  "werte": {
+    "phaseA1A3Baustoff": "Phase A1-A3: Baustoff-Herstellung",
+    "rohstoffgewinnungUndVeredelungIm": "Rohstoffgewinnung und Veredelung im Werk.",
+    "phaseA4LogistikTransportweg": "Phase A4: Logistik-Transportweg",
+    "zustellungZumBaustellenort": "Zustellung zum Baustellenort.",
+    "phaseC3C4Entsorgung": "Phase C3-C4: Entsorgung (End of Life)",
+    "rückbauUndVerbrennungBiogener": "Rückbau und Verbrennung biogener Anteile.",
+    "modulDRecyclingpotenziale": "Modul D: Recyclingpotenziale",
+    "gutschriftenAußerhalbDerBilanzgrenze": "Gutschriften außerhalb der Bilanzgrenze."
+  }
+}

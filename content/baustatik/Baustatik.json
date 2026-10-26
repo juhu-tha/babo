@@ -1,0 +1,167 @@
+{
+  "texte": {
+    "systemskizzeLaststellung": "Systemskizze & Laststellung",
+    "dieBaustatikLiefertDie": "Die Baustatik liefert die Schnittgrößen (Moment ",
+    "normalkraft": ", Normalkraft ",
+    "dieFürDieBemessung": "), die für die Bemessung von Bauteilen erforderlich sind. Hier können statisch bestimmte Systeme (Einfeldträger, Kragarm, Dreigelenkrahmen) untersucht werden, sowie der statisch unbestimmte Zweifeldträger.",
+    "systemLasten": "System & Lasten",
+    "statischesSystem": "Statisches System",
+    "auflagerALinks": "Auflager A (links)",
+    "auflagerCRechts": "Auflager C (rechts)",
+    "maxBiegemoment": "Max. Biegemoment (|",
+    "maxQuerkraft": "Max. Querkraft (|",
+    "biegemomentenverlaufMX": "Biegemomentenverlauf M(x)",
+    "querkraftverlaufVX": "Querkraftverlauf V(x)",
+    "schematischeDarstellungAuflagerartenIn": "Schematische Darstellung: Auflagerarten in der Ebene",
+    "auflagerartenInDer2d": "Auflagerarten in der 2D-Ebene: Ein Loslager nimmt nur Vertikalkräfte auf (1 Unbekannte). Ein Festlager nimmt Vertikal- und Horizontalkräfte auf (2 Unbekannte). Eine Einspannung nimmt zusätzlich ein Moment auf (3 Unbekannte).",
+    "systemLasten2": "System & Lasten",
+    "auflagerALinks2": "Auflager A (links)",
+    "auflagerBRechts": "Auflager B (rechts)",
+    "maximalwerteSchnittgrößen": "Maximalwerte Schnittgrößen",
+    "maximalesBiegemoment": "Maximales Biegemoment (|",
+    "maximaleQuerkraft": "Maximale Querkraft (|",
+    "maximaleNormalkraft": "Maximale Normalkraft (|",
+    "systemskizzeSchnittgrößen": "Systemskizze & Schnittgrößen",
+    "querkraftV": "Querkraft (V)",
+    "normalkraftN": "Normalkraft (N)"
+  },
+  "werte": {
+    "biegemomentMXKnm": "Biegemoment M(x) [kNm]",
+    "querkraftVXKn": "Querkraft V(x) [kN]",
+    "positionXM": "Position x [m]",
+    "berechnungVonSchnittgrößenBiegemoment": "Berechnung von Schnittgrößen (Biegemoment und Querkraft) für Einfeldträger, Kragarm und Rahmen.",
+    "artDerLagerungDes": "Art der Lagerung des Trägers (z.B. Einfeldträger, Kragarm).",
+    "statischesSystem": "Statisches System",
+    "gesamtlängeL": "Gesamtlänge (l)",
+    "stützweiteLängeL": "Stützweite / Länge (l)",
+    "gesamtlängeDesBauteilsÜber": "Gesamtlänge des Bauteils über beide Felder.",
+    "abstandZwischenDenAuflagern": "Abstand zwischen den Auflagern oder Gesamtlänge des Bauteils.",
+    "positionMittelauflagerL": "Position Mittelauflager (l₁)",
+    "lageDesMittlerenAuflagers": "Lage des mittleren Auflagers; die Felder dürfen ungleich lang sein. Annahme: konstante Biegesteifigkeit EI über beide Felder.",
+    "gleichlastQ": "Gleichlast (q)",
+    "einzellastF": "Einzellast (F)",
+    "punktuellEinwirkendeKraftAuf": "Punktuell einwirkende Kraft auf das Bauteil.",
+    "positionEinzellastA": "Position Einzellast (a)",
+    "einzelmomentM": "Einzelmoment (M)",
+    "punktuellEinwirkendesBiegemoment": "Punktuell einwirkendes Biegemoment.",
+    "positionMomentAM": "Position Moment (a_m)",
+    "auflagerBMitte": "Auflager B (Mitte)",
+    "auflagerBRechts": "Auflager B (rechts)",
+    "ihrRechenwegAuflagerkräfteUnd": "Ihr Rechenweg: Auflagerkräfte und Schnittgrößen mit den aktuellen Eingaben",
+    "gleichgewichtsbedingungenDreimomentengle": "Gleichgewichtsbedingungen; Dreimomentengleichung (Zweifeldträger)",
+    "auflagerkraftA": "Auflagerkraft A",
+    "momentengleichgewichtUmDasRechte": "Momentengleichgewicht um das rechte Auflager B.",
+    "vertikalUndMomentengleichgewichtAn": "Vertikal- und Momentengleichgewicht an der Einspannung A (links).",
+    "stützmomentÜberDemMittelauflager": "Stützmoment über dem Mittelauflager",
+    "auflagerkraftB": "Auflagerkraft B",
+    "momentengleichgewichtUmDasLinke": "Momentengleichgewicht um das linke Auflager A.",
+    "auflagerkräfteDerBeidenEinfeldträger": "Auflagerkräfte der beiden Einfeldträger, korrigiert um den Anteil des Stützmoments M_B/l₁ bzw. M_B/l₂.",
+    "kontrolleDesVertikalgleichgewichts": "Kontrolle des Vertikalgleichgewichts",
+    "dieSummeDerAuflagerkräfte": "Die Summe der Auflagerkräfte muss der Summe der Vertikallasten entsprechen.",
+    "größtesBiegemoment": "Größtes Biegemoment",
+    "größteQuerkraft": "Größte Querkraft",
+    "momentKnm": "Moment [kNm]",
+    "querkraftKn": "Querkraft [kN]",
+    "rahmenhöheH": "Rahmenhöhe (h)",
+    "rahmenbreiteL": "Rahmenbreite (l)",
+    "gleichlastRiegelQ": "Gleichlast Riegel (q)",
+    "horizontallastW": "Horizontallast (W)",
+    "windlastAnDerLinken": "Windlast an der linken oberen Ecke.",
+    "bgWhiteShadowSm": "bg-white shadow-sm text-[#A3113E]",
+    "dargestelltIstDerMomentenverlauf": "Dargestellt ist der Momentenverlauf (M). Die Momentenfläche wird (konventionsgemäß) auf der Seite der Zugfaser gezeichnet.",
+    "dargestelltIstDerQuerkraftverlauf": "Dargestellt ist der Querkraftverlauf (V). Positive Querkräfte drehen das abgetrennte Element im Uhrzeigersinn.",
+    "dargestelltIstDerNormalkraftverlauf": "Dargestellt ist der Normalkraftverlauf (N). Druckkräfte sind in der Regel negativ.",
+    "beispiel1EinfeldträgerMit": "Beispiel 1: Einfeldträger mit Gleich- und Einzellast",
+    "kontrolleAB110": "Kontrolle: A + B = 110 kN = q · l + F. Das Moment ist dort maximal, wo die Querkraft das Vorzeichen wechselt (dM/dx = V).",
+    "gleichgewichtsbedingungenDerStatikStatis": "Gleichgewichtsbedingungen der Statik (statisch bestimmtes System)",
+    "beispiel2ZweifeldträgerUnd": "Beispiel 2: Zweifeldträger und Dreigelenkrahmen unter Gleichlast",
+    "durchlaufwirkungUndRahmenwirkungVerlager": "Durchlaufwirkung und Rahmenwirkung verlagern Moment aus dem Feld in Stützen bzw. Ecken: Beim Zweifeldträger erhält das Mittelauflager 1,25 · q · l statt q · l, beim Dreigelenkrahmen ist das Feldmoment im Scheitelgelenk null.",
+    "dreimomentengleichungClapeyronGleichgewi": "Dreimomentengleichung (Clapeyron); Gleichgewicht am Dreigelenkrahmen",
+    "oktober2026Ap5": "Oktober 2026 (AP 5 Mechanik: Auflager- und Schnittgrößenformeln, Zweifeld- und Rahmenstatik nachgerechnet, Normbezüge geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "trägerStatik": "Träger (Statik)",
+    "rahmenBauwesen": "Rahmen (Bauwesen)"
+  },
+  "daten": {
+    "Baustatik": {
+      "titel": "Freies Ende",
+      "erklaerung": "Am freien Ende B gibt es keine Auflagerkraft.",
+      "formel": "B = 0"
+    },
+    "Baustatik.schritte": [
+      {
+        "titel": "Gegeben",
+        "erklaerung": "Stützweite l = 6 m, Gleichlast q = 10 kN/m, Einzellast F = 50 kN bei a = 2 m.",
+        "formel": "l = 6\\,\\text{m},\\; q = 10\\,\\text{kN/m},\\; F = 50\\,\\text{kN},\\; a = 2\\,\\text{m}"
+      },
+      {
+        "titel": "Auflagerkräfte",
+        "erklaerung": "Momentengleichgewicht um B bzw. A:",
+        "formel": "A = \\frac{10 \\cdot 6}{2} + \\frac{50 \\cdot 4}{6} = 63{,}3\\,\\text{kN}, \\quad B = 30 + \\frac{50 \\cdot 2}{6} = 46{,}7\\,\\text{kN}"
+      },
+      {
+        "titel": "Querkraftnullstelle",
+        "erklaerung": "V springt unter der Einzellast von +43,3 kN auf −6,7 kN; dort liegt das Momentenmaximum.",
+        "formel": "V(2^-) = 63{,}3 - 20 = 43{,}3\\,\\text{kN}, \\quad V(2^+) = -6{,}7\\,\\text{kN}"
+      },
+      {
+        "titel": "Maximales Moment",
+        "erklaerung": "Moment an der Stelle x = a:",
+        "formel": "M_{max} = 63{,}3 \\cdot 2 - \\frac{10 \\cdot 2^2}{2} = 106{,}7\\,\\text{kNm}"
+      }
+    ],
+    "Baustatik.schritte_2": [
+      {
+        "titel": "Zweifeldträger",
+        "erklaerung": "l₁ = l₂ = 5 m, q = 20 kN/m, EI konstant; Stützmoment aus der Dreimomentengleichung (Clapeyron):",
+        "formel": "M_B = -\\frac{20 \\cdot (125 + 125)}{8 \\cdot 10} = -62{,}5\\,\\text{kNm}"
+      },
+      {
+        "titel": "Auflagerkräfte",
+        "erklaerung": "Das Stützmoment entlastet die Endauflager und belastet das Mittelauflager:",
+        "formel": "A = C = 50 - \\frac{62{,}5}{5} = 37{,}5\\,\\text{kN}, \\quad B = 2 \\cdot (50 + 12{,}5) = 125\\,\\text{kN}"
+      },
+      {
+        "titel": "Dreigelenkrahmen",
+        "erklaerung": "Riegel L = 8 m, Stielhöhe H = 4 m, q = 10 kN/m: Horizontalschub aus der Gelenkbedingung M_C = 0:",
+        "formel": "H = \\frac{q \\cdot L^2}{8 \\cdot H_{Stiel}} = \\frac{10 \\cdot 64}{8 \\cdot 4} = 20\\,\\text{kN}"
+      },
+      {
+        "titel": "Rahmenecke",
+        "erklaerung": "Eckmoment aus Horizontalschub mal Stielhöhe:",
+        "formel": "|M_{Ecke}| = 20 \\cdot 4 = 80\\,\\text{kNm} = \\frac{q \\cdot L^2}{8}"
+      }
+    ],
+    "Baustatik.literatur": [
+      "Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024",
+      "Gross, D.; Hauger, W.; Schröder, J.; Wall, W. A.: Technische Mechanik 2 – Elastostatik. Berlin: Springer Vieweg (aktuelle Auflage)"
+    ],
+    "Baustatik.regelwerke": [
+      {
+        "title": "DIN EN 1990:2021-10 (Eurocode 0: Grundlagen der Tragwerksplanung & Kombinationsregeln)"
+      },
+      {
+        "title": "DIN EN 1991-1-1:2010-12 mit NA (Eurocode 1: Einwirkungen auf Tragwerke – Wichten, Eigengewicht, Nutzlasten)"
+      },
+      {
+        "title": "DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (Eurocode 3, bauaufsichtlich eingeführt); neue Generation DIN EN 1993-1-1:2025-04"
+      }
+    ],
+    "Baustatik.formeln": [
+      {
+        "formel": "M_{\\text{max}} = \\frac{q \\cdot L^2}{8} \\quad \\text{und} \\quad w_{\\text{max}} = \\frac{5 \\cdot q \\cdot L^4}{384 \\cdot E \\cdot I}",
+        "erklaerung": "Maximales Biegemoment und maximale Durchbiegung in Feldmitte eines Einfeldträgers unter gleichmäßig verteilter Linienlast q.",
+        "quelle": "Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024"
+      },
+      {
+        "formel": "\\sigma(z) = \\frac{N}{A} \\pm \\frac{M_y}{I_y} \\cdot z \\le f_{y,d}",
+        "erklaerung": "Normalspannungsverteilung im Querschnitt bei einachsiger Biegung mit Normalkraft nach der linearen Elastizitätstheorie (Navier-Hypothese).",
+        "quelle": "Technische Mechanik; elastischer Querschnittsnachweis nach DIN EN 1993-1-1, 6.2.1 (5)"
+      },
+      {
+        "formel": "w''(x) = -\\frac{M(x)}{E \\cdot I}",
+        "erklaerung": "Biegelinie (Differentialgleichung der Biegung 2. Ordnung): Zusammenhang zwischen Trägerkrümmung, Biegemoment und Biegesteifigkeit E*I.",
+        "quelle": "Euler-Bernoulli-Balkentheorie"
+      }
+    ]
+  }
+}

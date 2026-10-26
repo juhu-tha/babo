@@ -1,0 +1,127 @@
+{
+  "texte": {
+    "glasImBauwesen": " Glas im Bauwesen",
+    "glasIstEinSpröder": "Glas ist ein spröder, linear-elastischer Werkstoff, dessen Festigkeit maßgeblich von mikroskopischen Oberflächenfehlern abhängt. Das Tragverhalten wird statistisch über die Weibull-Verteilung beschrieben.",
+    "festigkeitBruchwahrscheinlichkeit": " Festigkeit & Bruchwahrscheinlichkeit",
+    "verbundsicherheitsglasVsg": " Verbundsicherheitsglas (VSG)",
+    "mehrscheibenIsolierglasMig": " Mehrscheiben-Isolierglas (MIG)",
+    "glasartEigenschaften": "Glasart & Eigenschaften",
+    "charFestigkeit": "Char. Festigkeit ",
+    "sprödbruchWeibullVerteilung": "Sprödbruch (Weibull-Verteilung)",
+    "glasVersagtSprödeDie": "Glas versagt spröde. Die Festigkeit hängt von der Größe der Oberfläche ab (Größeneffekt). Größere Scheiben haben eine höhere Wahrscheinlichkeit für Mikrorisse.",
+    "verbundsicherheitsglasVsg2": "Verbundsicherheitsglas (VSG)",
+    "derSchubverbundDerPvb": "Der Schubverbund der PVB-Folie hängt stark von Temperatur und Lasteinwirkungsdauer ab. Bei langzeitigen Lasten oder hohen Temperaturen wird Schubmodul G sehr gering und es tritt kaum Schubverbund auf (Gleitverbund). Bei Kurzzeitlasten ist er hingegen ausgeprägt. Hinweis: Nach DIN 18008 darf der Schubverbund in Deutschland grundsätzlich nicht angesetzt werden (Ausnahme: Zulassung bzw. Bauartgenehmigung); der Rechner zeigt das Prinzip mit vereinfachten G-Werten (Lehrannahme).",
+    "schubmodulPvb": "Schubmodul PVB (",
+    "effektiveDicke": "Effektive Dicke (",
+    "schematischeDarstellungVsgVerbundsicherh": "Schematische Darstellung: VSG (Verbundsicherheitsglas)",
+    "verbundsicherheitsglasVsgBestehtAus": "Verbundsicherheitsglas (VSG) besteht aus Glasscheiben, die durch eine zähelastische Folie (meist PVB) verbunden sind. Die Folie überträgt Schubkräfte (Γ) zwischen den Scheiben. Bei Bruch bindet die Folie die Splitter und sorgt für eine Resttragfähigkeit.",
+    "mehrscheibenIsolierglasMig2": "Mehrscheiben-Isolierglas (MIG)",
+    "migBestehtAusZwei": "MIG besteht aus zwei oder mehr Glasscheiben, die durch einen luft- oder gasgefüllten Scheibenzwischenraum (SZR) getrennt sind. Der SZR ist hermetisch abgedichtet (Randverbund).",
+    "wärmeschutzUgWertEdelgasfüllungen": "**Wärmeschutz (Ug-Wert):** Edelgasfüllungen (Argon, Krypton) und Low-E-Beschichtungen (hauchdünne Metallschichten) reduzieren den Wärmedurchgang erheblich.",
+    "klimatischeBelastungDaDer": "**Klimatische Belastung:** Da der SZR hermetisch geschlossen ist, verhält er sich wie eine Gasfeder. Änderungen des äußeren Luftdrucks oder der Temperatur führen zu einer Wölbung der Scheiben (\"Klimabelastung\").",
+    "isochorenDruckDerDruckunterschied": "**Isochoren-Druck:** Der Druckunterschied wirkt als Flächenlast auf das Glaspaket.",
+    "klimalastenP0": "Klimalasten (p_0)",
+    "wirdMigAnEinem": "Wird MIG an einem Ort (z. B. im Werk) gefertigt und in deutlich abweichender Höhe über NN (anderer Luftdruck) eingebaut, müssen Klimalasten statisch berechnet werden. Ggf. ist ein kapillarer Druckausgleich notwendig."
+  },
+  "werte": {
+    "aktuelleSpannung": "Aktuelle Spannung σ",
+    "artDesVerwendetenGlases": "Art des verwendeten Glases (z.B. Floatglas, ESG).",
+    "vorhandeneSpannungImGlas": "Vorhandene Spannung im Glas.",
+    "vorhandeneSpannung": "Vorhandene Spannung σ",
+    "scheibenflächeA": "Scheibenfläche A",
+    "weibullModulM": "Weibull-Modul m",
+    "parameterFürDieStreuung": "Parameter für die Streuung der Festigkeit bei spröden Werkstoffen.",
+    "bruchwahrscheinlichkeitPF": "Bruchwahrscheinlichkeit P_f",
+    "spannungMpa": "Spannung σ (MPa)",
+    "bruchwahrscheinlichkeit": "Bruchwahrscheinlichkeit (%)",
+    "dauerÜberDieDie": "Dauer, über die die Last auf das Bauteil einwirkt.",
+    "anwendungsbeispielThermischerGlasbruchBe": "Anwendungsbeispiel: Thermischer Glasbruch bei teilbeschattetem Floatglas",
+    "lehrmodellVollBehinderteDehnung": "Lehrmodell (voll behinderte Dehnung); zulässige Temperaturdifferenzen als Richtwerte",
+    "beiRisikoThermischerSpannungen": "Bei Risiko thermischer Spannungen (Teilverschattung, Heizkörper, Sonnenschutzfolien) wird TVG oder ESG gewählt; die Kanten sind sauber zu bearbeiten."
+  },
+  "daten": {
+    "glassTypes": {
+      "SPG": {
+        "name": "Spiegelglas (Floatglas)",
+        "fgk": 45,
+        "deltaT": 40,
+        "desc": "Normales Kühlglas, bricht in scharfkantige Schollen"
+      },
+      "TVG": {
+        "name": "Teilvorgespanntes Glas (TVG)",
+        "fgk": 70,
+        "deltaT": 100,
+        "desc": "Thermisch verfestigt, bricht in größere Schollen, hohe Resttragfähigkeit im VSG"
+      },
+      "ESG": {
+        "name": "Einscheibensicherheitsglas (ESG)",
+        "fgk": 120,
+        "deltaT": 200,
+        "desc": "Thermisch voll vorgespannt, bricht in kleine stumpfkantige Krümel, keine Resttragfähigkeit"
+      }
+    },
+    "Glas.schritte": [
+      {
+        "titel": "1. Gegeben",
+        "formel": "E = 70\\,000\\,\\text{N/mm}^2,\\; \\alpha_T = 9 \\cdot 10^{-6}\\,\\text{K}^{-1}",
+        "erklaerung": "Kalk-Natron-Silikatglas."
+      },
+      {
+        "titel": "2. Temperaturdifferenz",
+        "formel": "\\Delta T = 40\\,\\text{K}\\;(\\text{besonnte Scheibenmitte gegen beschatteten, kalten Rand})",
+        "erklaerung": "Typisch bei Teilverschattung oder dunklen Gegenständen hinter der Scheibe."
+      },
+      {
+        "titel": "3. Zugspannung am Rand",
+        "formel": "\\sigma_T \\approx 70\\,000 \\cdot 9 \\cdot 10^{-6} \\cdot 40 \\approx 25\\,\\text{N/mm}^2",
+        "erklaerung": "Die kalte Randzone wird von der warmen Mitte gedehnt."
+      },
+      {
+        "titel": "4. Bewertung",
+        "formel": "\\Delta T = 60\\,\\text{K} \\Rightarrow \\sigma_T \\approx 38\\,\\text{N/mm}^2",
+        "erklaerung": "Damit ist die Kantenfestigkeit von Floatglas (Kantenbearbeitung, Mikrorisse) schnell erreicht – TVG (≈ 100 K) und ESG (≈ 200 K) vertragen deutlich mehr."
+      }
+    ],
+    "Glas.literatur": [
+      "Weller, B.; Krampe, P.; Reich, S.: Glasbau-Praxis – Konstruktion und Bemessung. Band 1: Grundlagen. 3., überarb. u. erw. Aufl., Berlin: Beuth 2013; Weller, B.; Engelmann, M.; Nicklisch, F.; Weimar, T.: Glasbau-Praxis – Konstruktion und Bemessung. Band 2: Beispiele nach DIN 18008. 3., überarb. u. erw. Aufl., Berlin: Beuth 2013"
+    ],
+    "Glas.regelwerke": [
+      {
+        "title": "DIN 18008-1:2020-05 (Glas im Bauwesen - Bemessungs- und Konstruktionsregeln - Teil 1: Begriffe und allgemeine Grundlagen)"
+      },
+      {
+        "title": "DIN 18008-2:2020-05 (Glas im Bauwesen - Teil 2: Liniengestützte Verglasungen unter Wind- und Schneeeinwirkungen)"
+      },
+      {
+        "title": "DIN 18008-3:2020-05 (Glas im Bauwesen - Teil 3: Punktförmig gelagerte Verglasungen)"
+      },
+      {
+        "title": "DIN 18008-4:2020-05 (Glas im Bauwesen - Teil 4: Zusatzanforderungen an absturzsichernde Verglasungen)"
+      },
+      {
+        "title": "DIN EN 572-1:2016-06 (Glas im Bauwesen - Basiserzeugnisse aus Kalk-Natronsilicatglas)"
+      },
+      {
+        "title": "DIN EN 12150-1:2020-07 (Glas im Bauwesen - Thermisch vorgespanntes Kalknatron-Einscheibensicherheitsglas ESG)"
+      },
+      {
+        "title": "DIN EN ISO 12543-1:2022-04 (Glas im Bauwesen - Verbundglas und Verbund-Sicherheitsglas VSG)"
+      },
+      {
+        "title": "DIN EN 16612:2019-12 (Glas im Bauwesen - Bestimmung des Lastwiderstandes von Glasscheiben durch Berechnung und Prüfung)"
+      }
+    ],
+    "Glas.formeln": [
+      {
+        "formel": "h_{ef,w} = \\sqrt[3]{h_1^3 + h_2^3 + 12 \\cdot \\Gamma \\cdot I_s}, \\quad I_s = h_1 h_{m,2}^2 + h_2 h_{m,1}^2",
+        "erklaerung": "Effektive Dicke für Durchbiegungen bei Verbundsicherheitsglas (VSG) nach DIN 18008-1:2020-05 / DIN EN 16612:2019-12. \\Gamma beschreibt den Schubverbundbeiwert (0 = gleitend, 1 = starr) der polymeren Zwischenschicht (PVB/SentryGlas).",
+        "quelle": "DIN EN 16612:2019-12"
+      },
+      {
+        "formel": "f_{g,d} = \\frac{k_{mod} \\cdot k_{sp} \\cdot f_{g,k}}{\\gamma_M}",
+        "erklaerung": "Bemessungswert der Biegezugfestigkeit für thermisch nicht vorgespanntes Floatglas (Spiegelglas). k_{mod} berücksichtigt die Lasteinwirkungsdauer (Subkritisches Risswachstum), k_{sp} den Oberflächenzustand (EN 16612). In Deutschland nach DIN 18008-1:2020-05: f_{g,d} = k_{mod}·k_c·f_{g,k}/γ_M mit γ_M = 1,8 für Floatglas (ESG/TVG: 1,5), k_mod = 0,25/0,40/0,70 (ständig/mittel/kurz) und k_c = 1,8 bei linienförmiger Lagerung.",
+        "quelle": "DIN EN 16612:2019-12"
+      }
+    ]
+  }
+}

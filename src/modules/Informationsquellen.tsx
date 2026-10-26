@@ -13,6 +13,8 @@ import {
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { OerEncyclopedia } from '@/src/components/ui/OerEncyclopedia';
 import { NormenLinkMonitor } from '@/src/components/ui/NormenLinkMonitor';
+import inhalt from '@/content/informationsquellen/Informationsquellen.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 // Robust, comprehensive evaluation data
 interface DBRecord {
@@ -34,337 +36,313 @@ interface DBRecord {
 const FREE_DATABASES: DBRecord[] = [
   {
     id: 'lfu_schadstoff',
-    name: 'Schadstoffratgeber Gebäuderückbau',
+    name: inhalt.werte.schadstoffratgeberGebäuderückbau,
     category: 'Schadstoffe & Praxis',
-    discipline: 'LABOR & AUSWERTUNG',
-    publisher: 'Bayerisches Landesamt für Umwelt (LfU Bayern)',
-    accessibility: '100% Kostenfrei, öffentlich zugänglich',
+    discipline: inhalt.werte.laborAuswertung,
+    publisher: inhalt.werte.bayerischesLandesamtFürUmwelt,
+    accessibility: inhalt.werte.t100KostenfreiÖffentlichZugänglich,
     url: 'https://www.lfu.bayern.de/',
-    standards: ['VDI 6202 Blatt 1', 'TRGS 519', 'LAbgBauVO'],
-    evaluation: 'Ein herausragendes fachbezogenes Hilfsmittel für Planende und Abbruchunternehmen. Es leitet systematisch durch die Voruntersuchung, von der Baualtersklassen-Recherche über Probenahme-Muster (Raumluft, Fasern, Stäube) bis zur Interpretation komplexer analytischer Befunde.',
+    standards: [inhalt.werte.vdi6202Blatt1, 'TRGS 519', 'LAbgBauVO'],
+    evaluation: inhalt.werte.einHerausragendesFachbezogenesHilfsmitte,
     benefits: [
-      'Genaue Handlungsanweisung zur sachgerechten Probenahme',
-      'Systematische Führung zur Schadstoffkataster-Erstellung',
-      'Praktischer Laborbericht-Übersetzer für Gefahrstoffe'
+      inhalt.werte.genaueHandlungsanweisungZurSachgerechten,
+      inhalt.werte.systematischeFührungZurSchadstoffkataste,
+      inhalt.werte.praktischerLaborberichtÜbersetzerFür
     ],
-    relevance: 'Präventiver Bauschutz und Verhinderung von Kreuzkontaminationen vor dem materiellen Rohbau-Abbruch.',
-    tip: 'Unverzichtbar vor Sanierungs- oder Rückbauplanung zur Minimierung von Haftungsrisiken.'
+    relevance: inhalt.werte.präventiverBauschutzUndVerhinderung,
+    tip: inhalt.werte.unverzichtbarVorSanierungsOder
   },
   {
     id: 'wingis',
-    name: 'WINGISonline (GISBAU)',
+    name: inhalt.werte.wingisonlineGisbau,
     category: 'Schadstoffe & Praxis',
     discipline: 'PRAXISWISSEN',
-    publisher: 'Berufsgenossenschaft der Bauwirtschaft (BG BAU)',
-    accessibility: 'Frei zugänglich, anmeldefrei online',
+    publisher: inhalt.werte.berufsgenossenschaftDerBauwirtschaftBg,
+    accessibility: inhalt.werte.freiZugänglichAnmeldefreiOnline,
     standards: ['TRGS 500', 'GefStoffV', 'ArbSchG'],
-    evaluation: 'Das führende Gefahrstoff-Informationssystem der BG Bau konzentriert sich auf den baustellengerechten Gesundheitsschutz. Es übersetzt gefahrstoffrechtliche Kennzeichnungen in rechtlich belastbare, leicht verständliche Betriebsanweisungen direkt für den Polier und Handwerker.',
+    evaluation: inhalt.werte.dasFührendeGefahrstoffInformationssystem,
     benefits: [
-      'Abfrage über standardisierte GISCODEs / Produktgruppen',
-      'Exakte Handlungshilfen zu PSA (Atemschutz, Schutzhandschuhe)',
-      'Dokumentations-Vorlagen zur gesetzlichen Gefährdungsbeurteilung'
+      inhalt.werte.abfrageÜberStandardisierteGiscodes,
+      inhalt.werte.exakteHandlungshilfenZuPsa,
+      inhalt.werte.dokumentationsVorlagenZurGesetzlichen
     ],
-    relevance: 'Täglicher Arbeitsschutz auf Montage beim Kontakt mit Lacken, Klebern, Zementmörteln.',
-    tip: 'Bauleiter können hier sofort einsatzfertige Betriebsanweisungen für Baubeteiligte ausdrucken.'
+    relevance: inhalt.werte.täglicherArbeitsschutzAufMontage,
+    tip: inhalt.werte.bauleiterKönnenHierSofort
   },
   {
     id: 'weba',
-    name: 'WeBA (Web-Portal Bauphysikalische Altbausanierung)',
+    name: inhalt.werte.webaWebPortalBauphysikalische,
     category: 'Bauphysik & Altbau',
-    discipline: 'BAUPHYSIK & BAUSCHÄDEN',
-    publisher: 'Universität Stuttgart (Lehrstuhl für Bauphysik) / Zukunft Bau',
-    accessibility: 'Kostenfreies Forschungsportal',
+    discipline: inhalt.werte.bauphysikBauschäden,
+    publisher: inhalt.werte.universitätStuttgartLehrstuhlFür,
+    accessibility: inhalt.werte.kostenfreiesForschungsportal,
     url: 'https://www.uni-stuttgart.de/',
     standards: ['DIN 4108', 'WTA-Merkblätter', 'GEG'],
-    evaluation: 'Entwickelt von Bauphysik-Forschenden zur Vermeidung kritischer Bauschäden. Das interaktive Portal bietet tiefe physikalische Analysen zu thermischen und hygrischen Wechselwirkungen im Altbau, insbesondere bei historischem Fachwerk, Dachstühlen und Innenwand-Dämmungen.',
+    evaluation: inhalt.werte.entwickeltVonBauphysikForschenden,
     benefits: [
-      'Exemplarische Detailzeichnungen sanierungsrelevanter Anschlüsse',
-      'Widerstandsfähige Feuchteschutz-Konzepte zur Schadensprophylaxe',
-      'Wissenschaftlich abgesicherte Konstruktionsvorschläge'
+      inhalt.werte.exemplarischeDetailzeichnungenSanierungs,
+      inhalt.werte.widerstandsfähigeFeuchteschutzKonzepteZu,
+      inhalt.werte.wissenschaftlichAbgesicherteKonstruktion
     ],
-    relevance: 'Thermische Ertüchtigung von Altbauten ohne die Gefahr von verdecktem Schimmelpilzwachstum.',
-    tip: 'Hervorragend geeignet zum Studium komplexer Wärmebrücken und des hygrothermischen Verhaltens.'
+    relevance: inhalt.werte.thermischeErtüchtigungVonAltbauten,
+    tip: inhalt.werte.hervorragendGeeignetZumStudium
   },
   {
     id: 'wecobis',
     name: 'WECOBIS',
     category: 'Baustoffe & Produkte',
-    discipline: 'BAUSTOFFE & DAUERHAFTIGKEIT',
-    publisher: 'Bundesinstitut für Bau-, Stadt- und Raumforschung (BBSR) & Bayerische Architektenkammer',
-    accessibility: 'Vollständig kostenfrei und produktneutral',
+    discipline: inhalt.werte.baustoffeDauerhaftigkeit,
+    publisher: inhalt.werte.bundesinstitutFürBauStadt,
+    accessibility: inhalt.werte.vollständigKostenfreiUndProduktneutral,
     url: 'https://www.wecobis.de/',
-    standards: ['DGNB Kriterien', 'BNB Steckbriefe'],
-    evaluation: 'Das staatliche ökologische Baustoffinformationssystem liefert strukturierte Daten zu gesundheitlichen und umweltrelevanten Eigenschaften von Baumaterialien über den gesamten Lebenszyklus. Enthalten ist ein wertvolles Untermodul für "Baustoffe im Bestand", das historische Schadstoffe aufspürt.',
+    standards: [inhalt.werte.dgnbKriterien, inhalt.werte.bnbSteckbriefe],
+    evaluation: inhalt.werte.dasStaatlicheÖkologischeBaustoffinformat,
     benefits: [
-      'Vollständige Produktneutralität zum Schutz vor Greenwashing',
-      'Ausschreibungstexte zur materialökologischen Vergabe',
-      'Alterungsschutz- und Emissionsprofile über Jahrzehnte hinweg'
+      inhalt.werte.vollständigeProduktneutralitätZumSchutz,
+      inhalt.werte.ausschreibungstexteZurMaterialökologisch,
+      inhalt.werte.alterungsschutzUndEmissionsprofileÜber
     ],
-    relevance: 'Nachhaltige Werkstoffwahl, Vermeidung flüchtiger Schadstoffe (VOC) im Gebäudeinnenraum.',
-    tip: 'Nutzen Sie die textlichen Ausschreibungs-Hilfsmittel zur Integration ökologischer Anforderungen.'
+    relevance: inhalt.werte.nachhaltigeWerkstoffwahlVermeidungFlücht,
+    tip: inhalt.werte.nutzenSieDieTextlichen
   },
   {
     id: 'oekobaudat',
     name: 'ÖKOBAUDAT',
     category: 'Baustoffe & Produkte',
-    discipline: 'BAUPRODUKTE (EPD)',
-    publisher: 'Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen (BMWSB)',
-    accessibility: 'Frei zugängliche XML/CSV-Plattform',
+    discipline: inhalt.werte.bauprodukteEpd,
+    publisher: inhalt.werte.bundesministeriumFürWohnenStadtentwicklu,
+    accessibility: inhalt.werte.freiZugänglicheXmlCsv,
     url: 'https://www.oekobaudat.de/',
-    standards: ['DIN EN 15804', 'ISO 14040/44'],
-    evaluation: 'Die offizielle, verbindliche Referenzdatenbank für die Gebäudeökobilanzierung in Deutschland. Sie liefert genormte Ökobilanzdatensätze (Module A1-D, GWP, PENRT) sowie Umweltproduktdeklarationen (EPDs) für hunderte Bauprodukte.',
+    standards: [inhalt.werte.dinEn15804, inhalt.werte.iso1404044],
+    evaluation: inhalt.werte.dieOffizielleVerbindlicheReferenzdatenba,
     benefits: [
-      'Verbindlich für BNB-Bewertungen und QNG-Zertifikate',
-      'Umfangreiche Exportschnittstellen für Planungsanwendungen (XML)',
-      'Güteüberwachte Datensätze von Herstellern und Verbänden'
+      inhalt.werte.verbindlichFürBnbBewertungen,
+      inhalt.werte.umfangreicheExportschnittstellenFürPlanu,
+      inhalt.werte.güteüberwachteDatensätzeVonHerstellern
     ],
-    relevance: 'Grundlage jeder qualifizierten Gebäude-Ökobilanzierung zur Erreichung von Klimastufen.',
-    tip: 'Erleichtert die Berechnung des CO2-Fußabdrucks für Bauteilschichten im Entwurfsprozess.'
+    relevance: inhalt.werte.grundlageJederQualifiziertenGebäude,
+    tip: inhalt.werte.erleichtertDieBerechnungDes
   },
   {
     id: 'bmwsb_portal',
-    name: 'Informationsportal Nachhaltiges Bauen',
+    name: inhalt.werte.informationsportalNachhaltigesBauen,
     category: 'Allgemein',
     discipline: 'ALLGEMEIN',
-    publisher: 'Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen (BMWSB)',
-    accessibility: 'Offizielles Bundesportal, frei zugänglich',
+    publisher: inhalt.werte.bundesministeriumFürWohnenStadtentwicklu2,
+    accessibility: inhalt.werte.offiziellesBundesportalFreiZugänglich,
     url: 'https://www.nachhaltigesbauen.de/',
-    standards: ['Leitfaden Nachhaltiges Bauen', 'GEG'],
-    evaluation: 'Die zentrale, übergeordnete Anlaufstelle für die Transformation der deutschen Baubranche. Bündelt systematisch behördliche Leitfäden, wissenschaftliche Publikationen, Regelwerke, Mindeststandards und politische Zielberichte des Bundes.',
+    standards: [inhalt.werte.leitfadenNachhaltigesBauen, 'GEG'],
+    evaluation: inhalt.werte.dieZentraleÜbergeordneteAnlaufstelle,
     benefits: [
-      'Offizielle staatliche Leitfäden zur ressourcenschonenden Planung',
-      'Arbeitshilfen und Werkzeuge für öffentliche Liegenschaften',
-      'Zusammenfassung aller gesetzlichen und normativen Baurechte'
+      inhalt.werte.offizielleStaatlicheLeitfädenZur,
+      inhalt.werte.arbeitshilfenUndWerkzeugeFür,
+      inhalt.werte.zusammenfassungAllerGesetzlichenUnd
     ],
-    relevance: 'Strategisches Verständnis für rechtliche und planerische Nachhaltigkeitsvorgaben des Bundes.',
-    tip: 'Hervorragender, rechtlich belastbarer Einstiegspunkt für Planer, Bauherren und Studierende.'
+    relevance: inhalt.werte.strategischesVerständnisFürRechtliche,
+    tip: inhalt.werte.hervorragenderRechtlichBelastbarerEinsti
   },
   {
     id: 'bnb',
-    name: 'Bewertungssystem Nachhaltiges Bauen (BNB)',
+    name: inhalt.werte.bewertungssystemNachhaltigesBauenBnb,
     category: 'Allgemein',
     discipline: 'GRUNDLAGEN',
-    publisher: 'Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen (BMWSB)',
-    accessibility: 'Kostenlose Kriterien-Steckbriefe',
+    publisher: inhalt.werte.bundesministeriumFürWohnenStadtentwicklu3,
+    accessibility: inhalt.werte.kostenloseKriterienSteckbriefe,
     url: 'https://www.bnb-nachhaltigesbauen.de/',
     standards: ['BNB-Zertifizierungssystem'],
-    evaluation: 'Das BNB ist ein ganzheitliches, national zertifiziertes Bewertungssystem für Bundesgebäude. Es übersetzt abstrakte ökologische Prinzipien in konkrete, mess- und überprüfbare Kriteriensteckbriefe über den Lebenszyklus (Ökologie, Ökonomie, Soziales, Technik).',
+    evaluation: inhalt.werte.dasBnbIstEin,
     benefits: [
-      'Vollständig transparente Kriteriensteckbriefe gratis abrufbar',
-      'Standardisierte Berechnungsmethoden für Lebensdauern',
-      'Konkrete Zielwerte für Treibhausgase und Primärenergiebedarf'
+      inhalt.werte.vollständigTransparenteKriteriensteckbri,
+      inhalt.werte.standardisierteBerechnungsmethodenFürLeb,
+      inhalt.werte.konkreteZielwerteFürTreibhausgase
     ],
-    relevance: 'Strukturierte ganzheitliche Lebenszyklusanalyse von der Planung bis zum Rückbau.',
-    tip: 'Nutzen Sie die Steckbriefe als praxisgerechten Leitfaden zur Qualitätssicherung am eigenen Entwurf.'
+    relevance: inhalt.werte.strukturierteGanzheitlicheLebenszyklusan,
+    tip: inhalt.werte.nutzenSieDieSteckbriefe
   },
   {
     id: 'beton_tech',
-    name: 'beton.org (Betontechnologie)',
+    name: inhalt.werte.betonOrgBetontechnologie,
     category: 'Tragwerk & Holz',
     discipline: 'BETONTECHNOLOGIE',
-    publisher: 'InformationsZentrum Beton GmbH',
-    accessibility: 'Freies Branchen- und Kompetenzportal',
+    publisher: inhalt.werte.informationszentrumBetonGmbh,
+    accessibility: inhalt.werte.freiesBranchenUndKompetenzportal,
     url: 'https://www.beton.org/',
     standards: ['DIN EN 206', 'DIN 1045'],
-    evaluation: 'Die technologische Enzyklopädie rund um den Massivbau. Vermittelt anspruchsvolles Zement- und Betoniermaterialwissen von Frischbetonprüfungen über Hochleistungs- und Faserbetone (UHPC) bis hin zu Sichtbeton-Kriterien oder wasserundurchlässigen Bauwerken (WU-Beton/Weiße Wannen).',
+    evaluation: inhalt.werte.dieTechnologischeEnzyklopädieRund,
     benefits: [
-      'Kostenfreie, hochkarätige Merkblätter der Betonindustrie',
-      'Mischungsrechner und Anleitungen zur Betonauswahl',
-      'Hilfsmittel zur Qualitätssicherung auf der Baustelle'
+      inhalt.werte.kostenfreieHochkarätigeMerkblätterDer,
+      inhalt.werte.mischungsrechnerUndAnleitungenZur,
+      inhalt.werte.hilfsmittelZurQualitätssicherungAuf
     ],
-    relevance: 'Sichere Auslegung und baustellengerechte Mischung dichten Massenbetons.',
-    tip: 'Die dortigen Merkblätter der Fachgruppe Beton gelten oft als Stand der Technik vor Ort.'
+    relevance: inhalt.werte.sichereAuslegungUndBaustellengerechte,
+    tip: inhalt.werte.dieDortigenMerkblätterDer
   },
   {
     id: 'beton_stahl',
-    name: 'beton.org (Architekturpreis - Stahlbetonbau)',
+    name: inhalt.werte.betonOrgArchitekturpreisStahlbetonbau,
     category: 'Tragwerk & Holz',
     discipline: 'STAHLBETONBAU',
-    publisher: 'InformationsZentrum Beton GmbH & Bund Deutscher Architektinnen und Architekten (BDA)',
-    accessibility: 'Freie Projektdatenbank',
+    publisher: inhalt.werte.informationszentrumBetonGmbhBund,
+    accessibility: inhalt.werte.freieProjektdatenbank,
     url: 'https://www.architekturpreis-beton.de/',
-    standards: ['Tragwerksentwurf', 'Statische Detailplanung'],
-    evaluation: 'Dokumentiert bautechnisch herausragende, mit dem renommierten Architekturpreis ausgezeichnete Massivbauten. Zeigt sehr gute Tragwerkslösungen, anspruchsvolle Sichtbetonschalungen, historisch gewachsene Verbund-Fügungen und nachhaltige Tragwerkseinsparungen.',
+    standards: ['Tragwerksentwurf', inhalt.werte.statischeDetailplanung],
+    evaluation: inhalt.werte.dokumentiertBautechnischHerausragendeMit,
     benefits: [
-      'Umfangreiches Bild- und Schnittarchiv gebauter Bauten',
-      'Detaillierte Tragwerkanalysen durch Tragwerksplaner',
-      'Inspiration für innovative Betonkonstruktionen (R-Beton, Infraleicht)'
+      inhalt.werte.umfangreichesBildUndSchnittarchiv,
+      inhalt.werte.detaillierteTragwerkanalysenDurchTragwer,
+      inhalt.werte.inspirationFürInnovativeBetonkonstruktio
     ],
-    relevance: 'Synthese aus Hochbauästhetik, minimiertem Ressourceneinsatz und statischer Effizienz.',
-    tip: 'Ideal zur Recherche innovativer Schalungs- und Fügungstechniken auf Architekten-Niveau.'
+    relevance: inhalt.werte.syntheseAusHochbauästhetikMinimiertem,
+    tip: inhalt.werte.idealZurRechercheInnovativer
   },
   {
     id: 'holz_mechanik',
-    name: 'Informationsdienst Holz',
+    name: inhalt.werte.informationsdienstHolz,
     category: 'Tragwerk & Holz',
-    discipline: 'MECHANIK & BIOGENE BAUSTOFFE',
-    publisher: 'Holzbau Deutschland & Fachverband Holz',
-    accessibility: 'Kostenfreies Downloadarchiv aller Holzbauten',
+    discipline: inhalt.werte.mechanikBiogeneBaustoffe,
+    publisher: inhalt.werte.holzbauDeutschlandFachverbandHolz,
+    accessibility: inhalt.werte.kostenfreiesDownloadarchivAllerHolzbaute,
     url: 'https://informationsdienst-holz.de/',
-    standards: ['Eurocode 5 (DIN EN 1995)', 'DIN 4102-4'],
-    evaluation: 'Die national führende Enzyklopädie für das Entwerfen und Konstruieren im Ingenieurholzbau. Bietet hochdetaillierte bemessene Anschlussdetails, Schriftenreihen zu Massivholzdecken, Brandschutzanforderungen und hybriden Konstruktionen mit Lehm oder Stroh.',
+    standards: [inhalt.werte.eurocode5DinEn, 'DIN 4102-4'],
+    evaluation: inhalt.werte.dieNationalFührendeEnzyklopädie,
     benefits: [
-      'Geprüfte mechanisch-statische Detailkataloge als CAD-Schnitt',
-      'Detaillierte Fachinformationen zu biologischen Verbundbaustoffen',
-      'Verifizierte Richtlinien zum ökologischen Zirkulärholzbau'
+      inhalt.werte.geprüfteMechanischStatischeDetailkatalog,
+      inhalt.werte.detaillierteFachinformationenZuBiologisc,
+      inhalt.werte.verifizierteRichtlinienZumÖkologischen
     ],
-    relevance: 'CO2-Schonung durch biogene Tragwerke mit lückenlosem Brandschutznachweis.',
-    tip: 'Nutzen Sie die Schriftenreihe zur fehlerfreien Werkplanung von Holz-Beton-Verbunddecken.'
+    relevance: inhalt.werte.co2SchonungDurchBiogene,
+    tip: inhalt.werte.nutzenSieDieSchriftenreihe
   },
   {
     id: 'elca_lca',
-    name: 'eLCA & thru.de (Digitales & Emissionen)',
+    name: inhalt.werte.elcaThruDeDigitales,
     category: 'Nachhaltigkeit',
-    discipline: 'NACHHALTIGKEIT & DIGITALES',
-    publisher: 'BMWSB (eLCA) / Umweltbundesamt (PRTR / thru.de)',
-    accessibility: 'Kostenlose Webanwendungen der Bundesrepublik',
+    discipline: inhalt.werte.nachhaltigkeitDigitales,
+    publisher: inhalt.werte.bmwsbElcaUmweltbundesamtPrtr,
+    accessibility: inhalt.werte.kostenloseWebanwendungenDerBundesrepubli,
     url: 'https://www.bauteileditor.de/',
-    standards: ['DIN EN 15978', 'PRTR-Verordnung'],
-    evaluation: 'Ein aufeinander abgestimmtes digitales Duo. eLCA ermöglicht die interaktive, BIM-nahe Modellierung der Umweltwirkungen von Gebäuden direkt über den Webbrowser auf Basis der ÖKOBAUDAT. thru.de (PRTR-Register des UBA) schafft Transparenz über gewerbliche Emissionen und Schadstoffströme der herstellenden Industrie.',
+    standards: [inhalt.werte.dinEn15978, 'PRTR-Verordnung'],
+    evaluation: inhalt.werte.einAufeinanderAbgestimmtesDigitales,
     benefits: [
-      'eLCA: Leicht bedienbarer, kostenloser Bauteil-Ökobilanzierer',
-      'thru.de: Offene Recherche industrieller Schadstoffemissionen',
-      'Exaktes Tracking von Energieträgern und Global-Warming-Potenzialen'
+      inhalt.werte.elcaLeichtBedienbarerKostenloser,
+      inhalt.werte.thruDeOffeneRecherche,
+      inhalt.werte.exaktesTrackingVonEnergieträgern
     ],
-    relevance: 'Verknüpfung von Planungswerkzeugen mit realen Verursacherdaten der Umweltbelastung.',
-    tip: 'Mit eLCA können Semesterarbeiten und Entwürfe im Handumdrehen bilanziert werden.'
+    relevance: inhalt.werte.verknüpfungVonPlanungswerkzeugenMit,
+    tip: inhalt.werte.mitElcaKönnenSemesterarbeiten
   },
   {
     id: 'bestand_portal',
-    name: 'Fachportal Bauen im Bestand (BauNetz Wissen)',
+    name: inhalt.werte.fachportalBauenImBestand,
     category: 'Bauphysik & Altbau',
-    discipline: 'BAUEN IM BESTAND',
-    publisher: 'BauNetz Wissen Editorial Team',
-    accessibility: 'Frei zugänglich, werbefinanziert-redaktionell',
+    discipline: inhalt.werte.bauenImBestand,
+    publisher: inhalt.werte.baunetzWissenEditorialTeam,
+    accessibility: inhalt.werte.freiZugänglichWerbefinanziertRedaktionel,
     url: 'https://www.baunetzwissen.de/bauen-im-bestand',
     standards: ['Baualtersstufen', 'Denkmalrecht'],
-    evaluation: 'Eine der renommiertesten Planungsdatenbanken für Sanierungen und bestandserhaltende Umbauten im deutschsprachigen Raum. Es verwebt theoretisches Baualtersstufen-Kompaktwissen mit sehr gut bebilderten Case Studies von Industriekonversionen und Dachsanierungen.',
+    evaluation: inhalt.werte.eineDerRenommiertestenPlanungsdatenbanke,
     benefits: [
-      'Detaillierte baugeschichtsanalytische Erklärungen',
-      'Dokumentierte konstruktive Knackpunkte moderner Kernsanierungen',
-      'Verknüpfung von Tragwerksfragen mit Brandschutz und Denkmalpflege'
+      inhalt.werte.detaillierteBaugeschichtsanalytischeErkl,
+      inhalt.werte.dokumentierteKonstruktiveKnackpunkteMode,
+      inhalt.werte.verknüpfungVonTragwerksfragenMit
     ],
-    relevance: 'Architektonische Inspiration zur CO2-Vermeidung durch Erhalt grauer Energie.',
-    tip: 'Dient als ideale Argumentationshilfe für den Umbau statt Abbruch gegenüber Bauherren.'
+    relevance: inhalt.werte.architektonischeInspirationZurCo2,
+    tip: inhalt.werte.dientAlsIdealeArgumentationshilfe
   },
   {
     id: 'uba_publikationen',
-    name: 'UBA-Publikationen (Bauschäden & Schadstoffe)',
+    name: inhalt.werte.ubaPublikationenBauschädenSchadstoffe,
     category: 'Schadstoffe & Praxis',
-    discipline: 'BAUSCHÄDEN & INSTANDSETZUNG',
-    publisher: 'Umweltbundesamt (UBA) Deutschland',
-    accessibility: 'Kostenlose Forschungsberichte, Merkblätter und Leitfäden',
+    discipline: inhalt.werte.bauschädenInstandsetzung,
+    publisher: inhalt.werte.umweltbundesamtUbaDeutschland,
+    accessibility: inhalt.werte.kostenloseForschungsberichteMerkblätterU,
     url: 'https://www.umweltbundesamt.de/publikationen',
-    standards: ['Ausschuss zur gesundheitlichen Bewertung von Bauprodukten (AgBB)'],
-    evaluation: 'Die bundesweite wissenschaftliche Instanz für Gesundheits- und Umweltschutz. Bietet hochpräzise Leitfäden zur Bestimmung von Baustoffschadstoffen, Vermeidung von mikrobieller Belastung (Schimmel), Untersuchung flüchtiger Gerüche im Innenraum und Konzepte zur Sanierung belasteter Bausubstanz.',
+    standards: [inhalt.werte.ausschussZurGesundheitlichenBewertung],
+    evaluation: inhalt.werte.dieBundesweiteWissenschaftlicheInstanz,
     benefits: [
-      'Wissenschaftlich fundierte Sanierungsschwellen und Prüfwerte',
-      'Umfangreiche Leitfäden zum umweltschonenden Baubetrieb',
-      'Fachbücher und Studien zum zirkulären Sekundärbaustoffeinsatz'
+      inhalt.werte.wissenschaftlichFundierteSanierungsschwe,
+      inhalt.werte.umfangreicheLeitfädenZumUmweltschonenden,
+      inhalt.werte.fachbücherUndStudienZum
     ],
-    relevance: 'Rechts- und gesundheitssichere Sanierung zur Vermeidung von Bauschäden und Schadstoffemissionen.',
-    tip: 'Prüfen Sie vor Sanierungsanlagen den UBA-Schimmelpilz-Leitfaden auf anerkannte Sanierungsmethoden.'
+    relevance: inhalt.werte.rechtsUndGesundheitssichereSanierung,
+    tip: inhalt.werte.prüfenSieVorSanierungsanlagen
   },
   {
     id: 'madaster_germany',
-    name: 'Madaster Deutschland (Materialkataster & Circularity)',
+    name: inhalt.werte.madasterDeutschlandMaterialkatasterCircu,
     category: 'Nachhaltigkeit',
-    discipline: 'ZIRKULÄRES BAUEN & DIGITALISIERUNG',
-    publisher: 'Madaster Services Germany GmbH',
-    accessibility: 'Zentrales Online-Kataster für Materialpässe',
+    discipline: inhalt.werte.zirkuläresBauenDigitalisierung,
+    publisher: inhalt.werte.madasterServicesGermanyGmbh,
+    accessibility: inhalt.werte.zentralesOnlineKatasterFür,
     url: 'https://madaster.de/',
-    standards: ['DIN EN 15978', 'DGNB Kriterium ENV 1.3', 'QNG Anforderung'],
-    evaluation: 'Das globale Kataster für Materialien, Bauteile und Gebäude. Es ermöglicht die Erstellung standardisierter Gebäudepässe und berechnet automatisch den Madaster Circularity Indicator (MCI) zur Messung der Zirkularität.',
+    standards: [inhalt.werte.dinEn159782, inhalt.werte.dgnbKriteriumEnv1, inhalt.werte.qngAnforderung],
+    evaluation: inhalt.werte.dasGlobaleKatasterFür,
     benefits: [
-      'Digitaler Gebäuderessourcenpass nach EU-Taxonomie und QNG-Standard',
-      'Messung von Zirkularität, CO₂-Bilanz und Toxizität im Bauteilverbund',
-      'Automatischer Import von IFC- und BIM-Dateien zur Rohstoffdokumentation'
+      inhalt.werte.digitalerGebäuderessourcenpassNachEu,
+      inhalt.werte.messungVonZirkularitätCo,
+      inhalt.werte.automatischerImportVonIfc
     ],
-    relevance: 'Werterhalt und Urban Mining: Gebäude als zirkuläre Materiallager für die Zukunft.',
-    tip: 'Unverzichtbar zur Erfüllung der Vorgaben für den digitalen Gebäuderessourcenpass.'
+    relevance: inhalt.werte.werterhaltUndUrbanMining,
+    tip: inhalt.werte.unverzichtbarZurErfüllungDer
   },
   {
     id: 'concular_portal',
-    name: 'Concular (Zirkuläre Materialvermittlung & Ökobilanz)',
+    name: inhalt.werte.concularZirkuläreMaterialvermittlungÖkob,
     category: 'Nachhaltigkeit',
-    discipline: 'SEKUNDÄRBAUSTOFFE & PRAXIS',
-    publisher: 'Concular GmbH',
-    accessibility: 'Plattform für zirkuläres Bauen',
+    discipline: inhalt.werte.sekundärbaustoffePraxis,
+    publisher: inhalt.werte.concularGmbh,
+    accessibility: inhalt.werte.plattformFürZirkuläresBauen,
     url: 'https://concular.de/',
-    standards: ['VDI 6210', 'DIN SPEC 91484'],
-    evaluation: 'Führende deutsche Plattform für das zirkuläre Bauen und die Wiederverwendung von Baumaterialien. Verknüpft Pre-Demolition Audits zur Baustoffkartierung mit einem digitalen Marktplatz für geprüfte Sekundärmaterialien.',
+    standards: ['VDI 6210', inhalt.werte.dinSpec91484],
+    evaluation: inhalt.werte.führendeDeutschePlattformFür,
     benefits: [
-      'Gezielte Identifikation und Prüfung wiederverwendbarer Bauteile vor dem Abbruch',
-      'CO₂- und Kosteneinsparungsberechnung im Vergleich zur Neuherstellung',
-      'Rechtlich belastbare Begleitung bei Gewährleistung und Schadstoffausschluss'
+      inhalt.werte.gezielteIdentifikationUndPrüfung,
+      inhalt.werte.coUndKosteneinsparungsberechnungIm,
+      inhalt.werte.rechtlichBelastbareBegleitungBei
     ],
-    relevance: 'Reduktion von Primärrohstoffen und Abfallmengen durch direkte Wiederverwendung (Re-Use).',
-    tip: 'Ideal zur Vorbereitung von selektiven Rückbaukonzepten nach VDI 6210.'
+    relevance: inhalt.werte.reduktionVonPrimärrohstoffenUnd,
+    tip: inhalt.werte.idealZurVorbereitungVon
   },
   {
     id: 'dgnb_navigator',
-    name: 'DGNB Navigator (Bauprodukte-Plattform)',
+    name: inhalt.werte.dgnbNavigatorBauproduktePlattform,
     category: 'Baustoffe & Produkte',
-    discipline: 'BAUSTOFFE & DAUERHAFTIGKEIT',
-    publisher: 'Deutsche Gesellschaft für Nachhaltiges Bauen (DGNB e.V.)',
-    accessibility: 'Öffentlich und kostenfrei recherchierbar',
+    discipline: inhalt.werte.baustoffeDauerhaftigkeit2,
+    publisher: inhalt.werte.deutscheGesellschaftFürNachhaltiges,
+    accessibility: inhalt.werte.öffentlichUndKostenfreiRecherchierbar,
     url: 'https://www.dgnb-navigator.de/',
-    standards: ['DGNB Zertifizierungssystem', 'DIN EN 15804'],
-    evaluation: 'Die umfassende Baustoff- und Produktdatenbank der DGNB liefert verifizierte Nachhaltigkeitskennwerte (Umwelteigenschaften, Schadstoffe, Rezyklatanteile, EPDs) und verknüpft sie direkt mit den Kriterien des DGNB-Systems.',
+    standards: [inhalt.werte.dgnbZertifizierungssystem, inhalt.werte.dinEn158042],
+    evaluation: inhalt.werte.dieUmfassendeBaustoffUnd,
     benefits: [
-      'Direkte Zuordnung der Bauprodukte zu den DGNB-Qualitätsstufen (QS1 bis QS4)',
-      'Vollständige EPDs, Sicherheitsdatenblätter und Prüfzeugnisse gebündelt',
-      'Filterung nach regionalen Produkten, Recyclinganteilen und Schadstofffreiheit'
+      inhalt.werte.direkteZuordnungDerBauprodukte,
+      inhalt.werte.vollständigeEpdsSicherheitsdatenblätterU,
+      inhalt.werte.filterungNachRegionalenProdukten
     ],
-    relevance: 'Schnelle Auswahl nachweislich nachhaltiger Bauprodukte im Planungsprozess.',
-    tip: 'Prüfen Sie hier Baustoffe auf Erfüllung der Qualitätsstufen QS 1 bis QS 4 für die Innenraumluft.'
+    relevance: inhalt.werte.schnelleAuswahlNachweislichNachhaltiger,
+    tip: inhalt.werte.prüfenSieHierBaustoffe
   },
   {
     id: 'fraunhofer_irb',
-    name: 'Fraunhofer IRB Baufachinformation',
+    name: inhalt.werte.fraunhoferIrbBaufachinformation,
     category: 'Allgemein',
-    discipline: 'BAUFORSCHUNG & TECHNIK',
-    publisher: 'Fraunhofer-Informationszentrum Raum und Bau (IRB)',
-    accessibility: 'Zentrale Forschungs- und Literaturdatenbank',
+    discipline: inhalt.werte.bauforschungTechnik,
+    publisher: inhalt.werte.fraunhoferInformationszentrumRaumUnd,
+    accessibility: inhalt.werte.zentraleForschungsUndLiteraturdatenbank,
     url: 'https://www.baufachinformation.de/',
     standards: ['Zukunft Bau', 'Bauforschungsberichte'],
-    evaluation: 'Die führende Fachdatenbank für Bauforschung im deutschsprachigen Raum. Dokumentiert tausende abgeschlossene und laufende Forschungsprojekte, Schadensfälle, Sanierungsmethoden und bauphysikalische Modellierungen.',
+    evaluation: inhalt.werte.dieFührendeFachdatenbankFür,
     benefits: [
-      'Umfassendes Verzeichnis von Bauforschungsberichten der Bundesinitiative Zukunft Bau',
-      'Bauschadensfälle mit detaillierter Fehlerursachenanalyse und Sanierungsleitfäden',
-      'Verbindung von Baustoffkunde mit praktischen Ausführungsdetails'
+      inhalt.werte.umfassendesVerzeichnisVonBauforschungsbe,
+      inhalt.werte.bauschadensfälleMitDetaillierterFehlerur,
+      inhalt.werte.verbindungVonBaustoffkundeMit
     ],
-    relevance: 'Stand der Technik und neueste wissenschaftliche Erkenntnisse für Planung und Gutachten.',
-    tip: 'Hervorragend geeignet für Recherchen bei komplexen Bauschadensgutachten und Masterarbeiten.'
+    relevance: inhalt.werte.standDerTechnikUnd,
+    tip: inhalt.werte.hervorragendGeeignetFürRecherchen
   }
 ];
 
 // Existing categorical associations for the secondary view
-const DETAILED_VERBAENDE = [
-  {
-    kategorie: 'Zement, Beton & Mineralische Baustoffe',
-    items: [
-      { name: 'VDZ (Verein Deutscher Zementwerke)', url: 'https://www.vdz-online.de', beschreibung: 'Zentraler Verband der deutschen Zementindustrie. Bietet umfangreiche wissenschaftliche Berichte zu Zementmischungen, CO2-mindernder Hydratation und Klinkereinsparung.' },
-      { name: 'InformationsZentrum Beton (IZB)', url: 'https://www.beton.org', beschreibung: 'Plattform für Architektur und Technik mit Beton. Liefert praxistaugliche Merkblätter (Sichtbeton, WU-Bauteile), Bemessungsdaten und Schulungen.' },
-      { name: 'Bundesverband Baustoffe - Steine und Erden (bbs)', url: 'https://www.baustoffindustrie.de', beschreibung: 'Dachverband der mineralischen Rohstoffindustrie. Bietet Statistiken zur Ressourceneffizienz und Recycling-Bauschuttnutzung.' }
-    ]
-  },
-  {
-    kategorie: 'Holz & Biogene Werkstoffe',
-    items: [
-      { name: 'Informationsdienst Holz e.V.', url: 'https://informationsdienst-holz.de', beschreibung: 'Umfangreiche Fachbibliothek zur Tragfähigkeit, EC 5-Bemessung tragender Holzverbindungen und Konstruktionsdetails für Dächer und Decken.' },
-      { name: 'Holzbau Deutschland', url: 'https://www.holzbau-deutschland.de', beschreibung: 'Bund Deutscher Zimmermeister. Richtlinien zum mehrgeschossigen Holzbau, Abbund und handwerklichen Sanierung von Tragwerken.' },
-      { name: 'Dachverband Lehm e.V.', url: 'https://www.dachverband-lehm.de', beschreibung: 'Informationen zu ökologischen Lehmbau-Materialien, Trockenbauplatten und Putzen sowie normative Baubestimmungen.' }
-    ]
-  },
-  {
-    kategorie: 'Metalle & Tragwerke',
-    items: [
-      { name: 'bauforumstahl e.V.', url: 'https://bauforumstahl.de', beschreibung: 'Umfassendes Forum für Stahlbau und nachhaltige Verbundkonstruktion. Stellt softwarebasierte Tragfähigkeitsrechner bereit.' },
-      { name: 'Informationsstelle Edelstahl Rostfrei (ISER)', url: 'https://www.edelstahl-rostfrei.de', beschreibung: 'Planungshilfen zur Vermeidung von Kontaktkorrosion und Dauerhaftigkeit metallischer Bauteile in aggresivsten Bewitterungsklassen.' }
-    ]
-  }
-];
+const DETAILED_VERBAENDE = inhalt.daten.DETAILED_VERBAENDE;
 
 export default function Informationsquellen() {
   const [activeSubTab, setActiveSubTab] = useState<'evaluation' | 'verbaende' | 'oer_enzyklopaedie' | 'monitor'>('evaluation');
@@ -382,7 +360,7 @@ export default function Informationsquellen() {
     return matchesSearch && matchesCategory;
   });
 
-  const categories = ['Alle', 'Allgemein', 'Baustoffe & Produkte', 'Tragwerk & Holz', 'Bauphysik & Altbau', 'Schadstoffe & Praxis', 'Nachhaltigkeit'];
+  const categories = ['Alle', 'Allgemein', inhalt.werte.baustoffeProdukte, inhalt.werte.tragwerkHolz, inhalt.werte.bauphysikAltbau, inhalt.werte.schadstoffePraxis, 'Nachhaltigkeit'];
 
   return (
     <div className="flex flex-col gap-6" id="fachdatenbanken-modul">
@@ -391,19 +369,12 @@ export default function Informationsquellen() {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <div className="flex items-center gap-3 mb-4">
           <BookOpen className="text-shiraz" size={28} />
-          <h2 className="text-xl font-bold text-text-main flex items-center gap-2">Fachdatenbanken & Info-Portale</h2>
+          <h2 className="text-xl font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.fachdatenbankenInfoPortale} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Umfassende Evaluation deutscher, kostenfreier & barrierefreier Wissensplattformen
-          </p>
+          <p><MdText text={inhalt.texte.umfassendeEvaluationDeutscherKostenfreie} /></p>
         </div>
         </div>
-        <p className="text-text-main/80 text-sm leading-relaxed max-w-4xl">
-          Die Bewältigung nachhaltiger Bau- und Sanierungsaufgaben erfordert anerkannte, verlässliche Fakten. 
-          Die folgende Zusammenstellung präsentiert eine kuratierte und bewertete Auswahl von Informationssystemen, 
-          die durch deutsche Bundesministerien, Länderämter, Forschungsinitiativen (Zukunft Bau) und Fachverbände 
-          vollständig kostenfrei bereitgestellt werden.
-        </p>
+        <p className="text-text-main/80 text-sm leading-relaxed max-w-4xl"><MdText text={inhalt.texte.dieBewältigungNachhaltigerBau} /></p>
 
         {/* Level 1 Tabs switcher */}
         <div className="flex flex-wrap gap-2 mt-6 border-t border-home-grau/30 pt-4">
@@ -415,8 +386,7 @@ export default function Informationsquellen() {
                 : 'bg-home-grau/10 text-text-main hover:bg-home-grau/20'
             }`}
           >
-            <Database size={14} /> 1. Datenbank-Evaluation
-          </button>
+            <Database size={14} /><MdText text={inhalt.texte.t1DatenbankEvaluation} /></button>
           <button aria-pressed={activeSubTab === 'verbaende'}
             onClick={() => setActiveSubTab('verbaende')}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
@@ -425,8 +395,7 @@ export default function Informationsquellen() {
                 : 'bg-home-grau/10 text-text-main hover:bg-home-grau/20'
             }`}
           >
-            <Building2 size={14} /> 2. Zusätzliche Fachverbände & Verbände
-          </button>
+            <Building2 size={14} /><MdText text={inhalt.texte.t2ZusätzlicheFachverbändeVerbände} /></button>
           <button aria-pressed={activeSubTab === 'oer_enzyklopaedie'}
             onClick={() => setActiveSubTab('oer_enzyklopaedie')}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
@@ -435,8 +404,7 @@ export default function Informationsquellen() {
                 : 'bg-home-grau/10 text-text-main hover:bg-home-grau/20'
             }`}
           >
-            <BookOpen size={14} /> 3. OER-Enzyklopädie
-          </button>
+            <BookOpen size={14} /><MdText text={inhalt.texte.t3OerEnzyklopädie} /></button>
           <button aria-pressed={activeSubTab === 'monitor'}
             onClick={() => setActiveSubTab('monitor')}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
@@ -445,8 +413,7 @@ export default function Informationsquellen() {
                 : 'bg-emerald-50 text-emerald-800 border border-emerald-200/80 hover:bg-emerald-100/70'
             }`}
           >
-            <ShieldCheck size={14} /> 4. Normen- &amp; Link-Aktualitätsmonitor
-          </button>
+            <ShieldCheck size={14} /><MdText text={inhalt.texte.t4NormenLinkAktualitätsmonitor} /></button>
         </div>
       </div>
 
@@ -460,7 +427,7 @@ export default function Informationsquellen() {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-home-grau" size={16} />
               <input
                 type="text"
-                placeholder="Suchen Sie nach Systemen, Betreibern, Normen..."
+                placeholder={inhalt.werte.suchenSieNachSystemen}
                 className="w-full pl-9 pr-4 py-2 border border-home-grau/30 rounded-lg focus:outline-none focus:border-shiraz bg-off-white text-xs"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -479,7 +446,7 @@ export default function Informationsquellen() {
                       : 'bg-off-white text-text-main/80 border-home-grau/30 hover:bg-home-grau/10'
                   }`}
                 >
-                  {cat === 'Alle' ? 'Alle Disziplinen' : cat}
+                  {cat === 'Alle' ? inhalt.werte.alleDisziplinen : cat}
                 </button>
               ))}
             </div>
@@ -520,7 +487,7 @@ export default function Informationsquellen() {
                   <div className="bg-slate-50 border border-home-grau/30 p-2.5 rounded-lg mb-4 flex items-center gap-2 text-[11px] text-slate-600">
                     <Building2 size={14} className="text-slate-400 shrink-0" />
                     <div>
-                      <span className="text-[9px] font-bold text-slate-400 block uppercase tracking-wider leading-none">Herausgeber / Betreiber</span>
+                      <span className="text-[9px] font-bold text-slate-400 block uppercase tracking-wider leading-none"><MdText text={inhalt.texte.herausgeberBetreiber} /></span>
                       <strong className="text-slate-800 font-semibold">{db.publisher}</strong>
                     </div>
                   </div>
@@ -570,13 +537,10 @@ export default function Informationsquellen() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 py-1.5 px-3 bg-white border border-home-grau/30 hover:border-shiraz/50 rounded-lg text-[11px] font-bold text-slate-800 hover:text-shiraz transition-all shadow-sm"
-                      >
-                        Datenbank öffnen <ExternalLink size={12} />
+                      ><MdText text={inhalt.texte.datenbankÖffnen} /><ExternalLink size={12} />
                       </a>
                     ) : (
-                      <span className="inline-flex items-center gap-1.5 py-1.5 px-3 bg-slate-50 border border-home-grau/20 rounded-lg text-[11px] font-medium text-slate-500">
-                        Information / Fachliteratur
-                      </span>
+                      <span className="inline-flex items-center gap-1.5 py-1.5 px-3 bg-slate-50 border border-home-grau/20 rounded-lg text-[11px] font-medium text-slate-500"><MdText text={inhalt.texte.informationFachliteratur} /></span>
                     )}
                   </div>
                 </div>
@@ -584,9 +548,7 @@ export default function Informationsquellen() {
               </div>
             ))}
             {filteredDBs.length === 0 && (
-              <div className="col-span-1 lg:col-span-2 bg-white p-12 text-center rounded-2xl border border-home-grau/30 text-home-grau text-xs">
-                Keine passenden Informationsportale für "{searchQuery}" gefunden in der Evaluation.
-              </div>
+              <div className="col-span-1 lg:col-span-2 bg-white p-12 text-center rounded-2xl border border-home-grau/30 text-home-grau text-xs"><MdText text={inhalt.texte.keinePassendenInformationsportaleFür} />{searchQuery}<MdText text={inhalt.texte.gefundenInDerEvaluation} /></div>
             )}
           </div>
         </div>
@@ -596,10 +558,8 @@ export default function Informationsquellen() {
       {activeSubTab === 'verbaende' && (
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-6">
           <div className="border-b border-home-grau/10 pb-4">
-            <h3 className="text-lg font-bold text-text-main">Ergänzende deutsche Fachverbände & Portale</h3>
-            <p className="text-xs text-text-main/70">
-              Neben staatlichen Portalen bieten Branchenvereine und Verbände vertieftes, anwendungsbereites Fachwissen, Schriftenreihen und Musterdetails zum kostenfreien Download.
-            </p>
+            <h3 className="text-lg font-bold text-text-main"><MdText text={inhalt.texte.ergänzendeDeutscheFachverbändePortale} /></h3>
+            <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.nebenStaatlichenPortalenBieten} /></p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -645,47 +605,15 @@ export default function Informationsquellen() {
       {/* Footer list */}
       <ModuleFooter 
         wikipedia={[
-          { title: 'Umweltproduktdeklaration (EPD)' },
-          { title: 'Gefahrstoffverordnung (GefStoffV)', url: 'https://de.wikipedia.org/wiki/Gefahrstoffverordnung' },
-          { title: 'Urban Mining', url: 'https://de.wikipedia.org/wiki/Urban_Mining' }
+          { title: inhalt.werte.umweltproduktdeklarationEpd },
+          { title: inhalt.werte.gefahrstoffverordnungGefstoffv, url: 'https://de.wikipedia.org/wiki/Gefahrstoffverordnung' },
+          { title: inhalt.werte.urbanMining, url: 'https://de.wikipedia.org/wiki/Urban_Mining' }
         ]}
         normIds={['DIN_EN_15804', 'GEG_2024']}
-        regelwerke={[
-          { title: 'Leitfaden Nachhaltiges Bauen (BMWSB) - Standard für Bundesbauten', url: 'https://www.nachhaltigesbauen.de/' },
-          { title: 'VDI 6202 Blatt 1: Schadstofferkundung von Gebäuden und baulichen Anlagen', url: 'https://www.vdi.de/' },
-          { title: 'TRGS 519 / 521 / 524: Technische Regeln für Gefahrstoffe', url: 'https://www.baua.de/' },
-          { title: 'DIN SPEC 91484: Verfahren zur Erfassung von Bauprodukten vor Abbruch- und Umbaumaßnahmen' }
-        ]}
-        literatur={[
-          'BMWSB: Bewertungssystem Nachhaltiges Bauen (BNB) Kriteriensteckbriefe',
-          'Bayerisches LfU: Schadstoffratgeber Gebäuderückbau',
-          'BBSR: WECOBIS ökologisches Baustoffinformationssystem',
-          'GISBAU / BG BAU: WINGISonline Datenbank für Baustoff-Gesundheitsschutz'
-        ]}
-        weblinks={[
-          { title: 'ÖKOBAUDAT Plattform – BMWSB EPD-Datenbank', url: 'https://www.oekobaudat.de/' },
-          { title: 'WECOBIS – Ökologisches Baustoffinformationssystem', url: 'https://www.wecobis.de/' },
-          { title: 'Madaster Germany – Material- und Gebäudekataster', url: 'https://madaster.de/' },
-          { title: 'Concular – Zirkulärer Marktplatz für Baustoffe', url: 'https://concular.de/' },
-          { title: 'DGNB Navigator – Bauprodukte-Plattform', url: 'https://www.dgnb-navigator.de/' },
-          { title: 'WINGISonline – Gefahrstoffsystem der BG BAU', url: 'https://www.wingisonline.de' },
-          { title: 'Fraunhofer IRB – Baufachinformation', url: 'https://www.baufachinformation.de/' },
-          { title: 'ift Rosenheim – Institut für Fenstertechnik & Bauteile', url: 'https://www.ift-rosenheim.de/' },
-          { title: 'Bundesverband Flachglas (BF) – Technische Richtlinien', url: 'https://www.bundesverband-flachglas.de/' },
-          { title: 'FGSV – Forschungsgesellschaft für Straßen- und Verkehrswesen', url: 'https://www.fgsv.de/' }
-        ]}
-        formeln={[
-          {
-            formel: 'c_{\\text{Fasern}} = \\frac{n_{\\text{gezählt}}}{V_{\\text{Luft}}} \\le 500\\,\\frac{\\text{Fasern}}{\\text{m}^3}',
-            erklaerung: 'Asbestfaserkonzentration in der Raumluft nach Asbestsanierung gemäß TRGS 519 zur Freigabemessung (VDI 3492).',
-            quelle: 'TRGS 519 / VDI 3492'
-          },
-          {
-            formel: '\\text{GWP} = \\sum_{i} m_i \\cdot \\text{GWP}_i \\quad [\\text{kg CO}_2\\text{-Äquiv.}]',
-            erklaerung: 'In Informationssystemen wie ÖKOBAUDAT und WECOBIS hinterlegte ökologische Kennwerte nach DIN EN 15804.',
-            quelle: 'DIN EN 15804 / WECOBIS'
-          }
-        ]}
+        regelwerke={inhalt.daten["Informationsquellen.regelwerke"]}
+        literatur={inhalt.daten["Informationsquellen.literatur"]}
+        weblinks={inhalt.daten["Informationsquellen.weblinks"]}
+        formeln={inhalt.daten["Informationsquellen.formeln"]}
       />
     </div>
   );

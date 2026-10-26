@@ -9,6 +9,8 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import inhalt from '@/content/kreislaufwirtschaft/Kreislaufwirtschaft.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface DeconstructionComponent {
   id: string;
@@ -58,7 +60,7 @@ export default function Kreislaufwirtschaft() {
   const [auditComponents, setAuditComponents] = useState<DeconstructionComponent[]>([
     {
       id: 'item-1',
-      name: 'Aluminium-Glas-Fassadenelemente (Pfosten-Riegel)',
+      name: inhalt.werte.aluminiumGlasFassadenelementePfosten,
       quantity: 120,
       unit: 'Stk',
       category: 'Metall',
@@ -69,7 +71,7 @@ export default function Kreislaufwirtschaft() {
     },
     {
       id: 'item-2',
-      name: 'Innentüren Holz massiv (Kiefer / Fichte), m. Zargen',
+      name: inhalt.werte.innentürenHolzMassivKiefer,
       quantity: 45,
       unit: 'Stk',
       category: 'Holz',
@@ -80,7 +82,7 @@ export default function Kreislaufwirtschaft() {
     },
     {
       id: 'item-3',
-      name: 'Historische Gussgliederheizkörper (Retro-Stil)',
+      name: inhalt.werte.historischeGussgliederheizkörperRetroSti,
       quantity: 30,
       unit: 'Stk',
       category: 'Technik',
@@ -91,7 +93,7 @@ export default function Kreislaufwirtschaft() {
     },
     {
       id: 'item-4',
-      name: 'Teppichfliesen (Faserstoff, Bitumenschicht)',
+      name: inhalt.werte.teppichfliesenFaserstoffBitumenschicht,
       quantity: 450,
       unit: 'm²',
       category: 'Sonstiges',
@@ -102,7 +104,7 @@ export default function Kreislaufwirtschaft() {
     },
     {
       id: 'item-5',
-      name: 'BSH-Unterzüge und Deckenbalken',
+      name: inhalt.werte.bshUnterzügeUndDeckenbalken,
       quantity: 12,
       unit: 'Stk',
       category: 'Holz',
@@ -263,85 +265,25 @@ export default function Kreislaufwirtschaft() {
     };
   }, [auditComponents]);
 
-  const strategies = [
-    {
-      id: 1,
-      name: 'Refuse & Reduce',
-      label: 'Verzichten & Reduzieren',
-      bgColor: 'bg-emerald-500 hover:bg-emerald-600',
-      activeColor: 'bg-emerald-600 ring-4 ring-emerald-200',
-      textColor: 'text-emerald-900',
-      panelBg: 'bg-emerald-50 border-emerald-200',
-      description: 'Höchste Priorität. Vermeidung von Neubau durch Umnutzung von Bestandsgebäuden. Materialsparende Konstruktionen (z.B. Leichtbau, Topologieoptimierung).',
-      examples: ['Bau im Bestand statt Abriss und Neubau', 'Leichtbauweisen zur Materialeinsparung', 'Erhöhung der Nutzungsintensität (Sharing)']
-    },
-    {
-      id: 2,
-      name: 'Reuse',
-      label: 'Wiederverwenden',
-      bgColor: 'bg-blue-500 hover:bg-blue-600',
-      activeColor: 'bg-blue-600 ring-4 ring-blue-200',
-      textColor: 'text-blue-900',
-      panelBg: 'bg-blue-50 border-blue-200',
-      description: 'Bauteile (z.B. Stahlträger, Ziegel, Fenster) werden nach dem Rückbau direkt oder mit minimaler Aufbereitung in neuen Projekten wiederverwendet. Erfordert zerstörungsfreien Rückbau (Design for Disassembly).',
-      examples: ['Wiederverwendung von Stahlträgern ohne Umschmelzen', 'Einsatz gebrauchter Dachziegel', 'Wiedereinbau von intakten Fenstern/Türen']
-    },
-    {
-      id: 3,
-      name: 'Repair & Refurbish',
-      label: 'Reparieren & Aufarbeiten',
-      bgColor: 'bg-amber-500 hover:bg-amber-600',
-      activeColor: 'bg-amber-600 ring-4 ring-amber-200',
-      textColor: 'text-amber-900',
-      panelBg: 'bg-amber-50 border-amber-200',
-      description: 'Verlängerung der Lebensdauer von Bauteilen und Gebäuden durch Instandhaltung, Sanierung und Modernisierung.',
-      examples: ['Fassadensanierung und Nachdämmung', 'Reparatur von TGA-Anlagen statt komplettem Austausch', 'Aufbereitung alter Holzböden']
-    },
-    {
-      id: 4,
-      name: 'Recycle',
-      label: 'Recyceln',
-      bgColor: 'bg-orange-500 hover:bg-orange-600',
-      activeColor: 'bg-orange-600 ring-4 ring-orange-200',
-      textColor: 'text-orange-900',
-      panelBg: 'bg-orange-50 border-orange-200',
-      description: 'Stoffliche Verwertung von Materialien. Das Material wird eingeschmolzen oder gebrochen (z.B. Recyclingbeton, Stahlschrott). Benötigt oft viel Energie und führt häufig zu "Downcycling" (Qualitätsverlust).',
-      examples: ['Einsatz von Recyclingbeton (RC-Beton)', 'Einschmelzen von Bewehrungsstahl im Lichtbogenofen', 'Asphaltrecycling für neue Tragschichten']
-    },
-    {
-      id: 5,
-      name: 'Recover & Dispose',
-      label: 'Verwerten & Deponieren',
-      bgColor: 'bg-torch-red hover:bg-red-700',
-      activeColor: 'bg-red-700 ring-4 ring-red-200',
-      textColor: 'text-red-900',
-      panelBg: 'bg-red-50 border-red-200',
-      description: 'Letzte Option. Verbrennung von Holz/Kunststoffen zur Energiegewinnung oder Ablagerung auf Deponien (z.B. asbesthaltige Stoffe, Bauschutt ohne Recyclingpotenzial).',
-      examples: ['Thermische Verwertung von behandeltem Altholz (A IV)', 'Deponierung von asbesthaltigen Faserzementplatten', 'Müllverbrennung von nicht trennbaren Verbundstoffen']
-    }
-  ];
+  const strategies = inhalt.daten["Kreislaufwirtschaft.strategies"];
 
   return (
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <RotateCcw className="text-shiraz animate-spin-slow" /> Kreislaufwirtschaft (Circular Economy)
-        </h2>
+          <RotateCcw className="text-shiraz animate-spin-slow" /><MdText text={inhalt.texte.kreislaufwirtschaftCircularEconomy} /></h2>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Die Kreislaufwirtschaft im Bauwesen zielt darauf ab, den Ressourcenverbrauch zu minimieren, Abfälle zu vermeiden und Materialien so lange wie möglich in geschlossenen Kreisläufen zu halten. 
-            Der Bausektor ist für über 50% des weltweiten Ressourcenverbrauchs und Abfallaufkommens verantwortlich, weshalb ein Umdenken vom linearen Modell ("Take-Make-Dispose") zwingend erforderlich ist.
-          </p>
+          <p><MdText text={inhalt.texte.dieKreislaufwirtschaftImBauwesen} /></p>
         </div>
 
         <div className="p-4 bg-slate-50/50 rounded-2xl border border-rose-100">
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
             {[
-              { id: 'grundlagen' as const, label: 'R-Strategien & Urban Mining', icon: RotateCcw },
-              { id: 'abfaelle' as const, label: 'Massen & Aufbereitung', icon: Building2 },
-              { id: 'probleme' as const, label: 'Stoffverbünde & Schadstoffe', icon: AlertTriangle },
-              { id: 'rueckbauplanung' as const, label: 'Rückbauplanung & Re-Use', icon: ClipboardCheck },
+              { id: 'grundlagen' as const, label: inhalt.werte.rStrategienUrbanMining, icon: RotateCcw },
+              { id: 'abfaelle' as const, label: inhalt.werte.massenAufbereitung, icon: Building2 },
+              { id: 'probleme' as const, label: inhalt.werte.stoffverbündeSchadstoffe, icon: AlertTriangle },
+              { id: 'rueckbauplanung' as const, label: inhalt.werte.rückbauplanungReUse, icon: ClipboardCheck },
               { id: 'zirkularitaet' as const, label: 'Zirkularitäts-Indizes', icon: Calculator }
             ].map((tab) => {
               const Icon = tab.icon;
@@ -371,8 +313,7 @@ export default function Kreislaufwirtschaft() {
             {/* R-Strategien */}
             <div className="lg:col-span-7 flex flex-col gap-6">
               <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-                <RotateCcw size={20} className="text-shiraz" /> Die R-Strategien (Hierarchie)
-              </h3>
+                <RotateCcw size={20} className="text-shiraz" /><MdText text={inhalt.texte.dieRStrategienHierarchie} /></h3>
               
               <div className="flex flex-col items-center w-full gap-2 mt-2">
                 {strategies.map((s, index) => (
@@ -395,7 +336,7 @@ export default function Kreislaufwirtschaft() {
                         </h4>
                         <p className={`text-sm mb-4 leading-relaxed ${s.textColor}/80`}>{s.description}</p>
                         <div className="bg-white/60 rounded-xl p-4 border border-white/40">
-                          <strong className={`block text-xs uppercase tracking-wider mb-2 font-bold ${s.textColor}`}>Typische Anwendungsbeispiele:</strong>
+                          <strong className={`block text-xs uppercase tracking-wider mb-2 font-bold ${s.textColor}`}><MdText text={inhalt.texte.typischeAnwendungsbeispiele} /></strong>
                           <ul className={`list-disc list-inside text-sm space-y-1.5 ${s.textColor}/90`}>
                             {s.examples.map((ex, i) => <li key={i}>{ex}</li>)}
                           </ul>
@@ -412,43 +353,30 @@ export default function Kreislaufwirtschaft() {
 
               <div className="border border-home-grau/30 rounded-xl p-5 bg-white">
                 <h3 className="font-bold text-slate-900 text-lg mb-4 flex items-center gap-2">
-                  <Recycle size={20} className="text-shiraz" /> Qualitäten des Recyclings
-                </h3>
+                  <Recycle size={20} className="text-shiraz" /><MdText text={inhalt.texte.qualitätenDesRecyclings} /></h3>
                 <div className="space-y-4">
                   <div className="bg-slate-50 border border-home-grau/30 p-3 rounded-lg text-sm">
-                    <strong className="text-slate-800">Downcycling (Wertminderung):</strong>
-                    <p className="text-slate-600 mt-1">
-                      Das Material wird verwertet, aber die Qualität oder Funktionalität sinkt. Es entsteht ein minderwertigeres Produkt.
-                      <br/><span className="text-shiraz font-medium">Beispiel:</span> Hochwertiger Bauschutt aus Betonmauerwerk wird gebrochen und lediglich als Schotter-Tragschicht im Straßenbau verwendet.
-                    </p>
+                    <strong className="text-slate-800"><MdText text={inhalt.texte.downcyclingWertminderung} /></strong>
+                    <p className="text-slate-600 mt-1"><MdText text={inhalt.texte.dasMaterialWirdVerwertet} /><span className="text-shiraz font-medium">Beispiel:</span><MdText text={inhalt.texte.hochwertigerBauschuttAusBetonmauerwerk} /></p>
                   </div>
                   <div className="bg-sky-50 border border-sky-200 p-3 rounded-lg text-sm">
-                    <strong className="text-sky-800">Recycling (Gleichwertig):</strong>
-                    <p className="text-sky-600 mt-1">
-                      Das Material wird aufbereitet und behält seine ursprüngliche Qualität und Funktion.
-                      <br/><span className="text-shiraz font-medium">Beispiel:</span> Stahlschrott wird ohne Qualitätsverlust im Elektrolichtbogenofen eingeschmolzen und zu neuem Betonstahl verarbeitet.
-                    </p>
+                    <strong className="text-sky-800"><MdText text={inhalt.texte.recyclingGleichwertig} /></strong>
+                    <p className="text-sky-600 mt-1"><MdText text={inhalt.texte.dasMaterialWirdAufbereitet} /><span className="text-shiraz font-medium">Beispiel:</span><MdText text={inhalt.texte.stahlschrottWirdOhneQualitätsverlust} /></p>
                   </div>
                   <div className="bg-emerald-50 border border-emerald-200 p-3 rounded-lg text-sm">
-                    <strong className="text-emerald-800">Upcycling (Wertsteigerung):</strong>
-                    <p className="text-emerald-600 mt-1">
-                      Das abfallende Material wird aufgewertet und für ein höheres oder wertigeres Endprodukt verwendet.
-                      <br/><span className="text-shiraz font-medium">Beispiel:</span> Alte Gerüstbohlen oder abgerissene Holzstrukturen werden zu hochwertigen Möbeln verarbeitet.
-                    </p>
+                    <strong className="text-emerald-800"><MdText text={inhalt.texte.upcyclingWertsteigerung} /></strong>
+                    <p className="text-emerald-600 mt-1"><MdText text={inhalt.texte.dasAbfallendeMaterialWird} /><span className="text-shiraz font-medium">Beispiel:</span><MdText text={inhalt.texte.alteGerüstbohlenOderAbgerissene} /></p>
                   </div>
                 </div>
               </div>
               <div className="border border-home-grau/30 rounded-xl p-5 bg-white">
                 <h3 className="font-bold text-slate-900 text-lg mb-4 flex items-center gap-2">
-                  <Box size={20} className="text-shiraz" /> Urban Mining &amp; Gebäuderessourcenpässe
-                </h3>
-                <p className="text-sm text-slate-700 mb-3">
-                  Betrachtet die gebaute Umwelt (Städte) als Rohstofflager der Zukunft. Das Gebäude wird als Materialdatenbank verstanden.
-                </p>
+                  <Box size={20} className="text-shiraz" /><MdText text={inhalt.texte.urbanMiningGebäuderessourcenpässe} /></h3>
+                <p className="text-sm text-slate-700 mb-3"><MdText text={inhalt.texte.betrachtetDieGebauteUmwelt} /></p>
                 <ul className="text-sm text-slate-500 space-y-2 list-disc list-inside">
-                  <li><strong>Gebäudepass / Materialpass (z.B. Madaster):</strong> Digitale Zwillinge, die exakt dokumentieren, welche Materialien in welchen Mengen und Qualitäten wo im Gebäude verbaut sind.</li>
-                  <li><strong>Rückbaukataster:</strong> Erfassung von Gebäuden, die abgerissen werden, um Materialien gezielt zu bergen und in die Lieferkette zurückzuführen.</li>
-                  <li><strong>Sekundärrohstoffe:</strong> Aktive Nutzung von umgearbeiteten Rohstoffen (z.B. RC-Gesteinskörnung, Altholz, recycelter Baustahl) statt Primärmaterialausbeutung.</li>
+                  <li><MdText text={inhalt.texte.gebäudepassMaterialpassZB} /></li>
+                  <li><MdText text={inhalt.texte.rückbaukatasterErfassungVonGebäuden} /></li>
+                  <li><MdText text={inhalt.texte.sekundärrohstoffeAktiveNutzungVon} /></li>
                 </ul>
               </div>
             </div>
@@ -459,66 +387,62 @@ export default function Kreislaufwirtschaft() {
           <div className="flex flex-col gap-8 animate-in fade-in duration-300">
             <div className="bg-white rounded-2xl flex flex-col gap-6">
               <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-                <Building2 className="text-shiraz" /> Anfallende Baustoffmassen & Verwertungswege
-              </h2>
-              <p className="text-sm text-slate-700">
-                Bau- und Abbruchabfälle stellen mit über 50 % des Bruttoabfallaufkommens (über 200 Mio. Tonnen jährlich) in Deutschland den größten Abfallstrom dar.
-              </p>
+                <Building2 className="text-shiraz" /><MdText text={inhalt.texte.anfallendeBaustoffmassenVerwertungswege} /></h2>
+              <p className="text-sm text-slate-700"><MdText text={inhalt.texte.bauUndAbbruchabfälleStellen} /></p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30">
-                  <h4 className="font-bold text-slate-900 mb-2">Bodenaushub (Boden / Steine)</h4>
-                  <div className="text-lg font-bold text-slate-900 mb-1">ca. 130 Mio. t / Jahr</div>
-                  <p className="text-sm text-slate-700"><strong>Verwertungswege:</strong> Vorrangig Verfüllung von Abgrabungen, Deponiebau, Landschaftsbau.</p>
+                  <h4 className="font-bold text-slate-900 mb-2"><MdText text={inhalt.texte.bodenaushubBodenSteine} /></h4>
+                  <div className="text-lg font-bold text-slate-900 mb-1"><MdText text={inhalt.texte.ca130MioT} /></div>
+                  <p className="text-sm text-slate-700"><MdText text={inhalt.texte.verwertungswegeVorrangigVerfüllungVon} /></p>
                 </div>
                 <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30">
-                  <h4 className="font-bold text-slate-900 mb-2">Bauschutt (Mineralisch)</h4>
-                  <div className="text-lg font-bold text-slate-900 mb-1">ca. 60 Mio. t / Jahr</div>
-                  <p className="text-sm text-slate-700"><strong>Verwertungswege:</strong> Recyclingbaustoffe (Straßenbauunterbau), Anteilig für R-Beton. Viel Downcycling.</p>
+                  <h4 className="font-bold text-slate-900 mb-2"><MdText text={inhalt.texte.bauschuttMineralisch} /></h4>
+                  <div className="text-lg font-bold text-slate-900 mb-1"><MdText text={inhalt.texte.ca60MioT} /></div>
+                  <p className="text-sm text-slate-700"><MdText text={inhalt.texte.verwertungswegeRecyclingbaustoffeStraßen} /></p>
                 </div>
                 <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30">
-                  <h4 className="font-bold text-slate-900 mb-2">Straßenaufbruch (Asphalt)</h4>
-                  <div className="text-lg font-bold text-slate-900 mb-1">ca. 20 Mio. t / Jahr</div>
-                  <p className="text-sm text-slate-700"><strong>Verwertungswege:</strong> Asphaltrecycling (sehr hohe Quote an direkter Wiederverwertung im Mischgut).</p>
+                  <h4 className="font-bold text-slate-900 mb-2"><MdText text={inhalt.texte.straßenaufbruchAsphalt} /></h4>
+                  <div className="text-lg font-bold text-slate-900 mb-1"><MdText text={inhalt.texte.ca20MioT} /></div>
+                  <p className="text-sm text-slate-700"><MdText text={inhalt.texte.verwertungswegeAsphaltrecyclingSehrHohe} /></p>
                 </div>
                 <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30 lg:col-span-3">
-                  <h4 className="font-bold text-slate-900 mb-2">Sonstige Bauabfälle (Gips, Holz, Kunststoffe, Metalle)</h4>
-                  <div className="text-lg font-bold text-slate-900 mb-1">ca. 15 Mio. t / Jahr</div>
-                  <p className="text-sm text-slate-700"><strong>Verwertungswege:</strong> Metalle (vollständiges Recycling), Holz/Kunststoffe (oft energetische Verwertung bzgl. Verunreinigungen), Gips (teilweise Gipsrecycling-Anlagen).</p>
+                  <h4 className="font-bold text-slate-900 mb-2"><MdText text={inhalt.texte.sonstigeBauabfälleGipsHolz} /></h4>
+                  <div className="text-lg font-bold text-slate-900 mb-1"><MdText text={inhalt.texte.ca15MioT} /></div>
+                  <p className="text-sm text-slate-700"><MdText text={inhalt.texte.verwertungswegeMetalleVollständigesRecyc} /></p>
                 </div>
               </div>
             </div>
 
             <div className="bg-white rounded-2xl flex flex-col gap-6">
               <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-                <Calculator className="text-shiraz" /> Aufbereitungsverfahren nach Materialien
-              </h2>
+                <Calculator className="text-shiraz" /><MdText text={inhalt.texte.aufbereitungsverfahrenNachMaterialien} /></h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="bg-white border border-y border-r border-home-grau/25 border-l-4 border-l-stone-500 p-4 rounded-xl">
-                  <h4 className="font-bold text-stone-800 mb-2 border-b border-stone-200 pb-2">Mineralische Baustoffe (Beton, Mauerwerk)</h4>
+                  <h4 className="font-bold text-stone-800 mb-2 border-b border-stone-200 pb-2"><MdText text={inhalt.texte.mineralischeBaustoffeBetonMauerwerk} /></h4>
                   <ul className="text-sm text-slate-700 space-y-2">
-                    <li><strong>Verfahren:</strong> Brechen (Backenbrecher, Prallmühle), Sieben, Sichten (Trennen durch Luftstrom), sensorgestützte Sortierung, ggf. Waschen.</li>
-                    <li><strong>Verwertungsquote:</strong> Sehr hoch (&gt; 90 %), jedoch findet überwiegend <em>Downcycling</em> statt (Schottertragschichten im Straßenbau). Zirkulär wäre hochwertiges Recycling als Gesteinskörnung für R-Beton (Hochbau).</li>
+                    <li><MdText text={inhalt.texte.verfahrenBrechenBackenbrecherPrallmühle} /></li>
+                    <li><MdText text={inhalt.texte.verwertungsquoteSehrHoch90} /></li>
                   </ul>
                 </div>
                 <div className="bg-white border border-y border-r border-home-grau/25 border-l-4 border-l-indigo-500 p-4 rounded-xl">
-                  <h4 className="font-bold text-slate-800 mb-2 border-b border-home-grau/30 pb-2">Metalle (Stahlbeton, Alu, Profilbahnen)</h4>
+                  <h4 className="font-bold text-slate-800 mb-2 border-b border-home-grau/30 pb-2"><MdText text={inhalt.texte.metalleStahlbetonAluProfilbahnen} /></h4>
                   <ul className="text-sm text-slate-700 space-y-2">
-                    <li><strong>Verfahren:</strong> Magnetabscheidung (Eisenmetalle), Wirbelstromabscheidung (NE-Metalle wie Aluminium/Kupfer), Shreddern, anschließendes Umschmelzen im Elektrolichtbogenofen (Elektrostahl).</li>
-                    <li><strong>Verwertungsquote:</strong> Nahe 100 %. Metalle lassen sich praktisch ohne Qualitätsverlust unendlich oft recyceln.</li>
+                    <li><MdText text={inhalt.texte.verfahrenMagnetabscheidungEisenmetalleWi} /></li>
+                    <li><MdText text={inhalt.texte.verwertungsquoteNahe100Metalle} /></li>
                   </ul>
                 </div>
                 <div className="bg-white border border-y border-r border-home-grau/25 border-l-4 border-l-amber-500 p-4 rounded-xl">
-                  <h4 className="font-bold text-amber-900 mb-2 border-b border-amber-200 pb-2">Bauholz & Holzwerkstoffe</h4>
+                  <h4 className="font-bold text-amber-900 mb-2 border-b border-amber-200 pb-2"><MdText text={inhalt.texte.bauholzHolzwerkstoffe} /></h4>
                   <ul className="text-sm text-slate-700 space-y-2">
-                    <li><strong>Verfahren:</strong> Schreddern, Altholzverordnung (Klassifizierung A I bis A IV je nach Schadstoffbelastung).</li>
-                    <li><strong>Verwertungsquote:</strong> Hohe Erfassung, aber stark limitiertes stoffliches Recycling (z.B. Nutzung für Spanplatten nur bei A I / A II). Behandeltes Holz (A III / A IV) wird fast ausschließlich <em>energetisch verwertet</em> (Biomasseheizkraftwerke).</li>
+                    <li><MdText text={inhalt.texte.verfahrenSchreddernAltholzverordnungKlas} /></li>
+                    <li><MdText text={inhalt.texte.verwertungsquoteHoheErfassungAber} /></li>
                   </ul>
                 </div>
                 <div className="bg-white border border-y border-r border-home-grau/25 border-l-4 border-l-blue-500 p-4 rounded-xl">
-                  <h4 className="font-bold text-blue-900 mb-2 border-b border-blue-200 pb-2">Kunststoffe & Dämmstoffe</h4>
+                  <h4 className="font-bold text-blue-900 mb-2 border-b border-blue-200 pb-2"><MdText text={inhalt.texte.kunststoffeDämmstoffe} /></h4>
                   <ul className="text-sm text-slate-700 space-y-2">
-                    <li><strong>Verfahren:</strong> Zerkleinerung, Extrusion (werkstofflich), Auflösung (z.B. CreaSolv für EPS), oder Müllverbrennung (thermisch).</li>
-                    <li><strong>Verwertungsquote:</strong> Im Baubereich oft gering bzgl. werkstofflichem Recycling, da Kunststoffe oft als Verbundmaterialien (z.B. WDVS, geklebte Bodenbeläge) vorliegen oder mit Brandschutzmitteln kontaminiert sind. Meist noch energetische Verwertung.</li>
+                    <li><MdText text={inhalt.texte.verfahrenZerkleinerungExtrusionWerkstoff} /></li>
+                    <li><MdText text={inhalt.texte.verwertungsquoteImBaubereichOft} /></li>
                   </ul>
                 </div>
               </div>
@@ -531,40 +455,31 @@ export default function Kreislaufwirtschaft() {
             
             <div className="bg-white rounded-2xl flex flex-col gap-6">
               <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-                <Layers className="text-shiraz" /> Problematische Stoffverbünde & Bauweisen
-              </h2>
-              <p className="text-sm text-slate-700">
-                Die moderne Bauweise hat die bauphysikalischen und statischen Eigenschaften von Bauteilen optimiert, oft auf Kosten der Kreislauffähigkeit. Materialien werden stark miteinander verbunden, was das Trennen beim Rückbau erschwert.
-              </p>
+                <Layers className="text-shiraz" /><MdText text={inhalt.texte.problematischeStoffverbündeBauweisen} /></h2>
+              <p className="text-sm text-slate-700"><MdText text={inhalt.texte.dieModerneBauweiseHat} /></p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
                 <div className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl">
                   <div className="flex items-center gap-2 text-torch-red font-bold mb-2">
-                    <ArrowDown size={18} /> Verbundbauweise (hemmt Zirkularität)
-                  </div>
-                  <p className="text-sm text-slate-500 mb-3">
-                    Stoffe werden nass in nass, geklebt oder untrennbar mechanisch verbunden. Ein materialreines Trennen ist am "End of Life" unwirtschaftlich oder unmöglich.
-                  </p>
+                    <ArrowDown size={18} /><MdText text={inhalt.texte.verbundbauweiseHemmtZirkularität} /></div>
+                  <p className="text-sm text-slate-500 mb-3"><MdText text={inhalt.texte.stoffeWerdenNassIn} /></p>
                   <ul className="list-disc list-inside text-xs text-slate-700 space-y-1">
-                    <li><strong>Wärmedämmverbundsysteme (WDVS):</strong> Verklebter EPS-Dämmstoff mit Putz und Armierungsgewebe. Wird oft komplett verbrannt oder auf Deponien entsorgt.</li>
-                    <li><strong>Ortbeton & Nassestriche:</strong> Monolithische Verbindungen verschiedener Lagen (z.B. Verbundestrich auf Beton). Trennung nur durch aufwendiges Fräsen/Abspitzen.</li>
-                    <li><strong>Verklebte Bodenbeläge:</strong> Teppiche, PVC oder Parkett vollflächig mit starken Dispersionsklebern fixiert.</li>
-                    <li><strong>Verbundwerkstoffe (GFK, CFK):</strong> Faserverstärkte Kunststoffe können aufgrund der Verklebung der Matrix fast nicht vollständig sortenrein recycelt werden.</li>
+                    <li><MdText text={inhalt.texte.wärmedämmverbundsystemeWdvsVerklebterEps} /></li>
+                    <li><MdText text={inhalt.texte.ortbetonNassestricheMonolithischeVerbind} /></li>
+                    <li><MdText text={inhalt.texte.verklebteBodenbelägeTeppichePvc} /></li>
+                    <li><MdText text={inhalt.texte.verbundwerkstoffeGfkCfkFaserverstärkte} /></li>
                   </ul>
                 </div>
 
                 <div className="bg-emerald-50 border border-emerald-200 p-5 rounded-xl">
                   <div className="flex items-center gap-2 text-emerald-700 font-bold mb-2">
-                    <ArrowRight size={18} /> Design for Disassembly (DfD)
-                  </div>
-                  <p className="text-sm text-emerald-800/80 mb-3">
-                    Konstruieren für den Rückbau: Gebäude so planen, dass sie am Ende der Nutzung sortenrein und zerstörungsfrei demontiert (dekonstruiert) werden können.
-                  </p>
+                    <ArrowRight size={18} /><MdText text={inhalt.texte.designForDisassemblyDfd} /></div>
+                  <p className="text-sm text-emerald-800/80 mb-3"><MdText text={inhalt.texte.konstruierenFürDenRückbau} /></p>
                   <ul className="list-disc list-inside text-xs text-emerald-800/80 space-y-1">
-                    <li><strong>Trockene Verbindungen:</strong> Verschraubungen, Verbolzen oder Stecken statt Kleben oder Gießen (Betonieren).</li>
-                    <li><strong>Modulares Bauen:</strong> Vorfertigung im Holz- oder Stahlbau, wo ganze Module oder Wandelemente umgenutzt werden können.</li>
-                    <li><strong>Trennschichten:</strong> Einbau von definierten Gleit- oder Trennschichten zwischen Schichten unterschiedlicher Lebensdauer (Rohbau vs. Ausbau).</li>
-                    <li><strong>Sichtbare Leitungsführung:</strong> Installationen ("TGA") werden nicht eingeputzt, sondern bleiben zugänglich für leichte Wartung und Austausch.</li>
+                    <li><MdText text={inhalt.texte.trockeneVerbindungenVerschraubungenVerbo} /></li>
+                    <li><MdText text={inhalt.texte.modularesBauenVorfertigungIm} /></li>
+                    <li><MdText text={inhalt.texte.trennschichtenEinbauVonDefinierten} /></li>
+                    <li><MdText text={inhalt.texte.sichtbareLeitungsführungInstallationenTg} /></li>
                   </ul>
                 </div>
               </div>
@@ -572,39 +487,29 @@ export default function Kreislaufwirtschaft() {
 
             <div className="bg-white rounded-2xl flex flex-col gap-6">
               <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-                <AlertTriangle className="text-shiraz" /> Stör- und Schadstoffe
-              </h2>
-              <p className="text-sm text-slate-700">
-                Die Präsenz von Schadstoffen in Bestandsgebäuden verhindert oft eine direkte Wiederverwendung oder ein hochwertiges Recycling (Kontamination von Sekundärrohstoffen).
-              </p>
+                <AlertTriangle className="text-shiraz" /><MdText text={inhalt.texte.störUndSchadstoffe} /></h2>
+              <p className="text-sm text-slate-700"><MdText text={inhalt.texte.diePräsenzVonSchadstoffen} /></p>
 
               <div className="space-y-4">
                 <div className="bg-slate-50 border border-home-grau/30 p-4 rounded-xl">
-                  <h4 className="font-bold text-slate-900 mb-1">Historische Bauschadstoffe (Asbest, PCB, PAK)</h4>
-                  <p className="text-sm text-slate-500 mb-2">
-                    In Gebäuden, die vor 1993/95 gebaut wurden, sind häufig starke Toxine verbaut. Solche Materialien müssen aufwendig ausgebaut und auf Sondermülldeponien (Deponieklasse DK III) abgelagert oder bei Hochtemperatur verbrannt werden. Ein Recycling ist verboten (Gefahr der "Re-Toxifizierung" der geschlossenen Kreisläufe).
-                  </p>
+                  <h4 className="font-bold text-slate-900 mb-1"><MdText text={inhalt.texte.historischeBauschadstoffeAsbestPcb} /></h4>
+                  <p className="text-sm text-slate-500 mb-2"><MdText text={inhalt.texte.inGebäudenDieVor} /></p>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <div className="bg-white p-2 rounded border border-home-grau/30 text-xs">
-                      <strong className="text-shiraz">Asbest:</strong> In Faserzementplatten, Brandschutzklappen, Floor-Flex-Platten.
-                    </div>
+                      <strong className="text-shiraz">Asbest:</strong><MdText text={inhalt.texte.inFaserzementplattenBrandschutzklappenFl} /></div>
                     <div className="bg-white p-2 rounded border border-home-grau/30 text-xs">
-                      <strong className="text-shiraz">PAK:</strong> Teerhaltige Klebstoffe unter Parkett, Dachpappen. Gefährden das Asphaltrecycling, wenn ausgebaut.
-                    </div>
+                      <strong className="text-shiraz">PAK:</strong><MdText text={inhalt.texte.teerhaltigeKlebstoffeUnterParkett} /></div>
                     <div className="bg-white p-2 rounded border border-home-grau/30 text-xs">
-                      <strong className="text-shiraz">PCB / PCP:</strong> Fugenmassen, elastische Dichtstoffe, alte Holzschutzmittel (AIV Altholz).
-                    </div>
+                      <strong className="text-shiraz">PCB / PCP:</strong><MdText text={inhalt.texte.fugenmassenElastischeDichtstoffeAlte} /></div>
                   </div>
                 </div>
 
                 <div className="bg-slate-50 border border-home-grau/30 p-4 rounded-xl">
-                  <h4 className="font-bold text-slate-900 mb-1">Additive und Störstoffe in modernen Baustoffen</h4>
-                  <p className="text-sm text-slate-500 mb-2">
-                    Auch neuere Materialien können problematische Zuschläge enthalten, die das spätere Recycling erschweren:
-                  </p>
+                  <h4 className="font-bold text-slate-900 mb-1"><MdText text={inhalt.texte.additiveUndStörstoffeIn} /></h4>
+                  <p className="text-sm text-slate-500 mb-2"><MdText text={inhalt.texte.auchNeuereMaterialienKönnen} /></p>
                   <ul className="list-disc list-inside text-xs text-slate-700 space-y-1">
-                    <li><strong>HBCD (Hexabromcyclododecan):</strong> Flammschutzmittel in alten EPS/XPS-Dämmstoffen. Dämmstoffe mit HBCD gelten als Problemabfall und müssen zerstört (verbrannt) werden (POP-Verordnung).</li>
-                    <li><strong>Gips im Betonrecycling:</strong> Schon geringste Anteile an Gips (Sulfat) aus Putzanhaftungen können recycelten Sand oder Kies kontaminieren und spätere Ettringit-Treibreaktionen im Frischbeton hervorrufen.</li>
+                    <li><MdText text={inhalt.texte.hbcdHexabromcyclododecanFlammschutzmitte} /></li>
+                    <li><MdText text={inhalt.texte.gipsImBetonrecyclingSchon} /></li>
                   </ul>
                 </div>
               </div>
@@ -619,40 +524,27 @@ export default function Kreislaufwirtschaft() {
             {/* Info Banner on Concular and Standards */}
             <div className="bg-white p-6 rounded-2xl border border-home-grau/30">
               <h3 className="font-bold text-base text-slate-900 flex items-center gap-2 mb-3">
-                <Recycle className="text-shiraz animate-spin" size={20} />
-                Rückbauplanung &amp; Kreislaufwirtschaft im Bauwesen
-              </h3>
-              <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                Um den Rohstoffverbrauch und Abfälle im Baubereich drastisch zu reduzieren, schreibt die moderne Kreislaufwirtschaft vor, Bestandsgebäude vor einem Teil- oder Vollrückbau nach technischen Standards systematisch zu auditieren. Durch die Verknüpfung mit Akteuren wie <strong>Concular</strong> (Deutschlands führender Marktplatz für zirkuläres Bauen) werden Bauteile im urbanen Bestand erfasst und vermittelt, statt deponiert zu werden.
-              </p>
+                <Recycle className="text-shiraz animate-spin" size={20} /><MdText text={inhalt.texte.rückbauplanungKreislaufwirtschaftImBauwe} /></h3>
+              <p className="text-xs text-slate-600 leading-relaxed mb-4"><MdText text={inhalt.texte.umDenRohstoffverbrauchUnd} /></p>
 
               {/* Standards Info Grid */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
                 <div className="p-4 bg-slate-50 border border-home-grau/30 rounded-xl">
                   <h4 className="font-bold text-xs text-shiraz mb-1.5 flex items-center gap-1">
-                    <ClipboardCheck size={14} /> DIN SPEC 91484 (Erkundung)
-                  </h4>
-                  <p className="text-[11px] text-slate-500 leading-normal">
-                    Beschreibt das standardisierte <strong>Verfahren zur Bauwerkserkundung</strong> vor Abbruch- und Renovierungsarbeiten. Bestimmt Schadstoffbehaftung, Separierbarkeit und katalogisiert Re-Use taugliche Bauteile. Schafft Rechtssicherheit für Planer und Abbruchunternehmen.
-                  </p>
+                    <ClipboardCheck size={14} /><MdText text={inhalt.texte.dinSpec91484Erkundung} /></h4>
+                  <p className="text-[11px] text-slate-500 leading-normal"><MdText text={inhalt.texte.beschreibtDasStandardisierteVerfahren} /></p>
                 </div>
 
                 <div className="p-4 bg-slate-50 border border-home-grau/30 rounded-xl">
                   <h4 className="font-bold text-xs text-purple-700 mb-1.5 flex items-center gap-1">
-                    <Building size={14} /> DIN SPEC 91525 (Materialpass)
-                  </h4>
-                  <p className="text-[11px] text-slate-500 leading-normal">
-                    Definiert Kriterien zur <strong>Bewertung der Rezyklierbarkeit &amp; Wiederverwendbarkeit</strong> von Tragwerkselementen und Ausbaukomponenten. Bildet das normative Fundament des digitalen Gebäuderessourcenpasses und zirkulären Restwertermittlung.
-                  </p>
+                    <Building size={14} /><MdText text={inhalt.texte.dinSpec91525Materialpass} /></h4>
+                  <p className="text-[11px] text-slate-500 leading-normal"><MdText text={inhalt.texte.definiertKriterienZurBewertung} /></p>
                 </div>
 
                 <div className="p-4 bg-rose-50/40 border border-shiraz/10 rounded-xl">
                   <h4 className="font-bold text-xs text-shiraz mb-1.5 flex items-center gap-1">
-                    <Globe size={14} /> Concular Vermittlung
-                  </h4>
-                  <p className="text-[11px] text-slate-500 leading-normal">
-                    Ermöglicht durch <strong>digitale Bestandserfassung</strong> per Scan-App, mobile Schadstoffabgleiche und automatisiertes Matching das Einstellen gebrauchter Baukomponenten in den B2B-Kreislaufmarkt. Verringert die Scope-3 Emissionen von Anschlussprojekten nachhaltig.
-                  </p>
+                    <Globe size={14} /><MdText text={inhalt.texte.concularVermittlung} /></h4>
+                  <p className="text-[11px] text-slate-500 leading-normal"><MdText text={inhalt.texte.ermöglichtDurchDigitaleBestandserfassung} /></p>
                 </div>
               </div>
             </div>
@@ -666,16 +558,14 @@ export default function Kreislaufwirtschaft() {
                 {/* DIN Audit Checklist progress indicator */}
                 <div className="bg-white p-5 rounded-2xl border border-home-grau/30">
                   <h4 className="font-bold text-xs uppercase tracking-wider text-slate-500 mb-3 flex items-center gap-1.5">
-                    <ClipboardCheck size={14} className="text-shiraz" />
-                    Prüfphasen nach DIN SPEC 91484 Checkliste
-                  </h4>
+                    <ClipboardCheck size={14} className="text-shiraz" /><MdText text={inhalt.texte.prüfphasenNachDinSpec} /></h4>
                   <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
                     {[
-                      { key: 'researchDone', label: '1. Hist. Recherche', desc: 'Archiv & Bauakte prüfen' },
-                      { key: 'inspectionDone', label: '2. Begehung vor Ort', desc: 'Visuelle Bestandsaufnahme' },
-                      { key: 'substancesSampled', label: '3. Schadstoffanalyse', desc: 'Gefahrgut & Probenahme' },
-                      { key: 'reuseInventoryCreated', label: '4. Re-Use Inventar', desc: 'Verbindungstyp erfassen' },
-                      { key: 'reportingAccepted', label: '5. Erkundungsbericht', desc: 'Offizielle Freigabe' }
+                      { key: 'researchDone', label: inhalt.werte.t1HistRecherche, desc: inhalt.werte.archivBauaktePrüfen },
+                      { key: 'inspectionDone', label: inhalt.werte.t2BegehungVorOrt, desc: inhalt.werte.visuelleBestandsaufnahme },
+                      { key: 'substancesSampled', label: inhalt.werte.t3Schadstoffanalyse, desc: inhalt.werte.gefahrgutProbenahme },
+                      { key: 'reuseInventoryCreated', label: inhalt.werte.t4ReUseInventar, desc: inhalt.werte.verbindungstypErfassen },
+                      { key: 'reportingAccepted', label: inhalt.werte.t5Erkundungsbericht, desc: inhalt.werte.offizielleFreigabe }
                     ].map((phase) => (
                       <button
                         key={phase.key}
@@ -707,24 +597,19 @@ export default function Kreislaufwirtschaft() {
                 <div className="bg-white p-5 rounded-2xl border border-home-grau/30 flex flex-col gap-4">
                   <div className="flex justify-between items-center border-b border-home-grau/30 pb-2 flex-wrap gap-2">
                     <h3 className="text-xl font-bold text-text-main flex items-center gap-2">
-                        <FileSpreadsheet size={16} className="text-shiraz animate-pulse" />
-                        Erkunder-Datenblatt: Bauteil-Inventar (Auditierung)
-                      </h3>
+                        <FileSpreadsheet size={16} className="text-shiraz animate-pulse" /><MdText text={inhalt.texte.erkunderDatenblattBauteilInventar} /></h3>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Erfassen und bewerten Sie Bauteile für den Rückbauprozess.
-          </p>
+          <p><MdText text={inhalt.texte.erfassenUndBewertenSie} /></p>
         </div>
-                    <span className="text-[10px] font-mono font-bold bg-slate-100 text-slate-500 px-2 py-0.5 rounded">
-                      Erfasste Gattungen: {auditComponents.length}
+                    <span className="text-[10px] font-mono font-bold bg-slate-100 text-slate-500 px-2 py-0.5 rounded"><MdText text={inhalt.texte.erfassteGattungen} />{auditComponents.length}
                     </span>
                   </div>
 
                   {/* Grid Header */}
                   <div className="hidden md:grid grid-cols-12 gap-2 px-3 text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                    <div className="col-span-4">Bauteilname &amp; Kategorie</div>
+                    <div className="col-span-4"><MdText text={inhalt.texte.bauteilnameKategorie} /></div>
                     <div className="col-span-2 text-center">Wege/Kanal</div>
-                    <div className="col-span-2 text-center">Fügungsart (DIN 91525)</div>
+                    <div className="col-span-2 text-center"><MdText text={inhalt.texte.fügungsartDin91525} /></div>
                     <div className="col-span-2 text-center">Schadstoffstatus</div>
                     <div className="col-span-1 text-right">Menge</div>
                     <div className="col-span-1 text-center">Aktion</div>
@@ -755,8 +640,8 @@ export default function Kreislaufwirtschaft() {
 
                           {/* Lifecycle/Recycling channel */}
                           <div className="col-span-6 md:col-span-2">
-                            <label className="block md:hidden text-[9px] font-bold text-slate-400 uppercase mb-0.5 font-mono">Materielles Zielverfahren</label>
-                            <select aria-label="Materielles Zielverfahren"
+                            <label className="block md:hidden text-[9px] font-bold text-slate-400 uppercase mb-0.5 font-mono"><MdText text={inhalt.texte.materiellesZielverfahren} /></label>
+                            <select aria-label={inhalt.werte.materiellesZielverfahren}
                               disabled={isHazardous}
                               value={comp.targetChannel}
                               onChange={(e) => updateAuditComponent(comp.id, 'targetChannel', e.target.value)}
@@ -814,7 +699,7 @@ export default function Kreislaufwirtschaft() {
                             <button
                               onClick={() => removeAuditComponent(comp.id)}
                               className="p-1 text-slate-400 hover:text-red-500 rounded hover:bg-slate-100 cursor-pointer"
-                              title="Bauteil löschen"
+                              title={inhalt.werte.bauteilLöschen}
                             >
                               <Trash2 size={14} className="mx-auto" />
                             </button>
@@ -826,16 +711,14 @@ export default function Kreislaufwirtschaft() {
 
                   {/* Add New Component Manual Audit Form (DIN SPEC Standard) */}
                   <div className="mt-4 pt-4 border-t border-home-grau/30 bg-slate-50/40 p-4 rounded-2xl border border-home-grau/30 flex flex-col gap-3">
-                    <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">
-                      Neues Bauteil manuell auditieren (DIN SPEC 91484 standardgerecht)
-                    </span>
+                    <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block"><MdText text={inhalt.texte.neuesBauteilManuellAuditieren} /></span>
                     
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3">
                       <div className="lg:col-span-4">
-                        <label className="block text-[10px] font-bold uppercase text-slate-600 mb-1">Bauteilname / Bezeichnung</label>
+                        <label className="block text-[10px] font-bold uppercase text-slate-600 mb-1"><MdText text={inhalt.texte.bauteilnameBezeichnung} /></label>
                         <input
                           type="text"
-                          placeholder="z.B. Stahlträger HEB 240, Innentür, etc."
+                          placeholder={inhalt.werte.zBStahlträgerHeb}
                           value={newCompName}
                           onChange={(e) => setNewCompName(e.target.value)}
                           className="w-full text-xs p-2 border border-home-grau/30 rounded-lg bg-white text-slate-900 focus:outline-none focus:ring-1 focus:ring-shiraz"
@@ -916,19 +799,15 @@ export default function Kreislaufwirtschaft() {
                 <div className="bg-white p-5 rounded-2xl border border-home-grau/30 flex flex-col gap-4">
                   <div className="flex justify-between items-center border-b border-home-grau/30 pb-2">
                     <h4 className="font-bold text-xs uppercase tracking-wider text-slate-900 flex items-center gap-1">
-                      <Globe className="text-shiraz" size={14} />
-                      Concular API Integrations-Hub
-                    </h4>
+                      <Globe className="text-shiraz" size={14} /><MdText text={inhalt.texte.concularApiIntegrationsHub} /></h4>
                     <span className={`text-[9px] px-2 py-0.5 rounded font-mono font-bold tracking-wider uppercase ${
                       concularConnected ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-500'
                     }`}>
-                      {concularConnected ? 'API Connected' : 'Disconnected'}
+                      {concularConnected ? inhalt.werte.apiConnected : 'Disconnected'}
                     </span>
                   </div>
 
-                  <p className="text-[11px] text-slate-500 leading-normal leading-relaxed">
-                    Übertragen Sie den Bauteilkatalog direkt per Schnittstelle an die Concular-Matching-Datenbank. Dort werden Ihre Komponenten vollautomatisiert mit Baustellen abgeglichen, die nach gebrauchten Materialien suchen.
-                  </p>
+                  <p className="text-[11px] text-slate-500 leading-normal leading-relaxed"><MdText text={inhalt.texte.übertragenSieDenBauteilkatalog} /></p>
 
                   {concularConnected ? (
                     /* Connected State Screen */
@@ -938,36 +817,34 @@ export default function Kreislaufwirtschaft() {
                           ✓
                         </div>
                         <div>
-                          <strong className="text-xs text-emerald-900 block font-bold leading-none">Abgleich mit Marktplatz active</strong>
-                          <span className="text-[9px] text-emerald-500 font-mono mt-0.5 block">Endpoint: api.concular.de/v1/sync</span>
+                          <strong className="text-xs text-emerald-900 block font-bold leading-none"><MdText text={inhalt.texte.abgleichMitMarktplatzActive} /></strong>
+                          <span className="text-[9px] text-emerald-500 font-mono mt-0.5 block"><MdText text={inhalt.texte.endpointApiConcularDe} /></span>
                         </div>
                       </div>
 
                       {/* API Stats Matches */}
                       <div className="grid grid-cols-2 gap-2 text-center text-xs font-normal">
                         <div className="bg-white p-2 border border-home-grau/30 rounded-lg">
-                          <span className="text-[10px] text-slate-400 block font-semibold uppercase font-mono">Nachfrage Matches</span>
+                          <span className="text-[10px] text-slate-400 block font-semibold uppercase font-mono"><MdText text={inhalt.texte.nachfrageMatches} /></span>
                           <strong className="text-sm font-bold text-emerald-700 block mt-0.5">{matchingMatchedCount} Bauteile</strong>
                         </div>
                         <div className="bg-white p-2 border border-home-grau/30 rounded-lg">
                           <span className="text-[10px] text-slate-400 block font-semibold uppercase font-mono">Emissionszertifikat</span>
-                          <strong className="text-sm font-bold text-emerald-700 block mt-0.5">Scope 3 Ready</strong>
+                          <strong className="text-sm font-bold text-emerald-700 block mt-0.5"><MdText text={inhalt.texte.scope3Ready} /></strong>
                         </div>
                       </div>
 
                       <button
                         onClick={() => setConcularConnected(false)}
                         className="text-[10px] font-bold text-slate-400 block mx-auto hover:text-red-500 transition-colors cursor-pointer"
-                      >
-                        Kopplung trennen
-                      </button>
+                      ><MdText text={inhalt.texte.kopplungTrennen} /></button>
                     </div>
                   ) : (
                     /* Disconnected State Screen */
                     <div className="bg-slate-50 p-4 border border-home-grau/30 rounded-xl flex flex-col gap-3">
                       <div className="bg-white p-3.5 rounded-lg border border-home-grau/30 text-center text-xs text-slate-500 flex flex-col gap-1 items-center justify-center">
                         <AlertTriangle size={18} className="text-shiraz" />
-                        <span>Keine aktive Bauteilvermittlung verknüpft</span>
+                        <span><MdText text={inhalt.texte.keineAktiveBauteilvermittlungVerknüpft} /></span>
                       </div>
 
                       <button
@@ -978,12 +855,12 @@ export default function Kreislaufwirtschaft() {
                         {isMatching ? (
                           <>
                             <div className="w-3.5 h-3.5 border-2 border-white border-t-transparent animate-spin rounded-full" />
-                            <span>Matching läuft...</span>
+                            <span><MdText text={inhalt.texte.matchingLäuft} /></span>
                           </>
                         ) : (
                           <>
                             <Globe size={14} />
-                            <span>Vermittlung aktivieren (Concular Sync)</span>
+                            <span><MdText text={inhalt.texte.vermittlungAktivierenConcularSync} /></span>
                           </>
                         )}
                       </button>
@@ -996,15 +873,13 @@ export default function Kreislaufwirtschaft() {
                       onClick={() => setShowPayloadSchema(!showPayloadSchema)}
                       className="text-xs text-shiraz font-bold flex items-center justify-between w-full hover:underline cursor-pointer select-none"
                     >
-                      <span>{showPayloadSchema ? '▼' : '►'} Entwickler: API JSON-Schema einsehen</span>
+                      <span>{showPayloadSchema ? '▼' : '►'}<MdText text={inhalt.texte.entwicklerApiJsonSchema} /></span>
                       <span className="text-[9px] uppercase tracking-wider font-mono font-bold bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded border border-home-grau/30">JSON-Payload</span>
                     </button>
 
                     {showPayloadSchema && (
                       <div className="mt-3 space-y-2 animate-in slide-in-from-top-1 duration-200">
-                        <p className="text-[10px] text-slate-400 leading-normal">
-                          Dieses strukturierte JSON-Payload wird per REST POST Request an den Concular-Datenendpunkt übertragen. Entwickler binden dies im ERP, BIM (REVIT) oder IFC-Dateimanager ein:
-                        </p>
+                        <p className="text-[10px] text-slate-400 leading-normal"><MdText text={inhalt.texte.diesesStrukturierteJsonPayload} /></p>
                         <pre className="bg-slate-900 text-emerald-400 p-3 rounded-lg text-[9px] overflow-x-auto select-all font-mono leading-normal shadow-inner max-h-56">
 {`{
   "api_version": "2026.1",
@@ -1021,7 +896,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
       "quantity": ${c.quantity},
       "unit": "${c.unit === 'Stk' ? 'pcs' : c.unit}",
       "material_class": "${c.category.toLowerCase()}",
-      "connection_separability_grade": "${c.connectionType === 'geschraubt' ? 'Grade A (screwed)' : c.connectionType === 'gesteckt' ? 'Grade B (unmated)' : 'Grade D (glued)'}",
+      "connection_separability_grade": "${c.connectionType === 'geschraubt' ? inhalt.werte.gradeAScrewed : c.connectionType === 'gesteckt' ? inhalt.werte.gradeBUnmated : inhalt.werte.gradeDGlued}",
       "hazardous_status": "${c.hazardousSubstance === 'none' ? 'free_of_hazards' : 'contaminated'}",
       "calculated_carbon_offset_kg": ${Math.round(c.quantity * c.weightKgPerUnit * (c.category === 'Metall' ? 4.3 : 1.45))}
     }`).join(',\n')}
@@ -1038,17 +913,15 @@ ${auditComponents.slice(0, 2).map(c => `    {
                 {/* Dynamic Scorecard for Rückbauplanung */}
                 <div className="bg-white p-5 rounded-2xl border border-home-grau/30 flex flex-col gap-4">
                   <h4 className="font-bold text-xs uppercase tracking-wider text-slate-500 border-b border-home-grau/30 pb-1 flex items-center gap-1">
-                    <Activity size={12} className="text-shiraz" />
-                    Ressourcen- und Vermittlungsbilanz
-                  </h4>
+                    <Activity size={12} className="text-shiraz" /><MdText text={inhalt.texte.ressourcenUndVermittlungsbilanz} /></h4>
 
                   <div className="space-y-3">
                     
                     {/* Total Weight Audited */}
                     <div className="bg-slate-50 p-3 rounded-xl border border-home-grau/30 flex justify-between items-center">
                       <div>
-                        <strong className="text-xs text-slate-900 block leading-tight">Masse im Baubestand</strong>
-                        <span className="text-[10px] text-slate-400">Kumuliertes Gewicht des Inventars</span>
+                        <strong className="text-xs text-slate-900 block leading-tight"><MdText text={inhalt.texte.masseImBaubestand} /></strong>
+                        <span className="text-[10px] text-slate-400"><MdText text={inhalt.texte.kumuliertesGewichtDesInventars} /></span>
                       </div>
                       <strong className="text-[15px] font-mono text-slate-900 font-bold">
                         {formatDeZahl(auditStats.totalWeightTons, 2)} t
@@ -1058,8 +931,8 @@ ${auditComponents.slice(0, 2).map(c => `    {
                     {/* Re-Use Quote */}
                     <div className="bg-slate-50 p-3 rounded-xl border border-home-grau/30 flex justify-between items-center">
                       <div>
-                        <strong className="text-xs text-slate-900 block leading-tight">Re-Use Quote nach Fügungsart</strong>
-                        <span className="text-[10px] text-slate-400">Gezielte Zirkularität (DIN 91525)</span>
+                        <strong className="text-xs text-slate-900 block leading-tight"><MdText text={inhalt.texte.reUseQuoteNach} /></strong>
+                        <span className="text-[10px] text-slate-400"><MdText text={inhalt.texte.gezielteZirkularitätDin91525} /></span>
                       </div>
                       <strong className="text-[15px] font-mono text-shiraz font-bold">
                         {formatDeZahl(auditStats.averageReuseQuota, 1)} %
@@ -1069,8 +942,8 @@ ${auditComponents.slice(0, 2).map(c => `    {
                     {/* Carbon Offset Certification */}
                     <div className="bg-indigo-50/50 p-3 border border-indigo-200 rounded-xl flex justify-between items-center">
                       <div>
-                        <strong className="text-xs text-indigo-900 block leading-tight">Vermeidbare Scope-3 CO₂-Emissionen</strong>
-                        <span className="text-[10px] text-indigo-500">Durch vermittelten Re-Use Kreislauf</span>
+                        <strong className="text-xs text-indigo-900 block leading-tight"><MdText text={inhalt.texte.vermeidbareScope3Co} /></strong>
+                        <span className="text-[10px] text-indigo-500"><MdText text={inhalt.texte.durchVermitteltenReUse} /></span>
                       </div>
                       <strong className="text-[15px] font-mono text-indigo-700 font-bold">
                         ~ {formatDeZahl(auditStats.totalAvoidedCo2Kg / 1000, 2)} t CO₂-eq
@@ -1080,8 +953,8 @@ ${auditComponents.slice(0, 2).map(c => `    {
                     {/* Financial Salvage Valuation (Ertragspotenzial) */}
                     <div className="bg-emerald-50/50 p-3 border border-emerald-200 rounded-xl flex justify-between items-center">
                       <div>
-                        <strong className="text-xs text-emerald-950 block leading-tight">Geschätztes Marktwert-Potenzial</strong>
-                        <span className="text-[10px] text-emerald-500">Restwert-Erlös auf Concular</span>
+                        <strong className="text-xs text-emerald-950 block leading-tight"><MdText text={inhalt.texte.geschätztesMarktwertPotenzial} /></strong>
+                        <span className="text-[10px] text-emerald-500"><MdText text={inhalt.texte.restwertErlösAufConcular} /></span>
                       </div>
                       <strong className={`text-[15px] font-mono font-bold ${
                         auditStats.estimatedRevenueEur >= 0 ? 'text-emerald-700' : 'text-shiraz'
@@ -1096,9 +969,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                   {auditStats.hazardCount > 0 && (
                     <div className="bg-rose-50 border border-rose-200 p-3 rounded-xl flex gap-1.5 items-start mt-1">
                       <AlertTriangle size={15} className="text-rose-600 shrink-0 mt-0.5" />
-                      <p className="text-[10px] text-rose-800 leading-normal font-normal">
-                        <strong>Achtung:</strong> Es wurden/sind {auditStats.hazardCount} komponentenspezifische Schadstoffe (z.B. Asbest) markiert. Diese Bauteile fallen automatisch aus der Re-Use Kette und müssen kostenpflichtig fachgerecht demontiert und entsorgt werden.
-                      </p>
+                      <p className="text-[10px] text-rose-800 leading-normal font-normal"><MdText text={inhalt.texte.achtungEsWurdenSind} />{auditStats.hazardCount}<MdText text={inhalt.texte.komponentenspezifischeSchadstoffeZB} /></p>
                     </div>
                   )}
 
@@ -1117,22 +988,19 @@ ${auditComponents.slice(0, 2).map(c => `    {
             <div className="border border-home-grau/30 rounded-xl p-5 bg-white shadow-sm flex flex-col gap-4">
               <div className="border-b border-home-grau/25 pb-3">
                 <h3 className="font-bold text-text-main text-lg flex items-center gap-2">
-                  <Building2 size={20} className="text-shiraz" /> Urban Mining Index (UMI)
-                </h3>
-                <p className="text-xs text-text-main/70 mt-1 leading-relaxed">
-                  Bewertet die Kreislauffähigkeit eines Gesamtgebäudes. Er vergleicht den Anteil an zirkulären Materialien in der Bauphase (Input) mit der Recycelbarkeit am Ende des Lebenswegs (Output). Entwickelt an der Bergischen Universität Wuppertal.
-                </p>
+                  <Building2 size={20} className="text-shiraz" /><MdText text={inhalt.texte.urbanMiningIndexUmi} /></h3>
+                <p className="text-xs text-text-main/70 mt-1 leading-relaxed"><MdText text={inhalt.texte.bewertetDieKreislauffähigkeitEines} /></p>
               </div>
               
               <div className="space-y-4 flex-1">
                 <div className="bg-stone-50 p-3 rounded-lg border border-home-grau/20">
-                  <span className="text-[10px] uppercase font-bold tracking-wider text-text-main/60 block mb-2 font-bold">Pre-Use Qualität (Input)</span>
+                  <span className="text-[10px] uppercase font-bold tracking-wider text-text-main/60 block mb-2 font-bold"><MdText text={inhalt.texte.preUseQualitätInput} /></span>
                   <div className="space-y-3">
                     <div>
                       <div className="flex justify-between text-xs mb-1">
                         <div className="flex items-center gap-1.5 font-medium text-text-main">
-                          <span>Wiederverwendete Bauteile (Reuse)</span>
-                          <InfoTooltip text="Bauteile, die eins-zu-eins aus Abbruchobjekten ohne stoffliche Umwandlung übernommen wurden (z.B. historische KS-Ziegel, gusseiserne Säulen)." />
+                          <span><MdText text={inhalt.texte.wiederverwendeteBauteileReuse} /></span>
+                          <InfoTooltip text={inhalt.werte.bauteileDieEinsZu} />
                         </div>
                         <span className="font-mono font-bold text-xs">{formatDeWert(umiReuseIn)}%</span>
                       </div>
@@ -1147,8 +1015,8 @@ ${auditComponents.slice(0, 2).map(c => `    {
                     <div>
                       <div className="flex justify-between text-xs mb-1">
                         <div className="flex items-center gap-1.5 font-medium text-text-main">
-                          <span>Recyclingmaterialien (Sekundär)</span>
-                          <InfoTooltip text="Baustoffe mit echtem Post-Consumer Recyclinganteil (z.B. RC-Beton mit gebrochener Gesteinskörnung, Holzwerkstoffe aus Altholzklasse A I/A II)." />
+                          <span><MdText text={inhalt.texte.recyclingmaterialienSekundär} /></span>
+                          <InfoTooltip text={inhalt.werte.baustoffeMitEchtemPost} />
                         </div>
                         <span className="font-mono font-bold text-xs">{formatDeWert(umiRecyclingIn)}%</span>
                       </div>
@@ -1163,8 +1031,8 @@ ${auditComponents.slice(0, 2).map(c => `    {
                     <div>
                       <div className="flex justify-between text-xs mb-1">
                         <div className="flex items-center gap-1.5 font-medium text-text-main">
-                          <span>Erneuerbare Rohstoffe (Nawaro)</span>
-                          <InfoTooltip text="Biogene, nachwachsende Rohstoffe aus nachhaltigem Anbau (z.B. Konstruktionsvollholz (PEFC), Einblasdämmung aus Zellulose, Flachsfaserplatten)." />
+                          <span><MdText text={inhalt.texte.erneuerbareRohstoffeNawaro} /></span>
+                          <InfoTooltip text={inhalt.werte.biogeneNachwachsendeRohstoffeAus} />
                         </div>
                         <span className="font-mono font-bold text-xs">{formatDeWert(umiRenewableIn)}%</span>
                       </div>
@@ -1176,18 +1044,18 @@ ${auditComponents.slice(0, 2).map(c => `    {
                         className="w-full accent-shiraz h-1.5 rounded-lg bg-stone-200 cursor-pointer"
                       />
                     </div>
-                    <div className="text-[10px] text-text-main/50 text-right font-medium">Zirkuläre Input-Rate: <span className="font-bold text-text-main">{formatDeWert(umiInputRate)}%</span> (max. 100%)</div>
+                    <div className="text-[10px] text-text-main/50 text-right font-medium"><MdText text={inhalt.texte.zirkuläreInputRate} /><span className="font-bold text-text-main">{formatDeWert(umiInputRate)}%</span> (max. 100%)</div>
                   </div>
                 </div>
 
                 <div className="bg-stone-50 p-3 rounded-lg border border-home-grau/20">
-                  <span className="text-[10px] uppercase font-bold tracking-wider text-text-main/60 block mb-2 font-bold font-bold">Post-Use Qualität (Output)</span>
+                  <span className="text-[10px] uppercase font-bold tracking-wider text-text-main/60 block mb-2 font-bold font-bold"><MdText text={inhalt.texte.postUseQualitätOutput} /></span>
                   <div className="space-y-3">
                     <div>
                       <div className="flex justify-between text-xs mb-1">
                         <div className="flex items-center gap-1.5 font-medium text-text-main">
-                          <span>Demontierbarkeit &amp; Re-Use Potential</span>
-                          <InfoTooltip text="Bauteile, die zerstörungsfrei demontiert und an anderer Stelle wiederverwendet werden können (abhängig von Fügungsart)." />
+                          <span><MdText text={inhalt.texte.demontierbarkeitReUsePotential} /></span>
+                          <InfoTooltip text={inhalt.werte.bauteileDieZerstörungsfreiDemontiert} />
                         </div>
                         <span className="font-mono font-bold text-xs">{formatDeWert(umiReuseOut)}%</span>
                       </div>
@@ -1203,7 +1071,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                       <div className="flex justify-between text-xs mb-1">
                         <div className="flex items-center gap-1.5 font-medium text-text-main">
                           <span>Kreislauf-Recyclingfähigkeit</span>
-                          <InfoTooltip text="Werkstoffe, die durch sortenreine Trennung gleichwertig stofflich recycelt werden können (z.B. Kupferrohre, reiner Gips, PE-Noppenbahnen)." />
+                          <InfoTooltip text={inhalt.werte.werkstoffeDieDurchSortenreine} />
                         </div>
                         <span className="font-mono font-bold text-xs">{formatDeWert(umiRecyclingOut)}%</span>
                       </div>
@@ -1215,15 +1083,15 @@ ${auditComponents.slice(0, 2).map(c => `    {
                         className="w-full accent-shiraz h-1.5 rounded-lg bg-stone-200 cursor-pointer"
                       />
                     </div>
-                    <div className="text-[10px] text-text-main/50 text-right font-medium">Zirkuläre Output-Rate: <span className="font-bold text-text-main">{formatDeWert(umiOutputRate)}%</span> (max. 100%)</div>
+                    <div className="text-[10px] text-text-main/50 text-right font-medium"><MdText text={inhalt.texte.zirkuläreOutputRate} /><span className="font-bold text-text-main">{formatDeWert(umiOutputRate)}%</span> (max. 100%)</div>
                   </div>
                 </div>
 
                 <div className="p-4 bg-shiraz/5 rounded-xl border border-shiraz/20">
                   <div className="flex justify-between items-center mb-1.5">
                     <div className="flex flex-col">
-                      <span className="font-bold text-text-main text-sm font-bold">Gewichteter Urban Mining Index</span>
-                      <span className="text-[10px] text-text-main/60">Mittelwert aus (Input-Quote + Output-Quote)</span>
+                      <span className="font-bold text-text-main text-sm font-bold"><MdText text={inhalt.texte.gewichteterUrbanMiningIndex} /></span>
+                      <span className="text-[10px] text-text-main/60"><MdText text={inhalt.texte.mittelwertAusInputQuote} /></span>
                     </div>
                     <span className={`text-2xl font-mono font-bold ${umiTotal >= 50 ? 'text-green-600' : 'text-amber-500'}`}>
                       {formatDeZahl(umiTotal, 1)} %
@@ -1239,26 +1107,21 @@ ${auditComponents.slice(0, 2).map(c => `    {
               </div>
 
               <div className="text-[11px] text-text-main/70 bg-stone-50 p-3 rounded-lg border border-home-grau/15">
-                <strong className="block text-text-main mb-1 text-xs font-bold">Hintergrund &amp; DGNB-Nachweis</strong>
-                Der UMI ist ein hocheffektives Werkzeug für das zirkuläre Planen von Neubauten. Die DGNB honoriert im Kriterium "ENV1.3 - Verantwortungsbewusste Ressourchengewinnung / Circular Economy" hohe UMI-Ergebnisse von Gebäuden prozentual im Gesamtaudit.
-              </div>
+                <strong className="block text-text-main mb-1 text-xs font-bold"><MdText text={inhalt.texte.hintergrundDgnbNachweis} /></strong><MdText text={inhalt.texte.derUmiIstEin} /></div>
             </div>
 
             {/* Circularity Index (MCI) Calculator */}
             <div className="border border-home-grau/30 rounded-xl p-5 bg-white shadow-sm flex flex-col gap-4">
               <div className="border-b border-home-grau/25 pb-3">
                 <h3 className="font-bold text-text-main text-lg flex items-center gap-2">
-                  <Calculator size={20} className="text-purple-700" /> Zirkularitätsindex (MCI)
-                </h3>
-                <p className="text-xs text-text-main/70 mt-1 leading-relaxed">
-                  Der Material Circularity Indicator (MCI) der Ellen MacArthur Foundation misst das lineare Strömen von Materialien im Produkt- oder Bauprozess. Ein Wert von 100% (1.0) bedeutet perfekte Zirkularität.
-                </p>
+                  <Calculator size={20} className="text-purple-700" /><MdText text={inhalt.texte.zirkularitätsindexMci} /></h3>
+                <p className="text-xs text-text-main/70 mt-1 leading-relaxed"><MdText text={inhalt.texte.derMaterialCircularityIndicator} /></p>
               </div>
               
               <div className="space-y-4 flex-1">
                 <div className="bg-stone-50 p-3 rounded-lg border border-home-grau/20 grid grid-cols-1 md:grid-cols-2 gap-3.5">
                   <div className="space-y-3">
-                    <span className="text-[9px] uppercase font-bold tracking-wider text-text-main/50 block font-bold">Zustrom (Input)</span>
+                    <span className="text-[9px] uppercase font-bold tracking-wider text-text-main/50 block font-bold"><MdText text={inhalt.texte.zustromInput} /></span>
                     <div>
                       <div className="flex justify-between text-xs mb-1">
                         <span className="font-medium text-text-main">RC-Anteil</span>
@@ -1274,7 +1137,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                     </div>
                     <div>
                       <div className="flex justify-between text-xs mb-1">
-                        <span className="font-medium text-text-main">Re-Use Bauteile</span>
+                        <span className="font-medium text-text-main"><MdText text={inhalt.texte.reUseBauteile} /></span>
                         <span className="font-mono font-bold text-xs">{formatDeWert(mciReusedIn)}%</span>
                       </div>
                       <input 
@@ -1288,7 +1151,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                   </div>
 
                   <div className="space-y-3">
-                    <span className="text-[9px] uppercase font-bold tracking-wider text-text-main/50 block font-bold">Rückstrom (Output)</span>
+                    <span className="text-[9px] uppercase font-bold tracking-wider text-text-main/50 block font-bold"><MdText text={inhalt.texte.rückstromOutput} /></span>
                     <div>
                       <div className="flex justify-between text-xs mb-1">
                         <span className="font-medium text-text-main">Recyclingquote</span>
@@ -1319,8 +1182,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                 </div>
 
                 <div className="bg-stone-50 p-3 rounded-lg border border-home-grau/20">
-                  <span className="text-[10px] uppercase font-bold tracking-wider text-text-main/60 block mb-2 flex items-center gap-1 font-bold">
-                    Nutzungskoeffizient (Utility) <InfoTooltip text="Setzt die geplante Lebensdauer und Nutzungsintensität des Gebäudes in Bezug zum Marktdurchschnitt." />
+                  <span className="text-[10px] uppercase font-bold tracking-wider text-text-main/60 block mb-2 flex items-center gap-1 font-bold"><MdText text={inhalt.texte.nutzungskoeffizientUtility} /><InfoTooltip text={inhalt.werte.setztDieGeplanteLebensdauer} />
                   </span>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
@@ -1336,9 +1198,9 @@ ${auditComponents.slice(0, 2).map(c => `    {
                       </div>
                     </div>
                     <div>
-                      <label className="block text-[11px] font-semibold text-text-main mb-1 font-bold">Ø Branchen-Schnitt</label>
+                      <label className="block text-[11px] font-semibold text-text-main mb-1 font-bold"><MdText text={inhalt.texte.branchenSchnitt} /></label>
                       <div className="flex items-center gap-1.5">
-                        <input aria-label="Ø Branchen-Schnitt" 
+                        <input aria-label={inhalt.werte.branchenSchnitt} 
                           type="number" min="0" 
                           value={avgLifespan} 
                           onChange={(e) => setAvgLifespan(Number(e.target.value))}
@@ -1360,8 +1222,8 @@ ${auditComponents.slice(0, 2).map(c => `    {
                       />
                     </div>
                     <div>
-                      <label className="block text-[11px] font-semibold text-text-main mb-1 font-bold">Ø Branchen-Intensität</label>
-                      <input aria-label="Ø Branchen-Intensität" 
+                      <label className="block text-[11px] font-semibold text-text-main mb-1 font-bold"><MdText text={inhalt.texte.branchenIntensität} /></label>
+                      <input aria-label={inhalt.werte.branchenIntensität} 
                         type="number" min="0" 
                         step="0.1"
                         value={avgIntensity} 
@@ -1375,8 +1237,8 @@ ${auditComponents.slice(0, 2).map(c => `    {
                 <div className="p-4 bg-purple-50 rounded-xl border border-purple-200">
                   <div className="flex justify-between items-center mb-1.5">
                     <div className="flex flex-col">
-                      <span className="font-bold text-text-main text-sm font-bold">Material Circularity Indicator (MCI)</span>
-                      <span className="text-[10px] text-text-main/60">Formel: 1 - LFI * F(U) </span>
+                      <span className="font-bold text-text-main text-sm font-bold"><MdText text={inhalt.texte.materialCircularityIndicatorMci} /></span>
+                      <span className="text-[10px] text-text-main/60"><MdText text={inhalt.texte.formel1LfiF} /></span>
                     </div>
                     <span className={`text-2xl font-mono font-bold ${circularityIndex >= 50 ? 'text-green-600' : 'text-amber-500'}`}>
                       {formatDeZahl(circularityIndex, 1)} %
@@ -1389,16 +1251,14 @@ ${auditComponents.slice(0, 2).map(c => `    {
                     ></div>
                   </div>
                   <div className="mt-2.5 text-[10px] text-text-main/60 grid grid-cols-2 gap-2 border-t border-purple-100 pt-2 font-medium">
-                    <div>Linearer Fluss-Faktor (LFI): <span className="font-mono text-xs font-bold text-text-main">{formatDeZahl(lfi * 100, 1)} %</span></div>
-                    <div>Nutzungsfaktor (X): <span className="font-mono text-xs font-bold text-text-main">{formatDeZahl(utility, 2)}</span></div>
+                    <div><MdText text={inhalt.texte.linearerFlussFaktorLfi} /><span className="font-mono text-xs font-bold text-text-main">{formatDeZahl(lfi * 100, 1)} %</span></div>
+                    <div><MdText text={inhalt.texte.nutzungsfaktorX} /><span className="font-mono text-xs font-bold text-text-main">{formatDeZahl(utility, 2)}</span></div>
                   </div>
                 </div>
               </div>
 
               <div className="text-[11px] text-text-main/70 bg-stone-50 p-3 rounded-lg border border-home-grau/15">
-                <strong className="block text-text-main mb-1 text-xs font-bold">MCI-Bedeutung in der Wissenschaft</strong>
-                Der MCI wurde 2015 von der Ellen MacArthur Foundation gemeinsam mit Granta Design entwickelt, um lineares Verschwenden quantifizierbar zu machen. Je höher der Koeffizient, desto resilienter ist ein zirkuläres System gegenüber unberechenbaren Primärrohstoffpreisen.
-              </div>
+                <strong className="block text-text-main mb-1 text-xs font-bold"><MdText text={inhalt.texte.mciBedeutungInDer} /></strong><MdText text={inhalt.texte.derMciWurde2015} /></div>
             </div>
           </div>
         )}
@@ -1406,60 +1266,32 @@ ${auditComponents.slice(0, 2).map(c => `    {
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Material Circularity Indicator eines Fassadenelements"
+        title={inhalt.werte.beispiel1MaterialCircularity}
         zielGleichung="\text{MCI} = 1 - \text{LFI} \cdot \frac{0{,}9}{X}"
-        schritte={[
-          { titel: 'Linear Flow Index', erklaerung: '40 % Rezyklatanteil im Input, 80 % stoffliche Verwertung am Lebensende; der lineare Anteil beträgt im Mittel (60 % + 20 %)/2:', formel: '\\text{LFI} = \\frac{0{,}60 + 0{,}20}{2} = 0{,}40' },
-          { titel: 'Nutzungsfaktor', erklaerung: 'Lebensdauer doppelt so lang wie der Branchendurchschnitt, gleiche Nutzungsintensität:', formel: 'X = 2{,}0 \\cdot 1{,}0 = 2{,}0 \\Rightarrow F(X) = \\frac{0{,}9}{2{,}0} = 0{,}45' },
-          { titel: 'MCI', erklaerung: 'Einsetzen:', formel: '\\text{MCI} = 1 - 0{,}40 \\cdot 0{,}45 = 0{,}82' }
-        ]}
-        ergebnisHinweis="Lange Nutzung wirkt so stark wie Rezyklat: Bei durchschnittlicher Lebensdauer (X = 1) läge der MCI nur bei 0,64. Die vollständige Methode berücksichtigt zusätzlich Ausbeuteverluste der Recyclingprozesse."
-        normQuelle="Ellen MacArthur Foundation / Granta Design: Material Circularity Indicator (vereinfachte Lehrdarstellung)"
+        schritte={inhalt.daten["Kreislaufwirtschaft.schritte"]}
+        ergebnisHinweis={inhalt.werte.langeNutzungWirktSo}
+        normQuelle={inhalt.werte.ellenMacarthurFoundationGranta}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Verwertungsquote eines Rückbauprojekts"
+        title={inhalt.werte.beispiel2VerwertungsquoteEines}
         zielGleichung="Q_{\text{stofflich}} = \frac{m_{\text{Recycling}} + m_{\text{Verfüllung}}}{m_{\text{gesamt}}}"
-        schritte={[
-          { titel: 'Massenbilanz', erklaerung: '1 200 t nicht gefährliche Bau- und Abbruchabfälle: 950 t Recycling (RC-Baustoffe), 120 t Verfüllung, 50 t energetische Verwertung, 80 t Deponie.', formel: '950 + 120 + 50 + 80 = 1\\,200\\,\\text{t}' },
-          { titel: 'Stoffliche Verwertung', erklaerung: 'Recycling und Verfüllung zählen, energetische Verwertung nicht:', formel: 'Q = \\frac{950 + 120}{1\\,200} = 89\\,\\%' },
-          { titel: 'Zielvorgabe', erklaerung: 'Mindestens 70 Gew.-% stoffliche Verwertung für nicht gefährliche Bau- und Abbruchabfälle:', formel: '89\\,\\% \\ge 70\\,\\%' }
-        ]}
-        ergebnisHinweis="Hochwertig ist erst die Rückführung in den Hochbau (z. B. RC-Beton); Verfüllung und Straßenunterbau sind Downcycling. Für mineralische Ersatzbaustoffe im technischen Bauwerk gilt die EBV."
-        normQuelle="KrWG § 14; Abfallrahmenrichtlinie 2008/98/EG Art. 11 Abs. 2; EBV"
+        schritte={inhalt.daten["Kreislaufwirtschaft.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.hochwertigIstErstDie}
+        normQuelle={inhalt.werte.krwg14Abfallrahmenrichtlinie2008}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="kreislauf_dpp" />
 
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 7 Nachhaltigkeit: MCI- und UMI-Formeln, Rechtsgrundlagen und Literatur geprüft; fachliche Freigabe durch den Autor ausstehend)" 
+        lastReviewed={inhalt.werte.oktober2026Ap7} 
         wikipedia={[
           { title: 'Kreislaufwirtschaft', url: 'https://de.wikipedia.org/wiki/Kreislaufwirtschaft' },
-          { title: 'Urban Mining', url: 'https://de.wikipedia.org/wiki/Urban_Mining' }
+          { title: inhalt.werte.urbanMining, url: 'https://de.wikipedia.org/wiki/Urban_Mining' }
         ]}
-        regelwerke={[
-          { title: 'Kreislaufwirtschaftsgesetz (KrWG), u. a. § 14 (70 % Verwertung von Bau- und Abbruchabfällen)', url: 'https://www.gesetze-im-internet.de/krwg/' },
-          { title: 'Ersatzbaustoffverordnung (EBV, in Kraft seit 01.08.2023; Novelle in Vorbereitung)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' },
-          { title: 'Ökodesign-Verordnung (EU) 2024/1781 (ESPR, Digitaler Produktpass) und Bauproduktenverordnung (EU) 2024/3110', url: 'https://eur-lex.europa.eu/' },
-          { title: 'Gütegemeinschaft Kreislaufwirtschaft im Hochbau e.V.' }
-        ]}
-        literatur={[
-          'Hebel, D. E.; Wisniewska, M. H.; Heisel, F.: Building from Waste – Recovered Materials in Architecture and Construction. Basel: Birkhäuser 2014',
-          'Rosen, A.: Urban Mining Index – Entwicklung einer Systematik zur quantitativen Bewertung der Kreislaufkonsistenz von Baukonstruktionen in der Neubauplanung. Stuttgart: Fraunhofer IRB 2021',
-          'Ellen MacArthur Foundation; Granta Design: Circularity Indicators – An Approach to Measuring Circularity. Methodology (2015, aktualisiert 2019)'
-        ]}
-        formeln={[
-          {
-            formel: "\\text{UMI}_{\\text{Gesamt}} = \\frac{\\text{Rate}_{\\text{Input}} + \\text{Rate}_{\\text{Output}}}{2} \\quad [\\%]",
-            erklaerung: "Vereinfachte Lehrdarstellung des Urban Mining Index (UMI): Mittelung von Rezyklat-Input und stofflicher Verwertbarkeit nach der Nutzung (Output). Die Originalmethode gewichtet nach Verwertungsqualität (Wiederverwendung, Recycling, Downcycling).",
-            quelle: "Rosen (2021), vereinfacht"
-          },
-          {
-            formel: "\\text{MCI} = 1 - \\text{LFI} \\cdot F_u \\quad [-]",
-            erklaerung: "Material Circularity Indicator (MCI): linearer Fluss (LFI) gewichtet mit dem Nutzungsfaktor F(X) = 0,9/X; X aus Lebensdauer und Nutzungsintensität relativ zum Branchendurchschnitt.",
-            quelle: "Ellen MacArthur Foundation / Granta Design (2015)"
-          }
-        ]}
+        regelwerke={inhalt.daten["Kreislaufwirtschaft.regelwerke"]}
+        literatur={inhalt.daten["Kreislaufwirtschaft.literatur"]}
+        formeln={inhalt.daten["Kreislaufwirtschaft.formeln"]}
       />
     </div>
   );

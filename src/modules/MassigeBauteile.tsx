@@ -2,6 +2,8 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { Layers, ThermometerSun } from 'lucide-react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
+import inhalt from '@/content/massigebauteile/MassigeBauteile.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function MassigeBauteile() {
   const [zementGehalt, setZementGehalt] = useState(350);
@@ -18,59 +20,40 @@ export default function MassigeBauteile() {
           <div className="p-2 bg-shiraz/10 rounded-lg text-shiraz">
             <ThermometerSun size={24} />
           </div>
-          <h2 className="text-2xl font-bold text-text-main">Massige Bauteile</h2>
+          <h2 className="text-2xl font-bold text-text-main"><MdText text={inhalt.texte.massigeBauteile} /></h2>
         </div>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-              Als massige Bauteile gelten Betonbauteile mit einer kleinsten Abmessung von mehr als 0,80 m (DAfStb-Richtlinie). 
-              Durch die hohe Hydratationswärme und die schlechte Wärmeleitfähigkeit von Beton entstehen in solchen 
-              Bauteilen große Temperaturgradienten zwischen dem heißen Kern und der abkühlenden Randzone, was 
-              ohne Gegenmaßnahmen zu Zwangspannungen und Rissen führt.
-            </p>
+          <p><MdText text={inhalt.texte.alsMassigeBauteileGelten} /></p>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="bg-white p-6 sm:p-8 rounded-2xl border border-home-grau/30 shadow-sm">
           <h3 className="text-lg font-bold text-text-main mb-4 flex items-center gap-2">
-            <Layers className="w-5 h-5 text-shiraz" /> Maßnahmen gegen Rissbildung
-          </h3>
+            <Layers className="w-5 h-5 text-shiraz" /><MdText text={inhalt.texte.maßnahmenGegenRissbildung} /></h3>
           <ul className="space-y-3 mb-6">
             <li className="flex gap-2 text-sm text-text-main/80">
-              <span className="text-shiraz font-bold">•</span>
-              Verwendung von Zementen mit niedriger Hydratationswärme (LH-Zemente, z. B. CEM III).
-            </li>
+              <span className="text-shiraz font-bold">•</span><MdText text={inhalt.texte.verwendungVonZementenMit} /></li>
             <li className="flex gap-2 text-sm text-text-main/80">
-              <span className="text-shiraz font-bold">•</span>
-              Reduktion des Zementgehalts durch Zumischung von Flugasche (FA).
-            </li>
+              <span className="text-shiraz font-bold">•</span><MdText text={inhalt.texte.reduktionDesZementgehaltsDurch} /></li>
             <li className="flex gap-2 text-sm text-text-main/80">
-              <span className="text-shiraz font-bold">•</span>
-              Kühlung des Frischbetons (Zugabe von Scherbeneis statt Zugabewasser).
-            </li>
+              <span className="text-shiraz font-bold">•</span><MdText text={inhalt.texte.kühlungDesFrischbetonsZugabe} /></li>
             <li className="flex gap-2 text-sm text-text-main/80">
-              <span className="text-shiraz font-bold">•</span>
-              Einbau von Kühlrohren im Bauteil (Rohrkühlung).
-            </li>
+              <span className="text-shiraz font-bold">•</span><MdText text={inhalt.texte.einbauVonKühlrohrenIm} /></li>
             <li className="flex gap-2 text-sm text-text-main/80">
-              <span className="text-shiraz font-bold">•</span>
-              Wärmedämmende Schalungen, um den Temperaturgradienten zum Rand zu reduzieren (verhindert den "Thermoschock" bei frühem Ausschalen).
-            </li>
+              <span className="text-shiraz font-bold">•</span><MdText text={inhalt.texte.wärmedämmendeSchalungenUmDen} /></li>
           </ul>
 
           <div className="bg-home-grau/5 rounded-2xl p-4">
             <div className="text-sm text-blue-700 mb-2"><FormulaText text="\Delta T_{ad} = \frac{z \cdot H}{c_p \cdot \rho}" /></div>
-            <p className="text-xs text-text-main/70">
-              Maximaler adiabatischer Temperaturanstieg. 
-              z: Zementgehalt, H: Hydratationswärme, c_p: Spezifische Wärmekapazität, ρ: Dichte.
-            </p>
+            <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.maximalerAdiabatischerTemperaturanstiegZ} /></p>
           </div>
         </div>
 
         <div className="bg-white p-6 sm:p-8 rounded-2xl border border-home-grau/30 shadow-sm relative overflow-hidden">
           <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-orange-50 rounded-full blur-2xl"></div>
-          <h3 className="text-lg font-bold text-text-main mb-4 relative z-10">Erwärmung (Abschätzung)</h3>
+          <h3 className="text-lg font-bold text-text-main mb-4 relative z-10"><MdText text={inhalt.texte.erwärmungAbschätzung} /></h3>
           
           <div className="space-y-6 relative z-10">
             <div>
@@ -90,11 +73,9 @@ export default function MassigeBauteile() {
             </div>
             
             <div className="bg-orange-50 border border-orange-100 p-6 rounded-2xl flex flex-col items-center justify-center">
-              <div className="text-xs text-orange-800/80 mb-2 font-semibold uppercase tracking-wider">Adiabatischer Temp.-Anstieg <FormulaText text="\Delta T_{ad}" /></div>
+              <div className="text-xs text-orange-800/80 mb-2 font-semibold uppercase tracking-wider"><MdText text={inhalt.texte.adiabatischerTempAnstieg} /><FormulaText text="\Delta T_{ad}" /></div>
               <div className="text-4xl font-black text-orange-600 mb-2"><FormulaText text={`+${formatDeZahl(deltaT, 1)}`} /> <span className="text-xl">K</span></div>
-              <p className="text-[10px] text-orange-900/60 text-center">
-                Bei einer Frischbetontemperatur von 20°C erhitzt sich der Betonkern 
-                abgeschirmt auf ca. {formatDeZahl((20 + deltaT), 0)}°C!
+              <p className="text-[10px] text-orange-900/60 text-center"><MdText text={inhalt.texte.beiEinerFrischbetontemperaturVon} />{formatDeZahl((20 + deltaT), 0)}°C!
               </p>
             </div>
           </div>

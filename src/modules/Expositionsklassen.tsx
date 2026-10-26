@@ -22,6 +22,8 @@ import { InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { NORMATIVE_EXPOSURE_CLASSES, CHEMICAL_LIMITS_XA, MOISTURE_CLASSES_AKR } from './expositionsklassen/daten';
 import { ExpositionsklassenSkizze } from './expositionsklassen/ExpositionsklassenSkizze';
+import inhalt from '@/content/expositionsklassen/Expositionsklassen.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 export { NORMATIVE_EXPOSURE_CLASSES, CHEMICAL_LIMITS_XA, MOISTURE_CLASSES_AKR } from './expositionsklassen/daten';
 export type { NormExposureClass } from './expositionsklassen/daten';
 export { ExpositionsklassenSkizze } from './expositionsklassen/ExpositionsklassenSkizze';
@@ -129,22 +131,22 @@ export default function Expositionsklassen() {
     // Sonderanforderungen (SR-Zement, Hartstoffe, Beschichtung)
     const specialReqs: string[] = [];
     if (selectedClasses.includes('XA2') || selectedClasses.includes('XA3')) {
-      specialReqs.push('Bei Sulfatangriff (> 600 mg/l SO₄²⁻ im Wasser) SR-Zement; bis 1 500 mg/l alternativ Zement-Flugasche-Gemisch.');
+      specialReqs.push(inhalt.werte.beiSulfatangriff600Mg);
     }
     if (selectedClasses.includes('XA3')) {
-      specialReqs.push('XA3: zusätzlich Schutz des Betons oder Gutachten (DIN 1045-2).');
+      specialReqs.push(inhalt.werte.xa3ZusätzlichSchutzDes);
     }
     if (selectedClasses.includes('XM2')) {
-      specialReqs.push('XM2: Oberflächenbehandlung des Betons – sonst w/z ≤ 0,45 und C35/45.');
+      specialReqs.push(inhalt.werte.xm2OberflächenbehandlungDesBetons);
     }
     if (selectedClasses.includes('XM3')) {
-      specialReqs.push('XM3: Hartstoffe nach DIN 1100.');
+      specialReqs.push(inhalt.werte.xm3HartstoffeNachDin);
     }
     if (selectedClasses.includes('XF4')) {
-      specialReqs.push('XF4: nur Luftporenbeton.');
+      specialReqs.push(inhalt.werte.xf4NurLuftporenbeton);
     }
     if (selectedClasses.includes('XC1') && maxCoverDur <= 10) {
-      specialReqs.push('Nur XC1: Δc_dev darf auf 10 mm verringert werden.');
+      specialReqs.push(inhalt.werte.nurXc1CDev);
     }
 
     return {
@@ -200,27 +202,15 @@ export default function Expositionsklassen() {
               <Grid size={24} />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-text-main">
-                Expositionsklassen nach DIN EN 206 / DIN 1045-2
-              </h2>
-              <p className="text-xs text-text-main/70">
-                Normative Grenzwerte für Umweltbeanspruchung, Zementgehalte, w/z-Werte, Luftporen und Betondeckung
-              </p>
+              <h2 className="text-xl font-bold text-text-main"><MdText text={inhalt.texte.expositionsklassenNachDinEn} /></h2>
+              <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.normativeGrenzwerteFürUmweltbeanspruchun} /></p>
             </div>
           </div>
-          <span className="text-xs font-mono font-bold px-3 py-1 bg-off-white text-shiraz border border-home-grau/20 rounded-lg hidden sm:inline-block">
-            DIN 1045-2:2023-08 (Tab. F.2.1/F.2.2)
-          </span>
+          <span className="text-xs font-mono font-bold px-3 py-1 bg-off-white text-shiraz border border-home-grau/20 rounded-lg hidden sm:inline-block"><MdText text={inhalt.texte.din104522023} /></span>
         </div>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed">
-          <p>
-            Die Bemessung dauerhafter Betonbauteile basiert nach <strong>DIN EN 206</strong> und den nationalen Anwendungsregeln der <strong>DIN 1045-2</strong> auf 
-            der Zuordnung aller planmäßig auftretenden Umwelteinflüsse zu standardisierten <strong>Expositionsklassen</strong> (X0, XC, XD, XS, XF, XA, XM) sowie{' '}
-            <strong>Feuchtigkeitsklassen</strong> (WO, WF, WA, WS nach Alkali-Richtlinie). Jede Klasse definiert verbindliche Mindestanforderungen an den maximalen 
-            äquivalenten Wasserzementwert <InlineMath math="(w/z)_{\text{eq}}" />, die Mindestdruckfestigkeitsklasse, den Mindestzementgehalt <InlineMath math="z_{\min}" /> und 
-            die erforderliche Betondeckung nach Eurocode 2.
-          </p>
+          <p><MdText text={inhalt.texte.dieBemessungDauerhafterBetonbauteile} /></p>
         </div>
 
         {/* TAB-NAVIGATION (4-Stufen-Lehrpfad) */}
@@ -233,8 +223,7 @@ export default function Expositionsklassen() {
                 : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
             }`}
           >
-            <BookOpen size={16} /> 1. Grundlagen &amp; Klassenkatalog
-          </button>
+            <BookOpen size={16} /><MdText text={inhalt.texte.t1GrundlagenKlassenkatalog} /></button>
           <button aria-pressed={activeTab === 'pruefungen'}
             onClick={() => setActiveTab('pruefungen')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
@@ -243,8 +232,7 @@ export default function Expositionsklassen() {
                 : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
             }`}
           >
-            <Beaker size={16} /> 2. Labor- &amp; Baustellenprüfungen
-          </button>
+            <Beaker size={16} /><MdText text={inhalt.texte.t2LaborBaustellenprüfungen} /></button>
           <button aria-pressed={activeTab === 'rechner'}
             onClick={() => setActiveTab('rechner')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
@@ -253,8 +241,7 @@ export default function Expositionsklassen() {
                 : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
             }`}
           >
-            <Calculator size={16} /> 3. Interaktiver Hüllwert- &amp; k-Wert-Rechner
-          </button>
+            <Calculator size={16} /><MdText text={inhalt.texte.t3InteraktiverHüllwertK} /></button>
         </div>
       </div>
 
@@ -276,38 +263,25 @@ export default function Expositionsklassen() {
           {/* Einordnung und Schädigungsmechanismen */}
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
             <h3 className="text-lg font-bold text-text-main flex items-center gap-2 pb-2 border-b border-home-grau/20">
-              <ShieldAlert className="text-shiraz" size={20} />
-              Normatives Schutzkonzept: Beton- und Bewehrungsschutz
-            </h3>
+              <ShieldAlert className="text-shiraz" size={20} /><MdText text={inhalt.texte.normativesSchutzkonzeptBetonUnd} /></h3>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/20 space-y-2">
                 <span className="text-xs font-bold text-shiraz uppercase tracking-wider block">Bewehrungskorrosion</span>
-                <h4 className="font-bold text-sm text-text-main">Karbonatisierung (XC) &amp; Chloride (XD / XS)</h4>
-                <p className="text-xs text-text-main/75 leading-relaxed">
-                  Zementstein schützt Stahlbewehrung durch hochalkalisches Porenwasser (<InlineMath math="\text{pH} \approx 12{,}5 - 13{,}5" />) 
-                  passivierend. Dringt <InlineMath math="\text{CO}_2" /> ein, sinkt der pH-Wert unter 9 (Depassivierung). Chloride zerstören 
-                  den Passivfilm punktuell (Lochfraßkorrosion ohne vorherige pH-Wert-Absenkung).
-                </p>
+                <h4 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.karbonatisierungXcChlorideXd} /></h4>
+                <p className="text-xs text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.zementsteinSchütztStahlbewehrungDurch} /></p>
               </div>
 
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/20 space-y-2">
-                <span className="text-xs font-bold text-cyan-800 uppercase tracking-wider block">Gefügezerstörung Frost</span>
-                <h4 className="font-bold text-sm text-text-main">Frost- &amp; Frost-Tausalz-Angriff (XF)</h4>
-                <p className="text-xs text-text-main/75 leading-relaxed">
-                  Gefrierendes Porenwasser expandiert um ca. 9 Vol.-%. Bei hoher Wassersättigung (<InlineMath math="S_r > 91\,\%" />) 
-                  entsteht hydrostatischer Sprengdruck. Tausalze verschärfen den Angriff drastisch durch osmotischen Druck und Kälteschock 
-                  (oberflächliche Skalierung / Abplatzungen).
-                </p>
+                <span className="text-xs font-bold text-cyan-800 uppercase tracking-wider block"><MdText text={inhalt.texte.gefügezerstörungFrost} /></span>
+                <h4 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.frostFrostTausalzAngriff} /></h4>
+                <p className="text-xs text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.gefrierendesPorenwasserExpandiertUm} /></p>
               </div>
 
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/20 space-y-2">
-                <span className="text-xs font-bold text-emerald-800 uppercase tracking-wider block">Chemischer Betonangriff</span>
-                <h4 className="font-bold text-sm text-text-main">Säuren, Sulfate (XA) &amp; AKR (WO–WS)</h4>
-                <p className="text-xs text-text-main/75 leading-relaxed">
-                  Säuren lösen Calciumhydroxid aus dem Gefüge auf. Sulfate reagieren mit Aluminationen zu Ettringit oder Thaumasit unter 
-                  massiver Volumenzunahme (Sulfattreiben). Alkaliempfindliche Kieselsäure bildet mit Porenalkalien quellfähiges Gel (AKR).
-                </p>
+                <span className="text-xs font-bold text-emerald-800 uppercase tracking-wider block"><MdText text={inhalt.texte.chemischerBetonangriff} /></span>
+                <h4 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.säurenSulfateXaAkr} /></h4>
+                <p className="text-xs text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.säurenLösenCalciumhydroxidAus} /></p>
               </div>
             </div>
           </div>
@@ -317,10 +291,8 @@ export default function Expositionsklassen() {
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 pb-3 border-b border-home-grau/20">
               <div>
                 <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
-                  <Filter size={18} className="text-shiraz" />
-                  Klassenkatalog DIN EN 206 / DIN 1045-2 (Tabelle F.2.1 &amp; F.2.2)
-                </h3>
-                <p className="text-xs text-text-main/70">Wählen Sie eine Expositionsgruppen-Kategorie zur Detailansicht:</p>
+                  <Filter size={18} className="text-shiraz" /><MdText text={inhalt.texte.klassenkatalogDinEn206} /></h3>
+                <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.wählenSieEineExpositionsgruppen} /></p>
               </div>
 
               <div className="flex flex-wrap gap-1 p-1 bg-off-white rounded-xl border border-home-grau/20 text-xs">
@@ -346,12 +318,12 @@ export default function Expositionsklassen() {
                 <thead>
                   <tr className="bg-off-white border-b border-home-grau/30 text-text-main font-bold">
                     <th className="p-3">Klasse</th>
-                    <th className="p-3">Bezeichnung &amp; Umgebungsbedingungen</th>
-                    <th className="p-3 text-center">max. (w/z)eq</th>
+                    <th className="p-3"><MdText text={inhalt.texte.bezeichnungUmgebungsbedingungen} /></th>
+                    <th className="p-3 text-center"><MdText text={inhalt.texte.maxWZEq} /></th>
                     <th className="p-3 text-center">Min.-Festigkeit</th>
-                    <th className="p-3 text-center">z_min (kg/m³)</th>
-                    <th className="p-3 text-center">c_min,dur (mm)</th>
-                    <th className="p-3">Besondere Anforderungen</th>
+                    <th className="p-3 text-center"><MdText text={inhalt.texte.zMinKgM} /></th>
+                    <th className="p-3 text-center"><MdText text={inhalt.texte.cMinDurMm} /></th>
+                    <th className="p-3"><MdText text={inhalt.texte.besondereAnforderungen} /></th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-home-grau/15">
@@ -397,20 +369,16 @@ export default function Expositionsklassen() {
           {/* Chemische Grenzwerte für XA */}
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
             <h3 className="text-lg font-bold text-text-main flex items-center gap-2 pb-2 border-b border-home-grau/20">
-              <Beaker className="text-shiraz" size={18} />
-              Chemische Grenzwerte nach DIN EN 206:2021-06 Tabelle 2 (Klassen XA1, XA2, XA3)
-            </h3>
-            <p className="text-xs text-text-main/75">
-              Für die Einstufung in XA1 bis XA3 ist der jeweils strengste Einzelwert aller untersuchten Wasser- bzw. Bodenparameter maßgebend:
-            </p>
+              <Beaker className="text-shiraz" size={18} /><MdText text={inhalt.texte.chemischeGrenzwerteNachDin} /></h3>
+            <p className="text-xs text-text-main/75"><MdText text={inhalt.texte.fürDieEinstufungIn} /></p>
 
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs border-collapse">
                 <thead>
                   <tr className="bg-off-white border-b border-home-grau/30 text-text-main font-bold">
-                    <th className="p-2.5">Chemischer Parameter</th>
+                    <th className="p-2.5"><MdText text={inhalt.texte.chemischerParameter} /></th>
                     <th className="p-2.5">Einheit</th>
-                    <th className="p-2.5 bg-emerald-50 text-emerald-900 text-center">XA1 (schwach)</th>
+                    <th className="p-2.5 bg-emerald-50 text-emerald-900 text-center"><MdText text={inhalt.texte.xa1Schwach} /></th>
                     <th className="p-2.5 bg-amber-50 text-amber-900 text-center">XA2 (mäßig)</th>
                     <th className="p-2.5 bg-rose-50 text-rose-900 text-center">XA3 (stark)</th>
                     <th className="p-2.5">Prüfverfahren</th>
@@ -435,9 +403,7 @@ export default function Expositionsklassen() {
           {/* Feuchtigkeitsklassen für AKR */}
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
             <h3 className="text-lg font-bold text-text-main flex items-center gap-2 pb-2 border-b border-home-grau/20">
-              <Droplets className="text-shiraz" size={18} />
-              Feuchtigkeitsklassen gegen Alkali-Kieselsäure-Reaktion (AKR) nach DIN 1045-2 Anhang D
-            </h3>
+              <Droplets className="text-shiraz" size={18} /><MdText text={inhalt.texte.feuchtigkeitsklassenGegenAlkaliKieselsäu} /></h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {MOISTURE_CLASSES_AKR.map(m => (
@@ -469,12 +435,8 @@ export default function Expositionsklassen() {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-6">
             <div className="border-b border-home-grau/20 pb-3">
               <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
-                <Beaker className="text-shiraz" size={20} />
-                Prüfverfahren zur Verifikation von Dauerhaftigkeit &amp; Expositionskonformität
-              </h3>
-              <p className="text-xs text-text-main/70 mt-1">
-                Forensische Nachweise und genormte Prüfungen für Karbonatisierung, Frost, Chloride und Abrieb:
-              </p>
+                <Beaker className="text-shiraz" size={20} /><MdText text={inhalt.texte.prüfverfahrenZurVerifikationVon} /></h3>
+              <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.forensischeNachweiseUndGenormte} /></p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -482,12 +444,11 @@ export default function Expositionsklassen() {
               {/* 1. Karbonatisierung */}
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/20 space-y-2.5">
                 <div className="flex items-center gap-2 text-shiraz font-bold text-sm">
-                  <CheckCircle2 size={16} /> Karbonatisierungstiefe mit Phenolphthalein
-                </div>
+                  <CheckCircle2 size={16} /><MdText text={inhalt.texte.karbonatisierungstiefeMitPhenolphthalein} /></div>
                 <div className="text-xs text-text-main/80 space-y-1.5 leading-relaxed">
-                  <p><strong>Norm:</strong> DIN EN 14630 (Bestimmung der Karbonatisierungstiefe an frischen Bruchflächen)</p>
-                  <p><strong>Prinzip:</strong> 1%ige ethanolische Phenolphthaleinlösung wird auf die frisch gebrochene Betonfläche gesprüht.</p>
-                  <p><strong>Farbumschlag:</strong> Unkarbonatisierter Beton (<InlineMath math="\text{pH} > 9{,}0" />) verfärbt sich kräftig violett/magenta; karbonatisierter Beton bleibt farblos.</p>
+                  <p><MdText text={inhalt.texte.normDinEn14630} /></p>
+                  <p><MdText text={inhalt.texte.prinzip1IgeEthanolische} /></p>
+                  <p><MdText text={inhalt.texte.farbumschlagUnkarbonatisierterBetonText} /></p>
                   <div className="text-[11px] text-text-main bg-white p-2 rounded border border-home-grau/15">
                     <strong>Zeit-Diffusionsgesetz:</strong> <InlineMath math="d_k(t) = k_{\text{carb}} \cdot \sqrt{t}" />
                   </div>
@@ -497,25 +458,23 @@ export default function Expositionsklassen() {
               {/* 2. Frost-Tausalz-Prüfung CDF/CIF */}
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/20 space-y-2.5">
                 <div className="flex items-center gap-2 text-cyan-800 font-bold text-sm">
-                  <Snowflake size={16} /> Frost-Tausalz-Prüfung (CDF / CIF-Verfahren)
-                </div>
+                  <Snowflake size={16} /><MdText text={inhalt.texte.frostTausalzPrüfungCdf} /></div>
                 <div className="text-xs text-text-main/80 space-y-1.5 leading-relaxed">
-                  <p><strong>Norm:</strong> DIN CEN/TS 12390-9 / BAW-Merkblatt Frostprüfung</p>
-                  <p><strong>CDF-Test:</strong> Prüfung mit 3%iger NaCl-Lösung und 28 Frost-Tau-Wechseln (-20 °C bis +20 °C).</p>
-                  <p><strong>Kriterium XF4:</strong> Mittlere Abwitterung <InlineMath math="m_{28} \le 1.500\text{ g/m}^2" /> (für ZTV-ING oft <InlineMath math="\le 1.000\text{ g/m}^2" />).</p>
-                  <p><strong>CIF-Test:</strong> Zusätzliche Messung des relativen dynamischen E-Moduls (RDM) zur Detektion innerer Gefügeschädigung (<InlineMath math="RDM \ge 75\,\%" />).</p>
+                  <p><MdText text={inhalt.texte.normDinCenTs} /></p>
+                  <p><MdText text={inhalt.texte.cdfTestPrüfungMit} /></p>
+                  <p><MdText text={inhalt.texte.kriteriumXf4MittlereAbwitterung} /></p>
+                  <p><MdText text={inhalt.texte.cifTestZusätzlicheMessung} /></p>
                 </div>
               </div>
 
               {/* 3. Schnellchloridmigration RCM */}
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/20 space-y-2.5">
                 <div className="flex items-center gap-2 text-amber-800 font-bold text-sm">
-                  <Waves size={16} /> Chlorid-Migrationsversuch (RCM-Test)
-                </div>
+                  <Waves size={16} /><MdText text={inhalt.texte.chloridMigrationsversuchRcmTest} /></div>
                 <div className="text-xs text-text-main/80 space-y-1.5 leading-relaxed">
-                  <p><strong>Norm / Richtlinie:</strong> BAW-Merkblatt MDCC / NT BUILD 492</p>
-                  <p><strong>Prinzip:</strong> Anlegen einer elektrischen Gleichspannung (10–60 V) an einen Betonbohrkern zur Beschleunigung der Chloridionenwanderung.</p>
-                  <p><strong>Auswertung:</strong> Spalten des Prüfkörpers und Besprühen mit <InlineMath math="0{,}1\text{ M } \text{AgNO}_3" />-Lösung. Weißer Silbersalz-Niederschlag markiert die Eindringfront <InlineMath math="x_d" />.</p>
+                  <p><MdText text={inhalt.texte.normRichtlinieBawMerkblatt} /></p>
+                  <p><MdText text={inhalt.texte.prinzipAnlegenEinerElektrischen} /></p>
+                  <p><MdText text={inhalt.texte.auswertungSpaltenDesPrüfkörpers} /></p>
                   <div className="text-[11px] text-text-main bg-white p-2 rounded border border-home-grau/15 overflow-x-auto">
                     <InlineMath math="D_{RCM} = \frac{287{,}3 \cdot T \cdot L}{(U - 2) \cdot t} \left(x_d - 3{,}338 \sqrt{\frac{T \cdot L \cdot x_d}{U - 2}}\right) \cdot 10^{-12} \text{ m}^2/\text{s}" />
                   </div>
@@ -525,13 +484,12 @@ export default function Expositionsklassen() {
               {/* 4. Luftporenprüfung im Frischbeton */}
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/20 space-y-2.5">
                 <div className="flex items-center gap-2 text-emerald-800 font-bold text-sm">
-                  <Layers size={16} /> Frischbeton-Luftporenprüfung (Druckausgleich)
-                </div>
+                  <Layers size={16} /><MdText text={inhalt.texte.frischbetonLuftporenprüfungDruckausgleic} /></div>
                 <div className="text-xs text-text-main/80 space-y-1.5 leading-relaxed">
-                  <p><strong>Norm:</strong> DIN EN 12350-7 (Prüfung von Frischbeton – Luftgehalt – Druckverfahren)</p>
-                  <p><strong>Gerät:</strong> 8-Liter-Luftporentopf mit Druckkammer und Manometer.</p>
-                  <p><strong>Grenzwerte XF:</strong> Mindestluftgehalt je nach Größtkorn: 4,0 Vol.-% (<InlineMath math="d_{\max}=32\text{ mm}" />), 4,5 Vol.-% (16 mm), 5,5 Vol.-% (8 mm).</p>
-                  <p><strong>Festbetonprüfung:</strong> Bestimmung von Luftporengrößenverteilung und Abstandsfaktor <InlineMath math="L \le 0{,}20\text{ mm}" /> nach DIN EN 480-11 am Dünnschliff.</p>
+                  <p><MdText text={inhalt.texte.normDinEn12350} /></p>
+                  <p><MdText text={inhalt.texte.gerät8LiterLuftporentopf} /></p>
+                  <p><MdText text={inhalt.texte.grenzwerteXfMindestluftgehaltJe} /></p>
+                  <p><MdText text={inhalt.texte.festbetonprüfungBestimmungVonLuftporengr} /></p>
                 </div>
               </div>
 
@@ -559,17 +517,13 @@ export default function Expositionsklassen() {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-5">
             <div className="border-b border-home-grau/20 pb-3">
               <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
-                <Calculator className="text-shiraz" size={20} />
-                A. Interaktiver Expositionsklassen-Selektor &amp; Hüllwert-Ermittler
-              </h3>
-              <p className="text-xs text-text-main/70 mt-1">
-                Wählen Sie alle für das Bauteil gleichzeitig zutreffenden Expositionsklassen. Das Tool ermittelt automatisch die strengsten Grenzwert-Hüllwerte nach DIN 1045-2:
-              </p>
+                <Calculator className="text-shiraz" size={20} /><MdText text={inhalt.texte.aInteraktiverExpositionsklassenSelektor} /></h3>
+              <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.wählenSieAlleFür} /></p>
             </div>
 
             {/* Checkboxen für alle Klassen */}
             <div className="space-y-3">
-              <span className="text-xs font-bold text-text-main block">1. Expositionsklassen anwählen (Mehrfachauswahl):</span>
+              <span className="text-xs font-bold text-text-main block"><MdText text={inhalt.texte.t1ExpositionsklassenAnwählenMehrfachauswa} /></span>
               <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2">
                 {NORMATIVE_EXPOSURE_CLASSES.map(c => {
                   const isSelected = selectedClasses.includes(c.code);
@@ -598,9 +552,7 @@ export default function Expositionsklassen() {
             {/* Randbedingungen: dmax & Vorhaltemaß */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 bg-off-white rounded-xl border border-home-grau/20">
               <div className="space-y-1.5">
-                <label className="text-xs font-bold text-text-main block">
-                  Größtkorn <InlineMath math="d_{\max}" /> (nur für den LP-Gehalt):
-                </label>
+                <label className="text-xs font-bold text-text-main block"><MdText text={inhalt.texte.größtkornDMaxNur} /></label>
                 <div className="flex gap-2">
                   {[32, 16, 8].map(d => (
                     <button
@@ -620,14 +572,9 @@ export default function Expositionsklassen() {
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-xs font-bold text-text-main block">
-                  Vorhaltemaß der Betondeckung <InlineMath math="\Delta c_{\text{dev}}" />:
-                </label>
+                <label className="text-xs font-bold text-text-main block"><MdText text={inhalt.texte.vorhaltemaßDerBetondeckungDelta} /></label>
                 <div className="flex gap-2">
-                  {[
-                    { val: 15, label: '15 mm (Regelfall)' },
-                    { val: 10, label: '10 mm (XC1 bzw. mit Qualitätskontrolle)' }
-                  ].map(item => (
+                  {inhalt.daten.Expositionsklassen.map(item => (
                     <button
                       key={item.val}
                       type="button"
@@ -648,17 +595,15 @@ export default function Expositionsklassen() {
             {/* Ausgabe der Hüllwerte */}
             {calculatedEnvelopes && (
               <div className="space-y-3 pt-2">
-                <span className="text-xs font-bold text-text-main uppercase tracking-wider block">
-                  2. Maßgebende Hüllwerte (Grenzwerte nach DIN 1045-2):
-                </span>
+                <span className="text-xs font-bold text-text-main uppercase tracking-wider block"><MdText text={inhalt.texte.t2MaßgebendeHüllwerteGrenzwerte} /></span>
 
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
                   <div className="p-3 bg-white rounded-xl border border-home-grau/30 shadow-xs text-center">
-                    <span className="text-[10px] text-text-main/70 uppercase block font-semibold">max. (w/z)eq</span>
+                    <span className="text-[10px] text-text-main/70 uppercase block font-semibold"><MdText text={inhalt.texte.maxWZEq2} /></span>
                     <span className="text-lg font-mono font-black text-shiraz">
                       {calculatedEnvelopes.minWzEq !== null ? formatDeZahl(calculatedEnvelopes.minWzEq, 2) : 'keine Begr.'}
                     </span>
-                    <span className="text-[10px] text-text-main/60 block mt-0.5">Strengster Einzelwert</span>
+                    <span className="text-[10px] text-text-main/60 block mt-0.5"><MdText text={inhalt.texte.strengsterEinzelwert} /></span>
                   </div>
 
                   <div className="p-3 bg-white rounded-xl border border-home-grau/30 shadow-xs text-center">
@@ -666,28 +611,28 @@ export default function Expositionsklassen() {
                     <span className="text-lg font-mono font-black text-shiraz">
                       {calculatedEnvelopes.highestClass}
                     </span>
-                    <span className="text-[10px] text-text-main/60 block mt-0.5">Höchste Anforderung</span>
+                    <span className="text-[10px] text-text-main/60 block mt-0.5"><MdText text={inhalt.texte.höchsteAnforderung} /></span>
                   </div>
 
                   <div className="p-3 bg-white rounded-xl border border-home-grau/30 shadow-xs text-center">
-                    <span className="text-[10px] text-text-main/70 uppercase block font-semibold">Min.-Zementgehalt z_min</span>
+                    <span className="text-[10px] text-text-main/70 uppercase block font-semibold"><MdText text={inhalt.texte.minZementgehaltZMin} /></span>
                     <span className="text-lg font-mono font-black text-shiraz">
                       {calculatedEnvelopes.maxCement > 0 ? `${calculatedEnvelopes.maxCement} kg/m³` : '—'}
                     </span>
                   </div>
 
                   <div className="p-3 bg-white rounded-xl border border-home-grau/30 shadow-xs text-center">
-                    <span className="text-[10px] text-text-main/70 uppercase block font-semibold">Luftporengehalt (LP)</span>
+                    <span className="text-[10px] text-text-main/70 uppercase block font-semibold"><MdText text={inhalt.texte.luftporengehaltLp} /></span>
                     <span className="text-lg font-mono font-black text-cyan-800">
                       {calculatedEnvelopes.requiresLP && calculatedEnvelopes.minAirVal !== null
                         ? `≥ ${formatDeZahl(calculatedEnvelopes.minAirVal, 1)} %`
-                        : 'Nicht gefordert'}
+                        : inhalt.werte.nichtGefordert}
                     </span>
                     <span className="text-[10px] text-text-main/60 block mt-0.5">Frischbetonwert</span>
                   </div>
 
                   <div className="p-3 bg-white rounded-xl border border-home-grau/30 shadow-xs text-center col-span-2 md:col-span-1">
-                    <span className="text-[10px] text-text-main/70 uppercase block font-semibold">Nennmaß Betondeckung</span>
+                    <span className="text-[10px] text-text-main/70 uppercase block font-semibold"><MdText text={inhalt.texte.nennmaßBetondeckung} /></span>
                     <span className="text-lg font-mono font-black text-emerald-800">
                       {formatDeWert(calculatedEnvelopes.cNom)} mm
                     </span>
@@ -698,9 +643,7 @@ export default function Expositionsklassen() {
                 {calculatedEnvelopes.specialReqs.length > 0 && (
                   <div className="p-3.5 bg-amber-50/70 border border-amber-200 rounded-xl space-y-1">
                     <div className="flex items-center gap-1.5 font-bold text-xs text-amber-900">
-                      <AlertTriangle size={14} className="text-amber-700" />
-                      Wichtige bauchemische &amp; konstruktive Sonderanforderungen:
-                    </div>
+                      <AlertTriangle size={14} className="text-amber-700" /><MdText text={inhalt.texte.wichtigeBauchemischeKonstruktiveSonderan} /></div>
                     <ul className="list-disc pl-4 text-xs text-amber-900/90 space-y-0.5">
                       {calculatedEnvelopes.specialReqs.map((req, i) => (
                         <li key={i}>{req}</li>
@@ -716,18 +659,14 @@ export default function Expositionsklassen() {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-5">
             <div className="border-b border-home-grau/20 pb-3">
               <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
-                <Scale className="text-shiraz" size={20} />
-                B. k-Wert-Rechner für Zusatzstoffe (Flugasche &amp; Silikastaub)
-              </h3>
-              <p className="text-xs text-text-main/70 mt-1">
-                Berechnung des äquivalenten Wasserzementwerts nach der Formel: <InlineMath math="(w/z)_{\text{eq}} = \frac{w}{z + k_f \cdot f + k_s \cdot s}" />
-              </p>
+                <Scale className="text-shiraz" size={20} /><MdText text={inhalt.texte.bKWertRechner} /></h3>
+              <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.berechnungDesÄquivalentenWasserzementwer} /></p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 p-4 bg-off-white rounded-xl border border-home-grau/20">
               <div className="space-y-1">
-                <label className="text-xs font-bold text-text-main">Zementgehalt z (kg/m³):</label>
-                <input aria-label="Zementgehalt z (kg/m³)"
+                <label className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.zementgehaltZKgM} /></label>
+                <input aria-label={inhalt.werte.zementgehaltZKgM}
                   type="number"
                   min={150}
                   max={550}
@@ -739,8 +678,8 @@ export default function Expositionsklassen() {
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-bold text-text-main">Wassergehalt w (kg/m³):</label>
-                <input aria-label="Wassergehalt w (kg/m³)"
+                <label className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.wassergehaltWKgM} /></label>
+                <input aria-label={inhalt.werte.wassergehaltWKgM}
                   type="number"
                   min={100}
                   max={250}
@@ -752,8 +691,8 @@ export default function Expositionsklassen() {
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-bold text-text-main">Flugasche f (kg/m³):</label>
-                <input aria-label="Flugasche f (kg/m³)"
+                <label className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.flugascheFKgM} /></label>
+                <input aria-label={inhalt.werte.flugascheFKgM}
                   type="number"
                   min={0}
                   max={150}
@@ -762,12 +701,12 @@ export default function Expositionsklassen() {
                   onChange={(e) => setFlugascheGehalt(Number(e.target.value))}
                   className="w-full p-2 bg-white rounded-lg border border-home-grau/30 font-mono text-sm"
                 />
-                <span className="text-[10px] text-text-main/60 block">k = 0,40 (max. f/z = 0,33)</span>
+                <span className="text-[10px] text-text-main/60 block"><MdText text={inhalt.texte.k040Max} /></span>
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-bold text-text-main">Silikastaub s (kg/m³):</label>
-                <input aria-label="Silikastaub s (kg/m³)"
+                <label className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.silikastaubSKgM} /></label>
+                <input aria-label={inhalt.werte.silikastaubSKgM}
                   type="number"
                   min={0}
                   max={50}
@@ -776,22 +715,22 @@ export default function Expositionsklassen() {
                   onChange={(e) => setSilikaGehalt(Number(e.target.value))}
                   className="w-full p-2 bg-white rounded-lg border border-home-grau/30 font-mono text-sm"
                 />
-                <span className="text-[10px] text-text-main/60 block">k = {formatDeZahl(kValueCalc.kS, 1)} (max. s/z = 0,11)</span>
+                <span className="text-[10px] text-text-main/60 block">k = {formatDeZahl(kValueCalc.kS, 1)}<MdText text={inhalt.texte.maxSZ0} /></span>
               </div>
             </div>
 
             {/* Rechenergebnisse k-Wert */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="p-3.5 bg-white rounded-xl border border-home-grau/30 shadow-xs">
-                <span className="text-xs text-text-main/70 block">Klassischer Wasserzementwert w/z:</span>
+                <span className="text-xs text-text-main/70 block"><MdText text={inhalt.texte.klassischerWasserzementwertWZ} /></span>
                 <span className="text-xl font-mono font-bold text-text-main">
                   {formatDeZahl(kValueCalc.rawWz, 3)}
                 </span>
-                <span className="text-[10px] text-text-main/60 block mt-0.5">Ohne Zusatzstoffanrechnung</span>
+                <span className="text-[10px] text-text-main/60 block mt-0.5"><MdText text={inhalt.texte.ohneZusatzstoffanrechnung} /></span>
               </div>
 
               <div className="p-3.5 bg-white rounded-xl border border-home-grau/30 shadow-xs">
-                <span className="text-xs text-text-main/70 block">Äquivalenter Bindemittelgehalt b_eq:</span>
+                <span className="text-xs text-text-main/70 block"><MdText text={inhalt.texte.äquivalenterBindemittelgehaltBEq} /></span>
                 <span className="text-xl font-mono font-bold text-text-main">
                   {formatDeZahl(kValueCalc.beq, 1)} kg/m³
                 </span>
@@ -801,44 +740,28 @@ export default function Expositionsklassen() {
               </div>
 
               <div className="p-3.5 bg-white rounded-xl border-2 border-shiraz shadow-xs">
-                <span className="text-xs text-shiraz font-bold block">Äquivalenter (w/z)eq:</span>
+                <span className="text-xs text-shiraz font-bold block"><MdText text={inhalt.texte.äquivalenterWZEq} /></span>
                 <span className="text-2xl font-mono font-black text-shiraz">
                   {formatDeZahl(kValueCalc.wzEq, 3)}
                 </span>
                 <span className="text-[10px] text-text-main/70 block mt-0.5">
                   {calculatedEnvelopes && calculatedEnvelopes.minWzEq !== null ? (
                     kValueCalc.wzEq <= calculatedEnvelopes.minWzEq ? (
-                      <span className="text-emerald-700 font-bold">✓ Eingehalten (Grenzwert: {formatDeZahl(calculatedEnvelopes.minWzEq, 2)})</span>
+                      <span className="text-emerald-700 font-bold"><MdText text={inhalt.texte.eingehaltenGrenzwert} />{formatDeZahl(calculatedEnvelopes.minWzEq, 2)})</span>
                     ) : (
-                      <span className="text-rose-700 font-bold">✕ Überschritten (Grenzwert: {formatDeZahl(calculatedEnvelopes.minWzEq, 2)})</span>
+                      <span className="text-rose-700 font-bold"><MdText text={inhalt.texte.überschrittenGrenzwert} />{formatDeZahl(calculatedEnvelopes.minWzEq, 2)})</span>
                     )
-                  ) : 'Maßgeblicher Prüfwert'}
+                  ) : inhalt.werte.maßgeblicherPrüfwert}
                 </span>
               </div>
             </div>
 
             {/* Normative Herleitungsbox */}
             <FormulaDerivationBox
-              title="Normative Herleitung: Das k-Wert-Konzept nach DIN EN 206 & DIN 1045-2"
+              title={inhalt.werte.normativeHerleitungDasK}
               zielGleichung="(w/z)_{\text{eq}} = \frac{w}{z + k_f \cdot f + k_s \cdot s}"
-              normQuelle="DIN EN 206:2021-06 (Abschnitt 5.2.5.2) & DIN 1045-2:2023-08"
-              schritte={[
-                {
-                  titel: "1. Wirkungsfaktor für Flugasche (k_f)",
-                  formel: "k_f = 0{,}40, \\quad f / z \\le 0{,}33",
-                  erklaerung: "Flugasche nach DIN EN 450-1 reagiert puzzolanisch mit Ca(OH)2. Bei Verwendung von CEM I darf Flugasche mit k = 0,40 angerechnet werden, jedoch nur bis zu maximal 33 % des Zementgehalts."
-                },
-                {
-                  titel: "2. Wirkungsfaktor für Silikastaub (k_s)",
-                  formel: "k_s = 1{,}0 \\text{ (für } w/z \\le 0{,}45\\text{)} \\quad \\text{bzw.} \\quad k_s = 2{,}0 \\text{ (für } w/z > 0{,}45\\text{)}, \\quad s / z \\le 0{,}11",
-                  erklaerung: "Hochfeiner Silikastaub nach DIN EN 13263-1 weist eine extrem hohe puzzolanische Reaktivität auf. Die anrechenbare Menge ist auf 11 % des Zementgewichts begrenzt."
-                },
-                {
-                  titel: "3. Mindestzementgehalt-Prüfung",
-                  formel: "z \\ge z_{\\min} - k_f \\cdot f \\quad \\text{bzw.} \\quad z \\ge 240 \\text{ kg/m}^3",
-                  erklaerung: "Trotz Flugascheanrechnung darf der tatsächliche Zementgehalt aus Gründen des Korrosionsschutzes und der Karbonatisierungsbremse die normativen Mindestwerte nicht unzulässig unterschreiten."
-                }
-              ]}
+              normQuelle={inhalt.werte.dinEn2062021}
+              schritte={inhalt.daten["Expositionsklassen.schritte"]}
             />
           </div>
 
@@ -846,52 +769,26 @@ export default function Expositionsklassen() {
       )}
 
       <FormulaDerivationBox
-        title="Anwendungsbeispiel: Betondeckung einer Außenwand (XC4 + XF1)"
+        title={inhalt.werte.anwendungsbeispielBetondeckungEinerAußen}
         zielGleichung="c_{nom} = \max\{c_{min,b};\, c_{min,dur};\, 10\,\text{mm}\} + \Delta c_{dev}"
-        normQuelle="DIN EN 1992-1-1 mit NA:2013-04, Tab. 4.4DE"
-        schritte={[
-          { titel: '1. Gegeben', formel: '\\text{XC4 + XF1},\\; \\varnothing = 12\\,\\text{mm}', erklaerung: 'XF1 stellt keine eigene Anforderung an die Betondeckung.' },
-          { titel: '2. Mindestbetondeckung', formel: 'c_{min} = \\max\\{12;\\, 25;\\, 10\\} = 25\\,\\text{mm}', erklaerung: 'c_min,b = Stabdurchmesser; c_min,dur für XC4 = 25 mm.' },
-          { titel: '3. Nennmaß', formel: 'c_{nom} = 25 + 15 = 40\\,\\text{mm}', erklaerung: 'Vorhaltemaß Δc_dev = 15 mm (Regelfall).' },
-          { titel: '4. Beton', formel: '(w/z)_{eq} \\le 0{,}60;\\; \\ge \\text{C25/30};\\; z \\ge 280\\,\\text{kg/m}^3', erklaerung: 'XC4 und XF1 fordern dieselben Grenzwerte.' },
-        ]}
-        ergebnisHinweis="c_nom = 40 mm; Beton mindestens C25/30 mit (w/z)eq ≤ 0,60 und z ≥ 280 kg/m³."
+        normQuelle={inhalt.werte.dinEn19921}
+        schritte={inhalt.daten["Expositionsklassen.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.cNom40Mm}
       />
 
       <ModulTest moduleId="expositionsklassen" />
 
       <ModuleFooter
         wikipedia={[
-          { title: 'Beton (Abschnitt Dauerhaftigkeit)', url: 'https://de.wikipedia.org/wiki/Beton' },
-          { title: 'Karbonatisierung (Beton)', url: 'https://de.wikipedia.org/wiki/Karbonatisierung_(Beton)' },
+          { title: inhalt.werte.betonAbschnittDauerhaftigkeit, url: 'https://de.wikipedia.org/wiki/Beton' },
+          { title: inhalt.werte.karbonatisierungBeton, url: 'https://de.wikipedia.org/wiki/Karbonatisierung_(Beton)' },
           { title: 'Betondeckung', url: 'https://de.wikipedia.org/wiki/Betondeckung' }
         ]}
-        literatur={[
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Grübl, P.; Weigler, H.; Karl, S.: Beton – Arten, Herstellung und Eigenschaften. Berlin: Ernst & Sohn 2001',
-          'DAfStb-Heft 600: Erläuterungen zu DIN EN 1992-1-1 und DIN EN 1992-1-1/NA (Eurocode 2), 2. überarbeitete Auflage 2020',
-          'DBV-Merkblatt Betondeckung und Bewehrung nach Eurocode 2 (Fassung Dezember 2015)'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 206:2021-06 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität)' },
-          { title: 'DIN 1045-2:2023-08 (Tragwerke aus Beton, Stahlbeton und Spannbeton – Teil 2: Beton; Anwendungsregeln zu DIN EN 206)' },
-          { title: 'DIN EN 1992-1-1:2011-01 + NA:2013-04 (Eurocode 2); Neuausgabe DIN EN 1992-1-1:2025-09 – Übergangsregeln beachten' },
-          { title: 'DAfStb Alkali-Richtlinie (Ausgabe 2013-10)' }
-        ]}
+        literatur={inhalt.daten["Expositionsklassen.literatur"]}
+        regelwerke={inhalt.daten["Expositionsklassen.regelwerke"]}
         formeln={
           activeTab === 'grundlagen'
-            ? [
-                {
-                  formel: '(w/z)_{\\text{eq}} = \\frac{w}{z + k_f \\cdot f + k_s \\cdot s}',
-                  erklaerung: 'Äquivalenter w/z-Wert mit Anrechnung von Flugasche (k_f = 0,4; f/z ≤ 0,33) und Silikastaub (k_s = 1,0; s/z ≤ 0,11) nach DIN 1045-2.',
-                  quelle: 'DIN EN 206'
-                },
-                {
-                  formel: 'c_{\\text{nom}} = c_{\\text{min}} + \\Delta c_{\\text{dev}} = \\max\\{c_{\\text{min},b}; c_{\\text{min},\\text{dur}}; 10\\text{ mm}\\} + \\Delta c_{\\text{dev}}',
-                  erklaerung: 'Nennmaß der Betondeckung nach Eurocode 2 (DIN EN 1992-1-1) aus Mindestbetondeckung zur Verbundsicherung, Dauerhaftigkeitsmindestmaß c_min,dur und dem Vorhaltemaß Delta c_dev.',
-                  quelle: 'DIN EN 1992-1-1'
-                }
-              ]
+            ? inhalt.daten.Expositionsklassen_2
             : []
         }
       />

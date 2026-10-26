@@ -16,6 +16,8 @@ import {
   CheckCircle2
 } from 'lucide-react';
 import { useTabContext, TabId } from '@/src/contexts/TabContext';
+import inhalt from '@/content/ki/KiGlossar.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface GlossarEntry {
   id: string;
@@ -34,81 +36,81 @@ export interface GlossarEntry {
 export const GLOSSAR_ENTRIES: GlossarEntry[] = [
   {
     id: 'llm',
-    term: 'Large Language Model (LLM)',
+    term: inhalt.werte.largeLanguageModelLlm,
     shortName: 'LLM',
-    badge: 'Großes Sprachmodell',
+    badge: inhalt.werte.großesSprachmodell,
     category: 'core',
     icon: Sparkles,
-    oneLiner: 'Ein künstliches neuronales Netz (z. B. GPT-4, Claude 3.7, Qwen), das auf riesigen Textmengen trainiert wurde und Sprache, Verträge, Normen und Programmcode tiefgehend versteht und erzeugen kann.',
-    analogy: 'Wie ein hochbelesener Assistent im Büro, der tausende Fachbücher und DIN-Normen überflogen hat und auf Zuruf druckreife Texte oder Code entwirft.',
-    constructionUse: 'Entwurf von VOB-Bedenkenanzeigen, Zusammenfassung 200-seitiger Bodengutachten, Formatierung von Leistungsverzeichnissen und Schreiben technischer Gutachten.',
+    oneLiner: inhalt.werte.einKünstlichesNeuronalesNetz,
+    analogy: inhalt.werte.wieEinHochbelesenerAssistent,
+    constructionUse: inhalt.werte.entwurfVonVobBedenkenanzeigen,
     deepDiveTab: 'ki_llmpraxis',
-    deepDiveLabel: 'Zur LLM-Praxis'
+    deepDiveLabel: inhalt.werte.zurLlmPraxis
   },
   {
     id: 'rag',
-    term: 'Retrieval-Augmented Generation (RAG)',
+    term: inhalt.werte.retrievalAugmentedGenerationRag,
     shortName: 'RAG',
-    badge: 'Quellengestützte Generierung',
+    badge: inhalt.werte.quellengestützteGenerierung,
     category: 'architecture',
     icon: Layers,
-    oneLiner: 'Eine Methode, bei der das LLM vor dem Antworten eine externe Vektordatenbank mit Ihren eigenen PDF-Dateien (z. B. Eurocodes, Baugrundgutachten) durchsucht und nur anhand dieser geprüften Zitate antwortet.',
-    analogy: 'Wie eine Prüfung mit „Open Book“: Statt aus dem unsicheren Gedächtnis zu raten (und evtl. falsche Werte zu erfinden), schlägt die KI zuerst die exakte Seite im Ordner auf und zitiert wörtlich.',
-    constructionUse: 'Verlässliche, halluzinationsfreie Befragung von DIN-Normen, statischen Nachweisen und Baustellen-Tagebüchern mit direkter Seitenangabe.',
+    oneLiner: inhalt.werte.eineMethodeBeiDer,
+    analogy: inhalt.werte.wieEinePrüfungMit,
+    constructionUse: inhalt.werte.verlässlicheHalluzinationsfreieBefragung,
     deepDiveTab: 'ki_system',
-    deepDiveLabel: 'Zum RAG-Demonstrator'
+    deepDiveLabel: inhalt.werte.zumRagDemonstrator
   },
   {
     id: 'prompt_engineering',
     term: 'Prompt-Engineering',
     shortName: 'Prompt-Engineering',
-    badge: 'Präzise Arbeitsanweisung',
+    badge: inhalt.werte.präziseArbeitsanweisung,
     category: 'practice',
     icon: Terminal,
-    oneLiner: 'Die gezielte Formulierung von Arbeitsanweisungen mit klarer Rolle, fachlichem Kontext, Randbedingungen und gewünschtem Format, um verlässliche und ingenieurgerechte Antworten zu erzielen.',
-    analogy: 'Wie ein präzises Leistungsverzeichnis (LV): Je eindeutiger die technischen Vorbemerkungen und Toleranzen formuliert sind, desto mangelfreier ist das Bauergebnis.',
-    constructionUse: 'Vermeidung von oberflächlichem Bla-Bla durch Vorgabe exakter Tabellenformate, Eurocode-Referenzen und mathematischer Rechengänge.',
+    oneLiner: inhalt.werte.dieGezielteFormulierungVon,
+    analogy: inhalt.werte.wieEinPräzisesLeistungsverzeichnis,
+    constructionUse: inhalt.werte.vermeidungVonOberflächlichemBla,
     deepDiveTab: 'ki_prompting',
-    deepDiveLabel: 'Zum Prompt-Optimierer'
+    deepDiveLabel: inhalt.werte.zumPromptOptimierer
   },
   {
     id: 'vibe_coding',
     term: 'Vibe Coding',
     shortName: 'Vibe Coding',
-    badge: 'KI-geführtes Programmieren',
+    badge: inhalt.werte.kiGeführtesProgrammieren,
     category: 'practice',
     icon: Code,
-    oneLiner: 'Ein moderner Entwicklungsansatz, bei dem Sie als Fachexperte (Bauingenieur) Software und Skripte in natürlicher Alltagssprache beschreiben, während KI-Tools (Cursor, Claude Code) den Code schreiben und debuggen.',
-    analogy: 'Wie ein erfahrener Bauleiter, der die Ausführung an Spezialhandwerker delegiert: Sie definieren das Ziel, die Physik und die Logik – die KI übernimmt die handwerkliche Code-Tipparbeit.',
-    constructionUse: 'Bauen eigener Mini-Tools in Minuten: z. B. ein U-Wert-Rechner, Sieblinien-Plotter, Betonrezeptur-Prüfer oder IFC-Mengenermittler ohne Informatikstudium.',
+    oneLiner: inhalt.werte.einModernerEntwicklungsansatzBei,
+    analogy: inhalt.werte.wieEinErfahrenerBauleiter,
+    constructionUse: inhalt.werte.bauenEigenerMiniTools,
     deepDiveTab: 'ki_ueberblick',
-    deepDiveLabel: 'Zum KI-Überblick & Grundlagen'
+    deepDiveLabel: inhalt.werte.zumKiÜberblickGrundlagen
   },
   {
     id: 'mcp_server',
-    term: 'Model Context Protocol (MCP-Server)',
+    term: inhalt.werte.modelContextProtocolMcp,
     shortName: 'MCP-Server',
-    badge: 'Universelle Werkzeug-Schnittstelle',
+    badge: inhalt.werte.universelleWerkzeugSchnittstelle,
     category: 'architecture',
     icon: Server,
-    oneLiner: 'Ein offener Industriestandard (wie ein USB-C-Stecker für KI), der es LLMs erlaubt, sicher auf lokale Werkzeuge, das Dateisystem, Baudatenbanken oder CAD/BIM-Schnittstellen zuzugreifen.',
-    analogy: 'Wie eine standardisierte Schnellwechsel-Kupplung am Bagger: Die Maschine kann je nach Aufgabe automatisch den Grablöffel, den Hydraulikmeißel oder den Verdichter ankoppeln.',
-    constructionUse: 'Claude Desktop oder Cursor können direkt Bauteil-Tabellen aus lokalen SQLite-Datenbanken abfragen oder mit `ifcopenshell` Bauteilmengen aus IFC-Modellen extrahieren.',
+    oneLiner: inhalt.werte.einOffenerIndustriestandardWie,
+    analogy: inhalt.werte.wieEineStandardisierteSchnellwechsel,
+    constructionUse: inhalt.werte.claudeDesktopOderCursor,
     deepDiveTab: 'ki_llmpraxis',
-    deepDiveLabel: 'Zu MCP-Konnektoren'
+    deepDiveLabel: inhalt.werte.zuMcpKonnektoren
   },
   {
     id: 'halluzination',
-    term: 'Halluzination & Fehlerrisiko',
+    term: inhalt.werte.halluzinationFehlerrisiko,
     shortName: 'Halluzination',
-    badge: 'Verlässlichkeit & Haftung',
+    badge: inhalt.werte.verlässlichkeitHaftung,
     category: 'core',
     icon: ShieldCheck,
-    oneLiner: 'Wenn ein Sprachmodell Fakten, Normen-Ziffern oder Rechenergebnisse völlig plausibel und selbstbewusst formuliert, diese in der Realität jedoch falsch oder frei erfunden sind.',
-    analogy: 'Wie ein Praktikant, der eine fehlende Messzahl im Laborbericht errät, statt noch einmal an der Prüfmaschine nachzumessen. Unbedingt durch Vier-Augen-Prinzip prüfen!',
-    constructionUse: 'Bauingenieure haften persönlich nach BGB/HOAI: KI-Ergebnisse dürfen niemals ungeprüft in statische Nachweise oder behördliche Einreichungen übernommen werden.',
+    oneLiner: inhalt.werte.wennEinSprachmodellFakten,
+    analogy: inhalt.werte.wieEinPraktikantDer,
+    constructionUse: inhalt.werte.bauingenieureHaftenPersönlichNach,
     deepDiveTab: 'ki_recht_ethik',
-    deepDiveLabel: 'Zu Recht, Ethik & Haftung'
+    deepDiveLabel: inhalt.werte.zuRechtEthikHaftung
   }
 ];
 
@@ -145,22 +147,16 @@ export default function KiGlossar({ initialExpanded = true }: KiGlossarProps) {
           </div>
           <div>
             <div className="flex items-center gap-2 flex-wrap">
-              <h3 className="font-bold text-sm text-slate-800">
-                Interaktives Einsteiger-Glossar: Die wichtigsten KI-Fachbegriffe
-              </h3>
-              <span className="text-xxs font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
-                Hemmschwellen senken
-              </span>
+              <h3 className="font-bold text-sm text-slate-800"><MdText text={inhalt.texte.interaktivesEinsteigerGlossarDie} /></h3>
+              <span className="text-xxs font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200"><MdText text={inhalt.texte.hemmschwellenSenken} /></span>
             </div>
-            <p className="text-xs text-slate-500 mt-0.5">
-              LLM, RAG, Prompting, Vibe Coding &amp; MCP in einfachen Analogien und konkreten Bau-Beispielen erklärt.
-            </p>
+            <p className="text-xs text-slate-500 mt-0.5"><MdText text={inhalt.texte.llmRagPromptingVibe} /></p>
           </div>
         </div>
 
         <div className="flex items-center gap-2 text-slate-400">
           <span className="text-xs font-medium hidden sm:inline text-slate-500">
-            {isExpanded ? 'Einklappen' : 'Begriffe anzeigen'}
+            {isExpanded ? 'Einklappen' : inhalt.werte.begriffeAnzeigen}
           </span>
           {isExpanded ? <ChevronDown size={18} /> : <ChevronRight size={18} />}
         </div>
@@ -198,7 +194,7 @@ export default function KiGlossar({ initialExpanded = true }: KiGlossarProps) {
               <Search size={14} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400" />
               <input
                 type="text"
-                placeholder="Begriff suchen..."
+                placeholder={inhalt.werte.begriffSuchen}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-8 pr-3 py-1 rounded-lg border border-slate-200 text-xs focus:outline-none focus:border-shiraz bg-white text-slate-700 placeholder-slate-400"
@@ -230,7 +226,7 @@ export default function KiGlossar({ initialExpanded = true }: KiGlossarProps) {
                   onClick={() => setActiveTab(selectedEntry.deepDiveTab as TabId)}
                   className="inline-flex items-center gap-1.5 text-xs font-bold text-shiraz hover:text-shiraz/80 self-start sm:self-auto bg-white px-3 py-1.5 rounded-lg border border-home-grau/30 shadow-2xs hover:shadow-xs cursor-pointer transition-all"
                 >
-                  <span>{selectedEntry.deepDiveLabel || 'Mehr erfahren'}</span>
+                  <span>{selectedEntry.deepDiveLabel || inhalt.werte.mehrErfahren}</span>
                   <ArrowRight size={13} />
                 </button>
               )}
@@ -238,9 +234,7 @@ export default function KiGlossar({ initialExpanded = true }: KiGlossarProps) {
 
             {/* 1-SATZ DEFINITION */}
             <div className="bg-white p-3.5 rounded-xl border border-slate-200/80">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
-                Kompakte Definition:
-              </span>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1"><MdText text={inhalt.texte.kompakteDefinition} /></span>
               <p className="text-xs sm:text-sm text-slate-800 leading-relaxed font-medium">
                 {selectedEntry.oneLiner}
               </p>
@@ -252,9 +246,7 @@ export default function KiGlossar({ initialExpanded = true }: KiGlossarProps) {
               <div className="bg-amber-50/60 p-3.5 rounded-xl border border-amber-200/70 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-1.5 text-xxs font-bold text-amber-900 uppercase tracking-wider mb-1.5">
-                    <Lightbulb size={13} className="text-amber-600" />
-                    Anschauliche Ingenieur-Analogie:
-                  </div>
+                    <Lightbulb size={13} className="text-amber-600" /><MdText text={inhalt.texte.anschaulicheIngenieurAnalogie} /></div>
                   <p className="text-xs text-amber-950/80 leading-relaxed">
                     {selectedEntry.analogy}
                   </p>
@@ -264,9 +256,7 @@ export default function KiGlossar({ initialExpanded = true }: KiGlossarProps) {
               <div className="bg-emerald-50/60 p-3.5 rounded-xl border border-emerald-200/70 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-1.5 text-xxs font-bold text-emerald-900 uppercase tracking-wider mb-1.5">
-                    <CheckCircle2 size={13} className="text-emerald-600" />
-                    Konkreter Praxis-Nutzen im Bauwesen:
-                  </div>
+                    <CheckCircle2 size={13} className="text-emerald-600" /><MdText text={inhalt.texte.konkreterPraxisNutzenIm} /></div>
                   <p className="text-xs text-emerald-950/80 leading-relaxed">
                     {selectedEntry.constructionUse}
                   </p>
@@ -279,9 +269,7 @@ export default function KiGlossar({ initialExpanded = true }: KiGlossarProps) {
 
           {/* SCHNELLE GRID-ÜBERSICHT ALLER 5 BEGRIFFE FÜR SCHNELL-LESER */}
           <div className="pt-2 border-t border-slate-200/60">
-            <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-2">
-              Schnell-Spickzettel (Auf einen Blick):
-            </span>
+            <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-2"><MdText text={inhalt.texte.schnellSpickzettelAufEinen} /></span>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
               {GLOSSAR_ENTRIES.map(e => (
                 <div 

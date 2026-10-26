@@ -8,6 +8,8 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { BookOpen } from 'lucide-react';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
+import inhalt from '@/content/lehm/Lehm.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 function Pie({ data }: { data: { datasets: { data: number[] }[] }; options?: unknown }) {
   return (
     <div className="text-center font-semibold text-xs text-stone-650 bg-stone-100 p-2 rounded-xl">
@@ -15,7 +17,7 @@ function Pie({ data }: { data: { datasets: { data: number[] }[] }; options?: unk
       <div className="flex gap-2 justify-center mt-2 text-[10px] font-normal">
         <span className="flex items-center gap-1">🟢 Ton: {formatDeZahl(data.datasets[0].data[0], 1)}%</span>
         <span className="flex items-center gap-1">🟡 Schluff: {formatDeZahl(data.datasets[0].data[1], 1)}%</span>
-        <span className="flex items-center gap-1">🟠 Sand/Kies: {formatDeZahl(data.datasets[0].data[2], 1)}%</span>
+        <span className="flex items-center gap-1"><MdText text={inhalt.texte.sandKies} />{formatDeZahl(data.datasets[0].data[2], 1)}%</span>
       </div>
     </div>
   );
@@ -94,12 +96,10 @@ export default function Lehm() {
   return (
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
-        <h2 className="text-xl font-bold text-text-main">Lehmbau (Stampflehm)</h2>
+        <h2 className="text-xl font-bold text-text-main"><MdText text={inhalt.texte.lehmbauStampflehm} /></h2>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Lehm ist einer der ältesten Baustoffe. Er puffert Raumfeuchte gut, hat eine hohe Wärmespeicherfähigkeit und lässt sich ungebrannt und ohne Zusätze nach Rückbau wieder aufbereiten.
-          </p>
+          <p><MdText text={inhalt.texte.lehmIstEinerDer} /></p>
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
@@ -120,9 +120,7 @@ export default function Lehm() {
                 : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
             }`}
             onClick={() => setActiveTab('grundlagen')}
-          >
-            Grundlagen &amp; Zusammensetzung
-          </button>
+          ><MdText text={inhalt.texte.grundlagenZusammensetzung} /></button>
           <button aria-pressed={activeTab === 'bemessung'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'bemessung' 
@@ -130,9 +128,7 @@ export default function Lehm() {
                 : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
             }`}
             onClick={() => setActiveTab('bemessung')}
-          >
-            Bemessung (neue Norm)
-          </button>
+          ><MdText text={inhalt.texte.bemessungNeueNorm} /></button>
           <button aria-pressed={activeTab === 'bentonit'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'bentonit' 
@@ -140,37 +136,33 @@ export default function Lehm() {
                 : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
             }`}
             onClick={() => setActiveTab('bentonit')}
-          >
-            💦 Bentonit (Tonmineral)
-          </button>
+          ><MdText text={inhalt.texte.bentonitTonmineral} /></button>
         </div>
 
         {activeTab === 'grundlagen' && (
           <div className="animate-in fade-in duration-300">
             <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 my-4">
-              <p>
-                Lehm ist ein ökologischer Baustoff, der reversibel aushärtet. Er puffert Raumfeuchte gut, ist aber wasserempfindlich und weist geringere Festigkeiten auf.
-              </p>
+              <p><MdText text={inhalt.texte.lehmIstEinÖkologischer} /></p>
             </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="flex flex-col gap-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <Slider label="Tonanteil (Bindemittel)" info="Anteil an Ton im Lehmgemisch." min={5} max={40} step={1} value={ton} unit="Teile" onChange={(e) => setTon(Number(e.target.value))} />
+              <Slider label={inhalt.werte.tonanteilBindemittel} info={inhalt.werte.anteilAnTonIm} min={5} max={40} step={1} value={ton} unit="Teile" onChange={(e) => setTon(Number(e.target.value))} />
               <div className="mt-4"><Slider label="Schluffanteil"  min={10} max={60} step={1} value={schluff} unit="Teile" onChange={(e) => setSchluff(Number(e.target.value))} /></div>
-              <div className="mt-4"><Slider label="Sand/Kies-Anteil" info="Anteil an Sand und Kies im Lehmgemisch." min={20} max={80} step={1} value={sand} unit="Teile" onChange={(e) => setSand(Number(e.target.value))} /></div>
-              <div className="mt-4"><Slider label="Herstellfeuchte (Wassergehalt)"  min={5} max={25} step={1} value={wasser} unit="%" onChange={(e) => setWasser(Number(e.target.value))} /></div>
+              <div className="mt-4"><Slider label="Sand/Kies-Anteil" info={inhalt.werte.anteilAnSandUnd} min={20} max={80} step={1} value={sand} unit="Teile" onChange={(e) => setSand(Number(e.target.value))} /></div>
+              <div className="mt-4"><Slider label={inhalt.werte.herstellfeuchteWassergehalt}  min={5} max={25} step={1} value={wasser} unit="%" onChange={(e) => setWasser(Number(e.target.value))} /></div>
             </div>
           </div>
           <div className="flex flex-col gap-6">
             <div className="bg-shiraz text-white p-6 rounded-xl shadow-md">
-              <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90">Eigenschaften (grobe Schätzung – Lehrmodell, keine Normwerte)</h3>
+              <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90"><MdText text={inhalt.texte.eigenschaftenGrobeSchätzungLehrmodell} /></h3>
               <div className="grid grid-cols-2 gap-4">
                 <div className="col-span-2 sm:col-span-1"><div className="text-white/70 text-sm">Trockenrohdichte</div><div className="text-2xl font-bold">{formatDeZahl(results.rohdichte, 0)} kg/m³</div></div>
                 <div className="col-span-2 sm:col-span-1"><div className="text-white/70 text-sm">Druckfestigkeit</div><div className="text-2xl font-bold">{formatDeZahl(results.druckfestigkeit, 1)} MPa</div></div>
-                <div className="col-span-2 sm:col-span-1"><div className="text-white/70 text-sm">Lineares Schwindmaß</div><div className="text-2xl font-bold">{formatDeZahl(results.schwinden, 1)} %</div></div>
+                <div className="col-span-2 sm:col-span-1"><div className="text-white/70 text-sm"><MdText text={inhalt.texte.linearesSchwindmaß} /></div><div className="text-2xl font-bold">{formatDeZahl(results.schwinden, 1)} %</div></div>
                 <div className="col-span-2 sm:col-span-1"><div className="text-white/70 text-sm">Wärmeleitfähigkeit <FormulaText text="\lambda" /></div><div className="text-2xl font-bold">{formatDeZahl(results.lambda, 2)} W/(mK)</div></div>
-                <div className="col-span-2"><div className="text-white/70 text-sm">Sorptionsfähigkeit (Feuchtepuffer)</div><div className="text-2xl font-bold">{formatDeZahl(results.sorption, 1)} g/m²</div></div>
+                <div className="col-span-2"><div className="text-white/70 text-sm"><MdText text={inhalt.texte.sorptionsfähigkeitFeuchtepuffer} /></div><div className="text-2xl font-bold">{formatDeZahl(results.sorption, 1)} g/m²</div></div>
               </div>
             </div>
             
@@ -185,7 +177,7 @@ export default function Lehm() {
 
             {/* Schematische Darstellung */}
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm mt-6">
-              <h3 className="font-semibold mb-4 text-text-main">Schematische Darstellung: Lehmstruktur</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungLehmstruktur} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
                 <svg width="100%" height="160" viewBox="0 0 450 160">
                   {/* Sand/Kies (Gerüst) */}
@@ -219,9 +211,7 @@ export default function Lehm() {
                     <text x="15" y="44" fontSize="10" fill="#1e293b">Ton (Binder)</text>
                   </g>
                 </svg>
-                <div className="text-xs text-text-main/70 text-center mt-2">
-                  Sand und Kies bilden das tragende Gerüst. Schluff füllt die Hohlräume. Tonplättchen wirken als reversibles Bindemittel, das die Körner durch Kohäsionskräfte (bei Trocknung) zusammenhält.
-                </div>
+                <div className="text-xs text-text-main/70 text-center mt-2"><MdText text={inhalt.texte.sandUndKiesBilden} /></div>
               </div>
             </div>
           </div>
@@ -232,29 +222,27 @@ export default function Lehm() {
         {activeTab === 'bemessung' && (
           <div className="flex flex-col gap-6 animate-in fade-in duration-300">
             <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-              <p>
-                <strong>Bemessung nach neuer Norm (DIN 18940):</strong> Seit Erscheinen der DIN 18940 (2023-06) ist die lastabtragende Bemessung von Lehmsteinmauerwerk normiert (Anwendungsgrenzen: Gebäude bis 13,0 m Höhe, d. h. Gebäudeklasse 1 bis 4; nicht für Keller- und Brandwände). Sie orientiert sich stark an den Konzepten des klassischen Mauerwerksbaus (DIN EN 1996), berücksichtigt jedoch das spezifische feuchteabhängige Verhalten (Kriechen & Schwinden) sowie die geringeren Festigkeiten von Lehmbaustoffen.
-              </p>
+              <p><MdText text={inhalt.texte.bemessungNachNeuerNorm} /></p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm flex flex-col gap-4">
-                <h3 className="font-bold text-shiraz">Wesentliche Konzepte der DIN 18940</h3>
+                <h3 className="font-bold text-shiraz"><MdText text={inhalt.texte.wesentlicheKonzepteDerDin} /></h3>
                 <ul className="list-disc pl-5 space-y-2 text-sm text-text-main/80">
-                  <li><strong>Anwendungs- & Druckfestigkeitsklassen:</strong> Lehmsteine werden nach DIN 18945 in Anwendungsklassen nach Feuchtebeanspruchung (AK Ia, Ib, II, III) und Druckfestigkeitsklassen (2 – 2,5 – 3 – 4 – 5 – 6 N/mm² mittlerer Steindruckfestigkeit) eingeteilt. Die charakteristische Mauerwerksdruckfestigkeit fk ergibt sich nach DIN 18940 aus Steinklasse und Mörtel.</li>
-                  <li><strong>Format & Mörtel:</strong> Die Tragfähigkeit hängt stark vom verwendeten Lehmmauermörtel und dem Überbindemaß ab.</li>
-                  <li><strong>Schwinden & Setzung:</strong> Da Lehm bei Feuchteaufnahme quillt und beim Trocknen wieder schwindet, müssen Setzungsmaße für den Bauablauf rechnerisch berücksichtigt werden.</li>
-                  <li><strong>Feuchteschutz:</strong> Konstruktiver Witterungsschutz (Dachüberstände, wasserresistente Sockelzonen z.B. aus Naturstein oder Beton) ist Voraussetzung (Dachüberstand, Sockel, Spritzwasserschutz).</li>
+                  <li><MdText text={inhalt.texte.anwendungsDruckfestigkeitsklassenLehmste} /></li>
+                  <li><MdText text={inhalt.texte.formatMörtelDieTragfähigkeit} /></li>
+                  <li><MdText text={inhalt.texte.schwindenSetzungDaLehm} /></li>
+                  <li><MdText text={inhalt.texte.feuchteschutzKonstruktiverWitterungsschu} /></li>
                 </ul>
               </div>
 
                <div className="bg-stone-50 p-5 rounded-xl border border-home-grau/30 shadow-sm flex flex-col gap-4">
                 <h3 className="font-bold text-home-prim">Anwendungsbereiche</h3>
                 <ul className="list-disc pl-5 space-y-2 text-sm text-gray-700">
-                  <li>Tragendes Mauerwerk in Gebäuden bis 13,0 m Höhe, d. h. Gebäudeklassen 1–4 (DIN 18940:2023-06; nicht für Keller-, Brand- und freistehende Wände).</li>
-                  <li>Innentrennwände und Ausfachungen (z.B. bei Holzfachwerk).</li>
-                  <li>Ausführung als Einsteinmauerwerk oder Verbandsmauerwerk.</li>
-                  <li>Durch die Produktnormen DIN 18945–18948 und die Bemessungsnorm DIN 18940 (2023) ist tragendes Lehmsteinmauerwerk im Anwendungsbereich der Norm ohne Einzelfallgenehmigung möglich; andere Bauweisen (z. B. tragender Stampflehm) benötigen weiterhin vBG bzw. ZiE.</li>
+                  <li><MdText text={inhalt.texte.tragendesMauerwerkInGebäuden} /></li>
+                  <li><MdText text={inhalt.texte.innentrennwändeUndAusfachungenZ} /></li>
+                  <li><MdText text={inhalt.texte.ausführungAlsEinsteinmauerwerkOder} /></li>
+                  <li><MdText text={inhalt.texte.durchDieProduktnormenDin} /></li>
                 </ul>
               </div>
             </div>
@@ -270,29 +258,27 @@ export default function Lehm() {
         {activeTab === 'bentonit' && (
           <div className="flex flex-col gap-6 animate-in fade-in duration-300">
             <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-              <p>
-                <strong>Bentonit</strong> ist ein Tonmineralgemisch (hauptsächlich Montmorillonit), das durch die Verwitterung von vulkanischer Asche entstanden ist. Es gehört zu den mineralischen Baustoffen und zeichnet sich durch seine enorme Quellfähigkeit bei Wasserzugabe aus.
-              </p>
+              <p><MdText text={inhalt.texte.bentonitIstEinTonmineralgemisch} /></p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
                 <h3 className="font-bold text-shiraz text-lg mb-2">Eigenschaften</h3>
                 <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2">
-                  <li><strong>Quellvermögen:</strong> Kann ein Vielfaches seines Eigengewichts an Wasser aufnehmen und sein Volumen stark vergrößern (durch Schichteinlagerung von Wasser).</li>
-                  <li><strong>Thixotropie:</strong> Bentonitsuspensionen verhalten sich in Ruhe wie ein Gel (fest) und unter mechanischer Beanspruchung (Rühren, Pumpen) wie eine Flüssigkeit.</li>
-                  <li><strong>Dichtwirkung:</strong> Im gequollenen Zustand nahezu wasserundurchlässig.</li>
-                  <li><strong>Kationenaustauschkapazität:</strong> Kann Schadstoffe binden.</li>
+                  <li><MdText text={inhalt.texte.quellvermögenKannEinVielfaches} /></li>
+                  <li><MdText text={inhalt.texte.thixotropieBentonitsuspensionenVerhalten} /></li>
+                  <li><MdText text={inhalt.texte.dichtwirkungImGequollenenZustand} /></li>
+                  <li><MdText text={inhalt.texte.kationenaustauschkapazitätKannSchadstoff} /></li>
                 </ul>
               </div>
 
               <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-                <h3 className="font-bold text-shiraz text-lg mb-2">Anwendungen im Bauwesen</h3>
+                <h3 className="font-bold text-shiraz text-lg mb-2"><MdText text={inhalt.texte.anwendungenImBauwesen} /></h3>
                 <ul className="list-disc list-inside text-sm text-text-main/70 space-y-2">
-                  <li><strong>Spezialtiefbau (Stützflüssigkeit):</strong> Stabilisierung von Bohr- und Schlitzwänden. Die thixotrope Flüssigkeit stützt die Erdwand und verhindert das Einstürzen, bevor Beton eingefüllt wird.</li>
-                  <li><strong>Abdichtung (Weiße Wanne / Braune Wanne):</strong> Bentonitquellbänder zur Fugenabdichtung in Betonbauwerken. Bentonitmatten (Geosynthetische Tondichtungsbahnen - GTD) zur Flächenabdichtung.</li>
-                  <li><strong>Deponiebau:</strong> Als mineralische Basisabdichtung zum Schutz des Grundwassers.</li>
-                  <li><strong>Tunnelbau:</strong> Als Schmiermittel beim Rohrvortrieb oder als Stützmedium bei Schildvortriebsmaschinen (EPB/Slurry).</li>
+                  <li><MdText text={inhalt.texte.spezialtiefbauStützflüssigkeitStabilisie} /></li>
+                  <li><MdText text={inhalt.texte.abdichtungWeißeWanneBraune} /></li>
+                  <li><MdText text={inhalt.texte.deponiebauAlsMineralischeBasisabdichtung} /></li>
+                  <li><MdText text={inhalt.texte.tunnelbauAlsSchmiermittelBeim} /></li>
                 </ul>
               </div>
             </div>
@@ -303,16 +289,11 @@ export default function Lehm() {
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <FormulaDerivationBox
-          title="Anwendungsbeispiel: Trocknungswasser eines Lehmputzes"
+          title={inhalt.werte.anwendungsbeispielTrocknungswasserEinesL}
           zielGleichung="m_W = A \cdot d \cdot \rho_d \cdot (u_0 - u_{eq})"
-          normQuelle="Massenbilanz; Feuchtegehalte als Lehrannahmen (Herstellerangaben maßgebend)"
-          schritte={[
-            { titel: '1. Gegeben', formel: 'A = 100\\,\\text{m}^2,\\; d = 20\\,\\text{mm},\\; \\rho_d = 1700\\,\\text{kg/m}^3', erklaerung: 'Zweilagiger Lehmputz auf Innenwänden.' },
-            { titel: '2. Feuchtegehalte', formel: 'u_0 = 18\\,\\text{M.-\\%}\\;(\\text{frisch}),\\; u_{eq} = 1{,}5\\,\\text{M.-\\%}\\;(\\text{lufttrocken})', erklaerung: 'Bezogen auf die Trockenmasse; Lehrannahmen.' },
-            { titel: '3. Trockenmasse', formel: 'm_d = 100 \\cdot 0{,}020 \\cdot 1700 = 3400\\,\\text{kg}', erklaerung: 'Masse der trockenen Putzschicht.' },
-            { titel: '4. Abzuführendes Wasser', formel: 'm_W = 3400 \\cdot (0{,}18 - 0{,}015) \\approx 560\\,\\text{kg}', erklaerung: 'Rund 0,56 m³ Wasser müssen über Lüftung abgeführt werden.' },
-          ]}
-          ergebnisHinweis="Lehmputze trocknen nur physikalisch: Ohne ausreichende Lüftung verzögert sich die Trocknung, und es droht Schimmelbildung auf der feuchten Oberfläche."
+          normQuelle={inhalt.werte.massenbilanzFeuchtegehalteAlsLehrannahme}
+          schritte={inhalt.daten["Lehm.schritte"]}
+          ergebnisHinweis={inhalt.werte.lehmputzeTrocknenNurPhysikalisch}
         />
       </div>
 
@@ -323,30 +304,9 @@ export default function Lehm() {
           { title: 'Lehmbau', url: 'https://de.wikipedia.org/wiki/Lehmbau' },
           { title: 'Stampflehm', url: 'https://de.wikipedia.org/wiki/Stampflehm' }
         ]}
-        literatur={[
-          'Minke, G.: Handbuch Lehmbau – Baustoffkunde, Techniken, Lehmarchitektur. 10., überarb. u. erw. Aufl., Rastede: ökobuch 2022',
-          'Dachverband Lehm e. V. (Hrsg.): Lehmbau Regeln (3. Aufl., Vieweg+Teubner 2009)',
-          'Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011'
-        ]}
-        regelwerke={[
-          { title: 'DIN 18940:2023-06 (Tragendes Lehmsteinmauerwerk - Bemessung und Konstruktion)' },
-          { title: 'DIN 18945:2024-03 (Lehmsteine - Anforderungen, Prüfung und Kennzeichnung)' },
-          { title: 'DIN 18946:2024-03 (Lehmmauermörtel - Anforderungen, Prüfung und Kennzeichnung)' },
-          { title: 'DIN 18947:2024-03 (Lehmputzmörtel - Anforderungen, Prüfung und Kennzeichnung)' },
-          { title: 'DIN 18948:2024-03 (Lehmplatten - Anforderungen, Prüfung und Kennzeichnung)' }
-        ]}
-        formeln={[
-          {
-            formel: '\\epsilon_s = \\frac{L_{\\text{feucht}} - L_{\\text{trocken}}}{L_{\\text{feucht}}} \\cdot 100\\%',
-            erklaerung: 'Lineares Schwindmaß beim physikalischen Trocknen des Lehms. Entsteht durch die Verringerung der Wasserfilme zwischen den feinsten Tonplättchen.',
-            quelle: 'DIN 18945:2024-03'
-          },
-          {
-            formel: '\\rho_d = \\frac{m_{\\text{trocken}}}{V_d}',
-            erklaerung: 'Trockenrohdichte von Lehmbaustoffen. Ein Hauptindikator für Wärmeleitfähigkeit und Schallleitung.',
-            quelle: 'DIN 18940:2023-06'
-          }
-        ]}
+        literatur={inhalt.daten["Lehm.literatur"]}
+        regelwerke={inhalt.daten["Lehm.regelwerke"]}
+        formeln={inhalt.daten["Lehm.formeln"]}
       />
     </div>
   );

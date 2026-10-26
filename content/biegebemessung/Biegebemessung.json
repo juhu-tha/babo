@@ -1,0 +1,94 @@
+{
+  "texte": {
+    "biegebemessungMassivbau": "Biegebemessung (Massivbau)",
+    "berechnetNachDinEn": "Berechnet nach DIN EN 1992-1-1 + NA (DE)",
+    "dieBiegebemessungErmitteltDie": "Die Biegebemessung ermittelt die erforderliche Längsbewehrung (",
+    "fürEinGegebenesBiegemoment": ") für ein gegebenes Biegemoment (",
+    "dieMindestbewehrungWirdIn": "). Die Mindestbewehrung wird in Deutschland (NA DE) als Robustheitsbewehrung zur Aufnahme des Rissmoments berechnet.",
+    "querschnittEinwirkung": "Querschnitt & Einwirkung",
+    "lehrannahmeNichtmetallischeBewehrungIst": "Lehrannahme: Nichtmetallische Bewehrung ist nicht in EC2 geregelt. Maßgebend sind die DAfStb-Richtlinie „Betonbauteile mit nichtmetallischer Bewehrung“ (2024-01) bzw. die jeweilige Zulassung; γ und μ_lim = 0,25 sind hier vereinfacht.",
+    "erfAsÜberBiegemoment": "Erf. As über Biegemoment",
+    "bemessungsergebnisNaDe": "Bemessungsergebnis (NA DE)",
+    "bezogenesMoment": "Bezogenes Moment (",
+    "subLimSub0": " (ξ<sub>lim</sub> = 0,45)",
+    "mechBewehrungsgrad": "Mech. Bewehrungsgrad (",
+    "maßgebendeZugbewehrung": "Maßgebende Zugbewehrung (",
+    "erforderlicheDruckbewehrung": "Erforderliche Druckbewehrung (",
+    "statischeNutzhöhe": "Statische Nutzhöhe ",
+    "bemessungswertBeton": "Bemessungswert Beton ",
+    "bemessungswertStahl": "Bemessungswert Stahl ",
+    "interaktivesSchnittgrößenmodellUls": "Interaktives Schnittgrößenmodell (ULS)",
+    "dieseDarstellungIstMaßstäblich": "Diese Darstellung ist **maßstäblich in Bezug auf die Profilhöhe h**. Der Betondruckblock wird vereinfacht als Rechteck (",
+    "mitDerBemessungsspannung": ") mit der Bemessungsspannung "
+  },
+  "werte": {
+    "erforderlichesAs1Cm": "Erforderliches As1 (cm²)",
+    "mindestbewehrungAsMinNa": "Mindestbewehrung As,min (NA DE)",
+    "erfAsCm": "Erf. As (cm²)",
+    "biegemomentMEdKnm": "Biegemoment M_Ed (kNm)",
+    "biegebemessungFürRechteckquerschnitteNac": "Biegebemessung für Rechteckquerschnitte nach DIN EN 1992-1-1 mit NA DE.",
+    "breiteDesBauteils": "Breite des Bauteils.",
+    "abstandVomRandZur": "Abstand vom Rand zur Zugbewehrung.",
+    "randabstandD1Zug": "Randabstand d_1 (Zug)",
+    "abstandVomRandZur2": "Abstand vom Rand zur Druckbewehrung.",
+    "randabstandD2Druck": "Randabstand d_2 (Druck)",
+    "biegemomentMEd": "Biegemoment M_{Ed}",
+    "betonfestigkeitFCk": "Betonfestigkeit f_{ck}",
+    "charakteristischeDruckfestigkeitDesBeton": "Charakteristische Druckfestigkeit des Betons.",
+    "artDerVerwendetenBewehrung": "Art der verwendeten Bewehrung (z.B. Betonstahl, Carbon).",
+    "stahlfestigkeitFYk": "Stahlfestigkeit f_{yk}",
+    "zugfestigkeitFtk": "Zugfestigkeit ftk",
+    "charakteristischeZugfestigkeitDesMateria": "Charakteristische Zugfestigkeit des Materials.",
+    "teilsicherheitsbeiwertFrp": "Teilsicherheitsbeiwert γFRP",
+    "ihrRechenwegBiegebemessungMit": "Ihr Rechenweg: Biegebemessung mit den aktuellen Eingaben",
+    "dinEn19921": "DIN EN 1992-1-1 mit NA (DE), 3.1.7 und 6.1",
+    "bemessungswerteDerBaustoffe": "Bemessungswerte der Baustoffe",
+    "betonMitCc0": "Beton mit α_cc = 0,85 und γ_c = 1,5, Betonstahl mit γ_s = 1,15.",
+    "betonMitCc02": "Beton mit α_cc = 0,85 und γ_c = 1,5; nichtmetallische Bewehrung mit dem gewählten Teilsicherheitsbeiwert γ_FRP.",
+    "statischeNutzhöhe": "Statische Nutzhöhe",
+    "abstandVomGedrücktenRand": "Abstand vom gedrückten Rand bis zur Achse der Zugbewehrung.",
+    "bezogenesMoment": "Bezogenes Moment",
+    "derGrenzwertIstÜberschritten": "Der Grenzwert ist überschritten: Der Querschnitt wird mit μ_lim bemessen, das Restmoment übernimmt eine Druckbewehrung A_s2.",
+    "derGrenzwertIstÜberschritten2": "Der Grenzwert ist überschritten: Die Druckzone versagt, der Querschnitt muss vergrößert werden.",
+    "derGrenzwertIstEingehalten": "Der Grenzwert ist eingehalten, eine Druckbewehrung ist nicht erforderlich.",
+    "mechanischerBewehrungsgradUndDruckzone": "Mechanischer Bewehrungsgrad und Druckzone",
+    "rechteckigerSpannungsblockMit0": "Rechteckiger Spannungsblock mit λ = 0,8; die Druckzonenhöhe folgt aus x = ω · d / λ.",
+    "erforderlicheZugbewehrung": "Erforderliche Zugbewehrung",
+    "dieBewehrungFließtBemessung": "Die Bewehrung fließt; Bemessung mit f_yd.",
+    "nichtmetallischeBewehrungBemessungMit": "Nichtmetallische Bewehrung: Bemessung mit der Spannung σ_f aus dem ebenen Dehnungszustand (höchstens f_fd).",
+    "mindestbewehrungUndMaßgebenderWert": "Mindestbewehrung und maßgebender Wert",
+    "robustheitsbewehrungNachNaDe": "Robustheitsbewehrung nach NA (DE): A_s,min = M_cr / (f_yk · z) mit z = 0,9 d; maßgebend ist der größere Wert.",
+    "anwendungsbeispielBiegebemessungRechteck": "Anwendungsbeispiel: Biegebemessung Rechteckquerschnitt (Standardwerte)",
+    "dinEn199212": "DIN EN 1992-1-1 mit NA, 3.1.7 (Spannungsblock) und 6.1",
+    "aS1115": "A_s1 ≈ 11,5 cm², z. B. 6 Ø 16 (12,1 cm²)."
+  },
+  "daten": {
+    "Biegebemessung.schritte": [
+      {
+        "titel": "1. Gegeben",
+        "formel": "b/h = 30/50\\,\\text{cm},\\; d = 45\\,\\text{cm},\\; M_{Ed} = 200\\,\\text{kNm},\\; \\text{C30/37, B500}",
+        "erklaerung": "Rechteckquerschnitt ohne Normalkraft."
+      },
+      {
+        "titel": "2. Bemessungswerte",
+        "formel": "f_{cd} = 0{,}85 \\cdot 30/1{,}5 = 17{,}0\\,\\text{N/mm}^2;\\; f_{yd} = 500/1{,}15 = 435\\,\\text{N/mm}^2",
+        "erklaerung": "α_cc = 0,85 nach NA."
+      },
+      {
+        "titel": "3. Bezogenes Moment",
+        "formel": "\\mu_{Eds} = \\frac{0{,}200}{0{,}30 \\cdot 0{,}45^2 \\cdot 17{,}0} = 0{,}194 < 0{,}296",
+        "erklaerung": "Keine Druckbewehrung erforderlich."
+      },
+      {
+        "titel": "4. Mechanischer Bewehrungsgrad",
+        "formel": "\\omega = 1 - \\sqrt{1 - 2 \\cdot 0{,}194} = 0{,}217;\\; \\zeta = 1 - \\omega/2 = 0{,}891",
+        "erklaerung": "Rechteckiger Spannungsblock (λ = 0,8)."
+      },
+      {
+        "titel": "5. Bewehrung",
+        "formel": "A_{s1} = 0{,}217 \\cdot 30 \\cdot 45 \\cdot \\frac{17{,}0}{435} = 11{,}5\\,\\text{cm}^2 \\;>\\; A_{s,min} = 1{,}8\\,\\text{cm}^2",
+        "erklaerung": "A_s,min aus dem Rissmoment (f_ctm = 2,9 N/mm², z = 0,9d)."
+      }
+    ]
+  }
+}

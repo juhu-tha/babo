@@ -1,0 +1,250 @@
+{
+  "texte": {
+    "materialLehrpfadMetalleIm": "Material-Lehrpfad: Metalle im Bauwesen",
+    "wechselnSieNahtlosZwischen": "Wechseln Sie nahtlos zwischen den drei Säulen der Baustofflehre (Basis, Anwendung und Alterung):",
+    "t1BaustoffKennwerte": "1. Baustoff-Kennwerte",
+    "physikalischeEigenschaftenSchmelzpunktLe": "Physikalische Eigenschaften, Schmelzpunkt & Legierungen der Metalle.",
+    "t2MechanikPraxis": "2. Mechanik & Praxis",
+    "plattenrechnerKontaktkorrosionsPrüfungLi": "Plattenrechner, Kontaktkorrosions-Prüfung & Lieferantenlisten der BauPVO.",
+    "t3Dauerhaftigkeit": "3. Dauerhaftigkeit",
+    "galvanischeZellenKorrosionsartenSchutz": "Galvanische Zellen, Korrosionsarten & Schutz nach DIN EN ISO 12944.",
+    "grundlagenSimulation": "Grundlagen & Simulation",
+    "deckschichtenPassivierung": "Deckschichten & Passivierung",
+    "korrosionsschutzDinEnIso": "Korrosionsschutz (DIN EN ISO 12944)",
+    "korrosionUndSchutzVon": " Korrosion und Schutz von Metallen",
+    "normativeDefinitionNachDin": "Normative Definition nach DIN EN ISO 8044",
+    "unterMetallischerKorrosionVersteht": "Unter metallischer Korrosion versteht man die **physikochemische Wechselwirkung** zwischen einem Metall und seiner Umgebung. Diese führt zu einer Veränderung der Eigenschaften des Metalls und kann gravierende Funktionsbeeinträchtigungen des metallischen Bauteils, der Systemumgebung oder des gesamten Tragwerks verursachen.",
+    "elektrochemischeKorrosionErfordertEinen": "Elektrochemische Korrosion erfordert einen geschlossenen ionenleitenden (Elektrolyt) und elektronenleitenden (metallischer Kontakt) Stromkreis zwischen Anode und Kathode.",
+    "derSystemcharakter": "Der Systemcharakter",
+    "alsKernprinzipNachBgrci": "Als Kernprinzip nach BGRCI gilt: Korrosion ist **keine Werkstoffeigenschaft allein**. Sie entsteht erst im Zusammenwirken eines komplexen Dreiecks:",
+    "werkstoffOberflächenzustand": "Werkstoff & Oberflächenzustand",
+    "elektrolytUmgebungsmedium": "Elektrolyt & Umgebungsmedium",
+    "baulicheKonstruktionZugspannung": "Bauliche Konstruktion / Zugspannung",
+    "grundlagenDerElektrochemischenKorrosion": " Grundlagen der elektrochemischen Korrosion",
+    "damitEinElektrochemischerKorrosionsproze": "Damit ein elektrochemischer Korrosionsprozess (Rosten) angetrieben wird, müssen drei physikalische Hauptvoraussetzungen gleichzeitig vorliegen:",
+    "t1PotenzialdifferenzAnodeKathode": "1. Potenzialdifferenz (Anode / Kathode)",
+    "zweiLeitendVerbundeneBereiche": "Zwei leitend verbundene Bereiche unterschiedlichen Standardpotenzials ($E^0$). Dies entsteht durch Kontakt unedler/edler Metalle, Gefügegrenzen, Korngrenzen, Eigenspannungen oder ungleiche Belüftung (Konzentrationszellen).",
+    "t2ElektrolytIonenleiter": "2. Elektrolyt (Ionenleiter)",
+    "einFlüssigerFeuchtigkeitsfilmWasser": "Ein flüssiger Feuchtigkeitsfilm (Wasser, Regen, Schwitzwasser). Salze wie Chloride ($\\text{Cl}^-$) oder saure Ablagerungen steigern die Ionenleitfähigkeit dramatisch und reduzieren den Ohmschen Widerstand des Systems.",
+    "t3KathodischerElektronenakzeptor": "3. Kathodischer Elektronenakzeptor",
+    "einReaktionspartnerAnDer": "Ein Reaktionspartner an der Kathode, der e⁻ aufnimmt: Gelöster ",
+    "sauerstofftypInNeutralenAlkalischen": " (Sauerstofftyp, in neutralen/alkalischen Medien) oder ",
+    "textHWasserstofftypSäuretyp": " ($\\text{H}^+$, Wasserstofftyp/Säuretyp in saurem Milieu).",
+    "dasKorrosionselementGalvanischeZelle": "Das Korrosionselement (Galvanische Zelle) - Live-Simulation",
+    "anodeEisen": "Anode (Eisen)",
+    "leiterFlussE": "Leiter (Fluss e⁻)",
+    "kathodeStahl": "Kathode (Stahl)",
+    "umgebungsklimaWählen": "Umgebungsklima wählen:",
+    "rostReinigenEntfernen": "⚡ Rost reinigen (entfernen)",
+    "chemischeReaktionsketteDerRostbildung": "Chemische Reaktionskette der Rostbildung (nach BGRCI 2025)",
+    "diePrimäreMetallauflösungMathrm": "Die primäre Metallauflösung ($\\mathrm{Fe} \\rightarrow \\mathrm{Fe}^{2+}$) und der kathodische Elektroneneinfang sind nur der chemische Auslöser. Erst durch sekundäre Folgereaktionen im Elektrolytwasser schlägt sich das typische braune Oxidhydrat (Rost) nieder. Die Kette verläuft in drei thermodynamischen Teilschritten:",
+    "schritt1AusfällungVon": "Schritt 1: Ausfällung von Eisen(II)-hydroxid",
+    "dieAnodischEmittierten": "Die anodisch emittierten ",
+    "ionenVerbindenSichIm": "-Ionen verbinden sich im wässrigen Elektrolyt mit den kathodischen Hydroxid-Ionen (",
+    "zuUnlöslichemEisenIi": ") zu unlöslichem Eisen(II)-hydroxid (weiß-grüner Primärniederschlag):",
+    "schritt2OxidationZu": "Schritt 2: Oxidation zu Eisen(III)-hydroxid",
+    "inGegenwartVonIm": "In Gegenwart von im Elektrolytwasser gelöstem Luft-Sauerstoff (",
+    "wirdDasInstabileEisen": ") wird das instabile Eisen(II)-hydroxid rasch zu dunkelbraunem Eisen(III)-hydroxid oxidiert:",
+    "schritt3DehydratisierungZum": "Schritt 3: Dehydratisierung zum Endprodukt (Rost)",
+    "dasInstabileEisenIii": "Das instabile Eisen(III)-hydroxid spaltet unter Wasserverlust molekulare Anteile ab und geht in stabiles Goethit (FeO(OH)) bzw. wasserhaltige Eisen(III)-oxide über (Endstufe \"Rost\"):",
+    "goethitEisenIiiHydroxidoxid": "Goethit (Eisen(III)-hydroxidoxid)",
+    "volumendehnungseffektBauteilsprengungRos": "**Volumendehnungseffekt & Bauteilsprengung:** Rost beansprucht je nach Hydratationsgrad das **4- bis 6-fache Volumen** des ursprünglichen Eisengitters. Im Stahlbetonbau führt dieser expansive Kristallisationsdruck (oft weit über 100 MPa) zu einer gewaltigen Radialspannung um die Bewehrung. Sobald dieser Druck die Betonzugfestigkeit (ca. 2–4 MPa) überschreitet, reißt die Betondeckung auf und platzt flächig ab (Sprengeffekt).",
+    "einflussfaktorenAufDieKorrosionsgeschwin": "Einflussfaktoren auf die Korrosionsgeschwindigkeit",
+    "dieKinetikDerKorrosion": "Die Kinetik der Korrosion wird nach den BGRCI-Richtlinien maßgeblich durch vier thermodynamische und chemische Leitgrößen gesteuert:",
+    "phWertSäuregrad": "pH-Wert (Säuregrad)",
+    "unterhalbVonPh5": "Unterhalb von **pH 5** (Säuren) wird jede schützende Metall-Passivschicht zersetzt. Es tritt die extrem schnelle **Wasserstoffkorrosion** ein. Über **pH 12** (z. B. in unkarbonatisiertem Normalbeton durch Calciumhydroxid) passiviert Stahl spontan, wodurch der Abtrag nahezu erlischt (pH-Passivierung).",
+    "chemischeReaktionenVerdoppelnSich": "Chemische Reaktionen verdoppeln sich pro **10 K Erwärmung** (Arrhenius). Aber: In *offenen Systemen* sinkt ab ca. **80 °C** die Sauerstofflöslichkeit im Wasser drastisch, wodurch die Sauerstoffkorrosion abnimmt. In \\*geschlossenen, unter Druck stehenden Systemen\\* (Rohrleitungen) steigt sie hingegen ungebremst weiter!",
+    "salzgehaltChloride": "Salzgehalt (Chloride)",
+    "ionenWieChloridCl": "Ionen wie Chlorid (Cl⁻) erhöhen nicht nur die elektrische Leitfähigkeit des Wassers (verringerter Ohmscher Bahnwiderstand), sondern durchbrechen gezielt die Oxidhaut von Edelstahl und rufen aggressive Lochfraßkeime hervor.",
+    "beiDerSauerstoffkorrosionIst": "Bei der Sauerstoffkorrosion ist die Zufuhr von gelöstem Sauerstoff (O₂) an der Kathodenoberfläche der geschwindigkeitsbestimmende Schritt (Diffusionskontrolle). Hohe Strömungsgeschwindigkeiten spülen frischen Sauerstoff heran und beschleunigen die kathodische Reduktion.",
+    "korrosionsmechanismenImDetailNach": " Korrosionsmechanismen im Detail (nach DIN-Klassifikation)",
+    "metallischeKorrosionBrichtSich": "Metallische Korrosion bricht sich in unterschiedlichen geometrischen und thermodynamischen Mustern Bahn. Die Abgrenzung ist für Werkstoffprüfer essenziell:",
+    "t1GleichmäßigeFlächenkorrosion": "1. Gleichmäßige Flächenkorrosion",
+    "derMetallischeAbtragSchreitet": "Der metallische Abtrag schreitet gleichmäßig über die Gesamtoberfläche fort. Diese Form ist rechnerisch hervorragend prognostizierbar (v_corr = konstant). Korrosionszuschläge (Opferblechdicken) in der Tragwerksbemessung fangen diesen berechenbaren Verlust sicher auf.",
+    "t2KontaktkorrosionBimetallkorrosion": "2. Kontaktkorrosion (Bimetallkorrosion)",
+    "zweiMetalleMitSignifikant": "Zwei Metalle mit signifikant unterschiedlichen Standardpotenzialen sind im Elektrolyten direkt verbunden. Das **unedlere** Metall oxidiert als Opferanode, während das **edlere** kathodisch geschützt wird.",
+    "katastrophalerFlächeneffektIstDie": "**Katastrophaler Flächeneffekt:** Ist die Anodenfläche (z. B. unedle Stahlschraube) sehr klein im Verhältnis zur Kathodenfläche (z. B. große Edelstahlplatte), konzentriert sich der Elektronenabfluss extrem lokal, was zu raschem mechanischen Versagen der Schraube führt!",
+    "t3LochfraßkorrosionPitting": "3. Lochfraßkorrosion (Pitting)",
+    "extremHeimtückischeKorrosionsformDie": "Extrem heimtückische Korrosionsform, die tiefen Lochfraß im Material erzeugt, während die Oberfläche unversehrt scheint. Sie Sie betrifft vor allem passive Metalle (nichtrostender Stahl, Aluminium) in Gegenwart von Chlorid-Ionen. Die Ionen durchbrechen die Passivschicht (bei Edelstahl Chromoxid, bei Aluminium Aluminiumoxid) an mikroskopischen Schwachstellen. in Gegenwart von Chlorid-Ionen. Die Ionen infiltrieren an mikroskopischen Schwachstellen die Chromoxidschicht.",
+    "pittingResistanceEquivalentNumber": "Pitting Resistance Equivalent Number (PREN-Index)",
+    "bestimmtDieWiderstandskraftHochlegierter": "Bestimmt die Widerstandskraft hochlegierter Edelstähle gegen Lochfraß:",
+    "alsFaustregelGeltenPren": "Als Faustregel gelten PREN-Werte ab etwa 40 als meerwasserbeständig (z. B. Superduplex 1.4410); 1.4404 erreicht nur etwa 24.",
+    "t4SpaltkorrosionBelüftungselement": "4. Spaltkorrosion (Belüftungselement)",
+    "trittInEngenSpalten": "Tritt in engen Spalten (Spaltbreite < 0,1 mm, z. B. Schraubenauflagen, Flansche) auf, in denen Wasser steht. Da der Spaltgrund kaum Sauerstoff erhält (Belüftungselement nach Evans), verarmt diese Zone an Sauerstoff und wird zur Anode. Die gut belüftete äußere Metallfläche fungiert als Kathode.",
+    "t5InterkristallineKorrosionIk": "5. Interkristalline Korrosion (IK)",
+    "trittBeiNichtrostendemChrom": "Tritt bei nichtrostendem Chrom-Nickel-Stahl auf, wenn dieser thermisch beansprucht wird (z. B. im Bereich von **450 °C bis 850 °C** durch unkontrolliertes Schweißen). Kohlenstoff diffundiert an die Korngrenzen und verbindet sich dort mit Chrom zu unlöslichen **Chromcarbiden** ($\\mathrm{Cr}_{23}\\mathrm{C}_6$).",
+    "dieFolgeDirektNeben": "**Die Folge:** Direkt neben den Korngrenzen fällt der freie Chromgehalt unter die kritische Passivierungsschwelle von **12 %**. Hier wird der Werkstoff ungeschützt und löst sich entlang der Kornpfade pulverförmig auf.",
+    "gegenmaßnahmenVerwendungVonLc": "**Gegenmaßnahmen:** Verwendung von LC-Stählen (Low Carbon, C < 0,03 %, z. B. Werkstoff 1.4404) oder stabilisierten Qualitäten mit Niob (Nb) oder Titan (Ti, z. B. 1.4571), da Ti/Nb den Kohlenstoff effektiver binden als Chrom.",
+    "t6SpannungsrisskorrosionSprkScc": "6. Spannungsrisskorrosion (SpRK / SCC)",
+    "kombinationAusZugspannungIntern": "Kombination aus **Zugspannung** (intern durch Eigenspannung beim Abkühlen/Biegen oder extern durch Nutzlasten) und einem **spezifischen Korrosionsmedium**. Sie führt zu einem extrem plötzlichen, spröden Phänomen (transkristalline oder interkristalline Risse) **ohne plastische Verformung oder Flugrost-Vorankündigung**.",
+    "austenitischeEdelstähle": "Austenitische Edelstähle:",
+    "sensibilisiertDurchChloridhaltigeMedien": " Sensibilisiert durch chloridhaltige Medien (klassischer Einsturz von Schwimmbaddächern).",
+    "kupferZinkLegierungenMessing": "Kupfer-Zink-Legierungen (Messing):",
+    "reagiertEmpfindlichAufAmmoniak": " Reagiert empfindlich auf Ammoniak oder Ammonium-Ionen.",
+    "t7CorrosionUnderInsulation": "7. Corrosion Under Insulation (CUI / Korrosion unter Isolierungen)",
+    "einEnormesVerdecktesSchadensbild": "Ein enormes, verdecktes Schadensbild in Chemie- und Heizungsanlagen. Unter Dämmstoffen (z. B. Mineralwolle), die unbemerkt Feuchtigkeit aufsaugen (Leckage, Regen, Kondensat), bilden sich dauerhafte Feuchtigkeitsnester. Salze (Chloride, Sulfate) reichern sich zyklisch an und konzentrieren sich im Temperaturbereich von **50 °C bis 150 °C**, was die lokale Korrosionsgeschwindigkeit exponentiell eskaliert. Da die Rohre optisch verdeckt sind, wird CUI meist erst bei Leckagen entdeckt.",
+    "korrosionsschutzNachSystematikDer": " Korrosionsschutz nach Systematik der DIN EN ISO 12944",
+    "derWirksameKorrosionsschutzVon": "Der wirksame Korrosionsschutz von Stählen gliedert sich nach ISO 12944 in die quantitative Erfassung der Umgebungsschärfe, die konstruktive Reduktion von Schadstellen und die gezielte Werkstoffbarriere:",
+    "t1KorrosivitätskategorienNachDin": "1. Korrosivitätskategorien nach DIN EN ISO 12944-2",
+    "derPlanerMussDie": "Der Planer muss die Umwelt vorab in standardisierte Kategorien einordnen (Schutzdauerklassen L, M, H, VH):",
+    "c1Unbedeutend": "C1 (Unbedeutend)",
+    "beheizteInnenräumeZB": "Beheizte Innenräume (z. B. Schulen, Büros) ohne Kondensationsgefahr.",
+    "ländlicheBereicheMitGeringer": "Ländliche Bereiche mit geringer atmosphärischer Schadstoffbelastung. Ungeheizte Hallen.",
+    "stadtIndustrieatmosphäreMitMäßiger": "Stadt- & Industrieatmosphäre mit mäßiger Schwefeldioxid-Belastung. Brauereien, Molkereien.",
+    "industriegebieteUndMaritimeKüstengebiete": "Industriegebiete und maritime Küstengebiete mit signifikanter Salzbelastung. Schwimmbäder.",
+    "c5CxSehrStark": "C5 / CX (Sehr Stark / Extrem)",
+    "offshoreWindkraftanlagenTropischeMeeresa": "Offshore-Windkraftanlagen, tropische Meeresatmosphären, Extrembereiche mit permanenter Feuchte.",
+    "t2KonstruktiveGestaltungsregelnNach": "2. Konstruktive Gestaltungsregeln nach DIN EN ISO 12944-3",
+    "derWirksamsteSchutzBeginnt": "Der wirksamste Schutz beginnt auf dem Reißbrett des Konstrukteurs. Fehlerhafte Metallgeometrien lassen sich durch spätere Beschichtungen nicht heilen:",
+    "kantenabrundungKantenfluchtVermeiden": "Kantenabrundung (Kantenflucht vermeiden)",
+    "flüssigeLackeZiehenSich": "Flüssige Lacke ziehen sich beim Trocknen durch Oberflächenspannung von scharfen Ecken zusammen. Kanten müssen zwingend mit einem Radius von **r ≥ 2 mm** abgerundet oder gefast werden, um eine homogene Schutzschichtdicke zu sichern (Norm ISO 12944-3).",
+    "vermeidungVonWassertaschenNestern": "Vermeidung von Wassertaschen (Nestern)",
+    "offeneUCOder": "Offene U-, C- oder L-Profile müssen nach oben entwässert oder gedreht werden. Ist das nicht möglich, sind wirksame Entwässerungsbohrungen (Ablauflöcher) an den tiefsten Punkten vorzusehen, damit Elektrolyt rückstandsfrei fließen kann.",
+    "durchgehendesSchweißenStattHeftnähte": "Durchgehendes Schweißen statt Heftnähte",
+    "schweißnähteMüssenAbsolutPorenfrei": "Schweißnähte müssen absolut porenfrei und voll durchgeschweißt sein (keine offenen überlappenden Bleche). Enge, nicht verschweißte Hohlräume ziehen über Kapillareffekte aggressive Feuchtigkeit ein und rufen unkontrollierbare Spaltkorrosion hervor.",
+    "isolierendeZwischenlagenAnKontaktstellen": "Isolierende Zwischenlagen an Kontaktstellen",
+    "verbindetManUnterschiedlicheWerkstoffe": "Verbindet man unterschiedliche Werkstoffe (z. B. Aluminium-Verbundfassade mit Edelstahlunterkonstruktion), sind elektrochemisch isolierende Scheiben oder Hülsen (z. B. EPDM, Elastomere) einzubauen, um den Stromfluss des galvanischen Elements wirksam zu trennen.",
+    "passiveSchutzmaßnahmen": "Passive Schutzmaßnahmen",
+    "barrieremembranenBeschichtungenKunstharz": "**Barrieremembranen (Beschichtungen):** Kunstharze, Acrylate und Epoxide trennen das Basismetall makroskopisch von der äußeren Sauerstoff- und Wasserexpansionszone.",
+    "passivierendeLegierungenZulegierenVon": "**Passivierende Legierungen:** Zulegieren von Chrom (> 12 %) erzeugt unter Luftzutritt spontan eine atomar dünne Chromoxidschicht (Cr2O3), welche die Diffusion von Eisenionen blockiert.",
+    "inhibitorenChemischeAdditiveIm": "**Inhibitoren:** Chemische Additive im Kreislaufwasser. Anodische Inhibitoren passivieren Fehlstellen lokal, während kathodische Inhibitoren chemisch schwerlösliche Deckschichten (z. B. Calciumcarbonate) auf der Oberfläche anlagern.",
+    "aktiveKathodischeSchutzmaßnahmen": "Aktive (Kathodische) Schutzmaßnahmen",
+    "opferanodenGalvanischerSchutzMetalle": "**Opferanoden (Galvanischer Schutz):** Metalle wie Zink oder Magnesium, die ein signifikant negativeres elektrochemisches Potenzial als Eisen aufweisen, werden fest montiert. Selbst bei Haarrissen in der äußeren Zinkhaut fängt das unedle Zink den Ionenstrom ab und opfert sich unter Massenverlust auf, um den Stahl zu schützen (Fernwirkung).",
+    "fremdstromanodenEinKünstlicherElektrisch": "**Fremdstromanoden:** Ein künstlicher elektrischer Gleichstrom aus einer externen Gleichspannungsquelle polarisiert den Werkstoff als Kathode in den Bereich der thermodynamischen Immunität. Einsatz vor allem bei Brückenpfeilern, Pipelines und Tankbehältern im Erdboden."
+  },
+  "werte": {
+    "mathrmFeRightarrowMathrm": "$\\mathrm{Fe} \\rightarrow \\mathrm{Fe}^{2+} + 2\\mathrm{e}^-$",
+    "salzwasserCl": "(Salzwasser + Cl⁻)",
+    "mathrmO22": "$\\mathrm{O}_2 + 2\\mathrm{H}_2\\mathrm{O} + 4\\mathrm{e}^-$",
+    "rightarrow4MathrmOh": "$\\rightarrow 4\\mathrm{OH}^-$",
+    "nassRegen": "🌧️ Nass / Regen",
+    "salzwasser": "🌊 Salzwasser",
+    "schwereKrustenbildungGefahrVon": "⚠️ Schwere Krustenbildung (Gefahr von Betonabplatzungen!)",
+    "deutlichAngerostet": "⚠️ Deutlich angerostet",
+    "leichterFlugrost": "Leichter Flugrost",
+    "einwandfreierZustand": "Einwandfreier Zustand",
+    "mathrmFe22": "$\\mathrm{Fe}^{2+} + 2\\mathrm{OH}^- \\longrightarrow \\mathrm{Fe(OH)}_2 \\downarrow$",
+    "t4MathrmFeOh": "$4\\mathrm{Fe(OH)}_2 + \\mathrm{O}_2 + 2\\mathrm{H}_2\\mathrm{O} \\longrightarrow 4\\mathrm{Fe(OH)}_3 \\downarrow$",
+    "mathrmFeOh3": "$\\mathrm{Fe(OH)}_3 \\longrightarrow \\mathrm{FeO(OH)} + \\mathrm{H}_2\\mathrm{O}$",
+    "t2MathrmFeoOh": "$2\\mathrm{FeO(OH)} \\longrightarrow \\mathrm{Fe}_2\\mathrm{O}_3 \\cdot \\mathrm{H}_2\\mathrm{O}$",
+    "beispiel1SchutzdauerEiner": "Beispiel 1: Schutzdauer einer Feuerverzinkung in Korrosivitätskategorie C3",
+    "mitEinerZusätzlichenBeschichtung": "Mit einer zusätzlichen Beschichtung (Duplex-System) verlängert sich die Schutzdauer deutlich über die Summe beider Einzelschutzdauern hinaus. Für C5 (Zink 4,2 bis 8,4 µm/a) reichen 85 µm nur etwa 10 bis 20 Jahre.",
+    "dinEnIso9223": "DIN EN ISO 9223:2012-05; DIN EN ISO 14713-1; DIN EN ISO 1461",
+    "beispiel2LochfraßbeständigkeitNichtroste": "Beispiel 2: Lochfraßbeständigkeit nichtrostender Stähle (PREN)",
+    "fürSchwimmhallenUndMeerwasserbereiche": "Für Schwimmhallen und Meerwasserbereiche reichen Mo-haltige austenitische Stähle oft nicht; die Werkstoffwahl erfolgt bauaufsichtlich über die Korrosionsbeständigkeitsklassen (CRC) nach DIN EN 1993-1-4 bzw. abZ Z-30.3-6.",
+    "dinEn19931": "DIN EN 1993-1-4 mit NA; abZ Z-30.3-6 (DIBt)",
+    "oktober2026Ap10": "Oktober 2026 (AP 10 Dauerhaftigkeit: PREN-Formel korrigiert, Korrosivitätskategorien und Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "wetterfesterBaustahlCorten": "Wetterfester Baustahl (Corten)"
+  },
+  "daten": {
+    "Metallkorrosion.envInfo": {
+      "dry": {
+        "title": "Trocken (keine Korrosion)",
+        "desc": "Ohne flüssigen Elektrolyten (Wasserfilm) ist der elektrische Stromkreis vollständig unterbrochen. Es findet trotz Anwesenheit von Sauerstoff keine messbare Korrosion statt.",
+        "color": "border-home-grau/30 text-slate-700 bg-slate-50"
+      },
+      "moist": {
+        "title": "Feuchte Luft (langsam)",
+        "desc": "Ein winziger, meist unsichtbarer Kondensatfilm (z. B. durch hohe Luftfeuchtigkeit bzw. Taupunktunterschreitung) auf der Oberfläche dient als schwacher Elektrolyt. Die Korrosion schreitet langsam voran.",
+        "color": "border-home-grau/30 text-slate-750 bg-slate-50/50"
+      },
+      "wet": {
+        "title": "Nass / Regen (aktiv)",
+        "desc": "Ein durchgehender, stabile Wasserfilm bildet einen hervorragenden Elektrolyten. Ionen diffundieren ungehindert, die galvanische Rostzelle läuft unter Sauerstoffverbrauch auf Hochtouren.",
+        "color": "border-home-grau/30 text-slate-800 bg-slate-100"
+      },
+      "salty": {
+        "title": "Salzhaltig / Chloride + (sehr rasant)",
+        "desc": "Chloride (z.B. aus Tausalz oder Meerluft) zerstören unvollständige Passivschutzschichten und erhöhen die Leitfähigkeit des Elektrolyten massiv. Es kommt zu rasantem Rosten und lokalem Lochfraß!",
+        "color": "border-shiraz/35 text-shiraz bg-rose-50/40"
+      }
+    },
+    "Metallkorrosion.schritte": [
+      {
+        "titel": "Schichtdicke",
+        "erklaerung": "Stückverzinkter Stahlträger, mittlere Zinkschichtdicke 85 µm (Bauteildicke über 6 mm).",
+        "formel": "s_{Zn} = 85\\,\\mu\\text{m}"
+      },
+      {
+        "titel": "Abtragsrate",
+        "erklaerung": "C3 nach DIN EN ISO 9223: Zinkabtrag 0,7 bis 2,1 µm/a; gewählt wird der obere Wert:",
+        "formel": "r_{corr,Zn} = 2{,}1\\,\\mu\\text{m/a}"
+      },
+      {
+        "titel": "Schutzdauer",
+        "erklaerung": "Bis zum Verbrauch der Zinkschicht:",
+        "formel": "t_{Schutz} \\approx \\frac{85}{2{,}1} = 40\\,\\text{a}"
+      }
+    ],
+    "Metallkorrosion.schritte_2": [
+      {
+        "titel": "1.4404 (316L)",
+        "erklaerung": "Cr 17,0 %, Mo 2,0 %, N 0,05 %:",
+        "formel": "\\mathrm{PREN} = 17{,}0 + 6{,}6 + 0{,}8 = 24{,}4"
+      },
+      {
+        "titel": "1.4462 (Duplex 2205)",
+        "erklaerung": "Cr 22,0 %, Mo 3,0 %, N 0,17 %:",
+        "formel": "\\mathrm{PREN} = 22{,}0 + 9{,}9 + 2{,}7 = 34{,}6"
+      },
+      {
+        "titel": "Vergleich",
+        "erklaerung": "Höherer PREN bedeutet höheren Widerstand gegen chloridinduzierten Lochfraß:",
+        "formel": "34{,}6 > 24{,}4"
+      }
+    ],
+    "Metallkorrosion.literatur": [
+      "Pilling, N. B.; Bedworth, R. E. (1923): The Oxidation of Metals at High Temperatures (J. Inst. Met. 29, S. 529–591)",
+      "Kaesche, H.: Die Korrosion der Metalle. 3. Aufl., Berlin: Springer 1990",
+      "Bargel, H.-J.; Schulze, G. (Hrsg.): Werkstoffkunde. 12. Aufl., Berlin: Springer Vieweg 2018",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "Metallkorrosion.regelwerke": [
+      {
+        "title": "DIN EN ISO 12944 (Korrosionsschutz von Stahlbauten durch Beschichtungssysteme – Teile 1 bis 9; Teil 2:2018-04)"
+      },
+      {
+        "title": "DIN EN 10025-5 (Warmgewalzte Erzeugnisse aus Baustählen - Teil 5: Wetterfeste Baustähle)"
+      },
+      {
+        "title": "DIN EN 1172 (Kupfer und Kupferlegierungen - Bleche und Bänder für das Bauwesen)"
+      },
+      {
+        "title": "DIN EN 485 / DIN EN 573 (Aluminium und Aluminiumlegierungen für das Bauwesen)"
+      },
+      {
+        "title": "DIN EN ISO 8044 (Korrosion von Metallen und Legierungen - Grundbegriffe)"
+      },
+      {
+        "title": "DIN EN ISO 9223:2012-05 (Korrosion von Metallen – Korrosivität von Atmosphären)"
+      }
+    ],
+    "Metallkorrosion.formeln": [
+      {
+        "formel": "\\text{Anode: } \\text{Fe} \\rightarrow \\text{Fe}^{2+} + 2\\,e^- \\quad | \\quad \\text{Kathode: } \\text{O}_2 + 2\\,\\text{H}_2\\text{O} + 4\\,e^- \\rightarrow 4\\,\\text{OH}^-",
+        "erklaerung": "Elektrochemische Sauerstoffkorrosion von Eisen in neutralem/alkalischem wässrigem Elektrolyt unter Bildung von Rost (FeO(OH) bzw. Fe2O3·H2O).",
+        "quelle": "DIN EN ISO 8044"
+      },
+      {
+        "formel": "\\mathrm{PBR} = \\frac{V_{\\text{Oxid}}}{V_{\\text{Metall}}} = \\frac{M_{\\text{Oxid}} \\cdot \\rho_{\\text{Metall}}}{n \\cdot M_{\\text{Metall}} \\cdot \\rho_{\\text{Oxid}}}",
+        "erklaerung": "Pilling-Bedworth-Verhältnis: Kriterium für Deckschichten. 1,0 <= PBR <= 2,0 kennzeichnet dichte, passivierende Schutzschichten (z. B. Aluminium 1,28, Kupfer/Cu₂O 1,68). PBR > 2,0 erzeugt schuppiges Abblättern (Eisen/Fe₂O₃ ca. 2,1). Wetterfeste Stähle schützen nicht über den PBR, sondern über die Legierungselemente Cu, Cr, Ni, P in der Rostschicht.",
+        "quelle": "Pilling & Bedworth (1923)"
+      },
+      {
+        "formel": "2\\,\\text{Cu} + \\text{O}_2 + \\text{CO}_2 + \\text{H}_2\\text{O} \\longrightarrow \\text{Cu}_2[(\\text{OH})_2|\\text{CO}_3] \\; (\\text{Malachit})",
+        "erklaerung": "Bildung der dichten, langlebigen Patina an Kupferbauteilen (Dächer, Rinnen) durch Reaktion mit Luftsauerstoff, Kohlendioxid und Feuchtigkeit.",
+        "quelle": "DIN EN 1172"
+      },
+      {
+        "formel": "4\\,\\text{Al} + 3\\,\\text{O}_2 \\longrightarrow 2\\,\\text{Al}_2\\text{O}_3",
+        "erklaerung": "Spontane Bildung der porenfreien, amorphen Aluminiumoxidschicht (PBR = 1,28, Dicke 2–10 nm). Verhindert weiteren Sauerstoffzutritt im pH-Bereich 4,5–8,5.",
+        "quelle": "DIN EN 573"
+      },
+      {
+        "formel": "m = \\frac{M \\cdot I \\cdot t}{z \\cdot F}",
+        "erklaerung": "Faradaysches Gesetz für den elektrolytischen Metallabtrag: m = abgebaute Masse, M = molare Masse, I = Korrosionsstrom, t = Zeit, z = Wertigkeit der Ionen, F = Faraday-Konstante (96.485 C/mol).",
+        "quelle": "Elektrochemie / Werkstoffkunde"
+      }
+    ]
+  }
+}

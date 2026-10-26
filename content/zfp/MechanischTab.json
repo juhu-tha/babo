@@ -1,0 +1,33 @@
+{
+  "texte": {
+    "rückprallhammerDruckfestigkeit": "Rückprallhammer (Druckfestigkeit)",
+    "prüfrichtungWinkel": "Prüfrichtung (Winkel)",
+    "geschätzteDruckfestigkeit": "Geschätzte Druckfestigkeit",
+    "korrigiertesR": "Korrigiertes R: ",
+    "korrelationskurvenRückprallhammer": "Korrelationskurven (Rückprallhammer)",
+    "zusammenhangZwischenRückprallzahlR": "Zusammenhang zwischen Rückprallzahl R und Druckfestigkeit f_c für verschiedene Prüfrichtungen nach DIN EN 12504-2.",
+    "gaspermeabilitätTorrent": "Gaspermeabilität (Torrent)",
+    "dasTorrentVerfahrenMisst": "Das Torrent-Verfahren misst zerstörungsfrei den Luftpermeabilitätsbeiwert $k_T$ der Betonrandzone. Ein wichtiges Maß zur Vorhersage der Carbonatisierungsgeschwindigkeit.",
+    "qualitativeEinstufung": "Qualitative Einstufung",
+    "kapillareWasseraufnahmeKarstenRöhrchen": "Kapillare Wasseraufnahme (Karsten-Röhrchen)",
+    "misstVorOrtDie": "Misst vor Ort die kapillare Wasseraufnahme von mineralischen Baustoffen unter definiertem hydrostatischem Wasserdruck (simulierter Schlagregen).",
+    "wasseraufnahmekoeffizientW": "Wasseraufnahmekoeffizient (w)",
+    "kgMH0": " kg/(m² · h^0.5)",
+    "simulierterWasserspeicher": "Simulierter Wasserspeicher",
+    "kapillarerFlüssigkeitsstadium": "Kapillarer Flüssigkeitsstadium"
+  },
+  "werte": {
+    "derRückprallhammerMisstDie": "Der Rückprallhammer misst die Oberflächenhärte des Betons. Die Rückprallzahl R korreliert mit der Druckfestigkeit f_c.",
+    "vorgabeDerGemessenenRückprallzahl": "Vorgabe der gemessenen Rückprallzahl R.",
+    "rückprallzahlR": "Rückprallzahl R",
+    "dieSchwerkraftBeeinflusstDie": "Die Schwerkraft beeinflusst die Masse im Hammer. Messungen rechtwinklig nach unten liefern höhere Werte als Messungen senkrecht nach oben.",
+    "prüfrichtungWinkel": "Prüfrichtung (Winkel)",
+    "spezifischerBeiwertDerDeckschichtverätzu": "Spezifischer Beiwert der Deckschichtverätzung.",
+    "betonfeuchtigkeitRF": "Betonfeuchtigkeit (r.F.)",
+    "dasOkkludierteWasserIm": "Das okkludierte Wasser im Porensystem behindert den Gasdurchfluss.",
+    "messdauerT": "Messdauer (t)",
+    "dauerDesHydrostatischenEindringversuchs": "Dauer des hydrostatischen Eindringversuchs.",
+    "wasseraufnahmeV": "Wasseraufnahme (V)",
+    "mengeDesEingedrungenenWassers": "Menge des eingedrungenen Wassers."
+  }
+}

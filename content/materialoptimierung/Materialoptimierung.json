@@ -1,0 +1,147 @@
+{
+  "texte": {
+    "materialStoffoptimierung": " Material- & Stoffoptimierung",
+    "ökologischeBilanzverbesserungDurchStoffl": "Ökologische Bilanzverbesserung durch stoffliche Optimierungspfade. Erschließen Sie Potenziale mit den Säulen der Kreislaufwirtschaft und analysiere klinkerarme Bindemittel- und Substitutionskonzepte nach DIN EN 15804+A2 und VDI 4800.",
+    "die4SäulenDer": " Die 4 Säulen der Stoffoptimierung",
+    "betonoptimierungsLeitfadenPrinzipien": " Betonoptimierungs-Leitfaden (Prinzipien)",
+    "dafstbRichtlinieTreibhausgasreduzierteTr": " DAfStb-Richtlinie: Treibhausgasreduzierte Tragwerke aus Beton, Stahlbeton oder Spannbeton",
+    "strategischeDimensionenFürKreislaufgerec": " Strategische Dimensionen für kreislaufgerechte Gebäude",
+    "eineVerbesserteÖkobilanzLca": "Eine verbesserte Ökobilanz (LCA) lässt sich nicht allein durch nachlaufende Dämmstoffverbesserungen erzielen. Vielmehr greift die systemische Stoffoptimierung an der Tragwerksplanung an. Durch geschicktes Ineinandergreifen von Suffizienz, Effizienz, Konsistenz und Resilienz wird mineralischer Müll verhindert und der Carbon footprint drastisch minimiert.",
+    "maßgeblicheOptimierungsansätze": "Maßgebliche Optimierungsansätze:",
+    "praxisbeispielAusDemIngenieurbüro": "🎓 Praxisbeispiel aus dem Ingenieurbüro",
+    "wissenschaftlichePrinzipienDerBetonoptim": "Wissenschaftliche Prinzipien der Betonoptimierung",
+    "über60DerCo": "Über 60% der CO₂-Emissionen des klassischen Betons basieren auf rohstoff- und prozessbedingten Prozeduren beim Entsäuern des Kalksteins im Ofen, während ~40% auf thermischen Brennstoffen lagern. Hier sind die vier baupraktischen Kern-Sektoren der systematischen Treibhausgasminimierung strukturiesystematisch gelistet.",
+    "klappbareMenüpunkteLeitfadenStruktur": " Klappbare Menüpunkte (Leitfaden-Struktur)",
+    "klickenSieAufEinzelne": "Klicken Sie auf einzelne Kategorieüberschriften, um spezifische Optimierungswege ein- oder auszublenden.",
+    "alleAufklappen": "📂 Alle aufklappen",
+    "alleEinklappen": "📁 Alle einklappen",
+    "klimapositiverBetonbestandteil": " Klimapositiver Betonbestandteil",
+    "pyrogenePflanzenkohleImBetongefüge": "Pyrogene Pflanzenkohle im Betongefüge",
+    "wissenschaftlicheHintergründeZurKohlenst": "Wissenschaftliche Hintergründe zur Kohlenstoffsenke im Tragwerk",
+    "t2530": "~ 2,5 - 3,0 t",
+    "coÄqLagernDauerhaft": "CO₂-Äq lagern dauerhaft pro 1 t reiner Pflanzenkohle",
+    "internalCuring": "Internal Curing",
+    "porenspeicherMindertSchwindrisseSignifik": "Porenspeicher mindert Schwindrisse signifikant",
+    "empfohleneDosierung": "Empfohlene Dosierung",
+    "bezogenAufDasZementgewicht": "bezogen auf das Zementgewicht als inerte Feinstsubstitution",
+    "t1WieFunktioniertDie": " 1. Wie funktioniert die dauerhafte Carbon-Senke?",
+    "bäumeEntziehenDerLuft": "Bäume entziehen der Luft während des Wachstums Kohlendioxid. Stirbt der Baum oder verrottet Holzschutt, geht das CO₂ zurück in die Atmosphäre. Durch die **thermochemische Pyrolyse** (Erhitzung unter Sauerstoffentzug bei 500 °C bis 800 °C) wird der biologische Kohlenstoff hochgradig in aromatische Kohlenstoffringe strukturiert. Über Jahrhunderte ist diese feste Kohle resistent gegen Verrottung (inert). Wird dieser stabilisierte Kohlenstoff homogen im Zementstein des Betons umschlossen, entsteht ein künstliches, unlösliches Endlager im Fundament oder der Decke.",
+    "gefügeVorteilInternalCuring": " Gefüge-Vorteil (Internal Curing)",
+    "pflanzenkohleBesitztEineEnorme": "Pflanzenkohle besitzt eine enorme spezifische Oberfläche (bis zu 350 m²/g) und ein ausgeprägtes Porensystem. Beim Betonmischen saugt sie überschüssiges Anmachwasser auf und speichert es. Während der 28-tägigen Hydratation (Erstarren des Zements) gibt sie dieses Wasser langsam wieder ab. Dies sichert eine konstante Feuchte im Mikromilieu und verhindert autogenes Schwinden und Mikrorisse.",
+    "praktischesRechenbeispiel": " Praktisches Rechenbeispiel",
+    "einStandardbetonC2530": "Ein Standardbeton C25/30 verursacht ca. 240 kg CO₂ pro Kubikmeter. Substituiert man 10 kg Feinstsand durch 10 kg hochaktive Pflanzenkohle (Erhöhung des Biochar-Anteils um ca. 3% des Zementgewichts), filtert und bindet diese Menge rechnerisch rund **25 bis 30 kg CO₂** im Bauteil. Damit reduziert sich die herstellungsbedingte Gesamtbilanz auf einen Schlag um **über 10 %**!",
+    "t2TechnischeHerausforderungenIm": " 2. Technische Herausforderungen im Betonwerk",
+    "extremeFeuchtekorrektur": "Extreme Feuchtekorrektur",
+    "aufgrundDerHohenPorosität": "Aufgrund der hohen Porosität der Kohle muss das wirksame Wasser beim Mischen peinlichst korrigiert werden. Geschieht dies nicht, entzieht die Kohle dem Zementleim das Hydratationswasser und bricht das Ausbreitmaß (Konsistenz) ein.",
+    "kWertAnrechenbarerAnteil": "k-Wert & anrechenbarer Anteil",
+    "pflanzenkohleDientAlsInerter": "Pflanzenkohle dient als inerter Zusatzstoff (Typ I). Sie besitzt keine hydraulischen oder nennenswert puzzeolane Eigenreaktionen, weswegen die Festigkeitsklasse geringfügig absinken kann. Ihre Korngrößenverteilung muss präzise auf die Fuller-Sieblinie abgestimmt sein.",
+    "normativeEinordnungZertifizierung": "Normative Einordnung & Zertifizierung",
+    "pflanzenkohleFälltDerzeitNoch": "Pflanzenkohle fällt derzeit noch nicht unter das Standardregelwerk der DIN EN 206 (kein genormter Typ-II-Zusatzstoff). Für tragende Teile ist eine **Zustimmung im Einzelfall (ZiE)** oder eine vorzeitige bauaufsichtliche Zulassung (abZ) erforderlich. Die Zertifizierung über das **European Biochar Certificate (EBC-Bau)** garantiert, dass die Aktivkohle schadstofffrei ist (Einheit über polyzyklische aromatische Kohlenwasserstoffe - PAKs) und unbedenklich verbaut werden darf.",
+    "verstandenSchließen": "Verstanden & Schließen ✓",
+    "maßgebendBleibenDinEn": "Maßgebend bleiben DIN EN 206:2021-06 mit DIN 1045-2:2023-08 und DIN EN 1992-1-1:2011-01 mit NA. Was die Neuausgaben ändern – etwa Expositionswiderstandsklassen (ERC) und CO₂-Klassen – und was zur Einführung bekannt ist, fasst das Ausblick-Modul zusammen."
+  },
+  "werte": {
+    "mDeckenfläche": "m² Deckenfläche",
+    "geschossdecke100MFläche": "Geschossdecke (100 m² Fläche)",
+    "geschossdecke100MFläche2": "Geschossdecke (100 m² Fläche)",
+    "innenstützen4Stützen3": "Innenstützen (4 Stützen à 3,50 m = 14 m Gesamtlänge)",
+    "tragwandKernwand60M": "Tragwand / Kernwand (60 m² Ansichtsfläche)",
+    "fundamentplatteBodenplatte120M": "Fundamentplatte / Bodenplatte (120 m² Grundfläche)",
+    "konventionellerStandard": "Konventioneller Standard",
+    "thgExzellenzUltraLow": "THG-Exzellenz (Ultra-Low-Carbon)",
+    "ambitionierteDekarbonisierung": "Ambitionierte Dekarbonisierung",
+    "wirtschaftlichesOptimum": "Wirtschaftliches Optimum",
+    "beispiel1TreibhausgasEiner": "Beispiel 1: Treibhausgas einer Stahlbetondecke je m² – Standard gegen optimiert",
+    "geometrieMasseUndZementart": "Geometrie (Masse) und Zementart wirken multiplikativ. Tragfähigkeit, Durchstanzen, Schall- und Brandschutz der Hohlkörperdecke sind gesondert nachzuweisen.",
+    "lehrwerteProjektwerteAusEpd": "Lehrwerte; Projektwerte aus EPD (DIN EN 15804+A2) bzw. ÖKOBAUDAT",
+    "beispiel2ÄquivalenterW": "Beispiel 2: Äquivalenter w/z-Wert mit Flugasche",
+    "derKWertAnsatz": "Der k-Wert-Ansatz erlaubt Klinkereinsparung ohne Dauerhaftigkeitsverlust. Für Hüttensandmehl ist er in Deutschland nur eingeschränkt anwendbar; Höchstmengen an Flugasche je Zementart sind zu beachten.",
+    "dinEn2062021": "DIN EN 206:2021-06 / DIN 1045-2:2023-08 (k-Wert-Ansatz)",
+    "neueAusgabenErschienenDin": "Neue Ausgaben erschienen: DIN EN 206-1/-2:2026 und EC2 2. Generation",
+    "zumModulAusblickNeue": "Zum Modul Ausblick: neue Normengeneration",
+    "oktober2026Ap7": "Oktober 2026 (AP 7 Nachhaltigkeit: Bilanzformeln, k-Wert-Ansatz und Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "deutscherAusschussFürStahlbeton": "Deutscher Ausschuss für Stahlbeton"
+  },
+  "daten": {
+    "Materialoptimierung.schritte": [
+      {
+        "titel": "Standard",
+        "erklaerung": "Vollplatte 20 cm, C25/30 mit CEM I (Lehrwert 245 kg CO₂-Äq./m³), Bewehrung 20 kg/m² (Elektrostahl, Lehrwert 0,7 kg CO₂-Äq./kg):",
+        "formel": "0{,}20 \\cdot 245 + 20 \\cdot 0{,}7 = 49{,}0 + 14{,}0 = 63{,}0\\,\\text{kg CO}_2\\text{-Äq./m}^2"
+      },
+      {
+        "titel": "Optimiert",
+        "erklaerung": "Hohlkörperdecke mit 25 % weniger Beton (0,15 m³/m²), CEM III/A (174 kg CO₂-Äq./m³), Bewehrung 18 kg/m²:",
+        "formel": "0{,}15 \\cdot 174 + 18 \\cdot 0{,}7 = 26{,}1 + 12{,}6 = 38{,}7\\,\\text{kg CO}_2\\text{-Äq./m}^2"
+      },
+      {
+        "titel": "Einsparung",
+        "erklaerung": "Relative Minderung:",
+        "formel": "\\frac{63{,}0 - 38{,}7}{63{,}0} = 39\\,\\%"
+      }
+    ],
+    "Materialoptimierung.schritte_2": [
+      {
+        "titel": "Rezeptur",
+        "erklaerung": "Wasser 165 kg/m³, Zement 280 kg/m³, Flugasche 60 kg/m³, k_f = 0,4:",
+        "formel": "w = 165,\\; z = 280,\\; f = 60"
+      },
+      {
+        "titel": "Anrechenbarer Bindemittelgehalt",
+        "erklaerung": "Flugasche wird nur mit dem k-Wert angerechnet:",
+        "formel": "z + 0{,}4 \\cdot 60 = 304\\,\\text{kg/m}^3"
+      },
+      {
+        "titel": "Äquivalenter w/z-Wert",
+        "erklaerung": "Vergleich mit Grenzwerten der Expositionsklassen (z. B. XC4: max. 0,60):",
+        "formel": "(w/z)_{eq} = \\frac{165}{304} = 0{,}54 \\le 0{,}60"
+      }
+    ],
+    "Materialoptimierung.literatur": [
+      "Deutscher Ausschuss für Stahlbeton (DAfStb): DAfStb-Richtlinie Treibhausgasreduzierte Tragwerke aus Beton, Stahlbeton oder Spannbeton – Teil 1: Grundlagen und Nachweis am gesamten Tragwerk; Teil 2: Deckenbauteile. Ausgabe August 2024. Berlin: DIN Media 2024",
+      "Sobek, W.: non nobis – über das Bauen in der Zukunft. Band 1: Ausgehen muss man von dem, was ist. Stuttgart: av edition 2022",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
+      "Stark, J.; Wicht, B.: Dauerhaftigkeit von Beton. 2. Aufl., Berlin: Springer Vieweg 2013"
+    ],
+    "Materialoptimierung.regelwerke": [
+      {
+        "title": "DAfStb-Richtlinie Treibhausgasreduzierte Tragwerke aus Beton, Stahlbeton oder Spannbeton (Teile 1 und 2), Ausgabe August 2024",
+        "url": "https://www.dafstb.de/"
+      },
+      {
+        "title": "DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2); neue Generation DIN EN 1992-1-1:2025-09"
+      },
+      {
+        "title": "DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton – Festlegung, Eigenschaften, Herstellung und Konformität; Neuausgaben DIN EN 206-1 und -2:2026-07 erschienen)"
+      },
+      {
+        "title": "DIN EN 13670 / DIN 1045-3 (Ausführung von Tragwerken aus Beton)"
+      },
+      {
+        "title": "VDI 4800 Blatt 1: Ressourceneffizienz - Methodische Grundlagen, Prinzipien und Strategien"
+      }
+    ],
+    "Materialoptimierung.formeln": [
+      {
+        "formel": "GWP_{\\text{Bauteil}} = V_{\\text{c}} \\cdot gwp_{\\text{c}} + m_{\\text{s}} \\cdot gwp_{\\text{s}} \\quad [\\text{kg CO}_2\\text{-eq}]",
+        "erklaerung": "Treibhausgasbilanzierung von Stahlbetonbauteilen über Beton- und Bewehrungsstahlanteile (Modul A1–A3).",
+        "quelle": "Bilanzierung nach DIN EN 15804+A2 / DIN EN 15978 (Module A1–A3)"
+      },
+      {
+        "formel": "(w/c)_{\\text{eq}} = \\frac{w}{c + k \\cdot z} \\quad [\\text{k-Wert nach DIN 1045-2}]",
+        "erklaerung": "Äquivalenter Wasserzementwert zur Anrechnung von Flugasche (k = 0,4) und Silikastaub (k = 1,0); für Hüttensandmehl nach DIN EN 15167-1 enthält DIN 1045-2:2023-08 einen eigenen k-Wert-Ansatz (Abschn. 5.2.5.2.5).",
+        "quelle": "DIN 1045-2 / DIN EN 206"
+      },
+      {
+        "formel": "\\eta_{\\text{Material}} = \\frac{m_{\\text{Soll}}}{m_{\\text{Ist}}} \\cdot 100 \\quad [\\%]",
+        "erklaerung": "Materialnutzungsgrad zur Quantifizierung bionischer oder topologieoptimierter Leichtbaustrukturen.",
+        "quelle": "VDI 4800 Blatt 1"
+      },
+      {
+        "formel": "\\Delta G = \\left(1 - \\frac{\\rho_{\\text{leicht}}}{\\rho_{\\text{standard}}}\\right) \\cdot 100 \\quad [\\%]",
+        "erklaerung": "Gewichtseinsparungsquote bei Substitution von Normalbeton durch gradierte Strukturen oder leichte Gesteinskörnungen.",
+        "quelle": "Massivbau-Leichtbaupraxis"
+      }
+    ]
+  }
+}

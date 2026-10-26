@@ -10,6 +10,8 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Lock, AlertTriangle } from 'lucide-react';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
+import inhalt from '@/content/zwang/Zwang.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export function ZwangCalculator() {
   const [deltaT, setDeltaT] = useState(20); // Temperaturänderung in K
@@ -51,7 +53,7 @@ export function ZwangCalculator() {
         labels: restraintLevels.map(r => `${r}%`),
         datasets: [
           {
-            label: 'Zwangspannung σ_z (MPa)',
+            label: inhalt.werte.zwangspannungZMpa,
             data: stressProfile,
             borderColor: '#e63946',
             backgroundColor: 'rgba(230, 57, 70, 0.1)',
@@ -60,7 +62,7 @@ export function ZwangCalculator() {
             pointRadius: 4,
           },
           {
-            label: 'Zugfestigkeit f_ct (MPa)',
+            label: inhalt.werte.zugfestigkeitFCtMpa,
             data: strengthProfile,
             borderColor: '#457b9d',
             borderDash: [5, 5],
@@ -84,10 +86,7 @@ export function ZwangCalculator() {
         </div>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Zwang entsteht, wenn ein Bauteil sich verformen möchte (z.B. durch Temperaturänderung oder Schwinden), aber daran gehindert wird (Festhaltung). 
-            Dies führt zu Zwangspannungen. Überschreiten diese die Zugfestigkeit des Materials, entstehen Risse.
-          </p>
+          <p><MdText text={inhalt.texte.zwangEntstehtWennEin} /></p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -96,16 +95,16 @@ export function ZwangCalculator() {
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
               <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4 flex items-center gap-2">
                 Verformungsursachen
-                <InfoTooltip text="Ursachen, die zu einer Längenänderung führen würden, wenn das Bauteil frei beweglich wäre." />
+                <InfoTooltip text={inhalt.werte.ursachenDieZuEiner} />
               </h3>
               
-              <Slider label={<FormulaText text="Temperaturabfluss \Delta T" />} info="Temperaturabfall des Bauteils (bspw. durch Abkühlen nach dem Hydratationsmaximum)."
+              <Slider label={<FormulaText text="Temperaturabfluss \Delta T" />} info={inhalt.werte.temperaturabfallDesBauteilsBspw}
                 min={0} max={50} step={1} 
                 value={deltaT} unit="K" 
                 onChange={(e) => setDeltaT(Number(e.target.value))} 
               />
               <div className="mt-4">
-                <Slider info="Freies Schwindmaß des Betons in Promille, das zu Verkürzungen führt." label={<FormulaText text="Schwindmaß \varepsilon_{cs}" />}
+                <Slider info={inhalt.werte.freiesSchwindmaßDesBetons} label={<FormulaText text="Schwindmaß \varepsilon_{cs}" />}
                   min={0} max={1.0} step={0.05} 
                   value={shrinkage} unit="‰" 
                   onChange={(e) => setShrinkage(Number(e.target.value))} 
@@ -114,25 +113,23 @@ export function ZwangCalculator() {
             </div>
 
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4 flex items-center gap-2">
-                Bauteil- & Materialeigenschaften
-              </h3>
+              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4 flex items-center gap-2"><MdText text={inhalt.texte.bauteilMaterialeigenschaften} /></h3>
               
               <Slider 
-                label="Festhaltungsgrad R" info="Maß für die Behinderung der freien Verformung des Bauteils (R = 0 %: frei verformbar; R = 100 %: voll eingespannt)." 
+                label={inhalt.werte.festhaltungsgradR} info={inhalt.werte.maßFürDieBehinderung} 
                 min={0} max={100} step={10} 
                 value={restraint} unit="%" 
                 onChange={(e) => setRestraint(Number(e.target.value))} 
               />
               <div className="mt-4">
-                <Slider label={<FormulaText text="E-Modul E_c" />} info="Effektiver Elastizitätsmodul des Betons zur Ermittlung der Zwangkraft."
+                <Slider label={<FormulaText text="E-Modul E_c" />} info={inhalt.werte.effektiverElastizitätsmodulDesBetons}
                   min={10000} max={45000} step={1000} 
                   value={eModulus} unit="MPa" 
                   onChange={(e) => setEModulus(Number(e.target.value))} 
                 />
               </div>
               <div className="mt-4">
-                <Slider info="Die wirksame Zugfestigkeit des Betons im Risszeitpunkt (meist 3 bis 28 Tage)." label={<FormulaText text="Zugfestigkeit f_{ct}" />}
+                <Slider info={inhalt.werte.dieWirksameZugfestigkeitDes} label={<FormulaText text={inhalt.werte.zugfestigkeitFCt} />}
                   min={1.0} max={6.0} step={0.1} 
                   value={fct} unit="MPa" 
                   onChange={(e) => setFct(Number(e.target.value))} 
@@ -163,15 +160,15 @@ export function ZwangCalculator() {
               </div>
 
               <div className="text-sm bg-white/10 p-3 rounded-lg">
-                <p>Freie Dehnung (verhindert): <strong>{formatDeZahl((calcData.epsTotal * 1000), 2)} ‰</strong></p>
+                <p><MdText text={inhalt.texte.freieDehnungVerhindert} /><strong>{formatDeZahl((calcData.epsTotal * 1000), 2)} ‰</strong></p>
                 <p className="mt-1 opacity-80 text-xs">
-                  (ΔT: {formatDeZahl((calcData.epsT * 1000), 2)} ‰ | Schwinden: {formatDeZahl((calcData.epsS * 1000), 2)} ‰)
+                  (ΔT: {formatDeZahl((calcData.epsT * 1000), 2)}<MdText text={inhalt.texte.schwinden} />{formatDeZahl((calcData.epsS * 1000), 2)} ‰)
                 </p>
               </div>
             </div>
 
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col h-[300px]">
-              <h3 className="text-sm font-bold text-text-main mb-4">Spannung über Festhaltungsgrad</h3>
+              <h3 className="text-sm font-bold text-text-main mb-4"><MdText text={inhalt.texte.spannungÜberFesthaltungsgrad} /></h3>
               <div className="flex-1 relative w-full h-full">
                 <Line 
                   data={calcData.chartData} 
@@ -179,9 +176,9 @@ export function ZwangCalculator() {
                     responsive: true,
                     maintainAspectRatio: false,
                     scales: {
-                      x: { title: { display: true, text: 'Festhaltungsgrad R (%)' } },
+                      x: { title: { display: true, text: inhalt.werte.festhaltungsgradR2 } },
                       y: { 
-                        title: { display: true, text: 'Spannung (MPa)' },
+                        title: { display: true, text: inhalt.werte.spannungMpa },
                         min: 0,
                         max: Math.max(calcData.sigmaZ, fct) * 1.2
                       }
@@ -200,7 +197,7 @@ export function ZwangCalculator() {
 
             {/* Schematische Darstellung */}
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-sm mt-6">
-              <h3 className="font-semibold mb-4 text-text-main">Schematische Darstellung: Entstehung von Zwang</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungEntstehungVon} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
                 <svg width="100%" height="180" viewBox="0 0 350 180">
                   {/* Fall 1: Frei */}
@@ -240,9 +237,7 @@ export function ZwangCalculator() {
                     </marker>
                   </defs>
                 </svg>
-                <div className="text-xs text-text-main/70 text-center mt-2">
-                  Zwang entsteht, wenn eine freie Verformung (z.B. durch Schwinden oder Abkühlen) durch angrenzende Bauteile behindert wird. Die verhinderte Dehnung erzeugt Zugspannungen, die zu Rissen führen können.
-                </div>
+                <div className="text-xs text-text-main/70 text-center mt-2"><MdText text={inhalt.texte.zwangEntstehtWennEine} /></div>
               </div>
             </div>
           </div>
@@ -255,28 +250,9 @@ export function ZwangCalculator() {
           { title: 'Eigenspannung', url: 'https://de.wikipedia.org/wiki/Eigenspannung' },
           { title: 'Rissbildung' }
         ]}
-        literatur={[
-          'Zilch, K.; Zehetmaier, G. (2010): Bemessung im konstruktiven Betonbau (2. Auflage, Springer-Verlag)',
-          'Fingerloos, F.; Hegger, J.; Zilch, K. (2016): Eurocode 2 für Deutschland (3. Auflage, Ernst & Sohn / Beuth)',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 1992-1-1 / NA (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken - Rissbreitenbegrenzung)' },
-          { title: 'DAfStb Heft 466: Bemessungshilfen zu Eurocode 2 (Beuth Verlag)' },
-          { title: 'DAfStb Heft 555: Erläuterungen zur DAfStb-Richtlinie Massige Bauteile aus Beton' }
-        ]}
-        formeln={[
-          {
-            formel: '\\sigma_z(t) = E_{c,\\text{eff}}(t) \\cdot \\varepsilon_{\\text{beh}} = \\frac{E_{cm}(t)}{1 + \\varphi(t, t_0)} \\cdot R_{\\text{ax}} \\cdot (\\alpha_T \\cdot \\Delta T + \\varepsilon_{cs})',
-            erklaerung: 'Zwangzugspannung infolge behinderter thermischer Verkürzung und Schwinddehnung unter Berücksichtigung des Kriechbeiwerts φ und des axialen Festhaltungsgrads R_ax.',
-            quelle: 'DIN EN 1992-1-1 / DAfStb Heft 466'
-          },
-          {
-            formel: 'A_{s,\\text{min}} = k_c \\cdot k \\cdot f_{ct,\\text{eff}} \\cdot \\frac{A_{ct}}{\\sigma_s}',
-            erklaerung: 'Mindestbewehrung zur Begrenzung der Rissbreite unter Zwangbeanspruchung nach Eurocode 2: kc = Beiwert für Spannungsverteilung, k = Beiwert für nichtlineare Eigenspannungen, fct,eff = wirksame Zugfestigkeit.',
-            quelle: 'DIN EN 1992-1-1 Gl. 7.1'
-          }
-        ]}
+        literatur={inhalt.daten["ZwangCalculator.literatur"]}
+        regelwerke={inhalt.daten["ZwangCalculator.regelwerke"]}
+        formeln={inhalt.daten["ZwangCalculator.formeln"]}
       />
 </div>
   );

@@ -6,6 +6,7 @@ import {quizPoolPlugin} from './scripts/quizPool';
 import {modulKopfPlugin} from './scripts/modulKopf';
 import {modulVorladenPlugin, modulBasisChunks} from './scripts/modulVorladen';
 import {bedarfsLadenPlugin} from './scripts/bedarfsLaden';
+import {inhaltEinbettenPlugin} from './scripts/inhaltEinbetten';
 import {registryKernPlugin} from './scripts/registryKern';
 import {startSchalePlugin} from './scripts/startSchale';
 
@@ -17,7 +18,8 @@ export default defineConfig(() => {
     // bedarfsLadenPlugin: KaTeX und Chart.js erst bei Bedarf laden (AP 5.5, src/lib/*Bedarf.ts[x])
     // startSchalePlugin: statische Schale der Startseite in #root (AP 5.5 Nachtrag, scripts/startschale.html)
     // registryKernPlugin: schlanker Registry-Auszug im Einstieg, volle Registry bei Bedarf (AP 5.5 Nachtrag)
-    plugins: [bedarfsLadenPlugin(), registryKernPlugin(), react(), tailwindcss(), quizPoolPlugin(), modulKopfPlugin(), modulVorladenPlugin(), startSchalePlugin()],
+    // inhaltEinbettenPlugin: Werte aus content/**.json an den Verweisstellen einsetzen (AP 5.3)
+    plugins: [inhaltEinbettenPlugin(), bedarfsLadenPlugin(), registryKernPlugin(), react(), tailwindcss(), quizPoolPlugin(), modulKopfPlugin(), modulVorladenPlugin(), startSchalePlugin()],
     // Hinweis: GEMINI_API_KEY wird bewusst NICHT per `define` in das Frontend geschrieben.
     // Der Schlüssel wird nur im Server (server.ts) verwendet.
     resolve: {

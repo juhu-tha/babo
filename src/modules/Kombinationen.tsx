@@ -37,6 +37,8 @@ import {
   BookOpen
 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
+import inhalt from '@/content/kombinationen/Kombinationen.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -59,16 +61,16 @@ interface WallLayer {
 
 const PRESET_LAYERS: WallLayer[] = [
   { id: '1', name: 'Kalkgips-Innenputz', thickness: 15, lambda: 0.70, mu: 10, category: 'schuetzend' },
-  { id: '2', name: 'Hochlochziegel Mauerwerk (HLz)', thickness: 240, lambda: 0.28, mu: 10, category: 'tragend' },
-  { id: '3', name: 'EPS-Hartschaum Fassadendämmung (WDVS)', thickness: 160, lambda: 0.035, mu: 40, category: 'daemmend' },
-  { id: '4', name: 'Armierungsputz mit Glasfasergewebe', thickness: 5, lambda: 0.85, mu: 25, category: 'schuetzend' },
-  { id: '5', name: 'Silikonharz-Oberputz (wasserabweisend)', thickness: 3, lambda: 0.70, mu: 30, category: 'schuetzend' },
+  { id: '2', name: inhalt.werte.hochlochziegelMauerwerkHlz, thickness: 240, lambda: 0.28, mu: 10, category: 'tragend' },
+  { id: '3', name: inhalt.werte.epsHartschaumFassadendämmungWdvs, thickness: 160, lambda: 0.035, mu: 40, category: 'daemmend' },
+  { id: '4', name: inhalt.werte.armierungsputzMitGlasfasergewebe, thickness: 5, lambda: 0.85, mu: 25, category: 'schuetzend' },
+  { id: '5', name: inhalt.werte.silikonharzOberputzWasserabweisend, thickness: 3, lambda: 0.70, mu: 30, category: 'schuetzend' },
 ];
 
 const fibers = {
-  'Carbon (HT)': { ef: 230, sf: 3500, rho: 1.8, desc: 'High-Tenacity Carbonfaser' },
-  'Carbon (HM)': { ef: 390, sf: 2500, rho: 1.9, desc: 'High-Modulus Carbonfaser' },
-  'E-Glas': { ef: 73, sf: 2400, rho: 2.6, desc: 'Standard Glasfaser' },
+  'Carbon (HT)': { ef: 230, sf: 3500, rho: 1.8, desc: inhalt.werte.highTenacityCarbonfaser },
+  'Carbon (HM)': { ef: 390, sf: 2500, rho: 1.9, desc: inhalt.werte.highModulusCarbonfaser },
+  'E-Glas': { ef: 73, sf: 2400, rho: 2.6, desc: inhalt.werte.standardGlasfaser },
   'Aramid': { ef: 130, sf: 2900, rho: 1.45, desc: 'Para-Aramidfaser' },
 };
 
@@ -148,7 +150,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
       labels,
       datasets: [
         {
-          label: 'E-Modul Längs (Voigt)',
+          label: inhalt.werte.eModulLängsVoigt,
           data: eParallelData,
           borderColor: '#A3113E',
           borderWidth: 2,
@@ -156,7 +158,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
           fill: false,
         },
         {
-          label: 'E-Modul Quer (Reuss)',
+          label: inhalt.werte.eModulQuerReuss,
           data: eQuerData,
           borderColor: '#475569',
           borderWidth: 2,
@@ -164,7 +166,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
           fill: false,
         },
         {
-          label: 'Aktueller Wert (Längs)',
+          label: inhalt.werte.aktuellerWertLängs,
           data: currentPointParallel,
           borderColor: '#A3113E',
           backgroundColor: '#A3113E',
@@ -173,7 +175,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
           borderWidth: 2,
         },
         {
-          label: 'Aktueller Wert (Quer)',
+          label: inhalt.werte.aktuellerWertQuer,
           data: currentPointQuer,
           borderColor: '#475569',
           backgroundColor: '#475569',
@@ -195,10 +197,10 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
     },
     scales: {
       x: {
-        title: { display: true, text: 'Faservolumengehalt v_f [%]', font: { weight: 'bold' as const } }
+        title: { display: true, text: inhalt.werte.faservolumengehaltVF, font: { weight: 'bold' as const } }
       },
       y: {
-        title: { display: true, text: 'E-Modul [GPa]', font: { weight: 'bold' as const } },
+        title: { display: true, text: inhalt.werte.eModulGpa, font: { weight: 'bold' as const } },
         min: 0,
       }
     }
@@ -283,23 +285,15 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
               <Layers size={22} />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-                Werkstoff-Kombinationen &amp; Faserverbund
-              </h2>
-              <p className="text-xs text-text-main/70">
-                Funktionsschichten (Tragen · Dämmen · Schützen) · Faserverbundwerkstoffe (CFK/GFK) · Stahlbeton &amp; Sandwich · Grenzflächen &amp; Schutzschichten
-              </p>
+              <h2 className="text-xl font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.werkstoffKombinationenFaserverbund} /></h2>
+              <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.funktionsschichtenTragenDämmenSchützen} /></p>
             </div>
           </div>
-          <span className="hidden sm:inline-flex px-3 py-1 rounded-full text-xs font-semibold bg-shiraz/10 text-shiraz border border-shiraz/20">
-            Cluster II: Materialien &amp; Produkte
-          </span>
+          <span className="hidden sm:inline-flex px-3 py-1 rounded-full text-xs font-semibold bg-shiraz/10 text-shiraz border border-shiraz/20"><MdText text={inhalt.texte.clusterIiMaterialienProdukte} /></span>
         </div>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mb-6">
-          <p className="leading-relaxed">
-            Im modernen Bauwesen erfüllt selten ein Einzelwerkstoff alle statischen, bauphysikalischen und dauerhaftigkeitsrelevanten Anforderungen zugleich. Erst durch <strong>Werkstoff-Kombinationen</strong> – vom mehrschichtigen Wandaufbau nach dem Prinzip <em>„Tragen, Dämmen, Schützen“</em> über mikro- und makroskopische <strong>Faser- und Verbundwerkstoffe</strong> (CFK, GFK, Stahlbeton, Sandwich) bis hin zu funktionellen <strong>Schutzschichten</strong> – entstehen dauerhafte, wärmebrückenarme und tragfähige Konstruktionen.
-          </p>
+          <p className="leading-relaxed"><MdText text={inhalt.texte.imModernenBauwesenErfüllt} /></p>
         </div>
 
         {/* Navigation Tabs */}
@@ -313,8 +307,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
             }`}
             onClick={() => setActiveTab('ueberblick')}
           >
-            <Box size={16} /> Systematik &amp; Prinzipien
-          </button>
+            <Box size={16} /><MdText text={inhalt.texte.systematikPrinzipien} /></button>
           <button aria-pressed={activeTab === 'aufbauten'}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
@@ -324,8 +317,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
             }`}
             onClick={() => setActiveTab('aufbauten')}
           >
-            <Layers size={16} /> Schichtaufbau Außenwand
-          </button>
+            <Layers size={16} /><MdText text={inhalt.texte.schichtaufbauAußenwand} /></button>
           <button aria-pressed={activeTab === 'faserverbund'}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
@@ -335,8 +327,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
             }`}
             onClick={() => setActiveTab('faserverbund')}
           >
-            <Network size={16} /> Faserverbund (CFK/GFK Simulator)
-          </button>
+            <Network size={16} /><MdText text={inhalt.texte.faserverbundCfkGfkSimulator} /></button>
           <button aria-pressed={activeTab === 'verbundwerkstoffe'}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
@@ -346,8 +337,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
             }`}
             onClick={() => setActiveTab('verbundwerkstoffe')}
           >
-            <GitMerge size={16} /> Makroverbunde (Stb/Sandwich/VSG)
-          </button>
+            <GitMerge size={16} /><MdText text={inhalt.texte.makroverbundeStbSandwichVsg} /></button>
           <button aria-pressed={activeTab === 'schutzschichten'}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
@@ -357,8 +347,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
             }`}
             onClick={() => setActiveTab('schutzschichten')}
           >
-            <Shield size={16} /> Schutzschichten &amp; Grenzflächen
-          </button>
+            <Shield size={16} /><MdText text={inhalt.texte.schutzschichtenGrenzflächen} /></button>
           <button aria-pressed={activeTab === 'rechner'}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
@@ -368,8 +357,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
             }`}
             onClick={() => setActiveTab('rechner')}
           >
-            <Calculator size={16} /> Interaktiver Schichtrechner
-          </button>
+            <Calculator size={16} /><MdText text={inhalt.texte.interaktiverSchichtrechner} /></button>
           <button aria-pressed={activeTab === 'steckbrief'}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
@@ -390,23 +378,17 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
               <div className="p-5 bg-off-white rounded-xl border border-home-grau/30 flex flex-col justify-between">
                 <div>
                   <div className="w-8 h-8 rounded-lg bg-shiraz/10 text-shiraz flex items-center justify-center font-bold text-sm mb-3">1</div>
-                  <h3 className="font-bold text-text-main text-base mb-2">Makro- &amp; Schichtverbunde</h3>
-                  <p className="text-xs text-text-main/75 leading-relaxed mb-3">
-                    Geometrisch getrennte, makroskopische Werkstoffschichten, die jeweils eine dedizierte Schutz-, Dämm- oder Tragfunktion übernehmen (z. B. Mauerwerk + Dämmung + Putz, Sandwichpaneele oder Verbundsicherheitsglas).
-                  </p>
+                  <h3 className="font-bold text-text-main text-base mb-2"><MdText text={inhalt.texte.makroSchichtverbunde} /></h3>
+                  <p className="text-xs text-text-main/75 leading-relaxed mb-3"><MdText text={inhalt.texte.geometrischGetrennteMakroskopischeWerkst} /></p>
                 </div>
-                <div className="p-2.5 bg-white rounded-lg border border-home-grau/20 text-xs text-text-main/80 font-mono">
-                  Funktionsdifferenzierung: Tragen | Dämmen | Schützen
-                </div>
+                <div className="p-2.5 bg-white rounded-lg border border-home-grau/20 text-xs text-text-main/80 font-mono"><MdText text={inhalt.texte.funktionsdifferenzierungTragenDämmenSchü} /></div>
               </div>
 
               <div className="p-5 bg-off-white rounded-xl border border-home-grau/30 flex flex-col justify-between">
                 <div>
                   <div className="w-8 h-8 rounded-lg bg-shiraz/10 text-shiraz flex items-center justify-center font-bold text-sm mb-3">2</div>
-                  <h3 className="font-bold text-text-main text-base mb-2">Struktur- &amp; Faserverbunde</h3>
-                  <p className="text-xs text-text-main/75 leading-relaxed mb-3">
-                    Kombination mindestens zweier Phasen auf Materialebene: Eine kontinuierliche <strong>Matrix</strong> (Beton, Polymerharz) überträgt Schubkräfte, während eine eingebettete <strong>Bewehrungsphase</strong> (Carbon, Glas, Stahl, Aramid) Zugspannungen absorbiert.
-                  </p>
+                  <h3 className="font-bold text-text-main text-base mb-2"><MdText text={inhalt.texte.strukturFaserverbunde} /></h3>
+                  <p className="text-xs text-text-main/75 leading-relaxed mb-3"><MdText text={inhalt.texte.kombinationMindestensZweierPhasen} /></p>
                 </div>
                 <div className="p-2.5 bg-white rounded-lg border border-home-grau/20 text-xs text-text-main/80 font-mono">
                   Mischungsregel: <InlineMath math="E = V_f E_f + V_m E_m" />
@@ -416,10 +398,8 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
               <div className="p-5 bg-off-white rounded-xl border border-home-grau/30 flex flex-col justify-between">
                 <div>
                   <div className="w-8 h-8 rounded-lg bg-shiraz/10 text-shiraz flex items-center justify-center font-bold text-sm mb-3">3</div>
-                  <h3 className="font-bold text-text-main text-base mb-2">Grenzflächen &amp; Schutzschichten</h3>
-                  <p className="text-xs text-text-main/75 leading-relaxed mb-3">
-                    Oberflächenbehandlungen und Beschichtungssysteme (Hydrophobierung, OS-Systeme nach DIN EN 1504-2, Feuerverzinkung nach DIN EN ISO 1461, Beschichtungen nach DIN EN ISO 12944), die das Grundmaterial vor chemischem und physikalischem Umwelteinfluss absichern.
-                  </p>
+                  <h3 className="font-bold text-text-main text-base mb-2"><MdText text={inhalt.texte.grenzflächenSchutzschichten} /></h3>
+                  <p className="text-xs text-text-main/75 leading-relaxed mb-3"><MdText text={inhalt.texte.oberflächenbehandlungenUndBeschichtungss} /></p>
                 </div>
                 <div className="p-2.5 bg-white rounded-lg border border-home-grau/20 text-xs text-text-main/80 font-mono">
                   Haftfestigkeit: <InlineMath math="f_{\text{ct,surf}} \ge 1{,}5\,\text{MPa}" />
@@ -430,43 +410,41 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
             {/* Matrix der Koppelmechanismen */}
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xxs">
               <h3 className="text-base font-bold text-text-main mb-3 flex items-center gap-2">
-                <Sliders size={18} className="text-shiraz" />
-                Physikalische Voraussetzungen für erfolgreiche Werkstoff-Kombinationen
-              </h3>
+                <Sliders size={18} className="text-shiraz" /><MdText text={inhalt.texte.physikalischeVoraussetzungenFürErfolgrei} /></h3>
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs border-collapse">
                   <thead>
                     <tr className="bg-off-white border-b border-home-grau/30 text-text-main font-bold">
                       <th className="p-3">Kriterium</th>
-                      <th className="p-3">Physikalische Anforderung</th>
-                      <th className="p-3">Versagensrisiko bei Inkompatibilität</th>
+                      <th className="p-3"><MdText text={inhalt.texte.physikalischeAnforderung} /></th>
+                      <th className="p-3"><MdText text={inhalt.texte.versagensrisikoBeiInkompatibilität} /></th>
                       <th className="p-3">Praxis-Beispiel</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-home-grau/20 text-text-main/80">
                     <tr>
-                      <td className="p-3 font-bold text-text-main">Thermische Dehnungskompatibilität</td>
-                      <td className="p-3">Ähnliche Längenausdehnungskoeffizienten (<InlineMath math="\Delta \alpha_T \approx 0" />)</td>
-                      <td className="p-3 text-rose-700">Thermisches Zwangsversagen, Delamination an Grenzflächen</td>
-                      <td className="p-3">Stahlbeton (<InlineMath math="\alpha_{T,\text{Beton}} \approx 10 \cdot 10^{-6}\,\text{K}^{-1} \approx \alpha_{T,\text{Stahl}}" />)</td>
+                      <td className="p-3 font-bold text-text-main"><MdText text={inhalt.texte.thermischeDehnungskompatibilität} /></td>
+                      <td className="p-3"><MdText text={inhalt.texte.ähnlicheLängenausdehnungskoeffizientenDe} /></td>
+                      <td className="p-3 text-rose-700"><MdText text={inhalt.texte.thermischesZwangsversagenDelaminationAn} /></td>
+                      <td className="p-3"><MdText text={inhalt.texte.stahlbetonAlphaTText} /></td>
                     </tr>
                     <tr>
-                      <td className="p-3 font-bold text-text-main">Chemische Verträglichkeit &amp; Passivierung</td>
-                      <td className="p-3">Stabiles elektrochemisches Milieu (z. B. Alkalität <InlineMath math="\text{pH} > 12{,}5" />)</td>
-                      <td className="p-3 text-rose-700">Lochfraß, Bimetall-Korrosion, Ettringittreiben</td>
-                      <td className="p-3">Betonstahl im unkarbonatisierten Zementstein</td>
+                      <td className="p-3 font-bold text-text-main"><MdText text={inhalt.texte.chemischeVerträglichkeitPassivierung} /></td>
+                      <td className="p-3"><MdText text={inhalt.texte.stabilesElektrochemischesMilieuZ} /></td>
+                      <td className="p-3 text-rose-700"><MdText text={inhalt.texte.lochfraßBimetallKorrosionEttringittreibe} /></td>
+                      <td className="p-3"><MdText text={inhalt.texte.betonstahlImUnkarbonatisiertenZementstei} /></td>
                     </tr>
                     <tr>
-                      <td className="p-3 font-bold text-text-main">Hygrothermische Schichtfolge</td>
-                      <td className="p-3">Wasserdampfdiffusionswiderstand von innen nach außen abnehmend (<InlineMath math="s_{d,\text{innen}} \gg s_{d,\text{außen}}" />)</td>
-                      <td className="p-3 text-rose-700">Tauwasserausfall im Bauteilinneren (Glaser-Kondensat), Schimmel, Frostschäden</td>
-                      <td className="p-3">Mehrschichtige Außenwand (Ziegel + Dämmung + Diffusionsoffener Putz)</td>
+                      <td className="p-3 font-bold text-text-main"><MdText text={inhalt.texte.hygrothermischeSchichtfolge} /></td>
+                      <td className="p-3"><MdText text={inhalt.texte.wasserdampfdiffusionswiderstandVonInnenN} /></td>
+                      <td className="p-3 text-rose-700"><MdText text={inhalt.texte.tauwasserausfallImBauteilinnerenGlaser} /></td>
+                      <td className="p-3"><MdText text={inhalt.texte.mehrschichtigeAußenwandZiegelDämmung} /></td>
                     </tr>
                     <tr>
-                      <td className="p-3 font-bold text-text-main">Schubsteife Grenzflächenverankerung</td>
-                      <td className="p-3">Formschluss, Reibung oder chemische Adhäsion (<InlineMath math="\tau_{\text{bond}} > \tau_{\text{einw}}" />)</td>
-                      <td className="p-3 text-rose-700">Schlupf, Entkoppelung, Verlust der Verbundtragwirkung</td>
-                      <td className="p-3">Rippung von B500B Betonstahl, Klebeharz bei CFK-Lamellen</td>
+                      <td className="p-3 font-bold text-text-main"><MdText text={inhalt.texte.schubsteifeGrenzflächenverankerung} /></td>
+                      <td className="p-3"><MdText text={inhalt.texte.formschlussReibungOderChemische} /></td>
+                      <td className="p-3 text-rose-700"><MdText text={inhalt.texte.schlupfEntkoppelungVerlustDer} /></td>
+                      <td className="p-3"><MdText text={inhalt.texte.rippungVonB500bBetonstahl} /></td>
                     </tr>
                   </tbody>
                 </table>
@@ -479,26 +457,20 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
         {activeTab === 'aufbauten' && (
           <div className="flex flex-col gap-6 animate-in fade-in duration-300">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="font-bold text-shiraz text-lg mb-2">
-                Das Dreiklang-Prinzip der Gebäudehülle: Tragen · Dämmen · Schützen
-              </h3>
-              <p className="text-sm text-text-main/80 leading-relaxed mb-4">
-                Eine monolithische Massivwand aus gewöhnlichem Normalbeton kann zwar enorme Lasten tragen, weist jedoch eine sehr hohe Wärmeleitfähigkeit auf (<InlineMath math="\lambda \approx 2{,}0\,\text{W/(m}\cdot\text{K)}" />) und erfordert dicke Querschnitte, um die heutigen Anforderungen des GModG (vormals GEG) zu erfüllen. Moderne Hüllkonstruktionen entkoppeln die Aufgaben in spezialisierte Funktionsschichten:
-              </p>
+              <h3 className="font-bold text-shiraz text-lg mb-2"><MdText text={inhalt.texte.dasDreiklangPrinzipDer} /></h3>
+              <p className="text-sm text-text-main/80 leading-relaxed mb-4"><MdText text={inhalt.texte.eineMonolithischeMassivwandAus} /></p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="bg-white p-4 rounded-xl border border-home-grau/25 shadow-xxs">
                   <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-slate-100 text-slate-800 border border-slate-200 uppercase">
                     Funktion 1
                   </span>
-                  <h4 className="font-bold text-text-main mt-2 mb-1">Tragen (Statisches Skelett)</h4>
-                  <p className="text-xs text-text-main/70 leading-relaxed mb-2">
-                    Übertragung von Eigenlasten, Nutzlasten, Wind- und Erdbebenkräften in die Gründung.
-                  </p>
+                  <h4 className="font-bold text-text-main mt-2 mb-1"><MdText text={inhalt.texte.tragenStatischesSkelett} /></h4>
+                  <p className="text-xs text-text-main/70 leading-relaxed mb-2"><MdText text={inhalt.texte.übertragungVonEigenlastenNutzlasten} /></p>
                   <ul className="text-xs text-text-main/80 space-y-1 list-disc list-inside">
-                    <li>Kalksandstein (KS, hohe Rohdichte, sehr guter Schallschutz)</li>
-                    <li>Mauerziegel (HLz) oder Porenbeton</li>
-                    <li>Stahlbetonwand (Ortbeton oder Fertigteil)</li>
+                    <li><MdText text={inhalt.texte.kalksandsteinKsHoheRohdichte} /></li>
+                    <li><MdText text={inhalt.texte.mauerziegelHlzOderPorenbeton} /></li>
+                    <li><MdText text={inhalt.texte.stahlbetonwandOrtbetonOderFertigteil} /></li>
                   </ul>
                 </div>
 
@@ -506,14 +478,12 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                   <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-50 text-amber-800 border border-amber-200 uppercase">
                     Funktion 2
                   </span>
-                  <h4 className="font-bold text-text-main mt-2 mb-1">Dämmen (Wärme &amp; Energie)</h4>
-                  <p className="text-xs text-text-main/70 leading-relaxed mb-2">
-                    Minimierung des Transmissionswärmeverlustes <InlineMath math="H_T" /> zur Erfüllung des Gebäudeenergiegesetzes (GEG).
-                  </p>
+                  <h4 className="font-bold text-text-main mt-2 mb-1"><MdText text={inhalt.texte.dämmenWärmeEnergie} /></h4>
+                  <p className="text-xs text-text-main/70 leading-relaxed mb-2"><MdText text={inhalt.texte.minimierungDesTransmissionswärmeverluste} /></p>
                   <ul className="text-xs text-text-main/80 space-y-1 list-disc list-inside">
-                    <li>Expandiertes Polystyrol (EPS, WLG 032–035)</li>
-                    <li>Steinwolle / Glaswolle (nichtbrennbar A1)</li>
-                    <li>Holzfaserdämmplatten oder Vakuumdämmung (VIP)</li>
+                    <li><MdText text={inhalt.texte.expandiertesPolystyrolEpsWlg} /></li>
+                    <li><MdText text={inhalt.texte.steinwolleGlaswolleNichtbrennbarA1} /></li>
+                    <li><MdText text={inhalt.texte.holzfaserdämmplattenOderVakuumdämmungVip} /></li>
                   </ul>
                 </div>
 
@@ -521,14 +491,12 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                   <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-blue-50 text-blue-800 border border-blue-200 uppercase">
                     Funktion 3
                   </span>
-                  <h4 className="font-bold text-text-main mt-2 mb-1">Schützen (Witterung &amp; Feuchte)</h4>
-                  <p className="text-xs text-text-main/70 leading-relaxed mb-2">
-                    Abwehr von Schlagregen, Frost-Tau-Wechseln, UV-Strahlung und mechanischen Stoßbelastungen.
-                  </p>
+                  <h4 className="font-bold text-text-main mt-2 mb-1"><MdText text={inhalt.texte.schützenWitterungFeuchte} /></h4>
+                  <p className="text-xs text-text-main/70 leading-relaxed mb-2"><MdText text={inhalt.texte.abwehrVonSchlagregenFrost} /></p>
                   <ul className="text-xs text-text-main/80 space-y-1 list-disc list-inside">
-                    <li>Bewehrter Unterputz mit Glasfasergewebe</li>
-                    <li>Wasserabweisender Oberputz (Silikonharz/Silikat)</li>
-                    <li>Vorgehängte hinterlüftete Fassadenplatten (VHF)</li>
+                    <li><MdText text={inhalt.texte.bewehrterUnterputzMitGlasfasergewebe} /></li>
+                    <li><MdText text={inhalt.texte.wasserabweisenderOberputzSilikonharzSili} /></li>
+                    <li><MdText text={inhalt.texte.vorgehängteHinterlüfteteFassadenplattenV} /></li>
                   </ul>
                 </div>
               </div>
@@ -536,35 +504,25 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
 
             {/* Fassadensysteme im Vergleich */}
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xxs">
-              <h3 className="font-bold text-text-main text-base mb-4">
-                Typische Fassadensysteme im bauphysikalischen Vergleich
-              </h3>
+              <h3 className="font-bold text-text-main text-base mb-4"><MdText text={inhalt.texte.typischeFassadensystemeImBauphysikalisch} /></h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="p-4 bg-off-white rounded-xl border border-home-grau/25">
-                  <h4 className="font-bold text-shiraz text-sm mb-2">
-                    A. Wärmedämm-Verbundsystem (WDVS)
-                  </h4>
-                  <p className="text-xs text-text-main/80 mb-3 leading-relaxed">
-                    Kompaktes Schichtsystem, bei dem der Dämmstoff direkt auf den Massivbau geklebt/gedübelt wird. Der bewehrte Unterputz nimmt Zugspannungen aus thermischer Dehnung auf.
-                  </p>
+                  <h4 className="font-bold text-shiraz text-sm mb-2"><MdText text={inhalt.texte.aWärmedämmVerbundsystemWdvs} /></h4>
+                  <p className="text-xs text-text-main/80 mb-3 leading-relaxed"><MdText text={inhalt.texte.kompaktesSchichtsystemBeiDem} /></p>
                   <div className="space-y-1.5 text-xs text-text-main/75 border-t border-home-grau/20 pt-2">
-                    <div><strong>Vorteile:</strong> Kostengünstig, fugenlose Hülle, minimale Wanddicke für sehr niedrige U-Werte.</div>
-                    <div><strong>Herausforderungen:</strong> Algenbildung auf kühlen Außenflächen (Taupunktunterschreitung durch geringe thermische Trägheit der Putzschicht), Spechtschäden, selektiver Rückbau/Recycling aufwändig.</div>
-                    <div><strong>Normbezug:</strong> DIN 55699 / ETAG 004 / DIN EN 13499.</div>
+                    <div><MdText text={inhalt.texte.vorteileKostengünstigFugenloseHülle} /></div>
+                    <div><MdText text={inhalt.texte.herausforderungenAlgenbildungAufKühlen} /></div>
+                    <div><MdText text={inhalt.texte.normbezugDin55699Etag} /></div>
                   </div>
                 </div>
 
                 <div className="p-4 bg-off-white rounded-xl border border-home-grau/25">
-                  <h4 className="font-bold text-shiraz text-sm mb-2">
-                    B. Vorgehängte Hinterlüftete Fassade (VHF)
-                  </h4>
-                  <p className="text-xs text-text-main/80 mb-3 leading-relaxed">
-                    Konstruktive Trennung von Witterungsschutz (Bekleidung) und Dämmschicht durch einen durchgehenden Hinterlüftungsspalt (<InlineMath math="\ge 20\,\text{mm}" /> nach DIN 18516-1).
-                  </p>
+                  <h4 className="font-bold text-shiraz text-sm mb-2"><MdText text={inhalt.texte.bVorgehängteHinterlüfteteFassade} /></h4>
+                  <p className="text-xs text-text-main/80 mb-3 leading-relaxed"><MdText text={inhalt.texte.konstruktiveTrennungVonWitterungsschutz} /></p>
                   <div className="space-y-1.5 text-xs text-text-main/75 border-t border-home-grau/20 pt-2">
-                    <div><strong>Vorteile:</strong> Höchste Schadenssicherheit, diffusionsfeuchte Ablüftung durch Kamineffekt, einfache Demontierbarkeit (zirkuläres Bauen), sehr guter sommerlicher Hitzeschutz.</div>
-                    <div><strong>Herausforderungen:</strong> Höhere Anfangsinvestition, Wärmebrücken durch Unterkonstruktionsanker (müssen mit punktuellen <InlineMath math="\chi" />-Werten berechnet werden).</div>
-                    <div><strong>Normbezug:</strong> DIN 18516-1 / DIN 4108-3.</div>
+                    <div><MdText text={inhalt.texte.vorteileHöchsteSchadenssicherheitDiffusi} /></div>
+                    <div><MdText text={inhalt.texte.herausforderungenHöhereAnfangsinvestitio} /></div>
+                    <div><MdText text={inhalt.texte.normbezugDin185161} /></div>
                   </div>
                 </div>
               </div>
@@ -575,18 +533,12 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
               <div className="flex items-start gap-2.5">
                 <AlertTriangle size={18} className="text-amber-700 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-bold text-amber-900 text-sm mb-1">
-                    Bauphysikalische Grundregel für diffusionssichere Schichtfolgen (DIN 4108-3)
-                  </h4>
-                  <p className="mb-2">
-                    Wasserdampf diffundiert im Winter infolge des Dampfdruckgefälles von innen (warm, hoher Partialdruck <InlineMath math="p_i" />) nach außen (kalt, niedriger Partialdruck <InlineMath math="p_e" />). Um schädliche Kondensation (Tauwasser) an kalten Grenzflächen zu verhindern, muss die <strong>diffusionsäquivalente Luftschichtdicke</strong> <InlineMath math="s_d = \mu \cdot d" /> von innen nach außen abnehmen:
-                  </p>
+                  <h4 className="font-bold text-amber-900 text-sm mb-1"><MdText text={inhalt.texte.bauphysikalischeGrundregelFürDiffusionss} /></h4>
+                  <p className="mb-2"><MdText text={inhalt.texte.wasserdampfDiffundiertImWinter} /></p>
                   <div className="p-2 bg-white/80 rounded border border-amber-200 font-mono text-center font-bold text-amber-900">
                     <InlineMath math="s_{d,\text{innen}} \gg s_{d,\text{außen}} \quad (\text{Faustregel, Lehrannahme: innen mind. 10-fach dichter als außen})" />
                   </div>
-                  <p className="mt-2 text-[11px] text-amber-900/80">
-                    Wird außen ein dampfdichter Kunstharzfilm oder eine Metallfolie ohne Hinterlüftung montiert, entsteht eine sogenannte <em>„Dampfsperren-Falle“</em>, die zu Auffeuchtung, Schimmel und Frostabsprengungen führt.
-                  </p>
+                  <p className="mt-2 text-[11px] text-amber-900/80"><MdText text={inhalt.texte.wirdAußenEinDampfdichter} /></p>
                 </div>
               </div>
             </div>
@@ -607,7 +559,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                     <div className="flex flex-col gap-2">
                       <div className="flex items-center gap-2">
                         <label className="text-sm font-medium text-text-main">Faserart</label>
-                        <InfoTooltip text="Art der verwendeten Verstärkungsfasern." />
+                        <InfoTooltip text={inhalt.werte.artDerVerwendetenVerstärkungsfasern} />
                       </div>
                       <select 
                         aria-label="Faserart" 
@@ -621,7 +573,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                     <div className="flex flex-col gap-2">
                       <div className="flex items-center gap-2">
                         <label className="text-sm font-medium text-text-main">Matrixart</label>
-                        <InfoTooltip text="Art des verwendeten Matrixmaterials (Kunstharz)." />
+                        <InfoTooltip text={inhalt.werte.artDesVerwendetenMatrixmaterials} />
                       </div>
                       <select 
                         aria-label="Matrixart" 
@@ -635,8 +587,8 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                   </div>
 
                   <Slider 
-                    label="Faservolumengehalt v_f" 
-                    info="Volumenanteil der Fasern im Verbundwerkstoff." 
+                    label={inhalt.werte.faservolumengehaltVF2} 
+                    info={inhalt.werte.volumenanteilDerFasernIm} 
                     min={0} 
                     max={80} 
                     step={1} 
@@ -646,15 +598,15 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                   />
                   
                   <div className="mt-6 p-3 bg-white rounded-lg border border-home-grau/30 text-sm">
-                    <h4 className="font-bold mb-2 text-text-main text-xs">Eingesetzte Phasenkennwerte</h4>
+                    <h4 className="font-bold mb-2 text-text-main text-xs"><MdText text={inhalt.texte.eingesetztePhasenkennwerte} /></h4>
                     <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs">
-                      <div className="flex justify-between"><span className="text-text-main/60">E-Modul Faser:</span><span className="font-bold">{formatDeWert(ef)} GPa</span></div>
-                      <div className="flex justify-between"><span className="text-text-main/60">Zugfestigkeit Faser:</span><span className="font-bold">{formatDeWert(sf)} MPa</span></div>
-                      <div className="flex justify-between"><span className="text-text-main/60">Dichte Faser:</span><span className="font-bold">{formatDeWert(fibers[fiberType].rho)} g/cm³</span></div>
+                      <div className="flex justify-between"><span className="text-text-main/60"><MdText text={inhalt.texte.eModulFaser} /></span><span className="font-bold">{formatDeWert(ef)} GPa</span></div>
+                      <div className="flex justify-between"><span className="text-text-main/60"><MdText text={inhalt.texte.zugfestigkeitFaser} /></span><span className="font-bold">{formatDeWert(sf)} MPa</span></div>
+                      <div className="flex justify-between"><span className="text-text-main/60"><MdText text={inhalt.texte.dichteFaser} /></span><span className="font-bold">{formatDeWert(fibers[fiberType].rho)} g/cm³</span></div>
                       <div className="col-span-2 border-t border-home-grau/20 my-1"></div>
-                      <div className="flex justify-between"><span className="text-text-main/60">E-Modul Matrix:</span><span className="font-bold">{formatDeWert(em)} GPa</span></div>
-                      <div className="flex justify-between"><span className="text-text-main/60">Zugfestigkeit Matrix:</span><span className="font-bold">{formatDeWert(sm)} MPa</span></div>
-                      <div className="flex justify-between"><span className="text-text-main/60">Dichte Matrix:</span><span className="font-bold">{formatDeWert(matrices[matrixType].rho)} g/cm³</span></div>
+                      <div className="flex justify-between"><span className="text-text-main/60"><MdText text={inhalt.texte.eModulMatrix} /></span><span className="font-bold">{formatDeWert(em)} GPa</span></div>
+                      <div className="flex justify-between"><span className="text-text-main/60"><MdText text={inhalt.texte.zugfestigkeitMatrix} /></span><span className="font-bold">{formatDeWert(sm)} MPa</span></div>
+                      <div className="flex justify-between"><span className="text-text-main/60"><MdText text={inhalt.texte.dichteMatrix} /></span><span className="font-bold">{formatDeWert(matrices[matrixType].rho)} g/cm³</span></div>
                     </div>
                   </div>
                 </div>
@@ -662,29 +614,29 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
 
               <div className="flex flex-col gap-6">
                 <div className="bg-shiraz text-white p-5 rounded-xl shadow-md">
-                  <h3 className="text-xs font-bold uppercase tracking-wider mb-3 opacity-90">Berechnete Verbundkennwerte</h3>
+                  <h3 className="text-xs font-bold uppercase tracking-wider mb-3 opacity-90"><MdText text={inhalt.texte.berechneteVerbundkennwerte} /></h3>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <div className="text-white/70 text-xs">Dichte Verbund</div>
+                      <div className="text-white/70 text-xs"><MdText text={inhalt.texte.dichteVerbund} /></div>
                       <div className="text-2xl font-bold font-mono">{formatDeZahl(fvkResults.rho_composite, 2)} g/cm³</div>
                     </div>
                     <div>
-                      <div className="text-white/70 text-xs">Zugfestigkeit Längs (Lehrmodell, ideal)</div>
+                      <div className="text-white/70 text-xs"><MdText text={inhalt.texte.zugfestigkeitLängsLehrmodellIdeal} /></div>
                       <div className="text-2xl font-bold font-mono">{formatDeZahl(fvkResults.S_parallel, 0)} MPa</div>
                     </div>
                     <div>
-                      <div className="text-white/70 text-xs">E-Modul Längs (Voigt)</div>
+                      <div className="text-white/70 text-xs"><MdText text={inhalt.texte.eModulLängsVoigt} /></div>
                       <div className="text-2xl font-bold font-mono">{formatDeZahl(fvkResults.E_parallel, 1)} GPa</div>
                     </div>
                     <div>
-                      <div className="text-white/70 text-xs">E-Modul Quer (Reuss)</div>
+                      <div className="text-white/70 text-xs"><MdText text={inhalt.texte.eModulQuerReuss} /></div>
                       <div className="text-2xl font-bold font-mono">{formatDeZahl(fvkResults.E_quer, 1)} GPa</div>
                     </div>
                   </div>
                 </div>
 
                 <div className="bg-white p-4 rounded-xl border border-home-grau/30 h-[260px] flex flex-col">
-                  <h3 className="text-xs font-bold text-center mb-1 text-text-main">E-Modul vs. Faservolumengehalt</h3>
+                  <h3 className="text-xs font-bold text-center mb-1 text-text-main"><MdText text={inhalt.texte.eModulVsFaservolumengehalt} /></h3>
                   <div className="flex-1 relative">
                     <Line data={fvkResults.chartData} options={chartOptions} />
                   </div>
@@ -694,7 +646,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
 
             {/* Schematische Darstellung Voigt vs. Reuss */}
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xxs">
-              <h3 className="font-bold mb-3 text-text-main text-sm">Gefügemodelle der Mischungsregeln (Voigt vs. Reuss)</h3>
+              <h3 className="font-bold mb-3 text-text-main text-sm"><MdText text={inhalt.texte.gefügemodelleDerMischungsregelnVoigt} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
                 <svg width="100%" height="150" viewBox="0 0 450 150" className="max-w-xl">
                   {/* Voigt (Parallel) */}
@@ -738,49 +690,41 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                     </marker>
                   </defs>
                 </svg>
-                <div className="text-xs text-text-main/70 text-center mt-2 max-w-lg">
-                  Faserverbundwerkstoffe sind hochgradig anisotrop: In Faserrichtung (Voigt) dominieren die steifen Fasern (<InlineMath math="E_{\parallel}" /> hoch). Quer zur Faser (Reuss) staucht sich die weiche Matrix elastisch zusammen (<InlineMath math="E_{\perp}" /> niedrig).
-                </div>
+                <div className="text-xs text-text-main/70 text-center mt-2 max-w-lg"><MdText text={inhalt.texte.faserverbundwerkstoffeSindHochgradigAnis} /></div>
               </div>
             </div>
 
             {/* Praxisanwendungen FVK im Bauwesen */}
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xxs">
-              <h3 className="text-base font-bold text-text-main mb-3">Baupraktische FVK-Anwendungen</h3>
+              <h3 className="text-base font-bold text-text-main mb-3"><MdText text={inhalt.texte.baupraktischeFvkAnwendungen} /></h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div className="p-4 bg-off-white rounded-xl border border-home-grau/25">
-                  <h4 className="font-bold text-shiraz text-sm mb-1.5">CFK-Lamellen (Biegeverstärkung)</h4>
-                  <p className="text-text-main/75 leading-relaxed mb-2">
-                    Nachträgliches Aufkleben mit Epoxidharz auf Zugzonen von Brückenfahrbahnplatten und Decken.
-                  </p>
+                  <h4 className="font-bold text-shiraz text-sm mb-1.5"><MdText text={inhalt.texte.cfkLamellenBiegeverstärkung} /></h4>
+                  <p className="text-text-main/75 leading-relaxed mb-2"><MdText text={inhalt.texte.nachträglichesAufklebenMitEpoxidharz} /></p>
                   <ul className="list-disc list-inside space-y-1 text-text-main/80">
-                    <li>Keine Querschnittsvergrößerung</li>
-                    <li>Korrosionsfrei gegenüber Tausalz</li>
-                    <li>Kritisch: Harzerweichung bei <InlineMath math="T > 60\,^\circ\text{C}" /> (Brandschutz)</li>
+                    <li><MdText text={inhalt.texte.keineQuerschnittsvergrößerung} /></li>
+                    <li><MdText text={inhalt.texte.korrosionsfreiGegenüberTausalz} /></li>
+                    <li><MdText text={inhalt.texte.kritischHarzerweichungBeiT} /></li>
                   </ul>
                 </div>
 
                 <div className="p-4 bg-off-white rounded-xl border border-home-grau/25">
                   <h4 className="font-bold text-shiraz text-sm mb-1.5">GFK-Bewehrungsstäbe</h4>
-                  <p className="text-text-main/75 leading-relaxed mb-2">
-                    Einsatz in chemisch aggressiven Umgebungen (Klärbecken, Kaimauern) oder MRT-Räumen (elektrisch nichtleitend).
-                  </p>
+                  <p className="text-text-main/75 leading-relaxed mb-2"><MdText text={inhalt.texte.einsatzInChemischAggressiven} /></p>
                   <ul className="list-disc list-inside space-y-1 text-text-main/80">
-                    <li>Betondeckung nur für Verbund und Brandschutz nötig, nicht für Korrosionsschutz (Werte nach Zulassung)</li>
-                    <li>Geringerer E-Modul (<InlineMath math="E \approx 40 - 60\,\text{GPa}" />)</li>
-                    <li>Größere Rissbreiten bei Bemessung beachten</li>
+                    <li><MdText text={inhalt.texte.betondeckungNurFürVerbund} /></li>
+                    <li><MdText text={inhalt.texte.geringererEModulE} /></li>
+                    <li><MdText text={inhalt.texte.größereRissbreitenBeiBemessung} /></li>
                   </ul>
                 </div>
 
                 <div className="p-4 bg-off-white rounded-xl border border-home-grau/25">
-                  <h4 className="font-bold text-shiraz text-sm mb-1.5">Pultrudierte Tragprofile</h4>
-                  <p className="text-text-main/75 leading-relaxed mb-2">
-                    Stranggezogene I-, U- und Kastenprofile aus Glasfaser-Polyester für Fußgängerbrücken und Kühltürme.
-                  </p>
+                  <h4 className="font-bold text-shiraz text-sm mb-1.5"><MdText text={inhalt.texte.pultrudierteTragprofile} /></h4>
+                  <p className="text-text-main/75 leading-relaxed mb-2"><MdText text={inhalt.texte.stranggezogeneIUUnd} /></p>
                   <ul className="list-disc list-inside space-y-1 text-text-main/80">
-                    <li>Deutlich geringeres Eigengewicht (Dichte ≈ 1,9 statt 7,85 g/cm³)</li>
-                    <li>Geringer Instandhaltungsaufwand</li>
-                    <li>Gefahr spröden Abscherens an Schraubanschlüssen</li>
+                    <li><MdText text={inhalt.texte.deutlichGeringeresEigengewichtDichte} /></li>
+                    <li><MdText text={inhalt.texte.geringerInstandhaltungsaufwand} /></li>
+                    <li><MdText text={inhalt.texte.gefahrSprödenAbscherensAn} /></li>
                   </ul>
                 </div>
               </div>
@@ -794,50 +738,36 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
             {/* Stahlbeton */}
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
               <h3 className="font-bold text-shiraz text-lg mb-2 flex items-center gap-2">
-                <Flame size={20} className="text-shiraz" />
-                1. Stahlbeton: Der Urtyp des konstruktiven Makroverbunds
-              </h3>
-              <p className="text-sm text-text-main/80 leading-relaxed mb-3">
-                Beton besitzt eine hohe Druckfestigkeit (<InlineMath math="f_{\text{ck}} = 20 - 100\,\text{MPa}" />), aber nur eine verschwindend geringe Zugfestigkeit (<InlineMath math="f_{\text{ctm}} \approx 0{,}1 \cdot f_{\text{ck}}" />). Durch das Einbetten von geripptem Betonstahl (B500B mit Streckgrenze <InlineMath math="f_{\text{yk}} = 500\,\text{MPa}" />) in den Zugzonen entsteht ein Verbundwerkstoff, in dem der Stahl die Zugkräfte übernimmt.
-              </p>
+                <Flame size={20} className="text-shiraz" /><MdText text={inhalt.texte.t1StahlbetonDerUrtyp} /></h3>
+              <p className="text-sm text-text-main/80 leading-relaxed mb-3"><MdText text={inhalt.texte.betonBesitztEineHohe} /></p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div className="p-3 bg-white rounded-lg border border-home-grau/25">
-                  <strong className="text-text-main block mb-1">A. Thermische Dehnung</strong>
-                  Beton (<InlineMath math="\alpha_T \approx 10 \cdot 10^{-6}\,\text{K}^{-1}" />) und Stahl (<InlineMath math="\alpha_T \approx 12 \cdot 10^{-6}\,\text{K}^{-1}" />) haben eine ähnliche Wärmedehnzahl. Daher entstehen an der Grenzfläche nur geringe thermische Zwangsspannungen.
-                </div>
+                  <strong className="text-text-main block mb-1"><MdText text={inhalt.texte.aThermischeDehnung} /></strong><MdText text={inhalt.texte.betonAlphaTApprox} /></div>
                 <div className="p-3 bg-white rounded-lg border border-home-grau/25">
-                  <strong className="text-text-main block mb-1">B. Mechanischer Verbund</strong>
-                  Kombination aus Adhäsionsverbund (Zementleimhaftung), Scherverbund (Formschluss durch Schrägrippung nach DIN 488) und Reibung.
-                </div>
+                  <strong className="text-text-main block mb-1"><MdText text={inhalt.texte.bMechanischerVerbund} /></strong><MdText text={inhalt.texte.kombinationAusAdhäsionsverbundZementleim} /></div>
                 <div className="p-3 bg-white rounded-lg border border-home-grau/25">
-                  <strong className="text-text-main block mb-1">C. Chemischer Korrosionsschutz</strong>
-                  Das stark alkalische Porenwasser des Betons (<InlineMath math="\text{pH} \approx 12{,}5 - 13{,}5" />) bildet eine nanometerdünne Passivschicht aus Eisenoxiden auf dem Stahl, die vor Rost schützt, solange keine Karbonatisierung oder Chloride vorliegen.
-                </div>
+                  <strong className="text-text-main block mb-1"><MdText text={inhalt.texte.cChemischerKorrosionsschutz} /></strong><MdText text={inhalt.texte.dasStarkAlkalischePorenwasser} /></div>
               </div>
             </div>
 
             {/* Sandwich-Querschnitte & VSG */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-                <h3 className="font-bold text-text-main text-base mb-2">2. Sandwichelemente (DIN EN 14509)</h3>
-                <p className="text-xs text-text-main/75 leading-relaxed mb-3">
-                  Sandwichkonstruktionen bestehen aus zwei dünnen, hochfesten Deckschichten (Stahlblech, Aluminium, GFK) und einem leichten, schubsteifen Kern (PIR-Hartschaum oder Mineralwolle).
-                </p>
+                <h3 className="font-bold text-text-main text-base mb-2"><MdText text={inhalt.texte.t2SandwichelementeDinEn} /></h3>
+                <p className="text-xs text-text-main/75 leading-relaxed mb-3"><MdText text={inhalt.texte.sandwichkonstruktionenBestehenAusZwei} /></p>
                 <div className="p-3 bg-white rounded-lg border border-home-grau/20 text-xs space-y-1.5">
-                  <div><strong>Mechanik:</strong> Die Deckschichten nehmen das Biegemoment als Zug-Druck-Kräftepaar auf; der Kern überträgt Querkräfte über Schub (<InlineMath math="\tau = V / (b \cdot h)" />) und stabilisiert die Deckschichten gegen Knicken (Beulen).</div>
-                  <div><strong>Vorteil:</strong> Extrem hohes Verhältnis von Biegesteifigkeit <InlineMath math="EI" /> zu Eigengewicht.</div>
+                  <div><MdText text={inhalt.texte.mechanikDieDeckschichtenNehmen} /></div>
+                  <div><MdText text={inhalt.texte.vorteilExtremHohesVerhältnis} /></div>
                 </div>
               </div>
 
               <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-                <h3 className="font-bold text-text-main text-base mb-2">3. Verbund-Sicherheitsglas (VSG, DIN 18008)</h3>
-                <p className="text-xs text-text-main/75 leading-relaxed mb-3">
-                  Verbund aus mindestens zwei Glasscheiben mit einer zähelastischen Polyvinylbutyral-Zwischenfolie (PVB, Dicke meist 0,76 mm oder 1,52 mm).
-                </p>
+                <h3 className="font-bold text-text-main text-base mb-2"><MdText text={inhalt.texte.t3VerbundSicherheitsglasVsg} /></h3>
+                <p className="text-xs text-text-main/75 leading-relaxed mb-3"><MdText text={inhalt.texte.verbundAusMindestensZwei} /></p>
                 <div className="p-3 bg-white rounded-lg border border-home-grau/20 text-xs space-y-1.5">
-                  <div><strong>Bruchverhalten:</strong> Bei Glasbruch bleiben die Splitter an der Folie haften (Verletzungsschutz).</div>
-                  <div><strong>Resttragfähigkeit:</strong> Die Folie hält die gebrochene Scheibe zusammen; ob sie als Absturzsicherung ausreicht, hängt von Aufbau und Lagerung ab und ist nach DIN 18008 nachzuweisen.</div>
+                  <div><MdText text={inhalt.texte.bruchverhaltenBeiGlasbruchBleiben} /></div>
+                  <div><MdText text={inhalt.texte.resttragfähigkeitDieFolieHält} /></div>
                 </div>
               </div>
             </div>
@@ -850,101 +780,67 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
             {/* Schutz mineralischer Untergründe DIN EN 1504-2 */}
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xxs">
               <h3 className="font-bold text-shiraz text-lg mb-2 flex items-center gap-2">
-                <Shield size={20} className="text-shiraz" />
-                1. Schutz mineralischer Baustoffe nach DIN EN 1504-2
-              </h3>
-              <p className="text-sm text-text-main/80 leading-relaxed mb-4">
-                Beton- und Mauerwerksflächen müssen gegen kapillares Eindringen von Wasser, Frost-Tausalz, sauren Regen und Chloride geschützt werden. DIN EN 1504-2 unterscheidet drei Produktarten (hydrophobierende Imprägnierung, Imprägnierung, Beschichtung); die nationale Praxis der OS-Systeme führt zusätzlich die Versiegelung:
-              </p>
+                <Shield size={20} className="text-shiraz" /><MdText text={inhalt.texte.t1SchutzMineralischerBaustoffe} /></h3>
+              <p className="text-sm text-text-main/80 leading-relaxed mb-4"><MdText text={inhalt.texte.betonUndMauerwerksflächenMüssen} /></p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
                 <div className="p-3.5 bg-off-white rounded-xl border border-home-grau/25">
-                  <span className="font-bold text-shiraz block mb-1">A. Hydrophobierung</span>
-                  <p className="text-text-main/75 mb-2">
-                    Applikation niedermolekularer Silane oder Siloxane. Sie kleiden die Porenwände hydrophob aus (<InlineMath math="\theta > 90^{\circ}" />), <strong>ohne</strong> die Poren zu verschließen.
-                  </p>
-                  <div className="font-mono text-[11px] bg-white p-1.5 rounded border border-home-grau/20">
-                    Wasseraufnahme <InlineMath math="w < 0{,}1\,\text{kg/(m}^2\cdot\text{h}^{0{,}5})" /> · voll diffusionsoffen!
-                  </div>
+                  <span className="font-bold text-shiraz block mb-1"><MdText text={inhalt.texte.aHydrophobierung} /></span>
+                  <p className="text-text-main/75 mb-2"><MdText text={inhalt.texte.applikationNiedermolekularerSilaneOder} /></p>
+                  <div className="font-mono text-[11px] bg-white p-1.5 rounded border border-home-grau/20"><MdText text={inhalt.texte.wasseraufnahmeW01} /></div>
                 </div>
 
                 <div className="p-3.5 bg-off-white rounded-xl border border-home-grau/25">
-                  <span className="font-bold text-shiraz block mb-1">B. Imprägnierung</span>
-                  <p className="text-text-main/75 mb-2">
-                    Dünnflüssiges Harz dringt in das Kapillarsystem ein und füllt Porenräume teilweise aus, um die Oberfläche zu verfestigen und Abriebfestigkeit zu steigern.
-                  </p>
-                  <div className="font-mono text-[11px] bg-white p-1.5 rounded border border-home-grau/20">
-                    Porenverengung · mechanische Festigung
-                  </div>
+                  <span className="font-bold text-shiraz block mb-1"><MdText text={inhalt.texte.bImprägnierung} /></span>
+                  <p className="text-text-main/75 mb-2"><MdText text={inhalt.texte.dünnflüssigesHarzDringtIn} /></p>
+                  <div className="font-mono text-[11px] bg-white p-1.5 rounded border border-home-grau/20"><MdText text={inhalt.texte.porenverengungMechanischeFestigung} /></div>
                 </div>
 
                 <div className="p-3.5 bg-off-white rounded-xl border border-home-grau/25">
-                  <span className="font-bold text-shiraz block mb-1">C. Versiegelung</span>
-                  <p className="text-text-main/75 mb-2">
-                    Erzeugung eines geschlossenen, dünnen Kunststofffilms (<InlineMath math="d < 100\,\mu\text{m}" />) auf der Oberfläche.
-                  </p>
-                  <div className="font-mono text-[11px] bg-white p-1.5 rounded border border-home-grau/20">
-                    Schutz vor Verschmutzung · geringe Rissüberbrückung
-                  </div>
+                  <span className="font-bold text-shiraz block mb-1"><MdText text={inhalt.texte.cVersiegelung} /></span>
+                  <p className="text-text-main/75 mb-2"><MdText text={inhalt.texte.erzeugungEinesGeschlossenenDünnen} /></p>
+                  <div className="font-mono text-[11px] bg-white p-1.5 rounded border border-home-grau/20"><MdText text={inhalt.texte.schutzVorVerschmutzungGeringe} /></div>
                 </div>
 
                 <div className="p-3.5 bg-off-white rounded-xl border border-home-grau/25">
-                  <span className="font-bold text-shiraz block mb-1">D. Beschichtung (OS-Systeme)</span>
-                  <p className="text-text-main/75 mb-2">
-                    Dickschichtiger Polymeraufbau (<InlineMath math="d \ge 0{,}2 - 5\,\text{mm}" />, Epoxidharz, Polyurethan) – je nach System starr oder rissüberbrückend.
-                  </p>
-                  <div className="font-mono text-[11px] bg-white p-1.5 rounded border border-home-grau/20">
-                    OS 8 (starr, Tiefgaragen) · OS 11 (rissüberbrückend, Freidecks)
-                  </div>
+                  <span className="font-bold text-shiraz block mb-1"><MdText text={inhalt.texte.dBeschichtungOsSysteme} /></span>
+                  <p className="text-text-main/75 mb-2"><MdText text={inhalt.texte.dickschichtigerPolymeraufbauDGe} /></p>
+                  <div className="font-mono text-[11px] bg-white p-1.5 rounded border border-home-grau/20"><MdText text={inhalt.texte.os8StarrTiefgaragen} /></div>
                 </div>
               </div>
             </div>
 
             {/* Korrosionsschutz Stahl DIN EN ISO 12944 */}
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="font-bold text-text-main text-base mb-2">
-                2. Korrosionsschutz von Stahl (DIN EN ISO 12944)
-              </h3>
-              <p className="text-xs text-text-main/75 leading-relaxed mb-4">
-                Stahl korrodiert in Gegenwart von Sauerstoff und Feuchtigkeit elektrochemisch zu Eisenoxiden (<InlineMath math="\text{Fe} \rightarrow \text{Fe}^{2+} + 2e^-" />). Beschichtungssysteme kombinieren drei Schutzwirkungen:
-              </p>
+              <h3 className="font-bold text-text-main text-base mb-2"><MdText text={inhalt.texte.t2KorrosionsschutzVonStahl} /></h3>
+              <p className="text-xs text-text-main/75 leading-relaxed mb-4"><MdText text={inhalt.texte.stahlKorrodiertInGegenwart} /></p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div className="p-3.5 bg-white rounded-xl border border-home-grau/20 shadow-xxs">
-                  <strong className="text-shiraz block mb-1">1. Barrierewirkung</strong>
-                  Dickschichtige Epoxid- oder Polyurethanbeschichtungen trennen den Stahl physisch von Elektrolyt (Wasser) und Sauerstoff. Durch Zugabe von Eisenglimmer (Lamellenpigmente) wird der Diffusionsweg für Wasser künstlich verlängert.
-                </div>
+                  <strong className="text-shiraz block mb-1"><MdText text={inhalt.texte.t1Barrierewirkung} /></strong><MdText text={inhalt.texte.dickschichtigeEpoxidOderPolyurethanbesch} /></div>
                 <div className="p-3.5 bg-white rounded-xl border border-home-grau/20 shadow-xxs">
-                  <strong className="text-shiraz block mb-1">2. Passivierung / Inhibition</strong>
-                  Korrosionsschutzpigmente (z. B. Zinkphosphat) reagieren mit eindringender Feuchtigkeit und bilden an der Stahloberfläche schützende Reaktionsschichten, die den anodischen Lösungsprozess verlangsamen.
-                </div>
+                  <strong className="text-shiraz block mb-1"><MdText text={inhalt.texte.t2PassivierungInhibition} /></strong><MdText text={inhalt.texte.korrosionsschutzpigmenteZBZinkphosphat} /></div>
                 <div className="p-3.5 bg-white rounded-xl border border-home-grau/20 shadow-xxs">
-                  <strong className="text-shiraz block mb-1">3. Kathodischer Schutz (Opferanode)</strong>
-                  Feuerverzinkung oder Zinkstaubgrundierungen: Zink ist unedler als Eisen (<InlineMath math="E_{\text{Zn}}^{0} = -0{,}76\,\text{V}" /> vs. <InlineMath math="E_{\text{Fe}}^{0} = -0{,}44\,\text{V}" />). Bei mechanischer Beschädigung opfert sich Zink anodisch und schützt den frei liegenden Stahl vor Rost.
-                </div>
+                  <strong className="text-shiraz block mb-1"><MdText text={inhalt.texte.t3KathodischerSchutzOpferanode} /></strong><MdText text={inhalt.texte.feuerverzinkungOderZinkstaubgrundierunge} /></div>
               </div>
             </div>
 
             {/* Grenzflächenmechanik & Haftzugprüfung */}
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xxs">
               <h3 className="font-bold text-text-main text-base mb-2 flex items-center gap-2">
-                <Activity size={18} className="text-shiraz" />
-                3. Grenzflächenhaftung &amp; Abreißversuch nach DIN EN 1542
-              </h3>
-              <p className="text-xs text-text-main/80 leading-relaxed mb-3">
-                Die Leistungsfähigkeit jeder Beschichtung, jedes Putzes und jedes Reparaturmörtels steht und fällt mit der Haftzugfestigkeit an der Grenzfläche zum Untergrund. Nach DIN EN 1542 wird ein kreisrunder Prüfstempel (<InlineMath math="\varnothing 50\,\text{mm}" />) auf die eingeschnittene Schicht geklebt und per Abreißprüfgerät zentrisch auf Zug belastet.
-              </p>
+                <Activity size={18} className="text-shiraz" /><MdText text={inhalt.texte.t3GrenzflächenhaftungAbreißversuchNach} /></h3>
+              <p className="text-xs text-text-main/80 leading-relaxed mb-3"><MdText text={inhalt.texte.dieLeistungsfähigkeitJederBeschichtung} /></p>
 
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/25 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
                 <div>
-                  <div className="font-bold text-text-main mb-1">Berechnung der Abreißfestigkeit:</div>
+                  <div className="font-bold text-text-main mb-1"><MdText text={inhalt.texte.berechnungDerAbreißfestigkeit} /></div>
                   <BlockMath math="f_{\text{ct,surf}} = \frac{4 \cdot F_{\text{fail}}}{\pi \cdot d^2} \ge 1{,}5\,\text{MPa} \quad (\text{Mindestanforderung Betoninstandsetzung})" />
                 </div>
                 <div className="text-text-main/75 space-y-1 border-l md:border-l-2 border-home-grau/30 pl-4">
                   <div><strong>Bruchbild-Analyse:</strong></div>
-                  <div>• <em>Bruch im Untergrund (Beton):</em> Optimal! Verbund &gt; Betonzugfestigkeit.</div>
-                  <div>• <em>Adhäsionsbruch an der Grenze:</em> Mangelhafte Oberflächenvorbereitung (z. B. Zementschlämme nicht gestrahlt).</div>
-                  <div>• <em>Kohäsionsbruch in der Schicht:</em> Schichtmaterial innerlich zu schwach.</div>
+                  <div><MdText text={inhalt.texte.bruchImUntergrundBeton} /></div>
+                  <div><MdText text={inhalt.texte.adhäsionsbruchAnDerGrenze} /></div>
+                  <div><MdText text={inhalt.texte.kohäsionsbruchInDerSchicht} /></div>
                 </div>
               </div>
             </div>
@@ -955,16 +851,13 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
         {activeTab === 'rechner' && (
           <div className="flex flex-col gap-6 animate-in fade-in duration-300">
             <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 text-xs text-text-main/80 flex items-center justify-between flex-wrap gap-2">
-              <div>
-                <strong>Interaktiver Schichtkalkulator:</strong> Konfigurieren Sie den mehrschichtigen Wandaufbau von innen (oben) nach außen (unten). Der Rechner ermittelt Wärmedurchlasswiderstände <InlineMath math="R" />, den U-Wert nach DIN EN ISO 6946 und den Dampfdiffusionswiderstand <InlineMath math="s_d" /> mit Glaser-Feuchteüberprüfung.
-              </div>
+              <div><MdText text={inhalt.texte.interaktiverSchichtkalkulatorKonfigurier} /></div>
               <button
                 type="button"
                 onClick={addLayer}
                 className="px-3 py-1.5 bg-shiraz text-white font-bold rounded-lg hover:bg-shiraz/90 transition-all flex items-center gap-1.5 cursor-pointer shrink-0"
               >
-                <Plus size={14} /> Schicht hinzufügen
-              </button>
+                <Plus size={14} /><MdText text={inhalt.texte.schichtHinzufügen} /></button>
             </div>
 
             {/* Schichten-Tabelle */}
@@ -975,9 +868,9 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                     <th className="p-3">Pos</th>
                     <th className="p-3">Schichtbezeichnung</th>
                     <th className="p-3">Kategorie</th>
-                    <th className="p-3">Dicke d [mm]</th>
-                    <th className="p-3">Leitfähigkeit λ [W/(m·K)]</th>
-                    <th className="p-3">Diffusionszahl μ [-]</th>
+                    <th className="p-3"><MdText text={inhalt.texte.dickeDMm} /></th>
+                    <th className="p-3"><MdText text={inhalt.texte.leitfähigkeitWMK} /></th>
+                    <th className="p-3"><MdText text={inhalt.texte.diffusionszahl} /></th>
                     <th className="p-3 text-right">R [m²K/W]</th>
                     <th className="p-3 text-right">sd [m]</th>
                     <th className="p-3 text-center">Aktion</th>
@@ -1053,7 +946,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                           onClick={() => removeLayer(layer.id)}
                           disabled={layers.length <= 1}
                           className="p-1 text-slate-400 hover:text-rose-600 disabled:opacity-30 cursor-pointer"
-                          title="Schicht löschen"
+                          title={inhalt.werte.schichtLöschen}
                         >
                           <Trash2 size={15} />
                         </button>
@@ -1077,7 +970,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
               </div>
 
               <div className="p-4 bg-white rounded-xl border border-home-grau/30 shadow-xxs flex flex-col justify-between">
-                <span className="text-xs text-text-main/60 font-medium">Wärmedurchlasswiderstand RT</span>
+                <span className="text-xs text-text-main/60 font-medium"><MdText text={inhalt.texte.wärmedurchlasswiderstandRt} /></span>
                 <div className="text-xl font-bold font-mono text-text-main mt-1">
                   {formatDeZahl(calcResults.totalR, 3)} m²K/W
                 </div>
@@ -1087,23 +980,21 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
               </div>
 
               <div className="p-4 bg-white rounded-xl border border-home-grau/30 shadow-xxs flex flex-col justify-between">
-                <span className="text-xs text-text-main/60 font-medium">Wärmedurchgangskoeffizient U</span>
+                <span className="text-xs text-text-main/60 font-medium"><MdText text={inhalt.texte.wärmedurchgangskoeffizientU} /></span>
                 <div className={`text-xl font-bold font-mono mt-1 ${calcResults.uValue <= 0.24 ? 'text-emerald-700' : 'text-amber-700'}`}>
                   {formatDeZahl(calcResults.uValue, 3)} W/(m²K)
                 </div>
                 <span className="text-[11px] text-text-main/60 mt-1">
-                  {calcResults.uValue <= 0.20 ? '✔ GEG-Standard übertroffen' : calcResults.uValue <= 0.24 ? '✔ GEG-Mindestwert eingehalten' : '⚠️ GEG-Vorgabe (U ≤ 0,24) verfehlt'}
+                  {calcResults.uValue <= 0.20 ? inhalt.werte.gegStandardÜbertroffen : calcResults.uValue <= 0.24 ? inhalt.werte.gegMindestwertEingehalten : inhalt.werte.gegVorgabeU0}
                 </span>
               </div>
 
               <div className="p-4 bg-white rounded-xl border border-home-grau/30 shadow-xxs flex flex-col justify-between">
-                <span className="text-xs text-text-main/60 font-medium">Gesamt-Diffusionswiderstand sd</span>
+                <span className="text-xs text-text-main/60 font-medium"><MdText text={inhalt.texte.gesamtDiffusionswiderstandSd} /></span>
                 <div className="text-xl font-bold font-mono text-text-main mt-1">
                   {formatDeZahl(calcResults.totalSd, 2)} m
                 </div>
-                <span className="text-[11px] text-text-main/50 mt-1">
-                  äquivalente Luftschichtdicke
-                </span>
+                <span className="text-[11px] text-text-main/50 mt-1"><MdText text={inhalt.texte.äquivalenteLuftschichtdicke} /></span>
               </div>
             </div>
 
@@ -1121,23 +1012,21 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
               <div>
                 <h4 className="font-bold text-sm mb-1">
                   {calcResults.hasDiffusionTrap 
-                    ? 'Hinweis: mögliches Tauwasserrisiko im Bauteilinneren' 
-                    : 'Schichtfolge entspricht der Grundregel (Lehrheuristik)'}
+                    ? inhalt.werte.hinweisMöglichesTauwasserrisikoIm 
+                    : inhalt.werte.schichtfolgeEntsprichtDerGrundregel}
                 </h4>
                 <p>
                   {calcResults.hasDiffusionTrap ? (
-                    <>Die äußeren Schichten weisen einen höheren Diffusionswiderstand auf als die inneren Schichten (äußere Schichten: sd = {formatDeZahl(calcResults.outerLayersSd, 2)} m vs. innere Schichten: sd = {formatDeZahl(calcResults.innerLayersSd, 2)} m). Im Winter diffundierender Wasserdampf kann nicht ungehindert nach außen entweichen und kondensiert an der Grenzfläche zur kalten Dämm- oder Putzschicht. <strong>Empfehlung:</strong> Außen diffusionsoffenere Schichten wählen oder innen eine Dampfbremse/Sperre anordnen.</>
+                    <><MdText text={inhalt.texte.dieÄußerenSchichtenWeisen} />{formatDeZahl(calcResults.outerLayersSd, 2)}<MdText text={inhalt.texte.mVsInnereSchichten} />{formatDeZahl(calcResults.innerLayersSd, 2)}<MdText text={inhalt.texte.mImWinterDiffundierender} /></>
                   ) : (
-                    <>Die s_d-Werte nehmen von innen nach außen nicht zu; Wasserdampf kann nach außen abdiffundieren. Vereinfachte Prüfung (Schichten je zur Hälfte innen/außen gewertet) – ersetzt keinen Tauwassernachweis nach DIN 4108-3.</>
+                    <><MdText text={inhalt.texte.dieSDWerte} /></>
                   )}
                 </p>
               </div>
             </div>
 
-            <Querverweis ziel="feuchteschutz" titel="Tauwassernachweis nach Glaser" linkText="Zum Glaser-Rechner (Feuchteschutz)">
-              <p>
-                Die s_d-Ampel ist eine Lehrheuristik. Ob und wie viel Tauwasser im Bauteil ausfällt, zeigt erst das Glaser-Verfahren mit Temperatur- und Dampfdruckverlauf, Tauwassermasse und Verdunstungsbilanz nach DIN 4108-3 – es ist zentral im Modul Feuchteschutz umgesetzt.
-              </p>
+            <Querverweis ziel="feuchteschutz" titel={inhalt.werte.tauwassernachweisNachGlaser} linkText={inhalt.werte.zumGlaserRechnerFeuchteschutz}>
+              <p><MdText text={inhalt.texte.dieSDAmpel} /></p>
             </Querverweis>
           </div>
         )}
@@ -1152,40 +1041,15 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
 
       {/* Formel-Herleitungs-Box nach Modulspezifikation */}
       <FormulaDerivationBox
-        title="Bauphysikalische &amp; mechanische Herleitung: Mehrschichtiger Wärmedurchgang &amp; Voigt-Verbund"
+        title={inhalt.werte.bauphysikalischeMechanischeHerleitungMeh}
         zielGleichung="U = \frac{1}{R_{si} + \sum_{i=1}^n \frac{d_i}{\lambda_i} + R_{se}} \quad \text{sowie} \quad E_{\parallel} = V_f E_f + (1-V_f) E_m"
-        normQuelle="DIN EN ISO 6946:2018-03, DIN 4108-3:2024-03 &amp; VDI 2014"
-        ergebnisHinweis="U-Wert und s_d-Werte sind vereinfachte Berechnungen (ohne Wärmebrücken und ohne Tauwassernachweis)."
-        schritte={[
-          {
-            titel: "1. Schichtspezifischer Wärmedurchlasswiderstand",
-            erklaerung: "Jede Baustoffschicht i setzt dem Wärmestrom einen Widerstand entgegen, der direkt proportional zur Schichtdicke d_i und umgekehrt proportional zur werkstoffspezifischen Wärmeleitfähigkeit λ_i ist.",
-            formel: "R_i = \\frac{d_i}{\\lambda_i} \\quad [\\text{m}^2\\text{K/W}]",
-            einheit: "m²K/W"
-          },
-          {
-            titel: "2. Gesamter Wärmedurchgangskoeffizient (U-Wert)",
-            erklaerung: "Addition der Einzelschichten inklusive der Wärmeübergangswiderstände R_si (innen, horizontal = 0,13 m²K/W) und R_se (außen = 0,04 m²K/W). Der Kehrwert liefert den U-Wert.",
-            formel: "U = \\frac{1}{R_T} = \\frac{1}{R_{si} + \\sum_{i=1}^n R_i + R_{se}} \\quad [\\text{W/(m}^2\\text{K)}]",
-            einheit: "W/(m²K)"
-          },
-          {
-            titel: "3. Diffusionsäquivalente Luftschichtdicke (sd-Wert)",
-            erklaerung: "Produkt aus Schichtdicke d_i und werkstoffspezifischer Wasserdampfdiffusionswiderstandszahl μ_i. Als Grundregel sollte s_d von innen nach außen abnehmen; ein Tauwassernachweis ersetzt das nicht.",
-            formel: "s_{d,\\text{ges}} = \\sum_{i=1}^n s_{d,i} = \\sum_{i=1}^n \\mu_i \\cdot d_i \\quad [\\text{m}]",
-            einheit: "m"
-          },
-          {
-            titel: "4. Voigt-Mischungsregel für Faserverbunde",
-            erklaerung: "Bei Parallelschaltung unter Dehnungsgleichheit (Iso-Strain) summieren sich die Steifigkeiten von Faser und Matrix gewichtet nach ihren Volumenanteilen.",
-            formel: "E_{\\parallel} = V_f \\cdot E_f + (1 - V_f) \\cdot E_m \\quad [\\text{GPa}]",
-            einheit: "GPa"
-          }
-        ]}
+        normQuelle={inhalt.werte.dinEnIso6946}
+        ergebnisHinweis={inhalt.werte.uWertUndS}
+        schritte={inhalt.daten["Kombinationen.schritte"]}
       />
 
       {/* Stufe 4 des Lehrpfads: ModulTest */}
-      <ModulTest moduleId="kombinationen" title="Selbsttest: Werkstoff-Kombinationen, Schichten &amp; Verbunde" defaultOpen={false} />
+      <ModulTest moduleId="kombinationen" title={inhalt.werte.selbsttestWerkstoffKombinationenSchichte} defaultOpen={false} />
 
       {/* Standardisierter Footer nach RULE[GEMINI_md] */}
       <ModuleFooter
@@ -1193,56 +1057,13 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
           { title: 'Verbundwerkstoff', url: 'https://de.wikipedia.org/wiki/Verbundwerkstoff' },
           { title: 'Faserverbundwerkstoff', url: 'https://de.wikipedia.org/wiki/Faserverbundwerkstoff' },
           { title: 'Wärmedämmverbundsystem', url: 'https://de.wikipedia.org/wiki/W%C3%A4rmed%C3%A4mmverbundsystem' },
-          { title: 'Hinterlüftete Fassade', url: 'https://de.wikipedia.org/wiki/Hinterl%C3%BCftete_Fassade' },
+          { title: inhalt.werte.hinterlüfteteFassade, url: 'https://de.wikipedia.org/wiki/Hinterl%C3%BCftete_Fassade' },
           { title: 'Korrosionsschutz', url: 'https://de.wikipedia.org/wiki/Korrosionsschutz' },
           { title: 'Stahlbeton', url: 'https://de.wikipedia.org/wiki/Stahlbeton' }
         ]}
-        literatur={[
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Scholz, W. (begr.); Möhring, R. (Hrsg.): Baustoffkenntnis. 19. Aufl., Köln: Bundesanzeiger Verlag 2016',
-          'Schürmann, H.: Konstruieren mit Faser-Kunststoff-Verbunden. 2. Aufl., Berlin, Heidelberg: Springer 2007',
-          'Ehrenstein, G. W.: Faserverbund-Kunststoffe. 2. Aufl., München: Hanser 2006',
-          'Willems, W. M. (Hrsg.): Lehrbuch der Bauphysik – Wärme, Feuchte, Klima, Schall, Licht, Brand. 9. Aufl., Wiesbaden: Springer Vieweg 2022'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN ISO 6946:2018-03 (Bauteile – Wärmedurchlasswiderstand und Wärmedurchgangskoeffizient – Berechnungsverfahren)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+6946' },
-          { title: 'DIN 4108-3:2024-03 (Wärmeschutz und Energie-Einsparung in Gebäuden – Teil 3: Klimabedingter Feuchteschutz)', url: 'https://www.dinmedia.de/de/suche?q=DIN+4108-3' },
-          { title: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1' },
-          { title: 'DIN EN 1504-2:2005-01 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken – Teil 2: Oberflächenschutzsysteme)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1504-2' },
-          { title: 'DIN EN 1542:1999-07 (Produkte und Systeme für den Schutz und die Instandsetzung von Betontragwerken – Messung der Haftfestigkeit im Abreißversuch)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+1542' },
-          { title: 'DIN EN ISO 12944-1:2019-01 (Beschichtungsstoffe – Korrosionsschutz von Stahlbauten durch Beschichtungssysteme – Teil 1: Allgemeine Einleitung)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+12944-1' },
-          { title: 'DIN 18516-1:2010-06 (Außenwandbekleidungen, hinterlüftet – Teil 1: Anforderungen, Prüfgrundsätze)', url: 'https://www.dinmedia.de/de/suche?q=DIN+18516-1' },
-          { title: 'DIN EN 14509:2013-12 (Selbsttragende isolierende Sandwichelemente mit beidseitigen Metalldeckschichten)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+14509' },
-          { title: 'VDI 2014 Blatt 3:2006-09 (Entwicklung von Bauteilen aus Faser-Kunststoff-Verbund - Berechnung)', url: 'https://www.dinmedia.de/de/suche?q=VDI+2014+Blatt+3' },
-          { title: 'DIN EN ISO 527-4:2023-09 (Kunststoffe – Bestimmung der Zugeigenschaften – Teil 4: Prüfbedingungen für isotrope und anisotrop faserverstärkte Kunststoffverbundwerkstoffe)', url: 'https://www.dinmedia.de/de/suche?q=DIN+EN+ISO+527-4' }
-        ]}
-        formeln={[
-          {
-            formel: 'U = \\frac{1}{R_{si} + \\sum_{i=1}^n \\frac{d_i}{\\lambda_i} + R_{se}}',
-            erklaerung: 'Wärmedurchgangskoeffizient eines mehrschichtigen opaken Außenbauteils nach DIN EN ISO 6946.',
-            quelle: 'DIN EN ISO 6946:2018-03'
-          },
-          {
-            formel: 's_d = \\mu \\cdot d',
-            erklaerung: 'Diffusionsäquivalente Luftschichtdicke als Maß für den Wasserdampfdiffusionswiderstand einer Schicht der Dicke d mit Diffusionswiderstandszahl μ.',
-            quelle: 'DIN 4108-3:2024-03'
-          },
-          {
-            formel: 'E_{\\parallel} = V_f \\cdot E_f + (1 - V_f) \\cdot E_m',
-            erklaerung: 'Voigt-Mischungsregel zur Bestimmung des E-Moduls in Faserrichtung unter Iso-Strain-Bedingung.',
-            quelle: 'VDI 2014 Blatt 3'
-          },
-          {
-            formel: 'E_{\\perp} = \\frac{E_f \\cdot E_m}{V_f \\cdot E_m + (1 - V_f) \\cdot E_f}',
-            erklaerung: 'Reuss-Mischungsregel zur Bestimmung des E-Moduls quer zur Faserrichtung unter Iso-Stress-Bedingung.',
-            quelle: 'VDI 2014 Blatt 3'
-          },
-          {
-            formel: 'f_{\\text{ct,surf}} = \\frac{4 \\cdot F_{\\text{fail}}}{\\pi \\cdot d^2}',
-            erklaerung: 'Haftzugfestigkeit im zentrischen Abreißversuch nach DIN EN 1542 mit Prüfstempel d = 50 mm.',
-            quelle: 'DIN EN 1542:1999-07'
-          }
-        ]}
+        literatur={inhalt.daten["Kombinationen.literatur"]}
+        regelwerke={inhalt.daten["Kombinationen.regelwerke"]}
+        formeln={inhalt.daten["Kombinationen.formeln"]}
       />
     </div>
   );

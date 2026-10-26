@@ -15,6 +15,8 @@ import { Bar } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import { formatDeWert } from '@/src/utils/numberFormat';
 import { InlineMath, BlockMath } from 'react-katex';
+import inhalt from '@/content/lebensdauern/Lebensdauern.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -35,39 +37,39 @@ interface LifespanItem {
 }
 
 const lifespanData: LifespanItem[] = [
-  { id: 'tragwerk_beton', category: 'Tragwerk (Stahlbeton)', group: 'Tragwerk', min: 50, max: 100, avg: 80 },
-  { id: 'tragwerk_mauerwerk', category: 'Tragwerk (Mauerwerk)', group: 'Tragwerk', min: 50, max: 100, avg: 80 },
-  { id: 'tragwerk_holz', category: 'Tragwerk (Holz)', group: 'Tragwerk', min: 50, max: 80, avg: 60 },
-  { id: 'tragwerk_stahl', category: 'Tragwerk (Stahl)', group: 'Tragwerk', min: 50, max: 100, avg: 80 },
-  { id: 'dachstuhl', category: 'Dachkonstruktion (Holz/Stahl)', group: 'Dach', min: 40, max: 60, avg: 50 },
-  { id: 'dach_ziegel', category: 'Dacheindeckung (Ziegel/Dachstein)', group: 'Dach', min: 30, max: 50, avg: 40 },
-  { id: 'dach_blech', category: 'Dacheindeckung (Blech/Kupfer/Zink)', group: 'Dach', min: 40, max: 60, avg: 50 },
-  { id: 'dach_flach', category: 'Flachdachabdichtung (Bitumen/Kunststoff)', group: 'Dach', min: 15, max: 30, avg: 20 },
-  { id: 'dach_gruen', category: 'Dachbegrünung (Extensiv)', group: 'Dach', min: 20, max: 40, avg: 30 },
+  { id: 'tragwerk_beton', category: inhalt.werte.tragwerkStahlbeton, group: 'Tragwerk', min: 50, max: 100, avg: 80 },
+  { id: 'tragwerk_mauerwerk', category: inhalt.werte.tragwerkMauerwerk, group: 'Tragwerk', min: 50, max: 100, avg: 80 },
+  { id: 'tragwerk_holz', category: inhalt.werte.tragwerkHolz, group: 'Tragwerk', min: 50, max: 80, avg: 60 },
+  { id: 'tragwerk_stahl', category: inhalt.werte.tragwerkStahl, group: 'Tragwerk', min: 50, max: 100, avg: 80 },
+  { id: 'dachstuhl', category: inhalt.werte.dachkonstruktionHolzStahl, group: 'Dach', min: 40, max: 60, avg: 50 },
+  { id: 'dach_ziegel', category: inhalt.werte.dacheindeckungZiegelDachstein, group: 'Dach', min: 30, max: 50, avg: 40 },
+  { id: 'dach_blech', category: inhalt.werte.dacheindeckungBlechKupferZink, group: 'Dach', min: 40, max: 60, avg: 50 },
+  { id: 'dach_flach', category: inhalt.werte.flachdachabdichtungBitumenKunststoff, group: 'Dach', min: 15, max: 30, avg: 20 },
+  { id: 'dach_gruen', category: inhalt.werte.dachbegrünungExtensiv, group: 'Dach', min: 20, max: 40, avg: 30 },
   { id: 'dachfenster', category: 'Dachfenster', group: 'Dach', min: 20, max: 30, avg: 25 },
-  { id: 'fassade_putz', category: 'Fassade (Putz/WDVS)', group: 'Fassade', min: 20, max: 40, avg: 30 },
-  { id: 'fassade_klinker', category: 'Fassade (Klinker/Vormauerziegel)', group: 'Fassade', min: 50, max: 80, avg: 60 },
-  { id: 'fassade_holz', category: 'Fassade (Holzschalung)', group: 'Fassade', min: 20, max: 40, avg: 30 },
-  { id: 'fassade_glas', category: 'Fassade (Glas/Pfosten-Riegel)', group: 'Fassade', min: 30, max: 50, avg: 40 },
-  { id: 'daemmung_eps', category: 'Dämmung (EPS/XPS/Mineralwolle)', group: 'Dämmung', min: 30, max: 50, avg: 40 },
-  { id: 'daemmung_natur', category: 'Dämmung (Holzfaser/Zellulose)', group: 'Dämmung', min: 30, max: 50, avg: 40 },
-  { id: 'daemmung_pur', category: 'Dämmung (PUR/PIR)', group: 'Dämmung', min: 30, max: 50, avg: 40 },
-  { id: 'daemmung_schaumglas', category: 'Dämmung (Schaumglas)', group: 'Dämmung', min: 40, max: 60, avg: 50 },
-  { id: 'fenster_holz', category: 'Fenster (Holz)', group: 'Ausbau', min: 25, max: 40, avg: 30 },
-  { id: 'fenster_kunststoff', category: 'Fenster (Kunststoff)', group: 'Ausbau', min: 25, max: 40, avg: 30 },
-  { id: 'fenster_alu', category: 'Fenster (Aluminium)', group: 'Ausbau', min: 30, max: 50, avg: 40 },
-  { id: 'sonnenschutz', category: 'Sonnenschutz (Außenjalousien)', group: 'Ausbau', min: 15, max: 25, avg: 20 },
-  { id: 'tueren_innen', category: 'Innentüren (Holz/Röhrenspan)', group: 'Ausbau', min: 20, max: 40, avg: 30 },
-  { id: 'tueren_aussen', category: 'Außentüren (Alu/Stahl)', group: 'Ausbau', min: 30, max: 50, avg: 40 },
-  { id: 'innenwand_trockenbau', category: 'Innenwände (Trockenbau)', group: 'Ausbau', min: 25, max: 50, avg: 40 },
-  { id: 'innenwand_massiv', category: 'Innenwände (Massiv)', group: 'Ausbau', min: 50, max: 100, avg: 80 },
-  { id: 'boden_parkett', category: 'Bodenbeläge (Parkett)', group: 'Ausbau', min: 15, max: 30, avg: 20 },
-  { id: 'boden_keramik', category: 'Bodenbeläge (Keramikfliesen)', group: 'Ausbau', min: 30, max: 50, avg: 40 },
-  { id: 'boden_naturstein', category: 'Bodenbeläge (Naturstein)', group: 'Ausbau', min: 30, max: 50, avg: 40 },
-  { id: 'boden_textil', category: 'Bodenbeläge (Teppich/Laminat)', group: 'Ausbau', min: 10, max: 15, avg: 12 },
-  { id: 'boden_estrich', category: 'Estrich (Zement/Anhydrit)', group: 'Ausbau', min: 40, max: 60, avg: 50 },
-  { id: 'oberflaechen_innen', category: 'Anstrich/Tapete (Innen)', group: 'Ausbau', min: 5, max: 15, avg: 10 },
-  { id: 'abdichtung_epdm', category: 'Abdichtung (EPDM/FPO)', group: 'Dach', min: 20, max: 40, avg: 30 },
+  { id: 'fassade_putz', category: inhalt.werte.fassadePutzWdvs, group: 'Fassade', min: 20, max: 40, avg: 30 },
+  { id: 'fassade_klinker', category: inhalt.werte.fassadeKlinkerVormauerziegel, group: 'Fassade', min: 50, max: 80, avg: 60 },
+  { id: 'fassade_holz', category: inhalt.werte.fassadeHolzschalung, group: 'Fassade', min: 20, max: 40, avg: 30 },
+  { id: 'fassade_glas', category: inhalt.werte.fassadeGlasPfostenRiegel, group: 'Fassade', min: 30, max: 50, avg: 40 },
+  { id: 'daemmung_eps', category: inhalt.werte.dämmungEpsXpsMineralwolle, group: 'Dämmung', min: 30, max: 50, avg: 40 },
+  { id: 'daemmung_natur', category: inhalt.werte.dämmungHolzfaserZellulose, group: 'Dämmung', min: 30, max: 50, avg: 40 },
+  { id: 'daemmung_pur', category: inhalt.werte.dämmungPurPir, group: 'Dämmung', min: 30, max: 50, avg: 40 },
+  { id: 'daemmung_schaumglas', category: inhalt.werte.dämmungSchaumglas, group: 'Dämmung', min: 40, max: 60, avg: 50 },
+  { id: 'fenster_holz', category: inhalt.werte.fensterHolz, group: 'Ausbau', min: 25, max: 40, avg: 30 },
+  { id: 'fenster_kunststoff', category: inhalt.werte.fensterKunststoff, group: 'Ausbau', min: 25, max: 40, avg: 30 },
+  { id: 'fenster_alu', category: inhalt.werte.fensterAluminium, group: 'Ausbau', min: 30, max: 50, avg: 40 },
+  { id: 'sonnenschutz', category: inhalt.werte.sonnenschutzAußenjalousien, group: 'Ausbau', min: 15, max: 25, avg: 20 },
+  { id: 'tueren_innen', category: inhalt.werte.innentürenHolzRöhrenspan, group: 'Ausbau', min: 20, max: 40, avg: 30 },
+  { id: 'tueren_aussen', category: inhalt.werte.außentürenAluStahl, group: 'Ausbau', min: 30, max: 50, avg: 40 },
+  { id: 'innenwand_trockenbau', category: inhalt.werte.innenwändeTrockenbau, group: 'Ausbau', min: 25, max: 50, avg: 40 },
+  { id: 'innenwand_massiv', category: inhalt.werte.innenwändeMassiv, group: 'Ausbau', min: 50, max: 100, avg: 80 },
+  { id: 'boden_parkett', category: inhalt.werte.bodenbelägeParkett, group: 'Ausbau', min: 15, max: 30, avg: 20 },
+  { id: 'boden_keramik', category: inhalt.werte.bodenbelägeKeramikfliesen, group: 'Ausbau', min: 30, max: 50, avg: 40 },
+  { id: 'boden_naturstein', category: inhalt.werte.bodenbelägeNaturstein, group: 'Ausbau', min: 30, max: 50, avg: 40 },
+  { id: 'boden_textil', category: inhalt.werte.bodenbelägeTeppichLaminat, group: 'Ausbau', min: 10, max: 15, avg: 12 },
+  { id: 'boden_estrich', category: inhalt.werte.estrichZementAnhydrit, group: 'Ausbau', min: 40, max: 60, avg: 50 },
+  { id: 'oberflaechen_innen', category: inhalt.werte.anstrichTapeteInnen, group: 'Ausbau', min: 5, max: 15, avg: 10 },
+  { id: 'abdichtung_epdm', category: inhalt.werte.abdichtungEpdmFpo, group: 'Dach', min: 20, max: 40, avg: 30 },
 ];
 
 export default function Lebensdauern() {
@@ -85,7 +87,7 @@ export default function Lebensdauern() {
     labels: lifespanData.slice(0, 15).map(item => item.category),
     datasets: [
       {
-        label: 'Lebensdauer-Spannweite (Min - Max)',
+        label: inhalt.werte.lebensdauerSpannweiteMinMax,
         data: lifespanData.slice(0, 15).map(item => [item.min, item.max]),
         backgroundColor: 'rgba(158, 42, 43, 0.4)',
         borderColor: '#9E2A2B',
@@ -118,7 +120,7 @@ export default function Lebensdauern() {
         beginAtZero: true,
         title: {
           display: true,
-          text: 'Nutzungsdauer [Jahre]'
+          text: inhalt.werte.nutzungsdauerJahre
         },
         max: 100
       }
@@ -130,13 +132,9 @@ export default function Lebensdauern() {
       {/* Header Panel */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <Clock className="text-shiraz" /> Typische Lebensdauern &amp; Austauschzyklen (AP 14)
-        </h2>
+          <Clock className="text-shiraz" /><MdText text={inhalt.texte.typischeLebensdauernAustauschzyklenAp} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-3 leading-relaxed">
-          <p>
-            Richtwerte für die technische und wirtschaftliche Nutzungsdauer von Bauteilen und Konstruktionsschichten nach den offiziellen Vorgaben des <strong>Bundesinstituts für Bau-, Stadt- und Raumforschung (BBSR / BNB)</strong> und <strong>VDI 2067</strong>.
-            Ermitteln Sie die Anzahl an Erneuerungszyklen über den Gebäudelebenszyklus zur fundierten Lebenszykluskostenrechnung (LCC) und Ökobilanzierung (LCA).
-          </p>
+          <p><MdText text={inhalt.texte.richtwerteFürDieTechnische} /></p>
         </div>
 
         {/* Tab Navigation following GEMINI_md */}
@@ -159,8 +157,7 @@ export default function Lebensdauern() {
             }`}
             onClick={() => setActiveTab('diagramm')}
           >
-            <BarChart3 size={16} /> Lebensdauer-Spannen (Diagramm)
-          </button>
+            <BarChart3 size={16} /><MdText text={inhalt.texte.lebensdauerSpannenDiagramm} /></button>
           <button aria-pressed={activeTab === 'tabelle'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'tabelle' 
@@ -169,8 +166,7 @@ export default function Lebensdauern() {
             }`}
             onClick={() => setActiveTab('tabelle')}
           >
-            <Table size={16} /> Bauteiltabelle (BNB / BBSR)
-          </button>
+            <Table size={16} /><MdText text={inhalt.texte.bauteiltabelleBnbBbsr} /></button>
           <button aria-pressed={activeTab === 'theorie'}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'theorie' 
@@ -179,8 +175,7 @@ export default function Lebensdauern() {
             }`}
             onClick={() => setActiveTab('theorie')}
           >
-            <BookOpen size={16} /> Faktorenmethode &amp; ISO 15686
-          </button>
+            <BookOpen size={16} /><MdText text={inhalt.texte.faktorenmethodeIso15686} /></button>
         </div>
 
         {/* Tab 1: Rechner */}
@@ -190,12 +185,8 @@ export default function Lebensdauern() {
               <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-3 mb-4">
                 <div>
                   <h3 className="text-sm font-bold text-text-main flex items-center gap-2">
-                    <RefreshCw className="w-4 h-4 text-shiraz" />
-                    Gebäude-Betrachtungszeitraum (LCA / LCC)
-                  </h3>
-                  <p className="text-xs text-slate-500 mt-0.5">
-                    Typischer Referenz-Studienzeitraum für Wohn- und Nichtwohngebäude nach BNB / DGNB: 50 Jahre.
-                  </p>
+                    <RefreshCw className="w-4 h-4 text-shiraz" /><MdText text={inhalt.texte.gebäudeBetrachtungszeitraumLcaLcc} /></h3>
+                  <p className="text-xs text-slate-500 mt-0.5"><MdText text={inhalt.texte.typischerReferenzStudienzeitraumFür} /></p>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="font-mono font-bold text-lg text-shiraz">
@@ -221,10 +212,10 @@ export default function Lebensdauern() {
               <table className="w-full text-xs text-left">
                 <thead className="text-[11px] text-slate-600 uppercase bg-slate-50 border-b border-slate-200">
                   <tr>
-                    <th className="px-4 py-3 rounded-tl-lg font-bold">Bauteilgruppe / Baustoff</th>
-                    <th className="px-4 py-3 text-center font-bold">Spannweite (Min - Max)</th>
-                    <th className="px-4 py-3 text-center font-bold">Ø Nutzungsdauer</th>
-                    <th className="px-4 py-3 text-center rounded-tr-lg font-bold">Austauschzyklen bei {formatDeWert(buildingLifespan)} a</th>
+                    <th className="px-4 py-3 rounded-tl-lg font-bold"><MdText text={inhalt.texte.bauteilgruppeBaustoff} /></th>
+                    <th className="px-4 py-3 text-center font-bold"><MdText text={inhalt.texte.spannweiteMinMax} /></th>
+                    <th className="px-4 py-3 text-center font-bold"><MdText text={inhalt.texte.nutzungsdauer} /></th>
+                    <th className="px-4 py-3 text-center rounded-tr-lg font-bold"><MdText text={inhalt.texte.austauschzyklenBei} />{formatDeWert(buildingLifespan)} a</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
@@ -243,7 +234,7 @@ export default function Lebensdauern() {
                               ? 'bg-amber-100 text-amber-800 border border-amber-200' 
                               : 'bg-rose-100 text-rose-800 border border-rose-200'
                           }`}>
-                            {replacements === 0 ? '0 (Dauerhaft)' : `${formatDeWert(replacements)} × Erneuerung`}
+                            {replacements === 0 ? inhalt.werte.t0Dauerhaft : `${formatDeWert(replacements)} × Erneuerung`}
                           </span>
                         </td>
                       </tr>
@@ -256,9 +247,7 @@ export default function Lebensdauern() {
             {/* Schematische Darstellung */}
             <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm">
               <h3 className="font-bold text-sm text-text-main mb-3 flex items-center gap-2">
-                <Layers className="text-shiraz" size={16} />
-                Schematische Darstellung: Austauschzyklen im Gebäudelebenszyklus
-              </h3>
+                <Layers className="text-shiraz" size={16} /><MdText text={inhalt.texte.schematischeDarstellungAustauschzyklenIm} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-xl border border-home-grau/30 p-4">
                 <svg width="100%" height="150" viewBox="0 0 450 150">
                   <line x1="50" y1="120" x2="400" y2="120" stroke="#1e293b" strokeWidth="2" markerEnd="url(#arrow-black-lebensdauer)" />
@@ -289,9 +278,7 @@ export default function Lebensdauern() {
                     </marker>
                   </defs>
                 </svg>
-                <div className="text-xs text-text-main/70 text-center mt-2 leading-relaxed">
-                  Bauteile mit einer kürzeren Lebensdauer als der Gebäude-Betrachtungszeitraum müssen mehrfach ausgetauscht werden. Jeder Zyklus erfordert erneute Materialherstellung (Modul A1–A3) und Entsorgung (Modul C1–C4) in der Ökobilanz.
-                </div>
+                <div className="text-xs text-text-main/70 text-center mt-2 leading-relaxed"><MdText text={inhalt.texte.bauteileMitEinerKürzeren} /></div>
               </div>
             </div>
           </div>
@@ -302,12 +289,8 @@ export default function Lebensdauern() {
           <div className="space-y-6 animate-in fade-in duration-200">
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
               <h3 className="text-sm font-bold text-text-main flex items-center gap-2 mb-2">
-                <BarChart3 className="text-shiraz" size={18} />
-                Lebensdauer-Spannweiten zentraler Bauteilschichten nach BNB
-              </h3>
-              <p className="text-xs text-slate-500 mb-6">
-                Übersicht der minimalen und maximalen technischen Nutzungsdauern nach dem Bewertungssystem Nachhaltiges Bauen (BNB).
-              </p>
+                <BarChart3 className="text-shiraz" size={18} /><MdText text={inhalt.texte.lebensdauerSpannweitenZentralerBauteilsc} /></h3>
+              <p className="text-xs text-slate-500 mb-6"><MdText text={inhalt.texte.übersichtDerMinimalenUnd} /></p>
               <div className="h-[550px] w-full relative">
                 <Bar data={chartData} options={chartOptions} />
               </div>
@@ -319,7 +302,7 @@ export default function Lebensdauern() {
         {activeTab === 'tabelle' && (
           <div className="space-y-6 animate-in fade-in duration-200">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-xs font-bold text-slate-700">Filter nach Gewerk:</span>
+              <span className="text-xs font-bold text-slate-700"><MdText text={inhalt.texte.filterNachGewerk} /></span>
               <div className="flex flex-wrap gap-1.5">
                 {['Alle', 'Tragwerk', 'Dach', 'Fassade', 'Dämmung', 'Ausbau'].map(g => (
                   <button
@@ -343,9 +326,9 @@ export default function Lebensdauern() {
                   <tr>
                     <th className="px-4 py-3 font-bold">Gewerk</th>
                     <th className="px-4 py-3 font-bold">Bauteilbezeichnung</th>
-                    <th className="px-4 py-3 text-center font-bold">Minimale Dauer</th>
-                    <th className="px-4 py-3 text-center font-bold">Maximale Dauer</th>
-                    <th className="px-4 py-3 text-center font-bold">Mittelwert (Referenz)</th>
+                    <th className="px-4 py-3 text-center font-bold"><MdText text={inhalt.texte.minimaleDauer} /></th>
+                    <th className="px-4 py-3 text-center font-bold"><MdText text={inhalt.texte.maximaleDauer} /></th>
+                    <th className="px-4 py-3 text-center font-bold"><MdText text={inhalt.texte.mittelwertReferenz} /></th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
@@ -370,44 +353,32 @@ export default function Lebensdauern() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-4">
                 <h3 className="text-base font-bold text-text-main flex items-center gap-2">
-                  <BookOpen className="text-shiraz" size={18} />
-                  Faktorenmethode nach ISO 15686-1
-                </h3>
-                <p className="text-xs text-slate-700 leading-relaxed">
-                  Die tatsächliche Nutzungsdauer eines Bauteils weicht oft von den tabellierten Richtwerten ab. Die internationale Norm <strong>ISO 15686-1</strong> definiert die sogenannte Faktorenmethode zur Schätzung der erwarteten Nutzungsdauer (Estimated Service Life – ESLC):
-                </p>
+                  <BookOpen className="text-shiraz" size={18} /><MdText text={inhalt.texte.faktorenmethodeNachIso15686} /></h3>
+                <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.dieTatsächlicheNutzungsdauerEines} /></p>
                 <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 font-mono text-xs">
                   <BlockMath math="\text{ESLC} = \text{RSLC} \cdot A \cdot B \cdot C \cdot D \cdot E \cdot F \cdot G" />
                 </div>
                 <div className="text-xs text-slate-650 space-y-1.5 leading-relaxed">
-                  <div>• <strong>RSLC:</strong> Referenz-Nutzungsdauer nach BBSR / BNB</div>
-                  <div>• <strong>A:</strong> Werkstoff- und Komponentenqualität (Zulassungen, Güteüberwachung)</div>
-                  <div>• <strong>B:</strong> Entwurfs- und Konstruktionsqualität (konstruktiver Schutz, Detaillierung)</div>
-                  <div>• <strong>C:</strong> Ausführungsqualität auf der Baustelle (fachgerechter Einbau)</div>
-                  <div>• <strong>D:</strong> Innenklima und chemische Beanspruchung</div>
-                  <div>• <strong>E:</strong> Außenklima (Schlagregen, UV-Belastung, Frostzyklen)</div>
-                  <div>• <strong>F:</strong> Nutzungsbeanspruchung (Verkehr, mechanische Belastung)</div>
-                  <div>• <strong>G:</strong> Instandhaltungs- und Wartungsniveau</div>
+                  <div><MdText text={inhalt.texte.rslcReferenzNutzungsdauerNach} /></div>
+                  <div><MdText text={inhalt.texte.aWerkstoffUndKomponentenqualität} /></div>
+                  <div><MdText text={inhalt.texte.bEntwurfsUndKonstruktionsqualität} /></div>
+                  <div><MdText text={inhalt.texte.cAusführungsqualitätAufDer} /></div>
+                  <div><MdText text={inhalt.texte.dInnenklimaUndChemische} /></div>
+                  <div><MdText text={inhalt.texte.eAußenklimaSchlagregenUv} /></div>
+                  <div><MdText text={inhalt.texte.fNutzungsbeanspruchungVerkehrMechanische} /></div>
+                  <div><MdText text={inhalt.texte.gInstandhaltungsUndWartungsniveau} /></div>
                 </div>
               </div>
 
               <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-4">
                 <h3 className="text-base font-bold text-text-main flex items-center gap-2">
-                  <CheckCircle2 className="text-emerald-700" size={18} />
-                  Relevanz für LCC &amp; Ökobilanzierung (LCA)
-                </h3>
+                  <CheckCircle2 className="text-emerald-700" size={18} /><MdText text={inhalt.texte.relevanzFürLccÖkobilanzierung} /></h3>
                 <div className="text-xs text-slate-700 space-y-3 leading-relaxed">
-                  <p>
-                    In der <strong>Lebenszykluskostenrechnung (LCC nach DIN EN 16627)</strong> bestimmen die Austauschzyklen maßgeblich die Diskontierungskosten über 50 Jahre:
-                  </p>
+                  <p><MdText text={inhalt.texte.inDerLebenszykluskostenrechnungLcc} /></p>
                   <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                    <span className="font-bold text-slate-900 block mb-1">Ersatzinvestitionen (Reinvestitionen):</span>
-                    Fallen zu den Zeitpunkten <InlineMath math="t_i = i \cdot \text{avg}" /> an und müssen mit dem Barwertfaktor <InlineMath math="(1+r)^{-t_i}" /> abgezinst werden.
-                  </div>
+                    <span className="font-bold text-slate-900 block mb-1"><MdText text={inhalt.texte.ersatzinvestitionenReinvestitionen} /></span><MdText text={inhalt.texte.fallenZuDenZeitpunkten} /></div>
                   <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                    <span className="font-bold text-slate-900 block mb-1">Graue Emissionen (Embodied Carbon):</span>
-                    Kurzlebige Bauteile (z. B. Teppichböden mit 10–12 Jahren) verursachen bei 50 Jahren Betrachtungszeitraum das bis zu Fünffache der ursprünglichen Produktions-Emissionen.
-                  </div>
+                    <span className="font-bold text-slate-900 block mb-1"><MdText text={inhalt.texte.graueEmissionenEmbodiedCarbon} /></span><MdText text={inhalt.texte.kurzlebigeBauteileZB} /></div>
                 </div>
               </div>
             </div>
@@ -418,31 +389,22 @@ export default function Lebensdauern() {
       {/* ModuleFooter following GEMINI_md */}
       <ModuleFooter
         wikipedia={[
-          { title: 'Lebensdauer (Technik)', url: 'https://de.wikipedia.org/wiki/Lebensdauer_(Technik)' },
+          { title: inhalt.werte.lebensdauerTechnik, url: 'https://de.wikipedia.org/wiki/Lebensdauer_(Technik)' },
           { title: 'Obsoleszenz', url: 'https://de.wikipedia.org/wiki/Obsoleszenz' },
           { title: 'Instandhaltung', url: 'https://de.wikipedia.org/wiki/Instandhaltung' }
         ]}
-        regelwerke={[
-          { title: 'BNB - Nutzungsdauern von Bauteilen für Lebenszyklusanalysen nach dem Bewertungssystem Nachhaltiges Bauen', url: 'https://www.nachhaltigesbauen.de/' },
-          { title: 'ISO 15686-1:2011 (Buildings and constructed assets – Service life planning – Part 1: General principles; Revision als ISO/FDIS in Arbeit)' },
-          { title: 'VDI 2067 Blatt 1:2012-09 (Wirtschaftlichkeit gebäudetechnischer Anlagen – Grundlagen und Kostenberechnung)' },
-          { title: 'DIN EN 16627:2015-09 (Bewertung der ökonomischen Qualität von Gebäuden – Berechnungsmethoden)' }
-        ]}
-        literatur={[
-          'Bundesinstitut für Bau-, Stadt- und Raumforschung (BBSR): Tabelle Nutzungsdauern von Bauteilen zur Lebenszyklusanalyse',
-          'Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011',
-          'Schneider – Bautabellen für Ingenieure, 26. Auflage, Reguvis 2024'
-        ]}
+        regelwerke={inhalt.daten["Lebensdauern.regelwerke"]}
+        literatur={inhalt.daten["Lebensdauern.literatur"]}
         formeln={[
           {
             formel: String.raw`\text{ESLC} = \text{RSLC} \cdot A \cdot B \cdot C \cdot D \cdot E \cdot F \cdot G`,
-            erklaerung: 'Faktorenmethode nach ISO 15686-1 zur Schätzung der erwarteten Nutzungsdauer (Estimated Service Life of Component - ESLC) aus der Referenz-Nutzungsdauer (RSLC) multipliziert mit 7 Bewertungsfaktoren für Werkstoff-, Entwurfs-, Ausführungs-, Umwelt- und Instandhaltungsqualität.',
-            quelle: 'DIN EN ISO 15686-1'
+            erklaerung: inhalt.werte.faktorenmethodeNachIso15686,
+            quelle: inhalt.werte.dinEnIso15686
           },
           {
             formel: String.raw`N_{\text{Austausch}} = \max\left(0, \left\lceil \frac{t_{\text{Gebäude}}}{\text{ESLC}} \right\rceil - 1\right)`,
-            erklaerung: 'Berechnung der Anzahl erforderlicher Austauschzyklen eines Bauteils innerhalb des Gebäude-Betrachtungszeitraums für Lebenszyklusanalysen (LCA / LCC).',
-            quelle: 'BNB Leitfaden Nachhaltiges Bauen'
+            erklaerung: inhalt.werte.berechnungDerAnzahlErforderlicher,
+            quelle: inhalt.werte.bnbLeitfadenNachhaltigesBauen
           }
         ]}
       />

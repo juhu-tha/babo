@@ -4,6 +4,8 @@ import React from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Thermometer, Radiation } from 'lucide-react';
+import inhalt from '@/content/zfp/ThermischTab.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface ThermischTabProps {
   radiationEnergy: number;
@@ -31,12 +33,10 @@ export default function ThermischTab({ radiationEnergy, radiographyResults, rend
         </div>
         
         <div className="text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Erfasst die Oberflächentemperatur. Hohlräume oder Ablösungen unter der Oberfläche erwärmen sich bei Sonneneinstrahlung schneller als massiver Beton.
-          </p>
+          <p><MdText text={inhalt.texte.erfasstDieOberflächentemperaturHohlräume} /></p>
         </div>
 
-        <Slider info="Parameter zur Anpassung der Berechnung."
+        <Slider info={inhalt.werte.parameterZurAnpassungDer}
           label={<FormulaText text="Temperaturdifferenz (\Delta T)" />}
           min={0} max={5} step={0.1}
           value={tempDiff} unit="K"
@@ -61,18 +61,16 @@ export default function ThermischTab({ radiationEnergy, radiographyResults, rend
           <div className="p-2 bg-shiraz/10 rounded-lg text-shiraz">
             <Radiation size={24} />
           </div>
-          <h2 className="text-xl font-bold text-slate-900">Durchstrahlungsprüfung (Radiographie)</h2>
+          <h2 className="text-xl font-bold text-slate-900"><MdText text={inhalt.texte.durchstrahlungsprüfungRadiographie} /></h2>
         </div>
         
         <div className="text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Nutzt Röntgen- oder Gammastrahlung zur Abbildung des Bauteilinneren (z.B. Spannglieder). Die Schwächung hängt von Dicke und Dichte ab.
-          </p>
+          <p><MdText text={inhalt.texte.nutztRöntgenOderGammastrahlung} /></p>
         </div>
 
         <div className="grid grid-cols-2 gap-4">
-          <Slider info="Parameter zur Anpassung der Berechnung."
-            label={<FormulaText text="Bauteildicke (d)" />}
+          <Slider info={inhalt.werte.parameterZurAnpassungDer2}
+            label={<FormulaText text={inhalt.werte.bauteildickeD} />}
             min={5} max={100} step={1}
             value={thickness} unit="cm"
             
@@ -82,13 +80,13 @@ export default function ThermischTab({ radiationEnergy, radiographyResults, rend
             label="Strahlungsenergie"
             min={0.5} max={15.0} step={0.5}
             value={radiationEnergy} unit="MeV"
-            info="Höhere Energie durchdringt dickere Bauteile."
+            info={inhalt.werte.höhereEnergieDurchdringtDickere}
             onChange={(e) => setRadiationEnergy(Number(e.target.value))}
           />
         </div>
 
         <div className={`mt-4 p-4 text-white rounded-xl shadow-md transition-colors duration-500 ${radiographyResults.color} relative overflow-hidden`}>
-          <div className="text-sm opacity-90 mb-1">Transmission & Bildqualität</div>
+          <div className="text-sm opacity-90 mb-1"><MdText text={inhalt.texte.transmissionBildqualität} /></div>
           <div className="text-3xl font-bold">{formatDeZahl(radiographyResults.transmission, 2)} %</div>
           <div className="text-xs opacity-75 mt-2">
             Qualität: {radiographyResults.quality}

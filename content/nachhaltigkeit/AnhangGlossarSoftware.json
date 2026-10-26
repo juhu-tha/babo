@@ -1,0 +1,83 @@
+{
+  "texte": {
+    "epilogGlossarWerkzeugeNormative": "Epilog: Glossar, Werkzeuge & normative Standards",
+    "glossarDerÖkobilanzierungKurzfassung": "⌨ Glossar der Ökobilanzierung (Kurzfassung)",
+    "werkzeugeDatenbankenSoftware": "🌐 Werkzeuge, Datenbanken & Software",
+    "ökobaudatBbsr": "ÖKOBAUDAT (BBSR)",
+    "zentralesDeutschesReferenzregisterFür": "Zentrales deutsches Referenzregister für generische Ökobilanz-Datensätze und verifizierte Produkt-EPDs im ILCD-Format.",
+    "webbasierteKostenfreieSoftwareDes": "Webbasierte kostenfreie Software des Bundes zur Berechnung von Gebäude-Ökobilanzen konform mit QNG- und BNB-Richtlinien.",
+    "openlcaGreendelta": "openLCA (GreenDelta)",
+    "hervorragendesKostenlosesOpenSource": "Hervorragendes, kostenloses Open-Source-Werkzeug zur Modellierung hochkomplexer Stoffstromsysteme und EPDs auf Werksebene.",
+    "normativeQuellennachweiseNormenhierarchi": "📖 Normative Quellennachweise (Normenhierarchie)",
+    "iso14040Iso14044": "**ISO 14040 / ISO 14044:** Allgemeine, produktübergreifende Grundsätze und Rechenrahmen für Ökobilanzen.",
+    "iso14025LeitfadenZur": "**ISO 14025:** Leitfaden zur Erarbeitung von verifizierten Typ-III-Umweltdeklarationen (EPDs).",
+    "dinEn15804A2": "**DIN EN 15804+A2 (2020):** Zentrale Branchennorm zur Definition der Product Category Rules (PCR) für EPDs im Bauwesen.",
+    "dinEn15978Berechnungsmethode": "**DIN EN 15978:** Berechnungsmethode zur Aggregation von EPDs auf die Gebäudeebene über 50 Jahre.",
+    "din27712021": "**DIN 277-1:2021-08:** Ermittlung der Netto-Raumflächen (NRF) als gesetzliche QNG-Flächenreferenz.",
+    "gegDinV18599": "**GEG / DIN V 18599:** Energetische Berechnungen zum nutzerseitigen Betriebsenergie-Gegenüber (Modul B6)."
+  },
+  "daten": {
+    "AnhangGlossarSoftware": [
+      {
+        "term": "Allokation",
+        "def": "Zuweisung von Umweltaufwendungen auf Koppelprodukte (z.B. Hüttensand aus der Roheisenherstellung)."
+      },
+      {
+        "term": "BNB",
+        "def": "Bewertungssystem Nachhaltiges Bauen – Pflichtsystem der Bundesregierung für Bundes- und Staatsgebäude."
+      },
+      {
+        "term": "EF 3.1",
+        "def": "Environmental Footprint-Methodenreferenz der Europ. Kommission, bildet die LCIA-Grundlage nach EN 15804+A2."
+      },
+      {
+        "term": "EEE",
+        "def": "Energieeffizienz-Experte; staatlich registrierter Gutachter für Förderungen und Konformitätsprüfungen."
+      },
+      {
+        "term": "eLCA / Bauteileditor",
+        "def": "Vom BBSR entwickeltes kostenloses Online-Tool zur vereinfachten Bilanzierung von Gebäudeschichten."
+      },
+      {
+        "term": "End-of-Life (EoL)",
+        "def": "Lebensende eines Baustoffes (Rückbau, Sortierung, thermische Verwertung oder Deponierung)."
+      },
+      {
+        "term": "EPBD",
+        "def": "EU-Gebäuderichtlinie (EU) 2024/1275: Lebenszyklus-GWP ist für Neubauten ab 2028 (> 1 000 m²) bzw. 2030 (alle) zu berechnen und im Energieausweis offenzulegen."
+      },
+      {
+        "term": "GWP 100",
+        "def": "Global Warming Potential – Erderwärmungspotenzial über einen normierten Zeithorizont von 100 Jahren."
+      },
+      {
+        "term": "ILCD+EPD",
+        "def": "Gemeinsames xml-Datenformat zur Standardübertragung von EPD-Kennwerten in die ÖKOBAUDAT."
+      },
+      {
+        "term": "KFN / KNN",
+        "def": "KfW-Klimaförderrichtlinien (Klimafreundlicher Neubau). Knüpfen Kredite an strenge GWP-Grenzwerte."
+      },
+      {
+        "term": "PCR (Product Category Rules)",
+        "def": "Produktkategorieregeln, die Berechnungsverfahren zur Herstellung vergleichbarer EPDs festlegen."
+      },
+      {
+        "term": "PENRT",
+        "def": "Primärenergie nicht-erneuerbar total. Wichtige QNG-Kompensationsgröße."
+      },
+      {
+        "term": "RSL (Reference Service Life)",
+        "def": "Referenznutzungsdauer eines Baustoffes gemäß BBSR-Zählung (z.B. Gipsputz = 40 Jahre)."
+      },
+      {
+        "term": "RSP (Reference Study Period)",
+        "def": "Betrachtungszeitraum eines Gebäudes; für Ökobilanzen in Deutschland standardmäßig 50 Jahre."
+      },
+      {
+        "term": "UUID",
+        "def": "Universell eindeutige Datenkennnummer im XML-Satz der ÖKOBAUDAT zur exakten Materialzuordnung."
+      }
+    ]
+  }
+}

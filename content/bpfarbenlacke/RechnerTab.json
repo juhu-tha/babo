@@ -1,0 +1,37 @@
+{
+  "texte": {
+    "interaktiverSchichtdickenVerbrauchMengen": "Interaktiver Schichtdicken-, Verbrauch- & Mengenschätzer",
+    "dryFilmThickness": "dry film thickness",
+    "trockenschichtdickeDft": "Trockenschichtdicke (DFT / ",
+    "festkörperVolumenanteilVolSolids": "Festkörper-Volumenanteil (Vol-% Solids)",
+    "lösemittelreich25": "Lösemittelreich (25%)",
+    "mittelklasse45": "Mittelklasse (45%)",
+    "highSolidLösemittelfrei80": "High-Solid / Lösemittelfrei (80-100%)",
+    "verlustfaktorProzessverlust": "Verlustfaktor (Prozessverlust)",
+    "rolle1015": "Rolle (10-15%)",
+    "spritzenAirless3045": "Spritzen / Airless (30-45%)",
+    "extremStürmischerAußenwind50": "Extrem stürmischer Außenwind (50%+)",
+    "anzahlArbeitsgänge": "Anzahl Arbeitsgänge",
+    "ermittelteApplikationsMengenergebnisse": "Ermittelte Applikations- & Mengenergebnisse",
+    "erforderlicheNassdickeWft": "Erforderliche Nassdicke (WFT)",
+    "nassfilmAuftragsdickeVorVerdunstung": "Nassfilm-Auftragsdicke vor Verdunstung",
+    "wftInklVerdünnung": "WFT (inkl. Verdünnung)",
+    "nassfilmSollFürDie": "Nassfilm-Soll für die Schichtdickenmessung",
+    "verbrauchTheoretisch": "Verbrauch (Theoretisch)",
+    "verbrauchOhneJeglicheSpritzverluste": "Verbrauch ohne jegliche Spritzverluste",
+    "verbrauchPraxisSoll": "Verbrauch (Praxis/Soll)",
+    "inklVerlustfaktorVon": "Inkl. Verlustfaktor von ",
+    "gesamteBenötigteFarbmenge": "Gesamte benötigte Farbmenge (",
+    "eimer10Liter": " Eimer à 10 Liter",
+    "empfohleneGebindebestellung": "Empfohlene Gebindebestellung: ",
+    "eimer25Liter": " Eimer à 2,5 Liter)",
+    "verwendeteBerechnungsformeln": "Verwendete Berechnungsformeln:"
+  },
+  "werte": {
+    "dieEnddickeDerGetrockneten": "Die Enddicke der getrockneten Beschichtung. Standardwandfarbe liegt bei ca. 30-50 µm pro Schicht, schwerer Korrosionsschutz bei über 150-250 µm.",
+    "prozentsatzDerFlüssigenFarbe": "Prozentsatz der flüssigen Farbe, der nach Verdunstung des Lösemittels/Wassers dauerhaft auf der Fläche verbleibt.",
+    "wasserOderLösemittelmengeDie": "Wasser- oder Lösemittelmenge, die zur Erleichterung des Farbauftrags hinzugefügt wird (erhöht die temporäre Nassdicke, entweicht vollständig).",
+    "farbverlusteDurchSpraynebelOverspray": "Farbverluste durch Spraynebel (Overspray), im Gebinde verbleibende Restmengen oder Verlust in Rollen/Pinseln.",
+    "anzahlArbeitsgänge": "Anzahl Arbeitsgänge"
+  }
+}

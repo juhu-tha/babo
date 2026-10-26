@@ -1,0 +1,25 @@
+{
+  "texte": {
+    "termineReihenfolgeUndModulzuordnung": "Termine, Reihenfolge und Modulzuordnung sind ein Vorschlag aus dem vorhandenen Modulbestand. Daten werden erst nach der Freigabe eingetragen.",
+    "lernzieleDerZugeordnetenModule": "Lernziele der zugeordneten Module",
+    "lernzieleWerdenGeladen": "Lernziele werden geladen …",
+    "ausDenModulköpfenZusammengeführt": " (aus den Modulköpfen zusammengeführt)",
+    "ohneHinterlegteLernzieleÜbersichts": "Ohne hinterlegte Lernziele (Übersichts- und Infoseiten): ",
+    "ausDenSelbsttestsDer": " aus den Selbsttests der zugeordneten Module, nach Terminen geordnet. Die Fragen eines Termins werden beim Aufklappen nachgeladen.",
+    "zuDenZugeordnetenModulen": "Zu den zugeordneten Modulen gibt es noch keine Fragen.",
+    "lernpfadLehrveranstaltung": " Lernpfad · Lehrveranstaltung",
+    "prüfungssimulationNurMitFragen": "Prüfungssimulation nur mit Fragen der ",
+    "dieserLehrveranstaltung": " dieser Lehrveranstaltung.",
+    "lernpfadeNachLehrveranstaltung": " Lernpfade nach Lehrveranstaltung",
+    "jedeLehrveranstaltungBündeltDie": "Jede Lehrveranstaltung bündelt die passenden BaustoffBoard-Module zu einem Terminplan – mit den Lernzielen der Module, einem Quizset zum Selbsttest und einem Klausurtraining nur mit den Fragen dieser Lehrveranstaltung.",
+    "alleMitEntwurfGekennzeichneten": " Alle mit „Entwurf“ gekennzeichneten Terminpläne sind Vorschläge und werden noch abgestimmt."
+  },
+  "werte": {
+    "bachelorUndMaster": "Bachelor und Master",
+    "zugeordnetesModul": "zugeordnetes Modul",
+    "zugeordneteModule": "zugeordnete Module",
+    "bereicheDesLernpfads": "Bereiche des Lernpfads",
+    "zugeordnetenModul": "zugeordneten Modul",
+    "zugeordnetenModule": "zugeordneten Module"
+  }
+}

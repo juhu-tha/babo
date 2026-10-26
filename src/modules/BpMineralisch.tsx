@@ -5,6 +5,8 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { ShieldCheck, Calculator, Check, AlertTriangle, Layers as LayersIcon, HardHat, Star } from 'lucide-react';
 import { InnovationPraxisSection } from '@/src/components/ui/InnovationPraxisSection';
+import inhalt from '@/content/bpmineralisch/BpMineralisch.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface MineralMaterial {
   id: string;
@@ -23,102 +25,102 @@ const mineralDb: MineralMaterial[] = [
   // GLASS
   {
     id: 'float',
-    name: 'Floatglas (Standard-Kalknatronglas)',
+    name: inhalt.werte.floatglasStandardKalknatronglas,
     type: 'glass',
     density: 2500,
     waterAbs: 0,
     mohsHardness: 5.5,
     thermalCond: 1.0,
-    pros: ['Keinerlei optische Verzerrung', 'Kostengünstig herstellbar', 'Sehr plane Oberfläche'],
-    rules: 'Nur für vertikale Verglasungen ohne Absturzgefahr. Splittert scharfkantig und birgt hohes Verletzungsrisiko.',
+    pros: [inhalt.werte.keinerleiOptischeVerzerrung, inhalt.werte.kostengünstigHerstellbar, inhalt.werte.sehrPlaneOberfläche],
+    rules: inhalt.werte.nurFürVertikaleVerglasungen,
     frostResistant: 'Ja'
   },
   {
     id: 'esg',
-    name: 'ESG (Einscheibensicherheitsglas)',
+    name: inhalt.werte.esgEinscheibensicherheitsglas,
     type: 'glass',
     density: 2500,
     waterAbs: 0,
     mohsHardness: 6.0,
     thermalCond: 1.0,
-    pros: ['Hohe Biegezugfestigkeit (ca. 120 N/mm²)', 'Sehr temperaturwechselbeständig', 'Zerfällt bei Stoßbruch in harmlose, stumpfe Kleinkrümel'],
-    rules: 'Nachträgliches Schneiden oder Bohren ist nicht möglich (das Glas zerspringt). Gegen Spontanbrüche durch Nickelsulfid-Einschlüsse wird heißgelagertes ESG-H eingesetzt (in Deutschland für Fassaden i. d. R. gefordert).',
+    pros: [inhalt.werte.hoheBiegezugfestigkeitCa120, inhalt.werte.sehrTemperaturwechselbeständig, inhalt.werte.zerfälltBeiStoßbruchIn],
+    rules: inhalt.werte.nachträglichesSchneidenOderBohren,
     frostResistant: 'Ja'
   },
   {
     id: 'vsg',
-    name: 'VSG (Verbundsicherheitsglas)',
+    name: inhalt.werte.vsgVerbundsicherheitsglas,
     type: 'glass',
     density: 2550, // slightly higher due to PVB foil
     waterAbs: 0,
     mohsHardness: 5.5,
     thermalCond: 0.9,
-    pros: ['Splitterbindend durch zähelastische Reißfest-PVB-Folie (0,76-1,52 mmstärke)', 'Schallschützende Eigenschaften', 'Hohe Einbruchhemmung'],
-    rules: 'Erforderlich für Überkopfverglasungen (untere Scheibe) und in der Regel für absturzsichernde Verglasungen (DIN 18008-2/-4). Nach Glasbruch bleibt eine Resttragfähigkeit.',
+    pros: [inhalt.werte.splitterbindendDurchZähelastischeReißfes, inhalt.werte.schallschützendeEigenschaften, inhalt.werte.hoheEinbruchhemmung],
+    rules: inhalt.werte.erforderlichFürÜberkopfverglasungenUnter,
     frostResistant: 'Ja'
   },
   
   // CERAMICS
   {
     id: 'feinsteinzeug',
-    name: 'Feinsteinzeug (Fliese bis Plattenware)',
+    name: inhalt.werte.feinsteinzeugFlieseBisPlattenware,
     type: 'ceramics',
     density: 2450,
     waterAbs: 0.2, // very low < 0.5%
     mohsHardness: 8.0, // extremely hard
     thermalCond: 1.3,
-    pros: ['Sehr dichte Sinterung (Wasseraufnahme ≤ 0,5 %)', 'Frostbeständig', 'Hohe Abrieb- und Bruchfestigkeit'],
-    rules: 'Im Außenbereich werden verformbare Dünnbettmörtel (z. B. C2 S1 nach DIN EN 12004) eingesetzt, um Verformungen aufzunehmen.',
+    pros: [inhalt.werte.sehrDichteSinterungWasseraufnahme, 'Frostbeständig', inhalt.werte.hoheAbriebUndBruchfestigkeit],
+    rules: inhalt.werte.imAußenbereichWerdenVerformbare,
     frostResistant: 'Ja'
   },
   {
     id: 'steinzeug',
-    name: 'Steinzeug-Fliesen (Spaltklinker)',
+    name: inhalt.werte.steinzeugFliesenSpaltklinker,
     type: 'ceramics',
     density: 2300,
     waterAbs: 2.5, // 0.5% to 3.0%
     mohsHardness: 6.5,
     thermalCond: 1.1,
-    pros: ['Rustikale Optik', 'Gute Frostbeständigkeit', 'Säurefest gegen die meisten Reiniger'],
-    rules: 'Häufig als Industrieboden oder Werkstattboden eingesetzt. Verfugung muss auf die chemische Belastung abgestimmt sein (z.B. Epoxidharzfugen).',
+    pros: [inhalt.werte.rustikaleOptik, inhalt.werte.guteFrostbeständigkeit, inhalt.werte.säurefestGegenDieMeisten],
+    rules: inhalt.werte.häufigAlsIndustriebodenOder,
     frostResistant: 'Ja'
   },
   {
     id: 'steingut',
-    name: 'Steingut-Fliesen (Klassische Wandfliese)',
+    name: inhalt.werte.steingutFliesenKlassischeWandfliese,
     type: 'ceramics',
     density: 1900,
     waterAbs: 15.0, // high water absorption
     mohsHardness: 4.0, // easily scratched
     thermalCond: 0.8,
-    pros: ['Leicht zuzuschneiden und zu bohren (Muffenlöcher)', 'Gute Haftung verglaster Glasuren', 'Helle Scherbenfarben für brillante Designs'],
-    rules: 'Nur für Innenwände geeignet. Im Freien würde gefrierendes Porenwasser die Glasur und den Scherben schädigen.',
+    pros: [inhalt.werte.leichtZuzuschneidenUndZu, inhalt.werte.guteHaftungVerglasterGlasuren, inhalt.werte.helleScherbenfarbenFürBrillante],
+    rules: inhalt.werte.nurFürInnenwändeGeeignet,
     frostResistant: 'Nein'
   },
 
   // STONE
   {
     id: 'granit',
-    name: 'Granit (Tiefengestein)',
+    name: inhalt.werte.granitTiefengestein,
     type: 'stone',
     density: 2750,
     waterAbs: 0.3,
     mohsHardness: 7.0,
     thermalCond: 2.8, // high conductivity
-    pros: ['Extrem witterungs- und abriebbeständig', 'Säurefest im Gegensatz zu Kalksteinen', 'Hervorragend polierbar'],
-    rules: 'Universeller Außen- und Innenstein. Bei hellem Granit ist auf trasszementhaltige Verlegemörtel zu achten, um dunkle Verfärbungen (Ausblühungen / Fleckenbildung) zu vermeiden.',
+    pros: [inhalt.werte.extremWitterungsUndAbriebbeständig, inhalt.werte.säurefestImGegensatzZu, inhalt.werte.hervorragendPolierbar],
+    rules: inhalt.werte.universellerAußenUndInnenstein,
     frostResistant: 'Ja'
   },
   {
     id: 'marmor',
-    name: 'Marmor (Metamorphes Kalkgestein)',
+    name: inhalt.werte.marmorMetamorphesKalkgestein,
     type: 'stone',
     density: 2700,
     waterAbs: 0.2,
     mohsHardness: 3.5, // soft stone
     thermalCond: 2.0,
-    pros: ['Exquisite, edle Aderung und Optik', 'Hygienische Dichte', 'Tolle Haptik im Badbereich'],
-    rules: 'Säureempfindlich! Essig, Zitrone oder säurehaltige Reiniger zerstören die Politur sofort und hinterlassen matte blasse Flecken. Nicht tausalzbeständig im Außenbereich.',
+    pros: [inhalt.werte.exquisiteEdleAderungUnd, inhalt.werte.hygienischeDichte, inhalt.werte.tolleHaptikImBadbereich],
+    rules: inhalt.werte.säureempfindlichEssigZitroneOder,
     frostResistant: 'Bedingt'
   }
 ];
@@ -151,9 +153,7 @@ export default function BpMineralisch() {
         <div className="bg-red-50 border border-red-150 p-4 rounded-xl text-xs text-red-900 flex gap-2 items-start leading-relaxed font-sans font-normal mt-3">
           <AlertTriangle className="text-red-700 flex-shrink-0 mt-0.5" size={16} />
           <div>
-            <strong className="font-bold uppercase tracking-wider block mb-1">Achtung: Erhöhtes Verletzungsrisiko (Zersplitterung)</strong>
-            Floatglas bricht in große, scharfkantige Bruchstücke. Für absturzsichernde Verglasungen und Überkopfverglasungen ist es allein nicht zulässig (DIN 18008).
-          </div>
+            <strong className="font-bold uppercase tracking-wider block mb-1"><MdText text={inhalt.texte.achtungErhöhtesVerletzungsrisikoZersplit} /></strong><MdText text={inhalt.texte.floatglasBrichtInGroße} /></div>
         </div>
       );
     }
@@ -162,9 +162,7 @@ export default function BpMineralisch() {
         <div className="bg-emerald-50 border border-emerald-150 p-4 rounded-xl text-xs text-emerald-900 flex gap-2 items-start leading-relaxed font-sans font-normal mt-3">
           <ShieldCheck className="text-emerald-700 flex-shrink-0 mt-0.5" size={16} />
           <div>
-            <strong className="font-bold uppercase tracking-wider block mb-1">Sicherheitsbauteil: Vorzug für Brüstungen und Überkopf</strong>
-            Die PVB-Zwischenfolie hält die Bruchstücke zusammen und sorgt für Resttragfähigkeit. Wie lange ein gebrochenes VSG Lasten trägt, hängt von Glasart, Lagerung und Last ab und ist ggf. nachzuweisen (DIN 18008).
-          </div>
+            <strong className="font-bold uppercase tracking-wider block mb-1"><MdText text={inhalt.texte.sicherheitsbauteilVorzugFürBrüstungen} /></strong><MdText text={inhalt.texte.diePvbZwischenfolieHält} /></div>
         </div>
       );
     }
@@ -173,9 +171,7 @@ export default function BpMineralisch() {
         <div className="bg-amber-50 border border-amber-150 p-4 rounded-xl text-xs text-amber-900 flex gap-2 items-start leading-relaxed font-sans font-normal mt-3">
           <AlertTriangle className="text-amber-700 flex-shrink-0 mt-0.5" size={16} />
           <div>
-            <strong className="font-bold uppercase tracking-wider block mb-1">Frostwarnung / Verlegefehler droht</strong>
-            Mit 15% Wasseraufnahme wirkt Steingut wie ein Schwamm. Bei Außenwitterung füllt sich das Porensystem bei Schlagregen. Frost dehnt dieses gefrorene Wasser um ca. 9% aus - die Fliese löst sich im ersten Winter von der Wand ab und zerspringt!
-          </div>
+            <strong className="font-bold uppercase tracking-wider block mb-1"><MdText text={inhalt.texte.frostwarnungVerlegefehlerDroht} /></strong><MdText text={inhalt.texte.mit15WasseraufnahmeWirkt} /></div>
         </div>
       );
     }
@@ -191,18 +187,12 @@ export default function BpMineralisch() {
           <div className="p-2.5 bg-shiraz/10 text-shiraz rounded-xl">
             <LayersIcon className="w-6 h-6" />
           </div>
-          <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-              Mineralische Werkstoffe im Hochbau
-            </h2>
+          <h2 className="text-xl font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.mineralischeWerkstoffeImHochbau} /></h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Gläser, Keramikbaustoffe und Naturwerksteine - Festigkeiten, Verlegeregeln und Trass-Zementation
-          </p>
+          <p><MdText text={inhalt.texte.gläserKeramikbaustoffeUndNaturwerksteine} /></p>
         </div>
         </div>
-        <p className="text-sm text-text-main/80 leading-relaxed font-normal">
-          Mineralische Werkstoffe wie Baukunstgläser, feingesinterte Fliesen und Natursteine haben hohe Druckfestigkeiten, sind temperaturbeständig und sehr dauerhaft. Wegen ihrer Sprödigkeit fehlen plastische Reserven; Zwangs- und Biegezugspannungen (z. B. aus Temperatur) sind kritisch.
-        </p>
+        <p className="text-sm text-text-main/80 leading-relaxed font-normal"><MdText text={inhalt.texte.mineralischeWerkstoffeWieBaukunstgläser} /></p>
       </div>
 
       {/* Main interactive DB Section */}
@@ -210,7 +200,7 @@ export default function BpMineralisch() {
         
         {/* Left hand sub-tab and navigation */}
         <div className="lg:col-span-4 space-y-4">
-          <span className="text-xs font-bold text-text-main/50 uppercase tracking-wider block">Kategoriematerial auswählen:</span>
+          <span className="text-xs font-bold text-text-main/50 uppercase tracking-wider block"><MdText text={inhalt.texte.kategoriematerialAuswählen} /></span>
           
           <div className="grid grid-cols-3 gap-1 bg-slate-100 p-1 rounded-xl">
             <button 
@@ -257,11 +247,9 @@ export default function BpMineralisch() {
           <div className="bg-yellow-50/50 p-4 border border-yellow-200/50 rounded-xl space-y-2 text-xs text-yellow-900">
             <div className="flex items-center gap-1.5 font-bold">
               <HardHat className="text-yellow-800" size={14} />
-              <span>Sonderfall: Naturstein Ausblühungen</span>
+              <span><MdText text={inhalt.texte.sonderfallNatursteinAusblühungen} /></span>
             </div>
-            <p className="font-normal text-[11px] text-yellow-950/80 leading-relaxed">
-              Herkömmlicher Portlandzement setzt bei der Hydratation große Mengen an <strong>Calciumhydroxid (Portlandit)</strong> frei. Dieses gelangt durch das Mischwasser an die Natursteinoberfläche, reagiert mit dem CO₂ der Luft zu Calciumcarbonat und kann Verfärbungen bzw. Ausblühungen verursachen. <strong>Praxisregel:</strong> Empfindliche Natursteine mit verfärbungsarmen Verlegemörteln (z. B. trasshaltig) verlegen.
-            </p>
+            <p className="font-normal text-[11px] text-yellow-950/80 leading-relaxed"><MdText text={inhalt.texte.herkömmlicherPortlandzementSetztBei} /></p>
           </div>
         </div>
 
@@ -270,11 +258,11 @@ export default function BpMineralisch() {
           <div className="space-y-5">
             <div className="border-b border-home-grau/15 pb-4 flex justify-between items-start flex-wrap gap-2">
               <div>
-                <span className="text-xs font-bold text-shiraz uppercase tracking-wider block">KENNWERTDATENBLATT MINERALISCH</span>
+                <span className="text-xs font-bold text-shiraz uppercase tracking-wider block"><MdText text={inhalt.texte.kennwertdatenblattMineralisch} /></span>
                 <h3 className="text-lg font-extrabold text-text-main mt-0.5">{selectedMat.name}</h3>
               </div>
               <div className="bg-slate-50 border border-home-grau/15 px-3 py-1 rounded-lg text-right">
-                <span className="text-[10px] text-text-main/40 block leading-tight">Mohshärte (Kratzfest)</span>
+                <span className="text-[10px] text-text-main/40 block leading-tight"><MdText text={inhalt.texte.mohshärteKratzfest} /></span>
                 <span className="text-sm font-extrabold text-slate-800 font-mono">{formatDeZahl(selectedMat.mohsHardness, 1)} / 10</span>
               </div>
             </div>
@@ -282,15 +270,15 @@ export default function BpMineralisch() {
             {/* Quick stats details */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="bg-slate-50/80 p-3 rounded-xl border border-home-grau/30 text-center">
-                <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-0.5">Dichte (Rohdichte)</span>
+                <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-0.5"><MdText text={inhalt.texte.dichteRohdichte} /></span>
                 <span className="text-sm font-extrabold font-mono text-slate-800">{formatDeWert(selectedMat.density)} kg/m³</span>
               </div>
               <div className="bg-slate-50/80 p-3 rounded-xl border border-home-grau/30 text-center">
-                <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-0.5">Teilw. Wasserabs.</span>
+                <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-0.5"><MdText text={inhalt.texte.teilwWasserabs} /></span>
                 <span className="text-sm font-extrabold font-mono text-slate-800">{formatDeWert(selectedMat.waterAbs)}% M.-%</span>
               </div>
               <div className="bg-slate-50/80 p-3 rounded-xl border border-home-grau/30 text-center">
-                <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-0.5">Wärmeleitgefühlt λ</span>
+                <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-0.5"><MdText text={inhalt.texte.wärmeleitgefühlt} /></span>
                 <span className="text-sm font-extrabold font-mono text-slate-800">{formatDeZahl(selectedMat.thermalCond, 2)} W/(m·K)</span>
               </div>
               <div className="bg-slate-50/80 p-3 rounded-xl border border-home-grau/30 text-center">
@@ -301,7 +289,7 @@ export default function BpMineralisch() {
 
             {/* Pros checklist */}
             <div className="space-y-2">
-              <span className="text-xs font-bold text-shiraz uppercase tracking-wider block">Gefüge-Eigenschaften &amp; Vorteile:</span>
+              <span className="text-xs font-bold text-shiraz uppercase tracking-wider block"><MdText text={inhalt.texte.gefügeEigenschaftenVorteile} /></span>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-text-main/80 font-normal">
                 {selectedMat.pros.map((p, i) => (
                   <div key={i} className="flex gap-2 items-start">
@@ -314,7 +302,7 @@ export default function BpMineralisch() {
 
             {/* Normative / Bauaufsichtliche rules */}
             <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/10 space-y-1.5 leading-relaxed font-sans">
-              <span className="text-xs font-bold text-slate-600 uppercase block tracking-wider">Normativ einzuhaltende Verlegepraxis:</span>
+              <span className="text-xs font-bold text-slate-600 uppercase block tracking-wider"><MdText text={inhalt.texte.normativEinzuhaltendeVerlegepraxis} /></span>
               <p className="text-xs text-text-main/80 font-normal">
                 {selectedMat.rules}
               </p>
@@ -330,24 +318,20 @@ export default function BpMineralisch() {
       <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-6">
         <div className="flex items-center gap-2 border-b border-home-grau/15 pb-4Color">
           <Calculator className="text-shiraz" />
-          <h3 className="text-xl font-bold text-text-main flex items-center gap-2">
-              Flächengewicht & Wasseraufnahmelast Rechner
-            </h3>
+          <h3 className="text-xl font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.flächengewichtWasseraufnahmelastRechner} /></h3>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Berechnung der Eigenlast (trocken) im Vergleich zur wassergesättigten Volllast bei Mineralbelägen
-          </p>
+          <p><MdText text={inhalt.texte.berechnungDerEigenlastTrocken} /></p>
         </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Section Inputs 1 */}
           <div className="space-y-4">
-            <span className="text-xs font-bold text-text-main/60 uppercase block tracking-wider">Geometrische Kenngrößen</span>
+            <span className="text-xs font-bold text-text-main/60 uppercase block tracking-wider"><MdText text={inhalt.texte.geometrischeKenngrößen} /></span>
             
             <div className="space-y-1">
               <div className="flex justify-between items-center text-xs font-bold">
-                <label className="text-text-main">Gesamtfläche des Belags A:</label>
+                <label className="text-text-main"><MdText text={inhalt.texte.gesamtflächeDesBelagsA} /></label>
                 <span className="text-shiraz font-mono">{formatDeWert(calcArea)} m²</span>
               </div>
               <input 
@@ -363,7 +347,7 @@ export default function BpMineralisch() {
 
             <div className="space-y-1">
               <div className="flex justify-between items-center text-xs font-bold">
-                <label className="text-text-main">Platten- bzw. Belagsstärke (mm):</label>
+                <label className="text-text-main"><MdText text={inhalt.texte.plattenBzwBelagsstärkeMm} /></label>
                 <span className="text-shiraz font-mono">{formatDeWert(tileThick)} mm</span>
               </div>
               <input 
@@ -375,17 +359,17 @@ export default function BpMineralisch() {
                 onChange={(e) => setTileThick(Number(e.target.value))} 
                 className="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
-              <span className="text-[10px] text-text-main/40 block leading-tight">Typisch: Feinsteinzeug-Fliesen ~8-12 mm, Naturwerksteine ~20-40 mm.</span>
+              <span className="text-[10px] text-text-main/40 block leading-tight"><MdText text={inhalt.texte.typischFeinsteinzeugFliesen8} /></span>
             </div>
           </div>
 
           {/* Section Inputs 2 */}
           <div className="space-y-4">
-            <span className="text-xs font-bold text-text-main/60 uppercase block tracking-wider">Mineralische Deckenschicht</span>
+            <span className="text-xs font-bold text-text-main/60 uppercase block tracking-wider"><MdText text={inhalt.texte.mineralischeDeckenschicht} /></span>
             
             <div className="space-y-1.5">
-              <label className="text-xs font-bold text-text-main">Verlegter Werkstoff:</label>
-              <select aria-label="Verlegter Werkstoff"
+              <label className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.verlegterWerkstoff} /></label>
+              <select aria-label={inhalt.werte.verlegterWerkstoff}
                 value={tileMaterial}
                 onChange={(e) => setTileMaterial(e.target.value)}
                 className="w-full text-xs p-2.5 border border-home-grau/30 rounded-lg bg-white font-medium text-slate-800"
@@ -399,18 +383,16 @@ export default function BpMineralisch() {
             </div>
 
             <div className="bg-slate-50 p-3 rounded-xl border border-home-grau/30 text-xs text-text-main/70 leading-relaxed font-sans space-y-1 font-normal">
-              <span className="font-bold text-slate-700 block">Sättigungsmechanismus:</span>
-              Mineralische Werkstoffe lagern flüssiges Wasser im kapillaren Porensystem ab. Dadurch erhöht sich das Eigengewicht – bei leichten Tragwerken (z. B. Holzbalkendecken) ist das zu berücksichtigen.
-            </div>
+              <span className="font-bold text-slate-700 block">Sättigungsmechanismus:</span><MdText text={inhalt.texte.mineralischeWerkstoffeLagernFlüssiges} /></div>
           </div>
 
           {/* Section results */}
           <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30 flex flex-col justify-between font-mono text-xs text-text-main/80">
             <div className="space-y-3.5">
-              <span className="text-xs font-bold text-slate-700 uppercase block border-b pb-1">Ergebnisse Statik-Auszug:</span>
+              <span className="text-xs font-bold text-slate-700 uppercase block border-b pb-1"><MdText text={inhalt.texte.ergebnisseStatikAuszug} /></span>
               
               <div className="flex justify-between items-center bg-white p-2 border border-home-grau/30 rounded-md">
-                <span className="font-sans font-medium">Volumen Gestein:</span>
+                <span className="font-sans font-medium"><MdText text={inhalt.texte.volumenGestein} /></span>
                 <span className="font-bold text-slate-800">{formatDeZahl(volumeM3, 3)} m³</span>
               </div>
 
@@ -425,14 +407,12 @@ export default function BpMineralisch() {
               </div>
 
               <div className="flex justify-between items-center bg-shiraz/5 p-2 border border-shiraz/25 rounded-md">
-                <span className="font-sans font-bold text-shiraz">Nassgewicht (gesättigt):</span>
+                <span className="font-sans font-bold text-shiraz"><MdText text={inhalt.texte.nassgewichtGesättigt} /></span>
                 <span className="font-bold text-shiraz">{formatDeZahl(wetWeightKg, 1)} kg</span>
               </div>
             </div>
 
-            <div className="pt-2 border-t border-home-grau/30 text-[10px] text-text-main/50 leading-relaxed font-sans mt-3">
-              * Bemessungslast trocken: {formatDeZahl((dryWeightKg / calcArea), 1)} kg/m² (~{formatDeZahl((dryWeightKg * 0.00981 / calcArea), 2)} kN/m²). Zusätzliches Gewicht bei Sättigung: +{formatDeZahl(waterAbsorbedKg, 1)} kg insgesamt.
-            </div>
+            <div className="pt-2 border-t border-home-grau/30 text-[10px] text-text-main/50 leading-relaxed font-sans mt-3"><MdText text={inhalt.texte.bemessungslastTrocken} />{formatDeZahl((dryWeightKg / calcArea), 1)} kg/m² (~{formatDeZahl((dryWeightKg * 0.00981 / calcArea), 2)}<MdText text={inhalt.texte.knMZusätzlichesGewicht} />{formatDeZahl(waterAbsorbedKg, 1)}<MdText text={inhalt.texte.kgInsgesamt} /></div>
           </div>
         </div>
       </div>
@@ -440,39 +420,36 @@ export default function BpMineralisch() {
       {/* Industry manufacturers standard reference */}
       <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm mt-1 bg-slate-50/50">
         <h3 className="font-bold text-home-prim text-lg mb-4 flex items-center gap-2">
-          <Star className="text-shiraz" size={17} /> Mineralische Produktgruppen &amp; Systemtechniken (Herstellerneutral)
-        </h3>
-        <p className="text-xs text-text-main/70 mb-4 font-normal">
-          Keramiken und Gläser werden anspruchsvollen Konformitätsprüfungen nach europäischen Normen unterzogen, um z. B. Frostbeständigkeit, Abriebklassen glasierter Fliesen und die Eignung von Verglasungen zu deklarieren:
-        </p>
+          <Star className="text-shiraz" size={17} /><MdText text={inhalt.texte.mineralischeProduktgruppenSystemtechnike} /></h3>
+        <p className="text-xs text-text-main/70 mb-4 font-normal"><MdText text={inhalt.texte.keramikenUndGläserWerden} /></p>
         <div className="overflow-x-auto rounded-xl border border-home-grau/15 bg-white">
           <table className="w-full text-xs text-left border-collapse">
             <thead>
               <tr className="bg-slate-50 border-b border-home-grau/15 text-text-main/80 font-bold">
-                <th className="p-3">Produktgruppe / System</th>
-                <th className="p-3">Spezifikationen &amp; Leistungsklassen</th>
-                <th className="p-3">Güteklassen / Normen</th>
-                <th className="p-3">Bedeutung im modernen Fassaden- &amp; Innenbau</th>
+                <th className="p-3"><MdText text={inhalt.texte.produktgruppeSystem} /></th>
+                <th className="p-3"><MdText text={inhalt.texte.spezifikationenLeistungsklassen} /></th>
+                <th className="p-3"><MdText text={inhalt.texte.güteklassenNormen} /></th>
+                <th className="p-3"><MdText text={inhalt.texte.bedeutungImModernenFassaden} /></th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 text-text-main/80">
               <tr className="hover:bg-slate-50/50">
-                <td className="p-3 font-bold text-slate-800">Sicherheits- &amp; VSG-Verbundgläser</td>
-                <td className="p-3">Einscheibensicherheitsglas (ESG) und Verbundsicherheitsglas (VSG) mit zähelastischen PVB-Zwischenfolien sowie Sonnenschutzbeschichtungen.</td>
-                <td className="p-3 font-mono">DIN EN 12150 (ESG), DIN EN ISO 12543 (VSG)</td>
-                <td className="p-3">Standard für absturzsichernde Verglasungen, Überkopfbereiche, Pfosten-Riegel-Fassaden und Schallschutzgläser.</td>
+                <td className="p-3 font-bold text-slate-800"><MdText text={inhalt.texte.sicherheitsVsgVerbundgläser} /></td>
+                <td className="p-3"><MdText text={inhalt.texte.einscheibensicherheitsglasEsgUndVerbunds} /></td>
+                <td className="p-3 font-mono"><MdText text={inhalt.texte.dinEn12150Esg} /></td>
+                <td className="p-3"><MdText text={inhalt.texte.standardFürAbsturzsicherndeVerglasungen} /></td>
               </tr>
               <tr className="hover:bg-slate-50/50">
-                <td className="p-3 font-bold text-slate-800">Brandschutz- &amp; Spezialgläser</td>
-                <td className="p-3">Feuerwiderstandsklassifizierte Verglasungen mit lichtdurchlässigen Dämmschichten zur Hitzeabsorption im Brandfall.</td>
-                <td className="p-3 font-mono">DIN 4102-13 (Brandschutzverglasung), Klassen EI30 / EI90 (F30 / F90)</td>
-                <td className="p-3">Schnittstellen von Fluchtwegen, Treppenräumen und Brandabschnitten zur Verhinderung von Flammenübertragungen.</td>
+                <td className="p-3 font-bold text-slate-800"><MdText text={inhalt.texte.brandschutzSpezialgläser} /></td>
+                <td className="p-3"><MdText text={inhalt.texte.feuerwiderstandsklassifizierteVerglasung} /></td>
+                <td className="p-3 font-mono"><MdText text={inhalt.texte.din410213Brandschutzverglasung} /></td>
+                <td className="p-3"><MdText text={inhalt.texte.schnittstellenVonFluchtwegenTreppenräume} /></td>
               </tr>
               <tr className="hover:bg-slate-50/50">
-                <td className="p-3 font-bold text-slate-800">Feinsteinzeug &amp; Baukeramik</td>
-                <td className="p-3">Gepresste, extrem dichte Keramikfliesen mit minimaler kapillarer Wasseraufnahme, glasierte und unglasierte Formate.</td>
-                <td className="p-3 font-mono">DIN EN 14411 (Keramische Fliesen), Abriebgruppen PEI I bis PEI V</td>
-                <td className="p-3">Boden- und Wandbeläge in stark strapazierten Feucht- und Nassräumen sowie dekorative Fassadenverkleidungen.</td>
+                <td className="p-3 font-bold text-slate-800"><MdText text={inhalt.texte.feinsteinzeugBaukeramik} /></td>
+                <td className="p-3"><MdText text={inhalt.texte.gepressteExtremDichteKeramikfliesen} /></td>
+                <td className="p-3 font-mono"><MdText text={inhalt.texte.dinEn14411Keramische} /></td>
+                <td className="p-3"><MdText text={inhalt.texte.bodenUndWandbelägeIn} /></td>
               </tr>
             </tbody>
           </table>
@@ -483,15 +460,11 @@ export default function BpMineralisch() {
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <FormulaDerivationBox
-          title="Anwendungsbeispiel: Nasslast eines Steingut- und eines Feinsteinzeugbelags"
+          title={inhalt.werte.anwendungsbeispielNasslastEinesSteingut}
           zielGleichung="W_{wet} = A \cdot \frac{t}{1000} \cdot \rho \cdot \left(1 + \frac{w_{abs}}{100}\right)"
-          normQuelle="Lehrbeispiel (Rohdichten und Wasseraufnahme als Lehrwerte)"
-          schritte={[
-            { titel: '1. Steingut', formel: '20 \\cdot 0{,}008 \\cdot 1900 \\cdot 1{,}15 = 350\\,\\text{kg}', erklaerung: '20 m², 8 mm, ρ = 1900 kg/m³, w_abs = 15 %.' },
-            { titel: '2. Feinsteinzeug', formel: '20 \\cdot 0{,}008 \\cdot 2400 \\cdot 1{,}005 = 386\\,\\text{kg}', erklaerung: 'ρ = 2400 kg/m³, w_abs = 0,5 %.' },
-            { titel: '3. Wasseranteil', formel: '\\Delta W_{Steingut} = 304 \\cdot 0{,}15 = 46\\,\\text{kg};\\; \\Delta W_{FSZ} = 384 \\cdot 0{,}005 = 2\\,\\text{kg}', erklaerung: 'Trockenmassen 304 bzw. 384 kg.' },
-          ]}
-          ergebnisHinweis="Steingut nimmt rund 46 kg Wasser auf, Feinsteinzeug nur etwa 2 kg – das Wasser im Porenraum ist auch die Ursache für Frostschäden bei Steingut im Freien."
+          normQuelle={inhalt.werte.lehrbeispielRohdichtenUndWasseraufnahme}
+          schritte={inhalt.daten["BpMineralisch.schritte"]}
+          ergebnisHinweis={inhalt.werte.steingutNimmtRund46}
         />
       </div>
 
@@ -506,21 +479,9 @@ export default function BpMineralisch() {
           { title: 'Feinsteinzeug', url: 'https://de.wikipedia.org/wiki/Feinsteinzeug' },
           { title: 'Naturstein', url: 'https://de.wikipedia.org/wiki/Naturstein' }
         ]} 
-        literatur={[
-          'Weller, B.; Härth, K.; Tasche, S.; Unnewehr, S.: Konstruktiver Glasbau – Grundlagen, Anwendung, Beispiele. München: Edition Detail 2008',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011'
-        ]} 
-        regelwerke={[ 
-          { title: 'DIN 18008-1 bis -5 (Glas im Bauwesen – Bemessungs- und Konstruktionsregeln)' }, 
-          { title: 'DIN EN 12150 (Glas im Bauwesen – Thermisch vorgespanntes Kalknatron-Einscheibensicherheitsglas)' }, 
-          { title: 'DIN EN 14411 (Keramische Fliesen und Platten - Definitionen, Klassifizierung, Eigenschaften)' },
-          { title: 'DIN 18516-3 (Außenwandbekleidungen, hinterlüftet - Naturwerkstein)' }
-        ]} 
-        formeln={[
-          { formel: 'V_{mat} = A \\cdot \\frac{t_{mm}}{1000}', erklaerung: 'Volumen eines Plattenbelags (Fläche A in m², Dicke t in mm).', quelle: 'Lehrformel' },
-          { formel: 'W_{dry} = V_{mat} \\cdot \\rho_{dry}', erklaerung: 'Trockenmasse aus Volumen und Rohdichte.', quelle: 'Lehrformel' },
-          { formel: 'W_{wet} = W_{dry} \\cdot \\left(1 + \\frac{w_{abs}}{100}\\right)', erklaerung: 'Masse bei Wassersättigung (Wasseraufnahme w_abs in M.-%).', quelle: 'Lehrformel' }
-        ]} 
+        literatur={inhalt.daten["BpMineralisch.literatur"]} 
+        regelwerke={inhalt.daten["BpMineralisch.regelwerke"]} 
+        formeln={inhalt.daten["BpMineralisch.formeln"]} 
       />
     </div>
   );

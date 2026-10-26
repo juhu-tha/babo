@@ -13,6 +13,8 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
+import inhalt from '@/content/ausbreitversuch/Ausbreitversuch.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -118,12 +120,12 @@ export default function Ausbreitversuch() {
     scales: {
       x: {
         type: 'linear' as const,
-        title: { display: true, text: 'Schergeschwindigkeit γ̇ (1/s)' },
+        title: { display: true, text: inhalt.werte.schergeschwindigkeit1S },
         min: 0,
         max: 50
       },
       y: {
-        title: { display: true, text: 'Scherspannung τ (Pa)' },
+        title: { display: true, text: inhalt.werte.scherspannungPa },
         min: 0,
         // Let Chart.js auto-scale the y-axis based on the data
       }
@@ -135,15 +137,10 @@ export default function Ausbreitversuch() {
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          <CircleDashed className="text-shiraz" /> Ausbreitversuch & Rheologie
-        </h2>
+          <CircleDashed className="text-shiraz" /><MdText text={inhalt.texte.ausbreitversuchRheologie} /></h2>
         
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Der Ausbreitversuch nach DIN EN 12350-5 dient zur Bestimmung der Konsistenz von Frischbeton. 
-            Gleichzeitig lässt sich das Fließverhalten von Beton rheologisch durch das <strong>Bingham-Modell</strong> beschreiben, 
-            welches durch die Fließgrenze (τ₀) und die plastische Viskosität (μ) definiert ist.
-          </p>
+          <p><MdText text={inhalt.texte.derAusbreitversuchNachDin} /></p>
         </div>
       </div>
 
@@ -151,11 +148,11 @@ export default function Ausbreitversuch() {
         {/* Left Column: Configuration */}
         <div className="lg:col-span-4 flex flex-col gap-6">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
-            <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2">1. Versuchskonfiguration</h3>
+            <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2"><MdText text={inhalt.texte.t1Versuchskonfiguration} /></h3>
             
             <div className="space-y-3">
-              <label className="text-sm font-bold text-text-main">Konsistenzklasse wählen</label>
-              <select aria-label="Konsistenzklasse wählen"
+              <label className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.konsistenzklasseWählen} /></label>
+              <select aria-label={inhalt.werte.konsistenzklasseWählen}
                 value={consistency}
                 onChange={(e) => setConsistency(e.target.value as ConsistencyClass)}
                 disabled={testStatus === 'running'}
@@ -172,13 +169,13 @@ export default function Ausbreitversuch() {
             </div>
 
             <div className="bg-off-white p-4 rounded-xl border border-home-grau/30">
-              <h4 className="text-sm font-bold text-shiraz mb-2">Rheologische Parameter</h4>
+              <h4 className="text-sm font-bold text-shiraz mb-2"><MdText text={inhalt.texte.rheologischeParameter} /></h4>
               <div className="flex justify-between items-center mb-1">
-                <span className="text-xs text-text-main">Fließgrenze (τ₀):</span>
+                <span className="text-xs text-text-main"><MdText text={inhalt.texte.fließgrenze} /></span>
                 <span className="text-sm font-bold">{formatDeWert(params.tau0)} Pa</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-xs text-text-main">Plastische Viskosität (μ):</span>
+                <span className="text-xs text-text-main"><MdText text={inhalt.texte.plastischeViskosität} /></span>
                 <span className="text-sm font-bold">{formatDeWert(params.mu)} Pa·s</span>
               </div>
             </div>
@@ -189,8 +186,7 @@ export default function Ausbreitversuch() {
                 disabled={testStatus !== 'idle'}
                 className="flex-1 py-3 bg-shiraz hover:bg-shiraz/90 text-white rounded-xl font-bold flex items-center justify-center gap-2 transition-all shadow-sm disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
               >
-                <Play size={18} /> Test Starten
-              </button>
+                <Play size={18} /><MdText text={inhalt.texte.testStarten} /></button>
               <button
                 onClick={resetTest}
                 disabled={testStatus === 'idle'}
@@ -205,7 +201,7 @@ export default function Ausbreitversuch() {
         {/* Right Column: Execution & Results */}
         <div className="lg:col-span-8 flex flex-col gap-6">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col">
-            <h3 className="text-lg font-bold text-text-main mb-6 border-b border-home-grau/30 pb-4">2. Versuchsdurchführung</h3>
+            <h3 className="text-lg font-bold text-text-main mb-6 border-b border-home-grau/30 pb-4"><MdText text={inhalt.texte.t2Versuchsdurchführung} /></h3>
             
             <div className="flex flex-col md:flex-row gap-8 items-center justify-center">
               <div className="w-full max-w-md h-64 bg-stone-200 rounded-xl flex items-center justify-center relative border-2 border-stone-300 overflow-hidden shadow-inner">
@@ -289,7 +285,7 @@ export default function Ausbreitversuch() {
           </div>
 
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col h-[400px]">
-            <h3 className="text-lg font-bold text-text-main mb-4 border-b border-home-grau/30 pb-2">3. Rheologisches Modell (Bingham)</h3>
+            <h3 className="text-lg font-bold text-text-main mb-4 border-b border-home-grau/30 pb-2"><MdText text={inhalt.texte.t3RheologischesModellBingham} /></h3>
             <div className="flex-1 relative">
               <Line data={rheologyChartData} options={chartOptions} />
             </div>

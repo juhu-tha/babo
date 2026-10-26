@@ -8,6 +8,8 @@ import { Droplets, AlertTriangle, Wind, Scale, CheckCircle2 } from 'lucide-react
 import { DIN1045_2 } from '@/src/data/normParams';
 import React from 'react';
 import { NachErstemBild } from '@/src/components/ui/NachErstemBild';
+import inhalt from '@/content/mischungsberechnung/MischungEingaben.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface MischungEingabenProps {
   applyWalzSandReduction: () => void;
@@ -108,13 +110,13 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
       {/* Vorgegebene Rezepturen */}
       <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
         <h3 className="font-semibold mb-4 text-text-main flex items-center gap-2">
-          <label htmlFor="rezeptur-select">Vorgegebene Rezepturen</label>
-          <InfoTooltip text="Wählen Sie eine vordefinierte Rezeptur für spezifische Anwendungen aus." />
+          <label htmlFor="rezeptur-select"><MdText text={inhalt.texte.vorgegebeneRezepturen} /></label>
+          <InfoTooltip text={inhalt.werte.wählenSieEineVordefinierte} />
         </h3>
         <div>
           <select 
             id="rezeptur-select"
-            aria-label="Vorgegebene Rezepturen"
+            aria-label={inhalt.werte.vorgegebeneRezepturen}
             value={rezeptur} 
             onChange={handleRezepturChange}
             className="w-full p-2 border border-home-grau/30 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-middle-blue/50"
@@ -129,11 +131,11 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
 
       {/* Expositionsklassen & Bauteil */}
       <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-        <h3 className="font-semibold mb-4 text-text-main">Expositionsklassen & Bauteil</h3>
+        <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.expositionsklassenBauteil} /></h3>
         <div className="mb-4">
           <div className="flex items-center gap-2">
             <label htmlFor="bauteil-select" className="block text-sm font-medium text-text-main mb-1">Bauteil-Voreinstellung</label>
-            <InfoTooltip text="Vordefinierte Parameter für typische Bauteile." />
+            <InfoTooltip text={inhalt.werte.vordefinierteParameterFürTypische} />
           </div>
           <select 
             id="bauteil-select"
@@ -171,10 +173,10 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
         {/* Normative Anforderungen */}
         {expClasses.length > 0 && (
           <div className="mt-4 p-3 bg-white rounded-lg border border-home-grau/30 text-sm">
-            <div className="font-semibold mb-2 text-text-main">Anforderungen (DIN EN 206):</div>
+            <div className="font-semibold mb-2 text-text-main"><MdText text={inhalt.texte.anforderungenDinEn206} /></div>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 text-center">
               <div className="bg-off-white p-2 rounded">
-                <div className="text-xs text-text-main/60">max. (w/z)eq</div>
+                <div className="text-xs text-text-main/60"><MdText text={inhalt.texte.maxWZEq} /></div>
                 <div className="font-bold">{formatDeZahl(results.reqMaxWz, 2)}</div>
               </div>
               <div className="bg-off-white p-2 rounded">
@@ -182,11 +184,11 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
                 <div className="font-bold">{formatDeWert(results.reqMinZ)} kg</div>
               </div>
               <div className="bg-off-white p-2 rounded">
-                <div className="text-xs text-text-main/60">min. Festigkeit</div>
+                <div className="text-xs text-text-main/60"><MdText text={inhalt.texte.minFestigkeit} /></div>
                 <div className="font-bold">{results.reqMinC}</div>
               </div>
               <div className="bg-off-white p-2 rounded">
-                <div className="text-xs text-text-main/60">min. Deckung</div>
+                <div className="text-xs text-text-main/60"><MdText text={inhalt.texte.minDeckung} /></div>
                 <div className="font-bold">{results.reqMinCover > 0 ? `${formatDeWert(results.reqMinCover)} mm` : '-'}</div>
               </div>
               <div className="bg-off-white p-2 rounded">
@@ -223,12 +225,12 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
       <NachErstemBild minHoehe="40rem">
       {/* Zement & Wasser */}
       <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-        <h3 className="font-semibold mb-4 text-text-main">Zement & Wasser</h3>
+        <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.zementWasser} /></h3>
         <div className="grid grid-cols-2 gap-4 mb-4">
           <div>
             <div className="flex items-center gap-2">
               <label htmlFor="zementart-select" className="block text-sm font-medium text-text-main mb-1">Zementart</label>
-              <InfoTooltip text="Art des verwendeten Zements (z.B. CEM I, CEM II)." />
+              <InfoTooltip text={inhalt.werte.artDesVerwendetenZements} />
             </div>
             <select 
               id="zementart-select"
@@ -245,7 +247,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
           <div>
             <label htmlFor="zementfestigkeit-select" className="block text-sm font-medium text-text-main mb-1 flex items-center gap-2">
               Festigkeitsklasse
-              <InfoTooltip text="N = normale Erhärtung, R = schnelle Erhärtung (rapid)" />
+              <InfoTooltip text={inhalt.werte.nNormaleErhärtungR} />
             </label>
             <select 
               id="zementfestigkeit-select"
@@ -260,7 +262,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
             </select>
           </div>
         </div>
-        <Slider label="Zementgehalt z" info="Masse des Zements pro Kubikmeter Beton." min={200} max={500} step={5} value={zement} unit="kg/m3" onChange={(e) => setZement(Number(e.target.value))} />
+        <Slider label={inhalt.werte.zementgehaltZ} info={inhalt.werte.masseDesZementsPro} min={200} max={500} step={5} value={zement} unit="kg/m3" onChange={(e) => setZement(Number(e.target.value))} />
         <div className="mt-4">
           <Slider  label="Wasser" 
             min={100} max={250} step={1} 
@@ -270,9 +272,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
 
           <div className="mt-6 p-4 bg-white rounded-xl border border-home-grau/30 shadow-sm">
             <h4 className="text-sm font-bold text-text-main mb-3 flex items-center gap-2">
-              <Droplets size={16} className="text-blue-500" />
-              Wasseranspruch abschätzen
-            </h4>
+              <Droplets size={16} className="text-blue-500" /><MdText text={inhalt.texte.wasseranspruchAbschätzen} /></h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-end">
               <div>
                 <label htmlFor="konsistenz-select" className="block text-xs font-medium text-text-main/80 mb-1">Konsistenzklasse</label>
@@ -289,7 +289,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
                 </select>
               </div>
               <div>
-                <div className="text-xs text-text-main/80 mb-1">Geschätzter Bedarf (für Dmax {groesstkorn}mm):</div>
+                <div className="text-xs text-text-main/80 mb-1"><MdText text={inhalt.texte.geschätzterBedarfFürDmax} />{groesstkorn}mm):</div>
                 <div className="flex items-center gap-3">
                   <span className="text-lg font-bold text-blue-600">{formatDeWert(results.estimatedWater)} kg/m³</span>
                   <button 
@@ -301,25 +301,20 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
                 </div>
               </div>
             </div>
-            <p className="text-xs text-text-main/60 mt-3">
-              Der Wasseranspruch hängt maßgeblich vom Größtkorn und der gewünschten Konsistenz ab. Zusatzmittel (z.B. Fließmittel) können den tatsächlichen Wasserbedarf deutlich reduzieren.
-            </p>
+            <p className="text-xs text-text-main/60 mt-3"><MdText text={inhalt.texte.derWasseranspruchHängtMaßgeblich} /></p>
           </div>
 
           {results.xf4OhneLp && (
             <div className="mt-2 p-2 bg-red-50 text-red-700 text-sm rounded-lg flex items-start gap-2 border border-red-200">
               <AlertTriangle size={16} className="mt-0.5 shrink-0" />
-              <div>
-                <strong>Achtung:</strong> XF4 ist nach DIN 1045-2:2023-08 nur als Luftporenbeton (LP) geregelt. Bitte LP-Beton wählen.
-              </div>
+              <div><MdText text={inhalt.texte.achtungXf4IstNach} /></div>
             </div>
           )}
 
           {!results.isWzOk && !results.xf4OhneLp && (
             <div className="mt-2 p-2 bg-red-50 text-red-700 text-sm rounded-lg flex items-start gap-2 border border-red-200">
               <AlertTriangle size={16} className="mt-0.5 shrink-0" />
-              <div>
-                <strong>Achtung:</strong> Der (w/z)eq-Wert von {formatDeZahl(results.wzEq, 2)} überschreitet den für die gewählten Expositionsklassen zulässigen Maximalwert von {formatDeZahl(results.reqMaxWz, 2)}.
+              <div><MdText text={inhalt.texte.achtungDerWZ} />{formatDeZahl(results.wzEq, 2)}<MdText text={inhalt.texte.überschreitetDenFürDie} />{formatDeZahl(results.reqMaxWz, 2)}.
               </div>
             </div>
           )}
@@ -327,8 +322,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
           {!results.isZOk && (
             <div className="mt-2 p-2 bg-red-50 text-red-700 text-sm rounded-lg flex items-start gap-2 border border-red-200">
               <AlertTriangle size={16} className="mt-0.5 shrink-0" />
-              <div>
-                <strong>Achtung:</strong> Der Zementgehalt von {formatDeWert(zement)} kg/m³ unterschreitet den für die gewählten Expositionsklassen geforderten Mindestwert von {formatDeWert(results.reqMinZ)} kg/m³.
+              <div><MdText text={inhalt.texte.achtungDerZementgehaltVon} />{formatDeWert(zement)}<MdText text={inhalt.texte.kgMUnterschreitetDen} />{formatDeWert(results.reqMinZ)} kg/m³.
               </div>
             </div>
           )}
@@ -336,20 +330,18 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
           {!results.isMaxZOk && (
             <div className="mt-2 p-2 bg-red-50 text-red-700 text-sm rounded-lg flex items-start gap-2 border border-red-200">
               <AlertTriangle size={16} className="mt-0.5 shrink-0" />
-              <div>
-                <strong>Achtung:</strong> Der Zementgehalt von {formatDeWert(zement)} kg/m³ überschreitet den für die gewählte Verschleißklasse (XM) empfohlenen Maximalwert von {formatDeWert(results.reqMaxZement)} kg/m³ (Gefahr einer abriebanfälligen Zementleimschicht).
-              </div>
+              <div><MdText text={inhalt.texte.achtungDerZementgehaltVon2} />{formatDeWert(zement)}<MdText text={inhalt.texte.kgMÜberschreitetDen} />{formatDeWert(results.reqMaxZement)}<MdText text={inhalt.texte.kgMGefahrEiner} /></div>
             </div>
           )}
 
           <div className="mt-4 pt-4 border-t border-home-grau/10">
             <div className="flex items-center gap-2">
-              <label htmlFor="ziel-druckfestigkeit-select" className="block text-sm font-medium text-text-main mb-1">Ziel-Druckfestigkeit (Beton)</label>
-              <InfoTooltip text="Angestrebte Druckfestigkeit des Betons nach 28 Tagen." />
+              <label htmlFor="ziel-druckfestigkeit-select" className="block text-sm font-medium text-text-main mb-1"><MdText text={inhalt.texte.zielDruckfestigkeitBeton} /></label>
+              <InfoTooltip text={inhalt.werte.angestrebteDruckfestigkeitDesBetons} />
             </div>
             <select 
               id="ziel-druckfestigkeit-select"
-              aria-label="Ziel-Druckfestigkeit (Beton)"
+              aria-label={inhalt.werte.zielDruckfestigkeitBeton}
               onChange={(e) => {
                 const val = e.target.value;
                 if (val === 'C20/25') setWasser(zement * 0.65);
@@ -372,8 +364,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
               <option value="C50/60">C50/60 (w/z ≈ 0,35)</option>
             </select>
             {results.reqMinC && (
-              <div className="text-xs text-text-main/60 mt-1">
-                Min. gefordert durch Expositionsklassen: <strong>{results.reqMinC}</strong>
+              <div className="text-xs text-text-main/60 mt-1"><MdText text={inhalt.texte.minGefordertDurchExpositionsklassen} /><strong>{results.reqMinC}</strong>
               </div>
             )}
           </div>
@@ -384,15 +375,14 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
       <NachErstemBild minHoehe="30rem">
       {/* Zusatzstoffe */}
       <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-        <h3 className="font-semibold mb-4 text-text-main">Betonzusatzstoffe (k-Wert-Ansatz)</h3>
+        <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.betonzusatzstoffeKWertAnsatz} /></h3>
 
         {/* Flugasche */}
         <div className="grid grid-cols-2 gap-4 items-end mt-4">
           <div>
-            <Slider label="Flugasche (FA)" info="Menge an zugegebener Flugasche." min={0} max={150} step={5} value={fa} unit="kg/m3" onChange={(e) => setFa(Number(e.target.value))} />
+            <Slider label={inhalt.werte.flugascheFa} info={inhalt.werte.mengeAnZugegebenerFlugasche} min={0} max={150} step={5} value={fa} unit="kg/m3" onChange={(e) => setFa(Number(e.target.value))} />
             {fa > results.maxFa && (
-              <div className="text-xs text-torch-red mt-1">
-                (Anrechenbar max. {formatDeZahl(results.maxFa, 0)} kg/m³ bei {formatDeWert(zement)} kg/m³ {zementArt})
+              <div className="text-xs text-torch-red mt-1"><MdText text={inhalt.texte.anrechenbarMax} />{formatDeZahl(results.maxFa, 0)} kg/m³ bei {formatDeWert(zement)} kg/m³ {zementArt})
               </div>
             )}
           </div>
@@ -400,33 +390,31 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
                 <label className="text-sm font-medium text-text-main">k-Wert FA</label>
-                <InfoTooltip text="Nach Typ II: Flugasche üblicherweise 0.4 (DIN 1045-2). Für Unterwasserbeton nach DAfStb max. 0.7." />
+                <InfoTooltip text={inhalt.werte.nachTypIiFlugasche} />
               </div>
               <span className="text-sm font-bold text-shiraz">{formatDeWert(kFa)} -</span>
             </div>
-            <div className="text-xs text-home-grau">Nach DIN 1045-2: k = {formatDeWert(DIN1045_2.kFlugasche)}</div>
+            <div className="text-xs text-home-grau"><MdText text={inhalt.texte.nachDin10452} />{formatDeWert(DIN1045_2.kFlugasche)}</div>
           </div>
         </div>
 
         {/* Silikastaub */}
         <div className="grid grid-cols-2 gap-4 items-end mt-4">
           <div>
-            <Slider label="Silikastaub (SF)" info="Menge an zugegebenem Silikastaub." min={0} max={50} step={1} value={sf} unit="kg/m3" onChange={(e) => setSf(Number(e.target.value))} />
+            <Slider label={inhalt.werte.silikastaubSf} info={inhalt.werte.mengeAnZugegebenemSilikastaub} min={0} max={50} step={1} value={sf} unit="kg/m3" onChange={(e) => setSf(Number(e.target.value))} />
             {sf > results.maxSf && (
-              <div className="text-xs text-torch-red mt-1">
-                (Anrechenbar max. {formatDeZahl(results.maxSf, 0)} kg/m³ bei {formatDeWert(zement)} kg/m³ Zement)
-              </div>
+              <div className="text-xs text-torch-red mt-1"><MdText text={inhalt.texte.anrechenbarMax2} />{formatDeZahl(results.maxSf, 0)} kg/m³ bei {formatDeWert(zement)}<MdText text={inhalt.texte.kgMZement} /></div>
             )}
           </div>
           <div className="flex flex-col gap-2 pdf-parameter">
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
                 <label className="text-sm font-medium text-text-main">k-Wert SF</label>
-                <InfoTooltip text="Nach DIN 1045-2:2023-08, Abschn. 5.2.5.2.3 darf Silikastaub mit k = 1,0 angerechnet werden (s ≤ 0,11 · z). Bei XF2/XF4 ist nur Flugasche anrechenbar – dann k = 0 einstellen." />
+                <InfoTooltip text={inhalt.werte.nachDin10452} />
               </div>
               <span className="text-sm font-bold text-shiraz">{formatDeZahl(kSf, 1)} -</span>
             </div>
-            <div className="text-xs text-home-grau">DIN 1045-2:2023-08: Anrechnung von Silikastaub mit k = 1,0 (Abschn. 5.2.5.2.3; nicht bei XF2/XF4)</div>
+            <div className="text-xs text-home-grau"><MdText text={inhalt.texte.din104522023} /></div>
           </div>
         </div>
 
@@ -434,8 +422,8 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
         <div className="grid grid-cols-2 gap-4 items-end mt-4">
           <div>
             <Slider 
-              label="Hüttensandmehl (HüS)" 
-              info="Granulierte Hochofenschlacke nach DIN EN 15167-1. Latent-hydraulischer Zusatzstoff zur Dämpfung der Hydratationswärme und für hohen Sulfatwiderstand." 
+              label={inhalt.werte.hüttensandmehlHüs} 
+              info={inhalt.werte.granulierteHochofenschlackeNachDin} 
               min={0} 
               max={200} 
               step={5} 
@@ -444,8 +432,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
               onChange={(e) => setKsm(Number(e.target.value))} 
             />
             {hues > 0 && (
-              <div className="text-xs text-shiraz mt-1">
-                (Latent-hydraulisch: Dichte 2,90 kg/dm³, V_HüS = {formatDeZahl((hues / 2.9), 1)} dm³)
+              <div className="text-xs text-shiraz mt-1"><MdText text={inhalt.texte.latentHydraulischDichte2} />{formatDeZahl((hues / 2.9), 1)} dm³)
               </div>
             )}
           </div>
@@ -453,7 +440,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
                 <label className="text-sm font-medium text-text-main">k-Wert HüS</label>
-                <InfoTooltip text="Hüttensandmehl Typ II (DIN EN 15167-1 / DIN 1045-2). In Deutschland nach DIN 1045-2 nicht über den k-Wert anrechenbar; Anrechnung nur mit allgemeiner bauaufsichtlicher Zulassung. Der voreingestellte Wert 0,4 ist eine Lehrannahme." />
+                <InfoTooltip text={inhalt.werte.hüttensandmehlTypIiDin} />
               </div>
               <span className="text-sm font-bold text-shiraz">{formatDeZahl(kKsm, 1)} -</span>
             </div>
@@ -474,8 +461,8 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
         <div className="grid grid-cols-2 gap-4 items-end mt-4">
           <div>
             <Slider 
-              label="Pflanzenkohle (Biochar)" 
-              info="Biochar bindet dauerhaft CO2 im Beton (ca. -2,5 kg CO2 pro kg Biochar) und dient als hochfeiner Zusatzstoff." 
+              label={inhalt.werte.pflanzenkohleBiochar} 
+              info={inhalt.werte.biocharBindetDauerhaftCo2} 
               min={0} 
               max={50} 
               step={1} 
@@ -487,8 +474,8 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
           <div className="flex flex-col gap-2 pdf-parameter">
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
-                <label className="text-sm font-medium text-text-main">k-Wert Biochar</label>
-                <InfoTooltip text="Pflanzenkohle (Biochar): Aktuell kein generischer k-Wert in DIN 1045-2 festgelegt. Eine Anrechnung auf Mindestzement und w/z-Wert bedarf in Deutschland einer abZ/aBG. In wissenschaftlichen Studien liegt der Wirksamkeitsfaktor k typischerweise zwischen 0,0 (inerter Füllstoff) und 0,2–0,3 (heterogene Keimbildungseffekte bei Feinstmahlung). Negative k-Werte bilden Festigkeitsverluste bei unkompensierter Zementsubstitution ab." />
+                <label className="text-sm font-medium text-text-main"><MdText text={inhalt.texte.kWertBiochar} /></label>
+                <InfoTooltip text={inhalt.werte.pflanzenkohleBiocharAktuellKein} />
               </div>
               <span className="text-sm font-bold text-shiraz">{formatDeZahl(kBiochar, 1)} -</span>
             </div>
@@ -506,8 +493,8 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
         </div>
         {biochar > 0 && (
           <div className="grid grid-cols-2 gap-4 items-end mt-4 p-3 bg-white rounded-lg border border-home-grau/30">
-            <Slider label="Gesamtfeuchte Biochar" info="Gesamter Wassergehalt der Pflanzenkohle." min={0} max={100} step={1} value={feuchteBiochar} unit="M.-%" onChange={(e) => setFeuchteBiochar(Number(e.target.value))} />
-            <Slider label="Wasserbedarf (WA) Biochar"  min={0} max={100} step={1} value={waBiochar} unit="M.-%" onChange={(e) => setWaBiochar(Number(e.target.value))} />
+            <Slider label={inhalt.werte.gesamtfeuchteBiochar} info={inhalt.werte.gesamterWassergehaltDerPflanzenkohle} min={0} max={100} step={1} value={feuchteBiochar} unit="M.-%" onChange={(e) => setFeuchteBiochar(Number(e.target.value))} />
+            <Slider label={inhalt.werte.wasserbedarfWaBiochar}  min={0} max={100} step={1} value={waBiochar} unit="M.-%" onChange={(e) => setWaBiochar(Number(e.target.value))} />
           </div>
         )}
 
@@ -517,8 +504,8 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
       <NachErstemBild minHoehe="40rem">
       {/* Zusatzmittel & Luft (inkl. LP-Beton Automatik) */}
       <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-        <h3 className="font-semibold mb-4 text-text-main">Zusatzmittel &amp; Luft (LP-Beton)</h3>
-        <Slider label="Zusatzmittel (FM/LP)" info="Menge an Fließmittel oder Luftporenbildner." min={0} max={10} step={0.1} value={zusatzmittel} unit="kg/m3" onChange={(e) => setZusatzmittel(Number(e.target.value))} />
+        <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.zusatzmittelLuftLpBeton} /></h3>
+        <Slider label={inhalt.werte.zusatzmittelFmLp} info={inhalt.werte.mengeAnFließmittelOder} min={0} max={10} step={0.1} value={zusatzmittel} unit="kg/m3" onChange={(e) => setZusatzmittel(Number(e.target.value))} />
         <div className="mt-4">
           <Slider label="Luftporengehalt" min={0} max={10} step={0.5} value={luft} unit="Vol.-%" onChange={(e) => setLuft(Number(e.target.value))} />
         </div>
@@ -528,8 +515,8 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
           <div className="flex items-center justify-between flex-wrap gap-2">
             <div className="flex items-center gap-2">
               <Wind size={16} className="text-shiraz" />
-              <span className="text-sm font-bold text-text-main">LP-Beton Automatik &amp; Gesteinsfolgen</span>
-              <InfoTooltip text="Automatische Berücksichtigung von künstlich eingebrachten Mikroluftporen nach DIN 1045-2 Tabelle F.2.2. Künstliche Luftporen verdrängen Gesteinsvolumen im Stoffraum, wirken wie Feinstsand (Walz'sche Regel) und senken den Wasseranspruch durch den Kugellagereffekt." />
+              <span className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.lpBetonAutomatikGesteinsfolgen} /></span>
+              <InfoTooltip text={inhalt.werte.automatischeBerücksichtigungVonKünstlich} />
             </div>
 
             {/* Modus-Wähler */}
@@ -582,12 +569,11 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
             <div className="flex items-center gap-2">
               <div className={`w-2.5 h-2.5 rounded-full ${isLpActive ? 'bg-blue-600 animate-pulse' : 'bg-slate-400'}`} />
               <span>
-                <strong>Status:</strong> {isLpActive ? 'LP-Beton aktiv (Frost-Tausalz-Konzept)' : 'Normalbeton (Verdichtungsporen)'}
+                <strong>Status:</strong> {isLpActive ? inhalt.werte.lpBetonAktivFrost : inhalt.werte.normalbetonVerdichtungsporen}
               </span>
             </div>
             {isLpActive && (
-              <div className="font-mono text-blue-800 font-medium">
-                DIN 1045-2 Mindestluftgehalt für Dmax {groesstkorn} mm: <strong>≥ {formatDeZahl(minLpNorm, 1)} Vol.-%</strong>
+              <div className="font-mono text-blue-800 font-medium"><MdText text={inhalt.texte.din10452Mindestluftgehalt} />{groesstkorn} mm: <strong>≥ {formatDeZahl(minLpNorm, 1)} Vol.-%</strong>
               </div>
             )}
           </div>
@@ -597,9 +583,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
             <div className="p-3 bg-red-50 border border-red-200 rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-red-800">
               <div className="flex items-start gap-2">
                 <AlertTriangle size={16} className="text-red-600 flex-shrink-0 mt-0.5" />
-                <span>
-                  <strong>Achtung:</strong> Der eingestellte Luftgehalt ({formatDeZahl(luft, 1)} Vol.-%) unterschreitet den normativen Mindestluftgehalt ({formatDeZahl(minLpNorm, 1)} Vol.-% für Dmax = {groesstkorn} mm nach DIN 1045-2 Tabelle F.2.2)!
-                </span>
+                <span><MdText text={inhalt.texte.achtungDerEingestellteLuftgehalt} />{formatDeZahl(luft, 1)}<MdText text={inhalt.texte.volUnterschreitetDenNormativen} />{formatDeZahl(minLpNorm, 1)}<MdText text={inhalt.texte.volFürDmax} />{groesstkorn}<MdText text={inhalt.texte.mmNachDin1045} /></span>
               </div>
               <button
                 type="button"
@@ -618,15 +602,12 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
               <div className="bg-white p-3 rounded-lg border border-home-grau/25 flex flex-col justify-between">
                 <div>
                   <div className="font-bold text-xs text-text-main flex items-center justify-between">
-                    <span>1. Gesteinsverdrängung</span>
+                    <span><MdText text={inhalt.texte.t1Gesteinsverdrängung} /></span>
                     <span className="text-shiraz font-mono font-bold">-{formatDeZahl(deltaLuftVol, 1)} dm³</span>
                   </div>
-                  <p className="text-[11px] text-text-main/70 mt-1 leading-snug">
-                    Zusätzliche Mikroluftporen verdrängen im 1000-dm³-Stoffraum direkt Gesteinskörnung:
-                  </p>
+                  <p className="text-[11px] text-text-main/70 mt-1 leading-snug"><MdText text={inhalt.texte.zusätzlicheMikroluftporenVerdrängenIm} /></p>
                 </div>
-                <div className="mt-2 text-xs font-mono font-semibold text-text-main bg-off-white/80 p-1.5 rounded">
-                  Gesteinsmasse sinkt um <strong>-{formatDeZahl(deltaGesteinMasse, 1)} kg/m³</strong>
+                <div className="mt-2 text-xs font-mono font-semibold text-text-main bg-off-white/80 p-1.5 rounded"><MdText text={inhalt.texte.gesteinsmasseSinktUm} /><strong>-{formatDeZahl(deltaGesteinMasse, 1)} kg/m³</strong>
                 </div>
               </div>
 
@@ -634,12 +615,10 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
               <div className="bg-white p-3 rounded-lg border border-home-grau/25 flex flex-col justify-between">
                 <div>
                   <div className="font-bold text-xs text-text-main flex items-center justify-between">
-                    <span>2. Sandanteil (Walz-Regel)</span>
+                    <span><MdText text={inhalt.texte.t2SandanteilWalzRegel} /></span>
                     <span className="text-shiraz font-mono font-bold">-{formatDeWert(empfohleneSandReduktion)}% Sand</span>
                   </div>
-                  <p className="text-[11px] text-text-main/70 mt-1 leading-snug">
-                    Mikroluftporen wirken wie Feinsandkugeln („Kugellagereffekt“). Ohne Korrektur wird der Beton übermörtelt.
-                  </p>
+                  <p className="text-[11px] text-text-main/70 mt-1 leading-snug"><MdText text={inhalt.texte.mikroluftporenWirkenWieFeinsandkugeln} /></p>
                 </div>
                 <div className="mt-2 flex items-center justify-between gap-1">
                   <button
@@ -649,7 +628,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
                     className="w-full px-2 py-1 bg-shiraz/10 hover:bg-shiraz text-shiraz hover:text-white rounded text-[11px] font-bold transition-all disabled:opacity-40 cursor-pointer flex items-center justify-center gap-1"
                   >
                     <Scale size={12} />
-                    <span>Sandreduktion anwenden (-{formatDeWert(empfohleneSandReduktion)}%)</span>
+                    <span><MdText text={inhalt.texte.sandreduktionAnwenden} />{formatDeWert(empfohleneSandReduktion)}%)</span>
                   </button>
                 </div>
               </div>
@@ -658,15 +637,12 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
               <div className="bg-white p-3 rounded-lg border border-home-grau/25 flex flex-col justify-between">
                 <div>
                   <div className="font-bold text-xs text-text-main flex items-center justify-between">
-                    <span>3. Wasseranspruch</span>
+                    <span><MdText text={inhalt.texte.t3Wasseranspruch} /></span>
                     <span className="text-green-700 font-mono font-bold">-{formatDeZahl(wasserEinsparungLP, 1)} L/m³</span>
                   </div>
-                  <p className="text-[11px] text-text-main/70 mt-1 leading-snug">
-                    Die sphärischen Luftporen verbessern die Gleitfähigkeit der Gesteinskörner und verringern das Bluten (Bleeding).
-                  </p>
+                  <p className="text-[11px] text-text-main/70 mt-1 leading-snug"><MdText text={inhalt.texte.dieSphärischenLuftporenVerbessern} /></p>
                 </div>
-                <div className="mt-2 text-[11px] text-green-800 bg-green-50/70 p-1.5 rounded font-medium">
-                  Wasserersparnis für Konsistenz {konsistenz}: ca. <strong>{formatDeZahl(wasserEinsparungLP, 1)} Liter/m³</strong>
+                <div className="mt-2 text-[11px] text-green-800 bg-green-50/70 p-1.5 rounded font-medium"><MdText text={inhalt.texte.wasserersparnisFürKonsistenz} />{konsistenz}: ca. <strong>{formatDeZahl(wasserEinsparungLP, 1)} Liter/m³</strong>
                 </div>
               </div>
 
@@ -674,16 +650,12 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
               <div className="bg-white p-3 rounded-lg border border-home-grau/25 flex flex-col justify-between">
                 <div>
                   <div className="font-bold text-xs text-text-main flex items-center justify-between">
-                    <span>4. Festigkeitseinfluss</span>
+                    <span><MdText text={inhalt.texte.t4Festigkeitseinfluss} /></span>
                     <span className="text-orange-700 font-mono font-bold">-{formatDeZahl(festigkeitsVerlustLP, 0)} MPa</span>
                   </div>
-                  <p className="text-[11px] text-text-main/70 mt-1 leading-snug">
-                    Jedes Vol.-% Luftporen kostet ca. 4 MPa Festigkeit. DIN 1045-2 kompensiert dies normativ:
-                  </p>
+                  <p className="text-[11px] text-text-main/70 mt-1 leading-snug"><MdText text={inhalt.texte.jedesVolLuftporenKostet} /></p>
                 </div>
-                <div className="mt-2 text-[11px] text-orange-900 bg-orange-50/70 p-1.5 rounded font-medium">
-                  XF2/XF3: <strong>C25/30</strong> statt C35/45; XF4 ist nur als LP-Beton geregelt (C30/37)
-                </div>
+                <div className="mt-2 text-[11px] text-orange-900 bg-orange-50/70 p-1.5 rounded font-medium"><MdText text={inhalt.texte.xf2Xf3C2530} /></div>
               </div>
             </div>
           )}
@@ -696,21 +668,20 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
       <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-semibold text-text-main flex items-center gap-1.5">
-            <span>Faserbewehrung (Metall &amp; PP)</span>
-            <InfoTooltip text="Faserzugabe nach DIN EN 14889-1 (Stahlfasern / Metall) und DIN EN 14889-2 (Polymerfasern / PP). Fasern verdrängen entsprechend ihrer Dichte Gesteinsvolumen im Stoffraum." />
+            <span><MdText text={inhalt.texte.faserbewehrungMetallPp} /></span>
+            <InfoTooltip text={inhalt.werte.faserzugabeNachDinEn} />
           </h3>
           {(stahlfaser > 0 || ppFaser > 0) && (
             <span className="text-[11px] font-bold text-shiraz bg-shiraz/10 px-2.5 py-0.5 rounded-full">
-              {formatDeZahl(results.volFasernGesamt, 2)} dm³/m³ Stoffraum
-            </span>
+              {formatDeZahl(results.volFasernGesamt, 2)}<MdText text={inhalt.texte.dmMStoffraum} /></span>
           )}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <Slider 
-              label="Stahlfasern / Metallfasern" 
-              info="Dosierung von Stahlfasern nach DIN EN 14889-1 (Dichte ca. 7,85 kg/dm³). Typisch für Industrieböden und Spritzbeton: 20 bis 45 kg/m³, hochbeansprucht bis 80 kg/m³." 
+              label={inhalt.werte.stahlfasernMetallfasern} 
+              info={inhalt.werte.dosierungVonStahlfasernNach} 
               min={0} 
               max={80} 
               step={2} 
@@ -719,16 +690,16 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
               onChange={(e) => setStahlfaser(Number(e.target.value))} 
             />
             <div className="text-[10px] text-text-main/60 mt-1 flex justify-between font-mono">
-              <span>0 kg (ohne SF)</span>
-              <span className="text-shiraz">Industrieboden: ~30 kg</span>
+              <span><MdText text={inhalt.texte.t0KgOhneSf} /></span>
+              <span className="text-shiraz"><MdText text={inhalt.texte.industrieboden30Kg} /></span>
               <span>80 kg</span>
             </div>
           </div>
 
           <div>
             <Slider 
-              label="PP-Fasern (Polypropylen)" 
-              info="Dosierung von Polymer-/PP-Fasern nach DIN EN 14889-2 (Dichte ca. 0,91 kg/dm³). Mikrofasern gegen Schwindrisse & Brandabplatzungen (Tunnelbau nach ZTV-ING): 0,9 bis 2,0 kg/m³. Makrofasern statisch: 3 bis 7 kg/m³." 
+              label={inhalt.werte.ppFasernPolypropylen} 
+              info={inhalt.werte.dosierungVonPolymerPp} 
               min={0} 
               max={8.0} 
               step={0.1} 
@@ -737,8 +708,8 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
               onChange={(e) => setPpFaser(Number(e.target.value))} 
             />
             <div className="text-[10px] text-text-main/60 mt-1 flex justify-between font-mono">
-              <span>0 kg (ohne PP)</span>
-              <span className="text-shiraz">Brandschutz / Risse: 1,5 kg</span>
+              <span><MdText text={inhalt.texte.t0KgOhnePp} /></span>
+              <span className="text-shiraz"><MdText text={inhalt.texte.brandschutzRisse15} /></span>
               <span>8 kg</span>
             </div>
           </div>
@@ -747,18 +718,16 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
         {(stahlfaser > 0 || ppFaser > 0) && (
           <div className="mt-3 p-3 bg-white rounded-lg border border-home-grau/25 text-xs text-text-main/80 space-y-1">
             <div className="font-semibold text-text-main flex items-center gap-1.5">
-              <span className="text-shiraz">Faserwirksamkeit &amp; Regelwerk:</span>
+              <span className="text-shiraz"><MdText text={inhalt.texte.faserwirksamkeitRegelwerk} /></span>
             </div>
             <div className="text-[11px] leading-relaxed space-y-1">
               {stahlfaser > 0 && (
                 <p>
-                  • <strong>Stahlfasern ({formatDeWert(stahlfaser)} kg/m³):</strong> Beanspruchen {formatDeZahl(results.volStahlfaser, 2)} dm³ Stoffraumvolumen (Dichte 7,85 kg/dm³). Erhöhen die Biegezug- und Nachrisszugfestigkeit nach der DAfStb-Richtlinie „Stahlfaserbeton“ (z. B. Leistungsklassen L1,2/1,2).
-                </p>
+                  • <strong><MdText text={inhalt.texte.stahlfasern} />{formatDeWert(stahlfaser)} kg/m³):</strong> Beanspruchen {formatDeZahl(results.volStahlfaser, 2)}<MdText text={inhalt.texte.dmStoffraumvolumenDichte7} /></p>
               )}
               {ppFaser > 0 && (
                 <p>
-                  • <strong>PP-Fasern ({formatDeZahl(ppFaser, 1)} kg/m³):</strong> Beanspruchen {formatDeZahl(results.volPpFaser, 2)} dm³ Stoffraumvolumen (Dichte 0,91 kg/dm³). Schmelzen im Brandfall bei ~165 °C, bilden Entlastungskanäle gegen Porenwasserdampfdruck und verhindern explosionsartige Betonabplatzungen (ZTV-ING Teil 5).
-                </p>
+                  • <strong>PP-Fasern ({formatDeZahl(ppFaser, 1)} kg/m³):</strong> Beanspruchen {formatDeZahl(results.volPpFaser, 2)}<MdText text={inhalt.texte.dmStoffraumvolumenDichte0} /></p>
               )}
             </div>
           </div>
@@ -767,12 +736,9 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
 
       {/* Gesteinskörnung & Feuchte */}
       <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-        <h3 className="font-semibold mb-4 text-text-main flex items-center justify-between">
-          Gesteinskörnung & Feuchte
-          {!isFraktionenOk && (
+        <h3 className="font-semibold mb-4 text-text-main flex items-center justify-between"><MdText text={inhalt.texte.gesteinskörnungFeuchte} />{!isFraktionenOk && (
             <span className="text-red-500 text-xs flex items-center gap-1 bg-red-50 px-2 py-1 rounded">
-              <AlertTriangle size={14} /> Summe: {formatDeZahl(sumFraktionen, 1)}% (muss 100% sein)
-            </span>
+              <AlertTriangle size={14} /> Summe: {formatDeZahl(sumFraktionen, 1)}<MdText text={inhalt.texte.muss100Sein} /></span>
           )}
           {isFraktionenOk && (
             <span className="text-green-600 text-xs flex items-center gap-1 bg-green-50 px-2 py-1 rounded">
@@ -784,12 +750,12 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
         <div className="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <div className="flex items-center gap-2">
-              <label htmlFor="groesstkorn-select" className="block text-sm font-medium text-text-main mb-1">Größtkorn (Dmax)</label>
-              <InfoTooltip text="Maximaler Korndurchmesser der Gesteinskörnung." />
+              <label htmlFor="groesstkorn-select" className="block text-sm font-medium text-text-main mb-1"><MdText text={inhalt.texte.größtkornDmax} /></label>
+              <InfoTooltip text={inhalt.werte.maximalerKorndurchmesserDerGesteinskörnu} />
             </div>
             <select 
               id="groesstkorn-select"
-              aria-label="Größtkorn (Dmax)"
+              aria-label={inhalt.werte.größtkornDmax}
               value={groesstkorn} 
               onChange={handleGroesstkornChange}
               className="w-full p-2 border border-home-grau/30 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-middle-blue/50"
@@ -802,7 +768,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
           <div>
             <div className="flex items-center gap-2">
               <label htmlFor="kornart-select" className="block text-sm font-medium text-text-main mb-1">Kornform</label>
-              <InfoTooltip text="Form der Gesteinskörner." />
+              <InfoTooltip text={inhalt.werte.formDerGesteinskörner} />
             </div>
             <select 
               id="kornart-select"
@@ -818,7 +784,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
           <div>
             <div className="flex items-center gap-2">
               <label htmlFor="sandfraktion-select" className="block text-sm font-medium text-text-main mb-1">Sandfraktion</label>
-              <InfoTooltip text="Anteil der feinen Gesteinskörnung." />
+              <InfoTooltip text={inhalt.werte.anteilDerFeinenGesteinskörnung} />
             </div>
             <select 
               id="sandfraktion-select"
@@ -834,40 +800,40 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
         </div>
 
         <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Slider label="Rohdichte Gestein" info="Normalbeton: ~2,65 kg/dm3. Leichtbeton: < 2,0 kg/dm3" min={0.5} max={3.0} step={0.05} value={rhoGestein} unit="kg/dm3" onChange={(e) => setRhoGestein(Number(e.target.value))} />
-          <Slider label={`Feinanteil im Sand (${sandFraktion})`} info="Sogenanntes 'Mehlkorn' (Korngröße ≤ 0,125 mm) aus der Gesteinskörnung. Erlaubte Mehlkorngehalte im Beton sind durch DIN 1045-2 begrenzt." min={0} max={15} step={0.5} value={feinanteilSand} unit="M.-%" onChange={(e) => setFeinanteilSand(Number(e.target.value))} />
+          <Slider label={inhalt.werte.rohdichteGestein} info={inhalt.werte.normalbeton265Kg} min={0.5} max={3.0} step={0.05} value={rhoGestein} unit="kg/dm3" onChange={(e) => setRhoGestein(Number(e.target.value))} />
+          <Slider label={`Feinanteil im Sand (${sandFraktion})`} info={inhalt.werte.sogenanntesMehlkornKorngröße0} min={0} max={15} step={0.5} value={feinanteilSand} unit="M.-%" onChange={(e) => setFeinanteilSand(Number(e.target.value))} />
         </div>
 
         <div className="grid grid-cols-2 gap-x-4 gap-y-6">
           <div className="bg-white p-3 rounded-lg border border-home-grau/30">
-            <Slider label={`Fraktion ${sandFraktion === '0/4' ? '0/4' : '0/2'}`} info="Gewichtsanteil des Sands an der Gesamtmischung der Gesteinskörnung." min={0} max={100} step={1} value={f04} unit="M.-%" onChange={(e) => setF04(Number(e.target.value))} />
+            <Slider label={`Fraktion ${sandFraktion === '0/4' ? '0/4' : '0/2'}`} info={inhalt.werte.gewichtsanteilDesSandsAn} min={0} max={100} step={1} value={f04} unit="M.-%" onChange={(e) => setF04(Number(e.target.value))} />
             <div className="mt-3 pt-3 border-t border-home-grau/10">
-              <Slider label="Gesamtfeuchte" info="Gesamter Wassergehalt der Gesteinskörnung." min={0} max={30} step={0.1} value={feuchte04} unit="M.-%" onChange={(e) => setFeuchte04(Number(e.target.value))} />
-              <div className="mt-2"><Slider label="Kernfeuchte (WA)" info="Durch Absorption im Korninneren physikalisch gebundenes Wasser." min={0} max={30} step={0.1} value={wa04} unit="M.-%" onChange={(e) => setWa04(Number(e.target.value))} /></div>
+              <Slider label="Gesamtfeuchte" info={inhalt.werte.gesamterWassergehaltDerGesteinskörnung} min={0} max={30} step={0.1} value={feuchte04} unit="M.-%" onChange={(e) => setFeuchte04(Number(e.target.value))} />
+              <div className="mt-2"><Slider label={inhalt.werte.kernfeuchteWa} info={inhalt.werte.durchAbsorptionImKorninneren} min={0} max={30} step={0.1} value={wa04} unit="M.-%" onChange={(e) => setWa04(Number(e.target.value))} /></div>
             </div>
           </div>
           <div className="bg-white p-3 rounded-lg border border-home-grau/30">
-            <Slider info="Gewichtsanteil der feinen Kiesfraktion an der Gesamtmischung der Gesteinskörnung." label={`Fraktion ${sandFraktion === '0/4' ? '4/8' : '2/8'}`} min={0} max={100} step={1} value={f48} unit="M.-%" onChange={(e) => setF48(Number(e.target.value))} />
+            <Slider info={inhalt.werte.gewichtsanteilDerFeinenKiesfraktion} label={`Fraktion ${sandFraktion === '0/4' ? '4/8' : '2/8'}`} min={0} max={100} step={1} value={f48} unit="M.-%" onChange={(e) => setF48(Number(e.target.value))} />
             <div className="mt-3 pt-3 border-t border-home-grau/10">
-              <Slider label="Gesamtfeuchte" info="Gesamter Wassergehalt der Kiesfraktion." min={0} max={30} step={0.1} value={feuchte48} unit="M.-%" onChange={(e) => setFeuchte48(Number(e.target.value))} />
-              <div className="mt-2"><Slider label="Kernfeuchte (WA)" info="Wasseraufnahme (WA24). Bei negativer Oberflächenfeuchte (trockenes Korn) erhöht sich das Zugabewasser." min={0} max={30} step={0.1} value={wa48} unit="M.-%" onChange={(e) => setWa48(Number(e.target.value))} /></div>
+              <Slider label="Gesamtfeuchte" info={inhalt.werte.gesamterWassergehaltDerKiesfraktion} min={0} max={30} step={0.1} value={feuchte48} unit="M.-%" onChange={(e) => setFeuchte48(Number(e.target.value))} />
+              <div className="mt-2"><Slider label={inhalt.werte.kernfeuchteWa2} info={inhalt.werte.wasseraufnahmeWa24BeiNegativer} min={0} max={30} step={0.1} value={wa48} unit="M.-%" onChange={(e) => setWa48(Number(e.target.value))} /></div>
             </div>
           </div>
           {groesstkorn >= 16 && (
             <div className="bg-white p-3 rounded-lg border border-home-grau/30">
-              <Slider label="Fraktion 8/16" info="Gewichtsanteil der groben Kiesfraktion (8 bis 16 mm) an der Gesteinskörnung." min={0} max={100} step={1} value={f816} unit="M.-%" onChange={(e) => setF816(Number(e.target.value))} />
+              <Slider label={inhalt.werte.fraktion816} info={inhalt.werte.gewichtsanteilDerGrobenKiesfraktion} min={0} max={100} step={1} value={f816} unit="M.-%" onChange={(e) => setF816(Number(e.target.value))} />
               <div className="mt-3 pt-3 border-t border-home-grau/10">
-                <Slider label="Gesamtfeuchte" info="Gesamter Wassergehalt der Gesteinskörnung." min={0} max={30} step={0.1} value={feuchte816} unit="M.-%" onChange={(e) => setFeuchte816(Number(e.target.value))} />
-                <div className="mt-2"><Slider label="Kernfeuchte (WA)" info="Durch Absorption im Korninneren physikalisch gebundenes Wasser der Fraktion 8/16." min={0} max={30} step={0.1} value={wa816} unit="M.-%" onChange={(e) => setWa816(Number(e.target.value))} /></div>
+                <Slider label="Gesamtfeuchte" info={inhalt.werte.gesamterWassergehaltDerGesteinskörnung2} min={0} max={30} step={0.1} value={feuchte816} unit="M.-%" onChange={(e) => setFeuchte816(Number(e.target.value))} />
+                <div className="mt-2"><Slider label={inhalt.werte.kernfeuchteWa3} info={inhalt.werte.durchAbsorptionImKorninneren2} min={0} max={30} step={0.1} value={wa816} unit="M.-%" onChange={(e) => setWa816(Number(e.target.value))} /></div>
               </div>
             </div>
           )}
           {groesstkorn >= 32 && (
             <div className="bg-white p-3 rounded-lg border border-home-grau/30">
-              <Slider label="Fraktion 16/32" info="Gewichtsanteil der sehr groben Kiesfraktion (16 bis 32 mm) an der Gesteinskörnung." min={0} max={100} step={1} value={f1632} unit="M.-%" onChange={(e) => setF1632(Number(e.target.value))} />
+              <Slider label={inhalt.werte.fraktion1632} info={inhalt.werte.gewichtsanteilDerSehrGroben} min={0} max={100} step={1} value={f1632} unit="M.-%" onChange={(e) => setF1632(Number(e.target.value))} />
               <div className="mt-3 pt-3 border-t border-home-grau/10">
-                <Slider label="Gesamtfeuchte" info="Gesamter Wassergehalt der Fraktion 16/32." min={0} max={30} step={0.1} value={feuchte1632} unit="M.-%" onChange={(e) => setFeuchte1632(Number(e.target.value))} />
-                <div className="mt-2"><Slider label="Kernfeuchte (WA)" info="Wasseraufnahme (WA24) der Fraktion 16/32. Bei negativer Oberflächenfeuchte erhöht sich das Zugabewasser." min={0} max={30} step={0.1} value={wa1632} unit="M.-%" onChange={(e) => setWa1632(Number(e.target.value))} /></div>
+                <Slider label="Gesamtfeuchte" info={inhalt.werte.gesamterWassergehaltDerFraktion} min={0} max={30} step={0.1} value={feuchte1632} unit="M.-%" onChange={(e) => setFeuchte1632(Number(e.target.value))} />
+                <div className="mt-2"><Slider label={inhalt.werte.kernfeuchteWa4} info={inhalt.werte.wasseraufnahmeWa24DerFraktion} min={0} max={30} step={0.1} value={wa1632} unit="M.-%" onChange={(e) => setWa1632(Number(e.target.value))} /></div>
               </div>
             </div>
           )}

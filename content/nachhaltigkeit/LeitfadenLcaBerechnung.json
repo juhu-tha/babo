@@ -1,0 +1,48 @@
+{
+  "texte": {
+    "schritt4Von5": "Schritt 4 von 5",
+    "berechnungDerLcaIndikatoren": "Berechnung der LCA-Indikatoren & Umweltwirkungsklassen",
+    "nachdemDieSchichtenMassen": "Nachdem die Schichten, Massen und EPD-Charakterisierungsfaktoren bestimmt sind, wird die mathematische Akkumulation für das Bauteil durchgeführt. Hierbei müssen Sie die wichtigsten Kenngrößen unterscheiden:",
+    "erfasstEmissionenAusFossilen": "Erfasst Emissionen aus fossilen Brennstoffen (Kohle, Erdgas). Dominierender Faktor bei Zementwerksprozessen und Stahlherstellung.",
+    "coSpeicherleistungNachwachsenderBaustoff": "CO₂-Speicherleistung nachwachsender Baustoffe (z.B. Holz, Stroh). Wird bei der Herstellung als negatives GWP ausgewiesen (Kohlenstoffspeicherung).",
+    "penrtPere": "PENRT & PERE",
+    "primärenergieverbrauchNichtErneuerbarErn": "Primärenergieverbrauch nicht-erneuerbar / erneuerbar. Beschreibt die energetische Gesamteffizienz der Herstellungslogistik.",
+    "exemplarischesRechenbeispiel1M": "Exemplarisches Rechenbeispiel (1 m² Wand):",
+    "gegebenSchicht16Cm": "Gegeben: Schicht 16 cm EPS-Dämmung (",
+    "t1MasseProM": "1. Masse pro m²:",
+    "t2GwpA1A3": "2. GWP A1-A3:",
+    "wiederholenSieDieseSummenrechnung": "Wiederholen Sie diese Summenrechnung für jede Schicht, um das Bauteil-GWP zu kollationieren, wie es im obenstehenden **Wandaufbau-Konfigurator (Tab 1)** automatisiert geschieht!",
+    "weitereÖkologischeEpdWirkungsindikatoren": "Weitere ökologische EPD-Wirkungsindikatoren (DIN EN 15804)",
+    "eineVollständigeEpdDeklariert": "Eine vollständige EPD deklariert neben dem klassischen Treibhauspotenzial (GWP) weitere standardisierte biogeochemische Wirkungsklassen, die in Prüfungen und Fachberichten eine Rolle spielen:",
+    "verbindungZuInnovativenBaumaterialien": "Verbindung zu innovativen Baumaterialien:",
+    "dieEinführungZerspanungsfreierCarbonbewe": "Die Einführung zerspanungsfreier Carbonbewehrungen statt Baustahl (siehe Modul **Innovative Werkstoffe • Carbonbeton**) verringert zwar das Bauteilvolumen, bedingt aber ein sehr hohes initiales GWP bei der Kohlefaserherstellung. Studierende müssen eine Lebenszyklus-Sensitivitätsanalyse anfertigen, um zu prüfen, ab welcher Abminderung der Betonschichtstärke sich Carbonbeton ökologisch amortisiert."
+  },
+  "daten": {
+    "LeitfadenLcaBerechnung": [
+      {
+        "name": "ODP (Ozone Depletion Potential)",
+        "desc": "Spezifische Abbauwirkung halogenierter Gase auf die schützende stratosphärische Ozonschicht.",
+        "unit": "kg CFC-11-Äqv.",
+        "ref": "Relevant bei geschäumten Dämmstoffen (PUR/XPS)."
+      },
+      {
+        "name": "AP (Acidification Potential)",
+        "desc": "Versauerungseffekt auf Böden und Gewässer (Saurer Regen) durch ssaure Gase wie SO2 und NOx.",
+        "unit": "kg SO₂-Äqv.",
+        "ref": "Entsteht bei Brennprozessen und Klinkerentsäuerung."
+      },
+      {
+        "name": "EP (Eutrophication Potential)",
+        "desc": "Überdüngungseffekt (Nährstoffeintrag) in Gewässern und Böden, begünstigt Algenblüten.",
+        "unit": "kg PO₄³⁻-Äqv.",
+        "ref": "Erhöht bei NaWaRo-Baustoffen durch Düngung beim Anbau."
+      },
+      {
+        "name": "POCP (Photochemical Ozone Creation)",
+        "desc": "Zunahme des bodennahen Ozons durch flüchtige organische Verbindungen und Sonnenlicht (Sommersmog).",
+        "unit": "kg C₂H₄-Äqv.",
+        "ref": "Kritisch bei lösemittelhaltigen Farben, Klebern und Harzen."
+      }
+    ]
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "texte": {
+    "checklistenRückbauSchadstoffsanierung": " Checklisten: Rückbau & Schadstoffsanierung",
+    "bimschgKrwgGewabfvEbv": "BImSchG, KrWG, GewAbfV, EBV, DepV, TRGS 519/521/524",
+    "rechtskonformeHandlungsleitfädenFürIngen": "Rechtskonforme Handlungsleitfäden für Ingenieure und Bauleiter nach aktuellen deutschen Regelwerken (",
+    "gefahrstoffeAufSanierungsbaustellenVerla": "Gefahrstoffe auf Sanierungsbaustellen verlangen die strikte Beachtung der TRGS 519 (Asbest)."
+  },
+  "werte": {
+    "t1RückbauAbbruchUrban": "1. Rückbau, Abbruch & Urban Mining",
+    "systematischePlanungUndUmsetzung": "Systematische Planung und Umsetzung eines selektiven Rückbaus nach VDI 6210 Blatt 1 und VDI 6202 Blatt 1 zur sortenreinen Stoffstromtrennung.",
+    "preDemolitionAuditSchadstofferkundung": "Pre-Demolition-Audit & Schadstofferkundung veranlassen",
+    "beauftragungEinesQualifiziertenBaugutach": "Beauftragung eines qualifizierten Baugutachters zur historischen Recherche und visuellen/chemischen Schadstofferfassung im gesamten Gebäude vor Planungsbeginn.",
+    "t5aGefstoffvTrgs519": "§ 5a GefStoffV, TRGS 519/524, VDI 6202 Blatt 1",
+    "schadstoffUndBauteilkatasterErstellen": "Schadstoff- und Bauteilkataster erstellen",
+    "lückenlosesVerzeichnisAllerVerbauten": "Lückenloses Verzeichnis aller verbauten Materialien, Massenabschätzungen, Gefahrstoffe (Asbest, KMF, PCB etc.) inkl. lokaler Lage und Entsorgungswege.",
+    "vdi6202Blatt1": "VDI 6202 Blatt 1; DIN SPEC 91484",
+    "abbruchgenehmigungStatischesRückbaukonze": "Abbruchgenehmigung & statisches Rückbaukonzept prüfen",
+    "statischeVoruntersuchungenZurStandsicher": "Statische Voruntersuchungen zur Standsicherheit während des Abbruchs (Sicherung von Nachbargebäuden, Deckenlasten für Kleingeräte). Verfahrensrechtliche Voraussetzungen des Abbruchs klären.",
+    "landesbauordnungLbo": "Landesbauordnung (LBO)",
+    "entkernungsketteDefinierenSortenreinerAu": "Entkernungskette definieren (Sortenreiner Ausbau)",
+    "planungDesSelektivenRückbaus": "Planung des selektiven Rückbaus von innen nach außen: Erst Schadstoffe sanieren, dann nicht-mineralische Störstoffe (Holz, Kunststoffe, Metalle, Gips) vollständig ausbauen, bevor die mineralische Hauptstruktur mechanisch abgebrochen wird.",
+    "gewerbeabfallverordnungGewabfv8": "Gewerbeabfallverordnung (GewAbfV) § 8",
+    "erfassungRecycelbarerBauteileFür": "Erfassung recycelbarer Bauteile für Re-Use (Urban Mining)",
+    "sicherungErhaltenswerterBauteileZ": "Sicherung erhaltenswerter Bauteile (z.B. historische Türen, intakte Balken, Ziegelsteine) für den lokalen Bauteilkreislauf vor Beginn des maschinellen Abbruchs.",
+    "krwg6AbfallhierarchieVorbereitung": "KrWG § 6 (Abfallhierarchie: Vorbereitung zur Wiederverwendung)",
+    "verwertungsberichtMassenbilanzFürBehörde": "Verwertungsbericht & Massenbilanz für Behörden erstellen",
+    "nachAbschlussDerArbeiten": "Nach Abschluss der Arbeiten: Dokumentation der tatsächlichen Entsorgungs- und Recyclingwege aller Fraktionen mitsamt stofflicher Massenbilanz und Wiegescheinen.",
+    "landesbauordnungUntereAbfallbehörde": "Landesbauordnung / Untere Abfallbehörde",
+    "t2BodenMaterialaufbereitung": "2. Boden- & Materialaufbereitung",
+    "voraussetzungenFürDieSichere": "Voraussetzungen für die sichere mechanische Aufbereitung von Bauschutt vor Ort sowie Aufbereitung von kontaminierten Böden.",
+    "anzeigepflichtGenehmigungFürMobile": "Anzeigepflicht & Genehmigung für mobile Aufbereitungsanlagen (BImSchG)",
+    "abstimmungDesEinsatzesDer": "Abstimmung des Einsatzes der mobilen Brech- und Siebanlage mit der zuständigen Behörde. Wird die Anlage länger als zwölf Monate am selben Ort betrieben, ist sie nach BImSchG genehmigungsbedürftig.",
+    "bimschg4BimschvAnhang": "BImSchG / 4. BImSchV Anhang 1 Nr. 8.11.2.4 (Behandlung nicht gefährlicher Abfälle) bzw. Nr. 2.2 (Brechen von Gestein)",
+    "technischeMaßnahmenZurStaub": "Technische Maßnahmen zur Staub- & Lärmminderung umsetzen",
+    "installationVonWasserbedüsungssystemenAn": "Installation von Wasserbedüsungssystemen an den Übergabestellen der Brecher, Kapselung sensibler Anlagenteile, Einrichten von Lärmschutzwänden zu benachbarten Wohngebieten.",
+    "taLärmTaLuft": "TA Lärm / TA Luft / DGUV-Regel 101-004",
+    "störstoffausleseVorDerMechanischen": "Störstoffauslese vor der mechanischen Bauschuttaufbereitung",
+    "vorschaltungEinerHandausleseLeseband": "Vorschaltung einer Handauslese (Leseband) oder Überbandmagnetabscheider, um Gipsputz, Holzsplitter, Kunststoffe und Bewehrungseisen vor dem Brechen vollständig zu entfernen.",
+    "ersatzbaustoffverordnungEbvGüteüberwachu": "Ersatzbaustoffverordnung (EBV) / Güteüberwachung",
+    "güteüberwachungWerkseigeneProduktionskon": "Güteüberwachung & werkseigene Produktionskontrolle (WPK) absichern",
+    "verpflichtendeErstprüfungUndRegelmäßige": "Verpflichtende Erstprüfung und regelmäßige Fremdüberwachung der aufbereiteten Recyclingbaustoffe durch ein anerkanntes Prüfinstitut zur Erlangung des Gütezeichens (z.B. QUBA, QRB).",
+    "ersatzbaustoffverordnungEbvAbschnittGüte": "Ersatzbaustoffverordnung (EBV), Abschnitt Güteüberwachung",
+    "bodensanierungAufEignungZur": "Bodensanierung auf Eignung zur mikrobiellen oder thermischen Behandlung prüfen",
+    "beiKontaminiertenErdaushubmassenBewertun": "Bei kontaminierten Erdaushubmassen: Bewertung der Schadstoffart (z.B. biologisch abbaubare KW gegen thermisch zu reinigende Schwermetalle) und Festlegung des Sanierungsverfahrens.",
+    "bbodschgBbodschv": "BBodSchG / BBodSchV",
+    "ersatzbaustoffEinbauklassenGemHydrogeolo": "Ersatzbaustoff-Einbauklassen gem. hydrogeologischer Bedingungen prüfen",
+    "abgleichDesAufbereitetenMaterials": "Abgleich des aufbereiteten Materials (z.B. RC-1 oder BM-0) mit dem lokalen Grundwasserstand (HGW) und Schutzgebieten, um illegale Schadstoffeinträge in den Untergrund zu verhindern.",
+    "ersatzbaustoffv1920Und": "ErsatzbaustoffV §§ 19, 20 und Anlage 2",
+    "t3AbfallwirtschaftRechtDeponierung": "3. Abfallwirtschaft, Recht & Deponierung",
+    "gesetzeskonformeEinstufungTransportüberw": "Gesetzeskonforme Einstufung, Transportüberwachung (eANV) und Zuweisung auf deponietechnische Anlagen.",
+    "erstzuordnungNachAvvSchlüssel": "Erstzuordnung nach AVV-Schlüssel (Kapitel 17)",
+    "einstufungDesAbfallsAnhand": "Einstufung des Abfalls anhand seiner Entstehungsgeschichte. Kennzeichnung gefährlicher Abfälle mit dem Sternchen-Symbol (*) (z. B. 17 05 03* vs 17 05 04).",
+    "abfallverzeichnisVerordnungAvvKap": "Abfallverzeichnis-Verordnung (AVV) Kap. 17",
+    "repräsentativeHaufwerksbeprobungNachLaga": "Repräsentative Haufwerksbeprobung nach LAGA PN 98",
+    "durchführungDerBeprobungDurch": "Durchführung der Beprobung durch Gutachter mit Fachkunde nach LAGA PN 98. Festlegung der Anzahl an Einzelproben (EP) und Mischproben (MP) anhand der Haufwerksgröße.",
+    "lagaPn98Din": "LAGA PN 98 / DIN 19698-1",
+    "gewerbeabfallverordnungGetrennthaltungsp": "Gewerbeabfallverordnung-Getrennthaltungspflicht erfüllen",
+    "strikteTrennungVonMineralischen": "Strikte Trennung von mineralischen Bauabfällen, Holz, Glas, Kunststoffen, Metallen und Gips an der Anfallstelle. Dokumentation bei Abweichungen (technische Unmöglichkeit o.ä.).",
+    "elektronischesAbfallnachweisverfahrenEan": "Elektronisches Abfallnachweisverfahren (eANV) nutzen",
+    "einholenVonBehördlichenErzeugernummern": "Einholen von behördlichen Erzeugernummern, Abschluss von Entsorgungsnachweisen mitsamt elektronischen Begleit- und Übernahmescheinen vor Abtransport gefährlicher Stoffe.",
+    "nachweisverordnungNachwv": "Nachweisverordnung (NachwV)",
+    "grundlegendeCharakterisierungGem8": "Grundlegende Charakterisierung gem. § 8 DepV erstellen",
+    "ausfüllenDesCharakterisierungsbogensDurc": "Ausfüllen des Charakterisierungsbogens durch den Erzeuger unter Angabe der Abfallherkunft, Probenahme und Zuordnungsanalytik (TOC, Glühverlust, Eluatwerte).",
+    "deponieverordnungDepv8": "Deponieverordnung (DepV) § 8",
+    "zuordnungZuDenDeponieklassen": "Zuordnung zu den Deponieklassen (DK 0 bis DK III) verifizieren",
+    "abgleichDesSchadstoffinventarsMit": "Abgleich des Schadstoffinventars mit den Grenzwerten der DepV Anhang 3 Tabelle 2 (Inertstoffdeponie DK 0 bis hin zur Sonderabfalldeponie DK III).",
+    "depvAnhang3Tabelle": "DepV Anhang 3 Tabelle 2",
+    "t4SchadstoffeGefahrstoffeArbeitsschutz": "4. Schadstoffe, Gefahrstoffe & Arbeitsschutz",
+    "sicherheitsUndGesundheitsschutzBeim": "Sicherheits- und Gesundheitsschutz beim Umgang mit hochtoxischen Substanzen wie Asbest, KMF, PCB und teerhaltigen Massen.",
+    "umgangMitAsbestSachkunde": "Umgang mit Asbest: Sachkunde und Arbeitsanzeige sicherstellen",
+    "arbeitenAnAsbestDürfen": "Arbeiten an Asbest dürfen nur durch Firmen mit Sachkunde nach TRGS 519 durchgeführt werden. Gefährdungsbeurteilung und Anzeige an die zuständige Behörde mindestens eine Woche vor Beginn der Tätigkeiten (§ 11a GefStoffV); Tätigkeiten mit hohem Risiko nur mit behördlicher Zulassung.",
+    "gefahrstoffverordnungGefstoffvTrgs519": "Gefahrstoffverordnung (GefStoffV) / TRGS 519",
+    "künstlicheMineralfasernKmfBewerten": "Künstliche Mineralfasern (KMF) bewerten (Staubarmes Arbeiten)",
+    "prüfungObAlteVor": "Prüfung, ob alte (vor dem 1. Juni 2000 eingebaute, biopersistente) Mineralwolle vorliegt. Einhaltung der TRGS 521. Befeuchtung, staubdichter Ausbau, Verbot von Reiß- und Schredderverfahren ohne Absaugung.",
+    "trgs521Neufassung2026": "TRGS 521 (Neufassung 2026)",
+    "persönlicheSchutzausrüstungPsaVorschreib": "Persönliche Schutzausrüstung (PSA) vorschreiben und kontrollieren",
+    "bereitstellungPartikelfiltrierenderHalbm": "Bereitstellung partikelfiltrierender Halbmasken (FFP3 oder gebläseunterstützt), flüssigkeits- und staubdichter Einwegschutzanzüge (Typ 5/6, z. B. Tyvek), Schutzhandschuhe und dichte Brillen.",
+    "trgs519521Dguv": "TRGS 519 / 521 / DGUV-Regel 101-004",
+    "einrichtenVonSchwarzWeiß": "Einrichten von Schwarz-Weiß-Schleusen & Unterdruckbereichen",
+    "bautechnischeKapselungDerSanierungsberei": "Bautechnische Kapselung der Sanierungsbereiche. Aufbau von Mehrkammerbegehungsschleusen (Staubkabine - Duschkabine - Sauberkabine) und Installation von Unterdrucklüftungsgeräten (UDA).",
+    "trgs519Trgs524": "TRGS 519 / TRGS 524",
+    "fachlicheWeisungsbefugnisSigekoBestellen": "Fachliche Weisungsbefugnis & SiGeKo bestellen nach BaustellV",
+    "bestellungEinesSicherheitsUnd": "Bestellung eines Sicherheits- und Gesundheitsschutzkoordinators (SiGeKo) bei komplexen Schadstoffsanierungsprojekten mit mehreren Gewerken. Erstellung eines schriftlichen SiGe-Plans.",
+    "baustellenverordnungBaustellv3": "Baustellenverordnung (BaustellV) § 3",
+    "staubdichteVerpackungUndKennzeichnung": "Staubdichte Verpackung und Kennzeichnung gefährlicher Abfälle",
+    "asbestzementplattenUndFaserstäubeSind": "Asbestzementplatten und Faserstäube sind unmittelbar am Entstehungsort in staubdichte Big-Bags oder Platten-Bags mit offiziellem Asbest-Warnhinweis (\"a\"-Symbol) abzufüllen.",
+    "trgs519AbfallentsorgungGefstoffv": "TRGS 519 (Abfallentsorgung) / GefStoffV",
+    "kritischHaftungsrelevant": "Kritisch / Haftungsrelevant",
+    "gesetzlichVerpflichtend": "Gesetzlich verpflichtend",
+    "standDerTechnik": "Stand der Technik",
+    "beispiel1ProbenanzahlFür": "Beispiel 1: Probenanzahl für ein Haufwerk von 850 m³ nach LAGA PN 98",
+    "dieWerteEntsprechenTabelle": "Die Werte entsprechen Tabelle 2 der LAGA PN 98 (bis 900 m³: 52 EP, 13 MP, 11 LP). Ab 700 m³ dürfen bei gleichbleibender Beschaffenheit je drei Mischproben zu einer Sammelprobe vereinigt werden.",
+    "lagaPn98Mitteilung": "LAGA PN 98 (Mitteilung 32), Tabelle 2",
+    "beispiel2VerpackungVon": "Beispiel 2: Verpackung von Asbestzement-Wellplatten",
+    "plattenUnzerstörtAufnehmenNicht": "Platten unzerstört aufnehmen, nicht brechen oder werfen, staubdicht verpacken und mit dem Asbest-Kennzeichen versehen. Die Arbeiten sind mindestens eine Woche vorher anzuzeigen.",
+    "gefstoffv11aTrgs519": "GefStoffV § 11a; TRGS 519; AVV",
+    "oktober2026Ap9": "Oktober 2026 (AP 9 Rückbau & Schadstoffe: Checklisten-Referenzen, GefStoffV § 11a, BImSchV und PN 98 geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "abbruchBauwesen": "Abbruch (Bauwesen)",
+    "ersatzbaustoffverordnungErsatzbaustoffv2": "Ersatzbaustoffverordnung (ErsatzbaustoffV 2023)",
+    "gefahrstoffverordnungGefstoffv": "Gefahrstoffverordnung (GefStoffV)",
+    "trgs519AsbestZuletzt": "TRGS 519 (Asbest), zuletzt geändert 28.01.2025",
+    "gewerbeabfallverordnungGewabfv89": "Gewerbeabfallverordnung (GewAbfV), §§ 8, 9"
+  },
+  "daten": {
+    "RueckbauChecklisten.schritte": [
+      {
+        "titel": "Mischproben",
+        "erklaerung": "Oberhalb von 600 m³ je angefangene 100 m³ eine weitere Mischprobe:",
+        "formel": "n_{MP} = 10 + \\lceil 2{,}5 \\rceil = 13"
+      },
+      {
+        "titel": "Einzelproben",
+        "erklaerung": "Eine Mischprobe besteht in der Regel aus vier Einzelproben:",
+        "formel": "n_{EP} = 4 \\cdot 13 = 52"
+      },
+      {
+        "titel": "Laborproben",
+        "erklaerung": "Je angefangene 300 m³ oberhalb 600 m³ eine weitere Laborprobe:",
+        "formel": "n_{LP} = 10 + \\lceil 0{,}83 \\rceil = 11"
+      }
+    ],
+    "RueckbauChecklisten.schritte_2": [
+      {
+        "titel": "Masse",
+        "erklaerung": "Dachfläche 450 m², flächenbezogene Masse der Wellplatten ca. 18 kg/m² (Lehrwert):",
+        "formel": "m = 450 \\cdot 18 = 8\\,100\\,\\text{kg}"
+      },
+      {
+        "titel": "Verpackung",
+        "erklaerung": "Platten-Bags mit zulässiger Nutzlast 1,5 t:",
+        "formel": "n_{Bag} = \\lceil 8\\,100 / 1\\,500 \\rceil = \\lceil 5{,}4 \\rceil = 6"
+      },
+      {
+        "titel": "Entsorgung",
+        "erklaerung": "Abfallschlüssel und Nachweis:",
+        "formel": "17\\,06\\,05^{*} \\Rightarrow \\text{gefährlicher Abfall, eANV}"
+      }
+    ],
+    "RueckbauChecklisten.regelwerke.1": {
+      "title": "Kreislaufwirtschaftsgesetz (KrWG § 14 Quoten)",
+      "url": "https://www.gesetze-im-internet.de/krwg/"
+    },
+    "RueckbauChecklisten.literatur": [
+      "Deutscher Abbruchverband e.V. (DA): Leitfaden Schadstoffsanierung und selektiver Rückbau",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "RueckbauChecklisten.formeln": [
+      {
+        "formel": "Q_{\\text{Verwertung}} = \\frac{m_{\\text{Recycling}} + m_{\\text{Wiederverwendung}}}{m_{\\text{Abbruch gesamt}}} \\ge 70\\% \\quad (\\text{KrWG-Zielwert})",
+        "erklaerung": "Verwertungsquote = (Vorbereitung zur Wiederverwendung + Recycling + sonstige stoffliche Verwertung) / Abfallmasse gesamt. Orientierung: nationales Ziel nach § 14 Abs. 2 KrWG mindestens 70 Gew.-% für nicht gefährliche Bau- und Abbruchabfälle (ohne Boden und Steine), keine projektbezogene Pflichtquote.",
+        "quelle": "KrWG § 14 Abs. 2"
+      },
+      {
+        "formel": "c_{\\text{Misch}} = \\frac{\\sum m_i \\cdot c_i}{\\sum m_i} \\le \\text{MEB (Materialwerte ErsatzbaustoffV)}",
+        "erklaerung": "Eluat- und Feststoffkonzentration bei der Einstufung von mineralischen Ersatzbaustoffen (RC-1, RC-2, RC-3) in Einbauklassen nach ErsatzbaustoffV.",
+        "quelle": "ErsatzbaustoffV Anlage 1"
+      }
+    ]
+  }
+}

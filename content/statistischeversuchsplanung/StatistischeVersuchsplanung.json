@@ -1,0 +1,57 @@
+{
+  "texte": {
+    "statistischeVersuchsplanungDoe": " Statistische Versuchsplanung (DoE)",
+    "dieStatistischeVersuchsplanungDesign": "Die **Statistische Versuchsplanung (Design of Experiments, DoE)** ist eine Methodik, um mit möglichst wenigen Versuchen den maximalen Informationsgewinn über ein System zu erzielen. Anstatt einen Faktor nach dem anderen zu variieren (One-Factor-At-A-Time, OFAT), werden mehrere Faktoren gleichzeitig variiert. Dies ermöglicht nicht nur die Berechnung von Haupteffekten, sondern auch das Erkennen von Wechselwirkungen (Interaktionen) zwischen den Faktoren. **Ändern Sie die Zielgrößen in der Tabelle, um die Auswirkungen in Echtzeit zu sehen!**",
+    "versuchsmatrixKonfigurieren": " Versuchsmatrix konfigurieren",
+    "wählenSieDieAnzahl": "Wählen Sie die Anzahl der Faktoren für ein vollfaktorielles Versuchsdesign auf zwei Stufen (2^k).",
+    "t2Faktoren22": "2 Faktoren (2^2 = 4 Versuche)",
+    "t3Faktoren23": "3 Faktoren (2^3 = 8 Versuche)",
+    "faktorAWZ": "**Faktor A:** w/z-Wert (-1 = 0,40, +1 = 0,50)",
+    "faktorBZementgehalt1": "**Faktor B:** Zementgehalt (-1 = 300 kg/m³, +1 = 350 kg/m³)",
+    "faktorCFließmittel1": "**Faktor C:** Fließmittel (-1 = 0%, +1 = 1%)",
+    "zielgrößeResponseDruckfestigkeitMpa": "**Zielgröße (Response):** Druckfestigkeit [MPa]",
+    "versuchsplanErgebnisse": " Versuchsplan & Ergebnisse",
+    "festigkeitEditierbar": "Festigkeit (editierbar)",
+    "derHaupteffektEinesFaktors": "Der Haupteffekt eines Faktors ist die durchschnittliche Änderung der Zielgröße, wenn der Faktor von der unteren (-1) auf die obere (+1) Stufe geändert wird.",
+    "effektAWZ": "Effekt A (w/z)",
+    "effektBZement": "Effekt B (Zement)",
+    "effektCFließm": "Effekt C (Fließm.)",
+    "interaktionAb": "Interaktion AB",
+    "interpretationDerHaupteffekte": "Interpretation der Haupteffekte:",
+    "brEinNegativerEffekt": "<br>Ein negativer Effekt bei A (w/z-Wert) bedeutet, dass eine Erhöhung des w/z-Wertes von 0,40 auf 0,50 die Druckfestigkeit im Durchschnitt um ",
+    "mpaSenktEinPositiver": " MPa senkt. Ein positiver Effekt bei B (Zementgehalt) zeigt, dass mehr Zement die Festigkeit erhöht.",
+    "interaktionAb2": "Interaktion AB:",
+    "brWennDerInteraktionseffekt": "<br>Wenn der Interaktionseffekt AB ungleich 0 ist (oder signifikant groß), bedeutet dies, dass die Auswirkung der Erhöhung des Zementgehalts (B) nicht unabhängig vom w/z-Wert (A) ist. In der Baupraxis ist dies essenziell: Mehr Zement bringt bei einem hohen w/z-Wert eventuell einen geringeren Festigkeitszuwachs als bei einem niedrigen w/z-Wert."
+  },
+  "werte": {
+    "oktober2026Ap4": "Oktober 2026 (AP 4 Labor: 2^k-Versuchspläne, Haupt- und Wechselwirkungseffekte geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "statistischeVersuchsplanung": "Statistische Versuchsplanung"
+  },
+  "daten": {
+    "StatistischeVersuchsplanung.literatur": [
+      "Montgomery, D. C. (2017): Design and Analysis of Experiments (9th Edition, Wiley)",
+      "Siebertz, K.; van Bebber, D.; Hochkirchen, T. (2017): Statistische Versuchsplanung: Design of Experiments (DoE) (2. Auflage, Springer Vieweg)",
+      "Kleppmann, W. (2020): Taschenbuch Versuchsplanung (10. Auflage, Hanser Verlag)"
+    ],
+    "StatistischeVersuchsplanung.regelwerke": [
+      {
+        "title": "DIN ISO 3534-3 (Statistik - Begriffe und Formelzeichen - Teil 3: Versuchsplanung)"
+      },
+      {
+        "title": "ISO 5725 (Genauigkeit (Richtigkeit und Präzision) von Messverfahren und Messergebnissen; DIN ISO 5725 zurückgezogen)"
+      }
+    ],
+    "StatistischeVersuchsplanung.formeln": [
+      {
+        "formel": "E_A = \\bar{y}_{A^+} - \\bar{y}_{A^-} = \\frac{1}{2^{k-1}} \\sum_{i=1}^{2^k} c_i \\cdot y_i",
+        "erklaerung": "Haupteffekt eines Faktors A in einem 2^k-Faktorplan (vollfaktoriell): Differenz der Mittelwerte aller Versuchsläufe auf oberer (+) und unterer (-) Stufe.",
+        "quelle": "DoE / Montgomery"
+      },
+      {
+        "formel": "y = \\beta_0 + \\sum_{i=1}^k \\beta_i x_i + \\sum_{i < j} \\beta_{ij} x_i x_j + \\varepsilon",
+        "erklaerung": "Lineares statistisches Regressionsmodell mit Interaktionseffekten beta_ij zweier Faktoren (z.B. w/z-Wert und Zementgehalt auf Betonfestigkeit).",
+        "quelle": "DIN ISO 3534-3"
+      }
+    ]
+  }
+}

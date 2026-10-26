@@ -1,0 +1,59 @@
+{
+  "texte": {
+    "interaktiveBauteilExpositionszonierung": "Interaktive Bauteil- & Expositionszonierung",
+    "verortungDerExpositionsklassenIm": "Verortung der Expositionsklassen im Bauwerk (DIN EN 206 / DIN 1045-2) & Betondeckung nach EC2",
+    "t1BauwerksZonierung": " 1. Bauwerks-Zonierung",
+    "t2DetailzoomBetondeckungEc2": " 2. Detailzoom Betondeckung (EC2)",
+    "schnellauswahlTypischerIngenieurbauteile": "Schnellauswahl typischer Ingenieurbauteile (Klicken zum Inspizieren & Aktivieren):",
+    "imRechnerÜbernehmen": " Im Rechner übernehmen (",
+    "maxWZEq": "Max. (w/z)eq",
+    "minFestigkeit": "Min. Festigkeit",
+    "minZementD16": "Min. Zement (d16)",
+    "cMinDurEc2": "c_min,dur (EC2)",
+    "nennmaßCNom": "Nennmaß c_nom",
+    "kritischerSchädigungsmechanismus": "Kritischer Schädigungsmechanismus:",
+    "praxisempfehlungZusatzvorgaben": "Praxisempfehlung & Zusatzvorgaben:",
+    "expositionsklasseZurBetondeckungWählen": "Expositionsklasse zur Betondeckung wählen:",
+    "normativeBemessungDerBetondeckung": "Normative Bemessung der Betondeckung nach DIN EN 1992-1-1 (EC2) & DIN 1045-2:",
+    "t1NennmaßGleichung": "1. Nennmaß-Gleichung:",
+    "cnomCminCdev": "cnom = cmin + Δcdev",
+    "cMinMaxC": "$c_{\\min} = \\max\\{c_{\\min,b};\\, c_{\\min,\\text{dur}};\\; 10\\text{ mm}\\}$. Für Ortbeton gilt normativ $\\Delta c_{\\text{dev}} = 10\\text{ mm}$.",
+    "t2Karbonatisierungsfortschritt": "2. Karbonatisierungsfortschritt:",
+    "dkTKcarbT": "dk(t) = kcarb · √t",
+    "erreichtDieKarbonatisierungsfrontDen": "Erreicht die Karbonatisierungsfront den Bewehrungsstahl ($d_k \\ge c$), wird die Passivschicht durch pH-Absenkung zerstört.",
+    "t3ChloridLochfraß": "3. Chlorid-Lochfraß:",
+    "chlorideInitiierenLochfraßkorrosionLokal": "Chloride initiieren Lochfraßkorrosion lokal auch bei intaktem alkalischem Milieu ohne vorherige Karbonatisierung."
+  },
+  "daten": {
+    "ExpositionsklassenSkizze": {
+      "XC1": {
+        "cMinDur": 10,
+        "deltaC": 10,
+        "cNom": 20,
+        "desc": "Trockene Innenbauteile: Minimaler Bewehrungsschutz",
+        "color": "#0284c7"
+      },
+      "XC4": {
+        "cMinDur": 25,
+        "deltaC": 15,
+        "cNom": 40,
+        "desc": "Außenbauteile mit Beregnung: Standard-Bewehrungsschutz",
+        "color": "#b91c1c"
+      },
+      "XD3": {
+        "cMinDur": 40,
+        "deltaC": 15,
+        "cNom": 55,
+        "desc": "Tausalzbeaufschlagte Parkdecks & Rampen: Hoher Schutz",
+        "color": "#c2410c"
+      },
+      "XS3": {
+        "cMinDur": 40,
+        "deltaC": 15,
+        "cNom": 55,
+        "desc": "Meerwasser-Gezeitenzone: Maximaler Schutz gegen Chloride",
+        "color": "#0f766e"
+      }
+    }
+  }
+}

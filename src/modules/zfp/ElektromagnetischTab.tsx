@@ -4,6 +4,8 @@ import React from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Magnet, Zap, Waves } from 'lucide-react';
+import inhalt from '@/content/zfp/ElektromagnetischTab.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface ElektromagnetischTabProps {
   barDiameter: number;
@@ -29,20 +31,18 @@ export default function ElektromagnetischTab({ barDiameter, bewehrungssucherResu
           <div className="p-2 bg-shiraz/10 rounded-lg text-shiraz">
             <Magnet size={24} />
           </div>
-          <h2 className="text-xl font-bold text-slate-900">Elektromagnetischer Bewehrungssucher</h2>
+          <h2 className="text-xl font-bold text-slate-900"><MdText text={inhalt.texte.elektromagnetischerBewehrungssucher} /></h2>
         </div>
         
         <div className="text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Nutzt das Wirbelstromverfahren zur Ortung von Bewehrungsstäben und Messung der Betondeckung.
-          </p>
+          <p><MdText text={inhalt.texte.nutztDasWirbelstromverfahrenZur} /></p>
         </div>
 
         <Slider
           label="Betondeckung"
           min={10} max={100} step={1}
           value={cover} unit="mm"
-          info="Abstand der Bewehrung zur Oberfläche."
+          info={inhalt.werte.abstandDerBewehrungZur}
           onChange={(e) => setCover(Number(e.target.value))}
         />
         
@@ -55,7 +55,7 @@ export default function ElektromagnetischTab({ barDiameter, bewehrungssucherResu
         />
 
         <div className="mt-4 p-4 bg-shiraz text-white rounded-xl shadow-md relative overflow-hidden">
-          <div className="text-sm opacity-90 mb-1">Relative Signalstärke</div>
+          <div className="text-sm opacity-90 mb-1"><MdText text={inhalt.texte.relativeSignalstärke} /></div>
           <div className="text-3xl font-bold">{formatDeZahl(bewehrungssucherResults.signalStrength, 0)} %</div>
           
           {/* Animation für Signalstärke */}
@@ -132,17 +132,15 @@ export default function ElektromagnetischTab({ barDiameter, bewehrungssucherResu
           <div className="p-2 bg-shiraz/10 rounded-lg text-shiraz">
             <Zap size={24} />
           </div>
-          <h2 className="text-xl font-bold text-slate-900">Georadar (GPR)</h2>
+          <h2 className="text-xl font-bold text-slate-900"><MdText text={inhalt.texte.georadarGpr} /></h2>
         </div>
         
         <div className="text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Sendet elektromagnetische Impulse aus. Reflexionen an Materialgrenzen (z.B. Stahl, Hohlräume) werden gemessen.
-          </p>
+          <p><MdText text={inhalt.texte.sendetElektromagnetischeImpulseAus} /></p>
         </div>
 
         <div className="grid grid-cols-2 gap-4">
-          <Slider info="Parameter zur Anpassung der Berechnung."
+          <Slider info={inhalt.werte.parameterZurAnpassungDer}
             label={<FormulaText text="Dielektrizitätszahl (\varepsilon_r)" />}
             min={4.0} max={12.0} step={0.5}
             value={dielectric} unit="-"
@@ -150,16 +148,16 @@ export default function ElektromagnetischTab({ barDiameter, bewehrungssucherResu
           />
           
           <Slider
-            label={<FormulaText text="Laufzeit (t)" />}
+            label={<FormulaText text={inhalt.werte.laufzeitT} />}
             min={0.5} max={5.0} step={0.1}
             value={timeOfFlight} unit="ns"
-            info="Zeit vom Senden bis zum Empfang des Echos."
+            info={inhalt.werte.zeitVomSendenBis}
             onChange={(e) => setTimeOfFlight(Number(e.target.value))}
           />
         </div>
 
         <div className="mt-4 p-4 bg-shiraz text-white rounded-xl shadow-md relative overflow-hidden">
-          <div className="text-sm opacity-90 mb-1">Berechnete Tiefe des Objekts</div>
+          <div className="text-sm opacity-90 mb-1"><MdText text={inhalt.texte.berechneteTiefeDesObjekts} /></div>
           <div className="text-3xl font-bold">{formatDeZahl(radarResults.depth, 1)} mm</div>
           <div className="text-xs opacity-75 mt-2">
             Radargeschwindigkeit: {formatDeZahl(radarResults.vRadar, 1)} mm/ns

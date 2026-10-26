@@ -6,6 +6,8 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import type { Dispatch, SetStateAction } from 'react';
 import type { MaterialData } from './daten';
+import inhalt from '@/content/mechanischekenngroessen/Zugversuchsimulator.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 interface ZugversuchsimulatorProps {
   breiteMm: number;
@@ -51,9 +53,9 @@ export default function Zugversuchsimulator({ breiteMm, durchmesserMm, handleSel
             {/* Werkstoff-Wahl */}
             <div className="space-y-1.5">
               <div className="flex justify-between items-center text-xs">
-                <label className="font-bold text-text-main">Werkstoff auswählen:</label>
+                <label className="font-bold text-text-main"><MdText text={inhalt.texte.werkstoffAuswählen} /></label>
                 {mat.phiKriechen === 0 && (
-                  <span className="text-[10px] text-slate-500 font-mono">Kriechen/Schwinden ≈ 0</span>
+                  <span className="text-[10px] text-slate-500 font-mono"><MdText text={inhalt.texte.kriechenSchwinden0} /></span>
                 )}
               </div>
               <select
@@ -79,35 +81,31 @@ export default function Zugversuchsimulator({ breiteMm, durchmesserMm, handleSel
                   className={`py-2 text-xs font-bold rounded-lg border transition-all cursor-pointer ${
                       lastArt === 'zug' ? 'bg-shiraz text-white border-shiraz shadow' : 'bg-off-white text-text-main border-home-grau/30 hover:bg-white'
                     }`}
-                >
-                  Zugspannung (+σ)
-                </button>
+                ><MdText text={inhalt.texte.zugspannung} /></button>
                 <button aria-pressed={lastArt === 'druck'}
                   onClick={() => setLastArt('druck')}
                   className={`py-2 text-xs font-bold rounded-lg border transition-all cursor-pointer ${
                       lastArt === 'druck' ? 'bg-shiraz text-white border-shiraz shadow' : 'bg-off-white text-text-main border-home-grau/30 hover:bg-white'
                     }`}
-                >
-                  Druckspannung (-σ)
-                </button>
+                ><MdText text={inhalt.texte.druckspannung} /></button>
               </div>
             </div>
 
             {/* Kraft Slider */}
             <Slider
-              label={<FormulaText text={`Normalkraft |F|`} />}
+              label={<FormulaText text={inhalt.werte.normalkraftF} />}
               min={5}
               max={500}
               step={5}
               value={kraftKn}
               unit="kN"
-              info="Auf den Stab axial wirkende Normalzug- oder Druckkraft."
+              info={inhalt.werte.aufDenStabAxial}
               onChange={(e) => setKraftKn(Number(e.target.value))}
             />
 
             {/* Stablänge */}
             <Slider
-              label={<FormulaText text="Stablänge L_0" />}
+              label={<FormulaText text={inhalt.werte.stablängeL0} />}
               min={0.5}
               max={10.0}
               step={0.5}
@@ -126,7 +124,7 @@ export default function Zugversuchsimulator({ breiteMm, durchmesserMm, handleSel
                     : 'bg-slate-50 text-slate-800 border-slate-200'
                 }`}>
                 <div>
-                  <span className="font-bold block">Euler-Knicklast FK (β=1,0):</span>
+                  <span className="font-bold block"><MdText text={inhalt.texte.eulerKnicklastFk1} /></span>
                   <span className="text-[10px] text-text-main/70">I_min = {formatDeZahl((sim.I_min_mm4 / 1e4), 1)} cm⁴</span>
                 </div>
                 <div className="text-right">
@@ -150,23 +148,19 @@ export default function Zugversuchsimulator({ breiteMm, durchmesserMm, handleSel
                     className={`px-2 py-0.5 rounded text-[11px] font-bold border cursor-pointer ${
                         querschnittTyp === 'rund' ? 'bg-slate-700 text-white' : 'bg-off-white text-slate-700'
                       }`}
-                  >
-                    Kreisstab (Ø)
-                  </button>
+                  ><MdText text={inhalt.texte.kreisstab} /></button>
                   <button aria-pressed={querschnittTyp === 'rechteck'}
                     onClick={() => setQuerschnittTyp('rechteck')}
                     className={`px-2 py-0.5 rounded text-[11px] font-bold border cursor-pointer ${
                         querschnittTyp === 'rechteck' ? 'bg-slate-700 text-white' : 'bg-off-white text-slate-700'
                       }`}
-                  >
-                    Rechteck (b × h)
-                  </button>
+                  ><MdText text={inhalt.texte.rechteckBH} /></button>
                 </div>
               </div>
 
               {querschnittTyp === 'rund' ? (
                 <Slider
-                  label={<FormulaText text="Durchmesser d_0" />}
+                  label={<FormulaText text={inhalt.werte.durchmesserD0} />}
                   min={10}
                   max={120}
                   step={2}
@@ -201,26 +195,25 @@ export default function Zugversuchsimulator({ breiteMm, durchmesserMm, handleSel
             {/* Kriechzahl & Schwinden Slider */}
             <div className="space-y-3 pt-3 border-t border-home-grau/20 bg-off-white p-3 rounded-xl border">
               <div className="text-xs font-bold text-text-main flex items-center gap-1.5">
-                <Clock size={14} className="text-shiraz" /> Langzeiteffekte (Kriechen &amp; Schwinden):
-              </div>
+                <Clock size={14} className="text-shiraz" /><MdText text={inhalt.texte.langzeiteffekteKriechenSchwinden} /></div>
               <Slider
-                label="Kriechzahl φ"
+                label={inhalt.werte.kriechzahl}
                 min={0.0}
                 max={4.0}
                 step={0.1}
                 value={kriechZahl}
                 unit="-"
-                info="Verhältnis der Kriechverformung zur elastischen Anfangsverformung."
+                info={inhalt.werte.verhältnisDerKriechverformungZur}
                 onChange={(e) => setKriechZahl(Number(e.target.value))}
               />
               <Slider
-                label="Endschwindmaß |ε_cs|"
+                label={inhalt.werte.endschwindmaßCs}
                 min={0.0}
                 max={1.0}
                 step={0.05}
                 value={schwindMassPromille}
                 unit="‰"
-                info="Lastfreie Verkürzung durch Austrocknung und Zementsteinreaktion."
+                info={inhalt.werte.lastfreieVerkürzungDurchAustrocknung}
                 onChange={(e) => setSchwindMassPromille(Number(e.target.value))}
               />
             </div>
@@ -238,7 +231,7 @@ export default function Zugversuchsimulator({ breiteMm, durchmesserMm, handleSel
               </div>
 
               <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
-                <span className="text-[10px] uppercase font-bold text-text-main/60 block">Dehnung ε_el</span>
+                <span className="text-[10px] uppercase font-bold text-text-main/60 block"><MdText text={inhalt.texte.dehnungEl} /></span>
                 <span className="text-lg font-mono font-bold text-text-main">
                   {sim.epsilonPromille > 0 ? '+' : ''}{formatDeZahl(sim.epsilonPromille, 2)} ‰
                 </span>
@@ -279,10 +272,9 @@ export default function Zugversuchsimulator({ breiteMm, durchmesserMm, handleSel
             <div className="flex items-center justify-between pb-3 border-b border-home-grau/20 mb-3">
               <div>
                 <h3 className="font-bold text-text-main flex items-center gap-2 text-base">
-                  <Activity size={18} className="text-shiraz" /> Stabverformung &amp; Querdehnung
-                </h3>
+                  <Activity size={18} className="text-shiraz" /><MdText text={inhalt.texte.stabverformungQuerdehnung} /></h3>
                 <span className="text-xs text-text-main/70 font-medium">
-                  ΔL_el = {sim.deltaL_mm > 0 ? '+' : ''}{formatDeZahl(sim.deltaL_mm, 2)} mm | Einschnürung Δd = {sim.deltaD_mm > 0 ? '+' : ''}{formatDeZahl((sim.deltaD_mm * 1000), 1)} µm
+                  ΔL_el = {sim.deltaL_mm > 0 ? '+' : ''}{formatDeZahl(sim.deltaL_mm, 2)}<MdText text={inhalt.texte.mmEinschnürungD} />{sim.deltaD_mm > 0 ? '+' : ''}{formatDeZahl((sim.deltaD_mm * 1000), 1)} µm
                 </span>
               </div>
               <span className="text-[11px] font-mono bg-off-white text-slate-700 px-2.5 py-1 rounded border border-home-grau/20">
@@ -415,15 +407,15 @@ export default function Zugversuchsimulator({ breiteMm, durchmesserMm, handleSel
             {/* Steifigkeits- & Rheologie-Cockpit Live */}
             <div className="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
               <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/25 text-center">
-                <span className="text-[10px] text-text-main/60 uppercase block font-bold">Dehnsteifigkeit EA</span>
+                <span className="text-[10px] text-text-main/60 uppercase block font-bold"><MdText text={inhalt.texte.dehnsteifigkeitEa} /></span>
                 <span className="font-mono font-bold text-shiraz">{formatDeZahl(sim.EA_MN, 2)} MN</span>
               </div>
               <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/25 text-center">
-                <span className="text-[10px] text-text-main/60 uppercase block font-bold">Biegesteifigkeit EI</span>
+                <span className="text-[10px] text-text-main/60 uppercase block font-bold"><MdText text={inhalt.texte.biegesteifigkeitEi} /></span>
                 <span className="font-mono font-bold text-shiraz">{formatDeZahl(sim.EI_kNm2, 2)} kNm²</span>
               </div>
               <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/25 text-center">
-                <span className="text-[10px] text-text-main/60 uppercase block font-bold">Langzeit ΔL (Kriechen)</span>
+                <span className="text-[10px] text-text-main/60 uppercase block font-bold"><MdText text={inhalt.texte.langzeitLKriechen} /></span>
                 <span className="font-mono font-bold text-blue-700">
                   {sim.deltaL_kriechen_mm > 0 ? '+' : ''}{formatDeZahl(sim.deltaL_kriechen_mm, 2)} mm
                 </span>
@@ -437,9 +429,8 @@ export default function Zugversuchsimulator({ breiteMm, durchmesserMm, handleSel
             {/* Gesamtverformungs-Banner */}
             <div className="p-3 bg-off-white rounded-xl border border-home-grau/30 flex flex-wrap items-center justify-between gap-2 text-xs">
               <div>
-                <span className="font-bold text-text-main block">Gesamtverformung nach Kriechen &amp; Schwinden:</span>
-                <span className="text-[10px] text-text-main/70">
-                  ΔL_ges = ΔL_el ({sim.deltaL_mm > 0 ? '+' : ''}{formatDeZahl(sim.deltaL_mm, 2)} mm) + ΔL_kriech ({sim.deltaL_kriechen_mm > 0 ? '+' : ''}{formatDeZahl(sim.deltaL_kriechen_mm, 2)} mm) + ΔL_schwind ({formatDeZahl(sim.deltaL_schwinden_mm, 2)} mm)
+                <span className="font-bold text-text-main block"><MdText text={inhalt.texte.gesamtverformungNachKriechenSchwinden} /></span>
+                <span className="text-[10px] text-text-main/70"><MdText text={inhalt.texte.lGesLEl} />{sim.deltaL_mm > 0 ? '+' : ''}{formatDeZahl(sim.deltaL_mm, 2)}<MdText text={inhalt.texte.mmLKriech} />{sim.deltaL_kriechen_mm > 0 ? '+' : ''}{formatDeZahl(sim.deltaL_kriechen_mm, 2)}<MdText text={inhalt.texte.mmLSchwind} />{formatDeZahl(sim.deltaL_schwinden_mm, 2)} mm)
                 </span>
               </div>
               <div className="font-mono font-bold text-sm bg-white px-3 py-1.5 rounded-lg border border-home-grau/25 text-text-main shadow-xs">
@@ -466,27 +457,27 @@ export default function Zugversuchsimulator({ breiteMm, durchmesserMm, handleSel
               },
               {
                 titel: 'Normalspannung',
-                erklaerung: `Kraft in N geteilt durch die Fläche (${lastArt === 'zug' ? 'Zug positiv' : 'Druck negativ'}):`,
+                erklaerung: `Kraft in N geteilt durch die Fläche (${lastArt === 'zug' ? 'Zug positiv' : inhalt.werte.druckNegativ}):`,
                 formel: `\\sigma = \\frac{F}{A_0} = \\frac{${formatDeTeX((lastArt === 'zug' ? 1 : -1) * kraftKn * 1000, 0)}}{${formatDeTeX(sim.A0_mm2, 1)}} = ${formatDeTeX(sim.sigma, 1)}\\,\\text{MPa}`
               },
               {
-                titel: 'Elastische Dehnung (Hooke)',
+                titel: inhalt.werte.elastischeDehnungHooke,
                 erklaerung: `Mit dem E-Modul E = ${formatDeZahl(mat.E, 0)} MPa:`,
                 formel: `\\varepsilon = \\frac{${formatDeTeX(sim.sigma, 1)}}{${formatDeTeX(mat.E, 0)}} = ${formatDeTeX(sim.epsilonPromille, 2)}\\,\\text{‰}`
               },
               {
-                titel: 'Elastische Längenänderung',
+                titel: inhalt.werte.elastischeLängenänderung,
                 erklaerung: `Dehnung mal Ausgangslänge L₀ = ${formatDeZahl(stabLaengeM * 1000, 0)} mm:`,
                 formel: `\\Delta L_{el} = ${formatDeTeX(sim.epsilonPromille, 2)} \\cdot 10^{-3} \\cdot ${formatDeTeX(stabLaengeM * 1000, 0)} = ${formatDeTeX(sim.deltaL_mm, 2)}\\,\\text{mm}`
               },
               {
-                titel: 'Kriechen und Schwinden',
+                titel: inhalt.werte.kriechenUndSchwinden,
                 erklaerung: `Kriechzahl φ = ${formatDeZahl(kriechZahl, 1)} vergrößert die elastische Verformung, das Schwindmaß ${formatDeZahl(schwindMassPromille, 2)} ‰ verkürzt den Stab lastunabhängig:`,
                 formel: `\\Delta L_{ges} = ${formatDeTeX(sim.deltaL_mm, 2)} \\cdot (1 + ${formatDeTeX(kriechZahl, 1)}) - ${formatDeTeX(schwindMassPromille, 2)} \\cdot 10^{-3} \\cdot ${formatDeTeX(stabLaengeM * 1000, 0)} = ${formatDeTeX(sim.deltaL_gesamt_mm, 2)}\\,\\text{mm}`
               }
             ]}
-            ergebnisHinweis="Linear-elastisches Modell; außerhalb des elastischen Bereichs (Fließen, Bruch, Knicken) gilt das Hookesche Gesetz nicht mehr."
-            normQuelle="Technische Mechanik; Kriechen/Schwinden vereinfacht nach DIN EN 1992-1-1, 3.1.4"
+            ergebnisHinweis={inhalt.werte.linearElastischesModellAußerhalb}
+            normQuelle={inhalt.werte.technischeMechanikKriechenSchwinden}
           />
         </div>
 

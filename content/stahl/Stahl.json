@@ -1,0 +1,104 @@
+{
+  "texte": {
+    "stahlImBauwesen": " Stahl im Bauwesen",
+    "stahlIstEinerDer": "Stahl ist einer der leistungsfähigsten und flexibelsten Baustoffe im modernen Ingenieurbau. Seine hervorragende Tragfähigkeit bei Zug- wie Druckbeanspruchung und sein ausgeprägtes plastisches Verformungsverhalten sind die Säulen weitgespannter Tragwerke.",
+    "stahlwerkstoffeGüten": " Stahlwerkstoffe & Güten",
+    "allgemeinErmüdung": " Allgemein & Ermüdung",
+    "walzprofileEigenspannungen": " Walzprofile (Eigenspannungen)",
+    "legierungenEdelstahl": " Legierungen & Edelstahl"
+  },
+  "werte": {
+    "eigenspannungResMpa": "Eigenspannung σ_res (MPa)",
+    "fließgrenzeFYZug": "Fließgrenze f_y (Zug)",
+    "fließgrenzeFYDruck": "Fließgrenze -f_y (Druck)",
+    "längsEigenspannungResMpa": "Längs-Eigenspannung σ_res (MPa)",
+    "fließgrenzeFY": "Fließgrenze f_y",
+    "spannungBei20C": "Spannung bei 20°C",
+    "aktuelleBelastung": "Aktuelle Belastung",
+    "dehnung": "Dehnung ε (%)",
+    "spannungMpaBzwN": "Spannung σ (MPa bzw. N/mm²)",
+    "anwendungsbeispielPlastischerBiegewiders": "Anwendungsbeispiel: Plastischer Biegewiderstand eines IPE 300 aus S355",
+    "dinEn19931": "DIN EN 1993-1-1 mit NA, 6.2.5 (Querschnittsklasse 1, γ_M0 = 1,0)",
+    "ausnutzung54BiegedrillknickenUnd": "Ausnutzung 54 % – Biegedrillknicken und Gebrauchstauglichkeit sind gesondert nachzuweisen.",
+    "ermüdungWerkstoff": "Ermüdung (Werkstoff)"
+  },
+  "daten": {
+    "Stahl.schritte": [
+      {
+        "titel": "1. Gegeben",
+        "formel": "W_{pl,y} = 628{,}4\\,\\text{cm}^3,\\; f_y = 355\\,\\text{N/mm}^2,\\; M_{Ed} = 120\\,\\text{kNm}",
+        "erklaerung": "Querschnittswerte nach Profiltabelle."
+      },
+      {
+        "titel": "2. Widerstand",
+        "formel": "M_{pl,Rd} = 628{,}4 \\cdot 35{,}5 / 1{,}0 = 22\\,308\\,\\text{kNcm} = 223\\,\\text{kNm}",
+        "erklaerung": "f_y = 35,5 kN/cm²."
+      },
+      {
+        "titel": "3. Ausnutzung",
+        "formel": "\\eta = 120 / 223 = 0{,}54 \\le 1",
+        "erklaerung": "Ohne Stabilitätsnachweis (Biegedrillknicken separat)."
+      }
+    ],
+    "Stahl.literatur": [
+      "Petersen, Chr. (2013): Stahlbau - Grundlagen der Berechnung und baulichen Ausbildung (Springer Vieweg)",
+      "Kindmann, R.; Krahwinkel, M.: Stahl- und Verbundkonstruktionen – Hallen-, Geschoss- und Brückenbau. 3., vollst. überarb. u. aktual. Aufl., Wiesbaden: Springer Vieweg 2016",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "Stahl.regelwerke": [
+      {
+        "title": "DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (Eurocode 3, Teil 1-1; bauaufsichtlich eingeführt); 2. Generation DIN EN 1993-1-1:2025-04 mit DIN EN 1993-1-1/NA:2026-04 noch nicht eingeführt"
+      },
+      {
+        "title": "DIN EN 1993-1-2:2010-12 mit NA (Eurocode 3, Teil 1-2: Brandfall)"
+      },
+      {
+        "title": "DIN EN 1993-1-9:2010-12 mit NA (Eurocode 3, Teil 1-9: Ermüdung)"
+      },
+      {
+        "title": "DIN EN 10025-2:2019-10 (Warmgewalzte Erzeugnisse aus unlegierten Baustählen)"
+      },
+      {
+        "title": "DIN EN 1090-2:2018-09 (Ausführung von Stahltragwerken und Aluminiumtragwerken - Technische Regeln für Stahltragwerke)"
+      },
+      {
+        "title": "DIN 488-1:2009-08 (Betonstahl – Sorten, Eigenschaften, Kennzeichen)"
+      },
+      {
+        "title": "DIN EN ISO 12944-2 (Korrosionsschutz – Einteilung der Umgebungsbedingungen)"
+      }
+    ],
+    "Stahl.weblinks": [
+      {
+        "title": "Dlubal Querschnittswerte – Online-Profilrechner für Walzprofile",
+        "url": "https://www.dlubal.com/de/querschnittswerte/"
+      },
+      {
+        "title": "SkyCiv Free Beam Calculator – Momenten- & Querkraftverläufe",
+        "url": "https://skyciv.com/free-beam-calculator/"
+      }
+    ],
+    "Stahl.formeln": [
+      {
+        "formel": "E_{a,\\theta} = k_{E,\\theta} \\cdot E_a \\quad \\text{und} \\quad f_{y,\\theta} = k_{y,\\theta} \\cdot f_y",
+        "erklaerung": "Thermische Abminderung von E-Modul und Streckgrenze im Brandfall nach Eurocode 3 Teil 1-2 (E_a = 210\\,000\\text{ N/mm²}).",
+        "quelle": "DIN EN 1993-1-2 Tab. 3.1"
+      },
+      {
+        "formel": "\\Delta\\sigma_R^m \\cdot N = \\Delta\\sigma_c^m \\cdot 2\\cdot 10^6",
+        "erklaerung": "Wöhlerlinie für Ermüdungsfestigkeit nach EC3-1-9: \\Delta\\sigma_c = Kerbdetailkategorie (bei 2 Millionen Schwingspielen), m = Steigungsexponent (m = 3 für N \\le 5\\cdot 10^6).",
+        "quelle": "DIN EN 1993-1-9"
+      },
+      {
+        "formel": "\\sigma_{\\text{res},c} \\approx -0{,}3 \\dots -0{,}5 \\cdot f_y",
+        "erklaerung": "Charakteristische Druckeigenspannungen an den Flanschaußenkanten von warmgewalzten I-Profilen durch differenzielle Abkühlung nach dem Walzgang.",
+        "quelle": "Petersen: Stahlbau"
+      },
+      {
+        "formel": "E_s = \\eta \\cdot \\frac{U \\cdot I}{v} \\quad [\\text{kJ/mm}]",
+        "erklaerung": "Streckenenergie beim Lichtbogenschweißen: \\eta = thermischer Wirkungsgrad, U = Schweißspannung [V], I = Schweißstrom [A], v = Schweißgeschwindigkeit [mm/s]. Bestimmt die Ausdehnung der Wärmeeinflusszone (WEZ).",
+        "quelle": "DIN EN 1011-1"
+      }
+    ]
+  }
+}

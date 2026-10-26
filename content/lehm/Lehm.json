@@ -1,0 +1,103 @@
+{
+  "texte": {
+    "sandKies": "🟠 Sand/Kies: ",
+    "lehmbauStampflehm": "Lehmbau (Stampflehm)",
+    "lehmIstEinerDer": "Lehm ist einer der ältesten Baustoffe. Er puffert Raumfeuchte gut, hat eine hohe Wärmespeicherfähigkeit und lässt sich ungebrannt und ohne Zusätze nach Rückbau wieder aufbereiten.",
+    "grundlagenZusammensetzung": "Grundlagen & Zusammensetzung",
+    "bemessungNeueNorm": "Bemessung (neue Norm)",
+    "bentonitTonmineral": "💦 Bentonit (Tonmineral)",
+    "lehmIstEinÖkologischer": "Lehm ist ein ökologischer Baustoff, der reversibel aushärtet. Er puffert Raumfeuchte gut, ist aber wasserempfindlich und weist geringere Festigkeiten auf.",
+    "eigenschaftenGrobeSchätzungLehrmodell": "Eigenschaften (grobe Schätzung – Lehrmodell, keine Normwerte)",
+    "linearesSchwindmaß": "Lineares Schwindmaß",
+    "sorptionsfähigkeitFeuchtepuffer": "Sorptionsfähigkeit (Feuchtepuffer)",
+    "schematischeDarstellungLehmstruktur": "Schematische Darstellung: Lehmstruktur",
+    "sandUndKiesBilden": "Sand und Kies bilden das tragende Gerüst. Schluff füllt die Hohlräume. Tonplättchen wirken als reversibles Bindemittel, das die Körner durch Kohäsionskräfte (bei Trocknung) zusammenhält.",
+    "bemessungNachNeuerNorm": "**Bemessung nach neuer Norm (DIN 18940):** Seit Erscheinen der DIN 18940 (2023-06) ist die lastabtragende Bemessung von Lehmsteinmauerwerk normiert (Anwendungsgrenzen: Gebäude bis 13,0 m Höhe, d. h. Gebäudeklasse 1 bis 4; nicht für Keller- und Brandwände). Sie orientiert sich stark an den Konzepten des klassischen Mauerwerksbaus (DIN EN 1996), berücksichtigt jedoch das spezifische feuchteabhängige Verhalten (Kriechen & Schwinden) sowie die geringeren Festigkeiten von Lehmbaustoffen.",
+    "wesentlicheKonzepteDerDin": "Wesentliche Konzepte der DIN 18940",
+    "anwendungsDruckfestigkeitsklassenLehmste": "**Anwendungs- & Druckfestigkeitsklassen:** Lehmsteine werden nach DIN 18945 in Anwendungsklassen nach Feuchtebeanspruchung (AK Ia, Ib, II, III) und Druckfestigkeitsklassen (2 – 2,5 – 3 – 4 – 5 – 6 N/mm² mittlerer Steindruckfestigkeit) eingeteilt. Die charakteristische Mauerwerksdruckfestigkeit fk ergibt sich nach DIN 18940 aus Steinklasse und Mörtel.",
+    "formatMörtelDieTragfähigkeit": "**Format & Mörtel:** Die Tragfähigkeit hängt stark vom verwendeten Lehmmauermörtel und dem Überbindemaß ab.",
+    "schwindenSetzungDaLehm": "**Schwinden & Setzung:** Da Lehm bei Feuchteaufnahme quillt und beim Trocknen wieder schwindet, müssen Setzungsmaße für den Bauablauf rechnerisch berücksichtigt werden.",
+    "feuchteschutzKonstruktiverWitterungsschu": "**Feuchteschutz:** Konstruktiver Witterungsschutz (Dachüberstände, wasserresistente Sockelzonen z.B. aus Naturstein oder Beton) ist Voraussetzung (Dachüberstand, Sockel, Spritzwasserschutz).",
+    "tragendesMauerwerkInGebäuden": "Tragendes Mauerwerk in Gebäuden bis 13,0 m Höhe, d. h. Gebäudeklassen 1–4 (DIN 18940:2023-06; nicht für Keller-, Brand- und freistehende Wände).",
+    "innentrennwändeUndAusfachungenZ": "Innentrennwände und Ausfachungen (z.B. bei Holzfachwerk).",
+    "ausführungAlsEinsteinmauerwerkOder": "Ausführung als Einsteinmauerwerk oder Verbandsmauerwerk.",
+    "durchDieProduktnormenDin": "Durch die Produktnormen DIN 18945–18948 und die Bemessungsnorm DIN 18940 (2023) ist tragendes Lehmsteinmauerwerk im Anwendungsbereich der Norm ohne Einzelfallgenehmigung möglich; andere Bauweisen (z. B. tragender Stampflehm) benötigen weiterhin vBG bzw. ZiE.",
+    "bentonitIstEinTonmineralgemisch": "**Bentonit** ist ein Tonmineralgemisch (hauptsächlich Montmorillonit), das durch die Verwitterung von vulkanischer Asche entstanden ist. Es gehört zu den mineralischen Baustoffen und zeichnet sich durch seine enorme Quellfähigkeit bei Wasserzugabe aus.",
+    "quellvermögenKannEinVielfaches": "**Quellvermögen:** Kann ein Vielfaches seines Eigengewichts an Wasser aufnehmen und sein Volumen stark vergrößern (durch Schichteinlagerung von Wasser).",
+    "thixotropieBentonitsuspensionenVerhalten": "**Thixotropie:** Bentonitsuspensionen verhalten sich in Ruhe wie ein Gel (fest) und unter mechanischer Beanspruchung (Rühren, Pumpen) wie eine Flüssigkeit.",
+    "dichtwirkungImGequollenenZustand": "**Dichtwirkung:** Im gequollenen Zustand nahezu wasserundurchlässig.",
+    "kationenaustauschkapazitätKannSchadstoff": "**Kationenaustauschkapazität:** Kann Schadstoffe binden.",
+    "anwendungenImBauwesen": "Anwendungen im Bauwesen",
+    "spezialtiefbauStützflüssigkeitStabilisie": "**Spezialtiefbau (Stützflüssigkeit):** Stabilisierung von Bohr- und Schlitzwänden. Die thixotrope Flüssigkeit stützt die Erdwand und verhindert das Einstürzen, bevor Beton eingefüllt wird.",
+    "abdichtungWeißeWanneBraune": "**Abdichtung (Weiße Wanne / Braune Wanne):** Bentonitquellbänder zur Fugenabdichtung in Betonbauwerken. Bentonitmatten (Geosynthetische Tondichtungsbahnen - GTD) zur Flächenabdichtung.",
+    "deponiebauAlsMineralischeBasisabdichtung": "**Deponiebau:** Als mineralische Basisabdichtung zum Schutz des Grundwassers.",
+    "tunnelbauAlsSchmiermittelBeim": "**Tunnelbau:** Als Schmiermittel beim Rohrvortrieb oder als Stützmedium bei Schildvortriebsmaschinen (EPB/Slurry)."
+  },
+  "werte": {
+    "tonanteilBindemittel": "Tonanteil (Bindemittel)",
+    "anteilAnTonIm": "Anteil an Ton im Lehmgemisch.",
+    "anteilAnSandUnd": "Anteil an Sand und Kies im Lehmgemisch.",
+    "herstellfeuchteWassergehalt": "Herstellfeuchte (Wassergehalt)",
+    "anwendungsbeispielTrocknungswasserEinesL": "Anwendungsbeispiel: Trocknungswasser eines Lehmputzes",
+    "massenbilanzFeuchtegehalteAlsLehrannahme": "Massenbilanz; Feuchtegehalte als Lehrannahmen (Herstellerangaben maßgebend)",
+    "lehmputzeTrocknenNurPhysikalisch": "Lehmputze trocknen nur physikalisch: Ohne ausreichende Lüftung verzögert sich die Trocknung, und es droht Schimmelbildung auf der feuchten Oberfläche."
+  },
+  "daten": {
+    "Lehm.schritte": [
+      {
+        "titel": "1. Gegeben",
+        "formel": "A = 100\\,\\text{m}^2,\\; d = 20\\,\\text{mm},\\; \\rho_d = 1700\\,\\text{kg/m}^3",
+        "erklaerung": "Zweilagiger Lehmputz auf Innenwänden."
+      },
+      {
+        "titel": "2. Feuchtegehalte",
+        "formel": "u_0 = 18\\,\\text{M.-\\%}\\;(\\text{frisch}),\\; u_{eq} = 1{,}5\\,\\text{M.-\\%}\\;(\\text{lufttrocken})",
+        "erklaerung": "Bezogen auf die Trockenmasse; Lehrannahmen."
+      },
+      {
+        "titel": "3. Trockenmasse",
+        "formel": "m_d = 100 \\cdot 0{,}020 \\cdot 1700 = 3400\\,\\text{kg}",
+        "erklaerung": "Masse der trockenen Putzschicht."
+      },
+      {
+        "titel": "4. Abzuführendes Wasser",
+        "formel": "m_W = 3400 \\cdot (0{,}18 - 0{,}015) \\approx 560\\,\\text{kg}",
+        "erklaerung": "Rund 0,56 m³ Wasser müssen über Lüftung abgeführt werden."
+      }
+    ],
+    "Lehm.literatur": [
+      "Minke, G.: Handbuch Lehmbau – Baustoffkunde, Techniken, Lehmarchitektur. 10., überarb. u. erw. Aufl., Rastede: ökobuch 2022",
+      "Dachverband Lehm e. V. (Hrsg.): Lehmbau Regeln (3. Aufl., Vieweg+Teubner 2009)",
+      "Wendehorst Baustoffkunde, 27. Auflage, Vieweg+Teubner 2011"
+    ],
+    "Lehm.regelwerke": [
+      {
+        "title": "DIN 18940:2023-06 (Tragendes Lehmsteinmauerwerk - Bemessung und Konstruktion)"
+      },
+      {
+        "title": "DIN 18945:2024-03 (Lehmsteine - Anforderungen, Prüfung und Kennzeichnung)"
+      },
+      {
+        "title": "DIN 18946:2024-03 (Lehmmauermörtel - Anforderungen, Prüfung und Kennzeichnung)"
+      },
+      {
+        "title": "DIN 18947:2024-03 (Lehmputzmörtel - Anforderungen, Prüfung und Kennzeichnung)"
+      },
+      {
+        "title": "DIN 18948:2024-03 (Lehmplatten - Anforderungen, Prüfung und Kennzeichnung)"
+      }
+    ],
+    "Lehm.formeln": [
+      {
+        "formel": "\\epsilon_s = \\frac{L_{\\text{feucht}} - L_{\\text{trocken}}}{L_{\\text{feucht}}} \\cdot 100\\%",
+        "erklaerung": "Lineares Schwindmaß beim physikalischen Trocknen des Lehms. Entsteht durch die Verringerung der Wasserfilme zwischen den feinsten Tonplättchen.",
+        "quelle": "DIN 18945:2024-03"
+      },
+      {
+        "formel": "\\rho_d = \\frac{m_{\\text{trocken}}}{V_d}",
+        "erklaerung": "Trockenrohdichte von Lehmbaustoffen. Ein Hauptindikator für Wärmeleitfähigkeit und Schallleitung.",
+        "quelle": "DIN 18940:2023-06"
+      }
+    ]
+  }
+}

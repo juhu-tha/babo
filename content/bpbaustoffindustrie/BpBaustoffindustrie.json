@@ -1,0 +1,119 @@
+{
+  "texte": {
+    "marktdynamikSegmente": " Marktdynamik & Segmente",
+    "dieDeutscheBaustoffSteine": "Die deutsche Baustoff- & Steine-Erden-Industrie",
+    "wirtschaftlicheEinordnungUndGliederung": "Wirtschaftliche Einordnung und Gliederung der Branche",
+    "dieDeutscheBaustoffUnd": "Die deutsche Baustoff- und Steine-Erden-Industrie ist die Basis der Bauwirtschaft. Sie liefert mineralische Rohstoffe, Bindemittel (Zement, Kalk, Gips) und vorgefertigte Bauteile für Hoch-, Tief- und Ausbau.",
+    "entscheidendesStrukturmerkmalMassenbaust": "**Entscheidendes Strukturmerkmal:** Massenbaustoffe haben einen geringen Wert je Tonne bei hohem Gewicht. Die Transportkosten begrenzen daher den Lieferradius. Daraus ergibt sich eine Zweiteilung des Marktes:",
+    "kategorieAKapitalintensiveGlobale": "Kategorie A: Kapitalintensive globale Konzerne",
+    "geprägtDurchInternationaleKonzerne": "Geprägt durch internationale Konzerne und hohe Investitionen, z. B. in Drehrohröfen für Zementklinker oder Anlagen zur Gipskalzinierung. Die Transportwege sind überregional bis global, die Produktionsstrukturen zentralisiert.",
+    "typischeSektorenAkteure": "Typische Sektoren & Akteure:",
+    "zementwerkeGipsabbauBauchemieFlachglashe": "Zementwerke, Gipsabbau, Bauchemie, Flachglasherstellung. <br>*Z.B. Multinationale Bindemittel- & Gips-Konzerne, große Bauchemieunternehmen, Flachglashersteller.*",
+    "hoherInvestitionsbedarfGlobaleEsg": "Hoher Investitionsbedarf • Globale ESG-Anforderungen • EU-ETS",
+    "kategorieBDezentraleRegionale": "Kategorie B: Dezentrale, regionale KMU-Strukturen",
+    "geprägtDurchFamiliengeführtenMittelstand": "Geprägt durch familiengeführten Mittelstand und dezentrale Sourcing-Konzepte. Das Transportgut hat ein hohes Gewicht bei gleichzeitig geringem relativen Warenwert, wodurch Lieferradien wirtschaftlich stark limitiert sind (Klassisch < 35-50 km).",
+    "typischeSektorenAkteure2": "Typische Sektoren & Akteure:",
+    "kieswerkeSteinbrücheZiegelbrennereienLok": "Kieswerke, Steinbrüche, Ziegelbrennereien, lokale Fertigteilwerke. <br>*Z.B. Regionale Kies- und Transportbetonbetriebe, inhabergeführte Steinbrüche, Ziegelbrennereien und regionale Mörtelwerke.*",
+    "regionaleLogistikRohstoffsicherungVor": "Regionale Logistik • Rohstoffsicherung vor Ort • Transportkosten-Deckelung",
+    "branchenaufteilungJährlicheProduktionswe": "Branchenaufteilung & Jährliche Produktionswerte (Deutschlandweit)",
+    "einSystematischerÜberblickDes": "Ein systematischer Überblick des Produktionsvolumens verdeutlicht, dass die mineralischen Erzeugnisse und Betonbauteile den größten Kernbereich ausmachen.",
+    "branchensegmentIndustriezweig": "Branchensegment / Industriezweig",
+    "hauptprodukteOutput": "Hauptprodukte / Output",
+    "wirtschaftlicherLieferradiusLkwTransport": "Wirtschaftlicher Lieferradius (LKW-Transport)",
+    "produktionswertGrößenordnungLehrwert": "Produktionswert (Größenordnung, Lehrwert)",
+    "sandKiesNaturstein": "Sand, Kies & Naturstein",
+    "betonzuschlägeTragschichtenFürStraßenbau": "Betonzuschläge, Tragschichten für Straßenbau, Quarzmehle",
+    "lokal35Km": "Lokal (~35 km)",
+    "t35Mrd": "~ 3,5 Mrd. €",
+    "zementKalkGips": "Zement, Kalk & Gips",
+    "hydraulischeBindemittelGipsplattenBau": "Hydraulische Bindemittel, Gipsplatten, Bau- und Düngekalke",
+    "überregional150Km": "Überregional (~150 km)",
+    "t42Mrd": "~ 4,2 Mrd. €",
+    "mörtelBetonwarenFertigteile": "Mörtel, Betonwaren & Fertigteile",
+    "vorgefertigteDeckenelementeBetonpflaster": "Vorgefertigte Deckenelemente, Betonpflaster, Transportbeton, Werkmörtel",
+    "regional80Km": "Regional (~80 km)",
+    "t128Mrd": "~ 12,8 Mrd. €",
+    "ziegelGrobkeramik": "Ziegel & Grobkeramik",
+    "hochlochziegelDachziegelKlinkerFeuerfest": "Hochlochziegel, Dachziegel, Klinker, feuerfeste Produkte",
+    "überregional150Km2": "Überregional (~150 km)",
+    "t21Mrd": "~ 2,1 Mrd. €",
+    "naturwerksteineSchotterkörnungen": "Naturwerksteine & Schotterkörnungen",
+    "marmorplattenGranitpflasterGleisschotter": "Marmorplatten, Granitpflaster, Gleisschotter, frostsichere Packlagen",
+    "gezieltRegionalBisNational": "Gezielt regional bis national",
+    "t16Mrd": "~ 1,6 Mrd. €",
+    "dämmstoffeFasererzeugnisse": "Dämmstoffe & Fasererzeugnisse",
+    "mineralwolleEpsHolzfaserdämmstoffe": "Mineralwolle, EPS, Holzfaserdämmstoffe",
+    "nationalGlobal": "National / Global",
+    "t45Mrd": "~ 4,5 Mrd. €",
+    "zusammenfassendeBranchenkennzahlenDieBra": "**Zusammenfassende Branchenkennzahlen:** Die Branche beschäftigt in Deutschland rund 140.000–150.000 Menschen und setzt jährlich rund 38 Mrd. € um (Größenordnungen nach bbs, Stand 10/2026); hinzu kommt ein Rohstoffbedarf in der Größenordnung mehrerer hundert Millionen Tonnen pro Jahr (siehe bbs-Rohstoffstudie).",
+    "digitaleInformationsportaleDatenbanken": "Digitale Informationsportale & Datenbanken",
+    "verifizierteRechercheSchnittstellenFür": "Verifizierte Recherche-Schnittstellen für exakte Branchenanalysen im Bauwesen",
+    "fürWissenschaftlicheArbeitenMarktbeobach": "Für wissenschaftliche Arbeiten, Marktbeobachtungen oder Seminarentwürfe an der Hochschule können Studierende und Ingenieure auf die folgenden realen Recherchedatenbanken und statistischen Register zugreifen:",
+    "destatisGenesisStatistischesBundesamt": " Destatis GENESIS (Statistisches Bundesamt)",
+    "bietetMonatlichAktualisierteDaten": "Bietet monatlich aktualisierte Daten zu Inlandsproduktionswerten, Energie- und Personalkosten und Beschäftigtenzahlen der Nichtmetallisch-Mineralischen Baustoffindustrie unter dem WZ-Schlüssel 23.",
+    "zurGenesisDatenbank": "Zur GENESIS-Datenbank ↗",
+    "ifoInstitutFürWirtschaftsforschung": " ifo Institut für Wirtschaftsforschung",
+    "veröffentlichtDasMonatlicheIfo": "Veröffentlicht das monatliche \"ifo Konjunktur- & Branchenklima\" für den Wohnungs- und Tiefbau. Ein anerkannter Seismograf für Stornierungswellen, Zinsüberlastungen und betriebliche Produktionshemmnisse.",
+    "zuDenIfoKonjunkturindikatoren": "Zu den ifo-Konjunkturindikatoren ↗",
+    "lobbyregisterDesDeutschenBundestages": " Lobbyregister des Deutschen Bundestages",
+    "offenesStaatlichesRegisterZur": "Offenes, staatliches Register zur transparenten Offenlegung politischer Interessenvertreter. Hier lassen sich die finanziellen Aufwendungen und inhaltlichen Positionspapiere des Bundesverbands Baustoffe - Steine und Erden (bbs) exakt zurückverfolgen.",
+    "zumLobbyregisterDesBundes": "Zum Lobbyregister des Bundes ↗",
+    "econbizFachportalWirtschaftswissenschaft": " EconBiz – Fachportal Wirtschaftswissenschaften",
+    "betriebenVonDerZbw": "Betrieben von der ZBW (Leibniz-Informationszentrum Wirtschaft). Recherche nach wirtschaftswissenschaftlicher Literatur, z. B. zur Dekarbonisierung der Baustoffindustrie.",
+    "econbizDeÖffnen": "econbiz.de öffnen"
+  },
+  "werte": {
+    "anwendungsbeispielWirtschaftlicherLiefer": "Anwendungsbeispiel: Wirtschaftlicher Lieferradius für Kies",
+    "lehrmodellMitAngenommenenKostenwerten": "Lehrmodell mit angenommenen Kostenwerten",
+    "rund50KmDeshalb": "Rund 50 km – deshalb sind Kieswerke und Transportbetonwerke regional verteilt, Zementwerke dagegen beliefern größere Gebiete."
+  },
+  "daten": {
+    "BpBaustoffindustrie.schritte": [
+      {
+        "titel": "1. Gegeben",
+        "formel": "P_{Markt} = 30\\,\\text{€/t},\\; K_{prod} = 12\\,\\text{€/t},\\; K_{fix} = 3\\,\\text{€/t},\\; k_{var} = 0{,}30\\,\\text{€/(t·km)}",
+        "erklaerung": "Lehrannahmen: Preis frei Baustelle, Gewinnungskosten, Laden/Entladen, Fahrtkosten je km."
+      },
+      {
+        "titel": "2. Verfügbare Marge für Transport",
+        "formel": "30 - 12 - 3 = 15\\,\\text{€/t}",
+        "erklaerung": "Was für die Fahrt bleibt."
+      },
+      {
+        "titel": "3. Lieferradius",
+        "formel": "R_{max} = 15 / 0{,}30 = 50\\,\\text{km}",
+        "erklaerung": "Weiter entfernte Kunden sind unwirtschaftlich."
+      }
+    ],
+    "BpBaustoffindustrie.weblinks": [
+      {
+        "title": "Bundesverband Baustoffe – Steine und Erden (bbs)",
+        "url": "https://www.baustoffindustrie.de"
+      }
+    ],
+    "BpBaustoffindustrie.literatur": [
+      "Bundesverband Baustoffe – Steine und Erden (bbs) / RWI (Dehio, J. et al.): Rohstoffnachfrage 2045: Ressourcen sichern, Zukunft bauen – Perspektiven für mineralische Primär- und Sekundärrohstoffe. Essen/Berlin 2025",
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
+    ],
+    "BpBaustoffindustrie.regelwerke": [
+      {
+        "title": "Bundesberggesetz (BBergG: Gewinnung von Bodenschätzen)",
+        "url": "https://www.gesetze-im-internet.de/bbergg/"
+      },
+      {
+        "title": "Bundes-Immissionsschutzgesetz (BImSchG)",
+        "url": "https://www.gesetze-im-internet.de/bimschg/"
+      },
+      {
+        "title": "DIN EN 197-1 (Zement: Zusammensetzung und Konformität)"
+      }
+    ],
+    "BpBaustoffindustrie.formeln": [
+      {
+        "formel": "K_{\\text{trans}} = K_{\\text{fix}} + d_{\\text{dist}} \\cdot k_{\\text{var}} \\quad [\\text{€/t}], \\quad R_{\\text{max}} = \\frac{P_{\\text{Markt}} - K_{\\text{prod}} - K_{\\text{fix}}}{k_{\\text{var}}}",
+        "erklaerung": "Transportkostenmodellierung und maximaler wirtschaftlicher Lieferradius Rmax von mineralischen Massenbaustoffen in Abhängigkeit von Marktpreis, Produktionskosten und entfernungsabhängigen Speditionskosten.",
+        "quelle": "Lehrmodell (Transportkosten)"
+      }
+    ]
+  }
+}

@@ -3,6 +3,8 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React from 'react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Calculator, Droplets } from 'lucide-react';
+import inhalt from '@/content/bpverkehrswegebau/TiefbauTab.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface TiefbauTabProps {
   setTiefbauArea: React.Dispatch<React.SetStateAction<number>>;
@@ -23,18 +25,13 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
       {/* Intro */}
       <div className="bg-off-white p-4 rounded-xl border border-home-grau/30">
         <h3 className="font-bold text-slate-900 text-sm uppercase tracking-wider mb-2 flex items-center gap-1.5">
-          <Droplets className="text-shiraz" size={18} /> Tiefbau-Systemtechnik &amp; Urban Drainage (DWA &amp; DIN)
-        </h3>
-        <p className="text-xs text-slate-800 leading-relaxed">
-          Der moderne Tiefbau umfasst sämtliche baulichen Maßnahmen unterhalb der Erdoberfläche. Neben der Bodenstabilisierung bildet das <strong>Wassermanagement (Abflusstransport, Rückhaltung, Versickerung und Reinigung)</strong> nach <strong>DIN EN 752</strong> und den relevanten <strong>DWA-Regelwerken (z.B. DWA-A 138)</strong> das schützende Rückgrat urbaner Infrastrukturen. Die hier dargelegten Systeme decken die gesamte Palette modernen Tiefbaumaterials ab.
-        </p>
+          <Droplets className="text-shiraz" size={18} /><MdText text={inhalt.texte.tiefbauSystemtechnikUrbanDrainage} /></h3>
+        <p className="text-xs text-slate-800 leading-relaxed"><MdText text={inhalt.texte.derModerneTiefbauUmfasst} /></p>
       </div>
 
       {/* SECTION 1: Die 10 Produktwelten des Tief- & Straßenbaus */}
       <div>
-        <h3 className="text-sm font-bold uppercase tracking-wider text-text-main mb-4 border-b border-zinc-200 pb-1.5">
-          I. Produktbereiche &amp; Technische Systeme im Tief- und Straßenbau
-        </h3>
+        <h3 className="text-sm font-bold uppercase tracking-wider text-text-main mb-4 border-b border-zinc-200 pb-1.5"><MdText text={inhalt.texte.iProduktbereicheTechnischeSysteme} /></h3>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           
@@ -42,16 +39,14 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs flex flex-col justify-between">
             <div>
               <h4 className="font-extrabold text-sm text-text-main border-b border-zinc-100 pb-2 mb-3 flex items-center justify-between">
-                <span>1. Anschlusssysteme &amp; Formteile</span>
-                <span className="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono font-bold">DIN EN 1401-1</span>
+                <span><MdText text={inhalt.texte.t1AnschlusssystemeFormteile} /></span>
+                <span className="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono font-bold"><MdText text={inhalt.texte.dinEn14011} /></span>
               </h4>
-              <p className="text-xs text-text-main/75 leading-relaxed mb-3">
-                Gas- und wasserdichte Einbindungen und Übergänge in bestehende Rohr- und Kanalsysteme für dauerhafte Dichtigkeit bei Druckbeaufschlagung und Erdbewegungen.
-              </p>
+              <p className="text-xs text-text-main/75 leading-relaxed mb-3"><MdText text={inhalt.texte.gasUndWasserdichteEinbindungen} /></p>
               <ul className="space-y-1.5 text-[11px] text-text-main/80">
-                <li>• <strong>Übergangskupplungen:</strong> Manschetten mit Edelstahlbändern zur radial kraftschlüssigen und dichten Verbindung unterschiedlicher Rohrmaterialien (z.B. Steinzeug auf PVC).</li>
-                <li>• <strong>Sattelstücke &amp; Anschlussmuffen:</strong> Nachträgliche 90°- oder 45°-Anschlüsse an bestehende Hauptkanäle ohne Rohraustausch.</li>
-                <li>• <strong>Abzweig-Elemente:</strong> 45°- und 87°-Formstücke mit montagefreundlicher Steckmuffensystematik und eingelegten EPDM-Lippendichtungen.</li>
+                <li><MdText text={inhalt.texte.übergangskupplungenManschettenMitEdelsta} /></li>
+                <li><MdText text={inhalt.texte.sattelstückeAnschlussmuffenNachträgliche} /></li>
+                <li><MdText text={inhalt.texte.abzweigElemente45Und} /></li>
               </ul>
             </div>
           </div>
@@ -60,16 +55,14 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs flex flex-col justify-between">
             <div>
               <h4 className="font-extrabold text-sm text-text-main border-b border-zinc-100 pb-2 mb-3 flex items-center justify-between">
-                <span>2. Drainage &amp; Baugrunddränung</span>
-                <span className="text-[10px] bg-slate-100 text-slate-800 px-2 py-0.5 rounded font-mono font-bold">DIN 4095 / DIN 4262-1</span>
+                <span><MdText text={inhalt.texte.t2DrainageBaugrunddränung} /></span>
+                <span className="text-[10px] bg-slate-100 text-slate-800 px-2 py-0.5 rounded font-mono font-bold"><MdText text={inhalt.texte.din4095Din4262} /></span>
               </h4>
-              <p className="text-xs text-text-main/75 leading-relaxed mb-3">
-                Sicheres Abführen von Schichten- und Sickerwasser zur Vermeidung von hydrostatischem Druck auf Kellerwände, Fundamente und Verkehrsträger.
-              </p>
+              <p className="text-xs text-text-main/75 leading-relaxed mb-3"><MdText text={inhalt.texte.sicheresAbführenVonSchichten} /></p>
               <ul className="space-y-1.5 text-[11px] text-text-main/80">
-                <li>• <strong>Sickerrohre und Dränleitungen:</strong> Vollsickerrohre (TP), Teilsickerrohre (LP) mit profilierten Wassereintrittsschlitzen zur effektiven Wasseraufnahme im Straßenbau.</li>
-                <li>• <strong>Dränageschächte / Spülschächte:</strong> Kontrollschächte DN 315 / 400 mit Sandfang zur Reinigung der Dränstränge durch Spülung.</li>
-                <li>• <strong>Geoverbundstoffe:</strong> Dränmatten mit Noppenbahn und aufkaschiertem Filtervlies zur direkten Wanddränung an Kellergeschossen.</li>
+                <li><MdText text={inhalt.texte.sickerrohreUndDränleitungenVollsickerroh} /></li>
+                <li><MdText text={inhalt.texte.dränageschächteSpülschächteKontrollschäc} /></li>
+                <li><MdText text={inhalt.texte.geoverbundstoffeDränmattenMitNoppenbahn} /></li>
               </ul>
             </div>
           </div>
@@ -78,16 +71,14 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs flex flex-col justify-between">
             <div>
               <h4 className="font-extrabold text-sm text-text-main border-b border-zinc-100 pb-2 mb-3 flex items-center justify-between">
-                <span>3. Regen- &amp; Abwasser-Kanalisation</span>
-                <span className="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono font-bold">DIN EN 1852 / DIN EN 476</span>
+                <span><MdText text={inhalt.texte.t3RegenAbwasserKanalisation} /></span>
+                <span className="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono font-bold"><MdText text={inhalt.texte.dinEn1852Din} /></span>
               </h4>
-              <p className="text-xs text-text-main/75 leading-relaxed mb-3">
-                Freispiegelleitungen zur gesicherten hydraulischen Ableitung großer Wassermassen mit hohen Ringsteifigkeiten (S_N ≥ 8 kN/m²).
-              </p>
+              <p className="text-xs text-text-main/75 leading-relaxed mb-3"><MdText text={inhalt.texte.freispiegelleitungenZurGesichertenHydrau} /></p>
               <ul className="space-y-1.5 text-[11px] text-text-main/80">
-                <li>• <strong>Vollwand-Kanalrohre (PP/PVC):</strong> Strukturstabile Rohre (KG / KG2000) für Schwerlastbereiche (SLW 60). Extrem glatte Innenfläche zur Minimierung von Inkrustationen.</li>
-                <li>• <strong>Stahlbetonrohre:</strong> Für sehr große Nennweiten (DN &gt; 1200) bei maximaler Erdauflast und statischer Beanspruchung.</li>
-                <li>• <strong>Rückstauverschlüsse:</strong> Klappensysteme (DIN EN 13564) zum Schutz tiefliegender Ablaufstellen vor drückendem Abwasser aus dem Sammelkanal.</li>
+                <li><MdText text={inhalt.texte.vollwandKanalrohrePpPvc} /></li>
+                <li><MdText text={inhalt.texte.stahlbetonrohreFürSehrGroße} /></li>
+                <li><MdText text={inhalt.texte.rückstauverschlüsseKlappensystemeDinEn} /></li>
               </ul>
             </div>
           </div>
@@ -96,16 +87,14 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs flex flex-col justify-between">
             <div>
               <h4 className="font-extrabold text-sm text-text-main border-b border-zinc-100 pb-2 mb-3 flex items-center justify-between">
-                <span>4. Ökoprofile &amp; Funktionspflaster</span>
+                <span><MdText text={inhalt.texte.t4ÖkoprofileFunktionspflaster} /></span>
                 <span className="text-[10px] bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded font-mono font-bold">FGSV M-VV</span>
               </h4>
-              <p className="text-xs text-text-main/75 leading-relaxed mb-3">
-                Hydraulisch optimierte Betonwaren und Beläge zur gezielten dezentralen Versickerung auf Verkehrsflächen (Flächenentsiegelung).
-              </p>
+              <p className="text-xs text-text-main/75 leading-relaxed mb-3"><MdText text={inhalt.texte.hydraulischOptimierteBetonwarenUnd} /></p>
               <ul className="space-y-1.5 text-[11px] text-text-main/80">
-                <li>• <strong>Haufwerksporige Sickersteine:</strong> Gefügedichte Baustoffe mit definiertem Porenvolumen, durch welche das Niederschlagswasser vertikal direkt absickert.</li>
-                <li>• <strong>Pflaster mit Sickerfuge:</strong> Steinkonstruktionen mit verbreiterten Abstandshaltern (z.B. Fugenbreite ≥ 10 mm), verfüllt mit filterndem Splitt-Substrat.</li>
-                <li>• <strong>Rasengittersteine:</strong> Hoher Grünflächenanteil für landwirtschaftlichen Wegebau und Parkplätze bei hoher PKW-Tragfähigkeit.</li>
+                <li><MdText text={inhalt.texte.haufwerksporigeSickersteineGefügedichteB} /></li>
+                <li><MdText text={inhalt.texte.pflasterMitSickerfugeSteinkonstruktionen} /></li>
+                <li><MdText text={inhalt.texte.rasengittersteineHoherGrünflächenanteilF} /></li>
               </ul>
             </div>
           </div>
@@ -114,16 +103,14 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs flex flex-col justify-between">
             <div>
               <h4 className="font-extrabold text-sm text-text-main border-b border-zinc-100 pb-2 mb-3 flex items-center justify-between">
-                <span>5. Geomembranen &amp; Geotextilien</span>
-                <span className="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono font-bold">DIN EN 13249</span>
+                <span><MdText text={inhalt.texte.t5GeomembranenGeotextilien} /></span>
+                <span className="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono font-bold"><MdText text={inhalt.texte.dinEn13249} /></span>
               </h4>
-              <p className="text-xs text-text-main/75 leading-relaxed mb-3">
-                Polymere Planstoffe (Vliese, Gewebe, Gitter) zur Stabilisierung, Trennung und mechanischen Filtration im Bodenaufbau.
-              </p>
+              <p className="text-xs text-text-main/75 leading-relaxed mb-3"><MdText text={inhalt.texte.polymerePlanstoffeVlieseGewebe} /></p>
               <ul className="space-y-1.5 text-[11px] text-text-main/80">
-                <li>• <strong>Filtervliese:</strong> Mechanisch vernadelte Endlosfasern (Polypropylen) mit hoher Reißdehnbarkeit. Sie verhindern den Eintrag von Feinkorn in Sickerschichten (Filterstabilität).</li>
-                <li>• <strong>Bewehrungs-Geogitter:</strong> Monofile Zugkonstruktionen (PET/PP) zur Erhöhung der Tragfähigkeit von ungebundenen Schotterschichten.</li>
-                <li>• <strong>Bändchengewebe:</strong> Extrem zugfeste Gewebebahnen zur Trennung minderwertigen Baugrundes von der Frostschutzschicht.</li>
+                <li><MdText text={inhalt.texte.filtervlieseMechanischVernadelteEndlosfa} /></li>
+                <li><MdText text={inhalt.texte.bewehrungsGeogitterMonofileZugkonstrukti} /></li>
+                <li><MdText text={inhalt.texte.bändchengewebeExtremZugfesteGewebebahnen} /></li>
               </ul>
             </div>
           </div>
@@ -132,16 +119,14 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs flex flex-col justify-between">
             <div>
               <h4 className="font-extrabold text-sm text-text-main border-b border-zinc-100 pb-2 mb-3 flex items-center justify-between">
-                <span>6. Hangbefestigung &amp; Abstützungen</span>
+                <span><MdText text={inhalt.texte.t6HangbefestigungAbstützungen} /></span>
                 <span className="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono font-bold">Eurocode 7</span>
               </h4>
-              <p className="text-xs text-text-main/75 leading-relaxed mb-3">
-                Konstruktionen zum Abfangen von Erddruck bei Geländesprüngen, Böschungsflächen und im gestalterischen Landschaftsbau.
-              </p>
+              <p className="text-xs text-text-main/75 leading-relaxed mb-3"><MdText text={inhalt.texte.konstruktionenZumAbfangenVon} /></p>
               <ul className="space-y-1.5 text-[11px] text-text-main/80">
-                <li>• <strong>Mauerscheiben &amp; L-Steine:</strong> Monolithische Stahlbetonbauteile nach statischer Bemessung für Lastfälle mit und ohne PKW-Auffahrgeschwindigkeiten.</li>
-                <li>• <strong>Gabionen (Steinkörbe):</strong> Hochwertig verzinkte Stahlgitterkörbe zur flexiblen, wasserdurchlässigen Schwerkraft-Stützmauer-Konstruktion.</li>
-                <li>• <strong>Böschungs- &amp; Florgitter:</strong> Hohlsteine zur mechanischen Sicherung von Steilhängen mit der Option zur anschließenden Begrünung.</li>
+                <li><MdText text={inhalt.texte.mauerscheibenLSteineMonolithische} /></li>
+                <li><MdText text={inhalt.texte.gabionenSteinkörbeHochwertigVerzinkte} /></li>
+                <li><MdText text={inhalt.texte.böschungsFlorgitterHohlsteineZur} /></li>
               </ul>
             </div>
           </div>
@@ -150,16 +135,14 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs flex flex-col justify-between">
             <div>
               <h4 className="font-extrabold text-sm text-text-main border-b border-zinc-100 pb-2 mb-3 flex items-center justify-between">
-                <span>7. Kabelschutz- &amp; Leitungsrohre</span>
-                <span className="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono font-bold">DIN EN 61386-24</span>
+                <span><MdText text={inhalt.texte.t7KabelschutzLeitungsrohre} /></span>
+                <span className="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono font-bold"><MdText text={inhalt.texte.dinEn6138624} /></span>
               </h4>
-              <p className="text-xs text-text-main/75 leading-relaxed mb-3">
-                Sichere Verlegung von Strom-, Telekommunikations- und Glasfasertrassen im Erdreich mit mechanischem Schutz.
-              </p>
+              <p className="text-xs text-text-main/75 leading-relaxed mb-3"><MdText text={inhalt.texte.sichereVerlegungVonStrom} /></p>
               <ul className="space-y-1.5 text-[11px] text-text-main/80">
-                <li>• <strong>Verbund-Kabelschutzrohre (PE-HD):</strong> Gewellter Außenmantel für Biegsamkeit und hohe Ringsteifigkeit, innen glatte Gleitschicht für reibungsfreien Kabeleinzug.</li>
-                <li>• <strong>Kabelabdeckplatten &amp; Hauben:</strong> Warnende Kunststoffplatten zum Schutz erdverlegter Starkstromkabel vor Baggerzähnen bei späteren Tiefbauarbeiten.</li>
-                <li>• <strong>Mehrsparten-Hauseinführungen:</strong> Gas- und druckwasserdichte Bündeldurchführungen durch Bodenplatten und Außenwände.</li>
+                <li><MdText text={inhalt.texte.verbundKabelschutzrohrePeHd} /></li>
+                <li><MdText text={inhalt.texte.kabelabdeckplattenHaubenWarnendeKunststo} /></li>
+                <li><MdText text={inhalt.texte.mehrspartenHauseinführungenGasUnd} /></li>
               </ul>
             </div>
           </div>
@@ -168,16 +151,14 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs flex flex-col justify-between">
             <div>
               <h4 className="font-extrabold text-sm text-text-main border-b border-zinc-100 pb-2 mb-3 flex items-center justify-between">
-                <span>8. Linien- &amp; Punktentwässerung</span>
-                <span className="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono font-bold">DIN EN 1433 / DIN 4052</span>
+                <span><MdText text={inhalt.texte.t8LinienPunktentwässerung} /></span>
+                <span className="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono font-bold"><MdText text={inhalt.texte.dinEn1433Din} /></span>
               </h4>
-              <p className="text-xs text-text-main/75 leading-relaxed mb-3">
-                Schnelle Entwässerung versiegelter und geneigter Verkehrsflächen zur Vermeidung von Aquaplaning und Überflutung.
-              </p>
+              <p className="text-xs text-text-main/75 leading-relaxed mb-3"><MdText text={inhalt.texte.schnelleEntwässerungVersiegelterUnd} /></p>
               <ul className="space-y-1.5 text-[11px] text-text-main/80">
-                <li>• <strong>Entwässerungsrinnen:</strong> Rinnenkörper aus verschleißfestem Polymerbeton oder faserarmierter Polyethylen-Verbindung. Rostaufsätze aus Sphäroguss oder Edelstahl bis Klasse F900.</li>
-                <li>• <strong>Hofabläufe &amp; Straßenabläufe:</strong> Standardisierte Punktentwässerungen (Gully DN 450) mit integriertem Schlammeimer zur mechanischen Feststoff-Vorreinigung.</li>
-                <li>• <strong>Schlitzrinnen:</strong> Extrem unauffällige, flächenbündige Schlitzsysteme für repräsentative Fußgänger- und Marktplatzflächen.</li>
+                <li><MdText text={inhalt.texte.entwässerungsrinnenRinnenkörperAusVersch} /></li>
+                <li><MdText text={inhalt.texte.hofabläufeStraßenabläufeStandardisierteP} /></li>
+                <li><MdText text={inhalt.texte.schlitzrinnenExtremUnauffälligeFlächenbü} /></li>
               </ul>
             </div>
           </div>
@@ -186,16 +167,14 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs flex flex-col justify-between">
             <div>
               <h4 className="font-extrabold text-sm text-text-main border-b border-zinc-100 pb-2 mb-3 flex items-center justify-between">
-                <span>9. Regenwasser-Bewirtschaftung</span>
-                <span className="text-[10px] bg-slate-100 text-slate-800 px-2 py-0.5 rounded font-mono font-bold">DWA-A 138 / DWA-M 153</span>
+                <span><MdText text={inhalt.texte.t9RegenwasserBewirtschaftung} /></span>
+                <span className="text-[10px] bg-slate-100 text-slate-800 px-2 py-0.5 rounded font-mono font-bold"><MdText text={inhalt.texte.dwaA138Dwa} /></span>
               </h4>
-              <p className="text-xs text-text-main/75 leading-relaxed mb-3">
-                Moderne Regenrückhaltung, Versickerung und kontrollierte Einleitung zur Entlastung des urbanen Mischwassernetzes.
-              </p>
+              <p className="text-xs text-text-main/75 leading-relaxed mb-3"><MdText text={inhalt.texte.moderneRegenrückhaltungVersickerungUnd} /></p>
               <ul className="space-y-1.5 text-[11px] text-text-main/80">
-                <li>• <strong>Füllkörperrigolen (PP Sickerboxen):</strong> Kubische Netzwerkkörper mit bis zu 95% freiem Hohlvolumen. Spül- und kamerabefahrbar zur Funktionsüberwachung.</li>
-                <li>• <strong>Regenwasserrückhaltebecken &amp; Zisternen:</strong> Unterirdische Staukanäle und Betongroßbehälter zur Sammlung und gedrosselten Abgabe.</li>
-                <li>• <strong>Koaleszenzabscheider:</strong> Abscheideanlagen für mineralische Leichtflüssigkeiten (Öl/Benzin) zur Vorbehandlung kritischer Straßenabwässer vor Versickerung.</li>
+                <li><MdText text={inhalt.texte.füllkörperrigolenPpSickerboxenKubische} /></li>
+                <li><MdText text={inhalt.texte.regenwasserrückhaltebeckenZisternenUnter} /></li>
+                <li><MdText text={inhalt.texte.koaleszenzabscheiderAbscheideanlagenFürM} /></li>
               </ul>
             </div>
           </div>
@@ -204,16 +183,14 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
           <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs flex flex-col justify-between">
             <div>
               <h4 className="font-extrabold text-sm text-text-main border-b border-zinc-100 pb-2 mb-3 flex items-center justify-between">
-                <span>10. Sanierungsprodukte im Straßenbau</span>
+                <span><MdText text={inhalt.texte.t10SanierungsprodukteImStraßenbau} /></span>
                 <span className="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono font-bold">ZTV Fug-StB</span>
               </h4>
-              <p className="text-xs text-text-main/75 leading-relaxed mb-3">
-                Spezialwerkstoffe zur dauerhaften Instandsetzung von Rissen, Schlaglöchern und Schachtabdeckungen im Asphalt- und Betonstraßenbau.
-              </p>
+              <p className="text-xs text-text-main/75 leading-relaxed mb-3"><MdText text={inhalt.texte.spezialwerkstoffeZurDauerhaftenInstandse} /></p>
               <ul className="space-y-1.5 text-[11px] text-text-main/80">
-                <li>• <strong>Bitumen-Schmelzbänder (Rissbänder):</strong> Heiß oder kalt verlegbare Anschlussbänder zur dichten Verbindung von neuem Asphalt an Ränder und Schächte (Nahtausbildung).</li>
-                <li>• <strong>Reparaturmörtel &amp; Verguss:</strong> Schachtrahmen-Reguliermörtel mit sehr hoher Frühfestigkeit (frühe Verkehrsfreigabe nach Herstellerangabe).</li>
-                <li>• <strong>Kaltasphalt (Reaktiv-Mischgut):</strong> Gesteinsmischung mit polymerem Bindemittel, härtet unter Feuchtigkeitseinwirkung für eilige Schadstellenbeseitigungen aus.</li>
+                <li><MdText text={inhalt.texte.bitumenSchmelzbänderRissbänderHeiß} /></li>
+                <li><MdText text={inhalt.texte.reparaturmörtelVergussSchachtrahmenRegul} /></li>
+                <li><MdText text={inhalt.texte.kaltasphaltReaktivMischgutGesteinsmischu} /></li>
               </ul>
             </div>
           </div>
@@ -227,11 +204,8 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
         {/* Rigolenberechnung (Left: Controls, Right: Result) */}
         <div className="lg:col-span-12 bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs">
           <h4 className="font-extrabold text-sm text-text-main mb-2 flex items-center gap-1.5 border-b border-zinc-100 pb-2">
-            <Calculator size={16} className="text-shiraz" /> II. Interaktives Planungs-Muster: Rigolenbemessung nach DWA-A 138
-          </h4>
-          <p className="text-xs text-text-main/70 leading-relaxed mb-4">
-            Die Bemessung eines unterirdischen Sickerelements (Rigole) basiert auf der Niederschlagsfläche A_E, dem spezifischen Spitzenregen r_D und der Infiltration in das umgebende Erdreich. Der vereinfachte Rechner schätzt das erforderliche Speichervolumen ab (Lehrmodell; Bemessung nach DWA-A 138).
-          </p>
+            <Calculator size={16} className="text-shiraz" /><MdText text={inhalt.texte.iiInteraktivesPlanungsMuster} /></h4>
+          <p className="text-xs text-text-main/70 leading-relaxed mb-4"><MdText text={inhalt.texte.dieBemessungEinesUnterirdischen} /></p>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             {/* Controls */}
@@ -239,7 +213,7 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
               {/* Area */}
               <div className="space-y-1">
                 <div className="flex justify-between text-xs font-semibold text-text-main">
-                  <span>Angeschlossene Auffangfläche (A_E):</span>
+                  <span><MdText text={inhalt.texte.angeschlosseneAuffangflächeAE} /></span>
                   <span className="font-mono text-zinc-900 font-bold">{formatDeWert(tiefbauArea)} m²</span>
                 </div>
                 <input 
@@ -256,7 +230,7 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
               {/* Runoff coeff */}
               <div className="space-y-1">
                 <div className="flex justify-between text-xs font-semibold text-text-main">
-                  <span>Abflussbeiwert (ψ):</span>
+                  <span><MdText text={inhalt.texte.abflussbeiwert} /></span>
                   <span className="font-mono text-zinc-900 font-bold">{formatDeZahl(tiefbauPsi, 2)}</span>
                 </div>
                 <select 
@@ -274,7 +248,7 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
               {/* Rain intensity */}
               <div className="space-y-1">
                 <div className="flex justify-between text-xs font-semibold text-text-main">
-                  <span>Bemessungsregen-Intensität (r_D):</span>
+                  <span><MdText text={inhalt.texte.bemessungsregenIntensitätRD} /></span>
                   <span className="font-mono text-zinc-900 font-bold">{formatDeWert(tiefbauRain)} l/(s·ha)</span>
                 </div>
                 <input 
@@ -291,7 +265,7 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
               {/* Duration */}
               <div className="space-y-1">
                 <div className="flex justify-between text-xs font-semibold text-text-main border-none">
-                  <span>Regendauer (t_d):</span>
+                  <span><MdText text={inhalt.texte.regendauerTD} /></span>
                   <span className="font-mono text-zinc-900 font-bold">{formatDeWert(tiefbauDuration)} min</span>
                 </div>
                 <input 
@@ -308,7 +282,7 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
               {/* Storage Type Coefficient */}
               <div className="space-y-1">
                 <div className="flex justify-between text-xs font-semibold text-text-main border-none">
-                  <span>Sickerelement Typ (Speichereffizienz):</span>
+                  <span><MdText text={inhalt.texte.sickerelementTypSpeichereffizienz} /></span>
                   <span className="font-mono text-zinc-900 font-bold">{formatDeZahl((tiefbauFss * 100), 0)}% Hohlraum</span>
                 </div>
                 <div className="grid grid-cols-2 gap-2 mt-1">
@@ -365,10 +339,9 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
                     
                     {/* Zufluss-Details */}
                     <div className="bg-zinc-50 p-4 rounded-xl border border-zinc-200">
-                      <span className="text-[10px] uppercase font-mono font-bold text-zinc-500">Hydraulischer Zufluss</span>
+                      <span className="text-[10px] uppercase font-mono font-bold text-zinc-500"><MdText text={inhalt.texte.hydraulischerZufluss} /></span>
                       <div className="text-xl font-bold text-zinc-900 font-mono mt-1">{formatDeZahl(v_zu_m3, 2)} m³</div>
-                      <p className="text-[10px] text-zinc-500 leading-normal mt-1 w-full">
-                        Spitzenzuflussrate Q_in beträgt <strong className="font-mono">{formatDeZahl(q_in, 1)} l/s</strong> über die reduzierte Auffangfläche A_red = {formatDeZahl(a_red, 0)} m².
+                      <p className="text-[10px] text-zinc-500 leading-normal mt-1 w-full"><MdText text={inhalt.texte.spitzenzuflussrateQInBeträgt} /><strong className="font-mono">{formatDeZahl(q_in, 1)} l/s</strong><MdText text={inhalt.texte.überDieReduzierteAuffangfläche} />{formatDeZahl(a_red, 0)} m².
                       </p>
                     </div>
 
@@ -376,8 +349,7 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
                     <div className="bg-zinc-50 p-4 rounded-xl border border-zinc-200">
                       <span className="text-[10px] uppercase font-mono font-bold text-zinc-500">Boden-Infiltration</span>
                       <div className="text-xl font-bold text-zinc-900 font-mono mt-1">{formatDeZahl(v_sicker_m3, 3)} m³</div>
-                      <p className="text-[10px] text-zinc-500 leading-normal mt-1 w-full">
-                        Infiltration über Sohle (A_soh ≈ {formatDeZahl(a_sohle, 1)} m²) bei Sand/Schluff-Boden (k_f = 10⁻⁵ m/s): <strong className="font-mono">{formatDeZahl(q_sicker_l_s, 3)} l/s</strong>.
+                      <p className="text-[10px] text-zinc-500 leading-normal mt-1 w-full"><MdText text={inhalt.texte.infiltrationÜberSohleA} />{formatDeZahl(a_sohle, 1)}<MdText text={inhalt.texte.mBeiSandSchluff} /><strong className="font-mono">{formatDeZahl(q_sicker_l_s, 3)} l/s</strong>.
                       </p>
                     </div>
 
@@ -387,44 +359,39 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
                   <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 relative overflow-hidden">
                     <div className="flex justify-between items-start">
                       <div>
-                        <span className="text-[10px] uppercase font-mono font-bold text-shiraz">Erforderliches Rigolen-Bruttovolumen (V_rig)</span>
+                        <span className="text-[10px] uppercase font-mono font-bold text-shiraz"><MdText text={inhalt.texte.erforderlichesRigolenBruttovolumenV} /></span>
                         <div className="text-3xl font-extrabold text-slate-900 font-mono mt-1">{formatDeZahl(v_speicher_m3, 2)} m³</div>
                       </div>
                       <div className="text-right text-[10px] text-slate-800 font-mono">
-                        <div>DWA-A 138 Planungsentwurf</div>
-                        <div>Sicherheitsbeiwert f_S = 1,1 integriert</div>
+                        <div><MdText text={inhalt.texte.dwaA138Planungsentwurf} /></div>
+                        <div><MdText text={inhalt.texte.sicherheitsbeiwertFS1} /></div>
                       </div>
                     </div>
 
                     {/* Statisches Resultat / Empfehlung */}
                     <div className="border-t border-home-grau/30 pt-3 mt-3 text-xs leading-relaxed text-slate-800 grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div>
-                        <p className="font-bold">Konstruktive Empfehlung:</p>
+                        <p className="font-bold"><MdText text={inhalt.texte.konstruktiveEmpfehlung} /></p>
                         {tiefbauFss === 0.95 ? (
-                          <p className="text-[11px] mt-0.5 text-slate-900 font-medium">
-                            Verwendung von PP-Sickerboxen (Rigolenfüllkörper): <span className="font-mono font-bold text-slate-800">{num_boxes} Standard-Sickerboxen</span> (0,24m³ Nutzkapazität je Box) mit umhüllendem Filtervlies (Geotextil) erforderlich.
-                          </p>
+                          <p className="text-[11px] mt-0.5 text-slate-900 font-medium"><MdText text={inhalt.texte.verwendungVonPpSickerboxen} /><span className="font-mono font-bold text-slate-800">{num_boxes} Standard-Sickerboxen</span><MdText text={inhalt.texte.t024mNutzkapazitätJe} /></p>
                         ) : (
-                          <p className="text-[11px] mt-0.5 text-slate-900 font-medium">
-                            Verwendung eines Kiesgrabens (Körnung 16/32, Hohlraumfaktor s_R = 0,3): Der Kieskörper benötigt ein Bruttovolumen von ca. <span className="font-mono font-bold text-slate-800">{formatDeZahl(v_speicher_m3, 1)} m³</span>, davon speicherwirksam (Porenraum) ca. <span className="font-mono font-bold text-slate-800">{formatDeZahl(v_nutz_m3, 1)} m³</span>.
+                          <p className="text-[11px] mt-0.5 text-slate-900 font-medium"><MdText text={inhalt.texte.verwendungEinesKiesgrabensKörnung} /><span className="font-mono font-bold text-slate-800">{formatDeZahl(v_speicher_m3, 1)} m³</span><MdText text={inhalt.texte.davonSpeicherwirksamPorenraumCa} /><span className="font-mono font-bold text-slate-800">{formatDeZahl(v_nutz_m3, 1)} m³</span>.
                           </p>
                         )}
                       </div>
                       <div className="font-mono text-[11px] bg-white/60 p-2.5 rounded border border-home-grau/30 flex flex-col justify-center">
                         <div>Sohlentiefe: <span className="font-bold">0,60 m</span></div>
                         <div>Breite: <span className="font-bold">1,20 m</span></div>
-                        <div>Erforderliche Länge: <span className="font-bold text-slate-800">{formatDeZahl(l_rig, 2)} m</span></div>
+                        <div><MdText text={inhalt.texte.erforderlicheLänge} /><span className="font-bold text-slate-800">{formatDeZahl(l_rig, 2)} m</span></div>
                       </div>
                     </div>
                   </div>
 
                   {/* Formel-Herleitung */}
                   <div className="p-3 text-[10.5px] text-text-main/60 bg-zinc-50 border border-zinc-200 rounded-lg">
-                    <span className="font-bold text-text-main block mb-1">DWA-A 138 Speicherbemessungsgleichung:</span>
+                    <span className="font-bold text-text-main block mb-1"><MdText text={inhalt.texte.dwaA138Speicherbemessungsgleichung} /></span>
                     <FormulaText text="V_{rig} = \frac{A_{red} \cdot 10^{-7} \cdot r_D \cdot t_d \cdot 60 - A_{sohle} \cdot k_f \cdot t_d \cdot 60}{s_R}" />
-                    <span className="text-[10px] block mt-1 leading-normal">
-                      Hierbei steht s_R für den systembedingten Hohlraumgehalt, der bei synthetischen Füllkörperblöcken (Hohlraumboxen) bis zu 95% beträgt, wohingegen Kiesträgerbetten nur etwa 30% Hohlvolumen einbringen können.
-                    </span>
+                    <span className="text-[10px] block mt-1 leading-normal"><MdText text={inhalt.texte.hierbeiStehtSR} /></span>
                   </div>
 
                 </div>

@@ -24,6 +24,8 @@ import {
 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { termsData } from './daten';
+import inhalt from '@/content/ki/ueberblick/KernbegriffeTab.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface KernbegriffeTabProps {
   detailSubTab: 'funktionsweise' | 'beispiele' | 'vergleich' | 'formel' | 'risiken';
@@ -41,50 +43,36 @@ export default function KernbegriffeTab({ detailSubTab, selectedExampleIndex, se
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
         <div className="flex items-center justify-between flex-wrap gap-2">
           <h3 className="text-base font-bold text-text-main flex items-center gap-2">
-            <Layers className="text-shiraz" size={20} />
-            Das Zwiebelschalen-Modell: Wie die Begriffe zusammenhängen
-          </h3>
-          <span className="text-[11px] font-mono bg-shiraz/10 text-shiraz px-2.5 py-1 rounded-full font-bold">
-            Keine Synonyme!
-          </span>
+            <Layers className="text-shiraz" size={20} /><MdText text={inhalt.texte.dasZwiebelschalenModellWie} /></h3>
+          <span className="text-[11px] font-mono bg-shiraz/10 text-shiraz px-2.5 py-1 rounded-full font-bold"><MdText text={inhalt.texte.keineSynonyme} /></span>
         </div>
 
-        <p className="text-xs text-text-main/80 leading-relaxed">
-          Oft werden die Begriffe <em>Künstliche Intelligenz</em>, <em>Machine Learning</em> und <em>Neuronale Netze</em> durcheinandergeworfen. In Wahrheit verhalten sie sich wie die Schalen einer Zwiebel – von der umfassenden Idee bis zum konkreten Spezialwerkzeug:
-        </p>
+        <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.oftWerdenDieBegriffe} /></p>
 
         {/* Grafisches Schichten-Schema */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-3 pt-2">
           <div className="p-4 rounded-xl border border-blue-200 bg-blue-50/50 space-y-1.5">
-            <span className="text-[10px] font-black uppercase text-blue-700 tracking-wider">Ebene 1 (Äußerste Schale)</span>
-            <h4 className="font-bold text-sm text-blue-900">Künstliche Intelligenz (KI)</h4>
-            <p className="text-xs text-blue-800/80 leading-snug">
-              Das Gesamtfeld: Jede Maschine, die menschenähnliche Problemlösungen zeigt (auch einfache Wenn-Dann-Logiken).
-            </p>
+            <span className="text-[10px] font-black uppercase text-blue-700 tracking-wider"><MdText text={inhalt.texte.ebene1ÄußersteSchale} /></span>
+            <h4 className="font-bold text-sm text-blue-900"><MdText text={inhalt.texte.künstlicheIntelligenzKi} /></h4>
+            <p className="text-xs text-blue-800/80 leading-snug"><MdText text={inhalt.texte.dasGesamtfeldJedeMaschine} /></p>
           </div>
 
           <div className="p-4 rounded-xl border border-indigo-200 bg-indigo-50/50 space-y-1.5">
-            <span className="text-[10px] font-black uppercase text-indigo-700 tracking-wider">Ebene 2 (Teilmenge)</span>
-            <h4 className="font-bold text-sm text-indigo-900">Machine Learning (ML)</h4>
-            <p className="text-xs text-indigo-800/80 leading-snug">
-              Lernen aus Daten: Algorithmen finden mathematische Muster in Beispielen, ohne fest verdrahtete Regeln.
-            </p>
+            <span className="text-[10px] font-black uppercase text-indigo-700 tracking-wider"><MdText text={inhalt.texte.ebene2Teilmenge} /></span>
+            <h4 className="font-bold text-sm text-indigo-900"><MdText text={inhalt.texte.machineLearningMl} /></h4>
+            <p className="text-xs text-indigo-800/80 leading-snug"><MdText text={inhalt.texte.lernenAusDatenAlgorithmen} /></p>
           </div>
 
           <div className="p-4 rounded-xl border border-purple-200 bg-purple-50/50 space-y-1.5">
-            <span className="text-[10px] font-black uppercase text-purple-700 tracking-wider">Ebene 3 (Spezialisierung)</span>
-            <h4 className="font-bold text-sm text-purple-900">Deep Learning</h4>
-            <p className="text-xs text-purple-800/80 leading-snug">
-              Mehrschichtige neuronale Netze für Rohdaten wie Fotos, Punktwolken oder Schwingungsspektren.
-            </p>
+            <span className="text-[10px] font-black uppercase text-purple-700 tracking-wider"><MdText text={inhalt.texte.ebene3Spezialisierung} /></span>
+            <h4 className="font-bold text-sm text-purple-900"><MdText text={inhalt.texte.deepLearning} /></h4>
+            <p className="text-xs text-purple-800/80 leading-snug"><MdText text={inhalt.texte.mehrschichtigeNeuronaleNetzeFür} /></p>
           </div>
 
           <div className="p-4 rounded-xl border border-shiraz/30 bg-shiraz/5 space-y-1.5">
-            <span className="text-[10px] font-black uppercase text-shiraz tracking-wider">Ebene 4 (Moderner Kern)</span>
-            <h4 className="font-bold text-sm text-slate-900">LLMs & Generative KI</h4>
-            <p className="text-xs text-slate-700 leading-snug">
-              Transformer-Modelle, die Sprache, Normen, Tabellen oder Programmcode verstehen und neu generieren.
-            </p>
+            <span className="text-[10px] font-black uppercase text-shiraz tracking-wider"><MdText text={inhalt.texte.ebene4ModernerKern} /></span>
+            <h4 className="font-bold text-sm text-slate-900"><MdText text={inhalt.texte.llmsGenerativeKi} /></h4>
+            <p className="text-xs text-slate-700 leading-snug"><MdText text={inhalt.texte.transformerModelleDieSprache} /></p>
           </div>
         </div>
       </div>
@@ -92,21 +80,11 @@ export default function KernbegriffeTab({ detailSubTab, selectedExampleIndex, se
       {/* Interaktiver Detail-Erklärer */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-5">
         <h3 className="text-base font-bold text-text-main flex items-center gap-2">
-          <Lightbulb className="text-shiraz" size={20} />
-          Die 7 Kernbegriffe der Bauinformatik & KI-Technologie im Detail
-        </h3>
+          <Lightbulb className="text-shiraz" size={20} /><MdText text={inhalt.texte.die7KernbegriffeDer} /></h3>
 
         {/* Term Selector Pills */}
         <div className="flex flex-wrap gap-2">
-          {[
-            { id: 'ki', label: '1. Künstliche Intelligenz (KI-Systeme)' },
-            { id: 'ml', label: '2. Maschinelles Lernen (ML)' },
-            { id: 'dl', label: '3. Deep Learning (ANN / CNN)' },
-            { id: 'llm', label: '4. Large Language Models (LLM)' },
-            { id: 'rag', label: '5. Retrieval-Augmented Generation (RAG)' },
-            { id: 'vision', label: '6. Computer Vision & Sensorik' },
-            { id: 'agenten', label: '7. KI-Agenten & Tool-Use' }
-          ].map((term) => (
+          {inhalt.daten.KernbegriffeTab.map((term) => (
             <button
               key={term.id}
               onClick={() => setSelectedTerm(term.id as "ml" | "rag" | "llm" | "vision" | "agenten" | "ki" | "dl")}
@@ -152,13 +130,7 @@ export default function KernbegriffeTab({ detailSubTab, selectedExampleIndex, se
 
               {/* Sub-Tab Navigation inside Term Card */}
               <div className="flex flex-wrap gap-1.5 pt-2 border-t border-home-grau/15">
-                {[
-                  { id: 'beispiele', label: '🏗️ 3 Ingenieur-Praxisanwendungen', count: 'EC / Normen' },
-                  { id: 'funktionsweise', label: '📘 Systemarchitektur & Methodik', count: 'Algorithmen' },
-                  { id: 'vergleich', label: '⚖️ Konventionell vs. KI-Workflow', count: 'Prozessanalyse' },
-                  { id: 'formel', label: '📐 Mathematische Modellierung', count: 'LaTeX' },
-                  { id: 'risiken', label: '⚠️ Normative Konformität & Haftung', count: 'Risikoklasse' }
-                ].map((st) => (
+                {inhalt.daten.KernbegriffeTab_2.map((st) => (
                   <button
                     key={st.id}
                     onClick={() => setDetailSubTab(st.id as "funktionsweise" | "beispiele" | "vergleich" | "formel" | "risiken")}
@@ -185,13 +157,9 @@ export default function KernbegriffeTab({ detailSubTab, selectedExampleIndex, se
                 <div className="flex items-center justify-between flex-wrap gap-2">
                   <div className="flex items-center gap-2">
                     <Target className="text-shiraz" size={18} />
-                    <h5 className="font-bold text-sm text-text-main">
-                      Ingenieurtechnische Anwendungsfälle aus Tragwerksplanung, Baustoffkunde & Bauüberwachung
-                    </h5>
+                    <h5 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.ingenieurtechnischeAnwendungsfälleAusTra} /></h5>
                   </div>
-                  <span className="text-[11px] text-text-main/60">
-                    Nachweise nach DIN EN, Eurocodes & VOB
-                  </span>
+                  <span className="text-[11px] text-text-main/60"><MdText text={inhalt.texte.nachweiseNachDinEn} /></span>
                 </div>
 
                 {/* Example Selector Tabs */}
@@ -232,13 +200,11 @@ export default function KernbegriffeTab({ detailSubTab, selectedExampleIndex, se
                           <span>{termsData[selectedTerm].examples[selectedExampleIndex].title}</span>
                         </h4>
                       </div>
-                      <div className="text-xs bg-white px-3 py-1.5 rounded-lg border border-home-grau/25 text-slate-700 font-mono">
-                        <strong>Normativer Bezug:</strong> {termsData[selectedTerm].examples[selectedExampleIndex].normRef}
+                      <div className="text-xs bg-white px-3 py-1.5 rounded-lg border border-home-grau/25 text-slate-700 font-mono"><MdText text={inhalt.texte.normativerBezug} />{termsData[selectedTerm].examples[selectedExampleIndex].normRef}
                       </div>
                     </div>
 
-                    <div className="text-xs text-text-main/80 bg-white/80 p-3 rounded-lg border border-home-grau/20">
-                      <strong>Problemstellung & Normative Randbedingungen:</strong> {termsData[selectedTerm].examples[selectedExampleIndex].scenario}
+                    <div className="text-xs text-text-main/80 bg-white/80 p-3 rounded-lg border border-home-grau/20"><MdText text={inhalt.texte.problemstellungNormativeRandbedingungen} />{termsData[selectedTerm].examples[selectedExampleIndex].scenario}
                     </div>
 
                     {/* 4 Pillars: Input -> Process -> Output -> Benefit */}
@@ -247,7 +213,7 @@ export default function KernbegriffeTab({ detailSubTab, selectedExampleIndex, se
                       <div className="p-3.5 bg-white rounded-xl border border-blue-200/80 space-y-1.5 shadow-2xs">
                         <div className="flex items-center gap-1.5 text-blue-900 font-bold">
                           <FileText size={15} className="text-blue-600" />
-                          <span>Eingangsgrößen & Datenbasis (Input):</span>
+                          <span><MdText text={inhalt.texte.eingangsgrößenDatenbasisInput} /></span>
                         </div>
                         <p className="text-text-main/80 leading-relaxed">
                           {termsData[selectedTerm].examples[selectedExampleIndex].input}
@@ -258,7 +224,7 @@ export default function KernbegriffeTab({ detailSubTab, selectedExampleIndex, se
                       <div className="p-3.5 bg-white rounded-xl border border-purple-200/80 space-y-1.5 shadow-2xs">
                         <div className="flex items-center gap-1.5 text-purple-900 font-bold">
                           <Cpu size={15} className="text-purple-600" />
-                          <span>Algorithmische Prozessierung & Inferenz (Process):</span>
+                          <span><MdText text={inhalt.texte.algorithmischeProzessierungInferenzProce} /></span>
                         </div>
                         <p className="text-text-main/80 leading-relaxed">
                           {termsData[selectedTerm].examples[selectedExampleIndex].process}
@@ -269,7 +235,7 @@ export default function KernbegriffeTab({ detailSubTab, selectedExampleIndex, se
                       <div className="p-3.5 bg-white rounded-xl border border-emerald-200/80 space-y-1.5 shadow-2xs">
                         <div className="flex items-center gap-1.5 text-emerald-900 font-bold">
                           <CheckCircle2 size={15} className="text-emerald-600" />
-                          <span>Prüffähiges Rechenergebnis & Artefakt (Output):</span>
+                          <span><MdText text={inhalt.texte.prüffähigesRechenergebnisArtefaktOutput} /></span>
                         </div>
                         <p className="text-text-main/80 leading-relaxed">
                           {termsData[selectedTerm].examples[selectedExampleIndex].output}
@@ -280,7 +246,7 @@ export default function KernbegriffeTab({ detailSubTab, selectedExampleIndex, se
                       <div className="p-3.5 bg-white rounded-xl border border-amber-200/80 space-y-1.5 shadow-2xs">
                         <div className="flex items-center gap-1.5 text-amber-900 font-bold">
                           <Zap size={15} className="text-amber-600" />
-                          <span>Ingenieurtechnische Relevanz & Wirtschaftlichkeit:</span>
+                          <span><MdText text={inhalt.texte.ingenieurtechnischeRelevanzWirtschaftlic} /></span>
                         </div>
                         <p className="text-text-main/80 leading-relaxed font-semibold text-slate-800">
                           {termsData[selectedTerm].examples[selectedExampleIndex].benefit}
@@ -299,9 +265,7 @@ export default function KernbegriffeTab({ detailSubTab, selectedExampleIndex, se
                   {/* Technical Definition Box */}
                   <div className="p-4 bg-off-white rounded-xl border border-home-grau/25 space-y-2">
                     <h5 className="font-bold text-xs uppercase tracking-wider text-shiraz flex items-center gap-1.5">
-                      <HelpCircle size={15} />
-                      Wissenschaftliche Definition & Funktionsprinzip:
-                    </h5>
+                      <HelpCircle size={15} /><MdText text={inhalt.texte.wissenschaftlicheDefinitionFunktionsprin} /></h5>
                     <p className="text-xs text-text-main/80 leading-relaxed">
                       {termsData[selectedTerm].simpleExpl}
                     </p>
@@ -310,9 +274,7 @@ export default function KernbegriffeTab({ detailSubTab, selectedExampleIndex, se
                   {/* Key Characteristics */}
                   <div className="p-4 bg-off-white rounded-xl border border-home-grau/25 space-y-2">
                     <h5 className="font-bold text-xs uppercase tracking-wider text-text-main flex items-center gap-1.5">
-                      <Check size={15} className="text-shiraz" />
-                      Ingenieurwissenschaftliche Schlüsselmerkmale:
-                    </h5>
+                      <Check size={15} className="text-shiraz" /><MdText text={inhalt.texte.ingenieurwissenschaftlicheSchlüsselmerkm} /></h5>
                     <ul className="text-xs text-text-main/80 space-y-1.5 list-none">
                       {termsData[selectedTerm].keyCharacteristics.map((kc, idx) => (
                         <li key={idx} className="flex items-start gap-1.5">
@@ -327,9 +289,7 @@ export default function KernbegriffeTab({ detailSubTab, selectedExampleIndex, se
                 {/* Step-by-Step Technical Mechanism */}
                 <div className="space-y-3">
                   <h5 className="font-bold text-xs uppercase tracking-wider text-text-main flex items-center gap-1.5">
-                    <Workflow size={15} className="text-shiraz" />
-                    Prozessarchitektur & algorithmischer Signalfluss:
-                  </h5>
+                    <Workflow size={15} className="text-shiraz" /><MdText text={inhalt.texte.prozessarchitekturAlgorithmischerSignalf} /></h5>
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 text-xs">
                     {termsData[selectedTerm].technicalMechanism.map((mech, idx) => (
                       <div key={idx} className="p-3.5 bg-white rounded-xl border border-home-grau/25 space-y-1.5 shadow-2xs">
@@ -352,9 +312,7 @@ export default function KernbegriffeTab({ detailSubTab, selectedExampleIndex, se
               <div className="p-5 space-y-5 animate-in fade-in duration-200">
                 <div className="flex items-center justify-between flex-wrap gap-2">
                   <h5 className="font-bold text-sm text-text-main flex items-center gap-2">
-                    <Scale className="text-shiraz" size={18} />
-                    Komparative Prozessanalyse: Konventionelle Ingenieurmethodik vs. KI-gestützter Workflow
-                  </h5>
+                    <Scale className="text-shiraz" size={18} /><MdText text={inhalt.texte.komparativeProzessanalyseKonventionelleI} /></h5>
                   <span className="text-xs font-bold text-shiraz bg-shiraz/10 px-2.5 py-1 rounded-full font-mono">
                     {termsData[selectedTerm].classicVsAi.roiSummary}
                   </span>
@@ -368,9 +326,7 @@ export default function KernbegriffeTab({ detailSubTab, selectedExampleIndex, se
                         <Clock size={16} className="text-slate-500" />
                         {termsData[selectedTerm].classicVsAi.classicTitle}
                       </h6>
-                      <span className="text-[10px] font-bold text-slate-500 bg-slate-200 px-2 py-0.5 rounded">
-                        Konventionelle Methodik
-                      </span>
+                      <span className="text-[10px] font-bold text-slate-500 bg-slate-200 px-2 py-0.5 rounded"><MdText text={inhalt.texte.konventionelleMethodik} /></span>
                     </div>
                     <ol className="space-y-2 text-slate-700 list-decimal list-inside leading-relaxed">
                       {termsData[selectedTerm].classicVsAi.classicSteps.map((step, idx) => (
@@ -381,8 +337,7 @@ export default function KernbegriffeTab({ detailSubTab, selectedExampleIndex, se
                     </ol>
                     <div className="p-2.5 bg-red-50 text-red-900 rounded-lg border border-red-200 text-[11px] flex items-start gap-1.5">
                       <AlertTriangle size={14} className="text-red-600 shrink-0 mt-0.5" />
-                      <div>
-                        <strong>Systematische Schwachstelle:</strong> {termsData[selectedTerm].classicVsAi.classicDisadvantage}
+                      <div><MdText text={inhalt.texte.systematischeSchwachstelle} />{termsData[selectedTerm].classicVsAi.classicDisadvantage}
                       </div>
                     </div>
                   </div>
@@ -394,9 +349,7 @@ export default function KernbegriffeTab({ detailSubTab, selectedExampleIndex, se
                         <Sparkles size={16} className="text-shiraz" />
                         {termsData[selectedTerm].classicVsAi.aiTitle}
                       </h6>
-                      <span className="text-[10px] font-bold text-shiraz bg-shiraz/10 px-2 py-0.5 rounded">
-                        KI-gestützte Methodik
-                      </span>
+                      <span className="text-[10px] font-bold text-shiraz bg-shiraz/10 px-2 py-0.5 rounded"><MdText text={inhalt.texte.kiGestützteMethodik} /></span>
                     </div>
                     <ol className="space-y-2 text-text-main/90 list-decimal list-inside leading-relaxed">
                       {termsData[selectedTerm].classicVsAi.aiSteps.map((step, idx) => (
@@ -421,9 +374,7 @@ export default function KernbegriffeTab({ detailSubTab, selectedExampleIndex, se
               <div className="p-5 space-y-4 animate-in fade-in duration-200">
                 <div className="flex items-center justify-between flex-wrap gap-2">
                   <h5 className="font-bold text-sm text-text-main flex items-center gap-2">
-                    <Calculator className="text-shiraz" size={18} />
-                    Mathematisch-physikalische Modellierung & Zielfunktion
-                  </h5>
+                    <Calculator className="text-shiraz" size={18} /><MdText text={inhalt.texte.mathematischPhysikalischeModellierungZie} /></h5>
                   <span className="text-xs font-mono text-text-main/70 bg-off-white px-2.5 py-1 rounded border border-home-grau/25">
                     {termsData[selectedTerm].math.formulaName}
                   </span>
@@ -436,16 +387,13 @@ export default function KernbegriffeTab({ detailSubTab, selectedExampleIndex, se
                   <div className="overflow-x-auto py-2">
                     <BlockMath math={termsData[selectedTerm].math.formula} />
                   </div>
-                  <p className="text-xs text-text-main/80 max-w-2xl mx-auto leading-relaxed text-left bg-white p-3 rounded-lg border border-slate-200">
-                    <strong>Mathematische Erläuterung:</strong> {termsData[selectedTerm].math.explanation}
+                  <p className="text-xs text-text-main/80 max-w-2xl mx-auto leading-relaxed text-left bg-white p-3 rounded-lg border border-slate-200"><MdText text={inhalt.texte.mathematischeErläuterung} />{termsData[selectedTerm].math.explanation}
                   </p>
                 </div>
 
                 {/* Variables Table */}
                 <div className="space-y-2">
-                  <h6 className="font-bold text-xs uppercase tracking-wider text-text-main">
-                    Nomenklatur, physikalische Einheiten & Parameterbedeutung:
-                  </h6>
+                  <h6 className="font-bold text-xs uppercase tracking-wider text-text-main"><MdText text={inhalt.texte.nomenklaturPhysikalischeEinheitenParamet} /></h6>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                     {termsData[selectedTerm].math.variables.map((v, idx) => (
                       <div key={idx} className="p-3 bg-white rounded-xl border border-home-grau/25 flex items-start gap-3">
@@ -468,9 +416,7 @@ export default function KernbegriffeTab({ detailSubTab, selectedExampleIndex, se
               <div className="p-5 space-y-4 animate-in fade-in duration-200">
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="text-shiraz" size={18} />
-                  <h5 className="font-bold text-sm text-text-main">
-                    Normative Konformität, Fehlerschranken & Haftungsrechtliche Einordnung
-                  </h5>
+                  <h5 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.normativeKonformitätFehlerschrankenHaftu} /></h5>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
@@ -478,7 +424,7 @@ export default function KernbegriffeTab({ detailSubTab, selectedExampleIndex, se
                   <div className="p-4 bg-amber-50/70 rounded-xl border border-amber-200 space-y-2">
                     <div className="flex items-center gap-1.5 text-amber-900 font-bold">
                       <AlertTriangle size={16} className="text-amber-600" />
-                      <span>Kritische Fehlermodi & Systemgrenzen:</span>
+                      <span><MdText text={inhalt.texte.kritischeFehlermodiSystemgrenzen} /></span>
                     </div>
                     <p className="text-amber-950/80 leading-relaxed text-[11px]">
                       {termsData[selectedTerm].pitfalls.mainRisk}
@@ -489,7 +435,7 @@ export default function KernbegriffeTab({ detailSubTab, selectedExampleIndex, se
                   <div className="p-4 bg-blue-50/70 rounded-xl border border-blue-200 space-y-2">
                     <div className="flex items-center gap-1.5 text-blue-900 font-bold">
                       <ShieldAlert size={16} className="text-blue-600" />
-                      <span>Sorgfalts- & Prüfpflichten des Ingenieurs (BGB / HOAI / BauO):</span>
+                      <span><MdText text={inhalt.texte.sorgfaltsPrüfpflichtenDesIngenieurs} /></span>
                     </div>
                     <p className="text-blue-950/80 leading-relaxed text-[11px]">
                       {termsData[selectedTerm].pitfalls.engineerDuty}
@@ -500,7 +446,7 @@ export default function KernbegriffeTab({ detailSubTab, selectedExampleIndex, se
                   <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
                     <div className="flex items-center gap-1.5 text-slate-900 font-bold">
                       <FileCheck size={16} className="text-slate-600" />
-                      <span>Normativer & gesetzlicher Bezugsrahmen:</span>
+                      <span><MdText text={inhalt.texte.normativerGesetzlicherBezugsrahmen} /></span>
                     </div>
                     <p className="text-slate-800 leading-relaxed text-[11px] font-mono">
                       {termsData[selectedTerm].pitfalls.standards}

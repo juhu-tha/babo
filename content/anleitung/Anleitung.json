@@ -1,0 +1,94 @@
+{
+  "texte": {
+    "anleitungKonzept": "Anleitung & Konzept",
+    "kompakteAktuelleInformationsquelleUnd": "Kompakte, aktuelle Informationsquelle und interaktive Anwendung normgerechter Berechnungen",
+    "dasLeitkonzeptFundierteWissensbasis": "Das Leitkonzept: Fundierte Wissensbasis & reaktive Ingenieurberechnungen",
+    "kompakteVerlässlicheUndStets": "kompakte, verlässliche und stets aktuelle Informationsquelle",
+    "unmittelbareInteraktiveAnwendungDimensio": " unmittelbare interaktive Anwendung dimensionsreiner ingenieurtechnischer Berechnungen",
+    "t1KompakteAktuelleInformationsquelle": "1. Kompakte & aktuelle Informationsquelle",
+    "schlussMitUnübersichtlichenNormenstapeln": "Schluss mit unübersichtlichen Normenstapeln und veralteten Näherungswerten. Das BaustoffBoard fasst alle relevanten werkstofflichen Kennwerte strukturiert und forensisch verifiziert zusammen:",
+    "neuesteNormengenerationExpositionsklasse": "**Neueste Normengeneration:** Expositionsklassen nach DIN 1045-2:2023-08, Zementarten inkl. CEM II/C-M & CEM VI nach DIN EN 197-5, Eurocode 2 & Nachbehandlung DIN EN 13670.",
+    "ganzheitlicheWerkstoffkundeVonMetallisch": "**Ganzheitliche Werkstoffkunde:** Von metallischen Legierungen, Holzarten und Mauerwerksziegeln über Bitumen/Asphalt bis hin zu Polymeren und Rezyklatbaustoffen.",
+    "bauchemischePräzisionKristallinePhasenum": "**Bauchemische Präzision:** Kristalline Phasenumwandlungen, Bogue-Klinkerzusammensetzung, Hydratationswärmen, pH-Werte und Porenraumstrukturen mit exakten Reaktionsgleichungen.",
+    "einsatzSchnellesNachschlagenVon": "**Einsatz:** Schnelles Nachschlagen von Grenzwerten, Zementanforderungen, Feuchteklassen und Normenzitaten während Entwurf, Planung und Vorlesung.",
+    "t2InteraktiveAnwendungVon": "2. Interaktive Anwendung von Berechnungen",
+    "keineStatischenPdfFormulare": "Keine statischen PDF-Formulare, sondern live reagierende Rechenkerne. Verändern Sie Bauteilabmessungen, Umweltparameter oder Lasten und verfolgen Sie die Bemessungsergebnisse in Echtzeit:",
+    "expositionsklassenHüllwerteMehrfachselek": "**Expositionsklassen-Hüllwerte:** Mehrfachselektion von Umweltbeanspruchungen ermittelt automatisch die strengsten Grenzwerte für $(w/z)_{\\text{eq}}$, $f_{ck}$, Mindestzement und Betondeckung $c_{\\text{nom}}$.",
+    "betonkennwerteNachEc2Zeitabhängige": "**Betonkennwerte nach EC2:** Zeitabhängige Kriechbeiwerte $\\varphi(t,t_0)$, Trocknungs- und autogenes Schwinden $\\varepsilon_{cs}$ sowie Spannungs-Dehnungs-Linien nach DIN EN 1992-1-1.",
+    "laborBauphysiksimulationMischungsberechn": "**Labor- & Bauphysiksimulation:** Mischungsberechnung nach Stoffraumrechnung, Bogue-Klinkermineralien, U-Wert-Wandaufbauten und Schadstoffabbau.",
+    "zahlenformatAlleRechnerNutzen": "**Zahlenformat:** Alle Rechner nutzen strikte deutsche Formatierung (Tausendertrennung mit Punkt, Dezimalkomma via `formatDeZahl`).",
+    "der3SchritteWorkflow": "Der 3-Schritte-Workflow im Studien- und Planungsalltag",
+    "recherchierenErkunden": "Recherchieren & Erkunden",
+    "wählenSieImMenü": "Wählen Sie im Menü das passende Fachmodul. Verschaffen Sie sich im **Steckbrief** und im **Klassenkatalog** einen kompakten Überblick über Normen, Werkstoffkennwerte und Einsatzgrenzen.",
+    "interaktivBerechnen": "Interaktiv Berechnen",
+    "öffnenSieDenInteraktiven": "Öffnen Sie den interaktiven Rechner. Passen Sie Umwelteinflüsse, Geometrien oder Rezepturen an. Die dynamischen Vektorskizzen und Diagramme visualisieren das Trag- und Verformungsverhalten sofort.",
+    "verifizierenAnwenden": "Verifizieren & Anwenden",
+    "nutzenSieDieFormelsammlung": "Nutzen Sie die Formelsammlung im Footer für Ihre statische Berechnung oder Studienarbeit. Überprüfen Sie Ihr Fachwissen in den interaktiven Wissenstests mit begründetem Richtig-/Falsch-Feedback.",
+    "methodischeTrennungBaustoffeStoffebene": "Methodische Trennung: Baustoffe (Stoffebene) vs. Bauprodukte (Erzeugnisebene)",
+    "umInformationsdopplungenZuVermeiden": "Um Informationsdopplungen zu vermeiden und den roten Faden des Bauingenieurstudiums zu wahren, trennt das BaustoffBoard systematisch zwischen der **Stoffebene (Roh- und Werkstoffkunde)** und der **Erzeugnisebene (Bauprodukte & Bauteile)**:",
+    "baustoffEbeneStoffeigenschaften": "Baustoff-Ebene (Stoffeigenschaften)",
+    "untersuchtDieAtomareKristalline": "Untersucht die atomare, kristalline, metallurgische und chemische Zusammensetzung des Werkstoffs losgelöst vom Bauteil:",
+    "hydratationPhasenBogueBerechnung": "**Hydratation & Phasen:** Bogue-Berechnung von Alit ($C_3S$), Belit ($C_2S$), C-S-H-Gefügewachstum und Ettringit.",
+    "anisotropieRichtungsabhängigeQuellSchwin": "**Anisotropie:** Richtungsabhängige Quell-/Schwindmaße im 3D-Holzkörper, Faserorientierung bei Faserbeton und CFK.",
+    "werkstoffmechanikSpannungsDehnungsGesetz": "**Werkstoffmechanik:** Spannungs-Dehnungs-Gesetze, Bruchmechanik, E-Modul und Kriechen.",
+    "clusterBaustoffeBetontechnologieMechanik": "Cluster: Baustoffe • Betontechnologie • Mechanik • Bauchemie",
+    "bauproduktEbeneKonstruktionRecht": "Bauprodukt-Ebene (Konstruktion & Recht)",
+    "fokussiertDasInVerkehr": "Fokussiert das in Verkehr gebrachte, genormte Erzeugnis, den Verwendungsnachweis und die konstruktive Leistungsfähigkeit im Bauwerk:",
+    "bauproduktenverordnungBaupvoCeKennzeichn": "**Bauproduktenverordnung (BauPVO):** CE-Kennzeichnung, Leistungserklärung (DoP), Ü-Zeichen, MVV TB und AVCP-Konformitätssysteme.",
+    "bauteilgeometrieSortenCltBrettsperrholz": "**Bauteilgeometrie & Sorten:** CLT-Brettsperrholz, Fertigteilträger, Mauerziegel, Walzasphalt-Deckschichten nach RStO 12/24.",
+    "funktionaleEinheitÖkobilanzVergleichbare": "**Funktionale Einheit & Ökobilanz:** Vergleichbare U-Werte, Tragfähigkeiten und EPD-Umweltkennwerte nach EN 15804.",
+    "clusterBauprodukteMassivbauHolzbau": "Cluster: Bauprodukte • Massivbau • Holzbau • Bauphysik • Nachhaltigkeit",
+    "die6QualitätsdimensionenAller": "Die 6 Qualitätsdimensionen aller Fachmodule (D1–D6)",
+    "verbindlicherStandardFürRichtigkeit": "Verbindlicher Standard für Richtigkeit, Normenkonformität und didaktische Tiefe",
+    "d1RichtigkeitNormen": "D1 – Richtigkeit & Normen",
+    "strikteNormengenerationDin1045": "Strikte Normengeneration (DIN 1045-2:2023, EC2, DIN EN 197). Vollständige Dimensionsreinheit und verifizierte Quellennachweise.",
+    "d2Didaktik4Stufen": "D2 – Didaktik & 4-Stufen-Lehrpfad",
+    "logischeAbfolgeVonTheoretischen": "Logische Abfolge von theoretischen Grundlagen über Laborversuche und reaktive Berechnungen bis zum Wissenstest mit Feedback.",
+    "d3ThematischeVollständigkeit": "D3 – Thematische Vollständigkeit",
+    "keineFachlichenLückenOder": "Keine fachlichen Lücken oder Auslassungen: Jedes Modul behandelt sein Stoffgebiet in sich geschlossen und umfassend.",
+    "d4PraxisrelevanzForensik": "D4 – Praxisrelevanz & Forensik",
+    "direkteHandlungskompetenzFürBaustelle": "Direkte Handlungskompetenz für Baustelle, Prüflabor, Tragwerksplanung und Gutachterwesen inkl. Schadensprävention.",
+    "d5KonsistenzVernetzung": "D5 – Konsistenz & Vernetzung",
+    "einheitlicheNomenklaturDurchgängigesShir": "Einheitliche Nomenklatur, durchgängiges Shiraz-Farbkonzept, Querverlinkungen und Vermeidung von redundanten Textdopplungen.",
+    "d6InteraktivitätVerifikation": "D6 – Interaktivität & Verifikation",
+    "dynamischeRechnerMitDeutscher": "Dynamische Rechner mit deutscher Zahlenformatierung (`formatDeZahl`), KaTeX-Formeln und Schutz vor Fehleingaben.",
+    "effektiveNutzungImStudien": "Effektive Nutzung im Studien- und Planungsalltag:",
+    "parameterAnGrenzenTesten": "**Parameter an Grenzen testen:** Variieren Sie Eingaben bis zu den Grenzwerten (z. B. minimaler Zementgehalt oder maximaler w/z-Wert), um bauphysikalische Reaktionen und normative Warnhinweise direkt zu erkennen.",
+    "pdfExportNutzenSie": "**PDF-Export:** Nutzen Sie die Export-Funktion, um berechnete Kennwerte, Diagramme und Prüfberichte für Übungsblätter oder statische Vorbemessungen abzuspeichern.",
+    "vektorskizzenNutzenDieInteraktiven": "**Vektorskizzen nutzen:** Die interaktiven Querschnitte (wie bei den Expositionsklassen oder Betonkennwerten) passen sich live an gewählte Parameter an und veranschaulichen Maßketten direkt am Bauteil."
+  },
+  "daten": {
+    "Anleitung.literatur": [
+      "Wendehorst Baustoffkunde: Grundlagen, Baustoffe und Werkstoffprüfung (37. Auflage, Springer Vieweg)",
+      "Heidelberg Materials / InformationsZentrum Beton (IZB): Betontechnische Daten (Ausgabe 2022 / Folgeauflagen)",
+      "Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure (26. Auflage, Reguvis 2024)",
+      "Stark, J.; Wicht, B.: Zement und Schnellzemente - Chemie, Hydratation und Anwendung (Springer Vieweg)"
+    ],
+    "Anleitung.regelwerke": [
+      {
+        "title": "DIN 1045-2:2023-08 (Tragwerke aus Beton, Stahlbeton und Spannbeton - Teil 2: Beton - Anwendungsregeln zu DIN EN 206)",
+        "url": "https://www.dinmedia.de/de/suche?q=DIN+1045-2"
+      },
+      {
+        "title": "DIN EN 197-1:2011-11 (Zement - Teil 1: Zusammensetzung, Anforderungen und Konformitätskriterien)",
+        "url": "https://www.dinmedia.de/de/suche?q=DIN+EN+197-1"
+      },
+      {
+        "title": "DIN EN 1992-1-1:2011-01 / NA:2013-04 (Eurocode 2: Bemessung und Konstruktion von Stahlbetontragwerken)",
+        "url": "https://www.dinmedia.de/de/suche?q=DIN+EN+1992-1-1"
+      }
+    ],
+    "Anleitung.formeln": [
+      {
+        "formel": "c_{\\text{nom}} = c_{\\min} + \\Delta c_{\\text{dev}}",
+        "erklaerung": "Nennmaß der Betondeckung nach DIN EN 1992-1-1: Sicherstellung des dauerhaften Bewehrungsschutzes (c_min,dur) zzgl. Vorhaltemaß.",
+        "quelle": "DIN EN 1992-1-1 / NA"
+      },
+      {
+        "formel": "\\left(\\frac{w}{c}\\right)_{\\text{eq}} = \\frac{w}{c + k_F \\cdot f + k_S \\cdot s}",
+        "erklaerung": "Äquivalenter Wasserzementwert nach DIN EN 206 / DIN 1045-2: Verbindliche Höchstgrenzen zum Schutz vor Karbonatisierung, Frost und chemischem Angriff.",
+        "quelle": "DIN 1045-2 Tab. F.2.1/F.2.2"
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "texte": {
+    "stützenbemessungInteraktionsdiagramm": "Stützenbemessung (Interaktionsdiagramm)",
+    "berechnetNachDinEn": "Berechnet nach DIN EN 1992-1-1 + NA (DE)",
+    "bemessungVonMassivbaustützenStahlbeton": "Bemessung von Massivbaustützen (Stahlbeton) unter Normalkraft und Biegemoment. Das Modul berechnet die erforderliche symmetrische Längsbewehrung (",
+    "unterBerücksichtigungVonMindestausmitte": ") unter Berücksichtigung von Mindestausmitte, Imperfektionen und Schlankheitskontrolle nach DIN EN 1992-1-1 mit NA DE.",
+    "theorieIiOrdnungErforderlich": "Theorie II. Ordnung erforderlich – nicht Teil dieses Lehrrechners",
+    "dieSchlankheitDerStütze": "Die Schlankheit der Stütze beträgt ",
+    "undÜberschreitetDieGrenzschlankheit": " und überschreitet die Grenzschlankheit ",
+    "nachDinEn1992": " nach DIN EN 1992-1-1, Abs. 5.8.3.1. Schnittgrößen nach Theorie II. Ordnung müssen nachgewiesen werden.",
+    "querschnittMaterial": "Querschnitt & Material",
+    "einwirkungenKnicklänge": "Einwirkungen & Knicklänge",
+    "ergebnisNaDe": "Ergebnis (NA DE)",
+    "bezogeneNormalkraft": "Bezogene Normalkraft ",
+    "bezogenesMoment": "Bezogenes Moment ",
+    "inklEE": " (inkl. e₀, eᵢ)",
+    "erfGesamtbewehrung": "Erf. Gesamtbewehrung ",
+    "cmMindestbewehrungNaDe": " cm² | Mindestbewehrung NA DE: ",
+    "querschnittNichtAusreichend": "Querschnitt nicht ausreichend!",
+    "interaktionsdiagrammDehnungsiteration": "Interaktionsdiagramm (Dehnungsiteration)"
+  },
+  "werte": {
+    "einwirkungEdEd": "Einwirkung (μ_Ed, ν_Ed)",
+    "bezogenesMomentEd": "Bezogenes Moment μ_Ed",
+    "randabstandD1": "Randabstand d1",
+    "ersatzlängeL0": "Ersatzlänge l_0",
+    "knicklängeBzwErsatzlängeL0": "Knicklänge bzw. Ersatzlänge l0 nach DIN EN 1992-1-1.",
+    "druckkraftNEd": "Druckkraft N_{Ed}",
+    "biegemomentMEd": "Biegemoment M_{Ed}",
+    "ihrRechenwegStützenbemessungMit": "Ihr Rechenweg: Stützenbemessung mit den aktuellen Eingaben",
+    "dinEn19921": "DIN EN 1992-1-1 mit NA (DE), 5.2, 5.8.3.1, 6.1 und 9.5.2",
+    "ausmittenUndMaßgebendesMoment": "Ausmitten und maßgebendes Moment",
+    "imperfektionEIL": "Imperfektion e_i = l₀/400 und Mindestausmitte e₀ = max(h/30; 20 mm) werden nicht addiert; maßgebend ist der größere Wert.",
+    "limTheorieIiOrdnung": "λ > λ_lim: Theorie II. Ordnung wäre erforderlich; das Ergebnis nach Theorie I. Ordnung liegt auf der unsicheren Seite.",
+    "limDieBemessungNach": "λ ≤ λ_lim: Die Bemessung nach Theorie I. Ordnung ist zulässig.",
+    "bezogeneSchnittgrößen": "Bezogene Schnittgrößen",
+    "mechanischerBewehrungsgradAusDem": "Mechanischer Bewehrungsgrad aus dem Interaktionsdiagramm",
+    "derRechnerSuchtIn": "Der Rechner sucht in Schritten von 0,01 das kleinste ω, dessen Interaktionskurve den Punkt (μ_Ed; ν_Ed) umschließt.",
+    "auchMit25": "Auch mit ω = 2,5 wird der Punkt (μ_Ed; ν_Ed) nicht umschlossen: Der Querschnitt reicht nicht aus.",
+    "mindestbewehrungUndMaßgebenderWert": "Mindestbewehrung und maßgebender Wert",
+    "mindestlängsbewehrungNachNaDe": "Mindestlängsbewehrung nach NA (DE) 9.5.2(2): A_s,min = 0,15 · |N_Ed| / f_yd.",
+    "querschnittNichtAusreichend": "Querschnitt nicht ausreichend"
+  },
+  "daten": {
+    "Stuetzenbemessung.chartOptions.scales.y.title": {
+      "display": true,
+      "text": "Bezogene Normalkraft ν_Ed (Druck negativ)"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "texte": {
+    "dieEvolutionDerBau": "Die Evolution der Bau-Informatik: Von Lochkarten zu KI-Agenten",
+    "derWegDerBauingenieure": "Der Weg der Bauingenieure zur künstlichen Intelligenz in fünf historischen Phasen:",
+    "t1960er1980er": "1960er – 1980er",
+    "dieAnfängeStatischeRechenprogramme": "Die Anfänge: Statische Rechenprogramme & Expertensysteme",
+    "einführungVonGroßrechnernUnd": "Einführung von Großrechnern und ersten Finite-Elemente-Programmen (FEM). Ingenieure bauten **regelbasierte Expertensysteme**: Gigantische Sammlungen von Wenn-Dann-Regeln (z.B. \"WENN Durchbiegung > l/500 DANN vergrößere Trägerhöhe\"). Diese Systeme konnten nicht lernen und brachen bei unvorhergesehenen Fällen zusammen.",
+    "meilensteinErsteCadSysteme": "**Meilenstein:** Erste CAD-Systeme ersetzen das Reißbrett; DIN-Vorgaben werden in starre Programmabläufe gegossen.",
+    "t1990er2000er": "1990er – 2000er",
+    "ersteNeuronaleNetzeGenetische": "Erste Neuronale Netze & Genetische Algorithmen",
+    "ersteAkademischeVersucheMit": "Erste akademische Versuche mit künstlichen neuronalen Netzen an Universitäten: Vorhersage der 28-Tage-Betondruckfestigkeit aus Mischungsdaten. **Genetische Algorithmen** wurden populär, um Fachwerke auf minimales Stahlgewicht bei maximaler Steifigkeit zu optimieren.",
+    "grenzeDamalsGeringeRechenleistung": "**Grenze damals:** Geringe Rechenleistung und fehlende digitale Datensätze beschränkten KI auf Forschungslabore.",
+    "bimReifeDrohnenComputer": "BIM-Reife, Drohnen & Computer Vision",
+    "derWeltweiteDurchbruchVon": "Der weltweite Durchbruch von **Deep Learning** (angetrieben durch Grafikkarten / GPUs): Drohnen befliegen Brückenbauwerke und Algorithmen (Convolutional Neural Networks) erkennen Risse, Abplatzungen und Rostfahnen vollautomatisch. Building Information Modeling (BIM) liefert erstmals strukturierte 3D-Daten.",
+    "meilensteinAutomatisierteBaufortschritts": "**Meilenstein:** Automatisierte Baufortschrittskontrolle durch Abgleich von 3D-Laserscans mit dem BIM-Soll-Modell.",
+    "dieGenerativeKiRevolution": "Die Generative-KI-Revolution (LLMs & RAG)",
+    "mitChatgptClaudeUnd": "Mit ChatGPT, Claude und Gemini erreicht KI die Büro- und Planungsebene. Ingenieure nutzen KI zur Analyse hunderter Seiten Gutachten, zum Schreiben von Python-Auswerteskripten und zur Prüfung von Ausschreibungstexten nach VOB. **RAG-Systeme** lösen das Problem der Halluzination bei Normen.",
+    "paradigmenwechselSoftwareentwicklungWird": "**Paradigmenwechsel:** Softwareentwicklung wird durch \"Vibe Coding\" und KI-Assistenten demokratisiert.",
+    "autonomeWorkflowsPinnsAgenten": "Autonome Workflows, PINNs & Agenten-Schwärme",
+    "derÜbergangVonReinen": "Der Übergang von reinen Chat-Bots zu **autonomen Agenten**: Systeme, die mit Statik-APIs interagieren, physik-informierte neuronale Netze (PINNs), die FEM-Berechnungen in Echtzeit beschleunigen, und geschlossene Regelkreise im 3D-Betondruck."
+  }
+}

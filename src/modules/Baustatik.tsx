@@ -21,6 +21,8 @@ import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberFormat';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
+import inhalt from '@/content/baustatik/Baustatik.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
   CategoryScale,
@@ -97,7 +99,7 @@ export default function Baustatik() {
       labels,
       datasets: [
         {
-          label: 'Biegemoment M(x) [kNm]',
+          label: inhalt.werte.biegemomentMXKnm,
           data: momentData,
           borderColor: '#A3113E',
           backgroundColor: 'rgba(163, 17, 62, 0.1)',
@@ -112,7 +114,7 @@ export default function Baustatik() {
       labels,
       datasets: [
         {
-          label: 'Querkraft V(x) [kN]',
+          label: inhalt.werte.querkraftVXKn,
           data: shearData,
           borderColor: '#A3113E',
           backgroundColor: 'rgba(14, 85, 140, 0.1)',
@@ -140,7 +142,7 @@ export default function Baustatik() {
     },
     scales: {
       x: {
-        title: { display: true, text: 'Position x [m]', font: { weight: 'bold' as const } }
+        title: { display: true, text: inhalt.werte.positionXM, font: { weight: 'bold' as const } }
       }
     }
   };
@@ -284,7 +286,7 @@ export default function Baustatik() {
 
     return (
       <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm mb-6 overflow-x-auto">
-        <h3 className="text-sm font-bold text-center mb-4">Systemskizze & Laststellung</h3>
+        <h3 className="text-sm font-bold text-center mb-4"><MdText text={inhalt.texte.systemskizzeLaststellung} /></h3>
         <div className="min-w-[600px] flex justify-center">
           <svg width="100%" height="280" viewBox="0 0 800 280" style={{ maxWidth: '800px' }}>
             <defs>
@@ -343,13 +345,11 @@ export default function Baustatik() {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
           <Scale className="text-shiraz" /> Baustatik
-          <InfoTooltip text="Berechnung von Schnittgrößen (Biegemoment und Querkraft) für Einfeldträger, Kragarm und Rahmen." />
+          <InfoTooltip text={inhalt.werte.berechnungVonSchnittgrößenBiegemoment} />
         </h2>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
-          <p>
-            Die Baustatik liefert die Schnittgrößen (Moment <FormulaText text="M" />, Querkraft <FormulaText text="V" />, Normalkraft <FormulaText text="N" />), die für die Bemessung von Bauteilen erforderlich sind. Hier können statisch bestimmte Systeme (Einfeldträger, Kragarm, Dreigelenkrahmen) untersucht werden, sowie der statisch unbestimmte Zweifeldträger.
-          </p>
+          <p><MdText text={inhalt.texte.dieBaustatikLiefertDie} /><FormulaText text="M" />, Querkraft <FormulaText text="V" /><MdText text={inhalt.texte.normalkraft} /><FormulaText text="N" /><MdText text={inhalt.texte.dieFürDieBemessung} /></p>
         </div>
 
         <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
@@ -377,11 +377,11 @@ export default function Baustatik() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-4 flex flex-col gap-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">System & Lasten</h3>
+              <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4"><MdText text={inhalt.texte.systemLasten} /></h3>
               <div className="grid grid-cols-1 gap-4">
                 <div className="flex flex-col gap-2">
-                  <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main">Statisches System</label><InfoTooltip text="Art der Lagerung des Trägers (z.B. Einfeldträger, Kragarm)." /></div>
-                  <select aria-label="Statisches System" 
+                  <div className="flex items-center gap-2"><label className="text-sm font-medium text-text-main"><MdText text={inhalt.texte.statischesSystem} /></label><InfoTooltip text={inhalt.werte.artDerLagerungDes} /></div>
+                  <select aria-label={inhalt.werte.statischesSystem} 
                     className="p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz"
                     value={system}
                     onChange={(e) => setSystem(e.target.value as 'einfeld' | 'kragarm' | 'zweifeld')}
@@ -392,36 +392,36 @@ export default function Baustatik() {
                   </select>
                 </div>
 
-                <Slider label={system === 'zweifeld' ? "Gesamtlänge (l)" : "Stützweite / Länge (l)"} info={system === 'zweifeld' ? "Gesamtlänge des Bauteils über beide Felder." : "Abstand zwischen den Auflagern oder Gesamtlänge des Bauteils."} min={1} max={30} step={0.5} value={l} unit="m" onChange={(e) => setL(Number(e.target.value))} />
+                <Slider label={system === 'zweifeld' ? inhalt.werte.gesamtlängeL : inhalt.werte.stützweiteLängeL} info={system === 'zweifeld' ? inhalt.werte.gesamtlängeDesBauteilsÜber : inhalt.werte.abstandZwischenDenAuflagern} min={1} max={30} step={0.5} value={l} unit="m" onChange={(e) => setL(Number(e.target.value))} />
                 
                 {system === 'zweifeld' && (
-                  <Slider label="Position Mittelauflager (l₁)" info="Lage des mittleren Auflagers; die Felder dürfen ungleich lang sein. Annahme: konstante Biegesteifigkeit EI über beide Felder." min={0.5} max={l - 0.5} step={0.1} value={Math.min(l1, l-0.5)} unit="m" onChange={(e) => setL1(Number(e.target.value))} />
+                  <Slider label={inhalt.werte.positionMittelauflagerL} info={inhalt.werte.lageDesMittlerenAuflagers} min={0.5} max={l - 0.5} step={0.1} value={Math.min(l1, l-0.5)} unit="m" onChange={(e) => setL1(Number(e.target.value))} />
                 )}
 
                 <div className="mt-2 pt-4 border-t border-home-grau/30">
-                  <Slider label="Gleichlast (q)"  min={0} max={100} step={1} value={q} unit="kN/m" onChange={(e) => setQ(Number(e.target.value))} />
+                  <Slider label={inhalt.werte.gleichlastQ}  min={0} max={100} step={1} value={q} unit="kN/m" onChange={(e) => setQ(Number(e.target.value))} />
                 </div>
                 <div className="mt-2 pt-4 border-t border-home-grau/30">
-                  <Slider label="Einzellast (F)" info="Punktuell einwirkende Kraft auf das Bauteil." min={0} max={500} step={5} value={f} unit="kN" onChange={(e) => setF(Number(e.target.value))} />
-                  {f > 0 && <Slider label="Position Einzellast (a)"  min={0} max={results.totalLength} step={0.1} value={results.a_pos} unit="m" onChange={(e) => setA(Number(e.target.value))} />}
+                  <Slider label={inhalt.werte.einzellastF} info={inhalt.werte.punktuellEinwirkendeKraftAuf} min={0} max={500} step={5} value={f} unit="kN" onChange={(e) => setF(Number(e.target.value))} />
+                  {f > 0 && <Slider label={inhalt.werte.positionEinzellastA}  min={0} max={results.totalLength} step={0.1} value={results.a_pos} unit="m" onChange={(e) => setA(Number(e.target.value))} />}
                 </div>
                 <div className="mt-2 pt-4 border-t border-home-grau/30">
-                  <Slider label="Einzelmoment (M)" info="Punktuell einwirkendes Biegemoment." min={-200} max={200} step={10} value={m0} unit="kNm" onChange={(e) => setM0(Number(e.target.value))} />
-                  {m0 !== 0 && <Slider label="Position Moment (a_m)"  min={0} max={results.totalLength} step={0.1} value={results.am_pos} unit="m" onChange={(e) => setAM(Number(e.target.value))} />}
+                  <Slider label={inhalt.werte.einzelmomentM} info={inhalt.werte.punktuellEinwirkendesBiegemoment} min={-200} max={200} step={10} value={m0} unit="kNm" onChange={(e) => setM0(Number(e.target.value))} />
+                  {m0 !== 0 && <Slider label={inhalt.werte.positionMomentAM}  min={0} max={results.totalLength} step={0.1} value={results.am_pos} unit="m" onChange={(e) => setAM(Number(e.target.value))} />}
                 </div>
               </div>
             </div>
 
             <div className={`grid ${system === 'zweifeld' ? 'grid-cols-3' : 'grid-cols-2'} gap-4`}>
               <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm text-center">
-                <div className="text-home-grau text-xs font-bold uppercase mb-1">Auflager A (links)</div>
+                <div className="text-home-grau text-xs font-bold uppercase mb-1"><MdText text={inhalt.texte.auflagerALinks} /></div>
                 <div className="text-2xl font-bold text-text-main">{formatDeZahl(results.A, 1)} <span className="text-sm font-normal">kN</span></div>
                 {system === 'kragarm' && (
                   <div className="text-sm text-shiraz mt-1"><FormulaText text="M_A" /> = {formatDeZahl(results.MA, 1)} kNm</div>
                 )}
               </div>
               <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm text-center">
-                <div className="text-home-grau text-xs font-bold uppercase mb-1">{system === 'zweifeld' ? 'Auflager B (Mitte)' : 'Auflager B (rechts)'}</div>
+                <div className="text-home-grau text-xs font-bold uppercase mb-1">{system === 'zweifeld' ? inhalt.werte.auflagerBMitte : inhalt.werte.auflagerBRechts}</div>
                 <div className="text-2xl font-bold text-text-main">{formatDeZahl(results.B, 1)} <span className="text-sm font-normal">kN</span></div>
                 {system === 'kragarm' && (
                   <div className="text-sm text-home-grau mt-1">Freies Ende</div>
@@ -429,7 +429,7 @@ export default function Baustatik() {
               </div>
               {system === 'zweifeld' && (
                 <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm text-center">
-                  <div className="text-home-grau text-xs font-bold uppercase mb-1">Auflager C (rechts)</div>
+                  <div className="text-home-grau text-xs font-bold uppercase mb-1"><MdText text={inhalt.texte.auflagerCRechts} /></div>
                   <div className="text-2xl font-bold text-text-main">{formatDeZahl(results.C, 1)} <span className="text-sm font-normal">kN</span></div>
                 </div>
               )}
@@ -439,11 +439,11 @@ export default function Baustatik() {
               <h3 className="text-sm font-bold text-shiraz uppercase tracking-wider mb-4">Maximalwerte</h3>
               <div className="grid grid-cols-1 gap-4">
                 <div>
-                  <div className="text-home-grau text-sm mb-1">Max. Biegemoment (|<FormulaText text="M_{max}" />|)</div>
+                  <div className="text-home-grau text-sm mb-1"><MdText text={inhalt.texte.maxBiegemoment} /><FormulaText text="M_{max}" />|)</div>
                   <div className="text-3xl font-bold text-shiraz">{formatDeZahl(results.maxAbsM, 1)} <span className="text-lg font-normal">kNm</span></div>
                 </div>
                 <div>
-                  <div className="text-home-grau text-sm mb-1">Max. Querkraft (|<FormulaText text="V_{max}" />|)</div>
+                  <div className="text-home-grau text-sm mb-1"><MdText text={inhalt.texte.maxQuerkraft} /><FormulaText text="V_{max}" />|)</div>
                   <div className="text-3xl font-bold text-shiraz">{formatDeZahl(results.maxV, 1)} <span className="text-lg font-normal">kN</span></div>
                 </div>
               </div>
@@ -451,56 +451,52 @@ export default function Baustatik() {
 
             <FormulaDerivationBox
               live
-              title="Ihr Rechenweg: Auflagerkräfte und Schnittgrößen mit den aktuellen Eingaben"
+              title={inhalt.werte.ihrRechenwegAuflagerkräfteUnd}
               zielGleichung={`|M|_{max} = ${formatDeTeX(results.maxAbsM, 1)}\\,\\text{kNm},\\quad |V|_{max} = ${formatDeTeX(results.maxV, 1)}\\,\\text{kN}`}
-              normQuelle="Gleichgewichtsbedingungen; Dreimomentengleichung (Zweifeldträger)"
+              normQuelle={inhalt.werte.gleichgewichtsbedingungenDreimomentengle}
               schritte={[
                 system === 'einfeld'
                   ? {
-                      titel: 'Auflagerkraft A',
-                      erklaerung: 'Momentengleichgewicht um das rechte Auflager B.',
+                      titel: inhalt.werte.auflagerkraftA,
+                      erklaerung: inhalt.werte.momentengleichgewichtUmDasRechte,
                       formel: `A = \\frac{q \\cdot l}{2} + \\frac{F \\cdot (l - a)}{l} - \\frac{M_0}{l} = \\frac{${formatDeTeX(q, 1)} \\cdot ${formatDeTeX(l, 1)}}{2} + \\frac{${formatDeTeX(f, 1)} \\cdot ${formatDeTeX(l - results.a_pos, 2)}}{${formatDeTeX(l, 1)}} - \\frac{${formatDeTeX(m0, 1)}}{${formatDeTeX(l, 1)}} = ${formatDeTeX(results.A, 1)}\\,\\text{kN}`,
                     }
                   : system === 'kragarm'
                     ? {
                         titel: 'Einspannkräfte',
-                        erklaerung: 'Vertikal- und Momentengleichgewicht an der Einspannung A (links).',
+                        erklaerung: inhalt.werte.vertikalUndMomentengleichgewichtAn,
                         formel: `A = q \\cdot l + F = ${formatDeTeX(q, 1)} \\cdot ${formatDeTeX(l, 1)} + ${formatDeTeX(f, 1)} = ${formatDeTeX(results.A, 1)}\\,\\text{kN};\\quad M_A = -\\frac{q l^2}{2} - F a - M_0 = ${formatDeTeX(results.MA, 1)}\\,\\text{kNm}`,
                       }
                     : {
-                        titel: 'Stützmoment über dem Mittelauflager',
+                        titel: inhalt.werte.stützmomentÜberDemMittelauflager,
                         erklaerung: `Dreimomentengleichung (Clapeyron) mit l₁ = ${formatDeZahl(results.l1_pos, 2)} m und l₂ = ${formatDeZahl(l - results.l1_pos, 2)} m, EI konstant.`,
                         formel: `M_B = -\\frac{q \\cdot (l_1^3 + l_2^3)}{8 \\cdot l} + \\Delta M_{B,F} + \\Delta M_{B,M_0} = -\\frac{${formatDeTeX(q, 1)} \\cdot (${formatDeTeX(results.l1_pos, 2)}^3 + ${formatDeTeX(l - results.l1_pos, 2)}^3)}{8 \\cdot ${formatDeTeX(l, 1)}} + \\ldots = ${formatDeTeX(results.MB, 2)}\\,\\text{kNm}`,
                       },
                 system === 'einfeld'
                   ? {
-                      titel: 'Auflagerkraft B',
-                      erklaerung: 'Momentengleichgewicht um das linke Auflager A.',
+                      titel: inhalt.werte.auflagerkraftB,
+                      erklaerung: inhalt.werte.momentengleichgewichtUmDasLinke,
                       formel: `B = \\frac{q \\cdot l}{2} + \\frac{F \\cdot a}{l} + \\frac{M_0}{l} = ${formatDeTeX((q * l) / 2, 2)} + ${formatDeTeX((f * results.a_pos) / l, 2)} + ${formatDeTeX(m0 / l, 2)} = ${formatDeTeX(results.B, 1)}\\,\\text{kN}`,
                     }
                   : system === 'kragarm'
-                    ? {
-                        titel: 'Freies Ende',
-                        erklaerung: 'Am freien Ende B gibt es keine Auflagerkraft.',
-                        formel: 'B = 0',
-                      }
+                    ? inhalt.daten.Baustatik
                     : {
                         titel: 'Auflagerkräfte',
-                        erklaerung: 'Auflagerkräfte der beiden Einfeldträger, korrigiert um den Anteil des Stützmoments M_B/l₁ bzw. M_B/l₂.',
+                        erklaerung: inhalt.werte.auflagerkräfteDerBeidenEinfeldträger,
                         formel: `A = ${formatDeTeX(results.A, 1)}\\,\\text{kN};\\quad B = ${formatDeTeX(results.B, 1)}\\,\\text{kN};\\quad C = ${formatDeTeX(results.C, 1)}\\,\\text{kN}`,
                       },
                 {
-                  titel: 'Kontrolle des Vertikalgleichgewichts',
-                  erklaerung: 'Die Summe der Auflagerkräfte muss der Summe der Vertikallasten entsprechen.',
+                  titel: inhalt.werte.kontrolleDesVertikalgleichgewichts,
+                  erklaerung: inhalt.werte.dieSummeDerAuflagerkräfte,
                   formel: `\\sum A_i = ${formatDeTeX(results.A + (system === 'kragarm' ? 0 : results.B) + (system === 'zweifeld' ? results.C : 0), 1)}\\,\\text{kN} = q \\cdot l + F = ${formatDeTeX(q * l + f, 1)}\\,\\text{kN}`,
                 },
                 {
-                  titel: 'Größtes Biegemoment',
+                  titel: inhalt.werte.größtesBiegemoment,
                   erklaerung: `Der Momentenverlauf M(x) wird an 101 Stellen ausgewertet; der Betragsgrößtwert liegt bei x = ${formatDeZahl(results.xAbsM, 2)} m.`,
                   formel: `M(${formatDeTeX(results.xAbsM, 2)}) = ${formatDeTeX(results.mAtMax, 1)}\\,\\text{kNm} \\;\\Rightarrow\\; |M|_{max} = ${formatDeTeX(results.maxAbsM, 1)}\\,\\text{kNm}`,
                 },
                 {
-                  titel: 'Größte Querkraft',
+                  titel: inhalt.werte.größteQuerkraft,
                   erklaerung: `Der Betragsgrößtwert der Querkraft liegt bei x = ${formatDeZahl(results.xMaxV, 2)} m.`,
                   formel: `V(${formatDeTeX(results.xMaxV, 2)}) = ${formatDeTeX(results.vAtMax, 1)}\\,\\text{kN} \\;\\Rightarrow\\; |V|_{max} = ${formatDeTeX(results.maxV, 1)}\\,\\text{kN}`,
                 },
@@ -512,26 +508,26 @@ export default function Baustatik() {
           <div className="lg:col-span-8 flex flex-col gap-6">
             {renderSystemSketch()}
             <div className="bg-white p-4 rounded-xl border border-home-grau/30 h-[300px] flex flex-col">
-              <h3 className="text-sm font-bold text-center mb-2">Biegemomentenverlauf M(x)</h3>
+              <h3 className="text-sm font-bold text-center mb-2"><MdText text={inhalt.texte.biegemomentenverlaufMX} /></h3>
               <div className="flex-1 relative">
                 <Line data={results.momentChart} options={{
                   ...chartOptions,
                   scales: {
                     ...chartOptions.scales,
-                    y: { title: { display: true, text: 'Moment [kNm]', font: { weight: 'bold' as const } }, reverse: true }
+                    y: { title: { display: true, text: inhalt.werte.momentKnm, font: { weight: 'bold' as const } }, reverse: true }
                   }
                 }} />
               </div>
             </div>
             
             <div className="bg-white p-4 rounded-xl border border-home-grau/30 h-[300px] flex flex-col">
-              <h3 className="text-sm font-bold text-center mb-2">Querkraftverlauf V(x)</h3>
+              <h3 className="text-sm font-bold text-center mb-2"><MdText text={inhalt.texte.querkraftverlaufVX} /></h3>
               <div className="flex-1 relative">
                 <Line data={results.shearChart} options={{
                   ...chartOptions,
                   scales: {
                     ...chartOptions.scales,
-                    y: { title: { display: true, text: 'Querkraft [kN]', font: { weight: 'bold' as const } } }
+                    y: { title: { display: true, text: inhalt.werte.querkraftKn, font: { weight: 'bold' as const } } }
                   }
                 }} />
               </div>
@@ -539,7 +535,7 @@ export default function Baustatik() {
 
             {/* Schematische Darstellung */}
             <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm">
-              <h3 className="font-semibold mb-4 text-text-main">Schematische Darstellung: Auflagerarten in der Ebene</h3>
+              <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungAuflagerartenIn} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4">
                 <svg width="100%" height="160" viewBox="0 0 450 160">
                   {/* Loslager (Verschieblich) */}
@@ -601,9 +597,7 @@ export default function Baustatik() {
                     </marker>
                   </defs>
                 </svg>
-                <div className="text-xs text-text-main/70 text-center mt-2">
-                  Auflagerarten in der 2D-Ebene: Ein Loslager nimmt nur Vertikalkräfte auf (1 Unbekannte). Ein Festlager nimmt Vertikal- und Horizontalkräfte auf (2 Unbekannte). Eine Einspannung nimmt zusätzlich ein Moment auf (3 Unbekannte).
-                </div>
+                <div className="text-xs text-text-main/70 text-center mt-2"><MdText text={inhalt.texte.auflagerartenInDer2d} /></div>
               </div>
             </div>
           </div>
@@ -614,45 +608,45 @@ export default function Baustatik() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <div className="lg:col-span-4 flex flex-col gap-6">
               <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
-                <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">System & Lasten</h3>
+                <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4"><MdText text={inhalt.texte.systemLasten2} /></h3>
                 <div className="grid grid-cols-1 gap-4">
-                  <Slider label="Rahmenhöhe (h)" min={2} max={10} step={0.5} value={rahmenH} unit="m" onChange={(e) => setRahmenH(Number(e.target.value))} />
-                  <Slider label="Rahmenbreite (l)" min={2} max={20} step={0.5} value={rahmenL} unit="m" onChange={(e) => setRahmenL(Number(e.target.value))} />
+                  <Slider label={inhalt.werte.rahmenhöheH} min={2} max={10} step={0.5} value={rahmenH} unit="m" onChange={(e) => setRahmenH(Number(e.target.value))} />
+                  <Slider label={inhalt.werte.rahmenbreiteL} min={2} max={20} step={0.5} value={rahmenL} unit="m" onChange={(e) => setRahmenL(Number(e.target.value))} />
                   <div className="mt-2 pt-4 border-t border-home-grau/30">
-                    <Slider label="Gleichlast Riegel (q)" min={0} max={100} step={1} value={rahmenQ} unit="kN/m" onChange={(e) => setRahmenQ(Number(e.target.value))} />
+                    <Slider label={inhalt.werte.gleichlastRiegelQ} min={0} max={100} step={1} value={rahmenQ} unit="kN/m" onChange={(e) => setRahmenQ(Number(e.target.value))} />
                   </div>
                   <div className="mt-2 pt-4 border-t border-home-grau/30">
-                    <Slider label="Horizontallast (W)" info="Windlast an der linken oberen Ecke." min={0} max={100} step={1} value={rahmenW} unit="kN" onChange={(e) => setRahmenW(Number(e.target.value))} />
+                    <Slider label={inhalt.werte.horizontallastW} info={inhalt.werte.windlastAnDerLinken} min={0} max={100} step={1} value={rahmenW} unit="kN" onChange={(e) => setRahmenW(Number(e.target.value))} />
                   </div>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm text-center">
-                  <div className="text-home-grau text-xs font-bold uppercase mb-1">Auflager A (links)</div>
+                  <div className="text-home-grau text-xs font-bold uppercase mb-1"><MdText text={inhalt.texte.auflagerALinks2} /></div>
                   <div className="text-lg font-bold text-text-main">V: {formatDeZahl(rahmenResults.Av, 1)} kN</div>
                   <div className="text-lg font-bold text-text-main">H: {formatDeZahl(rahmenResults.Ah, 1)} kN</div>
                 </div>
                 <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm text-center">
-                  <div className="text-home-grau text-xs font-bold uppercase mb-1">Auflager B (rechts)</div>
+                  <div className="text-home-grau text-xs font-bold uppercase mb-1"><MdText text={inhalt.texte.auflagerBRechts} /></div>
                   <div className="text-lg font-bold text-text-main">V: {formatDeZahl(rahmenResults.Bv, 1)} kN</div>
                   <div className="text-lg font-bold text-text-main">H: {formatDeZahl(rahmenResults.Bh, 1)} kN</div>
                 </div>
               </div>
 
               <div className="bg-shiraz/5 p-5 rounded-xl border border-shiraz/20">
-                <h3 className="text-sm font-bold text-shiraz uppercase tracking-wider mb-4">Maximalwerte Schnittgrößen</h3>
+                <h3 className="text-sm font-bold text-shiraz uppercase tracking-wider mb-4"><MdText text={inhalt.texte.maximalwerteSchnittgrößen} /></h3>
                 <div className="grid grid-cols-1 gap-4">
                   <div>
-                    <div className="text-home-grau text-sm mb-1">Maximales Biegemoment (|<FormulaText text="M_{max}" />|)</div>
+                    <div className="text-home-grau text-sm mb-1"><MdText text={inhalt.texte.maximalesBiegemoment} /><FormulaText text="M_{max}" />|)</div>
                     <div className="text-3xl font-bold text-shiraz">{formatDeZahl(Math.max(Math.abs(rahmenResults.M_Ecke_Links), Math.abs(rahmenResults.M_Ecke_Rechts), Math.abs(rahmenResults.M_Feld_Max)), 1)} <span className="text-lg font-normal">kNm</span></div>
                   </div>
                   <div>
-                    <div className="text-home-grau text-sm mb-1">Maximale Querkraft (|<FormulaText text="V_{max}" />|)</div>
+                    <div className="text-home-grau text-sm mb-1"><MdText text={inhalt.texte.maximaleQuerkraft} /><FormulaText text="V_{max}" />|)</div>
                     <div className="text-3xl font-bold text-shiraz">{formatDeZahl(Math.max(Math.abs(rahmenResults.Ah), Math.abs(rahmenResults.Bh), Math.abs(rahmenResults.Av), Math.abs(rahmenResults.Av - rahmenQ * rahmenL)), 1)} <span className="text-lg font-normal">kN</span></div>
                   </div>
                   <div>
-                    <div className="text-home-grau text-sm mb-1">Maximale Normalkraft (|<FormulaText text="N_{max}" />|)</div>
+                    <div className="text-home-grau text-sm mb-1"><MdText text={inhalt.texte.maximaleNormalkraft} /><FormulaText text="N_{max}" />|)</div>
                     <div className="text-3xl font-bold text-shiraz">{formatDeZahl(Math.max(Math.abs(rahmenResults.Av), Math.abs(rahmenResults.Bv), Math.abs(rahmenResults.Bh)), 1)} <span className="text-lg font-normal">kN</span></div>
                   </div>
                 </div>
@@ -662,11 +656,11 @@ export default function Baustatik() {
             <div className="lg:col-span-8 flex flex-col gap-6">
               <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm mb-6 overflow-x-auto">
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-sm font-bold text-center">Systemskizze & Schnittgrößen</h3>
+                  <h3 className="text-sm font-bold text-center"><MdText text={inhalt.texte.systemskizzeSchnittgrößen} /></h3>
                   <div className="flex bg-off-white rounded-lg p-1 border border-home-grau/30">
                     <button aria-pressed={rahmenSchnitt === 'M'} className={`px-3 py-1 text-xs font-bold rounded-md ${rahmenSchnitt === 'M' ? 'bg-white shadow-sm text-shiraz' : 'text-home-grau'}`} onClick={() => setRahmenSchnitt('M')}>Moment (M)</button>
-                    <button aria-pressed={rahmenSchnitt === 'V'} className={`px-3 py-1 text-xs font-bold rounded-md ${rahmenSchnitt === 'V' ? 'bg-white shadow-sm text-[#A3113E]' : 'text-home-grau'}`} onClick={() => setRahmenSchnitt('V')}>Querkraft (V)</button>
-                    <button aria-pressed={rahmenSchnitt === 'N'} className={`px-3 py-1 text-xs font-bold rounded-md ${rahmenSchnitt === 'N' ? 'bg-white shadow-sm text-green-700' : 'text-home-grau'}`} onClick={() => setRahmenSchnitt('N')}>Normalkraft (N)</button>
+                    <button aria-pressed={rahmenSchnitt === 'V'} className={`px-3 py-1 text-xs font-bold rounded-md ${rahmenSchnitt === 'V' ? inhalt.werte.bgWhiteShadowSm : 'text-home-grau'}`} onClick={() => setRahmenSchnitt('V')}><MdText text={inhalt.texte.querkraftV} /></button>
+                    <button aria-pressed={rahmenSchnitt === 'N'} className={`px-3 py-1 text-xs font-bold rounded-md ${rahmenSchnitt === 'N' ? 'bg-white shadow-sm text-green-700' : 'text-home-grau'}`} onClick={() => setRahmenSchnitt('N')}><MdText text={inhalt.texte.normalkraftN} /></button>
                   </div>
                 </div>
                 <div className="min-w-[600px] flex justify-center">
@@ -798,9 +792,9 @@ export default function Baustatik() {
                   </svg>
                 </div>
                 <div className="text-center text-sm text-text-main/70 mt-4">
-                  {rahmenSchnitt === 'M' && "Dargestellt ist der Momentenverlauf (M). Die Momentenfläche wird (konventionsgemäß) auf der Seite der Zugfaser gezeichnet."}
-                  {rahmenSchnitt === 'V' && "Dargestellt ist der Querkraftverlauf (V). Positive Querkräfte drehen das abgetrennte Element im Uhrzeigersinn."}
-                  {rahmenSchnitt === 'N' && "Dargestellt ist der Normalkraftverlauf (N). Druckkräfte sind in der Regel negativ."}
+                  {rahmenSchnitt === 'M' && inhalt.werte.dargestelltIstDerMomentenverlauf}
+                  {rahmenSchnitt === 'V' && inhalt.werte.dargestelltIstDerQuerkraftverlauf}
+                  {rahmenSchnitt === 'N' && inhalt.werte.dargestelltIstDerNormalkraftverlauf}
                 </div>
               </div>
             </div>
@@ -810,66 +804,33 @@ export default function Baustatik() {
       
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: Einfeldträger mit Gleich- und Einzellast"
+        title={inhalt.werte.beispiel1EinfeldträgerMit}
         zielGleichung="M_{max} = A \cdot a - \frac{q \cdot a^2}{2}"
-        schritte={[
-          { titel: 'Gegeben', erklaerung: 'Stützweite l = 6 m, Gleichlast q = 10 kN/m, Einzellast F = 50 kN bei a = 2 m.', formel: 'l = 6\\,\\text{m},\\; q = 10\\,\\text{kN/m},\\; F = 50\\,\\text{kN},\\; a = 2\\,\\text{m}' },
-          { titel: 'Auflagerkräfte', erklaerung: 'Momentengleichgewicht um B bzw. A:', formel: 'A = \\frac{10 \\cdot 6}{2} + \\frac{50 \\cdot 4}{6} = 63{,}3\\,\\text{kN}, \\quad B = 30 + \\frac{50 \\cdot 2}{6} = 46{,}7\\,\\text{kN}' },
-          { titel: 'Querkraftnullstelle', erklaerung: 'V springt unter der Einzellast von +43,3 kN auf −6,7 kN; dort liegt das Momentenmaximum.', formel: 'V(2^-) = 63{,}3 - 20 = 43{,}3\\,\\text{kN}, \\quad V(2^+) = -6{,}7\\,\\text{kN}' },
-          { titel: 'Maximales Moment', erklaerung: 'Moment an der Stelle x = a:', formel: 'M_{max} = 63{,}3 \\cdot 2 - \\frac{10 \\cdot 2^2}{2} = 106{,}7\\,\\text{kNm}' }
-        ]}
-        ergebnisHinweis="Kontrolle: A + B = 110 kN = q · l + F. Das Moment ist dort maximal, wo die Querkraft das Vorzeichen wechselt (dM/dx = V)."
-        normQuelle="Gleichgewichtsbedingungen der Statik (statisch bestimmtes System)"
+        schritte={inhalt.daten["Baustatik.schritte"]}
+        ergebnisHinweis={inhalt.werte.kontrolleAB110}
+        normQuelle={inhalt.werte.gleichgewichtsbedingungenDerStatikStatis}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: Zweifeldträger und Dreigelenkrahmen unter Gleichlast"
+        title={inhalt.werte.beispiel2ZweifeldträgerUnd}
         zielGleichung="M_B = -\frac{q \cdot (l_1^3 + l_2^3)}{8 \cdot (l_1 + l_2)}"
-        schritte={[
-          { titel: 'Zweifeldträger', erklaerung: 'l₁ = l₂ = 5 m, q = 20 kN/m, EI konstant; Stützmoment aus der Dreimomentengleichung (Clapeyron):', formel: 'M_B = -\\frac{20 \\cdot (125 + 125)}{8 \\cdot 10} = -62{,}5\\,\\text{kNm}' },
-          { titel: 'Auflagerkräfte', erklaerung: 'Das Stützmoment entlastet die Endauflager und belastet das Mittelauflager:', formel: 'A = C = 50 - \\frac{62{,}5}{5} = 37{,}5\\,\\text{kN}, \\quad B = 2 \\cdot (50 + 12{,}5) = 125\\,\\text{kN}' },
-          { titel: 'Dreigelenkrahmen', erklaerung: 'Riegel L = 8 m, Stielhöhe H = 4 m, q = 10 kN/m: Horizontalschub aus der Gelenkbedingung M_C = 0:', formel: 'H = \\frac{q \\cdot L^2}{8 \\cdot H_{Stiel}} = \\frac{10 \\cdot 64}{8 \\cdot 4} = 20\\,\\text{kN}' },
-          { titel: 'Rahmenecke', erklaerung: 'Eckmoment aus Horizontalschub mal Stielhöhe:', formel: '|M_{Ecke}| = 20 \\cdot 4 = 80\\,\\text{kNm} = \\frac{q \\cdot L^2}{8}' }
-        ]}
-        ergebnisHinweis="Durchlaufwirkung und Rahmenwirkung verlagern Moment aus dem Feld in Stützen bzw. Ecken: Beim Zweifeldträger erhält das Mittelauflager 1,25 · q · l statt q · l, beim Dreigelenkrahmen ist das Feldmoment im Scheitelgelenk null."
-        normQuelle="Dreimomentengleichung (Clapeyron); Gleichgewicht am Dreigelenkrahmen"
+        schritte={inhalt.daten["Baustatik.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.durchlaufwirkungUndRahmenwirkungVerlager}
+        normQuelle={inhalt.werte.dreimomentengleichungClapeyronGleichgewi}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
       <ModulTest moduleId="baustatik" />
 
       <ModuleFooter 
-        lastReviewed="Oktober 2026 (AP 5 Mechanik: Auflager- und Schnittgrößenformeln, Zweifeld- und Rahmenstatik nachgerechnet, Normbezüge geprüft; fachliche Freigabe durch den Autor ausstehend)"
+        lastReviewed={inhalt.werte.oktober2026Ap5}
         wikipedia={[
         { title: 'Baustatik', url: 'https://de.wikipedia.org/wiki/Baustatik' },
-        { title: 'Träger (Statik)', url: 'https://de.wikipedia.org/wiki/Tr%C3%A4ger_(Statik)' },
-        { title: 'Rahmen (Bauwesen)', url: 'https://de.wikipedia.org/wiki/Rahmen_(Bauwesen)' }
+        { title: inhalt.werte.trägerStatik, url: 'https://de.wikipedia.org/wiki/Tr%C3%A4ger_(Statik)' },
+        { title: inhalt.werte.rahmenBauwesen, url: 'https://de.wikipedia.org/wiki/Rahmen_(Bauwesen)' }
       ]}
-        literatur={[
-          'Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024',
-          'Gross, D.; Hauger, W.; Schröder, J.; Wall, W. A.: Technische Mechanik 2 – Elastostatik. Berlin: Springer Vieweg (aktuelle Auflage)'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 1990:2021-10 (Eurocode 0: Grundlagen der Tragwerksplanung & Kombinationsregeln)' },
-          { title: 'DIN EN 1991-1-1:2010-12 mit NA (Eurocode 1: Einwirkungen auf Tragwerke – Wichten, Eigengewicht, Nutzlasten)' },
-          { title: 'DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (Eurocode 3, bauaufsichtlich eingeführt); neue Generation DIN EN 1993-1-1:2025-04' }
-        ]}
-        formeln={[
-          {
-            formel: 'M_{\\text{max}} = \\frac{q \\cdot L^2}{8} \\quad \\text{und} \\quad w_{\\text{max}} = \\frac{5 \\cdot q \\cdot L^4}{384 \\cdot E \\cdot I}',
-            erklaerung: 'Maximales Biegemoment und maximale Durchbiegung in Feldmitte eines Einfeldträgers unter gleichmäßig verteilter Linienlast q.',
-            quelle: 'Albert, A. (Hrsg.): Schneider – Bautabellen für Ingenieure. 26. Aufl., Köln: Reguvis 2024'
-          },
-          {
-            formel: '\\sigma(z) = \\frac{N}{A} \\pm \\frac{M_y}{I_y} \\cdot z \\le f_{y,d}',
-            erklaerung: 'Normalspannungsverteilung im Querschnitt bei einachsiger Biegung mit Normalkraft nach der linearen Elastizitätstheorie (Navier-Hypothese).',
-            quelle: 'Technische Mechanik; elastischer Querschnittsnachweis nach DIN EN 1993-1-1, 6.2.1 (5)'
-          },
-          {
-            formel: 'w\'\'(x) = -\\frac{M(x)}{E \\cdot I}',
-            erklaerung: 'Biegelinie (Differentialgleichung der Biegung 2. Ordnung): Zusammenhang zwischen Trägerkrümmung, Biegemoment und Biegesteifigkeit E*I.',
-            quelle: 'Euler-Bernoulli-Balkentheorie'
-          }
-        ]}
+        literatur={inhalt.daten["Baustatik.literatur"]}
+        regelwerke={inhalt.daten["Baustatik.regelwerke"]}
+        formeln={inhalt.daten["Baustatik.formeln"]}
       />
     </div>
   );

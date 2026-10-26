@@ -4,6 +4,8 @@ import React from 'react';
 import { Scale } from 'lucide-react';
 import { Slider } from '@/src/components/ui/Slider';
 import { BlockMath, InlineMath } from 'react-katex';
+import inhalt from '@/content/baustoffkenngroessen/PhysikalischTab.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface PhysikalischTabProps {
   dichtePresets: { ziegel: { name: string; rhoR: number; rho: number; rhoS: number; desc: string; }; blaehton: { name: string; rhoR: number; rho: number; rhoS: number; desc: string; }; granit: { name: string; rhoR: number; rho: number; rhoS: number; desc: string; }; porenbeton: { name: string; rhoR: number; rho: number; rhoS: number; desc: string; }; };
@@ -23,12 +25,9 @@ export default function PhysikalischTab({ dichtePresets, handleDichtePresetChang
       {/* Sektion 1: Dichtearten im Gefügevergleich */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-3 flex items-center gap-2">
-          <Scale className="text-shiraz" size={20} /> Gefügeabhängige Dichtebestimmung im Vergleich
-        </h3>
+          <Scale className="text-shiraz" size={20} /><MdText text={inhalt.texte.gefügeabhängigeDichtebestimmungImVerglei} /></h3>
         
-        <p className="text-xs sm:text-sm text-text-main/80 mt-3 mb-6 leading-relaxed">
-          Im Bauwesen ist Dichte nicht gleich Dichte. Je nachdem, ob Hohlräume im Baustoffinneren (Poren) oder Zwickelräume zwischen Baustoffkörnern (Haufwerk) mitgewogen werden, unterscheidet man drei grundlegende Dichtebegriffe.
-        </p>
+        <p className="text-xs sm:text-sm text-text-main/80 mt-3 mb-6 leading-relaxed"><MdText text={inhalt.texte.imBauwesenIstDichte} /></p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Card 1: Reindichte */}
@@ -58,19 +57,15 @@ export default function PhysikalischTab({ dichtePresets, handleDichtePresetChang
                   <text x="60" y="64" fill="#ffffff" fontSize="9" fontWeight="bold" textAnchor="middle" className="font-mono">100% Feststoff</text>
                 </svg>
               </div>
-              <h4 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-2">1. Reindichte (<InlineMath math="\rho_R" />)</h4>
-              <p className="text-xs text-slate-600 leading-relaxed min-h-[64px]">
-                Die Reindichte bezieht sich ausschließlich auf das Netto-Volumen der reinen, absolut porenfreien Festsubstanz. Es wird chemisch-physikalisch durch Zermahlen bestimmt.
-              </p>
+              <h4 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-2"><MdText text={inhalt.texte.t1ReindichteRhoR} /></h4>
+              <p className="text-xs text-slate-600 leading-relaxed min-h-[64px]"><MdText text={inhalt.texte.dieReindichteBeziehtSich} /></p>
             </div>
             <div className="mt-4 pt-3 border-t border-home-grau/30">
               <BlockMath math="\rho_R = \frac{m}{V_{Fest}}" />
               <div className="mt-2 mb-2 p-2 bg-indigo-50/60 rounded border border-indigo-100/30 text-[9px] text-slate-600 leading-normal">
-                <span className="font-bold text-indigo-950 block">🔢 Einfache Beispielrechnung:</span>
-                Ziegelmehl: <InlineMath math="m = 26{,}5\text{ g}" />, <InlineMath math="V_{Fest} = 10\text{ cm}^3" />.
-                <div className="font-mono mt-0.5 text-slate-800">&rho;_R = 26,5 g / 10 cm³ = 2,65 g/cm³ (2650 kg/m³)</div>
+                <span className="font-bold text-indigo-950 block"><MdText text={inhalt.texte.einfacheBeispielrechnung} /></span><MdText text={inhalt.texte.ziegelmehlM265text} /><div className="font-mono mt-0.5 text-slate-800"><MdText text={inhalt.texte.r265G} /></div>
               </div>
-              <span className="text-[10px] text-slate-400 block text-center mt-1">Prüfverfahren: Helium-Pyknometrie / DIN 51057</span>
+              <span className="text-[10px] text-slate-400 block text-center mt-1"><MdText text={inhalt.texte.prüfverfahrenHeliumPyknometrieDin} /></span>
             </div>
           </div>
 
@@ -89,19 +84,15 @@ export default function PhysikalischTab({ dichtePresets, handleDichtePresetChang
                   <path d="M 10 50 Q 25 50 25 55 Q 25 60 10 60 Z" fill="#ffffff" stroke="#334155" strokeWidth="1" />
                 </svg>
               </div>
-              <h4 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-2">2. Rohdichte (<InlineMath math="\rho" />)</h4>
-              <p className="text-xs text-slate-600 leading-relaxed min-h-[64px]">
-                Die Rohdichte (Scherben- bzw. Steinrohdichte) beschreibt das Verhältnis der Masse zum äußeren Hüllvolumen des Festkörpers, also inklusive aller eingebetteten Poren und Risse.
-              </p>
+              <h4 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-2"><MdText text={inhalt.texte.t2RohdichteRho} /></h4>
+              <p className="text-xs text-slate-600 leading-relaxed min-h-[64px]"><MdText text={inhalt.texte.dieRohdichteScherbenBzw} /></p>
             </div>
             <div className="mt-4 pt-3 border-t border-home-grau/30">
               <BlockMath math="\rho = \frac{m}{V_{H\ddot{u}ll}}" />
               <div className="mt-2 mb-2 p-2 bg-indigo-50/60 rounded border border-indigo-100/30 text-[9px] text-slate-600 leading-normal">
-                <span className="font-bold text-indigo-950 block">🔢 Einfache Beispielrechnung:</span>
-                Ziegelstein: <InlineMath math="m = 3{,}6\text{ kg}" />, <InlineMath math="V_{Hüll} = 2\text{ dm}^3\ (0{,}002\text{ m}^3)" />.
-                <div className="font-mono mt-0.5 text-slate-800">&rho; = 3,6 kg / 0,002 m³ = 1800 kg/m³</div>
+                <span className="font-bold text-indigo-950 block"><MdText text={inhalt.texte.einfacheBeispielrechnung2} /></span><MdText text={inhalt.texte.ziegelsteinM36text} /><div className="font-mono mt-0.5 text-slate-800"><MdText text={inhalt.texte.t36Kg0} /></div>
               </div>
-              <span className="text-[10px] text-slate-400 block text-center mt-1">Prüfverfahren: Wägung und Volumen über Ausmessen oder Unterwasserwägung (z. B. DIN EN 1936, DIN EN 772-13)</span>
+              <span className="text-[10px] text-slate-400 block text-center mt-1"><MdText text={inhalt.texte.prüfverfahrenWägungUndVolumen} /></span>
             </div>
           </div>
 
@@ -131,19 +122,15 @@ export default function PhysikalischTab({ dichtePresets, handleDichtePresetChang
                   </g>
                 </svg>
               </div>
-              <h4 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-2">3. Schüttdichte (<InlineMath math="\rho_S" />)</h4>
-              <p className="text-xs text-slate-600 leading-relaxed min-h-[64px]">
-                Die Schüttdichte gilt für lose Haufwerke (Sande, Kiese, Körnungen). Das Volumen umfasst hier sowohl das Feststoffvolumen, die Kornporen als auch die weiten Zwickelräume dazwischen.
-              </p>
+              <h4 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-2"><MdText text={inhalt.texte.t3SchüttdichteRhoS} /></h4>
+              <p className="text-xs text-slate-600 leading-relaxed min-h-[64px]"><MdText text={inhalt.texte.dieSchüttdichteGiltFür} /></p>
             </div>
             <div className="mt-4 pt-3 border-t border-home-grau/30">
               <BlockMath math="\rho_S = \frac{m}{V_{Sch\ddot{u}tt}}" />
               <div className="mt-2 mb-2 p-2 bg-indigo-50/60 rounded border border-indigo-100/30 text-[9px] text-slate-600 leading-normal">
-                <span className="font-bold text-indigo-950 block">🔢 Einfache Beispielrechnung:</span>
-                Splitschüttung: <InlineMath math="m = 11\text{ kg}" />, <InlineMath math="V_{Schütt} = 10\text{ Liter}\ (0{,}01\text{ m}^3)" />.
-                <div className="font-mono mt-0.5 text-slate-800">&rho;_S = 11 kg / 0,01 m³ = 1100 kg/m³</div>
+                <span className="font-bold text-indigo-950 block"><MdText text={inhalt.texte.einfacheBeispielrechnung3} /></span><MdText text={inhalt.texte.splitschüttungM11textKg} /><div className="font-mono mt-0.5 text-slate-800"><MdText text={inhalt.texte.s11Kg0} /></div>
               </div>
-              <span className="text-[10px] text-slate-400 block text-center mt-1">Prüfverfahren: Messzylindermessung / DIN EN 1097-3</span>
+              <span className="text-[10px] text-slate-400 block text-center mt-1"><MdText text={inhalt.texte.prüfverfahrenMesszylindermessungDinEn} /></span>
             </div>
           </div>
         </div>
@@ -173,7 +160,7 @@ export default function PhysikalischTab({ dichtePresets, handleDichtePresetChang
           {selectedDichtePreset === 'custom' ? (
             <div className="space-y-4 mt-2">
               <Slider 
-                label="Reindichte (ρ_R) [Feststoff]" 
+                label={inhalt.werte.reindichteRFeststoff} 
                 min={1000} 
                 max={3500} 
                 step={50} 
@@ -187,7 +174,7 @@ export default function PhysikalischTab({ dichtePresets, handleDichtePresetChang
                 }} 
               />
               <Slider 
-                label="Rohdichte (ρ) [Korn]" 
+                label={inhalt.werte.rohdichteKorn} 
                 min={200} 
                 max={physRhoR} 
                 step={20} 
@@ -200,7 +187,7 @@ export default function PhysikalischTab({ dichtePresets, handleDichtePresetChang
                 }} 
               />
               <Slider 
-                label="Schüttdichte (ρ_S) [Schüttung]" 
+                label={inhalt.werte.schüttdichteSSchüttung} 
                 min={50} 
                 max={physRho} 
                 step={10} 
@@ -226,7 +213,7 @@ export default function PhysikalischTab({ dichtePresets, handleDichtePresetChang
 
         {/* Panel 2 & 3: Mathematische Auswertung & Porenanteile */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6 lg:col-span-2">
-          <h3 className="text-md font-bold text-text-main border-b border-home-grau/30 pb-2">Mathematische Gefügeanalyse</h3>
+          <h3 className="text-md font-bold text-text-main border-b border-home-grau/30 pb-2"><MdText text={inhalt.texte.mathematischeGefügeanalyse} /></h3>
           
           {(() => {
             const activeRhoR = selectedDichtePreset === 'custom' ? physRhoR : dichtePresets[selectedDichtePreset].rhoR;
@@ -243,17 +230,15 @@ export default function PhysikalischTab({ dichtePresets, handleDichtePresetChang
                   {/* Kornporosität */}
                   <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30 flex flex-col justify-between">
                     <div>
-                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1">Innere Kornporosität</span>
+                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1"><MdText text={inhalt.texte.innereKornporosität} /></span>
                       <BlockMath math="P_{Korn} = \left(1 - \frac{\rho}{\rho_R}\right)" />
                       <div className="mt-2 p-2 bg-indigo-50/60 rounded border border-indigo-100/30 text-[9px] text-slate-600 leading-normal">
-                        <span className="font-bold text-indigo-950 block">🔢 Einfache Beispielrechnung:</span>
-                        Ziegel mit Rohdichte <InlineMath math="\rho = 1800\text{ kg/m}^3" /> und Reindichte <InlineMath math="\rho_R = 2650\text{ kg/m}^3" />.
-                        <div className="font-mono mt-0.5 text-slate-800">1 - (1800 / 2650) = 32,1%</div>
+                        <span className="font-bold text-indigo-950 block"><MdText text={inhalt.texte.einfacheBeispielrechnung4} /></span><MdText text={inhalt.texte.ziegelMitRohdichteRho} /><div className="font-mono mt-0.5 text-slate-800">1 - (1800 / 2650) = 32,1%</div>
                       </div>
                     </div>
                     <div className="text-center mt-3 bg-white p-2 rounded border border-home-grau/30">
                       <strong className="text-lg font-extrabold text-blue-600">{formatDeZahl(grainPorosity, 1)}%</strong>
-                      <span className="text-[9px] text-slate-400 block uppercase font-bold mt-0.5">Inneres Porenvolumen</span>
+                      <span className="text-[9px] text-slate-400 block uppercase font-bold mt-0.5"><MdText text={inhalt.texte.inneresPorenvolumen} /></span>
                     </div>
                   </div>
 
@@ -263,9 +248,7 @@ export default function PhysikalischTab({ dichtePresets, handleDichtePresetChang
                       <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1">Zwickel-/Haufwerksporigkeit</span>
                       <BlockMath math="P_{Hauf} = \left(1 - \frac{\rho_S}{\rho}\right)" />
                       <div className="mt-2 p-2 bg-indigo-50/60 rounded border border-indigo-100/30 text-[9px] text-slate-600 leading-normal">
-                        <span className="font-bold text-indigo-950 block">🔢 Einfache Beispielrechnung:</span>
-                        Kiesschüttung mit Schüttdichte <InlineMath math="\rho_S = 1600\text{ kg/m}^3" /> und Kornrohdichte <InlineMath math="\rho = 2650\text{ kg/m}^3" />.
-                        <div className="font-mono mt-0.5 text-slate-800">1 - (1600 / 2650) = 39,6%</div>
+                        <span className="font-bold text-indigo-950 block"><MdText text={inhalt.texte.einfacheBeispielrechnung5} /></span><MdText text={inhalt.texte.kiesschüttungMitSchüttdichteRho} /><div className="font-mono mt-0.5 text-slate-800">1 - (1600 / 2650) = 39,6%</div>
                       </div>
                     </div>
                     <div className="text-center mt-3 bg-white p-2 rounded border border-home-grau/30">
@@ -277,51 +260,49 @@ export default function PhysikalischTab({ dichtePresets, handleDichtePresetChang
                   {/* Gesamthohlraumgehalt */}
                   <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30 flex flex-col justify-between">
                     <div>
-                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1">Gesamter Hohlraumanteil</span>
+                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1"><MdText text={inhalt.texte.gesamterHohlraumanteil} /></span>
                       <BlockMath math="P_{Gesamt} = \left(1 - \frac{\rho_S}{\rho_R}\right)" />
                       <div className="mt-2 p-2 bg-indigo-50/60 rounded border border-indigo-100/30 text-[9px] text-slate-600 leading-normal">
-                        <span className="font-bold text-indigo-950 block">🔢 Einfache Beispielrechnung:</span>
-                        Ziegelgrus mit Schüttdichte <InlineMath math="\rho_S = 1100\text{ kg/m}^3" /> und Reindichte <InlineMath math="\rho_R = 2650\text{ kg/m}^3" />.
-                        <div className="font-mono mt-0.5 text-slate-800">1 - (1100 / 2650) = 58,5%</div>
+                        <span className="font-bold text-indigo-950 block"><MdText text={inhalt.texte.einfacheBeispielrechnung6} /></span><MdText text={inhalt.texte.ziegelgrusMitSchüttdichteRho} /><div className="font-mono mt-0.5 text-slate-800">1 - (1100 / 2650) = 58,5%</div>
                       </div>
                     </div>
                     <div className="text-center mt-3 bg-white p-2 rounded border border-home-grau/30">
                       <strong className="text-lg font-extrabold text-shiraz">{formatDeZahl(totalVoidRatio, 1)}%</strong>
-                      <span className="text-[9px] text-slate-400 block uppercase font-bold mt-0.5">Hohlraumanteil gesamt</span>
+                      <span className="text-[9px] text-slate-400 block uppercase font-bold mt-0.5"><MdText text={inhalt.texte.hohlraumanteilGesamt} /></span>
                     </div>
                   </div>
                 </div>
 
                 {/* Gefügebalken Visualisierung */}
                 <div className="bg-slate-50 p-5 rounded-xl border border-home-grau/30">
-                  <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-3">Visuelle Verteilung des Schüttvolumens</h4>
+                  <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-3"><MdText text={inhalt.texte.visuelleVerteilungDesSchüttvolumens} /></h4>
                   <div className="h-8 w-full bg-slate-200 rounded-full overflow-hidden flex font-mono text-[9px] font-bold text-white text-center">
                     <div 
                       className="bg-slate-700 flex items-center justify-center transition-all duration-300"
                       style={{ width: `${(100 - totalVoidRatio)}%` }}
-                      title="Reines Feststoffvolumen (Skelett)"
+                      title={inhalt.werte.reinesFeststoffvolumenSkelett}
                     >
                       {(100 - totalVoidRatio) > 12 && `Skelett ${formatDeZahl((100 - totalVoidRatio), 1)}%`}
                     </div>
                     <div 
                       className="bg-blue-500 flex items-center justify-center transition-all duration-300"
                       style={{ width: `${((100 - haufwerkPorosity) * (grainPorosity / 100))}%` }}
-                      title="Volumen der Kornporen"
+                      title={inhalt.werte.volumenDerKornporen}
                     >
                       {((100 - haufwerkPorosity) * (grainPorosity / 100)) > 12 && `Intraporen`}
                     </div>
                     <div 
                       className="bg-indigo-500 flex items-center justify-center transition-all duration-300"
                       style={{ width: `${haufwerkPorosity}%` }}
-                      title="Volumen der Interporen (Haufwerkshohlräume)"
+                      title={inhalt.werte.volumenDerInterporenHaufwerkshohlräume}
                     >
                       {haufwerkPorosity > 12 && `Haufwerk ${formatDeZahl(haufwerkPorosity, 1)}%`}
                     </div>
                   </div>
                   <div className="flex justify-between text-[10px] text-slate-500 mt-2 font-medium">
-                    <div className="flex items-center gap-1"><span className="w-2.5 h-2.5 bg-slate-700 rounded-sm"></span> Rein-Feststoff (Skelett)</div>
-                    <div className="flex items-center gap-1"><span className="w-2.5 h-2.5 bg-blue-500 rounded-sm"></span> Kornporen (Intra-Poren)</div>
-                    <div className="flex items-center gap-1"><span className="w-2.5 h-2.5 bg-indigo-500 rounded-sm"></span> Haufwerksporen (Zwickelräume)</div>
+                    <div className="flex items-center gap-1"><span className="w-2.5 h-2.5 bg-slate-700 rounded-sm"></span><MdText text={inhalt.texte.reinFeststoffSkelett} /></div>
+                    <div className="flex items-center gap-1"><span className="w-2.5 h-2.5 bg-blue-500 rounded-sm"></span><MdText text={inhalt.texte.kornporenIntraPoren} /></div>
+                    <div className="flex items-center gap-1"><span className="w-2.5 h-2.5 bg-indigo-500 rounded-sm"></span><MdText text={inhalt.texte.haufwerksporenZwickelräume} /></div>
                   </div>
                 </div>
               </div>

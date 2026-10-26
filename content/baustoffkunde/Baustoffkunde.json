@@ -1,0 +1,371 @@
+{
+  "texte": {
+    "dieWissenschaftlicheLehreVon": "Die wissenschaftliche Lehre von den inneren Strukturen, physikalisch-chemischen Mechanismen, Klassifizierungen und historischen Entwicklungen unserer Bauwerkstoffe – das Fundament jeder baukonstruktiven Praxis.",
+    "systematikFachordnung": " Systematik & Fachordnung",
+    "historischeEntwicklung": " Historische Entwicklung",
+    "bedeutendePioniere": " Bedeutende Pioniere",
+    "wasUntersuchtDieBaustoffkunde": " Was untersucht die Baustoffkunde?",
+    "dasFachgebietVerknüpftDie": "Das Fachgebiet verknüpft die **Naturwissenschaften (Physik, Chemie, Geologie)** mit dem praktischen **Konstruktiven Ingenieurbau**. Baustoffe werden nicht isoliert betrachtet, sondern entlang des Beziehungsdreiecks **Struktur (Mikrostruktur, Poren) ➔ Stoffeigenschaften (Makroebene) ➔ Dauerhaftigkeit / Ökologie**.",
+    "t1PhysikalischeKriterien": "1. Physikalische Kriterien",
+    "porengrößenverteilungRohUndReindichte": "Porengrößenverteilung, Roh- und Reindichte, thermische Dehnung, Feuchte- und Gastransportvorgänge im Festkörper.",
+    "t2MechanischeParameter": "2. Mechanische Parameter",
+    "zusammenhangZwischenBelastungsrichtungSp": "Zusammenhang zwischen Belastungsrichtung, Spannungen, elastischer/plastischer Verformung, Zähigkeit, Ermüdung und E-Modul.",
+    "t3ChemischeEinflüsse": "3. Chemische Einflüsse",
+    "hydratationsreaktionenVonAnorganischenBi": "Hydratationsreaktionen von anorganischen Bindemitteln, Karbonatisierung von Zementstein, Schadsalzbildung und pH-Stabilität.",
+    "t4ÖkologischeBilanz": "4. Ökologische Bilanz",
+    "epdsPrimärenergiegehaltKlinkerZusatzstof": "EPDs, Primärenergiegehalt, Klinker-Zusatzstoffe, Bio-Stoffkreisläufe, Schadstoffgehalt, Recyclingfähigkeit und Recyklatverwertung.",
+    "bedeutendeUntergruppen": " bedeutende Untergruppen",
+    "wichtigsteUnterklassenBeispiele": "Wichtigste Unterklassen & Beispiele:",
+    "typischeMaterialEigenschaften": "Typische Material-Eigenschaften:",
+    "verfügbarInDenRechnern": "Verfügbar in den Rechnern des Portals.",
+    "dasSkalenPrinzipIn": "Das Skalen-Prinzip in der Baustoffkunde",
+    "dieEigenschaftenDieWir": "Die Eigenschaften, die wir auf der Baustelle messen (z.B. Druckfestigkeit oder Wärmeleitfähigkeit), werden vollständig auf kleineren physikalischen Skalen bestimmt. Die Baustoffkunde schränkt die Lupe stufenweise ein:",
+    "t1MakrokosmosBauteil": "1. Makrokosmos (Bauteil)",
+    "trägerWandBrücke": "Träger, Wand, Brücke",
+    "abmessungenInMeternSichtbare": "Abmessungen in Metern. Sichtbare Rissbildung, Durchbiegung, Belastungen, Verformung.",
+    "t2MesokosmosGefüge": "2. Mesokosmos (Gefüge)",
+    "gesteinskörnungZementstein": "Gesteinskörnung & Zementstein",
+    "millimeterBisMikrometerHaftverbundzone": "Millimeter bis Mikrometer. Haftverbundzone (ITZ), Kapillarporennetz, Mikrorisse, Sandkörner.",
+    "t3MikrokosmosKristall": "3. Mikrokosmos (Kristall)",
+    "cshGeleEttringit": "CSH-Gele, Ettringit",
+    "nanometerBereichKristallinePlatten": "Nanometer-Bereich. Kristalline Platten, Gelporen, Schichtstrukturen der Hydratphasen.",
+    "t4SubMikroAtomar": "4. Sub-Mikro (Atomar)",
+    "ionenAtombindung": "Ionen, Atombindung",
+    "angströmBereichKovalenteMetallische": "Angström-Bereich. Kovalente, metallische und Van-der-Waals-Bindungskräfte.",
+    "geschichtlicherAufrissDerWerkstoffevolut": " Geschichtlicher Aufriss der Werkstoffevolution",
+    "dieGeschichteDesBauens": "Die Geschichte des Bauens ist untrennbar mit der Entdeckung und Beherrschung neuer Baustoffe verknüpft. Jede tektonische Epoche wurde durch veränderte stoffchemische und mechanische Möglichkeiten definiert – vom unbewehrten Monument der Antike bis zum hochgradig ressourcen-optimierten und digitalisierten Bauteil der Gegenwart. Wählen Sie unten eine Epoche aus.",
+    "prägendeMaterialienDieserEpoche": "Prägende Materialien dieser Epoche:",
+    "schlüsselMeilenstein": "Schlüssel-Meilenstein :",
+    "bedeutungFürDieBaustoffkunde": "Bedeutung für die Baustoffkunde heute :",
+    "wegbereiterVäterDerWerkstoffwissenschaft": " Wegbereiter & Väter der Werkstoffwissenschaft",
+    "hinterJedemModernenHochleistungsbaustoff": "Hinter jedem modernen Hochleistungsbaustoff stehen Forschergeist, beharrliche Experimente und wichtige Entdeckungen. Diese Pioniere haben die Brücke zwischen geologischem Vorkommen, chemischer Synthese und mathematischer Tragwerkslehre geschlagen. Wählen Sie eine Person aus, um ihren Beitrag kennenzulernen.",
+    "forschungsgebietBeitrag": "Forschungsgebiet & Beitrag :",
+    "wissenschaftlicherDurchbruch": "Wissenschaftlicher Durchbruch :",
+    "spezifischeMeilensteineErrungenschaften": "Spezifische Meilensteine & Errungenschaften :"
+  },
+  "werte": {
+    "anorganischMineralischeBaustoffe": "Anorganisch-Mineralische Baustoffe",
+    "gekennzeichnetDurchIonischeOder": "Gekennzeichnet durch ionische oder kovalente Bindungen und kristalline bis amorphe Phasen. Dies sind die volumetrisch am meisten verwendeten Baustoffe im globalen Bauwesen.",
+    "natursteineGranitKalksteinSandstein": "Natursteine (Granit, Kalkstein, Sandstein)",
+    "natürlicheUndKünstlicheGesteinskörnungen": "Natürliche und künstliche Gesteinskörnungen",
+    "anorganischeBindemittelZementBaukalk": "Anorganische Bindemittel (Zement, Baukalk, Gips)",
+    "mörtelMineralischerPutzUnd": "Mörtel, mineralischer Putz und Estrich",
+    "gebrannteTonkeramikZiegelKlinker": "Gebrannte Tonkeramik (Ziegel, Klinker)",
+    "betonNormalbetonPorenbetonLeichtbeton": "Beton (Normalbeton, Porenbeton, Leichtbeton)",
+    "gesteineMauerwerkBeton": "Gesteine, Mauerwerk & Beton",
+    "anorganischMetallischeBaustoffe": "Anorganisch-Metallische Baustoffe",
+    "aufgebautAusMetallischenBindungen": "Aufgebaut aus metallischen Bindungen (Elektronengaswolke), was ihnen hohe Zähigkeit, Duktilität und hervorragende elektrische sowie thermische Leitfähigkeit verleiht.",
+    "baustähleZBS235": "Baustähle (z. B. S235, S355 für den Stahlbau)",
+    "betonstahlRippenstahlB500bZur": "Betonstahl (Rippenstahl B500B zur Zugbewehrung)",
+    "edelstahlNichtrostendeLegierungenIm": "Edelstahl (nichtrostende Legierungen im Fassadenbereich)",
+    "gusseisenHistorischeTrägerAbwasserrohre": "Gusseisen (historische Träger, Abwasserrohre)",
+    "nichteisenmetalleAluminiumKupferZink": "Nichteisenmetalle (Aluminium, Kupfer, Zink)",
+    "metalleTragverhalten": "Metalle & Tragverhalten",
+    "organischeBiogeneBaustoffe": "Organische & Biogene Baustoffe",
+    "nachwachsendeOrganischeWerkstoffeAus": "Nachwachsende organische Werkstoffe aus der Biosphäre, primär aufgebaut aus Cellulose, Hemicellulose und Lignin. Sie binden im Wachstum CO₂.",
+    "vollholzNadelUndLaubholz": "Vollholz (Nadel- und Laubholz als Konstruktionsholz)",
+    "holzwerkstoffeBrettschichtholzBshBrettsp": "Holzwerkstoffe (Brettschichtholz BSH, Brettsperrholz BSP, OSB)",
+    "natürlicheDämmstoffeHolzfaserZellulose": "Natürliche Dämmstoffe (Holzfaser, Zellulose, Hanf, Stroh)",
+    "lehmHolzVerbundeHistorischer": "Lehm-Holz-Verbunde (historischer Fachwerkbau)",
+    "biokunststoffeUndBioBasierte": "Biokunststoffe und bio-basierte Bindemittel",
+    "holzNachwachsendeRohstoffe": "Holz & Nachwachsende Rohstoffe",
+    "synthetischePolymereBitumen": "Synthetische Polymere & Bitumen",
+    "riesenmoleküleMakromoleküleAusKovalent": "Riesenmoleküle (Makromoleküle) aus kovalent gebundenen Kohlenstoffketten. Man unterscheidet Thermoplaste, Duroplaste und Elastomere sowie viskoelastische Naturstoffe wie Bitumen.",
+    "kunststoffDämmstoffeExpandiertesPolystyr": "Kunststoff-Dämmstoffe (Expandiertes Polystyrol EPS, Polyurethan PUR)",
+    "folienDampfbremsenKunststoffAbdichtungsb": "Folien, Dampfbremsen, Kunststoff-Abdichtungsbahnen und Geokunststoffe",
+    "fassadenbekleidungenUndRohrleitungssyste": "Fassadenbekleidungen und Rohrleitungssysteme (PVC, PE, PP)",
+    "bautenklebstoffeKunstharzeUndVersiegelun": "Bautenklebstoffe, Kunstharze und Versiegelungen",
+    "bitumenUndPolymerModifiziertes": "Bitumen und polymer-modifiziertes Bitumen im Straßen- & Dachbau",
+    "dämmstoffeBaupolymere": "Dämmstoffe & Baupolymere",
+    "moderneVerbundwerkstoffe": "Moderne Verbundwerkstoffe",
+    "makroskopischerVerbundVonMindestens": "Makroskopischer Verbund von mindestens zwei distinkten Stoffklassen, um synergistische Wirkungen zu erzielen. Ziel ist meist die Kompensation einer Zugschwäche durch faserige o. metallische Einlagen.",
+    "klassischerStahlbetonBetonTrägt": "Klassischer Stahlbeton (Beton trägt Druck, Bewehrungsstahl zieht)",
+    "stahlfaserbetonUndMakrosynthetischeFaser": "Stahlfaserbeton und makrosynthetische Faserbetone",
+    "zukunftsweisenderCarbonbetonKorrosionsfr": "Zukunftsweisender Carbonbeton (korrosionsfreie Carbonbewehrung)",
+    "glasfaserverstärkteKunststoffeGfkFür": "Glasfaserverstärkte Kunststoffe (GFK) für Konsolen und Brückenträger",
+    "faserzementplattenBisZumVerbot": "Faserzementplatten (bis zum Verbot 1993 Asbestzement, heute mit Kunststoff- und Zellulosefasern)",
+    "faserCarbonverbund": "Faser- & Carbonverbund",
+    "prähistorieBis3000V": "Prähistorie (~ bis 3000 v. Chr.)",
+    "steinBronzezeit": "Stein- & Bronzezeit",
+    "dieÄraDerNaturstoffe": "Die Ära der Naturstoffe",
+    "konstruktionenErfolgtenReinMit": "Konstruktionen erfolgten rein mit den am Fundort verfügbaren Materialien. Mechanische Bearbeitung war rudimentär, Haltbarkeit basierte auf konstruktivem Schutz.",
+    "lehmStampflehm": "Lehm / Stampflehm",
+    "natursteinTrocken": "Naturstein trocken",
+    "schilfStroh": "Schilf & Stroh",
+    "luftgetrockneteLehmziegelAbDem": "Luftgetrocknete Lehmziegel; ab dem 4./3. Jahrtausend v. Chr. gebrannte Ziegel im Vorderen Orient – der Beginn der thermischen Baustoffveredelung.",
+    "dieErstenBehausungenNutzten": "Die ersten Behausungen nutzten Astwerke, Tierhäute und unverfestigten Lehm. Der konstruktive Holzbau entwickelte sich im Pfahlbau. Haltbarkeit war primär ein Problem biotischer Verrottung.",
+    "antike300VChr": "Antike (~ 300 v. Chr. – 400 n. Chr.)",
+    "römischesReich": "Römisches Reich",
+    "dieErfindungDesOpus": "Die Erfindung des \"Opus Caementicium\"",
+    "dieRömerPrägtenDie": "Die Römer prägten die Baukunst durch die Entwicklung des ersten echten hydraulischen Betons. Dies erlaubte weite Bögen, Gewölbekuppeln und Unterwasserbauten.",
+    "kuppelDesPantheonsIn": "Kuppel des Pantheons in Rom (um 125 n. Chr. vollendet, 43,3 m Durchmesser aus unbewehrtem Gussbeton mit nach oben leichter werdenden Zuschlägen).",
+    "dasOpusCaementiciumBestand": "Das Opus Caementicium bestand aus gebranntem Kalkstein gebunden mit reaktivem Gesteinsmehl aus vulkanischen Regionen (Pozzuoli bei Neapel). Der Clou: Diese Puzzolane enthalten reaktive Kieselsäure und Tonerde, wodurch der Mörtel im Gegensatz zu reinem Luftkalk auch unter Luftabschluss und sogar unter Wasser steinhart hydratisiert.",
+    "mittelalterRenaissanceCa500": "Mittelalter & Renaissance (ca. 500 – 1750)",
+    "t518Jahrhundert": "5. - 18. Jahrhundert",
+    "zunftwesenUndHandwerklichesErfahrungswis": "Zunftwesen und handwerkliches Erfahrungswissen",
+    "nachDemFallRoms": "Nach dem Fall Roms geriet das Geheimnis des hydraulischen Zements weitgehend in Vergessenheit. Man baute mit massiven Schwerkraftkonstruktionen aus Naturstein und hochentwickeltem Fachwerk.",
+    "sanfteLuftkalke": "Sanfte Luftkalke",
+    "eichenUndTannenholz": "Eichen- und Tannenholz",
+    "handgestricheneZiegel": "Handgestrichene Ziegel",
+    "konstruktionGotischerKathedralenMit": "Konstruktion gotischer Kathedralen mit filigranen Rippengewölben, Strebepfeilern und meisterhaften hölzernen Dachstühlen.",
+    "fachwerkbautenDominiertenDieMitteleuropä": "Fachwerkbauten dominierten die mitteleuropäischen Städte. Luftkalkmörtel erhärtete überwiegend durch Karbonatisierung (CO₂-Aufnahme), was in dicken Wänden Jahrzehnte dauern konnte; Ziegelmehl- oder Trasszusätze machten manche Mörtel hydraulisch. Gotische Baumeister sicherten die Standsicherheit rein empirisch über geometrische Verhältnisregeln.",
+    "industrielleRevolution19Jahrhundert": "Industrielle Revolution (19. Jahrhundert)",
+    "dasPatentVonPortlandzement": "Das Patent von Portlandzement & Stahlbeton",
+    "mitDemBeginnDer": "Mit dem Beginn der Industrialisierung und der Chemie als exakte Wissenschaft wurden Baustoffe standardisiert, künstlich synthetisiert und maschinell geprüft.",
+    "t1824PatentiertJosephAspdin": "1824 patentiert Joseph Aspdin seinen „Portland Cement“; um 1844 gelingt I. C. Johnson der gesinterte Portlandzement. 1886 stellt Matthias Koenen die erste Bemessungsmethode für Eisenbeton auf.",
+    "durchExtremHohesBrennen": "Durch extrem hohes Brennen von Kalkstein- und Tonmischungen bis zur Sintergrenze (~1450 °C) entstand der Portlandzementklinker mit den hydraulischen Hauptphasen Alit und Belit. Um 1867 meldet der Gärtner Joseph Monier eiserne Einlagen in Pflanzenkübeln aus Zementmörtel als Patent an (\"Monier-Eisen\"). Glückliche Voraussetzung: Beton und Stahl dehnen sich bei Temperaturänderung nahezu gleich (Beton α ≈ 1,0 · 10⁻⁵ 1/K, Stahl α ≈ 1,2 · 10⁻⁵ 1/K), und das alkalische Milieu des Betons schützt den Stahl vor Korrosion.",
+    "moderne20Jahrhundert": "Moderne (20. Jahrhundert)",
+    "hochleistungsbaustoffeUndNormierung": "Hochleistungsbaustoffe und Normierung",
+    "dasJahrhundertDesUneingeschränkten": "Das Jahrhundert des uneingeschränkten Betonbooms. Erforschung der Zementchemie führte zu ultra-festen Werkstoffen, Spannstählen und synthetischen Polymerdämmstoffen.",
+    "bauWeitgespannterSpannbetonbrückenUnd": "Bau weitgespannter Spannbetonbrücken und Hochhäuser. Übergang vom globalen Sicherheitsbeiwert zum Teilsicherheitskonzept (Eurocodes; in Deutschland bauaufsichtlich eingeführt ab 2012).",
+    "mitFließmittelnPolycarboxylatetherPce": "Mit Fließmitteln (Polycarboxylatether, PCE) und reaktiven Feinststoffen (Silicastaub) gelingt es, den Wasserzementwert (w/z-Wert) auf unter 0,25 zu senken, was zu Ultra-Hochleistungsbetonen (UHPC) mit Druckfestigkeiten von weit über 150 MPa führt. Dämmstoffe aus Mineralwolle und Polystyrol verändern den winterlichen Wärmeschutz.",
+    "anthropozänZukunft21Jahrhundert": "Anthropozän & Zukunft (21. Jahrhundert)",
+    "dekarbonisierungZirkuläresBauen": "Dekarbonisierung, zirkuläres Bauen",
+    "bauUndBetriebVon": "Bau und Betrieb von Gebäuden verursachen nach UNEP-Angaben rund 37 % der energiebedingten CO₂-Emissionen weltweit. Der Fokus schwenkt radikal von rein mechanischer Festigkeit zu Nachhaltigkeit, CO₂-Einbindung und Materialkreisläufen.",
+    "erstesCarbonbetongebäudeCubeTu": "Erstes Carbonbetongebäude („CUBE“, TU Dresden, eröffnet 2022) ohne Stahlkorrosionsgefahr. Digitaler Produktpass für Bauprodukte mit der neuen Bauproduktenverordnung (EU) 2024/3110.",
+    "dieCoNeutraleBaustoffkunde": "Die CO₂-neutrale Baustoffkunde ersetzt herkömmlichen Klinker durch calcinierten Ton und Kalksteinmehl (LC3-Zement). Pflanzenkohle wird als dauerhafter Kohlenstoffspeicher in Beton eingebunden (Kohlenstoff-Senke). Korrosionsfreie Carbonbewehrungen erlauben sehr geringe Betondeckungen und damit deutlich schlankere, leichtere Bauteile.",
+    "opusCaementicium": "Opus caementicium",
+    "oktober2026Ap3": "Oktober 2026 (AP 3 Grundlagen: Geschichte, Pioniere und Stoffklassen gegen Primär- und Fachquellen geprüft, erfundene Zitate entfernt; fachliche Freigabe durch den Autor ausstehend)"
+  },
+  "daten": {
+    "Baustoffkunde.pioneers": [
+      {
+        "id": "vitruv",
+        "name": "Marcus Vitruvius Pollio (Vitruv)",
+        "lifespan": "ca. 80/70 v. Chr. – nach 15 v. Chr.",
+        "role": "Römischer Architekt, Ingenieur & Offizier",
+        "field": "Antiker Gussmauerwerksbau (Opus Caementicium)",
+        "origin": "Römisches Reich",
+        "contribution": "Verfasste „De architectura“ (Zehn Bücher über Architektur), das einzige vollständig erhaltene Architekturlehrbuch der Antike. Im zweiten Buch beschreibt er Kalkbrennen, Sand, Ziegel und die vulkanische Puzzolanerde (pulvis puteolanus), die Kalkmörtel wasserbeständig macht – als Erfahrungswissen, noch ohne chemische Erklärung.",
+        "achievements": [
+          "Formulierte die klassischen Kriterien guter Architektur, die noch heute für Baustoffe gelten: Firmitas (Festigkeit), Utilitas (Gebrauchstauglichkeit) und Venustas (Schönheit).",
+          "Dokumentierte die Herstellung wasserbeständiger Mörtel und Hafenbauten durch Beimischen von Vulkanerde aus der Gegend von Baiae und Puteoli (Pozzuoli)."
+        ],
+        "quote": "„Es gibt auch eine Art Staub, der von Natur aus wunderbare Wirkungen hervorbringt. Er findet sich in der Gegend von Baiae und im Gebiet der Gemeinden rings um den Vesuv.“ (De architectura II, 6, 1; sinngemäße Übersetzung)"
+      },
+      {
+        "id": "aspdin",
+        "name": "Joseph Aspdin",
+        "lifespan": "1778 – 1855",
+        "role": "Britischer Maurer & Erfinder",
+        "field": "Erfindung des Portlandzements (OPC)",
+        "origin": "Großbritannien (Leeds)",
+        "contribution": "Erhielt am 21. Oktober 1824 das britische Patent Nr. 5022 für einen künstlichen Stein bzw. Zement, den er „Portland Cement“ nannte. Gebrannt wurde eine Mischung aus Kalkstein und Ton. Aspdins Brenntemperaturen lagen aber unter der Sintergrenze – sein Produkt entsprach eher einem hydraulischen Kalk. Den gesinterten, im heutigen Sinn echten Portlandzement stellte erst Isaac Charles Johnson um 1844 her.",
+        "achievements": [
+          "Gründete Zementwerke in Wakefield; sein Sohn William Aspdin trug wesentlich zur Weiterentwicklung und Verbreitung bei.",
+          "Wählte den werbewirksamen Namen „Portland Cement“, weil das erhärtete Material farblich dem geschätzten Portland-Kalkstein von der Isle of Portland ähnelte."
+        ],
+        "quote": "„Mein Verfahren zur Herstellung eines Zements oder künstlichen Steins … den ich Portland Cement nenne, ist wie folgt …“ (Patentschrift Nr. 5022, 1824; sinngemäße Übersetzung)"
+      },
+      {
+        "id": "vicat",
+        "name": "Louis-Joseph Vicat",
+        "lifespan": "1786 – 1861",
+        "role": "Französischer Bauingenieur & Forscher",
+        "field": "Hydraulizitätstheorie & standardisierte Zementprüfung",
+        "origin": "Frankreich (Grenoble)",
+        "contribution": "Untersuchte systematisch die Hydraulizität (Erhärtung unter Wasser) von Kalken und zeigte, dass sie auf dem Tongehalt beruht. Nach ihm ist das Nadelgerät benannt, mit dem bis heute Erstarrungsbeginn und -ende von Zementleim bestimmt werden (DIN EN 196-3).",
+        "achievements": [
+          "Veröffentlichte 1818 seine Untersuchungen zur Herstellung künstlicher hydraulischer Kalke aus Kalkstein und Ton und verzichtete auf ein Patent.",
+          "Ordnete Kalke nach ihrem Tongehalt in Gruppen schwach bis stark hydraulisch – Grundlage des später so genannten Hydraulizitätsindex (Verhältnis der Säure- zu den Basenanteilen)."
+        ],
+        "quote": "Kernaussage (Zusammenfassung, kein Originalzitat): Die Wasserbeständigkeit eines Kalks ist keine Eigenschaft geheimnisvoller Rohstoffe, sondern lässt sich über den Tonanteil gezielt einstellen."
+      },
+      {
+        "id": "monier",
+        "name": "Joseph Monier",
+        "lifespan": "1823 – 1906",
+        "role": "Französischer Gärtner & Erfinder",
+        "field": "Erfindung des Verbundbaus (Eisen-/Stahlbeton)",
+        "origin": "Frankreich (Saint-Quentin-la-Poterie, Gard)",
+        "contribution": "Stellte als Pariser Gärtner Pflanzkübel aus Zementmörtel mit Einlagen aus Eisendraht her und erhielt dafür 1867 ein erstes Patent. Er war nicht der Erste (u. a. Lambot 1848, Wilkinson 1854), aber seine Patente wurden zum Ausgangspunkt der industriellen Verbreitung des Eisenbetons.",
+        "achievements": [
+          "Erweiterte seine Patente bis 1878 auf Rohre, Behälter, Platten, Treppen und Brücken.",
+          "Sein Name ging in den Bauwortschatz ein („Moniereisen“ als historische Bezeichnung für Betonstahl, „Monierbau“)."
+        ],
+        "quote": "Kernaussage (Zusammenfassung, kein Originalzitat): Monier bewehrte nach praktischer Erfahrung, nicht nach Berechnung – die Lage der Eisen entsprach anfangs oft nicht der Zugzone."
+      },
+      {
+        "id": "wayss_freytag",
+        "name": "Freytag & Wayss (Das System Monier)",
+        "lifespan": "Conrad Freytag (1846–1921) | Gustav Wayss (1851–1917)",
+        "role": "Deutsche Bauunternehmer & Bautechnik-Pioniere",
+        "field": "Wissenschaftliche Validierung des Stahlbetonprinzips",
+        "origin": "Deutschland (Neustadt/Weinstraße & Berlin)",
+        "contribution": "Gustav Adolf Wayss erwarb 1885 die Monier-Patente für Deutschland; Conrad Freytag (Freytag & Heidschuch) beteiligte sich an der Verwertung. Sie ließen Belastungsversuche durchführen und förderten die erste Berechnungstheorie.",
+        "achievements": [
+          "Aus der Zusammenarbeit ging die Bauunternehmung Wayss & Freytag hervor, über Jahrzehnte eine der führenden Firmen des Betonbaus.",
+          "Gaben 1887 die Schrift „Das System Monier“ heraus; sie enthielt die von Regierungsbaumeister Matthias Koenen 1886 aufgestellte erste Bemessungsmethode für Monierplatten."
+        ],
+        "quote": "Kernaussage (Zusammenfassung, kein Originalzitat): Das Eisen gehört in die Zugzone – Beton übernimmt den Druck, der Stahl den Zug; nur über den Verbund wirken beide zusammen."
+      },
+      {
+        "id": "moersch",
+        "name": "Prof. Dr.-Ing. E.h. Emil Mörsch",
+        "lifespan": "1872 – 1950",
+        "role": "Bauingenieur & Hochschulprofessor",
+        "field": "Theorie des Massivbaus & Schubbemessung",
+        "origin": "Deutschland (Reutlingen / Stuttgart)",
+        "contribution": "Gilt als einer der Begründer der wissenschaftlichen Stahlbetontheorie. Er baute das von Wilhelm Ritter (1899) vorgeschlagene Fachwerkmodell für die Querkraft aus – bis heute als Ritter-Mörsch-Fachwerk Grundlage der Querkraftbemessung.",
+        "achievements": [
+          "Formulierte die Berechnungsverfahren für den gerissenen Zustand II unter Einbeziehung des Elastizitätsbeiwertes n.",
+          "Verfasste das epochale, über Jahrzehnte führende Standardwerk „Der Eisenbetonbau – Seine Theorie und Anwendung“ ab der Erstauflage 1902."
+        ],
+        "quote": "Kernaussage (Zusammenfassung, kein Originalzitat): Bemessung folgt dem Kraftfluss – Druckstreben im Beton, Zugstreben im Stahl."
+      },
+      {
+        "id": "powers",
+        "name": "Treval C. Powers",
+        "lifespan": "1900 – 1997",
+        "role": "US-amerikanischer Werkstoffwissenschaftler",
+        "field": "Portlandzement-Mikrostruktur & Gel-Poren-Modell",
+        "origin": "USA (Chicago / Portland Cement Association)",
+        "contribution": "Entwickelte mit T. L. Brownyard (1946/47) das Modell des Zementsteins aus Zementgel, Gelporen und Kapillarporen. Daraus folgen der Hydratationsgrad, der Kapillarporenraum in Abhängigkeit vom w/z-Wert und das Gel-Raum-Verhältnis als Festigkeitsmaß.",
+        "achievements": [
+          "Zeigte, dass das Hydratationsprodukt (C-S-H-Gel, weitgehend nanokristallin bis amorph) selbst rund 28 % Gelporen enthält und dass bei w/z > ca. 0,4 auch bei vollständiger Hydratation Kapillarporen verbleiben.",
+          "Begründete die Mechanismen des Frostschadens in Beton (hydraulischer Druck) und die Bemessung von Luftporen über den Abstandsfaktor."
+        ],
+        "quote": "Kernaussage (Zusammenfassung, kein Originalzitat): Die Festigkeit des Zementsteins hängt vom Gel-Raum-Verhältnis ab – also davon, wie viel des verfügbaren Raums mit Hydratationsprodukten gefüllt ist."
+      }
+    ],
+    "Baustoffkunde.materialClasses.mineralisch.keyAttributes": [
+      {
+        "name": "Druckfestigkeit",
+        "value": "Sehr hoch (bis > 150 MPa bei UHPC)"
+      },
+      {
+        "name": "Zugfestigkeit",
+        "value": "Gering (Beton: ca. 7–10 % der Druckfestigkeit)"
+      },
+      {
+        "name": "Thermisches Verhalten",
+        "value": "Hervorragende Feuerbeständigkeit, nicht brennbar (A1)"
+      },
+      {
+        "name": "Rohdichte",
+        "value": "Von ca. 300 kg/m³ (Porenbeton) bis ca. 2800 kg/m³ (Naturstein)"
+      }
+    ],
+    "Baustoffkunde.materialClasses.metallisch.keyAttributes": [
+      {
+        "name": "Festigkeit",
+        "value": "Hoch in Zug und Druck (Streckgrenze ca. 160 MPa bei Aluminium bis Zugfestigkeit 1860 MPa bei Spannstahl)"
+      },
+      {
+        "name": "Verhalten",
+        "value": "Plastisch verformbar (duktil), ausgeprägtes Fließverhalten"
+      },
+      {
+        "name": "Korrosion",
+        "value": "Unlegierter Stahl rostet ohne Schutz; Zink, Kupfer, Aluminium bilden Deckschichten"
+      },
+      {
+        "name": "Rohdichte",
+        "value": "Hoch (Stahl ca. 7850 kg/m³, Aluminium ca. 2700 kg/m³)"
+      }
+    ],
+    "Baustoffkunde.materialClasses.organisch.keyAttributes": [
+      {
+        "name": "Anisotropie",
+        "value": "Richtungsabhängige Kennwerte (faserparallel vs. faserquer)"
+      },
+      {
+        "name": "Treibhauspotenzial",
+        "value": "Biogener Kohlenstoff wird in Modul A1 negativ bilanziert und am Lebensende (Modul C) wieder ausgewiesen – Holz ist ein temporärer Kohlenstoffspeicher"
+      },
+      {
+        "name": "Dauerhaftigkeit",
+        "value": "Risiko von Pilz- und Insektenbefall bei Feuchteeinwirkung"
+      },
+      {
+        "name": "Rohdichte",
+        "value": "Gering (ca. 400 - 800 kg/m³ für Holz)"
+      }
+    ],
+    "Baustoffkunde.materialClasses.polymere.keyAttributes": [
+      {
+        "name": "Gewicht",
+        "value": "Sehr leicht (z.B. EPS ca. 15 - 30 kg/m³)"
+      },
+      {
+        "name": "Dämmeigenschaften",
+        "value": "Sehr niedrige Wärmeleitfähigkeit (ca. 0,022–0,040 W/(m·K))"
+      },
+      {
+        "name": "Kriechneigung",
+        "value": "Hoch viskoelastisch unter Dauerlasten"
+      },
+      {
+        "name": "Brandschutz",
+        "value": "Brennbar (z. B. EPS meist Klasse E nach DIN EN 13501-1 bzw. B1/B2 nach DIN 4102-1), Rauchentwicklung"
+      }
+    ],
+    "Baustoffkunde.materialClasses.verbund.keyAttributes": [
+      {
+        "name": "Verbundwirkung",
+        "value": "Kraftübertragung über Haft-, Scher- und Reibeverbund"
+      },
+      {
+        "name": "Dauerhaftigkeit",
+        "value": "Karbonatisierung des Betons gefährdet Stahl, nicht Carbon"
+      },
+      {
+        "name": "Ressourceneinsatz",
+        "value": "Hoher CO₂-Impact, aber extreme Materialeinsparung möglich (Carbon)"
+      },
+      {
+        "name": "Dicke/Überdeckung",
+        "value": "Erheblich reduzierbar bei korrosionsfreien Bewehrungen"
+      }
+    ],
+    "Baustoffkunde.historicalPeriods.1.materials": [
+      "Römischer Beton (Opus Caementicium)",
+      "Puzzolanasche (Vulkanerde)",
+      "Luftkalk-Mörtel",
+      "Puzzolanische Ziegelmehle"
+    ],
+    "Baustoffkunde.historicalPeriods.3.materials": [
+      "Portlandzement (OPC)",
+      "Schmiedeeisen / Gusseisen",
+      "Frühformen des Flussstahls",
+      "Eisenbeton nach J. Monier"
+    ],
+    "Baustoffkunde.historicalPeriods.4.materials": [
+      "Hochleistungsbeton (z. B. UHPC)",
+      "Spannstahl",
+      "Polystyrol (EPS/XPS)",
+      "Bewehrungsstahl B500B",
+      "Floatglas"
+    ],
+    "Baustoffkunde.historicalPeriods.5.materials": [
+      "Carbonbeton (korrosionsfrei)",
+      "Zemente mit Klinkerersatzstoffen (LC3)",
+      "Rezyklat-Beton (RC-Gestein)",
+      "Pflanzenkohle-Beton",
+      "Ingenieurholz-Produkte"
+    ],
+    "Baustoffkunde.literatur": [
+      "Möhring, R. (Hrsg.): Baustoffkenntnis (begr. von W. Scholz). 18. Aufl., Köln: Bundesanzeiger Verlag 2016",
+      "Vitruv: Zehn Bücher über Architektur. Übers. und erl. von C. Fensterbusch. Darmstadt: Wissenschaftliche Buchgesellschaft (Neuauflagen)",
+      "Powers, T. C.; Brownyard, T. L.: Studies of the Physical Properties of Hardened Portland Cement Paste. Journal of the American Concrete Institute 43 (1946/47)"
+    ],
+    "Baustoffkunde.regelwerke": [
+      {
+        "title": "DIN EN 1990 (Eurocode: Grundlagen der Tragwerksplanung)"
+      },
+      {
+        "title": "DIN EN 197-1 (Zement – Teil 1: Zusammensetzung, Anforderungen und Konformitätskriterien von Normalzement)"
+      },
+      {
+        "title": "DIN EN 196-3 (Prüfverfahren für Zement – Erstarrungszeiten und Raumbeständigkeit)"
+      }
+    ],
+    "Baustoffkunde.formeln": [
+      {
+        "formel": "\\varepsilon_T = \\alpha_T \\cdot \\Delta T",
+        "erklaerung": "Temperaturdehnung eines frei verformbaren Bauteils (Beton α_T ≈ 10 · 10⁻⁶ 1/K, Stahl ≈ 12 · 10⁻⁶ 1/K).",
+        "quelle": "DIN EN 1992-1-1, 3.1.3 und 3.2.7"
+      }
+    ]
+  }
+}

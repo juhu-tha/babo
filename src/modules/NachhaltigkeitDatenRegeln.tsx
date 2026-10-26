@@ -22,6 +22,8 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { ALL_17_SDGS } from './nachhaltigkeitdatenregeln/daten';
 import { DefinitionenTab } from './nachhaltigkeitdatenregeln/DefinitionenTab';
+import inhalt from '@/content/nachhaltigkeitdatenregeln/NachhaltigkeitDatenRegeln.json';
+import { MdText } from '@/src/components/inhalt/MdText';
 
 export type DatenRegelnTab = 
   | 'definitionen'
@@ -51,27 +53,14 @@ export default function NachhaltigkeitDatenRegeln() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-home-grau/20 pb-4 mb-4">
           <div>
             <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-              <Scale className="text-shiraz h-6 w-6" />
-              Nachhaltigkeit: Daten &amp; Regeln
-            </h2>
-            <p className="text-xs text-text-main/70 mt-1">
-              Globale Umweltkennzahlen, UN-SDGs, EU-Taxonomie, EPBD 2024/1275, EPD, Digitaler Produktpass (DPP) &amp; deutsches Baurecht
-            </p>
+              <Scale className="text-shiraz h-6 w-6" /><MdText text={inhalt.texte.nachhaltigkeitDatenRegeln} /></h2>
+            <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.globaleUmweltkennzahlenUnSdgs} /></p>
           </div>
-          <span className="self-start sm:self-center px-3 py-1 rounded-full text-xs font-semibold bg-shiraz/10 text-shiraz border border-shiraz/20 whitespace-nowrap">
-            Stand: 2025 / 2026
-          </span>
+          <span className="self-start sm:self-center px-3 py-1 rounded-full text-xs font-semibold bg-shiraz/10 text-shiraz border border-shiraz/20 whitespace-nowrap"><MdText text={inhalt.texte.stand20252026} /></span>
         </div>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed mb-6">
-          <p>
-            Das Bau- und Immobilienwesen steht im Zentrum der globalen Umwelt- und Klimapolitik. 
-            Dieses Modul bündelt alle relevanten <strong>statistischen Kennzahlen (THG-Emissionen, Ressourcenabbau, Abfallströme)</strong>, 
-            internationale Abkommen und Leitlinien (<strong>UN-Klimakonferenzen, SDGs</strong>), 
-            europäische Richtlinien (<strong>EU-Taxonomie, EPBD 2024/1275, CSRD</strong>), 
-            zirkuläre Deklarationssysteme (<strong>EPD nach DIN EN 15804+A2, Digitaler Produktpass DPP, Madaster</strong>) 
-            sowie das geltende nationale Gesetzesgefüge (<strong>GModG (vormals GEG), QNG, EBV, KrWG und das Gebäudetyp-E-Vorhaben</strong>).
-          </p>
+          <p><MdText text={inhalt.texte.dasBauUndImmobilienwesen} /></p>
         </div>
 
         {/* Tab-Navigation */}
@@ -85,8 +74,7 @@ export default function NachhaltigkeitDatenRegeln() {
             }`}
             onClick={() => setActiveTab('definitionen')}
           >
-            <BookOpen size={16} /> 1. Definitionen &amp; Leitprinzipien
-          </button>
+            <BookOpen size={16} /><MdText text={inhalt.texte.t1DefinitionenLeitprinzipien} /></button>
 
           <button aria-pressed={activeTab === 'kennzahlen'}
             type="button"
@@ -97,8 +85,7 @@ export default function NachhaltigkeitDatenRegeln() {
             }`}
             onClick={() => setActiveTab('kennzahlen')}
           >
-            <BarChart3 size={16} /> 2. Anteile &amp; Stoffströme
-          </button>
+            <BarChart3 size={16} /><MdText text={inhalt.texte.t2AnteileStoffströme} /></button>
 
           <button aria-pressed={activeTab === 'klimapolitik'}
             type="button"
@@ -109,8 +96,7 @@ export default function NachhaltigkeitDatenRegeln() {
             }`}
             onClick={() => setActiveTab('klimapolitik')}
           >
-            <Globe size={16} /> 3. Klimakonferenzen &amp; SDGs
-          </button>
+            <Globe size={16} /><MdText text={inhalt.texte.t3KlimakonferenzenSdgs} /></button>
 
           <button aria-pressed={activeTab === 'regulatorik'}
             type="button"
@@ -121,8 +107,7 @@ export default function NachhaltigkeitDatenRegeln() {
             }`}
             onClick={() => setActiveTab('regulatorik')}
           >
-            <Building2 size={16} /> 4. EU-Taxonomie &amp; EPBD
-          </button>
+            <Building2 size={16} /><MdText text={inhalt.texte.t4EuTaxonomieEpbd} /></button>
 
           <button aria-pressed={activeTab === 'deklarationen'}
             type="button"
@@ -133,8 +118,7 @@ export default function NachhaltigkeitDatenRegeln() {
             }`}
             onClick={() => setActiveTab('deklarationen')}
           >
-            <QrCode size={16} /> 5. EPD, DPP &amp; Materialpass
-          </button>
+            <QrCode size={16} /><MdText text={inhalt.texte.t5EpdDppMaterialpass} /></button>
 
           <button aria-pressed={activeTab === 'national'}
             type="button"
@@ -145,8 +129,7 @@ export default function NachhaltigkeitDatenRegeln() {
             }`}
             onClick={() => setActiveTab('national')}
           >
-            <ShieldCheck size={16} /> 6. Deutsches Baurecht (GModG, QNG, EBV, Gebäudetyp E)
-          </button>
+            <ShieldCheck size={16} /><MdText text={inhalt.texte.t6DeutschesBaurechtGmodg} /></button>
         </div>
       </div>
 
@@ -166,46 +149,38 @@ export default function NachhaltigkeitDatenRegeln() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col justify-between">
               <div>
-                <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Treibhausgase (THG)</span>
+                <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider"><MdText text={inhalt.texte.treibhausgaseThg} /></span>
                 <strong className="text-3xl font-extrabold text-shiraz block mt-1">~40 %</strong>
-                <span className="text-xs font-bold text-slate-800 block mt-0.5">der globalen energiebed. CO₂-Emissionen</span>
+                <span className="text-xs font-bold text-slate-800 block mt-0.5"><MdText text={inhalt.texte.derGlobalenEnergiebedCo} /></span>
               </div>
-              <p className="text-[11px] text-slate-500 mt-3 pt-3 border-t border-slate-100">
-                Davon ca. 28 % aus dem laufenden Gebäudebetrieb (Heizung, Warmwasser, Kühlung) und ca. 11–12 % als <em>graue Emissionen</em> aus der Baustoffherstellung.
-              </p>
+              <p className="text-[11px] text-slate-500 mt-3 pt-3 border-t border-slate-100"><MdText text={inhalt.texte.davonCa28Aus} /></p>
             </div>
 
             <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col justify-between">
               <div>
-                <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Ressourcen &amp; Rohstoffe</span>
+                <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider"><MdText text={inhalt.texte.ressourcenRohstoffe} /></span>
                 <strong className="text-3xl font-extrabold text-slate-900 block mt-1">&gt; 50 %</strong>
-                <span className="text-xs font-bold text-slate-800 block mt-0.5">des weltweiten Rohstoffverbrauchs</span>
+                <span className="text-xs font-bold text-slate-800 block mt-0.5"><MdText text={inhalt.texte.desWeltweitenRohstoffverbrauchs} /></span>
               </div>
-              <p className="text-[11px] text-slate-500 mt-3 pt-3 border-t border-slate-100">
-                Massenrohstoffe Sand, Kies, Kalkstein, Tone, Gips und Natursteine übersteigen global das Fördervolumen aller anderen Wirtschaftszweige zusammen.
-              </p>
+              <p className="text-[11px] text-slate-500 mt-3 pt-3 border-t border-slate-100"><MdText text={inhalt.texte.massenrohstoffeSandKiesKalkstein} /></p>
             </div>
 
             <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col justify-between">
               <div>
-                <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Abfallaufkommen (Deutschland)</span>
+                <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider"><MdText text={inhalt.texte.abfallaufkommenDeutschland} /></span>
                 <strong className="text-3xl font-extrabold text-amber-700 block mt-1">~55 %</strong>
-                <span className="text-xs font-bold text-slate-800 block mt-0.5">des gesamten deutschen Abfalls</span>
+                <span className="text-xs font-bold text-slate-800 block mt-0.5"><MdText text={inhalt.texte.desGesamtenDeutschenAbfalls} /></span>
               </div>
-              <p className="text-[11px] text-slate-500 mt-3 pt-3 border-t border-slate-100">
-                Mit rund <strong>220 bis 230 Millionen Tonnen</strong> jährlich stellen Bau- und Abbruchabfälle den mit Abstand größten nationalen Abfallstrom dar.
-              </p>
+              <p className="text-[11px] text-slate-500 mt-3 pt-3 border-t border-slate-100"><MdText text={inhalt.texte.mitRund220Bis} /></p>
             </div>
 
             <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col justify-between">
               <div>
                 <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Flächeninanspruchnahme</span>
                 <strong className="text-3xl font-extrabold text-emerald-700 block mt-1">~52 ha/d</strong>
-                <span className="text-xs font-bold text-slate-800 block mt-0.5">täglicher Flächenverbrauch (DE)</span>
+                <span className="text-xs font-bold text-slate-800 block mt-0.5"><MdText text={inhalt.texte.täglicherFlächenverbrauchDe} /></span>
               </div>
-              <p className="text-[11px] text-slate-500 mt-3 pt-3 border-t border-slate-100">
-                Siedlungs- und Verkehrsfläche wächst täglich. Ziel der Bundes-Nachhaltigkeitsstrategie: Reduktion auf unter <strong>30 ha/Tag</strong> bis 2030 (Netto-Null bis 2050).
-              </p>
+              <p className="text-[11px] text-slate-500 mt-3 pt-3 border-t border-slate-100"><MdText text={inhalt.texte.siedlungsUndVerkehrsflächeWächst} /></p>
             </div>
           </div>
 
@@ -213,12 +188,8 @@ export default function NachhaltigkeitDatenRegeln() {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-5">
             <div className="border-b border-home-grau/20 pb-3 flex items-center justify-between">
               <div>
-                <h3 className="text-base font-extrabold text-slate-900">
-                  Zusammensetzung der 220–230 Mio. Tonnen Bauabfälle in Deutschland
-                </h3>
-                <p className="text-xs text-slate-500 mt-0.5">
-                  Datenquelle: Umweltbundesamt (UBA) &amp; Bundesverband Baustoffe – Steine und Erden (BBS)
-                </p>
+                <h3 className="text-base font-extrabold text-slate-900"><MdText text={inhalt.texte.zusammensetzungDer220230} /></h3>
+                <p className="text-xs text-slate-500 mt-0.5"><MdText text={inhalt.texte.datenquelleUmweltbundesamtUbaBundesverba} /></p>
               </div>
               <span className="text-[10px] font-mono px-2 py-0.5 bg-slate-100 text-slate-600 rounded font-bold">
                 Kreislaufwirtschafts-Potenzial
@@ -229,53 +200,45 @@ export default function NachhaltigkeitDatenRegeln() {
               <div className="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between">
                 <div>
                   <div className="flex justify-between items-baseline mb-1">
-                    <strong className="text-xs font-bold text-slate-900">1. Bodenaushub</strong>
+                    <strong className="text-xs font-bold text-slate-900"><MdText text={inhalt.texte.t1Bodenaushub} /></strong>
                     <span className="text-xs font-mono font-bold text-shiraz">~130 Mio. t</span>
                   </div>
-                  <div className="text-[11px] text-slate-600 leading-relaxed">
-                    Größte Einzelfraktion (ca. 58 % der Bauabfälle). Häufig Verfüllung in Tagebauen oder Deponien, statt hochwertiger Wiederaufbereitung im Tiefbau.
-                  </div>
+                  <div className="text-[11px] text-slate-600 leading-relaxed"><MdText text={inhalt.texte.größteEinzelfraktionCa58} /></div>
                 </div>
-                <span className="text-[10px] font-mono font-bold text-slate-500 mt-2">EBV-Klasse: BM-0 bis BM-F3</span>
+                <span className="text-[10px] font-mono font-bold text-slate-500 mt-2"><MdText text={inhalt.texte.ebvKlasseBm0} /></span>
               </div>
 
               <div className="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between">
                 <div>
                   <div className="flex justify-between items-baseline mb-1">
-                    <strong className="text-xs font-bold text-slate-900">2. Bauschutt</strong>
+                    <strong className="text-xs font-bold text-slate-900"><MdText text={inhalt.texte.t2Bauschutt} /></strong>
                     <span className="text-xs font-mono font-bold text-shiraz">~60 Mio. t</span>
                   </div>
-                  <div className="text-[11px] text-slate-600 leading-relaxed">
-                    Beton, Ziegel, Fliesen, Keramik. Wird heute zu ca. 80 % zu RC-Schotter für ungebundene Tragschichten im Straßenbau „downgecycelt“.
-                  </div>
+                  <div className="text-[11px] text-slate-600 leading-relaxed"><MdText text={inhalt.texte.betonZiegelFliesenKeramik} /></div>
                 </div>
-                <span className="text-[10px] font-mono font-bold text-slate-500 mt-2">EBV-Klasse: RC-1 bis RC-3</span>
+                <span className="text-[10px] font-mono font-bold text-slate-500 mt-2"><MdText text={inhalt.texte.ebvKlasseRc1} /></span>
               </div>
 
               <div className="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between">
                 <div>
                   <div className="flex justify-between items-baseline mb-1">
-                    <strong className="text-xs font-bold text-slate-900">3. Straßenaufbruch</strong>
-                    <span className="text-xs font-mono font-bold text-shiraz">~15–20 Mio. t</span>
+                    <strong className="text-xs font-bold text-slate-900"><MdText text={inhalt.texte.t3Straßenaufbruch} /></strong>
+                    <span className="text-xs font-mono font-bold text-shiraz"><MdText text={inhalt.texte.t1520MioT} /></span>
                   </div>
-                  <div className="text-[11px] text-slate-600 leading-relaxed">
-                    Asphalt und Schotter. Hohe stoffliche Recyclingquote (oft &gt; 90 % als Heißmischgut), problematisch sind historische teer-/PAK-haltige Schichten.
-                  </div>
+                  <div className="text-[11px] text-slate-600 leading-relaxed"><MdText text={inhalt.texte.asphaltUndSchotterHohe} /></div>
                 </div>
-                <span className="text-[10px] font-mono font-bold text-slate-500 mt-2">EBV-Klasse: RC-Asphalt</span>
+                <span className="text-[10px] font-mono font-bold text-slate-500 mt-2"><MdText text={inhalt.texte.ebvKlasseRcAsphalt} /></span>
               </div>
 
               <div className="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between">
                 <div>
                   <div className="flex justify-between items-baseline mb-1">
-                    <strong className="text-xs font-bold text-slate-900">4. Baustellenabfälle &amp; Gips</strong>
+                    <strong className="text-xs font-bold text-slate-900"><MdText text={inhalt.texte.t4BaustellenabfälleGips} /></strong>
                     <span className="text-xs font-mono font-bold text-shiraz">~15 Mio. t</span>
                   </div>
-                  <div className="text-[11px] text-slate-600 leading-relaxed">
-                    Gemischte Fraktionen, Dämmstoffe, Holz, Metalle, Gipsplatten. Gipsabfälle müssen sulfatbedingt getrennt werden (Gips-zu-Gips-Recycling).
-                  </div>
+                  <div className="text-[11px] text-slate-600 leading-relaxed"><MdText text={inhalt.texte.gemischteFraktionenDämmstoffeHolz} /></div>
                 </div>
-                <span className="text-[10px] font-mono font-bold text-slate-500 mt-2">GewAbfV Trennpflicht</span>
+                <span className="text-[10px] font-mono font-bold text-slate-500 mt-2"><MdText text={inhalt.texte.gewabfvTrennpflicht} /></span>
               </div>
             </div>
 
@@ -283,12 +246,9 @@ export default function NachhaltigkeitDatenRegeln() {
             <div className="p-5 rounded-xl border border-emerald-200 bg-emerald-50/50 mt-2 flex flex-col gap-4">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-emerald-900 flex items-center gap-1.5">
-                  <RefreshCw size={14} className="text-emerald-700" />
-                  Interaktiver Stoffstrom-Rechner: Urban Mining Potenzial
-                </span>
+                  <RefreshCw size={14} className="text-emerald-700" /><MdText text={inhalt.texte.interaktiverStoffstromRechnerUrban} /></span>
                 <span className="text-xs font-mono font-bold text-emerald-800">
-                  Eingabe: {formatDeWert(interactiveMasse)} Tonnen Bauschutt
-                </span>
+                  Eingabe: {formatDeWert(interactiveMasse)}<MdText text={inhalt.texte.tonnenBauschutt} /></span>
               </div>
 
               <input
@@ -303,24 +263,24 @@ export default function NachhaltigkeitDatenRegeln() {
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
                 <div className="bg-white p-3 rounded-lg border border-emerald-150 shadow-2xs">
-                  <span className="text-[10px] text-slate-500 block">Hochwertiger R-Beton (Typ 1/2):</span>
+                  <span className="text-[10px] text-slate-500 block"><MdText text={inhalt.texte.hochwertigerRBetonTyp} /></span>
                   <strong className="text-sm font-mono font-bold text-emerald-900">{calculatedRcBeton} t</strong>
-                  <span className="text-[9px] text-slate-400 block mt-0.5">als Gesteinskörnung</span>
+                  <span className="text-[9px] text-slate-400 block mt-0.5"><MdText text={inhalt.texte.alsGesteinskörnung} /></span>
                 </div>
                 <div className="bg-white p-3 rounded-lg border border-emerald-150 shadow-2xs">
-                  <span className="text-[10px] text-slate-500 block">Tragschichten / Unterbau:</span>
+                  <span className="text-[10px] text-slate-500 block"><MdText text={inhalt.texte.tragschichtenUnterbau} /></span>
                   <strong className="text-sm font-mono font-bold text-slate-800">{calculatedUnterbau} t</strong>
-                  <span className="text-[9px] text-slate-400 block mt-0.5">Frostschutz / Wege</span>
+                  <span className="text-[9px] text-slate-400 block mt-0.5"><MdText text={inhalt.texte.frostschutzWege} /></span>
                 </div>
                 <div className="bg-white p-3 rounded-lg border border-emerald-150 shadow-2xs">
-                  <span className="text-[10px] text-slate-500 block">Restfraktion (Deponie):</span>
+                  <span className="text-[10px] text-slate-500 block"><MdText text={inhalt.texte.restfraktionDeponie} /></span>
                   <strong className="text-sm font-mono font-bold text-amber-700">{calculatedDeponie} t</strong>
-                  <span className="text-[9px] text-slate-400 block mt-0.5">Feinanteile / Störstoffe</span>
+                  <span className="text-[9px] text-slate-400 block mt-0.5"><MdText text={inhalt.texte.feinanteileStörstoffe} /></span>
                 </div>
                 <div className="bg-white p-3 rounded-lg border border-emerald-150 shadow-2xs">
-                  <span className="text-[10px] text-slate-500 block">Eingespartes Primär-CO₂:</span>
+                  <span className="text-[10px] text-slate-500 block"><MdText text={inhalt.texte.eingespartesPrimärCo} /></span>
                   <strong className="text-sm font-mono font-bold text-emerald-700">~{savedCo2Tons} t CO₂e</strong>
-                  <span className="text-[9px] text-slate-400 block mt-0.5">vermiedene Transporte/Abbau</span>
+                  <span className="text-[9px] text-slate-400 block mt-0.5"><MdText text={inhalt.texte.vermiedeneTransporteAbbau} /></span>
                 </div>
               </div>
             </div>
@@ -336,45 +296,12 @@ export default function NachhaltigkeitDatenRegeln() {
           {/* Timeline of International Milestones */}
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-5">
             <div className="border-b border-home-grau/20 pb-3">
-              <h3 className="text-base font-extrabold text-slate-900">
-                Die internationale Klimadiplomatie und ihre Auswirkung auf das Bauen
-              </h3>
-              <p className="text-xs text-slate-500 mt-0.5">Von der UN-Klimarahmenkonvention (UNFCCC) bis zum Pariser 1,5 °C-Ziel.</p>
+              <h3 className="text-base font-extrabold text-slate-900"><MdText text={inhalt.texte.dieInternationaleKlimadiplomatieUnd} /></h3>
+              <p className="text-xs text-slate-500 mt-0.5"><MdText text={inhalt.texte.vonDerUnKlimarahmenkonvention} /></p>
             </div>
 
             <div className="relative border-l-2 border-slate-200 ml-4 pl-6 space-y-6 py-2">
-              {[
-                {
-                  year: '1987',
-                  title: 'Brundtland-Bericht („Our Common Future“)',
-                  desc: 'Formulierung des Drei-Säulen-Modells der Nachhaltigkeit (Ökologie, Ökonomie, Soziales). Grundsatz: Bedürfnisse der Gegenwart befriedigen, ohne die Möglichkeiten zukünftiger Generationen zu gefährden.'
-                },
-                {
-                  year: '1992',
-                  title: 'UN-Erdgipfel in Rio de Janeiro (Agenda 21)',
-                  desc: 'Verabschiedung der Klimarahmenkonvention (UNFCCC) und der Agenda 21. Startschuss für nationale Nachhaltigkeitsstrategien; in Deutschland folgte 2001 der erste Leitfaden Nachhaltiges Bauen des Bundes.'
-                },
-                {
-                  year: '1997',
-                  title: 'Kyoto-Protokoll (COP 3)',
-                  desc: 'Erstmals völkerrechtlich verbindliche Reduktionsziele für Treibhausgase in Industrieländern. Einführung der Marktmechanismen (Emissionszertifikatehandel).'
-                },
-                {
-                  year: '2015',
-                  title: 'Pariser Klimaschutzabkommen (COP 21)',
-                  desc: 'Völkerrechtliche Verpflichtung zur Begrenzung der globalen Erwärmung auf deutlich unter 2,0 °C, möglichst 1,5 °C gegenüber vorindustriellen Werten. Grundlage für den CRREM-Dekarbonisierungspfad im Gebäudesektor.'
-                },
-                {
-                  year: '2019',
-                  title: 'European Green Deal',
-                  desc: 'Fahrplan der EU-Kommission zur Transformation Europas zum ersten klimaneutralen Kontinent bis 2050. Start der „Renovation Wave“ (Renovierungswelle zur Verdopplung der Sanierungsrate).'
-                },
-                {
-                  year: '2023 / 2024',
-                  title: 'Dubai COP 28 & Novelle der EPBD (EU 2024/1275)',
-                  desc: 'Historischer Konsens zur Abkehr von fossilen Brennstoffen („Transitioning away from fossil fuels“). Gesetzliche Festschreibung von Zero Emission Buildings (ZEB) im EU-Recht.'
-                }
-              ].map((item, idx) => (
+              {inhalt.daten.NachhaltigkeitDatenRegeln.map((item, idx) => (
                 <div key={idx} className="relative group">
                   <div className="absolute -left-[31px] top-1 w-3.5 h-3.5 rounded-full bg-white border-2 border-shiraz group-hover:bg-shiraz transition-colors" />
                   <div className="flex items-baseline gap-2">
@@ -391,14 +318,10 @@ export default function NachhaltigkeitDatenRegeln() {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-5">
             <div className="border-b border-home-grau/20 pb-3 flex items-center justify-between">
               <div>
-                <h3 className="text-base font-extrabold text-slate-900">
-                  Die 17 UN-Nachhaltigkeitsziele (SDGs) im Bauingenieurwesen
-                </h3>
-                <p className="text-xs text-slate-500 mt-0.5">Wählen Sie ein SDG, um die konkreten baupraktischen Handlungsfelder anzuzeigen.</p>
+                <h3 className="text-base font-extrabold text-slate-900"><MdText text={inhalt.texte.die17UnNachhaltigkeitsziele} /></h3>
+                <p className="text-xs text-slate-500 mt-0.5"><MdText text={inhalt.texte.wählenSieEinSdg} /></p>
               </div>
-              <span className="text-[10px] font-mono px-2 py-0.5 bg-blue-50 text-blue-800 rounded font-bold">
-                UN Agenda 2030
-              </span>
+              <span className="text-[10px] font-mono px-2 py-0.5 bg-blue-50 text-blue-800 rounded font-bold"><MdText text={inhalt.texte.unAgenda2030} /></span>
             </div>
 
             {/* Legend for Construction Relevance */}
@@ -408,12 +331,11 @@ export default function NachhaltigkeitDatenRegeln() {
                   <span className="w-1.5 h-1.5 rounded-full bg-red-500"></span>
                 </span>
                 <span className="text-slate-800">
-                  <strong className="text-red-600 font-bold">Dünner roter Rand:</strong> Direkte Kern- &amp; Praxisrelevanz für das Bauwesen, Baustoffe &amp; Planung (9 von 17 SDGs)
-                </span>
+                  <strong className="text-red-600 font-bold"><MdText text={inhalt.texte.dünnerRoterRand} /></strong><MdText text={inhalt.texte.direkteKernPraxisrelevanzFür} /></span>
               </div>
               <div className="flex items-center gap-2 text-slate-500 text-[11px]">
                 <span className="w-4 h-4 rounded border border-slate-200 bg-white shrink-0"></span>
-                <span>Grauer Rand: Übergreifende globale Entwicklungsziele</span>
+                <span><MdText text={inhalt.texte.grauerRandÜbergreifendeGlobale} /></span>
               </div>
             </div>
 
@@ -472,17 +394,14 @@ export default function NachhaltigkeitDatenRegeln() {
                     {currentSdg.bauRelevant ? (
                       <span className="self-start sm:self-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-red-100 text-red-800 border border-red-300 flex items-center gap-1.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-red-600"></span>
-                        {currentSdg.relevanceLabel || 'Direkte Kernrelevanz für das Bauwesen'}
+                        {currentSdg.relevanceLabel || inhalt.werte.direkteKernrelevanzFürDas}
                       </span>
                     ) : (
-                      <span className="self-start sm:self-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-slate-200/80 text-slate-600">
-                        Sektorübergreifendes Rahmenziel
-                      </span>
+                      <span className="self-start sm:self-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-slate-200/80 text-slate-600"><MdText text={inhalt.texte.sektorübergreifendesRahmenziel} /></span>
                     )}
                   </div>
 
-                  <p className="italic text-slate-500 mb-2">
-                    UN-Leitsatz: &bdquo;{currentSdg.englishTitle}&ldquo;
+                  <p className="italic text-slate-500 mb-2"><MdText text={inhalt.texte.unLeitsatz} />{currentSdg.englishTitle}&ldquo;
                   </p>
 
                   <p className="text-slate-800 leading-relaxed mb-3">
@@ -491,9 +410,7 @@ export default function NachhaltigkeitDatenRegeln() {
 
                   {currentSdg.measures.length > 0 && (
                     <div className="pt-2 border-t border-slate-200/60">
-                      <strong className="text-[11px] text-slate-700 block mb-1">
-                        Konkrete Handlungsfelder &amp; Maßnahmen im Bauwesen:
-                      </strong>
+                      <strong className="text-[11px] text-slate-700 block mb-1"><MdText text={inhalt.texte.konkreteHandlungsfelderMaßnahmenIm} /></strong>
                       <ul className="list-disc pl-4 space-y-1 text-[11px] text-slate-600">
                         {currentSdg.measures.map((m, idx) => (
                           <li key={idx}>{m}</li>
@@ -517,18 +434,14 @@ export default function NachhaltigkeitDatenRegeln() {
           <div className="bg-white border border-home-grau/30 p-5 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
             <div className="space-y-1">
               <span className="text-xs font-bold text-shiraz uppercase tracking-wider flex items-center gap-1.5">
-                <Scale size={15} /> Neu: Vollständiges Rechtsrahmen- &amp; Hierarchie-Kompendium
-              </span>
-              <p className="text-xs text-text-main/80 leading-relaxed max-w-2xl">
-                Hierarchische 5-Ebenen-Systematik aller 21 Rechtsakte (Green Deal, EU-Klimagesetz, Fit for 55, BauPVO 2024, EPBD, ESPR, CBAM, EU-ETS I/II, GEG, Gebäudetyp E u.v.m.) mit interaktiver Zeitleiste, Synopse-Matrix und Stichtags-Filtern.
-              </p>
+                <Scale size={15} /><MdText text={inhalt.texte.neuVollständigesRechtsrahmenHierarchie} /></span>
+              <p className="text-xs text-text-main/80 leading-relaxed max-w-2xl"><MdText text={inhalt.texte.hierarchische5EbenenSystematik} /></p>
             </div>
             <button
               type="button"
               onClick={() => setGlobalTab('oekobilanz_lca')}
               className="px-4 py-2.5 bg-shiraz text-white rounded-xl text-xs font-bold hover:bg-shiraz/90 transition-all flex items-center gap-2 shrink-0 cursor-pointer shadow-sm self-start sm:self-center"
-            >
-              Zum Rechtsrahmen-Kompendium <ArrowRight size={14} />
+            ><MdText text={inhalt.texte.zumRechtsrahmenKompendium} /><ArrowRight size={14} />
             </button>
           </div>
 
@@ -536,12 +449,8 @@ export default function NachhaltigkeitDatenRegeln() {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-5">
             <div className="border-b border-home-grau/20 pb-3 flex items-center justify-between">
               <div>
-                <h3 className="text-base font-extrabold text-slate-900">
-                  EU-Taxonomie-Verordnung (EU 2020/852) im Bausektor
-                </h3>
-                <p className="text-xs text-slate-500 mt-0.5">
-                  Das EU-Klassifikationssystem für ökologisch nachhaltige Wirtschaftsaktivitäten und Green Finance.
-                </p>
+                <h3 className="text-base font-extrabold text-slate-900"><MdText text={inhalt.texte.euTaxonomieVerordnungEu} /></h3>
+                <p className="text-xs text-slate-500 mt-0.5"><MdText text={inhalt.texte.dasEuKlassifikationssystemFür} /></p>
               </div>
               <span className="text-[10px] font-mono px-2 py-0.5 bg-emerald-50 text-emerald-800 rounded font-bold">
                 Taxonomie-Konformität
@@ -550,20 +459,13 @@ export default function NachhaltigkeitDatenRegeln() {
 
             <p className="text-xs text-slate-700 leading-relaxed">
               Damit ein Bau- oder Immobilienprojekt als „taxonomiekonform“ eingestuft wird, muss es einen 
-              <strong> wesentlichen Beitrag (*Substantial Contribution*)</strong> zu mindestens einem der sechs EU-Umweltziele leisten und 
-              gleichzeitig das Prinzip <strong>*Do No Significant Harm (DNSH)*</strong> (keine wesentliche Beeinträchtigung der übrigen fünf Ziele) strikt einhalten:
+              <strong><MdText text={inhalt.texte.wesentlichenBeitragSubstantialContributi} /></strong> zu mindestens einem der sechs EU-Umweltziele leisten und 
+              gleichzeitig das Prinzip <strong><MdText text={inhalt.texte.doNoSignificantHarm} /></strong> (keine wesentliche Beeinträchtigung der übrigen fünf Ziele) strikt einhalten:
             </p>
 
             {/* 6 Environmental Goals Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {[
-                { id: 1, title: '1. Klimaschutz (Climate Mitigation)', desc: 'Neubau: Primärenergiebedarf mind. 10 % unter NZEB/GEG. Bei Gebäuden > 5 000 m² zusätzlich Berechnung und Offenlegung des Lebenszyklus-GWP (Delegierte VO (EU) 2021/2139, Anhang I, 7.1).' },
-                { id: 2, title: '2. Anpassung an Klimawandel (Adaptation)', desc: 'Klimarisiko- und Vulnerabilitätsanalyse (Hitze, Hochwasser, Sturm) über 30 Jahre; Umsetzung physischer Anpassungsmaßnahmen.' },
-                { id: 3, title: '3. Wasser- & Meeresressourcen', desc: 'Wassersparende Armaturen (Durchflussbegrenzer, Grauwassernutzung); Schutz vor Schadstoffeinträgen in Grundwasser.' },
-                { id: 4, title: '4. Übergang zur Kreislaufwirtschaft', desc: 'Mindestens 70 % der nicht gefährlichen Bau- und Abbruchabfälle müssen stofflich wiederverwendet oder recycelt werden (Design for Deconstruction).' },
-                { id: 5, title: '5. Vermeidung von Umweltverschmutzung', desc: 'Strikter Ausschluss gefährlicher Stoffe (Asbest, FCKW, SVHC nach REACH, schädliche Weichmacher und Biozide in Putzen).' },
-                { id: 6, title: '6. Schutz von Biodiversität & Ökosystemen', desc: 'Bauen nur auf vorbelasteten/ausgewiesenen Flächen; Ausschluss von Schutzgebieten, Mooren und wertvollen Agrarflächen.' }
-              ].map((goal) => (
+              {inhalt.daten.NachhaltigkeitDatenRegeln_2.map((goal) => (
                 <div
                   key={goal.id}
                   onClick={() => setSelectedTaxonomyGoal(goal.id)}
@@ -582,8 +484,8 @@ export default function NachhaltigkeitDatenRegeln() {
             </div>
 
             <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 flex items-center justify-between">
-              <span>Bedeutung für Projektentwickler &amp; Banken:</span>
-              <strong className="font-bold text-shiraz">Taxonomiequote (CapEx/OpEx) bestimmt Zinssätze und ESG-Fonds-Fähigkeit</strong>
+              <span><MdText text={inhalt.texte.bedeutungFürProjektentwicklerBanken} /></span>
+              <strong className="font-bold text-shiraz"><MdText text={inhalt.texte.taxonomiequoteCapexOpexBestimmt} /></strong>
             </div>
           </div>
 
@@ -591,49 +493,38 @@ export default function NachhaltigkeitDatenRegeln() {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-5">
             <div className="border-b border-home-grau/20 pb-3 flex items-center justify-between">
               <div>
-                <h3 className="text-base font-extrabold text-slate-900">
-                  Die neue EU-Gebäuderichtlinie (EPBD 2024/1275): Roadmap bis 2050
-                </h3>
-                <p className="text-xs text-slate-500 mt-0.5">Inkrafttreten im Mai 2024 mit zwingender Transformation im nationalen GEG.</p>
+                <h3 className="text-base font-extrabold text-slate-900"><MdText text={inhalt.texte.dieNeueEuGebäuderichtlinie} /></h3>
+                <p className="text-xs text-slate-500 mt-0.5"><MdText text={inhalt.texte.inkrafttretenImMai2024} /></p>
               </div>
-              <span className="text-[10px] font-mono px-2 py-0.5 bg-blue-50 text-blue-800 rounded font-bold">
-                EPBD Novelle 2024
-              </span>
+              <span className="text-[10px] font-mono px-2 py-0.5 bg-blue-50 text-blue-800 rounded font-bold"><MdText text={inhalt.texte.epbdNovelle2024} /></span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="p-4 rounded-xl border border-blue-200 bg-blue-50/60 flex flex-col justify-between">
                 <div>
-                  <span className="text-[10px] font-mono font-bold text-blue-700 block uppercase">Stufe 1 (ab 2028)</span>
-                  <strong className="text-sm font-bold text-slate-900 block mt-1">Öffentliche Nullemissionsgebäude</strong>
-                  <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
-                    Alle neuen Gebäude im Eigentum oder in der Nutzung öffentlicher Einrichtungen müssen als <strong>Zero Emission Buildings (ZEB)</strong> errichtet werden.
-                  </p>
+                  <span className="text-[10px] font-mono font-bold text-blue-700 block uppercase"><MdText text={inhalt.texte.stufe1Ab2028} /></span>
+                  <strong className="text-sm font-bold text-slate-900 block mt-1"><MdText text={inhalt.texte.öffentlicheNullemissionsgebäude} /></strong>
+                  <p className="text-[11px] text-slate-600 mt-1 leading-relaxed"><MdText text={inhalt.texte.alleNeuenGebäudeIm} /></p>
                 </div>
-                <span className="text-[10px] font-bold text-blue-900 mt-3 pt-2 border-t border-blue-200">Vorbildfunktion der öffentlichen Hand</span>
+                <span className="text-[10px] font-bold text-blue-900 mt-3 pt-2 border-t border-blue-200"><MdText text={inhalt.texte.vorbildfunktionDerÖffentlichenHand} /></span>
               </div>
 
               <div className="p-4 rounded-xl border border-blue-200 bg-blue-50/60 flex flex-col justify-between">
                 <div>
-                  <span className="text-[10px] font-mono font-bold text-blue-700 block uppercase">Stufe 2 (ab 2030)</span>
-                  <strong className="text-sm font-bold text-slate-900 block mt-1">ZEB &amp; Whole-Life Carbon für alle Neubauten</strong>
-                  <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
-                    Ausnahmslos alle neuen Gebäude müssen Nullemissionsgebäude sein. Pflicht zur Ermittlung und Ausweisung des <strong>Lebenszyklus-GWP</strong> im Energieausweis!
-                  </p>
+                  <span className="text-[10px] font-mono font-bold text-blue-700 block uppercase"><MdText text={inhalt.texte.stufe2Ab2030} /></span>
+                  <strong className="text-sm font-bold text-slate-900 block mt-1"><MdText text={inhalt.texte.zebWholeLifeCarbon} /></strong>
+                  <p className="text-[11px] text-slate-600 mt-1 leading-relaxed"><MdText text={inhalt.texte.ausnahmslosAlleNeuenGebäude} /></p>
                 </div>
-                <span className="text-[10px] font-bold text-blue-900 mt-3 pt-2 border-t border-blue-200">GWP-Grenzen im Bauantrag</span>
+                <span className="text-[10px] font-bold text-blue-900 mt-3 pt-2 border-t border-blue-200"><MdText text={inhalt.texte.gwpGrenzenImBauantrag} /></span>
               </div>
 
               <div className="p-4 rounded-xl border border-blue-200 bg-blue-50/60 flex flex-col justify-between">
                 <div>
-                  <span className="text-[10px] font-mono font-bold text-blue-700 block uppercase">Fossil-Ausstieg (2025–2040)</span>
+                  <span className="text-[10px] font-mono font-bold text-blue-700 block uppercase"><MdText text={inhalt.texte.fossilAusstieg20252040} /></span>
                   <strong className="text-sm font-bold text-slate-900 block mt-1">Heizungs-Dekarbonisierung</strong>
-                  <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
-                    Ab <strong>2025</strong> keine staatlichen Subventionen mehr für eigenständige fossile Kessel. 
-                    Bis spätestens <strong>2040</strong> vollständiger Ausstieg aus fossilen Brennstoffen zur Gebäudeheizung.
-                  </p>
+                  <p className="text-[11px] text-slate-600 mt-1 leading-relaxed"><MdText text={inhalt.texte.ab2025KeineStaatlichen} /></p>
                 </div>
-                <span className="text-[10px] font-bold text-blue-900 mt-3 pt-2 border-t border-blue-200">Verbot von Gas-/Ölheizungen</span>
+                <span className="text-[10px] font-bold text-blue-900 mt-3 pt-2 border-t border-blue-200"><MdText text={inhalt.texte.verbotVonGasÖlheizungen} /></span>
               </div>
             </div>
           </div>
@@ -648,32 +539,28 @@ export default function NachhaltigkeitDatenRegeln() {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-5">
             <div className="border-b border-home-grau/20 pb-3 flex items-center justify-between">
               <div>
-                <h3 className="text-base font-extrabold text-slate-900">
-                  Umweltproduktdeklarationen (EPD) nach DIN EN 15804+A2
-                </h3>
-                <p className="text-xs text-slate-500 mt-0.5">Typ-III-Umweltdeklarationen nach ISO 14025 als mathematische Datenbasis der Gebäude-Ökobilanz.</p>
+                <h3 className="text-base font-extrabold text-slate-900"><MdText text={inhalt.texte.umweltproduktdeklarationenEpdNachDin} /></h3>
+                <p className="text-xs text-slate-500 mt-0.5"><MdText text={inhalt.texte.typIiiUmweltdeklarationenNach} /></p>
               </div>
-              <span className="text-[10px] font-mono px-2 py-0.5 bg-slate-100 text-slate-700 rounded font-bold">
-                DIN EN 15804+A2
-              </span>
+              <span className="text-[10px] font-mono px-2 py-0.5 bg-slate-100 text-slate-700 rounded font-bold"><MdText text={inhalt.texte.dinEn15804A2} /></span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div className="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col gap-2">
-                <strong className="text-xs font-bold text-slate-900 block">Die 4 normativen GWP-Kernindikatoren:</strong>
+                <strong className="text-xs font-bold text-slate-900 block"><MdText text={inhalt.texte.die4NormativenGwp} /></strong>
                 <ul className="text-[11px] text-slate-600 space-y-1.5 list-disc pl-4 leading-relaxed">
-                  <li><strong className="text-slate-800">GWP-total:</strong> Summenwert aller Treibhausgasemissionen und -senken.</li>
-                  <li><strong className="text-slate-800">GWP-fossil:</strong> Emissionen aus Verbrennung fossiler Brennstoffe und Klinkerbrennprozessen.</li>
-                  <li><strong className="text-slate-800">GWP-biogenic:</strong> CO₂-Aufnahme im Pflanzenwachstum (als negativer Wert verbucht) und thermische Freisetzung in C3/C4.</li>
-                  <li><strong className="text-slate-800">GWP-luluc:</strong> Treibhauspotenzial infolge von Landnutzung und Landnutzungsänderung (*Land use &amp; land-use change*).</li>
+                  <li><strong className="text-slate-800">GWP-total:</strong><MdText text={inhalt.texte.summenwertAllerTreibhausgasemissionenUnd} /></li>
+                  <li><strong className="text-slate-800">GWP-fossil:</strong><MdText text={inhalt.texte.emissionenAusVerbrennungFossiler} /></li>
+                  <li><strong className="text-slate-800">GWP-biogenic:</strong><MdText text={inhalt.texte.coAufnahmeImPflanzenwachstum} /></li>
+                  <li><strong className="text-slate-800">GWP-luluc:</strong><MdText text={inhalt.texte.treibhauspotenzialInfolgeVonLandnutzung} /></li>
                 </ul>
               </div>
 
               <div className="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col gap-2">
-                <strong className="text-xs font-bold text-slate-900 block">Generische vs. Spezifische EPDs:</strong>
+                <strong className="text-xs font-bold text-slate-900 block"><MdText text={inhalt.texte.generischeVsSpezifischeEpds} /></strong>
                 <ul className="text-[11px] text-slate-600 space-y-1.5 list-disc pl-4 leading-relaxed">
-                  <li><strong className="text-slate-800">Generisch (ÖKOBAUDAT):</strong> Durchschnittswerte für frühe Entwurfsphasen (LPH 1–3). Im QNG/BNB mit +10 % Sicherheitsaufschlag belegt!</li>
-                  <li><strong className="text-slate-800">Herstellerspezifisch (z.B. IBU):</strong> Geprüfte Primärdaten eines konkreten Zement- oder Holzwerks ohne Sicherheitsaufschlag; zwingend für Endzertifizierung.</li>
+                  <li><strong className="text-slate-800"><MdText text={inhalt.texte.generischÖkobaudat} /></strong><MdText text={inhalt.texte.durchschnittswerteFürFrüheEntwurfsphasen} /></li>
+                  <li><strong className="text-slate-800"><MdText text={inhalt.texte.herstellerspezifischZBIbu} /></strong><MdText text={inhalt.texte.geprüftePrimärdatenEinesKonkreten} /></li>
                 </ul>
               </div>
             </div>
@@ -683,12 +570,8 @@ export default function NachhaltigkeitDatenRegeln() {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-5">
             <div className="border-b border-home-grau/20 pb-3 flex items-center justify-between">
               <div>
-                <h3 className="text-base font-extrabold text-slate-900">
-                  Digitaler Produktpass (DPP) &amp; Gebäude-Materialpass
-                </h3>
-                <p className="text-xs text-slate-500 mt-0.5">
-                  Rechtsrahmen: EU-Ökodesign-Verordnung (ESPR 2024) und novellierte Bauprodukteverordnung (CPR 2024).
-                </p>
+                <h3 className="text-base font-extrabold text-slate-900"><MdText text={inhalt.texte.digitalerProduktpassDppGebäude} /></h3>
+                <p className="text-xs text-slate-500 mt-0.5"><MdText text={inhalt.texte.rechtsrahmenEuÖkodesignVerordnung} /></p>
               </div>
               <span className="text-[10px] font-mono px-2 py-0.5 bg-purple-50 text-purple-800 rounded font-bold">
                 ESPR &amp; CPR
@@ -699,34 +582,28 @@ export default function NachhaltigkeitDatenRegeln() {
               <div className="p-4 rounded-xl border border-purple-150 bg-purple-50/50 flex flex-col justify-between">
                 <div>
                   <QrCode size={20} className="text-purple-700 mb-2" />
-                  <strong className="text-xs font-bold text-slate-900 block">Digital Product Passport (DPP)</strong>
-                  <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
-                    Jedes Bauprodukt erhält einen maschinenlesbaren Datenträger (z.B. QR-Code). Ermöglicht die Rückverfolgbarkeit von Inhaltsstoffen, Rezyklatanteilen, Demontageanleitungen und CO₂-Fußabdruck über die gesamte Lieferkette.
-                  </p>
+                  <strong className="text-xs font-bold text-slate-900 block"><MdText text={inhalt.texte.digitalProductPassportDpp} /></strong>
+                  <p className="text-[11px] text-slate-600 mt-1 leading-relaxed"><MdText text={inhalt.texte.jedesBauproduktErhältEinen} /></p>
                 </div>
-                <span className="text-[10px] font-bold text-purple-900 mt-3 pt-2 border-t border-purple-200">Rechtspflicht nach EU-Ökodesign</span>
+                <span className="text-[10px] font-bold text-purple-900 mt-3 pt-2 border-t border-purple-200"><MdText text={inhalt.texte.rechtspflichtNachEuÖkodesign} /></span>
               </div>
 
               <div className="p-4 rounded-xl border border-purple-150 bg-purple-50/50 flex flex-col justify-between">
                 <div>
                   <Building2 size={20} className="text-purple-700 mb-2" />
-                  <strong className="text-xs font-bold text-slate-900 block">Gebäude-Materialpass (Madaster)</strong>
-                  <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
-                    Dokumentiert Art, Masse, Einbauort und Lösbarkeit aller Bauteile eines Gebäudes. Berechnet den <strong>Circularity Index (CI)</strong> und den monetären Restwert der Materialien am Lebensende.
-                  </p>
+                  <strong className="text-xs font-bold text-slate-900 block"><MdText text={inhalt.texte.gebäudeMaterialpassMadaster} /></strong>
+                  <p className="text-[11px] text-slate-600 mt-1 leading-relaxed"><MdText text={inhalt.texte.dokumentiertArtMasseEinbauort} /></p>
                 </div>
-                <span className="text-[10px] font-bold text-purple-900 mt-3 pt-2 border-t border-purple-200">Grundlage für Urban Mining</span>
+                <span className="text-[10px] font-bold text-purple-900 mt-3 pt-2 border-t border-purple-200"><MdText text={inhalt.texte.grundlageFürUrbanMining} /></span>
               </div>
 
               <div className="p-4 rounded-xl border border-purple-150 bg-purple-50/50 flex flex-col justify-between">
                 <div>
                   <RefreshCw size={20} className="text-purple-700 mb-2" />
-                  <strong className="text-xs font-bold text-slate-900 block">Design for Disassembly</strong>
-                  <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
-                    Konstruieren mit trennbaren mechanischen Verbindungen (Verschrauben, Stecken) statt vollflächiger chemischer Verklebung. Ermöglicht sortenreinen Rückbau ohne Downcycling.
-                  </p>
+                  <strong className="text-xs font-bold text-slate-900 block"><MdText text={inhalt.texte.designForDisassembly} /></strong>
+                  <p className="text-[11px] text-slate-600 mt-1 leading-relaxed"><MdText text={inhalt.texte.konstruierenMitTrennbarenMechanischen} /></p>
                 </div>
-                <span className="text-[10px] font-bold text-purple-900 mt-3 pt-2 border-t border-purple-200">Zirkularitätsgrad &gt; 80 %</span>
+                <span className="text-[10px] font-bold text-purple-900 mt-3 pt-2 border-t border-purple-200"><MdText text={inhalt.texte.zirkularitätsgrad80} /></span>
               </div>
             </div>
           </div>
@@ -741,12 +618,8 @@ export default function NachhaltigkeitDatenRegeln() {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-5">
             <div className="border-b border-home-grau/20 pb-3 flex items-center justify-between">
               <div>
-                <h3 className="text-base font-extrabold text-slate-900">
-                  Die fünf Säulen des deutschen Nachhaltigkeits-Baurechts
-                </h3>
-                <p className="text-xs text-slate-500 mt-0.5">
-                  Vom Gebäudemodernisierungsgesetz (GModG, vormals GEG) über die Ersatzbaustoffverordnung bis zum Gebäudetyp-E-Vorhaben.
-                </p>
+                <h3 className="text-base font-extrabold text-slate-900"><MdText text={inhalt.texte.dieFünfSäulenDes} /></h3>
+                <p className="text-xs text-slate-500 mt-0.5"><MdText text={inhalt.texte.vomGebäudemodernisierungsgesetzGmodgVorm} /></p>
               </div>
               <span className="text-[10px] font-mono px-2 py-0.5 bg-slate-100 text-slate-700 rounded font-bold">
                 Bundesrecht
@@ -758,15 +631,13 @@ export default function NachhaltigkeitDatenRegeln() {
               <div className="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col sm:flex-row sm:items-start justify-between gap-3">
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
-                    <strong className="text-xs font-bold text-slate-900">1. Gebäudemodernisierungsgesetz (GModG, vormals GEG 2024)</strong>
+                    <strong className="text-xs font-bold text-slate-900"><MdText text={inhalt.texte.t1GebäudemodernisierungsgesetzGmodgVormal} /></strong>
                     <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-blue-100 text-blue-800 font-bold">Energie</span>
                   </div>
-                  <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
-                    Regelt den primärenergetischen Effizienzhausstandard (EH 55 als Neubaustandard) und die <strong>65 %-Erneuerbare-Energien-Vorgabe</strong> für neu eingebaute Heizungsanlagen (Kopplung an die kommunale Wärmeplanung).
-                  </p>
+                  <p className="text-[11px] text-slate-600 mt-1 leading-relaxed"><MdText text={inhalt.texte.regeltDenPrimärenergetischenEffizienzhau} /></p>
                 </div>
                 <div className="text-right shrink-0">
-                  <span className="text-[10px] text-slate-500 block font-mono">Max. Transmissionswärmeverlust</span>
+                  <span className="text-[10px] text-slate-500 block font-mono"><MdText text={inhalt.texte.maxTransmissionswärmeverlust} /></span>
                   <strong className="text-xs font-mono font-bold text-slate-800">H'T-Grenzwerte</strong>
                 </div>
               </div>
@@ -775,13 +646,10 @@ export default function NachhaltigkeitDatenRegeln() {
               <div className="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col sm:flex-row sm:items-start justify-between gap-3">
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
-                    <strong className="text-xs font-bold text-slate-900">2. Qualitätssiegel Nachhaltiges Gebäude (QNG)</strong>
+                    <strong className="text-xs font-bold text-slate-900"><MdText text={inhalt.texte.t2QualitätssiegelNachhaltigesGebäude} /></strong>
                     <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">Förderung</span>
                   </div>
-                  <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
-                    Staatliches Gütesiegel des BMWSB für zinsgünstige KfW-Förderdarlehen (Klimafreundlicher Neubau KFN) und degressive AfA (5 %). 
-                    Grenzwerte: <strong>QNG-Plus (<InlineMath math="\le 24\,\text{kg CO}_2\text{e}/(\text{m}^2\cdot\text{a})" />)</strong> und <strong>QNG-Premium (<InlineMath math="\le 20\,\text{kg CO}_2\text{e}/(\text{m}^2_{\text{NRF}}\cdot\text{a})" />)</strong> für Wohngebäude (WG23) über 50 Jahre Betrachtungszeitraum.
-                  </p>
+                  <p className="text-[11px] text-slate-600 mt-1 leading-relaxed"><MdText text={inhalt.texte.staatlichesGütesiegelDesBmwsb} /></p>
                 </div>
                 <div className="text-right shrink-0">
                   <span className="text-[10px] text-slate-500 block font-mono">Nachweis-Zeithorizont</span>
@@ -793,16 +661,13 @@ export default function NachhaltigkeitDatenRegeln() {
               <div className="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col sm:flex-row sm:items-start justify-between gap-3">
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
-                    <strong className="text-xs font-bold text-slate-900">3. Ersatzbaustoffverordnung (EBV seit 01.08.2023)</strong>
+                    <strong className="text-xs font-bold text-slate-900"><MdText text={inhalt.texte.t3ErsatzbaustoffverordnungEbvSeit} /></strong>
                     <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 font-bold">Kreislauf</span>
                   </div>
-                  <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
-                    Bundesweit harmonisierte Qualitätsanforderungen für mineralische Ersatzbaustoffe (RC-1 bis RC-3, Bodenmaterial BM-0 bis BM-F3, Gleisschotter). 
-                    Regelt Grundwasserschutz und Kataster-Anzeigepflicht nach § 25 EBV bei Einbaumengen ab <strong>250 m³</strong>.
-                  </p>
+                  <p className="text-[11px] text-slate-600 mt-1 leading-relaxed"><MdText text={inhalt.texte.bundesweitHarmonisierteQualitätsanforder} /></p>
                 </div>
                 <div className="text-right shrink-0">
-                  <span className="text-[10px] text-slate-500 block font-mono">Schwellenwert Kataster</span>
+                  <span className="text-[10px] text-slate-500 block font-mono"><MdText text={inhalt.texte.schwellenwertKataster} /></span>
                   <strong className="text-xs font-mono font-bold text-amber-800">&ge; 250 m³</strong>
                 </div>
               </div>
@@ -811,16 +676,14 @@ export default function NachhaltigkeitDatenRegeln() {
               <div className="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col sm:flex-row sm:items-start justify-between gap-3">
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
-                    <strong className="text-xs font-bold text-slate-900">4. Kreislaufwirtschaftsgesetz (KrWG)</strong>
+                    <strong className="text-xs font-bold text-slate-900"><MdText text={inhalt.texte.t4KreislaufwirtschaftsgesetzKrwg} /></strong>
                     <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-purple-100 text-purple-800 font-bold">Hierarchie</span>
                   </div>
-                  <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
-                    Verbindliche 5-stufige Abfallhierarchie: 1. Vermeidung &gt; 2. Vorbereitung zur Wiederverwendung &gt; 3. Recycling &gt; 4. sonstige Verwertung &gt; 5. Beseitigung (Deponierung als Ultima Ratio).
-                  </p>
+                  <p className="text-[11px] text-slate-600 mt-1 leading-relaxed"><MdText text={inhalt.texte.verbindliche5StufigeAbfallhierarchie} /></p>
                 </div>
                 <div className="text-right shrink-0">
                   <span className="text-[10px] text-slate-500 block font-mono">Grundsatz</span>
-                  <strong className="text-xs font-mono font-bold text-purple-800">Vermeidung vor Beseitigung</strong>
+                  <strong className="text-xs font-mono font-bold text-purple-800"><MdText text={inhalt.texte.vermeidungVorBeseitigung} /></strong>
                 </div>
               </div>
 
@@ -828,17 +691,14 @@ export default function NachhaltigkeitDatenRegeln() {
               <div className="p-4 rounded-xl border border-rose-200 bg-rose-50/50 flex flex-col sm:flex-row sm:items-start justify-between gap-3">
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
-                    <strong className="text-xs font-bold text-slate-900">5. Gebäudetyp E (Gesetzesvorhaben)</strong>
+                    <strong className="text-xs font-bold text-slate-900"><MdText text={inhalt.texte.t5GebäudetypEGesetzesvorhaben} /></strong>
                     <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-rose-100 text-rose-800 font-bold">Suffizienz</span>
                   </div>
-                  <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
-                    Soll fachkundigen Baupartnern das rechtlich belastbare Abweichen von reinen Komfort- und Ausstattungsnormen ohne Sachmangelrisiko nach § 633 BGB ermöglichen. Der Entwurf von 2024 (BT-Drs. 20/13959) ist mit der 20. Wahlperiode erledigt; nach Eckpunkten vom 20.11.2025 befindet sich ein neuer Gesetzentwurf in der Ressortabstimmung, ist aber noch nicht veröffentlicht (Stand 10/2026). 
-                    Grundlegende öffentlich-rechtliche Schutzziele (Standsicherheit, Brandschutz, Gesundheit, Schall- und Wärmeschutz) bleiben gewahrt.
-                  </p>
+                  <p className="text-[11px] text-slate-600 mt-1 leading-relaxed"><MdText text={inhalt.texte.sollFachkundigenBaupartnernDas} /></p>
                 </div>
                 <div className="text-right shrink-0">
-                  <span className="text-[10px] text-slate-500 block font-mono">Kabinett Nov. 2024</span>
-                  <strong className="text-xs font-mono font-bold text-rose-800">Einfaches Bauen</strong>
+                  <span className="text-[10px] text-slate-500 block font-mono"><MdText text={inhalt.texte.kabinettNov2024} /></span>
+                  <strong className="text-xs font-mono font-bold text-rose-800"><MdText text={inhalt.texte.einfachesBauen} /></strong>
                 </div>
               </div>
             </div>
@@ -848,26 +708,18 @@ export default function NachhaltigkeitDatenRegeln() {
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
-        title="Beispiel 1: EU-Taxonomie – Primärenergie-Kriterium für einen Neubau"
+        title={inhalt.werte.beispiel1EuTaxonomie}
         zielGleichung="Q_{P} \le 0{,}90 \cdot Q_{P,\text{NZEB}}"
-        schritte={[
-          { titel: 'NZEB-Schwelle', erklaerung: 'In Deutschland entspricht der Niedrigstenergiegebäude-Standard der Neubauanforderung nach GModG § 15 (0,55 · Referenzgebäude). Angenommen: zulässiger Wert 40 kWh/(m²a).', formel: 'Q_{P,\\text{NZEB}} = 40\\,\\text{kWh/(m}^2\\text{a)}' },
-          { titel: 'Taxonomie-Schwelle', erklaerung: 'Neubau, Klimaschutz-Kriterium: mindestens 10 % unter NZEB:', formel: 'Q_{P,\\text{Tax}} = 0{,}90 \\cdot 40 = 36\\,\\text{kWh/(m}^2\\text{a)}' },
-          { titel: 'Prüfung', erklaerung: 'Planungswert 34 kWh/(m²a):', formel: '34 \\le 36 \\Rightarrow \\text{Kriterium erfüllt}' }
-        ]}
-        ergebnisHinweis="Für Gebäude über 5 000 m² ist zusätzlich das Lebenszyklus-GWP zu berechnen und offenzulegen; außerdem gelten Luftdichtheits- bzw. Thermografie-Nachweise und die DNSH-Kriterien."
-        normQuelle="Delegierte VO (EU) 2021/2139, Anhang I, Abschnitt 7.1 (Stand manuell prüfen)"
+        schritte={inhalt.daten["NachhaltigkeitDatenRegeln.schritte"]}
+        ergebnisHinweis={inhalt.werte.fürGebäudeÜber5}
+        normQuelle={inhalt.werte.delegierteVoEu2021}
       />
       <FormulaDerivationBox
-        title="Beispiel 2: CRREM-Pfad – wann wird ein Bürogebäude „stranded“?"
+        title={inhalt.werte.beispiel2CrremPfad}
         zielGleichung="I_{\text{Ziel}}(t) = I_{2020} - \frac{I_{2020} - I_{2030}}{10} \cdot (t - 2020)"
-        schritte={[
-          { titel: 'Pfad (Lehrwerte)', erklaerung: 'Linear zwischen 52 kg CO₂e/(m²a) im Jahr 2020 und 18 kg CO₂e/(m²a) im Jahr 2030:', formel: 'I_{\\text{Ziel}}(2026) = 52 - 3{,}4 \\cdot 6 = 31{,}6\\,\\text{kg CO}_2\\text{e/(m}^2\\text{a)}' },
-          { titel: 'Ist-Intensität', erklaerung: 'Betriebsemissionen des Gebäudes:', formel: 'I_{\\text{Ist}} = 32{,}0 > 31{,}6' },
-          { titel: 'Misalignment Year', erklaerung: 'Ohne Maßnahmen liegt das Gebäude bereits 2026 über dem Pfad; eine Senkung auf 20 kg CO₂e/(m²a) verschiebt den Schnittpunkt:', formel: '52 - 3{,}4 \\cdot (t - 2020) = 20 \\Rightarrow t \\approx 2029{,}4' }
-        ]}
-        ergebnisHinweis="CRREM-Pfade sind länder- und nutzungsspezifisch; für Investitionsentscheidungen sind die aktuellen veröffentlichten Pfade zu verwenden, nicht diese Lehrwerte."
-        normQuelle="CRREM-Methodik (Lehrbeispiel)"
+        schritte={inhalt.daten["NachhaltigkeitDatenRegeln.schritte_2"]}
+        ergebnisHinweis={inhalt.werte.crremPfadeSindLänder}
+        normQuelle={inhalt.werte.crremMethodikLehrbeispiel}
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
@@ -875,48 +727,17 @@ export default function NachhaltigkeitDatenRegeln() {
 
       {/* Standardized ModuleFooter according to Styleguide */}
       <ModuleFooter
-        lastReviewed="Oktober 2026 (AP 7 Nachhaltigkeit: QNG, EPBD, Taxonomie, ETS II, Gebäudetyp E und GModG auf Rechtsstand Oktober 2026 geprüft; fachliche Freigabe durch den Autor ausstehend)"
+        lastReviewed={inhalt.werte.oktober2026Ap7}
         wikipedia={[
-          { title: 'Ziele für nachhaltige Entwicklung (SDGs)', url: 'https://de.wikipedia.org/wiki/Ziele_f%C3%BCr_nachhaltige_Entwicklung' },
+          { title: inhalt.werte.zieleFürNachhaltigeEntwicklung, url: 'https://de.wikipedia.org/wiki/Ziele_f%C3%BCr_nachhaltige_Entwicklung' },
           { title: 'EU-Taxonomie', url: 'https://de.wikipedia.org/wiki/EU-Taxonomie' },
-          { title: 'Richtlinie über die Gesamtenergieeffizienz von Gebäuden (EPBD)' },
-          { title: 'Umweltproduktdeklaration (EPD)' },
-          { title: 'Ersatzbaustoffverordnung (EBV)', url: 'https://de.wikipedia.org/wiki/Ersatzbaustoffverordnung' }
+          inhalt.daten["NachhaltigkeitDatenRegeln.wikipedia.2"],
+          { title: inhalt.werte.umweltproduktdeklarationEpd },
+          { title: inhalt.werte.ersatzbaustoffverordnungEbv, url: 'https://de.wikipedia.org/wiki/Ersatzbaustoffverordnung' }
         ]}
-        literatur={[
-          'Hegger, M.; Auch-Schwelk, V.; Fuchs, M.; Rosenkranz, T.: Baustoff Atlas. München: Edition Detail 2005',
-          'Klöpffer, W.; Grahl, B.: Ökobilanz (LCA) – Ein Leitfaden für Ausbildung und Beruf. Weinheim: Wiley-VCH 2009',
-          'Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011',
-          'Bundesministerium des Innern, für Bau und Heimat (BMI) (Hrsg.): Leitfaden Nachhaltiges Bauen – Zukunftsfähiges Planen, Bauen und Betreiben von Gebäuden. Stand Januar 2019. Berlin 2019',
-          'Nagler, F.; Jarmer, T.; Niemann, A. et al.: Einfach Bauen – Ganzheitliche Strategien für energieeffizientes, einfaches Bauen. Untersuchung der Wechselwirkung von Raum, Technik, Material und Konstruktion. Stuttgart: Fraunhofer IRB 2019 (Forschungsinitiative Zukunft Bau F 3151)'
-        ]}
-        regelwerke={[
-          { title: 'DIN EN 15643:2021-12 (Nachhaltigkeit von Bauwerken – Allgemeine Rahmenbedingungen zur Bewertung von Gebäuden und Ingenieurbauwerken)' },
-          { title: 'ISO 15392:2019 (Nachhaltiges Bauen – Allgemeine Grundsätze)' },
-          { title: 'EPBD – Richtlinie (EU) 2024/1275 (Neufassung; Nullemissionsgebäude ab 2028/2030, Lebenszyklus-GWP Art. 7)', url: 'https://eur-lex.europa.eu/' },
-          { title: 'EU-Taxonomie-Verordnung (EU) 2020/852 mit Delegierter VO (EU) 2021/2139 (Klimaschutz-Kriterien)', url: 'https://eur-lex.europa.eu/' },
-          { title: 'DIN EN 15804:2022-03 (EN 15804:2012+A2:2019+AC:2021; Umweltproduktdeklarationen)' },
-          { title: 'DIN EN 15978:2026-09 (Bewertung der Umweltqualität von Gebäuden; ersetzt 2012-10)' },
-          { title: 'Gebäudemodernisierungsgesetz (GModG, seit 29.07.2026; vormals GEG)', url: 'https://www.gesetze-im-internet.de/geg/' },
-          { title: 'Ersatzbaustoffverordnung (EBV, in Kraft seit 01.08.2023; Novelle in Vorbereitung)', url: 'https://www.gesetze-im-internet.de/ersatzbaustoffv/' }
-        ]}
-        formeln={[
-          {
-            formel: 'GWP_{\\text{Gebäude}} = \\sum_{i} m_i \\cdot GWP_{\\text{A1-A3},i} + \\sum_{t=1}^{50} E_t \\cdot f_{\\text{CO2},t} \\quad [\\text{kg CO}_2\\text{-eq}]',
-            erklaerung: 'Vereinfachte Lebenszyklus-Treibhausgasbilanz über 50 Jahre (QNG, EPBD) mit Herstellung (A1–A3) und Betrieb (B6); vollständig zusätzlich Austausch (B4) und Lebensende (C3/C4).',
-            quelle: 'DIN EN 15978 / QNG'
-          },
-          {
-            formel: '\\text{MCI} = 1 - \\text{LFI} \\cdot \\frac{0{,}9}{X}, \\quad X = \\frac{L}{L_{av}} \\cdot \\frac{U}{U_{av}}',
-            erklaerung: 'Material Circularity Indicator: LFI = Linear Flow Index (Anteil linearer Stoffflüsse aus Primärrohstoff und Abfall), X = Nutzungsfaktor aus Lebensdauer L und Nutzungsintensität U relativ zum Branchendurchschnitt. Der Madaster-Zirkularitätsindex baut auf diesem Ansatz auf.',
-            quelle: 'Ellen MacArthur Foundation / Granta Design: Material Circularity Indicator'
-          },
-          {
-            formel: '\\text{GHG-Intensität} = \\frac{\\sum_{j} E_j \\cdot f_{\\text{CO2},j}}{\\text{NFA}} \\le \\text{Target}_{\\text{CRREM}}(t) \\quad [\\text{kg CO}_2\\text{e/(m}^2_{\\text{NFA}}\\cdot\\text{a})]',
-            erklaerung: 'CRREM-Dekarbonisierungspfad: Zulässige flächenbezogene Treibhausgasemissionen des Gebäudebetriebs pro Jahr im Pariser 1,5°C-Ziel bis zum Zielwert 0 im Jahr 2050.',
-            quelle: 'CRREM v2 / EU-Taxonomie'
-          }
-        ]}
+        literatur={inhalt.daten["NachhaltigkeitDatenRegeln.literatur"]}
+        regelwerke={inhalt.daten["NachhaltigkeitDatenRegeln.regelwerke"]}
+        formeln={inhalt.daten["NachhaltigkeitDatenRegeln.formeln"]}
       />
     </div>
   );
