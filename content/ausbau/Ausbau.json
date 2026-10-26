@@ -82,7 +82,8 @@
   "werte": {
     "anwendungsbeispielLängenänderungEinesHei": "Anwendungsbeispiel: Längenänderung eines Heizestrichfeldes",
     "tUndCsAls": "α_T und ε_cs als Lehrwerte für Zementestrich",
-    "rund3MmDehnung": "Rund 3 mm Dehnung und 2–3 mm Verkürzung je Feldseite: Randdämmstreifen und Bewegungsfugen müssen diese Bewegungen aufnehmen."
+    "rund3MmDehnung": "Rund 3 mm Dehnung und 2–3 mm Verkürzung je Feldseite: Randdämmstreifen und Bewegungsfugen müssen diese Bewegungen aufnehmen.",
+    "reiterBereiche": "Bereiche des Moduls Ausbau"
   },
   "daten": {
     "Ausbau.schritte": [

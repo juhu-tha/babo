@@ -26,7 +26,8 @@
     "zinkTitanzink": "Zink / Titanzink",
     "anwendungsbeispielWärmedehnungVonFassade": "Anwendungsbeispiel: Wärmedehnung von Fassadenprofilen im Vergleich",
     "wärmedehnzahlenAlsRichtwerteHerstelleran": "Wärmedehnzahlen als Richtwerte (Herstellerangaben maßgebend)",
-    "aluminiumprofileDehnenSichDoppelt": "Aluminiumprofile dehnen sich doppelt so stark wie Stahl: Fest- und Gleitpunkte sowie Dehnfugen sind entsprechend zu planen. Bei Mischkonstruktionen Alu/Stahl entstehen sonst Zwängungen."
+    "aluminiumprofileDehnenSichDoppelt": "Aluminiumprofile dehnen sich doppelt so stark wie Stahl: Fest- und Gleitpunkte sowie Dehnfugen sind entsprechend zu planen. Bei Mischkonstruktionen Alu/Stahl entstehen sonst Zwängungen.",
+    "reiterBereiche": "Bereiche des Moduls Metalle"
   },
   "daten": {
     "METALS_DATA": [

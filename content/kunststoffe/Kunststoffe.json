@@ -90,7 +90,8 @@
     "anwendungsbeispielWärmedehnungEinerPvc": "Anwendungsbeispiel: Wärmedehnung einer PVC-U-Rohrleitung",
     "tAlsRichtwertProduktdatenblatt": "α_T als Richtwert (Produktdatenblatt maßgebend)",
     "t32MmAuf10": "32 mm auf 10 m: Kunststoffleitungen brauchen Dehnungsausgleicher oder Gleitpunkte.",
-    "ethylenTetrafluorethylenEtfe": "Ethylen-Tetrafluorethylen (ETFE)"
+    "ethylenTetrafluorethylenEtfe": "Ethylen-Tetrafluorethylen (ETFE)",
+    "reiterBereiche": "Bereiche des Moduls Kunststoffe"
   },
   "daten": {
     "Kunststoffe.schritte": [

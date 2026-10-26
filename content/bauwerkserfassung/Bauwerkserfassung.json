@@ -100,7 +100,8 @@
     "dieGemesseneVerformungErhöht": "Die gemessene Verformung erhöht die Ausnutzung um rund 17 Prozentpunkte. Der Stabilitätsnachweis (Knicken, Kippen) nach DIN EN 1995-1-1, 6.3 ist zusätzlich zu führen. Der interaktive Rechner verwendet abweichend die lineare Interaktion (ohne Quadrat des Druckanteils) mit Momenten nach Theorie II. Ordnung und liefert daher etwas höhere Ausnutzungen.",
     "dinEn199512": "DIN EN 1995-1-1:2010-12, Gl. (6.19)",
     "oktober2026Ap8": "Oktober 2026 (AP 8 Bestand: Holznachweise und Quellen geprüft; Genauigkeitsstufen nach Eckstein manuell abgleichen; fachliche Freigabe durch den Autor ausstehend)",
-    "eurocode5Holzbau": "Eurocode 5 (Holzbau)"
+    "eurocode5Holzbau": "Eurocode 5 (Holzbau)",
+    "reiterBereiche": "Bereiche des Moduls Bauwerkserfassung"
   },
   "daten": {
     "Bauwerkserfassung": [

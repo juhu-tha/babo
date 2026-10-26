@@ -143,7 +143,8 @@
     "anwendungsbeispielBedarfAnGipsputz": "Anwendungsbeispiel: Bedarf an Gipsputz (Standardwerte des Rechners)",
     "verbrauchsrichtwertFLtHerstellerangabe": "Verbrauchsrichtwert f lt. Herstellerangabe (Produktdatenblatt beachten)",
     "rund825KgBzw": "Rund 825 kg bzw. 33 Sack à 25 kg; Verluste und Untergrundunebenheiten zusätzlich berücksichtigen.",
-    "putzBaustoff": "Putz (Baustoff)"
+    "putzBaustoff": "Putz (Baustoff)",
+    "reiterBereiche": "Bereiche des Moduls Putze und Mörtel"
   },
   "daten": {
     "MORTAR_PRODUCTS": [

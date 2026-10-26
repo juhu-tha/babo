@@ -126,7 +126,8 @@
     "steinhöheHU": "Steinhöhe h_u",
     "anwendungsbeispielDruckfestigkeitUndTrag": "Anwendungsbeispiel: Druckfestigkeit und Traglast einer Ziegelwand (Standardwerte)",
     "en199611": "EN 1996-1-1, Gl. (3.1), K als Empfehlungswert; f_d mit ζ = 0,85 nach NA DE",
-    "nRd400Kn": "N_Rd ≈ 400 kN/m (vereinfacht, ohne Knickeinfluss)."
+    "nRd400Kn": "N_Rd ≈ 400 kN/m (vereinfacht, ohne Knickeinfluss).",
+    "reiterBereiche": "Bereiche des Moduls Mauerwerk"
   },
   "daten": {
     "stoneTypes": {

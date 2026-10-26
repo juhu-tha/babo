@@ -10,9 +10,25 @@ import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberForma
 import { InlineMath, BlockMath } from 'react-katex';
 import inhalt from '@/content/energieausweis/Energieausweis.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { energieausweis } from '@/src/calc/energieausweis';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+
+/** Farbe der Effizienzklasse (Wohngebäude, GModG/GEG Anlage 10 zu § 86) */
+const KLASSEN_FARBE: Readonly<Record<string, string>> = {
+  'A+': 'bg-green-700 text-white', A: 'bg-green-600 text-white', B: 'bg-green-500 text-white', C: 'bg-lime-500 text-slate-900',
+  D: 'bg-yellow-400 text-slate-900', E: 'bg-orange-400 text-white', F: 'bg-orange-500 text-white', G: 'bg-red-600 text-white', H: 'bg-red-800 text-white',
+};
+
+type EnergieausweisReiter = 'uebersicht' | 'annahmen_berechnung' | 'simulator' | 'praxis_recht';
+const REITER: readonly ModulTab<EnergieausweisReiter>[] = [
+  { id: 'uebersicht', label: inhalt.texte.übersichtSkala.trim(), icon: FileCheck },
+  { id: 'annahmen_berechnung', label: inhalt.texte.annahmen3StufenRechnung.trim(), icon: Calculator },
+  { id: 'simulator', label: inhalt.texte.interaktiverBedarfsRechner.trim(), icon: Sliders },
+  { id: 'praxis_recht', label: inhalt.texte.praxisReboundGmodgRecht.trim(), icon: Scale },
+];
 
 export default function Energieausweis() {
-  const [activeTab, setActiveTab] = useState<'uebersicht' | 'annahmen_berechnung' | 'simulator' | 'praxis_recht'>('uebersicht');
+  const [activeTab, setActiveTab] = useState<EnergieausweisReiter>('uebersicht');
 
   // State für interaktive Skala im Übersichtstab
   const [scaleHouseType, setScaleHouseType] = useState<'altbau_unsaniert' | 'altbau_saniert' | 'neubau_geg' | 'neubau_eh40'>('altbau_unsaniert');
@@ -43,190 +59,13 @@ export default function Energieausweis() {
   const currentScale = getScaleValue();
 
   // Berechnungslogik für den interaktiven Simulator
+  // Rechenkern src/calc/energieausweis.ts (Lehrmodell): H_T, H_V, Verluste/Gewinne, Q_h, Q_E, Q_P, CO₂, Effizienzklasse
   const simResults = useMemo(() => {
-    // 1. Spezifische Hüllwerte nach Standard
-    let u_wand = 0.28;
-    let u_dach = 0.20;
-    let u_fenster = 1.30;
-    let delta_u_wb = 0.05;
-
-    if (simHuelleStandard === 'unsaniert') {
-      u_wand = 1.40;
-      u_dach = 1.20;
-      u_fenster = 3.00;
-      delta_u_wb = 0.10;
-    } else if (simHuelleStandard === 'bestand_teilsaniert') {
-      u_wand = 0.45;
-      u_dach = 0.30;
-      u_fenster = 1.60;
-      delta_u_wb = 0.07;
-    } else if (simHuelleStandard === 'geg_standard') {
-      u_wand = 0.24;
-      u_dach = 0.18;
-      u_fenster = 1.10;
-      delta_u_wb = 0.05;
-    } else if (simHuelleStandard === 'effizienzhaus40') {
-      u_wand = 0.14;
-      u_dach = 0.11;
-      u_fenster = 0.75;
-      delta_u_wb = 0.02; // wärmebrückenoptimiert
-    }
-
-    // Geometrische Näherung für Hüllflächen abhängig von A_N und Typ
-    const a_wand = simBuildingType === 'efh' ? simArea * 1.2 : simArea * 0.7;
-    const a_dach = simBuildingType === 'efh' ? simArea * 0.6 : simArea * 0.3;
-    const a_fenster = simArea * 0.22;
-    const a_boden = a_dach;
-    const u_boden = simHuelleStandard === 'unsaniert' ? 0.90 : simHuelleStandard === 'bestand_teilsaniert' ? 0.50 : 0.25;
-    const a_huelle_ges = a_wand + a_dach + a_fenster + a_boden;
-
-    // Transmissionswärmetransferkoeffizient H_T [W/K]
-    const h_t = (
-      a_wand * u_wand * 1.0 +
-      a_dach * u_dach * 1.0 +
-      a_fenster * u_fenster * 1.0 +
-      a_boden * u_boden * 0.6 + // F_x gegen Erdreich = 0.6
-      a_huelle_ges * delta_u_wb
-    );
-    const h_t_prime = h_t / a_huelle_ges; // Spezifischer H'T [W/(m²K)]
-
-    // Lüftungswärmetransferkoeffizient H_V [W/K]
-    // Netto-Raumluftvolumen vereinfacht V ≈ 2,5 m · A_N (Lehrannahme)
-    const v_netto = simArea * 2.5; 
-    let n_eff = 0.5; // Luftwechselrate
-    if (simVentilation === 'abluft') n_eff = 0.45;
-    if (simVentilation === 'kwl_wrg') n_eff = 0.18; // ca. 80% Wärmerückgewinnung wirksam
-
-    const h_v = v_netto * 0.34 * n_eff;
-
-    // Jahresgradtage Deutschland (Norm-Klima TRY Potsdam ca. 66.000 Kh/a bis 75.000 Kh/a, ca. 2.900 Kd/a)
-    const f_klima_k = 72; // kKh/a (Faktor zur Abschätzung des jährlichen Verlusts)
-    const q_t_jahr = (h_t * f_klima_k) / simArea; // kWh/(m² a)
-    const q_v_jahr = (h_v * f_klima_k) / simArea; // kWh/(m² a)
-
-    // Solare & Interne Wärmegewinne
-    const q_solar = (a_fenster * (simHuelleStandard === 'effizienzhaus40' ? 140 : 160)) / simArea; // ca. 25-35 kWh/(m²a)
-    const q_intern = 35; // standardisiert ca. 35-40 kWh/(m²a)
-    const eta_ausnutzung = simHuelleStandard === 'effizienzhaus40' ? 0.75 : simHuelleStandard === 'unsaniert' ? 0.98 : 0.88;
-    const q_gewinne = eta_ausnutzung * (q_solar + q_intern);
-
-    // 1. Nutzwärmebedarf Heizung Q_h
-    const q_h = Math.max(10, Math.round(q_t_jahr + q_v_jahr - q_gewinne));
-
-    // Warmwasserbedarf (standardisiert DIN V 18599)
-    const q_w = 12.5; // kWh/(m² a)
-
-    // 2. Anlagentechnik & Endenergiebedarf Q_E
-    let eta_erzeuger = 0.95;
-    let jaz = 1.0;
-    let f_p = 1.1;
-    let co2_faktor = 240; // g/kWh
-
-    switch (simHeizung) {
-      case 'gas_brennwert':
-        eta_erzeuger = 0.96;
-        f_p = 1.1;
-        co2_faktor = 240;
-        break;
-      case 'oel_kessel':
-        eta_erzeuger = 0.84;
-        f_p = 1.1;
-        co2_faktor = 310;
-        break;
-      case 'pellets':
-        eta_erzeuger = 0.88;
-        f_p = 0.2;
-        co2_faktor = 30; // biogen
-        break;
-      case 'wp_luft':
-        jaz = 3.3;
-        eta_erzeuger = 1.0;
-        f_p = 1.8;
-        co2_faktor = 380; // Strommix
-        break;
-      case 'wp_sole':
-        jaz = 4.3;
-        eta_erzeuger = 1.0;
-        f_p = 1.8;
-        co2_faktor = 380;
-        break;
-      case 'fernwaerme':
-        eta_erzeuger = 0.98;
-        f_p = 0.4;
-        co2_faktor = 120;
-        break;
-    }
-
-    // Anlagenverluste Verteilung & Speicher
-    const q_verlust_netz = simHuelleStandard === 'unsaniert' ? 14 : 7;
-    const w_hilfsstrom = simHeizung.startsWith('wp') ? 2.5 : 3.5;
-
-    let q_e = 0;
-    if (simHeizung.startsWith('wp')) {
-      q_e = ((q_h + q_w + q_verlust_netz) / jaz) + w_hilfsstrom;
-    } else {
-      q_e = ((q_h + q_w + q_verlust_netz) / eta_erzeuger) + w_hilfsstrom;
-    }
-    q_e = Math.round(q_e);
-
-    // 3. Primärenergiebedarf Q_P
-    let q_p = 0;
-    if (simHeizung.startsWith('wp')) {
-      q_p = Math.round(q_e * f_p);
-    } else {
-      const q_brennstoff = (q_h + q_w + q_verlust_netz) / eta_erzeuger;
-      q_p = Math.round(q_brennstoff * f_p + w_hilfsstrom * 1.8);
-    }
-
-    // CO2-Emissionen [kg/(m² a)]
-    const co2_emissionen = Math.round((q_e * co2_faktor) / 1000);
-
-    // Effizienzklasse (Wohngebäude, GModG/GEG Anlage 10 zu § 86)
-    let klasse = 'H';
-    let klasseColor = 'bg-red-800 text-white';
-    if (q_e <= 30) {
-      klasse = 'A+';
-      klasseColor = 'bg-green-700 text-white';
-    } else if (q_e <= 50) {
-      klasse = 'A';
-      klasseColor = 'bg-green-600 text-white';
-    } else if (q_e <= 75) {
-      klasse = 'B';
-      klasseColor = 'bg-green-500 text-white';
-    } else if (q_e <= 100) {
-      klasse = 'C';
-      klasseColor = 'bg-lime-500 text-slate-900';
-    } else if (q_e <= 130) {
-      klasse = 'D';
-      klasseColor = 'bg-yellow-400 text-slate-900';
-    } else if (q_e <= 160) {
-      klasse = 'E';
-      klasseColor = 'bg-orange-400 text-white';
-    } else if (q_e <= 200) {
-      klasse = 'F';
-      klasseColor = 'bg-orange-500 text-white';
-    } else if (q_e <= 250) {
-      klasse = 'G';
-      klasseColor = 'bg-red-600 text-white';
-    }
-
+    const r = energieausweis({ typ: simBuildingType, flaeche: simArea, huelle: simHuelleStandard, lueftung: simVentilation, heizung: simHeizung });
     return {
-      q_h,
-      q_e,
-      q_p,
-      h_t_prime: formatDeZahl(h_t_prime, 2),
-      co2_emissionen,
-      klasse,
-      klasseColor,
-      q_t_jahr: Math.round(q_t_jahr),
-      q_v_jahr: Math.round(q_v_jahr),
-      q_gewinne: Math.round(q_gewinne),
-      f_p,
-      // Zwischenwerte für den Live-Rechenweg (ungerundet)
-      h_t, h_v, n_eff, v_netto, f_klima_k,
-      q_t_roh: q_t_jahr, q_v_roh: q_v_jahr, q_solar, q_intern, eta_ausnutzung, q_gewinne_roh: q_gewinne,
-      q_w, q_verlust_netz, w_hilfsstrom, jaz, eta_erzeuger,
-      istWP: simHeizung.startsWith('wp')
+      ...r,
+      h_t_prime: formatDeZahl(r.h_t_prime, 2),
+      klasseColor: KLASSEN_FARBE[r.klasse] ?? 'bg-red-800 text-white',
     };
   }, [simBuildingType, simArea, simHuelleStandard, simVentilation, simHeizung]);
 
@@ -249,47 +88,7 @@ export default function Energieausweis() {
         </div>
 
         {/* Tab-Navigation */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          <button aria-pressed={activeTab === 'uebersicht'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              activeTab === 'uebersicht' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveTab('uebersicht')}
-          >
-            <FileCheck size={16} /><MdText text={inhalt.texte.übersichtSkala} /></button>
-          
-          <button aria-pressed={activeTab === 'annahmen_berechnung'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              activeTab === 'annahmen_berechnung' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveTab('annahmen_berechnung')}
-          >
-            <Calculator size={16} /><MdText text={inhalt.texte.annahmen3StufenRechnung} /></button>
-
-          <button aria-pressed={activeTab === 'simulator'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              activeTab === 'simulator' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveTab('simulator')}
-          >
-            <Sliders size={16} /><MdText text={inhalt.texte.interaktiverBedarfsRechner} /></button>
-
-          <button aria-pressed={activeTab === 'praxis_recht'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              activeTab === 'praxis_recht' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveTab('praxis_recht')}
-          >
-            <Scale size={16} /><MdText text={inhalt.texte.praxisReboundGmodgRecht} /></button>
-        </div>
+        <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-6">
 
         {/* TAB 1: ÜBERSICHT & FARBSKALA */}
         {activeTab === 'uebersicht' && (
@@ -1016,6 +815,7 @@ export default function Energieausweis() {
           </div>
         )}
 
+        </ModuleTabs>
       </div>      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
         title={inhalt.werte.beispiel1EndUnd}

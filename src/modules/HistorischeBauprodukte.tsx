@@ -671,7 +671,6 @@ const HISTORIC_PRODUCTS: HistoricProduct[] = [
 export default function HistorischeBauprodukte() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedEpoch, setSelectedEpoch] = useState<'all' | 'vorkrieg' | 'nachkrieg' | 'spaetmoderne' | 'moderne'>('nachkrieg');
-  const [activeTab, setActiveTab] = useState<'steckbrief'>('steckbrief');
 
   const filteredProducts = useMemo(() => {
     return HISTORIC_PRODUCTS.filter((prod) => {
@@ -699,22 +698,14 @@ export default function HistorischeBauprodukte() {
         </div>
       </div>
 
-      {/* Tab Navigation conforming to instructions: "nur reiter material-steckbriefe" */}
+      {/* Einziger Bereich: Material-Steckbriefe (AP 2.8: Überschrift statt Reiterleiste mit nur einem Reiter) */}
       <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 -mb-4">
-        <button aria-pressed={activeTab === 'steckbrief'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'steckbrief' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('steckbrief')}
-        >
-          <BookOpen size={16} /> Material-Steckbriefe
-        </button>
+        <h3 className="px-4 py-2.5 rounded-xl font-bold text-sm flex items-center gap-2 border shadow-md bg-shiraz text-white border-shiraz">
+          <BookOpen size={16} aria-hidden={true} /> Material-Steckbriefe
+        </h3>
       </div>
 
       {/* Epoch Navigation System within Steckbriefe */}
-      {activeTab === 'steckbrief' && (
         <div className="flex flex-col gap-8 animate-in fade-in duration-300">
           <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col gap-5">
             
@@ -855,7 +846,6 @@ export default function HistorischeBauprodukte() {
             )}
           </div>
         </div>
-      )}
 
       {/* standard module footer conforming to styleguide */}
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}

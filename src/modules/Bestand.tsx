@@ -35,6 +35,7 @@ import {
 } from 'lucide-react';
 import inhalt from '@/content/bestand/Bestand.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 ChartJS.register(
   CategoryScale,
@@ -70,8 +71,16 @@ const HEATING_SOURCES = [
   { id: 'heatpump', label: inhalt.werte.wärmepumpeJaz35, co2Factor: 0.11, costPerKwh: 0.09 },
 ];
 
+type BestandReiter = 'steckbrief' | 'sanierung' | 'vergleich' | 'theorie';
+const REITER: readonly ModulTab<BestandReiter>[] = [
+  { id: 'steckbrief', label: inhalt.texte.baualtersklassenEpochen.trim(), icon: Calendar },
+  { id: 'sanierung', label: inhalt.texte.sanierungsSimulatorGmodg.trim(), icon: Calculator },
+  { id: 'vergleich', label: inhalt.texte.epochenVergleichUWerte.trim(), icon: BarChart3 },
+  { id: 'theorie', label: inhalt.texte.konstruktiveTypologieFeuchteschutz.trim(), icon: BookOpen },
+];
+
 export default function Bestand() {
-  const [activeTab, setActiveTab] = useState<'steckbrief' | 'sanierung' | 'vergleich' | 'theorie'>('steckbrief');
+  const [activeTab, setActiveTab] = useState<BestandReiter>('steckbrief');
   const [selectedEra, setSelectedEra] = useState<string>('vor-1919');
   const [showCalculations, setShowCalculations] = useState<boolean>(false);
   
@@ -211,44 +220,7 @@ export default function Bestand() {
         </div>
 
         {/* Tab Navigation following GEMINI_md */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
-          <button aria-pressed={activeTab === 'steckbrief'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'steckbrief' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('steckbrief')}
-          >
-            <Calendar size={16} /><MdText text={inhalt.texte.baualtersklassenEpochen} /></button>
-          <button aria-pressed={activeTab === 'sanierung'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'sanierung' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('sanierung')}
-          >
-            <Calculator size={16} /><MdText text={inhalt.texte.sanierungsSimulatorGmodg} /></button>
-          <button aria-pressed={activeTab === 'vergleich'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'vergleich' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('vergleich')}
-          >
-            <BarChart3 size={16} /><MdText text={inhalt.texte.epochenVergleichUWerte} /></button>
-          <button aria-pressed={activeTab === 'theorie'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'theorie' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('theorie')}
-          >
-            <BookOpen size={16} /><MdText text={inhalt.texte.konstruktiveTypologieFeuchteschutz} /></button>
-        </div>
+        <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:my-6">
 
         {/* Tab 1: Baualtersklassen */}
         {activeTab === 'steckbrief' && (
@@ -639,6 +611,7 @@ export default function Bestand() {
             </div>
           </div>
         )}
+        </ModuleTabs>
       </div>
 
       {/* ModuleFooter following GEMINI_md */}

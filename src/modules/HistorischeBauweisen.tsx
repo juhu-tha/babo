@@ -9,9 +9,18 @@ import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/historischebauweisen/HistorischeBauweisen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+
+type BauweisenReiter = 'massivbau' | 'fachwerk' | 'decken' | 'dachwerke';
+const REITER: readonly ModulTab<BauweisenReiter>[] = [
+  { id: 'massivbau', label: inhalt.werte.massivbauMauerwerk, icon: Building2 },
+  { id: 'fachwerk', label: inhalt.werte.fachwerkHolzskelett, icon: Hammer },
+  { id: 'decken', label: inhalt.werte.historischeDecken, icon: Layers },
+  { id: 'dachwerke', label: inhalt.werte.historischeDachwerke, icon: Landmark },
+];
 
 export default function HistorischeBauweisen() {
-  const [activeTab, setActiveTab] = useState<'massivbau' | 'fachwerk' | 'decken' | 'dachwerke'>('massivbau');
+  const [activeTab, setActiveTab] = useState<BauweisenReiter>('massivbau');
 
   // --- TAB 1: MASSIVBAU STATE & CALCULATIONS ---
   const [archSpan, setArchSpan] = useState<number>(3.0); // L in m
@@ -159,30 +168,7 @@ export default function HistorischeBauweisen() {
           </div>
         </div>
 
-        {/* Tab-Navigation */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          {[
-            { id: 'massivbau' as const, label: inhalt.werte.massivbauMauerwerk, icon: Building2 },
-            { id: 'fachwerk' as const, label: inhalt.werte.fachwerkHolzskelett, icon: Hammer },
-            { id: 'decken' as const, label: inhalt.werte.historischeDecken, icon: Layers },
-            { id: 'dachwerke' as const, label: inhalt.werte.historischeDachwerke, icon: Landmark }
-          ].map((tab) => {
-            const Icon = tab.icon;
-            return (
-              <button aria-pressed={activeTab === tab.id}
-                key={tab.id}
-                className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-                  activeTab === tab.id 
-                    ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                    : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-                }`}
-                onClick={() => setActiveTab(tab.id)}
-              >
-                <Icon size={16} /> {tab.label}
-              </button>
-            );
-          })}
-        </div>
+        <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-6">
 
         {/* Dynamic Tab Content rendering */}
         <div className="space-y-6">
@@ -794,6 +780,7 @@ export default function HistorischeBauweisen() {
           )}
 
         </div>
+        </ModuleTabs>
       </div>
 
       {/* Standardized Module Footer */}

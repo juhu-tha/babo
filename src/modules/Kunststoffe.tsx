@@ -25,6 +25,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { useTabContext } from '@/src/contexts/TabContext';
 import inhalt from '@/content/kunststoffe/Kunststoffe.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 ChartJS.register(
   CategoryScale,
@@ -122,8 +123,17 @@ function PlasticsThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt'
   );
 }
 
+type KunststoffReiter = 'arten' | 'eigenschaften' | 'steckbrief' | 'geosynthetics' | 'etfe';
+const REITER: readonly ModulTab<KunststoffReiter>[] = [
+  { id: 'steckbrief', label: 'Baustoff-Steckbrief', icon: BookOpen },
+  { id: 'arten', label: inhalt.werte.artenEinsatzbereiche, icon: List },
+  { id: 'eigenschaften', label: 'Temperaturabhängigkeit', icon: Thermometer },
+  { id: 'geosynthetics', label: inhalt.werte.geokunststoffe, icon: Layers },
+  { id: 'etfe', label: inhalt.werte.etfeFolien, icon: Maximize },
+];
+
 export default function Kunststoffe() {
-  const [activeTab, setActiveTab] = useState<'arten' | 'eigenschaften' | 'steckbrief' | 'geosynthetics' | 'etfe'>('steckbrief');
+  const [activeTab, setActiveTab] = useState<KunststoffReiter>('steckbrief');
   const [plasticType, setPlasticType] = useState<'amorphous' | 'semicrystalline' | 'elastomer' | 'duroplast'>('amorphous');
   const [temperature, setTemperature] = useState(20);
 
@@ -295,33 +305,7 @@ export default function Kunststoffe() {
   return (
     <div className="flex flex-col gap-6">
       
-      {/* Tabs Navigation */}
-      <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-        {[
-          { id: 'steckbrief', label: 'Baustoff-Steckbrief', icon: BookOpen },
-          { id: 'arten', label: inhalt.werte.artenEinsatzbereiche, icon: List },
-          { id: 'eigenschaften', label: 'Temperaturabhängigkeit', icon: Thermometer },
-          { id: 'geosynthetics', label: inhalt.werte.geokunststoffe, icon: Layers },
-          { id: 'etfe', label: inhalt.werte.etfeFolien, icon: Maximize }
-        ].map((tab) => {
-          const Icon = tab.icon;
-          const isActive = activeTab === tab.id;
-          return (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id as typeof activeTab)}
-              className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-                isActive 
-                  ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                  : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-              }`}
-            >
-              <Icon size={16} />
-              {tab.label}
-            </button>
-          );
-        })}
-      </div>
+      <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="flex flex-col gap-6 [&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20">
 
       {activeTab === 'eigenschaften' && (
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 animate-in fade-in slide-in-from-bottom-2">
@@ -620,6 +604,7 @@ export default function Kunststoffe() {
           </div>
         </div>
       )}
+      </ModuleTabs>
 
       <PlasticsThematicLinks current="baustoff" />
 

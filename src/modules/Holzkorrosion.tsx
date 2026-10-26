@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 import { InlineMath } from 'react-katex';
 import inhalt from '@/content/holzkorrosion/Holzkorrosion.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 function WoodThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 'dauerhaftigkeit' }) {
   const { setActiveTab } = useTabContext();
@@ -92,9 +93,16 @@ function WoodThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | '
 
 const moistureRanges = inhalt.daten.moistureRanges;
 
+type HolzkorrosionReiter = 'simulation' | 'schaedlinge' | 'schutz';
+const REITER: readonly ModulTab<HolzkorrosionReiter>[] = [
+  { id: 'simulation', label: inhalt.texte.grundlagenSimulation, icon: Droplets },
+  { id: 'schaedlinge', label: 'Holzschädlinge', icon: Bug },
+  { id: 'schutz', label: inhalt.texte.holzschutzDin68800, icon: ShieldCheck },
+];
+
 export default function Holzkorrosion() {
   const { activeTab, setActiveTab } = useTabContext();
-  const [activeSection, setActiveSection] = React.useState<'simulation' | 'schaedlinge' | 'schutz'>('simulation');
+  const [activeSection, setActiveSection] = React.useState<HolzkorrosionReiter>('simulation');
   const [woodMoisture, setWoodMoisture] = React.useState<number>(12);
 
   // Find corresponding moisture range
@@ -111,41 +119,7 @@ export default function Holzkorrosion() {
   return (
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-        <div className="flex flex-wrap gap-2 border-b border-home-grau/20 pb-4 mb-6">
-          <button aria-pressed={activeSection === 'simulation'}
-            onClick={() => setActiveSection('simulation')}
-            className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border ${
-              activeSection === 'simulation'
-                ? 'bg-shiraz border-shiraz text-white shadow-md'
-                : 'bg-white hover:bg-off-white border-home-grau/30 text-text-main'
-            }`}
-          >
-            <Droplets size={14} />
-            <span><MdText text={inhalt.texte.grundlagenSimulation} /></span>
-          </button>
-          <button aria-pressed={activeSection === 'schaedlinge'}
-            onClick={() => setActiveSection('schaedlinge')}
-            className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border ${
-              activeSection === 'schaedlinge'
-                ? 'bg-shiraz border-shiraz text-white shadow-md'
-                : 'bg-white hover:bg-off-white border-home-grau/30 text-text-main'
-            }`}
-          >
-            <Bug size={14} />
-            <span>Holzschädlinge</span>
-          </button>
-          <button aria-pressed={activeSection === 'schutz'}
-            onClick={() => setActiveSection('schutz')}
-            className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border ${
-              activeSection === 'schutz'
-                ? 'bg-shiraz border-shiraz text-white shadow-md'
-                : 'bg-white hover:bg-off-white border-home-grau/30 text-text-main'
-            }`}
-          >
-            <ShieldCheck size={14} />
-            <span><MdText text={inhalt.texte.holzschutzDin68800} /></span>
-          </button>
-        </div>
+        <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeSection} onWechsel={setActiveSection} className="[&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:pb-4 [&>[role=tablist]]:mb-6">
 
         <h2 className="text-xl font-bold text-text-main mb-6 flex items-center gap-2">
           <Bug className="text-shiraz" /><MdText text={inhalt.texte.holzkorrosionSchädlingeHolzschutz} /></h2>
@@ -757,6 +731,7 @@ export default function Holzkorrosion() {
       )}
 
         </div>
+        </ModuleTabs>
       </div>
       
       <WoodThematicLinks current="dauerhaftigkeit" />

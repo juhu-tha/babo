@@ -12,9 +12,17 @@ import { formatDeZahl } from '@/src/utils/numberFormat';
 import { Flame, Shield, Activity, Layers } from 'lucide-react';
 import inhalt from '@/content/brandschutz/Brandschutz.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+
+type BrandschutzReiter = 'baustoffklassen' | 'baulicher_brandschutz' | 'holzabbrand';
+const REITER: readonly ModulTab<BrandschutzReiter>[] = [
+  { id: 'baustoffklassen', label: 'Baustoffklassen', icon: Layers },
+  { id: 'baulicher_brandschutz', label: inhalt.texte.baulicherBrandschutz.trim(), icon: Shield },
+  { id: 'holzabbrand', label: inhalt.texte.holzabbrandSimulation.trim(), icon: Activity },
+];
 
 export default function Brandschutz() {
-  const [activeTab, setActiveTab] = useState<'baustoffklassen' | 'baulicher_brandschutz' | 'holzabbrand'>('baustoffklassen');
+  const [activeTab, setActiveTab] = useState<BrandschutzReiter>('baustoffklassen');
   
   const [dauer, setDauer] = useState(60); // min
   const [holzBreite, setHolzBreite] = useState(200); // mm
@@ -74,38 +82,9 @@ export default function Brandschutz() {
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p><MdText text={inhalt.texte.derBrandschutzGliedertSich} /></p>
         </div>
-
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button aria-pressed={activeTab === 'baustoffklassen'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'baustoffklassen' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('baustoffklassen')}
-          >
-            <Layers size={16} /> Baustoffklassen
-          </button>
-          <button aria-pressed={activeTab === 'baulicher_brandschutz'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'baulicher_brandschutz' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('baulicher_brandschutz')}
-          >
-            <Shield size={16} /><MdText text={inhalt.texte.baulicherBrandschutz} /></button>
-          <button aria-pressed={activeTab === 'holzabbrand'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'holzabbrand' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('holzabbrand')}
-          >
-            <Activity size={16} /><MdText text={inhalt.texte.holzabbrandSimulation} /></button>
-        </div>
       </div>
+
+      <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="flex flex-col gap-8 [&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20">
 
       {activeTab === 'baustoffklassen' && (
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 animate-in fade-in duration-300">
@@ -348,6 +327,7 @@ export default function Brandschutz() {
           </div>
         </div>
       )}
+      </ModuleTabs>
     
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox

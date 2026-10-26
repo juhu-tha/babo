@@ -258,7 +258,9 @@
     "anwendungsbeispielErforderlicheFließgren": "Anwendungsbeispiel: Erforderliche Fließgrenze beim 3D-Betondruck",
     "roussel2018FließkriteriumNach": "Roussel (2018), Fließkriterium nach von Mises",
     "req238Kpa": "τ_req ≈ 23,8 kPa – sonst fließt die unterste Schicht plastisch weg.",
-    "ultrahochfesterBeton": "Ultrahochfester Beton"
+    "ultrahochfesterBeton": "Ultrahochfester Beton",
+    "reiterBereiche": "Bereiche des Moduls Innovative Werkstoffe",
+    "reiterDruck": "3D-Betondruck: Kapitel"
   },
   "daten": {
     "InnovativeWerkstoffe.schritte": [

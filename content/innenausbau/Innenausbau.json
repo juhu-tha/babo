@@ -152,7 +152,8 @@
     "achtungNochNichtBelegreif": "ACHTUNG: NOCH NICHT BELEGREIF!",
     "anwendungsbeispielResonanzfrequenzEinerM": "Anwendungsbeispiel: Resonanzfrequenz einer Metallständerwand",
     "masseFederMasseModell": "Masse-Feder-Masse-Modell (vgl. DIN EN 12354-1); Plattenmassen als Lehrannahme",
-    "einfacheBeplankungM8": "Einfache Beplankung (m' ≈ 8,5 kg/m²) ergäbe rund 94 Hz; die Doppelbeplankung senkt f₀ also deutlich."
+    "einfacheBeplankungM8": "Einfache Beplankung (m' ≈ 8,5 kg/m²) ergäbe rund 94 Hz; die Doppelbeplankung senkt f₀ also deutlich.",
+    "reiterBereiche": "Bereiche des Moduls Innenausbau"
   },
   "daten": {
     "Innenausbau.tools.bp_trockenbau.features": [

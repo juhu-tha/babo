@@ -39,6 +39,7 @@ import { RechnerLaborTab } from './historischematerialkennwerte/RechnerLaborTab'
 import { DatenbankTab } from './historischematerialkennwerte/DatenbankTab';
 import inhalt from '@/content/historischematerialkennwerte/HistorischeMaterialkennwerte.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 ChartJS.register(
   CategoryScale,
@@ -50,9 +51,16 @@ ChartJS.register(
   Legend
 );
 
+type KennwerteReiter = 'datenbank' | 'rechner_labor' | 'nachweis_bestand';
+const REITER: readonly ModulTab<KennwerteReiter>[] = [
+  { id: 'datenbank', label: inhalt.texte.historischeMaterialdatenbank.trim(), icon: Database },
+  { id: 'rechner_labor', label: inhalt.texte.rechnerLaborprüfungen.trim(), icon: Calculator },
+  { id: 'nachweis_bestand', label: inhalt.texte.statischeNachweiseImBestand.trim(), icon: ShieldCheck },
+];
+
 export default function HistorischeMaterialkennwerte() {
   // Main toggle between Database, Laboratory Converter and Existing Structures Design tabs
-  const [mainTab, setMainTab] = useState<'datenbank' | 'rechner_labor' | 'nachweis_bestand'>('datenbank');
+  const [mainTab, setMainTab] = useState<KennwerteReiter>('datenbank');
 
   // Database Tab States
   const [activeCategory, setActiveCategory] = useState<MaterialCategory>('beton');
@@ -356,36 +364,7 @@ export default function HistorischeMaterialkennwerte() {
         </div>
         </div>
 
-        {/* Top-Level Module Sub-Navigation */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 bg-slate-50/50 p-4">
-          <button aria-pressed={mainTab === 'datenbank'}
-            onClick={() => setMainTab('datenbank')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              mainTab === 'datenbank'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <Database size={16} /><MdText text={inhalt.texte.historischeMaterialdatenbank} /></button>
-          <button aria-pressed={mainTab === 'rechner_labor'}
-            onClick={() => setMainTab('rechner_labor')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              mainTab === 'rechner_labor'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <Calculator size={16} /><MdText text={inhalt.texte.rechnerLaborprüfungen} /></button>
-          <button aria-pressed={mainTab === 'nachweis_bestand'}
-            onClick={() => setMainTab('nachweis_bestand')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              mainTab === 'nachweis_bestand'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <ShieldCheck size={16} /><MdText text={inhalt.texte.statischeNachweiseImBestand} /></button>
-        </div>
+        <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={mainTab} onWechsel={setMainTab} className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:bg-slate-50/50 [&>[role=tablist]]:p-4">
         <div className="p-6">
 
         {/* -------------------- TAB 1: DATENBANK -------------------- */}
@@ -403,6 +382,7 @@ export default function HistorischeMaterialkennwerte() {
           <NachweisBestandTab setNachweisMaterial={setNachweisMaterial} setSampleMean={setSampleMean} setSampleCov={setSampleCov} nachweisMaterial={nachweisMaterial} failureDuctility={failureDuctility} setFailureDuctility={setFailureDuctility} measuredGeometry={measuredGeometry} setMeasuredGeometry={setMeasuredGeometry} sampleMean={sampleMean} sampleCov={sampleCov} targetBeta={targetBeta} setTargetBeta={setTargetBeta} gammaRd={gammaRd} setGammaRd={setGammaRd} alphaR={alphaR} nachweisCalc={nachweisCalc} />
         )}
       </div>
+        </ModuleTabs>
     </div>
     
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}

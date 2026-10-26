@@ -12,6 +12,7 @@ import { InlineMath, BlockMath } from 'react-katex';
 import PruefverfahrenKatalog from './bauwerksuntersuchung/PruefverfahrenKatalog';
 import inhalt from '@/content/bauwerksunters_monitoring/Bauwerksunters_Monitoring.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 // Constants for Wood Drill Simulator
 interface TimberConfig {
@@ -25,8 +26,16 @@ const TIMBER_TYPES: Record<string, TimberConfig> = inhalt.daten.TIMBER_TYPES;
 
 const TIMBER_STATES = inhalt.daten.TIMBER_STATES;
 
+type MonitoringReiter = 'monitoring' | 'grundlagen' | 'rechner' | 'katalog';
+const REITER: readonly ModulTab<MonitoringReiter>[] = [
+  { id: 'monitoring', label: inhalt.texte.tragwerksMonitoringSensorikShm, icon: Activity },
+  { id: 'grundlagen', label: inhalt.texte.holzdiagnostikResistographie, icon: Hammer },
+  { id: 'rechner', label: inhalt.texte.schadensFeuchterechner, icon: ClipboardCheck },
+  { id: 'katalog', label: inhalt.texte.zfpPrüfkatalogKonsolidiert, icon: Layers },
+];
+
 export default function Bauwerksunters_Monitoring() {
-  const [activeTab, setActiveTab] = useState<'monitoring' | 'grundlagen' | 'rechner' | 'katalog'>('monitoring');
+  const [activeTab, setActiveTab] = useState<MonitoringReiter>('monitoring');
   
   // States for Timber Drilling Simulator
   const [selectedTimber, setSelectedTimber] = useState<string>('fichte');
@@ -176,45 +185,7 @@ export default function Bauwerksunters_Monitoring() {
         </div>
       </div>
 
-      {/* 2. Top Navigation Tabs */}
-      <div className="flex border border-home-grau/30 bg-white p-1 rounded-2xl shadow-sm gap-1 flex-wrap md:flex-nowrap">
-        <button aria-pressed={activeTab === 'monitoring'}
-          className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
-            activeTab === 'monitoring'
-              ? 'bg-shiraz text-white shadow-sm'
-              : 'text-slate-600 hover:bg-slate-50'
-          }`}
-          onClick={() => setActiveTab('monitoring')}
-        >
-          <Activity size={16} /><MdText text={inhalt.texte.tragwerksMonitoringSensorikShm} /></button>
-        <button aria-pressed={activeTab === 'grundlagen'}
-          className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
-            activeTab === 'grundlagen'
-              ? 'bg-shiraz text-white shadow-sm'
-              : 'text-slate-600 hover:bg-slate-50'
-          }`}
-          onClick={() => setActiveTab('grundlagen')}
-        >
-          <Hammer size={16} /><MdText text={inhalt.texte.holzdiagnostikResistographie} /></button>
-        <button aria-pressed={activeTab === 'rechner'}
-          className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
-            activeTab === 'rechner'
-              ? 'bg-shiraz text-white shadow-sm'
-              : 'text-slate-600 hover:bg-slate-50'
-          }`}
-          onClick={() => setActiveTab('rechner')}
-        >
-          <ClipboardCheck size={16} /><MdText text={inhalt.texte.schadensFeuchterechner} /></button>
-        <button aria-pressed={activeTab === 'katalog'}
-          className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
-            activeTab === 'katalog'
-              ? 'bg-shiraz text-white shadow-sm'
-              : 'text-slate-600 hover:bg-slate-50'
-          }`}
-          onClick={() => setActiveTab('katalog')}
-        >
-          <Layers size={16} /><MdText text={inhalt.texte.zfpPrüfkatalogKonsolidiert} /></button>
-      </div>
+      <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="flex flex-col gap-8 [&>[role=tablist]]:border [&>[role=tablist]]:border-home-grau/30 [&>[role=tablist]]:bg-white [&>[role=tablist]]:p-1 [&>[role=tablist]]:rounded-2xl [&>[role=tablist]]:shadow-sm">
 
       {/* 3. Tab Contents Content */}
       <div className="space-y-6">
@@ -710,6 +681,7 @@ export default function Bauwerksunters_Monitoring() {
         )}
 
       </div>
+      </ModuleTabs>
 
       {/* 4. Standardization Scientific / Code Rules (Didaktisches Formelregister) */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">

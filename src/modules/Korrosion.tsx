@@ -24,6 +24,7 @@ import { InlineMath } from "react-katex";
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/korrosion/Korrosion.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 ChartJS.register(
   CategoryScale,
@@ -450,10 +451,16 @@ function LokalelementSimulator() {
   );
 }
 
+type KorrosionReiter = 'chlorid' | 'karbonatisierung' | 'schnellkarbonatisierung' | 'lokalelement';
+const REITER: readonly ModulTab<KorrosionReiter>[] = [
+  { id: 'chlorid', label: 'Chlorid-Eindringen', icon: Droplets },
+  { id: 'karbonatisierung', label: inhalt.texte.natürlicheKarbonatisierung.trim(), icon: Cloud },
+  { id: 'schnellkarbonatisierung', label: 'Schnellkarbonatisierung', icon: Timer },
+  { id: 'lokalelement', label: inhalt.texte.elektrochemischeKorrosionszelleLochfraß.trim(), icon: Zap },
+];
+
 export default function Korrosion() {
-  const [activeTab, setActiveTab] = useState<
-    "chlorid" | "karbonatisierung" | "schnellkarbonatisierung" | "lokalelement"
-  >("chlorid");
+  const [activeTab, setActiveTab] = useState<KorrosionReiter>("chlorid");
 
   // Chlorid State
   const [t, setT] = useState(50); // Jahre
@@ -707,46 +714,7 @@ export default function Korrosion() {
         </p>
       </div>
 
-      <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-        <button
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === "chlorid"
-              ? "bg-shiraz text-white border-shiraz shadow-md"
-              : "bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main"
-          }`}
-          onClick={() => setActiveTab("chlorid")}
-        >
-          <Droplets size={16} /> Chlorid-Eindringen
-        </button>
-        <button
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === "karbonatisierung"
-              ? "bg-shiraz text-white border-shiraz shadow-md"
-              : "bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main"
-          }`}
-          onClick={() => setActiveTab("karbonatisierung")}
-        >
-          <Cloud size={16} /><MdText text={inhalt.texte.natürlicheKarbonatisierung} /></button>
-        <button
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === "schnellkarbonatisierung"
-              ? "bg-shiraz text-white border-shiraz shadow-md"
-              : "bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main"
-          }`}
-          onClick={() => setActiveTab("schnellkarbonatisierung")}
-        >
-          <Timer size={16} /> Schnellkarbonatisierung
-        </button>
-        <button
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === "lokalelement"
-              ? "bg-shiraz text-white border-shiraz shadow-md"
-              : "bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main"
-          }`}
-          onClick={() => setActiveTab("lokalelement")}
-        >
-          <Zap size={16} /><MdText text={inhalt.texte.elektrochemischeKorrosionszelleLochfraß} /></button>
-      </div>
+      <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="flex flex-col gap-6 [&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20">
 
       {activeTab === "chlorid" && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -1165,6 +1133,7 @@ export default function Korrosion() {
       {activeTab === "lokalelement" && (
         <LokalelementSimulator />
       )}
+      </ModuleTabs>
 
       {/* Global ModuleFooter */}
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}

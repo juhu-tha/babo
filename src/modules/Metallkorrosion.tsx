@@ -92,10 +92,19 @@ function MetalThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 
 import { DeckschichtenVergleich } from '@/src/components/korrosion/DeckschichtenVergleich';
 import inhalt from '@/content/metallkorrosion/Metallkorrosion.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+
+type MetallkorrosionReiter = 'simulation' | 'deckschichten' | 'arten' | 'schutz';
+const REITER: readonly ModulTab<MetallkorrosionReiter>[] = [
+  { id: 'simulation', label: inhalt.texte.grundlagenSimulation, icon: Zap },
+  { id: 'deckschichten', label: inhalt.texte.deckschichtenPassivierung, icon: Layers },
+  { id: 'arten', label: 'Korrosionsarten', icon: ShieldAlert },
+  { id: 'schutz', label: inhalt.texte.korrosionsschutzDinEnIso, icon: ShieldCheck },
+];
 
 export default function Metallkorrosion() {
   const { activeTab, setActiveTab } = useTabContext();
-  const [activeSection, setActiveSection] = React.useState<'simulation' | 'deckschichten' | 'arten' | 'schutz'>('simulation');
+  const [activeSection, setActiveSection] = React.useState<MetallkorrosionReiter>('simulation');
   const [env, setEnv] = React.useState<'dry' | 'moist' | 'wet' | 'salty'>('wet');
   const [rustThickness, setRustThickness] = React.useState<number>(15);
   const [anodeErosion, setAnodeErosion] = React.useState<number>(10);
@@ -124,52 +133,7 @@ export default function Metallkorrosion() {
   return (
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
-        <div className="flex flex-wrap gap-2 border-b border-home-grau/20 pb-4 mb-6">
-          <button aria-pressed={activeSection === 'simulation'}
-            onClick={() => setActiveSection('simulation')}
-            className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border ${
-              activeSection === 'simulation'
-                ? 'bg-shiraz border-shiraz text-white shadow-md'
-                : 'bg-white hover:bg-off-white border-home-grau/30 text-text-main'
-            }`}
-          >
-            <Zap size={14} />
-            <span><MdText text={inhalt.texte.grundlagenSimulation} /></span>
-          </button>
-          <button aria-pressed={activeSection === 'deckschichten'}
-            onClick={() => setActiveSection('deckschichten')}
-            className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border ${
-              activeSection === 'deckschichten'
-                ? 'bg-shiraz border-shiraz text-white shadow-md'
-                : 'bg-white hover:bg-off-white border-home-grau/30 text-text-main'
-            }`}
-          >
-            <Layers size={14} />
-            <span><MdText text={inhalt.texte.deckschichtenPassivierung} /></span>
-          </button>
-          <button aria-pressed={activeSection === 'arten'}
-            onClick={() => setActiveSection('arten')}
-            className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border ${
-              activeSection === 'arten'
-                ? 'bg-shiraz border-shiraz text-white shadow-md'
-                : 'bg-white hover:bg-off-white border-home-grau/30 text-text-main'
-            }`}
-          >
-            <ShieldAlert size={14} />
-            <span>Korrosionsarten</span>
-          </button>
-          <button aria-pressed={activeSection === 'schutz'}
-            onClick={() => setActiveSection('schutz')}
-            className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border ${
-              activeSection === 'schutz'
-                ? 'bg-shiraz border-shiraz text-white shadow-md'
-                : 'bg-white hover:bg-off-white border-home-grau/30 text-text-main'
-            }`}
-          >
-            <ShieldCheck size={14} />
-            <span><MdText text={inhalt.texte.korrosionsschutzDinEnIso} /></span>
-          </button>
-        </div>
+        <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeSection} onWechsel={setActiveSection} className="[&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:pb-4 [&>[role=tablist]]:mb-6">
         <h2 className="text-xl font-bold text-text-main mb-6 flex items-center gap-2">
           <ShieldAlert className="text-shiraz" /><MdText text={inhalt.texte.korrosionUndSchutzVon} /></h2>
         
@@ -761,6 +725,7 @@ export default function Metallkorrosion() {
             </section>
           )}
         </div>
+        </ModuleTabs>
       </div>
 
       <MetalThematicLinks current="dauerhaftigkeit" />
