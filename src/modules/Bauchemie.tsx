@@ -21,6 +21,8 @@ import {
 } from 'chart.js';
 import inhalt from '@/content/bauchemie/Bauchemie.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { stellmittelRheologie, SCHERRATEN, akrKurve, K_RICHTWERTE, KARBONATISIERUNG_ZEITEN, karbonatisierungstiefe } from '@/src/calc/bauchemie';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 
 ChartJS.register(
   CategoryScale,
@@ -46,32 +48,25 @@ export const Bauchemie: React.FC = () => {
 
   // Dynamic Rheology Simulator calculations
   const rheologyResults = useMemo(() => {
-    const shearRates = [0.1, 1, 5, 10, 20, 30, 50, 70, 90, 100];
-    
-    // Viscosity model with Stellmittel: base viscosity is 1.5, added viscosity decays with shear rate (shear-thinning)
-    const viscosityWithStellmittel = shearRates.map(s => {
-      const added = stellmittelConc * 90 / (Math.pow(s, 0.72) + 0.25);
-      return Math.round((1.5 + added) * 10) / 10;
-    });
-
-    const viscosityWithoutStellmittel = shearRates.map(() => 2.0); // Simple Newtonian slurry
-
-    // Current viscosity based on currentShear slider
-    const currentAdded = stellmittelConc * 90 / (Math.pow(currentShear, 0.72) + 0.25);
-    const currentViscosity = Math.round((1.5 + currentAdded) * 10) / 10;
+    // Rechenkern src/calc/bauchemie.ts: Lehrmodell scherverdünnender Mörtel mit Stellmittel
+    const r = stellmittelRheologie(stellmittelConc, currentShear);
+    const shearRates = [...SCHERRATEN];
+    const viscosityWithStellmittel = r.kurve;
+    const viscosityWithoutStellmittel = r.referenz;
+    const currentViscosity = r.viskositaet;
 
     // Evaluate application state
     let stateMessage = "";
     let stateColor = "";
     let statusClass = "";
 
-    if (currentShear < 5) {
+    if (r.ruhe) {
       // RESTING STATE (Standfestigkeit)
-      if (stellmittelConc < 0.4) {
+      if (r.dosierung === 'unter') {
         stateMessage = inhalt.werte.flieseRutschtAbPutz;
         stateColor = "text-rose-700 bg-rose-50 border-rose-200 shadow-rose-100";
         statusClass = inhalt.werte.kritischesAbrutschen;
-      } else if (stellmittelConc >= 0.4 && stellmittelConc <= 1.5) {
+      } else if (r.dosierung === 'optimal') {
         stateMessage = inhalt.werte.hervorragendeStandfestigkeitDasStellmitt;
         stateColor = "text-emerald-700 bg-emerald-50 border-emerald-200 shadow-emerald-100";
         statusClass = inhalt.werte.sichererStand;
@@ -82,12 +77,12 @@ export const Bauchemie: React.FC = () => {
       }
     } else {
       // SHEARING STATE (Verarbeitung unter Kraftaufwand)
-      const forceRequired = currentViscosity > 15 ? "hoch (" + formatDeZahl(currentViscosity, 1) + " Pa·s)" : currentViscosity < 4 ? "sehr leicht (" + formatDeZahl(currentViscosity, 1) + " Pa·s)" : "optimal (" + formatDeZahl(currentViscosity, 1) + " Pa·s)";
-      if (stellmittelConc < 0.4) {
+      const forceRequired = (r.kraftaufwand === 'hoch' ? "hoch (" : r.kraftaufwand === 'leicht' ? "sehr leicht (" : "optimal (") + formatDeZahl(currentViscosity, 1) + " Pa·s)";
+      if (r.dosierung === 'unter') {
         stateMessage = inhalt.werte.sehrLeichtzügigVerliertBeim;
         stateColor = "text-blue-700 bg-blue-50 border-blue-200 shadow-blue-100";
         statusClass = inhalt.werte.keineZahnung;
-      } else if (stellmittelConc >= 0.4 && stellmittelConc <= 1.5) {
+      } else if (r.dosierung === 'optimal') {
         stateMessage = `Sehr gute Scherentzähung! Das Verstreichen geht leicht von der Hand (${forceRequired}). Kellensteg steht perfekt.`;
         stateColor = "text-emerald-700 bg-emerald-50 border-emerald-200 shadow-emerald-100";
         statusClass = inhalt.werte.perfekteVerarbeitung;
@@ -105,7 +100,9 @@ export const Bauchemie: React.FC = () => {
       currentViscosity,
       stateMessage,
       stateColor,
-      statusClass
+      statusClass,
+      ruhe: r.ruhe,
+      hinweise: r.hinweise
     };
   }, [stellmittelConc, currentShear]);
 
@@ -131,17 +128,14 @@ export const Bauchemie: React.FC = () => {
     ]
   };
 
+  // Rechenkern src/calc/bauchemie.ts: AKR-Lehrmodell und Wurzel-t-Gesetz der Karbonatisierung
+  const akr = akrKurve(alkaliContent, moisture);
   const akrData = {
-    labels: Array.from({ length: 20 }, (_, i) => i + 1),
+    labels: akr.jahre,
     datasets: [
       {
         label: inhalt.werte.dehnungDurchAkrMm,
-        data: Array.from({ length: 20 }, (_, i) => {
-          const t = i + 1;
-          // Simplified AKR expansion model
-          const k = (alkaliContent / 5) * (moisture > 80 ? (moisture / 100) : 0.1);
-          return k * Math.log(t + 1);
-        }),
+        data: akr.dehnung,
         borderColor: '#A3113E',
         backgroundColor: 'rgba(239, 68, 68, 0.2)',
         fill: true,
@@ -150,13 +144,16 @@ export const Bauchemie: React.FC = () => {
     ]
   };
 
+  const karbonatisierungLabels = [inhalt.werte.wZ060, inhalt.werte.wZ050, inhalt.werte.wZ040];
+  const karbonatisierungFarben = ['#A3113E', '#64748b', '#475569'];
   const karbonatisierungData = {
-    labels: [0, 5, 10, 25, 50, 100],
-    datasets: [
-      { label: inhalt.werte.wZ060, data: [0, 5, 10, 25, 50, 100].map(t => 4 * Math.sqrt(t)), borderColor: '#A3113E', tension: 0.4 },
-      { label: inhalt.werte.wZ050, data: [0, 5, 10, 25, 50, 100].map(t => 2 * Math.sqrt(t)), borderColor: '#64748b', tension: 0.4 },
-      { label: inhalt.werte.wZ040, data: [0, 5, 10, 25, 50, 100].map(t => 0.5 * Math.sqrt(t)), borderColor: '#475569', tension: 0.4 },
-    ]
+    labels: [...KARBONATISIERUNG_ZEITEN],
+    datasets: K_RICHTWERTE.map((rw, i) => ({
+      label: karbonatisierungLabels[i],
+      data: KARBONATISIERUNG_ZEITEN.map(t => karbonatisierungstiefe(rw.k, t)),
+      borderColor: karbonatisierungFarben[i],
+      tension: 0.4,
+    })),
   };
 
   return (
@@ -462,7 +459,7 @@ export const Bauchemie: React.FC = () => {
                   <div className="flex justify-between items-center">
                     <span className="text-xs font-bold uppercase tracking-wider">Status: {rheologyResults.statusClass}</span>
                     <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-white shadow-sm">
-                      {currentShear < 5 ? "Ruhezustand" : "Scherspannung"}
+                      {rheologyResults.ruhe ? "Ruhezustand" : "Scherspannung"}
                     </span>
                   </div>
                   <p className="text-xs mt-1 leading-relaxed">
@@ -473,6 +470,7 @@ export const Bauchemie: React.FC = () => {
                     <span className="font-bold">{formatDeZahl(rheologyResults.currentViscosity, 1)} Pa·s</span>
                   </div>
                 </div>
+                <EingabeHinweise hinweise={rheologyResults.hinweise} />
               </div>
 
               {/* Chart Column */}
@@ -581,6 +579,7 @@ export const Bauchemie: React.FC = () => {
                 onChange={(e) => setMoisture(Number(e.target.value))}
               />
             </div>
+            <EingabeHinweise hinweise={akr.hinweise} />
             <div className="h-[200px] relative mt-4">
               <Line 
                 data={akrData} 

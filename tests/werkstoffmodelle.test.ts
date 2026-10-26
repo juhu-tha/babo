@@ -5,6 +5,8 @@ import {
   schweissEigenspannung, stahlSpannungBeiDehnung, stahlVerformungsphase, stahlKennlinienPunkte, pren, gefuegeklasse,
   betonSdParameter, betonParabelRechteck, betonNichtlinear, betonSdLinien, betonstahlParameter, betonstahlLinien,
   emodulKunststoff, kunststoffTemperatur, waermedehnung, KUNSTSTOFF_MODELLE, type StahlKennlinie, type Kunststofftyp,
+  bilinearSpannung, bilinearVerfestigung, bilinearKurve, lehrkurveSpannung, lehrkurve, thixotropie, rheopexie, thixotropieKurve,
+  binghamScherrate, maxwellSpannung, maxwellHalbwertszeit, type Lehrmodell,
 } from '../src/calc/werkstoffmodelle';
 import { plastischeKapazitaet, WALZPROFILE } from '../src/calc/stahlbau';
 import { ecmEc2 } from '../src/calc/emodul';
@@ -146,6 +148,33 @@ pruefe(kunststoffTemperatur('amorphous', 145).hinweise.some(h => h.feld === 'T')
 pruefe(kunststoffTemperatur('amorphous', 301).index === -1 && kunststoffTemperatur('amorphous', 301).hinweise.length >= 1, 'T > 300 °C: kein Kurvenpunkt, Hinweis');
 pruefe(!kunststoffTemperatur('amorphous', NaN).gueltig && !kunststoffTemperatur('xyz' as Kunststofftyp, 20).gueltig, 'Kunststoff: unzulässig');
 
+// 9a. Materialmodelle (src/modules/Materialmodelle.tsx)
+//    Handbeispiel des Moduls („Materialmodelle.schritte“): f_y = 500, E = 200 000, E_t = 2 000 N/mm², ε_max = 20 ‰
+//    ε_y = 2,5 ‰; σ_max = 500 + 2 000·(0,020 − 0,0025) = 535 N/mm²; ε_e = 535/200 000 = 2,675 ‰; ε_p = 17,325 ‰; k = 1,07
+const bv = bilinearVerfestigung({ fy: 500, E: 200000, Et: 2000, epsMaxPromille: 20 });
+pruefe(bv.gueltig && nahe(bv.epsYPromille, 2.5, 1e-12) && nahe(bv.sigmaMax, 535, 1e-12) && nahe(bv.epsElastischPromille, 2.675, 1e-12) && nahe(bv.epsPlastischPromille, 17.325, 1e-12) && nahe(bv.k, 1.07, 1e-12), `bilinear ${JSON.stringify(bv)}`);
+//    Preset B500B (E_t = 1 600, ε_max = 50 ‰): σ_max = 500 + 1 600·0,0475 = 576 N/mm², k = 1,152 ≥ 1,08 (Duktilität B, DIN EN 1992-1-1 Anh. C)
+const b5 = bilinearVerfestigung({ fy: 500, E: 200000, Et: 1600, epsMaxPromille: 50 });
+pruefe(nahe(b5.sigmaMax, 576, 1e-12) && nahe(b5.k, 1.152, 1e-12) && b5.k >= 1.08, 'B500B-Preset');
+//    elastischer Bereich: keine bleibende Dehnung; Grenze genau bei ε_y
+const be = bilinearVerfestigung({ fy: 355, E: 210000, Et: 2500, epsMaxPromille: 1 });
+pruefe(be.epsPlastischPromille === 0 && nahe(be.sigmaMax, 210, 1e-12) && be.k < 1, 'elastisch: ε_p = 0');
+pruefe(nahe(bilinearSpannung(355 / 210000, 355, 210000, 2500), 355, 1e-12), 'σ(ε_y) = f_y');
+pruefe(!bilinearVerfestigung({ fy: 0, E: 200000, Et: 1600, epsMaxPromille: 50 }).gueltig && !bilinearVerfestigung({ fy: 500, E: 0, Et: 1600, epsMaxPromille: 50 }).gueltig && !bilinearVerfestigung({ fy: 500, E: 200000, Et: -1, epsMaxPromille: 50 }).gueltig, 'bilinear unzulässig');
+pruefe(bilinearVerfestigung({ fy: 500, E: 200000, Et: 250000, epsMaxPromille: 5 }).hinweise.some(x => x.feld === 'Et'), 'E_t ≥ E → Hinweis');
+const kv = bilinearKurve({ fy: 500, E: 200000, Et: 2000, epsMaxPromille: 20 });
+pruefe(kv.length === 51 && kv[50].epsPromille === 25 && kv[40].entlastung !== null && nahe(kv[40].entlastung ?? 0, 535, 1e-9) && kv[34].entlastung === null && kv[35].entlastung !== null, 'Kurve bis 25 ‰, Entlastungsast 17,5 … 20 ‰');
+pruefe(bilinearKurve({ fy: 500, E: 200000, Et: 2000, epsMaxPromille: 50 }).length === 111 && kv.every(p => p.idealPlastisch <= 500), 'Kurvenlänge ε_max + 5 ‰');
+//    qualitative Lehrkurven (E = 210 000, f_y = 355, ε₀ = 2 ‰, σ_∞ = 400): Maximum der nichtlinearen Kurve bei ε₀ mit E·ε₀/2 = 210 N/mm²
+pruefe(lehrkurveSpannung('linear', 0.002) === 420 && nahe(lehrkurveSpannung('non-linear', 0.002), 210, 1e-12) && lehrkurveSpannung('ideal-plastic', 0.004) === 355, 'Lehrkurven');
+pruefe(nahe(lehrkurveSpannung('visco-elastic', 0.005), 400 * (1 - Math.exp(-2.625)), 1e-12) && lehrkurveSpannung('visco-elastic', 1) <= 400 && lehrkurveSpannung('visco-elastic', 0.004) < lehrkurveSpannung('visco-elastic', 0.005), 'viskoelastisch → σ_∞, monoton');
+pruefe((['linear', 'non-linear', 'ideal-plastic', 'visco-elastic'] as Lehrmodell[]).every(m => lehrkurve(m).length === 51 && lehrkurve(m)[0].sigma === 0 && nahe(lehrkurve(m)[50].epsPromille, 5, 1e-12)), '51 Punkte 0 … 5 ‰');
+//    Thixotropie/Rheopexie: Start 100 bzw. 20 Pa·s, Summe konstant 120 Pa·s
+pruefe(thixotropie(0) === 100 && rheopexie(0) === 20 && thixotropieKurve().every(p => nahe(p.thixo + p.rheo, 120, 1e-12)) && thixotropieKurve().length === 51, 'Thixotropie/Rheopexie');
+//    Handbeispiel „Materialmodelle.schritte_2“: σ(3 s) = 10·e^(−1,5) = 2,23 MPa; t½ = 2·ln 2 = 1,39 s; Bingham (800 − 500)/50 = 6 s⁻¹
+pruefe(nahe(maxwellSpannung(10, 3, 2), 2.2313, 1e-4) && nahe(maxwellHalbwertszeit(2), 1.3863, 1e-4) && nahe(maxwellSpannung(10, maxwellHalbwertszeit(2), 2), 5, 1e-12), 'Maxwell');
+pruefe(binghamScherrate(800, 500, 50) === 6 && binghamScherrate(400, 500, 50) === 0 && binghamScherrate(500, 500, 50) === 0, 'Bingham');
+
 // 10. Fuzz: 1 000 Zufallseingaben ohne NaN/∞ bei gültigem Ergebnis
 let seed = 19931;
 const z = (a: number, c: number) => { seed = (seed * 1103515245 + 12345) % 2147483648; return a + (c - a) * (seed / 2147483648); };
@@ -160,6 +189,8 @@ for (let i = 0; i < 1000; i++) {
   const e = z(-1, 60);
   const bs = betonSdLinien(z(-10, 120));
   const kt = kunststoffTemperatur(typen[i % 4], z(-500, 2000));
+  const bl = bilinearVerfestigung({ fy: z(-50, 800), E: z(-1000, 250000), Et: z(-100, 12000), epsMaxPromille: z(-5, 80) });
+  const blk = bl.gueltig ? bilinearKurve({ fy: z(100, 700), E: z(50000, 220000), Et: z(500, 10000), epsMaxPromille: z(3, 60) }) : [];
   const zahlen = [
     ...(b.gueltig ? [b.ky, b.kE, b.fyT, b.ET, ...b.kurve.flatMap(p => [p.sig20, p.sigT])] : []),
     ...(w.gueltig ? [w.deltaSigmaD, w.deltaSigmaL, ...w.kurve.map(p => p.deltaSigma), w.nR === Infinity ? 0 : w.nR] : []),
@@ -167,6 +198,8 @@ for (let i = 0; i < 1000; i++) {
     stahlSpannungBeiDehnung(k, e), ...stahlKennlinienPunkte(k).map(p => p.y),
     ...(bs.gueltig ? bs.punkte.flatMap(p => [p.bemessung ?? 0, p.real ?? 0]) : []),
     ...(kt.gueltig ? [kt.E, ...kt.kurve.map(p => p.E)] : []),
+    ...(bl.gueltig ? [bl.sigmaMax, bl.k, bl.epsPlastischPromille, ...blk.flatMap(p => [p.belastung, p.idealPlastisch, p.entlastung ?? 0])] : []),
+    lehrkurveSpannung((['linear', 'non-linear', 'ideal-plastic', 'visco-elastic'] as Lehrmodell[])[i % 4], z(-0.01, 0.05)), binghamScherrate(z(0, 2000), z(0, 1000), z(1, 200)),
   ];
   if (!zahlen.every(Number.isFinite) || (kt.gueltig && kt.E < 0.1) || (b.gueltig && (b.ky < 0 || b.ky > 1))) { pruefe(false, `Fuzz ${i}`); break; }
 }
