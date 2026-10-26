@@ -5,6 +5,8 @@ import { BlockMath, InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import IngenieurbauLCA from './lca/IngenieurbauLCA';
 import inhalt from '@/content/lca/LCA.json';
+import { einzelbaustoffA1A4 } from '@/src/calc/lca';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { MdText } from '@/src/components/inhalt/MdText';
 
 // Comprehensive EPD Reference Database representing realistic German ÖKOBAUDAT entries for students
@@ -31,43 +33,20 @@ export default function LCA() {
     
     const isVolumeBased = selectedMat.einheit.includes('m³');
     const materialQuantityText = isVolumeBased ? `${formatDeWert(calcQuantity)} m³` : `${formatDeWert(calcQuantity)} t`;
-    
-    // Weight calculation for transport (in tonnes)
-    const weightInTonnes = isVolumeBased 
-      ? (calcQuantity * selectedMat.density) / 1000 
-      : calcQuantity;
-      
-    // GWP A1-A3
-    const gwpA1A3 = selectedMat.gwp_total * calcQuantity;
-    
-    // Transport factor (kg CO2-eq per tonne-km)
-    // Heavy truck: 0.02, Light truck: 0.08, E-Truck: 0.004, H2-Truck: 0.003, train: 0.005
-    let transportFactor = 0.02;
-    if (calcTransportType === 'lkw-light') transportFactor = 0.08;
-    else if (calcTransportType === 'strom-lkw') transportFactor = 0.004;
-    else if (calcTransportType === 'h2-lkw') transportFactor = 0.003;
-    else if (calcTransportType === 'zug') transportFactor = 0.005;
-    
-    // GWP A4 (transport) = weightInTonnes * distance * factor
-    const gwpA4 = weightInTonnes * calcDistance * transportFactor;
-    
-    const totalGwp = gwpA1A3 + gwpA4;
-    // Anteile über Beträge, damit ein negativer A1–A3-Wert (biogener Kohlenstoff) keine negativen oder > 100 % Anteile erzeugt
-    const betragSumme = Math.abs(gwpA1A3) + Math.abs(gwpA4);
-    const anteilA1A3 = betragSumme > 0 ? (Math.abs(gwpA1A3) / betragSumme) * 100 : 0;
-    const anteilA4 = betragSumme > 0 ? (Math.abs(gwpA4) / betragSumme) * 100 : 0;
-    const penrtTotal = selectedMat.penrt * calcQuantity;
-    
+    // Rechenkern src/calc/lca.ts: A1–A3 = GWP · Menge, A4 = Masse · Distanz · Transportfaktor (Lehrwerte je t·km)
+    const r = einzelbaustoffA1A4({ menge: calcQuantity, volumenbezogen: isVolumeBased, rohdichte: selectedMat.density, gwpA1A3: selectedMat.gwp_total, penrt: selectedMat.penrt, distanz: calcDistance, transport: calcTransportType });
+
     return {
       materialName: selectedMat.name,
       materialQuantityText,
-      weightInTonnes,
-      gwpA1A3,
-      gwpA4,
-      anteilA1A3,
-      anteilA4,
-      totalGwp,
-      penrtTotal,
+      weightInTonnes: r.masse,
+      gwpA1A3: r.gwpA1A3,
+      gwpA4: r.gwpA4,
+      anteilA1A3: r.anteilA1A3,
+      anteilA4: r.anteilA4,
+      totalGwp: r.gesamt,
+      penrtTotal: r.penrt,
+      hinweise: r.hinweise,
       isWood: selectedMat.category === 'Holz' || selectedMat.id.includes('holz')
     };
   }, [calcMaterialId, calcQuantity, calcDistance, calcTransportType]);
@@ -898,6 +877,8 @@ export default function LCA() {
                       <strong className="text-xs text-slate-700 font-bold block mt-0.5">{formatDeZahl(calcResults.weightInTonnes, 2)} t</strong>
                     </div>
                   </div>
+
+                  <EingabeHinweise hinweise={calcResults.hinweise} />
 
                   {/* Impact split */}
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 text-center">

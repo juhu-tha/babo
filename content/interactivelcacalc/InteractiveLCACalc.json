@@ -1,9 +1,9 @@
 {
   "texte": {
     "interaktiverÖkobilanzRechnerLca": "Interaktiver Ökobilanz-Rechner (LCA, QNG 2026 & Modul D)",
-    "ganzheitlicheLebenszyklusanalyseNachDin": "Ganzheitliche Lebenszyklusanalyse nach **DIN EN 15978** (Gebäude), **DIN EN 17472** (Infrastruktur) und **DIN EN 15804+A2**. Berechnen Sie das Treibhauspotenzial (Module A1–C), prüfen Sie die **QNG-2026-Grenzwerte** und analysieren Sie in der **Modul-D-Eingabemaske** dynamisch alle Zirkularitäts-Gutschriften und kreislauffähigen Stoffanteile nach **VDI 6210 / DIN SPEC 91484**.",
+    "ganzheitlicheLebenszyklusanalyseNachDin": "Gebäude-Ökobilanz nach den öffentlichen **QNG-Bilanzierungsregeln** (Anhang 3.1.1) in Anlehnung an **DIN EN 15978** und **DIN EN 15804+A2**: Herstellung (A1–A3), Ersatz nach BNB-Nutzungsdauern (B4), Entsorgung (C3/C4), Sockelbetrag der Gebäudetechnik und Betrieb (B6), je m² NRF(R) und Jahr über 50 Jahre. Gutschriften (Modul D) und Transport (A4) werden getrennt ausgewiesen. In der **Modul-D-Eingabemaske** variieren Sie kreislauffähige Stoffanteile und Verwertungswege (**VDI 6210 / DIN SPEC 91484**). Lehr- und Vorbemessungswerkzeug – kein QNG-Nachweis.",
     "rechnerReset": " Rechner Reset",
-    "gebäudekategorieQng2026": "Gebäudekategorie (QNG 2026):",
+    "gebäudekategorieQng2026": "Gebäudekategorie (QNG):",
     "wohngebäudeWg": "Wohngebäude (WG)",
     "nichtwohngebäudeNwg": "Nichtwohngebäude (NWG)",
     "lernSzenarienLadenVergleich": "Lern-Szenarien laden (Vergleich konventionell vs. zirkulär):",
@@ -15,22 +15,25 @@
     "distanzZurBaustelle": " Distanz zur Baustelle:",
     "t10KmRegional": "10 km (Regional)",
     "t800KmÜberregional": "800 km (Überregional)",
-    "t3BezugsflächeNormzeitraum": "3. Bezugsfläche & Normzeitraum",
-    "nettoRaumflächeNrf": " Netto-Raumfläche (NRF):",
-    "normativeBerechnungNachDin": "Normative Berechnung nach DIN EN 15978 / DIN EN 17472",
+    "t3BezugsflächeNormzeitraum": "3. Bezugsfläche NRF(R) & Betrachtungszeitraum",
+    "nettoRaumflächeNrf": " Netto-Raumfläche NRF(R):",
+    "normativeBerechnungNachDin": "Bezugsgrößen nach QNG-Bilanzierungsregeln",
     "kgCoEqM": "kg CO₂-eq / (m²·a)",
-    "dieUmweltlastenWerdenAuf": ". Die Umweltlasten werden auf 1 Jahr und 1 m² Netto-Raumfläche (NRF nach DIN 277) normiert: ",
-    "szenarienVergleichNachQng": "Szenarien-Vergleich nach QNG 2026 (",
-    "normierterLebenszyklusVergleichModule": "Normierter Lebenszyklus-Vergleich (Module A-C) mit festen Schwellenwerten für QNG-PLUS (≤ ",
-    "undQngPremium": ") und QNG-PREMIUM (≤ "
+    "dieUmweltlastenWerdenAuf": ". Die Umweltlasten werden auf 1 Jahr und 1 m² Netto-Raumfläche NRF(R) nach DIN 277 normiert: ",
+    "szenarienVergleichNachQng": "Szenarien-Vergleich nach QNG-Bilanzierungsregeln (",
+    "normierterLebenszyklusVergleichModule": "Vereinfachte Bilanz (A1–A3, B4, C3/C4, Sockelbetrag TGA und B6 mit Ihren Energieeingaben) im Vergleich mit den Anforderungswerten QNG-PLUS (≤ ",
+    "undQngPremium": ") und QNG-PREMIUM (≤ ",
+    "t4NutzungB4B6": "4. Nutzungsphase: Ersatz (B4) und Betrieb (B6)",
+    "ersatzB4Erlaeuterung": "Ersatzmaßnahmen je Baustoff: $n = \\lceil 50/ND \\rceil - 1$ (kein Ersatz im 50. Jahr); je Ersatz werden Herstellung (A1–A3) und Entsorgung (C3/C4) angesetzt. Nutzungsdauern nach der BNB-Tabelle (Stand 24.02.2017), je Baustoffzeile änderbar.",
+    "betriebB6Erlaeuterung": "Endenergie aus der GEG-Berechnung ohne selbst genutzten PV-Strom (B6.1) und pauschaler Nutzerstrom von 20 kWh je m² beheizte NRF und Jahr (B6.3), bewertet mit den QNG-Rechenwerten je kWh Endenergie."
   },
   "werte": {
     "wohngebäudeWg23": "Wohngebäude (WG23)",
-    "unterQngPremiumAnforderungswert": "unter QNG-PREMIUM-Anforderungswert (orientierend)",
-    "unterQngPlusAnforderungswert": "unter QNG-PLUS-Anforderungswert (orientierend)",
-    "standardNeubau": "Standard-Neubau ⚙️",
-    "premiumWertOrientierend": "≤ PREMIUM-Wert (orientierend)",
-    "plusWertOrientierend": "≤ PLUS-Wert (orientierend)",
+    "unterQngPremiumAnforderungswert": "QNG-PREMIUM-Anforderungswert eingehalten (vereinfachte Bilanz)",
+    "unterQngPlusAnforderungswert": "QNG-Anforderungswert eingehalten (vereinfachte Bilanz)",
+    "standardNeubau": "QNG-PLUS-Anforderungswert überschritten (vereinfachte Bilanz)",
+    "premiumWertOrientierend": "≤ PREMIUM (vereinfacht)",
+    "plusWertOrientierend": "≤ PLUS (vereinfacht)",
     "varianteIKonventionellerMassivbau": "Variante I: Konventioneller Massivbau",
     "cemINormalbetonHintermauerziegel": "CEM I Normalbeton, Hintermauerziegel, EPS-Dämmung.",
     "varianteIiKlinkeroptimierterMassivbau": "Variante II: Klinkeroptimierter Massivbau",
@@ -40,7 +43,7 @@
     "varianteIvZirkulärerLehm": "Variante IV: Zirkulärer Lehm- & Naturbaustoffbau",
     "lehmbauplattenHanfkalkStrohUnd": "Lehmbauplatten, Hanfkalk, Stroh und Schaumglasschotter.",
     "ihrAktuellerEntwurfBenutzerdefiniert": "Ihr aktueller Entwurf (Benutzerdefiniert)",
-    "dynamischAusIhrerBaustofftabelle": "Dynamisch aus Ihrer Baustofftabelle berechneter QNG-Nachweiswert (Module A-C).",
+    "dynamischAusIhrerBaustofftabelle": "Vereinfachte Bilanz aus Ihrer Baustofftabelle und Ihren Energieeingaben (A1–A3, B4, C3/C4, TGA, B6).",
     "werteAufInitialzustandZurücksetzen": "Werte auf Initialzustand zurücksetzen",
     "t1BaustoffeMassenLogistik": "1. Baustoffe, Massen & Logistik (A1–C4)",
     "t2EingabemaskeModulD": "2. Eingabemaske Modul D: Kreislauf & Gutschriften",
@@ -49,7 +52,32 @@
     "anteilDesBaustoffsDer": "Anteil des Baustoffs, der am Lebensende stofflich oder hochwertig im Sinne der Zirkularität (Modul D) wiederverwertet oder rezykliert werden kann.",
     "lkwDiesel": "🚛 LKW Diesel",
     "t015KgCo": "0,15 kg CO₂/t·km",
-    "t003KgCo": "0,03 kg CO₂/t·km"
+    "t003KgCo": "0,03 kg CO₂/t·km",
+    "ueberPlus": "> PLUS",
+    "teilbilanzNeutral": "Teilbilanz – kein Vergleich mit dem QNG-Anforderungswert",
+    "nwgNeutral": "Nichtwohngebäude – Vergleich nur mit Lehrwert",
+    "ohneVergleich": "ohne QNG-Vergleich",
+    "descPremium": "Die vereinfachte Bilanz nach den QNG-Bilanzierungsregeln liegt unter dem PREMIUM-Anforderungswert. Für die Förderung ist ein vollständiger QNG-Nachweis über eine akkreditierte Zertifizierungsstelle erforderlich. Ergebnis: ",
+    "descPlus": "Die vereinfachte Bilanz nach den QNG-Bilanzierungsregeln hält den PLUS-Anforderungswert ein, nicht aber PREMIUM. Ein vollständiger QNG-Nachweis bleibt erforderlich. Ergebnis: ",
+    "descUeber": "Die vereinfachte Bilanz überschreitet den PLUS-Anforderungswert. Stellschrauben: klinkerarme Betone, Holz- und Lehmbaustoffe, Ersatzzyklen kurzlebiger Schichten und vor allem der Betrieb (PV-Eigennutzung, effiziente Wärmepumpe). Ergebnis: ",
+    "descTeil": "Die Bilanz enthält nicht alle Module des QNG-Bilanzrahmens (B4 und B6 sind Pflicht). Der Wert beschreibt nur die gewählten Module; ein Vergleich mit dem Anforderungswert ist nicht zulässig. Ergebnis: ",
+    "descNwg": "Für Nichtwohngebäude ermittelt QNG den Anforderungswert projektspezifisch (Anhang 3.2.1.2). Der Vergleichswert ist ein Lehrwert. Ergebnis: ",
+    "mitB4Label": "Ersatz B4 berücksichtigen",
+    "mitB6Label": "Betrieb B6 berücksichtigen",
+    "stromGegLabel": "Netzstrom nach GEG (Heizung, Warmwasser, Lüftung, Hilfsenergie) in kWh/a",
+    "pvLabel": "davon selbst genutzter PV-Strom in kWh/a (Faktor 0)",
+    "waermeLabel": "Wärmeversorgung",
+    "waermeWp": "Wärmepumpe (Strom oben enthalten)",
+    "waermeMengeLabel": "Fernwärme-Endenergie in kWh/a",
+    "nutzerstromLabel": "Nutzerstrom pauschal 20 kWh/(m²·a) (B6.3)",
+    "nrfBeheiztLabel": "beheizte NRF in m² (Nutzerstrom)",
+    "tgaLabel": "Sockelbetrag TGA (QNG Tab. 6)",
+    "tgaKeiner": "kein Sockelbetrag",
+    "tgaUeber40": "Q_P > 40 % von Q_P,Ref: 1,20 kg/(m²·a)",
+    "tgaBis40": "Q_P ≤ 40 % von Q_P,Ref: 1,30 kg/(m²·a)",
+    "ndLabel": "Nutzungsdauer (B4)",
+    "ndVorlaeufig": "vorläufige Zuordnung",
+    "ersatzKurz": "Ersatz"
   },
   "daten": {
     "InteractiveLCACalc": {
@@ -87,9 +115,19 @@
     ],
     "InteractiveLCACalc.formeln": [
       {
-        "formel": "\\text{GWP}_{\\text{Bauwerk}} = \\frac{\\sum_{i} m_i \\cdot \\text{GWP}_{\\text{spez},i}}{A_{\\text{NRF}} \\cdot t_{\\text{Studie}}} \\quad [\\text{kg CO}_2\\text{-eq}/(\\text{m}^2\\cdot\\text{a})]",
-        "erklaerung": "Normativer Jahres-Treibhausgasbezugswert der Errichtungs- und Entsorgungsphasen (Module A1-C) über die Standardlebensdauer von t = 50 Jahren.",
-        "quelle": "DIN EN 15978 / QNG 2026"
+        "formel": "\\text{GWP}_{\\text{QNG}} = \\frac{\\text{GWP}_{A1\\text{–}A3} + \\text{GWP}_{B4} + \\text{GWP}_{C3/C4} + \\text{GWP}_{\\text{TGA}} + \\text{GWP}_{B6}}{A_{\\text{NRF(R)}} \\cdot \\Delta t} \\quad [\\text{kg CO}_2\\text{-eq}/(\\text{m}^2\\cdot\\text{a})]",
+        "erklaerung": "Bilanzrahmen der QNG-Bilanzierungsregeln für Wohngebäude mit Δt = 50 a; Modul D und Transport A4 werden getrennt ausgewiesen und nicht angerechnet.",
+        "quelle": "QNG-Handbuch Anlage 3, Anhang 3.1.1 (v1.4, 19.07.2024)"
+      },
+      {
+        "formel": "\\text{GWP}_{B4} = \\sum_i n_i \\cdot \\left(\\text{GWP}_{A1\\text{–}A3,i} + \\text{GWP}_{C3/C4,i}\\right), \\quad n_i = \\left\\lceil \\frac{\\Delta t}{ND_i} \\right\\rceil - 1",
+        "erklaerung": "Ersatz über den Betrachtungszeitraum mit Nutzungsdauern ND nach BNB; kein Ersatz im 50. Jahr (gleichwertig zur Zählung ⌊Δt/ND⌋ ohne Ersatz im Jahr 50).",
+        "quelle": "QNG Anhang 3.1.1, Abschnitt 6; BNB-Nutzungsdauern (Stand 24.02.2017)"
+      },
+      {
+        "formel": "\\text{GWP}_{B6} = \\Delta t \\cdot \\left[ (Q_{\\text{Strom,GEG}} - Q_{\\text{PV,eigen}}) \\cdot f_{\\text{Netz}} + Q_{\\text{Wärme}} \\cdot f_{\\text{Wärme}} + 20 \\cdot A_{\\text{NRF,beheizt}} \\cdot f_{\\text{Netz}} \\right]",
+        "erklaerung": "Betrieb mit Endenergie nach GEG (B6.1) und pauschalem Nutzerstrom (B6.3); Rechenwerte f je kWh Endenergie einschließlich Vorkette.",
+        "quelle": "QNG Anhang 3.1.1; Rechenwerte 2023; Anhang 3.4 (Fernwärme)"
       },
       {
         "formel": "\\text{GWP}_{D,i} = - \\left( m_i \\cdot \\frac{r_{\\text{circ},i}}{100} \\cdot \\frac{s_{\\text{sort},i}}{100} \\cdot \\eta_{\\text{subst}} \\cdot \\text{GWP}_{\\text{primär,verdrängt}} \\right) \\quad [\\text{kg CO}_2\\text{-eq}]",
