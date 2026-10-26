@@ -1,10 +1,24 @@
+# Nicht in den Build-Kontext (Cloud Build lädt sonst unnötig viel hoch)
 node_modules
 dist
 .git
-.gitignore
-.env
-.env.local
+.github
+.claude
 .aistudio
+.cache
+coverage
+tmp
+docs
+tests
+laufzeitdaten
+analytics.json
+# Geheimnisse nie ins Image
+.env
+.env.*
+!.env.example
 npm-debug.log
+*.log
 *.tsbuildinfo
 .DS_Store
+Dockerfile
+.dockerignore
