@@ -68,8 +68,13 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     kurz: 'Taupunkt, Schimmeltemperatur, s_d-Werte und Tauwassernachweis nach dem Glaser-Verfahren (DIN 4108-3).',
     grenzen: [
       'Sättigungsdampfdruck nach der Magnus-Formel der DIN 4108-3 (über Eis unter 0 °C).',
-      'Glaser-Verfahren vereinfacht: Wand mit R_si = 0,13 und R_se = 0,04 m²K/W, eine Tauwasserebene an einer Schichtgrenze, Verdunstungsklima 12 °C / 70 % über 90 Tage; die Randbedingungen der DIN 4108-3:2024 weichen ab.',
-      'Stationäre Betrachtung ohne Feuchtespeicherung und kapillaren Transport.',
+      'Glaser-Verfahren (Periodenbilanz) mit Tangentenkonstruktion über der s_d-Achse; Tauwasserebenen und -bereiche werden erkannt, die p_sat-Kurve wird je Schicht in 40 Teilpunkten aufgelöst.',
+      'Tauperiode nach DIN 4108-3 (seit 2014): 2 160 h, innen 20 °C / 50 %, außen −5 °C / 80 %, R_si = 0,25 und R_se = 0,04 m²K/W.',
+      'Verdunstungsperiode: 2 160 h, p_i = p_e = 1 200 Pa, 1 700 Pa (Wand) bzw. 2 000 Pa (Dach) in der Tauwasserzone.',
+      'Klimawerte aus öffentlichen Sekundärquellen; Abgleich mit DIN 4108-3:2024-03 vorläufig (fachliche Freigabe ausstehend).',
+      'Mehrere Tauwasserzonen: Verdunstung vereinfacht gemeinsam (innerste Zone nach innen, äußerste nach außen); der zeitliche Ablauf des Austrocknens ist nicht abgebildet.',
+      'Nicht geprüft: Feuchteerhöhung von Holz und Holzwerkstoffen, Anwendungsgrenzen (z. B. Gründächer, unbelüftete Dächer mit dichter Deckung), Sonderregeln für Schichten mit sehr kleinem s_d-Wert.',
+      'Stationäre Betrachtung ohne Feuchtespeicherung, kapillaren Transport und Konvektion.',
     ],
   },
   schallschutz: {

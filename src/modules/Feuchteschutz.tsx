@@ -1,5 +1,6 @@
 import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberFormat';
-import { glaser, psat, taupunkt, temperaturBeiPsat } from '@/src/calc/waermeschutz';
+import { psat, taupunkt, temperaturBeiPsat } from '@/src/calc/waermeschutz';
+import { glaser, TAUPERIODE_DIN_4108_3, verdunstungDin4108_3 } from '@/src/calc/glaser';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import React, { useState, useMemo } from 'react';
 import { 
@@ -64,7 +65,10 @@ export default function Feuchteschutz() {
   // Outdoor climate values (for comparison)
   const [Te, setTe] = useState<number>(-5.0); // Outside Temp (°C)
   const [phiE, setPhiE] = useState<number>(80.0); // Outside rel. humidity (%)
-  const [tauperiodeTage, setTauperiodeTage] = useState<number>(90); // Dauer der Tauperiode (klassisch 90 d)
+  const [tauperiodeTage, setTauperiodeTage] = useState<number>(90); // Dauer der Tauperiode (Lehrvariante)
+  // Glaser-Klima: Normklima DIN 4108-3 oder Innenklima aus den Reglern (Lehrvariante); Bauteilart für die Verdunstung
+  const [glaserKlima, setGlaserKlima] = useState<'norm' | 'regler'>('norm');
+  const [glaserBauteil, setGlaserBauteil] = useState<'wand' | 'dach'>('wand');
 
   // Layers state for the s_d sandbox
   const [layers, setLayers] = useState([
@@ -201,18 +205,22 @@ export default function Feuchteschutz() {
       }
     }
 
-    // Glaser-Verfahren (Periodenbilanz) aus dem Rechenkern – die einzige Implementierung der Plattform (AP 3.9)
+    // Glaser-Verfahren aus dem Rechenkern src/calc/glaser.ts – die einzige Implementierung der Plattform (AP 4.9)
+    const tauKlima = glaserKlima === 'norm'
+      ? TAUPERIODE_DIN_4108_3
+      : { ...TAUPERIODE_DIN_4108_3, thetaI: Ti, phiI, thetaE: Te, phiE, stunden: tauperiodeTage * 24 };
     const g = glaser(
       computed.map(l => {
         const mat = MAT_LIBRARY.find(m => m.id === l.matId) || MAT_LIBRARY[0];
-        return { name: mat.name, d: l.d, lambda: mat.lambda || 0.1, mu: mat.mu };
+        return { name: mat.name, d: l.d, lambda: mat.lambda, mu: mat.mu };
       }),
-      { thetaI: Ti, phiI, thetaE: Te, phiE, Rsi: 0.13, Rse: 0.04, tauperiodeTage }
+      tauKlima,
+      verdunstungDin4108_3(glaserBauteil),
     );
     const hasGlaserTauwasser = g.tauwasser;
 
     return { computed, totalSd, isInnerTighter, hasGlaserTauwasser, glaser: g };
-  }, [layers, Ti, Te, phiI, phiE, tauperiodeTage]);
+  }, [layers, Ti, Te, phiI, phiE, tauperiodeTage, glaserKlima, glaserBauteil]);
 
   // Methods for layers sandbox
   const addLayer = () => {
@@ -678,12 +686,13 @@ export default function Feuchteschutz() {
       </div>
       </NachErstemBild>
       
-      {/* GLASER-DIAGRAMM & TAUWASSERBILANZ – einzige Glaser-Implementierung (AP 3.9) */}
+      {/* GLASER-DIAGRAMM & TAUWASSERBILANZ – Rechenkern src/calc/glaser.ts (AP 4.9) */}
       <NachErstemBild minHoehe="40rem">
       {(() => {
         const g = layerCalculations.glaser;
         const namen = layerCalculations.computed.map(l => l.name);
-        const ok = g.bestanden;
+        const kg = (x: number) => `${formatDeZahl(x, 3)} kg/m²`;
+        const umschalter = (aktiv: boolean) => `px-3 py-1.5 rounded-lg text-[11px] font-bold border ${aktiv ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-slate-600 border-slate-200'}`;
         return (
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-5" id="glaser-diagramm">
             <div>
@@ -692,28 +701,42 @@ export default function Feuchteschutz() {
               <p className="text-xs text-slate-500 mt-1 leading-relaxed"><MdText text={inhalt.texte.schichtaufbauAusDerS} /></p>
             </div>
 
+            <div className="flex flex-wrap gap-4 items-center text-xs">
+              <div role="group" aria-label={inhalt.werte.glaserKlimaWahl} className="flex gap-1.5">
+                <button type="button" aria-pressed={glaserKlima === 'norm'} className={umschalter(glaserKlima === 'norm')} onClick={() => setGlaserKlima('norm')}>{inhalt.werte.glaserKlimaNorm}</button>
+                <button type="button" aria-pressed={glaserKlima === 'regler'} className={umschalter(glaserKlima === 'regler')} onClick={() => setGlaserKlima('regler')}>{inhalt.werte.glaserKlimaRegler}</button>
+              </div>
+              <div role="group" aria-label={inhalt.werte.glaserBauteilWahl} className="flex gap-1.5">
+                <button type="button" aria-pressed={glaserBauteil === 'wand'} className={umschalter(glaserBauteil === 'wand')} onClick={() => setGlaserBauteil('wand')}>{inhalt.werte.glaserBauteilWand}</button>
+                <button type="button" aria-pressed={glaserBauteil === 'dach'} className={umschalter(glaserBauteil === 'dach')} onClick={() => setGlaserBauteil('dach')}>{inhalt.werte.glaserBauteilDach}</button>
+              </div>
+            </div>
+
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
               <div className="lg:col-span-7">
                 <div className="h-[280px] w-full relative">
+                  {g.gueltig && (
                   <Line
                     data={{
-                      labels: g.sd.map(x => `${formatDeZahl(x, 2)} m`),
                       datasets: [
-                        { label: inhalt.werte.sättigungsdampfdruckPSatPa, data: g.psat, borderColor: '#A3113E', borderDash: [4, 4], borderWidth: 2, pointRadius: 4, fill: false, tension: 0.1 },
-                        { label: inhalt.werte.partialdampfdruckPPa, data: g.p, borderColor: '#475569', backgroundColor: 'rgba(59, 130, 246, 0.07)', fill: true, borderWidth: 3, pointRadius: 4, tension: 0 },
+                        { label: inhalt.werte.sättigungsdampfdruckPSatPa, data: g.verlauf.sd.map((x, i) => ({ x, y: g.verlauf.psat[i] })), borderColor: '#A3113E', borderDash: [4, 4], borderWidth: 2, pointRadius: 0, fill: false, tension: 0 },
+                        { label: inhalt.werte.partialdampfdruckPPa, data: g.verlauf.sd.map((x, i) => ({ x, y: g.verlauf.p[i] })), borderColor: '#475569', backgroundColor: 'rgba(59, 130, 246, 0.07)', fill: true, borderWidth: 3, pointRadius: 0, tension: 0 },
+                        { label: inhalt.werte.schichtgrenzen, data: g.grenzen.sd.map((x, i) => ({ x, y: g.grenzen.psat[i] })), borderColor: '#A3113E', backgroundColor: '#A3113E', showLine: false, pointRadius: 3, fill: false },
                       ],
                     }}
                     options={{
                       responsive: true,
                       maintainAspectRatio: false,
                       scales: {
-                        x: { title: { display: true, text: inhalt.werte.diffusionsäquivalenteLuftschichtdickeSD, font: { size: 10, weight: 'bold' } } },
-                        y: { title: { display: true, text: inhalt.werte.dampfdruckPa, font: { size: 10, weight: 'bold' } } },
+                        x: { type: 'linear', min: 0, max: g.sdGes, title: { display: true, text: inhalt.werte.diffusionsäquivalenteLuftschichtdickeSD, font: { size: 10, weight: 'bold' } } },
+                        y: { min: 0, title: { display: true, text: inhalt.werte.dampfdruckPa, font: { size: 10, weight: 'bold' } } },
                       },
                       plugins: { legend: { labels: { font: { size: 11, weight: 'bold' } } } },
                     }}
                   />
+                  )}
                 </div>
+                {glaserKlima === 'regler' ? (
                 <div className="mt-3 p-3 bg-slate-50 border border-slate-200 rounded-xl">
                   <div className="flex justify-between text-[11px] font-bold text-slate-700 mb-1">
                     <span><MdText text={inhalt.texte.dauerDerTauperiode} /></span>
@@ -725,12 +748,16 @@ export default function Feuchteschutz() {
                     onChange={(e) => setTauperiodeTage(Number(e.target.value))}
                     className="w-full accent-shiraz h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer"
                   />
-                  <p className="text-[10px] text-slate-400 mt-1"><MdText text={inhalt.texte.klassischesGlaserKlima90} /></p>
+                  <p className="text-[10px] text-slate-400 mt-1"><MdText text={inhalt.texte.glaserLehrvarianteHinweis} /></p>
                 </div>
+                ) : (
+                  <p className="mt-3 text-[10px] text-slate-400 leading-relaxed"><MdText text={inhalt.texte.klassischesGlaserKlima90} /></p>
+                )}
               </div>
 
               <div className="lg:col-span-5 space-y-3">
-                {!g.tauwasser ? (
+                <EingabeHinweise hinweise={g.hinweise} />
+                {!g.gueltig ? null : !g.tauwasser ? (
                   <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl flex items-start gap-3">
                     <CheckCircle className="text-emerald-600 shrink-0 mt-0.5" size={18} />
                     <div className="text-xs text-emerald-900 leading-relaxed">
@@ -738,36 +765,59 @@ export default function Feuchteschutz() {
                   </div>
                 ) : (
                   <>
-                    <div className="p-4 bg-red-50/60 border border-red-200 rounded-xl flex items-start gap-3">
-                      <AlertTriangle className="text-red-600 shrink-0 mt-0.5" size={18} />
-                      <div className="text-xs text-red-950 leading-relaxed">
-                        <h5 className="font-extrabold text-sm text-red-800"><MdText text={inhalt.texte.tauwasserAnGrenzfläche} />{formatDeWert(g.ebene)}</h5><MdText text={inhalt.texte.tauwasserebeneHinterDerSchicht} /><strong>„{namen[g.ebene - 1]}“</strong><MdText text={inhalt.texte.dortIstPGleich} /></div>
-                    </div>
+                    {g.zonen.map((z, k) => (
+                      <div key={k} className="p-4 bg-slate-50 border border-slate-300 rounded-xl flex items-start gap-3">
+                        <Droplets className="text-slate-600 shrink-0 mt-0.5" size={18} />
+                        <div className="text-xs text-slate-800 leading-relaxed">
+                          {z.art === 'ebene' && z.grenzeVon > 0 ? (
+                            <>
+                              <h5 className="font-extrabold text-sm text-slate-900"><MdText text={inhalt.texte.tauwasserAnGrenzfläche} />{formatDeWert(z.grenzeVon)}</h5>
+                              <MdText text={inhalt.texte.tauwasserebeneHinterDerSchicht} /><strong>„{namen[z.grenzeVon - 1]}“</strong><MdText text={inhalt.texte.dortIstPGleich} />
+                            </>
+                          ) : (
+                            <>
+                              <h5 className="font-extrabold text-sm text-slate-900">{z.art === 'bereich' ? inhalt.werte.tauwasserbereich : inhalt.werte.tauwasserebene}: s_d = {formatDeZahl(z.sdVon, 3)} … {formatDeZahl(z.sdBis, 3)} m</h5>
+                              <span>{inhalt.werte.inDerSchicht} <strong>„{namen[z.schichtVon]}“</strong>{z.schichtBis !== z.schichtVon && <> {inhalt.werte.bis} <strong>„{namen[z.schichtBis]}“</strong></>}. {inhalt.werte.tauwasserbereichText}</span>
+                            </>
+                          )}
+                          <div className="mt-1 font-mono text-[11px]">M_c = {kg(z.mc)}</div>
+                        </div>
+                      </div>
+                    ))}
                     <div className="grid grid-cols-3 gap-2 text-center">
                       <div className="p-2.5 bg-slate-50 border border-slate-200 rounded-xl">
                         <div className="text-[9.5px] text-slate-500 font-bold uppercase"><MdText text={inhalt.texte.tauwasserMC} /></div>
-                        <div className="text-base font-black text-red-700 font-mono mt-0.5">{formatDeZahl(g.mc, 1)} <span className="text-[10px]">g/m²</span></div>
+                        <div className="text-base font-black text-slate-800 font-mono mt-0.5">{formatDeZahl(g.mc, 3)} <span className="text-[10px]">kg/m²</span></div>
                       </div>
                       <div className="p-2.5 bg-slate-50 border border-slate-200 rounded-xl">
                         <div className="text-[9.5px] text-slate-500 font-bold uppercase"><MdText text={inhalt.texte.verdunstungMEv} /></div>
-                        <div className="text-base font-black text-emerald-700 font-mono mt-0.5">{formatDeZahl(g.mev, 1)} <span className="text-[10px]">g/m²</span></div>
+                        <div className="text-base font-black text-slate-800 font-mono mt-0.5">{formatDeZahl(g.mev, 3)} <span className="text-[10px]">kg/m²</span></div>
                       </div>
                       <div className="p-2.5 bg-slate-50 border border-slate-200 rounded-xl">
-                        <div className="text-[9.5px] text-slate-500 font-bold uppercase">Bilanz</div>
-                        <div className={`text-base font-black font-mono mt-0.5 ${ok ? 'text-emerald-700' : 'text-red-700'}`}>{ok ? 'erfüllt' : 'kritisch'}</div>
+                        <div className="text-[9.5px] text-slate-500 font-bold uppercase">{inhalt.werte.trocknungsdauer}</div>
+                        <div className="text-base font-black text-slate-800 font-mono mt-0.5">{Number.isFinite(g.trocknungsTage) ? `${formatDeZahl(g.trocknungsTage, 1)} d` : '–'}</div>
                       </div>
                     </div>
+                    <ul className="text-[11px] text-slate-700 leading-relaxed space-y-1" aria-label={inhalt.werte.kriterienDin4108}>
+                      {g.kriterien.map((kr, k) => (
+                        <li key={k} className="flex items-start gap-1.5">
+                          {kr.eingehalten ? <CheckCircle size={13} className="text-emerald-600 shrink-0 mt-0.5" aria-hidden="true" /> : <AlertTriangle size={13} className="text-amber-600 shrink-0 mt-0.5" aria-hidden="true" />}
+                          <span>{kr.text}: <strong>{kr.eingehalten ? inhalt.werte.kriteriumEingehalten : inhalt.werte.kriteriumNichtEingehalten}</strong></span>
+                        </li>
+                      ))}
+                    </ul>
                     <p className="text-[11px] text-slate-600 leading-relaxed">
-                      {ok
+                      {g.kriterien.every(kr => kr.eingehalten)
                         ? inhalt.werte.grundkriterienNachDin4108
                         : inhalt.werte.dasBauteilTrocknetIn}
                     </p>
                   </>
                 )}
+                {g.gueltig && (
                 <div className="text-[11px] text-slate-500 bg-off-white border border-home-grau/30 rounded-xl p-3 leading-relaxed">
                   U = {formatDeZahl(g.U, 3)}<MdText text={inhalt.texte.wMKS} />{formatDeZahl(g.sdGes, 2)} m · p_i = {formatDeZahl(g.pi, 0)} Pa · p_e = {formatDeZahl(g.pe, 0)} Pa
                 </div>
-                <EingabeHinweise hinweise={g.hinweise} />
+                )}
               </div>
             </div>
             <p className="text-[10px] text-slate-400 leading-relaxed"><MdText text={inhalt.texte.vereinfachtesLehrmodellMitEiner} /></p>
