@@ -995,6 +995,7 @@ export default function WTA() {
           </div>
 
           <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.dasWtaMerkblatt4} /></p>
+          <p className="text-[11px] text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.hinweisZurNeuausgabeDin} /></p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="p-4 bg-off-white rounded-xl border border-home-grau/20 space-y-2">

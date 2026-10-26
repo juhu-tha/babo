@@ -167,7 +167,7 @@ export default function LCA() {
 
               <div className="border-l-4 border-amber-600 pl-3 text-xs bg-amber-50/40 p-2.5 rounded-r-lg">
                 <strong className="text-slate-900 block font-bold flex items-center gap-1.5">
-                  <Milestone size={13} className="text-amber-700" /><MdText text={inhalt.texte.dinEn174722022} /></strong>
+                  <Milestone size={13} className="text-amber-700" /><MdText text={inhalt.texte.dinEn174722024} /></strong>
                 <span className="text-slate-700 leading-relaxed block mt-1"><MdText text={inhalt.texte.europäischesPendantZuEn} /></span>
               </div>
 

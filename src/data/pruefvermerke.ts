@@ -32,7 +32,7 @@ export const PRUEF_STATUS_TEXT: Record<PruefStatus, string> = {
 };
 
 /** Menügruppen ohne Fachinhalt (wie in tests/lernziele.test.ts) */
-export const OHNE_PRUEFVERMERK: ReadonlySet<string> = new Set(['Allgemein', 'Infos & Quellen', 'Studium THA', 'Weiter@THA', 'Vorlesungen', 'Übungsaufgaben', 'Thesen & Projekte', 'Kuriositäten']);
+export const OHNE_PRUEFVERMERK: ReadonlySet<string> = new Set(['Allgemein', 'Infos & Quellen', 'Studium THA', 'Weiter@THA', 'Vorlesungen', 'Lehrveranstaltungen', 'Übungsaufgaben', 'Thesen & Projekte', 'Kuriositäten']);
 const FACH_TYPEN: ReadonlySet<string> = new Set(['standard', 'calculator', 'norm', 'database']);
 
 /** Fachmodul = Modul in der Modulübersicht mit Fachinhalt (Typ standard, calculator, norm oder database) außerhalb der Info-/Studienbereiche */
@@ -231,6 +231,11 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   schadstoffe: { status: 'offen' },
   schallschutz: { status: 'offen' },
   schnellkarbonatisierung: { status: 'offen' },
+  labor_potentialmessung: { status: 'offen' },
+  labor_auslagerung: { status: 'offen' },
+  labor_frischbeton: { status: 'offen' },
+  labor_druckfestigkeit: { status: 'offen' },
+  labor_moertelprismen: { status: 'offen' },
   schutz_grundlagen: { status: 'offen' },
   sicherheitskonzept: { status: 'offen' },
   sichtbeton: { status: 'offen' },

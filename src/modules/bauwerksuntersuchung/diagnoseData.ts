@@ -441,7 +441,7 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
         scope: inhalt.werte.verbindlichePrüfvorschriftInGanz
       },
       {
-        code: inhalt.werte.dinEn2061,
+        code: inhalt.werte.dinEn2062021,
         title: inhalt.werte.betonTeil1Festlegung,
         date: '2021-06',
         scope: inhalt.werte.definitionDerExpositionsklassenXc1

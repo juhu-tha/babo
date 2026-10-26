@@ -8,7 +8,8 @@ import {
   Info, 
   ShieldAlert,
   Clock,
-  Tag
+  Tag,
+  Landmark
 } from 'lucide-react';
 import { useTabContext } from '../contexts/TabContext';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -82,6 +83,12 @@ export default function Startseite() {
               );
             })}
           </ul>
+          <p className="mt-3 text-sm text-text-main/80">
+            {language === 'en' ? inhalt.werte.followingACourse : inhalt.werte.sieBesuchenEineLehrveranstaltung}
+            <button type="button" onClick={() => setActiveTab('lehrveranstaltungen')} className="font-bold text-shiraz underline underline-offset-2 hover:text-shiraz/80">
+              {language === 'en' ? inhalt.werte.learningPathsByCourse : inhalt.werte.lernpfadeNachLehrveranstaltung}
+            </button>
+          </p>
           {zuletzt.length > 0 && (
             <div className="mt-4">
               <h4 className="text-sm font-bold text-text-main mb-2">{language === 'en' ? inhalt.werte.recentlyVisited : inhalt.werte.zuletztBesucht}</h4>
@@ -195,7 +202,7 @@ export default function Startseite() {
 
       <div className="mt-8 text-sm text-text-main/60 flex flex-col items-center gap-1.5">
         <p><MdText text={inhalt.texte.profHuberTha} /></p>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center justify-center flex-wrap gap-x-3 gap-y-1">
           <button
             onClick={() => setActiveTab('versionen')}
             className="text-xs text-text-main/50 hover:text-shiraz hover:underline inline-flex items-center gap-1.5 font-mono cursor-pointer transition-colors"
@@ -212,6 +219,15 @@ export default function Startseite() {
           >
             <ShieldAlert size={12} className="text-shiraz" />
             <span>Admin-Bereich</span>
+          </button>
+          <span className="text-text-main/30" aria-hidden="true">•</span>
+          <button
+            type="button"
+            onClick={() => setActiveTab('forschung_transfer')}
+            className="text-xs text-text-main/70 hover:text-shiraz hover:underline inline-flex items-center gap-1.5 font-semibold cursor-pointer transition-colors"
+          >
+            <Landmark size={12} className="text-shiraz" aria-hidden="true" />
+            <span><MdText text={inhalt.texte.forschungUndTransfer} /></span>
           </button>
         </div>
       </div>

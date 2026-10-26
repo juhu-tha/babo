@@ -588,6 +588,7 @@ export default function InteractiveLCACalc() {
                       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
                         <div className="flex-1 w-full">
                           <select
+                            aria-label="Baustoff"
                             value={row.materialId}
                             onChange={(e) => updateRow(row.id, { materialId: e.target.value })}
                             className="w-full text-xs font-semibold p-2 bg-white border border-home-grau/30 rounded-lg focus:ring-1 focus:ring-shiraz focus:outline-none cursor-pointer"
@@ -606,6 +607,7 @@ export default function InteractiveLCACalc() {
                               type="number"
                               min="0.1"
                               step="0.5"
+                              aria-label={`Menge in ${currentMat?.unit ?? 'Einheiten'}`}
                               value={row.quantity}
                               onChange={(e) => updateRow(row.id, { quantity: Math.max(0.1, parseFloat(e.target.value) || 0) })}
                               className="w-16 text-xs font-bold text-right font-mono focus:outline-none"

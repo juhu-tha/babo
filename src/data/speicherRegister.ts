@@ -34,6 +34,7 @@ export const SPEICHER_REGISTER: SpeicherEintrag[] = [
   { schluessel: 'tha_klausur_history', ort: 'localStorage', zweck: 'eigene Ergebnisse im Klausursimulator', dauer: BIS_LOESCHUNG },
   { schluessel: 'tha_quiz_session_history', ort: 'localStorage', zweck: 'eigene Quiz-Ergebnisse', dauer: BIS_LOESCHUNG },
   { schluessel: 'tha_quiz_active_gaps', ort: 'localStorage', zweck: 'erkannte Wissenslücken für Lernempfehlungen', dauer: BIS_LOESCHUNG },
+  { schluessel: 'bb_labor_protokolle', ort: 'localStorage', zweck: 'eigene Einträge in den Messprotokollen der Versuchs-Handouts (nur auf diesem Gerät, keine Übertragung)', dauer: BIS_LOESCHUNG },
   { schluessel: 'tha_lab_protocols_history', ort: 'localStorage', zweck: 'eigene Laborprotokolle', dauer: BIS_LOESCHUNG },
   { schluessel: 'bau_bautagebuch_diaries', ort: 'localStorage', zweck: 'eigene Einträge im Bautagebuch (Projekt- und Notizdaten, die Sie selbst eingeben)', dauer: BIS_LOESCHUNG },
   // Verwaltung

@@ -128,7 +128,7 @@ export default function IngenieurbauLCA() {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-shiraz text-white font-mono"><MdText text={inhalt.texte.dinEn174722022} /></span>
+                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-shiraz text-white font-mono"><MdText text={inhalt.texte.dinEn174722024} /></span>
                 <span className="text-[10px] text-slate-500 font-mono"><MdText text={inhalt.texte.cenTc350Infrastruktur} /></span>
               </div>
               <h3 className="text-lg font-bold text-text-main mt-0.5"><MdText text={inhalt.texte.nachhaltigkeitVonBauwerkenÖkobilanzierun} /></h3>

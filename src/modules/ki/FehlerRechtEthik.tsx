@@ -61,7 +61,7 @@ const LIMITATION_CASES: LimitationCase[] = [
     problemDescription: inhalt.werte.trainingsdatensätzeEnthaltenHistorischeB,
     kiClaim: inhalt.werte.dieAbdichtungErdberührterBauteile,
     realityCheck: inhalt.werte.veraltetDieDin18195,
-    normReference: inhalt.werte.din1853312017,
+    normReference: inhalt.werte.din1853312026,
     preventionGuideline: inhalt.werte.jedeZitierteNormIn
   },
   {

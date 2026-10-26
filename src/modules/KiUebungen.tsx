@@ -6,6 +6,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { springeZu } from '@/src/components/ui/Querverweis';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { formatDeGanzzahl } from '@/src/utils/numberFormat';
+import { holeSprungziel } from '@/src/utils/sprungziel';
 import { KI_UEBUNGEN, KI_UEBUNG_REGELN, type KiUebung, type PromptVorlage } from '@/src/data/kiUebungen';
 import inhalt from '@/content/kiuebungen/KiUebungen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
@@ -154,7 +155,11 @@ function Uebung({ u }: { u: KiUebung }) {
 }
 
 export default function KiUebungen() {
-  const [aktiv, setAktiv] = useState<string>(KI_UEBUNGEN[0].id);
+  // Sprungziel aus einem Lernpfad (AP 6.1): direkt die passende Übung öffnen
+  const [aktiv, setAktiv] = useState<string>(() => {
+    const ziel = holeSprungziel('ki_uebungen');
+    return KI_UEBUNGEN.some(u => u.id === ziel) ? (ziel as string) : KI_UEBUNGEN[0].id;
+  });
   const tabs: ModulTab<string>[] = KI_UEBUNGEN.map((u, i) => ({ id: u.id, label: `${i + 1} · ${u.kurz}` }));
   const uebung = KI_UEBUNGEN.find(u => u.id === aktiv) ?? KI_UEBUNGEN[0];
   const gesamt = KI_UEBUNGEN.reduce((s, u) => s + u.minuten, 0);

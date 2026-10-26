@@ -23,6 +23,12 @@ export function anzahlFragenRoute(route: string): number {
   return n;
 }
 
+/** Quiz-moduleIds (mit mindestens einer Frage), deren Route in routen liegt – in Reihenfolge der routen (Lernpfade, AP 6.1) */
+export function quizModuleDerRouten(routen: readonly string[]): string[] {
+  const ids = Object.keys(anzahlJeModul).filter(m => (anzahlJeModul[m] ?? 0) > 0);
+  return routen.flatMap(r => ids.filter(m => quizRoute(m) === r));
+}
+
 /** Cluster (I–VI) aller Fragen der angegebenen Menügruppen, in Pool-Reihenfolge */
 export function clusterDerGruppen(gruppen: readonly string[]): ClusterNummer[] {
   const ids = new Set<ClusterNummer>();
