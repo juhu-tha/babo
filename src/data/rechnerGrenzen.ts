@@ -47,6 +47,8 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       'Einfeldträger mit Nachweisschnitt in Feldmitte, Rechteckquerschnitt ohne Spannglied-Hüllrohrabzug.',
       'Zeitabhängige Verluste nach Gl. (5.46) mit φ(∞,t₀) und ε_cs(∞) nach Anhang B; Relaxation für 500 000 h.',
       'Dekompression als größte Betonspannung an den Grenzen e_p ± max(100 mm; h/10) nach NA DE (EN-Empfehlung: 25 mm), vereinfacht am ungerissenen Querschnitt (Zustand I).',
+      'Dehnungsanimation: fester Lehrträger (L = 20 m, 500 × 1000 mm, E_cm = 35 000 N/mm², f_ctm = 3,5 N/mm²), Spannungen nach Freyssinet linear-elastisch am Bruttoquerschnitt; nach Überschreiten von f_ctm nur qualitativ.',
+      '„Von 0 bis 100“: Verlust durch Betonstauchung Δσ = E·Δε ohne Relaxation; Lastausgleich u = 8·P·f/L² für Parabelspannglied am Einfeldträger, Litzenzahl überschlägig mit 150 kN je Litze (Lehrannahme).',
     ],
   },
   holzbau_bemessung: {
@@ -101,6 +103,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       'Anrechenbarkeit von Flugasche vereinfacht nach Zementart; Präzisierung nach DIN 1045-2 offen.',
       'CO₂-Werte sind Lehrwerte und ersetzen keine EPD.',
       'Packungsdichte: Siebdurchgänge der Komponenten sind Lehrwerte; geschätzte Packungsdichte und „reales“ Zweikornmodell veranschaulichen nur (kein CPM nach de Larrard).',
+      'Walz-Kurven: Abrams-Näherung f = A/5^(w/z) mit A = 100/120/140 N/mm² (Lehrwerte) für w/z 0,35 bis 0,80; ersetzt keine Erstprüfung.',
     ],
   },
   stahl: {
@@ -225,6 +228,8 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Temperaturverlauf mit pauschaler Wärmeabfuhr und festen Stoffwerten.",
       "Rissnachweis mit f_ct,eff = 0,7·f_ctm und k_c = 1,0 (zentrischer Zwang), σ_s aus vereinfachter Tabelle.",
       "Praxisbeispiel mit festen Kennwerten, linear mit β_cc skaliert.",
+      "Zwang & Risse (massige Bauteile): Temperaturkurve als Lehransatz, Zwang α_T·ΔT·E_c(t)·R nur in der Abkühlphase.",
+      "Mindestbewehrung im Praxisbeispiel mit k_c = 1,0, k = 0,8, f_ct,eff = 2,5 N/mm² und σ_s = 240 N/mm² als feste Lehrwerte.",
       "Reife: wirksames Alter aus der Kerntemperatur in Schritten von 0,1 d; f_ck wird aus der Zementfestigkeitsklasse angesetzt, β_cc ist auf 1,25 begrenzt.",
       "Wärme mit hyperbolischem Ansatz Q = H_max·t_e/(t_e + t₅₀) und Lehrwerten je Zementart; Zusatzstoffe über lineare Zu- und Abschläge.",
       "Bauteile unter 0,30 m: Die pauschale Wärmeabfuhr gleicht die Temperatur je Zeitschritt vollständig an die Umgebung an.",
@@ -375,6 +380,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     grenzen: [
       "Chlorid: Fehlerfunktionslösung mit konstantem C_s und D_app(t) = D₀·(t₀/t)^a ohne k_e und k_t; kritischer Gehalt 0,5 M.-% v. z. als Orientierungswert.",
       "Karbonatisierung deterministisch mit dem Wurzel-t-Gesetz; Feuchte, Beregnung und Streuung von Deckung und Material bleiben unberücksichtigt.",
+      "Lebensdauersimulator (Dauerhaftigkeit): t_krit = (c/k)² auf ganze Jahre gerundet, k-Werte der Schnellwahl als Lehrwerte; über 200 Jahre nicht abgesichert.",
       "Schnelltest-Umrechnung nur über die CO₂-Konzentration (K ∝ √c) – Größenordnung, kein Normwert.",
       "Lokalelement: i_corr, Rostvolumenfaktor 2,5, E_eff = 12 000 MPa und Schadensschwellen sind qualitative Lehrannahmen; Abtrag 11,6 µm/a je µA/cm² (Faraday, Eisen).",
     ],

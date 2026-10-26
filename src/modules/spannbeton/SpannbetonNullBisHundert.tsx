@@ -25,6 +25,8 @@ import { Station3Verfahren } from './nullbishundert/Station3Verfahren';
 import { Station2Dilemma } from './nullbishundert/Station2Dilemma';
 import inhalt from '@/content/spannbeton/SpannbetonNullBisHundert.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { stauchungsVerlust, lastausgleich } from '@/src/calc/spannbeton';
 
 interface Props {
   onNavigateTab?: (tab: 'grundprinzipien' | 'kennwerte' | 'rechner' | 'dauerhaftigkeit') => void;
@@ -56,23 +58,17 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
 
   const steps = inhalt.daten["SpannbetonNullBisHundert.steps"];
 
-  // Calculations for Demonstrator 1:
-  // B500: fyd = 435 N/mm2, Es = 200000 N/mm2, eps_el = 2.175 Promille
-  // Y1860: fpk = 1860 N/mm2, fp01k = 1600 N/mm2, Ep = 195000 N/mm2, zulässige Vorspannung sigma_pm0 = min(0.75*fpk, 0.85*fp01k) = 1360 N/mm2
-  const deltaEps = concreteStauchung / 1000;
-  const deltaSigma_b500 = 200000 * deltaEps; // N/mm2 loss
-  const lossPercent_b500 = Math.min(100, Math.round((deltaSigma_b500 / 435) * 100));
-  const remaining_b500 = Math.max(0, 435 - deltaSigma_b500);
+  // Demonstrator 1 (B500 vs. Y1860) und Demonstrator 2 (Lastausgleich nach T. Y. Lin) im Rechenkern
+  const verlust = stauchungsVerlust(concreteStauchung);
+  const lossPercent_b500 = verlust.b500.verlustProzent;
+  const remaining_b500 = verlust.b500.rest;
+  const lossPercent_y1860 = verlust.y1860.verlustProzent;
+  const remaining_y1860 = verlust.y1860.rest;
 
-  const deltaSigma_y1860 = 195000 * deltaEps; // N/mm2 loss
-  const initial_y1860 = 1360; // N/mm2 = min(0.75*1860, 0.85*1600)
-  const lossPercent_y1860 = Math.min(100, Math.round((deltaSigma_y1860 / initial_y1860) * 100));
-  const remaining_y1860 = Math.max(0, initial_y1860 - deltaSigma_y1860);
-
-  // Calculations for Demonstrator 2 (Load Balancing u = 8 * P * f / L^2 => P_bal = g * L^2 / (8 * f))
-  const requiredP_kN = Math.round((deadLoad * Math.pow(beamLength, 2)) / (8 * sagittaF));
-  const upwardLoad_u = Math.round(((8 * requiredP_kN * sagittaF) / Math.pow(beamLength, 2)) * 10) / 10;
-  const netMomentMidspan = Math.round(((deadLoad - upwardLoad_u) * Math.pow(beamLength, 2)) / 8);
+  const ausgleich = lastausgleich(beamLength, deadLoad, sagittaF);
+  const requiredP_kN = ausgleich.P;
+  const upwardLoad_u = ausgleich.u;
+  const netMomentMidspan = ausgleich.mNetto;
 
   return (
     <div className="space-y-6">
@@ -248,7 +244,10 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
         {/* STATION 2: 20% - 40% DAS B500-DILEMMA */}
         {/* ========================================================================= */}
         {activeStep === 1 && (
+          <>
+          <EingabeHinweise hinweise={verlust.hinweise} />
           <Station2Dilemma concreteStauchung={concreteStauchung} setConcreteStauchung={setConcreteStauchung} lossPercent_b500={lossPercent_b500} remaining_b500={remaining_b500} lossPercent_y1860={lossPercent_y1860} remaining_y1860={remaining_y1860} onNavigateTab={onNavigateTab} setActiveStep={setActiveStep} />
+          </>
         )}
 
         {/* ========================================================================= */}
@@ -262,7 +261,10 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
         {/* STATION 4: 60% - 80% STATIK & LOAD BALANCING (T.Y. LIN) */}
         {/* ========================================================================= */}
         {activeStep === 3 && (
+          <>
+          <EingabeHinweise hinweise={ausgleich.hinweise} />
           <Station4LoadBalancing beamLength={beamLength} setBeamLength={setBeamLength} deadLoad={deadLoad} setDeadLoad={setDeadLoad} sagittaF={sagittaF} setSagittaF={setSagittaF} requiredP_kN={requiredP_kN} upwardLoad_u={upwardLoad_u} netMomentMidspan={netMomentMidspan} setActiveStep={setActiveStep} />
+          </>
         )}
 
         {/* ========================================================================= */}
