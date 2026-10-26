@@ -11,6 +11,7 @@ import React from 'react';
 import { flushSync } from 'react-dom';
 import type * as ReactChartjs from 'react-chartjs-2';
 import { verbinde, istMarke } from './chartJsBedarf';
+import { beimDrucken, STUFE } from './druckVorbereitung';
 
 type Bibliothek = typeof ReactChartjs;
 type Art = 'Chart' | 'Line' | 'Bar' | 'Radar' | 'Doughnut' | 'PolarArea' | 'Bubble' | 'Pie' | 'Scatter';
@@ -54,17 +55,19 @@ function plane() {
   }, 0);
 }
 
+function alleFreigeben() {
+  flushSync(() => { for (const a of [...auftraege]) { auftraege.delete(a); a.freigeben('ohneAnimation'); } });
+}
 /** Alle noch nicht gezeichneten Diagramme sofort und ohne Animation zeichnen (Drucken, PDF-Export) */
 export async function zeichneAlleDiagramme(): Promise<void> {
   if (!auftraege.size) return;
   await ladeDiagramme().catch(() => {});
-  flushSync(() => { for (const a of [...auftraege]) { auftraege.delete(a); a.freigeben('ohneAnimation'); } });
+  alleFreigeben();
   await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
 }
-if (typeof window !== 'undefined') window.addEventListener('beforeprint', () => {
-  // Drucken ist synchron: nur möglich, wenn Chart.js schon geladen ist (sonst bleibt der Platzhalter)
-  if (bibliothek) flushSync(() => { for (const a of [...auftraege]) { auftraege.delete(a); a.freigeben('ohneAnimation'); } });
-});
+// Drucken ist synchron: nur möglich, wenn Chart.js schon geladen ist (wird beim Laden dieses Chunks angestoßen).
+// Nach den Abschnitten (NachErstemBild), deren Diagramme sich erst beim Erscheinen anmelden.
+beimDrucken(STUFE.diagramme, () => { if (bibliothek && auftraege.size) alleFreigeben(); }, zeichneAlleDiagramme);
 
 function useFreigabe(ref: React.RefObject<HTMLElement | null>): Freigabe {
   const [frei, setFrei] = React.useState<Freigabe>(false);

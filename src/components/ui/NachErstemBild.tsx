@@ -6,6 +6,7 @@
 // Verhalten und Inhalt bleiben gleich; vor dem Drucken wird alles sofort gerendert.
 import React from 'react';
 import { flushSync } from 'react-dom';
+import { beimDrucken, STUFE } from '@/src/lib/druckVorbereitung';
 
 type Eintrag = () => void;
 const reihe: Eintrag[] = [];
@@ -24,7 +25,8 @@ function einreihen(f: Eintrag) {
   return () => { const i = reihe.indexOf(f); if (i >= 0) reihe.splice(i, 1); };
 }
 const sofort = new Set<() => void>();
-if (typeof window !== 'undefined') window.addEventListener('beforeprint', () => flushSync(() => sofort.forEach(f => f())));
+// vor Formeln und Diagrammen (src/lib/druckVorbereitung.ts): erscheinende Abschnitte enthalten oft beides
+beimDrucken(STUFE.abschnitte, () => { if (sofort.size) flushSync(() => sofort.forEach(f => f())); });
 
 export function NachErstemBild({ children, minHoehe }: { children: React.ReactNode; /** Platzhalterhöhe (≈ spätere Höhe) */ minHoehe?: number | string }) {
   const ref = React.useRef<HTMLDivElement>(null);

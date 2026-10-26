@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { Querverweis } from '@/src/components/ui/Querverweis';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -437,6 +438,10 @@ export default function FestbetonStatistik() {
         />
 
         {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+        <Querverweis ziel="normen_ausblick" titel={inhalt.werte.neueAusgabenErschienenDin} linkText={inhalt.werte.zumModulAusblickNeue}>
+          <p><MdText text={inhalt.texte.maßgebendBleibenDinEn} /></p>
+        </Querverweis>
+
         <ModulTest moduleId="festbeton_statistik" />
 
         <ModuleFooter 

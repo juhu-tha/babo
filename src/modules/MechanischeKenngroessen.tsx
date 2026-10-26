@@ -2,6 +2,7 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { useState, useMemo } from 'react';
 import { Activity, Scale, Sliders, BookOpen, Layers, TrendingUp, Sparkles, Clock, MoveHorizontal } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { Querverweis } from '@/src/components/ui/Querverweis';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath, BlockMath } from 'react-katex';
 import { MATERIALIEN } from './mechanischekenngroessen/daten';
@@ -433,6 +434,10 @@ export default function MechanischeKenngroessen() {
       {activeTab === 'beispiele' && <Beispiele />}
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <Querverweis ziel="normen_ausblick" titel={inhalt.werte.neueEurocodeGenerationErschienen} linkText={inhalt.werte.zumModulAusblickNeue}>
+        <p><MdText text={inhalt.texte.maßgebendBleibenDieBauaufsichtlich} /></p>
+      </Querverweis>
+
       <ModulTest moduleId="mechanische_kenngroessen" />
 
       {/* FOOTER */}

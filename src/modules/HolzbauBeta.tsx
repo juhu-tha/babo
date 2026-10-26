@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { Trees } from 'lucide-react';
 import { bemesseDruckstab, bemesseQuerdruck, KMOD, type KLED, type Nutzungsklasse, type Querdruckfall } from '@/src/calc/holzbau';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { Querverweis } from '@/src/components/ui/Querverweis';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { woodMaterials, dataholzConstructions } from './holzbaubeta/daten';
@@ -321,6 +322,10 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
         />
       </div>
       )}
+
+      <Querverweis ziel="normen_ausblick" titel={inhalt.werte.neueEurocodeGenerationErschienen} linkText={inhalt.werte.zumModulAusblickNeue}>
+        <p><MdText text={inhalt.texte.maßgebendBleibenDieBauaufsichtlich} /></p>
+      </Querverweis>
 
       <ModulTest moduleId="holzbau" />
 

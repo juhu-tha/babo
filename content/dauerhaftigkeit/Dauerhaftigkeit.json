@@ -140,7 +140,8 @@
     "kunststoffeDichtstoffeBitumen": "Kunststoffe, Dichtstoffe & Bitumen",
     "weichmacherwanderungPvcEpsXps": "**Weichmacherwanderung (PVC & EPS/XPS):** Weich-PVC (z.B. Dachbahnen, Kabelummantelungen) darf nicht direkt auf Polystyrol-Dämmung (EPS/XPS) verlegt werden. Die Weichmacher wandern in die Dämmung, das PVC versprödet, die Dämmung schrumpft/zersetzt sich. *Lösung:* Trennlage (z.B. Glasvlies) einbauen.",
     "bitumenEpsXpsLösungsmittelhaltige": "**Bitumen & EPS/XPS:** Lösungsmittelhaltige Bitumenanstriche oder -kleber lösen Polystyrol-Dämmstoffe auf. Nur lösungsmittelfreie (z.B. KMB/PMBC) Produkte verwenden.",
-    "dichtstoffeSilikonEssigvernetzendesSilik": "**Dichtstoffe (Silikon):** Essigvernetzendes Silikon spaltet Essigsäure ab und führt auf ungeschützten Metallen (Kupfer, Zink, Messing) zu Korrosion. Bei Naturstein führt falsches Silikon zu irreversibler Randzonenverschmutzung (Verfärbung durch Weichmacher)."
+    "dichtstoffeSilikonEssigvernetzendesSilik": "**Dichtstoffe (Silikon):** Essigvernetzendes Silikon spaltet Essigsäure ab und führt auf ungeschützten Metallen (Kupfer, Zink, Messing) zu Korrosion. Bei Naturstein führt falsches Silikon zu irreversibler Randzonenverschmutzung (Verfärbung durch Weichmacher).",
+    "maßgebendBleibenDinEn": "Maßgebend bleiben DIN EN 206:2021-06 mit DIN 1045-2:2023-08 und DIN EN 1992-1-1:2011-01 mit NA. Was die Neuausgaben ändern – etwa Expositionswiderstandsklassen (ERC) und CO₂-Klassen – und was zur Einführung bekannt ist, fasst das Ausblick-Modul zusammen."
   },
   "werte": {
     "prinzipienKonzepte": "Prinzipien & Konzepte",
@@ -158,6 +159,8 @@
     "beispiel2WieWichtig": "Beispiel 2: Wie wichtig ist das Vorhaltemaß? Karbonatisierung einer Außenwand (XC4, poröser Beton)",
     "dieZeitBisZur": "Die Zeit bis zur Depassivierung steigt mit dem Quadrat der Betondeckung: 15 mm weniger Deckung verkürzen sie hier um rund 60 %. Deshalb sind Abstandhalter und Kontrolle der Deckung vor dem Betonieren entscheidend.",
     "tGesetzFibBulletin": "√t-Gesetz; fib Bulletin 34 (2006)",
+    "neueAusgabenErschienenDin": "Neue Ausgaben erschienen: DIN EN 206-1/-2:2026 und EC2 2. Generation",
+    "zumModulAusblickNeue": "Zum Modul Ausblick: neue Normengeneration",
     "oktober2026Ap10": "Oktober 2026 (AP 10 Dauerhaftigkeit: Expositionsklassen nach DIN 1045-2:2023-08, Betondeckung, XA-Grenzen, Korrosivitätskategorien und Holzschutz geprüft; fachliche Freigabe durch den Autor ausstehend)"
   },
   "daten": {

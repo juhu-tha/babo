@@ -392,6 +392,10 @@ export default function Schnellkarbonatisierung() {
         />
       </div>
 
+      <Querverweis ziel="normen_ausblick" titel={inhalt.werte.ausblickKarbonatisierungswiderstandAlsKl} linkText={inhalt.werte.zumModulAusblickNeue}>
+        <p><MdText text={inhalt.texte.en199211} /></p>
+      </Querverweis>
+
       <ModulTest moduleId="schnellkarbonatisierung" />
 
       <ModuleFooter

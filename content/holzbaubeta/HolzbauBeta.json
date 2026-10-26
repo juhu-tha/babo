@@ -3,12 +3,15 @@
     "holzbauIngenieurholzbau": "Holzbau (Ingenieurholzbau)",
     "referenzhandbuchTragwerksnachweiseNachEu": "Referenzhandbuch & Tragwerksnachweise nach Eurocode 5 (DIN EN 1995-1-1)",
     "refInformationsdienstHolzDe": "Ref: informationsdienst-holz.de & dataholz.eu",
-    "dasModulFasstKennwerte": "Das Modul fasst Kennwerte der Holzwerkstoffe, Konstruktionsweisen, Bauphysik und Brandschutz zusammen und enthält vereinfachte Rechner nach Eurocode 5. Die Rechner dienen der Lehre und ersetzen keine Tragwerksplanung."
+    "dasModulFasstKennwerte": "Das Modul fasst Kennwerte der Holzwerkstoffe, Konstruktionsweisen, Bauphysik und Brandschutz zusammen und enthält vereinfachte Rechner nach Eurocode 5. Die Rechner dienen der Lehre und ersetzen keine Tragwerksplanung.",
+    "maßgebendBleibenDieBauaufsichtlich": "Maßgebend bleiben die bauaufsichtlich eingeführten Eurocodes mit Nationalen Anhängen (MVV TB 2025/1). Welche Teile der 2. Generation erschienen sind, was sich ändert und welche Termine bekannt sind, fasst das Ausblick-Modul zusammen."
   },
   "werte": {
     "anwendungsbeispielKnicknachweisEinerStüt": "Anwendungsbeispiel: Knicknachweis einer Stütze C24 120/160 mm",
     "dinEn19951": "DIN EN 1995-1-1 mit NA, 6.3.2 (Ersatzstabverfahren)",
-    "dieStützeIstAusreichend": "Die Stütze ist ausreichend; ohne Knicken (k_c = 1) läge die Tragfähigkeit bei rund 248 kN – durch die Schlankheit sinkt sie auf rund 40 %."
+    "dieStützeIstAusreichend": "Die Stütze ist ausreichend; ohne Knicken (k_c = 1) läge die Tragfähigkeit bei rund 248 kN – durch die Schlankheit sinkt sie auf rund 40 %.",
+    "neueEurocodeGenerationErschienen": "Neue Eurocode-Generation erschienen",
+    "zumModulAusblickNeue": "Zum Modul Ausblick: neue Normengeneration"
   },
   "daten": {
     "HolzbauBeta.shrinkageCoeffs": {

@@ -1,21 +1,5 @@
-/* Inter als WOFF2-Teilmenge (AP 5.4): Latin, Latin-1, Latin Extended-A, Griechisch, Satzzeichen,
-   Hoch-/Tiefzahlen, Pfeile, Mathematik (≤ ≥ ≈ ‰ ° ² ³ ₀–₉ …) – erzeugt mit pyftsubset (docs/performance.md).
-   Nicht enthaltene Zeichen (Emoji, Kastenlinien) kommen aus den System-Fallbacks. */
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400 500;
-  font-display: swap;
-  src: url('/fonts/inter-regular.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600 700;
-  font-display: swap;
-  src: url('/fonts/inter-bold.woff2') format('woff2');
-}
+/* Schrift Inter: wird als FontFace aus src/lib/schriftDaten.ts (Base64-Text) nachgeladen – keine Binärdatei,
+   damit der Pull in Google AI Studio funktioniert. Bis dahin System-Ersatzschrift. */
 
 @import "tailwindcss";
 
@@ -792,6 +776,15 @@ input[type=range]:focus {
     display: none !important;
   }
   
+  /* App-Rahmen öffnen: Der Modulinhalt scrollt in <main> (overflow-y-auto) innerhalb eines h-screen-Rahmens
+     mit overflow-hidden. Ohne diese Regel druckt der Browser nur den ersten Bildschirm (eine Seite). */
+  main,
+  div:has(> main) {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
   /* Adjust main container to full screen space for printing */
   .lg\:pl-64 {
     padding-left: 0 !important;

@@ -56,7 +56,8 @@
     "ergebnisBiegeknicken": "Ergebnis Biegeknicken",
     "nEdNB": " N_Ed/N_b,Rd = ",
     "ausnutzungMaßgebendAchse": " % Ausnutzung, maßgebend Achse ",
-    "europäischeKnicklinien": "Europäische Knicklinien χ(λ̄)"
+    "europäischeKnicklinien": "Europäische Knicklinien χ(λ̄)",
+    "maßgebendBleibenDieBauaufsichtlich": "Maßgebend bleiben die bauaufsichtlich eingeführten Eurocodes mit Nationalen Anhängen (MVV TB 2025/1). Welche Teile der 2. Generation erschienen sind, was sich ändert und welche Termine bekannt sind, fasst das Ausblick-Modul zusammen."
   },
   "werte": {
     "kennwerteTabellen": "Kennwerte & Tabellen",
@@ -100,6 +101,8 @@
     "beispiel3BiegeknickenEiner": "Beispiel 3: Biegeknicken einer Stütze HEB 200, S235, L_cr = 4,0 m",
     "derQuerschnittswiderstandNC": "Der Querschnittswiderstand N_c,Rd = 1 835 kN wird durch das Knicken um die schwache Achse auf 58 % abgemindert.",
     "dinEn199314": "DIN EN 1993-1-1, 6.3.1 mit NA (DE)",
+    "neueEurocodeGenerationErschienen": "Neue Eurocode-Generation erschienen",
+    "zumModulAusblickNeue": "Zum Modul Ausblick: neue Normengeneration",
     "oktober2026Ap3": "Oktober 2026 (AP 3.13: neues Modul; fachliche Freigabe durch den Autor ausstehend)",
     "stadTechnischeDatenIpe": "stad: Technische Daten IPE-Profile",
     "stadTechnischeDatenHe": "stad: Technische Daten HE-Profile"

@@ -25,7 +25,8 @@
     "zylinder150X300": "Zylinder (150 x 300 mm)",
     "derMittlereBereichBleibt": "Der mittlere Bereich bleibt weitgehend unbeeinflusst von der Reibung an den Druckplatten; die Querdehnung ist dort kaum behindert. Geringere gemessene Festigkeit (f_ck,cyl).",
     "würfel150X150": "Würfel (150 x 150 x 150 mm)",
-    "dieReibungskegelDerDruckplatten": "Die Reibungskegel der Druckplatten durchdringen den gesamten Probekörper und behindern die Querdehnung. Höhere gemessene Festigkeit (f_ck,cube)."
+    "dieReibungskegelDerDruckplatten": "Die Reibungskegel der Druckplatten durchdringen den gesamten Probekörper und behindern die Querdehnung. Höhere gemessene Festigkeit (f_ck,cube).",
+    "maßgebendBleibenDinEn": "Maßgebend bleiben DIN EN 206:2021-06 mit DIN 1045-2:2023-08 und DIN EN 1992-1-1:2011-01 mit NA. Was die Neuausgaben ändern – etwa Expositionswiderstandsklassen (ERC) und CO₂-Klassen – und was zur Einführung bekannt ist, fasst das Ausblick-Modul zusammen."
   },
   "werte": {
     "t5FraktilAusschuss": "5%-Fraktil (Ausschuss)",
@@ -53,6 +54,8 @@
     "beispiel2KonformitätBei": "Beispiel 2: Konformität bei stetiger Herstellung und Bemessungswert",
     "dieKonformitätWirdIm": "Die Konformität wird im Format der Prüfkörper (hier Würfel) nachgewiesen, die Bemessung erfolgt immer mit der Zylinderfestigkeit.",
     "dinEn20620212": "DIN EN 206:2021-06, Tab. 14; DIN EN 1992-1-1/NA, 3.1.6",
+    "neueAusgabenErschienenDin": "Neue Ausgaben erschienen: DIN EN 206-1/-2:2026 und EC2 2. Generation",
+    "zumModulAusblickNeue": "Zum Modul Ausblick: neue Normengeneration",
     "oktober2026Ap4": "Oktober 2026 (AP 4 Labor: Konformitätskriterien DIN EN 206, Tab. 14, Fraktilwert und Bemessungswert nach DIN EN 1992-1-1/NA geprüft; fachliche Freigabe durch den Autor ausstehend)"
   },
   "daten": {

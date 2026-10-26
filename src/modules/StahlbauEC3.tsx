@@ -442,6 +442,10 @@ export default function StahlbauEC3() {
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <Querverweis ziel="normen_ausblick" titel={inhalt.werte.neueEurocodeGenerationErschienen} linkText={inhalt.werte.zumModulAusblickNeue}>
+        <p><MdText text={inhalt.texte.maßgebendBleibenDieBauaufsichtlich} /></p>
+      </Querverweis>
+
       <ModulTest moduleId="stahlbau_ec3" />
 
       <ModuleFooter

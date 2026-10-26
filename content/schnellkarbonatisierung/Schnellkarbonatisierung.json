@@ -53,7 +53,8 @@
     "gesägteStattGespalteneMessflächen": "gesägte statt gespaltene Messflächen, zu spät besprühte Flächen",
     "messungAnEckenUnd": "Messung an Ecken und groben Gesteinskörnern statt im Mittelbereich der Seiten",
     "zuFeuchteProbekörperNach": "zu feuchte Probekörper nach verkürzter Vorlagerung (langsame Karbonatisierung)",
-    "einheitenVerwechseltKAc": "Einheiten verwechselt: K_AC in mm/√d, K_nat in mm/√a"
+    "einheitenVerwechseltKAc": "Einheiten verwechselt: K_AC in mm/√d, K_nat in mm/√a",
+    "en199211": "EN 1992-1-1:2023 ordnet Betone Expositionswiderstandsklassen zu; die XRC-Klassenzahl ist wie K_nat eine Rate in mm/√a. Stand der Einführung und Rolle von DIN EN 12390-12 fasst das Ausblick-Modul zusammen."
   },
   "werte": {
     "auswertungUmrechnung": "Auswertung & Umrechnung",
@@ -92,6 +93,8 @@
     "beispielReichtDieDeckung": "Beispiel: Reicht die Deckung von 25 mm für 50 Jahre?",
     "rechnerischAusreichendAberNur": "Rechnerisch ausreichend – aber nur als Größenordnung. Eine um 10 mm geringere Deckung (15 mm) würde schon nach rund 57 Jahren erreicht.",
     "lehrbeispielPrüfungNachDin": "Lehrbeispiel; Prüfung nach DIN EN 12390-12:2020-04",
+    "ausblickKarbonatisierungswiderstandAlsKl": "Ausblick: Karbonatisierungswiderstand als Klasse (XRC)",
+    "zumModulAusblickNeue": "Zum Modul Ausblick: neue Normengeneration",
     "oktober2026Ap6": "Oktober 2026 (AP 6.2: Modul neu erstellt; fachliche Freigabe durch den Autor ausstehend)"
   },
   "daten": {

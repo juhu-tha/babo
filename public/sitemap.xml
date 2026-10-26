@@ -101,6 +101,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://baustoffboard.de/#normen_ausblick</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
   <!-- Labor & Auswertung -->
   <url>
@@ -1401,6 +1407,12 @@
   </url>
   <url>
     <loc>https://baustoffboard.de/#weiter_ttz</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baustoffboard.de/#ttz_weiterbildung</loc>
     <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

@@ -12,6 +12,7 @@ import {
   LucideIcon
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { Querverweis } from '@/src/components/ui/Querverweis';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
@@ -448,6 +449,10 @@ export default function Dauerhaftigkeit() {
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <Querverweis ziel="normen_ausblick" titel={inhalt.werte.neueAusgabenErschienenDin} linkText={inhalt.werte.zumModulAusblickNeue}>
+        <p><MdText text={inhalt.texte.maßgebendBleibenDinEn} /></p>
+      </Querverweis>
+
       <ModulTest moduleId="dauerhaftigkeit" />
 
       <ModuleFooter

@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Leaf, Beaker, Layers, Sparkles, CheckCircle2, ChevronRight, Calculator, AlertTriangle, Trees, ChevronDown, ChevronUp, Activity, BookOpen, Scale, Award, Building2, Sliders } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { Querverweis } from '@/src/components/ui/Querverweis';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath, BlockMath } from 'react-katex';
@@ -594,6 +595,10 @@ export default function Materialoptimierung() {
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <Querverweis ziel="normen_ausblick" titel={inhalt.werte.neueAusgabenErschienenDin} linkText={inhalt.werte.zumModulAusblickNeue}>
+        <p><MdText text={inhalt.texte.maßgebendBleibenDinEn} /></p>
+      </Querverweis>
+
       <ModulTest moduleId="materialoptimierung" />
 
       {/* --- Module Footer --- */}
