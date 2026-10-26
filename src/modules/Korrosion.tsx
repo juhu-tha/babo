@@ -16,7 +16,7 @@ import '@/src/lib/chartSetup';
 import { ShieldAlert, Droplets, Cloud, Timer, Zap, Activity } from "lucide-react";
 import { Slider } from "@/src/components/ui/Slider";
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
-import { chloridProfil, karbonatisierungsFront, karbonatisierungsKurve, schnellUmrechnung, lokalelement, LOKALELEMENT, CL_KRITISCH, type SchadensStufe } from '@/src/calc/korrosion';
+import { chloridProfil, karbonatisierungsFront, karbonatisierungsKurve, schnellUmrechnung, CO2_KAMMER_EN12390_12, lokalelement, LOKALELEMENT, CL_KRITISCH, type SchadensStufe } from '@/src/calc/korrosion';
 import { FormulaText } from "@/src/components/ui/FormulaText";
 import { ModuleFooter } from "@/src/components/ui/ModuleFooter";
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -454,7 +454,7 @@ export default function Korrosion() {
 
   // Schnellkarbonatisierung State
   const [co2Konz, setCo2Konz] = useState(0.04); // Vol.-% (natürlich)
-  const [co2KonzSchnell, setCo2KonzSchnell] = useState(2.0); // Vol.-% (Kammer)
+  const [co2KonzSchnell, setCo2KonzSchnell] = useState(CO2_KAMMER_EN12390_12); // Vol.-% (Kammer, DIN EN 12390-12)
   const [tSchnell, setTSchnell] = useState(28); // Tage
   const [kKarbSchnell, setKKarbSchnell] = useState(2.0); // mm/sqrt(d)
 

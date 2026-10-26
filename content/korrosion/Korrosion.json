@@ -77,7 +77,7 @@
     "hängtVonDerBetonqualität": "Hängt von der Betonqualität (w/z-Wert) und der Umgebung (Feuchte) ab. Trockene Innenräume (XC1): K ≈ 3-5. Außenbauteile (XC4): K ≈ 1-2.",
     "prüfdauerT": "Prüfdauer (t)",
     "co2KonzentrationKammer": "CO2-Konzentration (Kammer)",
-    "erhöhteCo2KonzentrationIm": "Erhöhte CO2-Konzentration im Prüfschrank zur Beschleunigung. Üblich: 1% bis 3%.",
+    "erhöhteCo2KonzentrationIm": "Erhöhte CO2-Konzentration im Prüfschrank zur Beschleunigung. DIN EN 12390-12: 3,0 Vol.-% (Toleranz ± 0,5 Vol.-%) bei 20 °C und 57 % r. F.",
     "natürlicheCo2Konzentration": "Natürliche CO2-Konzentration",
     "imLaborbeschleunigtenSchnellprüfverfahre": "Im laborbeschleunigten Schnellprüfverfahren (erhöhte CO2-Konzentration) ermittelte Karbonatisierungsgeschwindigkeit.",
     "karbonatisierungsgeschwindigkeitKSchnell": "Karbonatisierungsgeschwindigkeit (K_schnell)",

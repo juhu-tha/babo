@@ -173,6 +173,12 @@ export interface SchnellUmrechnung {
   hinweise: Hinweis[];
 }
 
+/**
+ * CO₂-Konzentration der Prüfkammer im Schnellverfahren nach DIN EN 12390-12:2020 in Vol.-% (Referenzbedingung
+ * 3,0 Vol.-% bei 20 °C und 57 % r. F.; wie src/calc/schnellkarbonatisierung.ts). Vorher im Modul: 2,0 Vol.-%.
+ */
+export const CO2_KAMMER_EN12390_12 = 3.0;
+
 /** Schnellkarbonatisierung: K_nat = K_acc · √(c_nat/c_acc) · √365 und Kurven für 0 … tageMax Tage */
 export function schnellUmrechnung(kAcc: number, cAcc: number, cNat: number, tageMax = 90): SchnellUmrechnung {
   const hinweise: Hinweis[] = [];
@@ -181,6 +187,7 @@ export function schnellUmrechnung(kAcc: number, cAcc: number, cNat: number, tage
   const tage = Array.from({ length: tageMax + 1 }, (_, i) => i);
   if (hatFehler(hinweise)) return { kNat: NaN, tiefenSchnell: tage.map(() => NaN), tiefenNat: tage.map(() => NaN), gueltig: false, hinweise };
   if (cNat >= cAcc) hinweise.push({ stufe: 'warnung', feld: 'cNat', text: 'Die natürliche CO₂-Konzentration ist nicht kleiner als die Prüfkonzentration – die Umrechnung ist dann keine Schnellprüfung mehr.' });
+  if (Math.abs(cAcc - CO2_KAMMER_EN12390_12) > 0.5) hinweise.push({ stufe: 'warnung', feld: 'cAcc', text: 'DIN EN 12390-12 prüft bei (3,0 ± 0,5) Vol.-% CO₂; bei anderen Kammerkonzentrationen ist die Übertragbarkeit eingeschränkt.' });
   const kNat = kAcc * umrechnungsfaktor(cAcc, cNat);
   return {
     kNat,

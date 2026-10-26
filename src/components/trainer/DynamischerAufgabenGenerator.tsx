@@ -153,7 +153,8 @@ const GENERATOR_TASKS: GeneratorTask[] = [
       const phi = Number((Math.random() * 0.8 + 2.1).toFixed(2)); // 2.10 to 2.90
 
       const eps_el = sigma_c / Ecm; // elastische Dehnung (-)
-      const eps_cr = eps_el * phi; // Kriechdehnung (-)
+      // Kriechdehnung nach DIN EN 1992-1-1, 3.1.4(3): φ bezieht sich auf E_c = 1,05 · E_cm
+      const eps_cr = phi * sigma_c / (1.05 * Ecm); // Kriechdehnung (-)
       const eps_cr_promille = eps_cr * 1000; // in Promille (‰)
 
       return {
@@ -164,10 +165,14 @@ const GENERATOR_TASKS: GeneratorTask[] = [
         tolerancePercent: 3,
         hints: [
           'Elastische Anfangsdehnung: ε_el = σ_c / E_cm',
-          'Kriechdehnung: ε_cr = ε_el · φ(t, t₀)',
+          'Kriechdehnung: ε_cr = φ(t, t₀) · σ_c / E_c mit E_c = 1,05 · E_cm (DIN EN 1992-1-1, 3.1.4(3))',
           'Um von der dimensionslosen Dehnung auf Promille (‰) zu kommen, multiplizieren Sie mit 1.000.'
         ],
         commonMistakes: [
+          {
+            check: (val) => Math.abs(val - eps_el * phi * 1000) < 0.005,
+            message: 'Sie haben die Kriechzahl auf E_cm bezogen. Nach DIN EN 1992-1-1, 3.1.4(3), gilt φ für den Tangentenmodul E_c = 1,05 · E_cm – teilen Sie zusätzlich durch 1,05.'
+          },
           {
             check: (val) => Math.abs(val - (eps_el + eps_cr) * 1000) < 0.05,
             message: 'Sie haben die Gesamtdehnung (ε_el + ε_cr) berechnet. Gefragt war jedoch ausschließlich die zeitabhängige Kriechdehnung ε_cr!'
@@ -185,8 +190,8 @@ const GENERATOR_TASKS: GeneratorTask[] = [
           },
           {
             step: '2. Zeitabhängige Kriechdehnung ε_cr',
-            math: `\\varepsilon_{\\text{cr}} = \\varepsilon_{\\text{el}} \\cdot \\varphi = ${formatDeTeX((eps_el * 1000), 4)}\\,\\char8240 \\cdot ${formatDeTeXWert(phi)} = \\mathbf{${formatDeTeX(eps_cr_promille, 3)}}\\,\\char8240`,
-            explanation: 'Multiplikation der elastischen Dehnung mit der Kriechzahl. DIN EN 1992-1-1, 3.1.4(3), bezieht auf E_c = 1,05 · E_cm; hier vereinfachend E_cm (Lehrannahme).'
+            math: `\\varepsilon_{\\text{cr}} = \\varphi \\cdot \\frac{\\sigma_c}{1{,}05 \\cdot E_{\\text{cm}}} = \\frac{${formatDeTeXWert(phi)} \\cdot ${formatDeTeX((eps_el * 1000), 4)}\\,\\char8240}{1{,}05} = \\mathbf{${formatDeTeX(eps_cr_promille, 3)}}\\,\\char8240`,
+            explanation: 'Kriechzahl mal elastischer Dehnung, bezogen auf den Tangentenmodul E_c = 1,05 · E_cm nach DIN EN 1992-1-1, 3.1.4(3).'
           }
         ]
       };

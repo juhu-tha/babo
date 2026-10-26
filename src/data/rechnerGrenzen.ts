@@ -258,6 +258,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Zwang & Risse (massige Bauteile): Temperaturkurve als Lehransatz, Zwang α_T·ΔT·E_c(t)·R nur in der Abkühlphase.",
       "Mindestbewehrung im Praxisbeispiel mit k_c = 1,0, k = 0,8, f_ct,eff = 2,5 N/mm² und σ_s = 240 N/mm² als feste Lehrwerte.",
       "Reife: wirksames Alter aus der Kerntemperatur in Schritten von 0,1 d; f_ck wird aus der Zementfestigkeitsklasse angesetzt, β_cc ist auf 1,25 begrenzt.",
+      "Zementbeiwert s nach EC2 3.1.2(6) (R = 0,20, N = 0,25, S = 0,38); L-Zemente sind dort nicht geregelt und werden nach der Anfangsfestigkeit (DIN EN 197-1) als S bzw. 52,5 L als N eingeordnet.",
       "Wärme mit hyperbolischem Ansatz Q = H_max·t_e/(t_e + t₅₀) und Lehrwerten je Zementart; Zusatzstoffe über lineare Zu- und Abschläge.",
       "Bauteile unter 0,30 m: Die pauschale Wärmeabfuhr gleicht die Temperatur je Zeitschritt vollständig an die Umgebung an.",
       "Reißrahmen: qualitatives Lehrmodell mit festen Kurvenparametern; kein Ersatz für Versuche nach RILEM TC 119-TCE.",
@@ -395,8 +396,8 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   lebenszyklus_kosten: {
     kurz: "Barwertvergleich der Lebenszykluskosten zweier Optionen (Barwertmethode wie BNB 2.1.1) mit Energie- und allgemeiner Preissteigerung, CO₂-Schattenpreis und Förderung.",
     grenzen: [
-      "Fester Zinssatz und konstante Preissteigerungen; Steigerung schon ab Jahr 1 (BNB 2.1.1: ab Jahr 2).",
-      "Kein Restwert für Bauteile, deren Lebensdauer über das Betrachtungsende hinausreicht.",
+      "Fester Zinssatz und konstante Preissteigerungen; Steigerung ab dem 2. Jahr wie BNB 2.1.1 (auch für den CO₂-Preis).",
+      "Restwert linear (Del. VO (EU) 244/2012, Anhang I Nr. 4.2 (5)) nur für das zuletzt eingebaute Bauteil je Option, ohne CO₂-Gutschrift; BNB 2.1.1 selbst enthält keinen Restwertansatz.",
       "Förderung nur für Option B als Abzug von der Investition.",
       "Instandhaltung und Ersatz in festen Intervallen, nicht im letzten Jahr; Ersatz bepreist die Herstellungsemissionen erneut.",
       "Kostenkennwerte der Szenarien sind Lehrannahmen; keine Wirtschaftlichkeitsberechnung nach DIN 18960 oder ISO 15686-5.",

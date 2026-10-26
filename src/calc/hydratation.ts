@@ -3,7 +3,9 @@
  * Übernimmt die Rechnungen aus src/modules/Hydratation.tsx, src/modules/HydratationPruefverfahren.tsx und
  * src/modules/Nachbehandlung.tsx (Verhalten 1:1, Abweichungen unten benannt):
  *  1. Reifefunktionen k_T(T): Arrhenius exp[E_a/R·(1/T_r − 1/T)], fib Model Code 2010 (Q = 4000 K, auf 20 °C bezogen),
- *     Saul (T + 10)/30, „DIN 1045-3 (Rastrup)“ 2^((T − 20)/10), de Vree 10^(0,03·(T − 20)); unter −10 °C k_T = 0.
+ *     Saul (T + 10)/30, Rastrup 2^((T − 20)/10) (Rastrup, E.: Heat of hydration in concrete. Magazine of Concrete
+ *     Research 6 (1954) 17, S. 79–92; vorher irreführend als „DIN 1045-3 (Rastrup)“ bezeichnet – DIN 1045-3 enthält
+ *     keine Reifefunktion), de Vree 10^(0,03·(T − 20)); unter −10 °C k_T = 0.
  *     Wirksames Alter t_e = Σ k_T(T_Kern)·Δt mit Δt = 0,1 d (explizit, Kerntemperatur des vorigen Schritts).
  *  2. Festigkeitsentwicklung nach DIN EN 1992-1-1, 3.1.2 und 3.1.3: β_cc(t_e) = exp[s·(1 − √(28/t_e))] (Gl. 3.2,
  *     im Modul auf 1,25 begrenzt), f_cm(t) = β_cc·f_cm, f_ctm(t) = β_cc^α·f_ctm (Gl. 3.4, α = 1 für t_e < 28 d, sonst 2/3),
@@ -29,8 +31,8 @@ import { DIN1045_3_NACHBEHANDLUNG } from '../data/normParams';
 // 1. Reifefunktionen
 // ---------------------------------------------------------------------------------------------
 
-export type Reifeverfahren = 'Arrhenius' | 'fib Model Code 2010' | 'Saul' | 'DIN 1045-3 (Rastrup)' | 'de Vree';
-export const REIFEVERFAHREN: readonly Reifeverfahren[] = ['Arrhenius', 'fib Model Code 2010', 'Saul', 'DIN 1045-3 (Rastrup)', 'de Vree'];
+export type Reifeverfahren = 'Arrhenius' | 'fib Model Code 2010' | 'Saul' | 'Rastrup (1954)' | 'de Vree';
+export const REIFEVERFAHREN: readonly Reifeverfahren[] = ['Arrhenius', 'fib Model Code 2010', 'Saul', 'Rastrup (1954)', 'de Vree'];
 
 /** Allgemeine Gaskonstante R in J/(mol·K) */
 export const GASKONSTANTE = 8.31446;
@@ -48,7 +50,7 @@ export function temperaturfaktorReife(verfahren: Reifeverfahren, temperatur: num
   const tK = temperatur + 273.15;
   switch (verfahren) {
     case 'Saul': return (temperatur + 10) / 30.0;
-    case 'DIN 1045-3 (Rastrup)': return Math.pow(2, (temperatur - 20) / 10.0);
+    case 'Rastrup (1954)': return Math.pow(2, (temperatur - 20) / 10.0);
     case 'de Vree': return Math.pow(10, 0.3 * (temperatur - 20) / 10.0);
     case 'fib Model Code 2010': return Math.exp(4000 * (1 / T_REF_K - 1 / tK));
     case 'Arrhenius':
@@ -74,19 +76,24 @@ export type Zusatzstoff = 'Ohne' | 'FA' | 'SF';
 export const BETA_CC_MAX = 1.25;
 
 /**
- * Zementbeiwert s aus Festigkeitsklasse und Erhärtungsgeschwindigkeit wie im Modul:
- * 32,5 N → 0,38 (Klasse S), 32,5 R und 42,5 N → 0,25 (N), 42,5 R und 52,5 → 0,20 (R);
- * L: Grundwert 0,25 (32,5 L, 42,5 L) bzw. 0,20 (52,5 L), jeweils + 0,05.
+ * Zuordnung Zement → Zementklasse für den Beiwert s nach DIN EN 1992-1-1, 3.1.2(6):
+ * Klasse R (s = 0,20): CEM 42,5 R, 52,5 N, 52,5 R; Klasse N (s = 0,25): CEM 32,5 R, 42,5 N; Klasse S (s = 0,38): CEM 32,5 N.
+ * Zemente mit niedriger Anfangsfestigkeit (L, nach DIN EN 197-1 nur CEM III) nennt EC2 nicht; sie werden nach den
+ * Anfangsfestigkeiten der DIN EN 197-1, Tab. 3, eingeordnet (vorläufig, F-Freigabe):
+ * 32,5 L (7 d ≥ 12 N/mm²) und 42,5 L (7 d ≥ 16 N/mm², wie 32,5 N) → S; 52,5 L (2 d ≥ 10 N/mm², wie 42,5 N) → N.
+ * Damit erhärtet L nie schneller als N derselben Festigkeitsklasse.
+ * Vorher: L = Grundwert + 0,05 (32,5 L und 42,5 L 0,30, 52,5 L 0,25) – 32,5 L wäre schneller als 32,5 N (0,38) gewesen.
  */
+export const ZEMENTKLASSE_EC2: Readonly<Record<ZementFestigkeitsklasse, Readonly<Record<Erhaertung, 'S' | 'N' | 'R'>>>> = {
+  '32.5': { L: 'S', N: 'S', R: 'N' },
+  '42.5': { L: 'S', N: 'N', R: 'R' },
+  '52.5': { L: 'N', N: 'R', R: 'R' },
+};
+
+/** Zementbeiwert s nach DIN EN 1992-1-1, 3.1.2(6) (Zuordnung siehe ZEMENTKLASSE_EC2) */
 export function zementbeiwertS(klasse: ZementFestigkeitsklasse, erhaertung: Erhaertung): number {
-  let s = ZEMENT_S.N;
-  if (klasse === '32.5' && erhaertung === 'N') s = ZEMENT_S.S;
-  else if (klasse === '32.5' && erhaertung === 'R') s = ZEMENT_S.N;
-  else if (klasse === '42.5' && erhaertung === 'N') s = ZEMENT_S.N;
-  else if (klasse === '42.5' && erhaertung === 'R') s = ZEMENT_S.R;
-  else if (klasse === '52.5') s = ZEMENT_S.R;
-  if (erhaertung === 'L') s += 0.05;
-  return s;
+  const k = ZEMENTKLASSE_EC2[klasse]?.[erhaertung] ?? 'N';
+  return ZEMENT_S[k];
 }
 
 /** β_cc(t_e) nach Gl. (3.2), auf 1,25 begrenzt; für t_e ≤ 0 gilt β_cc = 0 */

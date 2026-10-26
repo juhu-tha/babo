@@ -10,6 +10,7 @@ import {
 } from '../src/calc/werkstoffmodelle';
 import { plastischeKapazitaet, WALZPROFILE } from '../src/calc/stahlbau';
 import { ecmEc2 } from '../src/calc/emodul';
+import { BAUSTAHL_EC3 } from '../src/data/kennwerte';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -30,13 +31,15 @@ const k550 = abminderungStahlBrand(550);
 pruefe(nahe(k550.ky, 0.625, 1e-12) && nahe(k550.kE, 0.455, 1e-12), 'Interpolation 550 °C');
 pruefe(abminderungStahlBrand(-30).ky === 1 && abminderungStahlBrand(1500).kE === 0, 'Randwerte θ ≤ 20 / ≥ 1200 °C');
 // vereinfachte Linie: S355 bei 20 °C und 600 °C
-const b600 = stahlBrand({ fy: 355, fu: 470, theta: 600 });
+// Runde 4 (bewusst geändert): f_u = 490 N/mm² nach EN 1993-1-1 Tab. 3.1 (t ≤ 40 mm) aus src/data/kennwerte.ts, vorher 470.
+const FU355 = BAUSTAHL_EC3.S355.fu;
+const b600 = stahlBrand({ fy: 355, fu: FU355, theta: 600 });
 pruefe(b600.gueltig && b600.kurve.length === 41 && nahe(b600.kurve[40].eps, 0.2, 1e-12), 'Kurve 0 … 0,20 mit 41 Punkten');
-pruefe(nahe(b600.kurve[40].sig20, 470, 1e-12) && nahe(b600.kurve[40].sigT, 470 * 0.47, 1e-12), 'f_u bzw. k_y·f_u bei ε = 0,20');
+pruefe(nahe(b600.kurve[40].sig20, 490, 1e-12) && nahe(b600.kurve[40].sigT, 490 * 0.47, 1e-12), 'f_u bzw. k_y·f_u bei ε = 0,20');
 pruefe(nahe(b600.fyT, 355 * 0.47, 1e-12) && nahe(b600.ET, 210000 * 0.31, 1e-12), 'f_y,θ und E_θ');
-pruefe(stahlLinieVereinfacht(0.001, 355, 470, 210000) === 210 && stahlLinieVereinfacht(0.01, 355, 470, 210000) === 355, 'elastisch / Plateau');
-pruefe(stahlBrand({ fy: 355, fu: 470, theta: 1200 }).kurve.every(p => p.sigT === 0), '1200 °C: keine Festigkeit, kein NaN');
-pruefe(!stahlBrand({ fy: 0, fu: 470, theta: 20 }).gueltig && !stahlBrand({ fy: 355, fu: 300, theta: 20 }).gueltig && !stahlBrand({ fy: 355, fu: 470, theta: NaN }).gueltig, 'Brand: unzulässige Eingaben');
+pruefe(stahlLinieVereinfacht(0.001, 355, FU355, 210000) === 210 && stahlLinieVereinfacht(0.01, 355, FU355, 210000) === 355, 'elastisch / Plateau');
+pruefe(stahlBrand({ fy: 355, fu: FU355, theta: 1200 }).kurve.every(p => p.sigT === 0), '1200 °C: keine Festigkeit, kein NaN');
+pruefe(!stahlBrand({ fy: 0, fu: FU355, theta: 20 }).gueltig && !stahlBrand({ fy: 355, fu: 300, theta: 20 }).gueltig && !stahlBrand({ fy: 355, fu: FU355, theta: NaN }).gueltig, 'Brand: unzulässige Eingaben');
 
 // 2. Ermüdung – DIN EN 1993-1-9, 7.1
 //    IDEA StatiCa Support Center „Fatigue analysis according to EN 1993-1-9“: Δσ_C = 90/1,15 = 78,3 MPa →

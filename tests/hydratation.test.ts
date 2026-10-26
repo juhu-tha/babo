@@ -17,7 +17,7 @@ console.log('--- Test: Hydratation ---');
 // 1. Reifefunktionen (Handrechnung)
 //    Rastrup: 2^((30 − 20)/10) = 2,0; Saul: (20 + 10)/30 = 1,0, (−10 + 10)/30 = 0; Arrhenius E_a = 40 kJ/mol, 30 °C:
 //    exp[40 000/8,31446 · (1/293,15 − 1/303,15)] = exp(0,5414) = 1,718.
-pruefe(nahe(temperaturfaktorReife('DIN 1045-3 (Rastrup)', 30), 2.0, 1e-12), 'Rastrup 30 °C = 2');
+pruefe(nahe(temperaturfaktorReife('Rastrup (1954)', 30), 2.0, 1e-12), 'Rastrup 30 °C = 2');
 pruefe(nahe(temperaturfaktorReife('Saul', 20), 1.0, 1e-12) && temperaturfaktorReife('Saul', -10) === 0, 'Saul 20 °C = 1, −10 °C = 0');
 pruefe(temperaturfaktorReife('Arrhenius', -10.5, 40) === 0 && temperaturfaktorReife('de Vree', -11) === 0, 'unter −10 °C kein Erhärten');
 pruefe(nahe(temperaturfaktorReife('Arrhenius', 30, 40), 1.718, 0.02), `Arrhenius 30 °C ${temperaturfaktorReife('Arrhenius', 30, 40)}`);
@@ -25,7 +25,7 @@ for (const v of REIFEVERFAHREN) pruefe(nahe(temperaturfaktorReife(v, 20, 38), 1.
 //    fib Model Code 2010, Gl. (5.1-85): t_T = Δt·exp[13,65 − 4000/(273 + T)] (= temperaturFaktor in betonkennwerte.ts);
 //    der Modulansatz ist auf 20 °C bezogen und weicht davon um weniger als 2 % ab.
 for (const T of [0, 10, 30, 50]) pruefe(nahe(temperaturfaktorReife('fib Model Code 2010', T), temperaturFaktor(T), 0.02), `fib MC2010 ${T} °C`);
-pruefe(nahe(wirksamesAlterKonstant('DIN 1045-3 (Rastrup)', 10, 14), 7, 1e-12), 'Rastrup: 14 d bei 10 °C = 7 d wirksames Alter');
+pruefe(nahe(wirksamesAlterKonstant('Rastrup (1954)', 10, 14), 7, 1e-12), 'Rastrup: 14 d bei 10 °C = 7 d wirksames Alter');
 
 // 2. Festigkeitsentwicklung nach DIN EN 1992-1-1, Gl. (3.2): s = 0,25 (Zement N), t = 7 d → β_cc = exp(0,25·(1 − 2)) = 0,7788
 pruefe(nahe(betaCcBegrenzt(0.25, 7), 0.7788, 0.02), 'β_cc(7 d, s = 0,25) = 0,779');
@@ -41,12 +41,19 @@ const k7 = kennwerteZumAlter(0.25, 7, 30);
 pruefe(nahe(k7.fct, 0.7788 * 2.9, 0.005) && nahe(k7.E, Math.pow(0.7788, 0.3) * kennwerte28(30).Ecm, 0.005), 'Kennwerte nach 7 d');
 const k56 = kennwerteZumAlter(0.25, 56, 30);
 pruefe(nahe(k56.fct, Math.pow(k56.beta, 2 / 3) * 2.9, 1e-9), 'f_ctm(56 d) mit α = 2/3');
-//    Zementbeiwert s (Moduldatei)
+//    Zementbeiwert s nach DIN EN 1992-1-1, 3.1.2(6) (öffentlich z. B. Hilti-Technikdatenblatt zu EN 1992-1-1 Gl. 3.1/3.2):
+//    R = 0,20 (42,5 R, 52,5 N, 52,5 R), N = 0,25 (32,5 R, 42,5 N), S = 0,38 (32,5 N).
+//    Runde 4 (bewusst geändert): L-Zemente nach Anfangsfestigkeit DIN EN 197-1 Tab. 3 eingeordnet (vorläufig, F-Freigabe):
+//    32,5 L → S, 42,5 L → S, 52,5 L → N. Früher 0,30 / 0,30 / 0,25 (L „Grundwert + 0,05“, 32,5 L schneller als 32,5 N).
 const sSoll: [ZementFestigkeitsklasse, Erhaertung, number][] = [
   ['32.5', 'N', 0.38], ['32.5', 'R', 0.25], ['42.5', 'N', 0.25], ['42.5', 'R', 0.20], ['52.5', 'N', 0.20], ['52.5', 'R', 0.20],
-  ['32.5', 'L', 0.30], ['42.5', 'L', 0.30], ['52.5', 'L', 0.25],
+  ['32.5', 'L', 0.38], ['42.5', 'L', 0.38], ['52.5', 'L', 0.25],
 ];
 for (const [k, e, soll] of sSoll) pruefe(nahe(zementbeiwertS(k, e), soll, 1e-12), `s(${k} ${e}) = ${soll}`);
+// L erhärtet nie schneller als N, N nie schneller als R (größeres s = langsamer)
+for (const k of ['32.5', '42.5', '52.5'] as ZementFestigkeitsklasse[]) {
+  pruefe(zementbeiwertS(k, 'L') >= zementbeiwertS(k, 'N') && zementbeiwertS(k, 'N') >= zementbeiwertS(k, 'R'), `s(${k}): L ≥ N ≥ R`);
+}
 
 // 3. Wärme: CEM I 42,5 N, z = 350 kg/m³: H_max = 380 J/g; volle adiabatische Erwärmung 350 · 380/2400 = 55,4 K (Handrechnung)
 pruefe(nahe(adiabatischeErwaermung(350, 380), 55.42, 0.005), 'ΔT_ad = 55,4 K');
@@ -88,7 +95,7 @@ function referenzModul(e: HydratationEingabe) {
 const varianten: Partial<HydratationEingabe>[] = [
   {}, { bauteildicke: 2.0 }, { zementArt: 'CEM III', erhaertung: 'L' }, { reifeVerfahren: 'Saul', tempUmgebung: 5, tempFrischbeton: 10 },
   { reifeVerfahren: 'de Vree', zusatzstoff: 'FA', zusatzstoffMenge: 100 }, { reifeVerfahren: 'fib Model Code 2010', zusatzstoff: 'SF', zusatzstoffMenge: 30 },
-  { reifeVerfahren: 'DIN 1045-3 (Rastrup)', ausschalAnteil: 80, festigkeitsklasse: '32.5' },
+  { reifeVerfahren: 'Rastrup (1954)', ausschalAnteil: 80, festigkeitsklasse: '32.5' },
 ];
 for (const v of varianten) {
   const e = { ...basis, ...v };

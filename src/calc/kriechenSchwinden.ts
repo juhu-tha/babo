@@ -10,7 +10,7 @@
  *  - Trocknungsschwinden ε_cd(t) = β_ds(t,t_s)·k_h·ε_cd,0 (Gl. 3.9, 3.10, Tab. 3.3), ε_cd,0 nach Gl. (B.11), β_RH nach Gl. (B.12)
  *  - Autogenes Schwinden ε_ca(t) = β_as(t)·ε_ca(∞) mit ε_ca(∞) = 2,5·(f_ck − 10)·10⁻⁶ (Gl. 3.11–3.13)
  *  - Gesamtschwinden ε_cs = ε_cd + ε_ca (Gl. 3.8); wirksamer E-Modul E_c,eff = E_cm/(1 + φ) (Gl. 7.20)
- *  - Stützenverformung ε_tot = σ_c/E_cm·(1 + φ) + ε_cs (Lehrbeispiel im Reiter „Rheologie“)
+ *  - Stützenverformung ε_tot = σ_c/E_cm + φ·σ_c/E_c + ε_cs mit E_c = 1,05·E_cm (3.1.4(3), Gl. 3.6; Lehrbeispiel im Reiter „Rheologie“)
  * Teil B – Relaxation von Spannstahl nach DIN EN 1992-1-1, 3.3.2 (Gl. 3.28–3.30), Zeit in Stunden.
  * Teil C – Rheologische Grundmodelle (Hooke, Maxwell, Kelvin-Voigt, Zener) als qualitative Lehrkurven.
  *
@@ -268,14 +268,23 @@ export interface StuetzenZustand {
 export const STUETZE_LEHRWERTE = { sigmaC: 8.5, laengeMm: 3000 } as const;
 
 /**
- * Verformung einer Stütze unter Dauerlast zum Zeitpunkt t (d): ε_tot = σ_c/E_cm·[1 + φ(t,t₀)] + ε_cs(t).
+ * Faktor zwischen Tangentenmodul E_c und mittlerem Sekantenmodul E_cm: E_c = 1,05·E_cm.
+ * DIN EN 1992-1-1, 3.1.4(3): Die Kriechzahl φ bezieht sich auf E_c; die Kriechdehnung ist
+ * ε_cc(t,t₀) = φ(t,t₀)·σ_c/E_c (Gl. 3.6).
+ */
+export const EC_TANGENTENFAKTOR = 1.05;
+
+/**
+ * Verformung einer Stütze unter Dauerlast zum Zeitpunkt t (d):
+ * ε_tot = σ_c/E_cm + φ(t,t₀)·σ_c/(1,05·E_cm) + ε_cs(t).
+ * Elastischer Anteil mit E_cm (Sekantenmodul), Kriechanteil nach 3.1.4(3) mit E_c = 1,05·E_cm.
  * Für t ≤ t₀ wird φ(t₀ + 0,01 d) angesetzt (wie im Modul: Lastbeginn als „gerade belastet“).
  */
 export function stuetzenVerformung(m: KriechSchwindModell, t: number, sigmaC: number = STUETZE_LEHRWERTE.sigmaC, laengeMm: number = STUETZE_LEHRWERTE.laengeMm): StuetzenZustand {
   const phiT = kriechzahl(m, Math.max(t, m.eingabe.t0 + 0.01));
   const epsCs = gesamtschwinden(m, t);
   const epsEl = sigmaC / m.Ecm;
-  const epsCr = phiT * epsEl;
+  const epsCr = phiT * sigmaC / (EC_TANGENTENFAKTOR * m.Ecm);
   const epsTot = epsEl + epsCr + epsCs;
   return { phiT, epsEl, epsCr, epsCs, epsTot, dL_el: epsEl * laengeMm, dL_cr: epsCr * laengeMm, dL_cs: epsCs * laengeMm, dL_tot: epsTot * laengeMm };
 }

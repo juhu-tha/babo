@@ -86,7 +86,7 @@
     "modulRMpa": "Modul R (MPa)",
     "anwendungsbeispielEndkriechzahlUndEndsch": "Anwendungsbeispiel: Endkriechzahl und Endschwindmaß einer Innenwand C30/37",
     "dinEn19921": "DIN EN 1992-1-1, 3.1.4 und Anhang B",
-    "eineStützeUnterC": "Eine Stütze unter σ_c = 8,5 N/mm² verkürzt sich damit langfristig um etwa ε_el · (1 + φ) + ε_cs ≈ 0,26 · 3,37 + 0,46 ≈ 1,3 ‰ – rund das Fünffache der elastischen Stauchung.",
+    "eineStützeUnterC": "Eine Stütze unter σ_c = 8,5 N/mm² verkürzt sich damit langfristig um etwa ε_el · (1 + φ/1,05) + ε_cs ≈ 0,26 · 3,26 + 0,46 ≈ 1,3 ‰ (Kriechanteil nach DIN EN 1992-1-1, 3.1.4(3) mit E_c = 1,05 · E_cm) – rund das Fünffache der elastischen Stauchung.",
     "betonWikiKriechen": "Beton.wiki: Kriechen",
     "zementMerkblätterÜbersicht": "Zement-Merkblätter Übersicht",
     "betonWikiSchwinden": "Beton.wiki: Schwinden",
@@ -201,8 +201,8 @@
     ],
     "renderRheologieSimulator.formeln": [
       {
-        "formel": "\\varepsilon_{\\text{tot}}(t) = \\frac{\\sigma_c}{E_{\\text{cm}}} \\cdot [1 + \\varphi(t, t_0)] + \\varepsilon_{\\text{cs}}(t)",
-        "erklaerung": "Gesamtdehnung eines druckbeanspruchten Bauteils aus elastischer Dehnung, Kriechen und Schwinden (vereinfachend mit E_cm statt E_c = 1,05 E_cm).",
+        "formel": "\\varepsilon_{\\text{tot}}(t) = \\frac{\\sigma_c}{E_{\\text{cm}}} + \\varphi(t, t_0) \\cdot \\frac{\\sigma_c}{1{,}05 \\cdot E_{\\text{cm}}} + \\varepsilon_{\\text{cs}}(t)",
+        "erklaerung": "Gesamtdehnung eines druckbeanspruchten Bauteils aus elastischer Dehnung (mit E_cm), Kriechen (Kriechzahl bezogen auf den Tangentenmodul E_c = 1,05 E_cm nach 3.1.4(3)) und Schwinden.",
         "quelle": "DIN EN 1992-1-1 Abs. 3.1.4"
       }
     ]

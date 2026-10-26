@@ -387,7 +387,7 @@ export default function LCC() {
                 <span className="font-bold text-[10px] text-slate-700 block mb-1 uppercase font-mono"><MdText text={inhalt.texte.diskontierungNpv} /></span>
                 <p className="text-[11px] text-slate-600 leading-normal"><MdText text={inhalt.texte.kostenInNutzungsjahrT} /></p>
                 <div className="py-2 flex justify-center text-xs">
-                  <InlineMath math="F_{diskont} = \frac{(1+Inflation)^t}{(1+r)^t}" />
+                  <InlineMath math="F_{diskont} = \frac{(1+Inflation)^{t-1}}{(1+r)^t}" />
                 </div>
                 <span className="text-[9px] text-slate-400 block leading-tight"><MdText text={inhalt.texte.daRInDer} /></span>
               </div>
@@ -427,7 +427,7 @@ export default function LCC() {
               <FormulaDerivationBox
                 live
                 title={`Ihr Rechenweg: Barwertvergleich über ${formatDeZahl(analysisPeriod, 0)} Jahre`}
-                zielGleichung="LCC = C_0 + \sum_{t=1}^{N} \frac{C_t}{(1+r)^t} + \frac{C_{\text{EOL}}}{(1+r)^N}"
+                zielGleichung="LCC = C_0 + \sum_{t=1}^{N} \frac{C_t}{(1+r)^t} + \frac{C_{\text{EOL}} - R_N}{(1+r)^N}"
                 schritte={[
                   {
                     titel: inhalt.werte.ihreFinanzparameter,
@@ -436,13 +436,13 @@ export default function LCC() {
                   },
                   {
                     titel: inhalt.werte.betriebskostenOptionAAbzinsen,
-                    erklaerung: `Die jährlichen Betriebskosten von ${formatDeZahl(activeScenario.optionA.opex0, 0)} € steigen mit e und werden mit r auf heute abgezinst:`,
-                    formel: `\\sum_{t=1}^{${formatDeTeX(analysisPeriod, 0)}} \\frac{${formatDeTeX(activeScenario.optionA.opex0, 0)} \\cdot ${formatDeTeXWert(1 + energyInflation / 100)}^t}{${formatDeTeXWert(1 + discountRate / 100)}^t} = ${formatDeTeX(calcData.resultA.cumulativeOpExDiscounted, 0)}\\,\\text{EUR}`
+                    erklaerung: `Die jährlichen Betriebskosten von ${formatDeZahl(activeScenario.optionA.opex0, 0)} € steigen ab dem 2. Jahr mit e (BNB 2.1.1) und werden mit r auf heute abgezinst:`,
+                    formel: `\\sum_{t=1}^{${formatDeTeX(analysisPeriod, 0)}} \\frac{${formatDeTeX(activeScenario.optionA.opex0, 0)} \\cdot ${formatDeTeXWert(1 + energyInflation / 100)}^{t-1}}{${formatDeTeXWert(1 + discountRate / 100)}^t} = ${formatDeTeX(calcData.resultA.cumulativeOpExDiscounted, 0)}\\,\\text{EUR}`
                   },
                   {
                     titel: inhalt.werte.barwertOptionA,
-                    erklaerung: `Investition + CO₂ (Herstellung) + Betrieb + Wartung + Ersatz + CO₂ (Nutzung) + Rückbau, jeweils als Barwert${co2PricingEnabled ? '' : inhalt.werte.coPreisInaktiv}:`,
-                    formel: `LCC_A = ${texSumme([calcData.resultA.capex, calcData.resultA.initialCO2Cost, calcData.resultA.cumulativeOpExDiscounted, calcData.resultA.cumulativeMaintenanceDiscounted, calcData.resultA.cumulativeReplacementDiscounted, calcData.resultA.cumulativeCO2Discounted, calcData.resultA.eolDiscounted])} = ${formatDeTeX(calcData.resultA.totalLCCDiscounted, 0)}\\,\\text{EUR}`
+                    erklaerung: `Investition + CO₂ (Herstellung) + Betrieb + Wartung + Ersatz + CO₂ (Nutzung) + Rückbau − Restwert, jeweils als Barwert${co2PricingEnabled ? '' : inhalt.werte.coPreisInaktiv}:`,
+                    formel: `LCC_A = ${texSumme([calcData.resultA.capex, calcData.resultA.initialCO2Cost, calcData.resultA.cumulativeOpExDiscounted, calcData.resultA.cumulativeMaintenanceDiscounted, calcData.resultA.cumulativeReplacementDiscounted, calcData.resultA.cumulativeCO2Discounted, calcData.resultA.eolDiscounted, -calcData.resultA.restwertDiscounted])} = ${formatDeTeX(calcData.resultA.totalLCCDiscounted, 0)}\\,\\text{EUR}`
                   },
                   {
                     titel: inhalt.werte.investitionOptionB,
@@ -456,7 +456,7 @@ export default function LCC() {
                   {
                     titel: inhalt.werte.barwertOptionB,
                     erklaerung: inhalt.werte.gleicheGliederungWieBei,
-                    formel: `LCC_B = ${texSumme([calcData.resultB.capex, calcData.resultB.initialCO2Cost, calcData.resultB.cumulativeOpExDiscounted, calcData.resultB.cumulativeMaintenanceDiscounted, calcData.resultB.cumulativeReplacementDiscounted, calcData.resultB.cumulativeCO2Discounted, calcData.resultB.eolDiscounted])} = ${formatDeTeX(calcData.resultB.totalLCCDiscounted, 0)}\\,\\text{EUR}`
+                    formel: `LCC_B = ${texSumme([calcData.resultB.capex, calcData.resultB.initialCO2Cost, calcData.resultB.cumulativeOpExDiscounted, calcData.resultB.cumulativeMaintenanceDiscounted, calcData.resultB.cumulativeReplacementDiscounted, calcData.resultB.cumulativeCO2Discounted, calcData.resultB.eolDiscounted, -calcData.resultB.restwertDiscounted])} = ${formatDeTeX(calcData.resultB.totalLCCDiscounted, 0)}\\,\\text{EUR}`
                   },
                   {
                     titel: inhalt.werte.differenzDerBarwerte,
@@ -684,6 +684,15 @@ export default function LCC() {
                           <td className="p-3 text-right font-bold font-mono bg-indigo-50/30 text-emerald-900">{(calcData.resultB.initialCO2Cost + calcData.resultB.cumulativeCO2Discounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
                         </tr>
                       )}
+                      {(calcData.resultA.restwertNominal > 0 || calcData.resultB.restwertNominal > 0) && (
+                        <tr>
+                          <td className="p-3 font-medium"><MdText text={inhalt.texte.t7RestwertLinear} /></td>
+                          <td className="p-3 text-right text-slate-500">- {(calcData.resultA.restwertNominal).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
+                          <td className="p-3 text-right font-bold bg-slate-100/30">- {(calcData.resultA.restwertDiscounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
+                          <td className="p-3 text-right text-slate-500">- {(calcData.resultB.restwertNominal).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
+                          <td className="p-3 text-right font-bold bg-indigo-50/30 text-indigo-950">- {(calcData.resultB.restwertDiscounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
+                        </tr>
+                      )}
                       <tr className="bg-slate-100 font-bold text-slate-900 border-t-2 border-slate-350">
                         <td className="p-3 uppercase tracking-wide text-[10px]"><MdText text={inhalt.texte.lccGesamtsummeBarwert} /></td>
                         <td colSpan={2} className="p-3 text-right text-sm">{(calcData.resultA.totalLCCDiscounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
@@ -748,12 +757,14 @@ export default function LCC() {
             
             <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 font-mono text-xs my-3">
               <span className="font-bold text-slate-900 block mb-1"><MdText text={inhalt.texte.volleMathematischeLccZusammenführung} /></span>
-              <BlockMath math="LCC = C_{CapEx} + \sum_{t=1}^{N} \frac{C_{OpEx, t} \cdot (1+e)^t}{(1+r)^t} + \sum \frac{C_{Maint, t} \cdot (1+i)^t}{(1+r)^t} \pm \frac{C_{End-of-Life}}{(1+r)^N}" />
+              <BlockMath math="LCC = C_{CapEx} + \sum_{t=1}^{N} \frac{C_{OpEx, t} \cdot (1+e)^{t-1}}{(1+r)^t} + \sum \frac{C_{Maint, t} \cdot (1+i)^{t-1}}{(1+r)^t} \pm \frac{C_{End-of-Life}}{(1+r)^N} - \frac{R_N}{(1+r)^N}" />
               <div className="mt-4 text-[10px] text-slate-500 font-sans space-y-1">
                 <p><MdText text={inhalt.texte.cSubCapexSub} /></p>
                 <p><MdText text={inhalt.texte.cSubOpexT} /></p>
                 <p><MdText text={inhalt.texte.cSubMaintT} /></p>
                 <p><MdText text={inhalt.texte.cSubEndOf} /></p>
+                <p><MdText text={inhalt.texte.cSubRestwert} /></p>
+                <p><MdText text={inhalt.texte.preissteigerungAbJahr2} /></p>
                 <p><MdText text={inhalt.texte.rAbzinsungssatzKalkulationszinssatz} /></p>
               </div>
             </div>

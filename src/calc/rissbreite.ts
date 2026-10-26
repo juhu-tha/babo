@@ -3,6 +3,7 @@
  * Rechteckquerschnitt, eine Bewehrungslage, Betonstahl. Reiner Rechenkern – geprüft in tests/rissbreite.test.ts.
  */
 import { EC2_NA_DE } from '../data/normParams';
+import { E_BETONSTAHL } from '../data/kennwerte';
 import { type Hinweis, bereich, hatFehler, istEndlich, muss } from './plausibilitaet';
 
 export interface RissEingabe {
@@ -23,7 +24,7 @@ export interface RissErgebnis {
   hinweise: Hinweis[];
 }
 
-const ES = 200000;
+const ES = E_BETONSTAHL;
 
 /** Druckzonenhöhe im gerissenen Zustand II (reine Biegung, ohne Druckbewehrung) */
 export function xZustandII(alphaE: number, rho: number, d: number): number {
