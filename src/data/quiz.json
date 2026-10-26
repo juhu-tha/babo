@@ -3962,7 +3962,11 @@
       "targetModuleTab": "nachhaltigkeit_daten_regeln",
       "targetModuleLabel": "Daten & Regeln"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ndr_2",
@@ -3998,7 +4002,12 @@
       "targetModuleTab": "nachhaltigkeit_daten_regeln",
       "targetModuleLabel": "Daten & Regeln"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "fraglich",
+      "hinweis": "Eckpunkte BMJV/BMWSB vom 20.11.2025 bestätigt; laut BAK sollte ein Referentenentwurf nach dem Sommer 2026 folgen (Kabinett Ende 2026). Ob er im Oktober 2026 vorliegt, war nicht feststellbar – ggf. richtige Antwort aktualisieren."
+    }
   },
   {
     "id": "q_mo_1",
@@ -4034,7 +4043,11 @@
       "targetModuleTab": "materialoptimierung",
       "targetModuleLabel": "Materialoptimierung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_mo_2",
@@ -4070,7 +4083,11 @@
       "targetModuleTab": "materialoptimierung",
       "targetModuleLabel": "Materialoptimierung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_oe_1",
@@ -4106,7 +4123,11 @@
       "targetModuleTab": "lca_rechner",
       "targetModuleLabel": "LCA-Rechner & QNG-Nachweis"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_oe_2",
@@ -4142,7 +4163,11 @@
       "targetModuleTab": "oekobilanz_lca",
       "targetModuleLabel": "Ökobilanzierung (LCA)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_zs_1",
@@ -4178,7 +4203,11 @@
       "targetModuleTab": "zertifizierung_siegel",
       "targetModuleLabel": "Zertifizierung & Deklarationen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_zs_2",
@@ -4214,7 +4243,11 @@
       "targetModuleTab": "zertifizierung_siegel",
       "targetModuleLabel": "Zertifizierung & Deklarationen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_kw_1",
@@ -4250,7 +4283,11 @@
       "targetModuleTab": "kreislauf_dpp",
       "targetModuleLabel": "Kreislaufwirtschaft"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_kw_2",
@@ -4286,7 +4323,11 @@
       "targetModuleTab": "kreislauf_dpp",
       "targetModuleLabel": "Kreislaufwirtschaft"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ru_1",
@@ -4322,7 +4363,11 @@
       "targetModuleTab": "ressourcen_umwelt",
       "targetModuleLabel": "Ressourcen & Umwelt"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ru_2",
@@ -4358,7 +4403,11 @@
       "targetModuleTab": "ressourcen_umwelt",
       "targetModuleLabel": "Ressourcen & Umwelt"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_lk_1",
@@ -4394,7 +4443,11 @@
       "targetModuleTab": "lebenszyklus_kosten",
       "targetModuleLabel": "Lebenszyklus & Kosten"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_lk_2",
@@ -4430,7 +4483,11 @@
       "targetModuleTab": "lebenszyklus_kosten",
       "targetModuleLabel": "Lebenszyklus & Kosten"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_bst_1",
@@ -4466,7 +4523,11 @@
       "targetModuleTab": "bestand",
       "targetModuleLabel": "Altbauatlas"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_bst_2",
@@ -4502,7 +4563,11 @@
       "targetModuleTab": "bestand",
       "targetModuleLabel": "Altbauatlas"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_bwe_1",
@@ -4538,7 +4603,11 @@
       "targetModuleTab": "bauwerkserfassung",
       "targetModuleLabel": "Bauwerkserfassung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_bwe_2",
@@ -4574,7 +4643,11 @@
       "targetModuleTab": "bauwerkserfassung",
       "targetModuleLabel": "Bauwerkserfassung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_dp_1",
@@ -4610,7 +4683,11 @@
       "targetModuleTab": "denkmalpflege",
       "targetModuleLabel": "Denkmalpflege"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_dp_2",
@@ -4646,7 +4723,11 @@
       "targetModuleTab": "denkmalpflege",
       "targetModuleLabel": "Denkmalpflege"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_mod_1",
@@ -4682,7 +4763,11 @@
       "targetModuleTab": "modernisierung",
       "targetModuleLabel": "Modernisierung & GModG"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_mod_2",
@@ -4718,7 +4803,11 @@
       "targetModuleTab": "modernisierung",
       "targetModuleLabel": "Modernisierung & GModG"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_bwu_1",
@@ -4754,7 +4843,11 @@
       "targetModuleTab": "bauwerksuntersuchung",
       "targetModuleLabel": "Bauwerksdiagnose & ZfP"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_bwu_2",
@@ -4790,7 +4883,11 @@
       "targetModuleTab": "bauwerksuntersuchung",
       "targetModuleLabel": "Bauwerksdiagnose & ZfP"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_hk_1",
@@ -4826,7 +4923,11 @@
       "targetModuleTab": "historisch",
       "targetModuleLabel": "Historische Kennwerte"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_hk_2",
@@ -4862,7 +4963,11 @@
       "targetModuleTab": "historisch",
       "targetModuleLabel": "Historische Kennwerte"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_hb_1",
@@ -4898,7 +5003,11 @@
       "targetModuleTab": "historische_bauweisen",
       "targetModuleLabel": "Hist. Bauweisen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_hb_2",
@@ -4934,7 +5043,11 @@
       "targetModuleTab": "historische_bauweisen",
       "targetModuleLabel": "Hist. Bauweisen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_hp_1",
@@ -4970,7 +5083,11 @@
       "targetModuleTab": "historische_bauprodukte",
       "targetModuleLabel": "Hist. Bauprodukte"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_hp_2",
@@ -5006,7 +5123,11 @@
       "targetModuleTab": "historische_bauprodukte",
       "targetModuleLabel": "Hist. Bauprodukte"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_cl_1",
@@ -5042,7 +5163,11 @@
       "targetModuleTab": "bestand_checklisten",
       "targetModuleLabel": "Checklisten"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_cl_2",
@@ -5078,7 +5203,11 @@
       "targetModuleTab": "bestand_checklisten",
       "targetModuleLabel": "Checklisten"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_rb_1",
@@ -5114,7 +5243,11 @@
       "targetModuleTab": "rueckbau",
       "targetModuleLabel": "Rückbau & Material"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_rb_2",
@@ -5150,7 +5283,11 @@
       "targetModuleTab": "rueckbau",
       "targetModuleLabel": "Rückbau & Material"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_bm_1",
@@ -5186,7 +5323,11 @@
       "targetModuleTab": "boden_materialaufbereitung",
       "targetModuleLabel": "Boden- & Materialaufbereitung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_bm_2",
@@ -5222,7 +5363,11 @@
       "targetModuleTab": "boden_materialaufbereitung",
       "targetModuleLabel": "Boden- & Materialaufbereitung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ab_1",
@@ -5258,7 +5403,11 @@
       "targetModuleTab": "abfaelle",
       "targetModuleLabel": "Abfälle & Altlasten"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ab_2",
@@ -5294,7 +5443,11 @@
       "targetModuleTab": "abfaelle",
       "targetModuleLabel": "Abfälle & Altlasten"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_sch_1",
@@ -5330,7 +5483,11 @@
       "targetModuleTab": "schadstoffe",
       "targetModuleLabel": "Schad- und Gefahrstoffe"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_sch_2",
@@ -5366,7 +5523,11 @@
       "targetModuleTab": "schadstoffe",
       "targetModuleLabel": "Schad- und Gefahrstoffe"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_altholz_urban_mining_1",
@@ -5402,7 +5563,11 @@
       "targetModuleLabel": "Altholz-NIR-Sortierung und Urban Mining"
     },
     "verified": false,
-    "quelle": "AltholzV § 2"
+    "quelle": "AltholzV § 2",
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_altholz_urban_mining_2",
@@ -5438,7 +5603,11 @@
       "targetModuleLabel": "Altholz-NIR-Sortierung und Urban Mining"
     },
     "verified": false,
-    "quelle": "AltholzV § 3, Anhang I"
+    "quelle": "AltholzV § 3, Anhang I",
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_altholz_urban_mining_3",
@@ -5474,7 +5643,11 @@
       "targetModuleLabel": "Altholz-NIR-Sortierung und Urban Mining"
     },
     "verified": false,
-    "quelle": "Siesler et al. 2002"
+    "quelle": "Siesler et al. 2002",
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_altholz_urban_mining_4",
@@ -5509,7 +5682,11 @@
       "targetModuleTab": "altholz_urban_mining",
       "targetModuleLabel": "Altholz-NIR-Sortierung und Urban Mining"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_altholz_urban_mining_5",
@@ -5544,7 +5721,11 @@
       "targetModuleTab": "altholz_urban_mining",
       "targetModuleLabel": "Altholz-NIR-Sortierung und Urban Mining"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_altholz_urban_mining_6",
@@ -5579,7 +5760,11 @@
       "targetModuleTab": "altholz_urban_mining",
       "targetModuleLabel": "Altholz-NIR-Sortierung und Urban Mining"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_altholz_urban_mining_7",
@@ -5614,7 +5799,11 @@
       "targetModuleTab": "altholz_urban_mining",
       "targetModuleLabel": "Altholz-NIR-Sortierung und Urban Mining"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_pfas_baustoffe_1",
@@ -5650,7 +5839,11 @@
       "targetModuleLabel": "PFAS in Baustoffen"
     },
     "verified": false,
-    "quelle": "OECD 2021"
+    "quelle": "OECD 2021",
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_pfas_baustoffe_2",
@@ -5685,7 +5878,11 @@
       "targetModuleTab": "pfas_baustoffe",
       "targetModuleLabel": "PFAS in Baustoffen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_pfas_baustoffe_3",
@@ -5721,7 +5918,11 @@
       "targetModuleLabel": "PFAS in Baustoffen"
     },
     "verified": false,
-    "quelle": "TrinkwV 2023 Anlage 2 Teil I"
+    "quelle": "TrinkwV 2023 Anlage 2 Teil I",
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_pfas_baustoffe_4",
@@ -5756,7 +5957,11 @@
       "targetModuleTab": "pfas_baustoffe",
       "targetModuleLabel": "PFAS in Baustoffen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_pfas_baustoffe_5",
@@ -5792,7 +5997,11 @@
       "targetModuleLabel": "PFAS in Baustoffen"
     },
     "verified": false,
-    "quelle": "TrinkwV 2023 Anlage 2 Teil I"
+    "quelle": "TrinkwV 2023 Anlage 2 Teil I",
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_pfas_baustoffe_6",
@@ -5827,7 +6036,11 @@
       "targetModuleTab": "pfas_baustoffe",
       "targetModuleLabel": "PFAS in Baustoffen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_pfas_baustoffe_7",
@@ -5862,7 +6075,11 @@
       "targetModuleTab": "pfas_baustoffe",
       "targetModuleLabel": "PFAS in Baustoffen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_re_1",
@@ -5898,7 +6115,11 @@
       "targetModuleTab": "ressourceneffizienz",
       "targetModuleLabel": "Ressourceneffizienz"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_re_2",
@@ -5934,7 +6155,11 @@
       "targetModuleTab": "ressourceneffizienz",
       "targetModuleLabel": "Ressourceneffizienz"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_rc_1",
@@ -5953,7 +6178,7 @@
       "Innerhalb einer Woche nach Abschluss"
     ],
     "correctIdx": 1,
-    "explanation": "§ 11a GefStoffV verlangt die Anzeige mindestens eine Woche vor Beginn; Abbrucharbeiten im niedrigen und mittleren Risikobereich bedürfen einer Genehmigung, Tätigkeiten mit hohem Risiko einer Zulassung des Unternehmens.",
+    "explanation": "§ 11a GefStoffV verlangt die Anzeige mindestens eine Woche vor Beginn; Art und Umfang der Anzeige richten sich nach dem Risikobereich (unternehmens- bzw. objektbezogen); Tätigkeiten mit hohem Risiko setzen zusätzlich eine Zulassung des Betriebs voraus.",
     "bloom": "Erinnern",
     "niveau": "B",
     "distraktorFeedback": [
@@ -5970,7 +6195,12 @@
       "targetModuleTab": "rueckbau_checklisten",
       "targetModuleLabel": "Checklisten"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "korrigiert",
+      "hinweis": "Antwort bestätigt (§ 11a Abs. 4 GefStoffV: spätestens eine Woche vor Beginn). Erklärung korrigiert: keine „Genehmigung“ für niedriges/mittleres Risiko, sondern risikoabhängige Anzeige; Zulassung bei hohem Risiko max. 6 Jahre (§ 11a Abs. 3)."
+    }
   },
   {
     "id": "q_rc_2",
@@ -6006,7 +6236,11 @@
       "targetModuleTab": "rueckbau_checklisten",
       "targetModuleLabel": "Checklisten"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_dh_2",
@@ -6042,7 +6276,11 @@
       "targetModuleTab": "dauerhaftigkeit",
       "targetModuleLabel": "Prinzipien & Übersicht"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_dh_3",
@@ -6078,7 +6316,11 @@
       "targetModuleTab": "dauerhaftigkeit",
       "targetModuleLabel": "Prinzipien & Übersicht"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ko_1",
@@ -6114,7 +6356,11 @@
       "targetModuleTab": "korrosion",
       "targetModuleLabel": "Bewehrungskorrosion"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ko_2",
@@ -6150,7 +6396,11 @@
       "targetModuleTab": "korrosion",
       "targetModuleLabel": "Bewehrungskorrosion"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_sb_1",
@@ -6186,7 +6436,11 @@
       "targetModuleTab": "schadreaktionen_beton",
       "targetModuleLabel": "Betonkorrosion"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_sb_2",
@@ -6222,7 +6476,11 @@
       "targetModuleTab": "schadreaktionen_beton",
       "targetModuleLabel": "Betonkorrosion"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ho_1",
@@ -6258,7 +6516,11 @@
       "targetModuleTab": "holzkorrosion",
       "targetModuleLabel": "Holzkorrosion"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ho_2",
@@ -6294,7 +6556,11 @@
       "targetModuleTab": "holzkorrosion",
       "targetModuleLabel": "Holzkorrosion"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_me_1",
@@ -6330,7 +6596,11 @@
       "targetModuleTab": "metallkorrosion",
       "targetModuleLabel": "Metallkorrosion"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_me_2",
@@ -6366,7 +6636,11 @@
       "targetModuleTab": "metallkorrosion",
       "targetModuleLabel": "Metallkorrosion"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_wo_1",
@@ -6402,7 +6676,11 @@
       "targetModuleTab": "weitere_organik",
       "targetModuleLabel": "Weitere Organik"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_wo_2",
@@ -6438,7 +6716,11 @@
       "targetModuleTab": "weitere_organik",
       "targetModuleLabel": "Weitere Organik"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_dc_1",
@@ -6462,7 +6744,7 @@
     "niveau": "B",
     "distraktorFeedback": [
       "0,60 ist der Grenzwert für XC4; die strengere Anforderung aus XD1 und XF2 ist maßgebend.",
-      "0,45 gilt z. B. für XD3 oder XF4, nicht für die hier vorliegenden Klassen.",
+      "0,45 gilt z. B. für XD3 oder XS3, nicht für die hier vorliegenden Klassen.",
       "0,50 gilt für XF2 ohne Luftporen; mit LP sind 0,55 zulässig.",
       ""
     ],
@@ -6474,7 +6756,12 @@
       "targetModuleTab": "dauerhaftigkeit_checklisten",
       "targetModuleLabel": "Checklisten"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "korrigiert",
+      "hinweis": "Rückmeldung zu Option 2: 0,45 gilt für XD3/XS3, nicht für XF4 (dort 0,50 mit LP, DIN 1045-2 Tab. F.2.1)."
+    }
   },
   {
     "id": "q_dc_2",
@@ -6510,7 +6797,11 @@
       "targetModuleTab": "dauerhaftigkeit_checklisten",
       "targetModuleLabel": "Checklisten"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ms_bs_1",
@@ -6546,7 +6837,11 @@
       "targetModuleTab": "bauschaeden",
       "targetModuleLabel": "Recht & Grundlagen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ms_bs_2",
@@ -6582,7 +6877,11 @@
       "targetModuleTab": "bauschaeden",
       "targetModuleLabel": "Recht & Grundlagen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ms_tb_1",
@@ -6618,7 +6917,11 @@
       "targetModuleTab": "schadensbilder",
       "targetModuleLabel": "Typische Bauschäden"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ms_tb_2",
@@ -6654,7 +6957,11 @@
       "targetModuleTab": "schadensbilder",
       "targetModuleLabel": "Typische Bauschäden"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ms_mo_1",
@@ -6690,7 +6997,11 @@
       "targetModuleTab": "bauwerksunters_monitoring",
       "targetModuleLabel": "Tragwerksmonitoring (SHM)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ms_mo_2",
@@ -6726,7 +7037,11 @@
       "targetModuleTab": "bauwerksunters_monitoring",
       "targetModuleLabel": "Tragwerksmonitoring (SHM)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ms_zb_1",
@@ -6762,7 +7077,11 @@
       "targetModuleTab": "vdi6200",
       "targetModuleLabel": "Zustandsbewertung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ms_zb_2",
@@ -6798,7 +7117,11 @@
       "targetModuleTab": "vdi6200",
       "targetModuleLabel": "Zustandsbewertung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ms_mg_1",
@@ -6834,7 +7157,11 @@
       "targetModuleTab": "material_schaeden_gross",
       "targetModuleLabel": "Große Materialschäden & Einstürze"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ms_mg_2",
@@ -6870,7 +7197,11 @@
       "targetModuleTab": "material_schaeden_gross",
       "targetModuleLabel": "Große Materialschäden & Einstürze"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ms_sc_1",
@@ -6906,7 +7237,11 @@
       "targetModuleTab": "schaeden_checklisten",
       "targetModuleLabel": "Schadensaufnahme-Checklisten"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ms_sc_2",
@@ -6942,7 +7277,11 @@
       "targetModuleTab": "schaeden_checklisten",
       "targetModuleLabel": "Schadensaufnahme-Checklisten"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_is_sg_1",
@@ -6978,7 +7317,11 @@
       "targetModuleTab": "schutz_grundlagen",
       "targetModuleLabel": "Schutz- & Instands.-Grundlagen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_is_sg_2",
@@ -7014,7 +7357,11 @@
       "targetModuleTab": "schutz_grundlagen",
       "targetModuleLabel": "Schutz- & Instands.-Grundlagen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_is_sb_1",
@@ -7050,7 +7397,11 @@
       "targetModuleTab": "instandhaltung",
       "targetModuleLabel": "Stahlbetoninstandhaltung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_is_sb_2",
@@ -7086,7 +7437,11 @@
       "targetModuleTab": "instandhaltung",
       "targetModuleLabel": "Stahlbetoninstandhaltung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_is_im_1",
@@ -7122,7 +7477,11 @@
       "targetModuleTab": "instandsetzung_materialien",
       "targetModuleLabel": "Instandsetzung nach Material"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_is_im_2",
@@ -7158,7 +7517,11 @@
       "targetModuleTab": "instandsetzung_materialien",
       "targetModuleLabel": "Instandsetzung nach Material"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_is_wta_1",
@@ -7194,7 +7557,11 @@
       "targetModuleTab": "wta",
       "targetModuleLabel": "WTA-Merkblätter"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_is_wta_2",
@@ -7230,7 +7597,11 @@
       "targetModuleTab": "wta",
       "targetModuleLabel": "WTA-Merkblätter"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_is_cl_1",
@@ -7266,7 +7637,11 @@
       "targetModuleTab": "instandsetzung_checklisten",
       "targetModuleLabel": "Instandsetzungs-Checklisten"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_is_cl_2",
@@ -7302,7 +7677,11 @@
       "targetModuleTab": "instandsetzung_checklisten",
       "targetModuleLabel": "Instandsetzungs-Checklisten"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_dg_bim_1",
@@ -7338,7 +7717,11 @@
       "targetModuleTab": "bim_baustoffe",
       "targetModuleLabel": "BIM für Baustoffe"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_dg_bim_2",
@@ -7374,7 +7757,11 @@
       "targetModuleTab": "bim_baustoffe",
       "targetModuleLabel": "BIM für Baustoffe"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_dg_db_1",
@@ -7410,7 +7797,11 @@
       "targetModuleTab": "materialdatenbanken",
       "targetModuleLabel": "Materialdatenbanken"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_dg_db_2",
@@ -7446,7 +7837,11 @@
       "targetModuleTab": "materialdatenbanken",
       "targetModuleLabel": "Materialdatenbanken"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_dg_mp_1",
@@ -7482,7 +7877,11 @@
       "targetModuleTab": "materialpaesse",
       "targetModuleLabel": "Materialpässe"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_dg_mp_2",
@@ -7518,7 +7917,11 @@
       "targetModuleTab": "materialpaesse",
       "targetModuleLabel": "Materialpässe"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_dg_dpp_2",
@@ -7554,7 +7957,11 @@
       "targetModuleTab": "dpp",
       "targetModuleLabel": "Digitaler Produktpass (DPP)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_dg_dpp_3",
@@ -7590,7 +7997,11 @@
       "targetModuleTab": "dpp",
       "targetModuleLabel": "Digitaler Produktpass (DPP)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_dg_ot_1",
@@ -7626,7 +8037,11 @@
       "targetModuleTab": "online_tools",
       "targetModuleLabel": "Online-Tools & Rechner"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_dg_ot_2",
@@ -7662,7 +8077,11 @@
       "targetModuleTab": "online_tools",
       "targetModuleLabel": "Online-Tools & Rechner"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ki_ub_1",
@@ -7698,7 +8117,11 @@
       "targetModuleTab": "ki_ueberblick",
       "targetModuleLabel": "KI: Überblick & Grundlagen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ki_ub_2",
@@ -7734,7 +8157,11 @@
       "targetModuleTab": "ki_ueberblick",
       "targetModuleLabel": "KI: Überblick & Grundlagen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ki_sy_1",
@@ -7770,7 +8197,11 @@
       "targetModuleTab": "ki_system",
       "targetModuleLabel": "KI: Systemarchitektur"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ki_sy_2",
@@ -7806,7 +8237,11 @@
       "targetModuleTab": "ki_system",
       "targetModuleLabel": "KI: Systemarchitektur"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ki_pr_1",
@@ -7842,7 +8277,11 @@
       "targetModuleTab": "ki_prompting",
       "targetModuleLabel": "KI: Prompting-Praxis"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ki_pr_2",
@@ -7878,7 +8317,11 @@
       "targetModuleTab": "ki_prompting",
       "targetModuleLabel": "KI: Prompting-Praxis"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ki_lp_1",
@@ -7914,7 +8357,11 @@
       "targetModuleTab": "ki_llmpraxis",
       "targetModuleLabel": "KI: LLM-Praxis"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ki_lp_2",
@@ -7950,7 +8397,11 @@
       "targetModuleTab": "ki_llmpraxis",
       "targetModuleLabel": "KI: LLM-Praxis"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ki_th_1",
@@ -7986,7 +8437,11 @@
       "targetModuleTab": "ki_thesen",
       "targetModuleLabel": "KI: Tools für Thesen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ki_th_2",
@@ -8022,7 +8477,11 @@
       "targetModuleTab": "ki_thesen",
       "targetModuleLabel": "KI: Tools für Thesen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ki_re_1",
@@ -8041,7 +8500,7 @@
       "Ab 02.12.2027"
     ],
     "correctIdx": 3,
-    "explanation": "Der Digital Omnibus verschiebt Anhang III auf den 02.12.2027 und Anhang I auf den 02.08.2028; Art. 50 gilt ab 02.08.2026.",
+    "explanation": "Der Digital Omnibus (VO (EU) 2026/1744, in Kraft seit 27.07.2026) verschiebt Anhang III auf den 02.12.2027 und Anhang I auf den 02.08.2028; Art. 50 gilt ab 02.08.2026.",
     "bloom": "Erinnern",
     "niveau": "M",
     "distraktorFeedback": [
@@ -8058,7 +8517,12 @@
       "targetModuleTab": "ki_recht_ethik",
       "targetModuleLabel": "KI: Fehler, Recht & Ethik"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "korrigiert",
+      "hinweis": "Antwort bestätigt; Fundstelle VO (EU) 2026/1744 (ABl. 24.07.2026, in Kraft 27.07.2026) in der Erklärung ergänzt."
+    }
   },
   {
     "id": "q_ki_re_2",
@@ -8094,7 +8558,11 @@
       "targetModuleTab": "ki_recht_ethik",
       "targetModuleLabel": "KI: Fehler, Recht & Ethik"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ki_lk_1",
@@ -8130,7 +8598,11 @@
       "targetModuleTab": "ki_lokal",
       "targetModuleLabel": "KI: Lokale KI (LM Studio)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ki_lk_2",
@@ -8166,7 +8638,11 @@
       "targetModuleTab": "ki_lokal",
       "targetModuleLabel": "KI: Lokale KI (LM Studio)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ki_rs_1",
@@ -8202,7 +8678,11 @@
       "targetModuleTab": "ki_ressourcen",
       "targetModuleLabel": "KI: Unabhängige KI-Seiten"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ki_rs_2",
@@ -8238,7 +8718,11 @@
       "targetModuleTab": "ki_ressourcen",
       "targetModuleLabel": "KI: Unabhängige KI-Seiten"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ki_ok_1",
@@ -8274,7 +8758,11 @@
       "targetModuleTab": "ki_onlinekurse",
       "targetModuleLabel": "KI: Onlinekurse"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ki_ok_2",
@@ -8310,7 +8798,11 @@
       "targetModuleTab": "ki_onlinekurse",
       "targetModuleLabel": "KI: Onlinekurse"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ki_bs_1",
@@ -8346,7 +8838,11 @@
       "targetModuleTab": "ki_baustoffe",
       "targetModuleLabel": "KI in der Baustoffkunde"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ki_bs_2",
@@ -8382,7 +8878,11 @@
       "targetModuleTab": "ki_baustoffe",
       "targetModuleLabel": "KI in der Baustoffkunde"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_px_pl_1",
@@ -8418,7 +8918,11 @@
       "targetModuleTab": "px_planung",
       "targetModuleLabel": "Planung & Ausschreibung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_px_pl_2",
@@ -8454,7 +8958,11 @@
       "targetModuleTab": "px_planung",
       "targetModuleLabel": "Planung & Ausschreibung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_px_bl_1",
@@ -8490,7 +8998,11 @@
       "targetModuleTab": "px_bauleitung",
       "targetModuleLabel": "Bauleitung & Baustelle"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_px_bl_2",
@@ -8526,7 +9038,11 @@
       "targetModuleTab": "px_bauleitung",
       "targetModuleLabel": "Bauleitung & Baustelle"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_px_pr_1",
@@ -8562,7 +9078,11 @@
       "targetModuleTab": "px_produktion",
       "targetModuleLabel": "Produktherstellung & QS"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_px_pr_2",
@@ -8598,7 +9118,11 @@
       "targetModuleTab": "px_produktion",
       "targetModuleLabel": "Produktherstellung & QS"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_px_ka_1",
@@ -8634,7 +9158,11 @@
       "targetModuleTab": "px_karriere",
       "targetModuleLabel": "Karrierestart & Soft Skills"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_px_ka_2",
@@ -8670,7 +9198,11 @@
       "targetModuleTab": "px_karriere",
       "targetModuleLabel": "Karrierestart & Soft Skills"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_px_bt_1",
@@ -8706,7 +9238,11 @@
       "targetModuleTab": "px_bautagebuch",
       "targetModuleLabel": "Bautagebuch"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_px_bt_2",
@@ -8742,7 +9278,11 @@
       "targetModuleTab": "px_bautagebuch",
       "targetModuleLabel": "Bautagebuch"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ku_1",
@@ -8778,7 +9318,11 @@
       "targetModuleTab": "kuriositaeten",
       "targetModuleLabel": "Kuriositäten & Rekorde"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_ku_2",
@@ -8814,7 +9358,11 @@
       "targetModuleTab": "kuriositaeten",
       "targetModuleLabel": "Kuriositäten & Rekorde"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "q_bgl_1",
@@ -16122,7 +16670,11 @@
       "targetModuleTab": "lca_rechner",
       "targetModuleLabel": "LCA-Rechner & QNG-Nachweis"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_lca_rechner_2",
@@ -16158,7 +16710,11 @@
       "targetModuleTab": "lca_rechner",
       "targetModuleLabel": "LCA-Rechner & QNG-Nachweis"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_lca_rechner_3",
@@ -16194,7 +16750,11 @@
       "targetModuleTab": "lca_rechner",
       "targetModuleLabel": "LCA-Rechner & QNG-Nachweis"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_lca_rechner_4",
@@ -16230,7 +16790,11 @@
       "targetModuleTab": "lca_rechner",
       "targetModuleLabel": "LCA-Rechner & QNG-Nachweis"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_lca_rechner_5",
@@ -16266,7 +16830,11 @@
       "targetModuleTab": "lca_rechner",
       "targetModuleLabel": "LCA-Rechner & QNG-Nachweis"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_lca_ingenieurbau_1",
@@ -16302,7 +16870,11 @@
       "targetModuleTab": "lca_ingenieurbau",
       "targetModuleLabel": "LCA im Ingenieurbau (DIN EN 17472)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_lca_ingenieurbau_2",
@@ -16338,7 +16910,11 @@
       "targetModuleTab": "lca_ingenieurbau",
       "targetModuleLabel": "LCA im Ingenieurbau (DIN EN 17472)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_lca_ingenieurbau_3",
@@ -16374,7 +16950,11 @@
       "targetModuleTab": "lca_ingenieurbau",
       "targetModuleLabel": "LCA im Ingenieurbau (DIN EN 17472)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_lca_ingenieurbau_4",
@@ -16393,7 +16973,7 @@
       "Beide Varianten sind gleichwertig, da sich ihre Gutschriften in Modul D vollständig ausgleichen."
     ],
     "correctIdx": 2,
-    "explanation": "Die Stahlverbundbrücke spart in A1–A3 rund 83 t, verursacht aber durch vier Korrosionsschutzerneuerungen rund 39 t mehr in B2–B5 und durch zusätzliche Sperrtage rund 27 t mehr in B8. Netto bleiben etwa 39 t Vorteil (5,50 statt 5,76 kg CO₂-Äq./(m²·a)). Modul D (−57 t bzw. −128 t) wird separat ausgewiesen.",
+    "explanation": "Die Stahlverbundbrücke spart in A1–A3 rund 83 t, verursacht aber durch vier Korrosionsschutzerneuerungen rund 39 t mehr in B2–B5 und durch zusätzliche Sperrtage rund 27 t mehr in B8. Netto bleiben etwa 38 t Vorteil (5,50 statt 5,75 kg CO₂-Äq./(m²·a)); rund 21 t davon stammen aus dem günstigeren Modul C. Modul D (−57 t bzw. −128 t) wird separat ausgewiesen.",
     "bloom": "Analysieren",
     "niveau": "M",
     "distraktorFeedback": [
@@ -16410,7 +16990,12 @@
       "targetModuleTab": "lca_ingenieurbau",
       "targetModuleLabel": "LCA im Ingenieurbau (DIN EN 17472)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "korrigiert",
+      "hinweis": "Erklärung: Kennwert 863 t/(1 500 m² · 100 a) = 5,75 statt 5,76; Nettovorteil 38 t (inkl. Modul C) ergänzt."
+    }
   },
   {
     "id": "qn_lca_ingenieurbau_5",
@@ -16446,7 +17031,11 @@
       "targetModuleTab": "lca_ingenieurbau",
       "targetModuleLabel": "LCA im Ingenieurbau (DIN EN 17472)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_lca_ingenieurbau_6",
@@ -16482,7 +17071,11 @@
       "targetModuleTab": "lca_ingenieurbau",
       "targetModuleLabel": "LCA im Ingenieurbau (DIN EN 17472)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_lca_regulatorik_1",
@@ -16518,7 +17111,11 @@
       "targetModuleTab": "lca_regulatorik",
       "targetModuleLabel": "Rechtsrahmen, CRREM & Praxis"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_lca_regulatorik_2",
@@ -16554,7 +17151,11 @@
       "targetModuleTab": "lca_regulatorik",
       "targetModuleLabel": "Rechtsrahmen, CRREM & Praxis"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_lca_regulatorik_3",
@@ -16590,7 +17191,11 @@
       "targetModuleTab": "lca_regulatorik",
       "targetModuleLabel": "Rechtsrahmen, CRREM & Praxis"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_lca_regulatorik_4",
@@ -16626,7 +17231,11 @@
       "targetModuleTab": "lca_regulatorik",
       "targetModuleLabel": "Rechtsrahmen, CRREM & Praxis"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_lca_regulatorik_5",
@@ -16662,7 +17271,11 @@
       "targetModuleTab": "lca_regulatorik",
       "targetModuleLabel": "Rechtsrahmen, CRREM & Praxis"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_lca_regulatorik_6",
@@ -16698,7 +17311,11 @@
       "targetModuleTab": "lca_regulatorik",
       "targetModuleLabel": "Rechtsrahmen, CRREM & Praxis"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_baustoffkunde_1",
@@ -28146,7 +28763,11 @@
       "targetModuleTab": "materialoptimierung",
       "targetModuleLabel": "Materialoptimierung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_materialoptimierung_2",
@@ -28182,7 +28803,11 @@
       "targetModuleTab": "materialoptimierung",
       "targetModuleLabel": "Materialoptimierung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_materialoptimierung_3",
@@ -28218,7 +28843,11 @@
       "targetModuleTab": "materialoptimierung",
       "targetModuleLabel": "Materialoptimierung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_materialoptimierung_4",
@@ -28254,7 +28883,11 @@
       "targetModuleTab": "materialoptimierung",
       "targetModuleLabel": "Materialoptimierung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_lca_rechner_x_1",
@@ -28290,7 +28923,11 @@
       "targetModuleTab": "lca_rechner",
       "targetModuleLabel": "LCA-Rechner & QNG-Nachweis"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_lca_ingenieurbau_x_2",
@@ -28326,7 +28963,11 @@
       "targetModuleTab": "lca_ingenieurbau",
       "targetModuleLabel": "LCA im Ingenieurbau (DIN EN 17472)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_kreislauf_dpp_1",
@@ -28362,7 +29003,11 @@
       "targetModuleTab": "kreislauf_dpp",
       "targetModuleLabel": "Kreislaufwirtschaft"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_kreislauf_dpp_2",
@@ -28398,7 +29043,11 @@
       "targetModuleTab": "kreislauf_dpp",
       "targetModuleLabel": "Kreislaufwirtschaft"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_kreislauf_dpp_3",
@@ -28434,7 +29083,11 @@
       "targetModuleTab": "kreislauf_dpp",
       "targetModuleLabel": "Kreislaufwirtschaft"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ressourcen_umwelt_1",
@@ -28470,7 +29123,11 @@
       "targetModuleTab": "ressourcen_umwelt",
       "targetModuleLabel": "Ressourcen & Umwelt"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ressourcen_umwelt_2",
@@ -28506,7 +29163,11 @@
       "targetModuleTab": "ressourcen_umwelt",
       "targetModuleLabel": "Ressourcen & Umwelt"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ressourcen_umwelt_3",
@@ -28542,7 +29203,11 @@
       "targetModuleTab": "ressourcen_umwelt",
       "targetModuleLabel": "Ressourcen & Umwelt"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ressourcen_umwelt_4",
@@ -28578,7 +29243,11 @@
       "targetModuleTab": "ressourcen_umwelt",
       "targetModuleLabel": "Ressourcen & Umwelt"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_lebenszyklus_kosten_1",
@@ -28614,7 +29283,11 @@
       "targetModuleTab": "lebenszyklus_kosten",
       "targetModuleLabel": "Lebenszyklus & Kosten"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_lebenszyklus_kosten_2",
@@ -28650,7 +29323,11 @@
       "targetModuleTab": "lebenszyklus_kosten",
       "targetModuleLabel": "Lebenszyklus & Kosten"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_lebenszyklus_kosten_3",
@@ -28686,7 +29363,11 @@
       "targetModuleTab": "lebenszyklus_kosten",
       "targetModuleLabel": "Lebenszyklus & Kosten"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_lebenszyklus_kosten_4",
@@ -28701,7 +29382,7 @@
     "options": [
       "64 000 €",
       "100 000 €",
-      "115 000 €",
+      "108 000 €",
       "20 000 €"
     ],
     "correctIdx": 1,
@@ -28711,7 +29392,7 @@
     "distraktorFeedback": [
       "Hier wurde das Indexverhältnis umgekehrt (140/175); das ergäbe eine Preissenkung.",
       "",
-      "Hier wurde die Indexdifferenz von 35 Punkten als Prozentsatz auf 80 000 € aufgeschlagen (+ 35 000 €) statt das Indexverhältnis zu bilden.",
+      "Hier wurde die Indexdifferenz von 35 Punkten als Prozentsatz (+ 35 % = 28 000 €) aufgeschlagen statt das Indexverhältnis 175/140 = 1,25 zu bilden.",
       "20 000 € sind nur die Mehrkosten ΔK, nicht der angepasste Vertragsbetrag K_t."
     ],
     "gapAnalysis": {
@@ -28722,7 +29403,12 @@
       "targetModuleTab": "lebenszyklus_kosten",
       "targetModuleLabel": "Lebenszyklus & Kosten"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "korrigiert",
+      "hinweis": "Distraktor 115 000 € → 108 000 €, damit Wert und Rückmeldung (35 % Aufschlag) übereinstimmen."
+    }
   },
   {
     "id": "qn_bauwerkserfassung_1",
@@ -28758,7 +29444,11 @@
       "targetModuleTab": "bauwerkserfassung",
       "targetModuleLabel": "Bauwerkserfassung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_bauwerkserfassung_2",
@@ -28794,7 +29484,11 @@
       "targetModuleTab": "bauwerkserfassung",
       "targetModuleLabel": "Bauwerkserfassung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_bauwerkserfassung_3",
@@ -28830,7 +29524,11 @@
       "targetModuleTab": "bauwerkserfassung",
       "targetModuleLabel": "Bauwerkserfassung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_bauwerkserfassung_4",
@@ -28866,7 +29564,11 @@
       "targetModuleTab": "bauwerkserfassung",
       "targetModuleLabel": "Bauwerkserfassung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_denkmalpflege_1",
@@ -28902,7 +29604,11 @@
       "targetModuleTab": "denkmalpflege",
       "targetModuleLabel": "Denkmalpflege"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_denkmalpflege_2",
@@ -28938,7 +29644,11 @@
       "targetModuleTab": "denkmalpflege",
       "targetModuleLabel": "Denkmalpflege"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_denkmalpflege_3",
@@ -28974,7 +29684,11 @@
       "targetModuleTab": "denkmalpflege",
       "targetModuleLabel": "Denkmalpflege"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_denkmalpflege_4",
@@ -29010,7 +29724,11 @@
       "targetModuleTab": "denkmalpflege",
       "targetModuleLabel": "Denkmalpflege"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_modernisierung_1",
@@ -29046,7 +29764,11 @@
       "targetModuleTab": "modernisierung",
       "targetModuleLabel": "Modernisierung & GModG"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_modernisierung_2",
@@ -29082,7 +29804,11 @@
       "targetModuleTab": "modernisierung",
       "targetModuleLabel": "Modernisierung & GModG"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_modernisierung_3",
@@ -29118,7 +29844,11 @@
       "targetModuleTab": "modernisierung",
       "targetModuleLabel": "Modernisierung & GModG"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_modernisierung_4",
@@ -29154,7 +29884,11 @@
       "targetModuleTab": "modernisierung",
       "targetModuleLabel": "Modernisierung & GModG"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_bauwerksuntersuchung_1",
@@ -29190,7 +29924,11 @@
       "targetModuleTab": "bauwerksuntersuchung",
       "targetModuleLabel": "Bauwerksdiagnose & ZfP"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_bauwerksuntersuchung_2",
@@ -29226,7 +29964,11 @@
       "targetModuleTab": "bauwerksuntersuchung",
       "targetModuleLabel": "Bauwerksdiagnose & ZfP"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_bauwerksuntersuchung_3",
@@ -29262,7 +30004,11 @@
       "targetModuleTab": "bauwerksuntersuchung",
       "targetModuleLabel": "Bauwerksdiagnose & ZfP"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_historische_bauweisen_1",
@@ -29298,7 +30044,11 @@
       "targetModuleTab": "historische_bauweisen",
       "targetModuleLabel": "Hist. Bauweisen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_historische_bauweisen_2",
@@ -29334,7 +30084,11 @@
       "targetModuleTab": "historische_bauweisen",
       "targetModuleLabel": "Hist. Bauweisen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_historische_bauweisen_3",
@@ -29370,7 +30124,11 @@
       "targetModuleTab": "historische_bauweisen",
       "targetModuleLabel": "Hist. Bauweisen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_historische_bauweisen_4",
@@ -29406,7 +30164,11 @@
       "targetModuleTab": "historische_bauweisen",
       "targetModuleLabel": "Hist. Bauweisen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_historische_bauprodukte_1",
@@ -29442,7 +30204,11 @@
       "targetModuleTab": "historische_bauprodukte",
       "targetModuleLabel": "Hist. Bauprodukte"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_historische_bauprodukte_2",
@@ -29478,7 +30244,11 @@
       "targetModuleTab": "historische_bauprodukte",
       "targetModuleLabel": "Hist. Bauprodukte"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_historische_bauprodukte_3",
@@ -29514,7 +30284,11 @@
       "targetModuleTab": "historische_bauprodukte",
       "targetModuleLabel": "Hist. Bauprodukte"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_historische_bauprodukte_4",
@@ -29550,7 +30324,11 @@
       "targetModuleTab": "historische_bauprodukte",
       "targetModuleLabel": "Hist. Bauprodukte"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rueckbau_1",
@@ -29586,7 +30364,11 @@
       "targetModuleTab": "rueckbau",
       "targetModuleLabel": "Rückbau & Material"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rueckbau_2",
@@ -29622,7 +30404,11 @@
       "targetModuleTab": "rueckbau",
       "targetModuleLabel": "Rückbau & Material"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rueckbau_3",
@@ -29658,7 +30444,11 @@
       "targetModuleTab": "rueckbau",
       "targetModuleLabel": "Rückbau & Material"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rueckbau_4",
@@ -29694,7 +30484,11 @@
       "targetModuleTab": "rueckbau",
       "targetModuleLabel": "Rückbau & Material"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_boden_materialaufbereitung_1",
@@ -29730,7 +30524,11 @@
       "targetModuleTab": "boden_materialaufbereitung",
       "targetModuleLabel": "Boden- & Materialaufbereitung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_boden_materialaufbereitung_2",
@@ -29766,7 +30564,11 @@
       "targetModuleTab": "boden_materialaufbereitung",
       "targetModuleLabel": "Boden- & Materialaufbereitung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_boden_materialaufbereitung_3",
@@ -29802,7 +30604,11 @@
       "targetModuleTab": "boden_materialaufbereitung",
       "targetModuleLabel": "Boden- & Materialaufbereitung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_boden_materialaufbereitung_4",
@@ -29838,7 +30644,11 @@
       "targetModuleTab": "boden_materialaufbereitung",
       "targetModuleLabel": "Boden- & Materialaufbereitung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ressourceneffizienz_1",
@@ -29874,7 +30684,11 @@
       "targetModuleTab": "ressourceneffizienz",
       "targetModuleLabel": "Ressourceneffizienz"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ressourceneffizienz_2",
@@ -29910,7 +30724,11 @@
       "targetModuleTab": "ressourceneffizienz",
       "targetModuleLabel": "Ressourceneffizienz"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ressourceneffizienz_3",
@@ -29946,7 +30764,11 @@
       "targetModuleTab": "ressourceneffizienz",
       "targetModuleLabel": "Ressourceneffizienz"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ressourceneffizienz_4",
@@ -29982,7 +30804,11 @@
       "targetModuleTab": "ressourceneffizienz",
       "targetModuleLabel": "Ressourceneffizienz"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_dauerhaftigkeit_1",
@@ -30018,7 +30844,11 @@
       "targetModuleTab": "dauerhaftigkeit",
       "targetModuleLabel": "Prinzipien & Übersicht"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_dauerhaftigkeit_2",
@@ -30054,7 +30884,11 @@
       "targetModuleTab": "dauerhaftigkeit",
       "targetModuleLabel": "Prinzipien & Übersicht"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_dauerhaftigkeit_3",
@@ -30090,7 +30924,11 @@
       "targetModuleTab": "dauerhaftigkeit",
       "targetModuleLabel": "Prinzipien & Übersicht"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_korrosion_1",
@@ -30126,7 +30964,11 @@
       "targetModuleTab": "korrosion",
       "targetModuleLabel": "Bewehrungskorrosion"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_korrosion_2",
@@ -30162,7 +31004,11 @@
       "targetModuleTab": "korrosion",
       "targetModuleLabel": "Bewehrungskorrosion"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_korrosion_3",
@@ -30198,7 +31044,11 @@
       "targetModuleTab": "korrosion",
       "targetModuleLabel": "Bewehrungskorrosion"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_korrosion_4",
@@ -30234,7 +31084,11 @@
       "targetModuleTab": "korrosion",
       "targetModuleLabel": "Bewehrungskorrosion"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_schadreaktionen_beton_1",
@@ -30270,7 +31124,11 @@
       "targetModuleTab": "schadreaktionen_beton",
       "targetModuleLabel": "Betonkorrosion"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_schadreaktionen_beton_2",
@@ -30306,7 +31164,11 @@
       "targetModuleTab": "schadreaktionen_beton",
       "targetModuleLabel": "Betonkorrosion"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_schadreaktionen_beton_3",
@@ -30342,7 +31204,11 @@
       "targetModuleTab": "schadreaktionen_beton",
       "targetModuleLabel": "Betonkorrosion"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_schadreaktionen_beton_4",
@@ -30378,7 +31244,11 @@
       "targetModuleTab": "schadreaktionen_beton",
       "targetModuleLabel": "Betonkorrosion"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_holzkorrosion_1",
@@ -30414,7 +31284,11 @@
       "targetModuleTab": "holzkorrosion",
       "targetModuleLabel": "Holzkorrosion"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_holzkorrosion_2",
@@ -30450,7 +31324,11 @@
       "targetModuleTab": "holzkorrosion",
       "targetModuleLabel": "Holzkorrosion"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_holzkorrosion_3",
@@ -30486,7 +31364,11 @@
       "targetModuleTab": "holzkorrosion",
       "targetModuleLabel": "Holzkorrosion"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_holzkorrosion_4",
@@ -30522,7 +31404,11 @@
       "targetModuleTab": "holzkorrosion",
       "targetModuleLabel": "Holzkorrosion"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_metallkorrosion_1",
@@ -30558,7 +31444,11 @@
       "targetModuleTab": "metallkorrosion",
       "targetModuleLabel": "Metallkorrosion"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_metallkorrosion_2",
@@ -30594,7 +31484,11 @@
       "targetModuleTab": "metallkorrosion",
       "targetModuleLabel": "Metallkorrosion"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_metallkorrosion_3",
@@ -30630,7 +31524,11 @@
       "targetModuleTab": "metallkorrosion",
       "targetModuleLabel": "Metallkorrosion"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_metallkorrosion_4",
@@ -30666,7 +31564,11 @@
       "targetModuleTab": "metallkorrosion",
       "targetModuleLabel": "Metallkorrosion"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_weitere_organik_1",
@@ -30702,7 +31604,11 @@
       "targetModuleTab": "weitere_organik",
       "targetModuleLabel": "Weitere Organik"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_weitere_organik_2",
@@ -30738,7 +31644,11 @@
       "targetModuleTab": "weitere_organik",
       "targetModuleLabel": "Weitere Organik"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_weitere_organik_3",
@@ -30774,7 +31684,11 @@
       "targetModuleTab": "weitere_organik",
       "targetModuleLabel": "Weitere Organik"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_weitere_organik_4",
@@ -30810,7 +31724,11 @@
       "targetModuleTab": "weitere_organik",
       "targetModuleLabel": "Weitere Organik"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_bauwerksunters_monitoring_1",
@@ -30846,7 +31764,11 @@
       "targetModuleTab": "bauwerksunters_monitoring",
       "targetModuleLabel": "Tragwerksmonitoring (SHM)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_bauwerksunters_monitoring_2",
@@ -30882,7 +31804,11 @@
       "targetModuleTab": "bauwerksunters_monitoring",
       "targetModuleLabel": "Tragwerksmonitoring (SHM)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_bauwerksunters_monitoring_3",
@@ -30918,7 +31844,11 @@
       "targetModuleTab": "bauwerksunters_monitoring",
       "targetModuleLabel": "Tragwerksmonitoring (SHM)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_bauwerksunters_monitoring_4",
@@ -30954,7 +31884,11 @@
       "targetModuleTab": "bauwerksunters_monitoring",
       "targetModuleLabel": "Tragwerksmonitoring (SHM)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_vdi6200_1",
@@ -30990,7 +31924,11 @@
       "targetModuleTab": "vdi6200",
       "targetModuleLabel": "Zustandsbewertung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_vdi6200_2",
@@ -31026,7 +31964,11 @@
       "targetModuleTab": "vdi6200",
       "targetModuleLabel": "Zustandsbewertung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_vdi6200_3",
@@ -31062,7 +32004,11 @@
       "targetModuleTab": "vdi6200",
       "targetModuleLabel": "Zustandsbewertung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_instandsetzung_materialien_1",
@@ -31098,7 +32044,11 @@
       "targetModuleTab": "instandsetzung_materialien",
       "targetModuleLabel": "Instandsetzung nach Material"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_instandsetzung_materialien_2",
@@ -31134,7 +32084,11 @@
       "targetModuleTab": "instandsetzung_materialien",
       "targetModuleLabel": "Instandsetzung nach Material"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_instandsetzung_materialien_3",
@@ -31170,7 +32124,11 @@
       "targetModuleTab": "instandsetzung_materialien",
       "targetModuleLabel": "Instandsetzung nach Material"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_instandsetzung_materialien_4",
@@ -31206,7 +32164,11 @@
       "targetModuleTab": "instandsetzung_materialien",
       "targetModuleLabel": "Instandsetzung nach Material"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_instandhaltung_1",
@@ -31242,7 +32204,11 @@
       "targetModuleTab": "instandhaltung",
       "targetModuleLabel": "Stahlbetoninstandhaltung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_instandhaltung_2",
@@ -31278,7 +32244,11 @@
       "targetModuleTab": "instandhaltung",
       "targetModuleLabel": "Stahlbetoninstandhaltung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_instandhaltung_3",
@@ -31314,7 +32284,11 @@
       "targetModuleTab": "instandhaltung",
       "targetModuleLabel": "Stahlbetoninstandhaltung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_instandhaltung_4",
@@ -31350,7 +32324,11 @@
       "targetModuleTab": "instandhaltung",
       "targetModuleLabel": "Stahlbetoninstandhaltung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_u_wert_1",
@@ -31386,7 +32364,11 @@
       "targetModuleTab": "rechnung_u_wert",
       "targetModuleLabel": "Bauphysik: U-Wert"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_u_wert_2",
@@ -31422,7 +32404,11 @@
       "targetModuleTab": "rechnung_u_wert",
       "targetModuleLabel": "Bauphysik: U-Wert"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_u_wert_3",
@@ -31458,7 +32444,11 @@
       "targetModuleTab": "rechnung_u_wert",
       "targetModuleLabel": "Bauphysik: U-Wert"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_u_wert_4",
@@ -31494,7 +32484,11 @@
       "targetModuleTab": "rechnung_u_wert",
       "targetModuleLabel": "Bauphysik: U-Wert"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_u_wert_5",
@@ -31530,7 +32524,11 @@
       "targetModuleTab": "rechnung_u_wert",
       "targetModuleLabel": "Bauphysik: U-Wert"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_u_wert_6",
@@ -31566,7 +32564,11 @@
       "targetModuleTab": "rechnung_u_wert",
       "targetModuleLabel": "Bauphysik: U-Wert"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_beton_1",
@@ -31602,7 +32604,11 @@
       "targetModuleTab": "rechnung_beton",
       "targetModuleLabel": "Beton: Mischungsentwurf"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_beton_2",
@@ -31638,7 +32644,11 @@
       "targetModuleTab": "rechnung_beton",
       "targetModuleLabel": "Beton: Mischungsentwurf"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_beton_3",
@@ -31674,7 +32684,11 @@
       "targetModuleTab": "rechnung_beton",
       "targetModuleLabel": "Beton: Mischungsentwurf"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_beton_4",
@@ -31710,7 +32724,11 @@
       "targetModuleTab": "rechnung_beton",
       "targetModuleLabel": "Beton: Mischungsentwurf"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_beton_5",
@@ -31746,7 +32764,11 @@
       "targetModuleTab": "rechnung_beton",
       "targetModuleLabel": "Beton: Mischungsentwurf"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_beton_6",
@@ -31782,7 +32804,11 @@
       "targetModuleTab": "rechnung_beton",
       "targetModuleLabel": "Beton: Mischungsentwurf"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_stahlbeton_1",
@@ -31818,7 +32844,11 @@
       "targetModuleTab": "rechnung_stahlbeton",
       "targetModuleLabel": "Massivbau: Biegung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_stahlbeton_2",
@@ -31854,7 +32884,11 @@
       "targetModuleTab": "rechnung_stahlbeton",
       "targetModuleLabel": "Massivbau: Biegung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_stahlbeton_3",
@@ -31870,10 +32904,10 @@
       "A_s,erf = 5,69 cm²",
       "A_s,erf = 6,07 cm²",
       "A_s,erf = 5,52 cm²",
-      "A_s,erf = 6,55 cm²"
+      "A_s,erf = 6,54 cm²"
     ],
     "correctIdx": 3,
-    "explanation": "A_s,erf = M_Ed/(f_yd · z) = 0,120 MNm/(434,8 MN/m² · 0,422 m) = 0,000655 m² = 6,55 cm².",
+    "explanation": "A_s,erf = M_Ed/(f_yd · z) = 0,120 MNm/(434,8 MN/m² · 0,422 m) = 0,000654 m² = 6,54 cm².",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -31890,7 +32924,12 @@
       "targetModuleTab": "rechnung_stahlbeton",
       "targetModuleLabel": "Massivbau: Biegung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "korrigiert",
+      "hinweis": "Nachgerechnet: 0,120/(434,8 · 0,422) = 6,54 cm² (vorher 6,55)."
+    }
   },
   {
     "id": "qn_rechnung_stahlbeton_4",
@@ -31926,7 +32965,11 @@
       "targetModuleTab": "rechnung_stahlbeton",
       "targetModuleLabel": "Massivbau: Biegung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_stahlbeton_5",
@@ -31962,7 +33005,11 @@
       "targetModuleTab": "rechnung_stahlbeton",
       "targetModuleLabel": "Massivbau: Biegung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_stahlbeton_6",
@@ -31998,7 +33045,11 @@
       "targetModuleTab": "rechnung_stahlbeton",
       "targetModuleLabel": "Massivbau: Biegung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_holzbau_1",
@@ -32034,7 +33085,11 @@
       "targetModuleTab": "rechnung_holzbau",
       "targetModuleLabel": "Holzbau: Stützenknicken"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_holzbau_2",
@@ -32070,7 +33125,11 @@
       "targetModuleTab": "rechnung_holzbau",
       "targetModuleLabel": "Holzbau: Stützenknicken"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_holzbau_3",
@@ -32106,7 +33165,11 @@
       "targetModuleTab": "rechnung_holzbau",
       "targetModuleLabel": "Holzbau: Stützenknicken"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_holzbau_4",
@@ -32142,7 +33205,11 @@
       "targetModuleTab": "rechnung_holzbau",
       "targetModuleLabel": "Holzbau: Stützenknicken"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_holzbau_5",
@@ -32178,7 +33245,11 @@
       "targetModuleTab": "rechnung_holzbau",
       "targetModuleLabel": "Holzbau: Stützenknicken"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_holzbau_6",
@@ -32214,7 +33285,11 @@
       "targetModuleTab": "rechnung_holzbau",
       "targetModuleLabel": "Holzbau: Stützenknicken"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_mauerwerk_1",
@@ -32250,7 +33325,11 @@
       "targetModuleTab": "rechnung_mauerwerk",
       "targetModuleLabel": "Mauerwerk: Tragfähigkeit"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_mauerwerk_2",
@@ -32286,7 +33365,11 @@
       "targetModuleTab": "rechnung_mauerwerk",
       "targetModuleLabel": "Mauerwerk: Tragfähigkeit"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_mauerwerk_3",
@@ -32322,7 +33405,11 @@
       "targetModuleTab": "rechnung_mauerwerk",
       "targetModuleLabel": "Mauerwerk: Tragfähigkeit"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_mauerwerk_4",
@@ -32358,7 +33445,11 @@
       "targetModuleTab": "rechnung_mauerwerk",
       "targetModuleLabel": "Mauerwerk: Tragfähigkeit"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_mauerwerk_5",
@@ -32394,7 +33485,11 @@
       "targetModuleTab": "rechnung_mauerwerk",
       "targetModuleLabel": "Mauerwerk: Tragfähigkeit"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_mauerwerk_6",
@@ -32430,7 +33525,11 @@
       "targetModuleTab": "rechnung_mauerwerk",
       "targetModuleLabel": "Mauerwerk: Tragfähigkeit"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_nachhaltigkeit_1",
@@ -32466,7 +33565,11 @@
       "targetModuleTab": "rechnung_nachhaltigkeit",
       "targetModuleLabel": "Nachhaltigkeit & Dauerhaftigkeit"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_nachhaltigkeit_2",
@@ -32502,7 +33605,11 @@
       "targetModuleTab": "rechnung_nachhaltigkeit",
       "targetModuleLabel": "Nachhaltigkeit & Dauerhaftigkeit"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_nachhaltigkeit_3",
@@ -32538,7 +33645,11 @@
       "targetModuleTab": "rechnung_nachhaltigkeit",
       "targetModuleLabel": "Nachhaltigkeit & Dauerhaftigkeit"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_nachhaltigkeit_4",
@@ -32574,7 +33685,11 @@
       "targetModuleTab": "rechnung_nachhaltigkeit",
       "targetModuleLabel": "Nachhaltigkeit & Dauerhaftigkeit"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_nachhaltigkeit_5",
@@ -32610,7 +33725,11 @@
       "targetModuleTab": "rechnung_nachhaltigkeit",
       "targetModuleLabel": "Nachhaltigkeit & Dauerhaftigkeit"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_nachhaltigkeit_6",
@@ -32646,7 +33765,11 @@
       "targetModuleTab": "rechnung_nachhaltigkeit",
       "targetModuleLabel": "Nachhaltigkeit & Dauerhaftigkeit"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_bestand_1",
@@ -32682,7 +33805,11 @@
       "targetModuleTab": "rechnung_bestand",
       "targetModuleLabel": "Bauen im Bestand"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_bestand_2",
@@ -32718,7 +33845,11 @@
       "targetModuleTab": "rechnung_bestand",
       "targetModuleLabel": "Bauen im Bestand"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_bestand_3",
@@ -32754,7 +33885,11 @@
       "targetModuleTab": "rechnung_bestand",
       "targetModuleLabel": "Bauen im Bestand"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_bestand_4",
@@ -32790,7 +33925,11 @@
       "targetModuleTab": "rechnung_bestand",
       "targetModuleLabel": "Bauen im Bestand"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_bestand_5",
@@ -32826,7 +33965,11 @@
       "targetModuleTab": "rechnung_bestand",
       "targetModuleLabel": "Bauen im Bestand"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_bestand_6",
@@ -32862,7 +34005,11 @@
       "targetModuleTab": "rechnung_bestand",
       "targetModuleLabel": "Bauen im Bestand"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_schallschutz_1",
@@ -32898,7 +34045,11 @@
       "targetModuleTab": "rechnung_schallschutz",
       "targetModuleLabel": "Bauakustik: Schallschutz"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_schallschutz_2",
@@ -32934,7 +34085,11 @@
       "targetModuleTab": "rechnung_schallschutz",
       "targetModuleLabel": "Bauakustik: Schallschutz"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_schallschutz_3",
@@ -32970,7 +34125,11 @@
       "targetModuleTab": "rechnung_schallschutz",
       "targetModuleLabel": "Bauakustik: Schallschutz"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_schallschutz_4",
@@ -33006,7 +34165,11 @@
       "targetModuleTab": "rechnung_schallschutz",
       "targetModuleLabel": "Bauakustik: Schallschutz"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_schallschutz_5",
@@ -33042,7 +34205,11 @@
       "targetModuleTab": "rechnung_schallschutz",
       "targetModuleLabel": "Bauakustik: Schallschutz"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_schallschutz_6",
@@ -33078,7 +34245,11 @@
       "targetModuleTab": "rechnung_schallschutz",
       "targetModuleLabel": "Bauakustik: Schallschutz"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_brandschutz_1",
@@ -33114,7 +34285,11 @@
       "targetModuleTab": "rechnung_brandschutz",
       "targetModuleLabel": "Brandschutz: Heißbemessung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_brandschutz_2",
@@ -33150,7 +34325,11 @@
       "targetModuleTab": "rechnung_brandschutz",
       "targetModuleLabel": "Brandschutz: Heißbemessung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_brandschutz_3",
@@ -33186,7 +34365,11 @@
       "targetModuleTab": "rechnung_brandschutz",
       "targetModuleLabel": "Brandschutz: Heißbemessung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_brandschutz_4",
@@ -33222,7 +34405,11 @@
       "targetModuleTab": "rechnung_brandschutz",
       "targetModuleLabel": "Brandschutz: Heißbemessung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_brandschutz_5",
@@ -33258,7 +34445,11 @@
       "targetModuleTab": "rechnung_brandschutz",
       "targetModuleLabel": "Brandschutz: Heißbemessung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_rechnung_brandschutz_6",
@@ -33294,7 +34485,11 @@
       "targetModuleTab": "rechnung_brandschutz",
       "targetModuleLabel": "Brandschutz: Heißbemessung"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_online_tools_1",
@@ -33330,7 +34525,11 @@
       "targetModuleTab": "online_tools",
       "targetModuleLabel": "Online-Tools & Rechner"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_online_tools_2",
@@ -33366,7 +34565,11 @@
       "targetModuleTab": "online_tools",
       "targetModuleLabel": "Online-Tools & Rechner"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_online_tools_3",
@@ -33402,7 +34605,11 @@
       "targetModuleTab": "online_tools",
       "targetModuleLabel": "Online-Tools & Rechner"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_online_tools_4",
@@ -33438,7 +34645,11 @@
       "targetModuleTab": "online_tools",
       "targetModuleLabel": "Online-Tools & Rechner"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_bim_baustoffe_1",
@@ -33474,7 +34685,11 @@
       "targetModuleTab": "bim_baustoffe",
       "targetModuleLabel": "BIM für Baustoffe"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_bim_baustoffe_2",
@@ -33510,7 +34725,11 @@
       "targetModuleTab": "bim_baustoffe",
       "targetModuleLabel": "BIM für Baustoffe"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_bim_baustoffe_3",
@@ -33546,7 +34765,11 @@
       "targetModuleTab": "bim_baustoffe",
       "targetModuleLabel": "BIM für Baustoffe"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_bim_baustoffe_4",
@@ -33582,7 +34805,11 @@
       "targetModuleTab": "bim_baustoffe",
       "targetModuleLabel": "BIM für Baustoffe"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_materialpaesse_1",
@@ -33618,7 +34845,11 @@
       "targetModuleTab": "materialpaesse",
       "targetModuleLabel": "Materialpässe"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_materialpaesse_2",
@@ -33654,7 +34885,11 @@
       "targetModuleTab": "materialpaesse",
       "targetModuleLabel": "Materialpässe"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_materialpaesse_3",
@@ -33690,7 +34925,11 @@
       "targetModuleTab": "materialpaesse",
       "targetModuleLabel": "Materialpässe"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_materialpaesse_4",
@@ -33726,7 +34965,11 @@
       "targetModuleTab": "materialpaesse",
       "targetModuleLabel": "Materialpässe"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_dpp_1",
@@ -33762,7 +35005,11 @@
       "targetModuleTab": "dpp",
       "targetModuleLabel": "Digitaler Produktpass (DPP)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_dpp_2",
@@ -33798,7 +35045,11 @@
       "targetModuleTab": "dpp",
       "targetModuleLabel": "Digitaler Produktpass (DPP)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_dpp_3",
@@ -33834,7 +35085,11 @@
       "targetModuleTab": "dpp",
       "targetModuleLabel": "Digitaler Produktpass (DPP)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_system_1",
@@ -33870,7 +35125,11 @@
       "targetModuleTab": "ki_system",
       "targetModuleLabel": "Systemarchitektur"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_system_2",
@@ -33906,7 +35165,11 @@
       "targetModuleTab": "ki_system",
       "targetModuleLabel": "Systemarchitektur"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_system_3",
@@ -33942,7 +35205,11 @@
       "targetModuleTab": "ki_system",
       "targetModuleLabel": "Systemarchitektur"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_system_4",
@@ -33978,7 +35245,11 @@
       "targetModuleTab": "ki_system",
       "targetModuleLabel": "Systemarchitektur"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_prompting_1",
@@ -34014,7 +35285,11 @@
       "targetModuleTab": "ki_prompting",
       "targetModuleLabel": "Prompting-Praxis"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_prompting_2",
@@ -34050,7 +35325,11 @@
       "targetModuleTab": "ki_prompting",
       "targetModuleLabel": "Prompting-Praxis"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_prompting_3",
@@ -34086,7 +35365,11 @@
       "targetModuleTab": "ki_prompting",
       "targetModuleLabel": "Prompting-Praxis"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_prompting_4",
@@ -34122,7 +35405,11 @@
       "targetModuleTab": "ki_prompting",
       "targetModuleLabel": "Prompting-Praxis"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_llmpraxis_1",
@@ -34158,7 +35445,11 @@
       "targetModuleTab": "ki_llmpraxis",
       "targetModuleLabel": "LLM-Praxis"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_llmpraxis_2",
@@ -34194,7 +35485,11 @@
       "targetModuleTab": "ki_llmpraxis",
       "targetModuleLabel": "LLM-Praxis"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_llmpraxis_3",
@@ -34230,7 +35525,11 @@
       "targetModuleTab": "ki_llmpraxis",
       "targetModuleLabel": "LLM-Praxis"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_llmpraxis_4",
@@ -34266,7 +35565,11 @@
       "targetModuleTab": "ki_llmpraxis",
       "targetModuleLabel": "LLM-Praxis"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_thesen_1",
@@ -34302,7 +35605,11 @@
       "targetModuleTab": "ki_thesen",
       "targetModuleLabel": "Tools für Thesen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_thesen_2",
@@ -34338,7 +35645,11 @@
       "targetModuleTab": "ki_thesen",
       "targetModuleLabel": "Tools für Thesen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_thesen_3",
@@ -34374,7 +35685,11 @@
       "targetModuleTab": "ki_thesen",
       "targetModuleLabel": "Tools für Thesen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_thesen_4",
@@ -34410,7 +35725,11 @@
       "targetModuleTab": "ki_thesen",
       "targetModuleLabel": "Tools für Thesen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_lokal_1",
@@ -34446,7 +35765,11 @@
       "targetModuleTab": "ki_lokal",
       "targetModuleLabel": "Lokale KI (LM Studio)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_lokal_2",
@@ -34482,7 +35805,11 @@
       "targetModuleTab": "ki_lokal",
       "targetModuleLabel": "Lokale KI (LM Studio)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_lokal_3",
@@ -34518,7 +35845,11 @@
       "targetModuleTab": "ki_lokal",
       "targetModuleLabel": "Lokale KI (LM Studio)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_lokal_4",
@@ -34554,7 +35885,11 @@
       "targetModuleTab": "ki_lokal",
       "targetModuleLabel": "Lokale KI (LM Studio)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_ueb_1",
@@ -34590,7 +35925,11 @@
       "targetModuleTab": "ki_uebungen",
       "targetModuleLabel": "Hands-on-Übungen (Master)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_ueb_2",
@@ -34626,7 +35965,11 @@
       "targetModuleTab": "ki_uebungen",
       "targetModuleLabel": "Hands-on-Übungen (Master)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_ueb_3",
@@ -34662,7 +36005,11 @@
       "targetModuleTab": "ki_uebungen",
       "targetModuleLabel": "Hands-on-Übungen (Master)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_ueb_4",
@@ -34698,7 +36045,11 @@
       "targetModuleTab": "ki_uebungen",
       "targetModuleLabel": "Hands-on-Übungen (Master)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_ueb_5",
@@ -34734,7 +36085,11 @@
       "targetModuleTab": "ki_uebungen",
       "targetModuleLabel": "Hands-on-Übungen (Master)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_ki_ueb_6",
@@ -34770,7 +36125,11 @@
       "targetModuleTab": "ki_uebungen",
       "targetModuleLabel": "Hands-on-Übungen (Master)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_px_bauleitung_1",
@@ -34806,7 +36165,11 @@
       "targetModuleTab": "px_bauleitung",
       "targetModuleLabel": "Bauleitung & Baustelle"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_px_bauleitung_2",
@@ -34842,7 +36205,11 @@
       "targetModuleTab": "px_bauleitung",
       "targetModuleLabel": "Bauleitung & Baustelle"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_px_bauleitung_3",
@@ -34878,7 +36245,11 @@
       "targetModuleTab": "px_bauleitung",
       "targetModuleLabel": "Bauleitung & Baustelle"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_px_bauleitung_4",
@@ -34914,7 +36285,11 @@
       "targetModuleTab": "px_bauleitung",
       "targetModuleLabel": "Bauleitung & Baustelle"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_px_bautagebuch_1",
@@ -34950,7 +36325,11 @@
       "targetModuleTab": "px_bautagebuch",
       "targetModuleLabel": "Bautagebuch"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_px_bautagebuch_2",
@@ -34986,7 +36365,11 @@
       "targetModuleTab": "px_bautagebuch",
       "targetModuleLabel": "Bautagebuch"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_px_bautagebuch_3",
@@ -35022,7 +36405,11 @@
       "targetModuleTab": "px_bautagebuch",
       "targetModuleLabel": "Bautagebuch"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_px_bautagebuch_4",
@@ -35058,7 +36445,11 @@
       "targetModuleTab": "px_bautagebuch",
       "targetModuleLabel": "Bautagebuch"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_px_produktion_1",
@@ -35094,7 +36485,11 @@
       "targetModuleTab": "px_produktion",
       "targetModuleLabel": "Produktherstellung & QS"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_px_produktion_2",
@@ -35130,7 +36525,11 @@
       "targetModuleTab": "px_produktion",
       "targetModuleLabel": "Produktherstellung & QS"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_px_produktion_3",
@@ -35166,7 +36565,11 @@
       "targetModuleTab": "px_produktion",
       "targetModuleLabel": "Produktherstellung & QS"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_px_produktion_4",
@@ -35202,7 +36605,11 @@
       "targetModuleTab": "px_produktion",
       "targetModuleLabel": "Produktherstellung & QS"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_px_karriere_1",
@@ -35238,7 +36645,11 @@
       "targetModuleTab": "px_karriere",
       "targetModuleLabel": "Karrierestart & Soft Skills"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_px_karriere_2",
@@ -35274,7 +36685,11 @@
       "targetModuleTab": "px_karriere",
       "targetModuleLabel": "Karrierestart & Soft Skills"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_px_karriere_3",
@@ -35310,7 +36725,11 @@
       "targetModuleTab": "px_karriere",
       "targetModuleLabel": "Karrierestart & Soft Skills"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_px_karriere_4",
@@ -35346,7 +36765,11 @@
       "targetModuleTab": "px_karriere",
       "targetModuleLabel": "Karrierestart & Soft Skills"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_oekobilanz_lca_g1",
@@ -35362,7 +36785,7 @@
       "um rund 44 %",
       "um rund 39 %",
       "um rund 35 %",
-      "um rund 48 %"
+      "um rund 50 %"
     ],
     "correctIdx": 1,
     "explanation": "CEM I: 320 · 0,80 + 30 = 286; CEM III/A: 320 · 0,45 + 30 = 174 kg CO₂-Äq./m³. Minderung (286 − 174)/286 = 39 %.",
@@ -35372,7 +36795,7 @@
       "44 % ist die Minderung des Zement-GWP allein (0,35/0,80); der Pauschalanteil von 30 kg bleibt gleich und verdünnt die Wirkung.",
       "",
       "35 % ergibt sich, wenn die Differenz auf 320 kg CO₂-Äq. statt auf das Gesamt-GWP von 286 kg bezogen wird.",
-      "48 % entsteht, wenn die 30 kg nur bei CEM I addiert werden; sie gelten für beide Varianten."
+      "50 % entsteht ((286 − 144)/286), wenn die 30 kg nur bei CEM I addiert werden; sie gelten für beide Varianten."
     ],
     "gapAnalysis": {
       "topic": "Zementanteil am Beton-GWP",
@@ -35382,7 +36805,12 @@
       "targetModuleTab": "oekobilanz_lca",
       "targetModuleLabel": "Ökobilanzierung (LCA): Grundlagen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "korrigiert",
+      "hinweis": "Distraktor 48 % → 50 %: der beschriebene Fehler ergibt (286 − 144)/286 ≈ 50 %."
+    }
   },
   {
     "id": "qn_oekobilanz_lca_g2",
@@ -35418,7 +36846,11 @@
       "targetModuleTab": "oekobilanz_lca",
       "targetModuleLabel": "Ökobilanzierung (LCA): Grundlagen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_oekobilanz_lca_g3",
@@ -35454,7 +36886,11 @@
       "targetModuleTab": "oekobilanz_lca",
       "targetModuleLabel": "Ökobilanzierung (LCA): Grundlagen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_stahlbau_ec3_1",
@@ -36026,7 +37462,11 @@
       "targetModuleTab": "korrosionsschutz_beschichtungen",
       "targetModuleLabel": "Korrosionsschutz durch Beschichtungen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_korrosionsschutz_beschichtungen_2",
@@ -36040,7 +37480,7 @@
     "question": "Ein feuerverzinktes Bauteil (85 µm Zink) steht in Kategorie C4 mit einem Zinkabtrag von 2,1 bis 4,2 µm/a. Welche Schutzdauer ergibt sich im ungünstigen Fall?",
     "options": [
       "rund 40 Jahre",
-      "rund 30 Jahre",
+      "rund 27 Jahre",
       "rund 20 Jahre",
       "rund 10 Jahre"
     ],
@@ -36050,7 +37490,7 @@
     "niveau": "B",
     "distraktorFeedback": [
       "Das ist der günstige Wert mit der unteren Rate 2,1 µm/a.",
-      "Hier wurde mit dem Mittelwert der Spanne gerechnet; maßgebend ist die obere Rate.",
+      "Hier wurde mit dem Mittelwert der Spanne (3,15 µm/a) gerechnet; maßgebend ist die obere Rate.",
       "",
       "Das entspräche einer Rate von 8,4 µm/a, also der Kategorie C5."
     ],
@@ -36062,7 +37502,12 @@
       "targetModuleTab": "korrosionsschutz_beschichtungen",
       "targetModuleLabel": "Korrosionsschutz durch Beschichtungen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "korrigiert",
+      "hinweis": "Distraktor 30 → 27 Jahre: 85 µm/3,15 µm/a ≈ 27 a entspricht dem beschriebenen Fehler."
+    }
   },
   {
     "id": "qn_korrosionsschutz_beschichtungen_3",
@@ -36098,7 +37543,11 @@
       "targetModuleTab": "korrosionsschutz_beschichtungen",
       "targetModuleLabel": "Korrosionsschutz durch Beschichtungen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_korrosionsschutz_beschichtungen_4",
@@ -36133,7 +37582,11 @@
       "targetModuleTab": "korrosionsschutz_beschichtungen",
       "targetModuleLabel": "Korrosionsschutz durch Beschichtungen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_korrosionsschutz_beschichtungen_5",
@@ -36168,7 +37621,11 @@
       "targetModuleTab": "korrosionsschutz_beschichtungen",
       "targetModuleLabel": "Korrosionsschutz durch Beschichtungen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_korrosionsschutz_beschichtungen_6",
@@ -36204,7 +37661,11 @@
       "targetModuleTab": "korrosionsschutz_beschichtungen",
       "targetModuleLabel": "Korrosionsschutz durch Beschichtungen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_korrosionsschutz_beschichtungen_7",
@@ -36240,7 +37701,11 @@
       "targetModuleTab": "korrosionsschutz_beschichtungen",
       "targetModuleLabel": "Korrosionsschutz durch Beschichtungen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_korrosionsschutz_beschichtungen_8",
@@ -36276,7 +37741,11 @@
       "targetModuleTab": "korrosionsschutz_beschichtungen",
       "targetModuleLabel": "Korrosionsschutz durch Beschichtungen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_membranen_etfe_1",
@@ -37129,7 +38598,11 @@
       "targetModuleTab": "schnellkarbonatisierung",
       "targetModuleLabel": "Schnellkarbonatisierung (DIN EN 12390-12)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_schnellkarbonatisierung_2",
@@ -37164,7 +38637,11 @@
       "targetModuleTab": "schnellkarbonatisierung",
       "targetModuleLabel": "Schnellkarbonatisierung (DIN EN 12390-12)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_schnellkarbonatisierung_3",
@@ -37200,7 +38677,11 @@
       "targetModuleTab": "schnellkarbonatisierung",
       "targetModuleLabel": "Schnellkarbonatisierung (DIN EN 12390-12)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_schnellkarbonatisierung_4",
@@ -37235,7 +38716,11 @@
       "targetModuleTab": "schnellkarbonatisierung",
       "targetModuleLabel": "Schnellkarbonatisierung (DIN EN 12390-12)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_schnellkarbonatisierung_5",
@@ -37271,7 +38756,11 @@
       "targetModuleTab": "schnellkarbonatisierung",
       "targetModuleLabel": "Schnellkarbonatisierung (DIN EN 12390-12)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_schnellkarbonatisierung_6",
@@ -37307,7 +38796,11 @@
       "targetModuleTab": "schnellkarbonatisierung",
       "targetModuleLabel": "Schnellkarbonatisierung (DIN EN 12390-12)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_schnellkarbonatisierung_7",
@@ -37343,7 +38836,11 @@
       "targetModuleTab": "schnellkarbonatisierung",
       "targetModuleLabel": "Schnellkarbonatisierung (DIN EN 12390-12)"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-25",
+      "ergebnis": "ok"
+    }
   },
   {
     "id": "qn_labor_potentialmessung_1",
