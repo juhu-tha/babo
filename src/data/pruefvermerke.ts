@@ -11,7 +11,9 @@
  * Getrennt von src/registry/modules.ts gehalten, damit Prüfvermerke ohne Eingriff in die Registry
  * gepflegt werden können. ModulKopf zeigt den Vermerk an, der Admin-Bereich („Meine Module“) listet ihn.
  */
-import { MODULE, BAUM_GRUPPEN, MODUL_BY_ID, type ModulEintrag } from '../registry/modules';
+// Nur der Registry-Auszug (src/registry/kern.ts): ModulKopf zeigt den Vermerk auf jeder Modulseite, die volle
+// Registry soll dort nicht mitgeladen werden (Phase 5, AP 5.5 Nachtrag). Cluster-Zuordnung: ./modulCluster.ts.
+import { MODUL_KERN, type ModulKern } from '../registry/kern';
 
 export type PruefStatus = 'geprueft' | 'offen' | 're-review';
 
@@ -35,24 +37,18 @@ export const PRUEF_STATUS_TEXT: Record<PruefStatus, string> = {
 export const OHNE_PRUEFVERMERK: ReadonlySet<string> = new Set(['Allgemein', 'Infos & Quellen', 'Studium THA', 'Weiter@THA', 'Vorlesungen', 'Lehrveranstaltungen', 'Übungsaufgaben', 'Thesen & Projekte', 'Kuriositäten']);
 const FACH_TYPEN: ReadonlySet<string> = new Set(['standard', 'calculator', 'norm', 'database']);
 
-/** Fachmodul = Modul in der Modulübersicht mit Fachinhalt (Typ standard, calculator, norm oder database) außerhalb der Info-/Studienbereiche */
-export function istFachmodul(m: ModulEintrag | undefined): boolean {
-  return !!m?.baum && FACH_TYPEN.has(m.baum.typ) && !OHNE_PRUEFVERMERK.has(m.gruppe ?? '');
+/** Fachmodul = Modul in der Modulübersicht mit Fachinhalt (Typ standard, calculator, norm oder database) außerhalb der Info-/Studienbereiche.
+ *  Nimmt einen Registry-Eintrag (baum.typ) oder einen Auszug aus src/registry/kern.ts (typ). */
+export function istFachmodul(m: { gruppe?: string; typ?: string; baum?: { typ: string } } | undefined): boolean {
+  const typ = m?.typ ?? m?.baum?.typ;
+  return !!typ && FACH_TYPEN.has(typ) && !OHNE_PRUEFVERMERK.has(m?.gruppe ?? '');
 }
 
-export const FACHMODULE: readonly ModulEintrag[] = (MODULE as readonly ModulEintrag[]).filter(istFachmodul);
-
-const CLUSTER_NR: Record<string, string> = { cluster_1: 'I', cluster_2: 'II', cluster_3: 'III', cluster_4: 'IV', cluster_5: 'V', cluster_6: 'VI' };
-const CLUSTER_VON = new Map<string, string>(BAUM_GRUPPEN.flatMap(g => (g.knoten as readonly string[]).map(id => [id, CLUSTER_NR[g.cluster] ?? ''] as [string, string])));
-
-/** Cluster-Nummer (I–VI) eines Moduls laut Modulübersicht, sonst '' */
-export function clusterVon(id: string): string {
-  return CLUSTER_VON.get(id) ?? '';
-}
+export const FACHMODULE: readonly ModulKern[] = [...MODUL_KERN.values()].filter(istFachmodul);
 
 /** Prüfvermerk eines Fachmoduls; undefined für Nicht-Fachmodule */
 export function pruefvermerkFuer(id: string): Pruefvermerk | undefined {
-  if (!istFachmodul(MODUL_BY_ID.get(id))) return undefined;
+  if (!istFachmodul(MODUL_KERN.get(id))) return undefined;
   return PRUEFVERMERKE[id] ?? { status: 'offen' };
 }
 

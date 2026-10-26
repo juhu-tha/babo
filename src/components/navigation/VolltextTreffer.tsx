@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FileSearch } from 'lucide-react';
 import { ladeSuchindex, suche, type IndexEintrag, type Treffer } from '@/src/utils/volltextsuche';
-import { MODUL_BY_ID } from '@/src/registry/modules';
+import { MODUL_KERN } from '@/src/registry/kern';
 import type { TabId } from '@/src/contexts/TabContext';
 
 /** Treffer der Volltextsuche unter dem Menü (Phase 2, AP 2.9) */
@@ -11,7 +11,7 @@ export function VolltextTreffer({ anfrage, oeffne }: { anfrage: string; oeffne: 
     if (anfrage.trim().length >= 3 && !index) ladeSuchindex().then(setIndex);
   }, [anfrage, index]);
   if (anfrage.trim().length < 3) return null;
-  const titel = (id: string) => MODUL_BY_ID.get(id)?.baum?.titel ?? MODUL_BY_ID.get(id)?.label ?? id;
+  const titel = (id: string) => MODUL_KERN.get(id)?.titel ?? MODUL_KERN.get(id)?.label ?? id;
   const treffer: Treffer[] = index ? suche(index, anfrage, titel) : [];
   return (
     <section aria-label="Treffer im Inhalt der Module" className="mt-2 pt-2 border-t border-home-grau/20 dark:border-slate-800">

@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { ClipboardList } from 'lucide-react';
-import { FACHMODULE, PRUEF_STATUS_TEXT, clusterVon, datumDe, pruefvermerkFuer, type PruefStatus } from '@/src/data/pruefvermerke';
+import { FACHMODULE, PRUEF_STATUS_TEXT, datumDe, pruefvermerkFuer, type PruefStatus } from '@/src/data/pruefvermerke';
+import { clusterVon } from '@/src/data/modulCluster';
 import { CLUSTER_NAMEN, PATEN_JE_CLUSTER, istClusterNr, pateVon } from '@/src/data/paten';
 import { formatDeGanzzahl } from '@/src/utils/numberFormat';
 
@@ -19,7 +20,7 @@ export function MeineModule() {
 
   const zeilen = useMemo(() => FACHMODULE.map(m => {
     const c = clusterVon(m.id);
-    return { id: m.id, titel: m.baum?.titel ?? m.label, cluster: c, pate: pateVon(c), vermerk: pruefvermerkFuer(m.id) ?? { status: 'offen' as const } };
+    return { id: m.id, titel: m.titel ?? m.label, cluster: c, pate: pateVon(c), vermerk: pruefvermerkFuer(m.id) ?? { status: 'offen' as const } };
   }), []);
 
   const paten = useMemo(() => [...new Set(Object.values(PATEN_JE_CLUSTER).map(p => p.pate).filter(Boolean))].sort(), []);

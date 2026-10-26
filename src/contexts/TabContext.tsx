@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { TAB_ALIASES, MODUL_BY_ID, type ModulId, type AliasId } from '@/src/registry/modules';
+import { TAB_ALIASES, MODUL_KERN } from '@/src/registry/kern';
+import type { ModulId, AliasId } from '@/src/registry/modules';
 
 // Gültige IDs kommen aus der zentralen Modul-Registry (src/registry/modules.ts)
 export type TabId = ModulId | AliasId;
@@ -40,7 +41,7 @@ export function resolveTabId(tab: string): TabId {
 export function isKnownTab(tab: string): boolean {
   if (!tab) return false;
   const clean = tab.trim().toLowerCase();
-  return clean in TAB_ALIASES || (MODUL_BY_ID.has(clean) && !clean.startsWith('divider_'));
+  return clean in TAB_ALIASES || (MODUL_KERN.has(clean) && !clean.startsWith('divider_'));
 }
 
 function getInitialTab(): TabId {
