@@ -290,7 +290,7 @@ export default function Kreislaufwirtschaft() {
           aktiv={activeTab}
           onWechsel={setActiveTab}
           variante="kachel"
-          className="flex flex-col gap-6 [&>[role=tablist]]:p-4 [&>[role=tablist]]:bg-slate-50/50 [&>[role=tablist]]:rounded-2xl [&>[role=tablist]]:border [&>[role=tablist]]:border-rose-100"
+          className="flex flex-col gap-6 [&>[role=tablist]]:p-4 [&>[role=tablist]]:bg-slate-50/50 dark:[&>[role=tablist]]:bg-slate-800/40 [&>[role=tablist]]:rounded-2xl [&>[role=tablist]]:border [&>[role=tablist]]:border-rose-100"
         >
         {activeTab === 'grundlagen' && (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 animate-in fade-in duration-300">

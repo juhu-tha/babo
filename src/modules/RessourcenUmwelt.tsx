@@ -34,7 +34,7 @@ export default function RessourcenUmwelt() {
           aktiv={activeTab}
           onWechsel={setActiveTab}
           variante="kachel"
-          className="[&>[role=tablist]]:p-4 [&>[role=tablist]]:bg-slate-50/50 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/30 [&>[role=tabpanel]]:p-6"
+          className="[&>[role=tablist]]:p-4 [&>[role=tablist]]:bg-slate-50/50 dark:[&>[role=tablist]]:bg-slate-800/40 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/30 [&>[role=tabpanel]]:p-6"
         >
           {activeTab === 'RessourcenEmissionen' && <RessourcenEmissionen />}
           {activeTab === 'Nawaro' && <Nawaro />}
