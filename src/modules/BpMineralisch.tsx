@@ -472,7 +472,7 @@ export default function BpMineralisch() {
 
       <ModuleFooter
         weblinks={[
-          { title: "Zement-Taschenbuch.", url: "https://www.vdz-online.de/publikationen/zement-taschenbuch" }
+          { title: "Zement-Taschenbuch.", url: "https://www.vdz-online.de/wissensportal/publikationen/zement-taschenbuch-2008" }
         ]} 
         wikipedia={[
           { title: 'Sicherheitsglas', url: 'https://de.wikipedia.org/wiki/Sicherheitsglas' },

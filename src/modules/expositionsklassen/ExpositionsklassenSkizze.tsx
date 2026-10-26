@@ -544,7 +544,7 @@ export function ExpositionsklassenSkizze({
               <rect x="270" y="30" width="620" height="310" fill="#fdf2f8" fillOpacity="0.9" />
               <rect x="270" y="30" width="620" height="310" fill="url(#concretePores)" />
               <text x="370" y="60" fill="#831843" fontSize="12" fontWeight="bold">
-                Alkalische Schutzmatrix (pH &approx; 12,5 &ndash; 13,5)
+                Alkalische Schutzmatrix (pH ≈ 12,5 &ndash; 13,5)
               </text>
               <text x="370" y="78" fill="#9d174d" fontSize="10">
                 Stabiler Passivierungsfilm (&gamma;-Fe₂O₃) schützt den Bewehrungsstahl
@@ -653,7 +653,7 @@ export function ExpositionsklassenSkizze({
               </text>
               <line x1="160" y1="220" x2="600" y2="220" stroke="#0284c7" strokeWidth="1" strokeDasharray="2,2" />
               <text x="470" y="215" fill="#0284c7" fontSize="9">
-                Kritischer Grenzwert Ccrit &approx; 0,40–0,50 M.-% bez. auf Zement
+                Kritischer Grenzwert Ccrit ≈ 0,40–0,50 M.-% bez. auf Zement
               </text>
             </svg>
           </div>
@@ -679,7 +679,7 @@ export function ExpositionsklassenSkizze({
               <div className="p-3 bg-white rounded-lg border border-home-grau/20 space-y-1">
                 <span className="font-bold text-text-main block"><MdText text={inhalt.texte.t3ChloridLochfraß} /></span>
                 <div className="text-center py-1 font-mono text-cyan-800 font-bold">
-                  Ccrit &approx; 0,40 &ndash; 0,50 M.-%
+                  Ccrit ≈ 0,40 &ndash; 0,50 M.-%
                 </div>
                 <p className="text-text-main/70"><MdText text={inhalt.texte.chlorideInitiierenLochfraßkorrosionLokal} /></p>
               </div>

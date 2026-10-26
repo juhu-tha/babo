@@ -848,7 +848,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
       />
       <FormulaDerivationBox
         title={inhalt.werte.beispiel2BußgeldrahmenNach}
-        zielGleichung="B_{max} = \max\left(20\ \text{Mio. €};\ 0{,}04 \cdot U\right)"
+        zielGleichung="B_{max} = \max\left(20\ \text{Mio. EUR};\ 0{,}04 \cdot U\right)"
         schritte={inhalt.daten["KiBaustoffeInhalt.schritte_10"]}
         ergebnisHinweis={inhalt.werte.dasSindObergrenzenFür}
         normQuelle={inhalt.werte.verordnungEu2016679}

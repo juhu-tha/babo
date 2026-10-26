@@ -44946,7 +44946,7 @@
     "question": "Ein Python-Skript soll den lokalen Server von LM Studio über die OpenAI-Bibliothek ansprechen. Welche Einstellung ist nach dem Modul richtig?",
     "options": [
       "base_url = \"http://localhost:1234/v1\" mit beliebigem Platzhalter-Key",
-      "base_url = \"https://api.openai.com/v1\" mit kostenpflichtigem API-Key",
+      "base_url = \"api.openai.com/v1\" mit kostenpflichtigem API-Key",
       "base_url = \"http://localhost:8080/chat\" mit Hugging-Face-Token",
       "base_url = \"file://modelle/qwen.gguf\" ohne Server-Start"
     ],
@@ -49527,6 +49527,438 @@
       "actionableAdvice": "Wiederholen Sie im Modul Ausblick: neue Normengeneration den Reiter „Was gilt wann?“.",
       "targetModuleTab": "normen_ausblick",
       "targetModuleLabel": "Ausblick: neue Normengeneration (Beton und Eurocodes)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_zwang_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "zwang",
+    "moduleTitle": "Zwangspannungen",
+    "topic": "Zwang aus Abkühlung",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 1992-1-1 / DAfStb Heft 466",
+    "question": "Ein Betonbauteil (α_T = 10⁻⁵ 1/K, E = 30 000 N/mm²) kühlt um ΔT = 20 K ab und ist zu R = 50 % festgehalten; Schwinden bleibt unberücksichtigt. Wie groß ist die Zwangspannung σ_z = α_T·ΔT·E·R?",
+    "options": [
+      "6,0 N/mm²",
+      "3,0 N/mm²",
+      "0,6 N/mm²",
+      "1,5 N/mm²"
+    ],
+    "correctIdx": 1,
+    "explanation": "ε = 10⁻⁵ · 20 = 0,2 ‰; 0,0002 · 30 000 N/mm² = 6,0 N/mm² bei voller Festhaltung; mit R = 0,5 ergibt sich σ_z = 3,0 N/mm².",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "6,0 N/mm² gelten für volle Festhaltung (R = 100 %); der Festhaltungsgrad fehlt.",
+      "",
+      "Hier ist bei der Dehnung eine Zehnerpotenz verloren gegangen (0,02 ‰ statt 0,2 ‰).",
+      "Der Festhaltungsgrad wurde doppelt angesetzt (·0,5·0,5)."
+    ],
+    "gapAnalysis": {
+      "topic": "Zwang aus Abkühlung",
+      "misconception": "Festhaltungsgrad oder Größenordnung der Dehnung werden falsch angesetzt.",
+      "coreRule": "σ_z = α_T·ΔT·E·R; nur der behinderte Anteil der Dehnung erzeugt Spannung.",
+      "actionableAdvice": "Arbeiten Sie den Zwang-Rechner im Modul Zwangspannungen noch einmal durch.",
+      "targetModuleTab": "zwang",
+      "targetModuleLabel": "Zwangspannungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_zwang_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "zwang",
+    "moduleTitle": "Zwangspannungen",
+    "topic": "Festhaltungsgrad",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1992-1-1",
+    "question": "Ein Bauteil kann sich beim Abkühlen völlig frei verkürzen (R = 0 %). Welche Zwangspannung entsteht?",
+    "options": [
+      "die volle Spannung α_T·ΔT·E",
+      "eine gleich große Druckspannung α_T·ΔT·E",
+      "keine, die Verkürzung ist frei",
+      "die halbe Spannung α_T·ΔT·E/2"
+    ],
+    "correctIdx": 2,
+    "explanation": "Zwang entsteht nur, wenn eine Verformung behindert wird. Bei R = 0 % stellt sich die freie Verkürzung ein, die Spannung ist null.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Die volle Spannung entsteht nur bei voller Festhaltung (R = 100 %).",
+      "Eine behinderte Verkürzung erzeugt Zug, keine Druckspannung – und hier ist nichts behindert.",
+      "",
+      "Die halbe Spannung gehört zu R = 50 %, nicht zu einem frei beweglichen Bauteil."
+    ],
+    "gapAnalysis": {
+      "topic": "Festhaltungsgrad",
+      "misconception": "Temperaturänderung allein wird schon für spannungserzeugend gehalten.",
+      "coreRule": "Ohne Behinderung der Verformung (R = 0) entsteht keine Zwangspannung.",
+      "actionableAdvice": "Arbeiten Sie den Zwang-Rechner im Modul Zwangspannungen noch einmal durch.",
+      "targetModuleTab": "zwang",
+      "targetModuleLabel": "Zwangspannungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_zwang_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "zwang",
+    "moduleTitle": "Zwangspannungen",
+    "topic": "Rissbildung",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 1992-1-1, Abschn. 7.3",
+    "question": "Wann ist bei Zwangbeanspruchung aus Abkühlen oder Schwinden mit einem Trennriss zu rechnen?",
+    "options": [
+      "wenn σ_z die Druckfestigkeit f_ck erreicht",
+      "wenn die freie Dehnung 1 ‰ überschreitet",
+      "wenn R unter 50 % sinkt",
+      "wenn σ_z die Zugfestigkeit f_ct erreicht"
+    ],
+    "correctIdx": 3,
+    "explanation": "Abkühlen und Schwinden erzeugen bei Behinderung Zugspannungen. Erreichen sie die wirksame Zugfestigkeit f_ct (bzw. f_ct,eff), reißt der Beton.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Zwang aus Verkürzung erzeugt Zug; maßgebend ist die viel kleinere Zugfestigkeit.",
+      "Eine feste Dehnungsgrenze gibt es nicht; entscheidend ist die Spannung im Vergleich zu f_ct.",
+      "Ein kleinerer Festhaltungsgrad senkt die Spannung und damit das Rissrisiko.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Rissbildung",
+      "misconception": "Druck- und Zugfestigkeit werden als Rissgrenze verwechselt.",
+      "coreRule": "Riss, wenn σ_z ≥ f_ct (wirksame Zugfestigkeit zum Risszeitpunkt).",
+      "actionableAdvice": "Arbeiten Sie den Zwang-Rechner im Modul Zwangspannungen noch einmal durch.",
+      "targetModuleTab": "zwang",
+      "targetModuleLabel": "Zwangspannungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_zwang_4",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "zwang",
+    "moduleTitle": "Zwangspannungen",
+    "topic": "Effektiver E-Modul",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 1992-1-1 / DAfStb Heft 466",
+    "question": "Warum wird für Zwang aus langsamer Abkühlung oder Schwinden der effektive E-Modul E_c,eff = E_cm/(1 + φ) angesetzt?",
+    "options": [
+      "Kriechen baut einen Teil der Zwangspannung ab",
+      "der E-Modul des Betons steigt mit dem Alter weiter an",
+      "Schwinden erhöht die Steifigkeit des Betons",
+      "die Bewehrung trägt den Anteil φ mit"
+    ],
+    "correctIdx": 0,
+    "explanation": "Langsam aufgebauter Zwang wird durch Kriechen (Relaxation) teilweise abgebaut. Die Kriechzahl φ mindert deshalb den maßgebenden E-Modul.",
+    "bloom": "Verstehen",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "",
+      "Der E-Modul wächst zwar mit dem Alter, das würde die Spannung aber erhöhen, nicht mindern.",
+      "Schwinden ist eine Last (Dehnung), keine Eigenschaft, die die Steifigkeit erhöht.",
+      "φ ist die Kriechzahl des Betons und hat mit der Bewehrung nichts zu tun."
+    ],
+    "gapAnalysis": {
+      "topic": "Effektiver E-Modul",
+      "misconception": "Die Abminderung des E-Moduls wird nicht mit dem Kriechen in Verbindung gebracht.",
+      "coreRule": "E_c,eff = E_cm/(1 + φ): Kriechen relaxiert langsam entstehenden Zwang.",
+      "actionableAdvice": "Arbeiten Sie den Zwang-Rechner im Modul Zwangspannungen noch einmal durch.",
+      "targetModuleTab": "zwang",
+      "targetModuleLabel": "Zwangspannungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_zwang_5",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "zwang",
+    "moduleTitle": "Zwangspannungen",
+    "topic": "Zwang aus Schwinden",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 1992-1-1",
+    "question": "Ein voll festgehaltenes Bauteil (R = 100 %, E_c,eff = 15 000 N/mm²) erfährt eine Schwinddehnung von 0,3 ‰ ohne Temperaturänderung. Wie groß ist die Zwangspannung?",
+    "options": [
+      "45 N/mm²",
+      "9,0 N/mm²",
+      "0,45 N/mm²",
+      "4,5 N/mm²"
+    ],
+    "correctIdx": 3,
+    "explanation": "σ_z = ε · E_c,eff · R = 0,0003 · 15 000 N/mm² · 1,0 = 4,5 N/mm².",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Promille wurde als 10⁻² statt 10⁻³ umgerechnet (Faktor 10 zu groß).",
+      "9,0 N/mm² ergeben sich mit dem Kurzzeit-E-Modul 30 000 N/mm²; gegeben ist der abgeminderte E_c,eff.",
+      "Hier ist eine Zehnerpotenz verloren gegangen (0,03 ‰ statt 0,3 ‰).",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Zwang aus Schwinden",
+      "misconception": "Promille-Umrechnung oder E-Modul werden falsch eingesetzt.",
+      "coreRule": "σ_z = ε_beh · E_c,eff · R mit 1 ‰ = 10⁻³.",
+      "actionableAdvice": "Arbeiten Sie den Zwang-Rechner im Modul Zwangspannungen noch einmal durch.",
+      "targetModuleTab": "zwang",
+      "targetModuleLabel": "Zwangspannungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_zwang_6",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "zwang",
+    "moduleTitle": "Zwangspannungen",
+    "topic": "Mindestbewehrung",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 1992-1-1 Gl. (7.1)",
+    "question": "Welche Aufgabe hat die Mindestbewehrung A_s,min = k_c·k·f_ct,eff·A_ct/σ_s bei Zwangbeanspruchung?",
+    "options": [
+      "Sie verhindert, dass überhaupt Risse entstehen können.",
+      "Sie verteilt Risse und begrenzt die Breite.",
+      "Sie erhöht die Zugfestigkeit des Betons.",
+      "Sie senkt den Festhaltungsgrad R."
+    ],
+    "correctIdx": 1,
+    "explanation": "Die Mindestbewehrung muss die beim Reißen frei werdende Zugkraft des Betons (f_ct,eff · A_ct) aufnehmen, ohne zu fließen. So entstehen viele feine statt weniger breiter Risse.",
+    "bloom": "Verstehen",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Risse werden nicht verhindert; die Bewehrung wird erst nach dem Reißen wirksam.",
+      "",
+      "Die Zugfestigkeit des Betons bleibt unverändert; f_ct,eff geht nur als Eingangswert ein.",
+      "Der Festhaltungsgrad hängt von Lagerung und Nachbarbauteilen ab, nicht von der Bewehrung."
+    ],
+    "gapAnalysis": {
+      "topic": "Mindestbewehrung",
+      "misconception": "Mindestbewehrung wird als Mittel zur Rissvermeidung verstanden.",
+      "coreRule": "A_s,min nimmt die Risskraft auf und begrenzt so die Rissbreite.",
+      "actionableAdvice": "Arbeiten Sie den Zwang-Rechner im Modul Zwangspannungen noch einmal durch.",
+      "targetModuleTab": "zwang",
+      "targetModuleLabel": "Zwangspannungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_sicherheit_1",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "labor_sicherheit",
+    "moduleTitle": "Laborsicherheit",
+    "topic": "Rotierende Maschinen",
+    "difficulty": "Basis",
+    "normRef": "DGUV Information 213-850",
+    "question": "Was gilt an Steintrennsäge, Kernbohrgerät und Zwangsmischer für Handschuhe, Ringe und Uhren?",
+    "options": [
+      "Schnittschutzhandschuhe sind Pflicht.",
+      "Nitrilhandschuhe gegen Zement sind Pflicht.",
+      "Nur Uhren und Armbänder sind abzulegen.",
+      "Sie sind wegen Einzugsgefahr verboten."
+    ],
+    "correctIdx": 3,
+    "explanation": "An rotierenden Maschinen gilt ein Verbot von Handschuhen, Ringen, Uhren und Armbändern: Stoff oder Handschuh kann sich um die Welle wickeln und die Hand einziehen.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Auch Schnittschutzhandschuhe können von der Welle erfasst werden.",
+      "Nitrilhandschuhe gehören zum Umgang mit Frischbeton und Harzen, nicht an rotierende Teile.",
+      "Ringe, Armbänder und Handschuhe bergen dieselbe Einzugsgefahr wie Uhren.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Rotierende Maschinen",
+      "misconception": "Handschuhe werden pauschal als Schutz verstanden, auch an rotierenden Teilen.",
+      "coreRule": "An rotierenden Maschinen: keine Handschuhe, Ringe, Uhren; Haare zusammenbinden.",
+      "actionableAdvice": "Lesen Sie im Modul Laborsicherheit den Abschnitt „Persönliche Schutzausrüstung (PSA) konsequent tragen“ noch einmal.",
+      "targetModuleTab": "labor_sicherheit",
+      "targetModuleLabel": "Laborsicherheit"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_sicherheit_2",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "labor_sicherheit",
+    "moduleTitle": "Laborsicherheit",
+    "topic": "Quarzfeinstaub",
+    "difficulty": "Basis",
+    "normRef": "TRGS 559",
+    "question": "Wie wird quarzhaltiger Staub im Baustofflabor vom Boden entfernt?",
+    "options": [
+      "trocken mit dem Besen zusammenkehren",
+      "nass oder mit Sauger der Staubklasse M/H",
+      "mit Druckluft aus Ecken ausblasen",
+      "mit einem handelsüblichen Haushaltsstaubsauger"
+    ],
+    "correctIdx": 1,
+    "explanation": "Alveolengängiger Quarzfeinstaub ist krebserzeugend. Es gilt ein Trockenkehr- und Abblasverbot; gereinigt wird nass oder mit Industriestaubsaugern der Staubklasse M oder H.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Trockenkehren wirbelt den lungengängigen Feinstaub auf – es ist verboten.",
+      "",
+      "Abblasen mit Druckluft verteilt den Staub im Raum und ist verboten.",
+      "Haushaltssauger halten Feinstaub nicht zurück; nötig ist Staubklasse M oder H."
+    ],
+    "gapAnalysis": {
+      "topic": "Quarzfeinstaub",
+      "misconception": "Staub wird als Ordnungsfrage statt als Gefahrstoff behandelt.",
+      "coreRule": "Quarzstaub nur nass oder mit Sauger Staubklasse M/H entfernen (TRGS 559).",
+      "actionableAdvice": "Lesen Sie im Modul Laborsicherheit den Abschnitt „Gefahrstoffe: Zement, Quarzstaub & Epoxidharze“ noch einmal.",
+      "targetModuleTab": "labor_sicherheit",
+      "targetModuleLabel": "Laborsicherheit"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_sicherheit_3",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "labor_sicherheit",
+    "moduleTitle": "Laborsicherheit",
+    "topic": "Zement im Auge",
+    "difficulty": "Basis",
+    "normRef": "GefStoffV / Betriebsanweisung Zement",
+    "question": "Beim Mischen spritzt Zementleim ins Auge. Was ist die erste Maßnahme?",
+    "options": [
+      "10–15 Minuten an der Augendusche spülen",
+      "mit verdünnter Säure neutralisieren",
+      "das Auge mit einem Tuch auswischen",
+      "kurz ausspülen und danach den Versuch beenden"
+    ],
+    "correctIdx": 0,
+    "explanation": "Zementleim ist stark alkalisch (pH > 12) und verätzt die Hornhaut. Sofort 10 bis 15 Minuten mit der Augendusche spülen, Lider spreizen, danach zum Augenarzt.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Neutralisieren im Auge verursacht zusätzliche Schäden; nur Wasser verwenden.",
+      "Auswischen reibt die Partikel in die Hornhaut; erst gründlich spülen.",
+      "Kurzes Spülen reicht nicht; die Lauge wirkt weiter, gespült wird 10 bis 15 Minuten."
+    ],
+    "gapAnalysis": {
+      "topic": "Zement im Auge",
+      "misconception": "Die Alkalität des Zementleims wird unterschätzt.",
+      "coreRule": "Augenkontakt mit Zement: 10–15 min spülen, dann Augenarzt.",
+      "actionableAdvice": "Lesen Sie im Modul Laborsicherheit den Abschnitt „Notfall- und Sofortmaßnahmen“ noch einmal.",
+      "targetModuleTab": "labor_sicherheit",
+      "targetModuleLabel": "Laborsicherheit"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_sicherheit_4",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "labor_sicherheit",
+    "moduleTitle": "Laborsicherheit",
+    "topic": "Alleinarbeitsverbot",
+    "difficulty": "Basis",
+    "normRef": "DGUV Vorschrift 1 / Laborordnung THA",
+    "question": "Was gilt für Arbeiten an Prüfpressen, Sägen oder mit dem Brückenkran im Labor?",
+    "options": [
+      "Alleinarbeit ist nach Unterweisung zulässig.",
+      "Alleinarbeit ist außerhalb der Praktika zulässig.",
+      "Eine Anmeldung per E-Mail genügt.",
+      "Eine zweite Person ist in Ruf- und Sichtweite."
+    ],
+    "correctIdx": 3,
+    "explanation": "Es gilt ein Alleinarbeitsverbot an Maschinen, Kran und Flurförderzeugen: eine zweite Person muss in Ruf- und Sichtweite sein, um im Notfall den NOT-HALT auszulösen und Hilfe zu holen.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Die Unterweisung ist Voraussetzung, ersetzt aber nicht die zweite Person.",
+      "Das Verbot gilt unabhängig von Praktikumszeiten.",
+      "Eine Anmeldung hilft im Notfall nicht; Hilfe muss sofort vor Ort sein.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Alleinarbeitsverbot",
+      "misconception": "Unterweisung oder Anmeldung werden für ausreichend gehalten.",
+      "coreRule": "Alleinarbeitsverbot: zweite Person in Ruf- und Sichtweite.",
+      "actionableAdvice": "Lesen Sie im Modul Laborsicherheit den Abschnitt „Zutrittskontrolle & Striktes Alleinarbeitsverbot“ noch einmal.",
+      "targetModuleTab": "labor_sicherheit",
+      "targetModuleLabel": "Laborsicherheit"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_sicherheit_5",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "labor_sicherheit",
+    "moduleTitle": "Laborsicherheit",
+    "topic": "Schadstoffverdacht",
+    "difficulty": "Vertiefung",
+    "normRef": "TRGS 519 / TRGS 521",
+    "question": "Eine Probe aus einem Altbau steht im Verdacht, Asbest zu enthalten. Darf sie im Baustofflabor gesägt werden?",
+    "options": [
+      "Ja, wenn im Nassschnitt mit FFP2-Maske gearbeitet wird.",
+      "Nein, das ist Sache eines Speziallabors.",
+      "Ja, wenn die Punktabsaugung läuft.",
+      "Ja, nach Freigabe durch das Personal."
+    ],
+    "correctIdx": 1,
+    "explanation": "Verdachtsproben auf Asbest, PAK, PCB, alte Mineralwolle oder Schimmelbefall dürfen im Baustofflabor nicht gesägt, gebohrt, zerkleinert oder erhitzt werden; Probenahme und Analytik unterliegen der GefStoffV (TRGS 519/521) und gehören in Speziallabore.",
+    "bloom": "Bewerten",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Nassschnitt und FFP2 senken die Staubbelastung, erlauben die Bearbeitung von Asbest aber nicht.",
+      "",
+      "Eine Punktabsaugung ersetzt nicht die für Asbest vorgeschriebenen Schutzmaßnahmen.",
+      "Das Verbot steht in der Laborordnung; das Laborpersonal kann es nicht aufheben."
+    ],
+    "gapAnalysis": {
+      "topic": "Schadstoffverdacht",
+      "misconception": "Staubschutzmaßnahmen werden für ausreichend gehalten, um Schadstoffproben zu bearbeiten.",
+      "coreRule": "Keine Schadstoffproben im Baustofflabor bearbeiten – Speziallabor (TRGS 519/521).",
+      "actionableAdvice": "Lesen Sie im Modul Laborsicherheit den Abschnitt „Gefahrstoffe: Zement, Quarzstaub & Epoxidharze“ noch einmal.",
+      "targetModuleTab": "labor_sicherheit",
+      "targetModuleLabel": "Laborsicherheit"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_sicherheit_6",
+    "category": "baurecht_normung",
+    "categoryLabel": "Baurecht & Normenwesen",
+    "moduleId": "labor_sicherheit",
+    "moduleTitle": "Laborsicherheit",
+    "topic": "Großprüfpresse",
+    "difficulty": "Basis",
+    "normRef": "DGUV Information 213-850",
+    "question": "Was muss vor dem Start des Druckaufbaus an der Großprüfpresse geschehen?",
+    "options": [
+      "Probekörper bewusst außermittig auflegen",
+      "Probekörper mit der Hand führen",
+      "Splitterschutz vollständig schließen",
+      "Laststeigerung auf Maximum stellen"
+    ],
+    "correctIdx": 2,
+    "explanation": "Vor Lastaufbringung wird der Probekörper zentrisch eingebaut und der Splitterschutz vollständig geschlossen; hochfeste Betone können explosionsartig brechen.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Außermittiger Einbau führt zu schlagartigem Kantenbruch und Pressenschäden.",
+      "Zwischen die Druckplatten zu greifen ist wegen Quetschgefahr verboten.",
+      "",
+      "Die Belastungsgeschwindigkeit ist genormt; eine maximale Rate verfälscht den Versuch."
+    ],
+    "gapAnalysis": {
+      "topic": "Großprüfpresse",
+      "misconception": "Gefahren durch Splitter und Quetschen an der Presse werden unterschätzt.",
+      "coreRule": "Zentrisch einbauen, Splitterschutz schließen, nie zwischen die Druckplatten greifen.",
+      "actionableAdvice": "Lesen Sie im Modul Laborsicherheit den Abschnitt „Sicherheit an Prüfpressen, Sägen & Mischern“ noch einmal.",
+      "targetModuleTab": "labor_sicherheit",
+      "targetModuleLabel": "Laborsicherheit"
     },
     "verified": false
   }
