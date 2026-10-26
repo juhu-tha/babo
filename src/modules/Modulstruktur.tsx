@@ -306,9 +306,9 @@ export default function Modulstruktur() {
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-home-grau/20">
           <div>
-            <h1 className="text-2xl font-bold text-text-main flex items-center gap-2.5">
+            <h2 className="text-2xl font-bold text-text-main flex items-center gap-2.5">
               <Network className="text-shiraz" size={26} /> Modulübersicht
-            </h1>
+            </h2>
             <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.vollständigerAkademischerWissensbaumDes} /></p>
           </div>
           <div className="flex items-center gap-2">
