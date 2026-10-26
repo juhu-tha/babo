@@ -206,6 +206,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Temperaturverlauf mit pauschaler Wärmeabfuhr und festen Stoffwerten.",
       "Rissnachweis mit f_ct,eff = 0,7·f_ctm und k_c = 1,0 (zentrischer Zwang), σ_s aus vereinfachter Tabelle.",
       "Praxisbeispiel mit festen Kennwerten, linear mit β_cc skaliert.",
+      "Kriechen und Schwinden: lineares Kriechen nach EC2 Anhang B bei 20 °C, h₀ direkt vorgegeben, E_cm für Quarzit.",
     ],
   },
   betonkennwerte: {
@@ -215,6 +216,16 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Konstante Umgebungstemperatur über das gesamte Alter.",
       "Relative Luftfeuchte auf 20–100 % und h₀ auf 20–1500 mm begrenzt.",
       "Nichtlineares Kriechen ohne Obergrenze bei 0,6·f_ck(t₀).",
+    ],
+  },
+  kriechen: {
+    kurz: "Kriechzahl φ(t,t₀), Trocknungs- und autogenes Schwinden ε_cs = ε_cd + ε_ca nach EC2 3.1.4 und Anhang B, wirksamer E-Modul sowie Relaxation von Spannstahl nach 3.3.2.",
+    grenzen: [
+      "Nur lineares Kriechen (σ_c ≤ 0,45·f_ck(t₀)); kein nichtlineares Kriechen nach Gl. (3.7).",
+      "Konstante Temperatur von 20 °C (keine Temperaturanpassung von t₀ nach Gl. B.10), E_cm für quarzitische Gesteinskörnung.",
+      "h₀ wird direkt vorgegeben; k_h nach Tab. 3.3 mit 1,0 unter 100 mm und 0,70 über 500 mm.",
+      "Stützenbeispiel: ε_tot = σ_c/E_cm·(1 + φ) + ε_cs mit σ_c = 8,5 N/mm² und L = 3 m als Lehrannahmen; ohne Bewehrung.",
+      "Relaxation: Verlust für σ_pi/f_pk ≤ 0,5 vernachlässigt; ohne Temperatureinfluss und ohne Kopplung an Kriechen und Schwinden.",
     ],
   },
   expositionsklassen: {
