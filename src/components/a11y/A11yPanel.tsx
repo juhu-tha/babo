@@ -163,7 +163,7 @@ export default function A11yPanel({ settings, updateSetting, screenWidth, change
               title="Standardbreite 1152px (optimale Lesbarkeit)"
             >
               <span className="flex items-center gap-1"><Columns size={11} /> Standard</span>
-              <span className="text-[9px] font-normal opacity-80">1152 px</span>
+              <span className="text-[9px] font-normal">1152 px</span>
             </button>
             <button
               type="button"
@@ -176,7 +176,7 @@ export default function A11yPanel({ settings, updateSetting, screenWidth, change
               title="Erweitertes Breitbild-Layout 1536px (für Widescreen & Tabellen)"
             >
               <span className="flex items-center gap-1"><LayoutGrid size={11} /> Breit</span>
-              <span className="text-[9px] font-normal opacity-80">1536 px</span>
+              <span className="text-[9px] font-normal">1536 px</span>
             </button>
             <button
               type="button"
@@ -189,7 +189,7 @@ export default function A11yPanel({ settings, updateSetting, screenWidth, change
               title="100% Volle Bildschirmbreite (Fluid-Modus)"
             >
               <span className="flex items-center gap-1"><Maximize2 size={11} /> Vollbild</span>
-              <span className="text-[9px] font-normal opacity-80">100%</span>
+              <span className="text-[9px] font-normal">100%</span>
             </button>
           </div>
         </div>

@@ -946,6 +946,12 @@ input[type=range]:focus {
   color: #ffffff !important;
 }
 
+/* Weiße Schrift auf gefüllten Flächen (z. B. gewählte Schaltflächen bg-shiraz text-white) bleibt weiß –
+   die Schwarz-Regel oben ergäbe dort nur 2,7:1 (A11y-Dialog, scripts/qa/a11y-dialog.mjs) */
+.a11y-high-contrast .text-white > :is(p, span, li, td) {
+  color: #ffffff !important;
+}
+
 .a11y-high-contrast input,
 .a11y-high-contrast select,
 .a11y-high-contrast textarea,
