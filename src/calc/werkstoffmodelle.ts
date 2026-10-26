@@ -25,12 +25,20 @@
  * Kunststoffe
  *  - E-Modul über der Temperatur als logistisches Lehrmodell je Strukturtyp (Glas-, Übergangs-, Fließbereich)
  *  - Wärmedehnung ΔL = L_0·α_T·ΔT
+ Materialmodelle (aus src/modules/Materialmodelle.tsx, AP 4.2 Runde 3)
+ *  - bilinear elasto-plastisch mit Verfestigung: σ = E·ε bis ε_y = f_y/E, danach σ = f_y + E_t·(ε − ε_y);
+ *    Entlastung parallel zur Hookeschen Geraden, ε_p = ε_max − σ_max/E, Verhältnis k = σ_max/f_y
+ *  - qualitative σ-ε-Lehrkurven (linear, nichtlinear σ = E·ε/(1 + (ε/ε₀)²), ideal-plastisch, viskoelastisch
+ *    σ = σ_∞·(1 − e^(−E·ε/σ_∞))) sowie Thixotropie η = 20 + 80·e^(−t/2) und Rheopexie η = 100 − 80·e^(−t/2)
+ *  - Bingham-Fluid γ̇ = (τ − τ₀)/μ_p für τ > τ₀, sonst 0; Halbwertszeit der Maxwell-Relaxation t½ = τ·ln 2
+ *    (σ(t) = σ₀·e^(−t/τ) aus src/calc/kriechenSchwinden.ts)
  * Einheiten: Spannungen und Moduln in N/mm² (MPa), Dehnungen wie angegeben (Stahl in % bzw. –, Beton in ‰),
  * Temperaturen in °C, Längen in mm. Lehr- und Vorbemessungswerkzeug – geprüft in tests/werkstoffmodelle.test.ts.
  */
 import { EC2_NA_DE } from '../data/normParams';
 import { type Hinweis, istEndlich, hatFehler, muss, bereich } from './plausibilitaet';
 import { formatDeZahl } from '../utils/numberFormat';
+import { maxwellRelaxation } from './kriechenSchwinden';
 
 // =============================================================================================
 // Stahl im Brandfall (DIN EN 1993-1-2, Tab. 3.1)
@@ -477,3 +485,106 @@ export function kunststoffTemperatur(typ: Kunststofftyp, T: number): KunststoffE
 
 /** Wärmedehnung ΔL = L_0·α_T·ΔT (Einheit von ΔL wie L_0) */
 export const waermedehnung = (L0: number, alphaT: number, deltaT: number) => L0 * alphaT * deltaT;
+
+// =============================================================================================
+// Materialmodelle: bilinear elasto-plastisch, qualitative Lehrkurven, Rheologie
+// =============================================================================================
+
+/** Spannung in N/mm² des bilinearen Modells (Belastungsast) bei der Dehnung ε (dimensionslos) */
+export function bilinearSpannung(eps: number, fy: number, E: number, Et: number): number {
+  const epsY = fy / E;
+  return eps <= epsY ? eps * E : fy + (eps - epsY) * Et;
+}
+
+export interface BilinearEingabe {
+  /** Fließgrenze, E-Modul und Verfestigungsmodul in N/mm² */
+  fy: number;
+  E: number;
+  Et: number;
+  /** größte aufgebrachte Dehnung in ‰ */
+  epsMaxPromille: number;
+}
+export interface BilinearErgebnis {
+  /** Fließdehnung, elastische Rückfederung und bleibende Dehnung in ‰ */
+  epsYPromille: number;
+  epsElastischPromille: number;
+  epsPlastischPromille: number;
+  /** Höchstspannung in N/mm² und Verhältnis k = σ_max/f_y */
+  sigmaMax: number;
+  k: number;
+  gueltig: boolean;
+  hinweise: Hinweis[];
+}
+export function bilinearVerfestigung(e: BilinearEingabe): BilinearErgebnis {
+  const h: Hinweis[] = [];
+  muss(h, istEndlich(e.fy, e.E, e.Et, e.epsMaxPromille) && e.fy > 0 && e.E > 0, 'eingabe', 'f_y und E müssen größer als 0 sein.');
+  muss(h, e.Et >= 0 && e.epsMaxPromille >= 0, 'Et', 'Verfestigungsmodul und Dehnung müssen ≥ 0 sein.');
+  if (e.Et >= e.E) h.push({ stufe: 'warnung', feld: 'Et', text: 'E_t ≥ E: Der Verfestigungsast ist nicht flacher als der elastische Ast.' });
+  const epsMax = e.epsMaxPromille / 1000;
+  const sigmaMax = bilinearSpannung(epsMax, e.fy, e.E, e.Et);
+  const epsElastisch = sigmaMax / e.E;
+  const epsPlastisch = Math.max(0, epsMax - epsElastisch);
+  return {
+    epsYPromille: (e.fy / e.E) * 1000,
+    epsElastischPromille: epsElastisch * 1000,
+    epsPlastischPromille: epsPlastisch * 1000,
+    sigmaMax, k: sigmaMax / e.fy, gueltig: !hatFehler(h), hinweise: h,
+  };
+}
+
+export interface BilinearPunkt {
+  epsPromille: number;
+  belastung: number;
+  idealPlastisch: number;
+  /** Entlastungsast von (ε_p; 0) bis (ε_max; σ_max), sonst null */
+  entlastung: number | null;
+}
+/** Kurvenpunkte im Abstand 0,5 ‰ bis max(ε_max + 5 ‰; 25 ‰) */
+export function bilinearKurve(e: BilinearEingabe): BilinearPunkt[] {
+  const epsMax = e.epsMaxPromille / 1000;
+  const sigmaMax = bilinearSpannung(epsMax, e.fy, e.E, e.Et);
+  const epsRest = Math.max(0, epsMax - sigmaMax / e.E);
+  const bis = Math.max(e.epsMaxPromille + 5, 25);
+  const n = Number.isFinite(bis) ? Math.floor(bis / 0.5) + 1 : 0;
+  return Array.from({ length: n }, (_, i) => {
+    const ep = i * 0.5;
+    const eps = ep / 1000;
+    return {
+      epsPromille: ep,
+      belastung: bilinearSpannung(eps, e.fy, e.E, e.Et),
+      idealPlastisch: Math.min(eps * e.E, e.fy),
+      entlastung: eps >= epsRest && eps <= epsMax ? (eps - epsRest) * e.E : null,
+    };
+  });
+}
+
+export type Lehrmodell = 'linear' | 'non-linear' | 'ideal-plastic' | 'visco-elastic';
+/** Parameter der qualitativen Lehrkurven: Baustahl E = 210 000 N/mm², f_y = 355 N/mm², ε₀ = 2 ‰, σ_∞ = 400 N/mm² */
+export const LEHRKURVE = { E: 210000, fy: 355, eps0: 0.002, sigmaInf: 400 } as const;
+/** Spannung der qualitativen Lehrkurve in N/mm² bei der Dehnung ε (dimensionslos) */
+export function lehrkurveSpannung(modell: Lehrmodell, eps: number): number {
+  const { E, fy, eps0, sigmaInf } = LEHRKURVE;
+  if (modell === 'linear') return eps * E;
+  if (modell === 'non-linear') return (E * eps) / (1 + Math.pow(eps / eps0, 2));
+  if (modell === 'ideal-plastic') return Math.min(eps * E, fy);
+  return sigmaInf * (1 - Math.exp(-(E * eps) / sigmaInf));
+}
+/** Lehrkurve von 0 bis 5 ‰ in Schritten von 0,1 ‰ (51 Punkte) */
+export const lehrkurve = (modell: Lehrmodell) =>
+  Array.from({ length: 51 }, (_, i) => ({ epsPromille: i * 0.1, sigma: lehrkurveSpannung(modell, i * 0.0001) }));
+
+/** Viskosität in Pa·s der thixotropen bzw. rheopexen Lehrkurve nach t Sekunden konstanter Scherung */
+export const thixotropie = (t: number) => 20 + 80 * Math.exp(-0.5 * t);
+export const rheopexie = (t: number) => 100 - 80 * Math.exp(-0.5 * t);
+/** Zeitverlauf 0 … 10 s in Schritten von 0,2 s (51 Punkte) */
+export const thixotropieKurve = () =>
+  Array.from({ length: 51 }, (_, i) => { const t = i * 0.2; return { t, thixo: thixotropie(t), rheo: rheopexie(t) }; });
+
+/** Bingham-Fluid: Scherrate in s⁻¹ aus Schubspannung τ und Fließgrenze τ₀ in Pa, plastische Viskosität μ_p in Pa·s */
+export function binghamScherrate(tau: number, tau0: number, muP: number): number {
+  return tau > tau0 ? (tau - tau0) / muP : 0;
+}
+/** Spannung nach t bei Maxwell-Relaxation (σ₀, τ = η/E) */
+export const maxwellSpannung = (sigma0: number, t: number, tau: number) => maxwellRelaxation(sigma0, t, tau);
+/** Halbwertszeit der Maxwell-Relaxation t½ = τ·ln 2 */
+export const maxwellHalbwertszeit = (tau: number) => tau * Math.LN2;

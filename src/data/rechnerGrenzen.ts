@@ -136,8 +136,35 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     kurz: "Rechnet Einheiten innerhalb einer Größenart über einen Faktor zur SI-Basiseinheit um, bei Temperatur mit Nullpunktverschiebung.",
     grenzen: [
       "Nur Umrechnung innerhalb derselben Kategorie (z. B. kein kg ↔ N, kein kg/m³ ↔ kN/m³).",
-      "Angloamerikanische Faktoren gerundet (lbf 4,44822; psi 6894,76; lb 0,453592; kcal 4186,8 J).",
-      "Keine Plausibilitätsprüfung: Temperaturen unter 0 K und negative Längen werden umgerechnet.",
+      "Angloamerikanische Einheiten über ihre exakten Definitionen (1 lb = 0,45359237 kg, 1 lbf = 1 lb·9,80665 m/s², 1 psi = 1 lbf/in², 1 kcal = 4186,8 J).",
+      "Temperaturen unter 0 K werden abgelehnt; negative Längen, Flächen, Volumen, Massen und Dichten werden mit Hinweis umgerechnet.",
+      "Anzeige mit höchstens 10 signifikanten Stellen, sehr kleine und große Beträge in Zehnerpotenz-Schreibweise.",
+    ],
+  },
+  asphalt: {
+    kurz: "Raumdichte aus Bitumengehalt, Hohlraumgehalt und Dichten, schematische Marshall-Kurve und Lehrmodell Niedrigtemperaturasphalt (Viskosität, Aerosole, Energie, CO₂, Verdichtungsfenster).",
+    grenzen: [
+      "Raumdichte ρ_b = ρ_m·(1 − V_m/100) aus vorgegebenem Hohlraumgehalt; keine Prüfung nach DIN EN 12697-5/-6, Bindemittelabsorption des Gesteins unberücksichtigt.",
+      "Marshall-Stabilität ist eine schematische Lehrkurve mit Optimum bei 5,5 M.-%, keine Prüfwerte nach DIN EN 12697-34.",
+      "NTA: Viskosität, Aerosolkonzentration, Energie und CO₂ sind exponentielle bzw. lineare Lehransätze mit festen Faktoren je Verfahren; kein Nachweis des AGW nach TRGS 900.",
+      "Verdichtungsfenster nach Newton-Abkühlung für 4 cm Schicht bei 15 °C Luft, ohne Wind, Unterlage und Walzeneinsatz; CO₂-Bilanz mit Untergrenze 3,5 kg/t.",
+    ],
+  },
+  bauchemie: {
+    kurz: "Lehrmodelle für Stellmittel-Rheologie, AKR-Dehnung und Karbonatisierung (Wurzel-t-Gesetz) sowie Stöchiometrie mit molaren Massen und pH-Wert.",
+    grenzen: [
+      "Viskosität des Mörtels als scherverdünnendes Lehrmodell mit festen Beiwerten, gerundet auf 0,1 Pa·s; Bewertungsgrenzen 0,4 bis 1,5 % Stellmittel sind Lehrannahmen.",
+      "AKR-Dehnung logarithmisch über der Zeit mit Feuchtesprung bei 80 % r. F.; ersetzt keine Prüfung nach Alkali-Richtlinie des DAfStb.",
+      "Karbonatisierung mit Richtwerten K je w/z-Wert ohne Zementart, Nachbehandlung und Feuchte; kein Dauerhaftigkeitsnachweis.",
+      "Molare Massen mit gekürzten Standard-Atomgewichten (IUPAC/CIAAW); pH-Umrechnung mit pK_W = 14 (25 °C), ohne Aktivitätskoeffizienten.",
+    ],
+  },
+  materialmodelle: {
+    kurz: "Bilineares elasto-plastisches Modell mit Verfestigung und Entlastung (ε_y, σ_max, ε_e, ε_p, k) sowie qualitative σ-ε-, Thixotropie- und Rheopexie-Lehrkurven.",
+    grenzen: [
+      "Bilinear mit konstantem Verfestigungsmodul E_t, einachsig, monoton bis ε_max und eine Entlastung; keine zyklische Belastung, kein Bauschinger-Effekt, keine Einschnürung.",
+      "k = σ_max/f_y bezieht sich auf die gewählte Dehnung ε_max, nicht auf charakteristische Werte (f_t/f_y)_k nach DIN EN 1992-1-1 Anhang C.",
+      "Linear, nichtlinear, ideal-plastisch, viskoelastisch und Thixotropie/Rheopexie sind qualitative Kurven mit festen Parametern (E = 210 000, f_y = 355 N/mm²).",
     ],
   },
   baustoffkenngroessen: {

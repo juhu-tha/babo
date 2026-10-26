@@ -37,6 +37,8 @@ import '@/src/lib/chartSetup';
 import inhalt from '@/content/asphalt/Asphalt.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { asphaltRaumdichte, marshallKurve, marshallLehrmodell, ntaModell, NTA } from '@/src/calc/asphalt';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 
 ChartJS.register(
   CategoryScale,
@@ -70,38 +72,14 @@ export default function Asphalt() {
   const [ltaRecyclingShare, setLtaRecyclingShare] = useState<number>(30); // %
 
   const results = useMemo(() => {
-    // Raumdichte (Bulk density)
-    // 100g Asphalt = bitumen g Bitumen + (100-bitumen) g Gestein
-    const volGestein = (100 - bitumen) / rhoG;
-    const volBitumen = bitumen / rhoB;
-    const volFest = volGestein + volBitumen;
-    
-    // Hohlraum = V_Luft / V_Gesamt * 100
-    // V_Gesamt = V_Fest / (1 - hohlraum/100)
-    const volGesamt = volFest / (1 - hohlraum / 100);
-    const raumdichte = 100 / volGesamt; // g/cm³
-    
-    // Lehrmodell: schematische Marshall-Kurve mit Optimum bei 5,5 M.-% (keine Prüfwerte)
-    // Optimaler Bitumengehalt oft bei ~5-6%
-    const optimalBitumen = 5.5;
-    const diff = Math.abs(bitumen - optimalBitumen);
-    const marshall = Math.max(2, 12 - diff * 2); // kN
-
-    const labels = [];
-    const marshallData = [];
-    const currentPointData = [];
-
-    for (let b = 2; b <= 10; b += 0.5) {
-      labels.push(b.toFixed(1));
-      const currentDiff = Math.abs(b - optimalBitumen);
-      const currentMarshall = Math.max(2, 12 - currentDiff * 2);
-      marshallData.push(currentMarshall);
-      if (Math.abs(b - bitumen) < 0.25) {
-        currentPointData.push(marshall);
-      } else {
-        currentPointData.push(null);
-      }
-    }
+    // Rechenkern src/calc/asphalt.ts: Raumdichte aus Zusammensetzung und Hohlraumgehalt, Marshall-Lehrkurve
+    const r = asphaltRaumdichte({ bitumen, hohlraum, rhoGestein: rhoG, rhoBitumen: rhoB });
+    const raumdichte = r.raumdichte;
+    const marshall = marshallLehrmodell(bitumen);
+    const kurve = marshallKurve(bitumen);
+    const labels = kurve.map(p => p.bitumen.toFixed(1));
+    const marshallData = kurve.map(p => p.stabilitaet);
+    const currentPointData = kurve.map(p => (p.aktuell ? marshall : null));
 
     const chartData = {
       labels,
@@ -127,7 +105,7 @@ export default function Asphalt() {
       ]
     };
 
-    return { raumdichte, marshall, chartData };
+    return { raumdichte, marshall, chartData, gueltig: r.gueltig, hinweise: r.hinweise };
   }, [bitumen, hohlraum, rhoG, rhoB]);
 
   const chartOptions = {
@@ -179,10 +157,12 @@ export default function Asphalt() {
                 <div className="bg-shiraz text-white p-6 rounded-xl shadow-md">
                   <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90">Ergebnisse</h3>
                   <div className="grid grid-cols-2 gap-4">
-                    <div><div className="text-white/70 text-sm">Raumdichte</div><div className="text-3xl font-bold">{formatDeZahl(results.raumdichte, 3)} g/cm³</div></div>
+                    <div><div className="text-white/70 text-sm">Raumdichte</div><div className="text-3xl font-bold">{results.gueltig ? `${formatDeZahl(results.raumdichte, 3)} g/cm³` : '–'}</div></div>
                     <div><div className="text-white/70 text-sm"><MdText text={inhalt.texte.marshallStabilitätLehrmodell} /></div><div className="text-3xl font-bold">{formatDeZahl(results.marshall, 1)} kN</div></div>
                   </div>
                 </div>
+
+                <EingabeHinweise hinweise={results.hinweise} />
 
                 <div className="bg-white p-6 rounded-xl border border-home-grau/30 h-[300px] flex flex-col">
                   <h3 className="text-sm font-bold text-center mb-2"><MdText text={inhalt.texte.marshallStabilitätVsBitumengehalt} /></h3>
@@ -366,70 +346,30 @@ export default function Asphalt() {
         )}
 
         {activeTab === 'nta' && (() => {
-          // Dynamic calculation model for LTA/NTA
-          // Viscosity curve calculation (Pa·s)
-          let viscosity = 0.4 * Math.pow(1.06, 165 - ltaTemp);
-          if (ltaMethod === 'organic') {
-            if (ltaTemp >= 110) {
-              viscosity *= 0.38; // Wax melting lubrication effect
-            }
-          } else if (ltaMethod === 'zeolite') {
-            if (ltaTemp >= 105) {
-              viscosity *= 0.52; // Synthetic steam foaming effect
-            }
-          } else if (ltaMethod === 'foamed') {
-            if (ltaTemp >= 105) {
-              viscosity *= 0.48; // Micro-foaming expansion effect
-            }
-          }
+          // Rechenkern src/calc/asphalt.ts: Lehrmodell Niedrigtemperaturasphalt
+          const nta = ntaModell({ verfahren: ltaMethod, temperatur: ltaTemp, rcAnteil: ltaRecyclingShare });
+          const viscosity = nta.viskositaet;
+          const fumesValue = nta.aerosol;
+          const fumesReduction = nta.aerosolMinderung;
+          const baseEnergy = NTA.energie0;
+          const energyConsumed = nta.energie;
+          const energySavedPercent = nta.energieEinsparung;
+          const baseCo2 = NTA.co20;
+          const totalCo2 = nta.co2;
+          const co2SavedPercent = nta.co2Einsparung;
+          const coolingWindow = nta.verdichtungsfenster;
 
-          // Workability & Compactor rating
           let ratingColor = "bg-green-50 text-green-800 border-green-200";
           let ratingBadge = inhalt.werte.optimalVerarbeitbar;
           let ratingText = inhalt.werte.viskositätImIdealenBereich;
-          
-          if (viscosity > 4.5) {
+          if (nta.bewertung === 'blockiert') {
             ratingColor = "bg-red-50 text-red-800 border-red-200";
             ratingBadge = inhalt.werte.ungenügendKritischerGrenzstopp;
             ratingText = inhalt.werte.bindemittelIstVielZu;
-          } else if (viscosity > 1.8) {
+          } else if (nta.bewertung === 'erschwert') {
             ratingColor = "bg-amber-50 text-amber-800 border-amber-200";
             ratingBadge = inhalt.werte.erschwertVerdichtbarGrenzbereich;
             ratingText = inhalt.werte.erhöhterScherwiderstandErfordertSofortig;
-          }
-
-          // Fumes & Aerosols calculation of bitumen (Exponential Arrhenius-like scale)
-          // Threshold of 1.5 mg/m³ is new German legal limit (TRGS 900 AGW-Grenzwert)
-          const fumesValue = 0.045 * Math.exp(0.029 * ltaTemp);
-          const fumesPctOfLimit = Math.round((fumesValue / 1.5) * 100);
-          const fumesReduction = ltaTemp >= 165 ? 0 : Math.round((1 - (fumesValue / (0.045 * Math.exp(0.029 * 165)))) * 100);
-
-          // Energy Savings Calc
-          const baseEnergy = 88; // kWh per ton of asphalt mixed at 165°C (approx 9L fuel oil)
-          const energyConsumed = baseEnergy * (1 + (ltaTemp - 165) * 0.0102); // ~1% change per degree
-          const energySavedPercent = Math.max(0, Math.round(((baseEnergy - energyConsumed) / baseEnergy) * 100));
-          const fuelSavedLiters = Math.max(0, (baseEnergy - energyConsumed) / 10); // 1L ~ 10kWh
-
-          // CO2 emissions calculation with recycling benefits
-          const baseCo2 = 22.0; // kg CO2-equivalent per ton of standard hot mix asphalt
-          const co2FromEnergy = baseCo2 * (energyConsumed / baseEnergy);
-          // Recycling share substitution offsets (gravel and primary bitumen raw extraction, approx 0.14 kg CO2 per % share)
-          const totalCo2 = Math.max(3.5, co2FromEnergy - (ltaRecyclingShare * 0.13));
-          const co2SavedPercent = Math.max(0, Math.round(((baseCo2 - totalCo2) / baseCo2) * 100));
-
-          // Compaction Time Window Calculation (minutes)
-          // Standard Newton-cooling model from initial temp down to method's limit temp
-          let limitTemp = 130; // standard cold compaction limit
-          if (ltaMethod === 'organic') limitTemp = 85; // wax lowers the plasticity point
-          else if (ltaMethod === 'zeolite') limitTemp = 95;
-          else if (ltaMethod === 'foamed') limitTemp = 90;
-
-          let coolingWindow = 0;
-          if (ltaTemp > limitTemp) {
-            // Ambient temperature of 15°C
-            const logRatio = Math.log((ltaTemp - 15) / (limitTemp - 15));
-            // Layer thickness of 4cm assumed (factor ~38)
-            coolingWindow = Math.round(38 * logRatio);
           }
 
           return (
@@ -555,6 +495,8 @@ export default function Asphalt() {
                     </div>
                   </div>
 
+                  <EingabeHinweise hinweise={nta.hinweise} />
+
                   {/* Ecological Footprint Equivalent Estimate */}
                   <div className="bg-emerald-50 text-emerald-800 p-4.5 rounded-xl border border-emerald-200">
                     <h5 className="text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 text-emerald-900 mb-1">
@@ -563,12 +505,12 @@ export default function Asphalt() {
                     <div className="grid grid-cols-2 gap-3 mt-1.5">
                       <div className="bg-white/80 p-2.5 rounded-lg text-center border border-emerald-200">
                         <div className="text-[9px] uppercase font-mono text-emerald-900/60">Heizöleinsparung</div>
-                        <div className="text-sm font-extrabold text-emerald-950">{formatDeZahl((fuelSavedLiters * 100), 0)} L</div>
+                        <div className="text-sm font-extrabold text-emerald-950">{formatDeZahl(nta.heizoelJe1000t, 0)} L</div>
                         <div className="text-[9px] text-emerald-700 font-medium">Brennerbrennstoff</div>
                       </div>
                       <div className="bg-white/80 p-2.5 rounded-lg text-center border border-emerald-200">
                         <div className="text-[9px] uppercase font-mono text-emerald-900/60"><MdText text={inhalt.texte.coVermieden} /></div>
-                        <div className="text-sm font-extrabold text-emerald-950">{((baseCo2 - totalCo2) * 1000).toLocaleString('de-DE')} kg</div>
+                        <div className="text-sm font-extrabold text-emerald-950">{formatDeZahl(nta.co2VermiedenJe1000t, 0)} kg</div>
                         <div className="text-[9px] text-emerald-700 font-medium">CO₂-Äquivalente</div>
                       </div>
                     </div>
@@ -624,9 +566,9 @@ export default function Asphalt() {
                     {/* Feasibility Alert Box */}
                     <div className={`p-3 rounded-lg border text-xs leading-relaxed flex gap-2 items-start transition-colors duration-300 ${ratingColor}`}>
                       <div className="mt-0.5">
-                        {viscosity > 4.5 ? (
+                        {nta.bewertung === 'blockiert' ? (
                           <ShieldAlert size={14} className="text-red-700 animate-pulse" />
-                        ) : viscosity > 1.8 ? (
+                        ) : nta.bewertung === 'erschwert' ? (
                           <AlertTriangle size={14} className="text-amber-700" />
                         ) : (
                           <CheckCircle2 size={14} className="text-green-700" />
@@ -647,7 +589,7 @@ export default function Asphalt() {
                         <span className="text-xs font-bold text-text-main flex items-center gap-1"><MdText text={inhalt.texte.aerosolDampfkonzentrationArbeitsplatzluf} /></span>
                       </div>
                       <span className={`text-xs font-mono font-bold px-2 py-0.5 rounded border ${
-                        fumesValue > 1.5 
+                        fumesValue > NTA.agw 
                           ? 'bg-red-50 text-red-700 border-red-200' 
                           : 'bg-green-50 text-green-700 border-green-200'
                       }`}>
@@ -665,7 +607,7 @@ export default function Asphalt() {
                       <div className="relative w-full bg-stone-200 h-4 rounded overflow-hidden">
                         {/* 100% boundary of the element is 3.0 mg/m³ for visual scale */}
                         <div 
-                          className={`h-full transition-all duration-500 ${fumesValue > 1.5 ? 'bg-red-500' : 'bg-emerald-500'}`}
+                          className={`h-full transition-all duration-500 ${fumesValue > NTA.agw ? 'bg-red-500' : 'bg-emerald-500'}`}
                           style={{ width: `${Math.min(100, (fumesValue / 3.0) * 100)}%` }}
                         ></div>
                         {/* Red divider indicating the 1.5 limit at 50% */}
@@ -675,7 +617,7 @@ export default function Asphalt() {
 
                     <div className="flex justify-between items-center text-[11px] leading-relaxed">
                       <span className="text-text-main/70">
-                        {fumesValue > 1.5 ? (
+                        {fumesValue > NTA.agw ? (
                           <span className="text-red-700 font-semibold"><MdText text={inhalt.texte.modellwertÜberAgwSchutzmaßnahmen} /></span>
                         ) : (
                           <span className="text-green-700 font-semibold"><MdText text={inhalt.texte.modellwertUnterAgwReale} /></span>

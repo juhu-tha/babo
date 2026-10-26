@@ -7,78 +7,14 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/einheiten/Einheiten.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { EINHEITEN, GROESSENARTEN, LITER, umrechnung, type Groessenart } from '@/src/calc/einheiten';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 
-type UnitCategory = 'Länge' | 'Fläche' | 'Volumen' | 'Kraft' | 'Spannung/Druck' | 'Masse' | 'Dichte' | 'Moment' | 'Energie' | 'Temperatur';
+type UnitCategory = Groessenart;
 
-// offset: additive Verschiebung zur Basiseinheit (nur Temperatur: Basis = Kelvin)
-const units: Record<UnitCategory, { name: string; factor: number; offset?: number }[]> = {
-  'Länge': [
-    { name: 'm', factor: 1 },
-    { name: 'mm', factor: 0.001 },
-    { name: 'cm', factor: 0.01 },
-    { name: 'km', factor: 1000 },
-    { name: 'in (Zoll)', factor: 0.0254 },
-    { name: 'ft (Fuß)', factor: 0.3048 },
-  ],
-  'Fläche': [
-    { name: 'm²', factor: 1 },
-    { name: 'mm²', factor: 0.000001 },
-    { name: 'cm²', factor: 0.0001 },
-    { name: 'a (Ar)', factor: 100 },
-    { name: 'ha (Hektar)', factor: 10000 },
-    { name: 'km²', factor: 1000000 },
-  ],
-  'Volumen': [
-    { name: 'm³', factor: 1 },
-    { name: 'mm³', factor: 0.000000001 },
-    { name: 'cm³', factor: 0.000001 },
-    { name: inhalt.werte.dmLiterL, factor: 0.001 },
-  ],
-  'Kraft': [
-    { name: 'N', factor: 1 },
-    { name: 'kN', factor: 1000 },
-    { name: 'MN', factor: 1000000 },
-    { name: 'lbf', factor: 4.44822 },
-  ],
-  'Spannung/Druck': [
-    { name: 'Pa (N/m²)', factor: 1 },
-    { name: 'kPa', factor: 1000 },
-    { name: 'MPa (N/mm²)', factor: 1000000 },
-    { name: 'bar', factor: 100000 },
-    { name: 'psi', factor: 6894.76 },
-  ],
-  'Masse': [
-    { name: 'kg', factor: 1 },
-    { name: 'g', factor: 0.001 },
-    { name: 't', factor: 1000 },
-    { name: 'lb (Pfund)', factor: 0.453592 },
-  ],
-  'Dichte': [
-    { name: 'kg/m³', factor: 1 },
-    { name: 'g/cm³', factor: 1000 },
-    { name: 't/m³', factor: 1000 },
-    { name: 'kg/dm³', factor: 1000 },
-  ],
-  'Moment': [
-    { name: 'kNm', factor: 1000 },
-    { name: 'Nm', factor: 1 },
-    { name: 'Nmm', factor: 0.001 },
-    { name: 'kNcm', factor: 10 },
-    { name: 'MNm', factor: 1000000 },
-  ],
-  'Energie': [
-    { name: 'kWh', factor: 3600000 },
-    { name: 'J (Ws)', factor: 1 },
-    { name: 'kJ', factor: 1000 },
-    { name: 'MJ', factor: 1000000 },
-    { name: 'kcal', factor: 4186.8 },
-  ],
-  'Temperatur': [
-    { name: '°C', factor: 1, offset: 273.15 },
-    { name: 'K', factor: 1, offset: 0 },
-    { name: '°F', factor: 5 / 9, offset: 273.15 - 32 * 5 / 9 },
-  ]
-};
+// Rechenkern src/calc/einheiten.ts: Einheitentabelle und Umrechnung; hier nur die Anzeigenamen
+const units = EINHEITEN;
+const anzeige = (name: string) => (name === LITER ? inhalt.werte.dmLiterL : name);
 
 /** Ergebnisanzeige: sehr kleine/große Beträge in Zehnerpotenz-Schreibweise statt gerundeter 0 */
 const HOCH: Record<string, string> = { '-': '⁻', '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴', '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹' };
@@ -110,13 +46,7 @@ export default function Einheiten() {
     setToUnit(units[cat][1].name);
   };
 
-  const calculateConversion = () => {
-    const from = units[category].find(u => u.name === fromUnit) ?? units[category][0];
-    const to = units[category].find(u => u.name === toUnit) ?? units[category][0];
-    // In Basiseinheit umrechnen (bei Temperatur mit Nullpunktverschiebung), dann in Zieleinheit
-    const baseValue = inputValue * from.factor + (from.offset ?? 0);
-    return (baseValue - (to.offset ?? 0)) / to.factor;
-  };
+  const ergebnis = umrechnung(inputValue, category, fromUnit, toUnit);
   return (
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
@@ -315,7 +245,7 @@ export default function Einheiten() {
                 onChange={(e) => handleCategoryChange(e.target.value as UnitCategory)}
                 className="p-3 border border-home-grau/30 rounded-lg bg-off-white focus:outline-none focus:border-shiraz"
               >
-                {(Object.keys(units) as UnitCategory[]).map(cat => (
+                {GROESSENARTEN.map(cat => (
                   <option key={cat} value={cat}>{cat}</option>
                 ))}
               </select>
@@ -337,7 +267,7 @@ export default function Einheiten() {
                     className="p-3 border border-home-grau/30 rounded-lg bg-off-white focus:outline-none focus:border-shiraz"
                   >
                     {units[category].map(u => (
-                      <option key={u.name} value={u.name}>{u.name}</option>
+                      <option key={u.name} value={u.name}>{anzeige(u.name)}</option>
                     ))}
                   </select>
                 </div>
@@ -351,7 +281,7 @@ export default function Einheiten() {
                 <label className="text-sm font-bold text-text-main">Nach</label>
                 <div className="flex flex-col gap-2">
                   <div className="p-3 border border-shiraz/30 rounded-lg bg-shiraz/5 font-mono text-shiraz font-bold break-all">
-                    {formatErgebnis(calculateConversion())}
+                    {ergebnis.gueltig ? formatErgebnis(ergebnis.wert) : '–'}
                   </div>
                   <select aria-label="Zieleinheit"
                     value={toUnit}
@@ -359,12 +289,13 @@ export default function Einheiten() {
                     className="p-3 border border-home-grau/30 rounded-lg bg-off-white focus:outline-none focus:border-shiraz"
                   >
                     {units[category].map(u => (
-                      <option key={u.name} value={u.name}>{u.name}</option>
+                      <option key={u.name} value={u.name}>{anzeige(u.name)}</option>
                     ))}
                   </select>
                 </div>
               </div>
             </div>
+            <EingabeHinweise hinweise={ergebnis.hinweise} />
           </div>
         </div>
       )}
