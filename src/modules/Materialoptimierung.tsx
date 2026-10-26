@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Leaf, Beaker, Layers, Sparkles, CheckCircle2, ChevronRight, Calculator, AlertTriangle, Trees, ChevronDown, ChevronUp, Activity, BookOpen, Scale, Award, Building2, Sliders } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
+import { Querverweis } from '@/src/components/ui/Querverweis';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath, BlockMath } from 'react-katex';
@@ -653,6 +654,10 @@ export default function Materialoptimierung() {
       />
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
+      <Querverweis ziel="normen_ausblick" titel="Neue Ausgaben erschienen: DIN EN 206-1/-2:2026 und EC2 2. Generation" linkText="Zum Modul Ausblick: neue Normengeneration">
+        <p>Maßgebend bleiben DIN EN 206:2021-06 mit DIN 1045-2:2023-08 und DIN EN 1992-1-1:2011-01 mit NA. Was die Neuausgaben ändern – etwa Expositionswiderstandsklassen (ERC) und CO₂-Klassen – und was zur Einführung bekannt ist, fasst das Ausblick-Modul zusammen.</p>
+      </Querverweis>
+
       <ModulTest moduleId="materialoptimierung" />
 
       {/* --- Module Footer --- */}
