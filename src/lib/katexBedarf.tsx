@@ -6,7 +6,9 @@
 // Kopieren); danach rendern alle Formeln als Transition (unterbrechbar). Das KaTeX-CSS bleibt im Haupt-CSS
 // (src/main.tsx): Ein später eingefügtes Stylesheet kostete eine Stil-/Layout-Neuberechnung der ganzen Seite.
 import React from 'react';
+import { flushSync } from 'react-dom';
 import type * as ReactKatex from 'react-katex';
+import { beimDrucken, STUFE } from './druckVorbereitung';
 
 type Bibliothek = typeof ReactKatex;
 type MathProps = React.ComponentProps<Bibliothek['InlineMath']>;
@@ -14,15 +16,15 @@ const tex = (p: MathProps) => String(('math' in p && p.math) || ('children' in p
 
 let bibliothek: Bibliothek | undefined;
 let laden: Promise<Bibliothek> | undefined;
-const warten = new Set<() => void>();
+/** Formeln, die noch den Platzhalter zeigen (bis sie mit KaTeX gerendert sind) */
+const offen = new Set<() => void>();
 
 export function ladeKatex(): Promise<Bibliothek> {
   // diese Datei ist von der Umlenkung ausgenommen → echtes react-katex
   laden ??= (import('react-katex') as Promise<Partial<Bibliothek> & { default?: Bibliothek }>).then(m => {
     bibliothek = (m.InlineMath ? m : m.default) as Bibliothek;
     // als Transition: React rendert die Formeln unterbrechbar (in kurzen Abschnitten statt einer langen Task)
-    React.startTransition(() => warten.forEach(f => f()));
-    warten.clear();
+    React.startTransition(() => offen.forEach(f => f()));
     return bibliothek;
   });
   return laden;
@@ -34,13 +36,18 @@ function useKatex(): Bibliothek | undefined {
   const [, neu] = React.useReducer((n: number) => n + 1, 0);
   const gerendert = bibliothek;
   React.useEffect(() => {
-    if (bibliothek) { if (!gerendert) neu(); return; } // zwischen Rendern und Effekt geladen
-    warten.add(neu);
+    if (gerendert) return;
+    if (bibliothek) { neu(); return; } // zwischen Rendern und Effekt geladen
+    offen.add(neu);
     void ladeKatex().catch(() => {});
-    return () => { warten.delete(neu); };
-  }, []);
+    return () => { offen.delete(neu); }; // mit KaTeX neu gerendert oder ausgehängt
+  }, [gerendert]);
   return bibliothek;
 }
+
+// Drucken/PDF-Export: Die Transition nach dem Laden kann noch ausstehen → offene Formeln sofort (synchron) rendern
+const alleRendern = () => { if (bibliothek && offen.size) flushSync(() => offen.forEach(f => f())); };
+beimDrucken(STUFE.formeln, alleRendern, async () => { if (offen.size) { await ladeKatex(); alleRendern(); } });
 
 function platzhalter(tex: string, block: boolean) {
   // gleiche Schriftgröße wie .katex (1.21em) – hält Zeilenhöhe und -umbruch ähnlich

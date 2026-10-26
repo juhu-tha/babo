@@ -1,20 +1,36 @@
 name: Barrierefreiheit und Mobil-Layout
 
 # Umsetzungsplan Phase 2, AP 2.1: axe-Prüfung aller Modulrouten gegen docs/a11y-baseline.json (Ratchet).
-# Läuft rund 20 Minuten, deshalb nicht bei jedem PR, sondern nach Merges auf main, wöchentlich und manuell.
+# Push auf main, wöchentlich, manuell: vollständig (alle Routen × Desktop/Mobil + Dunkel-Stichprobe, ~20 min).
+# Pull Requests: Desktop hell auf allen Routen, auf zwei Jobs verteilt; Mobil auf der Stichprobe und den
+# Routen, deren Module der PR ändert (scripts/qa/a11y-routen.mjs); Dunkel-Stichprobe. Gleiche Baseline-Ratsche.
+# Dazu PDF-Export und Druck als E2E-Prüfung (scripts/qa/e2e-pdf.mjs).
 on:
   push:
+    branches: [main]
+  pull_request:
     branches: [main]
   schedule:
     - cron: '17 3 * * 1'
   workflow_dispatch:
 
+concurrency:
+  group: a11y-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   a11y:
+    name: a11y (${{ matrix.teil }})
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        teil: ${{ fromJSON(github.event_name == 'pull_request' && '["1/2","2/2"]' || '["1/1"]') }}
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: ${{ github.event_name == 'pull_request' && 0 || 1 }}
       - uses: actions/setup-node@v5
         with:
           node-version: 22
@@ -28,7 +44,50 @@ jobs:
         run: |
           npx vite preview --port 4173 --strictPort &
           npx --yes wait-on http://localhost:4173/
+      - name: Betroffene Routen (PR)
+        id: routen
+        if: github.event_name == 'pull_request'
+        run: echo "mob=$(node scripts/qa/a11y-routen.mjs --basis origin/${{ github.base_ref }})" >> "$GITHUB_OUTPUT"
       - name: axe gegen Baseline
-        run: node scripts/qa/a11y.mjs --vergleich
+        env:
+          TEIL: ${{ matrix.teil }}
+          ROUTEN_MOB: ${{ steps.routen.outputs.mob }}
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            MODI=desk,mob; [ "$TEIL" = "1/2" ] && MODI=desk,mob,desk-dunkel
+            node scripts/qa/a11y.mjs --vergleich --teil "$TEIL" --modi "$MODI" --routen-mob "$ROUTEN_MOB"
+          else
+            node scripts/qa/a11y.mjs --vergleich
+          fi
       - name: Mobil-Layout (390 px)
-        run: node scripts/qa/layout-mobil.mjs
+        if: matrix.teil == '1/1' || matrix.teil == '2/2'
+        env:
+          ROUTEN_MOB: ${{ steps.routen.outputs.mob }}
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            node scripts/qa/layout-mobil.mjs --routen "start,mischungsberechnung,oekobilanz_lca,bauphysik,expositionsklassen,glossar,abfaelle,aufgaben_quiz,stahlbeton_bemessung,holz${ROUTEN_MOB:+,$ROUTEN_MOB}"
+          else
+            node scripts/qa/layout-mobil.mjs
+          fi
+
+  pdf-druck:
+    name: PDF-Export und Druck (E2E)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - run: npx vite build
+      - name: Prüfwerkzeuge (nicht in package.json)
+        run: |
+          npm install --no-save --no-audit --no-fund playwright
+          npx playwright install --with-deps chromium
+      - name: Vorschau-Server starten
+        run: |
+          npx vite preview --port 4173 --strictPort &
+          npx --yes wait-on http://localhost:4173/
+      - name: PDF-Export, Druckknöpfe, Druckansicht
+        run: node scripts/qa/e2e-pdf.mjs

@@ -88,6 +88,7 @@ const MechanischeKenngroessen = React.lazy(() => import('../modules/MechanischeK
 const HydratationFolgen = React.lazy(() => import('../modules/HydratationFolgen'));
 const Sonderbetone = React.lazy(() => import('../modules/Sonderbetone'));
 const Stahlbetonbemessung = React.lazy(() => import('../modules/Stahlbetonbemessung'));
+const ForschungTransfer = React.lazy(() => import('../modules/ForschungTransfer'));
 const Impressum = React.lazy(() => import('../modules/Impressum'));
 const Versionen = React.lazy(() => import('../modules/Versionen'));
 const Bauchemie = React.lazy(() => import('../modules/Bauchemie').then(module => ({ default: module.Bauchemie })));
@@ -189,6 +190,7 @@ const Schnellkarbonatisierung = React.lazy(() => import('../modules/Schnellkarbo
 const Praxiswissen = React.lazy(() => import('../modules/Praxiswissen'));
 const Bautagebuch = React.lazy(() => import('../modules/Bautagebuch'));
 const WeiterTHA = React.lazy(() => import('../modules/WeiterTHA'));
+const TtzWeiterbildungspfad = React.lazy(() => import('../components/weiterbildung/TtzWeiterbildungspfad'));
 const StudiumTHA = React.lazy(() => import('../modules/StudiumTHA'));
 const Nawaro = React.lazy(() => import('../modules/Nawaro'));
 const HolzbauBeta = React.lazy(() => import('../modules/HolzbauBeta'));
@@ -197,6 +199,11 @@ const Kuriositaeten = React.lazy(() => import('../modules/Kuriositaeten'));
 const Datenschutz = React.lazy(() => import('../modules/Datenschutz'));
 const Barrierefreiheit = React.lazy(() => import('../modules/Barrierefreiheit'));
 const LaborSicherheit = React.lazy(() => import('../modules/LaborSicherheit'));
+const LaborPotentialmessung = React.lazy(() => import('../modules/laborhandouts/Potentialmessung'));
+const LaborAuslagerung = React.lazy(() => import('../modules/laborhandouts/Auslagerung'));
+const LaborFrischbeton = React.lazy(() => import('../modules/laborhandouts/FrischbetonHandout'));
+const LaborDruckfestigkeit = React.lazy(() => import('../modules/laborhandouts/DruckfestigkeitWuerfel'));
+const LaborMoertelprismen = React.lazy(() => import('../modules/laborhandouts/Moertelprismen'));
 
 
 export function ModulInhalt({ activeTab }: { activeTab: TabId }) {
@@ -239,6 +246,7 @@ export function ModulInhalt({ activeTab }: { activeTab: TabId }) {
     {activeTab === 'rechnung_schallschutz' && <Beispielrechnungen forceTab="schallschutz" />}
     {activeTab === 'rechnung_brandschutz' && <Beispielrechnungen forceTab="brandschutz" />}
     {activeTab === 'impressum' && <Impressum />}
+    {activeTab === 'forschung_transfer' && <ForschungTransfer />}
     {activeTab === 'datenschutz' && <Datenschutz />}
     {activeTab === 'barrierefreiheit' && <Barrierefreiheit />}
     {activeTab === 'versionen' && <Versionen />}
@@ -287,6 +295,11 @@ export function ModulInhalt({ activeTab }: { activeTab: TabId }) {
     {activeTab === 'betonkennwerte' && <Betonkennwerte />}
     {activeTab === 'sichtbeton' && <Sichtbeton />}
     {activeTab === 'festbeton_statistik' && <FestbetonStatistik />}
+    {activeTab === 'labor_potentialmessung' && <LaborPotentialmessung />}
+    {activeTab === 'labor_auslagerung' && <LaborAuslagerung />}
+    {activeTab === 'labor_frischbeton' && <LaborFrischbeton />}
+    {activeTab === 'labor_druckfestigkeit' && <LaborDruckfestigkeit />}
+    {activeTab === 'labor_moertelprismen' && <LaborMoertelprismen />}
     {activeTab === 'sicherheitskonzept' && <Sicherheitskonzept />}
     {activeTab === 'sonderbetone' && <Sonderbetone />}
     {activeTab === 'innovative_werkstoffe' && <InnovativeWerkstoffe />}
@@ -495,6 +508,7 @@ export function ModulInhalt({ activeTab }: { activeTab: TabId }) {
     {activeTab === 'px_produktion' && <Praxiswissen />}
     {activeTab === 'px_karriere' && <Praxiswissen />}
     {(activeTab === 'weiter_tha' || activeTab === 'weiter_bauing' || activeTab === 'weiter_pm' || activeTab === 'weiter_ausbau' || activeTab === 'weiter_fassade' || activeTab === 'weiter_holzbau' || activeTab === 'weiter_ttz' || activeTab === 'weiter_mapr') && <WeiterTHA />}
+    {activeTab === 'ttz_weiterbildung' && <TtzWeiterbildungspfad />}
     {(activeTab === 'vl_ueberblick' || activeTab === 'vl_bauen_im_bestand' || activeTab === 'vl_nachhaltiges_bauen' || activeTab === 'vl_bauschaeden' || activeTab === 'vl_baustoffkunde' || activeTab === 'vl_instandhaltung') && (
     <Vorlesungen
     forceTab={

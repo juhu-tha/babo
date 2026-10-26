@@ -38841,5 +38841,1075 @@
       "am": "2026-10-25",
       "ergebnis": "ok"
     }
+  },
+  {
+    "id": "qn_labor_potentialmessung_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "labor_potentialmessung",
+    "moduleTitle": "Handout Potentialmessung an Betonstahl",
+    "topic": "Umrechnung Bezugselektrode",
+    "difficulty": "Vertiefung",
+    "question": "Gegen eine Ag/AgCl-Elektrode (KCl gesättigt, +197 mV gegen SHE) messen Sie −250 mV. Welches Potential ergibt sich gegen CSE (+316 mV gegen SHE)?",
+    "options": [
+      "−53 mV",
+      "−369 mV",
+      "−131 mV",
+      "−763 mV"
+    ],
+    "correctIdx": 1,
+    "explanation": "E_SHE = −250 + 197 = −53 mV; E_CSE = −53 − 316 = −369 mV. Ag/AgCl liegt also rund 119 mV positiver als CSE, Messwerte gegen Ag/AgCl sind gegen CSE um diesen Betrag negativer.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Hier wurde nur auf SHE umgerechnet (−250 + 197) und der CSE-Schritt vergessen.",
+      "",
+      "Das Vorzeichen der Elektrodendifferenz ist vertauscht: −250 + 119 statt −250 − 119.",
+      "Beide Elektrodenpotentiale wurden abgezogen statt einmal addiert und einmal subtrahiert."
+    ],
+    "gapAnalysis": {
+      "topic": "Umrechnung Bezugselektrode",
+      "misconception": "Die Potentialdifferenz der Bezugselektroden wird mit falschem Vorzeichen angewandt.",
+      "coreRule": "E_SHE = E_mess + E_Bezug; E_CSE = E_SHE − 316 mV.",
+      "actionableAdvice": "Wiederholen Sie im Handout Potentialmessung an Betonstahl den Reiter „Auswertung“.",
+      "targetModuleTab": "labor_potentialmessung",
+      "targetModuleLabel": "Handout Potentialmessung an Betonstahl"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_potentialmessung_2",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "labor_potentialmessung",
+    "moduleTitle": "Handout Potentialmessung an Betonstahl",
+    "topic": "Messgerät",
+    "difficulty": "Basis",
+    "question": "Warum wird das Potential mit einem hochohmigen Voltmeter (≥ 10 MΩ) gemessen?",
+    "options": [
+      "Damit kein nennenswerter Strom fließt, der den Stahl polarisiert",
+      "Damit auch Wechselspannungen aus dem Netz mitgemessen werden können",
+      "Weil die Bezugselektrode sonst zu schnell austrocknet und ihr Potential verliert",
+      "Damit sich das Potential durch den Messstrom schneller auf den Endwert einstellt"
+    ],
+    "correctIdx": 0,
+    "explanation": "Das Ruhepotential ist ein stromloser Zustand. Ein Messstrom würde die Elektrode polarisieren und den Wert verfälschen; ein hoher Eingangswiderstand hält ihn vernachlässigbar klein.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Netzbrummen ist eine Störung, die das Messgerät gerade unterdrücken soll.",
+      "Austrocknung hängt vom Elektrolyt und der Lagerung ab, nicht vom Eingangswiderstand.",
+      "Ein Messstrom würde das Potential verschieben, nicht schneller einstellen."
+    ],
+    "gapAnalysis": {
+      "topic": "Messgerät",
+      "misconception": "Der Eingangswiderstand wird für eine Frage der Messgeschwindigkeit gehalten.",
+      "coreRule": "Ruhepotential stromlos messen: Eingangswiderstand ≥ 10 MΩ.",
+      "actionableAdvice": "Wiederholen Sie im Handout Potentialmessung an Betonstahl den Reiter „Ziel & Ausstattung“.",
+      "targetModuleTab": "labor_potentialmessung",
+      "targetModuleLabel": "Handout Potentialmessung an Betonstahl"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_potentialmessung_3",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "labor_potentialmessung",
+    "moduleTitle": "Handout Potentialmessung an Betonstahl",
+    "topic": "Cl⁻/OH⁻-Verhältnis",
+    "difficulty": "Vertiefung",
+    "question": "In 1,0 L gesättigter Ca(OH)₂-Lösung (pH 12,6, c(OH⁻) ≈ 0,040 mol/L) sind kumuliert 2,34 g NaCl (M = 58,44 g/mol) gelöst. Wie groß ist das Verhältnis Cl⁻/OH⁻ etwa?",
+    "options": [
+      "0,06",
+      "25",
+      "1,0",
+      "58"
+    ],
+    "correctIdx": 2,
+    "explanation": "c(Cl⁻) = 2,34 g / (58,44 g/mol · 1,0 L) = 0,040 mol/L; Cl⁻/OH⁻ = 0,040 / 0,040 ≈ 1,0 – über dem Richtwert 0,6 nach Hausmann.",
+    "bloom": "Anwenden",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Hier wurde die Konzentration durch 10 statt durch c(OH⁻) geteilt.",
+      "Das ist der Kehrwert: OH⁻/Cl⁻ statt Cl⁻/OH⁻.",
+      "",
+      "Die Masse wurde mit der molaren Masse multipliziert statt geteilt."
+    ],
+    "gapAnalysis": {
+      "topic": "Cl⁻/OH⁻-Verhältnis",
+      "misconception": "Konzentration und Verhältnis werden verwechselt oder falsch herum gebildet.",
+      "coreRule": "c(Cl⁻) = m/(M·V); c(OH⁻) = 10^(pH−14).",
+      "actionableAdvice": "Wiederholen Sie im Handout Potentialmessung an Betonstahl den Reiter „Auswertung“.",
+      "targetModuleTab": "labor_potentialmessung",
+      "targetModuleLabel": "Handout Potentialmessung an Betonstahl"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_potentialmessung_4",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "labor_potentialmessung",
+    "moduleTitle": "Handout Potentialmessung an Betonstahl",
+    "topic": "Depassivierung",
+    "difficulty": "Basis",
+    "question": "Woran erkennen Sie im Versuch die Depassivierung des Stahls am deutlichsten?",
+    "options": [
+      "an einem kontinuierlichen leichten Anstieg des Potentials über mehrere Tage",
+      "an einem sprunghaften Abfall des Potentials in negative Richtung",
+      "an einem Anstieg des pH-Werts der Lösung nach der Salzzugabe",
+      "an einer Verfärbung der Bezugselektrode nach dem Eintauchen"
+    ],
+    "correctIdx": 1,
+    "explanation": "Mit beginnendem Lochfraß wird der Stahl örtlich aktiv; das Mischpotential fällt deutlich (oft um mehr als 100 mV) in negative Richtung. Rostpunkte an der Probe bestätigen den Befund.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Ein Anstieg in positive Richtung spricht eher für eine stabile Passivschicht.",
+      "",
+      "NaCl verändert den pH-Wert der Lösung praktisch nicht.",
+      "Die Bezugselektrode soll sich gerade nicht verändern; das wäre ein Gerätefehler."
+    ],
+    "gapAnalysis": {
+      "topic": "Depassivierung",
+      "misconception": "Ein Potentialanstieg wird als Korrosionsbeginn gedeutet.",
+      "coreRule": "Depassivierung: deutlicher Potentialabfall, Bestätigung durch Sichtbefund.",
+      "actionableAdvice": "Wiederholen Sie im Handout Potentialmessung an Betonstahl den Reiter „Auswertung“.",
+      "targetModuleTab": "labor_potentialmessung",
+      "targetModuleLabel": "Handout Potentialmessung an Betonstahl"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_potentialmessung_5",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "labor_potentialmessung",
+    "moduleTitle": "Handout Potentialmessung an Betonstahl",
+    "topic": "Potentialbereiche",
+    "difficulty": "Transfer",
+    "normRef": "ASTM C876",
+    "question": "Warum sind die Potentialbereiche der ASTM C876 (−200 mV / −350 mV gegen CSE) im Lösungsversuch nur Richtwerte?",
+    "options": [
+      "Weil sie nur für nichtrostenden Stahl und nicht für unlegierten Betonstahl B500 gelten",
+      "Weil sie sich auf die Kalomelelektrode beziehen und sich in Lösung nicht umrechnen lassen",
+      "Weil sie für Stahl im Bauwerksbeton mit anderem Sauerstoff- und Feuchteangebot gelten",
+      "Weil Lösungen Strom nicht leiten und das Potential deshalb unbestimmt bleibt"
+    ],
+    "correctIdx": 2,
+    "explanation": "Die Bereiche wurden empirisch für Bauwerke ermittelt. Sauerstoffzutritt, Feuchte, Betonwiderstand und Elektrodenposition verschieben die Potentiale; maßgebend im Versuch ist daher der Verlauf, nicht der Absolutwert.",
+    "bloom": "Bewerten",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "ASTM C876 behandelt gerade unbeschichteten Bewehrungsstahl.",
+      "Die Bereiche beziehen sich auf CSE und lassen sich auf jede Bezugselektrode umrechnen.",
+      "",
+      "Die Salzlösung ist gut leitfähig; das ist keine Grenze des Verfahrens."
+    ],
+    "gapAnalysis": {
+      "topic": "Potentialbereiche",
+      "misconception": "Bauwerksrichtwerte werden als universelle Grenzwerte verstanden.",
+      "coreRule": "ASTM C876: Bauwerksrichtwerte in mV gegen CSE, im Modellversuch nur Orientierung.",
+      "actionableAdvice": "Wiederholen Sie im Handout Potentialmessung an Betonstahl den Reiter „Auswertung“.",
+      "targetModuleTab": "labor_potentialmessung",
+      "targetModuleLabel": "Handout Potentialmessung an Betonstahl"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_potentialmessung_6",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "labor_potentialmessung",
+    "moduleTitle": "Handout Potentialmessung an Betonstahl",
+    "topic": "Versuchsaufbau",
+    "difficulty": "Basis",
+    "question": "Wozu dient die gesättigte Ca(OH)₂-Lösung im Versuch?",
+    "options": [
+      "Sie bildet vereinfacht die alkalische Porenlösung des Betons nach",
+      "Sie entfernt vor der Messung Rost und Walzhaut von der Stahloberfläche",
+      "Sie dient als Elektrolytfüllung der Bezugselektrode während des Versuchs",
+      "Sie senkt den pH-Wert, damit Chlorid den Stahl rascher angreifen kann"
+    ],
+    "correctIdx": 0,
+    "explanation": "Gesättigte Calciumhydroxidlösung hat einen pH-Wert um 12,5 und passiviert Stahl ähnlich wie die Porenlösung im Beton – ohne Chloridbindung und Feuchtegradienten des Betons.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Dafür wird geschliffen bzw. gebeizt; Ca(OH)₂ löst Rost nicht.",
+      "Die Bezugselektrode hat eine eigene definierte Füllung (z. B. KCl).",
+      "Ca(OH)₂ hebt den pH-Wert auf etwa 12,5 und passiviert den Stahl."
+    ],
+    "gapAnalysis": {
+      "topic": "Versuchsaufbau",
+      "misconception": "Die Funktion der Modelllösung wird nicht erkannt.",
+      "coreRule": "Ca(OH)₂ gesättigt: pH ≈ 12,5, Modell der Porenlösung.",
+      "actionableAdvice": "Wiederholen Sie im Handout Potentialmessung an Betonstahl den Reiter „Ziel & Ausstattung“.",
+      "targetModuleTab": "labor_potentialmessung",
+      "targetModuleLabel": "Handout Potentialmessung an Betonstahl"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_auslagerung_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "labor_auslagerung",
+    "moduleTitle": "Handout 4-Wochen-Auslagerungsversuch",
+    "topic": "Abtragsrate",
+    "difficulty": "Vertiefung",
+    "normRef": "ASTM G1",
+    "question": "Eine Stahlprobe (A = 40 cm², ρ = 7,85 g/cm³) verliert in 28 Tagen 0,24 g (blindwertkorrigiert). Welche gleichmäßige Abtragsrate ergibt sich etwa?",
+    "options": [
+      "9,9 µm/a",
+      "7,6 µm/a",
+      "1000 µm/a",
+      "100 µm/a"
+    ],
+    "correctIdx": 3,
+    "explanation": "Δm/(ρ·A) = 0,24/(7,85 · 40) = 7,64 · 10⁻⁴ cm = 7,6 µm in 28 Tagen; · 365/28 ≈ 100 µm/a.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Hier fehlt die Hochrechnung von 28 Tagen auf ein Jahr (Faktor 365/28).",
+      "Das ist der Abtrag während der 28 Tage, nicht die Rate je Jahr.",
+      "Hier wurde die Dichte nicht berücksichtigt.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Abtragsrate",
+      "misconception": "Abtrag im Versuchszeitraum und Jahresrate werden verwechselt.",
+      "coreRule": "v = Δm/(ρ·A) · 10⁴ · 365/t (µm/a).",
+      "actionableAdvice": "Wiederholen Sie im Handout 4-Wochen-Auslagerungsversuch den Reiter „Auswertung“.",
+      "targetModuleTab": "labor_auslagerung",
+      "targetModuleLabel": "Handout 4-Wochen-Auslagerungsversuch"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_auslagerung_2",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "labor_auslagerung",
+    "moduleTitle": "Handout 4-Wochen-Auslagerungsversuch",
+    "topic": "Blindprobe",
+    "difficulty": "Basis",
+    "normRef": "DIN EN ISO 8407",
+    "question": "Wozu wird beim Beizen eine nicht ausgelagerte Blindprobe mitbehandelt?",
+    "options": [
+      "um die Temperatur der Beizlösung während der Behandlung zu überwachen",
+      "um den Massenverlust des Grundmetalls durch das Beizen zu bestimmen",
+      "um zu prüfen, ob die Waage nach dem Beizen noch richtig kalibriert ist",
+      "um zusätzliche Korrosionsprodukte für die chemische Analyse zu gewinnen"
+    ],
+    "correctIdx": 1,
+    "explanation": "Auch blankes Metall verliert beim Beizen etwas Masse. Die Blindprobe liefert diesen Betrag, der vom Massenverlust der ausgelagerten Proben abgezogen wird.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Dafür genügt ein Thermometer; die Blindprobe dient der Massenkorrektur.",
+      "",
+      "Kalibrieren erfolgt mit Prüfgewichten, nicht mit einer Stahlprobe.",
+      "Die Blindprobe war nicht ausgelagert und trägt keine Korrosionsprodukte."
+    ],
+    "gapAnalysis": {
+      "topic": "Blindprobe",
+      "misconception": "Der Beizabtrag des Grundmetalls wird übersehen.",
+      "coreRule": "Δm = m₀ − m₁ − m_Blind.",
+      "actionableAdvice": "Wiederholen Sie im Handout 4-Wochen-Auslagerungsversuch den Reiter „Ablauf“.",
+      "targetModuleTab": "labor_auslagerung",
+      "targetModuleLabel": "Handout 4-Wochen-Auslagerungsversuch"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_auslagerung_3",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "labor_auslagerung",
+    "moduleTitle": "Handout 4-Wochen-Auslagerungsversuch",
+    "topic": "Lochfraß",
+    "difficulty": "Transfer",
+    "question": "Die Proben in chloridhaltiger Lösung zeigen Lochfraß. Wie ist die gravimetrische Abtragsrate zu bewerten?",
+    "options": [
+      "Sie unterschätzt die örtliche Eindringtiefe, weil der Verlust auf die Fläche verteilt wird",
+      "Sie überschätzt die Gefährdung, weil die Löcher beim Beizen zusätzlich deutlich vergrößert werden",
+      "Sie ist genau, weil Massenverlust und Lochtiefe einander proportional sind",
+      "Sie ist unbrauchbar, weil Chlorid die Wägung durch Salzablagerungen verfälscht"
+    ],
+    "correctIdx": 0,
+    "explanation": "Die Rate setzt gleichmäßigen Abtrag voraus. Bei Lochfraß konzentriert sich der Verlust auf wenige Stellen; die Lochtiefe kann ein Vielfaches des mittleren Abtrags betragen und muss gesondert gemessen werden.",
+    "bloom": "Bewerten",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "",
+      "Ein Beizeffekt besteht, ist aber klein gegenüber der Mittelung über die Fläche.",
+      "Bei Lochfraß fehlt diese Proportionalität; wenige tiefe Löcher kosten wenig Masse.",
+      "Salzreste werden beim Spülen entfernt; das ist nicht der Kern des Problems."
+    ],
+    "gapAnalysis": {
+      "topic": "Lochfraß",
+      "misconception": "Mittlere Abtragsrate und örtliche Schädigung werden gleichgesetzt.",
+      "coreRule": "Lochfraß: zusätzlich Lochtiefen messen.",
+      "actionableAdvice": "Wiederholen Sie im Handout 4-Wochen-Auslagerungsversuch den Reiter „Fehlerquellen & Fragen“.",
+      "targetModuleTab": "labor_auslagerung",
+      "targetModuleLabel": "Handout 4-Wochen-Auslagerungsversuch"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_auslagerung_4",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "labor_auslagerung",
+    "moduleTitle": "Handout 4-Wochen-Auslagerungsversuch",
+    "topic": "Mittelwertbildung",
+    "difficulty": "Vertiefung",
+    "question": "Drei Proben in NaCl-Lösung ergeben rund 100 µm/a, drei Proben in chloridfreier Ca(OH)₂-Lösung rund 1 µm/a. Was ist eine sinnvolle Auswertung?",
+    "options": [
+      "Mittelwert über alle sechs Proben, weil mehr Proben die Streuung verringern",
+      "nur die NaCl-Proben auswerten, weil die anderen keinen Massenverlust zeigen",
+      "getrennte Mittelwerte je Medium und deren Vergleich",
+      "den Median aller sechs Werte, weil er Ausreißer unterdrückt"
+    ],
+    "correctIdx": 2,
+    "explanation": "Gemittelt wird nur innerhalb gleicher Bedingungen. Der Vergleich der Medien (hier Faktor rund 100) ist die eigentliche Aussage des Versuchs.",
+    "bloom": "Analysieren",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Ein Mittel aus zwei Versuchsbedingungen beschreibt keine von beiden.",
+      "Die chloridfreie Reihe ist die Referenz und gehört zur Aussage.",
+      "",
+      "Auch der Median vermischt zwei Versuchsbedingungen."
+    ],
+    "gapAnalysis": {
+      "topic": "Mittelwertbildung",
+      "misconception": "Proben unterschiedlicher Medien werden gemeinsam gemittelt.",
+      "coreRule": "Mittelwert und Streuung je Versuchsbedingung.",
+      "actionableAdvice": "Wiederholen Sie im Handout 4-Wochen-Auslagerungsversuch den Reiter „Auswertung“.",
+      "targetModuleTab": "labor_auslagerung",
+      "targetModuleLabel": "Handout 4-Wochen-Auslagerungsversuch"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_auslagerung_5",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "labor_auslagerung",
+    "moduleTitle": "Handout 4-Wochen-Auslagerungsversuch",
+    "topic": "Oberfläche",
+    "difficulty": "Basis",
+    "question": "Wie groß ist die Oberfläche eines Stahlstabs mit d = 10 mm und l = 100 mm einschließlich beider Stirnflächen etwa?",
+    "options": [
+      "31,4 cm²",
+      "7,9 cm²",
+      "33,0 cm²",
+      "62,8 cm²"
+    ],
+    "correctIdx": 2,
+    "explanation": "A = π·d·l + 2·π·d²/4 = 3141,6 + 157,1 = 3298,7 mm² ≈ 33,0 cm². Werden die Stirnflächen abgedeckt, gilt nur die Mantelfläche der freien Länge.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Das ist nur die Mantelfläche ohne die beiden Stirnflächen.",
+      "Das entspricht dem Volumen in cm³, nicht der Oberfläche.",
+      "",
+      "Hier wurde der Umfang mit dem doppelten Durchmesser gerechnet."
+    ],
+    "gapAnalysis": {
+      "topic": "Oberfläche",
+      "misconception": "Stirnflächen werden vergessen oder Fläche und Volumen verwechselt.",
+      "coreRule": "A = π·d·l + 2·π·d²/4.",
+      "actionableAdvice": "Wiederholen Sie im Handout 4-Wochen-Auslagerungsversuch den Reiter „Auswertung“.",
+      "targetModuleTab": "labor_auslagerung",
+      "targetModuleLabel": "Handout 4-Wochen-Auslagerungsversuch"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_auslagerung_6",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "labor_auslagerung",
+    "moduleTitle": "Handout 4-Wochen-Auslagerungsversuch",
+    "topic": "Hochrechnung",
+    "difficulty": "Vertiefung",
+    "question": "Warum überschätzt die Hochrechnung eines kurzen Auslagerungsversuchs auf ein Jahr meist die Korrosionsrate?",
+    "options": [
+      "weil die Waage bei kleinen Massenverlusten systematisch zu viel anzeigt",
+      "weil Deckschichten aus Korrosionsprodukten die Korrosion mit der Zeit bremsen",
+      "weil die Lösung mit der Zeit zunehmend aggressiver wird und das nicht erfasst ist",
+      "weil der Blindwert bei kurzen Versuchen nicht bestimmt werden kann"
+    ],
+    "correctIdx": 1,
+    "explanation": "Zu Beginn korrodiert die blanke Oberfläche am schnellsten; Rostschichten und Sauerstoffverarmung verlangsamen den Angriff. Eine lineare Hochrechnung überschätzt daher die Langzeitrate.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Ein systematischer Wägefehler hätte keine bevorzugte Richtung.",
+      "",
+      "Das würde zu einer Unterschätzung führen, nicht zu einer Überschätzung.",
+      "Der Blindwert hängt vom Beizen ab, nicht von der Versuchsdauer."
+    ],
+    "gapAnalysis": {
+      "topic": "Hochrechnung",
+      "misconception": "Korrosion wird als zeitlich konstant angenommen.",
+      "coreRule": "Rate mit Versuchsdauer angeben, vergleichend nutzen.",
+      "actionableAdvice": "Wiederholen Sie im Handout 4-Wochen-Auslagerungsversuch den Reiter „Fehlerquellen & Fragen“.",
+      "targetModuleTab": "labor_auslagerung",
+      "targetModuleLabel": "Handout 4-Wochen-Auslagerungsversuch"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_frischbeton_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "labor_frischbeton",
+    "moduleTitle": "Handout Frischbetonprüfungen",
+    "topic": "Ausbreitmaß",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 12350-5",
+    "question": "Beim Ausbreitversuch messen Sie d₁ = 480 mm und d₂ = 500 mm. Welches Ausbreitmaß und welche Klasse ergeben sich?",
+    "options": [
+      "490 mm, F4",
+      "490 mm, F3",
+      "980 mm, F6",
+      "500 mm, F5"
+    ],
+    "correctIdx": 0,
+    "explanation": "f = (480 + 500)/2 = 490 mm (auf 10 mm gerundet). Nach DIN EN 206 umfasst F4 490 bis 550 mm.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "F3 endet bei 480 mm; 490 mm gehört bereits zu F4 (490 bis 550 mm).",
+      "Die Durchmesser werden gemittelt, nicht addiert.",
+      "Maßgebend ist der Mittelwert, nicht der größere Durchmesser; F5 beginnt erst bei 560 mm."
+    ],
+    "gapAnalysis": {
+      "topic": "Ausbreitmaß",
+      "misconception": "Klassengrenzen oder Mittelwertbildung werden falsch angewandt.",
+      "coreRule": "f = (d₁ + d₂)/2; F3 420–480, F4 490–550 mm.",
+      "actionableAdvice": "Wiederholen Sie im Handout Frischbetonprüfungen den Reiter „Auswertung“.",
+      "targetModuleTab": "labor_frischbeton",
+      "targetModuleLabel": "Handout Frischbetonprüfungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_frischbeton_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "labor_frischbeton",
+    "moduleTitle": "Handout Frischbetonprüfungen",
+    "topic": "Rohdichte",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 12350-6",
+    "question": "Ein 8-L-Behälter wiegt leer 3,20 kg und mit verdichtetem Beton 22,00 kg. Wie groß ist die Frischbetonrohdichte?",
+    "options": [
+      "2750 kg/m³",
+      "2350 kg/m³",
+      "2400 kg/m³",
+      "235 kg/m³"
+    ],
+    "correctIdx": 1,
+    "explanation": "D = (22,00 − 3,20) kg / 0,008 m³ = 2350 kg/m³ (auf 10 kg/m³ gerundet).",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Hier wurde die Gesamtmasse einschließlich Behälter durch das Volumen geteilt.",
+      "",
+      "Das wäre die Masse von 19,2 kg Beton; gemessen sind 18,8 kg.",
+      "Bei der Umrechnung von kg/L auf kg/m³ fehlt eine Zehnerpotenz."
+    ],
+    "gapAnalysis": {
+      "topic": "Rohdichte",
+      "misconception": "Behältermasse oder Einheitenumrechnung werden vergessen.",
+      "coreRule": "D = (m₂ − m₁)/V.",
+      "actionableAdvice": "Wiederholen Sie im Handout Frischbetonprüfungen den Reiter „Auswertung“.",
+      "targetModuleTab": "labor_frischbeton",
+      "targetModuleLabel": "Handout Frischbetonprüfungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_frischbeton_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "labor_frischbeton",
+    "moduleTitle": "Handout Frischbetonprüfungen",
+    "topic": "Luftgehalt",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 12350-7",
+    "question": "Warum wird der abgelesene Luftgehalt A₁ beim Druckausgleichsverfahren um den Korrekturfaktor G verringert?",
+    "options": [
+      "weil das Manometer bei hohen Prüfdrücken systematisch zu viel Luft im Beton anzeigt",
+      "weil das Wasser im Deckel einen Teil des Behältervolumens einnimmt",
+      "weil auch die Poren der Gesteinskörnung Luft enthalten, die mitgemessen wird",
+      "weil der Zement während der kurzen Prüfung chemisch einen Teil der Luft bindet"
+    ],
+    "correctIdx": 2,
+    "explanation": "Der Druckausgleich erfasst auch zugängliche Poren der Gesteinskörnung. G wird an der Gesteinskörnung allein bestimmt und abgezogen: A_c = A₁ − G.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Das Manometer wird kalibriert; G betrifft den Baustoff, nicht das Gerät.",
+      "Das Wasser verdrängt nur die Luft über dem Beton; es ist in der Kalibrierung berücksichtigt.",
+      "",
+      "Während der wenigen Minuten der Prüfung bindet Zement keine Luft."
+    ],
+    "gapAnalysis": {
+      "topic": "Luftgehalt",
+      "misconception": "Der Korrekturfaktor wird für eine Gerätekonstante gehalten.",
+      "coreRule": "A_c = A₁ − G (G aus der Gesteinskörnung).",
+      "actionableAdvice": "Wiederholen Sie im Handout Frischbetonprüfungen den Reiter „Ablauf“.",
+      "targetModuleTab": "labor_frischbeton",
+      "targetModuleLabel": "Handout Frischbetonprüfungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_frischbeton_4",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "labor_frischbeton",
+    "moduleTitle": "Handout Frischbetonprüfungen",
+    "topic": "Fehlerquellen",
+    "difficulty": "Vertiefung",
+    "question": "Die gemessene Rohdichte ist 60 kg/m³ niedriger als erwartet, der Luftgehalt um rund 2,5 % höher. Welche Ursache ist am wahrscheinlichsten?",
+    "options": [
+      "zu viel Zement in der Mischung",
+      "ein zu genau kalibrierter Behälter",
+      "eine Prüfung unmittelbar nach dem Mischen",
+      "unvollständige Verdichtung im Behälter"
+    ],
+    "correctIdx": 3,
+    "explanation": "Eingeschlossene Verdichtungsporen senken die Rohdichte und erhöhen den Luftgehalt. 60 kg/m³ bei etwa 2400 kg/m³ entsprechen rund 2,5 % Volumen.",
+    "bloom": "Analysieren",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Mehr Zement erhöht die Rohdichte eher und erklärt keinen höheren Luftgehalt.",
+      "Eine gute Kalibrierung verringert Fehler, sie erzeugt keine.",
+      "Das ist gerade die vorgesehene Vorgehensweise.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Fehlerquellen",
+      "misconception": "Zusammenhang zwischen Verdichtung, Rohdichte und Luftgehalt wird nicht erkannt.",
+      "coreRule": "ΔD/D ≈ ΔLuft; lagenweise verdichten.",
+      "actionableAdvice": "Wiederholen Sie im Handout Frischbetonprüfungen den Reiter „Fehlerquellen & Fragen“.",
+      "targetModuleTab": "labor_frischbeton",
+      "targetModuleLabel": "Handout Frischbetonprüfungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_frischbeton_5",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "labor_frischbeton",
+    "moduleTitle": "Handout Frischbetonprüfungen",
+    "topic": "Ablauf Ausbreitversuch",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 12350-5",
+    "question": "Wie oft wird die Tischplatte beim Ausbreitversuch nach DIN EN 12350-5 angehoben und fallen gelassen?",
+    "options": [
+      "10-mal",
+      "25-mal",
+      "15-mal",
+      "60-mal"
+    ],
+    "correctIdx": 2,
+    "explanation": "Nach dem Abziehen der Form wird die Platte 15-mal bis zum Anschlag (40 mm) angehoben und fallen gelassen; danach werden d₁ und d₂ gemessen.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Zehn Stöße gelten für das Verdichten jeder Lage in der Form.",
+      "25 Stöße sind beim Setzversuch je Lage vorgesehen, nicht beim Ausbreittisch.",
+      "",
+      "60 Schläge gehören zum Verdichten der Mörtelprismen nach DIN EN 196-1."
+    ],
+    "gapAnalysis": {
+      "topic": "Ablauf Ausbreitversuch",
+      "misconception": "Die Kennzahlen verschiedener Prüfverfahren werden verwechselt.",
+      "coreRule": "Ausbreittisch: 15 Hübe, Hubhöhe 40 mm.",
+      "actionableAdvice": "Wiederholen Sie im Handout Frischbetonprüfungen den Reiter „Ablauf“.",
+      "targetModuleTab": "labor_frischbeton",
+      "targetModuleLabel": "Handout Frischbetonprüfungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_frischbeton_6",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "labor_frischbeton",
+    "moduleTitle": "Handout Frischbetonprüfungen",
+    "topic": "Anwendungsgrenzen",
+    "difficulty": "Transfer",
+    "normRef": "DIN EN 12350-7",
+    "question": "Für welchen Beton ist das Druckausgleichsverfahren zur Luftgehaltsbestimmung nicht geeignet?",
+    "options": [
+      "Beton mit Fließmittel",
+      "Leichtbeton mit poröser Körnung",
+      "Luftporenbeton für Expositionsklasse XF4",
+      "Beton mit einem Größtkorn von 16 mm"
+    ],
+    "correctIdx": 1,
+    "explanation": "Poröse Leichtgesteinskörnung nimmt unter Druck Luft bzw. Wasser auf; der Korrekturfaktor wäre groß und unsicher. Für Leichtbeton gelten andere Verfahren.",
+    "bloom": "Bewerten",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Fließmittel ändern die Konsistenz, nicht die Eignung des Verfahrens.",
+      "",
+      "Gerade für LP-Beton ist die Luftgehaltsprüfung vorgesehen.",
+      "16 mm liegt im Anwendungsbereich des Verfahrens."
+    ],
+    "gapAnalysis": {
+      "topic": "Anwendungsgrenzen",
+      "misconception": "Anwendungsgrenzen des Prüfverfahrens sind unbekannt.",
+      "coreRule": "Druckausgleichsverfahren: dichte Gesteinskörnung.",
+      "actionableAdvice": "Wiederholen Sie im Handout Frischbetonprüfungen den Reiter „Fehlerquellen & Fragen“.",
+      "targetModuleTab": "labor_frischbeton",
+      "targetModuleLabel": "Handout Frischbetonprüfungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_druckfestigkeit_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "labor_druckfestigkeit",
+    "moduleTitle": "Handout Druckfestigkeit an Würfeln",
+    "topic": "Druckfestigkeit",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 12390-3",
+    "question": "Ein Würfel mit 150 mm × 150 mm Druckfläche bricht bei F = 900 kN. Wie groß ist seine Druckfestigkeit?",
+    "options": [
+      "6,0 MPa",
+      "60,0 MPa",
+      "40,0 MPa",
+      "4,0 MPa"
+    ],
+    "correctIdx": 2,
+    "explanation": "f_c = 900 000 N / 22 500 mm² = 40,0 MPa.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Die Fläche wurde in cm² statt mm² eingesetzt und die Kraft nicht in N umgerechnet.",
+      "Hier wurde nur durch 15 000 statt 22 500 mm² geteilt.",
+      "",
+      "Bei der Umrechnung von kN auf N fehlt eine Zehnerpotenz."
+    ],
+    "gapAnalysis": {
+      "topic": "Druckfestigkeit",
+      "misconception": "Einheiten von Kraft und Fläche werden nicht konsistent umgerechnet.",
+      "coreRule": "f_c = F/A_c (N/mm² = MPa).",
+      "actionableAdvice": "Wiederholen Sie im Handout Druckfestigkeit an Würfeln den Reiter „Auswertung“.",
+      "targetModuleTab": "labor_druckfestigkeit",
+      "targetModuleLabel": "Handout Druckfestigkeit an Würfeln"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_druckfestigkeit_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "labor_druckfestigkeit",
+    "moduleTitle": "Handout Druckfestigkeit an Würfeln",
+    "topic": "Trockenlagerung",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 12390-2",
+    "question": "Trocken gelagerte Würfel eines Normalbetons ergeben f_cm,dry = 45,0 MPa. Welcher Wert ist mit dem Faktor 0,92 für den Vergleich mit den Klassenwerten anzusetzen?",
+    "options": [
+      "48,9 MPa",
+      "45,0 MPa",
+      "36,0 MPa",
+      "41,4 MPa"
+    ],
+    "correctIdx": 3,
+    "explanation": "f_c,cube = 0,92 · 45,0 = 41,4 MPa. Trocken gelagerte Würfel sind fester als wassergelagerte; die Umrechnung bezieht sie auf die Referenzlagerung.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Hier wurde durch 0,92 geteilt statt multipliziert.",
+      "Ohne Umrechnung würde die Festigkeit trocken gelagerter Würfel überschätzt.",
+      "Das entspricht einem Faktor 0,8, wie er für Zylinder/Würfel-Verhältnisse gilt.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Trockenlagerung",
+      "misconception": "Richtung der Umrechnung wird verwechselt.",
+      "coreRule": "f_c,cube = 0,92 · f_c,dry (Normalbeton bis C50/60).",
+      "actionableAdvice": "Wiederholen Sie im Handout Druckfestigkeit an Würfeln den Reiter „Auswertung“.",
+      "targetModuleTab": "labor_druckfestigkeit",
+      "targetModuleLabel": "Handout Druckfestigkeit an Würfeln"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_druckfestigkeit_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "labor_druckfestigkeit",
+    "moduleTitle": "Handout Druckfestigkeit an Würfeln",
+    "topic": "Belastungsrate",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 12390-3",
+    "question": "Mit welcher Spannungsrate wird ein Betonwürfel nach DIN EN 12390-3 belastet?",
+    "options": [
+      "(0,6 ± 0,2) MPa/s",
+      "(0,05 ± 0,01) MPa/s",
+      "(6,0 ± 2,0) MPa/s",
+      "(2400 ± 200) N/s"
+    ],
+    "correctIdx": 0,
+    "explanation": "DIN EN 12390-3 verlangt eine konstante Spannungsrate von (0,6 ± 0,2) MPa/s; bei 150-mm-Würfeln entspricht 0,6 MPa/s rund 13,5 kN/s.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Diese Rate wäre für die Druckprüfung viel zu langsam.",
+      "Das Zehnfache der Normrate würde die Festigkeit überschätzen.",
+      "Das ist die Kraftrate der Mörtelprismen nach DIN EN 196-1."
+    ],
+    "gapAnalysis": {
+      "topic": "Belastungsrate",
+      "misconception": "Belastungsraten verschiedener Normen werden verwechselt.",
+      "coreRule": "Würfel: (0,6 ± 0,2) MPa/s.",
+      "actionableAdvice": "Wiederholen Sie im Handout Druckfestigkeit an Würfeln den Reiter „Ablauf“.",
+      "targetModuleTab": "labor_druckfestigkeit",
+      "targetModuleLabel": "Handout Druckfestigkeit an Würfeln"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_druckfestigkeit_4",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "labor_druckfestigkeit",
+    "moduleTitle": "Handout Druckfestigkeit an Würfeln",
+    "topic": "Klassenzuordnung",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 206",
+    "question": "Drei Würfel ergeben 33,5 / 35,0 / 31,0 MPa (Mittel 33,2 MPa). Welche Klasse erreicht der Beton nach den vereinfachten Kriterien f_cm ≥ f_ck,cube + 4 und f_ci ≥ f_ck,cube − 4?",
+    "options": [
+      "C25/30",
+      "C20/25",
+      "C30/37",
+      "C16/20"
+    ],
+    "correctIdx": 1,
+    "explanation": "C20/25: 33,2 ≥ 25 + 4 = 29 und 31,0 ≥ 21 MPa – erfüllt. C25/30: 33,2 < 34 MPa – nicht erfüllt.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "f_ck,cube = 30 MPa verlangt einen Mittelwert von mindestens 34 MPa.",
+      "",
+      "Dafür wären ein Mittelwert von 41 MPa und ein kleinster Wert von 33 MPa nötig.",
+      "C16/20 ist erfüllt, aber auch die nächsthöhere Klasse C20/25."
+    ],
+    "gapAnalysis": {
+      "topic": "Klassenzuordnung",
+      "misconception": "Der Vorhaltewert von 4 MPa wird übersehen.",
+      "coreRule": "f_cm ≥ f_ck,cube + 4; f_ci ≥ f_ck,cube − 4 (n = 3).",
+      "actionableAdvice": "Wiederholen Sie im Handout Druckfestigkeit an Würfeln den Reiter „Auswertung“.",
+      "targetModuleTab": "labor_druckfestigkeit",
+      "targetModuleLabel": "Handout Druckfestigkeit an Würfeln"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_druckfestigkeit_5",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "labor_druckfestigkeit",
+    "moduleTitle": "Handout Druckfestigkeit an Würfeln",
+    "topic": "Prüfvorbereitung",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 12390-3",
+    "question": "Warum wird der Würfel so eingelegt, dass die Schalflächen an den Druckplatten liegen?",
+    "options": [
+      "weil die abgezogene Oberseite uneben sein kann und die Last ungleich einleitet",
+      "weil die Schalflächen dichter sind und dadurch planmäßig höhere Festigkeiten liefern sollen",
+      "weil die Kennzeichnung auf der Oberseite sonst beim Prüfen zerstört würde",
+      "weil die Prüfmaschine nur so die Höhe des Würfels erfassen kann"
+    ],
+    "correctIdx": 0,
+    "explanation": "Die Schalflächen sind eben und parallel. Die abgezogene Fläche kann Unebenheiten aufweisen, die zu Spannungsspitzen und zu niedrigen Festigkeiten führen.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Ziel ist eine gleichmäßige Lasteinleitung, nicht ein höherer Wert.",
+      "Die Kennzeichnung ist für die Prüfung ohne Bedeutung.",
+      "Die Höhe wird vorher mit dem Messschieber gemessen."
+    ],
+    "gapAnalysis": {
+      "topic": "Prüfvorbereitung",
+      "misconception": "Die Bedeutung ebener, paralleler Druckflächen wird unterschätzt.",
+      "coreRule": "Belastet werden die Schalflächen.",
+      "actionableAdvice": "Wiederholen Sie im Handout Druckfestigkeit an Würfeln den Reiter „Ablauf“.",
+      "targetModuleTab": "labor_druckfestigkeit",
+      "targetModuleLabel": "Handout Druckfestigkeit an Würfeln"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_druckfestigkeit_6",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "labor_druckfestigkeit",
+    "moduleTitle": "Handout Druckfestigkeit an Würfeln",
+    "topic": "Bewertung",
+    "difficulty": "Transfer",
+    "normRef": "DIN EN 206",
+    "question": "Warum ersetzt die Bewertung von drei Laborwürfeln im Handout keine Konformitätskontrolle nach DIN EN 206?",
+    "options": [
+      "weil im Labor hergestellte Würfel kleiner als die genormten Probekörper sind",
+      "weil DIN EN 206 für die Konformität nur Zylinder als Probekörper zulässt",
+      "weil Konformität statistisch über eine Produktion nachgewiesen wird",
+      "weil die Druckfestigkeit für die Konformität erst nach 56 Tagen bewertet werden darf"
+    ],
+    "correctIdx": 2,
+    "explanation": "Die Konformitätskontrolle bewertet eine Produktion über Prüfzeiträume mit Kriterien, die bei Dauerproduktion die Standardabweichung enthalten. Drei Würfel aus einer Labormischung sind nur eine erste Einordnung.",
+    "bloom": "Bewerten",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Würfel mit 150 mm sind genormte Probekörper.",
+      "DIN EN 206 lässt Würfel und Zylinder zu.",
+      "",
+      "Das Regelprüfalter ist 28 Tage; 56 Tage nur nach Vereinbarung."
+    ],
+    "gapAnalysis": {
+      "topic": "Bewertung",
+      "misconception": "Einzelprüfung und Konformitätsnachweis werden gleichgesetzt.",
+      "coreRule": "Konformität: Produktion, statistisch; Handout: Lehrvereinfachung.",
+      "actionableAdvice": "Wiederholen Sie im Handout Druckfestigkeit an Würfeln den Reiter „Auswertung“.",
+      "targetModuleTab": "labor_druckfestigkeit",
+      "targetModuleLabel": "Handout Druckfestigkeit an Würfeln"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_moertelprismen_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "labor_moertelprismen",
+    "moduleTitle": "Handout Mörtelprismen (DIN EN 196-1)",
+    "topic": "Biegezugfestigkeit",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 196-1",
+    "question": "Ein Prisma 40 mm × 40 mm × 160 mm bricht bei F_f = 3,2 kN (Stützweite l = 100 mm). Wie groß ist die Biegezugfestigkeit R_f = 1,5 · F_f · l / b³?",
+    "options": [
+      "7,5 MPa",
+      "3,0 MPa",
+      "12,0 MPa",
+      "2,0 MPa"
+    ],
+    "correctIdx": 0,
+    "explanation": "R_f = 1,5 · 3200 N · 100 mm / 40³ mm³ = 480 000 / 64 000 = 7,5 MPa.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Hier fehlt der Faktor 1,5 · l / b, also das Biegemoment.",
+      "Hier wurde durch b² · 1000 statt b³ geteilt.",
+      "Das ist F/A der Druckfläche, keine Biegespannung."
+    ],
+    "gapAnalysis": {
+      "topic": "Biegezugfestigkeit",
+      "misconception": "Die Biegeformel wird mit falschen Einheiten oder ohne Moment angewandt.",
+      "coreRule": "R_f = 1,5 · F_f · l / b³.",
+      "actionableAdvice": "Wiederholen Sie im Handout Mörtelprismen (DIN EN 196-1) den Reiter „Auswertung“.",
+      "targetModuleTab": "labor_moertelprismen",
+      "targetModuleLabel": "Handout Mörtelprismen (DIN EN 196-1)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_moertelprismen_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "labor_moertelprismen",
+    "moduleTitle": "Handout Mörtelprismen (DIN EN 196-1)",
+    "topic": "Druckfestigkeit",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 196-1",
+    "question": "Eine Prismenhälfte bricht unter der Druckplatte 40 mm × 40 mm bei 72 kN. Wie groß ist R_c?",
+    "options": [
+      "18,0 MPa",
+      "45,0 MPa",
+      "11,3 MPa",
+      "4,5 MPa"
+    ],
+    "correctIdx": 1,
+    "explanation": "R_c = 72 000 N / 1600 mm² = 45,0 MPa.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Hier wurde durch 4000 statt 1600 mm² geteilt.",
+      "",
+      "Hier wurde die Prismenlänge 160 mm statt 40 mm angesetzt.",
+      "Bei der Umrechnung von kN auf N fehlt eine Zehnerpotenz."
+    ],
+    "gapAnalysis": {
+      "topic": "Druckfestigkeit",
+      "misconception": "Druckfläche der Prismenhälfte wird falsch angesetzt.",
+      "coreRule": "R_c = F_c / 1600 mm².",
+      "actionableAdvice": "Wiederholen Sie im Handout Mörtelprismen (DIN EN 196-1) den Reiter „Auswertung“.",
+      "targetModuleTab": "labor_moertelprismen",
+      "targetModuleLabel": "Handout Mörtelprismen (DIN EN 196-1)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_moertelprismen_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "labor_moertelprismen",
+    "moduleTitle": "Handout Mörtelprismen (DIN EN 196-1)",
+    "topic": "±10-%-Regel",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 196-1",
+    "question": "Von sechs Druckwerten weicht einer um 14 % vom Mittel ab. Wie wird nach DIN EN 196-1 verfahren?",
+    "options": [
+      "Alle sechs Werte bleiben; Abweichungen bis 15 % sind zulässig.",
+      "Die Serie wird sofort verworfen und mit neuen Prismen wiederholt.",
+      "Der höchste und der niedrigste Wert werden aus der Serie gestrichen.",
+      "Der Wert entfällt; maßgebend ist das Mittel der übrigen fünf."
+    ],
+    "correctIdx": 3,
+    "explanation": "Weicht ein Einzelwert um mehr als ±10 % vom Mittel der sechs ab, wird er verworfen und das Mittel der fünf gebildet. Weicht auch davon einer um mehr als 10 % ab, ist die Serie zu verwerfen.",
+    "bloom": "Analysieren",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Die Norm setzt die Grenze bei 10 %, nicht bei 15 %.",
+      "Erst wenn auch unter den fünf restlichen ein Wert über 10 % abweicht.",
+      "Die Norm streicht nur den abweichenden Wert, nicht zwei Werte.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "±10-%-Regel",
+      "misconception": "Die Verwerfungsregel der Norm ist nicht bekannt.",
+      "coreRule": "±10 %: einen Wert verwerfen, sonst Serie verwerfen.",
+      "actionableAdvice": "Wiederholen Sie im Handout Mörtelprismen (DIN EN 196-1) den Reiter „Auswertung“.",
+      "targetModuleTab": "labor_moertelprismen",
+      "targetModuleLabel": "Handout Mörtelprismen (DIN EN 196-1)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_moertelprismen_4",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "labor_moertelprismen",
+    "moduleTitle": "Handout Mörtelprismen (DIN EN 196-1)",
+    "topic": "Normmörtel",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 196-1",
+    "question": "Wie ist der Normmörtel nach DIN EN 196-1 zusammengesetzt?",
+    "options": [
+      "450 g Zement, 1350 g Normsand, 225 g Wasser",
+      "500 g Zement, 1500 g Quarzsand, 300 g Wasser",
+      "450 g Zement, 1350 g Normsand, 180 g Wasser",
+      "300 g Zement, 1350 g Normsand, 150 g Wasser"
+    ],
+    "correctIdx": 0,
+    "explanation": "Zement : Normsand : Wasser = 1 : 3 : 0,5, also 450 g, 1350 g und 225 g je Mischung für drei Prismen.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "w/z = 0,60 und beliebiger Quarzsand entsprechen nicht der Norm.",
+      "Mit 180 g Wasser läge w/z bei 0,40 statt 0,50.",
+      "Das Verhältnis Zement zu Sand muss 1 : 3 betragen."
+    ],
+    "gapAnalysis": {
+      "topic": "Normmörtel",
+      "misconception": "Die festen Mischungsverhältnisse des Normmörtels sind unbekannt.",
+      "coreRule": "Normmörtel 1 : 3 : 0,5 (450/1350/225 g).",
+      "actionableAdvice": "Wiederholen Sie im Handout Mörtelprismen (DIN EN 196-1) den Reiter „Ziel & Ausstattung“.",
+      "targetModuleTab": "labor_moertelprismen",
+      "targetModuleLabel": "Handout Mörtelprismen (DIN EN 196-1)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_moertelprismen_5",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "labor_moertelprismen",
+    "moduleTitle": "Handout Mörtelprismen (DIN EN 196-1)",
+    "topic": "Festigkeitsklasse",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 197-1",
+    "question": "Nach 28 Tagen ergibt die Prüfung R_c = 47,8 MPa. Welche Festigkeitsklasse nach DIN EN 197-1 ist damit belegt?",
+    "options": [
+      "32,5",
+      "52,5",
+      "42,5",
+      "47,5"
+    ],
+    "correctIdx": 2,
+    "explanation": "Für 42,5 gilt nach 28 Tagen 42,5 MPa ≤ R_c ≤ 62,5 MPa; 47,8 MPa liegt darin. 52,5 MPa wird nicht erreicht.",
+    "bloom": "Bewerten",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Die Untergrenze von 32,5 ist erreicht, aber auch die von 42,5.",
+      "Die Untergrenze von 52,5 MPa ist nicht erreicht.",
+      "",
+      "Eine Klasse 47,5 gibt es in DIN EN 197-1 nicht."
+    ],
+    "gapAnalysis": {
+      "topic": "Festigkeitsklasse",
+      "misconception": "Klassengrenzen der Zementnormfestigkeit sind unbekannt.",
+      "coreRule": "28 d: 32,5 / 42,5 / 52,5 MPa als Untergrenzen.",
+      "actionableAdvice": "Wiederholen Sie im Handout Mörtelprismen (DIN EN 196-1) den Reiter „Auswertung“.",
+      "targetModuleTab": "labor_moertelprismen",
+      "targetModuleLabel": "Handout Mörtelprismen (DIN EN 196-1)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_labor_moertelprismen_6",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "labor_moertelprismen",
+    "moduleTitle": "Handout Mörtelprismen (DIN EN 196-1)",
+    "topic": "Prüfbedingungen",
+    "difficulty": "Transfer",
+    "normRef": "DIN EN 196-1",
+    "question": "Warum werden die Prismen erst unmittelbar vor der Prüfung aus dem Wasserbad genommen?",
+    "options": [
+      "weil nasse Prismen in der Prüfmaschine besser zentriert werden können",
+      "weil trocknende Prismen höhere, nicht vergleichbare Festigkeiten liefern",
+      "weil nach dem Entnehmen die Hydratation sofort vollständig zum Erliegen kommt",
+      "weil Wasser auf der Oberfläche die Biegezugfestigkeit erst ermöglicht"
+    ],
+    "correctIdx": 1,
+    "explanation": "Austrocknung erhöht die gemessene Festigkeit (Kapillarspannungen, Wasser in den Poren). Für vergleichbare Normfestigkeiten wird im wassergesättigten Zustand geprüft.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Die Zentrierung erfolgt über Anschläge, nicht über die Feuchte.",
+      "",
+      "Die Hydratation verlangsamt sich, endet aber nicht sofort.",
+      "Oberflächenwasser hat keinen solchen Einfluss."
+    ],
+    "gapAnalysis": {
+      "topic": "Prüfbedingungen",
+      "misconception": "Der Einfluss des Feuchtezustands auf die Festigkeit wird übersehen.",
+      "coreRule": "Prüfung im wassergesättigten Zustand.",
+      "actionableAdvice": "Wiederholen Sie im Handout Mörtelprismen (DIN EN 196-1) den Reiter „Fehlerquellen & Fragen“.",
+      "targetModuleTab": "labor_moertelprismen",
+      "targetModuleLabel": "Handout Mörtelprismen (DIN EN 196-1)"
+    },
+    "verified": false
   }
 ]
