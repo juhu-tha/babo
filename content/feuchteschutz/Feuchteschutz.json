@@ -35,19 +35,20 @@
     "beschreibtWieVielDicker": "Beschreibt, wie viel dicker eine ruhende Luftschicht sein müsste, um denselben Dampfdiffusionswiderstand wie die Bauteilschicht zu erzeugen.",
     "t2DampfdruckMagnusgleichungÜber": "2. Dampfdruck-Magnusgleichung (über Wasser, DIN 4108-3 / DIN EN ISO 13788):",
     "glaserDiagrammTauwasserbilanzDin": " Glaser-Diagramm & Tauwasserbilanz (DIN 4108-3)",
-    "schichtaufbauAusDerS": "Schichtaufbau aus der s_d-Sandbox, Klima aus den Reglern oben (Wand: R_si = 0,13, R_se = 0,04 m²K/W). Aufgetragen über der diffusionsäquivalenten Luftschichtdicke s_d: Sättigungsdampfdruck p_sat aus dem Temperaturverlauf und Partialdampfdruck p. Berührt p die Sättigungslinie, fällt in dieser Ebene Tauwasser aus.",
+    "schichtaufbauAusDerS": "Schichtaufbau aus der s_d-Sandbox, aufgetragen über der diffusionsäquivalenten Luftschichtdicke s_d: Sättigungsdampfdruck p_sat aus dem Temperaturverlauf (Feuchteschutz: R_si = 0,25, R_se = 0,04 m²K/W) und Dampfdruck p. Der Dampfdruckverlauf ergibt sich aus der Tangentenkonstruktion als straff gespannter Faden von p_i nach p_e unterhalb von p_sat. Berührt er die Sättigungslinie in einem Punkt, liegt dort eine Tauwasserebene; folgt er ihr über eine Strecke, ein Tauwasserbereich.",
     "dauerDerTauperiode": "Dauer der Tauperiode:",
-    "klassischesGlaserKlima90": "Klassisches Glaser-Klima: 90 Tage Tauperiode, 90 Tage Verdunstungsperiode (12 °C / 70 % r. F.).",
+    "klassischesGlaserKlima90": "Normklima nach DIN 4108-3 (seit Ausgabe 2014): Tauperiode 90 Tage mit innen 20 °C / 50 % und außen −5 °C / 80 %; Verdunstungsperiode 90 Tage mit p_i = p_e = 1 200 Pa und 1 700 Pa (Wand) bzw. 2 000 Pa (Dach) in der Tauwasserzone. Werte aus öffentlichen Sekundärquellen, Abgleich mit DIN 4108-3:2024-03 vorläufig (fachliche Freigabe ausstehend).",
     "keinTauwasserInDer": "Kein Tauwasser in der Tauperiode",
-    "anKeinerSchichtgrenzeErreicht": "An keiner Schichtgrenze erreicht p den Sättigungsdampfdruck (",
-    "rechnerischeTauwassermasse0G": "). Rechnerische Tauwassermasse 0 g/m².",
+    "anKeinerSchichtgrenzeErreicht": "An keiner Stelle des Bauteils erreicht der Dampfdruck p den Sättigungsdampfdruck (",
+    "rechnerischeTauwassermasse0G": "). Rechnerische Tauwassermasse 0 kg/m².",
     "tauwasserAnGrenzfläche": "Tauwasser an Grenzfläche ",
     "tauwasserebeneHinterDerSchicht": "Tauwasserebene hinter der Schicht ",
     "dortIstPGleich": ": Dort ist p gleich p_sat; der Dampf, der innen zuströmt, kann außen nicht vollständig abgeführt werden.",
     "tauwasserMC": "Tauwasser m_c",
     "verdunstungMEv": "Verdunstung m_ev",
     "wMKS": " W/(m²K) · s_d,ges = ",
-    "vereinfachtesLehrmodellMitEiner": "Vereinfachtes Lehrmodell mit einer Tauwasserebene; die Verdunstungsrandbedingungen der DIN 4108-3:2024-03 weichen vom klassischen Glaser-Klima ab. Ersetzt keinen normgerechten Nachweis bzw. keine hygrothermische Simulation nach DIN EN 15026."
+    "vereinfachtesLehrmodellMitEiner": "Lehr- und Vorbemessungswerkzeug (Periodenbilanzverfahren, stationär, ohne Feuchtespeicherung und kapillaren Transport). Bei mehreren Tauwasserzonen wird die Verdunstung vereinfacht gemeinsam angesetzt. Ersetzt keinen normgerechten Nachweis und keine hygrothermische Simulation nach DIN EN 15026.",
+    "glaserLehrvarianteHinweis": "Lehrvariante: Innenklima aus den Reglern oben, außen −5 °C / 80 %, Dauer der Tauperiode frei wählbar; Verdunstungsperiode wie im Normklima. Ergebnisse dienen dem Verständnis, nicht dem Nachweis."
   },
   "werte": {
     "gipskartonplatteGkb": "Gipskartonplatte (GKB)",
@@ -84,15 +85,31 @@
     "diffusionsäquivalenteLuftschichtdickeSD": "Diffusionsäquivalente Luftschichtdicke s_d (kumuliert, innen → außen)",
     "dampfdruckPa": "Dampfdruck (Pa)",
     "dauerDerTauperiodeIn": "Dauer der Tauperiode in Tagen",
-    "grundkriterienNachDin4108": "Grundkriterien nach DIN 4108-3 erfüllt: m_c ≤ 1 000 g/m² und m_ev > m_c. Zusätzlich gilt 500 g/m² an Grenzflächen nicht kapillar wasseraufnahmefähiger Schichten; bei Holz und Holzwerkstoffen die zulässige Feuchteerhöhung beachten.",
-    "dasBauteilTrocknetIn": "Das Bauteil trocknet in der Verdunstungsperiode nicht sicher aus oder die Tauwassermasse ist zu groß. Abhilfe: raumseitig diffusionshemmende Schicht (Dampfbremse) oder außen diffusionsoffenere Schichten.",
+    "grundkriterienNachDin4108": "Die Kriterien der DIN 4108-3 sind rechnerisch eingehalten (M_c ≤ M_ev, M_c ≤ 1,0 kg/m², an Berührungsflächen mit nicht kapillar wasseraufnahmefähigen Schichten ≤ 0,5 kg/m²). Bei Holz und Holzwerkstoffen ist zusätzlich die zulässige Erhöhung des Feuchtegehalts zu prüfen.",
+    "dasBauteilTrocknetIn": "Mindestens ein Kriterium ist rechnerisch nicht eingehalten. Der Aufbau sollte genauer untersucht werden, z. B. mit einer raumseitigen diffusionshemmenden Schicht, diffusionsoffeneren Außenschichten oder einer hygrothermischen Simulation nach DIN EN 15026.",
     "beispiel1TaupunktUnd": "Beispiel 1: Taupunkt und Schimmelgrenze eines Wohnraums",
     "schimmelDrohtDeutlichOberhalb": "Schimmel droht deutlich oberhalb des Taupunkts. Mehr Lüften senkt p und damit beide Grenztemperaturen; Dämmung hebt die Oberflächentemperatur.",
     "din4108320242": "DIN 4108-3:2024-03; DIN EN ISO 13788:2013-05",
     "beispiel2SD": "Beispiel 2: s_d-Werte und die Regel „innen dichter als außen“",
     "dieFaustregelGiltVor": "Die Faustregel gilt vor allem für Holzbau und Innendämmung. WDVS auf Mauerwerk zählt nach DIN 4108-3 zu den Konstruktionen ohne rechnerischen Tauwassernachweis; maßgebend ist der Temperaturverlauf, nicht allein das s_d-Verhältnis.",
     "bemessungswerteNachDin4108": "Bemessungswerte nach DIN 4108-4:2020-11; Nachweisfreiheit nach DIN 4108-3:2024-03",
-    "oktober2026Ap6": "Oktober 2026 (AP 6 Bauphysik: Magnus-Formel über Eis ergänzt, Glaser-Bewertung korrigiert, Normausgaben aktualisiert; fachliche Freigabe durch den Autor ausstehend)"
+    "oktober2026Ap6": "Oktober 2026 (AP 6 Bauphysik: Magnus-Formel über Eis ergänzt, Glaser-Bewertung korrigiert, Normausgaben aktualisiert; fachliche Freigabe durch den Autor ausstehend)",
+    "glaserKlimaWahl": "Klima für das Glaser-Verfahren",
+    "glaserKlimaNorm": "Normklima DIN 4108-3",
+    "glaserKlimaRegler": "Innenklima aus den Reglern (Lehrvariante)",
+    "glaserBauteilWahl": "Bauteilart für die Verdunstungsperiode",
+    "glaserBauteilWand": "Wand (1 700 Pa)",
+    "glaserBauteilDach": "Dach (2 000 Pa)",
+    "schichtgrenzen": "Schichtgrenzen",
+    "tauwasserbereich": "Tauwasserbereich",
+    "tauwasserebene": "Tauwasserebene",
+    "inDerSchicht": "In der Schicht",
+    "bis": "bis",
+    "tauwasserbereichText": "Der Dampfdruck folgt hier der Sättigungslinie; Tauwasser fällt über die ganze Strecke aus.",
+    "trocknungsdauer": "Trocknung",
+    "kriterienDin4108": "Kriterien nach DIN 4108-3",
+    "kriteriumEingehalten": "rechnerisch eingehalten",
+    "kriteriumNichtEingehalten": "rechnerisch nicht eingehalten"
   },
   "daten": {
     "MAT_LIBRARY.beton_arm": {
@@ -178,9 +195,14 @@
         "quelle": "DIN 4108-3:2024-03; DIN EN ISO 13788:2013-05"
       },
       {
-        "formel": "m_c = \\delta_0 \\cdot \\Delta t \\cdot \\left( \\frac{p_i - p_{sat}(T_C)}{s_{d,1}} - \\frac{p_{sat}(T_C) - p_e}{s_{d,2}} \\right)",
-        "erklaerung": "Tauwassermasse m_c [g/m²] der Tauperiode an der Tauwasserebene C (Periodenbilanzverfahren); δ_0 = 7,2 · 10⁻⁷ kg/(m·h·Pa), Δt = Dauer der Tauperiode in h, s_d,1 bzw. s_d,2 = s_d-Wert raumseitig bzw. außenseitig der Tauwasserebene.",
-        "quelle": "DIN 4108-3:2024-03"
+        "formel": "M_c = \\delta_0 \\cdot t_c \\cdot \\left( \\frac{p_i - p_{sat,c}}{s_{d,i}} - \\frac{p_{sat,c} - p_e}{s_{d,e}} \\right)",
+        "erklaerung": "Tauwassermasse M_c [kg/m²] der Tauperiode (Periodenbilanzverfahren, Tangentenkonstruktion); δ_0 = 2,0 · 10⁻¹⁰ kg/(m·s·Pa) = 7,2 · 10⁻⁷ kg/(m·h·Pa), t_c = 2 160 h, s_d,i bzw. s_d,e = s_d-Wert raumseitig bzw. außenseitig der Tauwasserebene (beim Tauwasserbereich bis zu dessen Rändern).",
+        "quelle": "DIN 4108-3:2018-10; Rechenkern src/calc/glaser.ts"
+      },
+      {
+        "formel": "M_{ev} = \\delta_0 \\cdot t_{ev} \\cdot \\left( \\frac{p_{sat,c} - p_i}{s_{d,i}} + \\frac{p_{sat,c} - p_e}{s_{d,e}} \\right)",
+        "erklaerung": "Verdunstungsmasse M_ev [kg/m²] der Verdunstungsperiode mit t_ev = 2 160 h, p_i = p_e = 1 200 Pa und p_sat,c = 1 700 Pa (Wand) bzw. 2 000 Pa (Dach) in der Tauwasserzone (Werte vorläufig, fachliche Freigabe ausstehend).",
+        "quelle": "DIN 4108-3:2018-10 (öffentliche Wiedergabe: ubakus.de, BaunetzWissen)"
       }
     ]
   }

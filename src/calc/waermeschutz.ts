@@ -1,7 +1,7 @@
 /**
  * Wärmeschutz: U-Wert nach DIN EN ISO 6946, Temperaturverlauf, Sättigungsdampfdruck nach DIN 4108-3 (Magnus).
- * Reiner Rechenkern – geprüft in tests/waermeschutz.test.ts. Enthält das (einzige) Glaser-Verfahren der Plattform
- * (glaser(), genutzt im Modul Feuchteschutz; AP 3.9 „Eine Quelle je Thema“).
+ * Reiner Rechenkern – geprüft in tests/waermeschutz.test.ts. Das Glaser-Verfahren liegt in src/calc/glaser.ts
+ * (AP 4.9, einzige Implementierung der Plattform) und nutzt psat() von hier.
  */
 import { type Hinweis, istEndlich } from './plausibilitaet';
 
@@ -69,60 +69,3 @@ export function taupunkt(theta: number, phi: number): number {
   return temperaturBeiPsat(psat(theta) * (phi / 100));
 }
 
-export interface GlaserSchicht extends Schicht { mu: number }
-export interface GlaserKlima {
-  thetaI: number; phiI: number; thetaE: number; phiE: number;
-  Rsi: number; Rse: number;
-  /** Dauer der Tauperiode [d], DIN 4108-3 klassisch 90 d */
-  tauperiodeTage?: number;
-}
-
-/** Wasserdampf-Diffusionsleitkoeffizient ruhender Luft δ_0 = 2,0 · 10⁻¹⁰ kg/(m·s·Pa) = 7,2 · 10⁻⁷ kg/(m·h·Pa) */
-export const DELTA_0_KG_MHPA = 7.2e-7;
-
-/**
- * Glaser-Verfahren (Periodenbilanz, vereinfacht) für einen Schichtaufbau innen → außen.
- * Tauperiode mit dem gewählten Klima; Verdunstungsperiode vereinfacht mit 12 °C / 70 % r. F. innen und außen
- * und gesättigter Tauwasserebene bei 12 °C über 90 d (klassisches Glaser-Klima; die Randbedingungen der
- * DIN 4108-3:2024-03 weichen ab). Eine Tauwasserebene (maßgebende Grenzfläche mit größter Übersättigung).
- * Massen in g/m², Ströme in g/(m²·h).
- */
-export function glaser(schichten: readonly GlaserSchicht[], k: GlaserKlima) {
-  const uErg = uWert(schichten, k.Rsi, k.Rse);
-  const U = uErg.U;
-  const tauStunden = (k.tauperiodeTage ?? 90) * 24;
-  const T = [k.thetaI - U * (k.thetaI - k.thetaE) * k.Rsi];
-  for (const s of schichten) T.push(T[T.length - 1] - U * (k.thetaI - k.thetaE) * (s.d / s.lambda));
-  const ps = T.map(psat);
-  const pi = psat(k.thetaI) * (k.phiI / 100);
-  const pe = psat(k.thetaE) * (k.phiE / 100);
-  const sd = [0];
-  for (const s of schichten) sd.push(sd[sd.length - 1] + s.d * s.mu);
-  const sdGes = sd[sd.length - 1];
-  const pRoh = sd.map(x => (sdGes > 0 ? pi - (pi - pe) * (x / sdGes) : pe));
-
-  let maxUeber = 0, ebene = -1;
-  pRoh.forEach((p, i) => { if (p - ps[i] > maxUeber) { maxUeber = p - ps[i]; ebene = i; } });
-  const tauwasser = maxUeber > 0.05 && ebene > 0 && ebene < pRoh.length - 1;
-
-  let p = [...pRoh], gc = 0, gev = 0;
-  if (tauwasser) {
-    const sdC = sd[ebene], psC = ps[ebene];
-    const sdA = sdGes - sdC;
-    p = sd.map((x, i) => (i <= ebene ? pi - (pi - psC) * (sdC > 0 ? x / sdC : 0) : psC - (psC - pe) * (sdA > 0 ? (x - sdC) / sdA : 0)));
-    const ein = (pi - psC) / (sdC > 0 ? sdC : 0.01);
-    const aus = (psC - pe) / (sdA > 0 ? sdA : 0.01);
-    gc = Math.max(0, DELTA_0_KG_MHPA * (ein - aus) * 1000);
-    const pS = psat(12), pU = pS * 0.7;
-    gev = DELTA_0_KG_MHPA * ((pS - pU) / (sdC > 0 ? sdC : 0.01) + (pS - pU) / (sdA > 0 ? sdA : 0.01)) * 1000;
-  }
-  const mc = gc * tauStunden;
-  const mev = gev * 2160;
-  return {
-    U, R_T: uErg.R_T, hinweise: uErg.hinweise,
-    T, psat: ps, p, sd, sdGes, pi, pe,
-    tauwasser, ebene, gc, gev, mc, mev,
-    /** Grundkriterien DIN 4108-3: m_c ≤ 1 000 g/m² und m_ev > m_c (Zusatzgrenzen 500 g/m² und Holzfeuchte separat prüfen) */
-    bestanden: !tauwasser || (mev > mc && mc <= 1000),
-  };
-}
