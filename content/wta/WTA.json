@@ -149,7 +149,7 @@
     "nachträglicheBauwerksabdichtungErdberühr": "Nachträgliche Bauwerksabdichtung erdberührter Bauteile",
     "standWta46": "Stand: WTA 4-6-24/D / DIN 18533-1:2017-07 + A1:2018-09 (neu: 2026-06)",
     "dasWtaMerkblatt4": "Das **WTA-Merkblatt 4-6** regelt die fachgerechte Planung und Ausführung der nachträglichen Abdichtung von erdberührten Bestandsbauwerken (Außenabdichtung, Innenabdichtung, Querschnittsabdichtung). Die Einordnung der Beanspruchung erfolgt zwingend harmonisiert nach den Wassereinwirkungsklassen der **DIN 18533**.",
-    "hinweisZurNeuausgabeDin": "**Hinweis zur Neuausgabe:** DIN 18533-1:2026-06 ersetzt die Ausgabe 2017-07 und A1:2018-09. Die Klassen heißen dort „Wasserbeanspruchungsklassen“ (Grundstruktur W1-E bis W4-E bleibt), Riss- und Rissüberbrückungsklassen wurden zusammengeführt. Die folgenden Unterklassen geben den Stand 2017-07 wieder, auf den sich das WTA-Merkblatt 4-6-24/D bezieht.",
+    "hinweisZurNeuausgabeDin": "**Hinweis zur Neuausgabe:** DIN 18533-1:2026-06 ersetzt die Ausgabe 2017-07 und A1:2018-09. Die Klassen heißen dort „Wasserbeanspruchungsklassen“ (Grundstruktur W1-E bis W4-E bleibt), Riss- und Rissüberbrückungsklassen wurden zusammengeführt. Die Wassereinwirkungen aus dem Baugrund (E1, E2-S, E2-G) werden aus DIN 4095-1 übernommen und in Beanspruchungen der Abdichtung umgesetzt. Die folgenden Unterklassen geben den Stand 2017-07 wieder, auf den sich das WTA-Merkblatt 4-6-24/D bezieht.",
     "t1WassereinwirkungDin18533": "1. Wassereinwirkung (DIN 18533)",
     "w1EBisW4": "W1-E bis W4-E",
     "w11EBodenfeuchte": "**W1.1-E:** Bodenfeuchte & nichtdrückendes Wasser bei drainagefähigem Baugrund (k ≥ 10⁻⁴ m/s).",
@@ -167,7 +167,7 @@
     "rn1EGeringTiefgaragen": "**RN1-E (Gering):** Tiefgaragen, Lagerräume für feuchteunempfindliche Güter (Feuchteflecken tolerierbar).",
     "rn2EÜblichKellerräume": "**RN2-E (Üblich):** Kellerräume, Haustechnikräume, Garagen (kein Wasserdurchtritt, trockene Wandoberfläche).",
     "rn3EHochWohnräume": "**RN3-E (Hoch):** Wohnräume im Untergeschoss, Archive, Aufenthaltsräume (erfordert dampfdiffusionsdichte Zusatzmaßnahmen & Raumlüftung).",
-    "rissüberbrückungsklassenRü1EOhne": "**Rissüberbrückungsklassen:** RÜ1-E (ohne Rissüberbrückung) bis RÜ4-E (hohe Rissüberbrückung)."
+    "rissüberbrückungsklassenRü1EOhne": "**Rissüberbrückungsklassen:** RÜ1-E (ohne Rissüberbrückung) bis RÜ4-E (hohe Rissüberbrückung); seit 2026-06 mit den Rissklassen R1-E bis R4-E zusammengeführt."
   },
   "werte": {
     "mangelhafteHorizontalsperreZwingtKapilla": "Mangelhafte Horizontalsperre zwingt kapillares Aufstiegswasser in die Dämmebene. Akutes Schimmel- und Zerstörungsrisiko für jeden Dämmstoff!",

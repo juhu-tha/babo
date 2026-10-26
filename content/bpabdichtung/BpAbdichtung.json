@@ -157,7 +157,7 @@
     "beiStarkemWasseraustrittVorinjizieren": "Bei starkem Wasseraustritt: Vorinjizieren mit einkomponentigem PU-Schnellschaum. Nach Kontakt mit Wasser quillt dieser extrem schnell auf und stoppt den Wasserfluss zeitweise.",
     "t4HauptinjektionDauerhaft": "4. Hauptinjektion (Dauerhaft)",
     "dauerhaftElastisches2kPolyurethanharz": "Dauerhaft elastisches 2K-Polyurethanharz durch die Packer pressen (von unten nach oben arbeiten). Sobald Harz am Nachbarpacker austritt, Pumpe umkoppeln. Nach Erhärtung Packer abschlagen.",
-    "interaktiverDin18533Planungsberater": "**Interaktiver DIN 18533 Planungsberater:** Ermitteln Sie die normgerechte Wassereinwirkungsklasse (W-E) sowie Anforderungsklasse für Ihr Kellerbauteil und erhalten Sie eine herstellerneutrale, wissenschaftlich fundierte Produkt- und Systemempfehlung.",
+    "interaktiverDin18533Planungsberater": "**Interaktiver DIN 18533 Planungsberater:** Ermitteln Sie die normgerechte Wasserbeanspruchungsklasse (W-E; bis 2017-07 „Wassereinwirkungsklasse“) sowie Anforderungsklasse für Ihr Kellerbauteil und erhalten Sie eine herstellerneutrale, wissenschaftlich fundierte Produkt- und Systemempfehlung.",
     "t1WasserverhältnisseBaugrund": "1. Wasserverhältnisse & Baugrund",
     "welcheGeohydrologischenGewässerOder": "Welche geohydrologischen Gewässer- oder Sickerwasserverhältnisse liegen am Gebäude an?",
     "t2RaumnutzungAnforderungsklasse": "2. Raumnutzung & Anforderungsklasse",
@@ -319,8 +319,8 @@
         "value": "≥ 4,0 mm (PMBC) bei stauendem Einbau"
       },
       {
-        "label": "Rissüberbrückungsklasse",
-        "value": "Rissüberbrückung nach DIN 18533 ≥ 0,4 mm"
+        "label": "Rissklasse",
+        "value": "Rissüberbrückung passend zur Rissklasse R1-E bis R4-E (seit DIN 18533:2026-06 ohne eigene RÜ-Klassen)"
       },
       {
         "label": "Gewebeschutz",

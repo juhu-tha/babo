@@ -971,7 +971,7 @@ export default function BpAbdichtung() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   <div className="bg-stone-50 p-3 rounded-lg border border-home-grau/15 flex flex-col justify-between">
                     <div>
-                      <span className="text-[9px] font-bold text-text-main/50 uppercase tracking-widest">Wassereinwirkungsklasse</span>
+                      <span className="text-[9px] font-bold text-text-main/50 uppercase tracking-widest">Wasserbeanspruchungsklasse</span>
                       <span className="text-base font-black text-shiraz mt-1 block">
                         {(() => {
                           const res = getAdvisorRecommendation();

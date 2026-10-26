@@ -58,7 +58,9 @@ export function FormulaDerivationBox({
                 {live ? 'Live' : 'Herleitung'}
               </span>
             </div>
-            <div className="text-[11px] text-text-main/70 font-mono mt-0.5 overflow-x-auto">
+            {/* Vorschau im Knopf ohne eigenen Scrollbereich (kein fokussierbares Element im Knopf möglich,
+                axe scrollable-region-focusable auf 390 px); die vollständige Gleichung steht aufgeklappt unten */}
+            <div className="text-[11px] text-text-main/70 font-mono mt-0.5 overflow-hidden whitespace-nowrap">
               <InlineMath math={zielGleichung} />
             </div>
           </div>
@@ -81,6 +83,16 @@ export function FormulaDerivationBox({
             {live
               ? <><strong>Ihr Rechenweg:</strong> Die Schritte verwenden die aktuellen Eingaben des Rechners. Ändern Sie einen Wert, rechnet der Weg mit.</>
               : <><strong>Didaktischer Nachweis:</strong> Nachfolgend wird der vollständige analytische Rechenweg schrittweise dargelegt, um das Zustandekommen des Rechenergebnisses transparent nachvollziehen zu können.</>}
+          </div>
+
+          {/* Zielgleichung vollständig (im Kopf nur abgeschnittene Vorschau) */}
+          <div
+            tabIndex={0}
+            role="region"
+            aria-label={`Zielgleichung: ${title}`}
+            className="p-2 bg-white rounded-lg border border-home-grau/15 text-xs overflow-x-auto text-center focus-visible:outline-2 focus-visible:outline-shiraz"
+          >
+            <BlockMath math={zielGleichung} />
           </div>
 
           <div className="space-y-3">
@@ -110,7 +122,12 @@ export function FormulaDerivationBox({
                 </p>
 
                 {schritt.formel && (
-                  <div className="ml-7 p-2 bg-white rounded-lg border border-home-grau/15 font-mono text-xs overflow-x-auto text-center shadow-2xs">
+                  <div
+                    tabIndex={0}
+                    role="region"
+                    aria-label={`Formel zu Schritt ${idx + 1}: ${schritt.titel}`}
+                    className="ml-7 p-2 bg-white rounded-lg border border-home-grau/15 font-mono text-xs overflow-x-auto text-center shadow-2xs focus-visible:outline-2 focus-visible:outline-shiraz"
+                  >
                     <BlockMath math={schritt.formel} />
                   </div>
                 )}

@@ -13,7 +13,7 @@
  */
 import fs from 'fs';
 import path from 'path';
-import { KF_ITEMS, KF_FREITEXT_MAX, type KfAntwort } from '../src/data/kurzfragebogen';
+import { KF_ITEMS, KF_FREITEXT_MAX, type KfAntwort } from '../src/data/kurzfragebogen.ts';
 
 export interface KfSemester {
   teilnahmen: number;

@@ -69,7 +69,7 @@
     "gesuchtIstDieTemperatur": "Gesucht ist die Temperatur, bei der p genau 80 % des Sättigungsdrucks beträgt:",
     "relativeFeuchteAnDer": "Relative Feuchte an der Oberfläche",
     "liegtSiDauerhaftÜber": "Liegt φ_si dauerhaft über 80 %, droht Schimmelpilzwachstum; bei θ_si ≤ θ_s fällt Tauwasser aus.",
-    "din410832024": "DIN 4108-3:2024-03 (Magnus-Formel); DIN 4108-2 (80-%-Kriterium)",
+    "din410832024": "DIN 4108-3:2024-03 (Magnus-Formel); DIN 4108-2 (80-%-Kriterium); § 11 GModG nimmt DIN 4108-2:2013-02 und DIN 4108-3:2018-10 in Bezug",
     "temperaturTC": "Temperatur T (°C)",
     "wasserdampfpartialdruckPPa": "Wasserdampfpartialdruck p (Pa)",
     "schichtNachObenVerschieben": "Schicht nach oben verschieben",

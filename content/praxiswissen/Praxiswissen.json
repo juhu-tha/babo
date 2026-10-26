@@ -83,11 +83,11 @@
           },
           {
             "id": "pl_hoai_2",
-            "title": "Wassereinwirkungsklasse nach DIN 18533 festlegen",
+            "title": "Wasserbeanspruchungsklasse nach DIN 18533 festlegen",
             "description": "Prüfung des Bodengutachtens auf den Bemessungswasserstand (HGW - Höchster Grundwasserstand). Ist mit Bodenfeuchte und nicht drückendem Wasser (W1-E) oder mit drückendem Wasser (W2.1-E: mäßige Einwirkung, Eintauchtiefe ≤ 3 m) zu rechnen?",
             "standard": "DIN 18533-1",
             "important": true,
-            "tip": "Die Abdichtung wird in der Regel mindestens 15 cm über die Geländeoberfläche geführt. An barrierefreien Übergängen sind geringere Anschlusshöhen nur mit Sondermaßnahmen möglich (z. B. Entwässerungsrinne mit Gitterrost, Gefälle, Überdachung). Details mit DIN 18533-1 bzw. DIN 18531 und der Flachdachrichtlinie abstimmen (Fundstelle manuell prüfen)."
+            "tip": "Die Abdichtung wird in der Regel mindestens 15 cm über die Geländeoberfläche geführt. Tür- und Fensteranschlüsse nach DIN 18533-1:2026-06, Abschnitt 9: grundsätzlich h ≥ 15 cm über der wasserführenden Schicht; abgesenkte Anschlüsse (h_red ≥ 5 cm bzw. 1 cm ≤ h_red < 5 cm) nur mit entlastenden Ersatzmaßnahmen (z. B. Entwässerungsrinne mit Gitterrost, Gefälle, Überdachung); h < 1 cm erfordert eine objektbezogene Sonderplanung außerhalb der Norm. Die Regeln sind mit DIN 18531 und DIN 18532 abgestimmt."
           },
           {
             "id": "pl_hoai_3",

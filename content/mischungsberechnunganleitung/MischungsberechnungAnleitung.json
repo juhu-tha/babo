@@ -29,7 +29,7 @@
     "mehlkorngehaltÜberprüfen": "Mehlkorngehalt überprüfen",
     "derMehlkorngehaltAlleStoffe": "Der Mehlkorngehalt (Alle Stoffe ≤ 0,125 mm, also Zement, Zusatzstoffe und der Feinanteil im Sand) ist wichtig für das Wasserhaltevermögen, die Verarbeitbarkeit (Pumpfähigkeit) und die Gefügedichtigkeit.",
     "einZuNiedrigerMehlkorngehalt": "Ein zu niedriger Mehlkorngehalt (< 300 kg/m³) führt zu Entmischen und Bluten.",
-    "einZuHoherMehlkorngehalt": "Ein zu hoher Mehlkorngehalt erhöht den Schwind- und Kriechprozess sowie die Rissneigung. Nach DIN 1045-2 (Tab. F.4.1/F.4.2) ist er bei XF/XM und bei hochfestem Beton abhängig vom Zementgehalt begrenzt (z. B. 400–450 kg/m³ bis C50/60)."
+    "einZuHoherMehlkorngehalt": "Ein zu hoher Mehlkorngehalt erhöht den Schwind- und Kriechprozess sowie die Rissneigung. Nach DIN 1045-2 (Höchstwerte für den Mehlkorngehalt; in der Ausgabe 2008-08 Tab. F.4.1/F.4.2) ist er bei XF/XM und bei hochfestem Beton abhängig vom Zementgehalt begrenzt (z. B. 400–450 kg/m³ bis C50/60)."
   },
   "werte": {
     "vGestein1000V": "V_{Gestein} = 1000 - (V_{Zement} + V_{Wasser} + V_{Luft})"

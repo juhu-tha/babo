@@ -4,8 +4,8 @@ import compression from "compression";
 import crypto from "crypto";
 import path from "path";
 import fs from "fs";
-import { pruefeAntwort, semesterSchluessel } from "./src/data/kurzfragebogen";
-import { ladeSpeicher, nimmAuf, speichereSpeicher, statistik } from "./server/kurzfragebogen";
+import { pruefeAntwort, semesterSchluessel } from "./src/data/kurzfragebogen.ts";
+import { ladeSpeicher, nimmAuf, speichereSpeicher, statistik } from "./server/kurzfragebogen.ts";
 
 // ---------------------------------------------------------------------------
 // Konfiguration über Umgebungsvariablen (in AI Studio: Settings → Secrets)

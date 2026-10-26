@@ -103,7 +103,7 @@
     "temperaturfaktorSchimmelnachweis": "Temperaturfaktor (Schimmelnachweis)",
     "mitDemErhöhtenÜbergangswiderstand": "Mit dem erhöhten Übergangswiderstand R*_si = 0,25 m²K/W nach DIN 4108-2; gefordert ist f_Rsi ≥ 0,70:",
     "wärmebrückenBefestigungsmittelUndLuftsch": "Wärmebrücken, Befestigungsmittel und Luftschichten sind hier nicht berücksichtigt (Korrekturen ΔU nach DIN EN ISO 6946, Anhang F).",
-    "dinEnIso6946": "DIN EN ISO 6946:2018-03; DIN 4108-2:2026-05; GModG/GEG Anlage 7",
+    "dinEnIso6946": "DIN EN ISO 6946:2018-03; DIN 4108-2:2026-05 (§ 11 GModG nimmt weiterhin die Ausgabe 2013-02 in Bezug); GModG/GEG Anlage 7",
     "hervorragenderSommerlicherHitzeschutz10h": "Hervorragender sommerlicher Hitzeschutz (η ≥ 10h)",
     "ausreichenderSommerlicherHitzeschutz6h": "Ausreichender sommerlicher Hitzeschutz (6h ≤ η < 10h)",
     "mangelhafterSommerlicherHitzeschutz6h": "Mangelhafter sommerlicher Hitzeschutz (η < 6h)",

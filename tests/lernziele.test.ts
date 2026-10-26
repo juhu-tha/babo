@@ -1,6 +1,7 @@
 // Lernziele je Fachmodul (Umsetzungsplan Phase 3, AP 3.6) – Aufbau, Verweise, Abdeckung
 import { MODULE, MODUL_BY_ID, type ModulEintrag } from '../src/registry/modules';
 import { LERNZIELE } from '../src/data/lernziele';
+import { FACHMODULE, istFachmodul } from '../src/data/pruefvermerke';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -23,12 +24,13 @@ for (const [id, l] of Object.entries(LERNZIELE)) {
   pruefe(l.ziele.some(z => z.stufe !== 'Erinnern' && z.stufe !== 'Verstehen'), `${id}: mindestens ein Ziel ab „Anwenden“`);
 }
 
-// Abdeckung der Fachmodule (Typ standard oder calculator, ohne Info-/Studienbereiche) – Ratsche bis 100 %
-const OHNE = new Set(['Allgemein', 'Infos & Quellen', 'Studium THA', 'Weiter@THA', 'Vorlesungen', 'Lehrveranstaltungen', 'Übungsaufgaben', 'Thesen & Projekte', 'Kuriositäten']);
-const fach = (MODULE as readonly ModulEintrag[]).filter(m => (m.baum?.typ === 'standard' || m.baum?.typ === 'calculator') && !OHNE.has(m.gruppe ?? ''));
-const ohne = fach.filter(m => !LERNZIELE[m.id]).length;
-const MAX_OHNE = 0;
-pruefe(ohne <= MAX_OHNE, `${ohne} Fachmodule ohne Lernziele (Grenze ${MAX_OHNE})`);
+// Abdeckung: jedes Fachmodul nach istFachmodul (Typ standard, calculator, norm oder database außerhalb der
+// Info-/Studienbereiche, src/data/pruefvermerke.ts) hat Lernziele – 100 %, keine Ausnahmen
+const fach = (MODULE as readonly ModulEintrag[]).filter(m => istFachmodul(m));
+pruefe(fach.length === FACHMODULE.length, `Fachmodule laut Registry (${fach.length}) und Registry-Kern (${FACHMODULE.length}) weichen ab`);
+const fehlend = fach.filter(m => !LERNZIELE[m.id]).map(m => m.id);
+const ohne = fehlend.length;
+pruefe(ohne === 0, `${ohne} Fachmodule ohne Lernziele: ${fehlend.join(', ')}`);
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
 console.log(`OK: ${Object.keys(LERNZIELE).length} Module mit Lernzielen, ${fach.length - ohne}/${fach.length} Fachmodule abgedeckt`);
