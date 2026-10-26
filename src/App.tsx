@@ -1,4 +1,3 @@
-import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect } from 'react';
 import {
   MoreHorizontal,
@@ -134,7 +133,6 @@ function AppContent() {
     return () => window.removeEventListener('baustoffboard_width_change', handleWidthChange);
   }, []);
 
-  const [seoLogs, setSeoLogs] = React.useState<string[]>([]);
   const [showMetadataModal, setShowMetadataModal] = useState(false);
   // Meta-Beschreibungen liegen in der vollständigen Registry: erst nach dem Laden der Seite nachladen (AP 5.5)
   const [TAB_DESCRIPTIONS, setTabDescriptions] = useState<Record<string, string>>({});
@@ -145,41 +143,6 @@ function AppContent() {
     window.addEventListener('load', lade, { once: true });
     return () => { aktiv = false; window.removeEventListener('load', lade); };
   }, []);
-
-  const printMetadataConsoleTable = () => {
-    const rows: Record<string, string | number>[] = [];
-    tabGroups.forEach((group) => {
-      const cluster = GROUP_TO_CLUSTER[group.name];
-      const clusterName = cluster ? `${cluster.number}: ${cluster.name}` : (group.name === 'Allgemein' ? 'Allgemein' : group.name);
-      group.tabs.forEach((tab) => {
-        if (tab.id.startsWith('divider_')) return;
-        const title = `BaustoffBoard THA - ${tab.label}`;
-        const desc = TAB_DESCRIPTIONS[tab.id];
-        const len = desc ? desc.length : 0;
-        let status = '✔ Optimal (100–165)';
-        if (!desc) status = '✘ Fehlt';
-        else if (len < 100) status = `⚠️ Kurz (${formatDeWert(len)} Z.)`;
-        else if (len > 165) status = `ℹ Lang (${formatDeWert(len)} Z.)`;
-        rows.push({
-          'Tab-ID': tab.id,
-          'Modul': tab.label,
-          'Gruppe': group.name,
-          'Cluster': clusterName,
-          'Seitentitel (Title)': title,
-          'Status': status,
-          'Zeichen': len,
-          'Meta-Description': desc || '(Standard-Fallback aktiv)'
-        });
-      });
-    });
-
-    console.group(`🔍 SEO-Metadaten-Audit: Alle ${rows.length} Fachmodule`);
-    console.log(`%cMetadaten-Status für alle Module des BaustoffBoards:`, "color: #A3113E; font-weight: bold; font-size: 13px;");
-    console.table(rows);
-    console.groupEnd();
-
-    setSeoLogs(prev => [...prev.slice(-6), `${new Date().toLocaleTimeString('de-DE')}: [SEO-Tabelle] ${rows.length} Module in Konsole & Tabelle ausgegeben.`]);
-  };
 
   // Update recent tabs and auto-expand cluster when activeTab changes
   useEffect(() => {
@@ -252,57 +215,6 @@ function AppContent() {
         return null;
       });
     }
-  };
-
-  const checkSEOStatus = (tabToCheck?: string) => {
-    const targetTab = tabToCheck || activeTab;
-    const metaDesc = document.querySelector('meta[name="description"]');
-    const docTitle = document.title;
-    const currentDesc = metaDesc ? metaDesc.getAttribute('content') : null;
-    const expectedDesc = TAB_DESCRIPTIONS[targetTab];
-    
-    const isDescMatch = expectedDesc ? (currentDesc === expectedDesc) : true;
-    
-    // JSON-LD Validation integration
-    let jsonLdStatusText = "";
-    if (typeof window.validateJSONLD === 'function') {
-      const report = window.validateJSONLD();
-      if (report && report.results) {
-        const errorCount = report.errors?.length || 0;
-        const warnCount = report.warnings?.length || 0;
-        jsonLdStatusText = ` | JSON-LD: ${report.results.length} Parts (${errorCount} Errs, ${warnCount} Warns)`;
-      }
-    }
-    
-    // Web console diagnostic group
-    console.group(`🔍 SEO-Status Diagnostik: Modul [${targetTab}]`);
-    console.log(`%cSuchmaschinen-Optimierung (SEO) Check für ${targetTab}`, "color: #A3113E; font-weight: bold; font-size: 13px;");
-    console.log(`Aktiver Tab/Modul: %c${targetTab}`, "color: #475569; font-weight: bold;");
-    console.log(`Dokumententitel im Head: %c"${docTitle}"`, "color: #475569; font-weight: bold;");
-    
-    let isSuccess = false;
-    if (metaDesc) {
-      if (expectedDesc) {
-        if (isDescMatch) {
-          console.log(`%c➔ SUCCESS: Meta-Description erfolgreich injiziert!`, "color: #475569; font-weight: bold;");
-          isSuccess = true;
-        } else {
-          console.warn(`%c➔ ABWEICHUNG: Meta-Description weicht ab (DOM: "${currentDesc}", Erwartet: "${expectedDesc}")`, "color: #64748b; font-weight: bold;");
-        }
-      } else {
-        console.log(`%c➔ INFO: Nutze Standard-Beschreibung (Keine spezifische Beschreibung für '${targetTab}' definiert)`, "color: #475569; font-style: italic;");
-        isSuccess = true;
-      }
-      console.log(`Aktuelle Beschreibung: "${currentDesc}"`);
-    } else {
-      console.error(`%c➔ FEHLER: Kein Meta-Description-Tag im Document-Head gefunden!`, "color: #A3113E; font-weight: bold;");
-    }
-    console.groupEnd();
-
-    // Add log entry to the UI diagnostics state
-    const statusText = isSuccess ? "✔ ERFOLGREICH" : "✘ ABWEICHUNG/FEHLT";
-    const logMsg = `[SEO] Modul: '${targetTab}' | Status: ${statusText}${jsonLdStatusText}`;
-    setSeoLogs(prev => [...prev.slice(-7), `${new Date().toLocaleTimeString('de-DE')}: ${logMsg}`]);
   };
 
   const handleExport = async () => {
