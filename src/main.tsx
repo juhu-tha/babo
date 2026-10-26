@@ -1,4 +1,4 @@
-import {StrictMode} from 'react';
+import {StrictMode, startTransition} from 'react';
 import {createRoot} from 'react-dom/client';
 import App, { vorbereiten } from './App';
 import { LanguageProvider } from './contexts/LanguageContext';
@@ -34,13 +34,19 @@ const vorgerendert = tab !== 'start'
   && document.documentElement.classList.contains('bb-schale')
   && document.querySelector('meta[name="bb-vorgerendert"]')?.getAttribute('content') === tab;
 
-const starte = () => createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <LanguageProvider>
-      <App vorgerendert={vorgerendert} />
-    </LanguageProvider>
-  </StrictMode>,
-);
+const starte = () => {
+  const wurzel = createRoot(document.getElementById('root')!);
+  const rendern = () => wurzel.render(
+    <StrictMode>
+      <LanguageProvider>
+        <App vorgerendert={vorgerendert} />
+      </LanguageProvider>
+    </StrictMode>,
+  );
+  // Vorgerendert: Inhalt ist schon sichtbar → React rendert unterbrechbar (Transition, in Häppchen statt einer
+  // langen Task); die statische Seite bleibt bis zum Austausch stehen
+  if (vorgerendert) startTransition(rendern); else rendern();
+};
 
 if (vorgerendert) {
   // Erst rendern, wenn alle Teile da sind: React ersetzt die statische Seite dann in einem Schritt (ohne Spinner).
