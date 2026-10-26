@@ -295,7 +295,7 @@ export default function Bauwerkserfassung() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               {inhalt.daten.Bauwerkserfassung_3.map((w, idx) => (
                 <div key={idx} className="bg-slate-50 border border-home-grau/30 rounded-xl p-4 relative hover:shadow-md transition-shadow">
-                  <span className="text-3xl font-extrabold text-indigo-100 font-mono absolute top-2 right-4 leading-none">
+                  <span className="text-3xl font-extrabold text-slate-500 font-mono absolute top-2 right-4 leading-none">
                     {w.step}
                   </span>
                   <h4 className="font-extrabold text-xs text-slate-900 mt-2 font-sans flex items-center gap-1.5">
