@@ -54,7 +54,7 @@ Stand: 22.10.2026 · Branch-Kette `ap1 … ap19/abschluss` (gestapelte PRs) · f
 - Normtext-Abgleich: Dosiergenauigkeit DIN EN 206, RC-Anteile, ausgewählte EC2-Tabellenwerte.
 - Amtsblatt-Fundstelle des Digital Omnibus zur KI-VO.
 - Wikipedia-Gesamtprüfung (481 Links; Rate-Limit), aus der Sandbox nicht erreichbare Domains (z. B. wta.de, app.tha.de).
-- `server.ts` verwendet die Modell-ID `gemini-3.8-flash` (prüfen).
+- `server.ts` verwendet die Modell-ID `gemini-3.8-flash` – am 26.10.2026 gegen die Google-Modellliste (ai.google.dev/models, Stand 22.10.2026) geprüft: aktuelles stabiles Flash-Modell. Über `GEMINI_MODEL` umstellbar.
 - Navigationslabels „Fachingenieur Ausbau/Fassade/Holzbau“ (offiziell: Ausbau und Bestand, Fassade, Holzbau – Zertifikat).
 
 ## 5. Verbesserungs- und Erweiterungsvorschläge (Roadmap)

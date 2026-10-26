@@ -13,6 +13,8 @@ import { ladeSpeicher, nimmAuf, speichereSpeicher, statistik } from "./server/ku
 //   ADMIN_PASSWORD        Kennwort für Admin-Bereich und Zurücksetzen der Live-Abstimmung
 //   POLL_ADMIN_PASSWORD   optional eigenes Kennwort nur für die Live-Abstimmung
 //   GEMINI_DAILY_LIMIT    optional, KI-Anfragen pro Tag insgesamt (Standard 300)
+//   GEMINI_MODEL          optional, Gemini-Modell-ID (Standard gemini-3.8-flash, laut Google-Modellliste
+//                         ai.google.dev/models am 26.10.2026 aktuelles stabiles Flash-Modell)
 //   ALLOWED_ORIGINS       optional, weitere erlaubte Herkunft(en) für KI-Anfragen und Kurzfragebogen, kommagetrennt
 //   FEEDBACK_DATEI        optional, Datei für den Kurzfragebogen (Standard laufzeitdaten/kurzfragebogen.json)
 // Ist kein Kennwort gesetzt, bleiben Admin-Bereich und Zurücksetzen gesperrt.
@@ -230,6 +232,8 @@ const KI_SYSTEMANWEISUNG = [
 
 /** Tageskontingent für alle Nutzer zusammen (Kostendeckel), Standard 300 Anfragen. */
 const KI_TAGESLIMIT = Math.max(0, Number(process.env.GEMINI_DAILY_LIMIT) || 300);
+/** Modell-ID für /api/gemini/analyze; Wechsel ohne Codeänderung über GEMINI_MODEL (Kopfkommentar). */
+const KI_MODELL = process.env.GEMINI_MODEL?.trim() || "gemini-3.8-flash";
 const kiTag = { datum: "", anzahl: 0 };
 function kiKontingentFrei(): boolean {
   const heute = new Date().toISOString().slice(0, 10);
@@ -317,7 +321,7 @@ ${prompt}
 
         const ai = getGeminiClient();
         const response = await ai.models.generateContent({
-          model: "gemini-3.8-flash",
+          model: KI_MODELL,
           contents: prompt,
           config: {
             systemInstruction: KI_SYSTEMANWEISUNG,
@@ -332,7 +336,7 @@ ${prompt}
           isDemo: false,
         });
       } catch (error: any) {
-        console.error("Gemini-API Fehler:", error);
+        console.error(`Gemini-API Fehler (Modell ${KI_MODELL}):`, error);
         res.status(500).json({ error: "Fehler bei der Kommunikation mit dem KI-Dienst." });
       }
     }
