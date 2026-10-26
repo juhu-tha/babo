@@ -31,8 +31,19 @@ import HygrischTab from './baustoffkenngroessen/HygrischTab';
 import ThermischTab from './baustoffkenngroessen/ThermischTab';
 import inhalt from '@/content/baustoffkenngroessen/Baustoffkenngroessen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+
+const REITER = [
+  { id: 'eigenschaften', label: 'Eigenschaften', icon: Layers },
+  { id: 'mechanisch', label: 'Mechanisch', icon: Activity },
+  { id: 'physikalisch', label: 'Physikalisch', icon: Scale },
+  { id: 'hygrisch', label: 'Hygrisch', icon: Droplets },
+  { id: 'thermisch', label: 'Thermisch', icon: Flame },
+  { id: 'zeitlich', label: inhalt.texte.zeitabhEigenschaften, icon: Clock },
+  { id: 'rechenbeispiele', label: 'Rechenbeispiele', icon: Calculator },
+] as const;
 
 export default function Baustoffkenngroessen() {
   const [activeTab, setActiveTab] = useState<'eigenschaften' | 'mechanisch' | 'physikalisch' | 'hygrisch' | 'thermisch' | 'zeitlich' | 'rechenbeispiele'>('eigenschaften');
@@ -301,79 +312,9 @@ export default function Baustoffkenngroessen() {
           <p><MdText text={inhalt.texte.baustoffkenngrößenBeschreibenDiePhysikal} /></p>
         </div>
 
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button aria-pressed={activeTab === 'eigenschaften'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'eigenschaften' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('eigenschaften')}
-          >
-            <Layers size={16} /> Eigenschaften
-          </button>
-          <button aria-pressed={activeTab === 'mechanisch'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'mechanisch' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('mechanisch')}
-          >
-            <Activity size={16} /> Mechanisch
-          </button>
-          <button aria-pressed={activeTab === 'physikalisch'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'physikalisch' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('physikalisch')}
-          >
-            <Scale size={16} /> Physikalisch
-          </button>
-          <button aria-pressed={activeTab === 'hygrisch'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'hygrisch' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('hygrisch')}
-          >
-            <Droplets size={16} /> Hygrisch
-          </button>
-          <button aria-pressed={activeTab === 'thermisch'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'thermisch' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('thermisch')}
-          >
-            <Flame size={16} /> Thermisch
-          </button>
-          <button aria-pressed={activeTab === 'zeitlich'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'zeitlich' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('zeitlich')}
-          >
-            <Clock size={16} /><MdText text={inhalt.texte.zeitabhEigenschaften} /></button>
-          <button aria-pressed={activeTab === 'rechenbeispiele'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'rechenbeispiele' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-            onClick={() => setActiveTab('rechenbeispiele')}
-          >
-            <Calculator size={16} /> Rechenbeispiele
-          </button>
-        </div>
       </div>
 
+      <ModuleTabs label="Kenngrößen nach Art" tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:mb-8">
       {activeTab === 'eigenschaften' && <EigenschaftenTab selectedMaterial={selectedMaterial} setSelectedMaterial={setSelectedMaterial} />}
 
       {activeTab === 'mechanisch' && (
@@ -391,6 +332,7 @@ export default function Baustoffkenngroessen() {
       {activeTab === 'hygrisch' && <HygrischTab masseFeucht={masseFeucht} masseTrocken={masseTrocken} sdDicke={sdDicke} sdMuWert={sdMuWert} setMasseFeucht={setMasseFeucht} setMasseTrocken={setMasseTrocken} setSdDicke={setSdDicke} setSdMuWert={setSdMuWert} setWSaugzeit={setWSaugzeit} setWWasseraufnahme={setWWasseraufnahme} wassergehalt={wassergehalt} wSaugzeit={wSaugzeit} wWasseraufnahme={wWasseraufnahme} />}
 
       {activeTab === 'thermisch' && <ThermischTab alphaT={alphaT} deltaT={deltaT} handleThermischPresetChange={handleThermischPresetChange} laenge={laenge} lambda={lambda} lambdaDicke={lambdaDicke} setAlphaT={setAlphaT} setDeltaT={setDeltaT} setLaenge={setLaenge} setLambda={setLambda} setLambdaDicke={setLambdaDicke} setSpezKapazitaetC={setSpezKapazitaetC} setSpezKapazitaetDeltaT={setSpezKapazitaetDeltaT} setSpezKapazitaetMasse={setSpezKapazitaetMasse} setThermischC={setThermischC} setThermischLambda={setThermischLambda} setThermischRho={setThermischRho} spezKapazitaetC={spezKapazitaetC} spezKapazitaetDeltaT={spezKapazitaetDeltaT} spezKapazitaetMasse={spezKapazitaetMasse} thermischC={thermischC} thermischLambda={thermischLambda} thermischPreset={thermischPreset} thermischRho={thermischRho} waermedehnung={waermedehnung} />}
+      </ModuleTabs>
 
       <ModulTest moduleId="baustoffkenngroessen" />
 

@@ -23,6 +23,7 @@ import '@/src/lib/chartSetup';
 import { Querverweis } from '@/src/components/ui/Querverweis';
 import inhalt from '@/content/knicken/Knicken.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 ChartJS.register(
   CategoryScale,
@@ -33,6 +34,12 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+
+const REITER = [
+  { id: 'simulation', label: inhalt.texte.interaktiverKnickprüfstandLiveLast, icon: Sliders },
+  { id: 'diagramm', label: inhalt.texte.biegelinieIiOrdnungDiagramm, icon: Activity },
+  { id: 'eulerfaelle', label: inhalt.texte.die4EulerFälle, icon: BookOpen },
+] as const;
 
 export default function Knicken() {
   const [activeTab, setActiveTab] = useState<'simulation' | 'diagramm' | 'eulerfaelle'>('simulation');
@@ -134,35 +141,7 @@ export default function Knicken() {
         </div>
 
         {/* Tab-Navigation */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          <button aria-pressed={activeTab === 'simulation'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'simulation'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('simulation')}
-          >
-            <Sliders size={16} /><MdText text={inhalt.texte.interaktiverKnickprüfstandLiveLast} /></button>
-          <button aria-pressed={activeTab === 'diagramm'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'diagramm'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('diagramm')}
-          >
-            <Activity size={16} /><MdText text={inhalt.texte.biegelinieIiOrdnungDiagramm} /></button>
-          <button aria-pressed={activeTab === 'eulerfaelle'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'eulerfaelle'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('eulerfaelle')}
-          >
-            <BookOpen size={16} /><MdText text={inhalt.texte.die4EulerFälle} /></button>
-        </div>
+        <ModuleTabs label="Bereiche Knicken" tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-6">
 
         {/* TAB 1: Interaktiver Knickprüfstand */}
         {activeTab === 'simulation' && (
@@ -508,6 +487,7 @@ export default function Knicken() {
             </div>
           </div>
         )}
+        </ModuleTabs>
 
       </div>
 

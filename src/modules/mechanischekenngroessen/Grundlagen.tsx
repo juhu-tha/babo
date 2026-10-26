@@ -46,7 +46,7 @@ export default function Grundlagen() {
 
               <div className="bg-off-white p-3.5 rounded-xl border border-home-grau/25 mb-4 space-y-2">
                 <div className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.technischeIngenieurdehnung} /></div>
-                <BlockMath math="\varepsilon = \frac{\Delta L}{L_0} = \frac{L - L_0}{L_0} \quad [-] \text{ oder } [\%] \text{ bzw. } [\text{‰}]" />
+                <BlockMath math="\varepsilon = \frac{\Delta L}{L_0} = \frac{L - L_0}{L_0} \quad [-] \text{ oder } [\%] \text{ bzw. } [\text{\char8240}]" />
                 <div className="text-xs font-bold text-text-main pt-1"><MdText text={inhalt.texte.logarithmischeWahreDehnung} /></div>
                 <BlockMath math="\varepsilon_{\text{true}} = \int_{L_0}^{L} \frac{dL}{L} = \ln\left(\frac{L}{L_0}\right) = \ln(1 + \varepsilon)" />
               </div>

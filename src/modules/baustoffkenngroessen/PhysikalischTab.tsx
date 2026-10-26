@@ -6,6 +6,7 @@ import { Slider } from '@/src/components/ui/Slider';
 import { BlockMath, InlineMath } from 'react-katex';
 import inhalt from '@/content/baustoffkenngroessen/PhysikalischTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 
 export interface PhysikalischTabProps {
   dichtePresets: { ziegel: { name: string; rhoR: number; rho: number; rhoS: number; desc: string; }; blaehton: { name: string; rhoR: number; rho: number; rhoS: number; desc: string; }; granit: { name: string; rhoR: number; rho: number; rhoS: number; desc: string; }; porenbeton: { name: string; rhoR: number; rho: number; rhoS: number; desc: string; }; };
@@ -310,6 +311,14 @@ export default function PhysikalischTab({ dichtePresets, handleDichtePresetChang
           })()}
         </div>
       </div>
+      {/* Z12: Rechenweg zur Formel */}
+      <FormulaDerivationBox
+        title={inhalt.werte.herleitungPorositätAusRohUndReindichte}
+        zielGleichung="P = 1 - \frac{\rho}{\rho_R}"
+        normQuelle={inhalt.werte.normPorositaet}
+        schritte={inhalt.daten["PhysikalischTab.schritte"]}
+        ergebnisHinweis={inhalt.werte.hinweisPorositaet}
+      />
     </div>
   );
 }

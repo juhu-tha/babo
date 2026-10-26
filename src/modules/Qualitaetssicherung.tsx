@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ClipboardCheck, Award, ShieldCheck, CheckCircle2, ArrowRight } from 'lucide-react';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
@@ -19,6 +20,7 @@ const LERNPFAD: { id: QsReiter; label: string }[] = [
   { id: 'Konformitaetskontrolle', label: 'Konformitätskontrolle' },
   { id: 'CscZertifizierung', label: 'CSC-Zertifizierung' },
 ];
+const REITER: ModulTab<QsReiter>[] = LERNPFAD.map((r, i) => ({ ...r, icon: [ClipboardCheck, ShieldCheck, CheckCircle2, Award][i] }));
 
 export default function Qualitaetssicherung() {
   const [activeTab, setActiveTab] = useState<QsReiter>('QualitaetssicherungGrundlagen');
@@ -34,54 +36,18 @@ export default function Qualitaetssicherung() {
           <p><MdText text={inhalt.texte.gütesicherungImBetonbauWerkseigene} /></p>
         </div>
 
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
-          <button aria-pressed={activeTab === 'QualitaetssicherungGrundlagen'} 
-            onClick={() => setActiveTab('QualitaetssicherungGrundlagen')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'QualitaetssicherungGrundlagen' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <ClipboardCheck size={16} /> Qualitätssicherung
-          </button>
-          <button aria-pressed={activeTab === 'Betonbauklassen'} 
-            onClick={() => setActiveTab('Betonbauklassen')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'Betonbauklassen' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <ShieldCheck size={16} /><MdText text={inhalt.texte.betonbauklassenBbq} /></button>
-          <button aria-pressed={activeTab === 'Konformitaetskontrolle'} 
-            onClick={() => setActiveTab('Konformitaetskontrolle')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'Konformitaetskontrolle' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <CheckCircle2 size={16} /> Konformitätskontrolle
-          </button>
-          <button aria-pressed={activeTab === 'CscZertifizierung'} 
-            onClick={() => setActiveTab('CscZertifizierung')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'CscZertifizierung' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <Award size={16} /> CSC-Zertifizierung
-          </button>
-        </div>
-
-        <div>
+        <ModuleTabs
+          label="Bereiche der Qualitätssicherung"
+          tabs={REITER}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:my-6"
+        >
           {activeTab === 'QualitaetssicherungGrundlagen' && <QualitaetssicherungGrundlagen />}
           {activeTab === 'Betonbauklassen' && <Betonbauklassen />}
           {activeTab === 'Konformitaetskontrolle' && <Konformitaetskontrolle />}
           {activeTab === 'CscZertifizierung' && <CscZertifizierung />}
-        </div>
+        </ModuleTabs>
 
         {naechster && (
           <div className="flex justify-end mt-6">

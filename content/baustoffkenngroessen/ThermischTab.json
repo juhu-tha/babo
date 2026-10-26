@@ -67,6 +67,34 @@
     "rohdichte": "Rohdichte (ρ)",
     "spezWärmekapazitätC": "Spez. Wärmekapazität (c)",
     "behaglichWarm": "✓ Behaglich-Warm",
-    "kühleffekt": "❌ Kühleffekt"
+    "kühleffekt": "❌ Kühleffekt",
+    "herleitungWärmedurchlasswiderstand": "Herleitung: Wärmedurchlasswiderstand R = d/λ",
+    "normR": "DIN EN ISO 6946",
+    "hinweisR": "Je größer R, desto besser dämmt die Schicht. Der U-Wert ist der Kehrwert der Summe aller Widerstände einschließlich der Wärmeübergänge."
+  },
+  "daten": {
+    "ThermischTab.schritte": [
+      {
+        "titel": "1. Wärmeleitung nach Fourier",
+        "formel": "q = \\lambda \\cdot \\frac{\\Delta\\theta}{d}",
+        "einheit": "W/m²",
+        "erklaerung": "Stationäre Wärmeleitung durch eine ebene, homogene Schicht: Die Wärmestromdichte q ist proportional zur Temperaturdifferenz Δθ und umgekehrt proportional zur Dicke d."
+      },
+      {
+        "titel": "2. Als Widerstand schreiben",
+        "formel": "q = \\frac{\\Delta\\theta}{R} \\;\\Rightarrow\\; R = \\frac{d}{\\lambda}",
+        "erklaerung": "Wie beim ohmschen Gesetz: Temperaturdifferenz ↔ Spannung, Wärmestromdichte ↔ Strom, R ↔ Widerstand."
+      },
+      {
+        "titel": "3. Einheit prüfen",
+        "formel": "[R] = \\frac{\\text{m}}{\\text{W}/(\\text{m}\\,\\text{K})} = \\text{m}^2\\,\\text{K}/\\text{W}",
+        "erklaerung": "Dicke in m, Wärmeleitfähigkeit in W/(m·K)."
+      },
+      {
+        "titel": "4. Zahlenbeispiel Zellulosedämmung",
+        "formel": "R = \\frac{0{,}14}{0{,}04} = 3{,}50\\,\\text{m}^2\\,\\text{K}/\\text{W} \\;\\Rightarrow\\; U = \\frac{1}{0{,}13 + 3{,}50 + 0{,}04} = 0{,}27\\,\\text{W}/(\\text{m}^2\\,\\text{K})",
+        "erklaerung": "d = 0,14 m, λ = 0,04 W/(m·K) (Beispiel oben); für den U-Wert kommen die Wärmeübergangswiderstände R_si = 0,13 und R_se = 0,04 m²K/W hinzu."
+      }
+    ]
   }
 }

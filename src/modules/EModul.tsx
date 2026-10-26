@@ -19,6 +19,7 @@ import {
   Legend,
 } from 'chart.js';
 import inhalt from '@/content/emodul/EModul.json';
+import { emodul } from '@/src/calc/emodul';
 import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
@@ -39,82 +40,20 @@ export default function EModul() {
   const [volGestein, setVolGestein] = useState(70); // %
   const [eModulMatrix, setEModulMatrix] = useState(20); // GPa
 
+  // Rechenkern src/calc/emodul.ts: E_cm nach EC2, Voigt/Reuss- und Hashin-Shtrikman-Schranken (ν = 0,2)
   const results = useMemo(() => {
-    // E-Modul Beton nach Eurocode 2: E_cm = alpha_E * 22 * (f_cm / 10)^0.3
-    const fcm = fck + 8;
-    const ecm = alphaE * 22 * Math.pow(fcm / 10, 0.3); // GPa
-
-    // Mischungsregel (Voigt / Reuss) für Zweiphasenmaterial (Gestein + Zementstein)
-    const vG = volGestein / 100;
-    const vM = 1 - vG;
-    const eG = eModulGestein;
-    const eM = eModulMatrix;
-
-    // Parallelschaltung (Voigt) - Obere Schranke
-    const eVoigt = vG * eG + vM * eM;
-
-    // Reihenschaltung (Reuss) - Untere Schranke
-    const eReuss = 1 / (vG / eG + vM / eM);
-
-    // Hashin-Shtrikman Schranken (vereinfacht für Kugelinklusionen)
-    // Annahme Querdehnzahl nu = 0.2 für beide
-    const nu = 0.2;
-    const kG = eG / (3 * (1 - 2 * nu));
-    const gG = eG / (2 * (1 + nu));
-    const kM = eM / (3 * (1 - 2 * nu));
-    const gM = eM / (2 * (1 + nu));
-
-    // HS Lower (Matrix is continuous)
-    const kHSMinus = kM + vG / (1 / (kG - kM) + 3 * vM / (3 * kM + 4 * gM));
-    const gHSMinus = gM + vG / (1 / (gG - gM) + 6 * vM * (kM + 2 * gM) / (5 * gM * (3 * kM + 4 * gM)));
-    const eHSMinusRaw = (9 * kHSMinus * gHSMinus) / (3 * kHSMinus + gHSMinus);
-
-    // HS Upper (Inclusion is continuous - less realistic for concrete but good for theory)
-    const kHSPlus = kG + vM / (1 / (kM - kG) + 3 * vG / (3 * kG + 4 * gG));
-    const gHSPlus = gG + vM / (1 / (gM - gG) + 6 * vG * (kG + 2 * gG) / (5 * gG * (3 * kG + 4 * gG)));
-    const eHSPlusRaw = (9 * kHSPlus * gHSPlus) / (3 * kHSPlus + gHSPlus);
-    // Die Schranke mit der steiferen Phase als Bezugsphase ist die obere – bei E_M > E_G tauschen die Rollen
-    const eHSPlus = Math.max(eHSPlusRaw, eHSMinusRaw);
-    const eHSMinus = Math.min(eHSPlusRaw, eHSMinusRaw);
-
-    // Chart Data: Variation des Gesteinsvolumens von 0 bis 100%
-    const chartLabels = [];
-    const voigtData = [];
-    const reussData = [];
-    const hsMinusData = [];
-    const hsPlusData = [];
-
-    for (let v = 0; v <= 100; v += 5) {
-      const vg = v / 100;
-      const vm = 1 - vg;
-      
-      voigtData.push(vg * eG + vm * eM);
-      reussData.push(1 / (vg / eG + vm / eM));
-
-      const kHS_m = kM + vg / (1 / (kG - kM) + 3 * vm / (3 * kM + 4 * gM));
-      const gHS_m = gM + vg / (1 / (gG - gM) + 6 * vm * (kM + 2 * gM) / (5 * gM * (3 * kM + 4 * gM)));
-      const eHS_m = (9 * kHS_m * gHS_m) / (3 * kHS_m + gHS_m);
-
-      const kHS_p = kG + vm / (1 / (kM - kG) + 3 * vg / (3 * kG + 4 * gG));
-      const gHS_p = gG + vm / (1 / (gM - gG) + 6 * vg * (kG + 2 * gG) / (5 * gG * (3 * kG + 4 * gG)));
-      const eHS_p = (9 * kHS_p * gHS_p) / (3 * kHS_p + gHS_p);
-      hsMinusData.push(Math.min(eHS_m, eHS_p));
-      hsPlusData.push(Math.max(eHS_m, eHS_p));
-      
-      chartLabels.push(v);
-    }
-
+    const r = emodul({ fck, alphaE, eGestein: eModulGestein, eMatrix: eModulMatrix, volGestein });
     return {
-      ecm,
-      eVoigt,
-      eReuss,
-      eHSMinus,
-      eHSPlus,
-      chartLabels,
-      voigtData,
-      reussData,
-      hsMinusData,
-      hsPlusData
+      ecm: r.ecm,
+      eVoigt: r.voigt,
+      eReuss: r.reuss,
+      eHSMinus: r.hsUnten,
+      eHSPlus: r.hsOben,
+      chartLabels: r.kurve.map(k => k.vG),
+      voigtData: r.kurve.map(k => k.voigt),
+      reussData: r.kurve.map(k => k.reuss),
+      hsMinusData: r.kurve.map(k => k.hsUnten),
+      hsPlusData: r.kurve.map(k => k.hsOben),
     };
   }, [fck, alphaE, eModulGestein, volGestein, eModulMatrix]);
 

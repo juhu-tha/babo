@@ -146,7 +146,7 @@ export default function KennwerteBeispielrechnung({ exCalc, exConc, exConcreteCl
               <CheckCircle2 className="h-4 w-4 text-emerald-600" /><MdText text={inhalt.texte.schritt1BetonspannungIn} /></h5>
             <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.zurErmittlungDesKriechverlusts} /></p>
             <div className="p-3 bg-off-white/80 rounded-lg border border-home-grau/20 text-center font-mono text-xs overflow-x-auto">
-              <BlockMath math={`\\sigma_{c,QP} = \\frac{P_{m0}}{A_c} + \\frac{P_{m0} \\cdot e_p^2}{I_c} - \\frac{M_g \\cdot e_p}{I_c} = \\frac{${formatDeTeXWert((exCalc.Pm0 * 1000))}}{500.000} + \\frac{${formatDeTeXWert((exCalc.Pm0 * 1000))} \\cdot 450^2}{8{,}5 \\cdot 10^{10}} - \\frac{900 \\cdot 10^6 \\cdot 450}{8{,}5 \\cdot 10^{10}} = ${exCalc.sig_c_p0}\\text{ N/mm²}`} />
+              <BlockMath math={`\\sigma_{c,QP} = \\frac{P_{m0}}{A_c} + \\frac{P_{m0} \\cdot e_p^2}{I_c} - \\frac{M_g \\cdot e_p}{I_c} = \\frac{${formatDeTeXWert((exCalc.Pm0 * 1000))}}{500.000} + \\frac{${formatDeTeXWert((exCalc.Pm0 * 1000))} \\cdot 450^2}{8{,}5 \\cdot 10^{10}} - \\frac{900 \\cdot 10^6 \\cdot 450}{8{,}5 \\cdot 10^{10}} = ${exCalc.sig_c_p0}\\text{ N/mm}^2`} />
             </div>
             <div className="grid grid-cols-3 gap-2 text-[11px] text-center text-slate-600 pt-1">
               <div className="p-1.5 bg-slate-50 rounded border"><MdText text={inhalt.texte.normalkraftanteil} />{formatDeZahl(((exCalc.Pm0 * 1000) / 500000), 2)} N/mm²</div>

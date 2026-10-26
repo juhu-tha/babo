@@ -23,6 +23,8 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/statistik/Statistik.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { normalCDF, normalPDF, stichprobe, statistikAuswertung, type StatistikMaterial, type AusreisserMethode } from '@/src/calc/statistik';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend);
 
@@ -35,40 +37,14 @@ function randomNormal(mean: number, stdDev: number) {
   return num * stdDev + mean;
 }
 
-// Error function approximation (Abramowitz and Stegun)
-function erf(x: number): number {
-  const sign = x >= 0 ? 1 : -1;
-  const absX = Math.abs(x);
+type MaterialType = StatistikMaterial;
+type OutlierMethod = AusreisserMethode;
 
-  const a1 =  0.254829592;
-  const a2 = -0.284496736;
-  const a3 =  1.421413741;
-  const a4 = -1.453152027;
-  const a5 =  1.061405429;
-  const p  =  0.3275911;
-
-  const t = 1.0 / (1.0 + p * absX);
-  const y = 1.0 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-absX * absX);
-
-  return sign * y;
-}
-
-// Cumulative distribution function (CDF) for normal distribution
-function normalCDF(x: number, mean: number, stdDev: number): number {
-  if (stdDev <= 0) return x < mean ? 0 : 1;
-  return 0.5 * (1 + erf((x - mean) / (stdDev * Math.sqrt(2))));
-}
-
-// Probability density function (PDF) for normal distribution
-function normalPDF(x: number, mean: number, stdDev: number): number {
-  if (stdDev <= 0) return x === mean ? 1 : 0;
-  const exponent = -0.5 * Math.pow((x - mean) / stdDev, 2);
-  const coeff = 1 / (stdDev * Math.sqrt(2 * Math.PI));
-  return coeff * Math.exp(exponent);
-}
-
-type MaterialType = 'beton' | 'stahl' | 'holz';
-type OutlierMethod = '2sigma' | 'grubbs' | 'boxplot';
+const REITER = [
+  { id: 'grundlagen', label: inhalt.texte.grundlagenBegriffserklärer, icon: Calculator },
+  { id: 'probengenerator', label: 'Probengenerator', icon: Calculator },
+  { id: 'doe', label: inhalt.texte.statistischeVersuchsplanungDoe, icon: Network },
+] as const;
 
 export default function Statistik() {
   const [activeTab, setActiveTab] = useState<'grundlagen' | 'probengenerator' | 'doe'>('grundlagen');
@@ -87,15 +63,8 @@ export default function Statistik() {
   const svgRef = useRef<SVGSVGElement | null>(null);
 
   const intStats = useMemo(() => {
-    const vals = [...interactiveSamples];
-    const n = vals.length;
-    const sorted = [...vals].sort((a, b) => a - b);
-    const mean = vals.reduce((sum, val) => sum + val, 0) / n;
-    const variance = vals.reduce((sum, val) => sum + Math.pow(val - mean, 2), 0) / (n - 1);
-    const stdDev = Math.sqrt(variance);
-    const cv = mean > 0 ? (stdDev / mean) * 100 : 0;
-    const median = n % 2 === 0 ? (sorted[n/2 - 1] + sorted[n/2]) / 2 : sorted[Math.floor(n/2)];
-    return { n, sorted, mean, median, stdDev, cv };
+    const k = stichprobe(interactiveSamples);
+    return { n: k.n, sorted: k.sortiert, mean: k.mittelwert, median: k.median, stdDev: k.stdAbw, cv: k.vk };
   }, [interactiveSamples]);
 
   const getSgX = (val: number) => {
@@ -262,88 +231,36 @@ export default function Statistik() {
   const stats = useMemo(() => {
     if (statValues.length === 0) return null;
 
-    const n = statValues.length;
-    const sorted = [...statValues].sort((a, b) => a - b);
-    const median = n % 2 === 0 ? (sorted[n/2 - 1] + sorted[n/2]) / 2 : sorted[Math.floor(n/2)];
+    // Rechenkern src/calc/statistik.ts (Kennwerte, Ausreißergrenzen, k_n nach DIN EN 1990 Tab. D1, X_k, X_d)
+    const r = statistikAuswertung({ werte: statValues, methode: outlierMethod, material, ausreisserPruefen: testStatus === 'finished' });
+    const { n, mittelwert: mean, stdAbw: stdDev, vk: cv, median } = r.roh;
+    const lowerBound = r.untereGrenze;
+    const upperBound = r.obereGrenze;
+    const isOutlierFn = testStatus === 'finished' ? (v: number) => v < lowerBound || v > upperBound : (_v: number) => false;
 
-    const mean = statValues.reduce((a, b) => a + b, 0) / n;
-    const variance = n > 1 ? statValues.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / (n - 1) : 0;
-    const stdDev = Math.sqrt(variance);
-    const cv = mean > 0 ? (stdDev / mean) * 100 : 0;
-
-    let isOutlierFn = (v: number) => false;
     let thresholdDesc = inhalt.werte.wirdNachGenerierungBerechnet;
-    let lowerBound = 0;
-    let upperBound = 0;
     let formula = '';
-
     if (testStatus === 'finished') {
       if (outlierMethod === '2sigma') {
-        const threshold = 2 * stdDev;
-        lowerBound = mean - threshold;
-        upperBound = mean + threshold;
-        isOutlierFn = (v) => v < lowerBound || v > upperBound;
         thresholdDesc = inhalt.werte.t2Faustregel;
         formula = '\\mu \\pm 2\\sigma';
       } else if (outlierMethod === 'boxplot') {
-        const q1 = sorted[Math.floor(n * 0.25)];
-        const q3 = sorted[Math.floor(n * 0.75)];
-        const iqr = q3 - q1;
-        lowerBound = q1 - 1.5 * iqr;
-        upperBound = q3 + 1.5 * iqr;
-        isOutlierFn = (v) => v < lowerBound || v > upperBound;
         thresholdDesc = `1,5 IQR`;
         formula = '[Q_1 - 1{,}5 \\cdot IQR,\\; Q_3 + 1{,}5 \\cdot IQR]';
       } else if (outlierMethod === 'grubbs') {
         // Kritische Werte des Grubbs-Tests (einseitig, α = 5 %), z. B. ISO 5725-2 / ASTM E178;
         // vereinfacht auf alle Werte angewendet (der strenge Test prüft iterativ nur den Extremwert).
-        const grubbsTab: [number, number][] = [[3, 1.153], [4, 1.463], [5, 1.672], [6, 1.822], [7, 1.938], [8, 2.032], [9, 2.110], [10, 2.176], [12, 2.285], [15, 2.409], [20, 2.557], [25, 2.663], [30, 2.745], [40, 2.866], [50, 2.956]];
-        let gCrit = grubbsTab[grubbsTab.length - 1][1];
-        if (n <= grubbsTab[0][0]) gCrit = grubbsTab[0][1];
-        for (let i = 0; i < grubbsTab.length - 1; i++) {
-          const [n0, g0] = grubbsTab[i];
-          const [n1, g1] = grubbsTab[i + 1];
-          if (n >= n0 && n <= n1) { gCrit = g0 + (g1 - g0) * (n - n0) / (n1 - n0); break; }
-        }
-        lowerBound = mean - gCrit * stdDev;
-        upperBound = mean + gCrit * stdDev;
-        isOutlierFn = (v) => v < lowerBound || v > upperBound;
-        thresholdDesc = `Grubbs G > ${formatDeZahl(gCrit, 3)} (n = ${formatDeWert(n)})`;
+        thresholdDesc = `Grubbs G > ${formatDeZahl(r.gKrit ?? NaN, 3)} (n = ${formatDeWert(n)})`;
         formula = '\\mu \\pm G_{crit} \\cdot \\sigma';
       }
     }
 
-    const cleanedValues = statValues.filter(v => !isOutlierFn(v));
-    const outliers = statValues.filter(v => isOutlierFn(v));
-
-    const nClean = cleanedValues.length;
-    const meanClean = nClean > 0 ? cleanedValues.reduce((a, b) => a + b, 0) / nClean : 0;
-    const varianceClean = nClean > 1 ? cleanedValues.reduce((a, b) => a + Math.pow(b - meanClean, 2), 0) / (nClean - 1) : 0;
-    const stdDevClean = Math.sqrt(varianceClean);
-
-    // Fraktilfaktor k_n für das 5-%-Quantil bei unbekanntem Variationskoeffizienten
-    // nach DIN EN 1990, Anhang D, Tab. D1 (V_X unbekannt); Zwischenwerte linear in 1/n interpoliert.
-    const knTab: [number, number][] = [[3, 3.37], [4, 2.63], [5, 2.33], [6, 2.18], [8, 2.00], [10, 1.92], [20, 1.76], [30, 1.73], [Infinity, 1.64]];
-    let kn = NaN;
-    if (nClean >= 3) {
-      for (let i = 0; i < knTab.length - 1; i++) {
-        const [n0, k0] = knTab[i];
-        const [n1, k1] = knTab[i + 1];
-        if (nClean >= n0 && nClean <= n1) {
-          const inv = (x: number) => (Number.isFinite(x) ? 1 / x : 0);
-          kn = n1 === n0 ? k0 : k0 + (k1 - k0) * (inv(n0) - inv(nClean)) / (inv(n0) - inv(n1));
-          break;
-        }
-      }
-    }
-
-    const xk = meanClean - kn * stdDevClean;
-    
-    let gammaM = 1.5;
-    if (material === 'stahl') gammaM = 1.15;
-    if (material === 'holz') gammaM = 1.3;
-
-    const xd = xk / gammaM;
+    const cleanedValues = r.bereinigt;
+    const outliers = r.ausreisser;
+    const nClean = r.sauber.n;
+    const meanClean = r.sauber.mittelwert;
+    const stdDevClean = r.sauber.stdAbw;
+    const { kn, xk, xd, gammaM } = r;
 
     return {
       n, mean, stdDev, cv, median,
@@ -496,36 +413,7 @@ export default function Statistik() {
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-        <button aria-pressed={activeTab === 'grundlagen'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'grundlagen' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('grundlagen')}
-        >
-          <Calculator size={16} /><MdText text={inhalt.texte.grundlagenBegriffserklärer} /></button>
-        <button aria-pressed={activeTab === 'probengenerator'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'probengenerator' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('probengenerator')}
-        >
-          <Calculator size={16} /> Probengenerator
-        </button>
-        <button aria-pressed={activeTab === 'doe'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'doe' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('doe')}
-        >
-          <Network size={16} /><MdText text={inhalt.texte.statistischeVersuchsplanungDoe} /></button>
-      </div>
+      <ModuleTabs label="Bereiche Statistik" tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-8">
 
       {activeTab === 'grundlagen' && (
       <div className="flex flex-col gap-8 animate-in fade-in duration-300">
@@ -1278,6 +1166,7 @@ export default function Statistik() {
       {activeTab === 'doe' && (
         <StatistischeVersuchsplanung />
       )}
+      </ModuleTabs>
     </div>
   );
 }

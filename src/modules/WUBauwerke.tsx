@@ -22,6 +22,7 @@ import {
 } from 'chart.js';
 import inhalt from '@/content/wubauwerke/WUBauwerke.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 ChartJS.register(
   CategoryScale,
@@ -32,6 +33,14 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+
+const REITER = [
+  { id: 'rechner', label: inhalt.texte.t1RechnerNachweise, icon: Gauge },
+  { id: 'entwurf', label: inhalt.texte.t2EntwurfsgrundsätzeAB, icon: Compass },
+  { id: 'fugen', label: inhalt.texte.t3FugenplanungDichtsysteme, icon: Layers },
+  { id: 'beton', label: inhalt.texte.t4BetontechnologieSelbstheilung, icon: Cpu },
+  { id: 'typen', label: inhalt.texte.t5WannenTypenIm, icon: BookOpen },
+] as const;
 
 export default function WUBauwerke() {
   const [activeTab, setActiveTab] = useState<'rechner' | 'entwurf' | 'fugen' | 'beton' | 'typen'>('rechner');
@@ -154,53 +163,7 @@ export default function WUBauwerke() {
         </div>
 
         {/* Tab-Navigation */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          <button aria-pressed={activeTab === 'rechner'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-2xs cursor-pointer ${
-              activeTab === 'rechner'
-                ? 'bg-shiraz text-white border-shiraz shadow-xs'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveTab('rechner')}
-          >
-            <Gauge size={16} /><MdText text={inhalt.texte.t1RechnerNachweise} /></button>
-          <button aria-pressed={activeTab === 'entwurf'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-2xs cursor-pointer ${
-              activeTab === 'entwurf'
-                ? 'bg-shiraz text-white border-shiraz shadow-xs'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveTab('entwurf')}
-          >
-            <Compass size={16} /><MdText text={inhalt.texte.t2EntwurfsgrundsätzeAB} /></button>
-          <button aria-pressed={activeTab === 'fugen'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-2xs cursor-pointer ${
-              activeTab === 'fugen'
-                ? 'bg-shiraz text-white border-shiraz shadow-xs'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveTab('fugen')}
-          >
-            <Layers size={16} /><MdText text={inhalt.texte.t3FugenplanungDichtsysteme} /></button>
-          <button aria-pressed={activeTab === 'beton'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-2xs cursor-pointer ${
-              activeTab === 'beton'
-                ? 'bg-shiraz text-white border-shiraz shadow-xs'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveTab('beton')}
-          >
-            <Cpu size={16} /><MdText text={inhalt.texte.t4BetontechnologieSelbstheilung} /></button>
-          <button aria-pressed={activeTab === 'typen'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-2xs cursor-pointer ${
-              activeTab === 'typen'
-                ? 'bg-shiraz text-white border-shiraz shadow-xs'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-            onClick={() => setActiveTab('typen')}
-          >
-            <BookOpen size={16} /><MdText text={inhalt.texte.t5WannenTypenIm} /></button>
-        </div>
+        <ModuleTabs label="Bereiche WU-Bauwerke" tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-6">
 
         {/* TAB 1: RECHNER & NACHWEISE */}
         {activeTab === 'rechner' && (
@@ -778,6 +741,7 @@ export default function WUBauwerke() {
             </div>
           </div>
         )}
+        </ModuleTabs>
       </div>
 
       <FormulaDerivationBox

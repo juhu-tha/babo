@@ -21,6 +21,7 @@ import {
   type TooltipItem
 } from 'chart.js';
 import inhalt from '@/content/festigkeitsberechnungen/Festigkeitsberechnungen.json';
+import { grenzhoehen, wuerfelstapel } from '@/src/calc/festigkeitsvergleich';
 import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
@@ -58,45 +59,13 @@ export default function Festigkeitsberechnungen() {
   const mat1 = materials[mat1Key];
   const mat2 = materials[mat2Key];
   const cubeMat = materials[cubeMatKey];
-  const g = 9.81;
+  // Rechenkern src/calc/festigkeitsvergleich.ts: Grenzhöhe H_max = f_c/(ρ·g), Reißlänge L_max = f_t/(ρ·g) (g = 9,81 m/s²)
+  const res1 = useMemo(() => grenzhoehen(mat1), [mat1]);
+  const res2 = useMemo(() => grenzhoehen(mat2), [mat2]);
 
-  const calc = (mat: Material) => {
-    const H_max = (mat.fc * 1e6) / (mat.rho * g);
-    const L_max = (mat.ft * 1e6) / (mat.rho * g);
-    return { H_max, L_max };
-  };
-
-  const res1 = useMemo(() => calc(mat1), [mat1]);
-  const res2 = useMemo(() => calc(mat2), [mat2]);
-
-  // Würfelstapel Berechnung
-  const cubeCalc = useMemo(() => {
-    const a = cubeSize / 100; // in m
-    // N_max = f_c / (rho * g * a)
-    const N_max_exact = (cubeMat.fc * 1e6) / (cubeMat.rho * g * a);
-    const N_max = Math.floor(N_max_exact);
-    
-    const H_total = N_max * a;
-    
-    // Verformung unterster Würfel: delta = sigma / E * a
-    // sigma = N_max * rho * g * a
-    const sigma_bottom = N_max * cubeMat.rho * g * a; // in Pa
-    const delta_bottom = (sigma_bottom / (cubeMat.E * 1e6)) * a; // in m
-    
-    // Gesamtverformung des Stapels
-    // delta_total = sum(i * rho * g * a^2 / E) = (rho * g * a^2 / E) * (N * (N+1) / 2)
-    const delta_total = (cubeMat.rho * g * a * a / (cubeMat.E * 1e6)) * (N_max * (N_max + 1) / 2); // in m
-    
-    return {
-      a,
-      N_max_exact,
-      N_max,
-      H_total,
-      delta_bottom: delta_bottom * 1000, // in mm
-      delta_total: delta_total * 1000, // in mm
-      sigma_bottom: sigma_bottom / 1e6 // in MPa
-    };
-  }, [cubeMat, cubeSize]);
+  // Würfelstapel: N_max = ⌊f_c/(ρ·g·a)⌋, Stauchung des untersten Würfels δ = σ/E·a,
+  // Gesamtstauchung δ_ges = ρ·g·a²/E·N(N + 1)/2 (Lehrdarstellung des Moduls, unverändert)
+  const cubeCalc = useMemo(() => wuerfelstapel(cubeMat, cubeSize), [cubeMat, cubeSize]);
 
   const chartData = {
     labels: [inhalt.werte.maxTurmhöheDruck, inhalt.werte.maxReißlängeZug],

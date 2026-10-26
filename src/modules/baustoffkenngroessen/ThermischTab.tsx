@@ -5,6 +5,7 @@ import { Slider } from '@/src/components/ui/Slider';
 import { BlockMath, InlineMath } from 'react-katex';
 import inhalt from '@/content/baustoffkenngroessen/ThermischTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 
 export interface ThermischTabProps {
   alphaT: number;
@@ -318,6 +319,16 @@ export default function ThermischTab({ alphaT, deltaT, handleThermischPresetChan
           <p><MdText text={inhalt.texte.wohnbehaglichkeitTactileComfort} /></p>
           <p className="text-[11px] text-amber-900 leading-normal"><MdText text={inhalt.texte.nadelholzBesitztEinSehr} /></p>
         </div>
+      </div>
+      {/* Z12: Rechenweg zur Formel */}
+      <div className="lg:col-span-2">
+        <FormulaDerivationBox
+          title={inhalt.werte.herleitungWärmedurchlasswiderstand}
+          zielGleichung="R = \frac{d}{\lambda}"
+          normQuelle={inhalt.werte.normR}
+          schritte={inhalt.daten["ThermischTab.schritte"]}
+          ergebnisHinweis={inhalt.werte.hinweisR}
+        />
       </div>
     </div>
   );

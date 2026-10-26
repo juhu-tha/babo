@@ -12,13 +12,13 @@
     "dieRohdichteScherbenBzw": "Die Rohdichte (Scherben- bzw. Steinrohdichte) beschreibt das Verhältnis der Masse zum äußeren Hüllvolumen des Festkörpers, also inklusive aller eingebetteten Poren und Risse.",
     "einfacheBeispielrechnung2": "🔢 Einfache Beispielrechnung:",
     "t36Kg0": "ρ = 3,6 kg / 0,002 m³ = 1800 kg/m³",
-    "ziegelsteinM36text": "Ziegelstein: $m = 3{,}6\\text{ kg}$, $V_{Hüll} = 2\\text{ dm}^3\\ (0{,}002\\text{ m}^3)$.",
+    "ziegelsteinM36text": "Ziegelstein: $m = 3{,}6\\text{ kg}$, $V_{\\text{Hüll}} = 2\\text{ dm}^3\\ (0{,}002\\text{ m}^3)$.",
     "prüfverfahrenWägungUndVolumen": "Prüfverfahren: Wägung und Volumen über Ausmessen oder Unterwasserwägung (z. B. DIN EN 1936, DIN EN 772-13)",
     "t3SchüttdichteRhoS": "3. Schüttdichte ($\\rho_S$)",
     "dieSchüttdichteGiltFür": "Die Schüttdichte gilt für lose Haufwerke (Sande, Kiese, Körnungen). Das Volumen umfasst hier sowohl das Feststoffvolumen, die Kornporen als auch die weiten Zwickelräume dazwischen.",
     "einfacheBeispielrechnung3": "🔢 Einfache Beispielrechnung:",
     "s11Kg0": "ρ_S = 11 kg / 0,01 m³ = 1100 kg/m³",
-    "splitschüttungM11textKg": "Splitschüttung: $m = 11\\text{ kg}$, $V_{Schütt} = 10\\text{ Liter}\\ (0{,}01\\text{ m}^3)$.",
+    "splitschüttungM11textKg": "Splitschüttung: $m = 11\\text{ kg}$, $V_{\\text{Schütt}} = 10\\text{ Liter}\\ (0{,}01\\text{ m}^3)$.",
     "prüfverfahrenMesszylindermessungDinEn": "Prüfverfahren: Messzylindermessung / DIN EN 1097-3",
     "mathematischeGefügeanalyse": "Mathematische Gefügeanalyse",
     "innereKornporosität": "Innere Kornporosität",
@@ -42,6 +42,33 @@
     "schüttdichteSSchüttung": "Schüttdichte (ρ_S) [Schüttung]",
     "reinesFeststoffvolumenSkelett": "Reines Feststoffvolumen (Skelett)",
     "volumenDerKornporen": "Volumen der Kornporen",
-    "volumenDerInterporenHaufwerkshohlräume": "Volumen der Interporen (Haufwerkshohlräume)"
+    "volumenDerInterporenHaufwerkshohlräume": "Volumen der Interporen (Haufwerkshohlräume)",
+    "herleitungPorositätAusRohUndReindichte": "Herleitung: Porosität aus Roh- und Reindichte",
+    "normPorositaet": "DIN EN 1936 (Naturstein); DIN EN 1097-3 (Haufwerksporosität)",
+    "hinweisPorositaet": "Für die Haufwerksporosität gilt derselbe Weg: Feststoff → Korn (ρ), Hüllvolumen → Schüttvolumen (ρ_S), also P_Hauf = 1 − ρ_S/ρ."
+  },
+  "daten": {
+    "PhysikalischTab.schritte": [
+      {
+        "titel": "1. Volumen aufteilen",
+        "formel": "V_{\\text{Hüll}} = V_{\\text{Fest}} + V_{\\text{Poren}}",
+        "erklaerung": "Das Hüllvolumen eines porösen Körpers besteht aus dem Volumen des Feststoffs und dem Volumen der Poren."
+      },
+      {
+        "titel": "2. Porosität definieren",
+        "formel": "P = \\frac{V_{\\text{Poren}}}{V_{\\text{Hüll}}} = 1 - \\frac{V_{\\text{Fest}}}{V_{\\text{Hüll}}}",
+        "erklaerung": "Die Porosität ist der Volumenanteil der Poren am Hüllvolumen."
+      },
+      {
+        "titel": "3. Volumina durch Dichten ersetzen",
+        "formel": "V_{\\text{Fest}} = \\frac{m}{\\rho_R},\\quad V_{\\text{Hüll}} = \\frac{m}{\\rho} \\;\\Rightarrow\\; \\frac{V_{\\text{Fest}}}{V_{\\text{Hüll}}} = \\frac{\\rho}{\\rho_R}",
+        "erklaerung": "Beide Volumina enthalten dieselbe Masse m; sie kürzt sich heraus."
+      },
+      {
+        "titel": "4. Zahlenbeispiel Ziegel",
+        "formel": "P = 1 - \\frac{1800}{2650} = 0{,}321 \\approx 32\\,\\%",
+        "erklaerung": "Ziegel mit ρ = 1800 kg/m³ und ρ_R = 2650 kg/m³ (Beispiele oben)."
+      }
+    ]
   }
 }

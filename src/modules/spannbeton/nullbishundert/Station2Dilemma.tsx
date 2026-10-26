@@ -50,7 +50,7 @@ export function Station2Dilemma({ concreteStauchung, setConcreteStauchung, lossP
           <div className="text-xs text-red-950 space-y-2 leading-relaxed">
             <p><MdText text={inhalt.texte.betonstahlB500BesitztEine} /></p>
             <div className="p-2 bg-white rounded border border-red-200 font-mono text-center">
-              <InlineMath math="\varepsilon_{s,el} = \frac{f_{yd}}{E_s} = \frac{435}{200\,000} \approx 2{,}175\,\text{‰}" />
+              <InlineMath math="\varepsilon_{s,el} = \frac{f_{yd}}{E_s} = \frac{435}{200\,000} \approx 2{,}175\,\text{\char8240}" />
             </div>
             <p><MdText text={inhalt.texte.verkürztSichDerBeton} /></p>
             <div className="p-2 bg-white rounded border border-red-200 font-mono text-center text-red-700 font-bold">
@@ -69,7 +69,7 @@ export function Station2Dilemma({ concreteStauchung, setConcreteStauchung, lossP
           <div className="text-xs text-emerald-950 space-y-2 leading-relaxed">
             <p><MdText text={inhalt.texte.spannstahlY1860ZB} /></p>
             <div className="p-2 bg-white rounded border border-emerald-200 font-mono text-center">
-              <InlineMath math="\varepsilon_{p0} = \frac{\sigma_{pm0}}{E_p} = \frac{1360}{195\,000} \approx 6{,}97\,\text{‰}" />
+              <InlineMath math="\varepsilon_{p0} = \frac{\sigma_{pm0}}{E_p} = \frac{1360}{195\,000} \approx 6{,}97\,\text{\char8240}" />
             </div>
             <p><MdText text={inhalt.texte.beiTypischerBetonverkürzungVon} /></p>
             <div className="p-2 bg-white rounded border border-emerald-200 font-mono text-center text-emerald-800 font-bold">

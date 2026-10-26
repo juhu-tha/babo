@@ -6,6 +6,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/einheiten/Einheiten.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 type UnitCategory = 'Länge' | 'Fläche' | 'Volumen' | 'Kraft' | 'Spannung/Druck' | 'Masse' | 'Dichte' | 'Moment' | 'Energie' | 'Temperatur';
 
@@ -90,6 +91,11 @@ const formatErgebnis = (x: number): string => {
   return `${mant.toLocaleString('de-DE', { maximumSignificantDigits: 6 })} · 10${String(exp).split('').map(c => HOCH[c] ?? c).join('')}`;
 };
 
+const REITER = [
+  { id: 'grundlagen', label: inhalt.texte.grundlagenSiSystem, icon: Scale },
+  { id: 'umrechner', label: 'Einheitenumrechner', icon: Calculator },
+] as const;
+
 export default function Einheiten() {
   const [activeTab, setActiveTab] = useState<'grundlagen' | 'umrechner'>('grundlagen');
   
@@ -121,29 +127,9 @@ export default function Einheiten() {
           <p><MdText text={inhalt.texte.dasInternationaleEinheitensystemSi} /></p>
         </div>
 
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button aria-pressed={activeTab === 'grundlagen'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'grundlagen' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('grundlagen')}
-          >
-            <Scale size={16} /><MdText text={inhalt.texte.grundlagenSiSystem} /></button>
-          <button aria-pressed={activeTab === 'umrechner'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'umrechner' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('umrechner')}
-          >
-            <Calculator size={16} /> Einheitenumrechner
-          </button>
-        </div>
       </div>
 
+      <ModuleTabs label="Bereiche Einheiten" tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:mb-8">
       {activeTab === 'grundlagen' && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
@@ -382,6 +368,7 @@ export default function Einheiten() {
           </div>
         </div>
       )}
+      </ModuleTabs>
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-2">
         <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2"><MdText text={inhalt.texte.anwendungEinheitenSicherDurch} /></h3>

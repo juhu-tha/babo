@@ -25,6 +25,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/festbetonstatistik/FestbetonStatistik.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { festbetonStatistik } from '@/src/calc/festbetonStatistik';
 
 ChartJS.register(
   CategoryScale,
@@ -46,15 +47,11 @@ export default function FestbetonStatistik() {
   const [pruefArt, setPruefArt] = useState<'erst' | 'stetig'>('stetig');
 
   const chartData = useMemo(() => {
-    // 5% Fraktil
-    const fck = fcm - 1.645 * sigma;
-    
-    // Näherung Würfel/Zylinder ≈ 1,25 (tatsächlich klassenabhängig, z. B. C30/37: 37/30 = 1,23)
-    const scale = format === 'wuerfel' ? 1.25 : 1.0;
-    
-    const scaledFcm = fcm * scale;
-    const scaledSigma = sigma * scale;
-    const scaledFck = fck * scale;
+    // 5-%-Fraktil und Würfel/Zylinder-Näherung 1,25 (tatsächlich klassenabhängig, z. B. C30/37: 37/30 = 1,23) aus dem Rechenkern
+    const k = festbetonStatistik({ fcm, sigma, format, alphaCc: 0.85, gammaC: 1.5, pruefArt: 'stetig' });
+    const scaledFcm = k.anzeigeFcm;
+    const scaledSigma = k.anzeigeSigma;
+    const scaledFck = k.anzeigeFck;
 
     const minX = Math.floor(Math.max(0, scaledFcm - 4 * scaledSigma));
     const maxX = Math.ceil(scaledFcm + 4 * scaledSigma);
@@ -156,15 +153,13 @@ export default function FestbetonStatistik() {
     }
   };
 
-  // Base calculations are always on cylinder strength for design values
-  const fckCyl = fcm - 1.645 * sigma;
-  const fcd = (alphaCc * fckCyl) / gammaC;
-  
-  // Display values scaled for the selected format
-  const scale = format === 'wuerfel' ? 1.25 : 1.0;
-  const displayFcm = fcm * scale;
-  const displaySigma = sigma * scale;
-  const displayFck = fckCyl * scale;
+  // Rechenkern src/calc/festbetonStatistik.ts: f_ck = f_cm − 1,645·σ und f_cd immer aus der Zylinderfestigkeit,
+  // Anzeigewerte im gewählten Probenformat (Würfel pauschal × 1,25), Konformitätskriterien nach DIN EN 206, 8.2.1.3
+  const kern = festbetonStatistik({ fcm, sigma, format, alphaCc, gammaC, pruefArt });
+  const { fckCyl, fcd } = kern;
+  const displayFcm = kern.anzeigeFcm;
+  const displaySigma = kern.anzeigeSigma;
+  const displayFck = kern.anzeigeFck;
 
   return (
     <div className="flex flex-col gap-8">
@@ -283,7 +278,7 @@ export default function FestbetonStatistik() {
                       <FormulaText text="f_{cm} \ge f_{ck} + 1{,}48 \cdot \sigma" /><br/>
                       <FormulaText text="f_{ci} \ge f_{ck} - 4" />
                     </div>
-                    <p className="text-text-main/80"><MdText text={inhalt.texte.beiEinemAngestrebten5} /><strong>{formatDeZahl(displayFck, 1)} N/mm²</strong><MdText text={inhalt.texte.mussDerMittelwertVon} /><strong>{formatDeZahl(displayFck + 1.48 * displaySigma, 1)} N/mm²</strong><MdText text={inhalt.texte.betragenUndKeinEinzelwert} /><strong>{formatDeZahl(displayFck - 4, 1)} N/mm²</strong> unterschreiten.
+                    <p className="text-text-main/80"><MdText text={inhalt.texte.beiEinemAngestrebten5} /><strong>{formatDeZahl(displayFck, 1)} N/mm²</strong><MdText text={inhalt.texte.mussDerMittelwertVon} /><strong>{formatDeZahl(kern.mindestMittelwert, 1)} N/mm²</strong><MdText text={inhalt.texte.betragenUndKeinEinzelwert} /><strong>{formatDeZahl(kern.mindestEinzelwert, 1)} N/mm²</strong> unterschreiten.
                     </p>
                   </>
                 ) : (
@@ -293,7 +288,7 @@ export default function FestbetonStatistik() {
                       <FormulaText text="Kriterium 1: f_{cm} \ge f_{ck} + 4" /><br/>
                       <FormulaText text="Kriterium 2: f_{ci} \ge f_{ck} - 4" />
                     </div>
-                    <p className="text-text-main/80"><MdText text={inhalt.texte.beiEinemAngestrebten52} /><strong>{formatDeZahl(displayFck, 1)} N/mm²</strong><MdText text={inhalt.texte.mussDerMittelwertAus} /><strong>{formatDeZahl(displayFck + 4, 1)} N/mm²</strong><MdText text={inhalt.texte.betragenUndKeinEinzelwert2} /><strong>{formatDeZahl(displayFck - 4, 1)} N/mm²</strong> unterschreiten.
+                    <p className="text-text-main/80"><MdText text={inhalt.texte.beiEinemAngestrebten52} /><strong>{formatDeZahl(displayFck, 1)} N/mm²</strong><MdText text={inhalt.texte.mussDerMittelwertAus} /><strong>{formatDeZahl(kern.mindestMittelwert, 1)} N/mm²</strong><MdText text={inhalt.texte.betragenUndKeinEinzelwert2} /><strong>{formatDeZahl(kern.mindestEinzelwert, 1)} N/mm²</strong> unterschreiten.
                     </p>
                   </>
                 )}

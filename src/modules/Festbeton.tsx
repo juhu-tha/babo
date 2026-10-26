@@ -22,6 +22,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 ChartJS.register(
   CategoryScale,
@@ -67,6 +68,13 @@ const NORM_KLASSEN: FestigkeitsKlasse[] = [
   { name: 'C90/105', fck_cyl: 90, fck_cube: 105, fcm: 98, fctm: 5.0, fctk_005: 3.5, fctk_095: 6.6, Ecm: 44, eps_c1: 2.8, eps_cu1: 2.8, eps_c2: 2.6, eps_cu2: 2.6 },
   { name: 'C100/115', fck_cyl: 100, fck_cube: 115, fcm: 108, fctm: 5.2, fctk_005: 3.6, fctk_095: 6.8, Ecm: 45, eps_c1: 2.8, eps_cu1: 2.8, eps_c2: 2.6, eps_cu2: 2.6 },
 ];
+
+const REITER = [
+  { id: 'druckfestigkeitsklassen', label: 'Druckfestigkeitsklassen (DIN EN 206 / EC2)', icon: Layers },
+  { id: 'festigkeitsentwicklung', label: 'Festigkeitsentwicklung & Geometrie', icon: Calendar },
+  { id: 'statistik', label: 'Statistik & Normalverteilung', icon: TrendingUp },
+  { id: 'konformitaet', label: 'Konformitätskriterien (Abs. 8)', icon: CheckCircle2 },
+] as const;
 
 export default function Festbeton() {
   const { setActiveTab: setGlobalTab } = useTabContext();
@@ -248,48 +256,7 @@ export default function Festbeton() {
         </div>
 
         {/* Tab-Navigation */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
-          <button aria-pressed={activeTab === 'druckfestigkeitsklassen'} 
-            onClick={() => setActiveTab('druckfestigkeitsklassen')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'druckfestigkeitsklassen' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <Layers size={16} /> Druckfestigkeitsklassen (DIN EN 206 / EC2)
-          </button>
-          <button aria-pressed={activeTab === 'festigkeitsentwicklung'} 
-            onClick={() => setActiveTab('festigkeitsentwicklung')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'festigkeitsentwicklung' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <Calendar size={16} /> Festigkeitsentwicklung &amp; Geometrie
-          </button>
-          <button aria-pressed={activeTab === 'statistik'} 
-            onClick={() => setActiveTab('statistik')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'statistik' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <TrendingUp size={16} /> Statistik &amp; Normalverteilung
-          </button>
-          <button aria-pressed={activeTab === 'konformitaet'} 
-            onClick={() => setActiveTab('konformitaet')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'konformitaet' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-          >
-            <CheckCircle2 size={16} /> Konformitätskriterien (Abs. 8)
-          </button>
-        </div>
+        <ModuleTabs label="Bereiche Festbeton" tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:my-6">
 
         {/* Tab 1: Druckfestigkeitsklassen */}
         {activeTab === 'druckfestigkeitsklassen' && (
@@ -895,6 +862,7 @@ export default function Festbeton() {
             </div>
           </div>
         )}
+        </ModuleTabs>
 
       </div>
 

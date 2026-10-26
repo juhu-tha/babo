@@ -6,6 +6,7 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { BUILDING_ZONES } from './daten';
 import inhalt from '@/content/expositionsklassen/ExpositionsklassenSkizze.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 export interface ExpositionsklassenSkizzeProps {
   selectedClasses: string[];
@@ -13,6 +14,11 @@ export interface ExpositionsklassenSkizzeProps {
   onToggleClass?: (cls: string) => void;
   compact?: boolean;
 }
+
+const REITER = [
+  { id: 'building', label: inhalt.texte.t1BauwerksZonierung, icon: Compass },
+  { id: 'cover', label: inhalt.texte.t2DetailzoomBetondeckungEc2, icon: Eye },
+] as const;
 
 export function ExpositionsklassenSkizze({
   selectedClasses,
@@ -44,31 +50,9 @@ export function ExpositionsklassenSkizze({
           </div>
         </div>
 
-        {/* Tab Switcher: Gebäudeschnitt vs Betondeckung */}
-        <div className="flex p-1 bg-off-white rounded-xl border border-home-grau/20 self-start sm:self-auto text-xs font-bold">
-          <button aria-pressed={activeMode === 'building'}
-            type="button"
-            onClick={() => setActiveMode('building')}
-            className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-1.5 ${
-              activeMode === 'building'
-                ? 'bg-shiraz text-white shadow-xs'
-                : 'text-text-main/70 hover:text-text-main hover:bg-white'
-            }`}
-          >
-            <Compass size={14} /><MdText text={inhalt.texte.t1BauwerksZonierung} /></button>
-          <button aria-pressed={activeMode === 'cover'}
-            type="button"
-            onClick={() => setActiveMode('cover')}
-            className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-1.5 ${
-              activeMode === 'cover'
-                ? 'bg-shiraz text-white shadow-xs'
-                : 'text-text-main/70 hover:text-text-main hover:bg-white'
-            }`}
-          >
-            <Eye size={14} /><MdText text={inhalt.texte.t2DetailzoomBetondeckungEc2} /></button>
-        </div>
       </div>
 
+      <ModuleTabs label="Ansicht der Expositionsskizze" tabs={REITER} aktiv={activeMode} onWechsel={setActiveMode} className="[&>[role=tablist]]:mb-6 [&>[role=tabpanel]]:space-y-6">
       {/* QUICK PRESET PILLS */}
       <div className="space-y-2">
         <span className="text-xs font-bold text-text-main/70 block"><MdText text={inhalt.texte.schnellauswahlTypischerIngenieurbauteile} /></span>
@@ -687,6 +671,7 @@ export function ExpositionsklassenSkizze({
           </div>
         </div>
       )}
+      </ModuleTabs>
 
     </div>
   );

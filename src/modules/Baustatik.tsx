@@ -23,6 +23,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/baustatik/Baustatik.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 ChartJS.register(
   CategoryScale,
@@ -34,6 +35,11 @@ ChartJS.register(
   Legend,
   Filler
 );
+
+const REITER = [
+  { id: 'traeger', label: 'Träger (1D)', icon: Minus },
+  { id: 'rahmen', label: 'Rahmen (2D)', icon: Square },
+] as const;
 
 export default function Baustatik() {
   const [activeTab, setActiveTab] = useState<'traeger' | 'rahmen'>('traeger');
@@ -352,26 +358,7 @@ export default function Baustatik() {
           <p><MdText text={inhalt.texte.dieBaustatikLiefertDie} /><FormulaText text="M" />, Querkraft <FormulaText text="V" /><MdText text={inhalt.texte.normalkraft} /><FormulaText text="N" /><MdText text={inhalt.texte.dieFürDieBemessung} /></p>
         </div>
 
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-        <button aria-pressed={activeTab === 'traeger'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'traeger' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('traeger')}>
-          <Minus size={16} /> Träger (1D)
-        </button>
-        <button aria-pressed={activeTab === 'rahmen'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'rahmen' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('rahmen')}>
-          <Square size={16} /> Rahmen (2D)
-        </button>
-        </div>
+        <ModuleTabs label="Tragwerksart" tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-6">
 
         {activeTab === 'traeger' && (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -800,6 +787,7 @@ export default function Baustatik() {
             </div>
           </div>
         )}
+        </ModuleTabs>
       </div>
       
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}

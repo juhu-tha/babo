@@ -21,6 +21,7 @@ import {
 } from 'chart.js';
 import inhalt from '@/content/schadreaktionenbeton/SchadreaktionenBeton.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 ChartJS.register(
   CategoryScale,
@@ -461,6 +462,12 @@ function AkrGefuegeSimulator() {
   );
 }
 
+const REITER = [
+  { id: 'akr', label: inhalt.texte.alkalitreibenAkr, icon: Sparkles },
+  { id: 'frost', label: 'Frost-Tau-Widerstand', icon: Snowflake },
+  { id: 'sulfat', label: 'Sulfattreiben', icon: AlertTriangle },
+] as const;
+
 export default function SchadreaktionenBeton() {
   const [activeTab, setActiveTab] = useState<'akr' | 'akr_simulation' | 'frost' | 'sulfat'>('akr');
 
@@ -670,34 +677,7 @@ export default function SchadreaktionenBeton() {
         </p>
       </div>
 
-      <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 animate-in fade-in duration-300">
-        <button aria-pressed={activeTab === 'akr'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'akr' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('akr')}>
-          <Sparkles size={16} /><MdText text={inhalt.texte.alkalitreibenAkr} /></button>
-        <button aria-pressed={activeTab === 'frost'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'frost' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('frost')}>
-          <Snowflake size={16} /> Frost-Tau-Widerstand
-        </button>
-        <button aria-pressed={activeTab === 'sulfat'}
-          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-            activeTab === 'sulfat' 
-              ? 'bg-shiraz text-white border-shiraz shadow-md' 
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-          }`}
-          onClick={() => setActiveTab('sulfat')}>
-          <AlertTriangle size={16} /> Sulfattreiben
-        </button>
-      </div>
+      <ModuleTabs label="Schadreaktionen" tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-6">
 
       {activeTab === 'akr' && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -933,6 +913,7 @@ export default function SchadreaktionenBeton() {
           </div>
         </div>
       )}
+      </ModuleTabs>
       
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox

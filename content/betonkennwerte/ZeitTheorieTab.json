@@ -8,7 +8,7 @@
     "zeitlicheEntwicklungDerZugfestigkeit": "Zeitliche Entwicklung der Zugfestigkeit nach Gl. (3.4): $f_{ctm}(t) = (\\beta_{cc}(t))^{\\alpha} \\cdot f_{ctm}$ ($\\alpha = 1{,}0$ für $t < 28\\text{ d}$, $\\alpha = 2/3$ für $t \\ge 28\\text{ d}$).",
     "spannungsDehnungsLinienAbschnitt": " Spannungs-Dehnungs-Linien (Abschnitt 4)",
     "fürDieQuerschnittsbemessungIm": "Für die Querschnittsbemessung im Grenzzustand der Tragfähigkeit (GZT) stellt EC2 das **Parabel-Rechteck-Diagramm** bereit (Gl. 3.17 – 3.20):",
-    "fürNormalbetonGiltVarepsilon": "Für Normalbeton gilt: $\\varepsilon_{c2} = 2{,}0\\,\\text{‰}$, $\\varepsilon_{cu2} = 3{,}5\\,\\text{‰}$, $n = 2{,}0$ (reine quadratische Parabel).",
+    "fürNormalbetonGiltVarepsilon": "Für Normalbeton gilt: $\\varepsilon_{c2} = 2{,}0\\,\\text{\\char8240}$, $\\varepsilon_{cu2} = 3{,}5\\,\\text{\\char8240}$, $n = 2{,}0$ (reine quadratische Parabel).",
     "nichtlineareBeziehungFürVerformungsberec": "Nichtlineare Beziehung für Verformungsberechnungen (Gl. 3.14): $\\frac{\\sigma_c}{f_{cm}} = \\frac{k \\cdot \\eta - \\eta^2}{1 + (k - 2) \\cdot \\eta}$",
     "trocknungsschwindenVsAutogenesSchwinden": "Trocknungsschwinden vs. Autogenes Schwinden (Physikalischer Mechanismus)",
     "t1TrocknungsschwindenCdT": "1. Trocknungsschwinden ε_cd(t) (Abschnitt 5)",
