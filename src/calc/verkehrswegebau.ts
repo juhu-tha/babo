@@ -11,6 +11,7 @@
  * Einheiten stehen an den Feldern. Reiner Rechenkern – geprüft in tests/verkehrswegebau.test.ts.
  */
 import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
+import { asphaltRohdichte } from './asphalt';
 
 export interface Ergebnis { gueltig: boolean; hinweise: Hinweis[] }
 const abschluss = (h: Hinweis[]): Ergebnis => ({ gueltig: !hatFehler(h), hinweise: h });
@@ -37,7 +38,7 @@ export interface AsphaltErgebnis extends Ergebnis {
 export function asphaltHohlraum(e: AsphaltEingabe): AsphaltErgebnis {
   const h: Hinweis[] = [];
   muss(h, istEndlich(e.gesteinAnteil, e.bitumenAnteil, e.rhoGestein, e.rhoBitumen, e.raumdichteMischung) && e.rhoGestein > 0 && e.rhoBitumen > 0, 'eingabe', 'Dichten müssen größer als 0 sein.');
-  const maxDichte = 100 / ((e.gesteinAnteil / e.rhoGestein) + (e.bitumenAnteil / e.rhoBitumen));
+  const maxDichte = asphaltRohdichte(e.gesteinAnteil, e.bitumenAnteil, e.rhoGestein, e.rhoBitumen);
   const hohlraum = (1 - (e.raumdichteMischung / maxDichte)) * 100;
   if (Math.abs(e.gesteinAnteil + e.bitumenAnteil - 100) > 0.05) h.push({ stufe: 'warnung', feld: 'bitumenAnteil', text: 'Gestein und Bitumen ergeben nicht 100 M.-%.' });
   if (hohlraum < 0) h.push({ stufe: 'fehler', feld: 'raumdichteMischung', text: 'Raumdichte größer als die hohlraumfreie Rohdichte – Eingaben prüfen.' });
