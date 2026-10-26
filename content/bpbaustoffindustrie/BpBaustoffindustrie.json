@@ -65,7 +65,8 @@
   "werte": {
     "anwendungsbeispielWirtschaftlicherLiefer": "Anwendungsbeispiel: Wirtschaftlicher Lieferradius für Kies",
     "lehrmodellMitAngenommenenKostenwerten": "Lehrmodell mit angenommenen Kostenwerten",
-    "rund50KmDeshalb": "Rund 50 km – deshalb sind Kieswerke und Transportbetonwerke regional verteilt, Zementwerke dagegen beliefern größere Gebiete."
+    "rund50KmDeshalb": "Rund 50 km – deshalb sind Kieswerke und Transportbetonwerke regional verteilt, Zementwerke dagegen beliefern größere Gebiete.",
+    "reiterBereiche": "Bereiche Baustoffindustrie"
   },
   "daten": {
     "BpBaustoffindustrie.schritte": [

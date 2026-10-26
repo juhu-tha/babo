@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import inhalt from '@/content/bpinnovationen/BpInnovationen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 interface InnovationPreset {
   id: string;
@@ -91,62 +92,20 @@ export default function BpInnovationen() {
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
-          <button aria-pressed={activeTab === 'ueberblick'}
-            onClick={() => setActiveTab('ueberblick')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'ueberblick'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <Compass size={16} /><MdText text={inhalt.texte.aInnovationTransformation} /></button>
-          <button aria-pressed={activeTab === 'trl'}
-            onClick={() => setActiveTab('trl')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'trl'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <BarChart3 size={16} /><MdText text={inhalt.texte.bTrlSkala1} /></button>
-          <button aria-pressed={activeTab === 'forschung'}
-            onClick={() => setActiveTab('forschung')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'forschung'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <FlaskConical size={16} /><MdText text={inhalt.texte.cFELandschaft} /></button>
-          <button aria-pressed={activeTab === 'werkstoffe'}
-            onClick={() => setActiveTab('werkstoffe')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'werkstoffe'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <Layers size={16} /><MdText text={inhalt.texte.dZukunftswerkstoffeImPortrait} /></button>
-          <button aria-pressed={activeTab === 'zulassung'}
-            onClick={() => setActiveTab('zulassung')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'zulassung'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <FileCheck size={16} /><MdText text={inhalt.texte.eZulassungswegeDibtEta} /></button>
-          <button aria-pressed={activeTab === 'rechner'}
-            onClick={() => setActiveTab('rechner')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'rechner'
-                ? 'bg-shiraz text-white border-shiraz shadow-md'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <Target size={16} /><MdText text={inhalt.texte.fInteraktiverTrlRechner} /></button>
-        </div>
+        <ModuleTabs
+          label={inhalt.werte.reiterBereiche}
+          tabs={[
+            { id: 'ueberblick' as const, label: inhalt.texte.aInnovationTransformation, icon: Compass },
+            { id: 'trl' as const, label: inhalt.texte.bTrlSkala1, icon: BarChart3 },
+            { id: 'forschung' as const, label: inhalt.texte.cFELandschaft, icon: FlaskConical },
+            { id: 'werkstoffe' as const, label: inhalt.texte.dZukunftswerkstoffeImPortrait, icon: Layers },
+            { id: 'zulassung' as const, label: inhalt.texte.eZulassungswegeDibtEta, icon: FileCheck },
+            { id: 'rechner' as const, label: inhalt.texte.fInteraktiverTrlRechner, icon: Target },
+          ]}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:my-6"
+        >
 
         {/* ---------------- TAB 1: UEBERBLICK ---------------- */}
         {activeTab === 'ueberblick' && (
@@ -709,6 +668,7 @@ export default function BpInnovationen() {
             </div>
           </div>
         )}
+        </ModuleTabs>
 
       </div>
 

@@ -45,7 +45,8 @@
     "anwendungsbeispielUWEines": "Anwendungsbeispiel: U_w eines Fensters",
     "dinEnIso10077": "DIN EN ISO 10077-1 (Lehrbeispiel)",
     "uW087": "U_w = 0,87 W/(m²K): deutlich besser als 1,30, aber knapp über Passivhaus-Niveau (0,80) – Rahmen und Glasrand machen rund die Hälfte der Verluste aus.",
-    "vorgehängteHinterlüfteteFassade": "Vorgehängte hinterlüftete Fassade"
+    "vorgehängteHinterlüfteteFassade": "Vorgehängte hinterlüftete Fassade",
+    "reiterBereiche": "Bereiche Dach und Fassade"
   },
   "daten": {
     "BpDachFassade.schritte": [

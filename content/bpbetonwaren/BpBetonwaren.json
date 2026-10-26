@@ -66,7 +66,8 @@
     "anwendungsbeispielSpaltzugfestigkeitEine": "Anwendungsbeispiel: Spaltzugfestigkeit eines Pflastersteins",
     "dinEn1338Anhang": "DIN EN 1338, Anhang F (k = Dickenfaktor, für t = 80 mm: k = 1,0)",
     "derSteinVerfehltDen": "Der Stein verfehlt den Einzelwert knapp – die Serie ist mit Mittelwert (≥ 3,6) und allen Einzelwerten zu bewerten.",
-    "pflasterBodenbelag": "Pflaster (Bodenbelag)"
+    "pflasterBodenbelag": "Pflaster (Bodenbelag)",
+    "reiterBereiche": "Bereiche Betonwaren"
   },
   "daten": {
     "BpBetonwaren.studioData": {

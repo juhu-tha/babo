@@ -27,6 +27,7 @@ import TunnelbauTab from './bpverkehrswegebau/TunnelbauTab';
 import BetondeckenTab from './bpverkehrswegebau/BetondeckenTab';
 import inhalt from '@/content/bpverkehrswegebau/BpVerkehrswegebau.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { asphaltHohlraum } from '@/src/calc/verkehrswegebau';
 
 type VerkehrReiter = 'rsto_rechner' | 'vergleich' | 'bindemittel' | 'prueftechnik' | 'bahnbau' | 'tunnelbau' | 'tiefbau' | 'betondecken';
 
@@ -95,15 +96,12 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
   });
 
   const luftPorenErrechnet = useMemo(() => {
-    // Theorie-Maximaldichte (Hohlraumfreie Dichte / Rice-Dichte)
-    // 100 / (Gestein/rhoG + Bitumen/rhoB)
-    const maxDichte = 100 / ((asphaltMischung.gesteinAnteil / asphaltMischung.rhoGestein) + (asphaltMischung.bitumenAnteil / asphaltMischung.rhoBitumen));
-    // Luftporengehalt (V_u) in Vol.-% = (1 - Raumdichte/Maximaldichte) * 100
-    const luftporen = (1 - (asphaltMischung.raumdichteMischung / maxDichte)) * 100;
+    // Rechenkern src/calc/verkehrswegebau.ts: Rohdichte ohne Hohlräume ρ_m = 100/(Σ Mᵢ/ρᵢ), Hohlraumgehalt V = (1 − ρ_A/ρ_m)·100
+    const e = asphaltHohlraum(asphaltMischung);
     return {
-      maxDichte: formatDeZahl(maxDichte, 3),
-      luftporen: luftporen.toFixed(2),
-      isOk: luftporen >= 1.5 && luftporen <= 4.5
+      maxDichte: formatDeZahl(e.maxDichte, 3),
+      luftporen: e.hohlraum.toFixed(2),
+      isOk: e.ok
     };
   }, [asphaltMischung]);
 

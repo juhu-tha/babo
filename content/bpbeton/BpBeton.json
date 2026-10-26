@@ -24,7 +24,8 @@
   "werte": {
     "anwendungsbeispielErreichtEinePrüfserie": "Anwendungsbeispiel: Erreicht eine Prüfserie C30/37?",
     "statistischeDefinitionDerCharakteristisc": "Statistische Definition der charakteristischen Festigkeit (Lehrbeispiel, Zylinderwerte)",
-    "jeGrößerDieStreuung": "Je größer die Streuung s, desto höher muss der Mittelwert liegen – gute Produktionskontrolle spart Zement."
+    "jeGrößerDieStreuung": "Je größer die Streuung s, desto höher muss der Mittelwert liegen – gute Produktionskontrolle spart Zement.",
+    "reiterBereiche": "Bereiche Beton (Bauprodukte)"
   },
   "daten": {
     "BpBeton.schritte": [

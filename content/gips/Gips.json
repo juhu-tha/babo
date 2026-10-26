@@ -43,7 +43,8 @@
   "werte": {
     "anwendungsbeispielWasserbedarfUndPorosit": "Anwendungsbeispiel: Wasserbedarf und Porosität von Stuckgips",
     "stöchiometrieDichtenAlsLehrwerte": "Stöchiometrie; Dichten als Lehrwerte (Halbhydrat 2,63 g/cm³, Dihydrat 2,32 g/cm³)",
-    "rundDieHälfteDes": "Rund die Hälfte des erhärteten Gipses ist Porenraum – das erklärt die geringe Festigkeit bei hohem W/G-Wert und die gute Feuchtepufferung."
+    "rundDieHälfteDes": "Rund die Hälfte des erhärteten Gipses ist Porenraum – das erklärt die geringe Festigkeit bei hohem W/G-Wert und die gute Feuchtepufferung.",
+    "reiterBereiche": "Bereiche Gips"
   },
   "daten": {
     "Gips.schritte": [

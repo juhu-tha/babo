@@ -40,7 +40,8 @@
     "herstellfeuchteWassergehalt": "Herstellfeuchte (Wassergehalt)",
     "anwendungsbeispielTrocknungswasserEinesL": "Anwendungsbeispiel: Trocknungswasser eines Lehmputzes",
     "massenbilanzFeuchtegehalteAlsLehrannahme": "Massenbilanz; Feuchtegehalte als Lehrannahmen (Herstellerangaben maßgebend)",
-    "lehmputzeTrocknenNurPhysikalisch": "Lehmputze trocknen nur physikalisch: Ohne ausreichende Lüftung verzögert sich die Trocknung, und es droht Schimmelbildung auf der feuchten Oberfläche."
+    "lehmputzeTrocknenNurPhysikalisch": "Lehmputze trocknen nur physikalisch: Ohne ausreichende Lüftung verzögert sich die Trocknung, und es droht Schimmelbildung auf der feuchten Oberfläche.",
+    "reiterBereiche": "Bereiche Lehm"
   },
   "daten": {
     "Lehm.schritte": [

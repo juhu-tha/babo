@@ -10,6 +10,7 @@ import { InlineMath } from 'react-katex';
 import { Querverweis } from '@/src/components/ui/Querverweis';
 import inhalt from '@/content/bpdachfassade/BpDachFassade.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 export default function BpDachFassade() {
   const [activeTab, setActiveTab] = useState<'allgemein' | 'praxis' | 'innovation' | 'fenster_rechner'>('allgemein');
@@ -23,47 +24,18 @@ export default function BpDachFassade() {
           <p><MdText text={inhalt.texte.dachUndFassadensystemeSowie} /></p>
         </div>
 
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 dark:border-slate-800 my-6">
-          <button aria-pressed={activeTab === 'allgemein'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'allgemein' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white dark:bg-slate-800 text-text-main dark:text-slate-200 border-home-grau/30 dark:border-slate-700 hover:bg-off-white dark:hover:bg-slate-750 hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('allgemein')}
-          >
-            <BookOpen size={16} /> Basiswissen
-          </button>
-          <button aria-pressed={activeTab === 'fenster_rechner'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'fenster_rechner' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white dark:bg-slate-800 text-text-main dark:text-slate-200 border-home-grau/30 dark:border-slate-700 hover:bg-off-white dark:hover:bg-slate-750 hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('fenster_rechner')}
-          >
-            <Calculator size={16} /><MdText text={inhalt.texte.fensterUWertUw} /></button>
-          <button aria-pressed={activeTab === 'praxis'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'praxis' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white dark:bg-slate-800 text-text-main dark:text-slate-200 border-home-grau/30 dark:border-slate-700 hover:bg-off-white dark:hover:bg-slate-750 hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('praxis')}
-          >
-            <CheckCircle2 size={16} /> Praxisbeispiele
-          </button>
-          <button aria-pressed={activeTab === 'innovation'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'innovation' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white dark:bg-slate-800 text-text-main dark:text-slate-200 border-home-grau/30 dark:border-slate-700 hover:bg-off-white dark:hover:bg-slate-750 hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('innovation')}
-          >
-            <Lightbulb size={16} /> Zukunftstrends
-          </button>
-        </div>
+        <ModuleTabs
+          label={inhalt.werte.reiterBereiche}
+          tabs={[
+            { id: 'allgemein' as const, label: 'Basiswissen', icon: BookOpen },
+            { id: 'fenster_rechner' as const, label: inhalt.texte.fensterUWertUw, icon: Calculator },
+            { id: 'praxis' as const, label: 'Praxisbeispiele', icon: CheckCircle2 },
+            { id: 'innovation' as const, label: 'Zukunftstrends', icon: Lightbulb },
+          ]}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:dark:border-slate-800 [&>[role=tablist]]:my-6"
+        >
 
         {activeTab === 'allgemein' ? (
           <div className="flex flex-col gap-6 animate-in fade-in duration-300 font-sans">
@@ -159,6 +131,7 @@ export default function BpDachFassade() {
         ) : (
           <InnovationTabContent moduleKey="bp_dach_fassade" />
         )}
+        </ModuleTabs>
       </div>
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">

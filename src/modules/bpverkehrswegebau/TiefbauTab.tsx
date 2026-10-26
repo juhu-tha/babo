@@ -5,6 +5,7 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Calculator, Droplets } from 'lucide-react';
 import inhalt from '@/content/bpverkehrswegebau/TiefbauTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { rigole } from '@/src/calc/verkehrswegebau';
 
 export interface TiefbauTabProps {
   setTiefbauArea: React.Dispatch<React.SetStateAction<number>>;
@@ -313,25 +314,19 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
 
             {/* Calculations and visualization */}
             {(() => {
-              const a_red = (tiefbauArea * tiefbauPsi);
-              const q_in = a_red * (tiefbauRain / 10000); // l/s
-              const v_zu_liters = q_in * (tiefbauDuration * 60); // Liters
-              const v_zu_m3 = v_zu_liters / 1000; // m³
-
-              const k_f = 1.0e-5; // m/s (Sandiger Lehm / Feinsand)
-              const a_sohle = Math.max(1.5, v_zu_m3 * 0.35); // m²
-              const q_sicker_l_s = k_f * a_sohle * 1000; // l/s
-              const v_sicker_liters = q_sicker_l_s * (tiefbauDuration * 60);
-              const v_sicker_m3 = v_sicker_liters / 1000;
-
-              const f_S = 1.1; // Sicherheitsbeiwert (DWA-A 138)
+              // Rechenkern src/calc/verkehrswegebau.ts (Rigole, vereinfacht nach DWA-A 138: k_f = 1,0·10⁻⁵ m/s, f_Z = 1,1, Rigole 1,2 m × 0,6 m)
+              const rig = rigole({ flaecheM2: tiefbauArea, psi: tiefbauPsi, regenspende: tiefbauRain, dauerMin: tiefbauDuration, speicherKoeff: tiefbauFss });
+              const a_red = rig.aRed;
+              const q_in = rig.qZu; // l/s
+              const v_zu_m3 = rig.vZu; // m³
+              const a_sohle = rig.aSohle; // m²
+              const q_sicker_l_s = rig.qSicker; // l/s
+              const v_sicker_m3 = rig.vSicker;
               // Bruttovolumen der Rigole (Füllkörper bzw. Kies inkl. Feststoff): V_R = f_S · (V_zu − V_s) / s_R
-              const v_speicher_m3 = Math.max(0.1, f_S * (v_zu_m3 - v_sicker_m3) / tiefbauFss);
-              const v_nutz_m3 = v_speicher_m3 * tiefbauFss; // speicherwirksames Porenvolumen
-              const h_rig = 0.6;
-              const b_rig = 1.2;
-              const l_rig = v_speicher_m3 / (h_rig * b_rig);
-              const num_boxes = Math.ceil(v_nutz_m3 / 0.24);
+              const v_speicher_m3 = rig.vRigole;
+              const v_nutz_m3 = rig.vNutz; // speicherwirksames Porenvolumen
+              const l_rig = rig.laengeM;
+              const num_boxes = rig.boxen;
 
               return (
                 <div className="md:col-span-7 space-y-4">

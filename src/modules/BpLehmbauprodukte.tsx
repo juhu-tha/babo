@@ -17,6 +17,8 @@ import { BlockMath } from 'react-katex';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import inhalt from '@/content/bplehmbauprodukte/BpLehmbauprodukte.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 
 interface LoamStandardInfo {
   id: string;
@@ -92,46 +94,18 @@ export default function BpLehmbauprodukte() {
         </div>
 
         {/* Primary Tabs Navigation */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          <button aria-pressed={activeTab === 'steckbrief'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'steckbrief' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('steckbrief')}
-          >
-            <BookOpen size={16} /> Baustoff-Steckbrief
-          </button>
-          <button aria-pressed={activeTab === 'standards'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'standards' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('standards')}
-          >
-            <Layers size={16} /> DIN-Produktnormen
-          </button>
-          <button aria-pressed={activeTab === 'bemessung'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'bemessung' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('bemessung')}
-          >
-            <Calculator size={16} /><MdText text={inhalt.texte.tragfähigkeitDin18940} /></button>
-          <button aria-pressed={activeTab === 'dauerhaftigkeit'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'dauerhaftigkeit' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('dauerhaftigkeit')}
-          >
-            <Droplets size={16} /><MdText text={inhalt.texte.feuchteschutzKonstruktion} /></button>
-        </div>
+        <ModuleTabs
+          label={inhalt.werte.reiterBereiche}
+          tabs={[
+            { id: 'steckbrief' as const, label: 'Baustoff-Steckbrief', icon: BookOpen },
+            { id: 'standards' as const, label: 'DIN-Produktnormen', icon: Layers },
+            { id: 'bemessung' as const, label: inhalt.texte.tragfähigkeitDin18940, icon: Calculator },
+            { id: 'dauerhaftigkeit' as const, label: inhalt.texte.feuchteschutzKonstruktion, icon: Droplets },
+          ]}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-6"
+        >
 
         {/* Tab 1: Steckbrief */}
         {activeTab === 'steckbrief' && (
@@ -414,6 +388,50 @@ export default function BpLehmbauprodukte() {
                 </div>
               </div>
             </div>
+
+            {/* Rechenweg mit den aktuellen Eingaben (Z12) */}
+            <FormulaDerivationBox
+              live
+              title={inhalt.werte.rwTitel}
+              zielGleichung={`N_{Ed} \\leq N_{Rd} = \\Phi \\cdot t \\cdot f_d = ${formatDeTeX(n_Rd, 1)}\\,\\text{kN/m}`}
+              normQuelle={inhalt.werte.rwNormQuelle}
+              schritte={[
+                {
+                  titel: inhalt.werte.rwKnicklaengeTitel,
+                  erklaerung: inhalt.werte.rwKnicklaenge,
+                  formel: `h_{ef} = \\beta \\cdot h = ${formatDeTeX(effectiveHeightBeiwert, 2)} \\cdot ${formatDeTeX(height, 2)}\\,\\text{m} = ${formatDeTeX(effectiveHeight, 2)}\\,\\text{m}`,
+                  einheit: 'm',
+                },
+                {
+                  titel: inhalt.werte.rwSchlankheitTitel,
+                  erklaerung: inhalt.werte.rwSchlankheit,
+                  formel: `\\lambda = \\frac{h_{ef}}{t} = \\frac{${formatDeTeX(effectiveHeight, 2)}\\,\\text{m}}{${formatDeTeX(wallThicknessM, 3)}\\,\\text{m}} = ${formatDeTeX(slenderness, 1)} ${isSlendernessOk ? '\\leq' : '>'} 21`,
+                },
+                {
+                  titel: inhalt.werte.rwFestigkeitTitel,
+                  erklaerung: inhalt.werte.rwFestigkeit,
+                  formel: `f_d = \\frac{f_k}{\\gamma_M} = \\frac{${formatDeTeX(f_k, 1)}}{2{,}0} = ${formatDeTeX(f_d, 2)}\\,\\text{N/mm}^2 = ${formatDeTeX(f_d * 1000, 0)}\\,\\text{kN/m}^2`,
+                  einheit: 'N/mm²',
+                },
+                {
+                  titel: inhalt.werte.rwAbminderungTitel,
+                  erklaerung: inhalt.werte.rwAbminderung,
+                  formel: `\\Phi = 0{,}85 \\cdot \\left(1 - \\left(\\frac{\\lambda}{24}\\right)^2\\right) = 0{,}85 \\cdot \\left(1 - \\left(\\frac{${formatDeTeX(slenderness, 1)}}{24}\\right)^2\\right) = ${formatDeTeX(phi, 3)}`,
+                },
+                {
+                  titel: inhalt.werte.rwTragfaehigkeitTitel,
+                  erklaerung: inhalt.werte.rwTragfaehigkeit,
+                  formel: `N_{Rd} = \\Phi \\cdot t \\cdot f_d = ${formatDeTeX(phi, 3)} \\cdot ${formatDeTeX(wallThicknessM, 3)}\\,\\text{m} \\cdot ${formatDeTeX(f_d * 1000, 0)}\\,\\text{kN/m}^2 = ${formatDeTeX(n_Rd, 1)}\\,\\text{kN/m}`,
+                  einheit: 'kN/m',
+                },
+                {
+                  titel: inhalt.werte.rwNachweisTitel,
+                  erklaerung: inhalt.werte.rwNachweis,
+                  formel: `N_{Ed} = ${formatDeTeX(designLoad, 0)}\\,\\text{kN/m} ${designLoad <= n_Rd ? '\\leq' : '>'} N_{Rd} = ${formatDeTeX(n_Rd, 1)}\\,\\text{kN/m}`,
+                },
+              ]}
+              ergebnisHinweis={inhalt.werte.rwHinweis}
+            />
           </div>
         )}
 
@@ -454,6 +472,7 @@ export default function BpLehmbauprodukte() {
             </div>
           </div>
         )}
+        </ModuleTabs>
       </div>
 
       <ModulTest moduleId="bp_lehmbauprodukte" />

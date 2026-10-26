@@ -48,7 +48,8 @@
   "werte": {
     "anwendungsbeispielUWertEiner": "Anwendungsbeispiel: U-Wert einer gedämmten Außenwand (WDVS)",
     "dinEnIso6946": "DIN EN ISO 6946 (R_si = 0,13, R_se = 0,04 m²K/W)",
-    "dieDämmschichtLiefertÜber": "Die Dämmschicht liefert über 90 % des Widerstands; Dübel und Anschlüsse (Wärmebrücken) sind gesondert zu berücksichtigen."
+    "dieDämmschichtLiefertÜber": "Die Dämmschicht liefert über 90 % des Widerstands; Dübel und Anschlüsse (Wärmebrücken) sind gesondert zu berücksichtigen.",
+    "reiterBereiche": "Bereiche Dämmstoffe"
   },
   "daten": {
     "mineralInsulation": [

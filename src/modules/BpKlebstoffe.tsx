@@ -7,6 +7,7 @@ import { InnovationPraxisSection, PraxisTabContent, InnovationTabContent } from 
 import { KlebstoffBerater } from '@/src/components/KlebstoffBerater';
 import inhalt from '@/content/bpklebstoffe/BpKlebstoffe.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 interface AdhesiveProduct {
   name: string;
@@ -37,46 +38,18 @@ export default function BpKlebstoffe() {
         </div>
 
         {/* Primary Tabs Navigation */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
-          <button aria-pressed={activeTab === 'allgemein'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'allgemein' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('allgemein')}
-          >
-            <BookOpen size={16} /><MdText text={inhalt.texte.basiswissenProduktkatalog} /></button>
-          <button aria-pressed={activeTab === 'berater'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'berater' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('berater')}
-          >
-            <Calculator size={16} /><MdText text={inhalt.texte.fugenKlebetechnikRechner} /></button>
-          <button aria-pressed={activeTab === 'praxis'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'praxis' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('praxis')}
-          >
-            <CheckCircle2 size={16} /> Praxisbeispiele
-          </button>
-          <button aria-pressed={activeTab === 'innovation'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'innovation' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('innovation')}
-          >
-            <Lightbulb size={16} /> Zukunftstrends
-          </button>
-        </div>
+        <ModuleTabs
+          label={inhalt.werte.reiterBereiche}
+          tabs={[
+            { id: 'allgemein' as const, label: inhalt.texte.basiswissenProduktkatalog, icon: BookOpen },
+            { id: 'berater' as const, label: inhalt.texte.fugenKlebetechnikRechner, icon: Calculator },
+            { id: 'praxis' as const, label: 'Praxisbeispiele', icon: CheckCircle2 },
+            { id: 'innovation' as const, label: 'Zukunftstrends', icon: Lightbulb },
+          ]}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:my-6"
+        >
 
         {activeTab === 'allgemein' ? (
           <div className="flex flex-col gap-6 animate-in fade-in duration-300">
@@ -240,6 +213,7 @@ export default function BpKlebstoffe() {
         ) : (
           <InnovationTabContent moduleKey="bp_klebstoffe" />
         )}
+        </ModuleTabs>
       </div>
 
       <InnovationPraxisSection moduleKey="bp_klebstoffe" />

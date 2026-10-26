@@ -7,6 +7,7 @@ import { useTabContext } from '@/src/contexts/TabContext';
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
 import inhalt from '@/content/bpbeton/BpBeton.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 function ConcreteThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 'dauerhaftigkeit' }) {
   const { setActiveTab } = useTabContext();
@@ -107,38 +108,17 @@ export default function BpBeton() {
         </div>
         </div>
 
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          <button aria-pressed={activeTab === 'allgemein'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'allgemein' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('allgemein')}
-          >
-            <BookOpen size={16} /> Basiswissen
-          </button>
-          <button aria-pressed={activeTab === 'praxis'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'praxis' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('praxis')}
-          >
-            <CheckCircle2 size={16} /> Praxisbeispiele
-          </button>
-          <button aria-pressed={activeTab === 'innovation'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'innovation' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('innovation')}
-          >
-            <Lightbulb size={16} /> Zukunftstrends
-          </button>
-        </div>
+        <ModuleTabs
+          label={inhalt.werte.reiterBereiche}
+          tabs={[
+            { id: 'allgemein' as const, label: 'Basiswissen', icon: BookOpen },
+            { id: 'praxis' as const, label: 'Praxisbeispiele', icon: CheckCircle2 },
+            { id: 'innovation' as const, label: 'Zukunftstrends', icon: Lightbulb },
+          ]}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-6"
+        >
         
         <div className="p-6 pt-0 space-y-6">
           {activeTab === 'allgemein' ? (
@@ -181,6 +161,7 @@ export default function BpBeton() {
             <InnovationTabContent moduleKey="bp_beton" />
           )}
         </div>
+        </ModuleTabs>
       </div>
       
       <ConcreteThematicLinks current="bauprodukt" />

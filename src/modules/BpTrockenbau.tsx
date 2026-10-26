@@ -12,6 +12,7 @@ import {
 import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/InnovationPraxisSection';
 import inhalt from '@/content/bptrockenbau/BpTrockenbau.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 interface ProductSpec {
   id: string;
@@ -84,47 +85,19 @@ export default function BpTrockenbau() {
         </div>
 
         {/* Dynamic sub navigation tabs */}
-        <div className="flex border-b border-home-grau/30 overflow-x-auto mb-6">
-          <button aria-pressed={activeTab === 'allgemein'}
-            className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
-              activeTab === 'allgemein' ? 'border-shiraz text-shiraz' : 'border-transparent text-home-grau hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('allgemein')}
-          >
-            <BookOpen size={16} /> Basiswissen
-          </button>
-          <button aria-pressed={activeTab === 'klassen'}
-            className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
-              activeTab === 'klassen' ? 'border-shiraz text-shiraz' : 'border-transparent text-home-grau hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('klassen')}
-          >
-            <Percent size={16} /><MdText text={inhalt.texte.spachtelklassenAkustik} /></button>
-          <button aria-pressed={activeTab === 'rechner'}
-            className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
-              activeTab === 'rechner' ? 'border-shiraz text-shiraz' : 'border-transparent text-home-grau hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('rechner')}
-          >
-            <Calculator size={16} /> Bedarfsrechner
-          </button>
-          <button aria-pressed={activeTab === 'praxis'}
-            className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
-              activeTab === 'praxis' ? 'border-shiraz text-shiraz' : 'border-transparent text-home-grau hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('praxis')}
-          >
-            <CheckCircle2 size={16} /> Praxisbeispiele
-          </button>
-          <button aria-pressed={activeTab === 'innovation'}
-            className={`px-4 py-3 font-bold text-sm whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
-              activeTab === 'innovation' ? 'border-shiraz text-shiraz' : 'border-transparent text-home-grau hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('innovation')}
-          >
-            <Lightbulb size={16} /> Zukunftstrends
-          </button>
-        </div>
+        <ModuleTabs
+          label={inhalt.werte.reiterBereiche}
+          tabs={[
+            { id: 'allgemein' as const, label: 'Basiswissen', icon: BookOpen },
+            { id: 'klassen' as const, label: inhalt.texte.spachtelklassenAkustik, icon: Percent },
+            { id: 'rechner' as const, label: 'Bedarfsrechner', icon: Calculator },
+            { id: 'praxis' as const, label: 'Praxisbeispiele', icon: CheckCircle2 },
+            { id: 'innovation' as const, label: 'Zukunftstrends', icon: Lightbulb },
+          ]}
+          aktiv={activeTab}
+          onWechsel={setActiveTab}
+          className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-6"
+        >
 
         {/* Tab 1: Allgemeines Basiswissen */}
         {activeTab === 'allgemein' && (
@@ -628,6 +601,7 @@ export default function BpTrockenbau() {
 
         {/* Tab 5: Zukunftstrends */}
         {activeTab === 'innovation' && <InnovationTabContent moduleKey="bp_trockenbau" />}
+        </ModuleTabs>
       </div>
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
