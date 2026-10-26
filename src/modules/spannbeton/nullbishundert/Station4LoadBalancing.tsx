@@ -1,4 +1,5 @@
 import type { Dispatch, SetStateAction } from 'react';
+import { litzenAnzahl } from '@/src/calc/spannbeton';
 import { ArrowRight, ArrowLeft, BookOpen, Activity, Layers, Compass } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
@@ -150,7 +151,7 @@ export function Station4LoadBalancing({ beamLength, setBeamLength, deadLoad, set
           <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
             <span className="text-[10px] text-text-main/60 uppercase font-bold block"><MdText text={inhalt.texte.erforderlicheSpannkraft} /></span>
             <span className="text-lg font-mono font-black text-shiraz">{formatDeWert(requiredP_kN)} kN</span>
-            <span className="text-[10px] text-text-main/50 block font-mono">ca. {formatDeWert(Math.round(requiredP_kN / 150))} Standard-Litzen</span>
+            <span className="text-[10px] text-text-main/50 block font-mono">ca. {formatDeWert(litzenAnzahl(requiredP_kN))} Standard-Litzen</span>
           </div>
           <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
             <span className="text-[10px] text-text-main/60 uppercase font-bold block"><MdText text={inhalt.texte.aufwärtsUmlenkkraftU} /></span>
