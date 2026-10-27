@@ -140,10 +140,10 @@ export default function Formaenderungen() {
                     />
                     <motion.div 
                       className="absolute top-0 flex flex-col items-center"
-                      animate={{ opacity: [0, 1, 1, 0], y: [0, 10, 10, 0] }}
+                      animate={{ y: [0, 10, 10, 0] }}
                       transition={{ duration: 4, repeat: Infinity, times: [0, 0.2, 0.8, 1] }}
                     >
-                      <div className="text-shiraz dark:text-shiraz-200 font-bold bg-white px-1.5 rounded">Kraft F</div>
+                      <div className="text-shiraz font-bold bg-white dark:bg-slate-900 px-1.5 rounded">Kraft F</div>
                       <ArrowRight className="text-shiraz rotate-90" />
                     </motion.div>
                   </div>
@@ -168,10 +168,10 @@ export default function Formaenderungen() {
                     />
                     <motion.div 
                       className="absolute top-0 flex flex-col items-center"
-                      animate={{ opacity: [0, 1, 1, 0], y: [0, 10, 10, 0] }}
+                      animate={{ y: [0, 10, 10, 0] }}
                       transition={{ duration: 4, repeat: Infinity, times: [0, 0.2, 0.8, 1] }}
                     >
-                      <div className="text-shiraz dark:text-shiraz-200 font-bold bg-white px-1.5 rounded">Kraft F</div>
+                      <div className="text-shiraz font-bold bg-white dark:bg-slate-900 px-1.5 rounded">Kraft F</div>
                       <ArrowRight className="text-shiraz rotate-90" />
                     </motion.div>
                   </div>
@@ -196,10 +196,10 @@ export default function Formaenderungen() {
                     />
                     <motion.div 
                       className="absolute top-0 flex flex-col items-center"
-                      animate={{ opacity: [0, 1, 1, 1, 0, 0], y: [0, 10, 10, 10, 0, 0] }}
+                      animate={{ y: [0, 10, 10, 10, 0, 0] }}
                       transition={{ duration: 6, repeat: Infinity, times: [0, 0.1, 0.5, 0.6, 0.7, 1] }}
                     >
-                      <div className="text-shiraz dark:text-shiraz-200 font-bold bg-white px-1.5 rounded">Dauerlast F</div>
+                      <div className="text-shiraz font-bold bg-white dark:bg-slate-900 px-1.5 rounded">Dauerlast F</div>
                       <ArrowRight className="text-shiraz rotate-90" />
                     </motion.div>
                   </div>
@@ -224,10 +224,10 @@ export default function Formaenderungen() {
                     />
                     <motion.div 
                       className="absolute top-0 flex flex-col items-center"
-                      animate={{ opacity: [0, 1, 1, 0, 0], y: [0, 10, 10, 0, 0] }}
+                      animate={{ y: [0, 10, 10, 0, 0] }}
                       transition={{ duration: 6, repeat: Infinity, times: [0, 0.1, 0.6, 0.7, 1] }}
                     >
-                      <div className="text-shiraz dark:text-shiraz-200 font-bold bg-white px-1.5 rounded">Dauerlast F</div>
+                      <div className="text-shiraz font-bold bg-white dark:bg-slate-900 px-1.5 rounded">Dauerlast F</div>
                       <ArrowRight className="text-shiraz rotate-90" />
                     </motion.div>
                   </div>
