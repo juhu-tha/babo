@@ -2,9 +2,9 @@
 
 Stand: 27.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster IV umfasst 300 Fragen aus 48 Modulen. Aufgeführt sind 77 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster IV umfasst 300 Fragen aus 48 Modulen. Aufgeführt sind 78 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 12 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 70 korrigiert, 0 fraglich, 12 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -50,9 +50,9 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 1
 
 ### q_dauer_2 · Typische Bauschäden & Schadensanalyse
 
-- **Frage:** Was kennzeichnet die gefürchtete 'Lochfraßkorrosion' (Pitting) an Bewehrungsstahl durch Chlorideintrag?
-- **Richtige Antwort:** Punktuelle, hochgradig lokalisierte Zerstörung der Passivschicht ohne merkliche Volumenzunahme; extrem schneller Querschnittsverlust des Stahls ohne vorherige Riss- oder Rostwarnsignale am Beton.
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Hinweistext „kritische Chloridgehalte 0,4–0,5 M.-%“ korrigiert – 0,40 M.-% ist die Herstellungsgrenze Cl 0,40 (DIN EN 206/DIN 1045-2), Bewertungswert ≈ 0,5 M.-% bez. auf Zement (Breit et al. 2011, DAfStb-Richtlinie); Frage und Antworten unverändert; Bloom-Stufe, Niveau und Rückmeldungen zu den Distraktoren ergänzt – korrigiert
+- **Frage:** Was kennzeichnet die gefürchtete Lochfraßkorrosion (Pitting) an Bewehrungsstahl durch Chlorideintrag?
+- **Richtige Antwort:** Örtlicher Durchbruch der Passivschicht mit tiefen Löchern, oft ohne Vorwarnung am Beton
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Hinweistext „kritische Chloridgehalte 0,4–0,5 M.-%“ korrigiert – 0,40 M.-% ist die Herstellungsgrenze Cl 0,40 (DIN EN 206/DIN 1045-2), Bewertungswert ≈ 0,5 M.-% bez. auf Zement (Breit et al. 2011, DAfStb-Richtlinie); Frage und Antworten unverändert; Bloom-Stufe, Niveau und Rückmeldungen zu den Distraktoren ergänzt – korrigiert · Zweitprüfung 27.10. (Runde 2): richtige Option gekürzt (Längenverhältnis 2,5 → ≈ 1,0), Distraktor „ausschließlich bei Minustemperaturen im Vakuum“ (Absolutwort, unplausibel) durch Depassivierung infolge Karbonatisierung ersetzt, Rückmeldungen angepasst – korrigiert
 - [ ] ok
 - [ ] ändern: …
 
@@ -478,6 +478,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 1
 - **Richtige Antwort:** Neues Museum Berlin: rund 375 000 geborgene Ziegel werden erneut vermauert.
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### qn_lebensdauer_5 · Lebensdauerbemessung (fib Bulletin 34)
+
+- **Frage:** Im Parkdeck-Beispiel liegt der Chloridgehalt an der Bewehrung im Mittel bei 0,10 M.-%, weit unter C_crit = 0,6 M.-%. Trotzdem ist β = 1,27. Woran liegt das?
+- **Richtige Antwort:** An den Ausläufern von Δx, C_S und Deckung: Ungünstige Kombinationen depassivieren in rund 10 % der Läufe.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10. (Runde 2): Tausendertrennung „20.000“ → „20 000“ in Option 2 und Rückmeldung (Leerzeichen nach Entscheidung 27.10.) – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### qn_lebenszyklus_kosten_2 · Lebenszyklus & Kosten
