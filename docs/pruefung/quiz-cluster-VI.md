@@ -12,56 +12,56 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 16 korrigiert, 0 fraglich, 0
 
 - **Frage:** Aus den Bestandsunterlagen wurde für einen Altbeton f_ck,cyl = 17,1 N/mm² abgeleitet; Bohrkerne liegen nicht vor. Welcher Bemessungswert f_cd ergibt sich nach dem Vorgehen des Moduls (pauschaler Abschlag 3,0 N/mm², α_cc = 0,85, γ_C = 1,5)?
 - **Richtige Antwort:** f_cd = 7,99 N/mm²
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
-- [ ] ok
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- [x] ok
 - [ ] ändern: …
 
 ### qn_rechnung_bestand_5 · Bauen im Bestand
 
 - **Frage:** Ein Tragwerksplaner überlegt, ob sich Kernbohrungen in einer Stahlbetondecke aus den 1960er Jahren lohnen. Welches Argument stützt das Modul?
 - **Richtige Antwort:** Der pauschale Abschlag entfällt; die oft höhere reale Festigkeit wird nutzbar
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
-- [ ] ok
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- [x] ok
 - [ ] ändern: …
 
 ### qn_rechnung_beton_5 · Beton: Mischungsentwurf
 
 - **Frage:** Im Sommer ergibt sich eine Frischbetontemperatur von 27,1 °C. Werden 30 kg des Anmachwassers durch Schuppeneis von 0 °C ersetzt, sinkt sie laut Modell auf 22,1 °C. Worauf beruht der größte Teil dieser Absenkung?
 - **Richtige Antwort:** Auf der Schmelzenthalpie von 334 kJ/kg, die dem Gemisch beim Auftauen entzogen wird
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
-- [ ] ok
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
+- [x] ok
 - [ ] ändern: …
 
 ### qn_rechnung_beton_6 · Beton: Mischungsentwurf
 
 - **Frage:** Eine Decke aus C25/30 mit Zement der Klasse N (s = 0,25) erhärtet 7 Tage bei konstant 12 °C. Wie ist die Ausschaleignung nach dem Vorgehen des Moduls (Reifealter nach Arrhenius, Kriterium β_cc ≥ 0,5) zu bewerten?
 - **Richtige Antwort:** t_T ≈ 4,8 d, β_cc ≈ 0,70: Ausschalen im Regelfall möglich
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
-- [ ] ok
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- [x] ok
 - [ ] ändern: …
 
 ### qn_rechnung_mauerwerk_1 · Mauerwerk: Tragfähigkeit
 
 - **Frage:** Für Kalksandstein-Mauerwerk setzt das Modul f_k = 5,6 N/mm², den Dauerstandsbeiwert ζ = 0,85 und γ_M = 1,5 an. Welcher Bemessungswert f_d ergibt sich?
 - **Richtige Antwort:** f_d = 3,17 N/mm²
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Gutachten 27.10.2026: Rechnung auf f_d = ζ · f_k/γ_M mit ζ = 0,85 umgestellt wie im Modul (src/calc/mauerwerk.ts); Werte und Distraktoren mit dem Rechenkern neu gerechnet, abgesichert in tests/quizRechenfragen.test.ts.
-- [ ] ok
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Gutachten 27.10.2026: Rechnung auf f_d = ζ · f_k/γ_M mit ζ = 0,85 umgestellt wie im Modul (src/calc/mauerwerk.ts); Werte und Distraktoren mit dem Rechenkern neu gerechnet, abgesichert in tests/quizRechenfragen.test.ts. · bereits freigegeben (verified)
+- [x] ok
 - [ ] ändern: …
 
 ### qn_rechnung_mauerwerk_2 · Mauerwerk: Tragfähigkeit
 
 - **Frage:** Eine zweiseitig gehaltene Wand mit h_ef = 2,75 m hat eine Dicke von 17,5 cm. Welche Schlankheit ergibt sich, und ist der Grenzwert des vereinfachten Verfahrens eingehalten?
 - **Richtige Antwort:** h_ef/t = 15,7 ≤ 27, eingehalten
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Gutachten 27.10.2026: Grenzschlankheit 25 → 27 wie im Modul (SCHLANKHEIT_MAX in src/calc/mauerwerk.ts, DIN EN 1996-1-1, 5.5.1.4); abgesichert in tests/quizRechenfragen.test.ts.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Gutachten 27.10.2026: Grenzschlankheit 25 → 27 wie im Modul (SCHLANKHEIT_MAX in src/calc/mauerwerk.ts, DIN EN 1996-1-1, 5.5.1.4); abgesichert in tests/quizRechenfragen.test.ts. Zweitprüfung 27.10.: Rückmeldung zu Option 4 (6,4 = 17,5 cm/2,75 m, Kehrwert mit gemischten Einheiten) korrigiert.
 - [ ] ok
-- [ ] ändern: …
+- [x] ändern: Rückmeldung zu Option 4 (17,5/2,75 = 6,4, gemischte Einheiten), korrigiert
 
 ### qn_rechnung_mauerwerk_4 · Mauerwerk: Tragfähigkeit
 
 - **Frage:** Für die KS-Wand gilt Φ = 0,578, t = 175 mm und f_d = ζ · f_k/γ_M = 3,17 N/mm². Welcher Traglastwiderstand N_Rd je Meter Wandlänge ergibt sich?
 - **Richtige Antwort:** N_Rd ≈ 321 kN/m
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Gutachten 27.10.2026: Rechnung auf f_d = ζ · f_k/γ_M mit ζ = 0,85 umgestellt wie im Modul (src/calc/mauerwerk.ts); Werte und Distraktoren mit dem Rechenkern neu gerechnet, abgesichert in tests/quizRechenfragen.test.ts.
-- [ ] ok
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Gutachten 27.10.2026: Rechnung auf f_d = ζ · f_k/γ_M mit ζ = 0,85 umgestellt wie im Modul (src/calc/mauerwerk.ts); Werte und Distraktoren mit dem Rechenkern neu gerechnet, abgesichert in tests/quizRechenfragen.test.ts. · bereits freigegeben (verified)
+- [x] ok
 - [ ] ändern: …
 
 ### qn_rechnung_mauerwerk_5 · Mauerwerk: Tragfähigkeit
@@ -70,70 +70,70 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 16 korrigiert, 0 fraglich, 0
 - **Richtige Antwort:** Grenze 27 knapp eingehalten, doch mit Φ ≈ 0,10 ist die Wand deutlich überlastet
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Gutachten 27.10.2026: Rechnung auf f_d = ζ · f_k/γ_M mit ζ = 0,85 umgestellt wie im Modul (src/calc/mauerwerk.ts); Werte und Distraktoren mit dem Rechenkern neu gerechnet, abgesichert in tests/quizRechenfragen.test.ts. Grenzschlankheit 25 → 27 wie im Modul; Befund dadurch neu eingeordnet (Schlankheit knapp eingehalten, Tragfähigkeit nicht).
 - [ ] ok
-- [ ] ändern: …
+- [x] ändern: Klärung erforderlich: Nach DIN EN 1996-3/NA gilt das vereinfachte Verfahren für Innenwände mit 11,5 cm ≤ t < 24 cm nur bis zu einer lichten Geschosshöhe von 2,75 m; h_ef = 3,00 m bei t = 11,5 cm liegt außerhalb der Anwendungsgrenze (auch im Modul nicht geprüft). Wandhöhe auf 2,75 m ändern oder Anwendungsgrenze in Frage und Modul aufnehmen? Rechnung selbst nachgerechnet und richtig.
 
 ### qn_rechnung_mauerwerk_6 · Mauerwerk: Tragfähigkeit
 
 - **Frage:** Eine Wand (h_ef = 2,75 m, Φ2 maßgebend) erhält N_Ed = 150 kN/m. Welcher Vergleich der Ausnutzungsgrade nach dem Modul (f_d = ζ · f_k/γ_M; KS: f_k = 5,6; HLz: f_k = 3,2 N/mm²) ist richtig?
 - **Richtige Antwort:** KS 17,5 cm: η ≈ 0,47; HLz 17,5 cm: η ≈ 0,82; HLz 24 cm: η ≈ 0,49
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Gutachten 27.10.2026: Rechnung auf f_d = ζ · f_k/γ_M mit ζ = 0,85 umgestellt wie im Modul (src/calc/mauerwerk.ts); Werte und Distraktoren mit dem Rechenkern neu gerechnet, abgesichert in tests/quizRechenfragen.test.ts.
-- [ ] ok
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Gutachten 27.10.2026: Rechnung auf f_d = ζ · f_k/γ_M mit ζ = 0,85 umgestellt wie im Modul (src/calc/mauerwerk.ts); Werte und Distraktoren mit dem Rechenkern neu gerechnet, abgesichert in tests/quizRechenfragen.test.ts. · bereits freigegeben (verified)
+- [x] ok
 - [ ] ändern: …
 
 ### qn_rechnung_nachhaltigkeit_5 · Nachhaltigkeit & Dauerhaftigkeit
 
 - **Frage:** Für ein massiges Fundament wird CEM III/B statt CEM I gewählt. Welche betontechnologische Konsequenz muss nach dem Modul bei der Ausführung eingeplant werden?
 - **Richtige Antwort:** Deutlich längere Nachbehandlung, da Festigkeit und Dichtigkeit langsamer entstehen
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
-- [ ] ok
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- [x] ok
 - [ ] ändern: …
 
 ### qn_rechnung_stahlbeton_3 · Massivbau: Biegung
 
 - **Frage:** Für M_Ed = 120 kNm, C25/30, b/h = 30/50 cm und d = 45,5 cm ergibt sich μ_Ed = 0,136 und der Hebelarm z = 0,422 m. Welche Biegezugbewehrung ist mit f_yd = 434,8 N/mm² erforderlich?
 - **Richtige Antwort:** A_s,erf = 6,54 cm²
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Nachgerechnet: 0,120/(434,8 · 0,422) = 6,54 cm² (vorher 6,55).
-- [ ] ok
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Nachgerechnet: 0,120/(434,8 · 0,422) = 6,54 cm² (vorher 6,55). · bereits freigegeben (verified)
+- [x] ok
 - [ ] ändern: …
 
 ### qn_rechnung_stahlbeton_4 · Massivbau: Biegung
 
 - **Frage:** Ein Balken b/h = 25/45 cm (C25/30, d = 40,5 cm) soll M_Ed = 300 kNm aufnehmen. Das bezogene Moment beträgt μ_Ed = 0,516. Wie ist das Ergebnis mit μ_lim = 0,296 (ξ_lim = 0,45, NA DE) aus dem Modul zu bewerten?
 - **Richtige Antwort:** Ohne Druckbewehrung unzulässig; Querschnitt vergrößern oder Druckbewehrung einlegen
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
-- [ ] ok
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
+- [x] ok
 - [ ] ändern: …
 
 ### qn_rechnung_u_wert_3 · Bauphysik: U-Wert
 
 - **Frage:** Dieselbe Betonwand (20 cm Beton, 1,5 cm Innenputz) wird nur mit 12 cm EPS (λ = 0,035 W/(mK)) gedämmt. Wie ist das Ergebnis im Vergleich mit dem im Modul angesetzten Höchstwert von 0,24 W/(m²K) zu bewerten?
 - **Richtige Antwort:** U ≈ 0,27 W/(m²K): Anforderung verfehlt, Dämmung auf 14 cm erhöhen
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
-- [ ] ok
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- [x] ok
 - [ ] ändern: …
 
 ### qn_rechnung_u_wert_4 · Bauphysik: U-Wert
 
 - **Frage:** Für die Wand aus 1,5 cm Innenputz (λ = 0,70) und 20 cm Beton (λ = 2,3) soll mit EPS (λ = 0,035 W/(mK)) genau U ≤ 0,24 W/(m²K) erreicht werden (R_si = 0,13; R_se = 0,04 m²K/W). Welche Dämmstoffdicke ist mindestens erforderlich?
 - **Richtige Antwort:** d ≥ 13,6 cm
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
-- [ ] ok
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- [x] ok
 - [ ] ändern: …
 
 ### qn_rechnung_u_wert_5 · Bauphysik: U-Wert
 
 - **Frage:** Im Echtzeitrechner wird bei 14 cm EPS die Betondicke von 20 auf 40 cm verdoppelt. Der U-Wert sinkt dabei nur von 0,234 auf 0,229 W/(m²K). Welche Erklärung trifft zu?
 - **Richtige Antwort:** Beton hat mit λ = 2,3 W/(mK) eine hohe Wärmeleitfähigkeit; 20 cm liefern nur 0,09 m²K/W
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
-- [ ] ok
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- [x] ok
 - [ ] ändern: …
 
 ### qn_rechnung_u_wert_6 · Bauphysik: U-Wert
 
 - **Frage:** Welcher Anteil des Gesamtwiderstands R_T entfällt bei der Standardwand des Moduls (1,5 cm Putz, 20 cm Beton, 14 cm EPS mit λ = 0,035 W/(mK), R_si = 0,13, R_se = 0,04 m²K/W) auf die Dämmschicht?
 - **Richtige Antwort:** rund 93 %
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
-- [ ] ok
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- [x] ok
 - [ ] ändern: …
 
 ## B. Stichprobe unauffälliger Fragen (5)
@@ -145,7 +145,7 @@ Auswahl deterministisch (Sortierung nach FNV-1a-Hash der Frage-ID), damit die St
 - **Frage:** Welcher Bemessungswert der Streckgrenze ergibt sich für einen historischen Betonstahl III (BSt 420/500 RU) mit γ_S = 1,15?
 - **Richtige Antwort:** f_yd = 365,2 N/mm²
 - **Auffälligkeit:** keine – Vorprüfung „ok“
-- [ ] ok
+- [x] ok
 - [ ] ändern: …
 
 ### qn_rechnung_bestand_3 · Bauen im Bestand
@@ -153,7 +153,7 @@ Auswahl deterministisch (Sortierung nach FNV-1a-Hash der Frage-ID), damit die St
 - **Frage:** Welche Zugkapazität F_yd hat ein glatter Rundstahl BSt 220/340 RU mit Ø 16 mm (γ_S = 1,15)?
 - **Richtige Antwort:** F_yd ≈ 38,5 kN
 - **Auffälligkeit:** keine – Vorprüfung „ok“
-- [ ] ok
+- [x] ok
 - [ ] ändern: …
 
 ### qn_rechnung_bestand_4 · Bauen im Bestand
@@ -161,7 +161,7 @@ Auswahl deterministisch (Sortierung nach FNV-1a-Hash der Frage-ID), damit die St
 - **Frage:** Bei einer Verstärkung sollen an vorhandene glatte Rundstähle BSt 220/340 RU neue Stäbe angeschweißt und gerade Stabenden über Verbund verankert werden. Wie ist das nach dem Modul zu beurteilen?
 - **Richtige Antwort:** Unzulässig zum Schweißen; zudem ist der Verbund so gering, dass Haken nötig sind
 - **Auffälligkeit:** keine – Vorprüfung „ok“
-- [ ] ok
+- [x] ok
 - [ ] ändern: …
 
 ### qn_rechnung_bestand_6 · Bauen im Bestand
@@ -169,7 +169,7 @@ Auswahl deterministisch (Sortierung nach FNV-1a-Hash der Frage-ID), damit die St
 - **Frage:** Ein glatter BSt 220 RU Ø 20 mm wird mit einem kaltverformten BSt 500 RK Ø 12 mm verglichen. Welche Aussage trifft nach den Rechenwegen des Moduls zu?
 - **Richtige Antwort:** BSt 220 Ø 20 trägt rund 60 kN, BSt 500 Ø 12 rund 49 kN; glatter Stab schwer verankerbar
 - **Auffälligkeit:** keine – Vorprüfung „ok“
-- [ ] ok
+- [x] ok
 - [ ] ändern: …
 
 ### qn_rechnung_nachhaltigkeit_1 · Nachhaltigkeit & Dauerhaftigkeit
@@ -177,7 +177,7 @@ Auswahl deterministisch (Sortierung nach FNV-1a-Hash der Frage-ID), damit die St
 - **Frage:** Wie tief ist eine bewitterte Betonwand mit dem Karbonatisierungsbeiwert k = 4,0 mm/√a nach 50 Jahren nach dem Quadratwurzel-Zeit-Gesetz karbonatisiert?
 - **Richtige Antwort:** d_k ≈ 28,3 mm
 - **Auffälligkeit:** keine – Vorprüfung „ok“
-- [ ] ok
+- [x] ok
 - [ ] ändern: …
 
 ## C. Lernziel-Stichprobe (5 Module)
@@ -188,13 +188,13 @@ Quelle: `src/data/lernziele.ts`. Zu prüfen: Lernziele operationalisiert („Sie
 
 Niveau B · 35 min · Vorwissen: mauerwerk, bp_mauerwerk, sicherheitskonzept
 
-- (Anwenden) Sie können den Bemessungswert der Mauerwerksdruckfestigkeit aus charakteristischer Festigkeit und Teilsicherheitsbeiwert berechnen.
-- (Anwenden) Sie können die Schlankheit einer zweiseitig gehaltenen Wand ermitteln und gegen den Grenzwert 25 des vereinfachten Verfahrens prüfen.
+- (Anwenden) Sie können den Bemessungswert der Mauerwerksdruckfestigkeit aus charakteristischer Festigkeit, Dauerstandsbeiwert und Teilsicherheitsbeiwert berechnen.
+- (Anwenden) Sie können die Schlankheit einer zweiseitig gehaltenen Wand ermitteln und gegen den Grenzwert 27 des vereinfachten Verfahrens prüfen.
 - (Anwenden) Sie können mit dem Abminderungsfaktor Φ den Traglastwiderstand N_Rd je Meter Wandlänge nach DIN EN 1996-3 berechnen.
 - (Analysieren) Sie können den Einfluss von Wanddicke und Steinart (Kalksandstein, Hochlochziegel) auf den Ausnutzungsgrad vergleichen.
 
 - [ ] ok
-- [ ] ändern: …
+- [x] ändern: Lernziele an das Modul angeglichen – Grenzschlankheit 25 → 27, Dauerstandsbeiwert ζ in Lernziel 1 ergänzt (src/data/lernziele.ts), korrigiert
 
 ### rechnung_schallschutz · Bauakustik: Schallschutz
 
@@ -206,7 +206,7 @@ Niveau B · 35 min · Vorwissen: schallschutz, baustoffkenngroessen
 - (Bewerten) Sie können das Ergebnis mit den Anforderungen nach DIN 4109-1 an Trennwände vergleichen und Verbesserungsmaßnahmen begründen.
 
 - [ ] ok
-- [ ] ändern: …
+- [x] ändern: Klärung erforderlich: Lernziel nennt „DIN 4109 Beiblatt 1“ wie der Modultext und die Modulrechnung (R_w = 32,4·lg m′ − 26); der Rechenkern src/calc/schall.ts verwendet dagegen DIN 4109-32:2016-07 (R_w = 30,9·lg m′ − 22,2). Beiblatt 1 ist durch DIN 4109-32 ersetzt – Modul und Lernziel auf DIN 4109-32 umstellen?
 
 ### rechnung_brandschutz · Brandschutz: Heißbemessung
 
@@ -218,7 +218,7 @@ Niveau B/M · 50 min · Vorwissen: brandschutz, holzbau_bauphysik, holzbau_bemes
 - (Analysieren) Sie können das Brandverhalten von Brettschichtholz, Nadel- und Laubholz anhand ihrer Abbrandraten vergleichen.
 - (Verstehen) Sie können die Abplatzgefahr hochfester Betone im Brandfall und die zugehörige Gegenmaßnahme erläutern.
 
-- [ ] ok
+- [x] ok
 - [ ] ändern: …
 
 ### labor_sicherheit · Laborsicherheit
@@ -230,7 +230,7 @@ Niveau B · 30 min · Vorwissen: –
 - (Anwenden) Sie können für Mischen, Sägen, Prüfen und den Umgang mit Zement, Quarzstaub oder Epoxidharzen die erforderliche Schutzausrüstung auswählen.
 - (Anwenden) Sie können im Notfall die Sofortmaßnahmen von NOT-HALT über Erste Hilfe und Notruf mit den 5 W-Fragen bis zum Eintrag im Verbandbuch ausführen.
 
-- [ ] ok
+- [x] ok
 - [ ] ändern: …
 
 ### rechnung_bestand · Bauen im Bestand
@@ -243,5 +243,5 @@ Niveau B/M · 45 min · Vorwissen: historisch, bauwerksuntersuchung, stahlbeton_
 - (Anwenden) Sie können für historische Betonstähle den Bemessungswert der Streckgrenze und die Zugkapazität eines Einzelstabs berechnen.
 - (Bewerten) Sie können die Schweißeignung und das Verbundverhalten historischer Betonstähle beurteilen und Konsequenzen für die Verankerung ableiten.
 
-- [ ] ok
+- [x] ok
 - [ ] ändern: …
