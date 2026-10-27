@@ -4,7 +4,7 @@ Stand: 27.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `
 
 Cluster V umfasst 132 Fragen aus 22 Modulen. Aufgeführt sind 26 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 26 korrigiert, 0 fraglich, 5 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 26 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -28,7 +28,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 26 korrigiert, 0 fraglich, 5
 
 - **Frage:** Besteht in Deutschland (Stand 10/2026) eine gesetzliche Pflicht zum Gebäuderessourcenpass?
 - **Richtige Antwort:** Nein; nur freiwillige Pässe (z. B. DGNB, Madaster), ein staatlicher ist angekündigt
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · Prüfhinweis: GModG / Gebäuderessourcenpass – Rechtsstand. · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
 - [x] ok
 - [ ] ändern: …
 
@@ -44,7 +44,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 26 korrigiert, 0 fraglich, 5
 
 - **Frage:** Welche zentrale Aufgabe erfüllt der Digitale Produktpass (DPP) im Lebenszyklus von Bauprodukten?
 - **Richtige Antwort:** Er liefert maschinenlesbare Daten zu Material, Rezyklat und Schadstoffen
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Optionen in der Länge angeglichen, Absolutwort „ausschließlich“ entfernt, Rückmeldungen ergänzt korrigiert (Freigabe vom 28.09.2026 damit aufgehoben). · Prüfhinweis: richtige Antwort fast dreimal so lang, Distraktor mit „ausschließlich“ – überarbeiten.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Optionen in der Länge angeglichen, Absolutwort „ausschließlich“ entfernt, Rückmeldungen ergänzt korrigiert (Freigabe vom 28.09.2026 damit aufgehoben).
 - [ ] ok
 - [x] ändern: Optionen in der Länge angeglichen, „ausschließlich“ entfernt, Rückmeldungen ergänzt; bisherige Freigabe aufgehoben, korrigiert
 
@@ -76,7 +76,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 26 korrigiert, 0 fraglich, 5
 
 - **Frage:** Ab wann gelten nach dem Digital Omnibus die Pflichten für Hochrisiko-KI-Systeme nach Anhang III?
 - **Richtige Antwort:** Ab 02.12.2027
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Antwort bestätigt; Fundstelle VO (EU) 2026/1744 (ABl. 24.07.2026, in Kraft 27.07.2026) in der Erklärung ergänzt. · Prüfhinweis: KI-VO-Fristen nach Digital Omnibus – endgültigen Text prüfen. · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Antwort bestätigt; Fundstelle VO (EU) 2026/1744 (ABl. 24.07.2026, in Kraft 27.07.2026) in der Erklärung ergänzt. · bereits freigegeben (verified)
 - [x] ok
 - [ ] ändern: …
 
@@ -116,7 +116,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 26 korrigiert, 0 fraglich, 5
 
 - **Frage:** Wofür wird der E-Schein (erweiterte betontechnologische Kenntnisse) nach DIN 1045-3 benötigt?
 - **Richtige Antwort:** Leitung der ständigen Betonprüfstelle für Beton der ÜK 2
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: ÜK 2 und 3 → ÜK 2 (DIN 1045-3:2023-08 kennt nur noch ÜK 1 und ÜK 2), normRef mit Ausgabe korrigiert. · Prüfhinweis: Überwachungsklassen 1–3 nach DIN 1045-3:2023 mit DIN 1045-1000 durch Betonbauqualitätsklassen (BBQ) ersetzt? Fragen anpassen. · Normenabgleich: DIN 1045-3:2023: DIN Media nennt DIN 1045-3:2023-08 → Ausgabe bestätigt
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: ÜK 2 und 3 → ÜK 2 (DIN 1045-3:2023-08 kennt nur noch ÜK 1 und ÜK 2), normRef mit Ausgabe korrigiert. · Normenabgleich: DIN 1045-3:2023: DIN Media nennt DIN 1045-3:2023-08 → Ausgabe bestätigt
 - [ ] ok
 - [x] ändern: „ÜK 2 und 3“ → „ÜK 2“ (DIN 1045-3:2023), normRef mit Ausgabe, korrigiert
 
@@ -132,7 +132,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 26 korrigiert, 0 fraglich, 5
 
 - **Frage:** Erstherstellung C30/37, drei Würfel: 41, 39, 43 N/mm². Sind die Konformitätskriterien erfüllt?
 - **Richtige Antwort:** Ja: f_cm = 41 ≥ 37 + 4 und f_ci,min = 39 ≥ 37 − 4
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Rückmeldung zu Option 2: f_ck + 8 als Mittelwertbeziehung nach DIN EN 1992-1-1 statt als „Vorhaltemaß“ erklärt korrigiert. · Prüfhinweis: „f_ck + 8 als Vorhaltemaß“ als Distraktor – Lehrmeinung bestätigen.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Rückmeldung zu Option 2: f_ck + 8 als Mittelwertbeziehung nach DIN EN 1992-1-1 statt als „Vorhaltemaß“ erklärt korrigiert.
 - [ ] ok
 - [x] ändern: Rückmeldung zu f_ck + 8 (Mittelwertbeziehung DIN EN 1992-1-1, kein Vorhaltemaß), korrigiert
 

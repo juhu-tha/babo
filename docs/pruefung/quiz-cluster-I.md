@@ -2,9 +2,9 @@
 
 Stand: 27.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 73 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 72 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 65 korrigiert, 0 fraglich, 9 mit offenem Prüfhinweis, 3 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 65 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 3 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -173,14 +173,6 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 65 korrigiert, 0 fraglich, 9
 - **Frage:** Ihr Labor erzielt im Ringversuch z = −2,4. Wie ist das Ergebnis nach DIN ISO 13528 einzustufen?
 - **Richtige Antwort:** Fragwürdig (Warnsignal)
 - **Auffälligkeit:** Prüfhinweis: Ausgabe „DIN ISO 13528:2025-07“ prüfen. · Normenabgleich: DIN ISO 13528:2025-07: DIN Media nennt DIN ISO 13528:2025-07 → Ausgabe bestätigt · bereits freigegeben (verified)
-- [x] ok
-- [ ] ändern: …
-
-### q_prob_4 · Probenahme & Erkundung
-
-- **Frage:** Welcher Kennwert wird nach DIN EN 12504-2 aus den mindestens 9 Einzelschlägen einer Prüffläche gebildet?
-- **Richtige Antwort:** Der Median aller Einzelwerte
-- **Auffälligkeit:** Prüfhinweis: Verwerfungskriterium Rückprallhammer nach DIN EN 12504-2 – „mehr als 20 % der Werte um mehr als 25 % vom Median“ (aktueller Text, auch im Simulator) oder „um mehr als 6 Einheiten“ (ältere Ausgabe)? Gegen die gültige Ausgabe prüfen. · bereits freigegeben (verified)
 - [x] ok
 - [ ] ändern: …
 

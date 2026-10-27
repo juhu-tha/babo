@@ -2,9 +2,9 @@
 
 Stand: 27.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster III umfasst 192 Fragen aus 32 Modulen. Aufgeführt sind 41 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster III umfasst 192 Fragen aus 32 Modulen. Aufgeführt sind 39 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 39 korrigiert, 0 fraglich, 9 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 39 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -28,7 +28,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 39 korrigiert, 0 fraglich, 9
 
 - **Frage:** Der Beton ist auf der Baustelle zu steif. Was ist zulässig?
 - **Richtige Antwort:** Fließmittel unter Herstellerverantwortung, mit Lieferscheinvermerk
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: richtige Option und Erklärung an q_hee_2 und das Modul Herstellung & Einbau angeglichen (Fließmittel nur unter Verantwortung des Herstellers, Vermerk auf dem Lieferschein, DIN 1045-2, 7.5) korrigiert. · Prüfhinweis: Widerspruch zur nachträglichen Fließmittelzugabe – angleichen.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: richtige Option und Erklärung an q_hee_2 und das Modul Herstellung & Einbau angeglichen (Fließmittel nur unter Verantwortung des Herstellers, Vermerk auf dem Lieferschein, DIN 1045-2, 7.5) korrigiert.
 - [ ] ok
 - [x] ändern: an q_hee_2 angeglichen – Fließmittel nur unter Herstellerverantwortung mit Lieferscheinvermerk (DIN 1045-2, 7.5), korrigiert
 
@@ -60,7 +60,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 39 korrigiert, 0 fraglich, 9
 
 - **Frage:** Steifer Beton wird mit einem Fahrzeug ohne Rührwerk angeliefert. Bis wann soll er nach der ersten Wasserzugabe vollständig entladen sein?
 - **Richtige Antwort:** 45 Minuten
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Dopplung mit q_qsi_5 aufgelöst; Frage auf Fahrzeuge ohne Rührwerk (45 min, Modul Herstellung & Einbau, DIN 1045-2, 7.6) umgestellt, Optionen und Rückmeldungen angepasst korrigiert. · Prüfhinweis: praktisch doppelt – eine Frage ersetzen.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Dopplung mit q_qsi_5 aufgelöst; Frage auf Fahrzeuge ohne Rührwerk (45 min, Modul Herstellung & Einbau, DIN 1045-2, 7.6) umgestellt, Optionen und Rückmeldungen angepasst korrigiert.
 - [ ] ok
 - [x] ändern: Dopplung mit q_qsi_5 aufgelöst – Frage auf Fahrzeuge ohne Rührwerk (45 min) umgestellt, korrigiert
 
@@ -68,7 +68,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 39 korrigiert, 0 fraglich, 9
 
 - **Frage:** Der Beton ist bei Ankunft zu steif. Was ist zulässig?
 - **Richtige Antwort:** Ausnahmsweise, unter Verantwortung des Herstellers und mit Lieferscheinvermerk
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · Prüfhinweis: Widerspruch zur nachträglichen Fließmittelzugabe – angleichen. · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
 - [x] ok
 - [ ] ändern: …
 
@@ -76,7 +76,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 39 korrigiert, 0 fraglich, 9
 
 - **Frage:** Mit welchem Verfahren wird die Belegreife von Estrichen in Deutschland üblicherweise geprüft?
 - **Richtige Antwort:** CM-Methode (Calciumcarbid)
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: normRef DIN 18560-1 → TKB-Merkblatt 16 (12/2024) und DIN EN 13892-10 (Entwurf 2024-05), die die CM-Messung regeln, korrigiert. · Prüfhinweis: Normbezug der CM-Messung (DIN 18560-1 oder BEB/TKB-Hinweise).
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: normRef DIN 18560-1 → TKB-Merkblatt 16 (12/2024) und DIN EN 13892-10 (Entwurf 2024-05), die die CM-Messung regeln, korrigiert.
 - [ ] ok
 - [x] ändern: normRef auf TKB-Merkblatt 16 (2024-12) und DIN EN 13892-10 (Entwurf) umgestellt, korrigiert
 
@@ -84,7 +84,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 39 korrigiert, 0 fraglich, 9
 
 - **Frage:** Welcher Wassereinwirkungsklasse ist die Bodenfläche einer bodengleichen Dusche im Wohnungsbau zugeordnet?
 - **Richtige Antwort:** W2-I
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Registry führt DIN 18534-1:2025-10; Klassenbezeichnung W2-I dort nicht separat geprüft. Zweitprüfung 27.10.: Fragetext auf die Bodenfläche der bodengleichen Dusche präzisiert (Wandflächen W1-I), Erklärung ergänzt korrigiert. · Prüfhinweis: W2-I für bodengleiche Dusche gilt für die Bodenfläche – im Fragetext nennen.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Registry führt DIN 18534-1:2025-10; Klassenbezeichnung W2-I dort nicht separat geprüft. Zweitprüfung 27.10.: Fragetext auf die Bodenfläche der bodengleichen Dusche präzisiert (Wandflächen W1-I), Erklärung ergänzt korrigiert.
 - [ ] ok
 - [x] ändern: Fragetext auf die Bodenfläche präzisiert (Wandflächen W1-I), korrigiert
 
@@ -104,29 +104,13 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 39 korrigiert, 0 fraglich, 9
 - [x] ok
 - [ ] ändern: …
 
-### q_qsi_1 · Qualitätssicherung
-
-- **Frage:** Stetige Herstellung C30/37 (Würfel), 15 Ergebnisse, s = 2,2 N/mm². Welcher Mittelwert ist mindestens erforderlich?
-- **Richtige Antwort:** 41,4 N/mm²
-- **Auffälligkeit:** Prüfhinweis: σ ≥ 3,0 N/mm² stammt aus DIN 1045-2. · bereits freigegeben (verified)
-- [x] ok
-- [ ] ändern: …
-
 ### q_qsi_4 · Qualitätssicherung
 
 - **Frage:** Welche Betonbauqualitätsklassen kennt DIN 1045-1000?
 - **Richtige Antwort:** BBQ-N, BBQ-E und BBQ-S
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Option 4, Rückmeldung und Erklärung: DIN 1045-3:2023-08 kennt nur noch ÜK 1 und ÜK 2 (ÜK 3 entfallen; Quelle SCHWENK, Beton-Herstellung nach den aktuellen Normen, 2026) korrigiert. · Prüfhinweis: Überwachungsklassen 1–3 nach DIN 1045-3:2023 mit DIN 1045-1000 durch Betonbauqualitätsklassen (BBQ) ersetzt? Fragen anpassen. · Normenabgleich: DIN 1045-3:2023: DIN Media nennt DIN 1045-3:2023-08 → Ausgabe bestätigt
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Option 4, Rückmeldung und Erklärung: DIN 1045-3:2023-08 kennt nur noch ÜK 1 und ÜK 2 (ÜK 3 entfallen; Quelle SCHWENK, Beton-Herstellung nach den aktuellen Normen, 2026) korrigiert. · Normenabgleich: DIN 1045-3:2023: DIN Media nennt DIN 1045-3:2023-08 → Ausgabe bestätigt
 - [ ] ok
 - [x] ändern: DIN 1045-3:2023 kennt nur noch ÜK 1 und ÜK 2 – Option 4, Rückmeldung und Erklärung angepasst, korrigiert
-
-### q_qsi_5 · Qualitätssicherung
-
-- **Frage:** Bis wann muss ein Fahrmischer ohne besondere Vereinbarung entladen sein?
-- **Richtige Antwort:** 90 min nach der ersten Wasserzugabe
-- **Auffälligkeit:** Prüfhinweis: praktisch doppelt – eine Frage ersetzen. · bereits freigegeben (verified)
-- [x] ok
-- [ ] ändern: …
 
 ### q_sbt_2 · Sichtbeton
 
@@ -140,7 +124,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 39 korrigiert, 0 fraglich, 9
 
 - **Frage:** Welche Aussage zu ultrahochfestem Beton (UHPC) trifft zu?
 - **Richtige Antwort:** Hohe Festigkeit durch w/z < 0,25, Silikastaub und dichte Packung; DAfStb-Richtlinie in Vorbereitung
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · Prüfhinweis: „DAfStb-Richtlinie UHFB in Vorbereitung, Stand Herbst 2024“ – aktuellen Stand prüfen. · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
 - [x] ok
 - [ ] ändern: …
 

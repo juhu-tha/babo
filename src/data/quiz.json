@@ -25,7 +25,7 @@
       "targetModuleTab": "baustoffkenngroessen",
       "targetModuleLabel": "Baustoffkenngrößen"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
+    "reviewer": "freigegeben",
     "reviewedAt": "2026-09-28",
     "verified": true,
     "vorpruefung": {
@@ -61,7 +61,7 @@
       "targetModuleTab": "waermeeigenschaften",
       "targetModuleLabel": "Wärmeeigenschaften"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
+    "reviewer": "freigegeben",
     "reviewedAt": "2026-09-28",
     "verified": true,
     "vorpruefung": {
@@ -97,7 +97,7 @@
       "targetModuleTab": "kalk",
       "targetModuleLabel": "Baukalk"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
+    "reviewer": "freigegeben",
     "reviewedAt": "2026-09-28",
     "verified": true,
     "vorpruefung": {
@@ -133,7 +133,7 @@
       "targetModuleTab": "bindemittel",
       "targetModuleLabel": "Zement"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
+    "reviewer": "freigegeben",
     "reviewedAt": "2026-09-28",
     "verified": true,
     "vorpruefung": {
@@ -168,7 +168,7 @@
       "targetModuleTab": "zfp",
       "targetModuleLabel": "Zerstörungsfreie Prüfung"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
+    "reviewer": "freigegeben",
     "reviewedAt": "2026-09-28",
     "verified": true
   },
@@ -199,7 +199,7 @@
       "targetModuleTab": "bp_glaeser",
       "targetModuleLabel": "Gläser & Fenster"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
+    "reviewer": "freigegeben",
     "reviewedAt": "2026-09-28",
     "verified": true,
     "vorpruefung": {
@@ -234,7 +234,7 @@
       "targetModuleTab": "bp_glaeser",
       "targetModuleLabel": "Gläser & Fenster"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
+    "reviewer": "freigegeben",
     "reviewedAt": "2026-09-28",
     "verified": true,
     "vorpruefung": {
@@ -270,7 +270,7 @@
       "targetModuleTab": "bp_metallisch",
       "targetModuleLabel": "Metallische Werkstoffe"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
+    "reviewer": "freigegeben",
     "reviewedAt": "2026-09-28",
     "verified": true,
     "vorpruefung": {
@@ -306,7 +306,7 @@
       "targetModuleTab": "bp_daemmung",
       "targetModuleLabel": "Dämmstoffe"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
+    "reviewer": "freigegeben",
     "reviewedAt": "2026-09-28",
     "verified": true,
     "vorpruefung": {
@@ -382,7 +382,7 @@
       "targetModuleTab": "bp_verkehr_rsto",
       "targetModuleLabel": "Verkehrswegebau (RStO 12/24)"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
+    "reviewer": "freigegeben",
     "reviewedAt": "2026-09-28",
     "verified": true,
     "vorpruefung": {
@@ -417,7 +417,7 @@
       "targetModuleTab": "beton_info",
       "targetModuleLabel": "Betontechnologie"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
+    "reviewer": "freigegeben",
     "reviewedAt": "2026-09-28",
     "verified": true,
     "vorpruefung": {
@@ -453,7 +453,7 @@
       "targetModuleTab": "beton_info",
       "targetModuleLabel": "Betontechnologie"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
+    "reviewer": "freigegeben",
     "reviewedAt": "2026-09-28",
     "verified": true,
     "vorpruefung": {
@@ -489,7 +489,7 @@
       "targetModuleTab": "stahlbeton_info",
       "targetModuleLabel": "Massivbau"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
+    "reviewer": "freigegeben",
     "reviewedAt": "2026-09-28",
     "verified": true,
     "vorpruefung": {
@@ -525,7 +525,7 @@
       "targetModuleTab": "holzbau_info",
       "targetModuleLabel": "Holzbau"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
+    "reviewer": "freigegeben",
     "reviewedAt": "2026-09-28",
     "verified": true,
     "vorpruefung": {
@@ -560,7 +560,7 @@
       "targetModuleTab": "holzbau_info",
       "targetModuleLabel": "Holzbau"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
+    "reviewer": "freigegeben",
     "reviewedAt": "2026-09-28",
     "verified": true,
     "vorpruefung": {
@@ -596,7 +596,7 @@
       "targetModuleTab": "dauerhaftigkeit",
       "targetModuleLabel": "Dauerhaftigkeit"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
+    "reviewer": "freigegeben",
     "reviewedAt": "2026-09-28",
     "verified": true
   },
@@ -625,7 +625,7 @@
       "targetModuleTab": "schadensbilder",
       "targetModuleLabel": "Typische Bauschäden"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
+    "reviewer": "freigegeben",
     "reviewedAt": "2026-09-28",
     "verified": true
   },
@@ -656,7 +656,7 @@
       "targetModuleTab": "vdi6200",
       "targetModuleLabel": "Zustandsbewertung"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
+    "reviewer": "freigegeben",
     "reviewedAt": "2026-09-28",
     "verified": true
   },
@@ -687,7 +687,7 @@
       "targetModuleTab": "schadstoffe",
       "targetModuleLabel": "Schadstoffe"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
+    "reviewer": "freigegeben",
     "reviewedAt": "2026-09-28",
     "verified": true
   },
@@ -717,7 +717,7 @@
       "targetModuleTab": "oekobilanz_lca",
       "targetModuleLabel": "Ökobilanzierung (LCA)"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
+    "reviewer": "freigegeben",
     "reviewedAt": "2026-09-28",
     "verified": true
   },
@@ -748,7 +748,7 @@
       "targetModuleTab": "oekobilanz_lca",
       "targetModuleLabel": "Ökobilanzierung (LCA)"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
+    "reviewer": "freigegeben",
     "reviewedAt": "2026-09-28",
     "verified": true
   },
@@ -777,7 +777,7 @@
       "targetModuleTab": "kreislauf_dpp",
       "targetModuleLabel": "Kreislaufwirtschaft"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
+    "reviewer": "freigegeben",
     "reviewedAt": "2026-09-28",
     "verified": true
   },
@@ -808,7 +808,7 @@
       "targetModuleTab": "regularien",
       "targetModuleLabel": "Regularien & Baurecht"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
+    "reviewer": "freigegeben",
     "reviewedAt": "2026-09-28",
     "verified": true,
     "vorpruefung": {
@@ -844,7 +844,7 @@
       "targetModuleTab": "bauprodukte_info",
       "targetModuleLabel": "CE-Kennzeichnung"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
+    "reviewer": "freigegeben",
     "reviewedAt": "2026-09-28",
     "verified": true,
     "vorpruefung": {

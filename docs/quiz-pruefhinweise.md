@@ -3,7 +3,7 @@
 Bei der Überarbeitung der Antwortoptionen (AP 3.3, PR #113) wurden Fragetexte und Begründungen nicht verändert. Die folgenden Stellen sind bei der fachlichen Freigabe je Cluster zu entscheiden. Bereits korrigiert: q_dc_2 (Rissbreite XD/XS 0,3 mm) und q_an_2 (Calcit-Faktor 6,8 M.-%) – bitte bestätigen.
 
 ## Cluster I – Grundlagen & Labor
-- [ ] **q_prob_4**: Verwerfungskriterium Rückprallhammer nach DIN EN 12504-2 – „mehr als 20 % der Werte um mehr als 25 % vom Median“ (aktueller Text, auch im Simulator) oder „um mehr als 6 Einheiten“ (ältere Ausgabe)? Gegen die gültige Ausgabe prüfen.
+- [x] **q_prob_4**: Verwerfungskriterium Rückprallhammer nach DIN EN 12504-2 – „mehr als 20 % der Werte um mehr als 25 % vom Median“ (aktueller Text, auch im Simulator) oder „um mehr als 6 Einheiten“ (ältere Ausgabe)? Gegen die gültige Ausgabe prüfen. → Zweitprüfung 27.10.2026: bestätigt (EN 12504-2, öffentliche Wiedergabe).
 - [ ] **q_ea_1, q_ea_2, q_bp_1**: GModG (Verkündung, Paragrafen, Inkrafttreten in Stufen) – Rechtsstand bestätigen; Stammtext q_ea_2 „seit dem 29. Juli 2026“.
 - [ ] **q_mp_4**: Ausgabe „DIN ISO 13528:2025-07“ prüfen.
 - [ ] **q_ec0_2**: γ_G,inf = 1,00 (STR) – bei Lagesicherheit (EQU) gilt 0,90; Fragetext eindeutig machen.
@@ -27,13 +27,13 @@ Bei der Überarbeitung der Antwortoptionen (AP 3.3, PR #113) wurden Fragetexte u
 - [ ] **q_ges_4**: Feinanteil < 0,063 mm (nicht ≤).
 
 ## Cluster III – Entwurf & Bemessung
-- [ ] **q_hee_2 / q_bpx_4**: Widerspruch zur nachträglichen Fließmittelzugabe – angleichen.
-- [ ] **q_hee_1 / q_qsi_5**: praktisch doppelt – eine Frage ersetzen.
-- [ ] **q_qsi_4, q_px_ka_1**: Überwachungsklassen 1–3 nach DIN 1045-3:2023 mit DIN 1045-1000 durch Betonbauqualitätsklassen (BBQ) ersetzt? Fragen anpassen.
-- [ ] **q_sob_2**: „DAfStb-Richtlinie UHFB in Vorbereitung, Stand Herbst 2024“ – aktuellen Stand prüfen.
-- [ ] **q_iax_1**: Normbezug der CM-Messung (DIN 18560-1 oder BEB/TKB-Hinweise).
-- [ ] **q_iax_3**: W2-I für bodengleiche Dusche gilt für die Bodenfläche – im Fragetext nennen.
-- [ ] **q_qsi_1**: σ ≥ 3,0 N/mm² stammt aus DIN 1045-2.
+- [x] **q_hee_2 / q_bpx_4**: Widerspruch zur nachträglichen Fließmittelzugabe – angleichen. → Zweitprüfung 27.10.2026: angeglichen.
+- [x] **q_hee_1 / q_qsi_5**: praktisch doppelt – eine Frage ersetzen. → Zweitprüfung 27.10.2026: q_hee_1 ersetzt (Fahrzeuge ohne Rührwerk).
+- [x] **q_qsi_4, q_px_ka_1**: Überwachungsklassen 1–3 nach DIN 1045-3:2023 mit DIN 1045-1000 durch Betonbauqualitätsklassen (BBQ) ersetzt? Fragen anpassen. → Zweitprüfung 27.10.2026: angepasst: nur ÜK 1/ÜK 2.
+- [x] **q_sob_2**: „DAfStb-Richtlinie UHFB in Vorbereitung, Stand Herbst 2024“ – aktuellen Stand prüfen. → Zweitprüfung 27.10.2026: bestätigt (weiter in Vorbereitung).
+- [x] **q_iax_1**: Normbezug der CM-Messung (DIN 18560-1 oder BEB/TKB-Hinweise). → Zweitprüfung 27.10.2026: normRef TKB-Merkblatt 16.
+- [x] **q_iax_3**: W2-I für bodengleiche Dusche gilt für die Bodenfläche – im Fragetext nennen. → Zweitprüfung 27.10.2026: Fragetext ergänzt.
+- [x] **q_qsi_1**: σ ≥ 3,0 N/mm² stammt aus DIN 1045-2. → Zweitprüfung 27.10.2026: bestätigt.
 
 ## Cluster IV – Bestand & Nachhaltigkeit
 - [ ] **q_dc_2**: korrigiert auf 0,3 mm – bestätigen.
@@ -47,10 +47,10 @@ Bei der Überarbeitung der Antwortoptionen (AP 3.3, PR #113) wurden Fragetexte u
 - [ ] **q_bwu_1**: „nach ca. 100 Jahren“ (Bauteilalter) eindeutig formulieren.
 
 ## Cluster V – Digitales & Infos
-- [ ] **q_dpp_1** (freigegeben): richtige Antwort fast dreimal so lang, Distraktor mit „ausschließlich“ – überarbeiten.
-- [ ] **q_dg_mp_1**: GModG / Gebäuderessourcenpass – Rechtsstand.
-- [ ] **q_ki_re_1**: KI-VO-Fristen nach Digital Omnibus – endgültigen Text prüfen.
-- [ ] **q_px_pr_2**: „f_ck + 8 als Vorhaltemaß“ als Distraktor – Lehrmeinung bestätigen.
+- [x] **q_dpp_1** (freigegeben): richtige Antwort fast dreimal so lang, Distraktor mit „ausschließlich“ – überarbeiten. → Zweitprüfung 27.10.2026: überarbeitet, Freigabe zurückgenommen.
+- [x] **q_dg_mp_1**: GModG / Gebäuderessourcenpass – Rechtsstand. → Zweitprüfung 27.10.2026: bestätigt.
+- [x] **q_ki_re_1**: KI-VO-Fristen nach Digital Omnibus – endgültigen Text prüfen. → Zweitprüfung 27.10.2026: bestätigt (VO (EU) 2026/1744).
+- [x] **q_px_pr_2**: „f_ck + 8 als Vorhaltemaß“ als Distraktor – Lehrmeinung bestätigen. → Zweitprüfung 27.10.2026: Rückmeldung berichtigt.
 
 <!-- normen-check:start -->
 ## Normen- und Rechtsstand (automatischer Normen-Check)
