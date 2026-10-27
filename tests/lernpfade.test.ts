@@ -41,11 +41,26 @@ for (const l of LERNPFADE) {
     }
     if (t.datum !== undefined) pruefe(/^\d{4}-\d{2}-\d{2}$/.test(t.datum), `${l.id} ${k}: Datum ${t.datum} nicht JJJJ-MM-TT`);
     if (l.status === 'entwurf') pruefe(t.datum === undefined, `${l.id} ${k}: Entwurf mit Datum – Daten erst nach Freigabe eintragen`);
+    // Entwurfswoche WS 2026/27: Montag, Woche berührt die Vorlesungszeit 01.10.2026–22.01.2027, nicht ganz in der Weihnachtspause
+    if (t.wocheEntwurf !== undefined) {
+      const w = t.wocheEntwurf;
+      const tag = new Date(`${w}T12:00:00Z`);
+      pruefe(/^\d{4}-\d{2}-\d{2}$/.test(w) && tag.getUTCDay() === 1, `${l.id} ${k}: wocheEntwurf ${w} ist kein Montag im Format JJJJ-MM-TT`);
+      pruefe(w >= '2026-09-28' && w <= '2027-01-18', `${l.id} ${k}: wocheEntwurf ${w} außerhalb der Vorlesungszeit WS 2026/27`);
+      pruefe(w !== '2026-12-28', `${l.id} ${k}: wocheEntwurf ${w} liegt ganz in der vorlesungsfreien Zeit`);
+      pruefe(t.datum === undefined, `${l.id} ${k}: datum und wocheEntwurf zugleich – wocheEntwurf nach Freigabe entfernen`);
+    }
     if (t.uebung) {
       pruefe(KI_UEBUNGEN.some(u => u.id === t.uebung), `${l.id} ${k}: Übung ${t.uebung} fehlt in kiUebungen.ts`);
       pruefe(t.module.includes('ki_uebungen'), `${l.id} ${k}: Übung verlinkt, aber Modul ki_uebungen nicht zugeordnet`);
     }
   }
+}
+
+// 2a. Entwurfswochen je Lernpfad aufsteigend und ohne Doppelung
+for (const l of LERNPFADE) {
+  const wochen = l.termine.map(t => t.wocheEntwurf).filter((w): w is string => w !== undefined);
+  pruefe(wochen.every((w, i) => i === 0 || w > wochen[i - 1]), `${l.id}: Entwurfswochen nicht streng aufsteigend`);
 }
 
 // 3. Vorgaben je Lehrveranstaltung
