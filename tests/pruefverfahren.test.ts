@@ -18,17 +18,22 @@ console.log('--- Test: Prüfverfahren ---');
 // ================================================================ 1. ZfP
 // Rückprall: Referenz = Komponentenrechnung (src/modules/ZfP.tsx vor AP 4.2) mit der seit Runde 5 (Z55) einheitlichen
 // Lehrkurve f_c = 0,0125·R^2,22 (vorher 0,027·R^2,1 im ZfP-Modul, 0,027·R^1,85 im Labor)
+// Entscheidung Prof. Huber 27.10. (bewusst geändert): Richtungskorrektur nach Herstellerformel Original Schmidt Typ N
+// (Screening Eagle/Proceq, Academy-FAQ): R_korr = R + (−a₀ + a₁·R)·sin α, a₀/a₁ = 7,1/0,08 (α ≥ 0), 4,3/0,043 (α < 0),
+// α = +90° nach oben. Vorher pauschal '90' → −3 (als „nach unten“ beschriftet), '-90' → +3 – Vorzeichen physikalisch vertauscht.
 function altRueckprall(rebound: number, angle: PruefWinkel) {
-  let deltaR = 0;
-  if (angle === '90') deltaR = -3;
-  if (angle === '-90') deltaR = 3;
+  const a = Number(angle);
+  const deltaR = a === 0 ? 0 : (a > 0 ? -7.1 + 0.08 * rebound : -4.3 + 0.043 * rebound) * Math.sin(a * Math.PI / 180);
   const rCorr = rebound + deltaR;
   return { rCorr, fc: 0.0125 * Math.pow(Math.max(10, rCorr), 2.22) };
 }
-for (const w of ['0', '90', '-90'] as const) for (let R = 5; R <= 70; R += 0.5) {
+for (const w of ['0', '90', '45', '-45', '-90'] as const) for (let R = 5; R <= 70; R += 0.5) {
   const n = rueckprallZfp(R, w), o = altRueckprall(R, w);
-  pruefe(n.rCorr === o.rCorr && relNahe(n.fc, o.fc), `Rückprall ${R} ${w}`);
+  pruefe(relNahe(n.rCorr, o.rCorr) && relNahe(n.fc, o.fc), `Rückprall ${R} ${w}`);
 }
+// Kontrollwerte der Herstellerformel: R = 40, α = +90°: ΔR = −7,1 + 3,2 = −3,9; α = −90°: ΔR = +4,3 − 1,72 = +2,58
+pruefe(nahe(rueckprallZfp(40, '90').rCorr, 36.1, 1e-12) && nahe(rueckprallZfp(40, '-90').rCorr, 42.58, 1e-12), 'Rückprall R = 40, ±90°');
+pruefe(rueckprallZfp(40, '90').rCorr < 40 && rueckprallZfp(40, '-90').rCorr > 40 && rueckprallZfp(40, '45').rCorr > rueckprallZfp(40, '90').rCorr, 'Vorzeichen: nach oben Abzug, nach unten Zuschlag');
 // Handrechnung Startwert R = 35, horizontal: 0,0125 · 35^2,22 = 0,0125 · 2678,1 = 33,5 N/mm²
 pruefe(nahe(rueckprallZfp(35, '0').fc, 0.0125 * Math.pow(35, 2.22), 1e-12) && nahe(rueckprallZfp(35, '0').fc, 33.48, 0.05), `R = 35 → ${rueckprallZfp(35, '0').fc}`);
 pruefe(rueckprallZfp(35, '0').hinweise.some(h => h.feld === 'fc' && h.text.includes('Kalibrierkerne')), 'Rückprall: Hinweis „ohne Kalibrierung nur Schätzung“ (DIN EN 13791)');
@@ -39,7 +44,7 @@ pruefe(!rueckprallZfp(NaN, '0').gueltig, 'NaN → Fehler');
 // Kurven wie bisher (R = 20 … 60, Schritt 2)
 const kv = rueckprallKurven();
 pruefe(kv.labels.length === 21 && kv.labels[0] === 20 && kv.labels[20] === 60, 'Kurven-Stützstellen');
-pruefe(kv.labels.every((r, i) => relNahe(kv.horizontal[i], 0.0125 * Math.pow(r, 2.22)) && relNahe(kv.unten[i], 0.0125 * Math.pow(Math.max(10, r - 3), 2.22)) && relNahe(kv.oben[i], 0.0125 * Math.pow(r + 3, 2.22))), 'Kurven = Komponentenrechnung mit einheitlicher Lehrkurve');
+pruefe(kv.labels.every((r, i) => relNahe(kv.horizontal[i], 0.0125 * Math.pow(r, 2.22)) && relNahe(kv.unten[i], altRueckprall(r, '-90').fc) && relNahe(kv.oben[i], altRueckprall(r, '90').fc)), 'Kurven mit Herstellerformel und einheitlicher Lehrkurve');
 pruefe(rueckprallFestigkeitLehr(5) === rueckprallFestigkeitLehr(10), 'Lehrkurve unter R = 10 konstant');
 
 // Ultraschall: E_dyn = ρ v² (1+ν)(1−2ν)/(1−ν); ν = 0,2 → Faktor 0,9 (Lehrbuchformel, z. B. DIN EN 12504-4 Anhang / ASTM C597)
@@ -179,7 +184,7 @@ for (const z of ['R', 'N', 'S'] as const) for (const geo of geos) for (const la 
 // ================================================================ 5. Fuzz: 1 000 Zufallseingaben → endliche Ergebnisse oder sauberer Fehler
 let zz = 4242;
 const rnd = () => { zz = (zz * 1103515245 + 12345) % 2147483648; return zz / 2147483648; };
-const winkel: PruefWinkel[] = ['0', '90', '-90'];
+const winkel: PruefWinkel[] = ['0', '90', '45', '-45', '-90'];
 const werkzeuge: Messwerkzeug[] = ['meterstab', 'messschieber', 'laser', 'risslupe', 'nivellier'];
 let gueltige = 0;
 const endlich = (...x: number[]) => x.every(Number.isFinite);
@@ -188,7 +193,7 @@ const pruefFall = (k: string, r: { gueltig: boolean; hinweise: { stufe: string }
   else pruefe(r.hinweise.some(h => h.stufe === 'fehler'), `Fuzz ${k}: ungültig ohne Fehler`);
 };
 for (let k = 0; k < 1000; k++) {
-  const rp = rueckprallZfp(rnd() * 80 - 5, winkel[Math.floor(rnd() * 3)]); pruefFall(`${k} Rückprall`, rp, [rp.fc, rp.rCorr]);
+  const rp = rueckprallZfp(rnd() * 80 - 5, winkel[Math.floor(rnd() * winkel.length)]); pruefFall(`${k} Rückprall`, rp, [rp.fc, rp.rCorr]);
   const us = ultraschallZfp(rnd() * 7 - 0.5); pruefFall(`${k} Ultraschall`, us, [us.eDyn, us.fcEst]);
   const ie = impactEchoZfp(rnd() * 50 - 1, rnd() * 5000); pruefFall(`${k} Impact`, ie, [ie.depth]);
   const gr = georadar(rnd() * 15, rnd() * 6 - 0.5); pruefFall(`${k} Radar`, gr, [gr.vRadar, gr.depth]);

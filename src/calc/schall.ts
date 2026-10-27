@@ -61,11 +61,14 @@ export const korrekturwertK = (mDecke: number, mFlanke: number) => Math.max(0, 0
 /** Sicherheitsbeiwert u_prog in dB */
 export const U_PROG_TRITTSCHALL = 3;
 
-/** Anforderungen zul. L'_n,w – Werte aus öffentlichen Wiedergaben; vor Freigabe am Normtext prüfen (F-Freigabe) */
+/**
+ * Anforderungen zul. L'_n,w. Standard 50 dB (DIN 4109-1:2018-01), 53 dB als historische Option DIN 4109:1989-11 – beide
+ * bestätigt (Entscheidung Prof. Huber 27.10.). Treppenwerte aus öffentlichen Wiedergaben, vor Freigabe am Normtext prüfen (F-Freigabe).
+ */
 export const ANFORDERUNGEN_TRITTSCHALL = [
-  { id: 'wtd_2018', label: 'Wohnungstrenndecke, Mehrfamilienhaus (DIN 4109-1:2018-01)', wert: 50, quelle: 'DIN 4109-1:2018-01, Tab. 2 – vorläufig, F-Freigabe' },
+  { id: 'wtd_2018', label: 'Wohnungstrenndecke, Mehrfamilienhaus (DIN 4109-1:2018-01)', wert: 50, quelle: 'DIN 4109-1:2018-01, Tab. 2 (Standard; bestätigt Prof. Huber 27.10.)' },
   { id: 'treppe_2018', label: 'Treppenlauf/-podest, Mehrfamilienhaus (DIN 4109-1:2018-01)', wert: 53, quelle: 'Schöck, „Trittschallschutz Normen“ (Wiedergabe DIN 4109-1) – vorläufig, F-Freigabe' },
-  { id: 'wtd_1989', label: 'Wohnungstrenndecke nach DIN 4109:1989-11 (Bestand)', wert: 53, quelle: 'DIN 4109:1989-11, Tab. 3 – vorläufig, F-Freigabe' },
+  { id: 'wtd_1989', label: 'Wohnungstrenndecke nach DIN 4109:1989-11 (Bestand)', wert: 53, quelle: 'DIN 4109:1989-11, Tab. 3 (historische Option; bestätigt Prof. Huber 27.10.)' },
   { id: 'treppe_rh', label: 'Treppe, Reihen-/Doppelhaus (DIN 4109-1:2018-01)', wert: 46, quelle: 'Schöck, „Trittschallschutz Normen“ (Wiedergabe DIN 4109-1) – vorläufig, F-Freigabe' },
 ] as const;
 
