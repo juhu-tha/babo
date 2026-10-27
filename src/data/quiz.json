@@ -1357,12 +1357,14 @@
       "targetModuleTab": "materialkennwerte",
       "targetModuleLabel": "Kennwerte"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_kenn_4",
@@ -1563,11 +1565,13 @@
       "targetModuleTab": "sicherheitskonzept",
       "targetModuleLabel": "Eurocode"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_ec0_3",
@@ -1842,12 +1846,14 @@
       "targetModuleTab": "baustoffkunde",
       "targetModuleLabel": "Baustoffkunde"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bch_1",
@@ -1964,12 +1970,14 @@
       "targetModuleTab": "bauchemie",
       "targetModuleLabel": "Bauchemie"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bch_4",
@@ -2004,12 +2012,14 @@
       "targetModuleTab": "bauchemie",
       "targetModuleLabel": "Bauchemie"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_recht_2",
@@ -2085,11 +2095,13 @@
       "targetModuleTab": "regularien",
       "targetModuleLabel": "Regulatives"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_recht_4",
@@ -2125,12 +2137,14 @@
       "targetModuleTab": "regularien",
       "targetModuleLabel": "Regulatives"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen; normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_recht_5",
@@ -2167,12 +2181,14 @@
       "targetModuleLabel": "Regulatives"
     },
     "quelle": "Grundgesetz Art. 70, 74 Abs. 1 Nr. 18; BVerfGE 3, 407 (Baurechtsgutachten 1954)",
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_recht_6",
@@ -2490,11 +2506,13 @@
       "targetModuleTab": "probenahme",
       "targetModuleLabel": "Probenahme & Erkundung"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_prob_5",
@@ -2691,11 +2709,13 @@
       "targetModuleTab": "messen_pruefen",
       "targetModuleLabel": "Messen & Prüfen"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_mp_5",
@@ -2771,12 +2791,14 @@
       "targetModuleTab": "analytik",
       "targetModuleLabel": "Analytik & Diagnostik"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_an_2",
@@ -2812,11 +2834,13 @@
       "targetModuleTab": "analytik",
       "targetModuleLabel": "Analytik & Diagnostik"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_an_3",
@@ -2933,12 +2957,14 @@
       "targetModuleTab": "analytik",
       "targetModuleLabel": "Analytik & Diagnostik"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_an_6",
@@ -3216,12 +3242,14 @@
       "targetModuleTab": "labor",
       "targetModuleLabel": "Virtuelle Versuche"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_lab_2",
@@ -3298,12 +3326,14 @@
       "targetModuleTab": "labor",
       "targetModuleLabel": "Virtuelle Versuche"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_lab_4",
@@ -3339,12 +3369,14 @@
       "targetModuleTab": "labor",
       "targetModuleLabel": "Virtuelle Versuche"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_lab_5",
@@ -3420,12 +3452,14 @@
       "targetModuleTab": "statistik",
       "targetModuleLabel": "Statistik"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_stat_2",
@@ -3822,12 +3856,14 @@
       "targetModuleTab": "festigkeit",
       "targetModuleLabel": "Festigkeitsberechnungen"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bruch_1",
@@ -3904,12 +3940,14 @@
       "targetModuleTab": "bruchmechanik",
       "targetModuleLabel": "Bruchmechanik"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_knick_1",
@@ -3985,12 +4023,14 @@
       "targetModuleTab": "knicken",
       "targetModuleLabel": "Knicken"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bstat_1",
@@ -4146,12 +4186,14 @@
       "targetModuleTab": "bodenmechanik",
       "targetModuleLabel": "Bodenmechanik"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_matm_1",
@@ -4347,12 +4389,14 @@
       "targetModuleTab": "bauphysik",
       "targetModuleLabel": "Bauphysik (Wärme & Akustik)"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bauphysik_6",
@@ -4428,11 +4472,13 @@
       "targetModuleTab": "bauphysik",
       "targetModuleLabel": "Bauphysik (Wärme & Akustik)"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bp_2",
@@ -4508,12 +4554,14 @@
       "targetModuleTab": "waermeeigenschaften",
       "targetModuleLabel": "Thermische Eigenschaften & Dämmstoffe"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_we_3",
@@ -4829,12 +4877,14 @@
       "targetModuleTab": "daemmung_vergleich",
       "targetModuleLabel": "Innendämmung vs. Außendämmung"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_ss_1",
@@ -4950,12 +5000,14 @@
       "targetModuleTab": "brandschutz",
       "targetModuleLabel": "Brandschutz"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bs_2",
@@ -5195,12 +5247,14 @@
       "targetModuleTab": "energieausweis",
       "targetModuleLabel": "Energieausweis"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok",
       "hinweis": "Effizienzklassen A+ bis H gelten im GModG fort (Verbraucherzentrale); Anlagennummer im GModG nicht gesondert geprüft."
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_ea_2",
@@ -5236,12 +5290,14 @@
       "targetModuleTab": "energieausweis",
       "targetModuleLabel": "Energieausweis"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-26",
       "ergebnis": "ok",
       "hinweis": "Verkündung am 28.07.2026 im BGBl. 2026 I Nr. 226 bestätigt (BIngK, IngKH), Umbenennung GEG → GModG (BMWSB). Inhaltsverzeichnis der nichtamtlichen Fassung (gmodg-info.de): §§ 15, 16 und 79–88 mit unveränderten Überschriften, Bestand als §§ 34–39 (§ 35 Nachrüstung, § 36 Änderung), §§ 47–55 und 71–73 weggefallen. Wortlautvergleich mit dem GEG nicht durchgeführt."
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_ndr_1",
@@ -25222,12 +25278,14 @@
       "targetModuleTab": "einheiten",
       "targetModuleLabel": "Einheiten"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_einheiten_2",
@@ -25263,12 +25321,14 @@
       "targetModuleTab": "einheiten",
       "targetModuleLabel": "Einheiten"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_baustoffkenngroessen_1",
@@ -25344,12 +25404,14 @@
       "targetModuleTab": "baustoffkenngroessen",
       "targetModuleLabel": "Baustoffkenngrößen"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen; normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bauchemie_1",
@@ -25425,12 +25487,14 @@
       "targetModuleTab": "bauchemie",
       "targetModuleLabel": "Bauchemie"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen; normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_probenahme_1",
@@ -25466,12 +25530,14 @@
       "targetModuleTab": "probenahme",
       "targetModuleLabel": "Probenahme & Erkundung"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_messen_pruefen_1",
@@ -25547,12 +25613,14 @@
       "targetModuleTab": "mechanische_pruefungen",
       "targetModuleLabel": "Mechanische Prüfungen"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_labor_1",
@@ -25668,12 +25736,14 @@
       "targetModuleTab": "statistik",
       "targetModuleLabel": "Statistik"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_statistik_3",
@@ -25749,12 +25819,14 @@
       "targetModuleTab": "festbeton_statistik",
       "targetModuleLabel": "Festbeton (Statistik)"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_festbeton_statistik_2",
@@ -25809,7 +25881,7 @@
     "options": [
       "Konform, weil der Mittelwert von 42,0 N/mm² über f_ck + 4 = 41 N/mm² liegt",
       "Nicht konform, weil 42,0 N/mm² unter f_ck + 1,48 · σ = 43,7 N/mm² liegt",
-      "Nicht konform, weil 34,5 N/mm² unter f_ck − 1,48 · σ = 30,3 N/mm² liegt",
+      "Nicht konform, weil der Einzelwert 34,5 N/mm² unter f_ck = 37 N/mm² liegt",
       "Konform, weil kein Einzelwert unter dem Grenzwert f_ck − 4 = 33 N/mm² liegt"
     ],
     "correctIdx": 1,
@@ -25819,7 +25891,7 @@
     "distraktorFeedback": [
       "f_ck + 4 ist das Mittelwertkriterium der Erstherstellung; bei stetiger Herstellung gilt f_ck + 1,48 · σ.",
       "",
-      "Das Einzelwertkriterium lautet f_ci ≥ f_ck − 4 = 33 N/mm²; es ist mit 34,5 N/mm² erfüllt.",
+      "Einzelwerte dürfen f_ck unterschreiten; das Einzelwertkriterium lautet f_ci ≥ f_ck − 4 = 33 N/mm² und ist mit 34,5 N/mm² erfüllt.",
       "Das Einzelwertkriterium ist erfüllt, aber das Mittelwertkriterium f_ck + 1,48 · σ = 43,7 N/mm² wird verfehlt."
     ],
     "gapAnalysis": {
@@ -25834,7 +25906,7 @@
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "Distraktoren angeglichen"
+      "hinweis": "Distraktoren angeglichen; Zweitprüfung 27.10.: Distraktor 3 widersprach sich selbst (34,5 „unter“ 30,3); durch plausiblen Fehlschluss (Einzelwert < f_ck) ersetzt, Rückmeldung angepasst – korrigiert"
     }
   },
   {
@@ -25911,12 +25983,14 @@
       "targetModuleTab": "mechanische_kenngroessen",
       "targetModuleLabel": "Mechan. Kenngrößen"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_mechanische_kenngroessen_2",
@@ -25981,7 +26055,7 @@
     "distraktorFeedback": [
       "Hier wurde E_cm/φ gerechnet; das liefert nur den Kriechanteil 0,75 ‰ ohne die elastische Anfangsstauchung.",
       "",
-      "Hier wurde E_cm mit (1 + φ) multipliziert; Kriechen macht den Beton nachgiebiger, nicht steifer.",
+      "Hier wurde E_cm mit φ multipliziert (30 000 · 2,5); Kriechen macht den Beton nachgiebiger, nicht steifer.",
       "Das ist nur die elastische Sofortstauchung; die Kriechverformung unter Dauerlast fehlt."
     ],
     "gapAnalysis": {
@@ -25996,7 +26070,7 @@
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
+      "hinweis": "normRef ergänzt; Zweitprüfung 27.10.: Rückmeldung zu Distraktor 3 (75 000 MPa folgt aus E_cm · φ, nicht · (1 + φ)) korrigiert"
     }
   },
   {
@@ -26193,12 +26267,14 @@
       "targetModuleTab": "materialmodelle",
       "targetModuleLabel": "Materialmodelle"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_materialmodelle_2",
@@ -26474,12 +26550,14 @@
       "targetModuleTab": "emodul",
       "targetModuleLabel": "E-Modul & Mikromechanik"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktor 4 und Rückmeldung: 54,7 GPa folgt aus 50/30 (f_ck), nicht aus f_cm"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_baustatik_1",
@@ -26675,12 +26753,14 @@
       "targetModuleTab": "knicken",
       "targetModuleLabel": "Knicken (Euler)"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_knicken_2",
@@ -26716,12 +26796,14 @@
       "targetModuleTab": "knicken",
       "targetModuleLabel": "Knicken (Euler)"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_knicken_3",
@@ -26917,12 +26999,14 @@
       "targetModuleTab": "bruchmechanik",
       "targetModuleLabel": "Bruchmechanik"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktor 4: 2520 → 1153 MPa√m (passend zur Rückmeldung „a in mm“)"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bruchmechanik_4",
@@ -26958,12 +27042,14 @@
       "targetModuleTab": "bruchmechanik",
       "targetModuleLabel": "Bruchmechanik"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bodenmechanik_1",
@@ -26999,12 +27085,14 @@
       "targetModuleTab": "bodenmechanik",
       "targetModuleLabel": "Bodenmechanik"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bodenmechanik_2",
@@ -27080,12 +27168,14 @@
       "targetModuleTab": "bodenmechanik",
       "targetModuleLabel": "Bodenmechanik"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bodenmechanik_4",
@@ -27121,12 +27211,14 @@
       "targetModuleTab": "bodenmechanik",
       "targetModuleLabel": "Bodenmechanik"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bauphysik_1",
@@ -27139,7 +27231,7 @@
     "normRef": "DIN EN ISO 6946; GModG Anlage 7",
     "question": "Eine Außenwand besteht aus 20 cm Stahlbeton (λ = 2,0 W/(m·K)) und 12 cm EPS (λ = 0,035 W/(m·K)); R_si = 0,13 und R_se = 0,04 m²K/W. Welcher U-Wert ergibt sich, und wird der Höchstwert 0,24 W/(m²K) eingehalten?",
     "options": [
-      "U ≈ 0,25 W/(m²K); der Höchstwert wird knapp eingehalten",
+      "U ≈ 0,25 W/(m²K); der Höchstwert wird knapp überschritten",
       "U ≈ 0,27 W/(m²K); der Höchstwert wird nicht eingehalten",
       "U ≈ 3,70 W/(m²K); der Höchstwert wird deutlich überschritten",
       "U ≈ 0,28 W/(m²K); der Höchstwert wird nicht eingehalten"
@@ -27149,7 +27241,7 @@
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
-      "Hier wurde für den Beton d · λ statt d/λ gerechnet; zudem läge 0,25 W/(m²K) über 0,24 W/(m²K).",
+      "Hier wurde für den Beton d · λ statt d/λ gerechnet; richtig ist R = d/λ = 0,10 m²K/W und damit U ≈ 0,27 W/(m²K).",
       "",
       "3,70 m²K/W ist der Wärmedurchgangswiderstand R_T; der U-Wert ist sein Kehrwert.",
       "Hier wurden die Wärmeübergangswiderstände R_si und R_se weggelassen; sie gehören zum U-Wert dazu."
@@ -27166,7 +27258,7 @@
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
+      "hinweis": "normRef ergänzt; Zweitprüfung 27.10.: Distraktor 1 widersprach sich selbst (0,25 > 0,24 „eingehalten“); Aussage zum Höchstwert und Rückmeldung korrigiert"
     }
   },
   {
@@ -27203,12 +27295,14 @@
       "targetModuleTab": "bauphysik",
       "targetModuleLabel": "Bauphysik (Wärme & Akustik)"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bauphysik_3",
@@ -27284,12 +27378,14 @@
       "targetModuleTab": "feuchteschutz",
       "targetModuleLabel": "Feuchteschutz & Tauwasser"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_feuchteschutz_1",
@@ -27325,12 +27421,14 @@
       "targetModuleTab": "feuchteschutz",
       "targetModuleLabel": "Feuchteschutz & Tauwasser"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_feuchteschutz_2",
@@ -27366,11 +27464,13 @@
       "targetModuleTab": "feuchteschutz",
       "targetModuleLabel": "Feuchteschutz & Tauwasser"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_feuchteschutz_3",
@@ -27406,12 +27506,14 @@
       "targetModuleTab": "feuchteschutz",
       "targetModuleLabel": "Feuchteschutz & Tauwasser"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_feuchteschutz_4",
@@ -27487,12 +27589,14 @@
       "targetModuleTab": "daemmung_vergleich",
       "targetModuleLabel": "Innendämmung vs. Außendämmung"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_daemmung_vergleich_2",
@@ -27568,12 +27672,14 @@
       "targetModuleTab": "daemmung_vergleich",
       "targetModuleLabel": "Innendämmung vs. Außendämmung"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_daemmung_vergleich_4",
@@ -27789,7 +27895,7 @@
       "q_E ≈ 94 kWh/(m²a) (Klasse C), q_P ≈ 24 kWh/(m²a)",
       "q_E ≈ 24 kWh/(m²a) (Klasse A+), q_P ≈ 94 kWh/(m²a)",
       "q_E ≈ 94 kWh/(m²a) (Klasse C), q_P ≈ 19 kWh/(m²a)",
-      "q_E ≈ 84 kWh/(m²a) (Klasse C), q_P ≈ 20 kWh/(m²a)"
+      "q_E ≈ 74 kWh/(m²a) (Klasse B), q_P ≈ 20 kWh/(m²a)"
     ],
     "correctIdx": 0,
     "explanation": "q_E = 80/0,88 + 3,5 = 90,9 + 3,5 = 94,4 kWh/(m²a) → Klasse C (75 bis 100). q_P = 90,9 · 0,2 + 3,5 · 1,8 = 18,2 + 6,3 = 24,5 kWh/(m²a). Die Effizienzklasse bewertet die Endenergie, nicht die Primärenergie.",
@@ -27799,7 +27905,7 @@
       "",
       "End- und Primärenergie sind vertauscht; die Klasse richtet sich nach der Endenergie von rund 94 kWh/(m²a).",
       "Hier wurde die gesamte Endenergie mit f_P = 0,2 bewertet; der Hilfsstrom geht mit f_P = 1,8 ein.",
-      "Hier wurde mit 80 · 0,88 multipliziert statt durch den Nutzungsgrad geteilt; Erzeugerverluste erhöhen die Endenergie."
+      "Hier wurde mit 80 · 0,88 = 70,4 multipliziert statt durch den Nutzungsgrad geteilt; Erzeugerverluste erhöhen die Endenergie."
     ],
     "gapAnalysis": {
       "topic": "End- und Primärenergie Pelletkessel",
@@ -27813,7 +27919,7 @@
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
+      "hinweis": "normRef ergänzt; Zweitprüfung 27.10.: Distraktor 4 passend zur Rückmeldung (80 · 0,88 + 3,5 = 74 kWh/(m²a), Klasse B statt 84/Klasse C) korrigiert"
     }
   },
   {
@@ -27850,12 +27956,14 @@
       "targetModuleTab": "energieausweis",
       "targetModuleLabel": "Energieausweis"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_energieausweis_3",
@@ -27891,12 +27999,14 @@
       "targetModuleTab": "energieausweis",
       "targetModuleLabel": "Energieausweis"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_energieausweis_4",
@@ -46540,12 +46650,14 @@
       "targetModuleTab": "stahlbau_ec3",
       "targetModuleLabel": "Stahlbau nach Eurocode 3 – Grundlagen"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_keramik_ziegel_1",
@@ -47791,12 +47903,14 @@
       "targetModuleTab": "sommerlicher_waermeschutz",
       "targetModuleLabel": "Sommerlicher Wärmeschutz"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_biokohlebeton_1",
@@ -48388,12 +48502,14 @@
       "targetModuleTab": "labor_potentialmessung",
       "targetModuleLabel": "Handout Potentialmessung an Betonstahl"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_labor_potentialmessung_2",
@@ -48429,12 +48545,14 @@
       "targetModuleTab": "labor_potentialmessung",
       "targetModuleLabel": "Handout Potentialmessung an Betonstahl"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_labor_potentialmessung_3",
@@ -48469,12 +48587,14 @@
       "targetModuleTab": "labor_potentialmessung",
       "targetModuleLabel": "Handout Potentialmessung an Betonstahl"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren 1, 2, 4 neu (alte Werte folgten nicht aus den genannten Fehlern)"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_labor_potentialmessung_4",
@@ -48605,7 +48725,7 @@
     "normRef": "ASTM G1",
     "question": "Eine Stahlprobe (A = 40 cm², ρ = 7,85 g/cm³) verliert in 28 Tagen 0,24 g (blindwertkorrigiert). Welche gleichmäßige Abtragsrate ergibt sich etwa?",
     "options": [
-      "9,9 µm/a",
+      "10 µm/a",
       "7,6 µm/a",
       "780 µm/a",
       "100 µm/a"
@@ -48632,7 +48752,7 @@
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "korrigiert",
-      "hinweis": "Rückmeldung zu Option 1 berichtigt; Distraktor 3: 1000 → 780 µm/a"
+      "hinweis": "Rückmeldung zu Option 1 berichtigt; Distraktor 3: 1000 → 780 µm/a; Zweitprüfung 27.10.: Distraktor 1: 9,9 → 10 µm/a (99,6/10 gerundet) korrigiert"
     }
   },
   {
@@ -48865,11 +48985,13 @@
       "targetModuleTab": "labor_frischbeton",
       "targetModuleLabel": "Handout Frischbetonprüfungen"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_labor_frischbeton_2",
@@ -48905,11 +49027,13 @@
       "targetModuleTab": "labor_frischbeton",
       "targetModuleLabel": "Handout Frischbetonprüfungen"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_labor_frischbeton_3",
@@ -48945,11 +49069,13 @@
       "targetModuleTab": "labor_frischbeton",
       "targetModuleLabel": "Handout Frischbetonprüfungen"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_labor_frischbeton_4",
@@ -48985,12 +49111,14 @@
       "targetModuleTab": "labor_frischbeton",
       "targetModuleLabel": "Handout Frischbetonprüfungen"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_labor_frischbeton_5",
@@ -49066,11 +49194,13 @@
       "targetModuleTab": "labor_frischbeton",
       "targetModuleLabel": "Handout Frischbetonprüfungen"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_labor_druckfestigkeit_1",
@@ -49346,12 +49476,14 @@
       "targetModuleTab": "labor_moertelprismen",
       "targetModuleLabel": "Handout Mörtelprismen (DIN EN 196-1)"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren 2 und 3 neu (3,0 und 12,0 MPa folgten aus keinem genannten Fehler)"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_labor_moertelprismen_2",
@@ -50271,7 +50403,9 @@
       "targetModuleTab": "statistik",
       "targetModuleLabel": "Statistik"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qz24_ttest_2",
@@ -50307,7 +50441,9 @@
       "targetModuleTab": "statistik",
       "targetModuleLabel": "Statistik"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qz24_ttest_3",
@@ -50343,7 +50479,9 @@
       "targetModuleTab": "statistik",
       "targetModuleLabel": "Statistik"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qz24_ttest_4",
@@ -50379,7 +50517,9 @@
       "targetModuleTab": "statistik",
       "targetModuleLabel": "Statistik"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qz24_ttest_5",
@@ -50415,12 +50555,14 @@
       "targetModuleTab": "statistik",
       "targetModuleLabel": "Statistik"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qz24_tritt_1",
@@ -50456,7 +50598,9 @@
       "targetModuleTab": "schallschutz",
       "targetModuleLabel": "Schallschutz"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qz24_tritt_2",
@@ -50492,7 +50636,9 @@
       "targetModuleTab": "schallschutz",
       "targetModuleLabel": "Schallschutz"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qz24_tritt_3",
@@ -50528,7 +50674,9 @@
       "targetModuleTab": "schallschutz",
       "targetModuleLabel": "Schallschutz"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qz24_tritt_4",
@@ -50564,7 +50712,9 @@
       "targetModuleTab": "schallschutz",
       "targetModuleLabel": "Schallschutz"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qz24_tritt_5",
@@ -50600,7 +50750,9 @@
       "targetModuleTab": "schallschutz",
       "targetModuleLabel": "Schallschutz"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qz24_atterberg_1",
@@ -50636,7 +50788,9 @@
       "targetModuleTab": "bodenmechanik",
       "targetModuleLabel": "Bodenmechanik"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qz24_atterberg_2",
@@ -50672,7 +50826,9 @@
       "targetModuleTab": "bodenmechanik",
       "targetModuleLabel": "Bodenmechanik"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qz24_atterberg_3",
@@ -50708,7 +50864,9 @@
       "targetModuleTab": "bodenmechanik",
       "targetModuleLabel": "Bodenmechanik"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qz24_atterberg_4",
@@ -50744,7 +50902,9 @@
       "targetModuleTab": "bodenmechanik",
       "targetModuleLabel": "Bodenmechanik"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qz24_atterberg_5",
@@ -50780,7 +50940,9 @@
       "targetModuleTab": "bodenmechanik",
       "targetModuleLabel": "Bodenmechanik"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_festigkeit_mohr_1",
@@ -50816,7 +50978,9 @@
       "targetModuleTab": "festigkeit",
       "targetModuleLabel": "Festigkeitsberechnungen"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_festigkeit_mohr_2",
@@ -50852,7 +51016,9 @@
       "targetModuleTab": "festigkeit",
       "targetModuleLabel": "Festigkeitsberechnungen"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_festigkeit_mohr_3",
@@ -50888,12 +51054,14 @@
       "targetModuleTab": "festigkeit",
       "targetModuleLabel": "Festigkeitsberechnungen"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_festigkeit_mohr_4",
@@ -50929,7 +51097,9 @@
       "targetModuleTab": "festigkeit",
       "targetModuleLabel": "Festigkeitsberechnungen"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_festigkeit_mohr_5",
@@ -50965,12 +51135,14 @@
       "targetModuleTab": "festigkeit",
       "targetModuleLabel": "Festigkeitsberechnungen"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_formaenderungen_bl_1",
@@ -50996,7 +51168,7 @@
       "Hier wurde L³ statt L⁴ eingesetzt.",
       "Das ist die Formel des Kragarms q·L⁴/(8·EI); der Einfeldträger hat den Beiwert 5/384.",
       "",
-      "Hier liegt ein Einheitenfehler um den Faktor 10 vor (Meter in Millimeter: ×1 000)."
+      "Hier liegt ein Kommafehler um den Faktor 10 vor; 0,00333 m sind 3,33 mm."
     ],
     "gapAnalysis": {
       "topic": "Biegelinie Einfeldträger",
@@ -51006,7 +51178,12 @@
       "targetModuleTab": "formaenderungen",
       "targetModuleLabel": "Formänderungen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-27",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 27.10.: Rückmeldung zu Distraktor 4 (Faktor 10 statt „×1 000“) korrigiert"
+    }
   },
   {
     "id": "qn_formaenderungen_bl_2",
@@ -51019,7 +51196,7 @@
     "normRef": "",
     "question": "Ein Kragarm (L = 2,0 m, E·I = 4 000 kNm²) trägt am freien Ende F = 12 kN. Wie groß sind Durchbiegung und Neigung am Kragarmende?",
     "options": [
-      "w = 0,5 mm; φ = 1,5 mrad",
+      "w = 0,5 mm; φ = 0,75 mrad",
       "w = 8,0 mm; φ = 6,0 mrad",
       "w = 24,0 mm; φ = 12,0 mrad",
       "w = 8,0 mm; φ = 12,0 mrad"
@@ -51042,7 +51219,12 @@
       "targetModuleTab": "formaenderungen",
       "targetModuleLabel": "Formänderungen"
     },
-    "verified": false
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-27",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 27.10.: Distraktor 1: Neigung 1,5 → 0,75 mrad (F·L²/(16·EI) wie in der Rückmeldung) korrigiert"
+    }
   },
   {
     "id": "qn_formaenderungen_bl_3",
@@ -51078,7 +51260,9 @@
       "targetModuleTab": "formaenderungen",
       "targetModuleLabel": "Formänderungen"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_formaenderungen_bl_4",
@@ -51101,7 +51285,7 @@
     "bloom": "Analysieren",
     "niveau": "B",
     "distraktorFeedback": [
-      "Faktor 5 entspricht etwa dem Verhältnis der Festigkeiten, nicht der E-Moduln.",
+      "Faktor 5 hat keine mechanische Grundlage; bei gleichem I gilt w ∝ 1/E, also 210 000/11 000 ≈ 19.",
       "",
       "Gleicher Querschnitt bedeutet gleiches I, aber nicht gleiche Steifigkeit E·I.",
       "Holz hat den kleineren E-Modul und biegt sich deshalb stärker, nicht schwächer durch."
@@ -51118,7 +51302,7 @@
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "Distraktoren angeglichen"
+      "hinweis": "Distraktoren angeglichen; Zweitprüfung 27.10.: Rückmeldung zu Distraktor 1 (Festigkeitsverhältnis Stahl/Holz ist nicht 5) korrigiert"
     }
   },
   {
@@ -51155,12 +51339,14 @@
       "targetModuleTab": "formaenderungen",
       "targetModuleLabel": "Formänderungen"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_stahl_fec_1",
