@@ -85,9 +85,9 @@ export const betonTasks: Task[] = [
     id: 't_betonbauklassen',
     difficulty: 'Mittel',
     title: 'WU-Beton: Feuchtigkeitsklassen & Überwachungsklassen',
-    question: 'Eine weiße Wanne (WU-Keller) für ein hochwertiges Bürogebäude steht im drückenden Grundwasser. Welche Feuchtigkeitsklasse und daraus resultierende Überwachungsklasse wird nach der DAfStb-Richtlinie typischerweise gefordert?',
+    question: 'Eine weiße Wanne (WU-Keller) für ein hochwertiges Bürogebäude steht im drückenden Grundwasser. Welche Feuchtigkeitsklasse wird nach der DAfStb-Richtlinie typischerweise gefordert, und welche Überwachungsklasse nach DIN 1045-3:2023-08 ergibt sich bei einem C30/37?',
     moduleHint: { id: 'qualitaetssicherung', name: 'BBQ - Betonbauklassen' },
-    solution: 'Modul BBQ - Betonbauklassen: Für ein hochwertiges Bürogebäude (Nutzungsklasse A, keine Feuchtenstellen auf der Innenseite zulässig) und drückendes Wasser liegt eine hohe Beanspruchung vor. Dies führt zu Feuchtigkeitsklasse WA. Bei drückendem Wasser und hohen Anforderungen muss in der Regel Beton der Überwachungsklasse 2 (ÜK2) auf der Baustelle verwendet werden.'
+    solution: 'Modul BBQ - Betonbauklassen: Für ein hochwertiges Bürogebäude (Nutzungsklasse A, keine Feuchtenstellen auf der Innenseite zulässig) und drückendes Wasser liegt eine hohe Beanspruchung vor. Dies führt zu Feuchtigkeitsklasse WA. Die Überwachungsklasse folgt nach DIN 1045-3:2023-08 nicht aus der WU-Eigenschaft (WU-Beton allein liegt in ÜK 1), sondern aus Festigkeitsklasse und Exposition: Wird für die weiße Wanne z. B. ein C30/37 festgelegt, ist es ein Beton der ÜK 2 mit ständiger Betonprüfstelle und Fremdüberwachung.'
   },
   {
     id: 't_konformitaet',
