@@ -101,10 +101,10 @@ Nur Ergebnisse berichten, die tatsächlich gelaufen sind; Abweichungen zum letzt
 --------------------------------------------------------------------------------
 4. REGELN
   - Werte nur aus öffentlich zugänglichen Quellen; ist der Normtext (NA DE) zur Bestätigung
-    nötig, Wert als „vorläufig, F-Freigabe“ kennzeichnen und als Prüfpunkt für Prof. Huber
+    nötig, Wert als „vorläufig, F-Freigabe“ kennzeichnen und als offenen Prüfpunkt
     nennen (Normteil, Abschnitt/Tabelle).
   - Ergebnisse neutral formulieren (Lehr- und Vorbemessungswerkzeug).
-  - Ausgabe: Notentabelle, Top-10-Maßnahmen mit Status, offene Zulieferungen Prof. Huber.`;
+  - Ausgabe: Notentabelle, Top-10-Maßnahmen mit Status, offene Zulieferungen.`;
 
 type AdminTab = 'gutachten' | 'zulieferungen' | 'umsetzungsplan' | 'ffreigabe' | 'pruefliste'
   | 'pruefraster' | 'prompt' | 'gestaltung' | 'tech_stack' | 'code_umfang' | 'fragenfreigabe' | 'meine_module' | 'kurzfragebogen';

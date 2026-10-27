@@ -64,7 +64,7 @@ export interface Lernpfad {
   termine: readonly LernpfadTermin[];
 }
 
-export const ENTWURF_HINWEIS = 'Entwurf – Terminplan durch Prof. Huber noch nicht freigegeben';
+export const ENTWURF_HINWEIS = 'Entwurf – Terminplan noch nicht freigegeben';
 
 export const LERNPFADE: readonly Lernpfad[] = [
   {
@@ -119,7 +119,7 @@ export const LERNPFADE: readonly Lernpfad[] = [
     id: 'lv_aryc',
     titel: 'A.RYC – Recycling, Abfälle, Altlasten',
     kurztitel: 'A.RYC',
-    studiengang: 'offen (durch Prof. Huber zu ergänzen)',
+    studiengang: 'offen (noch zu ergänzen)',
     semester: 'offen',
     umfang: '14 Termine ARYC-00 bis ARYC-13',
     status: 'entwurf',
@@ -170,7 +170,7 @@ export const LERNPFADE: readonly Lernpfad[] = [
     id: 'lv_vnhb',
     titel: 'VNHB – Vertiefung Nachhaltiges Bauen',
     kurztitel: 'VNHB',
-    studiengang: 'offen (durch Prof. Huber zu ergänzen)',
+    studiengang: 'offen (noch zu ergänzen)',
     semester: 'offen',
     umfang: '12 Termine (Entwurf; SWS noch offen)',
     status: 'entwurf',

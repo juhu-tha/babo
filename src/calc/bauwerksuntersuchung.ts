@@ -3,7 +3,7 @@
  * (PruefverfahrenSimulatoren.tsx, ProbenahmePlaner.tsx, InterpretationNavigator.tsx). Die Module runden und formatieren
  * selbst; der Kern liefert ungerundete Zahlen.
  *  - Rückprallhammer: Richtungskorrektur nach Herstellerformel Original Schmidt Typ N (rueckprallRichtungskorrektur,
- *    Entscheidung Prof. Huber 27.10.; vorher pauschal −3,0 abwärts / +3,5 aufwärts mit vertauschtem Vorzeichen), Karbonatisierungsabminderung
+ *    Entscheidung 27.10.; vorher pauschal −3,0 abwärts / +3,5 aufwärts mit vertauschtem Vorzeichen), Karbonatisierungsabminderung
  *    k = max(0,75; 1 − 0,015·(d_k − 5)) für d_k > 5 mm, f_c ≈ 0,0125·R^2,22 (Lehr-Näherung, keine Normkurve).
  *    Runde 5 (Z55): einzige Lehrkurve des Repos (RUECKPRALL_LEHRKURVE, auch ZfP und Labor); Zuordnung zur
  *    Bauwerksfestigkeit nur über Kalibrierkerne nach DIN EN 13791:2020, Abschnitt 8.2/8.3 (rueckprallKalibrierung)

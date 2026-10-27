@@ -276,7 +276,7 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
 };
 
 /** Module mit langem Fließtext – brauchen eine Kurzfassung. Ursprünglich „mehr als ca. 4 000 Wörter“ (AP 3.8);
- *  seit Z53 (Entscheidung Prof. Huber, 27.10.2026: „Module über 3 000 Wörtern teilen + Kurzfassung“) prüft
+ *  seit Z53 (Entscheidung, 27.10.2026: „Module über 3 000 Wörtern teilen + Kurzfassung“) prüft
  *  tests/kurzfassung.test.ts jedes Fachmodul über FLIESSTEXT_SCHWELLE (Ansichtsumfang laut tests/hilfen/fliesstext.ts,
  *  auch Reiter-Routen geteilter Komponenten) auf Kurzfassung und Reitergliederung. Die Liste hält zusätzlich Module,
  *  deren Kurzfassung bleiben soll, auch wenn sie die Schwelle später unterschreiten. */

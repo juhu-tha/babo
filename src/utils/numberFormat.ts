@@ -3,7 +3,7 @@
  * - Tausendertrennung einheitlich mit Punkt (z. B. 1.000 oder 210.000) – in Fließtext, Rechnerausgaben,
  *   Diagrammen und KaTeX-Formeln (Projektkonvention, Gutachten 27.10.2026; Begründung in docs/architektur.md,
  *   Abschnitt „Zahlformat“). Hinweis: DIN 5008 und DIN 1333 empfehlen für Zahlen (außer Geldbeträgen) ein
- *   Leerzeichen; eine Umstellung wäre hier zentral über TAUSENDER_TRENNER möglich (Prüfpunkt Prof. Huber).
+ *   Leerzeichen; eine Umstellung wäre hier zentral über TAUSENDER_TRENNER möglich (offener Prüfpunkt).
  * - Dezimal- / Nachkommastellentrennung mit Komma (z. B. 0,40 oder 3,14)
  */
 

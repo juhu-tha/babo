@@ -300,7 +300,7 @@ export const KlausurSimulator: React.FC<KlausurSimulatorProps> = ({ routen, tite
 
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-home-grau/20">
             <div className="text-xs text-text-main/60">
-              Verfügbarer Aufgabenpool: <strong>{alleFragen ? alleFragen.length : '…'} Fragen</strong>{alleFragen && <> (davon {alleFragen.filter(q => q.verified !== false).length} fachlich geprüft; Reviewer: Prof. Dr.-Ing. Jürgen Huber)</>}
+              Verfügbarer Aufgabenpool: <strong>{alleFragen ? alleFragen.length : '…'} Fragen</strong>{alleFragen && <> (davon {alleFragen.filter(q => q.verified !== false).length} fachlich geprüft)</>}
             </div>
             <button
               onClick={startExam}

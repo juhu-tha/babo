@@ -78,7 +78,7 @@ export function dehnungsKennwerte(fck: number): DehnungsKennwerte {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Bemessungswert der Betondruckfestigkeit f_cd (Entscheidung Prof. Huber 27.10.).
+// Bemessungswert der Betondruckfestigkeit f_cd (Entscheidung 27.10.).
 // Einzige Stelle für f_cd in den Rechenkernen (Biegung, Querkraft, Stütze, Durchstanzen, Werkstoffmodelle).
 // ---------------------------------------------------------------------------------------------
 
@@ -89,14 +89,14 @@ export const GAMMA_C = { staendig: 1.5, aussergewoehnlich: 1.3 } as const;
 export const ALPHA_CC = 0.85;
 
 /**
- * Zusätzliche Abminderung für hochfesten Beton ab C55/67 – vorläufig, F-Freigabe (Prof. Huber):
+ * Zusätzliche Abminderung für hochfesten Beton ab C55/67 – vorläufig, F-Freigabe:
  * f_cd = α_cc·f_ck/(γ_c·γ_c') mit γ_c' = 1/(1,1 − f_ck/500) ≥ 1, d. h. Faktor (1,1 − f_ck/500) ≤ 1 auf f_cd.
  * Öffentlich belegt ist der Faktor als γ_c' in DIN 1045-1:2008, 5.3.3(9) (Verweis in 9.1.6(2), Wiedergabe umwelt-online)
  * sowie im NA DE als Beiwert ν₂ = 1,1 − f_ck/500 ≤ 1,0 auf die Festigkeitsabminderung ν von Druckstreben/Fugen
  * (LBV Brandenburg, bautechnik-Tipps 15-03 und 15-06; FRILO-Handbuch „Nachweise am Stahlbetonquerschnitt“, NA-D).
  * Eine globale Abminderung von f_cd im NDP zu 3.1.6(1) war öffentlich nicht eindeutig belegbar → Schalter hier zentral.
  */
-export const FCD_HOCHFEST_AKTIV = false; // Entscheidung Prof. Huber 27.10. (später): aus, bis der Normtext vorliegt (Gefahr der Doppelabminderung mit η)
+export const FCD_HOCHFEST_AKTIV = false; // Entscheidung 27.10. (später): aus, bis der Normtext vorliegt (Gefahr der Doppelabminderung mit η)
 
 /** Faktor (1,1 − f_ck/500) für f_ck ≥ 55 N/mm² (≤ 1,0), sonst 1,0 – zugleich ν₂ nach NA DE */
 export function hochfestFaktor(fck: number): number {
@@ -207,7 +207,7 @@ export function betonAuswahl<K extends string>(klassen: readonly K[]): Record<K,
 }
 
 // ---------------------------------------------------------------------------------------------
-// Stahlkennwerte (Runde 4, Entscheidung Prof. Huber 26.10.: Normwerte vereinheitlichen).
+// Stahlkennwerte (Runde 4, Entscheidung 26.10.: Normwerte vereinheitlichen).
 // Einzige Quelle für Baustahl S235/S355/S460 und Betonstahl B500A/B500B; Module und Rechenkerne
 // verwenden diese Konstanten. tests/kennwerte.test.ts prüft die Werte und sucht abweichende Kopien.
 // ---------------------------------------------------------------------------------------------
@@ -244,7 +244,7 @@ export const BETONSTAHL: Readonly<Record<BetonstahlSorte, { fyk: number; k: numb
 };
 
 // ---------------------------------------------------------------------------------------------
-// Holzkennwerte (Runde 5, Entscheidung Prof. Huber 27.10.: Normwerte vereinheitlichen).
+// Holzkennwerte (Runde 5, Entscheidung 27.10.: Normwerte vereinheitlichen).
 // Einzige Quelle für Vollholz (DIN EN 338:2016-07, Tab. 1/3) und Brettschichtholz (DIN EN 14080:2013-09, Tab. 4/5).
 // Module und Rechenkerne verwenden diese Konstanten; tests/kennwerte.test.ts prüft die Werte.
 // Öffentliche Wiedergaben: studiomadera.it (UNI EN 338:2016, Tab. 15.1, Nadel- und Laubholz),

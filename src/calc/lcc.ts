@@ -1,7 +1,7 @@
 /**
  * Lebenszykluskosten (LCC) mit der Barwertmethode (Umsetzungsplan Phase 4, AP 4.2). Reiner Rechenkern –
  * geprüft in tests/lcc.test.ts. Ursprünglich 1:1 aus src/modules/LCC.tsx übernommen; Runde 4 (Entscheidung
- * Prof. Huber, 26.10.): Preissteigerung ab Jahr 2 und linearer Restwert (siehe unten).
+ * 26.10.): Preissteigerung ab Jahr 2 und linearer Restwert (siehe unten).
  *
  * Barwert einer Zahlung K (Preisstand Basisjahr) im Jahr t ≥ 1 bei Preissteigerung p und Kalkulationszins r:
  *      BW = K · (1 + p)^(t − 1) / (1 + r)^t          (BNB 2.1.1: „Die Preissteigerung erfolgt ab dem 2. Jahr.“)
@@ -13,7 +13,7 @@
  * Methode und Kennwerte im BNB-Steckbrief 2.1.1 (BNB_BK 2017, aktualisiert): Diskontierungszins 1,5 %,
  * Preissteigerung Bau/Dienstleistungen 2 %/a, Energie 5 %/a, Betrachtungszeitraum 50 a, keine Erneuerung im Jahr 50.
  *
- * Restwert (Entscheidung Prof. Huber, 27.10.): Standard ist BNB-konform OHNE Restwert – der BNB-Steckbrief 2.1.1
+ * Restwert (Entscheidung, 27.10.): Standard ist BNB-konform OHNE Restwert – der BNB-Steckbrief 2.1.1
  * enthält keine Restwertregel (keine Erneuerung im 50. Jahr, kein Restwertterm in der Summenformel). Zum Vergleich kann
  * mit restwertLinear = true ein linearer Restwert angesetzt werden: Reicht die Nutzungsdauer des zuletzt eingebauten
  * Bauteils über das Betrachtungsende N hinaus, gilt R = K_Einbau · (Restnutzungsdauer/Nutzungsdauer), im Jahr N

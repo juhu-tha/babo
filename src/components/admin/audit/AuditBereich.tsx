@@ -103,7 +103,7 @@ function GutachtenAnsicht() {
       <section className={karte} aria-labelledby="gutachten-massnahmen">
         <h3 id="gutachten-massnahmen" className={titel}>Top-10-Maßnahmen (nach Wirkung)</h3>
         <p className="text-xs text-text-main/80">
-          {zahl(zaehl('erledigt'))} erledigt · {zahl(zaehl('in_arbeit'))} in Arbeit · {zahl(zaehl('wartet'))} wartet auf Prof. Huber · {zahl(zaehl('offen'))} offen.
+          {zahl(zaehl('erledigt'))} erledigt · {zahl(zaehl('in_arbeit'))} in Arbeit · {zahl(zaehl('wartet'))} wartet auf Zulieferung/Freigabe · {zahl(zaehl('offen'))} offen.
           Status gepflegt in <Pfad p="src/data/audit/gutachten.ts" />.
         </p>
         <TabellenRahmen label="Top-10-Maßnahmen">
@@ -138,9 +138,9 @@ function ZulieferungenAnsicht() {
   const anzahl = (f: ZulieferFilter) => ZULIEFERUNGEN.filter(z => passtFilter(z.status, f)).length;
   return (
     <section className={karte} aria-labelledby="zulieferungen-titel">
-      <h3 id="zulieferungen-titel" className={titel}>Zulieferungen und Entscheidungen Prof. Huber (Stand {datumDe(ZULIEFERUNGEN_STAND)})</h3>
+      <h3 id="zulieferungen-titel" className={titel}>Zulieferungen und Entscheidungen (Stand {datumDe(ZULIEFERUNGEN_STAND)})</h3>
       <p className={info}>
-        „wartet auf mich“ = Zulieferung, Entscheidung oder Durchsicht durch Prof. Huber; „offen“ = noch nicht begonnen, in Arbeit oder
+        „wartet auf mich“ = Zulieferung, Entscheidung oder Durchsicht ausstehend; „offen“ = noch nicht begonnen, in Arbeit oder
         zurückgestellt; „erledigt“ = erledigt oder entschieden. Gepflegt in <Pfad p="src/data/audit/zulieferungen.ts" />.
       </p>
       <fieldset className="flex flex-wrap items-center gap-2">
@@ -192,7 +192,7 @@ function UmsetzungsplanAnsicht() {
       {UMSETZUNGSPLAN.map(p => {
         const s = phasenStand(p);
         const pct = Math.round(s.anteil * 100);
-        const text = `${zahl(s.erledigt)} von ${zahl(s.gesamt)} erledigt (${zahl(pct)} %) · ${zahl(s.wartet)} wartet auf Prof. Huber · ${zahl(s.offen)} offen/in Arbeit`;
+        const text = `${zahl(s.erledigt)} von ${zahl(s.gesamt)} erledigt (${zahl(pct)} %) · ${zahl(s.wartet)} wartet auf Zulieferung/Freigabe · ${zahl(s.offen)} offen/in Arbeit`;
         return (
           <section key={p.nr} className={karte} aria-labelledby={`phase-${String(p.nr)}`}>
             <h3 id={`phase-${String(p.nr)}`} className={titel}>Phase {zahl(p.nr)}: {p.titel}</h3>

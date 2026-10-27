@@ -9,7 +9,7 @@
  *
  * Formeln (Einheiten an den Feldern):
  *  - Rückprallhammer (ZfP): Richtungskorrektur ΔR(R, α) nach Herstellerformel Original Schmidt Typ N aus bauwerksuntersuchung.ts
- *    (Entscheidung Prof. Huber 27.10.; vorher pauschal ∓3 mit vertauschtem Vorzeichen), einheitliche Lehrkurve f_c ≈ 0,0125·R^2,22 aus
+ *    (Entscheidung 27.10.; vorher pauschal ∓3 mit vertauschtem Vorzeichen), einheitliche Lehrkurve f_c ≈ 0,0125·R^2,22 aus
  *    bauwerksuntersuchung.ts (Runde 5, Z55; vorher 0,027·R^2,1); ohne Kalibrierkerne nach DIN EN 13791:2020 nur Schätzung
  *  - Ultraschall: E_dyn = ρ·v²·(1 + ν)(1 − 2ν)/(1 − ν) mit ρ = 2400 kg/m³, ν = 0,2; f_c ≈ 20·(v − 2) (v in km/s, grob)
  *  - Georadar: v = c/√ε_r mit c = 300 mm/ns, Tiefe d = v·t/2

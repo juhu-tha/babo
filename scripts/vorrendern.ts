@@ -1,5 +1,5 @@
 /**
- * Vorrendern der Modulseiten (Z52, Entscheidung Prof. Huber 26.10.2026).
+ * Vorrendern der Modulseiten (Z52, Entscheidung 26.10.2026).
  *
  * Läuft nach `vite build` (scripts/vorrendernPlugin.ts → closeBundle, startet dieses Skript mit tsx; einzeln:
  * `npx tsx scripts/vorrendern.ts`). Ablauf:
