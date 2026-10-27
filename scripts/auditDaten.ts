@@ -3,7 +3,7 @@
  * die Kennzahlen des Admin-Bereichs aus dem Quelltext, statt sie hart zu codieren:
  *   - Prüfpunkte „F-Freigabe“: alle Fundstellen in src/calc, src/data, content (Datei, Zeile, Kontext, Fachgebiet)
  *   - Quiz-Prüflisten je Cluster: gesamt / auffällig / verified aus src/data/quiz.json (+ Kopfzahlen der Prüflisten
- *     docs/pruefung/quiz-cluster-*.md, damit eine veraltete Liste auffällt)
+ *     docs/pruefung/quiz-cluster-*.md, damit eine veraltete Liste auffällt; Listen erzeugt scripts/pruefliste.ts)
  *   - Tool-Umfang: Module, Fachmodule, Prüfvermerke, Rechenkerne, Testdateien, Quizfragen, Zeilen je Bereich
  *   - Sprachen & Tools: Versionen der Kernpakete aus package.json
  *   - Bundle: letzte Messung aus docs/metriken.json und Budget aus scripts/qa/check-bundle.mjs; zusätzlich schreibt
@@ -131,7 +131,7 @@ async function ladeQuellen(wurzel: string): Promise<Quellen> {
 }
 
 // ---------------------------------------------------------------- Quiz-Prüflisten
-interface Frage { id: string; moduleId: string; verified?: boolean; vorpruefung?: { ergebnis?: string } }
+export interface Frage { id: string; moduleId: string; verified?: boolean; vorpruefung?: { ergebnis?: string } }
 
 const FRAGE_ID = /\bq[a-z]*_[A-Za-z0-9_]+/g;
 
@@ -156,13 +156,27 @@ export function prueflistenKopf(text: string): QuizClusterZaehlung['liste'] {
   return g && a ? { gesamt: Number(g[1]), auffaellig: Number(a[1]), stand: s?.[1] ?? '' } : null;
 }
 
+/**
+ * Fragen, die seit den Prüflisten vom 26./27.10.2026 (#186) neu hinzugekommen sind: Z24-Themen aus #190
+ * (qz24_*: t-Test, Trittschall, Atterberg) und #191 (Mohr-Coulomb, Bruchlinien, Eisen-Kohlenstoff).
+ * Neue Fragen werden auffällig, solange sie nicht freigegeben sind (verified ≠ true). Weitere neue Fragenblöcke hier ergänzen.
+ */
+export const NEU_SEIT_26_10 = /^(qz24_|qn_festigkeit_mohr_|qn_formaenderungen_bl_|qn_stahl_fec_)/;
+
+/** Auffällig = Vorprüfung „korrigiert“/„fraglich“, offener Prüfhinweis oder neu seit 26.10. und nicht freigegeben (gleiche Regel wie scripts/pruefliste.ts) */
+export function istAuffaellig(q: Frage, hinweise: ReadonlySet<string>): boolean {
+  const e = q.vorpruefung?.ergebnis;
+  return e === 'korrigiert' || e === 'fraglich' || hinweise.has(q.id) || istNeuOffen(q);
+}
+export const istNeuOffen = (q: Frage) => NEU_SEIT_26_10.test(q.id) && q.verified !== true;
+
 export function zaehleQuiz(fragen: readonly Frage[], clusterVon: (moduleId: string) => string | undefined,
   cluster: readonly { number: string; name: string }[], hinweise: Set<string>, wurzel = process.cwd()): AuditDaten['quiz'] {
   const jeCluster = cluster.map(c => {
     const f = fragen.filter(q => clusterVon(q.moduleId) === c.number);
     const korrigiert = f.filter(q => q.vorpruefung?.ergebnis === 'korrigiert').length;
     const fraglich = f.filter(q => q.vorpruefung?.ergebnis === 'fraglich').length;
-    const auffaellig = f.filter(q => q.vorpruefung?.ergebnis === 'korrigiert' || q.vorpruefung?.ergebnis === 'fraglich' || hinweise.has(q.id)).length;
+    const auffaellig = f.filter(q => istAuffaellig(q, hinweise)).length;
     const datei = `docs/pruefung/quiz-cluster-${c.number}.md`;
     const vorhanden = fs.existsSync(path.join(wurzel, datei));
     return {

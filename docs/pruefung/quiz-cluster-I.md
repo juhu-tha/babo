@@ -1,16 +1,66 @@
 # Prüfliste Quiz – Cluster I: Grundlagen & Labor
 
-Stand: 27.10.2026 · Grundlage: `src/data/quiz.json` (Feld `vorpruefung`, Stand 25.10.2026), `docs/quiz-pruefhinweise.md`, Vorprüfungsberichte `docs/quiz-vorpruefung-cluster-I-III.md` und `docs/quiz-vorpruefung-cluster-IV-VII.md`. quiz.json wurde für diese Liste nicht verändert.
+Stand: 27.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster I umfasst 235 Fragen aus 38 Modulen. Aufgeführt sind 17 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“ bzw. offener Prüfhinweis) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 91 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+
+Auffällig im Einzelnen (Mehrfachnennung möglich): 63 korrigiert, 0 fraglich, 9 mit offenem Prüfhinweis, 25 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
+
+### q_an_1 · Analytik & Diagnostik
+
+- **Frage:** Warum lassen sich C-S-H-Phasen mit der Röntgendiffraktometrie kaum direkt nachweisen?
+- **Richtige Antwort:** Sie sind weitgehend röntgenamorph und erzeugen keine scharfen Reflexe
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
+- [ ] ok
+- [ ] ändern: …
 
 ### q_an_2 · Analytik & Diagnostik
 
 - **Frage:** Eine TGA zeigt zwischen 400 und 500 °C einen Masseverlust von 3,0 %. Wie hoch ist der Portlanditgehalt der Probe?
 - **Richtige Antwort:** 12,3 M.-%
 - **Auffälligkeit:** Prüfhinweis: bereits korrigiert – bitte bestätigen.
+- [ ] ok
+- [ ] ändern: …
+
+### q_an_5 · Analytik & Diagnostik
+
+- **Frage:** Mit welchem Verfahren bestimmen Sie die chemische Elementzusammensetzung (z. B. Hauptoxide CaO, SiO₂) eines Zements?
+- **Richtige Antwort:** RFA (Röntgenfluoreszenzanalyse)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### q_bch_3 · Bauchemie
+
+- **Frage:** Welche drei Voraussetzungen müssen gleichzeitig vorliegen, damit eine schädigende AKR auftreten kann?
+- **Richtige Antwort:** Alkaliempfindliche Gesteinskörnung, ausreichender Alkaligehalt und Feuchte
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
+- [ ] ok
+- [ ] ändern: …
+
+### q_bch_4 · Bauchemie
+
+- **Frage:** Warum darf eine Kupferdachrinne nicht über ein verzinktes Fallrohr entwässern?
+- **Richtige Antwort:** Abgelöste Kupferionen scheiden sich auf dem Zink ab und lösen Lochkorrosion aus.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
+- [ ] ok
+- [ ] ändern: …
+
+### q_bk_3 · Baustoffkunde
+
+- **Frage:** Was beschreibt das Modell von Powers und Brownyard für erhärteten Zementstein?
+- **Richtige Antwort:** Zementgel mit Gelporen plus Kapillarporen, deren Anteil von w/z-Wert und Hydratationsgrad abhängt
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
+- [ ] ok
+- [ ] ändern: …
+
+### q_boden_2 · Bodenmechanik
+
+- **Frage:** Eine Tonschicht wird statt zweiseitig nur einseitig entwässert. Wie ändert sich die Zeit bis 90 % Konsolidation?
+- **Richtige Antwort:** Sie vervierfacht sich
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
 - [ ] ok
 - [ ] ändern: …
 
@@ -22,11 +72,27 @@ Cluster I umfasst 235 Fragen aus 38 Modulen. Aufgeführt sind 17 auffällige Fra
 - [ ] ok
 - [ ] ändern: …
 
+### q_bruch_2 · Bruchmechanik
+
+- **Frage:** Warum ist die linear-elastische Bruchmechanik für normale Betonbauteile nur eingeschränkt anwendbar?
+- **Richtige Antwort:** Weil sich vor der Rissspitze eine ausgedehnte Bruchprozesszone bildet (quasi-spröde)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
+- [ ] ok
+- [ ] ändern: …
+
 ### q_bs_1 · Brandschutz
 
 - **Frage:** Was bedeutet REI 90 bei einer tragenden Wand?
 - **Richtige Antwort:** 90 min Tragfähigkeit, Raumabschluss und Wärmedämmung („feuerbeständig“)
-- **Auffälligkeit:** Prüfhinweis: „feuerbeständig“ = REI 90; Zusatzanforderung nichtbrennbare wesentliche Teile (MBO) ggf. erwähnen.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · Prüfhinweis: „feuerbeständig“ = REI 90; Zusatzanforderung nichtbrennbare wesentliche Teile (MBO) ggf. erwähnen.
+- [ ] ok
+- [ ] ändern: …
+
+### q_dv_2 · Innendämmung vs. Außendämmung
+
+- **Frage:** Womit wird der Feuchteschutz einer kapillaraktiven Innendämmung realistisch nachgewiesen?
+- **Richtige Antwort:** Mit hygrothermischer Simulation (z. B. WTA-Merkblatt 6-5 / DIN EN 15026)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
 - [ ] ok
 - [ ] ändern: …
 
@@ -42,7 +108,7 @@ Cluster I umfasst 235 Fragen aus 38 Modulen. Aufgeführt sind 17 auffällige Fra
 
 - **Frage:** Was gilt seit dem 29. Juli 2026 für das Gebäudeenergiegesetz (GEG)?
 - **Richtige Antwort:** Es heißt nun GModG; §§ 15, 16 und 79–88 bleiben, Bestandsregeln teils neu nummeriert
-- **Auffälligkeit:** Prüfhinweis: GModG (Verkündung, Paragrafen, Inkrafttreten in Stufen) – Rechtsstand bestätigen; Stammtext q_ea_2 „seit dem 29. Juli 2026“. · Vorprüfung (fraglich): Bestätigt: GModG gilt seit 29.07.2026, 65-%-Regel entfällt, Bio-Treppe (§ 43 GModG), Energieausweis A+ bis H bleibt. Nicht bestätigt: Verkündungsdatum 28.07.2026 und die Aussage „§§ 15, 16 und 79–88 bleiben, Bestandsregeln teils neu nummeriert“ (keine Konkordanz gefunden).
+- **Auffälligkeit:** Prüfhinweis: GModG (Verkündung, Paragrafen, Inkrafttreten in Stufen) – Rechtsstand bestätigen; Stammtext q_ea_2 „seit dem 29. Juli 2026“.
 - [ ] ok
 - [ ] ändern: …
 
@@ -51,6 +117,54 @@ Cluster I umfasst 235 Fragen aus 38 Modulen. Aufgeführt sind 17 auffällige Fra
 - **Frage:** Für ein Leichtdach unter Windsog (Abheben) wird die Verankerung bemessen. Welcher Teilsicherheitsbeiwert gilt für das Eigengewicht?
 - **Richtige Antwort:** γ_G,inf = 1,00, weil das Eigengewicht hier günstig wirkt
 - **Auffälligkeit:** Prüfhinweis: γ_G,inf = 1,00 (STR) – bei Lagesicherheit (EQU) gilt 0,90; Fragetext eindeutig machen.
+- [ ] ok
+- [ ] ändern: …
+
+### q_fest_1 · Festigkeitsberechnungen
+
+- **Frage:** Warum hängt die theoretische Grenzhöhe einer prismatischen Säule unter Eigengewicht nicht von ihrem Querschnitt ab?
+- **Richtige Antwort:** Weil Gewicht und tragende Fläche beide proportional zur Querschnittsfläche sind
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
+- [ ] ok
+- [ ] ändern: …
+
+### q_kenn_3 · Kennwerte & Materialdatenbank
+
+- **Frage:** Baustahl hat E ≈ 210 000 MPa, Nadelholz C24 faserparallel E₀,mean ≈ 11 000 MPa. Was folgt daraus für die auf das Gewicht bezogene Steifigkeit E/ρ?
+- **Richtige Antwort:** Stahl und Holz (faserparallel) sind gewichtsbezogen etwa gleich steif.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### q_knick_2 · Knicken
+
+- **Frage:** Warum darf eine reale Stahlstütze nicht bis zur idealen Euler-Knicklast F_K belastet werden?
+- **Richtige Antwort:** Weil Vorkrümmung und Eigenspannungen zu Fließen vor Erreichen von F_K führen
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
+- [ ] ok
+- [ ] ändern: …
+
+### q_lab_1 · Virtuelle Versuche
+
+- **Frage:** Bei einer Haftzugprüfung reißt der Prüfstempel in der Klebefuge ab, bevor der Anforderungswert erreicht ist. Wie ist das Ergebnis zu werten?
+- **Richtige Antwort:** Als ungültiger Versuch, der mit neu geklebtem Stempel zu wiederholen ist
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
+- [ ] ok
+- [ ] ändern: …
+
+### q_lab_3 · Virtuelle Versuche
+
+- **Frage:** Warum wird der E-Modul von Beton nach DIN EN 12390-13 erst nach mehreren Be- und Entlastungszyklen ausgewertet (stabilisierter Modul E_C,S)?
+- **Richtige Antwort:** Weil bei Erstbelastung bleibende Verformungen (Mikrorisse, Setzungen) den Modul verfälschen
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
+- [ ] ok
+- [ ] ändern: …
+
+### q_lab_4 · Virtuelle Versuche
+
+- **Frage:** Warum reißt ein vorgespannter Balken im Biegeversuch erst bei deutlich höherer Last als ein gleich großer Stahlbetonbalken?
+- **Richtige Antwort:** Weil die Vorspannung am Zugrand Druck erzeugt, der erst abgebaut werden muss (Dekompression)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
 - [ ] ok
 - [ ] ändern: …
 
@@ -78,11 +192,107 @@ Cluster I umfasst 235 Fragen aus 38 Modulen. Aufgeführt sind 17 auffällige Fra
 - [ ] ok
 - [ ] ändern: …
 
+### q_recht_4 · Baurecht & Normenwesen
+
+- **Frage:** Welche Aussage zum Rechtscharakter von DIN-Normen ist zutreffend?
+- **Richtige Antwort:** Private Regelwerke, verbindlich durch Einführung als Technische Baubestimmung oder Vertrag; sie gelten widerlegbar als anerkannte Regeln der Technik.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen; normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### q_recht_5 · Baurecht & Normenwesen
+
+- **Frage:** Welche Ebene regelt in Deutschland Standsicherheit, Brandschutz und Abstandsflächen von Gebäuden?
+- **Richtige Antwort:** Die Länder in den Landesbauordnungen
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
+- [ ] ok
+- [ ] ändern: …
+
+### q_stat_1 · Statistik
+
+- **Frage:** Warum ist der Fraktilfaktor k_n bei 3 Prüfwerten (3,37) deutlich größer als bei unendlich vielen (1,64)?
+- **Richtige Antwort:** Weil Mittelwert und Standardabweichung aus wenigen Werten nur unsicher geschätzt werden
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
+- [ ] ok
+- [ ] ändern: …
+
+### q_we_2 · Thermische Eigenschaften & Dämmstoffe
+
+- **Frage:** Warum fühlt sich ein 20 °C warmer Betonboden kälter an als ein 20 °C warmer Holzboden?
+- **Richtige Antwort:** Beton hat die größere Wärmeeindringfähigkeit b = √(λ·ρ·c) und entzieht der Haut schneller Wärme
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
+- [ ] ok
+- [ ] ändern: …
+
+### qn_bauchemie_2 · Bauchemie
+
+- **Frage:** Eine Sichtbetonfassade nimmt bei Schlagregen viel Wasser auf. Sie soll wasserabweisend werden, das Erscheinungsbild und die Wasserdampfdurchlässigkeit sollen erhalten bleiben. Welche Maßnahme ist geeignet?
+- **Richtige Antwort:** Hydrophobierung mit Silan oder Siloxan, die den Randwinkel über 90° anhebt
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen; normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_bauphysik_1 · Bauphysik (Wärme & Akustik)
+
+- **Frage:** Eine Außenwand besteht aus 20 cm Stahlbeton (λ = 2,0 W/(m·K)) und 12 cm EPS (λ = 0,035 W/(m·K)); R_si = 0,13 und R_se = 0,04 m²K/W. Welcher U-Wert ergibt sich, und wird der Höchstwert 0,24 W/(m²K) eingehalten?
+- **Richtige Antwort:** U ≈ 0,27 W/(m²K); der Höchstwert wird nicht eingehalten
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_bauphysik_2 · Bauphysik (Wärme & Akustik)
+
+- **Frage:** Für die Wand aus 20 cm Stahlbeton (innen) und 12 cm EPS (außen) mit R_T = 3,70 m²K/W gilt θ_i = 20 °C und θ_e = −5 °C. Welche Temperatur herrscht an der Grenzfläche Beton/EPS?
+- **Richtige Antwort:** θ ≈ 18,4 °C
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_bauphysik_4 · Feuchteschutz & Tauwasser
+
+- **Frage:** In einer Holzrahmenwand mit Mineralwolle-Dämmung soll eine Dampfbremse eingebaut werden. Wo ist sie anzuordnen, damit das Tauwasserrisiko sinkt?
+- **Richtige Antwort:** Auf der warmen Raumseite, damit wenig Dampf in die kalte Zone gelangt
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
 ### qn_bauphysik_5 · Bauphysik (Wärme & Akustik)
 
 - **Frage:** Eine Außenwand hat U = 0,40 W/(m²K). Wie groß ist der Temperaturfaktor f_Rsi mit R_si = 0,25 m²K/W, und ist das Mindestkriterium nach DIN 4108-2 erfüllt?
 - **Richtige Antwort:** f_Rsi = 0,90 – erfüllt (≥ 0,70)
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Rückmeldung zu Option 4 berichtigt
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
+- [ ] ok
+- [ ] ändern: …
+
+### qn_baustoffkenngroessen_2 · Baustoffkenngrößen
+
+- **Frage:** Eine Betonstütze steht unter der Dauerdruckspannung σ₀ = 10 MPa (E = 30 000 MPa, Endkriechzahl φ = 2,0) und schwindet zusätzlich um ε_cs = −0,30 ‰. Wie groß ist die gesamte Stauchung?
+- **Richtige Antwort:** 1,30 ‰, als Summe aus elastischer Stauchung, Kriechen und Schwinden
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen; normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_bodenmechanik_1 · Bodenmechanik
+
+- **Frage:** Ein bindiger Boden hat w = 32 %, w_L = 48 % und w_P = 22 %. Welche Zustandsform liegt vor?
+- **Richtige Antwort:** I_C ≈ 0,62 – weich
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_bodenmechanik_3 · Bodenmechanik
+
+- **Frage:** Eine lotrechte, glatte Stützwand (h = 4 m) hält einen Sand mit φ = 35° und γ = 19 kN/m³ bei waagerechter Geländeoberfläche. Wie groß ist die aktive Erddruckkraft E_a nach Rankine?
+- **Richtige Antwort:** E_a ≈ 41,2 kN/m
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_bodenmechanik_4 · Bodenmechanik
+
+- **Frage:** Warum setzt sich eine wassergesättigte Tonschicht unter einer neuen Last erst zeitverzögert?
+- **Richtige Antwort:** Weil Porenwasser die Last zunächst trägt und erst abfließen muss
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
 - [ ] ok
 - [ ] ändern: …
 
@@ -94,6 +304,46 @@ Cluster I umfasst 235 Fragen aus 38 Modulen. Aufgeführt sind 17 auffällige Fra
 - [ ] ok
 - [ ] ändern: …
 
+### qn_bruchmechanik_4 · Bruchmechanik
+
+- **Frage:** Was beschreibt die Bruchenergie G_F im fiktiven Rissmodell nach Hillerborg für Beton?
+- **Richtige Antwort:** Die Energie je Rissfläche bis zur vollständigen Trennung der Rissufer
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_daemmung_vergleich_1 · Innendämmung vs. Außendämmung
+
+- **Frage:** Eine 24 cm dicke Vollziegelwand (λ = 0,68 W/(m·K)) erhält innen 8 cm Dämmung (λ = 0,040 W/(m·K)); R_si = 0,13, R_se = 0,04 m²K/W, θ_i = 20 °C, θ_e = −5 °C. Welche Temperatur herrscht an der Grenzschicht Dämmung/Mauerwerk?
+- **Richtige Antwort:** θ ≈ −1,1 °C
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_daemmung_vergleich_3 · Innendämmung vs. Außendämmung
+
+- **Frage:** Ein denkmalgeschütztes Gebäude mit Sichtziegelfassade soll energetisch verbessert werden. Welche Vorgehensweise ist fachlich angemessen?
+- **Richtige Antwort:** Innendämmung mit Feuchtenachweis, Schlagregenschutz und Detailplanung
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_einheiten_1 · Einheiten
+
+- **Frage:** Eine Studentin berechnet die Druckspannung einer Stütze (40 cm × 40 cm, F = 800 kN) als 800 / 1600 = 0,5 und notiert „σ = 0,5 N/mm²“. Wie ist das zu beurteilen?
+- **Richtige Antwort:** Falsch, die Rechnung liefert 0,5 kN/cm², das entspricht 5 N/mm²
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_einheiten_2 · Einheiten
+
+- **Frage:** Ein Gebäude hat einen Endenergiebedarf von 12 500 kWh pro Jahr. Wie viel ist das in Gigajoule?
+- **Richtige Antwort:** 45 GJ
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
 ### qn_emodul_4 · E-Modul & Mikromechanik
 
 - **Frage:** Ausgehend von einem C30/37 mit Quarzit (E_cm ≈ 32,8 GPa) soll der E-Modul erhöht werden. Was bewirkt mehr: der Wechsel auf C50/60 mit Quarzit oder der Wechsel auf Basalt bei C30/37?
@@ -102,11 +352,155 @@ Cluster I umfasst 235 Fragen aus 38 Modulen. Aufgeführt sind 17 auffällige Fra
 - [ ] ok
 - [ ] ändern: …
 
+### qn_energieausweis_1 · Energieausweis
+
+- **Frage:** Ein Wohngebäude hat einen Wärmebedarf (Heizung, Warmwasser, Verluste) von 80 kWh/(m²a) und wird mit einem Pelletkessel beheizt (Nutzungsgrad 0,88, f_P = 0,2; Hilfsstrom 3,5 kWh/(m²a) mit f_P = 1,8). Welche Ergebnisse folgen?
+- **Richtige Antwort:** q_E ≈ 94 kWh/(m²a) (Klasse C), q_P ≈ 24 kWh/(m²a)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_energieausweis_2 · Energieausweis
+
+- **Frage:** Ein Gebäude hat Wand 200 m² (U = 0,24), Dach 100 m² (U = 0,18), Fenster 40 m² (U = 1,10) und Bodenplatte 100 m² (U = 0,25; F_x = 0,6); Wärmebrückenzuschlag ΔU_WB = 0,05 W/(m²K). Wie groß ist H_T'?
+- **Richtige Antwort:** H_T' ≈ 0,33 W/(m²K)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_energieausweis_3 · Energieausweis
+
+- **Frage:** Für ein Zweifamilienhaus (Bauantrag 1970, nie energetisch saniert, erfüllt nicht das Niveau der 1. WSVO 1977) wird ein Energieausweis für den Verkauf benötigt. Welcher Ausweis ist zu erstellen?
+- **Richtige Antwort:** Ein Bedarfsausweis, weil < 5 Wohneinheiten und WSVO 1977 nicht erfüllt
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_festbeton_statistik_1 · Festbeton (Statistik)
+
+- **Frage:** Warum liefert ein Würfel (150 mm) aus demselben Beton eine höhere Druckfestigkeit als ein Zylinder (150 × 300 mm)?
+- **Richtige Antwort:** Die Plattenreibung behindert im gedrungenen Würfel die Querdehnung
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_festbeton_statistik_3 · Festbeton (Statistik)
+
+- **Frage:** C30/37 aus stetiger Herstellung: 15 Würfelergebnisse mit Mittelwert 42,0 N/mm², kleinster Einzelwert 34,5 N/mm², σ = 4,5 N/mm² (aus 35 Vorwerten). Wie ist die Produktion zu beurteilen?
+- **Richtige Antwort:** Nicht konform, weil 42,0 N/mm² unter f_ck + 1,48 · σ = 43,7 N/mm² liegt
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
+- [ ] ok
+- [ ] ändern: …
+
+### qn_festigkeit_mohr_1 · Festigkeitsberechnungen
+
+- **Frage:** Ein Blech steht unter σ_x = 120 N/mm², σ_y = −40 N/mm² und τ_xy = 60 N/mm². Wie groß sind die Hauptspannungen σ₁ und σ₂?
+- **Richtige Antwort:** σ₁ = 140 N/mm², σ₂ = −60 N/mm²
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qn_festigkeit_mohr_2 · Festigkeitsberechnungen
+
+- **Frage:** Für σ_x = 80 N/mm², σ_y = 20 N/mm² und τ_xy = 30 N/mm²: Unter welchem Winkel φ₁ zur x-Achse wirkt die größere Hauptspannung σ₁?
+- **Richtige Antwort:** φ₁ = 22,5°
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qn_festigkeit_mohr_3 · Festigkeitsberechnungen
+
+- **Frage:** Der Schnitt durch einen Bauteilpunkt wird um den Winkel θ gedreht. Wie bewegt sich der zugehörige Bildpunkt auf dem Mohr'schen Spannungskreis?
+- **Richtige Antwort:** Er dreht sich um 2θ um den Kreismittelpunkt.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qn_festigkeit_mohr_4 · Festigkeitsberechnungen
+
+- **Frage:** Ein Stegblech steht unter reinem Schub τ_xy = 50 N/mm² (σ_x = σ_y = 0). Welche Aussage über die Hauptspannungen trifft zu?
+- **Richtige Antwort:** ±50 N/mm² unter 45° zur x-Achse
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qn_festigkeit_mohr_5 · Festigkeitsberechnungen
+
+- **Frage:** Zwei ebene Spannungszustände in Baustahl: A mit σ₁ = σ₂ = 200 N/mm², B mit σ₁ = 200 und σ₂ = −200 N/mm². Welcher ist nach von Mises ungünstiger?
+- **Richtige Antwort:** B, weil Zug und Druck zusammenwirken (σ_v ≈ 346 N/mm²)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qn_feuchteschutz_1 · Feuchteschutz & Tauwasser
+
+- **Frage:** Ein Wohnraum hat 22 °C und 60 % r. F. (p_sat(22 °C) ≈ 2642 Pa). Wie hoch ist der Taupunkt der Raumluft?
+- **Richtige Antwort:** θ_d ≈ 13,9 °C
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
 ### qn_feuchteschutz_3 · Feuchteschutz & Tauwasser
 
 - **Frage:** Ein Aufbau besteht (innen nach außen) aus Gipskarton 12,5 mm (µ = 10), feuchtevariabler Dampfbremse 0,2 mm (µ = 15 000), Mineralwolle 16 cm (µ = 1) und Nadelholzschalung 24 mm (µ = 40). Wie groß ist s_d,ges?
 - **Richtige Antwort:** s_d,ges ≈ 4,25 m
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Erklärung: verschachtelte Rechnung entwirrt
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_formaenderungen_bl_1 · Formänderungen
+
+- **Frage:** Ein Einfeldträger mit L = 4,0 m und E·I = 10 000 kNm² trägt eine Gleichlast q = 10 kN/m. Wie groß ist die Durchbiegung in Feldmitte?
+- **Richtige Antwort:** w ≈ 3,33 mm
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qn_formaenderungen_bl_2 · Formänderungen
+
+- **Frage:** Ein Kragarm (L = 2,0 m, E·I = 4 000 kNm²) trägt am freien Ende F = 12 kN. Wie groß sind Durchbiegung und Neigung am Kragarmende?
+- **Richtige Antwort:** w = 8,0 mm; φ = 6,0 mrad
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qn_formaenderungen_bl_3 · Formänderungen
+
+- **Frage:** Bei einem Rechteckbalken wird die Höhe h verdoppelt, Breite, Werkstoff und Last bleiben gleich. Wie ändert sich die Durchbiegung?
+- **Richtige Antwort:** Sie sinkt auf ein Achtel.
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qn_formaenderungen_bl_4 · Formänderungen
+
+- **Frage:** Zwei Balken mit gleichem Querschnitt und gleicher Last: einer aus Baustahl (E = 210 000 N/mm²), einer aus Nadelholz C24 (E = 11 000 N/mm²). Wie verhält sich die Durchbiegung des Holzbalkens?
+- **Richtige Antwort:** Sie ist etwa 19-mal so groß.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qn_formaenderungen_bl_5 · Formänderungen
+
+- **Frage:** Die Spannweite eines Einfeldträgers unter gleicher Gleichlast q wird von 4 m auf 8 m verdoppelt. Wie ändert sich die größte Durchbiegung?
+- **Richtige Antwort:** Sie wird 16-mal so groß.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qn_knicken_1 · Knicken (Euler)
+
+- **Frage:** Eine Stahlstütze (l = 4,0 m, E = 210 000 N/mm², I = 400 cm⁴) ist unten eingespannt und oben unverschieblich gelenkig gehalten (Euler-Fall 3, β = 0,7). Wie groß ist die ideale Knicklast F_K?
+- **Richtige Antwort:** F_K ≈ 1057 kN
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_knicken_2 · Knicken (Euler)
+
+- **Frage:** Eine 3,0 m lange Stütze hat eine Vorkrümmung w₀ = l/300 und wird mit N_Ed = 0,8 · F_K belastet. Wie groß ist die Ausbiegung in Stabmitte nach Theorie II. Ordnung?
+- **Richtige Antwort:** w ≈ 50 mm
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
 - [ ] ok
 - [ ] ändern: …
 
@@ -118,11 +512,35 @@ Cluster I umfasst 235 Fragen aus 38 Modulen. Aufgeführt sind 17 auffällige Fra
 - [ ] ok
 - [ ] ändern: …
 
+### qn_labor_frischbeton_4 · Handout Frischbetonprüfungen
+
+- **Frage:** Die gemessene Rohdichte ist 60 kg/m³ niedriger als erwartet, der Luftgehalt um rund 2,5 % höher. Welche Ursache ist am wahrscheinlichsten?
+- **Richtige Antwort:** unvollständige Verdichtung im Behälter
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
 ### qn_labor_moertelprismen_1 · Handout Mörtelprismen (DIN EN 196-1)
 
 - **Frage:** Ein Prisma 40 mm × 40 mm × 160 mm bricht bei F_f = 3,2 kN (Stützweite l = 100 mm). Wie groß ist die Biegezugfestigkeit R_f = 1,5 · F_f · l / b³?
 - **Richtige Antwort:** 7,5 MPa
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren 2 und 3 neu (3,0 und 12,0 MPa folgten aus keinem genannten Fehler)
+- [ ] ok
+- [ ] ändern: …
+
+### qn_labor_potentialmessung_1 · Handout Potentialmessung an Betonstahl
+
+- **Frage:** Gegen eine Ag/AgCl-Elektrode (KCl gesättigt, +197 mV gegen SHE) messen Sie −250 mV. Welches Potential ergibt sich gegen CSE (+316 mV gegen SHE)?
+- **Richtige Antwort:** −369 mV
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_labor_potentialmessung_2 · Handout Potentialmessung an Betonstahl
+
+- **Frage:** Warum wird das Potential mit einem hochohmigen Voltmeter (≥ 10 MΩ) gemessen?
+- **Richtige Antwort:** Damit kein nennenswerter Strom fließt, der den Stahl polarisiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
 - [ ] ok
 - [ ] ändern: …
 
@@ -134,17 +552,193 @@ Cluster I umfasst 235 Fragen aus 38 Modulen. Aufgeführt sind 17 auffällige Fra
 - [ ] ok
 - [ ] ändern: …
 
+### qn_materialmodelle_1 · Materialmodelle
+
+- **Frage:** Ein Betonstahl wird mit dem bilinearen Modell beschrieben (f_y = 500 MPa, E = 200 000 MPa, E_t = 1600 MPa), bis ε_max = 30 ‰ gedehnt und dann entlastet. Wie groß ist die bleibende Dehnung?
+- **Richtige Antwort:** ε_p ≈ 27,3 ‰
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_mechanische_kenngroessen_1 · Mechan. Kenngrößen
+
+- **Frage:** Ein Holzbalken C24 (E = 11 000 N/mm²) hat den Querschnitt b/h = 10/20 cm und wird um die starke Achse gebogen. Wie groß ist die Biegesteifigkeit EI?
+- **Richtige Antwort:** EI ≈ 733 kNm²
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_mechanische_kenngroessen_3 · Mechan. Kenngrößen
+
+- **Frage:** Eine Betonstütze (E_cm = 30 000 MPa) steht unter der Dauerdruckspannung σ = 9 N/mm², die Kriechzahl beträgt φ = 2,5. Welcher effektive E-Modul und welche Endstauchung ergeben sich?
+- **Richtige Antwort:** E_c,eff ≈ 8 571 MPa; ε_end ≈ 1,05 ‰
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_mechanische_pruefungen_1 · Mechanische Prüfungen
+
+- **Frage:** Ein Betonstahl Ø 10 mm (S₀ = 78,5 mm²) erreicht im Zugversuch F_e = 42,0 kN und F_m = 45,0 kN; die Dehnung bei Höchstkraft beträgt A_gt = 6,0 %. Welche Duktilitätsanforderung erfüllt der Stab?
+- **Richtige Antwort:** Nur B500A, weil R_m/R_e = 1,07 unter dem Wert 1,08 für B500B liegt
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
+- [ ] ok
+- [ ] ändern: …
+
 ### qn_probenahme_1 · Probenahme & Erkundung
 
 - **Frage:** Für ein Chloridprofil wird mit einem Bohrer D_b = 10 mm in Tiefenstufen von Δz = 10 mm gebohrt (Bohrmehl ρ ≈ 2,2 g/cm³). Das Labor verlangt mindestens 5 g je Stufe. Wie viele benachbarte Bohrlöcher müssen je Stufe vereinigt werden?
 - **Richtige Antwort:** Drei Bohrlöcher, weil eines nur rund 1,7 g liefert
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktor 4 und Rückmeldung: Rechenweg passte nicht (1,0 g ≠ 0,785 cm³)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_sommerlicher_waermeschutz_8 · Sommerlicher Wärmeschutz (DIN 4108-2)
+
+- **Frage:** Wie wirken Dachflächenfenster mit 30° Neigung im Verfahren nach DIN 4108-2:2013-02?
+- **Richtige Antwort:** Sie verringern S_zul über den Kennwert S4
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
+- [ ] ok
+- [ ] ändern: …
+
+### qn_stahlbau_ec3_8 · Stahlbau nach Eurocode 3 – Grundlagen
+
+- **Frage:** Unter welcher Bedingung darf nach DIN EN 1993-1-1 der Biegeknicknachweis entfallen?
+- **Richtige Antwort:** λ̄ ≤ 0,2 oder N_Ed/N_cr ≤ 0,04
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
+- [ ] ok
+- [ ] ändern: …
+
+### qn_statistik_2 · Statistik
+
+- **Frage:** Eine Prüfserie mit n = 8 Würfeln hat x̄ = 31,4 N/mm² und s = 1,9 N/mm². Der kleinste Wert beträgt 27,0 N/mm², G_krit(n = 8; α = 5 %) = 2,03. Wie ist der Wert einzustufen?
+- **Richtige Antwort:** G ≈ 2,32 > 2,03; auffällig, vor dem Streichen technische Ursache prüfen
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qz24_atterberg_1 · Bodenmechanik
+
+- **Frage:** Wie wird die Fließgrenze w_L im Mehrpunktverfahren nach Casagrande bestimmt?
+- **Richtige Antwort:** Als Wassergehalt bei N = 25 auf der Ausgleichsgeraden
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qz24_atterberg_2 · Bodenmechanik
+
+- **Frage:** Ein einzelner Fließgrenzenversuch ergibt w = 42,6 % bei N = 22 Schlägen. Welche Fließgrenze liefert w_L = w·(N/25)^0,121?
+- **Richtige Antwort:** etwa 41,9 %
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qz24_atterberg_3 · Bodenmechanik
+
+- **Frage:** Ein Ton hat w_L = 42 %, w_P = 22 % und den natürlichen Wassergehalt w = 30 %. Welche Zustandsform liegt vor?
+- **Richtige Antwort:** I_C = 0,60 – weich
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qz24_atterberg_4 · Bodenmechanik
+
+- **Frage:** Ein Boden hat w_L = 45 % und I_P = 12 %. Zu welcher Gruppe gehört er nach dem Plastizitätsdiagramm?
+- **Richtige Antwort:** UM, weil I_P unter der A-Linie (18,3 %) liegt
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qz24_atterberg_5 · Bodenmechanik
+
+- **Frage:** Im Plastizitätsdiagramm liegt ein Punkt unterhalb der A-Linie bei w_L = 45 %. Was ist für die Einordnung als OU zusätzlich erforderlich?
+- **Richtige Antwort:** Ein Nachweis organischer Anteile, z. B. über den Glühverlust
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qz24_tritt_1 · Schallschutz
+
+- **Frage:** Decke A erreicht L′_n,w = 46 dB, Decke B L′_n,w = 52 dB. Welche Decke schützt besser gegen Trittschall?
+- **Richtige Antwort:** Decke A, weil ein kleinerer Pegel weniger Schall bedeutet
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qz24_tritt_2 · Schallschutz
+
+- **Frage:** Eine Stahlbetondecke hat m′ = 400 kg/m². Wie groß ist L_n,eq,0,w nach 164 − 35·lg m′?
+- **Richtige Antwort:** etwa 72,9 dB
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qz24_tritt_3 · Schallschutz
+
+- **Frage:** Wie wirkt sich eine weichere Trittschalldämmung (kleineres s′) unter einem Zementestrich aus?
+- **Richtige Antwort:** f₀ sinkt und die Trittschallminderung ΔL_w steigt
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qz24_tritt_4 · Schallschutz
+
+- **Frage:** Berechnet sind L_n,eq,0,w = 71,4 dB, ΔL_w = 28,3 dB und K = 2,0 dB. Ist zul. L′_n,w = 50 dB mit u_prog = 3 dB eingehalten?
+- **Richtige Antwort:** Ja, denn 71,4 − 28,3 + 2,0 + 3 = 48,1 dB ≤ 50 dB
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qz24_tritt_5 · Schallschutz
+
+- **Frage:** Welcher Wert gilt nach der öffentlich wiedergegebenen DIN 4109-1:2018 für Treppenläufe in Mehrfamilienhäusern (zul. L′_n,w)?
+- **Richtige Antwort:** 53 dB
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qz24_ttest_1 · Statistik
+
+- **Frage:** Eine Serie von n = 10 Würfeln hat x̄ = 38,47 N/mm² und s = 1,665 N/mm². Wie groß ist die Prüfgröße t gegen den Sollwert μ₀ = 38 N/mm²?
+- **Richtige Antwort:** t ≈ 0,89 mit ν = 9 Freiheitsgraden
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qz24_ttest_2 · Statistik
+
+- **Frage:** Ein t-Test liefert p = 0,03 bei α = 0,05. Welche Aussage ist zutreffend?
+- **Richtige Antwort:** H₀ wird verworfen, weil p kleiner als α ist
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qz24_ttest_3 · Statistik
+
+- **Frage:** Zwei Betonserien haben n₁ = 12, n₂ = 5 und eine etwa fünfmal größere Varianz in Serie 2. Welcher Zweistichprobentest ist angemessen?
+- **Richtige Antwort:** Der Welch-Test mit Freiheitsgraden nach Satterthwaite
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qz24_ttest_4 · Statistik
+
+- **Frage:** Das 95-%-Konfidenzintervall für μ₁ − μ₂ reicht von −0,3 bis 4,9 N/mm². Was folgt daraus für den zweiseitigen t-Test mit α = 5 %?
+- **Richtige Antwort:** H₀ wird nicht verworfen, weil das Intervall die Null enthält
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qz24_ttest_5 · Statistik
+
+- **Frage:** Wie ändert sich der kritische Wert t₀,₉₇₅ mit wachsender Zahl der Freiheitsgrade?
+- **Richtige Antwort:** Er sinkt und strebt gegen 1,96 (Normalverteilung)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · neu seit 26.10.2026 (Z24), noch nicht freigegeben
 - [ ] ok
 - [ ] ändern: …
 
 ## B. Stichprobe unauffälliger Fragen (5)
 
-Auswahl deterministisch (Sortierung nach Hash der Frage-ID), damit die Stichprobe nachvollziehbar ist.
+Auswahl deterministisch (Sortierung nach FNV-1a-Hash der Frage-ID), damit die Stichprobe nachvollziehbar ist.
 
 ### qn_labor_frischbeton_6 · Handout Frischbetonprüfungen
 
@@ -202,7 +796,7 @@ Niveau B/M · 120 min · Vorwissen: einheiten, statistik
 - [ ] ok
 - [ ] ändern: …
 
-### mechanische_kenngroessen · Mechan. Kenngrößen & E-Modul
+### mechanische_kenngroessen · Mechan. Kenngrößen
 
 Niveau B · 180 min · Vorwissen: einheiten, baustoffkenngroessen
 
@@ -215,7 +809,7 @@ Niveau B · 180 min · Vorwissen: einheiten, baustoffkenngroessen
 - [ ] ok
 - [ ] ändern: …
 
-### sommerlicher_waermeschutz · Sommerlicher Wärmeschutz (DIN 4108-2)
+### sommerlicher_waermeschutz · Sommerlicher Wärmeschutz
 
 Niveau B · 60 min · Vorwissen: bauphysik, waermeeigenschaften
 
@@ -228,7 +822,7 @@ Niveau B · 60 min · Vorwissen: bauphysik, waermeeigenschaften
 - [ ] ok
 - [ ] ändern: …
 
-### knicken · Knicken (Euler-Fälle)
+### knicken · Knicken (Euler)
 
 Niveau B · 60 min · Vorwissen: baustatik, mechanische_kenngroessen
 
@@ -240,7 +834,7 @@ Niveau B · 60 min · Vorwissen: baustatik, mechanische_kenngroessen
 - [ ] ok
 - [ ] ändern: …
 
-### materialkennwerte · Kennwerte-Datenbank
+### materialkennwerte · Kennwerte
 
 Niveau B · 30 min · Vorwissen: baustoffkenngroessen
 
