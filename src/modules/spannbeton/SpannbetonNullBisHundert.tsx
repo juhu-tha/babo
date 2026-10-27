@@ -27,6 +27,7 @@ import inhalt from '@/content/spannbeton/SpannbetonNullBisHundert.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { stauchungsVerlust, lastausgleich } from '@/src/calc/spannbeton';
+import { ReiterLeiste, alsReiter, reiterPanel } from '../../components/ui/Auswahlgruppe';
 
 interface Props {
   onNavigateTab?: (tab: 'grundprinzipien' | 'kennwerte' | 'rechner' | 'dauerhaftigkeit') => void;
@@ -110,12 +111,12 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
           <span><MdText text={inhalt.texte.themenübersichtKapitelauswahl} /></span>
           <span className="text-shiraz font-mono font-bold">{steps[activeStep].progress}</span>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+        <ReiterLeiste label="Kapitel" className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
           {steps.map((st) => {
             const isActive = activeStep === st.id;
             const isCompleted = activeStep > st.id;
             return (
-              <button aria-pressed={isActive}
+              <button {...alsReiter(isActive, 'spannbeton-kapitel', st.id)}
                 key={st.id}
                 type="button"
                 onClick={() => setActiveStep(st.id)}
@@ -145,11 +146,11 @@ export default function SpannbetonNullBisHundert({ onNavigateTab }: Props) {
               </button>
             );
           })}
-        </div>
+        </ReiterLeiste>
       </div>
 
       {/* Schritt-Inhalte */}
-      <div className="bg-white p-6 md:p-8 rounded-2xl border border-home-grau/30 shadow-sm space-y-8 animate-in fade-in duration-300">
+      <div {...reiterPanel('spannbeton-kapitel', activeStep)} className="bg-white p-6 md:p-8 rounded-2xl border border-home-grau/30 shadow-sm space-y-8 animate-in fade-in duration-300">
         
         {/* ========================================================================= */}
         {/* STATION 1: 0% - 20% DAS GRUNDPRINZIP */}

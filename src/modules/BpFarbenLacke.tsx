@@ -13,6 +13,7 @@ import { FilmchemieTab } from './bpfarbenlacke/FilmchemieTab';
 import inhalt from '@/content/bpfarbenlacke/BpFarbenLacke.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 export default function BpFarbenLacke() {
   const [activeTab, setActiveTab] = useState<'allgemein' | 'komponenten' | 'filmchemie' | 'bindemittel' | 'rechner' | 'voc' | 'oberflaechenschutz'>('allgemein');
@@ -334,9 +335,9 @@ export default function BpFarbenLacke() {
                   <Layers size={18} className="text-shiraz" /><MdText text={inhalt.texte.systemKlassifizierungOs1} /></h3>
                 <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.wählenSieEinSystem} /></p>
                 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <AuswahlGruppe label="Oberflächenschutzsystem" className="grid grid-cols-2 md:grid-cols-4 gap-3">
                   {OS_SYSTEMS.map((sys) => (
-                    <button aria-pressed={selectedOsId === sys.id}
+                    <button {...alsOption(selectedOsId === sys.id)}
                       key={sys.id}
                       onClick={() => setSelectedOsId(sys.id)}
                       className={`p-3.5 rounded-xl border text-left transition-all duration-150 flex flex-col justify-between gap-1.5 cursor-pointer ${
@@ -351,7 +352,7 @@ export default function BpFarbenLacke() {
                       </div>
                     </button>
                   ))}
-                </div>
+                </AuswahlGruppe>
 
                 {/* Selected OS Details Card */}
                 {(() => {

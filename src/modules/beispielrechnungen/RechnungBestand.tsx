@@ -4,6 +4,7 @@ import { BlockMath, InlineMath } from 'react-katex';
 import React from 'react';
 import inhalt from '@/content/beispielrechnungen/RechnungBestand.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ReiterLeiste, alsReiter, reiterPanel } from '../../components/ui/Auswahlgruppe';
 
 interface RechnungBestandProps {
   bestandSubTab: "beton" | "stahl";
@@ -36,8 +37,8 @@ export default function RechnungBestand({ bestandSubTab, beta_WN, beta_WN_150, d
   return (
       <div className="flex flex-col gap-6 animate-in fade-in duration-300">
         {/* SUB-TABS */}
-        <div className="flex flex-wrap gap-2 border-b border-slate-100 pb-2">
-          <button aria-pressed={bestandSubTab === 'beton'}
+        <ReiterLeiste label="Beispielrechnungen Bestand" className="flex flex-wrap gap-2 border-b border-slate-100 pb-2">
+          <button {...alsReiter(bestandSubTab === 'beton', 'rechnung-bestand', 'beton')}
             onClick={() => setBestandSubTab('beton')}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
                   bestandSubTab === 'beton'
@@ -45,7 +46,7 @@ export default function RechnungBestand({ bestandSubTab, beta_WN, beta_WN_150, d
                     : 'text-slate-500 hover:bg-slate-50'
                 }`}
           ><MdText text={inhalt.texte.t1HistorischerBetonDin} /></button>
-          <button aria-pressed={bestandSubTab === 'stahl'}
+          <button {...alsReiter(bestandSubTab === 'stahl', 'rechnung-bestand', 'stahl')}
             onClick={() => setBestandSubTab('stahl')}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
                   bestandSubTab === 'stahl'
@@ -53,10 +54,10 @@ export default function RechnungBestand({ bestandSubTab, beta_WN, beta_WN_150, d
                     : 'text-slate-500 hover:bg-slate-50'
                 }`}
           ><MdText text={inhalt.texte.t2HistorischerBetonstahlRu} /></button>
-        </div>
+        </ReiterLeiste>
 
         {bestandSubTab === 'beton' && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div {...reiterPanel('rechnung-bestand', bestandSubTab)} className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="space-y-6">
               <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-4">
                 <h3 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2 flex items-center gap-1.5">
@@ -163,7 +164,7 @@ export default function RechnungBestand({ bestandSubTab, beta_WN, beta_WN_150, d
         )}
 
         {bestandSubTab === 'stahl' && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div {...reiterPanel('rechnung-bestand', bestandSubTab)} className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="space-y-6">
               <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-4">
                 <h3 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2 flex items-center gap-1.5">

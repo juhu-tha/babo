@@ -7,6 +7,7 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/zustandsbewertung/Zustandsbewertung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 const SCHADEN_KATEGORIEN = [
   { id: 'all', label: inhalt.werte.alleKategorien },
@@ -456,8 +457,8 @@ export default function Zustandsbewertung() {
         </div>
               </div>
 
-              <div className="flex border border-home-grau/30 rounded-lg p-1 bg-off-white">
-                <button aria-pressed={calculatorTab === 'quick'}
+              <ReiterLeiste label="Rechner" className="flex border border-home-grau/30 rounded-lg p-1 bg-off-white">
+                <button {...alsReiter(calculatorTab === 'quick', 'zustand-rechner', 'quick')}
                   onClick={() => setCalculatorTab('quick')}
                   className={`px-4 py-1.5 rounded-md text-xs font-semibold transition-all ${
                     calculatorTab === 'quick'
@@ -470,7 +471,7 @@ export default function Zustandsbewertung() {
                     Schnellkonverter
                   </div>
                 </button>
-                <button aria-pressed={calculatorTab === 'matrix'}
+                <button {...alsReiter(calculatorTab === 'matrix', 'zustand-rechner', 'matrix')}
                   onClick={() => setCalculatorTab('matrix')}
                   className={`px-4 py-1.5 rounded-md text-xs font-semibold transition-all ${
                     calculatorTab === 'matrix'
@@ -481,7 +482,7 @@ export default function Zustandsbewertung() {
                   <div className="flex items-center gap-1.5">
                     <FileText size={14} /><MdText text={inhalt.texte.sVDEinzelprüfung} /></div>
                 </button>
-              </div>
+              </ReiterLeiste>
             </div>
 
             {/* Dynamic calculation states & helper helper */}
@@ -529,7 +530,7 @@ export default function Zustandsbewertung() {
                   <div className="lg:col-span-7 space-y-6">
                     
                     {calculatorTab === 'quick' ? (
-                      <div className="p-5 border border-home-grau/30 rounded-xl bg-off-white">
+                      <div {...reiterPanel('zustand-rechner', calculatorTab)} className="p-5 border border-home-grau/30 rounded-xl bg-off-white">
                         <div className="flex justify-between items-center mb-4">
                           <span className="text-sm font-bold text-text-main flex items-center gap-1.5">
                             <Sliders size={16} className="text-shiraz" /><MdText text={inhalt.texte.manuelleBaustoffBauwerksnoteZustandsnote} /></span>
@@ -562,7 +563,7 @@ export default function Zustandsbewertung() {
                         </div>
                       </div>
                     ) : (
-                      <div className="p-5 border border-home-grau/30 rounded-xl bg-off-white space-y-5">
+                      <div {...reiterPanel('zustand-rechner', calculatorTab)} className="p-5 border border-home-grau/30 rounded-xl bg-off-white space-y-5">
                         <div className="flex justify-between items-center pb-2 border-b border-home-grau/10">
                           <span className="text-sm font-bold text-text-main flex items-center gap-1.5">
                             <FileText size={16} className="text-shiraz" /><MdText text={inhalt.texte.sVDEinzelbewertung} /></span>
@@ -638,6 +639,7 @@ export default function Zustandsbewertung() {
                             <button
                               type="button"
                               disabled={additionalCount <= 0}
+                              aria-label="Weitere Schäden verringern"
                               onClick={() => setAdditionalCount(prev => prev - 1)}
                               className="w-7 h-7 bg-white border border-home-grau/30 rounded flex items-center justify-center text-text-main hover:bg-home-grau/5 disabled:opacity-40"
                             >
@@ -647,6 +649,7 @@ export default function Zustandsbewertung() {
                             <button
                               type="button"
                               disabled={additionalCount >= 5}
+                              aria-label="Weitere Schäden erhöhen"
                               onClick={() => setAdditionalCount(prev => prev + 1)}
                               className="w-7 h-7 bg-white border border-home-grau/30 rounded flex items-center justify-center text-text-main hover:bg-home-grau/5 disabled:opacity-40"
                             >

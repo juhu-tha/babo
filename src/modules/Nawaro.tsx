@@ -21,6 +21,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/nawaro/Nawaro.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 // Define FNR Product Type
 interface FnrProduct {
@@ -272,8 +273,8 @@ export default function Nawaro() {
             
             {/* Filter Toolbar */}
             <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 bg-off-white p-4 rounded-xl border border-home-grau/30">
-              <div className="flex flex-wrap gap-2">
-                <button aria-pressed={dbCategory === 'all'}
+              <AuswahlGruppe label="Filter Kategorie" className="flex flex-wrap gap-2">
+                <button {...alsOption(dbCategory === 'all')}
                   onClick={() => setDbCategory('all')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
                     dbCategory === 'all' 
@@ -281,7 +282,7 @@ export default function Nawaro() {
                       : 'bg-white text-text-main border-home-grau/30 hover:bg-home-grau/10'
                   }`}
                 ><MdText text={inhalt.texte.alleProdukte} /></button>
-                <button aria-pressed={dbCategory === 'daemmung'}
+                <button {...alsOption(dbCategory === 'daemmung')}
                   onClick={() => setDbCategory('daemmung')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
                     dbCategory === 'daemmung' 
@@ -291,7 +292,7 @@ export default function Nawaro() {
                 >
                   Dämmstoffe
                 </button>
-                <button aria-pressed={dbCategory === 'tragwerk'}
+                <button {...alsOption(dbCategory === 'tragwerk')}
                   onClick={() => setDbCategory('tragwerk')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
                     dbCategory === 'tragwerk' 
@@ -301,7 +302,7 @@ export default function Nawaro() {
                 >
                   Tragwerk
                 </button>
-                <button aria-pressed={dbCategory === 'lehm_putz'}
+                <button {...alsOption(dbCategory === 'lehm_putz')}
                   onClick={() => setDbCategory('lehm_putz')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
                     dbCategory === 'lehm_putz' 
@@ -309,7 +310,7 @@ export default function Nawaro() {
                       : 'bg-white text-text-main border-home-grau/30 hover:bg-home-grau/10'
                   }`}
                 ><MdText text={inhalt.texte.lehmPutze} /></button>
-                <button aria-pressed={dbCategory === 'boden'}
+                <button {...alsOption(dbCategory === 'boden')}
                   onClick={() => setDbCategory('boden')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
                     dbCategory === 'boden' 
@@ -317,7 +318,7 @@ export default function Nawaro() {
                       : 'bg-white text-text-main border-home-grau/30 hover:bg-home-grau/10'
                   }`}
                 ><MdText text={inhalt.texte.bödenLacke} /></button>
-              </div>
+              </AuswahlGruppe>
 
               {/* Search input */}
               <div className="relative flex-grow max-w-md">
@@ -336,10 +337,10 @@ export default function Nawaro() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
               
               {/* Material List (col span 5) */}
-              <div className="lg:col-span-5 flex flex-col gap-2 max-h-[480px] overflow-y-auto pr-2">
+              <AuswahlGruppe label="Produkt" className="lg:col-span-5 flex flex-col gap-2 max-h-[480px] overflow-y-auto pr-2">
                 {filteredProducts.length > 0 ? (
                   filteredProducts.map(p => (
-                    <button aria-pressed={selectedProduct === p.id}
+                    <button {...alsOption(selectedProduct === p.id)}
                       key={p.id}
                       onClick={() => setSelectedProduct(p.id)}
                       className={`p-4 rounded-xl border text-left transition-all flex flex-col gap-1.5 cursor-pointer ${
@@ -369,7 +370,7 @@ export default function Nawaro() {
                 ) : (
                   <div className="text-center py-12 text-xs text-text-main/50 border border-dashed border-home-grau/20 rounded-xl"><MdText text={inhalt.texte.keineMaterialienFürDiese} /></div>
                 )}
-              </div>
+              </AuswahlGruppe>
 
               {/* Material Details Sheet (col span 7) */}
               <div className="lg:col-span-7 bg-off-white p-5 rounded-xl border border-home-grau/30 flex flex-col gap-5">
@@ -458,8 +459,8 @@ export default function Nawaro() {
                 {/* Rule-1: Prioritized Target (Interaktives Steuerelement) */}
                 <div className="flex flex-col gap-2">
                   <label className="text-xs font-bold text-text-main uppercase tracking-wider"><MdText text={inhalt.texte.planerischerZielFokus} /></label>
-                  <div className="flex flex-col gap-2">
-                    <button aria-pressed={navGoal === 'summer'}
+                  <AuswahlGruppe label="Planerischer Zielfokus" className="flex flex-col gap-2">
+                    <button {...alsOption(navGoal === 'summer')}
                       onClick={() => setNavGoal('summer')}
                       className={`p-3 rounded-lg border text-left flex items-center gap-3 transition-all cursor-pointer ${
                         navGoal === 'summer'
@@ -474,7 +475,7 @@ export default function Nawaro() {
                       </div>
                     </button>
 
-                    <button aria-pressed={navGoal === 'heat'}
+                    <button {...alsOption(navGoal === 'heat')}
                       onClick={() => setNavGoal('heat')}
                       className={`p-3 rounded-lg border text-left flex items-center gap-3 transition-all cursor-pointer ${
                         navGoal === 'heat'
@@ -489,7 +490,7 @@ export default function Nawaro() {
                       </div>
                     </button>
 
-                    <button aria-pressed={navGoal === 'sound'}
+                    <button {...alsOption(navGoal === 'sound')}
                       onClick={() => setNavGoal('sound')}
                       className={`p-3 rounded-lg border text-left flex items-center gap-3 transition-all cursor-pointer ${
                         navGoal === 'sound'
@@ -504,7 +505,7 @@ export default function Nawaro() {
                       </div>
                     </button>
 
-                    <button aria-pressed={navGoal === 'moisture'}
+                    <button {...alsOption(navGoal === 'moisture')}
                       onClick={() => setNavGoal('moisture')}
                       className={`p-3 rounded-lg border text-left flex items-center gap-3 transition-all cursor-pointer ${
                         navGoal === 'moisture'
@@ -519,7 +520,7 @@ export default function Nawaro() {
                       </div>
                     </button>
 
-                    <button aria-pressed={navGoal === 'eco'}
+                    <button {...alsOption(navGoal === 'eco')}
                       onClick={() => setNavGoal('eco')}
                       className={`p-3 rounded-lg border text-left flex items-center gap-3 transition-all cursor-pointer ${
                         navGoal === 'eco'
@@ -533,7 +534,7 @@ export default function Nawaro() {
                         <span className={`text-[10px] font-normal ${navGoal === 'eco' ? 'text-white/90' : 'text-text-main/50'}`}><MdText text={inhalt.texte.niedrigsterHerstellungsaufwandRecycling} /></span>
                       </div>
                     </button>
-                  </div>
+                  </AuswahlGruppe>
                 </div>
 
                 {/* Wall/Building Component */}

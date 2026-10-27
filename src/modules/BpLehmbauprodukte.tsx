@@ -19,6 +19,7 @@ import inhalt from '@/content/bplehmbauprodukte/BpLehmbauprodukte.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 interface LoamStandardInfo {
   id: string;
@@ -119,9 +120,9 @@ export default function BpLehmbauprodukte() {
           <div className="space-y-6 animate-in fade-in duration-200">
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
               {/* Sidebar Selector list */}
-              <div className="lg:col-span-1 flex flex-col gap-2">
+              <AuswahlGruppe label="Norm" className="lg:col-span-1 flex flex-col gap-2">
                 {LOAM_STANDARDS_DB.map((item) => (
-                  <button aria-pressed={selectedStandard === item.id}
+                  <button {...alsOption(selectedStandard === item.id)}
                     key={item.id}
                     onClick={() => setSelectedStandard(item.id)}
                     className={`p-3.5 rounded-xl border text-left transition-all flex flex-col gap-1 items-start cursor-pointer ${
@@ -136,7 +137,7 @@ export default function BpLehmbauprodukte() {
                     <span className="text-sm mt-1">{item.title}</span>
                   </button>
                 ))}
-              </div>
+              </AuswahlGruppe>
 
               {/* Main Detail panel */}
               <div className="lg:col-span-3 bg-slate-50/50 p-6 rounded-2xl border border-home-grau/25 space-y-6">

@@ -20,6 +20,7 @@ import {
 import inhalt from '@/content/wta/WTA.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 // Hygrothermal evaluation for combination of WTA horizontal barrier and interior insulation
 const evaluateKombination = (
@@ -315,8 +316,8 @@ export default function WTA() {
             {/* Input 3: Masonry Structure Radio */}
             <div className="space-y-1.5 text-xs">
               <label className="font-bold text-text-main block"><MdText text={inhalt.texte.typDesMauergefüges} /></label>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                <button aria-pressed={masonryType === 'brick'}
+              <AuswahlGruppe label="Mauergefüge" className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <button {...alsOption(masonryType === 'brick')}
                   type="button"
                   onClick={() => setMasonryType('brick')}
                   className={`py-2 px-2.5 rounded-lg border font-semibold text-center transition-all ${
@@ -325,7 +326,7 @@ export default function WTA() {
                       : 'bg-white border-home-grau/25 text-slate-700 hover:bg-slate-100'
                   }`}
                 ><MdText text={inhalt.texte.homogenerZiegel} /></button>
-                <button aria-pressed={masonryType === 'mixed'}
+                <button {...alsOption(masonryType === 'mixed')}
                   type="button"
                   onClick={() => setMasonryType('mixed')}
                   className={`py-2 px-2.5 rounded-lg border font-semibold text-center transition-all ${
@@ -336,7 +337,7 @@ export default function WTA() {
                 >
                   Mischmauerwerk
                 </button>
-                <button aria-pressed={masonryType === 'hollow'}
+                <button {...alsOption(masonryType === 'hollow')}
                   type="button"
                   onClick={() => setMasonryType('hollow')}
                   className={`py-2 px-2.5 rounded-lg border font-semibold text-center transition-all ${
@@ -347,14 +348,14 @@ export default function WTA() {
                 >
                   Hohlkammerstein
                 </button>
-              </div>
+              </AuswahlGruppe>
             </div>
 
             {/* Input 4: Salt level selector */}
             <div className="space-y-1.5 text-xs">
               <label className="font-bold text-text-main block"><MdText text={inhalt.texte.sollSalzbelastungChlorideNitrate} /></label>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                <button aria-pressed={saltLoad === 'low'}
+              <AuswahlGruppe label="Salzbelastung" className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <button {...alsOption(saltLoad === 'low')}
                   type="button"
                   onClick={() => setSaltLoad('low')}
                   className={`py-2 px-2.5 rounded-lg border font-semibold text-center transition-all ${
@@ -365,7 +366,7 @@ export default function WTA() {
                 >
                   Gering
                 </button>
-                <button aria-pressed={saltLoad === 'medium'}
+                <button {...alsOption(saltLoad === 'medium')}
                   type="button"
                   onClick={() => setSaltLoad('medium')}
                   className={`py-2 px-2.5 rounded-lg border font-semibold text-center transition-all ${
@@ -376,7 +377,7 @@ export default function WTA() {
                 >
                   Mittel
                 </button>
-                <button aria-pressed={saltLoad === 'high'}
+                <button {...alsOption(saltLoad === 'high')}
                   type="button"
                   onClick={() => setSaltLoad('high')}
                   className={`py-2 px-2.5 rounded-lg border font-semibold text-center transition-all ${
@@ -385,7 +386,7 @@ export default function WTA() {
                       : 'bg-white border-home-grau/30 text-slate-700 hover:bg-slate-100'
                   }`}
                 ><MdText text={inhalt.texte.starkKritisch} /></button>
-              </div>
+              </AuswahlGruppe>
             </div>
 
             {/* WTA Infobox on Salt loading */}
@@ -481,8 +482,8 @@ export default function WTA() {
               <span className="text-xs font-bold text-slate-700 uppercase tracking-widest block border-b pb-1.5 border-home-grau/25"><MdText text={inhalt.texte.t1SalzlastklasseWählen} /></span>
               <div className="space-y-2 text-xs">
                 <label className="font-bold text-text-main block"><MdText text={inhalt.texte.bauschädlicheSalzkonzentration} /></label>
-                <div className="grid grid-cols-1 gap-2">
-                  <button aria-pressed={saltLoad === 'low'}
+                <AuswahlGruppe label="Salzlastklasse" className="grid grid-cols-1 gap-2">
+                  <button {...alsOption(saltLoad === 'low')}
                     type="button"
                     onClick={() => setSaltLoad('low')}
                     className={`p-2.5 rounded-lg border text-left text-xs transition-all flex justify-between items-center ${
@@ -493,7 +494,7 @@ export default function WTA() {
                   >
                     <span><MdText text={inhalt.texte.gering01M} /></span>
                   </button>
-                  <button aria-pressed={saltLoad === 'medium'}
+                  <button {...alsOption(saltLoad === 'medium')}
                     type="button"
                     onClick={() => setSaltLoad('medium')}
                     className={`p-2.5 rounded-lg border text-left text-xs transition-all flex justify-between items-center ${
@@ -504,7 +505,7 @@ export default function WTA() {
                   >
                     <span><MdText text={inhalt.texte.mittel010} /></span>
                   </button>
-                  <button aria-pressed={saltLoad === 'high'}
+                  <button {...alsOption(saltLoad === 'high')}
                     type="button"
                     onClick={() => setSaltLoad('high')}
                     className={`p-2.5 rounded-lg border text-left text-xs transition-all flex justify-between items-center ${
@@ -515,7 +516,7 @@ export default function WTA() {
                   >
                     <span><MdText text={inhalt.texte.hoch05M} /></span>
                   </button>
-                </div>
+                </AuswahlGruppe>
               </div>
             </div>
 

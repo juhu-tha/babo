@@ -2,6 +2,7 @@ import { Recycle, Scale, Layers, Check, AlertCircle, X, FileSignature } from 'lu
 import React from 'react';
 import inhalt from '@/content/abfaelle/EbvMantelverordnung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 interface EbvMantelverordnungProps {
   ebvEinbauweise: string;
@@ -167,13 +168,13 @@ export default function EbvMantelverordnung({ ebvEinbauweise, ebvGrundwasser, eb
               {/* Wasserschutzgebiet */}
               <div>
                 <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5"><MdText text={inhalt.texte.t2WasserschutzgebietGrundwasserschutzbere} /></label>
-                <div className="grid grid-cols-3 gap-2">
+                <AuswahlGruppe label="Wasserschutzgebiet" className="grid grid-cols-3 gap-2">
                   {[
                     { id: 'ausserhalb', label: inhalt.werte.keinWasserschutzgebiet },
                     { id: 'wsg_3', label: inhalt.werte.zoneIiiIiiB },
                     { id: 'wsg_1_2', label: inhalt.werte.zoneIIiIii }
                   ].map((z) => (
-                    <button aria-pressed={ebvSchutzgebiet === z.id}
+                    <button {...alsOption(ebvSchutzgebiet === z.id)}
                       key={z.id}
                       type="button"
                       onClick={() => setEbvSchutzgebiet(z.id)}
@@ -186,14 +187,14 @@ export default function EbvMantelverordnung({ ebvEinbauweise, ebvGrundwasser, eb
                       {z.label}
                     </button>
                   ))}
-                </div>
+                </AuswahlGruppe>
               </div>
 
               {/* Hydrogeologie */}
               <div>
                 <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 font-semibold"><MdText text={inhalt.texte.t3HydrogeologieNatürlicherBodenschutz} /></label>
-                <div className="grid grid-cols-2 gap-2">
-                  <button aria-pressed={ebvGrundwasser === 'deckschicht_ja'}
+                <AuswahlGruppe label="Hydrogeologie" className="grid grid-cols-2 gap-2">
+                  <button {...alsOption(ebvGrundwasser === 'deckschicht_ja')}
                     type="button"
                     onClick={() => setEbvGrundwasser('deckschicht_ja')}
                     className={`py-2 px-3 rounded-lg text-xs font-semibold border text-left transition-all flex flex-col justify-start leading-tight ${
@@ -205,7 +206,7 @@ export default function EbvMantelverordnung({ ebvEinbauweise, ebvGrundwasser, eb
                     <span className="font-bold"><MdText text={inhalt.texte.günstigeDeckschicht} /></span>
                     <span className="text-xs opacity-90 mt-0.5 font-semibold"><MdText text={inhalt.texte.lehmTonVorhandenAbstand} /></span>
                   </button>
-                  <button aria-pressed={ebvGrundwasser === 'deckschicht_nein'}
+                  <button {...alsOption(ebvGrundwasser === 'deckschicht_nein')}
                     type="button"
                     onClick={() => setEbvGrundwasser('deckschicht_nein')}
                     className={`py-2 px-3 rounded-lg text-xs font-semibold border text-left transition-all flex flex-col justify-start leading-tight ${
@@ -217,14 +218,14 @@ export default function EbvMantelverordnung({ ebvEinbauweise, ebvGrundwasser, eb
                     <span className="font-bold"><MdText text={inhalt.texte.ungünstigeVerhältnisse} /></span>
                     <span className="text-xs opacity-90 mt-0.5 font-semibold"><MdText text={inhalt.texte.sandigKiesigOderGrundwasser} /></span>
                   </button>
-                </div>
+                </AuswahlGruppe>
               </div>
 
               {/* Einbauweise */}
               <div>
                 <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 font-semibold"><MdText text={inhalt.texte.t4EinbausituationBauweise} /></label>
-                <div className="grid grid-cols-2 gap-2">
-                  <button aria-pressed={ebvEinbauweise === 'versiegelt'}
+                <AuswahlGruppe label="Einbauweise" className="grid grid-cols-2 gap-2">
+                  <button {...alsOption(ebvEinbauweise === 'versiegelt')}
                     type="button"
                     onClick={() => setEbvEinbauweise('versiegelt')}
                     className={`py-2 px-3 rounded-lg text-xs font-semibold border text-left transition-all flex flex-col justify-start leading-tight ${
@@ -236,7 +237,7 @@ export default function EbvMantelverordnung({ ebvEinbauweise, ebvGrundwasser, eb
                     <span className="font-bold"><MdText text={inhalt.texte.bautechnischeSicherung} /></span>
                     <span className="text-xs opacity-90 mt-0.5 font-semibold"><MdText text={inhalt.texte.unterDichtenDeckenAsphalt} /></span>
                   </button>
-                  <button aria-pressed={ebvEinbauweise === 'offen'}
+                  <button {...alsOption(ebvEinbauweise === 'offen')}
                     type="button"
                     onClick={() => setEbvEinbauweise('offen')}
                     className={`py-2 px-3 rounded-lg text-xs font-semibold border text-left transition-all flex flex-col justify-start leading-tight ${
@@ -248,14 +249,14 @@ export default function EbvMantelverordnung({ ebvEinbauweise, ebvGrundwasser, eb
                     <span className="font-bold"><MdText text={inhalt.texte.offeneBauweise} /></span>
                     <span className="text-xs opacity-90 mt-0.5 font-semibold font-semibold"><MdText text={inhalt.texte.wegebauLärmschutzwälleWasserleitend} /></span>
                   </button>
-                </div>
+                </AuswahlGruppe>
               </div>
 
               {/* Menge/Einbauvolumen */}
               <div>
                 <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 font-semibold"><MdText text={inhalt.texte.t5EinbauvolumenMeldepflichtNach} /></label>
-                <div className="grid grid-cols-2 gap-2">
-                  <button aria-pressed={ebvVolumen === 'unter_250'}
+                <AuswahlGruppe label="Einbauvolumen" className="grid grid-cols-2 gap-2">
+                  <button {...alsOption(ebvVolumen === 'unter_250')}
                     type="button"
                     onClick={() => setEbvVolumen('unter_250')}
                     className={`py-2 px-3 text-center rounded-lg text-xs font-semibold border transition-all ${
@@ -264,7 +265,7 @@ export default function EbvMantelverordnung({ ebvEinbauweise, ebvGrundwasser, eb
                               : 'bg-white text-slate-700 border-home-grau/30 hover:bg-slate-50'
                           }`}
                   ><MdText text={inhalt.texte.kleinsteinbau250M} /></button>
-                  <button aria-pressed={ebvVolumen === 'ab_250'}
+                  <button {...alsOption(ebvVolumen === 'ab_250')}
                     type="button"
                     onClick={() => setEbvVolumen('ab_250')}
                     className={`py-2 px-3 text-center rounded-lg text-xs font-semibold border transition-all ${
@@ -273,7 +274,7 @@ export default function EbvMantelverordnung({ ebvEinbauweise, ebvGrundwasser, eb
                               : 'bg-white text-slate-700 border-home-grau/30 hover:bg-slate-50'
                           }`}
                   ><MdText text={inhalt.texte.großbaustelle250M} /></button>
-                </div>
+                </AuswahlGruppe>
               </div>
             </div>
 

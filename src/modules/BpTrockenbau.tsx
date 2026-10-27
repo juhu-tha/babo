@@ -13,6 +13,7 @@ import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/Inno
 import inhalt from '@/content/bptrockenbau/BpTrockenbau.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 interface ProductSpec {
   id: string;
@@ -107,8 +108,8 @@ export default function BpTrockenbau() {
             </div>
 
             {/* Toggle Subcategory switcher */}
-            <div className="bg-slate-50 border border-slate-200 p-1.5 rounded-xl flex gap-2">
-              <button aria-pressed={selectedSubCategory === 'produkte'}
+            <ReiterLeiste label="Produkte oder Systeme" className="bg-slate-50 border border-slate-200 p-1.5 rounded-xl flex gap-2">
+              <button {...alsReiter(selectedSubCategory === 'produkte', 'trockenbau-bereich', 'produkte')}
                 onClick={() => setSelectedSubCategory('produkte')}
                 className={`flex-1 py-2 text-center text-xs font-extrabold flex items-center justify-center gap-2 rounded-lg transition-all border cursor-pointer ${
                   selectedSubCategory === 'produkte'
@@ -117,7 +118,7 @@ export default function BpTrockenbau() {
                 }`}
               >
                 <FileText size={14} /><MdText text={inhalt.texte.t1BauprodukteSpezialplattenDin} /></button>
-              <button aria-pressed={selectedSubCategory === 'systeme'}
+              <button {...alsReiter(selectedSubCategory === 'systeme', 'trockenbau-bereich', 'systeme')}
                 onClick={() => setSelectedSubCategory('systeme')}
                 className={`flex-1 py-2 text-center text-xs font-extrabold flex items-center justify-center gap-2 rounded-lg transition-all border cursor-pointer ${
                   selectedSubCategory === 'systeme'
@@ -126,16 +127,16 @@ export default function BpTrockenbau() {
                 }`}
               >
                 <Layers size={14} /><MdText text={inhalt.texte.t2SystemaufbautenMontagestandardsDin} /></button>
-            </div>
+            </ReiterLeiste>
 
             {/* Sub-Tab 1.1: Interactive Products Database */}
             {selectedSubCategory === 'produkte' && (
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+              <div {...reiterPanel('trockenbau-bereich', selectedSubCategory)} className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
                 {/* Product List Sidebar */}
-                <div className="lg:col-span-5 flex flex-col gap-2 max-h-[500px] overflow-y-auto pr-1">
+                <AuswahlGruppe label="Produkt" className="lg:col-span-5 flex flex-col gap-2 max-h-[500px] overflow-y-auto pr-1">
                   <h4 className="text-[10px] font-black uppercase tracking-wider text-slate-400 px-2 select-none"><MdText text={inhalt.texte.verfügbareAusbauproduktePlatten} /></h4>
                   {DRY_PRODUCTS_DB.map((prod) => (
-                    <button aria-pressed={selectedProductId === prod.id}
+                    <button {...alsOption(selectedProductId === prod.id)}
                       key={prod.id}
                       onClick={() => setSelectedProductId(prod.id)}
                       className={`p-3 text-left rounded-xl border transition-all flex items-center justify-between gap-3 cursor-pointer ${
@@ -154,7 +155,7 @@ export default function BpTrockenbau() {
                       <ChevronRight size={14} className="text-slate-400" />
                     </button>
                   ))}
-                </div>
+                </AuswahlGruppe>
 
                 {/* Selected Product Specifications Detail Panel */}
                 <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col justify-between shadow-sm">
@@ -240,12 +241,12 @@ export default function BpTrockenbau() {
 
             {/* Sub-Tab 1.2: Interactive Systems Database */}
             {selectedSubCategory === 'systeme' && (
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+              <div {...reiterPanel('trockenbau-bereich', selectedSubCategory)} className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
                 {/* System List Sidebar */}
-                <div className="lg:col-span-5 flex flex-col gap-2 max-h-[500px] overflow-y-auto pr-1">
+                <AuswahlGruppe label="System" className="lg:col-span-5 flex flex-col gap-2 max-h-[500px] overflow-y-auto pr-1">
                   <h4 className="text-[10px] font-black uppercase tracking-wider text-slate-400 px-2 select-none"><MdText text={inhalt.texte.ausgewählteTrockenbauMontagesysteme} /></h4>
                   {DRY_SYSTEMS_DB.map((sys) => (
-                    <button aria-pressed={selectedSystemId === sys.id}
+                    <button {...alsOption(selectedSystemId === sys.id)}
                       key={sys.id}
                       onClick={() => setSelectedSystemId(sys.id)}
                       className={`p-3 text-left rounded-xl border transition-all flex items-center justify-between gap-3 cursor-pointer ${
@@ -261,7 +262,7 @@ export default function BpTrockenbau() {
                       <ChevronRight size={14} className="text-slate-400" />
                     </button>
                   ))}
-                </div>
+                </AuswahlGruppe>
 
                 {/* Selected System Specification Detail Panel */}
                 <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col justify-between shadow-sm">

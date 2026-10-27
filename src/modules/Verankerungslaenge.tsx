@@ -10,6 +10,7 @@ import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { Layers } from 'lucide-react';
 import inhalt from '@/content/verankerungslaenge/Verankerungslaenge.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 export default function Verankerungslaenge() {
   const [fck, setFck] = useState(30); // MPa
@@ -113,16 +114,16 @@ export default function Verankerungslaenge() {
               
               <div className="mt-4">
                 <label className="text-sm font-medium text-text-main mb-1 block">Beanspruchung</label>
-                <div className="flex bg-white rounded-md border border-home-grau/20 shadow-sm">
-                  <button aria-pressed={beanspruchung === 'zug'} 
+                <AuswahlGruppe label="Beanspruchung" className="flex bg-white rounded-md border border-home-grau/20 shadow-sm">
+                  <button {...alsOption(beanspruchung === 'zug')} 
                     onClick={() => setBeanspruchung('zug')} 
                     className={`flex-1 py-2 text-sm font-medium rounded-l-md ${beanspruchung === 'zug' ? 'bg-shiraz text-white' : 'text-text-main hover:bg-off-white'}`}
                   >Zug</button>
-                  <button aria-pressed={beanspruchung === 'druck'} 
+                  <button {...alsOption(beanspruchung === 'druck')} 
                     onClick={() => setBeanspruchung('druck')} 
                     className={`flex-1 py-2 text-sm font-medium rounded-r-md ${beanspruchung === 'druck' ? 'bg-shiraz text-white' : 'text-text-main hover:bg-off-white'}`}
                   >Druck</button>
-                </div>
+                </AuswahlGruppe>
               </div>
             </div>
 

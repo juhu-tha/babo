@@ -18,6 +18,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/instandsetzungmaterialien/InstandsetzungMaterialien.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 interface InstandsetzungMaterialienProps {
   initialMaterial?: 'holz' | 'metalle' | 'kunststoffe' | 'asphalt' | 'mauerwerk';
@@ -46,8 +47,8 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
         </div>
 
         {/* Material Selector Bar */}
-        <div className="flex flex-wrap gap-2 pt-4 border-t border-home-grau/20 mt-4">
-          <button
+        <AuswahlGruppe label="Werkstoff" className="flex flex-wrap gap-2 pt-4 border-t border-home-grau/20 mt-4">
+          <button {...alsOption(selectedMaterial === 'holz')}
             onClick={() => { setSelectedMaterial('holz'); setActiveSubSection('uebersicht'); }}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               selectedMaterial === 'holz'
@@ -56,7 +57,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
             }`}
           >
             <Trees size={16} /><MdText text={inhalt.texte.holzDin68800} /></button>
-          <button
+          <button {...alsOption(selectedMaterial === 'metalle')}
             onClick={() => { setSelectedMaterial('metalle'); setActiveSubSection('uebersicht'); }}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               selectedMaterial === 'metalle'
@@ -65,7 +66,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
             }`}
           >
             <Shield size={16} /><MdText text={inhalt.texte.metalleStahlIso12944} /></button>
-          <button
+          <button {...alsOption(selectedMaterial === 'kunststoffe')}
             onClick={() => { setSelectedMaterial('kunststoffe'); setActiveSubSection('uebersicht'); }}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               selectedMaterial === 'kunststoffe'
@@ -74,7 +75,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
             }`}
           >
             <Box size={16} /><MdText text={inhalt.texte.kunststoffeFugenDvsDin} /></button>
-          <button
+          <button {...alsOption(selectedMaterial === 'asphalt')}
             onClick={() => { setSelectedMaterial('asphalt'); setActiveSubSection('uebersicht'); }}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               selectedMaterial === 'asphalt'
@@ -83,7 +84,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
             }`}
           >
             <TrendingUp size={16} /><MdText text={inhalt.texte.asphaltBitumenZtvBea} /></button>
-          <button
+          <button {...alsOption(selectedMaterial === 'mauerwerk')}
             onClick={() => { setSelectedMaterial('mauerwerk'); setActiveSubSection('uebersicht'); }}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               selectedMaterial === 'mauerwerk'
@@ -92,12 +93,12 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
             }`}
           >
             <Wrench size={16} /><MdText text={inhalt.texte.mauerwerkNatursteinWta} /></button>
-        </div>
+        </AuswahlGruppe>
       </div>
 
       {/* Sub-Section Tabs within the Selected Material */}
-      <div className="flex gap-2 border-b border-home-grau/30 pb-2">
-        <button aria-pressed={activeSubSection === 'uebersicht'}
+      <ReiterLeiste label="Bereiche Instandsetzungsmaterial" className="flex gap-2 border-b border-home-grau/30 pb-2">
+        <button {...alsReiter(activeSubSection === 'uebersicht', 'instmat-bereich', 'uebersicht')}
           onClick={() => setActiveSubSection('uebersicht')}
           className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
             activeSubSection === 'uebersicht'
@@ -105,7 +106,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
               : 'bg-white text-slate-700 border border-home-grau/30 hover:bg-off-white'
           }`}
         ><MdText text={inhalt.texte.übersichtSchadensmechanismen} /></button>
-        <button aria-pressed={activeSubSection === 'schutz'}
+        <button {...alsReiter(activeSubSection === 'schutz', 'instmat-bereich', 'schutz')}
           onClick={() => setActiveSubSection('schutz')}
           className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
             activeSubSection === 'schutz'
@@ -113,7 +114,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
               : 'bg-white text-slate-700 border border-home-grau/30 hover:bg-off-white'
           }`}
         ><MdText text={inhalt.texte.präventiverSchutz} /></button>
-        <button aria-pressed={activeSubSection === 'instandsetzung'}
+        <button {...alsReiter(activeSubSection === 'instandsetzung', 'instmat-bereich', 'instandsetzung')}
           onClick={() => setActiveSubSection('instandsetzung')}
           className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
             activeSubSection === 'instandsetzung'
@@ -121,7 +122,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
               : 'bg-white text-slate-700 border border-home-grau/30 hover:bg-off-white'
           }`}
         ><MdText text={inhalt.texte.instandsetzungSanierung} /></button>
-        <button aria-pressed={activeSubSection === 'praxis'}
+        <button {...alsReiter(activeSubSection === 'praxis', 'instmat-bereich', 'praxis')}
           onClick={() => setActiveSubSection('praxis')}
           className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
             activeSubSection === 'praxis'
@@ -129,7 +130,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
               : 'bg-white text-slate-700 border border-home-grau/30 hover:bg-off-white'
           }`}
         ><MdText text={inhalt.texte.praxiswissenSchadensfälle} /></button>
-      </div>
+      </ReiterLeiste>
 
       {/* ========================================================================= */}
       {/* MATERIAL 1: HOLZ */}
@@ -138,7 +139,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
         <div className="space-y-6 animate-in fade-in duration-300">
           
           {activeSubSection === 'uebersicht' && (
-            <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
+            <div {...reiterPanel('instmat-bereich', activeSubSection)} className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
               <div className="flex items-center justify-between border-b border-home-grau/20 pb-3">
                 <h3 className="font-bold text-base text-slate-900 flex items-center gap-2">
                   <Trees className="text-shiraz" size={20} /><MdText text={inhalt.texte.holzschutzHolzinstandsetzungDin68800} /></h3>
@@ -165,7 +166,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
           )}
 
           {activeSubSection === 'schutz' && (
-            <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
+            <div {...reiterPanel('instmat-bereich', activeSubSection)} className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
               <h3 className="font-bold text-base text-slate-900 border-b border-home-grau/20 pb-3"><MdText text={inhalt.texte.präventiverHolzschutzNachDin} /></h3>
 
               <div className="space-y-3 text-xs">
@@ -199,7 +200,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
           )}
 
           {activeSubSection === 'instandsetzung' && (
-            <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
+            <div {...reiterPanel('instmat-bereich', activeSubSection)} className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
               <h3 className="font-bold text-base text-slate-900 border-b border-home-grau/20 pb-3"><MdText text={inhalt.texte.instandsetzungsverfahrenFürGeschädigteHo} /></h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
@@ -226,7 +227,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
           )}
 
           {activeSubSection === 'praxis' && (
-            <div className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl space-y-3 text-xs">
+            <div {...reiterPanel('instmat-bereich', activeSubSection)} className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl space-y-3 text-xs">
               <h4 className="font-bold text-sm text-slate-900 flex items-center gap-2">
                 <AlertTriangle className="text-shiraz" size={16} /><MdText text={inhalt.texte.häufigerPraxisfehlerLuftdichtesEinpacken} /></h4>
               <p className="text-slate-800 leading-relaxed"><MdText text={inhalt.texte.schadensbildBeiDerEnergetischen} /></p>
@@ -245,7 +246,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
         <div className="space-y-6 animate-in fade-in duration-300">
           
           {activeSubSection === 'uebersicht' && (
-            <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
+            <div {...reiterPanel('instmat-bereich', activeSubSection)} className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
               <div className="flex items-center justify-between border-b border-home-grau/20 pb-3">
                 <h3 className="font-bold text-base text-slate-900 flex items-center gap-2">
                   <Shield className="text-shiraz" size={20} /><MdText text={inhalt.texte.metallschutzKorrosionsschutzDinEn} /></h3>
@@ -315,7 +316,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
           )}
 
           {activeSubSection === 'schutz' && (
-            <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
+            <div {...reiterPanel('instmat-bereich', activeSubSection)} className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
               <h3 className="font-bold text-base text-slate-900 border-b border-home-grau/20 pb-3"><MdText text={inhalt.texte.korrosionsschutzsystemeNachDinEn} /></h3>
 
               <div className="space-y-3 text-xs">
@@ -370,7 +371,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
           )}
 
           {activeSubSection === 'instandsetzung' && (
-            <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
+            <div {...reiterPanel('instmat-bereich', activeSubSection)} className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
               <h3 className="font-bold text-base text-slate-900 border-b border-home-grau/20 pb-3"><MdText text={inhalt.texte.instandsetzungUndVerstärkungGeschädigter} /></h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
@@ -399,7 +400,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
           )}
 
           {activeSubSection === 'praxis' && (
-            <div className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl space-y-3 text-xs">
+            <div {...reiterPanel('instmat-bereich', activeSubSection)} className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl space-y-3 text-xs">
               <h4 className="font-bold text-sm text-slate-900 flex items-center gap-2">
                 <AlertTriangle className="text-shiraz" size={16} /><MdText text={inhalt.texte.häufigerPraxisfehlerTaupunktunterschreit} /></h4>
               <p className="text-slate-800 leading-relaxed"><MdText text={inhalt.texte.ursacheBeimBeschichtenVon} /></p>
@@ -418,7 +419,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
         <div className="space-y-6 animate-in fade-in duration-300">
           
           {activeSubSection === 'uebersicht' && (
-            <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
+            <div {...reiterPanel('instmat-bereich', activeSubSection)} className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
               <div className="flex items-center justify-between border-b border-home-grau/20 pb-3">
                 <h3 className="font-bold text-base text-slate-900 flex items-center gap-2">
                   <Box className="text-shiraz" size={20} /><MdText text={inhalt.texte.schutzInstandsetzungVonKunststoffen} /></h3>
@@ -445,7 +446,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
           )}
 
           {activeSubSection === 'schutz' && (
-            <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
+            <div {...reiterPanel('instmat-bereich', activeSubSection)} className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
               <h3 className="font-bold text-base text-slate-900 border-b border-home-grau/20 pb-3"><MdText text={inhalt.texte.präventiveSchutzmaßnahmenFürBauwerkspoly} /></h3>
 
               <div className="space-y-3 text-xs">
@@ -472,7 +473,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
           )}
 
           {activeSubSection === 'instandsetzung' && (
-            <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
+            <div {...reiterPanel('instmat-bereich', activeSubSection)} className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
               <h3 className="font-bold text-base text-slate-900 border-b border-home-grau/20 pb-3"><MdText text={inhalt.texte.sanierungsverfahrenFürKunststoffeDichtun} /></h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
@@ -500,7 +501,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
           )}
 
           {activeSubSection === 'praxis' && (
-            <div className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl space-y-3 text-xs">
+            <div {...reiterPanel('instmat-bereich', activeSubSection)} className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl space-y-3 text-xs">
               <h4 className="font-bold text-sm text-slate-900 flex items-center gap-2">
                 <AlertTriangle className="text-shiraz" size={16} /><MdText text={inhalt.texte.häufigerPraxisfehlerSchweißenAuf} /></h4>
               <p className="text-slate-800 leading-relaxed"><MdText text={inhalt.texte.problemBeiDerInstandsetzung} /></p>
@@ -519,7 +520,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
         <div className="space-y-6 animate-in fade-in duration-300">
           
           {activeSubSection === 'uebersicht' && (
-            <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
+            <div {...reiterPanel('instmat-bereich', activeSubSection)} className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
               <div className="flex items-center justify-between border-b border-home-grau/20 pb-3">
                 <h3 className="font-bold text-base text-slate-900 flex items-center gap-2">
                   <TrendingUp className="text-shiraz" size={20} /><MdText text={inhalt.texte.schutzErhaltungVonAsphaltbefestigungen} /></h3>
@@ -546,7 +547,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
           )}
 
           {activeSubSection === 'schutz' && (
-            <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
+            <div {...reiterPanel('instmat-bereich', activeSubSection)} className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
               <h3 className="font-bold text-base text-slate-900 border-b border-home-grau/20 pb-3"><MdText text={inhalt.texte.präventiveSchutzmaßnahmenFürAsphaltbeläg} /></h3>
 
               <div className="space-y-3 text-xs">
@@ -569,7 +570,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
           )}
 
           {activeSubSection === 'instandsetzung' && (
-            <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
+            <div {...reiterPanel('instmat-bereich', activeSubSection)} className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
               <h3 className="font-bold text-base text-slate-900 border-b border-home-grau/20 pb-3"><MdText text={inhalt.texte.instandsetzungsverfahrenNachZtvBea} /></h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
@@ -596,7 +597,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
           )}
 
           {activeSubSection === 'praxis' && (
-            <div className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl space-y-3 text-xs">
+            <div {...reiterPanel('instmat-bereich', activeSubSection)} className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl space-y-3 text-xs">
               <h4 className="font-bold text-sm text-slate-900 flex items-center gap-2">
                 <AlertTriangle className="text-shiraz" size={16} /><MdText text={inhalt.texte.häufigerPraxisfehlerMangelhafterSchichte} /></h4>
               <p className="text-slate-800 leading-relaxed"><MdText text={inhalt.texte.schadensbildNach2Bis} /></p>
@@ -615,7 +616,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
         <div className="space-y-6 animate-in fade-in duration-300">
           
           {activeSubSection === 'uebersicht' && (
-            <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
+            <div {...reiterPanel('instmat-bereich', activeSubSection)} className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
               <div className="flex items-center justify-between border-b border-home-grau/20 pb-3">
                 <h3 className="font-bold text-base text-slate-900 flex items-center gap-2">
                   <Wrench className="text-shiraz" size={20} /><MdText text={inhalt.texte.schutzInstandsetzungVonMauerwerk} /></h3>
@@ -627,7 +628,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
           )}
 
           {activeSubSection === 'schutz' && (
-            <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
+            <div {...reiterPanel('instmat-bereich', activeSubSection)} className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
               <h3 className="font-bold text-base text-slate-900 border-b border-home-grau/20 pb-3"><MdText text={inhalt.texte.präventiverSchutzVonHistorischem} /></h3>
 
               <div className="space-y-3 text-xs">
@@ -645,7 +646,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
           )}
 
           {activeSubSection === 'instandsetzung' && (
-            <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
+            <div {...reiterPanel('instmat-bereich', activeSubSection)} className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xs space-y-4">
               <h3 className="font-bold text-base text-slate-900 border-b border-home-grau/20 pb-3"><MdText text={inhalt.texte.instandsetzungsverfahrenNachWta} /></h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
@@ -672,7 +673,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
           )}
 
           {activeSubSection === 'praxis' && (
-            <div className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl space-y-3 text-xs">
+            <div {...reiterPanel('instmat-bereich', activeSubSection)} className="bg-slate-50 border border-home-grau/30 p-5 rounded-xl space-y-3 text-xs">
               <h4 className="font-bold text-sm text-slate-900 flex items-center gap-2">
                 <AlertTriangle className="text-shiraz" size={16} /><MdText text={inhalt.texte.häufigerPraxisfehlerZementputzAuf} /></h4>
               <p className="text-slate-800 leading-relaxed"><MdText text={inhalt.texte.fehlerAufFeuchtemSalzbelastetem} /></p>

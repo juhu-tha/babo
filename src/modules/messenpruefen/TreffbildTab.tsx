@@ -2,6 +2,7 @@ import type { Dispatch, SetStateAction } from 'react';
 import { Target } from 'lucide-react';
 import inhalt from '@/content/messenpruefen/TreffbildTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 export interface TreffbildTabProps {
   accuracy: "high" | "low";
@@ -36,20 +37,20 @@ export function TreffbildTab({ accuracy, setAccuracy, precision, setPrecision, t
                     {accuracy === 'high' ? inhalt.werte.richtigkeitHoch : inhalt.werte.systematischeAbweichung}
                   </span>
                 </label>
-                <div className="grid grid-cols-2 gap-2">
-                  <button aria-pressed={accuracy === 'high'}
+                <AuswahlGruppe label="Richtigkeit" className="grid grid-cols-2 gap-2">
+                  <button {...alsOption(accuracy === 'high')}
                     onClick={() => setAccuracy('high')}
                     className={`py-2 px-3 text-xs font-semibold rounded-lg border transition-all font-sans ${
                           accuracy === 'high' ? 'bg-slate-800 text-white border-home-grau/30 shadow-sm' : 'bg-white text-slate-600 border-home-grau/30 hover:bg-slate-50'
                         }`}
                   ><MdText text={inhalt.texte.hochZentriert} /></button>
-                  <button aria-pressed={accuracy === 'low'}
+                  <button {...alsOption(accuracy === 'low')}
                     onClick={() => setAccuracy('low')}
                     className={`py-2 px-3 text-xs font-semibold rounded-lg border transition-all font-sans ${
                           accuracy === 'low' ? 'bg-slate-800 text-white border-home-grau/30 shadow-sm' : 'bg-white text-slate-600 border-home-grau/30 hover:bg-slate-50'
                         }`}
                   ><MdText text={inhalt.texte.niedrigVerschoben} /></button>
-                </div>
+                </AuswahlGruppe>
                 <p className="text-[10px] text-slate-500 leading-normal font-sans"><MdText text={inhalt.texte.systematischeMessfehlerZB} /></p>
               </div>
     
@@ -63,20 +64,20 @@ export function TreffbildTab({ accuracy, setAccuracy, precision, setPrecision, t
                     {precision === 'high' ? inhalt.werte.geringeStreuung : inhalt.werte.hohePrüfstreuung}
                   </span>
                 </label>
-                <div className="grid grid-cols-2 gap-2">
-                  <button aria-pressed={precision === 'high'}
+                <AuswahlGruppe label="Präzision" className="grid grid-cols-2 gap-2">
+                  <button {...alsOption(precision === 'high')}
                     onClick={() => setPrecision('high')}
                     className={`py-2 px-3 text-xs font-semibold rounded-lg border transition-all font-sans ${
                           precision === 'high' ? 'bg-slate-800 text-white border-home-grau/30 shadow-sm' : 'bg-white text-slate-600 border-home-grau/30 hover:bg-slate-50'
                         }`}
                   ><MdText text={inhalt.texte.hochGeringeStreuung} /></button>
-                  <button aria-pressed={precision === 'low'}
+                  <button {...alsOption(precision === 'low')}
                     onClick={() => setPrecision('low')}
                     className={`py-2 px-3 text-xs font-semibold rounded-lg border transition-all font-sans ${
                           precision === 'low' ? 'bg-slate-800 text-white border-home-grau/30 shadow-sm' : 'bg-white text-slate-600 border-home-grau/30 hover:bg-slate-50'
                         }`}
                   ><MdText text={inhalt.texte.niedrigWeitGestreut} /></button>
-                </div>
+                </AuswahlGruppe>
                 <p className="text-[10px] text-slate-500 leading-normal font-sans"><MdText text={inhalt.texte.zufälligeMessfehlerZB} /></p>
               </div>
     

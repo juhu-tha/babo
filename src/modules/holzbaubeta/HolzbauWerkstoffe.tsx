@@ -6,6 +6,7 @@ import type { Dispatch, SetStateAction } from 'react';
 import type { DataholzConstruction } from './daten';
 import inhalt from '@/content/holzbaubeta/HolzbauWerkstoffe.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 interface HolzbauWerkstoffeProps {
   activeConstruction: DataholzConstruction;
@@ -88,8 +89,8 @@ export default function HolzbauWerkstoffe({ activeConstruction, dbSearch, dbType
 
           {/* Filter Toolbar */}
           <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 bg-off-white p-3.5 rounded-xl border border-home-grau/20">
-            <div className="flex flex-wrap gap-2">
-              <button aria-pressed={dbTypeFilter === 'all'}
+            <AuswahlGruppe label="Filter Bauteil" className="flex flex-wrap gap-2">
+              <button {...alsOption(dbTypeFilter === 'all')}
                 onClick={() => setDbTypeFilter('all')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
                     dbTypeFilter === 'all' 
@@ -97,7 +98,7 @@ export default function HolzbauWerkstoffe({ activeConstruction, dbSearch, dbType
                       : 'bg-white text-text-main border-home-grau/30 hover:bg-home-grau/10'
                   }`}
               ><MdText text={inhalt.texte.alleBauteile} /></button>
-              <button aria-pressed={dbTypeFilter === 'Aussenwand'}
+              <button {...alsOption(dbTypeFilter === 'Aussenwand')}
                 onClick={() => setDbTypeFilter('Aussenwand')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
                     dbTypeFilter === 'Aussenwand' 
@@ -107,7 +108,7 @@ export default function HolzbauWerkstoffe({ activeConstruction, dbSearch, dbType
               >
                 Außenwände
               </button>
-              <button aria-pressed={dbTypeFilter === 'Decke'}
+              <button {...alsOption(dbTypeFilter === 'Decke')}
                 onClick={() => setDbTypeFilter('Decke')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
                     dbTypeFilter === 'Decke' 
@@ -117,7 +118,7 @@ export default function HolzbauWerkstoffe({ activeConstruction, dbSearch, dbType
               >
                 Geschossdecken
               </button>
-              <button aria-pressed={dbTypeFilter === 'Dach'}
+              <button {...alsOption(dbTypeFilter === 'Dach')}
                 onClick={() => setDbTypeFilter('Dach')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
                     dbTypeFilter === 'Dach' 
@@ -127,7 +128,7 @@ export default function HolzbauWerkstoffe({ activeConstruction, dbSearch, dbType
               >
                 Dächer
               </button>
-            </div>
+            </AuswahlGruppe>
 
             {/* Search */}
             <div className="relative max-w-xs w-full">
@@ -146,9 +147,9 @@ export default function HolzbauWerkstoffe({ activeConstruction, dbSearch, dbType
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
             {/* Left Item Buttons (span 5) */}
-            <div className="lg:col-span-5 flex flex-col gap-2 max-h-[350px] overflow-y-auto pr-2">
+            <AuswahlGruppe label="Konstruktion" className="lg:col-span-5 flex flex-col gap-2 max-h-[350px] overflow-y-auto pr-2">
               {filteredConstructions.map(c => (
-                <button aria-pressed={selectedConst === c.id}
+                <button {...alsOption(selectedConst === c.id)}
                   key={c.id}
                   onClick={() => setSelectedConst(c.id)}
                   className={`p-3.5 rounded-xl border text-left transition-all flex flex-col gap-1.5 cursor-pointer ${
@@ -170,7 +171,7 @@ export default function HolzbauWerkstoffe({ activeConstruction, dbSearch, dbType
                   </div>
                 </button>
               ))}
-            </div>
+            </AuswahlGruppe>
 
             {/* Right Detail Sheet (span 7) */}
             <div className="lg:col-span-7 bg-off-white p-5 rounded-xl border border-home-grau/35 flex flex-col gap-4">

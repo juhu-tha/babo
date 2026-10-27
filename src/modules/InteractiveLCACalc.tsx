@@ -27,6 +27,7 @@ import { ModulDLabor } from './interactivelcacalc/ModulDLabor';
 import inhalt from '@/content/interactivelcacalc/InteractiveLCACalc.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 export default function InteractiveLCACalc() {
   const [calcView, setCalcView] = useState<'konfigurator' | 'modul_d_labor' | 'vergleich'>('konfigurator');
@@ -559,12 +560,12 @@ export default function InteractiveLCACalc() {
                     <span><MdText text={inhalt.texte.t800KmÜberregional} /></span>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2 text-center text-[10px] pt-1">
+                  <AuswahlGruppe label="Transportmittel" className="grid grid-cols-2 gap-2 text-center text-[10px] pt-1">
                     {[
                       { id: "lkw" as const, label: inhalt.werte.lkwDiesel, desc: inhalt.werte.t015KgCo },
                       { id: "bahn" as const, label: "🚊 Güterzug", desc: inhalt.werte.t003KgCo }
                     ].map((trans) => (
-                      <button aria-pressed={transportType === trans.id}
+                      <button {...alsOption(transportType === trans.id)}
                         key={trans.id}
                         onClick={() => setTransportType(trans.id)}
                         className={`p-2 rounded-lg border transition-all cursor-pointer ${
@@ -577,7 +578,7 @@ export default function InteractiveLCACalc() {
                         <span className="text-[9px] text-slate-400">{trans.desc}</span>
                       </button>
                     ))}
-                  </div>
+                  </AuswahlGruppe>
                 </div>
               </div>
 

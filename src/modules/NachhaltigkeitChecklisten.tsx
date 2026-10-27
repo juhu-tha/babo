@@ -11,6 +11,7 @@ import {
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import inhalt from '@/content/nachhaltigkeitchecklisten/NachhaltigkeitChecklisten.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 interface ChecklistItem {
   id: string;
@@ -192,13 +193,13 @@ export default function NachhaltigkeitChecklisten() {
       </div>
 
       {/* Sub-Tabs Selector */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
+      <ReiterLeiste label="Checkliste" className="grid grid-cols-1 md:grid-cols-4 gap-2">
         {Object.values(INITIAL_CHECKLISTS).map((sec) => {
           const Icon = sec.icon;
           const isActive = activeSubTab === sec.id;
 
           return (
-            <button aria-pressed={isActive}
+            <button {...alsReiter(isActive, 'nachhaltigkeit-checkliste', sec.id)}
               key={sec.id}
               onClick={() => setActiveSubTab(sec.id)}
               className={`p-3 rounded-lg border text-left flex flex-col justify-between transition-all duration-150 cursor-pointer shadow-xs ${
@@ -223,10 +224,10 @@ export default function NachhaltigkeitChecklisten() {
             </button>
           );
         })}
-      </div>
+      </ReiterLeiste>
 
       {/* Main Checklist Card & Controls */}
-      <div className="bg-white rounded-xl border border-home-grau/20 shadow-xs overflow-hidden min-h-[350px] flex flex-col justify-between">
+      <div {...reiterPanel('nachhaltigkeit-checkliste', activeSubTab)} className="bg-white rounded-xl border border-home-grau/20 shadow-xs overflow-hidden min-h-[350px] flex flex-col justify-between">
         
         {/* Section Title */}
         <div className="p-4 border-b border-home-grau/10 bg-off-white/50">

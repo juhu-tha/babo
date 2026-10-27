@@ -171,7 +171,7 @@ export default function ZeitlichTab({ currentTimed, dehnungenChartData, relaxati
           <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 flex items-center justify-between">
             <div>
               <span className="text-[10px] text-rose-600 font-bold block uppercase"><MdText text={inhalt.texte.summenverformungTotalT} /></span>
-              <span className="text-[9px] text-rose-500 mt-0.5 block"><MdText text={inhalt.texte.gesamtElCrCs} /></span>
+              <span className="text-[9px] text-rose-700 mt-0.5 block"><MdText text={inhalt.texte.gesamtElCrCs} /></span>
             </div>
             <div className="text-right">
               <span className="text-xl font-black text-shiraz">{formatDeZahl(currentTimed.eps_total, 3)} ‰</span>

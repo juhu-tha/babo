@@ -7,6 +7,7 @@ import {
 } from '@/src/calc/bauwerksuntersuchung';
 import inhalt from '@/content/bauwerksuntersuchung/PruefverfahrenSimulatoren.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 interface SimulatorProps {
   method: PruefverfahrenDetail;
@@ -266,23 +267,23 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
             <div>
               <label className="text-xs font-semibold text-slate-700 block mb-1">Schlagbolzen-Ausrichtung:</label>
-              <div className="grid grid-cols-3 gap-2 text-xs">
-                <button aria-pressed={impactAngle === 'horiz'}
+              <AuswahlGruppe label="Schlagbolzen-Ausrichtung" className="grid grid-cols-3 gap-2 text-xs">
+                <button {...alsOption(impactAngle === 'horiz')}
                   type="button"
                   onClick={() => setImpactAngle('horiz')}
                   className={`py-1.5 px-2 rounded-lg border font-bold ${impactAngle === 'horiz' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-slate-700'}`}
                 ><MdText text={inhalt.texte.horizontal0} /></button>
-                <button aria-pressed={impactAngle === 'down'}
+                <button {...alsOption(impactAngle === 'down')}
                   type="button"
                   onClick={() => setImpactAngle('down')}
                   className={`py-1.5 px-2 rounded-lg border font-bold ${impactAngle === 'down' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-slate-700'}`}
                 ><MdText text={inhalt.texte.boden90} /></button>
-                <button aria-pressed={impactAngle === 'up'}
+                <button {...alsOption(impactAngle === 'up')}
                   type="button"
                   onClick={() => setImpactAngle('up')}
                   className={`py-1.5 px-2 rounded-lg border font-bold ${impactAngle === 'up' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-slate-700'}`}
                 ><MdText text={inhalt.texte.decke90} /></button>
-              </div>
+              </AuswahlGruppe>
             </div>
 
             <div>
@@ -583,23 +584,23 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
             <div>
               <label className="text-xs font-semibold text-slate-700 block mb-1"><MdText text={inhalt.texte.klassifizierungDesBruchbilds} /></label>
-              <div className="grid grid-cols-3 gap-2 text-xs">
-                <button aria-pressed={failureType === 'beton'}
+              <AuswahlGruppe label="Bruchbild" className="grid grid-cols-3 gap-2 text-xs">
+                <button {...alsOption(failureType === 'beton')}
                   type="button"
                   onClick={() => setFailureType('beton')}
                   className={`py-1.5 px-2 rounded-lg border font-bold ${failureType === 'beton' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-slate-700'}`}
                 ><MdText text={inhalt.texte.betonbruchA} /></button>
-                <button aria-pressed={failureType === 'verbund'}
+                <button {...alsOption(failureType === 'verbund')}
                   type="button"
                   onClick={() => setFailureType('verbund')}
                   className={`py-1.5 px-2 rounded-lg border font-bold ${failureType === 'verbund' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-slate-700'}`}
                 ><MdText text={inhalt.texte.verbundfugeAB} /></button>
-                <button aria-pressed={failureType === 'kleber'}
+                <button {...alsOption(failureType === 'kleber')}
                   type="button"
                   onClick={() => setFailureType('kleber')}
                   className={`py-1.5 px-2 rounded-lg border font-bold ${failureType === 'kleber' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-slate-700'}`}
                 ><MdText text={inhalt.texte.kleberversagenY} /></button>
-              </div>
+              </AuswahlGruppe>
             </div>
           </div>
 
@@ -883,29 +884,29 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
             <div>
               <label className="text-xs font-semibold text-slate-700 block mb-1"><MdText text={inhalt.texte.gefügezustandDesQuerschnitts} /></label>
-              <div className="grid grid-cols-3 gap-2 text-xs">
-                <button aria-pressed={timberCondition === 'gesund'}
+              <AuswahlGruppe label="Gefügezustand" className="grid grid-cols-3 gap-2 text-xs">
+                <button {...alsOption(timberCondition === 'gesund')}
                   type="button"
                   onClick={() => setTimberCondition('gesund')}
                   className={`py-1.5 rounded-lg border font-bold ${timberCondition === 'gesund' ? 'bg-emerald-700 text-white' : 'bg-white text-slate-700'}`}
                 >
                   Gesund
                 </button>
-                <button aria-pressed={timberCondition === 'faeule'}
+                <button {...alsOption(timberCondition === 'faeule')}
                   type="button"
                   onClick={() => setTimberCondition('faeule')}
                   className={`py-1.5 rounded-lg border font-bold ${timberCondition === 'faeule' ? 'bg-amber-700 text-white' : 'bg-white text-slate-700'}`}
                 >
                   Braunfäule
                 </button>
-                <button aria-pressed={timberCondition === 'hohl'}
+                <button {...alsOption(timberCondition === 'hohl')}
                   type="button"
                   onClick={() => setTimberCondition('hohl')}
                   className={`py-1.5 rounded-lg border font-bold ${timberCondition === 'hohl' ? 'bg-rose-700 text-white' : 'bg-white text-slate-700'}`}
                 >
                   Hohlraum
                 </button>
-              </div>
+              </AuswahlGruppe>
             </div>
           </div>
 

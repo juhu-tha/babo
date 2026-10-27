@@ -25,6 +25,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/ressourceneffizienz/Ressourceneffizienz.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { reiterZiel } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 // Define the tabs representing the 4 concepts of REZ Bayern
 type RezTab = 'informieren' | 'handeln' | 'nutzen' | 'staerken';
@@ -462,14 +463,14 @@ export default function Ressourceneffizienz() {
                         {/* Matrix layout (Columns 0 to 2) - takes 8 columns out of 12 */}
                         <div className="xl:col-span-8 space-y-5">
                           
-                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                          <AuswahlGruppe label="R-Strategie" className="grid grid-cols-1 md:grid-cols-3 gap-4">
                             
                             {/* Column 0: Produkte einsparen (R0-R2) */}
                             <div className="flex flex-col gap-3">
                               <div className="bg-slate-800 dark:bg-slate-950 border border-slate-750 dark:border-slate-800 text-white px-3 py-2 text-center text-xs uppercase font-black tracking-tight rounded-t-xl select-none min-h-[46px] flex items-center justify-center"><MdText text={inhalt.texte.produkteEinsparenKlügerNutzen} /></div>
                               <div className="flex flex-col gap-3 bg-slate-50/40 dark:bg-slate-900/10 p-2.5 rounded-b-xl border border-slate-150 dark:border-slate-800 p-3 flex-1">
                                 {R_STRATEGIES.filter(r => r.categoryIndex === 0).map((strategy) => (
-                                  <button aria-pressed={selectedR === strategy.id}
+                                  <button {...alsOption(selectedR === strategy.id)}
                                     key={strategy.id}
                                     type="button"
                                     onClick={() => setSelectedR(strategy.id)}
@@ -500,7 +501,7 @@ export default function Ressourceneffizienz() {
                               <div className="bg-slate-800 dark:bg-slate-950 border border-slate-750 dark:border-slate-800 text-white px-3 py-2 text-center text-xs uppercase font-black tracking-tight rounded-t-xl select-none min-h-[46px] flex items-center justify-center"><MdText text={inhalt.texte.lebensdauerVonProduktenOder} /></div>
                               <div className="flex flex-col gap-3 bg-slate-50/40 dark:bg-slate-900/20 p-2.5 rounded-b-xl border border-slate-150 dark:border-slate-800 p-3 flex-1">
                                 {R_STRATEGIES.filter(r => r.categoryIndex === 1).map((strategy) => (
-                                  <button aria-pressed={selectedR === strategy.id}
+                                  <button {...alsOption(selectedR === strategy.id)}
                                     key={strategy.id}
                                     type="button"
                                     onClick={() => setSelectedR(strategy.id)}
@@ -531,7 +532,7 @@ export default function Ressourceneffizienz() {
                               <div className="bg-slate-800 dark:bg-slate-950 border border-slate-750 dark:border-slate-800 text-white px-3 py-2 text-center text-xs uppercase font-black tracking-tight rounded-t-xl select-none min-h-[46px] flex items-center justify-center"><MdText text={inhalt.texte.materialSinnvollWiederverwenden} /></div>
                               <div className="flex flex-col gap-3 bg-slate-50/40 dark:bg-slate-900/20 p-2.5 rounded-b-xl border border-slate-150 dark:border-slate-800 p-3 flex-1">
                                 {R_STRATEGIES.filter(r => r.categoryIndex === 2).map((strategy) => (
-                                  <button aria-pressed={selectedR === strategy.id}
+                                  <button {...alsOption(selectedR === strategy.id)}
                                     key={strategy.id}
                                     type="button"
                                     onClick={() => setSelectedR(strategy.id)}
@@ -557,7 +558,7 @@ export default function Ressourceneffizienz() {
                               </div>
                             </div>
 
-                          </div>
+                          </AuswahlGruppe>
 
                           {/* Dynamic slider tracking double bars from Attachment bottom */}
                           <div className="bg-slate-50/80 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 p-4 rounded-xl space-y-4">
@@ -780,8 +781,8 @@ export default function Ressourceneffizienz() {
                   {/* Concrete Class */}
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-slate-700 dark:text-slate-300 block"><MdText text={inhalt.texte.t2ZementGesteinskörnungsklasse} /></label>
-                    <div className="grid grid-cols-3 gap-2">
-                      <button aria-pressed={concreteType === 'standard'} 
+                    <AuswahlGruppe label="Zement- und Gesteinskörnungsklasse" className="grid grid-cols-3 gap-2">
+                      <button {...alsOption(concreteType === 'standard')} 
                         type="button"
                         onClick={() => setConcreteType('standard')}
                         className={`px-2 py-2 rounded-lg text-xs font-semibold border ${
@@ -790,7 +791,7 @@ export default function Ressourceneffizienz() {
                             : 'bg-white dark:bg-slate-800 text-slate-650 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/80'
                         }`}
                       ><MdText text={inhalt.texte.standardCemI} /></button>
-                      <button aria-pressed={concreteType === 'cem3'} 
+                      <button {...alsOption(concreteType === 'cem3')} 
                         type="button"
                         onClick={() => setConcreteType('cem3')}
                         className={`px-2 py-2 rounded-lg text-xs font-semibold border ${
@@ -799,7 +800,7 @@ export default function Ressourceneffizienz() {
                             : 'bg-white dark:bg-slate-800 text-slate-650 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/80'
                         }`}
                       ><MdText text={inhalt.texte.hüttensandCemIii} /></button>
-                      <button aria-pressed={concreteType === 'rc_beton'} 
+                      <button {...alsOption(concreteType === 'rc_beton')} 
                         type="button"
                         onClick={() => setConcreteType('rc_beton')}
                         className={`px-2 py-2 rounded-lg text-xs font-semibold border ${
@@ -808,7 +809,7 @@ export default function Ressourceneffizienz() {
                             : 'bg-white dark:bg-slate-800 text-slate-650 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/80'
                         }`}
                       ><MdText text={inhalt.texte.rcBetonRezyklGesteinskörnung} /></button>
-                    </div>
+                    </AuswahlGruppe>
                   </div>
 
                   {/* Reinforcement ratio */}
@@ -1071,41 +1072,41 @@ export default function Ressourceneffizienz() {
               </div>
 
               {/* Selector buttons */}
-              <div className="flex flex-wrap gap-1.5 bg-slate-100 dark:bg-slate-800/80 p-1 rounded-xl max-w-xl">
-                <button aria-pressed={selectedRegion === 'all'} 
+              <AuswahlGruppe label="Region" className="flex flex-wrap gap-1.5 bg-slate-100 dark:bg-slate-800/80 p-1 rounded-xl max-w-xl">
+                <button {...alsOption(selectedRegion === 'all')} 
                   type="button"
                   onClick={() => setSelectedRegion('all')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${selectedRegion === 'all' ? 'bg-white dark:bg-slate-900 text-slate-950 dark:text-white shadow-sm' : 'text-slate-650 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200'}`}
                 >
                   Ganz Bayern
                 </button>
-                <button aria-pressed={selectedRegion === 'schwaben'} 
+                <button {...alsOption(selectedRegion === 'schwaben')} 
                   type="button"
                   onClick={() => setSelectedRegion('schwaben')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${selectedRegion === 'schwaben' ? 'bg-white dark:bg-slate-900 text-slate-950 dark:text-white shadow-sm' : 'text-slate-650 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200'}`}
                 ><MdText text={inhalt.texte.schwabenAugsburg} /></button>
-                <button aria-pressed={selectedRegion === 'oberbayern'} 
+                <button {...alsOption(selectedRegion === 'oberbayern')} 
                   type="button"
                   onClick={() => setSelectedRegion('oberbayern')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${selectedRegion === 'oberbayern' ? 'bg-white dark:bg-slate-900 text-slate-950 dark:text-white shadow-sm' : 'text-slate-650 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200'}`}
                 >
                   Oberbayern
                 </button>
-                <button aria-pressed={selectedRegion === 'franken'} 
+                <button {...alsOption(selectedRegion === 'franken')} 
                   type="button"
                   onClick={() => setSelectedRegion('franken')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${selectedRegion === 'franken' ? 'bg-white dark:bg-slate-900 text-slate-950 dark:text-white shadow-sm' : 'text-slate-650 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200'}`}
                 >
                   Franken
                 </button>
-                <button aria-pressed={selectedRegion === 'ostbayern'} 
+                <button {...alsOption(selectedRegion === 'ostbayern')} 
                   type="button"
                   onClick={() => setSelectedRegion('ostbayern')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${selectedRegion === 'ostbayern' ? 'bg-white dark:bg-slate-900 text-slate-950 dark:text-white shadow-sm' : 'text-slate-650 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200'}`}
                 >
                   Ostbayern
                 </button>
-              </div>
+              </AuswahlGruppe>
 
               {/* Grid representation of selected region's coordinators */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

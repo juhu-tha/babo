@@ -21,6 +21,7 @@ import { useTabContext, TabId } from '@/src/contexts/TabContext';
 import LecturePollSession from '@/src/components/polls/LecturePollSession';
 import inhalt from '@/content/vorlesungen/Vorlesungen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 export type VorlesungTab = 
   | 'bauen_im_bestand'
@@ -81,9 +82,9 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
         </div>
 
         {/* Tab-Navigation for Submodules */}
-        <div className="flex flex-wrap gap-2 pb-1 border-b border-home-grau/20">
+        <ReiterLeiste label="Vorlesungsbereiche" className="flex flex-wrap gap-2 pb-1 border-b border-home-grau/20">
 
-          <button aria-pressed={activeSubTab === 'bauen_im_bestand'}
+          <button {...alsReiter(activeSubTab === 'bauen_im_bestand', 'vorlesung-bereich', 'bauen_im_bestand')}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeSubTab === 'bauen_im_bestand'
@@ -94,7 +95,7 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
           >
             <Building2 size={16} /><MdText text={inhalt.texte.t1BauenImBestand} /></button>
 
-          <button aria-pressed={activeSubTab === 'nachhaltiges_bauen'}
+          <button {...alsReiter(activeSubTab === 'nachhaltiges_bauen', 'vorlesung-bereich', 'nachhaltiges_bauen')}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeSubTab === 'nachhaltiges_bauen'
@@ -105,7 +106,7 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
           >
             <Leaf size={16} /><MdText text={inhalt.texte.t2NachhaltigesBauen} /></button>
 
-          <button aria-pressed={activeSubTab === 'bauschaeden'}
+          <button {...alsReiter(activeSubTab === 'bauschaeden', 'vorlesung-bereich', 'bauschaeden')}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeSubTab === 'bauschaeden'
@@ -116,7 +117,7 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
           >
             <AlertTriangle size={16} /><MdText text={inhalt.texte.t3Bauschäden} /></button>
 
-          <button aria-pressed={activeSubTab === 'baustoffkunde'}
+          <button {...alsReiter(activeSubTab === 'baustoffkunde', 'vorlesung-bereich', 'baustoffkunde')}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeSubTab === 'baustoffkunde'
@@ -127,7 +128,7 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
           >
             <Layers size={16} /><MdText text={inhalt.texte.t4Baustoffkunde} /></button>
 
-          <button aria-pressed={activeSubTab === 'instandhaltung'}
+          <button {...alsReiter(activeSubTab === 'instandhaltung', 'vorlesung-bereich', 'instandhaltung')}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeSubTab === 'instandhaltung'
@@ -137,7 +138,7 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
             onClick={() => setActiveSubTab('instandhaltung')}
           >
             <Wrench size={16} /><MdText text={inhalt.texte.t5Instandhaltung} /></button>
-        </div>
+        </ReiterLeiste>
       </div>
 
 
@@ -146,7 +147,7 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
       {/* TAB 1: VORLESUNG BAUEN IM BESTAND                                     */}
       {/* ===================================================================== */}
       {activeSubTab === 'bauen_im_bestand' && (
-        <LectureModuleView
+        <div {...reiterPanel('vorlesung-bereich', activeSubTab)}><LectureModuleView
           lectureId="bauen_im_bestand"
           title={inhalt.werte.vorlesungBauenImBestand}
           subtitle={inhalt.werte.bestandserfassungHistorischeWerkstoffeZf}
@@ -155,14 +156,14 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
           relatedBoardTab="bestand"
           relatedBoardTabLabel={inhalt.werte.zumFachmodulBauenIm}
           units={inhalt.daten["Vorlesungen.units"]}
-        />
+        /></div>
       )}
 
       {/* ===================================================================== */}
       {/* TAB 2: VORLESUNG NACHHALTIGES BAUEN                                   */}
       {/* ===================================================================== */}
       {activeSubTab === 'nachhaltiges_bauen' && (
-        <LectureModuleView
+        <div {...reiterPanel('vorlesung-bereich', activeSubTab)}><LectureModuleView
           lectureId="nachhaltiges_bauen"
           title={inhalt.werte.vorlesungNachhaltigesBauen}
           subtitle={inhalt.werte.ökobilanzierungLcaUnSdgs}
@@ -171,14 +172,14 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
           relatedBoardTab="nachhaltigkeit_daten_regeln"
           relatedBoardTabLabel={inhalt.werte.zumFachmodulNachhaltigkeitDaten}
           units={inhalt.daten["Vorlesungen.units_2"]}
-        />
+        /></div>
       )}
 
       {/* ===================================================================== */}
       {/* TAB 3: VORLESUNG BAUSCHÄDEN                                           */}
       {/* ===================================================================== */}
       {activeSubTab === 'bauschaeden' && (
-        <LectureModuleView
+        <div {...reiterPanel('vorlesung-bereich', activeSubTab)}><LectureModuleView
           lectureId="bauschaeden"
           title={inhalt.werte.vorlesungBauschädenSchadensanalyse}
           subtitle={inhalt.werte.forensischeBauschadensbegutachtungUrsach}
@@ -187,14 +188,14 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
           relatedBoardTab="bauschaeden"
           relatedBoardTabLabel={inhalt.werte.zumFachmodulBauschädenZustandsbewertung}
           units={inhalt.daten["Vorlesungen.units_3"]}
-        />
+        /></div>
       )}
 
       {/* ===================================================================== */}
       {/* TAB 4: VORLESUNG BAUSTOFFKUNDE                                        */}
       {/* ===================================================================== */}
       {activeSubTab === 'baustoffkunde' && (
-        <LectureModuleView
+        <div {...reiterPanel('vorlesung-bereich', activeSubTab)}><LectureModuleView
           lectureId="baustoffkunde"
           title={inhalt.werte.vorlesungBaustoffkunde}
           subtitle={inhalt.werte.chemischPhysikalischeGrundlagenMineralis}
@@ -203,14 +204,14 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
           relatedBoardTab="baustoffkunde"
           relatedBoardTabLabel={inhalt.werte.zumFachmodulBaustoffeBauprodukte}
           units={inhalt.daten["Vorlesungen.units_4"]}
-        />
+        /></div>
       )}
 
       {/* ===================================================================== */}
       {/* TAB 5: VORLESUNG INSTANDHALTUNG                                       */}
       {/* ===================================================================== */}
       {activeSubTab === 'instandhaltung' && (
-        <LectureModuleView
+        <div {...reiterPanel('vorlesung-bereich', activeSubTab)}><LectureModuleView
           lectureId="instandhaltung"
           title={inhalt.werte.vorlesungInstandhaltungVonBauwerken}
           subtitle={inhalt.werte.bauwerkserhaltungSchutzUndInstandsetzung}
@@ -219,7 +220,7 @@ export default function Vorlesungen({ forceTab }: VorlesungenProps) {
           relatedBoardTab="instandhaltung"
           relatedBoardTabLabel={inhalt.werte.zumFachmodulSchutzInstandsetzung}
           units={inhalt.daten["Vorlesungen.units_5"]}
-        />
+        /></div>
       )}
 
       {/* Standardized ModuleFooter according to Styleguide */}

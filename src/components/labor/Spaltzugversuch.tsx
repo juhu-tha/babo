@@ -17,6 +17,7 @@ import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import { validateMechanicalTestIntegrity, exportToCSV, LabProtocolRecord } from '@/src/utils/labExportUtils';
 import { saveStoredLabProtocol } from '@/src/utils/studyStorage';
+import { AuswahlGruppe, alsOption } from '../ui/Auswahlgruppe';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -501,7 +502,8 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
                 {/* Chart Mode Switcher */}
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                   <div className="flex flex-wrap items-center gap-1.5">
-                    <button aria-pressed={chartMode === 'stress'}
+                    <AuswahlGruppe label="Diagrammdarstellung" className="flex flex-wrap items-center gap-1.5">
+                    <button {...alsOption(chartMode === 'stress')}
                       onClick={() => setChartMode('stress')}
                       className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer ${
                         chartMode === 'stress'
@@ -511,7 +513,7 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
                     >
                       Spaltspannung (σx – Δd)
                     </button>
-                    <button aria-pressed={chartMode === 'force'}
+                    <button {...alsOption(chartMode === 'force')}
                       onClick={() => setChartMode('force')}
                       className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer ${
                         chartMode === 'force'
@@ -521,6 +523,7 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
                     >
                       Last-Verformung (F – Δd)
                     </button>
+                    </AuswahlGruppe>
                     <button
                       onClick={() => setShowGrid(!showGrid)}
                       className={`px-2 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer border ${

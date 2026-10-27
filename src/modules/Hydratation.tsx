@@ -24,6 +24,7 @@ import inhalt from '@/content/hydratation/Hydratation.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { hydratation, type Zementart, type ZementFestigkeitsklasse, type Erhaertung, type Zusatzstoff, type Reifeverfahren } from '@/src/calc/hydratation';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 ChartJS.register(
   CategoryScale,
@@ -589,8 +590,8 @@ export default function Hydratation() {
               </div>
 
               {/* Modus-Umschalter */}
-              <div className="flex flex-wrap gap-1 bg-slate-100 p-1 rounded-xl border border-home-grau/25 mb-3 text-xs font-semibold">
-                <button aria-pressed={festigkeitsModus === 'relativ'}
+              <AuswahlGruppe label="Festigkeitsdarstellung" className="flex flex-wrap gap-1 bg-slate-100 p-1 rounded-xl border border-home-grau/25 mb-3 text-xs font-semibold">
+                <button {...alsOption(festigkeitsModus === 'relativ')}
                   type="button"
                   onClick={() => setFestigkeitsModus('relativ')}
                   className={`px-2.5 py-1.5 rounded-lg transition-all cursor-pointer ${
@@ -602,7 +603,7 @@ export default function Hydratation() {
                 >
                   [%] Relativ
                 </button>
-                <button aria-pressed={festigkeitsModus === 'druck'}
+                <button {...alsOption(festigkeitsModus === 'druck')}
                   type="button"
                   onClick={() => setFestigkeitsModus('druck')}
                   className={`px-2.5 py-1.5 rounded-lg transition-all cursor-pointer ${
@@ -614,7 +615,7 @@ export default function Hydratation() {
                 >
                   [MPa] Druck
                 </button>
-                <button aria-pressed={festigkeitsModus === 'zug'}
+                <button {...alsOption(festigkeitsModus === 'zug')}
                   type="button"
                   onClick={() => setFestigkeitsModus('zug')}
                   className={`px-2.5 py-1.5 rounded-lg transition-all cursor-pointer ${
@@ -626,7 +627,7 @@ export default function Hydratation() {
                 >
                   [MPa] Zug
                 </button>
-                <button aria-pressed={festigkeitsModus === 'emodul'}
+                <button {...alsOption(festigkeitsModus === 'emodul')}
                   type="button"
                   onClick={() => setFestigkeitsModus('emodul')}
                   className={`px-2.5 py-1.5 rounded-lg transition-all cursor-pointer ${
@@ -636,7 +637,7 @@ export default function Hydratation() {
                   }`}
                   title={inhalt.werte.elastizitätsmodulECmT}
                 ><MdText text={inhalt.texte.gpaEModul} /></button>
-                <button aria-pressed={festigkeitsModus === 'alle_absolut'}
+                <button {...alsOption(festigkeitsModus === 'alle_absolut')}
                   type="button"
                   onClick={() => setFestigkeitsModus('alle_absolut')}
                   className={`px-2.5 py-1.5 rounded-lg transition-all cursor-pointer ${
@@ -646,7 +647,7 @@ export default function Hydratation() {
                   }`}
                   title={inhalt.werte.kombinierteDarstellungAllerAbsoluten}
                 ><MdText text={inhalt.texte.kombiAbsolut} /></button>
-              </div>
+              </AuswahlGruppe>
 
               {/* KPI Chips */}
               <div className="flex flex-wrap items-center gap-1.5 mb-3 text-[11px] font-mono">

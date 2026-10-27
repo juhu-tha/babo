@@ -7,6 +7,7 @@ import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { formatDeZahl } from '@/src/utils/numberFormat';
 import inhalt from '@/content/schadstoffe/Schadstoffe.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 const SCHADSTOFFE_DATA = [
   {
@@ -448,9 +449,9 @@ export default function Schadstoffe() {
                   <div className="space-y-4">
                     <div>
                       <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2 font-mono"><MdText text={inhalt.texte.t1ErbauungszeitraumDesGebäudes} /></label>
-                      <div className="grid grid-cols-2 gap-2">
+                      <AuswahlGruppe label="Erbauungszeitraum" className="grid grid-cols-2 gap-2">
                         {inhalt.daten.Schadstoffe.map((z) => (
-                          <button aria-pressed={finderZeitraum === z.id}
+                          <button {...alsOption(finderZeitraum === z.id)}
                             key={z.id}
                             onClick={() => setFinderZeitraum(z.id)}
                             className={`p-3 text-left rounded-xl border transition-all cursor-pointer ${
@@ -463,14 +464,14 @@ export default function Schadstoffe() {
                             <div className="text-xs opacity-75">{z.desc}</div>
                           </button>
                         ))}
-                      </div>
+                      </AuswahlGruppe>
                     </div>
 
                     <div>
                       <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2 font-mono font-semibold"><MdText text={inhalt.texte.t2BetroffenesBauteilMaterialart} /></label>
-                      <div className="flex flex-col gap-1.5 max-h-[300px] overflow-y-auto pr-1 border border-home-grau/30 rounded-xl p-2 bg-slate-50/50">
+                      <AuswahlGruppe label="Bauteil oder Materialart" className="flex flex-col gap-1.5 max-h-[300px] overflow-y-auto pr-1 border border-home-grau/30 rounded-xl p-2 bg-slate-50/50">
                         {inhalt.daten.Schadstoffe_2.map((b) => (
-                          <button aria-pressed={finderBauteil === b.id}
+                          <button {...alsOption(finderBauteil === b.id)}
                             key={b.id}
                             onClick={() => setFinderBauteil(b.id)}
                             className={`p-2.5 rounded-lg border text-left transition-all flex justify-between items-center cursor-pointer ${
@@ -486,7 +487,7 @@ export default function Schadstoffe() {
                             {finderBauteil === b.id && <span className="text-xs font-bold">✔</span>}
                           </button>
                         ))}
-                      </div>
+                      </AuswahlGruppe>
                     </div>
                   </div>
 
@@ -669,26 +670,26 @@ export default function Schadstoffe() {
                       <h4 className="font-bold text-slate-900 text-sm mb-3"><MdText text={inhalt.texte.interaktiverMebGüteklasseKatalog} /></h4>
                       <p className="text-xs text-slate-500 mb-4"><MdText text={inhalt.texte.wählenSieEinenRepräsentativen} /></p>
                       
-                      <div className="grid grid-cols-3 gap-2 mb-4">
-                        <button aria-pressed={selectedMEB === 'rc_baustoff'} 
+                      <AuswahlGruppe label="Mineralischer Ersatzbaustoff" className="grid grid-cols-3 gap-2 mb-4">
+                        <button {...alsOption(selectedMEB === 'rc_baustoff')} 
                           onClick={() => setSelectedMEB('rc_baustoff')}
                           className={`px-2.5 py-2 rounded-xl text-center text-xs font-bold border transition-all ${selectedMEB === 'rc_baustoff' ? 'bg-slate-900 text-white border-home-grau/30' : 'bg-slate-50 hover:bg-slate-100 border-home-grau/30 text-slate-700'}`}
                         >
                           RC-Bauschutt
                         </button>
-                        <button aria-pressed={selectedMEB === 'bodenaushub'} 
+                        <button {...alsOption(selectedMEB === 'bodenaushub')} 
                           onClick={() => setSelectedMEB('bodenaushub')}
                           className={`px-2.5 py-2 rounded-xl text-center text-xs font-bold border transition-all ${selectedMEB === 'bodenaushub' ? 'bg-slate-900 text-white border-home-grau/30' : 'bg-slate-50 hover:bg-slate-100 border-home-grau/30 text-slate-700'}`}
                         >
                           Bodenaushub
                         </button>
-                        <button aria-pressed={selectedMEB === 'hm_asche'} 
+                        <button {...alsOption(selectedMEB === 'hm_asche')} 
                           onClick={() => setSelectedMEB('hm_asche')}
                           className={`px-2.5 py-2 rounded-xl text-center text-xs font-bold border transition-all ${selectedMEB === 'hm_asche' ? 'bg-slate-900 text-white border-home-grau/30' : 'bg-slate-50 hover:bg-slate-100 border-home-grau/30 text-slate-700'}`}
                         >
                           Hausmüll-Asche
                         </button>
-                      </div>
+                      </AuswahlGruppe>
 
                       {/* Specification results card */}
                       <div className="bg-slate-50 border border-home-grau/30 p-4 rounded-xl text-xs space-y-2">

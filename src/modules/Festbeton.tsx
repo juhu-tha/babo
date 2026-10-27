@@ -26,6 +26,7 @@ import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { bemessungswerteBeton, festigkeitsentwicklung } from '@/src/calc/pruefverfahren';
 import { festbetonStatistik, konformitaetDruck, pruefwerteAusText } from '@/src/calc/festbetonStatistik';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 ChartJS.register(
   CategoryScale,
@@ -610,8 +611,8 @@ export default function Festbeton() {
 
                   <div>
                     <label className="text-xs font-bold text-text-main block mb-1">Referenz-Prüfformat:</label>
-                    <div className="grid grid-cols-2 gap-2 text-xs">
-                      <button aria-pressed={statFormat === 'zylinder'} 
+                    <AuswahlGruppe label="Referenz-Prüfformat" className="grid grid-cols-2 gap-2 text-xs">
+                      <button {...alsOption(statFormat === 'zylinder')} 
                         onClick={() => setStatFormat('zylinder')}
                         className={`p-2 rounded-xl font-bold border transition-all cursor-pointer ${
                           statFormat === 'zylinder' 
@@ -621,7 +622,7 @@ export default function Festbeton() {
                       >
                         Zylinder (f_ck,cyl)
                       </button>
-                      <button aria-pressed={statFormat === 'wuerfel'} 
+                      <button {...alsOption(statFormat === 'wuerfel')} 
                         onClick={() => setStatFormat('wuerfel')}
                         className={`p-2 rounded-xl font-bold border transition-all cursor-pointer ${
                           statFormat === 'wuerfel' 
@@ -631,7 +632,7 @@ export default function Festbeton() {
                       >
                         Würfel (f_ck,cube)
                       </button>
-                    </div>
+                    </AuswahlGruppe>
                   </div>
 
                   {/* Ergebnisboxen */}
