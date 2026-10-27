@@ -1,0 +1,28 @@
+{
+  "texte": {
+    "ueberschrift": "DGZfP-Merkblätter und Leitfäden für das Bauwesen",
+    "einleitung": "Die Merkblätter der Reihe **B** und die Leitfäden **B-LF** erarbeitet der Fachausschuss *ZfP im Bauwesen* der Deutschen Gesellschaft für Zerstörungsfreie Prüfung (DGZfP). Sie beschreiben Durchführung und Auswertung einzelner Prüfverfahren und ergänzen die Prüfnormen (z. B. DIN EN 12504). Die Übersicht nennt nur Kennung, Titel und Ausgabe aus öffentlichen Verzeichnissen; der Zweck ist aus dem Titel abgeleitet, Inhalte sind dem jeweiligen Dokument zu entnehmen.",
+    "tabelleTitel": "Ausgewählte DGZfP-Dokumente für das Bauwesen (Stand der Recherche 27.10.2026)",
+    "spalteKennung": "Kennung",
+    "spalteTitel": "Titel",
+    "spalteZweck": "Zweck (nach Titel)",
+    "spalteAusgabe": "Ausgabe / Stand",
+    "spalteQuelle": "Beleg",
+    "hinweisStand": "**Hinweis:** Ausgaben ändern sich; vor der Anwendung den aktuellen Stand im Publikationsverzeichnis der DGZfP oder bei DIN Media prüfen. Weitere Merkblätter der B-Reihe (z. B. zum Ultraschallverfahren) sind nicht aufgeführt, weil Kennung und Ausgabe in den öffentlichen Verzeichnissen nicht bestätigt werden konnten.",
+    "quellen": "Quellen: DIN Media, Einträge DGZfP-B 01:2024-11, DGZfP-B 02:2021-05, DGZfP-B 03:2021-04 (zurückgezogen) und DGZfP-B-LF 02 Anhang 1:2025-04; DIN, Eintrag DGZfP-B 09 (2022-09); openHSU, Eintrag „Merkblatt B 03“ (DGZfP, 2025-05, ISBN 978-3-947971-50-3); DGZfP, Vorläufiger Tätigkeitsbericht 2023, Abschn. 12.4 (FA ZfP im Bauwesen); ZfP-Zeitung 179 und 181; DGZfP-Blog „Publikationen“ (13.05.2022); Lehmann, F.; Hille, F.: Dauerüberwachung von Ingenieurbauwerken – Das neue Merkblatt B 09 der DGZfP. Beton- und Stahlbetonbau 118 (2023) H. 4, S. 275–280; Mayer, T. F.: Elektrochemische Potentialmessung zum Auffinden von Bewehrungskorrosion – Neufassung 2021 des Merkblatts B3. Beton- und Stahlbetonbau 117 (2022) H. 2, S. 145–147."
+  },
+  "daten": {
+    "DgzfpTab.dokumente": [
+      { "kennung": "B 01", "titel": "Mobile Durchstrahlungsprüfung im Bauwesen", "zweck": "Durchstrahlungsprüfung (Radiografie) an Bauteilen vor Ort", "ausgabe": "2024-11", "quelle": "DIN Media" },
+      { "kennung": "B 02", "titel": "Merkblatt zur zerstörungsfreien Betondeckungsmessung und Bewehrungsortung an Stahl- und Spannbetonbauteilen", "zweck": "Betondeckung messen, Bewehrung orten", "ausgabe": "2021-05", "quelle": "DIN Media; Tätigkeitsbericht 2023" },
+      { "kennung": "B 03", "titel": "Elektrochemische Potentialmessungen zur Detektion von Bewehrungsstahlkorrosion", "zweck": "Korrodierende Bereiche der Bewehrung über Potentialmessungen finden", "ausgabe": "2025-05 (Vorausgabe 2021-04, zurückgezogen)", "quelle": "openHSU; DIN Media; Mayer 2022" },
+      { "kennung": "B 09", "titel": "Merkblatt zur Dauerüberwachung von Ingenieurbauwerken", "zweck": "Dauerüberwachung (Monitoring) von Ingenieurbauwerken", "ausgabe": "2022-09", "quelle": "DIN; ZfP-Zeitung 181; Lehmann/Hille 2023" },
+      { "kennung": "B 10", "titel": "Merkblatt zum Thema Radar (Titel im Tätigkeitsbericht nicht genannt)", "zweck": "Radarverfahren an Bauteilen", "ausgabe": "in Überarbeitung (Stand Tätigkeitsbericht 2023); geltende Ausgabe nicht belegt", "quelle": "Tätigkeitsbericht 2023" },
+      { "kennung": "B 13", "titel": "Feuchtemessverfahren (Arbeitstitel)", "zweck": "Feuchtemessung an Baustoffen und Bauteilen", "ausgabe": "in Erstellung (Stand Tätigkeitsbericht 2023)", "quelle": "Tätigkeitsbericht 2023" },
+      { "kennung": "B 14", "titel": "Quantifizierung von Chlorid in Beton mit der laserinduzierten Plasmaspektroskopie (LIBS)", "zweck": "Chloridgehalt von Beton mit LIBS bestimmen", "ausgabe": "2023-08", "quelle": "Tätigkeitsbericht 2023" },
+      { "kennung": "B-LF 01", "titel": "Leitfaden zur Erstellung von Prüfanweisungen für die Zerstörungsfreie Prüfung im Bauwesen (ZfP Bau)", "zweck": "Aufbau und Inhalt von Prüfanweisungen", "ausgabe": "2022-04 (kostenloser Download)", "quelle": "ZfP-Zeitung 179; DGZfP-Blog 2022" },
+      { "kennung": "B-LF 02 Anhang 1", "titel": "Exemplarische Prüfanweisung für Dickenmessungen mit dem Impakt-Echo-Verfahren an plattenförmigen Betonbauteilen im Dickenbereich 10 cm bis 80 cm", "zweck": "Beispiel einer Prüfanweisung für Dickenmessungen mit Impakt-Echo", "ausgabe": "2025-04 (kostenfrei)", "quelle": "DIN Media" },
+      { "kennung": "– (nicht bestätigt)", "titel": "Merkblatt zum Impakt-Echo-Verfahren an Betonbauteilen (sinngemäß nach DGZfP-Blog)", "zweck": "Impakt-Echo-Verfahren an Betonbauteilen", "ausgabe": "2022 (Neuerscheinung laut DGZfP-Blog vom 13.05.2022)", "quelle": "DGZfP-Blog 2022" }
+    ]
+  }
+}

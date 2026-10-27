@@ -55,8 +55,10 @@ t.test('Drittlizenzliste: Lizenz je Paket wie in node_modules/<paket>/package.js
       sicher(lizenz === k.lizenz, `${k.name}: ${p} hat Lizenz ${lizenz}, Liste sagt ${k.lizenz}`);
     }
   }
-  // nur zum Bauen/Prüfen oder Typen, nicht ausgeliefert (dotenv: derzeit nirgends importiert)
-  const nurBau = /^(@types\/|@vitejs\/|@tailwindcss\/vite$|autoprefixer$|esbuild$|tsx$|typescript$|vite$|dotenv$|playwright|@axe-core\/|axe-core$)/;
+  // nur zum Bauen/Prüfen oder Typen, nicht ausgeliefert
+  const nurBau = /^(@types\/|@vitejs\/|@tailwindcss\/vite$|autoprefixer$|esbuild$|tsx$|typescript$|vite$|playwright|@axe-core\/|axe-core$)/;
+  // dotenv entfernt (27.10.2026, nirgends importiert) – darf nicht zurückkehren, ohne gelistet zu werden
+  sicher(!('dotenv' in abh), 'dotenv steht wieder in package.json – importieren und in DRITTKOMPONENTEN listen oder entfernen');
   for (const p of Object.keys(abh)) sicher(erfasst.has(p) || nurBau.test(p), `Paket ${p} fehlt in DRITTKOMPONENTEN (src/data/lizenzTexte.ts)`);
   sicher(DRITTKOMPONENTEN.some(k => k.name.startsWith('Inter') && k.lizenz === 'OFL-1.1'), 'Schrift Inter (OFL 1.1) fehlt');
 });

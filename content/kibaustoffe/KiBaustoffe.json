@@ -1,6 +1,6 @@
 {
   "texte": {
-    "zuJedemThemenblockLlm": "Zu jedem Themenblock – LLM-Grundlagen, Prompting im Ingenieurbüro, Agenten, RAG mit Regelwerken, „sich programmieren lassen“ sowie Fehlerbilder und Verifikation – gibt es eine code-freie Selbstlernübung für den Microsoft Copilot der Hochschule, mit Prompt-Vorlagen und Verifikations-Checkliste.",
+    "zuJedemThemenblockLlm": "Zu jedem Themenblock – LLM-Grundlagen, Prompting im Ingenieurbüro, Agenten, RAG mit Regelwerken, „sich programmieren lassen“ sowie Fehlerbilder und Verifikation – gibt es eine code-freie Selbstlernübung für den KI-Assistenten der Hochschule (an der THA derzeit über die Hochschullizenz bereitgestellt), mit Prompt-Vorlagen und Verifikations-Checkliste.",
     "professionellesPromptEngineeringIm": "Professionelles Prompt Engineering im Bauwesen",
     "künstlicheIntelligenzIstNur": "Künstliche Intelligenz ist nur so scharf wie der eingegebene Text. Reines Chatten führt oft zu verallgemeinerndem \"Schwafeln\". Für prägnante Antworten nutzen Ingenieure strukturierte Templates, die dem Modell eine \\*\\*Rolle\\*\\*, klare \\*\\*Aufgabenstellungen\\*\\*, relevante \\*\\*Randbedingungen\\*\\* und das \\*\\*Soll-Format\\*\\* vorgeben.",
     "interaktiverBaustoffPromptGenerator": " Interaktiver Baustoff-Prompt-Generator",
@@ -99,7 +99,7 @@
     "verwandteDigitalisierungsPlanungsmodule": "Verwandte Digitalisierungs- & Planungsmodule",
     "didaktischVernetzteQuerverweiseZu": "Didaktisch vernetzte Querverweise zu BIM, Datenanalyse, Automatisierung und wissenschaftlicher Abschlussarbeit",
     "handsOnÜbungenMaster": "Hands-on-Übungen (Master)",
-    "sechsCodeFreieSelbstlernübungen": "Sechs code-freie Selbstlernübungen mit Prompt-Vorlagen, Erwartungshorizont und Verifikations-Checkliste für den Hochschul-Copilot.",
+    "sechsCodeFreieSelbstlernübungen": "Sechs code-freie Selbstlernübungen mit Prompt-Vorlagen, Erwartungshorizont und Verifikations-Checkliste für den KI-Assistenten der Hochschule.",
     "bimMaterialdatenIfc": "BIM & Materialdaten (IFC)",
     "ifc4Ifc43Klassifikation": "IFC4/IFC4.3-Klassifikation, benutzerdefinierte Property Sets (Pset) und Baustoffdatenübergabe.",
     "datenanalyseStatistik": "Datenanalyse & Statistik",

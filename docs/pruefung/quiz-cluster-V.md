@@ -330,7 +330,7 @@ Niveau M · 360 min · Vorwissen: ki_ueberblick, ki_prompting, ki_system
 - (Anwenden) Sie können für eine Büroaufgabe einen Prompt mit Rolle, Kontext, Aufgabe, Format und Regeln formulieren und mit einer naiven Anfrage vergleichen.
 - (Anwenden) Sie können Retrieval-Augmented Generation ohne Programmierung nachbilden und jede Antwort mit der Fundstelle im bereitgestellten Regelwerkstext belegen lassen.
 - (Analysieren) Sie können eine KI-Antwort auf erfundene Quellen, veraltete Normausgaben, falsche Grenzwerte und Rechenfehler untersuchen und die Fehlerbilder benennen.
-- (Bewerten) Sie können ein vom Copilot erstelltes Rechenblatt mit Testfällen und einer unabhängigen Kontrollrechnung prüfen und über seine Verwendbarkeit entscheiden.
+- (Bewerten) Sie können ein vom KI-Assistenten erstelltes Rechenblatt mit Testfällen und einer unabhängigen Kontrollrechnung prüfen und über seine Verwendbarkeit entscheiden.
 - (Bewerten) Sie können beurteilen, welche Schritte eines Agentenlaufs selbstständig ablaufen dürfen und welche eine menschliche Freigabe erfordern.
 
 - [x] ok

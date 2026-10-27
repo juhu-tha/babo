@@ -26,7 +26,6 @@ bestehen), *ersetzen* (vor Aktivierung durch eigenes oder frei lizenziertes Mate
 | KaTeX inkl. KaTeX-Schriften (im Build) | `katex`, `react-katex` | MIT | kompatibel |
 | Laufzeitbibliotheken: react, react-dom, three, @react-three/fiber, @react-three/drei, chart.js, react-chartjs-2, recharts, motion, jspdf, html-to-image, qrcode, react-markdown, clsx, tailwind-merge, tailwindcss | npm | MIT | kompatibel (Abhängigkeiten, werden nicht umlizenziert) |
 | `xlsx` (SheetJS CE 0.18.5), `@google/genai`, `typescript` | npm | Apache-2.0 | kompatibel mit MIT-Projektcode. Hinweis: Apache-2.0 verlangt bei Weitergabe des Builds den Erhalt von Lizenz-/NOTICE-Hinweisen → im Release-Archiv (Zenodo) Drittlizenzliste beilegen (Schritt in `docs/lizenz-ablauf.md`). |
-| `dotenv` | npm | BSD-2-Clause | kompatibel |
 | Bilder, Fotos, Videos, 3D-Modelle, Texturen, HDRs | – | – | **keine im Repository**: einziges `<img>` ist der zur Laufzeit erzeugte QR-Code (`LecturePollSession.tsx`); 3D-Szenen (Holz/Mauerwerk) sind aus Geometrie erzeugt, keine `Environment`-Presets/Texturen. Alle Diagramme sind im Code gezeichnet (SVG/Canvas). |
 | Externe Inhalte (Wikipedia ≈ 700 Links, YouTube 11, Hersteller-/Verbandsseiten) | Verlinkung | – | kompatibel (nur Links, keine eingebetteten Inhalte; keine iframes) |
 | Marken/Logos von Siegeln und Zertifikaten (DGNB, QNG, Blauer Engel, LEED …) | nur als Text genannt | Markenrecht | ausnehmen (Namensnennung zulässig; keine Logos im Repo) |
@@ -36,8 +35,8 @@ bestehen), *ersetzen* (vor Aktivierung durch eigenes oder frei lizenziertes Mate
 Tabelle mit Verwendung, SPDX-Lizenz und Links) – unabhängig von `LIZENZ_AKTIV`, weil sie die Lizenzen Dritter
 betrifft, nicht die Projektlizenz. `tests/lizenz.test.ts` gleicht jede Lizenzangabe mit
 `node_modules/<paket>/package.json` ab und meldet Laufzeitpakete aus `package.json`, die in der Liste fehlen
-(ausgenommen reine Bau-/Typpakete). `dotenv` steht in `package.json`, wird aber derzeit nirgends importiert und
-ist deshalb nicht gelistet. Offen bleibt der Mangel bei Inter (OFL-Text liegt den Schriftdaten nicht bei, siehe
+(ausgenommen reine Bau-/Typpakete). `dotenv` wurde am 27.10.2026 aus `package.json` und `bun.lock` entfernt
+(nirgends importiert). Offen bleibt der Mangel bei Inter (OFL-Text liegt den Schriftdaten nicht bei, siehe
 oben) – die Liste verlinkt den OFL-Text, ersetzt aber nicht die Ablage von `OFL.txt` vor der Aktivierung.
 
 ## 2. Normen und Regelwerke (DIN-/CEN-Urheberrecht!)

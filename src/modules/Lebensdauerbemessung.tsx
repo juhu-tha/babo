@@ -12,6 +12,7 @@ import {
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { AuswahlGruppe, alsOption } from '@/src/components/ui/Auswahlgruppe';
 import { Querverweis } from '@/src/components/ui/Querverweis';
 import { DiagrammAngaben } from '@/src/lib/diagrammAlternative';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
@@ -308,17 +309,17 @@ export default function Lebensdauerbemessung() {
                         {VORGABEN.map(v => <option key={v.id} value={v.id}>{v.label}</option>)}
                       </select>
                     </label>
-                    <fieldset className="flex flex-col gap-1">
-                      <legend className="text-xs font-bold text-text-main mb-1">{inhalt.werte.mechanismus}</legend>
-                      <div className="flex gap-2">
+                    <div className="flex flex-col gap-1">
+                      <span className="text-xs font-bold text-text-main mb-1">{inhalt.werte.mechanismus}</span>
+                      <AuswahlGruppe label={inhalt.werte.mechanismus} className="flex gap-2">
                         {(['karbonatisierung', 'chlorid'] as const).map(m => (
-                          <button key={m} type="button" aria-pressed={z.mech === m} onClick={() => lade(m === 'karbonatisierung' ? 'k1' : 'c1')}
+                          <button key={m} type="button" {...alsOption(z.mech === m)} onClick={() => lade(m === 'karbonatisierung' ? 'k1' : 'c1')}
                             className={`flex-1 px-3 py-2 rounded-lg text-xs font-bold border ${z.mech === m ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-text-main border-home-grau/50'}`}>
                             {m === 'karbonatisierung' ? inhalt.werte.karbonatisierung : inhalt.werte.chlorid}
                           </button>
                         ))}
-                      </div>
-                    </fieldset>
+                      </AuswahlGruppe>
+                    </div>
 
                     <h3 className="text-sm font-bold text-text-main uppercase tracking-wider pt-1">{inhalt.werte.allgemein}</h3>
                     <div className="grid grid-cols-2 gap-3">

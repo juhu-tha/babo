@@ -392,7 +392,8 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "QNG-PLUS 24 und QNG-PREMIUM 20 kg/(m²·a) (KfW 09/2025); die seit 12/2025 vorübergehend geringeren QNG-Anforderungen sind nicht öffentlich beziffert und nicht eingearbeitet (vorläufig).",
       "Keine Gas-, Öl- oder Pelletkessel im Gebäude (QNG-Rechenwerte nicht öffentlich abgedruckt); Fernwärme nach QNG-Anhang 3.4; TGA nur als Sockelbetrag (Tab. 6).",
       "„Eingehalten“ nur mit B4 und B6, 50 a und Wohngebäude; Nichtwohngebäude mit Lehrwert. Kein QNG-Nachweis, kein Ersatz für die Bilanz einer Zertifizierungsstelle.",
-      "Modul D und Urban-Mining-Index mit modellinternen Gewichtungen, D nur für den Ersteinbau; A4 pauschal je t·km auf die gesamte Masse (Lkw-Mittel 0,118 bzw. Güterbahn 0,014 kg/(t·km) nach UBA 2024).",
+      "Modul D: Referenz-Gutschrift je Baustoff für den deklarierten Weg; Wegfaktoren in der Rangfolge nach § 6 KrWG (1,45 > 1,0 > 0,55 > 0,40; Beträge vorläufig, F-Freigabe); D nur für den Ersteinbau.",
+      "Urban-Mining-Index mit modellinternen Gewichtungen; A4 pauschal je t·km auf die gesamte Masse (Lkw-Mittel 0,118 bzw. Güterbahn 0,014 kg/(t·km) nach UBA 2024).",
     ],
   },
   lca_ingenieurbau: {
