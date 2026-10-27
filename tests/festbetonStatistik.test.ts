@@ -18,16 +18,22 @@ pruefe(nahe(r.mindestMittelwert, 44.34, 1e-12) && nahe(r.mindestEinzelwert, 34.4
 //    Herstellungsbeginn: f_cm ≥ 38,42 + 4 = 42,42
 const e = festbetonStatistik({ ...S, pruefArt: 'erst' });
 pruefe(nahe(e.mindestMittelwert, 42.42, 1e-12) && nahe(e.mindestEinzelwert, 34.42, 1e-12), 'Konformität Herstellungsbeginn');
-//    Würfel: Anzeige ×1,25 → f_cm 56,25; σ 5,0; f_ck 48,025; f_cd bleibt Zylinderwert; Kriterium 48,025 + 1,48·5 = 55,425
+//    Würfel (Runde 5, Z55): Faktor über die Klassen statt pauschal 1,25. f_ck = 38,42 liegt zwischen C35/45 und C40/50:
+//    f_ck,cube = 45 + 5·(38,42 − 35)/5 = 48,42 → Faktor 48,42/38,42 = 1,26028; f_cm 56,713; σ 5,041; Kriterium 48,42 + 1,48·5,041 = 55,881
 const w = festbetonStatistik({ ...S, format: 'wuerfel' });
-pruefe(nahe(w.anzeigeFcm, 56.25, 1e-12) && nahe(w.anzeigeSigma, 5, 1e-12) && nahe(w.anzeigeFck, 48.025, 1e-12) && w.fcd === r.fcd && nahe(w.mindestMittelwert, 55.425, 1e-12), 'Würfelanzeige');
+const fw = 48.42 / 38.42;
+pruefe(nahe(w.faktor, fw, 1e-12) && nahe(w.anzeigeFck, 48.42, 1e-12) && nahe(w.anzeigeFcm, 45 * fw, 1e-12) && w.fcd === r.fcd && nahe(w.mindestMittelwert, 48.42 + 1.48 * 4 * fw, 1e-12), `Würfelanzeige ${w.faktor}`);
+//    Klassenpunkte: C30/37 → 37/30, C50/60 → 1,20 (nicht 1,25)
+pruefe(nahe(festbetonStatistik({ ...S, fcm: 30, sigma: 0, format: 'wuerfel' }).faktor, 37 / 30, 1e-12) && nahe(festbetonStatistik({ ...S, fcm: 50, sigma: 0, format: 'wuerfel' }).faktor, 1.2, 1e-12), 'Würfelfaktor je Klasse');
 // 5-%-Quantil: Φ(f_ck) = 0,05
 pruefe(nahe(normalCDF(r.fckCyl, 45, 4), 0.05, 1e-4), 'f_ck ist das 5-%-Quantil');
 
 // 2. Randfälle
 pruefe(!festbetonStatistik({ ...S, sigma: -1 }).gueltig && !festbetonStatistik({ ...S, gammaC: 0 }).gueltig && !festbetonStatistik({ ...S, fcm: NaN }).gueltig, 'σ < 0 / γ_c = 0 / NaN → Fehler');
 pruefe(festbetonStatistik({ ...S, fcm: 20, sigma: 15 }).hinweise.some(x => x.feld === 'sigma'), 'f_ck ≤ 0 → Warnung');
-pruefe(festbetonStatistik({ ...S, sigma: 2 }).hinweise.some(x => x.feld === 'sigma'), 'σ < 3 bei stetiger Herstellung → Warnung');
+const s2 = festbetonStatistik({ ...S, sigma: 2 });
+//    σ < 3 N/mm² (DIN 1045-2): Kriterium mit σ = 3 → f_ck = 45 − 3,29 = 41,71; 41,71 + 1,48·3 = 46,15
+pruefe(s2.hinweise.some(x => x.feld === 'sigma') && nahe(s2.mindestMittelwert, 41.71 + 4.44, 1e-12), `σ < 3 bei stetiger Herstellung → σ = 3 (${s2.mindestMittelwert})`);
 pruefe(festbetonStatistik({ ...S, alphaCc: 1.2 }).hinweise.some(x => x.feld === 'alphaCc'), 'α_cc > 1 → Warnung');
 pruefe(festbetonStatistik({ ...S, sigma: 0 }).fckCyl === 45, 'σ = 0 → f_ck = f_cm');
 
@@ -41,7 +47,9 @@ for (let i = 0; i < 1000; i++) {
   const b = festbetonStatistik({ ...x, fcm: x.fcm + 1 }), c = festbetonStatistik({ ...x, sigma: x.sigma + 0.5 });
   pruefe(b.fckCyl > a.fckCyl && b.fcd > a.fcd && c.fckCyl < a.fckCyl, `Fuzz ${i}: Monotonie`);
   pruefe(nahe(a.fckCyl, x.fcm - K_FRAKTIL_5 * x.sigma, 1e-12) && a.mindestEinzelwert < a.anzeigeFck, `Fuzz ${i}: Definition`);
-  if (x.pruefArt === 'stetig') pruefe(a.mindestMittelwert <= a.anzeigeFcm, `Fuzz ${i}: stetiges Kriterium ≤ f_cm`);
+  // mit σ ≥ 3 N/mm² liegt das stetige Kriterium f_ck + 1,48·σ = f_cm − 0,165·σ unter f_cm; für σ < 3 wird σ = 3 angesetzt
+  if (x.pruefArt === 'stetig' && a.anzeigeSigma >= 3) pruefe(a.mindestMittelwert <= a.anzeigeFcm, `Fuzz ${i}: stetiges Kriterium ≤ f_cm`);
+  if (x.pruefArt === 'stetig' && a.anzeigeSigma < 3) pruefe(Math.abs(a.mindestMittelwert - (a.anzeigeFck + 4.44)) < 1e-9, `Fuzz ${i}: σ = 3 angesetzt`);
 }
 
 // 4. Schnellevaluator Konformität (Modul Festbeton, Reiter 4), Kriterien DIN EN 206, 8.2.1.3
@@ -57,6 +65,10 @@ pruefe(!konformitaetDruck({ werte: [36, 36, 25.9], fckCube: 30, pruefArt: 'erst'
 const st15 = Array.from({ length: 15 }, (_, i) => 34 + (i % 3) * 0.5);
 const k2 = konformitaetDruck({ werte: st15, fckCube: 30, pruefArt: 'stetig' });
 pruefe(k2.sigmaAngesetzt === 3 && nahe(k2.sollMittelwert, 34.44, 1e-12) && k2.anzahlOk && k2.mittelOk && k2.hinweise.some(h => h.feld === 'werte'), `Konformität stetig ${JSON.stringify(k2)}`);
+//    σ aus der Vorserie (DIN EN 206 8.2.1.3): σ = 4,0 → Soll = 30 + 1,48·4 = 35,92 > Mittel 34,5 → nicht konform; σ = 2 → 3 angesetzt
+const k3 = konformitaetDruck({ werte: st15, fckCube: 30, pruefArt: 'stetig', sigmaVorserie: 4 });
+pruefe(k3.sigmaAngesetzt === 4 && nahe(k3.sollMittelwert, 35.92, 1e-12) && !k3.mittelOk && !k3.hinweise.some(h => h.feld === 'sigma'), `σ Vorserie ${JSON.stringify(k3)}`);
+pruefe(konformitaetDruck({ werte: st15, fckCube: 30, pruefArt: 'stetig', sigmaVorserie: 2 }).sigmaAngesetzt === 3 && !konformitaetDruck({ werte: st15, fckCube: 30, pruefArt: 'stetig', sigmaVorserie: -1 }).gueltig, 'σ Vorserie < 3 → 3; negativ → Fehler');
 //    Referenz: bisherige Komponentenrechnung (src/modules/Festbeton.tsx vor AP 4.2)
 function altKonf(w: number[], fck: number, modus: 'erst' | 'stetig') {
   const m = w.length > 0 ? w.reduce((a, b) => a + b, 0) / w.length : 0;

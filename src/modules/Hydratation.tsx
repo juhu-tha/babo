@@ -706,10 +706,10 @@ export default function Hydratation() {
                 },
                 {
                   titel: 'Ausschalfrist',
-                  erklaerung: `Ausgeschalt werden darf, sobald β_cc(t_e) den gewählten Anteil von ${formatDeZahl(ausschalFestigkeit, 0)} % erreicht.`,
+                  erklaerung: `Ausgeschalt werden darf, sobald f_ck(t_e) = β_cc(t_e)·f_cm − 8 (DIN EN 1992-1-1, 3.1.2(5); ab t_e = 28 d gilt f_ck) den gewählten Anteil von ${formatDeZahl(ausschalFestigkeit, 0)} % von f_ck erreicht.`,
                   formel: ausschalTage !== null
-                    ? `\\beta_{cc}(t_e) \\ge ${formatDeTeX(ausschalFestigkeit / 100, 2)} \\;\\Rightarrow\\; t = ${formatDeTeX(ausschalTage, 1)}\\,\\text{d}`
-                    : `\\beta_{cc}(t_e) < ${formatDeTeX(ausschalFestigkeit / 100, 2)} \\;\\text{bis}\\; t = 28\\,\\text{d}`,
+                    ? `f_{ck}(t_e) = \\beta_{cc}(t_e) \\cdot f_{cm} - 8 \\ge ${formatDeTeX(ausschalFestigkeit / 100, 2)} \\cdot f_{ck} \\;\\Rightarrow\\; t = ${formatDeTeX(ausschalTage, 1)}\\,\\text{d}`
+                    : `f_{ck}(t_e) < ${formatDeTeX(ausschalFestigkeit / 100, 2)} \\cdot f_{ck} \\;\\text{bis}\\; t = 28\\,\\text{d}`,
                 },
               ]}
               ergebnisHinweis={`Nach 2 Tagen: f_cm = ${formatDeZahl(fc_2d_val, 1)} MPa, f_ctm = ${formatDeZahl(fct_2d_val, 2)} MPa, E_cm = ${formatDeZahl(E_2d_val, 1)} GPa`}

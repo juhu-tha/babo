@@ -6,7 +6,8 @@ import {
   schlankheitsfaktorAstm, bohrkernPruefung, spaltzugfestigkeit, biegezug4Punkt, marshallQuotient, zugversuchStahl, holzSchaetzung,
   bemessungswerteBeton, festigkeitsentwicklung, type PruefWinkel, type Messwerkzeug, type Probekoerper, type Lagerung,
 } from '../src/calc/pruefverfahren';
-import { dynamischerEModul } from '../src/calc/bauwerksuntersuchung';
+import { dynamischerEModul, rueckprallLehrkurve, rueckprall } from '../src/calc/bauwerksuntersuchung';
+import { fckCubeVonFck, fckVonFckCube } from '../src/data/kennwerte';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -15,27 +16,30 @@ const relNahe = (ist: number, soll: number, tol = 1e-12) => Math.abs(ist - soll)
 console.log('--- Test: Prüfverfahren ---');
 
 // ================================================================ 1. ZfP
-// Rückprall: Referenz = bisherige Komponentenrechnung (src/modules/ZfP.tsx vor AP 4.2), wörtlich
+// Rückprall: Referenz = Komponentenrechnung (src/modules/ZfP.tsx vor AP 4.2) mit der seit Runde 5 (Z55) einheitlichen
+// Lehrkurve f_c = 0,0125·R^2,22 (vorher 0,027·R^2,1 im ZfP-Modul, 0,027·R^1,85 im Labor)
 function altRueckprall(rebound: number, angle: PruefWinkel) {
   let deltaR = 0;
   if (angle === '90') deltaR = -3;
   if (angle === '-90') deltaR = 3;
   const rCorr = rebound + deltaR;
-  return { rCorr, fc: 0.027 * Math.pow(Math.max(10, rCorr), 2.1) };
+  return { rCorr, fc: 0.0125 * Math.pow(Math.max(10, rCorr), 2.22) };
 }
 for (const w of ['0', '90', '-90'] as const) for (let R = 5; R <= 70; R += 0.5) {
   const n = rueckprallZfp(R, w), o = altRueckprall(R, w);
   pruefe(n.rCorr === o.rCorr && relNahe(n.fc, o.fc), `Rückprall ${R} ${w}`);
 }
-// Handrechnung Startwert R = 35, horizontal: 0,027 · 35^2,1 = 0,027 · 1747,0 = 47,2 N/mm²
-pruefe(nahe(rueckprallZfp(35, '0').fc, 0.027 * Math.pow(35, 2.1), 1e-12) && nahe(rueckprallZfp(35, '0').fc, 47.17, 0.05), `R = 35 → ${rueckprallZfp(35, '0').fc}`);
-pruefe(rueckprallZfp(35, '0').hinweise.some(h => h.feld === 'fc'), 'Rückprall: Hinweis Lehr-Näherung / DIN EN 13791');
+// Handrechnung Startwert R = 35, horizontal: 0,0125 · 35^2,22 = 0,0125 · 2678,1 = 33,5 N/mm²
+pruefe(nahe(rueckprallZfp(35, '0').fc, 0.0125 * Math.pow(35, 2.22), 1e-12) && nahe(rueckprallZfp(35, '0').fc, 33.48, 0.05), `R = 35 → ${rueckprallZfp(35, '0').fc}`);
+pruefe(rueckprallZfp(35, '0').hinweise.some(h => h.feld === 'fc' && h.text.includes('Kalibrierkerne')), 'Rückprall: Hinweis „ohne Kalibrierung nur Schätzung“ (DIN EN 13791)');
+// Eine Kurve im ganzen Repo: ZfP, Bauwerksuntersuchung (ohne Karbonatisierung) und Laborsimulator liefern denselben Wert
+pruefe(rueckprallFestigkeitLehr(42) === rueckprallLehrkurve(42) && rueckprall(42, 'horiz', 0).fcSchaetz === rueckprallLehrkurve(42), 'einheitliche Lehrkurve');
 pruefe(rueckprallZfp(8, '0').hinweise.some(h => h.text.includes('R = 10')), 'R < 10 → Hinweis statt stiller Ersatzwert');
 pruefe(!rueckprallZfp(NaN, '0').gueltig, 'NaN → Fehler');
 // Kurven wie bisher (R = 20 … 60, Schritt 2)
 const kv = rueckprallKurven();
 pruefe(kv.labels.length === 21 && kv.labels[0] === 20 && kv.labels[20] === 60, 'Kurven-Stützstellen');
-pruefe(kv.labels.every((r, i) => relNahe(kv.horizontal[i], 0.027 * Math.pow(r, 2.1)) && relNahe(kv.unten[i], 0.027 * Math.pow(Math.max(10, r - 3), 2.1)) && relNahe(kv.oben[i], 0.027 * Math.pow(r + 3, 2.1))), 'Kurven = alte Komponentenrechnung');
+pruefe(kv.labels.every((r, i) => relNahe(kv.horizontal[i], 0.0125 * Math.pow(r, 2.22)) && relNahe(kv.unten[i], 0.0125 * Math.pow(Math.max(10, r - 3), 2.22)) && relNahe(kv.oben[i], 0.0125 * Math.pow(r + 3, 2.22))), 'Kurven = Komponentenrechnung mit einheitlicher Lehrkurve');
 pruefe(rueckprallFestigkeitLehr(5) === rueckprallFestigkeitLehr(10), 'Lehrkurve unter R = 10 konstant');
 
 // Ultraschall: E_dyn = ρ v² (1+ν)(1−2ν)/(1−ν); ν = 0,2 → Faktor 0,9 (Lehrbuchformel, z. B. DIN EN 12504-4 Anhang / ASTM C597)
@@ -55,13 +59,16 @@ pruefe(georadar(9, 2).vRadar === 100 && georadar(9, 2).depth === 100 && nahe(geo
 pruefe(!georadar(0.5, 1).gueltig && georadar(1, 1).vRadar === 300, 'ε_r < 1 → Fehler, Vakuum c');
 pruefe(bewehrungsSignal(30, 16) === 100 - 30 / 16 * 20 && bewehrungsSignal(100, 6) === 0, 'Bewehrungssignal');
 
-// Potential: Grenzen wie bisher ausgeschlossen (< −350, < −200); −350 → mittel (Prüfpunkt, Bauwerksuntersuchung schließt ein)
-pruefe(potentialRisikoZfp(-351) === 'hoch' && potentialRisikoZfp(-350) === 'mittel' && potentialRisikoZfp(-201) === 'mittel' && potentialRisikoZfp(-200) === 'gering', 'Potential-Einstufung ZfP');
+// Potential (Runde 5): einheitlich mit der Bauwerksuntersuchung nach ASTM C876 – negativer als −350 mV hoch,
+// −350 … −200 mV ungewiss (beide Grenzen eingeschlossen), positiver als −200 mV gering
+pruefe(potentialRisikoZfp(-351) === 'hoch' && potentialRisikoZfp(-350) === 'mittel' && potentialRisikoZfp(-201) === 'mittel' && potentialRisikoZfp(-200) === 'mittel' && potentialRisikoZfp(-199) === 'gering', 'Potential-Einstufung ZfP');
 
 // Wenner: ρ = 2π · 0,05 m · 150 Ω = 47,12 Ω·m = 4,71 kΩ·cm (Formel AASHTO T 358 / RILEM TC 154)
 const wn = wenner(50, 150);
 pruefe(nahe(wn.rho, 47.1239, 1e-4) && nahe(wn.rhoKohmCm, 4.71239, 1e-5) && wn.stufe === 'sehr_hoch', `Wenner ${wn.rho}`);
 pruefe(wenner(50, 400).stufe === 'mittel' && wenner(50, 2000).stufe === 'niedrig' && wenner(50, 4000).stufe === 'vernachlaessigbar' && !wenner(0, 100).gueltig, 'Wenner-Stufen');
+// RILEM TC 154-EMC (Polder 2000, Tab. 2): < 100 Ω·m hoch, 100 … 500 mäßig – 110 Ω·m ist jetzt „mittel“ (vorher Grenze 120)
+pruefe(wenner(50, 110 / (2 * Math.PI * 0.05)).stufe === 'mittel' && wenner(50, 99 / (2 * Math.PI * 0.05)).stufe === 'sehr_hoch', 'Wenner-Grenze 100 Ω·m');
 pruefe(torrentKlasse(0.005) === 1 && torrentKlasse(0.01) === 2 && torrentKlasse(0.1) === 3 && torrentKlasse(1) === 4 && torrentKlasse(10) === 5, 'Torrent-Klassen');
 pruefe(torrentFeuchte(70) === 'normal' && torrentFeuchte(71) === 'hoch' && torrentFeuchte(86) === 'kritisch', 'Torrent-Feuchte');
 
@@ -105,11 +112,18 @@ pruefe(werkzeugToleranz('nivellier', 1000) === 0.5 && nahe(werkzeugToleranz('niv
 // ASTM C42 Tab. Korrekturfaktoren: 1,75 → 0,98; 1,50 → 0,96; 1,25 → 0,93; 1,00 → 0,87 (Zwischenwerte linear)
 pruefe(schlankheitsfaktorAstm(1) === 0.87 && schlankheitsfaktorAstm(1.5) === 0.96 && schlankheitsfaktorAstm(2) === 1 && nahe(schlankheitsfaktorAstm(1.125), 0.90, 1e-12), 'ASTM-Stützstellen und Interpolation');
 pruefe(Number.isNaN(schlankheitsfaktorAstm(0.9)) && schlankheitsfaktorAstm(2.5) === 1, 'h/d < 1 → NaN, h/d > 2 → 1');
-// Startwerte: d = h = 100 mm, F = 350 kN: f = 350 000/7853,98 = 44,56; × 0,87 = 38,77 (h/d = 2) ; Würfel 38,77/0,82 = 47,28
+// Startwerte: d = h = 100 mm, F = 350 kN: f = 350 000/7853,98 = 44,56. Runde 5 (Z55): Kern h/d = 1 entspricht nach
+// DIN EN 13791:2020 dem Würfel 150 mm → f_c,cube = 44,56 (vorher 44,56·0,87/0,82 = 47,28); Zylinder über die Klassen:
+// zwischen C30/37 und C35/45: 30 + 5·(44,56 − 37)/8 = 34,73
 const bk = bohrkernPruefung({ dMm: 100, hMm: 100, kraftKn: 350, staebe: 0, richtung: 'vertikal' });
-pruefe(nahe(bk.rawStrength, 44.563, 1e-3) && nahe(bk.fcCore, 44.563 * 0.87, 1e-3) && nahe(bk.equivalentCube, bk.fcCore / 0.82, 1e-12) && bk.hinweise.length === 0, `Bohrkern ${JSON.stringify(bk)}`);
+pruefe(nahe(bk.rawStrength, 44.563, 1e-3) && nahe(bk.equivalentCube, 44.563, 1e-3) && nahe(bk.equivalentCylinder, 34.727, 1e-3) && bk.lambdaAspect === 1 && bk.gueltig, `Bohrkern ${JSON.stringify(bk)}`);
+// h/d = 2 (d = 100, h = 200): Zylinderwert direkt, Würfel über die Klasse (C30/37: 30 → 37)
+const bkZ = bohrkernPruefung({ dMm: 100, hMm: 200, kraftKn: 30 * Math.PI * 2500 / 1000, staebe: 0, richtung: 'vertikal' });
+pruefe(nahe(bkZ.equivalentCylinder, 30, 1e-9) && nahe(bkZ.equivalentCube, 37, 1e-9), `Bohrkern h/d = 2 ${bkZ.equivalentCylinder} ${bkZ.equivalentCube}`);
+pruefe(nahe(fckCubeVonFck(30), 37, 1e-12) && nahe(fckVonFckCube(60), 50, 1e-12) && nahe(fckCubeVonFck(12), 15, 1e-12), 'Klassenumrechnung Tab. 3.1');
+// h/d = 1,5: ASTM C42 auf h/d = 2 (0,96), Bewehrung 2 Stäbe (+7 %), horizontal (1,085)
 const bk2 = bohrkernPruefung({ dMm: 100, hMm: 150, kraftKn: 350, staebe: 2, richtung: 'horizontal' });
-pruefe(nahe(bk2.fcCore, 44.563 * 0.96 * 1.07 * 1.085, 1e-3) && bk2.hinweise.some(h => h.feld === 'staebe'), 'Bohrkern mit Bewehrung, horizontal');
+pruefe(nahe(bk2.fcCore, 44.563 * 0.96 * 1.07 * 1.085, 1e-3) && nahe(bk2.equivalentCylinder, bk2.fcCore, 1e-12) && bk2.hinweise.some(h => h.feld === 'staebe'), 'Bohrkern mit Bewehrung, horizontal');
 const bk3 = bohrkernPruefung({ dMm: 100, hMm: 80, kraftKn: 350, staebe: 0, richtung: 'vertikal' });
 pruefe(!bk3.gueltig && !Number.isFinite(bk3.equivalentCube), 'h/d < 1 → Fehler, Ergebnis „–“');
 pruefe(!bohrkernPruefung({ dMm: 0, hMm: 100, kraftKn: 350, staebe: 0, richtung: 'vertikal' }).gueltig, 'd = 0 → Fehler');
@@ -120,10 +134,14 @@ pruefe(nahe(spaltzugfestigkeit(200, 150, 300), 2.8294, 1e-4), 'Spaltzug Zylinder
 pruefe(nahe(marshallQuotient(9.5, 3.2), 2.96875, 1e-12), 'Marshall-Quotient');
 // 4-Punkt-Biegung DIN EN 408: F = 6,5 kN, L = 1800, b = 50, h = 100 → 6500 · 1800/(50 · 10⁴) = 23,4 N/mm²
 pruefe(nahe(biegezug4Punkt(6.5, 1800, 50, 100), 23.4, 1e-12), 'Biegezug 4-Punkt');
-// Zugversuch Startwerte: Ø 12 → S₀ = 113,10 mm²; R_e = 512,8; R_m = 632,2; R_m/R_e = 1,233; A = 15 % → B500B
+// Zugversuch Startwerte: Ø 12 → S₀ = 113,10 mm²; R_e = 512,8; R_m = 632,2; R_m/R_e = 1,233; A_gt = 15 % (Messlänge unter F_m) → B500B
+// DIN 488-1 / EC2 Anhang C (öffentlich: Tab. C.1): B500A k ≥ 1,05, ε_uk = A_gt ≥ 2,5 %; B500B k ≥ 1,08, A_gt ≥ 5,0 %
 const zv = zugversuchStahl({ dMm: 12, kraftReKn: 58, kraftRmKn: 71.5, l0Mm: 100, luMm: 115 });
 pruefe(nahe(zv.area, 113.097, 1e-3) && nahe(zv.yieldStrength, 512.83, 0.01) && nahe(zv.ratio, 71.5 / 58, 1e-12) && nahe(zv.elongation, 15, 1e-12) && zv.einstufung === 'B500B', `Zugversuch ${JSON.stringify(zv)}`);
 pruefe(zugversuchStahl({ dMm: 12, kraftReKn: 58, kraftRmKn: 61.5, l0Mm: 100, luMm: 103 }).einstufung === 'B500A', 'B500A');
+// Grenzen: A_gt = 4,9 % mit k = 1,10 → nur B500A; A_gt = 2,4 % → nicht erfüllt; Hinweis A_gt statt Bruchdehnung A
+pruefe(zugversuchStahl({ dMm: 12, kraftReKn: 58, kraftRmKn: 63.8, l0Mm: 100, luMm: 104.9 }).einstufung === 'B500A' && zugversuchStahl({ dMm: 12, kraftReKn: 58, kraftRmKn: 63.8, l0Mm: 100, luMm: 102.4 }).einstufung === 'nicht', 'A_gt-Grenzen 2,5/5,0 %');
+pruefe(zv.hinweise.some(h => h.feld === 'elongation' && h.text.includes('Bruchdehnung A')), 'Hinweis A_gt ≠ Bruchdehnung A');
 pruefe(zugversuchStahl({ dMm: 12, kraftReKn: 50, kraftRmKn: 61.5, l0Mm: 100, luMm: 115 }).einstufung === 'nicht' && !zugversuchStahl({ dMm: 12, kraftReKn: 58, kraftRmKn: 70, l0Mm: 0, luMm: 115 }).gueltig, 'Nicht erfüllt, L₀ = 0 → Fehler');
 // Holz Startwerte: ρ = 0,46, u = 12 % → k_u = 1; f_c,0 = 38,4; f_m = 23,4 → C18-Niveau; E = 11 500
 const hz = holzSchaetzung({ rohdichte: 0.46, feuchte: 12, bMm: 50, hMm: 100, stuetzweiteMm: 1800, kraftKn: 6.5 });
@@ -139,18 +157,22 @@ pruefe(nahe(bw.fcd, 14.1667, 1e-4) && nahe(bw.fctd, 1.02, 1e-12) && !bemessungsw
 // β_cc nach Gl. (3.2): CEM N, t = 7 d → exp(0,25 · (1 − 2)) = 0,7788; f_cm(7) = 38 · 0,7788 = 29,59
 const fe = festigkeitsentwicklung({ fck: 30, alterTage: 7, zement: 'N', geometrie: 'zyl_150', lagerung: 'norm' });
 pruefe(nahe(fe.betaCc, Math.exp(-0.25), 1e-12) && nahe(fe.fcmTeff, 38 * Math.exp(-0.25), 1e-12) && fe.hinweise.length === 0, `β_cc(7) ${fe.betaCc}`);
-pruefe(festigkeitsentwicklung({ fck: 30, alterTage: 28, zement: 'R', geometrie: 'cube_150', lagerung: 'luft' }).fcmTeff === 38 * 1.25 * 0.9, 't = 28 d → β_cc = 1, Würfel/Luft');
-pruefe(festigkeitsentwicklung({ fck: 30, alterTage: 90, zement: 'S', geometrie: 'zyl_150', lagerung: 'norm' }).hinweise.some(h => h.feld === 'alter'), 't > 28 d → Hinweis (Z55)');
+// Runde 5: Würfel 150 über die Klasse C30/37 (37/30 = 1,2333) statt pauschal 1,25
+pruefe(nahe(festigkeitsentwicklung({ fck: 30, alterTage: 28, zement: 'R', geometrie: 'cube_150', lagerung: 'luft' }).fcmTeff, 38 * (37 / 30) * 0.9, 1e-12), 't = 28 d → β_cc = 1, Würfel/Luft');
+const fe90 = festigkeitsentwicklung({ fck: 30, alterTage: 90, zement: 'S', geometrie: 'zyl_150', lagerung: 'norm' });
+pruefe(fe90.hinweise.some(h => h.feld === 'alter') && fe90.fckT === 30 && fe90.fcmT > 38, 't > 28 d → f_ck(t) = f_ck, f_cm(t) > f_cm (Z55)');
+pruefe(nahe(fe.fckT, 38 * Math.exp(-0.25) - 8, 1e-12), 'f_ck(7 d) = f_cm(7 d) − 8 (3.1.2(5))');
 pruefe(!festigkeitsentwicklung({ fck: 30, alterTage: 0, zement: 'N', geometrie: 'zyl_150', lagerung: 'norm' }).gueltig, 't = 0 → Fehler');
 // Referenz: bisherige Komponentenrechnung (src/modules/Festbeton.tsx vor AP 4.2) für alle Slider-Werte
 const geos: Probekoerper[] = ['zyl_150', 'cube_150', 'cube_100', 'cube_200'], lag: Lagerung[] = ['norm', 'feucht', 'luft', 'heiss'];
 for (const z of ['R', 'N', 'S'] as const) for (const geo of geos) for (const la of lag) for (const t of [1, 3, 7, 14, 28, 56, 90, 365]) {
   const sK = z === 'R' ? 0.20 : z === 'N' ? 0.25 : 0.38;
   const b = Math.exp(sK * (1 - Math.sqrt(28 / Math.max(1, t))));
-  const gf = geo === 'zyl_150' ? 1.0 : geo === 'cube_150' ? 1.25 : geo === 'cube_100' ? 1.30 : 1.20;
+  // C35/45: 45/35 = 1,2857 (Klasse) statt 1,25; Würfel 100/200 mit den relativen Lehrfaktoren 1,30/1,25 bzw. 1,20/1,25
+  const gf = geo === 'zyl_150' ? 1.0 : geo === 'cube_150' ? 45 / 35 : geo === 'cube_100' ? (45 / 35) * 1.04 : (45 / 35) * 0.96;
   const lf = la === 'norm' ? 1.0 : la === 'feucht' ? 0.95 : la === 'luft' ? 0.90 : 0.85;
   const n = festigkeitsentwicklung({ fck: 35, alterTage: t, zement: z, geometrie: geo, lagerung: la });
-  pruefe(relNahe(n.betaCc, b) && relNahe(n.fcmTeff, 43 * b * gf * lf), `Festbeton alt/neu ${z} ${geo} ${la} ${t}`);
+  pruefe(relNahe(n.betaCc, b) && relNahe(n.fcmTeff, 43 * b * gf * lf, 1e-9), `Festbeton alt/neu ${z} ${geo} ${la} ${t}`);
 }
 
 // ================================================================ 5. Fuzz: 1 000 Zufallseingaben → endliche Ergebnisse oder sauberer Fehler

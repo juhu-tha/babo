@@ -1,5 +1,5 @@
 // Rechenkern Verkehrswegebau (Z3): Asphalt-Hohlraum, Gleis-Temperaturspannung, Westergaard, Fugen, Rigole, Spritzbetonring
-import { asphaltHohlraum, schienenTemperatur, westergaardRand, betondeckenFugen, rigole, spritzbetonRing, type Bettung } from '../src/calc/verkehrswegebau';
+import { asphaltHohlraum, schienenTemperatur, westergaardRand, westergaardSpannungen, westergaardErsatzradius, betondeckenFugen, rigole, spritzbetonRing, GAMMA_C_TUNNEL, type Bettung } from '../src/calc/verkehrswegebau';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -20,11 +20,19 @@ pruefe(nahe(g.sigmaT, 63, 1e-9) && nahe(g.kraftSchieneKn, 484.218, 1e-6) && nahe
 pruefe(schienenTemperatur(20 + 135 / 2.52, 20, 'schotter_gut').status === 'verwerfung' && schienenTemperatur(45, 20, 'schotter_mager').status === 'erhoeht', 'Verwerfung/erhöht');
 pruefe(schienenTemperatur(-30, 20, 'schotter_gut').status === 'zugKritisch' && schienenTemperatur(0, 20, 'schotter_gut').status === 'zug' && schienenTemperatur(60, 20, 'feste_fahrbahn').status === 'festeFahrbahn', 'Zug/feste Fahrbahn');
 
-// 3. Betondecke (Startwerte): h = 26 cm, Achslast 120 kN, k = 80 MN/m³
-//    l = [34 000·260³/(12·0,96·0,08)]^¼ = 897,35 mm; r = √(60 000/(0,8·π)) = 154,51 mm
-//    σ_e = 0,572·60 000/260²·(4·lg(5,808) + 0,359) = 1,734 N/mm² → 77,1 % von 2,25
+// 3. Westergaard-Originalgleichungen (Runde 5, Z55). Handbeispiele aus öffentlicher Lehrquelle (engineeringhulk.com,
+//    „Rigid Pavement Design – Westergaard’s Theory“, Beispiele 2 und 5; Gleichungen wie NPTEL Kap. 29):
+//    Rand: P = 50 kN, h = 250 mm, l = 800 mm, a = 150 mm → b = √(1,6·150² + 250²) − 0,675·250 = 145,10 mm; σ_e = 1,52 N/mm²
+//    Ecke: P = 40 kN, a = 150 mm, l = 850 mm, h = 250 mm → σ_c = 3·40 000/250²·[1 − (212,1/850)^0,6] = 1,085 N/mm²
+const ws = westergaardSpannungen(50000, 250, 800, 150);
+pruefe(nahe(ws.bMm, 145.097, 1e-3) && nahe(ws.rand, 1.5214, 1e-4) && nahe(westergaardSpannungen(40000, 250, 850, 150).ecke, 1.0851, 1e-4), `Westergaard Handbeispiele ${JSON.stringify(ws)}`);
+pruefe(westergaardErsatzradius(500, 250) === 500 && westergaardErsatzradius(150, 250) < 150 && ws.rand > ws.innen, 'b = a für a ≥ 1,724·h; Rand > Innen');
+//    Betondecke (Startwerte): h = 26 cm, Achslast 120 kN, k = 80 MN/m³, E = 34 000, ν = 0,15 (Koeffizienten für ν = 0,15)
+//    l = [34 000·260³/(12·(1 − 0,15²)·0,08)]^¼ = 893,31 mm; a = √(60 000/(0,8·π)) = 154,51 mm; b = 149,76 mm
+//    σ_e = 0,572·60 000/260²·(4·lg(893,31/149,76) + 0,359) = 1,7573 N/mm² → 78,1 % von 2,25 (vorher mit l/r und ν = 0,2: 1,734)
 const w = westergaardRand({ dickeCm: 26, achslastKn: 120, bettungMNm3: 80 });
-pruefe(w.gueltig && nahe(w.lMm, 897.355, 1e-3) && nahe(w.rMm, 154.510, 1e-3) && nahe(w.sigmaE, 1.73379, 1e-5) && nahe(w.ausnutzung, 77.057, 1e-3) && w.ok, `Westergaard ${JSON.stringify(w)}`);
+pruefe(w.gueltig && nahe(w.lMm, 893.311, 1e-3) && nahe(w.rMm, 154.510, 1e-3) && nahe(w.bMm, 149.765, 1e-3) && nahe(w.sigmaE, 1.75731, 1e-5) && nahe(w.ausnutzung, 78.103, 1e-3) && w.ok, `Westergaard ${JSON.stringify(w)}`);
+pruefe(nahe(w.sigmaE, 0.572 * 60000 / 260 ** 2 * (4 * Math.log10(w.lMm / w.bMm) + 0.359), 1e-12) && w.sigmaInnen < w.sigmaE, 'Rand mit b statt r');
 pruefe(!westergaardRand({ dickeCm: 15, achslastKn: 180, bettungMNm3: 30 }).ok && !westergaardRand({ dickeCm: 0, achslastKn: 120, bettungMNm3: 80 }).gueltig, 'dünne Platte überlastet, h = 0 → Fehler');
 //    Fugen: h = 26 cm → L_max = min(6,5; 5,0) = 5,0 m; 15 Dübel, Anker max(3; ⌊5/1,5⌋ + 1) = 4
 const f = betondeckenFugen(5.0, 26);
@@ -39,11 +47,12 @@ pruefe(nahe(rg.aRed, 319.5, 1e-12) && nahe(rg.qZu, 7.668, 1e-12) && nahe(rg.vZu,
 pruefe(nahe(rg.vSicker, 0.0217388, 1e-7) && nahe(rg.vRigole, 7.96569, 1e-5) && nahe(rg.vNutz, 7.56741, 1e-5) && nahe(rg.laengeM, 11.0635, 1e-4) && rg.boxen === 32, `Rigole Volumen ${rg.vRigole} ${rg.boxen}`);
 pruefe(rigole({ flaecheM2: 0, psi: 0.9, regenspende: 240, dauerMin: 15, speicherKoeff: 0.3 }).vRigole === 0.1 && !rigole({ flaecheM2: 355, psi: 0.9, regenspende: 240, dauerMin: 15, speicherKoeff: 0 }).gueltig, 'Mindestvolumen, s_R = 0 → Fehler');
 
-// 5. Spritzbeton (Startwerte): R = 4,5 m, p = 0,15 N/mm², d = 15 cm, C25/30
-//    σ = 0,15·4,5/0,15 = 4,5 N/mm²; f_cd = 0,85·25/1,3 = 16,35 N/mm² → 27,5 %; N = 675 kN/m
+// 5. Spritzbeton (Startwerte): R = 4,5 m, p = 0,15 N/mm², d = 15 cm, C25/30; Runde 5: γ_c = 1,5 (Bauzustand = vorübergehend,
+//    DIN EN 1992-1-1/NA Tab. 2.1DE) statt 1,3: σ = 0,15·4,5/0,15 = 4,5 N/mm²; f_cd = 0,85·25/1,5 = 14,17 N/mm² → 31,8 %; N = 675 kN/m
 const sp = spritzbetonRing(4.5, 0.15, 15, 25);
-pruefe(nahe(sp.sigmaRing, 4.5, 1e-12) && nahe(sp.fcd, 16.3462, 1e-4) && nahe(sp.ausnutzung, 27.5294, 1e-4) && nahe(sp.ringKraftKnM, 675, 1e-9) && sp.ok, `Spritzbeton ${JSON.stringify(sp)}`);
-pruefe(sp.hinweise.some(x => x.feld === 'gammaC') && !spritzbetonRing(4.5, 0.15, 15, 25, 1.5).hinweise.some(x => x.feld === 'gammaC'), 'γ_c = 1,3 → Hinweis');
+pruefe(nahe(sp.sigmaRing, 4.5, 1e-12) && nahe(sp.fcd, 14.1667, 1e-4) && nahe(sp.ausnutzung, 31.7647, 1e-4) && nahe(sp.ringKraftKnM, 675, 1e-9) && sp.ok, `Spritzbeton ${JSON.stringify(sp)}`);
+pruefe(!sp.hinweise.some(x => x.feld === 'gammaC') && spritzbetonRing(4.5, 0.15, 15, 25, GAMMA_C_TUNNEL.aussergewoehnlich).hinweise.some(x => x.feld === 'gammaC') && sp.hinweise.some(x => x.feld === 'tunnel'), 'γ_c = 1,5 Standard, 1,3 → Hinweis außergewöhnlich; Hinweis ZTV-ING/DS 853');
+pruefe(GAMMA_C_TUNNEL.voruebergehend === 1.5 && GAMMA_C_TUNNEL.aussergewoehnlich === 1.3 && GAMMA_C_TUNNEL.ec2Aussergewoehnlich === 1.2 && !spritzbetonRing(4.5, 0.15, 15, 25, 0).gueltig, 'γ_c-Werte, γ_c = 0 → Fehler');
 pruefe(!spritzbetonRing(4.5, 0.15, 0, 25).gueltig, 'd = 0 → Fehler');
 
 // 6. Fuzz-Test: endliche Werte, Monotonie

@@ -6,6 +6,7 @@
  */
 export * from '../utils/ec2Spannbeton';
 import { type Hinweis, istEndlich, muss, hatFehler } from './plausibilitaet';
+import { CONCRETE, fctmFl } from '../utils/ec2Spannbeton';
 
 export interface SpannbetonEingabe {
   p0: number; b: number; h: number; ep: number;    // kN, mm
@@ -82,8 +83,16 @@ export type Schnittlage = 'midspan' | 'support';
 /** Zustand des Querschnitts in der Animation */
 export type DehnungsZustand = 'cracked' | 'limited' | 'full' | 'camber' | 'support_crack';
 
-/** Feste Lehrparameter: Einfeldträger L = 20 m, Rechteck 500 × 1000 mm, C40/50 (E_cm, f_ctm als Lehrwerte), Wichte 25 kN/m³ */
-export const DEHNUNG_TRAEGER = { L: 20.0, b: 500.0, h: 1000.0, Ecm: 35000.0, fctm: 3.5, fck: 40.0, wichte: 25.0 } as const;
+/**
+ * Feste Lehrparameter: Einfeldträger L = 20 m, Rechteck 500 × 1000 mm, C40/50, Wichte 25 kN/m³.
+ * Runde 5: E_cm und f_ctm aus DIN EN 1992-1-1, Tab. 3.1 (zentrale Tabelle CONCRETE: 35 000 bzw. 3,5 N/mm²); die
+ * Biegerandzugspannung wird gegen f_ctm,fl = max((1,6 − h/1000)·f_ctm; f_ctm) nach 3.1.8 (Gl. 3.23) geprüft – für
+ * h = 1000 mm ist f_ctm,fl = f_ctm.
+ */
+const C40 = CONCRETE['C40/50'];
+export const DEHNUNG_TRAEGER = {
+  L: 20.0, b: 500.0, h: 1000.0, Ecm: C40.Ecm, fctm: C40.fctm, fctmFl: fctmFl(C40.fctm, 1000.0), fck: C40.fck, wichte: 25.0,
+} as const;
 
 export interface DehnungsEingabe {
   /** Vorspannkraft P [kN] */
@@ -135,7 +144,8 @@ export function pruefeDehnung(e: DehnungsEingabe): Hinweis[] {
 /** Dehnungs- und Spannungszustand des Lehrträgers (Zustand I, linear-elastisch); Rechnung unverändert aus dem Modul */
 export function dehnungsZustand(e: DehnungsEingabe): DehnungsErgebnis {
   const hinweise = pruefeDehnung(e);
-  const { L, b, h, Ecm, fctm, wichte } = DEHNUNG_TRAEGER;
+  // Grenze der Biegerandzugspannung: f_ctm,fl (EC2 3.1.8); die zentrische Kopfzug-/Rissgrenze bleibt f_ctm,fl ebenso
+  const { L, b, h, Ecm, fctmFl: fctm, wichte } = DEHNUNG_TRAEGER;
   const { A: Ac, I: Ic, W: Wc, kern: ku } = rechteckQuerschnitt(b, h);
   const prestressForce = e.P;
 
@@ -228,7 +238,7 @@ export function dehnungsZustand(e: DehnungsEingabe): DehnungsErgebnis {
   else zustand = 'cracked';
 
   if (!hatFehler(hinweise) && (zustand === 'cracked' || zustand === 'support_crack')) {
-    hinweise.push({ stufe: 'warnung', feld: 'P', text: 'Randzugspannung über f_ctm: Die Spannungen gelten für den ungerissenen Querschnitt (Zustand I) und sind nach der Rissbildung nur noch qualitativ.' });
+    hinweise.push({ stufe: 'warnung', feld: 'P', text: 'Randzugspannung über f_ctm,fl (DIN EN 1992-1-1, 3.1.8): Die Spannungen gelten für den ungerissenen Querschnitt (Zustand I) und sind nach der Rissbildung nur noch qualitativ.' });
   }
 
   return {
@@ -277,10 +287,19 @@ export function stauchungsVerlust(stauchungPromille: number) {
   return { b500, y1860, gueltig: !hatFehler(hinweise), hinweise };
 }
 
-/** Lehrannahme: wirksame Kraft je Standardlitze [kN] für die Überschlagsanzahl */
-export const KRAFT_JE_LITZE_KN = 150;
-/** Überschlägige Litzenzahl n ≈ P / 150 kN (gerundet) */
-export const litzenAnzahl = (P: number) => Math.round(P / KRAFT_JE_LITZE_KN);
+/**
+ * Standardlitze Y1860S7 mit A_p = 150 mm² (0,62″), σ_pm0 = min(0,75·f_pk; 0,85·f_p0,1k) = 1 360 N/mm² (wie Station 2).
+ * Runde 5: Die Litzenzahl folgt aus der Kraft je Litze nach Verlusten statt aus pauschal 150 kN:
+ *   P_m0 je Litze = A_p·σ_pm0 = 204 kN; P_m∞ je Litze = (1 − Verluste)·P_m0 mit 15 % zeitabhängigen Verlusten (Lehrannahme)
+ *   = 173,4 kN. Für den Lastausgleich ist die Kraft nach Verlusten maßgebend; n = ⌈P/P_m∞⌉ (aufgerundet).
+ */
+export const LITZE = { Ap: 150, sigmaPm0: 1360, verlust: 0.15 } as const;
+/** Kraft je Litze zum Spannzeitpunkt P_m0 [kN] */
+export const KRAFT_JE_LITZE_PM0_KN = (LITZE.Ap * LITZE.sigmaPm0) / 1000;
+/** Kraft je Litze nach Verlusten P_m∞ [kN] (für die Überschlagsanzahl) */
+export const KRAFT_JE_LITZE_KN = KRAFT_JE_LITZE_PM0_KN * (1 - LITZE.verlust);
+/** Überschlägige Litzenzahl n = ⌈P / P_m∞,Litze⌉ (P als wirksame Kraft nach Verlusten in kN) */
+export const litzenAnzahl = (P: number) => Math.ceil(P / KRAFT_JE_LITZE_KN - 1e-9);
 
 /**
  * Lastausgleich nach T. Y. Lin (Parabelspannglied, Einfeldträger): u = 8·P·f/L² ⇒ P_bal = g·L²/(8·f).

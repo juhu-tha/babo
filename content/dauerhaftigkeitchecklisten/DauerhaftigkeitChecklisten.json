@@ -36,7 +36,7 @@
     "t3RissbreitenbegrenzungRisssteuerung": "3. Rissbreitenbegrenzung & Risssteuerung",
     "berechnungUndKonstruktiveMaßnahmen": "Berechnung und konstruktive Maßnahmen zur Einhaltung der zulässigen Rissbreiten (w_max).",
     "grenzwertWMaxFestlegen": "Grenzwert w_max festlegen",
-    "definitionDerMaximalZulässigen": "Definition der maximal zulässigen Rissbreite w_max in Abhängigkeit von der Expositionsklasse (Stahlbeton nach NA Tab. 7.1DE: 0,4 mm bei XC1, 0,3 mm bei XC2–XC4, 0,2 mm bei XD/XS; WU-Bauteile nach WU-Richtlinie).",
+    "definitionDerMaximalZulässigen": "Definition der maximal zulässigen Rissbreite w_max in Abhängigkeit von der Expositionsklasse (Stahlbeton und Vorspannung ohne Verbund nach DIN EN 1992-1-1/NA, Tab. 7.1DE, quasi-ständige Kombination: 0,4 mm bei X0/XC1, 0,3 mm bei XC2–XC4 sowie XD1–XD3 und XS1–XS3 – bei XD3 ggf. besondere Maßnahmen; 0,2 mm und der Nachweis der Dekompression gelten für Spannbeton mit Verbund; WU-Bauteile nach WU-Richtlinie).",
     "dinEn199212": "DIN EN 1992-1-1 + NA, 7.3 / DAfStb-WU-Richtlinie",
     "zweckmäßigeMindestbewehrungFürZwangskräf": "Zweckmäßige Mindestbewehrung für Zwangskräfte berechnen",
     "auslegungDerRissbreitenbewehrungZur": "Auslegung der Rissbreitenbewehrung zur Aufnahme innerer Zwangskräfte infolge von Hydratationswärmeabfluss im frühen Stadium oder Schwindvorgängen.",

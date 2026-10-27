@@ -122,6 +122,9 @@ pruefe(c30.ec2 === 2 && c30.ecu2 === 3.5 && c30.n === 2 && c30.ecu1 === 3.5, 'C3
 const c70 = betonSdParameter(70), c90 = betonSdParameter(90);
 pruefe(nahe(c70.ec2, 2.4, 0.02) && nahe(c70.ecu2, 2.7, 0.02) && nahe(c70.n, 1.45, 0.02), `C70/85: ${c70.ec2}/${c70.ecu2}/${c70.n}`);
 pruefe(nahe(c90.ec2, 2.6, 0.02) && nahe(c90.ecu2, 2.6, 1e-12) && nahe(c90.n, 1.4, 1e-12) && nahe(c90.ecu1, 2.8, 1e-12) && c90.ec1 === 2.8, 'C90/105');
+//    Runde 5 (Z55): über C90/105 bleiben ε_c2/ε_cu2/n auf C90/105 (vorher f_ck = 110: ε_cu2 = 2,6056, n = 1,4037)
+const c110 = betonSdParameter(110);
+pruefe(c110.ecu2 === 2.6 && c110.n === 1.4 && c110.ec2 === 2.6 && c110.ecu1 === 2.8, `C110: ${c110.ecu2}/${c110.n}`);
 pruefe(nahe(betonParabelRechteck(1, c30) ?? NaN, 0.75 * 17, 1e-12) && betonParabelRechteck(2, c30) === 17 && betonParabelRechteck(3.5, c30) === 17 && betonParabelRechteck(3.6, c30) === null, 'Parabel-Rechteck');
 pruefe(nahe(betonNichtlinear(c30.ec1, c30) ?? NaN, c30.fcm, 1e-12) && betonNichtlinear(3.6, c30) === null && betonNichtlinear(0, c30) === 0, 'Sargent: f_cm bei ε_c1');
 const sd = betonSdLinien(30);

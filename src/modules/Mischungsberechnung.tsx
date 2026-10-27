@@ -268,7 +268,7 @@ export default function Mischungsberechnung() {
         { anteil: f816, feuchte: feuchte816, wa: wa816 }, { anteil: f1632, feuchte: feuchte1632, wa: wa1632 },
       ],
       biocharFeuchte: feuchteBiochar, biocharWa: waBiochar,
-      k: { fa: kFa, sf: kSf, hues: kKsm, biochar: kBiochar }, maxFaFaktor: maxFaFaktor(zementArt),
+      k: { fa: kFa, sf: kSf, hues: kKsm, biochar: kBiochar }, maxFaFaktor: maxFaFaktor(zementArt), zementArt,
     });
     const { maxFa, anrechenbarFa, maxSf, anrechenbarSf, volGestein, wasserAusGestein, wasserAusBiochar, zugabewasser } = sr;
     const { zement: volZement, fa: volFa, sf: volSf, hues: volKsm, biochar: volBiochar, zusatzmittel: volZM, luft: volLuft, stahlfaser: volStahlfaser, ppFaser: volPpFaser } = sr.vol;

@@ -4,6 +4,7 @@ import { Play, RotateCcw, ShieldCheck, Check, Download, FileText, Target, Crossh
 import { InlineMath } from 'react-katex';
 import { LabProtocolRecord, exportToCSV, generateIntegrityChecksum } from '@/src/utils/labExportUtils';
 import { saveStoredLabProtocol } from '@/src/utils/studyStorage';
+import { rueckprallLehrkurve } from '@/src/calc/bauwerksuntersuchung';
 
 type ImpactAngle = 'horizontal' | 'downward' | 'upward';
 type ConcreteAge = '28d' | '1year' | 'bestand_alt';
@@ -20,14 +21,15 @@ export default function SchmidtHammerSimulator() {
   const [isStriking, setIsStriking] = useState<boolean>(false);
   const [savedSuccess, setSavedSuccess] = useState(false);
 
-  // Base expected R value based on concrete strength class
+  // Erwarteter Rückprallwert je Klasse (Runde 5): so gewählt, dass die einheitliche Lehrkurve 0,0125·R^2,22 etwa die mittlere
+  // Würfeldruckfestigkeit f_ck,cube + 8 N/mm² ergibt (C30/37: R = 40 → 45 N/mm²); vorher auf die Labor-Kurve 0,027·R^1,85 abgestimmt
   const baseR = useMemo(() => {
     switch (targetClass) {
-      case 'C20/25': return 32;
+      case 'C20/25': return 35;
       case 'C25/30': return 37;
-      case 'C30/37': return 42;
-      case 'C35/45': return 47;
-      case 'C50/60': return 54;
+      case 'C30/37': return 40;
+      case 'C35/45': return 43;
+      case 'C50/60': return 48;
     }
   }, [targetClass]);
 
@@ -119,8 +121,8 @@ export default function SchmidtHammerSimulator() {
       correctedR = correctedR * 0.85; // Lehrannahme – in der Praxis Kalibrierung an Vergleichsbohrkernen (DIN EN 13791)
     }
 
-    // Festigkeitsschätzung: Lehr-Näherung (Potenzansatz), keine Normkurve
-    const estFck = Math.max(10, 0.027 * Math.pow(correctedR, 1.85));
+    // Festigkeitsschätzung: einheitliche Lehrkurve aus src/calc/bauwerksuntersuchung.ts (0,0125·R^2,22, keine Normkurve; Runde 5)
+    const estFck = rueckprallLehrkurve(correctedR);
 
     return {
       count: valid.length,
