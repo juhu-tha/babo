@@ -24,6 +24,7 @@ import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/Inno
 import inhalt from '@/content/bpbetonzusatzmittel/BpBetonzusatzmittel.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 export interface AdmixtureProduct {
   name: string;
@@ -185,8 +186,8 @@ export default function BpBetonzusatzmittel() {
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
                 {/* Repulsion Selector Buttons */}
-                <div className="lg:col-span-4 flex flex-col gap-2.5">
-                  <button aria-pressed={activeRepulsionType === 'electrostatic'}
+                <AuswahlGruppe label="Abstoßungsmechanismus" className="lg:col-span-4 flex flex-col gap-2.5">
+                  <button {...alsOption(activeRepulsionType === 'electrostatic')}
                     onClick={() => setActiveRepulsionType('electrostatic')}
                     className={`p-4 rounded-xl border text-left cursor-pointer transition-all ${
                       activeRepulsionType === 'electrostatic'
@@ -199,7 +200,7 @@ export default function BpBetonzusatzmittel() {
                     <span className="text-xxs text-text-main/50 block mt-1"><MdText text={inhalt.texte.typischBeiKlassischenBv} /></span>
                   </button>
 
-                  <button aria-pressed={activeRepulsionType === 'steric'}
+                  <button {...alsOption(activeRepulsionType === 'steric')}
                     onClick={() => setActiveRepulsionType('steric')}
                     className={`p-4 rounded-xl border text-left cursor-pointer transition-all ${
                       activeRepulsionType === 'steric'
@@ -211,7 +212,7 @@ export default function BpBetonzusatzmittel() {
                       <Sparkles size={16} className={activeRepulsionType === 'steric' ? 'text-shiraz' : 'text-slate-400'} /><MdText text={inhalt.texte.t2SterischeAbstoßung} /></div>
                     <span className="text-xxs text-text-main/50 block mt-1"><MdText text={inhalt.texte.dieRevolutionDurchPce} /></span>
                   </button>
-                </div>
+                </AuswahlGruppe>
 
                 {/* Simulation Canvas / Description */}
                 <div className="lg:col-span-8 bg-white p-5 rounded-xl border border-slate-200 flex flex-col justify-between">
@@ -552,8 +553,8 @@ export default function BpBetonzusatzmittel() {
 
                 <div className="space-y-3 pt-2 border-t">
                   <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block"><MdText text={inhalt.texte.bewehrungskategorieChloridschranke} /></span>
-                  <div className="flex gap-2">
-                    <button aria-pressed={concreteApplication === 'spann'}
+                  <AuswahlGruppe label="Bewehrungskategorie" className="flex gap-2">
+                    <button {...alsOption(concreteApplication === 'spann')}
                       onClick={() => setConcreteApplication('spann')}
                       className={`flex-1 p-2 border rounded-lg text-xxs font-bold text-center cursor-pointer transition-all ${
                         concreteApplication === 'spann'
@@ -563,7 +564,7 @@ export default function BpBetonzusatzmittel() {
                     >
                       Spannbeton
                     </button>
-                    <button aria-pressed={concreteApplication === 'stahl'}
+                    <button {...alsOption(concreteApplication === 'stahl')}
                       onClick={() => setConcreteApplication('stahl')}
                       className={`flex-1 p-2 border rounded-lg text-xxs font-bold text-center cursor-pointer transition-all ${
                         concreteApplication === 'stahl'
@@ -573,7 +574,7 @@ export default function BpBetonzusatzmittel() {
                     >
                       Stahlbeton
                     </button>
-                    <button aria-pressed={concreteApplication === 'unbewehrt'}
+                    <button {...alsOption(concreteApplication === 'unbewehrt')}
                       onClick={() => setConcreteApplication('unbewehrt')}
                       className={`flex-1 p-2 border rounded-lg text-xxs font-bold text-center cursor-pointer transition-all ${
                         concreteApplication === 'unbewehrt'
@@ -583,7 +584,7 @@ export default function BpBetonzusatzmittel() {
                     >
                       Unbewehrt
                     </button>
-                  </div>
+                  </AuswahlGruppe>
 
                   <div className="space-y-1">
                     <label className="text-xxs font-bold text-slate-600 block"><MdText text={inhalt.texte.chloridgehaltImAdditivText} /></label>

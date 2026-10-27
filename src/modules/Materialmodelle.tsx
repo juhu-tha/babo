@@ -30,6 +30,7 @@ import inhalt from '@/content/materialmodelle/Materialmodelle.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { bilinearVerfestigung, bilinearKurve, lehrkurve, thixotropieKurve } from '@/src/calc/werkstoffmodelle';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 ChartJS.register(
   CategoryScale,
@@ -527,8 +528,8 @@ export default function Materialmodelle() {
         </div>
 
         {/* Tab-Navigation für die Grundmodelle */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-2 relative">
-          <button aria-pressed={activeModel === 'linear'}
+        <AuswahlGruppe label="Werkstoffmodell" className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-2 relative">
+          <button {...alsOption(activeModel === 'linear')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeModel === 'linear' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -537,7 +538,7 @@ export default function Materialmodelle() {
             onClick={() => setActiveModel('linear')}>
             <TrendingUp size={16} /> Linear-Elastisch
           </button>
-          <button aria-pressed={activeModel === 'non-linear'}
+          <button {...alsOption(activeModel === 'non-linear')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeModel === 'non-linear' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -546,7 +547,7 @@ export default function Materialmodelle() {
             onClick={() => setActiveModel('non-linear')}>
             <Activity size={16} /> Nichtlinear
           </button>
-          <button aria-pressed={activeModel === 'ideal-plastic'}
+          <button {...alsOption(activeModel === 'ideal-plastic')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeModel === 'ideal-plastic' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -555,7 +556,7 @@ export default function Materialmodelle() {
             onClick={() => setActiveModel('ideal-plastic')}>
             <GitCommit size={16} /> Elastisch-Idealplastisch
           </button>
-          <button aria-pressed={activeModel === 'elasto-plastic'}
+          <button {...alsOption(activeModel === 'elasto-plastic')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeModel === 'elasto-plastic' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -563,7 +564,7 @@ export default function Materialmodelle() {
             }`}
             onClick={() => setActiveModel('elasto-plastic')}>
             <GitCommit size={16} /><MdText text={inhalt.texte.elastoPlastischMitVerfestigung} /></button>
-          <button aria-pressed={activeModel === 'visco-elastic'}
+          <button {...alsOption(activeModel === 'visco-elastic')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeModel === 'visco-elastic' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -571,7 +572,7 @@ export default function Materialmodelle() {
             }`}
             onClick={() => setActiveModel('visco-elastic')}>
             <Timer size={16} /><MdText text={inhalt.texte.rheologischZeitabh} /></button>
-          <button aria-pressed={activeModel === 'thixotropy-rheopexy'}
+          <button {...alsOption(activeModel === 'thixotropy-rheopexy')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeModel === 'thixotropy-rheopexy' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -579,7 +580,7 @@ export default function Materialmodelle() {
             }`}
             onClick={() => setActiveModel('thixotropy-rheopexy')}>
             <RotateCw size={16} /><MdText text={inhalt.texte.thixotropieRheopexie} /></button>
-        </div>
+        </AuswahlGruppe>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 animate-in fade-in duration-300">

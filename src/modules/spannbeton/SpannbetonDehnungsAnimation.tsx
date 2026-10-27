@@ -17,6 +17,7 @@ import inhalt from '@/content/spannbeton/SpannbetonDehnungsAnimation.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { dehnungsZustand, DEHNUNG_TRAEGER, type Spanngliedlage } from '@/src/calc/spannbeton';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 export type TendonTrajectoryType = Spanngliedlage;
 
@@ -128,9 +129,9 @@ export default function SpannbetonDehnungsAnimation() {
           <span className="text-[11px] font-mono text-slate-500"><MdText text={inhalt.texte.tragwerkstheorieVormomentenverlauf} /></span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <AuswahlGruppe label="Spanngliedverlauf" className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {/* a) Zentrisch */}
-          <button aria-pressed={tendonTrajectory === 'centric'}
+          <button {...alsOption(tendonTrajectory === 'centric')}
             type="button"
             onClick={() => setTendonTrajectory('centric')}
             className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
@@ -147,7 +148,7 @@ export default function SpannbetonDehnungsAnimation() {
           </button>
 
           {/* b) Gerade unten */}
-          <button aria-pressed={tendonTrajectory === 'straight_bottom'}
+          <button {...alsOption(tendonTrajectory === 'straight_bottom')}
             type="button"
             onClick={() => setTendonTrajectory('straight_bottom')}
             className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
@@ -164,7 +165,7 @@ export default function SpannbetonDehnungsAnimation() {
           </button>
 
           {/* c) Parabolisch */}
-          <button aria-pressed={tendonTrajectory === 'parabolic'}
+          <button {...alsOption(tendonTrajectory === 'parabolic')}
             type="button"
             onClick={() => setTendonTrajectory('parabolic')}
             className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
@@ -179,7 +180,7 @@ export default function SpannbetonDehnungsAnimation() {
             </div>
             <p className={`text-[10.5px] mt-1 leading-snug ${tendonTrajectory === 'parabolic' ? 'text-white/90' : 'text-slate-500'}`}><MdText text={inhalt.texte.spanngliedFolgtDerBiegelinie} /></p>
           </button>
-        </div>
+        </AuswahlGruppe>
       </div>
 
       {/* HAUPT-STEUERUNG: MANUELLER SCHIEBEREGLER MIT FEINJUSTIERUNG & MEILENSTEINEN */}
@@ -235,8 +236,8 @@ export default function SpannbetonDehnungsAnimation() {
           </div>
 
           {/* Anzeige-Modus-Umschaltung */}
-          <div className="flex items-center gap-1 bg-white p-1 rounded-xl border border-slate-300">
-            <button aria-pressed={activeDisplayMode === 'dehnung'}
+          <AuswahlGruppe label="Anzeige" className="flex items-center gap-1 bg-white p-1 rounded-xl border border-slate-300">
+            <button {...alsOption(activeDisplayMode === 'dehnung')}
               type="button"
               onClick={() => setActiveDisplayMode('dehnung')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
@@ -247,7 +248,7 @@ export default function SpannbetonDehnungsAnimation() {
             >
               <Activity size={13} /> Dehnung <InlineMath math="\varepsilon(z)" />
             </button>
-            <button aria-pressed={activeDisplayMode === 'spannung'}
+            <button {...alsOption(activeDisplayMode === 'spannung')}
               type="button"
               onClick={() => setActiveDisplayMode('spannung')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
@@ -258,7 +259,7 @@ export default function SpannbetonDehnungsAnimation() {
             >
               <Gauge size={13} /> Spannung <InlineMath math="\sigma(z)" />
             </button>
-            <button aria-pressed={activeDisplayMode === 'superposition'}
+            <button {...alsOption(activeDisplayMode === 'superposition')}
               type="button"
               onClick={() => setActiveDisplayMode('superposition')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
@@ -268,7 +269,7 @@ export default function SpannbetonDehnungsAnimation() {
               }`}
             >
               <Layers size={13} /><MdText text={inhalt.texte.superpositionNMP} /></button>
-          </div>
+          </AuswahlGruppe>
         </div>
 
         {/* DER ZENTRALE MANUELLE SCHIEBEREGLER: VORSPANNKRAFT P */}
@@ -706,8 +707,8 @@ export default function SpannbetonDehnungsAnimation() {
               <span className="w-2 h-2 rounded-full bg-shiraz" /><MdText text={inhalt.texte.t2QuerschnittsschnittBetrachten} /></span>
 
             {/* Toggle Feldmitte vs. Auflager */}
-            <div className="flex items-center bg-white p-0.5 rounded-lg border border-slate-300">
-              <button aria-pressed={viewSection === 'midspan'}
+            <AuswahlGruppe label="Querschnitt" className="flex items-center bg-white p-0.5 rounded-lg border border-slate-300">
+              <button {...alsOption(viewSection === 'midspan')}
                 type="button"
                 onClick={() => setViewSection('midspan')}
                 className={`px-2.5 py-1 rounded text-xs font-bold transition-all cursor-pointer ${
@@ -716,7 +717,7 @@ export default function SpannbetonDehnungsAnimation() {
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               ><MdText text={inhalt.texte.feldmitteXL2} /></button>
-              <button aria-pressed={viewSection === 'support'}
+              <button {...alsOption(viewSection === 'support')}
                 type="button"
                 onClick={() => setViewSection('support')}
                 className={`px-2.5 py-1 rounded text-xs font-bold transition-all cursor-pointer ${
@@ -725,7 +726,7 @@ export default function SpannbetonDehnungsAnimation() {
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               ><MdText text={inhalt.texte.auflagerX0} /></button>
-            </div>
+            </AuswahlGruppe>
           </div>
 
           {/* SVG DEHNUNGS- UND SPANNUNGSDIAGRAMM */}

@@ -3,6 +3,7 @@ import { AlertTriangle, CheckCircle } from 'lucide-react';
 import { useId, type Dispatch, type SetStateAction } from 'react';
 import inhalt from '@/content/nachhaltigkeit/QngNachweis.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 interface QngNachweisProps {
   bgf: number;
@@ -84,9 +85,9 @@ export default function QngNachweis({ bgf, constructionType, greenTariff, heatin
               {/* Heating systems */}
               <div>
                 <label className="block text-xs font-bold text-slate-900 mb-2"><MdText text={inhalt.texte.energieträgerPrimärHeizungssystem} /></label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <AuswahlGruppe label="Heizungssystem" className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {inhalt.daten.QngNachweis.map((item) => (
-                    <button aria-pressed={heatingSystem === item.id}
+                    <button {...alsOption(heatingSystem === item.id)}
                       key={item.id}
                       onClick={() => setHeatingSystem(item.id)}
                       className={`p-3 rounded-xl border text-left flex flex-col gap-1 transition-all ${
@@ -99,7 +100,7 @@ export default function QngNachweis({ bgf, constructionType, greenTariff, heatin
                       <span className="text-[9px] text-slate-400 leading-normal">{item.details}</span>
                     </button>
                   ))}
-                </div>
+                </AuswahlGruppe>
               </div>
 
               {/* Tariffs and PV */}

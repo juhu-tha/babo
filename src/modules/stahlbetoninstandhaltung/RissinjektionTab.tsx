@@ -4,6 +4,7 @@ import { Sliders, GitCommit } from 'lucide-react';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/stahlbetoninstandhaltung/RissinjektionTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 export interface RissinjektionTabProps {
   bauteilDicke: number;
@@ -71,8 +72,8 @@ export default function RissinjektionTab({ bauteilDicke, crackActivity, crackMoi
           {/* Rissdynamik */}
           <div>
             <label className="block font-bold text-slate-800 mb-1.5"><MdText text={inhalt.texte.t2KinetikDerRissbewegung} /></label>
-            <div className="grid grid-cols-2 gap-2">
-              <button aria-pressed={crackActivity === 'ruhend'}
+            <AuswahlGruppe label="Rissdynamik" className="grid grid-cols-2 gap-2">
+              <button {...alsOption(crackActivity === 'ruhend')}
                 type="button"
                 onClick={() => setCrackActivity('ruhend')}
                 className={`p-2 rounded-lg border text-center transition-all cursor-pointer ${
@@ -81,7 +82,7 @@ export default function RissinjektionTab({ bauteilDicke, crackActivity, crackMoi
                     : 'bg-white text-slate-700 border-home-grau/30 hover:bg-slate-100'
                 }`}
               ><MdText text={inhalt.texte.ruhenderRissW0} /></button>
-              <button aria-pressed={crackActivity === 'dynamisch'}
+              <button {...alsOption(crackActivity === 'dynamisch')}
                 type="button"
                 onClick={() => setCrackActivity('dynamisch')}
                 className={`p-2 rounded-lg border text-center transition-all cursor-pointer ${
@@ -90,7 +91,7 @@ export default function RissinjektionTab({ bauteilDicke, crackActivity, crackMoi
                     : 'bg-white text-slate-700 border-home-grau/30 hover:bg-slate-100'
                 }`}
               ><MdText text={inhalt.texte.dynamischBewegtW0} /></button>
-            </div>
+            </AuswahlGruppe>
           </div>
 
           {/* Feuchtezustand */}

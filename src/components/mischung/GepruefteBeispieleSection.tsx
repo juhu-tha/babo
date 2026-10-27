@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 
 import { BENCHMARK_EXAMPLES, type BenchmarkData } from '@/src/data/mischungBeispiele';
+import { AuswahlGruppe, alsOption } from '../ui/Auswahlgruppe';
 export { BENCHMARK_EXAMPLES, type BenchmarkData };
 
 interface Props {
@@ -35,9 +36,9 @@ export default function GepruefteBeispieleSection({ onLoadBenchmark }: Props) {
       </div>
 
       {/* Auswahl-Karten der 4 Benchmarks */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+      <AuswahlGruppe label="Geprüftes Mischungsbeispiel" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
         {BENCHMARK_EXAMPLES.map(bsp => (
-          <button aria-pressed={selectedId === bsp.id}
+          <button {...alsOption(selectedId === bsp.id)}
             key={bsp.id}
             onClick={() => setSelectedId(bsp.id)}
             className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between ${
@@ -63,7 +64,7 @@ export default function GepruefteBeispieleSection({ onLoadBenchmark }: Props) {
             </div>
           </button>
         ))}
-      </div>
+      </AuswahlGruppe>
 
       {/* Detail-Ansicht des gewählten Beispiels */}
       <div className="bg-off-white p-5 rounded-xl border border-home-grau/30 flex flex-col gap-6">

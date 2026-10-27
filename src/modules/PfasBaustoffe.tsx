@@ -12,6 +12,7 @@ import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 import { pfasSummenbewertung, ersatzwert, PFAS20, PFAS4, PFAS_GRENZWERTE, type PfasId, type BgAnsatz, type PfasSumme } from '@/src/calc/pfas';
 import inhalt from '@/content/pfasbaustoffe/PfasBaustoffe.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 type Reiter = 'einfuehrung' | 'vorkommen' | 'regulierung' | 'rueckbau' | 'analytik' | 'rechner';
 
@@ -265,14 +266,14 @@ export default function PfasBaustoffe() {
                 <div className={box}>
                   <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-3">Bestimmungsgrenze</h3>
                   <Slider label={inhalt.werte.bestimmungsgrenzeBgJeEinzelstoff} min={0.1} max={20} step={0.1} value={bg} unit="ng/l" onChange={e => setBg(Number(e.target.value))} />
-                  <div className="flex flex-wrap gap-2 mt-3" role="group" aria-label={inhalt.werte.ansatzDerWerteUnter}>
+                  <AuswahlGruppe className="flex flex-wrap gap-2 mt-3" aria-label={inhalt.werte.ansatzDerWerteUnter}>
                     {(['null', 'halb', 'voll'] as const).map(a => (
-                      <button key={a} type="button" aria-pressed={ansatz === a} onClick={() => setAnsatz(a)}
+                      <button key={a} type="button" {...alsOption(ansatz === a)} onClick={() => setAnsatz(a)}
                         className={`px-3 py-1.5 rounded-lg text-xs font-bold border cursor-pointer ${ansatz === a ? 'bg-shiraz text-white border-shiraz' : 'bg-white border-home-grau/30'}`}>
                         {ANSATZ_TEXT[a]}
                       </button>
                     ))}
-                  </div>
+                  </AuswahlGruppe>
                 </div>
                 <div className={box}>
                   <div className="flex items-center justify-between mb-3">

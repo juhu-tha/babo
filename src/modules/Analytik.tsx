@@ -7,6 +7,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/analytik/Analytik.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 const TGAInteraction = () => {
   const [temp, setTemp] = useState(20);
@@ -110,12 +111,12 @@ const RemEdxInteraction = () => {
     <div className="mt-4 p-4 bg-white rounded-lg border border-home-grau/30 shadow-inner">
       <h4 className="font-bold text-sm mb-3 flex items-center gap-2"><MousePointerClick size={16}/><MdText text={inhalt.texte.interaktivRemEdxPunktsonde} /></h4>
       <div className="flex flex-col md:flex-row gap-4">
-        <div className="relative w-full md:w-1/2 aspect-video bg-stone-300 rounded-md border border-stone-400 overflow-hidden flex items-center justify-center">
+        <AuswahlGruppe label="Messpunkt" className="relative w-full md:w-1/2 aspect-video bg-stone-300 rounded-md border border-stone-400 overflow-hidden flex items-center justify-center">
           <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.35)_1px,transparent_0)] bg-[length:6px_6px] mix-blend-multiply" aria-hidden="true"></div>
           <span className="text-stone-500 font-mono text-xs z-0 relative font-bold uppercase tracking-widest"><MdText text={inhalt.texte.remVisualisierung} /></span>
           
           {points.map((pt) => (
-            <button aria-pressed={selectedPoint === pt.id}
+            <button {...alsOption(selectedPoint === pt.id)}
               key={pt.id}
               onClick={() => setSelectedPoint(pt.id)}
               className={`absolute w-5 h-5 rounded-full border-[3px] transform -translate-x-1/2 -translate-y-1/2 transition-all shadow-sm z-10 ${selectedPoint === pt.id ? 'bg-purple-500 border-white scale-125 cursor-default' : 'bg-white/50 border-purple-500 hover:scale-110 cursor-pointer animate-pulse'}`}
@@ -123,7 +124,7 @@ const RemEdxInteraction = () => {
               title="EDX Analyse"
             />
           ))}
-        </div>
+        </AuswahlGruppe>
         <div className="w-full md:w-1/2 flex flex-col justify-center">
           {selectedPoint ? (
             <div className="bg-purple-50 p-4 rounded-md border border-purple-100 animate-in fade-in zoom-in-95 duration-200 h-full flex flex-col justify-center">

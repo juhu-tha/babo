@@ -3,6 +3,7 @@ import { FileCode, Sliders, Code, AlertTriangle, Table, CheckSquare } from 'luci
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/ki/LlmPraxisTeile/MarkdownTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../../../components/ui/Auswahlgruppe';
 
 export interface MarkdownTabProps {
   markdownView: "vergleich" | "syntax" | "rechner";
@@ -26,29 +27,29 @@ export function MarkdownTab({ markdownView, setMarkdownView, calcDocPages, setCa
                   </div>
     
                   {/* View toggle */}
-                  <div className="flex gap-1 bg-slate-100 p-1 rounded-xl text-xs font-semibold">
-                    <button aria-pressed={markdownView === 'vergleich'}
+                  <ReiterLeiste label="Ansicht Markdown" className="flex gap-1 bg-slate-100 p-1 rounded-xl text-xs font-semibold">
+                    <button {...alsReiter(markdownView === 'vergleich', 'markdown-ansicht', 'vergleich')}
                       onClick={() => setMarkdownView('vergleich')}
                       className={`px-3 py-1.5 rounded-lg transition-all ${markdownView === 'vergleich' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
                     >
                       Warum .md?
                     </button>
-                    <button aria-pressed={markdownView === 'syntax'}
+                    <button {...alsReiter(markdownView === 'syntax', 'markdown-ansicht', 'syntax')}
                       onClick={() => setMarkdownView('syntax')}
                       className={`px-3 py-1.5 rounded-lg transition-all ${markdownView === 'syntax' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
                     >
                       Ingenieur-Syntax
                     </button>
-                    <button aria-pressed={markdownView === 'rechner'}
+                    <button {...alsReiter(markdownView === 'rechner', 'markdown-ansicht', 'rechner')}
                       onClick={() => setMarkdownView('rechner')}
                       className={`px-3 py-1.5 rounded-lg transition-all ${markdownView === 'rechner' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
                     ><MdText text={inhalt.texte.tokenKostenRechner} /></button>
-                  </div>
+                  </ReiterLeiste>
                 </div>
     
                 {/* VIEW 1: REASONS FOR MARKDOWN */}
                 {markdownView === 'vergleich' && (
-                  <div className="space-y-5 animate-in fade-in duration-200">
+                  <div {...reiterPanel('markdown-ansicht', markdownView)} className="space-y-5 animate-in fade-in duration-200">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                       <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 space-y-1.5">
                         <div className="text-shiraz font-black text-xl">1.</div>
@@ -103,7 +104,7 @@ export function MarkdownTab({ markdownView, setMarkdownView, calcDocPages, setCa
     
                 {/* VIEW 2: SYNTAX-GUIDE FÜR BAUINGENIEURE */}
                 {markdownView === 'syntax' && (
-                  <div className="space-y-4 animate-in fade-in duration-200 text-xs">
+                  <div {...reiterPanel('markdown-ansicht', markdownView)} className="space-y-4 animate-in fade-in duration-200 text-xs">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 space-y-2">
                         <span className="font-bold text-text-main flex items-center gap-1.5">
@@ -143,7 +144,7 @@ export function MarkdownTab({ markdownView, setMarkdownView, calcDocPages, setCa
     
                 {/* VIEW 3: TOKEN- & KOSTEN-RECHNER */}
                 {markdownView === 'rechner' && (
-                  <div className="p-5 bg-off-white rounded-2xl border border-home-grau/20 space-y-5 animate-in fade-in duration-200">
+                  <div {...reiterPanel('markdown-ansicht', markdownView)} className="p-5 bg-off-white rounded-2xl border border-home-grau/20 space-y-5 animate-in fade-in duration-200">
                     <div className="flex items-center justify-between">
                       <h4 className="font-bold text-sm text-text-main flex items-center gap-2">
                         <Sliders size={16} className="text-shiraz" /><MdText text={inhalt.texte.interaktiverFormatTokenKostenrechner} /></h4>
@@ -173,32 +174,32 @@ export function MarkdownTab({ markdownView, setMarkdownView, calcDocPages, setCa
     
                       <div>
                         <label className="text-xs font-semibold text-text-main/80 block mb-1">Eingabeformat:</label>
-                        <div className="grid grid-cols-2 gap-2">
-                          <button aria-pressed={calcDocType === 'pdf_scan'}
+                        <AuswahlGruppe label="Eingabeformat" className="grid grid-cols-2 gap-2">
+                          <button {...alsOption(calcDocType === 'pdf_scan')}
                             onClick={() => setCalcDocType('pdf_scan')}
                             className={`px-3 py-1.5 text-xs rounded-lg font-medium transition-all border ${
                           calcDocType === 'pdf_scan' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-text-main border-home-grau/30'
                         }`}
                           ><MdText text={inhalt.texte.pdfScanOcr} /></button>
-                          <button aria-pressed={calcDocType === 'pdf_text'}
+                          <button {...alsOption(calcDocType === 'pdf_text')}
                             onClick={() => setCalcDocType('pdf_text')}
                             className={`px-3 py-1.5 text-xs rounded-lg font-medium transition-all border ${
                           calcDocType === 'pdf_text' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-text-main border-home-grau/30'
                         }`}
                           ><MdText text={inhalt.texte.pdfDigital} /></button>
-                          <button aria-pressed={calcDocType === 'word_docx'}
+                          <button {...alsOption(calcDocType === 'word_docx')}
                             onClick={() => setCalcDocType('word_docx')}
                             className={`px-3 py-1.5 text-xs rounded-lg font-medium transition-all border ${
                           calcDocType === 'word_docx' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-text-main border-home-grau/30'
                         }`}
                           ><MdText text={inhalt.texte.wordDocx} /></button>
-                          <button aria-pressed={calcDocType === 'markdown'}
+                          <button {...alsOption(calcDocType === 'markdown')}
                             onClick={() => setCalcDocType('markdown')}
                             className={`px-3 py-1.5 text-xs rounded-lg font-medium transition-all border ${
                           calcDocType === 'markdown' ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm' : 'bg-white text-text-main border-home-grau/30'
                         }`}
                           ><MdText text={inhalt.texte.markdownMd} /></button>
-                        </div>
+                        </AuswahlGruppe>
                       </div>
                     </div>
     

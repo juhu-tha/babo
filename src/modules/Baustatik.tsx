@@ -24,6 +24,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/baustatik/Baustatik.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 ChartJS.register(
   CategoryScale,
@@ -644,11 +645,11 @@ export default function Baustatik() {
               <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-sm mb-6 overflow-x-auto">
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="text-sm font-bold text-center"><MdText text={inhalt.texte.systemskizzeSchnittgrößen} /></h3>
-                  <div className="flex bg-off-white rounded-lg p-1 border border-home-grau/30">
-                    <button aria-pressed={rahmenSchnitt === 'M'} className={`px-3 py-1 text-xs font-bold rounded-md ${rahmenSchnitt === 'M' ? 'bg-white shadow-sm text-shiraz' : 'text-home-grau'}`} onClick={() => setRahmenSchnitt('M')}>Moment (M)</button>
-                    <button aria-pressed={rahmenSchnitt === 'V'} className={`px-3 py-1 text-xs font-bold rounded-md ${rahmenSchnitt === 'V' ? inhalt.werte.bgWhiteShadowSm : 'text-home-grau'}`} onClick={() => setRahmenSchnitt('V')}><MdText text={inhalt.texte.querkraftV} /></button>
-                    <button aria-pressed={rahmenSchnitt === 'N'} className={`px-3 py-1 text-xs font-bold rounded-md ${rahmenSchnitt === 'N' ? 'bg-white shadow-sm text-green-700' : 'text-home-grau'}`} onClick={() => setRahmenSchnitt('N')}><MdText text={inhalt.texte.normalkraftN} /></button>
-                  </div>
+                  <AuswahlGruppe label="Schnittgröße" className="flex bg-off-white rounded-lg p-1 border border-home-grau/30">
+                    <button {...alsOption(rahmenSchnitt === 'M')} className={`px-3 py-1 text-xs font-bold rounded-md ${rahmenSchnitt === 'M' ? 'bg-white shadow-sm text-shiraz' : 'text-home-grau'}`} onClick={() => setRahmenSchnitt('M')}>Moment (M)</button>
+                    <button {...alsOption(rahmenSchnitt === 'V')} className={`px-3 py-1 text-xs font-bold rounded-md ${rahmenSchnitt === 'V' ? inhalt.werte.bgWhiteShadowSm : 'text-home-grau'}`} onClick={() => setRahmenSchnitt('V')}><MdText text={inhalt.texte.querkraftV} /></button>
+                    <button {...alsOption(rahmenSchnitt === 'N')} className={`px-3 py-1 text-xs font-bold rounded-md ${rahmenSchnitt === 'N' ? 'bg-white shadow-sm text-green-700' : 'text-home-grau'}`} onClick={() => setRahmenSchnitt('N')}><MdText text={inhalt.texte.normalkraftN} /></button>
+                  </AuswahlGruppe>
                 </div>
                 <div className="min-w-[600px] flex justify-center">
                   <svg width="100%" height="400" viewBox="0 0 800 400" style={{ maxWidth: '800px' }}>

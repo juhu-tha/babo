@@ -25,6 +25,7 @@ import { BaustoffrecyclingTab } from './rueckbau/BaustoffrecyclingTab';
 import inhalt from '@/content/rueckbau/Rueckbau.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 export default function Rueckbau() {
   const [activeTab, setActiveTab] = useState<'lfu_leitfaden' | 'schadstoffe' | 'baustoffrecycling' | 'rechner' | 'aktualitaet' | 'praxis'>('lfu_leitfaden');
@@ -321,8 +322,8 @@ export default function Rueckbau() {
               </div>
               
               {/* Era selector tabs */}
-              <div className="flex rounded-lg bg-off-white p-1 border border-home-grau/30">
-                <button aria-pressed={selectedEra === 'pre1970'}
+              <AuswahlGruppe label="Baualtersklasse" className="flex rounded-lg bg-off-white p-1 border border-home-grau/30">
+                <button {...alsOption(selectedEra === 'pre1970')}
                   onClick={() => setSelectedEra('pre1970')}
                   className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all ${
                     selectedEra === 'pre1970' ? 'bg-white shadow-sm text-shiraz' : 'text-text-main/70 hover:text-text-main'
@@ -330,7 +331,7 @@ export default function Rueckbau() {
                 >
                   Bis 1970
                 </button>
-                <button aria-pressed={selectedEra === 'era1970_1990'}
+                <button {...alsOption(selectedEra === 'era1970_1990')}
                   onClick={() => setSelectedEra('era1970_1990')}
                   className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all ${
                     selectedEra === 'era1970_1990' ? 'bg-white shadow-sm text-shiraz' : 'text-text-main/70 hover:text-text-main'
@@ -338,7 +339,7 @@ export default function Rueckbau() {
                 >
                   1970 - 1990
                 </button>
-                <button aria-pressed={selectedEra === 'post1990'}
+                <button {...alsOption(selectedEra === 'post1990')}
                   onClick={() => setSelectedEra('post1990')}
                   className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all ${
                     selectedEra === 'post1990' ? 'bg-white shadow-sm text-shiraz' : 'text-text-main/70 hover:text-text-main'
@@ -346,7 +347,7 @@ export default function Rueckbau() {
                 >
                   Nach 1990
                 </button>
-              </div>
+              </AuswahlGruppe>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6">

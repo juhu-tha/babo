@@ -25,6 +25,7 @@ import {
 import inhalt from '@/content/ki/Systemarchitektur.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../../components/ui/Auswahlgruppe';
 
 type SystemBereich = 'schichten' | 'technologien' | 'vergleich';
 
@@ -332,7 +333,7 @@ export default function Systemarchitektur() {
         </div>
 
         {/* Horizontal Technology Selector Tabs */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
+        <AuswahlGruppe label="Technologie" className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
           {(
             [
               { key: 'ml', label: inhalt.werte.t1ClassicalMl, icon: Cpu },
@@ -347,7 +348,7 @@ export default function Systemarchitektur() {
             const Icon = tab.icon;
             const isSelected = selectedTech === tab.key;
             return (
-              <button aria-pressed={isSelected}
+              <button {...alsOption(isSelected)}
                 key={tab.key}
                 type="button"
                 onClick={() => setSelectedTech(tab.key)}
@@ -362,7 +363,7 @@ export default function Systemarchitektur() {
               </button>
             );
           })}
-        </div>
+        </AuswahlGruppe>
 
         {/* Selected Technology Header Card */}
         <div className="p-5 rounded-2xl border border-home-grau/30 bg-off-white space-y-3">
@@ -386,8 +387,8 @@ export default function Systemarchitektur() {
           </p>
 
           {/* Sub-Aspect Navigation Tabs */}
-          <div className="flex flex-wrap gap-2 pt-2 border-t border-home-grau/20">
-            <button aria-pressed={techViewMode === 'funktionsweise'}
+          <ReiterLeiste label="Aspekte" className="flex flex-wrap gap-2 pt-2 border-t border-home-grau/20">
+            <button {...alsReiter(techViewMode === 'funktionsweise', 'tech-aspekt', 'funktionsweise')}
               onClick={() => setTechViewMode('funktionsweise')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 techViewMode === 'funktionsweise'
@@ -396,7 +397,7 @@ export default function Systemarchitektur() {
               }`}
             >
               <Code2 size={13} /><MdText text={inhalt.texte.technischeFunktionsweiseFormel} /></button>
-            <button aria-pressed={techViewMode === 'einsatzzwecke'}
+            <button {...alsReiter(techViewMode === 'einsatzzwecke', 'tech-aspekt', 'einsatzzwecke')}
               onClick={() => setTechViewMode('einsatzzwecke')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 techViewMode === 'einsatzzwecke'
@@ -405,7 +406,7 @@ export default function Systemarchitektur() {
               }`}
             >
               <CheckCircle2 size={13} /><MdText text={inhalt.texte.t3BautechnischeEinsatzzwecke} /></button>
-            <button aria-pressed={techViewMode === 'daten'}
+            <button {...alsReiter(techViewMode === 'daten', 'tech-aspekt', 'daten')}
               onClick={() => setTechViewMode('daten')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 techViewMode === 'daten'
@@ -414,7 +415,7 @@ export default function Systemarchitektur() {
               }`}
             >
               <HardDrive size={13} /><MdText text={inhalt.texte.datenanforderungenLatenz} /></button>
-            <button aria-pressed={techViewMode === 'grenzen'}
+            <button {...alsReiter(techViewMode === 'grenzen', 'tech-aspekt', 'grenzen')}
               onClick={() => setTechViewMode('grenzen')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 techViewMode === 'grenzen'
@@ -423,12 +424,12 @@ export default function Systemarchitektur() {
               }`}
             >
               <AlertTriangle size={13} /><MdText text={inhalt.texte.risikenIngenieurPflichten} /></button>
-          </div>
+          </ReiterLeiste>
         </div>
 
         {/* Dynamic Detail Content Rendering based on techViewMode */}
         {techViewMode === 'funktionsweise' && (
-          <div className="space-y-4 animate-in fade-in duration-200">
+          <div {...reiterPanel('tech-aspekt', techViewMode)} className="space-y-4 animate-in fade-in duration-200">
             <div className="p-4 bg-slate-50 rounded-xl border border-slate-200/80 space-y-3">
               <h5 className="text-xs font-bold text-slate-800 uppercase tracking-wide flex items-center gap-1.5">
                 <Zap size={14} className="text-shiraz" />
@@ -463,7 +464,7 @@ export default function Systemarchitektur() {
         )}
 
         {techViewMode === 'einsatzzwecke' && (
-          <div className="space-y-3 animate-in fade-in duration-200">
+          <div {...reiterPanel('tech-aspekt', techViewMode)} className="space-y-3 animate-in fade-in duration-200">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {currentTech.einsatzzwecke.map((ez, idx) => (
                 <div key={idx} className="p-4 bg-slate-50 rounded-xl border border-slate-200/80 space-y-2.5 flex flex-col justify-between">
@@ -485,7 +486,7 @@ export default function Systemarchitektur() {
         )}
 
         {techViewMode === 'daten' && (
-          <div className="p-5 bg-slate-50 rounded-xl border border-slate-200/80 space-y-4 animate-in fade-in duration-200">
+          <div {...reiterPanel('tech-aspekt', techViewMode)} className="p-5 bg-slate-50 rounded-xl border border-slate-200/80 space-y-4 animate-in fade-in duration-200">
             <h5 className="text-xs font-bold text-slate-800 uppercase tracking-wide flex items-center gap-1.5">
               <HardDrive size={14} className="text-slate-600" />
               <span><MdText text={inhalt.texte.technischeSystemDatenanforderungen} /></span>
@@ -520,7 +521,7 @@ export default function Systemarchitektur() {
         )}
 
         {techViewMode === 'grenzen' && (
-          <div className="p-5 bg-rose-50/50 rounded-xl border border-rose-200/80 space-y-3 animate-in fade-in duration-200">
+          <div {...reiterPanel('tech-aspekt', techViewMode)} className="p-5 bg-rose-50/50 rounded-xl border border-rose-200/80 space-y-3 animate-in fade-in duration-200">
             <h5 className="text-xs font-bold text-rose-900 uppercase tracking-wide flex items-center gap-1.5">
               <AlertTriangle size={14} className="text-rose-700" />
               <span><MdText text={inhalt.texte.sicherheitsrelevanteRisikenIngenieurPfli} /></span>

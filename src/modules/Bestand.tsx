@@ -36,6 +36,7 @@ import {
 import inhalt from '@/content/bestand/Bestand.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 ChartJS.register(
   CategoryScale,
@@ -230,9 +231,9 @@ export default function Bestand() {
               <div className="lg:col-span-4 flex flex-col gap-2.5">
                 <h3 className="text-sm font-bold text-text-main flex items-center gap-2 mb-1">
                   <Calendar className="w-4 h-4 text-shiraz" /><MdText text={inhalt.texte.baualtersklasseAuswählen} /></h3>
-                <div className="grid grid-cols-2 lg:grid-cols-1 gap-2">
+                <AuswahlGruppe label="Baualtersklasse" className="grid grid-cols-2 lg:grid-cols-1 gap-2">
                   {BAUALTERSKLASSEN.map((era) => (
-                    <button aria-pressed={selectedEra === era.id}
+                    <button {...alsOption(selectedEra === era.id)}
                       key={era.id}
                       onClick={() => setSelectedEra(era.id)}
                       className={`text-left p-3 rounded-xl border transition-all cursor-pointer ${
@@ -250,7 +251,7 @@ export default function Bestand() {
                       </div>
                     </button>
                   ))}
-                </div>
+                </AuswahlGruppe>
               </div>
 
               {/* Right Column: Era Detail Card */}
@@ -354,13 +355,13 @@ export default function Bestand() {
                   {/* Component selector */}
                   <div>
                     <label className="text-xs font-semibold text-slate-700 block mb-1.5"><MdText text={inhalt.texte.bauteilFürDieSanierungsmaßnahme} /></label>
-                    <div className="grid grid-cols-3 gap-2">
+                    <AuswahlGruppe label="Bauteil" className="grid grid-cols-3 gap-2">
                       {[
                         { id: 'wall' as const, label: 'Außenwand' },
                         { id: 'roof' as const, label: inhalt.werte.steildachOgd },
                         { id: 'floor' as const, label: 'Kellerdecke' }
                       ].map(c => (
-                        <button aria-pressed={selectedComp === c.id}
+                        <button {...alsOption(selectedComp === c.id)}
                           key={c.id}
                           onClick={() => setSelectedComp(c.id)}
                           className={`p-2 rounded-lg text-xs font-bold border transition-all cursor-pointer ${
@@ -372,7 +373,7 @@ export default function Bestand() {
                           {c.label}
                         </button>
                       ))}
-                    </div>
+                    </AuswahlGruppe>
                   </div>
 
                   <Slider

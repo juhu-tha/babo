@@ -12,6 +12,7 @@ import {
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import inhalt from '@/content/literatur/Literatur.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 interface LiteratureEntry {
   id: string;
@@ -452,9 +453,9 @@ export default function Literatur() {
           </div>
 
           {/* Kategorien-Tabs */}
-          <div className="flex flex-wrap gap-1.5">
+          <AuswahlGruppe label="Kategorie" className="flex flex-wrap gap-1.5">
             {categories.map(cat => (
-              <button aria-pressed={selectedCategory === cat.key}
+              <button {...alsOption(selectedCategory === cat.key)}
                 key={cat.key}
                 onClick={() => setSelectedCategory(cat.key)}
                 className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 border ${
@@ -466,7 +467,7 @@ export default function Literatur() {
                 {cat.label}
               </button>
             ))}
-          </div>
+          </AuswahlGruppe>
         </div>
       </div>
 

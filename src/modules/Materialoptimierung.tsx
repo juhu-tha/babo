@@ -12,6 +12,7 @@ import inhalt from '@/content/materialoptimierung/Materialoptimierung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { dafstbVergleich, type DafstbBauteil, type DafstbZement } from '@/src/calc/materialoptimierung';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 export default function Materialoptimierung() {
   const [activeSubTab, setActiveSubTab] = useState<'saeulen' | 'betonoptimierung' | 'dafstb_richtlinie'>('saeulen');
@@ -88,9 +89,9 @@ export default function Materialoptimierung() {
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mt-4">
               
               {/* Pillar Selector Buttons */}
-              <div className="md:col-span-4 flex flex-col gap-3">
+              <AuswahlGruppe label="Säule" className="md:col-span-4 flex flex-col gap-3">
                 {SAEULEN_DATA.map((saeule) => (
-                  <button aria-pressed={selectedSaeule === saeule.id}
+                  <button {...alsOption(selectedSaeule === saeule.id)}
                     key={saeule.id}
                     type="button"
                     onClick={() => setSelectedSaeule(saeule.id)}
@@ -109,7 +110,7 @@ export default function Materialoptimierung() {
                     </div>
                   </button>
                 ))}
-              </div>
+              </AuswahlGruppe>
 
               {/* Pillar Content Visualization */}
               <div className="md:col-span-8 bg-white border border-home-grau/30 rounded-xl p-6 shadow-sm flex flex-col justify-between">

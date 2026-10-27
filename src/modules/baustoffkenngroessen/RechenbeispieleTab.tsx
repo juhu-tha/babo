@@ -124,7 +124,7 @@ export default function RechenbeispieleTab({ deltaLA, handleSaeulenMaterialChang
               <InlineMath math="\eta = \frac{\sigma}{f_{crit}} \cdot 100" />
               <div className="mt-3">
                 <span className="text-[11px] text-slate-500 block">Rechnung:</span>
-                <code className="text-xs font-bold block bg-white p-2 rounded border border-home-grau/30 mt-1 flex flex-col" style={{ color: utilizationA > 100 ? '#A3113E' : '#475569' }}>
+                <code className={`text-xs font-bold block bg-white p-2 rounded border border-home-grau/30 mt-1 flex flex-col ${utilizationA > 100 ? 'text-[#A3113E]' : 'text-slate-600 dark:text-slate-300'}`}>
                   <span>({formatDeZahl(stressA, 2)} / {formatDeWert(saeulenFy)}) * 100</span>
                   <span className="font-black text-sm mt-0.5">= {formatDeZahl(utilizationA, 1)} %</span>
                 </code>

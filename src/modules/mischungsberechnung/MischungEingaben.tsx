@@ -10,6 +10,7 @@ import React from 'react';
 import { NachErstemBild } from '@/src/components/ui/NachErstemBild';
 import inhalt from '@/content/mischungsberechnung/MischungEingaben.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 interface MischungEingabenProps {
   applyWalzSandReduction: () => void;
@@ -520,8 +521,8 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
             </div>
 
             {/* Modus-Wähler */}
-            <div className="flex bg-white p-1 rounded-lg border border-home-grau/30 text-xs">
-              <button aria-pressed={lpOption === 'auto'}
+            <AuswahlGruppe label="LP-Modus" className="flex bg-white p-1 rounded-lg border border-home-grau/30 text-xs">
+              <button {...alsOption(lpOption === 'auto')}
                 type="button"
                 onClick={() => setLpOption('auto')}
                 className={`px-2.5 py-1 rounded-md transition-all font-medium cursor-pointer ${
@@ -532,7 +533,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
               >
                 Auto-Erkennung
               </button>
-              <button
+              <button {...alsOption(lpOption === 'mit_lp')}
                 type="button"
                 onClick={() => {
                   setLpOption('mit_lp');
@@ -546,7 +547,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
               >
                 Mit LP
               </button>
-              <button aria-pressed={lpOption === 'ohne_lp'}
+              <button {...alsOption(lpOption === 'ohne_lp')}
                 type="button"
                 onClick={() => setLpOption('ohne_lp')}
                 className={`px-2.5 py-1 rounded-md transition-all font-medium cursor-pointer ${
@@ -557,7 +558,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
               >
                 Ohne LP
               </button>
-            </div>
+            </AuswahlGruppe>
           </div>
 
           {/* Status Badge & Normative Info */}

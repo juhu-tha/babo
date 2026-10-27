@@ -13,6 +13,7 @@ import {
   type FeCDatensatz, type Legierung,
 } from '@/src/calc/eisenKohlenstoff';
 import inhalt from '@/content/stahl/EisenKohlenstoff.json';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 /** Formeln und Quellen des Reiters für den Modulfuß */
 export const EISEN_KOHLENSTOFF_FUSS = { formeln: inhalt.daten.formeln, literatur: inhalt.daten.literatur, weblinks: inhalt.daten.weblinks };
@@ -139,13 +140,13 @@ export default function EisenKohlenstoff() {
             <Slider id="fec-c" label="Kohlenstoffgehalt C" info={inhalt.werte.infoC} min={0} max={6.67} step={0.01} value={c} unit="%" onChange={e => setC(Number(e.target.value))} />
             <Slider id="fec-t" label="Temperatur T" info={inhalt.werte.infoT} min={20} max={1600} step={5} value={t} unit="°C" onChange={e => setT(Number(e.target.value))} />
             <div>
-              <p className="text-sm font-medium text-text-main mb-1"><MdText text={inhalt.texte.schnellwahl} /></p>
-              <div className="flex flex-wrap gap-2">
+              <p id="fec-schnellwahl" className="text-sm font-medium text-text-main mb-1"><MdText text={inhalt.texte.schnellwahl} /></p>
+              <AuswahlGruppe aria-labelledby="fec-schnellwahl" className="flex flex-wrap gap-2">
                 {schnell.map(([n, w]) => (
-                  <button key={n} type="button" aria-pressed={c === w} onClick={() => { setC(w); if (w > 2.2) setAusschnitt('gesamt'); }}
+                  <button key={n} type="button" {...alsOption(c === w)} onClick={() => { setC(w); if (w > 2.2) setAusschnitt('gesamt'); }}
                     className={`px-2.5 py-1 rounded-lg text-xs font-bold border ${c === w ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-text-main border-home-grau/40'}`}>{n}</button>
                 ))}
-              </div>
+              </AuswahlGruppe>
             </div>
             <label className="text-sm font-medium text-text-main flex flex-col gap-1"><MdText text={inhalt.texte.ausschnitt} />
               <select value={ausschnitt} onChange={e => setAusschnitt(e.target.value as Ausschnitt)} className="p-2 border border-home-grau/30 rounded-lg bg-white">

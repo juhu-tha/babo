@@ -35,6 +35,7 @@ import {
 import { KI_FUNKTION_AKTIV, KI_HINWEIS_AUS } from '@/src/data/kiSchalter';
 import inhalt from '@/content/kibaustoffe/KiBaustoffe.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 interface PromptTemplate {
   title: string;
@@ -370,9 +371,9 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                 {/* Selector 1: Material */}
                 <div className="space-y-1.5">
                   <label className="text-xxs font-black text-slate-500 uppercase tracking-wider block"><MdText text={inhalt.texte.t1BaustoffBauprodukt} /></label>
-                  <div className="space-y-2">
+                  <AuswahlGruppe label="Baustoff" className="space-y-2">
                     {promptPresetMaterials.map((mat) => (
-                      <button aria-pressed={selectedMaterial === mat.id}
+                      <button {...alsOption(selectedMaterial === mat.id)}
                         key={mat.id}
                         onClick={() => setSelectedMaterial(mat.id)}
                         className={`w-full text-left p-3 rounded-xl border transition-all text-xs flex justify-between items-center cursor-pointer ${
@@ -388,15 +389,15 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                         <ChevronRight size={14} className={`flex-shrink-0 ml-1 ${selectedMaterial === mat.id ? 'text-white' : 'text-slate-400'}`} />
                       </button>
                     ))}
-                  </div>
+                  </AuswahlGruppe>
                 </div>
 
                 {/* Selector 2: Objective */}
                 <div className="space-y-1.5">
                   <label className="text-xxs font-black text-slate-500 uppercase tracking-wider block"><MdText text={inhalt.texte.t2ZielsetzungAufgabe} /></label>
-                  <div className="space-y-2">
+                  <AuswahlGruppe label="Zielsetzung" className="space-y-2">
                     {promptObjectives.map((obj) => (
-                      <button aria-pressed={selectedObjective === obj.id}
+                      <button {...alsOption(selectedObjective === obj.id)}
                         key={obj.id}
                         onClick={() => setSelectedObjective(obj.id)}
                         className={`w-full text-left p-3 rounded-xl border transition-all text-xs flex justify-between items-center cursor-pointer ${
@@ -412,15 +413,15 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                         <ChevronRight size={14} className={`flex-shrink-0 ml-1 ${selectedObjective === obj.id ? 'text-white' : 'text-slate-400'}`} />
                       </button>
                     ))}
-                  </div>
+                  </AuswahlGruppe>
                 </div>
 
                 {/* Selector 3: Format */}
                 <div className="space-y-1.5">
                   <label className="text-xxs font-black text-slate-500 uppercase tracking-wider block"><MdText text={inhalt.texte.t3FormatAusgabeformat} /></label>
-                  <div className="space-y-2">
+                  <AuswahlGruppe label="Ausgabeformat" className="space-y-2">
                     {promptFormats.map((fmt) => (
-                      <button aria-pressed={selectedFormat === fmt.id}
+                      <button {...alsOption(selectedFormat === fmt.id)}
                         key={fmt.id}
                         onClick={() => setSelectedFormat(fmt.id)}
                         className={`w-full text-left p-3 rounded-xl border transition-all text-xs flex justify-between items-center cursor-pointer ${
@@ -436,15 +437,15 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                         <ChevronRight size={14} className={`flex-shrink-0 ml-1 ${selectedFormat === fmt.id ? 'text-white' : 'text-slate-400'}`} />
                       </button>
                     ))}
-                  </div>
+                  </AuswahlGruppe>
                 </div>
 
                 {/* Selector 4: Tonality */}
                 <div className="space-y-1.5">
                   <label className="text-xxs font-black text-slate-500 uppercase tracking-wider block"><MdText text={inhalt.texte.t4TonalitätZielgruppe} /></label>
-                  <div className="space-y-2">
+                  <AuswahlGruppe label="Tonalität" className="space-y-2">
                     {promptTonalities.map((tone) => (
-                      <button aria-pressed={selectedTonality === tone.id}
+                      <button {...alsOption(selectedTonality === tone.id)}
                         key={tone.id}
                         onClick={() => setSelectedTonality(tone.id)}
                         className={`w-full text-left p-3 rounded-xl border transition-all text-xs flex justify-between items-center cursor-pointer ${
@@ -460,7 +461,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                         <ChevronRight size={14} className={`flex-shrink-0 ml-1 ${selectedTonality === tone.id ? 'text-white' : 'text-slate-400'}`} />
                       </button>
                     ))}
-                  </div>
+                  </AuswahlGruppe>
                 </div>
 
               </div>

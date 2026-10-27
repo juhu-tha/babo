@@ -12,6 +12,7 @@ import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import inhalt from '@/content/putzemoertel/PutzeMoertel.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 interface MortarProduct {
   id: string;
@@ -282,10 +283,10 @@ export default function PutzeMoertel() {
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
               {/* Product list sidebar (5 cols) */}
-              <div className="lg:col-span-5 flex flex-col gap-2 max-h-[500px] overflow-y-auto pr-1">
+              <AuswahlGruppe label="Mörtelprodukt" className="lg:col-span-5 flex flex-col gap-2 max-h-[500px] overflow-y-auto pr-1">
                 <h4 className="text-[10px] font-black uppercase tracking-wider text-slate-400 px-2 select-none"><MdText text={inhalt.texte.verfügbareMauermörtelProdukteDin} /></h4>
                 {MORTAR_PRODUCTS.map((prod) => (
-                  <button aria-pressed={selectedMortarId === prod.id}
+                  <button {...alsOption(selectedMortarId === prod.id)}
                     key={prod.id}
                     id={`btn-mortar-${prod.id}`}
                     onClick={() => setSelectedMortarId(prod.id)}
@@ -302,7 +303,7 @@ export default function PutzeMoertel() {
                     <ChevronRight size={14} className="text-slate-400 shrink-0" />
                   </button>
                 ))}
-              </div>
+              </AuswahlGruppe>
 
               {/* Detail view card (7 cols) */}
               <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col justify-between shadow-sm">
@@ -444,10 +445,10 @@ export default function PutzeMoertel() {
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
               {/* Product list sidebar (5 cols) */}
-              <div className="lg:col-span-5 flex flex-col gap-2 max-h-[500px] overflow-y-auto pr-1">
+              <AuswahlGruppe label="Putzprodukt" className="lg:col-span-5 flex flex-col gap-2 max-h-[500px] overflow-y-auto pr-1">
                 <h4 className="text-[10px] font-black uppercase tracking-wider text-slate-400 px-2 select-none"><MdText text={inhalt.texte.spezialUndStandardputzeDin} /></h4>
                 {PLASTER_PRODUCTS.map((prod) => (
-                  <button aria-pressed={selectedPlasterId === prod.id}
+                  <button {...alsOption(selectedPlasterId === prod.id)}
                     key={prod.id}
                     id={`btn-plaster-${prod.id}`}
                     onClick={() => setSelectedPlasterId(prod.id)}
@@ -464,7 +465,7 @@ export default function PutzeMoertel() {
                     <ChevronRight size={14} className="text-slate-400 shrink-0" />
                   </button>
                 ))}
-              </div>
+              </AuswahlGruppe>
 
               {/* Detail view card (7 cols) */}
               <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col justify-between shadow-sm">
@@ -554,9 +555,9 @@ export default function PutzeMoertel() {
               <h3 className="font-bold text-slate-900 text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
                 <Layers size={14} className="text-shiraz" /><MdText text={inhalt.texte.systemaufbautenDerPutzMörteltechnik} /></h3>
 
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-2 mb-4">
+              <AuswahlGruppe label="Systemaufbau" className="grid grid-cols-1 md:grid-cols-4 gap-2 mb-4">
                 {BUILDING_SYSTEMS.map((sys) => (
-                  <button aria-pressed={selectedSystemId === sys.id}
+                  <button {...alsOption(selectedSystemId === sys.id)}
                     key={sys.id}
                     id={`btn-sys-${sys.id}`}
                     onClick={() => setSelectedSystemId(sys.id)}
@@ -569,7 +570,7 @@ export default function PutzeMoertel() {
                     {sys.name.split(' (')[0]}
                   </button>
                 ))}
-              </div>
+              </AuswahlGruppe>
 
               {/* Active System Panel */}
               <div className="bg-white p-5 rounded-xl border border-slate-200/80 grid grid-cols-1 md:grid-cols-2 gap-6">

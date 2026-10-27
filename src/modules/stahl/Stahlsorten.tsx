@@ -8,6 +8,7 @@ import type { ExtendedSteelGrade, StructuralProfile } from './daten';
 import type { Dispatch, SetStateAction } from 'react';
 import inhalt from '@/content/stahl/Stahlsorten.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../../components/ui/Auswahlgruppe';
 
 interface StahlsortenProps {
   activeGradedData: ExtendedSteelGrade;
@@ -78,8 +79,8 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
               </div>
             </div>
 
-            <div className="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl">
-              <button aria-pressed={reinforcementDeepDiveTab === 'bewehrung'}
+            <ReiterLeiste label="Bewehrung oder Spannstahl" className="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl">
+              <button {...alsReiter(reinforcementDeepDiveTab === 'bewehrung', 'stahlsorten-vertiefung', 'bewehrung')}
                 onClick={() => setReinforcementDeepDiveTab('bewehrung')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     reinforcementDeepDiveTab === 'bewehrung' 
@@ -87,7 +88,7 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                       : 'text-slate-600 hover:text-slate-900'
                   }`}
               ><MdText text={inhalt.texte.bewehrungsstähleDin488Ec2} /></button>
-              <button aria-pressed={reinforcementDeepDiveTab === 'spannstahl'}
+              <button {...alsReiter(reinforcementDeepDiveTab === 'spannstahl', 'stahlsorten-vertiefung', 'spannstahl')}
                 onClick={() => setReinforcementDeepDiveTab('spannstahl')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     reinforcementDeepDiveTab === 'spannstahl' 
@@ -95,11 +96,11 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                       : 'text-slate-600 hover:text-slate-900'
                   }`}
               ><MdText text={inhalt.texte.spannstähleAbzPren10138} /></button>
-            </div>
+            </ReiterLeiste>
           </div>
 
           {reinforcementDeepDiveTab === 'bewehrung' ? (
-            <div className="space-y-4 animate-in fade-in duration-200">
+            <div {...reiterPanel('stahlsorten-vertiefung', reinforcementDeepDiveTab)} className="space-y-4 animate-in fade-in duration-200">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 {/* Duktilitätsklasse A */}
                 <div className="p-4 bg-slate-50 rounded-xl border border-slate-200/70 flex flex-col justify-between">
@@ -190,7 +191,7 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
               </div>
             </div>
           ) : (
-            <div className="space-y-4 animate-in fade-in duration-200">
+            <div {...reiterPanel('stahlsorten-vertiefung', reinforcementDeepDiveTab)} className="space-y-4 animate-in fade-in duration-200">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 {/* Erzeugnisform Litzen */}
                 <div className="p-4 bg-slate-50 rounded-xl border border-slate-200/70 flex flex-col justify-between">
@@ -289,8 +290,8 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
             </h4>
 
             {/* Kategorie Filter-Pills */}
-            <div className="flex flex-wrap gap-1.5 text-xs">
-              <button aria-pressed={steelCatalogFilter === 'all'}
+            <AuswahlGruppe label="Filter Kategorie" className="flex flex-wrap gap-1.5 text-xs">
+              <button {...alsOption(steelCatalogFilter === 'all')}
                 onClick={() => setSteelCatalogFilter('all')}
                 className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
                     steelCatalogFilter === 'all'
@@ -300,7 +301,7 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
               >
                 Alle ({extendedSteelGrades.length})
               </button>
-              <button aria-pressed={steelCatalogFilter === 'baustahl'}
+              <button {...alsOption(steelCatalogFilter === 'baustahl')}
                 onClick={() => setSteelCatalogFilter('baustahl')}
                 className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
                     steelCatalogFilter === 'baustahl'
@@ -310,7 +311,7 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
               >
                 Baustähle ({extendedSteelGrades.filter(g => g.category === 'baustahl').length})
               </button>
-              <button aria-pressed={steelCatalogFilter === 'bewehrung'}
+              <button {...alsOption(steelCatalogFilter === 'bewehrung')}
                 onClick={() => setSteelCatalogFilter('bewehrung')}
                 className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
                     steelCatalogFilter === 'bewehrung'
@@ -319,7 +320,7 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                   }`}
               ><MdText text={inhalt.texte.bewehrungsstähle} />{extendedSteelGrades.filter(g => g.category === 'bewehrung').length})
               </button>
-              <button aria-pressed={steelCatalogFilter === 'spannstahl'}
+              <button {...alsOption(steelCatalogFilter === 'spannstahl')}
                 onClick={() => setSteelCatalogFilter('spannstahl')}
                 className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
                     steelCatalogFilter === 'spannstahl'
@@ -328,7 +329,7 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                   }`}
               ><MdText text={inhalt.texte.spannstähle} />{extendedSteelGrades.filter(g => g.category === 'spannstahl').length})
               </button>
-              <button aria-pressed={steelCatalogFilter === 'edelstahl'}
+              <button {...alsOption(steelCatalogFilter === 'edelstahl')}
                 onClick={() => setSteelCatalogFilter('edelstahl')}
                 className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
                     steelCatalogFilter === 'edelstahl'
@@ -337,15 +338,15 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                   }`}
               ><MdText text={inhalt.texte.edelstähle} />{extendedSteelGrades.filter(g => g.category === 'edelstahl').length})
               </button>
-            </div>
+            </AuswahlGruppe>
           </div>
 
           <div className="flex flex-col lg:flex-row gap-6">
             {/* Linke Spalte: Stahlsorten-Selector */}
             <div className="lg:w-1/3 flex flex-col gap-2">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2 max-h-[580px] overflow-y-auto pr-1">
+              <AuswahlGruppe label="Stahlsorte" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2 max-h-[580px] overflow-y-auto pr-1">
                 {filteredSteelGrades.map((gradeItem) => (
-                  <button aria-pressed={selectedStahlsorteId === gradeItem.id}
+                  <button {...alsOption(selectedStahlsorteId === gradeItem.id)}
                     key={gradeItem.id}
                     onClick={() => setSelectedStahlsorteId(gradeItem.id)}
                     className={`p-3.5 rounded-xl text-left border transition-all flex flex-col justify-start cursor-pointer hover:shadow-sm ${
@@ -372,7 +373,7 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                     </span>
                   </button>
                 ))}
-              </div>
+              </AuswahlGruppe>
             </div>
 
             {/* Rechte Spalte: Steckbrief der ausgewählten Güte */}
@@ -496,9 +497,9 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                   {activeProfile.type}
                 </span>
               </div>
-              <div className="grid grid-cols-2 gap-2">
+              <AuswahlGruppe label="Profil" className="grid grid-cols-2 gap-2">
                 {structuralProfiles.map((prof) => (
-                  <button aria-pressed={selectedProfileId === prof.id}
+                  <button {...alsOption(selectedProfileId === prof.id)}
                     key={prof.id}
                     onClick={() => setSelectedProfileId(prof.id)}
                     className={`p-2.5 rounded-lg text-left text-xs border transition-colors cursor-pointer ${
@@ -514,7 +515,7 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
                     </div>
                   </button>
                 ))}
-              </div>
+              </AuswahlGruppe>
             </div>
 
             <div className="space-y-3">
