@@ -33,7 +33,8 @@ if (lz) {
 // Einstieg: „Einstieg …: 101,8 kB gzip“ aus scripts/qa/check-bundle.mjs (nur mit Build; in der CI laufen die
 // Tests vor dem Build, dann entfällt dieser Teil)
 let bundleText = 'ohne Build';
-if (fs.existsSync('dist/index.html')) {
+// nur bei vollständigem Build (check-bundle verlangt seit #209 auch server.cjs und routen.json)
+if (fs.existsSync('dist/index.html') && fs.existsSync('dist/server.cjs') && fs.existsSync('dist/modul/routen.json')) {
   const cb = lauf(['scripts/qa/check-bundle.mjs']).match(/Einstieg [^:]+: ([\d,]+) kB gzip/);
   pruefe(!!cb, 'check-bundle.mjs liefert keine Einstiegsgröße');
   pruefe(!!m.bundle, 'metriken.mjs findet dist/ nicht');
