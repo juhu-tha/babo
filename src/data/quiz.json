@@ -324,15 +324,15 @@
     "topic": "Polymerklassen: Thermoplaste vs. Duroplaste vs. Elastomere",
     "difficulty": "Basis",
     "normRef": "DIN EN ISO 1043",
-    "question": "Welches Merkmal kennzeichnet Duroplaste (z. B. Epoxidharze, Polyurethane) im Vergleich zu Thermoplasten?",
+    "question": "Welches Merkmal kennzeichnet Duroplaste (z. B. Epoxid- oder UP-Harze) im Vergleich zu Thermoplasten?",
     "options": [
-      "du bist engmaschig räumlich kovalent vernetzt, schmelzen bei Erwärmung nicht, sondern zersetzen sich thermisch bei Überhitzung.",
-      "Sie lassen sich durch Wiedererwärmen beliebig oft aufschmelzen und verformen.",
-      "Sie besitzen keine mechanische Druckfestigkeit und sind rein flüssig.",
-      "Sie bestehen ausschließlich aus biobasierten Zellulosefasern."
+      "Sie sind engmaschig vernetzt und zersetzen sich, statt zu schmelzen",
+      "Sie lassen sich durch Wiedererwärmen mehrfach aufschmelzen und umformen",
+      "Sie sind weitmaschig vernetzt und bei Raumtemperatur gummielastisch",
+      "Sie sind teilkristallin und erweichen oberhalb ihrer Schmelztemperatur"
     ],
     "correctIdx": 0,
-    "explanation": "Duroplaste bilden bei der Aushärtung ein unauflösliches, räumlich weitmaschig oder engmaschig kovalentes 3D-Netzwerk aus. Sie sind thermisch nicht umformbar und unlöslich (z. B. Harzinjektionen, GFK-Profile, 2K-Klebstoffe). Thermoplaste hingegen bestehen aus unvernetzten Polymerketten und schmelzen reversibel.",
+    "explanation": "Duroplaste bilden bei der Aushärtung ein engmaschiges, kovalent vernetztes 3D-Netzwerk. Sie sind thermisch nicht umformbar und unlöslich und zersetzen sich bei Überhitzung (z. B. Harzinjektionen, GFK-Profile, 2K-Klebstoffe). Thermoplaste bestehen dagegen aus unvernetzten Polymerketten und schmelzen reversibel; Elastomere sind weitmaschig vernetzt.",
     "gapAnalysis": {
       "topic": "Polymerstrukturen & Verarbeitbarkeit",
       "misconception": "Fehlende Unterscheidung zwischen schmelzbaren Thermoplasten (PE, PP, PVC) und nicht schmelzbaren Duroplasten (Epoxidharz, Polyester).",
@@ -341,14 +341,20 @@
       "targetModuleTab": "bp_kunststoffe",
       "targetModuleLabel": "Kunststoffe"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
-    "reviewedAt": "2026-09-28",
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "fraglich",
-      "hinweis": "Tippfehler in der richtigen Antwort: „du bist engmaschig …“ → „Sie sind engmaschig …“. Freigegebene Frage daher unverändert gelassen – bitte korrigieren; Vorschlag für Distraktoren (Ratsche, „ausschließlich“) im Bericht."
-    }
+      "ergebnis": "korrigiert",
+      "hinweis": "Tippfehler in der richtigen Antwort: „du bist engmaschig …“ → „Sie sind engmaschig …“. Freigegebene Frage daher unverändert gelassen – bitte korrigieren; Vorschlag für Distraktoren (Ratsche, „ausschließlich“) im Bericht. · Zweitprüfung 27.10.: Tippfehler „du bist“ in der richtigen Antwort behoben, Antworten auf vergleichbare Länge gebracht (ohne „ausschließlich“), Rückmeldungen ergänzt, Erklärung (engmaschig statt „weit- oder engmaschig“) berichtigt; Freigabe vom 28.09.2026 wegen Inhaltsänderung zurückgenommen – korrigiert"
+    },
+    "distraktorFeedback": [
+      "",
+      "Mehrfaches Aufschmelzen und Umformen kennzeichnet Thermoplaste; Duroplaste sind durch die Vernetzung thermisch nicht umformbar.",
+      "Weitmaschig vernetzt und gummielastisch sind Elastomere; Duroplaste sind engmaschig vernetzt und hart.",
+      "Teilkristalline Bereiche mit Schmelztemperatur haben nur Thermoplaste wie PE oder PP; Duroplaste sind vernetzt und schmelzen nicht."
+    ],
+    "bloom": "Verstehen",
+    "niveau": "B"
   },
   {
     "id": "q_rsto_1",
@@ -882,12 +888,14 @@
       "targetModuleLabel": "BauPVO & CE-Kennzeichnung"
     },
     "quelle": "Musterbauordnung §§ 21, 22; MVV TB; EuGH C-100/13",
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bpr_2",
@@ -17626,7 +17634,7 @@
       "8 mm"
     ],
     "correctIdx": 2,
-    "explanation": "Feine Gesteinskörnung (Sand) hat D ≤ 4 mm; der Feinanteil ist ≤ 0,063 mm.",
+    "explanation": "Feine Gesteinskörnung (Sand) hat D ≤ 4 mm; der Feinanteil ist der Durchgang durch das 0,063-mm-Sieb (< 0,063 mm).",
     "bloom": "Erinnern",
     "niveau": "B",
     "distraktorFeedback": [
@@ -17646,7 +17654,8 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 27.10.: Erklärung: Feinanteil „≤ 0,063 mm“ → „< 0,063 mm“ (Durchgang durch das 0,063-mm-Sieb) – korrigiert"
     }
   },
   {
@@ -17666,7 +17675,7 @@
       "Von f_b, f_m und dem Teilbeiwert γ_M"
     ],
     "correctIdx": 1,
-    "explanation": "f_k = K · f_b^0,7 · f_m^0,3: Mauerwerk ist eine Systemfestigkeit aus Stein und Mörtel.",
+    "explanation": "f_k = K · f_b^α · f_m^β (Empfehlung DIN EN 1996-1-1: α = 0,7, β = 0,3; nach NA DE sind K, α und β je Stein- und Mörtelart festgelegt): Mauerwerk ist eine Systemfestigkeit aus Stein und Mörtel.",
     "bloom": "Verstehen",
     "niveau": "B",
     "distraktorFeedback": [
@@ -17686,7 +17695,8 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 27.10.: Erklärung: Exponenten 0,7/0,3 als EN-Empfehlung gekennzeichnet, NA DE (je Stein- und Mörtelart) ergänzt – korrigiert"
     }
   },
   {
@@ -17883,12 +17893,14 @@
       "targetModuleTab": "putzemoertel",
       "targetModuleLabel": "Putze & Mörtel"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_pum_3",
@@ -18004,12 +18016,14 @@
       "targetModuleTab": "gips",
       "targetModuleLabel": "Gips"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_gip_2",
@@ -18205,12 +18219,14 @@
       "targetModuleTab": "kalk",
       "targetModuleLabel": "Kalk"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_leh_1",
@@ -18446,11 +18462,13 @@
       "targetModuleTab": "erdbau",
       "targetModuleLabel": "Erdbau & Böden"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_gla_1",
@@ -18526,12 +18544,14 @@
       "targetModuleTab": "glas",
       "targetModuleLabel": "Glas"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_gla_3",
@@ -18824,10 +18844,10 @@
     "normRef": "Physik",
     "question": "Welches Metall hat die größte Wärmedehnung?",
     "options": [
-      "Stahl (≈ 12·10⁻⁶/K)",
-      "Titan (≈ 8,6·10⁻⁶/K)",
-      "Aluminium (≈ 24·10⁻⁶/K)",
-      "Zink (≈ 30·10⁻⁶/K)"
+      "Stahl",
+      "Titan",
+      "Aluminium",
+      "Zink"
     ],
     "correctIdx": 3,
     "explanation": "Reinzink dehnt sich mit rund 30 · 10⁻⁶/K am stärksten. Titanzink-Bleche liegen in Walzrichtung bei rund 22 · 10⁻⁶/K, also immer noch fast doppelt so hoch wie Stahl, und brauchen daher Dehnungsausgleich.",
@@ -18851,7 +18871,7 @@
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "korrigiert",
-      "hinweis": "Erklärung präzisiert (Reinzink ≈ 30, Titanzink ≈ 22 · 10⁻⁶/K)"
+      "hinweis": "Erklärung präzisiert (Reinzink ≈ 30, Titanzink ≈ 22 · 10⁻⁶/K) · Zweitprüfung 27.10.: Zahlenwerte aus den Antworten entfernt (verrieten die Lösung); Werte bleiben in Rückmeldung und Erklärung – korrigiert"
     }
   },
   {
@@ -18863,7 +18883,7 @@
     "topic": "Plattenarten",
     "difficulty": "Basis",
     "normRef": "DIN EN 300",
-    "question": "Welche OSB-Klasse ist für tragende Zwecke im Feuchtbereich vorgesehen?",
+    "question": "Welche der genannten OSB-Klassen ist nach DIN EN 300 für tragende Zwecke im Feuchtbereich vorgesehen?",
     "options": [
       "OSB/1",
       "OSB/2",
@@ -18891,7 +18911,8 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 27.10.: Frage präzisiert („Welche der genannten OSB-Klassen“), da auch OSB/4 für tragende Zwecke im Feuchtbereich gilt – korrigiert"
     }
   },
   {
@@ -18928,12 +18949,14 @@
       "targetModuleTab": "holzwerkstoffe",
       "targetModuleLabel": "Holzwerkstoffe"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_hwk_3",
@@ -18969,12 +18992,14 @@
       "targetModuleTab": "holzwerkstoffe",
       "targetModuleLabel": "Holzwerkstoffe"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-26",
       "ergebnis": "korrigiert",
       "hinweis": "Frage auf den EU-Stand umgestellt (Grenzwert statt Prüfverfahren): VO (EU) 2023/1464, gültig ab 06.08.2026, 0,062 mg/m³ für Holzwerkstoffe/Möbel, 0,080 mg/m³ sonst (IHK, measurlabs.com); Modultext Holzwerkstoffe nennt den Grenzwert bereits."
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_dms_1",
@@ -19050,12 +19075,14 @@
       "targetModuleTab": "daemmstoffe",
       "targetModuleLabel": "Dämmstoffe"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_dms_3",
@@ -19091,12 +19118,14 @@
       "targetModuleTab": "daemmstoffe",
       "targetModuleLabel": "Dämmstoffe"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_dms_4",
@@ -19255,12 +19284,14 @@
       "targetModuleTab": "holz",
       "targetModuleLabel": "Holz"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_hol_2",
@@ -19296,12 +19327,14 @@
       "targetModuleTab": "holz",
       "targetModuleLabel": "Holz"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen; normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_hol_3",
@@ -19577,12 +19610,14 @@
       "targetModuleTab": "asphalt",
       "targetModuleLabel": "Asphalt & Bitumen"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_asp_3",
@@ -19658,12 +19693,14 @@
       "targetModuleTab": "kunststoffe",
       "targetModuleLabel": "Kunststoffe"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_kun_2",
@@ -19722,13 +19759,13 @@
       "Alle drei Gruppen"
     ],
     "correctIdx": 0,
-    "explanation": "Nur Thermoplaste sind unvernetzt und lassen sich aufschmelzen. Elastomere und Duroplaste sind vernetzt und zersetzen sich bei hoher Temperatur.",
+    "explanation": "Nur Thermoplaste sind unvernetzt und lassen sich aufschmelzen und verschweißen. Chemisch vernetzte Elastomere und Duroplaste zersetzen sich bei hoher Temperatur. Thermoplastische Elastomere (TPE) sind nur physikalisch vernetzt; sie verhalten sich bei Verarbeitungstemperatur wie Thermoplaste und sind ebenfalls schweißbar.",
     "bloom": "Erinnern",
     "niveau": "B",
     "distraktorFeedback": [
       "",
       "Duroplaste sind engmaschig vernetzt und zersetzen sich beim Erhitzen, statt zu schmelzen.",
-      "Elastomere sind weitmaschig vernetzt; sie lassen sich weder aufschmelzen noch verschweißen.",
+      "Klassische Elastomere sind chemisch weitmaschig vernetzt und lassen sich weder aufschmelzen noch verschweißen; schweißbar sind nur thermoplastische Elastomere (TPE).",
       "Nur die unvernetzten Thermoplaste sind schmelzbar; Duroplaste und Elastomere zersetzen sich bei hoher Temperatur."
     ],
     "gapAnalysis": {
@@ -19742,7 +19779,8 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 27.10.: Erklärung und Rückmeldung: thermoplastische Elastomere (TPE) als schmelz- und schweißbare Ausnahme ergänzt – korrigiert"
     }
   },
   {
@@ -19819,12 +19857,14 @@
       "targetModuleTab": "materialitaet_architektur",
       "targetModuleLabel": "Materialität & Architektur"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_mat_3",
@@ -19940,12 +19980,14 @@
       "targetModuleTab": "materialitaet_architektur",
       "targetModuleLabel": "Materialität & Architektur"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_mat_6",
@@ -20061,12 +20103,14 @@
       "targetModuleTab": "kombinationen",
       "targetModuleLabel": "Werkstoff-Kombinationen"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_aus_1",
@@ -20262,12 +20306,14 @@
       "targetModuleTab": "kombinationen",
       "targetModuleLabel": "Werkstoff-Kombinationen"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_son_1",
@@ -20383,12 +20429,14 @@
       "targetModuleTab": "bp_baustoffindustrie",
       "targetModuleLabel": "Baustoffindustrie"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bpi_2",
@@ -20609,7 +20657,7 @@
       "TRL 9"
     ],
     "correctIdx": 0,
-    "explanation": "TRL 7 = Demonstration im realen Einsatz. TRL 8 folgt mit der abZ/aBG bzw. ETA, TRL 9 mit der regulären Marktverfügbarkeit.",
+    "explanation": "Nach der Lehrzuordnung des Moduls entspricht der Pilotbau TRL 7 (Demonstration im realen Einsatz). TRL 8 folgt mit der abZ/aBG bzw. ETA, TRL 9 mit der regulären Marktverfügbarkeit. Die Zuordnung der Genehmigungswege zu TRL-Stufen ist eine Lehrkonvention; ISO 16290 definiert nur die Reifegrade selbst.",
     "bloom": "Verstehen",
     "niveau": "M",
     "distraktorFeedback": [
@@ -20629,7 +20677,8 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 27.10.: Erklärung: Zuordnung Zulassungsweg → TRL als Lehrkonvention gekennzeichnet (nicht ISO 16290) – korrigiert"
     }
   },
   {
@@ -20649,7 +20698,7 @@
       "Für die CE-Kennzeichnung nach einer harmonisierten Norm"
     ],
     "correctIdx": 0,
-    "explanation": "Seit 2017 trennt das Bauordnungsrecht zwischen Bauprodukt (abZ) und Bauart (aBG). Für den EU-Binnenmarkt dient die ETA mit CE-Kennzeichnung.",
+    "explanation": "Seit der MBO-Novelle 2016 (in den Landesbauordnungen 2017/2018 umgesetzt) trennt das Bauordnungsrecht zwischen Bauprodukt (abZ) und Bauart (aBG). Für den EU-Binnenmarkt dient die ETA mit CE-Kennzeichnung.",
     "bloom": "Erinnern",
     "niveau": "B",
     "distraktorFeedback": [
@@ -20670,7 +20719,7 @@
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "Distraktoren angeglichen"
+      "hinweis": "Distraktoren angeglichen · Zweitprüfung 27.10.: Erklärung: „Seit 2017“ → MBO-Novelle 2016, Umsetzung in den Ländern 2017/2018 – korrigiert"
     }
   },
   {
@@ -20730,7 +20779,7 @@
       "Das Produkt wurde vom DIBt bauaufsichtlich geprüft und zugelassen"
     ],
     "correctIdx": 0,
-    "explanation": "Das CE-Kennzeichen ist kein Gütesiegel. Ob die deklarierten Leistungen für das Bauwerk ausreichen, prüft der Planer anhand der MVV TB.",
+    "explanation": "Das CE-Kennzeichen ist kein Gütesiegel. Ob die deklarierten Leistungen für das Bauwerk ausreichen, prüft der Planer anhand der MVV TB. Daran ändert auch die neue Bauproduktenverordnung (EU) 2024/3110 nichts, die seit 08.01.2026 gilt und die Verordnung (EU) Nr. 305/2011 mit Übergangsfristen ablöst.",
     "bloom": "Verstehen",
     "niveau": "B",
     "distraktorFeedback": [
@@ -20751,7 +20800,7 @@
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "Distraktoren angeglichen"
+      "hinweis": "Distraktoren angeglichen · Zweitprüfung 27.10.: Erklärung: Hinweis auf neue BauPVO (EU) 2024/3110 ergänzt – korrigiert"
     }
   },
   {
@@ -20828,12 +20877,14 @@
       "targetModuleTab": "bp_recht",
       "targetModuleLabel": "Bauproduktenrecht"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bre_4",
@@ -21236,12 +21287,14 @@
       "targetModuleTab": "bp_betonfertigteile",
       "targetModuleLabel": "Betonfertigteile"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bft_2",
@@ -21277,11 +21330,13 @@
       "targetModuleTab": "bp_betonfertigteile",
       "targetModuleLabel": "Betonfertigteile"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bbw_1",
@@ -21317,12 +21372,14 @@
       "targetModuleTab": "bp_betonwaren",
       "targetModuleLabel": "Betonwaren"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bbw_2",
@@ -21358,12 +21415,14 @@
       "targetModuleTab": "bp_betonwaren",
       "targetModuleLabel": "Betonwaren"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen; normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bmw_1",
@@ -21374,7 +21433,7 @@
     "topic": "Mauerwerksdruckfestigkeit",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1996-1-1 Gl. (3.1)",
-    "question": "Welche Exponenten gelten in f_k = K · f_b^α · f_m^β für Normalmauermörtel?",
+    "question": "Welche Exponenten empfiehlt DIN EN 1996-1-1 (ohne NA DE) in f_k = K · f_b^α · f_m^β für Normalmauermörtel?",
     "options": [
       "α = 0,70, β = 0,30",
       "α = 0,85, β = 0",
@@ -21382,7 +21441,7 @@
       "α = 0,65, β = 0,25"
     ],
     "correctIdx": 0,
-    "explanation": "Für Normalmauermörtel gilt α = 0,7 und β = 0,3; für Dünnbettmörtel α = 0,85 und β = 0.",
+    "explanation": "Für Normalmauermörtel empfiehlt DIN EN 1996-1-1 α = 0,7 und β = 0,3; für Dünnbettmörtel α = 0,85 und β = 0. Der deutsche Nationale Anhang (DIN EN 1996-1-1/NA) legt K, α und β abweichend davon je Stein- und Mörtelart fest.",
     "bloom": "Erinnern",
     "niveau": "B",
     "distraktorFeedback": [
@@ -21402,7 +21461,8 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 27.10.: Frage auf Empfehlungswerte der DIN EN 1996-1-1 präzisiert, NA DE in der Erklärung ergänzt – korrigiert"
     }
   },
   {
@@ -21439,12 +21499,14 @@
       "targetModuleTab": "bp_mauerwerk",
       "targetModuleLabel": "Mauerwerk (Bauprodukte)"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bdf_1",
@@ -21882,12 +21944,14 @@
       "targetModuleTab": "bp_trockenbau",
       "targetModuleLabel": "Trockenbau"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bpe_1",
@@ -21963,12 +22027,14 @@
       "targetModuleTab": "bp_putz_estrich",
       "targetModuleLabel": "Putz & Estrich"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bab_1",
@@ -22004,12 +22070,14 @@
       "targetModuleTab": "bp_abdichtung",
       "targetModuleLabel": "Abdichtungen"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-26",
       "ergebnis": "korrigiert",
       "hinweis": "Begriff an DIN 18533-1:2026-06 angepasst („Wasserbeanspruchungsklasse“, DIN Media). Grundstruktur W1-E bis W4-E bestätigt (Bauprofessor 16.09.2026); Unterklassen W2.1-E/W2.2-E mit 3-m-Grenze nur durch Herstellerbeitrag bestätigt (MC-Bauchemie, Stand 05.08.2026) – Abgleich am Normtext offen."
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bab_2",
@@ -22045,11 +22113,13 @@
       "targetModuleTab": "bp_abdichtung",
       "targetModuleLabel": "Abdichtungen"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bab_3",
@@ -22125,12 +22195,14 @@
       "targetModuleTab": "bp_daemmung",
       "targetModuleLabel": "Dämmstoffe (Bauprodukte)"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "korrigiert",
       "hinweis": "Rückmeldung: GEG → GModG/GEG"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bpd_2",
@@ -22206,12 +22278,14 @@
       "targetModuleTab": "bp_daemmung",
       "targetModuleLabel": "Dämmstoffe (Bauprodukte)"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bbf_1",
@@ -22287,12 +22361,14 @@
       "targetModuleTab": "bp_befestigung",
       "targetModuleLabel": "Befestigungstechnik"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen; normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bks_1",
@@ -22328,11 +22404,13 @@
       "targetModuleTab": "bp_klebstoffe",
       "targetModuleLabel": "Kleb- & Dichtstoffe"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bks_2",
@@ -22368,12 +22446,14 @@
       "targetModuleTab": "bp_klebstoffe",
       "targetModuleLabel": "Kleb- & Dichtstoffe"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bfl_1",
@@ -22449,12 +22529,14 @@
       "targetModuleTab": "bp_farben_lacke",
       "targetModuleLabel": "Farben & Lacke"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bfl_3",
@@ -22570,12 +22652,14 @@
       "targetModuleTab": "bp_betonzusatzmittel",
       "targetModuleLabel": "Betonzusatzmittel"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen; normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bzm_3",
@@ -22611,11 +22695,13 @@
       "targetModuleTab": "bp_betonzusatzmittel",
       "targetModuleLabel": "Betonzusatzmittel"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bph_1",
@@ -22731,12 +22817,14 @@
       "targetModuleTab": "bp_kunststoffe",
       "targetModuleLabel": "Kunststoffe (Bauprodukte)"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen; normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bpk_2",
@@ -22772,12 +22860,14 @@
       "targetModuleTab": "bp_kunststoffe",
       "targetModuleLabel": "Kunststoffe (Bauprodukte)"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen; normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bpm_1",
@@ -22933,12 +23023,14 @@
       "targetModuleTab": "bp_glaeser",
       "targetModuleLabel": "Gläser"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bpl_1",
@@ -22974,11 +23066,13 @@
       "targetModuleTab": "bp_lehmbauprodukte",
       "targetModuleLabel": "Lehmbauprodukte"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bpl_2",
@@ -23014,12 +23108,14 @@
       "targetModuleTab": "bp_lehmbauprodukte",
       "targetModuleLabel": "Lehmbauprodukte"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bpt_1",
@@ -23055,12 +23151,14 @@
       "targetModuleTab": "bp_metallisch",
       "targetModuleLabel": "Metallische Bauprodukte"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bpt_2",
@@ -23096,12 +23194,14 @@
       "targetModuleTab": "bp_metallisch",
       "targetModuleLabel": "Metallische Bauprodukte"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bps_1",
@@ -23137,12 +23237,14 @@
       "targetModuleTab": "bp_stahlbauprofile",
       "targetModuleLabel": "Stahlbauprofile"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_bps_2",
@@ -23342,12 +23444,14 @@
       "targetModuleLabel": "Stahlbauprofile"
     },
     "quelle": "DIN EN 10365; Profiltabelle im Modul",
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen; normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "q_kmb_1",
@@ -28282,12 +28386,14 @@
       "targetModuleTab": "gesteine",
       "targetModuleLabel": "Gesteine"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_gesteine_2",
@@ -28363,12 +28469,14 @@
       "targetModuleTab": "mauerwerk",
       "targetModuleLabel": "Mauerwerk"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_mauerwerk_2",
@@ -28404,12 +28512,14 @@
       "targetModuleTab": "mauerwerk",
       "targetModuleLabel": "Mauerwerk"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_putzemoertel_1",
@@ -28805,12 +28915,14 @@
       "targetModuleTab": "lehm",
       "targetModuleLabel": "Lehm"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_erdbau_1",
@@ -28846,12 +28958,14 @@
       "targetModuleTab": "erdbau",
       "targetModuleLabel": "Erdbau & Böden"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktor 3: 97,6 % → 95,5 % (passend zum genannten Fehler ρ · (1 − w))"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_erdbau_2",
@@ -28927,12 +29041,14 @@
       "targetModuleTab": "erdbau",
       "targetModuleLabel": "Erdbau & Böden"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_glas_1",
@@ -29128,12 +29244,14 @@
       "targetModuleTab": "stahl",
       "targetModuleLabel": "Stahl"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_metalle_1",
@@ -29169,12 +29287,14 @@
       "targetModuleTab": "metalle",
       "targetModuleLabel": "Metalle"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_metalle_2",
@@ -29210,12 +29330,14 @@
       "targetModuleTab": "metalle",
       "targetModuleLabel": "Metalle"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_metalle_3",
@@ -29291,12 +29413,14 @@
       "targetModuleTab": "holz",
       "targetModuleLabel": "Holz"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_holz_2",
@@ -29412,12 +29536,14 @@
       "targetModuleTab": "holzwerkstoffe",
       "targetModuleLabel": "Holzwerkstoffe"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen; normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_holzwerkstoffe_3",
@@ -29453,12 +29579,14 @@
       "targetModuleTab": "holzwerkstoffe",
       "targetModuleLabel": "Holzwerkstoffe"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_nawaro_1",
@@ -29814,12 +29942,14 @@
       "targetModuleTab": "kunststoffe",
       "targetModuleLabel": "Kunststoffe"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_ausbau_1",
@@ -29918,7 +30048,7 @@
       "Steingutfliese mit Dispersionsklebstoff"
     ],
     "correctIdx": 0,
-    "explanation": "Feinsteinzeug ist mit Wasseraufnahme < 0,5 % frostsicher und hoch belastbar; ein zementärer, kunststoffvergüteter Kleber (C2, Haftzug ≥ 1,0 N/mm²) eignet sich für den Außenbereich.",
+    "explanation": "Feinsteinzeug ist mit Wasseraufnahme ≤ 0,5 % (Gruppe BIa) frostsicher und hoch belastbar; ein zementärer, kunststoffvergüteter Kleber (C2, Haftzug ≥ 1,0 N/mm²) eignet sich für den Außenbereich.",
     "bloom": "Bewerten",
     "niveau": "B",
     "distraktorFeedback": [
@@ -29939,7 +30069,7 @@
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
+      "hinweis": "normRef ergänzt · Zweitprüfung 27.10.: Erklärung: Wasseraufnahme Feinsteinzeug „< 0,5 %“ → „≤ 0,5 %“ (Gruppe BIa, DIN EN 14411) – korrigiert"
     }
   },
   {
@@ -30176,12 +30306,14 @@
       "targetModuleTab": "bp_innovationen",
       "targetModuleLabel": "Innovationen & F&E"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_innovationen_3",
@@ -30217,12 +30349,14 @@
       "targetModuleTab": "bp_innovationen",
       "targetModuleLabel": "Innovationen & F&E"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_recht_konformitaet_1",
@@ -30338,12 +30472,14 @@
       "targetModuleTab": "bp_recht_konformitaet",
       "targetModuleLabel": "Konformität & Auditierung"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_recht_konformitaet_4",
@@ -30459,12 +30595,14 @@
       "targetModuleTab": "bp_recht_konformitaet",
       "targetModuleLabel": "Konformität & Auditierung"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_betonfertigteile_1",
@@ -30540,12 +30678,14 @@
       "targetModuleTab": "bp_betonfertigteile",
       "targetModuleLabel": "Betonfertigteile"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_betonfertigteile_3",
@@ -30581,12 +30721,14 @@
       "targetModuleTab": "bp_betonfertigteile",
       "targetModuleLabel": "Betonfertigteile"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen; normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_betonfertigteile_4",
@@ -30622,12 +30764,14 @@
       "targetModuleTab": "bp_betonfertigteile",
       "targetModuleLabel": "Betonfertigteile"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_betonwaren_1",
@@ -30783,12 +30927,14 @@
       "targetModuleTab": "bp_betonwaren",
       "targetModuleLabel": "Betonwaren"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_mauerwerk_1",
@@ -30944,12 +31090,14 @@
       "targetModuleTab": "bp_mauerwerk",
       "targetModuleLabel": "Mauerwerk"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_dach_fassade_1",
@@ -30985,12 +31133,14 @@
       "targetModuleTab": "bp_dach_fassade",
       "targetModuleLabel": "Dach & Fassade"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_dach_fassade_2",
@@ -31187,11 +31337,13 @@
       "targetModuleLabel": "Dimensionierung (RStO 12/24)"
     },
     "quelle": "FGSV: RStO 12/24, Tabelle 1",
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-26",
       "ergebnis": "ok"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_verkehr_rsto_3",
@@ -31310,11 +31462,13 @@
       "targetModuleLabel": "Dimensionierung (RStO 12/24)"
     },
     "quelle": "FGSV: ZTV Beton-StB 07; RStO 12/24",
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-26",
       "ergebnis": "ok"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_verkehr_asphalt_1",
@@ -31447,10 +31601,10 @@
     "normRef": "DIN EN 13108-6",
     "question": "Welche Asphaltsorte hat nach dem Modul den höchsten Bindemittelgehalt?",
     "options": [
-      "Asphaltbeton mit ca. 5 bis 6 M.-%",
-      "Offenporiger Asphalt mit ca. 5,5 bis 6,5 M.-%",
-      "Gussasphalt mit ca. 7,5 bis 8,5 M.-%",
-      "Splittmastixasphalt mit ca. 6,5 bis 7,5 M.-%"
+      "Asphaltbeton (AC)",
+      "Offenporiger Asphalt (PA)",
+      "Gussasphalt (MA)",
+      "Splittmastixasphalt (SMA)"
     ],
     "correctIdx": 2,
     "explanation": "Gussasphalt benötigt so viel Bitumen, dass alle Hohlräume überfüllt sind (ca. 7,5 bis 8,5 M.-%). Es folgen SMA (6,5 bis 7,5), PA (5,5 bis 6,5) und AC (5 bis 6 M.-%).",
@@ -31474,7 +31628,7 @@
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
+      "hinweis": "normRef ergänzt · Zweitprüfung 27.10.: Bindemittelgehalte aus den Antworten entfernt (verrieten die Lösung); Werte bleiben in der Erklärung – korrigiert"
     }
   },
   {
@@ -31551,12 +31705,14 @@
       "targetModuleTab": "bp_verkehr_asphalt",
       "targetModuleLabel": "Asphaltsorten"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_verkehr_bitumen_1",
@@ -31592,12 +31748,14 @@
       "targetModuleTab": "bp_verkehr_bitumen",
       "targetModuleLabel": "Bitumen & Gesteine"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen; normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_verkehr_bitumen_2",
@@ -31753,12 +31911,14 @@
       "targetModuleTab": "bp_verkehr_bitumen",
       "targetModuleLabel": "Bitumen & Gesteine"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_verkehr_bitumen_6",
@@ -31914,12 +32074,14 @@
       "targetModuleTab": "bp_verkehr_pruefung",
       "targetModuleLabel": "Labor-Prüfmethoden"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_verkehr_pruefung_4",
@@ -31955,12 +32117,14 @@
       "targetModuleTab": "bp_verkehr_pruefung",
       "targetModuleLabel": "Labor-Prüfmethoden"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_verkehr_pruefung_5",
@@ -32036,12 +32200,14 @@
       "targetModuleTab": "bp_verkehr_pruefung",
       "targetModuleLabel": "Labor-Prüfmethoden"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_verkehr_betondecken_1",
@@ -32077,12 +32243,14 @@
       "targetModuleTab": "bp_verkehr_betondecken",
       "targetModuleLabel": "Betondecken (ZTV)"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_verkehr_betondecken_2",
@@ -32238,12 +32406,14 @@
       "targetModuleTab": "bp_verkehr_betondecken",
       "targetModuleLabel": "Betondecken (ZTV)"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_verkehr_betondecken_6",
@@ -32359,12 +32529,14 @@
       "targetModuleTab": "bp_verkehr_tiefbau",
       "targetModuleLabel": "Tiefbau & Entwässerung"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_verkehr_tiefbau_3",
@@ -32480,12 +32652,14 @@
       "targetModuleTab": "bp_verkehr_tiefbau",
       "targetModuleLabel": "Tiefbau & Entwässerung"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_verkehr_tiefbau_6",
@@ -32521,12 +32695,14 @@
       "targetModuleTab": "bp_verkehr_tiefbau",
       "targetModuleLabel": "Tiefbau & Entwässerung"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_verkehr_bahn_1",
@@ -32642,12 +32818,14 @@
       "targetModuleTab": "bp_verkehr_bahn",
       "targetModuleLabel": "Bahnbau (Kompakt)"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_verkehr_bahn_4",
@@ -32923,12 +33101,14 @@
       "targetModuleTab": "bp_verkehr_tunnel",
       "targetModuleLabel": "Tunnelbau (Vortrieb)"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_verkehr_tunnel_5",
@@ -33164,11 +33344,13 @@
       "targetModuleTab": "bp_putz_estrich",
       "targetModuleLabel": "Putz & Estrich"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_putz_estrich_2",
@@ -33324,12 +33506,14 @@
       "targetModuleTab": "bp_abdichtung",
       "targetModuleLabel": "Abdichtungen"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-26",
       "ergebnis": "korrigiert",
       "hinweis": "Begriff an DIN 18533-1:2026-06 angepasst („Wasserbeanspruchungsklasse“, DIN Media); Grundstruktur W1-E bis W4-E bestätigt (Bauprofessor 16.09.2026). Unterklasse W1.2-E (mit Dränung) nur durch Herstellerbeitrag bestätigt (MC-Bauchemie, 08/2026)."
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_abdichtung_2",
@@ -33725,12 +33909,14 @@
       "targetModuleTab": "bp_klebstoffe",
       "targetModuleLabel": "Kleb- & Dichtstoffe"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_klebstoffe_3",
@@ -33886,12 +34072,14 @@
       "targetModuleTab": "bp_farben_lacke",
       "targetModuleLabel": "Farben & Lacke"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_farben_lacke_3",
@@ -34007,12 +34195,14 @@
       "targetModuleTab": "bp_betonzusatzmittel",
       "targetModuleLabel": "Betonzusatzmittel"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "korrigiert",
       "hinweis": "Rückmeldung zu Option 4 präzisiert"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_betonzusatzmittel_3",
@@ -34328,12 +34518,14 @@
       "targetModuleTab": "bp_kunststoffe",
       "targetModuleLabel": "Kunststoffe"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_mineralisch_1",
@@ -34369,11 +34561,13 @@
       "targetModuleTab": "bp_mineralisch",
       "targetModuleLabel": "Mineralische Werkstoffe"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_mineralisch_2",
@@ -34449,12 +34643,14 @@
       "targetModuleTab": "bp_mineralisch",
       "targetModuleLabel": "Mineralische Werkstoffe"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_bp_mineralisch_4",
@@ -46812,12 +47008,14 @@
       "targetModuleTab": "keramik_ziegel",
       "targetModuleLabel": "Keramik und Ziegel"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_keramik_ziegel_5",
@@ -46893,12 +47091,14 @@
       "targetModuleTab": "keramik_ziegel",
       "targetModuleLabel": "Keramik und Ziegel"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_keramik_ziegel_7",
@@ -47295,12 +47495,14 @@
       "targetModuleTab": "membranen_etfe",
       "targetModuleLabel": "Membranen und ETFE-Folien"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_membranen_etfe_2",
@@ -47336,12 +47538,14 @@
       "targetModuleTab": "membranen_etfe",
       "targetModuleLabel": "Membranen und ETFE-Folien"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_membranen_etfe_3",
@@ -47534,12 +47738,14 @@
       "targetModuleTab": "membranen_etfe",
       "targetModuleLabel": "Membranen und ETFE-Folien"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_membranen_etfe_8",
@@ -47575,12 +47781,14 @@
       "targetModuleTab": "membranen_etfe",
       "targetModuleLabel": "Membranen und ETFE-Folien"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_sommerlicher_waermeschutz_1",
@@ -51382,7 +51590,9 @@
       "targetModuleTab": "stahl",
       "targetModuleLabel": "Stahl"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_stahl_fec_2",
@@ -51418,7 +51628,9 @@
       "targetModuleTab": "stahl",
       "targetModuleLabel": "Stahl"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_stahl_fec_3",
@@ -51454,7 +51666,9 @@
       "targetModuleTab": "stahl",
       "targetModuleLabel": "Stahl"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_stahl_fec_4",
@@ -51490,7 +51704,9 @@
       "targetModuleTab": "stahl",
       "targetModuleLabel": "Stahl"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   },
   {
     "id": "qn_stahl_fec_5",
@@ -51526,11 +51742,13 @@
       "targetModuleTab": "stahl",
       "targetModuleLabel": "Stahl"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen"
-    }
+    },
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27"
   }
 ]
