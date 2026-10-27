@@ -31,7 +31,7 @@
     "schritt5Auslastungsvergleich": "**Schritt 5: Auslastungsvergleich**",
     "ausnutzungsgradEurocode6": "Ausnutzungsgrad (DIN EN 1996-3/NA):",
     "dieMauerwerkswandIstZu": "Die Mauerwerkswand ist zu ",
-    "vorlaeufigHinweis": "**Vorläufig (fachliche Freigabe ausstehend):** $\\rho_2$-Stufen, $\\Phi_1 = 0{,}9$ für Innenwände und die $f_k$-Tabellenwerte sind aus öffentlich zugänglichen Hersteller- und Softwareunterlagen übernommen und noch nicht am Normtext bestätigt. Lehr- und Vorbemessungswerkzeug – die Anwendungsgrenzen (Tab. NA.2: Gebäudehöhe, Nutzlast, Wandhöhe, Windzone) werden nicht vollständig geprüft."
+    "vorlaeufigHinweis": "**Belegt** an öffentlich zugänglichen Hersteller-, Software- und Hochschulunterlagen (AMz 2016, KS-Themenheft Eurocode 6, mb-news 7/2013, TU Dresden 2025): $\\rho_2$-Stufen, $\\Phi_1$-Ansätze, $h_{ef}/t \\le 27$ und die $f_k$-Werte für KS, KS L, KS XL und HLz B. **Vorläufig (fachliche Freigabe ausstehend):** $\\rho_2 = 1{,}0$ für Auflagertiefen zwischen $2/3 \\cdot t$ und $t$ sowie die $f_k$-Werte der KS-Plansteine (KS P, KS L-P). Lehr- und Vorbemessungswerkzeug – die Anwendungsgrenzen (Tab. NA.2: Gebäudehöhe, Nutzlast, Wandhöhe, Windzone) werden nicht vollständig geprüft."
   },
   "werte": {
     "wandhöheM": "Lichte Wandhöhe (m)",
