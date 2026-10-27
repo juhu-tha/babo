@@ -34,6 +34,8 @@ const BEREICHE: readonly ModulTab<Bereich>[] = [
 const NIVEAU = { B: 'Bachelor', M: 'Master', 'B/M': inhalt.werte.bachelorUndMaster } as const;
 
 const titelVon = (id: string) => MODUL_BY_ID.get(id)?.baum?.titel ?? MODUL_BY_ID.get(id)?.label ?? id;
+/** JJJJ-MM-TT → TT.MM.JJJJ */
+const deDatum = (iso: string) => iso.split('-').reverse().join('.');
 const plural = (n: number, eins: string, viele: string) => `${formatDeGanzzahl(n)} ${n === 1 ? eins : viele}`;
 
 function EntwurfBanner({ lp }: { lp: Lernpfad }) {
@@ -87,7 +89,8 @@ function Terminplan({ lp }: { lp: Lernpfad }) {
                 <h4 className="text-sm font-bold text-text-main">{t.titel}</h4>
               </div>
               <p className="mt-1 text-xs text-text-main/70">
-                Datum: {t.datum ?? 'offen'}
+                Datum: {t.datum ? deDatum(t.datum) : 'offen'}
+                {!t.datum && t.wocheEntwurf && ` · Woche ab ${deDatum(t.wocheEntwurf)} (Entwurf, zu bestätigen)`}
                 {t.ue !== undefined && ` · ${plural(t.ue, 'UE', 'UE')}`}
               </p>
               {t.hinweis && <p className="mt-1.5 text-xs text-text-main/85 italic">{t.hinweis}</p>}
