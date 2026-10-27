@@ -7,8 +7,10 @@
  *    Größenordnung bestätigt durch RILEM TC 154-EMC (Wiedergabe in François, RILEM Technical Letters 6 (2021),
  *    Tab. 1: 1 µA/cm² ≈ 0,01 mm/a).
  * 2. Chlorideindringen (2. Ficksches Gesetz, Fehlerfunktionslösung):
- *      C(x, t) = C_s · [1 − erf(x / (2 · √(D_app(t) · t)))],   D_app(t) = D_app,0 · (t₀/t)^a,  t₀ = 28 d
+ *      C(x, t) = C_s · [1 − erf(x / (2 · √(D_app(t) · t)))],   D_app(t) = D_app,0 · (t₀/t)^a,  t₀ = 28 d = 0,0767 a
  *    (Ansatz nach fib Bulletin 34, ohne k_e, k_t; kritischer Gehalt als Orientierungswert 0,5 M.-% v. z.).
+ *    Gemeinsamer Kern mit der Lebensdauerbemessung: chloridgehalt() und alterungsfaktor() aus src/calc/lebensdauer.ts
+ *    mit C₀ = 0 und Δx = 0 (Runde 7: vorher eigene erf-Näherung und t₀ = 28/365 a; Abweichung < 10⁻⁴ relativ).
  * 3. Karbonatisierungsfront x_c = K · √t (Wurzel-t-Gesetz) und Umrechnung eines Schnellkarbonatisierungs-
  *    koeffizienten – beides aus src/calc/schnellkarbonatisierung.ts übernommen (keine Duplikate).
  * 4. Lokalelement-Simulator: qualitatives Lehrmodell (i_corr aus Chloridgehalt und Feuchte, Rostsprengdruck);
@@ -17,7 +19,7 @@
  */
 import { type Hinweis, hatFehler, istEndlich, muss } from './plausibilitaet';
 import { tiefeNach, umrechnungsfaktor } from './schnellkarbonatisierung';
-import { erf } from '../lib/math';
+import { chloridgehalt, alterungsfaktor, T0_JAHRE, D_EINHEIT_MM2_A } from './lebensdauer';
 
 // ---------------------------------------------------------------------------------------------------
 // 1. Faraday
@@ -48,20 +50,20 @@ export function querschnittsverlust(d0Mm: number, abtragUmJeJahr: number, jahre:
 // 2. Chlorid
 // ---------------------------------------------------------------------------------------------------
 
-/** Referenzalter t₀ = 28 d [a] */
-export const T0_CHLORID = 28 / 365;
+/** Referenzalter t₀ = 28 d = 0,0767 a (wie src/calc/lebensdauer.ts, fib Bulletin 34) */
+export const T0_CHLORID = T0_JAHRE;
 /** kritischer korrosionsauslösender Chloridgehalt (Orientierungswert) [M.-% v. z.] */
 export const CL_KRITISCH = 0.5;
-/** Sekunden je Jahr im Chloridmodell des Moduls (365 d) */
-const S_JAHR_365 = 365 * 24 * 3600;
 
 /** zeitabhängiger Diffusionskoeffizient D_app(t) = D₀ · (t₀/max(t, t₀))^a  (gleiche Einheit wie D₀) */
-export const dAppAlterung = (d0: number, tJahre: number, a: number) => d0 * Math.pow(T0_CHLORID / Math.max(tJahre, T0_CHLORID), a);
+export const dAppAlterung = (d0: number, tJahre: number, a: number) => d0 * alterungsfaktor(tJahre, a);
 
-/** Chloridgehalt C(x, t) [Einheit von C_s]; x in mm, t in a, D_app,0 in 10⁻¹² m²/s */
+/**
+ * Chloridgehalt C(x, t) [Einheit von C_s]; x in mm, t in a, D_app,0 in 10⁻¹² m²/s.
+ * Gemeinsamer Kern: lebensdauer.chloridgehalt mit C₀ = 0, Δx = 0 und D_app(t) in mm²/a.
+ */
 export function chloridGehalt(xMm: number, tJahre: number, dApp12: number, cS: number, a: number): number {
-  const d = dAppAlterung(dApp12 * 1e-12, tJahre, a);
-  return cS * (1 - erf(xMm / 1000 / (2 * Math.sqrt(d * tJahre * S_JAHR_365))));
+  return chloridgehalt(xMm, tJahre, 0, cS, 0, dAppAlterung(dApp12 * D_EINHEIT_MM2_A, tJahre, a));
 }
 
 export interface ChloridEingabe {

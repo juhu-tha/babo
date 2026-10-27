@@ -24,6 +24,7 @@ import { NORMATIVE_EXPOSURE_CLASSES, CHEMICAL_LIMITS_XA, MOISTURE_CLASSES_AKR } 
 import { ExpositionsklassenSkizze } from './expositionsklassen/ExpositionsklassenSkizze';
 import inhalt from '@/content/expositionsklassen/Expositionsklassen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { LebensdauerUebernehmen } from '@/src/components/ui/LebensdauerUebernehmen';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { huellwerte, kWertAnsatz } from '@/src/calc/expositionsklassen';
 export { NORMATIVE_EXPOSURE_CLASSES, CHEMICAL_LIMITS_XA, MOISTURE_CLASSES_AKR } from './expositionsklassen/daten';
@@ -546,6 +547,9 @@ export default function Expositionsklassen() {
                     </ul>
                   </div>
                 )}
+                <LebensdauerUebernehmen art="exposition"
+                  aktiv={selectedClasses.some(c => /^X[CDS]/.test(c)) && Number.isFinite(calculatedEnvelopes.cNom)}
+                  daten={{ quelle: 'expositionsklassen', deckM: calculatedEnvelopes.cNom, expo: selectedClasses }} />
               </div>
             )}
           </div>

@@ -22,6 +22,7 @@ import { ModuleFooter } from "@/src/components/ui/ModuleFooter";
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Querverweis } from '@/src/components/ui/Querverweis';
+import { LebensdauerUebernehmen } from '@/src/components/ui/LebensdauerUebernehmen';
 import { InlineMath } from "react-katex";
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/korrosion/Korrosion.json';
@@ -407,7 +408,7 @@ function LokalelementSimulator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2 text-xs">
               <div className="p-3 bg-off-white rounded-xl border border-home-grau/25 space-y-1">
                 <span className="font-bold text-shiraz block"><MdText text={inhalt.texte.t1AnodischeTeilreaktionLochfraß} /></span>
-                <div className="overflow-x-auto py-0.5">
+                <div className="overflow-x-auto py-0.5" role="region" aria-label="Formel anodische Teilreaktion (horizontal scrollbar)" tabIndex={0}>
                   <InlineMath math="Fe \rightarrow Fe^{2+} + 2\,e^-" />
                 </div>
                 <p className="text-[11px] text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.eisenGehtAlsHydratisiertes} /></p>
@@ -415,7 +416,7 @@ function LokalelementSimulator() {
 
               <div className="p-3 bg-off-white rounded-xl border border-home-grau/25 space-y-1">
                 <span className="font-bold text-emerald-700 block"><MdText text={inhalt.texte.t2KathodischeTeilreaktionPassivfläche} /></span>
-                <div className="overflow-x-auto py-0.5">
+                <div className="overflow-x-auto py-0.5" role="region" aria-label="Formel kathodische Teilreaktion (horizontal scrollbar)" tabIndex={0}>
                   <InlineMath math="O_2 + 2\,H_2O + 4\,e^- \rightarrow 4\,OH^-" />
                 </div>
                 <p className="text-[11px] text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.sauerstoffAusDerPorenluft} /></p>
@@ -742,6 +743,8 @@ export default function Korrosion() {
               onChange={(e) => setA(Number(e.target.value))}
             />
             <EingabeHinweise hinweise={chlorid.hinweise} />
+            <LebensdauerUebernehmen aktiv={chlorid.gueltig} art="korrosionChlorid"
+              daten={{ quelle: 'korrosion', mech: 'chlorid', deckM: cNom, tSL: t, drcm: dApp, cS, a }} />
           </div>
 
           <div className="lg:col-span-8 flex flex-col gap-6">
@@ -1000,6 +1003,8 @@ export default function Korrosion() {
               onChange={(e) => setKKarb(Number(e.target.value))}
             />
             <EingabeHinweise hinweise={karbonatisierungChartData.hinweise} />
+            <LebensdauerUebernehmen aktiv={kKarb > 0 && cNomKarb > 0 && tKarb > 0} art="korrosionKarb"
+              daten={{ quelle: 'korrosion', mech: 'karbonatisierung', deckM: cNomKarb, tSL: tKarb, kNat: kKarb }} />
           </div>
 
           <div className="lg:col-span-8 flex flex-col gap-6">
@@ -1071,6 +1076,8 @@ export default function Korrosion() {
               onChange={(e) => setKKarbSchnell(Number(e.target.value))}
             />
             <EingabeHinweise hinweise={schnellkarbonatisierungChartData.hinweise} />
+            <LebensdauerUebernehmen aktiv={kKarbSchnell > 0 && co2KonzSchnell > 0} art="korrosionSchnell"
+              daten={{ quelle: 'korrosion', mech: 'karbonatisierung', kac: kKarbSchnell, cAcc: co2KonzSchnell }} />
           </div>
 
           <div className="lg:col-span-8 flex flex-col gap-6">

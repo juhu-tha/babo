@@ -8,6 +8,7 @@ import {
 import inhalt from '@/content/bauwerksuntersuchung/PruefverfahrenSimulatoren.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
+import { LebensdauerUebernehmen } from '../../components/ui/LebensdauerUebernehmen';
 
 interface SimulatorProps {
   method: PruefverfahrenDetail;
@@ -195,6 +196,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
     const kb = karbonatisierung(carbMeasured, elementAge, elementCover);
 
     return {
+      k: kb.k,
+      gueltig: kb.gueltig,
       k_carb: formatDeZahl(kb.k, 2),
       t_depass: Math.round(kb.tDepass),
       restJahre: kb.restJahre,
@@ -742,6 +745,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 ? inhalt.werte.bewehrungsstahlIstKarbonatisiertBei
                 : inhalt.werte.passivierungsschutzBestehtNochFür}
             </div>
+            <LebensdauerUebernehmen aktiv={carbCalc.gueltig && carbCalc.k > 0} art="bauwerk" className="pt-3"
+              daten={{ quelle: 'bauwerksuntersuchung', mech: 'karbonatisierung', deckM: elementCover, kNat: carbCalc.k }} />
           </div>
         </div>
       )}

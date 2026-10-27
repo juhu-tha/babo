@@ -7,6 +7,7 @@ import inhalt from '@/content/dauerhaftigkeit/BetonDauerhaftigkeitsSimulator.jso
 import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { karbonatisierungsLebensdauer } from '@/src/calc/korrosion';
+import { LebensdauerUebernehmen } from '@/src/components/ui/LebensdauerUebernehmen';
 
 export function BetonDauerhaftigkeitsSimulator() {
   const [k, setK] = useState<number>(2.5); // Karbonatisierungsbeiwert in mm/Wurzel(a)
@@ -120,6 +121,8 @@ export function BetonDauerhaftigkeitsSimulator() {
             </div>
           </div>
           <EingabeHinweise hinweise={lebensdauer.hinweise} />
+          <LebensdauerUebernehmen aktiv={lebensdauer.gueltig} art="dauerhaftigkeit" className="pt-1"
+            daten={{ quelle: 'dauerhaftigkeit', mech: 'karbonatisierung', deckM: cnom, tSL: t, kNat: k }} />
 
           {/* SVG cross-section */}
           <div className="w-full h-32 bg-stone-300 rounded-lg relative overflow-hidden border border-home-grau/30 shadow-inner flex items-center justify-center">

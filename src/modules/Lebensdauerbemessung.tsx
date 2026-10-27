@@ -1,5 +1,5 @@
-import React, { useDeferredValue, useMemo, useState } from 'react';
-import { BookOpen, Wind, Droplets, Calculator, ListChecks, Scale, ShieldAlert, Timer, GraduationCap } from 'lucide-react';
+import React, { useDeferredValue, useEffect, useMemo, useState } from 'react';
+import { BookOpen, Wind, Droplets, Calculator, ListChecks, Scale, ShieldAlert, Timer, GraduationCap, AlertTriangle, ArrowRight, Undo2, Link2 } from 'lucide-react';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import { BlockMath } from 'react-katex';
@@ -9,11 +9,14 @@ import {
   FIB_KARBONATISIERUNG, FIB_CHLORID, BETA_ZIEL_FIB,
   type LebensdauerEingabe, type Mechanismus, type Verteilung,
 } from '@/src/calc/lebensdauer';
+import { leseUebergabe, vorgabeAusUebergabe, UEBERGABE_QUELLEN, UEBERGABE_SCHLUESSEL, type UebergabeQuelle } from '@/src/calc/lebensdauerUebergabe';
+import { tiefeNach, zeitBisTiefe } from '@/src/calc/schnellkarbonatisierung';
+import type { Hinweis } from '@/src/calc/plausibilitaet';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { Querverweis, springeZu } from '@/src/components/ui/Querverweis';
 import { AuswahlGruppe, alsOption } from '@/src/components/ui/Auswahlgruppe';
-import { Querverweis } from '@/src/components/ui/Querverweis';
 import { DiagrammAngaben } from '@/src/lib/diagrammAlternative';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -59,7 +62,7 @@ interface Zustand {
   tSL: number; betaZiel: number; laeufe: number; startwert: number;
   deckTyp: 'normal' | 'lognormal'; deckM: number; deckS: number;
   rhM: number; rhS: number; tc: number; pSR: number; tow: number;
-  rArt: RArt; xcAcc: number; rDirekt: number; kac: number;
+  rArt: RArt; xcAcc: number; rDirekt: number; kac: number; kacC: number;
   binder: Bindemittel; wz: number; drcm: number; zone: Zone; cS: number; cSs: number; c0: number; tM: number; tS: number;
 }
 
@@ -67,7 +70,7 @@ const BASIS: Zustand = {
   mech: 'karbonatisierung', tSL: 50, betaZiel: BETA_ZIEL_FIB, laeufe: 20000, startwert: 1,
   deckTyp: 'normal', deckM: 35, deckS: 8,
   rhM: 65, rhS: 10, tc: 7, pSR: 0, tow: 0,
-  rArt: 'acc', xcAcc: 5, rDirekt: 14.17, kac: 1.0,
+  rArt: 'acc', xcAcc: 5, rDirekt: 14.17, kac: 1.0, kacC: 3,
   binder: 'huettensand', wz: 1, drcm: 1.9, zone: 'spritz', cS: 3.0, cSs: 1.5, c0: 0.1, tM: 10, tS: 5,
 };
 
@@ -81,9 +84,18 @@ const VORGABEN: { id: string; label: string; z: Partial<Zustand> }[] = [
 
 const normal = (m: number, s: number): Verteilung => ({ typ: 'normal', m, s });
 
+/** Einzelrechner, die Eingaben übergeben können (Rückweg; Ziele sind Registry-IDs) */
+const EINZELRECHNER: readonly { ziel: UebergabeQuelle; label: string }[] = [
+  { ziel: 'schnellkarbonatisierung', label: inhalt.werte.einzelSchnell },
+  { ziel: 'korrosion', label: inhalt.werte.einzelKorrosion },
+  { ziel: 'expositionsklassen', label: inhalt.werte.einzelExposition },
+  { ziel: 'dauerhaftigkeit', label: inhalt.werte.einzelDauerhaftigkeit },
+  { ziel: 'bauwerksuntersuchung', label: inhalt.werte.einzelBauwerk },
+];
+
 /** R⁻¹_ACC,0 (10⁻¹¹ (m²/s)/(kg/m³)) aus der gewählten Eingabeart */
 function rInvMittel(z: Zustand): number {
-  return z.rArt === 'acc' ? rInvAusAcc(z.xcAcc) : z.rArt === 'kac' ? rInvAusKac(z.kac) : z.rDirekt;
+  return z.rArt === 'acc' ? rInvAusAcc(z.xcAcc) : z.rArt === 'kac' ? rInvAusKac(z.kac, z.kacC) : z.rDirekt;
 }
 
 function eingabeAus(z: Zustand): LebensdauerEingabe {
@@ -108,10 +120,34 @@ function eingabeAus(z: Zustand): LebensdauerEingabe {
 export default function Lebensdauerbemessung() {
   const [reiter, setReiter] = useState<Reiter>('grundlagen');
   const [z, setZ] = useState<Zustand>(BASIS);
-  const { theme } = useTabContext();
+  const { theme, setActiveTab } = useTabContext();
   const dunkel = theme === 'dark';
   const setze = <K extends keyof Zustand>(k: K, v: Zustand[K]) => setZ(alt => ({ ...alt, [k]: v }));
   const lade = (id: string) => { const v = VORGABEN.find(x => x.id === id); if (v) setZ(alt => ({ ...alt, ...v.z })); };
+
+  // Übergabe aus den Einzelrechnern (URL-Parameter, src/calc/lebensdauerUebergabe.ts): nach dem Laden einlesen,
+  // beim Verlassen des Moduls aus der Adresse entfernen (sonst wanderten sie in andere Module mit)
+  const [uebernahme, setUebernahme] = useState<{ quelle: UebergabeQuelle; liste: string[]; kNat: number | null; hinweise: Hinweis[] } | null>(null);
+  useEffect(() => {
+    try {
+      const { daten, hinweise } = leseUebergabe(window.location.search);
+      if (daten) {
+        const v = vorgabeAusUebergabe(daten);
+        setZ(alt => ({ ...alt, ...v.vorgabe }));
+        setUebernahme({ quelle: daten.quelle, liste: v.uebernommen, kNat: v.kNat, hinweise: [...hinweise, ...v.hinweise] });
+        setReiter('rechner');
+      }
+    } catch { /* ohne Adresse (Vorrendern) keine Übergabe */ }
+    return () => {
+      try {
+        const p = new URLSearchParams(window.location.search);
+        if (!UEBERGABE_SCHLUESSEL.some(k => p.has(k))) return;
+        UEBERGABE_SCHLUESSEL.forEach(k => p.delete(k));
+        const rest = p.toString();
+        window.history.replaceState(window.history.state, '', window.location.pathname + (rest ? `?${rest}` : '') + window.location.hash);
+      } catch { /* Adresse unverändert */ }
+    };
+  }, []);
 
   const aufgeschoben = useDeferredValue(z);
   const eingabe = useMemo(() => eingabeAus(aufgeschoben), [aufgeschoben]);
@@ -300,6 +336,22 @@ export default function Lebensdauerbemessung() {
             {reiter === 'rechner' && (
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                 <div className="lg:col-span-5 flex flex-col gap-4">
+                  {uebernahme && (
+                    <div className="p-4 rounded-xl border border-shiraz/25 bg-shiraz/5 text-xs text-text-main/85 leading-relaxed flex flex-col gap-2" role="status">
+                      <h3 className="font-bold text-text-main text-sm flex items-center gap-2"><Link2 size={16} className="text-shiraz shrink-0" aria-hidden={true} />{inhalt.werte.uebernahmeTitel} {UEBERGABE_QUELLEN[uebernahme.quelle]}</h3>
+                      {uebernahme.liste.length > 0 && <ul className="list-disc pl-4 space-y-0.5">{uebernahme.liste.map(l => <li key={l}>{l}</li>)}</ul>}
+                      <p><MdText text={inhalt.texte.uebernahmeText} /></p>
+                      <EingabeHinweise hinweise={uebernahme.hinweise} />
+                      <div className="flex flex-wrap gap-2">
+                        <button type="button" onClick={() => springeZu(setActiveTab, uebernahme.quelle)} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-home-grau/50 text-text-main text-xs font-bold hover:border-shiraz">
+                          <Undo2 size={14} aria-hidden={true} /> {inhalt.werte.uebernahmeZurueck}
+                        </button>
+                        <button type="button" onClick={() => { setZ(BASIS); setUebernahme(null); }} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-home-grau/50 text-text-main text-xs font-bold hover:border-shiraz">
+                          {inhalt.werte.uebernahmeVerwerfen}
+                        </button>
+                      </div>
+                    </div>
+                  )}
                   <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.rEinleitung} /></p>
                   <div className="bg-off-white p-5 rounded-xl border border-home-grau/30 flex flex-col gap-4">
                     <label className="flex flex-col gap-1">
@@ -310,8 +362,8 @@ export default function Lebensdauerbemessung() {
                       </select>
                     </label>
                     <div className="flex flex-col gap-1">
-                      <span className="text-xs font-bold text-text-main mb-1">{inhalt.werte.mechanismus}</span>
-                      <AuswahlGruppe label={inhalt.werte.mechanismus} className="flex gap-2">
+                      <span id="ld-mechanismus" className="text-xs font-bold text-text-main mb-1">{inhalt.werte.mechanismus}</span>
+                      <AuswahlGruppe aria-labelledby="ld-mechanismus" className="flex gap-2">
                         {(['karbonatisierung', 'chlorid'] as const).map(m => (
                           <button key={m} type="button" {...alsOption(z.mech === m)} onClick={() => lade(m === 'karbonatisierung' ? 'k1' : 'c1')}
                             className={`flex-1 px-3 py-2 rounded-lg text-xs font-bold border ${z.mech === m ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-text-main border-home-grau/50'}`}>
@@ -348,7 +400,17 @@ export default function Lebensdauerbemessung() {
                         {auswahl(inhalt.werte.rArt, z.rArt, [{ v: 'acc' as const, l: inhalt.werte.rArtAcc }, { v: 'direkt' as const, l: inhalt.werte.rArtDirekt }, { v: 'kac' as const, l: inhalt.werte.rArtKac }], v => setze('rArt', v))}
                         {z.rArt === 'acc' && eingabeFeld(inhalt.werte.xcAcc, 'xcAcc', 'mm', '0.1')}
                         {z.rArt === 'direkt' && eingabeFeld(inhalt.werte.rInv, 'rDirekt', '10⁻¹¹', '0.5')}
-                        {z.rArt === 'kac' && eingabeFeld(inhalt.werte.kac, 'kac', 'mm/√d', '0.05')}
+                        {z.rArt === 'kac' && (
+                          <>
+                            <div className="grid grid-cols-2 gap-3">
+                              {eingabeFeld(inhalt.werte.kac, 'kac', 'mm/√d', '0.05')}
+                              {eingabeFeld(inhalt.werte.kacC, 'kacC', 'Vol.-%', '0.5')}
+                            </div>
+                            <p className="p-3 rounded-lg border border-amber-300/60 bg-amber-50 text-xs text-text-main/85 leading-relaxed flex items-start gap-2">
+                              <AlertTriangle size={14} className="text-amber-700 shrink-0 mt-0.5" aria-hidden={true} /><span><MdText text={inhalt.texte.rKacWarnung} /></span>
+                            </p>
+                          </>
+                        )}
                         <p className="text-xs text-text-main/80">{inhalt.werte.rInvErgebnis}: <strong className="font-mono">{formatDeZahl(rInv, 2)} · 10⁻¹¹ (m²/s)/(kg/m³)</strong>, s = {formatDeZahl(rInvStreuung(rInv), 2)}</p>
                       </>
                     ) : (
@@ -401,6 +463,13 @@ export default function Lebensdauerbemessung() {
                       </DiagrammAngaben>
                     </figure>
                   </div>
+                  {karb && uebernahme?.kNat != null && (
+                    <div className="p-4 rounded-xl border border-home-grau/30 bg-off-white text-xs text-text-main/85 leading-relaxed">
+                      <h3 className="font-bold text-text-main text-sm mb-1">{inhalt.werte.kNatVergleichTitel}</h3>
+                      <p className="font-mono">x_c({formatDeZahl(z.tSL, 0)} a) = {formatDeZahl(uebernahme.kNat, 2)} · √{formatDeZahl(z.tSL, 0)} = {formatDeZahl(tiefeNach(uebernahme.kNat, z.tSL), 1)} mm; t bis c = ({formatDeZahl(z.deckM, 0)}/{formatDeZahl(uebernahme.kNat, 2)})² = {formatDeZahl(zeitBisTiefe(z.deckM, uebernahme.kNat), 0)} a</p>
+                      <p className="mt-1">fib-Modell (Mittelwerte): x_c({formatDeZahl(z.tSL, 0)} a) = {erg.gueltig ? formatDeZahl(mw.einwirkung, 1) : '–'} mm. <MdText text={inhalt.texte.kNatVergleichText} /></p>
+                    </div>
+                  )}
                   <FormulaDerivationBox
                     live
                     title={inhalt.werte.rechenwegTitel}
@@ -409,6 +478,19 @@ export default function Lebensdauerbemessung() {
                     normQuelle={inhalt.werte.rechenwegQuelle}
                   />
                 </div>
+                <nav aria-label={inhalt.werte.einzelrechnerTitel} className="lg:col-span-12 p-4 rounded-xl border border-home-grau/30 bg-white text-xs text-text-main/85 leading-relaxed">
+                  <h3 className="font-bold text-text-main text-sm mb-1">{inhalt.werte.einzelrechnerTitel}</h3>
+                  <p className="mb-2"><MdText text={inhalt.texte.einzelrechnerText} /></p>
+                  <ul className="flex flex-wrap gap-2">
+                    {EINZELRECHNER.map(r => (
+                      <li key={r.ziel}>
+                        <button type="button" onClick={() => springeZu(setActiveTab, r.ziel)} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-off-white border border-home-grau/50 text-text-main text-xs font-bold hover:border-shiraz">
+                          {r.label} <ArrowRight size={14} aria-hidden={true} />
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
               </div>
             )}
 

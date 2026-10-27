@@ -98,6 +98,8 @@ export interface KarbonatisierungErgebnis {
 export const tiefeNach = (kNat: number, tJahre: number) => kNat * Math.sqrt(Math.max(tJahre, 0));
 /** Umkehrung des Wurzel-t-Gesetzes: Zeit in Jahren, bis die Front die Tiefe x erreicht, t = (x/K)² */
 export const zeitBisTiefe = (tiefeMm: number, kNat: number) => (tiefeMm / kNat) ** 2;
+/** Koeffizient aus einer gemessenen Tiefe x nach t Jahren, K = x/√t (gemeinsam mit Bauwerksuntersuchung und Lebensdauerübergabe) */
+export const koeffizientAusTiefe = (tiefeMm: number, tJahre: number) => tiefeMm / Math.sqrt(tJahre);
 
 export function schnellkarbonatisierung(e: KarbonatisierungEingabe): KarbonatisierungErgebnis {
   const hinweise: Hinweis[] = [];

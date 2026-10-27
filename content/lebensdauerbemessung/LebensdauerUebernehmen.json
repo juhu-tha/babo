@@ -1,0 +1,15 @@
+{
+  "texte": {
+    "schnell": "Übergibt K_AC, die Prüfkonzentration, die Betondeckung und die Nutzungsdauer an das fib-Modell. Die Umrechnung K_AC → R⁻¹ ist eine Näherung (vorläufig, F-Freigabe).",
+    "korrosionChlorid": "Übergibt Betondeckung, Zeit, D_app,0 (als D_RCM,0), C_S und den Alterungsexponenten (nächstliegendes Bindemittel) an das probabilistische Chloridmodell.",
+    "korrosionKarb": "Übergibt Betondeckung und Zeit; K wird in der Lebensdauerbemessung nur als Vergleich zum fib-Modell angezeigt.",
+    "korrosionSchnell": "Übergibt K_AC und die Kammerkonzentration; R⁻¹ folgt daraus als Näherung (vorläufig, F-Freigabe).",
+    "dauerhaftigkeit": "Übergibt Betondeckung und Zeit; der Beiwert k wird als Vergleich zum fib-Modell angezeigt.",
+    "bauwerk": "Übergibt die gemessene Betondeckung; der aus Tiefe und Alter berechnete Koeffizient K wird als Vergleich angezeigt.",
+    "exposition": "Übergibt c_nom als Mittelwert der Deckung und die Expositionsklassen; daraus folgen Mechanismus und Umgebung (Feuchte, Beregnung bzw. Spritzwasser)."
+  },
+  "werte": {
+    "schaltflaeche": "In Lebensdauerbemessung übernehmen",
+    "gesperrt": "In Lebensdauerbemessung übernehmen (Eingaben unvollständig)"
+  }
+}
