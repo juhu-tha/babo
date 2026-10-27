@@ -272,7 +272,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Zwang & Risse (massige Bauteile): Temperaturkurve als Lehransatz, Zwang α_T·ΔT·E_c(t)·R nur in der Abkühlphase.",
       "Mindestbewehrung im Praxisbeispiel mit k_c = 1,0, k = 0,8, f_ct,eff = 2,5 N/mm² und σ_s = 240 N/mm² als feste Lehrwerte.",
       "Reife: wirksames Alter aus der Kerntemperatur (Schritt 0,1 d); f_ck aus der Zementfestigkeitsklasse, β_cc ≤ 1,25; Ausschalfrist über f_ck(t_e) = f_cm(t_e) − 8 (EC2 3.1.2(5)).",
-      "Gewogene Reife nach NEN 5970 nur als Faktor k_T = C^((T − 20)/10), C = 1,15 … 1,75, Standard 1,45 (einstellbar; Giatec, Kasal 2020); nicht die integrierte Reife in °C·h (vorläufig, F-Freigabe).",
+      "Reifefunktion gewogene Reife nach NEN 5970 nur als Faktor k_T = C^((T − 20)/10), C = 1,15 … 1,75, Standard 1,45 (einstellbar; Giatec, Kasal 2020); nicht die integrierte Reife in °C·h (vorläufig, F-Freigabe).",
       "Zementbeiwert s nach EC2 3.1.2(6) (R = 0,20, N = 0,25, S = 0,38); L-Zemente sind dort nicht geregelt und werden nach der Anfangsfestigkeit (DIN EN 197-1) als S bzw. 52,5 L als N eingeordnet.",
       "Wärme mit hyperbolischem Ansatz Q = H_max·t_e/(t_e + t₅₀) und Lehrwerten je Zementart; Zusatzstoffe über lineare Zu- und Abschläge.",
       "Bauteile unter 0,30 m: Die pauschale Wärmeabfuhr gleicht die Temperatur je Zeitschritt vollständig an die Umgebung an.",
