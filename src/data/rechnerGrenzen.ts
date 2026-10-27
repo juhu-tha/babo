@@ -114,6 +114,8 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       'Ermüdung: Wöhlerlinie mit Δσ_D bei 5·10⁶ und Δσ_L bei 10⁸ ohne Teilsicherheitsbeiwerte γ_Ff, γ_Mf und ohne Schadensakkumulation; die Neigung m ist frei wählbar.',
       'Walz- und Schweißeigenspannungen sowie die σ-ε-Linien der Stahlsorten sind qualitative Lehrkurven (Parabel- bzw. Gauß-Näherung), keine Prüf- oder Bemessungswerte.',
       'M_pl,Rd = W_pl·f_y/γ_M0 setzt Querschnittsklasse 1 oder 2 voraus; Biegedrillknicken und Interaktion mit Querkraft bleiben unberücksichtigt.',
+      'Fe-C-Diagramm: metastabiles Gleichgewicht bei langsamer Abkühlung, Linien geradlinig zwischen Lehrbuch-Eckpunkten; Martensit, Bainit und Legierungseinflüsse sind nicht abgebildet.',
+      'Hebelgesetz bei Raumtemperatur ohne Tertiärzementit; CEV-Grenzwerte nach EN 10025-2:2004 für Nenndicken ≤ 30 mm, die Schweißeignungsskala ist eine Lehrbucheinstufung.',
     ],
   },
   kunststoffe: {
@@ -329,10 +331,12 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     ],
   },
   festigkeit: {
-    kurz: "Reißlänge und maximale Turmhöhe zweier Werkstoffe sowie ein Würfelstapel bis zum Druckversagen.",
+    kurz: "Reißlänge und maximale Turmhöhe zweier Werkstoffe, ein Würfelstapel bis zum Druckversagen sowie Hauptspannungen und Mohr'scher Kreis des ebenen Spannungszustands.",
     grenzen: [
       "Werkstoffwerte als feste Lehrwerte.",
       "Reines Eigengewicht, ohne Teilsicherheitsbeiwerte und Stabilität.",
+      "Spannungszustand: eben (σ_z = τ_xz = τ_yz = 0), linear-elastisch; von Mises und Tresca gelten für duktile, isotrope Werkstoffe, nicht für Beton, Mauerwerk oder Holz.",
+      "Vergleich mit f_y ohne Teilsicherheitsbeiwerte γ_M und ohne Stabilitäts- oder Ermüdungsnachweis.",
     ],
   },
   knicken: {
@@ -626,9 +630,12 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     grenzen: [],
   },
   formaenderungen: {
-    kurz: "Systematik und qualitative Darstellung der Formänderungen; keine Berechnung.",
-    rechnet: false,
-    grenzen: [],
+    kurz: "Systematik der Formänderungen sowie Biegelinie, größte Durchbiegung und Neigung von Einfeldträger und Kragarm unter Einzel- und Streckenlast.",
+    grenzen: [
+      "Lineare Biegetheorie (Bernoulli, kleine Verformungen), E·I konstant, ohne Schubverformung und ohne Eigengewicht, sofern es nicht in q enthalten ist.",
+      "Holz ohne Kriechen (k_def) und Feuchteeinfluss; Beton im ungerissenen Zustand I ohne Kriechen und Schwinden – reale Durchbiegungen können ein Mehrfaches betragen.",
+      "L/300 bzw. L/150 sind Orientierungswerte; maßgebend sind Einwirkungskombinationen und Grenzwerte der Eurocodes mit NA.",
+    ],
   },
   baustatik: {
     kurz: 'Schnittgrößen von Einfeldträger, Kragarm und Zweifeldträger sowie Auflagerkräfte eines Dreigelenkrahmens.',

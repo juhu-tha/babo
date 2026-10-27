@@ -19,7 +19,7 @@ import {
 } from 'chart.js';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
-import { Flame, Minimize2, Activity, Sparkles, Layers, BookOpen, Shield } from 'lucide-react';
+import { Flame, Minimize2, Activity, Sparkles, Layers, BookOpen, Shield, Thermometer } from 'lucide-react';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { stahlBrand, woehlerEc3, walzEigenspannung, schweissEigenspannung } from '@/src/calc/werkstoffmodelle';
@@ -30,7 +30,8 @@ import SpannungsDehnung from './stahl/SpannungsDehnung';
 import Stahlsorten from './stahl/Stahlsorten';
 import inhalt from '@/content/stahl/Stahl.json';
 import { MdText } from '@/src/components/inhalt/MdText';
-import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { GruppierteModuleTabs, type ModulTabGruppe } from '@/src/components/ui/GruppierteModuleTabs';
+import EisenKohlenstoff, { EISEN_KOHLENSTOFF_FUSS } from './stahl/EisenKohlenstoff';
 export type { ExtendedSteelGrade } from './stahl/daten';
 export type { StructuralProfile } from './stahl/daten';
 export { extendedSteelGrades } from './stahl/daten';
@@ -53,15 +54,19 @@ ChartJS.register(
   Filler
 );
 
-type StahlReiter = 'steckbrief' | 'spannungsdehnung' | 'stahlsorten' | 'allgemein' | 'walzen' | 'schweissen' | 'legierungen';
-const REITER: readonly ModulTab<StahlReiter>[] = [
-  { id: 'steckbrief', label: 'Baustoff-Steckbrief', icon: BookOpen },
-  { id: 'spannungsdehnung', label: 'Spannungs-Dehnungs-Linien', icon: Activity },
-  { id: 'stahlsorten', label: inhalt.texte.stahlwerkstoffeGüten.trim(), icon: Layers },
-  { id: 'allgemein', label: inhalt.texte.allgemeinErmüdung.trim(), icon: Shield },
-  { id: 'walzen', label: inhalt.texte.walzprofileEigenspannungen.trim(), icon: Minimize2 },
-  { id: 'schweissen', label: 'Schweißverbindungen', icon: Flame },
-  { id: 'legierungen', label: inhalt.texte.legierungenEdelstahl.trim(), icon: Sparkles },
+type StahlReiter = 'steckbrief' | 'spannungsdehnung' | 'eisenkohlenstoff' | 'stahlsorten' | 'allgemein' | 'walzen' | 'schweissen' | 'legierungen';
+// Höchstens 7 Hauptreiter (AP 3.8): Fe-C-Diagramm und Stahlsorten als Gruppe „Gefüge & Stahlsorten“
+const REITER: readonly ModulTabGruppe<StahlReiter>[] = [
+  { id: 'steckbrief', label: 'Baustoff-Steckbrief', icon: BookOpen, mitglieder: [{ id: 'steckbrief', label: 'Baustoff-Steckbrief', icon: BookOpen }] },
+  { id: 'spannungsdehnung', label: 'Spannungs-Dehnungs-Linien', icon: Activity, mitglieder: [{ id: 'spannungsdehnung', label: 'Spannungs-Dehnungs-Linien', icon: Activity }] },
+  { id: 'gefuege', label: 'Gefüge & Stahlsorten', icon: Layers, mitglieder: [
+    { id: 'eisenkohlenstoff', label: 'Eisen-Kohlenstoff-Diagramm', icon: Thermometer },
+    { id: 'stahlsorten', label: inhalt.texte.stahlwerkstoffeGüten.trim(), icon: Layers },
+  ] },
+  { id: 'allgemein', label: inhalt.texte.allgemeinErmüdung.trim(), icon: Shield, mitglieder: [{ id: 'allgemein', label: inhalt.texte.allgemeinErmüdung.trim(), icon: Shield }] },
+  { id: 'walzen', label: inhalt.texte.walzprofileEigenspannungen.trim(), icon: Minimize2, mitglieder: [{ id: 'walzen', label: inhalt.texte.walzprofileEigenspannungen.trim(), icon: Minimize2 }] },
+  { id: 'schweissen', label: 'Schweißverbindungen', icon: Flame, mitglieder: [{ id: 'schweissen', label: 'Schweißverbindungen', icon: Flame }] },
+  { id: 'legierungen', label: inhalt.texte.legierungenEdelstahl.trim(), icon: Sparkles, mitglieder: [{ id: 'legierungen', label: inhalt.texte.legierungenEdelstahl.trim(), icon: Sparkles }] },
 ];
 
 export default function Stahl() {
@@ -465,7 +470,7 @@ export default function Stahl() {
           <p><MdText text={inhalt.texte.stahlIstEinerDer} /></p>
         </div>
 
-        <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="flex flex-col gap-6 [&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20">
+        <GruppierteModuleTabs label={inhalt.werte.reiterBereiche} gruppen={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="flex flex-col gap-6 [&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20">
 
         {(activeTab === 'allgemein' || activeTab === 'walzen' || activeTab === 'schweissen' || activeTab === 'legierungen') && <StahlWerkstoffkunde activeTab={activeTab} alloyC={alloyC} alloyCr={alloyCr} alloyMo={alloyMo} alloyNi={alloyNi} corrosion={corrosion} deltaSigma={deltaSigma} detailCategory={detailCategory} fy={fy} grade={grade} heatInput={heatInput} kE={kE} ky={ky} m1={m1} nR={nR} hinweiseErmuedung={woehlerHinweise} hinweiseSchweissen={weldResults.hinweise} plateThickness={plateThickness} profileType={profileType} setAlloyC={setAlloyC} setAlloyCr={setAlloyCr} setAlloyMo={setAlloyMo} setAlloyNi={setAlloyNi} setCorrosion={setCorrosion} setDeltaSigma={setDeltaSigma} setDetailCategory={setDetailCategory} setGrade={setGrade} setHeatInput={setHeatInput} setM1={setM1} setPlateThickness={setPlateThickness} setProfileType={setProfileType} setTemp={setTemp} stressStrainData={stressStrainData} temp={temp} walzResults={walzResults} weldResults={weldResults} woehlerData={woehlerData} />}
 
@@ -475,12 +480,14 @@ export default function Stahl() {
       {/* 3. REITER: STAHLWERKSTOFFE, GÜTEN, BEWEHRUNGS- & SPANNSTÄHLE */}
       {activeTab === 'stahlsorten' && <Stahlsorten activeGradedData={activeGradedData} activeProfile={activeProfile} designMoment={designMoment} filteredSteelGrades={filteredSteelGrades} reinforcementDeepDiveTab={reinforcementDeepDiveTab} selectedProfileId={selectedProfileId} selectedStahlsorteId={selectedStahlsorteId} setDesignMoment={setDesignMoment} setReinforcementDeepDiveTab={setReinforcementDeepDiveTab} setSelectedProfileId={setSelectedProfileId} setSelectedStahlsorteId={setSelectedStahlsorteId} setSteelCatalogFilter={setSteelCatalogFilter} steelCatalogFilter={steelCatalogFilter} />}
 
+      {activeTab === 'eisenkohlenstoff' && <EisenKohlenstoff />}
+
       {activeTab === 'steckbrief' && (
         <div className="animate-in fade-in duration-300">
           <BaustoffProfil materialKey="stahl" />
         </div>
       )}
-        </ModuleTabs>
+        </GruppierteModuleTabs>
       </div>
     
       <FormulaDerivationBox
@@ -500,10 +507,10 @@ export default function Stahl() {
           { title: 'Schweißen', url: 'https://de.wikipedia.org/wiki/Schwei%C3%9Fen' },
           { title: 'Stahlsorte', url: 'https://de.wikipedia.org/wiki/Stahlsorte' }
         ]}
-        literatur={inhalt.daten["Stahl.literatur"]}
+        literatur={[...(inhalt.daten["Stahl.literatur"]), ...EISEN_KOHLENSTOFF_FUSS.literatur]}
         regelwerke={inhalt.daten["Stahl.regelwerke"]}
-        weblinks={inhalt.daten["Stahl.weblinks"]}
-        formeln={inhalt.daten["Stahl.formeln"]}
+        weblinks={[...(inhalt.daten["Stahl.weblinks"]), ...EISEN_KOHLENSTOFF_FUSS.weblinks]}
+        formeln={[...(inhalt.daten["Stahl.formeln"]), ...EISEN_KOHLENSTOFF_FUSS.formeln]}
       />
     </div>
   );

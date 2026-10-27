@@ -1,0 +1,61 @@
+{
+  "texte": {
+    "titel": "Ebener Spannungszustand und Mohr'scher Spannungskreis",
+    "einleitung": "In einem Bauteilpunkt hängen Normal- und Schubspannung von der **Schnittrichtung** ab. Im ebenen Spannungszustand genügen drei Werte – $\\sigma_x$, $\\sigma_y$ und $\\tau_{xy}$ –, um die Spannungen in jedem gedrehten Schnitt zu berechnen. Für die Festigkeit maßgebend sind die **Hauptspannungen** $\\sigma_1$ und $\\sigma_2$ (Schnitte ohne Schubspannung) und die **größte Schubspannung** $\\tau_{\\max}$.",
+    "kreisErklaerung": "Der **Mohr'sche Spannungskreis** stellt alle Schnittrichtungen gleichzeitig dar: Mittelpunkt $\\sigma_M = (\\sigma_x + \\sigma_y)/2$, Radius $R = \\sqrt{((\\sigma_x - \\sigma_y)/2)^2 + \\tau_{xy}^2}$. Der Bildpunkt X$(\\sigma_x;\\ \\tau_{xy})$ gehört zum Schnitt mit der Normalen in x-Richtung, Y$(\\sigma_y;\\ -\\tau_{xy})$ liegt diametral gegenüber. Dreht sich der Schnitt um $\\theta$, wandert der Bildpunkt um $2\\theta$ auf dem Kreis – hier im gleichen Drehsinn, weil die τ-Achse **nach unten positiv** aufgetragen ist (Konvention nach Gross/Hauger/Schröder/Wall).",
+    "vorzeichen": "Vorzeichen: Zug positiv; $\\tau_{xy}$ positiv, wenn sie am positiven Schnittufer in positive Koordinatenrichtung zeigt; $\\theta$ und $\\varphi_1$ gegen den Uhrzeigersinn von der x-Achse.",
+    "anwendung": "**Anwendung im Bauwesen:** Hauptzugspannungen im Steg eines Stahlbetonbalkens (schräge Schubrisse unter etwa 45°), Vergleichsspannung nach von Mises für Baustahl ($\\sigma_v \\le f_y$), Bruchkriterien von Boden und Gestein (Mohr-Coulomb) sowie Spannungszustände in Scheiben und Blechen.",
+    "eingaben": "Spannungszustand",
+    "ergebnisse": "Ergebnisse",
+    "kreis": "Mohr'scher Spannungskreis",
+    "element": "Gedrehtes Element",
+    "vergleich": "Vergleich mit der Streckgrenze",
+    "vergleichKeiner": "ohne Vergleich",
+    "zurHauptrichtung": "Auf Hauptrichtung drehen",
+    "zuTauMax": "Auf τ_max drehen",
+    "zuruecksetzen": "θ = 0°"
+  },
+  "werte": {
+    "lernzielTitel": "Spannungszustand und Mohr'scher Kreis",
+    "rechenwegTitel": "Ihr Rechenweg: Hauptspannungen und Hauptrichtung",
+    "rechenwegHinweis": "Lehrrechnung ohne Teilsicherheitsbeiwerte; die Vergleichsspannung nach von Mises gilt für duktile, isotrope Werkstoffe wie Baustahl, nicht für Beton oder Holz.",
+    "rechenwegQuelle": "Gross/Hauger/Schröder/Wall: Technische Mechanik 2, Kap. 2; Wandinger, TM 2 (HM München), Übung 2.3/2.5",
+    "schrittMitte": "Kreismittelpunkt und Radius",
+    "schrittMitteText": "Mittelwert der Normalspannungen und Radius aus halber Differenz und Schubspannung:",
+    "schrittHaupt": "Hauptspannungen",
+    "schrittHauptText": "Schnittpunkte des Kreises mit der σ-Achse (Schubspannung null):",
+    "schrittRichtung": "Hauptrichtung",
+    "schrittRichtungText": "Winkel von der x-Achse zur Richtung von σ₁ (Quadrant über atan2 aus Zähler und Nenner):",
+    "schrittVergleich": "Vergleichsspannung",
+    "schrittVergleichText": "Gestaltänderungsenergiehypothese (von Mises) im ebenen Spannungszustand:",
+    "elementBeschreibung": "Skizze eines um den Winkel θ gedrehten Flächenelements mit den Achsen ξ und η.",
+    "infoSx": "Normalspannung auf den Schnitt mit Normale in x-Richtung (Zug positiv).",
+    "infoSy": "Normalspannung auf den Schnitt mit Normale in y-Richtung (Zug positiv).",
+    "infoTxy": "Schubspannung in der x-y-Ebene; positiv am positiven Schnittufer in positiver Richtung.",
+    "infoTheta": "Drehwinkel des Schnitts gegen den Uhrzeigersinn; der Bildpunkt wandert um 2θ.",
+    "diagrammTitel": "Mohr'scher Spannungskreis",
+    "achseSigma": "Normalspannung σ [N/mm²]",
+    "achseTau": "Schubspannung τ [N/mm²], nach unten positiv"
+  },
+  "daten": {
+    "lernziele": [
+      { "level": "verstehen", "levelLabel": "2. Verstehen & Einordnen", "verb": "Erläutern", "description": "erläutern, warum Normal- und Schubspannung von der Schnittrichtung abhängen und wie der Mohr'sche Kreis alle Schnittrichtungen darstellt." },
+      { "level": "anwenden", "levelLabel": "3. Anwenden & Berechnen", "verb": "Berechnen", "description": "aus σ_x, σ_y und τ_xy Hauptspannungen, Hauptrichtung, größte Schubspannung und Vergleichsspannung berechnen." },
+      { "level": "bewerten", "levelLabel": "4. Analysieren & Bewerten", "verb": "Beurteilen", "description": "die Richtung der Hauptzugspannung zur Erklärung von Rissbildern (z. B. Schubrisse im Balkensteg) heranziehen." }
+    ],
+    "formeln": [
+      { "formel": "\\sigma_{\\xi} = \\frac{\\sigma_x + \\sigma_y}{2} + \\frac{\\sigma_x - \\sigma_y}{2} \\cos 2\\theta + \\tau_{xy} \\sin 2\\theta", "erklaerung": "Normalspannung im um θ gedrehten Schnitt (Transformationsgleichung des ebenen Spannungszustands).", "quelle": "Gross/Hauger/Schröder/Wall, TM 2, Kap. 2" },
+      { "formel": "\\tau_{\\xi\\eta} = -\\frac{\\sigma_x - \\sigma_y}{2} \\sin 2\\theta + \\tau_{xy} \\cos 2\\theta", "erklaerung": "Schubspannung im gedrehten Schnitt.", "quelle": "Gross/Hauger/Schröder/Wall, TM 2, Kap. 2" },
+      { "formel": "\\sigma_{1{,}2} = \\frac{\\sigma_x + \\sigma_y}{2} \\pm \\sqrt{\\left(\\frac{\\sigma_x - \\sigma_y}{2}\\right)^2 + \\tau_{xy}^2}, \\quad \\tan 2\\varphi_1 = \\frac{2\\tau_{xy}}{\\sigma_x - \\sigma_y}", "erklaerung": "Hauptspannungen als Mittelpunkt ± Radius des Mohr'schen Kreises und Hauptrichtung.", "quelle": "Wandinger, TM 2, Formelsammlung" },
+      { "formel": "\\sigma_v = \\sqrt{\\sigma_1^2 - \\sigma_1 \\sigma_2 + \\sigma_2^2}", "erklaerung": "Vergleichsspannung nach von Mises im ebenen Spannungszustand (σ₃ = 0).", "quelle": "Wandinger, TM 2, Übung 2.5" }
+    ],
+    "literatur": [
+      "Gross, D.; Hauger, W.; Schröder, J.; Wall, W. A.: Technische Mechanik 2 – Elastostatik. Berlin: Springer Vieweg (Kap. 2: Spannungszustand)"
+    ],
+    "weblinks": [
+      { "title": "Wandinger, J.: Technische Mechanik 2, Übungen 2.3 Spannungszustand (Hochschule München)", "url": "https://wandinger.userweb.mwn.de/TM2/u2_3.pdf" },
+      { "title": "Wandinger, J.: Technische Mechanik 2, Lösungen 2.5 Elastizitätsgesetz mit Mohr'schem Kreis", "url": "https://wandinger.userweb.mwn.de/TM2/l2_5.pdf" },
+      { "title": "Universität Stuttgart, ITM: Merkblatt Mohr'scher Spannungskreis (TM II)", "url": "https://www.itm.uni-stuttgart.de/lehre/lehrveranstaltungen/technische_mechanik_II/pdffiles/Merkblaetter/M2.pdf" }
+    ]
+  }
+}

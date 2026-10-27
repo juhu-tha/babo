@@ -8,7 +8,9 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberFormat';
-import { Calculator, Layers } from 'lucide-react';
+import { Calculator, Layers, Compass } from 'lucide-react';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import Spannungszustand, { SPANNUNGSZUSTAND_FUSS } from './festigkeitsberechnungen/Spannungszustand';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -47,7 +49,14 @@ type Material = {
 // Holz C24 nach DIN EN 338 (charakteristisch), übrige Werte typische Literaturwerte (Größenordnung).
 const materials: Record<string, Material> = inhalt.daten.materials;
 
+type Reiter = 'eigengewicht' | 'spannungszustand';
+const REITER: readonly ModulTab<Reiter>[] = [
+  { id: 'eigengewicht', label: 'Turmhöhe, Reißlänge & Würfelstapel', icon: Layers },
+  { id: 'spannungszustand', label: 'Spannungszustand & Mohr-Kreis', icon: Compass },
+];
+
 export default function Festigkeitsberechnungen() {
+  const [reiter, setReiter] = useState<Reiter>('eigengewicht');
   const [mat1Key, setMat1Key] = useState<string>('beton_c20');
   const [mat2Key, setMat2Key] = useState<string>('stahl_s235');
   const [useLogScale, setUseLogScale] = useState(false);
@@ -91,6 +100,9 @@ export default function Festigkeitsberechnungen() {
 
   return (
     <div className="flex flex-col gap-8">
+      <ModuleTabs label="Themen" tabs={REITER} aktiv={reiter} onWechsel={setReiter} className="flex flex-col gap-8 [&>[role=tablist]]:mb-0">
+      {reiter === 'spannungszustand' && <Spannungszustand />}
+      {reiter === 'eigengewicht' && (<>
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main mb-4 flex items-center gap-2"><Calculator className="text-shiraz" /><MdText text={inhalt.texte.festigkeitsberechnungenTurmbauReißlänge} /></h2>
 
@@ -346,6 +358,8 @@ export default function Festigkeitsberechnungen() {
           normQuelle={inhalt.werte.technischeMechanikGleichgewichtHookesche}
         />
       </div>
+      </>)}
+      </ModuleTabs>
     
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
@@ -374,8 +388,9 @@ export default function Festigkeitsberechnungen() {
           { title: 'Reißlänge', url: 'https://de.wikipedia.org/wiki/Rei%C3%9Fl%C3%A4nge' }
         ]}
         regelwerke={inhalt.daten["Festigkeitsberechnungen.regelwerke"]}
-        literatur={inhalt.daten["Festigkeitsberechnungen.literatur"]}
-        formeln={inhalt.daten["Festigkeitsberechnungen.formeln"]}
+        literatur={[...(inhalt.daten["Festigkeitsberechnungen.literatur"]), ...SPANNUNGSZUSTAND_FUSS.literatur]}
+        weblinks={SPANNUNGSZUSTAND_FUSS.weblinks}
+        formeln={[...(inhalt.daten["Festigkeitsberechnungen.formeln"]), ...SPANNUNGSZUSTAND_FUSS.formeln]}
       />
     </div>
   );

@@ -582,6 +582,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
       { stufe: "Anwenden", text: "die Reißlänge eines frei hängenden Stabs aus Zugfestigkeit und Rohdichte berechnen." },
       { stufe: "Anwenden", text: "für einen Würfelstapel die maximale Anzahl Würfel, die Stauchung des untersten Würfels und die Gesamtstauchung ermitteln." },
       { stufe: "Analysieren", text: "verschiedene Werkstoffe hinsichtlich ihres Verhältnisses von Festigkeit zu Eigengewicht vergleichen und die Grenzen des Gedankenexperiments benennen." },
+      { stufe: "Anwenden", text: "aus σ_x, σ_y und τ_xy mit dem Mohr'schen Spannungskreis Hauptspannungen, Hauptrichtung, größte Schubspannung und Vergleichsspannung ermitteln." },
     ],
   },
   feuchteschutz: {
@@ -601,6 +602,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
       { stufe: "Verstehen", text: "elastische, plastische, verzögert elastische und viskose Verformung voneinander unterscheiden." },
       { stufe: "Analysieren", text: "spannungsunabhängige Wärme-, Feuchte- und chemische Dehnungen wie Schwinden, Quellen und Treiben konkreten Ursachen zuordnen." },
       { stufe: "Anwenden", text: "die Längenänderung eines Bauteils aus elastischem Anteil und Kriechanteil berechnen und den Einfluss einer Behinderung erläutern." },
+      { stufe: "Anwenden", text: "die Biegelinie, größte Durchbiegung und Neigung von Einfeldträger und Kragarm berechnen und Stahl, Holz und Beton über E·I vergleichen." },
     ],
   },
   frischbeton: {
@@ -1352,7 +1354,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
       { stufe: "Erinnern", text: "die Stahlbezeichnungen nach DIN EN 10027-1 entschlüsseln und Stahlsorten wie S235, S355 oder B500B ihren Anwendungen zuordnen." },
       { stufe: "Anwenden", text: "den plastischen Biegewiderstand eines Walzprofils berechnen und die Ausnutzung unter einem Bemessungsmoment prüfen." },
       { stufe: "Analysieren", text: "den Einfluss von Temperatur im Brandfall, Kerbfall bei Ermüdung und Schweißeigenspannungen auf die Tragfähigkeit von Stahl analysieren." },
-      { stufe: "Bewerten", text: "den Einfluss von Kohlenstoff- und Legierungsgehalt auf Festigkeit, Zähigkeit und Schweißbarkeit beurteilen." },
+      { stufe: "Bewerten", text: "mit dem Eisen-Kohlenstoff-Diagramm und dem Hebelgesetz das Gefüge eines Stahls bestimmen und den Einfluss von Kohlenstoff- und Legierungsgehalt (CEV) auf Festigkeit, Zähigkeit und Schweißbarkeit beurteilen." },
     ],
   },
   statistik: {

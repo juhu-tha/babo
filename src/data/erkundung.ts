@@ -417,3 +417,25 @@ export const ERKUNDUNG: Record<string, Erkundung> = {
     { frage: "Was erwarten Sie, wenn Sie die Normalkraft N_d von 15 auf 60 kN vervierfachen – wächst die Ausnutzung linear?", aufloesung: "Nein: Sie steigt von 102,7 auf 230,8 %. Der Vergrößerungsfaktor wächst von 1,11 auf 1,63, weil sich N_d der Euler-Knicklast von 155 kN nähert. Ab 155 kN meldet der Rechner, dass kein Gleichgewicht nach Theorie II. Ordnung mehr möglich ist."},
   ] },
 };
+
+/**
+ * Erkundungsaufträge einzelner Reiter (Z24, neue Themen in bestehenden Modulen): Schlüssel „<Modul-ID>/<Reiter-ID>“.
+ * Die Reiter zeigen ihre Aufträge selbst an (der Modulkopf zeigt die Aufträge des Moduls); Prüfung in tests/erkundung.test.ts.
+ */
+export const ERKUNDUNG_REITER: Record<string, Erkundung> = {
+  'festigkeit/spannungszustand': { auftraege: [
+    { frage: "Was erwarten Sie, wenn Sie im Standardfall den Drehwinkel θ von 0° auf 45° stellen – wohin wandert der Bildpunkt auf dem Kreis?", hinweis: "Standard: σ_x = 200, σ_y = 40, τ_xy = 60 N/mm².", aufloesung: "Der Bildpunkt ξ wandert um 2θ = 90° auf dem Kreis: σ_ξ = 180 N/mm², σ_η = 60 N/mm², τ_ξη = −80 N/mm². Mittelpunkt (120 N/mm²) und Radius (100 N/mm²) bleiben gleich, die Summe σ_ξ + σ_η = 240 N/mm² ist invariant." },
+    { frage: "Was erwarten Sie, wenn Sie τ_xy von 60 auf 0 N/mm² setzen – wie ändern sich Hauptspannungen und Hauptrichtung?", aufloesung: "Ohne Schubspannung sind σ_x und σ_y selbst Hauptspannungen: σ₁ = 200 und σ₂ = 40 N/mm², φ₁ = 0°. Der Kreis schrumpft auf R = 80 N/mm²; τ_max in der Ebene sinkt von 100 auf 80 N/mm², die Vergleichsspannung nach von Mises von 210,7 auf 183,3 N/mm²." },
+    { frage: "Was erwarten Sie, wenn Sie σ_y von 40 auf −200 N/mm² ändern und mit S235 vergleichen?", hinweis: "Auswahl „Vergleich mit der Streckgrenze“ auf S235 stellen.", aufloesung: "Der Mittelpunkt rückt auf σ_M = 0, der Radius wächst auf 208,8 N/mm²: σ₁ = 208,8 und σ₂ = −208,8 N/mm², φ₁ = 8,3°. Keine Hauptspannung erreicht 235 N/mm², die Vergleichsspannung nach von Mises liegt mit 361,7 N/mm² aber deutlich darüber (Ausnutzung 1,54) – Zug-Druck-Zustände sind für duktile Werkstoffe besonders ungünstig." },
+  ] },
+  'formaenderungen/biegelinie': { auftraege: [
+    { frage: "Was erwarten Sie, wenn Sie die Höhe h des Rechteckquerschnitts von 300 auf 600 mm verdoppeln?", hinweis: "Standard: Einfeldträger L = 5 m, q = 5 kN/m, Brettschichtholz GL24h, b = 120 mm.", aufloesung: "Das Trägheitsmoment wächst mit h³ auf das Achtfache (27 000 auf 216 000 cm⁴); die größte Durchbiegung sinkt von 13,1 auf 1,64 mm, das Verhältnis L/w steigt von 382 auf 3 052." },
+    { frage: "Was erwarten Sie, wenn Sie bei sonst gleichen Eingaben vom Einfeldträger auf den Kragarm umschalten?", aufloesung: "Die Durchbiegung am Kragarmende ist mit 125,8 mm 9,6-mal so groß wie in Feldmitte des Einfeldträgers (q·L⁴/8 statt 5·q·L⁴/384), die Neigung am Ende beträgt 33,5 mrad. Der Rechner warnt, weil L/40 weit unter dem Orientierungswert L/150 liegt." },
+    { frage: "Was erwarten Sie, wenn Sie den Werkstoff von Brettschichtholz GL24h auf Beton C30/37 umstellen?", aufloesung: "Die Durchbiegung sinkt im Verhältnis der E-Moduln (11 500 zu 33 000 N/mm²) von 13,1 auf 4,57 mm. Der Wert gilt nur für den ungerissenen Zustand I ohne Kriechen; ein gerissener Stahlbetonbalken unter Dauerlast verformt sich ein Mehrfaches. Die Vergleichstabelle zeigt alle vier Werkstoffe." },
+  ] },
+  'stahl/eisenkohlenstoff': { auftraege: [
+    { frage: "Was erwarten Sie, wenn Sie bei 0,17 % C (S235) die Temperatur von 20 auf 800 °C erhöhen?", hinweis: "Ausschnitt „Stahlecke“, Datensatz Lehrbuch.", aufloesung: "Der Punkt liegt zwischen den Linien GP und GOS im Zweiphasenfeld α + γ. Nach der Konode besteht der Stahl zu 65,7 % aus Ferrit mit 0,012 % C und zu 34,3 % aus Austenit mit 0,47 % C; oberhalb von rund 871 °C (Linie GOS) ist er vollständig austenitisch." },
+    { frage: "Was erwarten Sie, wenn Sie bei Raumtemperatur den Kohlenstoffgehalt von 0,17 auf 0,8 % erhöhen?", aufloesung: "Der Perlitanteil steigt von 19,2 auf 100 %: Bei 0,8 % C liegt der eutektoide Punkt S, das Gefüge besteht nur aus Perlit. Festigkeit und Härte nehmen zu, Zähigkeit und Schweißeignung ab – deshalb begrenzt DIN EN 10025-2 den C-Gehalt von Baustählen auf höchstens 0,17 bis 0,24 %." },
+    { frage: "Was erwarten Sie, wenn Sie bei 0,4 % C den Datensatz von „Lehrbuch“ auf „Callister“ umstellen?", aufloesung: "Der Perlitanteil steigt von 48,7 auf 51,2 %, weil der eutektoide Punkt bei 0,76 statt 0,8 % C und die Ferritlöslichkeit bei 0,022 statt 0,02 % C liegt. Beide Datensätze sind in der Lehre gebräuchlich; die Quelle sollte deshalb immer angegeben werden." },
+  ] },
+};

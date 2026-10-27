@@ -49961,5 +49961,545 @@
       "targetModuleLabel": "Laborsicherheit"
     },
     "verified": false
+  },
+  {
+    "id": "qn_festigkeit_mohr_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "festigkeit",
+    "moduleTitle": "Festigkeitsberechnungen",
+    "topic": "Hauptspannungen",
+    "difficulty": "Vertiefung",
+    "normRef": "",
+    "question": "Ein Blech steht unter σ_x = 120 N/mm², σ_y = −40 N/mm² und τ_xy = 60 N/mm². Wie groß sind die Hauptspannungen σ₁ und σ₂?",
+    "options": [
+      "σ₁ = 180 N/mm², σ₂ = −100 N/mm²",
+      "σ₁ = 140 N/mm², σ₂ = −60 N/mm²",
+      "σ₁ = 100 N/mm², σ₂ = −100 N/mm²",
+      "σ₁ = 120 N/mm², σ₂ = −40 N/mm²"
+    ],
+    "correctIdx": 1,
+    "explanation": "σ_M = (120 − 40)/2 = 40 N/mm²; R = √(80² + 60²) = 100 N/mm²; σ₁ = 40 + 100 = 140 N/mm², σ₂ = 40 − 100 = −60 N/mm².",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Hier wurde der Radius als Summe 80 + 60 = 140 statt nach Pythagoras √(80² + 60²) = 100 gebildet.",
+      "",
+      "Das ist nur ±R ohne den Mittelpunkt σ_M = 40 N/mm²; der Kreis liegt nicht um den Ursprung.",
+      "Das sind die Ausgangsspannungen; sie sind nur ohne Schubspannung zugleich Hauptspannungen."
+    ],
+    "gapAnalysis": {
+      "topic": "Hauptspannungen",
+      "misconception": "Mittelpunkt und Radius des Mohr'schen Kreises werden verwechselt.",
+      "coreRule": "σ₁,₂ = (σ_x + σ_y)/2 ± √(((σ_x − σ_y)/2)² + τ_xy²).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Spannungszustand & Mohr-Kreis“ im Modul Festigkeitsberechnungen noch einmal durch.",
+      "targetModuleTab": "festigkeit",
+      "targetModuleLabel": "Festigkeitsberechnungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_festigkeit_mohr_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "festigkeit",
+    "moduleTitle": "Festigkeitsberechnungen",
+    "topic": "Hauptrichtung",
+    "difficulty": "Vertiefung",
+    "normRef": "",
+    "question": "Für σ_x = 80 N/mm², σ_y = 20 N/mm² und τ_xy = 30 N/mm²: Unter welchem Winkel φ₁ zur x-Achse wirkt die größere Hauptspannung σ₁?",
+    "options": [
+      "φ₁ = 45,0°",
+      "φ₁ = −22,5°",
+      "φ₁ = 22,5°",
+      "φ₁ = 67,5°"
+    ],
+    "correctIdx": 2,
+    "explanation": "tan 2φ₁ = 2τ_xy/(σ_x − σ_y) = 60/60 = 1 → 2φ₁ = 45° → φ₁ = 22,5°. Die Richtung von σ₂ steht senkrecht dazu (−67,5°).",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "45° ist der Winkel 2φ₁ auf dem Mohr'schen Kreis; am Element gilt die Hälfte.",
+      "Das Vorzeichen ist falsch: Bei positivem τ_xy und σ_x > σ_y dreht σ₁ gegen den Uhrzeigersinn.",
+      "",
+      "Unter 67,5° wäre σ₁ nur bei negativem Vorzeichen der Rechnung zu erwarten; die Hauptrichtungen sind 22,5° und −67,5°."
+    ],
+    "gapAnalysis": {
+      "topic": "Hauptrichtung",
+      "misconception": "Der Winkel 2φ am Kreis wird mit dem Winkel φ am Element verwechselt.",
+      "coreRule": "tan 2φ₁ = 2τ_xy/(σ_x − σ_y); der Bildpunkt wandert am Kreis um den doppelten Winkel.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Spannungszustand & Mohr-Kreis“ im Modul Festigkeitsberechnungen noch einmal durch.",
+      "targetModuleTab": "festigkeit",
+      "targetModuleLabel": "Festigkeitsberechnungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_festigkeit_mohr_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "festigkeit",
+    "moduleTitle": "Festigkeitsberechnungen",
+    "topic": "Mohr'scher Spannungskreis",
+    "difficulty": "Basis",
+    "normRef": "",
+    "question": "Der Schnitt durch einen Bauteilpunkt wird um den Winkel θ gedreht. Wie bewegt sich der zugehörige Bildpunkt auf dem Mohr'schen Spannungskreis?",
+    "options": [
+      "Er dreht sich um θ um den Kreismittelpunkt.",
+      "Er dreht sich um 2θ um den Kreismittelpunkt.",
+      "Er dreht sich um θ/2 um den Ursprung.",
+      "Er dreht sich um 2θ um den Ursprung."
+    ],
+    "correctIdx": 1,
+    "explanation": "Die Transformationsgleichungen enthalten cos 2θ und sin 2θ: Der Bildpunkt läuft um den doppelten Winkel auf dem Kreis um den Mittelpunkt σ_M. Eine Drehung des Elements um 90° führt daher zum diametral gegenüberliegenden Punkt.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Am Kreis erscheint der doppelte Winkel, weil die Spannungen von 2θ abhängen.",
+      "",
+      "Der Ursprung ist nicht der Kreismittelpunkt, und der Winkel wird am Kreis verdoppelt, nicht halbiert.",
+      "Der Winkel 2θ stimmt, der Drehpunkt ist aber der Mittelpunkt σ_M = (σ_x + σ_y)/2, nicht der Ursprung."
+    ],
+    "gapAnalysis": {
+      "topic": "Mohr'scher Spannungskreis",
+      "misconception": "Die Winkelverdopplung am Mohr'schen Kreis ist nicht bekannt.",
+      "coreRule": "Schnittdrehung um θ entspricht 2θ auf dem Kreis um σ_M; X und Y liegen diametral gegenüber.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Spannungszustand & Mohr-Kreis“ im Modul Festigkeitsberechnungen noch einmal durch.",
+      "targetModuleTab": "festigkeit",
+      "targetModuleLabel": "Festigkeitsberechnungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_festigkeit_mohr_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "festigkeit",
+    "moduleTitle": "Festigkeitsberechnungen",
+    "topic": "Reiner Schub",
+    "difficulty": "Vertiefung",
+    "normRef": "",
+    "question": "Ein Stegblech steht unter reinem Schub τ_xy = 50 N/mm² (σ_x = σ_y = 0). Welche Aussage über die Hauptspannungen trifft zu?",
+    "options": [
+      "±25 N/mm² in Richtung der x- und y-Achse",
+      "50 und 0 N/mm² unter 45° zur x-Achse",
+      "±50 N/mm² unter 45° zur x-Achse",
+      "±70,7 N/mm² unter 22,5° zur x-Achse"
+    ],
+    "correctIdx": 2,
+    "explanation": "Bei reinem Schub liegt der Kreismittelpunkt im Ursprung, R = τ_xy = 50 N/mm²: σ₁ = +50, σ₂ = −50 N/mm² unter ±45°. Deshalb verlaufen Schubrisse in Betonstegen schräg unter etwa 45°.",
+    "bloom": "Analysieren",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Die Hauptspannungen sind so groß wie τ_xy, und sie liegen unter 45°, nicht in den Achsen.",
+      "Bei reinem Schub ist σ_M = 0; der Kreis liefert eine Zug- und eine gleich große Druckspannung.",
+      "",
+      "70,7 N/mm² entstünde mit √2 · τ; der Radius ist aber genau τ_xy, und die Richtung beträgt 45°."
+    ],
+    "gapAnalysis": {
+      "topic": "Reiner Schub",
+      "misconception": "Reiner Schub wird nicht als Überlagerung von Zug und Druck unter 45° erkannt.",
+      "coreRule": "Reiner Schub: σ₁,₂ = ±τ_xy unter ±45° – Ursache schräger Schubrisse.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Spannungszustand & Mohr-Kreis“ im Modul Festigkeitsberechnungen noch einmal durch.",
+      "targetModuleTab": "festigkeit",
+      "targetModuleLabel": "Festigkeitsberechnungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_festigkeit_mohr_5",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "festigkeit",
+    "moduleTitle": "Festigkeitsberechnungen",
+    "topic": "Vergleichsspannung",
+    "difficulty": "Transfer",
+    "normRef": "",
+    "question": "Zwei ebene Spannungszustände in Baustahl: A mit σ₁ = σ₂ = 200 N/mm², B mit σ₁ = 200 und σ₂ = −200 N/mm². Welcher ist nach von Mises ungünstiger?",
+    "options": [
+      "A, weil beide Hauptspannungen Zug sind (σ_v = 400 N/mm²)",
+      "B, weil Zug und Druck zusammenwirken (σ_v ≈ 346 N/mm²)",
+      "Beide gleich, weil |σ₁| und |σ₂| gleich groß sind",
+      "A, weil σ_v = σ₁ + σ₂ = 400 N/mm² größer ist"
+    ],
+    "correctIdx": 1,
+    "explanation": "σ_v = √(σ₁² − σ₁σ₂ + σ₂²): A ergibt √(40 000 − 40 000 + 40 000) = 200 N/mm², B ergibt √(3 · 40 000) ≈ 346 N/mm². Gleichsinniger zweiachsiger Zug ist für Fließen günstiger als Zug-Druck.",
+    "bloom": "Bewerten",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Für A gilt σ_v = 200 N/mm²: Das gemischte Glied −σ₁σ₂ hebt sich bei gleichen Zugspannungen teilweise auf.",
+      "",
+      "Die Beträge sind gleich, die Vorzeichen aber nicht; das Produkt σ₁σ₂ ändert σ_v deutlich.",
+      "Die Vergleichsspannung ist keine Summe der Hauptspannungen."
+    ],
+    "gapAnalysis": {
+      "topic": "Vergleichsspannung",
+      "misconception": "Die Vergleichsspannung wird als Summe oder nach den Beträgen der Hauptspannungen beurteilt.",
+      "coreRule": "von Mises: σ_v = √(σ₁² − σ₁σ₂ + σ₂²); Zug-Druck-Zustände sind ungünstiger als gleichsinnige.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Spannungszustand & Mohr-Kreis“ im Modul Festigkeitsberechnungen noch einmal durch.",
+      "targetModuleTab": "festigkeit",
+      "targetModuleLabel": "Festigkeitsberechnungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_formaenderungen_bl_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "formaenderungen",
+    "moduleTitle": "Formänderungen",
+    "topic": "Biegelinie Einfeldträger",
+    "difficulty": "Vertiefung",
+    "normRef": "",
+    "question": "Ein Einfeldträger mit L = 4,0 m und E·I = 10 000 kNm² trägt eine Gleichlast q = 10 kN/m. Wie groß ist die Durchbiegung in Feldmitte?",
+    "options": [
+      "w ≈ 0,83 mm",
+      "w ≈ 32,0 mm",
+      "w ≈ 3,33 mm",
+      "w ≈ 33,3 mm"
+    ],
+    "correctIdx": 2,
+    "explanation": "w = 5·q·L⁴/(384·E·I) = 5 · 10 · 256/(384 · 10 000) m = 0,00333 m ≈ 3,33 mm.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Hier wurde L³ statt L⁴ eingesetzt.",
+      "Das ist die Formel des Kragarms q·L⁴/(8·EI); der Einfeldträger hat den Beiwert 5/384.",
+      "",
+      "Hier liegt ein Einheitenfehler um den Faktor 10 vor (Meter in Millimeter: ×1 000)."
+    ],
+    "gapAnalysis": {
+      "topic": "Biegelinie Einfeldträger",
+      "misconception": "Beiwert und Potenz der Durchbiegungsformel werden verwechselt.",
+      "coreRule": "Einfeldträger unter Gleichlast: w_max = 5·q·L⁴/(384·E·I) in Feldmitte.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Biegelinie“ im Modul Formänderungen noch einmal durch.",
+      "targetModuleTab": "formaenderungen",
+      "targetModuleLabel": "Formänderungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_formaenderungen_bl_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "formaenderungen",
+    "moduleTitle": "Formänderungen",
+    "topic": "Biegelinie Kragarm",
+    "difficulty": "Vertiefung",
+    "normRef": "",
+    "question": "Ein Kragarm (L = 2,0 m, E·I = 4 000 kNm²) trägt am freien Ende F = 12 kN. Wie groß sind Durchbiegung und Neigung am Kragarmende?",
+    "options": [
+      "w = 0,5 mm; φ = 1,5 mrad",
+      "w = 8,0 mm; φ = 6,0 mrad",
+      "w = 24,0 mm; φ = 12,0 mrad",
+      "w = 8,0 mm; φ = 12,0 mrad"
+    ],
+    "correctIdx": 1,
+    "explanation": "w = F·L³/(3·EI) = 12 · 8/(3 · 4 000) m = 8,0 mm; φ = F·L²/(2·EI) = 12 · 4/(2 · 4 000) = 0,006 rad = 6,0 mrad.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Das sind die Formeln des Einfeldträgers mit Last in Feldmitte (F·L³/48 und F·L²/16).",
+      "",
+      "Hier fehlen die Nenner 3 bzw. 2 der Kragarmformeln.",
+      "Die Durchbiegung stimmt, bei der Neigung fehlt der Faktor 1/2: φ = F·L²/(2·EI)."
+    ],
+    "gapAnalysis": {
+      "topic": "Biegelinie Kragarm",
+      "misconception": "Die Grundlastfälle von Kragarm und Einfeldträger werden verwechselt.",
+      "coreRule": "Kragarm mit Endlast: w = F·L³/(3·EI), φ = F·L²/(2·EI).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Biegelinie“ im Modul Formänderungen noch einmal durch.",
+      "targetModuleTab": "formaenderungen",
+      "targetModuleLabel": "Formänderungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_formaenderungen_bl_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "formaenderungen",
+    "moduleTitle": "Formänderungen",
+    "topic": "Biegesteifigkeit",
+    "difficulty": "Basis",
+    "normRef": "",
+    "question": "Bei einem Rechteckbalken wird die Höhe h verdoppelt, Breite, Werkstoff und Last bleiben gleich. Wie ändert sich die Durchbiegung?",
+    "options": [
+      "Sie sinkt auf die Hälfte.",
+      "Sie sinkt auf ein Viertel.",
+      "Sie sinkt auf ein Achtel.",
+      "Sie sinkt auf ein Sechzehntel."
+    ],
+    "correctIdx": 2,
+    "explanation": "I = b·h³/12 wächst mit der dritten Potenz der Höhe auf das Achtfache; da w ∝ 1/(E·I), sinkt die Durchbiegung auf ein Achtel.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Linear geht nur die Breite b in I ein, die Höhe mit der dritten Potenz.",
+      "Das Quadrat der Höhe bestimmt das Widerstandsmoment W = b·h²/6, nicht das Trägheitsmoment.",
+      "",
+      "Die vierte Potenz gilt für die Spannweite L, nicht für die Querschnittshöhe."
+    ],
+    "gapAnalysis": {
+      "topic": "Biegesteifigkeit",
+      "misconception": "Trägheitsmoment und Widerstandsmoment bzw. Höhe und Spannweite werden verwechselt.",
+      "coreRule": "I = b·h³/12; w ∝ 1/(E·I) – doppelte Höhe ergibt ein Achtel der Durchbiegung.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Biegelinie“ im Modul Formänderungen noch einmal durch.",
+      "targetModuleTab": "formaenderungen",
+      "targetModuleLabel": "Formänderungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_formaenderungen_bl_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "formaenderungen",
+    "moduleTitle": "Formänderungen",
+    "topic": "Werkstoffvergleich",
+    "difficulty": "Basis",
+    "normRef": "",
+    "question": "Zwei Balken mit gleichem Querschnitt und gleicher Last: einer aus Baustahl (E = 210 000 N/mm²), einer aus Nadelholz C24 (E = 11 000 N/mm²). Wie verhält sich die Durchbiegung des Holzbalkens?",
+    "options": [
+      "Sie ist etwa 5-mal so groß.",
+      "Sie ist etwa 19-mal so groß.",
+      "Sie ist etwa gleich groß.",
+      "Sie ist etwa halb so groß."
+    ],
+    "correctIdx": 1,
+    "explanation": "Bei gleichem I gilt w ∝ 1/E: 210 000/11 000 ≈ 19. Holzbauteile werden daher deutlich höher ausgeführt; zusätzlich vergrößert Kriechen (k_def) die Enddurchbiegung.",
+    "bloom": "Analysieren",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Faktor 5 entspricht etwa dem Verhältnis der Festigkeiten, nicht der E-Moduln.",
+      "",
+      "Gleicher Querschnitt bedeutet gleiches I, aber nicht gleiche Steifigkeit E·I.",
+      "Holz hat den kleineren E-Modul und biegt sich deshalb stärker, nicht schwächer durch."
+    ],
+    "gapAnalysis": {
+      "topic": "Werkstoffvergleich",
+      "misconception": "Der Einfluss des E-Moduls auf die Durchbiegung wird unterschätzt.",
+      "coreRule": "w ∝ 1/(E·I); bei gleichem Querschnitt bestimmt das Verhältnis der E-Moduln die Durchbiegung.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Biegelinie“ im Modul Formänderungen noch einmal durch.",
+      "targetModuleTab": "formaenderungen",
+      "targetModuleLabel": "Formänderungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_formaenderungen_bl_5",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "formaenderungen",
+    "moduleTitle": "Formänderungen",
+    "topic": "Spannweite",
+    "difficulty": "Vertiefung",
+    "normRef": "",
+    "question": "Die Spannweite eines Einfeldträgers unter gleicher Gleichlast q wird von 4 m auf 8 m verdoppelt. Wie ändert sich die größte Durchbiegung?",
+    "options": [
+      "Sie wird 4-mal so groß.",
+      "Sie wird 8-mal so groß.",
+      "Sie wird 16-mal so groß.",
+      "Sie wird 2-mal so groß."
+    ],
+    "correctIdx": 2,
+    "explanation": "w_max = 5·q·L⁴/(384·E·I): Die Spannweite geht mit der vierten Potenz ein, 2⁴ = 16. Das Moment wächst dagegen nur mit L².",
+    "bloom": "Analysieren",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Mit L² wächst das Biegemoment, die Durchbiegung wächst stärker.",
+      "Mit L³ wächst die Durchbiegung unter einer Einzellast F, unter Gleichlast mit L⁴.",
+      "",
+      "Die Durchbiegung ist nicht proportional zur Spannweite."
+    ],
+    "gapAnalysis": {
+      "topic": "Spannweite",
+      "misconception": "Die Potenz der Spannweite in der Durchbiegungsformel ist nicht bekannt.",
+      "coreRule": "Unter Gleichlast w ∝ L⁴, unter Einzellast w ∝ L³, Moment ∝ L².",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Biegelinie“ im Modul Formänderungen noch einmal durch.",
+      "targetModuleTab": "formaenderungen",
+      "targetModuleLabel": "Formänderungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_stahl_fec_1",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "stahl",
+    "moduleTitle": "Stahl",
+    "topic": "Hebelgesetz",
+    "difficulty": "Vertiefung",
+    "normRef": "",
+    "question": "Ein unlegierter Stahl mit 0,45 % C kühlt langsam ab. Welche Gefügeanteile ergeben sich bei Raumtemperatur nach dem Hebelgesetz (0,02 / 0,8 / 6,67 % C)?",
+    "options": [
+      "Perlit ≈ 45 %, Ferrit ≈ 55 %",
+      "Perlit ≈ 55 %, Ferrit ≈ 45 %",
+      "Perlit ≈ 7 %, Ferrit ≈ 93 %",
+      "Perlit 100 %, kein Ferrit"
+    ],
+    "correctIdx": 1,
+    "explanation": "m_Perlit = (0,45 − 0,02)/(0,8 − 0,02) = 0,43/0,78 ≈ 55 %; der Rest von rund 45 % ist voreutektoider Ferrit.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Hier wurden die Hebelarme vertauscht: Der Perlitanteil wächst mit dem C-Gehalt.",
+      "",
+      "Das ist der Phasenanteil Zementit (0,43/6,65 ≈ 6,5 %), nicht der Gefügeanteil Perlit.",
+      "Nur der eutektoide Stahl mit 0,8 % C besteht vollständig aus Perlit."
+    ],
+    "gapAnalysis": {
+      "topic": "Hebelgesetz",
+      "misconception": "Hebelarme werden vertauscht oder Phasen- und Gefügeanteile verwechselt.",
+      "coreRule": "Untereutektoid: m_Perlit = (C − 0,02)/(0,8 − 0,02), Ferrit = Rest.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Eisen-Kohlenstoff-Diagramm“ im Modul Stahl noch einmal durch.",
+      "targetModuleTab": "stahl",
+      "targetModuleLabel": "Stahl"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_stahl_fec_2",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "stahl",
+    "moduleTitle": "Stahl",
+    "topic": "Eutektoider Punkt",
+    "difficulty": "Basis",
+    "normRef": "",
+    "question": "Bei welchem Kohlenstoffgehalt und welcher Temperatur liegt nach der deutschsprachigen Lehrbuchliteratur der eutektoide Punkt S des Fe-Fe₃C-Diagramms?",
+    "options": [
+      "4,3 % C bei 1147 °C",
+      "2,06 % C bei 1147 °C",
+      "0,8 % C bei 723 °C",
+      "0,02 % C bei 723 °C"
+    ],
+    "correctIdx": 2,
+    "explanation": "Im Punkt S (0,8 % C, 723 °C) zerfällt Austenit zu Perlit; internationale Werke nennen 0,76 % C und 727 °C. 4,3 % C / 1147 °C ist der eutektische Punkt C (Ledeburit).",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Das ist der eutektische Punkt C, an dem die Schmelze zu Ledeburit erstarrt.",
+      "Das ist Punkt E: die größte Löslichkeit von Kohlenstoff im Austenit (Grenze Stahl/Gusseisen).",
+      "",
+      "Das ist Punkt P: die größte Löslichkeit von Kohlenstoff im Ferrit."
+    ],
+    "gapAnalysis": {
+      "topic": "Eutektoider Punkt",
+      "misconception": "Die Eckpunkte des Fe-C-Diagramms werden verwechselt.",
+      "coreRule": "S: 0,8 % C / 723 °C (eutektoid, Perlit); C: 4,3 % C / 1147 °C (eutektisch, Ledeburit).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Eisen-Kohlenstoff-Diagramm“ im Modul Stahl noch einmal durch.",
+      "targetModuleTab": "stahl",
+      "targetModuleLabel": "Stahl"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_stahl_fec_3",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "stahl",
+    "moduleTitle": "Stahl",
+    "topic": "Übereutektoider Stahl",
+    "difficulty": "Vertiefung",
+    "normRef": "",
+    "question": "Ein Werkzeugstahl mit 1,2 % C kühlt langsam ab. Wie groß sind die Anteile von Sekundärzementit und Perlit bei Raumtemperatur (0,8 / 6,67 % C)?",
+    "options": [
+      "Fe₃C II ≈ 17,7 %, Perlit ≈ 82,3 %",
+      "Fe₃C II ≈ 31,7 %, Perlit ≈ 68,3 %",
+      "Fe₃C II ≈ 50 %, Perlit ≈ 50 %",
+      "Fe₃C II ≈ 6,8 %, Perlit ≈ 93,2 %"
+    ],
+    "correctIdx": 3,
+    "explanation": "m_Fe₃C II = (1,2 − 0,8)/(6,67 − 0,8) = 0,4/5,87 ≈ 6,8 %; Perlit = 93,2 %. Der Sekundärzementit scheidet sich entlang der Linie ES an den Korngrenzen aus.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "17,7 % ist der gesamte Phasenanteil Zementit (1,18/6,65), einschließlich des Zementits im Perlit.",
+      "Hier wurde die Konode bis Punkt E (2,06 %) statt bis zum Zementit (6,67 %) gezogen.",
+      "Hier wurde der Hebelarm 0,4 auf 0,8 statt auf 5,87 bezogen.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Übereutektoider Stahl",
+      "misconception": "Die Konode endet an der falschen Phasengrenze.",
+      "coreRule": "Übereutektoid: m_Fe₃C II = (C − 0,8)/(6,67 − 0,8), Perlit = Rest.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Eisen-Kohlenstoff-Diagramm“ im Modul Stahl noch einmal durch.",
+      "targetModuleTab": "stahl",
+      "targetModuleLabel": "Stahl"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_stahl_fec_4",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "stahl",
+    "moduleTitle": "Stahl",
+    "topic": "Kohlenstoffäquivalent",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 10025-2",
+    "question": "Ein Baustahl enthält 0,16 % C, 1,20 % Mn, Cr + Mo + V = 0,10 % und Ni + Cu = 0,30 %. Wie groß ist das Kohlenstoffäquivalent CEV?",
+    "options": [
+      "CEV = 1,76 %",
+      "CEV = 0,38 %",
+      "CEV = 0,60 %",
+      "CEV = 0,40 %"
+    ],
+    "correctIdx": 3,
+    "explanation": "CEV = C + Mn/6 + (Cr + Mo + V)/5 + (Ni + Cu)/15 = 0,16 + 0,20 + 0,02 + 0,02 = 0,40 %. Der Wert liegt unter dem Höchstwert 0,45 für S355J2 (≤ 30 mm).",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Das ist die einfache Summe der Gehalte; die Elemente gehen mit Teilern ein.",
+      "Hier fehlt der Anteil (Ni + Cu)/15 = 0,02 %.",
+      "Hier wurde Mn/3 statt Mn/6 gerechnet.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Kohlenstoffäquivalent",
+      "misconception": "Die Teiler der IIW-Formel werden falsch angewendet.",
+      "coreRule": "CEV = C + Mn/6 + (Cr + Mo + V)/5 + (Ni + Cu)/15.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Eisen-Kohlenstoff-Diagramm“ im Modul Stahl noch einmal durch.",
+      "targetModuleTab": "stahl",
+      "targetModuleLabel": "Stahl"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_stahl_fec_5",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "stahl",
+    "moduleTitle": "Stahl",
+    "topic": "Kohlenstoff in Baustahl",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 10025-2",
+    "question": "Warum ist der Kohlenstoffgehalt unlegierter Baustähle wie S235 und S355 auf etwa 0,17 bis 0,24 % begrenzt?",
+    "options": [
+      "Mehr Kohlenstoff senkt den E-Modul deutlich unter 210 000 N/mm².",
+      "Kohlenstoff verringert die Korrosionsbeständigkeit sehr stark.",
+      "Mehr Kohlenstoff erhöht Aufhärtung und CEV und mindert die Zähigkeit.",
+      "Über 0,24 % C lässt sich Stahl nicht mehr warmwalzen."
+    ],
+    "correctIdx": 2,
+    "explanation": "Mit steigendem C-Gehalt wächst der Perlitanteil, Festigkeit und Härte steigen, Zähigkeit und Schweißeignung sinken (Aufhärtung in der Wärmeeinflusszone, höheres CEV). Baustähle bleiben deshalb untereutektoid mit überwiegend Ferrit.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Der E-Modul von Stahl hängt kaum vom C-Gehalt ab (rund 210 000 N/mm²).",
+      "Die Korrosion unlegierter Stähle hängt vor allem von Umgebung und Schutz ab, kaum vom C-Gehalt.",
+      "",
+      "Auch Stähle mit deutlich mehr Kohlenstoff (z. B. Schienenstahl) werden warmgewalzt."
+    ],
+    "gapAnalysis": {
+      "topic": "Kohlenstoff in Baustahl",
+      "misconception": "Der Zusammenhang zwischen C-Gehalt, Zähigkeit und Schweißeignung ist nicht bekannt.",
+      "coreRule": "Mehr C → mehr Perlit, höhere Festigkeit, geringere Zähigkeit und Schweißeignung (CEV).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Eisen-Kohlenstoff-Diagramm“ im Modul Stahl noch einmal durch.",
+      "targetModuleTab": "stahl",
+      "targetModuleLabel": "Stahl"
+    },
+    "verified": false
   }
 ]
