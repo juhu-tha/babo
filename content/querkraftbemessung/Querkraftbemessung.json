@@ -37,7 +37,7 @@
     "rechnerischErf": "Rechnerisch erf. ",
     "fachwerkmodellSeitenansicht": "Fachwerkmodell (Seitenansicht)",
     "erforderlicheQuerkraftbewehrung": "Erforderliche Querkraftbewehrung",
-    "vereinfachungenHebelarmZ0": "Vereinfachungen: Hebelarm z = 0,9·d als Lehrannahme. Nach DIN EN 1992-1-1/NA, NDP 6.2.3(1) darf z zusätzlich nicht größer als max(d − c_v,l − 30 mm; d − 2·c_v,l) angesetzt werden (c_v,l = Verlegemaß der Längsbewehrung in der Druckzone; öffentlich wiedergegeben im Prüfamt-Tipp 15/04 des LBV Brandenburg). Der Rechner meldet einen Hinweis, wenn 0,9·d diese Grenze überschreitet, rechnet aber mit 0,9·d weiter. Nichtmetallische Bügel sind eine Lehrannahme; maßgebend ist die DAfStb-Richtlinie „Betonbauteile mit nichtmetallischer Bewehrung“ (2024-01)."
+    "vereinfachungenHebelarmZ0": "Hebelarm: z = min(0,9·d; max(d − c_v,l − 30 mm; d − 2·c_v,l)) nach DIN EN 1992-1-1/NA, NCI zu 6.2.3(1); c_v,l = Verlegemaß der Längsbewehrung in der Druckzone (Standard 3,5 cm, einstellbar). Quelle (öffentliche Wiedergabe): Prüfamt-Tipp 15/04 „Hebelarm z der inneren Kräfte nach DIN EN 1992-1-1:2011-01 in Verbindung mit DIN EN 1992-1-1/NA:2013-04“, Bautechnisches Prüfamt, LBV Brandenburg. Der Rechenweg zeigt, welche Grenze maßgebend ist. Vereinfachungen: senkrechte Bügel, ohne Normalkraft (σ_cp = 0). Nichtmetallische Bügel sind eine Lehrannahme; maßgebend ist die DAfStb-Richtlinie „Betonbauteile mit nichtmetallischer Bewehrung“ (2024-01)."
   },
   "werte": {
     "erforderlicheBügelbewehrungAswCm": "Erforderliche Bügelbewehrung asw [cm²/m]",
@@ -49,7 +49,7 @@
     "abstandVomRandZur": "Abstand vom Rand zur Bewehrung.",
     "randabstandD1": "Randabstand d_1",
     "cvlLabel": "Verlegemaß c_v,l (Druckzone)",
-    "cvlInfo": "Verlegemaß der Längsbewehrung in der Druckzone; nur für den Hinweis zur Grenze des Hebelarms z nach NA DE, 6.2.3(1).",
+    "cvlInfo": "Verlegemaß der Längsbewehrung in der Druckzone (Standard 3,5 cm); begrenzt den Hebelarm z nach NA DE, NCI zu 6.2.3(1).",
     "vorhandeneLängsbewehrungsflächeFürVrd": "Vorhandene Längsbewehrungsfläche (für VRd,c).",
     "längsbewASl": "Längsbew. A_{sl}",
     "betonklasseFCk": "Betonklasse f_{ck}",
@@ -65,9 +65,9 @@
     "neigungswinkelDerBetonDruckstrebe": "Neigungswinkel der Beton-Druckstrebe des Fachwerkmodells (in Deutschland zwischen 18,4° und 45° bzw. cot θ von 1,0 bis 3,0).",
     "vEdVRd": "V_{Ed} > V_{Rd,c}",
     "ihrRechenwegQuerkraftbemessungMit": "Ihr Rechenweg: Querkraftbemessung mit den aktuellen Eingaben",
-    "dinEn19921": "DIN EN 1992-1-1 mit NA (DE), 6.2.2, 6.2.3 und 9.2.2",
+    "dinEn19921": "DIN EN 1992-1-1 mit NA (DE), 6.2.2, 6.2.3 (mit NCI zu 6.2.3(1)) und 9.2.2",
     "nutzhöheUndHebelarm": "Nutzhöhe und Hebelarm",
-    "vereinfachterInnererHebelarmZ": "Vereinfachter innerer Hebelarm z = 0,9 · d (Lehrannahme; NA-Grenze z ≤ max(d − c_v,l − 30 mm; d − 2·c_v,l) siehe Hinweis).",
+    "vereinfachterInnererHebelarmZ": "Innerer Hebelarm nach NA DE, NCI zu 6.2.3(1): Näherung 0,9 · d, höchstens max(d − c_v,l − 30 mm; d − 2·c_v,l).",
     "tragfähigkeitOhneQuerkraftbewehrung": "Tragfähigkeit ohne Querkraftbewehrung",
     "querkraftbewehrungRechnerischErforderlic": "Querkraftbewehrung rechnerisch erforderlich",
     "nurMindestbewehrungErforderlich": "nur Mindestbewehrung erforderlich",

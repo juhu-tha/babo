@@ -60,7 +60,7 @@
     "t3LösungswärmeverfahrenDinEn": "3. Lösungswärmeverfahren (DIN EN 196-8)",
     "einNasschemischerVergleichstestDie": "Ein nasschemischer Vergleichstest: Die Lösungswärme von unhydratisiertem Zement wird jener einer teils oder vollhydratisierten Probe (z.B. nach 7 oder 28 Tagen) in Säure gegenübergestellt. Die Differenz liefert die kumulierte Gesamthydratationswärme.",
     "warumMessenWirDas": "Warum messen wir das? (Der Praxisnutzen)",
-    "überDieKalorimetrischenDaten": "Über die kalorimetrischen Daten lässt sich die Festigkeitsentwicklung von Beton im realen Bauteil über ein \\*\\*Reifegradmodell\\*\\* (z. B. Arrhenius-Ansatz oder gewogene Reife nach de Vree) abbilden. Da Bauteile sich ungleichmäßig erwärmen (Kern kühlt mangels Oberfläche kaum ab, Ränder kühlen schnell), entstehen gewaltige thermische Gradienten:",
+    "überDieKalorimetrischenDaten": "Über die kalorimetrischen Daten lässt sich die Festigkeitsentwicklung von Beton im realen Bauteil über ein \\*\\*Reifegradmodell\\*\\* (z. B. Arrhenius-Ansatz oder gewogene Reife nach NEN 5970, Verfahren nach de Vree) abbilden. Da Bauteile sich ungleichmäßig erwärmen (Kern kühlt mangels Oberfläche kaum ab, Ränder kühlen schnell), entstehen gewaltige thermische Gradienten:",
     "zementwärmeSpitze": "Zementwärme (Spitze)",
     "cemI350400": "CEM I: ~350-400 J/g",
     "lhZementwärmeSpitze": "LH-Zementwärme (Spitze)",

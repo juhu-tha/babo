@@ -104,6 +104,9 @@
       "Lohmeyer, G.; Ebeling, K.: Weiße Wannen – einfach und sicher. Planung und Konstruktion wasserundurchlässiger Bauwerke aus Beton. 11., überarb. Aufl., Düsseldorf: Verlag Bau+Technik 2018",
       "Rastrup, E.: Heat of hydration in concrete. Magazine of Concrete Research 6 (1954) 17, S. 79–92",
       "Freiesleben Hansen, P.; Pedersen, J.: Maturity computer for controlled curing and hardening of concrete. Nordisk Betong 1 (1977), S. 19–34",
+      "NEN 5970:2001-09: Determination of strength of fresh concrete with the method of weighted maturity. Delft: NEN 2001 (gewogene Reife; Normtitel und Anwendungsbereich laut GlobalSpec-Katalog)",
+      "Kasal, P.: Metoda zralosti – princip, kalibrace, použití a přesnost. PhD-Workshop, Fakulta stavební ČVUT v Praze 2020 (gewogene Reife nach de Vree, C ≈ 1,15–1,65)",
+      "Giatec Scientific: Concrete Maturity Calculation Methods (Online-Fachbeitrag; gewogene Reife nach Papadakis/Bresson, 1979 von de Vree angepasst, C ≈ 1,25–1,75)",
       "Rostásy, F. S.; Krauß, M.; Budelmann, H.: Planungswerkzeug zur Kontrolle der frühen Rissbildung in massigen Betonbauteilen, Teile 1–7. Bautechnik 79 (2002), H. 7–12",
       "Breitenbücher, R.: Zwangsspannungen und Rissbildung infolge Hydratationswärme. Dissertation, TU München 1989",
       "Springenschmid, R. (Hrsg.): Prevention of Thermal Cracking in Concrete at Early Ages. State-of-the-Art Report prepared by RILEM Technical Committee 119. RILEM Report 15. London: E & FN Spon 1998",
@@ -131,9 +134,9 @@
         "quelle": "Rastrup (1954)"
       },
       {
-        "formel": "t_e = \\sum \\Delta t \\cdot 10^{C \\cdot \\frac{T_c - 20}{10}}",
-        "erklaerung": "Äquivalentalter nach de Vree in der im Rechner verwendeten Form (C = 0,30, entspricht etwa einer Verdopplung je 10 K wie bei Rastrup). Vorläufig, F-Freigabe: Die gewogene Reife nach de Vree (NEN 5970) arbeitet mit einer zementabhängigen Konstanten; deren Gleichung und Werte sind öffentlich nicht eindeutig belegt.",
-        "quelle": "de Vree (1976)"
+        "formel": "t_e = \\sum \\Delta t \\cdot C^{\\frac{T_c - 20}{10}}",
+        "erklaerung": "Äquivalentalter aus der gewogenen Reife nach NEN 5970 (Verfahren nach de Vree) als Temperaturfaktor bezogen auf 20 °C, wie im Rechner verwendet: zementabhängige Konstante C = 1,15 … 1,75, Standard 1,45 (einstellbar). Vorläufig, F-Freigabe: Die integrierte Reife der NEN 5970 in °C·h ist öffentlich nicht vollständig wiedergegeben.",
+        "quelle": "NEN 5970:2001; Giatec Scientific, Concrete Maturity Calculation Methods; Kasal, ČVUT Praha 2020"
       },
       {
         "formel": "t_e = \\sum \\Delta t \\cdot \\exp\\left( \\frac{E_a}{R} \\cdot \\left(\\frac{1}{293{,}15} - \\frac{1}{T_c + 273{,}15}\\right) \\right)",
