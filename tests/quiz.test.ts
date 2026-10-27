@@ -62,10 +62,22 @@ const laengenVerhaeltnis = (q: typeof QUIZ_QUESTIONS[number]) => {
 const zuLang = QUIZ_QUESTIONS.filter(q => laengenVerhaeltnis(q) > 1.2).length;
 const ABSOLUT = /\b(immer|nie|niemals|ausschließlich|grundsätzlich|stets|keinerlei|sämtliche)\b/gi;
 const absolut = QUIZ_QUESTIONS.reduce((a, q) => a + q.options.filter((_, i) => i !== q.correctIdx).reduce((b, o) => b + (o.match(ABSOLUT)?.length ?? 0), 0), 0);
-const GRENZE = { laengste: 0.089, zuLang: 26, absolut: 10 }; // Rest: 26 bereits freigegebene Fragen (Z23d)
+// Richtige Antwort mindestens so lang wie jede andere (Gleichstand zählt mit) – Längenhinweis aus Sicht der Lernenden
+const istLaengsteInkl = (q: typeof QUIZ_QUESTIONS[number]) => q.options.every(o => o.length <= q.options[q.correctIdx].length);
+const anteilLaengsteInkl = QUIZ_QUESTIONS.filter(istLaengsteInkl).length / QUIZ_QUESTIONS.length;
+// Spannweite der Optionslängen je Frage (längste/kürzeste)
+const spannweite = (q: typeof QUIZ_QUESTIONS[number]) => Math.max(...q.options.map(o => o.length)) / Math.max(1, Math.min(...q.options.map(o => o.length)));
+const zuWeit = QUIZ_QUESTIONS.filter(q => spannweite(q) > 1.2).length;
+const ohneNormRef = QUIZ_QUESTIONS.filter(q => !q.normRef?.trim()).length;
+// Stand 27.10. (Distraktoren angeglichen, normRef ergänzt): Rest „zuLang“ = 26 bereits freigegebene Fragen (Z23d);
+// ohne normRef bleiben reine Grundlagen-/Rechenfragen ohne Normbezug (docs/pruefung/quiz-aenderungen-10-27.md)
+const GRENZE = { laengste: 0.019, laengsteInkl: 0.274, zuLang: 26, zuWeit: 397, absolut: 10, ohneNormRef: 276 };
 pruefe(anteilLaengste <= GRENZE.laengste + 1e-9, `Richtige Antwort ist in ${(anteilLaengste * 100).toFixed(1)} % die längste (Grenze ${GRENZE.laengste * 100} %)`);
+pruefe(anteilLaengsteInkl <= GRENZE.laengsteInkl + 1e-9, `Richtige Antwort ist in ${(anteilLaengsteInkl * 100).toFixed(1)} % mindestens so lang wie alle anderen (Grenze ${(GRENZE.laengsteInkl * 100).toFixed(1)} %)`);
 pruefe(zuLang <= GRENZE.zuLang, `${zuLang} Fragen mit Längenverhältnis > 1,2 (Grenze ${GRENZE.zuLang})`);
+pruefe(zuWeit <= GRENZE.zuWeit, `${zuWeit} Fragen mit längster/kürzester Option > 1,2 (Grenze ${GRENZE.zuWeit})`);
 pruefe(absolut <= GRENZE.absolut, `${absolut} Absolutwörter in Distraktoren (Grenze ${GRENZE.absolut})`);
+pruefe(ohneNormRef <= GRENZE.ohneNormRef, `${ohneNormRef} Fragen ohne normRef (Grenze ${GRENZE.ohneNormRef})`);
 
 // 4. Jeder <ModulTest moduleId="…"> im Code hat Fragen
 const proModul = new Map<string, number>();
@@ -139,4 +151,4 @@ if (fehler.length) {
   for (const f of fehler) console.error(`FAIL: ${f}`);
   process.exit(1);
 }
-console.log(`OK: ${QUIZ_QUESTIONS.length} Fragen, ${proModul.size} Module, ${duenn} davon mit < 5 Fragen; längste richtig ${(anteilLaengste * 100).toFixed(1)} %, Verhältnis > 1,2: ${zuLang}, Absolutwörter: ${absolut}`);
+console.log(`OK: ${QUIZ_QUESTIONS.length} Fragen, ${proModul.size} Module, ${duenn} davon mit < 5 Fragen; längste richtig ${(anteilLaengste * 100).toFixed(1)} % (inkl. Gleichstand ${(anteilLaengsteInkl * 100).toFixed(1)} %), Verhältnis > 1,2: ${zuLang}, Spannweite > 1,2: ${zuWeit}, Absolutwörter: ${absolut}, ohne normRef: ${ohneNormRef}`);
