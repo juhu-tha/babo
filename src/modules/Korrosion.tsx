@@ -21,6 +21,7 @@ import { FormulaText } from "@/src/components/ui/FormulaText";
 import { ModuleFooter } from "@/src/components/ui/ModuleFooter";
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
+import { Querverweis } from '@/src/components/ui/Querverweis';
 import { InlineMath } from "react-katex";
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/korrosion/Korrosion.json';
@@ -1112,6 +1113,9 @@ export default function Korrosion() {
         ergebnisHinweis={inhalt.werte.mit35MmDeckung}
         normQuelle={inhalt.werte.fibBulletin342006}
       />
+      <Querverweis ziel="lebensdauerbemessung" titel={inhalt.werte.querLebensdauerTitel} linkText={inhalt.werte.querLebensdauerLink}>
+        <p><MdText text={inhalt.texte.querLebensdauerText} /></p>
+      </Querverweis>
       <FormulaDerivationBox
         title={inhalt.werte.beispiel2QuerschnittsverlustEines}
         zielGleichung="v_{corr} = \frac{M \cdot i_{corr}}{z \cdot F \cdot \rho}"

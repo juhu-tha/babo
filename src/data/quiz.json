@@ -25974,15 +25974,15 @@
     "topic": "Grubbs-Test",
     "difficulty": "Vertiefung",
     "normRef": "ISO 5725-2",
-    "question": "Eine Prüfserie mit n = 8 Würfeln hat x̄ = 31,4 N/mm² und s = 1,9 N/mm². Der kleinste Wert beträgt 27,0 N/mm², G_krit(n = 8; α = 5 %) = 2,03. Wie ist der Wert einzustufen?",
+    "question": "Eine Prüfserie mit n = 8 Würfeln hat x̄ = 31,4 N/mm² und s = 1,9 N/mm². Der kleinste Wert beträgt 27,0 N/mm², G_krit(n = 8; α = 5 %, ISO 5725-2) = 2,13. Wie ist der Wert einzustufen?",
     "options": [
-      "G ≈ 2,32 > 2,03; auffällig, vor dem Streichen technische Ursache prüfen",
-      "G ≈ 2,32 > 2,03; der Wert ist statistisch auffällig und ohne weitere Prüfung zu streichen",
-      "G ≈ 0,14 < 2,03; der Wert ist statistisch unauffällig und bleibt in der Auswertung",
-      "G ≈ 4,40 > 2,03; der Wert weicht so stark ab, dass die ganze Serie ungültig ist"
+      "G ≈ 2,32 > 2,13; auffällig, vor dem Streichen technische Ursache prüfen",
+      "G ≈ 2,32 > 2,13; der Wert ist statistisch auffällig und ohne weitere Prüfung zu streichen",
+      "G ≈ 0,14 < 2,13; der Wert ist statistisch unauffällig und bleibt in der Auswertung",
+      "G ≈ 4,40 > 2,13; der Wert weicht so stark ab, dass die ganze Serie ungültig ist"
     ],
     "correctIdx": 0,
-    "explanation": "G = |27,0 − 31,4|/1,9 = 2,32 > 2,03. Der Wert ist statistisch auffällig; gestrichen werden darf er erst, wenn eine technische Ursache (z. B. Prüffehler) belegt ist.",
+    "explanation": "G = |27,0 − 31,4|/1,9 = 2,32 > 2,13 (aber < 2,27 für α = 1 %). Der Wert ist nach ISO 5725-2 statistisch auffällig („Straggler“); gestrichen werden darf er erst, wenn eine technische Ursache (z. B. Prüffehler) belegt ist.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -25999,14 +25999,12 @@
       "targetModuleTab": "statistik",
       "targetModuleLabel": "Statistik"
     },
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
-    },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27"
+      "hinweis": "normRef ergänzt; Zweitprüfung 27.10.: G_krit nach ISO 5725-2 (2,13 statt 2,03) – korrigiert, Freigabe zurückgenommen"
+    }
   },
   {
     "id": "qn_statistik_3",
@@ -52094,5 +52092,221 @@
     },
     "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
     "reviewedAt": "2026-10-27"
+  },
+  {
+    "id": "qn_lebensdauer_1",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "lebensdauerbemessung",
+    "moduleTitle": "Lebensdauerbemessung (fib Bulletin 34)",
+    "topic": "Zielzuverlässigkeit",
+    "difficulty": "Basis",
+    "normRef": "fib Bulletin 34",
+    "question": "Welchen Zielwert des Zuverlässigkeitsindex empfiehlt fib Bulletin 34 für den Grenzzustand Depassivierung?",
+    "options": [
+      "β₀ = 3,8 (p_f ≈ 0,007 %)",
+      "β₀ = 1,3 (p_f ≈ 10 %)",
+      "β₀ = 0,5 (p_f ≈ 31 %)",
+      "β₀ = 2,3 (p_f ≈ 1,1 %)"
+    ],
+    "correctIdx": 1,
+    "explanation": "fib Bulletin 34 setzt für die Depassivierung β₀ = 1,3 an, das entspricht p_f ≈ 10 %. Der Wert ist niedrig, weil nach der Depassivierung noch die Schädigungsphase folgt und kein Tragversagen eintritt.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "3,8 ist der Zielwert für die Tragfähigkeit nach DIN EN 1990 (50 Jahre), nicht für die Depassivierung.",
+      "",
+      "β = 0,5 entspräche fast jedem dritten Bauteil – das ist für die Bemessung zu unsicher.",
+      "2,3 liegt deutlich über dem Wert, den fib Bulletin 34 für diesen Gebrauchstauglichkeitsgrenzzustand vorsieht."
+    ],
+    "gapAnalysis": {
+      "topic": "Zielwert β für Depassivierung",
+      "misconception": "Der Zielwert der Tragfähigkeit wird auf die Depassivierung übertragen.",
+      "coreRule": "Depassivierung (SLS): β₀ = 1,3 nach fib 34; Tragfähigkeit: β = 3,8.",
+      "actionableAdvice": "Wiederholen Sie im Modul Lebensdauerbemessung (fib Bulletin 34) den Reiter „Grundlagen“.",
+      "targetModuleTab": "lebensdauerbemessung",
+      "targetModuleLabel": "Lebensdauerbemessung (fib Bulletin 34)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_lebensdauer_2",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "lebensdauerbemessung",
+    "moduleTitle": "Lebensdauerbemessung (fib Bulletin 34)",
+    "topic": "Grenzzustand",
+    "difficulty": "Basis",
+    "normRef": "fib Bulletin 34",
+    "question": "Warum gilt die Depassivierung der Bewehrung als Grenzzustand der Gebrauchstauglichkeit?",
+    "options": [
+      "Weil die Bewehrung dann schon so stark korrodiert ist, dass Risse sichtbar werden.",
+      "Weil ab dann Korrosion möglich ist, aber noch kein Schaden am Bauteil entstanden ist.",
+      "Weil die Betondruckfestigkeit durch die Karbonatisierung bis dahin deutlich abnimmt.",
+      "Weil die Norm zeitabhängige Vorgänge wie das Schwinden der Gebrauchstauglichkeit zuordnet."
+    ],
+    "correctIdx": 1,
+    "explanation": "Mit der Depassivierung endet die Einleitungsphase nach Tuutti: Die Passivschicht ist zerstört, Korrosion kann beginnen. Risse, Abplatzungen und Querschnittsverlust folgen erst in der Schädigungsphase.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Sichtbare Risse gehören zur Schädigungsphase; bei der Depassivierung ist noch kein Rost entstanden.",
+      "",
+      "Karbonatisierung verringert die Festigkeit nicht nennenswert, sie senkt den pH-Wert der Porenlösung.",
+      "Kriechen und Schwinden wirken auch in der Tragfähigkeit; maßgebend ist die Folge des Grenzzustands, nicht die Zeitabhängigkeit."
+    ],
+    "gapAnalysis": {
+      "topic": "Grenzzustand Depassivierung",
+      "misconception": "Depassivierung wird mit sichtbarem Korrosionsschaden gleichgesetzt.",
+      "coreRule": "Depassivierung = Ende der Einleitungsphase, noch kein Schaden (SLS).",
+      "actionableAdvice": "Wiederholen Sie im Modul Lebensdauerbemessung (fib Bulletin 34) den Reiter „Grundlagen“.",
+      "targetModuleTab": "lebensdauerbemessung",
+      "targetModuleLabel": "Lebensdauerbemessung (fib Bulletin 34)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_lebensdauer_3",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "lebensdauerbemessung",
+    "moduleTitle": "Lebensdauerbemessung (fib Bulletin 34)",
+    "topic": "Prüfkennwert R⁻¹_ACC,0",
+    "difficulty": "Vertiefung",
+    "normRef": "fib Bulletin 34",
+    "question": "Im ACC-Test (2 Vol.-% CO₂, 28 d) wird x_c = 5,0 mm gemessen. Welcher inverse Karbonatisierungswiderstand folgt mit τ = 420 (s/(kg/m³))^0,5?",
+    "options": [
+      "R⁻¹ = 1,19 · 10⁻¹¹ (m²/s)/(kg/m³)",
+      "R⁻¹ = 14,2 · 10⁻¹¹ (m²/s)/(kg/m³)",
+      "R⁻¹ = 0,14 · 10⁻¹¹ (m²/s)/(kg/m³)",
+      "R⁻¹ = 142,0 · 10⁻¹¹ (m²/s)/(kg/m³)"
+    ],
+    "correctIdx": 1,
+    "explanation": "R⁻¹_ACC,0 = (x_c/τ)² = (0,005 m / 420)² = 1,417 · 10⁻¹⁰ = 14,2 · 10⁻¹¹ (m²/s)/(kg/m³). Die Tiefe ist in Metern einzusetzen und das Verhältnis zu quadrieren.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Das ist x_c/τ ohne Quadrat (1,19 · 10⁻⁵) – der Wurzelzusammenhang wurde nicht umgekehrt.",
+      "",
+      "Hier ist die Zehnerpotenz um zwei Stellen verschoben.",
+      "Hier ist die Zehnerpotenz um eine Stelle verschoben."
+    ],
+    "gapAnalysis": {
+      "topic": "R⁻¹ aus dem ACC-Test",
+      "misconception": "Wurzel und Einheiten werden beim Umrechnen vergessen.",
+      "coreRule": "R⁻¹_ACC,0 = (x_c/τ)², x_c in m, τ = 420.",
+      "actionableAdvice": "Wiederholen Sie im Modul Lebensdauerbemessung (fib Bulletin 34) den Reiter „Karbonatisierung“.",
+      "targetModuleTab": "lebensdauerbemessung",
+      "targetModuleLabel": "Lebensdauerbemessung (fib Bulletin 34)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_lebensdauer_4",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "lebensdauerbemessung",
+    "moduleTitle": "Lebensdauerbemessung (fib Bulletin 34)",
+    "topic": "Scheinbarer Diffusionskoeffizient",
+    "difficulty": "Vertiefung",
+    "normRef": "fib Bulletin 34",
+    "question": "Für einen CEM III/B gelten nach 50 Jahren k_e = 0,566, D_RCM,0 = 59,9 mm²/a, k_t = 1 und A(t) = 0,0542. Wie groß ist D_app,C?",
+    "options": [
+      "D_app,C ≈ 33,9 mm²/a",
+      "D_app,C ≈ 1,84 mm²/a",
+      "D_app,C ≈ 3,25 mm²/a",
+      "D_app,C ≈ 0,031 mm²/a"
+    ],
+    "correctIdx": 1,
+    "explanation": "D_app,C = k_e · D_RCM,0 · k_t · A(t) = 0,566 · 59,9 · 1 · 0,0542 = 1,84 mm²/a. Temperatur (10 °C) und Alterung senken den Prüfwert auf rund 3 %.",
+    "bloom": "Anwenden",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Hier fehlt der Alterungsfaktor A(t): 0,566 · 59,9 = 33,9.",
+      "",
+      "Hier fehlt der Temperaturfaktor k_e: 59,9 · 0,0542 = 3,25.",
+      "Hier fehlt der Prüfwert D_RCM,0: 0,566 · 0,0542 = 0,031."
+    ],
+    "gapAnalysis": {
+      "topic": "D_app nach fib 34",
+      "misconception": "Temperatur- oder Alterungsfaktor wird vergessen.",
+      "coreRule": "D_app,C = k_e · D_RCM,0 · k_t · A(t), A(t) = (t₀/t)^a.",
+      "actionableAdvice": "Wiederholen Sie im Modul Lebensdauerbemessung (fib Bulletin 34) den Reiter „Chlorid“.",
+      "targetModuleTab": "lebensdauerbemessung",
+      "targetModuleLabel": "Lebensdauerbemessung (fib Bulletin 34)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_lebensdauer_5",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "lebensdauerbemessung",
+    "moduleTitle": "Lebensdauerbemessung (fib Bulletin 34)",
+    "topic": "Mittelwert und Streuung",
+    "difficulty": "Transfer",
+    "normRef": "fib Bulletin 34",
+    "question": "Im Parkdeck-Beispiel liegt der Chloridgehalt an der Bewehrung im Mittel bei 0,10 M.-%, weit unter C_crit = 0,6 M.-%. Trotzdem ist β = 1,27. Woran liegt das?",
+    "options": [
+      "An den Ausläufern von Δx, C_S und Deckung: Ungünstige Kombinationen depassivieren in rund 10 % der Läufe.",
+      "An der Monte-Carlo-Simulation selbst: Mit 20.000 Läufen ist das Ergebnis vor allem durch Zufallsrauschen geprägt.",
+      "Am Anfangschloridgehalt C₀: Er wird in der Simulation mit jedem Jahr der Nutzungsdauer neu aufaddiert.",
+      "Am Temperaturfaktor: Bei 10 °C diffundieren Chloride schneller als bei der Referenztemperatur von 20 °C."
+    ],
+    "correctIdx": 0,
+    "explanation": "Die Mittelwertrechnung sagt nichts über die Zuverlässigkeit. Große Δx, hohe C_S, kleine Deckungen und kleine Alterungsexponenten treffen in einem Teil der Läufe zusammen; dort wird C_crit überschritten.",
+    "bloom": "Analysieren",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "",
+      "Der Standardfehler von p_f liegt bei N = 20.000 um 0,2 Prozentpunkte – das erklärt keine 10 %.",
+      "C₀ ist eine Konstante und geht nur einmal in die Lösung des Fickschen Gesetzes ein.",
+      "Bei 10 °C ist k_e < 1, die Diffusion ist langsamer als bei 20 °C."
+    ],
+    "gapAnalysis": {
+      "topic": "Mittelwertrechnung gegen Zuverlässigkeit",
+      "misconception": "Ein günstiger Mittelwert wird als ausreichender Nachweis gelesen.",
+      "coreRule": "Zuverlässigkeit folgt aus den Verteilungen, nicht aus Mittelwerten.",
+      "actionableAdvice": "Wiederholen Sie im Modul Lebensdauerbemessung (fib Bulletin 34) den Reiter „Beispiele“.",
+      "targetModuleTab": "lebensdauerbemessung",
+      "targetModuleLabel": "Lebensdauerbemessung (fib Bulletin 34)"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_lebensdauer_6",
+    "category": "dauerhaftigkeit_schaeden",
+    "categoryLabel": "Dauerhaftigkeit & Schäden",
+    "moduleId": "lebensdauerbemessung",
+    "moduleTitle": "Lebensdauerbemessung (fib Bulletin 34)",
+    "topic": "Maßnahmen bewerten",
+    "difficulty": "Transfer",
+    "normRef": "fib Bulletin 34",
+    "question": "Für ein Parkdeck XD3 mit CEM I (w/z = 0,45) ergibt die Simulation eine erforderliche mittlere Deckung von 129 mm. Welche Maßnahme ist am wirksamsten?",
+    "options": [
+      "Die Deckung auf 65 mm erhöhen und die Standardabweichung der Deckung auf 4 mm verringern.",
+      "Einen Beton mit höherem Chloridwiderstand wählen, etwa CEM III/B mit kleinerem D_RCM,0.",
+      "Die Nutzungsdauer auf 100 Jahre festlegen, weil dann der Alterungsfaktor A(t) weiter abnimmt.",
+      "Den Zielwert β₀ auf 3,8 anheben, damit die Bemessung deutlich auf der sicheren Seite liegt."
+    ],
+    "correctIdx": 1,
+    "explanation": "Mit CEM III/B (D_RCM,0 = 1,9, a = 0,45) genügen im Beispiel rund 56 mm. Der Chloridwiderstand des Betons wirkt stärker als einige Millimeter Deckung oder eine bessere Ausführung.",
+    "bloom": "Bewerten",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Auch mit 65 mm bleibt die Deckung weit unter den erforderlichen 129 mm.",
+      "",
+      "Eine längere Nutzungsdauer erhöht p_f, obwohl A(t) kleiner wird – die Einwirkungsdauer wächst stärker.",
+      "Ein höheres β₀ erhöht die erforderliche Deckung weiter und löst das Problem nicht."
+    ],
+    "gapAnalysis": {
+      "topic": "Wirksame Maßnahmen gegen Chlorid",
+      "misconception": "Mehr Deckung wird als einzige Stellschraube gesehen.",
+      "coreRule": "Betonwiderstand (D_RCM,0, a) und Deckung zusammen bemessen.",
+      "actionableAdvice": "Wiederholen Sie im Modul Lebensdauerbemessung (fib Bulletin 34) den Reiter „Simulation“.",
+      "targetModuleTab": "lebensdauerbemessung",
+      "targetModuleLabel": "Lebensdauerbemessung (fib Bulletin 34)"
+    },
+    "verified": false
   }
 ]

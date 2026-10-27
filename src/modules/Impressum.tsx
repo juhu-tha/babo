@@ -1,7 +1,42 @@
 import React from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Mail, MapPin, Building2, User, Link as LinkIcon, FileText, Globe } from 'lucide-react';
-import { LIZENZ_AKTIV, IMPRESSUM_URHEBERRECHT_OFFEN } from '@/src/data/lizenzTexte';
+import { LIZENZ_AKTIV, IMPRESSUM_URHEBERRECHT_OFFEN, DRITTKOMPONENTEN, LIZENZ_LINKS } from '@/src/data/lizenzTexte';
+
+/** Drittlizenzliste (Gutachten 27.10.2026 abends, Maßnahme 7) – gilt unabhängig von LIZENZ_AKTIV */
+function Drittkomponenten() {
+  return (
+    <section aria-labelledby="drittkomponenten-titel" className="space-y-2">
+      <h3 id="drittkomponenten-titel" className="font-bold text-text-main">Verwendete Komponenten Dritter</h3>
+      <p>Diese Anwendung nutzt freie Software und eine freie Schrift. Sie stehen unter den Lizenzen ihrer Rechteinhaber; die Lizenz dieser Anwendung gilt für sie nicht. Die Lizenztexte sind über die Verweise in der Spalte „Lizenz“ abrufbar, die Namen führen zu den Projektseiten mit den Urheberrechtshinweisen.</p>
+      <div className="overflow-x-auto">
+        <table className="w-full text-xs border-collapse">
+          <caption className="sr-only">Komponenten Dritter mit Verwendungszweck und Lizenz</caption>
+          <thead>
+            <tr className="text-left border-b border-home-grau/30">
+              <th scope="col" className="py-1.5 pr-3 font-semibold">Komponente</th>
+              <th scope="col" className="py-1.5 pr-3 font-semibold">Verwendung</th>
+              <th scope="col" className="py-1.5 font-semibold">Lizenz</th>
+            </tr>
+          </thead>
+          <tbody>
+            {DRITTKOMPONENTEN.map(k => (
+              <tr key={k.name} className="border-b border-home-grau/15 align-top">
+                <th scope="row" className="py-1.5 pr-3 font-medium text-left">
+                  <a href={k.url} target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline">{k.name}</a>
+                </th>
+                <td className="py-1.5 pr-3">{k.zweck}{k.imBrowser ? '' : ' (nur Server)'}</td>
+                <td className="py-1.5">
+                  <a href={LIZENZ_LINKS[k.lizenz]} target="_blank" rel="noopener noreferrer" className="text-shiraz hover:underline">{k.lizenz}</a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  );
+}
 
 export default function Impressum() {
   return (
@@ -143,6 +178,8 @@ export default function Impressum() {
                 {/* AP 6.8: offener Lizenztext erst nach THA-Freigabe (src/data/lizenz.ts) */}
                 {LIZENZ_AKTIV ? IMPRESSUM_URHEBERRECHT_OFFEN : <>Die auf dieser Seite bereitgestellten Inhalte, Diagramme, interaktiven Berechnungsmodule und Grafiken unterliegen dem deutschen Urheberrecht. Vervielfältigungen, Bearbeitungen, Verbreitungen und Verwertungen außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des Autors. DIN, EN, ISO, Eurocode und DIBt sind eingetragene Bezeichnungen bzw. Markenzeichen der jeweiligen Normungsorganisationen. Ihre Nennung sowie der Verweis auf Berechnungsformeln und Grenzwerte erfolgt ausschließlich zu wissenschaftlichen Lehr-, Erläuterungs- und Belegzwecken gemäß § 51 UrhG (Zitatrecht).</>}
               </p>
+
+              <Drittkomponenten />
             </div>
 
           </div>

@@ -84,10 +84,10 @@ export const betonTasks: Task[] = [
   {
     id: 't_betonbauklassen',
     difficulty: 'Mittel',
-    title: 'WU-Beton: Feuchtigkeitsklassen & Überwachungsklassen',
-    question: 'Eine weiße Wanne (WU-Keller) für ein hochwertiges Bürogebäude steht im drückenden Grundwasser. Welche Feuchtigkeitsklasse wird nach der DAfStb-Richtlinie typischerweise gefordert, und welche Überwachungsklasse nach DIN 1045-3:2023-08 ergibt sich bei einem C30/37?',
+    title: 'WU-Beton: Beanspruchungs-, Nutzungs- und Feuchtigkeitsklasse',
+    question: 'Eine weiße Wanne (WU-Keller) für ein hochwertiges Bürogebäude steht im drückenden Grundwasser. Welche Beanspruchungs- und Nutzungsklasse sind nach der WU-Richtlinie des DAfStb anzusetzen, welche Feuchtigkeitsklasse (Alkali-Kieselsäure-Reaktion) ist davon getrennt zu wählen, und welche Überwachungsklasse nach DIN 1045-3:2023-08 ergibt sich bei einem C30/37?',
     moduleHint: { id: 'qualitaetssicherung', name: 'BBQ - Betonbauklassen' },
-    solution: 'Modul BBQ - Betonbauklassen: Für ein hochwertiges Bürogebäude (Nutzungsklasse A, keine Feuchtenstellen auf der Innenseite zulässig) und drückendes Wasser liegt eine hohe Beanspruchung vor. Dies führt zu Feuchtigkeitsklasse WA. Die Überwachungsklasse folgt nach DIN 1045-3:2023-08 nicht aus der WU-Eigenschaft (WU-Beton allein liegt in ÜK 1), sondern aus Festigkeitsklasse und Exposition: Wird für die weiße Wanne z. B. ein C30/37 festgelegt, ist es ein Beton der ÜK 2 mit ständiger Betonprüfstelle und Fremdüberwachung.'
+    solution: 'Modul BBQ - Betonbauklassen: Die WU-Richtlinie des DAfStb (Ausgabe 2017) arbeitet mit zwei eigenen Klassen: Drückendes Grundwasser ergibt Beanspruchungsklasse 1; die hochwertige Büronutzung ohne zulässige Feuchtstellen auf der Innenseite ergibt Nutzungsklasse A. Davon zu unterscheiden ist die Feuchtigkeitsklasse nach DIN 1045-2 und Alkali-Richtlinie, die nur den Schutz vor schädigender Alkali-Kieselsäure-Reaktion regelt: Ein ständig im Grundwasser stehendes Bauteil ist dauernd feucht und liegt in der Regel in WF; WA gilt erst bei zusätzlicher Alkalizufuhr von außen (z. B. Tausalz, Meerwasser). Die Überwachungsklasse folgt nach DIN 1045-3:2023-08 nicht aus der WU-Eigenschaft (WU-Beton allein liegt in ÜK 1), sondern aus Festigkeitsklasse und Exposition: Wird für die weiße Wanne z. B. ein C30/37 festgelegt, ist es ein Beton der ÜK 2 mit ständiger Betonprüfstelle und Fremdüberwachung.'
   },
   {
     id: 't_konformitaet',

@@ -396,6 +396,10 @@ export default function Schnellkarbonatisierung() {
         <p><MdText text={inhalt.texte.en199211} /></p>
       </Querverweis>
 
+      <Querverweis ziel="lebensdauerbemessung" titel={inhalt.werte.querLebensdauerTitel} linkText={inhalt.werte.querLebensdauerLink}>
+        <p><MdText text={inhalt.texte.querLebensdauerText} /></p>
+      </Querverweis>
+
       <ModulTest moduleId="schnellkarbonatisierung" />
 
       <ModuleFooter

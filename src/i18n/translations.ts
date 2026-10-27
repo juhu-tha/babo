@@ -369,6 +369,7 @@ export const TAB_EN: Record<string, string> = {
   "altholz_urban_mining": "Waste Wood NIR & Urban Mining",
   "pfas_baustoffe": "PFAS in Building Materials",
   "schnellkarbonatisierung": "Accelerated Carbonation",
+  "lebensdauerbemessung": "Service Life Design",
   "korrosionsschutz_beschichtungen": "Corrosion Protection (Coatings)",
   "ki_uebungen": "Hands-on Exercises (Master)",
   "ki_baustoffe": "AI in Civil Engineering",

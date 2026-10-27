@@ -11,7 +11,7 @@ import {
   ArrowRight,
   Info
 } from 'lucide-react';
-import { generateTransportbetonExcel, LCA_BENCHMARKS } from './TransportbetonExcelExport';
+import { LCA_BENCHMARKS } from './transportbetonKennwerte';
 import inhalt from '@/content/lca/TransportbetonLcaUebung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 
@@ -175,7 +175,9 @@ export default function TransportbetonLcaUebung() {
   const wz_eq = effectiveCem > 0 ? (water / effectiveCem) : 0;
 
   const handleDownload = () => {
-    generateTransportbetonExcel().catch(e => console.error('Excel-Export fehlgeschlagen', e));
+    import('./TransportbetonExcelExport')
+      .then(m => m.generateTransportbetonExcel())
+      .catch(e => console.error('Excel-Export fehlgeschlagen', e));
     setIsDownloaded(true);
     setTimeout(() => setIsDownloaded(false), 4000);
   };

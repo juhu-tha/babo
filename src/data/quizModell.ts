@@ -68,6 +68,19 @@ export interface QuizQuestion {
   vorpruefung?: { am: string; ergebnis: 'ok' | 'korrigiert' | 'fraglich'; hinweis?: string };
 }
 
+/** Etikett für Fragen ohne fachliche Freigabe (Selbsttest, Übungsaufgaben, Klausursimulator einheitlich) */
+export const ETIKETT_UNGEPRUEFT = 'noch nicht fachlich freigegeben';
+
+/** Fachlich freigegeben gilt eine Frage nur bei verified === true (fehlend oder false = ungeprüft). */
+export function istFachlichFreigegeben(q: Pick<QuizQuestion, 'verified'>): boolean {
+  return q.verified === true;
+}
+
+/** Anzahl der fachlich freigegebenen Fragen einer Liste */
+export function anzahlFreigegeben(fragen: readonly Pick<QuizQuestion, 'verified'>[]): number {
+  return fragen.filter(istFachlichFreigegeben).length;
+}
+
 export const QUIZ_CATEGORIES: { id: QuizCategory; label: string; icon: string }[] = [
   { id: 'baustoffkunde', label: 'Werkstoffmechanik & Physik', icon: 'Box' },
   { id: 'bindemittel_beton', label: 'Bindemittel & Betontechnologie', icon: 'Layers' },

@@ -188,6 +188,7 @@ const DaemmungVergleich = React.lazy(() => import('../modules/DaemmungVergleich'
 const InnovativeWerkstoffe = React.lazy(() => import('../modules/InnovativeWerkstoffe'));
 const Biokohlebeton = React.lazy(() => import('../modules/Biokohlebeton'));
 const Schnellkarbonatisierung = React.lazy(() => import('../modules/Schnellkarbonatisierung'));
+const Lebensdauerbemessung = React.lazy(() => import('../modules/Lebensdauerbemessung'));
 const NormenAusblick = React.lazy(() => import('../modules/NormenAusblick'));
 const Praxiswissen = React.lazy(() => import('../modules/Praxiswissen'));
 const Bautagebuch = React.lazy(() => import('../modules/Bautagebuch'));
@@ -312,6 +313,7 @@ export function ModulInhalt({ activeTab }: { activeTab: TabId }) {
     {activeTab === 'expositionsklassen' && <Expositionsklassen />}
     {activeTab === 'korrosion' && <Korrosion />}
     {activeTab === 'schnellkarbonatisierung' && <Schnellkarbonatisierung />}
+    {activeTab === 'lebensdauerbemessung' && <Lebensdauerbemessung />}
     {activeTab === 'schadreaktionen_beton' && <SchadreaktionenBeton />}
     {activeTab === 'zwang' && <ZwangCalculator />}
     {activeTab === 'eigenspannungen' && <Eigenspannungen />}

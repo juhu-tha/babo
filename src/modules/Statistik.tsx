@@ -252,9 +252,9 @@ export default function Statistik() {
         thresholdDesc = `1,5 IQR`;
         formula = '[Q_1 - 1{,}5 \\cdot IQR,\\; Q_3 + 1{,}5 \\cdot IQR]';
       } else if (outlierMethod === 'grubbs') {
-        // Kritische Werte des Grubbs-Tests (einseitig, α = 5 %), z. B. ISO 5725-2 / ASTM E178;
+        // Kritische Werte des Grubbs-Tests für einen Ausreißer, α = 5 % nach ISO 5725-2, Tab. 5 (beidseitig = ASTM E178 einseitig 2,5 %);
         // vereinfacht auf alle Werte angewendet (der strenge Test prüft iterativ nur den Extremwert).
-        thresholdDesc = `Grubbs G > ${formatDeZahl(r.gKrit ?? NaN, 3)} (n = ${formatDeWert(n)})`;
+        thresholdDesc = `Grubbs G > ${formatDeZahl(r.gKrit ?? NaN, 3)} (n = ${formatDeWert(n)}; α = 5 %, ISO 5725-2)`;
         formula = '\\mu \\pm G_{crit} \\cdot \\sigma';
       }
     }

@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
  * Bundle-Budget (Umsetzungsplan Phase 5, AP 5.4)
- * Liest dist/ nach `npm run build` und prüft die gzip-Größen:
+ * Liest dist/ nach `npm run build`, prüft die Vollständigkeit (dist/server.cjs, dist/modul/routen.json; sonst Exit 1)
+ * und die gzip-Größen:
  *   - Einstiegs-Chunk (das <script type="module"> in dist/index.html) samt statisch importierter Chunks
  *   - größter JS-Chunk; jeder Chunk ≤ GRENZE_CHUNK (ohne Ausnahmen)
  * Die Grenzen sind eine Ratsche auf den erreichten Werten (+ kleiner Puffer): sinkt ein Wert dauerhaft,
@@ -35,6 +36,24 @@ const ASSETS = path.join(DIST, 'assets');
 if (!fs.existsSync(path.join(DIST, 'index.html'))) {
   console.error(`check-bundle: ${path.relative(ROOT, DIST)}/index.html fehlt – erst \`npm run build\` ausführen.`);
   process.exit(2);
+}
+
+// Vollständigkeit des Builds (Gutachten 27.10.2026 abends, Nr. 4): Bricht `npm run build` nach dem Client-Build ab
+// (z. B. Speicher, rc 137), fehlen Vorrendern und Server – das Budget allein würde trotzdem „OK“ melden.
+const PFLICHT = [
+  ['server.cjs', 'Server-Bundle (esbuild-Schritt von npm run build)'],
+  ['modul/routen.json', 'Routenliste des Vorrenderns (scripts/vorrendern.ts)'],
+];
+const fehlend = PFLICHT.filter(([f]) => !fs.existsSync(path.join(DIST, f)));
+for (const [f, was] of fehlend) console.error(`FAIL: ${path.relative(ROOT, DIST)}/${f} fehlt – ${was}; Build unvollständig`);
+if (fehlend.length) process.exit(1);
+try {
+  const routen = JSON.parse(fs.readFileSync(path.join(DIST, 'modul/routen.json'), 'utf8'));
+  if (!Array.isArray(routen?.ids) || routen.ids.length === 0) throw new Error('keine Modul-IDs');
+  console.log(`Build vollständig: server.cjs, modul/routen.json (${routen.ids.length} Modulseiten)`);
+} catch (e) {
+  console.error(`FAIL: dist/modul/routen.json unbrauchbar (${e instanceof Error ? e.message : e})`);
+  process.exit(1);
 }
 
 const gz = datei => zlib.gzipSync(fs.readFileSync(datei), { level: 9 }).length;

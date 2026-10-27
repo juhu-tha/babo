@@ -1,8 +1,8 @@
 {
   "texte": {
     "erklärungZurBarrierefreiheit": " Erklärung zur Barrierefreiheit",
-    "dieTechnischeHochschuleAugsburg": "Die Technische Hochschule Augsburg ist bemüht, ihre Webangebote im Einklang mit Art. 13 des Bayerischen Behindertengleichstellungsgesetzes (BayBGG) und der Bayerischen Digitalverordnung (BayDiV) barrierefrei zugänglich zu machen. Diese Erklärung gilt für die Webanwendung BaustoffBoard (baustoffboard.de).",
-    "dieWebanwendungIstMit": "Die Webanwendung ist mit den Anforderungen der Barrierefreien-Informationstechnik-Verordnung (BITV 2.0) bzw. der harmonisierten Norm EN 301 549 (WCAG 2.1, Stufe AA) **teilweise vereinbar**. Die Anforderungen sind weitgehend erfüllt: In der automatisierten Prüfung wurden keine Verstöße mehr gefunden. Ein Test mit Nutzerinnen und Nutzern und eine vollständige manuelle Prüfung stehen noch aus. Die unten aufgeführten Inhalte sind noch nicht vollständig barrierefrei; sie werden nach dem veröffentlichten Umsetzungsplan bis Januar 2027 überarbeitet.",
+    "dieTechnischeHochschuleAugsburg": "Die Technische Hochschule Augsburg ist bemüht, ihre Webangebote im Einklang mit Art. 14 des Bayerischen Behindertengleichstellungsgesetzes (BayBGG) und den §§ 9 bis 11 der Bayerischen Digitalverordnung (BayDiV) barrierefrei zugänglich zu machen. Diese Erklärung gilt für die Webanwendung BaustoffBoard (baustoffboard.de).",
+    "dieWebanwendungIstMit": "Die Webanwendung ist mit den Anforderungen der BayDiV **teilweise vereinbar**. Maßstab sind nach § 9 Abs. 1 BayDiV die Anforderungen aus § 3 Abs. 1 der Barrierefreie-Informationstechnik-Verordnung (BITV 2.0), umgesetzt über die harmonisierte Norm EN 301 549 (WCAG 2.1, Stufe AA). Die Anforderungen sind weitgehend erfüllt: In der automatisierten Prüfung wurden keine Verstöße mehr gefunden. Ein Test mit Nutzerinnen und Nutzern und eine vollständige manuelle Prüfung stehen noch aus. Die unten aufgeführten Inhalte sind noch nicht vollständig barrierefrei; sie werden nach dem veröffentlichten Umsetzungsplan bis Januar 2027 überarbeitet.",
     "reiterleistenOhneTablist": "In einem Teil der Module ist die Reiterleiste (Umschalten zwischen Teilansichten) noch nicht als Registerkartenliste ausgezeichnet und nicht mit den Pfeiltasten bedienbar; Screenreader erhalten den gewählten Reiter dort nur als gedrückte Schaltfläche. Diese Leisten werden derzeit auf die gemeinsame Reiter-Komponente umgestellt.",
     "diagrammeUndInteraktiveGrafiken": "Diagramme (Chart.js) haben eine Kurzbeschreibung für Screenreader und eine abrufbare Datentabelle. Bei selbst gezeichneten Grafiken, interaktiven Simulationen und den 3D-Ansichten ist eine gleichwertige Textalternative noch nicht durchgehend vorhanden; dort sind Werte teilweise nur visuell erfassbar.",
     "formelnMathematisch": "Formeln werden mit KaTeX dargestellt und enthalten eine MathML-Fassung für Hilfstechnologien. Ob umfangreiche Formeln mit gängigen Screenreadern verständlich vorgelesen werden, ist nicht geprüft; nicht jede Formel ist zusätzlich in Worten erläutert.",
@@ -12,7 +12,7 @@
     "sindIhnenMängelBeim": "Sind Ihnen Mängel beim barrierefreien Zugang aufgefallen? Dann melden Sie sich gern, wir antworten innerhalb von sechs Wochen. Auf Wunsch stellen wir Inhalte auch in einer barrierefreien Form zur Verfügung.",
     "profDrIngJürgen": "Prof. Dr.-Ing. Jürgen Huber",
     "technischeHochschuleAugsburgAn": "Technische Hochschule Augsburg · An der Hochschule 1 · 86161 Augsburg",
-    "wennSieAufIhre": "Wenn Sie auf Ihre Rückmeldung keine zufriedenstellende Antwort erhalten, können Sie sich an die Durchsetzungsstelle wenden und eine Prüfung nach § 11 BayDiV beantragen:",
+    "wennSieAufIhre": "Bleibt Ihre Anfrage über die oben genannte Kontaktmöglichkeit innerhalb von sechs Wochen ganz oder teilweise unbeantwortet oder sind Sie der Ansicht, dass wir uns zu Unrecht auf eine Ausnahme nach § 9 Abs. 4 BayDiV berufen, können Sie bei der Durchsetzungs- und Überwachungsstelle des Landesamts beantragen, dass sie prüft, ob Maßnahmen erforderlich sind (§ 11 Abs. 2 BayDiV):",
     "landesamtFürDigitalisierungBreitband": "Landesamt für Digitalisierung, Breitband und Vermessung",
     "itDienstleistungszentrumDesFreistaats": "IT-Dienstleistungszentrum des Freistaats Bayern",
     "durchsetzungsUndÜberwachungsstelleFür": "Durchsetzungs- und Überwachungsstelle für barrierefreie Informationstechnik",
@@ -31,12 +31,16 @@
         "url": "https://eur-lex.europa.eu/eli/dir/2016/2102/oj"
       },
       {
-        "title": "Bayerisches Behindertengleichstellungsgesetz (BayBGG), Art. 13",
+        "title": "Bayerisches Behindertengleichstellungsgesetz (BayBGG), Art. 14 (Barrierefreies Internet und Intranet)",
         "url": "https://www.gesetze-bayern.de/Content/Document/BayBGG"
       },
       {
-        "title": "Bayerische Digitalverordnung (BayDiV)",
+        "title": "Bayerische Digitalverordnung (BayDiV), §§ 9–11 (Barrierefreiheit)",
         "url": "https://www.gesetze-bayern.de/Content/Document/BayDiV"
+      },
+      {
+        "title": "Barrierefreie-Informationstechnik-Verordnung (BITV 2.0), § 3 (über § 9 Abs. 1 BayDiV)",
+        "url": "https://www.gesetze-im-internet.de/bitv_2_0/BJNR184300011.html"
       },
       {
         "title": "EN 301 549 V3.2.1 (2021-03) Barrierefreiheitsanforderungen für IKT-Produkte und -Dienstleistungen"

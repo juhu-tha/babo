@@ -15,6 +15,7 @@ import type { QuizQuestion } from '@/src/data/quizModell';
 import { useAlleFragen } from '@/src/data/quizLader';
 import { questionsToCsv, parseCsvToQuestions } from '@/src/utils/quizCsv';
 import { mischeAntworten } from '@/src/utils/mischeAntworten';
+import { FreigabeEtikett } from './FreigabeEtikett';
 import { 
   saveQuizSessionResult, 
   getQuizSessionHistory, 
@@ -880,6 +881,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
                   Reviewer: {currentQ.reviewer}
                 </span>
               )}
+              <FreigabeEtikett frage={currentQ} />
             </div>
 
             {/* Question Text */}
