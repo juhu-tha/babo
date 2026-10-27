@@ -1,4 +1,5 @@
 import inhalt from '@/content/holzbaubeta/daten.json';
+import { holzKennwerte } from '@/src/data/kennwerte';
 // Solid timber & engineered wood database for Tab 2
 export interface WoodMaterial {
   class: string;
@@ -13,14 +14,21 @@ export interface WoodMaterial {
   rho_mean: number; // mittlere Rohdichte kg/m³
 }
 
+// Kennwerte zentral aus src/data/kennwerte.ts (DIN EN 338:2016, DIN EN 14080:2013)
+const zeile = (klasse: string, type: string): WoodMaterial => {
+  const k = holzKennwerte(klasse);
+  if (!k) throw new Error(`Holzklasse ${klasse} fehlt in src/data/kennwerte.ts`);
+  return { class: klasse, type, f_mk: k.fmk, f_t0k: k.ft0k, f_c0k: k.fc0k, f_vk: k.fvk, E_0mean: k.E0mean, E_005: k.E005, rho_k: k.rhok, rho_mean: k.rhoMean };
+};
+
 export const woodMaterials: WoodMaterial[] = [
-  { class: 'C24', type: inhalt.werte.nadelholzS10, f_mk: 24, f_t0k: 14.5, f_c0k: 21, f_vk: 4.0, E_0mean: 11000, E_005: 7400, rho_k: 350, rho_mean: 420 },
-  { class: 'C30', type: inhalt.werte.nadelholzS13, f_mk: 30, f_t0k: 19, f_c0k: 24, f_vk: 4.0, E_0mean: 12000, E_005: 8000, rho_k: 380, rho_mean: 460 },
-  { class: 'D30', type: inhalt.werte.laubholzEn3382016, f_mk: 30, f_t0k: 18, f_c0k: 24, f_vk: 3.9, E_0mean: 11000, E_005: 9200, rho_k: 530, rho_mean: 640 },
-  { class: 'D40', type: inhalt.werte.laubholzEn33820162, f_mk: 40, f_t0k: 24, f_c0k: 27, f_vk: 4.2, E_0mean: 13000, E_005: 10900, rho_k: 550, rho_mean: 660 },
-  { class: 'GL24h', type: inhalt.werte.brettschichtholzHomogen, f_mk: 24, f_t0k: 19.2, f_c0k: 24, f_vk: 3.5, E_0mean: 11500, E_005: 9600, rho_k: 385, rho_mean: 420 },
-  { class: 'GL28c', type: inhalt.werte.brettschichtholzKombiniert, f_mk: 28, f_t0k: 19.5, f_c0k: 24, f_vk: 3.5, E_0mean: 12500, E_005: 10400, rho_k: 390, rho_mean: 430 },
-  { class: 'GL30h', type: inhalt.werte.brettschichtholzHomogen2, f_mk: 30, f_t0k: 24, f_c0k: 30, f_vk: 3.5, E_0mean: 13600, E_005: 11300, rho_k: 430, rho_mean: 480 },
+  zeile('C24', inhalt.werte.nadelholzS10),
+  zeile('C30', inhalt.werte.nadelholzS13),
+  zeile('D30', inhalt.werte.laubholzEn3382016),
+  zeile('D40', inhalt.werte.laubholzEn33820162),
+  zeile('GL24h', inhalt.werte.brettschichtholzHomogen),
+  zeile('GL28c', inhalt.werte.brettschichtholzKombiniert),
+  zeile('GL30h', inhalt.werte.brettschichtholzHomogen2),
 ];
 
 // dataholz.eu construction database

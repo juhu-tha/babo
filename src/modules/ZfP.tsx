@@ -172,7 +172,7 @@ export default function ZfP() {
     return { ...klasse, moistureWarning, moistureCritical: feuchte === 'kritisch' };
   }, [torrentKt, torrentMoisture]);
 
-  // Karstensches Röhrchen: w = V/(0,491·√t)
+  // Karstensches Röhrchen: w = V·10/(A·√t), A und Grenzwerte DIN 4108-3 aus src/calc/karsten.ts
   const karstenResults = useMemo(() => {
     const k = karstenZfp(karstenTime, karstenAbsorbed);
     const anzeige = {

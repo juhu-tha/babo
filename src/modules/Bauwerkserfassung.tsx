@@ -12,6 +12,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { verformterDruckstab, KMOD, GAMMA_M_HOLZ } from '@/src/calc/holzbau';
+import { HOLZ_EN338 } from '@/src/data/kennwerte';
 
 type ErfassungReiter = 'grundlagen' | 'methoden' | 'leica_workflow' | 'tragwerksplanung';
 const REITER: readonly ModulTab<ErfassungReiter>[] = [
@@ -21,8 +22,8 @@ const REITER: readonly ModulTab<ErfassungReiter>[] = [
   { id: 'tragwerksplanung', label: inhalt.texte.bimStatikRevitRstab.trim(), icon: Calculator },
 ];
 
-// Kennwerte nach DIN EN 338 (wie bisher im Modul hinterlegt); k_mod = 0,9 (kurze Lasteinwirkung, NKL 1/2), γ_M = 1,3
-const KLASSEN = { C16: { fmk: 16, fc0k: 17, E0mean: 8000 }, C24: { fmk: 24, fc0k: 21, E0mean: 11000 }, C30: { fmk: 30, fc0k: 23, E0mean: 12000 }, D30: { fmk: 30, fc0k: 23, E0mean: 12000 } } as const;
+// Kennwerte zentral nach DIN EN 338:2016 (src/data/kennwerte.ts); k_mod = 0,9 (kurze Lasteinwirkung, NKL 1/2), γ_M = 1,3
+const klasse = (k: 'C16' | 'C24' | 'C30' | 'D30') => ({ fmk: HOLZ_EN338[k].fmk, fc0k: HOLZ_EN338[k].fc0k, E0mean: HOLZ_EN338[k].E0mean, E005: HOLZ_EN338[k].E005 });
 
 export default function Bauwerkserfassung() {
   const [activeSubTab, setActiveSubTab] = useState<ErfassungReiter>('grundlagen');
@@ -32,17 +33,18 @@ export default function Bauwerkserfassung() {
 
   // Tab 4: Dachstuhl Statik-Rechner (Timber Rafter with initial deformation e_0)
   const [rafterWidth, setRafterWidth] = useState<number>(100); // b in mm
-  const [rafterHeight, setRafterHeight] = useState<number>(140); // h in mm
+  const [rafterHeight, setRafterHeight] = useState<number>(160); // h in mm (Voreinstellung mit Ausnutzung unter 100 %)
   const [spanLength, setSpanLength] = useState<number>(4000); // L in mm
   const [axialForce, setAxialForce] = useState<number>(15); // N_d in kN
   const [bendingLoad, setBendingLoad] = useState<number>(2.0); // q_d in kN/m
   const [initialDeformation, setInitialDeformation] = useState<number>(45); // e_0 in mm (visualized deflection)
   const [woodClass, setWoodClass] = useState<'C16' | 'C24' | 'C30' | 'D30'>('C24');
 
-  // Rechenkern src/calc/holzbau.ts: Druck und Biegung mit gemessener Vorverformung e₀, Moment nach Theorie II. Ordnung
+  // Rechenkern src/calc/holzbau.ts: Theorie II. Ordnung (E_d = E_0,mean/γ_M, Vorkrümmung max(e₀; l/400), Gl. 6.19)
+  // und Ersatzstabverfahren 6.3.2 (k_c,y aus E_0,05, Gl. 6.23)
   const staticsResults = useMemo(() => verformterDruckstab({
     b: rafterWidth, h: rafterHeight, l: spanLength, nd: axialForce, qd: bendingLoad, e0: initialDeformation,
-    ...KLASSEN[woodClass], kmod: KMOD[1].krt, gammaM: GAMMA_M_HOLZ,
+    ...klasse(woodClass), brettschichtholz: false, kmod: KMOD[1].krt, gammaM: GAMMA_M_HOLZ,
   }), [rafterWidth, rafterHeight, spanLength, axialForce, bendingLoad, initialDeformation, woodClass]);
 
   return (
@@ -471,6 +473,12 @@ export default function Bauwerkserfassung() {
                       </div>
                     </div>
 
+                    {/* Ersatzstabverfahren EC5 6.3.2 zum Vergleich */}
+                    <div className="text-xs font-mono text-slate-600 mb-3 bg-slate-50 border border-home-grau/20 rounded p-2">
+                      <MdText text={inhalt.texte.ersatzstabEc5623} />λ_rel,y = {formatDeZahl(staticsResults.lambda_rel_y, 2)}, k_c,y = {formatDeZahl(staticsResults.k_cy, 3)} → η = <strong className={staticsResults.etaErsatzstab > 100 ? 'text-red-600' : 'text-slate-800'}>{formatDeZahl(staticsResults.etaErsatzstab, 1)} %</strong>
+                      <span className="block text-[10px] text-slate-500 font-sans mt-0.5"><MdText text={inhalt.texte.theorie2OrdnungEd} />{formatDeZahl(staticsResults.N_crit_kN, 1)} kN, e = {formatDeZahl(staticsResults.e_ansatz, 1)} mm</span>
+                    </div>
+
                     <EingabeHinweise hinweise={staticsResults.hinweise} />
                     {/* Stress delta message */}
                     <div className="p-3.5 rounded-lg border text-xs leading-normal">
@@ -504,7 +512,7 @@ export default function Bauwerkserfassung() {
       />
       <FormulaDerivationBox
         title={inhalt.werte.beispiel2GemesseneVorverformung}
-        zielGleichung="\left(\frac{\sigma_{c,0,d}}{f_{c,0,d}}\right)^2 + \frac{\sigma_{m,d}}{f_{m,d}} \le 1"
+        zielGleichung="\frac{\sigma_{c,0,d}}{k_{c,y} \cdot f_{c,0,d}} + \frac{\sigma_{m,d}}{f_{m,d}} \le 1"
         schritte={inhalt.daten["Bauwerkserfassung.schritte_2"]}
         ergebnisHinweis={inhalt.werte.dieGemesseneVerformungErhöht}
         normQuelle={inhalt.werte.dinEn199512}

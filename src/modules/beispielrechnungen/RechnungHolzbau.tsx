@@ -7,13 +7,13 @@ import { MdText } from '@/src/components/inhalt/MdText';
 
 interface RechnungHolzbauProps {
   A_wood: number;
-  E_005: 7400 | 8000;
+  E_005: number;
   colHeight: number;
   colLength: number;
   colWidth: number;
   designForce: number;
   f_c0d: number;
-  f_c0k: 21 | 24;
+  f_c0k: number;
   i_radius: number;
   k_c_final: number;
   k_factor_wood: number;
@@ -106,8 +106,8 @@ export default function RechnungHolzbau({ A_wood, E_005, colHeight, colLength, c
           <h4 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2"><MdText text={inhalt.texte.knicknachweisNachEurocode5} /></h4>
 
           <div className="space-y-4 text-xs text-text-main/80 leading-relaxed font-normal">
-            <div><MdText text={inhalt.texte.schritt1FestigkeitenBestimmen} /><p className="mt-1"><MdText text={inhalt.texte.fürDieHolzgüte} /><span className="text-shiraz font-bold">{timberGrade}</span><MdText text={inhalt.texte.beträgtDerFestigkeitswert} /><InlineMath math={`f_{c,0,k} = ${f_c0k} \\, \\text{N/mm}^2`} /><MdText text={inhalt.texte.brFürNutzungsklasse1} /></p>
-              <BlockMath math={`f_{c,0,d} = k_{mod} \\cdot \\frac{f_{c,0,k}}{\\gamma_M} = 0{,}9 \\cdot \\frac{\\color{#A3113E}{${f_c0k}}}{1{,}3} = \\color{#A3113E}{${formatDeTeX(f_c0d, 2)}} \\, \\text{N/mm}^2`} />
+            <div><MdText text={inhalt.texte.schritt1FestigkeitenBestimmen} /><p className="mt-1"><MdText text={inhalt.texte.fürDieHolzgüte} /><span className="text-shiraz font-bold">{timberGrade}</span><MdText text={inhalt.texte.beträgtDerFestigkeitswert} /><InlineMath math={`f_{c,0,k} = ${formatDeTeX(f_c0k, 0)} \\, \\text{N/mm}^2`} /><MdText text={inhalt.texte.brFürNutzungsklasse1} /></p>
+              <BlockMath math={`f_{c,0,d} = k_{mod} \\cdot \\frac{f_{c,0,k}}{\\gamma_M} = 0{,}9 \\cdot \\frac{\\color{#A3113E}{${formatDeTeX(f_c0k, 0)}}}{1{,}3} = \\color{#A3113E}{${formatDeTeX(f_c0d, 2)}} \\, \\text{N/mm}^2`} />
             </div>
 
             <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt2GeometrischeKennwerte} /><p className="mt-1"><MdText text={inhalt.texte.flächeAUndTrägheitsradius} /></p>
@@ -117,8 +117,8 @@ export default function RechnungHolzbau({ A_wood, E_005, colHeight, colLength, c
               <BlockMath math={`\\lambda = \\frac{s_k}{i} = \\frac{\\color{#A3113E}{${formatDeTeX((colLength * 100), 0)}} \\, \\text{cm}}{\\color{#A3113E}{${formatDeTeX(i_radius, 2)}} \\, \\text{cm}} = \\color{#A3113E}{${formatDeTeX(slenderness, 2)}}`} />
             </div>
 
-            <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt3RelativenSchlankheitsgrad} /><p className="mt-1"><MdText text={inhalt.texte.mitDemEModul} /><InlineMath math={`E_{0{,}05} = ${E_005} \\, \\text{N/mm}^2`} />:</p>
-              <BlockMath math={`\\lambda_{rel} = \\frac{\\lambda}{\\pi} \\cdot \\sqrt{\\frac{f_{c,0,k}}{E_{0{,}05}}} = \\frac{\\color{#A3113E}{${formatDeTeX(slenderness, 2)}}}{\\pi} \\cdot \\sqrt{\\frac{\\color{#A3113E}{${f_c0k}}}{${E_005}}} = \\color{#A3113E}{${formatDeTeX(lambda_rel, 4)}}`} />
+            <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt3RelativenSchlankheitsgrad} /><p className="mt-1"><MdText text={inhalt.texte.mitDemEModul} /><InlineMath math={`E_{0{,}05} = ${formatDeTeX(E_005, 0)} \\, \\text{N/mm}^2`} />:</p>
+              <BlockMath math={`\\lambda_{rel} = \\frac{\\lambda}{\\pi} \\cdot \\sqrt{\\frac{f_{c,0,k}}{E_{0{,}05}}} = \\frac{\\color{#A3113E}{${formatDeTeX(slenderness, 2)}}}{\\pi} \\cdot \\sqrt{\\frac{\\color{#A3113E}{${formatDeTeX(f_c0k, 0)}}}{${formatDeTeX(E_005, 0)}}} = \\color{#A3113E}{${formatDeTeX(lambda_rel, 4)}}`} />
             </div>
 
             <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt4KnickbeiwertK} /><p className="mt-1"><MdText text={inhalt.texte.mitDemGradDer} /></p>

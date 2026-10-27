@@ -1,6 +1,6 @@
 // Zentrale Betonkennwerte (Umsetzungsplan Phase 0, AP 0.6)
 import fs from 'fs';
-import { BETON_EC2, fctmVonFck, betonNachKlasse, betonAuswahl, BAUSTAHL_EC3, E_BAUSTAHL, BETONSTAHL, E_BETONSTAHL } from '../src/data/kennwerte';
+import { BETON_EC2, fctmVonFck, betonNachKlasse, betonAuswahl, BAUSTAHL_EC3, E_BAUSTAHL, BETONSTAHL, E_BETONSTAHL, HOLZ_EN338, BSH_EN14080, holzKennwerte } from '../src/data/kennwerte';
 import { STAHLGUETEN, EC3_NA_DE } from '../src/calc/stahlbau';
 import { betonstahlParameter, STAHL_E } from '../src/calc/werkstoffmodelle';
 import { steelGrades, extendedSteelGrades, steelCurveDefinitions } from '../src/modules/stahl/daten';
@@ -61,5 +61,21 @@ for (const f of ['src/modules/stahl/daten.ts', 'src/modules/mechanischekenngroes
   pruefe(!/fy:\s*355,\s*fu:\s*(470|510)/.test(s) && !/fu:\s*(470|510|550|560),/.test(s) && !/E:\s*205000,\s*\n\s*fy:\s*500/.test(s), `${f}: abweichende Stahlkennwerte`);
 }
 
+// 5. Holzkennwerte (Runde 5): DIN EN 338:2016 (öffentlich: studiomadera.it, Tab. 15.1 UNI EN 338:2016) und DIN EN 14080:2013
+//    (öffentlich: HASSLACHER-Broschüre „Brettschichtholz“, structuralbasics.com „Glulam strength capacities“)
+const C = HOLZ_EN338, G = BSH_EN14080;
+pruefe(C.C24.fc0k === 21 && C.C24.E0mean === 11000 && C.C24.E005 === 7400 && C.C24.rhok === 350 && C.C24.rhoMean === 420, 'C24 EN 338:2016');
+pruefe(C.C30.fc0k === 24 && C.C30.E0mean === 12000 && C.C30.E005 === 8000 && C.C30.ft0k === 19 && C.C30.rhoMean === 460, 'C30 EN 338:2016 (f_c,0,k 24 statt 23)');
+pruefe(C.D30.fc0k === 24 && C.D30.E0mean === 11000 && C.D30.E005 === 9200 && C.D30.fc90k === 5.3 && C.D30.fvk === 3.9 && C.D30.rhok === 530, 'D30 EN 338:2016 (E_0,mean 11 000, f_c,90,k 5,3)');
+pruefe(C.D40.fc90k === 5.5 && C.C16.fc0k === 17 && C.C16.E005 === 5400, 'D40/C16');
+pruefe(G.GL24h.rhoMean === 420 && G.GL24h.rhok === 385 && G.GL28h.rhoMean === 460 && G.GL28h.rhok === 425 && G.GL30h.rhok === 430, 'BSH-Rohdichten EN 14080');
+pruefe(G.GL28h.E0mean === 12600 && G.GL28h.fc0k === 28 && G.GL28c.rhoMean === 420 && G.GL24c.rhok === 365, 'BSH GL28h/GL28c');
+pruefe(holzKennwerte('GL24h') === G.GL24h && holzKennwerte('C30') === C.C30 && holzKennwerte('XY') === undefined, 'holzKennwerte');
+// keine abweichenden lokalen Holztabellen mehr in den umgestellten Modulen
+for (const f of ['src/modules/Bauwerkserfassung.tsx', 'src/modules/holzbaubeta/daten.ts', 'src/modules/HolzbauBeta.tsx', 'src/modules/Holz.tsx', 'src/modules/BpHolzprodukte.tsx', 'src/modules/Beispielrechnungen.tsx']) {
+  const s2 = fs.readFileSync(f, 'utf8');
+  pruefe(!/fc0k:\s*23\b/.test(s2) && !/D30:\s*8\.0/.test(s2) && !/density:\s*450/.test(s2) && !/rho_mean:\s*430/.test(s2) && !/f_mk:\s*\d+,\s*f_t0k/.test(s2), `${f}: lokale abweichende Holzkennwerte`);
+}
+
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
-console.log('OK: zentrale Beton- und Stahlkennwerte konsistent');
+console.log('OK: zentrale Beton-, Stahl- und Holzkennwerte konsistent');

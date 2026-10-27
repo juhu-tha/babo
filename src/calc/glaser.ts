@@ -277,3 +277,33 @@ export function glaser(
 }
 
 export type GlaserErgebnis = ReturnType<typeof glaser>;
+
+// ---------------------------------------------------------------------------------------------
+// s_d-Faustregel „innen dichter als außen“ (Runde 5): belegt über die nachweisfreien, nicht belüfteten Dächer nach
+// DIN 4108-3 (Wiedergabe baunetzwissen.de, „Wann ist ein Dach dampfdiffusionsoffen?“): außen s_d,e ≤ 0,1 m → innen
+// s_d,i ≥ 1,0 m; s_d,e ≤ 0,3 m → s_d,i ≥ 2,0 m; s_d,e ≤ 2,0 m → s_d,i ≥ 6·s_d,e. Für s_d,e > 2,0 m ist ein rechnerischer
+// Nachweis erforderlich. Für Wände nur als Orientierung (Holzbau, Innendämmung); maßgebend bleibt das Glaser-Verfahren.
+// ---------------------------------------------------------------------------------------------
+
+/** Wertepaare der nachweisfreien nicht belüfteten Dächer nach DIN 4108-3 */
+export const SD_REGEL_4108_3 = { stufe1: { sde: 0.1, sdi: 1.0 }, stufe2: { sde: 0.3, sdi: 2.0 }, stufe3: { sde: 2.0, faktor: 6 } } as const;
+
+export interface SdRegelErgebnis {
+  /** erforderliches s_d,i [m]; null = Regel nicht anwendbar (s_d,e > 2,0 m oder ungültige Eingabe) */
+  sdiErforderlich: number | null;
+  eingehalten: boolean;
+  /** Verhältnis s_d,i/s_d,e (∞ bei s_d,e = 0) */
+  verhaeltnis: number;
+  text: string;
+}
+
+/** Faustregel s_d,i ≥ f(s_d,e) nach DIN 4108-3 (nachweisfreie nicht belüftete Dächer) */
+export function sdRegel(sdi: number, sde: number): SdRegelErgebnis {
+  const r = SD_REGEL_4108_3;
+  if (!(Number.isFinite(sdi) && Number.isFinite(sde)) || sdi < 0 || sde < 0) return { sdiErforderlich: null, eingehalten: false, verhaeltnis: NaN, text: 'Ungültige s_d-Werte.' };
+  const verhaeltnis = sde > 0 ? sdi / sde : Infinity;
+  if (sde > r.stufe3.sde) return { sdiErforderlich: null, eingehalten: false, verhaeltnis, text: `s_d,e = ${formatDeZahl(sde, 2)} m > 2,0 m: außerhalb der nachweisfreien Kombinationen, rechnerischer Nachweis erforderlich.` };
+  const sdiErforderlich = sde <= r.stufe1.sde ? r.stufe1.sdi : sde <= r.stufe2.sde ? r.stufe2.sdi : r.stufe3.faktor * sde;
+  const eingehalten = sdi >= sdiErforderlich - 1e-12;
+  return { sdiErforderlich, eingehalten, verhaeltnis, text: `s_d,e = ${formatDeZahl(sde, 2)} m → erforderlich s_d,i ≥ ${formatDeZahl(sdiErforderlich, 2)} m, vorhanden ${formatDeZahl(sdi, 2)} m.` };
+}

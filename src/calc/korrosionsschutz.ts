@@ -49,12 +49,21 @@ export function schutzdauerklasse(t: number): Schutzdauerklasse {
   return 'VH';
 }
 
-/** Mindestwerte der Zinküberzugsdicke nach DIN EN ISO 1461:2022-12, Tabelle 3 (Stahlteile, nicht geschleudert) */
+/**
+ * Mindestwerte der Zinküberzugsdicke nach DIN EN ISO 1461:2022-12, Tabelle 3 (Stahlteile, nicht geschleudert) [µm];
+ * Runde 5 geprüft an der öffentlichen Wiedergabe „Hot dip galvanizing to EN ISO 1461:2022“ (Wedge Galvanizing, 10/2024),
+ * dort zusätzlich Guss > 6 mm 70/80 und Guss < 6 mm 60/70 µm.
+ */
 export const ZINK_1461 = [
   { bereich: 'Stahl > 6 mm', oertlich: 70, mittel: 85 },
   { bereich: 'Stahl > 3 mm bis ≤ 6 mm', oertlich: 55, mittel: 70 },
   { bereich: 'Stahl ≥ 1,5 mm bis ≤ 3 mm', oertlich: 45, mittel: 55 },
   { bereich: 'Stahl < 1,5 mm', oertlich: 35, mittel: 45 },
+] as const;
+/** Gussteile nach DIN EN ISO 1461:2022-12, Tabelle 3 [µm] */
+export const ZINK_1461_GUSS = [
+  { bereich: 'Guss > 6 mm', oertlich: 70, mittel: 80 },
+  { bereich: 'Guss ≤ 6 mm', oertlich: 60, mittel: 70 },
 ] as const;
 
 export function zinkMindestschicht(stahlDickeMm: number) {
@@ -62,6 +71,39 @@ export function zinkMindestschicht(stahlDickeMm: number) {
   if (stahlDickeMm > 3) return ZINK_1461[1];
   if (stahlDickeMm >= 1.5) return ZINK_1461[2];
   return ZINK_1461[3];
+}
+
+export interface Abnahme8020 {
+  n: number;
+  /** Anteil der Messwerte unter NDFT [%] */
+  anteilUnterNdft: number;
+  /** kleinster Messwert und 80 % der NDFT [µm] */
+  minimum: number;
+  grenze80: number;
+  /** höchstens 20 % unter NDFT und kein Wert unter 80 % NDFT */
+  erfuellt: boolean;
+  hinweise: Hinweis[];
+}
+
+/**
+ * Abnahmeregel „80/20“ für Beschichtungen nach DIN EN ISO 12944-5 (5.4) bzw. -7 mit Messung nach ISO 19840, sofern nichts
+ * anderes vereinbart: Einzelwerte unter der Sollschichtdicke NDFT sind zulässig, wenn höchstens 20 % aller Messwerte unter NDFT
+ * liegen und kein Wert kleiner als 80 % der NDFT ist. Gilt für Beschichtungen, nicht für Zinküberzüge nach ISO 1461.
+ * Vorläufig, F-Freigabe (Normtext ISO 12944-5, Abschnitt 5.4, und ISO 19840 – u. a. Höchstschichtdicke, Korrekturwerte).
+ */
+export function abnahme8020(messwerte: readonly number[], ndft: number): Abnahme8020 {
+  const hinweise: Hinweis[] = [];
+  const werte = messwerte.filter(Number.isFinite);
+  muss(hinweise, Number.isFinite(ndft) && ndft > 0, 'ndft', 'Die Sollschichtdicke NDFT muss größer als 0 µm sein.');
+  muss(hinweise, werte.length > 0 && werte.every(w => w >= 0), 'messwerte', 'Mindestens ein Messwert ≥ 0 µm ist erforderlich.');
+  if (hatFehler(hinweise)) return { n: 0, anteilUnterNdft: 0, minimum: 0, grenze80: 0, erfuellt: false, hinweise };
+  const unter = werte.filter(w => w < ndft).length;
+  const anteilUnterNdft = (unter / werte.length) * 100;
+  const minimum = Math.min(...werte);
+  const grenze80 = 0.8 * ndft;
+  const erfuellt = anteilUnterNdft <= 20 + 1e-9 && minimum >= grenze80 - 1e-9;
+  if (werte.length < 5) hinweise.push({ stufe: 'warnung', feld: 'messwerte', text: 'Wenige Messwerte: Anzahl und Verteilung der Messstellen richten sich nach ISO 19840 (Prüffläche).' });
+  return { n: werte.length, anteilUnterNdft, minimum, grenze80, erfuellt, hinweise };
 }
 
 /** Synergiefaktor von Duplex-Systemen: Literaturspanne (Institut Feuerverzinken 2023: 1,2 bis 2; Fachliteratur bis 2,5) */

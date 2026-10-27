@@ -30,14 +30,14 @@
     "vereinfachungDerselbeWertWird": "Vereinfachung: Derselbe Wert wird getrennt als reine Ausziehkraft F<sub>ax,Ed</sub> und als reine Abscherkraft F<sub>v,Ed</sub> nachgewiesen. Eine kombinierte Beanspruchung (DIN EN 1995-1-1, 8.7.3) ist nicht abgebildet.",
     "tragwiderständeNachErsatzformelnEurocode": "Tragwiderstände nach Ersatzformeln (Eurocode 5)",
     "aAxialerAusziehwiderstandF": "A: Axialer Ausziehwiderstand (F_ax,Rd):",
-    "erhöhteAuszugsfestigkeitDankDichteverhäl": "Erhöhte Auszugsfestigkeit dank Dichteverhältnis $(\\rho_k/350)^{0{,}8}$. Wirksamer Eindrehwinkel-Koeffizient $1/(1{,}2\\cos^2\\alpha + \\sin^2\\alpha)$ bei ",
+    "erhöhteAuszugsfestigkeitDankDichteverhäl": "Ausziehfestigkeit nach DIN EN 1995-1-1, Gl. (8.39): $f_{ax,k} = 0{,}52\\,d^{-0{,}5}\\,l_{ef}^{-0{,}1}\\,\\rho_k^{0{,}8}$, wirksame Anzahl $n_{ef} = n^{0{,}9}$. Winkelfaktor $1/(1{,}2\\cos^2\\alpha + \\sin^2\\alpha)$ bei ",
     "bSchertragfähigkeitFV": "B: Schertragfähigkeit (F_v,Rd):",
     "lochleibungswiderstandDesHolzesF": "Lochleibungswiderstand des Holzes $f_{h,k}$ = ",
     "nMmMitZusätzlichem": " N/mm² mit zusätzlichem Tragbeiwert aus Seileffekt (Rope-Effect) = ",
     "ausnutzungAxial": "Ausnutzung Axial",
     "ausnutzungScherung": "Ausnutzung Scherung",
     "tragfähigkeitNichtAusreichendDurchmesser": "**Tragfähigkeit nicht ausreichend:** Durchmesser $d$, Anzahl $n$ oder Einschraubtiefe $l_{ef}$ erhöhen; bei Gruppen n_ef und Abstände beachten.",
-    "nachweisImLehrmodellErfüllt": "**Nachweis im Lehrmodell erfüllt:** Herausziehen und Abscheren sind vereinfacht nachgewiesen (ohne n_ef, Abstände, Blockscherversagen; Schraubenwerte nach ETA)."
+    "nachweisImLehrmodellErfüllt": "**Nachweis mit den Normformeln erfüllt:** Herausziehen mit wirksamer Anzahl n_ef = n^0,9 und Abscheren vereinfacht nachgewiesen (ohne Mindestabstände, n_ef beim Abscheren und Blockscherversagen; Herstellerwerte nach ETA sind meist höher)."
   },
   "werte": {
     "gegenholzMaterialklasseDichte": "Gegenholz-Materialklasse (Dichte)",

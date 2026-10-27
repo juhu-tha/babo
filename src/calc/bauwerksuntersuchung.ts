@@ -9,7 +9,7 @@
  *  - Betondeckung: c_nom = c_min,dur + Δc_dev nach DIN EN 1992-1-1/NA, Tab. 4.4DE (Betonstahl)
  *  - Chlorid: Anhaltswert 0,5 M.-% bez. Zement (Spannstahl 0,2 M.-%)
  *  - Haftzug: f_ht = F/A mit Stempel Ø 50 mm; Anforderung ≥ 1,5 N/mm² und Bruch im Beton
- *  - Karsten-Röhrchen: w ≈ ΔV/(A·√t) mit A = 4,5 cm², t = 1 h → w = 2,222·ΔV [kg/(m²·√h)], Klassen nach DIN 4108-3
+ *  - Karsten-Röhrchen: w = ΔV·10/(A·√t), t = 1 h, Prüffläche und Klassen nach DIN 4108-3 einheitlich aus src/calc/karsten.ts
  *  - Karbonatisierung: √t-Gesetz d = K·√t, t_depass = (c/K)² mit K ≥ 0,1 mm/√a
  *  - Bohrkern: f = F/(π·d²/4), Schlankheit L/D (keine Umrechnung)
  *  - Impact-Echo: d = β·v_p/(2·f) mit β = 0,96 (ASTM C1383)
@@ -17,6 +17,7 @@
  * Einheiten stehen an den Feldern. Reiner Rechenkern – geprüft in tests/bauwerksuntersuchung.test.ts.
  */
 import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
+import { saugKlasse, wWertAusKarsten, type SaugKlasse } from './karsten';
 
 export interface Ergebnis { gueltig: boolean; hinweise: Hinweis[] }
 const abschluss = (h: Hinweis[]): Ergebnis => ({ gueltig: !hatFehler(h), hinweise: h });
@@ -133,15 +134,15 @@ export function haftzug(kraftKn: number, bruch: HaftBruch, stempelMm = 50): Haft
 }
 
 // ---------------------------------------------------------------- Karsten
-export type SaugKlasse = 'wasserabweisend' | 'wasserhemmend' | 'wassersaugend';
+export type { SaugKlasse };
 export interface KarstenErgebnis extends Ergebnis { w: number; klasse: SaugKlasse }
 /** Wasseraufnahme nach 60 min in ml → w in kg/(m²·√h) */
 export function karsten(wasserMl60: number): KarstenErgebnis {
   const h: Hinweis[] = [];
   muss(h, Number.isFinite(wasserMl60) && wasserMl60 >= 0, 'wasserMl60', 'Die Wasseraufnahme muss ≥ 0 ml sein.');
-  const w = wasserMl60 * 2.222;
-  const klasse: SaugKlasse = w > 2.0 ? 'wassersaugend' : w > 0.5 ? 'wasserhemmend' : 'wasserabweisend';
-  h.push({ stufe: 'warnung', feld: 'w', text: 'Das Karsten-Röhrchen liefert nur einen Schätzwert; der w-Wert nach DIN 4108-3 wird nach DIN EN ISO 15148 bestimmt.' });
+  const w = Number.isFinite(wasserMl60) && wasserMl60 >= 0 ? wWertAusKarsten(wasserMl60, 1) : 0;
+  const klasse: SaugKlasse = saugKlasse(w);
+  h.push({ stufe: 'warnung', feld: 'w', text: 'Das Karsten-Röhrchen liefert nur einen Schätzwert (Prüffläche geräteabhängig); der w-Wert nach DIN 4108-3 wird nach DIN EN ISO 15148 bestimmt.' });
   return { w, klasse, ...abschluss(h) };
 }
 

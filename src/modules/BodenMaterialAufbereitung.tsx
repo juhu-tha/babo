@@ -9,6 +9,7 @@ import { InlineMath } from 'react-katex';
 import inhalt from '@/content/bodenmaterialaufbereitung/BodenMaterialAufbereitung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { pn98Plan } from '@/src/calc/probenahme';
 
 const TREATMENT_OPTIONS = inhalt.daten.TREATMENT_OPTIONS;
 
@@ -40,25 +41,12 @@ export default function BodenMaterialAufbereitung() {
 
   // Obergrenze je Untersuchung: LfU-Arbeitshilfe "Umgang mit Bodenmaterial" (Stand 10/2025) – max. 3.000 m³ je Haufwerk im Zwischenlager
   const maxUnitVol = 3000;
-  const maxUnitTonnage = Infinity;
-  const numInvestigationUnits = Math.max(1, Math.ceil(Math.max(heapVolume / maxUnitVol, tonnage / maxUnitTonnage)));
 
-  // LAGA PN 98 Sampling Table per investigation unit
-  const calculateRequirements = (vol: number) => {
-    // LAGA PN 98 (Mitteilung 32), Tabelle 2: Mischproben (MP) und Einzelproben (EP = 4 je MP)
-    const stufen = [30, 60, 100, 150, 200, 300, 400, 500, 600];
-    let mpCount = 10;
-    if (vol <= 600) {
-      mpCount = stufen.findIndex(g => vol <= g) + 2;
-    } else {
-      mpCount = 10 + Math.ceil((vol - 600) / 100);
-    }
-    const epCount = 4 * mpCount;
-
-    return { mp: mpCount, ep: epCount };
-  };
-
-  const samplingReq = calculateRequirements(heapVolume);
+  // Rechenkern src/calc/probenahme.ts: LAGA PN 98, Tabelle 2, je Untersuchungseinheit (UE) – Runde 5:
+  // bisher wurde die Tabelle auf das Gesamtvolumen statt auf jede UE angewendet; jetzt Summe über alle UE
+  const pn98 = pn98Plan({ volumenM3: heapVolume, maxUeM3: maxUnitVol });
+  const numInvestigationUnits = Math.max(1, pn98.einheiten);
+  const samplingReq = { mp: pn98.gesamt.mischproben, ep: pn98.gesamt.einzelproben, laborproben: pn98.gesamt.laborproben, jeUe: pn98.jeUe };
 
   // Minimum single increment specification according to LAGA PN 98 / max grain size (d_max in mm)
   const getIncrementSpecs = (maxGrain: number) => {
@@ -522,7 +510,7 @@ export default function BodenMaterialAufbereitung() {
                     <div className="flex justify-between items-center pb-2.5 border-b border-slate-100">
                       <div>
                         <span className="text-xs font-bold text-slate-800"><MdText text={inhalt.texte.mindestanzahlMischproben} /></span>
-                        <span className="text-xs text-slate-400 block mt-0.5 font-mono"><MdText text={inhalt.texte.lagaPn98Tabelle} /></span>
+                        <span className="text-xs text-slate-400 block mt-0.5 font-mono"><MdText text={inhalt.texte.lagaPn98Tabelle} /> · {formatDeWert(samplingReq.jeUe.mischproben)}<MdText text={inhalt.texte.mpJeUeLaborproben} />{formatDeWert(samplingReq.laborproben)}</span>
                       </div>
                       <span className="text-sm font-black text-shiraz bg-shiraz/5 border border-shiraz/20 px-3 py-1 rounded">
                         {formatDeWert(samplingReq.mp)} MP

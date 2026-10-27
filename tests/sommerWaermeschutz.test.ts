@@ -104,5 +104,16 @@ for (let i = 0; i < 1000; i++) {
 }
 pruefe(gueltig > 100, `Fuzz: nur ${gueltig} gültige Fälle`);
 
+// Runde 5 (Z33): öffentlich prüfbare Teile der Verzichtsregeln (8.2.2) nach der Wiedergabe baunetzwissen.de
+// („Sommerlicher Wärmeschutz: Nachweis und Berechnung“): Dachfenster 0–60° < 7 %, nordorientierte Fenster > 60° < 15 %,
+// Nordwest über Süd bis Nordost < 10 % der Grundfläche; Wohngebäude bis 35 % mit außenliegendem Sonnenschutz F_C ≤ 0,30.
+{
+  const raum = (o: Fenster['orientierung'], A: number, neigung = 90, schutz = 'ohne', g = 0.6): Raum => ({ ...wohnzimmer, AG: 100, fenster: [fenster(A, g, o, schutz, { neigung })] });
+  pruefe(sonneneintrag(raum('N', 15)).verzicht.grenzeTab6 === 0.15 && sonneneintrag(raum('N', 15)).verzicht.tab6, 'Nord 15 %');
+  pruefe(sonneneintrag(raum('NO', 10)).verzicht.grenzeTab6 === 0.10 && sonneneintrag(raum('NW', 10)).verzicht.grenzeTab6 === 0.10 && !sonneneintrag(raum('NW', 11)).verzicht.tab6, 'NO/NW 10 %');
+  pruefe(sonneneintrag(raum('S', 7, 30)).verzicht.grenzeTab6 === 0.07 && !sonneneintrag(raum('S', 7.5, 30)).verzicht.tab6, 'geneigt 7 %');
+  pruefe(sonneneintrag(raum('S', 30, 90, 'rollladen_34')).verzicht.wohn35 && !sonneneintrag(raum('S', 30, 90, 'innen_weiss')).verzicht.wohn35 && !sonneneintrag(raum('S', 36, 90, 'rollladen_34')).verzicht.wohn35, '35-%-Regel mit außenliegendem F_C ≤ 0,30');
+}
+
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
 console.log(`OK: Sommerlicher Wärmeschutz (${gueltig} gültige Fuzz-Fälle)`);

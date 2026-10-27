@@ -16,7 +16,7 @@
     "nkl1HolzfeuchteEntspricht": "• **NKL 1:** Holzfeuchte entspricht max 12% (z.B. allseitig geschlossene beheizte Räume).<br>• **NKL 2:** Holzfeuchte entspricht max 20% (z.B. überdachte offene Bauwerke, Carports).<br>• **NKL 3:** Größere Feuchten (z.B. freie Bewitterung unter freiem Himmel). Hier sind die k_mod-Werte kleiner (stärkere Abminderung).",
     "technischesDatenblatt": "TECHNISCHES DATENBLATT",
     "typischesBiegeFM": "Typisches Biege-f_m,k",
-    "dichteK": "Dichte (ρ_k)",
+    "dichteK": "Dichte (ρ_mean)",
     "eModulEMean": "E-Modul (E_mean)",
     "vorteileStärken": "Vorteile & Stärken:",
     "einschränkungenRisiken": "Einschränkungen & Risiken:",
@@ -25,8 +25,8 @@
     "einfacheAbschätzungFürEinfeldträger": "Einfache Abschätzung für Einfeldträger unter Gleichlast (ULS & SLS Nachweis der Durchbiegung/Spannung)",
     "spannweiteL": "Spannweite L:",
     "achsabstandDerBalkenS": "Achsabstand der Balken s:",
-    "einflussFlächenlastQK": "Einfluss-Flächenlast q_k:",
-    "inklVerkehrlicheNutzlastenRaumbildende": "Inkl. verkehrliche Nutzlasten & raumbildende Fußbodenaufbauten.",
+    "einflussFlächenlastQK": "Nutzlast q_k:",
+    "inklVerkehrlicheNutzlastenRaumbildende": "Kategorie A2/A3 (Wohnräume) 1,5 kN/m²; Fußbodenaufbau und Unterdecke gesondert als Ausbaulast g_k.",
     "querschnittHolzgüte": "Querschnitt & Holzgüte",
     "verwendeteHolzgüte": "Verwendete Holzgüte:",
     "balkenbreiteB": "Balkenbreite b:",
@@ -36,12 +36,12 @@
     "t2SchubspannungUls": "2. Schubspannung (ULS):",
     "nMmBEf": " N/mm² (b_ef = k_cr · b, k_cr = ",
     "vsFVd": ") vs. f_vd = ",
-    "t3DurchbiegungSlsComfort": "3. Durchbiegung (SLS comfort):",
+    "t3DurchbiegungSlsComfort": "3. Durchbiegung (SLS, Kriechen mit k_def):",
     "mmVsMaxL": " mm vs. Max (L/300) = ",
     "eigengewicht": "• Eigengewicht: ",
     "kgMDensity": " kg/m³ density)",
     "teilsicherheitsbeiwerteG135": "• Teilsicherheitsbeiwerte: γ_G = 1,35, γ_Q = 1,50",
-    "kModBeiwert0": "• k_mod Beiwert = 0,8 / Material-γ_M = ",
+    "kModBeiwert0": "• k_mod (Tab. 3.1 aus NKL und KLED) = ",
     "produktgruppenSystemtechnikenDesHolzbaus": " Produktgruppen & Systemtechniken des Holzbaus (Herstellerneutral)",
     "hinweisZurHerstellerneutralitätZur": "Hinweis zur Herstellerneutralität: Zur Wahrung vollständiger Produkt- und herstellerneutralität im Rahmen der akademischen Lehre und VOB-gerechten Ausschreibung werden nachfolgend standardisierte Systemklassen deklariert.",
     "holzbauprodukteErfordernEineCe": "Holzbauprodukte erfordern eine CE-Konformitätskennzeichnung bzw. eine ETA (European Technical Assessment) und werden nach harmonisierten europäischen Standards klassifiziert:",
@@ -64,7 +64,11 @@
     "brettschichtholzBshStegträger": "Brettschichtholz (BSH) & Stegträger",
     "faserparallelVerklebteHolzlamellenFür": "Faserparallel verklebte Holzlamellen für Träger mit großen Spannweiten, schlanke I-Träger (Stegträger) mit Furnierschichtgurt.",
     "pefcDinEn14080": "PEFC, DIN EN 14080 (ETA-Zulassungen für Sonderformen)",
-    "ingenieurholzbaulösungenFürWeitgespannte": "Ingenieurholzbaulösungen für weitgespannte Skeletttragwerke, Hallenbauten und hochgedämmte Dachsparrenstücke."
+    "ingenieurholzbaulösungenFürWeitgespannte": "Ingenieurholzbaulösungen für weitgespannte Skeletttragwerke, Hallenbauten und hochgedämmte Dachsparrenstücke.",
+    "ausbaulastGk": "Ausbaulast g_k:",
+    "nutzungsklasseEinfeld": "Nutzungsklasse",
+    "kledEinfeld": "Lasteinwirkungsdauer",
+    "mmVsMaxL200": " mm vs. Max (L/200) = "
   },
   "werte": {
     "verwendeteHolzgüte": "Verwendete Holzgüte",
@@ -72,7 +76,15 @@
     "überlastetNichtOk": "Überlastet (Nicht OK)",
     "anwendungsbeispielDeckenbalkenC24Vordime": "Anwendungsbeispiel: Deckenbalken C24 vordimensionieren",
     "dinEn19951": "DIN EN 1995-1-1 mit NA (NKL 1, KLED mittel, k_mod = 0,8); Eigenlast vereinfacht",
-    "beiHolzbalkendeckenWirdOft": "Bei Holzbalkendecken wird oft die Durchbiegung oder das Schwingungsverhalten maßgebend, nicht die Biegespannung."
+    "beiHolzbalkendeckenWirdOft": "Bei Holzbalkendecken wird oft die Durchbiegung oder das Schwingungsverhalten maßgebend, nicht die Biegespannung.",
+    "nutzlastQk": "Nutzlast q_k",
+    "ausbaulastGk": "Ausbaulast g_k",
+    "nutzungsklasseEinfeld": "Nutzungsklasse",
+    "kledEinfeld": "Klasse der Lasteinwirkungsdauer",
+    "kledStaendig": "ständig",
+    "kledLang": "lang",
+    "kledMittel": "mittel (Nutzlast Kat. A)",
+    "kledKurz": "kurz"
   },
   "daten": {
     "woodProducts": [
@@ -107,7 +119,7 @@
         "id": "bsh",
         "name": "Brettschichtholz (BSH / Leimbinder)",
         "short": "BSH GL24h",
-        "density": 450,
+        "density": 420,
         "eModulus": 11500,
         "f_mk": 24,
         "f_vk": 3.5,
@@ -187,24 +199,29 @@
     ],
     "BpHolzprodukte.schritte": [
       {
-        "titel": "1. Last je Balken",
-        "formel": "q_k = 2{,}5 \\cdot 0{,}625 = 1{,}56\\,\\text{kN/m},\\; g_k \\approx 0{,}08\\,\\text{kN/m}",
-        "erklaerung": "Rasterabstand 62,5 cm, Balken 10/20 cm."
+        "titel": "1. Lasten je Balken",
+        "formel": "g_k = 0{,}084 + 1{,}0 \\cdot 0{,}625 = 0{,}71\\,\\text{kN/m},\\; q_k = 1{,}5 \\cdot 0{,}625 = 0{,}94\\,\\text{kN/m}",
+        "erklaerung": "Raster 62,5 cm, Balken 10/20 cm (Eigengewicht 8,4 kg/m mit ρ_mean = 420 kg/m³), Ausbaulast 1,0 kN/m², Nutzlast 1,5 kN/m² (Kategorie A)."
       },
       {
         "titel": "2. Bemessungslast und Moment",
-        "formel": "q_d = 1{,}35 \\cdot 0{,}08 + 1{,}5 \\cdot 1{,}56 = 2{,}45\\,\\text{kN/m};\\; M_{Ed} = 2{,}45 \\cdot 4{,}5^2/8 = 6{,}2\\,\\text{kNm}",
+        "formel": "q_d = 1{,}35 \\cdot 0{,}71 + 1{,}5 \\cdot 0{,}94 = 2{,}36\\,\\text{kN/m};\\; M_{Ed} = 2{,}36 \\cdot 4{,}5^2/8 = 5{,}98\\,\\text{kNm}",
         "erklaerung": "Spannweite 4,5 m."
       },
       {
         "titel": "3. Spannung",
-        "formel": "\\sigma_{m,d} = 6{,}2 \\cdot 10^6 / 666\\,667 = 9{,}3\\,\\text{N/mm}^2",
+        "formel": "\\sigma_{m,d} = 5{,}98 \\cdot 10^6 / 666\\,667 = 8{,}97\\,\\text{N/mm}^2",
         "erklaerung": "W = 100 · 200² / 6."
       },
       {
         "titel": "4. Nachweis",
-        "formel": "f_{m,d} = 0{,}8 \\cdot 24/1{,}3 = 14{,}8\\,\\text{N/mm}^2 \\Rightarrow \\eta = 0{,}63",
-        "erklaerung": "Tragfähigkeit erfüllt; Durchbiegung gesondert prüfen."
+        "formel": "f_{m,d} = 0{,}8 \\cdot 24/1{,}3 = 14{,}8\\,\\text{N/mm}^2 \\Rightarrow \\eta = 0{,}61",
+        "erklaerung": "k_mod = 0,8 (NKL 1, KLED mittel), γ_M = 1,3."
+      },
+      {
+        "titel": "5. Durchbiegung mit Kriechen",
+        "formel": "w_{inst} = 5{,}2 + 6{,}8 = 12{,}0 \\le 15{,}0\\,\\text{mm};\\; w_{fin} = 5{,}2 \\cdot 1{,}6 + 6{,}8 \\cdot (1 + 0{,}3 \\cdot 0{,}6) = 16{,}3 \\le 22{,}5\\,\\text{mm}",
+        "erklaerung": "DIN EN 1995-1-1, 2.2.3: k_def = 0,6 (Vollholz, NKL 1), ψ₂ = 0,3; Grenzwerte l/300 und l/200 nach NA (DE). Maßgebend ist w_inst mit 80 %."
       }
     ],
     "BpHolzprodukte.literatur": [

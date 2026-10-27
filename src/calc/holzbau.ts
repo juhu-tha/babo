@@ -3,6 +3,7 @@
  * Vollholz (EN 338) und Brettschichtholz (EN 14080). Reiner Rechenkern – geprüft in tests/holzbau.test.ts.
  */
 import { type Hinweis, bereich, hatFehler, istEndlich, muss } from './plausibilitaet';
+import { formatDeZahl } from '../utils/numberFormat';
 
 export type Nutzungsklasse = 1 | 2 | 3;
 export type KLED = 'stnd' | 'lg' | 'mtl' | 'krt' | 'sfs';
@@ -190,57 +191,89 @@ export function rissfaktor(fvk: number, brettschichtholz: boolean): number {
   return Math.min(1, (brettschichtholz ? 2.5 : 2.0) / fvk);
 }
 
+/** Kombinationsbeiwert ψ₂ der Nutzlast Kategorie A (Wohn- und Aufenthaltsräume) nach DIN EN 1990/NA, Tab. NA.A.1.1 */
+export const PSI2_WOHNEN = 0.3;
+/**
+ * Grenzwerte der Durchbiegung für Einfeldträger nach DIN EN 1995-1-1/NA, NDP zu 7.2(2): w_inst ≤ l/300, w_fin ≤ l/200,
+ * w_net,fin ≤ l/300 (ohne Überhöhung, w_c = 0). Vorläufig, F-Freigabe (Normtext NA und Kombination für w_net,fin).
+ */
+export const W_GRENZEN = { inst: 300, fin: 200, netFin: 300 } as const;
+
 export interface EinfeldbalkenEingabe {
   l: number;       // Stützweite [m]
   abstand: number; // Balkenabstand [m]
-  qk: number;      // Flächenlast Ausbau + Nutzlast [kN/m²]
+  gk: number;      // ständige Ausbaulast (Fußbodenaufbau, Unterdecke) [kN/m²]; das Eigengewicht des Balkens wird ergänzt
+  qk: number;      // Nutzlast [kN/m²]
   b: number; h: number; // [mm]
   fmk: number; fvk: number; E0mean: number; // [N/mm²]
   rhoMean: number; // [kg/m³]
   brettschichtholz: boolean;
-  kmod: number; gammaM: number;
+  nkl: Nutzungsklasse;
+  /** KLED der kürzesten Einwirkung der Kombination (Nutzlast Kategorie A: mittel) */
+  kled: KLED;
+  gammaM: number;
+  /** ψ₂ der Nutzlast (Standard Kategorie A: 0,3) */
+  psi2?: number;
 }
 
 /**
- * Einfeldbalken unter Gleichlast: Biegung (6.11), Schub mit k_cr (6.13) und elastische Anfangsdurchbiegung
- * w_inst ≤ l/300 mit der charakteristischen Kombination g_k + q_k und E_0,mean.
+ * Einfeldbalken unter Gleichlast nach DIN EN 1995-1-1 mit NA (DE): Biegung (6.11), Schub mit k_cr (6.13),
+ * k_mod nach Tab. 3.1 aus Nutzungsklasse und KLED, Durchbiegungen nach 2.2.3 mit k_def nach Tab. 3.2:
+ * w_inst = w_inst,G + w_inst,Q; w_fin = w_inst,G·(1 + k_def) + w_inst,Q·(1 + ψ₂·k_def); w_net,fin = (w_inst,G + ψ₂·w_inst,Q)·(1 + k_def).
  */
 export function bemesseEinfeldbalken(e: EinfeldbalkenEingabe) {
   const hinweise: Hinweis[] = [];
-  muss(hinweise, istEndlich(e.l, e.abstand, e.qk, e.b, e.h, e.fmk, e.fvk, e.E0mean, e.rhoMean, e.kmod, e.gammaM), 'eingabe', 'Alle Eingaben müssen Zahlen sein.');
+  const psi2 = e.psi2 ?? PSI2_WOHNEN;
+  muss(hinweise, istEndlich(e.l, e.abstand, e.gk, e.qk, e.b, e.h, e.fmk, e.fvk, e.E0mean, e.rhoMean, e.gammaM, psi2), 'eingabe', 'Alle Eingaben müssen Zahlen sein.');
+  muss(hinweise, KMOD[e.nkl]?.[e.kled] !== undefined, 'nkl', 'Nutzungsklasse 1 bis 3 und eine Klasse der Lasteinwirkungsdauer wählen.');
   if (!hatFehler(hinweise)) {
     muss(hinweise, e.l > 0 && e.abstand > 0, 'l', 'Stützweite und Balkenabstand müssen größer als 0 sein.');
-    muss(hinweise, e.qk >= 0, 'qk', 'Die Flächenlast muss ≥ 0 sein.');
+    muss(hinweise, e.gk >= 0 && e.qk >= 0, 'qk', 'Ausbau- und Nutzlast müssen ≥ 0 sein.');
     muss(hinweise, e.b > 0 && e.h > 0, 'b', 'Breite und Höhe müssen größer als 0 sein.');
     muss(hinweise, e.fmk > 0 && e.fvk > 0 && e.E0mean > 0 && e.rhoMean > 0, 'fmk', 'Festigkeiten, E-Modul und Rohdichte müssen größer als 0 sein.');
-    muss(hinweise, e.kmod > 0 && e.gammaM > 0, 'kmod', 'k_mod und γ_M müssen größer als 0 sein.');
+    muss(hinweise, e.gammaM > 0, 'gammaM', 'γ_M muss größer als 0 sein.');
+    muss(hinweise, psi2 >= 0 && psi2 <= 1, 'psi2', 'ψ₂ liegt zwischen 0 und 1.');
   }
+  const kdef = KDEF[e.brettschichtholz ? 'bsh' : 'vollholz'][e.nkl] ?? 0;
   const leer = {
-    masse: 0, g_k: 0, q_k: 0, q_d: 0, q_inst: 0, M_Ed: 0, V_Ed: 0, W: 0, I: 0, sigma_md: 0, f_md: 0, k_cr: 0, tau_d: 0, f_vd: 0,
-    w_inst: 0, w_grenz: 0, eta_m: 0, eta_v: 0, eta_w: 0, eta_max: 0, ok: false, hinweise,
+    masse: 0, g_k: 0, q_k: 0, q_d: 0, q_inst: 0, M_Ed: 0, V_Ed: 0, W: 0, I: 0, kmod: 0, kdef, psi2, sigma_md: 0, f_md: 0, k_cr: 0, tau_d: 0, f_vd: 0,
+    w_inst_G: 0, w_inst_Q: 0, w_inst: 0, w_fin: 0, w_net_fin: 0, w_grenz: 0, w_grenz_fin: 0, w_grenz_net: 0,
+    eta_m: 0, eta_v: 0, eta_w_inst: 0, eta_w_fin: 0, eta_w_net: 0, eta_w: 0, eta_max: 0, ok: false, hinweise,
   };
   if (hatFehler(hinweise)) return leer;
 
-  const masse = ((e.b * e.h) / 1e6) * e.rhoMean;  // [kg/m]
-  const g_k = masse * G_KN_PRO_KG;                 // [kN/m]
-  const q_k = e.qk * e.abstand;                    // [kN/m]
+  const kmod = KMOD[e.nkl][e.kled];
+  const masse = ((e.b * e.h) / 1e6) * e.rhoMean;      // [kg/m]
+  const g_k = masse * G_KN_PRO_KG + e.gk * e.abstand; // ständig: Eigengewicht + Ausbau [kN/m]
+  const q_k = e.qk * e.abstand;                       // veränderlich [kN/m]
   const q_d = GAMMA_G * g_k + GAMMA_Q * q_k;
   const q_inst = g_k + q_k;
-  const M_Ed = (q_d * e.l ** 2) / 8;               // [kNm]
-  const V_Ed = (q_d * e.l) / 2;                    // [kN]
+  const M_Ed = (q_d * e.l ** 2) / 8;                  // [kNm]
+  const V_Ed = (q_d * e.l) / 2;                       // [kN]
   const W = (e.b * e.h ** 2) / 6, I = (e.b * e.h ** 3) / 12;
   const sigma_md = (M_Ed * 1e6) / W;
-  const f_md = bemessungswert(e.fmk, e.kmod, e.gammaM);
+  const f_md = bemessungswert(e.fmk, kmod, e.gammaM);
   const k_cr = rissfaktor(e.fvk, e.brettschichtholz);
   const tau_d = (1.5 * V_Ed * 1000) / (k_cr * e.b * e.h);
-  const f_vd = bemessungswert(e.fvk, e.kmod, e.gammaM);
+  const f_vd = bemessungswert(e.fvk, kmod, e.gammaM);
   const lmm = e.l * 1000;
-  const w_inst = (5 * q_inst * lmm ** 4) / (384 * e.E0mean * I); // q in kN/m = N/mm
-  const w_grenz = lmm / 300;
-  const eta_m = (sigma_md / f_md) * 100, eta_v = (tau_d / f_vd) * 100, eta_w = (w_inst / w_grenz) * 100;
+  const w = (q: number) => (5 * q * lmm ** 4) / (384 * e.E0mean * I); // q in kN/m = N/mm
+  const w_inst_G = w(g_k), w_inst_Q = w(q_k);
+  const w_inst = w_inst_G + w_inst_Q;
+  const w_fin = w_inst_G * (1 + kdef) + w_inst_Q * (1 + psi2 * kdef);
+  const w_net_fin = (w_inst_G + psi2 * w_inst_Q) * (1 + kdef);
+  const w_grenz = lmm / W_GRENZEN.inst, w_grenz_fin = lmm / W_GRENZEN.fin, w_grenz_net = lmm / W_GRENZEN.netFin;
+  const eta_m = (sigma_md / f_md) * 100, eta_v = (tau_d / f_vd) * 100;
+  const eta_w_inst = (w_inst / w_grenz) * 100, eta_w_fin = (w_fin / w_grenz_fin) * 100, eta_w_net = (w_net_fin / w_grenz_net) * 100;
+  const eta_w = Math.max(eta_w_inst, eta_w_fin, eta_w_net);
   const eta_max = Math.max(eta_m, eta_v, eta_w);
   bereich(hinweise, 'h', e.h / e.b, 0, 10, 'Verhältnis h/b > 10: Kippen (6.3.3) und seitliche Halterung gesondert prüfen.');
-  return { masse, g_k, q_k, q_d, q_inst, M_Ed, V_Ed, W, I, sigma_md, f_md, k_cr, tau_d, f_vd, w_inst, w_grenz, eta_m, eta_v, eta_w, eta_max, ok: eta_max <= 100, hinweise };
+  if (e.nkl === 3) hinweise.push({ stufe: 'warnung', feld: 'nkl', text: 'Nutzungsklasse 3: k_def = 2,0 – die Kriechverformung wird maßgebend; der Schwingungsnachweis (7.3) ist nicht enthalten.' });
+  return {
+    masse, g_k, q_k, q_d, q_inst, M_Ed, V_Ed, W, I, kmod, kdef, psi2, sigma_md, f_md, k_cr, tau_d, f_vd,
+    w_inst_G, w_inst_Q, w_inst, w_fin, w_net_fin, w_grenz, w_grenz_fin, w_grenz_net,
+    eta_m, eta_v, eta_w_inst, eta_w_fin, eta_w_net, eta_w, eta_max, ok: eta_max <= 100, hinweise,
+  };
 }
 
 export interface VerformterStabEingabe {
@@ -248,50 +281,135 @@ export interface VerformterStabEingabe {
   nd: number;  // Bemessungsnormalkraft (Druck) [kN]
   qd: number;  // Bemessungsquerlast [kN/m]
   e0: number;  // gemessene Vorverformung (Stich) [mm]
-  fmk: number; fc0k: number; E0mean: number; // [N/mm²]
+  fmk: number; fc0k: number; E0mean: number; E005: number; // [N/mm²]
+  brettschichtholz?: boolean;
   kmod: number; gammaM: number;
 }
 
+/** Ersatzimperfektion (Vorkrümmung) e = 0,0025·l für Theorie II. Ordnung nach DIN EN 1995-1-1, 5.4.4, Bild 5.1 – vorläufig, F-Freigabe */
+export const IMPERFEKTION_EC5 = 0.0025;
+
 /**
- * Verformter Druck-Biege-Stab (z. B. Sparren im Bestand): Moment aus Querlast und gemessener Ausmitte e₀,
- * vergrößert mit α_cr/(α_cr − 1) (Theorie II. Ordnung, Näherung mit N_cr = π²·E_0,mean·I/l²), lineare Interaktion
- * σ_c,d/f_c,0,d + σ_m,d/f_m,d. Vergleich mit dem idealisiert geraden Stab (e₀ = 0).
+ * Verformter Druck-Biege-Stab (z. B. Sparren im Bestand), Knicken in der Biegeebene, seitlich gehalten:
+ *  1. Theorie II. Ordnung nach 5.4.4 mit Bemessungssteifigkeit E_d = E_0,mean/γ_M (2.4.1(2)) und Vorkrümmung
+ *     e = max(e₀,gemessen; 0,0025·l); Moment mit 1/(1 − N_d/N_cr,d), Querschnittsnachweis (6.19):
+ *     (σ_c,0,d/f_c,0,d)² + σ_m,d/f_m,d ≤ 1. „Idealisiert“ = nur normative Vorkrümmung (e₀ nicht aufgemessen).
+ *  2. Ersatzstabverfahren nach 6.3.2, Gl. (6.23), mit k_c,y aus λ_rel,y (E_0,05) und Moment I. Ordnung aus q_d und N_d·e₀:
+ *     σ_c,0,d/(k_c,y·f_c,0,d) + σ_m,d/f_m,d ≤ 1.
  */
 export function verformterDruckstab(e: VerformterStabEingabe) {
   const hinweise: Hinweis[] = [];
-  muss(hinweise, istEndlich(e.b, e.h, e.l, e.nd, e.qd, e.e0, e.fmk, e.fc0k, e.E0mean, e.kmod, e.gammaM), 'eingabe', 'Alle Eingaben müssen Zahlen sein.');
+  muss(hinweise, istEndlich(e.b, e.h, e.l, e.nd, e.qd, e.e0, e.fmk, e.fc0k, e.E0mean, e.E005, e.kmod, e.gammaM), 'eingabe', 'Alle Eingaben müssen Zahlen sein.');
   if (!hatFehler(hinweise)) {
     muss(hinweise, e.b > 0 && e.h > 0 && e.l > 0, 'b', 'Breite, Höhe und Länge müssen größer als 0 sein.');
     muss(hinweise, e.nd >= 0 && e.qd >= 0 && e.e0 >= 0, 'nd', 'Normalkraft, Querlast und Vorverformung müssen ≥ 0 sein.');
-    muss(hinweise, e.fmk > 0 && e.fc0k > 0 && e.E0mean > 0 && e.kmod > 0 && e.gammaM > 0, 'fmk', 'Festigkeiten, E-Modul, k_mod und γ_M müssen größer als 0 sein.');
+    muss(hinweise, e.fmk > 0 && e.fc0k > 0 && e.E0mean > 0 && e.E005 > 0 && e.kmod > 0 && e.gammaM > 0, 'fmk', 'Festigkeiten, E-Moduln, k_mod und γ_M müssen größer als 0 sein.');
   }
   const f_md = hatFehler(hinweise) ? 0 : bemessungswert(e.fmk, e.kmod, e.gammaM);
   const f_c0d = hatFehler(hinweise) ? 0 : bemessungswert(e.fc0k, e.kmod, e.gammaM);
   const leer = {
-    A: 0, W: 0, I: 0, f_md, f_c0d, sigma_c_d: 0, sigma_m_d_primary: 0, sigma_m_d_eccentric: 0, sigma_m_d_total: 0,
-    N_crit_kN: 0, magFactor: 0, limitRatio: 0, limitRatioIdeal: 0, unsafeRatioDelta: 0, gueltig: false, hinweise,
+    A: 0, W: 0, I: 0, f_md, f_c0d, E_d: 0, e_imp: 0, e_ansatz: 0, sigma_c_d: 0, sigma_m_d_primary: 0, sigma_m_d_eccentric: 0, sigma_m_d_total: 0,
+    N_crit_kN: 0, magFactor: 0, limitRatio: 0, limitRatioIdeal: 0, unsafeRatioDelta: 0,
+    lambda_y: 0, lambda_rel_y: 0, k_cy: 0, etaErsatzstab: 0, gueltig: false, hinweise,
   };
   if (hatFehler(hinweise)) return leer;
 
   const N = e.nd * 1000;  // [N]
   const q = e.qd;         // kN/m = N/mm
   const A = e.b * e.h, W = (e.b * e.h ** 2) / 6, I = (e.b * e.h ** 3) / 12;
+  const E_d = e.E0mean / e.gammaM;
+  const e_imp = IMPERFEKTION_EC5 * e.l;
+  const e_ansatz = Math.max(e.e0, e_imp);
   const M_q = (q * e.l ** 2) / 8;  // [Nmm]
-  const M_e = N * e.e0;            // [Nmm]
-  const N_crit = (Math.PI ** 2 * e.E0mean * I) / e.l ** 2;
+  const N_crit = (Math.PI ** 2 * E_d * I) / e.l ** 2;
+  const lambda_y = e.l / (e.h / Math.sqrt(12));
+  const lambda_rel_y = (lambda_y / Math.PI) * Math.sqrt(e.fc0k / e.E005); // (6.21)
+  const k_cy = knickbeiwert(lambda_rel_y, !!e.brettschichtholz);
   if (N >= N_crit) {
-    hinweise.push({ stufe: 'fehler', feld: 'nd', text: 'Die Normalkraft erreicht die Euler-Knicklast N_cr – nach Theorie II. Ordnung ist kein Gleichgewicht möglich (Stab instabil).' });
-    return { ...leer, A, W, I, N_crit_kN: N_crit / 1000 };
+    hinweise.push({ stufe: 'fehler', feld: 'nd', text: 'Die Normalkraft erreicht die Knicklast N_cr,d = π²·E_d·I/l² – nach Theorie II. Ordnung ist kein Gleichgewicht möglich (Stab instabil).' });
+    return { ...leer, A, W, I, E_d, e_imp, e_ansatz, N_crit_kN: N_crit / 1000, lambda_y, lambda_rel_y, k_cy };
   }
   const magFactor = 1 / (1 - N / N_crit); // = α_cr/(α_cr − 1); N = 0 → 1
   const sigma_c_d = N / A;
-  const sigma_m_d_total = ((M_q + M_e) * magFactor) / W;
-  const limitRatio = sigma_c_d / f_c0d + sigma_m_d_total / f_md;
-  const limitRatioIdeal = sigma_c_d / f_c0d + (M_q * magFactor) / W / f_md;
-  if (N / N_crit > 0.5) hinweise.push({ stufe: 'warnung', feld: 'nd', text: 'N_d liegt über der Hälfte der Euler-Knicklast; der Vergrößerungsfaktor reagiert dann sehr empfindlich auf E-Modul und Knicklänge.' });
+  const sigma_m_d_total = ((M_q + N * e_ansatz) * magFactor) / W;
+  const druck = (sigma_c_d / f_c0d) ** 2;
+  const limitRatio = druck + sigma_m_d_total / f_md;
+  const limitRatioIdeal = druck + ((M_q + N * e_imp) * magFactor) / W / f_md;
+  const etaErsatzstab = sigma_c_d / (k_cy * f_c0d) + (M_q + N * e.e0) / W / f_md;
+  if (N / N_crit > 0.5) hinweise.push({ stufe: 'warnung', feld: 'nd', text: 'N_d liegt über der Hälfte der Knicklast N_cr,d; der Vergrößerungsfaktor reagiert dann sehr empfindlich auf E-Modul und Knicklänge.' });
+  if (N > 0 && e.e0 < e_imp) hinweise.push({ stufe: 'warnung', feld: 'e0', text: `Die gemessene Vorverformung ist kleiner als die Ersatzimperfektion 0,0025·l = ${formatDeZahl(e_imp, 1)} mm; nach Theorie II. Ordnung wird die Ersatzimperfektion angesetzt.` });
+  hinweise.push({ stufe: 'warnung', feld: 'info', text: 'Knicken in der Biegeebene (y-Achse); seitliche Halterung durch Schalung bzw. Lattung vorausgesetzt. Kippen (6.3.3) und Knicken um die z-Achse sind nicht enthalten.' });
   return {
-    A, W, I, f_md, f_c0d, sigma_c_d, sigma_m_d_primary: M_q / W, sigma_m_d_eccentric: M_e / W, sigma_m_d_total,
+    A, W, I, f_md, f_c0d, E_d, e_imp, e_ansatz, sigma_c_d, sigma_m_d_primary: M_q / W, sigma_m_d_eccentric: (N * e.e0) / W, sigma_m_d_total,
     N_crit_kN: N_crit / 1000, magFactor, limitRatio: limitRatio * 100, limitRatioIdeal: limitRatioIdeal * 100,
-    unsafeRatioDelta: (limitRatio - limitRatioIdeal) * 100, gueltig: true, hinweise,
+    unsafeRatioDelta: (limitRatio - limitRatioIdeal) * 100, lambda_y, lambda_rel_y, k_cy, etaErsatzstab: etaErsatzstab * 100, gueltig: true, hinweise,
+  };
+}
+
+// ---------------------------------------------------------------------------------------------------------------
+// Holzschrauben nach DIN EN 1995-1-1, 8.7 (Runde 5): Herausziehen (8.38)–(8.41) und Abscheren (Johansen, 8.2.2/8.5.1)
+// ---------------------------------------------------------------------------------------------------------------
+
+export interface HolzschraubeEingabe {
+  rhok: number;   // charakteristische Rohdichte [kg/m³]
+  d: number;      // Nenndurchmesser (Gewindeaußendurchmesser) [mm]
+  lef: number;    // Einschraubtiefe des Gewindes [mm]
+  alpha: number;  // Winkel Schraubenachse – Faser [°]
+  n: number;      // Anzahl Schrauben
+  nkl: Nutzungsklasse; kled: KLED;
+  fuk?: number;   // Zugfestigkeit des Schraubendrahts [N/mm²], Lehrwert 400
+  gammaM?: number;
+}
+
+/**
+ * Selbstbohrende Holzschrauben ohne ETA-Werte:
+ *  - Herausziehen (8.38): F_ax,α,Rk = n_ef · f_ax,k · d · l_ef · k_d / (1,2·cos²α + sin²α), f_ax,k = 0,52·d^−0,5·l_ef^−0,1·ρ_k^0,8 (8.39),
+ *    k_d = min(d/8; 1) (8.40), n_ef = n^0,9 (8.41); gültig für 6 mm ≤ d ≤ 12 mm und Kerndurchmesser 0,6 ≤ d₁/d ≤ 0,75.
+ *  - Abscheren je Scherfuge: f_h,k = 0,082·(1 − 0,01·d)·ρ_k (8.32, Regeln für Bolzen nach 8.7.1(4) bei d > 6 mm),
+ *    M_y,Rk = 0,3·f_u,k·d^2,6 (8.30); F_v,Rk = min(f_h,k·l_ef·d; 1,15·√(2·M_y,Rk·f_h,k·d) + F_ax,Rk/4), Seileffekt ≤ 100 % (8.2.2(2)).
+ */
+export function holzschraube(e: HolzschraubeEingabe) {
+  const hinweise: Hinweis[] = [];
+  const fuk = e.fuk ?? 400, gammaM = e.gammaM ?? GAMMA_M_HOLZ;
+  muss(hinweise, istEndlich(e.rhok, e.d, e.lef, e.alpha, e.n, fuk, gammaM), 'eingabe', 'Alle Eingaben müssen Zahlen sein.');
+  muss(hinweise, KMOD[e.nkl]?.[e.kled] !== undefined, 'nkl', 'Nutzungsklasse 1 bis 3 und eine Klasse der Lasteinwirkungsdauer wählen.');
+  if (!hatFehler(hinweise)) {
+    muss(hinweise, e.rhok > 0 && e.d > 0 && e.lef > 0 && fuk > 0 && gammaM > 0, 'd', 'Rohdichte, Durchmesser, Einschraubtiefe und Festigkeit müssen größer als 0 sein.');
+    muss(hinweise, e.n >= 1 && Number.isInteger(e.n), 'n', 'Die Schraubenanzahl muss eine ganze Zahl ≥ 1 sein.');
+    muss(hinweise, e.alpha >= 0 && e.alpha <= 90, 'alpha', 'Der Winkel zwischen Schraubenachse und Faser liegt zwischen 0° und 90°.');
+  }
+  const leer = {
+    k_mod: 0, rho_k: e.rhok, f_ax_k: 0, k_d: 0, n_ef: 0, factor_alpha: 0, f_ax_alpha_k: 0, F_ax_Rk_single_N: 0, F_ax_Rk_total_kN: 0, F_ax_Rd_total_kN: 0,
+    f_h_k: 0, M_y_Rk: 0, F_v_Rk_1: 0, johansen: 0, rope_effect: 0, F_v_Rk_single_N: 0, F_v_Rk_total_kN: 0, F_v_Rd_total_kN: 0, hinweise,
+  };
+  if (hatFehler(hinweise)) return leer;
+
+  const k_mod = KMOD[e.nkl][e.kled];
+  const rad = (e.alpha * Math.PI) / 180;
+  const factor_alpha = 1 / (1.2 * Math.cos(rad) ** 2 + Math.sin(rad) ** 2);
+  const f_ax_k = 0.52 * e.d ** -0.5 * e.lef ** -0.1 * e.rhok ** 0.8; // (8.39)
+  const k_d = Math.min(e.d / 8, 1);                                    // (8.40)
+  const n_ef = e.n ** 0.9;                                             // (8.41)
+  const f_ax_alpha_k = f_ax_k * factor_alpha;
+  const F_ax_Rk_single_N = f_ax_alpha_k * e.d * e.lef * k_d;
+  const F_ax_Rk_total_kN = (n_ef * F_ax_Rk_single_N) / 1000;
+  const F_ax_Rd_total_kN = bemessungswert(F_ax_Rk_total_kN, k_mod, gammaM);
+
+  const f_h_k = 0.082 * (1 - 0.01 * e.d) * e.rhok;
+  const M_y_Rk = 0.3 * fuk * e.d ** 2.6;
+  const F_v_Rk_1 = f_h_k * e.lef * e.d;
+  const johansen = 1.15 * Math.sqrt(2 * M_y_Rk * f_h_k * e.d);
+  const rope_effect = Math.min(0.25 * F_ax_Rk_single_N, johansen);
+  const F_v_Rk_single_N = Math.min(F_v_Rk_1, johansen + rope_effect);
+  const F_v_Rk_total_kN = (e.n * F_v_Rk_single_N) / 1000;
+  const F_v_Rd_total_kN = bemessungswert(F_v_Rk_total_kN, k_mod, gammaM);
+
+  if (e.d < 6 || e.d > 12) hinweise.push({ stufe: 'warnung', feld: 'd', text: 'Gl. (8.38)/(8.39) gilt für 6 mm ≤ d ≤ 12 mm; sonst Werte der ETA verwenden.' });
+  if (e.lef < 6 * e.d) hinweise.push({ stufe: 'warnung', feld: 'lef', text: 'Die Einschraubtiefe des Gewindes sollte mindestens 6·d betragen (8.7.2).' });
+  if (e.alpha < 30) hinweise.push({ stufe: 'warnung', feld: 'alpha', text: 'Winkel zwischen Schraubenachse und Faser unter 30°: nach 8.7.2 nicht abgedeckt.' });
+  hinweise.push({ stufe: 'warnung', feld: 'info', text: 'Normformeln ohne ETA; Hersteller deklarieren meist höhere Auszieh- und Fließmomentwerte. Mindestabstände, n_ef beim Abscheren und Blockscherversagen sind nicht nachgewiesen.' });
+  return {
+    k_mod, rho_k: e.rhok, f_ax_k, k_d, n_ef, factor_alpha, f_ax_alpha_k, F_ax_Rk_single_N, F_ax_Rk_total_kN, F_ax_Rd_total_kN,
+    f_h_k, M_y_Rk, F_v_Rk_1, johansen, rope_effect, F_v_Rk_single_N, F_v_Rk_total_kN, F_v_Rd_total_kN, hinweise,
   };
 }

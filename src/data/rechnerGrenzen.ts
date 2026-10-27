@@ -205,7 +205,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   erdbau: {
     kurz: "Grobe Zuordnung zu Bodengruppe und Frostempfindlichkeitsklasse sowie Mindestdicke des frostsicheren Oberbaus nach vereinfachtem RStO-Schema.",
     grenzen: [
-      "Klassifikation nur über Feinkorngrenzen, Kies-/Sandanteil, Organik und Plastizität, ohne Körnungslinie.",
+      "Klassifikation nur über Feinkorngrenzen, Kies-/Sandanteil (Kies bei Kornanteil > 2 mm ≥ 40 %), Organik und Plastizität, ohne Körnungslinie.",
       "Frostschutz nur mit Ausgangswert, Frostzone und Wasserverhältnissen; weitere Zeilen der RStO-Tabelle nicht berücksichtigt.",
       "Nur F2/F3 wählbar; gebundene Schichten pauschal.",
     ],
@@ -215,7 +215,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     grenzen: [
       "Faserverbund mit idealer Haftung (Lehrmodell).",
       "U-Wert mit R_si = 0,13 und R_se = 0,04 m²K/W, ohne Wärmebrücken und ohne Glaser-Nachweis.",
-      "Tauwasser-Hinweis als Faustregel über das s_d-Verhältnis der Schichthälften.",
+      "Tauwasser-Hinweis als Faustregel nach den nachweisfreien nicht belüfteten Dächern der DIN 4108-3 (s_d,i ≥ 1,0 m / 2,0 m / 6·s_d,e) über die Schichthälften; kein Glaser-Nachweis.",
     ],
   },
   bp_verkehr_rsto: {
@@ -236,7 +236,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   bp_verkehr_tiefbau: {
     kurz: "Speichervolumen und Länge einer Rigole (Lehrmodell in Anlehnung an DWA-A 138); dazu Betondecken, Bahn- und Tunnelbau.",
     grenzen: [
-      "Rigole: k_f = 1·10⁻⁵ m/s fest, Versickerung nur über die Sohle, Querschnitt fest, ein Regenereignis ohne Häufigkeitsbetrachtung.",
+      "Rigole: k_f = 1·10⁻⁵ m/s fest, versickert wird mit k_f,u = k_f/2 (DWA-A 138) nur über die Sohle; Querschnitt fest, ein Regenereignis ohne Häufigkeitsbetrachtung.",
       "Betondecke: Westergaard-Randspannung mit festen Kennwerten, zulässige Spannung pauschal.",
       "Schiene: σ = E·α·ΔT bei vollständiger Behinderung; Tunnel: Kesselformel ohne Biegung.",
     ],
@@ -294,11 +294,11 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     ],
   },
   holzbau_verbindung: {
-    kurz: "Holzschrauben: Tragfähigkeit auf Herausziehen und Abscheren nach vereinfachtem EC5-Ansatz.",
+    kurz: "Holzschrauben: Tragfähigkeit auf Herausziehen (Gl. 8.38–8.41) und Abscheren (Johansen mit Seileffekt) nach DIN EN 1995-1-1.",
     grenzen: [
-      "f_ax,k = 12 N/mm² als Lehrwert statt Wert aus der ETA der Schraube.",
-      "k_mod = 0,8 und γ_M = 1,3 fest; einschnittig Holz–Holz.",
-      "Ohne wirksame Anzahl n_ef, Mindestabstände, Blockscheren und Interaktion axial/quer.",
+      "Normformeln ohne ETA: f_ax,k = 0,52·d^−0,5·l_ef^−0,1·ρ_k^0,8, M_y,Rk = 0,3·f_u·d^2,6 mit f_u = 400 N/mm² (Lehrwert); Herstellerwerte sind meist höher.",
+      "k_mod aus NKL und KLED, γ_M = 1,3; einschnittig Holz–Holz, nur Versagensarten Lochleibung und Fließgelenk.",
+      "n_ef = n^0,9 nur beim Herausziehen; ohne Mindestabstände, Blockscheren und Interaktion axial/quer (8.7.3).",
     ],
   },
   holzbau_bauphysik: {
@@ -356,6 +356,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Beton- und Stahlmengen je Bauteil fest hinterlegt, keine Bemessung.",
       "Beton-GWP nur nach Zementart, unabhängig von der Festigkeitsklasse.",
       "Bewertungsklassen über modellinterne Schwellen.",
+      "GWP-Faktoren (Beton je Zementart, Betonstahl, 56-d-Abschlag) sind gerundete Lehrwerte ohne EPD-Bezug.",
     ],
   },
   oekobilanz_lca: {
@@ -425,17 +426,17 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   holz: {
     kurz: "Gleichgewichtsfeuchte, Feuchteangleich und anisotropes Schwinden von Holz sowie Bemessungswerte der Festigkeiten, Druck unter Winkel (6.16) und k_def nach DIN EN 1995-1-1.",
     grenzen: [
-      "Gleichgewichtsfeuchte als Polynom-Lehrmodell (bei 20 °C/65 % rund 13,7 % statt üblicher 12 %), Temperaturkorrektur −1 % je K, begrenzt auf 30 % Fasersättigung.",
+      "Gleichgewichtsfeuchte nach dem Sorptionsmodell von Hailwood-Horrobin mit den Koeffizienten von Simpson (Wood Handbook, 20 °C/65 % → 12,0 %), Mittelwert für Nadelholz ohne Hysterese, begrenzt auf 30 % Fasersättigung.",
       "Feuchteangleich exponentiell mit τ = 15 d · (d/20 mm)²; Kalibrierung als Lehrannahme, ohne Oberflächenbeschichtung und Feuchtegradient.",
       "Schwinden linear mit differentiellen Schwindmaßen je Richtung; Verdrehen, Rissbildung und Jahrringlage nur in der 3D-Darstellung qualitativ.",
       "Festigkeitswerte für ausgewählte Klassen, γ_M = 1,3; kein Bauteilnachweis.",
     ],
   },
   bp_holzprodukte: {
-    kurz: "Einfeldbalken unter Gleichlast aus Vollholz oder BSH: Biegung, Schub mit k_cr und Anfangsdurchbiegung nach DIN EN 1995-1-1 mit NA (DE).",
+    kurz: "Einfeldbalken unter Gleichlast aus Vollholz oder BSH: Biegung, Schub mit k_cr sowie w_inst, w_fin und w_net,fin mit k_def nach DIN EN 1995-1-1 mit NA (DE).",
     grenzen: [
-      "k_mod = 0,8 (NKL 1, mittlere Lasteinwirkung), γ_G = 1,35, γ_Q = 1,5; nur eine Lastfallkombination.",
-      "Durchbiegung w_inst mit E_0,mean und der charakteristischen Kombination gegen l/300; Kriechen (w_fin, k_def) und Schwingungen fehlen.",
+      "k_mod nach Tab. 3.1 aus NKL und KLED, γ_G = 1,35, γ_Q = 1,5; eine Nutzlast (ψ₂ = 0,3, Kategorie A), nur eine Lastfallkombination.",
+      "w_fin = w_G·(1 + k_def) + w_Q·(1 + ψ₂·k_def) ≤ l/200, w_net,fin ≤ l/300 ohne Überhöhung, w_inst ≤ l/300 (Grenzwerte NA, vorläufig); Schwingungen fehlen.",
       "Kein Kipp-, Auflager- oder Querdrucknachweis; Rohdichten für das Eigengewicht als Mittelwerte.",
     ],
   },
@@ -447,10 +448,10 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     ],
   },
   bauwerkserfassung: {
-    kurz: "Druck- und Biegeausnutzung eines verformten Holzsparrens mit gemessener Vorverformung e₀ und Moment nach Theorie II. Ordnung im Vergleich zum idealisiert geraden Stab.",
+    kurz: "Verformter Holzsparren: Theorie II. Ordnung (E_d = E_0,mean/γ_M, Vorkrümmung max(e₀; l/400), Gl. 6.19) und Ersatzstabverfahren nach 6.3.2 (Gl. 6.23) im Vergleich zum idealisierten Stab.",
     grenzen: [
-      "Lineare Interaktion σ_c/f_c,0,d + σ_m/f_m,d; der Ersatzstabnachweis mit k_c nach 6.3.2 ist gesondert zu führen.",
-      "Vergrößerungsfaktor 1/(1 − N/N_cr) mit N_cr aus E_0,mean und Knicklänge = Stablänge; keine Abminderung der Steifigkeit.",
+      "Knicken nur in der Biegeebene, Knicklänge = Stablänge; seitliche Halterung vorausgesetzt, Kippen und Knicken um z nicht enthalten.",
+      "Ersatzimperfektion 0,0025·l nach 5.4.4 (vorläufig); Vergrößerungsfaktor 1/(1 − N/N_cr,d) als Näherung der Theorie II. Ordnung.",
       "k_mod = 0,9 (kurze Lasteinwirkung), γ_M = 1,3; Vorverformung als Stich in Feldmitte, Querschnitt ungeschwächt.",
     ],
   },

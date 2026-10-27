@@ -1,7 +1,9 @@
 /**
  * Rechenkern Erdbau (Z3), übernommen aus src/modules/Erdbau.tsx:
- *  - vereinfachte Bodengruppe nach DIN 18196 aus Feinkornanteil (< 0,063 mm): ≤ 5 % grobkörnig, 5 … 15 % gemischtkörnig,
- *    15 … 40 % gemischtkörnig mit hohem Feinanteil (*), > 40 % feinkörnig; Kies/Sand über den Kiesanteil am Grobkorn (> 50 %);
+ *  - vereinfachte Bodengruppe nach DIN 18196 aus Feinkornanteil (≤ 0,063 mm): ≤ 5 % grobkörnig, 5 … 15 % gemischtkörnig,
+ *    15 … < 40 % gemischtkörnig mit hohem Feinanteil (*), ≥ 40 % feinkörnig; Kies (G), wenn der Massenanteil ≤ 2 mm höchstens
+ *    60 % beträgt (Kornanteil > 2 mm ≥ 40 % der Gesamtmasse), sonst Sand (S) – Runde 5, Quelle: FORUM VERLAG, „Bodengruppen
+ *    nach DIN 18196“ (öffentliche Wiedergabe); Korngrenzen Ton/Schluff/Sand/Kies 0,002/0,063/2/63 mm nach DIN EN ISO 14688-1;
  *    Frostempfindlichkeit F1/F2/F3 (ZTV E-StB)
  *  - Mindestdicke des frostsicheren Oberbaus vereinfacht nach RStO 12, Tab. 6/7: Ausgangswert je F-Klasse und
  *    Belastungsklasse (F3: 65/60/50 cm, F2: 55/50/40 cm), Mehrdicke Frosteinwirkungszone I/II/III: 0/+5/+15 cm,
@@ -10,10 +12,15 @@
  */
 import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
 
+/** Grenze Kies/Sand nach DIN 18196: Kornanteil > 2 mm in M.-% der Gesamtmasse (Anteil ≤ 2 mm höchstens 60 %) */
+export const KIES_GRENZE_18196 = 40;
+/** Korngrößenbereiche nach DIN EN ISO 14688-1 in mm (Obergrenzen): Ton, Schluff, Sand, Kies, Steine */
+export const KORNGRENZEN_14688 = { ton: 0.002, schluff: 0.063, sand: 2, kies: 63, steine: 200 } as const;
+
 export interface BodenEingabe {
   /** Feinkornanteil < 0,063 mm in M.-% */
   feinanteil: number;
-  /** Kies- und Sandanteil am Grobkorn (relativ, werden normiert) */
+  /** Kies- und Sandanteil am Grobkorn (relativ, werden auf den Grobkornanteil 100 − Feinanteil umgerechnet) */
   kiesanteil: number;
   sandanteil: number;
   organik: 'keine' | 'stark';
@@ -34,18 +41,21 @@ export function bodengruppe(e: BodenEingabe): BodenErgebnis {
   const fertig = (r: Omit<BodenErgebnis, 'gueltig' | 'hinweise'>): BodenErgebnis => ({ ...r, gueltig: !hatFehler(hinweise), hinweise });
   const gesamtGrob = e.kiesanteil + e.sandanteil;
   const relativKies = gesamtGrob > 0 ? (e.kiesanteil / gesamtGrob) * 100 : 0;
+  // DIN 18196: Kies, wenn der Massenanteil ≤ 2 mm (Sand + Feinkorn) ≤ 60 % ist, d. h. Kieskorn ≥ 40 % der Gesamtmasse
+  const kiesGesamt = (relativKies * (100 - e.feinanteil)) / 100;
+  const istKies = kiesGesamt >= KIES_GRENZE_18196 - 1e-9;
   if (e.organik === 'stark') return fertig({ gruppe: 'HN / HZ / F', name: 'Organische Böden (Torf/Mudde)', frost: 'F3', tauglich: 'Ungeeignet als Baugrund.' });
-  if (e.feinanteil > 40 && e.plastizitaet === 'nicht') hinweise.push({ stufe: 'warnung', feld: 'plastizitaet', text: 'Feinkörnige Böden ohne Angabe der Plastizität werden als Schluff eingeordnet.' });
+  if (e.feinanteil >= 40 && e.plastizitaet === 'nicht') hinweise.push({ stufe: 'warnung', feld: 'plastizitaet', text: 'Feinkörnige Böden ohne Angabe der Plastizität werden als Schluff eingeordnet.' });
   if (e.feinanteil <= 5) {
-    if (relativKies > 50) return fertig({ gruppe: 'GW / GI / GE', name: 'Kies, weitgestuft bis enggestuft', frost: 'F1', tauglich: 'Sehr gut tragfähig, frostsicher.' });
+    if (istKies) return fertig({ gruppe: 'GW / GI / GE', name: 'Kies, weitgestuft bis enggestuft', frost: 'F1', tauglich: 'Sehr gut tragfähig, frostsicher.' });
     return fertig({ gruppe: 'SW / SI / SE', name: 'Sand, weitgestuft bis enggestuft', frost: 'F1', tauglich: 'Gut tragfähig, frostsicher.' });
   }
   if (e.feinanteil <= 15) {
-    if (relativKies > 50) return fertig({ gruppe: 'GU / GT', name: 'Kies-Schluff- / Kies-Ton-Gemisch', frost: 'F2', tauglich: 'Tragfähig, aber bedingt frostempfindlich.' });
+    if (istKies) return fertig({ gruppe: 'GU / GT', name: 'Kies-Schluff- / Kies-Ton-Gemisch', frost: 'F2', tauglich: 'Tragfähig, aber bedingt frostempfindlich.' });
     return fertig({ gruppe: 'SU / ST', name: 'Sand-Schluff- / Sand-Ton-Gemisch', frost: 'F2', tauglich: 'Tragfähig, aber bedingt frostempfindlich.' });
   }
-  if (e.feinanteil <= 40) {
-    if (relativKies > 50) return fertig({ gruppe: 'GU* / GT*', name: 'Kies-Schluff- / Kies-Ton-Gemisch (hoher Feinanteil)', frost: 'F3', tauglich: 'Eingeschränkt tragfähig, witterungs- und sehr frostempfindlich.' });
+  if (e.feinanteil < 40) {
+    if (istKies) return fertig({ gruppe: 'GU* / GT*', name: 'Kies-Schluff- / Kies-Ton-Gemisch (hoher Feinanteil)', frost: 'F3', tauglich: 'Eingeschränkt tragfähig, witterungs- und sehr frostempfindlich.' });
     return fertig({ gruppe: 'SU* / ST*', name: 'Sand-Schluff- / Sand-Ton-Gemisch (hoher Feinanteil)', frost: 'F3', tauglich: 'Eingeschränkt tragfähig, witterungs- und sehr frostempfindlich.' });
   }
   if (e.plastizitaet === 'ausgeprägt') return fertig({ gruppe: 'TA', name: 'Ausgeprägt plastischer Ton', frost: 'F3', tauglich: 'Stark setzungsempfindlich, sehr frostempfindlich.' });

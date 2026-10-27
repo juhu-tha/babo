@@ -38,6 +38,7 @@ import {
 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import inhalt from '@/content/kombinationen/Kombinationen.json';
+import { sdRegel } from '@/src/calc/glaser';
 import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
@@ -236,8 +237,10 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
     const innerLayersSd = layerCalculations.slice(0, Math.ceil(layers.length / 2)).reduce((acc, l) => acc + l.sd, 0);
     const outerLayersSd = layerCalculations.slice(Math.ceil(layers.length / 2)).reduce((acc, l) => acc + l.sd, 0);
     
-    // Warnung, falls Kaltseite signifikant diffusionsdichter ist als Innenseite
-    const hasDiffusionTrap = outerLayersSd > innerLayersSd * 1.5 && outerLayersSd > 2.0;
+    // Faustregel nach DIN 4108-3 (nachweisfreie nicht belüftete Dächer, Rechenkern src/calc/glaser.ts):
+    // s_d,e ≤ 0,1 m → s_d,i ≥ 1,0 m; ≤ 0,3 m → ≥ 2,0 m; ≤ 2,0 m → ≥ 6·s_d,e; darüber rechnerischer Nachweis
+    const sdPruefung = sdRegel(innerLayersSd, outerLayersSd);
+    const hasDiffusionTrap = !sdPruefung.eingehalten;
 
     return {
       layerCalculations,
@@ -246,6 +249,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
       totalSd,
       totalThicknessM,
       hasDiffusionTrap,
+      sdPruefung,
       innerLayersSd,
       outerLayersSd
     };
@@ -536,7 +540,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                   <h4 className="font-bold text-amber-900 text-sm mb-1"><MdText text={inhalt.texte.bauphysikalischeGrundregelFürDiffusionss} /></h4>
                   <p className="mb-2"><MdText text={inhalt.texte.wasserdampfDiffundiertImWinter} /></p>
                   <div className="p-2 bg-white/80 rounded border border-amber-200 font-mono text-center font-bold text-amber-900">
-                    <InlineMath math="s_{d,\text{innen}} \gg s_{d,\text{außen}} \quad (\text{Faustregel, Lehrannahme: innen mind. 10-fach dichter als außen})" />
+                    <InlineMath math="s_{d,i} \ge 1{,}0\,\text{m}\ (s_{d,e} \le 0{,}1\,\text{m}),\quad s_{d,i} \ge 2{,}0\,\text{m}\ (s_{d,e} \le 0{,}3\,\text{m}),\quad s_{d,i} \ge 6 \cdot s_{d,e}\ (s_{d,e} \le 2{,}0\,\text{m})" />
                   </div>
                   <p className="mt-2 text-[11px] text-amber-900/80"><MdText text={inhalt.texte.wirdAußenEinDampfdichter} /></p>
                 </div>
@@ -1021,6 +1025,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                   ) : (
                     <><MdText text={inhalt.texte.dieSDWerte} /></>
                   )}
+                  <span className="block mt-1 font-mono text-[11px]">{calcResults.sdPruefung.text}</span>
                 </p>
               </div>
             </div>

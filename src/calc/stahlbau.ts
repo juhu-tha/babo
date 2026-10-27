@@ -183,7 +183,9 @@ export interface DruckstabErgebnis {
   NcRd: number; // Querschnittswiderstand A·f_y/γ_M0 [kN]
   y: KnickAchse; z: KnickAchse;
   vorschlagY: Knicklinie; vorschlagZ: Knicklinie;
-  NbRd: number; massgebend: 'y' | 'z';
+  NbRd: number;
+  /** maßgebender Widerstand: N_c,Rd, wenn der Knicknachweis nach 6.3.1.2(4) entfallen darf, sonst min(N_b,Rd; N_c,Rd) */
+  NRd: number; massgebend: 'y' | 'z';
   ausnutzung: number;
   vernachlaessigbar: boolean;
   hinweise: Hinweis[];
@@ -212,7 +214,7 @@ export function bemesseDruckstab(e: DruckstabEingabe): DruckstabErgebnis {
   const p = profil(e.profil);
   const g = STAHLGUETEN[e.guete];
   if (hatFehler(hinweise) || !p || !g) {
-    return { p, fy: g?.fy ?? 0, eps: 0, lambda1: 0, klasse: null, NcRd: 0, y: LEER_ACHSE, z: LEER_ACHSE, vorschlagY: 'b', vorschlagZ: 'c', NbRd: 0, massgebend: 'z', ausnutzung: 0, vernachlaessigbar: false, hinweise };
+    return { p, fy: g?.fy ?? 0, eps: 0, lambda1: 0, klasse: null, NcRd: 0, y: LEER_ACHSE, z: LEER_ACHSE, vorschlagY: 'b', vorschlagZ: 'c', NbRd: 0, NRd: 0, massgebend: 'z', ausnutzung: 0, vernachlaessigbar: false, hinweise };
   }
   const fy = g.fy;
   const klasse = klassifiziere(p, fy, 'druck');
@@ -224,13 +226,21 @@ export function bemesseDruckstab(e: DruckstabEingabe): DruckstabErgebnis {
   const NcRd = (p.A * 100 * fy) / EC3_NA_DE.gammaM0 / 1000; // Gl. (6.10), Klasse 1–3
   const massgebend: 'y' | 'z' = z.NbRd <= y.NbRd ? 'z' : 'y';
   const NbRd = Math.min(y.NbRd, z.NbRd);
-  const ausnutzung = NbRd > 0 ? e.nEd / NbRd : 0;
   const lqMax = Math.max(y.lambdaQuer, z.lambdaQuer);
   const ncrMin = Math.min(y.Ncr, z.Ncr);
   const vernachlaessigbar = lqMax <= 0.2 || (ncrMin > 0 && e.nEd / ncrMin <= 0.04);
+  // Runde 5: Darf der Knicknachweis nach 6.3.1.2(4) entfallen, ist der Querschnittsnachweis N_c,Rd = A·f_y/γ_M0 maßgebend
+  // (bisher wurde N_b,Rd mit χ = 1 und γ_M1 = 1,1 weiter verwendet, also 10 % zu ungünstig).
+  const NRd = vernachlaessigbar ? NcRd : Math.min(NbRd, NcRd);
+  const ausnutzung = NRd > 0 ? e.nEd / NRd : 0;
 
   if (klasse.klasse === 4) {
-    hinweise.push({ stufe: 'warnung', feld: 'klasse', text: `Querschnittsklasse 4 unter Druck (Steg c/t = ${formatDeZahl(klasse.steg.ct, 1)} > 42ε = ${formatDeZahl(klasse.steg.grenzen[2], 1)}): Nachweis mit A_eff nach DIN EN 1993-1-5. Das Ergebnis mit der Bruttofläche A liegt auf der unsicheren Seite.` });
+    // Runde 5: das maßgebende Teil benennen (bisher immer der Steg, auch bei Klasse 4 aus dem Flansch)
+    const teile = [
+      ...(klasse.steg.klasse === 4 ? [`Steg c/t = ${formatDeZahl(klasse.steg.ct, 1)} > 42ε = ${formatDeZahl(klasse.steg.grenzen[2], 1)}`] : []),
+      ...(klasse.flansch.klasse === 4 ? [`Flansch c/t = ${formatDeZahl(klasse.flansch.ct, 1)} > 14ε = ${formatDeZahl(klasse.flansch.grenzen[2], 1)}`] : []),
+    ];
+    hinweise.push({ stufe: 'warnung', feld: 'klasse', text: `Querschnittsklasse 4 unter Druck (${teile.join('; ')}): Nachweis mit A_eff nach DIN EN 1993-1-5. Das Ergebnis mit der Bruttofläche A liegt auf der unsicheren Seite.` });
   }
   if (kY !== vorschlagY || kZ !== vorschlagZ) {
     hinweise.push({ stufe: 'warnung', feld: 'knicklinie', text: `Gewählte Knicklinien (y: ${kY}, z: ${kZ}) weichen von Tab. 6.2 ab (y: ${vorschlagY}, z: ${vorschlagZ}).` });
@@ -241,7 +251,7 @@ export function bemesseDruckstab(e: DruckstabEingabe): DruckstabErgebnis {
   if (lqMax > 2) {
     hinweise.push({ stufe: 'warnung', feld: 'schlank', text: `Sehr schlanker Stab (λ̄ = ${formatDeZahl(lqMax, 2)}): Die Tragfähigkeit liegt weit unter A·f_y; ein steiferes Profil oder kürzere Knicklängen sind meist wirtschaftlicher.` });
   }
-  return { p, fy, eps: klasse.eps, lambda1: lambda1(fy), klasse, NcRd, y, z, vorschlagY, vorschlagZ, NbRd, massgebend, ausnutzung, vernachlaessigbar, hinweise };
+  return { p, fy, eps: klasse.eps, lambda1: lambda1(fy), klasse, NcRd, y, z, vorschlagY, vorschlagZ, NbRd, NRd, massgebend, ausnutzung, vernachlaessigbar, hinweise };
 }
 
 // ---------------------------------------------------------------------------------------------

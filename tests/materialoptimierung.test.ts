@@ -1,5 +1,5 @@
 // Rechenkern Materialoptimierung (Z3): THG-Vergleich Referenz/optimiertes Bauteil
-import { dafstbVergleich, effizienzKlasseThg, DAFSTB_BAUTEILE, type DafstbBauteil, type DafstbZement } from '../src/calc/materialoptimierung';
+import { dafstbVergleich, effizienzKlasseThg, DAFSTB_BAUTEILE, STAHL_GWP, ABSCHLAG_56D, type DafstbBauteil, type DafstbZement } from '../src/calc/materialoptimierung';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -32,6 +32,13 @@ for (const bt of Object.keys(DAFSTB_BAUTEILE) as DafstbBauteil[]) for (const bw 
   if (zi > 0) pruefe(bof.optTotalGwp <= dafstbVergleich({ bauteil: bt, bauweise: bw, zement: Z[zi - 1], pruefalter: pa, stahlRoute: 'standard_bof' }).optTotalGwp, `${bt}/${bw}: Zementreihe`);
   if (pa === 56) pruefe(bof.optTotalGwp <= dafstbVergleich({ bauteil: bt, bauweise: bw, zement: Z[zi], pruefalter: 28, stahlRoute: 'standard_bof' }).optTotalGwp, `${bt}/${bw}: Prüfalter`);
   n++;
+}
+
+// Runde 5 (Z22): Lehrwerte sind als solche gekennzeichnet (Konstanten und Hinweis im Ergebnis)
+{
+  const r = dafstbVergleich({ bauteil: 'decke', bauweise: 'massiv', zement: 'cem3_a', pruefalter: 28, stahlRoute: 'gruen_eaf' });
+  pruefe(r.hinweise.some(x => x.feld === 'gwp' && /Lehrwerte/.test(x.text)), 'Lehrwert-Hinweis');
+  pruefe(STAHL_GWP.standard_bof === 0.98 && STAHL_GWP.gruen_eaf === 0.42 && ABSCHLAG_56D === 0.91 && r.optSteelGwpTotal === Math.round(2520 * 0.42), 'Lehrwert-Konstanten unverändert');
 }
 
 if (fehler.length) { for (const x of fehler) console.error(`FAIL: ${x}`); process.exit(1); }

@@ -1,5 +1,5 @@
 // Rechenkern Korrosionsschutz: Zinkschutzdauer, Duplex, Schutzdauerklassen (AP 3.13)
-import { zinkSchutzdauer, schutzdauerklasse, zinkMindestschicht, KORROSIVITAET, KATEGORIEN, KLASSEN, type ZinkEingabe } from '../src/calc/korrosionsschutz';
+import { zinkSchutzdauer, schutzdauerklasse, zinkMindestschicht, abnahme8020, ZINK_1461_GUSS, KORROSIVITAET, KATEGORIEN, KLASSEN, type ZinkEingabe } from '../src/calc/korrosionsschutz';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -54,6 +54,18 @@ for (let i = 0; i < 1000; i++) {
   const werte = [r.tMin, r.tDuplexMin, r.tMassgebend, r.rMin, r.rMax, r.tMax ?? 0, r.tDuplexMax ?? 0];
   if (!werte.every(Number.isFinite)) { pruefe(false, `Fuzz ${i}`); break; }
 }
+
+// Runde 5: DIN EN ISO 1461:2022, Tab. 3 (öffentlich: Wedge Galvanizing, „HDG to EN ISO 1461:2022“, 10/2024)
+pruefe(zinkMindestschicht(8).mittel === 85 && zinkMindestschicht(8).oertlich === 70 && zinkMindestschicht(5).mittel === 70 && zinkMindestschicht(2).mittel === 55 && zinkMindestschicht(1).mittel === 45, 'ISO 1461 Tab. 3 Stahl');
+pruefe(ZINK_1461_GUSS[0].mittel === 80 && ZINK_1461_GUSS[1].oertlich === 60, 'ISO 1461 Tab. 3 Guss');
+// 80/20-Regel (ISO 12944-5/-7, ISO 19840): NDFT 240 µm, 10 Messwerte, 2 unter NDFT (20 %), Minimum 200 µm ≥ 192 → erfüllt
+const m10 = [250, 260, 245, 240, 230, 200, 255, 270, 248, 262];
+const a1 = abnahme8020(m10, 240);
+pruefe(a1.erfuellt && a1.anteilUnterNdft === 20 && a1.grenze80 === 192 && a1.minimum === 200, `80/20 erfüllt ${JSON.stringify(a1)}`);
+// Grenze: ein Wert unter 80 % (190 < 192) → nicht erfüllt; 3 von 10 unter NDFT (30 %) → nicht erfüllt
+pruefe(!abnahme8020(m10.map(w => (w === 200 ? 190 : w)), 240).erfuellt && abnahme8020(m10.map(w => (w === 200 ? 192 : w)), 240).erfuellt, '80-%-Grenze');
+pruefe(!abnahme8020([250, 260, 235, 240, 230, 225, 255, 270, 248, 262], 240).erfuellt, '30 % unter NDFT');
+pruefe(abnahme8020([], 240).hinweise.some(h => h.stufe === 'fehler') && abnahme8020([200], 0).hinweise.some(h => h.stufe === 'fehler'), 'leere Messreihe / NDFT 0 → Fehler');
 
 if (fehler.length) { for (const x of fehler) console.error(`FAIL: ${x}`); process.exit(1); }
 console.log('OK: Korrosionsschutz');

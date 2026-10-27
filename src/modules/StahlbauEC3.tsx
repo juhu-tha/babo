@@ -350,8 +350,8 @@ export default function StahlbauEC3() {
                     </table>
                   </div>
                   <div className={`mt-4 p-4 rounded-xl border text-sm ${ok ? 'bg-emerald-50 border-emerald-200 text-emerald-950' : 'bg-red-50 border-red-200 text-red-950'}`} role="status">
-                    <strong>{ok ? inhalt.werte.nachweisErfüllt : inhalt.werte.nachweisNichtErfüllt}:</strong><MdText text={inhalt.texte.nEdNB} />{formatDeZahl(nEd, 0)}/{formatDeZahl(r.NbRd, 1)} = <strong>{formatDeZahl(r.ausnutzung, 2)}</strong>
-                    {' '}({formatDeZahl(r.ausnutzung * 100, 0)}<MdText text={inhalt.texte.ausnutzungMaßgebendAchse} />{r.massgebend}–{r.massgebend})
+                    <strong>{ok ? inhalt.werte.nachweisErfüllt : inhalt.werte.nachweisNichtErfüllt}:</strong><MdText text={inhalt.texte.nEdNB} />{formatDeZahl(nEd, 0)}/{formatDeZahl(r.NRd, 1)} = <strong>{formatDeZahl(r.ausnutzung, 2)}</strong>
+                    {' '}({formatDeZahl(r.ausnutzung * 100, 0)}<MdText text={inhalt.texte.ausnutzungMaßgebendAchse} />{r.massgebend}–{r.massgebend}{r.vernachlaessigbar ? inhalt.werte.querschnittMassgebendNcRd : ""})
                   </div>
                   <EingabeHinweise hinweise={r.hinweise} />
                 </section>

@@ -1,12 +1,13 @@
 import { useState, useMemo } from 'react';
 import { Trees } from 'lucide-react';
-import { bemesseDruckstab, bemesseQuerdruck, KMOD, type KLED, type Nutzungsklasse, type Querdruckfall } from '@/src/calc/holzbau';
+import { bemesseDruckstab, bemesseQuerdruck, holzschraube, type KLED, type Nutzungsklasse, type Querdruckfall } from '@/src/calc/holzbau';
 import { bspSchwingung, BSP_AUFBAUTEN, type EiVerfahren, type Estrichart } from '@/src/calc/bspSchwingung';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Querverweis } from '@/src/components/ui/Querverweis';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { woodMaterials, dataholzConstructions } from './holzbaubeta/daten';
+import { HOLZ_EN338, holzKennwerte } from '@/src/data/kennwerte';
 import HolzbauInfo from './holzbaubeta/HolzbauInfo';
 import HolzbauWerkstoffe from './holzbaubeta/HolzbauWerkstoffe';
 import HolzbauKonstruktion from './holzbaubeta/HolzbauKonstruktion';
@@ -125,69 +126,20 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
 
   // Derived calculations for added modules
   const qpResults = useMemo(() => {
-    const fc90kMap: Record<string, number> = { C24: 2.5, C30: 2.7, D30: 8.0, D40: 8.8, GL24h: 2.5, GL28c: 2.5, GL30h: 2.5 };
     return bemesseQuerdruck({
-      F: qpForce, b: qpB, l: qpL, fall: qpConfig as Querdruckfall, ueberstand: qpOverhang, fc90k: fc90kMap[woodClass] ?? 2.5,
+      F: qpForce, b: qpB, l: qpL, fall: qpConfig as Querdruckfall, ueberstand: qpOverhang, fc90k: holzKennwerte(woodClass)?.fc90k ?? HOLZ_EN338.C24.fc90k, // DIN EN 338:2016 / EN 14080 (zentral)
       art: woodClass.startsWith('GL') ? 'bsh' : woodClass.startsWith('C') ? 'nadelvollholz' : 'laubholz',
       nkl: serviceClass as Nutzungsklasse, kled: loadDuration as KLED,
     });
   }, [woodClass, serviceClass, loadDuration, qpForce, qpB, qpL, qpConfig, qpOverhang]);
 
+  // Holzschrauben nach DIN EN 1995-1-1, 8.7 (Rechenkern src/calc/holzbau.ts): Herausziehen (8.38)–(8.41), Abscheren (8.2.2)
   const connResults = useMemo(() => {
     const material = woodMaterials.find(m => m.class === connWoodClass) || woodMaterials[0];
-    const rho_k = material.rho_k;
-
-    // 1. Axial Withdrawal Capacity F_ax,Rk
-    const f_ax_k = 12.0; // N/mm² Lehrwert – reale Werte nach ETA der Schraube
-    const rad = (connAngle * Math.PI) / 180;
-    const factor_alpha = 1.0 / (1.2 * Math.pow(Math.cos(rad), 2) + Math.pow(Math.sin(rad), 2));
-    const factor_density = Math.pow(rho_k / 350, 0.8);
-
-    const f_ax_alpha_k = f_ax_k * factor_alpha * factor_density; // N/mm²
-    const F_ax_Rk_single_N = f_ax_alpha_k * connD * connLef; // N
-    const F_ax_Rk_total_N = connCount * F_ax_Rk_single_N;
-    const F_ax_Rk_total_kN = F_ax_Rk_total_N / 1000;
-
-    // k_mod nach DIN EN 1995-1-1, Tab. 3.1 aus gewählter NKL und KLED der Verbindung
-    const k_mod = KMOD[connServiceClass][connLoadDuration];
-    const F_ax_Rd_total_kN = (k_mod * F_ax_Rk_total_kN) / 1.3;
-
-    // 2. Shear Capacity (with rope effect)
-    const f_h_k = 0.082 * (1 - 0.01 * connD) * rho_k; // N/mm²
-    const f_uk = 400; // N/mm²
-    const M_y_Rk = 0.3 * f_uk * Math.pow(connD, 2.6); // Nmm
-
-    const F_v_Rk_1 = f_h_k * connLef * connD; 
-    const johansen_2 = 1.15 * Math.sqrt(2 * M_y_Rk * f_h_k * connD);
-    // Seileffekt F_ax,Rk/4, für Schrauben auf 100 % des Johansen-Anteils begrenzt (EC5 8.2.2)
-    const rope_effect = Math.min(0.25 * F_ax_Rk_single_N, johansen_2);
-    const F_v_Rk_2 = johansen_2 + rope_effect;
-
-    const F_v_Rk_single_N = Math.min(F_v_Rk_1, F_v_Rk_2);
-    const F_v_Rk_total_N = connCount * F_v_Rk_single_N;
-    const F_v_Rk_total_kN = F_v_Rk_total_N / 1000;
-    const F_v_Rd_total_kN = (k_mod * F_v_Rk_total_kN) / 1.3;
-
-    const utilAxial = (connForce / F_ax_Rd_total_kN) * 100;
-    const utilShear = (connForce / F_v_Rd_total_kN) * 100;
-
-    return {
-      k_mod,
-      rho_k,
-      factor_alpha,
-      f_ax_alpha_k,
-      F_ax_Rk_total_kN,
-      F_ax_Rd_total_kN,
-      f_h_k,
-      M_y_Rk,
-      rope_effect,
-      F_v_Rk_total_kN,
-      F_v_Rd_total_kN,
-      utilAxial,
-      utilShear,
-      isAxialUnsafe: utilAxial > 100,
-      isShearUnsafe: utilShear > 100
-    };
+    const r = holzschraube({ rhok: material.rho_k, d: connD, lef: connLef, alpha: connAngle, n: connCount, nkl: connServiceClass, kled: connLoadDuration });
+    const utilAxial = r.F_ax_Rd_total_kN > 0 ? (connForce / r.F_ax_Rd_total_kN) * 100 : 0;
+    const utilShear = r.F_v_Rd_total_kN > 0 ? (connForce / r.F_v_Rd_total_kN) * 100 : 0;
+    return { ...r, utilAxial, utilShear, isAxialUnsafe: utilAxial > 100, isShearUnsafe: utilShear > 100 };
   }, [connWoodClass, connD, connLef, connAngle, connCount, connForce, connServiceClass, connLoadDuration]);
 
   const fireResults = useMemo(() => {

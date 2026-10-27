@@ -1,5 +1,5 @@
 // Rechenkern Erdbau (Z3): vereinfachte Bodengruppe nach DIN 18196 und Frostschutzdicke nach RStO-Schema
-import { bodengruppe, frostschutz, type BodenEingabe, type RstoKlasse } from '../src/calc/erdbau';
+import { bodengruppe, frostschutz, KIES_GRENZE_18196, KORNGRENZEN_14688, type BodenEingabe, type RstoKlasse } from '../src/calc/erdbau';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -9,10 +9,15 @@ console.log('--- Test: Erdbau ---');
 const B: BodenEingabe = { feinanteil: 10, kiesanteil: 60, sandanteil: 40, organik: 'keine', plastizitaet: 'nicht' };
 const start = bodengruppe(B);
 pruefe(start.gueltig && start.gruppe === 'GU / GT' && start.frost === 'F2', `Startwerte ${start.gruppe}`);
+// Runde 5, DIN 18196 (öffentliche Wiedergabe FORUM VERLAG „Bodengruppen nach DIN 18196“): Kies, wenn der Massenanteil ≤ 2 mm
+// höchstens 60 % beträgt (Kieskorn ≥ 40 % der Gesamtmasse); feinkörnig ab 40 % Feinkorn (≥ 40 %, bisher > 40 %).
+// Beispiel: Feinkorn 10 %, Kies 45 % des Grobkorns → 0,45 · 90 = 40,5 % ≥ 40 → GU/GT; Kies 44 % → 39,6 % → SU/ST
 const F: [number, number, string, string][] = [
   [5, 60, 'GW / GI / GE', 'F1'], [5, 40, 'SW / SI / SE', 'F1'], [5.1, 40, 'SU / ST', 'F2'], [15, 60, 'GU / GT', 'F2'],
-  [15.1, 60, 'GU* / GT*', 'F3'], [40, 40, 'SU* / ST*', 'F3'], [40.1, 60, 'UL / UM', 'F3'], [0, 50, 'SW / SI / SE', 'F1'],
+  [15.1, 60, 'GU* / GT*', 'F3'], [39.9, 40, 'SU* / ST*', 'F3'], [40, 40, 'UL / UM', 'F3'], [40.1, 60, 'UL / UM', 'F3'],
+  [0, 50, 'GW / GI / GE', 'F1'], [0, 40, 'GW / GI / GE', 'F1'], [0, 39.9, 'SW / SI / SE', 'F1'], [10, 45, 'GU / GT', 'F2'], [10, 44, 'SU / ST', 'F2'],
 ];
+pruefe(KIES_GRENZE_18196 === 40 && KORNGRENZEN_14688.schluff === 0.063 && KORNGRENZEN_14688.sand === 2 && KORNGRENZEN_14688.kies === 63, 'Korngrenzen DIN EN ISO 14688-1');
 for (const [fein, kies, gruppe, frost] of F) {
   const r = bodengruppe({ ...B, feinanteil: fein, kiesanteil: kies, sandanteil: 100 - kies });
   pruefe(r.gruppe === gruppe && r.frost === frost, `Feinkorn ${fein} %, Kies ${kies}: ${r.gruppe} ≠ ${gruppe}`);

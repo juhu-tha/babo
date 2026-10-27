@@ -79,7 +79,11 @@ export function grubbsKritisch(n: number): number {
 /** Fraktilfaktor k_n für das 5-%-Quantil, V_X unbekannt, DIN EN 1990 Tab. D1 */
 export const KN_TAB: readonly (readonly [number, number])[] = [[3, 3.37], [4, 2.63], [5, 2.33], [6, 2.18], [8, 2.00], [10, 1.92], [20, 1.76], [30, 1.73], [Infinity, 1.64]];
 
-/** k_n für n Werte (n < 3 → NaN), Zwischenwerte linear in 1/n. */
+/**
+ * k_n für n Werte (n < 3 → NaN), Zwischenwerte linear in 1/n. Begründung (Runde 5): Tab. D1 folgt
+ * k_n = t_(n−1; 0,95)·√(1 + 1/n) (DIN EN 1990, D7.2, V_X unbekannt); das Student-Quantil ist nahezu linear in 1/n,
+ * z. B. n = 7: t₆ = 1,943 → k_n = 2,077 (Interpolation in 1/n: 2,077; in n: 2,090). Geprüft in tests/statistik.test.ts.
+ */
 export function fraktilfaktorKn(n: number): number {
   if (!(n >= 3)) return NaN;
   const inv = (x: number) => (Number.isFinite(x) ? 1 / x : 0);

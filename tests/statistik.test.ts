@@ -78,5 +78,16 @@ pruefe(gepr > 900, `Fuzz: nur ${gepr} geprüfte Fälle`);
 const g2 = ausreisserGrenzen(stichprobe(serie), '2sigma');
 pruefe(nahe((g2.unten + g2.oben) / 2, stichprobe(serie).mittelwert, 1e-12), '2σ symmetrisch');
 
+// Runde 5 (Z22): Interpolation von k_n in 1/n belegt – Tab. D1 folgt k_n = t_(n−1; 0,95)·√(1 + 1/n) (DIN EN 1990, D7.2, V_X unbekannt).
+// Student-Quantile t_0,95 (öffentliche t-Tabellen): ν = 2: 2,920; 5: 2,015; 6: 1,943; 7: 1,895; 9: 1,833; 14: 1,761; 29: 1,699; 49: 1,677
+const T95: [number, number][] = [[3, 2.920], [6, 2.015], [7, 1.943], [8, 1.895], [10, 1.833], [15, 1.761], [30, 1.699], [50, 1.677]];
+for (const [n, t] of T95) {
+  const exakt = t * Math.sqrt(1 + 1 / n);
+  pruefe(Math.abs(fraktilfaktorKn(n) - exakt) < 0.011, // Tabellenwerte auf 2 Stellen gerundet
+    `k_n(${n}) = ${fraktilfaktorKn(n)} ≈ t·√(1+1/n) = ${exakt}`);
+}
+// Interpolation in n wäre bei n = 7 schlechter (2,090 statt exakt 2,077)
+pruefe(Math.abs(fraktilfaktorKn(7) - 1.943 * Math.sqrt(8 / 7)) < Math.abs((2.18 + 2.00) / 2 - 1.943 * Math.sqrt(8 / 7)), '1/n genauer als n');
+
 if (fehler.length) { for (const x of fehler) console.error(`FAIL: ${x}`); process.exit(1); }
 console.log(`OK: Statistik (${gepr} Fuzz-Fälle)`);

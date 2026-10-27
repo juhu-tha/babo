@@ -36,7 +36,11 @@ pruefe(f.maxAbstandM === 5 && f.ok && f.duebel === 15 && f.anker === 4 && !beton
 //    V_R = 1,1·(6,901 − 0,0217)/0,95 = 7,966 m³; nutzbar 7,567 m³; Länge 7,966/0,72 = 11,06 m; 32 Boxen
 const rg = rigole({ flaecheM2: 355, psi: 0.9, regenspende: 240, dauerMin: 15, speicherKoeff: 0.95 });
 pruefe(nahe(rg.aRed, 319.5, 1e-12) && nahe(rg.qZu, 7.668, 1e-12) && nahe(rg.vZu, 6.9012, 1e-12) && nahe(rg.aSohle, 2.41542, 1e-12), `Rigole Zufluss ${JSON.stringify(rg)}`);
-pruefe(nahe(rg.vSicker, 0.0217388, 1e-7) && nahe(rg.vRigole, 7.96569, 1e-5) && nahe(rg.vNutz, 7.56741, 1e-5) && nahe(rg.laengeM, 11.0635, 1e-4) && rg.boxen === 32, `Rigole Volumen ${rg.vRigole} ${rg.boxen}`);
+// Runde 5: DWA-A 138 – Versickerung mit k_f,u = k_f/2 = 5·10⁻⁶ m/s (öffentlich: WWA Regensburg/LfU, Folien „DWA-A 138“)
+//   Q_s = 5·10⁻⁶ · 2,41542 · 1000 = 0,012077 l/s; V_s = 0,012077 · 900/1000 = 0,010869 m³
+//   V_R = 1,1 · (6,9012 − 0,010869)/0,95 = 7,97828 m³; L = 7,97828/0,72 = 11,0809 m
+pruefe(rg.kfu === 5e-6 && nahe(rg.vSicker, 0.0108694, 1e-7) && nahe(rg.vRigole, 7.97828, 1e-5) && nahe(rg.vNutz, 7.57936, 1e-5) && nahe(rg.laengeM, 11.0809, 1e-4) && rg.boxen === 32, `Rigole Volumen ${rg.vRigole} ${rg.boxen}`);
+pruefe(nahe(rigole({ flaecheM2: 355, psi: 0.9, regenspende: 240, dauerMin: 15, speicherKoeff: 0.95, kf: 1e-4 }).qSicker, 0.5e-4 * 2.41542 * 1000, 1e-9), 'k_f/2 auch bei vorgegebenem k_f');
 pruefe(rigole({ flaecheM2: 0, psi: 0.9, regenspende: 240, dauerMin: 15, speicherKoeff: 0.3 }).vRigole === 0.1 && !rigole({ flaecheM2: 355, psi: 0.9, regenspende: 240, dauerMin: 15, speicherKoeff: 0 }).gueltig, 'Mindestvolumen, s_R = 0 → Fehler');
 
 // 5. Spritzbeton (Startwerte): R = 4,5 m, p = 0,15 N/mm², d = 15 cm, C25/30
