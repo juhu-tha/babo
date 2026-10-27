@@ -1,3 +1,4 @@
+import { FCD_HOCHFEST_AKTIV } from '../src/data/kennwerte';
 // Rechenkern Biegebemessung gegen unabhängige Referenzen (Umsetzungsplan Phase 4, AP 4.3/4.5)
 import { bemesseBiegung, MU_LIM_STAHL, spannungsblock, muLimit, xiLimit, type BiegungEingabe } from '../src/calc/biegung';
 
@@ -67,7 +68,7 @@ pruefe(Math.abs(muLimit(70) - 0.9 * 0.75 * 0.35 * (1 - 0.75 * 0.35 / 2)) < 1e-12
 //   Gleichgewicht C70/85 (f_cd = 0,85·70/1,5 = 39,67): F_c = η·f_cd·b·λ·x = A_s1·f_yd und M = F_c·(d − λ·x/2)
 const h70 = bemesseBiegung({ ...basis, fck: 70, med: 300 });
 // Entscheidung Prof. Huber 27.10. (vorläufig, F-Freigabe): f_cd = 0,85·70/1,5·(1,1 − 70/500) = 39,667·0,96 = 38,08 N/mm²
-pruefe(Math.abs(h70.fcd - 0.85 * 70 / 1.5 * 0.96) < 1e-9 && h70.hinweise.some(x => /1,1 − f_ck\/500/.test(x.text)), `f_cd C70/85 hochfest ${h70.fcd}`);
+pruefe(FCD_HOCHFEST_AKTIV ? (Math.abs(h70.fcd - 0.85 * 70 / 1.5 * 0.96) < 1e-9 && h70.hinweise.some(x => /1,1 − f_ck\/500/.test(x.text))) : Math.abs(h70.fcd - 0.85 * 70 / 1.5) < 1e-9, `f_cd C70/85 hochfest ${h70.fcd}`);
 pruefe(Math.abs(bemesseBiegung({ ...basis, fck: 50 }).fcd - 0.85 * 50 / 1.5) < 1e-12 && !bemesseBiegung({ ...basis, fck: 50 }).hinweise.some(x => /1,1 − f_ck/.test(x.text)), 'C50/60: keine Hochfest-Abminderung');
 const fc70 = 0.9 * h70.fcd * 300 * 0.75 * h70.x * 10;
 pruefe(h70.epsCu3 === 2.7 && h70.as2_req === 0 && Math.abs(fc70 - h70.as1_req * 100 * h70.fyd) / fc70 < 1e-9 && Math.abs(fc70 * (450 - 0.75 * h70.x * 10 / 2) / 1e6 - 300) < 1e-6, `Gleichgewicht C70/85 ${JSON.stringify({ x: h70.x, as: h70.as1_req })}`);
