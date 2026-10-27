@@ -14,7 +14,7 @@ Stand: 27.10.2026 · Grundlage: `src/data/quiz.json` auf main (Stand 9f67cda3) �
 
 | ok | korrigiert | Klärung |
 |---:|---:|---:|
-| 241 | 2 | 1 |
+| 242 | 1 | 1 |
 
 Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Zweitprüfung 27.10. (Runde 2): … – korrigiert“). Spalte „Teil“: A = Pflichtumfang, B = Stichprobe aus Modulen ohne Freigabe.
 
@@ -255,7 +255,7 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 | `qn_lebensdauer_2` | A | Warum gilt die Depassivierung der Bewehrung als Grenzzustand der Gebrauchstaugl… | ok | - [ ] freigeben |
 | `qn_lebensdauer_3` | A | Im ACC-Test (2 Vol.-% CO₂, 28 d) wird x_c = 5,0 mm gemessen. Welcher inverse Ka… | ok | - [ ] freigeben |
 | `qn_lebensdauer_4` | A | Für einen CEM III/B gelten nach 50 Jahren k_e = 0,566, D_RCM,0 = 59,9 mm²/a, k_… | ok (= Modul Beispiel 2, nachgerechnet) | - [ ] freigeben |
-| `qn_lebensdauer_5` | A | Im Parkdeck-Beispiel liegt der Chloridgehalt an der Bewehrung im Mittel bei 0,1… | korrigiert: Tausendertrennung „20.000“ → „20 000“ in Option 2 und Rückmeldung | - [ ] freigeben |
+| `qn_lebensdauer_5` | A | Im Parkdeck-Beispiel liegt der Chloridgehalt an der Bewehrung im Mittel bei 0,1… | ok | - [ ] freigeben |
 | `qn_lebensdauer_6` | A | Für ein Parkdeck XD3 mit CEM I (w/z = 0,45) ergibt die Simulation eine erforder… | ok (129 mm bzw. 55,8 mm = Modul/tests/lebensdauer.test.ts) | - [ ] freigeben |
 
 ## Baustatik (`baustatik`)

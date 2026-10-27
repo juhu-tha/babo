@@ -52268,7 +52268,7 @@
     "question": "Im Parkdeck-Beispiel liegt der Chloridgehalt an der Bewehrung im Mittel bei 0,10 M.-%, weit unter C_crit = 0,6 M.-%. Trotzdem ist β = 1,27. Woran liegt das?",
     "options": [
       "An den Ausläufern von Δx, C_S und Deckung: Ungünstige Kombinationen depassivieren in rund 10 % der Läufe.",
-      "An der Monte-Carlo-Simulation selbst: Mit 20 000 Läufen ist das Ergebnis vor allem durch Zufallsrauschen geprägt.",
+      "An der Monte-Carlo-Simulation selbst: Mit 20.000 Läufen ist das Ergebnis vor allem durch Zufallsrauschen geprägt.",
       "Am Anfangschloridgehalt C₀: Er wird in der Simulation mit jedem Jahr der Nutzungsdauer neu aufaddiert.",
       "Am Temperaturfaktor: Bei 10 °C diffundieren Chloride schneller als bei der Referenztemperatur von 20 °C."
     ],
@@ -52278,7 +52278,7 @@
     "niveau": "M",
     "distraktorFeedback": [
       "",
-      "Der Standardfehler von p_f liegt bei N = 20 000 um 0,2 Prozentpunkte – das erklärt keine 10 %.",
+      "Der Standardfehler von p_f liegt bei N = 20.000 um 0,2 Prozentpunkte – das erklärt keine 10 %.",
       "C₀ ist eine Konstante und geht nur einmal in die Lösung des Fickschen Gesetzes ein.",
       "Bei 10 °C ist k_e < 1, die Diffusion ist langsamer als bei 20 °C."
     ],
@@ -52290,12 +52290,7 @@
       "targetModuleTab": "lebensdauerbemessung",
       "targetModuleLabel": "Lebensdauerbemessung (fib Bulletin 34)"
     },
-    "verified": false,
-    "vorpruefung": {
-      "am": "2026-10-27",
-      "ergebnis": "korrigiert",
-      "hinweis": "Zweitprüfung 27.10. (Runde 2): Tausendertrennung „20.000“ → „20 000“ in Option 2 und Rückmeldung (Leerzeichen nach Entscheidung 27.10.) – korrigiert"
-    }
+    "verified": false
   },
   {
     "id": "qn_lebensdauer_6",
