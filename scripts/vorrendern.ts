@@ -8,7 +8,7 @@
  *   3. Anfang behalten: Rahmen, Modulkopf (Prüfvermerk, Lernziele, Kurzfassung, Erkundung, Hinweise) und den
  *      ersten Abschnitt des Inhalts (Budget BUDGET); Menüeinträge und Fußzeile kommen erst mit React.
  *   4. In dist/index.html statt der Startseiten-Schale einsetzen, Titel/Beschreibung/kanonische Adresse je Modul
- *      setzen → dist/modul/<id>.html; Liste und Aliase → dist/modul/routen.json (für server.ts).
+ *      setzen → dist/modul/<id>.html; Liste, Aliase und inaktive Adressen → dist/modul/routen.json (für server.ts).
  * Die Seite ist wie die Startseiten-Schale `inert` und nur sichtbar, wenn scripts/startschale-boot.js sie zur
  * Adresse und den Einstellungen passend findet; React ersetzt sie (src/main.tsx wartet dafür die Chunks ab).
  * Abschalten (z. B. für schnelle Probe-Builds): BB_OHNE_VORRENDERN=1.
@@ -109,6 +109,7 @@ interface Eintrag {
   routen: () => RouteInfo[];
   aliase: Readonly<Record<string, string>>;
   bekannt: readonly string[];
+  inaktiv: readonly string[];
   rendere: (id: string) => Promise<{ html: string; fehler: string[] }>;
 }
 
@@ -161,7 +162,7 @@ export async function vorrendern({ wurzel = process.cwd(), dist = path.join(wurz
       meldungen.push(`${r.id}: nicht vorgerendert – ${(f instanceof Error ? f.message : String(f)).slice(0, 200)}`);
     }
   }
-  fs.writeFileSync(path.join(zielDir, ROUTEN_DATEI), JSON.stringify({ ids, bekannt: eintrag.bekannt, aliase: eintrag.aliase }) + '\n');
+  fs.writeFileSync(path.join(zielDir, ROUTEN_DATEI), JSON.stringify({ ids, bekannt: eintrag.bekannt, aliase: eintrag.aliase, inaktiv: eintrag.inaktiv }) + '\n');
   fs.rmSync(ssrDir, { recursive: true, force: true });
   const s = ((Date.now() - start) / 1000).toFixed(1);
   console.log(`vorrendern: ${ids.length} Modulseiten nach dist/modul/ (Ø ${(bytes / Math.max(1, ids.length) / 1024).toFixed(0)} kB) in ${s} s`);

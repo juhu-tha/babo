@@ -22,6 +22,7 @@ import fs from 'fs';
 import path from 'path';
 import { createRequire } from 'module';
 import { seitenUrl } from './seitenUrl.mjs';
+import { inaktiveIds } from '../suchindex-routen.mjs';
 
 // lokal installiert (CI: npm i --no-save) oder über NODE_PATH (createRequire beachtet NODE_PATH, import() nicht)
 const lade = async n => { try { return await import(n); } catch { return createRequire(import.meta.url)(n); } };
@@ -44,7 +45,8 @@ const anteil = liste => liste.filter((_, i) => i % TEIL_N === TEIL_K - 1);
 
 const reg = fs.readFileSync(path.join(ROOT, 'src/registry/modules.ts'), 'utf8');
 const modulTeil = reg.slice(reg.indexOf('export const MODULE = ['), reg.indexOf('] as const satisfies readonly ModulEintrag[]'));
-const routen = [...modulTeil.matchAll(/^ {2}\{ id: '([a-z0-9_-]+)'/gm)].map(m => m[1]).filter(id => !id.startsWith('divider_') && id !== 'admin');
+const inaktiv = inaktiveIds(reg); // abgeschaltete Seiten (INAKTIVE_GRUPPEN) liefern nur die 404-Hinweisseite
+const routen = [...modulTeil.matchAll(/^ {2}\{ id: '([a-z0-9_-]+)'/gm)].map(m => m[1]).filter(id => !id.startsWith('divider_') && id !== 'admin' && !inaktiv.includes(id));
 const DUNKEL = ['start', 'mischungsberechnung', 'oekobilanz_lca', 'bauphysik', 'expositionsklassen', 'glossar', 'abfaelle', 'aufgaben_quiz', 'stahlbeton_bemessung', 'holz'];
 
 const exe = process.env.CHROMIUM_PATH || (fs.existsSync('/opt/pw-browsers/chromium') ? '/opt/pw-browsers/chromium' : undefined);

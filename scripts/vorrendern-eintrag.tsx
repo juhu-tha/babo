@@ -8,22 +8,24 @@ import { renderToPipeableStream } from 'react-dom/server';
 import App, { vorbereiten } from '../src/App';
 import { LanguageProvider } from '../src/contexts/LanguageContext';
 import type { TabId } from '../src/contexts/TabContext';
-import { MODULE, TAB_ALIASES, type ModulEintrag } from '../src/registry/modules';
+import { AKTIVE_MODULE, AKTIVE_ALIASE, INAKTIVE_ADRESSEN } from '../src/registry/modules';
 
 export interface Route { id: string; label: string; titel?: string; meta?: string }
 
-/** vorzurendernde Module: alle Registry-Einträge außer Startseite, Admin und Menütrennern */
+/** vorzurendernde Module: alle aktiven Registry-Einträge außer Startseite, Admin und Menütrennern */
 export function routen(): Route[] {
-  const alle: readonly ModulEintrag[] = MODULE;
-  return alle
+  return AKTIVE_MODULE
     .filter(m => m.id !== 'start' && m.id !== 'admin' && !m.id.startsWith('divider_'))
     .map(m => ({ id: m.id, label: m.label, titel: m.baum?.titel, meta: m.meta }));
 }
 
-export const aliase: Readonly<Record<string, string>> = TAB_ALIASES;
+export const aliase: Readonly<Record<string, string>> = AKTIVE_ALIASE;
 
-/** alle gültigen Modul-IDs (auch nicht vorgerenderte wie admin) – Server: 200 statt 404 */
-export const bekannt: readonly string[] = (MODULE as readonly ModulEintrag[]).map(m => m.id).filter(id => !id.startsWith('divider_'));
+/** alle gültigen aktiven Modul-IDs (auch nicht vorgerenderte wie admin) – Server: 200 statt 404 */
+export const bekannt: readonly string[] = AKTIVE_MODULE.map(m => m.id).filter(id => !id.startsWith('divider_'));
+
+/** inaktive Seiten und Aliase darauf (INAKTIVE_GRUPPEN) – Server: 404-Hinweisseite */
+export const inaktiv: readonly string[] = INAKTIVE_ADRESSEN;
 
 /** App-HTML (Inhalt von #root) für ein Modul; Fehler einzelner Komponenten landen in `fehler` */
 export async function rendere(id: string, zeitLimitMs = 20_000): Promise<{ html: string; fehler: string[] }> {
