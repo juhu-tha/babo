@@ -553,7 +553,7 @@ export default function Spannbeton() {
                   />
                 </div>
               </div>
-              <div className="text-[10px] text-zinc-650 space-y-0.5 font-mono pt-1 border-t border-dashed border-zinc-200">
+              <div className="text-[10px] text-zinc-650 dark:text-zinc-300 space-y-0.5 font-mono pt-1 border-t border-dashed border-zinc-200">
                 <div className="flex justify-between">
                   <span><MdText text={inhalt.texte.minderungsfaktorCcT} /></span>
                   <span className="font-bold">{formatDeZahl(materialResults.betaCc, 3)}</span>
@@ -1069,7 +1069,7 @@ export default function Spannbeton() {
                   {materialResults.slipLossPct > 0 && (
                     <div className="flex justify-between items-center bg-zinc-50 p-2 rounded border border-zinc-200">
                       <span className="font-sans font-medium text-slate-700"><MdText text={inhalt.texte.verankerungsschlupfKeileinzug} /></span>
-                      <span className="font-bold text-zinc-650">{formatDeZahl(materialResults.slipLossPct, 1)}%</span>
+                      <span className="font-bold text-zinc-650 dark:text-zinc-300">{formatDeZahl(materialResults.slipLossPct, 1)}%</span>
                     </div>
                   )}
                   <div className="flex justify-between items-center bg-blue-50/50 p-2 rounded border border-blue-100">

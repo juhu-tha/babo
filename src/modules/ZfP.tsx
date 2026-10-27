@@ -142,7 +142,7 @@ export default function ZfP() {
   // Potentialmessung
   const potentialResults = useMemo(() => {
     const stufe = potentialRisikoZfp(potential);
-    if (stufe === 'hoch') return { risk: inhalt.werte.hoch90, color: "bg-red-500" };
+    if (stufe === 'hoch') return { risk: inhalt.werte.hoch90, color: "bg-red-600" };
     if (stufe === 'mittel') return { risk: inhalt.werte.mittelUnsicher, color: "bg-yellow-500" };
     return { risk: inhalt.werte.gering10, color: "bg-green-500" };
   }, [potential]);
@@ -187,7 +187,7 @@ export default function ZfP() {
   // Thermografie
   const thermographyResults = useMemo(() => {
     const stufe = thermografieStufe(tempDiff);
-    if (stufe === 'deutlich') return { indication: inhalt.werte.deutlicherHohlraumAblösung, color: "bg-red-500" };
+    if (stufe === 'deutlich') return { indication: inhalt.werte.deutlicherHohlraumAblösung, color: "bg-red-600" };
     if (stufe === 'moeglich') return { indication: inhalt.werte.möglicheFehlstelle, color: "bg-yellow-500" };
     return { indication: inhalt.werte.keineAuffälligkeiten, color: "bg-green-500" };
   }, [tempDiff]);
@@ -199,7 +199,7 @@ export default function ZfP() {
   const radiographyResults = useMemo(() => {
     const d = durchstrahlung(thickness, radiationEnergy);
     const anzeige = {
-      schlecht: { quality: inhalt.werte.schlechtZuDickDicht, color: "bg-red-500" },
+      schlecht: { quality: inhalt.werte.schlechtZuDickDicht, color: "bg-red-600" },
       ausreichend: { quality: "Ausreichend", color: "bg-yellow-500" },
       gut: { quality: "Gut", color: "bg-green-500" },
     }[d.stufe];

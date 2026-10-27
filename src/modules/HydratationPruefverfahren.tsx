@@ -394,7 +394,7 @@ export default function HydratationPruefverfahren() {
                         <span className="text-white text-[9px] z-10"><MdText text={inhalt.texte.ptfeGussrinne1000Mm} /></span>
                         <div className="absolute left-0 top-0 bottom-0 w-2 bg-red-500" title="Festpunkt"></div>
                         <div className="absolute right-0 top-0 bottom-0 w-2 bg-emerald-500 flex items-center" title="Messanker">
-                          <span className="absolute left-4 bg-orange-400 p-1 rounded text-black text-[8px] border">LVDT Sensor</span>
+                          <span className="absolute left-4 bg-orange-400 dark:bg-orange-700 p-1 rounded text-black text-[8px] border">LVDT Sensor</span>
                         </div>
                       </div>
                       <div className="w-full flex justify-between px-10 mt-6 text-slate-400">

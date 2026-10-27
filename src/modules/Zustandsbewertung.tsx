@@ -639,6 +639,7 @@ export default function Zustandsbewertung() {
                             <button
                               type="button"
                               disabled={additionalCount <= 0}
+                              aria-label="Weitere Schäden verringern"
                               onClick={() => setAdditionalCount(prev => prev - 1)}
                               className="w-7 h-7 bg-white border border-home-grau/30 rounded flex items-center justify-center text-text-main hover:bg-home-grau/5 disabled:opacity-40"
                             >
@@ -648,6 +649,7 @@ export default function Zustandsbewertung() {
                             <button
                               type="button"
                               disabled={additionalCount >= 5}
+                              aria-label="Weitere Schäden erhöhen"
                               onClick={() => setAdditionalCount(prev => prev + 1)}
                               className="w-7 h-7 bg-white border border-home-grau/30 rounded flex items-center justify-center text-text-main hover:bg-home-grau/5 disabled:opacity-40"
                             >

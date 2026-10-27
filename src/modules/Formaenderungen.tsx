@@ -255,8 +255,6 @@ export default function Formaenderungen() {
                     </motion.div>
                     <motion.div 
                       className="absolute -top-4 flex flex-col items-center"
-                      animate={{ opacity: [0, 1, 1, 0] }}
-                      transition={{ duration: 4, repeat: Infinity, times: [0, 0.4, 0.6, 1] }}
                     >
                       <div className="text-shiraz font-bold bg-white/80 px-2 rounded"><MdText text={inhalt.texte.temperatur} /></div>
                     </motion.div>
@@ -283,8 +281,6 @@ export default function Formaenderungen() {
                     </motion.div>
                     <motion.div 
                       className="absolute -top-4 flex flex-col items-center"
-                      animate={{ opacity: [0, 1, 0, 0, 1, 0] }}
-                      transition={{ duration: 6, repeat: Infinity, times: [0, 0.2, 0.4, 0.6, 0.8, 1] }}
                     >
                       <div className="text-blue-600 font-bold bg-white/80 px-2 rounded"><MdText text={inhalt.texte.quellenSchwinden} /></div>
                     </motion.div>
@@ -312,8 +308,6 @@ export default function Formaenderungen() {
                     </motion.div>
                     <motion.div 
                       className="absolute -top-4 flex flex-col items-center"
-                      animate={{ opacity: [0, 1, 1, 0] }}
-                      transition={{ duration: 4, repeat: Infinity, times: [0, 0.5, 0.8, 1] }}
                     >
                       <div className="text-green-700 font-bold bg-white/80 px-2 rounded"><MdText text={inhalt.texte.chemischeReaktion} /></div>
                     </motion.div>
