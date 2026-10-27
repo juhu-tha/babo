@@ -1,12 +1,10 @@
 /**
  * Querkraftbemessung Rechteckquerschnitt (Stahlbeton, nicht vorgespannt) nach DIN EN 1992-1-1 + NA (DE), 6.2.
- * Vereinfachungen: z = 0,9·d, senkrechte Bügel (α = 90°), σ_cp = 0, α_cw = 1,0.
- * Hebelarm: z = 0,9·d bleibt als Lehrannahme (Entscheidung 27.10. abends). Nach DIN EN 1992-1-1/NA:2013-04, NDP 6.2.3(1)
- * darf z zusätzlich nicht größer als max(d − c_v,l − 30 mm; d − 2·c_v,l) angesetzt werden (c_v,l = Verlegemaß der
- * Längsbewehrung in der Druckzone); öffentlich wiedergegeben im Prüfamt-Tipp 15/04 „Hebelarm z der inneren Kräfte nach
- * DIN EN 1992-1-1:2011-01 in Verbindung mit DIN EN 1992-1-1/NA:2013-04“ (Bautechnisches Prüfamt, LBV Brandenburg).
- * Mit Angabe von c_v,l meldet der Kern einen Hinweis, wenn 0,9·d diese Grenze überschreitet (Ergebnis dann auf der
- * unsicheren Seite); gerechnet wird weiter mit 0,9·d.
+ * Vereinfachungen: senkrechte Bügel (α = 90°), σ_cp = 0, α_cw = 1,0.
+ * Hebelarm (Entscheidung 27.10. spät): z = min(0,9·d; max(d − c_v,l − 30 mm; d − 2·c_v,l)) nach DIN EN 1992-1-1/NA:2013-04,
+ * NCI zu 6.2.3(1) (c_v,l = Verlegemaß der Längsbewehrung in der Druckzone, Standard 3,5 cm, einstellbar); öffentlich
+ * wiedergegeben im Prüfamt-Tipp 15/04 „Hebelarm z der inneren Kräfte nach DIN EN 1992-1-1:2011-01 in Verbindung mit
+ * DIN EN 1992-1-1/NA:2013-04“ (Bautechnisches Prüfamt, LBV Brandenburg). Das Ergebnis nennt die maßgebende Grenze.
  * Ein flacheres θ als nach Gl. (6.7aDE) zulässig wird auf cot θ,max begrenzt (cot_theta_eff).
  * Reiner Rechenkern ohne React – geprüft in tests/querkraft.test.ts.
  */
@@ -26,14 +24,27 @@ export interface QuerkraftEingabe {
   asl: number; // verankerte Längsbewehrung [cm²]
   vEd: number; // [kN]
   theta: number; // Druckstrebenneigung [°]
-  /** optional: Verlegemaß der Längsbewehrung in der Druckzone c_v,l [cm] für den Hinweis zur NA-Grenze von z */
+  /** Verlegemaß der Längsbewehrung in der Druckzone c_v,l [cm] für die NA-Grenze von z; ohne Angabe 3,5 cm */
   cvl?: number;
 }
 
+/** Standardwert des Verlegemaßes c_v,l in cm (Lehrannahme, einstellbar) */
+export const QUERKRAFT_CVL_STANDARD = 3.5;
+
+/** Maßgebende Größe für den Hebelarm z */
+export type ZMassgebend = '0,9·d' | 'd − c_v,l − 30 mm' | 'd − 2·c_v,l';
+
 export interface QuerkraftErgebnis {
+  /** d und Hebelarm z = min(0,9·d; z_max,NA) [cm] */
   d: number; z: number;
-  /** obere Grenze z_max = max(d − c_v,l − 3 cm; d − 2·c_v,l) nach NA DE [cm]; NaN ohne Angabe von c_v,l */
+  /** Näherung 0,9·d [cm] */
+  z09d: number;
+  /** obere Grenze z_max = max(d − c_v,l − 3 cm; d − 2·c_v,l) nach NA DE [cm] */
   zMaxNA: number;
+  /** verwendetes c_v,l [cm] */
+  cvl: number;
+  /** welche Grenze z bestimmt */
+  zMassgebend: ZMassgebend;
   fcd: number; fyd: number; fctm: number;
   /** f_cd für V_Rd,max (ohne Hochfest-Abminderung, da in ν1 = 0,75·ν2 enthalten) [N/mm²] */
   fcd_vRdMax: number;
@@ -66,7 +77,10 @@ export function pruefeQuerkraft(e: QuerkraftEingabe): Hinweis[] {
   muss(h, e.asl >= 0, 'asl', 'Die Längsbewehrung A_sl darf nicht negativ sein.');
   muss(h, e.vEd >= 0, 'vEd', 'V_Ed muss ≥ 0 sein (Betrag der Querkraft eingeben).');
   muss(h, e.theta > 0 && e.theta < 90, 'theta', 'Die Druckstrebenneigung θ muss zwischen 0° und 90° liegen.');
-  if (e.cvl !== undefined) muss(h, Number.isFinite(e.cvl) && e.cvl > 0 && e.cvl < e.h - e.d1, 'cvl', 'Das Verlegemaß c_v,l muss größer als 0 und kleiner als die Nutzhöhe d sein.');
+  const cvl = e.cvl ?? QUERKRAFT_CVL_STANDARD;
+  muss(h, Number.isFinite(cvl) && cvl > 0 && cvl < e.h - e.d1, 'cvl', 'Das Verlegemaß c_v,l muss größer als 0 und kleiner als die Nutzhöhe d sein.');
+  if (hatFehler(h)) return h;
+  muss(h, zMaxNA(e.h - e.d1, cvl) > 0, 'cvl', 'Mit diesem Verlegemaß c_v,l ergibt sich nach NA DE kein positiver Hebelarm z; c_v,l verkleinern oder h vergrößern.');
   if (hatFehler(h)) return h;
   const cot = 1 / Math.tan((e.theta * Math.PI) / 180);
   if (cot < EC2_NA_DE.cotThetaMin - 1e-9) h.push({ stufe: 'warnung', feld: 'theta', text: 'θ > 45° (cot θ < 1,0) ist nach NA DE nicht zulässig; es gilt cot θ ≥ 1,0.' });
@@ -80,7 +94,7 @@ export function pruefeQuerkraft(e: QuerkraftEingabe): Hinweis[] {
 export function bemesseQuerkraft(e: QuerkraftEingabe): QuerkraftErgebnis {
   const hinweise = pruefeQuerkraft(e);
   const leer: QuerkraftErgebnis = {
-    d: 0, z: 0, zMaxNA: NaN, fcd: 0, fyd: 0, fctm: 0, fcd_vRdMax: 0, vRd_max: 0, vRd_c: 0, vRd_cc_kN: 0, cot_theta: 0, cot_theta_eff: 0, theta_eff_deg: 0, cot_theta_max: 0, theta_min_deg: 0,
+    d: 0, z: 0, z09d: 0, zMaxNA: NaN, cvl: e.cvl ?? QUERKRAFT_CVL_STANDARD, zMassgebend: '0,9·d', fcd: 0, fyd: 0, fctm: 0, fcd_vRdMax: 0, vRd_max: 0, vRd_c: 0, vRd_cc_kN: 0, cot_theta: 0, cot_theta_eff: 0, theta_eff_deg: 0, cot_theta_max: 0, theta_min_deg: 0,
     isCotThetaExceeded: false, asw_req: 0, asw_min: 0, asw_final: 0, isVRdcExceeded: false, isVRdMaxExceeded: false, hinweise,
   };
   if (hatFehler(hinweise)) return leer;
@@ -97,11 +111,13 @@ export function bemesseQuerkraft(e: QuerkraftEingabe): QuerkraftErgebnis {
   const hfHinweis = fcdHochfestHinweis(e.fck);
   if (hfHinweis) hinweise.push({ stufe: 'warnung', feld: 'fck', text: `${hfHinweis} V_Rd,max bleibt unverändert: ν₁ = 0,75·ν₂ enthält den Faktor bereits.` });
   const fyd = isStahl ? e.fyk / EC2_NA_DE.gammaS : e.ftk / e.gammaFRP;
-  const z = 0.9 * d_m;
-  const zMax = e.cvl === undefined ? NaN : zMaxNA(d_m * 100, e.cvl);
-  if (Number.isFinite(zMax) && 0.9 * d_m * 100 > zMax + 1e-9) {
-    hinweise.push({ stufe: 'warnung', feld: 'z', text: `Hebelarm: Nach DIN EN 1992-1-1/NA, 6.2.3(1) gilt zusätzlich z ≤ max(d − c_v,l − 30 mm; d − 2·c_v,l) = ${formatDeZahl(zMax, 1)} cm (mit c_v,l = ${formatDeZahl(e.cvl ?? NaN, 1)} cm). Der Rechner verwendet die Lehrannahme z = 0,9·d = ${formatDeZahl(0.9 * d_m * 100, 1)} cm ; z ist damit um ${formatDeZahl((0.9 * d_m * 100 / zMax - 1) * 100, 0)} % größer als nach NA zulässig – a_sw zu klein und V_Rd,max zu groß (unsichere Seite).` });
-  }
+  // Hebelarm nach NA DE, NCI zu 6.2.3(1): z = min(0,9·d; max(d − c_v,l − 30 mm; d − 2·c_v,l))
+  const cvl = e.cvl ?? QUERKRAFT_CVL_STANDARD;
+  const d_cm = d_m * 100;
+  const z09d = 0.9 * d_cm;
+  const zMax = zMaxNA(d_cm, cvl);
+  const zMassgebend: ZMassgebend = z09d <= zMax + 1e-9 ? '0,9·d' : d_cm - cvl - 3 >= d_cm - 2 * cvl ? 'd − c_v,l − 30 mm' : 'd − 2·c_v,l';
+  const z = Math.min(z09d, zMax) / 100;
 
   // cot θ-Grenze (6.7aDE) mit V_Rd,cc = 0,5·0,48·f_ck^(1/3)·b_w·z (σ_cp = 0)
   const vRd_cc_N = 0.5 * 0.48 * Math.cbrt(e.fck) * b_m * 1000 * z * 1000;
@@ -140,7 +156,7 @@ export function bemesseQuerkraft(e: QuerkraftEingabe): QuerkraftErgebnis {
     hinweise.push({ stufe: 'warnung', feld: 'vRdMax', text: 'V_Ed überschreitet die Druckstrebentragfähigkeit V_Rd,max. Querschnitt vergrößern, Betonfestigkeit erhöhen oder θ steiler wählen.' });
   }
   return {
-    d: d_m * 100, z: z * 100, zMaxNA: zMax, fcd, fyd, fctm, fcd_vRdMax: fcdOhneHf,
+    d: d_cm, z: z * 100, z09d, zMaxNA: zMax, cvl, zMassgebend, fcd, fyd, fctm, fcd_vRdMax: fcdOhneHf,
     vRd_max: vRd_max * 1000, vRd_c: vRdc * 1000, vRd_cc_kN: vRd_cc_N / 1000,
     cot_theta, cot_theta_eff, theta_eff_deg, cot_theta_max, theta_min_deg, isCotThetaExceeded,
     asw_req, asw_min, asw_final: isVRdcExceeded ? Math.max(asw_req, asw_min) : asw_min,

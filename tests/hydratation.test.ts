@@ -1,7 +1,7 @@
 // Rechenkern Hydratation, Reife und Nachbehandlung (Umsetzungsplan Phase 4, AP 4.2)
 import {
   hydratation, reissrahmen, verdunstungsrate, nachbehandlungsdauer, festigkeitsentwicklungAusR, oberflaechenTempBereich,
-  temperaturfaktorReife, DE_VREE_C, wirksamesAlterKonstant, zementbeiwertS, betaCcBegrenzt, kennwerte28, kennwerteZumAlter,
+  temperaturfaktorReife, GEWOGENE_REIFE_C, wirksamesAlterKonstant, zementbeiwertS, betaCcBegrenzt, kennwerte28, kennwerteZumAlter,
   waermeKennwerte, hydratationswaerme, hydratationsgrad, adiabatischeErwaermung, rissgefahrAusDeltaT, REIFEVERFAHREN,
   type HydratationEingabe, type ZementProfil, type Zementart, type ZementFestigkeitsklasse, type Erhaertung, type Zusatzstoff,
   type Festigkeitsentwicklung, type ExpositionNB, type OberflaechenTemp,
@@ -19,17 +19,21 @@ console.log('--- Test: Hydratation ---');
 //    exp[40 000/8,31446 · (1/293,15 − 1/303,15)] = exp(0,5414) = 1,718.
 pruefe(nahe(temperaturfaktorReife('Rastrup (1954)', 30), 2.0, 1e-12), 'Rastrup 30 °C = 2');
 pruefe(nahe(temperaturfaktorReife('Saul', 20), 1.0, 1e-12) && temperaturfaktorReife('Saul', -10) === 0, 'Saul 20 °C = 1, −10 °C = 0');
-pruefe(temperaturfaktorReife('Arrhenius', -10.5, 40) === 0 && temperaturfaktorReife('de Vree', -11) === 0, 'unter −10 °C kein Erhärten');
+pruefe(temperaturfaktorReife('Arrhenius', -10.5, 40) === 0 && temperaturfaktorReife('gewogene Reife nach NEN 5970', -11) === 0, 'unter −10 °C kein Erhärten');
 pruefe(nahe(temperaturfaktorReife('Arrhenius', 30, 40), 1.718, 0.02), `Arrhenius 30 °C ${temperaturfaktorReife('Arrhenius', 30, 40)}`);
 for (const v of REIFEVERFAHREN) pruefe(nahe(temperaturfaktorReife(v, 20, 38), 1.0, 1e-12), `${v}: k_T(20 °C) = 1`);
 //    fib Model Code 2010, Gl. (5.1-85): t_T = Δt·exp[13,65 − 4000/(273 + T)] (= temperaturFaktor in betonkennwerte.ts);
 //    der Modulansatz ist auf 20 °C bezogen und weicht davon um weniger als 2 % ab.
 for (const T of [0, 10, 30, 50]) pruefe(nahe(temperaturfaktorReife('fib Model Code 2010', T), temperaturFaktor(T), 0.02), `fib MC2010 ${T} °C`);
 pruefe(nahe(wirksamesAlterKonstant('Rastrup (1954)', 10, 14), 7, 1e-12), 'Rastrup: 14 d bei 10 °C = 7 d wirksames Alter');
-// de Vree (vorläufig, F-Freigabe): k_T = C^((T − 20)/10) mit C = 10^0,3 – unverändert gegenüber 10^(0,03·(T − 20));
-// 30 °C → C = 1,995 (praktisch Rastrup); öffentlich genannter C-Bereich der gewogenen Reife 1,15 … 1,75 (siehe DE_VREE_C)
-pruefe(nahe(DE_VREE_C, 1.9953, 1e-4) && nahe(temperaturfaktorReife('de Vree', 30), Math.pow(10, 0.03 * 10), 1e-12) && nahe(temperaturfaktorReife('de Vree', 10), 1 / DE_VREE_C, 1e-12), 'de Vree: C = 10^0,3');
-pruefe(Math.abs(temperaturfaktorReife('de Vree', 30) - temperaturfaktorReife('Rastrup (1954)', 30)) < 0.01, 'de Vree ≈ Rastrup (C ≈ 2)');
+// Gewogene Reife nach NEN 5970 (vorläufig, F-Freigabe): k_T = C^((T − 20)/10), C = 1,15 … 1,75 (Giatec 1,25 … 1,75;
+// Kasal, ČVUT 2020: 1,15 … 1,65), Standard 1,45. Handrechnung: 30 °C → 1,45; 10 °C → 1/1,45 = 0,690;
+// 14 d bei 10 °C → t_e = 14/1,45 = 9,66 d (Rastrup: 7 d). Mit C = 1,15: 30 °C → 1,15.
+pruefe(GEWOGENE_REIFE_C.standard === 1.45 && GEWOGENE_REIFE_C.min === 1.15 && GEWOGENE_REIFE_C.max === 1.75, 'C-Bereich 1,15 … 1,75, Standard 1,45');
+pruefe(nahe(temperaturfaktorReife('gewogene Reife nach NEN 5970', 30), 1.45, 1e-12) && nahe(temperaturfaktorReife('gewogene Reife nach NEN 5970', 10), 1 / 1.45, 1e-12), 'gewogene Reife: Standard C = 1,45');
+pruefe(nahe(wirksamesAlterKonstant('gewogene Reife nach NEN 5970', 10, 14), 9.655, 1e-3), `gewogene Reife: 14 d bei 10 °C ${wirksamesAlterKonstant('gewogene Reife nach NEN 5970', 10, 14)}`);
+pruefe(nahe(temperaturfaktorReife('gewogene Reife nach NEN 5970', 30, 38, 1.15), 1.15, 1e-12) && nahe(temperaturfaktorReife('gewogene Reife nach NEN 5970', 40, 38, 1.75), 1.75 ** 2, 1e-12), 'gewogene Reife: C einstellbar');
+pruefe(temperaturfaktorReife('gewogene Reife nach NEN 5970', 30) < temperaturfaktorReife('Rastrup (1954)', 30), 'gewogene Reife (C = 1,45) temperaturempfindlich schwächer als Rastrup');
 
 // 2. Festigkeitsentwicklung nach DIN EN 1992-1-1, Gl. (3.2): s = 0,25 (Zement N), t = 7 d → β_cc = exp(0,25·(1 − 2)) = 0,7788
 pruefe(nahe(betaCcBegrenzt(0.25, 7), 0.7788, 0.02), 'β_cc(7 d, s = 0,25) = 0,779');
@@ -100,7 +104,7 @@ function referenzModul(e: HydratationEingabe) {
 }
 const varianten: Partial<HydratationEingabe>[] = [
   {}, { bauteildicke: 2.0 }, { zementArt: 'CEM III', erhaertung: 'L' }, { reifeVerfahren: 'Saul', tempUmgebung: 5, tempFrischbeton: 10 },
-  { reifeVerfahren: 'de Vree', zusatzstoff: 'FA', zusatzstoffMenge: 100 }, { reifeVerfahren: 'fib Model Code 2010', zusatzstoff: 'SF', zusatzstoffMenge: 30 },
+  { reifeVerfahren: 'gewogene Reife nach NEN 5970', zusatzstoff: 'FA', zusatzstoffMenge: 100 }, { reifeVerfahren: 'fib Model Code 2010', zusatzstoff: 'SF', zusatzstoffMenge: 30 },
   { reifeVerfahren: 'Rastrup (1954)', ausschalAnteil: 80, festigkeitsklasse: '32.5' },
 ];
 for (const v of varianten) {
@@ -224,6 +228,23 @@ for (let i = 0; i < 1000; i++) {
   if (![v.E, v.Eroh].every(Number.isFinite) || v.E < 0) { pruefe(false, `Fuzz Verdunstung ${i}`); break; }
   const nb = nachbehandlungsdauer(festigkeitsentwicklungAusR(z(-0.2, 1.2)), expo[i % 3], oberflaechenTempBereich(z(-10, 40)));
   if (nb.tage !== null && !(Number.isFinite(nb.tage) && nb.tage > 0)) { pruefe(false, `Fuzz Nachbehandlung ${i}`); break; }
+}
+
+// Gewogene Reife nach NEN 5970 in der Bauteilsimulation: C einstellbar, Grenzen und Hinweise
+{
+  const g: HydratationEingabe = { ...basis, reifeVerfahren: 'gewogene Reife nach NEN 5970', tempUmgebung: 25, tempFrischbeton: 25 };
+  const rStd = hydratation(g), r145 = hydratation({ ...g, cGewogen: 1.45 }), r115 = hydratation({ ...g, cGewogen: 1.15 }), r175 = hydratation({ ...g, cGewogen: 1.75 });
+  pruefe(rStd.gueltig && rStd.te28 === r145.te28 && !rStd.hinweise.some(x => x.feld === 'cGewogen'), 'gewogene Reife: Standard C = 1,45 ohne Hinweis');
+  // Umgebung und Kern über 20 °C → größeres C ergibt größeres wirksames Alter
+  pruefe(r115.te28 < r145.te28 && r145.te28 < r175.te28, `gewogene Reife: t_e,28 steigt mit C (${r115.te28}, ${r145.te28}, ${r175.te28})`);
+  pruefe(hydratation({ ...g, cGewogen: 2.0 }).hinweise.some(x => x.stufe === 'warnung' && x.feld === 'cGewogen'), 'C außerhalb 1,15 … 1,75 → Warnung');
+  pruefe(hydratation({ ...g, cGewogen: 1.0 }).hinweise.some(x => x.stufe === 'fehler' && x.feld === 'cGewogen') && !hydratation({ ...g, cGewogen: 1.0 }).gueltig, 'C ≤ 1 → Fehler');
+  pruefe(!hydratation({ ...basis, cGewogen: 0.5 }).hinweise.some(x => x.feld === 'cGewogen'), 'C nur bei gewogener Reife geprüft');
+  for (let i = 0; i < 200; i++) {
+    const c = 1.01 + (i / 200) * 2;
+    const r = hydratation({ ...g, cGewogen: c, tempUmgebung: -20 + (i % 60), tempFrischbeton: 5 + (i % 35) });
+    if (![r.te28, r.te2d, r.fc2d, r.maxTempDiff].every(Number.isFinite)) { pruefe(false, `Fuzz gewogene Reife C = ${c}`); break; }
+  }
 }
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }

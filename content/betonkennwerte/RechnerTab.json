@@ -17,7 +17,7 @@
     "grenzspannungLinear045": "Grenzspannung linear: 0,45·fck(t₀) = ",
     "bauteildickeHBiegezugF": "Bauteildicke h (Biegezug f_ctm,fl):",
     "umgebungstemperaturTAnhangB": "Umgebungstemperatur T (Anhang B.3):",
-    "wirksamesAlterFestigkeit": "Wirksames Alter $t_T$ auch für die Festigkeitsentwicklung $f_{cm}(t)$, $f_{ctm}(t)$, $E_{cm}(t)$ (Reifeansatz nach fib Model Code 2010; aus: tatsächliches Alter $t$ nach EC2 3.1.2(6), $t_T$ nach Gl. (B.10) dann nur für Kriechen):",
+    "wirksamesAlterFestigkeit": "Wirksames Alter $t_T$ auch für die Festigkeitsentwicklung $f_{cm}(t)$, $f_{ctm}(t)$, $E_{cm}(t)$. Standard: wirksames Alter (fib MC 2010); EC2 3.1.2(6) über den Schalter (aus: tatsächliches Alter $t$, $t_T$ nach Gl. (B.10) dann nur für Kriechen):",
     "bauteillängeLLängenverkürzung": "Bauteillänge L (Längenverkürzung):",
     "dieEinwirkendeDauerdruckspannung": "Die einwirkende Dauerdruckspannung ",
     "liegtÜberDerLinearitätsgrenze": " liegt über der Linearitätsgrenze von ",

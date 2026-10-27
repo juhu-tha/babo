@@ -166,7 +166,7 @@ export default function Impressum() {
               </p>
 
               <p>
-                <strong>Hinweis zur Erstellung:</strong> Teile der Inhalte und Rechenmodule wurden KI-gestützt erstellt, vor der Veröffentlichung redaktionell kontrolliert und fachlich redigiert. Die redaktionelle Verantwortung liegt beim inhaltlich Verantwortlichen nach § 18 Abs. 2 MStV.
+                <strong>Hinweis zur Erstellung:</strong> Teile der Inhalte und Rechenmodule wurden KI-gestützt erstellt und vor der Veröffentlichung redaktionell kontrolliert. Die redaktionelle Verantwortung liegt beim inhaltlich Verantwortlichen nach § 18 Abs. 2 MStV.
               </p>
 
               <p>

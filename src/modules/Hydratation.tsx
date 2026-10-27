@@ -23,7 +23,7 @@ import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import inhalt from '@/content/hydratation/Hydratation.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
-import { hydratation, type Zementart, type ZementFestigkeitsklasse, type Erhaertung, type Zusatzstoff, type Reifeverfahren } from '@/src/calc/hydratation';
+import { hydratation, GEWOGENE_REIFE_C, REIFEVERFAHREN, type Zementart, type ZementFestigkeitsklasse, type Erhaertung, type Zusatzstoff, type Reifeverfahren } from '@/src/calc/hydratation';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 ChartJS.register(
@@ -51,14 +51,15 @@ export default function Hydratation() {
   const [ausschalFestigkeit, setAusschalFestigkeit] = useState(50); // % of fck
   const [reifeVerfahren, setReifeVerfahren] = useState('Arrhenius');
   const [aktivierungsEnergie, setAktivierungsEnergie] = useState(38); // kJ/mol (for Arrhenius)
+  const [cGewogen, setCGewogen] = useState<number>(GEWOGENE_REIFE_C.standard); // gewogene Reife NEN 5970 (vorläufig, F-Freigabe)
   const [festigkeitsModus, setFestigkeitsModus] = useState<'relativ' | 'druck' | 'zug' | 'emodul' | 'alle_absolut'>('relativ');
 
   const ergebnis = useMemo(() => hydratation({
     zement, tempUmgebung: tempC, tempFrischbeton: frischbetonTemp,
     zementArt: zementArt as Zementart, festigkeitsklasse: festigkeitsklasse as ZementFestigkeitsklasse,
     erhaertung: erhaertungsgeschwindigkeit as Erhaertung, zusatzstoff: zusatzstoff as Zusatzstoff, zusatzstoffMenge,
-    bauteildicke, ausschalAnteil: ausschalFestigkeit, reifeVerfahren: reifeVerfahren as Reifeverfahren, aktivierungsEnergie,
-  }), [zement, tempC, frischbetonTemp, zementArt, festigkeitsklasse, erhaertungsgeschwindigkeit, zusatzstoff, zusatzstoffMenge, bauteildicke, ausschalFestigkeit, reifeVerfahren, aktivierungsEnergie]);
+    bauteildicke, ausschalAnteil: ausschalFestigkeit, reifeVerfahren: reifeVerfahren as Reifeverfahren, aktivierungsEnergie, cGewogen,
+  }), [zement, tempC, frischbetonTemp, zementArt, festigkeitsklasse, erhaertungsgeschwindigkeit, zusatzstoff, zusatzstoffMenge, bauteildicke, ausschalFestigkeit, reifeVerfahren, aktivierungsEnergie, cGewogen]);
 
   const {
     strength,
@@ -532,7 +533,7 @@ export default function Hydratation() {
             value={reifeVerfahren}
             onChange={(e) => setReifeVerfahren(e.target.value)}
           >
-            {['Arrhenius', inhalt.werte.fibModelCode2010, 'Saul', inhalt.werte.din10453Rastrup, 'de Vree'].map(v => (
+            {['Arrhenius', inhalt.werte.fibModelCode2010, 'Saul', inhalt.werte.din10453Rastrup, REIFEVERFAHREN[4]].map(v => (
               <option key={v} value={v}>{v}</option>
             ))}
           </select>
@@ -546,6 +547,19 @@ export default function Hydratation() {
             info={inhalt.werte.scheinbareAktivierungsenergieBeschreibtD}
             onChange={(e) => setAktivierungsEnergie(Number(e.target.value))}
           />
+        )}
+
+        {reifeVerfahren === 'gewogene Reife nach NEN 5970' && (
+          <>
+            <Slider
+              label={inhalt.werte.gewogeneReifeC}
+              min={GEWOGENE_REIFE_C.min} max={GEWOGENE_REIFE_C.max} step={0.05}
+              value={cGewogen} unit="–"
+              info={inhalt.werte.gewogeneReifeCInfo}
+              onChange={(e) => setCGewogen(Number(e.target.value))}
+            />
+            <p className="text-[11px] text-text-main/70 leading-relaxed"><MdText text={inhalt.werte.gewogeneReifeHinweis} /></p>
+          </>
         )}
 
         <EingabeHinweise hinweise={ergebnis.hinweise} />

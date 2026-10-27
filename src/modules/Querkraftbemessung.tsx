@@ -21,7 +21,7 @@ import {
 } from 'chart.js';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
 
-import { bemesseQuerkraft } from '@/src/calc/querkraft';
+import { bemesseQuerkraft, QUERKRAFT_CVL_STANDARD } from '@/src/calc/querkraft';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import inhalt from '@/content/querkraftbemessung/Querkraftbemessung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
@@ -42,7 +42,7 @@ export default function Querkraftbemessung() {
   const [b, setB] = useState(30); // Breite in cm
   const [h, setH] = useState(50); // Höhe in cm
   const [d1, setD1] = useState(5); // Betondeckung + halber Stabdurchmesser in cm
-  const [cvl, setCvl] = useState(3.5); // Verlegemaß der Längsbewehrung in der Druckzone c_v,l in cm (nur Hinweis zur NA-Grenze von z)
+  const [cvl, setCvl] = useState(QUERKRAFT_CVL_STANDARD); // Verlegemaß der Längsbewehrung in der Druckzone c_v,l in cm (NA-Grenze von z)
 
   // Material
   const [fck, setFck] = useState(30); // Betonfestigkeitsklasse C30/37
@@ -67,7 +67,7 @@ export default function Querkraftbemessung() {
     const asw_values: number[] = [];
     const asw_min_values: number[] = [];
     for (let v = 20; v <= Math.min(results.vRd_max * 1.1, 1000); v += 20) {
-      const r = bemesseQuerkraft({ b, h, d1, fck, bewehrung: bewehrungsArt, fyk, ftk, gammaFRP, asl, vEd: v, theta });
+      const r = bemesseQuerkraft({ b, h, d1, fck, bewehrung: bewehrungsArt, fyk, ftk, gammaFRP, asl, vEd: v, theta, cvl });
       vEd_values.push(v);
       asw_values.push(r.asw_final);
       asw_min_values.push(r.asw_min);
@@ -302,8 +302,8 @@ export default function Querkraftbemessung() {
               schritte={[
                 {
                   titel: inhalt.werte.nutzhöheUndHebelarm,
-                  erklaerung: inhalt.werte.vereinfachterInnererHebelarmZ,
-                  formel: `d = ${formatDeTeX(h, 1)} - ${formatDeTeX(d1, 1)} = ${formatDeTeX(results.d, 1)}\\,\\text{cm};\\quad z = 0{,}9 \\cdot ${formatDeTeX(results.d, 1)} = ${formatDeTeX(results.z, 1)}\\,\\text{cm}`,
+                  erklaerung: `${inhalt.werte.vereinfachterInnererHebelarmZ} Maßgebend: ${results.zMassgebend === '0,9·d' ? 'Näherung 0,9·d' : `NA-Grenze ${results.zMassgebend}`} (c_v,l = ${formatDeZahl(results.cvl, 1)} cm).`,
+                  formel: `d = ${formatDeTeX(h, 1)} - ${formatDeTeX(d1, 1)} = ${formatDeTeX(results.d, 1)}\\,\\text{cm};\\quad z = \\min\\bigl(0{,}9 \\cdot ${formatDeTeX(results.d, 1)};\\ \\max(${formatDeTeX(results.d, 1)} - ${formatDeTeX(results.cvl, 1)} - 3;\\ ${formatDeTeX(results.d, 1)} - 2 \\cdot ${formatDeTeX(results.cvl, 1)})\\bigr) = \\min(${formatDeTeX(results.z09d, 1)};\\ ${formatDeTeX(results.zMaxNA, 1)}) = ${formatDeTeX(results.z, 1)}\\,\\text{cm}`,
                 },
                 {
                   titel: inhalt.werte.tragfähigkeitOhneQuerkraftbewehrung,

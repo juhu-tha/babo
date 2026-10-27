@@ -61,7 +61,7 @@
             "title": "Stochastische 4D-Bauablaufsimulation & Kritischer-Pfad-Optimierung (CPM)",
             "category": "LPH 8 / Bauoberleitung & Ausführung",
             "scenario": "Termin- und Ressourcenoptimierung getakteter Ortbetonierabschnitte bei beengten innerstädtischen Baustellenverhältnissen.",
-            "input": "4D-BIM-Bauzeitenplan, betontechnologische Mindestausschalfristen (Reifegradberechnung nach de Vree), Wetterdaten und Krankapazitäten.",
+            "input": "4D-BIM-Bauzeitenplan, betontechnologische Mindestausschalfristen (Reifegradberechnung, z. B. gewogene Reife nach NEN 5970), Wetterdaten und Krankapazitäten.",
             "process": "Monte-Carlo-Simulation von 10.000 Bauablaufszenarien zur stochastischen Ermittlung von Pufferzeitverbrauch und logistischen Engpässen.",
             "output": "Dynamisch angepasster Taktterminplan mit probabilistischer Eintrittswahrscheinlichkeit für Meilensteintermine.",
             "benefit": "Minimierung von Bauzeitverzug und vertraglichen Pönalen nach VOB/B § 5; Vermeidung von Frischbeton-Verzögerungsschäden.",

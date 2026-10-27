@@ -5,8 +5,8 @@
  *  1. Reifefunktionen k_T(T): Arrhenius exp[E_a/R·(1/T_r − 1/T)], fib Model Code 2010 (Q = 4000 K, auf 20 °C bezogen),
  *     Saul (T + 10)/30, Rastrup 2^((T − 20)/10) (Rastrup, E.: Heat of hydration in concrete. Magazine of Concrete
  *     Research 6 (1954) 17, S. 79–92; vorher irreführend als „DIN 1045-3 (Rastrup)“ bezeichnet – DIN 1045-3 enthält
- *     keine Reifefunktion), de Vree 10^(0,03·(T − 20)) = C^((T − 20)/10) mit C = 10^0,3 ≈ 2,0 (vorläufig, F-Freigabe,
- *     siehe DE_VREE_C); unter −10 °C k_T = 0.
+ *     keine Reifefunktion), gewogene Reife nach NEN 5970 als Temperaturfaktor C^((T − 20)/10) mit zementabhängigem
+ *     C = 1,15 … 1,75, Standard 1,45 (vorläufig, F-Freigabe, siehe GEWOGENE_REIFE_C); unter −10 °C k_T = 0.
  *     Wirksames Alter t_e = Σ k_T(T_Kern)·Δt mit Δt = 0,1 d (explizit, Kerntemperatur des vorigen Schritts).
  *  2. Festigkeitsentwicklung nach DIN EN 1992-1-1, 3.1.2 und 3.1.3: β_cc(t_e) = exp[s·(1 − √(28/t_e))] (Gl. 3.2,
  *     im Modul auf 1,25 begrenzt), f_cm(t) = β_cc·f_cm, f_ctm(t) = β_cc^α·f_ctm (Gl. 3.4, α = 1 für t_e < 28 d, sonst 2/3),
@@ -32,8 +32,8 @@ import { DIN1045_3_NACHBEHANDLUNG } from '../data/normParams';
 // 1. Reifefunktionen
 // ---------------------------------------------------------------------------------------------
 
-export type Reifeverfahren = 'Arrhenius' | 'fib Model Code 2010' | 'Saul' | 'Rastrup (1954)' | 'de Vree';
-export const REIFEVERFAHREN: readonly Reifeverfahren[] = ['Arrhenius', 'fib Model Code 2010', 'Saul', 'Rastrup (1954)', 'de Vree'];
+export type Reifeverfahren = 'Arrhenius' | 'fib Model Code 2010' | 'Saul' | 'Rastrup (1954)' | 'gewogene Reife nach NEN 5970';
+export const REIFEVERFAHREN: readonly Reifeverfahren[] = ['Arrhenius', 'fib Model Code 2010', 'Saul', 'Rastrup (1954)', 'gewogene Reife nach NEN 5970'];
 
 /** Allgemeine Gaskonstante R in J/(mol·K) */
 export const GASKONSTANTE = 8.31446;
@@ -43,28 +43,32 @@ export const T_REF_K = 293.15;
 export const T_DATUM = -10;
 
 /**
- * Temperaturkonstante C der Reifefunktion „de Vree“ in der Form k_T = C^((T − 20)/10) (bisher 10^(0,03·(T − 20)), also
- * C = 10^0,3 ≈ 1,995 – Verhalten unverändert). Quellenlage (Recherche 27.10.2026): Die „gewogene Reife“ (weighted maturity)
- * geht auf Papadakis/Bresson zurück und wurde von de Vree (1979) angepasst; sie ist in NEN 5970 (Niederlande) genormt und
- * verwendet eine zementabhängige Konstante C, öffentlich angegeben mit etwa 1,25 … 1,75 (Giatec Scientific, „Concrete
- * Maturity Calculation Methods“) bzw. 1,15 … 1,65 (Kasal, P.: Metoda zralosti – princip, kalibrace, použití a přesnost,
- * ČVUT Praha, PhD-Workshop 2020). Die genaue Gleichung der NEN 5970 (integrierte Form in °C·h) war öffentlich nicht
- * zugänglich. Der hinterlegte Wert C ≈ 2,0 liegt über diesen Bereichen und entspricht praktisch Rastrup (2^((T−20)/10)).
- * Vorläufig, F-Freigabe: C je Zement nach NEN 5970 bzw. Herstellerangabe prüfen; ggf. C = 1,3 … 1,5 als Lehrwert.
+ * Gewogene Reife nach NEN 5970 (Entscheidung 27.10. spät): Temperaturfaktor k_T = C^((T − 20)/10) mit zementabhängiger
+ * Konstante C. Quellenlage (Recherche 27.10.2026, öffentliche Fundstellen):
+ *  - NEN 5970:2001 „Determination of strength of fresh concrete with the method of weighted maturity“ (Normtitel und
+ *    Anwendungsbereich laut GlobalSpec-Katalog; enthält auch die Bestimmung des C-Werts der Bindemittel).
+ *  - Giatec Scientific, „Concrete Maturity Calculation Methods“: Verfahren von Papadakis/Bresson (1970er), 1979 von de Vree
+ *    angepasst, in den Niederlanden genormt; C „typically varies from 1.25 to 1.75“.
+ *  - Kasal, P.: Metoda zralosti – princip, kalibrace, použití a přesnost. ČVUT Praha, PhD-Workshop 2020: „metoda De Vree“
+ *    (gewogene Reife), C etwa 1,15 … 1,65, Bestimmung nach NEN 5970 oder Angabe des Betonlieferanten.
+ * Zusammengefasster Bereich 1,15 … 1,75, Standard 1,45 (Bereichsmitte). Die integrierte Form der NEN 5970 (Reife in °C·h)
+ * ist öffentlich nicht vollständig wiedergegeben; der Rechner verwendet daher nur den Temperaturfaktor C^((T − 20)/10)
+ * bezogen auf 20 °C. Vorläufig, F-Freigabe: Form und C-Bereich am Normtext NEN 5970 prüfen.
+ * (Bis 27.10.: „de Vree“ mit festem C = 10^0,3 ≈ 2,0, ohne Beleg.)
  */
-export const DE_VREE_C = Math.pow(10, 0.3);
+export const GEWOGENE_REIFE_C = { min: 1.15, max: 1.75, standard: 1.45 } as const;
 
 /**
  * Temperaturfaktor k_T einer Reifefunktion bei der Betontemperatur T in °C (bezogen auf 20 °C, k_T(20 °C) = 1).
  * E_a in kJ/mol (nur Arrhenius). Unter −10 °C erhärtet der Beton nicht (k_T = 0).
  */
-export function temperaturfaktorReife(verfahren: Reifeverfahren, temperatur: number, aktivierungsEnergie = 38): number {
+export function temperaturfaktorReife(verfahren: Reifeverfahren, temperatur: number, aktivierungsEnergie = 38, cGewogen: number = GEWOGENE_REIFE_C.standard): number {
   if (temperatur < T_DATUM) return 0;
   const tK = temperatur + 273.15;
   switch (verfahren) {
     case 'Saul': return (temperatur + 10) / 30.0;
     case 'Rastrup (1954)': return Math.pow(2, (temperatur - 20) / 10.0);
-    case 'de Vree': return Math.pow(DE_VREE_C, (temperatur - 20) / 10.0); // vorläufig, F-Freigabe (s. DE_VREE_C)
+    case 'gewogene Reife nach NEN 5970': return Math.pow(cGewogen, (temperatur - 20) / 10.0); // vorläufig, F-Freigabe (s. GEWOGENE_REIFE_C)
     case 'fib Model Code 2010': return Math.exp(4000 * (1 / T_REF_K - 1 / tK));
     case 'Arrhenius':
     default: return Math.exp(((aktivierungsEnergie * 1000) / GASKONSTANTE) * (1 / T_REF_K - 1 / tK));
@@ -72,8 +76,8 @@ export function temperaturfaktorReife(verfahren: Reifeverfahren, temperatur: num
 }
 
 /** Wirksames Alter t_e in d bei konstanter Temperatur über die Dauer t in d */
-export function wirksamesAlterKonstant(verfahren: Reifeverfahren, temperatur: number, t: number, aktivierungsEnergie = 38): number {
-  return temperaturfaktorReife(verfahren, temperatur, aktivierungsEnergie) * t;
+export function wirksamesAlterKonstant(verfahren: Reifeverfahren, temperatur: number, t: number, aktivierungsEnergie = 38, cGewogen: number = GEWOGENE_REIFE_C.standard): number {
+  return temperaturfaktorReife(verfahren, temperatur, aktivierungsEnergie, cGewogen) * t;
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -216,6 +220,8 @@ export interface HydratationEingabe {
   reifeVerfahren: Reifeverfahren;
   /** scheinbare Aktivierungsenergie E_a in kJ/mol (nur Arrhenius) */
   aktivierungsEnergie: number;
+  /** Zementkonstante C der gewogenen Reife nach NEN 5970 (nur dieses Verfahren); ohne Angabe 1,45 (vorläufig, F-Freigabe) */
+  cGewogen?: number;
 }
 
 export interface HydratationErgebnis {
@@ -256,6 +262,7 @@ export function hydratation(e: HydratationEingabe): HydratationErgebnis {
   const hinweise: Hinweis[] = [];
   const { zement, tempUmgebung, tempFrischbeton, zementArt, festigkeitsklasse, erhaertung, zusatzstoff, zusatzstoffMenge,
     bauteildicke, ausschalAnteil, reifeVerfahren, aktivierungsEnergie } = e;
+  const cGewogen = e.cGewogen ?? GEWOGENE_REIFE_C.standard;
   muss(hinweise, istEndlich(zement, tempUmgebung, tempFrischbeton, zusatzstoffMenge, bauteildicke, ausschalAnteil, aktivierungsEnergie),
     'eingabe', 'Alle Eingaben müssen endliche Zahlen sein.');
   muss(hinweise, zement > 0, 'zement', 'Der Zementgehalt muss größer als 0 sein.');
@@ -263,6 +270,7 @@ export function hydratation(e: HydratationEingabe): HydratationErgebnis {
   muss(hinweise, zusatzstoffMenge >= 0, 'zusatzstoffMenge', 'Die Zusatzstoffmenge darf nicht negativ sein.');
   muss(hinweise, ausschalAnteil > 0, 'ausschalAnteil', 'Die erforderliche Ausschalfestigkeit muss größer als 0 % sein.');
   muss(hinweise, aktivierungsEnergie > 0, 'aktivierungsEnergie', 'Die Aktivierungsenergie muss größer als 0 sein.');
+  if (reifeVerfahren === 'gewogene Reife nach NEN 5970') muss(hinweise, Number.isFinite(cGewogen) && cGewogen > 1, 'cGewogen', 'Die Zementkonstante C der gewogenen Reife muss größer als 1 sein.');
   muss(hinweise, tempUmgebung > -273.15 && tempFrischbeton > -273.15, 'temperatur', 'Temperaturen müssen über dem absoluten Nullpunkt liegen.');
 
   const s = zementbeiwertS(festigkeitsklasse, erhaertung);
@@ -294,6 +302,7 @@ export function hydratation(e: HydratationEingabe): HydratationErgebnis {
   if (zusatzstoff !== 'Ohne') bereich(hinweise, 'zusatzstoffMenge', zsRatio, 0, 0.4,
     'Zusatzstoff/Zement > 0,4: Die linearen Zu- und Abschläge für H_max und t₅₀ sind nur für kleine Anteile gedacht.');
   if (reifeVerfahren === 'Arrhenius') bereich(hinweise, 'aktivierungsEnergie', aktivierungsEnergie, 30, 60, 'E_a außerhalb 30 … 60 kJ/mol (übliche Werte für Portland- bis Hochofenzement).');
+  if (reifeVerfahren === 'gewogene Reife nach NEN 5970') bereich(hinweise, 'cGewogen', cGewogen, GEWOGENE_REIFE_C.min, GEWOGENE_REIFE_C.max, 'Zementkonstante C außerhalb des öffentlich genannten Bereichs 1,15 … 1,75 (Giatec; Kasal, ČVUT 2020).');
 
   const r: HydratationErgebnis = { ...leer, Hmax, t50, gueltig: true };
   let kern = tempFrischbeton, rand = tempFrischbeton, adiabat = tempFrischbeton;
@@ -316,7 +325,7 @@ export function hydratation(e: HydratationEingabe): HydratationErgebnis {
     r.fcRef.push(ref.fc); r.fcRefRel.push(ref.beta * 100); r.fctRef.push(ref.fct); r.ERef.push(ref.E);
 
     // Reife unter der Kerntemperatur des vorigen Schritts
-    te += temperaturfaktorReife(reifeVerfahren, kern, aktivierungsEnergie) * dt;
+    te += temperaturfaktorReife(reifeVerfahren, kern, aktivierungsEnergie, cGewogen) * dt;
     if (k === nSchritte) r.te28 = te;
     const akt = kennwerteZumAlter(s, te, fck);
     if (k === 20) { r.te2d = te; r.beta2d = akt.beta; }

@@ -29,9 +29,9 @@ pruefe(FCD_HOCHFEST_AKTIV ? /vorläufig, F-Freigabe/.test(fcdHochfestHinweis(70)
 // 2. Kerne
 const qb: QuerkraftEingabe = { b: 30, h: 50, d1: 5, fck: 70, bewehrung: 'Stahl', fyk: 500, ftk: 3000, gammaFRP: 1.3, asl: 6, vEd: 250, theta: 40 };
 const q = bemesseQuerkraft(qb);
-//    V_Rd,max NA DE: ν1 = 0,75·(1,1 − 70/500) = 0,72 mit f_cd ohne Zusatzabminderung (keine Doppelabminderung)
+//    V_Rd,max NA DE: ν1 = 0,75·(1,1 − 70/500) = 0,72 mit f_cd ohne Zusatzabminderung (keine Doppelabminderung); z = 0,385 m (NA-Grenze, c_v,l = 3,5 cm)
 const th = 40 * Math.PI / 180;
-pruefe(nahe(q.fcd, 0.85 * 70 / 1.5 * HF(70), 1e-12) && nahe(q.vRd_max, 0.30 * 0.405 * 0.72 * (0.85 * 70 / 1.5) / (Math.tan(th) + 1 / Math.tan(th)) * 1000, 1e-9), `Querkraft C70: V_Rd,max ${q.vRd_max}`);
+pruefe(nahe(q.fcd, 0.85 * 70 / 1.5 * HF(70), 1e-12) && nahe(q.vRd_max, 0.30 * 0.385 * 0.72 * (0.85 * 70 / 1.5) / (Math.tan(th) + 1 / Math.tan(th)) * 1000, 1e-9), `Querkraft C70: V_Rd,max ${q.vRd_max}`);
 pruefe(!FCD_HOCHFEST_AKTIV || q.hinweise.some(h => /ν₁ = 0,75·ν₂/.test(h.text)), 'Querkraft: Hinweis');
 const sb: StuetzeEingabe = { b: 30, h: 30, d1: 4, l0: 3, nEd: 2000, mEd: 50, fck: 70, fyk: 500 };
 const s70 = bemesseStuetze(sb);
