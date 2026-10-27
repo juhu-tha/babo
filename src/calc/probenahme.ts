@@ -1,5 +1,5 @@
 /**
- * Probenahme nach LAGA PN 98 (Mitteilung 32, Stand 2019) – Runde 5, Entscheidung Prof. Huber: normgemäß rechnen.
+ * Probenahme nach LAGA PN 98 (Mitteilung 32, Stand 2019) – Runde 5, Entscheidung: normgemäß rechnen.
  *  - Tabelle 2: Mindestanzahl der Einzel-, Misch-, Sammel- und Laborproben nach dem Volumen der Grundmenge (Haufwerk bzw.
  *    Untersuchungseinheit). Bis 600 m³ gestuft (30/60/100/150/200/300/400/500/600 m³ → 2 … 10 Mischproben); darüber je
  *    angefangene 100 m³ eine weitere Mischprobe (bei gleichbleibender Beschaffenheit je 3 zu einer Sammelprobe zusammengefasst)

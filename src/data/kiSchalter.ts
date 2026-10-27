@@ -1,5 +1,5 @@
 /**
- * Zentraler Schalter für die KI-Funktion (Google Gemini) – Entscheidung Prof. Huber vom 27.10.2026:
+ * Zentraler Schalter für die KI-Funktion (Google Gemini) – Entscheidung vom 27.10.2026:
  * vorerst abgeschaltet. Solange `false`:
  *  - Oberfläche: kein Einwilligungsdialog, kein „Analyse live ausführen“, stattdessen KI_HINWEIS_AUS
  *    (src/modules/KiBaustoffe.tsx); Prompt-Generator und Kopieren bleiben nutzbar;

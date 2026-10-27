@@ -1,4 +1,4 @@
-// Öffentliche Anzeige der Prüfvermerke (Entscheidung Prof. Huber 27.10.2026): „offen“ ausgeblendet, freigegebene sichtbar
+// Öffentliche Anzeige der Prüfvermerke (Entscheidung 27.10.2026): „offen“ ausgeblendet, freigegebene sichtbar
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { PruefVermerk, vermerkOeffentlich } from '../src/components/ui/PruefVermerk';

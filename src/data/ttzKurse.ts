@@ -46,7 +46,7 @@ export const KURSQUIZ_FRAGEN = 10;
 /** Bestehensgrenze des Kursquiz als Anteil richtiger Antworten */
 export const BESTEHENSGRENZE = 0.8;
 
-export const ENTWURF_HINWEIS = 'Entwurf – Kursliste durch Prof. Huber noch nicht freigegeben';
+export const ENTWURF_HINWEIS = 'Entwurf – Kursliste noch nicht freigegeben';
 export const BESTAETIGUNG_HINWEIS = 'Teilnahmebestätigung über ein Selbstlernangebot – kein Zertifikat, keine Prüfung';
 
 const PRAXIS = 'Praxis/Weiterbildung: Planende, Bauleitung, Sachverständige, Baustoffhandel und Behörden';

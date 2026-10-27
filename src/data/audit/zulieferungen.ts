@@ -1,7 +1,7 @@
 /**
- * Zulieferungen und Entscheidungen Prof. Huber (Teil B des Audit-Stands, 27.10.2026).
+ * Zulieferungen und Entscheidungen (Teil B des Audit-Stands, 27.10.2026).
  * Neue Punkte anhängen, Status hier pflegen (per Pull Request). Anzeige: Admin → Audit → „Zulieferungen“.
- * Status: 'wartet' = wartet auf Prof. Huber (Filter „wartet auf mich“).
+ * Status: 'wartet' = wartet auf Zulieferung/Freigabe (Filter „wartet auf mich“).
  */
 import type { Zulieferung } from './typen';
 
@@ -28,7 +28,7 @@ export const ZULIEFERUNGEN: readonly Zulieferung[] = [
   { nr: 'Z43', gegenstand: 'Speicherort Fragebogen', stand: 'Datei im Cloud-Run-Volume', status: 'erledigt', statusText: 'entschieden, umgesetzt', prs: [183] },
   { nr: 'Z48/Z53', gegenstand: 'Normtextfragen; 3 000-Wörter-Schwelle', stand: 'Z53: teilen + Kurzfassung', status: 'in_arbeit' },
   { nr: 'Z49', gegenstand: 'Repository öffentlich', stand: 'Ja, nach Z51 und THA-Klärung', status: 'wartet' },
-  { nr: 'Z50/Z56', gegenstand: 'Hosting', stand: 'Weg B: Cloud Run, Frankfurt; Anleitung liegt vor. 27.10.: Prof. Huber prüft Firebase Hosting vor Cloud Run statt Load Balancer', status: 'wartet', statusText: 'offen – Prüfung Hosting-Variante durch Prof. Huber', prs: [183], dateien: ['docs/betrieb-cloud-run.md'] },
+  { nr: 'Z50/Z56', gegenstand: 'Hosting', stand: 'Weg B: Cloud Run, Frankfurt; Anleitung liegt vor. 27.10.: Firebase Hosting vor Cloud Run statt Load Balancer wird geprüft', status: 'wartet', statusText: 'offen – Prüfung Hosting-Variante durch Prof. Huber', prs: [183], dateien: ['docs/betrieb-cloud-run.md'] },
   { nr: 'Z51', gegenstand: 'Neues Administrator-Kennwort', stand: 'Später; als Secret im Secret Manager', status: 'offen' },
   { nr: 'Z52', gegenstand: 'Vorrendern/Pfad-Routing', stand: 'Umgesetzt, LCP 2,1–2,3 s', status: 'erledigt', prs: [185] },
   { nr: 'Z54', gegenstand: 'GitHub Actions', stand: 'Weiter lokale Prüfung', status: 'entschieden' },
@@ -38,8 +38,8 @@ export const ZULIEFERUNGEN: readonly Zulieferung[] = [
   { nr: 'neu', gegenstand: 'γ_c außergewöhnlich 1,3/1,2; f_cd-Abminderung ab C55/67; Rückprall-Richtungskorrektur', stand: 'γ_c = 1,3 nach NA DE; f_cd-Abminderung ab C55/67 vorbereitet, aber aus bis zum Normtext (Entscheidung 27.10., Doppelabminderung mit η vermeiden); Richtungskorrektur nach Herstellertabelle (#196)', status: 'erledigt', prs: [188, 196] },
   { nr: 'neu', gegenstand: 'Trittschall Wohnungstrenndecke 50 oder 53 dB', stand: 'Entscheidung 27.10.: 50 dB', status: 'erledigt', prs: [190] },
   { nr: 'neu', gegenstand: 'Fe-C Standard 0,8 %/723 °C oder 0,76 %/727 °C; Mohr τ-Achse', stand: 'Entscheidung 27.10.: 0,8 %/723 °C; Mohr τ nach unten positiv', status: 'erledigt', prs: [191] },
-  { nr: 'neu', gegenstand: 'Merge-Nachricht GitHub auf „Pull request title and description“', stand: '–', status: 'wartet', statusText: 'offen – Einstellung durch Prof. Huber' },
-  { nr: 'neu', gegenstand: 'Texte „Forschung und Transfer“ (4 Platzhalter), Projekte, Publikationen, ORCID', stand: 'Texte von Prof. Huber eingesetzt (Gutachten Maßnahme 1); offen: URL der Personenseite', status: 'erledigt', statusText: 'erledigt (Rest: URL Personenseite)', prs: [192] },
+  { nr: 'neu', gegenstand: 'Merge-Nachricht GitHub auf „Pull request title and description“', stand: '–', status: 'wartet', statusText: 'offen – Einstellung im Repository ausstehend' },
+  { nr: 'neu', gegenstand: 'Texte „Forschung und Transfer“ (4 Platzhalter), Projekte, Publikationen, ORCID', stand: 'Texte freigegeben und eingesetzt (Gutachten Maßnahme 1); offen: URL der Personenseite', status: 'erledigt', statusText: 'erledigt (Rest: URL Personenseite)', prs: [192] },
   { nr: 'neu', gegenstand: 'Hinweis „Fachliche Prüfung ausstehend“', stand: 'Entscheidung 27.10.: ausblenden', status: 'erledigt', prs: [193] },
   { nr: 'neu', gegenstand: 'Quiz: Distraktoren angleichen, normRef ergänzen', stand: 'Umgesetzt: richtige Antwort am längsten 27,3 % statt 37 %', status: 'erledigt', prs: [194] },
   { nr: 'neu', gegenstand: 'CSP scharf schalten', stand: 'Entscheidung 27.10.: zwei Wochen nach dem Cloud-Run-Umzug', status: 'wartet', statusText: 'wartet auf Z50 (Hosting)' },

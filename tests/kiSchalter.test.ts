@@ -1,4 +1,4 @@
-// KI-Funktion (Google Gemini) zentral abgeschaltet – Entscheidung Prof. Huber 27.10.2026 (src/data/kiSchalter.ts)
+// KI-Funktion (Google Gemini) zentral abgeschaltet – Entscheidung 27.10.2026 (src/data/kiSchalter.ts)
 import fs from 'fs';
 import { KI_FUNKTION_AKTIV, KI_HINWEIS_AUS } from '../src/data/kiSchalter';
 

@@ -16,7 +16,7 @@ for (const [id, p] of Object.entries(KURZFASSUNG)) {
   }
 }
 
-// Ratsche Z53 (Entscheidung Prof. Huber, 27.10.2026: „Module über 3 000 Wörtern teilen + Kurzfassung“):
+// Ratsche Z53 (Entscheidung, 27.10.2026: „Module über 3 000 Wörtern teilen + Kurzfassung“):
 // Jedes Fachmodul, dessen Ansicht (sichtbarer Fließtext unter der Modul-ID samt content/*.json, ohne Formeln,
 // Code und Quiz; Zählweise ansichtWoerter in tests/hilfen/fliesstext.ts) die Schwelle überschreitet, braucht
 //   (1) die Kurzfassung „Das Wichtigste in 5 Punkten“ und

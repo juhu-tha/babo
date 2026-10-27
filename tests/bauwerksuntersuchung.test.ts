@@ -13,7 +13,7 @@ console.log('--- Test: Bauwerksuntersuchung ---');
 //    Rückprall R = 36, horizontal, d_k = 12 mm: k = 1 − 7·0,015 = 0,895; R' = 32,22; f_c = 0,0125·32,22^2,22 = 27,86 → C25/30
 const rp = rueckprall(36, 'horiz', 12);
 pruefe(rp.gueltig && nahe(rp.kKarb, 0.895, 1e-12) && nahe(rp.rFinal, 32.22, 1e-12) && nahe(rp.fcSchaetz, 27.858, 1e-3) && rp.klasse === 'C25/30', `Rückprall ${JSON.stringify(rp)}`);
-//    Richtungskorrektur (Entscheidung Prof. Huber 27.10., bewusst geändert; vorher −3,0 abwärts/+3,5 aufwärts, Vorzeichen vertauscht):
+//    Richtungskorrektur (Entscheidung 27.10., bewusst geändert; vorher −3,0 abwärts/+3,5 aufwärts, Vorzeichen vertauscht):
 //    Herstellerformel Original Schmidt Typ N (Screening Eagle/Proceq): R = 36 nach oben (+90°): −7,1 + 0,08·36 = −4,22 → 31,78;
 //    nach unten (−90°): +4,3 − 0,043·36 = +2,752 → 38,752
 pruefe(nahe(rueckprall(36, 'up', 0).rKorr, 31.78, 1e-12) && nahe(rueckprall(36, 'down', 0).rKorr, 38.752, 1e-12) && rueckprall(36, 'horiz', 0).rKorr === 36, 'Schlagrichtung nach Herstellerformel');

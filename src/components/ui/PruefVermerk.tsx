@@ -3,7 +3,7 @@ import { BadgeCheck, CircleDashed, RefreshCw } from 'lucide-react';
 import { datumDe, type Pruefvermerk } from '@/src/data/pruefvermerke';
 
 /** Öffentlich angezeigt werden nur freigegebene bzw. nachzuprüfende Module; „offen“ bleibt ausgeblendet
- *  (Entscheidung Prof. Huber 27.10.2026; die Admin-Ansicht „Meine Module“ listet offene weiterhin). */
+ *  (Entscheidung 27.10.2026; die Admin-Ansicht „Meine Module“ listet offene weiterhin). */
 export const vermerkOeffentlich = (vermerk: Pruefvermerk | undefined): boolean => !!vermerk && vermerk.status !== 'offen';
 
 /** Zeile „fachlich geprüft am … von …“ im Kopf jedes Fachmoduls (Umsetzungsplan Phase 6, AP 6.6) */

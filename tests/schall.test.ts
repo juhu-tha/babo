@@ -39,7 +39,7 @@ pruefe(nahe(deltaLwNassestrich(100, 20), 28.3254, 1e-4) && nahe(deltaLwNassestri
 //    K (vorläufig, F-Freigabe): gleiche Massen → 0,6 dB; Decke 4-mal so schwer wie Flanken → 0,6 + 5,5·lg 4 = 3,91 dB; leichtere Decke → 0
 pruefe(nahe(korrekturwertK(300, 300), 0.6, 1e-12) && nahe(korrekturwertK(400, 100), 3.9113, 1e-4) && korrekturwertK(100, 400) === 0, 'K');
 pruefe(U_PROG_TRITTSCHALL === 3 && ANFORDERUNGEN_TRITTSCHALL.some(a => a.wert === 50) && ANFORDERUNGEN_TRITTSCHALL.some(a => a.wert === 53) && ANFORDERUNGEN_TRITTSCHALL[0].id === 'wtd_2018' && ANFORDERUNGEN_TRITTSCHALL[0].wert === 50, 'Anforderungen: Standard 50 dB');
-// Entscheidung Prof. Huber 27.10.: 50 dB (DIN 4109-1:2018) Standard, 53 dB (DIN 4109:1989) historische Option – bestätigt, ohne F-Freigabe;
+// Entscheidung 27.10.: 50 dB (DIN 4109-1:2018) Standard, 53 dB (DIN 4109:1989) historische Option – bestätigt, ohne F-Freigabe;
 // Treppenwerte bleiben vorläufig
 const anf = Object.fromEntries(ANFORDERUNGEN_TRITTSCHALL.map(a => [a.id, a]));
 pruefe(anf.wtd_1989.wert === 53 && !anf.wtd_2018.quelle.includes('F-Freigabe') && !anf.wtd_1989.quelle.includes('F-Freigabe') && anf.treppe_2018.quelle.includes('F-Freigabe') && anf.treppe_rh.quelle.includes('F-Freigabe'), 'Kennzeichnung F-Freigabe nur noch für Treppenwerte');

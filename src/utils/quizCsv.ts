@@ -181,7 +181,7 @@ export function parseCsvToQuestions(csvText: string): QuizQuestion[] {
       correctIdx,
       explanation: getVal('explanation') || 'Fachliche Erklärung folgt.',
       gapAnalysis,
-      reviewer: getVal('reviewer') || 'Prof. Dr.-Ing. Jürgen Huber',
+      reviewer: getVal('reviewer') || 'freigegeben',
       reviewedAt: getVal('reviewedat') || new Date().toISOString().slice(0, 10),
       verified: getVal('verified') !== 'false'
     });

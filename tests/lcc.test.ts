@@ -44,10 +44,10 @@ pruefe(steigerungsfaktor(0.05, 0) === 1 && steigerungsfaktor(0.05, 1) === 1 && n
 pruefe(barwertfaktorPreissteigerung(BNB_211.r, BNB_211.pEnergie, BNB_211.N) > 50, 'BNB Energie: BWF > 50');
 
 // 3. Referenz: Komponentenrechnung (src/modules/LCC.tsx vor AP 4.2), in Runde 4 BEWUSST aktualisiert
-//    (Entscheidung Prof. Huber 26.10.): (a) Preissteigerung ab dem 2. Jahr – Exponent yr − 1 statt yr
+//    (Entscheidung 26.10.): (a) Preissteigerung ab dem 2. Jahr – Exponent yr − 1 statt yr
 //    (BNB 2.1.1, S. A7); (b) linearer Restwert des zuletzt eingebauten Bauteils am Betrachtungsende, abgezinst
 //    (Delegierte Verordnung (EU) Nr. 244/2012, Anhang I Nr. 4.2 (5)). Mit alteRegel = true die frühere Rechnung.
-//    Entscheidung Prof. Huber 27.10.: Restwert nur noch als Vergleichsschalter (Standard AUS, BNB 2.1.1 ohne Restwert).
+//    Entscheidung 27.10.: Restwert nur noch als Vergleichsschalter (Standard AUS, BNB 2.1.1 ohne Restwert).
 const SZ = inhalt.daten.SCENARIOS as { id: string; optionA: LccOption; optionB: LccOption }[];
 function alt(opt: LccOption, isB: boolean, P: { r: number; e: number; i: number; N: number; co2: boolean; co2P: number; co2E: number; sub: boolean; subP: number }, alteRegel = false, mitRestwert = false) {
   const { r, e, i, N } = P;

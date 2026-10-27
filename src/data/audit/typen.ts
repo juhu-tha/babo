@@ -11,7 +11,7 @@ export type AuditStatus = 'offen' | 'in_arbeit' | 'wartet' | 'entschieden' | 'zu
 export const AUDIT_STATUS_TEXT: Readonly<Record<AuditStatus, string>> = {
   offen: 'offen',
   in_arbeit: 'in Arbeit',
-  wartet: 'wartet auf Prof. Huber',
+  wartet: 'wartet auf Zulieferung/Freigabe',
   entschieden: 'entschieden',
   zurueckgestellt: 'zurückgestellt',
   erledigt: 'erledigt',

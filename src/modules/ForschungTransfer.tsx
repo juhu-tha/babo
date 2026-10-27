@@ -12,7 +12,7 @@ import { version as PAKET_VERSION } from '../../package.json';
 // Inhaltsregel: nur Angaben, die auf öffentlichen Seiten der THA belegt sind, oder allgemeine
 // Beschreibungen. Keine Projektpartner, Unternehmen, Fördermittelgeber, Budgets, unveröffentlichten
 // Ergebnisse oder Details zu Zulassungsverfahren. Texte zu Lehrgebiet, Labor, TTZ-Bezug und
-// Abschlussarbeiten nach Vorgabe Prof. Huber (27.10.2026).
+// Abschlussarbeiten nach Vorgabe (27.10.2026).
 
 const STAND = '27.10.2026';
 const FAKULTAET_URL = 'https://www.tha.de/hochschule/fakultaet/ab/';

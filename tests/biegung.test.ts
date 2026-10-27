@@ -67,7 +67,7 @@ pruefe(sb70.lambda === 0.75 && Math.abs(sb70.eta - 0.9) < 1e-12 && Math.abs(sb11
 pruefe(Math.abs(muLimit(70) - 0.9 * 0.75 * 0.35 * (1 - 0.75 * 0.35 / 2)) < 1e-12 && muLimit(30) === MU_LIM_STAHL && xiLimit(55) === 0.35 && xiLimit(50) === 0.45, 'µ_lim hochfest');
 //   Gleichgewicht C70/85 (f_cd = 0,85·70/1,5 = 39,67): F_c = η·f_cd·b·λ·x = A_s1·f_yd und M = F_c·(d − λ·x/2)
 const h70 = bemesseBiegung({ ...basis, fck: 70, med: 300 });
-// Entscheidung Prof. Huber 27.10. (vorläufig, F-Freigabe): f_cd = 0,85·70/1,5·(1,1 − 70/500) = 39,667·0,96 = 38,08 N/mm²
+// Entscheidung 27.10. (vorläufig, F-Freigabe): f_cd = 0,85·70/1,5·(1,1 − 70/500) = 39,667·0,96 = 38,08 N/mm²
 pruefe(FCD_HOCHFEST_AKTIV ? (Math.abs(h70.fcd - 0.85 * 70 / 1.5 * 0.96) < 1e-9 && h70.hinweise.some(x => /1,1 − f_ck\/500/.test(x.text))) : Math.abs(h70.fcd - 0.85 * 70 / 1.5) < 1e-9, `f_cd C70/85 hochfest ${h70.fcd}`);
 pruefe(Math.abs(bemesseBiegung({ ...basis, fck: 50 }).fcd - 0.85 * 50 / 1.5) < 1e-12 && !bemesseBiegung({ ...basis, fck: 50 }).hinweise.some(x => /1,1 − f_ck/.test(x.text)), 'C50/60: keine Hochfest-Abminderung');
 const fc70 = 0.9 * h70.fcd * 300 * 0.75 * h70.x * 10;

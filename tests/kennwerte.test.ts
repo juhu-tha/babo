@@ -34,7 +34,7 @@ for (const f of ['Biegebemessung', 'Querkraftbemessung', 'HydratationRissberechn
   pruefe(!/fctm:\s*\d/.test(s) && !/CONCRETE_FCTM/.test(s), `${f}.tsx enthält wieder eine lokale fctm-Tabelle`);
 }
 
-// 4. Stahlkennwerte (Runde 4, Entscheidung Prof. Huber: Normwerte vereinheitlichen)
+// 4. Stahlkennwerte (Runde 4, Entscheidung: Normwerte vereinheitlichen)
 //    EN 1993-1-1 Tab. 3.1, t ≤ 40 mm (öffentlich: eurocodeapplied.com „Steel design properties“): S355 f_y = 355, f_u = 490;
 //    E = 210 000 (3.2.6). Betonstahl: E_s = 200 000 (EC2 3.2.7(4)), k ≥ 1,05/1,08, ε_uk ≥ 25/50 ‰ (EC2 Anhang C, Tab. C.1).
 pruefe(BAUSTAHL_EC3.S355.fu === 490 && BAUSTAHL_EC3.S355.fy === 355 && BAUSTAHL_EC3.S235.fu === 360 && BAUSTAHL_EC3.S460.fu === 540, 'Baustahl EN 1993-1-1 Tab. 3.1');

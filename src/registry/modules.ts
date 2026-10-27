@@ -71,7 +71,7 @@ export const NAV_GRUPPEN = [
 export type NavGruppe = (typeof NAV_GRUPPEN)[number];
 
 /**
- * Zentraler Schalter „inaktiv“ (Entscheidung Prof. Huber 27.10.2026: Lernpfade nach Lehrveranstaltung abgeschaltet).
+ * Zentraler Schalter „inaktiv“ (Entscheidung 27.10.2026: Lernpfade nach Lehrveranstaltung abgeschaltet).
  * Seiten dieser Menügruppen bleiben in MODULE/MODUL_BY_ID (Code, Daten, Tests), sind aber unsichtbar: nicht in Menü,
  * Modulübersicht, Menü- und Volltextsuche, Sitemap, Vorrendern; /modul/<id> und Aliase darauf → 404-Hinweisseite
  * (server.ts), in der App → Startseite. Wiedereinschalten: Gruppe hier entfernen (s. docs/architektur.md).

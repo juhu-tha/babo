@@ -232,7 +232,7 @@ export interface SpritzbetonErgebnis extends Ergebnis {
 }
 /**
  * Teilsicherheitsbeiwerte γ_c nach DIN EN 1992-1-1/NA, Tab. 2.1DE: ständig/vorübergehend 1,5; außergewöhnlich 1,3
- * (EC2 Tab. 2.1N empfiehlt 1,2 – in Deutschland gilt der NA; bestätigt Prof. Huber 27.10.). Für Tunnel regeln ZTV-ING Teil 5 bzw. Ril 853
+ * (EC2 Tab. 2.1N empfiehlt 1,2 – in Deutschland gilt der NA; bestätigt 27.10.). Für Tunnel regeln ZTV-ING Teil 5 bzw. Ril 853
  * (DS 853) zusätzliche Anforderungen; sie sind hier nicht abgebildet.
  */
 export const GAMMA_C_TUNNEL = { voruebergehend: 1.5, aussergewoehnlich: 1.3, ec2Aussergewoehnlich: 1.2 } as const;

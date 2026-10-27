@@ -119,7 +119,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       'Walz- und Schweißeigenspannungen sowie die σ-ε-Linien der Stahlsorten sind qualitative Lehrkurven (Parabel- bzw. Gauß-Näherung), keine Prüf- oder Bemessungswerte.',
       'M_pl,Rd = W_pl·f_y/γ_M0 setzt Querschnittsklasse 1 oder 2 voraus; Biegedrillknicken und Interaktion mit Querkraft bleiben unberücksichtigt.',
       'Fe-C-Diagramm: metastabiles Gleichgewicht bei langsamer Abkühlung, Linien geradlinig zwischen Lehrbuch-Eckpunkten; Martensit, Bainit und Legierungseinflüsse sind nicht abgebildet.',
-      'Fe-C-Eckpunkte: Standard S = 0,8 % C/723 °C (deutsche Lehrbuchwerte), Umschalter auf 0,76 %/727 °C (Callister) – bestätigt (Prof. Huber 27.10.).',
+      'Fe-C-Eckpunkte: Standard S = 0,8 % C/723 °C (deutsche Lehrbuchwerte), Umschalter auf 0,76 %/727 °C (Callister) – bestätigt 27.10.2026.',
       'Hebelgesetz bei Raumtemperatur ohne Tertiärzementit; CEV-Grenzwerte nach EN 10025-2:2004 für Nenndicken ≤ 30 mm, die Schweißeignungsskala ist eine Lehrbucheinstufung.',
     ],
   },
