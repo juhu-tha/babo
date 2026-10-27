@@ -513,7 +513,7 @@ export default function LCC() {
                   <div className="w-full bg-slate-100 h-6 rounded-full overflow-hidden flex text-[10px] text-white font-mono font-bold">
                     {/* CapEx */}
                     <div 
-                      className="bg-red-500 h-full flex items-center justify-center cursor-help"
+                      className="bg-red-600 h-full flex items-center justify-center cursor-help"
                       style={{ width: `${Math.max(10, (calcData.resultA.capex / Math.max(calcData.resultA.totalLCCDiscounted, calcData.resultB.totalLCCDiscounted)) * 100)}%` }}
                       title={`Schritt 1 (Initialkosten): ${calcData.resultA.capex.toLocaleString('de-DE')} €`}
                     >
@@ -579,7 +579,7 @@ export default function LCC() {
                   <div className="w-full bg-slate-100 h-6 rounded-full overflow-hidden flex text-[10px] text-white font-mono font-bold">
                     {/* CapEx */}
                     <div 
-                      className="bg-red-500 h-full flex items-center justify-center cursor-help"
+                      className="bg-red-600 h-full flex items-center justify-center cursor-help"
                       style={{ width: `${Math.max(10, (calcData.resultB.capex / Math.max(calcData.resultA.totalLCCDiscounted, calcData.resultB.totalLCCDiscounted)) * 100)}%` }}
                       title={`Schritt 1 (Initialkosten abzügl. Förderung): ${calcData.resultB.capex.toLocaleString('de-DE')} €`}
                     >
@@ -636,7 +636,7 @@ export default function LCC() {
 
                 {/* Legend and description for bar */}
                 <div className="flex flex-wrap gap-2 justify-between pt-2 border-t border-slate-150 text-[11px] text-slate-500">
-                  <div className="flex items-center gap-1"><span className="w-2.5 h-2.5 bg-red-500 rounded-xs block"></span><MdText text={inhalt.texte.anschaffungCapex} /></div>
+                  <div className="flex items-center gap-1"><span className="w-2.5 h-2.5 bg-red-600 rounded-xs block"></span><MdText text={inhalt.texte.anschaffungCapex} /></div>
                   <div className="flex items-center gap-1"><span className="w-2.5 h-2.5 bg-amber-500 rounded-xs block"></span><MdText text={inhalt.texte.betriebHeizungOpex} /></div>
                   <div className="flex items-center gap-1"><span className="w-2.5 h-2.5 bg-[#059669] rounded-xs block"></span> CO₂-Zertifikatsteuer</div>
                   <div className="flex items-center gap-1"><span className="w-2.5 h-2.5 bg-indigo-500 rounded-xs block"></span> Wartung</div>
@@ -671,7 +671,7 @@ export default function LCC() {
                         <tr className="bg-blue-50/40 text-blue-900 border-b border-blue-100/30">
                           <td className="p-2.5 pl-6 font-normal text-[11px] text-blue-800 flex items-center gap-1"><MdText text={inhalt.texte.staatlKfwZuschuss} />{formatDeWert(subsidyPercent)}%)</td>
                           <td className="p-2.5 text-right text-slate-400 font-mono">- 0 €</td>
-                          <td className="p-2.5 text-right font-mono bg-slate-100/20 text-slate-400">- 0 €</td>
+                          <td className="p-2.5 text-right font-mono bg-slate-100/20 text-slate-700">- 0 €</td>
                           <td className="p-2.5 text-right font-mono text-blue-700">- {((activeScenario.optionB.capex * subsidyPercent) / 100).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
                           <td className="p-2.5 text-right font-bold font-mono bg-indigo-50/20 text-blue-800">- {((activeScenario.optionB.capex * subsidyPercent) / 100).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
                         </tr>
