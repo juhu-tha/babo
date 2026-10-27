@@ -44,10 +44,10 @@ type LlmTab = 'uebersicht' | 'skills_konnektoren' | 'markdown' | 'verzeichnisse'
 
 /** Reiter (Z53: Gliederung langer Module über ModuleTabs) */
 const LLM_TABS: readonly ModulTab<LlmTab>[] = [
-  { id: 'uebersicht', label: inhalt.texte.t1ClaudeVsChatgpt.trim(), icon: Bot },
+  { id: 'uebersicht', label: inhalt.texte.t1AssistentenImBau.trim(), icon: Bot },
   { id: 'skills_konnektoren', label: inhalt.texte.t2SkillsMcpKonnektoren.trim(), icon: Zap },
   { id: 'markdown', label: inhalt.texte.t3MarkdownMdStandard.trim(), icon: FileCode },
-  { id: 'verzeichnisse', label: inhalt.texte.t4ProjektverzeichnisseClaudeMd.trim(), icon: FolderTree },
+  { id: 'verzeichnisse', label: inhalt.texte.t4ProjektverzeichnisseAnweisungsdatei.trim(), icon: FolderTree },
   { id: 'browser', label: inhalt.texte.t5BrowserWebGrounding.trim(), icon: Globe },
   { id: 'praxisvorlagen', label: inhalt.texte.t6InteraktiverGeneratorVorlagen.trim(), icon: Sliders },
 ];
@@ -60,12 +60,12 @@ export default function LlmPraxis({ embedded = false }: LlmPraxisProps) {
   const [skillSubTab, setSkillSubTab] = useState<'skills_system' | 'mcp_arch' | 'mcp_servers'>('skills_system');
   const [dirProjectType, setDirProjectType] = useState<'bauleitung' | 'pruefstatik' | 'masterarbeit'>('bauleitung');
   const [markdownView, setMarkdownView] = useState<'vergleich' | 'syntax' | 'rechner'>('vergleich');
-  const [browserEngine, setBrowserEngine] = useState<'perplexity' | 'chatgpt_search' | 'claude_search'>('perplexity');
+  const [browserEngine, setBrowserEngine] = useState<'deep_research' | 'chat_suche' | 'agent_suche'>('deep_research');
 
   // States for interactive prompt generator
   const [genRole, setGenRole] = useState<'pruefstatik' | 'bauleitung_vob' | 'sachverstaendiger' | 'baustofflabor' | 'nachhaltigkeit_lca'>('pruefstatik');
   const [genNorm, setGenNorm] = useState<'ec2_din1045' | 'vob_b' | 'din18533' | 'din_en_206' | 'geg_dgnb'>('ec2_din1045');
-  const [genFormat, setGenFormat] = useState<'claudemd' | 'custom_gpt' | 'workflow_prompt'>('claudemd');
+  const [genFormat, setGenFormat] = useState<'anweisungsdatei' | 'eigener_assistent' | 'workflow_prompt'>('anweisungsdatei');
   const [genDetailLevel, setGenDetailLevel] = useState<'kompakt' | 'ausfuehrlich'>('ausfuehrlich');
 
   // Token calculator state
@@ -96,10 +96,10 @@ export default function LlmPraxis({ embedded = false }: LlmPraxisProps) {
       overheadFactor = 0.65;
     }
     const totalTokens = Math.round(calcDocPages * tokensPerPage * overheadFactor);
-    const costInputClaude = (totalTokens / 1_000_000) * 3.0; // Sonnet $3/MTok
-    const costCachedClaude = (totalTokens / 1_000_000) * 0.30; // 90% Prompt Caching discount
+    const costInputStandard = (totalTokens / 1_000_000) * 3.0; // typischer Listenpreis Frontier-Modell, ca. 3 $/MTok Eingabe (Stand prüfen)
+    const costCached = (totalTokens / 1_000_000) * 0.30; // Prompt Caching: zwischengespeicherte Eingabe ca. 10 % des Listenpreises
     const contextUsagePercent = Math.min(100, Math.round((totalTokens / 200_000) * 100));
-    return { totalTokens, costInputClaude, costCachedClaude, contextUsagePercent };
+    return { totalTokens, costInputStandard, costCached, contextUsagePercent };
   }, [calcDocPages, calcDocType]);
 
   // Dynamic generated template
@@ -108,8 +108,9 @@ export default function LlmPraxis({ embedded = false }: LlmPraxisProps) {
 
     const normGuidelines = inhalt.daten["LlmPraxis.normGuidelines"];
 
-    if (genFormat === 'claudemd') {
-      return `# CLAUDE.md - Projektrichtlinien für das Ingenieurbüro
+    if (genFormat === 'anweisungsdatei') {
+      return `# PROJEKTANWEISUNGEN.md – Projektrichtlinien für das Ingenieurbüro
+<!-- Dateiname je nach Werkzeug anpassen (werkzeugübergreifende Konvention z. B. AGENTS.md) -->
 
 ## 1. Rolle & Fachautorität
 Du agierst als hochqualifizierter **${roleTitles[genRole]}**.
@@ -132,8 +133,8 @@ Falls die Aufgabenstellung ein Risiko für Tragfähigkeit, Gebrauchstauglichkeit
 > ⚠️ **Prüfhinweis:** Statisch relevante Abweichungen bedürfen der schriftlichen Freigabe durch den aufstellenden Tragwerksplaner!`;
     }
 
-    if (genFormat === 'custom_gpt') {
-      return `### System Instructions für Custom GPT (${roleTitles[genRole]})
+    if (genFormat === 'eigener_assistent') {
+      return `### System-Anweisungen für einen eigenen KI-Assistenten (${roleTitles[genRole]})
 
 Du bist der KI-Fachassistent für "${roleTitles[genRole]}".
 
@@ -144,12 +145,12 @@ VERHALTENSREGELN:
    - Extrahiere Kennwerte stets mit Angabe von Seite und Bauteilbezeichnung.
    - Vergleichen Sie Soll-Werte mit Ist-Werten in einer Markdown-Matrix.
 4. Berechnungen:
-   - Nutzen Sie bei numerischen Daten bevorzugt das Code-Interpreter-Modul (Python), um Rechenfehler auszuschließen.
+   - Nutzen Sie bei numerischen Daten bevorzugt die Code-Ausführung (Python), um Rechenfehler auszuschließen.
    - Geben Sie Zwischenschritte und Formeln mit Einheiten an (z. B. kN, MPa, cm²).
 5. Grenzen: Erteile keine verbindliche Baufreigabe, sondern weise darauf hin, dass die finale Verantwortung beim zeichnungsberechtigten Ingenieur liegt.`;
     }
 
-    return `### Workflow-Prompt für Claude / ChatGPT
+    return `### Workflow-Prompt für LLM-Assistenten (Chat-KI)
 
 [ROLLE & ZIEL]
 Handle als erfahrener ${roleTitles[genRole]}.
@@ -174,34 +175,34 @@ ${normGuidelines[genNorm]}
     <ModuleTabs label="Bereiche der LLM-Praxis" tabs={LLM_TABS} aktiv={activeTab} onWechsel={setActiveTab} className="space-y-6 [&>[role=tablist]]:pt-2 [&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20">
     <div className="space-y-6">
 
-      {/* TAB 1: CLAUDE VS CHATGPT VERGLEICH */}
+      {/* TAB 1: ASSISTENTENTYPEN IM VERGLEICH */}
       {activeTab === 'uebersicht' && (
         <div className="space-y-6 animate-in fade-in duration-300">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             
-            {/* Claude Box */}
+            {/* Typ A: Dokumente & Code */}
             <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <span className="w-3 h-3 rounded-full bg-amber-500 animate-pulse"></span>
-                    <h3 className="text-lg font-bold text-text-main"><MdText text={inhalt.texte.claudeAnthropic} /></h3>
+                    <h3 className="text-lg font-bold text-text-main"><MdText text={inhalt.texte.assistentTypA} /></h3>
                   </div>
-                  <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200"><MdText text={inhalt.texte.claudeSonnetOpusAktuelle} /></span>
+                  <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200"><MdText text={inhalt.texte.assistentTypABadge} /></span>
                 </div>
                 <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.starkBeiPräziserTechnischer} /></p>
 
                 <div className="space-y-2.5 pt-2">
                   <div className="p-3 bg-slate-50 rounded-xl border border-home-grau/20 text-xs">
                     <div className="font-bold text-text-main flex items-center gap-1.5 mb-1">
-                      <FolderGit2 size={14} className="text-amber-600" /><MdText text={inhalt.texte.claudeProjects200kToken} /></div>
+                      <FolderGit2 size={14} className="text-amber-600" /><MdText text={inhalt.texte.projektbereicheGrosserKontext} /></div>
                     <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.zentraleWissensbasisFürGanze} /></p>
                   </div>
 
                   <div className="p-3 bg-slate-50 rounded-xl border border-home-grau/20 text-xs">
                     <div className="font-bold text-text-main flex items-center gap-1.5 mb-1">
                       <Code size={14} className="text-amber-600" /><MdText text={inhalt.texte.artifactsInteraktiveToolsSvg} /></div>
-                    <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.claudeRendertInteraktiveReact} /></p>
+                    <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.vorschauRendertInteraktiveReact} /></p>
                   </div>
 
                   <div className="p-3 bg-slate-50 rounded-xl border border-home-grau/20 text-xs">
@@ -218,15 +219,15 @@ ${normGuidelines[genNorm]}
               </div>
             </div>
 
-            {/* ChatGPT Box */}
+            {/* Typ B: Datenanalyse & Multimodalität */}
             <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <span className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <h3 className="text-lg font-bold text-text-main"><MdText text={inhalt.texte.chatgptOpenai} /></h3>
+                    <h3 className="text-lg font-bold text-text-main"><MdText text={inhalt.texte.assistentTypB} /></h3>
                   </div>
-                  <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200"><MdText text={inhalt.texte.gptAktuelleGenerationInkl} /></span>
+                  <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200"><MdText text={inhalt.texte.assistentTypBBadge} /></span>
                 </div>
                 <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.verbreitetFürNumerischeDatenanalysen} /></p>
 
@@ -258,6 +259,8 @@ ${normGuidelines[genNorm]}
             </div>
           </div>
 
+          <p className="text-xs text-text-main/70 bg-off-white p-3 rounded-xl border border-home-grau/20 leading-relaxed"><MdText text={inhalt.texte.hinweisFunktionsklassen} /></p>
+
           {/* DECISION MATRIX */}
           <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-4">
             <h3 className="text-base font-bold text-text-main flex items-center gap-2">
@@ -276,37 +279,37 @@ ${normGuidelines[genNorm]}
                 <tbody className="divide-y divide-home-grau/20 text-text-main/80">
                   <tr className="hover:bg-slate-50/50">
                     <td className="p-3 font-medium"><MdText text={inhalt.texte.baugrundgutachten150SeitenPdf} /></td>
-                    <td className="p-3 text-amber-700 font-bold"><MdText text={inhalt.texte.claudeSonnet} /></td>
-                    <td className="p-3"><MdText text={inhalt.texte.claudeProject200kWindow} /></td>
+                    <td className="p-3 text-amber-700 font-bold"><MdText text={inhalt.texte.mtxTypA} /></td>
+                    <td className="p-3"><MdText text={inhalt.texte.mtxProjektbereich} /></td>
                     <td className="p-3"><MdText text={inhalt.texte.höchsteSchärfeBeimAuffinden} /></td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
                     <td className="p-3 font-medium"><MdText text={inhalt.texte.zugversuchsRohdatenCsvMit} /></td>
-                    <td className="p-3 text-emerald-700 font-bold"><MdText text={inhalt.texte.chatgptPlusPro} /></td>
+                    <td className="p-3 text-emerald-700 font-bold"><MdText text={inhalt.texte.mtxTypB} /></td>
                     <td className="p-3"><MdText text={inhalt.texte.advancedDataAnalysisPython2} /></td>
                     <td className="p-3"><MdText text={inhalt.texte.rechnetMitEchtenPandas} /></td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
                     <td className="p-3 font-medium"><MdText text={inhalt.texte.prüfberichtFürBauschadenSchreiben} /></td>
-                    <td className="p-3 text-emerald-700 font-bold"><MdText text={inhalt.texte.chatgptCanvas} /></td>
+                    <td className="p-3 text-emerald-700 font-bold"><MdText text={inhalt.texte.mtxTypBEditor} /></td>
                     <td className="p-3"><MdText text={inhalt.texte.canvasInlineEditing} /></td>
                     <td className="p-3"><MdText text={inhalt.texte.präziseKorrekturenAnEinzelnen} /></td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
                     <td className="p-3 font-medium"><MdText text={inhalt.texte.erstellungEinesBauphysikRechners} /></td>
-                    <td className="p-3 text-amber-700 font-bold"><MdText text={inhalt.texte.claudeSonnet2} /></td>
+                    <td className="p-3 text-amber-700 font-bold"><MdText text={inhalt.texte.mtxTypA2} /></td>
                     <td className="p-3"><MdText text={inhalt.texte.artifactsReactHtml} /></td>
                     <td className="p-3"><MdText text={inhalt.texte.sofortBedienbareInteraktiveOberfläche} /></td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
                     <td className="p-3 font-medium"><MdText text={inhalt.texte.rechtssichereVobMängelrüge4} /></td>
-                    <td className="p-3 text-amber-700 font-bold"><MdText text={inhalt.texte.claudeSonnet3} /></td>
+                    <td className="p-3 text-shiraz font-bold"><MdText text={inhalt.texte.mtxTypAoderB} /></td>
                     <td className="p-3">Markdown-Striktheit</td>
                     <td className="p-3"><MdText text={inhalt.texte.formuliertFormellNüchternPräzise} /></td>
                   </tr>
                   <tr className="hover:bg-slate-50/50">
                     <td className="p-3 font-medium"><MdText text={inhalt.texte.rechercheZuDibtZulassungen} /></td>
-                    <td className="p-3 text-blue-700 font-bold"><MdText text={inhalt.texte.perplexityChatgptSearch} /></td>
+                    <td className="p-3 text-blue-700 font-bold"><MdText text={inhalt.texte.mtxSuchassistent} /></td>
                     <td className="p-3"><MdText text={inhalt.texte.webGroundingZitate} /></td>
                     <td className="p-3"><MdText text={inhalt.texte.liveWebsucheMitDirekten} /></td>
                   </tr>
@@ -327,7 +330,7 @@ ${normGuidelines[genNorm]}
         <MarkdownTab markdownView={markdownView} setMarkdownView={setMarkdownView} calcDocPages={calcDocPages} setCalcDocPages={setCalcDocPages} calcDocType={calcDocType} setCalcDocType={setCalcDocType} tokenStats={tokenStats} />
       )}
 
-      {/* TAB 4: VERZEICHNISSTRUKTUREN & CLAUDE.MD */}
+      {/* TAB 4: VERZEICHNISSTRUKTUREN & PROJEKTANWEISUNGSDATEI */}
       {activeTab === 'verzeichnisse' && (
         <VerzeichnisseTab dirProjectType={dirProjectType} setDirProjectType={setDirProjectType} copyToClipboard={copyToClipboard} copiedKey={copiedKey} />
       )}
@@ -344,7 +347,7 @@ ${normGuidelines[genNorm]}
             <div className="space-y-2">
               <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
                 <Sliders size={20} className="text-shiraz" /><MdText text={inhalt.texte.interaktiverIngenieurPromptVorlagen} /></h3>
-              <p className="text-xs sm:text-sm text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.konfiguriereMaßgeschneiderteSystemPrompt} /><code className="font-mono text-xs">CLAUDE.md</code><MdText text={inhalt.texte.projektdateienOderWorkflowAnweisungen} /></p>
+              <p className="text-xs sm:text-sm text-text-main/75 leading-relaxed"><MdText text={inhalt.texte.konfiguriereMaßgeschneiderteSystemPrompt} /><code className="font-mono text-xs">PROJEKTANWEISUNGEN.md</code><MdText text={inhalt.texte.projektdateienOderWorkflowAnweisungen} /></p>
             </div>
 
             {/* CONFIGURATION CONTROLS */}
@@ -386,8 +389,8 @@ ${normGuidelines[genNorm]}
                   onChange={(e) => setGenFormat(e.target.value as typeof genFormat)}
                   className="w-full p-2 rounded-lg bg-white border border-home-grau/30 text-text-main focus:ring-2 focus:ring-shiraz"
                 >
-                  <option value="claudemd">CLAUDE.md (Projektordner-Regeln)</option>
-                  <option value="custom_gpt">Custom GPT Instructions (OpenAI)</option>
+                  <option value="anweisungsdatei">Projektanweisungsdatei (Markdown, Projektordner-Regeln)</option>
+                  <option value="eigener_assistent">System-Anweisungen (eigener Assistent)</option>
                   <option value="workflow_prompt">Aufgaben-Prompt (Einmalige Analyse)</option>
                 </select>
               </div>
@@ -398,7 +401,7 @@ ${normGuidelines[genNorm]}
               <div className="flex items-center justify-between bg-slate-900 text-slate-200 px-4 py-2.5 rounded-t-xl text-xs font-mono">
                 <span className="flex items-center gap-2">
                   <FileCode size={14} className="text-shiraz" /> 
-                  {genFormat === 'claudemd' ? 'CLAUDE.md' : genFormat === 'custom_gpt' ? 'Custom_GPT_System_Instructions.txt' : 'Analyse_Prompt.md'}
+                  {genFormat === 'anweisungsdatei' ? 'PROJEKTANWEISUNGEN.md' : genFormat === 'eigener_assistent' ? 'Assistent_System_Anweisungen.txt' : 'Analyse_Prompt.md'}
                 </span>
                 <button
                   onClick={() => copyToClipboard(generatedTemplate, 'template')}
@@ -550,7 +553,7 @@ ${normGuidelines[genNorm]}
               <Terminal size={28} />
             </div>
             <div>
-              <h2 className="text-2xl font-black text-text-main flex items-center gap-2 tracking-tight"><MdText text={inhalt.texte.llmPraxisImBauwesen} /><span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-shiraz/10 text-shiraz border border-shiraz/20"><MdText text={inhalt.texte.claudeChatgptProfessional} /></span>
+              <h2 className="text-2xl font-black text-text-main flex items-center gap-2 tracking-tight"><MdText text={inhalt.texte.llmPraxisImBauwesen} /><span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-shiraz/10 text-shiraz border border-shiraz/20"><MdText text={inhalt.texte.chatKiProfessional} /></span>
               </h2>
               <p className="text-xs text-text-main/60 font-semibold uppercase tracking-wider mt-0.5"><MdText text={inhalt.texte.skillsMcpKonnektorenMarkdown} /></p>
             </div>
@@ -562,7 +565,7 @@ ${normGuidelines[genNorm]}
         </div>
 
         <div className="mt-4 text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/20 leading-relaxed">
-          <p><MdText text={inhalt.texte.derNaiveEinsatzVon} /><strong><MdText text={inhalt.texte.projektordner} /><code className="text-xs bg-slate-200 px-1 py-0.5 rounded">CLAUDE.md</code>)</strong><MdText text={inhalt.texte.undGerichtetesBrowserGrounding} /></p>
+          <p><MdText text={inhalt.texte.derNaiveEinsatzVon} /><strong><MdText text={inhalt.texte.projektordner} /><code className="text-xs bg-slate-200 px-1 py-0.5 rounded">PROJEKTANWEISUNGEN.md</code>)</strong><MdText text={inhalt.texte.undGerichtetesBrowserGrounding} /></p>
         </div>
 
         {innerContent}

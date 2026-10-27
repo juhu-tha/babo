@@ -168,7 +168,7 @@ type KiReiter = 'system' | 'prompting' | 'llmpraxis' | 'ressourcen' | 'thesen' |
 const KI_GRUPPEN: readonly ModulTabGruppe<KiReiter>[] = [
   { id: 'system_g', label: inhalt.werte.aSystemarchitektur, icon: Cpu, mitglieder: [{ id: 'system', label: inhalt.werte.aSystemarchitektur2 }] },
   { id: 'prompting_g', label: inhalt.werte.bPromptingPraxis, icon: MessageSquare, mitglieder: [{ id: 'prompting', label: inhalt.werte.bPromptingPraxis2 }] },
-  { id: 'llmpraxis_g', label: inhalt.werte.cLlmPraxisClaude, icon: Terminal, mitglieder: [{ id: 'llmpraxis', label: inhalt.werte.cLlmPraxisClaude2 }] },
+  { id: 'llmpraxis_g', label: inhalt.werte.cLlmPraxisChatKi, icon: Terminal, mitglieder: [{ id: 'llmpraxis', label: inhalt.werte.cLlmPraxisChatKi2 }] },
   { id: 'thesen_g', label: inhalt.werte.dToolsFürThesen, icon: BookOpen, mitglieder: [{ id: 'thesen', label: inhalt.werte.dToolsFürThesen2 }] },
   { id: 'recht_g', label: inhalt.werte.eFehlerRechtEthik, icon: ShieldAlert, mitglieder: [{ id: 'recht_ethik', label: inhalt.werte.eFehlerRechtEthik2 }] },
   { id: 'lokal_g', label: inhalt.werte.fLokaleKiLm, icon: Server, mitglieder: [{ id: 'lokal', label: inhalt.werte.fLokaleKiLm2 }] },

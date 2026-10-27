@@ -460,7 +460,7 @@ export const MODULES_DATA: Record<string, GroupData> = {
       { title: 'Materialdatenbanken', icon: Search, purpose: inhalt.werte.anbindungExternerStoffdatenquellenWie, standards: inhalt.werte.ökobaudatEn15804A2, useCase: inhalt.werte.automatischerImportDerWärmeleitfähigkeit },
       { title: 'Materialpässe', icon: FileText, purpose: inhalt.werte.materialUndGebäuderessourcenpässeZ, standards: inhalt.werte.mciEllenMacarthurFoundation, useCase: inhalt.werte.berechnungDesZirkularitätsIndex },
       { title: inhalt.werte.digitalerProduktpassDpp, icon: QrCodeIcon, purpose: inhalt.werte.digitalerProduktpassDerSchrittweise, standards: inhalt.werte.verordnungEu20241781, useCase: inhalt.werte.scannenEinesBaustoffQr },
-      { title: inhalt.werte.llmPraxisClaudeChatgpt, icon: Terminal, purpose: inhalt.werte.effizienterEinsatzVonClaude, standards: inhalt.werte.modelContextProtocolMcp, useCase: inhalt.werte.vorstrukturierungVonVobBedenkenhinweisen }
+      { title: inhalt.werte.llmPraxisChatKi, icon: Terminal, purpose: inhalt.werte.effizienterEinsatzVonLlmAssistenten, standards: inhalt.werte.modelContextProtocolMcp, useCase: inhalt.werte.vorstrukturierungVonVobBedenkenhinweisen }
     ],
     didacticCards: inhalt.daten["MODULES_DATA.digitales.didacticCards"],
     appStudents: inhalt.werte.vermitteltGrundlagenDerDigitalen,

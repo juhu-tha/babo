@@ -39,6 +39,7 @@ Ich versichere hiermit wahrheitsgemäß, dass ich die vorliegende Arbeit selbsts
 Zur Unterstützung des Arbeitsprozesses wurden generative KI-Werkzeuge in folgendem Umfang eingesetzt:
 
 Verwendete KI-Systeme: ${selectedTools.join(', ')}
+(Konkrete Produktbezeichnung, Modellversion und Nutzungszeitraum je System ergänzen.)
 
 Art und Zweck der Unterstützung:
 a) Sprachliche Optimierung: Überprüfung von Grammatik, Satzbau und Rechtschreibung deutscher sowie englischer Textpassagen (DeepL / LLM).
@@ -141,7 +142,7 @@ Unterschrift Verfasser/in`;
         <div>
           <label className="text-xxs font-bold text-text-main/70 block mb-1.5"><MdText text={inhalt.texte.eingesetzteKiToolsAuswählen} /></label>
           <div className="flex flex-wrap gap-2">
-            {['NotebookLM', 'ChatGPT', 'Claude', 'DeepL', inhalt.werte.elicitConsensus, inhalt.werte.pythonCursor2, inhalt.werte.lmStudioLokal].map(t => (
+            {['NotebookLM', inhalt.werte.llmAssistentChatKi, 'DeepL', inhalt.werte.elicitConsensus, inhalt.werte.pythonCursor2, inhalt.werte.lmStudioLokal].map(t => (
               <button
                 key={t}
                 onClick={() => toggleTool(t)}

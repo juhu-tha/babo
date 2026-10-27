@@ -45,7 +45,7 @@
     "t2EigenePrüfdatenEinsetzen": "2. Eigene Prüfdaten einsetzen",
     "ersetzenSieDieBeispieldaten": "Ersetzen Sie die Beispieldaten des Dozenten sofort durch eigene Zahlen: Tragen Sie Prüfwerte aus Ihrem Baustofflabor, Festigkeitsklassen nach DIN EN 206 oder U-Werte Ihrer Bauphysik-Aufgabe ein.",
     "t3VibeCodingAls": "3. Vibe Coding als Tutor nutzen",
-    "verstehenSieEineFehlermeldung": "Verstehen Sie eine Fehlermeldung nicht? Kopiere die Zeile in Claude oder ChatGPT mit dem Prompt: *„Erkläre mir diese Python-Fehlermeldung für einen Bauingenieur-Anfänger in 2 Sätzen.“*"
+    "verstehenSieEineFehlermeldung": "Verstehen Sie eine Fehlermeldung nicht? Kopiere die Zeile in einen LLM-Assistenten (Chat-KI) mit dem Prompt: *„Erkläre mir diese Python-Fehlermeldung für einen Bauingenieur-Anfänger in 2 Sätzen.“*"
   },
   "werte": {
     "pythonKomplettkursFürAnfänger": "Python Komplettkurs für Anfänger (von Null auf Programmierer)",
@@ -135,11 +135,11 @@
     "kiDeveloperWorkflowsDe": "modelcontextprotocol.io (offizielle Dokumentation, englisch)",
     "mcpAgentenSchnittstellen": "MCP & Agenten-Schnittstellen",
     "überblickWalkthroughCa45": "Architekturüberblick mit Beispielen (ca. 45 Min.)",
-    "einführungInDasOffene": "Offizieller Architekturüberblick zum offenen Standardprotokoll MCP: wie eine KI-Anwendung (Host, z. B. Claude Desktop oder VS Code) über Clients mit lokalen und entfernten MCP-Servern (Dateisystem, Datenbank) spricht und welche Bausteine (Tools, Resources, Prompts) ein Server anbietet.",
+    "einführungInDasOffene": "Offizieller Architekturüberblick zum offenen Standardprotokoll MCP: wie eine KI-Anwendung (Host, z. B. ein Desktop-Chat-Assistent oder VS Code) über Clients mit lokalen und entfernten MCP-Servern (Dateisystem, Datenbank) spricht und welche Bausteine (Tools, Resources, Prompts) ein Server anbietet.",
     "mcpIstDieZukunft": "MCP ist die Zukunft der Büroautomation. Statt Texte manuell hin- und herzukopieren, greift das Modell strukturiert auf lokale Baudaten und IFC-Modelle zu.",
-    "anbindungEinesLokalenPython": "Anbindung eines lokalen Python-Skripts mit `ifcopenshell` an Claude Desktop: Das Modell ermittelt auf Zuruf die Kubatur aller tragenden Wände aus dem IFC4-Modell.",
+    "anbindungEinesLokalenPython": "Anbindung eines lokalen Python-Skripts mit `ifcopenshell` an einen MCP-fähigen Desktop-Client: Das Modell ermittelt auf Zuruf die Kubatur aller tragenden Wände aus dem IFC4-Modell.",
     "jsonRpcSchnittstellenstandard": "JSON-RPC 2.0 als Datenschicht",
-    "claudeDesktopConfigJson": "Transporte: stdio und Streamable HTTP",
+    "mcpTransporte": "Transporte: stdio und Streamable HTTP",
     "filesystemSqliteMcpServer": "Tools, Resources & Prompts",
     "sicherheitsbarrierenBerechtigungen": "Lokale und entfernte MCP-Server",
     "videoWasIstMcp": "Seite „Architecture overview“, Abschnitte „Participants“ und „Primitives“.",

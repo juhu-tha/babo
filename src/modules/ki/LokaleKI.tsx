@@ -206,7 +206,7 @@ export default function LokaleKI() {
                 <thead>
                   <tr className="border-b border-home-grau/30 bg-off-white text-text-main">
                     <th className="p-3 font-bold">Kriterium</th>
-                    <th className="p-3 font-bold text-amber-900"><MdText text={inhalt.texte.cloudKiChatgptClaude} /></th>
+                    <th className="p-3 font-bold text-amber-900"><MdText text={inhalt.texte.cloudKiProprietaer} /></th>
                     <th className="p-3 font-bold text-emerald-900"><MdText text={inhalt.texte.lokaleKiLmStudio2} /></th>
                   </tr>
                 </thead>

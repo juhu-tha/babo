@@ -4,8 +4,8 @@ import inhalt from '@/content/ki/LlmPraxisTeile/BrowserTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 
 export interface BrowserTabProps {
-  browserEngine: "perplexity" | "chatgpt_search" | "claude_search";
-  setBrowserEngine: Dispatch<SetStateAction<"perplexity" | "chatgpt_search" | "claude_search">>;
+  browserEngine: "deep_research" | "chat_suche" | "agent_suche";
+  setBrowserEngine: Dispatch<SetStateAction<"deep_research" | "chat_suche" | "agent_suche">>;
 }
 
 export function BrowserTab({ browserEngine, setBrowserEngine }: BrowserTabProps) {
@@ -21,43 +21,43 @@ export function BrowserTab({ browserEngine, setBrowserEngine }: BrowserTabProps)
     
           {/* Browser Engine Toggle */}
           <div className="flex gap-1 bg-slate-100 p-1 rounded-xl text-xs font-semibold">
-            <button aria-pressed={browserEngine === 'perplexity'}
-              onClick={() => setBrowserEngine('perplexity')}
-              className={`px-3 py-1.5 rounded-lg transition-all ${browserEngine === 'perplexity' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
-            ><MdText text={inhalt.texte.perplexityDeepResearch} /></button>
-            <button aria-pressed={browserEngine === 'chatgpt_search'}
-              onClick={() => setBrowserEngine('chatgpt_search')}
-              className={`px-3 py-1.5 rounded-lg transition-all ${browserEngine === 'chatgpt_search' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
-            ><MdText text={inhalt.texte.chatgptSearch} /></button>
-            <button aria-pressed={browserEngine === 'claude_search'}
-              onClick={() => setBrowserEngine('claude_search')}
-              className={`px-3 py-1.5 rounded-lg transition-all ${browserEngine === 'claude_search' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
-            ><MdText text={inhalt.texte.claudeWebSearch} /></button>
+            <button aria-pressed={browserEngine === 'deep_research'}
+              onClick={() => setBrowserEngine('deep_research')}
+              className={`px-3 py-1.5 rounded-lg transition-all ${browserEngine === 'deep_research' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
+            ><MdText text={inhalt.texte.suchassistentDeepResearch} /></button>
+            <button aria-pressed={browserEngine === 'chat_suche'}
+              onClick={() => setBrowserEngine('chat_suche')}
+              className={`px-3 py-1.5 rounded-lg transition-all ${browserEngine === 'chat_suche' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
+            ><MdText text={inhalt.texte.websucheImChat} /></button>
+            <button aria-pressed={browserEngine === 'agent_suche'}
+              onClick={() => setBrowserEngine('agent_suche')}
+              className={`px-3 py-1.5 rounded-lg transition-all ${browserEngine === 'agent_suche' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
+            ><MdText text={inhalt.texte.websucheImAgenten} /></button>
           </div>
         </div>
     
         {/* ENGINE EXPLANATION */}
         <div className="p-4 bg-off-white rounded-xl border border-home-grau/20 text-xs">
-          {browserEngine === 'perplexity' && (
+          {browserEngine === 'deep_research' && (
             <div className="space-y-1.5">
               <span className="font-bold text-text-main flex items-center gap-1.5">
-                <Search size={14} className="text-blue-600" /><MdText text={inhalt.texte.perplexityDeepResearchSynthese} /></span>
+                <Search size={14} className="text-blue-600" /><MdText text={inhalt.texte.suchassistentDeepResearchSynthese} /></span>
               <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.idealFürWissenschaftlicheLiteraturrecher} /></p>
             </div>
           )}
     
-          {browserEngine === 'chatgpt_search' && (
+          {browserEngine === 'chat_suche' && (
             <div className="space-y-1.5">
               <span className="font-bold text-text-main flex items-center gap-1.5">
-                <Globe size={14} className="text-emerald-600" /><MdText text={inhalt.texte.chatgptSearchInteraktivesFact} /></span>
+                <Globe size={14} className="text-emerald-600" /><MdText text={inhalt.texte.websucheImChatFactChecking} /></span>
               <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.hervorragendZurSchnellenÜberprüfung} /></p>
             </div>
           )}
     
-          {browserEngine === 'claude_search' && (
+          {browserEngine === 'agent_suche' && (
             <div className="space-y-1.5">
               <span className="font-bold text-text-main flex items-center gap-1.5">
-                <Terminal size={14} className="text-amber-600" /><MdText text={inhalt.texte.claudeWebSearchGezielter} /></span>
+                <Terminal size={14} className="text-amber-600" /><MdText text={inhalt.texte.websucheImAgentenGezielter} /></span>
               <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.ruftBeiUnklarenNormentexten} /></p>
             </div>
           )}

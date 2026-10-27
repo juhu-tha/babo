@@ -45395,7 +45395,7 @@
       "Das beschreibt den Systemprompt.",
       "Das beschreibt einen Skill (SKILL.md).",
       "",
-      "Das beschreibt eine CLAUDE.md als Projektkontext."
+      "Das beschreibt eine Projektanweisungsdatei (Markdown) als Projektkontext."
     ],
     "gapAnalysis": {
       "topic": "Systemprompt, Skill, MCP",
@@ -45508,7 +45508,7 @@
       "Eine Markdown-Zusammenfassung des Datenblatts als Nachweis verwenden"
     ],
     "correctIdx": 1,
-    "explanation": "Für aktuelle Zulassungen und neue Normen empfiehlt das Modul Web-Grounding mit Zitaten (z. B. Perplexity oder ChatGPT Search), weil Trainingswissen veraltet sein kann. Die Quelle selbst ist zu prüfen.",
+    "explanation": "Für aktuelle Zulassungen und neue Normen empfiehlt das Modul Web-Grounding mit Zitaten (z. B. Such-Assistenten oder die Websuche eines Chat-Assistenten), weil Trainingswissen veraltet sein kann. Die Quelle selbst ist zu prüfen.",
     "bloom": "Bewerten",
     "niveau": "M",
     "distraktorFeedback": [

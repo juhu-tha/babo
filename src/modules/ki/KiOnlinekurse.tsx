@@ -174,7 +174,7 @@ const COURSES: OnlineCourse[] = [
     summary: inhalt.werte.einführungInDasOffene,
     justification: inhalt.werte.mcpIstDieZukunft,
     constructionTransfer: inhalt.werte.anbindungEinesLokalenPython,
-    highlightTopics: [inhalt.werte.jsonRpcSchnittstellenstandard, inhalt.werte.claudeDesktopConfigJson, inhalt.werte.filesystemSqliteMcpServer, inhalt.werte.sicherheitsbarrierenBerechtigungen],
+    highlightTopics: [inhalt.werte.jsonRpcSchnittstellenstandard, inhalt.werte.mcpTransporte, inhalt.werte.filesystemSqliteMcpServer, inhalt.werte.sicherheitsbarrierenBerechtigungen],
     recommendedStart: inhalt.werte.videoWasIstMcp
   },
 
