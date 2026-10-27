@@ -80,6 +80,8 @@ export default function LCC() {
   const [co2Escalation, setCo2Escalation] = useState<number>(5.0); // annual co2 tax increase in %
   const [subsidyEnabled, setSubsidyEnabled] = useState<boolean>(true);
   const [subsidyPercent, setSubsidyPercent] = useState<number>(15); // KfW Individual measures grant (up to 15-20%)
+  // Restwert: Standard AUS (BNB 2.1.1 ohne Restwert), Schalter für Vergleichsrechnung linear nach Del. VO (EU) 244/2012
+  const [restwertEnabled, setRestwertEnabled] = useState<boolean>(false);
 
   const activeScenario = useMemo(() => {
     return SCENARIOS.find(s => s.id === selectedScenarioId) || SCENARIOS[0];
@@ -95,7 +97,8 @@ export default function LCC() {
     co2Preis: co2BasePrice,
     co2Steigerung: co2Escalation / 100,
     foerderungB: subsidyEnabled ? subsidyPercent : 0,
-  }), [analysisPeriod, discountRate, energyInflation, generalInflation, co2PricingEnabled, co2BasePrice, co2Escalation, subsidyEnabled, subsidyPercent, activeScenario]);
+    restwertLinear: restwertEnabled,
+  }), [analysisPeriod, discountRate, energyInflation, generalInflation, co2PricingEnabled, co2BasePrice, co2Escalation, subsidyEnabled, subsidyPercent, restwertEnabled, activeScenario]);
 
   return (
     <div className="flex flex-col gap-8">
@@ -165,6 +168,7 @@ export default function LCC() {
                   <li><MdText text={inhalt.texte.energiepreisInflationE} /><span className="font-bold text-shiraz">{formatDeZahl(energyInflation, 1)} % / a</span></li>
                   <li><MdText text={inhalt.texte.coSchattenpreis} /><span className="font-bold text-shiraz">{co2PricingEnabled ? `Aktiv (${co2BasePrice} €/t, +${co2Escalation}%)` : 'Inaktiv'}</span></li>
                   <li><MdText text={inhalt.texte.kfwFördermodus} /><span className="font-bold text-shiraz">{subsidyEnabled ? `Aktiv (${formatDeWert(subsidyPercent)}%)` : 'Inaktiv'}</span></li>
+                  <li><MdText text={inhalt.texte.restwertModus} /><span className="font-bold text-shiraz">{restwertEnabled ? 'linear (Del. VO (EU) 244/2012, Vergleich)' : 'ohne (BNB 2.1.1)'}</span></li>
                 </ul>
               </div>
             </div>
@@ -380,6 +384,31 @@ export default function LCC() {
                     </div>
                   )}
                 </div>
+
+                {/* Restwert: Standard AUS (BNB 2.1.1), Vergleich linear nach Del. VO (EU) 244/2012 */}
+                <div className="bg-[#fcf8f2] p-3 rounded-xl border border-orange-200/50 space-y-2">
+                  <div className="flex items-center justify-between gap-2">
+                    <label htmlFor="restwert-toggle" className="text-xs font-bold text-slate-800 cursor-pointer select-none">{inhalt.texte.restwertLinearSchalter}</label>
+                    <button
+                      id="restwert-toggle"
+                      type="button"
+                      role="switch"
+                      aria-checked={restwertEnabled}
+                      aria-describedby="restwert-erklaerung"
+                      onClick={() => setRestwertEnabled(!restwertEnabled)}
+                      className={`relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-shiraz ${
+                        restwertEnabled ? 'bg-shiraz' : 'bg-slate-400'
+                      }`}
+                    >
+                      <span
+                        className={`pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out ${
+                          restwertEnabled ? 'translate-x-4' : 'translate-x-0'
+                        }`}
+                      />
+                    </button>
+                  </div>
+                  <p id="restwert-erklaerung" className="text-[10px] text-slate-600 leading-snug"><MdText text={inhalt.texte.restwertLinearErklaerung} /></p>
+                </div>
               </div>
 
               {/* Math context hint */}
@@ -441,7 +470,7 @@ export default function LCC() {
                   },
                   {
                     titel: inhalt.werte.barwertOptionA,
-                    erklaerung: `Investition + CO₂ (Herstellung) + Betrieb + Wartung + Ersatz + CO₂ (Nutzung) + Rückbau − Restwert, jeweils als Barwert${co2PricingEnabled ? '' : inhalt.werte.coPreisInaktiv}:`,
+                    erklaerung: `Investition + CO₂ (Herstellung) + Betrieb + Wartung + Ersatz + CO₂ (Nutzung) + Rückbau${restwertEnabled ? ' − Restwert (linear, Vergleich nach Del. VO (EU) 244/2012)' : ' (ohne Restwert, BNB 2.1.1)'}, jeweils als Barwert${co2PricingEnabled ? '' : inhalt.werte.coPreisInaktiv}:`,
                     formel: `LCC_A = ${texSumme([calcData.resultA.capex, calcData.resultA.initialCO2Cost, calcData.resultA.cumulativeOpExDiscounted, calcData.resultA.cumulativeMaintenanceDiscounted, calcData.resultA.cumulativeReplacementDiscounted, calcData.resultA.cumulativeCO2Discounted, calcData.resultA.eolDiscounted, -calcData.resultA.restwertDiscounted])} = ${formatDeTeX(calcData.resultA.totalLCCDiscounted, 0)}\\,\\text{EUR}`
                   },
                   {
@@ -684,7 +713,7 @@ export default function LCC() {
                           <td className="p-3 text-right font-bold font-mono bg-indigo-50/30 text-emerald-900">{(calcData.resultB.initialCO2Cost + calcData.resultB.cumulativeCO2Discounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
                         </tr>
                       )}
-                      {(calcData.resultA.restwertNominal > 0 || calcData.resultB.restwertNominal > 0) && (
+                      {restwertEnabled && (calcData.resultA.restwertNominal > 0 || calcData.resultB.restwertNominal > 0) && (
                         <tr>
                           <td className="p-3 font-medium"><MdText text={inhalt.texte.t7RestwertLinear} /></td>
                           <td className="p-3 text-right text-slate-500">- {(calcData.resultA.restwertNominal).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>

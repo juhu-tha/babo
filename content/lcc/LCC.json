@@ -33,6 +33,9 @@
     "staatlKfwFörderung": "Staatl. KfW-Förderung",
     "zuschussAufOptionB": "Zuschuss auf Option B:",
     "reduziertInvestitionskostenCapexDer": "Reduziert Investitionskosten (CapEx) der ökologischen Baustoffe.",
+    "restwertLinearSchalter": "Restwert linear (Del. VO (EU) 244/2012)",
+    "restwertLinearErklaerung": "Standard AUS = BNB-konform (BNB 2.1.1 ohne Restwert). Eingeschaltet: Vergleichsrechnung mit linearer Restwertgutschrift für Bauteile, deren Nutzungsdauer über das Jahr N hinausreicht.",
+    "restwertModus": "• Restwert: ",
     "diskontierungNpv": "Diskontierung ( NPV )",
     "kostenInNutzungsjahrT": "Kosten in Nutzungsjahr $t$ steigen ab dem 2. Jahr (BNB 2.1.1) und werden durch den Abzinsungsfaktor vermindert:",
     "daRInDer": "Da $r$ in der Regel größer als die Inflation $i$ ist, gewinnen niedrige Errichtungskosten an Attraktivität, je höher Sie $r$ ansetzen.",
@@ -67,7 +70,7 @@
     "cSubOpexT": "• **C<sub>OpEx, t</sub>**: Betriebskosten im Jahr t, erhöht unter der Sektor-Energiepreissteigerungsrate e",
     "cSubMaintT": "• **C<sub>Maint, t</sub>**: Wartungs- und Austauschkosten in den jeweiligen Erneuerungsjahren, erhöht um die allgemeine Inflation i",
     "cSubEndOf": "• **C<sub>End-of-Life</sub>**: Abtragungs- oder Rückbaukosten am Berechnungsende im Jahr N",
-    "cSubRestwert": "• **R<sub>N</sub>**: Restwert der Bauteile, deren Nutzungsdauer über das Jahr N hinausreicht – lineare Abschreibung der letzten Investition (Delegierte Verordnung (EU) Nr. 244/2012, Anhang I Nr. 4.2 (5)); der BNB-Steckbrief 2.1.1 enthält keinen Restwertansatz.",
+    "cSubRestwert": "• **R<sub>N</sub>**: Restwert der Bauteile, deren Nutzungsdauer über das Jahr N hinausreicht. Standard: R<sub>N</sub> = 0 (BNB-konform, der BNB-Steckbrief 2.1.1 enthält keinen Restwertansatz). Mit dem Schalter „Restwert linear“ wird zum Vergleich die letzte Investition linear abgeschrieben (Delegierte Verordnung (EU) Nr. 244/2012, Anhang I Nr. 4.2 (5)).",
     "preissteigerungAbJahr2": "• Preissteigerungen e und i wirken nach BNB-Steckbrief 2.1.1 ab dem 2. Jahr: Kosten im Jahr t werden mit $(1+p)^{t-1}$ fortgeschrieben.",
     "rAbzinsungssatzKalkulationszinssatz": "• **r**: Abzinsungssatz (Kalkulationszinssatz)",
     "t3ÖkologischerÖkonomischerZielkonflikt": "3. Ökologischer & ökonomischer Zielkonflikt",
@@ -247,7 +250,7 @@
     "LCC.formeln": [
       {
         "formel": "LCC = C_0 + \\sum_{t=1}^N \\frac{C_t}{(1 + r)^t} - \\frac{R_N}{(1 + r)^N}",
-        "erklaerung": "Lebenszykluskosten (Kapitalwert/Net Present Value): Summe aus Anfangsinvestition C_0, diskontierten Betriebskosten/Instandhaltungskosten C_t (Preissteigerung ab dem 2. Jahr nach BNB 2.1.1) und abgezinstem Restwert R_N bei Diskontierungsrate r; R_N linear nach Del. VO (EU) 244/2012.",
+        "erklaerung": "Lebenszykluskosten (Kapitalwert/Net Present Value): Summe aus Anfangsinvestition C_0, diskontierten Betriebskosten/Instandhaltungskosten C_t (Preissteigerung ab dem 2. Jahr nach BNB 2.1.1) und abgezinstem Restwert R_N bei Diskontierungsrate r; Standard R_N = 0 (BNB 2.1.1), optional linear nach Del. VO (EU) 244/2012.",
         "quelle": "ISO 15686-5 / DIN 18960"
       },
       {

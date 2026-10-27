@@ -411,7 +411,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     kurz: "Barwertvergleich der Lebenszykluskosten zweier Optionen (Barwertmethode wie BNB 2.1.1) mit Energie- und allgemeiner Preissteigerung, CO₂-Schattenpreis und Förderung.",
     grenzen: [
       "Fester Zinssatz und konstante Preissteigerungen; Steigerung ab dem 2. Jahr wie BNB 2.1.1 (auch für den CO₂-Preis).",
-      "Restwert linear (Del. VO (EU) 244/2012, Anhang I Nr. 4.2 (5)) nur für das zuletzt eingebaute Bauteil je Option, ohne CO₂-Gutschrift; BNB 2.1.1 selbst enthält keinen Restwertansatz.",
+      "Standard ohne Restwert (BNB 2.1.1, Entscheidung Prof. Huber 27.10.); optional linearer Restwert zum Vergleich (Del. VO (EU) 244/2012, Anhang I Nr. 4.2 (5)) nur für das zuletzt eingebaute Bauteil je Option, ohne CO₂-Gutschrift.",
       "Förderung nur für Option B als Abzug von der Investition.",
       "Instandhaltung und Ersatz in festen Intervallen, nicht im letzten Jahr; Ersatz bepreist die Herstellungsemissionen erneut.",
       "Kostenkennwerte der Szenarien sind Lehrannahmen; keine Wirtschaftlichkeitsberechnung nach DIN 18960 oder ISO 15686-5.",
