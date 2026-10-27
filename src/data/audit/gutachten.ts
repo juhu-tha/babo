@@ -18,15 +18,15 @@ export const GUTACHTEN_27_10: Gutachten = {
   ],
   massnahmen: [
     { nr: 1, titel: 'Platzhalter „Forschung und Transfer“ ersetzen (Projekte, Publikationen, ORCID, Labor, TTZ-Rolle)', wirkung: 'Profil → 1,3', status: 'wartet', hinweis: 'Texte ersetzt (#192); offen: URL der Personenseite, ORCID, DOI nach OER-Veröffentlichung' },
-    { nr: 2, titel: 'Fachliche Freigaben abarbeiten (src/data/pruefvermerke.ts) bzw. Hinweis neutral formulieren; F-Freigabe-Werte freigeben', wirkung: 'Didaktik, Rechner', status: 'wartet', hinweis: 'Liste der Werte: Reiter „Prüfpunkte F-Freigabe“' },
-    { nr: 3, titel: 'Mauerwerksfragen korrigieren (ζ = 0,85) und Test „Rechenfragen gegen Rechenkerne“', wirkung: 'Didaktik', status: 'offen' },
-    { nr: 4, titel: 'Datenschutzerklärung ergänzen (Speicherdauer, AVV Google, bezahlter Gemini-Tarif) – mit DSB abstimmen', wirkung: 'Recht', status: 'wartet', hinweis: 'Abstimmung mit der bzw. dem Datenschutzbeauftragten (Z11/Z39)' },
+    { nr: 2, titel: 'Fachliche Freigaben abarbeiten (src/data/pruefvermerke.ts) bzw. Hinweis neutral formulieren; F-Freigabe-Werte freigeben', wirkung: 'Didaktik, Rechner', status: 'wartet', hinweis: 'teilweise: Hinweis „Fachliche Prüfung ausstehend“ ausgeblendet (#193); Freigaben und F-Freigabe-Werte stehen aus (Reiter „Prüfpunkte F-Freigabe“)' },
+    { nr: 3, titel: 'Mauerwerksfragen korrigieren (ζ = 0,85) und Test „Rechenfragen gegen Rechenkerne“', wirkung: 'Didaktik', status: 'erledigt', hinweis: '#193' },
+    { nr: 4, titel: 'Datenschutzerklärung ergänzen (Speicherdauer, AVV Google, bezahlter Gemini-Tarif) – mit DSB abstimmen', wirkung: 'Recht', status: 'wartet', hinweis: 'wartet auf DSB; Vorschlag in docs/entwuerfe/datenschutz-ergaenzungen.md' },
     { nr: 5, titel: 'Rolle der THA als Diensteanbieterin bestätigen, Lizenz aktivieren, OFL- und Drittlizenzliste', wirkung: 'Recht', status: 'wartet', hinweis: 'Anfrage an die THA vorbereitet (Z13/Z45)' },
-    { nr: 6, titel: 'CSP scharf schalten (nach Auswertung des Report-Only-Betriebs)', wirkung: 'Technik', status: 'offen', hinweis: 'setzt den Betrieb auf Cloud Run voraus (Z50/Z56)' },
-    { nr: 7, titel: 'Manuelle BITV-Stichprobe und Screenreader-Test; restliche Reiterleisten von aria-pressed umstellen', wirkung: 'Bedienung/Barrierefreiheit', status: 'offen' },
-    { nr: 8, titel: 'Sichtbarer Fokusrahmen (:focus-visible), 3 target-size-Elemente vergrößern', wirkung: 'Bedienung/Barrierefreiheit', status: 'in_arbeit', hinweis: 'Favoritenstern in der Brotkrumenleiste auf 24 × 24 px (#192)' },
-    { nr: 9, titel: 'index.html: JSON-LD bereinigen (&amp;, Domain einheitlich, Tippfehler), Doku angleichen', wirkung: 'Technik', status: 'offen' },
-    { nr: 10, titel: 'Quiz-Qualität: Längenhinweis abbauen (37 % längste = richtige), normRef ergänzen, Freigabe planen', wirkung: 'Didaktik', status: 'offen' },
+    { nr: 6, titel: 'CSP scharf schalten (nach Auswertung des Report-Only-Betriebs)', wirkung: 'Technik', status: 'wartet', hinweis: 'Entscheidung 27.10.: zwei Wochen nach dem Cloud-Run-Umzug – wartet auf Z50' },
+    { nr: 7, titel: 'Manuelle BITV-Stichprobe und Screenreader-Test; restliche Reiterleisten von aria-pressed umstellen', wirkung: 'Bedienung/Barrierefreiheit', status: 'in_arbeit', hinweis: 'teilweise (#193): Reiterleisten umgestellt; rund 50 Ansichtsumschalter mit aria-pressed bleiben; BITV-Stichprobe und Screenreader-Test offen' },
+    { nr: 8, titel: 'Sichtbarer Fokusrahmen (:focus-visible), 3 target-size-Elemente vergrößern', wirkung: 'Bedienung/Barrierefreiheit', status: 'erledigt', hinweis: '#192 (Favoritenstern), #193' },
+    { nr: 9, titel: 'index.html: JSON-LD bereinigen (&amp;, Domain einheitlich, Tippfehler), Doku angleichen', wirkung: 'Technik', status: 'erledigt', hinweis: '#193' },
+    { nr: 10, titel: 'Quiz-Qualität: Längenhinweis abbauen (37 % längste = richtige), normRef ergänzen, Freigabe planen', wirkung: 'Didaktik', status: 'erledigt', hinweis: '#194: Distraktoren angeglichen (27,3 % statt 37 %), normRef ergänzt; Freigabe siehe Maßnahme 2' },
   ],
 };
 
