@@ -25999,14 +25999,12 @@
       "targetModuleTab": "statistik",
       "targetModuleLabel": "Statistik"
     },
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
-    },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27"
+      "hinweis": "normRef ergänzt; Zweitprüfung 27.10.: G_krit nach ISO 5725-2 (2,13 statt 2,03) – korrigiert, Freigabe zurückgenommen"
+    }
   },
   {
     "id": "qn_statistik_3",
