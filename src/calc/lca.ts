@@ -127,8 +127,24 @@ export const QNG_WG = { plus: 24, premium: 20 } as const;
  */
 export const A4_FAKTOR_GEBAEUDE = { lkw: 0.118, bahn: 0.014 } as const;
 
-/** Faktoren der Verwertungswege für Modul D (Lehrmodell, unverändert aus dem bisherigen Rechner übernommen) */
-export const VERWERTUNGSFAKTOR: Readonly<Record<Verwertung, number>> = { reuse: 1.45, high_grade: 1.0, downcycling: 0.55, thermal: 0.85 };
+/**
+ * Relative Substitutionsfaktoren der Verwertungswege für Modul D (Lehrmodell, Bezug hochwertiges Recycling = 1).
+ *
+ * Struktur nach DIN EN 15804+A2, Anhang D (Wiedergabe GreenDelta, „Module D in Environmental Product Declarations“, 02/2025):
+ *   D1 (stofflich) = Σ (M_MR,out − M_MR,in) · (E_MR,nach EoW − E_VMSub · Q_R,out/Q_Sub)
+ *   D3 (energetisch) = − M_INC,out · (LHV · X_INC,Wärme · E_SE,Wärme + LHV · X_INC,Strom · E_SE,Strom), Gutschrift nur bei
+ *   Anlagenwirkungsgrad > 60 %.
+ * Q_R,out/Q_Sub ≤ 1 („1 ist der günstigste Fall“) → hochwertiges Recycling 1,0; Downcycling verdrängt einen geringerwertigen
+ * Primärstoff (Q-Verhältnis < 1) → 0,55; Wiederverwendung ersetzt das Produkt einschließlich Aufbereitung → 1,45.
+ * Rangfolge nach Abfallhierarchie § 6 Abs. 1 KrWG (Vorbereitung zur Wiederverwendung vor Recycling vor sonstiger, insbesondere
+ * energetischer Verwertung) und BNB 4.1.4 (hochwertige vor minderwertiger vor thermischer Verwertung):
+ * reuse > high_grade > downcycling > thermal. Korrektur 27.10.2026: thermisch vorher 0,85 (> Downcycling 0,55, Verstoß gegen
+ * die Rangfolge), jetzt 0,40. Die Rangfolge ist belegt, die Beträge 1,45 / 0,55 / 0,40 sind Lehrwerte (vorläufig, F-Freigabe).
+ */
+export const VERWERTUNGSFAKTOR: Readonly<Record<Verwertung, number>> = { reuse: 1.45, high_grade: 1.0, downcycling: 0.55, thermal: 0.4 };
+/** Rangfolge der Verwertungswege nach § 6 Abs. 1 KrWG / BNB 4.1.4, höchste Stufe zuerst */
+export const VERWERTUNG_RANGFOLGE: readonly Verwertung[] = ['reuse', 'high_grade', 'downcycling', 'thermal'];
+export const QUELLE_VERWERTUNGSFAKTOR = 'Modul-D-Verwertungsfaktoren: Rangfolge nach § 6 KrWG und BNB 4.1.4 belegt, Beträge Lehrwerte (vorläufig, F-Freigabe)';
 /** Bezugs-Sortenreinheit der Referenz-Gutschrift [%] */
 export const SORTENREINHEIT_REFERENZ = 85;
 
@@ -149,6 +165,8 @@ export interface LcaBaustoff {
   penrt: number;
   /** Referenz-Kreislaufquote der Gutschrift gwpD [%] */
   refKreislaufquote: number;
+  /** Verwertungsweg, für den gwpD gilt (deklariertes Szenario, wie in einer EPD); fehlt er, gilt hochwertiges Recycling */
+  refVerwertung?: Verwertung;
 }
 
 export interface LcaZeile {
@@ -292,12 +310,15 @@ export function lcaBilanz(e: LcaEingabe): LcaErgebnis {
     const zB4 = n * (zA + zC);
     const kreislaufMasse = m * (z.kreislaufquote / 100);
     const rueckgewonnen = kreislaufMasse * (z.sortenreinheit / 100);
-    const zD = z.menge * s.gwpD * (z.kreislaufquote / s.refKreislaufquote) * (z.sortenreinheit / SORTENREINHEIT_REFERENZ) * VERWERTUNGSFAKTOR[z.verwertung];
+    // gwpD gilt für den Referenzweg; ein anderer Weg skaliert mit dem Verhältnis der Substitutionsfaktoren (Rangfolge § 6 KrWG)
+    const wegFaktor = VERWERTUNGSFAKTOR[z.verwertung] / VERWERTUNGSFAKTOR[s.refVerwertung ?? 'high_grade'];
+    const zD = z.menge * s.gwpD * (z.kreislaufquote / s.refKreislaufquote) * (z.sortenreinheit / SORTENREINHEIT_REFERENZ) * wegFaktor;
     masse += m; a1a3 += zA; c3c4 += zC; b4 += zB4; d += zD; rueck += rueckgewonnen;
     if (s.biogen > 0) biogen += z.menge * s.biogen;
     penrt += z.menge * s.penrt;
     umiSumme += m * Math.min(100, Math.round(z.kreislaufquote * 0.7 + z.sortenreinheit * 0.3));
     zeilen.push({ id: s.id, masse: m, nutzungsdauer: nd, ersatz: n, a1a3: zA, c: zC, b4: zB4, d: zD, kreislaufMasse, rueckgewonnen });
+    if (s.gwpD !== 0 && !vorlaeufig.includes(QUELLE_VERWERTUNGSFAKTOR) && (z.verwertung !== (s.refVerwertung ?? 'high_grade'))) vorlaeufig.push(QUELLE_VERWERTUNGSFAKTOR);
     const nda = BNB_NUTZUNGSDAUER[s.id];
     if (e.mitB4 && z.nutzungsdauer === undefined && nda?.vorlaeufig && !vorlaeufig.includes(nda.quelle)) vorlaeufig.push(nda.quelle);
   }

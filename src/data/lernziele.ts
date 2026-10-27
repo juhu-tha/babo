@@ -860,7 +860,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
       { stufe: "Anwenden", text: "für eine Büroaufgabe einen Prompt mit Rolle, Kontext, Aufgabe, Format und Regeln formulieren und mit einer naiven Anfrage vergleichen." },
       { stufe: "Anwenden", text: "Retrieval-Augmented Generation ohne Programmierung nachbilden und jede Antwort mit der Fundstelle im bereitgestellten Regelwerkstext belegen lassen." },
       { stufe: "Analysieren", text: "eine KI-Antwort auf erfundene Quellen, veraltete Normausgaben, falsche Grenzwerte und Rechenfehler untersuchen und die Fehlerbilder benennen." },
-      { stufe: "Bewerten", text: "ein vom Copilot erstelltes Rechenblatt mit Testfällen und einer unabhängigen Kontrollrechnung prüfen und über seine Verwendbarkeit entscheiden." },
+      { stufe: "Bewerten", text: "ein vom KI-Assistenten erstelltes Rechenblatt mit Testfällen und einer unabhängigen Kontrollrechnung prüfen und über seine Verwendbarkeit entscheiden." },
       { stufe: "Bewerten", text: "beurteilen, welche Schritte eines Agentenlaufs selbstständig ablaufen dürfen und welche eine menschliche Freigabe erfordern." },
     ],
   },

@@ -166,6 +166,10 @@ export default function Impressum() {
               </p>
 
               <p>
+                <strong>Hinweis zur Erstellung:</strong> Teile der Inhalte und Rechenmodule wurden KI-gestützt erstellt, vor der Veröffentlichung redaktionell kontrolliert und fachlich redigiert. Die redaktionelle Verantwortung liegt beim inhaltlich Verantwortlichen nach § 18 Abs. 2 MStV.
+              </p>
+
+              <p>
                 <strong>Haftung für Inhalte:</strong> Die Inhalte dieser Webanwendung (Lern- und Rechenmodule, Kennwerte, Aufgaben) wurden mit größtmöglicher Sorgfalt erstellt. Sie dienen ausschließlich Lehr- und Informationszwecken im Rahmen des Studiums und der wissenschaftlichen Weiterbildung. Eine Gewähr für die Richtigkeit, Vollständigkeit, Aktualität und Eignung der Berechnungen für reale baupraktische Anwendungsfälle wird ausdrücklich nicht übernommen.
               </p>
               

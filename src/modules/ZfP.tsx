@@ -32,6 +32,7 @@ import ElektromagnetischTab from './zfp/ElektromagnetischTab';
 import ElektrochemischTab from './zfp/ElektrochemischTab';
 import ThermischTab from './zfp/ThermischTab';
 import HolzTab from './zfp/HolzTab';
+import DgzfpTab from './zfp/DgzfpTab';
 import inhalt from '@/content/zfp/ZfP.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import {
@@ -444,8 +445,7 @@ export default function ZfP() {
 
       {activeTab === 'holz' && <div {...reiterPanel('zfp-bereich', activeTab)}><HolzTab renderEmbeddedGeraete={renderEmbeddedGeraete} /></div>}
 
-      {/* Reiter „DGZfP-Richtlinien“ hat (bereits vor der Umstellung) keinen eigenen Inhalt; leerer Bereich hält aria-controls gültig */}
-      {activeTab === 'dgzfp' && <div {...reiterPanel('zfp-bereich', activeTab)} />}
+      {activeTab === 'dgzfp' && <div {...reiterPanel('zfp-bereich', activeTab)}><DgzfpTab /></div>}
 
       <ModuleFooter 
         weblinks={inhalt.daten["ZfP.weblinks"]}

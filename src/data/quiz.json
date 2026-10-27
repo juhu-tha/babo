@@ -45861,11 +45861,11 @@
     "topic": "Nichtdeterminismus",
     "difficulty": "Basis",
     "normRef": "Lehrbeispiel",
-    "question": "Sie stellen dem Copilot dieselbe Fachfrage in drei neuen Chats und erhalten drei unterschiedlich formulierte Antworten. Was ist die zutreffende Erklärung?",
+    "question": "Sie stellen dem KI-Assistenten der Hochschule dieselbe Fachfrage in drei neuen Chats und erhalten drei unterschiedlich formulierte Antworten. Was ist die zutreffende Erklärung?",
     "options": [
       "Das Modell wählt jedes Token nach Wahrscheinlichkeit, mit einem Zufallsanteil",
       "Das Modell lernt aus jeder Frage dazu und verbessert dadurch die nächste Antwort",
-      "Der Copilot leitet jede Anfrage an ein anderes, zufällig gewähltes Modell",
+      "Der Assistent leitet jede Anfrage an ein anderes, zufällig gewähltes Modell",
       "Unterschiede entstehen nur durch Tippfehler in der wiederholten Eingabe"
     ],
     "correctIdx": 0,
@@ -45889,7 +45889,8 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "ok",
+      "hinweis": "Zweitprüfung 27.10.: Produktname durch „KI-Assistent der Hochschule“ ersetzt (Entscheidung 27.10.) – korrigiert"
     }
   },
   {
@@ -45945,7 +45946,7 @@
     "options": [
       "Aktion ausführen, weil der Agent das Ziel sonst nicht erreichen kann",
       "Lauf abbrechen und die Stelle als freigabepflichtige Aktion notieren",
-      "Die E-Mail vom Copilot formulieren lassen und sofort selbst versenden",
+      "Die E-Mail vom Assistenten formulieren lassen und sofort selbst versenden",
       "Die Aktion überspringen und eine plausible Beobachtung selbst erfinden"
     ],
     "correctIdx": 1,
@@ -45969,7 +45970,8 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "ok",
+      "hinweis": "Zweitprüfung 27.10.: Produktname durch „KI-Assistent der Hochschule“ ersetzt (Entscheidung 27.10.) – korrigiert"
     }
   },
   {
@@ -46021,7 +46023,7 @@
     "topic": "Testfall U-Wert",
     "difficulty": "Transfer",
     "normRef": "Lehrbeispiel",
-    "question": "Das vom Copilot entworfene Excel-Blatt liefert für den Testfall (1,5 cm Putz, 17,5 cm Kalksandstein, 16 cm Dämmung) U = 0,002 W/(m²·K) statt etwa 0,20 W/(m²·K). Welcher Fehler ist am wahrscheinlichsten?",
+    "question": "Das vom KI-Assistenten entworfene Excel-Blatt liefert für den Testfall (1,5 cm Putz, 17,5 cm Kalksandstein, 16 cm Dämmung) U = 0,002 W/(m²·K) statt etwa 0,20 W/(m²·K). Welcher Fehler ist am wahrscheinlichsten?",
     "options": [
       "Die Wärmeübergangswiderstände R_si und R_se wurden vertauscht",
       "Die Dicken wurden in cm statt in m in die Formel d/λ eingesetzt",
@@ -46049,7 +46051,8 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "ok",
+      "hinweis": "Zweitprüfung 27.10.: Produktname durch „KI-Assistent der Hochschule“ ersetzt (Entscheidung 27.10.) – korrigiert"
     }
   },
   {
@@ -46061,7 +46064,7 @@
     "topic": "Gefälligkeitsfehler",
     "difficulty": "Basis",
     "normRef": "Lehrbeispiel",
-    "question": "Sie behaupten gegenüber dem Copilot bewusst falsch, ein höherer w/z-Wert erhöhe die Druckfestigkeit, und das Modell stimmt zu. Welches Fehlerbild liegt vor?",
+    "question": "Sie behaupten gegenüber dem KI-Assistenten bewusst falsch, ein höherer w/z-Wert erhöhe die Druckfestigkeit, und das Modell stimmt zu. Welches Fehlerbild liegt vor?",
     "options": [
       "Eine erfundene Quelle, weil kein Literaturbeleg genannt wurde",
       "Ein Gefälligkeitsfehler: Das Modell übernimmt Ihre falsche Annahme",
@@ -46089,7 +46092,8 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "ok",
+      "hinweis": "Zweitprüfung 27.10.: Produktname durch „KI-Assistent der Hochschule“ ersetzt (Entscheidung 27.10.) – korrigiert"
     }
   },
   {

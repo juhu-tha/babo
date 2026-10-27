@@ -8,7 +8,7 @@ export interface MaterialDefinition {
   densityKg: number; // kg per unit
   gwpA1A3: number;   // kg CO2-eq per unit (includes biogenic negative if organic)
   gwpC: number;      // kg CO2-eq per unit (re-release at End of Life)
-  gwpD: number;      // kg CO2-eq per unit reference credit
+  gwpD: number;      // kg CO₂-Äq. je Einheit, Referenz-Gutschrift für defaultRecoveryType und defaultCircularQuota
   biogenicContent: number; // Amount of stored biogenic CO2 included in A1-A3
   umiScore: number;  // Urban Mining Index in % (stofflicher Verwertungsanteil)
   penrt: number;     // Primärenergie nicht-erneuerbar in MJ je Einheit
@@ -325,7 +325,7 @@ export interface CustomRow {
 export function alsLcaBaustoff(m: MaterialDefinition): LcaBaustoff {
   return {
     id: m.id, einheit: m.unit, rohdichte: m.densityKg, gwpA1A3: m.gwpA1A3, gwpC: m.gwpC, gwpD: m.gwpD,
-    biogen: m.biogenicContent, penrt: m.penrt, refKreislaufquote: m.defaultCircularQuota,
+    biogen: m.biogenicContent, penrt: m.penrt, refKreislaufquote: m.defaultCircularQuota, refVerwertung: m.defaultRecoveryType,
   };
 }
 

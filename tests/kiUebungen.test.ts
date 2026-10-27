@@ -17,7 +17,8 @@ for (const u of KI_UEBUNGEN) {
   pruefe(u.ziel.length >= 60, `${u.id}: Ziel zu kurz`);
   pruefe(u.minuten >= 30 && u.minuten <= 120, `${u.id}: Zeitbedarf ${u.minuten} min unplausibel`);
   pruefe(u.material.length >= 2, `${u.id}: Material fehlt`);
-  pruefe(u.material.some(m => m.includes('Copilot')), `${u.id}: Copilot nicht als Werkzeug genannt`);
+  pruefe(u.material.some(m => m.includes('KI-Assistent der Hochschule')), `${u.id}: KI-Assistent der Hochschule nicht als Werkzeug genannt`);
+  pruefe(!/copilot|microsoft copilot/i.test([u.ziel, ...u.material, ...u.schritte, ...u.erwartung, ...u.reflexion, ...u.checkliste].join(' ')), `${u.id}: Produktname Copilot statt neutraler Bezeichnung`);
   pruefe(u.schritte.length >= 4, `${u.id}: weniger als 4 Schritte`);
   pruefe(u.prompts.length >= 1 && u.prompts.every(p => p.titel && p.text.length >= 20), `${u.id}: Prompt-Vorlage fehlt`);
   pruefe(u.erwartung.length >= 3, `${u.id}: Erwartungshorizont zu knapp`);
@@ -26,7 +27,7 @@ for (const u of KI_UEBUNGEN) {
   pruefe(u.theorie.length >= 1, `${u.id}: kein Theorieverweis`);
   for (const t of u.theorie) pruefe(MODUL_BY_ID.has(t.ziel), `${u.id}: Theorieverweis ${t.ziel} existiert nicht`);
   const alles = [u.ziel, ...u.material, ...u.schritte, ...u.prompts.map(p => p.text)].join('\n');
-  // Hochschul-Copilot statt Gemini, keine API-Schlüssel, keine Programmierung
+  // KI-Assistent der Hochschule statt Gemini, keine API-Schlüssel, keine Programmierung
   pruefe(!/gemini|api[- ]?key|api-schlüssel|python|vba-code/i.test(alles), `${u.id}: Gemini-, API- oder Programmierbezug in der Übung`);
   pruefe(!alles.includes('\\'), `${u.id}: Backslash in Übungstext`);
 }
@@ -35,7 +36,7 @@ const regeln = KI_UEBUNG_REGELN.join(' ');
 pruefe(/personenbezogen/i.test(regeln), 'Regeln: Hinweis auf personenbezogene Daten fehlt');
 pruefe(/Normvolltext/i.test(regeln) && /lizen/i.test(regeln), 'Regeln: Hinweis auf Normlizenzen fehlt');
 pruefe(/vertraulich/i.test(regeln), 'Regeln: Hinweis auf vertrauliche Unterlagen fehlt');
-pruefe(/Copilot/.test(regeln), 'Regeln: Werkzeug Copilot fehlt');
+pruefe(/KI-Assistent der Hochschule/.test(regeln) && /Hochschullizenz/.test(regeln) && !/copilot/i.test(regeln), 'Regeln: neutrales Werkzeug (KI-Assistent, Hochschullizenz) fehlt');
 
 // Einbindung: Registry, Baum, Lernziele, Verweis aus dem KI-Modul
 pruefe(MODUL_BY_ID.get('ki_uebungen')?.gruppe === 'KI im Bauwesen', 'ki_uebungen nicht in der Menügruppe KI im Bauwesen');
