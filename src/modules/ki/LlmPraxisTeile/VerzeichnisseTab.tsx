@@ -46,12 +46,12 @@ export function VerzeichnisseTab({ dirProjectType, setDirProjectType, copyToClip
                         <FolderTree size={14} /> 
                         {dirProjectType === 'bauleitung' ? 'BV_Wohnanlage_Augsburg_Bauleitung/' : dirProjectType === 'pruefstatik' ? 'BV_Gewerbepark_Tragwerksplanung/' : 'Masterarbeit_Recyclingbeton_THA/'}
                       </span>
-                      <span className="text-[10px] text-slate-500 font-normal"><MdText text={inhalt.texte.iso8601Nomenklatur} /></span>
+                      <span className="text-[10px] text-slate-400 font-normal"><MdText text={inhalt.texte.iso8601Nomenklatur} /></span>
                     </div>
     
                     <div className="pt-2 text-slate-300">
-                      <div className="pl-2">├── 📄 <span className="text-emerald-300 font-bold">CLAUDE.md</span> <span className="text-slate-500"><MdText text={inhalt.texte.zentraleBüroProjektrichtlinien} /></span></div>
-                      <div className="pl-2">├── 📄 <span className="text-amber-300 font-bold">.cursorrules</span> <span className="text-slate-500"><MdText text={inhalt.texte.codingFormelstandardsFürKi} /></span></div>
+                      <div className="pl-2">├── 📄 <span className="text-emerald-300 font-bold">CLAUDE.md</span> <span className="text-slate-400"><MdText text={inhalt.texte.zentraleBüroProjektrichtlinien} /></span></div>
+                      <div className="pl-2">├── 📄 <span className="text-amber-300 font-bold">.cursorrules</span> <span className="text-slate-400"><MdText text={inhalt.texte.codingFormelstandardsFürKi} /></span></div>
                       
                       {dirProjectType === 'bauleitung' && (
                         <>
@@ -75,7 +75,7 @@ export function VerzeichnisseTab({ dirProjectType, setDirProjectType, copyToClip
                           <div className="pl-6"><MdText text={inhalt.texte.lastannahmenDinEn1991} /></div>
                           <div className="pl-6"><MdText text={inhalt.texte.baugrundschichtenEc7Md} /></div>
                           <div className="pl-2">├── 📁 <span className="text-amber-300">02_baustoffe/</span></div>
-                          <div className="pl-6"><MdText text={inhalt.texte.betonStahlKennwerteMd} /><span className="text-slate-500"><MdText text={inhalt.texte.c3545B500b} /></span></div>
+                          <div className="pl-6"><MdText text={inhalt.texte.betonStahlKennwerteMd} /><span className="text-slate-400"><MdText text={inhalt.texte.c3545B500b} /></span></div>
                           <div className="pl-2">├── 📁 <span className="text-amber-300">03_bauteile/</span></div>
                           <div className="pl-6"><MdText text={inhalt.texte.deckeOg1DurchstanzenMd} /></div>
                           <div className="pl-6"><MdText text={inhalt.texte.stuetzenbemessungKnickenMd} /></div>

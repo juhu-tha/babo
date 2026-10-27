@@ -270,6 +270,8 @@ export default function SchmidtHammerSimulator() {
               <button
                 onClick={handleReset}
                 disabled={stats.count === 0}
+                aria-label="Messreihe zurücksetzen"
+                title="Messreihe zurücksetzen"
                 className="py-3 px-3 bg-off-white hover:bg-slate-200 text-text-main border border-home-grau/30 rounded-xl font-bold text-xs transition-all cursor-pointer disabled:opacity-50"
               >
                 <RotateCcw size={14} />

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useId, useState, useMemo } from 'react';
 import { InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import {
@@ -21,6 +21,7 @@ import { dehnungsZustand, DEHNUNG_TRAEGER, type Spanngliedlage } from '@/src/cal
 export type TendonTrajectoryType = Spanngliedlage;
 
 export default function SpannbetonDehnungsAnimation() {
+  const vorspannId = useId();
   // Träger- & Systemzustand (Manuelle Schieberegler-Steuerung)
   const [prestressForce, setPrestressForce] = useState<number>(1400); // P in kN
   const [loadQ, setLoadQ] = useState<number>(0); // q in kN/m (beginnt bei 0 kN/m)
@@ -275,7 +276,7 @@ export default function SpannbetonDehnungsAnimation() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-shiraz" />
-              <span className="text-sm font-bold text-slate-900"><MdText text={inhalt.texte.vorspannkraftPManuellEinstellen} /></span>
+              <span id={vorspannId} className="text-sm font-bold text-slate-900"><MdText text={inhalt.texte.vorspannkraftPManuellEinstellen} /></span>
               <span className="font-mono text-base font-bold text-shiraz bg-shiraz/10 px-2.5 py-0.5 rounded border border-shiraz/20">
                 {formatDeZahl(prestressForce, 0)} kN
               </span>
@@ -290,6 +291,7 @@ export default function SpannbetonDehnungsAnimation() {
           <div className="space-y-1">
             <input
               type="range"
+              aria-labelledby={vorspannId}
               min="0"
               max="3000"
               step="10"

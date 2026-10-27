@@ -289,7 +289,7 @@ export default function BodenMaterialAufbereitung() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
               {/* Step 1 */}
               <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30 relative">
-                <div className="absolute top-2 right-2 text-3xl font-black text-slate-200 font-mono">01</div>
+                <span aria-hidden="true" data-wasserzeichen="01" className="absolute top-2 right-2 text-3xl font-black text-slate-200 font-mono after:content-[attr(data-wasserzeichen)]" />
                 <span className="font-bold text-xs uppercase tracking-wider text-slate-500 font-mono">Schritt 1</span>
                 <h5 className="font-bold text-sm text-slate-950 mt-1 mb-1.5 flex gap-1.5 items-center">
                   <CheckCircle2 size={14} className="text-emerald-500" /> Annahmekontrolle
@@ -299,7 +299,7 @@ export default function BodenMaterialAufbereitung() {
 
               {/* Step 2 */}
               <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30 relative">
-                <div className="absolute top-2 right-2 text-3xl font-black text-slate-200 font-mono">02</div>
+                <span aria-hidden="true" data-wasserzeichen="02" className="absolute top-2 right-2 text-3xl font-black text-slate-200 font-mono after:content-[attr(data-wasserzeichen)]" />
                 <span className="font-bold text-xs uppercase tracking-wider text-slate-500 font-mono">Schritt 2</span>
                 <h5 className="font-bold text-sm text-slate-950 mt-1 mb-1.5 flex gap-1.5 items-center">
                   <CheckCircle2 size={14} className="text-emerald-500" /><MdText text={inhalt.texte.werkseigeneKontrolle} /></h5>
@@ -308,7 +308,7 @@ export default function BodenMaterialAufbereitung() {
 
               {/* Step 3 */}
               <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30 relative">
-                <div className="absolute top-2 right-2 text-3xl font-black text-slate-200 font-mono">03</div>
+                <span aria-hidden="true" data-wasserzeichen="03" className="absolute top-2 right-2 text-3xl font-black text-slate-200 font-mono after:content-[attr(data-wasserzeichen)]" />
                 <span className="font-bold text-xs uppercase tracking-wider text-slate-500 font-mono">Schritt 3</span>
                 <h5 className="font-bold text-sm text-slate-950 mt-1 mb-1.5 flex gap-1.5 items-center">
                   <CheckCircle2 size={14} className="text-emerald-500" /> Fremdüberwachung
@@ -318,7 +318,7 @@ export default function BodenMaterialAufbereitung() {
 
               {/* Step 4 */}
               <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30 relative">
-                <div className="absolute top-2 right-2 text-3xl font-black text-slate-200 font-mono">04</div>
+                <span aria-hidden="true" data-wasserzeichen="04" className="absolute top-2 right-2 text-3xl font-black text-slate-200 font-mono after:content-[attr(data-wasserzeichen)]" />
                 <span className="font-bold text-xs uppercase tracking-wider text-slate-500 font-mono">Schritt 4</span>
                 <h5 className="font-bold text-sm text-slate-950 mt-1 mb-1.5 flex gap-1.5 items-center">
                   <CheckCircle2 size={14} className="text-emerald-500" /><MdText text={inhalt.texte.güteschutzRegister} /></h5>

@@ -581,7 +581,7 @@ body {
   background-color: #020617 !important; /* slate-950 */
 }
 
-.dark [class*="bg-gradient-"][class*="from-shiraz"] {
+.dark [class*="bg-gradient-"][class*="from-shiraz"]:not([class*="from-shiraz/"]) { /* nur gefüllte Verläufe; Tönungen (from-shiraz/5) bleiben dunkel */
   background-color: #a3113e !important;
 }
 
@@ -1088,6 +1088,8 @@ html:not(.dark) :is(.text-slate-400, .text-gray-400, .text-slate-500, .text-gray
   #module-content .flex:not(.flex-col):not(.flex-nowrap):not(.flex-col-reverse) { flex-wrap: wrap; }
   /* Breite Tabellen horizontal scrollbar statt abgeschnitten (role="table" setzt useAutoFormLabels) */
   #module-content table { display: block; max-width: 100%; overflow-x: auto; }
+  /* Tabellen in einer fokussierbaren Scroll-Region (role="region" tabindex="0") scrollt die Region, nicht die Tabelle */
+  #module-content [role="region"][tabindex] > table { display: table; max-width: none; }
   #module-content select { max-width: 100%; min-width: 0; width: auto; }
   #module-content .flex > select, #module-content .grid > * { min-width: 0; }
   #module-content pre, #module-content code { white-space: pre-wrap; }
@@ -1138,6 +1140,37 @@ header button { white-space: nowrap; }
 .dark .text-\[\#A3113E\] { color: #ff85aa !important; }
 .dark .bg-slate-50\/40, .dark .bg-slate-50\/50, .dark .bg-slate-50\/60, .dark .bg-slate-50\/80,
 .dark .hover\:bg-slate-50\/80:hover { background-color: rgb(30 41 59 / 0.7) !important; }
+/* Folgepaket 10-27 (Reiter-Prüfung a11y-reiter.mjs): blasse Flächen und Zwischentöne, die oben fehlen */
+.dark .bg-slate-50\/70, .dark .bg-slate-50\/75, .dark .bg-slate-50\/90, .dark .bg-slate-100\/70, .dark .bg-slate-100\/80,
+.dark .bg-slate-150, .dark .bg-stone-50\/70, .dark .bg-amber-900\/10,
+.dark .bg-cyan-50, .dark .bg-cyan-50\/60, .dark .bg-cyan-100,
+.dark [class*="[&>[role=tablist]]:bg-slate-50"] > [role="tablist"] { background-color: rgb(30 41 59 / 0.7) !important; }
+.dark [class*="[&>[role=tablist]]:bg-white"] > [role="tablist"] { background-color: #0f172a !important; }
+.dark .bg-red-200, .dark .bg-rose-200 { background-color: rgba(255, 59, 119, 0.12) !important; }
+.dark .bg-text-main { background-color: #334155 !important; } /* text-main ist im Dunkelmodus hell → Fläche dunkel halten */
+.dark .text-gray-750 { color: #e2e8f0 !important; }
+.dark .text-slate-550, .dark .text-stone-550 { color: #94a3b8 !important; }
+.dark .text-zinc-950 { color: #f8fafc !important; }
+.dark :is(.text-shiraz\/80, .text-shiraz\/90),
+.dark [class*="text-torch-red"] { color: #ff85aa !important; }
+/* Weiße/rosé Schrift auf gefüllter Shiraz-Fläche (#be185d im Dunkelmodus): volle Deckkraft statt 80 % */
+.dark :is(.bg-shiraz, .hover\:bg-shiraz:hover) :is(.text-white\/70, .text-white\/80, [class*="text-rose-100"], [class*="text-rose-200"]),
+.dark :is(.bg-shiraz, .hover\:bg-shiraz:hover):is(.text-white\/70, .text-white\/80) { color: #ffffff !important; }
+/* Graue Nebentexte auf slate-700-Flächen (bg-*-200 und Hover-Zustand weißer Schaltflächen) */
+.dark :is(.bg-slate-200, .bg-gray-200, .bg-stone-200, .bg-zinc-200, .bg-neutral-200, button.bg-white:hover, [role="button"].bg-white:hover, [role="tab"]:hover)
+  :is(.text-slate-400, .text-slate-450, .text-slate-500, .text-slate-600, .text-gray-500, .text-gray-600, .text-stone-500, .text-text-main\/50, .text-text-main\/60),
+.dark :is(.bg-slate-200, .bg-gray-200, .bg-stone-200, .bg-zinc-200, .bg-neutral-200):is(.text-slate-400, .text-slate-500, .text-slate-600, .text-gray-500, .text-gray-600) { color: #cbd5e1 !important; }
+.dark .bg-slate-200\/60 { background-color: #334155 !important; }
+.dark .bg-slate-200\/60:is(.text-slate-400, .text-slate-500, .text-slate-600) { color: #cbd5e1 !important; }
+/* Mittlere Vollfarben (Farbmuster, Schichten, Ampel-Plaketten) bleiben im Dunkelmodus hell → Schrift dunkel halten */
+.dark :is(.bg-slate-300, .bg-stone-300, .bg-stone-400, .bg-zinc-400, .bg-yellow-400),
+.dark :is(.bg-slate-300, .bg-stone-300, .bg-stone-400, .bg-zinc-400, .bg-yellow-400) :not(.text-white, .text-white *) { color: #0f172a !important; }
+/* Opazitäts-Abstufung auf gefüllter Shiraz-Fläche */
+.dark .bg-shiraz :is(.opacity-70, .opacity-75, .opacity-80) { opacity: 0.9; }
+/* Fest kodiertes Shiraz in KaTeX-Formeln (\color{#A3113E}) und fest kodierte Reihenfarben */
+.dark .katex [style*="#A3113E" i], .dark .katex [style*="rgb(163, 17, 62)"] { color: #ff85aa !important; }
+.dark .text-\[\#0e558c\] { color: #94a3b8 !important; }
+.dark .text-\[\#333333\] { color: #e2e8f0 !important; }
 
 /* Hellmodus: weitere blasse Töne anheben */
 html:not(.dark) .text-slate-450 { color: #5a687e; }

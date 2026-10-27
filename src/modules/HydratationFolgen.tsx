@@ -47,7 +47,7 @@ export default function HydratationFolgen() {
             {GRUPPEN.map((g, i) => (
               <React.Fragment key={g.id}>
                 {i > 0 && <span className="text-text-main/40">→</span>}
-                <button onClick={() => setActiveTab(g.mitglieder[0].id)} className="underline decoration-dotted hover:text-shiraz cursor-pointer">
+                <button onClick={() => setActiveTab(g.mitglieder[0].id)} className="py-1 underline decoration-dotted hover:text-shiraz cursor-pointer">
                   {i + 1}. {g.mitglieder.map(m => m.label.replace(inhalt.werte.präziserRissnachweisEc22, 'Rissnachweis')).join(' + ')}
                 </button>
               </React.Fragment>

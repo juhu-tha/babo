@@ -234,7 +234,7 @@ export default function BpStahlbauprofile() {
                   step="1"
                   value={activeProfileIndex}
                   onChange={(e) => setSelectedIx(Number(e.target.value))}
-                  className="w-full h-1.5 bg-home-grau/25 rounded-lg appearance-none cursor-pointer accent-shiraz"
+                  className="w-full h-6 rounded-lg appearance-none cursor-pointer accent-shiraz"
                 />
 
                 <select

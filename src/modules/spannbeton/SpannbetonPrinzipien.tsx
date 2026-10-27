@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { fckT, betaCc, CementClass } from '@/src/calc/spannbeton';
@@ -27,6 +27,7 @@ import inhalt from '@/content/spannbeton/SpannbetonPrinzipien.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 
 export default function SpannbetonPrinzipien() {
+  const dehnungId = useId();
   const [activeSubTab, setActiveSubTab] = useState<"konzepte" | "systemberechnung" | "verfahren" | "querschnitte" | "lastausgleich" | "zwangsmomente" | "grenzspannungen" | "ausblick_ec2">("konzepte"),
     [beamLoadLevel, setBeamLoadLevel] = useState(35),
     [beamPrestressForce, setBeamPrestressForce] = useState(3600),
@@ -290,12 +291,13 @@ export default function SpannbetonPrinzipien() {
             {/* Dehnungs-Schieberegler */}
             <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
               <div className="flex justify-between items-center text-xs">
-                <span className="font-semibold text-slate-800 flex items-center gap-1.5">
+                <span id={dehnungId} className="font-semibold text-slate-800 flex items-center gap-1.5">
                   <Sliders size={14} className="text-shiraz" /><MdText text={inhalt.texte.summeAusBetonSchwinddehnung} /></span>
                 <span className="font-mono font-bold text-shiraz text-sm">{formatDeZahl(creepShrinkStrain, 2)} ‰</span>
               </div>
               <input
                 type="range"
+                aria-labelledby={dehnungId}
                 min="0.80"
                 max="2.50"
                 step="0.05"
