@@ -1,4 +1,4 @@
-// Inaktive Seiten (Schalter INAKTIVE_GRUPPEN in src/registry/modules.ts; Prof. Huber 27.10.2026: Lernpfade nach
+// Inaktive Seiten (Schalter INAKTIVE_GRUPPEN in src/registry/modules.ts; Entscheidung 27.10.2026: Lernpfade nach
 // Lehrveranstaltung abgeschaltet): keine inaktive Seite in Menü, Modulübersicht, Suche, Suchindex, Sitemap und
 // vorgerenderten Seiten; Registry-Daten bleiben erhalten (tests/lernpfade.test.ts prüft die Lernpfade weiter).
 import fs from 'fs';

@@ -29,7 +29,7 @@ for (const k of TTZ_KURSE) {
   const kursPool = eindeutigeFragen(pool.filter(f => (k.module as readonly string[]).includes(f.moduleId)));
   pruefe(kursPool.length >= KURSQUIZ_FRAGEN, `${k.id}: nur ${kursPool.length} verschiedene Fragen (≥ ${KURSQUIZ_FRAGEN} nötig)`);
 }
-pruefe(ENTWURF_HINWEIS === 'Entwurf – Kursliste durch Prof. Huber noch nicht freigegeben', 'Entwurfshinweis geändert');
+pruefe(ENTWURF_HINWEIS === 'Entwurf – Kursliste noch nicht freigegeben', 'Entwurfshinweis geändert');
 pruefe(BESTAETIGUNG_HINWEIS === 'Teilnahmebestätigung über ein Selbstlernangebot – kein Zertifikat, keine Prüfung', 'Bestätigungshinweis geändert');
 
 // 2. Fragenauswahl: Anzahl, keine Wiederholung (ID und Text), zufällig, deterministisch mit gleichem Zufall

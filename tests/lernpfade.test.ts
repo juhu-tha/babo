@@ -77,7 +77,7 @@ for (const u of KI_UEBUNGEN) pruefe(!!ki?.termine.some(t => t.uebung === u.id), 
 pruefe(/Gastvortr/i.test(ki?.hinweis ?? ''), 'KI-Master: Platzhalter-Hinweis zu den Gastvorträgen fehlt');
 pruefe(/MFH Augsburg-Nord/.test(lp('lv_vnhb')?.hinweis ?? ''), 'VNHB: Fallbeispiel MFH Augsburg-Nord fehlt');
 pruefe(!!lp('lv_zert_ausbau_bestand')?.termine.some(t => t.module.some(m => m.startsWith('weiter_'))), 'Zertifikat Ausbau und Bestand: Bezug zu Weiter@THA fehlt');
-pruefe(ENTWURF_HINWEIS === 'Entwurf – Terminplan durch Prof. Huber noch nicht freigegeben', 'Entwurfs-Hinweis geändert');
+pruefe(ENTWURF_HINWEIS === 'Entwurf – Terminplan noch nicht freigegeben', 'Entwurfs-Hinweis geändert');
 
 // 4. Daten nicht im Einstieg: nur die Lernpfad-Seite (lazy) importiert lernpfade.ts
 const quellen = (dir: string): string[] => fs.readdirSync(dir, { withFileTypes: true }).flatMap(e => e.isDirectory() ? quellen(`${dir}/${e.name}`) : /\.tsx?$/.test(e.name) ? [`${dir}/${e.name}`] : []);

@@ -12,7 +12,7 @@ console.log('--- Test: Betonkennwerte ---');
 /**
  * Referenz: wörtliche Kopie der Rechnung aus src/modules/Betonkennwerte.tsx (useMemo calcResults, Stand origin/main 26.10.2026).
  * Sie belegt, dass der Kern das bisherige Verhalten exakt übernimmt; bei der Verdrahtung (Z11) entfällt die Kopie im Modul.
- * Runde 5 (Z55, Entscheidung Prof. Huber „normgemäß korrigieren“): f_ck(t) = f_ck für t ≥ 28 d (3.1.2(5)), ε_cu1/ε_c2/ε_cu2/n
+ * Runde 5 (Z55, Entscheidung „normgemäß korrigieren“): f_ck(t) = f_ck für t ≥ 28 d (3.1.2(5)), ε_cu1/ε_c2/ε_cu2/n
  * nach Tab. 3.1 (Klassenwerte, über C90/105 gehalten), h_0 ohne Klemmung auf 20 … 1500 mm, A_c und u ohne Ersatzwerte.
  */
 function modulReferenz(fck: number, cementClass: Zementklasse, aggregateType: Gesteinskoernung, relativeHumidity: number, areaAc: number, perimeterU: number,
@@ -20,7 +20,7 @@ function modulReferenz(fck: number, cementClass: Zementklasse, aggregateType: Ge
   const fcm = fck + 8;
   const alphaCc = 0.85;
   const gammaC = 1.50;
-  // Entscheidung Prof. Huber 27.10.: ab C55/67 zusätzlich · (1,1 − f_ck/500) (vorläufig, F-Freigabe)
+  // Entscheidung 27.10.: ab C55/67 zusätzlich · (1,1 − f_ck/500) (vorläufig, F-Freigabe)
   const fcd = (alphaCc * fck * (FCD_HOCHFEST_AKTIV && fck >= 55 ? Math.min(1, 1.1 - fck / 500) : 1)) / gammaC;
   let s = 0.25;
   if (cementClass === 'S') s = 0.38;

@@ -1,4 +1,4 @@
-// Zentraler Bemessungswert f_cd (src/data/kennwerte.ts), Entscheidung Prof. Huber 27.10.:
+// Zentraler Bemessungswert f_cd (src/data/kennwerte.ts), Entscheidung 27.10.:
 // f_cd = α_cc·f_ck/γ_c mit α_cc = 0,85 (DIN EN 1992-1-1/NA, NDP zu 3.1.6(1)P), γ_c = 1,5 bzw. 1,3 (außergewöhnlich, Tab. 2.1DE);
 // ab C55/67 zusätzlich · (1,1 − f_ck/500), d. h. γ_c' = 1/(1,1 − f_ck/500) wie DIN 1045-1:2008, 5.3.3(9) – vorläufig, F-Freigabe.
 import { fcdBeton, hochfestFaktor, fcdHochfestHinweis, FCD_HOCHFEST_AKTIV, ALPHA_CC, GAMMA_C } from '../src/data/kennwerte';

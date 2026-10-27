@@ -18,7 +18,7 @@ console.log('--- Test: Prüfverfahren ---');
 // ================================================================ 1. ZfP
 // Rückprall: Referenz = Komponentenrechnung (src/modules/ZfP.tsx vor AP 4.2) mit der seit Runde 5 (Z55) einheitlichen
 // Lehrkurve f_c = 0,0125·R^2,22 (vorher 0,027·R^2,1 im ZfP-Modul, 0,027·R^1,85 im Labor)
-// Entscheidung Prof. Huber 27.10. (bewusst geändert): Richtungskorrektur nach Herstellerformel Original Schmidt Typ N
+// Entscheidung 27.10. (bewusst geändert): Richtungskorrektur nach Herstellerformel Original Schmidt Typ N
 // (Screening Eagle/Proceq, Academy-FAQ): R_korr = R + (−a₀ + a₁·R)·sin α, a₀/a₁ = 7,1/0,08 (α ≥ 0), 4,3/0,043 (α < 0),
 // α = +90° nach oben. Vorher pauschal '90' → −3 (als „nach unten“ beschriftet), '-90' → +3 – Vorzeichen physikalisch vertauscht.
 function altRueckprall(rebound: number, angle: PruefWinkel) {
