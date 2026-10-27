@@ -1,6 +1,6 @@
 // Rechenkern Gebäude-Ökobilanz (AP 4.10): A1–A3, B4 (BNB-Nutzungsdauern), B6 (QNG-Rechenwerte), C3/C4, D getrennt, je m² NRF(R)·a
 import {
-  lcaBilanz, ersatzzyklen, einzelbaustoffA1A4, B6_FAKTOREN, BNB_NUTZUNGSDAUER, TGA_SOCKEL, A4_FAKTOR_GEBAEUDE, A4_FAKTOR_EINZEL,
+  lcaBilanz, ersatzzyklen, einzelbaustoffA1A4, B6_FAKTOREN, VERWERTUNGSFAKTOR, VERWERTUNG_RANGFOLGE, BNB_NUTZUNGSDAUER, TGA_SOCKEL, A4_FAKTOR_GEBAEUDE, A4_FAKTOR_EINZEL,
   type LcaBaustoff, type LcaEingabe, type LcaZeile, type Verwertung, type TgaSockel, type Energietraeger,
 } from '../src/calc/lca';
 import { MATERIAL_DATABASE, alsLcaBaustoff } from '../src/modules/interactivelcacalc/daten';
@@ -91,8 +91,26 @@ pruefe(H.gueltig && nahe(H.a1a3, 2606, 1e-9) && nahe(H.c3c4, 266, 1e-9) && nahe(
 pruefe(nahe(H.b6_1, 39902.25, 1e-6) && nahe(H.b6_3, 53203, 1e-6) && nahe(H.spez.konstruktion, 0.6288, 1e-9) && nahe(H.spez.qng, 19.24985, 1e-9), `Hand: B6/QNG ${H.b6} ${H.spez.qng}`);
 pruefe(B6_FAKTOREN.netzstrom.gwp === 0.53203 && !B6_FAKTOREN.netzstrom.vorlaeufig && !H.vorlaeufig.some(v => v.includes('Netzstrom')), 'Netzstrom 0,53203 belegt, nicht mehr vorläufig');
 pruefe(H.aussage === 'premium' && H.zeilen[1].ersatz === 1 && H.zeilen[0].ersatz === 0, `Hand: Aussage ${H.aussage}`);
-//    D (Lehrmodell, unverändert übernommen): Beton 10 · (−8) · (65/65) · (85/85) · 0,55 = −44; EPS 2 · (−25) · 1 · 1 · 0,85 = −42,5
-pruefe(nahe(H.d, -86.5, 1e-9) && nahe(H.spez.qng, H.spez.konstruktion + H.spez.b6, 1e-12), `Hand: D ${H.d}; D nicht im QNG-Wert`);
+//    D: Referenz-Gutschrift gilt für den deklarierten Weg (Beton Downcycling, EPS thermisch) → Wegfaktor 1:
+//    Beton 10 · (−8) · (65/65) · (85/85) · 1 = −80; EPS 2 · (−25) · (25/25) · 1 · 1 = −50; Summe −130 (vorher −86,5 mit 0,55 bzw. 0,85 auf die Referenz)
+const epsRef = eps.defaultCircularQuota;
+pruefe(epsRef === 25 && nahe(H.d, -130, 1e-9) && nahe(H.spez.qng, H.spez.konstruktion + H.spez.b6, 1e-12), `Hand: D ${H.d}; D nicht im QNG-Wert`);
+pruefe(H.vorlaeufig.every(v => !v.startsWith('Modul-D')), 'Hand: deklarierte Wege → kein Vorbehalt Wegfaktor');
+
+// 3a. Modul D – Wegfaktoren nach Abfallhierarchie (§ 6 Abs. 1 KrWG; BNB 4.1.4: hochwertig > minderwertig > thermisch)
+pruefe(VERWERTUNG_RANGFOLGE.every((w, i) => i === 0 || VERWERTUNGSFAKTOR[VERWERTUNG_RANGFOLGE[i - 1]] > VERWERTUNGSFAKTOR[w]), 'Wegfaktoren streng fallend nach Rangfolge');
+pruefe(VERWERTUNGSFAKTOR.high_grade === 1 && VERWERTUNGSFAKTOR.thermal < VERWERTUNGSFAKTOR.downcycling, 'Recycling = 1 (Q_R/Q_Sub = 1), thermisch < Downcycling');
+// Handwert: Beton (Referenz Downcycling) thermisch verwertet: 10 · (−8) · 0,40/0,55 = −58,18; wiederverwendet: 10 · (−8) · 1,45/0,55 = −210,91
+const betonWeg = (w: Verwertung) => lcaBilanz({ ...HAND, zeilen: [{ ...HAND.zeilen[0], verwertung: w }] });
+pruefe(nahe(betonWeg('thermal').d, -80 * 0.4 / 0.55, 1e-9) && nahe(betonWeg('reuse').d, -80 * 1.45 / 0.55, 1e-9), `Beton thermisch/Reuse ${betonWeg('thermal').d} ${betonWeg('reuse').d}`);
+pruefe(betonWeg('thermal').vorlaeufig.some(v => v.startsWith('Modul-D')), 'abweichender Weg → Vorbehalt F-Freigabe');
+// Grenze/Randfall: Baustoff ohne refVerwertung → Bezug hochwertiges Recycling (Faktor 1, Regressionsbericht unverändert)
+pruefe(nahe(lcaBilanz({ ...HAND, zeilen: [{ ...HAND.zeilen[0], baustoff: { ...HAND.zeilen[0].baustoff, refVerwertung: undefined }, verwertung: 'high_grade' }] }).d, -80, 1e-9), 'ohne Referenzweg → Bezug Recycling');
+// Für jeden Baustoff der Datenbank: Gutschrift (Betrag) fällt entlang der Rangfolge
+for (const m of MATERIAL_DATABASE) {
+  const betrag = VERWERTUNG_RANGFOLGE.map(w => Math.abs(lcaBilanz({ ...HAND, zeilen: [{ baustoff: alsBaustoff(m), menge: 1, kreislaufquote: m.defaultCircularQuota, sortenreinheit: 85, verwertung: w }] }).d));
+  pruefe(betrag.every((b, i) => i === 0 || betrag[i - 1] > b), `Rangfolge Modul D verletzt: ${m.id} ${betrag.join(' ')}`);
+}
 //    A4 nur informativ: 24 t + 0,04 t, 100 km · 0,15 → 360,6 kg, QNG-Wert unverändert
 const H4 = lcaBilanz({ ...HAND, transportDistanz: 100 });
 pruefe(nahe(H4.a4, 24.04 * 100 * 0.15, 1e-9) && nahe(H4.spez.qng, H.spez.qng, 1e-12), `Hand: A4 ${H4.a4} außerhalb QNG-Wert`);

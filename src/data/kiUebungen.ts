@@ -2,8 +2,8 @@
  * Hands-on-Übungen zur Master-Vorlesung „Grundlagen für den Einsatz von Künstlicher Intelligenz im
  * Bauwesen – Möglichkeiten und Grenzen“ (Umsetzungsplan Phase 6, AP 6.5).
  *
- * Eine Übung je Themenblock, vollständig code-frei und für den Microsoft Copilot der Hochschule
- * (Anmeldung mit dem Hochschulkonto) ausgelegt: keine API-Schlüssel, kein Gemini, keine Übermittlung
+ * Eine Übung je Themenblock, vollständig code-frei und für den KI-Assistenten der Hochschule
+ * (an der THA derzeit über die Hochschullizenz bereitgestellt; Anmeldung mit dem Hochschulkonto) ausgelegt: keine API-Schlüssel, kein Gemini, keine Übermittlung
  * personenbezogener Daten. Alle Projektangaben in den Vorlagen sind fiktiv.
  * tests/kiUebungen.test.ts prüft Aufbau, Verweise und Datenschutzhinweise.
  */
@@ -37,7 +37,7 @@ export interface KiUebung {
 
 /** Gilt für alle Übungen; wird oberhalb der Übungen angezeigt. */
 export const KI_UEBUNG_REGELN: readonly string[] = [
-  'Werkzeug ist der Microsoft Copilot der Hochschule. Melden Sie sich mit Ihrem Hochschulkonto an und achten Sie auf den Datenschutzhinweis im Copilot-Fenster. Weitere Konten, API-Schlüssel oder Programmierkenntnisse sind nicht nötig.',
+  'Werkzeug ist der KI-Assistent der Hochschule; er wird an der THA derzeit über die Hochschullizenz bereitgestellt. Melden Sie sich mit Ihrem Hochschulkonto an und achten Sie auf den Datenschutzhinweis im Chatfenster. Weitere Konten, API-Schlüssel oder Programmierkenntnisse sind nicht nötig.',
   'Geben Sie keine personenbezogenen Daten ein (Namen, Adressen, Fotos von Personen, Matrikelnummern) – auch nicht von Bauherren, Kolleginnen oder Kollegen.',
   'Fügen Sie keine vertraulichen Projektunterlagen aus Praktikum oder Werkstudententätigkeit ein. Alle Projektangaben in den Vorlagen sind fiktiv; ersetzen Sie sie nur durch ebenso fiktive Werte.',
   'Normen sind urheberrechtlich geschützt und lizenziert. Kopieren Sie keine Normvolltexte in den Chat, sondern höchstens kurze, selbst formulierte Zusammenfassungen oder frei zugängliche Rechtstexte (z. B. Landesbauordnung, GEG, EU-Verordnungen).',
@@ -53,7 +53,7 @@ export const KI_UEBUNGEN: readonly KiUebung[] = [
     ziel: 'Sie erleben an einer Fachfrage aus der Betontechnologie, dass ein Sprachmodell Text Wort für Wort nach Wahrscheinlichkeit erzeugt: Antworten schwanken, klingen sicher und können trotzdem falsch oder veraltet sein.',
     minuten: 45,
     material: [
-      'Microsoft Copilot (Hochschulkonto)',
+      'KI-Assistent der Hochschule (Hochschulkonto)',
       'BaustoffBoard-Modul „Expositionsklassen“ oder eigene Vorlesungsunterlagen als Referenz',
       'Tabelle (Papier oder Excel) mit drei Spalten: Durchlauf 1, 2, 3',
     ],
@@ -109,7 +109,7 @@ export const KI_UEBUNGEN: readonly KiUebung[] = [
     ziel: 'Sie formulieren für eine typische Büroaufgabe einen Prompt mit Rolle, Kontext, Aufgabe und Format, vergleichen ihn mit einer naiven Anfrage und lassen das Modell gezielt Rückfragen stellen.',
     minuten: 60,
     material: [
-      'Microsoft Copilot (Hochschulkonto)',
+      'KI-Assistent der Hochschule (Hochschulkonto)',
       'fiktiver Sachverhalt aus Vorlage 1 (keine echten Projektdaten)',
       'BaustoffBoard-Module „Prompting-Praxis“ und „Planung & Ausschreibung“',
     ],
@@ -168,7 +168,7 @@ REGELN: Erfinden Sie keine Grenzwerte. Wenn Ihnen für einen Grenzwert die Quell
     ziel: 'Sie spielen die Schleife eines KI-Agenten selbst durch: Das Modell plant und wählt Werkzeuge, Sie führen die Werkzeugaufrufe aus und melden die Beobachtungen zurück. So erkennen Sie, wo Agenten Zeit sparen und wo sie Freigaben brauchen.',
     minuten: 60,
     material: [
-      'Microsoft Copilot (Hochschulkonto), Websuche im Copilot erlaubt',
+      'KI-Assistent der Hochschule (Hochschulkonto), Websuche im Assistenten erlaubt',
       'BaustoffBoard-Module „Sonderbetone“ (Recyclingbeton) und „Kreislaufwirtschaft & DPP“ als „Werkzeug“ zum Nachschlagen',
       'Protokollblatt mit den Spalten Schritt | Gedanke | Aktion | Beobachtung',
     ],
@@ -228,7 +228,7 @@ GRENZEN: Keine Aktionen, die Dritte kontaktieren oder Geld kosten.`,
     ziel: 'Sie bilden Retrieval-Augmented Generation ohne Programmierung nach: Ein kurzer, frei zugänglicher Regelwerksauszug wird zur einzigen Wissensbasis, und das Modell muss jede Aussage mit der Fundstelle belegen oder „nicht im Text“ antworten.',
     minuten: 60,
     material: [
-      'Microsoft Copilot (Hochschulkonto)',
+      'KI-Assistent der Hochschule (Hochschulkonto)',
       'frei zugänglicher Rechtstext, z. B. ein bis zwei Artikel der Bayerischen Bauordnung (gesetze-bayern.de) oder ein Paragraf des GEG (gesetze-im-internet.de) – keine DIN-Volltexte',
       'Liste mit fünf eigenen Fragen, davon mindestens eine, die der Auszug nicht beantwortet',
     ],
@@ -283,10 +283,10 @@ GRENZEN: Keine Aktionen, die Dritte kontaktieren oder Geld kosten.`,
     block: 'Block 5 · „sich programmieren lassen“',
     kurz: 'Programmieren lassen',
     titel: 'Ein Rechenblatt bauen lassen, ohne selbst zu programmieren: U-Wert in Excel',
-    ziel: 'Sie lassen sich vom Copilot ein Excel-Rechenblatt für den U-Wert einer mehrschichtigen Wand erstellen, schreiben dafür zuerst ein kurzes Lastenheft und prüfen das Ergebnis mit Testfällen und einer unabhängigen Kontrollrechnung.',
+    ziel: 'Sie lassen sich vom KI-Assistenten ein Excel-Rechenblatt für den U-Wert einer mehrschichtigen Wand erstellen, schreiben dafür zuerst ein kurzes Lastenheft und prüfen das Ergebnis mit Testfällen und einer unabhängigen Kontrollrechnung.',
     minuten: 75,
     material: [
-      'Microsoft Copilot (Hochschulkonto) und Excel (Microsoft 365 der Hochschule)',
+      'KI-Assistent der Hochschule (Hochschulkonto) und Excel (Microsoft 365 der Hochschule)',
       'BaustoffBoard-Beispielrechnung „U-Wert“ bzw. Modul „Bauphysik“ als Kontrollrechnung',
       'Testfall: Innenputz 1,5 cm (λ = 0,51 W/(m·K)), Kalksandstein 17,5 cm (λ = 0,99 W/(m·K)), Wärmedämmung 16 cm (λ = 0,035 W/(m·K)), R_si = 0,13 und R_se = 0,04 m²·K/W',
     ],
@@ -342,14 +342,14 @@ GRENZEN: Keine Aktionen, die Dritte kontaktieren oder Geld kosten.`,
     ziel: 'Sie prüfen eine vorbereitete KI-Antwort mit absichtlich eingebauten Fehlern, ordnen die Fehler typischen Fehlerbildern zu und testen, ob das Modell bei Widerspruch nachgibt (Gefälligkeitsfehler).',
     minuten: 60,
     material: [
-      'Microsoft Copilot (Hochschulkonto)',
+      'KI-Assistent der Hochschule (Hochschulkonto)',
       'Prüftext aus Vorlage 1 (enthält fünf eingebaute Fehler)',
       'BaustoffBoard-Module „Expositionsklassen“, „Mischungsberechnung“ und „Fehler, Recht & Ethik“',
     ],
     schritte: [
       'Lesen Sie den Prüftext in Vorlage 1 zunächst selbst und markieren Sie alle Aussagen, die Sie für falsch halten.',
       'Ordnen Sie jede Markierung einem Fehlerbild zu: erfundene Quelle, veraltete Normausgabe, fachlich falsche Aussage, falscher Grenzwert, Rechenfehler.',
-      'Lassen Sie den Copilot mit Vorlage 2 denselben Text prüfen und vergleichen Sie seine Funde mit Ihren.',
+      'Lassen Sie den KI-Assistenten mit Vorlage 2 denselben Text prüfen und vergleichen Sie seine Funde mit Ihren.',
       'Testen Sie mit Vorlage 3, ob das Modell einer falschen Behauptung zustimmt.',
       'Erstellen Sie aus Ihren Funden eine persönliche Prüfroutine mit fünf Punkten.',
     ],
@@ -371,10 +371,10 @@ GRENZEN: Keine Aktionen, die Dritte kontaktieren oder Geld kosten.`,
       'Fehler 1 (falsche Aussage): C30/37 bedeutet 30 N/mm² Zylinder- und 37 N/mm² Würfeldruckfestigkeit.',
       'Fehler 2 (veraltete Ausgabe): maßgeblich ist DIN 1045-2:2023-08 bzw. die bauaufsichtlich eingeführte Fassung; Fehler 3 (falsche Aussage): ein höherer w/z-Wert senkt die Festigkeit (mehr Kapillarporen).',
       'Fehler 4 (falscher Grenzwert): für XC4 gilt höchstens w/z = 0,60; Fehler 5 (Rechenfehler): 320 · 0,55 = 176 kg/m³. Die Quelle ist in dieser Übung frei erfunden und nicht auffindbar.',
-      'Der Copilot findet meist mehrere, aber nicht immer alle Fehler; beim Gefälligkeitstest sollte er widersprechen – gibt er nach, ist das ein typisches Fehlerbild.',
+      'Der KI-Assistent findet meist mehrere, aber nicht immer alle Fehler; beim Gefälligkeitstest sollte er widersprechen – gibt er nach, ist das ein typisches Fehlerbild.',
     ],
     reflexion: [
-      'Welche Fehler hat der Copilot übersehen, welche Sie selbst?',
+      'Welche Fehler hat der KI-Assistent übersehen, welche Sie selbst?',
       'Welche Fehlerbilder sind im Ingenieuralltag am gefährlichsten und warum?',
       'Wie formulieren Sie Rückfragen, damit das Modell nicht nur Ihre Meinung bestätigt?',
     ],

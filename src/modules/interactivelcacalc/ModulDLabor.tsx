@@ -5,6 +5,7 @@ import { InlineMath, BlockMath } from 'react-katex';
 import { CustomRow } from './daten';
 import inhalt from '@/content/interactivelcacalc/ModulDLabor.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { VERWERTUNGSFAKTOR } from '@/src/calc/lca';
 
 export interface ModulDLaborProps {
   results: { totalWeightTons: number; totalCircularWeightTons: number; overallCircularityRate: number; gwpA1A3: number; gwpBioStorageInstalled: number; gwpA4: number; gwpC: number; gwpD: number; gwpAC: number; gwpPerSqmYearAC: number; totalGwpNet: number; gwpPerSqmYearNet: number; gwpPerSqmYearD: number; weightedUmi: number; totalPenrtMj: number; penrtKwhPerSqmYear: number; rowModulDDetails: { rowId: string; matName: string; category: string; unit: string; qty: number; weightTons: number; circularQuota: number; sortingRate: number; recoveryType: string; circularMassTons: number; effectiveRecoveredMassTons: number; rowGwpD: number; substitutesPrimary: string; }[]; };
@@ -184,10 +185,10 @@ export function ModulDLabor({ results, setGlobalModulDStrategy, rows, updateRow 
                       onChange={(e) => updateRow(detail.rowId, { recoveryType: e.target.value as "high_grade" | "downcycling" | "reuse" | "thermal" | undefined })}
                       className="w-full text-xs font-semibold p-1.5 bg-white border border-slate-300 rounded-md focus:ring-1 focus:ring-teal-600 focus:outline-none cursor-pointer"
                     >
-                      <option value="reuse">Direkte Wiederverwendung (Reuse, Faktor 1,45)</option>
-                      <option value="high_grade">Hochwertiges Recycling (Closed Loop, Faktor 1,0)</option>
-                      <option value="downcycling">Kaskadennutzung / Downcycling (Faktor 0,55)</option>
-                      <option value="thermal">Thermische Verwertung (Energierückgewinnung, Faktor 0,85)</option>
+                      <option value="reuse">{inhalt.texte.optReuse.replace('{f}', formatDeZahl(VERWERTUNGSFAKTOR.reuse, 2))}</option>
+                      <option value="high_grade">{inhalt.texte.optHigh.replace('{f}', formatDeZahl(VERWERTUNGSFAKTOR.high_grade, 1))}</option>
+                      <option value="downcycling">{inhalt.texte.optDown.replace('{f}', formatDeZahl(VERWERTUNGSFAKTOR.downcycling, 2))}</option>
+                      <option value="thermal">{inhalt.texte.optThermal.replace('{f}', formatDeZahl(VERWERTUNGSFAKTOR.thermal, 2))}</option>
                     </select>
                     <span className="text-[10px] text-teal-800 font-mono block truncate">
                       Verdrängt: {detail.substitutesPrimary}
@@ -248,13 +249,16 @@ export function ModulDLabor({ results, setGlobalModulDStrategy, rows, updateRow 
           <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 font-mono"><MdText text={inhalt.texte.berechnungsmethodeNachDinEn} /></h4>
           <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.dieGutschriftInModul} /></p>
           <div className="p-3 bg-off-white rounded-xl border border-home-grau/20 text-center font-mono text-xs overflow-x-auto">
-            <BlockMath math="\text{GWP}_{D,i} = - \left( m_i \cdot \frac{r_{\text{circ},i}}{100} \cdot \frac{s_{\text{sort},i}}{100} \cdot \eta_{\text{subst}} \cdot \text{GWP}_{\text{primär,verdrängt}} \right)" />
+            <BlockMath math="\text{GWP}_{D,i} = \text{Menge}_i \cdot \text{GWP}_{D,\text{ref},i} \cdot \frac{r_{\text{circ},i}}{r_{\text{ref},i}} \cdot \frac{s_{\text{sort},i}}{85\,\%} \cdot \frac{\eta_{\text{Weg}}}{\eta_{\text{Ref}}}" />
           </div>
           <ul className="text-[11px] text-slate-600 space-y-1 list-disc pl-4 font-mono">
             <li><MdText text={inhalt.texte.rTextCircKreislauffähiger} /></li>
             <li><MdText text={inhalt.texte.sTextSortSortenreinheitsgrad} /></li>
             <li><MdText text={inhalt.texte.etaTextSubstSubstitutionswirkungsgrad} /></li>
           </ul>
+          <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.verwertungsfaktorBegruendung} /></p>
+          <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.verwertungsfaktorGrenze} /></p>
+          <p className="text-[11px] text-slate-600 leading-relaxed"><MdText text={inhalt.texte.quellenVerwertung} /></p>
         </div>
       </div>
     </div>

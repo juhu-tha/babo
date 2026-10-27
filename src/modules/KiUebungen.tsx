@@ -13,7 +13,8 @@ import { MdText } from '@/src/components/inhalt/MdText';
 
 /**
  * Hands-on-Übungen zur Master-Vorlesung „KI im Bauwesen“ (Umsetzungsplan Phase 6, AP 6.5):
- * eine code-freie Selbstlernübung je Themenblock, ausgelegt für den Microsoft Copilot der Hochschule.
+ * eine code-freie Selbstlernübung je Themenblock, ausgelegt für den KI-Assistenten der Hochschule
+ * (an der THA derzeit über die Hochschullizenz bereitgestellt).
  */
 
 function KopierFeld({ vorlage }: { vorlage: PromptVorlage }) {
