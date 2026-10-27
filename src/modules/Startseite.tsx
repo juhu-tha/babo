@@ -82,12 +82,15 @@ export default function Startseite() {
               );
             })}
           </ul>
+          {/* Lernpfade nur, solange die Gruppe aktiv ist (INAKTIVE_GRUPPEN in src/registry/modules.ts) */}
+          {MODUL_KERN.has('lehrveranstaltungen') && (
           <p className="mt-3 text-sm text-text-main/80">
             {language === 'en' ? 'Following a course? ' : 'Sie besuchen eine Lehrveranstaltung? '}
             <button type="button" onClick={() => setActiveTab('lehrveranstaltungen')} className="font-bold text-shiraz underline underline-offset-2 hover:text-shiraz/80">
               {language === 'en' ? 'Learning paths by course' : 'Lernpfade nach Lehrveranstaltung'}
             </button>
           </p>
+          )}
           {zuletzt.length > 0 && (
             <div className="mt-4">
               <h4 className="text-sm font-bold text-text-main mb-2">{language === 'en' ? 'Recently visited' : 'Zuletzt besucht'}</h4>

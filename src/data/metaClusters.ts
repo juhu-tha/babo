@@ -7,6 +7,10 @@ import {
   GraduationCap,
   Monitor
 } from 'lucide-react';
+import { KERN_GRUPPEN } from '../registry/kernDaten';
+
+// Lernpfade nur erwähnen, solange die Menügruppe aktiv ist (INAKTIVE_GRUPPEN in src/registry/modules.ts)
+const LERNPFADE = KERN_GRUPPEN.includes('Lehrveranstaltungen') ? 'Lernpfade je Lehrveranstaltung, ' : '';
 
 export interface MetaCluster {
   id: string;
@@ -106,7 +110,7 @@ export const META_CLUSTERS: MetaCluster[] = [
     id: 'studium',
     number: 'VI',
     name: 'Studium & Lehre',
-    shortDesc: 'Studienorganisation THA, Vorlesungsportal, Lernpfade je Lehrveranstaltung, Baustofflabor (Gebäude G2), Thesen & Projekte, Weiter@THA, Übungsaufgaben & Beispielrechnungen',
+    shortDesc: `Studienorganisation THA, Vorlesungsportal, ${LERNPFADE}Baustofflabor (Gebäude G2), Thesen & Projekte, Weiter@THA, Übungsaufgaben & Beispielrechnungen`,
     icon: GraduationCap,
     accentColor: 'text-shiraz dark:text-rose-400',
     badgeBg: 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700',

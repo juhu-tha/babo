@@ -3,7 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 import { ladeAuszug, AUSZUEGE } from '../scripts/registryKern';
-import { MODULE, TAB_ALIASES, NAV_TAB_GRUPPEN, TAB_DESCRIPTIONS, TAB_KEYWORDS, type ModulEintrag } from '../src/registry/modules';
+import { AKTIVE_MODULE, AKTIVE_ALIASE, NAV_TAB_GRUPPEN, TAB_DESCRIPTIONS, TAB_KEYWORDS, type ModulEintrag } from '../src/registry/modules';
 import { MODUL_KERN, TAB_ALIASES as KERN_ALIASE, NAV_TAB_GRUPPEN as KERN_NAV } from '../src/registry/kern';
 import { KERN_ZEILEN, KERN_ALIASE as ZEILEN_ALIASE, KERN_GRUPPEN } from '../src/registry/kernDaten';
 
@@ -27,14 +27,14 @@ for (const datei of AUSZUEGE) {
   pruefe(dateien.includes(path.resolve('src/registry/modules.ts')), `${datei}: modules.ts nicht als Abhängigkeit erfasst`);
 }
 
-// 2. Auszug = Registry
-const alle: readonly ModulEintrag[] = MODULE;
+// 2. Auszug = Registry (aktive Seiten; inaktive prüft tests/lernpfadeInaktiv.test.ts)
+const alle: readonly ModulEintrag[] = AKTIVE_MODULE;
 pruefe(MODUL_KERN.size === alle.length, `Anzahl ${MODUL_KERN.size} ≠ ${alle.length}`);
 for (const m of alle) {
   const k = MODUL_KERN.get(m.id);
   pruefe(!!k && k.label === m.label && k.icon === m.icon && k.gruppe === m.gruppe && k.titel === m.baum?.titel && k.typ === m.baum?.typ, `${m.id}: Auszug weicht ab`);
 }
-pruefe(gleich(KERN_ALIASE, TAB_ALIASES), 'TAB_ALIASES weichen ab');
+pruefe(gleich(KERN_ALIASE, AKTIVE_ALIASE), 'TAB_ALIASES weichen ab');
 pruefe(gleich(KERN_NAV, NAV_TAB_GRUPPEN), 'NAV_TAB_GRUPPEN weichen ab');
 
 // 3. Statischer Importgraph ab src/main.tsx und ModulKopf ohne modules.ts (sonst wäre die volle Registry wieder im Einstieg)

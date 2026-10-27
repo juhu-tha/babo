@@ -77,7 +77,8 @@ export function TabProvider({ children, startTab }: { children: ReactNode; /** n
 
   const setActiveTab = (tab: TabId) => {
     const resolved = resolveTabId(tab);
-    setActiveTabState(resolved);
+    // inaktive Seiten (INAKTIVE_GRUPPEN in src/registry/modules.ts) fehlen im Kern → Startseite statt Lernpfad
+    setActiveTabState(MODUL_KERN.has(resolved) ? resolved : 'start');
   };
   const activeTab = activeTabState;
 
