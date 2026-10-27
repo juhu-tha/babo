@@ -343,7 +343,7 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
             </div>
           </button>
           <div className="flex items-center gap-1">
-            <button className="md:hidden text-home-grau dark:text-slate-400 p-1 hover:bg-home-grau/10 dark:hover:bg-slate-800 rounded" onClick={() => setMobileMenuOpen(false)}> 
+            <button type="button" aria-label="Menü schließen" className="md:hidden text-home-grau dark:text-slate-400 p-1 hover:bg-home-grau/10 dark:hover:bg-slate-800 rounded" onClick={() => setMobileMenuOpen(false)}>
               <X size={20} />
             </button>
             <button className="hidden md:block text-home-grau dark:text-slate-400 p-1 hover:bg-home-grau/10 dark:hover:bg-slate-800 rounded transition-colors" onClick={() => setSidebarCollapsed(true)} title="Sidebar ausblenden"> 
