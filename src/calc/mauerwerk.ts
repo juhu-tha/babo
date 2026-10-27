@@ -9,15 +9,26 @@
  *                                         = 0,9 bei Innenwänden (Zwischenauflager)
  *      Φ2 (Knicken in Wandmitte)          = 0,85·a/t − 0,0011·(h_ef/t)²,  h_ef = ρ2 · h
  *    Öffentliche Quellen für die Formeln: mb AEC Software, mb-news 7/2013, S. 34–36 (Mauerwerksnachweis,
- *    Φ1/Φ2-Formeln mit Rechenbeispiel Pos. W4); KS-Merkblatt „Bemessung von Mauerwerkswänden –
- *    Tragfähigkeitstafeln“ (Bundesverband Kalksandsteinindustrie, Gl. (1)–(4) und Beispiele S. 3).
- *    ρ2 = 0,75/0,90/1,00 (t ≤ 175 / ≤ 250 / > 250 mm) bei voll aufliegender Decke (a = t), sonst 1,0:
- *    aus allen Zeilen der KS-Tragfähigkeitstafel zurückgerechnet (siehe Test) – vorläufig, F-Freigabe.
+ *    Φ1/Φ2-Formeln einschließlich Φ1 = 0,9 für Innenwände und 0,333 im obersten Geschoss, Rechenbeispiel Pos. W4);
+ *    Arbeitsgemeinschaft Mauerziegel, „Bemessung von Ziegelmauerwerk – Vereinfachte Berechnungsmethoden nach
+ *    DIN EN 1996-3/NA“, 2. Ausgabe 03/2016, S. 12 (Φ1, Φ2, h_ef/t ≤ 27); KS-Merkblatt „Bemessung von
+ *    Mauerwerkswänden – Tragfähigkeitstafeln“ (Bundesverband Kalksandsteinindustrie, Gl. (1)–(4), Beispiele S. 3).
+ *    ρ2 = 0,75/0,90/1,00 (t ≤ 175 / ≤ 250 / > 250 mm) bei voll aufliegender Decke (a = t), sonst 1,0. Belegt durch
+ *    TU Dresden, Institut für Massivbau (P. Schöps), Musterlösung 14.02.2025, OER Bildungsportal Sachsen, Abschn.
+ *    4.1.2/4.2.2 (t = 175 mm → 0,75; t = 240 mm → 0,90), AMz 2016, S. 12 (t > 250 mm → 1,00) und die Rückrechnung
+ *    aller Zeilen der KS-Tragfähigkeitstafel (a/t = 1 und a/t = 2/3 → 1,0, siehe Test). Offen (vorläufig, F-Freigabe):
+ *    ρ2 = 1,0 für Auflagertiefen zwischen 2/3·t und t – öffentlich nur für a/t = 2/3 belegt (Prüfung am Normtext
+ *    DIN EN 1996-3/NA:2019-12, Regel zur Knicklänge h_ef im vereinfachten Verfahren).
  *
  * 2. Charakteristische Druckfestigkeit f_k nach NA-Ansatz: In Deutschland gelten statt der
  *    EN-Empfehlungswerte K eigene Parameter bzw. Tabellenwerte (DIN EN 1996-1-1/NA, DIN EN 1996-3/NA).
- *    Hier: Tabellenwerte aus öffentlich zugänglichen Herstellerunterlagen (Quelle je Eintrag), alle
- *    als „vorläufig, F-Freigabe“ gekennzeichnet, bis sie am Normtext bestätigt sind.
+ *    Hier: Tabellenwerte aus öffentlich zugänglichen Herstellerunterlagen (Quelle je Eintrag). Belegt (Abgleich 27.10.2026):
+ *    KS/KS-R und KS L/KS L-R (Tafeln 14/15) und KS XL (Tafel 16) wörtlich im KS-Themenheft „Bemessung nach
+ *    Eurocode 6“ (Stand 10/2012, S. 14); KS XL 12/20/28 = 9,4/12,9/16,0 N/mm² auch im KS-Merkblatt
+ *    „Tragfähigkeitstafeln“ (Fußnoten 4–10); HLz B 12-0,90 im Lücking-Produkthandbuch 2026, S. 49.
+ *    Vorläufig (F-Freigabe): KS P und KS L-P – die Spaltenzuordnung der Tafel 16 ist im öffentlichen Textauszug nicht
+ *    eindeutig; außerdem ist nicht geprüft, ob die f_k-Tabellen der NA-Fassung 2019-12 (DIN EN 1996-3/NA, f_k-Tabellen
+ *    für Kalksandstein mit Normal- und Dünnbettmörtel) gegenüber der Fassung 2012 unverändert sind.
  *    Die EN-Empfehlung f_k = K·f_b^α·f_m^β bleibt nur als Vergleichswert (fkEmpfehlungEN).
  *
  * Lehr- und Vorbemessungswerkzeug; ersetzt keinen bauaufsichtlichen Nachweis.
@@ -25,13 +36,13 @@
 import { type Hinweis, bereich, hatFehler, istEndlich, muss } from './plausibilitaet';
 import { formatDeZahl } from '../utils/numberFormat';
 
-/** Dauerstandsbeiwert ζ nach NA (DE) */
+/** Dauerstandsbeiwert ζ nach NA (DE) – „im Allgemeinen ζ = 0,85“ (AMz 2016, S. 7/10) */
 export const ZETA_MW = 0.85;
-/** Teilsicherheitsbeiwert γ_M für Mauerwerk, ständige und vorübergehende Bemessungssituation */
+/** Teilsicherheitsbeiwert γ_M für Mauerwerk, ständige und vorübergehende Bemessungssituation (AMz 2016, Tab. 3) */
 export const GAMMA_M_MW = 1.5;
-/** Grenzschlankheit h_ef/t nach DIN EN 1996-1-1, 5.5.1.4 */
+/** Grenzschlankheit h_ef/t nach DIN EN 1996-1-1, 5.5.1.4 – „darf nicht größer als 27 sein“ (AMz 2016, S. 12; ebenso EN 1996-3, 4.2) */
 export const SCHLANKHEIT_MAX = 27;
-/** Größte Deckenstützweite, für die die hier abgebildeten Φ1-Ansätze und Herstellertafeln gelten [m] */
+/** Größte Deckenstützweite im vereinfachten Verfahren [m] (AMz 2016, S. 8: l_f ≤ 6,0 m; KS-Tafeln bis 6,0 m) */
 export const LF_MAX = 6.0;
 
 // ---------------------------------------------------------------------------------------------------
@@ -52,11 +63,11 @@ export interface FkTafelEintrag {
   vorlaeufig: boolean;
 }
 
-const Q_KS = 'BV Kalksandsteinindustrie, KS-Themenheft 9 „Bemessung“, S. 14, Tafeln 14–16 (Werte nach DIN EN 1996-3/NA)';
-const Q_LUECKING = 'Lücking, Produkthandbuch 2024, Datenblatt HLz B 12-0,90 (Herstellerangabe)';
+const Q_KS = 'BV Kalksandsteinindustrie, KS-Themenheft „Bemessung nach Eurocode 6“ (Stand 10/2012), S. 14, Tafeln 14–16 (Werte nach DIN EN 1996-3/NA)';
+const Q_LUECKING = 'Lücking, Produkthandbuch 2026, S. 49, Datenblatt HLz B 12-0,90 (Herstellerangabe, MG II/IIa/III und LM 36)';
 
-const ks = (stein: string, kurz: string, sfk: number, moertel: MoertelNA, fk: number): FkTafelEintrag =>
-  ({ id: `${kurz}-${sfk}-${moertel.replace(/\s/g, '')}`, stein, sfk, moertel, fk, quelle: Q_KS, vorlaeufig: true });
+const ks = (stein: string, kurz: string, sfk: number, moertel: MoertelNA, fk: number, vorlaeufig = false): FkTafelEintrag =>
+  ({ id: `${kurz}-${sfk}-${moertel.replace(/\s/g, '')}`, stein, sfk, moertel, fk, quelle: Q_KS, vorlaeufig });
 
 /** f_k-Tabellenwerte (NA-Ansatz) aus öffentlich zugänglichen Herstellerunterlagen */
 export const FK_TAFEL_NA: readonly FkTafelEintrag[] = [
@@ -68,13 +79,13 @@ export const FK_TAFEL_NA: readonly FkTafelEintrag[] = [
     .flatMap(([sfk, w]) => (['NM II', 'NM IIa', 'NM III', 'NM IIIa'] as const).map((m, i) => ks('Kalksand-Lochstein (KS L)', 'KSL', sfk, m, w[i]))),
   // Kalksand-Planelemente (KS XL), Dünnbettmörtel – Tafel 16
   ...([[12, 9.4], [16, 11.2], [20, 12.9], [28, 16.0]] as const).map(([sfk, fk]) => ks('Kalksand-Planelement (KS XL)', 'KSXL', sfk, 'DM', fk)),
-  // Kalksand-Plansteine (KS P, Lochanteil ≤ 15 %), Dünnbettmörtel – Tafel 16 (Spaltenzuordnung F-Freigabe)
-  ...([[12, 7.0], [16, 8.8], [20, 10.5]] as const).map(([sfk, fk]) => ks('Kalksand-Planstein (KS P)', 'KSP', sfk, 'DM', fk)),
-  // Kalksand-Plansteine mit Lochanteil > 15 % (KS L-P), Dünnbettmörtel – Tafel 16 (Spaltenzuordnung F-Freigabe)
-  ...([[10, 5.0], [12, 5.6], [16, 6.6]] as const).map(([sfk, fk]) => ks('Kalksand-Planstein gelocht (KS L-P)', 'KSLP', sfk, 'DM', fk)),
+  // Kalksand-Plansteine (KS P, Lochanteil ≤ 15 %), Dünnbettmörtel – Tafel 16 (Spaltenzuordnung vorläufig, F-Freigabe)
+  ...([[12, 7.0], [16, 8.8], [20, 10.5]] as const).map(([sfk, fk]) => ks('Kalksand-Planstein (KS P)', 'KSP', sfk, 'DM', fk, true)),
+  // Kalksand-Plansteine mit Lochanteil > 15 % (KS L-P), Dünnbettmörtel – Tafel 16 (Spaltenzuordnung vorläufig, F-Freigabe)
+  ...([[10, 5.0], [12, 5.6], [16, 6.6]] as const).map(([sfk, fk]) => ks('Kalksand-Planstein gelocht (KS L-P)', 'KSLP', sfk, 'DM', fk, true)),
   // Hochlochziegel HLz B 12-0,90 (Herstellerangabe)
   ...([['NM II', 3.8], ['NM IIa', 5.0], ['NM III', 5.7], ['LM 36', 3.5]] as const).map(([m, fk]): FkTafelEintrag =>
-    ({ id: `HLZB-12-${m.replace(/\s/g, '')}`, stein: 'Hochlochziegel HLz B (Rohdichte 0,9)', sfk: 12, moertel: m, fk, quelle: Q_LUECKING, vorlaeufig: true })),
+    ({ id: `HLZB-12-${m.replace(/\s/g, '')}`, stein: 'Hochlochziegel HLz B (Rohdichte 0,9)', sfk: 12, moertel: m, fk, quelle: Q_LUECKING, vorlaeufig: false })),
 ];
 
 /** Sucht den f_k-Tabellenwert (NA-Ansatz); null, wenn die Kombination hier nicht hinterlegt ist. */
@@ -113,7 +124,10 @@ export function phiAusmitte(e: number, t: number): number {
 /** zwischen: Endauflager einer Zwischendecke; dach: Endauflager unter der Dachdecke (oberstes Geschoss); innen: Innenwand */
 export type WandLage = 'zwischen' | 'dach' | 'innen';
 
-/** Knicklängenbeiwert ρ2 für zweiseitig gehaltene Wände (vorläufig, F-Freigabe) */
+/**
+ * Knicklängenbeiwert ρ2 für zweiseitig gehaltene Wände unter Massivdecken (Quellen siehe Dateikopf; belegt für a/t = 1
+ * und a/t = 2/3, Zwischenwerte 2/3 < a/t < 1 vorläufig, F-Freigabe)
+ */
 export function rho2(t_mm: number, aDurchT: number): number {
   if (aDurchT < 1) return 1.0;
   if (t_mm <= 175) return 0.75;
@@ -207,6 +221,8 @@ export function bemesseWandVereinfacht(e: WandEingabe): WandErgebnis {
 
   bereich(hinweise, 'h', schlankheit, 0, SCHLANKHEIT_MAX, `Schlankheit h_ef/t > ${SCHLANKHEIT_MAX}: unzulässig nach DIN EN 1996-1-1, 5.5.1.4.`);
   if (e.lage === 'zwischen') bereich(hinweise, 'lf', e.lf, 0, LF_MAX, `Deckenstützweite l_f > ${formatDeZahl(LF_MAX, 1)} m: außerhalb der hier abgebildeten Anwendungsgrenzen des vereinfachten Verfahrens.`);
+  // Erweiterte Wandhöhen > 2,75 m nach DIN EN 1996-3/NA:2019-12: KS-Merkblatt „Vereinfachtes Berechnungsverfahren …
+  // Erweiterte Anwendungsgrenzen für Wandhöhen > 2,75 m“ (BV KSI, 04/2020); tragende Innenwände ab t = 115 mm (ebd.)
   if (e.h > 2.75) hinweise.push({ stufe: 'warnung', feld: 'h', text: 'Lichte Wandhöhe > 2,75 m: im vereinfachten Verfahren nur unter den erweiterten Bedingungen von DIN EN 1996-3/NA:2019-12, Tab. NA.2 (Wanddicke, Windzone, Steinfestigkeit) – gesondert prüfen.' });
   if (e.t < 115) hinweise.push({ stufe: 'warnung', feld: 't', text: 'Wanddicke < 115 mm: für tragende Wände im vereinfachten Verfahren nicht vorgesehen.' });
   if (aDurchT < 2 / 3 - 1e-9) hinweise.push({ stufe: 'warnung', feld: 'a', text: 'Auflagertiefe a < 2/3·t: außerhalb der hier abgebildeten Fälle (Herstellertafeln für a/t = 1 und 2/3).' });

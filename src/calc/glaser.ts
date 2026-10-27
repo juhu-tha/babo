@@ -51,24 +51,38 @@ export interface GlaserVerdunstungsklima {
 /**
  * Randbedingungen der Tauperiode nach DIN 4108-3 (seit Ausgabe 2014-11, in 2018-10 unverändert übernommen):
  * 90 d Dezember–Februar, innen 20 °C / 50 %, außen −5 °C / 80 %, R_si = 0,25 und R_se = 0,04 m²K/W.
- * Öffentliche Belege: ubakus.de „Berechnung des Feuchteschutzes“; BaunetzWissen „Tauwasser und Glaser-Verfahren“;
- * Künzel, HolzBauSpezial 2019. Abgleich mit dem Normtext DIN 4108-3:2024-03: vorläufig, F-Freigabe.
+ * Öffentliche Belege: BaunetzWissen „Normativer Rechenweg: Randbedingungen“ (Dezember–Februar, −5 °C/80 %, 20 °C/50 %);
+ * Ackermann/Kießl/Grafe, „Systematische rechnerische Untersuchungen zur ergänzenden Absicherung vereinfachter
+ * nationaler Klima-Randbedingungen“, Forschungsbericht T 3288, Fraunhofer IRB 2012 (DIBt-gefördert), Tab. 1 und
+ * Abschn. 4.1.1 (2 160 h, R_si = 0,25, R_se = 0,04 m²K/W); ubakus.de; Künzel, HolzBauSpezial 2019.
+ * DIN 4108-3:2024-03 (Änderungsvermerk, DIN Media): Periodenbilanzverfahren nur noch bis 700 m Höhenlage – hier nicht
+ * geprüft. Dass die Tauperiodenwerte in der Ausgabe 2024-03 unverändert sind, ist nur über den Normtext (Anhang A,
+ * A.2.2, Tabelle A.3) bestätigbar: vorläufig, F-Freigabe.
  */
 export const TAUPERIODE_DIN_4108_3: Readonly<GlaserTauklima> = { thetaI: 20, phiI: 50, thetaE: -5, phiE: 80, Rsi: 0.25, Rse: 0.04, stunden: 2160 };
 
 /**
  * Randbedingungen der Verdunstungsperiode nach DIN 4108-3 (seit 2014-11): 90 d Juni–August, p_i = p_e = 1 200 Pa,
  * Sättigungsdampfdruck im Tauwasserbereich 1 700 Pa (Wände), 2 000 Pa bei Dächern (außer Gründächern).
- * Öffentliche Belege wie oben (ubakus.de, BaunetzWissen, Künzel 2019). Abgleich mit DIN 4108-3:2024-03: vorläufig, F-Freigabe.
+ * Öffentliche Belege: BaunetzWissen (p_i = p_e = 1 200 Pa, Wand 1 700 Pa); Forschungsbericht T 3288 (2012), Tab. 1
+ * (gerundet 1 200 / 1 700 / 2 000 Pa für Dächer). DIN 4108-3:2024-03 führt in Anhang A neue Außendampfdruckbedingungen
+ * für verschattete Dächer und Dächer mit heller Deckung oder Abdichtung ein (Änderungsvermerk f); die Zahlenwerte sind
+ * nicht öffentlich – der Dachwert 2 000 Pa gilt hier nur für unverschattete Dächer mit dunkler Deckung (vorläufig,
+ * F-Freigabe: DIN 4108-3:2024-03, Anhang A, Tabelle A.3).
  */
 export function verdunstungDin4108_3(bauteil: 'wand' | 'dach'): GlaserVerdunstungsklima {
   return { pI: 1200, pE: 1200, pSatTauwasser: bauteil === 'dach' ? 2000 : 1700, stunden: 2160 };
 }
 
-/** Wasserdampf-Diffusionsleitkoeffizient ruhender Luft δ₀ = 2,0 · 10⁻¹⁰ kg/(m·s·Pa) = 7,2 · 10⁻⁷ kg/(m·h·Pa) */
+/**
+ * Wasserdampf-Diffusionsleitkoeffizient ruhender Luft δ₀ = 2,0 · 10⁻¹⁰ kg/(m·s·Pa) = 7,2 · 10⁻⁷ kg/(m·h·Pa)
+ * (Wert der DIN EN ISO 13788; physikalisch D/(R_v·T) ≈ 2,5 · 10⁻⁵/(461,5 · 293) = 1,85 · 10⁻¹⁰). Dass DIN 4108-3:2024-03
+ * diesen Wert verwendet (und nicht den älteren 1/(1,5 · 10⁶) = 6,7 · 10⁻⁷ kg/(m·h·Pa)), ist öffentlich nicht belegt:
+ * vorläufig, F-Freigabe (DIN 4108-3:2024-03, Anhang A, A.2.5).
+ */
 export const DELTA_0_KG_MHPA = 7.2e-7;
 
-/** Grenzwerte der Tauwassermasse nach DIN 4108-3 [kg/m²] (BaunetzWissen; DIN 4108-3:2018 Abschnitt 5.2.2) */
+/** Grenzwerte der Tauwassermasse nach DIN 4108-3 [kg/m²] (BaunetzWissen; Forschungsbericht T 3288, 2012: 1,0 bzw. 0,5 kg/m²) */
 export const MC_GRENZE_ALLGEMEIN = 1.0;
 export const MC_GRENZE_NICHT_KAPILLAR = 0.5;
 

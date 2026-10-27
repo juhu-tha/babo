@@ -42,6 +42,10 @@ export interface NutzungsdauerAngabe {
  * Nutzungsdauern der Baustoffe des LCA-Rechners nach „Nutzungsdauern von Bauteilen für Lebenszyklusanalysen nach BNB“
  * (BBSR, Stand 24.02.2017 – die in QNG-Anhang 3.1.1 v1.4 genannte Fassung). Hinweis: Die Neufassungen ab 25.09.2025
  * setzen WDVS auf ≥ 50 a herauf; bis zur Übernahme in die QNG-Regeln gilt hier der Wert 2017 (Prüfpunkt F-Freigabe).
+ * Abgleich 27.10.2026: Die Neuerhebung der BBSR-Tabelle ist öffentlich belegt (Lobbyregister, Stellungnahme
+ * SG2505050004 des Bundesverbands der Deutschen Ziegelindustrie, 05.05.2025: „letzter Stand: 2017“); Inhalt und
+ * Geltung der Neufassung für QNG sind öffentlich nicht bestätigt – Fassung 2017 bleibt, Zuordnungen mit
+ * vorlaeufig = true sind Analogieschlüsse für nicht gelistete Baustoffe (F-Freigabe).
  */
 export const BNB_NUTZUNGSDAUER: Readonly<Record<string, NutzungsdauerAngabe>> = {
   'beton-cem1': { nd: 50, quelle: 'BNB 2017, 331.211 Betonwand / 351.1 Betondecke: ≥ 50 a', vorlaeufig: false },
@@ -72,13 +76,15 @@ export interface B6Faktor { name: string; gwp: number; quelle: string; vorlaeufi
 
 const QUELLE_FW = 'QNG Anhang 3.4 Sonderberechnungsvorschrift Fernwärme v1.0 (01.04.2024), nach Rechenwerte 2023 v1.3, Teil B Tab. 1.2';
 /**
- * Rechenwerte B6 [kg CO₂-Äq. je kWh Endenergie]. Fernwärme: wörtlich aus QNG-Anhang 3.4. Netzstrom: Der Zahlenwert
- * des Datensatzes „Nutzung – 1 kWh nationaler Netzstrommix“ ist in den öffentlichen Anhangdokumenten nicht abgedruckt;
- * 0,5320 ist aus dem öffentlichen QNG-Beispielbericht (EVEBI, 04.05.2023: 677 017 kg / (25 450 kWh/a · 50 a))
- * zurückgerechnet – vorläufig, F-Freigabe gegen die aktuelle Rechenwert-Tabelle.
+ * Rechenwerte B6 [kg CO₂-Äq. je kWh Endenergie]. Fernwärme: wörtlich aus QNG-Anhang 3.4. Netzstrom: 0,53203 nach
+ * „Oekobilanzierung-Rechenwerte-2023-Version-1.3“ (qng.info), wiedergegeben in der öffentlichen Berichtsvorlage
+ * „RL22 Beispiel-Bericht LCA-THG“ der Landeshauptstadt München (Förderprogramm Klimaneutrale Gebäude 2024,
+ * Arbeitsblatt 3, „Netzstrommix“); bestätigt durch die Rückrechnung des QNG-Beispielberichts (EVEBI, 04.05.2023:
+ * 677 017 kg / (25 450 kWh/a · 50 a) = 0,53204). Vorher 0,5320 (Rundung). Ob die Rechenwert-Tabelle v1.3 noch die
+ * aktuell vorgeschriebene Fassung ist, prüft der Rechenkern nicht (Prüfpunkt).
  */
 export const B6_FAKTOREN: Readonly<Record<Energietraeger, B6Faktor>> = {
-  netzstrom: { name: 'Nationaler Netzstrommix', gwp: 0.5320, quelle: 'QNG-Beispielbericht WG (EVEBI 13.0.6, 04.05.2023), zurückgerechnet', vorlaeufig: true },
+  netzstrom: { name: 'Nationaler Netzstrommix', gwp: 0.53203, quelle: 'QNG-Rechenwerte 2023 v1.3, Wiedergabe LH München, FKG-Berichtsvorlage 2024 (Arbeitsblatt 3)', vorlaeufig: false },
   fw_biogas_kwk: { name: 'Fernwärme aus Biogas mit KWK', gwp: 0.05629219, quelle: QUELLE_FW, vorlaeufig: false },
   fw_biomasse_kwk: { name: 'Fernwärme aus Biomasse (fest) mit KWK', gwp: 0.01152588, quelle: QUELLE_FW, vorlaeufig: false },
   fw_braunkohle_kwk: { name: 'Fernwärme aus Braunkohle mit KWK', gwp: 0.3062231, quelle: QUELLE_FW, vorlaeufig: false },
@@ -104,11 +110,22 @@ export const TGA_SOCKEL: Readonly<Record<TgaSockel, { gwp: number; gwpD: number 
   ep_bis40: { gwp: 1.30, gwpD: -0.61 },
 };
 
-/** QNG-Anforderungswerte Wohngebäude QNG-WG23 [kg CO₂-Äq./(m² NRF·a)], QNG-Handbuch Anlage 3 v1.4; Nichtwohngebäude projektspezifisch */
+/**
+ * QNG-Anforderungswerte Wohngebäude QNG-WG23 [kg CO₂-Äq./(m² NRF·a)], QNG-Handbuch Anlage 3 v1.4; Nichtwohngebäude
+ * projektspezifisch. Belegt: KfW, Anlage zum Merkblatt 296/498, Technische Mindestanforderungen, 09/2025, Tab. 1
+ * (24 kg CO₂-Äq./(m²·a)); envisys-Infothek „QNG“, Stand 01/2026 (PLUS 24, PREMIUM 20). Laut envisys gelten „seit
+ * 12/2025 vorübergehend geringere Anforderungen“; die Zahlenwerte sind öffentlich nicht beziffert gefunden und nicht
+ * eingearbeitet (vorläufig, F-Freigabe: QNG-Handbuch Anlage 3 bzw. Infoblatt 12/2025 auf qng.info).
+ */
 export const QNG_WG = { plus: 24, premium: 20 } as const;
 
-/** Transportfaktoren A4 des Gebäuderechners [kg CO₂-Äq. je t·km] – Lehrwerte, nicht Teil des QNG-Bilanzrahmens */
-export const A4_FAKTOR_GEBAEUDE = { lkw: 0.15, bahn: 0.03 } as const;
+/**
+ * Transportfaktoren A4 des Gebäuderechners [kg CO₂-Äq. je t·km], nicht Teil des QNG-Bilanzrahmens. Quelle: Umweltbundesamt,
+ * „Vergleich der durchschnittlichen Emissionen einzelner Verkehrsmittel im Güterverkehr in Deutschland 2024“ (TREMOD 6.71B,
+ * 10/2025; Treibhausgase als CO₂-Äq. einschließlich Energiebereitstellung): Lkw gesamt 118 g/tkm, Güterbahnen 14 g/tkm.
+ * Vorher (Lehrwerte ohne Quelle): Lkw 0,15, Bahn 0,03.
+ */
+export const A4_FAKTOR_GEBAEUDE = { lkw: 0.118, bahn: 0.014 } as const;
 
 /** Faktoren der Verwertungswege für Modul D (Lehrmodell, unverändert aus dem bisherigen Rechner übernommen) */
 export const VERWERTUNGSFAKTOR: Readonly<Record<Verwertung, number>> = { reuse: 1.45, high_grade: 1.0, downcycling: 0.55, thermal: 0.85 };
@@ -335,8 +352,14 @@ export function lcaBilanz(e: LcaEingabe): LcaErgebnis {
   };
 }
 
-/** Transportfaktoren des Einzelbaustoff-Rechners (LCA-Grundlagen) [kg CO₂-Äq. je t·km] – Lehrwerte */
-export const A4_FAKTOR_EINZEL = { 'lkw-heavy': 0.02, 'lkw-light': 0.08, 'strom-lkw': 0.004, 'h2-lkw': 0.003, zug: 0.005 } as const;
+/**
+ * Transportfaktoren des Einzelbaustoff-Rechners (LCA-Grundlagen) [kg CO₂-Äq. je t·km]. Diesel-Lkw und Bahn nach UBA,
+ * Güterverkehr 2024 (TREMOD 6.71B, wie A4_FAKTOR_GEBAEUDE): Last- und Sattelzüge 101 g/tkm („Diesel-Lkw 40 t“),
+ * Lkw 3,5–7,5 t 561 g/tkm („Diesel-Lkw 7,5 t“), Güterbahnen 14 g/tkm. Vorher: 0,020 / 0,080 / 0,005 (Lehrwerte, um den
+ * Faktor 3–7 zu niedrig). Elektro-Lkw (Ökostrom) 0,004 und H₂-Lkw 0,003 bleiben Lehrwerte ohne öffentliche Quelle
+ * (vorläufig, F-Freigabe).
+ */
+export const A4_FAKTOR_EINZEL = { 'lkw-heavy': 0.101, 'lkw-light': 0.561, 'strom-lkw': 0.004, 'h2-lkw': 0.003, zug: 0.014 } as const;
 export type TransportEinzel = keyof typeof A4_FAKTOR_EINZEL;
 
 export interface EinzelbaustoffEingabe {

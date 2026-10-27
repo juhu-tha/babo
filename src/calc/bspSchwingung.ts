@@ -11,10 +11,15 @@
  *   Bemessung Brettsperrholz Band II, 2018, Beispiel 4.1).
  * Lehr- und Vorbemessungswerkzeug: Ergebnisse werden mit Orientierungswerten verglichen,
  * eine Deckenklasse wird nicht bestätigt.
+ * Abgleich 27.10.2026: Kennwerte und Orientierungswerte wörtlich in proHolz Austria, „Brettsperrholz Bemessung Band II –
+ * Anwendungsfälle“, 1. Aufl. 01/2018 (Tab. 3-1, 3-2; Gl. 4.1/4.2, S. 17; f₁,min = 4,5 Hz, S. 18; Beispiel 4.1, S. 19–23).
+ * Die eigenen Grenzwerte der DIN EN 1995-1-1/NA:2013-08 (NCI zu 7.3.3) sind öffentlich nicht im Wortlaut zugänglich und
+ * daher nicht abgebildet (vorläufig, F-Freigabe); der Anwendungsgrenzwert 8 Hz der EN 1995-1-1, 7.3.3(1), ist belegt
+ * (Dlubal, Wissensdatenbank KB 000694, 29.03.2021).
  */
 import { type Hinweis, bereich, hatFehler, istEndlich, muss } from './plausibilitaet';
 
-/** Materialkennwerte BSP nach proHolz Austria, Bemessung Brettsperrholz Band II (2018), Tab. 3-2 */
+/** Materialkennwerte BSP nach proHolz Austria, Bemessung Brettsperrholz Band II (2018): E_0,mean und G_r,mean Tab. 3-2 (S. 12), Wichte Tab. 3-1 (S. 11) */
 export const BSP_KENNWERTE = {
   /** E_0,mean [N/mm²] */
   E0mean: 11550,
@@ -28,7 +33,7 @@ export const BSP_KENNWERTE = {
 export const ESTRICH_E = { zement: 25000, anhydrit: 14000, gussasphalt: 10000 } as const;
 export type Estrichart = keyof typeof ESTRICH_E;
 
-/** Orientierungswerte nach Hamm/Richter (2009), ÖNORM B 1995-1-1:2015 – Wiedergabe proHolz Band II, Gl. 4.1/4.2 */
+/** Orientierungswerte nach Hamm/Richter (2009), ÖNORM B 1995-1-1:2015 – Wiedergabe proHolz Band II, Gl. 4.1/4.2 (S. 17) und S. 18 (4,5 Hz) */
 export const ORIENTIERUNG = {
   /** Anwendungsgrenze DIN EN 1995-1-1, 7.3.3, und Frequenzwert Deckenklasse I [Hz] */
   f1KlasseI: 8,
