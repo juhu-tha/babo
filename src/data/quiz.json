@@ -5300,7 +5300,7 @@
       "Der Entwurf von 2024 ist erledigt; seit 10/2026 liegt ein neuer Entwurf zur Anhörung vor"
     ],
     "correctIdx": 3,
-    "explanation": "Der Entwurf von 2024 (u. a. § 650a Abs. 3/4 und § 650o BGB-E) wurde vor dem Ende der 20. Wahlperiode nicht beschlossen. Nach Eckpunkten von BMJV und BMWSB (20.11.2025) haben die Ministerinnen Hubig und Hubertz am 26.10.2026 einen neuen Entwurf zum Bauvertragsrecht vorgelegt, der nun an Länder und Verbände geht. Kabinettsbeschluss sowie Beratung in Bundestag und Bundesrat stehen aus; ein Inkrafttreten wird frühestens Mitte 2027 erwartet.",
+    "explanation": "Der Entwurf von 2024 (u. a. § 650a Abs. 3/4 und § 650o BGB-E) wurde vor dem Ende der 20. Wahlperiode nicht beschlossen. Nach Eckpunkten von BMJV und BMWSB (20.11.2025) hat das BMJV am 26.10.2026 in Abstimmung mit dem BMWSB einen Referentenentwurf zum Bauvertragsrecht (§§ 650a ff. BGB) vorgelegt; Länder und Verbände können bis 09.11.2026 Stellung nehmen. Kabinettsbeschluss sowie Beratung in Bundestag und Bundesrat stehen aus; ein Termin für das Inkrafttreten steht nicht fest.",
     "bloom": "Erinnern",
     "niveau": "M",
     "distraktorFeedback": [
@@ -5321,7 +5321,7 @@
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "Distraktoren angeglichen"
+      "hinweis": "Distraktoren angeglichen · Zweitprüfung 27.10.: Erklärung auf Referentenentwurf vom 26.10.2026 (Stellungnahmefrist 09.11.2026) präzisiert, unbelegte Prognose „Mitte 2027“ entfernt – korrigiert"
     }
   },
   {
@@ -5968,7 +5968,9 @@
       "targetModuleLabel": "Zertifizierung & Deklarationen"
     },
     "quelle": "KfW-Merkblatt 297/298, Stand 07/2026; Anlage TMA 297/298 (03/2023); AK Berlin: QNG – Systemarchitektur (Oliva y Hausmann)",
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -6207,7 +6209,9 @@
       "targetModuleTab": "ressourcen_umwelt",
       "targetModuleLabel": "Ressourcen & Umwelt"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -6328,7 +6332,9 @@
       "targetModuleTab": "bestand",
       "targetModuleLabel": "Altbauatlas"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -6369,7 +6375,9 @@
       "targetModuleTab": "bestand",
       "targetModuleLabel": "Altbauatlas"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -6573,7 +6581,9 @@
       "targetModuleTab": "bauwerkserfassung",
       "targetModuleLabel": "Bauwerkserfassung"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -6654,7 +6664,9 @@
       "targetModuleTab": "denkmalpflege",
       "targetModuleLabel": "Denkmalpflege"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -6695,7 +6707,9 @@
       "targetModuleTab": "denkmalpflege",
       "targetModuleLabel": "Denkmalpflege"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -6776,7 +6790,9 @@
       "targetModuleTab": "modernisierung",
       "targetModuleLabel": "Modernisierung & GModG"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -6791,15 +6807,15 @@
     "topic": "Karbonatisierungsprognose",
     "difficulty": "Basis",
     "normRef": "DIN EN 14630:2007-01",
-    "question": "Nach 36 Jahren beträgt die Karbonatisierungstiefe 15 mm. Wann erreicht die Front nach dem √t-Gesetz eine Betondeckung von 25 mm?",
+    "question": "Ein 36 Jahre altes Bauteil hat eine Karbonatisierungstiefe von 15 mm. Bei welchem Bauteilalter erreicht die Front nach dem √t-Gesetz eine Betondeckung von 25 mm?",
     "options": [
-      "nach ca. 60 Jahren",
-      "nach ca. 136 Jahren",
-      "nach ca. 100 Jahren",
-      "nach ca. 42 Jahren"
+      "bei einem Alter von ca. 60 Jahren",
+      "bei einem Alter von ca. 136 Jahren",
+      "bei einem Alter von ca. 100 Jahren",
+      "bei einem Alter von ca. 42 Jahren"
     ],
     "correctIdx": 2,
-    "explanation": "k = 15/√36 = 2,5 mm/√a; t = (25/2,5)² = 100 a, also rund 64 Jahre Restzeit.",
+    "explanation": "k = 15/√36 = 2,5 mm/√a; t = (25/2,5)² = 100 a Bauteilalter, also rund 64 Jahre Restzeit ab heute.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -6819,7 +6835,8 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "ok",
+      "hinweis": "Zweitprüfung 27.10.: Frage und Optionen auf Bauteilalter umformuliert (Bezugszeitpunkt eindeutig) – korrigiert"
     }
   },
   {
@@ -7176,7 +7193,9 @@
       "targetModuleTab": "historische_bauweisen",
       "targetModuleLabel": "Hist. Bauweisen"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -7217,7 +7236,9 @@
       "targetModuleTab": "historische_bauprodukte",
       "targetModuleLabel": "Hist. Bauprodukte"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -7338,7 +7359,9 @@
       "targetModuleTab": "bestand_checklisten",
       "targetModuleLabel": "Checklisten"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -7543,7 +7566,9 @@
       "targetModuleTab": "rueckbau",
       "targetModuleLabel": "Rückbau & Material"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -7584,7 +7609,9 @@
       "targetModuleTab": "rueckbau",
       "targetModuleLabel": "Rückbau & Material"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -8193,7 +8220,9 @@
       "targetModuleTab": "altholz_urban_mining",
       "targetModuleLabel": "Altholz-NIR-Sortierung und Urban Mining"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "quelle": "AltholzV § 2",
     "vorpruefung": {
       "am": "2026-10-27",
@@ -8235,7 +8264,9 @@
       "targetModuleTab": "altholz_urban_mining",
       "targetModuleLabel": "Altholz-NIR-Sortierung und Urban Mining"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "quelle": "AltholzV § 3, Anhang I",
     "vorpruefung": {
       "am": "2026-10-27",
@@ -8552,7 +8583,9 @@
       "targetModuleTab": "pfas_baustoffe",
       "targetModuleLabel": "PFAS in Baustoffen"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "quelle": "TrinkwV 2023 Anlage 2 Teil I",
     "vorpruefung": {
       "am": "2026-10-27",
@@ -8594,7 +8627,9 @@
       "targetModuleTab": "pfas_baustoffe",
       "targetModuleLabel": "PFAS in Baustoffen"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -8635,7 +8670,9 @@
       "targetModuleTab": "pfas_baustoffe",
       "targetModuleLabel": "PFAS in Baustoffen"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "quelle": "TrinkwV 2023 Anlage 2 Teil I",
     "vorpruefung": {
       "am": "2026-10-27",
@@ -8677,7 +8714,9 @@
       "targetModuleTab": "pfas_baustoffe",
       "targetModuleLabel": "PFAS in Baustoffen"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -8797,7 +8836,9 @@
       "targetModuleTab": "ressourceneffizienz",
       "targetModuleLabel": "Ressourceneffizienz"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -8838,7 +8879,9 @@
       "targetModuleTab": "rueckbau_checklisten",
       "targetModuleLabel": "Checklisten"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "korrigiert",
@@ -8853,8 +8896,8 @@
     "moduleTitle": "Checklisten",
     "topic": "Mobile Brechanlage",
     "difficulty": "Vertiefung",
-    "normRef": "4. BImSchV",
-    "question": "Ab wann ist eine mobile Brechanlage am selben Standort nach BImSchG genehmigungsbedürftig?",
+    "normRef": "4. BImSchV § 1 Abs. 1",
+    "question": "Eine mobile Brechanlage bricht auf einer Abbruchbaustelle den dort angefallenen Bauschutt (Behandlung am Entstehungsort). Ab wann ist sie nach der 4. BImSchV genehmigungsbedürftig?",
     "options": [
       "Wenn sie länger als zwölf Monate am selben Ort betrieben wird",
       "Ab dem ersten Betriebstag, unabhängig von der Standzeit",
@@ -8862,19 +8905,19 @@
       "Nur bei stationärem Betrieb; mobile Anlagen sind davon ausgenommen"
     ],
     "correctIdx": 0,
-    "explanation": "Nach der 4. BImSchV sind Anlagen genehmigungsbedürftig, wenn sie länger als zwölf Monate am selben Ort betrieben werden sollen (Nr. 2.2 bzw. 8.11.2.4 des Anhangs 1).",
+    "explanation": "Nach § 1 Abs. 1 Satz 1 der 4. BImSchV sind Anlagen des Anhangs 1 genehmigungsbedürftig, wenn sie voraussichtlich länger als zwölf Monate am selben Ort betrieben werden. Für Abfallanlagen nach Nr. 8 des Anhangs 1 gilt die Genehmigungspflicht nach Satz 2 auch bei kürzerer Standzeit – ausgenommen Anlagen zur Behandlung am Entstehungsort wie hier.",
     "bloom": "Erinnern",
     "niveau": "M",
     "distraktorFeedback": [
       "",
-      "Kurzzeitig betriebene Anlagen sind nach der 4. BImSchV ausgenommen; die Grenze liegt bei zwölf Monaten.",
+      "Ab dem ersten Tag gilt die Pflicht nur für Abfallanlagen außerhalb des Entstehungsorts (§ 1 Abs. 1 Satz 2); hier greift die Zwölf-Monats-Grenze.",
       "Drei Monate sind keine Schwelle der 4. BImSchV; maßgebend ist ein Betrieb von mehr als zwölf Monaten.",
       "Auch mobile Anlagen werden genehmigungsbedürftig, wenn sie länger als zwölf Monate am selben Ort stehen."
     ],
     "gapAnalysis": {
       "topic": "Mobile Brechanlage",
       "misconception": "Mobile Anlagen benötigen nie eine Genehmigung.",
-      "coreRule": "Zwölf-Monats-Regel der 4. BImSchV beachten; Lärm- und Staubschutz unabhängig davon.",
+      "coreRule": "Zwölf-Monats-Regel der 4. BImSchV beachten (bei Abfallanlagen nur für die Behandlung am Entstehungsort); Lärm- und Staubschutz unabhängig davon.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Mobile Brechanlage“ im Modul Checklisten noch einmal durch.",
       "targetModuleTab": "rueckbau_checklisten",
       "targetModuleLabel": "Checklisten"
@@ -8882,7 +8925,8 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "ok",
+      "hinweis": "Zweitprüfung 27.10.: Frage auf Behandlung am Entstehungsort eingegrenzt, Ausnahme § 1 Abs. 1 Satz 2 4. BImSchV in Erklärung ergänzt – korrigiert"
     }
   },
   {
@@ -9283,7 +9327,9 @@
       "targetModuleTab": "schadreaktionen_beton",
       "targetModuleLabel": "Betonkorrosion"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -9563,7 +9609,9 @@
       "targetModuleTab": "dauerhaftigkeit_checklisten",
       "targetModuleLabel": "Checklisten"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "korrigiert",
@@ -9604,7 +9652,9 @@
       "targetModuleTab": "dauerhaftigkeit_checklisten",
       "targetModuleLabel": "Checklisten"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -10052,7 +10102,9 @@
       "targetModuleTab": "schadensbilder",
       "targetModuleLabel": "Typische Bauschäden"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -10256,7 +10308,9 @@
       "targetModuleTab": "bauwerksunters_monitoring",
       "targetModuleLabel": "Tragwerksmonitoring (SHM)"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -10297,7 +10351,9 @@
       "targetModuleTab": "bauwerksunters_monitoring",
       "targetModuleLabel": "Tragwerksmonitoring (SHM)"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -10337,7 +10393,9 @@
       "targetModuleTab": "vdi6200",
       "targetModuleLabel": "Zustandsbewertung"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -10377,7 +10435,9 @@
       "targetModuleTab": "vdi6200",
       "targetModuleLabel": "Zustandsbewertung"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -10418,7 +10478,9 @@
       "targetModuleTab": "material_schaeden_gross",
       "targetModuleLabel": "Große Materialschäden & Einstürze"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -10696,7 +10758,9 @@
       "targetModuleTab": "schaeden_checklisten",
       "targetModuleLabel": "Schadensaufnahme-Checklisten"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -11299,7 +11363,9 @@
       "targetModuleTab": "wta",
       "targetModuleLabel": "WTA-Merkblätter"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -11583,7 +11649,9 @@
       "targetModuleTab": "instandsetzung_checklisten",
       "targetModuleLabel": "Instandsetzungs-Checklisten"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -24539,7 +24607,9 @@
       "targetModuleTab": "lca_rechner",
       "targetModuleLabel": "LCA-Rechner & QNG-Nachweis"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -24579,7 +24649,9 @@
       "targetModuleTab": "lca_rechner",
       "targetModuleLabel": "LCA-Rechner & QNG-Nachweis"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -24722,7 +24794,7 @@
       "Beide Varianten sind gleichwertig, da sich ihre Gutschriften in Modul D vollständig ausgleichen."
     ],
     "correctIdx": 2,
-    "explanation": "Die Stahlverbundbrücke spart in A1–A3 rund 83 t, verursacht aber durch vier Korrosionsschutzerneuerungen rund 39 t mehr in B2–B5 und durch zusätzliche Sperrtage rund 27 t mehr in B8. Netto bleiben etwa 38 t Vorteil (5,50 statt 5,75 kg CO₂-Äq./(m²·a)); rund 21 t davon stammen aus dem günstigeren Modul C. Modul D (−57 t bzw. −128 t) wird separat ausgewiesen.",
+    "explanation": "Die Stahlverbundbrücke spart in A1–A3 rund 83 t, verursacht aber durch vier Korrosionsschutzerneuerungen rund 39 t mehr in B2–B5 und durch zusätzliche Sperrtage rund 27 t mehr in B8. Netto bleiben etwa 39 t Vorteil (5,50 statt 5,76 kg CO₂-Äq./(m²·a)); rund 22 t davon stammen aus den günstigeren Modulen A4–A5 und C. Modul D (−57 t bzw. −128 t) wird separat ausgewiesen.",
     "bloom": "Analysieren",
     "niveau": "M",
     "distraktorFeedback": [
@@ -24743,7 +24815,7 @@
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "Distraktoren angeglichen"
+      "hinweis": "Distraktoren angeglichen · Zweitprüfung 27.10.: Erklärung an Simulator angepasst (Netto 39 t, 5,76 kg; Rest 22 t aus A4–A5 und C statt nur C) – korrigiert"
     }
   },
   {
@@ -24860,7 +24932,9 @@
       "targetModuleTab": "lca_regulatorik",
       "targetModuleLabel": "Rechtsrahmen, CRREM & Praxis"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -24981,7 +25055,9 @@
       "targetModuleTab": "lca_regulatorik",
       "targetModuleLabel": "Rechtsrahmen, CRREM & Praxis"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -38081,7 +38157,9 @@
       "targetModuleTab": "materialoptimierung",
       "targetModuleLabel": "Materialoptimierung"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -38122,7 +38200,9 @@
       "targetModuleTab": "materialoptimierung",
       "targetModuleLabel": "Materialoptimierung"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -38243,7 +38323,9 @@
       "targetModuleTab": "lca_ingenieurbau",
       "targetModuleLabel": "LCA im Ingenieurbau (DIN EN 17472)"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -38364,7 +38446,9 @@
       "targetModuleTab": "kreislauf_dpp",
       "targetModuleLabel": "Kreislaufwirtschaft"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -38605,7 +38689,9 @@
       "targetModuleTab": "lebenszyklus_kosten",
       "targetModuleLabel": "Lebenszyklus & Kosten"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -38646,7 +38732,9 @@
       "targetModuleTab": "lebenszyklus_kosten",
       "targetModuleLabel": "Lebenszyklus & Kosten"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -38687,7 +38775,9 @@
       "targetModuleTab": "lebenszyklus_kosten",
       "targetModuleLabel": "Lebenszyklus & Kosten"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -38728,7 +38818,9 @@
       "targetModuleTab": "bauwerkserfassung",
       "targetModuleLabel": "Bauwerkserfassung"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -38929,7 +39021,9 @@
       "targetModuleTab": "denkmalpflege",
       "targetModuleLabel": "Denkmalpflege"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -39130,7 +39224,9 @@
       "targetModuleTab": "modernisierung",
       "targetModuleLabel": "Modernisierung & GModG"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -39251,7 +39347,9 @@
       "targetModuleTab": "bauwerksuntersuchung",
       "targetModuleLabel": "Bauwerksdiagnose & ZfP"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -39292,7 +39390,9 @@
       "targetModuleTab": "bauwerksuntersuchung",
       "targetModuleLabel": "Bauwerksdiagnose & ZfP"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -39553,7 +39653,7 @@
       "PCB aus dauerelastischen Fugendichtungsmassen auf Polysulfidbasis",
       "HBCD als Flammschutzmittel in EPS-Dämmplatten aus der Zeit bis ca. 2015",
       "Formaldehyd aus Harnstoff-Formaldehyd-Ortschaum in Hohlräumen",
-      "PAK aus Steinkohlenteerpech in sogenanntem Schwarzkleber"
+      "PAK aus Steinkohlenteerpech im sogenannten Schwarzkleber (Teerkleber)"
     ],
     "correctIdx": 3,
     "explanation": "Teer- und Pech-Parkettkleber (Schwarzkleber) bestehen aus Steinkohlenteerpech und enthalten PAK. Vor einem Ausbau ist eine Laboranalyse auf PAK zu veranlassen; das Material ist gefährlicher Abfall.",
@@ -39577,7 +39677,7 @@
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
+      "hinweis": "normRef ergänzt · Zweitprüfung 27.10.: richtige Option verlängert (war deutlich kürzeste, Längenverhältnis 1,27) – korrigiert"
     }
   },
   {
@@ -39774,7 +39874,9 @@
       "targetModuleTab": "rueckbau",
       "targetModuleLabel": "Rückbau & Material"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -39855,7 +39957,9 @@
       "targetModuleTab": "boden_materialaufbereitung",
       "targetModuleLabel": "Boden- & Materialaufbereitung"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -39896,7 +40000,9 @@
       "targetModuleTab": "boden_materialaufbereitung",
       "targetModuleLabel": "Boden- & Materialaufbereitung"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -40257,7 +40363,9 @@
       "targetModuleTab": "korrosion",
       "targetModuleLabel": "Bewehrungskorrosion"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -40298,7 +40406,9 @@
       "targetModuleTab": "korrosion",
       "targetModuleLabel": "Bewehrungskorrosion"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -40459,7 +40569,9 @@
       "targetModuleTab": "schadreaktionen_beton",
       "targetModuleLabel": "Betonkorrosion"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -40500,7 +40612,9 @@
       "targetModuleTab": "schadreaktionen_beton",
       "targetModuleLabel": "Betonkorrosion"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -40541,7 +40655,9 @@
       "targetModuleTab": "schadreaktionen_beton",
       "targetModuleLabel": "Betonkorrosion"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -40582,7 +40698,9 @@
       "targetModuleTab": "holzkorrosion",
       "targetModuleLabel": "Holzkorrosion"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -40623,7 +40741,9 @@
       "targetModuleTab": "holzkorrosion",
       "targetModuleLabel": "Holzkorrosion"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -40664,7 +40784,9 @@
       "targetModuleTab": "holzkorrosion",
       "targetModuleLabel": "Holzkorrosion"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -40705,7 +40827,9 @@
       "targetModuleTab": "holzkorrosion",
       "targetModuleLabel": "Holzkorrosion"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -40746,7 +40870,9 @@
       "targetModuleTab": "metallkorrosion",
       "targetModuleLabel": "Metallkorrosion"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -40826,7 +40952,9 @@
       "targetModuleTab": "metallkorrosion",
       "targetModuleLabel": "Metallkorrosion"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -40866,7 +40994,9 @@
       "targetModuleTab": "metallkorrosion",
       "targetModuleLabel": "Metallkorrosion"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -41107,7 +41237,9 @@
       "targetModuleTab": "bauwerksunters_monitoring",
       "targetModuleLabel": "Tragwerksmonitoring (SHM)"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -41188,7 +41320,9 @@
       "targetModuleTab": "bauwerksunters_monitoring",
       "targetModuleLabel": "Tragwerksmonitoring (SHM)"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -41229,7 +41363,9 @@
       "targetModuleTab": "vdi6200",
       "targetModuleLabel": "Zustandsbewertung"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -41309,7 +41445,9 @@
       "targetModuleTab": "vdi6200",
       "targetModuleLabel": "Zustandsbewertung"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -41350,7 +41488,9 @@
       "targetModuleTab": "instandsetzung_materialien",
       "targetModuleLabel": "Instandsetzung nach Material"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -41591,7 +41731,9 @@
       "targetModuleTab": "instandhaltung",
       "targetModuleLabel": "Stahlbetoninstandhaltung"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -41632,7 +41774,9 @@
       "targetModuleTab": "instandhaltung",
       "targetModuleLabel": "Stahlbetoninstandhaltung"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -46139,7 +46283,9 @@
       "targetModuleTab": "oekobilanz_lca",
       "targetModuleLabel": "Ökobilanzierung (LCA): Grundlagen"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "korrigiert",
@@ -46901,7 +47047,9 @@
       "targetModuleTab": "korrosionsschutz_beschichtungen",
       "targetModuleLabel": "Korrosionsschutz durch Beschichtungen"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "korrigiert",
@@ -46942,7 +47090,9 @@
       "targetModuleTab": "korrosionsschutz_beschichtungen",
       "targetModuleLabel": "Korrosionsschutz durch Beschichtungen"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -46983,7 +47133,9 @@
       "targetModuleTab": "korrosionsschutz_beschichtungen",
       "targetModuleLabel": "Korrosionsschutz durch Beschichtungen"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -48227,7 +48379,9 @@
       "targetModuleTab": "schnellkarbonatisierung",
       "targetModuleLabel": "Schnellkarbonatisierung (DIN EN 12390-12)"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
