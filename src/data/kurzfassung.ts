@@ -2,7 +2,73 @@
  * „Das Wichtigste in 5 Punkten“ für lange Module (Umsetzungsplan Phase 3, AP 3.8).
  * tests/kurzfassung.test.ts prüft Form und Abdeckung der Pflichtmodule.
  */
+
+/** Praxiswissen: ein Modul mit vier Reiter-Routen (px_planung … px_karriere), gemeinsame Kurzfassung (Z53) */
+const PRAXISWISSEN: readonly string[] = [
+  "Das Modul begleitet den Berufseinstieg in vier Reitern: Planung und Ausschreibung, Bauleitung auf der Baustelle, Produktherstellung mit Qualitätssicherung sowie Karriere und die ersten 100 Tage im Beruf.",
+  "Rechtsrahmen sind die VOB mit den Teilen A, B und C sowie das BGB-Werkvertragsrecht als gesetzliche Auffangordnung; die VOB/B gilt nur, wenn sie vertraglich vereinbart ist.",
+  "Fehler im Leistungsverzeichnis und unklare Schnittstellen führen zu Nachträgen und Verzug; eine vom Bauherrn schriftlich freigegebene Schnittstellen-Matrix aller Planer am Ende von Phase 3 beugt dem vor.",
+  "Gleichwertigkeit im Leistungsverzeichnis wird an den festgelegten Leistungsmerkmalen wie dem Bemessungswert λ gemessen, nicht am Produktnamen; Wasserzugabe am Fahrmischer mindert Festigkeit und Dauerhaftigkeit.",
+  "In der Produktion sichern werkseigene Produktionskontrolle und CE-Kennzeichnung die Güte; bei Erstherstellung gilt f_cm ≥ f_ck + 4, bei stetiger Herstellung mit n ≥ 15 Ergebnissen f_cm ≥ f_ck + 1,48 · σ.",
+];
+
+/** Verkehrswegebau: ein Modul mit acht Reiter-Routen (bp_verkehr_*), gemeinsame Kurzfassung (Z53) */
+const VERKEHRSWEGEBAU: readonly string[] = [
+  "Das Modul gliedert den Verkehrswegebau in Reiter zu Oberbau nach RStO, Asphaltarten, Bitumen, Asphaltprüfung, Betondecken, Tiefbau und Entwässerung, Bahnbau sowie Tunnelbau.",
+  "Die RStO 12/24 regeln den Aufbau von Straßenquerschnitten nach Belastungsklassen; die Tragfähigkeit des Planums wird mit dem statischen Plattendruckversuch nach DIN 18134 nachgewiesen.",
+  "Asphalt besteht aus Füller, Gesteinskörnung und Bitumen: Splittmastixasphalt stützt sich auf ein Splittgerüst mit Mastix, Gussasphalt wird ohne Walzen eingebaut, offenporiger Asphalt ist wasserdurchlässig.",
+  "Bitumen ist thermoplastisch und wird über die Nadelpenetration bei 25 °C und den Erweichungspunkt Ring und Kugel eingestuft; für Autobahndeckschichten ist ein PSV-Wert von mindestens 51 bzw. 54 gefordert.",
+  "Betondecken bilden keine Spurrinnen, brauchen aber Fugen mit Dübeln und Ankern sowie Luftporen gegen Frost-Tausalz; als Bauteile der Feuchtigkeitsklasse WS sind sie gegen eine Alkali-Kieselsäure-Reaktion zu sichern.",
+];
+
 export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
+  stahlbeton_bemessung: [
+    "Das Modul bündelt die Bemessung nach DIN EN 1992-1-1 mit deutschem Nationalem Anhang in Reitern: Werkstoffgesetze, Biegung, Querkraft, Stützen, Durchstanzen, Verankerung und Rissbreite.",
+    "Beton wird im Grenzzustand der Tragfähigkeit mit dem Parabel-Rechteck-Diagramm bis ε_cu2 = −3,5 ‰ beschrieben, Betonstahl B500 linear-elastisch bis zur Fließgrenze und darüber ideal-plastisch.",
+    "Beim μ-Verfahren genügt bis μ_Eds ≤ 0,296 eine einfache Zugbewehrung mit duktilem Versagen; darüber sind eine größere Querschnittshöhe oder Druckbewehrung nötig, eine Mindestbewehrung ist stets einzulegen.",
+    "Ohne Querkraftbewehrung gilt V_Rd,c mit dem Maßstabsbeiwert k = 1 + √(200/d) ≤ 2,0; mit Bügeln trägt das Fachwerkmodell mit 1,0 ≤ cot θ ≤ 3,0, die Zugkraftdeckung wird um a_l = z · cot θ / 2 versetzt.",
+    "Durchstanzen wird nach der eingeführten Fassung im kritischen Rundschnitt im Abstand 2,0 d vom Stützenrand nachgewiesen; Risse sind kein Mangel, solange die Rissbreite w_k den Grenzwert w_max einhält.",
+  ],
+  ki_system: [
+    "Bau-KI ist kein Einzelprogramm, sondern eine Systemarchitektur aus sechs Schichten: von Daten wie Laborprüfungen, Drohnenfotos und BIM-Modellen bis zum vom Ingenieur geprüften und signierten Ergebnis.",
+    "Klassisches maschinelles Lernen wie Random Forests lernt aus tabellarischen Labor- und Messreihen Zielwerte wie Betondruckfestigkeit oder Setzungen und prognostiziert sie ohne neue Versuche.",
+    "Deep Learning und Computer Vision werten Bilder und Punktwolken mit Faltungsnetzen und Vision Transformern aus, etwa zur Vermessung von Rissbreiten ab 0,1 mm oder zum Soll-Ist-Abgleich mit dem BIM-Modell.",
+    "Große Sprachmodelle verarbeiten Fachtexte und Leistungsverzeichnisse; RAG bindet sie über Chunking, Embeddings und Vektordatenbanken an verifizierte Originaltexte wie Normen, um Halluzinationen zu vermeiden.",
+    "KI-Agenten rufen über Tool Use externe Statik- und AVA-Werkzeuge auf, lokale KI läuft offline auf eigener Hardware; die rechtlich verbindliche Prüfung und Freigabe bleibt beim Ingenieur.",
+  ],
+  ki_llmpraxis: [
+    "Unstrukturiertes Copy-Paste in Sprachmodelle führt im Bauwesen zu Halluzinationen und veralteten Normständen; Projektwissen, Skills, Konnektoren und Browser-Grounding machen daraus verlässlichere Werkzeuge.",
+    "Projektbereiche mit großem Kontextfenster halten Bodengutachten, Vorbemessungen und Baubeschreibungen dauerhaft vor; Werkzeuge mit Code-Ausführung werten CSV-Messreihen aus Zug- oder Druckprüfungen aus.",
+    "Skills und MCP-Konnektoren binden Bürowerkzeuge und Datenquellen an, etwa eine REST-Schnittstelle für Wetterdaten am Bautag oder tagesaktuelle Betonpreise aus dem ERP-System.",
+    "Markdown-Dateien und eine CLAUDE.md im Projektverzeichnis legen Arbeitsanweisungen und Ordnerstruktur fest, sodass Ergebnisse für Bauleitung, Prüfstatik oder Masterarbeit nachvollziehbar bleiben.",
+    "Der Vorlagengenerator erzeugt rollenbezogene Prompts, etwa für Mängelrügen nach § 4 Abs. 7 VOB/B; Live-Websuche mit Quellenlinks verringert das Risiko veralteter oder erfundener Normzitate.",
+  ],
+  ki_recht_ethik: [
+    "Sprachmodelle erzeugen statistisch wahrscheinliche Zeichenfolgen, keinen physikalischen Beweis; sie verwechseln Einheiten, erfinden Quellen samt DOI und übernehmen Sicherheitsbeiwerte aus fremden Normen.",
+    "Der Planer schuldet nach § 631 BGB den Werkerfolg; ein Mangel aus fehlerhafter KI-Statik ist ein Sachmangel nach § 633 BGB, die ungeprüfte Übernahme werten Versicherer als grobe Fahrlässigkeit.",
+    "Die seit 1. August 2024 geltende KI-Verordnung der EU verfolgt einen risikobasierten Ansatz; Hochrisiko-Systeme etwa in kritischer Infrastruktur verlangen nach Art. 14 eine wirksame menschliche Aufsicht.",
+    "Bauherrennamen und Grundrisse sind personenbezogene Daten nach DSGVO, Rezepturen und Kalkulationen Geschäftsgeheimnisse; vor dem Upload ist zu schwärzen, vertrauliche Projekte gehören auf lokale Modelle.",
+    "Rein KI-generierte Texte oder Skizzen sind nach § 2 Abs. 2 UrhG nicht geschützt; der Energiebedarf von Rechenzentren und englischsprachig geprägte Trainingsdaten mit ACI- statt Eurocode-Bezug sind abzuwägen.",
+  ],
+  ki_lokal: [
+    "Lokale Sprachmodelle laufen offline auf eigener Hardware; Bauherrendaten, Grundrisse und Kalkulationen verlassen das Büro nicht, die Pflichten aus der DSGVO bleiben dennoch bestehen.",
+    "LM Studio führt quelloffene Modelle ohne Programmierkenntnisse aus und durchsucht die Modell-Datenbank von Hugging Face; im Zweifel ist die Quantisierungsstufe Q4_K_M oder Q5_K_M zu wählen.",
+    "Q4_K_M mit rund 4,8 bit je Gewicht senkt den Speicherbedarf gegenüber dem 16-Bit-Original um rund 70 %; maßgebend für lokale KI ist vor allem schneller Grafikspeicher (VRAM).",
+    "Mit 16 GB VRAM laufen Modelle bis etwa 14 Milliarden Parameter, der Sweet Spot für Ingenieurbüros; 70B-Modelle erfordern etwa einen Rechner mit 64 GB gemeinsam genutztem Speicher.",
+    "Der eingebaute lokale HTTP-Server auf Port 1234 bindet Werkzeuge mit OpenAI-kompatibler Schnittstelle an; ein lokal gespeichertes Modell liefert auch Jahre später reproduzierbare Ergebnisse ohne Modell-Drift.",
+  ],
+  px_planung: PRAXISWISSEN,
+  px_bauleitung: PRAXISWISSEN,
+  px_produktion: PRAXISWISSEN,
+  px_karriere: PRAXISWISSEN,
+  bp_verkehr_rsto: VERKEHRSWEGEBAU,
+  bp_verkehr_asphalt: VERKEHRSWEGEBAU,
+  bp_verkehr_bitumen: VERKEHRSWEGEBAU,
+  bp_verkehr_pruefung: VERKEHRSWEGEBAU,
+  bp_verkehr_betondecken: VERKEHRSWEGEBAU,
+  bp_verkehr_tiefbau: VERKEHRSWEGEBAU,
+  bp_verkehr_bahn: VERKEHRSWEGEBAU,
+  bp_verkehr_tunnel: VERKEHRSWEGEBAU,
   abfaelle: [
     "Bau- und Abbruchabfälle folgen der fünfstufigen Abfallhierarchie des KrWG: Vermeidung vor Wiederverwendung, Recycling und sonstiger Verwertung, die Beseitigung ist letzte Instanz.",
     "Die Einstufung erfolgt nach AVV Kapitel 17; bei Spiegeleinträgen wie 17 05 03* und 17 05 04 entscheidet erst die Analytik, ob ein gefährlicher Abfall mit eANV-Pflicht vorliegt.",
@@ -210,6 +276,8 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
 };
 
 /** Module mit langem Fließtext – brauchen eine Kurzfassung. Ursprünglich „mehr als ca. 4 000 Wörter“ (AP 3.8);
- *  seit Oktober 2026 prüft tests/kurzfassung.test.ts zusätzlich jedes Fachmodul mit eigener Komponente über
- *  FLIESSTEXT_SCHWELLE (Wörter laut tests/hilfen/fliesstext.ts). Reitermodule mit gemeinsamer Komponente stehen hier explizit. */
-export const KURZFASSUNG_PFLICHT: readonly string[] = ['abfaelle', 'bauchemie', 'bauschaeden', 'baustoffkenngroessen', 'bauwerksunters_monitoring', 'bauwerksuntersuchung', 'betonpraxis', 'bp_abdichtung', 'bp_farben_lacke', 'dauerhaftigkeit', 'historische_bauprodukte', 'hydratation_folgen', 'instandhaltung', 'ki_thesen', 'ki_ueberblick', 'lca_rechner', 'lca_regulatorik', 'material_schaeden_gross', 'mischungsberechnung', 'nachhaltigkeit_daten_regeln', 'oekobilanz_lca', 'qualitaetssicherung', 'regularien', 'rueckbau', 'schadensbilder', 'schadstoffe', 'sonderbetone', 'spannbeton', 'stahl'];
+ *  seit Z53 (Entscheidung Prof. Huber, 27.10.2026: „Module über 3 000 Wörtern teilen + Kurzfassung“) prüft
+ *  tests/kurzfassung.test.ts jedes Fachmodul über FLIESSTEXT_SCHWELLE (Ansichtsumfang laut tests/hilfen/fliesstext.ts,
+ *  auch Reiter-Routen geteilter Komponenten) auf Kurzfassung und Reitergliederung. Die Liste hält zusätzlich Module,
+ *  deren Kurzfassung bleiben soll, auch wenn sie die Schwelle später unterschreiten. */
+export const KURZFASSUNG_PFLICHT: readonly string[] = ['abfaelle', 'bauchemie', 'bauschaeden', 'baustoffkenngroessen', 'bauwerksunters_monitoring', 'bauwerksuntersuchung', 'betonpraxis', 'bp_abdichtung', 'bp_farben_lacke', 'bp_verkehr_asphalt', 'bp_verkehr_bahn', 'bp_verkehr_betondecken', 'bp_verkehr_bitumen', 'bp_verkehr_pruefung', 'bp_verkehr_rsto', 'bp_verkehr_tiefbau', 'bp_verkehr_tunnel', 'dauerhaftigkeit', 'historische_bauprodukte', 'hydratation_folgen', 'instandhaltung', 'ki_llmpraxis', 'ki_lokal', 'ki_recht_ethik', 'ki_system', 'ki_thesen', 'ki_ueberblick', 'lca_rechner', 'lca_regulatorik', 'material_schaeden_gross', 'mischungsberechnung', 'nachhaltigkeit_daten_regeln', 'oekobilanz_lca', 'px_bauleitung', 'px_karriere', 'px_planung', 'px_produktion', 'qualitaetssicherung', 'regularien', 'rueckbau', 'schadensbilder', 'schadstoffe', 'sonderbetone', 'spannbeton', 'stahl', 'stahlbeton_bemessung'];

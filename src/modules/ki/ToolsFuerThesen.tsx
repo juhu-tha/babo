@@ -20,6 +20,7 @@ import { InlineMath } from 'react-katex';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import inhalt from '@/content/ki/ToolsFuerThesen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 interface ThesisTool {
   id: string;
@@ -249,8 +250,19 @@ interface PromptPreset {
 
 const THESIS_PROMPTS: PromptPreset[] = inhalt.daten.THESIS_PROMPTS;
 
+type ThesenTab = 'literatur' | 'schreiben' | 'coding' | 'integritaet' | 'prompts';
+
+/** Reiter (Z53: Gliederung langer Module über ModuleTabs) */
+const THESEN_TABS: readonly ModulTab<ThesenTab>[] = [
+  { id: 'literatur', label: inhalt.texte.t1LiteraturResearchMapping.trim(), icon: Search },
+  { id: 'schreiben', label: inhalt.texte.t2SchreibenSyntheseLatex.trim(), icon: FileText },
+  { id: 'coding', label: inhalt.texte.t3ToolsProgrammierenDatenanalyse.trim(), icon: Code },
+  { id: 'prompts', label: inhalt.texte.t4ThesisPromptLabor.trim(), icon: Sparkles },
+  { id: 'integritaet', label: inhalt.texte.t5IntegritätKiDeklaration.trim(), icon: CheckSquare },
+];
+
 export default function ToolsFuerThesen() {
-  const [activeSubTab, setActiveSubTab] = useState<'literatur' | 'schreiben' | 'coding' | 'integritaet' | 'prompts'>('literatur');
+  const [activeSubTab, setActiveSubTab] = useState<ThesenTab>('literatur');
   const [categoryFilter, setCategoryFilter] = useState<'all' | 'literatur' | 'schreiben' | 'coding'>('all');
   const [copiedId, setCopiedId] = useState<string | null>(null);
   
@@ -298,58 +310,9 @@ export default function ToolsFuerThesen() {
         </div>
       </div>
 
-      {/* SUB-TABS NAVIGATION */}
-      <div className="flex flex-wrap gap-2 pb-2 border-b border-home-grau/20">
-        <button aria-pressed={activeSubTab === 'literatur'}
-          onClick={() => setActiveSubTab('literatur')}
-          className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-            activeSubTab === 'literatur'
-              ? 'bg-shiraz text-white border-shiraz shadow-sm'
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-          }`}
-        >
-          <Search size={15} /><MdText text={inhalt.texte.t1LiteraturResearchMapping} /></button>
-
-        <button aria-pressed={activeSubTab === 'schreiben'}
-          onClick={() => setActiveSubTab('schreiben')}
-          className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-            activeSubTab === 'schreiben'
-              ? 'bg-shiraz text-white border-shiraz shadow-sm'
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-          }`}
-        >
-          <FileText size={15} /><MdText text={inhalt.texte.t2SchreibenSyntheseLatex} /></button>
-
-        <button aria-pressed={activeSubTab === 'coding'}
-          onClick={() => setActiveSubTab('coding')}
-          className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-            activeSubTab === 'coding'
-              ? 'bg-shiraz text-white border-shiraz shadow-sm'
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-          }`}
-        >
-          <Code size={15} /><MdText text={inhalt.texte.t3ToolsProgrammierenDatenanalyse} /></button>
-
-        <button aria-pressed={activeSubTab === 'prompts'}
-          onClick={() => setActiveSubTab('prompts')}
-          className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-            activeSubTab === 'prompts'
-              ? 'bg-shiraz text-white border-shiraz shadow-sm'
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-          }`}
-        >
-          <Sparkles size={15} /><MdText text={inhalt.texte.t4ThesisPromptLabor} /></button>
-
-        <button aria-pressed={activeSubTab === 'integritaet'}
-          onClick={() => setActiveSubTab('integritaet')}
-          className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-            activeSubTab === 'integritaet'
-              ? 'bg-shiraz text-white border-shiraz shadow-sm'
-              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-          }`}
-        >
-          <CheckSquare size={15} /><MdText text={inhalt.texte.t5IntegritätKiDeklaration} /></button>
-      </div>
+      {/* Reiter (Z53: ModuleTabs) */}
+      <ModuleTabs label="Bereiche: Tools für Thesen" tabs={THESEN_TABS} aktiv={activeSubTab} onWechsel={setActiveSubTab} className="space-y-6">
+      <div className="space-y-6">
 
       {/* 1. LITERATUR & RESEARCH MAPPING */}
       {activeSubTab === 'literatur' && (
@@ -881,6 +844,8 @@ export default function ToolsFuerThesen() {
           </div>
         </div>
       )}
+      </div>
+      </ModuleTabs>
 
     </div>
   );

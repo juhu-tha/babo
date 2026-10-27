@@ -22,6 +22,16 @@ import PraxisInnovationen from './nachhaltigkeit/PraxisInnovationen';
 import Leitfaden from './nachhaltigkeit/Leitfaden';
 import inhalt from '@/content/nachhaltigkeit/Nachhaltigkeit.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+
+/** Reiter der Arbeitsbereiche (Z53: ModuleTabs); angezeigt werden nur die über `bereiche` gewählten */
+const WERKSTATT_TABS: readonly ModulTab<NachhaltigkeitBereich>[] = [
+  { id: 'wandkonfigurator', label: 'Wandaufbau' },
+  { id: 'qng_nachweis', label: 'QNG-Nachweis' },
+  { id: 'crrem_regulatorik', label: inhalt.texte.crremRegulatorik },
+  { id: 'praxis_innovationen', label: inhalt.texte.praxisGebäudetypE },
+  { id: 'leitfaden', label: inhalt.texte.epdQngLeitfaden },
+];
 export type { NachhaltigkeitBereich } from './nachhaltigkeit/daten';
 
 ChartJS.register(
@@ -375,64 +385,6 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
             <Building className="text-shiraz" /><MdText text={inhalt.texte.lcaPraxiswerkstattNachhaltigkeit} /></h2>
-
-          {/* Workspace select button group */}
-          <div className="flex flex-wrap gap-2">
-            {zeige('wandkonfigurator') && (
-            <button aria-pressed={activeWorkspace === 'wandkonfigurator'}
-              onClick={() => setActiveWorkspace('wandkonfigurator')}
-              className={`px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
-                activeWorkspace === 'wandkonfigurator'
-                  ? 'bg-shiraz text-white border-shiraz shadow-md'
-                  : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-              }`}
-            >
-              Wandaufbau
-            </button>
-            )}
-            {zeige('qng_nachweis') && (
-            <button aria-pressed={activeWorkspace === 'qng_nachweis'}
-              onClick={() => setActiveWorkspace('qng_nachweis')}
-              className={`px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
-                activeWorkspace === 'qng_nachweis'
-                  ? 'bg-shiraz text-white border-shiraz shadow-md'
-                  : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-              }`}
-            >
-              QNG-Nachweis
-            </button>
-            )}
-            {zeige('crrem_regulatorik') && (
-            <button aria-pressed={activeWorkspace === 'crrem_regulatorik'}
-              onClick={() => setActiveWorkspace('crrem_regulatorik')}
-              className={`px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
-                activeWorkspace === 'crrem_regulatorik'
-                  ? 'bg-shiraz text-white border-shiraz shadow-md'
-                  : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-              }`}
-            ><MdText text={inhalt.texte.crremRegulatorik} /></button>
-            )}
-            {zeige('praxis_innovationen') && (
-            <button aria-pressed={activeWorkspace === 'praxis_innovationen'}
-              onClick={() => setActiveWorkspace('praxis_innovationen')}
-              className={`px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
-                activeWorkspace === 'praxis_innovationen'
-                  ? 'bg-shiraz text-white border-shiraz shadow-md'
-                  : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-              }`}
-            ><MdText text={inhalt.texte.praxisGebäudetypE} /></button>
-            )}
-            {zeige('leitfaden') && (
-            <button aria-pressed={activeWorkspace === 'leitfaden'}
-              onClick={() => setActiveWorkspace('leitfaden')}
-              className={`px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-1.5 border shadow-xs cursor-pointer ${
-                activeWorkspace === 'leitfaden'
-                  ? 'bg-shiraz text-white border-shiraz shadow-md'
-                  : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-              }`}
-            ><MdText text={inhalt.texte.epdQngLeitfaden} /></button>
-            )}
-          </div>
         </div>
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mt-4 leading-relaxed">
@@ -503,6 +455,9 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
         </div>
       </div>
 
+      {/* Reiter (Z53: ModuleTabs) über den Arbeitsbereichen */}
+      <ModuleTabs label={inhalt.texte.lcaPraxiswerkstattNachhaltigkeit.trim()} tabs={WERKSTATT_TABS.filter(t => zeige(t.id))} aktiv={activeWorkspace} onWechsel={setActiveWorkspace} className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6">
       {/* Workspace 1: Wandkonfigurator */}
       {activeWorkspace === 'wandkonfigurator' && <Wandkonfigurator addLayer={addLayer} addThickness={addThickness} applyPreset={applyPreset} chartData={chartData} chartOptions={chartOptions} computedWall={computedWall} connectionType={connectionType} gegRating={gegRating} handleThicknessChange={handleThicknessChange} moveLayer={moveLayer} removeLayer={removeLayer} selectedAddMaterial={selectedAddMaterial} setAddThickness={setAddThickness} setConnectionType={setConnectionType} setSelectedAddMaterial={setSelectedAddMaterial} wallLayers={wallLayers} />}
 
@@ -517,6 +472,8 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
 
       {/* Workspace 5: EPD- & QNG-Wegweiser (Leitfaden) */}
       {activeWorkspace === 'leitfaden' && <Leitfaden activeEcoDb={activeEcoDb} activeStep={activeStep} checklistState={checklistState} setActiveEcoDb={setActiveEcoDb} setActiveStep={setActiveStep} setChecklistState={setChecklistState} />}
+      </div>
+      </ModuleTabs>
 
       {/* Embedded Reference Rules Footnote */}
       <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30 text-[10px] text-slate-500 leading-normal flex items-start gap-1.5">

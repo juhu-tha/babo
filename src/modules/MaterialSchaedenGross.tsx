@@ -20,9 +20,22 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { DAMAGE_CASES } from './materialschaedengross/daten';
 import inhalt from '@/content/materialschaedengross/MaterialSchaedenGross.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+
+type FallReiter = 'ueberblick' | 'verlauf' | 'ursachen' | 'folgen' | 'quellen';
+
+/** Reiter je Fallakte (Z53: Gliederung langer Module über ModuleTabs) */
+const FALL_TABS: readonly ModulTab<FallReiter>[] = [
+  { id: 'ueberblick', label: 'Überblick & Projektdaten', icon: Building2 },
+  { id: 'verlauf', label: 'Schadenschronologie', icon: Clock },
+  { id: 'ursachen', label: 'Schadensursachen', icon: Layers },
+  { id: 'folgen', label: 'Folgen & Lehren', icon: Scale },
+  { id: 'quellen', label: 'Fachquellen', icon: BookOpen },
+];
 
 export default function MaterialSchaedenGross() {
   const { setActiveTab, setTypischeBauschaedenSubTab } = useTabContext();
+  const [fallReiter, setFallReiter] = useState<FallReiter>('ueberblick');
   const [selectedCaseId, setSelectedCaseId] = useState<string>('bad_reichenhall');
   const [activeCategoryFilter, setActiveCategoryFilter] = useState<'alle' | 'bruecken' | 'hallen' | 'infrastruktur' | 'hochbau'>('alle');
   const [searchQuery, setSearchQuery] = useState('');
@@ -194,6 +207,10 @@ export default function MaterialSchaedenGross() {
             </div>
           </div>
 
+          {/* Reiter je Fallakte (Z53: ModuleTabs) */}
+          <ModuleTabs label={`Fallakte ${currentCase.name}`} tabs={FALL_TABS} aktiv={fallReiter} onWechsel={setFallReiter} className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6">
+          {fallReiter === 'ueberblick' && (<>
           {/* Summary Box */}
           <div className="p-4 bg-white rounded-xl border border-home-grau/20 text-xs text-text-main/80 leading-relaxed shadow-2xs">
             <FormulaText text={currentCase.summary} />
@@ -229,6 +246,8 @@ export default function MaterialSchaedenGross() {
             </div>
           </div>
 
+          </>)}
+          {fallReiter === 'verlauf' && (<>
           {/* 2. Historie & Schadensverlauf */}
           <div className="bg-white p-5 rounded-xl border border-home-grau/20 shadow-2xs">
             <h4 className="text-sm font-bold text-text-main flex items-center gap-2 mb-3 pb-2 border-b border-home-grau/20">
@@ -253,6 +272,8 @@ export default function MaterialSchaedenGross() {
             </div>
           </div>
 
+          </>)}
+          {fallReiter === 'ursachen' && (<>
           {/* 3. Physikalische & Materialbedingte Schadensursachen */}
           <div className="bg-white p-5 rounded-xl border border-home-grau/20 shadow-2xs">
             <h4 className="text-sm font-bold text-text-main flex items-center gap-2 mb-3 pb-2 border-b border-home-grau/20">
@@ -290,6 +311,8 @@ export default function MaterialSchaedenGross() {
             </div>
           </div>
 
+          </>)}
+          {fallReiter === 'folgen' && (<>
           {/* 4. Folgen & Normative Konsequenzen */}
           <div className="bg-white p-5 rounded-xl border border-home-grau/20 shadow-2xs">
             <h4 className="text-sm font-bold text-text-main flex items-center gap-2 mb-3 pb-2 border-b border-home-grau/20">
@@ -352,6 +375,8 @@ export default function MaterialSchaedenGross() {
             </div>
           )}
 
+          </>)}
+          {fallReiter === 'quellen' && (<>
           {/* 7. Fachquellen, Untersuchungsberichte & Gutachten */}
           <div className="bg-white p-5 rounded-xl border border-home-grau/20 shadow-2xs">
             <h4 className="text-sm font-bold text-text-main flex items-center gap-2 mb-3 pb-2 border-b border-home-grau/20">
@@ -390,6 +415,9 @@ export default function MaterialSchaedenGross() {
               ))}
             </div>
           </div>
+          </>)}
+          </div>
+          </ModuleTabs>
         </div>
       </div>
 

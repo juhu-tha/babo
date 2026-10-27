@@ -23,6 +23,7 @@ import inhalt from '@/content/bauchemie/Bauchemie.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { stellmittelRheologie, SCHERRATEN, akrKurve, K_RICHTWERTE, KARBONATISIERUNG_ZEITEN, karbonatisierungstiefe } from '@/src/calc/bauchemie';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 ChartJS.register(
   CategoryScale,
@@ -35,8 +36,21 @@ ChartJS.register(
   Filler
 );
 
+type BauchemieTab = 'grundlagen' | 'zusatzmittel' | 'angriffe' | 'salze' | 'oberflaechenschutz' | 'korrosionsschutz' | 'kleben_dichten';
+
+/** Reiter (Z53: Gliederung langer Module über ModuleTabs) */
+const BAUCHEMIE_TABS: readonly ModulTab<BauchemieTab>[] = [
+  { id: 'grundlagen', label: inhalt.texte.chemischeGrundlagen.trim(), icon: Activity },
+  { id: 'zusatzmittel', label: 'Betonzusatzmittel', icon: Droplets },
+  { id: 'angriffe', label: inhalt.texte.chemischeAngriffe.trim(), icon: ShieldAlert },
+  { id: 'salze', label: inhalt.texte.bauschädlicheSalze.trim(), icon: Snowflake },
+  { id: 'oberflaechenschutz', label: 'Oberflächenschutz', icon: Paintbrush },
+  { id: 'korrosionsschutz', label: 'Korrosionsschutz', icon: Shield },
+  { id: 'kleben_dichten', label: inhalt.texte.klebenDichtenGrundlagen.trim(), icon: Paperclip },
+];
+
 export const Bauchemie: React.FC = () => {
-  const [activeTab, setActiveTab ] = useState<'grundlagen' | 'zusatzmittel' | 'angriffe' | 'salze' | 'oberflaechenschutz' | 'korrosionsschutz' | 'kleben_dichten'>('grundlagen');
+  const [activeTab, setActiveTab ] = useState<BauchemieTab>('grundlagen');
 
   // Korrosion State (AKR)
   const [alkaliContent, setAlkaliContent] = useState(3.0); // kg/m3
@@ -167,75 +181,10 @@ export const Bauchemie: React.FC = () => {
           <p><MdText text={inhalt.texte.dieBauchemieBefasstSich} /></p>
         </div>
 
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button aria-pressed={activeTab === 'grundlagen'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'grundlagen' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('grundlagen')}
-          >
-            <Activity size={16} /><MdText text={inhalt.texte.chemischeGrundlagen} /></button>
-          <button aria-pressed={activeTab === 'zusatzmittel'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'zusatzmittel' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('zusatzmittel')}
-          >
-            <Droplets size={16} /> Betonzusatzmittel
-          </button>
-          <button aria-pressed={activeTab === 'angriffe'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'angriffe' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('angriffe')}
-          >
-            <ShieldAlert size={16} /><MdText text={inhalt.texte.chemischeAngriffe} /></button>
-          <button aria-pressed={activeTab === 'salze'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'salze' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('salze')}
-          >
-            <Snowflake size={16} /><MdText text={inhalt.texte.bauschädlicheSalze} /></button>
-          <button aria-pressed={activeTab === 'oberflaechenschutz'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'oberflaechenschutz' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('oberflaechenschutz')}
-          >
-            <Paintbrush size={16} /> Oberflächenschutz
-          </button>
-          <button aria-pressed={activeTab === 'korrosionsschutz'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'korrosionsschutz' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('korrosionsschutz')}
-          >
-            <Shield size={16} /> Korrosionsschutz
-          </button>
-          <button aria-pressed={activeTab === 'kleben_dichten'}
-            className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-              activeTab === 'kleben_dichten' 
-                ? 'bg-shiraz text-white border-shiraz shadow-md' 
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
-            }`}
-            onClick={() => setActiveTab('kleben_dichten')}
-          >
-            <Paperclip size={16} /><MdText text={inhalt.texte.klebenDichtenGrundlagen} /></button>
-        </div>
       </div>
+
+      <ModuleTabs label="Bereiche der Bauchemie" tabs={BAUCHEMIE_TABS} aktiv={activeTab} onWechsel={setActiveTab} className="flex flex-col gap-6">
+      <div className="flex flex-col gap-8">
 
       {activeTab === 'grundlagen' && (
         <div className="space-y-6">
@@ -973,6 +922,8 @@ export const Bauchemie: React.FC = () => {
           </div>
         </div>
       )}
+      </div>
+      </ModuleTabs>
 
       {/* ANWENDUNG (Stufe 3 des Lehrpfads) */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-2">

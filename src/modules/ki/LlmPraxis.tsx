@@ -34,13 +34,26 @@ import { MarkdownTab } from './LlmPraxisTeile/MarkdownTab';
 import { SkillsKonnektorenTab } from './LlmPraxisTeile/SkillsKonnektorenTab';
 import inhalt from '@/content/ki/LlmPraxis.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 interface LlmPraxisProps {
   embedded?: boolean;
 }
 
+type LlmTab = 'uebersicht' | 'skills_konnektoren' | 'markdown' | 'verzeichnisse' | 'browser' | 'praxisvorlagen';
+
+/** Reiter (Z53: Gliederung langer Module über ModuleTabs) */
+const LLM_TABS: readonly ModulTab<LlmTab>[] = [
+  { id: 'uebersicht', label: inhalt.texte.t1ClaudeVsChatgpt.trim(), icon: Bot },
+  { id: 'skills_konnektoren', label: inhalt.texte.t2SkillsMcpKonnektoren.trim(), icon: Zap },
+  { id: 'markdown', label: inhalt.texte.t3MarkdownMdStandard.trim(), icon: FileCode },
+  { id: 'verzeichnisse', label: inhalt.texte.t4ProjektverzeichnisseClaudeMd.trim(), icon: FolderTree },
+  { id: 'browser', label: inhalt.texte.t5BrowserWebGrounding.trim(), icon: Globe },
+  { id: 'praxisvorlagen', label: inhalt.texte.t6InteraktiverGeneratorVorlagen.trim(), icon: Sliders },
+];
+
 export default function LlmPraxis({ embedded = false }: LlmPraxisProps) {
-  const [activeTab, setActiveTab] = useState<'uebersicht' | 'skills_konnektoren' | 'markdown' | 'verzeichnisse' | 'browser' | 'praxisvorlagen'>('uebersicht');
+  const [activeTab, setActiveTab] = useState<LlmTab>('uebersicht');
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
   // Sub-tab states for enriched tabs
@@ -156,69 +169,10 @@ ${normGuidelines[genNorm]}
 [EINGABEDATEN HIER EINFÜGEN]`;
   }, [genRole, genNorm, genFormat, genDetailLevel]);
 
-  // Main interactive tabs & content block
-  const tabsNavigation = (
-    <div className="flex flex-wrap gap-2 pt-2 border-b border-home-grau/20 pb-3">
-      <button aria-pressed={activeTab === 'uebersicht'}
-        onClick={() => setActiveTab('uebersicht')}
-        className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-          activeTab === 'uebersicht'
-            ? 'bg-shiraz text-white border-shiraz shadow-md'
-            : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-        }`}
-      >
-        <Bot size={16} /><MdText text={inhalt.texte.t1ClaudeVsChatgpt} /></button>
-      <button aria-pressed={activeTab === 'skills_konnektoren'}
-        onClick={() => setActiveTab('skills_konnektoren')}
-        className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-          activeTab === 'skills_konnektoren'
-            ? 'bg-shiraz text-white border-shiraz shadow-md'
-            : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-        }`}
-      >
-        <Zap size={16} /><MdText text={inhalt.texte.t2SkillsMcpKonnektoren} /></button>
-      <button aria-pressed={activeTab === 'markdown'}
-        onClick={() => setActiveTab('markdown')}
-        className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-          activeTab === 'markdown'
-            ? 'bg-shiraz text-white border-shiraz shadow-md'
-            : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-        }`}
-      >
-        <FileCode size={16} /><MdText text={inhalt.texte.t3MarkdownMdStandard} /></button>
-      <button aria-pressed={activeTab === 'verzeichnisse'}
-        onClick={() => setActiveTab('verzeichnisse')}
-        className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-          activeTab === 'verzeichnisse'
-            ? 'bg-shiraz text-white border-shiraz shadow-md'
-            : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-        }`}
-      >
-        <FolderTree size={16} /><MdText text={inhalt.texte.t4ProjektverzeichnisseClaudeMd} /></button>
-      <button aria-pressed={activeTab === 'browser'}
-        onClick={() => setActiveTab('browser')}
-        className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-          activeTab === 'browser'
-            ? 'bg-shiraz text-white border-shiraz shadow-md'
-            : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-        }`}
-      >
-        <Globe size={16} /><MdText text={inhalt.texte.t5BrowserWebGrounding} /></button>
-      <button aria-pressed={activeTab === 'praxisvorlagen'}
-        onClick={() => setActiveTab('praxisvorlagen')}
-        className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
-          activeTab === 'praxisvorlagen'
-            ? 'bg-shiraz text-white border-shiraz shadow-md'
-            : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-        }`}
-      >
-        <Sliders size={16} /><MdText text={inhalt.texte.t6InteraktiverGeneratorVorlagen} /></button>
-    </div>
-  );
-
+  // Reiter (Z53: ModuleTabs) mit Inhaltsbereich
   const innerContent = (
+    <ModuleTabs label="Bereiche der LLM-Praxis" tabs={LLM_TABS} aktiv={activeTab} onWechsel={setActiveTab} className="space-y-6 [&>[role=tablist]]:pt-2 [&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20">
     <div className="space-y-6">
-      {tabsNavigation}
 
       {/* TAB 1: CLAUDE VS CHATGPT VERGLEICH */}
       {activeTab === 'uebersicht' && (
@@ -573,6 +527,7 @@ ${normGuidelines[genNorm]}
         </div>
       )}
     </div>
+    </ModuleTabs>
   );
 
   // If embedded in KiBaustoffe, render directly without repeating the outer parent header

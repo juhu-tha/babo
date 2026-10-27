@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import inhalt from '@/content/historischebauprodukte/HistorischeBauprodukte.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 interface HistoricProduct {
   id: string;
@@ -668,9 +669,20 @@ const HISTORIC_PRODUCTS: HistoricProduct[] = [
   }
 ];
 
+type Epoche = 'all' | 'vorkrieg' | 'nachkrieg' | 'spaetmoderne' | 'moderne';
+
+/** Reiter je Epoche (Z53: Gliederung langer Module über ModuleTabs); der Zeitraum steht im Reitertitel */
+const EPOCHEN_TABS: readonly ModulTab<Epoche>[] = [
+  { id: 'all', label: `${inhalt.werte.alleEpochen} · Gesamtkatalog` },
+  { id: 'vorkrieg', label: `${inhalt.werte.vorkriegszeitHistorisch13} · bis 1945` },
+  { id: 'nachkrieg', label: `${inhalt.werte.nachkriegszeitWiederaufbau19} · ${inhalt.werte.t19451969Fokus}` },
+  { id: 'spaetmoderne', label: `${inhalt.werte.spätmodernePlattenbau15} · ${inhalt.werte.t19701989Fokus}` },
+  { id: 'moderne', label: `${inhalt.werte.moderneÖkoWandel} · ab 1990` },
+];
+
 export default function HistorischeBauprodukte() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedEpoch, setSelectedEpoch] = useState<'all' | 'vorkrieg' | 'nachkrieg' | 'spaetmoderne' | 'moderne'>('nachkrieg');
+  const [selectedEpoch, setSelectedEpoch] = useState<Epoche>('nachkrieg');
 
   const filteredProducts = useMemo(() => {
     return HISTORIC_PRODUCTS.filter((prod) => {
@@ -715,31 +727,9 @@ export default function HistorischeBauprodukte() {
               <p className="text-xs text-slate-500 font-light"><MdText text={inhalt.texte.wählenSieEineEpoche} /></p>
             </div>
 
-            {/* Horizontal Navigation Buttons */}
-            <div className="flex flex-wrap gap-2.5">
-              {[
-                { id: 'all', label: inhalt.werte.alleEpochen, desc: 'Gesamtkatalog' },
-                { id: 'vorkrieg', label: inhalt.werte.vorkriegszeitHistorisch13, desc: 'bis 1945' },
-                { id: 'nachkrieg', label: inhalt.werte.nachkriegszeitWiederaufbau19, desc: inhalt.werte.t19451969Fokus },
-                { id: 'spaetmoderne', label: inhalt.werte.spätmodernePlattenbau15, desc: inhalt.werte.t19701989Fokus },
-                { id: 'moderne', label: inhalt.werte.moderneÖkoWandel, desc: 'ab 1990' }
-              ].map((epoch) => (
-                <button
-                  key={epoch.id}
-                  onClick={() => setSelectedEpoch(epoch.id as typeof selectedEpoch)}
-                  className={`px-4 py-3 rounded-xl font-bold text-xs transition-all border flex flex-col gap-0.5 items-start cursor-pointer w-full sm:w-auto min-w-[140px] text-left ${
-                    selectedEpoch === epoch.id
-                      ? 'bg-shiraz text-white border-shiraz shadow-md'
-                      : 'bg-white text-text-main border-home-grau/25 hover:bg-slate-50 hover:border-home-grau/40'
-                  }`}
-                >
-                  <span>{epoch.label}</span>
-                  <span className={`text-[9px] font-mono font-medium block ${selectedEpoch === epoch.id ? 'text-white/80' : 'text-slate-500'}`}>
-                    {epoch.desc}
-                  </span>
-                </button>
-              ))}
-            </div>
+            {/* Reiter je Epoche (Z53: ModuleTabs); Zeitraum steht im Reiter */}
+            <ModuleTabs label={inhalt.texte.historischeEinordnungEpocheWählen.trim()} tabs={EPOCHEN_TABS} aktiv={selectedEpoch} onWechsel={setSelectedEpoch} className="flex flex-col gap-5">
+            <div className="flex flex-col gap-8">
 
             {/* Search input inside epoch panel */}
             <div className="pt-3 border-t border-slate-100 flex flex-col md:flex-row gap-4 items-center justify-between">
@@ -756,8 +746,6 @@ export default function HistorischeBauprodukte() {
               <div className="text-[10px] text-slate-500 font-mono italic"><MdText text={inhalt.texte.gefundeneProdukteInDieser} />{filteredProducts.length}
               </div>
             </div>
-
-          </div>
 
           {/* Material Steckbriefe Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -844,6 +832,9 @@ export default function HistorischeBauprodukte() {
                 </div>
               ))
             )}
+          </div>
+            </div>
+            </ModuleTabs>
           </div>
         </div>
 

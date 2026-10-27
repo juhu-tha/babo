@@ -2,7 +2,7 @@
 import { MODUL_BY_ID } from '../src/registry/modules';
 import { KURZFASSUNG, KURZFASSUNG_PFLICHT } from '../src/data/kurzfassung';
 import { FACHMODULE } from '../src/data/pruefvermerke';
-import { fliesstextWoerter, modulDateien } from './hilfen/fliesstext';
+import { ansichtWoerter, fliesstextWoerter, modulDateien } from './hilfen/fliesstext';
 
 console.log('--- Test: Kurzfassungen ---');
 const fehler: string[] = [];
@@ -16,24 +16,38 @@ for (const [id, p] of Object.entries(KURZFASSUNG)) {
   }
 }
 
-// Längenschwelle: Jedes Fachmodul mit eigener Komponente, dessen Fließtext (Moduldatei samt modul-eigener Importe,
-// Zählweise tests/hilfen/fliesstext.ts) die Schwelle überschreitet, braucht eine Kurzfassung. Kalibriert an den
-// Pflichtmodulen von AP 3.8 („mehr als ca. 4 000 Wörter“ in der damaligen Zählung): Deren kleinste mit eigener
-// Komponente liegen in dieser Zählung bei rund 3 250 Wörtern. Reitermodule mit gemeinsamer Komponente stehen in
-// KURZFASSUNG_PFLICHT.
+// Ratsche Z53 (Entscheidung Prof. Huber, 27.10.2026: „Module über 3 000 Wörtern teilen + Kurzfassung“):
+// Jedes Fachmodul, dessen Ansicht (sichtbarer Fließtext unter der Modul-ID samt content/*.json, ohne Formeln,
+// Code und Quiz; Zählweise ansichtWoerter in tests/hilfen/fliesstext.ts) die Schwelle überschreitet, braucht
+//   (1) die Kurzfassung „Das Wichtigste in 5 Punkten“ und
+//   (2) eine Reitergliederung über ModuleTabs bzw. GruppierteModuleTabs mit höchstens 2 Ebenen
+//       (≤ 7 Reiter je Leiste prüft tests/komponenten-reiter.test.ts).
+// Ausnahmen nur begründet in AUSNAHMEN. Die Schwelle war bis Z53 an AP 3.8 kalibriert (rund 3 250 Wörter für die
+// kleinsten Pflichtmodule); seit Z53 gilt sie für alle Fachmodule einschließlich der Reiter-Routen geteilter Komponenten.
 const FLIESSTEXT_SCHWELLE = 3000;
+const MAX_EBENEN = 2;
+/** Begründete Ausnahmen: Modul-ID → Begründung (derzeit keine) */
+const AUSNAHMEN: Readonly<Record<string, string>> = {};
+
 const dateien = modulDateien();
 let lang = 0;
 for (const m of FACHMODULE) {
+  const a = ansichtWoerter(m.id);
+  // Gegenprobe: Die Ansichtszählung darf bei Modulen mit eigener Komponente nicht weit unter der Dateizählung
+  // liegen (sonst werden Kindkomponenten, etwa über ein neues Lade-Muster, nicht gefunden).
   const datei = dateien.get(m.id);
-  if (!datei) continue;
-  const w = fliesstextWoerter(datei);
-  if (w <= FLIESSTEXT_SCHWELLE) continue;
+  const w0 = datei ? fliesstextWoerter(datei) : 0;
+  if (w0 > 1500 && a.woerter < 0.7 * w0) fehler.push(`${m.id}: Ansicht ${a.woerter} Wörter, Moduldatei ${w0} – Zählung in tests/hilfen/fliesstext.ts prüfen`);
+  if (a.ebenen > MAX_EBENEN) fehler.push(`${m.id}: ${a.ebenen} Reiterebenen (höchstens ${MAX_EBENEN})`);
+  if (a.woerter <= FLIESSTEXT_SCHWELLE) continue;
   lang++;
-  if (!KURZFASSUNG[m.id]) fehler.push(`${m.id}: ${w} Wörter Fließtext (> ${FLIESSTEXT_SCHWELLE}) ohne Kurzfassung`);
-  if (!KURZFASSUNG_PFLICHT.includes(m.id)) fehler.push(`${m.id}: ${w} Wörter Fließtext – in KURZFASSUNG_PFLICHT aufnehmen`);
+  if (AUSNAHMEN[m.id]) continue;
+  if (!KURZFASSUNG[m.id]) fehler.push(`${m.id}: ${a.woerter} Wörter (> ${FLIESSTEXT_SCHWELLE}) ohne Kurzfassung`);
+  if (!KURZFASSUNG_PFLICHT.includes(m.id)) fehler.push(`${m.id}: ${a.woerter} Wörter – in KURZFASSUNG_PFLICHT aufnehmen`);
+  if (!a.reiter) fehler.push(`${m.id}: ${a.woerter} Wörter (> ${FLIESSTEXT_SCHWELLE}) ohne Reitergliederung (ModuleTabs/GruppierteModuleTabs) – gliedern, teilen oder in AUSNAHMEN begründen`);
 }
-if (lang < 15) fehler.push(`nur ${lang} lange Fachmodule erkannt – Zuordnung in tests/hilfen/fliesstext.ts prüfen`);
+for (const id of Object.keys(AUSNAHMEN)) if (!FACHMODULE.some(m => m.id === id)) fehler.push(`AUSNAHMEN: ${id} ist kein Fachmodul`);
+if (lang < 30) fehler.push(`nur ${lang} lange Fachmodule erkannt – Zählung in tests/hilfen/fliesstext.ts prüfen`);
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
-console.log(`OK: ${Object.keys(KURZFASSUNG).length} Module mit Kurzfassung, ${lang} Fachmodule über ${FLIESSTEXT_SCHWELLE} Wörter abgedeckt`);
+console.log(`OK: ${Object.keys(KURZFASSUNG).length} Module mit Kurzfassung, ${lang} Fachmodule über ${FLIESSTEXT_SCHWELLE} Wörter mit Kurzfassung und Reitern`);

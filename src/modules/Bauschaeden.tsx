@@ -25,6 +25,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/bauschaeden/Bauschaeden.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 type SchadTab = 'recht' | 'schriftverkehr' | 'normen' | 'gutachter' | 'haftung' | 'kleb_dicht';
 
@@ -240,30 +241,9 @@ ${senderName}`;
           <p className="leading-relaxed"><MdText text={inhalt.texte.einBauschadenIstEine} /></p>
         </div>
 
-        {/* Dynamic Multi-Tab Navigation */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 border-b border-home-grau/30 pb-4">
-          {tabs.map((tab) => {
-            const Icon = tab.icon;
-            const isActive = activeSubTab === tab.id;
-            return (
-              <button
-                key={tab.id}
-                onClick={() => {
-                  setActiveSubTab(tab.id);
-                }}
-                className={`py-3 px-2 rounded-xl border text-center flex flex-col items-center justify-between gap-1.5 transition-all ${
-                  isActive 
-                    ? 'bg-shiraz/5 border-shiraz text-shiraz shadow-sm ring-1 ring-shiraz/20' 
-                    : 'bg-stone-50/50 border-home-grau/30 hover:bg-stone-50 hover:border-home-grau/40 text-text-main/80'
-                }`}
-                title={tab.desc}
-              >
-                <Icon size={18} className={isActive ? 'text-shiraz animate-bounce' : 'text-text-main/60'} />
-                <span className="font-bold text-xs sm:text-xs tracking-tight">{tab.label}</span>
-              </button>
-            );
-          })}
-        </div>
+        {/* Reiter (Z53: ModuleTabs; die Kurzbeschreibung des aktiven Reiters steht sichtbar über dem Inhalt) */}
+        <ModuleTabs label="Bereiche zu Bauschäden" tabs={tabs} aktiv={activeSubTab} onWechsel={setActiveSubTab} variante="kachel" className="flex flex-col gap-4 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/30 [&>[role=tablist]]:pb-4">
+        <p className="text-xs text-text-main/70">{tabs.find(t => t.id === activeSubTab)?.desc}</p>
 
         {/* Tab-Inhalte */}
         <div className="mt-2">
@@ -1020,6 +1000,7 @@ ${senderName}`;
           )}
 
         </div>
+        </ModuleTabs>
       </div>
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
