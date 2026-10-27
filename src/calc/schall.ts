@@ -27,6 +27,43 @@ export function schalldaemmung(schichten: readonly MasseSchicht[]) {
   return { mStrich, Rw, gueltig: true, hinweise };
 }
 
+/** Gültigkeitsbereich der Massekurve nach DIN 4109-32 in kg/m² */
+export const RW_MASSIV_BEREICH = { min: 65, max: 720 } as const;
+/** Putzmasse beidseitig (2 × 15 mm Gips-/Kalkgipsputz) als Lehrwert der Beispielrechnung in kg/m² */
+export const PUTZ_MASSE_BEIDSEITIG = 40;
+
+export interface WandSchallEingabe {
+  /** Wanddicke d in m */
+  dicke: number;
+  /** Rohdichte ρ in kg/m³ */
+  rohdichte: number;
+  /** flächenbezogene Masse des Putzes in kg/m² (0 ohne Putz) */
+  putzMasse: number;
+  /** pauschaler Flankenabzug K_F in dB */
+  kF: number;
+}
+
+/**
+ * Beispielrechnung Bauakustik (Modul Beispielrechnungen, Reiter Schallschutz): m′ = d·ρ + m′_Putz,
+ * R_w = 30,9·lg m′ − 22,2 dB (DIN 4109-32, wie rwMassiv) und R′_w = R_w − K_F (pauschaler Flankenabzug als Lehrannahme).
+ * Bis 27.10.2026 rechnete das Modul mit R_w = 32,4·lg m′ − 26,0 (m′ ≥ 150 kg/m², Bezug „DIN 4109 Beiblatt 1“, früherer
+ * Stand) und darunter mit einer Ersatzformel; beides ersetzt (Entscheidung 27.10. abends).
+ */
+export function wandSchalldaemmung(e: WandSchallEingabe) {
+  const hinweise: Hinweis[] = [];
+  muss(hinweise, istEndlich(e.dicke, e.rohdichte, e.putzMasse, e.kF), 'eingabe', 'Alle Eingaben müssen Zahlen sein.');
+  if (!hatFehler(hinweise)) {
+    muss(hinweise, e.dicke > 0 && e.rohdichte > 0, 'dicke', 'Wanddicke und Rohdichte müssen größer als 0 sein.');
+    muss(hinweise, e.putzMasse >= 0 && e.kF >= 0, 'kF', 'Putzmasse und Flankenabzug dürfen nicht negativ sein.');
+  }
+  if (hatFehler(hinweise)) return { m0: NaN, mStrich: NaN, Rw: NaN, RwStrich: NaN, gueltig: false, hinweise };
+  const m0 = e.dicke * e.rohdichte;
+  const mStrich = m0 + e.putzMasse;
+  const Rw = rwMassiv(mStrich);
+  bereich(hinweise, 'm', mStrich, RW_MASSIV_BEREICH.min, RW_MASSIV_BEREICH.max, `m′ = ${formatDeZahl(mStrich, 0)} kg/m² liegt außerhalb des Gültigkeitsbereichs 65–720 kg/m² der Massekurve (DIN 4109-32); das Ergebnis ist nur eine Orientierung.`);
+  return { m0, mStrich, Rw, RwStrich: Rw - e.kF, gueltig: true, hinweise };
+}
+
 /* ────────────────────────────────────────────────────────────────────────────────────────────────
  * Trittschall (Z24): bewerteter Norm-Trittschallpegel einer Massivdecke mit schwimmendem Estrich (Deckenverfahren
  * nach DIN 4109-2:2018-01): L'_n,w = L_n,eq,0,w − ΔL_w + K, Nachweis L'_n,w + u_prog ≤ zul. L'_n,w.

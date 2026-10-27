@@ -1,7 +1,7 @@
 // Rechenkern Hydratation, Reife und Nachbehandlung (Umsetzungsplan Phase 4, AP 4.2)
 import {
   hydratation, reissrahmen, verdunstungsrate, nachbehandlungsdauer, festigkeitsentwicklungAusR, oberflaechenTempBereich,
-  temperaturfaktorReife, wirksamesAlterKonstant, zementbeiwertS, betaCcBegrenzt, kennwerte28, kennwerteZumAlter,
+  temperaturfaktorReife, DE_VREE_C, wirksamesAlterKonstant, zementbeiwertS, betaCcBegrenzt, kennwerte28, kennwerteZumAlter,
   waermeKennwerte, hydratationswaerme, hydratationsgrad, adiabatischeErwaermung, rissgefahrAusDeltaT, REIFEVERFAHREN,
   type HydratationEingabe, type ZementProfil, type Zementart, type ZementFestigkeitsklasse, type Erhaertung, type Zusatzstoff,
   type Festigkeitsentwicklung, type ExpositionNB, type OberflaechenTemp,
@@ -26,6 +26,10 @@ for (const v of REIFEVERFAHREN) pruefe(nahe(temperaturfaktorReife(v, 20, 38), 1.
 //    der Modulansatz ist auf 20 °C bezogen und weicht davon um weniger als 2 % ab.
 for (const T of [0, 10, 30, 50]) pruefe(nahe(temperaturfaktorReife('fib Model Code 2010', T), temperaturFaktor(T), 0.02), `fib MC2010 ${T} °C`);
 pruefe(nahe(wirksamesAlterKonstant('Rastrup (1954)', 10, 14), 7, 1e-12), 'Rastrup: 14 d bei 10 °C = 7 d wirksames Alter');
+// de Vree (vorläufig, F-Freigabe): k_T = C^((T − 20)/10) mit C = 10^0,3 – unverändert gegenüber 10^(0,03·(T − 20));
+// 30 °C → C = 1,995 (praktisch Rastrup); öffentlich genannter C-Bereich der gewogenen Reife 1,15 … 1,75 (siehe DE_VREE_C)
+pruefe(nahe(DE_VREE_C, 1.9953, 1e-4) && nahe(temperaturfaktorReife('de Vree', 30), Math.pow(10, 0.03 * 10), 1e-12) && nahe(temperaturfaktorReife('de Vree', 10), 1 / DE_VREE_C, 1e-12), 'de Vree: C = 10^0,3');
+pruefe(Math.abs(temperaturfaktorReife('de Vree', 30) - temperaturfaktorReife('Rastrup (1954)', 30)) < 0.01, 'de Vree ≈ Rastrup (C ≈ 2)');
 
 // 2. Festigkeitsentwicklung nach DIN EN 1992-1-1, Gl. (3.2): s = 0,25 (Zement N), t = 7 d → β_cc = exp(0,25·(1 − 2)) = 0,7788
 pruefe(nahe(betaCcBegrenzt(0.25, 7), 0.7788, 0.02), 'β_cc(7 d, s = 0,25) = 0,779');

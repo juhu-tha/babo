@@ -110,6 +110,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       'CO₂-Werte sind Lehrwerte und ersetzen keine EPD.',
       'Packungsdichte: Siebdurchgänge der Komponenten sind Lehrwerte; geschätzte Packungsdichte und „reales“ Zweikornmodell veranschaulichen nur (kein CPM nach de Larrard).',
       'Walz-Kurven: Abrams-Näherung f = A/5^(w/z) mit A = 100/120/140 N/mm² (Lehrwerte) für w/z 0,35 bis 0,80; ersetzt keine Erstprüfung.',
+      'Regelsieblinien A/B/C 8, 16, 32 nach DIN 1045-2 Anhang L als Lehrbuchwerte (vorläufig, F-Freigabe); Ist-Sieblinie nur an den Sieben ab 4 mm aus den Fraktionsanteilen.',
     ],
   },
   stahl: {
@@ -271,6 +272,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Zwang & Risse (massige Bauteile): Temperaturkurve als Lehransatz, Zwang α_T·ΔT·E_c(t)·R nur in der Abkühlphase.",
       "Mindestbewehrung im Praxisbeispiel mit k_c = 1,0, k = 0,8, f_ct,eff = 2,5 N/mm² und σ_s = 240 N/mm² als feste Lehrwerte.",
       "Reife: wirksames Alter aus der Kerntemperatur (Schritt 0,1 d); f_ck aus der Zementfestigkeitsklasse, β_cc ≤ 1,25; Ausschalfrist über f_ck(t_e) = f_cm(t_e) − 8 (EC2 3.1.2(5)).",
+      "Reifefunktion „de Vree“ als 10^(0,03·(T − 20)), d. h. C ≈ 2,0 je 10 K – ohne eindeutige Quelle (vorläufig, F-Freigabe).",
       "Zementbeiwert s nach EC2 3.1.2(6) (R = 0,20, N = 0,25, S = 0,38); L-Zemente sind dort nicht geregelt und werden nach der Anfangsfestigkeit (DIN EN 197-1) als S bzw. 52,5 L als N eingeordnet.",
       "Wärme mit hyperbolischem Ansatz Q = H_max·t_e/(t_e + t₅₀) und Lehrwerten je Zementart; Zusatzstoffe über lineare Zu- und Abschläge.",
       "Bauteile unter 0,30 m: Die pauschale Wärmeabfuhr gleicht die Temperatur je Zeitschritt vollständig an die Umgebung an.",
@@ -283,7 +285,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     kurz: "EC2-Kennwerte aus der Festigkeitsklasse sowie Zeitentwicklung, Schwinden und Kriechen nach EC2 Anhang B.",
     grenzen: [
       "α_cc = 0,85, γ_c = 1,5 und α_ct = 0,85 fest; zusätzliche f_cd-Abminderung ab C55/67 vorbereitet, aber ausgeschaltet (Normtext ausstehend).",
-      "Konstante Umgebungstemperatur über das gesamte Alter.",
+      "Konstante Umgebungstemperatur über das gesamte Alter; Festigkeitsentwicklung wahlweise mit wirksamem Alter t_T (fib Model Code 2010, Standard) oder mit dem tatsächlichen Alter (EC2 3.1.2(6)).",
       "Relative Luftfeuchte auf 20–100 % begrenzt; h₀ ohne Begrenzung wie in Anhang B (k_h ab 500 mm konstant 0,70), Hinweis außerhalb 100–1500 mm.",
       "Nichtlineares Kriechen ohne Obergrenze bei 0,6·f_ck(t₀).",
     ],
@@ -582,7 +584,8 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Nur zweiseitig gehaltene Wände unter Massivdecken, Normalkraft je Meter; keine Biegung aus Wind, keine Teilflächenpressung, kein Schub.",
       "f_k aus Herstellertafeln (KS-Themenheft Eurocode 6, 10/2012; Lücking 2026) oder frei eingegeben; KS P und KS L-P vorläufig, Übereinstimmung mit der NA-Fassung 2019-12 nicht am Normtext geprüft.",
       "h_ef = ρ2·h mit ρ2 = 0,75/0,90/1,0 nach Wanddicke (bei a < t: 1,0) – belegt durch AMz 2016 (S. 12), TU Dresden 2025 und die KS-Tragfähigkeitstafeln; ρ2 = 1,0 für 2/3 < a/t < 1 vorläufig.",
-      "Anwendungsgrenzen nach Tab. NA.2 (Gebäudehöhe, Nutzlast, Wandhöhe, Windzone) nur teilweise geprüft: l_f ≤ 6,0 m, h ≤ 2,75 m, h_ef/t ≤ 27.",
+      "Anwendungsgrenzen nach Tab. NA.2 (Gebäudehöhe, Nutzlast, Windzone) nur teilweise geprüft: l_f ≤ 6,0 m, h_ef/t ≤ 27.",
+      "Wandhöhe über 2,75 m nur als Hinweis auf die erweiterten Bedingungen (DIN EN 1996-3/NA:2019-12; KS-Merkblatt 04/2020): Innenwände ab 115 mm bis 3,60 m, ab 240 mm ohne Höhengrenze; Außenwände vorläufig.",
     ],
   },
   rechnung_nachhaltigkeit: {
@@ -602,7 +605,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   rechnung_schallschutz: {
     kurz: "Schalldämm-Maß einer einschaligen Massivwand und Vergleich mit Anforderungswerten.",
     grenzen: [
-      "Massekurve mit Ersatzformel unterhalb 150 kg/m², Putz pauschal 40 kg/m².",
+      "Massekurve nach DIN 4109-32 (R_w = 30,9·lg m′ − 22,2 dB, gültig 65–720 kg/m², außerhalb nur Hinweis), Putz pauschal 40 kg/m².",
       "Flankenübertragung als pauschaler Abzug, keine Rechnung nach DIN 4109-2.",
     ],
   },

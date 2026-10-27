@@ -35630,7 +35630,7 @@
     "topic": "Sieblinie",
     "difficulty": "Vertiefung",
     "normRef": "DIN 1045-2",
-    "question": "Ein Gemisch mit D_max = 16 mm hat die Durchgänge 45 % bei 4 mm und 65 % bei 8 mm. Regelsieblinien bei 4/8 mm: A16 = 35/50 %, B16 = 50/71 %, C16 = 71/85 %. Wie ist die Ist-Sieblinie einzuordnen?",
+    "question": "Ein Gemisch mit D_max = 16 mm hat die Durchgänge 45 % bei 4 mm und 65 % bei 8 mm. Regelsieblinien bei 4/8 mm: A16 = 36/60 %, B16 = 56/76 %, C16 = 74/88 %. Wie ist die Ist-Sieblinie einzuordnen?",
     "options": [
       "Unterhalb von A16 – sehr grobes Gemisch",
       "Zwischen B16 und C16 – brauchbar, aber fein",
@@ -35638,14 +35638,14 @@
       "Oberhalb von C16 – sehr feines Gemisch"
     ],
     "correctIdx": 2,
-    "explanation": "Bei 4 mm liegt 45 % zwischen 35 % (A16) und 50 % (B16), bei 8 mm 65 % zwischen 50 % und 71 %. Die Kurve verläuft damit im günstigen Bereich zwischen A und B.",
+    "explanation": "Bei 4 mm liegt 45 % zwischen 36 % (A16) und 56 % (B16), bei 8 mm 65 % zwischen 60 % und 76 %. Die Kurve verläuft damit im günstigen Bereich zwischen A und B.",
     "bloom": "Analysieren",
     "niveau": "B",
     "distraktorFeedback": [
-      "Unter A16 läge die Kurve erst bei Durchgängen unter 35 % bzw. 50 %.",
-      "Zwischen B16 und C16 müssten die Durchgänge über 50 % bzw. 71 % liegen.",
+      "Unter A16 läge die Kurve erst bei Durchgängen unter 36 % bzw. 60 %.",
+      "Zwischen B16 und C16 müssten die Durchgänge über 56 % bzw. 76 % liegen.",
       "",
-      "Oberhalb von C16 läge ein sehr hoher Feinanteil (über 71 % bei 4 mm) vor."
+      "Oberhalb von C16 läge ein sehr hoher Feinanteil (über 74 % bei 4 mm) vor."
     ],
     "gapAnalysis": {
       "topic": "Sieblinie",
@@ -35659,7 +35659,7 @@
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
+      "hinweis": "Zweitprüfung 27.10.: Regelsieblinien A16/B16/C16 auf die üblichen Lehrbuchwerte nach DIN 1045-2 Anh. L korrigiert (4/8 mm: 36/60, 56/76, 74/88 %; vorläufig, F-Freigabe), Einordnung unverändert A–B, geprüft mit src/calc/mischung.ts – korrigiert"
     }
   },
   {
@@ -43373,30 +43373,30 @@
     "categoryLabel": "Werkstoffmechanik & Physik",
     "moduleId": "rechnung_mauerwerk",
     "moduleTitle": "Mauerwerk: Tragfähigkeit",
-    "topic": "Grenzschlankheit",
+    "topic": "Grenzschlankheit und Wandhöhe",
     "difficulty": "Transfer",
-    "normRef": "DIN EN 1996-3",
-    "question": "Eine 11,5 cm dicke KS-Innenwand (f_k = 5,6 N/mm²) mit h_ef = 3,00 m soll N_Ed = 60 kN/m tragen. Nach dem Modul ergeben sich h_ef/t = 26,1, Φ = Φ2 ≈ 0,10 und η ≈ 1,62. Wie ist der Befund einzuordnen?",
+    "normRef": "DIN EN 1996-3/NA",
+    "question": "Eine 11,5 cm dicke KS-Innenwand (f_k = 5,6 N/mm², Decke voll aufliegend) mit lichter Höhe h = 3,60 m soll N_Ed = 120 kN/m tragen. Nach dem Modul ergeben sich h_ef = 0,75 · 3,60 m = 2,70 m, h_ef/t = 23,5, Φ = Φ2 ≈ 0,24 und η ≈ 1,35. Wie ist der Befund einzuordnen?",
     "options": [
       "Der Nachweis scheitert an der Last; die Schlankheit spielt dabei keine Rolle",
-      "Der Nachweis scheitert, weil Kalksandstein für tragende Innenwände ungeeignet ist",
+      "Das vereinfachte Verfahren ist ausgeschlossen, weil h über 2,75 m liegt",
       "Der Nachweis ist erfüllt, da Φ positiv und die Grenzschlankheit 27 eingehalten ist",
-      "Grenze 27 knapp eingehalten, doch mit Φ ≈ 0,10 ist die Wand deutlich überlastet"
+      "Erweiterte Bedingungen erlauben h = 3,60 m, doch mit Φ ≈ 0,24 ist sie überlastet"
     ],
     "correctIdx": 3,
-    "explanation": "h_ef/t = 26,1 ≤ 27: Die Grenzschlankheit nach DIN EN 1996-1-1, 5.5.1.4 ist knapp eingehalten. Φ2 = 0,85 − 0,0011 · 26,1² = 0,10 fällt aber quadratisch ab; mit f_d = 0,85 · 5,6/1,5 = 3,17 N/mm² wird N_Rd = 0,10 · 115 mm · 3,17 N/mm² = 37,0 kN/m < 60 kN/m (η = 1,62). Abhilfe: größere Wanddicke, z. B. 17,5 cm.",
+    "explanation": "h = 3,60 m liegt über dem Regelfall h ≤ 2,75 m, ist für Innenwände ab t = 115 mm aber unter den erweiterten Bedingungen nach DIN EN 1996-3/NA:2019-12, Tab. NA.2 zulässig (u. a. voll aufliegende Stahlbetondecke ≥ C20/25, Deckendicke ≥ 180 mm; KS-Merkblatt 04/2020). h_ef = 0,75 · 3,60 = 2,70 m, h_ef/t = 23,5 ≤ 27. Φ2 = 0,85 − 0,0011 · 23,48² = 0,244 fällt aber quadratisch ab; mit f_d = 0,85 · 5,6/1,5 = 3,17 N/mm² wird N_Rd = 0,244 · 115 mm · 3,17 N/mm² = 88,9 kN/m < 120 kN/m (η = 1,35). Abhilfe: größere Wanddicke, z. B. 17,5 cm.",
     "bloom": "Analysieren",
     "niveau": "M",
     "distraktorFeedback": [
       "Die Überlastung entsteht gerade durch die große Schlankheit, die Φ stark abmindert.",
-      "Kalksandstein ist für tragende Innenwände üblich; das Problem ist die geringe Dicke.",
+      "Über 2,75 m gelten die erweiterten Bedingungen der Tab. NA.2: Innenwände ab 115 mm Dicke bis 3,60 m.",
       "Φ > 0 und eingehaltene Grenzschlankheit genügen nicht: Auch η = N_Ed/N_Rd ≤ 1 muss erfüllt sein.",
       ""
     ],
     "gapAnalysis": {
-      "topic": "Grenzschlankheit",
-      "misconception": "Schlankheitsgrenze und Tragfähigkeitsnachweis werden getrennt statt gemeinsam beurteilt.",
-      "coreRule": "h_ef/t ≤ 27 und η = N_Ed/N_Rd ≤ 1 müssen gleichzeitig erfüllt sein; nahe der Grenzschlankheit ist Φ sehr klein.",
+      "topic": "Grenzschlankheit und Wandhöhe",
+      "misconception": "Anwendungsgrenzen, Schlankheit und Tragfähigkeit werden getrennt statt gemeinsam beurteilt.",
+      "coreRule": "Wandhöhe (Regelfall ≤ 2,75 m, erweiterte Bedingungen z. B. Innenwand t ≥ 115 mm bis 3,60 m), h_ef/t ≤ 27 und η = N_Ed/N_Rd ≤ 1 müssen gleichzeitig erfüllt sein.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Schritt 2: Wirksame Schlankheit bestimmen“ im Modul Mauerwerk: Tragfähigkeit noch einmal durch.",
       "targetModuleTab": "rechnung_mauerwerk",
       "targetModuleLabel": "Mauerwerk: Tragfähigkeit"
@@ -43405,7 +43405,7 @@
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "Gutachten 27.10.2026: Rechnung auf f_d = ζ · f_k/γ_M mit ζ = 0,85 umgestellt wie im Modul (src/calc/mauerwerk.ts); Werte und Distraktoren mit dem Rechenkern neu gerechnet, abgesichert in tests/quizRechenfragen.test.ts. Grenzschlankheit 25 → 27 wie im Modul; Befund dadurch neu eingeordnet (Schlankheit knapp eingehalten, Tragfähigkeit nicht)."
+      "hinweis": "Zweitprüfung 27.10.: erweiterte Bedingungen für h > 2,75 m (DIN EN 1996-3/NA:2019-12, Tab. NA.2; KS-Merkblatt 04/2020) eingearbeitet; Beispiel auf Innenwand 115 mm mit h = 3,60 m und N_Ed = 120 kN/m umgestellt, Werte mit src/calc/mauerwerk.ts gerechnet (tests/quizRechenfragen.test.ts) – korrigiert"
     }
   },
   {
@@ -43998,20 +43998,20 @@
     "moduleTitle": "Bauakustik: Schallschutz",
     "topic": "Direktschalldämm-Maß",
     "difficulty": "Vertiefung",
-    "normRef": "DIN 4109",
-    "question": "Welches Direktschalldämm-Maß R_w liefert die Massekurve des Moduls (R_w = 32,4 · lg m′ − 26,0) für m′ = 390 kg/m²?",
+    "normRef": "DIN 4109-32",
+    "question": "Welches Direktschalldämm-Maß R_w liefert die Massekurve des Moduls (DIN 4109-32: R_w = 30,9 · lg m′ − 22,2) für m′ = 390 kg/m²?",
     "options": [
-      "R_w ≈ 84,0 dB",
+      "R_w ≈ 80,1 dB",
       "R_w ≈ 56,4 dB",
-      "R_w ≈ 56,0 dB",
-      "R_w ≈ 58,0 dB"
+      "R_w ≈ 55,9 dB",
+      "R_w ≈ 57,9 dB"
     ],
     "correctIdx": 3,
-    "explanation": "lg 390 = 2,591; R_w = 32,4 · 2,591 − 26,0 = 58,0 dB.",
+    "explanation": "lg 390 = 2,591; R_w = 30,9 · 2,591 − 22,2 = 57,9 dB.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
-      "Hier fehlt der Abzug von 26,0 dB.",
+      "Hier fehlt der Abzug von 22,2 dB.",
       "Dieser Wert gilt für m′ = 350 kg/m², also ohne Putz.",
       "Das ist bereits R′_w mit K_F = 2 dB, nicht das Direktschalldämm-Maß.",
       ""
@@ -44019,15 +44019,16 @@
     "gapAnalysis": {
       "topic": "Direktschalldämm-Maß",
       "misconception": "Konstante oder Flankenabzug werden beim Ablesen der Massekurve vertauscht.",
-      "coreRule": "R_w = 32,4 · lg m′ − 26,0 (m′ ≥ 150 kg/m²); R′_w = R_w − K_F.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schritt 2: Direktes Schalldämm-Maß R_w (Massekurve DIN 4109)“ im Modul Bauakustik: Schallschutz noch einmal durch.",
+      "coreRule": "R_w = 30,9 · lg m′ − 22,2 (DIN 4109-32, 65 ≤ m′ ≤ 720 kg/m²); R′_w = R_w − K_F.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schritt 2: Direktes Schalldämm-Maß R_w (Massekurve DIN 4109-32)“ im Modul Bauakustik: Schallschutz noch einmal durch.",
       "targetModuleTab": "rechnung_schallschutz",
       "targetModuleLabel": "Bauakustik: Schallschutz"
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-27",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 27.10.: Massekurve auf DIN 4109-32 umgestellt (R_w = 30,9 · lg m′ − 22,2 dB statt 32,4 · lg m′ − 26,0, Beiblatt 1 nur früherer Stand), Werte mit src/calc/schall.ts neu gerechnet – korrigiert"
     }
   },
   {
@@ -44043,11 +44044,11 @@
     "options": [
       "R′_w ≈ 53,5 dB: knapp eingehalten",
       "R′_w ≈ 57,5 dB: deutlich eingehalten",
-      "R′_w ≈ 51,7 dB: nicht eingehalten",
+      "R′_w ≈ 51,8 dB: nicht eingehalten",
       "R′_w ≈ 51,5 dB: nicht eingehalten"
     ],
     "correctIdx": 0,
-    "explanation": "m′ = 0,24 · 1 200 + 40 = 328 kg/m²; R_w = 32,4 · lg 328 − 26,0 = 55,5 dB; R′_w = 55,5 − 2 = 53,5 dB ≥ 53 dB.",
+    "explanation": "m′ = 0,24 · 1 200 + 40 = 328 kg/m²; R_w = 30,9 · lg 328 − 22,2 = 55,5 dB (DIN 4109-32); R′_w = 55,5 − 2 = 53,5 dB ≥ 53 dB.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
@@ -44066,8 +44067,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-27",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 27.10.: Massekurve auf DIN 4109-32 umgestellt (R_w = 30,9 · lg m′ − 22,2 dB statt 32,4 · lg m′ − 26,0, Beiblatt 1 nur früherer Stand), Werte mit src/calc/schall.ts neu gerechnet – korrigiert"
     }
   },
   {
@@ -44079,7 +44081,7 @@
     "topic": "Verbesserungsmaßnahmen",
     "difficulty": "Transfer",
     "normRef": "DIN 4109-1",
-    "question": "Eine Wohnungstrennwand aus Porenbeton (24 cm, ρ = 500 kg/m³, Putz 40 kg/m², leichte Flanken K_F = 4 dB) erreicht R′_w ≈ 41,4 dB statt 53 dB. Welche Maßnahme ist nach dem Modul zielführend?",
+    "question": "Eine Wohnungstrennwand aus Porenbeton (24 cm, ρ = 500 kg/m³, Putz 40 kg/m², leichte Flanken K_F = 4 dB) erreicht R′_w ≈ 41,9 dB statt 53 dB. Welche Maßnahme ist nach dem Modul zielführend?",
     "options": [
       "Wanddicke bei gleicher Rohdichte auf 30 cm erhöhen, das genügt für 53 dB",
       "Den Putz weglassen, damit die Wand weniger Körperschall überträgt",
@@ -44087,11 +44089,11 @@
       "Schwerere Steine (z. B. KS, RDK ≥ 2,0) und günstigere Flanken wählen"
     ],
     "correctIdx": 3,
-    "explanation": "Nach dem Massegesetz fehlen rund 12 dB. Wirksam sind höhere flächenbezogene Masse (dichtere Steine, größere Dicke) und günstigere Flanken (kleineres K_F). 30 cm Porenbeton ergäben erst ≈ 43,8 dB.",
+    "explanation": "Nach der Massekurve (DIN 4109-32) fehlen rund 11 dB. Wirksam sind höhere flächenbezogene Masse (dichtere Steine, größere Dicke) und günstigere Flanken (kleineres K_F). 30 cm Porenbeton ergäben erst ≈ 44,2 dB.",
     "bloom": "Bewerten",
     "niveau": "M",
     "distraktorFeedback": [
-      "30 cm Porenbeton liefern m′ = 190 kg/m² und nur ≈ 43,8 dB; die Masse reicht nicht.",
+      "30 cm Porenbeton liefern m′ = 190 kg/m² und nur ≈ 44,2 dB; die Masse reicht nicht.",
       "Ohne Putz sinkt die flächenbezogene Masse und damit die Luftschalldämmung.",
       "Steife Dämmplatten wie EPS können die Schalldämmung durch Resonanzeffekte sogar verschlechtern.",
       ""
@@ -44106,8 +44108,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-27",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 27.10.: Massekurve auf DIN 4109-32 umgestellt (R_w = 30,9 · lg m′ − 22,2 dB statt 32,4 · lg m′ − 26,0, Beiblatt 1 nur früherer Stand), Werte mit src/calc/schall.ts neu gerechnet – korrigiert"
     }
   },
   {
@@ -44118,36 +44121,37 @@
     "moduleTitle": "Bauakustik: Schallschutz",
     "topic": "Massegesetz",
     "difficulty": "Vertiefung",
-    "normRef": "DIN 4109",
-    "question": "Um wie viel steigt R_w nach der Massekurve des Moduls (R_w = 32,4 · lg m′ − 26,0), wenn die flächenbezogene Masse einer Wand verdoppelt wird?",
+    "normRef": "DIN 4109-32",
+    "question": "Um wie viel steigt R_w nach der Massekurve des Moduls (DIN 4109-32: R_w = 30,9 · lg m′ − 22,2), wenn die flächenbezogene Masse einer Wand verdoppelt wird?",
     "options": [
-      "um rund 9,8 dB",
-      "um rund 32,4 dB",
+      "um rund 9,3 dB",
+      "um rund 30,9 dB",
       "um rund 3,0 dB",
       "um rund 6,0 dB"
     ],
     "correctIdx": 0,
-    "explanation": "ΔR_w = 32,4 · lg(2m′/m′) = 32,4 · lg 2 = 32,4 · 0,301 ≈ 9,8 dB. Masse wirkt logarithmisch: Jede Verdopplung bringt den gleichen Zuwachs.",
+    "explanation": "ΔR_w = 30,9 · lg(2m′/m′) = 30,9 · lg 2 = 30,9 · 0,301 ≈ 9,3 dB. Masse wirkt logarithmisch: Jede Verdopplung bringt den gleichen Zuwachs.",
     "bloom": "Verstehen",
     "niveau": "B",
     "distraktorFeedback": [
       "",
-      "32,4 ist der Faktor vor lg m′; der Zuwachs ist 32,4 · lg 2.",
+      "30,9 ist der Faktor vor lg m′; der Zuwachs ist 30,9 · lg 2.",
       "3 dB entsprechen einer Verdopplung der Schallenergie, nicht dem Massezuwachs der Wand.",
       "6 dB folgen aus dem theoretischen Massegesetz 20 · lg 2; die Massekurve des Moduls ist steiler."
     ],
     "gapAnalysis": {
       "topic": "Massegesetz",
       "misconception": "Die logarithmische Massekurve wird mit anderen 3-dB- oder 6-dB-Regeln verwechselt.",
-      "coreRule": "ΔR_w = 32,4 · lg(m′_2/m′_1).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schritt 2: Direktes Schalldämm-Maß R_w (Massekurve DIN 4109)“ im Modul Bauakustik: Schallschutz noch einmal durch.",
+      "coreRule": "ΔR_w = 30,9 · lg(m′_2/m′_1) (DIN 4109-32).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schritt 2: Direktes Schalldämm-Maß R_w (Massekurve DIN 4109-32)“ im Modul Bauakustik: Schallschutz noch einmal durch.",
       "targetModuleTab": "rechnung_schallschutz",
       "targetModuleLabel": "Bauakustik: Schallschutz"
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-27",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 27.10.: Massekurve auf DIN 4109-32 umgestellt (R_w = 30,9 · lg m′ − 22,2 dB statt 32,4 · lg m′ − 26,0, Beiblatt 1 nur früherer Stand), Werte mit src/calc/schall.ts neu gerechnet – korrigiert"
     }
   },
   {

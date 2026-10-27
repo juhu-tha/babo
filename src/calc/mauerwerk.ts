@@ -44,6 +44,20 @@ export const GAMMA_M_MW = 1.5;
 export const SCHLANKHEIT_MAX = 27;
 /** Größte Deckenstützweite im vereinfachten Verfahren [m] (AMz 2016, S. 8: l_f ≤ 6,0 m; KS-Tafeln bis 6,0 m) */
 export const LF_MAX = 6.0;
+/**
+ * Lichte Wandhöhen im vereinfachten Verfahren (DIN EN 1996-3/NA:2019-12, Tab. NA.2) – öffentlich wiedergegeben im
+ * KS-Merkblatt „Vereinfachtes Berechnungsverfahren nach DIN EN 1996-3/NA:2019-12 – Erweiterte Anwendungsgrenzen für
+ * Wandhöhen > 2,75 m“ (Bundesverband Kalksandsteinindustrie e. V., 04/2020):
+ *  - Regelfall h ≤ 2,75 m;
+ *  - erweiterte Bedingungen: Innenwände t ≥ 115 mm bis h ≤ 3,60 m, t ≥ 240 mm ohne Einschränkung der Wandhöhe;
+ *    Außenwände abhängig von Wanddicke, Windzone (Gebäudehöhe ≤/> 10 m), Steinfestigkeit und Mörtel;
+ *  - Randbedingungen: voll aufliegende Stahlbetondecke ≥ C20/25, Deckendicke ≥ 180 mm, Deckenschlankheit nach
+ *    DIN EN 1992-1-1/NA, 7.4.2; Grund- und Aufriss weitgehend wie in den Geschossen darüber und darunter.
+ * Die Tafelwerte für Außenwände sind hier nicht hinterlegt (vorläufig, F-Freigabe: Prüfung am Normtext Tab. NA.2).
+ */
+export const H_REGEL_MAX = 2.75;
+export const H_ERWEITERT_INNEN_MAX = 3.6;
+export const T_INNEN_OHNE_HOEHENGRENZE = 240;
 
 // ---------------------------------------------------------------------------------------------------
 // f_k nach NA-Ansatz (Tabellenwerte)
@@ -221,9 +235,21 @@ export function bemesseWandVereinfacht(e: WandEingabe): WandErgebnis {
 
   bereich(hinweise, 'h', schlankheit, 0, SCHLANKHEIT_MAX, `Schlankheit h_ef/t > ${SCHLANKHEIT_MAX}: unzulässig nach DIN EN 1996-1-1, 5.5.1.4.`);
   if (e.lage === 'zwischen') bereich(hinweise, 'lf', e.lf, 0, LF_MAX, `Deckenstützweite l_f > ${formatDeZahl(LF_MAX, 1)} m: außerhalb der hier abgebildeten Anwendungsgrenzen des vereinfachten Verfahrens.`);
-  // Erweiterte Wandhöhen > 2,75 m nach DIN EN 1996-3/NA:2019-12: KS-Merkblatt „Vereinfachtes Berechnungsverfahren …
-  // Erweiterte Anwendungsgrenzen für Wandhöhen > 2,75 m“ (BV KSI, 04/2020); tragende Innenwände ab t = 115 mm (ebd.)
-  if (e.h > 2.75) hinweise.push({ stufe: 'warnung', feld: 'h', text: 'Lichte Wandhöhe > 2,75 m: im vereinfachten Verfahren nur unter den erweiterten Bedingungen von DIN EN 1996-3/NA:2019-12, Tab. NA.2 (Wanddicke, Windzone, Steinfestigkeit) – gesondert prüfen.' });
+  // Wandhöhen > 2,75 m: erweiterte Bedingungen nach DIN EN 1996-3/NA:2019-12, Tab. NA.2 (KS-Merkblatt 04/2020, s. o.)
+  if (e.h > H_REGEL_MAX) {
+    const randbedingungen = 'Randbedingungen: voll aufliegende Stahlbetondecke ≥ C20/25 mit Dicke ≥ 180 mm und begrenzter Deckenschlankheit (DIN EN 1992-1-1/NA, 7.4.2), Grund- und Aufriss weitgehend wie in den Nachbargeschossen.';
+    if (e.lage === 'innen') {
+      if (e.t >= T_INNEN_OHNE_HOEHENGRENZE) {
+        hinweise.push({ stufe: 'warnung', feld: 'h', text: `Lichte Wandhöhe > 2,75 m: zulässig unter den erweiterten Bedingungen nach DIN EN 1996-3/NA:2019-12, Tab. NA.2 (Innenwand t ≥ 240 mm ohne Einschränkung der Wandhöhe). ${randbedingungen}` });
+      } else if (e.h <= H_ERWEITERT_INNEN_MAX + 1e-9) {
+        hinweise.push({ stufe: 'warnung', feld: 'h', text: `Lichte Wandhöhe > 2,75 m: zulässig unter den erweiterten Bedingungen nach DIN EN 1996-3/NA:2019-12, Tab. NA.2 (Innenwand t ≥ 115 mm bis h ≤ 3,60 m). ${randbedingungen}` });
+      } else {
+        hinweise.push({ stufe: 'warnung', feld: 'h', text: `Lichte Wandhöhe > 3,60 m: Für Innenwände mit t < 240 mm auch unter den erweiterten Bedingungen nach DIN EN 1996-3/NA:2019-12, Tab. NA.2 außerhalb des vereinfachten Verfahrens – genaueres Verfahren nach DIN EN 1996-1-1 erforderlich.` });
+      }
+    } else {
+      hinweise.push({ stufe: 'warnung', feld: 'h', text: `Lichte Wandhöhe > 2,75 m: Außenwände nur unter den erweiterten Bedingungen nach DIN EN 1996-3/NA:2019-12, Tab. NA.2 – zulässige Höhe abhängig von Wanddicke, Windzone, Gebäudehöhe, Steinfestigkeit und Mörtel (hier nicht geprüft, vorläufig). ${randbedingungen}` });
+    }
+  }
   if (e.t < 115) hinweise.push({ stufe: 'warnung', feld: 't', text: 'Wanddicke < 115 mm: für tragende Wände im vereinfachten Verfahren nicht vorgesehen.' });
   if (aDurchT < 2 / 3 - 1e-9) hinweise.push({ stufe: 'warnung', feld: 'a', text: 'Auflagertiefe a < 2/3·t: außerhalb der hier abgebildeten Fälle (Herstellertafeln für a/t = 1 und 2/3).' });
   if (eta > 1) hinweise.push({ stufe: 'warnung', feld: 'nEd', text: 'N_Ed > N_Rd: Der Nachweis ist nicht erfüllt.' });

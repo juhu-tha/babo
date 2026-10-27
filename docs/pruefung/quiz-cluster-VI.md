@@ -2,9 +2,9 @@
 
 Stand: 27.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster VI umfasst 60 Fragen aus 10 Modulen. Aufgeführt sind 16 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster VI umfasst 60 Fragen aus 10 Modulen. Aufgeführt sind 20 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 16 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 20 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -66,9 +66,9 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 16 korrigiert, 0 fraglich, 0
 
 ### qn_rechnung_mauerwerk_5 · Mauerwerk: Tragfähigkeit
 
-- **Frage:** Eine 11,5 cm dicke KS-Innenwand (f_k = 5,6 N/mm²) mit h_ef = 3,00 m soll N_Ed = 60 kN/m tragen. Nach dem Modul ergeben sich h_ef/t = 26,1, Φ = Φ2 ≈ 0,10 und η ≈ 1,62. Wie ist der Befund einzuordnen?
-- **Richtige Antwort:** Grenze 27 knapp eingehalten, doch mit Φ ≈ 0,10 ist die Wand deutlich überlastet
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Gutachten 27.10.2026: Rechnung auf f_d = ζ · f_k/γ_M mit ζ = 0,85 umgestellt wie im Modul (src/calc/mauerwerk.ts); Werte und Distraktoren mit dem Rechenkern neu gerechnet, abgesichert in tests/quizRechenfragen.test.ts. Grenzschlankheit 25 → 27 wie im Modul; Befund dadurch neu eingeordnet (Schlankheit knapp eingehalten, Tragfähigkeit nicht).
+- **Frage:** Eine 11,5 cm dicke KS-Innenwand (f_k = 5,6 N/mm², Decke voll aufliegend) mit lichter Höhe h = 3,60 m soll N_Ed = 120 kN/m tragen. Nach dem Modul ergeben sich h_ef = 0,75 · 3,60 m = 2,70 m, h_ef/t = 23,5, Φ = Φ2 ≈ 0,24 und η ≈ 1,35. Wie ist der Befund einzuordnen?
+- **Richtige Antwort:** Erweiterte Bedingungen erlauben h = 3,60 m, doch mit Φ ≈ 0,24 ist sie überlastet
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: erweiterte Bedingungen für h > 2,75 m (DIN EN 1996-3/NA:2019-12, Tab. NA.2; KS-Merkblatt 04/2020) eingearbeitet; Beispiel auf Innenwand 115 mm mit h = 3,60 m und N_Ed = 120 kN/m umgestellt, Werte mit src/calc/mauerwerk.ts gerechnet (tests/quizRechenfragen.test.ts) – korrigiert
 - [ ] ok
 - [x] ändern: Klärung erforderlich: Nach DIN EN 1996-3/NA gilt das vereinfachte Verfahren für Innenwände mit 11,5 cm ≤ t < 24 cm nur bis zu einer lichten Geschosshöhe von 2,75 m; h_ef = 3,00 m bei t = 11,5 cm liegt außerhalb der Anwendungsgrenze (auch im Modul nicht geprüft). Wandhöhe auf 2,75 m ändern oder Anwendungsgrenze in Frage und Modul aufnehmen? Rechnung selbst nachgerechnet und richtig.
 
@@ -86,6 +86,38 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 16 korrigiert, 0 fraglich, 0
 - **Richtige Antwort:** Deutlich längere Nachbehandlung, da Festigkeit und Dichtigkeit langsamer entstehen
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### qn_rechnung_schallschutz_2 · Bauakustik: Schallschutz
+
+- **Frage:** Welches Direktschalldämm-Maß R_w liefert die Massekurve des Moduls (DIN 4109-32: R_w = 30,9 · lg m′ − 22,2) für m′ = 390 kg/m²?
+- **Richtige Antwort:** R_w ≈ 57,9 dB
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Massekurve auf DIN 4109-32 umgestellt (R_w = 30,9 · lg m′ − 22,2 dB statt 32,4 · lg m′ − 26,0, Beiblatt 1 nur früherer Stand), Werte mit src/calc/schall.ts neu gerechnet – korrigiert
+- [ ] ok
+- [ ] ändern: …
+
+### qn_rechnung_schallschutz_3 · Bauakustik: Schallschutz
+
+- **Frage:** Eine Wohnungstrennwand aus Hochlochziegeln (24 cm, ρ = 1 200 kg/m³) erhält beidseitig 40 kg/m² Putz; die Flanken sind schwer und massiv (K_F = 2 dB). Ist R′_w ≥ 53 dB eingehalten?
+- **Richtige Antwort:** R′_w ≈ 53,5 dB: knapp eingehalten
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Massekurve auf DIN 4109-32 umgestellt (R_w = 30,9 · lg m′ − 22,2 dB statt 32,4 · lg m′ − 26,0, Beiblatt 1 nur früherer Stand), Werte mit src/calc/schall.ts neu gerechnet – korrigiert
+- [ ] ok
+- [ ] ändern: …
+
+### qn_rechnung_schallschutz_4 · Bauakustik: Schallschutz
+
+- **Frage:** Eine Wohnungstrennwand aus Porenbeton (24 cm, ρ = 500 kg/m³, Putz 40 kg/m², leichte Flanken K_F = 4 dB) erreicht R′_w ≈ 41,9 dB statt 53 dB. Welche Maßnahme ist nach dem Modul zielführend?
+- **Richtige Antwort:** Schwerere Steine (z. B. KS, RDK ≥ 2,0) und günstigere Flanken wählen
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Massekurve auf DIN 4109-32 umgestellt (R_w = 30,9 · lg m′ − 22,2 dB statt 32,4 · lg m′ − 26,0, Beiblatt 1 nur früherer Stand), Werte mit src/calc/schall.ts neu gerechnet – korrigiert
+- [ ] ok
+- [ ] ändern: …
+
+### qn_rechnung_schallschutz_5 · Bauakustik: Schallschutz
+
+- **Frage:** Um wie viel steigt R_w nach der Massekurve des Moduls (DIN 4109-32: R_w = 30,9 · lg m′ − 22,2), wenn die flächenbezogene Masse einer Wand verdoppelt wird?
+- **Richtige Antwort:** um rund 9,3 dB
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Massekurve auf DIN 4109-32 umgestellt (R_w = 30,9 · lg m′ − 22,2 dB statt 32,4 · lg m′ − 26,0, Beiblatt 1 nur früherer Stand), Werte mit src/calc/schall.ts neu gerechnet – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### qn_rechnung_stahlbeton_3 · Massivbau: Biegung
@@ -202,7 +234,7 @@ Niveau B · 35 min · Vorwissen: schallschutz, baustoffkenngroessen
 
 - (Verstehen) Sie können den Einfluss des Massegesetzes und der Flankenübertragung auf die Luftschalldämmung massiver Bauteile erläutern.
 - (Anwenden) Sie können die flächenbezogene Masse einer Massivwand einschließlich Putz berechnen.
-- (Anwenden) Sie können das Direktschalldämm-Maß R_w über die Massekurve nach DIN 4109 Beiblatt 1 und das Bauschalldämm-Maß R'_w mit Flankenabzug ermitteln.
+- (Anwenden) Sie können das Direktschalldämm-Maß R_w über die Massekurve nach DIN 4109-32 und das Bauschalldämm-Maß R'_w mit Flankenabzug ermitteln.
 - (Bewerten) Sie können das Ergebnis mit den Anforderungen nach DIN 4109-1 an Trennwände vergleichen und Verbesserungsmaßnahmen begründen.
 
 - [ ] ok

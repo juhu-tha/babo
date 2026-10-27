@@ -4,6 +4,8 @@ import { formatDeWert, formatDeZahl, formatDeTeX } from '@/src/utils/numberForma
 import React from 'react';
 import inhalt from '@/content/beispielrechnungen/RechnungSchallschutz.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import type { Hinweis } from '@/src/calc/plausibilitaet';
 
 interface RechnungSchallschutzProps {
   schallDicke: number;
@@ -19,6 +21,7 @@ interface RechnungSchallschutzProps {
   schall_m0: number;
   schall_m_total: number;
   schall_passed: boolean;
+  schall_hinweise: Hinweis[];
   schall_soll_werte: { wohnungstrenn: { erf: number; label: string; }; treppenhaus: { erf: number; label: string; }; behandlung: { erf: number; label: string; }; doppelhaus: { erf: number; label: string; }; };
   setSchallDicke: React.Dispatch<React.SetStateAction<number>>;
   setSchallFlanke: React.Dispatch<React.SetStateAction<"entkoppelt" | "massiv" | "leicht">>;
@@ -28,7 +31,7 @@ interface RechnungSchallschutzProps {
   setSchallWandTyp: React.Dispatch<React.SetStateAction<"beton" | "ks" | "hlz" | "porenbeton">>;
 }
 
-export default function RechnungSchallschutz({ schallDicke, schallFlanke, schallPutz, schallRohdichte, schallSollTyp, schallWandTyp, schall_KF, schall_R_prime_w, schall_Rw, schall_erf, schall_m0, schall_m_total, schall_passed, schall_soll_werte, setSchallDicke, setSchallFlanke, setSchallPutz, setSchallRohdichte, setSchallSollTyp, setSchallWandTyp }: RechnungSchallschutzProps) {
+export default function RechnungSchallschutz({ schallDicke, schallFlanke, schallPutz, schallRohdichte, schallSollTyp, schallWandTyp, schall_KF, schall_R_prime_w, schall_Rw, schall_erf, schall_m0, schall_m_total, schall_passed, schall_hinweise, schall_soll_werte, setSchallDicke, setSchallFlanke, setSchallPutz, setSchallRohdichte, setSchallSollTyp, setSchallWandTyp }: RechnungSchallschutzProps) {
   return (
       <div className="space-y-6 animate-in fade-in duration-300">
         <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
@@ -38,6 +41,8 @@ export default function RechnungSchallschutz({ schallDicke, schallFlanke, schall
           </h3>
           <p className="text-xs text-text-main/80 leading-relaxed font-normal"><MdText text={inhalt.texte.wasBerechnetWirdDie} /></p>
         </div>
+
+        <EingabeHinweise hinweise={schall_hinweise} />
 
         {/* INTERACTIVE CONTROLS */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -181,9 +186,10 @@ export default function RechnungSchallschutz({ schallDicke, schallFlanke, schall
                 {/* Step 2: Direktes Schalldämmmaß */}
                 <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt2DirektesSchalldämm} /><p className="mt-1 text-xxs text-slate-500"><MdText text={inhalt.texte.fürMassiveBiegesteifeSchalen} /></p>
                   <div className="my-1.5 p-2 bg-slate-50 rounded border border-slate-200 text-center font-mono">
-                    <BlockMath math={`R_w = 32{,}4 \\cdot \\lg(m') - 26{,}0 = 32{,}4 \\cdot \\lg(${formatDeTeX(schall_m_total, 1)}) - 26{,}0 = \\color{#A3113E}{\\mathbf{${formatDeTeX(schall_Rw, 1)}}} \\, \\text{dB}`} />
+                    <BlockMath math={`R_w = 30{,}9 \\cdot \\lg(m'/m'_0) - 22{,}2 = 30{,}9 \\cdot \\lg(${formatDeTeX(schall_m_total, 1)}) - 22{,}2 = \\color{#A3113E}{\\mathbf{${formatDeTeX(schall_Rw, 1)}}} \\, \\text{dB}`} />
                   </div>
                   <p className="mt-1 text-xxs text-slate-500"><MdText text={inhalt.texte.hinweisZurGültigkeitDie} /></p>
+                  <p className="mt-1 text-xxs text-slate-500"><MdText text={inhalt.texte.frühererStandBeiblatt1} /></p>
                 </div>
 
                 {/* Step 3: Bauschalldämmmaß */}

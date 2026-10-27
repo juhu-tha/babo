@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { HOLZ_EN338, fcdBeton, FCD_MODUL } from '@/src/data/kennwerte';
 import { MU_LIM_STAHL } from '@/src/calc/biegung';
+import { wandSchalldaemmung, PUTZ_MASSE_BEIDSEITIG } from '@/src/calc/schall';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { GruppierteModuleTabs } from '@/src/components/ui/GruppierteModuleTabs';
 import { Calculator } from 'lucide-react';
@@ -348,15 +349,13 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
   const [schallFlanke, setSchallFlanke] = useState<'entkoppelt' | 'massiv' | 'leicht'>('massiv');
   const [schallSollTyp, setSchallSollTyp] = useState<'wohnungstrenn' | 'treppenhaus' | 'behandlung' | 'doppelhaus'>('wohnungstrenn');
 
-  // Calculations Schallschutz
-  const schall_m0 = (schallDicke / 100) * schallRohdichte; // kg/m²
-  const schall_m_total = schall_m0 + (schallPutz ? 40 : 0); // kg/m²
-  // DIN 4109 Massekurve für Massivbauteile: Rw = 32.4 * lg(m') - 26.0 (für m' >= 150 kg/m²)
-  const schall_Rw = schall_m_total >= 150 
-    ? 32.4 * Math.log10(schall_m_total) - 26.0 
-    : 20.0 * Math.log10(Math.max(10, schall_m_total)) - 2.0;
+  // Calculations Schallschutz – Rechenkern src/calc/schall.ts (Massekurve DIN 4109-32)
   const schall_KF = schallFlanke === 'entkoppelt' ? 0 : schallFlanke === 'massiv' ? 2 : 4;
-  const schall_R_prime_w = Math.max(0, schall_Rw - schall_KF);
+  const schallErgebnis = wandSchalldaemmung({ dicke: schallDicke / 100, rohdichte: schallRohdichte, putzMasse: schallPutz ? PUTZ_MASSE_BEIDSEITIG : 0, kF: schall_KF });
+  const schall_m0 = schallErgebnis.m0; // kg/m²
+  const schall_m_total = schallErgebnis.mStrich; // kg/m²
+  const schall_Rw = schallErgebnis.Rw;
+  const schall_R_prime_w = schallErgebnis.RwStrich;
 
   const schall_soll_werte = inhalt.daten["Beispielrechnungen.schall_soll_werte"];
   const schall_erf = schall_soll_werte[schallSollTyp].erf;
@@ -427,7 +426,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
         {activeTab === 'bestand' && <RechnungBestand bestandSubTab={bestandSubTab} beta_WN={beta_WN} beta_WN_150={beta_WN_150} diameterStahl={diameterStahl} f_cd_bestand={f_cd_bestand} f_ck_act={f_ck_act} f_ck_cyl_raw={f_ck_cyl_raw} f_ck_final={f_ck_final} f_ck_tested={f_ck_tested} f_yd_stahl={f_yd_stahl} f_yk_stahl={f_yk_stahl} hasPruefung={hasPruefung} histBetonKlasse={histBetonKlasse} histStahlKlasse={histStahlKlasse} pruefFestigkeit={pruefFestigkeit} setBestandSubTab={setBestandSubTab} setDiameterStahl={setDiameterStahl} setHasPruefung={setHasPruefung} setHistBetonKlasse={setHistBetonKlasse} setHistStahlKlasse={setHistStahlKlasse} setPruefFestigkeit={setPruefFestigkeit} steelArea={steelArea} testedKlasseLabel={testedKlasseLabel} yieldCapacity={yieldCapacity} />}
 
         {/* --- 8. TAB CONTENT: SCHALLSCHUTZ (DIN 4109) --- */}
-        {activeTab === 'schallschutz' && <RechnungSchallschutz schallDicke={schallDicke} schallFlanke={schallFlanke} schallPutz={schallPutz} schallRohdichte={schallRohdichte} schallSollTyp={schallSollTyp} schallWandTyp={schallWandTyp} schall_KF={schall_KF} schall_R_prime_w={schall_R_prime_w} schall_Rw={schall_Rw} schall_erf={schall_erf} schall_m0={schall_m0} schall_m_total={schall_m_total} schall_passed={schall_passed} schall_soll_werte={schall_soll_werte} setSchallDicke={setSchallDicke} setSchallFlanke={setSchallFlanke} setSchallPutz={setSchallPutz} setSchallRohdichte={setSchallRohdichte} setSchallSollTyp={setSchallSollTyp} setSchallWandTyp={setSchallWandTyp} />}
+        {activeTab === 'schallschutz' && <RechnungSchallschutz schallDicke={schallDicke} schallFlanke={schallFlanke} schallPutz={schallPutz} schallRohdichte={schallRohdichte} schallSollTyp={schallSollTyp} schallWandTyp={schallWandTyp} schall_KF={schall_KF} schall_R_prime_w={schall_R_prime_w} schall_Rw={schall_Rw} schall_erf={schall_erf} schall_m0={schall_m0} schall_m_total={schall_m_total} schall_passed={schall_passed} schall_hinweise={schallErgebnis.hinweise} schall_soll_werte={schall_soll_werte} setSchallDicke={setSchallDicke} setSchallFlanke={setSchallFlanke} setSchallPutz={setSchallPutz} setSchallRohdichte={setSchallRohdichte} setSchallSollTyp={setSchallSollTyp} setSchallWandTyp={setSchallWandTyp} />}
 
         {/* --- 9. TAB CONTENT: BRANDSCHUTZ & HEISSBEMESSUNG --- */}
         {activeTab === 'brandschutz' && <RechnungBrandschutz M_fi_Ed={M_fi_Ed} M_fi_Rd={M_fi_Rd} W_ef_mm3={W_ef_mm3} b_ef_mm={b_ef_mm} beta_char={beta_char} brandBeanspruchung={brandBeanspruchung} brandDauerMin={brandDauerMin} brandSubTab={brandSubTab} brand_holz_passed={brand_holz_passed} d_char_n={d_char_n} d_ef={d_ef} eta_brand_holz={eta_brand_holz} h_ef_mm={h_ef_mm} holzArtBrand={holzArtBrand} holzBreite={holzBreite} holzHoehe={holzHoehe} momentKaltEd={momentKaltEd} setBrandBeanspruchung={setBrandBeanspruchung} setBrandDauerMin={setBrandDauerMin} setBrandSubTab={setBrandSubTab} setHolzArtBrand={setHolzArtBrand} setHolzBreite={setHolzBreite} setHolzHoehe={setHolzHoehe} setMomentKaltEd={setMomentKaltEd} />}

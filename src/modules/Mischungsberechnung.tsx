@@ -1,5 +1,5 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
-import { maxFaFaktor, stoffraum } from '@/src/calc/mischung';
+import { maxFaFaktor, stoffraum, REGELSIEBLINIEN, istSieblinie } from '@/src/calc/mischung';
 import React, { useState, useMemo } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement, LogarithmicScale, RadialLinearScale, Filler } from 'chart.js';
 import '@/src/lib/chartSetup';
@@ -446,33 +446,16 @@ export default function Mischungsberechnung() {
     }]
   };
 
-  // Sieblinien Chart Data
+  // Sieblinien Chart Data – Regelsieblinien und Ist-Linie aus src/calc/mischung.ts (Lehrbuchwerte, vorläufig F-Freigabe)
   const dmax = groesstkorn;
-  let labels: number[] = [];
-  let dataIst = [];
-  let dataA = [];
-  let dataB = [];
-  let dataC = [];
-
-  if (dmax === 32) {
-    labels = [0.125, 4, 8, 16, 32];
-    dataIst = [0, f04, f04 + f48, f04 + f48 + f816, f04 + f48 + f816 + f1632];
-    dataA = [0, 28, 40, 57, 100];
-    dataB = [0, 40, 57, 71, 100];
-    dataC = [0, 57, 71, 85, 100];
-  } else if (dmax === 16) {
-    labels = [0.125, 4, 8, 16];
-    dataIst = [0, f04, f04 + f48, f04 + f48 + f816];
-    dataA = [0, 35, 50, 100];
-    dataB = [0, 50, 71, 100];
-    dataC = [0, 71, 85, 100];
-  } else {
-    labels = [0.125, 4, 8];
-    dataIst = [0, f04, f04 + f48];
-    dataA = [0, 50, 100];
-    dataB = [0, 71, 100];
-    dataC = [0, 85, 100];
-  }
+  const regel = REGELSIEBLINIEN[dmax];
+  const ist = istSieblinie(dmax, { f04, f48, f816, f1632 });
+  const labels: number[] = [...regel.siebe];
+  // unter 4 mm ist die Ist-Linie aus den Fraktionen nicht bestimmbar → Lücke (null)
+  const dataIst: (number | null)[] = regel.siebe.map(d => ist.punkte.find(p => p.sieb === d)?.durchgang ?? null);
+  const dataA = [...regel.A];
+  const dataB = [...regel.B];
+  const dataC = [...regel.C];
 
   const lineChartData = {
     labels,
@@ -514,7 +497,7 @@ export default function Mischungsberechnung() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <MischungEingaben applyWalzSandReduction={applyWalzSandReduction} bauteil={bauteil} biochar={biochar} deltaGesteinMasse={deltaGesteinMasse} deltaLuftVol={deltaLuftVol} empfohleneSandReduktion={empfohleneSandReduktion} expClasses={expClasses} f04={f04} f1632={f1632} f48={f48} f816={f816} fa={fa} feinanteilSand={feinanteilSand} festigkeitsVerlustLP={festigkeitsVerlustLP} feuchte04={feuchte04} feuchte1632={feuchte1632} feuchte48={feuchte48} feuchte816={feuchte816} feuchteBiochar={feuchteBiochar} groesstkorn={groesstkorn} handleBauteilChange={handleBauteilChange} handleGroesstkornChange={handleGroesstkornChange} handleRezepturChange={handleRezepturChange} hues={hues} isFraktionenOk={isFraktionenOk} isLpActive={isLpActive} kBiochar={kBiochar} kFa={kFa} kKsm={kKsm} kSf={kSf} konsistenz={konsistenz} kornArt={kornArt} lpOption={lpOption} luft={luft} minLpNorm={minLpNorm} ppFaser={ppFaser} results={results} rezeptur={rezeptur} rhoGestein={rhoGestein} sandFraktion={sandFraktion} setBiochar={setBiochar} setF04={setF04} setF1632={setF1632} setF48={setF48} setF816={setF816} setFa={setFa} setFeinanteilSand={setFeinanteilSand} setFeuchte04={setFeuchte04} setFeuchte1632={setFeuchte1632} setFeuchte48={setFeuchte48} setFeuchte816={setFeuchte816} setFeuchteBiochar={setFeuchteBiochar} setKBiochar={setKBiochar} setKKsm={setKKsm} setKonsistenz={setKonsistenz} setKornArt={setKornArt} setKsm={setKsm} setLpOption={setLpOption} setLuft={setLuft} setPpFaser={setPpFaser} setRhoGestein={setRhoGestein} setSandFraktion={setSandFraktion} setSf={setSf} setStahlfaser={setStahlfaser} setWa04={setWa04} setWa1632={setWa1632} setWa48={setWa48} setWa816={setWa816} setWaBiochar={setWaBiochar} setWasser={setWasser} setZement={setZement} setZementArt={setZementArt} setZementFestigkeit={setZementFestigkeit} setZusatzmittel={setZusatzmittel} sf={sf} stahlfaser={stahlfaser} sumFraktionen={sumFraktionen} toggleExpClass={toggleExpClass} wa04={wa04} wa1632={wa1632} wa48={wa48} wa816={wa816} waBiochar={waBiochar} wasser={wasser} wasserEinsparungLP={wasserEinsparungLP} zement={zement} zementArt={zementArt} zementFestigkeit={zementFestigkeit} zusatzmittel={zusatzmittel} />
 
-          <MischungErgebnisse betonMengeL={betonMengeL} biochar={biochar} dmax={dmax} expClasses={expClasses} fa={fa} feuchte04={feuchte04} feuchte1632={feuchte1632} feuchte48={feuchte48} feuchte816={feuchte816} feuchteBiochar={feuchteBiochar} hues={hues} lineChartData={lineChartData} luft={luft} pieChartData={pieChartData} ppFaser={ppFaser} results={results} rhoGestein={rhoGestein} setBetonMengeL={setBetonMengeL} sf={sf} stahlfaser={stahlfaser} zement={zement} zementArt={zementArt} zementFestigkeit={zementFestigkeit} zusatzmittel={zusatzmittel} />
+          <MischungErgebnisse betonMengeL={betonMengeL} biochar={biochar} dmax={dmax} expClasses={expClasses} fa={fa} feuchte04={feuchte04} feuchte1632={feuchte1632} feuchte48={feuchte48} feuchte816={feuchte816} feuchteBiochar={feuchteBiochar} hues={hues} lineChartData={lineChartData} sieblinienBereich={ist.bereich} luft={luft} pieChartData={pieChartData} ppFaser={ppFaser} results={results} rhoGestein={rhoGestein} setBetonMengeL={setBetonMengeL} sf={sf} stahlfaser={stahlfaser} zement={zement} zementArt={zementArt} zementFestigkeit={zementFestigkeit} zusatzmittel={zusatzmittel} />
         </div>
 
         <NachErstemBild minHoehe="12rem">

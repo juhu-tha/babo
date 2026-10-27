@@ -182,3 +182,52 @@ export function walzKurve(wz: number, klasse: WalzKlasse) {
     hinweise,
   };
 }
+
+// ---------------------------------------------------------------------------------------------------
+// Regelsieblinien A, B, C für Größtkorn 8, 16 und 32 mm (DIN 1045-2, Anhang L, Bilder L.1–L.3)
+// ---------------------------------------------------------------------------------------------------
+/**
+ * Siebdurchgänge in M.-% der Regelsieblinien. DIN 1045-2 stellt sie in Anhang L (informativ) nur als Diagramm dar;
+ * hinterlegt sind die üblichen Lehrbuchwerte der Regelsieblinien (bereits in DIN 1045:1988 enthalten), z. B. A16/B16/C16
+ * bei 4/8 mm = 36/60, 56/76, 74/88 %.
+ * Vorläufig, F-Freigabe: Abgleich mit den Bildern L.1–L.3 der DIN 1045-2 steht aus (öffentlich nur ohne Zahlenwerte
+ * zugänglich). Bis 27.10.2026 standen im Modul abweichende Werte (z. B. A16/B16/C16 bei 4/8 mm = 35/50, 50/71, 71/85 %).
+ * Siebweiten in mm; das oberste Sieb 31,5 mm wird wie bei den Fraktionen des Moduls als 32 mm geführt.
+ */
+export type Groesstkorn = 8 | 16 | 32;
+export interface Regelsieblinie { siebe: readonly number[]; A: readonly number[]; B: readonly number[]; C: readonly number[] }
+export const REGELSIEBLINIEN: Readonly<Record<Groesstkorn, Regelsieblinie>> = {
+  8: { siebe: [0.25, 0.5, 1, 2, 4, 8], A: [5, 14, 21, 36, 61, 100], B: [11, 26, 42, 57, 74, 100], C: [21, 39, 57, 71, 85, 100] },
+  16: { siebe: [0.25, 0.5, 1, 2, 4, 8, 16], A: [3, 8, 12, 21, 36, 60, 100], B: [8, 20, 32, 42, 56, 76, 100], C: [18, 34, 49, 62, 74, 88, 100] },
+  32: { siebe: [0.25, 0.5, 1, 2, 4, 8, 16, 32], A: [2, 5, 8, 14, 23, 38, 62, 100], B: [8, 18, 28, 37, 47, 62, 80, 100], C: [15, 29, 42, 53, 65, 77, 89, 100] },
+};
+
+/** Durchgang einer Regelsieblinie an einem ihrer Siebe (M.-%); undefined, wenn das Sieb nicht zur Reihe gehört */
+export function regelDurchgang(dmax: Groesstkorn, linie: 'A' | 'B' | 'C', sieb: number): number | undefined {
+  const r = REGELSIEBLINIEN[dmax];
+  const i = r.siebe.indexOf(sieb);
+  return i < 0 ? undefined : r[linie][i];
+}
+
+export type SieblinienBereich = 'unter A' | 'A–B' | 'B–C' | 'über C';
+/** Bereich eines Durchgangs an einem Sieb; Durchgänge genau auf A oder B zählen zum Bereich A–B, genau auf C zu B–C */
+export function bereichAmSieb(dmax: Groesstkorn, sieb: number, durchgang: number): SieblinienBereich | undefined {
+  const a = regelDurchgang(dmax, 'A', sieb), b = regelDurchgang(dmax, 'B', sieb), c = regelDurchgang(dmax, 'C', sieb);
+  if (a === undefined || b === undefined || c === undefined || !Number.isFinite(durchgang)) return undefined;
+  return durchgang < a ? 'unter A' : durchgang <= b ? 'A–B' : durchgang <= c ? 'B–C' : 'über C';
+}
+
+/**
+ * Ist-Sieblinie aus den Fraktionsanteilen 0/4, 4/8, 8/16, 16/32 (M.-%) an den Sieben 4 mm … D_max und Einordnung je Sieb.
+ * Unterhalb 4 mm ist die Ist-Linie aus den Fraktionen nicht bestimmbar (dafür wäre die Sieblinie des Sandes nötig). Das
+ * Größtkorn-Sieb wird nicht eingeordnet; `bereich` ist nur gesetzt, wenn alle eingeordneten Siebe im selben Bereich liegen.
+ */
+export function istSieblinie(dmax: Groesstkorn, fraktionen: { f04: number; f48: number; f816: number; f1632: number }) {
+  const s8 = fraktionen.f04 + fraktionen.f48, s16 = s8 + fraktionen.f816;
+  const summen: Readonly<Record<number, number>> = { 4: fraktionen.f04, 8: s8, 16: s16, 32: s16 + fraktionen.f1632 };
+  const punkte = REGELSIEBLINIEN[dmax].siebe.filter(d => d >= 4).map(d => ({ sieb: d, durchgang: summen[d] }));
+  const eingeordnet = punkte.filter(p => p.sieb < dmax).map(p => ({ ...p, bereich: bereichAmSieb(dmax, p.sieb, p.durchgang) }));
+  const bereiche = new Set(eingeordnet.map(p => p.bereich));
+  const bereich: SieblinienBereich | undefined = bereiche.size === 1 ? eingeordnet[0]?.bereich : undefined;
+  return { punkte, eingeordnet, bereich };
+}

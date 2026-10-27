@@ -42,6 +42,7 @@ export default function Querkraftbemessung() {
   const [b, setB] = useState(30); // Breite in cm
   const [h, setH] = useState(50); // Höhe in cm
   const [d1, setD1] = useState(5); // Betondeckung + halber Stabdurchmesser in cm
+  const [cvl, setCvl] = useState(3.5); // Verlegemaß der Längsbewehrung in der Druckzone c_v,l in cm (nur Hinweis zur NA-Grenze von z)
 
   // Material
   const [fck, setFck] = useState(30); // Betonfestigkeitsklasse C30/37
@@ -56,8 +57,8 @@ export default function Querkraftbemessung() {
   const [theta, setTheta] = useState(40); // Druckstrebenneigung in Grad (18.4° bis 45°)
 
   const results = useMemo(
-    () => bemesseQuerkraft({ b, h, d1, fck, bewehrung: bewehrungsArt, fyk, ftk, gammaFRP, asl, vEd, theta }),
-    [b, h, d1, fck, bewehrungsArt, fyk, ftk, gammaFRP, asl, vEd, theta]
+    () => bemesseQuerkraft({ b, h, d1, fck, bewehrung: bewehrungsArt, fyk, ftk, gammaFRP, asl, vEd, theta, cvl }),
+    [b, h, d1, cvl, fck, bewehrungsArt, fyk, ftk, gammaFRP, asl, vEd, theta]
   );
 
   // Diagrammdaten: a_sw über V_Ed
@@ -158,6 +159,7 @@ export default function Querkraftbemessung() {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <Slider info={inhalt.werte.abstandVomRandZur} label={<FormulaText text={inhalt.werte.randabstandD1} />} min={2} max={10} step={0.5} value={d1} unit="cm" onChange={(e) => setD1(Number(e.target.value))} />
+                  <Slider info={inhalt.werte.cvlInfo} label={<FormulaText text={inhalt.werte.cvlLabel} />} min={1} max={8} step={0.5} value={cvl} unit="cm" onChange={(e) => setCvl(Number(e.target.value))} />
                   <Slider info={inhalt.werte.vorhandeneLängsbewehrungsflächeFürVrd} label={<FormulaText text={inhalt.werte.längsbewASl} />} min={0} max={50} step={0.5} value={asl} unit="cm²" onChange={(e) => setAsl(Number(e.target.value))} />
                 </div>
                 

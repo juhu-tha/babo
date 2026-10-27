@@ -258,9 +258,9 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 39 korrigiert, 0 fraglich, 0
 
 ### qn_mischungsberechnung_4 · Mischungsberechnung
 
-- **Frage:** Ein Gemisch mit D_max = 16 mm hat die Durchgänge 45 % bei 4 mm und 65 % bei 8 mm. Regelsieblinien bei 4/8 mm: A16 = 35/50 %, B16 = 50/71 %, C16 = 71/85 %. Wie ist die Ist-Sieblinie einzuordnen?
+- **Frage:** Ein Gemisch mit D_max = 16 mm hat die Durchgänge 45 % bei 4 mm und 65 % bei 8 mm. Regelsieblinien bei 4/8 mm: A16 = 36/60 %, B16 = 56/76 %, C16 = 74/88 %. Wie ist die Ist-Sieblinie einzuordnen?
 - **Richtige Antwort:** Zwischen A16 und B16 – günstiger Bereich
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Regelsieblinien A16/B16/C16 auf die üblichen Lehrbuchwerte nach DIN 1045-2 Anh. L korrigiert (4/8 mm: 36/60, 56/76, 74/88 %; vorläufig, F-Freigabe), Einordnung unverändert A–B, geprüft mit src/calc/mischung.ts – korrigiert
 - [ ] ok
 - [x] ändern: Klärung erforderlich: Die im Fragetext (und im Modul Mischungsberechnung, Sieblinien-Diagramm) genannten Durchgänge A16 = 35/50 %, B16 = 50/71 %, C16 = 71/85 % bei 4/8 mm weichen vermutlich von den Regelsieblinien nach DIN 1045-2, Anhang L ab (dort nach Literatur etwa A16 36/60 %, B16 56/76 %, C16 74/88 %); öffentlich nicht verifizierbar. Die Antwort „zwischen A16 und B16“ bliebe mit beiden Wertesätzen richtig. Werte am Normtext prüfen.
 

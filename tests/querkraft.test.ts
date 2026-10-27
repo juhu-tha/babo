@@ -1,5 +1,5 @@
 // Rechenkern Querkraftbemessung (Umsetzungsplan Phase 4, AP 4.3)
-import { bemesseQuerkraft, kappa1Vmin, type QuerkraftEingabe } from '../src/calc/querkraft';
+import { bemesseQuerkraft, kappa1Vmin, zMaxNA, type QuerkraftEingabe } from '../src/calc/querkraft';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -49,6 +49,17 @@ pruefe(r.cot_theta_eff === r.cot_theta, 'cot θ unverändert, wenn zulässig');
 // V_Rd,max überschritten
 pruefe(bemesseQuerkraft({ ...basis, vEd: 900 }).isVRdMaxExceeded, 'V_Rd,max überschritten');
 
+// 2b. Hebelarm-Grenze NA DE, NDP 6.2.3(1) (Prüfamt-Tipp 15/04, LBV Brandenburg): z ≤ max(d − c_v,l − 3 cm; d − 2·c_v,l)
+//     d = 45 cm, c_v,l = 3,5 cm → max(38,5; 38,0) = 38,5 cm < 0,9·d = 40,5 cm → Hinweis, Rechnung unverändert mit 0,9·d
+pruefe(zMaxNA(45, 3.5) === 38.5 && zMaxNA(45, 2) === 41 && zMaxNA(100, 4) === 93, 'z_max nach NA');
+const rz = bemesseQuerkraft({ ...basis, cvl: 3.5 });
+pruefe(nahe(rz.zMaxNA, 38.5, 1e-12) && rz.hinweise.some(x => x.feld === 'z' && x.text.includes('38,5 cm') && x.text.includes('5 %')), 'Hinweis z-Grenze bei kleinem Querschnitt');
+pruefe(rz.z === r.z && rz.asw_req === r.asw_req, 'z = 0,9·d bleibt Rechenwert');
+// großer Querschnitt: d = 145 cm, c_v,l = 3,5 → z_max = 138,5 > 130,5 → kein Hinweis; ohne c_v,l kein Hinweis, z_max = NaN
+pruefe(!bemesseQuerkraft({ ...basis, h: 150, cvl: 3.5 }).hinweise.some(x => x.feld === 'z'), 'kein Hinweis bei großem d');
+pruefe(Number.isNaN(r.zMaxNA) && !r.hinweise.some(x => x.feld === 'z'), 'ohne c_v,l keine Prüfung');
+pruefe(bemesseQuerkraft({ ...basis, cvl: 0 }).hinweise.some(x => x.stufe === 'fehler' && x.feld === 'cvl') && bemesseQuerkraft({ ...basis, cvl: 50 }).hinweise.some(x => x.feld === 'cvl'), 'c_v,l unzulässig');
+
 // 3. Unsinnige Eingaben
 for (const u of [{ d1: 50 }, { b: 0 }, { h: -1 }, { fck: 0 }, { theta: 0 }, { theta: 90 }, { vEd: -1 }, { asl: -1 }, { vEd: NaN }] as Partial<QuerkraftEingabe>[]) {
   const ru = bemesseQuerkraft({ ...basis, ...u });
@@ -59,7 +70,7 @@ let seed = 7;
 const z = (a: number, b: number) => { seed = (seed * 1103515245 + 12345) % 2147483648; return a + (b - a) * (seed / 2147483648); };
 for (let i = 0; i < 1000; i++) {
   const e: QuerkraftEingabe = { b: z(-5, 100), h: z(-5, 150), d1: z(-2, 30), fck: z(-5, 100), bewehrung: (['Stahl', 'GFK'] as const)[i % 2],
-    fyk: z(-5, 700), ftk: z(-5, 2000), gammaFRP: z(-1, 2), asl: z(-5, 80), vEd: z(-100, 3000), theta: z(-10, 100) };
+    fyk: z(-5, 700), ftk: z(-5, 2000), gammaFRP: z(-1, 2), asl: z(-5, 80), vEd: z(-100, 3000), theta: z(-10, 100), cvl: i % 3 === 0 ? undefined : z(-1, 10) };
   const ru = bemesseQuerkraft(e);
   if (![ru.asw_final, ru.vRd_c, ru.vRd_max, ru.cot_theta_max].every(Number.isFinite)) { pruefe(false, `Fuzz ${JSON.stringify(e)}`); break; }
 }

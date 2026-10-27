@@ -49,6 +49,7 @@ export default function Betonkennwerte() {
   const [loadingAgeT0, setLoadingAgeT0] = useState<number>(28); // d
   const [targetAgeT, setTargetAgeT] = useState<number>(18250); // 50 Jahre (18250 d)
   const [ambientTempT, setAmbientTempT] = useState<number>(20); // °C
+  const [festigkeitMitTT, setFestigkeitMitTT] = useState<boolean>(true); // wirksames Alter t_T auch für f_cm(t) (fib MC 2010)
   const [axialStressSigmaC, setAxialStressSigmaC] = useState<number>(8.0); // MPa
   const [elementLengthL, setElementLengthL] = useState<number>(12.0); // m
 
@@ -76,7 +77,8 @@ export default function Betonkennwerte() {
     temperatur: ambientTempT,
     sigmaC: axialStressSigmaC,
     laenge: elementLengthL,
-  }), [cementClass, aggregateType, relativeHumidity, areaAc, perimeterU, elementHeightH, curingDaysTs, loadingAgeT0, targetAgeT, ambientTempT, axialStressSigmaC, elementLengthL, baseConcrete]);
+    festigkeitMitWirksamemAlter: festigkeitMitTT,
+  }), [festigkeitMitTT, cementClass, aggregateType, relativeHumidity, areaAc, perimeterU, elementHeightH, curingDaysTs, loadingAgeT0, targetAgeT, ambientTempT, axialStressSigmaC, elementLengthL, baseConcrete]);
 
   // Quiz-Fragen zur Überprüfung (Stufe 4 des Lehrpfads)
   const QUIZ_ITEMS = inhalt.daten["Betonkennwerte.QUIZ_ITEMS"];
@@ -112,7 +114,7 @@ export default function Betonkennwerte() {
       {/* ===================================================================== */}
       {/* TAB 1: INTERAKTIVER EC2 KENNWERTRECHNER                               */}
       {/* ===================================================================== */}
-      {activeTab === 'rechner' && <RechnerTab aggregateType={aggregateType} ambientTempT={ambientTempT} areaAc={areaAc} axialStressSigmaC={axialStressSigmaC} baseConcrete={baseConcrete} calcResults={calcResults} cementClass={cementClass} curingDaysTs={curingDaysTs} elementHeightH={elementHeightH} elementLengthL={elementLengthL} loadingAgeT0={loadingAgeT0} perimeterU={perimeterU} relativeHumidity={relativeHumidity} selectedClassIdx={selectedClassIdx} setAggregateType={setAggregateType} setAmbientTempT={setAmbientTempT} setAreaAc={setAreaAc} setAxialStressSigmaC={setAxialStressSigmaC} setCementClass={setCementClass} setCuringDaysTs={setCuringDaysTs} setElementHeightH={setElementHeightH} setElementLengthL={setElementLengthL} setLoadingAgeT0={setLoadingAgeT0} setPerimeterU={setPerimeterU} setRelativeHumidity={setRelativeHumidity} setSelectedClassIdx={setSelectedClassIdx} targetAgeT={targetAgeT} />}
+      {activeTab === 'rechner' && <RechnerTab aggregateType={aggregateType} ambientTempT={ambientTempT} festigkeitMitTT={festigkeitMitTT} setFestigkeitMitTT={setFestigkeitMitTT} areaAc={areaAc} axialStressSigmaC={axialStressSigmaC} baseConcrete={baseConcrete} calcResults={calcResults} cementClass={cementClass} curingDaysTs={curingDaysTs} elementHeightH={elementHeightH} elementLengthL={elementLengthL} loadingAgeT0={loadingAgeT0} perimeterU={perimeterU} relativeHumidity={relativeHumidity} selectedClassIdx={selectedClassIdx} setAggregateType={setAggregateType} setAmbientTempT={setAmbientTempT} setAreaAc={setAreaAc} setAxialStressSigmaC={setAxialStressSigmaC} setCementClass={setCementClass} setCuringDaysTs={setCuringDaysTs} setElementHeightH={setElementHeightH} setElementLengthL={setElementLengthL} setLoadingAgeT0={setLoadingAgeT0} setPerimeterU={setPerimeterU} setRelativeHumidity={setRelativeHumidity} setSelectedClassIdx={setSelectedClassIdx} targetAgeT={targetAgeT} />}
 
       {/* ===================================================================== */}
       {/* TAB 2: VOLLSTÄNDIGE EC2 TABELLE 3.1 MATRIX                            */}
