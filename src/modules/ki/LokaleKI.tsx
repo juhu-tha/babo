@@ -19,6 +19,7 @@ import {
 import ModelBenchmarkMatrix from '@/src/modules/ki/ModelBenchmarkMatrix';
 import inhalt from '@/content/ki/LokaleKI.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 interface RecommendedModel {
   name: string;
@@ -33,8 +34,21 @@ interface RecommendedModel {
 
 const LOCAL_MODELS: RecommendedModel[] = inhalt.daten.LOCAL_MODELS;
 
+type LokalTab = 'warum' | 'anleitung' | 'modelle' | 'benchmark' | 'hardware' | 'server' | 'rechner';
+
+/** Reiter (Z53: Gliederung langer Module über ModuleTabs) */
+const LOKAL_TABS: readonly ModulTab<LokalTab>[] = [
+  { id: 'anleitung', label: inhalt.texte.t1LmStudioSchritt.trim(), icon: Download },
+  { id: 'warum', label: inhalt.texte.t2WarumLokalIm.trim(), icon: ShieldCheck },
+  { id: 'modelle', label: inhalt.texte.t3ModellEmpfehlungenGguf.trim(), icon: Database },
+  { id: 'benchmark', label: inhalt.texte.t4BenchmarkingCloudVs.trim(), icon: Gauge },
+  { id: 'server', label: inhalt.texte.t5LokalerServerApi.trim(), icon: Terminal },
+  { id: 'hardware', label: inhalt.texte.t6HardwareDimensionierung.trim(), icon: Cpu },
+  { id: 'rechner', label: inhalt.texte.t7VramEignungsrechner.trim(), icon: Sliders },
+];
+
 export default function LokaleKI() {
-  const [activeSubTab, setActiveSubTab] = useState<'warum' | 'anleitung' | 'modelle' | 'benchmark' | 'hardware' | 'server' | 'rechner'>('anleitung');
+  const [activeSubTab, setActiveSubTab] = useState<LokalTab>('anleitung');
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
   // Hardware Calculator
@@ -61,73 +75,10 @@ export default function LokaleKI() {
             <Lock size={13} className="text-emerald-600" /><MdText text={inhalt.texte.offlineDatensparsam} /></span>
         </div>
 
-        {/* SUB-TABS */}
-        <div className="flex flex-wrap gap-2 pt-5 border-b border-home-grau/20 mt-2">
-          <button aria-pressed={activeSubTab === 'anleitung'}
-            onClick={() => setActiveSubTab('anleitung')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              activeSubTab === 'anleitung'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <Download size={14} /><MdText text={inhalt.texte.t1LmStudioSchritt} /></button>
-          <button aria-pressed={activeSubTab === 'warum'}
-            onClick={() => setActiveSubTab('warum')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              activeSubTab === 'warum'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <ShieldCheck size={14} /><MdText text={inhalt.texte.t2WarumLokalIm} /></button>
-          <button aria-pressed={activeSubTab === 'modelle'}
-            onClick={() => setActiveSubTab('modelle')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              activeSubTab === 'modelle'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <Database size={14} /><MdText text={inhalt.texte.t3ModellEmpfehlungenGguf} /></button>
-          <button aria-pressed={activeSubTab === 'benchmark'}
-            onClick={() => setActiveSubTab('benchmark')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              activeSubTab === 'benchmark'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <Gauge size={14} /><MdText text={inhalt.texte.t4BenchmarkingCloudVs} /></button>
-          <button aria-pressed={activeSubTab === 'server'}
-            onClick={() => setActiveSubTab('server')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              activeSubTab === 'server'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <Terminal size={14} /><MdText text={inhalt.texte.t5LokalerServerApi} /></button>
-          <button aria-pressed={activeSubTab === 'hardware'}
-            onClick={() => setActiveSubTab('hardware')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              activeSubTab === 'hardware'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <Cpu size={14} /><MdText text={inhalt.texte.t6HardwareDimensionierung} /></button>
-          <button aria-pressed={activeSubTab === 'rechner'}
-            onClick={() => setActiveSubTab('rechner')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              activeSubTab === 'rechner'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <Sliders size={14} /><MdText text={inhalt.texte.t7VramEignungsrechner} /></button>
-        </div>
       </div>
+
+      <ModuleTabs label={inhalt.texte.lokaleKiLmStudio.trim()} tabs={LOKAL_TABS} aktiv={activeSubTab} onWechsel={setActiveSubTab} className="space-y-6">
+      <div className="space-y-6">
 
       {/* TAB 1: SCHRITT FÜR SCHRITT ANLEITUNG LM STUDIO */}
       {activeSubTab === 'anleitung' && (
@@ -528,6 +479,8 @@ export default function LokaleKI() {
           </div>
         </div>
       )}
+      </div>
+      </ModuleTabs>
 
     </div>
   );

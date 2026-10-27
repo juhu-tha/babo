@@ -24,8 +24,19 @@ import {
 } from 'lucide-react';
 import inhalt from '@/content/ki/Systemarchitektur.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+
+type SystemBereich = 'schichten' | 'technologien' | 'vergleich';
+
+/** Reiter (Z53: Gliederung langer Module über ModuleTabs) */
+const SYSTEM_TABS: readonly ModulTab<SystemBereich>[] = [
+  { id: 'schichten', label: 'Schichtenmodell', icon: Layers },
+  { id: 'technologien', label: 'Technologien Schritt für Schritt', icon: Boxes },
+  { id: 'vergleich', label: 'Vergleichsmatrix', icon: Scale },
+];
 
 export default function Systemarchitektur() {
+  const [bereich, setBereich] = useState<SystemBereich>('schichten');
   const [activeTier, setActiveTier] = useState<string>('all');
   const [selectedTech, setSelectedTech] = useState<'ml' | 'dl' | 'llm' | 'rag' | 'vision' | 'agenten' | 'edge'>('ml');
   const [techViewMode, setTechViewMode] = useState<'funktionsweise' | 'einsatzzwecke' | 'daten' | 'grenzen'>('funktionsweise');
@@ -143,7 +154,10 @@ export default function Systemarchitektur() {
         </div>
       </div>
 
+      {/* Reiter (Z53): Schichtenmodell, Technologien, Vergleichsmatrix */}
+      <ModuleTabs label="Bereiche der Systemarchitektur" tabs={SYSTEM_TABS} aktiv={bereich} onWechsel={setBereich} className="flex flex-col gap-6">
       {/* 2. DAS SCHICHTENMODELL DER BAU-KI (PIPELINE) */}
+      {bereich === 'schichten' && (
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-5">
         <div className="flex flex-wrap items-center justify-between gap-2 border-b border-home-grau/20 pb-3">
           <div>
@@ -304,8 +318,10 @@ export default function Systemarchitektur() {
           <span className="text-[10px] font-mono text-slate-500"><MdText text={inhalt.texte.iso19650DinEn} /></span>
         </div>
       </div>
+      )}
 
       {/* 3. SCHRITTWEISE TECHNOLOGIE-ERKLÄRUNG (INTERAKTIVE DETAIL-MATRIX) */}
+      {bereich === 'technologien' && (
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-6">
         <div>
           <h3 className="text-base font-bold text-text-main flex items-center gap-2">
@@ -526,8 +542,10 @@ export default function Systemarchitektur() {
           </div>
         )}
       </div>
+      )}
 
       {/* 4. VERGLEICHENDE SYSTEMARCHITEKTUR-MATRIX */}
+      {bereich === 'vergleich' && (
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
         <h3 className="text-base font-bold text-text-main flex items-center gap-2">
           <Scale className="text-shiraz" size={18} />
@@ -608,6 +626,8 @@ export default function Systemarchitektur() {
           </table>
         </div>
       </div>
+      )}
+      </ModuleTabs>
 
       {/* 5. STANDARDISIERTER FOOTER GEMÄSS RULE[GEMINI_md] */}
       <ModuleFooter

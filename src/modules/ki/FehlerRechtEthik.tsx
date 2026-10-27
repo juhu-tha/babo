@@ -21,6 +21,7 @@ import { InlineMath } from 'react-katex';
 import KiDeklarationGuide from '@/src/modules/ki/KiDeklarationGuide';
 import inhalt from '@/content/ki/FehlerRechtEthik.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
 interface LimitationCase {
   id: string;
@@ -76,8 +77,20 @@ const LIMITATION_CASES: LimitationCase[] = [
   }
 ];
 
+type FehlerTab = 'grenzen' | 'haftung' | 'datenschutz' | 'ethik' | 'simulator' | 'deklaration';
+
+/** Reiter (Z53: Gliederung langer Module über ModuleTabs) */
+const FEHLER_TABS: readonly ModulTab<FehlerTab>[] = [
+  { id: 'grenzen', label: inhalt.texte.t1TechnischeGrenzenHalluzinationen.trim(), icon: FileWarning },
+  { id: 'haftung', label: inhalt.texte.t2BgbHaftungEu.trim(), icon: Scale },
+  { id: 'datenschutz', label: inhalt.texte.t3DatenschutzGeschäftsgeheimnis.trim(), icon: Lock },
+  { id: 'ethik', label: inhalt.texte.t4EthikÖkologieBias.trim(), icon: Leaf },
+  { id: 'simulator', label: inhalt.texte.t5InteraktiverRisikoCheck.trim(), icon: Sliders },
+  { id: 'deklaration', label: inhalt.texte.t6KiDeklarationThesen.trim(), icon: GraduationCap },
+];
+
 export default function FehlerRechtEthik() {
-  const [activeSubTab, setActiveSubTab] = useState<'grenzen' | 'haftung' | 'datenschutz' | 'ethik' | 'simulator' | 'deklaration'>('grenzen');
+  const [activeSubTab, setActiveSubTab] = useState<FehlerTab>('grenzen');
   const [selectedCase, setSelectedCase] = useState<string>('case_ec2_safety');
   const [copiedTextId, setCopiedTextId] = useState<string | null>(null);
 
@@ -128,64 +141,10 @@ export default function FehlerRechtEthik() {
             <AlertTriangle size={13} className="text-red-600" /><MdText text={inhalt.texte.kritischeSicherheitszone} /></span>
         </div>
 
-        {/* SUB-TABS */}
-        <div className="flex flex-wrap gap-2 pt-5 border-b border-home-grau/20 mt-2">
-          <button aria-pressed={activeSubTab === 'grenzen'}
-            onClick={() => setActiveSubTab('grenzen')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              activeSubTab === 'grenzen'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <FileWarning size={14} /><MdText text={inhalt.texte.t1TechnischeGrenzenHalluzinationen} /></button>
-          <button aria-pressed={activeSubTab === 'haftung'}
-            onClick={() => setActiveSubTab('haftung')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              activeSubTab === 'haftung'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <Scale size={14} /><MdText text={inhalt.texte.t2BgbHaftungEu} /></button>
-          <button aria-pressed={activeSubTab === 'datenschutz'}
-            onClick={() => setActiveSubTab('datenschutz')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              activeSubTab === 'datenschutz'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <Lock size={14} /><MdText text={inhalt.texte.t3DatenschutzGeschäftsgeheimnis} /></button>
-          <button aria-pressed={activeSubTab === 'ethik'}
-            onClick={() => setActiveSubTab('ethik')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              activeSubTab === 'ethik'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <Leaf size={14} /><MdText text={inhalt.texte.t4EthikÖkologieBias} /></button>
-          <button aria-pressed={activeSubTab === 'simulator'}
-            onClick={() => setActiveSubTab('simulator')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              activeSubTab === 'simulator'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <Sliders size={14} /><MdText text={inhalt.texte.t5InteraktiverRisikoCheck} /></button>
-          <button aria-pressed={activeSubTab === 'deklaration'}
-            onClick={() => setActiveSubTab('deklaration')}
-            className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
-              activeSubTab === 'deklaration'
-                ? 'bg-shiraz text-white border-shiraz shadow-sm'
-                : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
-            }`}
-          >
-            <GraduationCap size={14} /><MdText text={inhalt.texte.t6KiDeklarationThesen} /></button>
-        </div>
       </div>
+
+      <ModuleTabs label="Bereiche Fehler, Recht und Ethik" tabs={FEHLER_TABS} aktiv={activeSubTab} onWechsel={setActiveSubTab} className="space-y-6">
+      <div className="space-y-6">
 
       {/* TAB 1: FEHLER & ANWENDUNGSGRENZEN */}
       {activeSubTab === 'grenzen' && (
@@ -685,6 +644,8 @@ export default function FehlerRechtEthik() {
           <KiDeklarationGuide />
         </div>
       )}
+      </div>
+      </ModuleTabs>
 
     </div>
   );

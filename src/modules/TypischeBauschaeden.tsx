@@ -17,6 +17,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { useTabContext } from '@/src/contexts/TabContext';
 import inhalt from '@/content/typischebauschaeden/TypischeBauschaeden.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 type TypSchadTab = 'feuchtigkeit' | 'risse' | 'korrosion' | 'unvertraeglichkeiten' | 'tief_ingenieurbau' | 'analysator';
 
@@ -47,30 +48,9 @@ export default function TypischeBauschaeden() {
           <p><MdText text={inhalt.texte.detailliertesFachwissenZuPhysikalisch} /></p>
         </div>
 
-        {/* Dynamic Multi-Tab Navigation */}
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-2 border-b border-home-grau/30 pb-4">
-          {tabs.map((tab) => {
-            const Icon = tab.icon;
-            const isActive = activeSubTab === tab.id;
-            return (
-              <button
-                key={tab.id}
-                onClick={() => {
-                  setActiveSubTab(tab.id);
-                }}
-                className={`py-3 px-2 rounded-xl border text-center flex flex-col items-center justify-between gap-1.5 transition-all ${
-                  isActive 
-                    ? 'bg-shiraz/5 border-shiraz text-shiraz shadow-sm ring-1 ring-shiraz/20' 
-                    : 'bg-slate-50/50 border-home-grau/30 hover:bg-slate-50 hover:border-home-grau/30 text-slate-700'
-                }`}
-                title={tab.desc}
-              >
-                <Icon size={18} className={isActive ? 'text-shiraz animate-bounce' : 'text-slate-500'} />
-                <span className="font-bold text-xs md:text-sm tracking-tight">{tab.label}</span>
-              </button>
-            );
-          })}
-        </div>
+        {/* Reiter (Z53: ModuleTabs; die Kurzbeschreibung des aktiven Reiters steht sichtbar über dem Inhalt) */}
+        <ModuleTabs label="Kategorien typischer Bauschäden" tabs={tabs} aktiv={activeSubTab} onWechsel={setActiveSubTab} variante="kachel" className="flex flex-col gap-4 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/30 [&>[role=tablist]]:pb-4">
+        <p className="text-xs text-text-main/70">{tabs.find(t => t.id === activeSubTab)?.desc}</p>
 
         {/* Tab Content Area */}
         <div className="mt-2 text-sm text-text-main">
@@ -689,6 +669,7 @@ export default function TypischeBauschaeden() {
           )}
 
         </div>
+        </ModuleTabs>
       </div>
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}

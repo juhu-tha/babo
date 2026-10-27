@@ -15,34 +15,35 @@ import { MdText } from '@/src/components/inhalt/MdText';
 export type LcaTeil = 'grundlagen' | 'rechner' | 'ingenieurbau' | 'regulatorik';
 type LcaTab = 'LCA' | 'InteractiveCalc' | 'Ingenieurbau' | 'TransportbetonExcel' | 'Praxiswerkstatt' | 'Regulatorik';
 
-/** Ökobilanzierung, aufgeteilt in vier Module (AP 3.8): Grundlagen, Rechner & QNG, Ingenieurbau, Rechtsrahmen & Praxis */
-const TEILE: Record<LcaTeil, { titel: string; text: React.ReactNode; tabs: { id: LcaTab; label: string; icon: typeof Leaf }[]; moduleId: string }> = {
+/** Ökobilanzierung, aufgeteilt in vier Module (AP 3.8): Grundlagen, Rechner & QNG, Ingenieurbau, Rechtsrahmen & Praxis.
+ *  Der Inhalt jedes Reiters steht beim Teil (Z53: Ansichtsumfang je Modul-ID in tests/kurzfassung.test.ts messbar). */
+const TEILE: Record<LcaTeil, { titel: string; text: React.ReactNode; tabs: { id: LcaTab; label: string; icon: typeof Leaf; inhalt: React.ReactNode }[]; moduleId: string }> = {
   grundlagen: {
     titel: inhaltJson.werte.ökobilanzierungLcaGrundlagen,
     text: <><MdText text={inhaltJson.texte.normenLebenszyklusphasenABis} /></>,
-    tabs: [{ id: 'LCA', label: inhaltJson.werte.ökobilanzierungLcaGrundlagen2, icon: BookOpen }],
+    tabs: [{ id: 'LCA', label: inhaltJson.werte.ökobilanzierungLcaGrundlagen2, icon: BookOpen, inhalt: <LCA /> }],
     moduleId: 'oekobilanz_lca',
   },
   rechner: {
     titel: inhaltJson.werte.lcaRechnerQngNachweis,
     text: <><MdText text={inhaltJson.texte.coBilanzVonGebäudevarianten} /></>,
     tabs: [
-      { id: 'InteractiveCalc', label: inhaltJson.werte.interaktiverCoRechnerModul, icon: Calculator },
-      { id: 'Praxiswerkstatt', label: inhaltJson.werte.wandaufbauQngNachweisLeitfaden, icon: Leaf },
-      { id: 'TransportbetonExcel', label: inhaltJson.werte.excelÜbungTransportbetonDownload, icon: FileSpreadsheet },
+      { id: 'InteractiveCalc', label: inhaltJson.werte.interaktiverCoRechnerModul, icon: Calculator, inhalt: <InteractiveLCACalc /> },
+      { id: 'Praxiswerkstatt', label: inhaltJson.werte.wandaufbauQngNachweisLeitfaden, icon: Leaf, inhalt: <Nachhaltigkeit bereiche={['wandkonfigurator', 'qng_nachweis', 'leitfaden']} /> },
+      { id: 'TransportbetonExcel', label: inhaltJson.werte.excelÜbungTransportbetonDownload, icon: FileSpreadsheet, inhalt: <TransportbetonLcaUebung /> },
     ],
     moduleId: 'lca_rechner',
   },
   ingenieurbau: {
     titel: inhaltJson.werte.lcaImIngenieurbauDin,
     text: <><MdText text={inhaltJson.texte.ökobilanzVonIngenieurbauwerkenUnd} /></>,
-    tabs: [{ id: 'Ingenieurbau', label: inhaltJson.werte.dinEn17472Ingenieurbau, icon: Milestone }],
+    tabs: [{ id: 'Ingenieurbau', label: inhaltJson.werte.dinEn17472Ingenieurbau, icon: Milestone, inhalt: <IngenieurbauLCA /> }],
     moduleId: 'lca_ingenieurbau',
   },
   regulatorik: {
     titel: inhaltJson.werte.rechtsrahmenCrremPraxis,
     text: <><MdText text={inhaltJson.texte.hierarchischesRechtsrahmenKompendiumBaup} /></>,
-    tabs: [{ id: 'Regulatorik', label: inhaltJson.werte.crremRechtsrahmenPraxis, icon: Leaf }],
+    tabs: [{ id: 'Regulatorik', label: inhaltJson.werte.crremRechtsrahmenPraxis, icon: Leaf, inhalt: <Nachhaltigkeit bereiche={['crrem_regulatorik', 'praxis_innovationen']} /> }],
     moduleId: 'lca_regulatorik',
   },
 };
@@ -53,12 +54,7 @@ export default function OekobilanzLCA({ teil = 'grundlagen' }: { teil?: LcaTeil 
   const tabs = t.tabs;
   const inhalt = (
     <div className="p-6">
-      {activeTab === 'LCA' && <LCA />}
-      {activeTab === 'InteractiveCalc' && <InteractiveLCACalc />}
-      {activeTab === 'Ingenieurbau' && <IngenieurbauLCA />}
-      {activeTab === 'TransportbetonExcel' && <TransportbetonLcaUebung />}
-      {activeTab === 'Praxiswerkstatt' && <Nachhaltigkeit bereiche={['wandkonfigurator', 'qng_nachweis', 'leitfaden']} />}
-      {activeTab === 'Regulatorik' && <Nachhaltigkeit bereiche={['crrem_regulatorik', 'praxis_innovationen']} />}
+      {tabs.find(x => x.id === activeTab)?.inhalt}
     </div>
   );
 
