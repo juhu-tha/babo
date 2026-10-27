@@ -7,7 +7,7 @@ import { MdText } from '@/src/components/inhalt/MdText';
 // Erklärung zur Barrierefreiheit nach Art. 13 BayBGG i. V. m. § 11 BayDiV und Richtlinie (EU) 2016/2102
 // (Umsetzungsplan Phase 1, AP 1.4). Liste der Mängel nach jeder Prüfung aktualisieren (Phase 2, AP 2.1).
 
-const STAND = '26.10.2026';
+const STAND = '27.10.2026';
 
 const Abschnitt = ({ icon: Icon, titel, children }: { icon: React.ComponentType<{ size?: number; className?: string }>; titel: string; children: React.ReactNode }) => (
   <section className="space-y-2">
@@ -41,7 +41,8 @@ export default function Barrierefreiheit() {
             <ul className="list-disc list-outside space-y-1.5 pl-5">
               <li><MdText text={inhalt.texte.reiterleistenOhneTablist} /></li>
               <li><MdText text={inhalt.texte.diagrammeUndInteraktiveGrafiken} /></li>
-              <li><MdText text={inhalt.texte.hauptueberschriftDoppelt} /></li>
+              <li><MdText text={inhalt.texte.formelnMathematisch} /></li>
+              <li><MdText text={inhalt.texte.nutzertestAusstehend} /></li>
             </ul>
           </Abschnitt>
 
