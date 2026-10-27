@@ -810,7 +810,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
       { stufe: "Anwenden", text: "einen Systemprompt mit Rollendefinition, Normbezug, Formatvorgaben und Halluzinationsverbot für eine ingenieurtechnische Aufgabe zusammenstellen." },
       { stufe: "Analysieren", text: "den Tokenbedarf und die Kosten verschiedener Dokumentformate (Scan, PDF, Office, Markdown) mit dem Token-Kostenrechner vergleichen." },
       { stufe: "Anwenden", text: "aus einer Stichprobe die Fehlerquote von KI-Normzitaten schätzen und die Trefferwahrscheinlichkeit eines Mehrheitsentscheids aus drei Abfragen berechnen." },
-      { stufe: "Bewerten", text: "für typische Büroaufgaben begründet auswählen, ob Claude, ChatGPT, Websuche oder Code-Ausführung eingesetzt werden sollte." },
+      { stufe: "Bewerten", text: "für typische Büroaufgaben begründet auswählen, ob ein dokumenten- und code-orientierter LLM-Assistent, ein datenanalyse-orientierter Assistent, Websuche oder Code-Ausführung eingesetzt werden sollte." },
     ],
   },
   ki_lokal: {

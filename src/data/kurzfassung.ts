@@ -40,7 +40,7 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "Unstrukturiertes Copy-Paste in Sprachmodelle führt im Bauwesen zu Halluzinationen und veralteten Normständen; Projektwissen, Skills, Konnektoren und Browser-Grounding machen daraus verlässlichere Werkzeuge.",
     "Projektbereiche mit großem Kontextfenster halten Bodengutachten, Vorbemessungen und Baubeschreibungen dauerhaft vor; Werkzeuge mit Code-Ausführung werten CSV-Messreihen aus Zug- oder Druckprüfungen aus.",
     "Skills und MCP-Konnektoren binden Bürowerkzeuge und Datenquellen an, etwa eine REST-Schnittstelle für Wetterdaten am Bautag oder tagesaktuelle Betonpreise aus dem ERP-System.",
-    "Markdown-Dateien und eine CLAUDE.md im Projektverzeichnis legen Arbeitsanweisungen und Ordnerstruktur fest, sodass Ergebnisse für Bauleitung, Prüfstatik oder Masterarbeit nachvollziehbar bleiben.",
+    "Markdown-Dateien und eine Projektanweisungsdatei (Markdown) im Projektverzeichnis legen Arbeitsanweisungen und Ordnerstruktur fest, sodass Ergebnisse für Bauleitung, Prüfstatik oder Masterarbeit nachvollziehbar bleiben.",
     "Der Vorlagengenerator erzeugt rollenbezogene Prompts, etwa für Mängelrügen nach § 4 Abs. 7 VOB/B; Live-Websuche mit Quellenlinks verringert das Risiko veralteter oder erfundener Normzitate.",
   ],
   ki_recht_ethik: [

@@ -34,7 +34,7 @@
     "reproduzierbarkeitBeständigkeit": "Reproduzierbarkeit & Beständigkeit",
     "cloudAnbieterÄndernModelle": "Cloud-Anbieter ändern Modelle im Hintergrund (\"Drift\"). Ein lokal gespeichertes Modell (z. B. Qwen3 14B Q5_K_M) liefert auch in 5 Jahren bei der Überprüfung eines Schadensgutachtens dieselben konsistenten Ergebnisse.",
     "systemvergleichCloudLlmsVs": " Systemvergleich: Cloud-LLMs vs. Lokale Ingenieur-Workstation",
-    "cloudKiChatgptClaude": "Cloud-KI (ChatGPT / Claude / Gemini)",
+    "cloudKiProprietaer": "Cloud-KI (proprietäre LLM-Dienste)",
     "lokaleKiLmStudio2": "Lokale KI (LM Studio / Ollama)",
     "datenschutzVertraulichkeit": "Datenschutz & Vertraulichkeit",
     "datenVerlassenDasBüro": "Daten verlassen das Büro; AVV / DPA zwingend erforderlich",

@@ -28,6 +28,7 @@
     "erstprüferProfessor": "Erstprüfer / Professor",
     "elicitConsensus": "Elicit / Consensus",
     "pythonCursor2": "Python / Cursor",
-    "lmStudioLokal": "LM Studio (lokal)"
+    "lmStudioLokal": "LM Studio (lokal)",
+    "llmAssistentChatKi": "LLM-Assistent (Chat-KI)"
   }
 }

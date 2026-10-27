@@ -298,7 +298,7 @@ Niveau M · 75 min · Vorwissen: ki_prompting, ki_system
 - (Anwenden) Sie können einen Systemprompt mit Rollendefinition, Normbezug, Formatvorgaben und Halluzinationsverbot für eine ingenieurtechnische Aufgabe zusammenstellen.
 - (Analysieren) Sie können den Tokenbedarf und die Kosten verschiedener Dokumentformate (Scan, PDF, Office, Markdown) mit dem Token-Kostenrechner vergleichen.
 - (Anwenden) Sie können aus einer Stichprobe die Fehlerquote von KI-Normzitaten schätzen und die Trefferwahrscheinlichkeit eines Mehrheitsentscheids aus drei Abfragen berechnen.
-- (Bewerten) Sie können für typische Büroaufgaben begründet auswählen, ob Claude, ChatGPT, Websuche oder Code-Ausführung eingesetzt werden sollte.
+- (Bewerten) Sie können für typische Büroaufgaben begründet auswählen, ob ein dokumenten- und code-orientierter LLM-Assistent, ein datenanalyse-orientierter Assistent, Websuche oder Code-Ausführung eingesetzt werden sollte.
 
 - [ ] ok
 - [ ] ändern: …

@@ -95,7 +95,7 @@ export const GLOSSAR_ENTRIES: GlossarEntry[] = [
     icon: Server,
     oneLiner: inhalt.werte.einOffenerIndustriestandardWie,
     analogy: inhalt.werte.wieEineStandardisierteSchnellwechsel,
-    constructionUse: inhalt.werte.claudeDesktopOderCursor,
+    constructionUse: inhalt.werte.mcpClientsKoennen,
     deepDiveTab: 'ki_llmpraxis',
     deepDiveLabel: inhalt.werte.zuMcpKonnektoren
   },

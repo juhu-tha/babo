@@ -22,9 +22,9 @@ interface ModelComparison {
 
 const COMPARISON_DATA: ModelComparison[] = [
   {
-    name: inhalt.werte.anthropicClaudeSonnetOpus,
+    name: inhalt.werte.frontierDokumenteCode,
     type: 'cloud',
-    providerOrWeights: inhalt.werte.anthropicCloudApi,
+    providerOrWeights: inhalt.werte.cloudApiUs,
     normAccuracy: 5,
     mathConsistency: 5,
     costPer1kPages: 'ca. 3,80 €',
@@ -34,9 +34,9 @@ const COMPARISON_DATA: ModelComparison[] = [
     ratingNotes: inhalt.werte.starkBeiTechnischerDokumentation
   },
   {
-    name: inhalt.werte.openaiGptInklReasoning,
+    name: inhalt.werte.frontierMultimodal,
     type: 'cloud',
-    providerOrWeights: inhalt.werte.openaiCloudApi,
+    providerOrWeights: inhalt.werte.cloudApiUs2,
     normAccuracy: 5,
     mathConsistency: 5,
     costPer1kPages: inhalt.werte.ca160Bis,
@@ -46,21 +46,21 @@ const COMPARISON_DATA: ModelComparison[] = [
     ratingNotes: inhalt.werte.verbindetMultimodalitätMitIntegriertem
   },
   {
-    name: inhalt.werte.googleGeminiFlashPro,
+    name: inhalt.werte.proprietaerLangkontext,
     type: 'cloud',
-    providerOrWeights: inhalt.werte.googleCloudVertexAi,
+    providerOrWeights: inhalt.werte.cloudPlattformHyperscaler,
     normAccuracy: 5,
     mathConsistency: 5,
     costPer1kPages: inhalt.werte.ca050Bis,
     dataPrivacyLevel: 'Mittel (US-Cloud, EU-SCC)',
-    vramOrSetup: inhalt.werte.apiKeyVertexAi,
+    vramOrSetup: inhalt.werte.apiKeyEuRegion,
     idealUseInCivilEng: inhalt.werte.sehrGroßesKontextfensterGrößenordnung,
     ratingNotes: inhalt.werte.schnelleLatenzNativerMultimodal
   },
   {
-    name: inhalt.werte.deepseekR1OffeneGewichte,
+    name: inhalt.werte.openWeightReasoning,
     type: 'local',
-    providerOrWeights: inhalt.werte.deepseekOpenWeightsGguf,
+    providerOrWeights: inhalt.werte.openWeightsGguf,
     normAccuracy: 5,
     mathConsistency: 5,
     costPer1kPages: inhalt.werte.t000LokalerStrom,
@@ -70,7 +70,7 @@ const COMPARISON_DATA: ModelComparison[] = [
     ratingNotes: inhalt.werte.offenesReasoningModellMit
   },
   {
-    name: inhalt.werte.qwen25Coder32b,
+    name: inhalt.werte.openWeightCode32b,
     type: 'local',
     providerOrWeights: inhalt.werte.openSourceGgufQ4,
     normAccuracy: 5,
@@ -82,9 +82,9 @@ const COMPARISON_DATA: ModelComparison[] = [
     ratingNotes: inhalt.werte.starkBeimGenerierenVon
   },
   {
-    name: inhalt.werte.llama3370b,
+    name: inhalt.werte.openWeight70b,
     type: 'local',
-    providerOrWeights: inhalt.werte.metaAiGgufQ4,
+    providerOrWeights: inhalt.werte.openWeightsGgufQ4b,
     normAccuracy: 5,
     mathConsistency: 5,
     costPer1kPages: inhalt.werte.t000LokalerStrom3,
@@ -94,9 +94,9 @@ const COMPARISON_DATA: ModelComparison[] = [
     ratingNotes: inhalt.werte.leistungsfähigesOfflineModellDaten
   },
   {
-    name: 'Qwen3 14B',
+    name: inhalt.werte.openWeight14b,
     type: 'local',
-    providerOrWeights: inhalt.werte.openSourceAlibabaQwen,
+    providerOrWeights: inhalt.werte.openWeightsGgufC,
     normAccuracy: 5,
     mathConsistency: 5,
     costPer1kPages: inhalt.werte.t000LokalerStrom4,

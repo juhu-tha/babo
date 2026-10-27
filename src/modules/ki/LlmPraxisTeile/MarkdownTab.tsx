@@ -11,7 +11,7 @@ export interface MarkdownTabProps {
   setCalcDocPages: Dispatch<SetStateAction<number>>;
   calcDocType: "pdf_scan" | "pdf_text" | "word_docx" | "markdown";
   setCalcDocType: Dispatch<SetStateAction<"pdf_scan" | "pdf_text" | "word_docx" | "markdown">>;
-  tokenStats: { totalTokens: number; costInputClaude: number; costCachedClaude: number; contextUsagePercent: number; };
+  tokenStats: { totalTokens: number; costInputStandard: number; costCached: number; contextUsagePercent: number; };
 }
 
 export function MarkdownTab({ markdownView, setMarkdownView, calcDocPages, setCalcDocPages, calcDocType, setCalcDocType, tokenStats }: MarkdownTabProps) {
@@ -227,14 +227,14 @@ export function MarkdownTab({ markdownView, setMarkdownView, calcDocPages, setCa
                       <div className="p-3 bg-white rounded-xl border border-home-grau/20">
                         <span className="text-[10px] uppercase font-bold text-text-main/60 block"><MdText text={inhalt.texte.kostenStandard} /></span>
                         <span className="text-lg font-black text-shiraz font-mono">
-                          ${formatDeZahl(tokenStats.costInputClaude, 3)}
+                          ${formatDeZahl(tokenStats.costInputStandard, 3)}
                         </span>
                       </div>
     
                       <div className="p-3 bg-white rounded-xl border border-home-grau/20">
                         <span className="text-[10px] uppercase font-bold text-emerald-700 block"><MdText text={inhalt.texte.mitPromptCaching} /></span>
                         <span className="text-lg font-black text-emerald-700 font-mono">
-                          ${formatDeZahl(tokenStats.costCachedClaude, 3)} (-90%)
+                          ${formatDeZahl(tokenStats.costCached, 3)} (-90%)
                         </span>
                       </div>
                     </div>
