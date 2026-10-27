@@ -107,7 +107,7 @@
         },
         {
           "erklaerung": "Bemessungsmoment mit Mindestausmitte und Imperfektion\nM_{Ed,1}: Bemessungsmoment Theorie I. Ordnung [kNm]\ne_0: Mindestausmitte = \\max(h/30; 20\\text{ mm})\ne_i: Ungewollte Schiefstellung = l_0 / 400",
-          "formel": "M_{Ed,1} = \\max(M_{Ed}, N_{Ed} \\cdot e_0) + N_{Ed} \\cdot e_i"
+          "formel": "M_{Ed,1} = \\max(M_{0Ed} + N_{Ed} \\cdot e_i;\\; N_{Ed} \\cdot e_0)"
         },
         {
           "erklaerung": "Schlankheit und Grenzschlankheitskriterium\n\\lambda: Bauteilschlankheit = l_0 / i\ni: Trägheitsradius = h / \\sqrt{12}\n\\lambda_{lim}: Grenzschlankheit nach DIN EN 1992-1-1/NA, 5.8.3.1 für Theorie II. Ordnung",

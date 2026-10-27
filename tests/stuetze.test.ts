@@ -65,8 +65,8 @@ pruefe(nahe(bemesseStuetze({ ...basis, mEd: 0, l0: 1 }).mEd_1, 20, 1e-9), 'N·e0
 // Erforderliches ω liegt auf der Kurve: µ(ν, ω_erf) ≥ µ_Ed > µ(ν, ω_erf − 0,01)
 const rs = bemesseStuetze({ ...basis, l0: 2 });
 const b_m = 0.3, h_m = 0.3;
-pruefe(muGrenze(interaktionskurve(rs.req_omega, b_m, h_m, 0.04, fcd, fyd), rs.nu_Ed) + 0.002 >= rs.mu_Ed, 'ω_erf ausreichend');
-pruefe(rs.req_omega === 0 || muGrenze(interaktionskurve(rs.req_omega - 0.01, b_m, h_m, 0.04, fcd, fyd), rs.nu_Ed) + 0.002 < rs.mu_Ed, 'ω_erf minimal');
+pruefe(muGrenze(interaktionskurve(rs.req_omega, b_m, h_m, 0.04, fcd, fyd), rs.nu_Ed) + 1e-9 >= rs.mu_Ed, 'ω_erf ausreichend');
+pruefe(rs.req_omega === 0 || muGrenze(interaktionskurve(rs.req_omega - 0.01, b_m, h_m, 0.04, fcd, fyd), rs.nu_Ed) + 1e-9 < rs.mu_Ed, 'ω_erf minimal');
 // A_s,min = 0,15·N/f_yd = 0,15·1 000 000/434,8 = 345 mm²
 pruefe(nahe(rs.as_min, 3.45, 1e-3), `A_s,min ${rs.as_min}`);
 // zu große Last → nicht aufnehmbar, kein NaN

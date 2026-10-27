@@ -341,7 +341,7 @@
         "minFestigkeit": "C30/37",
         "minZement": 300,
         "minFestigkeitNum": 30,
-        "maxZement": 380
+        "maxZement": 360
       },
       "XM2": {
         "name": "Verschleiß: Stark",
@@ -350,7 +350,7 @@
         "minFestigkeit": "C35/45",
         "minZement": 320,
         "minFestigkeitNum": 35,
-        "maxZement": 380
+        "maxZement": 360
       },
       "XM3": {
         "name": "Verschleiß: Sehr stark",
@@ -359,7 +359,7 @@
         "minFestigkeit": "C35/45",
         "minZement": 320,
         "minFestigkeitNum": 35,
-        "maxZement": 380
+        "maxZement": 360
       }
     },
     "FEUCHTIGKEITSKLASSEN": [

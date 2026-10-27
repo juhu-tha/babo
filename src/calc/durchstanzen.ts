@@ -1,5 +1,6 @@
 /**
- * Durchstanznachweis Flachdecke/Fundament an Einzelstütze nach DIN EN 1992-1-1 + NA (DE), 6.4.
+ * Durchstanznachweis Flachdecke an Einzelstütze nach DIN EN 1992-1-1 + NA (DE), 6.4. Fundamente und Bodenplatten (NA DE, 6.4.4(2):
+ * abweichender Beiwert C_Rd,c, iterativ ermittelter Rundschnitt, Abzug der Bodenpressung) sind nicht abgebildet.
  * Vereinfachungen: konstanter Lasterhöhungsfaktor β, kein Abzug von Bodenpressung/Gegenlast, keine Öffnungen,
  * Bewehrungsabschätzung je Reihe ohne die erhöhten Faktoren κ_sw für die ersten Reihen (offener Prüfpunkt AP 4.4).
  * Reiner Rechenkern – geprüft in tests/durchstanzen.test.ts.

@@ -118,7 +118,9 @@ export function bemesseStuetze(e: StuetzeEingabe): StuetzeErgebnis {
   let req_omega = 0, isPossible = false;
   for (let i = 0; i <= 250; i++) {
     const o = i / 100;
-    if (mu_Ed <= muGrenze(interaktionskurve(o, b_m, h_m, d1_m, fcd, fyd), nu_Ed) + 0.002) { req_omega = o; isPossible = true; break; }
+    // ohne Zuschlag auf µ_Rd (Modulprüfung Tranche 1, 27.10.: bis dahin + 0,002, d. h. ω_erf bis zu einer Stufe zu klein);
+    // die Sehnen-Interpolation der konvexen Kurve liegt bereits auf der sicheren Seite
+    if (mu_Ed <= muGrenze(interaktionskurve(o, b_m, h_m, d1_m, fcd, fyd), nu_Ed) + 1e-9) { req_omega = o; isPossible = true; break; }
   }
   if (isPossible && !omegaValues.includes(req_omega)) {
     interactionCurves.push({ ...interaktionskurve(req_omega, b_m, h_m, d1_m, fcd, fyd), isRequired: true });

@@ -3,7 +3,7 @@
     "durchstanzenPunchingShear": "Durchstanzen (Punching Shear)",
     "berechnetNachDinEn": "Berechnet nach DIN EN 1992-1-1 + NA (DE)",
     "durchstanzenIstEinLokales": "Durchstanzen ist ein lokales Querkraftversagen von flächenhaften Bauteilen (z.B. Flachdecken oder Fundamenten) im Bereich von punktförmigen Lasteinleitungen (z.B. Stützen). Der Nachweis erfolgt im kritischen Rundschnitt im Abstand ",
-    "vomStützenrandNachDin": " vom Stützenrand nach DIN EN 1992-1-1 mit NA DE.",
+    "vomStützenrandNachDin": " vom Stützenrand nach DIN EN 1992-1-1 mit NA DE. Der Rechner bildet Flachdecken ab; für Fundamente und Bodenplatten gelten abweichende Regeln (NA DE, 6.4.4(2), u. a. Abzug der Bodenpressung und iterativ ermittelter Rundschnitt).",
     "geometrieEinwirkung": "Geometrie & Einwirkung",
     "stützenpositionLasterhöhungsfaktorNachNa": "Stützenposition (Lasterhöhungsfaktor β nach NA DE)",
     "nachweisführungDinEn1992": "Nachweisführung (DIN EN 1992-1-1/NA)",

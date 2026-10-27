@@ -29,7 +29,7 @@
     "auflagertypBeanspruchungsart": "Auflagertyp & Beanspruchungsart",
     "auflagerbreiteBMm": "Auflagerbreite b (mm)",
     "auflagerlängeLMm": "Auflagerlänge l (mm)",
-    "überstehendeHolzfasern150mm": "Überstehende Holzfasern (> 150mm)?",
+    "überstehendeHolzfasern150mm": "Überstand ≥ 30 mm je Seite?",
     "querpressendeEinwirkungFC": "Querpressende Einwirkung F_c,90,d (kN)",
     "querpressungSenkrechtZurHolzfaser": "Querpressung senkrecht zur Holzfaser",
     "t1WirksameAuflagerflächeA": "1. Wirksame Auflagerfläche $A_{ef}$:",

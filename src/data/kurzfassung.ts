@@ -241,7 +241,7 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
   mischungsberechnung: [
     "Die Stoffraumrechnung setzt die Volumina von Zement, wirksamem Wasser, Zusatzstoffen, Luft und Gesteinskörnung so zusammen, dass genau 1 000 dm³ verdichteter Frischbeton entstehen.",
     "Expositionsklassen bestimmen höchstzulässigen (w/z)eq, Mindestzementgehalt und Mindestfestigkeitsklasse; der Zementgehalt folgt aus Wasseranspruch und w/z, maßgebend ist der größere Wert gegenüber dem Mindestgehalt.",
-    "Zusatzstoffe werden über k-Werte angerechnet, etwa Flugasche mit k = 0,4 bis f/z ≤ 0,33 und Silikastaub mit k = 1,0; der Eurocode-Wert k = 2,0 ist in Deutschland nicht zulässig.",
+    "Zusatzstoffe werden über k-Werte angerechnet, etwa Flugasche mit k = 0,4 bis f/z ≤ 0,33 und Silikastaub mit k = 1,0; der Empfehlungswert k = 2,0 der DIN EN 206 gilt in Deutschland nicht.",
     "Die Masse der Gesteinskörnung ergibt sich aus dem Reststoffraum mal Rohdichte; ihre Eigenfeuchte ist vom Zugabewasser abzuziehen und der Einwaage der Gesteinskörnung hinzuzurechnen.",
     "Ein Mehlkorngehalt unter 300 kg/m³ führt zu Entmischen und Bluten, ein zu hoher steigert Schwinden und Kriechen; die Packungsdichte lässt sich über Sieblinien wie Fuller (n = 0,5) oder Andreasen optimieren.",
   ],
