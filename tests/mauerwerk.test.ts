@@ -71,6 +71,10 @@ pruefe(nahe(fkEmpfehlungEN(0.5, 12, 0.5, 'NM', false), 2.31, 0.005), 'f_k EN-Emp
 // NA-Tabellenwerte: Stichproben gegen die Quellen, keine doppelten IDs
 pruefe(fkNA('KS-12-NMIIa')?.fk === 6.0 && fkNA('KSL-10-NMIIIa')?.fk === 5.6 && fkNA('HLZB-12-NMIIa')?.fk === 5.0, 'f_k Tafelstichproben');
 pruefe(fkNA('KS-4-NMII') === null, 'unbekannte Kombination → null');
+// Belegstatus (Abgleich 27.10.2026, docs/normwerte-belege.md): KS/KS L/KS XL nach KS-Themenheft Eurocode 6 (10/2012, S. 14),
+// HLz B nach Lücking-Produkthandbuch 2026, S. 49 → belegt; KS P/KS L-P (Spaltenzuordnung Tafel 16) → vorläufig
+pruefe(FK_TAFEL_NA.filter(e => e.vorlaeufig).every(e => e.id.startsWith('KSP-') || e.id.startsWith('KSLP-')), 'nur KS P/KS L-P vorläufig');
+pruefe(fkNA('KSXL-28-DM')?.vorlaeufig === false && fkNA('HLZB-12-LM36')?.vorlaeufig === false && fkNA('KSP-12-DM')?.vorlaeufig === true, 'Belegstatus f_k');
 pruefe(new Set(FK_TAFEL_NA.map(e => e.id)).size === FK_TAFEL_NA.length && FK_TAFEL_NA.every(e => e.fk > 0 && e.quelle.length > 10), 'Tafel eindeutig mit Quelle');
 // f_k wächst mit Mörtelgruppe und Steinfestigkeitsklasse (KS Vollstein)
 pruefe((fkNA('KS-12-NMII')?.fk ?? 0) < (fkNA('KS-12-NMIIIa')?.fk ?? 0) && (fkNA('KS-12-NMIIa')?.fk ?? 0) < (fkNA('KS-28-NMIIa')?.fk ?? 0), 'f_k monoton');

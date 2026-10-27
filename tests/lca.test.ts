@@ -1,6 +1,6 @@
 // Rechenkern Gebäude-Ökobilanz (AP 4.10): A1–A3, B4 (BNB-Nutzungsdauern), B6 (QNG-Rechenwerte), C3/C4, D getrennt, je m² NRF(R)·a
 import {
-  lcaBilanz, ersatzzyklen, einzelbaustoffA1A4, B6_FAKTOREN, BNB_NUTZUNGSDAUER, TGA_SOCKEL,
+  lcaBilanz, ersatzzyklen, einzelbaustoffA1A4, B6_FAKTOREN, BNB_NUTZUNGSDAUER, TGA_SOCKEL, A4_FAKTOR_GEBAEUDE, A4_FAKTOR_EINZEL,
   type LcaBaustoff, type LcaEingabe, type LcaZeile, type Verwertung, type TgaSockel, type Energietraeger,
 } from '../src/calc/lca';
 import { MATERIAL_DATABASE, alsLcaBaustoff } from '../src/modules/interactivelcacalc/daten';
@@ -71,8 +71,9 @@ pruefe(R.vollstaendig && R.aussage === 'plus', `Bericht: Aussage ${R.aussage}`);
 // 3. Handbeispiel (nachvollziehbar): 100 m² NRF(R), 50 a, 10 m³ Beton (A1–A3 245, C 15 kg/m³, ND ≥ 50),
 //    2 m³ EPS im WDVS (A1–A3 78, C 58 kg/m³, ND 40 → 1 Ersatz), ohne Transport, ohne TGA-Sockel.
 //    A1–A3 = 2 450 + 156 = 2 606; C = 150 + 116 = 266; B4 = 1 · (156 + 116) = 272 kg
-//    B6: Strom 2 000 kWh/a, PV 500 → 1 500 · 0,532 · 50 = 39 900; Nutzerstrom 20 · 100 · 0,532 · 50 = 53 200 kg
-//    Konstruktion (2 606 + 272 + 266)/5 000 = 0,6288; B6 93 100/5 000 = 18,62; QNG-Wert 19,2488 → ≤ 20 (PREMIUM-Wert)
+//    B6 (Netzstrom 0,53203 kg/kWh, QNG-Rechenwerte 2023 v1.3): Strom 2 000 kWh/a, PV 500 → 1 500 · 0,53203 · 50 = 39 902,25;
+//    Nutzerstrom 20 · 100 · 0,53203 · 50 = 53 203 kg
+//    Konstruktion (2 606 + 272 + 266)/5 000 = 0,6288; B6 93 105,25/5 000 = 18,62105; QNG-Wert 19,24985 → ≤ 20 (PREMIUM-Wert)
 const beton = MATERIAL_DATABASE.find(m => m.id === 'beton-cem1')!;
 const eps = MATERIAL_DATABASE.find(m => m.id === 'eps-daemmung')!;
 const alsBaustoff = alsLcaBaustoff;
@@ -87,7 +88,8 @@ const HAND: LcaEingabe = {
 };
 const H = lcaBilanz(HAND);
 pruefe(H.gueltig && nahe(H.a1a3, 2606, 1e-9) && nahe(H.c3c4, 266, 1e-9) && nahe(H.b4, 272, 1e-9), `Hand: A/B4/C ${H.a1a3} ${H.b4} ${H.c3c4}`);
-pruefe(nahe(H.b6_1, 39900, 1e-6) && nahe(H.b6_3, 53200, 1e-6) && nahe(H.spez.konstruktion, 0.6288, 1e-9) && nahe(H.spez.qng, 19.2488, 1e-9), `Hand: B6/QNG ${H.b6} ${H.spez.qng}`);
+pruefe(nahe(H.b6_1, 39902.25, 1e-6) && nahe(H.b6_3, 53203, 1e-6) && nahe(H.spez.konstruktion, 0.6288, 1e-9) && nahe(H.spez.qng, 19.24985, 1e-9), `Hand: B6/QNG ${H.b6} ${H.spez.qng}`);
+pruefe(B6_FAKTOREN.netzstrom.gwp === 0.53203 && !B6_FAKTOREN.netzstrom.vorlaeufig && !H.vorlaeufig.some(v => v.includes('Netzstrom')), 'Netzstrom 0,53203 belegt, nicht mehr vorläufig');
 pruefe(H.aussage === 'premium' && H.zeilen[1].ersatz === 1 && H.zeilen[0].ersatz === 0, `Hand: Aussage ${H.aussage}`);
 //    D (Lehrmodell, unverändert übernommen): Beton 10 · (−8) · (65/65) · (85/85) · 0,55 = −44; EPS 2 · (−25) · 1 · 1 · 0,85 = −42,5
 pruefe(nahe(H.d, -86.5, 1e-9) && nahe(H.spez.qng, H.spez.konstruktion + H.spez.b6, 1e-12), `Hand: D ${H.d}; D nicht im QNG-Wert`);
@@ -104,7 +106,7 @@ pruefe(h60.aussage === 'neutral' && h60.hinweise.some(x => x.feld === 'betrachtu
 pruefe(lcaBilanz({ ...HAND, energie: { ...HAND.energie!, stromGeg: 12000 } }).aussage === 'ueberschritten', 'hoher Strombedarf → überschritten');
 pruefe(lcaBilanz({ ...HAND, mitB4: false }).b4 === 0, 'ohne B4 → B4 = 0');
 // Grenze: knapp unter/über 24 bzw. 20 kg/(m²·a) (Vergleich mit ≤)
-const mitWert = (ziel: number) => { const netz = ((ziel - 0.6288) * 5000 - 53200) / (0.532 * 50); return lcaBilanz({ ...HAND, energie: { ...HAND.energie!, stromGeg: netz + 500, pvEigennutzung: 500 } }); };
+const mitWert = (ziel: number) => { const netz = ((ziel - 0.6288) * 5000 - 53203) / (0.53203 * 50); return lcaBilanz({ ...HAND, energie: { ...HAND.energie!, stromGeg: netz + 500, pvEigennutzung: 500 } }); };
 pruefe(nahe(mitWert(24).spez.qng, 24, 1e-9), `Grenze: Rückrechnung ${mitWert(24).spez.qng}`);
 pruefe(mitWert(24 - 1e-6).aussage === 'plus' && mitWert(24 + 1e-6).aussage === 'ueberschritten', 'Grenze PLUS 24');
 pruefe(mitWert(20 - 1e-6).aussage === 'premium' && mitWert(20 + 1e-6).aussage === 'plus', 'Grenze PREMIUM 20');
@@ -132,9 +134,14 @@ for (const m of MATERIAL_DATABASE) {
 }
 pruefe(Object.values(B6_FAKTOREN).every(f => f.gwp > 0 && f.gwp < 1 && f.quelle.length > 10), 'B6-Faktoren mit Quelle');
 
-// 7. Einzelbaustoff (LCA-Grundlagen): 10 m³ · 2 400 kg/m³ = 24 t; A4 = 24 · 150 · 0,02 = 72 kg; A1–A3 = 10 · 245 = 2 450
+// 7. Einzelbaustoff (LCA-Grundlagen): 10 m³ · 2 400 kg/m³ = 24 t; A4 = 24 · 150 · 0,101 = 363,6 kg (UBA 2024, Last-/Sattelzug);
+//    A1–A3 = 10 · 245 = 2 450; gesamt 2 813,6 kg
 const ez = einzelbaustoffA1A4({ menge: 10, volumenbezogen: true, rohdichte: 2400, gwpA1A3: 245, penrt: 1100, distanz: 150, transport: 'lkw-heavy' });
-pruefe(ez.gueltig && nahe(ez.gwpA4, 72, 1e-9) && nahe(ez.gesamt, 2522, 1e-9) && nahe(ez.anteilA1A3 + ez.anteilA4, 100, 1e-9), `Einzelbaustoff ${ez.gwpA4} ${ez.gesamt}`);
+pruefe(ez.gueltig && nahe(ez.gwpA4, 363.6, 1e-9) && nahe(ez.gesamt, 2813.6, 1e-9) && nahe(ez.anteilA1A3 + ez.anteilA4, 100, 1e-9), `Einzelbaustoff ${ez.gwpA4} ${ez.gesamt}`);
+// A4-Faktoren nach UBA, Vergleich der Emissionen im Güterverkehr 2024 (TREMOD 6.71B): Lkw gesamt 118, Last-/Sattelzüge 101,
+// Lkw 3,5–7,5 t 561, Güterbahn 14 g CO₂-Äq./tkm
+pruefe(A4_FAKTOR_GEBAEUDE.lkw === 0.118 && A4_FAKTOR_GEBAEUDE.bahn === 0.014, 'A4 Gebäuderechner UBA 2024');
+pruefe(A4_FAKTOR_EINZEL['lkw-heavy'] === 0.101 && A4_FAKTOR_EINZEL['lkw-light'] === 0.561 && A4_FAKTOR_EINZEL.zug === 0.014, 'A4 Einzelrechner UBA 2024');
 const holz = einzelbaustoffA1A4({ menge: 5, volumenbezogen: true, rohdichte: 500, gwpA1A3: -740, penrt: 1650, distanz: 100, transport: 'zug' });
 pruefe(holz.anteilA1A3 <= 100 && holz.anteilA1A3 >= 0 && holz.gesamt < 0, 'Einzelbaustoff biogen: Anteile 0–100 %');
 pruefe(!einzelbaustoffA1A4({ menge: 0, volumenbezogen: false, rohdichte: 0, gwpA1A3: 1, penrt: 1, distanz: 10, transport: 'zug' }).gueltig, 'Einzelbaustoff Menge 0 → Fehler');
