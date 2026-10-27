@@ -21,6 +21,7 @@ import { DAMAGE_CASES } from './materialschaedengross/daten';
 import inhalt from '@/content/materialschaedengross/MaterialSchaedenGross.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 type FallReiter = 'ueberblick' | 'verlauf' | 'ursachen' | 'folgen' | 'quellen';
 
@@ -67,8 +68,8 @@ export default function MaterialSchaedenGross() {
           </div>
 
           {/* Filter Bar */}
-          <div className="flex flex-wrap items-center gap-2">
-            <button aria-pressed={activeCategoryFilter === 'alle'}
+          <AuswahlGruppe label="Filter Kategorie" className="flex flex-wrap items-center gap-2">
+            <button {...alsOption(activeCategoryFilter === 'alle')}
               onClick={() => setActiveCategoryFilter('alle')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 activeCategoryFilter === 'alle'
@@ -78,7 +79,7 @@ export default function MaterialSchaedenGross() {
             >
               Alle ({DAMAGE_CASES.length})
             </button>
-            <button aria-pressed={activeCategoryFilter === 'bruecken'}
+            <button {...alsOption(activeCategoryFilter === 'bruecken')}
               onClick={() => setActiveCategoryFilter('bruecken')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 activeCategoryFilter === 'bruecken'
@@ -88,7 +89,7 @@ export default function MaterialSchaedenGross() {
             >
               Brücken ({DAMAGE_CASES.filter(c => c.category === 'bruecken').length})
             </button>
-            <button aria-pressed={activeCategoryFilter === 'infrastruktur'}
+            <button {...alsOption(activeCategoryFilter === 'infrastruktur')}
               onClick={() => setActiveCategoryFilter('infrastruktur')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 activeCategoryFilter === 'infrastruktur'
@@ -97,7 +98,7 @@ export default function MaterialSchaedenGross() {
               }`}
             ><MdText text={inhalt.texte.infrastrukturSchiene} />{DAMAGE_CASES.filter(c => c.category === 'infrastruktur').length})
             </button>
-            <button aria-pressed={activeCategoryFilter === 'hallen'}
+            <button {...alsOption(activeCategoryFilter === 'hallen')}
               onClick={() => setActiveCategoryFilter('hallen')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 activeCategoryFilter === 'hallen'
@@ -107,7 +108,7 @@ export default function MaterialSchaedenGross() {
             >
               Hallen ({DAMAGE_CASES.filter(c => c.category === 'hallen').length})
             </button>
-            <button aria-pressed={activeCategoryFilter === 'hochbau'}
+            <button {...alsOption(activeCategoryFilter === 'hochbau')}
               onClick={() => setActiveCategoryFilter('hochbau')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 activeCategoryFilter === 'hochbau'
@@ -117,7 +118,7 @@ export default function MaterialSchaedenGross() {
             >
               Hochbau ({DAMAGE_CASES.filter(c => c.category === 'hochbau').length})
             </button>
-          </div>
+          </AuswahlGruppe>
         </div>
 
         {/* Search input */}

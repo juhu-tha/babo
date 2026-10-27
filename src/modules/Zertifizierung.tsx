@@ -15,6 +15,7 @@ import {
 } from 'chart.js';
 import inhalt from '@/content/zertifizierung/Zertifizierung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 ChartJS.register(
   CategoryScale,
@@ -195,8 +196,8 @@ export default function Zertifizierung() {
         </div>
       </div>
       
-      <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-        <button aria-pressed={activeTab === 'systeme'}
+      <ReiterLeiste label="Bereiche Zertifizierung" className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
+        <button {...alsReiter(activeTab === 'systeme', 'zert-bereich', 'systeme')}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'systeme' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -206,7 +207,7 @@ export default function Zertifizierung() {
         >
           <Award size={16} /> Zertifizierungssysteme
         </button>
-        <button aria-pressed={activeTab === 'beispiele'}
+        <button {...alsReiter(activeTab === 'beispiele', 'zert-bereich', 'beispiele')}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'beispiele' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -215,18 +216,18 @@ export default function Zertifizierung() {
           onClick={() => setActiveTab('beispiele')}
         >
           <Activity size={16} /><MdText text={inhalt.texte.beispieleDgnbBnbQng} /></button>
-      </div>
+      </ReiterLeiste>
 
         {activeTab === 'systeme' && (
-          <div className="flex flex-col gap-6 animate-in fade-in duration-300">
+          <div {...reiterPanel('zert-bereich', activeTab)} className="flex flex-col gap-6 animate-in fade-in duration-300">
             <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
               <p><MdText text={inhalt.texte.nachhaltigkeitssiegelMachenDieQualität} /></p>
             </div>
 
             {/* System Selector */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+            <AuswahlGruppe label="Zertifizierungssystem" className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
           {SYSTEMS.map((system) => (
-            <button aria-pressed={activeSystem === system.id}
+            <button {...alsOption(activeSystem === system.id)}
               key={system.id}
               onClick={() => setActiveSystem(system.id)}
               className={`p-4 rounded-xl border text-left transition-all ${
@@ -246,7 +247,7 @@ export default function Zertifizierung() {
               </div>
             </button>
           ))}
-        </div>
+        </AuswahlGruppe>
 
         {/* System Details */}
         <div className={`mt-4 p-6 rounded-2xl border ${selectedSystem.color}`}>
@@ -648,16 +649,16 @@ export default function Zertifizierung() {
         )}
 
         {activeTab === 'beispiele' && (
-          <div className="flex flex-col gap-6 animate-in fade-in duration-300">
+          <div {...reiterPanel('zert-bereich', activeTab)} className="flex flex-col gap-6 animate-in fade-in duration-300">
             {/* Inner Sub-Tab Selector */}
-            <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
+            <ReiterLeiste label="Beispiele" className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
               {[
                 { id: 'dgnb' as const, label: inhalt.werte.t1DgnbZertifikat, badge: inhalt.werte.privatÖffentlicherMarkt },
                 { id: 'bnb' as const, label: inhalt.werte.t2BnbBewertung, badge: inhalt.werte.pflichtFürBundesbauten },
                 { id: 'qng' as const, label: inhalt.werte.t3QngGütesiegel, badge: inhalt.werte.basisFürBundesförderung },
                 { id: 'birn' as const, label: inhalt.werte.t4BirnBnkBng, badge: inhalt.werte.spezifischWohnungsbau }
               ].map((tab) => (
-                <button aria-pressed={beispieleSubTab === tab.id}
+                <button {...alsReiter(beispieleSubTab === tab.id, 'zert-beispiel', tab.id)}
                   key={tab.id}
                   onClick={() => setBeispieleSubTab(tab.id)}
                   className={`px-4 py-2 rounded-xl font-bold text-xs transition-all flex flex-col justify-start items-start gap-0.5 border shadow-sm cursor-pointer min-w-[170px] ${
@@ -672,11 +673,11 @@ export default function Zertifizierung() {
                   </span>
                 </button>
               ))}
-            </div>
+            </ReiterLeiste>
 
             {/* Inner Sub-Tabs Containers */}
             {beispieleSubTab === 'dgnb' && (
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 animate-in fade-in duration-150">
+              <div {...reiterPanel('zert-beispiel', beispieleSubTab)} className="grid grid-cols-1 lg:grid-cols-12 gap-6 animate-in fade-in duration-150">
                 <div className="lg:col-span-12 bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-5">
                   <div className="flex justify-between items-start border-b border-home-grau/20 pb-3">
                     <div>
@@ -746,7 +747,7 @@ export default function Zertifizierung() {
             )}
 
             {beispieleSubTab === 'bnb' && (
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 animate-in fade-in duration-150">
+              <div {...reiterPanel('zert-beispiel', beispieleSubTab)} className="grid grid-cols-1 lg:grid-cols-12 gap-6 animate-in fade-in duration-150">
                 <div className="lg:col-span-12 bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-5">
                   <div className="flex justify-between items-start border-b border-home-grau/20 pb-3">
                     <div>
@@ -815,7 +816,7 @@ export default function Zertifizierung() {
             )}
 
             {beispieleSubTab === 'qng' && (
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 animate-in fade-in duration-150">
+              <div {...reiterPanel('zert-beispiel', beispieleSubTab)} className="grid grid-cols-1 lg:grid-cols-12 gap-6 animate-in fade-in duration-150">
                 <div className="lg:col-span-12 bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-5">
                   <div className="flex justify-between items-start border-b border-home-grau/20 pb-3">
                     <div>
@@ -881,7 +882,7 @@ export default function Zertifizierung() {
             )}
 
             {beispieleSubTab === 'birn' && (
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 animate-in fade-in duration-150">
+              <div {...reiterPanel('zert-beispiel', beispieleSubTab)} className="grid grid-cols-1 lg:grid-cols-12 gap-6 animate-in fade-in duration-150">
                 <div className="lg:col-span-12 bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-5">
                   <div className="flex justify-between items-start border-b border-home-grau/20 pb-3">
                     <div>

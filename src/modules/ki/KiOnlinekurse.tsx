@@ -23,6 +23,7 @@ import {
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import inhalt from '@/content/ki/KiOnlinekurse.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 interface OnlineCourse {
   id: string;
@@ -345,8 +346,8 @@ export default function KiOnlinekurse() {
 
         {/* FILTER & SUCHE */}
         <div className="mt-8 pt-6 border-t border-home-grau/20 flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between">
-          <div className="flex flex-wrap gap-1.5">
-            <button aria-pressed={selectedCategory === 'all'}
+          <AuswahlGruppe label="Filter Kategorie" className="flex flex-wrap gap-1.5">
+            <button {...alsOption(selectedCategory === 'all')}
               onClick={() => setSelectedCategory('all')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 selectedCategory === 'all'
@@ -355,7 +356,7 @@ export default function KiOnlinekurse() {
               }`}
             ><MdText text={inhalt.texte.alleKurse} />{COURSES.length})
             </button>
-            <button aria-pressed={selectedCategory === 'python'}
+            <button {...alsOption(selectedCategory === 'python')}
               onClick={() => setSelectedCategory('python')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 selectedCategory === 'python'
@@ -363,7 +364,7 @@ export default function KiOnlinekurse() {
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             ><MdText text={inhalt.texte.pythonDataScience} /></button>
-            <button aria-pressed={selectedCategory === 'ml_visual'}
+            <button {...alsOption(selectedCategory === 'ml_visual')}
               onClick={() => setSelectedCategory('ml_visual')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 selectedCategory === 'ml_visual'
@@ -371,7 +372,7 @@ export default function KiOnlinekurse() {
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             ><MdText text={inhalt.texte.mlMatheVisuell} /></button>
-            <button aria-pressed={selectedCategory === 'rag_nlp'}
+            <button {...alsOption(selectedCategory === 'rag_nlp')}
               onClick={() => setSelectedCategory('rag_nlp')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 selectedCategory === 'rag_nlp'
@@ -379,7 +380,7 @@ export default function KiOnlinekurse() {
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             ><MdText text={inhalt.texte.ragVektordatenbanken} /></button>
-            <button aria-pressed={selectedCategory === 'lokal_mcp'}
+            <button {...alsOption(selectedCategory === 'lokal_mcp')}
               onClick={() => setSelectedCategory('lokal_mcp')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 selectedCategory === 'lokal_mcp'
@@ -387,7 +388,7 @@ export default function KiOnlinekurse() {
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             ><MdText text={inhalt.texte.lokaleKiMcp2} /></button>
-            <button aria-pressed={selectedCategory === 'hochschule'}
+            <button {...alsOption(selectedCategory === 'hochschule')}
               onClick={() => setSelectedCategory('hochschule')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 selectedCategory === 'hochschule'
@@ -395,7 +396,7 @@ export default function KiOnlinekurse() {
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             ><MdText text={inhalt.texte.hochschuleZertifikate} /></button>
-          </div>
+          </AuswahlGruppe>
 
           <div className="relative min-w-[240px]">
             <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />

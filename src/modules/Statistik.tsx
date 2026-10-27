@@ -27,6 +27,7 @@ import inhalt from '@/content/statistik/Statistik.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { normalCDF, normalPDF, stichprobe, statistikAuswertung, type StatistikMaterial, type AusreisserMethode } from '@/src/calc/statistik';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend);
 
@@ -436,8 +437,8 @@ export default function Statistik() {
         </div>
             
             {/* Chart Mode Toggle Buttons */}
-            <div className="flex bg-stone-100 hover:bg-stone-200/80 p-1 rounded-xl self-start border border-stone-200 shrink-0 select-none">
-              <button aria-pressed={interactiveChartMode === 'pdf'}
+            <AuswahlGruppe label="Diagrammdarstellung" className="flex bg-stone-100 hover:bg-stone-200/80 p-1 rounded-xl self-start border border-stone-200 shrink-0 select-none">
+              <button {...alsOption(interactiveChartMode === 'pdf')}
                 type="button"
                 onClick={() => setInteractiveChartMode('pdf')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
@@ -447,7 +448,7 @@ export default function Statistik() {
                 }`}
               >
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><MdText text={inhalt.texte.dichtefunktionPdfGlocke} /></button>
-              <button aria-pressed={interactiveChartMode === 'cdf'}
+              <button {...alsOption(interactiveChartMode === 'cdf')}
                 type="button"
                 onClick={() => setInteractiveChartMode('cdf')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
@@ -457,7 +458,7 @@ export default function Statistik() {
                 }`}
               >
                 <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span><MdText text={inhalt.texte.verteilungsfunktionCdfSKurve} /></button>
-            </div>
+            </AuswahlGruppe>
           </div>
 
           {/* Visual SVG Timeline Diagram */}

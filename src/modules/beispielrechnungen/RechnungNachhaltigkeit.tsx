@@ -4,6 +4,7 @@ import { BlockMath, InlineMath } from 'react-katex';
 import React from 'react';
 import inhalt from '@/content/beispielrechnungen/RechnungNachhaltigkeit.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ReiterLeiste, alsReiter, reiterPanel } from '../../components/ui/Auswahlgruppe';
 
 interface RechnungNachhaltigkeitProps {
   bauteilVol: number;
@@ -45,8 +46,8 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
   return (
       <div className="flex flex-col gap-6 animate-in fade-in duration-300">
         {/* SUB-TABS */}
-        <div className="flex flex-wrap gap-2 border-b border-slate-100 pb-2">
-          <button aria-pressed={co2SubTab === 'karbonatisierung'}
+        <ReiterLeiste label="Beispielrechnungen Nachhaltigkeit" className="flex flex-wrap gap-2 border-b border-slate-100 pb-2">
+          <button {...alsReiter(co2SubTab === 'karbonatisierung', 'rechnung-co2', 'karbonatisierung')}
             onClick={() => setCo2SubTab('karbonatisierung')}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
                   co2SubTab === 'karbonatisierung'
@@ -54,7 +55,7 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
                     : 'text-slate-500 hover:bg-slate-50'
                 }`}
           ><MdText text={inhalt.texte.t1ReKarbonatisierungCo2} /></button>
-          <button aria-pressed={co2SubTab === 'gwp_vergleich'}
+          <button {...alsReiter(co2SubTab === 'gwp_vergleich', 'rechnung-co2', 'gwp_vergleich')}
             onClick={() => setCo2SubTab('gwp_vergleich')}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
                   co2SubTab === 'gwp_vergleich'
@@ -62,10 +63,10 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
                     : 'text-slate-500 hover:bg-slate-50'
                 }`}
           ><MdText text={inhalt.texte.t2ÖkobilanzGwpVergleich} /></button>
-        </div>
+        </ReiterLeiste>
 
         {co2SubTab === 'karbonatisierung' && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div {...reiterPanel('rechnung-co2', co2SubTab)} className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Inputs and explanation */}
             <div className="space-y-6">
               <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-4">
@@ -197,7 +198,7 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
         )}
 
         {co2SubTab === 'gwp_vergleich' && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div {...reiterPanel('rechnung-co2', co2SubTab)} className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-4">
               <h3 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2 flex items-center gap-1.5">
                 <Leaf className="text-shiraz" size={16} /><MdText text={inhalt.texte.gwpEingabeparameterCemI} /></h3>

@@ -4,6 +4,7 @@ import React from 'react';
 import inhalt from '@/content/abfaelle/LagaPn98.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { pn98Probenzahl } from '@/src/calc/probenahme';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 interface LagaPn98Props {
   pnGrainSize: string;
@@ -88,8 +89,8 @@ export default function LagaPn98({ pnGrainSize, pnMaterialState, pnVolume, setPn
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wider"><MdText text={inhalt.texte.t2HomogenitätDesMaterials} /></label>
-                <div className="grid grid-cols-2 gap-2">
-                  <button aria-pressed={pnMaterialState === 'homogen'}
+                <AuswahlGruppe label="Homogenität des Materials" className="grid grid-cols-2 gap-2">
+                  <button {...alsOption(pnMaterialState === 'homogen')}
                     type="button"
                     onClick={() => setPnMaterialState('homogen')}
                     className={`py-2 px-3 rounded-lg text-xs font-bold border transition-all cursor-pointer ${
@@ -101,7 +102,7 @@ export default function LagaPn98({ pnGrainSize, pnMaterialState, pnVolume, setPn
                     Homogen
                     <span className="block text-xs opacity-80 font-normal mt-0.5"><MdText text={inhalt.texte.zBReinerAsphalt} /></span>
                   </button>
-                  <button aria-pressed={pnMaterialState === 'heterogen'}
+                  <button {...alsOption(pnMaterialState === 'heterogen')}
                     type="button"
                     onClick={() => setPnMaterialState('heterogen')}
                     className={`py-2 px-3 rounded-lg text-xs font-bold border transition-all cursor-pointer ${
@@ -113,7 +114,7 @@ export default function LagaPn98({ pnGrainSize, pnMaterialState, pnVolume, setPn
                     Heterogen
                     <span className="block text-xs opacity-80 font-normal mt-0.5"><MdText text={inhalt.texte.zBBauschuttHausmüll} /></span>
                   </button>
-                </div>
+                </AuswahlGruppe>
               </div>
 
               <div>

@@ -22,6 +22,7 @@ import inhalt from '@/content/packungsdichte/Packungsdichte.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { sieblinienOptimierung, zweikornMischung } from '@/src/calc/packungsdichte';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 ChartJS.register(
   CategoryScale,
@@ -171,8 +172,8 @@ export default function Packungsdichte() {
           <p><MdText text={inhalt.texte.dieOptimierungDerPackungsdichte} /></p>
         </div>
 
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6 w-full">
-          <button aria-pressed={activeTab === 'sieblinien'}
+        <ReiterLeiste label="Bereiche Packungsdichte" className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6 w-full">
+          <button {...alsReiter(activeTab === 'sieblinien', 'packung-bereich', 'sieblinien')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'sieblinien' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -180,7 +181,7 @@ export default function Packungsdichte() {
             }`}
             onClick={() => setActiveTab('sieblinien')}
           ><MdText text={inhalt.texte.kontinuierlicheModelleSieblinien} /></button>
-          <button aria-pressed={activeTab === 'zweikorn'}
+          <button {...alsReiter(activeTab === 'zweikorn', 'packung-bereich', 'zweikorn')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'zweikorn' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -188,10 +189,10 @@ export default function Packungsdichte() {
             }`}
             onClick={() => setActiveTab('zweikorn')}
           ><MdText text={inhalt.texte.diskreteModelleZweikornmischung} /></button>
-        </div>
+        </ReiterLeiste>
 
         {activeTab === 'sieblinien' && (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div {...reiterPanel('packung-bereich', activeTab)} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="space-y-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.feststoffanteileVol} /></h3>
@@ -461,7 +462,7 @@ export default function Packungsdichte() {
         )}
 
         {activeTab === 'zweikorn' && (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div {...reiterPanel('packung-bereich', activeTab)} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="space-y-6">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
               <h3 className="font-semibold mb-2 text-text-main"><MdText text={inhalt.texte.diskretePackungsdichtemodelle} /></h3>

@@ -23,6 +23,7 @@ import {
   QuizGapItem,
   QuizSessionResult
 } from '@/src/utils/studyStorage';
+import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../ui/Auswahlgruppe';
 // Lernstands-Dashboard (mit Diagrammbibliothek recharts) erst beim Öffnen laden (Phase 5, AP 5.5 Nachtrag)
 const QuizDashboard = React.lazy(() => import('./QuizDashboard'));
 
@@ -348,8 +349,8 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
     <div className="flex flex-col gap-6">
       {/* Sub-Navigation between Quiz & Dashboard */}
       <div className="flex flex-wrap items-center justify-between gap-3 bg-white p-2 rounded-2xl border border-home-grau/30 shadow-xs">
-        <div className="flex items-center gap-2">
-          <button aria-pressed={activeMainTab === 'quiz'}
+        <ReiterLeiste label="Quiz oder Auswertung" className="flex items-center gap-2">
+          <button {...alsReiter(activeMainTab === 'quiz', 'quiz-haupt', 'quiz')}
             type="button"
             onClick={() => setActiveMainTab('quiz')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 cursor-pointer ${
@@ -362,7 +363,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
             <span>Quiz &amp; Wissenscheck</span>
           </button>
 
-          <button aria-pressed={activeMainTab === 'dashboard'}
+          <button {...alsReiter(activeMainTab === 'dashboard', 'quiz-haupt', 'dashboard')}
             type="button"
             onClick={() => setActiveMainTab('dashboard')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 cursor-pointer ${
@@ -379,7 +380,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
               </span>
             )}
           </button>
-        </div>
+        </ReiterLeiste>
 
         {activeMainTab === 'dashboard' && (
           <button
@@ -398,7 +399,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
 
       {/* DASHBOARD TAB VIEW */}
       {activeMainTab === 'dashboard' && (
-        <React.Suspense fallback={<div className="min-h-screen" aria-busy="true" />}>
+        <div {...reiterPanel('quiz-haupt', activeMainTab)}><React.Suspense fallback={<div className="min-h-screen" aria-busy="true" />}>
         <QuizDashboard
           history={sessionHistory}
           activeGaps={storedGaps}
@@ -408,12 +409,12 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
           }}
           onNavigateToTab={(tab) => setActiveTab(tab as TabType)}
         />
-        </React.Suspense>
+        </React.Suspense></div>
       )}
 
       {/* QUIZ TAB VIEW */}
       {activeMainTab === 'quiz' && (
-        <>
+        <div {...reiterPanel('quiz-haupt', activeMainTab)} className="flex flex-col gap-6">
           {/* ------------------------------------------------------------- */}
           {/* PHASE 1: CONFIGURATION & OVERVIEW */}
           {/* ------------------------------------------------------------- */}
@@ -455,9 +456,9 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
               <Filter size={16} className="text-shiraz" /> 1. Quiz-Umfang &amp; Fokus wählen
             </h3>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+            <AuswahlGruppe label="Quiz-Umfang und Fokus" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
               {initialGruppen && initialGruppen.length > 0 && (
-                <button aria-pressed={quizScope === 'gruppe'}
+                <button {...alsOption(quizScope === 'gruppe')}
                   type="button"
                   onClick={() => setQuizScope('gruppe')}
                   className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between gap-3 ${
@@ -484,7 +485,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
               )}
 
               {/* Option 1: 360 Diagnostic */}
-              <button aria-pressed={quizScope === 'diagnose_15'}
+              <button {...alsOption(quizScope === 'diagnose_15')}
                 type="button"
                 onClick={() => setQuizScope('diagnose_15')}
                 className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between gap-3 ${
@@ -510,7 +511,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
               </button>
 
               {/* Option 2: Express Check */}
-              <button aria-pressed={quizScope === 'express_10'}
+              <button {...alsOption(quizScope === 'express_10')}
                 type="button"
                 onClick={() => setQuizScope('express_10')}
                 className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between gap-3 ${
@@ -536,7 +537,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
               </button>
 
               {/* Option 3: Cluster Focus */}
-              <button aria-pressed={quizScope === 'cluster'}
+              <button {...alsOption(quizScope === 'cluster')}
                 type="button"
                 onClick={() => setQuizScope('cluster')}
                 className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between gap-3 ${
@@ -562,7 +563,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
               </button>
 
               {/* Option 4: Module Focus */}
-              <button aria-pressed={quizScope === 'module'}
+              <button {...alsOption(quizScope === 'module')}
                 type="button"
                 onClick={() => setQuizScope('module')}
                 className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between gap-3 ${
@@ -588,7 +589,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
               </button>
 
               {/* Option 5: Gaps Retest (if gaps exist) */}
-              <button aria-pressed={quizScope === 'gaps_retest'}
+              <button {...alsOption(quizScope === 'gaps_retest')}
                 type="button"
                 disabled={storedGaps.length === 0}
                 onClick={() => setQuizScope('gaps_retest')}
@@ -617,7 +618,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
               </button>
 
               {/* Option 6: Full Library */}
-              <button aria-pressed={quizScope === 'full'}
+              <button {...alsOption(quizScope === 'full')}
                 type="button"
                 onClick={() => setQuizScope('full')}
                 className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between gap-3 ${
@@ -641,7 +642,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
                   </p>
                 </div>
               </button>
-            </div>
+            </AuswahlGruppe>
           </div>
 
           {/* Sub-selectors for Cluster or Module */}
@@ -702,8 +703,8 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
             <h3 className="text-sm font-bold text-text-main uppercase tracking-wider flex items-center gap-2">
               <Brain size={16} className="text-shiraz" /> 2. Didaktischen Feedback-Modus wählen
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl">
-              <button aria-pressed={feedbackMode === 'instant'}
+            <AuswahlGruppe label="Feedback-Modus" className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl">
+              <button {...alsOption(feedbackMode === 'instant')}
                 type="button"
                 onClick={() => setFeedbackMode('instant')}
                 className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex items-start gap-3 ${
@@ -723,7 +724,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
                 </div>
               </button>
 
-              <button aria-pressed={feedbackMode === 'exam'}
+              <button {...alsOption(feedbackMode === 'exam')}
                 type="button"
                 onClick={() => setFeedbackMode('exam')}
                 className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex items-start gap-3 ${
@@ -742,7 +743,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
                   </p>
                 </div>
               </button>
-            </div>
+            </AuswahlGruppe>
           </div>
 
           {/* CSV Import/Export Box & Status Notification (P26) */}
@@ -1385,7 +1386,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
           </div>
         </div>
       )}
-        </>
+        </div>
       )}
     </div>
   );

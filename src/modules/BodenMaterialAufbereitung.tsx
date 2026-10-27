@@ -10,6 +10,7 @@ import inhalt from '@/content/bodenmaterialaufbereitung/BodenMaterialAufbereitun
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { pn98Plan } from '@/src/calc/probenahme';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 const TREATMENT_OPTIONS = inhalt.daten.TREATMENT_OPTIONS;
 
@@ -171,14 +172,14 @@ export default function BodenMaterialAufbereitung() {
                 {/* Substrat-Auswahl */}
                 <div>
                   <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2 font-mono"><MdText text={inhalt.texte.t1DasAusgangsSubstrat} /></span>
-                  <div className="flex flex-col gap-1.5">
+                  <AuswahlGruppe label="Ausgangssubstrat" className="flex flex-col gap-1.5">
                     {[
                       { id: 'erdaushub_sand' as const, label: inhalt.werte.sandigerKiesigerBodenErdaushub, info: inhalt.werte.gutWaschbaresGekörntesMaterial },
                       { id: 'boden_ton' as const, label: inhalt.werte.bindigerTonschlammSchluff, info: inhalt.werte.klebrigFeinkörnigNassSchwer },
                       { id: 'bauschutt_gemisch' as const, label: inhalt.werte.mineralischerBauschuttBetonZiegel, info: inhalt.werte.klassischeAbbruchMischfraktion },
                       { id: 'altablagerung' as const, label: inhalt.werte.altablagerungenDeponiekörper, info: inhalt.werte.extremeHeterogenitätOftOrganikbeimischun }
                     ].map((mat) => (
-                      <button aria-pressed={treatmentMaterial === mat.id}
+                      <button {...alsOption(treatmentMaterial === mat.id)}
                         key={mat.id}
                         onClick={() => setTreatmentMaterial(mat.id)}
                         className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
@@ -191,20 +192,20 @@ export default function BodenMaterialAufbereitung() {
                         <div className="text-xs text-slate-500 leading-normal mt-0.5">{mat.info}</div>
                       </button>
                     ))}
-                  </div>
+                  </AuswahlGruppe>
                 </div>
 
                 {/* Schadstoff-Auswahl */}
                 <div>
                   <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2 font-mono"><MdText text={inhalt.texte.t2DieHauptbelastungLeitkontaminante} /></span>
-                  <div className="grid grid-cols-2 gap-2">
+                  <AuswahlGruppe label="Leitkontaminante" className="grid grid-cols-2 gap-2">
                     {[
                       { id: 'heavy_metals' as const, label: 'Schwermetalle', desc: inhalt.werte.asPbCdCu },
                       { id: 'mkw_pak' as const, label: 'MKW & PAK', desc: inhalt.werte.öleTeerrückstände },
                       { id: 'asbest_faser' as const, label: inhalt.werte.asbestKmf, desc: inhalt.werte.gefährlicheFasern },
                       { id: 'gips_sulfat' as const, label: inhalt.werte.gipsSulfat, desc: inhalt.werte.gefahrVGipstreiben }
                     ].map((cont) => (
-                      <button aria-pressed={treatmentContaminant === cont.id}
+                      <button {...alsOption(treatmentContaminant === cont.id)}
                         key={cont.id}
                         onClick={() => setTreatmentContaminant(cont.id)}
                         className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer ${
@@ -217,7 +218,7 @@ export default function BodenMaterialAufbereitung() {
                         <div className="text-xs text-slate-500 mt-0.5 leading-normal">{cont.desc}</div>
                       </button>
                     ))}
-                  </div>
+                  </AuswahlGruppe>
                 </div>
               </div>
 

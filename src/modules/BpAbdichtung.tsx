@@ -25,6 +25,7 @@ import {
 } from 'lucide-react';
 import inhalt from '@/content/bpabdichtung/BpAbdichtung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 export default function BpAbdichtung() {
   const [activeTab, setActiveTab] = useState<'allgemein' | 'praxis' | 'innovation'>('allgemein');
@@ -895,9 +896,9 @@ export default function BpAbdichtung() {
                     <Droplet size={14} className="text-shiraz text-blue-500" /><MdText text={inhalt.texte.t1WasserverhältnisseBaugrund} /></h4>
                   <p className="text-[11px] text-text-main/60 leading-normal font-medium"><MdText text={inhalt.texte.welcheGeohydrologischenGewässerOder} /></p>
                   
-                  <div className="space-y-2 pt-1">
+                  <AuswahlGruppe label="Wasserverhältnisse" className="space-y-2 pt-1">
                     {inhalt.daten.BpAbdichtung.map((opt) => (
-                      <button aria-pressed={waterLoad === opt.id}
+                      <button {...alsOption(waterLoad === opt.id)}
                         key={opt.id}
                         type="button"
                         onClick={() => setWaterLoad(opt.id)}
@@ -914,7 +915,7 @@ export default function BpAbdichtung() {
                         <span className="text-[10px] text-text-main/60 mt-0.5 leading-normal font-normal">{opt.detail}</span>
                       </button>
                     ))}
-                  </div>
+                  </AuswahlGruppe>
                 </div>
 
                 {/* Section 2: Room Requirements */}
@@ -923,9 +924,9 @@ export default function BpAbdichtung() {
                     <LayoutGrid size={14} className="text-shiraz" /><MdText text={inhalt.texte.t2RaumnutzungAnforderungsklasse} /></h4>
                   <p className="text-[11px] text-text-main/60 leading-normal font-medium"><MdText text={inhalt.texte.welcherGradAnFeuchtetoleranz} /></p>
                   
-                  <div className="space-y-2 pt-1">
+                  <AuswahlGruppe label="Raumnutzung" className="space-y-2 pt-1">
                     {inhalt.daten.BpAbdichtung_2.map((opt) => (
-                      <button aria-pressed={roomRequirement === opt.id}
+                      <button {...alsOption(roomRequirement === opt.id)}
                         key={opt.id}
                         type="button"
                         onClick={() => setRoomRequirement(opt.id)}
@@ -942,7 +943,7 @@ export default function BpAbdichtung() {
                         <span className="text-[10px] text-text-main/60 mt-0.5 leading-normal font-normal">{opt.detail}</span>
                       </button>
                     ))}
-                  </div>
+                  </AuswahlGruppe>
                 </div>
 
               </div>

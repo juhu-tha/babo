@@ -4,6 +4,7 @@ import CrremSimulator from './CrremSimulator';
 import type { Dispatch, SetStateAction } from 'react';
 import inhalt from '@/content/nachhaltigkeit/CrremRegulatorik.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ReiterLeiste, alsReiter, reiterPanel } from '../../components/ui/Auswahlgruppe';
 
 interface CrremRegulatorikProps {
   crremBuildingType: "office" | "residential";
@@ -28,8 +29,8 @@ export default function CrremRegulatorik({ crremBuildingType, crremCurrentGwp, c
             <span className="text-sm font-extrabold text-text-main"><MdText text={inhalt.texte.wählenSieAnalysebereichWerkzeug} /></span>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2">
-            <button aria-pressed={regulatorikSubTab === 'rechtsrahmen'}
+          <ReiterLeiste label="Analysebereich" className="flex flex-wrap items-center gap-2">
+            <button {...alsReiter(regulatorikSubTab === 'rechtsrahmen', 'crrem-bereich', 'rechtsrahmen')}
               onClick={() => setRegulatorikSubTab('rechtsrahmen')}
               className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border cursor-pointer ${
                   regulatorikSubTab === 'rechtsrahmen'
@@ -38,7 +39,7 @@ export default function CrremRegulatorik({ crremBuildingType, crremCurrentGwp, c
                 }`}
             >
               <Scale size={16} /><MdText text={inhalt.texte.t1RechtsrahmenKompendiumHierarchie} /></button>
-            <button aria-pressed={regulatorikSubTab === 'crrem_sim'}
+            <button {...alsReiter(regulatorikSubTab === 'crrem_sim', 'crrem-bereich', 'crrem_sim')}
               onClick={() => setRegulatorikSubTab('crrem_sim')}
               className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border cursor-pointer ${
                   regulatorikSubTab === 'crrem_sim'
@@ -47,16 +48,16 @@ export default function CrremRegulatorik({ crremBuildingType, crremCurrentGwp, c
                 }`}
             >
               <TrendingDown size={16} /><MdText text={inhalt.texte.t2CrremDekarbonisierungssimulator} /></button>
-          </div>
+          </ReiterLeiste>
         </div>
 
         {/* SubTab 1: Hierarchisches Rechtsrahmen-Kompendium */}
         {regulatorikSubTab === 'rechtsrahmen' && (
-          <RechtsrahmenKompendium />
+          <div {...reiterPanel('crrem-bereich', regulatorikSubTab)}><RechtsrahmenKompendium /></div>
         )}
 
         {/* SubTab 2: Interaktiver CRREM Simulator */}
-        {regulatorikSubTab === 'crrem_sim' && <CrremSimulator crremBuildingType={crremBuildingType} crremCurrentGwp={crremCurrentGwp} crremResult={crremResult} crremRetrofit={crremRetrofit} setCrremBuildingType={setCrremBuildingType} setCrremCurrentGwp={setCrremCurrentGwp} setCrremRetrofit={setCrremRetrofit} setRegulatorikSubTab={setRegulatorikSubTab} />}
+        {regulatorikSubTab === 'crrem_sim' && <div {...reiterPanel('crrem-bereich', regulatorikSubTab)}><CrremSimulator crremBuildingType={crremBuildingType} crremCurrentGwp={crremCurrentGwp} crremResult={crremResult} crremRetrofit={crremRetrofit} setCrremBuildingType={setCrremBuildingType} setCrremCurrentGwp={setCrremCurrentGwp} setCrremRetrofit={setCrremRetrofit} setRegulatorikSubTab={setRegulatorikSubTab} /></div>}
 
       </div>
     );

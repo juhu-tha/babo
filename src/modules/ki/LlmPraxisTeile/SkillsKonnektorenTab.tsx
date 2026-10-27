@@ -2,6 +2,7 @@ import type { Dispatch, SetStateAction } from 'react';
 import { Sparkles, FolderTree, Globe, Copy, Check, Code, Database, Bot, Zap, Workflow, Laptop, FileCheck2 } from 'lucide-react';
 import inhalt from '@/content/ki/LlmPraxisTeile/SkillsKonnektorenTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ReiterLeiste, alsReiter, reiterPanel } from '../../../components/ui/Auswahlgruppe';
 
 export interface SkillsKonnektorenTabProps {
   skillSubTab: "skills_system" | "mcp_arch" | "mcp_servers";
@@ -26,25 +27,25 @@ export function SkillsKonnektorenTab({ skillSubTab, setSkillSubTab, copyToClipbo
                   </div>
     
                   {/* Subtabs for Skills & MCP */}
-                  <div className="flex gap-1 bg-slate-100 p-1 rounded-xl text-xs font-semibold">
-                    <button aria-pressed={skillSubTab === 'skills_system'}
+                  <ReiterLeiste label="Skills und Konnektoren" className="flex gap-1 bg-slate-100 p-1 rounded-xl text-xs font-semibold">
+                    <button {...alsReiter(skillSubTab === 'skills_system', 'skills-bereich', 'skills_system')}
                       onClick={() => setSkillSubTab('skills_system')}
                       className={`px-3 py-1.5 rounded-lg transition-all ${skillSubTab === 'skills_system' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
                     ><MdText text={inhalt.texte.t1WasSindSkills} /></button>
-                    <button aria-pressed={skillSubTab === 'mcp_arch'}
+                    <button {...alsReiter(skillSubTab === 'mcp_arch', 'skills-bereich', 'mcp_arch')}
                       onClick={() => setSkillSubTab('mcp_arch')}
                       className={`px-3 py-1.5 rounded-lg transition-all ${skillSubTab === 'mcp_arch' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
                     ><MdText text={inhalt.texte.t2McpArchitektur} /></button>
-                    <button aria-pressed={skillSubTab === 'mcp_servers'}
+                    <button {...alsReiter(skillSubTab === 'mcp_servers', 'skills-bereich', 'mcp_servers')}
                       onClick={() => setSkillSubTab('mcp_servers')}
                       className={`px-3 py-1.5 rounded-lg transition-all ${skillSubTab === 'mcp_servers' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
                     ><MdText text={inhalt.texte.t3PraxisKonnektoren} /></button>
-                  </div>
+                  </ReiterLeiste>
                 </div>
     
                 {/* SUB-VIEW 1: WAS SIND SKILLS? (DAS SKILL.MD-KONZEPT) */}
                 {skillSubTab === 'skills_system' && (
-                  <div className="space-y-5 animate-in fade-in duration-200">
+                  <div {...reiterPanel('skills-bereich', skillSubTab)} className="space-y-5 animate-in fade-in duration-200">
                     <div className="text-xs sm:text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/20 leading-relaxed space-y-2">
                       <p><MdText text={inhalt.texte.einSkillIstEine} /><code className="font-mono bg-slate-200 px-1 py-0.5 rounded text-xs">SKILL.md</code><MdText text={inhalt.texte.abgelegtStattDasModell} /></p>
                     </div>
@@ -98,7 +99,7 @@ export function SkillsKonnektorenTab({ skillSubTab, setSkillSubTab, copyToClipbo
     
                 {/* SUB-VIEW 2: MCP ARCHITEKTUR */}
                 {skillSubTab === 'mcp_arch' && (
-                  <div className="space-y-5 animate-in fade-in duration-200">
+                  <div {...reiterPanel('skills-bereich', skillSubTab)} className="space-y-5 animate-in fade-in duration-200">
                     <p className="text-sm text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.mcpOffenerStandard} /></p>
     
                     {/* Architecture diagram */}
@@ -136,7 +137,7 @@ export function SkillsKonnektorenTab({ skillSubTab, setSkillSubTab, copyToClipbo
     
                 {/* SUB-VIEW 3: PRAXIS-KONNEKTOREN */}
                 {skillSubTab === 'mcp_servers' && (
-                  <div className="space-y-4 animate-in fade-in duration-200">
+                  <div {...reiterPanel('skills-bereich', skillSubTab)} className="space-y-4 animate-in fade-in duration-200">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 text-xs space-y-2">
                         <div className="font-bold text-text-main flex items-center gap-2">

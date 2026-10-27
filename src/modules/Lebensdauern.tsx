@@ -17,6 +17,7 @@ import { formatDeWert } from '@/src/utils/numberFormat';
 import { InlineMath, BlockMath } from 'react-katex';
 import inhalt from '@/content/lebensdauern/Lebensdauern.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 ChartJS.register(
   CategoryScale,
@@ -138,8 +139,8 @@ export default function Lebensdauern() {
         </div>
 
         {/* Tab Navigation following GEMINI_md */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
-          <button aria-pressed={activeTab === 'austauschrechner'}
+        <ReiterLeiste label="Bereiche Lebensdauern" className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 my-6">
+          <button {...alsReiter(activeTab === 'austauschrechner', 'lebensdauer-bereich', 'austauschrechner')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'austauschrechner' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -149,7 +150,7 @@ export default function Lebensdauern() {
           >
             <Calculator size={16} /> Austauschzyklen-Rechner
           </button>
-          <button aria-pressed={activeTab === 'diagramm'}
+          <button {...alsReiter(activeTab === 'diagramm', 'lebensdauer-bereich', 'diagramm')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'diagramm' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -158,7 +159,7 @@ export default function Lebensdauern() {
             onClick={() => setActiveTab('diagramm')}
           >
             <BarChart3 size={16} /><MdText text={inhalt.texte.lebensdauerSpannenDiagramm} /></button>
-          <button aria-pressed={activeTab === 'tabelle'}
+          <button {...alsReiter(activeTab === 'tabelle', 'lebensdauer-bereich', 'tabelle')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'tabelle' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -167,7 +168,7 @@ export default function Lebensdauern() {
             onClick={() => setActiveTab('tabelle')}
           >
             <Table size={16} /><MdText text={inhalt.texte.bauteiltabelleBnbBbsr} /></button>
-          <button aria-pressed={activeTab === 'theorie'}
+          <button {...alsReiter(activeTab === 'theorie', 'lebensdauer-bereich', 'theorie')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'theorie' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -176,11 +177,11 @@ export default function Lebensdauern() {
             onClick={() => setActiveTab('theorie')}
           >
             <BookOpen size={16} /><MdText text={inhalt.texte.faktorenmethodeIso15686} /></button>
-        </div>
+        </ReiterLeiste>
 
         {/* Tab 1: Rechner */}
         {activeTab === 'austauschrechner' && (
-          <div className="space-y-6 animate-in fade-in duration-200">
+          <div {...reiterPanel('lebensdauer-bereich', activeTab)} className="space-y-6 animate-in fade-in duration-200">
             <div className="bg-off-white p-5 rounded-2xl border border-home-grau/30">
               <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-3 mb-4">
                 <div>
@@ -286,7 +287,7 @@ export default function Lebensdauern() {
 
         {/* Tab 2: Diagramm */}
         {activeTab === 'diagramm' && (
-          <div className="space-y-6 animate-in fade-in duration-200">
+          <div {...reiterPanel('lebensdauer-bereich', activeTab)} className="space-y-6 animate-in fade-in duration-200">
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
               <h3 className="text-sm font-bold text-text-main flex items-center gap-2 mb-2">
                 <BarChart3 className="text-shiraz" size={18} /><MdText text={inhalt.texte.lebensdauerSpannweitenZentralerBauteilsc} /></h3>
@@ -300,7 +301,7 @@ export default function Lebensdauern() {
 
         {/* Tab 3: Bauteiltabelle */}
         {activeTab === 'tabelle' && (
-          <div className="space-y-6 animate-in fade-in duration-200">
+          <div {...reiterPanel('lebensdauer-bereich', activeTab)} className="space-y-6 animate-in fade-in duration-200">
             <div className="flex items-center gap-2 mb-2">
               <span className="text-xs font-bold text-slate-700"><MdText text={inhalt.texte.filterNachGewerk} /></span>
               <div className="flex flex-wrap gap-1.5">
@@ -349,7 +350,7 @@ export default function Lebensdauern() {
 
         {/* Tab 4: Theorie */}
         {activeTab === 'theorie' && (
-          <div className="space-y-6 animate-in fade-in duration-200">
+          <div {...reiterPanel('lebensdauer-bereich', activeTab)} className="space-y-6 animate-in fade-in duration-200">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-4">
                 <h3 className="text-base font-bold text-text-main flex items-center gap-2">

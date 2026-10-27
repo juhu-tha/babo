@@ -8,6 +8,7 @@ import { InlineMath, BlockMath } from 'react-katex';
 import inhalt from '@/content/innovativewerkstoffe/InnovativeWerkstoffe.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 interface MaterialProfile {
   id: string;
@@ -654,8 +655,8 @@ export default function InnovativeWerkstoffe() {
                       {/* Sub-block 5: Shape */}
                       <div className="pt-2">
                         <label className="text-xs font-bold text-slate-700 block mb-1.5"><MdText text={inhalt.texte.bauteilverlaufStabilitätsform} /></label>
-                        <div className="grid grid-cols-3 gap-2">
-                          <button aria-pressed={structuralShape === 'straight'}
+                        <AuswahlGruppe label="Bauteilverlauf" className="grid grid-cols-3 gap-2">
+                          <button {...alsOption(structuralShape === 'straight')}
                             onClick={() => setStructuralShape('straight')}
                             className={`px-2 py-1.5 rounded-lg font-bold text-[10px] text-center transition-all cursor-pointer ${
                               structuralShape === 'straight'
@@ -665,7 +666,7 @@ export default function InnovativeWerkstoffe() {
                           >
                             Gerade Wand
                           </button>
-                          <button aria-pressed={structuralShape === 'rounded'}
+                          <button {...alsOption(structuralShape === 'rounded')}
                             onClick={() => setStructuralShape('rounded')}
                             className={`px-2 py-1.5 rounded-lg font-bold text-[10px] text-center transition-all cursor-pointer ${
                               structuralShape === 'rounded'
@@ -675,7 +676,7 @@ export default function InnovativeWerkstoffe() {
                           >
                             Kreisförmig
                           </button>
-                          <button aria-pressed={structuralShape === 'folded'}
+                          <button {...alsOption(structuralShape === 'folded')}
                             onClick={() => setStructuralShape('folded')}
                             className={`px-2 py-1.5 rounded-lg font-bold text-[10px] text-center transition-all cursor-pointer ${
                               structuralShape === 'folded'
@@ -683,7 +684,7 @@ export default function InnovativeWerkstoffe() {
                                 : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'
                             }`}
                           ><MdText text={inhalt.texte.gewelltFolded} /></button>
-                        </div>
+                        </AuswahlGruppe>
                       </div>
 
                       {/* Sub-block 6: Accelerator */}
@@ -820,9 +821,9 @@ export default function InnovativeWerkstoffe() {
             <div className="space-y-2 lg:col-span-1">
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-mono mb-2"><MdText text={inhalt.texte.werkstoffAuswählen} /></span>
               
-              <div className="space-y-2.5">
+              <AuswahlGruppe label="Werkstoff" className="space-y-2.5">
                 {FUTURE_MATERIALS.map((mat) => (
-                  <button aria-pressed={selectedMat === mat.id}
+                  <button {...alsOption(selectedMat === mat.id)}
                     key={mat.id}
                     onClick={() => setSelectedMat(mat.id)}
                     className={`w-full text-left p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between h-full relative ${
@@ -857,7 +858,7 @@ export default function InnovativeWerkstoffe() {
                     </div>
                   </button>
                 ))}
-              </div>
+              </AuswahlGruppe>
             </div>
 
             {/* Right details col */}
@@ -986,13 +987,13 @@ export default function InnovativeWerkstoffe() {
 
                 <div>
                   <label className="block text-xs font-bold text-slate-600 uppercase tracking-widest font-mono mb-1.5"><MdText text={inhalt.texte.t2DimensionSpannweite} /></label>
-                  <div className="grid grid-cols-3 gap-2">
+                  <AuswahlGruppe label="Spannweite" className="grid grid-cols-3 gap-2">
                     {[
                       { id: 'gering', label: 'Gering', note: inhalt.werte.zBWändeStützen },
                       { id: 'mittel', label: 'Mittel', note: inhalt.werte.standarddecken8m },
                       { id: 'gross', label: 'Groß', note: inhalt.werte.großspannbrückenHallen }
                     ].map((s) => (
-                      <button aria-pressed={spanLength === s.id}
+                      <button {...alsOption(spanLength === s.id)}
                         key={s.id}
                         type="button"
                         onClick={() => setSpanLength(s.id)}
@@ -1006,7 +1007,7 @@ export default function InnovativeWerkstoffe() {
                         <div className="text-[9px] opacity-75">{s.note}</div>
                       </button>
                     ))}
-                  </div>
+                  </AuswahlGruppe>
                 </div>
 
                 <div>

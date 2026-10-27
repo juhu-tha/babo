@@ -32,6 +32,7 @@ import { formatDeWert } from '@/src/utils/numberFormat';
 import type { TabId } from '@/src/contexts/TabContext';
 import inhalt from '@/content/modulstruktur/Modulstruktur.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 export type NodeType = 'calculator' | 'database' | 'quiz' | 'standard' | 'info' | 'norm';
 
 export interface TreeNode {
@@ -374,8 +375,8 @@ export default function Modulstruktur() {
           </div>
 
           {/* Filter nach Typ */}
-          <div className="flex flex-wrap items-center gap-1.5">
-            <button aria-pressed={selectedType === 'all'}
+          <AuswahlGruppe label="Filter Typ" className="flex flex-wrap items-center gap-1.5">
+            <button {...alsOption(selectedType === 'all')}
               onClick={() => setSelectedType('all')}
               className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
                 selectedType === 'all'
@@ -385,7 +386,7 @@ export default function Modulstruktur() {
             >
               Alle
             </button>
-            <button aria-pressed={selectedType === 'calculator'}
+            <button {...alsOption(selectedType === 'calculator')}
               onClick={() => setSelectedType('calculator')}
               className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold border transition-all flex items-center gap-1 cursor-pointer ${
                 selectedType === 'calculator'
@@ -395,7 +396,7 @@ export default function Modulstruktur() {
             >
               <Calculator size={12} /> Rechner
             </button>
-            <button aria-pressed={selectedType === 'database'}
+            <button {...alsOption(selectedType === 'database')}
               onClick={() => setSelectedType('database')}
               className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold border transition-all flex items-center gap-1 cursor-pointer ${
                 selectedType === 'database'
@@ -405,7 +406,7 @@ export default function Modulstruktur() {
             >
               <Database size={12} /> Daten
             </button>
-            <button aria-pressed={selectedType === 'quiz'}
+            <button {...alsOption(selectedType === 'quiz')}
               onClick={() => setSelectedType('quiz')}
               className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold border transition-all flex items-center gap-1 cursor-pointer ${
                 selectedType === 'quiz'
@@ -415,7 +416,7 @@ export default function Modulstruktur() {
             >
               <HelpCircle size={12} /> Quizzes
             </button>
-            <button aria-pressed={selectedType === 'norm'}
+            <button {...alsOption(selectedType === 'norm')}
               onClick={() => setSelectedType('norm')}
               className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold border transition-all flex items-center gap-1 cursor-pointer ${
                 selectedType === 'norm'
@@ -425,11 +426,11 @@ export default function Modulstruktur() {
             >
               <Scale size={12} /> Normen
             </button>
-          </div>
+          </AuswahlGruppe>
 
           {/* Ansichtswähler */}
-          <div className="flex items-center gap-1 bg-off-white p-1 rounded-xl border border-home-grau/20">
-            <button aria-pressed={viewStyle === 'tree_full'}
+          <ReiterLeiste label="Ansicht Modulstruktur" className="flex items-center gap-1 bg-off-white p-1 rounded-xl border border-home-grau/20">
+            <button {...alsReiter(viewStyle === 'tree_full', 'modulstruktur-ansicht', 'tree_full')}
               onClick={() => setViewStyle('tree_full')}
               title={inhalt.werte.vollständigerBaumMitVerbindungslinien}
               className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
@@ -440,7 +441,7 @@ export default function Modulstruktur() {
             >
               <ListTree size={14} /> Baum
             </button>
-            <button aria-pressed={viewStyle === 'tree_columns'}
+            <button {...alsReiter(viewStyle === 'tree_columns', 'modulstruktur-ansicht', 'tree_columns')}
               onClick={() => setViewStyle('tree_columns')}
               title={inhalt.werte.spaltenBaumMultiColumn}
               className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
@@ -451,7 +452,7 @@ export default function Modulstruktur() {
             >
               <Columns size={14} /> Spalten
             </button>
-            <button aria-pressed={viewStyle === 'outline'}
+            <button {...alsReiter(viewStyle === 'outline', 'modulstruktur-ansicht', 'outline')}
               onClick={() => setViewStyle('outline')}
               title="Gliederungsindex"
               className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
@@ -462,13 +463,13 @@ export default function Modulstruktur() {
             >
               <FileText size={14} /> Index
             </button>
-          </div>
+          </ReiterLeiste>
         </div>
       </div>
 
       {/* 2. HAUPTBEREICH: DIE BAUMSTRUKTUR (SIMULTANE ANZEIGE ALLER MODULE) */}
       {viewStyle === 'tree_full' && (
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 animate-in fade-in duration-200 space-y-8">
+        <div {...reiterPanel('modulstruktur-ansicht', viewStyle)} className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 animate-in fade-in duration-200 space-y-8">
           {/* Baum-Wurzelknoten (Root) */}
           <div className="flex items-center gap-3 pb-4 border-b border-home-grau/20">
             <div className="w-10 h-10 rounded-xl bg-shiraz text-white flex items-center justify-center shadow-sm shrink-0">
@@ -618,7 +619,7 @@ export default function Modulstruktur() {
 
       {/* ANSICHT 2: MULTI-COLUMN SPALTEN-BAUM (ALLE CLUSTER SIMULTAN NEBENEINANDER) */}
       {viewStyle === 'tree_columns' && (
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 animate-in fade-in duration-200">
+        <div {...reiterPanel('modulstruktur-ansicht', viewStyle)} className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 animate-in fade-in duration-200">
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {filteredTree.map(cluster => {
               const ClusterIcon = cluster.icon;
@@ -677,7 +678,7 @@ export default function Modulstruktur() {
 
       {/* ANSICHT 3: NUMERISCHER GLIEDERUNGSINDEX */}
       {viewStyle === 'outline' && (
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 animate-in fade-in duration-200">
+        <div {...reiterPanel('modulstruktur-ansicht', viewStyle)} className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 animate-in fade-in duration-200">
           <div className="space-y-6">
             {filteredTree.map((cluster, cIdx) => (
               <div key={cluster.id} className="border-b border-home-grau/20 pb-5 last:border-b-0">

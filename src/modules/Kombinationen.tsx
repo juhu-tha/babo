@@ -40,6 +40,7 @@ import { InlineMath, BlockMath } from 'react-katex';
 import inhalt from '@/content/kombinationen/Kombinationen.json';
 import { sdRegel } from '@/src/calc/glaser';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 ChartJS.register(
   CategoryScale,
@@ -301,8 +302,8 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
         </div>
 
         {/* Navigation Tabs */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          <button aria-pressed={activeTab === 'ueberblick'}
+        <ReiterLeiste label="Bereiche Kombinationen" className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
+          <button {...alsReiter(activeTab === 'ueberblick', 'kombi-bereich', 'ueberblick')}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'ueberblick'
@@ -312,7 +313,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
             onClick={() => setActiveTab('ueberblick')}
           >
             <Box size={16} /><MdText text={inhalt.texte.systematikPrinzipien} /></button>
-          <button aria-pressed={activeTab === 'aufbauten'}
+          <button {...alsReiter(activeTab === 'aufbauten', 'kombi-bereich', 'aufbauten')}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'aufbauten'
@@ -322,7 +323,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
             onClick={() => setActiveTab('aufbauten')}
           >
             <Layers size={16} /><MdText text={inhalt.texte.schichtaufbauAußenwand} /></button>
-          <button aria-pressed={activeTab === 'faserverbund'}
+          <button {...alsReiter(activeTab === 'faserverbund', 'kombi-bereich', 'faserverbund')}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'faserverbund'
@@ -332,7 +333,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
             onClick={() => setActiveTab('faserverbund')}
           >
             <Network size={16} /><MdText text={inhalt.texte.faserverbundCfkGfkSimulator} /></button>
-          <button aria-pressed={activeTab === 'verbundwerkstoffe'}
+          <button {...alsReiter(activeTab === 'verbundwerkstoffe', 'kombi-bereich', 'verbundwerkstoffe')}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'verbundwerkstoffe'
@@ -342,7 +343,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
             onClick={() => setActiveTab('verbundwerkstoffe')}
           >
             <GitMerge size={16} /><MdText text={inhalt.texte.makroverbundeStbSandwichVsg} /></button>
-          <button aria-pressed={activeTab === 'schutzschichten'}
+          <button {...alsReiter(activeTab === 'schutzschichten', 'kombi-bereich', 'schutzschichten')}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'schutzschichten'
@@ -352,7 +353,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
             onClick={() => setActiveTab('schutzschichten')}
           >
             <Shield size={16} /><MdText text={inhalt.texte.schutzschichtenGrenzflächen} /></button>
-          <button aria-pressed={activeTab === 'rechner'}
+          <button {...alsReiter(activeTab === 'rechner', 'kombi-bereich', 'rechner')}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'rechner'
@@ -362,7 +363,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
             onClick={() => setActiveTab('rechner')}
           >
             <Calculator size={16} /><MdText text={inhalt.texte.interaktiverSchichtrechner} /></button>
-          <button aria-pressed={activeTab === 'steckbrief'}
+          <button {...alsReiter(activeTab === 'steckbrief', 'kombi-bereich', 'steckbrief')}
             type="button"
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-xs cursor-pointer ${
               activeTab === 'steckbrief'
@@ -373,11 +374,11 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
           >
             <BookOpen size={16} /> Faserverbund-Steckbrief
           </button>
-        </div>
+        </ReiterLeiste>
 
         {/* Tab 1: Systematik & Prinzipien */}
         {activeTab === 'ueberblick' && (
-          <div className="flex flex-col gap-6 animate-in fade-in duration-300">
+          <div {...reiterPanel('kombi-bereich', activeTab)} className="flex flex-col gap-6 animate-in fade-in duration-300">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="p-5 bg-off-white rounded-xl border border-home-grau/30 flex flex-col justify-between">
                 <div>
@@ -459,7 +460,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
 
         {/* Tab 2: Schichtaufbau Außenwand */}
         {activeTab === 'aufbauten' && (
-          <div className="flex flex-col gap-6 animate-in fade-in duration-300">
+          <div {...reiterPanel('kombi-bereich', activeTab)} className="flex flex-col gap-6 animate-in fade-in duration-300">
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
               <h3 className="font-bold text-shiraz text-lg mb-2"><MdText text={inhalt.texte.dasDreiklangPrinzipDer} /></h3>
               <p className="text-sm text-text-main/80 leading-relaxed mb-4"><MdText text={inhalt.texte.eineMonolithischeMassivwandAus} /></p>
@@ -551,7 +552,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
 
         {/* Tab 3: Faserverbund (CFK/GFK Simulator & Mikromechanik) */}
         {activeTab === 'faserverbund' && (
-          <div className="flex flex-col gap-6 animate-in fade-in duration-300">
+          <div {...reiterPanel('kombi-bereich', activeTab)} className="flex flex-col gap-6 animate-in fade-in duration-300">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div className="flex flex-col gap-6">
                 <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
@@ -738,7 +739,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
 
         {/* Tab 4: Makroverbunde (Stahlbeton, Sandwich, VSG) */}
         {activeTab === 'verbundwerkstoffe' && (
-          <div className="flex flex-col gap-6 animate-in fade-in duration-300">
+          <div {...reiterPanel('kombi-bereich', activeTab)} className="flex flex-col gap-6 animate-in fade-in duration-300">
             {/* Stahlbeton */}
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
               <h3 className="font-bold text-shiraz text-lg mb-2 flex items-center gap-2">
@@ -780,7 +781,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
 
         {/* Tab 5: Schutzschichten & Grenzflächen */}
         {activeTab === 'schutzschichten' && (
-          <div className="flex flex-col gap-6 animate-in fade-in duration-300">
+          <div {...reiterPanel('kombi-bereich', activeTab)} className="flex flex-col gap-6 animate-in fade-in duration-300">
             {/* Schutz mineralischer Untergründe DIN EN 1504-2 */}
             <div className="bg-white p-5 rounded-xl border border-home-grau/30 shadow-xxs">
               <h3 className="font-bold text-shiraz text-lg mb-2 flex items-center gap-2">
@@ -853,7 +854,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
 
         {/* Tab 6: Interaktiver Schichtrechner */}
         {activeTab === 'rechner' && (
-          <div className="flex flex-col gap-6 animate-in fade-in duration-300">
+          <div {...reiterPanel('kombi-bereich', activeTab)} className="flex flex-col gap-6 animate-in fade-in duration-300">
             <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 text-xs text-text-main/80 flex items-center justify-between flex-wrap gap-2">
               <div><MdText text={inhalt.texte.interaktiverSchichtkalkulatorKonfigurier} /></div>
               <button
@@ -1038,7 +1039,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
 
         {/* Tab 7: Baustoff-Steckbrief Faserverbund */}
         {activeTab === 'steckbrief' && (
-          <div className="animate-in fade-in duration-300">
+          <div {...reiterPanel('kombi-bereich', activeTab)} className="animate-in fade-in duration-300">
             <BaustoffProfil materialKey="faserverbund" />
           </div>
         )}

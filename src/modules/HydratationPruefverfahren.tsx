@@ -6,6 +6,7 @@ import inhalt from '@/content/hydratationpruefverfahren/HydratationPruefverfahre
 import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { reissrahmen, type ZementProfil } from '@/src/calc/hydratation';
+import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 const CEMENT_MAP: Record<string, ZementProfil> = inhalt.daten.CEMENT_MAP;
 
@@ -43,8 +44,8 @@ export default function HydratationPruefverfahren() {
       </div>
 
       {/* Sub Tabs */}
-      <div className="flex flex-wrap gap-2">
-        <button aria-pressed={panelTab === 'reissrahmen'}
+      <ReiterLeiste label="Prüfverfahren" className="flex flex-wrap gap-2">
+        <button {...alsReiter(panelTab === 'reissrahmen', 'hydr-pruef', 'reissrahmen')}
           onClick={() => setPanelTab('reissrahmen')}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             panelTab === 'reissrahmen'
@@ -53,7 +54,7 @@ export default function HydratationPruefverfahren() {
           }`}
         >
           <Activity size={16} /><MdText text={inhalt.texte.t1ReißrahmenCrackingFrame} /></button>
-        <button aria-pressed={panelTab === 'schwindrinne'}
+        <button {...alsReiter(panelTab === 'schwindrinne', 'hydr-pruef', 'schwindrinne')}
           onClick={() => setPanelTab('schwindrinne')}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             panelTab === 'schwindrinne'
@@ -62,7 +63,7 @@ export default function HydratationPruefverfahren() {
           }`}
         >
           <Layers size={16} /><MdText text={inhalt.texte.t2Schwindmessrinne} /></button>
-        <button aria-pressed={panelTab === 'kalorimetrie'}
+        <button {...alsReiter(panelTab === 'kalorimetrie', 'hydr-pruef', 'kalorimetrie')}
           onClick={() => setPanelTab('kalorimetrie')}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             panelTab === 'kalorimetrie'
@@ -71,9 +72,9 @@ export default function HydratationPruefverfahren() {
           }`}
         >
           <Flame size={16} /><MdText text={inhalt.texte.t3KalorimetrischeWärmemessung} /></button>
-      </div>
+      </ReiterLeiste>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div {...reiterPanel('hydr-pruef', panelTab)} className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         
         {/* Tab 1: Reißrahmen */}
         {panelTab === 'reissrahmen' && (

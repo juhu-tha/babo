@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import inhalt from '@/content/ki/ModelBenchmarkMatrix.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 interface ModelComparison {
   name: string;
@@ -138,14 +139,14 @@ export default function ModelBenchmarkMatrix() {
         </div>
 
         {/* Filter Buttons */}
-        <div className="flex p-1 bg-slate-100 rounded-xl max-w-max self-start sm:self-center">
-          <button aria-pressed={filterType === 'all'}
+        <AuswahlGruppe label="Filter Betriebsart" className="flex p-1 bg-slate-100 rounded-xl max-w-max self-start sm:self-center">
+          <button {...alsOption(filterType === 'all')}
             onClick={() => setFilterType('all')}
             className={`px-3 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer ${
               filterType === 'all' ? 'bg-white text-text-main shadow-xs' : 'text-slate-500 hover:text-text-main'
             }`}
           ><MdText text={inhalt.texte.alleModelle} /></button>
-          <button aria-pressed={filterType === 'cloud'}
+          <button {...alsOption(filterType === 'cloud')}
             onClick={() => setFilterType('cloud')}
             className={`px-3 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer ${
               filterType === 'cloud' ? 'bg-white text-text-main shadow-xs' : 'text-slate-500 hover:text-text-main'
@@ -153,13 +154,13 @@ export default function ModelBenchmarkMatrix() {
           >
             Nur Cloud
           </button>
-          <button aria-pressed={filterType === 'local'}
+          <button {...alsOption(filterType === 'local')}
             onClick={() => setFilterType('local')}
             className={`px-3 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer ${
               filterType === 'local' ? 'bg-white text-text-main shadow-xs' : 'text-slate-500 hover:text-text-main'
             }`}
           ><MdText text={inhalt.texte.nurLokalOffline} /></button>
-        </div>
+        </AuswahlGruppe>
       </div>
 
       {/* Tabelle */}

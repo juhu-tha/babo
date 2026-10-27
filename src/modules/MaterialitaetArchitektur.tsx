@@ -18,6 +18,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/materialitaetarchitektur/MaterialitaetArchitektur.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 interface MaterialVisualSpec {
   id: string;
@@ -352,8 +353,8 @@ export default function MaterialitaetArchitektur() {
               </div>
 
               {/* Light simulation switcher */}
-              <div className="flex items-center gap-1 bg-off-white p-1 rounded-lg border border-home-grau/20 self-start sm:self-center">
-                <button aria-pressed={lightModePreview === 'sonne'}
+              <AuswahlGruppe label="Lichtsituation" className="flex items-center gap-1 bg-off-white p-1 rounded-lg border border-home-grau/20 self-start sm:self-center">
+                <button {...alsOption(lightModePreview === 'sonne')}
                   onClick={() => setLightModePreview('sonne')}
                   className={`px-2.5 py-1 rounded text-xs font-medium transition-colors cursor-pointer flex items-center gap-1 ${
                     lightModePreview === 'sonne' ? 'bg-white shadow-xs text-amber-600 font-bold' : 'text-text-main/60 hover:text-text-main'
@@ -362,7 +363,7 @@ export default function MaterialitaetArchitektur() {
                 >
                   <Sun size={13} /> Sonne
                 </button>
-                <button aria-pressed={lightModePreview === 'diffus'}
+                <button {...alsOption(lightModePreview === 'diffus')}
                   onClick={() => setLightModePreview('diffus')}
                   className={`px-2.5 py-1 rounded text-xs font-medium transition-colors cursor-pointer flex items-center gap-1 ${
                     lightModePreview === 'diffus' ? 'bg-white shadow-xs text-slate-700 font-bold' : 'text-text-main/60 hover:text-text-main'
@@ -371,7 +372,7 @@ export default function MaterialitaetArchitektur() {
                 >
                   <Eye size={13} /> Diffus
                 </button>
-                <button aria-pressed={lightModePreview === 'nacht'}
+                <button {...alsOption(lightModePreview === 'nacht')}
                   onClick={() => setLightModePreview('nacht')}
                   className={`px-2.5 py-1 rounded text-xs font-medium transition-colors cursor-pointer flex items-center gap-1 ${
                     lightModePreview === 'nacht' ? 'bg-slate-900 text-amber-300 shadow-xs font-bold' : 'text-text-main/60 hover:text-text-main'
@@ -380,7 +381,7 @@ export default function MaterialitaetArchitektur() {
                 >
                   <Sparkles size={13} /> Nacht
                 </button>
-              </div>
+              </AuswahlGruppe>
             </div>
 
             {/* Simulated Architectural Surface Plate */}

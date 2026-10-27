@@ -4,6 +4,7 @@ import { formatDeZahl, formatDeTeX, formatDeWert, formatDeTeXWert } from '@/src/
 import React from 'react';
 import inhalt from '@/content/beispielrechnungen/RechnungBeton.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ReiterLeiste, alsReiter, reiterPanel } from '../../components/ui/Auswahlgruppe';
 
 interface RechnungBetonProps {
   V_a: number;
@@ -79,8 +80,8 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
   return (
       <div className="space-y-6 animate-in fade-in duration-300">
         {/* SUB-NAVIGATION FOR BETON CALCULATIONS */}
-        <div className="flex flex-wrap gap-2 pb-2 border-b border-home-grau/20">
-          <button aria-pressed={betonSubTab === 'mischung'}
+        <ReiterLeiste label="Beispielrechnungen Beton" className="flex flex-wrap gap-2 pb-2 border-b border-home-grau/20">
+          <button {...alsReiter(betonSubTab === 'mischung', 'rechnung-beton', 'mischung')}
             type="button"
             className={`px-3 py-2 rounded-xl font-bold text-xs transition-all border shadow-sm cursor-pointer ${
                   betonSubTab === 'mischung'
@@ -89,7 +90,7 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
                 }`}
             onClick={() => setBetonSubTab('mischung')}
           ><MdText text={inhalt.texte.mischungsentwurfStoffraum} /></button>
-          <button aria-pressed={betonSubTab === 'k_wert'}
+          <button {...alsReiter(betonSubTab === 'k_wert', 'rechnung-beton', 'k_wert')}
             type="button"
             className={`px-3 py-2 rounded-xl font-bold text-xs transition-all border shadow-sm cursor-pointer ${
                   betonSubTab === 'k_wert'
@@ -98,7 +99,7 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
                 }`}
             onClick={() => setBetonSubTab('k_wert')}
           ><MdText text={inhalt.texte.kWertAnsatzZusatzstoffe} /></button>
-          <button aria-pressed={betonSubTab === 'temperatur'}
+          <button {...alsReiter(betonSubTab === 'temperatur', 'rechnung-beton', 'temperatur')}
             type="button"
             className={`px-3 py-2 rounded-xl font-bold text-xs transition-all border shadow-sm cursor-pointer ${
                   betonSubTab === 'temperatur'
@@ -109,7 +110,7 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
           >
             Frischbetontemperatur
           </button>
-          <button aria-pressed={betonSubTab === 'festigkeit'}
+          <button {...alsReiter(betonSubTab === 'festigkeit', 'rechnung-beton', 'festigkeit')}
             type="button"
             className={`px-3 py-2 rounded-xl font-bold text-xs transition-all border shadow-sm cursor-pointer ${
                   betonSubTab === 'festigkeit'
@@ -120,11 +121,11 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
           >
             Festigkeitsentwicklung
           </button>
-        </div>
+        </ReiterLeiste>
 
         {/* A. MISCHUNGSENTWURF */}
         {betonSubTab === 'mischung' && (
-          <div className="space-y-6 animate-in fade-in duration-300">
+          <div {...reiterPanel('rechnung-beton', betonSubTab)} className="space-y-6 animate-in fade-in duration-300">
             <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
               <h3 className="font-extrabold text-sm text-slate-800 flex items-center gap-1.5">
                 <BookOpen className="text-shiraz" size={18} />
@@ -265,7 +266,7 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
 
         {/* B. K-WERT-ANSATZ */}
         {betonSubTab === 'k_wert' && (
-          <div className="space-y-6 animate-in fade-in duration-300">
+          <div {...reiterPanel('rechnung-beton', betonSubTab)} className="space-y-6 animate-in fade-in duration-300">
             <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
               <h3 className="font-extrabold text-sm text-slate-800 flex items-center gap-1.5">
                 <BookOpen className="text-shiraz" size={18} />
@@ -363,7 +364,7 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
 
         {/* C. FRISCHBETONTEMPERATUR */}
         {betonSubTab === 'temperatur' && (
-          <div className="space-y-6 animate-in fade-in duration-300">
+          <div {...reiterPanel('rechnung-beton', betonSubTab)} className="space-y-6 animate-in fade-in duration-300">
             <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
               <h3 className="font-extrabold text-sm text-slate-800 flex items-center gap-1.5">
                 <BookOpen className="text-shiraz" size={18} />
@@ -493,7 +494,7 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
 
         {/* D. FESTIGKEITSENTWICKLUNG */}
         {betonSubTab === 'festigkeit' && (
-          <div className="space-y-6 animate-in fade-in duration-300">
+          <div {...reiterPanel('rechnung-beton', betonSubTab)} className="space-y-6 animate-in fade-in duration-300">
             <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
               <h3 className="font-extrabold text-sm text-slate-800 flex items-center gap-1.5">
                 <BookOpen className="text-shiraz" size={18} />

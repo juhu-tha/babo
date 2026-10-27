@@ -9,6 +9,7 @@ import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import inhalt from '@/content/metalle/Metalle.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 function MetalThematicLinks({ current }: { current: 'baustoff' | 'bauprodukt' | 'dauerhaftigkeit' }) {
   const { setActiveTab } = useTabContext();
@@ -125,7 +126,7 @@ export default function Metalle() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 animate-in fade-in duration-300">
             <div className="lg:col-span-3 flex flex-col gap-2">
               <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-2"><MdText text={inhalt.texte.materialAuswählen} /></h3>
-              <div className="flex flex-col gap-2">
+              <AuswahlGruppe label="Metall" className="flex flex-col gap-2">
                 {[
                   { key: 'aluminium', name: 'Aluminium', symbol: 'Al' },
                   { key: 'kupfer', name: 'Kupfer', symbol: 'Cu' },
@@ -135,7 +136,7 @@ export default function Metalle() {
                   { key: 'blei', name: 'Blei', symbol: 'Pb' },
                   { key: 'titan', name: 'Titan', symbol: 'Ti' }
                 ].map((item) => (
-                  <button aria-pressed={selectedSteckbriefMetal === item.key}
+                  <button {...alsOption(selectedSteckbriefMetal === item.key)}
                     key={item.key}
                     onClick={() => setSelectedSteckbriefMetal(item.key)}
                     className={`p-3 text-left rounded-xl border transition-all ${
@@ -150,7 +151,7 @@ export default function Metalle() {
                     </div>
                   </button>
                 ))}
-              </div>
+              </AuswahlGruppe>
             </div>
             <div className="lg:col-span-9">
               <BaustoffProfil materialKey={selectedSteckbriefMetal} />

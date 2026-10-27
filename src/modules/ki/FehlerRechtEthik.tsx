@@ -22,6 +22,7 @@ import KiDeklarationGuide from '@/src/modules/ki/KiDeklarationGuide';
 import inhalt from '@/content/ki/FehlerRechtEthik.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 interface LimitationCase {
   id: string;
@@ -168,9 +169,9 @@ export default function FehlerRechtEthik() {
             </div>
 
             {/* Fall-Auswahl */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+            <AuswahlGruppe label="Fallbeispiel" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
               {LIMITATION_CASES.map((c) => (
-                <button aria-pressed={selectedCase === c.id}
+                <button {...alsOption(selectedCase === c.id)}
                   key={c.id}
                   onClick={() => setSelectedCase(c.id)}
                   className={`p-3 rounded-xl text-left text-xs transition-all border cursor-pointer ${
@@ -188,7 +189,7 @@ export default function FehlerRechtEthik() {
                   <div className="line-clamp-2 leading-snug">{c.title}</div>
                 </button>
               ))}
-            </div>
+            </AuswahlGruppe>
 
             {/* Fall-Detailansicht */}
             <div className="p-5 bg-off-white rounded-2xl border border-home-grau/30 space-y-4">

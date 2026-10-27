@@ -8,6 +8,7 @@ import type { Dispatch, SetStateAction } from 'react';
 import type { MaterialData } from './daten';
 import inhalt from '@/content/mechanischekenngroessen/Zugversuchsimulator.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 interface ZugversuchsimulatorProps {
   breiteMm: number;
@@ -75,20 +76,20 @@ export default function Zugversuchsimulator({ breiteMm, durchmesserMm, handleSel
             {/* Belastungsart: Zug oder Druck */}
             <div className="space-y-1.5 pt-2 border-t border-home-grau/20">
               <label className="text-xs font-bold text-text-main block">Belastungsrichtung:</label>
-              <div className="grid grid-cols-2 gap-2">
-                <button aria-pressed={lastArt === 'zug'}
+              <AuswahlGruppe label="Belastungsrichtung" className="grid grid-cols-2 gap-2">
+                <button {...alsOption(lastArt === 'zug')}
                   onClick={() => setLastArt('zug')}
                   className={`py-2 text-xs font-bold rounded-lg border transition-all cursor-pointer ${
                       lastArt === 'zug' ? 'bg-shiraz text-white border-shiraz shadow' : 'bg-off-white text-text-main border-home-grau/30 hover:bg-white'
                     }`}
                 ><MdText text={inhalt.texte.zugspannung} /></button>
-                <button aria-pressed={lastArt === 'druck'}
+                <button {...alsOption(lastArt === 'druck')}
                   onClick={() => setLastArt('druck')}
                   className={`py-2 text-xs font-bold rounded-lg border transition-all cursor-pointer ${
                       lastArt === 'druck' ? 'bg-shiraz text-white border-shiraz shadow' : 'bg-off-white text-text-main border-home-grau/30 hover:bg-white'
                     }`}
                 ><MdText text={inhalt.texte.druckspannung} /></button>
-              </div>
+              </AuswahlGruppe>
             </div>
 
             {/* Kraft Slider */}
@@ -142,20 +143,20 @@ export default function Zugversuchsimulator({ breiteMm, durchmesserMm, handleSel
             <div className="space-y-2 pt-2 border-t border-home-grau/20">
               <div className="flex justify-between items-center text-xs">
                 <span className="font-bold text-text-main">Querschnittsgeometrie:</span>
-                <div className="flex gap-2">
-                  <button aria-pressed={querschnittTyp === 'rund'}
+                <AuswahlGruppe label="Querschnittsgeometrie" className="flex gap-2">
+                  <button {...alsOption(querschnittTyp === 'rund')}
                     onClick={() => setQuerschnittTyp('rund')}
                     className={`px-2 py-0.5 rounded text-[11px] font-bold border cursor-pointer ${
                         querschnittTyp === 'rund' ? 'bg-slate-700 text-white' : 'bg-off-white text-slate-700'
                       }`}
                   ><MdText text={inhalt.texte.kreisstab} /></button>
-                  <button aria-pressed={querschnittTyp === 'rechteck'}
+                  <button {...alsOption(querschnittTyp === 'rechteck')}
                     onClick={() => setQuerschnittTyp('rechteck')}
                     className={`px-2 py-0.5 rounded text-[11px] font-bold border cursor-pointer ${
                         querschnittTyp === 'rechteck' ? 'bg-slate-700 text-white' : 'bg-off-white text-slate-700'
                       }`}
                   ><MdText text={inhalt.texte.rechteckBH} /></button>
-                </div>
+                </AuswahlGruppe>
               </div>
 
               {querschnittTyp === 'rund' ? (

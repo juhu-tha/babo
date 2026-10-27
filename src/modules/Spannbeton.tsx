@@ -52,6 +52,7 @@ import {
 import inhalt from '@/content/spannbeton/Spannbeton.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 ChartJS.register(
   CategoryScale,
@@ -615,18 +616,18 @@ export default function Spannbeton() {
             {/* Time toggle */}
             <div>
               <label className="block text-xs font-semibold text-text-main/75 mb-1.5"><MdText text={inhalt.texte.betrachteterBetriebszeitpunkt} /></label>
-              <div className="grid grid-cols-2 gap-2">
-                <button aria-pressed={timeState === 'short_term'}
+              <AuswahlGruppe label="Betriebszeitpunkt" className="grid grid-cols-2 gap-2">
+                <button {...alsOption(timeState === 'short_term')}
                   type="button"
                   onClick={() => setTimeState('short_term')}
                   className={`py-2 px-3 rounded-lg text-xs font-semibold border transition ${timeState === 'short_term' ? 'bg-shiraz border-shiraz text-white shadow-sm' : 'bg-off-white border-home-grau/30 text-text-main hover:bg-home-grau/10'}`}
                 ><MdText text={inhalt.texte.transferKurzzeitT0} /></button>
-                <button aria-pressed={timeState === 'long_term'}
+                <button {...alsOption(timeState === 'long_term')}
                   type="button"
                   onClick={() => setTimeState('long_term')}
                   className={`py-2 px-3 rounded-lg text-xs font-semibold border transition ${timeState === 'long_term' ? 'bg-shiraz border-shiraz text-white shadow-sm' : 'bg-off-white border-home-grau/30 text-text-main hover:bg-home-grau/10'}`}
                 ><MdText text={inhalt.texte.gebrauchsphaseLangzeitT} /></button>
-              </div>
+              </AuswahlGruppe>
             </div>
 
             {/* Environment Humidity */}
@@ -1018,24 +1019,24 @@ export default function Spannbeton() {
                 <Thermometer className="h-4 w-4 text-shiraz" /><MdText text={inhalt.texte.spezifischeVorspannungsverlusteLossCalcu} /></h3>
               
               {/* Toggle tabs */}
-              <div className="flex bg-slate-100 p-1 rounded-lg shrink-0">
-                <button aria-pressed={lossTab === 'overview'}
+              <ReiterLeiste label="Vorspannverluste" className="flex bg-slate-100 p-1 rounded-lg shrink-0">
+                <button {...alsReiter(lossTab === 'overview', 'spannbeton-verlust', 'overview')}
                   type="button"
                   onClick={() => setLossTab('overview')}
                   className={`py-1 px-2.5 text-xs font-semibold rounded-md transition cursor-pointer select-none ${lossTab === 'overview' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'}`}
                 >
                   Übersicht
                 </button>
-                <button aria-pressed={lossTab === 'calculations'}
+                <button {...alsReiter(lossTab === 'calculations', 'spannbeton-verlust', 'calculations')}
                   type="button"
                   onClick={() => setLossTab('calculations')}
                   className={`py-1 px-2.5 text-xs font-semibold rounded-md transition cursor-pointer select-none ${lossTab === 'calculations' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'}`}
                 ><MdText text={inhalt.texte.rechengangEc2} /></button>
-              </div>
+              </ReiterLeiste>
             </div>
 
             {lossTab === 'overview' ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-in fade-in duration-300">
+              <div {...reiterPanel('spannbeton-verlust', lossTab)} className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-in fade-in duration-300">
                 {/* Force values overview */}
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between items-center text-slate-700">
@@ -1090,7 +1091,7 @@ export default function Spannbeton() {
                 </div>
               </div>
             ) : (
-              <div className="space-y-4 font-mono text-xs animate-in fade-in duration-300">
+              <div {...reiterPanel('spannbeton-verlust', lossTab)} className="space-y-4 font-mono text-xs animate-in fade-in duration-300">
                 <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
                   <div className="font-bold text-slate-800 text-[10px] uppercase tracking-wider mb-2"><MdText text={inhalt.texte.t1GrundparameterInputs} /></div>
                   <div className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-[11px]">

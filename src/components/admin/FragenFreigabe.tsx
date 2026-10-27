@@ -4,6 +4,7 @@ import type { QuizQuestion } from '@/src/data/quizModell';
 import { useAlleFragen } from '@/src/data/quizLader';
 import { META_CLUSTERS } from '@/src/data/metaClusters';
 import { formatDeWert } from '@/src/utils/numberFormat';
+import { AuswahlGruppe, alsOption } from '../ui/Auswahlgruppe';
 
 /**
  * Fachliche Freigabe der Quizfragen je Cluster (Umsetzungsplan Phase 3, AP 3.5).
@@ -67,16 +68,18 @@ export function FragenFreigabe() {
         </p>
       </div>
 
-      <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Cluster wählen">
+      <div className="flex flex-wrap items-center gap-2">
+        <AuswahlGruppe className="flex flex-wrap items-center gap-2" label="Cluster wählen">
         {META_CLUSTERS.filter(c => QUIZ_QUESTIONS.some(q => q.clusterId === c.number)).map(c => {
           const z = zaehler(c.number);
           return (
-            <button key={c.number} type="button" aria-pressed={cluster === c.number} onClick={() => setCluster(c.number)}
+            <button key={c.number} type="button" {...alsOption(cluster === c.number)} onClick={() => setCluster(c.number)}
               className={`px-3 py-2 rounded-xl text-xs font-bold border ${cluster === c.number ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-text-main border-home-grau/30'}`}>
               {c.number} {c.name} · {formatDeWert(z.erledigt)}/{formatDeWert(z.gesamt)}
             </button>
           );
         })}
+        </AuswahlGruppe>
         <label className="ml-auto flex items-center gap-2 text-xs">
           <input type="checkbox" checked={nurOffene} onChange={e => setNurOffene(e.target.checked)} /> nur offene Fragen
         </label>

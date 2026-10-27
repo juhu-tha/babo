@@ -4,6 +4,7 @@ import {
   Search, Calendar, Globe, Info, ChevronDown, ChevronUp, HardHat, Sparkles
 } from 'lucide-react';
 import { BlockMath } from 'react-katex';
+import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from './Auswahlgruppe';
 
 export type HierarchyLevel = 
   | 'all'
@@ -793,8 +794,8 @@ export const RechtsrahmenKompendium: React.FC = () => {
           </div>
           
           {/* View Mode Toggle Buttons */}
-          <div className="flex flex-wrap items-center gap-1.5 p-1 bg-off-white rounded-xl border border-home-grau/30 shrink-0">
-            <button aria-pressed={viewMode === 'kaskade'}
+          <ReiterLeiste label="Ansicht Rechtsrahmen" className="flex flex-wrap items-center gap-1.5 p-1 bg-off-white rounded-xl border border-home-grau/30 shrink-0">
+            <button {...alsReiter(viewMode === 'kaskade', 'rechtsrahmen-ansicht', 'kaskade')}
               onClick={() => setViewMode('kaskade')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 viewMode === 'kaskade'
@@ -804,7 +805,7 @@ export const RechtsrahmenKompendium: React.FC = () => {
             >
               <Layers size={13} /> Kaskade (5 Ebenen)
             </button>
-            <button aria-pressed={viewMode === 'diagramm'}
+            <button {...alsReiter(viewMode === 'diagramm', 'rechtsrahmen-ansicht', 'diagramm')}
               onClick={() => setViewMode('diagramm')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 viewMode === 'diagramm'
@@ -814,7 +815,7 @@ export const RechtsrahmenKompendium: React.FC = () => {
             >
               <Globe size={13} /> System-Fluss
             </button>
-            <button aria-pressed={viewMode === 'timeline'}
+            <button {...alsReiter(viewMode === 'timeline', 'rechtsrahmen-ansicht', 'timeline')}
               onClick={() => setViewMode('timeline')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 viewMode === 'timeline'
@@ -824,7 +825,7 @@ export const RechtsrahmenKompendium: React.FC = () => {
             >
               <Calendar size={13} /> Fahrplan 2024–2050
             </button>
-            <button aria-pressed={viewMode === 'synopse'}
+            <button {...alsReiter(viewMode === 'synopse', 'rechtsrahmen-ansicht', 'synopse')}
               onClick={() => setViewMode('synopse')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 viewMode === 'synopse'
@@ -834,7 +835,7 @@ export const RechtsrahmenKompendium: React.FC = () => {
             >
               <FileText size={13} /> Synopse-Matrix
             </button>
-          </div>
+          </ReiterLeiste>
         </div>
 
         {/* Filter & Search Bar */}
@@ -861,7 +862,7 @@ export const RechtsrahmenKompendium: React.FC = () => {
           </div>
 
           {/* Audience Filter Pills */}
-          <div className="md:col-span-7 flex flex-wrap items-center gap-1.5">
+          <AuswahlGruppe label="Filter Zielgruppe" className="md:col-span-7 flex flex-wrap items-center gap-1.5">
             <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mr-1">Fokus:</span>
             {[
               { id: 'all' as TargetAudience, label: 'Alle Sektoren' },
@@ -870,7 +871,7 @@ export const RechtsrahmenKompendium: React.FC = () => {
               { id: 'planer' as TargetAudience, label: '📐 Planer & Architekten' },
               { id: 'finanzen' as TargetAudience, label: '💼 Finanzen & ESG' }
             ].map((aud) => (
-              <button aria-pressed={selectedAudience === aud.id}
+              <button {...alsOption(selectedAudience === aud.id)}
                 key={aud.id}
                 onClick={() => setSelectedAudience(aud.id)}
                 className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer border ${
@@ -882,13 +883,13 @@ export const RechtsrahmenKompendium: React.FC = () => {
                 {aud.label}
               </button>
             ))}
-          </div>
+          </AuswahlGruppe>
 
         </div>
 
         {/* Level Selector Tabs */}
-        <div className="flex flex-wrap gap-2 pt-2 border-t border-home-grau/15">
-          <button aria-pressed={selectedLevel === 'all'}
+        <AuswahlGruppe label="Filter Ebene" className="flex flex-wrap gap-2 pt-2 border-t border-home-grau/15">
+          <button {...alsOption(selectedLevel === 'all')}
             onClick={() => setSelectedLevel('all')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border cursor-pointer flex items-center gap-1.5 ${
               selectedLevel === 'all'
@@ -905,7 +906,7 @@ export const RechtsrahmenKompendium: React.FC = () => {
           </button>
 
           {levelMetadata.map((lvl) => (
-            <button aria-pressed={selectedLevel === lvl.id}
+            <button {...alsOption(selectedLevel === lvl.id)}
               key={lvl.id}
               onClick={() => setSelectedLevel(lvl.id)}
               className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border cursor-pointer flex items-center gap-1.5 ${
@@ -922,13 +923,13 @@ export const RechtsrahmenKompendium: React.FC = () => {
               </span>
             </button>
           ))}
-        </div>
+        </AuswahlGruppe>
 
       </div>
 
       {/* VIEW MODE 1: KASKADEN-ANSICHT (HEURISTISCH 5 EBENEN) */}
       {viewMode === 'kaskade' && (
-        <div className="flex flex-col gap-8">
+        <div {...reiterPanel('rechtsrahmen-ansicht', viewMode)} className="flex flex-col gap-8">
           {levelMetadata
             .filter(lvl => selectedLevel === 'all' || selectedLevel === lvl.id)
             .map((lvl) => {
@@ -1105,7 +1106,7 @@ export const RechtsrahmenKompendium: React.FC = () => {
 
       {/* VIEW MODE 2: INTERAKTIVES KASKADEN-DIAGRAMM (SYSTEMATIK-FLUSS) */}
       {viewMode === 'diagramm' && (
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
+        <div {...reiterPanel('rechtsrahmen-ansicht', viewMode)} className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
           <div className="border-b border-home-grau/20 pb-3">
             <span className="text-[10px] font-bold text-shiraz uppercase tracking-widest">Top-Down Kaskade</span>
             <h4 className="text-base font-extrabold text-text-main mt-0.5">
@@ -1229,7 +1230,7 @@ export const RechtsrahmenKompendium: React.FC = () => {
 
       {/* VIEW MODE 3: TIMELINE (CHRONOLOGISCHER STUFENFAHRPLAN 2024–2050) */}
       {viewMode === 'timeline' && (
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
+        <div {...reiterPanel('rechtsrahmen-ansicht', viewMode)} className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
           <div className="border-b border-home-grau/20 pb-3">
             <span className="text-[10px] font-bold text-shiraz uppercase tracking-widest">Chronologischer Stufenfahrplan</span>
             <h4 className="text-base font-extrabold text-text-main mt-0.5">
@@ -1370,7 +1371,7 @@ export const RechtsrahmenKompendium: React.FC = () => {
 
       {/* VIEW MODE 4: SYNOPSE-MATRIX (TABELLARISCHER SCHNELLVERGLEICH) */}
       {viewMode === 'synopse' && (
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
+        <div {...reiterPanel('rechtsrahmen-ansicht', viewMode)} className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
           <div className="border-b border-home-grau/20 pb-3">
             <span className="text-[10px] font-bold text-shiraz uppercase tracking-widest">Rechtsnormen-Synopse</span>
             <h4 className="text-base font-extrabold text-text-main mt-0.5">

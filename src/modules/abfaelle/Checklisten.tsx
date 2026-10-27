@@ -2,6 +2,7 @@ import { ClipboardList, List, Recycle, ShieldCheck, Database, Search, AlertTrian
 import React from 'react';
 import inhalt from '@/content/abfaelle/Checklisten.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ReiterLeiste, alsReiter, reiterPanel } from '../../components/ui/Auswahlgruppe';
 
 interface ChecklistenProps {
   activeChecklistSubTab: "einstufung" | "mineralik" | "rueckbau" | "deponie" | "probenahme" | "gefahrstoffe";
@@ -18,7 +19,7 @@ export default function Checklisten({ activeChecklistSubTab, setActiveChecklistS
         </div>
 
         {/* Sub-Tabs / Reiter */}
-        <div className="flex flex-wrap gap-2 border-b border-home-grau/20 pb-4">
+        <ReiterLeiste label="Checklisten" className="flex flex-wrap gap-2 border-b border-home-grau/20 pb-4">
           {[
             { id: 'einstufung', label: inhalt.werte.t1Abfalleinstufung, icon: List, desc: inhalt.werte.krwgAvvGewabfv },
             { id: 'mineralik', label: inhalt.werte.t2Ersatzbaustoffe, icon: Recycle, desc: inhalt.werte.ebvEinbau },
@@ -30,7 +31,7 @@ export default function Checklisten({ activeChecklistSubTab, setActiveChecklistS
             const Icon = subTab.icon;
             const isActive = activeChecklistSubTab === subTab.id;
             return (
-              <button aria-pressed={isActive}
+              <button {...alsReiter(isActive, 'abfall-checkliste', subTab.id)}
                 key={subTab.id}
                 onClick={() => setActiveChecklistSubTab(subTab.id as "probenahme" | "rueckbau" | "deponie" | "gefahrstoffe" | "einstufung" | "mineralik")}
                 className={`flex-1 min-w-[150px] p-3 rounded-xl border text-left transition-all duration-200 cursor-pointer ${
@@ -51,12 +52,12 @@ export default function Checklisten({ activeChecklistSubTab, setActiveChecklistS
               </button>
             );
           })}
-        </div>
+        </ReiterLeiste>
 
         {/* Checklist Content */}
         <div className="bg-white rounded-2xl border border-home-grau/30 p-6 space-y-6">
           {activeChecklistSubTab === 'einstufung' && (
-            <div className="space-y-6">
+            <div {...reiterPanel('abfall-checkliste', activeChecklistSubTab)} className="space-y-6">
               <div className="border-b border-slate-100 pb-3">
                 <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
                   <Scale className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.leitfadenZurRechtlichBelastbaren} /></h4>
@@ -90,7 +91,7 @@ export default function Checklisten({ activeChecklistSubTab, setActiveChecklistS
           )}
 
           {activeChecklistSubTab === 'mineralik' && (
-            <div className="space-y-6">
+            <div {...reiterPanel('abfall-checkliste', activeChecklistSubTab)} className="space-y-6">
               <div className="border-b border-slate-100 pb-3">
                 <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
                   <Recycle className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.qualitätssicherungWiedereinbauMineralisc} /></h4>
@@ -124,7 +125,7 @@ export default function Checklisten({ activeChecklistSubTab, setActiveChecklistS
           )}
 
           {activeChecklistSubTab === 'rueckbau' && (
-            <div className="space-y-6">
+            <div {...reiterPanel('abfall-checkliste', activeChecklistSubTab)} className="space-y-6">
               <div className="border-b border-slate-100 pb-3">
                 <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
                   <ShieldCheck className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.selektiverRückbauPreDemolition} /></h4>
@@ -158,7 +159,7 @@ export default function Checklisten({ activeChecklistSubTab, setActiveChecklistS
           )}
 
           {activeChecklistSubTab === 'deponie' && (
-            <div className="space-y-6">
+            <div {...reiterPanel('abfall-checkliste', activeChecklistSubTab)} className="space-y-6">
               <div className="border-b border-slate-100 pb-3">
                 <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
                   <Database className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.deponierungsverfahrenDeklarationsgrundla} /></h4>
@@ -192,7 +193,7 @@ export default function Checklisten({ activeChecklistSubTab, setActiveChecklistS
           )}
 
           {activeChecklistSubTab === 'probenahme' && (
-            <div className="space-y-6">
+            <div {...reiterPanel('abfall-checkliste', activeChecklistSubTab)} className="space-y-6">
               <div className="border-b border-slate-100 pb-3">
                 <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
                   <Search className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.repräsentativeProbenahmeLagaPn} /></h4>
@@ -226,7 +227,7 @@ export default function Checklisten({ activeChecklistSubTab, setActiveChecklistS
           )}
 
           {activeChecklistSubTab === 'gefahrstoffe' && (
-            <div className="space-y-6">
+            <div {...reiterPanel('abfall-checkliste', activeChecklistSubTab)} className="space-y-6">
               <div className="border-b border-slate-100 pb-3">
                 <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
                   <AlertTriangle className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.gefahrstoffeArbeitsschutzPsaAsbest} /></h4>

@@ -18,6 +18,7 @@ import { useTabContext } from '@/src/contexts/TabContext';
 import inhalt from '@/content/typischebauschaeden/TypischeBauschaeden.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 type TypSchadTab = 'feuchtigkeit' | 'risse' | 'korrosion' | 'unvertraeglichkeiten' | 'tief_ingenieurbau' | 'analysator';
 
@@ -597,10 +598,10 @@ export default function TypischeBauschaeden() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                   {/* Selector List */}
-                  <div className="lg:col-span-5 flex flex-col gap-2">
+                  <AuswahlGruppe label="Schadensszenario" className="lg:col-span-5 flex flex-col gap-2">
                     <span className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-1 block"><MdText text={inhalt.texte.wählenSieEinenFall} /></span>
                     {scenarios.map((scen) => (
-                      <button aria-pressed={selectedScenario === scen.id}
+                      <button {...alsOption(selectedScenario === scen.id)}
                         key={scen.id}
                         onClick={() => setSelectedScenario(scen.id)}
                         className={`w-full text-left p-3.5 rounded-xl border transition-all text-sm flex justify-between items-center gap-2 ${
@@ -616,7 +617,7 @@ export default function TypischeBauschaeden() {
                         <ChevronRight size={14} className="shrink-0" />
                       </button>
                     ))}
-                  </div>
+                  </AuswahlGruppe>
 
                   {/* Detail Output Container */}
                   <div className="lg:col-span-7 bg-white p-5 rounded-xl border border-home-grau/30 flex flex-col justify-center">

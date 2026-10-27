@@ -21,6 +21,7 @@ import {
   Printer
 } from 'lucide-react';
 import { exportToCSV, exportToJSON, openPrintableReport } from '@/src/utils/labExportUtils';
+import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from './ui/Auswahlgruppe';
 
 interface MethodItem {
   verfahren: string;
@@ -449,8 +450,8 @@ export default function LaborAuswertung() {
         </div>
         
         {/* Navigation Tabs */}
-        <div className="flex flex-wrap gap-1.5 bg-slate-100 p-1.5 rounded-xl border border-slate-200 self-start md:self-auto shrink-0">
-          <button aria-pressed={activeTab === 'bericht'}
+        <ReiterLeiste label="Bereiche Labor und Schadensdiagnostik" className="flex flex-wrap gap-1.5 bg-slate-100 p-1.5 rounded-xl border border-slate-200 self-start md:self-auto shrink-0">
+          <button {...alsReiter(activeTab === 'bericht', 'labor-bereich', 'bericht')}
             onClick={() => setActiveTab('bericht')}
             className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
               activeTab === 'bericht'
@@ -460,7 +461,7 @@ export default function LaborAuswertung() {
           >
             <BookOpen size={13} /> Fachübersicht
           </button>
-          <button aria-pressed={activeTab === 'rechner'}
+          <button {...alsReiter(activeTab === 'rechner', 'labor-bereich', 'rechner')}
             onClick={() => setActiveTab('rechner')}
             className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
               activeTab === 'rechner'
@@ -470,7 +471,7 @@ export default function LaborAuswertung() {
           >
             <Calculator size={13} /> Isotopen- &amp; Wasser-Rechner
           </button>
-          <button aria-pressed={activeTab === 'kompass'}
+          <button {...alsReiter(activeTab === 'kompass', 'labor-bereich', 'kompass')}
             onClick={() => setActiveTab('kompass')}
             className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
               activeTab === 'kompass'
@@ -480,7 +481,7 @@ export default function LaborAuswertung() {
           >
             <Compass size={13} /> Schadens-Kompass
           </button>
-          <button aria-pressed={activeTab === 'tabelle'}
+          <button {...alsReiter(activeTab === 'tabelle', 'labor-bereich', 'tabelle')}
             onClick={() => setActiveTab('tabelle')}
             className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
               activeTab === 'tabelle'
@@ -490,17 +491,17 @@ export default function LaborAuswertung() {
           >
             <Layers size={13} /> Verfahrensdatenbank
           </button>
-        </div>
+        </ReiterLeiste>
       </div>
 
       {/* --------------------- TAB 1: RESEARCH REPORT --------------------- */}
       {activeTab === 'bericht' && (
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 min-h-[500px]">
+        <div {...reiterPanel('labor-bereich', activeTab)} className="grid grid-cols-1 md:grid-cols-12 gap-6 min-h-[500px]">
           {/* Index Sidebar list */}
-          <div className="md:col-span-4 bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col gap-2 shadow-inner">
+          <AuswahlGruppe label="Berichtsabschnitt" className="md:col-span-4 bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col gap-2 shadow-inner">
             <span className="text-[10px] font-mono uppercase text-slate-400 font-bold px-1.5 mb-1">Berichtsgliederung</span>
             {reportSections.map((sec) => (
-              <button aria-pressed={selectedSection === sec.id}
+              <button {...alsOption(selectedSection === sec.id)}
                 key={sec.id}
                 onClick={() => setSelectedSection(sec.id)}
                 className={`py-2 px-3 text-left text-xs font-semibold rounded-lg flex items-center justify-between border transition-all cursor-pointer ${
@@ -522,7 +523,7 @@ export default function LaborAuswertung() {
                 </p>
               </div>
             </div>
-          </div>
+          </AuswahlGruppe>
 
           {/* Reading Display Pane */}
           <div className="md:col-span-8 flex flex-col justify-between">
@@ -560,7 +561,7 @@ export default function LaborAuswertung() {
 
       {/* --------------------- TAB 2: FORENSIC CALCULATORS --------------------- */}
       {activeTab === 'rechner' && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-slate-800">
+        <div {...reiterPanel('labor-bereich', activeTab)} className="grid grid-cols-1 md:grid-cols-2 gap-8 text-slate-800">
           
           {/* Box 1: Isotopen-Exzess-Bestimmung */}
           <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
@@ -735,8 +736,8 @@ export default function LaborAuswertung() {
                 {/* Gadolinium Select */}
                 <div>
                   <span className="text-xs font-bold text-slate-700 block mb-2">Anthropogenes Gadolinium (Gd)</span>
-                  <div className="grid grid-cols-2 gap-2">
-                    <button aria-pressed={gadolinium === 'none'}
+                  <AuswahlGruppe label="Befund anthropogenes Gadolinium" className="grid grid-cols-2 gap-2">
+                    <button {...alsOption(gadolinium === 'none')}
                       onClick={() => setGadolinium('none')}
                       className={`py-2 px-3 text-xs font-semibold rounded-lg border transition-all cursor-pointer ${
                         gadolinium === 'none'
@@ -746,7 +747,7 @@ export default function LaborAuswertung() {
                     >
                       Klinisch unauffällig
                     </button>
-                    <button aria-pressed={gadolinium === 'elevated'}
+                    <button {...alsOption(gadolinium === 'elevated')}
                       onClick={() => setGadolinium('elevated')}
                       className={`py-2 px-3 text-xs font-semibold rounded-lg border transition-all cursor-pointer ${
                         gadolinium === 'elevated'
@@ -756,7 +757,7 @@ export default function LaborAuswertung() {
                     >
                       Erhöht gemessen (Kontrastmittel)
                     </button>
-                  </div>
+                  </AuswahlGruppe>
                   <span className="text-[10px] text-slate-400 italic block mt-1.5">
                     Hinweis auf Abwasseranteil; Vergleich mit einer Leitungswasser-Referenzprobe erforderlich.
                   </span>
@@ -765,8 +766,8 @@ export default function LaborAuswertung() {
                 {/* qPCR Bacteroidales Select */}
                 <div className="pt-2 border-t border-slate-100">
                   <span className="text-xs font-bold text-slate-700 block mb-2">Microbial Source qPCR (Wirts-Genotyp)</span>
-                  <div className="grid grid-cols-3 gap-2">
-                    <button aria-pressed={mst === 'none'}
+                  <AuswahlGruppe label="Befund qPCR-Wirtsgenotyp" className="grid grid-cols-3 gap-2">
+                    <button {...alsOption(mst === 'none')}
                       onClick={() => setMst('none')}
                       className={`py-2 px-1 text-[11px] font-semibold rounded-lg border transition-all cursor-pointer ${
                         mst === 'none'
@@ -776,7 +777,7 @@ export default function LaborAuswertung() {
                     >
                       Bakterienfrei
                     </button>
-                    <button aria-pressed={mst === 'human'}
+                    <button {...alsOption(mst === 'human')}
                       onClick={() => setMst('human')}
                       className={`py-2 px-1 text-[11px] font-semibold rounded-lg border transition-all cursor-pointer ${
                         mst === 'human'
@@ -786,7 +787,7 @@ export default function LaborAuswertung() {
                     >
                       Humane Sequenzen
                     </button>
-                    <button aria-pressed={mst === 'animal'}
+                    <button {...alsOption(mst === 'animal')}
                       onClick={() => setMst('animal')}
                       className={`py-2 px-1 text-[11px] font-semibold rounded-lg border transition-all cursor-pointer ${
                         mst === 'animal'
@@ -796,7 +797,7 @@ export default function LaborAuswertung() {
                     >
                       Tierische Sequenzen
                     </button>
-                  </div>
+                  </AuswahlGruppe>
                   <span className="text-[10px] text-slate-400 italic block mt-1.5">
                     Genanalytische Differenzierung über wirtsspezifische Marker (z. B. HF183 für humane Bacteroides).
                   </span>
@@ -822,7 +823,7 @@ export default function LaborAuswertung() {
 
       {/* --------------------- TAB 3: DIAGNOSTIC COMPASS --------------------- */}
       {activeTab === 'kompass' && (
-        <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-slate-800 space-y-6">
+        <div {...reiterPanel('labor-bereich', activeTab)} className="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-slate-800 space-y-6">
           <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
             <Compass className="text-shiraz" size={20} />
             <div>
@@ -834,10 +835,10 @@ export default function LaborAuswertung() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             
             {/* Sidebar select buttons */}
-            <div className="md:col-span-1.5 flex flex-col gap-1.5">
+            <ReiterLeiste label="Schadensthema" className="md:col-span-1.5 flex flex-col gap-1.5">
               <span className="text-[10px] font-mono text-slate-400 uppercase font-bold px-1">Betreffende Bauteile</span>
               
-              <button aria-pressed={selectedTopic === 'akr'}
+              <button {...alsReiter(selectedTopic === 'akr', 'labor-kompass-thema', 'akr')}
                 onClick={() => setSelectedTopic('akr')}
                 className={`p-2.5 text-left text-xs font-bold rounded-lg border transition-all cursor-pointer ${
                   selectedTopic === 'akr'
@@ -848,7 +849,7 @@ export default function LaborAuswertung() {
                 "Betonkrebs" (AKR / Opalflint)
               </button>
 
-              <button aria-pressed={selectedTopic === 'sulfat'}
+              <button {...alsReiter(selectedTopic === 'sulfat', 'labor-kompass-thema', 'sulfat')}
                 onClick={() => setSelectedTopic('sulfat')}
                 className={`p-2.5 text-left text-xs font-bold rounded-lg border transition-all cursor-pointer ${
                   selectedTopic === 'sulfat'
@@ -859,7 +860,7 @@ export default function LaborAuswertung() {
                 Ettringit / Thaumasit (Sulfat)
               </button>
 
-              <button aria-pressed={selectedTopic === 'mörtel'}
+              <button {...alsReiter(selectedTopic === 'mörtel', 'labor-kompass-thema', 'mörtel')}
                 onClick={() => setSelectedTopic('mörtel')}
                 className={`p-2.5 text-left text-xs font-bold rounded-lg border transition-all cursor-pointer ${
                   selectedTopic === 'mörtel'
@@ -870,7 +871,7 @@ export default function LaborAuswertung() {
                 Hist. Mörtel (TGA-Hydraulik)
               </button>
 
-              <button aria-pressed={selectedTopic === 'asbest'}
+              <button {...alsReiter(selectedTopic === 'asbest', 'labor-kompass-thema', 'asbest')}
                 onClick={() => setSelectedTopic('asbest')}
                 className={`p-2.5 text-left text-xs font-bold rounded-lg border transition-all cursor-pointer ${
                   selectedTopic === 'asbest'
@@ -881,7 +882,7 @@ export default function LaborAuswertung() {
                 Asbest (Fliesenkleber, Putze)
               </button>
 
-              <button aria-pressed={selectedTopic === 'toxine'}
+              <button {...alsReiter(selectedTopic === 'toxine', 'labor-kompass-thema', 'toxine')}
                 onClick={() => setSelectedTopic('toxine')}
                 className={`p-2.5 text-left text-xs font-bold rounded-lg border transition-all cursor-pointer ${
                   selectedTopic === 'toxine'
@@ -892,7 +893,7 @@ export default function LaborAuswertung() {
                 Fogging &amp; Weichmacher (Phthalate)
               </button>
 
-              <button aria-pressed={selectedTopic === 'fugen'}
+              <button {...alsReiter(selectedTopic === 'fugen', 'labor-kompass-thema', 'fugen')}
                 onClick={() => setSelectedTopic('fugen')}
                 className={`p-2.5 text-left text-xs font-bold rounded-lg border transition-all cursor-pointer ${
                   selectedTopic === 'fugen'
@@ -903,7 +904,7 @@ export default function LaborAuswertung() {
                 PCB &amp; PAK in elastischen Fugen
               </button>
 
-              <button aria-pressed={selectedTopic === 'pollen'}
+              <button {...alsReiter(selectedTopic === 'pollen', 'labor-kompass-thema', 'pollen')}
                 onClick={() => setSelectedTopic('pollen')}
                 className={`p-2.5 text-left text-xs font-bold rounded-lg border transition-all cursor-pointer ${
                   selectedTopic === 'pollen'
@@ -913,13 +914,13 @@ export default function LaborAuswertung() {
               >
                 Schadensdatierung (Pollen)
               </button>
-            </div>
+            </ReiterLeiste>
 
             {/* Comprehensive Detail View */}
             <div className="md:col-span-2.5 bg-white p-5 rounded-xl border border-slate-200 flex flex-col justify-between">
               
               {selectedTopic === 'akr' && (
-                <div className="space-y-4 animate-in fade-in duration-200">
+                <div {...reiterPanel('labor-kompass-thema', selectedTopic)} className="space-y-4 animate-in fade-in duration-200">
                   <div className="flex justify-between items-start border-b border-slate-100 pb-2">
                     <h4 className="font-bold text-sm text-slate-800">Alkali-Kieselsäure-Reaktion (AKR) / "Betonkrebs"</h4>
                     <span className="text-[10px] font-mono font-bold bg-rose-50 text-rose-700 px-1.5 rounded uppercase">Beton zerstörend</span>
@@ -942,7 +943,7 @@ export default function LaborAuswertung() {
               )}
 
               {selectedTopic === 'sulfat' && (
-                <div className="space-y-4 animate-in fade-in duration-200">
+                <div {...reiterPanel('labor-kompass-thema', selectedTopic)} className="space-y-4 animate-in fade-in duration-200">
                   <div className="flex justify-between items-start border-b border-slate-100 pb-2">
                     <h4 className="font-bold text-sm text-slate-800">Sulfatangriff: Ettringit vs. Thaumasit</h4>
                     <span className="text-[10px] font-mono font-bold bg-rose-50 text-rose-700 px-1.5 rounded">Mikro-Schadensanalyse</span>
@@ -965,7 +966,7 @@ export default function LaborAuswertung() {
               )}
 
               {selectedTopic === 'mörtel' && (
-                <div className="space-y-4 animate-in fade-in duration-200">
+                <div {...reiterPanel('labor-kompass-thema', selectedTopic)} className="space-y-4 animate-in fade-in duration-200">
                   <div className="flex justify-between items-start border-b border-slate-100 pb-2">
                     <h4 className="font-bold text-sm text-slate-800">Historische Mörtel ("Reverse Engineering")</h4>
                     <span className="text-[10px] font-mono font-bold bg-amber-50 text-amber-700 px-1.5 rounded">Denkmalpflege</span>
@@ -982,7 +983,7 @@ export default function LaborAuswertung() {
               )}
 
               {selectedTopic === 'asbest' && (
-                <div className="space-y-4 animate-in fade-in duration-200">
+                <div {...reiterPanel('labor-kompass-thema', selectedTopic)} className="space-y-4 animate-in fade-in duration-200">
                   <div className="flex justify-between items-start border-b border-slate-100 pb-2">
                     <h4 className="font-bold text-sm text-slate-800">Mineralischer Asbestfaser-Nachweis</h4>
                     <span className="text-[10px] font-mono font-bold bg-red-50 text-red-700 px-1.5 rounded">Gesundheits-Schutz</span>
@@ -1001,7 +1002,7 @@ export default function LaborAuswertung() {
               )}
 
               {selectedTopic === 'toxine' && (
-                <div className="space-y-4 animate-in fade-in duration-200">
+                <div {...reiterPanel('labor-kompass-thema', selectedTopic)} className="space-y-4 animate-in fade-in duration-200">
                   <div className="flex justify-between items-start border-b border-slate-100 pb-2">
                     <h4 className="font-bold text-sm text-slate-800">"Fogging" &amp; Phthalat-Ausgasungen (SVOC)</h4>
                     <span className="text-[10px] font-mono font-bold bg-amber-50 text-amber-700 px-1.5 rounded">Innenraumhygiene</span>
@@ -1018,7 +1019,7 @@ export default function LaborAuswertung() {
               )}
 
               {selectedTopic === 'fugen' && (
-                <div className="space-y-4 animate-in fade-in duration-200">
+                <div {...reiterPanel('labor-kompass-thema', selectedTopic)} className="space-y-4 animate-in fade-in duration-200">
                   <div className="flex justify-between items-start border-b border-slate-100 pb-2">
                     <h4 className="font-bold text-sm text-slate-800">PCB &amp; PAK in dauerelastischen Fugen</h4>
                     <span className="text-[10px] font-mono font-bold bg-rose-50 text-rose-700 px-1.5 rounded">Primär- vs. Sekundärquelle</span>
@@ -1035,7 +1036,7 @@ export default function LaborAuswertung() {
               )}
 
               {selectedTopic === 'pollen' && (
-                <div className="space-y-4 animate-in fade-in duration-200">
+                <div {...reiterPanel('labor-kompass-thema', selectedTopic)} className="space-y-4 animate-in fade-in duration-200">
                   <div className="flex justify-between items-start border-b border-slate-100 pb-2">
                     <h4 className="font-bold text-sm text-slate-800">Forensische Palynologie &amp; Rissalter</h4>
                     <span className="text-[10px] font-mono font-bold bg-blue-50 text-blue-700 px-1.5 rounded">Datierung</span>
@@ -1069,7 +1070,7 @@ export default function LaborAuswertung() {
 
       {/* --------------------- TAB 4: METHODS TABLE DATABASE --------------------- */}
       {activeTab === 'tabelle' && (
-        <div className="space-y-4 text-slate-800">
+        <div {...reiterPanel('labor-bereich', activeTab)} className="space-y-4 text-slate-800">
           <div className="flex flex-col md:flex-row justify-between md:items-center gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-inner">
             
             {/* Search Input */}
@@ -1086,11 +1087,11 @@ export default function LaborAuswertung() {
 
             {/* Filter buttons & Exports */}
             <div className="flex flex-wrap items-center gap-2 self-start md:self-auto">
-              <div className="flex items-center gap-1 bg-white p-1 rounded-lg border border-slate-300 shadow-sm">
+              <AuswahlGruppe label="Filter Prüfart" className="flex items-center gap-1 bg-white p-1 rounded-lg border border-slate-300 shadow-sm">
                 <span className="text-[10px] font-bold text-slate-500 px-2 flex items-center gap-1">
                   <Filter size={11} /> ZfP / NDT:
                 </span>
-                <button aria-pressed={filterNdt === 'all'}
+                <button {...alsOption(filterNdt === 'all')}
                   onClick={() => setFilterNdt('all')}
                   className={`px-2 py-1 text-[10px] font-bold rounded ${
                     filterNdt === 'all' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'
@@ -1098,7 +1099,7 @@ export default function LaborAuswertung() {
                 >
                   Alle
                 </button>
-                <button aria-pressed={filterNdt === 'jdt'}
+                <button {...alsOption(filterNdt === 'jdt')}
                   onClick={() => setFilterNdt('jdt')}
                   className={`px-2 py-1 text-[10px] font-bold rounded ${
                     filterNdt === 'jdt' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'
@@ -1106,7 +1107,7 @@ export default function LaborAuswertung() {
                 >
                   Zerstörungsfrei
                 </button>
-                <button aria-pressed={filterNdt === 'notndt'}
+                <button {...alsOption(filterNdt === 'notndt')}
                   onClick={() => setFilterNdt('notndt')}
                   className={`px-2 py-1 text-[10px] font-bold rounded ${
                     filterNdt === 'notndt' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'
@@ -1114,7 +1115,7 @@ export default function LaborAuswertung() {
                 >
                   Zerstörend
                 </button>
-              </div>
+              </AuswahlGruppe>
 
               {/* Export Actions */}
               <div className="flex items-center gap-1.5">

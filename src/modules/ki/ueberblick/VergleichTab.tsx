@@ -4,6 +4,7 @@ import { CheckCircle2, AlertTriangle, HelpCircle, Workflow } from 'lucide-react'
 import { ragDemonstrations } from './daten';
 import inhalt from '@/content/ki/ueberblick/VergleichTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../../../components/ui/Auswahlgruppe';
 
 export interface VergleichTabProps {
   setSimMode: React.Dispatch<React.SetStateAction<'rag' | 'llm_pur'>>;
@@ -24,8 +25,8 @@ export default function VergleichTab({ setSimMode, setSimQuestion, simMode, simQ
       {/* Question Selector */}
       <div className="space-y-2">
         <label className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.wählenSieEineTypische} /></label>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-          <button aria-pressed={simQuestion === 'xc4'}
+        <AuswahlGruppe label="Fragestellung" className="grid grid-cols-1 md:grid-cols-3 gap-2">
+          <button {...alsOption(simQuestion === 'xc4')}
             onClick={() => setSimQuestion('xc4')}
             className={`p-3 rounded-xl text-left border transition-all cursor-pointer ${
               simQuestion === 'xc4'
@@ -37,7 +38,7 @@ export default function VergleichTab({ setSimMode, setSimQuestion, simMode, simQ
             <div className="text-[10px] text-text-main/60 mt-0.5"><MdText text={inhalt.texte.dinEn19921} /></div>
           </button>
 
-          <button aria-pressed={simQuestion === 'xf4'}
+          <button {...alsOption(simQuestion === 'xf4')}
             onClick={() => setSimQuestion('xf4')}
             className={`p-3 rounded-xl text-left border transition-all cursor-pointer ${
               simQuestion === 'xf4'
@@ -49,7 +50,7 @@ export default function VergleichTab({ setSimMode, setSimQuestion, simMode, simQ
             <div className="text-[10px] text-text-main/60 mt-0.5"><MdText text={inhalt.texte.din10452Din} /></div>
           </button>
 
-          <button aria-pressed={simQuestion === 'rc_beton'}
+          <button {...alsOption(simQuestion === 'rc_beton')}
             onClick={() => setSimQuestion('rc_beton')}
             className={`p-3 rounded-xl text-left border transition-all cursor-pointer ${
               simQuestion === 'rc_beton'
@@ -60,12 +61,12 @@ export default function VergleichTab({ setSimMode, setSimQuestion, simMode, simQ
             <div className="text-xs"><MdText text={inhalt.texte.rcBetonInSpannbeton} /></div>
             <div className="text-[10px] text-text-main/60 mt-0.5"><MdText text={inhalt.texte.zulässigkeitNachDin1045} /></div>
           </button>
-        </div>
+        </AuswahlGruppe>
       </div>
 
       {/* Mode Switcher */}
-      <div className="flex border border-home-grau/30 bg-slate-50 p-1 rounded-xl max-w-md">
-        <button aria-pressed={simMode === 'llm_pur'}
+      <AuswahlGruppe label="Modus" className="flex border border-home-grau/30 bg-slate-50 p-1 rounded-xl max-w-md">
+        <button {...alsOption(simMode === 'llm_pur')}
           onClick={() => setSimMode('llm_pur')}
           className={`flex-1 py-2 px-3 rounded-lg text-xs font-bold transition-all cursor-pointer ${
             simMode === 'llm_pur'
@@ -73,7 +74,7 @@ export default function VergleichTab({ setSimMode, setSimQuestion, simMode, simQ
               : 'text-slate-600 hover:text-slate-900'
           }`}
         ><MdText text={inhalt.texte.modusAReinesLlm} /></button>
-        <button aria-pressed={simMode === 'rag'}
+        <button {...alsOption(simMode === 'rag')}
           onClick={() => setSimMode('rag')}
           className={`flex-1 py-2 px-3 rounded-lg text-xs font-bold transition-all cursor-pointer ${
             simMode === 'rag'
@@ -81,7 +82,7 @@ export default function VergleichTab({ setSimMode, setSimQuestion, simMode, simQ
               : 'text-slate-600 hover:text-slate-900'
           }`}
         ><MdText text={inhalt.texte.modusBLlmRag} /></button>
-      </div>
+      </AuswahlGruppe>
 
       {/* Current Question Display */}
       <div className="p-3.5 bg-blue-50/50 rounded-xl border border-blue-200 text-xs text-blue-950 font-medium flex items-start gap-2.5">

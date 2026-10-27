@@ -9,6 +9,7 @@ import {
   Sparkles,
   BookmarkCheck
 } from 'lucide-react';
+import { ReiterLeiste, alsReiter, reiterPanel } from './ui/Auswahlgruppe';
 
 // Joint calculation parameters
 interface SubstrateMaterial {
@@ -184,8 +185,8 @@ export function KlebstoffBerater() {
       </div>
 
       {/* Sub Tabs Selection */}
-      <div className="flex border-b border-slate-200">
-        <button aria-pressed={activeSubTab === 'rechner'}
+      <ReiterLeiste label="Bereiche Klebstoffberater" className="flex border-b border-slate-200">
+        <button {...alsReiter(activeSubTab === 'rechner', 'kleb-bereich', 'rechner')}
           onClick={() => setActiveSubTab('rechner')}
           className={`px-4 py-2 text-xs font-bold border-b-2 transition-all flex items-center gap-1.5 cursor-pointer ${
             activeSubTab === 'rechner' 
@@ -195,7 +196,7 @@ export function KlebstoffBerater() {
         >
           <Sliders size={14} /> Fugen-Dimensions-Rechner (DIN 18540)
         </button>
-        <button aria-pressed={activeSubTab === 'untergrund'}
+        <button {...alsReiter(activeSubTab === 'untergrund', 'kleb-bereich', 'untergrund')}
           onClick={() => setActiveSubTab('untergrund')}
           className={`px-4 py-2 text-xs font-bold border-b-2 transition-all flex items-center gap-1.5 cursor-pointer ${
             activeSubTab === 'untergrund' 
@@ -205,7 +206,7 @@ export function KlebstoffBerater() {
         >
           <Layers size={14} /> Untergrund &amp; Primer-Matrix
         </button>
-        <button aria-pressed={activeSubTab === 'regeln'}
+        <button {...alsReiter(activeSubTab === 'regeln', 'kleb-bereich', 'regeln')}
           onClick={() => setActiveSubTab('regeln')}
           className={`px-4 py-2 text-xs font-bold border-b-2 transition-all flex items-center gap-1.5 cursor-pointer ${
             activeSubTab === 'regeln' 
@@ -215,11 +216,11 @@ export function KlebstoffBerater() {
         >
           <Sparkles size={14} /> Die 5 goldenen Kleb-Regeln
         </button>
-      </div>
+      </ReiterLeiste>
 
       {/* SUB-TAB 1: CALCULATOR */}
       {activeSubTab === 'rechner' && (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div {...reiterPanel('kleb-bereich', activeSubTab)} className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           
           {/* Inputs Column */}
           <div className="lg:col-span-5 space-y-4">
@@ -444,7 +445,7 @@ export function KlebstoffBerater() {
 
       {/* SUB-TAB 2: SUBSTRATE MATRIX */}
       {activeSubTab === 'untergrund' && (
-        <div className="space-y-4">
+        <div {...reiterPanel('kleb-bereich', activeSubTab)} className="space-y-4">
           <div className="bg-white p-4.5 rounded-xl border border-slate-200 space-y-3">
             <span className="text-xs font-bold text-slate-500 uppercase tracking-widest block">
               Interaktive herstellerneutrale Vorbehandlungs- &amp; Primer-Matrix
@@ -511,7 +512,7 @@ export function KlebstoffBerater() {
 
       {/* SUB-TAB 3: THE 5 GOLDEN RULES */}
       {activeSubTab === 'regeln' && (
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+        <div {...reiterPanel('kleb-bereich', activeSubTab)} className="grid grid-cols-1 md:grid-cols-5 gap-4">
           
           <div className="bg-white p-4.5 rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between font-normal">
             <div>

@@ -23,6 +23,7 @@ import inhalt from '@/content/lcc/LCC.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { lccVergleich, type LccOption } from '@/src/calc/lcc';
+import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 // Define the scenario profiles for LCC calculation
 interface OptionConfig extends LccOption {
@@ -112,7 +113,8 @@ export default function LCC() {
 
         {/* Flat horizontal buttons for subtabs inside the main view to keep single screen clean */}
         <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-home-grau/20 mt-4">
-          <button aria-pressed={activeTab === 'rechner'}
+        <ReiterLeiste label="Bereiche Lebenszykluskosten" className="flex flex-wrap items-center gap-2">
+          <button {...alsReiter(activeTab === 'rechner', 'lcc-print-area', 'rechner')}
             onClick={() => setActiveTab('rechner')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'rechner'
@@ -121,7 +123,7 @@ export default function LCC() {
             }`}
           >
             <Coins size={14} /><MdText text={inhalt.texte.t1InteraktiverKostenrechnerSzenarien} /></button>
-          <button aria-pressed={activeTab === 'theorie'}
+          <button {...alsReiter(activeTab === 'theorie', 'lcc-print-area', 'theorie')}
             onClick={() => setActiveTab('theorie')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'theorie'
@@ -130,6 +132,7 @@ export default function LCC() {
             }`}
           >
             <Layers size={14} /><MdText text={inhalt.texte.t2FachgrundlagenNormenDin} /></button>
+        </ReiterLeiste>
 
           {activeTab === 'rechner' && (
             <button
@@ -145,7 +148,7 @@ export default function LCC() {
       </div>
 
       {activeTab === 'rechner' && (
-        <div id="lcc-print-area" className="space-y-8 animate-in fade-in duration-350 p-1">
+        <div {...reiterPanel('lcc-print-area', activeTab)} className="space-y-8 animate-in fade-in duration-350 p-1">
           {/* PDF Export Title header: only visible during PDF generation */}
           <div className="pdf-header hidden bg-white p-6 rounded-2xl border border-home-grau/30 mb-4 text-center">
             <div className="flex justify-between items-center text-xs text-slate-500 font-mono pb-3 border-b border-home-grau/20">
@@ -179,9 +182,9 @@ export default function LCC() {
             <span className="text-[10px] font-bold text-shiraz uppercase tracking-widest block font-mono mb-2"><MdText text={inhalt.texte.didaktischesPraxisSzenario} /></span>
             <h3 className="text-base font-bold text-slate-950 mb-4"><MdText text={inhalt.texte.wählenSieDasBauliche} /></h3>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <AuswahlGruppe label="Praxis-Szenario" className="grid grid-cols-1 md:grid-cols-3 gap-3">
               {SCENARIOS.map((scen) => (
-                <button aria-pressed={selectedScenarioId === scen.id}
+                <button {...alsOption(selectedScenarioId === scen.id)}
                   key={scen.id}
                   onClick={() => setSelectedScenarioId(scen.id)}
                   className={`p-4 rounded-xl border text-left transition-all duration-200 cursor-pointer ${
@@ -195,7 +198,7 @@ export default function LCC() {
                   <span className="text-[11px] font-normal text-slate-500 block mt-1 line-clamp-1">{scen.subtitle}</span>
                 </button>
               ))}
-            </div>
+            </AuswahlGruppe>
 
             <p className="text-xs text-slate-600 leading-relaxed mt-4 bg-slate-50 p-3 rounded-lg border border-slate-200">
               <strong>Szenario-Beschreibung:</strong> {activeScenario.description}
@@ -767,7 +770,7 @@ export default function LCC() {
       )}
 
       {activeTab === 'theorie' && (
-        <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-6 animate-in fade-in duration-305">
+        <div {...reiterPanel('lcc-print-area', activeTab)} className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-6 animate-in fade-in duration-305">
           <h3 className="text-lg font-bold text-slate-950 flex items-center gap-2 border-b border-home-grau/20 pb-3">
             <Layers size={18} className="text-shiraz" /><MdText text={inhalt.texte.theorieNormungStrukturierungNach} /></h3>
 

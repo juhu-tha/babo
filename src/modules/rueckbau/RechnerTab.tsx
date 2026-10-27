@@ -4,6 +4,7 @@ import { formatDeWert, formatDeTeXWert } from '@/src/utils/numberFormat';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import inhalt from '@/content/rueckbau/RechnerTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 export interface RechnerTabProps {
   setBuildingVolume: Dispatch<SetStateAction<number>>;
@@ -82,8 +83,8 @@ export function RechnerTab({ setBuildingVolume, setStructureType, buildingVolume
     
           <div>
             <label className="text-xs font-bold text-text-main block mb-1.5">Konstruktionsart</label>
-            <div className="grid grid-cols-2 gap-2">
-              <button aria-pressed={structureType === 'concrete'}
+            <AuswahlGruppe label="Konstruktionsart" className="grid grid-cols-2 gap-2">
+              <button {...alsOption(structureType === 'concrete')}
                 onClick={() => setStructureType('concrete')}
                 className={`p-2.5 text-left border rounded-lg text-xs font-bold transition-all flex flex-col ${
                       structureType === 'concrete' ? 'border-shiraz bg-shiraz/5 text-shiraz' : 'border-home-grau/30 text-text-main hover:bg-slate-50'
@@ -92,7 +93,7 @@ export function RechnerTab({ setBuildingVolume, setStructureType, buildingVolume
                 <span>Stahlbetonbau</span>
                 <span className="text-xs font-normal text-text-main/50 mt-0.5"><MdText text={inhalt.texte.skelettFertigteile} /></span>
               </button>
-              <button aria-pressed={structureType === 'masonry'}
+              <button {...alsOption(structureType === 'masonry')}
                 onClick={() => setStructureType('masonry')}
                 className={`p-2.5 text-left border rounded-lg text-xs font-bold transition-all flex flex-col ${
                       structureType === 'masonry' ? 'border-shiraz bg-shiraz/5 text-shiraz' : 'border-home-grau/30 text-text-main hover:bg-slate-50'
@@ -101,7 +102,7 @@ export function RechnerTab({ setBuildingVolume, setStructureType, buildingVolume
                 <span>Mauerwerk</span>
                 <span className="text-xs font-normal text-text-main/50 mt-0.5"><MdText text={inhalt.texte.ziegelKalksandstein} /></span>
               </button>
-              <button aria-pressed={structureType === 'timber'}
+              <button {...alsOption(structureType === 'timber')}
                 onClick={() => setStructureType('timber')}
                 className={`p-2.5 text-left border rounded-lg text-xs font-bold transition-all flex flex-col ${
                       structureType === 'timber' ? 'border-shiraz bg-shiraz/5 text-shiraz' : 'border-home-grau/30 text-text-main hover:bg-slate-50'
@@ -110,7 +111,7 @@ export function RechnerTab({ setBuildingVolume, setStructureType, buildingVolume
                 <span>Holzständerbau</span>
                 <span className="text-xs font-normal text-text-main/50 mt-0.5"><MdText text={inhalt.texte.leichtbauGefache} /></span>
               </button>
-              <button aria-pressed={structureType === 'composite'}
+              <button {...alsOption(structureType === 'composite')}
                 onClick={() => setStructureType('composite')}
                 className={`p-2.5 text-left border rounded-lg text-xs font-bold transition-all flex flex-col ${
                       structureType === 'composite' ? 'border-shiraz bg-shiraz/5 text-shiraz' : 'border-home-grau/30 text-text-main hover:bg-slate-50'
@@ -119,7 +120,7 @@ export function RechnerTab({ setBuildingVolume, setStructureType, buildingVolume
                 <span>Mischbauweise</span>
                 <span className="text-xs font-normal text-text-main/50 mt-0.5"><MdText text={inhalt.texte.gängigerWohnungsbau} /></span>
               </button>
-            </div>
+            </AuswahlGruppe>
           </div>
         </div>
     

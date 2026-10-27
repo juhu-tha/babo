@@ -38,6 +38,7 @@ import {
   rueckprallZfp, rueckprallKurven, ultraschallZfp, bewehrungsSignal, georadar, potentialRisikoZfp, wenner, torrentKlasse,
   torrentFeuchte, karstenZfp, thermografieStufe, impactEchoZfp, durchstrahlung, type PruefWinkel,
 } from '@/src/calc/pruefverfahren';
+import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 ChartJS.register(
   CategoryScale,
@@ -363,8 +364,8 @@ export default function ZfP() {
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-        <button aria-pressed={activeTab === 'mechanisch'}
+      <ReiterLeiste label="Verfahrensgruppen" className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
+        <button {...alsReiter(activeTab === 'mechanisch', 'zfp-bereich', 'mechanisch')}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'mechanisch' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -373,7 +374,7 @@ export default function ZfP() {
           onClick={() => setActiveTab('mechanisch')}
         >
           <Hammer size={16} /><MdText text={inhalt.texte.mechanischRückprall} /></button>
-        <button aria-pressed={activeTab === 'akustisch'}
+        <button {...alsReiter(activeTab === 'akustisch', 'zfp-bereich', 'akustisch')}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'akustisch' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -382,7 +383,7 @@ export default function ZfP() {
           onClick={() => setActiveTab('akustisch')}
         >
           <Waves size={16} /><MdText text={inhalt.texte.akustischUsIe} /></button>
-        <button aria-pressed={activeTab === 'elektromagnetisch'}
+        <button {...alsReiter(activeTab === 'elektromagnetisch', 'zfp-bereich', 'elektromagnetisch')}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'elektromagnetisch' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -392,7 +393,7 @@ export default function ZfP() {
         >
           <Radio size={16} /> Elektromagnetisch
         </button>
-        <button aria-pressed={activeTab === 'elektrochemisch'}
+        <button {...alsReiter(activeTab === 'elektrochemisch', 'zfp-bereich', 'elektrochemisch')}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'elektrochemisch' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -402,7 +403,7 @@ export default function ZfP() {
         >
           <Battery size={16} /> Elektrochemisch
         </button>
-        <button aria-pressed={activeTab === 'thermisch'}
+        <button {...alsReiter(activeTab === 'thermisch', 'zfp-bereich', 'thermisch')}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'thermisch' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -411,7 +412,7 @@ export default function ZfP() {
           onClick={() => setActiveTab('thermisch')}
         >
           <Thermometer size={16} /><MdText text={inhalt.texte.thermischStrahlung} /></button>
-        <button aria-pressed={activeTab === 'holz'}
+        <button {...alsReiter(activeTab === 'holz', 'zfp-bereich', 'holz')}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'holz' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -420,29 +421,31 @@ export default function ZfP() {
           onClick={() => setActiveTab('holz')}
         >
           <Trees size={16} /><MdText text={inhalt.texte.holzFeuchte} /></button>
-        <button aria-pressed={activeTab === 'dgzfp'}
+        <button {...alsReiter(activeTab === 'dgzfp', 'zfp-bereich', 'dgzfp')}
           className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
             activeTab === 'dgzfp' 
               ? 'bg-shiraz text-white border-shiraz shadow-md' 
               : 'bg-white text-slate-500 border-home-grau/30 hover:bg-off-white hover:text-slate-900'
           }`}
           onClick={() => setActiveTab('dgzfp')}
-          id="dgzfp-tab-btn"
         >
           <Award size={16} /><MdText text={inhalt.texte.dgzfpRichtlinien} /></button>
-      </div>
+      </ReiterLeiste>
 
-      {activeTab === 'mechanisch' && <MechanischTab angle={angle} chartData={chartData} karstenAbsorbed={karstenAbsorbed} karstenResults={karstenResults} karstenTime={karstenTime} options={options} rebound={rebound} reboundResults={reboundResults} renderEmbeddedGeraete={renderEmbeddedGeraete} setAngle={setAngle} setKarstenAbsorbed={setKarstenAbsorbed} setKarstenTime={setKarstenTime} setRebound={setRebound} setTorrentKt={setTorrentKt} setTorrentMoisture={setTorrentMoisture} torrentKt={torrentKt} torrentMoisture={torrentMoisture} torrentResults={torrentResults} />}
+      {activeTab === 'mechanisch' && <div {...reiterPanel('zfp-bereich', activeTab)}><MechanischTab angle={angle} chartData={chartData} karstenAbsorbed={karstenAbsorbed} karstenResults={karstenResults} karstenTime={karstenTime} options={options} rebound={rebound} reboundResults={reboundResults} renderEmbeddedGeraete={renderEmbeddedGeraete} setAngle={setAngle} setKarstenAbsorbed={setKarstenAbsorbed} setKarstenTime={setKarstenTime} setRebound={setRebound} setTorrentKt={setTorrentKt} setTorrentMoisture={setTorrentMoisture} torrentKt={torrentKt} torrentMoisture={torrentMoisture} torrentResults={torrentResults} /></div>}
 
-      {activeTab === 'akustisch' && <AkustischTab frequency={frequency} impactEchoResults={impactEchoResults} renderEmbeddedGeraete={renderEmbeddedGeraete} setFrequency={setFrequency} setVelocity={setVelocity} setWaveVelocity={setWaveVelocity} ultrasonicResults={ultrasonicResults} velocity={velocity} waveVelocity={waveVelocity} />}
+      {activeTab === 'akustisch' && <div {...reiterPanel('zfp-bereich', activeTab)}><AkustischTab frequency={frequency} impactEchoResults={impactEchoResults} renderEmbeddedGeraete={renderEmbeddedGeraete} setFrequency={setFrequency} setVelocity={setVelocity} setWaveVelocity={setWaveVelocity} ultrasonicResults={ultrasonicResults} velocity={velocity} waveVelocity={waveVelocity} /></div>}
 
-      {activeTab === 'elektromagnetisch' && <ElektromagnetischTab barDiameter={barDiameter} bewehrungssucherResults={bewehrungssucherResults} cover={cover} dielectric={dielectric} radarResults={radarResults} renderEmbeddedGeraete={renderEmbeddedGeraete} setBarDiameter={setBarDiameter} setCover={setCover} setDielectric={setDielectric} setTimeOfFlight={setTimeOfFlight} timeOfFlight={timeOfFlight} />}
+      {activeTab === 'elektromagnetisch' && <div {...reiterPanel('zfp-bereich', activeTab)}><ElektromagnetischTab barDiameter={barDiameter} bewehrungssucherResults={bewehrungssucherResults} cover={cover} dielectric={dielectric} radarResults={radarResults} renderEmbeddedGeraete={renderEmbeddedGeraete} setBarDiameter={setBarDiameter} setCover={setCover} setDielectric={setDielectric} setTimeOfFlight={setTimeOfFlight} timeOfFlight={timeOfFlight} /></div>}
 
-      {activeTab === 'elektrochemisch' && <ElektrochemischTab potential={potential} potentialResults={potentialResults} renderEmbeddedGeraete={renderEmbeddedGeraete} setPotential={setPotential} setWennerResistance={setWennerResistance} setWennerSpacing={setWennerSpacing} wennerResistance={wennerResistance} wennerResults={wennerResults} wennerSpacing={wennerSpacing} />}
+      {activeTab === 'elektrochemisch' && <div {...reiterPanel('zfp-bereich', activeTab)}><ElektrochemischTab potential={potential} potentialResults={potentialResults} renderEmbeddedGeraete={renderEmbeddedGeraete} setPotential={setPotential} setWennerResistance={setWennerResistance} setWennerSpacing={setWennerSpacing} wennerResistance={wennerResistance} wennerResults={wennerResults} wennerSpacing={wennerSpacing} /></div>}
 
-      {activeTab === 'thermisch' && <ThermischTab radiationEnergy={radiationEnergy} radiographyResults={radiographyResults} renderEmbeddedGeraete={renderEmbeddedGeraete} setRadiationEnergy={setRadiationEnergy} setTempDiff={setTempDiff} setThickness={setThickness} tempDiff={tempDiff} thermographyResults={thermographyResults} thickness={thickness} />}
+      {activeTab === 'thermisch' && <div {...reiterPanel('zfp-bereich', activeTab)}><ThermischTab radiationEnergy={radiationEnergy} radiographyResults={radiographyResults} renderEmbeddedGeraete={renderEmbeddedGeraete} setRadiationEnergy={setRadiationEnergy} setTempDiff={setTempDiff} setThickness={setThickness} tempDiff={tempDiff} thermographyResults={thermographyResults} thickness={thickness} /></div>}
 
-      {activeTab === 'holz' && <HolzTab renderEmbeddedGeraete={renderEmbeddedGeraete} />}
+      {activeTab === 'holz' && <div {...reiterPanel('zfp-bereich', activeTab)}><HolzTab renderEmbeddedGeraete={renderEmbeddedGeraete} /></div>}
+
+      {/* Reiter „DGZfP-Richtlinien“ hat (bereits vor der Umstellung) keinen eigenen Inhalt; leerer Bereich hält aria-controls gültig */}
+      {activeTab === 'dgzfp' && <div {...reiterPanel('zfp-bereich', activeTab)} />}
 
       <ModuleFooter 
         weblinks={inhalt.daten["ZfP.weblinks"]}

@@ -9,6 +9,7 @@ import { einzelbaustoffA1A4 } from '@/src/calc/lca';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 // Comprehensive EPD Reference Database representing realistic German ÖKOBAUDAT entries for students
 const REFERENZEN_EPD = inhalt.daten.REFERENZEN_EPD;
@@ -364,10 +365,10 @@ export default function LCA() {
             </div>
 
             {/* List */}
-            <div className="bg-white rounded-xl border border-home-grau/30 shadow-sm max-h-[450px] overflow-y-auto divide-y divide-home-grau/15">
+            <AuswahlGruppe label="EPD" className="bg-white rounded-xl border border-home-grau/30 shadow-sm max-h-[450px] overflow-y-auto divide-y divide-home-grau/15">
               {filteredEpds.length > 0 ? (
                 filteredEpds.map((epd) => (
-                  <button aria-pressed={selectedEpdId === epd.id}
+                  <button {...alsOption(selectedEpdId === epd.id)}
                     key={epd.id}
                     onClick={() => setSelectedEpdId(epd.id)}
                     className={`w-full p-3 text-left transition-colors flex flex-col gap-1 ${
@@ -387,7 +388,7 @@ export default function LCA() {
               ) : (
                 <div className="p-8 text-center text-xs text-slate-500"><MdText text={inhalt.texte.keineMaterialienGefunden} /></div>
               )}
-            </div>
+            </AuswahlGruppe>
           </div>
 
           {/* EPD Factsheet display (7-cols) */}
@@ -498,13 +499,13 @@ export default function LCA() {
           {/* Guide Subtabs Selectors */}
           <div className="bg-white border border-home-grau/30 rounded-xl p-4 shadow-sm">
             <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 block mb-3 font-mono"><MdText text={inhalt.texte.untersuchungsgegenstandWählen} /></span>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <ReiterLeiste label="Untersuchungsgegenstand" className="grid grid-cols-1 md:grid-cols-3 gap-3">
               {[
                 { id: 'produkt' as const, title: inhalt.werte.lcaFürBauprodukte, desc: inhalt.werte.dinEn15804A2, color: 'border-l-indigo-500' },
                 { id: 'gebaeude' as const, title: inhalt.werte.lcaFürGebäude, desc: inhalt.werte.dinEn15978Qng, color: 'border-l-emerald-500' },
                 { id: 'ingenieurbau' as const, title: inhalt.werte.lcaFürIngenieurbauwerke, desc: inhalt.werte.t100JahreNutzungsdauerBrücken, color: 'border-l-amber-500' }
               ].map((topic) => (
-                <button aria-pressed={guideTopic === topic.id}
+                <button {...alsReiter(guideTopic === topic.id, 'lca-leitfaden', topic.id)}
                   key={topic.id}
                   onClick={() => setGuideTopic(topic.id)}
                   className={`text-left p-3.5 rounded-xl border border-l-4 transition-all hover:bg-slate-50 relative ${topic.color} ${
@@ -517,7 +518,7 @@ export default function LCA() {
                   <span className="text-[10px] text-slate-400 block font-normal mt-0.5 leading-tight">{topic.desc}</span>
                 </button>
               ))}
-            </div>
+            </ReiterLeiste>
           </div>
 
           {/* Guide Main Flow Area */}
@@ -527,7 +528,7 @@ export default function LCA() {
             <div className="lg:col-span-8 space-y-4">
               
               {guideTopic === 'produkt' && (
-                <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-6">
+                <div {...reiterPanel('lca-leitfaden', guideTopic)} className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-6">
                   <div className="border-b pb-3.5">
                     <span className="text-[10px] uppercase font-bold text-indigo-700 tracking-wider font-mono"><MdText text={inhalt.texte.modul1Bauprodukte} /></span>
                     <h4 className="text-sm font-extrabold text-slate-900 mt-0.5 font-sans"><MdText text={inhalt.texte.erstellungEinerUmweltproduktdeklarationE} /></h4>
@@ -584,7 +585,7 @@ export default function LCA() {
               )}
 
               {guideTopic === 'gebaeude' && (
-                <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-6">
+                <div {...reiterPanel('lca-leitfaden', guideTopic)} className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-6">
                   <div className="border-b pb-3.5">
                     <span className="text-[10px] uppercase font-bold text-emerald-700 tracking-wider font-mono"><MdText text={inhalt.texte.modul2GebäudeLca} /></span>
                     <h4 className="text-sm font-extrabold text-slate-900 mt-0.5 font-sans"><MdText text={inhalt.texte.ökobilanzierungKompletterHochbautenNach} /></h4>
@@ -655,7 +656,7 @@ export default function LCA() {
               )}
 
               {guideTopic === 'ingenieurbau' && (
-                <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-6">
+                <div {...reiterPanel('lca-leitfaden', guideTopic)} className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-sm space-y-6">
                   <div className="border-b pb-3.5">
                     <span className="text-[10px] uppercase font-bold text-amber-700 tracking-wider font-mono"><MdText text={inhalt.texte.modul3Ingenieurbauwerke} /></span>
                     <h4 className="text-sm font-extrabold text-slate-900 mt-0.5 font-sans"><MdText text={inhalt.texte.ökobilanzierungVonBrückenTunneln} /></h4>
@@ -813,7 +814,7 @@ export default function LCA() {
                 {/* Input 4: Transport Medium */}
                 <div className="flex flex-col gap-1.5">
                   <label className="text-[10.5px] font-bold text-slate-700"><MdText text={inhalt.texte.t4TransportmittelA4} /></label>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-center text-[9.5px]">
+                  <AuswahlGruppe label="Transportmittel" className="grid grid-cols-2 md:grid-cols-3 gap-2 text-center text-[9.5px]">
                     {[
                       { id: 'lkw-heavy' as const, label: inhalt.werte.dieselLkw40t, detail: inhalt.werte.euro60020 },
                       { id: 'lkw-light' as const, label: inhalt.werte.dieselLkw75t, detail: inhalt.werte.nahverkehr0080Kg },
@@ -821,7 +822,7 @@ export default function LCA() {
                       { id: 'h2-lkw' as const, label: 'Wasserstoff-LKW', detail: inhalt.werte.h2Brennstoffzelle0003 },
                       { id: 'zug' as const, label: inhalt.werte.güterzugBahn, detail: inhalt.werte.eSchienengüter0005 }
                     ].map((trans) => (
-                      <button aria-pressed={calcTransportType === trans.id}
+                      <button {...alsOption(calcTransportType === trans.id)}
                         key={trans.id}
                         type="button"
                         onClick={() => setCalcTransportType(trans.id)}
@@ -835,7 +836,7 @@ export default function LCA() {
                         <span className="text-[7.5px] text-slate-400 leading-none mt-0.5">{trans.detail}</span>
                       </button>
                     ))}
-                  </div>
+                  </AuswahlGruppe>
                 </div>
 
               </div>

@@ -11,6 +11,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/probenahme/Probenahme.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 export default function Probenahme() {
   const [activeTab, setActiveTab] = useState<'haufwerk' | 'diagnostik'>('haufwerk');
@@ -534,13 +535,13 @@ export default function Probenahme() {
 
                     <div>
                       <label className="block text-slate-700 font-bold mb-1.5"><MdText text={inhalt.texte.schlagrichtungEinbauwinkel} /></label>
-                      <div className="grid grid-cols-3 gap-1.5">
+                      <AuswahlGruppe label="Schlagrichtung" className="grid grid-cols-3 gap-1.5">
                         {[
                           { value: -90, label: inhalt.werte.boden90 },
                           { value: 0, label: 'Wand (0°)' },
                           { value: 90, label: inhalt.werte.decke90 }
                         ].map((a) => (
-                          <button aria-pressed={impactAngle === a.value}
+                          <button {...alsOption(impactAngle === a.value)}
                             key={a.value}
                             type="button"
                             onClick={() => setImpactAngle(a.value)}
@@ -553,7 +554,7 @@ export default function Probenahme() {
                             {a.label}
                           </button>
                         ))}
-                      </div>
+                      </AuswahlGruppe>
                     </div>
 
                     {(() => {
