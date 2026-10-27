@@ -25974,15 +25974,15 @@
     "topic": "Grubbs-Test",
     "difficulty": "Vertiefung",
     "normRef": "ISO 5725-2",
-    "question": "Eine Prüfserie mit n = 8 Würfeln hat x̄ = 31,4 N/mm² und s = 1,9 N/mm². Der kleinste Wert beträgt 27,0 N/mm², G_krit(n = 8; α = 5 %) = 2,03. Wie ist der Wert einzustufen?",
+    "question": "Eine Prüfserie mit n = 8 Würfeln hat x̄ = 31,4 N/mm² und s = 1,9 N/mm². Der kleinste Wert beträgt 27,0 N/mm², G_krit(n = 8; α = 5 %, ISO 5725-2) = 2,13. Wie ist der Wert einzustufen?",
     "options": [
-      "G ≈ 2,32 > 2,03; auffällig, vor dem Streichen technische Ursache prüfen",
-      "G ≈ 2,32 > 2,03; der Wert ist statistisch auffällig und ohne weitere Prüfung zu streichen",
-      "G ≈ 0,14 < 2,03; der Wert ist statistisch unauffällig und bleibt in der Auswertung",
-      "G ≈ 4,40 > 2,03; der Wert weicht so stark ab, dass die ganze Serie ungültig ist"
+      "G ≈ 2,32 > 2,13; auffällig, vor dem Streichen technische Ursache prüfen",
+      "G ≈ 2,32 > 2,13; der Wert ist statistisch auffällig und ohne weitere Prüfung zu streichen",
+      "G ≈ 0,14 < 2,13; der Wert ist statistisch unauffällig und bleibt in der Auswertung",
+      "G ≈ 4,40 > 2,13; der Wert weicht so stark ab, dass die ganze Serie ungültig ist"
     ],
     "correctIdx": 0,
-    "explanation": "G = |27,0 − 31,4|/1,9 = 2,32 > 2,03. Der Wert ist statistisch auffällig; gestrichen werden darf er erst, wenn eine technische Ursache (z. B. Prüffehler) belegt ist.",
+    "explanation": "G = |27,0 − 31,4|/1,9 = 2,32 > 2,13 (aber < 2,27 für α = 1 %). Der Wert ist nach ISO 5725-2 statistisch auffällig („Straggler“); gestrichen werden darf er erst, wenn eine technische Ursache (z. B. Prüffehler) belegt ist.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [

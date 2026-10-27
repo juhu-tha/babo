@@ -3,8 +3,9 @@
  *  - Normalverteilung: Dichte φ(x), Verteilungsfunktion Φ(x) über erf nach Abramowitz/Stegun 7.1.26 (|Fehler| ≤ 1,5·10⁻⁷)
  *  - Stichprobenkennwerte: Mittelwert x̄, Median, Standardabweichung s = √(Σ(xᵢ − x̄)²/(n − 1)), Variationskoeffizient V = s/x̄·100 %
  *  - Ausreißerkriterien: x̄ ± 2s (Faustregel), Boxplot [Q₁ − 1,5·IQR; Q₃ + 1,5·IQR] (Quartile als sortierter Wert
- *    am Index ⌊0,25·n⌋ bzw. ⌊0,75·n⌋, ohne Interpolation), Grubbs x̄ ± G_krit·s (G_krit einseitig α = 5 % nach
- *    ASTM E178, linear interpoliert; vereinfacht auf alle Werte angewendet)
+ *    am Index ⌊0,25·n⌋ bzw. ⌊0,75·n⌋, ohne Interpolation), Grubbs x̄ ± G_krit·s (G_krit für einen Ausreißer,
+ *    beidseitig geprüft, α = 5 % nach ISO 5725-2, Tab. 5 – entspricht einseitig α = 2,5 % nach ASTM E178;
+ *    linear interpoliert; vereinfacht auf alle Werte angewendet)
  *  - 5-%-Quantil X_k = x̄ − k_n·s mit k_n nach DIN EN 1990, Anhang D, Tab. D1 (V_X unbekannt), Zwischenwerte linear in 1/n;
  *    Bemessungswert X_d = X_k/γ_M (Beton 1,5, Betonstahl 1,15, Holz 1,3)
  *  - t-Test (Z24, unten): t-Verteilung numerisch, Ein- und Zweistichproben-t-Test (Student, Welch), p-Wert, t_krit, Konfidenzintervall
@@ -63,8 +64,15 @@ export function stichprobe(werte: readonly number[]): Stichprobe {
   return { n, sortiert, mittelwert, median, stdAbw, vk };
 }
 
-/** Kritische Werte des Grubbs-Tests, einseitig α = 5 % (ASTM E178, ISO 5725-2) */
-export const GRUBBS_TAB: readonly (readonly [number, number])[] = [[3, 1.153], [4, 1.463], [5, 1.672], [6, 1.822], [7, 1.938], [8, 2.032], [9, 2.110], [10, 2.176], [12, 2.285], [15, 2.409], [20, 2.557], [25, 2.663], [30, 2.745], [40, 2.866], [50, 2.956]];
+/**
+ * Kritische Werte des Grubbs-Tests für einen Ausreißer (größter ODER kleinster Wert), α = 5 % nach ISO 5725-2, Tab. 5
+ * („Straggler“-Grenze; die 1-%-Werte, z. B. n = 8: 2,274, kennzeichnen nach ISO 5725-2 Ausreißer). Da das Modul beide Seiten (x̄ ± G_krit·s) prüft,
+ * ist die zweiseitige Tabelle maßgebend; sie entspricht einseitig α/2 = 2,5 % (ASTM E178). Korrektur 27.10.2026:
+ * vorher einseitige 5-%-Werte (n = 8: 2,032), beidseitig angewendet also effektiv α = 10 %.
+ * Werte n = 3…15 öffentlich z. B. Harvey, Analytical Chemistry 2.1, App. 7 (LibreTexts); n = 20…50 aus der exakten Formel
+ * G_krit = (n − 1)/√n · √(t²/(n − 2 + t²)), t = t(1 − α/(2n); n − 2) (Grubbs/Beck 1972), geprüft in tests/statistik.test.ts.
+ */
+export const GRUBBS_TAB: readonly (readonly [number, number])[] = [[3, 1.155], [4, 1.481], [5, 1.715], [6, 1.887], [7, 2.020], [8, 2.126], [9, 2.215], [10, 2.290], [12, 2.412], [15, 2.549], [20, 2.709], [25, 2.822], [30, 2.908], [40, 3.036], [50, 3.128]];
 
 /** G_krit für n Werte; n < 3 → Wert für 3, n > 50 → Wert für 50, dazwischen linear in n. */
 export function grubbsKritisch(n: number): number {
