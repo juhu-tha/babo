@@ -83,8 +83,8 @@ pruefe(k.bundle.grenzeKB !== null, 'Bundle-Budget aus check-bundle.mjs nicht les
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 for (const p of d.pakete) pruefe(String(pkg.dependencies?.[p.name] ?? pkg.devDependencies?.[p.name]).includes(p.version), `Paket ${p.name}: Version ${p.version} nicht in package.json`);
 pruefe(d.pakete.some(p => p.name === 'react') && d.pakete.some(p => p.name === 'typescript'), 'Pakete: react/typescript fehlen');
-// mit Build: Einstiegsgröße wie scripts/qa/check-bundle.mjs
-if (fs.existsSync('dist/index.html')) {
+// mit vollständigem Build (check-bundle verlangt seit #209 auch server.cjs und routen.json): Einstiegsgröße wie scripts/qa/check-bundle.mjs
+if (fs.existsSync('dist/index.html') && fs.existsSync('dist/server.cjs') && fs.existsSync('dist/modul/routen.json')) {
   const cb = spawnSync(process.execPath, ['scripts/qa/check-bundle.mjs'], { encoding: 'utf8' }).stdout.match(/Einstieg [^:]+: ([\d,]+) kB gzip/);
   pruefe(!!cb && einstiegGzipKB('dist') === Number(cb[1].replace(',', '.')), `Einstieg: auditDaten ${einstiegGzipKB('dist')} kB, check-bundle ${cb?.[1]} kB`);
 }
