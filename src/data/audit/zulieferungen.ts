@@ -34,8 +34,8 @@ export const ZULIEFERUNGEN: readonly Zulieferung[] = [
   { nr: 'Z54', gegenstand: 'GitHub Actions', stand: 'Weiter lokale Prüfung', status: 'entschieden' },
   { nr: 'Z55', gegenstand: 'Formelbefunde', stand: 'Normgemäß umgesetzt (Prüfpunkte F1–F12)', status: 'erledigt', prs: [188] },
   { nr: 'Z57', gegenstand: 'Barrierefreiheitserklärung', stand: '„teilweise vereinbar – weitgehend erfüllt“ (rechtlich zulässige Stufen)', status: 'erledigt', prs: [186] },
-  { nr: 'neu', gegenstand: 'Restwert LCC an/aus', stand: 'Entscheidung 27.10.: Schalter, Standard aus', status: 'in_arbeit', prs: [184] },
-  { nr: 'neu', gegenstand: 'γ_c außergewöhnlich 1,3/1,2; f_cd-Abminderung ab C55/67; Rückprall-Richtungskorrektur', stand: 'Entscheidung 27.10.: γ_c = 1,3 nach NA DE; f_cd-Abminderung ab C55/67 nach NA DE; Richtungskorrektur nach Herstellertabelle', status: 'in_arbeit', prs: [188] },
+  { nr: 'neu', gegenstand: 'Restwert LCC an/aus', stand: 'Schalter „Restwert linear“, Standard aus (BNB-konform, #196)', status: 'erledigt', prs: [184, 196] },
+  { nr: 'neu', gegenstand: 'γ_c außergewöhnlich 1,3/1,2; f_cd-Abminderung ab C55/67; Rückprall-Richtungskorrektur', stand: 'γ_c = 1,3 nach NA DE; f_cd-Abminderung ab C55/67 vorbereitet, aber aus bis zum Normtext (Entscheidung 27.10., Doppelabminderung mit η vermeiden); Richtungskorrektur nach Herstellertabelle (#196)', status: 'erledigt', prs: [188, 196] },
   { nr: 'neu', gegenstand: 'Trittschall Wohnungstrenndecke 50 oder 53 dB', stand: 'Entscheidung 27.10.: 50 dB', status: 'erledigt', prs: [190] },
   { nr: 'neu', gegenstand: 'Fe-C Standard 0,8 %/723 °C oder 0,76 %/727 °C; Mohr τ-Achse', stand: 'Entscheidung 27.10.: 0,8 %/723 °C; Mohr τ nach unten positiv', status: 'erledigt', prs: [191] },
   { nr: 'neu', gegenstand: 'Merge-Nachricht GitHub auf „Pull request title and description“', stand: '–', status: 'wartet', statusText: 'offen – Einstellung durch Prof. Huber' },
@@ -44,5 +44,5 @@ export const ZULIEFERUNGEN: readonly Zulieferung[] = [
   { nr: 'neu', gegenstand: 'Quiz: Distraktoren angleichen, normRef ergänzen', stand: 'Umgesetzt: richtige Antwort am längsten 27,3 % statt 37 %', status: 'erledigt', prs: [194] },
   { nr: 'neu', gegenstand: 'CSP scharf schalten', stand: 'Entscheidung 27.10.: zwei Wochen nach dem Cloud-Run-Umzug', status: 'wartet', statusText: 'wartet auf Z50 (Hosting)' },
   { nr: 'neu', gegenstand: 'Ungenutzte Schriftdateien löschen', stand: 'Entscheidung 27.10.: zusammen mit Weg B', status: 'wartet', statusText: 'wartet auf Z50 (Hosting)' },
-  { nr: 'neu', gegenstand: 'Lernpfade nach Lehrveranstaltung (AP 6.1)', stand: 'Entscheidung 27.10.: inaktiv schalten', status: 'in_arbeit' },
+  { nr: 'neu', gegenstand: 'Lernpfade nach Lehrveranstaltung (AP 6.1)', stand: 'inaktiv geschaltet (Schalter INAKTIVE_GRUPPEN, #197)', status: 'erledigt', prs: [197] },
 ];

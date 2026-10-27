@@ -76,7 +76,7 @@ export const UMSETZUNGSPLAN: readonly Phase[] = [
     { ap: '5.8', titel: 'Technik (Titel nicht im Code belegt)', status: 'erledigt' },
   ] },
   { nr: 6, titel: 'Lehre, Transfer und Betrieb', aps: [
-    { ap: '6.1', titel: 'Lernpfade der Lehrveranstaltungen', status: 'in_arbeit', hinweis: 'Entscheidung 27.10.: Lernpfade nach Lehrveranstaltung inaktiv schalten' },
+    { ap: '6.1', titel: 'Lernpfade der Lehrveranstaltungen', status: 'in_arbeit', hinweis: 'Entscheidung 27.10.: inaktiv geschaltet (#197); Code und Entwürfe bleiben' },
     { ap: '6.2', titel: 'Neue Forschungsthemen (u. a. Biokohlebeton, PFAS, Altholz)', status: 'wartet' },
     { ap: '6.3', titel: 'TTZ-Weiterbildungspfad und Kursquiz', status: 'wartet', hinweis: 'TTZ-Kursliste (Z44)' },
     { ap: '6.4', titel: 'Versuchs-Handouts', status: 'wartet', hinweis: 'Laborpilot WS 26/27 (Z37/Z42)' },
