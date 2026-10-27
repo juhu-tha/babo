@@ -2,11 +2,14 @@
 /**
  * axe-Prüfung aller Reiter (role="tab") einzelner Routen. Der Routenlauf (scripts/qa/a11y.mjs) sieht nur den
  * jeweils ersten Reiter; hier wird jeder Reiter (auch verschachtelte, eine Ebene tief) angeklickt und geprüft.
- * Ohne Baseline: jeder Verstoß (WCAG 2.1 A/AA, alle Schweregrade) bricht ab.
- *   node scripts/qa/a11y-reiter.mjs --routen a,b [--modi desk,mob,desk-dunkel] [--basis URL] [--details]
+ * Ohne Baseline: jeder Verstoß (WCAG 2.1 A/AA, alle Schweregrade, dazu WCAG 2.2 AA target-size) bricht ab.
+ *   node scripts/qa/a11y-reiter.mjs (--routen a,b | --alle) [--modi desk,mob,desk-dunkel] [--basis URL] [--details]
+ *     --alle  alle Routen der Modul-Registry (wie a11y.mjs); Routen ohne Reiter werden einmal geprüft
+ *     --teil k/n  nur jede n-te Route ab k (parallele Läufe)
  * Voraussetzungen wie a11y.mjs: npm i --no-save playwright @axe-core/playwright, gebaute App muss laufen.
  */
 import fs from 'fs';
+import path from 'path';
 import { createRequire } from 'module';
 import { seitenUrl } from './seitenUrl.mjs';
 
@@ -16,10 +19,19 @@ const { AxeBuilder } = await lade('@axe-core/playwright');
 
 const wert = n => { const i = process.argv.indexOf(n); return i > 0 ? process.argv[i + 1] : undefined; };
 const BASIS = wert('--basis') ?? 'http://localhost:4173/';
-const ROUTEN = (wert('--routen') ?? '').split(',').filter(Boolean);
+const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..');
+function registryRouten() {
+  const reg = fs.readFileSync(path.join(ROOT, 'src/registry/modules.ts'), 'utf8');
+  const teil = reg.slice(reg.indexOf('export const MODULE = ['), reg.indexOf('] as const satisfies readonly ModulEintrag[]'));
+  return [...teil.matchAll(/^ {2}\{ id: '([a-z0-9_-]+)'/gm)].map(m => m[1]).filter(id => !id.startsWith('divider_') && id !== 'admin');
+}
+const [TEIL_K, TEIL_N] = (wert('--teil') ?? '1/1').split('/').map(Number);
+if (!(TEIL_N >= 1 && TEIL_K >= 1 && TEIL_K <= TEIL_N)) { console.error('--teil k/n mit 1 ≤ k ≤ n'); process.exit(2); }
+const ROUTEN = (process.argv.includes('--alle') ? registryRouten() : (wert('--routen') ?? '').split(',').filter(Boolean))
+  .filter((_, i) => i % TEIL_N === TEIL_K - 1);
 const MODI = (wert('--modi') ?? 'desk,mob,desk-dunkel').split(',');
 const DETAILS = process.argv.includes('--details');
-if (!ROUTEN.length) { console.error('--routen a,b,… angeben'); process.exit(2); }
+if (!ROUTEN.length) { console.error('--routen a,b,… oder --alle angeben'); process.exit(2); }
 
 const ALLE = {
   desk: { viewport: { width: 1440, height: 900 }, scheme: 'light' },
@@ -35,11 +47,15 @@ let pruefungen = 0;
 
 async function pruefe(page, schluessel) {
   await page.waitForTimeout(250);
-  const r = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
+  const r = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']).analyze();
   pruefungen++;
   for (const v of r.violations) {
     verstoesse.push(`${schluessel} ${v.id} (${v.impact}): ${v.nodes.length}`);
-    if (DETAILS) for (const n of v.nodes.slice(0, 8)) verstoesse.push(`    ${n.target.join(' ')} ${(n.failureSummary ?? '').split('\n').slice(1, 2).join('').trim().slice(0, 160)}`);
+    if (DETAILS) for (const n of v.nodes.slice(0, 8)) {
+      // bei color-contrast das Element nennen, das den Hintergrund liefert (oft ein Vorfahr mit anderer Klasse)
+      const hg = n.any?.[0]?.relatedNodes?.[0]?.html?.match(/class="([^"]*)"/)?.[1];
+      verstoesse.push(`    ${n.target.join(' ')} ${(n.failureSummary ?? '').split('\n').slice(1, 2).join('').trim().slice(0, 160)}${hg ? ` [Hintergrund: .${hg.slice(0, 120)}]` : ''}`);
+    }
   }
 }
 

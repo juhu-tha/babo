@@ -311,7 +311,7 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
                 <option value={28}>28 Tage (Standard)</option>
                 <option value={56}>56 Tage (DAfStb -9%)</option>
               </select>
-              <select
+              <select aria-label="Stahlroute"
                 value={dafstbStahlRoute}
                 onChange={(e) => setDafstbStahlRoute(e.target.value as "standard_bof" | "gruen_eaf")}
                 className="w-1/2 text-xs font-bold p-2 rounded-lg border border-home-grau/30 bg-white text-slate-800 focus:outline-none focus:ring-1 focus:ring-shiraz"

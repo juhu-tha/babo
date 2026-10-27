@@ -470,7 +470,7 @@ export default function Nawaro() {
                       <Zap size={16} className="text-amber-500" />
                       <div>
                         <span className="text-xs block"><MdText text={inhalt.texte.sommerlicherWärmeschutz} /></span>
-                        <span className="text-[10px] text-text-main/50 font-normal"><MdText text={inhalt.texte.verzögerungVonHitzeeinträgenPhasenversch} /></span>
+                        <span className={`text-[10px] font-normal ${navGoal === 'summer' ? 'text-white/90' : 'text-text-main/50'}`}><MdText text={inhalt.texte.verzögerungVonHitzeeinträgenPhasenversch} /></span>
                       </div>
                     </button>
 
@@ -485,7 +485,7 @@ export default function Nawaro() {
                       <Layers size={16} className="text-blue-500" />
                       <div>
                         <span className="text-xs block"><MdText text={inhalt.texte.maximalerKälteschutzWärmeschutz} /></span>
-                        <span className="text-[10px] text-text-main/50 font-normal"><MdText text={inhalt.texte.niedrigeWärmeleitfähigkeitFürDünne} /></span>
+                        <span className={`text-[10px] font-normal ${navGoal === 'heat' ? 'text-white/90' : 'text-text-main/50'}`}><MdText text={inhalt.texte.niedrigeWärmeleitfähigkeitFürDünne} /></span>
                       </div>
                     </button>
 
@@ -500,7 +500,7 @@ export default function Nawaro() {
                       <Activity size={16} className="text-purple-500" />
                       <div>
                         <span className="text-xs block"><MdText text={inhalt.texte.akustischeDämpfungSchallschutz} /></span>
-                        <span className="text-[10px] text-text-main/50 font-normal"><MdText text={inhalt.texte.höhereRohdichteVerbessertDie} /></span>
+                        <span className={`text-[10px] font-normal ${navGoal === 'sound' ? 'text-white/90' : 'text-text-main/50'}`}><MdText text={inhalt.texte.höhereRohdichteVerbessertDie} /></span>
                       </div>
                     </button>
 
@@ -515,7 +515,7 @@ export default function Nawaro() {
                       <Droplets size={16} className="text-sky-500" />
                       <div>
                         <span className="text-xs block"><MdText text={inhalt.texte.feuchtesicherheitDiffusion} /></span>
-                        <span className="text-[10px] text-text-main/50 font-normal"><MdText text={inhalt.texte.diffusionsoffeneUndKapillaraktiveRücktro} /></span>
+                        <span className={`text-[10px] font-normal ${navGoal === 'moisture' ? 'text-white/90' : 'text-text-main/50'}`}><MdText text={inhalt.texte.diffusionsoffeneUndKapillaraktiveRücktro} /></span>
                       </div>
                     </button>
 
@@ -530,7 +530,7 @@ export default function Nawaro() {
                       <Leaf size={16} className="text-emerald-500" />
                       <div>
                         <span className="text-xs block"><MdText text={inhalt.texte.minimierteGraueEnergieÖko} /></span>
-                        <span className="text-[10px] text-text-main/50 font-normal"><MdText text={inhalt.texte.niedrigsterHerstellungsaufwandRecycling} /></span>
+                        <span className={`text-[10px] font-normal ${navGoal === 'eco' ? 'text-white/90' : 'text-text-main/50'}`}><MdText text={inhalt.texte.niedrigsterHerstellungsaufwandRecycling} /></span>
                       </div>
                     </button>
                   </div>

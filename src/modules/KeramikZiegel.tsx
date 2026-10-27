@@ -39,7 +39,7 @@ const PROBEN: { id: string; name: string; mt: number; mn: number; ma: number; rh
 ];
 
 const GRUPPEN_FARBE: Record<string, string> = {
-  Ia: 'bg-emerald-600', Ib: 'bg-emerald-400', IIa: 'bg-amber-400', IIb: 'bg-orange-500', III: 'bg-rose-600',
+  Ia: 'bg-emerald-800', Ib: 'bg-emerald-700', IIa: 'bg-amber-600', IIb: 'bg-orange-500', III: 'bg-rose-600',
 };
 
 export default function KeramikZiegel() {
@@ -357,7 +357,7 @@ export default function KeramikZiegel() {
                       </div>
                       <div className="text-right">
                         <div className="text-xs text-text-main/60 font-bold uppercase tracking-wide"><MdText text={inhalt.texte.gruppeDinEn14411} /></div>
-                        <div className={`inline-block mt-1 px-3 py-1 rounded-lg text-white font-black text-xl ${GRUPPEN_FARBE[teil] ?? 'bg-slate-400'}`}>{erg.gruppe ?? '–'}</div>
+                        <div className={`inline-block mt-1 px-3 py-1 rounded-lg text-white font-black text-xl ${GRUPPEN_FARBE[teil] ?? 'bg-slate-500'}`}>{erg.gruppe ?? '–'}</div>
                         <div className="text-xs text-text-main/70 mt-1">{erg.scherben}</div>
                       </div>
                     </div>

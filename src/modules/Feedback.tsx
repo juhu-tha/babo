@@ -52,6 +52,8 @@ function EvaluierungContent() {
             key={star}
             type="button"
             onClick={() => handleRating(key, star)}
+            aria-label={`${formatDeWert(star)} von 5 Sternen`}
+            aria-pressed={ratings[key as keyof typeof ratings] === star}
             className={`p-1 transition-colors ${ratings[key as keyof typeof ratings] >= star ? 'text-yellow-500' : 'text-home-grau/30 hover:text-yellow-300'}`}
           >
             <Star size={24} fill={ratings[key as keyof typeof ratings] >= star ? 'currentColor' : 'none'} />

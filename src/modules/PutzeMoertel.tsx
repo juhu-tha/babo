@@ -642,7 +642,7 @@ export default function PutzeMoertel() {
                         max="250" 
                         value={plasterArea}
                         onChange={(e) => setPlasterArea(Number(e.target.value))}
-                        className="w-full mt-1.5 accent-shiraz"
+                        className="w-full h-6 mt-1.5 accent-shiraz"
                       />
                     </div>
 
@@ -660,7 +660,7 @@ export default function PutzeMoertel() {
                         max="80" 
                         value={plasterThickness}
                         onChange={(e) => setPlasterThickness(Number(e.target.value))}
-                        className="w-full mt-1.5 accent-shiraz"
+                        className="w-full h-6 mt-1.5 accent-shiraz"
                       />
                     </div>
 
@@ -719,7 +719,7 @@ export default function PutzeMoertel() {
                         max="250" 
                         value={masonryArea}
                         onChange={(e) => setMasonryArea(Number(e.target.value))}
-                        className="w-full mt-1.5 accent-shiraz"
+                        className="w-full h-6 mt-1.5 accent-shiraz"
                       />
                     </div>
 
@@ -796,7 +796,7 @@ export default function PutzeMoertel() {
                         max="250" 
                         value={plansteinArea}
                         onChange={(e) => setPlansteinArea(Number(e.target.value))}
-                        className="w-full mt-1.5 accent-shiraz"
+                        className="w-full h-6 mt-1.5 accent-shiraz"
                       />
                     </div>
 

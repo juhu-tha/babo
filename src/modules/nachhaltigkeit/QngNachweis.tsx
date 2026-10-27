@@ -1,6 +1,6 @@
 import { formatDeWert, formatDeZahl } from '@/src/utils/numberFormat';
 import { AlertTriangle, CheckCircle } from 'lucide-react';
-import type { Dispatch, SetStateAction } from 'react';
+import { useId, type Dispatch, type SetStateAction } from 'react';
 import inhalt from '@/content/nachhaltigkeit/QngNachweis.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 
@@ -19,6 +19,8 @@ interface QngNachweisProps {
 }
 
 export default function QngNachweis({ bgf, constructionType, greenTariff, heatingSystem, pvSizeKwp, qngComputation, setBgf, setConstructionType, setGreenTariff, setHeatingSystem, setPvSizeKwp }: QngNachweisProps) {
+  const oekostromId = useId();
+  const pvId = useId();
   return (
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 animate-in fade-in duration-300">
 
@@ -106,12 +108,13 @@ export default function QngNachweis({ bgf, constructionType, greenTariff, heatin
                 {/* Green Tariff Switch */}
                 <div className="bg-slate-50 p-4 border border-home-grau/30 rounded-xl flex items-center justify-between">
                   <div>
-                    <strong className="text-xs text-slate-900 block"><MdText text={inhalt.texte.ökostromvertragZertifiziert} /></strong>
+                    <strong id={oekostromId} className="text-xs text-slate-900 block"><MdText text={inhalt.texte.ökostromvertragZertifiziert} /></strong>
                     <span className="text-[10px] text-slate-400"><MdText text={inhalt.texte.senktDenEmissionsfaktorDer} /></span>
                   </div>
                   <label className="relative inline-flex items-center cursor-pointer select-none">
                     <input 
                       type="checkbox" 
+                      aria-labelledby={oekostromId}
                       checked={greenTariff}
                       onChange={(e) => setGreenTariff(e.target.checked)}
                       disabled={heatingSystem !== 'waermepumpe'}
@@ -124,11 +127,12 @@ export default function QngNachweis({ bgf, constructionType, greenTariff, heatin
                 {/* PV sizing slider */}
                 <div className="bg-slate-50 p-3.5 border border-home-grau/30 rounded-xl">
                   <div className="flex justify-between text-xs text-slate-900 font-bold mb-1">
-                    <span>Photovoltaikanlage:</span>
+                    <span id={pvId}>Photovoltaikanlage:</span>
                     <span className="font-mono text-emerald-700 font-bold">{formatDeWert(pvSizeKwp)} kWp</span>
                   </div>
                   <input
                     type="range"
+                    aria-labelledby={pvId}
                     min="0"
                     max="40"
                     step="2"

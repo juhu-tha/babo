@@ -1,7 +1,7 @@
 import { Building, Activity, Thermometer, BookOpen, Check, ShieldAlert, Layers, Scale } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeWert, formatDeZahl } from '@/src/utils/numberFormat';
-import type { Dispatch, SetStateAction } from 'react';
+import { useId, type Dispatch, type SetStateAction } from 'react';
 import inhalt from '@/content/spannbeton/kennwerte/KennwerteBeton.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 
@@ -25,6 +25,7 @@ interface KennwerteBetonProps {
 }
 
 export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays, matAggregate, matBeamHeight, matCement, matGrade, matMaturity, matTemp, setMatAgeDays, setMatAggregate, setMatBeamHeight, setMatCement, setMatGrade, setMatTemp, stressStrainCurvePoints }: KennwerteBetonProps) {
+  const id = useId();
   return (
       <div className="space-y-6 animate-in fade-in duration-300">
         {/* Hauptkarte: Werkstoff-Labor & Reife-Simulator */}
@@ -92,11 +93,12 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 pt-2">
               {/* Zementklasse */}
               <div className="space-y-1">
-                <label className="text-xs font-semibold text-text-main flex items-center justify-between">
+                <label htmlFor={`${id}-zement`} className="text-xs font-semibold text-text-main flex items-center justify-between">
                   <span>Zement-Klasse:</span>
                   <span className="font-mono text-shiraz font-bold">Klasse {matCement}</span>
                 </label>
                 <select
+                  id={`${id}-zement`}
                   value={matCement}
                   onChange={(e) => setMatCement(e.target.value as 'R' | 'N' | 'S')}
                   className="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 font-medium outline-none focus:border-shiraz"
@@ -111,11 +113,12 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
               {/* Betonalter t */}
               <div className="space-y-1">
                 <div className="flex items-center justify-between text-xs font-semibold text-text-main">
-                  <span><MdText text={inhalt.texte.betonalterT} /></span>
+                  <span id={`${id}-alter`}><MdText text={inhalt.texte.betonalterT} /></span>
                   <span className="font-mono text-shiraz font-bold">{formatDeWert(matAgeDays)} d</span>
                 </div>
                 <input
                   type="range"
+                  aria-labelledby={`${id}-alter`}
                   min="1"
                   max="90"
                   step="1"
@@ -135,12 +138,13 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
               {/* Erhärtungstemperatur T */}
               <div className="space-y-1">
                 <div className="flex items-center justify-between text-xs font-semibold text-text-main">
-                  <span className="flex items-center gap-1">
+                  <span id={`${id}-temp`} className="flex items-center gap-1">
                     <Thermometer size={13} className="text-shiraz" /><MdText text={inhalt.texte.temperaturT} /></span>
                   <span className="font-mono text-shiraz font-bold">{formatDeWert(matTemp)} °C</span>
                 </div>
                 <input
                   type="range"
+                  aria-labelledby={`${id}-temp`}
                   min="5"
                   max="60"
                   step="5"
@@ -157,11 +161,12 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
 
               {/* Gesteinskörnung */}
               <div className="space-y-1">
-                <label className="text-xs font-semibold text-text-main flex items-center justify-between">
+                <label htmlFor={`${id}-gestein`} className="text-xs font-semibold text-text-main flex items-center justify-between">
                   <span><MdText text={inhalt.texte.gesteinEc231} /></span>
                   <span className="font-mono text-shiraz font-bold">α_E = {formatDeZahl(matMaturity.aggFactor, 2)}</span>
                 </label>
                 <select
+                  id={`${id}-gestein`}
                   value={matAggregate}
                   onChange={(e) => setMatAggregate(e.target.value as 'quarzit' | 'basalt' | 'kalkstein' | 'sandstein')}
                   className="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 font-medium outline-none focus:border-shiraz"
@@ -177,11 +182,12 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
               {/* Querschnittshöhe h für Biegezugfestigkeit */}
               <div className="space-y-1">
                 <div className="flex items-center justify-between text-xs font-semibold text-text-main">
-                  <span><MdText text={inhalt.texte.höheHFCtm} /></span>
+                  <span id={`${id}-hoehe`}><MdText text={inhalt.texte.höheHFCtm} /></span>
                   <span className="font-mono text-shiraz font-bold">{formatDeWert(matBeamHeight)} mm</span>
                 </div>
                 <input
                   type="range"
+                  aria-labelledby={`${id}-hoehe`}
                   min="150"
                   max="2000"
                   step="50"
@@ -348,7 +354,7 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
             </div>
 
             {/* SVG Plot */}
-            <div className="w-full overflow-x-auto bg-slate-50/70 p-4 rounded-xl border border-slate-200">
+            <div className="w-full overflow-x-auto bg-slate-50/70 p-4 rounded-xl border border-slate-200" role="region" aria-label="Arbeitslinien-Diagramm (horizontal scrollbar)" tabIndex={0}>
               <div className="min-w-[620px]">
                 <svg viewBox="0 0 700 280" className="w-full h-64">
                   <defs>
@@ -504,7 +510,7 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
               <span className="text-[11px] text-slate-500"><MdText text={inhalt.texte.klickAufEineZeile} /></span>
             </div>
 
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto" role="region" aria-label="Eurocode-2-Normkennwerte (horizontal scrollbar)" tabIndex={0}>
               <table className="w-full text-left text-xs border-collapse">
                 <thead>
                   <tr className="bg-slate-100 text-text-main border-b border-home-grau/30 font-semibold">
@@ -615,7 +621,7 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
                 <BookOpen className="h-4 w-4 text-shiraz" /><MdText text={inhalt.texte.tabelle1WesentlicheMechanische} /></h5>
               <span className="text-[10px] font-mono bg-slate-100 px-2 py-0.5 rounded text-slate-700"><MdText text={inhalt.texte.ec2Kap31} /></span>
             </div>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto" role="region" aria-label="Wesentliche mechanische Kennwerte (horizontal scrollbar)" tabIndex={0}>
               <table className="w-full text-xs text-left border-collapse">
                 <thead>
                   <tr className="border-b border-slate-200 bg-slate-50 text-slate-700 font-bold">

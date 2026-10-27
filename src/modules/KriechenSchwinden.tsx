@@ -795,7 +795,7 @@ export default function KriechenSchwinden() {
               {/* Formula & Mechanistic Footer */}
               <div className="mt-3 p-3 bg-off-white rounded-xl border border-home-grau/25 text-xs text-text-main/80 space-y-1">
                 <span className="font-bold text-text-main block"><MdText text={inhalt.texte.überlagerungDerVerformungsanteileDin} /></span>
-                <div className="overflow-x-auto py-0.5">
+                <div className="overflow-x-auto py-0.5" role="region" aria-label="Formel Gesamtverformung (horizontal scrollbar)" tabIndex={0}>
                   <InlineMath math="\varepsilon_{\text{tot}}(t) = \varepsilon_{\text{el}} + \varepsilon_{\text{cr}}(t, t_0) + \varepsilon_{\text{cs}}(t) = \frac{\sigma_c}{E_{\text{cm}}} \cdot \left[1 + \varphi(t, t_0)\right] + \varepsilon_{\text{cs}}(t)" />
                 </div>
               </div>
