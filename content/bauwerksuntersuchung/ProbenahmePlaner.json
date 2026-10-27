@@ -37,7 +37,7 @@
     "planparallelitätStirnflächenAufToleranz": "**Planparallelität:** Stirnflächen auf Toleranz $\\le 0{,}05\\,\\text{mm}$ schleifen oder Schwefel-/Tonerdeschmelzzement-Deckschicht auftragen.",
     "feuchtelagerungMind3Tage": "**Feuchtelagerung:** Mind. 3 Tage im Prüfraum bei 20 ± 2 °C / 50–65 % r.F. (lufttrocken) ODER mind. 48 h wassergesättigt.",
     "kritischerFehlerNasserBeton": "**Kritischer Fehler:** Nasser Beton zeigt ca. 10–15 % geringere Festigkeit als trockener Beton. Lagerungszustand zwingend protokollieren!",
-    "dgzfpB1AstmC876": "DGZfP B1 / ASTM C876",
+    "dgzfpB1AstmC876": "DGZfP-Merkblatt B 03 / ASTM C876",
     "vorbefeuchtungOberflächeMind30": "**Vorbefeuchtung:** Oberfläche mind. 30–45 min vor Messung mit Netzwasser benetzen, um Übergangswiderstand $R_c < 10\\,\\text{k}\\Omega$ zu sichern.",
     "pfützenfreiheitFreiesWasserVor": "**Pfützenfreiheit:** Freies Wasser vor Messung restlos abziehen (verhindert elektrische Kurzschlussfelder!).",
     "bewehrungskontaktFreilegungAnGesunder": "**Bewehrungskontakt:** Freilegung an gesunder Stelle; Durchgangsprüfung mit Multimeter muss $R < 1\\,\\Omega$ ergeben.",

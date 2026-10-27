@@ -90,7 +90,7 @@
       {
         "formel": "d = \\frac{c_0}{\\sqrt{\\varepsilon_r}} \\cdot \\frac{t}{2}",
         "erklaerung": "Tiefenberechnung beim Boden- und Betonradar (GPR): c_0 = Lichtgeschwindigkeit im Vakuum, \\varepsilon_r = relative Dielektrizitätskonstante des Baustoffs, t = Signallaufzeit.",
-        "quelle": "DGZfP Richtlinie B1"
+        "quelle": "DGZfP-Merkblatt B 10 (Radar)"
       },
       {
         "formel": "I = I_0 \\cdot e^{-\\mu \\cdot d}",

@@ -52,7 +52,7 @@
         "category": "monitoring",
         "categoryLabel": "Echtzeit-Monitoring & Sensorik",
         "desc": "Elektrochemische Detektion und Lokalisierung aktiver (rostender) Bewehrungskorrosion.",
-        "norm": "DGZfP-Richtlinie B3 / SIA 2006",
+        "norm": "DGZfP-Merkblatt B 03 / SIA 2006",
         "useCase": "Zerstörungsfreies Aufspüren von Korrosions-Hotspots in chloridbelasteten Brückenkappen oder Parkdecks.",
         "details": [
           "Messung der Potentialdifferenz zwischen der Stahlbewehrung und einer Referenzelektrode (Cu/CuSO4-Elektrode oder Ag/AgCl).",

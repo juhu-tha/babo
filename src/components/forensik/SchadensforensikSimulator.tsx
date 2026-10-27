@@ -101,9 +101,9 @@ const CASE_STUDIES: CaseStudy[] = [
           { label: 'Tiefe 0 – 10 mm', value: '3,40 M.-% bez. Zement', isAnomaly: true },
           { label: 'Tiefe 10 – 20 mm', value: '2,65 M.-% bez. Zement', isAnomaly: true },
           { label: 'Tiefe 20 – 30 mm (Bewehrung)', value: '1,85 M.-% bez. Zement', isAnomaly: true },
-          { label: 'Kritischer Grenzwert (DIN 1045)', value: 'max. 0,40 M.-%', isAnomaly: true }
+          { label: 'Bewertungswert korrosionsauslösend (kein Normwert)', value: '≈ 0,5 M.-% bez. Zement', isAnomaly: false }
         ],
-        didacticHint: 'Der kritische korrosionsauslösende Chloridgehalt (0,40 M.-%) ist in Bewehrungstiefe fast um das Fünffache überschritten! Die Passivschicht wird trotz hohem pH-Wert lokal zerstört (Lochfraß).'
+        didacticHint: 'Der korrosionsauslösende Chloridgehalt (in Deutschland üblicher Bewertungswert ≈ 0,5 M.-% bez. auf Zement) ist in Bewehrungstiefe mit 1,85 M.-% fast um das Vierfache überschritten. Die Passivschicht wird trotz hohem pH-Wert lokal zerstört (Lochfraß). Die 0,40 M.-% der DIN EN 206/DIN 1045-2 (Chloridklasse Cl 0,40) gelten nur für die Herstellung von Stahlbeton.'
       },
       {
         id: 'potentialfeld',
@@ -111,7 +111,7 @@ const CASE_STUDIES: CaseStudy[] = [
         category: 'zfp',
         cost: 950,
         duration: '4 Stunden',
-        shortDesc: 'Elektrochemische Erfassung der Korrosionsaktivität nach DGZfP B3 mittels Cu/CuSO4-Bezugselektrode.',
+        shortDesc: 'Elektrochemische Erfassung der Korrosionsaktivität nach DGZfP-Merkblatt B 03 mittels Cu/CuSO4-Bezugselektrode.',
         findingTitle: 'Prüfbericht: Korrosionspotentiale (mV CSE)',
         findingText: 'Im Sockelbereich (Höhe 0 bis 50 cm über OKFF) treten extrem negative Potentiale von -420 mV bis -510 mV auf. Signifikante Potentialgradienten weisen auf aktive Lokalelemente hin.',
         keyValues: [

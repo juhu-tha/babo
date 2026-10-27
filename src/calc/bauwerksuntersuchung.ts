@@ -9,7 +9,7 @@
  *    Bauwerksfestigkeit nur über Kalibrierkerne nach DIN EN 13791:2020, Abschnitt 8.2/8.3 (rueckprallKalibrierung)
  *  - Ultraschall: v_p = s/t, E_dyn = ρ·v_p²·(1 + ν)(1 − 2ν)/(1 − ν) mit ν = 0,2
  *  - Potentialfeld (gegen Cu/CuSO₄, ASTM C876): > −200 mV gering, −350 … −200 mV ungewiss, < −350 mV hoch
- *    (Runde 5: einheitlich für ZfP, Bauwerksuntersuchung und Labor; DGZfP-Merkblatt B3: objektbezogene Auswertung)
+ *    (Runde 5: einheitlich für ZfP, Bauwerksuntersuchung und Labor; DGZfP-Merkblatt B 03: objektbezogene Auswertung)
  *  - Betondeckung: c_nom = c_min,dur + Δc_dev nach DIN EN 1992-1-1/NA, Tab. 4.4DE (Betonstahl)
  *  - Chlorid: Anhaltswert 0,5 M.-% bez. Zement (Spannstahl 0,2 M.-%)
  *  - Haftzug: f_ht = F/A mit Stempel Ø 50 mm; Anforderung ≥ 1,5 N/mm² und Bruch im Beton
@@ -147,7 +147,7 @@ export type KorrosionsWahrscheinlichkeit = 'gering' | 'ungewiss' | 'hoch';
 export const POTENTIAL_GRENZEN_MV = { gering: -200, hoch: -350 } as const;
 /**
  * Einheitliche Einstufung (Runde 5) für ZfP, Bauwerksuntersuchung und Labor: E < −350 mV hoch, −350 ≤ E ≤ −200 mV ungewiss,
- * E > −200 mV gering (Potential in mV gegen Cu/CuSO₄; ASTM C876). Das DGZfP-Merkblatt B3 empfiehlt statt fester Grenzen die
+ * E > −200 mV gering (Potential in mV gegen Cu/CuSO₄; ASTM C876). Das DGZfP-Merkblatt B 03 empfiehlt statt fester Grenzen die
  * objektbezogene statistische Auswertung (Häufigkeitsverteilung) – die festen Grenzen sind eine Lehr-Orientierung.
  * Vorher: Grenze −350 mV in der Bauwerksuntersuchung eingeschlossen (≤ −350 hoch), im Modul ZfP ausgeschlossen.
  */

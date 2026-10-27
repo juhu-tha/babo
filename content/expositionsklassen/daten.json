@@ -113,7 +113,7 @@
     "din10452Tab7": "DIN 1045-2 Tab. F.2.2 & DIN EN 197-1",
     "kaimauerGezeitenzoneMeerwasser": "Kaimauer & Gezeitenzone (Meerwasser)",
     "meerwasserchloridSprühnebelBrandungTiden": "Meerwasserchlorid-Sprühnebel, Brandung, Tidenhub & Frostwechsel",
-    "massiveZufuhrVonMeerwasserchloriden": "Massive Zufuhr von Meerwasserchloriden in der Gezeitenzone kombiniert mit Frost-Tau-Angriff. Zerstörung des Passivfilms bei C_crit >= 0,40 % bezogen auf Zementmasse.",
+    "massiveZufuhrVonMeerwasserchloriden": "Massive Zufuhr von Meerwasserchloriden in der Gezeitenzone kombiniert mit Frost-Tau-Angriff. Zerstörung des Passivfilms, sobald an der Bewehrung der korrosionsauslösende Chloridgehalt erreicht ist (Bewertungswert ≈ 0,5 M.-% bez. auf Zement; 0,40 M.-% ist die Herstellungsgrenze Cl 0,40, kein Auslösewert).",
     "cMinDur40": "c_min,dur = 40 mm, c_nom = 55 mm (DIN EN 1992-1-1/NA). Dichter Zementstein, z. B. mit hüttensandreichen Zementen (CEM III/A, III/B).",
     "din10452Tab8": "DIN 1045-2 Tab. F.2.1 & DIN EN 1992-1-1/NA"
   },
