@@ -4,7 +4,14 @@
  *  1. Druckfestigkeit: f_cm = f_ck + 8; f_cd = α_cc·f_ck/γ_c (α_cc = 0,85, γ_c = 1,50)
  *     Festigkeitsentwicklung β_cc(t) = exp[s·(1 − √(28/t_T))] (Gl. 3.2) mit temperaturangepasstem Alter
  *     t_T = t·exp[−(4000/(273 + T) − 13,65)] (Anhang B, Gl. B.10), f_ck(t) = f_cm(t) − 8 für t < 28 d, f_ck(t) = f_ck für t ≥ 28 d
- *     (3.1.2(5); Runde 5: vorher auch für t ≥ 28 d f_cm(t) − 8)
+ *     (3.1.2(5); Runde 5: vorher auch für t ≥ 28 d f_cm(t) − 8).
+ *     Schalter `festigkeitMitWirksamemAlter` (Entscheidung 27.10. abends, Standard: an): EC2 nennt t_T (B.10) nur für Kriechen
+ *     und Schwinden; für die Festigkeitsentwicklung β_cc(t) rechnet 3.1.2(6) mit dem tatsächlichen Alter t. Der fib Model
+ *     Code 2010 setzt das temperaturangepasste Alter t_T (gleiche Gleichung, Reifeansatz nach Arrhenius) auch in β_cc(t) ein
+ *     (öffentlich wiedergegeben bei Vollpracht, Soutsos, Kanavaris: Strength development of GGBS and fly ash concretes and
+ *     applicability of fib model code's maturity function – A critical review, Constr. Build. Mater. 162 (2018) 830–846,
+ *     Gl. (1) und (6)). An: β_cc, f_cm(t), f_ck(t), f_ctm(t), E_cm(t) mit t_T bzw. t_0,T; aus: mit t bzw. t_0 (EC2 3.1.2).
+ *     Kriechen (β(t_0) mit t_0,T nach B.9/B.10) ist davon unabhängig.
  *  2. Zugfestigkeit: f_ctm = 0,30·f_ck^(2/3) (≤ C50/60) bzw. 2,12·ln(1 + f_cm/10); f_ctk;0,05 = 0,7·f_ctm,
  *     f_ctk;0,95 = 1,3·f_ctm, f_ctd = α_ct·f_ctk;0,05/γ_c (α_ct = 0,85 NA), f_ctm,fl = max(1,6 − h/1000; 1)·f_ctm (Gl. 3.23),
  *     f_ct,sp = f_ctm/0,9 (Gl. 3.3), f_ctm(t) = β_cc(t)^α·f_ctm (Gl. 3.4; α = 1 für t < 28 d, sonst 2/3)
@@ -23,6 +30,7 @@
  * Begrenzung von h_0; k_h nach Tab. 3.3 ist ab h_0 ≥ 500 mm konstant 0,70, β_H ≤ 1500·α_3). Reiner Rechenkern – geprüft in tests/betonkennwerte.test.ts.
  */
 import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
+import { formatDeZahl } from '../utils/numberFormat';
 import { fckZumAlter, dehnungsKennwerte, fcdBeton } from '../data/kennwerte';
 import {
   type Zementklasse, ZEMENT_DS, ZEMENT_ALPHA, beiwertKh, phiRH as phiRHBeiwert, betaFcm as betaFcmBeiwert,
@@ -68,10 +76,17 @@ export interface BetonkennwerteEingabe {
   sigmaC: number;
   /** Bauteillänge L in m */
   laenge: number;
+  /**
+   * Festigkeitsentwicklung mit wirksamem Alter t_T nach fib Model Code 2010 (Standard true) oder mit dem tatsächlichen
+   * Alter nach EC2 3.1.2(6) (false). Kriechen verwendet t_0,T nach Anhang B immer.
+   */
+  festigkeitMitWirksamemAlter?: boolean;
 }
 
 export interface BetonkennwerteErgebnis {
   fck: number; fcm: number; fcd: number;
+  /** wirksames Alter t_T und t_0,T nach Gl. (B.10) in d; Alter für die Festigkeitsentwicklung (t_T oder t) in d */
+  tT: number; t0T: number; tFestigkeit: number; t0Festigkeit: number;
   /** Zementbeiwert s */
   s: number;
   betaCcT0: number; fcmT0: number; fckT0: number;
@@ -132,12 +147,15 @@ export function betonkennwerte(e: BetonkennwerteEingabe): BetonkennwerteErgebnis
   const tempFactor = temperaturFaktor(temperatur);
   const t0Temp = Math.max(0.1, t0 * tempFactor);
   const tTemp = Math.max(0.1, t * tempFactor);
-  const betaCcT0 = betaCc(s, t0Temp);
+  const mitTT = e.festigkeitMitWirksamemAlter ?? true;
+  const t0Fest = mitTT ? t0Temp : t0;
+  const tFest = mitTT ? tTemp : t;
+  const betaCcT0 = betaCc(s, t0Fest);
   const fcmT0 = betaCcT0 * fcm;
-  const fckT0 = fckZumAlter(fck, fcmT0, t0Temp);
-  const betaCcT = betaCc(s, tTemp);
+  const fckT0 = fckZumAlter(fck, fcmT0, t0Fest);
+  const betaCcT = betaCc(s, tFest);
   const fcmT = betaCcT * fcm;
-  const fckT = fckZumAlter(fck, fcmT, tTemp);
+  const fckT = fckZumAlter(fck, fcmT, tFest);
 
   // 2. Zugfestigkeit
   const fctm = fck <= 50 ? 0.30 * Math.pow(fck, 2 / 3) : 2.12 * Math.log(1 + fcm / 10);
@@ -209,13 +227,14 @@ export function betonkennwerte(e: BetonkennwerteEingabe): BetonkennwerteErgebnis
   if (temperatur < 0 || temperatur > 80) hinweise.push({ stufe: 'warnung', feld: 'temperatur', text: 'Die Temperaturanpassung nach Anhang B gilt für etwa 0 … 80 °C.' });
   if (t < t0) hinweise.push({ stufe: 'warnung', feld: 't', text: 't < t₀: Der Beton ist noch nicht belastet, die Kriechzahl ist 0.' });
   if (ts > t) hinweise.push({ stufe: 'warnung', feld: 'ts', text: 't_s > t: Das Trocknungsschwinden hat noch nicht begonnen.' });
-  if (t0Temp <= 3) hinweise.push({ stufe: 'warnung', feld: 't0', text: 't₀ ≤ 3 d: f_ck(t₀) = f_cm(t₀) − 8 ist nach 3.1.2(5) erst für 3 d < t < 28 d angegeben.' });
+  if (mitTT && Math.abs(temperatur - 20) > 0.5) hinweise.push({ stufe: 'warnung', feld: 'temperatur', text: `Festigkeitsentwicklung mit wirksamem Alter t_T = ${formatDeZahl(tTemp, 1)} d statt t = ${formatDeZahl(t, 1)} d (Reifeansatz nach fib Model Code 2010). EC2 3.1.2(6) rechnet β_cc(t) mit dem tatsächlichen Alter; t_T nach Gl. (B.10) ist dort nur für Kriechen und Schwinden vorgesehen.` });
+  if (t0Fest <= 3) hinweise.push({ stufe: 'warnung', feld: 't0', text: 't₀ ≤ 3 d: f_ck(t₀) = f_cm(t₀) − 8 ist nach 3.1.2(5) erst für 3 d < t < 28 d angegeben.' });
   if (sigmaC > stressLimitMax) hinweise.push({ stufe: 'warnung', feld: 'sigmaC', text: 'σ_c > 0,6·f_ck(t₀): Gl. (3.7) ist nur bis 0,6·f_ck(t₀) zugelassen (Grenze für die Spannung im GZG).' });
   if (sigmaC < 0) hinweise.push({ stufe: 'warnung', feld: 'sigmaC', text: 'σ_c < 0: Als Druckspannung ist ein positiver Betrag einzugeben.' });
 
   const gueltig = !hatFehler(hinweise);
   return {
-    fck, fcm, fcd, s, betaCcT0, fcmT0, fckT0, betaCcT, fcmT, fckT,
+    fck, fcm, fcd, tT: tTemp, t0T: t0Temp, tFestigkeit: tFest, t0Festigkeit: t0Fest, s, betaCcT0, fcmT0, fckT0, betaCcT, fcmT, fckT,
     fctm, fctk005, fctk095, fctd, fctmFl, fctSp, fctmT,
     alphaE, Ecm, Ec0, EcmT0, EcmT, Gcm,
     epsC1, epsCu1, kPlastizitaet, epsC2, epsCu2, exponentN,

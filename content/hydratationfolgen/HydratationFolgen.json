@@ -132,7 +132,7 @@
       },
       {
         "formel": "t_e = \\sum \\Delta t \\cdot 10^{C \\cdot \\frac{T_c - 20}{10}}",
-        "erklaerung": "Äquivalentalter nach de Vree (Temperaturbeiwert meist C = 0.30 bis 0.35 für Normalbeton).",
+        "erklaerung": "Äquivalentalter nach de Vree in der im Rechner verwendeten Form (C = 0,30, entspricht etwa einer Verdopplung je 10 K wie bei Rastrup). Vorläufig, F-Freigabe: Die gewogene Reife nach de Vree (NEN 5970) arbeitet mit einer zementabhängigen Konstanten; deren Gleichung und Werte sind öffentlich nicht eindeutig belegt.",
         "quelle": "de Vree (1976)"
       },
       {

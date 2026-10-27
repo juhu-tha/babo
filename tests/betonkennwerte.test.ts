@@ -243,5 +243,26 @@ for (let i = 1; i < KLASSEN.length; i++) {
   pruefe(c.Ecm > a.Ecm && c.fctm > a.fctm && c.phi0 < a.phi0, `Klassenmonotonie C${KLASSEN[i - 1]} → C${KLASSEN[i]}`);
 }
 
+// Wirksames Alter t_T für die Festigkeitsentwicklung (Entscheidung 27.10. abends, Schalter, Standard an):
+// fib MC 2010 (Vollpracht et al. 2018, Gl. (1) und (6)): β_cc(t_T) mit t_T = t·exp[13,65 − 4000/(273 + T)]
+// Handrechnung C30/37, CEM N (s = 0,25), t = 7 d, T = 10 °C: t_T = 7·exp(13,65 − 4000/283) = 7·0,6161 = 4,313 d
+//   an:  β_cc = exp[0,25·(1 − √(28/4,313))] = exp(0,25·(1 − 2,5480)) = 0,6791 → f_cm(t) = 25,81 N/mm²
+//   aus: β_cc = exp[0,25·(1 − √(28/7))] = exp(−0,25) = 0,7788 → f_cm(t) = 29,59 N/mm² (EC2 3.1.2(6), Alter t)
+const kalt = { ...STANDARD, t: 7, t0: 7, temperatur: 10 };
+const tAn = betonkennwerte(kalt), tAus = betonkennwerte({ ...kalt, festigkeitMitWirksamemAlter: false });
+pruefe(nahe(tAn.tT, 7 * Math.exp(13.65 - 4000 / 283), 1e-12) && nahe(tAn.tT, 4.313, 1e-3) && tAn.tFestigkeit === tAn.tT, `t_T ${tAn.tT}`);
+pruefe(nahe(tAn.fcmT, 25.81, 0.005) && nahe(tAus.fcmT, 38 * Math.exp(-0.25), 1e-12) && nahe(tAus.fcmT, 29.59, 0.005), `f_cm(t) an/aus ${tAn.fcmT}/${tAus.fcmT}`);
+pruefe(tAus.tFestigkeit === 7 && tAus.t0Festigkeit === 7 && tAn.EcmT < tAus.EcmT && tAn.fctmT < tAus.fctmT, 'Schalter wirkt auf E_cm(t) und f_ctm(t)');
+pruefe(tAn.phi0 === tAus.phi0 && tAn.epsCd === tAus.epsCd, 'Kriechen/Schwinden unabhängig vom Schalter (t_0,T nach B.9/B.10 immer)');
+pruefe(tAn.hinweise.some(x => x.feld === 'temperatur' && x.text.includes('fib Model Code 2010')) && !tAus.hinweise.some(x => x.text.includes('fib Model Code 2010')), 'Hinweis nur mit t_T');
+// Standard = an (bisheriges Verhalten, Modulreferenz unverändert); bei 20 °C nahezu gleich (Faktor 0,998), kein Hinweis
+pruefe(betonkennwerte(kalt).fcmT === betonkennwerte({ ...kalt, festigkeitMitWirksamemAlter: true }).fcmT, 'Standard an');
+const b20 = betonkennwerte({ ...STANDARD, t: 7, t0: 7 });
+pruefe(nahe(b20.fcmT, betonkennwerte({ ...STANDARD, t: 7, t0: 7, festigkeitMitWirksamemAlter: false }).fcmT, 0.05) && !b20.hinweise.some(x => x.text.includes('fib Model Code 2010')), '20 °C: an ≈ aus');
+for (let i = 0; i < 1000; i++) {
+  const r = betonkennwerte({ ...STANDARD, t: 0.5 + i * 3, t0: 0.5 + (i % 50), temperatur: -5 + (i % 70), festigkeitMitWirksamemAlter: i % 2 === 0 });
+  if (![r.fcmT, r.fckT, r.EcmT, r.fctmT, r.fcmT0, r.tFestigkeit].every(Number.isFinite)) { pruefe(false, `Fuzz Schalter ${i}`); break; }
+}
+
 if (fehler.length) { for (const x of fehler) console.error(`FAIL: ${x}`); process.exit(1); }
 console.log(`OK: Betonkennwerte (${n} Fuzz-Fälle, identisch zur Modulrechnung)`);

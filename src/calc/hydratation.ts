@@ -5,7 +5,8 @@
  *  1. Reifefunktionen k_T(T): Arrhenius exp[E_a/R·(1/T_r − 1/T)], fib Model Code 2010 (Q = 4000 K, auf 20 °C bezogen),
  *     Saul (T + 10)/30, Rastrup 2^((T − 20)/10) (Rastrup, E.: Heat of hydration in concrete. Magazine of Concrete
  *     Research 6 (1954) 17, S. 79–92; vorher irreführend als „DIN 1045-3 (Rastrup)“ bezeichnet – DIN 1045-3 enthält
- *     keine Reifefunktion), de Vree 10^(0,03·(T − 20)); unter −10 °C k_T = 0.
+ *     keine Reifefunktion), de Vree 10^(0,03·(T − 20)) = C^((T − 20)/10) mit C = 10^0,3 ≈ 2,0 (vorläufig, F-Freigabe,
+ *     siehe DE_VREE_C); unter −10 °C k_T = 0.
  *     Wirksames Alter t_e = Σ k_T(T_Kern)·Δt mit Δt = 0,1 d (explizit, Kerntemperatur des vorigen Schritts).
  *  2. Festigkeitsentwicklung nach DIN EN 1992-1-1, 3.1.2 und 3.1.3: β_cc(t_e) = exp[s·(1 − √(28/t_e))] (Gl. 3.2,
  *     im Modul auf 1,25 begrenzt), f_cm(t) = β_cc·f_cm, f_ctm(t) = β_cc^α·f_ctm (Gl. 3.4, α = 1 für t_e < 28 d, sonst 2/3),
@@ -42,6 +43,18 @@ export const T_REF_K = 293.15;
 export const T_DATUM = -10;
 
 /**
+ * Temperaturkonstante C der Reifefunktion „de Vree“ in der Form k_T = C^((T − 20)/10) (bisher 10^(0,03·(T − 20)), also
+ * C = 10^0,3 ≈ 1,995 – Verhalten unverändert). Quellenlage (Recherche 27.10.2026): Die „gewogene Reife“ (weighted maturity)
+ * geht auf Papadakis/Bresson zurück und wurde von de Vree (1979) angepasst; sie ist in NEN 5970 (Niederlande) genormt und
+ * verwendet eine zementabhängige Konstante C, öffentlich angegeben mit etwa 1,25 … 1,75 (Giatec Scientific, „Concrete
+ * Maturity Calculation Methods“) bzw. 1,15 … 1,65 (Kasal, P.: Metoda zralosti – princip, kalibrace, použití a přesnost,
+ * ČVUT Praha, PhD-Workshop 2020). Die genaue Gleichung der NEN 5970 (integrierte Form in °C·h) war öffentlich nicht
+ * zugänglich. Der hinterlegte Wert C ≈ 2,0 liegt über diesen Bereichen und entspricht praktisch Rastrup (2^((T−20)/10)).
+ * Vorläufig, F-Freigabe: C je Zement nach NEN 5970 bzw. Herstellerangabe prüfen; ggf. C = 1,3 … 1,5 als Lehrwert.
+ */
+export const DE_VREE_C = Math.pow(10, 0.3);
+
+/**
  * Temperaturfaktor k_T einer Reifefunktion bei der Betontemperatur T in °C (bezogen auf 20 °C, k_T(20 °C) = 1).
  * E_a in kJ/mol (nur Arrhenius). Unter −10 °C erhärtet der Beton nicht (k_T = 0).
  */
@@ -51,7 +64,7 @@ export function temperaturfaktorReife(verfahren: Reifeverfahren, temperatur: num
   switch (verfahren) {
     case 'Saul': return (temperatur + 10) / 30.0;
     case 'Rastrup (1954)': return Math.pow(2, (temperatur - 20) / 10.0);
-    case 'de Vree': return Math.pow(10, 0.3 * (temperatur - 20) / 10.0);
+    case 'de Vree': return Math.pow(DE_VREE_C, (temperatur - 20) / 10.0); // vorläufig, F-Freigabe (s. DE_VREE_C)
     case 'fib Model Code 2010': return Math.exp(4000 * (1 / T_REF_K - 1 / tK));
     case 'Arrhenius':
     default: return Math.exp(((aktivierungsEnergie * 1000) / GASKONSTANTE) * (1 / T_REF_K - 1 / tK));

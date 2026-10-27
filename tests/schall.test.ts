@@ -1,5 +1,5 @@
 // Rechenkerne Schallschutz und Fenster (Umsetzungsplan Phase 4, AP 4.3)
-import { rwMassiv, schalldaemmung, lnEq0w, resonanzfrequenzEstrich, deltaLwNassestrich, deltaLFrequenz, korrekturwertK, trittschall, ANFORDERUNGEN_TRITTSCHALL, U_PROG_TRITTSCHALL, type TrittschallEingabe } from '../src/calc/schall';
+import { rwMassiv, schalldaemmung, wandSchalldaemmung, PUTZ_MASSE_BEIDSEITIG, lnEq0w, resonanzfrequenzEstrich, deltaLwNassestrich, deltaLFrequenz, korrekturwertK, trittschall, ANFORDERUNGEN_TRITTSCHALL, U_PROG_TRITTSCHALL, type TrittschallEingabe } from '../src/calc/schall';
 import { uwFenster, PSI_ABSTANDHALTER } from '../src/calc/fenster';
 
 const fehler: string[] = [];
@@ -16,6 +16,27 @@ pruefe(nahe(ks.mStrich, 522, 1e-9) && nahe(ks.Rw, 61.8, 0.05) && ks.hinweise.len
 pruefe(schalldaemmung([{ d: 0.1, density: 400 }]).hinweise.some(x => x.feld === 'm'), 'außerhalb 65–720 → Warnung');
 pruefe(schalldaemmung([{ d: 0.24, density: 800 }, { d: 0.16, density: 20 }]).hinweise.some(x => x.feld === 'aufbau'), 'WDVS → Warnung');
 pruefe(schalldaemmung([{ d: 0, density: 800 }]).hinweise.some(x => x.stufe === 'fehler') && schalldaemmung([]).gueltig === false, 'Fehlerfälle');
+// 1b. Beispielrechnung (Modul Beispielrechnungen, Reiter Schallschutz) – Massekurve DIN 4109-32 statt der früheren
+//     Näherung 32,4·lg m′ − 26,0 („Beiblatt 1“): KS 17,5 cm, ρ = 2000, Putz 40 kg/m² → m′ = 390 kg/m²,
+//     R_w = 30,9·lg 390 − 22,2 = 57,86 dB, R′_w = 55,86 dB (K_F = 2); HLz 24 cm, ρ = 1200 → m′ = 328, R_w = 55,54 dB
+const ksW = wandSchalldaemmung({ dicke: 0.175, rohdichte: 2000, putzMasse: PUTZ_MASSE_BEIDSEITIG, kF: 2 });
+pruefe(nahe(ksW.mStrich, 390, 1e-9) && nahe(ksW.Rw, 57.86, 0.005) && nahe(ksW.RwStrich, 55.86, 0.005) && ksW.hinweise.length === 0, `Beispiel KS ${ksW.Rw}`);
+pruefe(nahe(wandSchalldaemmung({ dicke: 0.24, rohdichte: 1200, putzMasse: 40, kF: 2 }).Rw, 55.54, 0.005), 'Beispiel HLz');
+pruefe(nahe(ksW.Rw, rwMassiv(390), 1e-12), 'Beispielrechnung nutzt dieselbe Massekurve wie der Kern');
+// Grenzen: kein Formelwechsel unter 150 kg/m² mehr (stetig), Warnung außerhalb 65–720 kg/m², Fehler bei d ≤ 0
+const pb = wandSchalldaemmung({ dicke: 0.24, rohdichte: 500, putzMasse: 0, kF: 0 });
+pruefe(nahe(pb.Rw, rwMassiv(120), 1e-12) && pb.hinweise.length === 0, 'Porenbeton 120 kg/m² ohne Ersatzformel');
+pruefe(wandSchalldaemmung({ dicke: 0.1, rohdichte: 400, putzMasse: 0, kF: 0 }).hinweise.some(x => x.feld === 'm' && x.stufe === 'warnung'), 'm′ < 65 → Warnung');
+pruefe(wandSchalldaemmung({ dicke: 0.365, rohdichte: 2000, putzMasse: 40, kF: 0 }).hinweise.some(x => x.feld === 'm'), 'm′ > 720 → Warnung');
+pruefe(wandSchalldaemmung({ dicke: 0, rohdichte: 2000, putzMasse: 40, kF: 0 }).gueltig === false && wandSchalldaemmung({ dicke: 0.2, rohdichte: NaN, putzMasse: 0, kF: 0 }).gueltig === false, 'Fehlerfälle Beispielrechnung');
+{
+  let sd = 3;
+  const zz = (a: number, b: number) => { sd = (sd * 1103515245 + 12345) % 2147483648; return a + (b - a) * (sd / 2147483648); };
+  for (let i = 0; i < 1000; i++) {
+    const w = wandSchalldaemmung({ dicke: zz(0.1, 0.365), rohdichte: zz(400, 2600), putzMasse: zz(0, 40), kF: zz(0, 4) });
+    pruefe([w.mStrich, w.Rw, w.RwStrich].every(Number.isFinite), `Fuzz Beispielrechnung ${i}`);
+  }
+}
 
 // 2. Normfenster 1,23 × 1,48 m, Rahmen 110 mm, U_g = 0,6, U_f = 1,1, Ψ = 0,038 (Hand):
 //    A = 1,8204; A_g = 1,01·1,26 = 1,2726; A_f = 0,5478; l_g = 4,54 m

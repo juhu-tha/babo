@@ -79,7 +79,7 @@ export default function RechnungMauerwerk() {
 
             <div className={feld}>
               <label className="font-bold text-slate-700 block"><MdText text={inhalt.texte.wandhöheHM} /></label>
-              <input aria-label={inhalt.werte.wandhöheM} type="range" min="2.25" max="3.50" step="0.05" value={h}
+              <input aria-label={inhalt.werte.wandhöheM} type="range" min="2.25" max="3.60" step="0.05" value={h}
                 onChange={(e) => setH(Number(e.target.value))} className="w-full accent-shiraz" />
               <div className="font-mono text-xxs font-bold text-shiraz mt-1">{formatDeZahl(h, 2)} m</div>
             </div>
@@ -132,6 +132,7 @@ export default function RechnungMauerwerk() {
 
             <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt2WirksameSchlankheit} />
               <p className="mt-1"><MdText text={inhalt.texte.beiZweiseitigerHalterungAm} /></p>
+              <p className="mt-1"><MdText text={inhalt.texte.erweiterteWandhoehe} /></p>
               <BlockMath math={`h_{ef} = \\rho_2 \\cdot h = ${formatDeTeX(r.rho2, 2)} \\cdot \\color{#A3113E}{${formatDeTeX(h, 2)}} \\, \\text{m} = ${formatDeTeX(r.hEf, 3)} \\, \\text{m}, \\qquad \\frac{h_{ef}}{t} = \\frac{${formatDeTeX(r.hEf * 1000, 0)}}{\\color{#A3113E}{${formatDeTeX(t, 0)}}} = \\color{#A3113E}{${formatDeTeX(r.schlankheit, 2)}}`} />
               <p className="mt-1"><MdText text={inhalt.texte.nachDinEn1996} /><strong className="text-shiraz">{formatDeZahl(r.schlankheit, 2)}</strong>.
                 {r.schlankheit > SCHLANKHEIT_MAX ? (

@@ -1,5 +1,6 @@
 // Rechenkern Mauerwerk EC 6, vereinfachtes Verfahren DIN EN 1996-3/NA (Umsetzungsplan Phase 4, AP 4.7)
 import {
+  H_REGEL_MAX, H_ERWEITERT_INNEN_MAX, T_INNEN_OHNE_HOEHENGRENZE,
   bemesseWandVereinfacht, phi1, phi2, rho2, fdAusFk, fkNA, fkEmpfehlungEN, phiAusmitte, FK_TAFEL_NA,
   type WandEingabe, type WandLage,
 } from '../src/calc/mauerwerk';
@@ -87,6 +88,15 @@ pruefe(g2.hinweise.some(h => h.feld === 'lf' && h.stufe === 'warnung'), 'l_f > 6
 const g3 = bemesseWandVereinfacht({ ...aw, nEd: 600 });
 pruefe(!g3.nachgewiesen && g3.eta > 1 && g3.hinweise.some(h => h.feld === 'nEd'), 'N_Ed > N_Rd → nicht erfüllt');
 pruefe(bemesseWandVereinfacht({ ...aw, h: 3.0 }).hinweise.some(h => h.feld === 'h'), 'h > 2,75 m → Hinweis Tab. NA.2');
+// Erweiterte Bedingungen DIN EN 1996-3/NA:2019-12, Tab. NA.2 (KS-Merkblatt 04/2020): Innenwand t ≥ 115 mm bis 3,60 m,
+// t ≥ 240 mm ohne Höhengrenze; darüber für t < 240 mm außerhalb des Verfahrens; Regelfall h ≤ 2,75 m ohne Hinweis
+const hText = (u: Partial<WandEingabe>) => bemesseWandVereinfacht({ ...aw, lage: 'innen', ...u }).hinweise.filter(x => x.feld === 'h').map(x => x.text).join(' ');
+pruefe(hText({ h: 2.75, t: 115, a: 115 }) === '', 'h = 2,75 m → kein Höhenhinweis');
+pruefe(hText({ h: 3.6, t: 115, a: 115 }).includes('bis h ≤ 3,60 m') && hText({ h: 3.6, t: 115, a: 115 }).includes('C20/25'), 'Innenwand 115 mm, h = 3,60 m → erweiterte Bedingungen');
+pruefe(hText({ h: 3.65, t: 175, a: 175 }).includes('außerhalb des vereinfachten Verfahrens'), 'Innenwand 175 mm, h > 3,60 m → außerhalb');
+pruefe(hText({ h: 4.0, t: 240, a: 240 }).includes('ohne Einschränkung'), 'Innenwand 240 mm → ohne Höhengrenze');
+pruefe(bemesseWandVereinfacht({ ...aw, h: 3.2 }).hinweise.some(x => x.feld === 'h' && x.text.includes('Windzone')), 'Außenwand h > 2,75 m → Hinweis Windzone/Wanddicke');
+pruefe(H_REGEL_MAX === 2.75 && H_ERWEITERT_INNEN_MAX === 3.6 && T_INNEN_OHNE_HOEHENGRENZE === 240, 'Konstanten Wandhöhe');
 for (const u of [{ t: 0 }, { a: 0 }, { a: 200 }, { fk: 0 }, { nEd: -1 }, { h: NaN }, { lf: 0 }] as Partial<WandEingabe>[]) {
   const ru = bemesseWandVereinfacht({ ...aw, ...u });
   pruefe([ru.nRd, ru.phi, ru.eta].every(Number.isFinite) && ru.hinweise.some(x => x.stufe === 'fehler'), `unzulässig ${JSON.stringify(u)}`);

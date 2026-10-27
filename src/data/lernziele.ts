@@ -1242,7 +1242,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
     ziele: [
       { stufe: "Verstehen", text: "den Einfluss des Massegesetzes und der Flankenübertragung auf die Luftschalldämmung massiver Bauteile erläutern." },
       { stufe: "Anwenden", text: "die flächenbezogene Masse einer Massivwand einschließlich Putz berechnen." },
-      { stufe: "Anwenden", text: "das Direktschalldämm-Maß R_w über die Massekurve nach DIN 4109 Beiblatt 1 und das Bauschalldämm-Maß R'_w mit Flankenabzug ermitteln." },
+      { stufe: "Anwenden", text: "das Direktschalldämm-Maß R_w über die Massekurve nach DIN 4109-32 und das Bauschalldämm-Maß R'_w mit Flankenabzug ermitteln." },
       { stufe: "Bewerten", text: "das Ergebnis mit den Anforderungen nach DIN 4109-1 an Trennwände vergleichen und Verbesserungsmaßnahmen begründen." },
     ],
   },

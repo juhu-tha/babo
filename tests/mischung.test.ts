@@ -1,5 +1,5 @@
 // Rechenkern Stoffraumrechnung (Umsetzungsplan Phase 4, AP 4.3)
-import { stoffraum, maxFaFaktor, kombinationsGrenze, K_WERT_DIN1045_2, ZEMENT_DATA, type MischungEingabe } from '../src/calc/mischung';
+import { stoffraum, maxFaFaktor, kombinationsGrenze, K_WERT_DIN1045_2, ZEMENT_DATA, REGELSIEBLINIEN, regelDurchgang, bereichAmSieb, istSieblinie, type MischungEingabe, type Groesstkorn } from '../src/calc/mischung';
 import { BENCHMARK_EXAMPLES } from '../src/data/mischungBeispiele';
 
 const fehler: string[] = [];
@@ -76,6 +76,34 @@ const z = (a: number, c: number) => { seed = (seed * 1103515245 + 12345) % 21474
 for (let i = 0; i < 1000; i++) {
   const ru = stoffraum({ ...basis, zement: z(-50, 900), wasser: z(-20, 400), fa: z(-10, 300), sf: z(-5, 80), luft: z(-1, 15), rhoGestein: z(-0.5, 3.2), rhoZement: z(-0.5, 3.2) });
   if (!ru.fehlerhaft && ![ru.wz, ru.wzEq, ru.masseGestein, ru.zugabewasser, ru.rohdichte].every(Number.isFinite)) { pruefe(false, `Fuzz ${i}`); break; }
+}
+
+// Regelsieblinien A/B/C 8, 16, 32 (DIN 1045-2 Anhang L, Lehrbuchwerte – vorläufig, F-Freigabe; Entscheidung 27.10. abends)
+// 1. Werte bei 4/8 mm wie entschieden: A16 = 36/60, B16 = 56/76, C16 = 74/88 %
+pruefe([regelDurchgang(16, 'A', 4), regelDurchgang(16, 'A', 8), regelDurchgang(16, 'B', 4), regelDurchgang(16, 'B', 8), regelDurchgang(16, 'C', 4), regelDurchgang(16, 'C', 8)].join('/') === '36/60/56/76/74/88', 'Regelsieblinien 16 bei 4/8 mm');
+// 2. Gegenprobe über die Körnungsziffer k = Σ Rückstände/100 auf dem Siebsatz 0,25 … 63 mm (bekannte Lehrbuchwerte:
+//    A8 3,63, B8 2,90, C8 2,27; A16 4,60, B16 3,66, C16 2,75; A32 5,48, B32 4,20, C32 3,30; B16 auch in content/gesteine/Gesteine.json)
+const SIEBSATZ = [0.25, 0.5, 1, 2, 4, 8, 16, 32, 63];
+const kZiffer = (dmax: Groesstkorn, l: 'A' | 'B' | 'C') => SIEBSATZ.reduce((a, d) => a + (100 - (d >= dmax ? 100 : regelDurchgang(dmax, l, d) ?? NaN)), 0) / 100;
+const K_SOLL: Record<string, number> = { A8: 3.63, B8: 2.90, C8: 2.27, A16: 4.60, B16: 3.66, C16: 2.75, A32: 5.48, B32: 4.20, C32: 3.30 };
+for (const dm of [8, 16, 32] as Groesstkorn[]) for (const l of ['A', 'B', 'C'] as const) pruefe(nahe(kZiffer(dm, l), K_SOLL[`${l}${dm}`], 1e-9), `k-Ziffer ${l}${dm} = ${kZiffer(dm, l)}`);
+// 3. Struktur: A < B < C an jedem Sieb unter D_max, monoton steigend, 100 % am Größtkorn
+for (const dm of [8, 16, 32] as Groesstkorn[]) {
+  const r = REGELSIEBLINIEN[dm];
+  pruefe(r.siebe[r.siebe.length - 1] === dm && [r.A, r.B, r.C].every(x => x.length === r.siebe.length && x[x.length - 1] === 100 && x.every((v, i) => i === 0 || v > x[i - 1])), `Regelsieblinien ${dm}: Länge/Monotonie`);
+  pruefe(r.siebe.slice(0, -1).every((_, i) => r.A[i] < r.B[i] && r.B[i] < r.C[i]), `Regelsieblinien ${dm}: A < B < C`);
+}
+// 4. Einordnung: Beispiel der Quizfrage qn_mischungsberechnung_4 (45/65 % bei 4/8 mm, D_max 16) → A–B; Grenzfälle
+const q4 = istSieblinie(16, { f04: 45, f48: 20, f816: 35, f1632: 0 });
+pruefe(q4.bereich === 'A–B' && q4.punkte.map(p => p.durchgang).join('/') === '45/65/100', `Einordnung Quizbeispiel ${q4.bereich}`);
+pruefe(bereichAmSieb(16, 4, 35) === 'unter A' && bereichAmSieb(16, 4, 36) === 'A–B' && bereichAmSieb(16, 4, 56) === 'A–B' && bereichAmSieb(16, 4, 74) === 'B–C' && bereichAmSieb(16, 4, 75) === 'über C', 'Grenzen der Bereiche');
+pruefe(bereichAmSieb(16, 2, 30) === undefined || bereichAmSieb(16, 3, 30) === undefined, 'Sieb außerhalb der Reihe → undefined');
+pruefe(istSieblinie(32, { f04: 20, f48: 20, f816: 30, f1632: 30 }).bereich === undefined, 'Ist-Linie kreuzt A32 → uneinheitlich');
+pruefe(istSieblinie(8, { f04: 70, f48: 30, f816: 0, f1632: 0 }).bereich === 'A–B', 'D_max 8: 70 % bei 4 mm → A–B');
+for (let i = 0; i < 1000; i++) {
+  const dm = ([8, 16, 32] as Groesstkorn[])[i % 3];
+  const ru = istSieblinie(dm, { f04: z(0, 100), f48: z(0, 50), f816: z(0, 50), f1632: z(0, 50) });
+  if (!ru.punkte.every(p => Number.isFinite(p.durchgang))) { pruefe(false, `Fuzz Sieblinie ${i}`); break; }
 }
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }

@@ -56,7 +56,7 @@
     "bauteildickeMassigkeit": "Bauteildicke (Massigkeit)",
     "erforderlicheAusschalfestigkeit": "Erforderliche Ausschalfestigkeit",
     "prozentsatzDerCharakteristischenDruckfes": "Prozentsatz der charakteristischen Druckfestigkeit, der zum Ausschalen erreicht sein muss.",
-    "berechnungsmodellFürDasÄquivalentalter": "Berechnungsmodell für das Äquivalentalter.",
+    "berechnungsmodellFürDasÄquivalentalter": "Berechnungsmodell für das Äquivalentalter. „de Vree“ rechnet hier mit k_T = 10^(0,03·(T − 20)), also etwa einer Verdopplung je 10 K wie Rastrup; die Herkunft dieser Form ist nicht eindeutig belegt (vorläufig, F-Freigabe – die gewogene Reife nach NEN 5970 verwendet eine zementabhängige Konstante).",
     "fibModelCode2010": "fib Model Code 2010",
     "din10453Rastrup": "Rastrup (1954)",
     "aktivierungsenergieEA": "Aktivierungsenergie (E_a)",

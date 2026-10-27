@@ -11,10 +11,12 @@ import { MdText } from '@/src/components/inhalt/MdText';
 export interface RechnerTabProps {
   aggregateType: 'quarzit' | 'kalkstein' | 'sandstein' | 'basalt';
   ambientTempT: number;
+  festigkeitMitTT: boolean;
+  setFestigkeitMitTT: React.Dispatch<React.SetStateAction<boolean>>;
   areaAc: number;
   axialStressSigmaC: number;
   baseConcrete: ConcreteClassData;
-  calcResults: { fck: number; fcm: number; fcd: number; s: number; betaCcT0: number; fcmT0: number; fckT0: number; betaCcT: number; fcmT: number; fckT: number; fctm: number; fctk005: number; fctk095: number; fctd: number; fctmFl: number; fctSp: number; fctmT: number; alphaE: number; Ecm: number; Ec0: number; EcmT0: number; EcmT: number; Gcm: number; epsC1: number; epsCu1: number; kPlastizitaet: number; epsC2: number; epsCu2: number; exponentN: number; h0: number; kh: number; epsCd0: number; epsCd: number; epsCa: number; epsCs: number; deltaLShrinkMm: number; phi0: number; phiLinear: number; phiFinal: number; isNonlinearCreep: boolean; stressLimitLin: number; stressLimitMax: number; kSigma: number; epsCc: number; deltaLCreepMm: number; EcEff: number; EcEffZwang: number; Ecm2025: number; etaFc2025: number; };
+  calcResults: { fck: number; fcm: number; fcd: number; tT: number; s: number; betaCcT0: number; fcmT0: number; fckT0: number; betaCcT: number; fcmT: number; fckT: number; fctm: number; fctk005: number; fctk095: number; fctd: number; fctmFl: number; fctSp: number; fctmT: number; alphaE: number; Ecm: number; Ec0: number; EcmT0: number; EcmT: number; Gcm: number; epsC1: number; epsCu1: number; kPlastizitaet: number; epsC2: number; epsCu2: number; exponentN: number; h0: number; kh: number; epsCd0: number; epsCd: number; epsCa: number; epsCs: number; deltaLShrinkMm: number; phi0: number; phiLinear: number; phiFinal: number; isNonlinearCreep: boolean; stressLimitLin: number; stressLimitMax: number; kSigma: number; epsCc: number; deltaLCreepMm: number; EcEff: number; EcEffZwang: number; Ecm2025: number; etaFc2025: number; };
   cementClass: 'S' | 'N' | 'R';
   curingDaysTs: number;
   elementHeightH: number;
@@ -38,7 +40,7 @@ export interface RechnerTabProps {
   targetAgeT: number;
 }
 
-export default function RechnerTab({ aggregateType, ambientTempT, areaAc, axialStressSigmaC, baseConcrete, calcResults, cementClass, curingDaysTs, elementHeightH, elementLengthL, loadingAgeT0, perimeterU, relativeHumidity, selectedClassIdx, setAggregateType, setAmbientTempT, setAreaAc, setAxialStressSigmaC, setCementClass, setCuringDaysTs, setElementHeightH, setElementLengthL, setLoadingAgeT0, setPerimeterU, setRelativeHumidity, setSelectedClassIdx, targetAgeT }: RechnerTabProps) {
+export default function RechnerTab({ aggregateType, ambientTempT, festigkeitMitTT, setFestigkeitMitTT, areaAc, axialStressSigmaC, baseConcrete, calcResults, cementClass, curingDaysTs, elementHeightH, elementLengthL, loadingAgeT0, perimeterU, relativeHumidity, selectedClassIdx, setAggregateType, setAmbientTempT, setAreaAc, setAxialStressSigmaC, setCementClass, setCuringDaysTs, setElementHeightH, setElementLengthL, setLoadingAgeT0, setPerimeterU, setRelativeHumidity, setSelectedClassIdx, targetAgeT }: RechnerTabProps) {
   return (
     <div className="flex flex-col gap-6 animate-in fade-in duration-200">
       
@@ -243,6 +245,12 @@ export default function RechnerTab({ aggregateType, ambientTempT, areaAc, axialS
               <span className="text-slate-500">°C</span>
             </div>
           </div>
+
+          <label className="flex items-start gap-2 bg-off-white p-2.5 rounded-xl border border-home-grau/25 text-xs cursor-pointer">
+            <input type="checkbox" className="mt-0.5 accent-shiraz" checked={festigkeitMitTT} onChange={(e) => setFestigkeitMitTT(e.target.checked)} />
+            <span className="text-slate-700"><MdText text={inhalt.texte.wirksamesAlterFestigkeit} />{' '}
+              <span className="font-mono">t_T = {formatDeZahl(calcResults.tT, 1)} d</span></span>
+          </label>
 
           <div className="flex items-center justify-between bg-off-white p-2.5 rounded-xl border border-home-grau/25 text-xs">
             <span className="text-slate-700 font-medium"><MdText text={inhalt.texte.bauteillängeLLängenverkürzung} /></span>

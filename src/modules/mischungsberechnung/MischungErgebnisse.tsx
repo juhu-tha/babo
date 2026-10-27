@@ -6,6 +6,7 @@ import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { zementData } from './daten';
+import type { SieblinienBereich } from '@/src/calc/mischung';
 import { Pie, Line } from 'react-chartjs-2';
 import React from 'react';
 import { NachErstemBild } from '@/src/components/ui/NachErstemBild';
@@ -24,7 +25,8 @@ interface MischungErgebnisseProps {
   feuchte816: number;
   feuchteBiochar: number;
   hues: number;
-  lineChartData: { labels: number[]; datasets: ({ label: string; data: number[]; borderColor: string; borderWidth: number; fill: boolean; tension: number; borderDash?: undefined; } | { label: string; data: number[]; borderColor: string; borderDash: number[]; fill: boolean; tension: number; borderWidth?: undefined; })[]; };
+  lineChartData: { labels: number[]; datasets: ({ label: string; data: (number | null)[]; borderColor: string; borderWidth: number; fill: boolean; tension: number; borderDash?: undefined; } | { label: string; data: number[]; borderColor: string; borderDash: number[]; fill: boolean; tension: number; borderWidth?: undefined; })[]; };
+  sieblinienBereich?: SieblinienBereich;
   luft: number;
   pieChartData: { labels: string[]; datasets: { data: number[]; backgroundColor: string[]; }[]; };
   ppFaser: number;
@@ -39,7 +41,7 @@ interface MischungErgebnisseProps {
   zusatzmittel: number;
 }
 
-export default function MischungErgebnisse({ betonMengeL, biochar, dmax, expClasses, fa, feuchte04, feuchte1632, feuchte48, feuchte816, feuchteBiochar, hues, lineChartData, luft, pieChartData, ppFaser, results, rhoGestein, setBetonMengeL, sf, stahlfaser, zement, zementArt, zementFestigkeit, zusatzmittel }: MischungErgebnisseProps) {
+export default function MischungErgebnisse({ betonMengeL, biochar, dmax, expClasses, fa, feuchte04, feuchte1632, feuchte48, feuchte816, feuchteBiochar, hues, lineChartData, sieblinienBereich, luft, pieChartData, ppFaser, results, rhoGestein, setBetonMengeL, sf, stahlfaser, zement, zementArt, zementFestigkeit, zusatzmittel }: MischungErgebnisseProps) {
   return (
     <div className="flex flex-col gap-6">
       <div className="bg-shiraz text-white p-6 rounded-xl shadow-md">
@@ -321,12 +323,11 @@ export default function MischungErgebnisse({ betonMengeL, biochar, dmax, expClas
                 x: { 
                   type: 'logarithmic', 
                   title: { display: true, text: inhalt.werte.siebweiteInMm },
-                  min: 0.125,
+                  min: 0.25,
                   max: dmax,
                   ticks: {
                     callback: function(value) {
-                      if (value === 0.125) return '0';
-                      return value;
+                      return formatDeZahl(Number(value), Number(value) < 1 ? 2 : 0);
                     }
                   }
                 }
@@ -334,6 +335,11 @@ export default function MischungErgebnisse({ betonMengeL, biochar, dmax, expClas
             }} 
           />
         </div>
+        <p className="mt-3 text-xs text-text-main/80">
+          <MdText text={inhalt.texte.sieblinienEinordnung} />{' '}
+          <strong>{sieblinienBereich ? `${sieblinienBereich}${sieblinienBereich === 'A–B' ? ' (günstig)' : ''}` : inhalt.werte.sieblinienBereichGemischt}</strong>
+        </p>
+        <p className="mt-1 text-xxs text-text-main/70"><MdText text={inhalt.texte.sieblinienQuelle} /></p>
       </div>
       </NachErstemBild>
 
