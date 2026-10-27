@@ -21,7 +21,7 @@ import {
 } from 'lucide-react';
 import type { BemessungSubTab } from '../Stahlbetonbemessung';
 
-import { betonAuswahl } from '@/src/data/kennwerte';
+import { betonAuswahl, fcdBeton, FCD_MODUL } from '@/src/data/kennwerte';
 import inhalt from '@/content/stahlbeton/StahlbetonNullBisHundert.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 interface Props {
@@ -53,7 +53,7 @@ export default function StahlbetonNullBisHundert({ onNavigateTab }: Props) {
   const CONCRETE_DATA: Record<string, { fck: number; fctm: number; Ecm: number }> = betonAuswahl(['C20/25', 'C25/30', 'C30/37', 'C35/45', 'C40/50', 'C50/60']);
 
   const currentConcrete = CONCRETE_DATA[selectedConcrete] || CONCRETE_DATA['C30/37'];
-  const fcd = (0.85 * currentConcrete.fck) / 1.5; // N/mm2
+  const fcd = fcdBeton(currentConcrete.fck, FCD_MODUL.stahlbetonNullBisHundert); // N/mm2, zentral in src/data/kennwerte.ts
   const fyd = 500 / 1.15; // 434.78 N/mm2
 
   // Calculation for Demonstrator 2: mu-Verfahren

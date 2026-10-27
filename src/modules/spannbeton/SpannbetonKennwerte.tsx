@@ -15,7 +15,7 @@ import {
   CementClass
 } from '@/src/calc/spannbeton';
 import { ShieldAlert, CheckCircle2, BookOpen, Layers, Scale, Compass } from 'lucide-react';
-import { dehnungsKennwerte } from '@/src/data/kennwerte';
+import { dehnungsKennwerte, fcdBeton, FCD_MODUL } from '@/src/data/kennwerte';
 import { KENNWERT_REITER } from './kennwerte/daten';
 import type { KennwertBereich, KennwertReiter } from './kennwerte/daten';
 import KennwerteBeton from './kennwerte/KennwerteBeton';
@@ -173,8 +173,8 @@ export default function SpannbetonKennwerte() {
     const fctm_fl_t = Number(fctmFl(fctm_t, matBeamHeight).toFixed(2));
 
     // Bemessungswerte fcd
-    const fcd_28 = Number((0.85 * activeMatData.fck / 1.5).toFixed(1));
-    const fcd_t = Number((0.85 * fck_t / 1.5).toFixed(1));
+    const fcd_28 = Number(fcdBeton(activeMatData.fck, FCD_MODUL.spannbetonKennwerte).toFixed(1));
+    const fcd_t = Number(fcdBeton(fck_t, FCD_MODUL.spannbetonKennwerte).toFixed(1));
 
     // Reifegrad bezogen auf 28-Tage-fck:
     const maturity_pct = Number(((fck_t / activeMatData.fck) * 100).toFixed(1));

@@ -11,6 +11,7 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { InlineMath } from 'react-katex';
 import inhalt from '@/content/bauwerksuntersuchung/InterpretationNavigator.json';
 import { befundSynthese } from '@/src/calc/bauwerksuntersuchung';
+import { fcdBeton, FCD_MODUL } from '@/src/data/kennwerte';
 import { MdText } from '@/src/components/inhalt/MdText';
 
 interface DiagnosticScenario {
@@ -467,7 +468,7 @@ export default function InterpretationNavigator() {
                 <div className="p-2.5 bg-white rounded-xl border border-home-grau/20 space-y-1">
                   <strong>In-situ-Bemessungsdruckfestigkeit:</strong>
                   <div className="text-[11px] text-slate-650">
-                    <InlineMath math="f_{cd,is} = \frac{0{,}85 \cdot f_{ck,is}}{\gamma_c} =" /> <strong>{formatDeZahl((0.85 * fckIsVal) / 1.5, 1)} N/mm²</strong>
+                    <InlineMath math="f_{cd,is} = \frac{0{,}85 \cdot f_{ck,is}}{\gamma_c} =" /> <strong>{formatDeZahl(fcdBeton(fckIsVal, FCD_MODUL.interpretationNavigator), 1)} N/mm²</strong>
                     <p className="mt-1">
                       {evaluation.isStrengthDeficient ? (
                         <span className="text-rose-700 font-medium"><MdText text={inhalt.texte.rechnerischesFestigkeitsdefizitNachweisD} /></span>
