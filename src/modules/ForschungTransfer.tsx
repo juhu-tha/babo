@@ -1,25 +1,22 @@
 import React from 'react';
-import { Landmark, FlaskConical, Building2, Microscope, GraduationCap, Mail, ArrowRight, ExternalLink } from 'lucide-react';
+import { Landmark, FlaskConical, Building2, Microscope, GraduationCap, Mail, ArrowRight, ExternalLink, Quote } from 'lucide-react';
 import { useTabContext } from '../contexts/TabContext';
 import { MODUL_BY_ID, type ModulId } from '../registry/modules';
 import inhalt from '@/content/forschungtransfer/ForschungTransfer.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+// Nur die Versionsnummer aus package.json (wie in src/App.tsx, zur Build-Zeit eingesetzt)
+import { version as PAKET_VERSION } from '../../package.json';
 
 // Seite „Forschung und Transfer“ (Umsetzungsplan Phase 6, AP 6.10 Sichtbarkeit).
 // Info-Seite ohne Fachinhalt (kein Prüfvermerk, siehe istFachmodul in src/data/pruefvermerke.ts).
 // Inhaltsregel: nur Angaben, die auf öffentlichen Seiten der THA belegt sind, oder allgemeine
 // Beschreibungen. Keine Projektpartner, Unternehmen, Fördermittelgeber, Budgets, unveröffentlichten
-// Ergebnisse oder Details zu Zulassungsverfahren. Nicht belegte Angaben stehen als Platzhalter
-// [Text durch Prof. Huber] und werden von Prof. Huber ersetzt oder gestrichen.
+// Ergebnisse oder Details zu Zulassungsverfahren. Texte zu Lehrgebiet, Labor, TTZ-Bezug und
+// Abschlussarbeiten nach Vorgabe Prof. Huber (27.10.2026).
 
-const STAND = '25.10.2026';
+const STAND = '27.10.2026';
 const FAKULTAET_URL = 'https://www.tha.de/hochschule/fakultaet/ab/';
 const TTZ_URL = 'https://www.tha.de/forschung/technologietransfer/technologietransferzentren/ttz-aichach/';
-
-/** Sichtbar markierter Platzhalter für noch zu liefernde Texte */
-const Platzhalter = () => (
-  <span className="italic border-b border-dashed border-current"><MdText text={inhalt.texte.textDurchProfHuber} /></span>
-);
 
 const Abschnitt = ({ id, icon: Icon, titel, children }: { id: string; icon: React.ComponentType<{ size?: number; className?: string; 'aria-hidden'?: boolean }>; titel: string; children: React.ReactNode }) => (
   <section aria-labelledby={id} className="space-y-3">
@@ -44,6 +41,9 @@ const THEMEN: readonly Thema[] = [
   { titel: inhalt.werte.pfasInBaustoffen, text: inhalt.werte.perUndPolyfluorierteAlkylsubstanzen, module: ['pfas_baustoffe'] },
   { titel: inhalt.werte.kreislaufwirtschaftUndÖkobilanzierung, text: inhalt.werte.stoffkreisläufeImBauwesenRessourceneffiz, module: ['kreislauf_dpp', 'ressourceneffizienz', 'oekobilanz_lca', 'lca_rechner'] },
 ];
+
+// Versuchs-Handouts der Gruppe „Labor & Auswertung“ (src/registry/modules.ts)
+const HANDOUTS: readonly ModulId[] = ['labor_frischbeton', 'labor_druckfestigkeit', 'labor_moertelprismen', 'labor_potentialmessung', 'labor_auslagerung'];
 
 const titelVon = (id: ModulId) => MODUL_BY_ID.get(id)?.baum?.titel ?? MODUL_BY_ID.get(id)?.label ?? id;
 
@@ -82,13 +82,18 @@ export default function ForschungTransfer() {
 
           <Abschnitt id="ft-lehrgebiet" icon={FlaskConical} titel="Lehrgebiet">
             <p><MdText text={inhalt.texte.werkstoffeUndStoffkreisläufeIm} /></p>
-            <p><Platzhalter /></p>
+            <p><MdText text={inhalt.texte.schwerpunkteDesLehrgebiets} /></p>
             <p className="font-semibold text-text-main flex items-center gap-2">
               <Microscope size={16} className="text-shiraz shrink-0" aria-hidden /> Baustofflabor
             </p>
-            <p><MdText text={inhalt.texte.imBaustofflaborWerdenBaustoffe} /><Platzhalter />
-            </p>
-            <p><MdText text={inhalt.texte.hinweiseZumSicherenArbeiten} /><ModulLink id="labor_sicherheit" /></p>
+            <p><MdText text={inhalt.texte.imBaustofflaborWerdenBaustoffe} /><MdText text={inhalt.texte.laborSchwerpunkte} /></p>
+            <div>
+              <p><MdText text={inhalt.texte.versuchsHandoutsImBaustoffboard} /></p>
+              <ul className="mt-1 flex flex-col gap-1" aria-label={inhalt.texte.versuchsHandoutsImBaustoffboard}>
+                {HANDOUTS.map(id => <li key={id}><ModulLink id={id} /></li>)}
+              </ul>
+            </div>
+            <p><MdText text={inhalt.texte.hinweiseZumSicherenArbeiten} /><MdText text={inhalt.texte.laborordnungUndSicherheitsunterweisung} /><ModulLink id="labor_sicherheit" /></p>
           </Abschnitt>
 
           <Abschnitt id="ft-ttz" icon={Building2} titel={inhalt.werte.technologietransferzentrumTtzAichach}>
@@ -97,7 +102,7 @@ export default function ForschungTransfer() {
               <li><MdText text={inhalt.texte.forschungUndTransferAnwendungsnahe} /></li>
               <li><MdText text={inhalt.texte.weiterbildungAusUndWeiterbildungsangebot} /></li>
             </ul>
-            <p><MdText text={inhalt.texte.bezugDesLehrgebietsZum} /><Platzhalter /></p>
+            <p><MdText text={inhalt.texte.bezugDesLehrgebietsZum} /><MdText text={inhalt.texte.profHuberIstMitglied} /></p>
             <p><Extern href={TTZ_URL}>{inhalt.werte.ttzAichachAufTha}</Extern></p>
           </Abschnitt>
 
@@ -117,15 +122,23 @@ export default function ForschungTransfer() {
           </Abschnitt>
 
           <Abschnitt id="ft-lehre" icon={GraduationCap} titel="Lehre">
-            <p><MdText text={inhalt.texte.dieThemenFließenIn} /><Platzhalter />
-            </p>
-            <p><MdText text={inhalt.texte.abschlussarbeitenUndSemesterprojekte} /><ModulLink id="thesen_projekte" /></p>
+            <p><MdText text={inhalt.texte.dieThemenFließenIn} /></p>
+            <p><MdText text={inhalt.texte.abschlussarbeitenUndSemesterprojekte} /><MdText text={inhalt.texte.abschlussarbeitenLaufendMöglich} /><ModulLink id="thesen_projekte" /></p>
           </Abschnitt>
 
           <Abschnitt id="ft-kontakt" icon={Mail} titel="Kontakt">
             <p><MdText text={inhalt.texte.anfragenZuForschungTransfer} /></p>
+            <p><MdText text={inhalt.texte.veröffentlichungenAufThaSeiten} /></p>
             <p><Extern href={FAKULTAET_URL}>{inhalt.werte.fakultätFürArchitekturUnd}</Extern></p>
             <p><MdText text={inhalt.texte.rechtlicheAngabenZumBaustoffboard} /><ModulLink id="impressum" /></p>
+          </Abschnitt>
+
+          <Abschnitt id="ft-zitieren" icon={Quote} titel="BaustoffBoard zitieren">
+            <p><MdText text={inhalt.texte.zitierenEinleitung} /></p>
+            <p className="p-4 bg-off-white rounded-xl border border-home-grau/20 text-text-main">
+              <MdText text={inhalt.texte.zitatVorVersion} />{PAKET_VERSION}<MdText text={inhalt.texte.zitatNachVersion} />
+            </p>
+            <p className="text-xs"><MdText text={inhalt.texte.zitierenHinweisDatum} /></p>
           </Abschnitt>
         </div>
       </div>

@@ -21,7 +21,7 @@ export default function ModulKopf({ activeTab, setActiveTab }: { activeTab: TabI
   const vermerk = pruefvermerkFuer(activeTab);
   return (
     <>
-      {/* Redaktionsmodell: „fachlich geprüft am … von …“ bzw. „Prüfung ausstehend“ (Phase 6, AP 6.6) */}
+      {/* Redaktionsmodell: „fachlich geprüft am … von …“ (Phase 6, AP 6.6); Status „offen“ öffentlich ausgeblendet (27.10.2026) */}
       {vermerk && <PruefVermerk vermerk={vermerk} />}
       {/* Lernziele je Fachmodul (Phase 3, AP 3.6) */}
       {lernziele && <ModulLernziele moduleId={activeTab} daten={lernziele} oeffneModul={(id) => setActiveTab(id as TabId)} />}

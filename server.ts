@@ -6,6 +6,7 @@ import path from "path";
 import fs from "fs";
 import { pruefeAntwort, semesterSchluessel } from "./src/data/kurzfragebogen.ts";
 import { ladeSpeicher, nimmAuf, speichereSpeicher, statistik } from "./server/kurzfragebogen.ts";
+import { KI_FUNKTION_AKTIV, KI_HINWEIS_AUS } from "./src/data/kiSchalter.ts";
 
 // ---------------------------------------------------------------------------
 // Konfiguration über Umgebungsvariablen (in AI Studio: Settings → Secrets)
@@ -301,6 +302,10 @@ async function startServer() {
     rateLimit({ name: "gemini", windowMs: 60 * 60 * 1000, max: 10 }),
     async (req, res) => {
       try {
+        // KI-Funktion zentral abgeschaltet (src/data/kiSchalter.ts, Entscheidung 27.10.2026): keine Übermittlung an Google
+        if (!KI_FUNKTION_AKTIV) {
+          return res.status(503).json({ error: KI_HINWEIS_AUS });
+        }
         if (!gleicheHerkunft(req)) {
           return res.status(403).json({ error: "Anfragen sind nur aus dem BaustoffBoard möglich." });
         }

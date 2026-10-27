@@ -12,6 +12,8 @@ export interface ModulTab<T extends string> {
   id: T;
   label: string;
   icon?: React.ComponentType<{ size?: number; className?: string; 'aria-hidden'?: boolean }>;
+  /** optionaler Kurzhinweis neben der Beschriftung (z. B. Anzahl oder Status), Teil des zugänglichen Namens */
+  zusatz?: string;
 }
 
 interface Props<T extends string> {
@@ -23,6 +25,8 @@ interface Props<T extends string> {
   variante?: 'pill' | 'kachel';
   children?: React.ReactNode;
   className?: string;
+  /** zusätzliche Klassen für den Inhaltsbereich (z. B. Abstände zwischen mehreren Blöcken) */
+  panelKlasse?: string;
 }
 
 /** Zielreiter für eine Taste (←/→/↑/↓ zyklisch, Pos1/Ende); −1 = Taste nicht belegt. Exportiert für Tests. */
@@ -35,7 +39,7 @@ export function reiterZiel(taste: string, index: number, anzahl: number): number
   return -1;
 }
 
-export function ModuleTabs<T extends string>({ label, tabs, aktiv, onWechsel, variante = 'pill', children, className = '' }: Props<T>) {
+export function ModuleTabs<T extends string>({ label, tabs, aktiv, onWechsel, variante = 'pill', children, className = '', panelKlasse = '' }: Props<T>) {
   const basis = useId();
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
   const index = Math.max(0, tabs.findIndex(t => t.id === aktiv));
@@ -76,12 +80,15 @@ export function ModuleTabs<T extends string>({ label, tabs, aktiv, onWechsel, va
             >
               {Icon && <Icon size={variante === 'kachel' ? 18 : 16} aria-hidden={true} />}
               <span className={variante === 'kachel' ? 'text-xs font-bold leading-tight' : undefined}>{t.label}</span>
+              {t.zusatz && (
+                <span className={`text-[10px] px-2 py-0.5 rounded-full font-mono font-bold ${an && variante === 'pill' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'}`}>{t.zusatz}</span>
+              )}
             </button>
           );
         })}
       </div>
       {children !== undefined && (
-        <div role="tabpanel" id={`${basis}-panel`} aria-labelledby={`${basis}-tab-${aktiv}`} tabIndex={0} className="focus:outline-none">
+        <div role="tabpanel" id={`${basis}-panel`} aria-labelledby={`${basis}-tab-${aktiv}`} tabIndex={0} className={`focus:outline-none ${panelKlasse}`.trim()}>
           {children}
         </div>
       )}

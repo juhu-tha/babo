@@ -64,6 +64,9 @@ export default function Datenschutz() {
               <li>übertragene Datenmenge</li>
               <li>Browser und Betriebssystem (User-Agent)</li>
             </ul>
+            {/* OFFEN (Gutachten 27.10.2026, mit dem DSB abzustimmen – hier bewusst NICHT ergänzt):
+                konkrete Speicherdauer der Cloud-Run-Protokolle und Google als Auftragsverarbeiter
+                (Cloud Data Processing Addendum). Formulierungsvorschlag: docs/entwuerfe/datenschutz-ergaenzungen.md */}
             <p className="text-xs text-text-main/70">
               Zweck ist der sichere und stabile Betrieb, etwa die Abwehr von Angriffen. Rechtsgrundlage ist
               Art. 6 Abs. 1 lit. e DSGVO i. V. m. Art. 4 BayDSG. Die Protokolle werden nach den Vorgaben der
@@ -76,23 +79,16 @@ export default function Datenschutz() {
             </p>
           </Abschnitt>
 
-          <Abschnitt icon={Sparkles} titel="3. KI-Prompt-Generator (Google Gemini)">
+          {/* KI-Funktion abgeschaltet (src/data/kiSchalter.ts, Entscheidung 27.10.2026). Text für eine spätere
+              Reaktivierung (mit DSB abzustimmen): docs/entwuerfe/datenschutz-ergaenzungen.md, Abschnitt 4. */}
+          <Abschnitt icon={Sparkles} titel="3. KI-Prompt-Generator">
             <p>
-              Im Modul „KI im Bauwesen“ können Sie einen Prompt an das Sprachmodell Google Gemini senden. Dies
-              geschieht nur, wenn Sie den Hinweis zur Datenübermittlung bestätigen und die Analyse ausdrücklich
-              starten. Übermittelt wird ausschließlich der Text des Prompts. Er geht über unseren Server an
-              Google (Google Ireland Limited bzw. Google LLC, USA); Ihre IP-Adresse wird dabei nicht weitergegeben.
-            </p>
-            <p>
-              Sofern ein kostenloser Tarif der Gemini-API genutzt wird, kann Google Eingaben und Ausgaben nach seinen
-              Nutzungsbedingungen zur Verbesserung seiner Dienste verwenden und durch Menschen prüfen lassen.
-              Geben Sie deshalb keine personenbezogenen, vertraulichen oder projektbezogenen Daten ein.
+              Die KI-Funktion (Anbindung an das Sprachmodell Google Gemini) ist derzeit abgeschaltet. Es werden
+              keine Daten an Google Gemini übermittelt; unser Server nimmt keine KI-Anfragen an.
             </p>
             <p className="text-xs text-text-main/70">
-              Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die Sie mit dem Häkchen erteilen
-              und jederzeit durch Nichtnutzung beenden können. Für Drittlandübermittlungen gilt der
-              Angemessenheitsbeschluss zum EU-US Data Privacy Framework. Wir speichern die Prompts nicht.
-              Die Antworten sind als KI-generiert gekennzeichnet (Art. 50 KI-Verordnung).
+              Der Prompt-Generator im Modul „KI im Bauwesen“ arbeitet vollständig in Ihrem Browser. Wenn Sie einen
+              kopierten Prompt in einem KI-Dienst Ihrer Wahl verwenden, gelten dafür dessen Datenschutzbestimmungen.
             </p>
           </Abschnitt>
 
