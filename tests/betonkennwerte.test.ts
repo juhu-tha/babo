@@ -1,5 +1,6 @@
 // Rechenkern Betonkennwerte (Z3): DIN EN 1992-1-1 mit NA – Festigkeit, Zugfestigkeit, E-Modul, Schwinden, Kriechen
 import { betonkennwerte, beiwertKh, temperaturFaktor, type BetonkennwerteEingabe, type Zementklasse, type Gesteinskoernung } from '../src/calc/betonkennwerte';
+import { dehnungsKennwerte } from '../src/data/kennwerte';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -10,6 +11,8 @@ console.log('--- Test: Betonkennwerte ---');
 /**
  * Referenz: wörtliche Kopie der Rechnung aus src/modules/Betonkennwerte.tsx (useMemo calcResults, Stand origin/main 26.10.2026).
  * Sie belegt, dass der Kern das bisherige Verhalten exakt übernimmt; bei der Verdrahtung (Z11) entfällt die Kopie im Modul.
+ * Runde 5 (Z55, Entscheidung Prof. Huber „normgemäß korrigieren“): f_ck(t) = f_ck für t ≥ 28 d (3.1.2(5)), ε_cu1/ε_c2/ε_cu2/n
+ * nach Tab. 3.1 (Klassenwerte, über C90/105 gehalten), h_0 ohne Klemmung auf 20 … 1500 mm, A_c und u ohne Ersatzwerte.
  */
 function modulReferenz(fck: number, cementClass: Zementklasse, aggregateType: Gesteinskoernung, relativeHumidity: number, areaAc: number, perimeterU: number,
   elementHeightH: number, curingDaysTs: number, loadingAgeT0: number, targetAgeT: number, ambientTempT: number, axialStressSigmaC: number, elementLengthL: number) {
@@ -25,10 +28,10 @@ function modulReferenz(fck: number, cementClass: Zementklasse, aggregateType: Ge
   const tTemp = Math.max(0.1, targetAgeT * tempFactor);
   const betaCcT0 = Math.exp(s * (1 - Math.sqrt(28 / t0Temp)));
   const fcmT0 = betaCcT0 * fcm;
-  const fckT0 = Math.max(0, fcmT0 - 8);
+  const fckT0 = t0Temp >= 28 ? fck : Math.max(0, fcmT0 - 8);
   const betaCcT = Math.exp(s * (1 - Math.sqrt(28 / tTemp)));
   const fcmT = betaCcT * fcm;
-  const fckT = Math.max(0, fcmT - 8);
+  const fckT = tTemp >= 28 ? fck : Math.max(0, fcmT - 8);
   let fctm = 0;
   if (fck <= 50) fctm = 0.30 * Math.pow(fck, 2 / 3);
   else fctm = 2.12 * Math.log(1 + fcm / 10);
@@ -52,19 +55,14 @@ function modulReferenz(fck: number, cementClass: Zementklasse, aggregateType: Ge
   const EcmT = Math.pow(betaCcT, 0.3) * Ecm;
   const Gcm = Ecm / (2 * (1 + 0.20));
   const epsC1 = Math.min(2.8, 0.7 * Math.pow(fcm, 0.31));
-  let epsCu1 = 3.5;
-  if (fck > 50) epsCu1 = 2.8 + 27 * Math.pow((98 - fcm) / 100, 4);
+  const dk = dehnungsKennwerte(fck);
+  const epsCu1 = dk.ecu1;
   // Z11: Formelfehler korrigiert – im Modul stand (fcm / 1000) im Nenner (k 1000-fach zu groß)
   const kPlastizitaet = (1.05 * Ecm * (epsC1 / 1000)) / fcm;
-  let epsC2 = 2.0, epsCu2 = 3.5, exponentN = 2.0;
-  if (fck > 50) {
-    epsC2 = 2.0 + 0.085 * Math.pow(fck - 50, 0.53);
-    epsCu2 = 2.6 + 35 * Math.pow((90 - fck) / 100, 4);
-    exponentN = 1.4 + 23.4 * Math.pow((90 - fck) / 100, 4);
-  }
-  const AcMm2 = Math.max(0.001, areaAc) * 1e6;
-  const uMm = Math.max(0.01, perimeterU) * 1e3;
-  const h0 = Math.min(1500, Math.max(20, (2 * AcMm2) / uMm));
+  const epsC2 = dk.ec2, epsCu2 = dk.ecu2, exponentN = dk.n;
+  const AcMm2 = areaAc * 1e6;
+  const uMm = perimeterU * 1e3;
+  const h0 = (2 * AcMm2) / uMm;
   const epsCaInfty = 2.5 * Math.max(0, fck - 10) * 1e-6;
   const betaAs = 1 - Math.exp(-0.2 * Math.sqrt(Math.max(0, targetAgeT)));
   const epsCa = betaAs * epsCaInfty;
@@ -163,9 +161,19 @@ pruefe(nahe(b.kPlastizitaet, 1.9616, 1e-3), `k (Gl. 3.14) ${b.kPlastizitaet}`);
 gleichModul(STANDARD, 'Standardfall');
 
 // 2. Zweige: hochfest (C55/67, f_ck > 50), f_cm ≤ 35 (C25/30), Zement S/R, Gesteine, nichtlineares Kriechen
-//    C55/67: f_ctm = 2,12·ln(1 + 6,3) = 4,214; ε_c2 = 2 + 0,085·5^0,53 = 2,1995; ε_cu2 = 2,6 + 35·0,35⁴ = 3,125; n = 1,4 + 23,4·0,35⁴ = 1,751; ε_cu1 = 2,8 + 27·0,35⁴ = 3,205
+//    C55/67: f_ctm = 2,12·ln(1 + 6,3) = 4,214; Tab. 3.1 (Klassenwerte): ε_c2 = 2,2; ε_cu2 = 3,1; n = 1,75; ε_cu1 = 3,2
+//    (Gleichungen der Tab. 3.1 ergeben gerundet dieselben Werte: 2,1995 / 3,125 / 1,751 / 3,205)
 const hf = betonkennwerte({ ...STANDARD, fck: 55 });
-pruefe(nahe(hf.fctm, 4.2143, 1e-4) && nahe(hf.epsC2, 2.1995, 1e-4) && nahe(hf.epsCu2, 3.1252, 1e-4) && nahe(hf.exponentN, 1.7512, 1e-4) && nahe(hf.epsCu1, 3.2052, 1e-4), `C55/67 ${hf.fctm} ${hf.epsC2} ${hf.epsCu2} ${hf.exponentN} ${hf.epsCu1}`);
+pruefe(nahe(hf.fctm, 4.2143, 1e-4) && hf.epsC2 === 2.2 && hf.epsCu2 === 3.1 && hf.exponentN === 1.75 && hf.epsCu1 === 3.2, `C55/67 ${hf.fctm} ${hf.epsC2} ${hf.epsCu2} ${hf.exponentN} ${hf.epsCu1}`);
+//    Zwischenwert f_ck = 65 nach den Gleichungen: ε_cu2 = 2,6 + 35·0,25⁴ = 2,7367; n = 1,4 + 23,4·0,25⁴ = 1,4914
+const c65 = betonkennwerte({ ...STANDARD, fck: 65 });
+pruefe(nahe(c65.epsCu2, 2.73672, 1e-5) && nahe(c65.exponentN, 1.49141, 1e-5), `f_ck = 65: ${c65.epsCu2} ${c65.exponentN}`);
+//    Über C90/105 (Z55): Werte von C90/105 gehalten statt erneut ansteigend (vorher f_ck = 110: ε_cu2 = 2,6056, n = 1,4037)
+const c110 = betonkennwerte({ ...STANDARD, fck: 110 });
+pruefe(c110.epsCu2 === 2.6 && c110.exponentN === 1.4 && c110.epsCu1 === 2.8 && c110.epsC2 === 2.6, `f_ck = 110: ${c110.epsCu2} ${c110.exponentN} ${c110.epsCu1}`);
+//    f_ck(t) für t ≥ 28 d (3.1.2(5)): f_ck(50 a) = f_ck = 30 (vorher f_cm(t) − 8 = 40,3); 7 d: β_cc = e^(0,25·(1 − 2)) = 0,7788 → 38·0,7788 − 8 = 21,59
+pruefe(b.fckT === 30 && nahe(betonkennwerte({ ...STANDARD, t: 7, t0: 7, temperatur: 20 }).fckT, 38 * Math.exp(0.25 * (1 - Math.sqrt(28 / (7 * temperaturFaktor(20))))) - 8, 1e-9), `f_ck(t) ${b.fckT}`);
+pruefe(betonkennwerte({ ...STANDARD, t0: 90 }).fckT0 === 30 && betonkennwerte({ ...STANDARD, t0: 90 }).stressLimitLin === 0.45 * 30, 'f_ck(t₀ = 90 d) = f_ck → 0,45·f_ck');
 const c25 = betonkennwerte({ ...STANDARD, fck: 25 });
 //    C25/30: φ_RH = 1 + 0,35/(0,1·222,2^(1/3)) = 1,5770 (ohne α-Beiwerte)
 pruefe(nahe(c25.phi0 / (16.8 / Math.sqrt(33)) / (1 / (0.1 + Math.pow(28 * temperaturFaktor(20), 0.2))), 1 + 0.35 / (0.1 * Math.cbrt(2e5 / 900)), 1e-9), 'f_cm ≤ 35: φ_RH ohne α-Beiwerte');
@@ -192,10 +200,14 @@ pruefe(!betonkennwerte({ ...STANDARD, fck: 0 }).gueltig && !betonkennwerte({ ...
 pruefe(!betonkennwerte({ ...STANDARD, t: 0 }).gueltig && !betonkennwerte({ ...STANDARD, temperatur: -300 }).gueltig, 't = 0 / T < −273 °C → Fehler');
 const vorBel = betonkennwerte({ ...STANDARD, t: 20, t0: 28 });
 pruefe(vorBel.phiFinal === 0 && vorBel.hinweise.some(x => x.feld === 't'), 't < t0 → φ = 0 mit Hinweis');
-pruefe(betonkennwerte({ ...STANDARD, rh: 30 }).hinweise.some(x => x.feld === 'rh') && betonkennwerte({ ...STANDARD, ac: 10, u: 1 }).hinweise.some(x => x.feld === 'ac'), 'Klemmung RH/h0 → Warnung');
+pruefe(betonkennwerte({ ...STANDARD, rh: 30 }).hinweise.some(x => x.feld === 'rh') && betonkennwerte({ ...STANDARD, ac: 10, u: 1 }).hinweise.some(x => x.feld === 'ac'), 'Klemmung RH / h0 > 1500 → Warnung');
+//    h_0 ohne Klemmung (Z55, wie kriechenSchwinden.ts): A_c = 10 m², u = 1 m → h_0 = 20 000 mm, k_h = 0,70
+const massig = betonkennwerte({ ...STANDARD, ac: 10, u: 1 });
+pruefe(massig.h0 === 20000 && massig.kh === 0.7 && massig.gueltig, `h0 ungeklemmt ${massig.h0}`);
+pruefe(!betonkennwerte({ ...STANDARD, ac: 0 }).gueltig && !betonkennwerte({ ...STANDARD, u: 0 }).gueltig, 'A_c = 0 / u = 0 → Fehler statt Ersatzwert');
 pruefe(betonkennwerte({ ...STANDARD, rh: 100 }).epsCd === 0, 'RH = 100 % → kein Trocknungsschwinden');
 pruefe(betonkennwerte({ ...STANDARD, fck: 100 }).hinweise.some(x => x.feld === 'fck'), 'f_ck > 90 → Warnung Tab. 3.1');
-gleichModul({ ...STANDARD, rh: 10, ac: 0, u: 0, h: 10, t: 1, t0: 1, ts: 5, temperatur: -10 }, 'Klemmungen');
+gleichModul({ ...STANDARD, rh: 10, ac: 0.05, u: 0.5, h: 10, t: 1, t0: 1, ts: 5, temperatur: -10 }, 'Klemmungen');
 
 // 5. Fuzz-Test: Zufallseingaben → endliche Ergebnisse, identisch zur Modulrechnung, Monotonie
 let zufall = 4711;

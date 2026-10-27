@@ -3,11 +3,14 @@
  * (PrueftechnikTab, BahnbauTab, BetondeckenTab, TiefbauTab, TunnelbauTab). Lehrrechnungen, keine Bemessung:
  *  - Asphalt: Rohdichte ohne Hohlräume ρ_m = 100/(Σ Mᵢ/ρᵢ) [g/cm³], Hohlraumgehalt V = (1 − ρ_A/ρ_m)·100 [Vol.-%]
  *  - Lückenloses Gleis: σ_T = E·α_T·ΔT (E = 210 000 N/mm², α_T = 1,2·10⁻⁵ 1/K), Kraft je Schiene F = σ_T·A (60E1: 7686 mm²)
- *  - Betondecke: Steifigkeitslänge l = [E·h³/(12(1 − ν²)·k)]^¼, Lastradius r = √(P/(π·p)) mit p = 0,8 N/mm²,
- *    Westergaard-Randspannung σ_e = 0,572·P/h²·[4·lg(l/r) + 0,359], zulässig 2,25 N/mm² (Lehrannahme);
+ *  - Betondecke: Steifigkeitslänge l = [E·h³/(12(1 − ν²)·k)]^¼, Lastradius a = √(P/(π·p)) mit p = 0,8 N/mm²,
+ *    Westergaard (1926) mit Ersatzradius b = √(1,6·a² + h²) − 0,675·h für a < 1,724·h, sonst b = a:
+ *    Innen σ_i = 0,316·P/h²·[4·lg(l/b) + 1,069], Rand σ_e = 0,572·P/h²·[4·lg(l/b) + 0,359], Ecke σ_c = 3·P/h²·[1 − (a·√2/l)^0,6]
+ *    (Koeffizienten für ν = 0,15 abgeleitet, daher ν = 0,15; Runde 5: vorher l/r statt l/b und ν = 0,2), zulässig 2,25 N/mm² (Lehrannahme);
  *    Fugenabstand L ≤ min(25·h; 5,0 m) (Lehrannahme)
  *  - Rigole: Q_zu = A·ψ·r/10 000 [l/s], V_zu = Q_zu·D, Q_s = (k_f/2)·A_s (ungesättigte Zone, DWA-A 138), V_R = f_Z·(V_zu − V_s)/s_R (≥ 0,1 m³)
- *  - Spritzbetonring: Kesselformel σ = p·R/d, f_cd = α_cc·f_ck/γ_c mit γ_c = 1,3
+ *  - Spritzbetonring: Kesselformel σ = p·R/d, f_cd = α_cc·f_ck/γ_c mit γ_c = 1,5 (ständige/vorübergehende Bemessungssituation,
+ *    Runde 5; vorher 1,3); γ_c = 1,3 nur außergewöhnlich (NA DE Tab. 2.1DE; EC2 empfohlen 1,2)
  * Einheiten stehen an den Feldern. Reiner Rechenkern – geprüft in tests/verkehrswegebau.test.ts.
  */
 import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
@@ -95,10 +98,40 @@ export interface WestergaardEingabe {
   /** zulässige Biegezugspannung in N/mm² */
   zulaessig?: number;
 }
+export interface WestergaardSpannungen {
+  /** Ersatzradius b in mm */
+  bMm: number;
+  /** Biegezugspannungen in N/mm²: Plattenmitte (innen), Rand, Ecke */
+  innen: number; rand: number; ecke: number;
+}
+/** Ersatzradius des widerstehenden Querschnitts nach Westergaard: b = √(1,6·a² + h²) − 0,675·h für a < 1,724·h, sonst b = a (mm) */
+export function westergaardErsatzradius(aMm: number, hMm: number): number {
+  return aMm < 1.724 * hMm ? Math.sqrt(1.6 * aMm * aMm + hMm * hMm) - 0.675 * hMm : aMm;
+}
+/**
+ * Westergaard-Spannungen (Originalgleichungen 1926, öffentlich z. B. NPTEL „Rigid pavement design“, Kap. 29):
+ * σ_i = 0,316·P/h²·[4·lg(l/b) + 1,069], σ_e = 0,572·P/h²·[4·lg(l/b) + 0,359], σ_c = 3·P/h²·[1 − (a·√2/l)^0,6].
+ * P in N (Radlast), h, l, a in mm → σ in N/mm². Die Koeffizienten gelten für ν = 0,15.
+ */
+export function westergaardSpannungen(pN: number, hMm: number, lMm: number, aMm: number): WestergaardSpannungen {
+  const bMm = westergaardErsatzradius(aMm, hMm);
+  const q = pN / (hMm * hMm);
+  return {
+    bMm,
+    innen: 0.316 * q * (4 * Math.log10(lMm / bMm) + 1.069),
+    rand: 0.572 * q * (4 * Math.log10(lMm / bMm) + 0.359),
+    ecke: 3 * q * (1 - Math.pow((aMm * Math.SQRT2) / lMm, 0.6)),
+  };
+}
+
 export interface WestergaardErgebnis extends Ergebnis {
-  /** Steifigkeitslänge l und Lastradius r in mm */
+  /** Steifigkeitslänge l, Lastradius r (= a) und Ersatzradius b in mm */
   lMm: number;
   rMm: number;
+  bMm: number;
+  /** Spannungen in N/mm² für Plattenmitte und Ecke (zur Einordnung) */
+  sigmaInnen: number;
+  sigmaEcke: number;
   /** Randspannung in N/mm² und Ausnutzung in % */
   sigmaE: number;
   ausnutzung: number;
@@ -106,17 +139,19 @@ export interface WestergaardErgebnis extends Ergebnis {
 }
 export function westergaardRand(e: WestergaardEingabe): WestergaardErgebnis {
   const h: Hinweis[] = [];
-  const E = e.E ?? 34000, nu = e.nu ?? 0.2, p = e.reifendruck ?? 0.8, zul = e.zulaessig ?? 2.25;
+  const E = e.E ?? 34000, nu = e.nu ?? 0.15, p = e.reifendruck ?? 0.8, zul = e.zulaessig ?? 2.25;
   muss(h, istEndlich(e.dickeCm, e.achslastKn, e.bettungMNm3) && e.dickeCm > 0 && e.achslastKn > 0 && e.bettungMNm3 > 0, 'eingabe', 'Dicke, Achslast und Bettungsmodul müssen größer als 0 sein.');
   const hMm = e.dickeCm * 10;
   const pN = (e.achslastKn / 2) * 1000;
   const k = e.bettungMNm3 * 1e-3;
   const lMm = Math.pow((E * Math.pow(hMm, 3)) / (12 * (1 - Math.pow(nu, 2)) * k), 0.25);
   const rMm = Math.sqrt(pN / (p * Math.PI));
-  const sigmaE = (0.572 * pN / Math.pow(hMm, 2)) * (4 * Math.log10(lMm / rMm) + 0.359);
+  const sp = westergaardSpannungen(pN, hMm, lMm, rMm);
+  const sigmaE = sp.rand;
   const ausnutzung = (sigmaE / zul) * 100;
-  if (rMm < 1.724 * hMm) h.push({ stufe: 'warnung', feld: 'rMm', text: 'r < 1,724·h: Westergaard verwendet hier den Ersatzradius b = √(1,6·r² + h²) − 0,675·h; das Modul rechnet mit r.' });
-  return { lMm, rMm, sigmaE, ausnutzung, ok: sigmaE <= zul, ...abschluss(h) };
+  if (nu !== 0.15) h.push({ stufe: 'warnung', feld: 'nu', text: 'Die Westergaard-Koeffizienten 0,316/0,572 sind für ν = 0,15 abgeleitet; mit anderem ν nur Näherung.' });
+  h.push({ stufe: 'warnung', feld: 'sigmaE', text: 'Westergaard-Lastspannung am Rand ohne Wölbspannungen aus Temperaturgradient und ohne Ermüdungsnachweis; die Dimensionierung erfolgt nach RDO Beton.' });
+  return { lMm, rMm, bMm: sp.bMm, sigmaInnen: sp.innen, sigmaEcke: sp.ecke, sigmaE, ausnutzung, ok: sigmaE <= zul, ...abschluss(h) };
 }
 
 export interface FugenErgebnis extends Ergebnis { maxAbstandM: number; ok: boolean; duebel: number; anker: number }
@@ -195,14 +230,22 @@ export interface SpritzbetonErgebnis extends Ergebnis {
   ausnutzung: number;
   ok: boolean;
 }
-/** Radius in m, Gebirgsdruck in N/mm², Schalendicke in cm, f_ck in N/mm² */
-export function spritzbetonRing(radiusM: number, gebirgsdruck: number, dickeCm: number, fck: number, gammaC = 1.3, alphaCc = 0.85): SpritzbetonErgebnis {
+/**
+ * Teilsicherheitsbeiwerte γ_c nach DIN EN 1992-1-1/NA, Tab. 2.1DE: ständig/vorübergehend 1,5; außergewöhnlich 1,3
+ * (EC2 Tab. 2.1N empfiehlt 1,2 – in Deutschland gilt der NA; vorläufig, F-Freigabe). Für Tunnel regeln ZTV-ING Teil 5 bzw. Ril 853
+ * (DS 853) zusätzliche Anforderungen; sie sind hier nicht abgebildet.
+ */
+export const GAMMA_C_TUNNEL = { voruebergehend: 1.5, aussergewoehnlich: 1.3, ec2Aussergewoehnlich: 1.2 } as const;
+
+/** Radius in m, Gebirgsdruck in N/mm², Schalendicke in cm, f_ck in N/mm²; γ_c = 1,5 (Bauzustand = vorübergehende Situation) */
+export function spritzbetonRing(radiusM: number, gebirgsdruck: number, dickeCm: number, fck: number, gammaC: number = GAMMA_C_TUNNEL.voruebergehend, alphaCc = 0.85): SpritzbetonErgebnis {
   const h: Hinweis[] = [];
-  muss(h, istEndlich(radiusM, gebirgsdruck, dickeCm, fck) && radiusM > 0 && dickeCm > 0 && fck > 0, 'eingabe', 'Radius, Dicke und f_ck müssen größer als 0 sein.');
+  muss(h, istEndlich(radiusM, gebirgsdruck, dickeCm, fck, gammaC) && radiusM > 0 && dickeCm > 0 && fck > 0 && gammaC > 0, 'eingabe', 'Radius, Dicke, f_ck und γ_c müssen größer als 0 sein.');
   const sigmaRing = (gebirgsdruck * radiusM) / (dickeCm / 100);
   const fcd = (alphaCc * fck) / gammaC;
   const ausnutzung = (sigmaRing / fcd) * 100;
-  if (gammaC < 1.5) h.push({ stufe: 'warnung', feld: 'gammaC', text: 'γ_c = 1,3 entspricht der außergewöhnlichen Bemessungssituation; für Bauzustände (vorübergehend) gilt nach DIN EN 1992-1-1 Tab. 2.1N γ_c = 1,5.' });
+  if (gammaC < GAMMA_C_TUNNEL.voruebergehend) h.push({ stufe: 'warnung', feld: 'gammaC', text: 'γ_c < 1,5 ist nur für die außergewöhnliche Bemessungssituation vorgesehen (DIN EN 1992-1-1/NA: 1,3; EC2 empfohlen 1,2). Bauzustände sind vorübergehende Situationen mit γ_c = 1,5.' });
+  h.push({ stufe: 'warnung', feld: 'tunnel', text: 'Lehrmodell: Für Tunnelschalen gelten zusätzlich ZTV-ING Teil 5 (Straßentunnel) bzw. Ril 853 (DS 853, Eisenbahntunnel).' });
   if (dickeCm / 100 > radiusM / 10) h.push({ stufe: 'warnung', feld: 'dickeCm', text: 'd > R/10: Die Kesselformel für dünnwandige Ringe wird ungenau.' });
   return { ringKraftKnM: gebirgsdruck * radiusM * 1000, sigmaRing, fcd, ausnutzung, ok: ausnutzung <= 100, ...abschluss(h) };
 }

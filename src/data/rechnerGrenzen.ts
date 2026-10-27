@@ -15,13 +15,13 @@ export interface RechnerGrenzen {
 const STAHLBETON: RechnerGrenzen = {
   kurz: 'Bemessung von Stahlbetonquerschnitten nach DIN EN 1992-1-1 mit NA (DE) für Biegung, Querkraft, Stützen, Durchstanzen, Verankerung und Rissbreite.',
   grenzen: [
-    'Rechteckquerschnitte, Normalbeton bis C50/60 (Spannungsblock λ = 0,8, η = 1,0); darüber erscheint ein Hinweis.',
+    'Rechteckquerschnitte bis C50/60 (λ = 0,8, η = 1,0); darüber im Kern λ, η, ε_cu3 nach EC2 3.1.7/Tab. 3.1 und ξ_lim = 0,35 (vorläufig); weitere NA-Regeln für hochfesten Beton fehlen.',
     'Biegung: eine Zug- und eine Druckbewehrungslage, ξ_lim = 0,45; nichtmetallische Bewehrung vereinfacht linear-elastisch, maßgebend ist die Zulassung.',
     'Querkraft: z = 0,9·d, senkrechte Bügel, ohne Normalkraft (σ_cp = 0).',
     'Stütze: Theorie I. Ordnung mit e_i = l₀/400 und Mindestausmitte; bei λ > λ_lim nur Hinweis, kein Nachweis nach Theorie II. Ordnung.',
     'Durchstanzen: konstantes β, keine Öffnungen, keine Abminderung durch Bodenpressung; erhöhte Faktoren κ_sw der ersten Bewehrungsreihen nicht berücksichtigt.',
     'Rissbreite: direkte Berechnung mit einer Bewehrungslage; bei Stababständen > 5·(c + φ/2) gilt 7.3.4(4) (nur Hinweis).',
-    'σ-ε-Linien: Parabel-Rechteck und Gl. (3.14) mit den Parametern der Tab. 3.1 bis C90/105; Betonstahl B500 bilinear mit E_s = 200 000 N/mm² und ε_ud = 25 ‰ (NA DE).',
+    'σ-ε-Linien: Parabel-Rechteck und Gl. (3.14) mit den Parametern der Tab. 3.1 bis C90/105 (darüber auf C90/105 gehalten); Betonstahl B500 bilinear mit E_s = 200 000 N/mm² und ε_ud = 25 ‰ (NA DE).',
   ],
 };
 
@@ -47,8 +47,8 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       'Einfeldträger mit Nachweisschnitt in Feldmitte, Rechteckquerschnitt ohne Spannglied-Hüllrohrabzug.',
       'Zeitabhängige Verluste nach Gl. (5.46) mit φ(∞,t₀) und ε_cs(∞) nach Anhang B; Relaxation für 500 000 h.',
       'Dekompression als größte Betonspannung an den Grenzen e_p ± max(100 mm; h/10) nach NA DE (EN-Empfehlung: 25 mm), vereinfacht am ungerissenen Querschnitt (Zustand I).',
-      'Dehnungsanimation: fester Lehrträger (L = 20 m, 500 × 1000 mm, E_cm = 35 000 N/mm², f_ctm = 3,5 N/mm²), Spannungen nach Freyssinet linear-elastisch am Bruttoquerschnitt; nach Überschreiten von f_ctm nur qualitativ.',
-      '„Von 0 bis 100“: Verlust durch Betonstauchung Δσ = E·Δε ohne Relaxation; Lastausgleich u = 8·P·f/L² für Parabelspannglied am Einfeldträger, Litzenzahl überschlägig mit 150 kN je Litze (Lehrannahme).',
+      'Dehnungsanimation: Lehrträger L = 20 m, 500 × 1000 mm, C40/50 (E_cm, f_ctm aus Tab. 3.1), linear-elastisch am Bruttoquerschnitt; Randzug gegen f_ctm,fl (3.1.8), danach qualitativ.',
+      '„Von 0 bis 100“: Verlust durch Betonstauchung Δσ = E·Δε ohne Relaxation; Lastausgleich u = 8·P·f/L²; Litzen = ⌈P/173 kN⌉ (150 mm² · 1 360 N/mm², 15 % Verluste als Lehrannahme).',
     ],
   },
   holzbau_bemessung: {
@@ -101,7 +101,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     kurz: 'Stoffraumrechnung für 1 m³ Beton mit Feuchtekorrektur, (w/z)_eq, Expositionsanforderungen und CO₂-Abschätzung.',
     grenzen: [
       'Rohdichten der Zusatzstoffe, Zusatzmittel und Fasern als feste Lehrwerte.',
-      'Anrechenbarkeit von Flugasche vereinfacht nach Zementart; Präzisierung nach DIN 1045-2 offen.',
+      'k-Wert-Ansatz nach DIN 1045-2 (f/z ≤ 0,33/0,25, s/z ≤ 0,11, Alkalitätsreserve f + s); Zementarten ohne Hauptbestandteil zugeordnet (vorläufig); XF2/XF4 nicht abgebildet.',
       'CO₂-Werte sind Lehrwerte und ersetzen keine EPD.',
       'Packungsdichte: Siebdurchgänge der Komponenten sind Lehrwerte; geschätzte Packungsdichte und „reales“ Zweikornmodell veranschaulichen nur (kein CPM nach de Larrard).',
       'Walz-Kurven: Abrams-Näherung f = A/5^(w/z) mit A = 100/120/140 N/mm² (Lehrwerte) für w/z 0,35 bis 0,80; ersetzt keine Erstprüfung.',
@@ -182,7 +182,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     grenzen: [
       "Spannungs-Dehnungs-Linien sind Lehrkurven (Beton: Parabel bis ε_c1, danach linear; Holz: Hankinson-Formel).",
       "Spaltzug und Biegezug mit fest hinterlegten Festigkeiten je Werkstoff.",
-      "Rückprallhammer: Festigkeit nach Lehr-Näherung 0,027·R^1,85, Karbonatisierungsfaktor 0,85 pauschal.",
+      "Rückprallhammer: Festigkeit nach der einheitlichen Lehrkurve 0,0125·R^2,22 (ohne Kalibrierkerne nach DIN EN 13791 nur Schätzung), Karbonatisierungsfaktor 0,85 pauschal.",
       "Frischbeton: Ausbreit-/Setzmaß und Bingham-Kennwerte linear aus w/z, Fließmittel und LP.",
     ],
   },
@@ -199,7 +199,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     kurz: "f_ck = f_cm − 1,645·σ und f_cd sowie Darstellung der Konformitätskriterien.",
     grenzen: [
       "Normalverteilung mit bekanntem σ, keine Stichprobenkorrektur.",
-      "Würfelwerte pauschal als Zylinderwert × 1,25 (tatsächlich klassenabhängig).",
+      "Würfelwerte über f_ck,cube/f_ck der Festigkeitsklassen (Tab. 3.1, linear zwischen den Klassen); σ ≥ 3 N/mm² im Kriterium der stetigen Herstellung.",
       "Es wird keine Stichprobe aus Einzelwerten geprüft, nur Grenzwerte angezeigt.",
     ],
   },
@@ -238,8 +238,8 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     kurz: "Speichervolumen und Länge einer Rigole (Lehrmodell in Anlehnung an DWA-A 138); dazu Betondecken, Bahn- und Tunnelbau.",
     grenzen: [
       "Rigole: k_f = 1·10⁻⁵ m/s fest, versickert wird mit k_f,u = k_f/2 (DWA-A 138) nur über die Sohle; Querschnitt fest, ein Regenereignis ohne Häufigkeitsbetrachtung.",
-      "Betondecke: Westergaard-Randspannung mit festen Kennwerten, zulässige Spannung pauschal.",
-      "Schiene: σ = E·α·ΔT bei vollständiger Behinderung; Tunnel: Kesselformel ohne Biegung.",
+      "Betondecke: Westergaard-Randspannung (Originalgleichung mit Ersatzradius b, ν = 0,15) ohne Wölbspannungen und Ermüdung; zulässige Spannung pauschal 2,25 N/mm².",
+      "Schiene: σ = E·α·ΔT bei vollständiger Behinderung; Tunnel: Kesselformel ohne Biegung, γ_c = 1,5 (vorübergehend); ZTV-ING Teil 5 / Ril 853 nicht abgebildet.",
     ],
   },
   frischbeton: {
@@ -258,7 +258,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Praxisbeispiel mit festen Kennwerten, linear mit β_cc skaliert.",
       "Zwang & Risse (massige Bauteile): Temperaturkurve als Lehransatz, Zwang α_T·ΔT·E_c(t)·R nur in der Abkühlphase.",
       "Mindestbewehrung im Praxisbeispiel mit k_c = 1,0, k = 0,8, f_ct,eff = 2,5 N/mm² und σ_s = 240 N/mm² als feste Lehrwerte.",
-      "Reife: wirksames Alter aus der Kerntemperatur in Schritten von 0,1 d; f_ck wird aus der Zementfestigkeitsklasse angesetzt, β_cc ist auf 1,25 begrenzt.",
+      "Reife: wirksames Alter aus der Kerntemperatur (Schritt 0,1 d); f_ck aus der Zementfestigkeitsklasse, β_cc ≤ 1,25; Ausschalfrist über f_ck(t_e) = f_cm(t_e) − 8 (EC2 3.1.2(5)).",
       "Zementbeiwert s nach EC2 3.1.2(6) (R = 0,20, N = 0,25, S = 0,38); L-Zemente sind dort nicht geregelt und werden nach der Anfangsfestigkeit (DIN EN 197-1) als S bzw. 52,5 L als N eingeordnet.",
       "Wärme mit hyperbolischem Ansatz Q = H_max·t_e/(t_e + t₅₀) und Lehrwerten je Zementart; Zusatzstoffe über lineare Zu- und Abschläge.",
       "Bauteile unter 0,30 m: Die pauschale Wärmeabfuhr gleicht die Temperatur je Zeitschritt vollständig an die Umgebung an.",
@@ -272,7 +272,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     grenzen: [
       "α_cc = 0,85, γ_c = 1,5 und α_ct = 0,85 fest.",
       "Konstante Umgebungstemperatur über das gesamte Alter.",
-      "Relative Luftfeuchte auf 20–100 % und h₀ auf 20–1500 mm begrenzt.",
+      "Relative Luftfeuchte auf 20–100 % begrenzt; h₀ ohne Begrenzung wie in Anhang B (k_h ab 500 mm konstant 0,70), Hinweis außerhalb 100–1500 mm.",
       "Nichtlineares Kriechen ohne Obergrenze bei 0,6·f_ck(t₀).",
     ],
   },
@@ -290,7 +290,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     kurz: "Maßgebende Anforderungen der gewählten Expositionsklassen und (w/z)_eq nach dem k-Wert-Ansatz.",
     grenzen: [
       "c_nom nur aus c_min,dur + Δc_dev; c_min,b aus dem Stabdurchmesser geht nicht ein.",
-      "Flugasche k = 0,4 (f/z ≤ 0,33), Silikastaub k = 1,0 (s/z ≤ 0,11), ohne gemeinsame Begrenzung.",
+      "Flugasche k = 0,4 (f/z ≤ 0,33), Silikastaub k = 1,0 (s/z ≤ 0,11); gemeinsame Begrenzung f ≤ 0,66·z − 3·s für CEM I geprüft, Zementart nicht wählbar.",
       "LP-Werte nur für Größtkorn 8/16/32 mm.",
     ],
   },
@@ -476,9 +476,9 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   zfp: {
     kurz: "Lehrsimulatoren der zerstörungsfreien Prüfung: Rückprallhammer, Ultraschall, Impact-Echo, Bewehrungsortung, Georadar, Potentialfeld, Wenner-Sonde, Torrent, Karsten-Röhrchen, Thermografie und Durchstrahlung.",
     grenzen: [
-      "Rückprall: f_c ≈ 0,027·R^2,1 mit ΔR = ±3 je Schlagrichtung – Lehr-Näherung ohne Bezugskurve und Kalibrierung nach DIN EN 13791.",
+      "Rückprall: einheitliche Lehrkurve f_c ≈ 0,0125·R^2,22 mit ΔR = ±3 je Schlagrichtung – ohne Kalibrierkerne nach DIN EN 13791:2020 (8.2/8.3) nur ein Schätzwert.",
       "Ultraschall: E_dyn mit fester Dichte 2400 kg/m³ und ν = 0,2; die Festigkeit aus v_p ist nur eine grobe Lehrschätzung.",
-      "Einstufungen (Potential, Wenner, Torrent, Karsten, Thermografie) mit festen Lehrschwellen; Karsten-w-Wert ist kein w-Wert nach DIN EN ISO 15148.",
+      "Feste Schwellen: Potential nach ASTM C876 (−200/−350 mV; DGZfP B3 empfiehlt objektbezogene Auswertung), Wenner nach RILEM TC 154 (100/500/1000 Ω·m); Torrent, Karsten, Thermografie als Lehrschwellen.",
       "Bewehrungssignal und Durchstrahlung (μ = 0,15/E) sind qualitative Anzeigemodelle ohne Gerätekennlinie.",
     ],
   },
@@ -493,9 +493,9 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   mechanische_pruefungen: {
     kurz: "Auswertung zerstörender Prüfungen: Bohrkerndruckfestigkeit mit Schlankheitskorrektur, Spaltzug und Marshall (Asphalt), Zugversuch Betonstahl und Schätzwerte für Bauholz.",
     grenzen: [
-      "Bohrkern: Schlankheitsfaktoren nach ASTM C42, Bewehrungs- (+3,5 % je Stab) und Bohrrichtungsfaktor (1,085) als Lehrannahmen; Würfelwert pauschal f_c/0,82.",
+      "Bohrkern: h/d = 1 gilt als Würfel, h/d = 2 als Zylinder (DIN EN 13791), andere Form über die Klasse; ASTM C42 für Zwischenwerte; Bewehrung (+3,5 %/Stab) und Bohrrichtung (1,085) Lehrannahmen.",
       "Keine Bewertung nach DIN EN 13791 (Prüfreihen, charakteristische In-situ-Festigkeit); alle Einstufungen sind Einzelwertvergleiche.",
-      "Zugversuch: Dehnung als Bruchdehnung A = (L_u − L₀)/L₀; DIN 488-1 bewertet die Dehnung bei Höchstkraft A_gt.",
+      "Zugversuch: A_gt aus der Messlänge unter Höchstkraft, Einzelwertvergleich mit DIN 488-1 (A_gt ≥ 2,5/5,0 %); keine Prüfserie und keine Bruchdehnung.",
       "Holz: Druckfestigkeit, Feuchtefaktor und E-Modul aus der Rohdichte sind Lehr-Näherungen, keine Werte nach DIN EN 338 oder DIN EN 384.",
     ],
   },
@@ -503,9 +503,9 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     kurz: "Bemessungswerte f_cd und f_ctd je Festigkeitsklasse, Festigkeitsentwicklung β_cc(t) mit Probekörper- und Lagerungsfaktoren, 5-%-Fraktil und Schnellevaluator der Konformitätskriterien.",
     grenzen: [
       "β_cc(t) nach DIN EN 1992-1-1, Gl. (3.2), ohne Temperatureinfluss und auch über 28 Tage hinaus fortgeschrieben.",
-      "Geometrie- (1,20 … 1,30) und Lagerungsfaktoren (0,85 … 0,95) sind pauschale Lehrwerte.",
-      "Statistik: Normalverteilung mit bekanntem σ, Würfelwerte pauschal × 1,25.",
-      "Konformität: σ aus derselben Stichprobe, mindestens 3 N/mm²; keine vollständige Konformitätskontrolle nach DIN EN 206 und DIN 1045-2.",
+      "Würfel 150 über f_ck,cube/f_ck der Klasse; Größenfaktoren Würfel 100/200 (1,04/0,96) und Lagerungsfaktoren (0,85 … 0,95) sind Lehrwerte.",
+      "Statistik: Normalverteilung mit bekanntem σ, Würfelwerte über die Festigkeitsklasse.",
+      "Konformität: stetige Herstellung mit σ der Vorserie (sonst ersatzweise aus der Stichprobe), mindestens 3 N/mm²; keine vollständige Konformitätskontrolle nach DIN EN 206 und DIN 1045-2.",
     ],
   },
   boden_materialaufbereitung: {

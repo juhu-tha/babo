@@ -16,7 +16,8 @@
  *
  * Einheiten: Festigkeiten und Moduln in N/mm², h₀ in mm, Zeiten in Tagen (Relaxation: Stunden, Rheologie: Sekunden),
  * Dehnungen dimensionslos (Anzeige in µm/m bzw. ‰), Längen in mm. Keine Temperaturanpassung (t₀,T = t₀, T = 20 °C).
- * Offene Formelbefunde Z55 (h₀-Begrenzung, f_ck(t)) bleiben unverändert und sind nur als Hinweis vermerkt.
+ * h₀ (Runde 5, Z55): Anhang B begrenzt h₀ nicht; k_h nach Tab. 3.3 ist ab h₀ ≥ 500 mm konstant 0,70, β_H ist auf 1500·α₃
+ * begrenzt. betonkennwerte.ts verwendet dieselben Bausteine und dieselben Hinweise (h0Hinweise) – keine Klemmung mehr.
  * Reiner Rechenkern – geprüft in tests/kriechenSchwinden.test.ts.
  */
 import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
@@ -116,6 +117,13 @@ export function eModulEcm(fcm: number): number {
   return 22000 * Math.pow(fcm / 10, 0.3);
 }
 
+/** Einheitliche Hinweise zur wirksamen Bauteildicke h₀ in mm (Tab. 3.3 und Bild 3.1: 100 … 1500 mm) */
+export function h0Hinweise(hinweise: Hinweis[], h0: number, feld = 'h0'): void {
+  if (!Number.isFinite(h0)) return;
+  if (h0 < 100) hinweise.push({ stufe: 'warnung', feld, text: 'h₀ < 100 mm: unterhalb des Tabellenbereichs von Tab. 3.3; k_h wird mit 1,0 angesetzt.' });
+  if (h0 > 1500) hinweise.push({ stufe: 'warnung', feld, text: 'h₀ > 1500 mm: sehr massiges Bauteil außerhalb von Bild 3.1; φ_RH und β_ds werden ohne Begrenzung von h₀ gerechnet (k_h = 0,70, β_H ≤ 1500·α₃).' });
+}
+
 // ---------------------------------------------------------------------------------------------
 // Teil A – Modell für ein Bauteil (Eingaben des Reiters „Beton“)
 // ---------------------------------------------------------------------------------------------
@@ -178,8 +186,7 @@ export function kriechSchwindModell(e: KriechSchwindEingabe): KriechSchwindModel
   if (fck < 12 || fck > 90) hinweise.push({ stufe: 'warnung', feld: 'fck', text: 'Anhang B ist für Normalbeton der Festigkeitsklassen C12/15 bis C90/105 aufgestellt.' });
   if (fck < 10) hinweise.push({ stufe: 'warnung', feld: 'fck', text: 'f_ck < 10 N/mm²: Das autogene Schwinden wird zu 0 gesetzt (Gl. 3.12 ergäbe einen negativen Wert).' });
   if (rh < 40) hinweise.push({ stufe: 'warnung', feld: 'rh', text: 'Anhang B gilt für eine mittlere relative Luftfeuchte von 40 bis 100 %.' });
-  if (h0 < 100) hinweise.push({ stufe: 'warnung', feld: 'h0', text: 'h₀ < 100 mm: unterhalb des Tabellenbereichs von Tab. 3.3; k_h wird mit 1,0 angesetzt.' });
-  if (h0 > 1500) hinweise.push({ stufe: 'warnung', feld: 'h0', text: 'h₀ > 1500 mm: sehr massiges Bauteil; φ_RH und β_ds werden ohne Begrenzung von h₀ gerechnet.' });
+  h0Hinweise(hinweise, h0, 'h0');
   if (t0 < 1) hinweise.push({ stufe: 'warnung', feld: 't0', text: 't₀ < 1 d: Das wirksame Belastungsalter wird nach Gl. (B.9) auf mindestens 0,5 d gesetzt.' });
 
   return {

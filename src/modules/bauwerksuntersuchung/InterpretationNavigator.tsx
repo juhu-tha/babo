@@ -154,7 +154,7 @@ export default function InterpretationNavigator() {
   // ---------------------------------------------------------
   // Ingenieurtechnische Auswertung & Befundsynthese
   // ---------------------------------------------------------
-  // Rechenkern (src/calc/bauwerksuntersuchung.ts): Passivierungsreserve, Chlorid ≥ 0,5/0,8 M.-%, Potential ≤ −350/−200 mV,
+  // Rechenkern (src/calc/bauwerksuntersuchung.ts): Passivierungsreserve, Chlorid ≥ 0,5/0,8 M.-%, Potential < −350 / ≤ −200 mV (ASTM C876, einheitlich mit ZfP),
   // f_ck,is/f_ck ≥ 0,85 (DIN EN 13791), Haftzug ≥ 1,5 N/mm² mit Bruch im Beton, Holz-Restquerschnitt ≥ 70 %;
   // 0 = nicht gemessen (geht nicht als „nicht bestanden“ in die Risikostufe ein)
   const evaluation = useMemo(() => befundSynthese({

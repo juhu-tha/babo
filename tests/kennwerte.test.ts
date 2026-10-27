@@ -1,6 +1,6 @@
 // Zentrale Betonkennwerte (Umsetzungsplan Phase 0, AP 0.6)
 import fs from 'fs';
-import { BETON_EC2, fctmVonFck, betonNachKlasse, betonAuswahl, BAUSTAHL_EC3, E_BAUSTAHL, BETONSTAHL, E_BETONSTAHL, HOLZ_EN338, BSH_EN14080, holzKennwerte } from '../src/data/kennwerte';
+import { BETON_EC2, fctmVonFck, betonNachKlasse, betonAuswahl, BAUSTAHL_EC3, E_BAUSTAHL, BETONSTAHL, E_BETONSTAHL, fckZumAlter, dehnungsKennwerte, fckCubeVonFck, fckVonFckCube, HOLZ_EN338, BSH_EN14080, holzKennwerte } from '../src/data/kennwerte';
 import { STAHLGUETEN, EC3_NA_DE } from '../src/calc/stahlbau';
 import { betonstahlParameter, STAHL_E } from '../src/calc/werkstoffmodelle';
 import { steelGrades, extendedSteelGrades, steelCurveDefinitions } from '../src/modules/stahl/daten';
@@ -61,7 +61,21 @@ for (const f of ['src/modules/stahl/daten.ts', 'src/modules/mechanischekenngroes
   pruefe(!/fy:\s*355,\s*fu:\s*(470|510)/.test(s) && !/fu:\s*(470|510|550|560),/.test(s) && !/E:\s*205000,\s*\n\s*fy:\s*500/.test(s), `${f}: abweichende Stahlkennwerte`);
 }
 
-// 5. Holzkennwerte (Runde 5): DIN EN 338:2016 (öffentlich: studiomadera.it, Tab. 15.1 UNI EN 338:2016) und DIN EN 14080:2013
+// 5. Runde 5 (Z55): zentrale Funktionen
+//    f_ck(t) nach DIN EN 1992-1-1, 3.1.2(5): f_cm(t) − 8 für t < 28 d, f_ck für t ≥ 28 d (auch wenn f_cm(t) > f_cm)
+pruefe(fckZumAlter(30, 29.59, 7) === 21.59 && fckZumAlter(30, 40.3, 28) === 30 && fckZumAlter(30, 42, 365) === 30 && fckZumAlter(30, 5, 1) === 0, 'f_ck(t)');
+//    Tab. 3.1: Klassenwerte; Gleichungen zwischen den Klassen; über C90/105 gehalten (vorher stiegen ε_cu2, n wieder an)
+const d55 = dehnungsKennwerte(55), d65 = dehnungsKennwerte(65), d90 = dehnungsKennwerte(90), d100 = dehnungsKennwerte(100);
+pruefe(d55.ecu2 === 3.1 && d55.n === 1.75 && d55.ec3 === 1.8 && d55.ecu1 === 3.2 && d90.ecu3 === 2.6 && d90.ec3 === 2.3, 'Tab. 3.1 Klassenwerte');
+pruefe(Math.abs(d65.ecu2 - (2.6 + 35 * 0.25 ** 4)) < 1e-12 && Math.abs(d65.n - (1.4 + 23.4 * 0.25 ** 4)) < 1e-12 && Math.abs(d65.ec3 - (1.75 + 0.55 * 15 / 40)) < 1e-12, 'Gleichungen Tab. 3.1');
+pruefe(d100.ueberC90 && d100.ecu2 === 2.6 && d100.n === 1.4 && d100.ecu1 === 2.8 && dehnungsKennwerte(30).ecu2 === 3.5, 'über C90/105 gehalten');
+//    Monotonie: ε_cu2 und n fallen mit f_ck bis C90/105 (Toleranz 0,05 für die Rundung der Klassenwerte gegenüber den
+//    Gleichungen, z. B. f_ck = 69: 2,668 gegen C70/85: 2,7) und bleiben darüber konstant
+for (let f = 50; f < 120; f += 1) { const a = dehnungsKennwerte(f), b = dehnungsKennwerte(f + 1); pruefe(b.ecu2 <= a.ecu2 + 0.05 && b.n <= a.n + 0.05 && (f < 90 || (b.ecu2 === a.ecu2 && b.n === a.n)), `Monotonie ε_cu2/n bei f_ck = ${f}`); }
+//    Würfel/Zylinder über die Klassen (Tab. 3.1), Umkehrfunktion
+pruefe(fckCubeVonFck(30) === 37 && fckCubeVonFck(50) === 60 && Math.abs(fckCubeVonFck(32) - 40.2) < 1e-12 && Math.abs(fckVonFckCube(fckCubeVonFck(43.7)) - 43.7) < 1e-12, 'f_ck,cube');
+
+// 6. Holzkennwerte (Runde 5): DIN EN 338:2016 (öffentlich: studiomadera.it, Tab. 15.1 UNI EN 338:2016) und DIN EN 14080:2013
 //    (öffentlich: HASSLACHER-Broschüre „Brettschichtholz“, structuralbasics.com „Glulam strength capacities“)
 const C = HOLZ_EN338, G = BSH_EN14080;
 pruefe(C.C24.fc0k === 21 && C.C24.E0mean === 11000 && C.C24.E005 === 7400 && C.C24.rhok === 350 && C.C24.rhoMean === 420, 'C24 EN 338:2016');

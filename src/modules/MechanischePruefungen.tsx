@@ -106,7 +106,7 @@ export default function MechanischePruefungen() {
   const [steelLengthU, setSteelLengthU] = useState<number>(115); // mm frattura
 
   // Rechenkern src/calc/pruefverfahren.ts: Einzelwertvergleich mit B500A/B500B nach DIN 488-1
-  // (R_e ≥ 500 N/mm²; R_m/R_e ≥ 1,05 bzw. 1,08; Dehnung ≥ 2,5 % bzw. 5,0 %).
+  // (R_e ≥ 500 N/mm²; R_m/R_e ≥ 1,05 bzw. 1,08; A_gt ≥ 2,5 % bzw. 5,0 % aus der Messlänge unter Höchstkraft).
   // Hinweis: Die Norm verlangt charakteristische Werte (Quantile) aus Prüfserien.
   const steelRes = useMemo(() => {
     const r = zugversuchStahl({ dMm: steelDiam, kraftReKn: steelForceYield, kraftRmKn: steelForceUltimate, l0Mm: steelLength0, luMm: steelLengthU });

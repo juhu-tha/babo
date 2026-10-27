@@ -22,7 +22,7 @@
     "ringdruckspannungRing": "Ringdruckspannung (σ_Ring):",
     "bemessungsfestigkeitFCdTemp": "Bemessungsfestigkeit (f_cd,temp):",
     "auslastungsgrad": "Auslastungsgrad (η):",
-    "ringnormalspannungsformelRingPG": "Ringnormalspannungsformel: σ_Ring = (p_g · R) / d Teilsicherheitsbeiwert Bauzustand: γ_c = 1,3 (Lehrannahme)",
+    "ringnormalspannungsformelRingPG": "Ringnormalspannungsformel: σ_Ring = (p_g · R) / d. Teilsicherheitsbeiwert Bauzustand (vorübergehende Bemessungssituation): γ_c = 1,5 nach DIN EN 1992-1-1/NA, Tab. 2.1DE (außergewöhnlich 1,3). Für Tunnelschalen gelten zusätzlich ZTV-ING Teil 5 bzw. Ril 853.",
     "imLehrmodellAusreichendDie": "✓ Im Lehrmodell ausreichend: Die Ringdruckspannung liegt unter dem Bemessungswert der Spritzbetonfestigkeit.",
     "imLehrmodellNichtAusreichend": "✗ Im Lehrmodell nicht ausreichend: Die Ringdruckspannung übersteigt den Bemessungswert. Erhöhen Sie die Dicke oder die Festigkeitsklasse."
   },

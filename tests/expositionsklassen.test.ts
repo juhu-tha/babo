@@ -46,6 +46,10 @@ pruefe(k.gueltig && nahe(k.maxF, 102.3, 1e-9) && k.effectiveF === 50 && nahe(k.b
 //    Begrenzung: f = 150 > 102,3 → angerechnet 102,3; s = 50 > 0,11·310 = 34,1 → 34,1; z_eq = 310 + 40,92 + 34,1 = 385,02
 const kb = kWertAnsatz({ zement: 310, wasser: 165, flugasche: 150, silika: 50 });
 pruefe(nahe(kb.effectiveF, 102.3, 1e-9) && nahe(kb.effectiveS, 34.1, 1e-9) && nahe(kb.beq, 385.02, 1e-9) && kb.hinweise.length === 3, `Begrenzung ${JSON.stringify(kb)}`);
+//    Kombinationsregel DIN 1045-2 (Runde 5): f ≤ 0,66·z − 3·s = 0,66·310 − 150 = 54,6 kg/m³ → f = 150 überschreitet (Warnung);
+//    f = 40, s = 20: Grenze 204,6 − 60 = 144,6 eingehalten (nur Hinweis auf die strengere Grenze für andere Zemente)
+pruefe(kb.hinweise.some(h => h.text.includes('überschritten') && h.text.includes('55 kg/m³')), 'Kombination überschritten');
+pruefe(kWertAnsatz({ zement: 310, wasser: 165, flugasche: 40, silika: 20 }).hinweise.some(h => h.text.includes('eingehalten')), 'Kombination eingehalten');
 pruefe(kWertAnsatz({ zement: 0, wasser: 165, flugasche: 0, silika: 0 }).wzEq === 0 && !kWertAnsatz({ zement: -1, wasser: 1, flugasche: 0, silika: 0 }).gueltig, 'z = 0 / negativ');
 
 // 3. Fuzz: Hüllwerte sind die strengsten Einzelwerte, mehr Klassen → nie milder; k-Wert-Monotonie

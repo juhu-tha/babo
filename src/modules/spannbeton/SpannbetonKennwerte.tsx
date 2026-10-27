@@ -15,6 +15,7 @@ import {
   CementClass
 } from '@/src/calc/spannbeton';
 import { ShieldAlert, CheckCircle2, BookOpen, Layers, Scale, Compass } from 'lucide-react';
+import { dehnungsKennwerte } from '@/src/data/kennwerte';
 import { KENNWERT_REITER } from './kennwerte/daten';
 import type { KennwertBereich, KennwertReiter } from './kennwerte/daten';
 import KennwerteBeton from './kennwerte/KennwerteBeton';
@@ -218,9 +219,8 @@ export default function SpannbetonKennwerte() {
     const steps = 40;
     const fcd = matMaturity.fcd_t;
     const fckVal = activeMatData.fck;
-    const eps_c2 = fckVal <= 50 ? 2.0 : 2.0 + 0.085 * Math.pow(fckVal - 50, 0.53);
-    const eps_cu2 = fckVal <= 50 ? 3.5 : 2.6 + 35 * Math.pow((90 - fckVal) / 100, 4);
-    const n = fckVal <= 50 ? 2.0 : 1.4 + 23.4 * Math.pow((90 - fckVal) / 100, 4);
+    // Tab. 3.1 zentral (src/data/kennwerte.ts): Klassenwerte, über C90/105 gehalten (Runde 5, Z55)
+    const { ec2: eps_c2, ecu2: eps_cu2, n } = dehnungsKennwerte(fckVal);
 
     for (let i = 0; i <= steps; i++) {
       const eps = (i / steps) * eps_cu1;

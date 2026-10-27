@@ -24,7 +24,7 @@
  */
 import { type Hinweis, istEndlich, hatFehler, muss, bereich } from './plausibilitaet';
 import { ZEMENT_S, betaCc, ecmVonFcm } from './betonkennwerte';
-import { fctmVonFck } from '../data/kennwerte';
+import { fctmVonFck, fckZumAlter } from '../data/kennwerte';
 import { DIN1045_3_NACHBEHANDLUNG } from '../data/normParams';
 
 // ---------------------------------------------------------------------------------------------
@@ -230,7 +230,8 @@ export interface HydratationErgebnis {
   rissgefahr: Rissgefahr;
   /** erforderliche Ausschalfestigkeit in N/mm² */
   fReq: number;
-  /** erster Zeitpunkt in d mit β_cc·f_ck ≥ f_req; null, wenn bis 28 d nicht erreicht */
+  /** erster Zeitpunkt in d mit f_ck(t_e) ≥ f_req, f_ck(t_e) = β_cc·f_cm − 8 (t_e < 28 d) bzw. f_ck (DIN EN 1992-1-1, 3.1.2(5));
+   *  null, wenn bis 28 d nicht erreicht */
   ausschalTage: number | null;
   gueltig: boolean;
   hinweise: Hinweis[];
@@ -309,7 +310,8 @@ export function hydratation(e: HydratationEingabe): HydratationErgebnis {
     r.fcAkt.push(akt.fc); r.fcAktRel.push(akt.beta * 100);
     r.fctAkt.push(akt.fct); r.fctAktRel.push(akt.fctRel * 100);
     r.EAkt.push(akt.E); r.EAktRel.push(akt.ERel * 100);
-    if (ausschalTage === null && akt.beta * fck >= fReq) ausschalTage = t;
+    // Runde 5 (Z55): Vergleich mit f_ck(t_e) nach 3.1.2(5) statt β_cc·f_ck
+    if (ausschalTage === null && fckZumAlter(fck, akt.fc, te) >= fReq) ausschalTage = t;
 
     // Wärme und Temperatur
     const H = hydratationswaerme(Hmax, t50, te);

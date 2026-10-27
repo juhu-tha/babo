@@ -1,5 +1,5 @@
 // Rechenkern Biegebemessung gegen unabhängige Referenzen (Umsetzungsplan Phase 4, AP 4.3/4.5)
-import { bemesseBiegung, MU_LIM_STAHL, type BiegungEingabe } from '../src/calc/biegung';
+import { bemesseBiegung, MU_LIM_STAHL, spannungsblock, muLimit, xiLimit, type BiegungEingabe } from '../src/calc/biegung';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -58,6 +58,19 @@ for (const u of unsinn) {
 }
 // Warnung oberhalb C50/60
 pruefe(bemesseBiegung({ ...basis, fck: 70 }).hinweise.some(x => x.feld === 'fck' && x.stufe === 'warnung'), 'Warnung > C50/60');
+// Hochfester Beton (Runde 5, Z55), DIN EN 1992-1-1, 3.1.7(3) Gl. (3.20)/(3.22) und Tab. 3.1:
+//   C70/85: λ = 0,8 − 20/400 = 0,75; η = 1 − 20/200 = 0,90; ε_cu3 = 2,7 ‰; ξ_lim = 0,35 (NA DE, F-Freigabe)
+//   µ_lim = 0,90·0,75·0,35·(1 − 0,75·0,35/2) = 0,2049; C90/105 und darüber: λ = 0,70, η = 0,80
+const sb70 = spannungsblock(70), sb110 = spannungsblock(110);
+pruefe(sb70.lambda === 0.75 && Math.abs(sb70.eta - 0.9) < 1e-12 && Math.abs(sb110.lambda - 0.7) < 1e-12 && Math.abs(sb110.eta - 0.8) < 1e-12 && spannungsblock(30).lambda === 0.8, 'λ/η hochfest');
+pruefe(Math.abs(muLimit(70) - 0.9 * 0.75 * 0.35 * (1 - 0.75 * 0.35 / 2)) < 1e-12 && muLimit(30) === MU_LIM_STAHL && xiLimit(55) === 0.35 && xiLimit(50) === 0.45, 'µ_lim hochfest');
+//   Gleichgewicht C70/85 (f_cd = 0,85·70/1,5 = 39,67): F_c = η·f_cd·b·λ·x = A_s1·f_yd und M = F_c·(d − λ·x/2)
+const h70 = bemesseBiegung({ ...basis, fck: 70, med: 300 });
+const fc70 = 0.9 * h70.fcd * 300 * 0.75 * h70.x * 10;
+pruefe(h70.epsCu3 === 2.7 && h70.as2_req === 0 && Math.abs(fc70 - h70.as1_req * 100 * h70.fyd) / fc70 < 1e-9 && Math.abs(fc70 * (450 - 0.75 * h70.x * 10 / 2) / 1e6 - 300) < 1e-6, `Gleichgewicht C70/85 ${JSON.stringify({ x: h70.x, as: h70.as1_req })}`);
+//   Druckbewehrung C70/85 mit ε_cu3 = 2,7 ‰: ε_s2 = 2,7·(x − d₂)/x
+const d70 = bemesseBiegung({ ...basis, fck: 70, med: 600 });
+pruefe(d70.as2_req > 0 && Math.abs(d70.x - 0.35 * 45) < 1e-9 && Math.abs(d70.sigma_s2 - Math.min(d70.fyd, 200000 * 2.7e-3 * (d70.x - 5) / d70.x)) < 1e-9, `Druckbewehrung C70/85 ${d70.sigma_s2}`);
 
 // 6. A_s,max = 0,04·A_c (NA DE 9.2.1.1): großes Moment im kleinen Querschnitt → Warnung
 pruefe(bemesseBiegung({ ...basis, b: 20, h: 30, med: 250 }).hinweise.some(x => x.text.includes('A_s,max')), 'Warnung A_s,max');

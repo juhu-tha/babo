@@ -1,6 +1,6 @@
 // Rechenkern Bauwerksuntersuchung (Z3): Prüfsimulatoren, Probenahmeplaner und Befundsynthese
 import {
-  rueckprall, ultraschall, potentialStufe, potentialStatus, betondeckung, chlorid, haftzug, karsten, karbonatisierung,
+  rueckprall, rueckprallLehrkurve, rueckprallKalibrierung, ultraschall, potentialStufe, potentialStatus, betondeckung, chlorid, haftzug, karsten, karbonatisierung,
   bohrkern, impactEcho, probenahmeUmfang, befundSynthese, type BefundEingabe, type Untersuchungsziel,
 } from '../src/calc/bauwerksuntersuchung';
 
@@ -20,8 +20,17 @@ const us = ultraschall(0.30, 75, 2400);
 pruefe(nahe(us.vp, 4000, 1e-9) && nahe(us.eDynGPa, 34.56, 1e-9) && us.stufe === 'gut', `Ultraschall ${us.vp} ${us.eDynGPa}`);
 pruefe(ultraschall(0.3, 90, 2400).stufe === 'maessig' && ultraschall(0.3, 120, 2400).stufe === 'kritisch' && !ultraschall(0.3, 0, 2400).gueltig, 'Gefügestufen, t = 0 → Fehler');
 //    Potentialfeld: Simulator und Navigator schließen −350 mV ein (≤ −350 hoch/aktiv)
-pruefe(potentialStufe(-380) === 'hoch' && potentialStufe(-350) === 'hoch' && potentialStufe(-349) === 'ungewiss' && potentialStufe(-200) === 'ungewiss' && potentialStufe(-199) === 'gering', 'Potentialstufen Simulator');
-pruefe(potentialStatus(-350) === 'aktiv' && potentialStatus(-200) === 'unsicher' && potentialStatus(-150) === 'passiv', 'Potentialstatus Navigator');
+//    Runde 5: einheitliche Grenzen nach ASTM C876 (öffentliche Zusammenfassung z. B. Giatec-Datenblatt „Cell“):
+//    positiver als −200 mV gering, −200 … −350 mV ungewiss, negativer als −350 mV hoch; −350 mV selbst ist „ungewiss“
+pruefe(potentialStufe(-380) === 'hoch' && potentialStufe(-351) === 'hoch' && potentialStufe(-350) === 'ungewiss' && potentialStufe(-200) === 'ungewiss' && potentialStufe(-199) === 'gering', 'Potentialstufen Simulator');
+pruefe(potentialStatus(-351) === 'aktiv' && potentialStatus(-350) === 'unsicher' && potentialStatus(-200) === 'unsicher' && potentialStatus(-150) === 'passiv', 'Potentialstatus Navigator');
+//    Kalibrierung der Lehrkurve (DIN EN 13791:2020, 8.3: ≥ 3 Kerne). Handbeispiel: R = 30/35/40 → f_Lehr = 0,0125·R^2,22 = 23,77/33,48/45,03;
+//    Kerne 28/36/47 → Differenzen 4,23/2,52/1,97 → Δf = 2,91 N/mm²
+const kal = rueckprallKalibrierung([{ r: 30, fKern: 28 }, { r: 35, fKern: 36 }, { r: 40, fKern: 47 }]);
+const lehr = [30, 35, 40].map(r => rueckprallLehrkurve(r));
+pruefe(kal.gueltig && nahe(kal.deltaF, (28 + 36 + 47 - lehr[0] - lehr[1] - lehr[2]) / 3, 1e-12) && nahe(kal.deltaF, 2.907, 1e-3), `Kalibrierung Δf ${kal.deltaF} (${lehr})`);
+pruefe(!rueckprallKalibrierung([{ r: 30, fKern: 28 }, { r: 35, fKern: 36 }]).gueltig, 'weniger als drei Kerne → Fehler');
+pruefe(nahe(rueckprallLehrkurve(35, kal.deltaF), rueckprallLehrkurve(35) + kal.deltaF, 1e-12) && rp.hinweise.some(x => x.text.includes('DIN EN 13791:2020')), 'Verschiebung und Hinweis „nur Schätzung“');
 //    Betondeckung XC4, gemessen 22 mm: c_nom = 25 + 15 = 40 → −18 mm
 const dk = betondeckung('XC4', 22);
 pruefe(dk.cMin === 25 && dk.cNom === 40 && dk.differenz === -18 && !dk.ok && betondeckung('XC1', 20).ok, `Deckung ${JSON.stringify(dk)}`);

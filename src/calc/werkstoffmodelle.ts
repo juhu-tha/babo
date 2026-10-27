@@ -36,7 +36,7 @@
  * Temperaturen in °C, Längen in mm. Lehr- und Vorbemessungswerkzeug – geprüft in tests/werkstoffmodelle.test.ts.
  */
 import { EC2_NA_DE } from '../data/normParams';
-import { BETONSTAHL, E_BETONSTAHL, E_BAUSTAHL } from '../data/kennwerte';
+import { BETONSTAHL, E_BETONSTAHL, E_BAUSTAHL, dehnungsKennwerte } from '../data/kennwerte';
 import { type Hinweis, istEndlich, hatFehler, muss, bereich } from './plausibilitaet';
 import { formatDeZahl } from '../utils/numberFormat';
 import { maxwellRelaxation } from './kriechenSchwinden';
@@ -336,14 +336,9 @@ export function betonSdParameter(fck: number): BetonSdParameter {
   const fcd = (EC2_NA_DE.alphaCC * fck) / EC2_NA_DE.gammaC;
   const fcm = fck + 8;
   const Ecm = 22000 * Math.pow(fcm / 10, 0.3);
-  let ec2 = 2.0, ecu2 = 3.5, n = 2.0;
-  if (fck > 50) {
-    ec2 = 2.0 + 0.085 * Math.pow(fck - 50, 0.53);
-    ecu2 = 2.6 + 35 * Math.pow((90 - fck) / 100, 4);
-    n = 1.4 + 23.4 * Math.pow((90 - fck) / 100, 4);
-  }
-  const ec1 = Math.min(2.8, 0.7 * Math.pow(fcm, 0.31));
-  const ecu1 = fck > 50 ? 2.8 + 27 * Math.pow((90 - fck) / 100, 4) : 3.5;
+  // Runde 5 (Z55): Klassenwerte aus Tab. 3.1, Zwischenwerte nach den Gleichungen der Tab. 3.1, über C90/105 gehalten
+  // (vorher stiegen ε_cu2, ε_cu1 und n über f_ck = 90 wieder an, weil ((90 − f_ck)/100)^4 dort erneut wächst).
+  const { ec1, ecu1, ec2, ecu2, n } = dehnungsKennwerte(fck);
   const k = (1.05 * Ecm * (ec1 / 1000)) / fcm;
   return { fcd, fcm, Ecm, ec2, ecu2, n, ec1, ecu1, k };
 }
@@ -381,7 +376,9 @@ export function betonSdLinien(fck: number): BetonSdErgebnis {
     const eps = i / 10;
     punkte.push({ eps, bemessung: betonParabelRechteck(eps, param), real: betonNichtlinear(eps, param) });
   }
-  bereich(hinweise, 'fck', fck, 12, 90, 'Tab. 3.1 der DIN EN 1992-1-1 gilt für C12/15 bis C90/105; außerhalb sind die Parameter extrapoliert.');
+  bereich(hinweise, 'fck', fck, 12, 90, fck > 90
+    ? 'f_ck > 90 N/mm²: Tab. 3.1 der DIN EN 1992-1-1 reicht bis C90/105; ε_c2, ε_cu2 und n werden mit den Werten von C90/105 gehalten.'
+    : 'Tab. 3.1 der DIN EN 1992-1-1 gilt für C12/15 bis C90/105; unterhalb sind die Parameter extrapoliert.');
   if (fck > 50 && fck <= 90) hinweise.push({ stufe: 'warnung', feld: 'fck', text: 'Hochfester Beton (f_ck > 50 N/mm²): ε_c2, ε_cu2 und n nach den Formeln der Tab. 3.1; die Linie wird spröder.' });
   return { param, punkte, gueltig: true, hinweise };
 }

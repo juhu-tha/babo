@@ -3,9 +3,12 @@
  * (PruefverfahrenSimulatoren.tsx, ProbenahmePlaner.tsx, InterpretationNavigator.tsx). Die Module runden und formatieren
  * selbst; der Kern liefert ungerundete Zahlen.
  *  - Rückprallhammer: Schlagrichtung −3,0 (abwärts) / +3,5 (aufwärts), Karbonatisierungsabminderung
- *    k = max(0,75; 1 − 0,015·(d_k − 5)) für d_k > 5 mm, f_c ≈ 0,0125·R^2,22 (Lehr-Näherung, keine Normkurve)
+ *    k = max(0,75; 1 − 0,015·(d_k − 5)) für d_k > 5 mm, f_c ≈ 0,0125·R^2,22 (Lehr-Näherung, keine Normkurve).
+ *    Runde 5 (Z55): einzige Lehrkurve des Repos (RUECKPRALL_LEHRKURVE, auch ZfP und Labor); Zuordnung zur
+ *    Bauwerksfestigkeit nur über Kalibrierkerne nach DIN EN 13791:2020, Abschnitt 8.2/8.3 (rueckprallKalibrierung)
  *  - Ultraschall: v_p = s/t, E_dyn = ρ·v_p²·(1 + ν)(1 − 2ν)/(1 − ν) mit ν = 0,2
- *  - Potentialfeld (gegen Cu/CuSO₄, ASTM C876): > −200 mV gering, −200 … > −350 mV ungewiss, ≤ −350 mV hoch
+ *  - Potentialfeld (gegen Cu/CuSO₄, ASTM C876): > −200 mV gering, −350 … −200 mV ungewiss, < −350 mV hoch
+ *    (Runde 5: einheitlich für ZfP, Bauwerksuntersuchung und Labor; DGZfP-Merkblatt B3: objektbezogene Auswertung)
  *  - Betondeckung: c_nom = c_min,dur + Δc_dev nach DIN EN 1992-1-1/NA, Tab. 4.4DE (Betonstahl)
  *  - Chlorid: Anhaltswert 0,5 M.-% bez. Zement (Spannstahl 0,2 M.-%)
  *  - Haftzug: f_ht = F/A mit Stempel Ø 50 mm; Anforderung ≥ 1,5 N/mm² und Bruch im Beton
@@ -31,6 +34,44 @@ export interface RueckprallErgebnis extends Ergebnis {
   /** grobe Klasseneinordnung des Moduls (Schwellen = f_ck der Klasse) */
   klasse: string;
 }
+/**
+ * Einheitliche Lehrkurve des Rückprallhammers (Typ N, horizontaler Schlag): f_c ≈ a·R^b in N/mm² mit a = 0,0125, b = 2,22.
+ * Keine Bezugskurve nach DIN EN 13791 – ohne Kalibrierung an Bohrkernen nur ein Schätzwert. Unter R = 10 wird mit 10 gerechnet.
+ * Runde 5 (Z55): ersetzt die bisherigen Kurven 0,027·R^2,1 (ZfP) und 0,027·R^1,85 (Labor).
+ */
+export const RUECKPRALL_LEHRKURVE = { a: 0.0125, b: 2.22, rMin: 10 } as const;
+/** Schätzwert der Druckfestigkeit in N/mm² aus dem korrigierten Rückprallwert R (Lehrkurve, optional um Δf verschoben) */
+export function rueckprallLehrkurve(r: number, deltaF = 0): number {
+  return RUECKPRALL_LEHRKURVE.a * Math.pow(Math.max(RUECKPRALL_LEHRKURVE.rMin, r), RUECKPRALL_LEHRKURVE.b) + deltaF;
+}
+/** Text für Ergebnis-Hinweise: ohne Kalibrierung nur Schätzung */
+export const RUECKPRALL_HINWEIS_SCHAETZUNG = 'Schätzwert nach Lehrkurve f_c ≈ 0,0125·R^2,22 ohne Kalibrierung an Bohrkernen. Eine Bauwerksdruckfestigkeit nach DIN EN 13791:2020 (Abschnitt 8.2/8.3) erfordert die Verschiebung der Kurve über mindestens drei Kalibrierkerne aus demselben Prüfbereich.';
+
+export interface KalibrierPaar { /** korrigierter Rückprallwert am Kernort */ r: number; /** Kernfestigkeit in N/mm² */ fKern: number }
+export interface KalibrierErgebnis extends Ergebnis {
+  n: number;
+  /** Verschiebung Δf = Mittelwert(f_Kern − f_Lehr(R)) in N/mm² */
+  deltaF: number;
+  /** Streuung der Differenzen s(f_Kern − f_Lehr) in N/mm² */
+  sDelta: number;
+}
+/**
+ * Verschiebung der Lehrkurve über Kalibrierkerne (Vorgehen nach DIN EN 13791:2020, 8.2/8.3: indirekte Prüfung plus
+ * mindestens drei Bohrkerne aus demselben Prüfbereich). Δf = Mittelwert der Differenzen Kern − Kurve. Den in der Norm
+ * zusätzlich geforderten Abschlag für die Aussagewahrscheinlichkeit setzt der Kern nicht an (vorläufig, F-Freigabe).
+ */
+export function rueckprallKalibrierung(paare: readonly KalibrierPaar[]): KalibrierErgebnis {
+  const h: Hinweis[] = [];
+  muss(h, paare.every(p => istEndlich(p.r, p.fKern) && p.fKern > 0), 'kalibrierung', 'Rückprallwerte und Kernfestigkeiten müssen Zahlen sein, die Kernfestigkeit > 0.');
+  muss(h, paare.length >= 3, 'kalibrierung', 'Für die Verschiebung der Kurve sind mindestens drei Kalibrierkerne erforderlich (DIN EN 13791:2020, 8.3).');
+  if (hatFehler(h)) return { n: paare.length, deltaF: 0, sDelta: 0, ...abschluss(h) };
+  const d = paare.map(p => p.fKern - rueckprallLehrkurve(p.r));
+  const deltaF = d.reduce((a, x) => a + x, 0) / d.length;
+  const sDelta = d.length > 1 ? Math.sqrt(d.reduce((a, x) => a + (x - deltaF) ** 2, 0) / (d.length - 1)) : 0;
+  h.push({ stufe: 'warnung', feld: 'kalibrierung', text: 'Verschiebung Δf als Mittelwert der Differenzen; der Abschlag für die Aussagewahrscheinlichkeit nach DIN EN 13791 ist nicht enthalten (Lehrdarstellung).' });
+  return { n: paare.length, deltaF, sDelta, ...abschluss(h) };
+}
+
 export function rueckprall(rueckprallwert: number, richtung: Schlagrichtung, karbTiefeMm: number): RueckprallErgebnis {
   const h: Hinweis[] = [];
   muss(h, istEndlich(rueckprallwert, karbTiefeMm), 'eingabe', 'Rückprallwert und Karbonatisierungstiefe müssen Zahlen sein.');
@@ -40,7 +81,7 @@ export function rueckprall(rueckprallwert: number, richtung: Schlagrichtung, kar
   if (richtung === 'up') rKorr += 3.5;
   const kKarb = karbTiefeMm > 5 ? Math.max(0.75, 1.0 - (karbTiefeMm - 5) * 0.015) : 1.0;
   const rFinal = rKorr * kKarb;
-  const fcSchaetz = 0.0125 * Math.pow(rFinal, 2.22);
+  const fcSchaetz = rueckprallLehrkurve(rFinal);
   let klasse = 'C16/20';
   if (fcSchaetz >= 50) klasse = 'C50/60';
   else if (fcSchaetz >= 45) klasse = 'C45/55';
@@ -49,7 +90,7 @@ export function rueckprall(rueckprallwert: number, richtung: Schlagrichtung, kar
   else if (fcSchaetz >= 25) klasse = 'C25/30';
   else if (fcSchaetz >= 20) klasse = 'C20/25';
   if (rueckprallwert < 20 || rueckprallwert > 55) h.push({ stufe: 'warnung', feld: 'rueckprall', text: 'Rückprallwert außerhalb 20 … 55: Die Lehr-Näherung ist dort nicht abgesichert.' });
-  h.push({ stufe: 'warnung', feld: 'fcSchaetz', text: 'Schätzwert ohne Kalibrierung an Bohrkernen (DIN EN 13791) – nur zur Orientierung.' });
+  h.push({ stufe: 'warnung', feld: 'fcSchaetz', text: RUECKPRALL_HINWEIS_SCHAETZUNG });
   return { rKorr, kKarb, rFinal, fcSchaetz, klasse, ...abschluss(h) };
 }
 
@@ -78,18 +119,23 @@ export function ultraschall(abstandM: number, laufzeitUs: number, dichte: number
 
 // ---------------------------------------------------------------- Potentialfeld
 export type KorrosionsWahrscheinlichkeit = 'gering' | 'ungewiss' | 'hoch';
-/** Einstufung im Prüfsimulator: ≤ −350 mV hoch, ≤ −200 mV ungewiss (Potential in mV gegen Cu/CuSO₄);
- *  Grenze −350 mV wie im Interpretations-Navigator (potentialStatus) eingeschlossen (Befund 9 aus #160) */
+/** Grenzen der Potentialeinstufung in mV gegen Cu/CuSO₄ (ASTM C876): positiver als −200 mV gering, negativer als −350 mV hoch */
+export const POTENTIAL_GRENZEN_MV = { gering: -200, hoch: -350 } as const;
+/**
+ * Einheitliche Einstufung (Runde 5) für ZfP, Bauwerksuntersuchung und Labor: E < −350 mV hoch, −350 ≤ E ≤ −200 mV ungewiss,
+ * E > −200 mV gering (Potential in mV gegen Cu/CuSO₄; ASTM C876). Das DGZfP-Merkblatt B3 empfiehlt statt fester Grenzen die
+ * objektbezogene statistische Auswertung (Häufigkeitsverteilung) – die festen Grenzen sind eine Lehr-Orientierung.
+ * Vorher: Grenze −350 mV in der Bauwerksuntersuchung eingeschlossen (≤ −350 hoch), im Modul ZfP ausgeschlossen.
+ */
 export function potentialStufe(potentialMv: number): KorrosionsWahrscheinlichkeit {
-  if (potentialMv <= -350) return 'hoch';
-  if (potentialMv <= -200) return 'ungewiss';
+  if (potentialMv < POTENTIAL_GRENZEN_MV.hoch) return 'hoch';
+  if (potentialMv <= POTENTIAL_GRENZEN_MV.gering) return 'ungewiss';
   return 'gering';
 }
-/** Einstufung im Interpretations-Navigator: ≤ −350 mV aktiv, ≤ −200 mV unsicher (gleiche Grenzen wie potentialStufe) */
+/** Einstufung im Interpretations-Navigator mit denselben Grenzen wie potentialStufe */
 export function potentialStatus(potentialMv: number): 'passiv' | 'unsicher' | 'aktiv' {
-  if (potentialMv <= -350) return 'aktiv';
-  if (potentialMv <= -200) return 'unsicher';
-  return 'passiv';
+  const s = potentialStufe(potentialMv);
+  return s === 'hoch' ? 'aktiv' : s === 'ungewiss' ? 'unsicher' : 'passiv';
 }
 
 // ---------------------------------------------------------------- Betondeckung

@@ -130,7 +130,7 @@ export default function TunnelbauTab({ betonKlasse, gebirgsdruck, setBetonKlasse
               if (betonKlasse === 'C20/25') f_ck = 20;
               else if (betonKlasse === 'C30/37') f_ck = 30;
 
-              // Rechenkern src/calc/verkehrswegebau.ts: Kesselformel σ = p·R/d, f_cd = α_cc·f_ck/γ_c (γ_c = 1,3, α_cc = 0,85)
+              // Rechenkern src/calc/verkehrswegebau.ts: Kesselformel σ = p·R/d, f_cd = α_cc·f_ck/γ_c (γ_c = 1,5 vorübergehend, α_cc = 0,85)
               const ring = spritzbetonRing(tunnelRadius, gebirgsdruck, spritzbetonDicke, f_ck);
               const sigma_ring = ring.sigmaRing; // in MPa
               const f_cd = ring.fcd; // in MPa
