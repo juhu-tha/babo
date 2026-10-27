@@ -1,8 +1,16 @@
 /**
- * Zentrale Formatierungsfunktionen nach deutschen Typografie- und Normstandards:
- * - Tausendertrennung mit Punkt (z. B. 1.000 oder 210.000)
+ * Zentrale Formatierungsfunktionen (deutsche Schreibweise):
+ * - Tausendertrennung einheitlich mit Punkt (z. B. 1.000 oder 210.000) – in Fließtext, Rechnerausgaben,
+ *   Diagrammen und KaTeX-Formeln (Projektkonvention, Gutachten 27.10.2026; Begründung in docs/architektur.md,
+ *   Abschnitt „Zahlformat“). Hinweis: DIN 5008 und DIN 1333 empfehlen für Zahlen (außer Geldbeträgen) ein
+ *   Leerzeichen; eine Umstellung wäre hier zentral über TAUSENDER_TRENNER möglich (Prüfpunkt Prof. Huber).
  * - Dezimal- / Nachkommastellentrennung mit Komma (z. B. 0,40 oder 3,14)
  */
+
+/** Tausendertrennzeichen der Projektkonvention (Ausgabe von toLocaleString('de-DE')) */
+export const TAUSENDER_TRENNER = '.';
+/** ersetzt den Tausenderpunkt aus toLocaleString('de-DE') durch TAUSENDER_TRENNER (derzeit unverändert) */
+const gruppiert = (s: string) => (TAUSENDER_TRENNER === '.' ? s : s.replace(/\./g, TAUSENDER_TRENNER));
 
 export function formatDeZahl(
   val: number | string | null | undefined,
@@ -13,10 +21,10 @@ export function formatDeZahl(
   if (isNaN(num)) return typeof val === 'string' ? String(val) : '–';
   if (!Number.isFinite(num)) return '–';
 
-  return num.toLocaleString('de-DE', {
+  return gruppiert(num.toLocaleString('de-DE', {
     minimumFractionDigits: fractionDigits !== undefined ? fractionDigits : undefined,
     maximumFractionDigits: fractionDigits !== undefined ? fractionDigits : 2,
-  });
+  }));
 }
 
 export function formatDeGanzzahl(val: number | string | null | undefined): string {
@@ -32,11 +40,11 @@ export function parseDeZahl(str: string): number {
 
 /**
  * Deutsche Zahl für KaTeX-Formeln: Dezimalkomma als {,} (ohne Zusatzabstand),
- * Tausendertrennung als schmales Leerzeichen \, ; NaN/Infinity → "–".
+ * Tausendertrennung mit Punkt wie im Fließtext (einheitlich, Gutachten 27.10.2026); NaN/Infinity → "–".
  */
 export function formatDeTeX(val: number | null | undefined, fractionDigits?: number): string {
   if (val === null || val === undefined || !Number.isFinite(val)) return '\\text{–}';
-  return formatDeZahl(val, fractionDigits).replace(/\./g, '\\,').replace(/(?<!\\),/g, '{,}');
+  return formatDeZahl(val, fractionDigits).replace(/,/g, '{,}');
 }
 
 /**
@@ -46,11 +54,11 @@ export function formatDeTeX(val: number | null | undefined, fractionDigits?: num
  */
 export function formatDeWert(val: number | null | undefined): string {
   if (val === null || val === undefined || !Number.isFinite(val)) return '–';
-  return val.toLocaleString('de-DE', { maximumFractionDigits: 6, useGrouping: Math.abs(val) >= 10000 });
+  return gruppiert(val.toLocaleString('de-DE', { maximumFractionDigits: 6, useGrouping: Math.abs(val) >= 10000 }));
 }
 
-/** Wie formatDeWert, aber für KaTeX ({,} als Dezimalkomma, \, als Tausendertrennung). */
+/** Wie formatDeWert, aber für KaTeX ({,} als Dezimalkomma, Punkt als Tausendertrennung wie im Fließtext). */
 export function formatDeTeXWert(val: number | null | undefined): string {
   if (val === null || val === undefined || !Number.isFinite(val)) return '\\text{–}';
-  return formatDeWert(val).replace(/\./g, '\\,').replace(/(?<!\\),/g, '{,}');
+  return formatDeWert(val).replace(/,/g, '{,}');
 }

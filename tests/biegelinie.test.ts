@@ -1,5 +1,5 @@
 // Rechenkern Biegelinie (Z24, Modul „Formänderungen“): Einfeldträger und Kragarm unter F und q
-import { biegelinie, biegesteifigkeit, traegheitRechteck, werkstoffVergleich, BIEGE_WERKSTOFFE, BIEGE_PROFILE, type BiegelinieEingabe } from '../src/calc/biegelinie';
+import { biegelinie, biegungAn, biegesteifigkeit, traegheitRechteck, werkstoffVergleich, BIEGE_WERKSTOFFE, BIEGE_PROFILE, type BiegelinieEingabe } from '../src/calc/biegelinie';
 import { E_BAUSTAHL, HOLZ_EN338 } from '../src/data/kennwerte';
 
 const fehler: string[] = [];
@@ -77,6 +77,11 @@ pruefe(biegelinie({ ...basis, q: 0 }).hinweise.some(h => h.stufe === 'warnung' &
 pruefe(biegelinie({ ...basis, q: 20 }).hinweise.some(h => h.stufe === 'warnung' && /L\/300/.test(h.text)), 'L/300 überschritten → Warnung');
 pruefe(biegelinie({ ...basis, E: 500 }).hinweise.some(h => h.stufe === 'warnung' && h.feld === 'E'), 'E klein → Warnung');
 pruefe(biegelinie({ ...basis, I: 1, q: 50 }).hinweise.some(h => /0,1 rad/.test(h.text)), 'große Neigung → Warnung');
+// Unbekannte Lagerung (Gutachten 27.10.2026): Fehler statt stillem Kragarm
+const unbekannt = biegelinie({ ...basis, lagerung: 'zweifeld' as unknown as BiegelinieEingabe['lagerung'] });
+pruefe(unbekannt.hinweise.some(h => h.stufe === 'fehler' && h.feld === 'lagerung') && unbekannt.verlauf.length === 0 && Number.isNaN(unbekannt.wMax), 'unbekannte Lagerung → Fehler, kein Ergebnis');
+pruefe(Number.isNaN(biegungAn({ ...basis, lagerung: '' as unknown as BiegelinieEingabe['lagerung'] }, 1, 1000).w), 'biegungAn mit unbekannter Lagerung → NaN statt Kragarm');
+pruefe(!biegelinie(basis).hinweise.some(h => h.feld === 'lagerung'), 'gültige Lagerung → kein Lagerungsfehler');
 
 // 5. Fuzz: 1000 Zufallseingaben → entweder Fehler oder endliche Ergebnisse
 let zufall = 2024;

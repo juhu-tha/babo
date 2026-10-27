@@ -76,7 +76,7 @@ export const MODULE = [
     meta: 'Interaktive Lern- und Wissensplattform für Baustoffkunde, Werkstoffmechanik, Bauen im Bestand, Kreislaufwirtschaft, Nachhaltiges Bauen & Co. Entwickelt an der TH Augsburg.',
     suche: ['startseite', 'home', 'willkommen', 'übersicht', 'begrüßung', 'huber', 'augsburg', 'portal'] },
   { id: 'admin', label: 'Admin (THA)', icon: 'ShieldAlert', gruppe: 'Allgemein',
-    baum: { titel: 'Admin (THA)', typ: 'info', kurz: 'Auditprompt, Design-Guidelines, Code-Metriken & Tech-Stack.', icon: 'ShieldAlert' } },
+    baum: { titel: 'Admin (THA)', typ: 'info', kurz: 'Audit (Gutachten, Zulieferungen, Umsetzungsplan, F-Freigabe, Prüflisten), Auditprompt, Code-Metriken & Tech-Stack.', icon: 'ShieldAlert' } },
   { id: 'anleitung', label: 'Anleitung', icon: 'BookOpen', gruppe: 'Allgemein',
     baum: { titel: 'Anleitung & Handbuch', typ: 'info', kurz: 'Didaktischer Leitfaden, 6 Prüfdimensionen & Bedienung.', icon: 'BookOpen' },
     meta: 'Nutzerhandbuch und Anleitung für das BaustoffBoard. Erfahren Sie, wie Sie interaktive Rechner, Simulationen und Fachdatenbanken optimal nutzen.',

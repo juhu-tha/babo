@@ -8,25 +8,13 @@ import inhalt from '@/content/lca/LCA.json';
 import { einzelbaustoffA1A4 } from '@/src/calc/lca';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { MdText } from '@/src/components/inhalt/MdText';
-import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 // Comprehensive EPD Reference Database representing realistic German ÖKOBAUDAT entries for students
 const REFERENZEN_EPD = inhalt.daten.REFERENZEN_EPD;
 
-type LcaTab = 'normen' | 'phasen' | 'indikatoren' | 'epd-db' | 'ingenieurbau' | 'student-guide';
-
-/** Reiter (Z53: Gliederung langer Module über ModuleTabs) */
-const LCA_TABS: readonly ModulTab<LcaTab>[] = [
-  { id: 'normen', label: inhalt.werte.zertifizierungDeklarationen, icon: Award },
-  { id: 'phasen', label: inhalt.werte.lebenszyklusphasenAD, icon: Recycle },
-  { id: 'indikatoren', label: 'Umweltindikatoren', icon: Activity },
-  { id: 'epd-db', label: 'EPD-Musterdatenbank', icon: FileText },
-  { id: 'ingenieurbau', label: inhalt.werte.dinEn17472Ingenieurbau, icon: Milestone },
-  { id: 'student-guide', label: 'Studierenden-Leitfaden', icon: GraduationCap },
-];
-
 export default function LCA() {
-  const [activeTab, setActiveTab] = useState<LcaTab>('normen');
+  const [activeTab, setActiveTab] = useState<'normen' | 'phasen' | 'indikatoren' | 'epd-db' | 'ingenieurbau' | 'student-guide'>('normen');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('Alle');
   const [selectedEpdId, setSelectedEpdId] = useState<string>('beton-cem1');
@@ -74,6 +62,15 @@ export default function LCA() {
 
   const selectedEpdItem = REFERENZEN_EPD.find(e => e.id === selectedEpdId) || REFERENZEN_EPD[0];
 
+  const lcaReiter = [
+    { id: 'normen' as const, label: inhalt.werte.zertifizierungDeklarationen, icon: Award },
+    { id: 'phasen' as const, label: inhalt.werte.lebenszyklusphasenAD, icon: Recycle },
+    { id: 'indikatoren' as const, label: 'Umweltindikatoren', icon: Activity },
+    { id: 'epd-db' as const, label: 'EPD-Musterdatenbank', icon: FileText },
+    { id: 'ingenieurbau' as const, label: inhalt.werte.dinEn17472Ingenieurbau, icon: Milestone },
+    { id: 'student-guide' as const, label: 'Studierenden-Leitfaden', icon: GraduationCap }
+  ] as const;
+
   return (
     <div className="flex flex-col gap-6">
       
@@ -84,13 +81,11 @@ export default function LCA() {
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p><MdText text={inhalt.texte.dieÖkobilanzierungLifeCycle} /></p>
         </div>
-
       </div>
 
-      {/* Reiter (Z53: ModuleTabs) */}
-      <ModuleTabs label="Bereiche der Ökobilanzierung" tabs={LCA_TABS} aktiv={activeTab} onWechsel={setActiveTab} variante="kachel" className="flex flex-col gap-6 [&>[role=tablist]]:p-4 [&>[role=tablist]]:bg-slate-50/50 [&>[role=tablist]]:rounded-2xl [&>[role=tablist]]:border [&>[role=tablist]]:border-rose-100">
-      <div className="flex flex-col gap-6">
-
+      {/* Reiterleiste (gemeinsame Reiter-Komponente, ARIA-Tabs; Gutachten 27.10.2026) */}
+      <ModuleTabs label="Bereiche der Ökobilanzierung" tabs={lcaReiter} aktiv={activeTab} onWechsel={setActiveTab} variante="kachel"
+        className="flex flex-col gap-6 [&>[role=tablist]]:p-4 [&>[role=tablist]]:bg-slate-50/50 [&>[role=tablist]]:rounded-2xl [&>[role=tablist]]:border [&>[role=tablist]]:border-rose-100">
       {/* Tab 1: Normen */}
       {activeTab === 'normen' && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 animate-in fade-in duration-350">
@@ -995,7 +990,6 @@ export default function LCA() {
 
         </div>
       )}
-      </div>
       </ModuleTabs>
 
       <ModuleFooter

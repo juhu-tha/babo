@@ -90,16 +90,24 @@ export function kragF(x: number, F: number, a: number, EI: number): { w: number;
 
 /** w [m] und w' [rad] an der Stelle x (Superposition F + q) */
 export function biegungAn(e: BiegelinieEingabe, x: number, EI: number): { w: number; phi: number } {
-  const lf = e.lagerung === 'einfeldtraeger' ? einfeldF(x, e.L, e.F, e.a, EI) : kragF(x, e.F, e.a, EI);
-  const lq = e.lagerung === 'einfeldtraeger' ? einfeldQ(x, e.L, e.q, EI) : kragQ(x, e.L, e.q, EI);
+  let lf: { w: number; phi: number }, lq: { w: number; phi: number };
+  if (e.lagerung === 'einfeldtraeger') { lf = einfeldF(x, e.L, e.F, e.a, EI); lq = einfeldQ(x, e.L, e.q, EI); }
+  else if (e.lagerung === 'kragarm') { lf = kragF(x, e.F, e.a, EI); lq = kragQ(x, e.L, e.q, EI); }
+  // Unbekannte Lagerung: kein stiller Ersatz (früher Kragarm) – NaN; biegelinie() meldet den Fehler über muss()
+  else return { w: NaN, phi: NaN };
   return { w: lf.w + lq.w, phi: lf.phi + lq.phi };
 }
+
+/** Zulässige Lagerungen des Rechenkerns */
+export const LAGERUNGEN: readonly Lagerung[] = ['einfeldtraeger', 'kragarm'];
+export const istLagerung = (l: unknown): l is Lagerung => (LAGERUNGEN as readonly unknown[]).includes(l);
 
 const LEER = (hinweise: Hinweis[]): BiegelinieErgebnis => ({ EI: NaN, verlauf: [], wMax: NaN, xWMax: NaN, wKenn: NaN, phiA: NaN, phiB: NaN, lDurchW: NaN, hinweise });
 
 /** Biegelinie mit n Abschnitten (n + 1 Punkte); w_max über die Stützstellen und Nullstelle von w' */
 export function biegelinie(e: BiegelinieEingabe, n = 200): BiegelinieErgebnis {
   const hinweise: Hinweis[] = [];
+  muss(hinweise, istLagerung(e.lagerung), 'lagerung', `Unbekannte Lagerung „${String(e.lagerung)}“ – zulässig sind Einfeldträger und Kragarm.`);
   muss(hinweise, istEndlich(e.L, e.F, e.a, e.q, e.E, e.I), 'eingabe', 'Länge, Lasten, E-Modul und Trägheitsmoment müssen Zahlen sein.');
   if (hatFehler(hinweise)) return LEER(hinweise);
   muss(hinweise, e.L > 0, 'L', 'Die Länge muss größer als 0 sein.');
