@@ -8,7 +8,8 @@
  * aus bauwerksuntersuchung.bohrkern, β_cc(t) und s aus betonkennwerte.ts, Stichprobenkennwerte aus statistik.ts.
  *
  * Formeln (Einheiten an den Feldern):
- *  - Rückprallhammer (ZfP): ΔR = −3 (nach unten) / +3 (nach oben), einheitliche Lehrkurve f_c ≈ 0,0125·R^2,22 aus
+ *  - Rückprallhammer (ZfP): Richtungskorrektur ΔR(R, α) nach Herstellerformel Original Schmidt Typ N aus bauwerksuntersuchung.ts
+ *    (Entscheidung Prof. Huber 27.10.; vorher pauschal ∓3 mit vertauschtem Vorzeichen), einheitliche Lehrkurve f_c ≈ 0,0125·R^2,22 aus
  *    bauwerksuntersuchung.ts (Runde 5, Z55; vorher 0,027·R^2,1); ohne Kalibrierkerne nach DIN EN 13791:2020 nur Schätzung
  *  - Ultraschall: E_dyn = ρ·v²·(1 + ν)(1 − 2ν)/(1 − ν) mit ρ = 2400 kg/m³, ν = 0,2; f_c ≈ 20·(v − 2) (v in km/s, grob)
  *  - Georadar: v = c/√ε_r mit c = 300 mm/ns, Tiefe d = v·t/2
@@ -32,7 +33,7 @@
  * Reiner Rechenkern ohne Rundung – geprüft in tests/pruefverfahren.test.ts.
  */
 import { type Hinweis, istEndlich, hatFehler, muss, bereich } from './plausibilitaet';
-import { dynamischerEModul, impactEcho, bohrkern, rueckprallLehrkurve, RUECKPRALL_LEHRKURVE, RUECKPRALL_HINWEIS_SCHAETZUNG, potentialStufe } from './bauwerksuntersuchung';
+import { dynamischerEModul, impactEcho, bohrkern, rueckprallLehrkurve, rueckprallRichtungskorrektur, RUECKPRALL_LEHRKURVE, RUECKPRALL_HINWEIS_SCHAETZUNG, potentialStufe } from './bauwerksuntersuchung';
 import { fckZumAlter, fckCubeVonFck, fckVonFckCube, BETONSTAHL } from '../data/kennwerte';
 import { betaCc, ZEMENT_S } from './betonkennwerte';
 import type { Zementklasse } from './kriechenSchwinden';
@@ -44,12 +45,13 @@ const abschluss = (h: Hinweis[]): PruefErgebnis => ({ gueltig: !hatFehler(h), hi
 
 // ================================================================ ZfP
 // ---------------------------------------------------------------- Rückprallhammer
-export type PruefWinkel = '0' | '90' | '-90';
+/** Schlagwinkel α in Grad (Proceq-Konvention): '90' = senkrecht nach oben (Decke), '-90' = senkrecht nach unten (Boden) */
+export type PruefWinkel = '0' | '90' | '45' | '-45' | '-90';
 /** Einheitliche Lehrkurve f_c = a·R^b (bauwerksuntersuchung.ts; keine Bezugskurve nach DIN EN 13791) */
 export const RUECKPRALL_ZFP = RUECKPRALL_LEHRKURVE;
-/** Richtungskorrektur ΔR: nach unten −3, nach oben +3 */
-export function rueckprallKorrektur(winkel: PruefWinkel): number {
-  return winkel === '90' ? -3 : winkel === '-90' ? 3 : 0;
+/** Richtungskorrektur ΔR(R, α) auf horizontale Schlagrichtung (zentrale Funktion in bauwerksuntersuchung.ts) */
+export function rueckprallKorrektur(winkel: PruefWinkel, r: number): number {
+  return rueckprallRichtungskorrektur(r, Number(winkel));
 }
 /** Geschätzte Druckfestigkeit in N/mm² aus dem (korrigierten) Rückprallwert; unter R = 10 wird mit 10 gerechnet */
 export function rueckprallFestigkeitLehr(r: number): number {
@@ -59,21 +61,21 @@ export interface RueckprallZfpErgebnis extends PruefErgebnis { rCorr: number; fc
 export function rueckprallZfp(rueckprallwert: number, winkel: PruefWinkel): RueckprallZfpErgebnis {
   const h: Hinweis[] = [];
   muss(h, Number.isFinite(rueckprallwert), 'rebound', 'Der Rückprallwert muss eine Zahl sein.');
-  const rCorr = rueckprallwert + rueckprallKorrektur(winkel);
+  const rCorr = rueckprallwert + rueckprallKorrektur(winkel, rueckprallwert);
   const fc = rueckprallFestigkeitLehr(rCorr);
   if (rCorr < RUECKPRALL_ZFP.rMin) h.push({ stufe: 'warnung', feld: 'rebound', text: 'Korrigierter Rückprallwert unter 10: Die Lehrkurve wird mit R = 10 ausgewertet.' });
   bereich(h, 'rebound', rueckprallwert, 20, 60, 'Rückprallwert außerhalb 20 … 60: Die Lehr-Näherung ist dort nicht abgesichert.');
   h.push({ stufe: 'warnung', feld: 'fc', text: RUECKPRALL_HINWEIS_SCHAETZUNG });
   return { rCorr, fc, ...abschluss(h) };
 }
-/** Kurvenschar des Diagramms (horizontal, nach unten, nach oben) für R = von … bis */
+/** Kurvenschar des Diagramms (horizontal, nach unten α = −90°, nach oben α = +90°) über dem abgelesenen R = von … bis */
 export function rueckprallKurven(von = 20, bis = 60, schritt = 2) {
   const labels: number[] = [], horizontal: number[] = [], unten: number[] = [], oben: number[] = [];
   for (let r = von; r <= bis; r += schritt) {
     labels.push(r);
     horizontal.push(rueckprallFestigkeitLehr(r));
-    unten.push(rueckprallFestigkeitLehr(r + rueckprallKorrektur('90')));
-    oben.push(rueckprallFestigkeitLehr(r + rueckprallKorrektur('-90')));
+    unten.push(rueckprallFestigkeitLehr(r + rueckprallKorrektur('-90', r)));
+    oben.push(rueckprallFestigkeitLehr(r + rueckprallKorrektur('90', r)));
   }
   return { labels, horizontal, unten, oben };
 }

@@ -77,6 +77,91 @@ export function dehnungsKennwerte(fck: number): DehnungsKennwerte {
   };
 }
 
+// ---------------------------------------------------------------------------------------------
+// Bemessungswert der Betondruckfestigkeit f_cd (Entscheidung Prof. Huber 27.10.).
+// Einzige Stelle für f_cd in den Rechenkernen (Biegung, Querkraft, Stütze, Durchstanzen, Werkstoffmodelle).
+// ---------------------------------------------------------------------------------------------
+
+/** Teilsicherheitsbeiwerte γ_c nach DIN EN 1992-1-1/NA, Tab. 2.1DE (ständig/vorübergehend 1,5; außergewöhnlich 1,3) */
+export const GAMMA_C = { staendig: 1.5, aussergewoehnlich: 1.3 } as const;
+
+/** α_cc = 0,85 nach DIN EN 1992-1-1/NA, NDP zu 3.1.6(1)P */
+export const ALPHA_CC = 0.85;
+
+/**
+ * Zusätzliche Abminderung für hochfesten Beton ab C55/67 – vorläufig, F-Freigabe (Prof. Huber):
+ * f_cd = α_cc·f_ck/(γ_c·γ_c') mit γ_c' = 1/(1,1 − f_ck/500) ≥ 1, d. h. Faktor (1,1 − f_ck/500) ≤ 1 auf f_cd.
+ * Öffentlich belegt ist der Faktor als γ_c' in DIN 1045-1:2008, 5.3.3(9) (Verweis in 9.1.6(2), Wiedergabe umwelt-online)
+ * sowie im NA DE als Beiwert ν₂ = 1,1 − f_ck/500 ≤ 1,0 auf die Festigkeitsabminderung ν von Druckstreben/Fugen
+ * (LBV Brandenburg, bautechnik-Tipps 15-03 und 15-06; FRILO-Handbuch „Nachweise am Stahlbetonquerschnitt“, NA-D).
+ * Eine globale Abminderung von f_cd im NDP zu 3.1.6(1) war öffentlich nicht eindeutig belegbar → Schalter hier zentral.
+ */
+export const FCD_HOCHFEST_AKTIV = false; // Entscheidung Prof. Huber 27.10. (später): aus, bis der Normtext vorliegt (Gefahr der Doppelabminderung mit η)
+
+/** Faktor (1,1 − f_ck/500) für f_ck ≥ 55 N/mm² (≤ 1,0), sonst 1,0 – zugleich ν₂ nach NA DE */
+export function hochfestFaktor(fck: number): number {
+  return fck >= 55 ? Math.min(1, 1.1 - fck / 500) : 1;
+}
+
+export interface FcdOptionen {
+  /** α_cc (Standard 0,85) */
+  alphaCc?: number;
+  /** γ_c (Standard 1,5; außergewöhnlich GAMMA_C.aussergewoehnlich = 1,3) */
+  gammaC?: number;
+  /** zusätzliche Abminderung ab C55/67 (Standard FCD_HOCHFEST_AKTIV) */
+  hochfest?: boolean;
+}
+
+/**
+ * Bemessungswert der Betondruckfestigkeit f_cd = α_cc·f_ck/γ_c [N/mm²] nach DIN EN 1992-1-1/NA, 3.1.6(1),
+ * ab C55/67 zusätzlich · (1,1 − f_ck/500) (vorläufig, F-Freigabe; siehe FCD_HOCHFEST_AKTIV).
+ */
+export function fcdBeton(fck: number, opt: FcdOptionen = {}): number {
+  const alphaCc = opt.alphaCc ?? ALPHA_CC;
+  const gammaC = opt.gammaC ?? GAMMA_C.staendig;
+  const hf = (opt.hochfest ?? FCD_HOCHFEST_AKTIV) ? hochfestFaktor(fck) : 1;
+  return (alphaCc * fck * hf) / gammaC;
+}
+
+/** Hinweistext, wenn die Hochfest-Abminderung greift (f_ck ≥ 55 N/mm² und Schalter aktiv), sonst null */
+export function fcdHochfestHinweis(fck: number): string | null {
+  if (!FCD_HOCHFEST_AKTIV || !(fck >= 55)) return null;
+  const f = hochfestFaktor(fck).toFixed(3).replace('.', ',');
+  return `Hochfester Beton (≥ C55/67): f_cd zusätzlich mit (1,1 − f_ck/500) = ${f} abgemindert (γ_c' = 1/(1,1 − f_ck/500); vorläufig, F-Freigabe).`;
+}
+
+/**
+ * f_cd-Optionen der Lehrmodule, die f_cd früher selbst als 0,85·f_ck/1,5 gerechnet haben (Umstellung 27.10.).
+ * Die Werte sind gegenüber vorher unverändert (tests/fcdModule.test.ts). Module, deren Eingabebereich C55/67 und
+ * höher erreicht, rechnen bewusst ohne Hochfest-Abminderung (`hochfest: false`) – bisheriger Stand; ob sie dem
+ * zentralen Schalter FCD_HOCHFEST_AKTIV folgen sollen, ist Prüfpunkt (vorläufig, F-Freigabe).
+ * Module mit Bereich < C55/67 folgen dem Schalter (dort ohne Wirkung).
+ */
+export const FCD_MODUL = {
+  /** Beispielrechnungen, Stahlbeton-Biegung (C20/25 … C30/37) */
+  beispielrechnungen: {},
+  /** Beispielrechnungen, Bauen im Bestand (Altbeton aus Unterlagen bzw. Prüfung) */
+  beispielBestand: { hochfest: false },
+  /** Stahlbeton von 0 bis 100 (C20/25 … C50/60) */
+  stahlbetonNullBisHundert: {},
+  /** Betonkennwerte, Tabelle C12/15 … C100/115: Spalte „f_cd (DE)“ = α_cc·f_ck/γ_c */
+  betonkennwerteTabelle: { hochfest: false },
+  /** Spannbeton-Kennwerte, f_cd(28 d) und f_cd(t) (C30/37 … C80/95) */
+  spannbetonKennwerte: { hochfest: false },
+  /** Carbonbeton, Spannungsblock (f_ck 30 … 100 N/mm²) */
+  carbonbeton: { hochfest: false },
+  /** Interpretations-Navigator, f_cd,is aus f_ck,is (10 … 50 N/mm²) */
+  interpretationNavigator: {},
+  /** Historische Materialkennwerte, Neubau-Ansatz γ_c = 1,5 */
+  historischStandard: { hochfest: false },
+  /**
+   * Historische Materialkennwerte, Bestandsbewertung mit γ_c = 1,35: fachlich bewusst abgeminderter Teilsicherheitsbeiwert
+   * für die Bewertung mit am Bauwerk über Bohrkerne bestätigter Festigkeit (Lehransatz des Moduls, kein Wert aus Tab. 2.1DE;
+   * Quelle bei der F-Freigabe benennen).
+   */
+  historischBewertung: { gammaC: 1.35, hochfest: false },
+} as const satisfies Record<string, FcdOptionen>;
+
 /** Stützstellen f_ck → f_ck,cube der Tab. 3.1 (aufsteigend) */
 const WUERFEL_STUETZ: readonly (readonly [number, number])[] = ALLE.map(c => [c.fck, c.fck_cube] as const).sort((a, b) => a[0] - b[0]);
 

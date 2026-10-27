@@ -9,13 +9,15 @@
 import fs from 'fs';
 import path from 'path';
 import { seitenUrl } from './seitenUrl.mjs';
+import { inaktiveIds } from '../suchindex-routen.mjs';
 const { chromium } = await import('playwright');
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..');
 const ai = n => { const i = process.argv.indexOf(n); return i > 0 ? process.argv[i + 1] : undefined; };
 const BASIS = ai('--basis') ?? 'http://localhost:4173/';
 const reg = fs.readFileSync(path.join(ROOT, 'src/registry/modules.ts'), 'utf8');
 const teil = reg.slice(reg.indexOf('export const MODULE = ['), reg.indexOf('] as const satisfies readonly ModulEintrag[]'));
-const alle = [...teil.matchAll(/^ {2}\{ id: '([a-z0-9_-]+)'/gm)].map(m => m[1]).filter(id => !id.startsWith('divider_') && id !== 'admin');
+const inaktiv = inaktiveIds(reg); // abgeschaltete Seiten (INAKTIVE_GRUPPEN)
+const alle = [...teil.matchAll(/^ {2}\{ id: '([a-z0-9_-]+)'/gm)].map(m => m[1]).filter(id => !id.startsWith('divider_') && id !== 'admin' && !inaktiv.includes(id));
 const routen = ai('--routen')?.split(',') ?? alle;
 const exe = process.env.CHROMIUM_PATH || (fs.existsSync('/opt/pw-browsers/chromium') ? '/opt/pw-browsers/chromium' : undefined);
 const b = await chromium.launch(exe ? { executablePath: exe } : {});

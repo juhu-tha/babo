@@ -261,21 +261,44 @@ function gleicheHerkunft(req: Request): boolean {
 }
 
 // --- Vorgerenderte Modulseiten (Z52) ---------------------------------------------
-// dist/modul/routen.json: { ids: vorgerenderte Module, bekannt: alle Modul-IDs, aliase: Alias → ID }
-interface VorgerenderteRouten { ids: Set<string>; bekannt: Set<string>; aliase: Record<string, string> }
+// dist/modul/routen.json: { ids: vorgerenderte Module, bekannt: alle Modul-IDs, aliase: Alias → ID,
+//   inaktiv: abgeschaltete Seiten samt Aliasen (INAKTIVE_GRUPPEN in src/registry/modules.ts) }
+interface VorgerenderteRouten { ids: Set<string>; bekannt: Set<string>; aliase: Record<string, string>; inaktiv: Set<string> }
 let routenCache: VorgerenderteRouten | null | undefined;
 function vorgerenderteRouten(distPath: string): VorgerenderteRouten | null {
   if (routenCache === undefined) {
     try {
-      const j = JSON.parse(fs.readFileSync(path.join(distPath, "modul", "routen.json"), "utf8")) as { ids?: string[]; bekannt?: string[]; aliase?: Record<string, string> };
+      const j = JSON.parse(fs.readFileSync(path.join(distPath, "modul", "routen.json"), "utf8")) as { ids?: string[]; bekannt?: string[]; aliase?: Record<string, string>; inaktiv?: string[] };
       const ids = new Set(j.ids ?? []);
-      routenCache = { ids, bekannt: new Set([...(j.bekannt ?? []), ...ids]), aliase: { ...(j.aliase ?? {}) } };
+      routenCache = { ids, bekannt: new Set([...(j.bekannt ?? []), ...ids]), aliase: { ...(j.aliase ?? {}) }, inaktiv: new Set(j.inaktiv ?? []) };
     } catch {
       routenCache = null; // ohne Vorrendern gebaut: jede /modul/<id> bekommt index.html
     }
   }
   return routenCache;
 }
+
+// Hinweisseite für abgeschaltete Seiten (z. B. Lernpfade nach Lehrveranstaltung, 27.10.2026): Status 404 statt 410,
+// weil die Abschaltung vorübergehend ist (410 = endgültig entfernt); noindex nimmt die Adresse aus dem Suchindex,
+// nach dem Wiedereinschalten führt die Sitemap sie wieder. Ohne Skript, ohne Weiterleitung – keine Ladeschleife.
+const INAKTIV_SEITE = `<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Derzeit nicht verfügbar – BaustoffBoard THA</title>
+<style>body{font-family:system-ui,sans-serif;margin:0;padding:3rem 1rem;background:#f8f7f5;color:#1f2937}main{max-width:36rem;margin:0 auto}h1{font-size:1.5rem}a{color:#8b1a2b;font-weight:700}@media (prefers-color-scheme:dark){body{background:#111827;color:#f3f4f6}a{color:#fda4af}}</style>
+</head>
+<body>
+<main>
+<h1>Lernpfade derzeit nicht verfügbar</h1>
+<p>Die Lernpfade nach Lehrveranstaltung sind vorübergehend abgeschaltet. Alle Fachmodule bleiben erreichbar.</p>
+<p><a href="/">Zur Startseite</a> · <a href="/modul/modulstruktur">Zur Modulübersicht</a></p>
+</main>
+</body>
+</html>
+`;
 
 async function startServer() {
   const app = express();
@@ -606,6 +629,11 @@ ${prompt}
       const roh = String(req.params.id);
       const id = roh.trim().toLowerCase();
       const r = vorgerenderteRouten(distPath);
+      if (r?.inaktiv.has(id)) {
+        res.setHeader("Cache-Control", "no-cache");
+        res.setHeader("X-Robots-Tag", "noindex");
+        return res.status(404).type("html").send(INAKTIV_SEITE);
+      }
       const suche = req.originalUrl.includes("?") ? req.originalUrl.slice(req.originalUrl.indexOf("?")) : "";
       const ziel = id === "start" ? "/" : r?.aliase[id] ? `/modul/${encodeURIComponent(r.aliase[id])}` : id !== roh ? `/modul/${encodeURIComponent(id)}` : undefined;
       if (ziel) return res.redirect(301, ziel + suche);

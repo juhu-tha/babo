@@ -36,7 +36,7 @@
  * Temperaturen in °C, Längen in mm. Lehr- und Vorbemessungswerkzeug – geprüft in tests/werkstoffmodelle.test.ts.
  */
 import { EC2_NA_DE } from '../data/normParams';
-import { BETONSTAHL, E_BETONSTAHL, E_BAUSTAHL, dehnungsKennwerte } from '../data/kennwerte';
+import { BETONSTAHL, E_BETONSTAHL, E_BAUSTAHL, dehnungsKennwerte, fcdBeton } from '../data/kennwerte';
 import { type Hinweis, istEndlich, hatFehler, muss, bereich } from './plausibilitaet';
 import { formatDeZahl } from '../utils/numberFormat';
 import { maxwellRelaxation } from './kriechenSchwinden';
@@ -333,7 +333,7 @@ export interface BetonSdParameter {
 
 /** Parameter der Spannungs-Dehnungs-Linien nach Tab. 3.1 (f_ck in N/mm²) */
 export function betonSdParameter(fck: number): BetonSdParameter {
-  const fcd = (EC2_NA_DE.alphaCC * fck) / EC2_NA_DE.gammaC;
+  const fcd = fcdBeton(fck); // zentral, ab C55/67 · (1,1 − f_ck/500) (vorläufig, F-Freigabe)
   const fcm = fck + 8;
   const Ecm = 22000 * Math.pow(fcm / 10, 0.3);
   // Runde 5 (Z55): Klassenwerte aus Tab. 3.1, Zwischenwerte nach den Gleichungen der Tab. 3.1, über C90/105 gehalten

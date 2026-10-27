@@ -5,14 +5,14 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { MODULE, NAV_GRUPPEN, type ModulEintrag } from '../src/registry/modules';
+import { AKTIVE_MODULE, NAV_GRUPPEN, type ModulEintrag } from '../src/registry/modules';
 import { CURRENT_RELEASE_DATE } from '../src/data/versionData';
 
 const BASIS = 'https://baustoffboard.de/';
 
 export function sitemapEintraege(): ModulEintrag[] {
-  const alle: readonly ModulEintrag[] = MODULE;
-  return alle.filter(m => m.meta && m.id !== 'start' && m.id !== 'admin' && !m.id.startsWith('divider_'));
+  // ohne inaktive Seiten (INAKTIVE_GRUPPEN)
+  return AKTIVE_MODULE.filter(m => m.meta && m.id !== 'start' && m.id !== 'admin' && !m.id.startsWith('divider_'));
 }
 
 export function erzeugeSitemap(): string {

@@ -24,7 +24,7 @@ import {
   Box
 } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
-import { BAUM_GRUPPEN, MODUL_BY_ID } from '@/src/registry/modules';
+import { AKTIVE_BAUM_GRUPPEN, MODUL_BY_ID } from '@/src/registry/modules';
 import { iconFor } from '@/src/registry/icons';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { formatDeWert } from '@/src/utils/numberFormat';
@@ -140,7 +140,7 @@ const BAUM_CLUSTER: Omit<TreeCluster, 'groups'>[] = [
 
 export const BAUSTOFFBOARD_TREE: TreeCluster[] = BAUM_CLUSTER.map(c => ({
   ...c,
-  groups: BAUM_GRUPPEN.filter(g => g.cluster === c.id).map(g => ({
+  groups: AKTIVE_BAUM_GRUPPEN.filter(g => g.cluster === c.id).map(g => ({
     id: g.id,
     name: g.name,
     icon: iconFor(g.icon),

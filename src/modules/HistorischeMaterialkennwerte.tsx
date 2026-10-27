@@ -8,6 +8,7 @@ import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import { BlockMath, InlineMath } from 'react-katex';
 import { designLognormal, charValue, fckFromInSitu, classFor, fkMasonry, fdMasonry } from '@/src/utils/bestandKern';
+import { fcdBeton, FCD_MODUL } from '@/src/data/kennwerte';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -204,12 +205,10 @@ export default function HistorischeMaterialkennwerte() {
     const fIsCube = fIsCyl / 0.80;
 
     // Eurocode EC2 Design stress recalculations
-    const gammaC_standard = 1.5;
-    const gammaC_assessment = 1.35; // Assessment limit with verified on-site drill drilling cores
-    const alphaCc = 0.85;
-
-    const fCdStandard = (alphaCc * fIsCyl) / gammaC_standard;
-    const fCdAssessment = (alphaCc * fIsCyl) / gammaC_assessment;
+    // f_cd zentral (src/data/kennwerte.ts, α_cc = 0,85): Neubau-Ansatz γ_c = 1,5 und Bestandsbewertung mit
+    // γ_c = 1,35 – fachlich bewusst abgeminderter Beiwert bei am Bauwerk über Bohrkerne bestätigter Festigkeit.
+    const fCdStandard = fcdBeton(fIsCyl, FCD_MODUL.historischStandard);
+    const fCdAssessment = fcdBeton(fIsCyl, FCD_MODUL.historischBewertung);
 
     // Aus EINEM Kern keine Festigkeitsklasse: Einstufung erfolgt über die Stichprobe (siehe coreSeries)
     const classEstimate = inhalt.werte.nurAusStichprobeN;

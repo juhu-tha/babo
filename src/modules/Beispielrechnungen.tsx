@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HOLZ_EN338 } from '@/src/data/kennwerte';
+import { HOLZ_EN338, fcdBeton, FCD_MODUL } from '@/src/data/kennwerte';
 import { MU_LIM_STAHL } from '@/src/calc/biegung';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { GruppierteModuleTabs } from '@/src/components/ui/GruppierteModuleTabs';
@@ -185,7 +185,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
 
   // Material properties
   const f_ck = concreteClass === 'C20/25' ? 20 : concreteClass === 'C25/30' ? 25 : 30; // MPa
-  const f_cd = 0.85 * f_ck / 1.5; // design compressive strength
+  const f_cd = fcdBeton(f_ck, FCD_MODUL.beispielrechnungen); // f_cd = α_cc·f_ck/γ_c (zentral, src/data/kennwerte.ts)
   const f_yk = 500; // B500B steel in MPa
   const f_yd = f_yk / 1.15; // design yield strength
 
@@ -327,7 +327,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
   }
 
   const f_ck_final = hasPruefung ? f_ck_tested : f_ck_act;
-  const f_cd_bestand = 0.85 * (f_ck_final / 1.5);
+  const f_cd_bestand = fcdBeton(f_ck_final, FCD_MODUL.beispielBestand);
 
   // Derived values for Stahl Bestand:
   const f_yk_stahl = {

@@ -9,7 +9,7 @@ import type { AuditStatus, Phase } from './typen';
 
 export const UMSETZUNGSPLAN_STAND = '2026-10-27';
 /** zusammengeführte Pull Requests bis zum Stand (laut Audit-Stand) */
-export const PRS_GEMERGT = 'bis #192 (#189 und #190 über den Merge von #191)';
+export const PRS_GEMERGT = 'bis #194 (#189 und #190 über den Merge von #191)';
 
 export const UMSETZUNGSPLAN: readonly Phase[] = [
   { nr: 0, titel: 'Grundlagen und Baseline', aps: [
@@ -32,8 +32,8 @@ export const UMSETZUNGSPLAN: readonly Phase[] = [
     { ap: '2.4', titel: 'Dunkelmodus und Kontrast-Mindestwerte', status: 'erledigt' },
     { ap: '2.5', titel: 'Mobil: Werkzeugmenü, aktuelles Modul in der Kopfzeile', status: 'erledigt' },
     { ap: '2.6', titel: 'Mobil-Layout-Prüfung', status: 'erledigt' },
-    { ap: '2.7', titel: 'Mindestgröße Bedienelemente 24 × 24 px (WCAG 2.2)', status: 'erledigt', hinweis: '3 Elemente laut Gutachten noch zu klein (Maßnahme 8)' },
-    { ap: '2.8', titel: 'Reiter vereinheitlichen (ModuleTabs)', status: 'erledigt', hinweis: 'Restleisten mit aria-pressed (Maßnahme 7)' },
+    { ap: '2.7', titel: 'Mindestgröße Bedienelemente 24 × 24 px (WCAG 2.2)', status: 'erledigt', hinweis: 'restliche target-size-Elemente mit #192/#193' },
+    { ap: '2.8', titel: 'Reiter vereinheitlichen (ModuleTabs)', status: 'erledigt', hinweis: 'Reiterleisten umgestellt (#193); rund 50 Ansichtsumschalter mit aria-pressed bleiben (Maßnahme 7)' },
     { ap: '2.9', titel: 'Volltextsuche über den Inhalt aller Module', status: 'erledigt' },
     { ap: '2.10', titel: 'Einstieg in die Themen je Cluster', status: 'erledigt' },
     { ap: '2.11', titel: 'Lesbarkeit', status: 'erledigt' },
@@ -41,7 +41,7 @@ export const UMSETZUNGSPLAN: readonly Phase[] = [
   { nr: 3, titel: 'Didaktik und Quiz', aps: [
     { ap: '3.1', titel: 'Quizpool: Zuordnung zu Modulen und Clustern', status: 'erledigt' },
     { ap: '3.2', titel: 'Schema-Erweiterung (Bloom-Stufe, Niveau)', status: 'erledigt' },
-    { ap: '3.3', titel: 'Qualität der Antwortoptionen', status: 'erledigt', hinweis: 'Längenhinweis weiter abbauen (Maßnahme 10)' },
+    { ap: '3.3', titel: 'Qualität der Antwortoptionen', status: 'erledigt', hinweis: 'Distraktoren angeglichen, normRef ergänzt (#194: 27,3 % statt 37 %)' },
     { ap: '3.4', titel: 'Selbsttest-Abdeckung der Fachmodule', status: 'erledigt' },
     { ap: '3.5', titel: 'Fachliche Freigabe der Quizfragen je Cluster', status: 'wartet', hinweis: 'Prüflisten liegen vor (Z19/Z23)' },
     { ap: '3.6', titel: 'Lernziele je Fachmodul', status: 'erledigt', hinweis: 'fachliche Durchsicht Z26' },
@@ -76,7 +76,7 @@ export const UMSETZUNGSPLAN: readonly Phase[] = [
     { ap: '5.8', titel: 'Technik (Titel nicht im Code belegt)', status: 'erledigt' },
   ] },
   { nr: 6, titel: 'Lehre, Transfer und Betrieb', aps: [
-    { ap: '6.1', titel: 'Lernpfade der Lehrveranstaltungen', status: 'wartet', hinweis: 'Terminpläne zum Abgleich (Z16)' },
+    { ap: '6.1', titel: 'Lernpfade der Lehrveranstaltungen', status: 'in_arbeit', hinweis: 'Entscheidung 27.10.: inaktiv geschaltet (#197); Code und Entwürfe bleiben' },
     { ap: '6.2', titel: 'Neue Forschungsthemen (u. a. Biokohlebeton, PFAS, Altholz)', status: 'wartet' },
     { ap: '6.3', titel: 'TTZ-Weiterbildungspfad und Kursquiz', status: 'wartet', hinweis: 'TTZ-Kursliste (Z44)' },
     { ap: '6.4', titel: 'Versuchs-Handouts', status: 'wartet', hinweis: 'Laborpilot WS 26/27 (Z37/Z42)' },

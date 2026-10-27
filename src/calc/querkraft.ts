@@ -6,7 +6,7 @@
  */
 import { formatDeZahl } from '../utils/numberFormat';
 import { EC2_NA_DE } from '../data/normParams';
-import { fctmVonFck } from '../data/kennwerte';
+import { fctmVonFck, fcdBeton, fcdHochfestHinweis } from '../data/kennwerte';
 import { type Hinweis, bereich, hatFehler, istEndlich, muss } from './plausibilitaet';
 import { type Bewehrung } from './biegung';
 
@@ -24,6 +24,8 @@ export interface QuerkraftEingabe {
 
 export interface QuerkraftErgebnis {
   d: number; z: number; fcd: number; fyd: number; fctm: number;
+  /** f_cd für V_Rd,max (ohne Hochfest-Abminderung, da in ν1 = 0,75·ν2 enthalten) [N/mm²] */
+  fcd_vRdMax: number;
   vRd_max: number; vRd_c: number; vRd_cc_kN: number;
   /** cot_theta: gewählter Wert; cot_theta_eff: in der Rechnung verwendet = min(cot θ; cot θ,max) */
   cot_theta: number; cot_theta_eff: number; theta_eff_deg: number; cot_theta_max: number; theta_min_deg: number; isCotThetaExceeded: boolean;
@@ -61,7 +63,7 @@ export function pruefeQuerkraft(e: QuerkraftEingabe): Hinweis[] {
 export function bemesseQuerkraft(e: QuerkraftEingabe): QuerkraftErgebnis {
   const hinweise = pruefeQuerkraft(e);
   const leer: QuerkraftErgebnis = {
-    d: 0, z: 0, fcd: 0, fyd: 0, fctm: 0, vRd_max: 0, vRd_c: 0, vRd_cc_kN: 0, cot_theta: 0, cot_theta_eff: 0, theta_eff_deg: 0, cot_theta_max: 0, theta_min_deg: 0,
+    d: 0, z: 0, fcd: 0, fyd: 0, fctm: 0, fcd_vRdMax: 0, vRd_max: 0, vRd_c: 0, vRd_cc_kN: 0, cot_theta: 0, cot_theta_eff: 0, theta_eff_deg: 0, cot_theta_max: 0, theta_min_deg: 0,
     isCotThetaExceeded: false, asw_req: 0, asw_min: 0, asw_final: 0, isVRdcExceeded: false, isVRdMaxExceeded: false, hinweise,
   };
   if (hatFehler(hinweise)) return leer;
@@ -71,7 +73,12 @@ export function bemesseQuerkraft(e: QuerkraftEingabe): QuerkraftErgebnis {
   const d_m = (e.h - e.d1) / 100;
   const vEd_MN = e.vEd / 1000;
   const cot_theta = 1 / Math.tan((e.theta * Math.PI) / 180);
-  const fcd = (EC2_NA_DE.alphaCC * e.fck) / EC2_NA_DE.gammaC;
+  // f_cd zentral (src/data/kennwerte.ts): α_cc·f_ck/γ_c, ab C55/67 · (1,1 − f_ck/500) (vorläufig, F-Freigabe)
+  const fcd = fcdBeton(e.fck);
+  // V_Rd,max mit f_cd ohne Hochfest-Abminderung, weil ν1 = 0,75·ν2 sie bereits enthält (keine Doppelabminderung)
+  const fcdOhneHf = fcdBeton(e.fck, { hochfest: false });
+  const hfHinweis = fcdHochfestHinweis(e.fck);
+  if (hfHinweis) hinweise.push({ stufe: 'warnung', feld: 'fck', text: `${hfHinweis} V_Rd,max bleibt unverändert: ν₁ = 0,75·ν₂ enthält den Faktor bereits.` });
   const fyd = isStahl ? e.fyk / EC2_NA_DE.gammaS : e.ftk / e.gammaFRP;
   const z = 0.9 * d_m;
 
@@ -91,7 +98,7 @@ export function bemesseQuerkraft(e: QuerkraftEingabe): QuerkraftErgebnis {
 
   // V_Rd,max (6.9): ν1 = 0,75·ν2, ν2 = 1,1 − f_ck/500 ≤ 1,0 (NA DE)
   const nu1 = EC2_NA_DE.nu1 * Math.min(1.0, 1.1 - e.fck / 500);
-  const vRd_max = (b_m * z * nu1 * fcd) / (Math.tan(th) + cot_theta_eff);
+  const vRd_max = (b_m * z * nu1 * fcdOhneHf) / (Math.tan(th) + cot_theta_eff);
 
   // a_sw,erf (6.8)
   const asw_req = (vEd_MN / (z * fyd * cot_theta_eff)) * 10000;
@@ -112,7 +119,7 @@ export function bemesseQuerkraft(e: QuerkraftEingabe): QuerkraftErgebnis {
     hinweise.push({ stufe: 'warnung', feld: 'vRdMax', text: 'V_Ed überschreitet die Druckstrebentragfähigkeit V_Rd,max. Querschnitt vergrößern, Betonfestigkeit erhöhen oder θ steiler wählen.' });
   }
   return {
-    d: d_m * 100, z: z * 100, fcd, fyd, fctm,
+    d: d_m * 100, z: z * 100, fcd, fyd, fctm, fcd_vRdMax: fcdOhneHf,
     vRd_max: vRd_max * 1000, vRd_c: vRdc * 1000, vRd_cc_kN: vRd_cc_N / 1000,
     cot_theta, cot_theta_eff, theta_eff_deg, cot_theta_max, theta_min_deg, isCotThetaExceeded,
     asw_req, asw_min, asw_final: isVRdcExceeded ? Math.max(asw_req, asw_min) : asw_min,

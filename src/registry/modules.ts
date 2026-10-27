@@ -70,6 +70,15 @@ export const NAV_GRUPPEN = [
 ] as const;
 export type NavGruppe = (typeof NAV_GRUPPEN)[number];
 
+/**
+ * Zentraler Schalter „inaktiv“ (Entscheidung Prof. Huber 27.10.2026: Lernpfade nach Lehrveranstaltung abgeschaltet).
+ * Seiten dieser Menügruppen bleiben in MODULE/MODUL_BY_ID (Code, Daten, Tests), sind aber unsichtbar: nicht in Menü,
+ * Modulübersicht, Menü- und Volltextsuche, Sitemap, Vorrendern; /modul/<id> und Aliase darauf → 404-Hinweisseite
+ * (server.ts), in der App → Startseite. Wiedereinschalten: Gruppe hier entfernen (s. docs/architektur.md).
+ * Diese Zeile wird von scripts/suchindex-routen.mjs als Text gelesen: einzeilig lassen.
+ */
+export const INAKTIVE_GRUPPEN: readonly NavGruppe[] = ['Lehrveranstaltungen'];
+
 export const MODULE = [
   { id: 'start', label: 'Startseite', icon: 'GraduationCap', gruppe: 'Allgemein',
     baum: { titel: 'Startseite', typ: 'standard', kurz: 'Begrüßungs- und Einstiegsportal mit Modulschnellzugriff.', icon: 'GraduationCap' },
@@ -1325,21 +1334,36 @@ export const BAUM_GRUPPEN = [
 
 const ALLE: readonly ModulEintrag[] = MODULE;
 
+/** alle Einträge, auch inaktive (Daten, Tests, Lernpfad-Seite) */
 export const MODUL_BY_ID: ReadonlyMap<string, ModulEintrag> = new Map(ALLE.map(m => [m.id, m]));
 
+/** inaktive Seiten (Menügruppe in INAKTIVE_GRUPPEN) */
+export const INAKTIVE_MODULE: ReadonlySet<string> = new Set(ALLE.filter(m => m.gruppe && INAKTIVE_GRUPPEN.includes(m.gruppe)).map(m => m.id));
+/** öffentlich sichtbare Einträge – Grundlage für Menü, Baum, Suche, Sitemap, Vorrendern */
+export const AKTIVE_MODULE: readonly ModulEintrag[] = ALLE.filter(m => !INAKTIVE_MODULE.has(m.id));
+const aliasListe = Object.entries(TAB_ALIASES) as ReadonlyArray<[string, ModulId]>;
+/** Aliase auf aktive Seiten */
+export const AKTIVE_ALIASE: Readonly<Record<string, ModulId>> = Object.fromEntries(aliasListe.filter(([, z]) => !INAKTIVE_MODULE.has(z))) as Record<string, ModulId>;
+/** inaktive Seiten samt Aliasen darauf – Server: 404-Hinweisseite statt Weiterleitung */
+export const INAKTIVE_ADRESSEN: readonly string[] = [...INAKTIVE_MODULE, ...aliasListe.filter(([, z]) => INAKTIVE_MODULE.has(z)).map(([a]) => a)];
+/** Modulübersicht ohne inaktive Knoten und ohne leer gewordene Gruppen */
+export const AKTIVE_BAUM_GRUPPEN: readonly BaumGruppe[] = (BAUM_GRUPPEN as readonly BaumGruppe[])
+  .map(g => ({ ...g, knoten: g.knoten.filter(id => !INAKTIVE_MODULE.has(id)) }))
+  .filter(g => g.knoten.length > 0);
+
 export const TAB_DESCRIPTIONS: Record<string, string> = Object.fromEntries(
-  ALLE.filter(m => m.meta).map(m => [m.id, m.meta as string])
+  AKTIVE_MODULE.filter(m => m.meta).map(m => [m.id, m.meta as string])
 );
 
 export const TAB_KEYWORDS: Record<string, string[]> = Object.fromEntries(
-  ALLE.filter(m => m.suche).map(m => [m.id, [...(m.suche as readonly string[])]])
+  AKTIVE_MODULE.filter(m => m.suche).map(m => [m.id, [...(m.suche as readonly string[])]])
 );
 
 export interface NavTab { id: ModulId; label: string; icon: string }
 export interface NavGruppeDef { name: NavGruppe; tabs: NavTab[] }
 
 /** Menügruppen in Anzeigereihenfolge */
-export const NAV_TAB_GRUPPEN: NavGruppeDef[] = NAV_GRUPPEN.map(name => ({
+export const NAV_TAB_GRUPPEN: NavGruppeDef[] = NAV_GRUPPEN.filter(name => !INAKTIVE_GRUPPEN.includes(name)).map(name => ({
   name,
-  tabs: ALLE.filter(m => m.gruppe === name).map(m => ({ id: m.id as ModulId, label: m.label, icon: m.icon })),
+  tabs: AKTIVE_MODULE.filter(m => m.gruppe === name).map(m => ({ id: m.id as ModulId, label: m.label, icon: m.icon })),
 }));

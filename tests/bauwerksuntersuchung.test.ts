@@ -1,6 +1,6 @@
 // Rechenkern Bauwerksuntersuchung (Z3): Prüfsimulatoren, Probenahmeplaner und Befundsynthese
 import {
-  rueckprall, rueckprallLehrkurve, rueckprallKalibrierung, ultraschall, potentialStufe, potentialStatus, betondeckung, chlorid, haftzug, karsten, karbonatisierung,
+  rueckprall, rueckprallLehrkurve, rueckprallRichtungskorrektur, rueckprallKorrekturtabelle, rueckprallKalibrierung, ultraschall, potentialStufe, potentialStatus, betondeckung, chlorid, haftzug, karsten, karbonatisierung,
   bohrkern, impactEcho, probenahmeUmfang, befundSynthese, type BefundEingabe, type Untersuchungsziel,
 } from '../src/calc/bauwerksuntersuchung';
 
@@ -13,7 +13,14 @@ console.log('--- Test: Bauwerksuntersuchung ---');
 //    Rückprall R = 36, horizontal, d_k = 12 mm: k = 1 − 7·0,015 = 0,895; R' = 32,22; f_c = 0,0125·32,22^2,22 = 27,86 → C25/30
 const rp = rueckprall(36, 'horiz', 12);
 pruefe(rp.gueltig && nahe(rp.kKarb, 0.895, 1e-12) && nahe(rp.rFinal, 32.22, 1e-12) && nahe(rp.fcSchaetz, 27.858, 1e-3) && rp.klasse === 'C25/30', `Rückprall ${JSON.stringify(rp)}`);
-pruefe(rueckprall(36, 'down', 0).rKorr === 33 && rueckprall(36, 'up', 0).rKorr === 39.5 && rueckprall(36, 'horiz', 5).kKarb === 1 && rueckprall(36, 'horiz', 40).kKarb === 0.75, 'Schlagrichtung und Grenzen von k');
+//    Richtungskorrektur (Entscheidung Prof. Huber 27.10., bewusst geändert; vorher −3,0 abwärts/+3,5 aufwärts, Vorzeichen vertauscht):
+//    Herstellerformel Original Schmidt Typ N (Screening Eagle/Proceq): R = 36 nach oben (+90°): −7,1 + 0,08·36 = −4,22 → 31,78;
+//    nach unten (−90°): +4,3 − 0,043·36 = +2,752 → 38,752
+pruefe(nahe(rueckprall(36, 'up', 0).rKorr, 31.78, 1e-12) && nahe(rueckprall(36, 'down', 0).rKorr, 38.752, 1e-12) && rueckprall(36, 'horiz', 0).rKorr === 36, 'Schlagrichtung nach Herstellerformel');
+//    Korrekturtabelle (R = 20/30/40/50/60): +90°: −5,5/−4,7/−3,9/−3,1/−2,3; −90°: +3,44/+3,01/+2,58/+2,15/+1,72; ±45° = ±90°·sin 45°
+const kt = rueckprallKorrekturtabelle([20, 30, 40, 50, 60]);
+pruefe(kt.every((z, i) => nahe(z.dR[0], [-5.5, -4.7, -3.9, -3.1, -2.3][i], 1e-9) && nahe(z.dR[3], [3.44, 3.01, 2.58, 2.15, 1.72][i], 1e-9) && nahe(z.dR[1], z.dR[0] * Math.SQRT1_2, 1e-9) && nahe(z.dR[2], z.dR[3] * Math.SQRT1_2, 1e-9)), `Korrekturtabelle ${JSON.stringify(kt)}`);
+pruefe(rueckprallRichtungskorrektur(40, 0) === 0 && rueckprall(36, 'horiz', 5).kKarb === 1 && rueckprall(36, 'horiz', 40).kKarb === 0.75, 'Schlagrichtung und Grenzen von k');
 pruefe(rueckprall(60, 'horiz', 0).klasse === 'C50/60' && rueckprall(20, 'horiz', 0).klasse === 'C16/20', 'Klasseneinordnung Ränder');
 //    Ultraschall s = 0,30 m, t = 75 µs: v_p = 4000 m/s; E_dyn = 2400·4000²·(1,2·0,6/0,8)·10⁻⁹ = 34,56 GPa
 const us = ultraschall(0.30, 75, 2400);

@@ -1,5 +1,6 @@
 import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberFormat';
 import { EC2_NA_DE } from '@/src/data/normParams';
+import { hochfestFaktor, FCD_HOCHFEST_AKTIV } from '@/src/data/kennwerte';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
@@ -271,8 +272,8 @@ export default function Biegebemessung() {
                     ? inhalt.werte.betonMitCc0
                     : inhalt.werte.betonMitCc02,
                   formel: bewehrungsArt === 'Stahl'
-                    ? `f_{cd} = \\frac{${formatDeTeX(EC2_NA_DE.alphaCC, 2)} \\cdot ${formatDeTeX(fck, 0)}}{${formatDeTeX(EC2_NA_DE.gammaC, 1)}} = ${formatDeTeX(results.fcd, 1)}\\,\\text{N/mm}^2;\\quad f_{yd} = \\frac{${formatDeTeX(fyk, 0)}}{${formatDeTeX(EC2_NA_DE.gammaS, 2)}} = ${formatDeTeX(results.fyd, 1)}\\,\\text{N/mm}^2`
-                    : `f_{cd} = \\frac{${formatDeTeX(EC2_NA_DE.alphaCC, 2)} \\cdot ${formatDeTeX(fck, 0)}}{${formatDeTeX(EC2_NA_DE.gammaC, 1)}} = ${formatDeTeX(results.fcd, 1)}\\,\\text{N/mm}^2;\\quad f_{fd} = \\frac{${formatDeTeX(ftk, 0)}}{${formatDeTeX(gammaFRP, 2)}} = ${formatDeTeX(results.fyd, 1)}\\,\\text{N/mm}^2`,
+                    ? `f_{cd} = \\frac{${formatDeTeX(EC2_NA_DE.alphaCC, 2)} \\cdot ${formatDeTeX(fck, 0)}}{${formatDeTeX(EC2_NA_DE.gammaC, 1)}}${FCD_HOCHFEST_AKTIV && fck >= 55 ? ` \\cdot ${formatDeTeX(hochfestFaktor(fck), 2)}` : ''} = ${formatDeTeX(results.fcd, 1)}\\,\\text{N/mm}^2;\\quad f_{yd} = \\frac{${formatDeTeX(fyk, 0)}}{${formatDeTeX(EC2_NA_DE.gammaS, 2)}} = ${formatDeTeX(results.fyd, 1)}\\,\\text{N/mm}^2`
+                    : `f_{cd} = \\frac{${formatDeTeX(EC2_NA_DE.alphaCC, 2)} \\cdot ${formatDeTeX(fck, 0)}}{${formatDeTeX(EC2_NA_DE.gammaC, 1)}}${FCD_HOCHFEST_AKTIV && fck >= 55 ? ` \\cdot ${formatDeTeX(hochfestFaktor(fck), 2)}` : ''} = ${formatDeTeX(results.fcd, 1)}\\,\\text{N/mm}^2;\\quad f_{fd} = \\frac{${formatDeTeX(ftk, 0)}}{${formatDeTeX(gammaFRP, 2)}} = ${formatDeTeX(results.fyd, 1)}\\,\\text{N/mm}^2`,
                 },
                 {
                   titel: inhalt.werte.statischeNutzhöhe,

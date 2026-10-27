@@ -4,7 +4,7 @@ import { Play, RotateCcw, ShieldCheck, Check, Download, FileText, Target, Crossh
 import { InlineMath } from 'react-katex';
 import { LabProtocolRecord, exportToCSV, generateIntegrityChecksum } from '@/src/utils/labExportUtils';
 import { saveStoredLabProtocol } from '@/src/utils/studyStorage';
-import { rueckprallLehrkurve } from '@/src/calc/bauwerksuntersuchung';
+import { rueckprallLehrkurve, rueckprallRichtungskorrektur } from '@/src/calc/bauwerksuntersuchung';
 
 type ImpactAngle = 'horizontal' | 'downward' | 'upward';
 type ConcreteAge = '28d' | '1year' | 'bestand_alt';
@@ -33,16 +33,15 @@ export default function SchmidtHammerSimulator() {
     }
   }, [targetClass]);
 
-  // Angle calibration correction delta R
-  const angleDeltaR = useMemo(() => {
-    switch (impactAngle) {
-      case 'horizontal': return 0;
-      // Gemessen wird der Rückprall des Schlagbolzens:
-      case 'downward': return +3.0; // nach unten: Rückprall gegen die Schwerkraft -> R zu niedrig -> Korrektur positiv
-      case 'upward': return -3.5;   // nach oben: Rückprall mit der Schwerkraft -> R zu hoch -> Korrektur negativ
-      // Werte: typische Herstellerangaben Typ N bei R ≈ 40 (gerätespezifisch)
-    }
-  }, [impactAngle]);
+  // Schlagwinkel α (Proceq-Konvention): nach oben +90° (R zu hoch → Abzug), nach unten −90° (R zu niedrig → Zuschlag).
+  // Korrektur ΔR(R, α) zentral nach Herstellerformel Original Schmidt Typ N (src/calc/bauwerksuntersuchung.ts, Entscheidung 27.10.)
+  const alpha = impactAngle === 'horizontal' ? 0 : impactAngle === 'upward' ? 90 : -90;
+  // Abgelesener Rohwert, dessen Korrektur den Klassenwert baseR ergibt: R_roh + ΔR(R_roh) = baseR (Fixpunkt, 3 Schritte)
+  const rohBasisR = useMemo(() => {
+    let r = baseR;
+    for (let k = 0; k < 3; k++) r = baseR - rueckprallRichtungskorrektur(r, alpha);
+    return r;
+  }, [baseR, alpha]);
 
   // Carbonation increase (hard outer skin)
   const carbDeltaR = isCarbonated ? 4.5 : 0;
@@ -60,7 +59,7 @@ export default function SchmidtHammerSimulator() {
       // 8 % Wahrscheinlichkeit für einen Treffer auf Pore (Ausreißer nach unten) oder großes Korn (nach oben) – hitting an air pore (outlier down) or hard aggregate grain (outlier up)
       const anomaly = Math.random() < 0.08 ? (Math.random() > 0.5 ? 9 : -10) : 0;
 
-      const rawR = Math.round(baseR - angleDeltaR + carbDeltaR + randomNoise + anomaly);
+      const rawR = Math.round(rohBasisR + carbDeltaR + randomNoise + anomaly);
       const boundedR = Math.max(15, Math.min(85, rawR));
 
       setMeasurements(prev => {
@@ -116,7 +115,7 @@ export default function SchmidtHammerSimulator() {
     const stdDev = Math.sqrt(variance);
 
     // Winkelkorrektur auf horizontale Schlagrichtung, angewendet auf den Median
-    let correctedR = median + angleDeltaR;
+    let correctedR = median + rueckprallRichtungskorrektur(median, alpha);
     if (isCarbonated) {
       correctedR = correctedR * 0.85; // Lehrannahme – in der Praxis Kalibrierung an Vergleichsbohrkernen (DIN EN 13791)
     }
@@ -134,7 +133,7 @@ export default function SchmidtHammerSimulator() {
       outliers,
       seriesInvalid
     };
-  }, [measurements, angleDeltaR, isCarbonated]);
+  }, [measurements, alpha, isCarbonated]);
 
   const handleArchive = () => {
     if (stats.count < 9) return;

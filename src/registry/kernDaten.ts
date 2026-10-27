@@ -8,12 +8,12 @@
  * nicht mehr im Einstieg liegt (Beschreibungen und Suchbegriffe als eigene Auszüge, s. ./kern.ts).
  * tests/registryKern.test.ts prüft die Gleichheit beider Wege.
  */
-import { MODULE, TAB_ALIASES as ALIASE, NAV_GRUPPEN as GRUPPEN, type ModulEintrag } from './modules';
+import { AKTIVE_MODULE, AKTIVE_ALIASE, NAV_GRUPPEN, INAKTIVE_GRUPPEN } from './modules';
 
 /** [id, label, icon, gruppe, baum.titel, baum.typ] – leere Felder als null */
 export type KernZeile = [string, string, string, string | null, string | null, string | null];
 
-const alle: readonly ModulEintrag[] = MODULE;
-export const KERN_ZEILEN: readonly KernZeile[] = alle.map(m => [m.id, m.label, m.icon, m.gruppe ?? null, m.baum?.titel ?? null, m.baum?.typ ?? null]);
-export const KERN_ALIASE: Readonly<Record<string, string>> = ALIASE;
-export const KERN_GRUPPEN: readonly string[] = GRUPPEN;
+// nur aktive Seiten (INAKTIVE_GRUPPEN in ./modules.ts): inaktive gelten in der App als unbekannt → Startseite
+export const KERN_ZEILEN: readonly KernZeile[] = AKTIVE_MODULE.map(m => [m.id, m.label, m.icon, m.gruppe ?? null, m.baum?.titel ?? null, m.baum?.typ ?? null]);
+export const KERN_ALIASE: Readonly<Record<string, string>> = AKTIVE_ALIASE;
+export const KERN_GRUPPEN: readonly string[] = NAV_GRUPPEN.filter(g => !INAKTIVE_GRUPPEN.includes(g));
