@@ -40,7 +40,8 @@ export default function SpannbetonDehnungsAnimation() {
   const [showExplanation, setShowExplanation] = useState<boolean>(true);
 
   // Feste Querschnitts- und Materialparameter (Einfeldträger L = 20 m, C40/50) und Rechnung im Rechenkern
-  const { L, h, fctm } = DEHNUNG_TRAEGER;
+  // Biegerandzug gegen f_ctm,fl = max((1,6 − h/1000)·f_ctm; f_ctm) nach DIN EN 1992-1-1, 3.1.8 (Kern src/calc/spannbeton.ts)
+  const { L, h, fctmFl: fctm } = DEHNUNG_TRAEGER;
 
   const calc = useMemo(() => {
     const z = dehnungsZustand({ P: prestressForce, q: loadQ, ep: eccentricity, lage: tendonTrajectory, schnitt: viewSection });
@@ -867,7 +868,7 @@ export default function SpannbetonDehnungsAnimation() {
                     <>
                       {/* Betonzugfestigkeitslinie fctm */}
                       <line x1={crSigX} y1={topY} x2={crSigX} y2={botY} stroke="#f87171" strokeWidth="1" strokeDasharray="3 3" />
-                      <text x={crSigX + 4} y={topY + 14} fontSize="8" fill="#dc2626">f_ctm = {formatDeZahl(fctm, 1)} MPa</text>
+                      <text x={crSigX + 4} y={topY + 14} fontSize="8" fill="#dc2626">f_ctm,fl = {formatDeZahl(fctm, 1)} MPa</text>
 
                       {/* Druckflächenfüllung */}
                       <polygon

@@ -122,7 +122,7 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
 
               {/* Berechnung output */}
               {(() => {
-                // Rechenkern src/calc/verkehrswegebau.ts (Westergaard-Randspannung, Lehrannahmen E = 34 000 N/mm², ν = 0,2, p = 0,8 N/mm²)
+                // Rechenkern src/calc/verkehrswegebau.ts (Westergaard-Randspannung mit Ersatzradius b, E = 34 000 N/mm², ν = 0,15, p = 0,8 N/mm²)
                 const w = westergaardRand({ dickeCm: betonSlabThickness, achslastKn: betonAchslast, bettungMNm3: betonBettung });
                 const l_mm = w.lMm;
                 const r_mm = w.rMm;

@@ -47,7 +47,7 @@ export default function FestbetonStatistik() {
   const [pruefArt, setPruefArt] = useState<'erst' | 'stetig'>('stetig');
 
   const chartData = useMemo(() => {
-    // 5-%-Fraktil und Würfel/Zylinder-Näherung 1,25 (tatsächlich klassenabhängig, z. B. C30/37: 37/30 = 1,23) aus dem Rechenkern
+    // 5-%-Fraktil und Würfel/Zylinder über f_ck,cube/f_ck der Festigkeitsklasse (Tab. 3.1, z. B. C30/37: 37/30 = 1,23) aus dem Rechenkern
     const k = festbetonStatistik({ fcm, sigma, format, alphaCc: 0.85, gammaC: 1.5, pruefArt: 'stetig' });
     const scaledFcm = k.anzeigeFcm;
     const scaledSigma = k.anzeigeSigma;
@@ -154,7 +154,7 @@ export default function FestbetonStatistik() {
   };
 
   // Rechenkern src/calc/festbetonStatistik.ts: f_ck = f_cm − 1,645·σ und f_cd immer aus der Zylinderfestigkeit,
-  // Anzeigewerte im gewählten Probenformat (Würfel pauschal × 1,25), Konformitätskriterien nach DIN EN 206, 8.2.1.3
+  // Anzeigewerte im gewählten Probenformat (Würfel über die Festigkeitsklasse), Konformitätskriterien nach DIN EN 206, 8.2.1.3 (σ ≥ 3 N/mm²)
   const kern = festbetonStatistik({ fcm, sigma, format, alphaCc, gammaC, pruefArt });
   const { fckCyl, fcd } = kern;
   const displayFcm = kern.anzeigeFcm;

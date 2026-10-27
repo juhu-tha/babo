@@ -1,5 +1,5 @@
 // Rechenkern Stoffraumrechnung (Umsetzungsplan Phase 4, AP 4.3)
-import { stoffraum, maxFaFaktor, ZEMENT_DATA, type MischungEingabe } from '../src/calc/mischung';
+import { stoffraum, maxFaFaktor, kombinationsGrenze, K_WERT_DIN1045_2, ZEMENT_DATA, type MischungEingabe } from '../src/calc/mischung';
 import { BENCHMARK_EXAMPLES } from '../src/data/mischungBeispiele';
 
 const fehler: string[] = [];
@@ -49,6 +49,21 @@ for (const b of BENCHMARK_EXAMPLES) {
   rb.fraktionen.forEach((f, i) => { const soll = [b.feuchteRechnung.m04Feucht, b.feuchteRechnung.m48Feucht, b.feuchteRechnung.m816Feucht, b.feuchteRechnung.m1632Feucht][i]; if (soll !== undefined) pruefe(naheAbs(f.feucht, soll, 2), `${b.id}: m_feucht[${i}] ${f.feucht.toFixed(1)} vs ${soll}`); });
   pruefe(naheAbs(rb.rohdichte, b.frischbetonDichte, 0.02), `${b.id}: ρ ${rb.rohdichte.toFixed(3)} vs ${b.frischbetonDichte}`);
 }
+
+// 2c. k-Wert-Ansatz DIN 1045-2 (Runde 5, Z55; öffentliche Quellen: UniBw München „Flugasche“, umwelt-online DIN 1045-2 5.2.5):
+//     k_f = 0,4, k_s = 1,0, f/z ≤ 0,33 (ohne P/V/D), s/z ≤ 0,11; gemeinsam f/z ≤ 3·(0,22 − s/z) (CEM I) bzw. 3·(0,15 − s/z)
+pruefe(K_WERT_DIN1045_2.kF === 0.4 && K_WERT_DIN1045_2.kS === 1.0 && K_WERT_DIN1045_2.maxSfFaktor === 0.11, 'k-Werte');
+pruefe(maxFaFaktor('CEM I') === 0.33 && maxFaFaktor('CEM III/A') === 0.33 && maxFaFaktor('CEM II/B') === 0.25 && maxFaFaktor('CEM IV') === 0, 'f/z-Grenzen je Zementart');
+pruefe(kombinationsGrenze('CEM I') === 0.22 && kombinationsGrenze('CEM III/A') === 0.15 && kombinationsGrenze('CEM II/B') === null, 'Kombinationsgrenzen');
+//     Handbeispiel CEM I, z = 320, s = 25 (s/z = 0,078): f ≤ 3·(0,22 − 0,078125)·320 = 136,2 kg/m³ → f = 100 zulässig, f = 140 nicht;
+//     anrechenbar f ≤ 0,33·320 = 105,6 → (w/z)_eq = 160/(320 + 0,4·100 + 1,0·25) = 0,4156
+const kb = stoffraum({ ...basis, fa: 100, sf: 25, zementArt: 'CEM I' });
+pruefe(nahe(kb.maxFaKombination ?? NaN, 136.2, 1e-9) && !kb.hinweise.some(x => x.feld === 'fa') && nahe(kb.wzEq, 160 / 385, 1e-12), `Kombination zulässig ${kb.maxFaKombination}`);
+const kb2 = stoffraum({ ...basis, fa: 140, sf: 25, zementArt: 'CEM I' });
+pruefe(kb2.hinweise.some(x => x.feld === 'fa' && x.text.includes('Alkalitätsreserve')) && nahe(kb2.anrechenbarFa, 105.6, 1e-12), 'Kombination verletzt → Warnung');
+//     CEM III/A: f ≤ 3·(0,15 − 0,078125)·320 = 69,0 → f = 80 verletzt; CEM II/B: Kombination nicht zulässig
+pruefe(stoffraum({ ...basis, fa: 80, sf: 25, zementArt: 'CEM III/A' }).hinweise.some(x => x.feld === 'fa') && stoffraum({ ...basis, fa: 60, sf: 25, zementArt: 'CEM II/B' }).hinweise.some(x => x.feld === 'sf' && x.text.includes('nicht zulässig')), 'CEM III/A Grenze, CEM II/B unzulässig');
+pruefe(stoffraum({ ...basis, sf: 50 }).hinweise.some(x => x.feld === 'sf' && x.text.includes('0,11')), 'Silikastaub-Überschuss → Hinweis');
 
 // 3. Unsinnige Eingaben
 for (const u of [{ zement: 0 }, { wasser: 0 }, { rhoZement: 0 }, { luft: -1 }, { zement: 3000 }, { wasser: NaN }] as Partial<MischungEingabe>[]) {

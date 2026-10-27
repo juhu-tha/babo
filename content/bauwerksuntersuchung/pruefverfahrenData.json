@@ -94,7 +94,7 @@
     "erfordertDiePunktuelleFreilegung": "Erfordert die punktuelle Freilegung der Bewehrung zur elektrischen Kontaktierung.",
     "trockenerBetonBlockiertDen": "Trockener Beton blockiert den Ionenstrom (zu hoher Übergangswiderstand erzeugt Schein-Ruhewerte).",
     "liefertAusschließlichDieKorrosionswahrsc": "Liefert ausschließlich die Korrosionswahrscheinlichkeit, nicht direkt den bereits eingetretenen Querschnittsverlust.",
-    "potentialwerteGegenCuCuso": "Potentialwerte gegen Cu/CuSO₄ nach ASTM C876 / DGZfP B1: E > -200 mV (Korrosionswahrscheinlichkeit < 10 %, passiver Zustand); E = -200 bis -350 mV (Übergangsbereich / Ungewiss); E < -350 mV (Korrosionswahrscheinlichkeit > 90 %, akute Lochfraßkorrosion); E < -500 mV (Extrem aktive Korrosionsanode).",
+    "potentialwerteGegenCuCuso": "Potentialwerte gegen Cu/CuSO₄ nach ASTM C876 (DGZfP-Merkblatt B3: objektbezogen statistisch auswerten): E > -200 mV (Korrosionswahrscheinlichkeit < 10 %, passiver Zustand); E = -200 bis -350 mV (Übergangsbereich / Ungewiss); E < -350 mV (Korrosionswahrscheinlichkeit > 90 %, akute Lochfraßkorrosion); E < -500 mV (Extrem aktive Korrosionsanode).",
     "georadarGprGroundPenetrating": "Georadar (GPR - Ground Penetrating Radar)",
     "georadarGpr": "Georadar (GPR)",
     "zerstörungsfreiePrüfungZfpNdt5": "Zerstörungsfreie Prüfung (ZfP / NDT)",

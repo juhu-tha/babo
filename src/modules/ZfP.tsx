@@ -126,7 +126,7 @@ export default function ZfP() {
   }, [geraeteList, selectedGeraet]);
 
   // Rechenkern src/calc/pruefverfahren.ts – die Komponente ordnet nur noch Texte und Farben zu
-  // Rückprallhammer: ΔR = −3 (nach unten) / +3 (nach oben), f_c ≈ 0,027·R^2,1 (Lehr-Näherung)
+  // Rückprallhammer: ΔR = −3 (nach unten) / +3 (nach oben), einheitliche Lehrkurve f_c ≈ 0,0125·R^2,22 (ohne Kalibrierung nur Schätzung)
   const reboundResults = useMemo(() => rueckprallZfp(rebound, angle), [rebound, angle]);
 
   // Ultraschall: E_dyn = ρ·v²·(1+ν)(1−2ν)/(1−ν) mit ρ = 2400 kg/m³, ν = 0,2; f_c ≈ 20·(v − 2) (grob)

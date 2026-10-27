@@ -33,6 +33,83 @@ export function fctmVonFck(fck: number): number {
   return fck <= 50 ? 0.3 * Math.pow(fck, 2 / 3) : 2.12 * Math.log(1 + (fck + 8) / 10);
 }
 
+/**
+ * Charakteristische Druckfestigkeit zum Alter t nach DIN EN 1992-1-1, 3.1.2(5):
+ * f_ck(t) = f_cm(t) − 8 N/mm² für 3 d < t < 28 d, f_ck(t) = f_ck für t ≥ 28 d.
+ * Für t ≤ 3 d ist die Beziehung in 3.1.2(5) nicht angegeben; der Wert wird wie für 3 < t < 28 d gebildet und
+ * soll vom Aufrufer als Warnung gekennzeichnet werden (Werte in N/mm², t in d).
+ */
+export function fckZumAlter(fck: number, fcmT: number, t: number): number {
+  if (t >= 28) return fck;
+  return Math.max(0, fcmT - 8);
+}
+
+/** Spannungs-Dehnungs-Kennwerte nach DIN EN 1992-1-1, Tab. 3.1 (Dehnungen in ‰) */
+export interface DehnungsKennwerte {
+  ec1: number; ecu1: number; ec2: number; ecu2: number; n: number; ec3: number; ecu3: number;
+  /** true, wenn f_ck > 90 N/mm²: Werte von C90/105 gehalten (Gleichungen der Tab. 3.1 gelten nur bis C90/105) */
+  ueberC90: boolean;
+}
+
+/**
+ * ε_c1, ε_cu1, ε_c2, ε_cu2, n, ε_c3, ε_cu3 nach DIN EN 1992-1-1, Tab. 3.1.
+ * Klassenwerte (C12/15 … C90/105) kommen aus der Tabelle; für Zwischenwerte gelten die Gleichungen der Tab. 3.1
+ * (ε_c2 = 2,0 + 0,085·(f_ck − 50)^0,53; ε_cu2 = ε_cu3 = 2,6 + 35·[(90 − f_ck)/100]^4; n = 1,4 + 23,4·[(90 − f_ck)/100]^4;
+ * ε_c3 = 1,75 + 0,55·(f_ck − 50)/40; ε_cu1 = 2,8 + 27·[(98 − f_cm)/100]^4 für f_ck ≥ 50; ε_c1 = 0,7·f_cm^0,31 ≤ 2,8).
+ * Die Gleichungen gelten nur bis f_ck = 90 N/mm² – darüber steigen ε_cu und n wieder an. Für f_ck > 90 werden deshalb die
+ * Werte von C90/105 gehalten (die Spalte C100/115 des NA DE nennt dieselben Dehnungswerte – vorläufig, F-Freigabe).
+ */
+export function dehnungsKennwerte(fck: number): DehnungsKennwerte {
+  const tab = betonNachFck(fck);
+  if (tab) return { ec1: tab.eps_c1, ecu1: tab.eps_cu1, ec2: tab.eps_c2, ecu2: tab.eps_cu2, n: tab.n, ec3: tab.eps_c3, ecu3: tab.eps_cu3, ueberC90: false };
+  if (fck > 90) {
+    const c = CONCRETE['C90/105'];
+    return { ec1: c.eps_c1, ecu1: c.eps_cu1, ec2: c.eps_c2, ecu2: c.eps_cu2, n: c.n, ec3: c.eps_c3, ecu3: c.eps_cu3, ueberC90: true };
+  }
+  const fcm = fck + 8;
+  const ec1 = Math.min(2.8, 0.7 * Math.pow(fcm, 0.31));
+  if (fck <= 50) return { ec1, ecu1: 3.5, ec2: 2.0, ecu2: 3.5, n: 2.0, ec3: 1.75, ecu3: 3.5, ueberC90: false };
+  const q = Math.pow((90 - fck) / 100, 4);
+  const ecu2 = 2.6 + 35 * q;
+  return {
+    ec1, ecu1: 2.8 + 27 * Math.pow((98 - fcm) / 100, 4), ec2: 2.0 + 0.085 * Math.pow(fck - 50, 0.53), ecu2,
+    n: 1.4 + 23.4 * q, ec3: 1.75 + 0.55 * (fck - 50) / 40, ecu3: ecu2, ueberC90: false,
+  };
+}
+
+/** Stützstellen f_ck → f_ck,cube der Tab. 3.1 (aufsteigend) */
+const WUERFEL_STUETZ: readonly (readonly [number, number])[] = ALLE.map(c => [c.fck, c.fck_cube] as const).sort((a, b) => a[0] - b[0]);
+
+/**
+ * Charakteristische Würfeldruckfestigkeit f_ck,cube zur Zylinderfestigkeit f_ck über die Festigkeitsklassen der
+ * DIN EN 206 / DIN EN 1992-1-1, Tab. 3.1 (linear zwischen den Klassen; außerhalb C12/15 … C90/105 mit dem Verhältnis
+ * der Randklasse). Ersetzt den pauschalen Faktor 1,25 (C30/37: 37/30 = 1,233; C50/60: 1,20; C12/15: 1,25).
+ */
+export function fckCubeVonFck(fck: number): number {
+  const s = WUERFEL_STUETZ;
+  if (fck <= s[0][0]) return fck * (s[0][1] / s[0][0]);
+  const last = s[s.length - 1];
+  if (fck >= last[0]) return fck * (last[1] / last[0]);
+  for (let i = 0; i < s.length - 1; i++) {
+    const [x0, y0] = s[i], [x1, y1] = s[i + 1];
+    if (fck >= x0 && fck <= x1) return y0 + (y1 - y0) * (fck - x0) / (x1 - x0);
+  }
+  return NaN;
+}
+
+/** Umkehrung von fckCubeVonFck: Zylinderfestigkeit zur Würfelfestigkeit über die Festigkeitsklassen */
+export function fckVonFckCube(fckCube: number): number {
+  const s = WUERFEL_STUETZ;
+  if (fckCube <= s[0][1]) return fckCube * (s[0][0] / s[0][1]);
+  const last = s[s.length - 1];
+  if (fckCube >= last[1]) return fckCube * (last[0] / last[1]);
+  for (let i = 0; i < s.length - 1; i++) {
+    const [x0, y0] = s[i], [x1, y1] = s[i + 1];
+    if (fckCube >= y0 && fckCube <= y1) return x0 + (x1 - x0) * (fckCube - y0) / (y1 - y0);
+  }
+  return NaN;
+}
+
 /** Auswahl einzelner Klassen als Nachschlagetabelle (für Auswahlfelder in Modulen) */
 export function betonAuswahl<K extends string>(klassen: readonly K[]): Record<K, ConcreteClassData> {
   const out = {} as Record<K, ConcreteClassData>;

@@ -82,7 +82,9 @@ function referenzModul(e: HydratationEingabe) {
     te += temperaturfaktorReife(e.reifeVerfahren, kern, e.aktivierungsEnergie) * dt;
     if (t === 28) te28 = te;
     const b = te > 0 ? Math.min(1.25, Math.exp(s * (1 - Math.sqrt(28 / te)))) : 0;
-    if (aus === -1 && b * fck >= fck * e.ausschalAnteil / 100) aus = t;
+    // Runde 5: f_ck(t_e) = β_cc·f_cm − 8 für t_e < 28 d, f_ck für t_e ≥ 28 d (DIN EN 1992-1-1, 3.1.2(5))
+    const fckT = te >= 28 ? fck : Math.max(0, b * (fck + 8) - 8);
+    if (aus === -1 && fckT >= fck * e.ausschalAnteil / 100) aus = t;
     const H = Hmax * (te / (te + t50)); const dH = Math.max(0, H - Hp); Hp = H;
     const dT = (e.zement * dH) / 2400;
     kern = Math.max(e.tempUmgebung, kern + dT - 0.5 * (kern - e.tempUmgebung) / (e.bauteildicke ** 2) * dt);
@@ -109,15 +111,18 @@ pruefe([r0.fcAkt, r0.fctAkt, r0.EAkt, r0.tempKern, r0.tempRand, r0.tempAdiabat, 
 //    Adiabatischer Verlauf: Endwert = T₀ + z·Q(t_e,28)/2400 (Telekopsumme), Kern ≤ adiabatisch
 pruefe(nahe(r0.tempAdiabat[280] - 20, adiabatischeErwaermung(350, hydratationswaerme(r0.Hmax, r0.t50, r0.te28)), 1e-9), 'adiabatischer Endwert');
 pruefe(r0.tempKern.every((t, i) => t <= r0.tempAdiabat[i] + 1e-9), 'Kern ≤ adiabatisch');
-//    Ausschalfrist: β_cc ≥ 0,50 erstmals beim angegebenen Zeitpunkt
+//    Ausschalfrist: f_ck(t_e) = f_cm(t_e) − 8 ≥ 0,50·f_ck erstmals beim angegebenen Zeitpunkt (3.1.2(5))
 const ia = Math.round((r0.ausschalTage ?? 0) * 10);
-pruefe(r0.ausschalTage !== null && r0.fcAktRel[ia] >= 50 && r0.fcAktRel[ia - 1] < 50, `Ausschalfrist ${r0.ausschalTage} d`);
+pruefe(r0.ausschalTage !== null && r0.fcAkt[ia] - 8 >= 0.5 * r0.fck && r0.fcAkt[ia - 1] - 8 < 0.5 * r0.fck, `Ausschalfrist ${r0.ausschalTage} d`);
+//    Ausschalanteil 100 %: erst bei t_e ≥ 28 d erreichbar (f_ck(t) = f_ck), vorher f_cm(t) − 8 < f_ck
+const r100 = hydratation({ ...basis, ausschalAnteil: 100 });
+pruefe(r100.ausschalTage === null || r100.fcAkt[Math.round(r100.ausschalTage * 10)] - 8 >= r100.fck - 1e-9 || r100.te28 >= 28, `Ausschalanteil 100 % ${r100.ausschalTage}`);
 pruefe(nahe(r0.fc2d, r0.beta2d * r0.fcm28, 1e-12) && r0.te2d > 0, 'Kennwerte nach 2 d');
 //    Massiges Bauteil: größerer Kern-Rand-Unterschied als dünnes Bauteil
 pruefe(hydratation({ ...basis, bauteildicke: 2.5 }).maxTempDiff > hydratation({ ...basis, bauteildicke: 0.5 }).maxTempDiff, 'ΔT steigt mit der Dicke');
 
 // 5. Randfälle und Grenzen
-pruefe(hydratation({ ...basis, ausschalAnteil: 130 }).ausschalTage === null, 'Ausschalfestigkeit > 125 % nie erreicht');
+pruefe(hydratation({ ...basis, ausschalAnteil: 130 }).ausschalTage === null && hydratation({ ...basis, ausschalAnteil: 101 }).ausschalTage === null, 'Ausschalfestigkeit > 100 % f_ck nie erreicht (f_ck(t ≥ 28 d) = f_ck)');
 pruefe(hydratation({ ...basis, bauteildicke: 0.2 }).hinweise.some(h => h.feld === 'bauteildicke' && h.stufe === 'warnung'), 'd < 0,30 m → Warnung');
 //    Dünnes Bauteil, Frischbeton kälter als die Umgebung (d = 0,1 m, 10 → 40 °C): kein Überschwingen über Umgebung und adiabatischen Verlauf
 const duenn = hydratation({ ...basis, bauteildicke: 0.1, tempUmgebung: 40, tempFrischbeton: 10 });

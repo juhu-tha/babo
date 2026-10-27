@@ -8,26 +8,32 @@
  * aus bauwerksuntersuchung.bohrkern, β_cc(t) und s aus betonkennwerte.ts, Stichprobenkennwerte aus statistik.ts.
  *
  * Formeln (Einheiten an den Feldern):
- *  - Rückprallhammer (ZfP): ΔR = −3 (nach unten) / +3 (nach oben), f_c ≈ 0,027·R^2,1 (Lehr-Näherung, keine Normkurve;
- *    die Zuordnung nach DIN EN 13791 ist offener Prüfpunkt Z55 und bleibt unverändert)
+ *  - Rückprallhammer (ZfP): ΔR = −3 (nach unten) / +3 (nach oben), einheitliche Lehrkurve f_c ≈ 0,0125·R^2,22 aus
+ *    bauwerksuntersuchung.ts (Runde 5, Z55; vorher 0,027·R^2,1); ohne Kalibrierkerne nach DIN EN 13791:2020 nur Schätzung
  *  - Ultraschall: E_dyn = ρ·v²·(1 + ν)(1 − 2ν)/(1 − ν) mit ρ = 2400 kg/m³, ν = 0,2; f_c ≈ 20·(v − 2) (v in km/s, grob)
  *  - Georadar: v = c/√ε_r mit c = 300 mm/ns, Tiefe d = v·t/2
- *  - Wenner-Sonde: ρ = 2π·a·R; 1 Ω·m = 0,1 kΩ·cm
+ *  - Wenner-Sonde: ρ = 2π·a·R; 1 Ω·m = 0,1 kΩ·cm; Korrosionsrisiko nach RILEM TC 154-EMC (Polder 2000, Tab. 2):
+ *    < 100 Ω·m hoch, 100 … 500 mäßig, 500 … 1000 niedrig, > 1000 Ω·m vernachlässigbar (vorher Grenze 120 Ω·m)
+ *  - Potential: einheitliche Einstufung potentialStufe aus bauwerksuntersuchung.ts (ASTM C876)
  *  - Karsten-Röhrchen: w = V/(0,491·√t) [kg/(m²·√h)] (Prüffläche 4,91 cm², V in ml, t in h)
  *  - Durchstrahlung: I/I₀ = exp(−μ·d) mit μ = 0,15/E (cm⁻¹, stark vereinfachtes Lehrmodell)
  *  - GUM: u_A = s/√n, u_B,1 = d/(2√3) (Rechteckverteilung), u_B,2 = U_kal/2, u_c = √(Σu²), U = k·u_c
  *  - Ringversuch (DIN EN ISO 13528): z = (x − X)/σ_pt, E_n = (x − X)/√(U_lab² + U_ref²)
- *  - Bohrkern: f = F/A, Schlankheitsfaktor nach ASTM C42 (linear interpoliert), Lehrfaktoren für Bewehrung und Bohrrichtung,
- *    Würfelwert ≈ f_c,cyl/0,82
+ *  - Bohrkern: f = F/A, Lehrfaktoren für Bewehrung und Bohrrichtung; nach DIN EN 13791:2020 entspricht ein Kern mit
+ *    h/d = 1 dem Würfel 150 mm, ein Kern mit h/d = 2 dem Zylinder 150/300 mm (Runde 5: Faktor 0,82 entfällt); die jeweils
+ *    andere Probenform über die Festigkeitsklassen (fckCubeVonFck/fckVonFckCube), Zwischenwerte von h/d über ASTM C42
  *  - Spaltzug: f_ct = 2F/(π·d·l); Marshall-Quotient S/F
- *  - Zugversuch: R_e = F_e/S₀, R_m = F_m/S₀, A = (L_u − L₀)/L₀
+ *  - Zugversuch: R_e = F_e/S₀, R_m = F_m/S₀, A_gt = (L_m − L₀)/L₀ mit der Messlänge L_m unter Höchstkraft (Runde 5:
+ *    als A_gt beschriftet und mit DIN 488-1 verglichen: R_e ≥ 500, R_m/R_e ≥ 1,05/1,08, A_gt ≥ 2,5/5,0 %)
  *  - Holz: f_c,0 ≈ 90·ρ − 3, Feuchtefaktor 1 − 0,035·(min(u; 28) − 12), f_m = F·L/(b·h²) (4-Punkt-Biegung, Drittelspunkte),
  *    E ≈ 25 000·ρ·k_u (Lehr-Näherungen)
- *  - Festbeton: f_cd = α_cc·f_ck/γ_c, f_ctd = α_ct·f_ctk;0,05/γ_c, f_cm(t) = (f_ck + 8)·β_cc(t), Geometrie- und Lagerungsfaktoren
+ *  - Festbeton: f_cd = α_cc·f_ck/γ_c, f_ctd = α_ct·f_ctk;0,05/γ_c, f_cm(t) = (f_ck + 8)·β_cc(t), f_ck(t) nach 3.1.2(5),
+ *    Würfel 150 über f_ck,cube/f_ck der Festigkeitsklasse (statt pauschal 1,25), Lagerungsfaktoren
  * Reiner Rechenkern ohne Rundung – geprüft in tests/pruefverfahren.test.ts.
  */
 import { type Hinweis, istEndlich, hatFehler, muss, bereich } from './plausibilitaet';
-import { dynamischerEModul, impactEcho, bohrkern } from './bauwerksuntersuchung';
+import { dynamischerEModul, impactEcho, bohrkern, rueckprallLehrkurve, RUECKPRALL_LEHRKURVE, RUECKPRALL_HINWEIS_SCHAETZUNG, potentialStufe } from './bauwerksuntersuchung';
+import { fckZumAlter, fckCubeVonFck, fckVonFckCube, BETONSTAHL } from '../data/kennwerte';
 import { betaCc, ZEMENT_S } from './betonkennwerte';
 import type { Zementklasse } from './kriechenSchwinden';
 import { stichprobe } from './statistik';
@@ -38,15 +44,15 @@ const abschluss = (h: Hinweis[]): PruefErgebnis => ({ gueltig: !hatFehler(h), hi
 // ================================================================ ZfP
 // ---------------------------------------------------------------- Rückprallhammer
 export type PruefWinkel = '0' | '90' | '-90';
-/** Lehr-Näherung des Moduls ZfP: f_c = a·R^b (keine Bezugskurve nach DIN EN 13791) */
-export const RUECKPRALL_ZFP = { a: 0.027, b: 2.1, rMin: 10 } as const;
+/** Einheitliche Lehrkurve f_c = a·R^b (bauwerksuntersuchung.ts; keine Bezugskurve nach DIN EN 13791) */
+export const RUECKPRALL_ZFP = RUECKPRALL_LEHRKURVE;
 /** Richtungskorrektur ΔR: nach unten −3, nach oben +3 */
 export function rueckprallKorrektur(winkel: PruefWinkel): number {
   return winkel === '90' ? -3 : winkel === '-90' ? 3 : 0;
 }
 /** Geschätzte Druckfestigkeit in N/mm² aus dem (korrigierten) Rückprallwert; unter R = 10 wird mit 10 gerechnet */
 export function rueckprallFestigkeitLehr(r: number): number {
-  return RUECKPRALL_ZFP.a * Math.pow(Math.max(RUECKPRALL_ZFP.rMin, r), RUECKPRALL_ZFP.b);
+  return rueckprallLehrkurve(r);
 }
 export interface RueckprallZfpErgebnis extends PruefErgebnis { rCorr: number; fc: number }
 export function rueckprallZfp(rueckprallwert: number, winkel: PruefWinkel): RueckprallZfpErgebnis {
@@ -56,7 +62,7 @@ export function rueckprallZfp(rueckprallwert: number, winkel: PruefWinkel): Ruec
   const fc = rueckprallFestigkeitLehr(rCorr);
   if (rCorr < RUECKPRALL_ZFP.rMin) h.push({ stufe: 'warnung', feld: 'rebound', text: 'Korrigierter Rückprallwert unter 10: Die Lehrkurve wird mit R = 10 ausgewertet.' });
   bereich(h, 'rebound', rueckprallwert, 20, 60, 'Rückprallwert außerhalb 20 … 60: Die Lehr-Näherung ist dort nicht abgesichert.');
-  h.push({ stufe: 'warnung', feld: 'fc', text: 'Lehr-Näherung f_c ≈ 0,027·R^2,1 ohne Kalibrierung an Bohrkernen (DIN EN 13791) – nur zur Orientierung.' });
+  h.push({ stufe: 'warnung', feld: 'fc', text: RUECKPRALL_HINWEIS_SCHAETZUNG });
   return { rCorr, fc, ...abschluss(h) };
 }
 /** Kurvenschar des Diagramms (horizontal, nach unten, nach oben) für R = von … bis */
@@ -114,12 +120,14 @@ export function georadar(epsilonR: number, laufzeitNs: number): RadarErgebnis {
 
 // ---------------------------------------------------------------- Potentialfeld, Wenner, Torrent
 export type PotentialRisiko = 'gering' | 'mittel' | 'hoch';
-/** Einstufung im Modul ZfP (mV gegen Cu/CuSO₄): < −350 hoch, < −350 … −200 mittel (Grenzen ausgeschlossen) */
+/** Einstufung im Modul ZfP (mV gegen Cu/CuSO₄) mit den einheitlichen Grenzen nach ASTM C876 (potentialStufe):
+ *  < −350 hoch, −350 … −200 mittel (ungewiss), > −200 gering. Vorher galt −200 mV selbst als „gering“. */
 export function potentialRisikoZfp(potentialMv: number): PotentialRisiko {
-  if (potentialMv < -350) return 'hoch';
-  if (potentialMv < -200) return 'mittel';
-  return 'gering';
+  const s = potentialStufe(potentialMv);
+  return s === 'hoch' ? 'hoch' : s === 'ungewiss' ? 'mittel' : 'gering';
 }
+/** Grenzen des Korrosionsrisikos aus dem Betonwiderstand in Ω·m (RILEM TC 154-EMC, Polder 2000, Tab. 2; OPC-Beton, 20 °C) */
+export const WENNER_GRENZEN_OHM_M = { hoch: 100, maessig: 500, niedrig: 1000 } as const;
 export type WennerStufe = 'sehr_hoch' | 'mittel' | 'niedrig' | 'vernachlaessigbar';
 export interface WennerErgebnis extends PruefErgebnis { /** Ω·m */ rho: number; /** kΩ·cm */ rhoKohmCm: number; stufe: WennerStufe }
 /** Elektrodenabstand a in mm, Widerstand R in Ω */
@@ -127,7 +135,9 @@ export function wenner(abstandMm: number, widerstandOhm: number): WennerErgebnis
   const h: Hinweis[] = [];
   muss(h, istEndlich(abstandMm, widerstandOhm) && abstandMm > 0 && widerstandOhm >= 0, 'wenner', 'Elektrodenabstand > 0 und Widerstand ≥ 0 erforderlich.');
   const rho = 2 * Math.PI * (abstandMm / 1000) * widerstandOhm;
-  const stufe: WennerStufe = rho < 120 ? 'sehr_hoch' : rho < 500 ? 'mittel' : rho < 1000 ? 'niedrig' : 'vernachlaessigbar';
+  const g = WENNER_GRENZEN_OHM_M;
+  const stufe: WennerStufe = rho < g.hoch ? 'sehr_hoch' : rho < g.maessig ? 'mittel' : rho < g.niedrig ? 'niedrig' : 'vernachlaessigbar';
+  if (!hatFehler(h)) h.push({ stufe: 'warnung', feld: 'wenner', text: 'Klassengrenzen nach RILEM TC 154-EMC als Anhalt für OPC-Beton bei 20 °C; Feuchte, Temperatur und Zementart verschieben den Widerstand stark.' });
   return { rho, rhoKohmCm: rho / 10, stufe, ...abschluss(h) };
 }
 /** Permeabilitätsklasse 1 … 5 (sehr niedrig … sehr hoch) aus k_T in 10⁻¹⁶ m² */
@@ -258,8 +268,6 @@ export const ASTM_C42_FAKTOREN: readonly (readonly [number, number])[] = [[1.0, 
 export const FAKTOR_JE_STAB = 0.035;
 /** Bohrrichtung horizontal: Literaturansatz BS 1881-120 (2,5/2,3 ≈ 1,085) */
 export const FAKTOR_HORIZONTAL = 1.085;
-/** Näherung Zylinder/Würfel des Moduls (C30/37: 30/37 ≈ 0,81) */
-export const ZYLINDER_ZU_WUERFEL = 0.82;
 
 /** Schlankheitsfaktor λ(h/d): NaN für h/d < 1 (nicht prüfbar), 1,0 für h/d > 2 */
 export function schlankheitsfaktorAstm(hd: number): number {
@@ -284,13 +292,26 @@ export function bohrkernPruefung(e: BohrkernPruefungEingabe): BohrkernPruefungEr
   const lambdaAspect = schlankheitsfaktorAstm(b.schlankheit);
   const lambdaRebar = 1.0 + FAKTOR_JE_STAB * e.staebe;
   const lambdaDirection = e.richtung === 'horizontal' ? FAKTOR_HORIZONTAL : 1.0;
-  const fcCore = b.festigkeit * lambdaAspect * lambdaRebar * lambdaDirection;
+  // Runde 5 (Z55): DIN EN 13791:2020 – Kern h/d = 1 entspricht dem Würfel 150 mm, h/d = 2 dem Zylinder 150/300 mm.
+  // Die andere Probenform folgt über die Festigkeitsklassen (Tab. 3.1), nicht über 1/0,82; ASTM C42 nur für Zwischenwerte.
+  const fKern = b.festigkeit * lambdaRebar * lambdaDirection;
+  let lambda = lambdaAspect, equivalentCylinder: number, equivalentCube: number;
+  if (b.bezug === 'wuerfel') {
+    lambda = 1.0; equivalentCube = fKern; equivalentCylinder = fckVonFckCube(fKern);
+  } else if (b.bezug === 'zylinder' || b.schlankheit > 2) {
+    lambda = 1.0; equivalentCylinder = fKern; equivalentCube = fckCubeVonFck(fKern);
+  } else {
+    equivalentCylinder = fKern * lambdaAspect; equivalentCube = fckCubeVonFck(equivalentCylinder);
+    if (b.schlankheit >= 1) h.push({ stufe: 'warnung', feld: 'concreteHeight', text: 'h/d weder 1 noch 2: Umrechnung auf h/d = 2 mit den Schlankheitsfaktoren nach ASTM C42 (DIN EN 13791 sieht h/d = 1 oder 2 vor).' });
+  }
+  const fcCore = b.festigkeit * lambda * lambdaRebar * lambdaDirection;
   if (b.schlankheit < 1) h.push({ stufe: 'fehler', feld: 'concreteHeight', text: 'h/d < 1: Der Kern ist nicht prüfbar.' });
-  if (b.schlankheit > 2) h.push({ stufe: 'warnung', feld: 'concreteHeight', text: 'h/d > 2: Kern auf h/d = 2 kürzen; gerechnet wird mit dem Faktor 1,0.' });
+  if (b.schlankheit > 2) h.push({ stufe: 'warnung', feld: 'concreteHeight', text: 'h/d > 2: Kern auf h/d = 2 kürzen; gerechnet wird wie mit h/d = 2.' });
   if (e.staebe > 0) h.push({ stufe: 'warnung', feld: 'staebe', text: 'Bewehrung im Kern: +3,5 % je Stab ist eine Lehrannahme; nach DIN EN 12504-1 sollen Kerne möglichst bewehrungsfrei sein.' });
+  if (!hatFehler(h)) h.push({ stufe: 'warnung', feld: 'equivalentCube', text: 'Umrechnung Zylinder ↔ Würfel über das Verhältnis f_ck,cube/f_ck der Festigkeitsklassen (Tab. 3.1) – für Einzelwerte eine Näherung.' });
   return {
-    area: b.flaecheMm2, rawStrength: b.festigkeit, aspect: b.schlankheit, lambdaAspect, lambdaRebar, lambdaDirection,
-    fcCore, equivalentCylinder: fcCore, equivalentCube: fcCore / ZYLINDER_ZU_WUERFEL, ...abschluss(h),
+    area: b.flaecheMm2, rawStrength: b.festigkeit, aspect: b.schlankheit, lambdaAspect: lambda, lambdaRebar, lambdaDirection,
+    fcCore, equivalentCylinder, equivalentCube, ...abschluss(h),
   };
 }
 
@@ -308,12 +329,15 @@ export function marshallQuotient(stabilitaetKn: number, fliesswertMm: number): n
 }
 
 export type StahlEinstufung = 'nicht' | 'B500A' | 'B500B';
+/** luMm: Messlänge L_m unter Höchstkraft F_m (Extensometer) in mm – daraus die Gesamtdehnung bei Höchstkraft A_gt */
 export interface ZugversuchEingabe { dMm: number; kraftReKn: number; kraftRmKn: number; l0Mm: number; luMm: number }
 export interface ZugversuchErgebnis extends PruefErgebnis {
+  /** elongation: Gesamtdehnung bei Höchstkraft A_gt in % */
   area: number; yieldStrength: number; ultimateStrength: number; ratio: number; elongation: number;
   yieldPassed: boolean; ratiosPassed: boolean; elongationPassed: boolean; einstufung: StahlEinstufung;
 }
-/** Einzelwertvergleich mit B500A/B500B (R_e ≥ 500; R_m/R_e ≥ 1,05/1,08; Dehnung ≥ 2,5/5,0 %) */
+/** Einzelwertvergleich mit B500A/B500B nach DIN 488-1 (R_e ≥ 500; R_m/R_e ≥ 1,05/1,08; A_gt ≥ 2,5/5,0 %; Werte aus
+ *  src/data/kennwerte.ts BETONSTAHL, ε_uk = A_gt). Die Flags yield/ratios/elongationPassed beziehen sich auf B500B. */
 export function zugversuchStahl(e: ZugversuchEingabe): ZugversuchErgebnis {
   const h: Hinweis[] = [];
   muss(h, istEndlich(e.dMm, e.kraftReKn, e.kraftRmKn, e.l0Mm, e.luMm), 'eingabe', 'Alle Eingaben müssen Zahlen sein.');
@@ -323,11 +347,13 @@ export function zugversuchStahl(e: ZugversuchEingabe): ZugversuchErgebnis {
   const ultimateStrength = (e.kraftRmKn * 1000) / area;
   const ratio = ultimateStrength / yieldStrength;
   const elongation = ((e.luMm - e.l0Mm) / e.l0Mm) * 100;
-  const einstufung: StahlEinstufung = yieldStrength >= 500 && ratio >= 1.08 && elongation >= 5.0 ? 'B500B'
-    : yieldStrength >= 500 && ratio >= 1.05 && elongation >= 2.5 ? 'B500A' : 'nicht';
+  const A = BETONSTAHL.B500A, B = BETONSTAHL.B500B;
+  const einstufung: StahlEinstufung = yieldStrength >= B.fyk && ratio >= B.k && elongation >= B.euk / 10 ? 'B500B'
+    : yieldStrength >= A.fyk && ratio >= A.k && elongation >= A.euk / 10 ? 'B500A' : 'nicht';
   if (e.kraftRmKn < e.kraftReKn) h.push({ stufe: 'warnung', feld: 'steelForceUltimate', text: 'F_m < F_e: Die Höchstkraft liegt unter der Streckgrenzenkraft.' });
-  h.push({ stufe: 'warnung', feld: 'elongation', text: 'Verglichen wird die Bruchdehnung A = (L_u − L₀)/L₀; DIN 488-1 begrenzt die Dehnung bei Höchstkraft A_gt – Einstufung nur orientierend.' });
-  return { area, yieldStrength, ultimateStrength, ratio, elongation, yieldPassed: yieldStrength >= 500, ratiosPassed: ratio >= 1.08, elongationPassed: elongation >= 5.0, einstufung, ...abschluss(h) };
+  h.push({ stufe: 'warnung', feld: 'elongation', text: 'A_gt = (L_m − L₀)/L₀ aus der Messlänge unter Höchstkraft (einschließlich elastischem Anteil). Die Bruchdehnung A nach dem Bruch ist größer und darf nicht mit den A_gt-Grenzen der DIN 488-1 verglichen werden. Einzelwert – die Norm bewertet charakteristische Werte aus Prüfserien.' });
+  if (einstufung === 'B500B' && yieldStrength > 1.3 * B.fyk) h.push({ stufe: 'warnung', feld: 'steelForceYield', text: 'R_e > 1,30·R_e,nenn: Die Obergrenze R_e,ist/R_e,nenn für B500B ist zu prüfen (vorläufig, F-Freigabe).' });
+  return { area, yieldStrength, ultimateStrength, ratio, elongation, yieldPassed: yieldStrength >= B.fyk, ratiosPassed: ratio >= B.k, elongationPassed: elongation >= B.euk / 10, einstufung, ...abschluss(h) };
 }
 
 export type HolzNiveau = 'unterC18' | 'laubholz' | 'C30' | 'C24' | 'C18';
@@ -358,25 +384,35 @@ export function bemessungswerteBeton(fck: number, fctk005: number, alphaCc: numb
 
 export type Probekoerper = 'zyl_150' | 'cube_150' | 'cube_100' | 'cube_200';
 export type Lagerung = 'norm' | 'feucht' | 'luft' | 'heiss';
-/** Lehrfaktoren des Moduls bezogen auf den Zylinder 150/300 mm */
-export const GEOMETRIE_FAKTOR: Readonly<Record<Probekoerper, number>> = { zyl_150: 1.0, cube_150: 1.25, cube_100: 1.30, cube_200: 1.20 };
+/** Lehrfaktoren der Würfelgröße bezogen auf den Würfel 150 mm (aus dem Modul übernommen: 1,30/1,25 bzw. 1,20/1,25) */
+export const WUERFEL_GROESSE_FAKTOR: Readonly<Record<Exclude<Probekoerper, 'zyl_150'>, number>> = { cube_150: 1.0, cube_100: 1.04, cube_200: 0.96 };
+/** Faktor bezogen auf den Zylinder 150/300 mm: Würfel 150 über f_ck,cube/f_ck der Festigkeitsklasse (Runde 5, statt pauschal 1,25) */
+export function geometrieFaktor(geo: Probekoerper, fck: number): number {
+  if (geo === 'zyl_150') return 1.0;
+  return (fckCubeVonFck(fck) / fck) * WUERFEL_GROESSE_FAKTOR[geo];
+}
 /** Lehrfaktoren der Lagerung bezogen auf die Normlagerung */
 export const LAGERUNG_FAKTOR: Readonly<Record<Lagerung, number>> = { norm: 1.0, feucht: 0.95, luft: 0.90, heiss: 0.85 };
 
 export interface FestigkeitsentwicklungEingabe { fck: number; alterTage: number; zement: Zementklasse; geometrie: Probekoerper; lagerung: Lagerung }
 export interface FestigkeitsentwicklungErgebnis extends PruefErgebnis {
   s: number; betaCc: number; fcmRef: number; fcmT: number; geoFaktor: number; lagerungsFaktor: number; fcmTeff: number;
+  /** charakteristische Zylinderfestigkeit f_ck(t) nach DIN EN 1992-1-1, 3.1.2(5): f_cm(t) − 8 für t < 28 d, f_ck für t ≥ 28 d */
+  fckT: number;
 }
 /** f_cm(t) = (f_ck + 8)·β_cc(t) nach DIN EN 1992-1-1, Gl. (3.1)/(3.2), umgerechnet auf Probekörper und Lagerung */
 export function festigkeitsentwicklung(e: FestigkeitsentwicklungEingabe): FestigkeitsentwicklungErgebnis {
   const h: Hinweis[] = [];
   muss(h, istEndlich(e.fck, e.alterTage) && e.alterTage > 0, 'alter', 'Das Betonalter muss größer als 0 Tage sein.');
+  muss(h, e.fck > 0, 'fck', 'f_ck muss größer als 0 sein.');
   const s = ZEMENT_S[e.zement];
   const bcc = betaCc(s, e.alterTage);
   const fcmRef = e.fck + 8;
   const fcmT = fcmRef * bcc;
-  const geoFaktor = GEOMETRIE_FAKTOR[e.geometrie];
+  const geoFaktor = geometrieFaktor(e.geometrie, e.fck);
   const lagerungsFaktor = LAGERUNG_FAKTOR[e.lagerung];
-  if (e.alterTage > 28) h.push({ stufe: 'warnung', feld: 'alter', text: 'Nach 28 Tagen: β_cc > 1 beschreibt die Nacherhärtung; für die Bemessung bleibt nach DIN EN 1992-1-1, 3.1.2 in der Regel f_ck nach 28 Tagen maßgebend.' });
-  return { s, betaCc: bcc, fcmRef, fcmT, geoFaktor, lagerungsFaktor, fcmTeff: fcmT * geoFaktor * lagerungsFaktor, ...abschluss(h) };
+  if (e.alterTage > 28) h.push({ stufe: 'warnung', feld: 'alter', text: 'Nach 28 Tagen: β_cc > 1 beschreibt die Nacherhärtung des Mittelwerts f_cm(t); nach DIN EN 1992-1-1, 3.1.2(5) gilt für t ≥ 28 d f_ck(t) = f_ck.' });
+  if (e.alterTage <= 3) h.push({ stufe: 'warnung', feld: 'alter', text: 't ≤ 3 d: f_ck(t) = f_cm(t) − 8 ist nach 3.1.2(5) erst für 3 d < t < 28 d angegeben.' });
+  const fckT = fckZumAlter(e.fck, fcmT, e.alterTage);
+  return { s, betaCc: bcc, fcmRef, fcmT, geoFaktor, lagerungsFaktor, fcmTeff: fcmT * geoFaktor * lagerungsFaktor, fckT, ...abschluss(h) };
 }

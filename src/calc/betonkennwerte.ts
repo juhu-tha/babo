@@ -3,27 +3,31 @@
  * Übernimmt die Gleichungsfolge aus src/modules/Betonkennwerte.tsx unverändert (Verdrahtung in Z11):
  *  1. Druckfestigkeit: f_cm = f_ck + 8; f_cd = α_cc·f_ck/γ_c (α_cc = 0,85, γ_c = 1,50)
  *     Festigkeitsentwicklung β_cc(t) = exp[s·(1 − √(28/t_T))] (Gl. 3.2) mit temperaturangepasstem Alter
- *     t_T = t·exp[−(4000/(273 + T) − 13,65)] (Anhang B, Gl. B.10), f_ck(t) = f_cm(t) − 8
+ *     t_T = t·exp[−(4000/(273 + T) − 13,65)] (Anhang B, Gl. B.10), f_ck(t) = f_cm(t) − 8 für t < 28 d, f_ck(t) = f_ck für t ≥ 28 d
+ *     (3.1.2(5); Runde 5: vorher auch für t ≥ 28 d f_cm(t) − 8)
  *  2. Zugfestigkeit: f_ctm = 0,30·f_ck^(2/3) (≤ C50/60) bzw. 2,12·ln(1 + f_cm/10); f_ctk;0,05 = 0,7·f_ctm,
  *     f_ctk;0,95 = 1,3·f_ctm, f_ctd = α_ct·f_ctk;0,05/γ_c (α_ct = 0,85 NA), f_ctm,fl = max(1,6 − h/1000; 1)·f_ctm (Gl. 3.23),
  *     f_ct,sp = f_ctm/0,9 (Gl. 3.3), f_ctm(t) = β_cc(t)^α·f_ctm (Gl. 3.4; α = 1 für t < 28 d, sonst 2/3)
  *  3. E-Modul: E_cm = 22 000·(f_cm/10)^0,3·α_E [N/mm²] (Tab. 3.1, 3.1.3(2)), E_c0 = 1,05·E_cm, E_cm(t) = β_cc(t)^0,3·E_cm (Gl. 3.5),
  *     G_cm = E_cm/(2·(1 + ν)) mit ν = 0,2
- *  4. Spannungs-Dehnungs-Linie (Tab. 3.1): ε_c1, ε_cu1, k = 1,05·E_cm·|ε_c1|/f_cm (Gl. 3.14, z. B. C30/37: k ≈ 1,96), ε_c2, ε_cu2, n
+ *  4. Spannungs-Dehnungs-Linie (Tab. 3.1, zentral dehnungsKennwerte in src/data/kennwerte.ts; über C90/105 gehalten):
+ *     ε_c1, ε_cu1, k = 1,05·E_cm·|ε_c1|/f_cm (Gl. 3.14, z. B. C30/37: k ≈ 1,96), ε_c2, ε_cu2, n
  *  5. Schwinden (3.1.4, Anhang B.2): h_0 = 2·A_c/u, ε_ca(t) (Gl. 3.11–3.13), ε_cd(t) (Gl. 3.9, 3.10, B.11, B.12), k_h (Tab. 3.3)
  *  6. Kriechen (Anhang B.1): φ_RH, β(f_cm), β(t_0) mit t_0,eff (Gl. B.9), β_H, β_c(t,t_0), nichtlineares Kriechen (Gl. 3.7),
  *     ε_cc = φ·σ_c/E_c0, E_c,eff = E_cm/(1 + φ) (Gl. 7.20), E_c,eff,Zwang = E_cm/(1 + 0,8·φ)
  *  7. Vorschau DIN EN 1992-1-1:2025-09: E_cm = 9500·f_cm^(1/3), η_cc = min(1; (40/f_ck)^(1/3))
  * Einheiten: Festigkeiten und Moduln in N/mm² (MPa), Dehnungen ε_c1 … ε_cu2 in ‰, Schwind- und Kriechdehnungen
  * dimensionslos (–), Längen in mm (Ausnahme: A_c in m², u und Bauteillänge in m), Zeiten in Tagen, Temperatur in °C.
- * Die Klemmungen der Moduldatei (h ≥ 50 mm, 20 ≤ h_0 ≤ 1500 mm, 20 ≤ RH ≤ 100 %, t_T ≥ 0,1 d) bleiben erhalten;
- * sie werden als Warnung gemeldet, wenn sie greifen. Reiner Rechenkern – geprüft in tests/betonkennwerte.test.ts.
+ * Die Klemmungen der Moduldatei (h ≥ 50 mm, 20 ≤ RH ≤ 100 %, t_T ≥ 0,1 d) bleiben erhalten; sie werden als Warnung
+ * gemeldet, wenn sie greifen. h_0 wird seit Runde 5 wie in kriechenSchwinden.ts nicht mehr begrenzt (Anhang B kennt keine
+ * Begrenzung von h_0; k_h nach Tab. 3.3 ist ab h_0 ≥ 500 mm konstant 0,70, β_H ≤ 1500·α_3). Reiner Rechenkern – geprüft in tests/betonkennwerte.test.ts.
  */
 import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
+import { fckZumAlter, dehnungsKennwerte } from '../data/kennwerte';
 import {
   type Zementklasse, ZEMENT_DS, ZEMENT_ALPHA, beiwertKh, phiRH as phiRHBeiwert, betaFcm as betaFcmBeiwert,
   wirksamesBelastungsalter, betaT0 as betaT0Beiwert, betaH as betaHBeiwert, betaC as betaCBeiwert, epsCd0 as epsCd0Grundwert,
-  betaDs as betaDsBeiwert, epsCaUnendlich, betaAs as betaAsBeiwert,
+  betaDs as betaDsBeiwert, epsCaUnendlich, betaAs as betaAsBeiwert, h0Hinweise,
 } from './kriechenSchwinden';
 
 // Bausteine für Schwinden und Kriechen (Anhang B, 3.1.4) liegen seit AP 4.2 in src/calc/kriechenSchwinden.ts
@@ -118,6 +122,7 @@ export function betonkennwerte(e: BetonkennwerteEingabe): BetonkennwerteErgebnis
   muss(hinweise, fck > 0, 'fck', 'f_ck muss größer als 0 sein.');
   muss(hinweise, temperatur > -273, 'temperatur', 'Die Temperatur muss über dem absoluten Nullpunkt liegen.');
   muss(hinweise, t > 0 && t0 > 0, 't', 'Betonalter t und Belastungsalter t₀ müssen größer als 0 sein.');
+  muss(hinweise, ac > 0 && u > 0, 'ac', 'Querschnittsfläche A_c und Umfang u müssen größer als 0 sein.');
 
   // 1. Druckfestigkeit
   const fcm = fck + 8;
@@ -129,10 +134,10 @@ export function betonkennwerte(e: BetonkennwerteEingabe): BetonkennwerteErgebnis
   const tTemp = Math.max(0.1, t * tempFactor);
   const betaCcT0 = betaCc(s, t0Temp);
   const fcmT0 = betaCcT0 * fcm;
-  const fckT0 = Math.max(0, fcmT0 - 8);
+  const fckT0 = fckZumAlter(fck, fcmT0, t0Temp);
   const betaCcT = betaCc(s, tTemp);
   const fcmT = betaCcT * fcm;
-  const fckT = Math.max(0, fcmT - 8);
+  const fckT = fckZumAlter(fck, fcmT, tTemp);
 
   // 2. Zugfestigkeit
   const fctm = fck <= 50 ? 0.30 * Math.pow(fck, 2 / 3) : 2.12 * Math.log(1 + fcm / 10);
@@ -154,22 +159,17 @@ export function betonkennwerte(e: BetonkennwerteEingabe): BetonkennwerteErgebnis
   const Gcm = Ecm / (2 * (1 + nu));
 
   // 4. Spannungs-Dehnungs-Linie
+  const dk = dehnungsKennwerte(fck);
   const epsC1 = Math.min(2.8, 0.7 * Math.pow(fcm, 0.31));
-  const epsCu1 = fck > 50 ? 2.8 + 27 * Math.pow((98 - fcm) / 100, 4) : 3.5;
+  const epsCu1 = dk.ecu1;
   // Gl. (3.14): k = 1,05·E_cm·|ε_c1|/f_cm mit ε_c1 in ‰ → /1000; f_cm in N/mm² (bis Z11 fälschlich f_cm/1000 → k 1000-fach zu groß)
   const kPlastizitaet = (1.05 * Ecm * (epsC1 / 1000)) / fcm;
-  let epsC2 = 2.0, epsCu2 = 3.5, exponentN = 2.0;
-  if (fck > 50) {
-    epsC2 = 2.0 + 0.085 * Math.pow(fck - 50, 0.53);
-    epsCu2 = 2.6 + 35 * Math.pow((90 - fck) / 100, 4);
-    exponentN = 1.4 + 23.4 * Math.pow((90 - fck) / 100, 4);
-  }
+  const epsC2 = dk.ec2, epsCu2 = dk.ecu2, exponentN = dk.n;
 
   // 5. Schwinden
-  const AcMm2 = Math.max(0.001, ac) * 1e6;
-  const uMm = Math.max(0.01, u) * 1e3;
-  const h0Roh = (2 * AcMm2) / uMm;
-  const h0 = Math.min(1500, Math.max(20, h0Roh));
+  const AcMm2 = ac * 1e6;
+  const uMm = u * 1e3;
+  const h0 = (2 * AcMm2) / uMm;
   const epsCaInfty = epsCaUnendlich(fck);
   const epsCa = betaAsBeiwert(t) * epsCaInfty;
   const RH = Math.min(100, Math.max(20, rh));
@@ -201,15 +201,15 @@ export function betonkennwerte(e: BetonkennwerteEingabe): BetonkennwerteErgebnis
   const etaFc2025 = Math.min(1.0, Math.pow(40 / Math.max(1, fck), 1 / 3));
 
   // Anwendungsbereich (nur Warnungen, die Rechnung bleibt unverändert)
-  if (fck > 90) hinweise.push({ stufe: 'warnung', feld: 'fck', text: 'f_ck > 90 N/mm²: Die Gleichungen für ε_cu1, ε_cu2 und n aus Tab. 3.1 gelten nur bis C90/105 (Werte steigen darüber wieder an).' });
+  if (fck > 90) hinweise.push({ stufe: 'warnung', feld: 'fck', text: 'f_ck > 90 N/mm²: Tab. 3.1 reicht bis C90/105; ε_c2, ε_cu1, ε_cu2 und n werden mit den Werten von C90/105 gehalten.' });
   if (fck < 12) hinweise.push({ stufe: 'warnung', feld: 'fck', text: 'f_ck < 12 N/mm²: unterhalb der Festigkeitsklassen nach Tab. 3.1.' });
   if (rh < 40 || rh > 100) hinweise.push({ stufe: 'warnung', feld: 'rh', text: 'Anhang B gilt für 40 % ≤ RH ≤ 100 %; RH wird auf 20 … 100 % begrenzt.' });
-  if (h0Roh < 20 || h0Roh > 1500) hinweise.push({ stufe: 'warnung', feld: 'ac', text: 'h₀ = 2·A_c/u liegt außerhalb 20 … 1500 mm und wird begrenzt.' });
+  h0Hinweise(hinweise, h0, 'ac');
   if (h < 50) hinweise.push({ stufe: 'warnung', feld: 'h', text: 'h < 50 mm: für f_ctm,fl wird h = 50 mm angesetzt.' });
   if (temperatur < 0 || temperatur > 80) hinweise.push({ stufe: 'warnung', feld: 'temperatur', text: 'Die Temperaturanpassung nach Anhang B gilt für etwa 0 … 80 °C.' });
   if (t < t0) hinweise.push({ stufe: 'warnung', feld: 't', text: 't < t₀: Der Beton ist noch nicht belastet, die Kriechzahl ist 0.' });
   if (ts > t) hinweise.push({ stufe: 'warnung', feld: 'ts', text: 't_s > t: Das Trocknungsschwinden hat noch nicht begonnen.' });
-  if (t0 < 3) hinweise.push({ stufe: 'warnung', feld: 't0', text: 't₀ < 3 d: f_ck(t₀) = f_cm(t₀) − 8 ist nach 3.1.2(5) erst ab 3 Tagen anwendbar.' });
+  if (t0Temp <= 3) hinweise.push({ stufe: 'warnung', feld: 't0', text: 't₀ ≤ 3 d: f_ck(t₀) = f_cm(t₀) − 8 ist nach 3.1.2(5) erst für 3 d < t < 28 d angegeben.' });
   if (sigmaC > stressLimitMax) hinweise.push({ stufe: 'warnung', feld: 'sigmaC', text: 'σ_c > 0,6·f_ck(t₀): Gl. (3.7) ist nur bis 0,6·f_ck(t₀) zugelassen (Grenze für die Spannung im GZG).' });
   if (sigmaC < 0) hinweise.push({ stufe: 'warnung', feld: 'sigmaC', text: 'σ_c < 0: Als Druckspannung ist ein positiver Betrag einzugeben.' });
 

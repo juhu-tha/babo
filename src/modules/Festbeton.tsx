@@ -199,11 +199,14 @@ export default function Festbeton() {
   const [konfKlasse, setKonfKlasse] = useState<string>('C25/30');
   const [konfModus, setKonfModus] = useState<'erst' | 'stetig'>('erst');
   const [konfWerteStr, setKonfWerteStr] = useState<string>('34,5; 33,2; 35,8');
+  // σ der vorausgehenden Prüfreihe (stetige Herstellung, DIN EN 206 8.2.1.3); leer = ersatzweise aus der Stichprobe
+  const [konfSigmaVorStr, setKonfSigmaVorStr] = useState<string>('');
 
   const konfFck = (NORM_KLASSEN.find(k => k.name === konfKlasse) || NORM_KLASSEN[4]).fck_cube;
   // Rechenkern src/calc/festbetonStatistik.ts: Trennung an Semikolon oder Leerzeichen; Komma ist Dezimalzeichen
   const konfWerte = pruefwerteAusText(konfWerteStr);
-  const konf = konformitaetDruck({ werte: konfWerte, fckCube: konfFck, pruefArt: konfModus });
+  const konfSigmaVor = konfSigmaVorStr.trim() === '' ? undefined : parseFloat(konfSigmaVorStr.replace(',', '.'));
+  const konf = konformitaetDruck({ werte: konfWerte, fckCube: konfFck, pruefArt: konfModus, sigmaVorserie: konfSigmaVor });
   const {
     mittelwert: konfMean, minimum: konfMin, s: konfStdDev, sigmaAngesetzt: konfStdDevUsed,
     sollMittelwert: konfSollMean, sollEinzelwert: konfSollMin, mittelOk: konfMeanOk, einzelOk: konfMinOk, bestanden: konfBestanden,
@@ -459,7 +462,7 @@ export default function Festbeton() {
                         className="w-full p-2 bg-off-white border border-home-grau/30 rounded-xl font-semibold"
                       >
                         <option value="zyl_150">Zylinder 150/300 (Ref. 1,00)</option>
-                        <option value="cube_150">Würfel 150 mm (ca. 1,25)</option>
+                        <option value="cube_150">Würfel 150 mm (f_ck,cube/f_ck der Klasse)</option>
                         <option value="cube_100">Würfel 100 mm (ca. 1,30)</option>
                         <option value="cube_200">Würfel 200 mm (ca. 1,20)</option>
                       </select>
@@ -792,6 +795,20 @@ export default function Festbeton() {
                       className="w-full p-2.5 bg-off-white border border-home-grau/30 rounded-xl font-mono text-xs font-bold"
                     />
                   </div>
+
+                  {konfModus === 'stetig' && (
+                    <div className="text-xs">
+                      <label className="font-bold text-text-main block mb-1">
+                        σ der vorausgehenden Prüfreihe [N/mm²] (mind. 35 Werte; leer = Schätzung aus der Stichprobe):
+                      </label>
+                      <input aria-label="Standardabweichung der vorausgehenden Prüfreihe in N/mm²"
+                        type="text" inputMode="decimal"
+                        value={konfSigmaVorStr}
+                        onChange={(e) => setKonfSigmaVorStr(e.target.value)}
+                        className="w-full p-2.5 bg-off-white border border-home-grau/30 rounded-xl font-mono text-xs font-bold"
+                      />
+                    </div>
+                  )}
 
                   {/* Auswertung */}
                   <div className={`p-4 rounded-xl border flex flex-col gap-2 transition-all ${

@@ -2,7 +2,7 @@
 // Freyssinet-Randspannungen, Dehnungsanimation, „Spannbeton von 0 bis 100“ (B500/Y1860, Lastausgleich)
 import {
   freyssinetSpannungen, rechteckQuerschnitt, dekompressionsKraft, dehnungsZustand, DEHNUNG_TRAEGER,
-  stauchungsVerlust, lastausgleich, litzenAnzahl,
+  stauchungsVerlust, lastausgleich, litzenAnzahl, KRAFT_JE_LITZE_KN, KRAFT_JE_LITZE_PM0_KN, LITZE, CONCRETE, fctmFl,
   type DehnungsEingabe, type Spanngliedlage, type Schnittlage,
 } from '../src/calc/spannbeton';
 
@@ -133,6 +133,8 @@ pruefe(!dehnungsZustand({ P: -1, q: 0, ep: 280, lage: 'parabolic', schnitt: 'mid
 pruefe(!dehnungsZustand({ P: 1000, q: 0, ep: 500, lage: 'parabolic', schnitt: 'midspan' }).gueltig, 'e_p = h/2 → Fehler');
 pruefe(!dehnungsZustand({ P: NaN, q: 0, ep: 280, lage: 'parabolic', schnitt: 'midspan' }).gueltig, 'NaN → Fehler');
 pruefe(DEHNUNG_TRAEGER.L === 20 && DEHNUNG_TRAEGER.fctm === 3.5, 'Lehrparameter unverändert');
+// Runde 5: E_cm und f_ctm aus Tab. 3.1 (C40/50: 35 000 / 3,5 N/mm²), Biegerandzug gegen f_ctm,fl = max((1,6 − 1,0)·3,5; 3,5) = 3,5
+pruefe(DEHNUNG_TRAEGER.Ecm === CONCRETE['C40/50'].Ecm && DEHNUNG_TRAEGER.fctm === CONCRETE['C40/50'].fctm && DEHNUNG_TRAEGER.fctmFl === 3.5 && fctmFl(3.5, 300) === 1.3 * 3.5, 'E_cm/f_ctm aus Tab. 3.1, f_ctm,fl (3.1.8)');
 
 // 4. Station 2: Stauchung 1,2 ‰ → B500: Δσ = 200 000·0,0012 = 240 N/mm² (55 % von 435), Rest 195;
 //    Y1860: Δσ = 195 000·0,0012 = 234 N/mm² (17 % von 1 360), Rest 1 126 N/mm²
@@ -146,14 +148,17 @@ pruefe(stauchungsVerlust(0).b500.verlustProzent === 0 && !stauchungsVerlust(-1).
 
 // 5. Station 4: Lastausgleich L = 20 m, g = 25 kN/m, f = 0,35 m: P = 25·400/(8·0,35) = 3 571 kN, u = 25,0 kN/m, M_rest = 0
 const la = lastausgleich(20, 25, 0.35);
-pruefe(la.gueltig && la.P === 3571 && la.u === 25 && la.mNetto === 0 && la.litzen === 24, `Lastausgleich ${JSON.stringify(la)}`);
-pruefe(litzenAnzahl(150) === 1 && litzenAnzahl(224) === 1 && litzenAnzahl(225) === 2, 'Litzenzahl gerundet');
+//    Runde 5: Litzen aus A_p·σ_pm0 = 150·1 360 = 204 kN, nach 15 % Verlusten (Lehrannahme) 173,4 kN → n = ⌈3 571/173,4⌉ = 21 (vorher P/150 = 24)
+pruefe(la.gueltig && la.P === 3571 && la.u === 25 && la.mNetto === 0 && la.litzen === 21, `Lastausgleich ${JSON.stringify(la)}`);
+pruefe(KRAFT_JE_LITZE_PM0_KN === 204 && Math.abs(KRAFT_JE_LITZE_KN - 173.4) < 1e-9 && LITZE.Ap === 150, 'Kraft je Litze');
+pruefe(litzenAnzahl(173.4) === 1 && litzenAnzahl(174) === 2 && litzenAnzahl(0) === 0 && litzenAnzahl(346.8) === 2, 'Litzenzahl aufgerundet');
 pruefe(!lastausgleich(20, 25, 0).gueltig && !lastausgleich(0, 25, 0.3).gueltig && !lastausgleich(20, -1, 0.3).gueltig, 'f = 0 / L = 0 / g < 0 → Fehler');
 // Referenz: wörtliche Kopie aus SpannbetonNullBisHundert.tsx (Stand origin/main 0e747ac6)
 const laRef = (beamLength: number, deadLoad: number, sagittaF: number) => {
   const requiredP_kN = Math.round((deadLoad * Math.pow(beamLength, 2)) / (8 * sagittaF));
   const upwardLoad_u = Math.round(((8 * requiredP_kN * sagittaF) / Math.pow(beamLength, 2)) * 10) / 10;
-  return { P: requiredP_kN, u: upwardLoad_u, mNetto: Math.round(((deadLoad - upwardLoad_u) * Math.pow(beamLength, 2)) / 8), litzen: Math.round(requiredP_kN / 150) };
+  // Runde 5: Litzenzahl n = ⌈P/(150 mm²·1 360 N/mm²·0,85)⌉ statt round(P/150 kN)
+  return { P: requiredP_kN, u: upwardLoad_u, mNetto: Math.round(((deadLoad - upwardLoad_u) * Math.pow(beamLength, 2)) / 8), litzen: Math.ceil(requiredP_kN / (150 * 1360 * 0.85 / 1000) - 1e-9) };
 };
 const verlustRef = (concreteStauchung: number) => {
   const deltaEps = concreteStauchung / 1000;
