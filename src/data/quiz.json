@@ -1072,10 +1072,10 @@
     "normRef": "EU ESPR / DPP-Standard",
     "question": "Welche zentrale Aufgabe erfüllt der Digitale Produktpass (DPP) im Lebenszyklus von Bauprodukten?",
     "options": [
-      "Er dient ausschließlich als elektronischer Kassenbon beim Baustoffhändler.",
-      "Er stellt digital abrufbare, maschinenlesbare Daten über Materialzusammensetzung, Rezyklatanteil, Schadstoffe, Reparierbarkeit und Demontageanleitungen entlang der gesamten Lieferkette bereit.",
-      "Er ersetzt die Notwendigkeit von Baugenehmigungen bei Kommunen.",
-      "Er sperrt Produkte für den Export außerhalb der Europäischen Union."
+      "Er dient beim Kauf im Baustoffhandel als elektronischer Kassenbeleg",
+      "Er liefert maschinenlesbare Daten zu Material, Rezyklat und Schadstoffen",
+      "Er ersetzt bei Bauprodukten die Baugenehmigung durch die Kommune",
+      "Er beschränkt den Export von Bauprodukten in Länder außerhalb der EU"
     ],
     "correctIdx": 1,
     "explanation": "Der DPP ist ein Kernelement der europäischen Kreislaufwirtschaftsstrategie. Über digitale Datenträger (z.B. QR-Codes) ermöglicht er Planern, Bauherren und Abbruchunternehmen den schnellen Zugriff auf verifizierte Werkstoffdaten, Schadstofffreiheit und Recyclingpotenziale zur Maximierung der Wiederverwendung.",
@@ -1087,9 +1087,20 @@
       "targetModuleTab": "dpp",
       "targetModuleLabel": "Digitaler Produktpass"
     },
-    "reviewer": "Prof. Dr.-Ing. Jürgen Huber",
-    "reviewedAt": "2026-09-28",
-    "verified": true
+    "verified": false,
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Kaufbelege sind nicht Aufgabe des DPP; er begleitet das Produkt mit Daten über den gesamten Lebenszyklus.",
+      "",
+      "Der DPP betrifft Produktinformationen; das Baugenehmigungsverfahren bleibt davon unberührt.",
+      "Der DPP regelt keine Ausfuhr; er macht Produktdaten entlang der Lieferkette verfügbar."
+    ],
+    "vorpruefung": {
+      "am": "2026-10-27",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 27.10.: Optionen in der Länge angeglichen, Absolutwort „ausschließlich“ entfernt, Rückmeldungen ergänzt korrigiert (Freigabe vom 28.09.2026 damit aufgehoben)."
+    }
   },
   {
     "id": "q_einh_1",
@@ -11959,7 +11970,9 @@
       "targetModuleTab": "bim_baustoffe",
       "targetModuleLabel": "BIM für Baustoffe"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -12040,7 +12053,9 @@
       "targetModuleTab": "materialdatenbanken",
       "targetModuleLabel": "Materialdatenbanken"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -12245,7 +12260,9 @@
       "targetModuleTab": "materialpaesse",
       "targetModuleLabel": "Materialpässe"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -12286,7 +12303,9 @@
       "targetModuleTab": "materialpaesse",
       "targetModuleLabel": "Materialpässe"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -12487,7 +12506,9 @@
       "targetModuleTab": "ki_ueberblick",
       "targetModuleLabel": "KI: Überblick & Grundlagen"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -12527,7 +12548,9 @@
       "targetModuleTab": "ki_ueberblick",
       "targetModuleLabel": "KI: Überblick & Grundlagen"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -12568,7 +12591,9 @@
       "targetModuleLabel": "KI: Überblick & Grundlagen"
     },
     "quelle": "Goodfellow/Bengio/Courville: Deep Learning, Kap. 5",
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-26",
       "ergebnis": "ok"
@@ -12731,7 +12756,9 @@
       "targetModuleTab": "ki_system",
       "targetModuleLabel": "KI: Systemarchitektur"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -12972,7 +12999,9 @@
       "targetModuleTab": "ki_thesen",
       "targetModuleLabel": "KI: Tools für Thesen"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -13053,7 +13082,9 @@
       "targetModuleTab": "ki_recht_ethik",
       "targetModuleLabel": "KI: Fehler, Recht & Ethik"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "korrigiert",
@@ -13338,7 +13369,9 @@
       "targetModuleTab": "ki_lokal",
       "targetModuleLabel": "KI: Lokale KI (LM Studio)"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -13856,7 +13889,9 @@
       "targetModuleTab": "ki_baustoffe",
       "targetModuleLabel": "KI in der Baustoffkunde"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -14018,7 +14053,9 @@
       "targetModuleLabel": "KI in der Baustoffkunde"
     },
     "quelle": "Lehrbeispiel im Modul",
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -14139,7 +14176,9 @@
       "targetModuleTab": "px_planung",
       "targetModuleLabel": "Planung & Ausschreibung"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -14384,7 +14423,9 @@
       "targetModuleTab": "px_bauleitung",
       "targetModuleLabel": "Bauleitung & Baustelle"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -14453,7 +14494,7 @@
     "niveau": "B",
     "distraktorFeedback": [
       "",
-      "f_ck + 8 ist ein Vorhaltemaß für den Mischungsentwurf, kein Konformitätskriterium der Erstherstellung.",
+      "Der Zuschlag + 8 N/mm² stammt aus der Beziehung f_cm = f_ck + 8 nach DIN EN 1992-1-1 und ist kein Konformitätskriterium; bei Erstherstellung gilt f_cm ≥ f_ck + 4.",
       "Einzelwerte dürfen unter dem Mittelwert liegen; gefordert ist nur jeder Einzelwert ≥ f_ck − 4 = 33 N/mm².",
       "15 Ergebnisse gelten für die stetige Herstellung; bei Erstherstellung wird bereits mit n = 3 bewertet."
     ],
@@ -14468,7 +14509,8 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 27.10.: Rückmeldung zu Option 2: f_ck + 8 als Mittelwertbeziehung nach DIN EN 1992-1-1 statt als „Vorhaltemaß“ erklärt korrigiert."
     }
   },
   {
@@ -14479,16 +14521,16 @@
     "moduleTitle": "Karrierestart & Soft Skills",
     "topic": "Qualifikation",
     "difficulty": "Basis",
-    "normRef": "DIN 1045-3",
+    "normRef": "DIN 1045-3:2023-08",
     "question": "Wofür wird der E-Schein (erweiterte betontechnologische Kenntnisse) nach DIN 1045-3 benötigt?",
     "options": [
-      "Leitung der ständigen Betonprüfstelle für Beton der ÜK 2 und 3",
+      "Leitung der ständigen Betonprüfstelle für Beton der ÜK 2",
       "Bauleitung jeder Baustelle mit Beton der Überwachungsklasse 1",
       "Eintragung als Tragwerksplaner in die Liste der Ingenieurkammer",
       "Tätigkeit als Prüfingenieur für Standsicherheit im Bauamt"
     ],
     "correctIdx": 0,
-    "explanation": "Die Überwachung von Beton der ÜK 2 und 3 erfolgt durch eine ständige Betonprüfstelle, die von einer Person mit E-Schein geleitet wird.",
+    "explanation": "Die Überwachung von Beton der ÜK 2 (nach DIN 1045-3:2023; früher ÜK 2 und 3) erfolgt durch eine ständige Betonprüfstelle, die von einer Person mit E-Schein geleitet wird.",
     "bloom": "Erinnern",
     "niveau": "B",
     "distraktorFeedback": [
@@ -14508,7 +14550,8 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 27.10.: ÜK 2 und 3 → ÜK 2 (DIN 1045-3:2023-08 kennt nur noch ÜK 1 und ÜK 2), normRef mit Ausgabe korrigiert."
     }
   },
   {
@@ -14705,7 +14748,9 @@
       "targetModuleTab": "kuriositaeten",
       "targetModuleLabel": "Kuriositäten & Rekorde"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -14987,7 +15032,9 @@
       "targetModuleTab": "grundlagen",
       "targetModuleLabel": "Ausgangsstoffe des Betons"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "korrigiert",
@@ -15028,7 +15075,9 @@
       "targetModuleTab": "grundlagen",
       "targetModuleLabel": "Ausgangsstoffe des Betons"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "korrigiert",
@@ -15204,22 +15253,22 @@
     "topic": "Transportzeit",
     "difficulty": "Basis",
     "normRef": "DIN 1045-2, 7.6",
-    "question": "Bis wann soll ein Fahrmischer nach der ersten Wasserzugabe vollständig entladen sein?",
+    "question": "Steifer Beton wird mit einem Fahrzeug ohne Rührwerk angeliefert. Bis wann soll er nach der ersten Wasserzugabe vollständig entladen sein?",
     "options": [
       "30 Minuten",
       "45 Minuten",
       "90 Minuten",
       "180 Minuten"
     ],
-    "correctIdx": 2,
-    "explanation": "Fahrmischer und Fahrzeuge mit Rührwerk: 90 min; Fahrzeuge ohne Rührwerk (steifer Beton): 45 min.",
+    "correctIdx": 1,
+    "explanation": "Fahrzeuge ohne Rührwerk (nur für steifen Beton): 45 min; Fahrmischer und Fahrzeuge mit Rührwerk: 90 min nach der ersten Wasserzugabe (DIN 1045-2, 7.6).",
     "bloom": "Erinnern",
     "niveau": "B",
     "distraktorFeedback": [
-      "30 Minuten sind keine Normfrist; für Fahrmischer gilt eine deutlich längere Entladezeit.",
-      "45 Minuten gelten für Fahrzeuge ohne Rührwerk (steifer Beton), nicht für Fahrmischer.",
+      "30 Minuten sind keine Normfrist; für Fahrzeuge ohne Rührwerk gilt eine Entladezeit von 45 Minuten.",
       "",
-      "180 Minuten überschreiten die Regelfrist deutlich; längere Zeiten erfordern Verzögerer und eine Vereinbarung."
+      "90 Minuten gelten für Fahrmischer und Fahrzeuge mit Rührwerk, nicht für Fahrzeuge ohne Rührwerk.",
+      "180 Minuten überschreiten jede Regelfrist; längere Zeiten erfordern Verzögerer und eine Vereinbarung."
     ],
     "gapAnalysis": {
       "topic": "Transportzeit",
@@ -15232,7 +15281,8 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 27.10.: Dopplung mit q_qsi_5 aufgelöst; Frage auf Fahrzeuge ohne Rührwerk (45 min, Modul Herstellung & Einbau, DIN 1045-2, 7.6) umgestellt, Optionen und Rückmeldungen angepasst korrigiert."
     }
   },
   {
@@ -15269,7 +15319,9 @@
       "targetModuleTab": "herstellung_einbau",
       "targetModuleLabel": "Herstellung & Einbau"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -15430,7 +15482,9 @@
       "targetModuleTab": "hydratation_folgen",
       "targetModuleLabel": "Hydratation & Folgen"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -15631,7 +15685,9 @@
       "targetModuleTab": "nachbehandlung",
       "targetModuleLabel": "Nachbehandlung"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "korrigiert",
@@ -15832,7 +15888,9 @@
       "targetModuleTab": "sichtbeton",
       "targetModuleLabel": "Sichtbeton"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -15913,7 +15971,9 @@
       "targetModuleTab": "sonderbetone",
       "targetModuleLabel": "Sonderbetone"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -16194,7 +16254,9 @@
       "targetModuleTab": "qualitaetssicherung",
       "targetModuleLabel": "Qualitätssicherung"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -16294,17 +16356,17 @@
       "BBQ-1 bis BBQ-4",
       "BBQ-N, BBQ-E und BBQ-S",
       "BBQ-N, BBQ-E, BBQ-S und BBQ-U",
-      "ÜK 1 bis ÜK 3"
+      "ÜK 1 und ÜK 2"
     ],
     "correctIdx": 1,
-    "explanation": "DIN 1045-1000 definiert drei Klassen: N (normal), E (erhöht), S (speziell). ÜK 1–3 sind die Überwachungsklassen nach DIN 1045-3.",
+    "explanation": "DIN 1045-1000 definiert drei Klassen: N (normal), E (erhöht), S (speziell). ÜK 1 und ÜK 2 sind die Überwachungsklassen nach DIN 1045-3:2023.",
     "bloom": "Erinnern",
     "niveau": "B",
     "distraktorFeedback": [
       "Die Klassen werden nicht nummeriert, sondern mit N, E und S bezeichnet; eine vierte Klasse gibt es nicht.",
       "",
       "Eine Klasse BBQ-U gibt es nicht; DIN 1045-1000 kennt nur die drei Klassen N, E und S.",
-      "ÜK 1 bis 3 sind die Überwachungsklassen nach DIN 1045-3, nicht die Betonbauqualitätsklassen."
+      "ÜK 1 und ÜK 2 sind die Überwachungsklassen nach DIN 1045-3:2023, nicht die Betonbauqualitätsklassen."
     ],
     "gapAnalysis": {
       "topic": "Betonbauqualitätsklassen",
@@ -16317,7 +16379,8 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 27.10.: Option 4, Rückmeldung und Erklärung: DIN 1045-3:2023-08 kennt nur noch ÜK 1 und ÜK 2 (ÜK 3 entfallen; Quelle SCHWENK, Beton-Herstellung nach den aktuellen Normen, 2026) korrigiert."
     }
   },
   {
@@ -16354,7 +16417,9 @@
       "targetModuleTab": "qualitaetssicherung",
       "targetModuleLabel": "Qualitätssicherung"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -16714,7 +16779,9 @@
       "targetModuleTab": "betonpraxis",
       "targetModuleLabel": "Betonpraxis"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "korrigiert",
@@ -16769,16 +16836,16 @@
     "moduleTitle": "Betonpraxis",
     "topic": "Wasserzugabe",
     "difficulty": "Basis",
-    "normRef": "DIN 1045-3",
+    "normRef": "DIN EN 206 / DIN 1045-2, 7.5",
     "question": "Der Beton ist auf der Baustelle zu steif. Was ist zulässig?",
     "options": [
       "Bis zu 10 l/m³ Wasser zugeben, da dies innerhalb der Toleranz liegt",
-      "Fließmittel nach Vorgabe des Herstellers zugeben",
+      "Fließmittel unter Herstellerverantwortung, mit Lieferscheinvermerk",
       "Wasser zugeben und den Beton anschließend länger verdichten",
       "Zement nachdosieren, damit der w/z-Wert gleich bleibt"
     ],
     "correctIdx": 1,
-    "explanation": "Nachträgliche Wasserzugabe erhöht den w/z-Wert und ist unzulässig. Die Konsistenz darf nur mit Fließmittel nach Vorgabe des Betonherstellers angepasst werden.",
+    "explanation": "Nachträgliche Wasserzugabe erhöht den w/z-Wert und ist unzulässig. Die Konsistenz darf nur ausnahmsweise mit Fließmittel unter Verantwortung des Betonherstellers innerhalb der festgelegten Grenzen angepasst werden; die Zugabemenge ist auf dem Lieferschein zu vermerken (DIN 1045-2, 7.5).",
     "bloom": "Verstehen",
     "niveau": "B",
     "distraktorFeedback": [
@@ -16798,7 +16865,8 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 27.10.: richtige Option und Erklärung an q_hee_2 und das Modul Herstellung & Einbau angeglichen (Fließmittel nur unter Verantwortung des Herstellers, Vermerk auf dem Lieferschein, DIN 1045-2, 7.5) korrigiert."
     }
   },
   {
@@ -16875,7 +16943,9 @@
       "targetModuleTab": "stahlbeton",
       "targetModuleLabel": "Stahlbeton"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -16995,7 +17065,9 @@
       "targetModuleTab": "stahlbeton",
       "targetModuleLabel": "Stahlbeton"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -17076,7 +17148,9 @@
       "targetModuleTab": "stahlbeton",
       "targetModuleLabel": "Stahlbeton"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "korrigiert",
@@ -17477,7 +17551,9 @@
       "targetModuleTab": "carbonbeton",
       "targetModuleLabel": "Carbonbeton"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -17558,7 +17634,9 @@
       "targetModuleTab": "carbonbeton",
       "targetModuleLabel": "Carbonbeton"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -23975,7 +24053,7 @@
     "moduleTitle": "Innenausbau",
     "topic": "Belegreife",
     "difficulty": "Vertiefung",
-    "normRef": "DIN 18560-1",
+    "normRef": "TKB-Merkblatt 16 (2024-12); DIN EN 13892-10 (Entwurf)",
     "question": "Mit welchem Verfahren wird die Belegreife von Estrichen in Deutschland üblicherweise geprüft?",
     "options": [
       "Darr-Methode im Labor",
@@ -24004,7 +24082,8 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 27.10.: normRef DIN 18560-1 → TKB-Merkblatt 16 (12/2024) und DIN EN 13892-10 (Entwurf 2024-05), die die CM-Messung regeln, korrigiert."
     }
   },
   {
@@ -24056,7 +24135,7 @@
     "topic": "Abdichtung",
     "difficulty": "Vertiefung",
     "normRef": "DIN 18534-1",
-    "question": "Welcher Wassereinwirkungsklasse ist eine bodengleiche Dusche im Wohnungsbau zugeordnet?",
+    "question": "Welcher Wassereinwirkungsklasse ist die Bodenfläche einer bodengleichen Dusche im Wohnungsbau zugeordnet?",
     "options": [
       "W0-I",
       "W1-I",
@@ -24064,7 +24143,7 @@
       "W3-I"
     ],
     "correctIdx": 2,
-    "explanation": "Bodengleiche Duschen gelten nach DIN 18534-1 als hohe Einwirkung (W2-I).",
+    "explanation": "Bodenflächen mit bodengleicher Dusche gelten nach DIN 18534-1 als hohe Einwirkung (W2-I); die Wandflächen der Dusche sind im häuslichen Bereich W1-I zugeordnet.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -24084,8 +24163,8 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok",
-      "hinweis": "Registry führt DIN 18534-1:2025-10; Klassenbezeichnung W2-I dort nicht separat geprüft."
+      "ergebnis": "korrigiert",
+      "hinweis": "Registry führt DIN 18534-1:2025-10; Klassenbezeichnung W2-I dort nicht separat geprüft. Zweitprüfung 27.10.: Fragetext auf die Bodenfläche der bodengleichen Dusche präzisiert (Wandflächen W1-I), Erklärung ergänzt korrigiert."
     }
   },
   {
@@ -24122,7 +24201,9 @@
       "targetModuleTab": "innenausbau",
       "targetModuleLabel": "Innenausbau"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -24486,7 +24567,9 @@
       "targetModuleTab": "eigenspannungen",
       "targetModuleLabel": "Eigenspannungen"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -35202,7 +35285,9 @@
       "targetModuleTab": "grundlagen",
       "targetModuleLabel": "Ausgangsstoffe des Betons"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-26",
       "ergebnis": "korrigiert",
@@ -35243,7 +35328,9 @@
       "targetModuleTab": "grundlagen",
       "targetModuleLabel": "Ausgangsstoffe des Betons"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -35364,7 +35451,9 @@
       "targetModuleTab": "bindemittel",
       "targetModuleLabel": "Bindemittel"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -35445,7 +35534,9 @@
       "targetModuleTab": "mischungsberechnung",
       "targetModuleLabel": "Mischungsberechnung"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -35927,7 +36018,9 @@
       "targetModuleTab": "nachbehandlung",
       "targetModuleLabel": "Nachbehandlung"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -36008,7 +36101,9 @@
       "targetModuleTab": "nachbehandlung",
       "targetModuleLabel": "Nachbehandlung"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -36049,7 +36144,9 @@
       "targetModuleTab": "nachbehandlung",
       "targetModuleLabel": "Nachbehandlung"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -36170,7 +36267,9 @@
       "targetModuleTab": "festbeton",
       "targetModuleLabel": "Festbeton"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -36571,7 +36670,9 @@
       "targetModuleTab": "sichtbeton",
       "targetModuleLabel": "Sichtbeton (SB 1–4)"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -36612,7 +36713,9 @@
       "targetModuleTab": "sichtbeton",
       "targetModuleLabel": "Sichtbeton (SB 1–4)"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -36653,7 +36756,9 @@
       "targetModuleTab": "innovative_werkstoffe",
       "targetModuleLabel": "Entwicklungen"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "korrigiert",
@@ -36774,7 +36879,9 @@
       "targetModuleTab": "innovative_werkstoffe",
       "targetModuleLabel": "Entwicklungen"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -36815,7 +36922,9 @@
       "targetModuleTab": "betonpraxis",
       "targetModuleLabel": "Betonpraxis"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -36856,7 +36965,9 @@
       "targetModuleTab": "wu-bauwerke",
       "targetModuleLabel": "WU-Bauwerke (Weiße Wannen)"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -36897,7 +37008,9 @@
       "targetModuleTab": "carbonbeton",
       "targetModuleLabel": "Carbonbeton"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -36938,7 +37051,9 @@
       "targetModuleTab": "carbonbeton",
       "targetModuleLabel": "Carbonbeton"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -37219,7 +37334,9 @@
       "targetModuleTab": "holzbau_bemessung",
       "targetModuleLabel": "Bemessung (EC5)"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -37259,7 +37376,9 @@
       "targetModuleTab": "holzbau_bemessung",
       "targetModuleLabel": "Bemessung (EC5)"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -37299,7 +37418,9 @@
       "targetModuleTab": "holzbau_bemessung",
       "targetModuleLabel": "Bemessung (EC5)"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -37579,7 +37700,9 @@
       "targetModuleTab": "holzbau_verbindung",
       "targetModuleLabel": "Verbindungen & Anschlüsse"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -37860,7 +37983,9 @@
       "targetModuleTab": "holzbau_bauphysik",
       "targetModuleLabel": "Bauphysik & Brandschutz"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -37941,7 +38066,9 @@
       "targetModuleTab": "innenausbau",
       "targetModuleLabel": "Sammlung"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -38022,7 +38149,9 @@
       "targetModuleTab": "spannbeton",
       "targetModuleLabel": "Spannbeton"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -42203,7 +42332,9 @@
       "targetModuleTab": "rechnung_u_wert",
       "targetModuleLabel": "Bauphysik: U-Wert"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -42244,7 +42375,9 @@
       "targetModuleTab": "rechnung_u_wert",
       "targetModuleLabel": "Bauphysik: U-Wert"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -42285,7 +42418,9 @@
       "targetModuleTab": "rechnung_u_wert",
       "targetModuleLabel": "Bauphysik: U-Wert"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -42326,7 +42461,9 @@
       "targetModuleTab": "rechnung_u_wert",
       "targetModuleLabel": "Bauphysik: U-Wert"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -42527,7 +42664,9 @@
       "targetModuleTab": "rechnung_beton",
       "targetModuleLabel": "Beton: Mischungsentwurf"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -42568,7 +42707,9 @@
       "targetModuleTab": "rechnung_beton",
       "targetModuleLabel": "Beton: Mischungsentwurf"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -42689,7 +42830,9 @@
       "targetModuleTab": "rechnung_stahlbeton",
       "targetModuleLabel": "Massivbau: Biegung"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "korrigiert",
@@ -42730,7 +42873,9 @@
       "targetModuleTab": "rechnung_stahlbeton",
       "targetModuleLabel": "Massivbau: Biegung"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -43091,7 +43236,9 @@
       "targetModuleTab": "rechnung_mauerwerk",
       "targetModuleLabel": "Mauerwerk: Tragfähigkeit"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -43122,7 +43269,7 @@
       "",
       "Hier wurden Meter und Zentimeter gemischt; die Schlankheit ist dimensionslos und deutlich größer.",
       "Der Grenzwert der Schlankheit beträgt im Modul 27, nicht 12.",
-      "Hier wurde t/h_ef statt h_ef/t gebildet."
+      "Hier wurde t/h_ef mit t in cm und h_ef in m gebildet (17,5/2,75); gefragt ist h_ef/t in gleichen Einheiten."
     ],
     "gapAnalysis": {
       "topic": "Schlankheit",
@@ -43136,7 +43283,7 @@
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "Gutachten 27.10.2026: Grenzschlankheit 25 → 27 wie im Modul (SCHLANKHEIT_MAX in src/calc/mauerwerk.ts, DIN EN 1996-1-1, 5.5.1.4); abgesichert in tests/quizRechenfragen.test.ts."
+      "hinweis": "Gutachten 27.10.2026: Grenzschlankheit 25 → 27 wie im Modul (SCHLANKHEIT_MAX in src/calc/mauerwerk.ts, DIN EN 1996-1-1, 5.5.1.4); abgesichert in tests/quizRechenfragen.test.ts. Zweitprüfung 27.10.: Rückmeldung zu Option 4 (6,4 = 17,5 cm/2,75 m, Kehrwert mit gemischten Einheiten) korrigiert."
     }
   },
   {
@@ -43213,7 +43360,9 @@
       "targetModuleTab": "rechnung_mauerwerk",
       "targetModuleLabel": "Mauerwerk: Tragfähigkeit"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -43295,7 +43444,9 @@
       "targetModuleTab": "rechnung_mauerwerk",
       "targetModuleLabel": "Mauerwerk: Tragfähigkeit"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -43336,7 +43487,9 @@
       "targetModuleTab": "rechnung_nachhaltigkeit",
       "targetModuleLabel": "Nachhaltigkeit & Dauerhaftigkeit"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -43496,7 +43649,9 @@
       "targetModuleTab": "rechnung_nachhaltigkeit",
       "targetModuleLabel": "Nachhaltigkeit & Dauerhaftigkeit"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -43577,7 +43732,9 @@
       "targetModuleTab": "rechnung_bestand",
       "targetModuleLabel": "Bauen im Bestand"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -43618,7 +43775,9 @@
       "targetModuleTab": "rechnung_bestand",
       "targetModuleLabel": "Bauen im Bestand"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -43658,7 +43817,9 @@
       "targetModuleTab": "rechnung_bestand",
       "targetModuleLabel": "Bauen im Bestand"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -43698,7 +43859,9 @@
       "targetModuleTab": "rechnung_bestand",
       "targetModuleLabel": "Bauen im Bestand"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -43738,7 +43901,9 @@
       "targetModuleTab": "rechnung_bestand",
       "targetModuleLabel": "Bauen im Bestand"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -43779,7 +43944,9 @@
       "targetModuleTab": "rechnung_bestand",
       "targetModuleLabel": "Bauen im Bestand"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -44459,7 +44626,9 @@
       "targetModuleTab": "bim_baustoffe",
       "targetModuleLabel": "BIM für Baustoffe"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -44500,7 +44669,9 @@
       "targetModuleTab": "bim_baustoffe",
       "targetModuleLabel": "BIM für Baustoffe"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -44621,7 +44792,9 @@
       "targetModuleTab": "materialpaesse",
       "targetModuleLabel": "Materialpässe"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -44741,7 +44914,9 @@
       "targetModuleTab": "materialpaesse",
       "targetModuleLabel": "Materialpässe"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
@@ -44861,7 +45036,9 @@
       "targetModuleTab": "dpp",
       "targetModuleLabel": "Digitaler Produktpass (DPP)"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -45062,7 +45239,9 @@
       "targetModuleTab": "ki_prompting",
       "targetModuleLabel": "Prompting-Praxis"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -45143,7 +45322,9 @@
       "targetModuleTab": "ki_prompting",
       "targetModuleLabel": "Prompting-Praxis"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -45664,7 +45845,9 @@
       "targetModuleTab": "ki_lokal",
       "targetModuleLabel": "Lokale KI (LM Studio)"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -45945,7 +46128,9 @@
       "targetModuleTab": "px_bauleitung",
       "targetModuleLabel": "Bauleitung & Baustelle"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -46015,7 +46200,7 @@
     "distraktorFeedback": [
       "Die Instrumente sind vertauscht: Behinderung betrifft die Bauzeit, Bedenken die Ausführungsqualität.",
       "Beide Erklärungen müssen schriftlich und nachweisbar erfolgen; mündliche Hinweise genügen nicht.",
-      "Die Mängelrüge richtet sich gegen eigene mangelhafte Leistungen, nicht gegen fehlende Vorleistungen.",
+      "Mit der Mängelrüge nach § 13 Abs. 5 rügt der Auftraggeber Mängel der Leistung des Auftragnehmers; für fehlende Vorleistungen ist sie kein Instrument.",
       ""
     ],
     "gapAnalysis": {
@@ -46030,7 +46215,7 @@
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "Distraktoren angeglichen"
+      "hinweis": "Distraktoren angeglichen Zweitprüfung 27.10.: Rückmeldung zu Option 3 (Mängelrüge § 13 Abs. 5 durch den Auftraggeber) korrigiert."
     }
   },
   {
@@ -46147,7 +46332,9 @@
       "targetModuleTab": "px_bautagebuch",
       "targetModuleLabel": "Bautagebuch"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
@@ -46548,7 +46735,9 @@
       "targetModuleTab": "px_karriere",
       "targetModuleLabel": "Karrierestart & Soft Skills"
     },
-    "verified": false,
+    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
+    "reviewedAt": "2026-10-27",
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",

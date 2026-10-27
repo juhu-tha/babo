@@ -1221,8 +1221,8 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
   rechnung_mauerwerk: {
     niveau: "B", minuten: 35, vorwissen: ["mauerwerk", "bp_mauerwerk", "sicherheitskonzept"],
     ziele: [
-      { stufe: "Anwenden", text: "den Bemessungswert der Mauerwerksdruckfestigkeit aus charakteristischer Festigkeit und Teilsicherheitsbeiwert berechnen." },
-      { stufe: "Anwenden", text: "die Schlankheit einer zweiseitig gehaltenen Wand ermitteln und gegen den Grenzwert 25 des vereinfachten Verfahrens prüfen." },
+      { stufe: "Anwenden", text: "den Bemessungswert der Mauerwerksdruckfestigkeit aus charakteristischer Festigkeit, Dauerstandsbeiwert und Teilsicherheitsbeiwert berechnen." },
+      { stufe: "Anwenden", text: "die Schlankheit einer zweiseitig gehaltenen Wand ermitteln und gegen den Grenzwert 27 des vereinfachten Verfahrens prüfen." },
       { stufe: "Anwenden", text: "mit dem Abminderungsfaktor Φ den Traglastwiderstand N_Rd je Meter Wandlänge nach DIN EN 1996-3 berechnen." },
       { stufe: "Analysieren", text: "den Einfluss von Wanddicke und Steinart (Kalksandstein, Hochlochziegel) auf den Ausnutzungsgrad vergleichen." },
     ],
