@@ -96,7 +96,7 @@ export const ALPHA_CC = 0.85;
  * (LBV Brandenburg, bautechnik-Tipps 15-03 und 15-06; FRILO-Handbuch „Nachweise am Stahlbetonquerschnitt“, NA-D).
  * Eine globale Abminderung von f_cd im NDP zu 3.1.6(1) war öffentlich nicht eindeutig belegbar → Schalter hier zentral.
  */
-export const FCD_HOCHFEST_AKTIV = true;
+export const FCD_HOCHFEST_AKTIV = false; // Entscheidung Prof. Huber 27.10. (später): aus, bis der Normtext vorliegt (Gefahr der Doppelabminderung mit η)
 
 /** Faktor (1,1 − f_ck/500) für f_ck ≥ 55 N/mm² (≤ 1,0), sonst 1,0 – zugleich ν₂ nach NA DE */
 export function hochfestFaktor(fck: number): number {

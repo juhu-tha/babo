@@ -16,7 +16,7 @@ const STAHLBETON: RechnerGrenzen = {
   kurz: 'Bemessung von Stahlbetonquerschnitten nach DIN EN 1992-1-1 mit NA (DE) für Biegung, Querkraft, Stützen, Durchstanzen, Verankerung und Rissbreite.',
   grenzen: [
     'Rechteckquerschnitte bis C50/60 (λ = 0,8, η = 1,0); darüber im Kern λ, η, ε_cu3 nach EC2 3.1.7/Tab. 3.1 und ξ_lim = 0,35 (vorläufig); weitere NA-Regeln für hochfesten Beton fehlen.',
-    'f_cd zentral = α_cc·f_ck/γ_c (α_cc = 0,85, γ_c = 1,5); ab C55/67 zusätzlich · (1,1 − f_ck/500) (Entscheidung Prof. Huber 27.10., vorläufig, F-Freigabe); V_Rd,max ohne Doppelabminderung (ν₁ = 0,75·ν₂).',
+    'f_cd zentral = α_cc·f_ck/γ_c (α_cc = 0,85, γ_c = 1,5); Zusatzabminderung ab C55/67 vorbereitet, aber aus (Normtext ausstehend); Hochfestigkeit über λ, η, ξ_lim = 0,35.',
     'Biegung: eine Zug- und eine Druckbewehrungslage, ξ_lim = 0,45; nichtmetallische Bewehrung vereinfacht linear-elastisch, maßgebend ist die Zulassung.',
     'Querkraft: z = 0,9·d, senkrechte Bügel, ohne Normalkraft (σ_cp = 0).',
     'Stütze: Theorie I. Ordnung mit e_i = l₀/400 und Mindestausmitte; bei λ > λ_lim nur Hinweis, kein Nachweis nach Theorie II. Ordnung.',
@@ -281,7 +281,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   betonkennwerte: {
     kurz: "EC2-Kennwerte aus der Festigkeitsklasse sowie Zeitentwicklung, Schwinden und Kriechen nach EC2 Anhang B.",
     grenzen: [
-      "α_cc = 0,85, γ_c = 1,5 und α_ct = 0,85 fest; ab C55/67 f_cd zusätzlich · (1,1 − f_ck/500) (vorläufig, F-Freigabe).",
+      "α_cc = 0,85, γ_c = 1,5 und α_ct = 0,85 fest; zusätzliche f_cd-Abminderung ab C55/67 vorbereitet, aber ausgeschaltet (Normtext ausstehend).",
       "Konstante Umgebungstemperatur über das gesamte Alter.",
       "Relative Luftfeuchte auf 20–100 % begrenzt; h₀ ohne Begrenzung wie in Anhang B (k_h ab 500 mm konstant 0,70), Hinweis außerhalb 100–1500 mm.",
       "Nichtlineares Kriechen ohne Obergrenze bei 0,6·f_ck(t₀).",
