@@ -1,5 +1,6 @@
 import { formatDeZahl, formatDeWert, formatDeTeX, formatDeTeXWert } from '@/src/utils/numberFormat';
-import { Volume2 } from 'lucide-react';
+import { Volume2, Footprints } from 'lucide-react';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { rwMassiv, schalldaemmung } from '@/src/calc/schall';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import React, { useState, useMemo } from 'react';
@@ -22,6 +23,14 @@ import {
 } from 'chart.js';
 import inhalt from '@/content/schallschutz/Schallschutz.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+
+// Reiter Trittschall (Z24) als eigener Chunk
+const TrittschallTab = React.lazy(() => import('./schallschutz/TrittschallTab'));
+
+const REITER = [
+  { id: 'luftschall', label: 'Luftschall', icon: Volume2 },
+  { id: 'trittschall', label: 'Trittschall', icon: Footprints },
+] as const;
 
 ChartJS.register(
   CategoryScale,
@@ -58,6 +67,7 @@ const materialLibrary = [
 ];
 
 export default function Schallschutz() {
+  const [activeTab, setActiveTab] = useState<'luftschall' | 'trittschall'>('luftschall');
   const [layers, setLayers] = useState([
     { id: 'layer1', matId: 'innenputz_gips', d: 0.015 },
     { id: 'layer2', matId: 'mauerwerk_ziegel_hochloch', d: 0.24 },
@@ -142,6 +152,13 @@ export default function Schallschutz() {
 
   return (
     <div className="flex flex-col gap-8">
+      <ModuleTabs label="Bereiche Schallschutz" tabs={REITER} aktiv={activeTab} onWechsel={setActiveTab} className="[&>[role=tablist]]:pb-3 [&>[role=tablist]]:border-b [&>[role=tablist]]:border-home-grau/20 [&>[role=tablist]]:mb-6">
+      {activeTab === 'trittschall' && (
+        <React.Suspense fallback={<div className="flex justify-center items-center py-20"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-shiraz"></div></div>}>
+          <TrittschallTab />
+        </React.Suspense>
+      )}
+      {activeTab === 'luftschall' && (
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
         <h2 className="text-xl font-bold text-text-main mb-4 flex items-center gap-2">
           <Volume2 className="text-shiraz" /><MdText text={inhalt.texte.bauphysikSchallschutz} /><InfoTooltip text={inhalt.werte.berechnungDesBewertetenSchalldämm} />
@@ -358,6 +375,8 @@ export default function Schallschutz() {
           </div>
         </div>
       </div>
+      )}
+      </ModuleTabs>
     
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
@@ -386,6 +405,7 @@ export default function Schallschutz() {
         regelwerke={inhalt.daten["Schallschutz.regelwerke"]}
         literatur={inhalt.daten["Schallschutz.literatur"]}
         formeln={inhalt.daten["Schallschutz.formeln"]}
+        weblinks={inhalt.daten["Schallschutz.weblinks"]}
       />
     </div>
   );

@@ -1,0 +1,70 @@
+{
+  "texte": {
+    "ueberschrift": "t-Test: Mittelwerte statistisch vergleichen",
+    "einleitung": "Der **t-Test** prüft, ob der Mittelwert einer Prüfserie von einem Sollwert $\\mu_0$ abweicht (**Einstichproben-t-Test**) oder ob sich die Mittelwerte zweier Serien unterscheiden (**Zweistichproben-t-Test**), z. B. Würfeldruckfestigkeiten zweier Betonrezepturen. Weil die Standardabweichung der Grundgesamtheit unbekannt ist und aus der Stichprobe geschätzt wird, folgt die Prüfgröße nicht der Normalverteilung, sondern der **Student-t-Verteilung** mit $\\nu$ Freiheitsgraden. Sie hat breitere Ränder; für $\\nu \\to \\infty$ geht sie in die Standardnormalverteilung über.",
+    "hypothesen": "**Vorgehen:** (1) Nullhypothese $H_0$ formulieren, z. B. $\\mu_1 = \\mu_2$. (2) Signifikanzniveau $\\alpha$ festlegen (üblich 5 %). (3) Prüfgröße $t$ und Freiheitsgrade $\\nu$ berechnen. (4) $H_0$ verwerfen, wenn $|t| > t_{1-\\alpha/2;\\,\\nu}$ (zweiseitig) bzw. wenn der **p-Wert** kleiner als $\\alpha$ ist – beide Regeln führen zur selben Entscheidung.",
+    "pWert": "Der **p-Wert** ist die Wahrscheinlichkeit, unter $H_0$ eine mindestens so extreme Prüfgröße wie die beobachtete zu erhalten. Er ist **nicht** die Wahrscheinlichkeit, dass $H_0$ wahr ist. Ein nicht signifikantes Ergebnis beweist keine Gleichheit – bei kleinen Serien fehlt oft nur die Trennschärfe.",
+    "welch": "**Student oder Welch?** Der klassische Zweistichproben-t-Test fasst beide Varianzen zu $s_p^2$ zusammen und setzt gleiche Streuungen voraus. Der **Welch-Test** schätzt den Standardfehler aus $s_1^2/n_1 + s_2^2/n_2$ und reduziert die Freiheitsgrade nach Welch-Satterthwaite. Er ist bei ungleichen Varianzen und Stichprobenumfängen robust und verliert bei gleichen Varianzen kaum an Trennschärfe – daher ist er hier voreingestellt.",
+    "ki": "Das **Konfidenzintervall** zum Niveau $1-\\alpha$ enthält alle Werte von $\\mu$ bzw. $\\mu_1 - \\mu_2$, die der Test nicht verwerfen würde. Enthält das Intervall für die Differenz die Null nicht, ist der Unterschied signifikant. Die Breite zeigt zugleich, wie genau der Unterschied bestimmt ist.",
+    "praxis": "**Einordnung für Werkstoffprüfungen:** Ein signifikanter Unterschied ist noch kein technisch relevanter (z. B. 1 N/mm² bei sehr vielen Proben). Die Konformität einer Betonproduktion nach DIN EN 206 und DIN 1045-2 wird mit eigenen Kriterien (Mittelwert, Einzelwert, Standardabweichung) beurteilt, nicht mit dem t-Test. Voraussetzungen des t-Tests: unabhängige, annähernd normalverteilte Werte; Ausreißer vorher begründet prüfen (Reiter Probengenerator).",
+    "diagrammTitel": "t-Verteilung mit Ablehnungsbereich",
+    "rechnerTitel": "Rechner",
+    "ergebnisTitel": "Ergebnis"
+  },
+  "werte": {
+    "modus": "Testart",
+    "modusEin": "Einstichproben-t-Test (Serie gegen Sollwert)",
+    "modusZwei": "Zweistichproben-t-Test (Serie 1 gegen Serie 2)",
+    "serie1": "Serie 1 – Messwerte (z. B. N/mm², getrennt durch Leerzeichen oder Semikolon)",
+    "serie2": "Serie 2 – Messwerte",
+    "mu0": "Sollwert μ₀",
+    "variante": "Varianten des Zweistichprobentests",
+    "varianteWelch": "Welch (ungleiche Varianzen zulässig)",
+    "varianteStudent": "Student (gleiche Varianzen, gepoolt)",
+    "alternative": "Alternativhypothese H₁",
+    "altZwei": "zweiseitig: μ ≠ μ₀ bzw. μ₁ ≠ μ₂",
+    "altGroesser": "einseitig: μ > μ₀ bzw. μ₁ > μ₂",
+    "altKleiner": "einseitig: μ < μ₀ bzw. μ₁ < μ₂",
+    "alpha": "Signifikanzniveau α",
+    "verworfen": "H₀ wird auf dem Niveau α verworfen – der Unterschied ist statistisch signifikant.",
+    "beibehalten": "H₀ wird nicht verworfen – ein Unterschied ist mit diesen Daten nicht nachweisbar (kein Beweis für Gleichheit).",
+    "lernzielTitel": "t-Test für Prüfserien",
+    "kurvenLabel": "Dichte der t-Verteilung",
+    "ablehnLabel": "Ablehnungsbereich",
+    "tLabel": "beobachtetes t",
+    "achseT": "Prüfgröße t",
+    "achseDichte": "Dichte f(t)",
+    "zusammenfassung": "Dichte der Student-t-Verteilung für die berechneten Freiheitsgrade; der Ablehnungsbereich jenseits des kritischen Werts ist hervorgehoben, ein Punkt markiert die beobachtete Prüfgröße t.",
+    "rechenwegTitel": "Ihr Rechenweg: t-Test",
+    "normQuelle": "NIST/SEMATECH e-Handbook of Statistical Methods, 1.3.5.3",
+    "ergebnisHinweis": "Lehr- und Vorbemessungswerkzeug: Der Test setzt unabhängige, annähernd normalverteilte Messwerte voraus.",
+    "stand": "Oktober 2026 (Z24)"
+  },
+  "daten": {
+    "lernziele": [
+      { "level": "verstehen", "levelLabel": "2. Verstehen", "verb": "Erklären", "description": "Nullhypothese, Signifikanzniveau und p-Wert eines t-Tests erläutern und voneinander abgrenzen." },
+      { "level": "anwenden", "levelLabel": "3. Anwenden", "verb": "Berechnen", "description": "Prüfgröße t, Freiheitsgrade, p-Wert und Konfidenzintervall für den Ein- und Zweistichproben-t-Test bestimmen." },
+      { "level": "anwenden", "levelLabel": "3. Anwenden", "verb": "Auswählen", "description": "zwischen Student- und Welch-Test anhand der Varianzen und Stichprobenumfänge begründet wählen." },
+      { "level": "bewerten", "levelLabel": "4. Bewerten", "verb": "Beurteilen", "description": "statistische Signifikanz und technische Relevanz eines Festigkeitsunterschieds getrennt beurteilen." }
+    ],
+    "literatur": [
+      "NIST/SEMATECH e-Handbook of Statistical Methods, Abschnitt 1.3.5.3 „Two-Sample t-Test for Equal Means“ und 1.3.6.7.2 „Critical Values of the Student’s t Distribution“",
+      "Welch, B. L.: The generalization of „Student’s“ problem when several different population variances are involved. Biometrika 34 (1947), S. 28–35",
+      "Abramowitz, M.; Stegun, I. A.: Handbook of Mathematical Functions, Abschnitt 26.7 (t-Verteilung). Washington: NBS 1964"
+    ],
+    "regelwerke": [
+      { "title": "DIN 53804-1 (Statistische Auswertungen – Messbare kontinuierliche Merkmale)" },
+      { "title": "ISO 2854 (Statistische Auswertung von Daten – Schätz- und Testverfahren für Mittelwerte und Varianzen)" }
+    ],
+    "weblinks": [
+      { "title": "NIST/SEMATECH e-Handbook: Two-Sample t-Test for Equal Means", "url": "https://itl.nist.gov/div898/handbook/eda/section3/eda353.htm" },
+      { "title": "NIST/SEMATECH e-Handbook: Critical Values of the Student’s t Distribution", "url": "https://itl.nist.gov/div898/handbook/eda/section3/eda3672.htm" }
+    ],
+    "formeln": [
+      { "formel": "t = \\frac{\\bar{x} - \\mu_0}{s/\\sqrt{n}}, \\quad \\nu = n - 1", "erklaerung": "Einstichproben-t-Test gegen den Sollwert μ₀.", "quelle": "NIST e-Handbook 1.3.5.2" },
+      { "formel": "t = \\frac{\\bar{x}_1 - \\bar{x}_2}{s_p \\sqrt{1/n_1 + 1/n_2}}, \\quad s_p^2 = \\frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1+n_2-2}", "erklaerung": "Zweistichproben-t-Test mit gepoolter Varianz (gleiche Varianzen), ν = n₁ + n₂ − 2.", "quelle": "NIST e-Handbook 1.3.5.3" },
+      { "formel": "t = \\frac{\\bar{x}_1 - \\bar{x}_2}{\\sqrt{s_1^2/n_1 + s_2^2/n_2}}, \\quad \\nu = \\frac{(s_1^2/n_1 + s_2^2/n_2)^2}{\\frac{(s_1^2/n_1)^2}{n_1-1} + \\frac{(s_2^2/n_2)^2}{n_2-1}}", "erklaerung": "Welch-Test mit Freiheitsgraden nach Welch-Satterthwaite (nicht ganzzahlig).", "quelle": "NIST e-Handbook 1.3.5.3" },
+      { "formel": "\\bar{x} \\pm t_{1-\\alpha/2;\\,\\nu} \\cdot s/\\sqrt{n}", "erklaerung": "Zweiseitiges Konfidenzintervall für den Mittelwert zum Niveau 1 − α.", "quelle": "NIST e-Handbook 1.3.5.2" }
+    ]
+  }
+}

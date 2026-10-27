@@ -49963,6 +49963,546 @@
     "verified": false
   },
   {
+    "id": "qz24_ttest_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "statistik",
+    "moduleTitle": "Statistik",
+    "topic": "Einstichproben-t-Test",
+    "difficulty": "Vertiefung",
+    "normRef": "NIST e-Handbook 1.3.5",
+    "question": "Eine Serie von n = 10 Würfeln hat x̄ = 38,47 N/mm² und s = 1,665 N/mm². Wie groß ist die Prüfgröße t gegen den Sollwert μ₀ = 38 N/mm²?",
+    "options": [
+      "t ≈ 0,28, weil die Differenz durch s geteilt wird",
+      "t ≈ 0,89 mit ν = 9 Freiheitsgraden",
+      "t ≈ 2,82, weil der Standardfehler s/n beträgt",
+      "t ≈ 0,09, weil der Standardfehler s·√n beträgt"
+    ],
+    "correctIdx": 1,
+    "explanation": "t = (x̄ − μ₀)/(s/√n) = 0,47/(1,665/√10) = 0,47/0,527 = 0,89; ν = n − 1 = 9. Mit t_krit = 2,262 (α = 5 %, zweiseitig) bleibt H₀.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "0,47/1,665 = 0,28 ist der Abstand in Einheiten von s, nicht des Standardfehlers s/√n.",
+      "",
+      "Der Standardfehler ist s/√n, nicht s/n; mit s/n wird t um den Faktor √10 zu groß.",
+      "s·√n vergrößert den Standardfehler fälschlich; richtig ist s/√n."
+    ],
+    "gapAnalysis": {
+      "topic": "Einstichproben-t-Test",
+      "misconception": "Die Prüfgröße wird mit s statt mit dem Standardfehler s/√n gebildet.",
+      "coreRule": "t = (x̄ − μ₀)/(s/√n), ν = n − 1.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „t-Test“ im Modul Statistik noch einmal durch.",
+      "targetModuleTab": "statistik",
+      "targetModuleLabel": "Statistik"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_ttest_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "statistik",
+    "moduleTitle": "Statistik",
+    "topic": "p-Wert",
+    "difficulty": "Basis",
+    "normRef": "NIST e-Handbook 1.3.5",
+    "question": "Ein t-Test liefert p = 0,03 bei α = 0,05. Welche Aussage ist zutreffend?",
+    "options": [
+      "H₀ ist mit 97 % Wahrscheinlichkeit falsch",
+      "Mit 3 % Wahrscheinlichkeit gilt die Nullhypothese",
+      "H₀ wird verworfen, weil p kleiner als α ist",
+      "Der Unterschied ist technisch relevant"
+    ],
+    "correctIdx": 2,
+    "explanation": "Der p-Wert ist die Wahrscheinlichkeit, unter H₀ ein mindestens so extremes t zu beobachten. Ist p < α, wird H₀ verworfen. Über die Wahrscheinlichkeit von H₀ selbst oder die technische Relevanz sagt p nichts aus.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "p ist keine Wahrscheinlichkeit für H₀ oder H₁, sondern bezieht sich auf die Daten unter H₀.",
+      "Auch diese Deutung verwechselt den p-Wert mit einer Wahrscheinlichkeit der Hypothese.",
+      "",
+      "Statistische Signifikanz ist keine technische Bewertung; dafür zählt die Größe des Unterschieds."
+    ],
+    "gapAnalysis": {
+      "topic": "p-Wert",
+      "misconception": "Der p-Wert wird als Wahrscheinlichkeit der Nullhypothese gedeutet.",
+      "coreRule": "p < α → H₀ verwerfen; p beschreibt die Daten unter H₀.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „t-Test“ im Modul Statistik noch einmal durch.",
+      "targetModuleTab": "statistik",
+      "targetModuleLabel": "Statistik"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_ttest_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "statistik",
+    "moduleTitle": "Statistik",
+    "topic": "Welch-Test",
+    "difficulty": "Vertiefung",
+    "normRef": "NIST e-Handbook 1.3.5.3",
+    "question": "Zwei Betonserien haben n₁ = 12, n₂ = 5 und eine etwa fünfmal größere Varianz in Serie 2. Welcher Zweistichprobentest ist angemessen?",
+    "options": [
+      "Der Student-Test, weil er die Varianzen poolt",
+      "Der Welch-Test mit Freiheitsgraden nach Satterthwaite",
+      "Ein Einstichprobentest gegen den Mittelwert von Serie 1",
+      "Der Grubbs-Test, weil Serie 2 stärker streut"
+    ],
+    "correctIdx": 1,
+    "explanation": "Der Student-Test setzt gleiche Varianzen voraus. Bei ungleichen Varianzen und Stichprobenumfängen ist der Welch-Test robust: SE = √(s₁²/n₁ + s₂²/n₂), ν nach Welch-Satterthwaite.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Gerade das Poolen setzt gleiche Varianzen voraus, die hier nicht gegeben sind.",
+      "",
+      "Der Mittelwert von Serie 1 ist selbst unsicher und kein fester Sollwert.",
+      "Der Grubbs-Test prüft Ausreißer, nicht den Unterschied zweier Mittelwerte."
+    ],
+    "gapAnalysis": {
+      "topic": "Welch-Test",
+      "misconception": "Der gepoolte Student-Test wird auch bei deutlich ungleichen Varianzen angewendet.",
+      "coreRule": "Ungleiche Varianzen → Welch-Test.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „t-Test“ im Modul Statistik noch einmal durch.",
+      "targetModuleTab": "statistik",
+      "targetModuleLabel": "Statistik"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_ttest_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "statistik",
+    "moduleTitle": "Statistik",
+    "topic": "Konfidenzintervall",
+    "difficulty": "Vertiefung",
+    "normRef": "NIST e-Handbook 1.3.5.2",
+    "question": "Das 95-%-Konfidenzintervall für μ₁ − μ₂ reicht von −0,3 bis 4,9 N/mm². Was folgt daraus für den zweiseitigen t-Test mit α = 5 %?",
+    "options": [
+      "H₀: μ₁ = μ₂ wird verworfen, weil das Intervall überwiegend positiv ist",
+      "H₀ wird nicht verworfen, weil das Intervall die Null enthält",
+      "Die Serien sind damit als gleichwertig nachgewiesen",
+      "Für eine Aussage fehlt zwingend der p-Wert"
+    ],
+    "correctIdx": 1,
+    "explanation": "Ein Konfidenzintervall zum Niveau 1 − α enthält alle Differenzen, die der zweiseitige Test nicht verwirft. Liegt 0 im Intervall, bleibt H₀. Gleichheit ist damit aber nicht bewiesen – das breite Intervall zeigt geringe Trennschärfe.",
+    "bloom": "Analysieren",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Die Lage des Großteils des Intervalls ist kein Testkriterium; entscheidend ist, ob 0 enthalten ist.",
+      "",
+      "Ein nicht signifikantes Ergebnis ist kein Gleichheitsnachweis.",
+      "Intervall und zweiseitiger Test führen zur selben Entscheidung; der p-Wert ist dafür nicht nötig."
+    ],
+    "gapAnalysis": {
+      "topic": "Konfidenzintervall",
+      "misconception": "Konfidenzintervall und Testentscheidung werden als getrennte Aussagen behandelt.",
+      "coreRule": "KI zum Niveau 1 − α enthält 0 ⇔ H₀ wird zweiseitig nicht verworfen.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „t-Test“ im Modul Statistik noch einmal durch.",
+      "targetModuleTab": "statistik",
+      "targetModuleLabel": "Statistik"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_ttest_5",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "statistik",
+    "moduleTitle": "Statistik",
+    "topic": "t-Verteilung",
+    "difficulty": "Basis",
+    "normRef": "NIST e-Handbook 1.3.6.7.2",
+    "question": "Wie ändert sich der kritische Wert t₀,₉₇₅ mit wachsender Zahl der Freiheitsgrade?",
+    "options": [
+      "Er steigt, weil mehr Werte mehr Streuung bringen",
+      "Er bleibt unabhängig von ν konstant bei 1,96",
+      "Er sinkt und strebt gegen 1,96 (Normalverteilung)",
+      "Er sinkt weiter und strebt schließlich gegen null"
+    ],
+    "correctIdx": 2,
+    "explanation": "Die t-Verteilung hat bei wenigen Freiheitsgraden breitere Ränder: t₀,₉₇₅ = 12,71 (ν = 1), 2,23 (ν = 10), 2,04 (ν = 30). Für ν → ∞ geht sie in die Standardnormalverteilung über (1,96).",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Mehr Werte machen die Schätzung von s sicherer; der kritische Wert sinkt daher.",
+      "1,96 ist nur der Grenzwert für sehr große ν; bei kleinen Serien liegt t_krit deutlich darüber.",
+      "",
+      "Der kritische Wert fällt nicht unter den Normalverteilungswert 1,96."
+    ],
+    "gapAnalysis": {
+      "topic": "t-Verteilung",
+      "misconception": "Die t-Verteilung wird mit der Normalverteilung gleichgesetzt.",
+      "coreRule": "t_krit sinkt mit ν und strebt gegen z = 1,96.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „t-Test“ im Modul Statistik noch einmal durch.",
+      "targetModuleTab": "statistik",
+      "targetModuleLabel": "Statistik"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_tritt_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "schallschutz",
+    "moduleTitle": "Schallschutz",
+    "topic": "Norm-Trittschallpegel",
+    "difficulty": "Basis",
+    "normRef": "DIN 4109-1",
+    "question": "Decke A erreicht L′_n,w = 46 dB, Decke B L′_n,w = 52 dB. Welche Decke schützt besser gegen Trittschall?",
+    "options": [
+      "Decke B, weil ein höherer Wert eine bessere Dämmung bedeutet",
+      "Beide gleich, weil 6 dB unter der Messgenauigkeit liegen",
+      "Decke A, weil ein kleinerer Pegel weniger Schall bedeutet",
+      "Das lässt sich ohne das Schalldämm-Maß R′_w nicht beurteilen"
+    ],
+    "correctIdx": 2,
+    "explanation": "L′_n,w ist ein Pegel im Empfangsraum: Je kleiner der Wert, desto besser der Trittschallschutz. Beim Schalldämm-Maß R′_w ist es umgekehrt.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Das gilt für das Schalldämm-Maß R′_w, nicht für den Trittschallpegel.",
+      "6 dB sind deutlich hörbar und liegen weit über der Prognoseunsicherheit.",
+      "",
+      "R′_w beschreibt die Luftschalldämmung; der Trittschall wird über L′_n,w beurteilt."
+    ],
+    "gapAnalysis": {
+      "topic": "Norm-Trittschallpegel",
+      "misconception": "Der Trittschallpegel wird wie ein Dämm-Maß gelesen.",
+      "coreRule": "L′_n,w: kleiner ist besser.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Trittschall“ im Modul Schallschutz noch einmal durch.",
+      "targetModuleTab": "schallschutz",
+      "targetModuleLabel": "Schallschutz"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_tritt_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "schallschutz",
+    "moduleTitle": "Schallschutz",
+    "topic": "Rohdecke",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN 4109-32",
+    "question": "Eine Stahlbetondecke hat m′ = 400 kg/m². Wie groß ist L_n,eq,0,w nach 164 − 35·lg m′?",
+    "options": [
+      "etwa 72,9 dB",
+      "etwa 66,2 dB",
+      "etwa 78,7 dB",
+      "etwa 85,0 dB"
+    ],
+    "correctIdx": 0,
+    "explanation": "L_n,eq,0,w = 164 − 35·lg 400 = 164 − 35·2,602 = 72,9 dB. Eine Verdopplung der Masse senkt den Wert um 35·lg 2 = 10,5 dB.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "66,2 dB entspräche etwa 620 kg/m².",
+      "78,7 dB entspräche etwa 270 kg/m².",
+      "85,0 dB ergibt sich etwa für 180 kg/m² und ist für diese Decke zu hoch."
+    ],
+    "gapAnalysis": {
+      "topic": "Rohdecke",
+      "misconception": "Der Logarithmus der Masse wird falsch ausgewertet.",
+      "coreRule": "L_n,eq,0,w = 164 − 35·lg m′ (100 bis 720 kg/m²).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Trittschall“ im Modul Schallschutz noch einmal durch.",
+      "targetModuleTab": "schallschutz",
+      "targetModuleLabel": "Schallschutz"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_tritt_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "schallschutz",
+    "moduleTitle": "Schallschutz",
+    "topic": "Schwimmender Estrich",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN 4109-34",
+    "question": "Wie wirkt sich eine weichere Trittschalldämmung (kleineres s′) unter einem Zementestrich aus?",
+    "options": [
+      "f₀ steigt und die Trittschallminderung sinkt",
+      "f₀ sinkt und die Trittschallminderung ΔL_w steigt",
+      "Nur der Luftschall ändert sich, der Trittschall nicht",
+      "Der Estrich wird schwerer und dämpft dadurch mehr"
+    ],
+    "correctIdx": 1,
+    "explanation": "Estrich und Dämmschicht bilden ein Masse-Feder-System mit f₀ ≈ 160·√(s′/m′). Ein kleineres s′ senkt f₀; oberhalb von f₀ wächst die Minderung um etwa 30 dB je Dekade, ΔL_w steigt.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Das gilt für eine steifere Dämmschicht mit größerem s′.",
+      "",
+      "Gerade der Trittschall wird durch den schwimmenden Estrich maßgeblich gemindert.",
+      "Die Estrichmasse hängt von Dicke und Rohdichte ab, nicht von der Dämmschicht."
+    ],
+    "gapAnalysis": {
+      "topic": "Schwimmender Estrich",
+      "misconception": "Die dynamische Steifigkeit wird nicht als Feder des Masse-Feder-Systems verstanden.",
+      "coreRule": "Kleines s′ → kleines f₀ → großes ΔL_w.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Trittschall“ im Modul Schallschutz noch einmal durch.",
+      "targetModuleTab": "schallschutz",
+      "targetModuleLabel": "Schallschutz"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_tritt_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "schallschutz",
+    "moduleTitle": "Schallschutz",
+    "topic": "Nachweis Trittschall",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN 4109-2",
+    "question": "Berechnet sind L_n,eq,0,w = 71,4 dB, ΔL_w = 28,3 dB und K = 2,0 dB. Ist zul. L′_n,w = 50 dB mit u_prog = 3 dB eingehalten?",
+    "options": [
+      "Nein, denn 71,4 − 28,3 − 2,0 + 3 = 44,1 dB ist zu klein",
+      "Ja, denn 71,4 − 28,3 + 2,0 + 3 = 48,1 dB ≤ 50 dB",
+      "Nein, denn 71,4 + 28,3 = 99,7 dB > 50 dB",
+      "Ja, denn 71,4 − 28,3 = 43,1 dB, K entfällt"
+    ],
+    "correctIdx": 1,
+    "explanation": "L′_n,w = L_n,eq,0,w − ΔL_w + K = 71,4 − 28,3 + 2,0 = 45,1 dB; mit u_prog = 3 dB ergibt sich 48,1 dB ≤ 50 dB. Der Nachweis ist erfüllt (Anforderungswert vorläufig, F-Freigabe).",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "K erhöht den Pegel (Flankenübertragung) und wird addiert; ein kleinerer Wert wäre zudem günstig.",
+      "",
+      "Die Trittschallminderung des Estrichs wird abgezogen, nicht addiert.",
+      "Ohne K und u_prog fehlen Flankenübertragung und Sicherheitsbeiwert."
+    ],
+    "gapAnalysis": {
+      "topic": "Nachweis Trittschall",
+      "misconception": "Vorzeichen von ΔL_w, K und u_prog werden verwechselt.",
+      "coreRule": "L′_n,w = L_n,eq,0,w − ΔL_w + K; Nachweis mit + u_prog.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Trittschall“ im Modul Schallschutz noch einmal durch.",
+      "targetModuleTab": "schallschutz",
+      "targetModuleLabel": "Schallschutz"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_tritt_5",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "schallschutz",
+    "moduleTitle": "Schallschutz",
+    "topic": "Anforderungen Trittschall",
+    "difficulty": "Basis",
+    "normRef": "DIN 4109-1",
+    "question": "Welcher Wert gilt nach der öffentlich wiedergegebenen DIN 4109-1:2018 für Treppenläufe in Mehrfamilienhäusern (zul. L′_n,w)?",
+    "options": [
+      "46 dB",
+      "58 dB",
+      "53 dB",
+      "63 dB"
+    ],
+    "correctIdx": 2,
+    "explanation": "DIN 4109-1 verschärfte die Anforderung an Treppen in Mehrfamilienhäusern um 5 dB von 58 auf 53 dB; für Reihen- und Doppelhäuser gelten 46 dB (Wiedergabe Schöck, vorläufig bis zur F-Freigabe).",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "46 dB gelten für Treppen in Reihen- und Doppelhäusern.",
+      "58 dB war der Wert der DIN 4109:1989-11.",
+      "",
+      "63 dB liegt über allen genannten Anforderungen."
+    ],
+    "gapAnalysis": {
+      "topic": "Anforderungen Trittschall",
+      "misconception": "Alte und neue Anforderungswerte werden verwechselt.",
+      "coreRule": "Treppen MFH: 53 dB (DIN 4109-1), früher 58 dB.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Trittschall“ im Modul Schallschutz noch einmal durch.",
+      "targetModuleTab": "schallschutz",
+      "targetModuleLabel": "Schallschutz"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_atterberg_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "bodenmechanik",
+    "moduleTitle": "Bodenmechanik",
+    "topic": "Fließgrenze Mehrpunktverfahren",
+    "difficulty": "Basis",
+    "normRef": "DIN EN ISO 17892-12",
+    "question": "Wie wird die Fließgrenze w_L im Mehrpunktverfahren nach Casagrande bestimmt?",
+    "options": [
+      "Als Mittelwert aller gemessenen Wassergehalte der Versuche",
+      "Als Wassergehalt bei N = 25 auf der Ausgleichsgeraden",
+      "Als Wassergehalt des Versuchs mit den meisten Schlägen",
+      "Als Wassergehalt, bei dem 3-mm-Walzen zerbröckeln"
+    ],
+    "correctIdx": 1,
+    "explanation": "Mindestens 4 Versuche mit 15 bis 40 Schlägen werden halblogarithmisch aufgetragen (w über lg N). Die Fließgrenze ist der Wassergehalt der Ausgleichsgeraden bei N = 25.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Der Mittelwert hängt davon ab, welche Schlagzahlen zufällig erreicht wurden.",
+      "",
+      "Ein einzelner Versuch ist nicht maßgebend; ausgewertet wird die Gerade.",
+      "Das beschreibt die Ausrollgrenze w_P."
+    ],
+    "gapAnalysis": {
+      "topic": "Fließgrenze Mehrpunktverfahren",
+      "misconception": "Fließ- und Ausrollgrenze oder Einzelwerte und Ausgleichsgerade werden verwechselt.",
+      "coreRule": "w_L = w(N = 25) auf der Fließkurve.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Atterberg-Versuch“ im Modul Bodenmechanik noch einmal durch.",
+      "targetModuleTab": "bodenmechanik",
+      "targetModuleLabel": "Bodenmechanik"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_atterberg_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "bodenmechanik",
+    "moduleTitle": "Bodenmechanik",
+    "topic": "Einpunktverfahren",
+    "difficulty": "Vertiefung",
+    "normRef": "ASTM D4318",
+    "question": "Ein einzelner Fließgrenzenversuch ergibt w = 42,6 % bei N = 22 Schlägen. Welche Fließgrenze liefert w_L = w·(N/25)^0,121?",
+    "options": [
+      "etwa 43,3 %",
+      "etwa 37,5 %",
+      "etwa 48,4 %",
+      "etwa 41,9 %"
+    ],
+    "correctIdx": 3,
+    "explanation": "w_L = 42,6·(22/25)^0,121 = 42,6·0,9847 = 41,9 %. Weniger als 25 Schläge bedeuten einen etwas zu nassen Boden, w_L liegt daher unter dem gemessenen Wassergehalt.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "43,3 % ergäbe sich mit dem Kehrwert (25/22) – das Vorzeichen der Korrektur ist vertauscht.",
+      "37,5 % entspricht 42,6·22/25 ohne den Exponenten 0,121.",
+      "48,4 % ergibt sich mit 42,6·25/22 ohne Exponent.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Einpunktverfahren",
+      "misconception": "Richtung oder Exponent der Einpunktkorrektur werden falsch angesetzt.",
+      "coreRule": "w_L = w_N·(N/25)^0,121; N < 25 → w_L < w_N.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Atterberg-Versuch“ im Modul Bodenmechanik noch einmal durch.",
+      "targetModuleTab": "bodenmechanik",
+      "targetModuleLabel": "Bodenmechanik"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_atterberg_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "bodenmechanik",
+    "moduleTitle": "Bodenmechanik",
+    "topic": "Konsistenzzahl",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN 18122",
+    "question": "Ein Ton hat w_L = 42 %, w_P = 22 % und den natürlichen Wassergehalt w = 30 %. Welche Zustandsform liegt vor?",
+    "options": [
+      "I_C = 0,40 – breiig",
+      "I_C = 0,60 – weich",
+      "I_C = 1,36 – halbfest",
+      "I_C = 0,80 – steif"
+    ],
+    "correctIdx": 1,
+    "explanation": "I_P = 42 − 22 = 20 %; I_C = (w_L − w)/I_P = (42 − 30)/20 = 0,60. Der Bereich 0,5 bis 0,75 entspricht der Zustandsform weich.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "0,40 entspricht (w − w_P)/I_P, also der Liquiditätszahl statt der Konsistenzzahl.",
+      "",
+      "1,36 entsteht mit w/w_P = 30/22 statt der Definition über I_P.",
+      "0,80 ergäbe sich erst bei w = 26 %."
+    ],
+    "gapAnalysis": {
+      "topic": "Konsistenzzahl",
+      "misconception": "Die Konsistenzzahl wird mit der Liquiditätszahl verwechselt.",
+      "coreRule": "I_C = (w_L − w)/(w_L − w_P).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Atterberg-Versuch“ im Modul Bodenmechanik noch einmal durch.",
+      "targetModuleTab": "bodenmechanik",
+      "targetModuleLabel": "Bodenmechanik"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_atterberg_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "bodenmechanik",
+    "moduleTitle": "Bodenmechanik",
+    "topic": "Plastizitätsdiagramm",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN 18196",
+    "question": "Ein Boden hat w_L = 45 % und I_P = 12 %. Zu welcher Gruppe gehört er nach dem Plastizitätsdiagramm?",
+    "options": [
+      "TM, weil w_L zwischen 35 und 50 % liegt (mittelplastisch)",
+      "UM, weil I_P unter der A-Linie (18,3 %) liegt",
+      "TA, weil I_P deutlich größer als 7 % ist",
+      "UL/TL, weil I_P zwischen 4 und 7 % liegt"
+    ],
+    "correctIdx": 1,
+    "explanation": "A-Linie bei w_L = 45 %: I_P = 0,73·(45 − 20) = 18,3 %. Mit I_P = 12 % liegt der Punkt darunter → Schluff; 35 ≤ w_L ≤ 50 % → mittelplastisch, also UM.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "w_L bestimmt nur die Plastizitätsstufe; über Ton oder Schluff entscheidet die A-Linie.",
+      "",
+      "TA setzt w_L > 50 % und einen Punkt oberhalb der A-Linie voraus.",
+      "Der Zwischenbereich gilt für 4 ≤ I_P < 7 % oberhalb der A-Linie; I_P ist hier 12 %."
+    ],
+    "gapAnalysis": {
+      "topic": "Plastizitätsdiagramm",
+      "misconception": "Die A-Linie wird bei der Einordnung übergangen.",
+      "coreRule": "Oberhalb A-Linie Ton, unterhalb Schluff; w_L 35/50 % für L/M/A.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Atterberg-Versuch“ im Modul Bodenmechanik noch einmal durch.",
+      "targetModuleTab": "bodenmechanik",
+      "targetModuleLabel": "Bodenmechanik"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_atterberg_5",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "bodenmechanik",
+    "moduleTitle": "Bodenmechanik",
+    "topic": "Organogene Böden",
+    "difficulty": "Transfer",
+    "normRef": "DIN 18196",
+    "question": "Im Plastizitätsdiagramm liegt ein Punkt unterhalb der A-Linie bei w_L = 45 %. Was ist für die Einordnung als OU zusätzlich erforderlich?",
+    "options": [
+      "Eine Bestimmung des Kalkgehalts mit dem Verfahren nach Scheibler",
+      "Ein Nachweis organischer Anteile, z. B. über den Glühverlust",
+      "Eine zweite Bestimmung der Ausrollgrenze mit 5-mm-Walzen",
+      "Ein Mehrpunktversuch mit mindestens 8 statt 4 Punkten"
+    ],
+    "correctIdx": 1,
+    "explanation": "Das Diagramm trennt nur Tone und Schluffe. Ob ein Boden organogen ist (OU, OT), wird über Glühverlust, Geruch und Farbe festgestellt.",
+    "bloom": "Bewerten",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Der Kalkgehalt kennzeichnet kalkhaltige Böden, nicht organische Beimengungen.",
+      "",
+      "Der Ausrollversuch arbeitet mit 3-mm-Walzen und klärt die Organik nicht.",
+      "Mehr Punkte verbessern w_L, sagen aber nichts über organische Anteile."
+    ],
+    "gapAnalysis": {
+      "topic": "Organogene Böden",
+      "misconception": "Organogene Böden werden allein aus dem Plastizitätsdiagramm abgelesen.",
+      "coreRule": "OU/OT erst nach Nachweis der Organik (Glühverlust).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Atterberg-Versuch“ im Modul Bodenmechanik noch einmal durch.",
+      "targetModuleTab": "bodenmechanik",
+      "targetModuleLabel": "Bodenmechanik"
+    },
+    "verified": false
+  },
+  {
     "id": "qn_festigkeit_mohr_1",
     "category": "baustoffkunde",
     "categoryLabel": "Werkstoffmechanik & Physik",

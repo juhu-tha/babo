@@ -3,7 +3,6 @@ import { Thermometer } from 'lucide-react';
 import { Slider } from '@/src/components/ui/Slider';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { BloomLernziele, type BloomGoalItem } from '@/src/components/ui/BloomLernziele';
-import { ErkundungsAuftrag } from '@/src/components/ui/ErkundungsAuftrag';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { DiagrammHuelle } from '@/src/lib/diagrammAlternative';
@@ -13,7 +12,6 @@ import {
   feCZustand, gefuegeAnteile, cevBewertung, FE_C_PUNKTE, FE_C_LINIEN, FE_C_KENNWERTE, CEV_GRENZEN,
   type FeCDatensatz, type Legierung,
 } from '@/src/calc/eisenKohlenstoff';
-import { ERKUNDUNG_REITER } from '@/src/data/erkundung';
 import inhalt from '@/content/stahl/EisenKohlenstoff.json';
 
 /** Formeln und Quellen des Reiters für den Modulfuß */
@@ -129,7 +127,6 @@ export default function EisenKohlenstoff() {
   return (
     <div className="flex flex-col gap-6 animate-in fade-in duration-300">
       <BloomLernziele moduleId="stahl_eisen_kohlenstoff" moduleTitle={inhalt.werte.lernzielTitel} timeMinutes={60} goals={inhalt.daten.lernziele as BloomGoalItem[]} />
-      <ErkundungsAuftrag daten={ERKUNDUNG_REITER['stahl/eisenkohlenstoff']} />
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
         <h3 className="text-lg font-bold text-text-main flex items-center gap-2 border-b border-home-grau/30 pb-2"><Thermometer className="text-shiraz" aria-hidden="true" /><MdText text={inhalt.texte.titel} /></h3>

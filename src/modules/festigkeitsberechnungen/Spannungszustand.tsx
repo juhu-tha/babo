@@ -3,7 +3,6 @@ import { Compass } from 'lucide-react';
 import { Slider } from '@/src/components/ui/Slider';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { BloomLernziele, type BloomGoalItem } from '@/src/components/ui/BloomLernziele';
-import { ErkundungsAuftrag } from '@/src/components/ui/ErkundungsAuftrag';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { DiagrammHuelle } from '@/src/lib/diagrammAlternative';
@@ -11,7 +10,6 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 import { hauptspannungen, transformiere, type EbenerSpannungszustand } from '@/src/calc/spannungszustand';
 import { BAUSTAHL_EC3 } from '@/src/data/kennwerte';
-import { ERKUNDUNG_REITER } from '@/src/data/erkundung';
 import inhalt from '@/content/festigkeitsberechnungen/Spannungszustand.json';
 
 /** Formeln und Quellen des Reiters für den Modulfuß */
@@ -111,7 +109,6 @@ export default function Spannungszustand() {
   return (
     <div className="flex flex-col gap-6 animate-in fade-in duration-300">
       <BloomLernziele moduleId="festigkeit_spannungszustand" moduleTitle={inhalt.werte.lernzielTitel} timeMinutes={45} goals={inhalt.daten.lernziele as BloomGoalItem[]} />
-      <ErkundungsAuftrag daten={ERKUNDUNG_REITER['festigkeit/spannungszustand']} />
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2"><Compass className="text-shiraz" aria-hidden="true" /><MdText text={inhalt.texte.titel} /></h2>

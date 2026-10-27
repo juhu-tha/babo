@@ -118,7 +118,7 @@ t.test('ErkundungsAuftrag: eingeklappt ohne Fragen und Auflösungen', () => {
 t.test('ErkundungsAuftrag: alle Datensätze rendern fehlerfrei', () => {
   for (const [id, d] of Object.entries(ERKUNDUNG)) {
     const html = rendere(h(ErkundungsAuftrag, { daten: d }));
-    sicher(html.includes(`${d.auftraege.length} Vorhersagen`), `${id}: Kopf fehlt`);
+    sicher(html.includes(`${d.auftraege.length + (d.reiter ?? []).reduce((s, r) => s + r.auftraege.length, 0)} Vorhersagen`), `${id}: Kopf fehlt`);
   }
 });
 

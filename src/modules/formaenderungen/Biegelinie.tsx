@@ -6,14 +6,12 @@ import { Waves } from 'lucide-react';
 import { Slider } from '@/src/components/ui/Slider';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { BloomLernziele, type BloomGoalItem } from '@/src/components/ui/BloomLernziele';
-import { ErkundungsAuftrag } from '@/src/components/ui/ErkundungsAuftrag';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { DiagrammAngaben } from '@/src/lib/diagrammAlternative';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 import { biegelinie, werkstoffVergleich, traegheitRechteck, BIEGE_WERKSTOFFE, BIEGE_PROFILE, type Lagerung, type BiegeWerkstoffId } from '@/src/calc/biegelinie';
-import { ERKUNDUNG_REITER } from '@/src/data/erkundung';
 import inhalt from '@/content/formaenderungen/Biegelinie.json';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend, Filler);
@@ -64,7 +62,6 @@ export default function Biegelinie() {
   return (
     <div className="flex flex-col gap-6 animate-in fade-in duration-300">
       <BloomLernziele moduleId="formaenderungen_biegelinie" moduleTitle={inhalt.werte.lernzielTitel} timeMinutes={45} goals={inhalt.daten.lernziele as BloomGoalItem[]} />
-      <ErkundungsAuftrag daten={ERKUNDUNG_REITER['formaenderungen/biegelinie']} />
 
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
         <h3 className="text-lg font-bold text-text-main flex items-center gap-2 border-b border-home-grau/30 pb-2"><Waves className="text-shiraz" aria-hidden="true" /><MdText text={inhalt.texte.titel} /></h3>

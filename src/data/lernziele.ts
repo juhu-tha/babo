@@ -51,12 +51,13 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
     ],
   },
   bodenmechanik: {
-    niveau: 'B', minuten: 75, vorwissen: ['erdbau'],
+    niveau: 'B', minuten: 120, vorwissen: ['erdbau'],
     ziele: [
       { stufe: 'Anwenden', text: 'aus Wassergehalt, Fließ- und Ausrollgrenze die Konsistenzzahl berechnen und einen feinkörnigen Boden nach DIN 18196 einordnen.' },
       { stufe: 'Anwenden', text: 'mit dem Mohr-Coulomb-Kriterium prüfen, ob ein Spannungszustand zum Bruch führt.' },
       { stufe: 'Anwenden', text: 'aktiven, passiven und Ruhedruck auf eine Wand nach Rankine berechnen.' },
       { stufe: 'Verstehen', text: 'den zeitlichen Verlauf der Konsolidierungssetzung mit dem Konsolidierungsbeiwert erklären.' },
+      { stufe: 'Anwenden', text: 'die Fließgrenze aus dem Casagrande-Versuch (Mehr- oder Einpunktverfahren) auswerten und den Boden im Plastizitätsdiagramm einer Gruppe nach DIN 18196 zuordnen.' },
     ],
   },
   asphalt: {
@@ -1302,12 +1303,13 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
     ],
   },
   schallschutz: {
-    niveau: "B", minuten: 45, vorwissen: ["baustoffkenngroessen"],
+    niveau: "B", minuten: 90, vorwissen: ["baustoffkenngroessen"],
     ziele: [
       { stufe: "Verstehen", text: "das Massegesetz und die Schalltransmission durch einschalige, biegesteife Bauteile erläutern." },
       { stufe: "Anwenden", text: "die flächenbezogene Masse m' eines Bauteilaufbaus aus Schichtdicken und Rohdichten berechnen." },
       { stufe: "Anwenden", text: "das bewertete Schalldämm-Maß R_w nach DIN 4109-32 berechnen und den Gültigkeitsbereich der Formel prüfen." },
       { stufe: "Analysieren", text: "den Einfluss von Material und Schichtdicke auf die Luftschalldämmung vergleichen." },
+      { stufe: "Anwenden", text: "den bewerteten Norm-Trittschallpegel einer Massivdecke mit schwimmendem Estrich nach DIN 4109-2 berechnen und mit der Anforderung vergleichen." },
     ],
   },
   sichtbeton: {
@@ -1358,12 +1360,13 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
     ],
   },
   statistik: {
-    niveau: "B", minuten: 120, vorwissen: ["einheiten"],
+    niveau: "B", minuten: 165, vorwissen: ["einheiten"],
     ziele: [
       { stufe: "Anwenden", text: "den Mittelwert, Median, Standardabweichung und Variationskoeffizient einer Messreihe berechnen." },
       { stufe: "Anwenden", text: "mögliche Ausreißer einer Prüfserie mit dem Grubbs-Test identifizieren und die Messreihe bereinigen." },
       { stufe: "Anwenden", text: "aus einer Stichprobe den charakteristischen Wert mit Fraktilfaktor und den Bemessungswert nach DIN EN 1990 Anhang D ermitteln." },
       { stufe: "Analysieren", text: "in einem faktoriellen 2^k-Versuchsplan Haupt- und Wechselwirkungseffekte der Faktoren bestimmen und vergleichen." },
+      { stufe: "Bewerten", text: "zwei Prüfserien mit dem Zweistichproben-t-Test (Student oder Welch) vergleichen und das Ergebnis über p-Wert und Konfidenzintervall beurteilen." },
     ],
   },
   vdi6200: {
