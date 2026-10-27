@@ -16,6 +16,7 @@ import {
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import inhalt from '@/content/fortbildungen/Fortbildungen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 // Types representing specialized certifications
 type CertificateID = 
@@ -729,12 +730,12 @@ export default function Fortbildungen() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2">
           
           {/* List of Certificates */}
-          <div className="lg:col-span-4 flex flex-col gap-2 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-stone-200">
+          <AuswahlGruppe label="Zertifizierung" className="lg:col-span-4 flex flex-col gap-2 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-stone-200">
             <span className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-1 block">Zertifizierungsauswahl:</span>
             {filteredCerts.map((cert) => {
               const isActive = activeCertId === cert.id;
               return (
-                <button aria-pressed={isActive}
+                <button {...alsOption(isActive)}
                   key={cert.id}
                   onClick={() => setActiveCertId(cert.id)}
                   className={`w-full text-left p-3.5 rounded-xl border transition-all text-xs sm:text-sm flex justify-between items-center gap-2 ${
@@ -753,7 +754,7 @@ export default function Fortbildungen() {
                 </button>
               );
             })}
-          </div>
+          </AuswahlGruppe>
 
           {/* Certificate Detail View */}
           <div className="lg:col-span-8 bg-stone-50 border border-home-grau/30 p-5 rounded-2xl flex flex-col justify-between">
@@ -874,8 +875,8 @@ export default function Fortbildungen() {
           <div className="md:col-span-5 space-y-4">
             <div>
               <label className="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-1.5"><MdText text={inhalt.texte.t1IhrBeruflicherAkademischer} /></label>
-              <div className="grid grid-cols-1 gap-2">
-                <button
+              <AuswahlGruppe label="Beruflicher Hintergrund" className="grid grid-cols-1 gap-2">
+                <button {...alsOption(userBackground === 'engineer')}
                   onClick={() => { setUserBackground('engineer'); setUserGoal(''); }}
                   className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center gap-2 ${
                     userBackground === 'engineer'
@@ -884,7 +885,7 @@ export default function Fortbildungen() {
                   }`}
                 >
                   <span className="font-mono">🎓</span><MdText text={inhalt.texte.absolventBauingenieurWerkstoffwissenscha} /></button>
-                <button
+                <button {...alsOption(userBackground === 'handwerker')}
                   onClick={() => { setUserBackground('handwerker'); setUserGoal(''); }}
                   className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center gap-2 ${
                     userBackground === 'handwerker'
@@ -893,7 +894,7 @@ export default function Fortbildungen() {
                   }`}
                 >
                   <span className="font-mono">🛠️</span><MdText text={inhalt.texte.handwerkerMeisterPolierQuereinsteiger} /></button>
-                <button
+                <button {...alsOption(userBackground === 'student')}
                   onClick={() => { setUserBackground('student'); setUserGoal(''); }}
                   className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center gap-2 ${
                     userBackground === 'student'
@@ -902,16 +903,16 @@ export default function Fortbildungen() {
                   }`}
                 >
                   <span className="font-mono font-bold">📖</span><MdText text={inhalt.texte.studierenderDerArchitekturBauingenieurwe} /></button>
-              </div>
+              </AuswahlGruppe>
             </div>
 
             {userBackground && (
               <div className="animate-in fade-in duration-300">
                 <label className="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-1.5"><MdText text={inhalt.texte.t2IhrPrimäresEinsatz} /></label>
-                <div className="grid grid-cols-1 gap-2 max-h-[300px] overflow-y-auto pr-1">
+                <AuswahlGruppe label="Einsatzgebiet" className="grid grid-cols-1 gap-2 max-h-[300px] overflow-y-auto pr-1">
                   
                   {/* Shared/Universal goals tailored contextually */}
-                  <button aria-pressed={userGoal === 'sanierung'}
+                  <button {...alsOption(userGoal === 'sanierung')}
                     onClick={() => setUserGoal('sanierung')}
                     className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center justify-between ${
                       userGoal === 'sanierung'
@@ -922,7 +923,7 @@ export default function Fortbildungen() {
                     <span><MdText text={inhalt.texte.betonbauParkhausBrückeninstandsetzungLei} /></span>
                     <Hammer size={12} className="shrink-0 text-shiraz" />
                   </button>
-                  <button aria-pressed={userGoal === 'bauleitung'}
+                  <button {...alsOption(userGoal === 'bauleitung')}
                     onClick={() => setUserGoal('bauleitung')}
                     className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center justify-between ${
                       userGoal === 'bauleitung'
@@ -933,7 +934,7 @@ export default function Fortbildungen() {
                     <span><MdText text={inhalt.texte.bauüberwachungAufAnspruchsvollenSanierun} /></span>
                     <Zap size={12} className="shrink-0 text-shiraz" />
                   </button>
-                  <button aria-pressed={userGoal === 'holzschutz'}
+                  <button {...alsOption(userGoal === 'holzschutz')}
                     onClick={() => setUserGoal('holzschutz')}
                     className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center justify-between ${
                       userGoal === 'holzschutz'
@@ -944,7 +945,7 @@ export default function Fortbildungen() {
                     <span><MdText text={inhalt.texte.historischenHolzbauDachstühleSanieren} /></span>
                     <Hammer size={12} className="shrink-0 text-shiraz" />
                   </button>
-                  <button aria-pressed={userGoal === 'schadstoffe'}
+                  <button {...alsOption(userGoal === 'schadstoffe')}
                     onClick={() => setUserGoal('schadstoffe')}
                     className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center justify-between ${
                       userGoal === 'schadstoffe'
@@ -955,7 +956,7 @@ export default function Fortbildungen() {
                     <span><MdText text={inhalt.texte.schadstoffsanierungInnenraumhygieneAsbes} /></span>
                     <Zap size={12} className="shrink-0 text-shiraz" />
                   </button>
-                  <button aria-pressed={userGoal === 'rissinjektion'}
+                  <button {...alsOption(userGoal === 'rissinjektion')}
                     onClick={() => setUserGoal('rissinjektion')}
                     className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center justify-between ${
                       userGoal === 'rissinjektion'
@@ -966,7 +967,7 @@ export default function Fortbildungen() {
                     <span><MdText text={inhalt.texte.rissabdichtungenHarzinjektionenFachgerec} /></span>
                     <Hammer size={12} className="shrink-0 text-shiraz" />
                   </button>
-                  <button aria-pressed={userGoal === 'baustellen_sicherheit'}
+                  <button {...alsOption(userGoal === 'baustellen_sicherheit')}
                     onClick={() => setUserGoal('baustellen_sicherheit')}
                     className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center justify-between ${
                       userGoal === 'baustellen_sicherheit'
@@ -977,7 +978,7 @@ export default function Fortbildungen() {
                     <span><MdText text={inhalt.texte.sicherheitskoordinationNachBaustellvSige} /></span>
                     <Zap size={12} className="shrink-0 text-shiraz" />
                   </button>
-                  <button aria-pressed={userGoal === 'bauwerk_diagnose'}
+                  <button {...alsOption(userGoal === 'bauwerk_diagnose')}
                     onClick={() => setUserGoal('bauwerk_diagnose')}
                     className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center justify-between ${
                       userGoal === 'bauwerk_diagnose'
@@ -988,7 +989,7 @@ export default function Fortbildungen() {
                     <span><MdText text={inhalt.texte.bauwerksdiagnostikInspektionMesstechnikZ} /></span>
                     <Zap size={12} className="shrink-0 text-shiraz" />
                   </button>
-                  <button aria-pressed={userGoal === 'abdichtung'}
+                  <button {...alsOption(userGoal === 'abdichtung')}
                     onClick={() => setUserGoal('abdichtung')}
                     className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center justify-between ${
                       userGoal === 'abdichtung'
@@ -1003,7 +1004,7 @@ export default function Fortbildungen() {
                   {/* Engineer exclusivities */}
                   {userBackground === 'engineer' && (
                     <>
-                      <button aria-pressed={userGoal === 'stahlbau'}
+                      <button {...alsOption(userGoal === 'stahlbau')}
                         onClick={() => setUserGoal('stahlbau')}
                         className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center justify-between ${
                           userGoal === 'stahlbau'
@@ -1014,7 +1015,7 @@ export default function Fortbildungen() {
                         <span><MdText text={inhalt.texte.stahlbauSchweißaufsichtNachDin} /></span>
                         <Zap size={12} className="shrink-0 text-shiraz" />
                       </button>
-                      <button aria-pressed={userGoal === 'spezialwerke'}
+                      <button {...alsOption(userGoal === 'spezialwerke')}
                         onClick={() => setUserGoal('spezialwerke')}
                         className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center justify-between ${
                           userGoal === 'spezialwerke'
@@ -1025,7 +1026,7 @@ export default function Fortbildungen() {
                         <span><MdText text={inhalt.texte.elektrochemischenKksSchutzFür} /></span>
                         <Zap size={12} className="shrink-0 text-shiraz" />
                       </button>
-                      <button aria-pressed={userGoal === 'denkmal_energie'}
+                      <button {...alsOption(userGoal === 'denkmal_energie')}
                         onClick={() => setUserGoal('denkmal_energie')}
                         className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center justify-between ${
                           userGoal === 'denkmal_energie'
@@ -1040,7 +1041,7 @@ export default function Fortbildungen() {
                   )}
 
                   {userBackground === 'student' && (
-                    <button aria-pressed={userGoal === 'denkmal_energie'}
+                    <button {...alsOption(userGoal === 'denkmal_energie')}
                       onClick={() => setUserGoal('denkmal_energie')}
                       className={`p-3 rounded-xl border text-left text-xs transition-all flex items-center justify-between ${
                         userGoal === 'denkmal_energie'
@@ -1053,7 +1054,7 @@ export default function Fortbildungen() {
                     </button>
                   )}
 
-                </div>
+                </AuswahlGruppe>
               </div>
             )}
           </div>

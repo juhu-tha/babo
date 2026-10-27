@@ -22,6 +22,7 @@ import { COMPREHENSIVE_RESOURCES } from './moduleinfo/ressourcen';
 import type { TabId } from '@/src/contexts/TabContext';
 import inhalt from '@/content/moduleinfo/ModuleInfo.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 interface ModuleInfoProps {
   group: string;
 }
@@ -66,8 +67,8 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
 
         {/* SECTION TABS */}
         <div className="border-b border-home-grau/30 dark:border-slate-800 bg-slate-50/30 dark:bg-slate-950/20 p-2 sm:p-4 print:hidden">
-          <div className="flex flex-wrap gap-2">
-            <button aria-pressed={activeSection === 'grundlagen'}
+          <ReiterLeiste label="Bereiche Modulinfo" className="flex flex-wrap gap-2">
+            <button {...alsReiter(activeSection === 'grundlagen', 'modulinfo-bereich', 'grundlagen')}
               onClick={() => setActiveSection('grundlagen')}
               className={`py-2 px-3 rounded-xl text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeSection === 'grundlagen'
@@ -78,7 +79,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
               <Info size={14} />
               <span className="truncate">Modulbasis</span>
             </button>
-            <button aria-pressed={activeSection === 'ueberblick'}
+            <button {...alsReiter(activeSection === 'ueberblick', 'modulinfo-bereich', 'ueberblick')}
               onClick={() => setActiveSection('ueberblick')}
               className={`py-2 px-3 rounded-xl text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeSection === 'ueberblick'
@@ -89,7 +90,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
               <Compass size={14} />
               <span className="truncate">Überblick</span>
             </button>
-            <button aria-pressed={activeSection === 'inhalte'}
+            <button {...alsReiter(activeSection === 'inhalte', 'modulinfo-bereich', 'inhalte')}
               onClick={() => setActiveSection('inhalte')}
               className={`py-2 px-3 rounded-xl text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeSection === 'inhalte'
@@ -100,7 +101,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
               <BookOpen size={14} />
               <span className="truncate">Lehrthemen</span>
             </button>
-            <button aria-pressed={activeSection === 'weiterfuehrend'}
+            <button {...alsReiter(activeSection === 'weiterfuehrend', 'modulinfo-bereich', 'weiterfuehrend')}
               onClick={() => setActiveSection('weiterfuehrend')}
               className={`py-2 px-3 rounded-xl text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeSection === 'weiterfuehrend'
@@ -111,7 +112,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
               <FileSearch size={14} />
               <span className="truncate">Quellen</span>
             </button>
-            <button aria-pressed={activeSection === 'historie'}
+            <button {...alsReiter(activeSection === 'historie', 'modulinfo-bereich', 'historie')}
               onClick={() => setActiveSection('historie')}
               className={`py-2 px-3 rounded-xl text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeSection === 'historie'
@@ -123,7 +124,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
               <span className="truncate">Historie</span>
             </button>
             {normalizedGroup === 'baustoffe' && (
-              <button aria-pressed={activeSection === 'klassifizierung'}
+              <button {...alsReiter(activeSection === 'klassifizierung', 'modulinfo-bereich', 'klassifizierung')}
                 onClick={() => setActiveSection('klassifizierung')}
                 className={`py-2 px-3 rounded-xl text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
                   activeSection === 'klassifizierung'
@@ -135,13 +136,13 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                 <span className="truncate">Systematik</span>
               </button>
             )}
-          </div>
+          </ReiterLeiste>
         </div>
 
         {/* CONTENT PANEL */}
         <div className="p-6">
           {activeSection === 'grundlagen' && (
-            <div className="space-y-6 animate-in fade-in duration-300">
+            <div {...reiterPanel('modulinfo-bereich', activeSection)} className="space-y-6 animate-in fade-in duration-300">
               <div className="space-y-3">
                 <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
                   <FileText className="text-shiraz w-5 h-5" />
@@ -389,11 +390,11 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
           )}
 
           {activeSection === 'ueberblick' && (
-            <ModuleOverviewView groupKey={normalizedGroup} />
+            <div {...reiterPanel('modulinfo-bereich', activeSection)}><ModuleOverviewView groupKey={normalizedGroup} /></div>
           )}
 
           {activeSection === 'inhalte' && (
-            <div className="space-y-6 animate-in fade-in duration-300">
+            <div {...reiterPanel('modulinfo-bereich', activeSection)} className="space-y-6 animate-in fade-in duration-300">
               <div className="space-y-2">
                 <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
                   <BookOpen className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.gliederungDerLehrthemenInhalte} /></h3>
@@ -450,7 +451,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
           )}
 
           {activeSection === 'weiterfuehrend' && (
-            <div className="space-y-8 animate-in fade-in duration-300">
+            <div {...reiterPanel('modulinfo-bereich', activeSection)} className="space-y-8 animate-in fade-in duration-300">
               <div className="space-y-3">
                 <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
                   <Compass className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.umfangreicheWissenschaftlicheRessourcenF} /></h3>
@@ -550,7 +551,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
           )}
 
           {activeSection === 'klassifizierung' && normalizedGroup === 'baustoffe' && (
-            <div className="space-y-6 animate-in fade-in duration-300">
+            <div {...reiterPanel('modulinfo-bereich', activeSection)} className="space-y-6 animate-in fade-in duration-300">
               {/* WIKIPEDIA BAUSTOFF-RECHERCHE UND KLASSIFIZIERUNG */}
               <div className="bg-slate-50 border border-slate-300/80 p-6 rounded-xl text-left">
                 <div className="flex items-center gap-2 mb-4">
@@ -690,7 +691,7 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
           )}
 
           {activeSection === 'historie' && (
-            <div className="animate-in fade-in duration-300">
+            <div {...reiterPanel('modulinfo-bereich', activeSection)} className="animate-in fade-in duration-300">
               {historyData ? (
                 <ModuleHistoryView history={historyData} />
               ) : (

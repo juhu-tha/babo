@@ -302,7 +302,7 @@ export default function Kreislaufwirtschaft() {
               <div className="flex flex-col items-center w-full gap-2 mt-2">
                 {strategies.map((s, index) => (
                   <React.Fragment key={s.id}>
-                    <button aria-pressed={activeStrategy === s.id}
+                    <button type="button" aria-expanded={activeStrategy === s.id} aria-controls={`r-strategie-${s.id}`}
                       onClick={() => setActiveStrategy(s.id)}
                       className={`relative py-3 px-4 rounded-xl flex items-center justify-between text-white font-bold transition-all duration-300 w-full hover:-translate-y-0.5 shadow-sm ${activeStrategy === s.id ? s.activeColor : s.bgColor}`}
                       style={{ maxWidth: `${100 - index * 6}%` }}
@@ -314,7 +314,7 @@ export default function Kreislaufwirtschaft() {
                       <span className="text-xs sm:text-sm font-medium hidden sm:block truncate ml-2">{s.label}</span>
                     </button>
                     {activeStrategy === s.id && (
-                      <div className={`w-full my-2 p-5 rounded-2xl border shadow-inner animate-in fade-in slide-in-from-top-2 duration-300 ${s.panelBg}`}>
+                      <div id={`r-strategie-${s.id}`} className={`w-full my-2 p-5 rounded-2xl border shadow-inner animate-in fade-in slide-in-from-top-2 duration-300 ${s.panelBg}`}>
                         <h4 className={`font-bold text-lg mb-2 flex items-center gap-2 ${s.textColor}`}>
                           {s.name} <span className="text-sm font-normal opacity-70">({s.label})</span>
                         </h4>

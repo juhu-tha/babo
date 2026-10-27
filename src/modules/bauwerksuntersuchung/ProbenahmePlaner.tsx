@@ -16,6 +16,7 @@ import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { InlineMath } from 'react-katex';
 import inhalt from '@/content/bauwerksuntersuchung/ProbenahmePlaner.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 export default function ProbenahmePlaner() {
   const [selectedPresetId, setSelectedPresetId] = useState<string>('tiefgarage');
@@ -181,8 +182,8 @@ export default function ProbenahmePlaner() {
             {primaryGoal === 'druckfestigkeit' && (
               <div>
                 <label className="text-xs font-bold text-slate-700 block mb-1"><MdText text={inhalt.texte.verfahrenNachDinEn} /></label>
-                <div className="flex gap-2">
-                  <button aria-pressed={verfahrenType === 'verfahrenA'}
+                <AuswahlGruppe label="Verfahren" className="flex gap-2">
+                  <button {...alsOption(verfahrenType === 'verfahrenA')}
                     type="button"
                     onClick={() => setVerfahrenType('verfahrenA')}
                     className={`flex-1 py-1.5 px-2 rounded-lg text-xs font-bold border transition-all cursor-pointer ${
@@ -191,7 +192,7 @@ export default function ProbenahmePlaner() {
                         : 'bg-white text-slate-700 border-slate-200'
                     }`}
                   ><MdText text={inhalt.texte.statistischN8Kerne} /></button>
-                  <button aria-pressed={verfahrenType === 'verfahrenB'}
+                  <button {...alsOption(verfahrenType === 'verfahrenB')}
                     type="button"
                     onClick={() => setVerfahrenType('verfahrenB')}
                     className={`flex-1 py-1.5 px-2 rounded-lg text-xs font-bold border transition-all cursor-pointer ${
@@ -200,7 +201,7 @@ export default function ProbenahmePlaner() {
                         : 'bg-white text-slate-700 border-slate-200'
                     }`}
                   ><MdText text={inhalt.texte.kleineStichprobe37} /></button>
-                </div>
+                </AuswahlGruppe>
               </div>
             )}
           </div>

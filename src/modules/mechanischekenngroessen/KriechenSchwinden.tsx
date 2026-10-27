@@ -5,6 +5,7 @@ import KriechModellDiagramm from './KriechModellDiagramm';
 import type { Dispatch, SetStateAction } from 'react';
 import inhalt from '@/content/mechanischekenngroessen/KriechenSchwinden.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 interface KriechenSchwindenProps {
   rheoModus: "relaxieren" | "kriechen";
@@ -149,8 +150,8 @@ export default function KriechenSchwinden({ rheoModus, rheoTauSec, rheoWert0, se
               </div>
 
               {/* Umschalter: Relaxieren vs. Kriechen */}
-              <div className="flex bg-off-white p-1 rounded-xl border border-home-grau/30 gap-1 text-xs">
-                <button aria-pressed={rheoModus === 'relaxieren'}
+              <AuswahlGruppe label="Versuchsart" className="flex bg-off-white p-1 rounded-xl border border-home-grau/30 gap-1 text-xs">
+                <button {...alsOption(rheoModus === 'relaxieren')}
                   onClick={() => setRheoModus('relaxieren')}
                   className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                       rheoModus === 'relaxieren'
@@ -159,7 +160,7 @@ export default function KriechenSchwinden({ rheoModus, rheoTauSec, rheoWert0, se
                     }`}
                 >
                   <Timer size={14} /><MdText text={inhalt.texte.t1RelaxierenKonst} /></button>
-                <button aria-pressed={rheoModus === 'kriechen'}
+                <button {...alsOption(rheoModus === 'kriechen')}
                   onClick={() => setRheoModus('kriechen')}
                   className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                       rheoModus === 'kriechen'
@@ -168,7 +169,7 @@ export default function KriechenSchwinden({ rheoModus, rheoTauSec, rheoWert0, se
                     }`}
                 >
                   <Clock size={14} /><MdText text={inhalt.texte.t2KriechenKonst} /></button>
-              </div>
+              </AuswahlGruppe>
             </div>
 
             {/* Slider & Berechnungen */}

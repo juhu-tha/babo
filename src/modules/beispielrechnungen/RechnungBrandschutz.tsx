@@ -4,6 +4,7 @@ import { formatDeWert, formatDeTeXWert, formatDeTeX, formatDeZahl } from '@/src/
 import React from 'react';
 import inhalt from '@/content/beispielrechnungen/RechnungBrandschutz.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../../components/ui/Auswahlgruppe';
 
 interface RechnungBrandschutzProps {
   M_fi_Ed: number;
@@ -44,8 +45,8 @@ export default function RechnungBrandschutz({ M_fi_Ed, M_fi_Rd, W_ef_mm3, b_ef_m
         </div>
 
         {/* Sub-Tab Selector for Brandschutz */}
-        <div className="flex gap-2 border-b border-home-grau/20 pb-3">
-          <button aria-pressed={brandSubTab === 'holz_abbrand'}
+        <ReiterLeiste label="Beispielrechnungen Brandschutz" className="flex gap-2 border-b border-home-grau/20 pb-3">
+          <button {...alsReiter(brandSubTab === 'holz_abbrand', 'rechnung-brand', 'holz_abbrand')}
             type="button"
             onClick={() => setBrandSubTab('holz_abbrand')}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
@@ -54,7 +55,7 @@ export default function RechnungBrandschutz({ M_fi_Ed, M_fi_Rd, W_ef_mm3, b_ef_m
                     : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
                 }`}
           ><MdText text={inhalt.texte.holzbauEffektiverRestquerschnittEc5} /></button>
-          <button aria-pressed={brandSubTab === 'beton_tabelle'}
+          <button {...alsReiter(brandSubTab === 'beton_tabelle', 'rechnung-brand', 'beton_tabelle')}
             type="button"
             onClick={() => setBrandSubTab('beton_tabelle')}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
@@ -63,10 +64,10 @@ export default function RechnungBrandschutz({ M_fi_Ed, M_fi_Rd, W_ef_mm3, b_ef_m
                     : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
                 }`}
           ><MdText text={inhalt.texte.stahlbetonMindestabmessungenAchsabstandE} /></button>
-        </div>
+        </ReiterLeiste>
 
         {brandSubTab === 'holz_abbrand' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-in fade-in duration-200">
+          <div {...reiterPanel('rechnung-brand', brandSubTab)} className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-in fade-in duration-200">
             {/* Controls Left */}
             <div className="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-4">
               <h3 className="font-bold text-sm text-slate-800 border-b border-slate-200 pb-2 flex items-center justify-between">
@@ -113,8 +114,8 @@ export default function RechnungBrandschutz({ M_fi_Ed, M_fi_Rd, W_ef_mm3, b_ef_m
               {/* Brandbeanspruchung */}
               <div className="space-y-1.5">
                 <label className="text-xs font-bold text-slate-700 block">Beflammung:</label>
-                <div className="grid grid-cols-2 gap-2 text-xs">
-                  <button aria-pressed={brandBeanspruchung === '3_seitig'}
+                <AuswahlGruppe label="Beflammung" className="grid grid-cols-2 gap-2 text-xs">
+                  <button {...alsOption(brandBeanspruchung === '3_seitig')}
                     type="button"
                     onClick={() => setBrandBeanspruchung('3_seitig')}
                     className={`p-2 rounded-lg border text-center font-sans cursor-pointer transition-all ${
@@ -123,7 +124,7 @@ export default function RechnungBrandschutz({ M_fi_Ed, M_fi_Rd, W_ef_mm3, b_ef_m
                             : 'bg-white text-slate-700 border-slate-200'
                         }`}
                   ><MdText text={inhalt.texte.t3SeitigDeckenbalken} /></button>
-                  <button aria-pressed={brandBeanspruchung === '4_seitig'}
+                  <button {...alsOption(brandBeanspruchung === '4_seitig')}
                     type="button"
                     onClick={() => setBrandBeanspruchung('4_seitig')}
                     className={`p-2 rounded-lg border text-center font-sans cursor-pointer transition-all ${
@@ -132,7 +133,7 @@ export default function RechnungBrandschutz({ M_fi_Ed, M_fi_Rd, W_ef_mm3, b_ef_m
                             : 'bg-white text-slate-700 border-slate-200'
                         }`}
                   ><MdText text={inhalt.texte.t4SeitigFreieStütze} /></button>
-                </div>
+                </AuswahlGruppe>
               </div>
 
               {/* Branddauer */}
@@ -216,7 +217,7 @@ export default function RechnungBrandschutz({ M_fi_Ed, M_fi_Rd, W_ef_mm3, b_ef_m
         )}
 
         {brandSubTab === 'beton_tabelle' && (
-          <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-4 animate-in fade-in duration-200">
+          <div {...reiterPanel('rechnung-brand', brandSubTab)} className="bg-white p-5 rounded-xl border border-slate-200 space-y-4 animate-in fade-in duration-200">
             <h4 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2"><MdText text={inhalt.texte.stahlbetonBrandschutzTabellarischeMindes} /></h4>
             <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.dieHeißbemessungVonBetonbauteilen} /></p>
 

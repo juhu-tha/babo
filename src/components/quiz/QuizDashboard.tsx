@@ -27,6 +27,7 @@ import {
 import { QuizSessionResult, QuizGapItem } from '@/src/utils/studyStorage';
 import { useAlleFragen } from '@/src/data/quizLader';
 import { useTabContext, TabType } from '@/src/contexts/TabContext';
+import { AuswahlGruppe, alsOption } from '../ui/Auswahlgruppe';
 
 interface QuizDashboardProps {
   history: QuizSessionResult[];
@@ -304,8 +305,8 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
       <div className="bg-white p-4 sm:p-5 rounded-2xl border border-home-grau/30 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
           <span className="text-xs font-bold text-text-main uppercase tracking-wider">Ansicht:</span>
-          <div className="flex bg-off-white p-1 rounded-xl border border-home-grau/25 text-xs font-bold">
-            <button aria-pressed={metricView === 'both'}
+          <AuswahlGruppe label="Diagrammauswahl" className="flex bg-off-white p-1 rounded-xl border border-home-grau/25 text-xs font-bold">
+            <button {...alsOption(metricView === 'both')}
               onClick={() => setMetricView('both')}
               className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
                 metricView === 'both' ? 'bg-shiraz text-white shadow-xs' : 'text-text-main/70 hover:text-text-main'
@@ -313,7 +314,7 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
             >
               Kombiniert
             </button>
-            <button aria-pressed={metricView === 'line'}
+            <button {...alsOption(metricView === 'line')}
               onClick={() => setMetricView('line')}
               className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
                 metricView === 'line' ? 'bg-shiraz text-white shadow-xs' : 'text-text-main/70 hover:text-text-main'
@@ -321,7 +322,7 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
             >
               Liniendiagramm (Verlauf)
             </button>
-            <button aria-pressed={metricView === 'heatmap'}
+            <button {...alsOption(metricView === 'heatmap')}
               onClick={() => setMetricView('heatmap')}
               className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
                 metricView === 'heatmap' ? 'bg-shiraz text-white shadow-xs' : 'text-text-main/70 hover:text-text-main'
@@ -329,7 +330,7 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
             >
               Modul-Heatmap
             </button>
-          </div>
+          </AuswahlGruppe>
         </div>
 
         {activeGaps.length > 0 && onStartQuizWithGaps && (
@@ -516,8 +517,8 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
             </div>
 
             {/* Cluster Filter Buttons */}
-            <div className="flex flex-wrap items-center gap-1.5 bg-off-white p-1 rounded-xl border border-home-grau/20 self-start md:self-auto">
-              <button aria-pressed={selectedClusterFilter === 'all'}
+            <AuswahlGruppe label="Filter Cluster" className="flex flex-wrap items-center gap-1.5 bg-off-white p-1 rounded-xl border border-home-grau/20 self-start md:self-auto">
+              <button {...alsOption(selectedClusterFilter === 'all')}
                 type="button"
                 onClick={() => setSelectedClusterFilter('all')}
                 className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer ${
@@ -531,7 +532,7 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
               {(['I', 'II', 'III', 'IV', 'V'] as const).map(cId => {
                 const count = moduleCompetenceMap.filter(m => m.clusterId === cId).length;
                 return (
-                  <button
+                  <button {...alsOption(selectedClusterFilter === cId)}
                     key={cId}
                     type="button"
                     onClick={() => setSelectedClusterFilter(cId)}
@@ -545,7 +546,7 @@ export const QuizDashboard: React.FC<QuizDashboardProps> = ({
                   </button>
                 );
               })}
-            </div>
+            </AuswahlGruppe>
           </div>
 
           {/* Legend */}

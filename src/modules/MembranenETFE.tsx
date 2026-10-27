@@ -14,6 +14,7 @@ import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 import { membranNachweis, MEMBRAN_LEHRWERTE, type MembranGeometrie } from '@/src/calc/membran';
 import inhalt from '@/content/membranenetfe/MembranenETFE.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 type Reiter = 'einfuehrung' | 'werkstoffe' | 'tragverhalten' | 'kennwerte' | 'rechner' | 'regelwerke';
 
@@ -302,22 +303,22 @@ export default function MembranenETFE() {
                 <CalculatorDisclaimerBanner className="my-1" customText={inhalt.werte.lehrrechnerFestigkeitenUndSicherheitsbei} />
                 <div className={box}>
                   <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-3"><MdText text={inhalt.texte.geometrieUndDruck} /></h3>
-                  <div className="flex flex-wrap gap-2 mb-3" role="group" aria-label="Krümmungsform">
+                  <AuswahlGruppe className="flex flex-wrap gap-2 mb-3" aria-label="Krümmungsform">
                     {(['zylinder', 'kugel'] as const).map(g => (
-                      <button key={g} type="button" aria-pressed={geometrie === g} onClick={() => setGeometrie(g)}
+                      <button key={g} type="button" {...alsOption(geometrie === g)} onClick={() => setGeometrie(g)}
                         className={`px-3 py-1.5 rounded-lg text-xs font-bold border cursor-pointer ${geometrie === g ? 'bg-shiraz text-white border-shiraz' : 'bg-white border-home-grau/30'}`}>
                         {g === 'zylinder' ? inhalt.werte.zylinderNPR : inhalt.werte.kugelNPR}
                       </button>
                     ))}
-                  </div>
-                  <div className="flex flex-wrap gap-2 mb-4" role="group" aria-label={inhalt.werte.eingabeDerKrümmung}>
+                  </AuswahlGruppe>
+                  <AuswahlGruppe className="flex flex-wrap gap-2 mb-4" aria-label={inhalt.werte.eingabeDerKrümmung}>
                     {(['stich', 'radius'] as const).map(m => (
-                      <button key={m} type="button" aria-pressed={modus === m} onClick={() => setModus(m)}
+                      <button key={m} type="button" {...alsOption(modus === m)} onClick={() => setModus(m)}
                         className={`px-3 py-1.5 rounded-lg text-xs font-bold border cursor-pointer ${modus === m ? 'bg-shiraz text-white border-shiraz' : 'bg-white border-home-grau/30'}`}>
                         {m === 'stich' ? inhalt.werte.spannweiteUndStich : inhalt.werte.radiusDirekt}
                       </button>
                     ))}
-                  </div>
+                  </AuswahlGruppe>
                   <div className="flex flex-col gap-4">
                     <Slider label={inhalt.werte.innendruckP} info={inhalt.werte.überdruckBzwDruckdifferenzAn} min={100} max={1000} step={10} value={p} unit="Pa" onChange={e => setP(Number(e.target.value))} />
                     {modus === 'stich' ? (

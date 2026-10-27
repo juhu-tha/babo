@@ -12,6 +12,7 @@ import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/lca/IngenieurbauLCA.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../../components/ui/Auswahlgruppe';
 
 export default function IngenieurbauLCA() {
   // Simulator State
@@ -143,7 +144,7 @@ export default function IngenieurbauLCA() {
         </div>
 
         {/* Sub-Navigation */}
-        <div className="flex flex-wrap gap-2 mt-5 pt-3 border-t border-home-grau/20">
+        <ReiterLeiste label="Bereiche Ingenieurbau-LCA" className="flex flex-wrap gap-2 mt-5 pt-3 border-t border-home-grau/20">
           {[
             { id: 'uebersicht' as const, label: inhalt.werte.normenArchitekturPrinzipien, icon: Layers },
             { id: 'vergleich' as const, label: inhalt.werte.differenzierungsmatrixHochbauVsTiefbau, icon: Scale },
@@ -153,7 +154,7 @@ export default function IngenieurbauLCA() {
             const Icon = tab.icon;
             const isActive = activeSubTab === tab.id;
             return (
-              <button aria-pressed={isActive}
+              <button {...alsReiter(isActive, 'ing-lca-bereich', tab.id)}
                 key={tab.id}
                 type="button"
                 onClick={() => setActiveSubTab(tab.id)}
@@ -168,12 +169,12 @@ export default function IngenieurbauLCA() {
               </button>
             );
           })}
-        </div>
+        </ReiterLeiste>
       </div>
 
       {/* Sub-Tab 1: Übersicht & Normenarchitektur */}
       {activeSubTab === 'uebersicht' && (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-in fade-in duration-200">
+        <div {...reiterPanel('ing-lca-bereich', activeSubTab)} className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-in fade-in duration-200">
           <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-xs space-y-3">
             <div className="flex items-center gap-2 font-bold text-sm text-text-main border-b border-home-grau/20 pb-2">
               <span className="w-6 h-6 rounded-lg bg-shiraz/10 text-shiraz font-mono text-xs flex items-center justify-center font-bold">1</span>
@@ -228,7 +229,7 @@ export default function IngenieurbauLCA() {
 
       {/* Sub-Tab 2: Differenzierungsmatrix Hochbau vs. Tiefbau */}
       {activeSubTab === 'vergleich' && (
-        <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-xs space-y-4 animate-in fade-in duration-200">
+        <div {...reiterPanel('ing-lca-bereich', activeSubTab)} className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-xs space-y-4 animate-in fade-in duration-200">
           <div className="border-b border-home-grau/20 pb-3">
             <h4 className="text-sm font-bold text-text-main flex items-center gap-2">
               <Scale size={16} className="text-shiraz" /><MdText text={inhalt.texte.gegenüberstellungDinEn15978} /></h4>
@@ -288,7 +289,7 @@ export default function IngenieurbauLCA() {
 
       {/* Sub-Tab 3: Modul B8 Stauemissionen */}
       {activeSubTab === 'stau_b8' && (
-        <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-xs space-y-5 animate-in fade-in duration-200">
+        <div {...reiterPanel('ing-lca-bereich', activeSubTab)} className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-xs space-y-5 animate-in fade-in duration-200">
           <div className="border-b border-home-grau/20 pb-3">
             <h4 className="text-sm font-bold text-text-main flex items-center gap-2">
               <Car size={16} className="text-shiraz" /><MdText text={inhalt.texte.modulB8NachDin} /></h4>
@@ -324,7 +325,7 @@ export default function IngenieurbauLCA() {
 
       {/* Sub-Tab 4: Interaktiver Brücken-LCA-Simulator */}
       {activeSubTab === 'simulator' && (
-        <div className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-xs space-y-6 animate-in fade-in duration-200">
+        <div {...reiterPanel('ing-lca-bereich', activeSubTab)} className="bg-white p-6 rounded-2xl border border-home-grau/30 shadow-xs space-y-6 animate-in fade-in duration-200">
           <div className="border-b border-home-grau/20 pb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
               <h4 className="text-sm font-bold text-text-main flex items-center gap-2">
@@ -395,8 +396,8 @@ export default function IngenieurbauLCA() {
             {/* Control 4: Baustellen-Strategie */}
             <div className="space-y-1.5">
               <label className="font-bold text-slate-700 block"><MdText text={inhalt.texte.baustellenführungB8} /></label>
-              <div className="grid grid-cols-2 gap-1.5">
-                <button aria-pressed={constructionStrategy === 'standard'}
+              <AuswahlGruppe label="Baustellenführung" className="grid grid-cols-2 gap-1.5">
+                <button {...alsOption(constructionStrategy === 'standard')}
                   type="button"
                   onClick={() => setConstructionStrategy('standard')}
                   className={`p-2 rounded-lg border text-[11px] font-bold transition-all text-center cursor-pointer ${
@@ -407,7 +408,7 @@ export default function IngenieurbauLCA() {
                 >
                   Konventionell
                 </button>
-                <button aria-pressed={constructionStrategy === 'accelerated'}
+                <button {...alsOption(constructionStrategy === 'accelerated')}
                   type="button"
                   onClick={() => setConstructionStrategy('accelerated')}
                   className={`p-2 rounded-lg border text-[11px] font-bold transition-all text-center cursor-pointer ${
@@ -416,7 +417,7 @@ export default function IngenieurbauLCA() {
                       : 'bg-white text-slate-600 border-home-grau/25 hover:bg-slate-50'
                   }`}
                 ><MdText text={inhalt.texte.schnellbau} /></button>
-              </div>
+              </AuswahlGruppe>
               <span className="text-[10px] text-slate-400 block text-center">
                 {constructionStrategy === 'accelerated' ? inhalt.werte.t65Sperrzeit : inhalt.werte.volleTeilsperrung}
               </span>

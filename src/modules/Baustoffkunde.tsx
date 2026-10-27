@@ -10,6 +10,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/baustoffkunde/Baustoffkunde.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 interface HistoricalPeriod {
   era: string;
@@ -277,14 +278,14 @@ export default function Baustoffkunde() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
               
               {/* Left Column: List of Classes selector */}
-              <div className="lg:col-span-5 flex flex-col gap-2">
+              <AuswahlGruppe label="Stoffgruppe" className="lg:col-span-5 flex flex-col gap-2">
                 <span className="text-[10px] uppercase font-black tracking-widest text-[#A3113E] font-mono mb-1 ml-1 block">
                   Stoffgruppen-Systematik
                 </span>
                 {materialClasses.map((item) => {
                   const isActive = selectedClass === item.id;
                   return (
-                    <button aria-pressed={isActive}
+                    <button {...alsOption(isActive)}
                       key={item.id}
                       onClick={() => setSelectedClass(item.id)}
                       className={`p-3.5 rounded-xl border text-left cursor-pointer transition-all duration-200 flex items-center justify-between group ${
@@ -315,7 +316,7 @@ export default function Baustoffkunde() {
                     </button>
                   );
                 })}
-              </div>
+              </AuswahlGruppe>
 
               {/* Right Column: Deep-Dive View */}
               <div className="lg:col-span-7 bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
@@ -537,11 +538,11 @@ export default function Baustoffkunde() {
                 <span className="text-[10px] uppercase font-black tracking-widest text-[#A3113E] font-mono mb-1 ml-1 block">
                   Pionier-Verzeichnis
                 </span>
-                <div className="space-y-2">
+                <AuswahlGruppe label="Pionier" className="space-y-2">
                   {pioneers.map((p) => {
                     const isActive = selectedPioneer === p.id;
                     return (
-                      <button aria-pressed={isActive}
+                      <button {...alsOption(isActive)}
                         key={p.id}
                         onClick={() => setSelectedPioneer(p.id)}
                         className={`w-full p-3.5 rounded-xl border text-left cursor-pointer transition-all duration-200 flex items-center justify-between group ${
@@ -573,7 +574,7 @@ export default function Baustoffkunde() {
                       </button>
                     );
                   })}
-                </div>
+                </AuswahlGruppe>
               </div>
 
               {/* Right side: Detailed Showcase */}

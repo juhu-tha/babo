@@ -9,6 +9,7 @@ import type { SteelCurveDefinition } from './daten';
 import type { Dispatch, SetStateAction } from 'react';
 import inhalt from '@/content/stahl/SpannungsDehnung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 interface SpannungsDehnungProps {
   activeSimSteel: SteelCurveDefinition;
@@ -90,11 +91,11 @@ export default function SpannungsDehnung({ activeSimSteel, selectedCurves, setSe
             </div>
 
             {/* Zoom- / Skalierungs-Stufen */}
-            <div className="flex flex-wrap items-center gap-1.5 bg-slate-100 p-1 rounded-xl">
+            <AuswahlGruppe label="Skalierung" className="flex flex-wrap items-center gap-1.5 bg-slate-100 p-1 rounded-xl">
               <span className="text-[11px] font-bold text-slate-500 uppercase px-2 flex items-center gap-1">
                 <Maximize2 size={13} /> Skalierung:
               </span>
-              <button aria-pressed={strainZoom === 'auto'}
+              <button {...alsOption(strainZoom === 'auto')}
                 onClick={() => setStrainZoom('auto')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     strainZoom === 'auto' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:text-slate-900'
@@ -103,25 +104,25 @@ export default function SpannungsDehnung({ activeSimSteel, selectedCurves, setSe
               >
                 Auto-Skalierung
               </button>
-              <button aria-pressed={strainZoom === 'detail'}
+              <button {...alsOption(strainZoom === 'detail')}
                 onClick={() => setStrainZoom('detail')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     strainZoom === 'detail' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:text-slate-900'
                   }`}
               ><MdText text={inhalt.texte.fließbeginn03} /></button>
-              <button aria-pressed={strainZoom === 'work'}
+              <button {...alsOption(strainZoom === 'work')}
                 onClick={() => setStrainZoom('work')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     strainZoom === 'work' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:text-slate-900'
                   }`}
               ><MdText text={inhalt.texte.arbeitsbereich015} /></button>
-              <button aria-pressed={strainZoom === 'full'}
+              <button {...alsOption(strainZoom === 'full')}
                 onClick={() => setStrainZoom('full')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     strainZoom === 'full' ? 'bg-shiraz text-white shadow-sm' : 'text-slate-600 hover:text-slate-900'
                   }`}
               ><MdText text={inhalt.texte.gesamt050} /></button>
-            </div>
+            </AuswahlGruppe>
           </div>
 
           {/* Schnell-Filter & Güten-Schalter */}

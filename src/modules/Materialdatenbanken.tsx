@@ -6,6 +6,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/materialdatenbanken/Materialdatenbanken.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 const DATABASES = [
   {
@@ -339,12 +340,12 @@ export default function Materialdatenbanken() {
             <div className="flex flex-col gap-1.5 flex-1 min-h-[180px]">
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider"><MdText text={inhalt.texte.suchergebnisse} />{filteredRecords.length}):
               </span>
-              <div className="flex flex-col gap-1.5 overflow-y-auto max-h-[250px] pr-1">
+              <AuswahlGruppe label="Datensatz" className="flex flex-col gap-1.5 overflow-y-auto max-h-[250px] pr-1">
                 {filteredRecords.length === 0 ? (
                   <div className="text-center py-6 text-xs text-slate-400"><MdText text={inhalt.texte.keineDatensätzeGefunden} /></div>
                 ) : (
                   filteredRecords.map((record) => (
-                    <button aria-pressed={selectedRecordId === record.id}
+                    <button {...alsOption(selectedRecordId === record.id)}
                       key={record.id}
                       onClick={() => setSelectedRecordId(record.id)}
                       className={`text-left p-2.5 rounded-xl border transition-all flex justify-between items-center cursor-pointer ${
@@ -367,7 +368,7 @@ export default function Materialdatenbanken() {
                     </button>
                   ))
                 )}
-              </div>
+              </AuswahlGruppe>
             </div>
           </div>
 

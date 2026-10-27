@@ -8,6 +8,7 @@ import type { Dispatch, SetStateAction } from 'react';
 import type { MaterialData } from './daten';
 import inhalt from '@/content/nachhaltigkeit/Wandkonfigurator.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 interface WandkonfiguratorProps {
   addLayer: () => void;
@@ -88,8 +89,8 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
                 <p className="text-[10px] text-slate-500 mt-0.5 leading-normal"><MdText text={inhalt.texte.nassputzeUndVollflächigeVerklebungen} /></p>
               </div>
               <div className="w-full md:w-56 shrink-0">
-                <div className="grid grid-cols-2 bg-slate-100 p-1 rounded-lg text-center text-xs">
-                  <button aria-pressed={connectionType === 'glued'}
+                <AuswahlGruppe label="Verbindungsart" className="grid grid-cols-2 bg-slate-100 p-1 rounded-lg text-center text-xs">
+                  <button {...alsOption(connectionType === 'glued')}
                     onClick={() => setConnectionType('glued')}
                     className={`py-1.5 rounded-md cursor-pointer transition-all font-semibold ${
                         connectionType === 'glued'
@@ -97,7 +98,7 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
                           : 'text-slate-600 hover:text-slate-900'
                       }`}
                   ><MdText text={inhalt.texte.verklebtMörtel} /></button>
-                  <button aria-pressed={connectionType === 'screwed'}
+                  <button {...alsOption(connectionType === 'screwed')}
                     onClick={() => setConnectionType('screwed')}
                     className={`py-1.5 rounded-md cursor-pointer transition-all font-semibold ${
                         connectionType === 'screwed'
@@ -105,7 +106,7 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
                           : 'text-slate-600 hover:text-slate-900'
                       }`}
                   ><MdText text={inhalt.texte.geschraubtTrocken} /></button>
-                </div>
+                </AuswahlGruppe>
               </div>
             </div>
 

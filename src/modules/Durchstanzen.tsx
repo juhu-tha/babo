@@ -11,6 +11,7 @@ import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDiscla
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import inhalt from '@/content/durchstanzen/Durchstanzen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 export default function Durchstanzen() {
   const [colType, setColType] = useState<'rund' | 'rechteckig'>('rund');
@@ -60,20 +61,20 @@ export default function Durchstanzen() {
               
               <div className="flex flex-col gap-2 mb-4">
                 <label className="text-sm font-medium text-text-main">Stützenform</label>
-                <div className="flex rounded-md shadow-sm">
-                  <button aria-pressed={colType === 'rund'}
+                <AuswahlGruppe label="Stützenform" className="flex rounded-md shadow-sm">
+                  <button {...alsOption(colType === 'rund')}
                     onClick={() => setColType('rund')}
                     className={`flex-1 py-2 text-sm font-medium rounded-l-md border ${colType === 'rund' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'}`}
                   >
                     Rund
                   </button>
-                  <button aria-pressed={colType === 'rechteckig'}
+                  <button {...alsOption(colType === 'rechteckig')}
                     onClick={() => setColType('rechteckig')}
                     className={`flex-1 py-2 text-sm font-medium rounded-r-md border border-l-0 ${colType === 'rechteckig' ? 'bg-shiraz text-white border-shiraz' : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'}`}
                   >
                     Rechteckig
                   </button>
-                </div>
+                </AuswahlGruppe>
               </div>
 
               {colType === 'rund' ? (

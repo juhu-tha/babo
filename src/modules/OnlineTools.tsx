@@ -21,6 +21,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import inhalt from '@/content/onlinetools/OnlineTools.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 interface ToolItem {
   id: string;
@@ -514,8 +515,8 @@ export default function OnlineTools() {
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed"><MdText text={inhalt.texte.dieseFachübersichtBündeltNützliche} /></div>
 
         {/* View Switcher: Matrix vs. API Lab */}
-        <div className="flex flex-wrap gap-2 pt-2 border-t border-home-grau/20">
-          <button aria-pressed={currentView === 'matrix'}
+        <ReiterLeiste label="Ansicht Online-Werkzeuge" className="flex flex-wrap gap-2 pt-2 border-t border-home-grau/20">
+          <button {...alsReiter(currentView === 'matrix', 'onlinetools-ansicht', 'matrix')}
             onClick={() => setCurrentView('matrix')}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 border cursor-pointer ${
               currentView === 'matrix'
@@ -526,7 +527,7 @@ export default function OnlineTools() {
             <Layers size={14} />
             <span><MdText text={inhalt.texte.kuratierteWebrechnerMatrix} />{ONLINE_TOOLS.length} Tools)</span>
           </button>
-          <button aria-pressed={currentView === 'api_lab'}
+          <button {...alsReiter(currentView === 'api_lab', 'onlinetools-ansicht', 'api_lab')}
             onClick={() => setCurrentView('api_lab')}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 border cursor-pointer ${
               currentView === 'api_lab'
@@ -538,11 +539,11 @@ export default function OnlineTools() {
             <span><MdText text={inhalt.texte.apiSchnittstellenLabPython} /></span>
             <span className="px-1.5 py-0.5 rounded-md bg-amber-100 text-amber-900 text-[10px] font-bold">NEU</span>
           </button>
-        </div>
+        </ReiterLeiste>
       </div>
 
       {currentView === 'matrix' && (
-        <>
+        <div {...reiterPanel('onlinetools-ansicht', currentView)} className="flex flex-col gap-8">
           {/* Filter & Search Bar */}
           <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col md:flex-row gap-4 justify-between items-stretch md:items-center">
             {/* Search input */}
@@ -558,8 +559,8 @@ export default function OnlineTools() {
             </div>
 
             {/* Category selector */}
-            <div className="flex flex-wrap gap-2 items-center">
-              <button aria-pressed={selectedCategory === 'all'}
+            <AuswahlGruppe label="Kategorie" className="flex flex-wrap gap-2 items-center">
+              <button {...alsOption(selectedCategory === 'all')}
                 onClick={() => setSelectedCategory('all')}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all border cursor-pointer ${
                   selectedCategory === 'all'
@@ -569,7 +570,7 @@ export default function OnlineTools() {
               >
                 Alle ({ONLINE_TOOLS.length})
               </button>
-              <button aria-pressed={selectedCategory === 'statik'}
+              <button {...alsOption(selectedCategory === 'statik')}
                 onClick={() => setSelectedCategory('statik')}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all border cursor-pointer ${
                   selectedCategory === 'statik'
@@ -577,7 +578,7 @@ export default function OnlineTools() {
                     : 'bg-off-white text-text-main/80 border-home-grau/30 hover:bg-slate-100'
                 }`}
               ><MdText text={inhalt.texte.statikTragwerk} /></button>
-              <button aria-pressed={selectedCategory === 'bauphysik'}
+              <button {...alsOption(selectedCategory === 'bauphysik')}
                 onClick={() => setSelectedCategory('bauphysik')}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all border cursor-pointer ${
                   selectedCategory === 'bauphysik'
@@ -587,7 +588,7 @@ export default function OnlineTools() {
               >
                 Bauphysik
               </button>
-              <button aria-pressed={selectedCategory === 'holzbau'}
+              <button {...alsOption(selectedCategory === 'holzbau')}
                 onClick={() => setSelectedCategory('holzbau')}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all border cursor-pointer ${
                   selectedCategory === 'holzbau'
@@ -597,7 +598,7 @@ export default function OnlineTools() {
               >
                 Holzbau
               </button>
-              <button aria-pressed={selectedCategory === 'lca'}
+              <button {...alsOption(selectedCategory === 'lca')}
                 onClick={() => setSelectedCategory('lca')}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all border cursor-pointer ${
                   selectedCategory === 'lca'
@@ -605,7 +606,7 @@ export default function OnlineTools() {
                     : 'bg-off-white text-text-main/80 border-home-grau/30 hover:bg-slate-100'
                 }`}
               ><MdText text={inhalt.texte.lcaÖkobilanz} /></button>
-              <button aria-pressed={selectedCategory === 'bim'}
+              <button {...alsOption(selectedCategory === 'bim')}
                 onClick={() => setSelectedCategory('bim')}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all border cursor-pointer ${
                   selectedCategory === 'bim'
@@ -613,7 +614,7 @@ export default function OnlineTools() {
                     : 'bg-off-white text-text-main/80 border-home-grau/30 hover:bg-slate-100'
                 }`}
               ><MdText text={inhalt.texte.bimGeodaten} /></button>
-              <button aria-pressed={selectedCategory === 'geotechnik'}
+              <button {...alsOption(selectedCategory === 'geotechnik')}
                 onClick={() => setSelectedCategory('geotechnik')}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all border cursor-pointer ${
                   selectedCategory === 'geotechnik'
@@ -621,7 +622,7 @@ export default function OnlineTools() {
                     : 'bg-off-white text-text-main/80 border-home-grau/30 hover:bg-slate-100'
                 }`}
               ><MdText text={inhalt.texte.geotechnikLabor} /></button>
-            </div>
+            </AuswahlGruppe>
           </div>
 
           {/* Tools Grid */}
@@ -714,11 +715,11 @@ export default function OnlineTools() {
               </div>
             )}
           </div>
-        </>
+        </div>
       )}
 
       {currentView === 'api_lab' && (
-        <div className="flex flex-col gap-6 animate-in fade-in duration-300">
+        <div {...reiterPanel('onlinetools-ansicht', currentView)} className="flex flex-col gap-6 animate-in fade-in duration-300">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-2">
             <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
               <Terminal className="text-shiraz" size={20} /><MdText text={inhalt.texte.apiSchnittstellenLabPython2} /></h2>

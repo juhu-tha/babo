@@ -4,6 +4,7 @@ import { formatDeZahl, formatDeTeX, formatDeWert } from '@/src/utils/numberForma
 import { BlockMath, InlineMath } from 'react-katex';
 import inhalt from '@/content/historischematerialkennwerte/RechnerLaborTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 type TestProbeType = 'beton_bohrkern' | 'mauerwerk_ziegel' | 'stahl_zugprobe';
 
@@ -59,8 +60,8 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
       </div>
     
       {/* Test type selector */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-8">
-        <button aria-pressed={probeType === 'beton_bohrkern'}
+      <AuswahlGruppe label="Probenart" className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-8">
+        <button {...alsOption(probeType === 'beton_bohrkern')}
           onClick={() => setProbeType('beton_bohrkern')}
           className={`py-3 px-4 rounded-xl font-bold flex items-center justify-center gap-2 border text-sm transition-all ${
                   probeType === 'beton_bohrkern'
@@ -69,7 +70,7 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                 }`}
         >
           <Activity size={16} /><MdText text={inhalt.texte.betonBohrkerneEc2} /></button>
-        <button aria-pressed={probeType === 'mauerwerk_ziegel'}
+        <button {...alsOption(probeType === 'mauerwerk_ziegel')}
           onClick={() => setProbeType('mauerwerk_ziegel')}
           className={`py-3 px-4 rounded-xl font-bold flex items-center justify-center gap-2 border text-sm transition-all ${
                   probeType === 'mauerwerk_ziegel'
@@ -78,7 +79,7 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                 }`}
         >
           <Layers size={16} /><MdText text={inhalt.texte.mauersteineFKEc6} /></button>
-        <button aria-pressed={probeType === 'stahl_zugprobe'}
+        <button {...alsOption(probeType === 'stahl_zugprobe')}
           onClick={() => setProbeType('stahl_zugprobe')}
           className={`py-3 px-4 rounded-xl font-bold flex items-center justify-center gap-2 border text-sm transition-all ${
                   probeType === 'stahl_zugprobe'
@@ -87,7 +88,7 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                 }`}
         >
           <Ruler size={16} /><MdText text={inhalt.texte.stahlZerreißversuchEc3} /></button>
-      </div>
+      </AuswahlGruppe>
     
       {/* TWO-COLUMN LAYOUT: Input and Output */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
@@ -309,8 +310,8 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
             <div className="space-y-5 text-sm">
               <div>
                 <label className="block text-xs font-bold text-home-grau uppercase mb-2"><MdText text={inhalt.texte.geometrischeFormDerProbe} /></label>
-                <div className="grid grid-cols-2 gap-2">
-                  <button aria-pressed={steelForm === 'round'}
+                <AuswahlGruppe label="Form der Probe" className="grid grid-cols-2 gap-2">
+                  <button {...alsOption(steelForm === 'round')}
                     onClick={() => setSteelForm('round')}
                     className={`py-2 px-1 rounded-lg text-xs font-bold border transition-colors ${
                             steelForm === 'round'
@@ -320,7 +321,7 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                   >
                     Rundzylinder-Stab
                   </button>
-                  <button aria-pressed={steelForm === 'flat'}
+                  <button {...alsOption(steelForm === 'flat')}
                     onClick={() => setSteelForm('flat')}
                     className={`py-2 px-1 rounded-lg text-xs font-bold border transition-colors ${
                             steelForm === 'flat'
@@ -330,7 +331,7 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                   >
                     Flach-/Rechteckprobe
                   </button>
-                </div>
+                </AuswahlGruppe>
               </div>
     
               {steelForm === 'flat' ? (

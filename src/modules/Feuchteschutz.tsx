@@ -28,6 +28,7 @@ import {
 } from 'chart.js';
 import inhalt from '@/content/feuchteschutz/Feuchteschutz.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 // Register necessary Chart.js components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
@@ -702,14 +703,14 @@ export default function Feuchteschutz() {
             </div>
 
             <div className="flex flex-wrap gap-4 items-center text-xs">
-              <div role="group" aria-label={inhalt.werte.glaserKlimaWahl} className="flex gap-1.5">
-                <button type="button" aria-pressed={glaserKlima === 'norm'} className={umschalter(glaserKlima === 'norm')} onClick={() => setGlaserKlima('norm')}>{inhalt.werte.glaserKlimaNorm}</button>
-                <button type="button" aria-pressed={glaserKlima === 'regler'} className={umschalter(glaserKlima === 'regler')} onClick={() => setGlaserKlima('regler')}>{inhalt.werte.glaserKlimaRegler}</button>
-              </div>
-              <div role="group" aria-label={inhalt.werte.glaserBauteilWahl} className="flex gap-1.5">
-                <button type="button" aria-pressed={glaserBauteil === 'wand'} className={umschalter(glaserBauteil === 'wand')} onClick={() => setGlaserBauteil('wand')}>{inhalt.werte.glaserBauteilWand}</button>
-                <button type="button" aria-pressed={glaserBauteil === 'dach'} className={umschalter(glaserBauteil === 'dach')} onClick={() => setGlaserBauteil('dach')}>{inhalt.werte.glaserBauteilDach}</button>
-              </div>
+              <AuswahlGruppe aria-label={inhalt.werte.glaserKlimaWahl} className="flex gap-1.5">
+                <button type="button" {...alsOption(glaserKlima === 'norm')} className={umschalter(glaserKlima === 'norm')} onClick={() => setGlaserKlima('norm')}>{inhalt.werte.glaserKlimaNorm}</button>
+                <button type="button" {...alsOption(glaserKlima === 'regler')} className={umschalter(glaserKlima === 'regler')} onClick={() => setGlaserKlima('regler')}>{inhalt.werte.glaserKlimaRegler}</button>
+              </AuswahlGruppe>
+              <AuswahlGruppe aria-label={inhalt.werte.glaserBauteilWahl} className="flex gap-1.5">
+                <button type="button" {...alsOption(glaserBauteil === 'wand')} className={umschalter(glaserBauteil === 'wand')} onClick={() => setGlaserBauteil('wand')}>{inhalt.werte.glaserBauteilWand}</button>
+                <button type="button" {...alsOption(glaserBauteil === 'dach')} className={umschalter(glaserBauteil === 'dach')} onClick={() => setGlaserBauteil('dach')}>{inhalt.werte.glaserBauteilDach}</button>
+              </AuswahlGruppe>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">

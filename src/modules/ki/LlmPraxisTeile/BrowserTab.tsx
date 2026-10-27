@@ -2,6 +2,7 @@ import type { Dispatch, SetStateAction } from 'react';
 import { Terminal, Globe, CheckCircle2, Search, ShieldCheck } from 'lucide-react';
 import inhalt from '@/content/ki/LlmPraxisTeile/BrowserTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../../../components/ui/Auswahlgruppe';
 
 export interface BrowserTabProps {
   browserEngine: "deep_research" | "chat_suche" | "agent_suche";
@@ -20,20 +21,20 @@ export function BrowserTab({ browserEngine, setBrowserEngine }: BrowserTabProps)
           </div>
     
           {/* Browser Engine Toggle */}
-          <div className="flex gap-1 bg-slate-100 p-1 rounded-xl text-xs font-semibold">
-            <button aria-pressed={browserEngine === 'deep_research'}
+          <AuswahlGruppe label="Suchmodus" className="flex gap-1 bg-slate-100 p-1 rounded-xl text-xs font-semibold">
+            <button {...alsOption(browserEngine === 'deep_research')}
               onClick={() => setBrowserEngine('deep_research')}
               className={`px-3 py-1.5 rounded-lg transition-all ${browserEngine === 'deep_research' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
             ><MdText text={inhalt.texte.suchassistentDeepResearch} /></button>
-            <button aria-pressed={browserEngine === 'chat_suche'}
+            <button {...alsOption(browserEngine === 'chat_suche')}
               onClick={() => setBrowserEngine('chat_suche')}
               className={`px-3 py-1.5 rounded-lg transition-all ${browserEngine === 'chat_suche' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
             ><MdText text={inhalt.texte.websucheImChat} /></button>
-            <button aria-pressed={browserEngine === 'agent_suche'}
+            <button {...alsOption(browserEngine === 'agent_suche')}
               onClick={() => setBrowserEngine('agent_suche')}
               className={`px-3 py-1.5 rounded-lg transition-all ${browserEngine === 'agent_suche' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
             ><MdText text={inhalt.texte.websucheImAgenten} /></button>
-          </div>
+          </AuswahlGruppe>
         </div>
     
         {/* ENGINE EXPLANATION */}

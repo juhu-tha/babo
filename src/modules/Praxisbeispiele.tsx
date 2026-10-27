@@ -179,12 +179,12 @@ export default function Praxisbeispiele() {
                 <div className="text-2xl font-bold text-fuchsia-600">{formatDeZahl(results.maxStress, 2)} MPa</div>
                 <div className="text-xs text-text-main/60 mt-1"><MdText text={inhalt.texte.trittInDerAbkühlphase} /></div>
               </div>
-              <div className={`p-4 rounded-xl border shadow-sm text-white ${results.crackRisk ? 'bg-red-500 border-red-600' : 'bg-emerald-500 border-emerald-600'}`}>
-                <div className="text-xs uppercase tracking-wider mb-1 opacity-90"><MdText text={inhalt.texte.rissrisikoTrennrisse} /></div>
+              <div className={`p-4 rounded-xl border shadow-sm text-white ${results.crackRisk ? 'bg-red-600 border-red-700' : 'bg-emerald-500 border-emerald-600'}`}>
+                <div className="text-xs uppercase tracking-wider mb-1"><MdText text={inhalt.texte.rissrisikoTrennrisse} /></div>
                 <div className="text-2xl font-bold flex items-center gap-2">
                   {results.crackRisk ? <><AlertTriangle size={24} /> Sehr Hoch</> : <><CheckCircle2 size={24} /> Gering</>}
                 </div>
-                <div className="text-xs opacity-90 mt-1">
+                <div className="text-xs mt-1">
                   {results.crackRisk ? inhalt.werte.spannungZugfestigkeit : inhalt.werte.spannungZugfestigkeit2}
                 </div>
               </div>

@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { CENTRAL_NORMEN_REGISTRY } from '@/src/data/centralNormenRegistry';
 import { useTabContext } from '@/src/contexts/TabContext';
+import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from './Auswahlgruppe';
 
 interface LinkCheckItem {
   id: string;
@@ -148,8 +149,8 @@ export function NormenLinkMonitor() {
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-home-grau/20 gap-2">
-        <button aria-pressed={activeSubTab === 'normen'}
+      <ReiterLeiste label="Bereiche Normen- und Linkprüfung" className="flex border-b border-home-grau/20 gap-2">
+        <button {...alsReiter(activeSubTab === 'normen', 'normen-monitor-bereich', 'normen')}
           onClick={() => setActiveSubTab('normen')}
           className={`px-4 py-2.5 text-xs font-bold rounded-t-xl transition-all cursor-pointer ${
             activeSubTab === 'normen'
@@ -159,7 +160,7 @@ export function NormenLinkMonitor() {
         >
           Zentrales Normenverzeichnis ({normenList.length})
         </button>
-        <button aria-pressed={activeSubTab === 'links'}
+        <button {...alsReiter(activeSubTab === 'links', 'normen-monitor-bereich', 'links')}
           onClick={() => setActiveSubTab('links')}
           className={`px-4 py-2.5 text-xs font-bold rounded-t-xl transition-all cursor-pointer ${
             activeSubTab === 'links'
@@ -169,7 +170,7 @@ export function NormenLinkMonitor() {
         >
           Link-Checker &amp; Quellen ({LIVE_LINK_AUDIT.length})
         </button>
-        <button aria-pressed={activeSubTab === 'report'}
+        <button {...alsReiter(activeSubTab === 'report', 'normen-monitor-bereich', 'report')}
           onClick={() => setActiveSubTab('report')}
           className={`px-4 py-2.5 text-xs font-bold rounded-t-xl transition-all cursor-pointer ${
             activeSubTab === 'report'
@@ -179,11 +180,11 @@ export function NormenLinkMonitor() {
         >
           Änderung / Veraltete Norm melden
         </button>
-      </div>
+      </ReiterLeiste>
 
       {/* SUB-TAB 1: NORMENVERZEICHNIS */}
       {activeSubTab === 'normen' && (
-        <div className="space-y-4">
+        <div {...reiterPanel('normen-monitor-bereich', activeSubTab)} className="space-y-4">
           <div className="flex flex-col sm:flex-row gap-3 items-center justify-between">
             <div className="relative w-full sm:w-80">
               <Search className="absolute left-3.5 top-3 text-text-main/40" size={15} />
@@ -196,7 +197,7 @@ export function NormenLinkMonitor() {
               />
             </div>
 
-            <div className="flex items-center gap-2 w-full sm:w-auto overflow-x-auto pb-1">
+            <AuswahlGruppe label="Filter Kategorie" className="flex items-center gap-2 w-full sm:w-auto overflow-x-auto pb-1">
               <Filter size={14} className="text-text-main/50 shrink-0" />
               {[
                 { id: 'all', label: 'Alle Gewerke' },
@@ -207,7 +208,7 @@ export function NormenLinkMonitor() {
                 { id: 'bauphysik', label: 'Bauphysik' },
                 { id: 'nachhaltigkeit', label: 'LCA / EPD' }
               ].map(cat => (
-                <button aria-pressed={categoryFilter === cat.id}
+                <button {...alsOption(categoryFilter === cat.id)}
                   key={cat.id}
                   onClick={() => setCategoryFilter(cat.id)}
                   className={`px-2.5 py-1.5 text-[11px] font-bold rounded-lg whitespace-nowrap transition-all border ${
@@ -219,7 +220,7 @@ export function NormenLinkMonitor() {
                   {cat.label}
                 </button>
               ))}
-            </div>
+            </AuswahlGruppe>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -273,7 +274,7 @@ export function NormenLinkMonitor() {
 
       {/* SUB-TAB 2: LINK-MONITOR */}
       {activeSubTab === 'links' && (
-        <div className="space-y-4">
+        <div {...reiterPanel('normen-monitor-bereich', activeSubTab)} className="space-y-4">
           <div className="text-xs text-text-main/70 bg-emerald-50/60 p-4 rounded-xl border border-emerald-200/80 flex items-start gap-3">
             <CheckCircle2 size={18} className="text-emerald-600 shrink-0 mt-0.5" />
             <div>
@@ -337,7 +338,7 @@ export function NormenLinkMonitor() {
 
       {/* SUB-TAB 3: REPORT OUTDATED NORM OR BROKEN LINK */}
       {activeSubTab === 'report' && (
-        <div className="max-w-2xl mx-auto space-y-6">
+        <div {...reiterPanel('normen-monitor-bereich', activeSubTab)} className="max-w-2xl mx-auto space-y-6">
           <div className="text-xs text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
             <p>
               Haben Sie in einer Lehrveranstaltung, einer Normenausgabe oder auf einer Baustelle eine aktualisierte Norm entdeckt (z. B. neuen Normentwurf oder Ersetzung)? Teilen Sie uns dies bitte kurz mit, damit das BaustoffBoard für alle Studierenden auf dem neuesten Stand bleibt.

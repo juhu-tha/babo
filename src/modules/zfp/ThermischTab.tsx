@@ -45,7 +45,7 @@ export default function ThermischTab({ radiationEnergy, radiographyResults, rend
         />
 
         <div className={`mt-4 p-4 text-white rounded-xl shadow-md transition-colors duration-500 ${thermographyResults.color} relative overflow-hidden`}>
-          <div className="text-sm opacity-90 mb-1">Befund</div>
+          <div className="text-sm mb-1">Befund</div>
           <div className="text-3xl font-bold">{thermographyResults.indication}</div>
           
           {/* Thermografie Animation */}
@@ -86,7 +86,7 @@ export default function ThermischTab({ radiationEnergy, radiographyResults, rend
         </div>
 
         <div className={`mt-4 p-4 text-white rounded-xl shadow-md transition-colors duration-500 ${radiographyResults.color} relative overflow-hidden`}>
-          <div className="text-sm opacity-90 mb-1"><MdText text={inhalt.texte.transmissionBildqualität} /></div>
+          <div className="text-sm mb-1"><MdText text={inhalt.texte.transmissionBildqualität} /></div>
           <div className="text-3xl font-bold">{formatDeZahl(radiographyResults.transmission, 2)} %</div>
           <div className="text-xs opacity-75 mt-2">
             Qualität: {radiographyResults.quality}

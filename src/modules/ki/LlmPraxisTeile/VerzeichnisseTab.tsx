@@ -2,6 +2,7 @@ import type { Dispatch, SetStateAction } from 'react';
 import { FolderTree, FileCode, Copy, Check } from 'lucide-react';
 import inhalt from '@/content/ki/LlmPraxisTeile/VerzeichnisseTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../../../components/ui/Auswahlgruppe';
 
 export interface VerzeichnisseTabProps {
   dirProjectType: "bauleitung" | "pruefstatik" | "masterarbeit";
@@ -22,20 +23,20 @@ export function VerzeichnisseTab({ dirProjectType, setDirProjectType, copyToClip
                   </div>
     
                   {/* Project Type Selector */}
-                  <div className="flex gap-1 bg-slate-100 p-1 rounded-xl text-xs font-semibold">
-                    <button aria-pressed={dirProjectType === 'bauleitung'}
+                  <AuswahlGruppe label="Projekttyp" className="flex gap-1 bg-slate-100 p-1 rounded-xl text-xs font-semibold">
+                    <button {...alsOption(dirProjectType === 'bauleitung')}
                       onClick={() => setDirProjectType('bauleitung')}
                       className={`px-3 py-1.5 rounded-lg transition-all ${dirProjectType === 'bauleitung' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
                     ><MdText text={inhalt.texte.bauleitungVob} /></button>
-                    <button aria-pressed={dirProjectType === 'pruefstatik'}
+                    <button {...alsOption(dirProjectType === 'pruefstatik')}
                       onClick={() => setDirProjectType('pruefstatik')}
                       className={`px-3 py-1.5 rounded-lg transition-all ${dirProjectType === 'pruefstatik' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
                     ><MdText text={inhalt.texte.prüfstatikEc2} /></button>
-                    <button aria-pressed={dirProjectType === 'masterarbeit'}
+                    <button {...alsOption(dirProjectType === 'masterarbeit')}
                       onClick={() => setDirProjectType('masterarbeit')}
                       className={`px-3 py-1.5 rounded-lg transition-all ${dirProjectType === 'masterarbeit' ? 'bg-white shadow text-shiraz font-bold' : 'text-slate-600'}`}
                     ><MdText text={inhalt.texte.masterarbeitLabor} /></button>
-                  </div>
+                  </AuswahlGruppe>
                 </div>
     
                 {/* DYNAMIC FOLDER TREE PER SCENARIO */}

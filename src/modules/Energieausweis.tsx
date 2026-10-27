@@ -12,6 +12,7 @@ import inhalt from '@/content/energieausweis/Energieausweis.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { energieausweis } from '@/src/calc/energieausweis';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 /** Farbe der Effizienzklasse (Wohngebäude, GModG/GEG Anlage 10 zu § 86) */
 const KLASSEN_FARBE: Readonly<Record<string, string>> = {
@@ -145,32 +146,32 @@ export default function Energieausweis() {
             <div className="pt-4 border-t border-home-grau/20">
               <h3 className="font-bold text-text-main text-sm mb-3"><MdText text={inhalt.texte.interaktiveEnergieeffizienzskalaKlassenA} /></h3>
               
-              <div className="flex gap-2 flex-wrap mb-4">
-                <button aria-pressed={scaleHouseType === 'neubau_eh40'} 
+              <AuswahlGruppe label="Gebäudestandard" className="flex gap-2 flex-wrap mb-4">
+                <button {...alsOption(scaleHouseType === 'neubau_eh40')} 
                   className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-colors cursor-pointer ${
                     scaleHouseType === 'neubau_eh40' ? 'bg-green-700 text-white border-green-700' : 'bg-off-white text-text-main border-home-grau/30'
                   }`} 
                   onClick={() => setScaleHouseType('neubau_eh40')}
                 ><MdText text={inhalt.texte.effizienzhaus40A} /></button>
-                <button aria-pressed={scaleHouseType === 'neubau_geg'} 
+                <button {...alsOption(scaleHouseType === 'neubau_geg')} 
                   className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-colors cursor-pointer ${
                     scaleHouseType === 'neubau_geg' ? 'bg-green-600 text-white border-green-600' : 'bg-off-white text-text-main border-home-grau/30'
                   }`} 
                   onClick={() => setScaleHouseType('neubau_geg')}
                 ><MdText text={inhalt.texte.gegNeubauStandardB} /></button>
-                <button aria-pressed={scaleHouseType === 'altbau_saniert'} 
+                <button {...alsOption(scaleHouseType === 'altbau_saniert')} 
                   className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-colors cursor-pointer ${
                     scaleHouseType === 'altbau_saniert' ? 'bg-yellow-500 text-white border-yellow-500' : 'bg-off-white text-text-main border-home-grau/30'
                   }`} 
                   onClick={() => setScaleHouseType('altbau_saniert')}
                 ><MdText text={inhalt.texte.altbauSaniertC} /></button>
-                <button aria-pressed={scaleHouseType === 'altbau_unsaniert'} 
+                <button {...alsOption(scaleHouseType === 'altbau_unsaniert')} 
                   className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-colors cursor-pointer ${
                     scaleHouseType === 'altbau_unsaniert' ? 'bg-red-700 text-white border-red-700' : 'bg-off-white text-text-main border-home-grau/30'
                   }`} 
                   onClick={() => setScaleHouseType('altbau_unsaniert')}
                 ><MdText text={inhalt.texte.altbauUnsaniertVor1977} /></button>
-              </div>
+              </AuswahlGruppe>
 
               {/* Farbband */}
               <div className="w-full relative mt-12 mb-8 px-2">
@@ -451,20 +452,20 @@ export default function Energieausweis() {
                   <span className="text-xs font-bold text-text-main flex items-center gap-1.5">
                     <Home size={15} className="text-shiraz" /><MdText text={inhalt.texte.t1GebäudegrößeTyp} /></span>
 
-                  <div className="grid grid-cols-2 gap-2">
-                    <button aria-pressed={simBuildingType === 'efh'}
+                  <AuswahlGruppe label="Gebäudetyp" className="grid grid-cols-2 gap-2">
+                    <button {...alsOption(simBuildingType === 'efh')}
                       onClick={() => setSimBuildingType('efh')}
                       className={`p-2 rounded-lg text-xs font-bold border transition-all cursor-pointer ${
                         simBuildingType === 'efh' ? 'bg-shiraz text-white border-shiraz shadow-xs' : 'bg-white text-text-main border-home-grau/30'
                       }`}
                     ><MdText text={inhalt.texte.einfamilienhausFreistehend} /></button>
-                    <button aria-pressed={simBuildingType === 'mfh'}
+                    <button {...alsOption(simBuildingType === 'mfh')}
                       onClick={() => setSimBuildingType('mfh')}
                       className={`p-2 rounded-lg text-xs font-bold border transition-all cursor-pointer ${
                         simBuildingType === 'mfh' ? 'bg-shiraz text-white border-shiraz shadow-xs' : 'bg-white text-text-main border-home-grau/30'
                       }`}
                     ><MdText text={inhalt.texte.mehrfamilienhausKompakt} /></button>
-                  </div>
+                  </AuswahlGruppe>
 
                   <div>
                     <div className="flex justify-between text-xs text-text-main mb-1">
@@ -488,8 +489,8 @@ export default function Energieausweis() {
                   <span className="text-xs font-bold text-text-main flex items-center gap-1.5">
                     <Layers size={15} className="text-shiraz" /><MdText text={inhalt.texte.t2ThermischeGebäudehülleU} /></span>
 
-                  <div className="grid sm:grid-cols-2 gap-2 text-xs">
-                    <button aria-pressed={simHuelleStandard === 'unsaniert'}
+                  <AuswahlGruppe label="Gebäudehülle" className="grid sm:grid-cols-2 gap-2 text-xs">
+                    <button {...alsOption(simHuelleStandard === 'unsaniert')}
                       onClick={() => setSimHuelleStandard('unsaniert')}
                       className={`p-2.5 rounded-lg text-left border transition-all cursor-pointer ${
                         simHuelleStandard === 'unsaniert' ? 'bg-shiraz text-white border-shiraz shadow-xs' : 'bg-white text-text-main border-home-grau/30'
@@ -499,7 +500,7 @@ export default function Energieausweis() {
                       <span className="text-xxs opacity-80"><MdText text={inhalt.texte.wandU14} /></span>
                     </button>
 
-                    <button aria-pressed={simHuelleStandard === 'bestand_teilsaniert'}
+                    <button {...alsOption(simHuelleStandard === 'bestand_teilsaniert')}
                       onClick={() => setSimHuelleStandard('bestand_teilsaniert')}
                       className={`p-2.5 rounded-lg text-left border transition-all cursor-pointer ${
                         simHuelleStandard === 'bestand_teilsaniert' ? 'bg-shiraz text-white border-shiraz shadow-xs' : 'bg-white text-text-main border-home-grau/30'
@@ -509,7 +510,7 @@ export default function Energieausweis() {
                       <span className="text-xxs opacity-80"><MdText text={inhalt.texte.wandU045} /></span>
                     </button>
 
-                    <button aria-pressed={simHuelleStandard === 'geg_standard'}
+                    <button {...alsOption(simHuelleStandard === 'geg_standard')}
                       onClick={() => setSimHuelleStandard('geg_standard')}
                       className={`p-2.5 rounded-lg text-left border transition-all cursor-pointer ${
                         simHuelleStandard === 'geg_standard' ? 'bg-shiraz text-white border-shiraz shadow-xs' : 'bg-white text-text-main border-home-grau/30'
@@ -519,7 +520,7 @@ export default function Energieausweis() {
                       <span className="text-xxs opacity-80"><MdText text={inhalt.texte.wandU024} /></span>
                     </button>
 
-                    <button aria-pressed={simHuelleStandard === 'effizienzhaus40'}
+                    <button {...alsOption(simHuelleStandard === 'effizienzhaus40')}
                       onClick={() => setSimHuelleStandard('effizienzhaus40')}
                       className={`p-2.5 rounded-lg text-left border transition-all cursor-pointer ${
                         simHuelleStandard === 'effizienzhaus40' ? 'bg-shiraz text-white border-shiraz shadow-xs' : 'bg-white text-text-main border-home-grau/30'
@@ -528,7 +529,7 @@ export default function Energieausweis() {
                       <strong className="block"><MdText text={inhalt.texte.effizienzhaus40} /></strong>
                       <span className="text-xxs opacity-80"><MdText text={inhalt.texte.wandU014} /></span>
                     </button>
-                  </div>
+                  </AuswahlGruppe>
 
                   <div className="text-xxs text-text-main/70 bg-white p-2 rounded-md border border-slate-200"><MdText text={inhalt.texte.berechneterSpezifischerTransmissionsverl} /><strong><InlineMath math={`H'_T = ${simResults.h_t_prime}\\text{ W/(m}^2\\text{K)}`} /></strong>
                   </div>
@@ -539,8 +540,8 @@ export default function Energieausweis() {
                   <span className="text-xs font-bold text-text-main flex items-center gap-1.5">
                     <Wind size={15} className="text-shiraz" /><MdText text={inhalt.texte.t3Lüftungskonzept} /></span>
 
-                  <div className="grid grid-cols-3 gap-2 text-xs">
-                    <button aria-pressed={simVentilation === 'fenster'}
+                  <AuswahlGruppe label="Lüftungskonzept" className="grid grid-cols-3 gap-2 text-xs">
+                    <button {...alsOption(simVentilation === 'fenster')}
                       onClick={() => setSimVentilation('fenster')}
                       className={`p-2 rounded-lg text-center border transition-all cursor-pointer ${
                         simVentilation === 'fenster' ? 'bg-shiraz text-white border-shiraz shadow-xs' : 'bg-white text-text-main border-home-grau/30'
@@ -549,7 +550,7 @@ export default function Energieausweis() {
                       <strong className="block text-xxs sm:text-xs">Fensterlüftung</strong>
                       <span className="text-xxs opacity-80"><MdText text={inhalt.texte.n050H} /></span>
                     </button>
-                    <button aria-pressed={simVentilation === 'abluft'}
+                    <button {...alsOption(simVentilation === 'abluft')}
                       onClick={() => setSimVentilation('abluft')}
                       className={`p-2 rounded-lg text-center border transition-all cursor-pointer ${
                         simVentilation === 'abluft' ? 'bg-shiraz text-white border-shiraz shadow-xs' : 'bg-white text-text-main border-home-grau/30'
@@ -558,7 +559,7 @@ export default function Energieausweis() {
                       <strong className="block text-xxs sm:text-xs">Abluftanlage</strong>
                       <span className="text-xxs opacity-80"><MdText text={inhalt.texte.n045H} /></span>
                     </button>
-                    <button aria-pressed={simVentilation === 'kwl_wrg'}
+                    <button {...alsOption(simVentilation === 'kwl_wrg')}
                       onClick={() => setSimVentilation('kwl_wrg')}
                       className={`p-2 rounded-lg text-center border transition-all cursor-pointer ${
                         simVentilation === 'kwl_wrg' ? 'bg-shiraz text-white border-shiraz shadow-xs' : 'bg-white text-text-main border-home-grau/30'
@@ -567,7 +568,7 @@ export default function Energieausweis() {
                       <strong className="block text-xxs sm:text-xs">KWL mit WRG</strong>
                       <span className="text-xxs opacity-80"><MdText text={inhalt.texte.t80Rückgewinnung} /></span>
                     </button>
-                  </div>
+                  </AuswahlGruppe>
                 </div>
 
                 {/* 4. Wärmeerzeuger & Energieträger */}
@@ -575,8 +576,8 @@ export default function Energieausweis() {
                   <span className="text-xs font-bold text-text-main flex items-center gap-1.5">
                     <Flame size={15} className="text-shiraz" /><MdText text={inhalt.texte.t4HeizsystemEnergieträger} /></span>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
-                    <button aria-pressed={simHeizung === 'wp_luft'}
+                  <AuswahlGruppe label="Heizsystem" className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+                    <button {...alsOption(simHeizung === 'wp_luft')}
                       onClick={() => setSimHeizung('wp_luft')}
                       className={`p-2 rounded-lg border text-left transition-all cursor-pointer ${
                         simHeizung === 'wp_luft' ? 'bg-shiraz text-white border-shiraz shadow-xs' : 'bg-white text-text-main border-home-grau/30'
@@ -586,7 +587,7 @@ export default function Energieausweis() {
                       <span className="text-xxs opacity-80"><MdText text={inhalt.texte.jaz33Fp} /></span>
                     </button>
 
-                    <button aria-pressed={simHeizung === 'wp_sole'}
+                    <button {...alsOption(simHeizung === 'wp_sole')}
                       onClick={() => setSimHeizung('wp_sole')}
                       className={`p-2 rounded-lg border text-left transition-all cursor-pointer ${
                         simHeizung === 'wp_sole' ? 'bg-shiraz text-white border-shiraz shadow-xs' : 'bg-white text-text-main border-home-grau/30'
@@ -596,7 +597,7 @@ export default function Energieausweis() {
                       <span className="text-xxs opacity-80"><MdText text={inhalt.texte.jaz43Fp} /></span>
                     </button>
 
-                    <button aria-pressed={simHeizung === 'gas_brennwert'}
+                    <button {...alsOption(simHeizung === 'gas_brennwert')}
                       onClick={() => setSimHeizung('gas_brennwert')}
                       className={`p-2 rounded-lg border text-left transition-all cursor-pointer ${
                         simHeizung === 'gas_brennwert' ? 'bg-shiraz text-white border-shiraz shadow-xs' : 'bg-white text-text-main border-home-grau/30'
@@ -606,7 +607,7 @@ export default function Energieausweis() {
                       <span className="text-xxs opacity-80"><MdText text={inhalt.texte.t096Fp1} /></span>
                     </button>
 
-                    <button aria-pressed={simHeizung === 'pellets'}
+                    <button {...alsOption(simHeizung === 'pellets')}
                       onClick={() => setSimHeizung('pellets')}
                       className={`p-2 rounded-lg border text-left transition-all cursor-pointer ${
                         simHeizung === 'pellets' ? 'bg-shiraz text-white border-shiraz shadow-xs' : 'bg-white text-text-main border-home-grau/30'
@@ -616,7 +617,7 @@ export default function Energieausweis() {
                       <span className="text-xxs opacity-80"><MdText text={inhalt.texte.t088Fp0} /></span>
                     </button>
 
-                    <button aria-pressed={simHeizung === 'fernwaerme'}
+                    <button {...alsOption(simHeizung === 'fernwaerme')}
                       onClick={() => setSimHeizung('fernwaerme')}
                       className={`p-2 rounded-lg border text-left transition-all cursor-pointer ${
                         simHeizung === 'fernwaerme' ? 'bg-shiraz text-white border-shiraz shadow-xs' : 'bg-white text-text-main border-home-grau/30'
@@ -626,7 +627,7 @@ export default function Energieausweis() {
                       <span className="text-xxs opacity-80"><MdText text={inhalt.texte.t098Fp0} /></span>
                     </button>
 
-                    <button aria-pressed={simHeizung === 'oel_kessel'}
+                    <button {...alsOption(simHeizung === 'oel_kessel')}
                       onClick={() => setSimHeizung('oel_kessel')}
                       className={`p-2 rounded-lg border text-left transition-all cursor-pointer ${
                         simHeizung === 'oel_kessel' ? 'bg-shiraz text-white border-shiraz shadow-xs' : 'bg-white text-text-main border-home-grau/30'
@@ -635,7 +636,7 @@ export default function Energieausweis() {
                       <strong className="block text-xxs sm:text-xs">Öl-Heizkessel</strong>
                       <span className="text-xxs opacity-80"><MdText text={inhalt.texte.t084Fp1} /></span>
                     </button>
-                  </div>
+                  </AuswahlGruppe>
                 </div>
 
               </div>

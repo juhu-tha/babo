@@ -28,6 +28,7 @@ import { InlineMath } from 'react-katex';
 import inhalt from '@/content/innenausbau/Innenausbau.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 interface AusbauToolItem {
   id: string;
@@ -630,8 +631,8 @@ export default function Innenausbau() {
 
                 <div>
                   <label className="text-xs font-bold text-text-main block mb-1.5">Estrich-Bindemittel:</label>
-                  <div className="grid grid-cols-2 gap-2">
-                    <button aria-pressed={estrichArt === 'CT'}
+                  <AuswahlGruppe label="Estrich-Bindemittel" className="grid grid-cols-2 gap-2">
+                    <button {...alsOption(estrichArt === 'CT')}
                       type="button"
                       onClick={() => setEstrichArt('CT')}
                       className={`p-2.5 rounded-xl border font-bold text-xs cursor-pointer transition-all ${
@@ -640,7 +641,7 @@ export default function Innenausbau() {
                           : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
                       }`}
                     ><MdText text={inhalt.texte.zementestrichCt2} /></button>
-                    <button aria-pressed={estrichArt === 'CA'}
+                    <button {...alsOption(estrichArt === 'CA')}
                       type="button"
                       onClick={() => setEstrichArt('CA')}
                       className={`p-2.5 rounded-xl border font-bold text-xs cursor-pointer transition-all ${
@@ -649,7 +650,7 @@ export default function Innenausbau() {
                           : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white'
                       }`}
                     ><MdText text={inhalt.texte.calciumsulfatCaCaf} /></button>
-                  </div>
+                  </AuswahlGruppe>
                 </div>
 
                 <div>

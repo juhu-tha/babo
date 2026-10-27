@@ -12,6 +12,7 @@ import { InlineMath, BlockMath } from 'react-katex';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import inhalt from '@/content/zementchemie/Zementchemie.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 ChartJS.register(LinearScale, ArcElement, Tooltip, Legend);
 
@@ -128,8 +129,8 @@ function GefuegebildungSimulator() {
             {/* Cement Type Selector */}
             <div className="pt-3 border-t border-home-grau/20 space-y-1.5 text-xs">
               <span className="font-bold text-text-main block">Zementkategorie:</span>
-              <div className="grid grid-cols-2 gap-2">
-                <button aria-pressed={cementType === 'CEM_I'}
+              <AuswahlGruppe label="Zementkategorie" className="grid grid-cols-2 gap-2">
+                <button {...alsOption(cementType === 'CEM_I')}
                   onClick={() => setCementType('CEM_I')}
                   className={`p-2 rounded-xl border text-left cursor-pointer transition-all ${
                     cementType === 'CEM_I'
@@ -140,7 +141,7 @@ function GefuegebildungSimulator() {
                   <span className="block font-bold text-xs"><MdText text={inhalt.texte.cemIPortland} /></span>
                   <span className="text-[10px] opacity-75"><MdText text={inhalt.texte.schnellesAlitWachstum} /></span>
                 </button>
-                <button aria-pressed={cementType === 'CEM_III'}
+                <button {...alsOption(cementType === 'CEM_III')}
                   onClick={() => setCementType('CEM_III')}
                   className={`p-2 rounded-xl border text-left cursor-pointer transition-all ${
                     cementType === 'CEM_III'
@@ -151,7 +152,7 @@ function GefuegebildungSimulator() {
                   <span className="block font-bold text-xs"><MdText text={inhalt.texte.cemIiiHochofen} /></span>
                   <span className="text-[10px] opacity-75"><MdText text={inhalt.texte.latentHydraulischDicht} /></span>
                 </button>
-              </div>
+              </AuswahlGruppe>
             </div>
 
             {/* Live Metrics Grid */}
@@ -556,8 +557,8 @@ export default function Zementchemie() {
         </div>
 
         {/* Tab Selection */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
-          <button aria-pressed={activeTab === 'steckbrief'}
+        <ReiterLeiste label="Bereiche Zementchemie" className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20 mb-6">
+          <button {...alsReiter(activeTab === 'steckbrief', 'zementchemie-bereich', 'steckbrief')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'steckbrief' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -567,7 +568,7 @@ export default function Zementchemie() {
           >
             <BookOpen size={16} /> Steckbrief
           </button>
-          <button aria-pressed={activeTab === 'bogue'}
+          <button {...alsReiter(activeTab === 'bogue', 'zementchemie-bereich', 'bogue')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'bogue' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -576,7 +577,7 @@ export default function Zementchemie() {
             onClick={() => setActiveTab('bogue')}
           >
             <Calculator size={16} /><MdText text={inhalt.texte.klinkerberechnungHydratationBogue} /></button>
-          <button aria-pressed={activeTab === 'gefluege'}
+          <button {...alsReiter(activeTab === 'gefluege', 'zementchemie-bereich', 'gefluege')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'gefluege' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -585,7 +586,7 @@ export default function Zementchemie() {
             onClick={() => setActiveTab('gefluege')}
           >
             <Microscope size={16} /><MdText text={inhalt.texte.gefügebildungCSH} /></button>
-          <button aria-pressed={activeTab === 'zusatzstoffe'}
+          <button {...alsReiter(activeTab === 'zusatzstoffe', 'zementchemie-bereich', 'zusatzstoffe')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'zusatzstoffe' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -594,16 +595,16 @@ export default function Zementchemie() {
             onClick={() => setActiveTab('zusatzstoffe')}
           >
             <Sparkles size={16} /><MdText text={inhalt.texte.reaktionVonZusatzstoffen} /></button>
-        </div>
+        </ReiterLeiste>
 
         {activeTab === 'steckbrief' && (
-          <div className="animate-in fade-in duration-300">
+          <div {...reiterPanel('zementchemie-bereich', activeTab)} className="animate-in fade-in duration-300">
             <BaustoffProfil materialKey="zement" />
           </div>
         )}
 
         {activeTab === 'bogue' && (
-          <div className="space-y-6 animate-in fade-in duration-300">
+          <div {...reiterPanel('zementchemie-bereich', activeTab)} className="space-y-6 animate-in fade-in duration-300">
             <div className="text-sm text-text-main/80 bg-off-white p-5 rounded-xl border border-home-grau/30 space-y-3">
               <p><MdText text={inhalt.texte.didaktischerLeitfadenDinEn} /></p>
               <div className="border-t border-home-grau/30 pt-3 mt-2 space-y-2">
@@ -753,13 +754,13 @@ export default function Zementchemie() {
         )}
 
         {activeTab === 'gefluege' && (
-          <div className="animate-in fade-in duration-300">
+          <div {...reiterPanel('zementchemie-bereich', activeTab)} className="animate-in fade-in duration-300">
             <GefuegebildungSimulator />
           </div>
         )}
 
         {activeTab === 'zusatzstoffe' && (
-          <div className="animate-in fade-in duration-300">
+          <div {...reiterPanel('zementchemie-bereich', activeTab)} className="animate-in fade-in duration-300">
             <ReaktionenSection />
           </div>
         )}

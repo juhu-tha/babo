@@ -6,6 +6,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import inhalt from '@/content/feedback/Feedback.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 function EvaluierungContent() {
   const [ratings, setRatings] = useState({
@@ -44,22 +45,27 @@ function EvaluierungContent() {
     window.location.href = `mailto:juergen.huber@tha.de?subject=${subject}&body=${body}`;
   };
 
+  const sternLabel: Record<keyof typeof ratings, string> = {
+    inhalte: 'Qualität der Inhalte', umfang: 'Vollständigkeit', verstaendlichkeit: 'Verständlichkeit', nutzen: 'Nutzen & Praxisrelevanz',
+    design: 'Bedienbarkeit & Design', interaktivitaet: 'Interaktive Elemente', performance: 'Konsistenz & Struktur', motivation: 'Lernmotivation & Spaß',
+  };
+
   const renderStars = (key: keyof typeof ratings) => {
     return (
-      <div className="flex gap-1">
+      <AuswahlGruppe label={sternLabel[key]} className="flex gap-1">
         {[1, 2, 3, 4, 5].map((star) => (
           <button
             key={star}
             type="button"
             onClick={() => handleRating(key, star)}
             aria-label={`${formatDeWert(star)} von 5 Sternen`}
-            aria-pressed={ratings[key as keyof typeof ratings] === star}
+            {...alsOption(ratings[key as keyof typeof ratings] === star)}
             className={`p-1 transition-colors ${ratings[key as keyof typeof ratings] >= star ? 'text-yellow-500' : 'text-home-grau/30 hover:text-yellow-300'}`}
           >
             <Star size={24} fill={ratings[key as keyof typeof ratings] >= star ? 'currentColor' : 'none'} />
           </button>
         ))}
-      </div>
+      </AuswahlGruppe>
     );
   };
 
@@ -181,8 +187,8 @@ function FeedbackContent() {
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2"><label className="text-sm font-bold text-text-main"><MdText text={inhalt.texte.artDesFeedbacks} /></label><InfoTooltip text={inhalt.werte.parameterZurAnpassungDer} /></div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <button aria-pressed={type === 'fehler'}
+          <AuswahlGruppe label="Art des Feedbacks" className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <button {...alsOption(type === 'fehler')}
               type="button"
               onClick={() => setType('fehler')}
               className={`p-3 rounded-xl border-2 flex items-center justify-center gap-2 transition-all ${
@@ -194,7 +200,7 @@ function FeedbackContent() {
               <AlertCircle size={18} />
               <span><MdText text={inhalt.texte.fehlerMelden} /></span>
             </button>
-            <button aria-pressed={type === 'idee'}
+            <button {...alsOption(type === 'idee')}
               type="button"
               onClick={() => setType('idee')}
               className={`p-3 rounded-xl border-2 flex items-center justify-center gap-2 transition-all ${
@@ -206,7 +212,7 @@ function FeedbackContent() {
               <Lightbulb size={18} />
               <span><MdText text={inhalt.texte.ergänzungVorschlagen} /></span>
             </button>
-            <button aria-pressed={type === 'lob'}
+            <button {...alsOption(type === 'lob')}
               type="button"
               onClick={() => setType('lob')}
               className={`p-3 rounded-xl border-2 flex items-center justify-center gap-2 transition-all ${
@@ -218,7 +224,7 @@ function FeedbackContent() {
               <ThumbsUp size={18} />
               <span>Lob</span>
             </button>
-          </div>
+          </AuswahlGruppe>
         </div>
 
         <div className="flex flex-col gap-2">
