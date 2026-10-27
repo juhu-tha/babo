@@ -36,7 +36,7 @@ import inhalt from '@/content/zfp/ZfP.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import {
   rueckprallZfp, rueckprallKurven, ultraschallZfp, bewehrungsSignal, georadar, potentialRisikoZfp, wenner, torrentKlasse,
-  torrentFeuchte, karstenZfp, thermografieStufe, impactEchoZfp, durchstrahlung,
+  torrentFeuchte, karstenZfp, thermografieStufe, impactEchoZfp, durchstrahlung, type PruefWinkel,
 } from '@/src/calc/pruefverfahren';
 
 ChartJS.register(
@@ -80,7 +80,7 @@ export default function ZfP() {
 
   // Rückprallhammer State
   const [rebound, setRebound] = useState(35);
-  const [angle, setAngle] = useState<'0' | '90' | '-90'>('0');
+  const [angle, setAngle] = useState<PruefWinkel>('0');
 
   // Ultraschall State
   const [velocity, setVelocity] = useState(4.0); // km/s
@@ -126,7 +126,7 @@ export default function ZfP() {
   }, [geraeteList, selectedGeraet]);
 
   // Rechenkern src/calc/pruefverfahren.ts – die Komponente ordnet nur noch Texte und Farben zu
-  // Rückprallhammer: ΔR = −3 (nach unten) / +3 (nach oben), einheitliche Lehrkurve f_c ≈ 0,0125·R^2,22 (ohne Kalibrierung nur Schätzung)
+  // Rückprallhammer: ΔR(R, α) nach Herstellerformel Original Schmidt Typ N (bauwerksuntersuchung.ts), einheitliche Lehrkurve f_c ≈ 0,0125·R^2,22 (ohne Kalibrierung nur Schätzung)
   const reboundResults = useMemo(() => rueckprallZfp(rebound, angle), [rebound, angle]);
 
   // Ultraschall: E_dyn = ρ·v²·(1+ν)(1−2ν)/(1−ν) mit ρ = 2400 kg/m³, ν = 0,2; f_c ≈ 20·(v − 2) (grob)

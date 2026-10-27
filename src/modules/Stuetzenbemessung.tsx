@@ -6,6 +6,7 @@ import { bemesseStuetze } from '@/src/calc/stuetze';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { EC2_NA_DE } from '@/src/data/normParams';
+import { fcdBeton } from '@/src/data/kennwerte';
 import { AlertTriangle, Layers } from 'lucide-react';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
@@ -238,8 +239,8 @@ export default function Stuetzenbemessung() {
                 },
                 {
                   titel: inhalt.werte.bezogeneSchnittgrößen,
-                  erklaerung: `Mit f_cd = 0,85 · ${formatDeZahl(fck, 0)} / 1,5 = ${formatDeZahl((EC2_NA_DE.alphaCC * fck) / EC2_NA_DE.gammaC, 2)} N/mm²; Druck negativ.`,
-                  formel: `\\nu_{Ed} = \\frac{-${formatDeTeX(nEd / 1000, 3)}}{${formatDeTeX(b / 100, 2)} \\cdot ${formatDeTeX(h / 100, 2)} \\cdot ${formatDeTeX((EC2_NA_DE.alphaCC * fck) / EC2_NA_DE.gammaC, 2)}} = ${formatDeTeX(results.nu_Ed, 3)};\\quad \\mu_{Ed} = \\frac{${formatDeTeX(results.mEd_1 / 1000, 4)}}{${formatDeTeX(b / 100, 2)} \\cdot ${formatDeTeX(h / 100, 2)}^2 \\cdot ${formatDeTeX((EC2_NA_DE.alphaCC * fck) / EC2_NA_DE.gammaC, 2)}} = ${formatDeTeX(results.mu_Ed, 3)}`,
+                  erklaerung: `Mit f_cd = 0,85 · ${formatDeZahl(fck, 0)} / 1,5${fck >= 55 ? ` · (1,1 − ${formatDeZahl(fck, 0)}/500)` : ''} = ${formatDeZahl(fcdBeton(fck), 2)} N/mm²${fck >= 55 ? ' (Hochfest-Abminderung, vorläufig)' : ''}; Druck negativ.`,
+                  formel: `\\nu_{Ed} = \\frac{-${formatDeTeX(nEd / 1000, 3)}}{${formatDeTeX(b / 100, 2)} \\cdot ${formatDeTeX(h / 100, 2)} \\cdot ${formatDeTeX(fcdBeton(fck), 2)}} = ${formatDeTeX(results.nu_Ed, 3)};\\quad \\mu_{Ed} = \\frac{${formatDeTeX(results.mEd_1 / 1000, 4)}}{${formatDeTeX(b / 100, 2)} \\cdot ${formatDeTeX(h / 100, 2)}^2 \\cdot ${formatDeTeX(fcdBeton(fck), 2)}} = ${formatDeTeX(results.mu_Ed, 3)}`,
                 },
                 {
                   titel: inhalt.werte.mechanischerBewehrungsgradAusDem,
@@ -247,7 +248,7 @@ export default function Stuetzenbemessung() {
                     ? inhalt.werte.derRechnerSuchtIn
                     : inhalt.werte.auchMit25,
                   formel: results.isPossible
-                    ? `\\omega = ${formatDeTeX(results.req_omega, 2)} \\;\\Rightarrow\\; A_{s,tot} = ${formatDeTeX(results.req_omega, 2)} \\cdot ${formatDeTeX(b, 0)} \\cdot ${formatDeTeX(h, 0)} \\cdot \\frac{${formatDeTeX((EC2_NA_DE.alphaCC * fck) / EC2_NA_DE.gammaC, 2)}}{${formatDeTeX(fyk / EC2_NA_DE.gammaS, 1)}} = ${formatDeTeX(results.as_tot_req, 2)}\\,\\text{cm}^2`
+                    ? `\\omega = ${formatDeTeX(results.req_omega, 2)} \\;\\Rightarrow\\; A_{s,tot} = ${formatDeTeX(results.req_omega, 2)} \\cdot ${formatDeTeX(b, 0)} \\cdot ${formatDeTeX(h, 0)} \\cdot \\frac{${formatDeTeX(fcdBeton(fck), 2)}}{${formatDeTeX(fyk / EC2_NA_DE.gammaS, 1)}} = ${formatDeTeX(results.as_tot_req, 2)}\\,\\text{cm}^2`
                     : '\\omega > 2{,}5',
                 },
                 {
