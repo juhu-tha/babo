@@ -2,9 +2,9 @@
 
 Stand: 27.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster V umfasst 132 Fragen aus 22 Modulen. Aufgeführt sind 26 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster V umfasst 132 Fragen aus 22 Modulen. Aufgeführt sind 27 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 26 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 27 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -206,6 +206,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 26 korrigiert, 0 fraglich, 0
 - **Richtige Antwort:** Weil nur so die ordnungsgemäße Überwachung bei Frost oder Hitze belegt werden kann
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen; normRef ergänzt · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### qn_px_karriere_2 · Karrierestart & Soft Skills
+
+- **Frage:** Für welches Tätigkeitsfeld ist nach dem Modul der SIVV-Schein die maßgebende Zusatzqualifikation?
+- **Richtige Antwort:** Führungspersonal bei Schutz und Instandsetzung von Beton, z. B. Parkhäuser
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Überwachungsklasse 3 entfallen (DIN 1045-3:2023-08) – korrigiert.
+- [ ] ok
 - [ ] ändern: …
 
 ### qn_px_karriere_4 · Karrierestart & Soft Skills

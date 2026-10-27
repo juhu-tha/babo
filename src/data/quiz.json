@@ -46632,7 +46632,7 @@
     "normRef": "",
     "question": "Für welches Tätigkeitsfeld ist nach dem Modul der SIVV-Schein die maßgebende Zusatzqualifikation?",
     "options": [
-      "Leitung der ständigen Betonprüfstelle bei Überwachungsklasse 2 und 3",
+      "Leitung der ständigen Betonprüfstelle bei Überwachungsklasse 2 (bis DIN 1045-3:2012 auch 3)",
       "Führungspersonal bei Schutz und Instandsetzung von Beton, z. B. Parkhäuser",
       "Gerichtliche Beweissicherung als öffentlich bestellter Sachverständiger",
       "Koordination von Sicherheit und Gesundheitsschutz nach Baustellenverordnung"
@@ -46658,7 +46658,8 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 27.10.: Überwachungsklasse 3 entfallen (DIN 1045-3:2023-08) – korrigiert."
     }
   },
   {
