@@ -19,7 +19,8 @@ function modulReferenz(fck: number, cementClass: Zementklasse, aggregateType: Ge
   const fcm = fck + 8;
   const alphaCc = 0.85;
   const gammaC = 1.50;
-  const fcd = (alphaCc * fck) / gammaC;
+  // Entscheidung Prof. Huber 27.10.: ab C55/67 zusätzlich · (1,1 − f_ck/500) (vorläufig, F-Freigabe)
+  const fcd = (alphaCc * fck * (fck >= 55 ? Math.min(1, 1.1 - fck / 500) : 1)) / gammaC;
   let s = 0.25;
   if (cementClass === 'S') s = 0.38;
   else if (cementClass === 'R') s = 0.20;

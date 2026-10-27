@@ -23,7 +23,7 @@
  * Begrenzung von h_0; k_h nach Tab. 3.3 ist ab h_0 ≥ 500 mm konstant 0,70, β_H ≤ 1500·α_3). Reiner Rechenkern – geprüft in tests/betonkennwerte.test.ts.
  */
 import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
-import { fckZumAlter, dehnungsKennwerte } from '../data/kennwerte';
+import { fckZumAlter, dehnungsKennwerte, fcdBeton } from '../data/kennwerte';
 import {
   type Zementklasse, ZEMENT_DS, ZEMENT_ALPHA, beiwertKh, phiRH as phiRHBeiwert, betaFcm as betaFcmBeiwert,
   wirksamesBelastungsalter, betaT0 as betaT0Beiwert, betaH as betaHBeiwert, betaC as betaCBeiwert, epsCd0 as epsCd0Grundwert,
@@ -127,7 +127,7 @@ export function betonkennwerte(e: BetonkennwerteEingabe): BetonkennwerteErgebnis
   // 1. Druckfestigkeit
   const fcm = fck + 8;
   const { alphaCc, alphaCt, gammaC, nu, rhoRelax } = EC2_BETON_NA;
-  const fcd = (alphaCc * fck) / gammaC;
+  const fcd = fcdBeton(fck, { alphaCc, gammaC }); // zentral, ab C55/67 · (1,1 − f_ck/500) (vorläufig, F-Freigabe)
   const s = ZEMENT_S[zementklasse];
   const tempFactor = temperaturFaktor(temperatur);
   const t0Temp = Math.max(0.1, t0 * tempFactor);

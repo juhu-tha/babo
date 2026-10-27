@@ -26,6 +26,8 @@ Neues Modul: Eintrag in `src/registry/modules.ts` + Zeile in `src/routing/ModulI
 Wiedereinschalten: 1. `'Lehrveranstaltungen'` aus `INAKTIVE_GRUPPEN` entfernen. 2. `npm run gen:sitemap` und Suchindex neu erzeugen (`node scripts/gen-suchindex.mjs` gegen die gebaute App).
 3. `npm test` und Build (Vorrendern) laufen lassen – Menü, Baum, Startseiten-Link, Cluster-Kurztext und Vorrendern folgen dem Schalter automatisch.
 
+Admin-Bereich „Audit“ (Gutachten, Zulieferungen, Umsetzungsplan, Prüfpunkte F-Freigabe, Quiz-Prüflisten): statische Teile in `src/data/audit/*.ts` (per PR pflegen), Zählungen erzeugt das Vite-Plugin `scripts/auditDaten.ts` (`virtual:audit-daten`) beim Build und im Dev-Server aus dem Quelltext – alle „F-Freigabe“-Fundstellen in `src/calc`, `src/data`, `content`, Zähler je Cluster aus `quiz.json`, Kennzahlen „Tool-Umfang & Code“, Paketversionen; nach dem Build zusätzlich `dist/audit-bundle.json` (Einstieg gzip wie `check-bundle.mjs`). Der Bereich ist ein eigener, lazy geladener Chunk (`src/components/admin/audit/AuditBereich.tsx`); `tests/auditDaten.test.ts` prüft Vollständigkeit und Gleichstand. Kontrolle: `npx tsx scripts/auditDaten.ts`.
+
 Fachmodule brauchen außerdem einen Prüfvermerk in `src/data/pruefvermerke.ts` (neu: `{ status: 'offen' }`; `tests/pruefvermerke.test.ts`). `ModulKopf` zeigt „Fachlich geprüft am … von …“ bzw. „Fachliche Prüfung ausstehend“; der Admin-Bereich („Meine Module“) listet alle Vermerke nach Cluster, Pate (`src/data/paten.ts`) und Status (Redaktionsmodell, AP 6.6).
 
 ## Ladeverhalten (Bundle-Budget)

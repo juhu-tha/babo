@@ -2,7 +2,8 @@
  * Rechenkern Bauwerksuntersuchung (Z3), übernommen aus src/modules/bauwerksuntersuchung/
  * (PruefverfahrenSimulatoren.tsx, ProbenahmePlaner.tsx, InterpretationNavigator.tsx). Die Module runden und formatieren
  * selbst; der Kern liefert ungerundete Zahlen.
- *  - Rückprallhammer: Schlagrichtung −3,0 (abwärts) / +3,5 (aufwärts), Karbonatisierungsabminderung
+ *  - Rückprallhammer: Richtungskorrektur nach Herstellerformel Original Schmidt Typ N (rueckprallRichtungskorrektur,
+ *    Entscheidung Prof. Huber 27.10.; vorher pauschal −3,0 abwärts / +3,5 aufwärts mit vertauschtem Vorzeichen), Karbonatisierungsabminderung
  *    k = max(0,75; 1 − 0,015·(d_k − 5)) für d_k > 5 mm, f_c ≈ 0,0125·R^2,22 (Lehr-Näherung, keine Normkurve).
  *    Runde 5 (Z55): einzige Lehrkurve des Repos (RUECKPRALL_LEHRKURVE, auch ZfP und Labor); Zuordnung zur
  *    Bauwerksfestigkeit nur über Kalibrierkerne nach DIN EN 13791:2020, Abschnitt 8.2/8.3 (rueckprallKalibrierung)
@@ -27,6 +28,30 @@ const abschluss = (h: Hinweis[]): Ergebnis => ({ gueltig: !hatFehler(h), hinweis
 
 // ---------------------------------------------------------------- Rückprallhammer
 export type Schlagrichtung = 'horiz' | 'down' | 'up';
+
+/**
+ * Richtungskorrektur des Rückprallwerts auf horizontale Schlagrichtung (α = 0°), Original Schmidt Typ N.
+ * Quelle: Screening Eagle (Proceq), Academy-FAQ „What are the formulae used in the compressive strength correlation curves –
+ * rebound hammers“ (OS8000 Typ N): R_korr = R + (−a₀ + a₁·R)·sin α mit a₀ = 7,1, a₁ = 0,08 für α ≥ 0° und
+ * a₀ = 4,3, a₁ = 0,043 für α < 0°. Winkelkonvention wie in den Proceq-Anleitungen: α = +90° Schlag senkrecht nach oben
+ * (Decke), α = −90° senkrecht nach unten (Boden). Physik: Beim Schlag nach oben fällt die Schlagmasse beim Rückprall mit
+ * der Schwerkraft – R wird zu hoch abgelesen und abgemindert; beim Schlag nach unten umgekehrt (Zuschlag).
+ * Kontrollwerte ΔR (R = 20/30/40/50/60): +90°: −5,5/−4,7/−3,9/−3,1/−2,3; −90°: +3,4/+3,0/+2,6/+2,2/+1,7.
+ */
+export const RUECKPRALL_RICHTUNG = { aufwaerts: { a0: 7.1, a1: 0.08 }, abwaerts: { a0: 4.3, a1: 0.043 } } as const;
+/** ΔR für den abgelesenen Rückprallwert r bei Schlagwinkel α in Grad (+90 = nach oben, −90 = nach unten) */
+export function rueckprallRichtungskorrektur(r: number, alphaGrad: number): number {
+  if (alphaGrad === 0) return 0;
+  const k = alphaGrad >= 0 ? RUECKPRALL_RICHTUNG.aufwaerts : RUECKPRALL_RICHTUNG.abwaerts;
+  return (-k.a0 + k.a1 * r) * Math.sin((alphaGrad * Math.PI) / 180);
+}
+/** Korrekturtabelle ΔR (Zeilen R, Spalten α = +90°, +45°, −45°, −90°) aus rueckprallRichtungskorrektur */
+export function rueckprallKorrekturtabelle(rWerte: readonly number[] = [20, 25, 30, 35, 40, 45, 50, 55, 60]) {
+  const winkel = [90, 45, -45, -90] as const;
+  return rWerte.map(r => ({ r, dR: winkel.map(a => rueckprallRichtungskorrektur(r, a)) }));
+}
+/** Schlagrichtung des Bauwerksuntersuchungs-Simulators → Winkel α in Grad */
+export const SCHLAGWINKEL: Readonly<Record<Schlagrichtung, number>> = { horiz: 0, up: 90, down: -90 };
 export interface RueckprallErgebnis extends Ergebnis {
   rKorr: number; kKarb: number; rFinal: number;
   /** geschätzte Druckfestigkeit in N/mm² */
@@ -76,9 +101,7 @@ export function rueckprall(rueckprallwert: number, richtung: Schlagrichtung, kar
   const h: Hinweis[] = [];
   muss(h, istEndlich(rueckprallwert, karbTiefeMm), 'eingabe', 'Rückprallwert und Karbonatisierungstiefe müssen Zahlen sein.');
   muss(h, karbTiefeMm >= 0, 'karbTiefeMm', 'Die Karbonatisierungstiefe darf nicht negativ sein.');
-  let rKorr = rueckprallwert;
-  if (richtung === 'down') rKorr -= 3.0;
-  if (richtung === 'up') rKorr += 3.5;
+  const rKorr = rueckprallwert + rueckprallRichtungskorrektur(rueckprallwert, SCHLAGWINKEL[richtung]);
   const kKarb = karbTiefeMm > 5 ? Math.max(0.75, 1.0 - (karbTiefeMm - 5) * 0.015) : 1.0;
   const rFinal = rKorr * kKarb;
   const fcSchaetz = rueckprallLehrkurve(rFinal);

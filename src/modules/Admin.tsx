@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { adminLogin, adminLogout, verifyAdminSession } from '@/src/utils/adminAuth';
 import { FragenFreigabe } from '@/src/components/admin/FragenFreigabe';
 import { MeineModule } from '@/src/components/admin/MeineModule';
@@ -17,70 +17,111 @@ import {
   Cpu,
   Boxes,
   Palette,
-  Server
+  Server,
+  ClipboardCheck,
+  GraduationCap,
+  Truck,
+  ListChecks,
+  FlaskConical,
 } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { GruppierteModuleTabs, type ModulTabGruppe } from '@/src/components/ui/GruppierteModuleTabs';
+import { GUTACHTEN_27_10, notenMittel } from '@/src/data/audit/gutachten';
+import { datumDe } from '@/src/data/pruefvermerke';
+import { META_CLUSTERS } from '@/src/data/metaClusters';
+import { formatDeZahl } from '@/src/utils/numberFormat';
+import type { AuditAnsicht } from '@/src/components/admin/audit/AuditBereich';
+
+// Audit-Bereich und erzeugte Kennzahlen (virtual:audit-daten) nur bei Bedarf laden – eigener Chunk, nicht im Admin-Chunk
+const AuditBereich = React.lazy(() => import('@/src/components/admin/audit/AuditBereich'));
+
+function AuditLaden({ ansicht }: { ansicht: AuditAnsicht }) {
+  return (
+    <Suspense fallback={<p className="text-xs text-text-main/70" role="status">Audit-Daten werden geladen …</p>}>
+      <AuditBereich ansicht={ansicht} />
+    </Suspense>
+  );
+}
 
 const FULL_AUDIT_PROMPT = `================================================================================
-VERBINDLICHER GESAMT-AUDITPROMPT DER WISSENSPLATTFORM BAUSTOFFBOARD (THA)
-SYSTEMWEITES QUALITÄTSAUDIT & FACHLICHE GESAMTREVISION ALLER ARBEITSPAKETE (AP 01–17)
+GESAMT-AUDITPROMPT BAUSTOFFBOARD (THA) – PRÜFRASTER STAND 27.10.2026
+Re-Review der Plattform nach dem Raster des Gutachtens (6 Kategorien, Zielbild „sehr gut“)
 ================================================================================
 
-1. ZIELSETZUNG & AUDIT-MANDAT
-Ziel ist die vollständige, fachlich lückenlose und didaktisch exzellente Qualitätsrevision
-aller 17 thematischen Arbeitspakete (AP 01 bis AP 17) der interaktiven Wissensplattform
-Baustoffkunde & Werkstoffmechanik der Technischen Hochschule Augsburg (THA).
-Alle Module müssen dem Gold-Standard (Referenz: Kalk.tsx) sowie der Modulspezifikation
-(GEMINI_md) und den 6 Prüfdimensionen der Qualitätssicherung entsprechen.
+1. AUFTRAG
+Unabhängiges Re-Review des aktuellen Stands von origin/main der Lehr- und Lernplattform
+BaustoffBoard (Baustoffkunde, Werkstoffmechanik, Bauen im Bestand, Nachhaltiges Bauen) der
+Technischen Hochschule Augsburg. Ergebnis: Note je Kategorie (1,0–5,0) mit Kurzbegründung,
+belegt durch tatsächlich ausgeführte Prüfungen und Stichproben, sowie die Top-10-Maßnahmen
+nach Wirkung. Zielbild „sehr gut“: Note 1,0–1,3 in allen sechs Kategorien.
+Nur Ergebnisse berichten, die tatsächlich gelaufen sind; Abweichungen zum letzten Gutachten
+(Admin → Audit → „Gutachten“) ausdrücklich nennen.
 
 --------------------------------------------------------------------------------
-2. DIE 6 SYSTEMWEITEN PRÜFDIMENSIONEN DER QUALITÄTSSICHERUNG
-Jedes einzelne Fachmodul wird zwingend anhand folgender 6 Qualitätsdimensionen auditiert:
+2. DIE 6 KATEGORIEN DES GUTACHTENS
 
-  [1] RICHTIGKEIT & NORMENKONFORMITÄT:
-      - Fachliche Fehlerfreiheit aller bauphysikalischen, thermodynamischen, chemischen
-        und mechanischen Gleichungen.
-      - Aktualität aller Regelwerke nach neuester Ausgabegeneration (DIN Media / Beuth / ISO)
-        inklusive exakter Jahres- und Monatsangabe (z.B. DIN EN 1992-1-1:2023-08,
-        DIN 1045-2:2023-08, DIN EN 1995-1-1:2026-09).
-      - Bereinigung veralteter Normzitate und ungenauer Kennwerte.
+  [1] TECHNIK
+      - Lokale Prüfungen (GitHub Actions gesperrt): npx tsc --noEmit · npm test ·
+        npm run -s check:formeln · npm run -s check:zahlen ·
+        node scripts/qa/check-verwaist.mjs --strict · node scripts/qa/check-any.mjs ·
+        npm run -s build (inkl. Vorrendern) · node scripts/qa/check-bundle.mjs (Budget Einstieg).
+      - Sicherheit: CSP (Report-Only oder scharf), keine Geheimnisse im Frontend,
+        Admin-Kennwort nur serverseitig; Doku-Drift (docs/architektur.md, README).
 
-  [2] DIDAKTIK & VERSTÄNDLICHKEIT:
-      - Curricular logischer Aufbau entlang des 4-Stufen-Lehrpfads (Grundlagen ->
-        Laborversuche -> Bemessung & Praxis -> Selbstüberprüfung).
-      - Adressatengerechte Sprache für Studierende des Bauingenieurwesens und Fachkräfte.
-      - Didaktische Hervorhebung von Kernbegriffen durch prägnante Begriffsauszeichnungen.
+  [2] RECHNER
+      - Stichproben: Ergebnisse der Rechenkerne (src/calc) unabhängig nachrechnen.
+      - Normbezug, Eingabegrenzen (plausibilitaet.ts), Grenzen-Einträge (rechnerGrenzen.ts),
+        Fuzz-Tests; Werte „vorläufig, F-Freigabe“ zählen (Admin → Audit → „Prüfpunkte“).
 
-  [3] VOLLSTÄNDIGKEIT (KERNPRÜFDIMENSION):
-      - KERNFRAGE: "Ist das Modul in sich thematisch umfassend und vollständig?
-        (dies ist die einzige Bedingung)"
-      - Ein Modul erfüllt diesen Qualitätsmaßstab nur dann, wenn das behandelte
-        Fachthema in seiner gesamten Tiefe und Breite lückenlos, fundiert und
-        ohne inhaltliche Aussparungen eigenständig vermittelt wird.
-      - Vollständige Integration aller physikalisch-chemischen Mechanismen, Herleitungen,
-        Grenzwerte, Bemessungsschritte und Schadensmechanismen.
+  [3] DIDAKTIK
+      - Lernziele, Kurzfassung, Selbsttest, Erkundungsaufträge „Ausprobieren“, Grenzen.
+      - Quiz: Freigabestand (verified), Prüflisten je Cluster, Widersprüche Frage ↔ Modul ↔
+        Rechenkern, Längenhinweis (richtige Antwort am längsten), normRef.
+      - Prüfvermerke der Fachmodule (src/data/pruefvermerke.ts).
 
-  [4] PRAXISRELEVANZ & HANDLUNGSKOMPETENZ:
-      - Vermittlung von handlungsfähigem Ingenieurwissen für Baustelle, Prüflabor,
-        Tragwerksplanung und Bauschadensgutachten.
-      - Reale Fallbeispiele, Schadensprävention, Schadensbilder und Prüfvorschriften.
+  [4] BEDIENUNG UND BARRIEREFREIHEIT
+      - axe (WCAG 2.1 A/AA, zusätzlich target-size WCAG 2.2) hell, dunkel und mobil.
+      - Reiter als role="tablist" (ModuleTabs, ≤ 7 je Leiste, höchstens 2 Ebenen),
+        sichtbarer Fokusrahmen, Mindestgröße 24 × 24 px; manuelle BITV-Stichprobe.
 
-  [5] KONSISTENZ & VERNETZUNG:
-      - KERNFRAGE: "Ist das Modul in sich logisch aufgebaut? Sind alle notwendigen
-        Informationen zum Verständnis in anderen Modulen vorhanden?"
-      - Nahtlose Verknüpfung der Lehrpfade, konsistente Nomenklatur und Vorzeichenkonventionen.
-      - Bereinigung von Textdopplungen, verwaisten Querverweisen oder redundanten Modulstrukturen.
+  [5] RECHT
+      - Impressum, Datenschutzerklärung (Speicherdauer, Auftragsverarbeiter, Speicher-Register),
+        Barrierefreiheitserklärung, Lizenz und Rechteinhaberschaft, Restrisiko Normtabellen
+        (Normtexte nicht abschreiben, nur öffentlich zugängliche Quellen).
 
-  [6] INTERAKTIVITÄT & VERIFIKATION:
-      - Integration interaktiver Rechenwerkzeuge, Diagramme, Parametervariationen und Simulatoren.
-      - Verbindliche Einhaltung der deutschen Zahlenformatierung:
-        Tausendertrennung mit Punkt, Dezimaltrennzeichen mit Komma via formatDeZahl.
-      - Mathematisch präzises Formel-Rendering mit LaTeX/KaTeX (InlineMath & BlockMath).`;
+  [6] PROFIL
+      - Seite „Forschung und Transfer“: Projekte, Publikationen, ORCID/DOI, Labor, TTZ.
 
-type AdminTab = 'pruefraster' | 'prompt' | 'gestaltung' | 'tech_stack' | 'code_umfang' | 'fragenfreigabe' | 'meine_module' | 'kurzfragebogen';
+--------------------------------------------------------------------------------
+3. FACHLICHE PRÜFDIMENSIONEN JE MODUL (Reiter „Die 6 Prüfdimensionen“)
+  Richtigkeit und Normenstand · Didaktik · Vollständigkeit · Praxisrelevanz ·
+  Konsistenz und Vernetzung · Interaktivität und Verifikation (deutsches Zahlenformat
+  über formatDeZahl, Formeln mit KaTeX).
+
+--------------------------------------------------------------------------------
+4. REGELN
+  - Werte nur aus öffentlich zugänglichen Quellen; ist der Normtext (NA DE) zur Bestätigung
+    nötig, Wert als „vorläufig, F-Freigabe“ kennzeichnen und als Prüfpunkt für Prof. Huber
+    nennen (Normteil, Abschnitt/Tabelle).
+  - Ergebnisse neutral formulieren (Lehr- und Vorbemessungswerkzeug).
+  - Ausgabe: Notentabelle, Top-10-Maßnahmen mit Status, offene Zulieferungen Prof. Huber.`;
+
+type AdminTab = 'gutachten' | 'zulieferungen' | 'umsetzungsplan' | 'ffreigabe' | 'pruefliste'
+  | 'pruefraster' | 'prompt' | 'gestaltung' | 'tech_stack' | 'code_umfang' | 'fragenfreigabe' | 'meine_module' | 'kurzfragebogen';
+
+/** Reiter, deren Inhalt der lazy geladene Audit-Bereich zeigt */
+const AUDIT_REITER: Partial<Record<AdminTab, AuditAnsicht>> = {
+  gutachten: 'gutachten', zulieferungen: 'zulieferungen', umsetzungsplan: 'umsetzungsplan', ffreigabe: 'ffreigabe', pruefliste: 'pruefliste',
+};
 
 const ADMIN_GRUPPEN: readonly ModulTabGruppe<AdminTab>[] = [
+  { id: 'audit', label: 'Audit', icon: ClipboardCheck, mitglieder: [
+    { id: 'gutachten', label: 'Gutachten 27.10.', icon: GraduationCap },
+    { id: 'zulieferungen', label: 'Zulieferungen', icon: Truck },
+    { id: 'umsetzungsplan', label: 'Umsetzungsplan', icon: Layers },
+    { id: 'ffreigabe', label: 'Prüfpunkte F-Freigabe', icon: FlaskConical },
+    { id: 'pruefliste', label: 'Prüflisten', icon: ListChecks },
+  ] },
   { id: 'pruefung', label: 'Prüfung & Freigabe', icon: CheckCircle2, mitglieder: [
     { id: 'pruefraster', label: 'Die 6 Prüfdimensionen', icon: CheckCircle2 },
     { id: 'prompt', label: 'Auditprompt', icon: FileText },
@@ -112,7 +153,7 @@ export default function Admin() {
       active = false;
     };
   }, []);
-  const [activeTab, setActiveTab] = useState<AdminTab>('pruefraster');
+  const [activeTab, setActiveTab] = useState<AdminTab>('gutachten');
   const [copiedPrompt, setCopiedPrompt] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -155,7 +196,7 @@ export default function Admin() {
             Administrator-Bereich (THA)
           </h2>
           <p className="text-xs text-text-main/70 mb-6 leading-relaxed">
-            Dieser Administrationsbereich enthält das Qualitätsaudit, den Umsetzungsgrad aller 17 Arbeitspakete (AP 01–17) sowie den systemweiten Auditprompt.
+            Dieser Administrationsbereich enthält das Gutachten mit Maßnahmen, die Zulieferungen, den Umsetzungsplan (Phasen 0–6), die Prüfpunkte „F-Freigabe“, die Quiz-Prüflisten und den Auditprompt.
           </p>
 
           <form onSubmit={handleLogin} className="space-y-4">
@@ -204,7 +245,7 @@ export default function Admin() {
           </h2>
           <div className="flex items-center gap-2">
             <span className="text-xs font-mono font-bold text-shiraz bg-shiraz/10 px-3 py-1 rounded-full border border-shiraz/20">
-              Status: 100 % Konform (Gold-Standard)
+              Gutachten {datumDe(GUTACHTEN_27_10.datum)}: Mittel {formatDeZahl(notenMittel(), 1)} · Ziel ≤ 1,3
             </span>
             <button
               onClick={handleLogout}
@@ -217,13 +258,14 @@ export default function Admin() {
 
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 mb-6 leading-relaxed">
           <p>
-            Zentrale Kontrollinstanz für die didaktische und fachliche Qualitätssicherung der Wissensplattform BaustoffBoard (THA). 
-            Überwacht die Einhaltung der <strong>6 Prüfdimensionen</strong> (mit universeller Durchsetzung von 
-            <strong> Prüfdimension 3: Thematische Vollständigkeit</strong>) sowie den verbindlichen System-Auditprompt.
+            Qualitätssicherung der Plattform BaustoffBoard (THA): <strong>Audit</strong> mit Gutachten, Zulieferungen, Umsetzungsplan,
+            Prüfpunkten „F-Freigabe“ und Quiz-Prüflisten (Zählungen beim Build aus dem Quelltext erzeugt), dazu
+            <strong> Prüfung &amp; Freigabe</strong> (Prüfdimensionen, Auditprompt, Fragenfreigabe), <strong>App &amp; Code</strong> und
+            <strong> Module &amp; Rückmeldungen</strong>.
           </p>
         </div>
 
-        {/* Reiter: 8 Bereiche in 3 Gruppen (AP 3.8: höchstens 7 je Zeile) */}
+        {/* Reiter: 13 Bereiche in 4 Gruppen (AP 3.8: höchstens 7 je Zeile, 2 Ebenen) */}
         <GruppierteModuleTabs
           label="Bereiche der Administration"
           gruppen={ADMIN_GRUPPEN}
@@ -231,6 +273,9 @@ export default function Admin() {
           onWechsel={setActiveTab}
           className="[&_[role=tablist]]:mb-4"
         >
+        {/* AUDIT: Gutachten, Zulieferungen, Umsetzungsplan, Prüfpunkte F-Freigabe, Prüflisten (lazy) */}
+        {AUDIT_REITER[activeTab] && <AuditLaden ansicht={AUDIT_REITER[activeTab]!} />}
+
         {/* TAB 1: PRÜFRASTER */}
         {activeTab === 'pruefraster' && (
           <div className="space-y-6">
@@ -291,7 +336,7 @@ export default function Admin() {
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <span className="text-xs font-bold text-text-main">
-                Vollständiger, systemweiter Qualitäts-Auditprompt (THA BaustoffBoard)
+                Auditprompt nach dem Prüfraster des Gutachtens (Stand {datumDe(GUTACHTEN_27_10.datum)})
               </span>
               <button
                 onClick={handleCopyPrompt}
@@ -302,7 +347,7 @@ export default function Admin() {
               </button>
             </div>
 
-            <pre className="p-4 bg-slate-900 text-slate-100 rounded-xl text-xs font-mono overflow-x-auto whitespace-pre-wrap leading-relaxed max-h-[500px]">
+            <pre tabIndex={0} aria-label="Auditprompt" className="p-4 bg-off-white text-text-main border border-home-grau/30 rounded-xl text-xs font-mono overflow-auto whitespace-pre-wrap leading-relaxed max-h-[500px]">
               {FULL_AUDIT_PROMPT}
             </pre>
           </div>
@@ -335,8 +380,8 @@ export default function Admin() {
               {/* Einleitender Grundsatz */}
               <div className="text-xs text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30 leading-relaxed space-y-2">
                 <p>
-                  Das Design der Wissensplattform folgt einem einladenden, hochgradig lesbaren und akademisch anspruchsvollen Light-Design-System.
-                  <strong> Dunkle, immersive Kontraste und schwarze Konsolenhintergründe sind im gesamten System unerwünscht.</strong>
+                  Das Design der Wissensplattform folgt einem gut lesbaren, hellen Design-System; der Dunkelmodus (AP 2.4) setzt dieselben Farbvariablen dunkel um.
+                  <strong> Schwarze Konsolenhintergründe in Inhaltsboxen sind unerwünscht</strong> – Kontraste nach WCAG 2.1 AA in beiden Modi.
                   Alle Fachmodule kapseln ihre Inhalte in thematische Tabs (keine unendlichen Scroll-Seiten), führen den didaktischen 4-Stufen-Lehrpfad durch und schließen zwingend mit der standardisierten <code className="font-mono bg-white px-1.5 py-0.5 rounded border border-home-grau/25">ModuleFooter</code>-Komponente ab.
                 </p>
               </div>
@@ -605,8 +650,8 @@ export default function Beispielfach() {
                 </span>
               </div>
               <p className="text-xs text-text-main/80 leading-relaxed">
-                Das BaustoffBoard ist als moderne, reaktive Web-Applikation auf Basis einer Single-Page-Application-Architektur (SPA) mit Express-Backend implementiert.
-                Sämtlicher Quellcode ist strikt typisiert und kompilierbar.
+                Das BaustoffBoard ist eine Single-Page-Application mit Express-Server (server.ts), Pfad-Routing /modul/&lt;id&gt; und vorgerenderten Modulseiten.
+                Der Quellcode ist durchgehend typisiert (explizite any: 0). Die Versionen unten stammen aus package.json und werden beim Build gelesen.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
@@ -617,15 +662,15 @@ export default function Beispielfach() {
                   </div>
                   <div className="space-y-2 text-xs">
                     <div className="p-2.5 bg-white rounded-lg border border-home-grau/15">
-                      <div className="font-bold text-text-main">TypeScript 5.8</div>
+                      <div className="font-bold text-text-main">TypeScript</div>
                       <div className="text-text-main/70 text-[11px]">Vollständige Typsicherheit über alle Module, Rechner, Datenmodelle und Schnittstellen.</div>
                     </div>
                     <div className="p-2.5 bg-white rounded-lg border border-home-grau/15">
-                      <div className="font-bold text-text-main">React 19 &amp; React DOM 19</div>
+                      <div className="font-bold text-text-main">React &amp; React DOM</div>
                       <div className="text-text-main/70 text-[11px]">Funktionale Komponenten, modulare Custom Hooks, Context-State-Management und dynamisches Lazy-Loading.</div>
                     </div>
                     <div className="p-2.5 bg-white rounded-lg border border-home-grau/15">
-                      <div className="font-bold text-text-main">Tailwind CSS v4 &amp; Lucide Icons</div>
+                      <div className="font-bold text-text-main">Tailwind CSS &amp; Lucide Icons</div>
                       <div className="text-text-main/70 text-[11px]">Utility-First CSS, responsives Layout, modulares Farb-Tagging und über 500 Vektorsymbole.</div>
                     </div>
                   </div>
@@ -638,12 +683,12 @@ export default function Beispielfach() {
                   </div>
                   <div className="space-y-2 text-xs">
                     <div className="p-2.5 bg-white rounded-lg border border-home-grau/15">
-                      <div className="font-bold text-text-main">Vite 6 &amp; tsx / esbuild</div>
-                      <div className="text-text-main/70 text-[11px]">Ultraschneller Entwicklungs-Server, modularer HMR-Bundler und Node.js-Backend via tsx.</div>
+                      <div className="font-bold text-text-main">Vite, tsx &amp; esbuild</div>
+                      <div className="text-text-main/70 text-[11px]">Entwicklungs-Server und Build; eigene Vite-Plugins (Fragenpool, Modulkopf, Registry-Auszug, Vorrendern, Audit-Daten).</div>
                     </div>
                     <div className="p-2.5 bg-white rounded-lg border border-home-grau/15">
-                      <div className="font-bold text-text-main">KaTeX (react-katex 3.1)</div>
-                      <div className="text-text-main/70 text-[11px]">Mathematisch exaktes Formel-Rendering von LaTeX-Gleichungen im Fließtext und in Formelblöcken.</div>
+                      <div className="font-bold text-text-main">KaTeX (react-katex)</div>
+                      <div className="text-text-main/70 text-[11px]">Formelsatz im Fließtext und in Formelblöcken; wird erst bei Bedarf geladen.</div>
                     </div>
                     <div className="p-2.5 bg-white rounded-lg border border-home-grau/15">
                       <div className="font-bold text-text-main">Visualisierung &amp; 3D</div>
@@ -651,16 +696,54 @@ export default function Beispielfach() {
                     </div>
                   </div>
                 </div>
+
+                {/* Server, Betrieb & Qualitätssicherung */}
+                <div className="p-4 rounded-xl border border-home-grau/20 bg-off-white space-y-3">
+                  <div className="flex items-center gap-2 text-shiraz font-bold text-sm">
+                    <Server size={16} /> Server &amp; Betrieb
+                  </div>
+                  <div className="space-y-2 text-xs">
+                    <div className="p-2.5 bg-white rounded-lg border border-home-grau/15">
+                      <div className="font-bold text-text-main">Express (server.ts)</div>
+                      <div className="text-text-main/70 text-[11px]">Auslieferung der vorgerenderten Seiten, Sicherheits-Header (CSP), Admin-Anmeldung serverseitig.</div>
+                    </div>
+                    <div className="p-2.5 bg-white rounded-lg border border-home-grau/15">
+                      <div className="font-bold text-text-main">Gemini (@google/genai)</div>
+                      <div className="text-text-main/70 text-[11px]">Nur serverseitig, mit Tageslimit; der Schlüssel gelangt nicht ins Frontend.</div>
+                    </div>
+                    <div className="p-2.5 bg-white rounded-lg border border-home-grau/15">
+                      <div className="font-bold text-text-main">Betrieb</div>
+                      <div className="text-text-main/70 text-[11px]">Cloud Run (Frankfurt) mit Load Balancer geplant – Anleitung docs/betrieb-cloud-run.md.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-xl border border-home-grau/20 bg-off-white space-y-3">
+                  <div className="flex items-center gap-2 text-shiraz font-bold text-sm">
+                    <CheckCircle2 size={16} /> Qualitätssicherung
+                  </div>
+                  <div className="space-y-2 text-xs">
+                    <div className="p-2.5 bg-white rounded-lg border border-home-grau/15">
+                      <div className="font-bold text-text-main">Tests (npm test)</div>
+                      <div className="text-text-main/70 text-[11px]">tsx-Testskripte in tests/ – Rechenkerne mit Literaturfällen und Fuzz-Tests, Registry, Inhalte, Quiz.</div>
+                    </div>
+                    <div className="p-2.5 bg-white rounded-lg border border-home-grau/15">
+                      <div className="font-bold text-text-main">QA-Skripte (scripts/qa)</div>
+                      <div className="text-text-main/70 text-[11px]">KaTeX-Formeln, Zahlformat, verwaiste Dateien, any, Bundle-Budget; axe und Mobil-Layout mit Playwright (lokal).</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+            <AuditLaden ansicht="pakete" />
           </div>
         )}
 
-        {/* TAB 6: TOOL-UMFANG, MODULE & CODE-STATISTIK */}
-        {activeTab === 'fragenfreigabe' && <FragenFreigabe />}
+                {activeTab === 'fragenfreigabe' && <FragenFreigabe />}
         {activeTab === 'meine_module' && <MeineModule />}
         {activeTab === 'kurzfragebogen' && <KurzfragebogenAuswertung />}
 
+        {/* TAB 6: TOOL-UMFANG, MODULE & CODE-STATISTIK */}
         {activeTab === 'code_umfang' && (
           <div className="space-y-6">
             <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm space-y-4">
@@ -670,69 +753,24 @@ export default function Beispielfach() {
                   Tool-Umfang, Modulübersicht &amp; Codebasis-Kennzahlen
                 </h3>
                 <span className="text-xs font-mono font-bold px-2.5 py-1 bg-shiraz/10 text-shiraz rounded-full border border-shiraz/20">
-                  Stand: Oktober 2026
+                  Stand: aktueller Build
                 </span>
               </div>
               <p className="text-xs text-text-main/80 leading-relaxed">
-                Das BaustoffBoard umfasst eine der umfangreichsten digitalen Lehr- und Berechnungssammlungen im deutschsprachigen Bauingenieurwesen.
-                Alle Module sind curricular vernetzt und interaktiv bedienbar.
+                Umfang der Plattform: Module, Rechenkerne, Tests, Quizfragen und Codebasis – alle Zahlen beim Build aus dem Quelltext ermittelt.
               </p>
 
-              {/* Kennzahlen-Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
-                <div className="p-4 bg-off-white rounded-xl border border-home-grau/20 text-center">
-                  <span className="text-2xl font-extrabold text-shiraz font-mono block">244+</span>
-                  <span className="text-xs font-semibold text-text-main/70 mt-1 block">Fachmodule (React TSX)</span>
-                </div>
-                <div className="p-4 bg-off-white rounded-xl border border-home-grau/20 text-center">
-                  <span className="text-2xl font-extrabold text-emerald-700 font-mono block">218.000+</span>
-                  <span className="text-xs font-semibold text-text-main/70 mt-1 block">Zeilen Quellcode (LOC)</span>
-                </div>
-                <div className="p-4 bg-off-white rounded-xl border border-home-grau/20 text-center">
-                  <span className="text-2xl font-extrabold text-indigo-700 font-mono block">320+</span>
-                  <span className="text-xs font-semibold text-text-main/70 mt-1 block">TypeScript-Dateien</span>
-                </div>
-                <div className="p-4 bg-off-white rounded-xl border border-home-grau/20 text-center">
-                  <span className="text-2xl font-extrabold text-amber-700 font-mono block">17</span>
-                  <span className="text-xs font-semibold text-text-main/70 mt-1 block">Arbeitspakete (AP 01–17)</span>
-                </div>
-              </div>
+              {/* Kennzahlen aus dem Quelltext (scripts/auditDaten.ts, beim Build erzeugt) */}
+              <AuditLaden ansicht="kennzahlen" />
 
-              {/* Detaillierte Modul- & Code-Aufteilung */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-                <div className="p-4 rounded-xl border border-home-grau/20 bg-off-white space-y-2.5">
-                  <span className="text-xs font-bold text-shiraz uppercase tracking-wider block">Verteilung der Codebasis</span>
-                  <table className="w-full text-xs text-left">
-                    <tbody className="divide-y divide-home-grau/15">
-                      <tr>
-                        <td className="py-2 font-semibold text-text-main">Fachmodule (/src/modules)</td>
-                        <td className="py-2 text-right font-mono font-bold text-shiraz">~187.600 Zeilen (244 Dateien)</td>
-                      </tr>
-                      <tr>
-                        <td className="py-2 font-semibold text-text-main">Wiederverwendbare UI-Komponenten (/src/components)</td>
-                        <td className="py-2 text-right font-mono font-bold text-indigo-700">~20.300 Zeilen (38 Dateien)</td>
-                      </tr>
-                      <tr>
-                        <td className="py-2 font-semibold text-text-main">Normen-, Material- &amp; Aufgabendaten (/src/data)</td>
-                        <td className="py-2 text-right font-mono font-bold text-emerald-700">~5.650 Zeilen (27 Dateien)</td>
-                      </tr>
-                      <tr>
-                        <td className="py-2 font-semibold text-text-main">App-Router, Contexts, i18n &amp; Utils</td>
-                        <td className="py-2 text-right font-mono font-bold text-slate-700">~4.600 Zeilen</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
+              <div className="grid grid-cols-1 gap-4 pt-2">
                 <div className="p-4 rounded-xl border border-home-grau/20 bg-off-white space-y-2.5">
                   <span className="text-xs font-bold text-shiraz uppercase tracking-wider block">Thematische Kerncluster</span>
+                  {/* aus src/data/metaClusters.ts (Menügruppen je Cluster), nicht von Hand */}
                   <ul className="text-xs text-text-main/80 space-y-1.5 list-disc list-inside">
-                    <li><strong>Cluster I:</strong> Grundlagen, Bauchemie, Labor- &amp; Prüftechnik, Diagnostik, Statistik</li>
-                    <li><strong>Cluster II:</strong> Mineralische Baustoffe, Metalle, Holz, Kunststoffe, Asphalt, Bauprodukte</li>
-                    <li><strong>Cluster III:</strong> Betontechnologie, Massivbau &amp; Eurocodes, WU-Bauwerke, Holzbau, Ausbau</li>
-                    <li><strong>Cluster IV:</strong> Mechanik, Festigkeitslehre, Bauphysik (Wärme, Feuchte, Schall, Brand)</li>
-                    <li><strong>Cluster V:</strong> Nachhaltigkeit, Zirkularität, LCA/LCC, Rückbau &amp; Recycling</li>
-                    <li><strong>Cluster VI:</strong> Bauen im Bestand, Denkmalpflege, Schäden, SHM, Instandsetzung &amp; ZfP</li>
+                    {META_CLUSTERS.map(c => (
+                      <li key={c.number}><strong>Cluster {c.number} · {c.name}:</strong> {c.groupNames.join(', ')}</li>
+                    ))}
                   </ul>
                 </div>
               </div>
@@ -758,9 +796,9 @@ export default function Beispielfach() {
         ]}
         formeln={[
           {
-            formel: 'E_{\\text{Audit}} = \\frac{1}{N} \\sum_{i=1}^N \\left( \\prod_{j=1}^6 D_{i,j} \\right) = 1{,}00 \\quad (100\\,\\%)',
-            erklaerung: 'Audit-Gesamterfüllungsgrad aller Arbeitspakete über alle 6 Prüfdimensionen. Erfüllung erfordert lückenlose Vollständigkeit (D3 = 1).',
-            quelle: 'Qualitätsprüfung THA'
+            formel: '\\bar{N} = \\frac{1}{6} \\sum_{k=1}^{6} N_k',
+            erklaerung: 'Ungewichteter Mittelwert der Noten N_k der sechs Gutachten-Kategorien (Technik, Rechner, Didaktik, Bedienung/Barrierefreiheit, Recht, Profil); Zielbild „sehr gut“: jede Note ≤ 1,3.',
+            quelle: 'Gutachten 27.10.2026 (Admin → Audit)'
           }
         ]}
       />

@@ -9,12 +9,13 @@ import { InlineMath } from 'react-katex';
 import { Activity, Waves, Hammer, Droplets, AlertTriangle } from 'lucide-react';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import inhalt from '@/content/zfp/MechanischTab.json';
+import type { PruefWinkel } from '@/src/calc/pruefverfahren';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import type { Hinweis } from '@/src/calc/plausibilitaet';
 
 export interface MechanischTabProps {
-  angle: '0' | '90' | '-90';
+  angle: PruefWinkel;
   chartData: { labels: number[]; datasets: ({ label: string; data: number[]; borderColor: string; backgroundColor: string; borderWidth: number; tension: number; borderDash?: undefined; } | { label: string; data: number[]; borderColor: string; backgroundColor: string; borderWidth: number; borderDash: number[]; tension: number; })[]; };
   karstenAbsorbed: number;
   karstenResults: { w: number; tHours: number; eingruppierung: string; textClass: string; color: string; detailtext: string; hinweise: readonly Hinweis[]; };
@@ -23,7 +24,7 @@ export interface MechanischTabProps {
   rebound: number;
   reboundResults: { rCorr: number; fc: number; hinweise: readonly Hinweis[]; };
   renderEmbeddedGeraete: (tabKey: string, deviceIds: string[]) => React.JSX.Element | null;
-  setAngle: React.Dispatch<React.SetStateAction<'0' | '90' | '-90'>>;
+  setAngle: React.Dispatch<React.SetStateAction<PruefWinkel>>;
   setKarstenAbsorbed: React.Dispatch<React.SetStateAction<number>>;
   setKarstenTime: React.Dispatch<React.SetStateAction<number>>;
   setRebound: React.Dispatch<React.SetStateAction<number>>;
@@ -71,11 +72,13 @@ export default function MechanischTab({ angle, chartData, karstenAbsorbed, karst
               <select aria-label={inhalt.werte.prüfrichtungWinkel} 
                 className="p-2 border border-home-grau/30 rounded-md bg-slate-50 focus:outline-none focus:border-shiraz text-sm"
                 value={angle}
-                onChange={(e) => setAngle(e.target.value as "0" | "90" | "-90")}
+                onChange={(e) => setAngle(e.target.value as PruefWinkel)}
               >
+                <option value="90">Senkrecht nach oben (+90°, Decke)</option>
+                <option value="45">Schräg nach oben (+45°)</option>
                 <option value="0">Horizontal (0°)</option>
-                <option value="90">Nach unten (+90°)</option>
-                <option value="-90">Nach oben (-90°)</option>
+                <option value="-45">Schräg nach unten (−45°)</option>
+                <option value="-90">Senkrecht nach unten (−90°, Boden)</option>
               </select>
             </div>
 

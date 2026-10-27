@@ -13,12 +13,12 @@
  * Methode und Kennwerte im BNB-Steckbrief 2.1.1 (BNB_BK 2017, aktualisiert): Diskontierungszins 1,5 %,
  * Preissteigerung Bau/Dienstleistungen 2 %/a, Energie 5 %/a, Betrachtungszeitraum 50 a, keine Erneuerung im Jahr 50.
  *
- * Restwert: Reicht die Nutzungsdauer des zuletzt eingebauten Bauteils über das Betrachtungsende N hinaus, wird
- * sein Restwert linear angesetzt – R = K_Einbau · (Restnutzungsdauer/Nutzungsdauer), im Jahr N abgezinst und von den
- * Kosten abgezogen. Quelle: Delegierte Verordnung (EU) Nr. 244/2012, Anhang I Nr. 4.2 (5) (lineare Abschreibung der
- * Anfangs- bzw. Ersatzinvestition bis zum Ende des Berechnungszeitraums, abgezinst auf den Beginn). Der BNB-Steckbrief
- * 2.1.1 enthält keine ausdrückliche Restwertregel (keine Erneuerung im 50. Jahr, kein Restwertterm in der Summenformel);
- * mit restwertLinear = false wird ohne Restwert gerechnet (Prüfpunkt F-Freigabe Prof. Huber).
+ * Restwert (Entscheidung Prof. Huber, 27.10.): Standard ist BNB-konform OHNE Restwert – der BNB-Steckbrief 2.1.1
+ * enthält keine Restwertregel (keine Erneuerung im 50. Jahr, kein Restwertterm in der Summenformel). Zum Vergleich kann
+ * mit restwertLinear = true ein linearer Restwert angesetzt werden: Reicht die Nutzungsdauer des zuletzt eingebauten
+ * Bauteils über das Betrachtungsende N hinaus, gilt R = K_Einbau · (Restnutzungsdauer/Nutzungsdauer), im Jahr N
+ * abgezinst und von den Kosten abgezogen. Quelle: Delegierte Verordnung (EU) Nr. 244/2012, Anhang I Nr. 4.2 (5)
+ * (lineare Abschreibung der Anfangs- bzw. Ersatzinvestition bis zum Ende des Berechnungszeitraums, abgezinst auf den Beginn).
  * Lehr- und Vorbemessungswerkzeug; ersetzt keine Wirtschaftlichkeitsberechnung nach DIN 18960 / ISO 15686-5.
  */
 import { type Hinweis, bereich, hatFehler, istEndlich, muss } from './plausibilitaet';
@@ -104,7 +104,7 @@ export interface LccParameter {
   co2Steigerung: number;
   /** Investitionsförderung für Option B [%]; 0 = keine Förderung */
   foerderungB: number;
-  /** linearer Restwert am Betrachtungsende (Del. VO (EU) 244/2012); Standard true, false = ohne Restwert */
+  /** linearer Restwert am Betrachtungsende (Del. VO (EU) 244/2012) zum Vergleich; Standard false = ohne Restwert (BNB 2.1.1) */
   restwertLinear?: boolean;
 }
 
@@ -215,7 +215,7 @@ export function lccOption(opt: LccOption, p: LccParameter, foerderung: number): 
   const eolNom = opt.eolCost * steigerungsfaktor(i, N);
   const eolDisc = eolNom / Math.pow(1 + r, N);
   // linearer Restwert des zuletzt eingebauten Bauteils (Gutschrift), abgezinst mit r
-  const restwertNominal = N >= 1 && p.restwertLinear !== false ? restwertLinear(capex, opt.replacementCost, opt.lifespan, N, i).restwert : 0;
+  const restwertNominal = N >= 1 && p.restwertLinear === true ? restwertLinear(capex, opt.replacementCost, opt.lifespan, N, i).restwert : 0;
   const restwertDiscounted = restwertNominal / Math.pow(1 + r, N);
   const totalLCCDiscounted = capex + initialCO2Cost + cumulativeOpExDiscounted + cumulativeMaintenanceDiscounted
     + cumulativeReplacementDiscounted + cumulativeCO2Discounted + eolDisc - restwertDiscounted;
@@ -252,9 +252,9 @@ export function pruefeLcc(a: LccOption, b: LccOption, p: LccParameter): Hinweis[
     const n = ersatzzyklen(o.lifespan, p.N);
     const rest = (n + 1) * o.lifespan - p.N;
     if (rest > 0) {
-      h.push({ stufe: 'warnung', feld: `option${name}`, text: p.restwertLinear === false
-        ? `Option ${name}: Die Nutzungsdauer (${o.lifespan} a) reicht ${rest} a über das Betrachtungsende hinaus; ohne Restwert gerechnet (BNB 2.1.1 enthält keinen Restwertansatz).`
-        : `Option ${name}: Die Nutzungsdauer (${o.lifespan} a) reicht ${rest} a über das Betrachtungsende hinaus; ${rest}/${o.lifespan} der letzten Investition werden als Restwert gutgeschrieben (linear nach Del. VO (EU) 244/2012; BNB 2.1.1 enthält keinen Restwertansatz).` });
+      h.push({ stufe: 'warnung', feld: `option${name}`, text: p.restwertLinear === true
+        ? `Option ${name}: Die Nutzungsdauer (${o.lifespan} a) reicht ${rest} a über das Betrachtungsende hinaus; ${rest}/${o.lifespan} der letzten Investition werden als Restwert gutgeschrieben (Vergleichsrechnung linear nach Del. VO (EU) 244/2012 – nicht BNB-konform, BNB 2.1.1 enthält keinen Restwertansatz).`
+        : `Option ${name}: Die Nutzungsdauer (${o.lifespan} a) reicht ${rest} a über das Betrachtungsende hinaus; BNB-konform ohne Restwert gerechnet (BNB 2.1.1). Zum Vergleich: Schalter „Restwert linear (Del. VO (EU) 244/2012)“.` });
     }
   }
   return h;

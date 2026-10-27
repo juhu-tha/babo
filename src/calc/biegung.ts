@@ -7,7 +7,7 @@
  * Reiner Rechenkern ohne React – geprüft in tests/biegung.test.ts.
  */
 import { EC2_NA_DE } from '../data/normParams';
-import { fctmVonFck, dehnungsKennwerte } from '../data/kennwerte';
+import { fctmVonFck, dehnungsKennwerte, fcdBeton, fcdHochfestHinweis } from '../data/kennwerte';
 import { formatDeWert, formatDeZahl } from '../utils/numberFormat';
 import { type Hinweis, bereich, hatFehler, istEndlich, muss } from './plausibilitaet';
 
@@ -91,7 +91,10 @@ export function bemesseBiegung(e: BiegungEingabe): BiegungErgebnis {
 
   const isStahl = e.bewehrung === 'Stahl';
   const Es = e.Es ?? 200000;
-  const fcd = (EC2_NA_DE.alphaCC * e.fck) / EC2_NA_DE.gammaC;
+  // f_cd zentral (src/data/kennwerte.ts): α_cc·f_ck/γ_c, ab C55/67 · (1,1 − f_ck/500) (vorläufig, F-Freigabe)
+  const fcd = fcdBeton(e.fck);
+  const hfHinweis = fcdHochfestHinweis(e.fck);
+  if (hfHinweis) hinweise.push({ stufe: 'warnung', feld: 'fck', text: hfHinweis });
   const fyd = isStahl ? e.fyk / EC2_NA_DE.gammaS : e.ftk / e.gammaFRP;
   const d = e.h - e.d1;
   const b_m = e.b / 100, d_m = d / 100, d2_m = e.d2 / 100;

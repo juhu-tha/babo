@@ -47,8 +47,9 @@ pruefe(barwertfaktorPreissteigerung(BNB_211.r, BNB_211.pEnergie, BNB_211.N) > 50
 //    (Entscheidung Prof. Huber 26.10.): (a) Preissteigerung ab dem 2. Jahr – Exponent yr − 1 statt yr
 //    (BNB 2.1.1, S. A7); (b) linearer Restwert des zuletzt eingebauten Bauteils am Betrachtungsende, abgezinst
 //    (Delegierte Verordnung (EU) Nr. 244/2012, Anhang I Nr. 4.2 (5)). Mit alteRegel = true die frühere Rechnung.
+//    Entscheidung Prof. Huber 27.10.: Restwert nur noch als Vergleichsschalter (Standard AUS, BNB 2.1.1 ohne Restwert).
 const SZ = inhalt.daten.SCENARIOS as { id: string; optionA: LccOption; optionB: LccOption }[];
-function alt(opt: LccOption, isB: boolean, P: { r: number; e: number; i: number; N: number; co2: boolean; co2P: number; co2E: number; sub: boolean; subP: number }, alteRegel = false) {
+function alt(opt: LccOption, isB: boolean, P: { r: number; e: number; i: number; N: number; co2: boolean; co2P: number; co2E: number; sub: boolean; subP: number }, alteRegel = false, mitRestwert = false) {
   const { r, e, i, N } = P;
   const capex = P.sub && isB ? opt.capex * (1 - P.subP / 100) : opt.capex;
   let o = 0, m = 0, rp = 0, c = 0;
@@ -66,7 +67,7 @@ function alt(opt: LccOption, isB: boolean, P: { r: number; e: number; i: number;
   }
   // Restwert: letzter Einbau im Jahr tE (0 = Erstinvestition), Restnutzungsdauer tE + L − N
   let rw = 0;
-  if (!alteRegel) {
+  if (!alteRegel && mitRestwert) {
     let tE = 0;
     while (tE + opt.lifespan < N) tE += opt.lifespan;
     const rest = tE + opt.lifespan - N;
@@ -79,11 +80,16 @@ pruefe(SZ.length === 3, 'drei Szenarien');
 for (const sz of SZ) {
   for (const [r, e, i, N, co2, sub] of [[2, 3, 1.5, 50, true, true], [0.5, 8, 0, 10, false, false], [6, 0, 5, 80, true, false], [3.5, 3.5, 2, 33, false, true]] as const) {
     const P: LccParameter = { r: r / 100, e: e / 100, i: i / 100, N, co2Bepreisung: co2, co2Preis: 120, co2Steigerung: 0.03, foerderungB: sub ? 20 : 0 };
-    const v = lccVergleich(sz.optionA, sz.optionB, P);
     const PA = { r: r / 100, e: e / 100, i: i / 100, N, co2, co2P: 120, co2E: 3, sub, subP: 20 };
-    pruefe(v.gueltig && nahe(v.resultA.totalLCCDiscounted, alt(sz.optionA, false, PA), 1e-12), `${sz.id} A (${r}/${e}/${i}/${N})`);
-    pruefe(nahe(v.resultB.totalLCCDiscounted, alt(sz.optionB, true, PA), 1e-12), `${sz.id} B (${r}/${e}/${i}/${N})`);
-    pruefe(nahe(v.saving, v.resultA.totalLCCDiscounted - v.resultB.totalLCCDiscounted, 1e-12), `${sz.id} Ersparnis`);
+    for (const mitRw of [false, true]) {
+      const v = lccVergleich(sz.optionA, sz.optionB, { ...P, restwertLinear: mitRw });
+      pruefe(v.gueltig && nahe(v.resultA.totalLCCDiscounted, alt(sz.optionA, false, PA, false, mitRw), 1e-12), `${sz.id} A (${r}/${e}/${i}/${N}, Restwert ${mitRw})`);
+      pruefe(nahe(v.resultB.totalLCCDiscounted, alt(sz.optionB, true, PA, false, mitRw), 1e-12), `${sz.id} B (${r}/${e}/${i}/${N}, Restwert ${mitRw})`);
+      pruefe(nahe(v.saving, v.resultA.totalLCCDiscounted - v.resultB.totalLCCDiscounted, 1e-12), `${sz.id} Ersparnis`);
+    }
+    // Standard (Schalter nicht gesetzt) = ohne Restwert (BNB 2.1.1)
+    const vStd = lccVergleich(sz.optionA, sz.optionB, P);
+    pruefe(vStd.resultA.restwertNominal === 0 && vStd.resultB.restwertNominal === 0 && nahe(vStd.resultA.totalLCCDiscounted, alt(sz.optionA, false, PA), 1e-12), `${sz.id}: Standard ohne Restwert`);
   }
   // Brücke zur alten Rechnung: ohne Preissteigerungen und ohne Restwert sind alte und neue Regel identisch
   const P0: LccParameter = { r: 0.02, e: 0, i: 0, N: 50, co2Bepreisung: true, co2Preis: 120, co2Steigerung: 0, foerderungB: 20, restwertLinear: false };
@@ -106,18 +112,19 @@ pruefe(nahe(lccOption(dm.optionB, stdP, 15).capex, dm.optionB.capex * 0.85, 1e-1
 
 // 5. Randfälle
 const nullOpt: LccOption = { capex: 1000, opex0: 0, maintenanceInterval: 1, maintenanceCost: 0, lifespan: 100, replacementCost: 0, eolCost: 0, embodiedCO2: 0, operatingCO2: 0 };
-pruefe(lccOption(nullOpt, { ...stdP, N: 1, restwertLinear: false }, 0).totalLCCDiscounted === 1000, 'nur Investition (ohne Restwert)');
+pruefe(lccOption(nullOpt, { ...stdP, N: 1 }, 0).totalLCCDiscounted === 1000, 'nur Investition (Standard ohne Restwert)');
 // Restwert linear (Del. VO (EU) 244/2012, Anhang I Nr. 4.2 (5)), Handrechnung:
 //  a) Nutzungsdauer 100 a, N = 50 a → 50/100 der Investition 1 000 € = 500 €, abgezinst mit 1,03^50
-const rwA = lccOption(nullOpt, { ...stdP, r: 0.03, N: 50 }, 0);
+const rwA = lccOption(nullOpt, { ...stdP, r: 0.03, N: 50, restwertLinear: true }, 0);
 pruefe(nahe(rwA.restwertNominal, 500, 1e-12) && nahe(rwA.restwertDiscounted, 500 / Math.pow(1.03, 50), 1e-12) && nahe(rwA.totalLCCDiscounted, 1000 - 500 / Math.pow(1.03, 50), 1e-12), 'Restwert 50/100 der Investition');
 //  b) Nutzungsdauer 30 a, N = 50 a → Ersatz im Jahr 30 (2 000 € · 1,02^29), Rest 10/30 davon
 const rwB = restwertLinear(1000, 2000, 30, 50, 0.02);
 pruefe(rwB.einbaujahr === 30 && rwB.restnutzungsdauer === 10 && nahe(rwB.restwert, 2000 * Math.pow(1.02, 29) / 3, 1e-12), 'Restwert nach Ersatz 10/30');
 //  c) Nutzungsdauer teilt N (25 a, 50 a) → kein Restwert; Förderung mindert die Restwertbasis der Investition
 pruefe(restwertLinear(1000, 2000, 25, 50, 0.02).restwert === 0 && restwertLinear(1000, 2000, 50, 50, 0.02).restwert === 0, 'L teilt N → kein Restwert');
-pruefe(nahe(lccOption(nullOpt, { ...stdP, N: 50 }, 20).restwertNominal, 800 * 0.5, 1e-12), 'Restwertbasis = Investition nach Förderung');
+pruefe(nahe(lccOption(nullOpt, { ...stdP, N: 50, restwertLinear: true }, 20).restwertNominal, 800 * 0.5, 1e-12), 'Restwertbasis = Investition nach Förderung');
 pruefe(lccOption(nullOpt, { ...stdP, N: 50, restwertLinear: false }, 0).restwertNominal === 0, 'restwertLinear = false → 0');
+pruefe(lccOption(nullOpt, { ...stdP, N: 50 }, 0).restwertNominal === 0 && lccOption(nullOpt, { ...stdP, N: 50 }, 0).totalLCCDiscounted === 1000, 'Standard (nicht gesetzt) → kein Restwert (BNB 2.1.1)');
 const eol = lccOption({ ...nullOpt, capex: 0, eolCost: -1000 }, { ...stdP, r: 0.03, i: 0, N: 20 }, 0);
 pruefe(nahe(eol.eolDiscounted, -1000 * abzinsungsfaktor(0.03, 20), 1e-12), 'Restwerterlös abgezinst (negativ)');
 pruefe(lccOption(nullOpt, stdP, 100).capex === 0, 'Förderung 100 % → Investition 0');
@@ -129,8 +136,8 @@ pruefe(!v0({ r: -1 }).gueltig && !v0({ r: NaN }).gueltig, 'r ≤ −100 % / NaN 
 pruefe(!v0({ foerderungB: 120 }).gueltig && !v0({ co2Preis: -5 }).gueltig, 'Förderung > 100 %, CO₂-Preis < 0 → Fehler');
 pruefe(!v0({}, { lifespan: 0 }).gueltig && !v0({}, { maintenanceInterval: 2.5 }).gueltig, 'Intervalle → Fehler');
 pruefe(v0({ r: 0.08 }).hinweise.some(h => h.feld === 'r' && h.stufe === 'warnung'), 'r = 8 % → Warnung');
-pruefe(v0({}).hinweise.some(h => /Restwert/.test(h.text) && /gutgeschrieben/.test(h.text)), 'Nutzungsdauer 30 a bei N = 50 → Restwert-Hinweis (linear)');
-pruefe(v0({ restwertLinear: false }).hinweise.some(h => /ohne Restwert/.test(h.text)), 'ohne Restwert → Hinweis');
+pruefe(v0({ restwertLinear: true }).hinweise.some(h => /Restwert/.test(h.text) && /gutgeschrieben/.test(h.text)), 'Nutzungsdauer 30 a bei N = 50, Schalter an → Restwert-Hinweis (linear)');
+pruefe(v0({}).hinweise.some(h => /BNB-konform ohne Restwert/.test(h.text)) && !v0({}).hinweise.some(h => /gutgeschrieben/.test(h.text)), 'Standard → Hinweis „BNB-konform ohne Restwert“');
 pruefe(!pruefeLcc({ ...nullOpt, lifespan: 25 }, { ...nullOpt, lifespan: 50 }, stdP).length, 'passende Nutzungsdauern → keine Hinweise');
 pruefe(Number.isNaN(lccVergleich({ ...nullOpt, capex: 0 }, nullOpt, stdP).percentSaving), 'LCC_A = 0 → keine Prozentangabe');
 
