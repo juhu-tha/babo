@@ -82,11 +82,14 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     ],
   },
   schallschutz: {
-    kurz: 'Bewertetes Schalldämm-Maß einschaliger massiver Bauteile über die Massekurve nach DIN 4109-32.',
+    kurz: 'Bewertetes Schalldämm-Maß einschaliger massiver Bauteile über die Massekurve nach DIN 4109-32 und bewerteter Norm-Trittschallpegel L′_n,w von Massivdecken mit schwimmendem Estrich nach DIN 4109-2.',
     grenzen: [
       'R_w = 30,9·lg(m′) − 22,2 dB, gültig für 65 ≤ m′ ≤ 720 kg/m².',
       'Nur einschalige, biegesteife Bauteile; Vorsatzschalen, WDVS und Holzbau (Masse-Feder-Masse) werden nicht abgebildet.',
       'Ohne Flankenübertragung, also kein Nachweis von R′_w zwischen Räumen.',
+      'Trittschall: L_n,eq,0,w = 164 − 35·lg m′ nur für Massivdecken mit 100 ≤ m′ ≤ 720 kg/m²; keine Holz-, Hohl- oder Rippendecken, keine Unterdecken.',
+      'Trittschall: ΔL_w-Näherung für Nassestriche, Korrekturwert K = 0,6 + 5,5·lg(m′_s/m′_f,m) und die Anforderungswerte sind vorläufig (F-Freigabe); Herstellerprüfwerte und Bodenbeläge werden nicht berücksichtigt.',
+      'Trittschall: Diagonal- und Treppenübertragung, Schallbrücken und Estrichdröhnen werden nicht abgebildet; u_prog = 3 dB pauschal.',
     ],
   },
   bp_glaeser: {
@@ -125,11 +128,13 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     ],
   },
   bodenmechanik: {
-    kurz: 'Zustandsgrenzen und Klassifikation nach DIN 18196, Mohr-Coulomb, Erddruck nach Rankine und Konsolidierung nach Terzaghi.',
+    kurz: 'Zustandsgrenzen, Auswertung des Fließgrenzenversuchs nach Casagrande und Klassifikation nach DIN 18196, Mohr-Coulomb, Erddruck nach Rankine und Konsolidierung nach Terzaghi.',
     grenzen: [
+      'Fließgrenze: Ausgleichsgerade w über lg N (Mehrpunktverfahren); Einpunktverfahren mit dem Exponenten 0,121 (ASTM D4318) vorläufig (F-Freigabe).',
+      'Ausrollgrenze als einfacher Mittelwert; die zulässige Streuung von 2 Prozentpunkten ist eine Lehrannahme.',
       'Erddruck: glatte, lotrechte Wand, waagerechtes Gelände, kohäsionsloser Boden ohne Wasser.',
       'Konsolidierung eindimensional mit konstantem c_v und E_s, Näherungsformel für U(T_v).',
-      'Klassifikation nur über das Plastizitätsdiagramm, ohne Korngrößen- und organische Anteile.',
+      'Klassifikation nur über das Plastizitätsdiagramm, ohne Korngrößenverteilung; organische Beimengungen (OU/OT) nur nach Angabe, ohne Glühverlust.',
     ],
   },
   // Weitere Rechner (Durchsicht 24.10.2026, Belege im PR)
@@ -193,6 +198,8 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Grubbs-Test vereinfacht (nicht iterativ), Boxplot-Quartile ohne Interpolation.",
       "Normalverteilung angenommen, keine log-normale Auswertung.",
       "x_d ohne k_mod und ohne Umrechnungsfaktor η.",
+      "t-Test: unabhängige, annähernd normalverteilte Werte vorausgesetzt (nicht geprüft); t-Verteilung numerisch (Betafunktion), p-Werte unter 0,0001 nur als Schranke.",
+      "t-Test ersetzt keine Konformitätsbewertung nach DIN EN 206/DIN 1045-2; statistische Signifikanz ist nicht gleich technischer Relevanz.",
     ],
   },
   festbeton_statistik: {

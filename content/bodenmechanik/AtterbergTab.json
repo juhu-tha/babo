@@ -1,0 +1,49 @@
+{
+  "texte": {
+    "ueberschrift": "Atterberg-Grenzen: Versuch, Auswertung und Plastizitätsdiagramm",
+    "einleitung": "Die **Zustandsgrenzen nach Atterberg** trennen die Zustandsformen bindiger Böden: Die **Fließgrenze** $w_L$ liegt zwischen flüssig und bildsam, die **Ausrollgrenze** $w_P$ zwischen bildsam und halbfest. Bestimmt werden sie am Feinanteil (Korn < 0,4 mm) nach DIN EN ISO 17892-12.",
+    "casagrande": "**Fließgrenzenversuch nach Casagrande:** Die Bodenpaste wird in die Schale gestrichen und mit dem Furchenzieher geteilt. Die Schale fällt zweimal je Sekunde aus 10 mm Höhe, bis sich die Furche auf 10 mm Länge schließt; die Schlagzahl $N$ wird notiert und der Wassergehalt bestimmt. **Mehrpunktverfahren:** mindestens 4 Versuche mit 15 bis 40 Schlägen, von trocken nach nass. Im halblogarithmischen Diagramm ($w$ über $\\lg N$) ergibt sich eine Gerade; $w_L$ ist der Wassergehalt bei $N = 25$.",
+    "einpunkt": "**Einpunktverfahren:** Bei einem einzelnen Versuch mit etwa 20 bis 30 Schlägen wird $w_L \\approx w_N \\cdot (N/25)^{0{,}121}$ angesetzt (Neigung der Fließkurve als Erfahrungswert, ASTM D4318). Der Exponent für DIN EN ISO 17892-12 ist vorläufig (F-Freigabe); für Nachweise gilt das Mehrpunktverfahren.",
+    "ausroll": "**Ausrollgrenze:** Eine Bodenprobe wird auf einer saugfähigen Unterlage zu Walzen von 3 mm Durchmesser ausgerollt, bis diese zerbröckeln. Der Wassergehalt der zerbröckelten Walzen ist $w_P$; ausgewertet wird der Mittelwert mehrerer Versuche.",
+    "kennzahlen": "**Kennzahlen:** Plastizitätszahl $I_P = w_L - w_P$ (Breite des bildsamen Bereichs), Konsistenzzahl $I_C = (w_L - w)/I_P$ mit dem natürlichen Wassergehalt $w$. $I_C < 0$: flüssig; 0 bis 0,5: breiig; 0,5 bis 0,75: weich; 0,75 bis 1,0: steif; über 1,0: halbfest bis fest.",
+    "diagramm": "**Plastizitätsdiagramm nach Casagrande (DIN 18196):** Die **A-Linie** $I_P = 0{,}73 \\cdot (w_L - 20)$ trennt Tone (oberhalb) von Schluffen (unterhalb). Die Grenzen $w_L = 35$ % und $w_L = 50$ % unterscheiden leicht, mittel und ausgeprägt plastische Böden: TL/TM/TA bzw. UL/UM/UA. Zwischen $I_P = 4$ % und 7 % oberhalb der A-Linie liegt der Zwischenbereich UL/TL. Organogene Böden (OU, OT) erkennt man nicht am Diagramm, sondern an Glühverlust, Geruch und Farbe.",
+    "rechnerTitel": "Versuchsdaten",
+    "ergebnisTitel": "Auswertung",
+    "fliessTitel": "Fließkurve: Wassergehalt über Schlagzahl",
+    "plastTitel": "Plastizitätsdiagramm mit A-Linie und Bodengruppen"
+  },
+  "werte": {
+    "versuch": "Versuch",
+    "schlaege": "Schlagzahl N",
+    "wassergehalt": "Wassergehalt w (%)",
+    "hinzufuegen": "+ Versuch",
+    "entfernen": "Versuch entfernen",
+    "ausroll": "Ausrollversuche w_P (%), getrennt durch Leerzeichen",
+    "wNat": "natürlicher Wassergehalt w",
+    "organisch": "organische Beimengungen festgestellt (Glühverlust, Geruch, Farbe)",
+    "lernzielTitel": "Atterberg-Grenzen und Plastizitätsdiagramm",
+    "messpunkte": "Messpunkte",
+    "ausgleich": "Ausgleichsgerade",
+    "achseN": "Schlagzahl N",
+    "achseW": "Wassergehalt w (%)",
+    "aLinie": "A-Linie I_P = 0,73 · (w_L − 20)",
+    "probe": "Probe",
+    "grenzen": "Grenzen w_L = 35 % und 50 %",
+    "zwischen": "I_P = 4 % und 7 %",
+    "achseWL": "Fließgrenze w_L (%)",
+    "achseIP": "Plastizitätszahl I_P (%)",
+    "zusFliess": "Fließkurve des Casagrande-Versuchs: gemessene Wassergehalte über der Schlagzahl und Ausgleichsgerade w = a + b · lg N; die Fließgrenze ist der Wert bei N = 25.",
+    "zusPlast": "Plastizitätsdiagramm nach Casagrande: A-Linie, Grenzen w_L = 35 % und 50 %, Hilfslinien I_P = 4 % und 7 % sowie die ausgewertete Probe als Punkt.",
+    "rechenwegTitel": "Ihr Rechenweg: Atterberg-Grenzen",
+    "ergebnisHinweis": "Lehr- und Vorbemessungswerkzeug: Die Bodengruppe aus dem Plastizitätsdiagramm gilt nur für feinkörnige Böden; Korngrößenverteilung und Organik gesondert prüfen.",
+    "normQuelle": "DIN EN ISO 17892-12, DIN 18196, DIN 18122"
+  },
+  "daten": {
+    "lernziele": [
+      { "level": "verstehen", "levelLabel": "2. Verstehen", "verb": "Beschreiben", "description": "den Fließgrenzenversuch nach Casagrande und den Ausrollversuch in ihren Arbeitsschritten beschreiben." },
+      { "level": "anwenden", "levelLabel": "3. Anwenden", "verb": "Auswerten", "description": "w_L aus einer Fließkurve (Mehrpunktverfahren) oder nach dem Einpunktverfahren bestimmen sowie w_P mitteln." },
+      { "level": "anwenden", "levelLabel": "3. Anwenden", "verb": "Berechnen", "description": "I_P und I_C berechnen und die Zustandsform des Bodens angeben." },
+      { "level": "bewerten", "levelLabel": "4. Bewerten", "verb": "Einordnen", "description": "einen feinkörnigen Boden im Plastizitätsdiagramm einer Bodengruppe nach DIN 18196 zuordnen und die Grenzen dieser Zuordnung begründen." }
+    ]
+  }
+}

@@ -1,5 +1,5 @@
 // Rechenkerne Schallschutz und Fenster (Umsetzungsplan Phase 4, AP 4.3)
-import { rwMassiv, schalldaemmung } from '../src/calc/schall';
+import { rwMassiv, schalldaemmung, lnEq0w, resonanzfrequenzEstrich, deltaLwNassestrich, deltaLFrequenz, korrekturwertK, trittschall, ANFORDERUNGEN_TRITTSCHALL, U_PROG_TRITTSCHALL, type TrittschallEingabe } from '../src/calc/schall';
 import { uwFenster, PSI_ABSTANDHALTER } from '../src/calc/fenster';
 
 const fehler: string[] = [];
@@ -25,6 +25,49 @@ pruefe(nahe(f.Ag, 1.2726, 1e-9) && nahe(f.lg, 4.54, 1e-9) && nahe(f.uw, 0.8452, 
 // Grenzfall ohne Rahmen: U_w = U_g; Rahmen zu breit → Fehler (vorher stiller Ersatz 0,1 m Glasbreite)
 pruefe(nahe(uwFenster({ breite: 1, hoehe: 1, rahmenMm: 0, ug: 1.1, uf: 1.3, psi: 0, g: 0.6, strahlung: 0 }).uw, 1.1, 1e-12), 'U_w = U_g ohne Rahmen');
 pruefe(uwFenster({ breite: 0.2, hoehe: 1, rahmenMm: 110, ug: 1, uf: 1, psi: 0.04, g: 0.5, strahlung: 0 }).hinweise.some(x => x.stufe === 'fehler'), 'Rahmen zu breit');
+
+// 3. Trittschall (Z24) – Deckenverfahren nach DIN 4109-2: L'_n,w = L_n,eq,0,w − ΔL_w + K, Nachweis mit u_prog = 3 dB
+//    L_n,eq,0,w = 164 − 35·lg m' (DIN 4109-32, öffentlich wiedergegeben im Schöck-Handout 2018):
+//    m' = 300 → 164 − 35·2,4771 = 77,30 dB; m' = 500 → 69,54 dB; Verdopplung der Masse → −35·lg 2 = −10,5 dB
+pruefe(nahe(lnEq0w(300), 77.30, 0.005) && nahe(lnEq0w(500), 69.536, 0.001) && nahe(lnEq0w(200) - lnEq0w(400), 35 * Math.log10(2), 1e-12), 'L_n,eq,0,w-Stützwerte');
+//    f₀ = 160·√(s'/m'): s' = 20 MN/m³, m' = 100 kg/m² → 71,55 Hz; (1/2π)·√(20·10⁶/100) = 71,18 Hz (Rundung 160 statt 159,2)
+pruefe(nahe(resonanzfrequenzEstrich(20, 100), 71.554, 1e-3) && nahe(resonanzfrequenzEstrich(20, 100), Math.sqrt(20e6 / 100) / (2 * Math.PI), 0.4), 'f₀ Masse-Feder');
+//    ΔL(f) = 30·lg(f/f₀): eine Oktave über f₀ → 9,03 dB, unterhalb f₀ → 0
+pruefe(nahe(deltaLFrequenz(200, 100), 30 * Math.log10(2), 1e-12) && deltaLFrequenz(50, 100) === 0, 'ΔL(f)');
+//    ΔL_w (vorläufig, F-Freigabe): 13·lg 100 − 14,2·lg 20 + 20,8 = 26 − 18,475 + 20,8 = 28,33 dB; weichere Dämmung (s' = 10) → +4,27 dB
+pruefe(nahe(deltaLwNassestrich(100, 20), 28.3254, 1e-4) && nahe(deltaLwNassestrich(100, 10) - deltaLwNassestrich(100, 20), 14.2 * Math.log10(2), 1e-12), 'ΔL_w-Näherung');
+//    K (vorläufig, F-Freigabe): gleiche Massen → 0,6 dB; Decke 4-mal so schwer wie Flanken → 0,6 + 5,5·lg 4 = 3,91 dB; leichtere Decke → 0
+pruefe(nahe(korrekturwertK(300, 300), 0.6, 1e-12) && nahe(korrekturwertK(400, 100), 3.9113, 1e-4) && korrekturwertK(100, 400) === 0, 'K');
+pruefe(U_PROG_TRITTSCHALL === 3 && ANFORDERUNGEN_TRITTSCHALL.some(a => a.wert === 50) && ANFORDERUNGEN_TRITTSCHALL.some(a => a.wert === 53) && ANFORDERUNGEN_TRITTSCHALL.every(a => a.quelle.includes('F-Freigabe')), 'Anforderungen gekennzeichnet');
+
+//    Handbeispiel Wohnungstrenndecke: 18 cm Stahlbeton (2400 kg/m³) + 10 kg/m² Putz → m' = 442 kg/m², L_n,eq,0,w = 71,41 dB;
+//    50 mm Zementestrich (2000 kg/m³) auf s' = 20 MN/m³ → m' = 100 kg/m², f₀ = 71,6 Hz, ΔL_w = 28,33 dB;
+//    Flanken m'_f,m = 250 kg/m² → K = 0,6 + 5,5·lg(442/250) = 1,96 dB; L'_n,w = 71,41 − 28,33 + 1,96 = 45,05 dB; + 3 = 48,05 ≤ 50 dB
+const basisT: TrittschallEingabe = { dDecke: 0.18, rhoDecke: 2400, mZusatz: 10, dEstrich: 0.05, rhoEstrich: 2000, sStrich: 20, mFlanke: 250, zulLnw: 50 };
+const tr = trittschall(basisT);
+pruefe(tr.gueltig && nahe(tr.mDecke, 442, 1e-9) && nahe(tr.lnEq0w, 71.4102, 1e-4) && nahe(tr.mEstrich, 100, 1e-9) && nahe(tr.f0, 71.554, 1e-3), `Trittschall Massen ${JSON.stringify(tr)}`);
+pruefe(nahe(tr.deltaLw, 28.3254, 1e-4) && nahe(tr.k, 1.96115, 1e-5) && nahe(tr.lnwStrich, 45.0460, 1e-4) && nahe(tr.nachweis, 48.0460, 1e-4) && tr.erfuellt && nahe(tr.reserve, 1.954, 1e-3) && tr.hinweise.length === 0, `Trittschall Ergebnis ${tr.lnwStrich} ${tr.hinweise.map(h => h.text)}`);
+//    Grenze: gleiche Decke mit steifer Dämmung s' = 40 → ΔL_w = 24,05 dB, L'_n,w + 3 = 52,32 dB > 50 → nicht erfüllt, aber ≤ 53 (Bestand 1989)
+const steif = trittschall({ ...basisT, sStrich: 40 });
+pruefe(!steif.erfuellt && nahe(steif.nachweis, 52.3206, 1e-4) && trittschall({ ...basisT, sStrich: 40, zulLnw: 53 }).erfuellt, `steife Dämmung ${steif.nachweis}`);
+//    Randfälle: schwere Flanken → K = 0 mit Warnung; dünne Decke außerhalb 100–720 → Warnung; Null-/Negativwerte → Fehler
+pruefe(trittschall({ ...basisT, mFlanke: 600 }).k === 0 && trittschall({ ...basisT, mFlanke: 600 }).hinweise.some(x => x.feld === 'k'), 'K = 0 bei schweren Flanken');
+pruefe(trittschall({ ...basisT, dDecke: 0.03, mZusatz: 0 }).hinweise.some(x => x.feld === 'mDecke'), 'm\' < 100 → Warnung');
+for (const f of ['dDecke', 'rhoEstrich', 'sStrich', 'mFlanke', 'zulLnw'] as const) pruefe(!trittschall({ ...basisT, [f]: 0 }).gueltig, `${f} = 0 → Fehler`);
+pruefe(!trittschall({ ...basisT, mZusatz: -1 }).gueltig && !trittschall({ ...basisT, sStrich: NaN }).gueltig, 'negative Zusatzmasse, NaN → Fehler');
+
+//    Fuzz: 1 000 Zufallsaufbauten – endlich; L'_n,w fällt mit schwererer Decke und weicherer Dämmung, steigt mit leichteren Flanken
+let zt = 4109;
+const rt = () => { zt = (zt * 1103515245 + 12345) % 2147483648; return zt / 2147483648; };
+for (let i = 0; i < 1000; i++) {
+  const e: TrittschallEingabe = { dDecke: 0.1 + rt() * 0.25, rhoDecke: 1800 + rt() * 700, mZusatz: rt() * 40, dEstrich: 0.035 + rt() * 0.04, rhoEstrich: 1900 + rt() * 300, sStrich: 5 + rt() * 45, mFlanke: 100 + rt() * 400, zulLnw: 40 + rt() * 20 };
+  const r = trittschall(e);
+  pruefe(r.gueltig && [r.lnEq0w, r.f0, r.deltaLw, r.k, r.lnwStrich, r.nachweis, r.reserve].every(Number.isFinite) && r.k >= 0, `Fuzz ${i}: endlich`);
+  pruefe(nahe(r.nachweis - r.lnwStrich, 3, 1e-12) && r.erfuellt === (r.nachweis <= e.zulLnw), `Fuzz ${i}: Nachweis`);
+  pruefe(trittschall({ ...e, dDecke: e.dDecke * 1.1 }).lnwStrich <= r.lnwStrich + 1e-9, `Fuzz ${i}: schwerere Decke`);
+  pruefe(trittschall({ ...e, sStrich: e.sStrich * 0.8 }).lnwStrich < r.lnwStrich, `Fuzz ${i}: weichere Dämmung`);
+  pruefe(trittschall({ ...e, mFlanke: e.mFlanke * 0.9 }).lnwStrich >= r.lnwStrich - 1e-12, `Fuzz ${i}: leichtere Flanken`);
+}
 
 if (fehler.length) { for (const x of fehler) console.error(`FAIL: ${x}`); process.exit(1); }
 console.log('OK: Schall und Fenster');

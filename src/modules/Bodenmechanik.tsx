@@ -6,7 +6,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { FormulaText } from '@/src/components/ui/FormulaText';
-import { Mountain, Droplets, Clock, Scissors, ArrowDownToLine, Timer } from 'lucide-react';
+import { Mountain, Droplets, Clock, Scissors, ArrowDownToLine, Timer, TestTube } from 'lucide-react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -25,6 +25,9 @@ import inhalt from '@/content/bodenmechanik/Bodenmechanik.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
+// Reiter Atterberg-Grenzen (Z24) als eigener Chunk
+const AtterbergTab = React.lazy(() => import('./bodenmechanik/AtterbergTab'));
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -37,13 +40,14 @@ ChartJS.register(
 
 const REITER = [
   { id: 'konsistenz', label: 'Konsistenzgrenzen', icon: Droplets },
+  { id: 'atterberg', label: 'Atterberg-Versuch', icon: TestTube },
   { id: 'scherfestigkeit', label: 'Scherfestigkeit', icon: Scissors },
   { id: 'erddruck', label: 'Erddruck', icon: ArrowDownToLine },
   { id: 'konsolidierung', label: 'Konsolidierung', icon: Timer },
 ] as const;
 
 export default function Bodenmechanik() {
-  const [activeTab, setActiveTab] = useState<'konsistenz' | 'scherfestigkeit' | 'erddruck' | 'konsolidierung'>('konsistenz');
+  const [activeTab, setActiveTab] = useState<'konsistenz' | 'atterberg' | 'scherfestigkeit' | 'erddruck' | 'konsolidierung'>('konsistenz');
 
   // Konsistenzgrenzen State
   const [w, setW] = useState(25); // Natürlicher Wassergehalt
@@ -401,6 +405,12 @@ export default function Bodenmechanik() {
         </div>
       )}
 
+      {activeTab === 'atterberg' && (
+        <React.Suspense fallback={<div className="flex justify-center items-center py-20"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-shiraz"></div></div>}>
+          <AtterbergTab />
+        </React.Suspense>
+      )}
+
       {activeTab === 'scherfestigkeit' && (
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
           <h2 className="text-xl font-bold text-text-main mb-4 flex items-center gap-2">
@@ -632,6 +642,7 @@ export default function Bodenmechanik() {
         literatur={inhalt.daten["Bodenmechanik.literatur"]}
         regelwerke={inhalt.daten["Bodenmechanik.regelwerke"]}
         formeln={inhalt.daten["Bodenmechanik.formeln"]}
+        weblinks={inhalt.daten["Bodenmechanik.weblinks"]}
       />
     </div>
   );

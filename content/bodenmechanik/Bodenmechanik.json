@@ -127,7 +127,8 @@
     "Bodenmechanik.literatur": [
       "Kolymbas, D.: Geotechnik – Bodenmechanik, Grundbau und Tunnelbau. 5. Aufl., Berlin: Springer Vieweg 2019",
       "Witt, K. J. (Hrsg.): Grundbau-Taschenbuch, Teil 1: Geotechnische Grundlagen. 8. Aufl., Berlin: Ernst & Sohn 2017",
-      "Simmer, K.: Grundbau 1: Bodenmechanik und erdstatische Berechnungen (Teubner Verlag)"
+      "Simmer, K.: Grundbau 1: Bodenmechanik und erdstatische Berechnungen (Teubner Verlag)",
+      "ASTM D4318: Standard Test Methods for Liquid Limit, Plastic Limit, and Plasticity Index of Soils. West Conshohocken: ASTM International"
     ],
     "Bodenmechanik.regelwerke": [
       {
@@ -174,6 +175,26 @@
         "formel": "T_v = \\frac{c_v \\cdot t}{d^2}",
         "erklaerung": "Zeitfaktor der Konsolidierung nach Terzaghi: c_v = Konsolidierungsbeiwert, d = maximaler Entwässerungsweg, t = Konsolidierungszeit.",
         "quelle": "Terzaghi: Theoretical Soil Mechanics"
+      },
+      {
+        "formel": "w_L = w_N \\cdot (N/25)^{0{,}121}",
+        "erklaerung": "Einpunktverfahren für die Fließgrenze aus einem Versuch mit N Schlägen (etwa 20 bis 30) – Exponent nach ASTM D4318, für DIN EN ISO 17892-12 vorläufig (F-Freigabe).",
+        "quelle": "ASTM D4318, Verfahren B"
+      },
+      {
+        "formel": "I_P = 0{,}73 \\cdot (w_L - 20)",
+        "erklaerung": "A-Linie im Plastizitätsdiagramm nach Casagrande: oberhalb Tone (T), unterhalb Schluffe (U).",
+        "quelle": "DIN 18196"
+      }
+    ],
+    "Bodenmechanik.weblinks": [
+      {
+        "title": "HAW Kiel, Labor Geotechnik: Fließgrenzengerät nach Casagrande (PDF)",
+        "url": "https://www.haw-kiel.de/fileadmin/data/ifb/labore/geotechnik/fliessgrenzengeraet_nach_casagrande_ueberarbeitet_250617.pdf"
+      },
+      {
+        "title": "Atterberg limits (Wikipedia, englisch)",
+        "url": "https://en.wikipedia.org/wiki/Atterberg_limits"
       }
     ]
   }

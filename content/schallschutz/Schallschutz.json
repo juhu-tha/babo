@@ -122,6 +122,40 @@
         "formel": "R_w \\approx 37{,}5 \\cdot \\log_{10}(m') - 42",
         "erklaerung": "Ältere empirische Näherung für einschalige Bauteile mit m' ≥ 150 kg/m² aus dem informativen Anhang der DIN EN 12354-1 (heute DIN EN ISO 12354-1); für Nachweise in Deutschland gilt DIN 4109-32.\nm': flächenbezogene Masse [kg/m²]",
         "quelle": "DIN EN 12354-1, informativer Anhang (Zuordnung manuell prüfen)"
+      },
+      {
+        "formel": "L'_{n,w} = L_{n,eq,0,w} - \\Delta L_w + K",
+        "erklaerung": "Bewerteter Norm-Trittschallpegel einer Massivdecke im Bau (Deckenverfahren); Nachweis L'_n,w + u_prog ≤ zul. L'_n,w mit u_prog = 3 dB.\nL_n,eq,0,w: äquivalenter Norm-Trittschallpegel der Rohdecke [dB]\nΔL_w: Trittschallminderung der Deckenauflage [dB]\nK: Korrekturwert für die Flankenübertragung [dB]",
+        "quelle": "DIN 4109-2:2018-01"
+      },
+      {
+        "formel": "L_{n,eq,0,w} = 164 - 35 \\cdot \\lg(m'/1\\,\\text{kg/m}^2)",
+        "erklaerung": "Äquivalenter bewerteter Norm-Trittschallpegel massiver Rohdecken, gültig für 100 ≤ m' ≤ 720 kg/m² (m' einschließlich Verbundestrich und Putz).",
+        "quelle": "DIN 4109-32:2016-07"
+      },
+      {
+        "formel": "f_0 \\approx 160 \\cdot \\sqrt{s'/m'}",
+        "erklaerung": "Resonanzfrequenz eines schwimmenden Estrichs (Masse-Feder-System) in Hz.\ns': dynamische Steifigkeit der Dämmschicht [MN/m³]\nm': flächenbezogene Masse des Estrichs [kg/m²]",
+        "quelle": "Masse-Feder-Modell, vgl. DIN EN ISO 12354-2"
+      },
+      {
+        "formel": "\\Delta L_w \\approx 13 \\cdot \\lg m' - 14{,}2 \\cdot \\lg s' + 20{,}8",
+        "erklaerung": "Näherung für die Trittschallminderung schwimmender Nassestriche – vorläufig, F-Freigabe.",
+        "quelle": "DIN 4109-34:2016-07 (vorläufig)"
+      }
+    ],
+    "Schallschutz.weblinks": [
+      {
+        "title": "BauNetz Wissen: Nachweis der Trittschalldämmung in Gebäuden nach DIN 4109-2: 2018",
+        "url": "https://www.baunetzwissen.de/bauphysik/fachwissen/schallschutz/nachweis-der-trittschalldaemmung-in-gebaeuden-nach-din-4109-2-2018-6470599"
+      },
+      {
+        "title": "Schöck/Zapf-Daigfuß: Handout Trittschall nach DIN 4109-2 (2018, PDF)",
+        "url": "https://www.zapf-daigfuss.de/sites/default/files/downloads/2018/schoeck_zapf_daigfuss_2018_hippler_handout.pdf"
+      },
+      {
+        "title": "Schöck: Trittschallschutz – Normen (PDF)",
+        "url": "https://www.schoeck.com/mediadownload/28761/0/Trittschallschutz%20Normen.pdf"
       }
     ]
   }

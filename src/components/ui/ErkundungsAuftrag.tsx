@@ -6,27 +6,29 @@ import type { Erkundung } from '@/src/data/erkundung';
  * Box „Ausprobieren“ für Rechner-Module (Umsetzungsplan Phase 3, AP 3.7):
  * 2–3 Vorhersagefragen. Studierende notieren zuerst ihre Erwartung, prüfen sie im Rechner
  * und blenden dann die Auflösung ein. Die Notizen bleiben nur im Speicher der Seite.
+ * Zusätzliche Aufträge zu einzelnen Reitern (daten.reiter, Z24) folgen mit dem Reiternamen als Kennzeichnung.
  */
 export function ErkundungsAuftrag({ daten }: { daten: Erkundung }) {
   const [offen, setOffen] = useState(false);
   const [sichtbar, setSichtbar] = useState<Record<number, boolean>>({});
   const [notiz, setNotiz] = useState<Record<number, string>>({});
   const id = useId();
+  const alle = [...daten.auftraege, ...(daten.reiter ?? []).flatMap(r => r.auftraege.map(a => ({ ...a, reiter: r.reiter })))] as (Erkundung['auftraege'][number] & { reiter?: string })[];
   return (
     <section aria-label="Ausprobieren" className="mb-4 rounded-xl border border-home-grau/30 bg-white text-sm">
       <button type="button" aria-expanded={offen} aria-controls={id} onClick={() => setOffen(!offen)}
         className="w-full flex flex-wrap items-center gap-x-4 gap-y-1 px-4 py-2.5 text-left">
         <span className="flex items-center gap-2 font-bold text-shiraz"><FlaskConical size={16} aria-hidden="true" /> Ausprobieren</span>
-        <span className="text-xs text-text-main/70">{daten.auftraege.length} Vorhersagen zum Rechner</span>
+        <span className="text-xs text-text-main/70">{alle.length} Vorhersagen zum Rechner</span>
         <ChevronDown size={16} aria-hidden="true" className={`ml-auto transition-transform ${offen ? 'rotate-180' : ''}`} />
       </button>
       {offen && (
         <div id={id} className="px-4 pb-4 pt-1 border-t border-home-grau/20 space-y-4">
           <p className="text-xs text-text-main/80">Notieren Sie zuerst Ihre Erwartung, prüfen Sie sie im Rechner und vergleichen Sie dann mit der Auflösung.</p>
           <ol className="space-y-4 list-decimal pl-5">
-            {daten.auftraege.map((a, i) => (
+            {alle.map((a, i) => (
               <li key={i} className="space-y-2">
-                <p className="font-semibold text-text-main">{a.frage}</p>
+                <p className="font-semibold text-text-main">{a.reiter && <span className="mr-2 rounded bg-shiraz/10 px-1.5 py-0.5 text-[11px] font-bold text-shiraz">Reiter {a.reiter}</span>}{a.frage}</p>
                 {a.hinweis && <p className="text-xs text-text-main/70">{a.hinweis}</p>}
                 <label className="block">
                   <span className="sr-only">Ihre Erwartung zu Auftrag {i + 1}</span>
