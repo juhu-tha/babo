@@ -3,8 +3,10 @@ import { formatDeZahl, formatDeWert, formatDeTeX, formatDeTeXWert } from '@/src/
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
-import { Calculator, Network } from 'lucide-react';
+import { Calculator, Network, Sigma } from 'lucide-react';
 import StatistischeVersuchsplanung from './StatistischeVersuchsplanung';
+// Reiter t-Test (Z24) als eigener Chunk
+const TTestTab = React.lazy(() => import('./statistik/TTestTab'));
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -43,11 +45,12 @@ type OutlierMethod = AusreisserMethode;
 const REITER = [
   { id: 'grundlagen', label: inhalt.texte.grundlagenBegriffserklärer, icon: Calculator },
   { id: 'probengenerator', label: 'Probengenerator', icon: Calculator },
+  { id: 'ttest', label: 't-Test', icon: Sigma },
   { id: 'doe', label: inhalt.texte.statistischeVersuchsplanungDoe, icon: Network },
 ] as const;
 
 export default function Statistik() {
-  const [activeTab, setActiveTab] = useState<'grundlagen' | 'probengenerator' | 'doe'>('grundlagen');
+  const [activeTab, setActiveTab] = useState<'grundlagen' | 'probengenerator' | 'ttest' | 'doe'>('grundlagen');
   const [material, setMaterial] = useState<MaterialType>('beton');
   const [outlierMethod, setOutlierMethod] = useState<OutlierMethod>('2sigma');
   const [numberOfSamples, setNumberOfSamples] = useState<number>(15);
@@ -1161,6 +1164,12 @@ export default function Statistik() {
         formeln={inhalt.daten["Statistik.formeln_2"]}
       />
       </div>
+      )}
+
+      {activeTab === 'ttest' && (
+        <React.Suspense fallback={<div className="flex justify-center items-center py-20"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-shiraz"></div></div>}>
+          <TTestTab />
+        </React.Suspense>
       )}
 
       {activeTab === 'doe' && (

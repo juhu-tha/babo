@@ -40,8 +40,9 @@ pruefe(cl.ueberschritten && nahe(cl.verhaeltnis, 1.1, 1e-12) && cl.stufe === 'Ko
 //    Haftzug 3,2 kN auf Ø 50 mm: A = 1963,5 mm² → 1,630 N/mm²
 const hz = haftzug(3.2, 'beton');
 pruefe(nahe(hz.flaecheMm2, 1963.495, 1e-3) && nahe(hz.fct, 1.62975, 1e-5) && hz.ok && !haftzug(3.2, 'verbund').ok && !haftzug(2.5, 'beton').ok, `Haftzug ${hz.fct}`);
-//    Karsten 1,8 ml: w = 4,00 kg/(m²·√h) → wassersaugend; Grenzen 0,5 und 2,0
-pruefe(nahe(karsten(1.8).w, 3.9996, 1e-12) && karsten(1.8).klasse === 'wassersaugend' && karsten(0.2).klasse === 'wasserabweisend' && karsten(0.5).klasse === 'wasserhemmend', 'Karsten');
+//    Karsten (Runde 5, einheitlich mit ZfP, src/calc/karsten.ts): A = 5,73 cm², t = 1 h: w = 1,8 · 10/5,73 = 3,141 → wassersaugend;
+//    Grenzen DIN 4108-3: w ≤ 0,5 wasserabweisend, ≤ 2,0 wasserhemmend (0,2 ml → 0,35; 0,5 ml → 0,87)
+pruefe(nahe(karsten(1.8).w, 18 / 5.73, 1e-12) && karsten(1.8).klasse === 'wassersaugend' && karsten(0.2).klasse === 'wasserabweisend' && karsten(0.5).klasse === 'wasserhemmend', 'Karsten');
 //    Karbonatisierung d = 24 mm nach 45 a, c = 30 mm: K = 3,578 mm/√a; t = (30/3,578)² = 70,3 a → Rest 25 a
 const kb = karbonatisierung(24, 45, 30);
 pruefe(nahe(kb.k, 3.57771, 1e-5) && nahe(kb.tDepass, 70.3125, 1e-9) && kb.restJahre === 25 && !kb.depassiviert, `Karbonatisierung ${JSON.stringify(kb)}`);

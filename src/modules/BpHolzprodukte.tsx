@@ -9,7 +9,8 @@ import { InnovationPraxisSection } from '@/src/components/ui/InnovationPraxisSec
 import inhalt from '@/content/bpholzprodukte/BpHolzprodukte.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
-import { bemesseEinfeldbalken, KMOD } from '@/src/calc/holzbau';
+import { bemesseEinfeldbalken, GAMMA_M_HOLZ, type KLED, type Nutzungsklasse } from '@/src/calc/holzbau';
+import { BSH_EN14080, HOLZ_EN338, type HolzKennwerte } from '@/src/data/kennwerte';
 
 interface WoodProductType {
   id: string;
@@ -113,33 +114,26 @@ export default function BpHolzprodukte() {
   // Calculator States
   const [span, setSpan] = useState<number>(4.5); // L in m
   const [spacing, setSpacing] = useState<number>(0.625); // s in m (Standard-Sparren/Balkenraster)
-  const [loadk, setLoadk] = useState<number>(2.5); // q_k (Verkehrslast + Ausbau) in kN/m²
+  const [loadk, setLoadk] = useState<number>(1.5); // q_k Nutzlast in kN/m² (Kategorie A2/A3)
+  const [loadg, setLoadg] = useState<number>(1.0); // g_k Ausbaulast (Fußbodenaufbau, Unterdecke) in kN/m²
   const [beamWidth, setBeamWidth] = useState<number>(100); // b in mm
   const [beamHeight, setBeamHeight] = useState<number>(200); // h in mm
   const [woodClass, setWoodClass] = useState<string>('c24'); // strength class selection
+  const [nkl, setNkl] = useState<Nutzungsklasse>(1);
+  const [kled, setKled] = useState<KLED>('mtl'); // Nutzlast Kategorie A: mittel
 
-  // Material properties for calculations based on selected class
-  const getCalcProperties = (cls: string) => {
-    switch (cls) {
-      case 'c24':
-        return { name: 'KVH C24', f_mk: 24, f_vk: 4.0, E: 11000, density: 420, gammaM: 1.3 };
-      case 'gl24h':
-        return { name: 'BSH GL24h', f_mk: 24, f_vk: 3.5, E: 11500, density: 450, gammaM: 1.3 };
-      case 'gl28h':
-        return { name: 'BSH GL28h', f_mk: 28, f_vk: 3.5, E: 12600, density: 450, gammaM: 1.3 };
-      case 'gl30h':
-        return { name: 'BSH GL30h', f_mk: 30, f_vk: 3.5, E: 13600, density: 480, gammaM: 1.3 };
-      default:
-        return { name: 'KVH C24', f_mk: 24, f_vk: 4.0, E: 11000, density: 420, gammaM: 1.3 };
-    }
+  // Kennwerte zentral aus src/data/kennwerte.ts (DIN EN 338:2016, DIN EN 14080:2013; ρ_mean für das Eigengewicht)
+  const KLASSE_ZU_NORM: Record<string, { name: string; k: HolzKennwerte }> = {
+    c24: { name: 'KVH C24', k: HOLZ_EN338.C24 }, gl24h: { name: 'BSH GL24h', k: BSH_EN14080.GL24h },
+    gl28h: { name: 'BSH GL28h', k: BSH_EN14080.GL28h }, gl30h: { name: 'BSH GL30h', k: BSH_EN14080.GL30h },
   };
-
-  const activeMat = getCalcProperties(woodClass);
-  // Rechenkern src/calc/holzbau.ts: Einfeldbalken (Biegung, Schub mit k_cr, w_inst ≤ l/300); k_mod NKL 1, mittlere KLED
+  const sel = KLASSE_ZU_NORM[woodClass] ?? KLASSE_ZU_NORM.c24;
+  const activeMat = { name: sel.name, f_mk: sel.k.fmk, f_vk: sel.k.fvk, E: sel.k.E0mean, density: sel.k.rhoMean, gammaM: GAMMA_M_HOLZ };
+  // Rechenkern src/calc/holzbau.ts: Einfeldbalken (Biegung, Schub mit k_cr, w_inst/w_fin/w_net,fin mit k_def); k_mod aus NKL und KLED
   const balken = bemesseEinfeldbalken({
-    l: span, abstand: spacing, qk: loadk, b: beamWidth, h: beamHeight,
+    l: span, abstand: spacing, gk: loadg, qk: loadk, b: beamWidth, h: beamHeight,
     fmk: activeMat.f_mk, fvk: activeMat.f_vk, E0mean: activeMat.E, rhoMean: activeMat.density,
-    brettschichtholz: woodClass !== 'c24', kmod: KMOD[1].mtl, gammaM: activeMat.gammaM,
+    brettschichtholz: woodClass !== 'c24', nkl, kled, gammaM: activeMat.gammaM,
   });
   const { sigma_md, f_md, k_cr, tau_d, f_vd, w_inst } = balken;
   const w_limit = balken.w_grenz;
@@ -326,16 +320,54 @@ export default function BpHolzprodukte() {
                 <label className="text-text-main"><MdText text={inhalt.texte.einflussFlächenlastQK} /></label>
                 <span className="text-shiraz font-mono">{formatDeZahl(loadk, 1)} kN/m²</span>
               </div>
-              <input 
-                type="range" 
-                min="1.0" 
-                max="8.0" 
-                step="0.1" 
-                value={loadk} 
-                onChange={(e) => setLoadk(Number(e.target.value))} 
+              <input
+                type="range"
+                aria-label={inhalt.werte.nutzlastQk}
+                min="0.0"
+                max="8.0"
+                step="0.1"
+                value={loadk}
+                onChange={(e) => setLoadk(Number(e.target.value))}
                 className="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
               <span className="text-[10px] text-text-main/40 block leading-tight"><MdText text={inhalt.texte.inklVerkehrlicheNutzlastenRaumbildende} /></span>
+            </div>
+
+            <div className="space-y-1">
+              <div className="flex justify-between items-center text-xs font-bold">
+                <label className="text-text-main"><MdText text={inhalt.texte.ausbaulastGk} /></label>
+                <span className="text-shiraz font-mono">{formatDeZahl(loadg, 1)} kN/m²</span>
+              </div>
+              <input
+                type="range"
+                aria-label={inhalt.werte.ausbaulastGk}
+                min="0.0"
+                max="4.0"
+                step="0.1"
+                value={loadg}
+                onChange={(e) => setLoadg(Number(e.target.value))}
+                className="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-shiraz"
+              />
+            </div>
+
+            <div className="grid grid-cols-2 gap-2">
+              <label className="text-xs font-bold text-text-main flex flex-col gap-1"><MdText text={inhalt.texte.nutzungsklasseEinfeld} />
+                <select aria-label={inhalt.werte.nutzungsklasseEinfeld} value={nkl} onChange={(e) => setNkl(Number(e.target.value) as Nutzungsklasse)}
+                  className="w-full text-xs p-1.5 border border-home-grau/30 rounded-lg bg-white font-medium text-slate-800">
+                  <option value={1}>NKL 1</option>
+                  <option value={2}>NKL 2</option>
+                  <option value={3}>NKL 3</option>
+                </select>
+              </label>
+              <label className="text-xs font-bold text-text-main flex flex-col gap-1"><MdText text={inhalt.texte.kledEinfeld} />
+                <select aria-label={inhalt.werte.kledEinfeld} value={kled} onChange={(e) => setKled(e.target.value as KLED)}
+                  className="w-full text-xs p-1.5 border border-home-grau/30 rounded-lg bg-white font-medium text-slate-800">
+                  <option value="stnd">{inhalt.werte.kledStaendig}</option>
+                  <option value="lg">{inhalt.werte.kledLang}</option>
+                  <option value="mtl">{inhalt.werte.kledMittel}</option>
+                  <option value="krt">{inhalt.werte.kledKurz}</option>
+                </select>
+              </label>
             </div>
           </div>
 
@@ -457,6 +489,12 @@ export default function BpHolzprodukte() {
                   <span className="text-[9px] text-text-main/50 block font-sans mt-0.5">
                     w_inst = {formatDeZahl(w_inst, 1)}<MdText text={inhalt.texte.mmVsMaxL} />{formatDeZahl(w_limit, 1)} mm
                   </span>
+                  <span className="text-[9px] text-text-main/50 block font-sans">
+                    w_fin = {formatDeZahl(balken.w_fin, 1)}<MdText text={inhalt.texte.mmVsMaxL200} />{formatDeZahl(balken.w_grenz_fin, 1)} mm
+                  </span>
+                  <span className="text-[9px] text-text-main/50 block font-sans">
+                    w_net,fin = {formatDeZahl(balken.w_net_fin, 1)}<MdText text={inhalt.texte.mmVsMaxL} />{formatDeZahl(balken.w_grenz_net, 1)} mm (k_def = {formatDeZahl(balken.kdef, 2)}, ψ₂ = {formatDeZahl(balken.psi2, 1)})
+                  </span>
                 </div>
               </div>
             </div>
@@ -464,7 +502,7 @@ export default function BpHolzprodukte() {
             <div className="pt-3 border-t border-home-grau/10 text-[10px] space-y-1 text-text-main/60 font-sans leading-relaxed">
               <div><MdText text={inhalt.texte.eigengewicht} /><strong>{formatDeZahl(balken.masse, 1)} kg/m</strong> (~{formatDeWert(activeMat.density)}<MdText text={inhalt.texte.kgMDensity} /></div>
               <div><MdText text={inhalt.texte.teilsicherheitsbeiwerteG135} /></div>
-              <div><MdText text={inhalt.texte.kModBeiwert0} />{formatDeWert(activeMat.gammaM)}</div>
+              <div><MdText text={inhalt.texte.kModBeiwert0} />{formatDeZahl(balken.kmod, 2)} / γ_M = {formatDeZahl(activeMat.gammaM, 1)}</div>
             </div>
           </div>
         </div>

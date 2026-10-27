@@ -1,5 +1,5 @@
 /**
- * Holzphysik: Gleichgewichtsfeuchte (Lehrmodell der Sorptionsisotherme), Feuchteangleich bei Lagerung und
+ * Holzphysik: Gleichgewichtsfeuchte (Sorptionsmodell Hailwood-Horrobin/Simpson), Feuchteangleich bei Lagerung und
  * anisotropes Quellen und Schwinden. Reiner Rechenkern (Umsetzungsplan Phase 4, AP 4.2) – geprüft in tests/holzphysik.test.ts.
  * Die EC-5-Größen (k_mod, k_def, Bemessungswerte, Druck unter Winkel) liegen in src/calc/holzbau.ts.
  */
@@ -13,22 +13,39 @@ export const FASERSAETTIGUNG = 30;
 export interface Schwindmasse { qt: number; qr: number; ql: number }
 
 /**
- * Gleichgewichtsfeuchte u_gl [%] aus relativer Luftfeuchte φ [%] und Temperatur θ [°C].
- * Lehrmodell: kubisches Polynom der Sorptionsisotherme bei 20 °C, Temperaturkorrektur −1 % relativ je K über 20 °C,
- * begrenzt auf 0 … FASERSAETTIGUNG.
+ * Gleichgewichtsfeuchte u_gl [%] aus relativer Luftfeuchte φ [%] und Temperatur θ [°C] nach dem Sorptionsmodell von
+ * Hailwood und Horrobin (1946) in der Anpassung von Simpson (1973) an die Tabellen des Forest Products Laboratory
+ * (Wood Handbook, FPL-GTR-113, Kap. 3, Gl. 3-3; metrische Koeffizienten):
+ *   u = 1800/W · [K·h/(1 − K·h) + (K₁·K·h + 2·K₁·K₂·K²·h²)/(1 + K₁·K·h + K₁·K₂·K²·h²)], h = φ/100
+ *   W = 349 + 1,29·θ + 0,0135·θ², K = 0,805 + 0,000736·θ − 0,00000273·θ²,
+ *   K₁ = 6,27 − 0,00938·θ − 0,000303·θ², K₂ = 1,91 + 0,0407·θ − 0,000293·θ²
+ * Mittelwert für Fichte/Sitka-Fichte (Desorption und Adsorption gemittelt); 20 °C / 65 % → 12,0 %.
+ * Gültig etwa 0 … 100 °C; begrenzt auf 0 … FASERSAETTIGUNG.
  */
 export function gleichgewichtsfeuchte(phi: number, theta: number): { u: number; begrenzt: boolean; hinweise: Hinweis[] } {
   const hinweise: Hinweis[] = [];
   muss(hinweise, istEndlich(phi, theta), 'eingabe', 'Luftfeuchte und Temperatur müssen Zahlen sein.');
-  if (!hatFehler(hinweise)) muss(hinweise, phi >= 0 && phi <= 100, 'phi', 'Die relative Luftfeuchte muss zwischen 0 und 100 % liegen.');
+  if (!hatFehler(hinweise)) {
+    muss(hinweise, phi >= 0 && phi <= 100, 'phi', 'Die relative Luftfeuchte muss zwischen 0 und 100 % liegen.');
+    muss(hinweise, theta >= -20 && theta <= 120, 'theta', 'Das Sorptionsmodell ist für Temperaturen von −20 bis 120 °C angepasst.');
+  }
   if (hatFehler(hinweise)) return { u: 0, begrenzt: false, hinweise };
-  const h = phi / 100;
-  const roh = (18 * h * h * h - 10 * h * h + 20 * h) * (1 - (theta - 20) * 0.01);
+  const roh = sorptionHailwoodHorrobin(phi / 100, theta);
   const u = Math.max(0, Math.min(FASERSAETTIGUNG, roh));
   const begrenzt = u !== roh;
-  bereich(hinweise, 'theta', theta, -10, 40, 'Die Temperaturkorrektur des Lehrmodells ist nur für etwa −10 bis 40 °C abgestimmt.');
-  if (begrenzt) hinweise.push({ stufe: 'warnung', feld: 'phi', text: `Das Lehrmodell liefert hier ${formatDeZahl(roh, 1)} %; begrenzt auf ${FASERSAETTIGUNG} % (Fasersättigung) bzw. 0 %.` });
+  bereich(hinweise, 'theta', theta, 0, 100, 'Die Koeffizienten nach Simpson sind an Tabellenwerte von etwa 0 bis 100 °C angepasst.');
+  if (begrenzt) hinweise.push({ stufe: 'warnung', feld: 'phi', text: `Das Sorptionsmodell liefert hier ${formatDeZahl(roh, 1)} %; begrenzt auf ${FASERSAETTIGUNG} % (Fasersättigung) bzw. 0 %.` });
   return { u, begrenzt, hinweise };
+}
+
+/** Hailwood-Horrobin-Gleichung (Simpson 1973, metrisch): Holzfeuchte [%] bei relativer Feuchte h [–] und Temperatur θ [°C] */
+export function sorptionHailwoodHorrobin(h: number, theta: number): number {
+  const W = 349 + 1.29 * theta + 0.0135 * theta ** 2;
+  const K = 0.805 + 0.000736 * theta - 0.00000273 * theta ** 2;
+  const K1 = 6.27 - 0.00938 * theta - 0.000303 * theta ** 2;
+  const K2 = 1.91 + 0.0407 * theta - 0.000293 * theta ** 2;
+  const kh = K * h;
+  return (1800 / W) * (kh / (1 - kh) + (K1 * kh + 2 * K1 * K2 * kh * kh) / (1 + K1 * kh + K1 * K2 * kh * kh));
 }
 
 /**

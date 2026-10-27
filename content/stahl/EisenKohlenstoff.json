@@ -1,0 +1,81 @@
+{
+  "texte": {
+    "titel": "Eisen-Kohlenstoff-Diagramm (metastabiles System Fe–Fe₃C)",
+    "einleitung": "Das **Eisen-Kohlenstoff-Diagramm** zeigt, welche Phasen eine Eisen-Kohlenstoff-Legierung bei langsamer Abkühlung im Gleichgewicht bildet. Im **metastabilen System** liegt der Kohlenstoff als Eisenkarbid **Zementit Fe₃C** (6,67 % C) vor; das Diagramm endet daher bei 6,67 % C. Bis 2,06 % C spricht man von **Stahl**, darüber von **Gusseisen**.",
+    "linien": "**Wichtige Linien:** GOS (A3) – Beginn der Ferritausscheidung aus dem Austenit; ES (A_cm) – Ausscheidung von Sekundärzementit; PSK (A1, 723 °C) – **eutektoide** Umwandlung des Austenits mit 0,8 % C in **Perlit** (lamellares Gemenge aus Ferrit und Zementit); ECF (1147 °C) – **eutektische** Erstarrung der Schmelze mit 4,3 % C zu **Ledeburit**. Ferrit löst höchstens 0,02 % C (bei 723 °C), Austenit höchstens 2,06 % C (bei 1147 °C).",
+    "quellenwerte": "**Zahlenwerte:** Die deutschsprachige Lehrbuchliteratur nennt meist 0,8 % C / 723 °C (eutektoid) und 4,3 % C / 1147 °C (eutektisch). Neuere und internationale Werke (z. B. Callister) geben 0,76 % C / 727 °C, 4,30 % C / 1148 °C, 0,022 % C im Ferrit und 6,70 % C im Zementit an. Der Unterschied liegt in neueren Messungen und Rundung; das Diagramm verwendet die Lehrbuchwerte, die Gefügeanteile lassen sich mit beiden Datensätzen berechnen.",
+    "hebel": "**Hebelgesetz:** In einem Zweiphasenfeld liegen die Zusammensetzungen der Phasen auf den Feldgrenzen (Konode). Die Mengenanteile verhalten sich umgekehrt wie die Hebelarme, z. B. bei Raumtemperatur für untereutektoiden Stahl: $m_{\\mathrm{Perlit}} = \\frac{C - 0{,}02}{0{,}8 - 0{,}02}$.",
+    "baustahl": "**Bezug zu Baustahl:** Unlegierte Baustähle wie S235 und S355 sind **untereutektoid** mit höchstens 0,17 bis 0,24 % C (DIN EN 10025-2) – ihr Gefüge besteht überwiegend aus **Ferrit** mit rund 20 % **Perlit**. Der geringe C-Gehalt sichert Zähigkeit und Schweißeignung; die höhere Festigkeit von S355 stammt vor allem aus Mangan und Feinkornbildung, nicht aus mehr Kohlenstoff.",
+    "schweissen": "**Schweißeignung:** Kohlenstoff und Legierungselemente erhöhen die Aufhärtung in der Wärmeeinflusszone. Das **Kohlenstoffäquivalent** fasst sie zusammen: $CEV = C + \\frac{Mn}{6} + \\frac{Cr + Mo + V}{5} + \\frac{Ni + Cu}{15}$. DIN EN 10025-2 begrenzt CEV z. B. für S235JR auf 0,35 und für S355J2 auf 0,45 (Nenndicke ≤ 30 mm).",
+    "eingaben": "Zustandspunkt",
+    "zustand": "Zustand im Gleichgewicht",
+    "gefuege": "Gefügeanteile bei Raumtemperatur",
+    "cevTitel": "Kohlenstoffäquivalent CEV",
+    "datensatz": "Datensatz für das Hebelgesetz",
+    "lehrbuch": "Lehrbuch (0,02 / 0,8 / 6,67 % C, 723 °C)",
+    "international": "Callister (0,022 / 0,76 / 6,70 % C, 727 °C)",
+    "ausschnitt": "Ausschnitt",
+    "ausschnittGesamt": "Gesamtes Diagramm (0–6,67 % C)",
+    "ausschnittStahl": "Stahlecke (0–2,2 % C, 0–1 200 °C)",
+    "schnellwahl": "Schnellwahl",
+    "phase": "Phasenfeld",
+    "phasen": "Phasen",
+    "gefuegeName": "Gefüge",
+    "konode": "Konode (Hebelgesetz bei dieser Temperatur)",
+    "spalteGefuege": "Gefügebestandteil",
+    "spalteAnteil": "Anteil [%]",
+    "ferrit": "Ferrit",
+    "perlit": "Perlit",
+    "sekundaer": "Sekundärzementit",
+    "ledeburit": "Ledeburit",
+    "primaer": "Primärzementit",
+    "cevErgebnis": "CEV",
+    "eignung": "Schweißeignung (Lehrbuchskala)",
+    "grenzwert": "Vergleich DIN EN 10025-2 (≤ 30 mm)"
+  },
+  "werte": {
+    "lernzielTitel": "Eisen-Kohlenstoff-Diagramm und Gefüge",
+    "diagrammTitel": "Eisen-Kohlenstoff-Diagramm (metastabil)",
+    "achseC": "Kohlenstoffgehalt [Massen-%]",
+    "achseT": "Temperatur [°C]",
+    "infoC": "Kohlenstoffgehalt der Legierung in Massenprozent.",
+    "infoT": "Temperatur bei langsamer Abkühlung (Gleichgewicht).",
+    "rechenwegTitel": "Ihr Rechenweg: Gefügeanteile nach dem Hebelgesetz",
+    "rechenwegHinweis": "Gleichgewichtsbetrachtung bei langsamer Abkühlung; Härten, Vergüten und thermomechanisches Walzen erzeugen andere Gefüge (Martensit, Bainit, Feinkorn), die das Diagramm nicht zeigt.",
+    "rechenwegQuelle": "chemie.de-Lexikon „Eisen-Kohlenstoff-Diagramm“; Callister, Fig. 9.24 (MSE 170, Univ. Washington)",
+    "schrittPhasen": "Zweiphasenfeld bei Raumtemperatur",
+    "schrittPhasenText": "Ferrit (c_P) und Zementit (c_Z) bilden das Gefüge; maßgebend ist die Lage zum eutektoiden Punkt c_S:",
+    "schrittHebel": "Hebelgesetz",
+    "schrittHebelText": "Anteil des Gefügebestandteils = gegenüberliegender Hebelarm / Gesamtlänge der Konode:",
+    "schrittCev": "Kohlenstoffäquivalent",
+    "schrittCevText": "IIW-Formel nach DIN EN 10025-2 mit den eingegebenen Gehalten:",
+    "beschreibungZusatz": "Markierter Zustandspunkt",
+    "s235": "S235 (0,17 % C)",
+    "s355": "S355J2 (0,20 % C)",
+    "c45": "C45 (0,45 % C)",
+    "eutektoid": "eutektoid (0,8 % C)",
+    "eutektisch": "eutektisch (4,3 % C)"
+  },
+  "daten": {
+    "lernziele": [
+      { "level": "wissen", "levelLabel": "1. Wissen & Definieren", "verb": "Benennen", "description": "die Phasenfelder, die Linien GOS, ES, PSK und ECF sowie den eutektoiden und den eutektischen Punkt des Fe-C-Diagramms benennen." },
+      { "level": "anwenden", "levelLabel": "3. Anwenden & Berechnen", "verb": "Berechnen", "description": "für einen Kohlenstoffgehalt die Gefügeanteile Ferrit/Perlit bzw. Perlit/Sekundärzementit mit dem Hebelgesetz berechnen." },
+      { "level": "bewerten", "levelLabel": "4. Analysieren & Bewerten", "verb": "Beurteilen", "description": "Gefüge, Festigkeit und Schweißeignung von Baustählen wie S235 und S355 über C-Gehalt und Kohlenstoffäquivalent beurteilen." }
+    ],
+    "formeln": [
+      { "formel": "m_{\\alpha} = \\frac{c_{\\beta} - c_0}{c_{\\beta} - c_{\\alpha}}, \\quad m_{\\beta} = \\frac{c_0 - c_{\\alpha}}{c_{\\beta} - c_{\\alpha}}", "erklaerung": "Hebelgesetz im Zweiphasenfeld: c₀ Legierungszusammensetzung, c_α und c_β Zusammensetzung der Phasen auf den Feldgrenzen.", "quelle": "Callister, Kap. 9 (Lever rule)" },
+      { "formel": "m_{\\mathrm{Perlit}} = \\frac{c_0 - 0{,}02}{0{,}8 - 0{,}02} \\quad (c_0 \\le 0{,}8\\,\\%)", "erklaerung": "Perlitanteil untereutektoider Stähle bei Raumtemperatur (Lehrbuchwerte).", "quelle": "chemie.de-Lexikon „Eisen-Kohlenstoff-Diagramm“" },
+      { "formel": "CEV = C + \\frac{Mn}{6} + \\frac{Cr + Mo + V}{5} + \\frac{Ni + Cu}{15}", "erklaerung": "Kohlenstoffäquivalent (IIW) zur Beurteilung der Schweißeignung; Höchstwerte je Stahlsorte und Dicke in DIN EN 10025-2.", "quelle": "DIN EN 10025-2" }
+    ],
+    "literatur": [
+      "Callister, W. D.; Rethwisch, D. G.: Materials Science and Engineering – An Introduction. Hoboken: Wiley (Kap. 9: Phase Diagrams, Fe–Fe₃C)",
+      "Bargel, H.-J.; Schulze, G. (Hrsg.): Werkstoffkunde. Berlin: Springer Vieweg (Kap. Eisenwerkstoffe, Eisen-Kohlenstoff-Diagramm)"
+    ],
+    "weblinks": [
+      { "title": "chemie.de-Lexikon: Eisen-Kohlenstoff-Diagramm (Eckpunkte, Linien, Gefüge)", "url": "https://www.chemie.de/lexikon/Eisen-Kohlenstoff-Diagramm" },
+      { "title": "University of Washington, MSE 170: Fe–C-System und Hebelgesetz (nach Callister)", "url": "https://courses.washington.edu/mse170/lecture_notes/rolandiF08/Lecture18-MR2008.pdf" },
+      { "title": "CERN: Steel Grades 2 – chemische Zusammensetzung und CEV nach EN 10025-2", "url": "https://indico.cern.ch/event/391180/attachments/782899/1073276/Steel_Grades_2.pdf" },
+      { "title": "Wikipedia (engl.): Equivalent carbon content – Einstufung der Schweißeignung", "url": "https://en.wikipedia.org/wiki/Equivalent_carbon_content" }
+    ]
+  }
+}

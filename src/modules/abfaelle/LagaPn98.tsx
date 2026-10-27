@@ -3,6 +3,7 @@ import { formatDeWert, formatDeZahl } from '@/src/utils/numberFormat';
 import React from 'react';
 import inhalt from '@/content/abfaelle/LagaPn98.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { pn98Probenzahl } from '@/src/calc/probenahme';
 
 interface LagaPn98Props {
   pnGrainSize: string;
@@ -17,18 +18,11 @@ export default function LagaPn98({ pnGrainSize, pnMaterialState, pnVolume, setPn
     // Calculate LAGA PN 98 limits dynamically
     // LAGA PN 98 (Mitteilung 32), Tabelle 2: Mindestanzahl Einzel-, Misch- und Laborproben
     // (gilt unabhängig von der Homogenität; Reduktion nur bei dokumentierter Vorkenntnis zulässig)
-    const pnStufen = [30, 60, 100, 150, 200, 300, 400, 500, 600];
-    let mischproben = 10;
-    let laborproben = 10;
-    if (pnVolume <= 600) {
-      const idx = pnStufen.findIndex(g => pnVolume <= g);
-      mischproben = idx + 2;
-      laborproben = idx + 2;
-    } else {
-      mischproben = 10 + Math.ceil((pnVolume - 600) / 100);
-      laborproben = 10 + Math.ceil((pnVolume - 600) / 300);
-    }
-    const einzelproben = 4 * mischproben;
+    // Rechenkern src/calc/probenahme.ts (gleiche Tabelle wie im Modul Boden-Materialaufbereitung)
+    const proben = pn98Probenzahl(pnVolume);
+    const mischproben = proben.mischproben;
+    let laborproben = proben.laborproben;
+    const einzelproben = proben.einzelproben;
     if (pnMaterialState === 'heterogen') {
       // Heterogenes Material: Tabellenwerte sind Mindestwerte; ggf. Teilmengen bilden (keine Reduktion)
       laborproben = mischproben;

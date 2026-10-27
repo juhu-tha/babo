@@ -72,10 +72,11 @@ pruefe(wenner(50, 110 / (2 * Math.PI * 0.05)).stufe === 'mittel' && wenner(50, 9
 pruefe(torrentKlasse(0.005) === 1 && torrentKlasse(0.01) === 2 && torrentKlasse(0.1) === 3 && torrentKlasse(1) === 4 && torrentKlasse(10) === 5, 'Torrent-Klassen');
 pruefe(torrentFeuchte(70) === 'normal' && torrentFeuchte(71) === 'hoch' && torrentFeuchte(86) === 'kritisch', 'Torrent-Feuchte');
 
-// Karsten: V = 2,5 ml, t = 15 min → w = 2,5/(0,491 · 0,5) = 10,18 kg/(m²·√h)
+// Karsten (Runde 5, einheitlich mit Bauwerksuntersuchung): V = 2,5 ml, t = 15 min, A = 5,73 cm² → w = 25/(5,73 · 0,5) = 8,726 kg/(m²·√h)
+//   Stufen nach DIN 4108-3 (bisher Lehrschwellen 0,1/0,5): 0,2 ml in 60 min → 0,35 abweisend; 1,0 ml → 1,75 hemmend
 const ka = karstenZfp(15, 2.5);
-pruefe(nahe(ka.w, 10.1833, 1e-4) && ka.tHours === 0.25 && ka.stufe === 'saugend', `Karsten ${ka.w}`);
-pruefe(karstenZfp(60, 0.04).stufe === 'abweisend' && karstenZfp(60, 0.2).stufe === 'hemmend' && !karstenZfp(0, 1).gueltig, 'Karsten-Stufen, t = 0 → Fehler');
+pruefe(nahe(ka.w, 8.72600, 1e-4) && ka.tHours === 0.25 && ka.stufe === 'saugend', `Karsten ${ka.w}`);
+pruefe(karstenZfp(60, 0.2).stufe === 'abweisend' && karstenZfp(60, 1.0).stufe === 'hemmend' && karstenZfp(60, 1.2).stufe === 'saugend' && !karstenZfp(0, 1).gueltig, 'Karsten-Stufen, t = 0 → Fehler');
 pruefe(thermografieStufe(0.5) === 'unauffaellig' && thermografieStufe(0.6) === 'moeglich' && thermografieStufe(2.1) === 'deutlich', 'Thermografie');
 // Durchstrahlung: μ = 0,15/1,5 = 0,1 cm⁻¹, d = 20 cm → e⁻² = 13,53 %
 const ds = durchstrahlung(20, 1.5);

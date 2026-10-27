@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Activity, ArrowRight, Thermometer, Droplets, FlaskConical } from 'lucide-react';
+import { Activity, ArrowRight, Thermometer, Droplets, FlaskConical, Waves } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { motion } from 'framer-motion';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -7,14 +7,16 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/formaenderungen/Formaenderungen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import Biegelinie, { BIEGELINIE_FUSS } from './formaenderungen/Biegelinie';
 
 const REITER = [
   { id: 'tabelle', label: inhalt.texte.systematikTabelle, icon: Activity },
   { id: 'visualisierung', label: inhalt.texte.interaktiveVisualisierung, icon: ArrowRight },
+  { id: 'biegelinie', label: 'Biegelinie', icon: Waves },
 ] as const;
 
 export default function Formaenderungen() {
-  const [activeTab, setActiveTab] = useState<'tabelle' | 'visualisierung'>('tabelle');
+  const [activeTab, setActiveTab] = useState<'tabelle' | 'visualisierung' | 'biegelinie'>('tabelle');
   const [activeVis, setActiveVis] = useState<string>('elastisch');
 
   return (
@@ -322,6 +324,8 @@ export default function Formaenderungen() {
           </div>
         </div>
       )}
+
+      {activeTab === 'biegelinie' && <Biegelinie />}
       </ModuleTabs>
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
@@ -350,9 +354,9 @@ export default function Formaenderungen() {
           { title: inhalt.werte.kriechenWerkstoffe, url: 'https://de.wikipedia.org/wiki/Kriechen_(Werkstoffe)' },
           { title: inhalt.werte.schwindenBeton, url: 'https://de.wikipedia.org/wiki/Schwinden_(Beton)' }
         ]}
-        literatur={inhalt.daten["Formaenderungen.literatur"]}
+        literatur={[...(inhalt.daten["Formaenderungen.literatur"]), ...BIEGELINIE_FUSS.literatur]}
         regelwerke={inhalt.daten["Formaenderungen.regelwerke"]}
-        formeln={inhalt.daten["Formaenderungen.formeln"]}
+        formeln={[...(inhalt.daten["Formaenderungen.formeln"]), ...BIEGELINIE_FUSS.formeln]}
       />
     </div>
   );

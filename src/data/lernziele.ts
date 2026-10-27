@@ -51,12 +51,13 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
     ],
   },
   bodenmechanik: {
-    niveau: 'B', minuten: 75, vorwissen: ['erdbau'],
+    niveau: 'B', minuten: 120, vorwissen: ['erdbau'],
     ziele: [
       { stufe: 'Anwenden', text: 'aus Wassergehalt, Fließ- und Ausrollgrenze die Konsistenzzahl berechnen und einen feinkörnigen Boden nach DIN 18196 einordnen.' },
       { stufe: 'Anwenden', text: 'mit dem Mohr-Coulomb-Kriterium prüfen, ob ein Spannungszustand zum Bruch führt.' },
       { stufe: 'Anwenden', text: 'aktiven, passiven und Ruhedruck auf eine Wand nach Rankine berechnen.' },
       { stufe: 'Verstehen', text: 'den zeitlichen Verlauf der Konsolidierungssetzung mit dem Konsolidierungsbeiwert erklären.' },
+      { stufe: 'Anwenden', text: 'die Fließgrenze aus dem Casagrande-Versuch (Mehr- oder Einpunktverfahren) auswerten und den Boden im Plastizitätsdiagramm einer Gruppe nach DIN 18196 zuordnen.' },
     ],
   },
   asphalt: {
@@ -582,6 +583,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
       { stufe: "Anwenden", text: "die Reißlänge eines frei hängenden Stabs aus Zugfestigkeit und Rohdichte berechnen." },
       { stufe: "Anwenden", text: "für einen Würfelstapel die maximale Anzahl Würfel, die Stauchung des untersten Würfels und die Gesamtstauchung ermitteln." },
       { stufe: "Analysieren", text: "verschiedene Werkstoffe hinsichtlich ihres Verhältnisses von Festigkeit zu Eigengewicht vergleichen und die Grenzen des Gedankenexperiments benennen." },
+      { stufe: "Anwenden", text: "aus σ_x, σ_y und τ_xy mit dem Mohr'schen Spannungskreis Hauptspannungen, Hauptrichtung, größte Schubspannung und Vergleichsspannung ermitteln." },
     ],
   },
   feuchteschutz: {
@@ -601,6 +603,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
       { stufe: "Verstehen", text: "elastische, plastische, verzögert elastische und viskose Verformung voneinander unterscheiden." },
       { stufe: "Analysieren", text: "spannungsunabhängige Wärme-, Feuchte- und chemische Dehnungen wie Schwinden, Quellen und Treiben konkreten Ursachen zuordnen." },
       { stufe: "Anwenden", text: "die Längenänderung eines Bauteils aus elastischem Anteil und Kriechanteil berechnen und den Einfluss einer Behinderung erläutern." },
+      { stufe: "Anwenden", text: "die Biegelinie, größte Durchbiegung und Neigung von Einfeldträger und Kragarm berechnen und Stahl, Holz und Beton über E·I vergleichen." },
     ],
   },
   frischbeton: {
@@ -1300,12 +1303,13 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
     ],
   },
   schallschutz: {
-    niveau: "B", minuten: 45, vorwissen: ["baustoffkenngroessen"],
+    niveau: "B", minuten: 90, vorwissen: ["baustoffkenngroessen"],
     ziele: [
       { stufe: "Verstehen", text: "das Massegesetz und die Schalltransmission durch einschalige, biegesteife Bauteile erläutern." },
       { stufe: "Anwenden", text: "die flächenbezogene Masse m' eines Bauteilaufbaus aus Schichtdicken und Rohdichten berechnen." },
       { stufe: "Anwenden", text: "das bewertete Schalldämm-Maß R_w nach DIN 4109-32 berechnen und den Gültigkeitsbereich der Formel prüfen." },
       { stufe: "Analysieren", text: "den Einfluss von Material und Schichtdicke auf die Luftschalldämmung vergleichen." },
+      { stufe: "Anwenden", text: "den bewerteten Norm-Trittschallpegel einer Massivdecke mit schwimmendem Estrich nach DIN 4109-2 berechnen und mit der Anforderung vergleichen." },
     ],
   },
   sichtbeton: {
@@ -1352,16 +1356,17 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
       { stufe: "Erinnern", text: "die Stahlbezeichnungen nach DIN EN 10027-1 entschlüsseln und Stahlsorten wie S235, S355 oder B500B ihren Anwendungen zuordnen." },
       { stufe: "Anwenden", text: "den plastischen Biegewiderstand eines Walzprofils berechnen und die Ausnutzung unter einem Bemessungsmoment prüfen." },
       { stufe: "Analysieren", text: "den Einfluss von Temperatur im Brandfall, Kerbfall bei Ermüdung und Schweißeigenspannungen auf die Tragfähigkeit von Stahl analysieren." },
-      { stufe: "Bewerten", text: "den Einfluss von Kohlenstoff- und Legierungsgehalt auf Festigkeit, Zähigkeit und Schweißbarkeit beurteilen." },
+      { stufe: "Bewerten", text: "mit dem Eisen-Kohlenstoff-Diagramm und dem Hebelgesetz das Gefüge eines Stahls bestimmen und den Einfluss von Kohlenstoff- und Legierungsgehalt (CEV) auf Festigkeit, Zähigkeit und Schweißbarkeit beurteilen." },
     ],
   },
   statistik: {
-    niveau: "B", minuten: 120, vorwissen: ["einheiten"],
+    niveau: "B", minuten: 165, vorwissen: ["einheiten"],
     ziele: [
       { stufe: "Anwenden", text: "den Mittelwert, Median, Standardabweichung und Variationskoeffizient einer Messreihe berechnen." },
       { stufe: "Anwenden", text: "mögliche Ausreißer einer Prüfserie mit dem Grubbs-Test identifizieren und die Messreihe bereinigen." },
       { stufe: "Anwenden", text: "aus einer Stichprobe den charakteristischen Wert mit Fraktilfaktor und den Bemessungswert nach DIN EN 1990 Anhang D ermitteln." },
       { stufe: "Analysieren", text: "in einem faktoriellen 2^k-Versuchsplan Haupt- und Wechselwirkungseffekte der Faktoren bestimmen und vergleichen." },
+      { stufe: "Bewerten", text: "zwei Prüfserien mit dem Zweistichproben-t-Test (Student oder Welch) vergleichen und das Ergebnis über p-Wert und Konfidenzintervall beurteilen." },
     ],
   },
   vdi6200: {

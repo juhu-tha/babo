@@ -1,6 +1,7 @@
 import { InlineMath } from 'react-katex';
 import { GitCommit, Wrench } from 'lucide-react';
-import { type Nutzungsklasse, type KLED } from '@/src/calc/holzbau';
+import { type Nutzungsklasse, type KLED, type holzschraube } from '@/src/calc/holzbau';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberFormat';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import type { Dispatch, SetStateAction } from 'react';
@@ -14,7 +15,7 @@ interface HolzbauVerbindungProps {
   connForce: number;
   connLef: number;
   connLoadDuration: KLED;
-  connResults: { k_mod: number; rho_k: number; factor_alpha: number; f_ax_alpha_k: number; F_ax_Rk_total_kN: number; F_ax_Rd_total_kN: number; f_h_k: number; M_y_Rk: number; rope_effect: number; F_v_Rk_total_kN: number; F_v_Rd_total_kN: number; utilAxial: number; utilShear: number; isAxialUnsafe: boolean; isShearUnsafe: boolean; };
+  connResults: ReturnType<typeof holzschraube> & { utilAxial: number; utilShear: number; isAxialUnsafe: boolean; isShearUnsafe: boolean };
   connServiceClass: Nutzungsklasse;
   connWoodClass: string;
   setConnAngle: Dispatch<SetStateAction<number>>;
@@ -279,6 +280,7 @@ export default function HolzbauVerbindung({ connAngle, connCount, connD, connFor
                 </div>
               </div>
 
+              <EingabeHinweise hinweise={connResults.hinweise} />
               {/* General Status message */}
               {(connResults.isAxialUnsafe || connResults.isShearUnsafe) ? (
                 <div className="bg-rose-50 border border-rose-200 text-rose-900 p-2 text-[10px] rounded-lg leading-snug"><MdText text={inhalt.texte.tragfähigkeitNichtAusreichendDurchmesser} /></div>
@@ -294,13 +296,13 @@ export default function HolzbauVerbindung({ connAngle, connCount, connD, connFor
                 schritte={[
                   {
                     titel: 'Ausziehfestigkeit',
-                    erklaerung: `Lehrwert f_ax,k = 12 N/mm², Rohdichte ρ_k = ${formatDeZahl(connResults.rho_k, 0)} kg/m³, Einschraubwinkel ${formatDeZahl(connAngle, 0)}°.`,
-                    formel: `f_{ax,\\alpha,k} = 12 \\cdot ${formatDeTeX(connResults.factor_alpha, 3)} \\cdot \\left(\\frac{${formatDeTeX(connResults.rho_k, 0)}}{350}\\right)^{0{,}8} = ${formatDeTeX(connResults.f_ax_alpha_k, 2)}\\,\\text{N/mm}^2`,
+                    erklaerung: `DIN EN 1995-1-1, Gl. (8.39) ohne ETA-Werte: Rohdichte ρ_k = ${formatDeZahl(connResults.rho_k, 0)} kg/m³, d = ${formatDeZahl(connD, 0)} mm, l_ef = ${formatDeZahl(connLef, 0)} mm, Winkel Schraubenachse–Faser ${formatDeZahl(connAngle, 0)}°.`,
+                    formel: `f_{ax,k} = 0{,}52 \\cdot ${formatDeTeX(connD, 0)}^{-0{,}5} \\cdot ${formatDeTeX(connLef, 0)}^{-0{,}1} \\cdot ${formatDeTeX(connResults.rho_k, 0)}^{0{,}8} = ${formatDeTeX(connResults.f_ax_k, 2)}\\,\\text{N/mm}^2;\\quad \\frac{f_{ax,k}}{1{,}2\\cos^2\\alpha + \\sin^2\\alpha} = ${formatDeTeX(connResults.f_ax_alpha_k, 2)}\\,\\text{N/mm}^2`,
                   },
                   {
                     titel: inhalt.werte.ausziehwiderstandDerGruppe,
-                    erklaerung: `Lehrmodell mit k_mod = ${formatDeZahl(connResults.k_mod, 2)} (NKL ${formatDeZahl(connServiceClass, 0)}, KLED gewählt) und γ_M = 1,3, ohne wirksame Anzahl n_ef.`,
-                    formel: `F_{ax,Rd} = \\frac{${formatDeTeX(connResults.k_mod, 2)} \\cdot ${formatDeTeX(connCount, 0)} \\cdot ${formatDeTeX(connResults.f_ax_alpha_k, 2)} \\cdot ${formatDeTeX(connD, 0)} \\cdot ${formatDeTeX(connLef, 0)}}{1{,}3} \\cdot 10^{-3} = ${formatDeTeX(connResults.F_ax_Rd_total_kN, 1)}\\,\\text{kN}`,
+                    erklaerung: `k_mod = ${formatDeZahl(connResults.k_mod, 2)} (NKL ${formatDeZahl(connServiceClass, 0)}, KLED gewählt), γ_M = 1,3, k_d = min(d/8; 1) = ${formatDeZahl(connResults.k_d, 2)} und wirksame Anzahl n_ef = n^0,9 = ${formatDeZahl(connResults.n_ef, 2)} (8.41).`,
+                    formel: `F_{ax,Rd} = \\frac{${formatDeTeX(connResults.k_mod, 2)} \\cdot ${formatDeTeX(connResults.n_ef, 2)} \\cdot ${formatDeTeX(connResults.f_ax_alpha_k, 2)} \\cdot ${formatDeTeX(connD, 0)} \\cdot ${formatDeTeX(connLef, 0)} \\cdot ${formatDeTeX(connResults.k_d, 2)}}{1{,}3} \\cdot 10^{-3} = ${formatDeTeX(connResults.F_ax_Rd_total_kN, 1)}\\,\\text{kN}`,
                   },
                   {
                     titel: inhalt.werte.lochleibungsfestigkeitUndFließmoment,
@@ -310,7 +312,7 @@ export default function HolzbauVerbindung({ connAngle, connCount, connD, connFor
                   {
                     titel: inhalt.werte.schertragfähigkeitJeSchraube,
                     erklaerung: `Kleinerer Wert aus Lochleibungsversagen und Fließgelenk-Mechanismus mit Seileffekt (${formatDeZahl(connResults.rope_effect, 0)} N).`,
-                    formel: `F_{v,Rk} = \\min(${formatDeTeX(connResults.f_h_k * connLef * connD, 0)};\\; ${formatDeTeX(1.15 * Math.sqrt(2 * connResults.M_y_Rk * connResults.f_h_k * connD), 0)} + ${formatDeTeX(connResults.rope_effect, 0)}) = ${formatDeTeX((connResults.F_v_Rk_total_kN * 1000) / connCount, 0)}\\,\\text{N}`,
+                    formel: `F_{v,Rk} = \\min(${formatDeTeX(connResults.F_v_Rk_1, 0)};\\; ${formatDeTeX(connResults.johansen, 0)} + ${formatDeTeX(connResults.rope_effect, 0)}) = ${formatDeTeX(connResults.F_v_Rk_single_N, 0)}\\,\\text{N}`,
                   },
                   {
                     titel: inhalt.werte.bemessungswerteUndAusnutzung,

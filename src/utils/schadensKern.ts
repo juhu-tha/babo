@@ -57,12 +57,18 @@ export const corrosionRate_um_a = (icorr_uA_cm2: number) => icorr_uA_cm2 * 11.6;
 export const coreStrength = (F_kN: number, D_mm: number) => (4 * F_kN * 1000) / (Math.PI * D_mm * D_mm);
 /** EN 13791:2019, 8.1 (n ≥ 8): f_ck,is = min(f_m − k_n·s ; f_lowest + M). k_n und M nach Norm-Tabellen. */
 const KN_13791: [number, number][] = [[8, 2.0], [10, 1.92], [12, 1.87], [16, 1.81], [20, 1.76], [30, 1.73], [Infinity, 1.64]];
+/**
+ * k_n zwischen den Stützstellen linear in 1/n (Runde 5, wie src/calc/statistik.ts): Die Tabellenwerte folgen
+ * k_n = t_(n−1; 0,95)·√(1 + 1/n) (DIN EN 1990, D7.2, V_X unbekannt); die Student-Quantile verlaufen nahezu linear in 1/n,
+ * daher bildet die Interpolation in 1/n die Formel genauer ab als eine Interpolation in n und läuft für n → ∞ gegen 1,64.
+ */
 export function kn13791(n: number) {
-  if (n < 8) return NaN; // für n < 8 sieht die Norm ein gesondertes, konservativeres Verfahren vor
+  if (!(n >= 8)) return NaN; // für n < 8 sieht die Norm ein gesondertes, konservativeres Verfahren vor
+  const inv = (x: number) => (Number.isFinite(x) ? 1 / x : 0);
   for (let i = 0; i < KN_13791.length - 1; i++) {
     const [a, ka] = KN_13791[i], [b, kb] = KN_13791[i + 1];
     if (n === a) return ka;
-    if (n > a && n < b) return Number.isFinite(b) ? ka + ((kb - ka) * (n - a)) / (b - a) : ka;
+    if (n > a && n <= b) return ka + ((kb - ka) * (inv(a) - inv(n))) / (inv(a) - inv(b));
   }
   return 1.64;
 }

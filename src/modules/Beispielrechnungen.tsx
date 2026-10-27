@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { HOLZ_EN338 } from '@/src/data/kennwerte';
 import { MU_LIM_STAHL } from '@/src/calc/biegung';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { GruppierteModuleTabs } from '@/src/components/ui/GruppierteModuleTabs';
@@ -216,8 +217,8 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
   const [timberGrade, setTimberGrade] = useState<'C24' | 'C30'>('C24');
 
   // Material parameters
-  const f_c0k = timberGrade === 'C24' ? 21 : 24; // f_c,0,k nach DIN EN 338: C24 = 21, C30 = 24 N/mm²
-  const E_005 = timberGrade === 'C24' ? 7400 : 8000; // 5th-percentile modulus of elasticity in N/mm²
+  const f_c0k = HOLZ_EN338[timberGrade].fc0k; // f_c,0,k nach DIN EN 338:2016 (zentral, src/data/kennwerte.ts)
+  const E_005 = HOLZ_EN338[timberGrade].E005; // E_0,05 nach DIN EN 338:2016
   const k_mod = 0.90; // KLED kurz (maßgebende kurzzeitige Einwirkung angenommen), NKL 1 und 2 (DIN EN 1995-1-1, Tab. 3.1)
   const gamma_M = 1.3; // Solid timber partial factor
 

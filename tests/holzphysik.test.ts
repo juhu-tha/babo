@@ -1,27 +1,35 @@
 // Rechenkern Holzphysik: Gleichgewichtsfeuchte, Feuchteangleich, Quellen und Schwinden (Umsetzungsplan Phase 4, AP 4.2)
-import { FASERSAETTIGUNG, gleichgewichtsfeuchte, feuchteNachLagerung, zeitkonstanteFeuchte, schwinden, schwindmass } from '../src/calc/holzphysik';
+import { FASERSAETTIGUNG, gleichgewichtsfeuchte, sorptionHailwoodHorrobin, feuchteNachLagerung, zeitkonstanteFeuchte, schwinden, schwindmass } from '../src/calc/holzphysik';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
 const nahe = (ist: number, soll: number, tol: number) => Math.abs(ist - soll) <= tol * Math.abs(soll);
 console.log('--- Test: Holzphysik ---');
 
-// 1. Gleichgewichtsfeuchte (Lehrmodell, 1:1 aus Holz.tsx): φ = 65 %, θ = 20 °C
-//    u = 18·0,65³ − 10·0,65² + 20·0,65 = 4,9433 − 4,2250 + 13,0 = 13,718 %
-//    Literatur: bei 20 °C / 65 % r. F. und Fasersättigung 30 % „close to 12 %“ (ATIBT, Tropical Timber Technical
-//    Guide, Kap. 5 „Timber humidity“, atibt.org). Das Lehrmodell liegt um rund 1,7 Prozentpunkte darüber (Prüfpunkt im PR).
+// 1. Gleichgewichtsfeuchte (Runde 5: Hailwood-Horrobin mit Koeffizienten nach Simpson, Wood Handbook FPL-GTR-113, Kap. 3, Gl. 3-3)
+//    20 °C, h = 0,65: W = 349 + 25,8 + 5,4 = 380,2; K = 0,81863; K₁ = 5,9612; K₂ = 2,6068; K·h = 0,53211
+//    u = 1800/380,2 · [0,53211/0,46789 + (3,1720 + 2·4,3996)/(1 + 3,1720 + 4,3996)] = 4,7344 · (1,13726 + 1,39667) = 12,00 %
+//    Literatur: Wood Handbook-Tabelle 21,1 °C / 65 % ≈ 12,0 %; ATIBT („close to 12 %“ bei 20 °C / 65 %).
 const g65 = gleichgewichtsfeuchte(65, 20);
-pruefe(nahe(g65.u, 13.71825, 1e-9) && !g65.begrenzt && g65.hinweise.length === 0, `u_gl(65 %, 20 °C) = ${g65.u}`);
-pruefe(Math.abs(g65.u - 12) < 2, 'Lehrmodell innerhalb 2 %-Punkte um den Literaturwert 12 %');
-// Temperatureinfluss: 30 °C → Faktor 0,9
-pruefe(nahe(gleichgewichtsfeuchte(65, 30).u, 13.71825 * 0.9, 1e-9), 'Temperaturkorrektur −1 %/K');
-// Randfall: φ = 100 %, θ = 0 °C → 28 · 1,2 = 33,6 % → begrenzt auf Fasersättigung
-const g100 = gleichgewichtsfeuchte(100, 0);
-pruefe(g100.u === FASERSAETTIGUNG && g100.begrenzt && g100.hinweise.some(h => h.stufe === 'warnung'), 'Begrenzung auf 30 %');
+pruefe(Math.abs(g65.u - 11.996) < 0.001 && !g65.begrenzt && g65.hinweise.length === 0, `u_gl(65 %, 20 °C) = ${g65.u}`);
+pruefe(Math.abs(g65.u - 12) < 0.05, 'Sorptionsmodell trifft den Literaturwert 12 % (Ziel Runde 5)');
+pruefe(nahe(sorptionHailwoodHorrobin(0.65, 20), g65.u, 1e-12), 'Kernfunktion = Auswertung');
+// Weitere Tabellenpunkte (Wood Handbook, 70 °F ≈ 21,1 °C): 40 % → 7,7 %, 80 % → 16,0 % (gerundet ±0,3)
+pruefe(Math.abs(gleichgewichtsfeuchte(40, 21.1).u - 7.7) < 0.3 && Math.abs(gleichgewichtsfeuchte(80, 21.1).u - 16.0) < 0.3, 'Tabellenpunkte 40/80 %');
+// Temperatureinfluss: wärmer → geringere Ausgleichsfeuchte (30 °C/65 % → 11,6 %)
+pruefe(gleichgewichtsfeuchte(65, 30).u < g65.u && Math.abs(gleichgewichtsfeuchte(65, 30).u - 11.605) < 0.01, 'Temperatureinfluss');
+// Randfall: φ = 100 % → 28,8 % (unter Fasersättigung, keine Begrenzung); φ = 0 → u = 0
+const g100 = gleichgewichtsfeuchte(100, 20);
+pruefe(Math.abs(g100.u - 28.84) < 0.01 && !g100.begrenzt, `φ = 100 % → ${g100.u}`);
 pruefe(gleichgewichtsfeuchte(0, 20).u === 0, 'φ = 0 → u = 0');
-// Grenze: φ außerhalb 0 … 100 % ist unzulässig
+// Monotonie in φ
+for (let p = 0; p < 100; p += 5) pruefe(gleichgewichtsfeuchte(p + 5, 20).u > gleichgewichtsfeuchte(p, 20).u, `monoton bei φ = ${p} %`);
+// Grenze: φ außerhalb 0 … 100 % und θ außerhalb −20 … 120 °C sind unzulässig; außerhalb 0 … 100 °C Warnung
 pruefe(gleichgewichtsfeuchte(101, 20).hinweise.some(h => h.stufe === 'fehler'), 'φ > 100 % → Fehler');
+pruefe(gleichgewichtsfeuchte(65, 150).hinweise.some(h => h.stufe === 'fehler'), 'θ = 150 °C → Fehler');
+pruefe(gleichgewichtsfeuchte(65, -10).hinweise.some(h => h.stufe === 'warnung' && h.feld === 'theta'), 'θ = −10 °C → Warnung');
 pruefe(gleichgewichtsfeuchte(NaN, 20).hinweise.some(h => h.stufe === 'fehler'), 'NaN → Fehler');
+void FASERSAETTIGUNG;
 
 // 2. Feuchteangleich: τ(20 mm) = 15 d; nach t = τ ist (u0 − u_gl) auf 1/e abgeklungen
 pruefe(zeitkonstanteFeuchte(20) === 15 && zeitkonstanteFeuchte(40) === 60, 'τ ∝ d²');

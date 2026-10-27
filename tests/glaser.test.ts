@@ -1,5 +1,5 @@
 // Rechenkern Glaser-Verfahren (Umsetzungsplan Phase 4, AP 4.9)
-import { glaser, TAUPERIODE_DIN_4108_3, verdunstungDin4108_3, type GlaserSchicht } from '../src/calc/glaser';
+import { glaser, sdRegel, TAUPERIODE_DIN_4108_3, verdunstungDin4108_3, type GlaserSchicht } from '../src/calc/glaser';
 import { psat } from '../src/calc/waermeschutz';
 
 const fehler: string[] = [];
@@ -94,6 +94,16 @@ for (let i = 0; i < 1000; i++) {
     pruefe(false, `Fuzz ${i} ${JSON.stringify(s)}`); break;
   }
 }
+
+// Runde 5 (Z22): s_d-Faustregel nach den nachweisfreien nicht belüfteten Dächern der DIN 4108-3
+// (öffentlich: baunetzwissen.de, „Wann ist ein Dach dampfdiffusionsoffen?“): 0,1/1,0 m, 0,3/2,0 m, s_d,e ≤ 2,0 m → s_d,i ≥ 6·s_d,e
+pruefe(sdRegel(1.0, 0.1).eingehalten && !sdRegel(0.99, 0.1).eingehalten && sdRegel(1.0, 0.1).sdiErforderlich === 1.0, 'Stufe 0,1/1,0');
+pruefe(sdRegel(2.0, 0.3).eingehalten && !sdRegel(1.9, 0.25).eingehalten, 'Stufe 0,3/2,0');
+pruefe(Math.abs((sdRegel(10, 1.5).sdiErforderlich ?? 0) - 9.0) < 1e-12 && sdRegel(9, 1.5).eingehalten && !sdRegel(8.9, 1.5).eingehalten, 'Faktor 6');
+pruefe(sdRegel(100, 2.5).sdiErforderlich === null && !sdRegel(100, 2.5).eingehalten, 's_d,e > 2,0 m → Nachweis');
+pruefe(!sdRegel(NaN, 1).eingehalten && !sdRegel(-1, 1).eingehalten, 'ungültige Eingaben');
+// Standardaufbau Kombinationen (Putz, HLz, EPS | Armierung, Oberputz): s_d,i = 8,95 m, s_d,e = 0,215 m → erfüllt; μ_Oberputz = 500 → 1,625 m → 9,75 m gefordert
+pruefe(sdRegel(8.95, 0.215).eingehalten && !sdRegel(8.95, 0.125 + 0.003 * 500).eingehalten, 'Kombinationen-Standard');
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
 console.log('OK: Glaser-Verfahren');

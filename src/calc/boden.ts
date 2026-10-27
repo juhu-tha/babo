@@ -4,6 +4,7 @@
  * Reiner Rechenkern – geprüft in tests/boden.test.ts.
  */
 import { type Hinweis, istEndlich, muss, bereich, hatFehler } from './plausibilitaet';
+import { formatDeZahl } from '../utils/numberFormat';
 
 export function zustandsgrenzen(w: number, wL: number, wP: number) {
   const hinweise: Hinweis[] = [];
@@ -26,6 +27,140 @@ export function zustandsgrenzen(w: number, wL: number, wP: number) {
   else klasse = wL < 35 ? 'UL (Schluff, leicht plastisch)' : wL <= 50 ? 'UM (Schluff, mittelplastisch) bzw. OU bei organischen Beimengungen' : 'UA (Schluff, ausgeprägt plastisch)';
   if (wL > 120) hinweise.push({ stufe: 'warnung', feld: 'wL', text: 'w_L > 120 % liegt außerhalb des üblichen Plastizitätsdiagramms.' });
   return { iP, iC, zustand, klasse, hinweise };
+}
+
+/* ────────────────────────────────────────────────────────────────────────────────────────────────
+ * Atterberg-Grenzen (Z24): Auswertung des Fließgrenzenversuchs nach Casagrande und des Ausrollversuchs,
+ * Plastizitätsdiagramm nach Casagrande mit A-Linie I_P = 0,73·(w_L − 20) und Bodengruppen nach DIN 18196.
+ *  - Mehrpunktverfahren: Ausgleichsgerade w = a + b·lg N durch ≥ 4 Einzelversuche mit 15 ≤ N ≤ 40 Schlägen,
+ *    w_L = Wassergehalt bei N = 25 (HAW Kiel, Laborblatt „Fließgrenzengerät nach Casagrande“, 2025, nach DIN EN ISO 17892-12)
+ *  - Einpunktverfahren: w_L = w_N·(N/25)^0,121 (ASTM D4318, Verfahren B; Exponent für DIN EN ISO 17892-12 vorläufig, F-Freigabe)
+ *  - Ausrollgrenze w_P: Mittelwert der Ausrollversuche (Walzen von 3 mm Durchmesser zerbröckeln)
+ *  - I_P = w_L − w_P, I_C = (w_L − w)/I_P und Zustandsform wie zustandsgrenzen() (DIN 18122, DIN EN ISO 14688-2)
+ *  - Bodengruppen: TL/UL w_L < 35 %, TM/UM 35 … 50 %, TA/UA > 50 %; oberhalb der A-Linie und I_P ≥ 7 % Ton,
+ *    unterhalb oder I_P < 4 % Schluff, dazwischen (4 ≤ I_P < 7 % oberhalb der A-Linie) Zwischenbereich UL/TL;
+ *    organogen: OU (unterhalb A-Linie, w_L 35 … 50 %), OT (oberhalb A-Linie, w_L > 50 %) – Organik selbst nicht bestimmbar.
+ * Wassergehalte in %.
+ * ──────────────────────────────────────────────────────────────────────────────────────────────── */
+
+/** Exponent des Einpunktverfahrens (ASTM D4318, Verfahren B: tan β = 0,121) – vorläufig, F-Freigabe */
+export const EINPUNKT_EXPONENT = 0.121;
+
+/** A-Linie des Plastizitätsdiagramms: I_P = 0,73·(w_L − 20) */
+export const aLinie = (wL: number) => 0.73 * (wL - 20);
+
+export interface FliessVersuch { schlaege: number; w: number }
+
+/** Fließgrenze nach dem Einpunktverfahren: w_L = w_N·(N/25)^0,121 */
+export const fliessgrenzeEinpunkt = (w: number, schlaege: number) => w * Math.pow(schlaege / 25, EINPUNKT_EXPONENT);
+
+export interface FliessgrenzenErgebnis {
+  wL: number;
+  /** Ausgleichsgerade w = a + b·lg N (Einpunktverfahren: Gerade mit Neigung −0,121·w_L durch den Messpunkt, nur zur Darstellung) */
+  a: number;
+  b: number;
+  /** Bestimmtheitsmaß der Ausgleichsgeraden (NaN bei weniger als 3 Punkten) */
+  r2: number;
+  verfahren: 'einpunkt' | 'mehrpunkt';
+  hinweise: Hinweis[];
+}
+
+/** Fließgrenze aus einem (Einpunkt-) oder mehreren Versuchen (Mehrpunktverfahren) */
+export function fliessgrenze(versuche: readonly FliessVersuch[]): FliessgrenzenErgebnis {
+  const hinweise: Hinweis[] = [];
+  const leer = (): FliessgrenzenErgebnis => ({ wL: NaN, a: NaN, b: NaN, r2: NaN, verfahren: versuche.length === 1 ? 'einpunkt' : 'mehrpunkt', hinweise });
+  muss(hinweise, versuche.length >= 1, 'versuche', 'Mindestens ein Fließgrenzenversuch ist erforderlich.');
+  versuche.forEach((v, i) => muss(hinweise, istEndlich(v.schlaege, v.w) && v.schlaege >= 1 && v.w > 0, `versuch${i}`, `Versuch ${i + 1}: Schlagzahl ≥ 1 und Wassergehalt > 0 % erforderlich.`));
+  if (hatFehler(hinweise)) return leer();
+  versuche.forEach((v, i) => { if (v.schlaege < 15 || v.schlaege > 40) hinweise.push({ stufe: 'warnung', feld: `versuch${i}`, text: `Versuch ${i + 1}: ${v.schlaege} Schläge liegen außerhalb des gültigen Bereichs 15–40.` }); });
+
+  if (versuche.length === 1) {
+    const { w, schlaege } = versuche[0];
+    const wL = fliessgrenzeEinpunkt(w, schlaege);
+    if (schlaege < 20 || schlaege > 30) hinweise.push({ stufe: 'warnung', feld: 'versuch0', text: 'Einpunktverfahren: Die Näherung ist nur für etwa 20–30 Schläge vorgesehen.' });
+    hinweise.push({ stufe: 'warnung', feld: 'verfahren', text: 'Einpunktverfahren: Näherung mit fester Neigung der Fließkurve; für Nachweise das Mehrpunktverfahren mit mindestens 4 Versuchen verwenden.' });
+    // Darstellungsgerade durch den Messpunkt mit der Neigung der Einpunktformel bei N = 25: dw/d(lg N) = −0,121·ln 10·w_L
+    const b = -EINPUNKT_EXPONENT * Math.LN10 * wL;
+    return { wL, a: wL - b * Math.log10(25), b, r2: NaN, verfahren: 'einpunkt', hinweise };
+  }
+
+  const x = versuche.map(v => Math.log10(v.schlaege)), y = versuche.map(v => v.w);
+  const n = x.length;
+  const mx = x.reduce((s, v) => s + v, 0) / n, my = y.reduce((s, v) => s + v, 0) / n;
+  const sxx = x.reduce((s, v) => s + (v - mx) ** 2, 0);
+  muss(hinweise, sxx > 1e-12, 'versuche', 'Die Versuche brauchen unterschiedliche Schlagzahlen, sonst ist keine Ausgleichsgerade bestimmbar.');
+  if (hatFehler(hinweise)) return leer();
+  const sxy = x.reduce((s, v, i) => s + (v - mx) * (y[i] - my), 0);
+  const b = sxy / sxx, a = my - b * mx;
+  const syy = y.reduce((s, v) => s + (v - my) ** 2, 0);
+  const r2 = n >= 3 ? (syy > 0 ? (sxy * sxy) / (sxx * syy) : 1) : NaN;
+  const wL = a + b * Math.log10(25);
+  if (n < 4) hinweise.push({ stufe: 'warnung', feld: 'versuche', text: `Nur ${n} Versuche: Für das Mehrpunktverfahren sind mindestens 4 Einzelversuche vorgesehen.` });
+  if (b >= 0) hinweise.push({ stufe: 'warnung', feld: 'versuche', text: 'Der Wassergehalt nimmt mit der Schlagzahl nicht ab – Versuche oder Zuordnung prüfen.' });
+  if (n >= 3 && r2 < 0.9) hinweise.push({ stufe: 'warnung', feld: 'versuche', text: `Bestimmtheitsmaß R² = ${formatDeZahl(r2, 2)}: Die Punkte streuen stark um die Ausgleichsgerade.` });
+  const nMin = Math.min(...versuche.map(v => v.schlaege)), nMax = Math.max(...versuche.map(v => v.schlaege));
+  if (nMin > 25 || nMax < 25) hinweise.push({ stufe: 'warnung', feld: 'versuche', text: 'N = 25 liegt außerhalb der gemessenen Schlagzahlen: w_L wird extrapoliert – Versuche auf beiden Seiten von 25 Schlägen anordnen.' });
+  return { wL, a, b, r2, verfahren: 'mehrpunkt', hinweise };
+}
+
+/** Ausrollgrenze w_P als Mittelwert der Einzelversuche */
+export function ausrollgrenze(werte: readonly number[]) {
+  const hinweise: Hinweis[] = [];
+  muss(hinweise, werte.length >= 1, 'wP', 'Mindestens ein Ausrollversuch ist erforderlich.');
+  muss(hinweise, werte.every(v => Number.isFinite(v) && v > 0), 'wP', 'Die Wassergehalte der Ausrollversuche müssen größer als 0 % sein.');
+  if (hatFehler(hinweise)) return { wP: NaN, spanne: NaN, hinweise };
+  const wP = werte.reduce((s, v) => s + v, 0) / werte.length;
+  const spanne = Math.max(...werte) - Math.min(...werte);
+  if (werte.length < 2) hinweise.push({ stufe: 'warnung', feld: 'wP', text: 'Nur ein Ausrollversuch: w_P als Mittelwert aus mindestens zwei Versuchen bestimmen.' });
+  if (spanne > 2) hinweise.push({ stufe: 'warnung', feld: 'wP', text: `Die Einzelwerte liegen ${formatDeZahl(spanne, 1)} Prozentpunkte auseinander (Lehrannahme: höchstens 2): Versuch wiederholen.` });
+  return { wP, spanne, hinweise };
+}
+
+export interface BodengruppeErgebnis { kuerzel: string; text: string; aLinie: number; oberhalbALinie: boolean }
+
+/** Bodengruppe feinkörniger Böden aus dem Plastizitätsdiagramm (DIN 18196) */
+export function bodengruppePlastizitaet(wL: number, iP: number, organisch = false): BodengruppeErgebnis {
+  const a = aLinie(wL);
+  const oberhalb = iP >= a;
+  const stufe = wL < 35 ? 'L' : wL <= 50 ? 'M' : 'A';
+  const PLAST = { L: 'leicht plastisch', M: 'mittelplastisch', A: 'ausgeprägt plastisch' } as const;
+  if (oberhalb && iP >= 7) {
+    if (organisch && stufe === 'A') return { kuerzel: 'OT', text: 'OT (Ton mit organischen Beimengungen)', aLinie: a, oberhalbALinie: true };
+    return { kuerzel: `T${stufe}`, text: `T${stufe} (Ton, ${PLAST[stufe]})`, aLinie: a, oberhalbALinie: true };
+  }
+  if (oberhalb && iP >= 4) return { kuerzel: 'UL/TL', text: 'UL/TL (Zwischenbereich, 4 ≤ I_P < 7)', aLinie: a, oberhalbALinie: true };
+  if (organisch && stufe !== 'L') return { kuerzel: 'OU', text: 'OU (Schluff mit organischen Beimengungen)', aLinie: a, oberhalbALinie: oberhalb };
+  return { kuerzel: `U${stufe}`, text: `U${stufe} (Schluff, ${PLAST[stufe]})`, aLinie: a, oberhalbALinie: oberhalb };
+}
+
+export interface AtterbergEingabe {
+  /** natürlicher Wassergehalt w [%] */
+  w: number;
+  /** Fließgrenzenversuche (1 Versuch → Einpunktverfahren) */
+  versuche: readonly FliessVersuch[];
+  /** Wassergehalte der Ausrollversuche [%] */
+  ausroll: readonly number[];
+  /** organische Beimengungen (z. B. Glühverlust, Geruch, Farbe) festgestellt */
+  organisch: boolean;
+}
+
+/** Gesamtauswertung: w_L, w_P, I_P, I_C, Zustandsform und Bodengruppe */
+export function atterberg(e: AtterbergEingabe) {
+  const fl = fliessgrenze(e.versuche);
+  const ar = ausrollgrenze(e.ausroll);
+  const hinweise: Hinweis[] = [...fl.hinweise, ...ar.hinweise];
+  muss(hinweise, Number.isFinite(e.w) && e.w >= 0, 'w', 'Der natürliche Wassergehalt muss eine Zahl ≥ 0 % sein.');
+  const leer = { wL: fl.wL, wP: ar.wP, iP: NaN, iC: NaN, zustand: '–', gruppe: undefined as BodengruppeErgebnis | undefined, fliess: fl, gueltig: false, hinweise };
+  if (hatFehler(hinweise)) return leer;
+  muss(hinweise, ar.wP < fl.wL, 'wP', `Die Ausrollgrenze w_P = ${formatDeZahl(ar.wP, 1)} % muss kleiner als die Fließgrenze w_L = ${formatDeZahl(fl.wL, 1)} % sein (I_P > 0).`);
+  if (hatFehler(hinweise)) return leer;
+  const z = zustandsgrenzen(e.w, fl.wL, ar.wP);
+  const iP = fl.wL - ar.wP;
+  const gruppe = bodengruppePlastizitaet(fl.wL, iP, e.organisch);
+  hinweise.push(...z.hinweise);
+  if (e.organisch) hinweise.push({ stufe: 'warnung', feld: 'organisch', text: 'Organische Beimengungen: Die Zuordnung zu OU/OT setzt eine Bestimmung des Glühverlusts voraus (DIN 18196).' });
+  if (iP < 4) hinweise.push({ stufe: 'warnung', feld: 'iP', text: 'I_P < 4 %: Der Boden ist kaum plastisch – Ausrollgrenze schwer bestimmbar, Einordnung über die Korngrößenverteilung prüfen.' });
+  return { wL: fl.wL, wP: ar.wP, iP, iC: z.iC, zustand: z.zustand, gruppe, fliess: fl, gueltig: true, hinweise };
 }
 
 export function mohrCoulomb(c: number, phiGrad: number, sigma1: number, sigma3: number) {

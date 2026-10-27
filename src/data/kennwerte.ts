@@ -157,3 +157,47 @@ export const BETONSTAHL: Readonly<Record<BetonstahlSorte, { fyk: number; k: numb
   B500A: { fyk: 500, k: 1.05, ftk: 525, euk: 25 },
   B500B: { fyk: 500, k: 1.08, ftk: 540, euk: 50 },
 };
+
+// ---------------------------------------------------------------------------------------------
+// Holzkennwerte (Runde 5, Entscheidung Prof. Huber 27.10.: Normwerte vereinheitlichen).
+// Einzige Quelle für Vollholz (DIN EN 338:2016-07, Tab. 1/3) und Brettschichtholz (DIN EN 14080:2013-09, Tab. 4/5).
+// Module und Rechenkerne verwenden diese Konstanten; tests/kennwerte.test.ts prüft die Werte.
+// Öffentliche Wiedergaben: studiomadera.it (UNI EN 338:2016, Tab. 15.1, Nadel- und Laubholz),
+// structuralbasics.com und HASSLACHER-Broschüre „Brettschichtholz“ (EN 14080:2013, Tab. 4/5).
+// ---------------------------------------------------------------------------------------------
+
+export interface HolzKennwerte {
+  /** charakteristische Festigkeiten [N/mm²] */
+  fmk: number; ft0k: number; ft90k: number; fc0k: number; fc90k: number; fvk: number;
+  /** Steifigkeiten [N/mm²] */
+  E0mean: number; E005: number; Gmean: number;
+  /** Rohdichten [kg/m³] */
+  rhok: number; rhoMean: number;
+}
+
+export type VollholzKlasse = 'C16' | 'C24' | 'C30' | 'D30' | 'D40';
+
+/** Vollholz nach DIN EN 338:2016-07 (C: Nadelholz und Pappel, D: Laubholz) */
+export const HOLZ_EN338: Readonly<Record<VollholzKlasse, HolzKennwerte>> = {
+  C16: { fmk: 16, ft0k: 8.5, ft90k: 0.4, fc0k: 17, fc90k: 2.2, fvk: 3.2, E0mean: 8000, E005: 5400, Gmean: 500, rhok: 310, rhoMean: 370 },
+  C24: { fmk: 24, ft0k: 14.5, ft90k: 0.4, fc0k: 21, fc90k: 2.5, fvk: 4.0, E0mean: 11000, E005: 7400, Gmean: 690, rhok: 350, rhoMean: 420 },
+  C30: { fmk: 30, ft0k: 19, ft90k: 0.4, fc0k: 24, fc90k: 2.7, fvk: 4.0, E0mean: 12000, E005: 8000, Gmean: 750, rhok: 380, rhoMean: 460 },
+  D30: { fmk: 30, ft0k: 18, ft90k: 0.6, fc0k: 24, fc90k: 5.3, fvk: 3.9, E0mean: 11000, E005: 9200, Gmean: 690, rhok: 530, rhoMean: 640 },
+  D40: { fmk: 40, ft0k: 24, ft90k: 0.6, fc0k: 27, fc90k: 5.5, fvk: 4.2, E0mean: 13000, E005: 10900, Gmean: 810, rhok: 550, rhoMean: 660 },
+};
+
+export type BshKlasse = 'GL24h' | 'GL28h' | 'GL30h' | 'GL24c' | 'GL28c';
+
+/** Brettschichtholz nach DIN EN 14080:2013-09 (h: homogen, Tab. 5; c: kombiniert, Tab. 4); f_t,90 = 0,5, G = 650 N/mm² */
+export const BSH_EN14080: Readonly<Record<BshKlasse, HolzKennwerte>> = {
+  GL24h: { fmk: 24, ft0k: 19.2, ft90k: 0.5, fc0k: 24, fc90k: 2.5, fvk: 3.5, E0mean: 11500, E005: 9600, Gmean: 650, rhok: 385, rhoMean: 420 },
+  GL28h: { fmk: 28, ft0k: 22.3, ft90k: 0.5, fc0k: 28, fc90k: 2.5, fvk: 3.5, E0mean: 12600, E005: 10500, Gmean: 650, rhok: 425, rhoMean: 460 },
+  GL30h: { fmk: 30, ft0k: 24, ft90k: 0.5, fc0k: 30, fc90k: 2.5, fvk: 3.5, E0mean: 13600, E005: 11300, Gmean: 650, rhok: 430, rhoMean: 480 },
+  GL24c: { fmk: 24, ft0k: 17, ft90k: 0.5, fc0k: 21.5, fc90k: 2.5, fvk: 3.5, E0mean: 11000, E005: 9100, Gmean: 650, rhok: 365, rhoMean: 400 },
+  GL28c: { fmk: 28, ft0k: 19.5, ft90k: 0.5, fc0k: 24, fc90k: 2.5, fvk: 3.5, E0mean: 12500, E005: 10400, Gmean: 650, rhok: 390, rhoMean: 420 },
+};
+
+/** Kennwerte einer Holzklasse (Vollholz oder BSH) nach Bezeichnung, z. B. 'C24' oder 'GL28h' */
+export function holzKennwerte(klasse: string): HolzKennwerte | undefined {
+  return (HOLZ_EN338 as Record<string, HolzKennwerte>)[klasse] ?? (BSH_EN14080 as Record<string, HolzKennwerte>)[klasse];
+}

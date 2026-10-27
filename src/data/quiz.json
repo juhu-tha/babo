@@ -49961,5 +49961,1085 @@
       "targetModuleLabel": "Laborsicherheit"
     },
     "verified": false
+  },
+  {
+    "id": "qz24_ttest_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "statistik",
+    "moduleTitle": "Statistik",
+    "topic": "Einstichproben-t-Test",
+    "difficulty": "Vertiefung",
+    "normRef": "NIST e-Handbook 1.3.5",
+    "question": "Eine Serie von n = 10 Würfeln hat x̄ = 38,47 N/mm² und s = 1,665 N/mm². Wie groß ist die Prüfgröße t gegen den Sollwert μ₀ = 38 N/mm²?",
+    "options": [
+      "t ≈ 0,28, weil die Differenz durch s geteilt wird",
+      "t ≈ 0,89 mit ν = 9 Freiheitsgraden",
+      "t ≈ 2,82, weil der Standardfehler s/n beträgt",
+      "t ≈ 0,09, weil der Standardfehler s·√n beträgt"
+    ],
+    "correctIdx": 1,
+    "explanation": "t = (x̄ − μ₀)/(s/√n) = 0,47/(1,665/√10) = 0,47/0,527 = 0,89; ν = n − 1 = 9. Mit t_krit = 2,262 (α = 5 %, zweiseitig) bleibt H₀.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "0,47/1,665 = 0,28 ist der Abstand in Einheiten von s, nicht des Standardfehlers s/√n.",
+      "",
+      "Der Standardfehler ist s/√n, nicht s/n; mit s/n wird t um den Faktor √10 zu groß.",
+      "s·√n vergrößert den Standardfehler fälschlich; richtig ist s/√n."
+    ],
+    "gapAnalysis": {
+      "topic": "Einstichproben-t-Test",
+      "misconception": "Die Prüfgröße wird mit s statt mit dem Standardfehler s/√n gebildet.",
+      "coreRule": "t = (x̄ − μ₀)/(s/√n), ν = n − 1.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „t-Test“ im Modul Statistik noch einmal durch.",
+      "targetModuleTab": "statistik",
+      "targetModuleLabel": "Statistik"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_ttest_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "statistik",
+    "moduleTitle": "Statistik",
+    "topic": "p-Wert",
+    "difficulty": "Basis",
+    "normRef": "NIST e-Handbook 1.3.5",
+    "question": "Ein t-Test liefert p = 0,03 bei α = 0,05. Welche Aussage ist zutreffend?",
+    "options": [
+      "H₀ ist mit 97 % Wahrscheinlichkeit falsch",
+      "Mit 3 % Wahrscheinlichkeit gilt die Nullhypothese",
+      "H₀ wird verworfen, weil p kleiner als α ist",
+      "Der Unterschied ist technisch relevant"
+    ],
+    "correctIdx": 2,
+    "explanation": "Der p-Wert ist die Wahrscheinlichkeit, unter H₀ ein mindestens so extremes t zu beobachten. Ist p < α, wird H₀ verworfen. Über die Wahrscheinlichkeit von H₀ selbst oder die technische Relevanz sagt p nichts aus.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "p ist keine Wahrscheinlichkeit für H₀ oder H₁, sondern bezieht sich auf die Daten unter H₀.",
+      "Auch diese Deutung verwechselt den p-Wert mit einer Wahrscheinlichkeit der Hypothese.",
+      "",
+      "Statistische Signifikanz ist keine technische Bewertung; dafür zählt die Größe des Unterschieds."
+    ],
+    "gapAnalysis": {
+      "topic": "p-Wert",
+      "misconception": "Der p-Wert wird als Wahrscheinlichkeit der Nullhypothese gedeutet.",
+      "coreRule": "p < α → H₀ verwerfen; p beschreibt die Daten unter H₀.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „t-Test“ im Modul Statistik noch einmal durch.",
+      "targetModuleTab": "statistik",
+      "targetModuleLabel": "Statistik"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_ttest_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "statistik",
+    "moduleTitle": "Statistik",
+    "topic": "Welch-Test",
+    "difficulty": "Vertiefung",
+    "normRef": "NIST e-Handbook 1.3.5.3",
+    "question": "Zwei Betonserien haben n₁ = 12, n₂ = 5 und eine etwa fünfmal größere Varianz in Serie 2. Welcher Zweistichprobentest ist angemessen?",
+    "options": [
+      "Der Student-Test, weil er die Varianzen poolt",
+      "Der Welch-Test mit Freiheitsgraden nach Satterthwaite",
+      "Ein Einstichprobentest gegen den Mittelwert von Serie 1",
+      "Der Grubbs-Test, weil Serie 2 stärker streut"
+    ],
+    "correctIdx": 1,
+    "explanation": "Der Student-Test setzt gleiche Varianzen voraus. Bei ungleichen Varianzen und Stichprobenumfängen ist der Welch-Test robust: SE = √(s₁²/n₁ + s₂²/n₂), ν nach Welch-Satterthwaite.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Gerade das Poolen setzt gleiche Varianzen voraus, die hier nicht gegeben sind.",
+      "",
+      "Der Mittelwert von Serie 1 ist selbst unsicher und kein fester Sollwert.",
+      "Der Grubbs-Test prüft Ausreißer, nicht den Unterschied zweier Mittelwerte."
+    ],
+    "gapAnalysis": {
+      "topic": "Welch-Test",
+      "misconception": "Der gepoolte Student-Test wird auch bei deutlich ungleichen Varianzen angewendet.",
+      "coreRule": "Ungleiche Varianzen → Welch-Test.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „t-Test“ im Modul Statistik noch einmal durch.",
+      "targetModuleTab": "statistik",
+      "targetModuleLabel": "Statistik"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_ttest_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "statistik",
+    "moduleTitle": "Statistik",
+    "topic": "Konfidenzintervall",
+    "difficulty": "Vertiefung",
+    "normRef": "NIST e-Handbook 1.3.5.2",
+    "question": "Das 95-%-Konfidenzintervall für μ₁ − μ₂ reicht von −0,3 bis 4,9 N/mm². Was folgt daraus für den zweiseitigen t-Test mit α = 5 %?",
+    "options": [
+      "H₀: μ₁ = μ₂ wird verworfen, weil das Intervall überwiegend positiv ist",
+      "H₀ wird nicht verworfen, weil das Intervall die Null enthält",
+      "Die Serien sind damit als gleichwertig nachgewiesen",
+      "Für eine Aussage fehlt zwingend der p-Wert"
+    ],
+    "correctIdx": 1,
+    "explanation": "Ein Konfidenzintervall zum Niveau 1 − α enthält alle Differenzen, die der zweiseitige Test nicht verwirft. Liegt 0 im Intervall, bleibt H₀. Gleichheit ist damit aber nicht bewiesen – das breite Intervall zeigt geringe Trennschärfe.",
+    "bloom": "Analysieren",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Die Lage des Großteils des Intervalls ist kein Testkriterium; entscheidend ist, ob 0 enthalten ist.",
+      "",
+      "Ein nicht signifikantes Ergebnis ist kein Gleichheitsnachweis.",
+      "Intervall und zweiseitiger Test führen zur selben Entscheidung; der p-Wert ist dafür nicht nötig."
+    ],
+    "gapAnalysis": {
+      "topic": "Konfidenzintervall",
+      "misconception": "Konfidenzintervall und Testentscheidung werden als getrennte Aussagen behandelt.",
+      "coreRule": "KI zum Niveau 1 − α enthält 0 ⇔ H₀ wird zweiseitig nicht verworfen.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „t-Test“ im Modul Statistik noch einmal durch.",
+      "targetModuleTab": "statistik",
+      "targetModuleLabel": "Statistik"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_ttest_5",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "statistik",
+    "moduleTitle": "Statistik",
+    "topic": "t-Verteilung",
+    "difficulty": "Basis",
+    "normRef": "NIST e-Handbook 1.3.6.7.2",
+    "question": "Wie ändert sich der kritische Wert t₀,₉₇₅ mit wachsender Zahl der Freiheitsgrade?",
+    "options": [
+      "Er steigt, weil mehr Werte mehr Streuung bringen",
+      "Er bleibt unabhängig von ν konstant bei 1,96",
+      "Er sinkt und strebt gegen 1,96 (Normalverteilung)",
+      "Er sinkt weiter und strebt schließlich gegen null"
+    ],
+    "correctIdx": 2,
+    "explanation": "Die t-Verteilung hat bei wenigen Freiheitsgraden breitere Ränder: t₀,₉₇₅ = 12,71 (ν = 1), 2,23 (ν = 10), 2,04 (ν = 30). Für ν → ∞ geht sie in die Standardnormalverteilung über (1,96).",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Mehr Werte machen die Schätzung von s sicherer; der kritische Wert sinkt daher.",
+      "1,96 ist nur der Grenzwert für sehr große ν; bei kleinen Serien liegt t_krit deutlich darüber.",
+      "",
+      "Der kritische Wert fällt nicht unter den Normalverteilungswert 1,96."
+    ],
+    "gapAnalysis": {
+      "topic": "t-Verteilung",
+      "misconception": "Die t-Verteilung wird mit der Normalverteilung gleichgesetzt.",
+      "coreRule": "t_krit sinkt mit ν und strebt gegen z = 1,96.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „t-Test“ im Modul Statistik noch einmal durch.",
+      "targetModuleTab": "statistik",
+      "targetModuleLabel": "Statistik"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_tritt_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "schallschutz",
+    "moduleTitle": "Schallschutz",
+    "topic": "Norm-Trittschallpegel",
+    "difficulty": "Basis",
+    "normRef": "DIN 4109-1",
+    "question": "Decke A erreicht L′_n,w = 46 dB, Decke B L′_n,w = 52 dB. Welche Decke schützt besser gegen Trittschall?",
+    "options": [
+      "Decke B, weil ein höherer Wert eine bessere Dämmung bedeutet",
+      "Beide gleich, weil 6 dB unter der Messgenauigkeit liegen",
+      "Decke A, weil ein kleinerer Pegel weniger Schall bedeutet",
+      "Das lässt sich ohne das Schalldämm-Maß R′_w nicht beurteilen"
+    ],
+    "correctIdx": 2,
+    "explanation": "L′_n,w ist ein Pegel im Empfangsraum: Je kleiner der Wert, desto besser der Trittschallschutz. Beim Schalldämm-Maß R′_w ist es umgekehrt.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Das gilt für das Schalldämm-Maß R′_w, nicht für den Trittschallpegel.",
+      "6 dB sind deutlich hörbar und liegen weit über der Prognoseunsicherheit.",
+      "",
+      "R′_w beschreibt die Luftschalldämmung; der Trittschall wird über L′_n,w beurteilt."
+    ],
+    "gapAnalysis": {
+      "topic": "Norm-Trittschallpegel",
+      "misconception": "Der Trittschallpegel wird wie ein Dämm-Maß gelesen.",
+      "coreRule": "L′_n,w: kleiner ist besser.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Trittschall“ im Modul Schallschutz noch einmal durch.",
+      "targetModuleTab": "schallschutz",
+      "targetModuleLabel": "Schallschutz"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_tritt_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "schallschutz",
+    "moduleTitle": "Schallschutz",
+    "topic": "Rohdecke",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN 4109-32",
+    "question": "Eine Stahlbetondecke hat m′ = 400 kg/m². Wie groß ist L_n,eq,0,w nach 164 − 35·lg m′?",
+    "options": [
+      "etwa 72,9 dB",
+      "etwa 66,2 dB",
+      "etwa 78,7 dB",
+      "etwa 85,0 dB"
+    ],
+    "correctIdx": 0,
+    "explanation": "L_n,eq,0,w = 164 − 35·lg 400 = 164 − 35·2,602 = 72,9 dB. Eine Verdopplung der Masse senkt den Wert um 35·lg 2 = 10,5 dB.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "66,2 dB entspräche etwa 620 kg/m².",
+      "78,7 dB entspräche etwa 270 kg/m².",
+      "85,0 dB ergibt sich etwa für 180 kg/m² und ist für diese Decke zu hoch."
+    ],
+    "gapAnalysis": {
+      "topic": "Rohdecke",
+      "misconception": "Der Logarithmus der Masse wird falsch ausgewertet.",
+      "coreRule": "L_n,eq,0,w = 164 − 35·lg m′ (100 bis 720 kg/m²).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Trittschall“ im Modul Schallschutz noch einmal durch.",
+      "targetModuleTab": "schallschutz",
+      "targetModuleLabel": "Schallschutz"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_tritt_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "schallschutz",
+    "moduleTitle": "Schallschutz",
+    "topic": "Schwimmender Estrich",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN 4109-34",
+    "question": "Wie wirkt sich eine weichere Trittschalldämmung (kleineres s′) unter einem Zementestrich aus?",
+    "options": [
+      "f₀ steigt und die Trittschallminderung sinkt",
+      "f₀ sinkt und die Trittschallminderung ΔL_w steigt",
+      "Nur der Luftschall ändert sich, der Trittschall nicht",
+      "Der Estrich wird schwerer und dämpft dadurch mehr"
+    ],
+    "correctIdx": 1,
+    "explanation": "Estrich und Dämmschicht bilden ein Masse-Feder-System mit f₀ ≈ 160·√(s′/m′). Ein kleineres s′ senkt f₀; oberhalb von f₀ wächst die Minderung um etwa 30 dB je Dekade, ΔL_w steigt.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Das gilt für eine steifere Dämmschicht mit größerem s′.",
+      "",
+      "Gerade der Trittschall wird durch den schwimmenden Estrich maßgeblich gemindert.",
+      "Die Estrichmasse hängt von Dicke und Rohdichte ab, nicht von der Dämmschicht."
+    ],
+    "gapAnalysis": {
+      "topic": "Schwimmender Estrich",
+      "misconception": "Die dynamische Steifigkeit wird nicht als Feder des Masse-Feder-Systems verstanden.",
+      "coreRule": "Kleines s′ → kleines f₀ → großes ΔL_w.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Trittschall“ im Modul Schallschutz noch einmal durch.",
+      "targetModuleTab": "schallschutz",
+      "targetModuleLabel": "Schallschutz"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_tritt_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "schallschutz",
+    "moduleTitle": "Schallschutz",
+    "topic": "Nachweis Trittschall",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN 4109-2",
+    "question": "Berechnet sind L_n,eq,0,w = 71,4 dB, ΔL_w = 28,3 dB und K = 2,0 dB. Ist zul. L′_n,w = 50 dB mit u_prog = 3 dB eingehalten?",
+    "options": [
+      "Nein, denn 71,4 − 28,3 − 2,0 + 3 = 44,1 dB ist zu klein",
+      "Ja, denn 71,4 − 28,3 + 2,0 + 3 = 48,1 dB ≤ 50 dB",
+      "Nein, denn 71,4 + 28,3 = 99,7 dB > 50 dB",
+      "Ja, denn 71,4 − 28,3 = 43,1 dB, K entfällt"
+    ],
+    "correctIdx": 1,
+    "explanation": "L′_n,w = L_n,eq,0,w − ΔL_w + K = 71,4 − 28,3 + 2,0 = 45,1 dB; mit u_prog = 3 dB ergibt sich 48,1 dB ≤ 50 dB. Der Nachweis ist erfüllt (Anforderungswert vorläufig, F-Freigabe).",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "K erhöht den Pegel (Flankenübertragung) und wird addiert; ein kleinerer Wert wäre zudem günstig.",
+      "",
+      "Die Trittschallminderung des Estrichs wird abgezogen, nicht addiert.",
+      "Ohne K und u_prog fehlen Flankenübertragung und Sicherheitsbeiwert."
+    ],
+    "gapAnalysis": {
+      "topic": "Nachweis Trittschall",
+      "misconception": "Vorzeichen von ΔL_w, K und u_prog werden verwechselt.",
+      "coreRule": "L′_n,w = L_n,eq,0,w − ΔL_w + K; Nachweis mit + u_prog.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Trittschall“ im Modul Schallschutz noch einmal durch.",
+      "targetModuleTab": "schallschutz",
+      "targetModuleLabel": "Schallschutz"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_tritt_5",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "schallschutz",
+    "moduleTitle": "Schallschutz",
+    "topic": "Anforderungen Trittschall",
+    "difficulty": "Basis",
+    "normRef": "DIN 4109-1",
+    "question": "Welcher Wert gilt nach der öffentlich wiedergegebenen DIN 4109-1:2018 für Treppenläufe in Mehrfamilienhäusern (zul. L′_n,w)?",
+    "options": [
+      "46 dB",
+      "58 dB",
+      "53 dB",
+      "63 dB"
+    ],
+    "correctIdx": 2,
+    "explanation": "DIN 4109-1 verschärfte die Anforderung an Treppen in Mehrfamilienhäusern um 5 dB von 58 auf 53 dB; für Reihen- und Doppelhäuser gelten 46 dB (Wiedergabe Schöck, vorläufig bis zur F-Freigabe).",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "46 dB gelten für Treppen in Reihen- und Doppelhäusern.",
+      "58 dB war der Wert der DIN 4109:1989-11.",
+      "",
+      "63 dB liegt über allen genannten Anforderungen."
+    ],
+    "gapAnalysis": {
+      "topic": "Anforderungen Trittschall",
+      "misconception": "Alte und neue Anforderungswerte werden verwechselt.",
+      "coreRule": "Treppen MFH: 53 dB (DIN 4109-1), früher 58 dB.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Trittschall“ im Modul Schallschutz noch einmal durch.",
+      "targetModuleTab": "schallschutz",
+      "targetModuleLabel": "Schallschutz"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_atterberg_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "bodenmechanik",
+    "moduleTitle": "Bodenmechanik",
+    "topic": "Fließgrenze Mehrpunktverfahren",
+    "difficulty": "Basis",
+    "normRef": "DIN EN ISO 17892-12",
+    "question": "Wie wird die Fließgrenze w_L im Mehrpunktverfahren nach Casagrande bestimmt?",
+    "options": [
+      "Als Mittelwert aller gemessenen Wassergehalte der Versuche",
+      "Als Wassergehalt bei N = 25 auf der Ausgleichsgeraden",
+      "Als Wassergehalt des Versuchs mit den meisten Schlägen",
+      "Als Wassergehalt, bei dem 3-mm-Walzen zerbröckeln"
+    ],
+    "correctIdx": 1,
+    "explanation": "Mindestens 4 Versuche mit 15 bis 40 Schlägen werden halblogarithmisch aufgetragen (w über lg N). Die Fließgrenze ist der Wassergehalt der Ausgleichsgeraden bei N = 25.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Der Mittelwert hängt davon ab, welche Schlagzahlen zufällig erreicht wurden.",
+      "",
+      "Ein einzelner Versuch ist nicht maßgebend; ausgewertet wird die Gerade.",
+      "Das beschreibt die Ausrollgrenze w_P."
+    ],
+    "gapAnalysis": {
+      "topic": "Fließgrenze Mehrpunktverfahren",
+      "misconception": "Fließ- und Ausrollgrenze oder Einzelwerte und Ausgleichsgerade werden verwechselt.",
+      "coreRule": "w_L = w(N = 25) auf der Fließkurve.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Atterberg-Versuch“ im Modul Bodenmechanik noch einmal durch.",
+      "targetModuleTab": "bodenmechanik",
+      "targetModuleLabel": "Bodenmechanik"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_atterberg_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "bodenmechanik",
+    "moduleTitle": "Bodenmechanik",
+    "topic": "Einpunktverfahren",
+    "difficulty": "Vertiefung",
+    "normRef": "ASTM D4318",
+    "question": "Ein einzelner Fließgrenzenversuch ergibt w = 42,6 % bei N = 22 Schlägen. Welche Fließgrenze liefert w_L = w·(N/25)^0,121?",
+    "options": [
+      "etwa 43,3 %",
+      "etwa 37,5 %",
+      "etwa 48,4 %",
+      "etwa 41,9 %"
+    ],
+    "correctIdx": 3,
+    "explanation": "w_L = 42,6·(22/25)^0,121 = 42,6·0,9847 = 41,9 %. Weniger als 25 Schläge bedeuten einen etwas zu nassen Boden, w_L liegt daher unter dem gemessenen Wassergehalt.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "43,3 % ergäbe sich mit dem Kehrwert (25/22) – das Vorzeichen der Korrektur ist vertauscht.",
+      "37,5 % entspricht 42,6·22/25 ohne den Exponenten 0,121.",
+      "48,4 % ergibt sich mit 42,6·25/22 ohne Exponent.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Einpunktverfahren",
+      "misconception": "Richtung oder Exponent der Einpunktkorrektur werden falsch angesetzt.",
+      "coreRule": "w_L = w_N·(N/25)^0,121; N < 25 → w_L < w_N.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Atterberg-Versuch“ im Modul Bodenmechanik noch einmal durch.",
+      "targetModuleTab": "bodenmechanik",
+      "targetModuleLabel": "Bodenmechanik"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_atterberg_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "bodenmechanik",
+    "moduleTitle": "Bodenmechanik",
+    "topic": "Konsistenzzahl",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN 18122",
+    "question": "Ein Ton hat w_L = 42 %, w_P = 22 % und den natürlichen Wassergehalt w = 30 %. Welche Zustandsform liegt vor?",
+    "options": [
+      "I_C = 0,40 – breiig",
+      "I_C = 0,60 – weich",
+      "I_C = 1,36 – halbfest",
+      "I_C = 0,80 – steif"
+    ],
+    "correctIdx": 1,
+    "explanation": "I_P = 42 − 22 = 20 %; I_C = (w_L − w)/I_P = (42 − 30)/20 = 0,60. Der Bereich 0,5 bis 0,75 entspricht der Zustandsform weich.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "0,40 entspricht (w − w_P)/I_P, also der Liquiditätszahl statt der Konsistenzzahl.",
+      "",
+      "1,36 entsteht mit w/w_P = 30/22 statt der Definition über I_P.",
+      "0,80 ergäbe sich erst bei w = 26 %."
+    ],
+    "gapAnalysis": {
+      "topic": "Konsistenzzahl",
+      "misconception": "Die Konsistenzzahl wird mit der Liquiditätszahl verwechselt.",
+      "coreRule": "I_C = (w_L − w)/(w_L − w_P).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Atterberg-Versuch“ im Modul Bodenmechanik noch einmal durch.",
+      "targetModuleTab": "bodenmechanik",
+      "targetModuleLabel": "Bodenmechanik"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_atterberg_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "bodenmechanik",
+    "moduleTitle": "Bodenmechanik",
+    "topic": "Plastizitätsdiagramm",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN 18196",
+    "question": "Ein Boden hat w_L = 45 % und I_P = 12 %. Zu welcher Gruppe gehört er nach dem Plastizitätsdiagramm?",
+    "options": [
+      "TM, weil w_L zwischen 35 und 50 % liegt (mittelplastisch)",
+      "UM, weil I_P unter der A-Linie (18,3 %) liegt",
+      "TA, weil I_P deutlich größer als 7 % ist",
+      "UL/TL, weil I_P zwischen 4 und 7 % liegt"
+    ],
+    "correctIdx": 1,
+    "explanation": "A-Linie bei w_L = 45 %: I_P = 0,73·(45 − 20) = 18,3 %. Mit I_P = 12 % liegt der Punkt darunter → Schluff; 35 ≤ w_L ≤ 50 % → mittelplastisch, also UM.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "w_L bestimmt nur die Plastizitätsstufe; über Ton oder Schluff entscheidet die A-Linie.",
+      "",
+      "TA setzt w_L > 50 % und einen Punkt oberhalb der A-Linie voraus.",
+      "Der Zwischenbereich gilt für 4 ≤ I_P < 7 % oberhalb der A-Linie; I_P ist hier 12 %."
+    ],
+    "gapAnalysis": {
+      "topic": "Plastizitätsdiagramm",
+      "misconception": "Die A-Linie wird bei der Einordnung übergangen.",
+      "coreRule": "Oberhalb A-Linie Ton, unterhalb Schluff; w_L 35/50 % für L/M/A.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Atterberg-Versuch“ im Modul Bodenmechanik noch einmal durch.",
+      "targetModuleTab": "bodenmechanik",
+      "targetModuleLabel": "Bodenmechanik"
+    },
+    "verified": false
+  },
+  {
+    "id": "qz24_atterberg_5",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "bodenmechanik",
+    "moduleTitle": "Bodenmechanik",
+    "topic": "Organogene Böden",
+    "difficulty": "Transfer",
+    "normRef": "DIN 18196",
+    "question": "Im Plastizitätsdiagramm liegt ein Punkt unterhalb der A-Linie bei w_L = 45 %. Was ist für die Einordnung als OU zusätzlich erforderlich?",
+    "options": [
+      "Eine Bestimmung des Kalkgehalts mit dem Verfahren nach Scheibler",
+      "Ein Nachweis organischer Anteile, z. B. über den Glühverlust",
+      "Eine zweite Bestimmung der Ausrollgrenze mit 5-mm-Walzen",
+      "Ein Mehrpunktversuch mit mindestens 8 statt 4 Punkten"
+    ],
+    "correctIdx": 1,
+    "explanation": "Das Diagramm trennt nur Tone und Schluffe. Ob ein Boden organogen ist (OU, OT), wird über Glühverlust, Geruch und Farbe festgestellt.",
+    "bloom": "Bewerten",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Der Kalkgehalt kennzeichnet kalkhaltige Böden, nicht organische Beimengungen.",
+      "",
+      "Der Ausrollversuch arbeitet mit 3-mm-Walzen und klärt die Organik nicht.",
+      "Mehr Punkte verbessern w_L, sagen aber nichts über organische Anteile."
+    ],
+    "gapAnalysis": {
+      "topic": "Organogene Böden",
+      "misconception": "Organogene Böden werden allein aus dem Plastizitätsdiagramm abgelesen.",
+      "coreRule": "OU/OT erst nach Nachweis der Organik (Glühverlust).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Atterberg-Versuch“ im Modul Bodenmechanik noch einmal durch.",
+      "targetModuleTab": "bodenmechanik",
+      "targetModuleLabel": "Bodenmechanik"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_festigkeit_mohr_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "festigkeit",
+    "moduleTitle": "Festigkeitsberechnungen",
+    "topic": "Hauptspannungen",
+    "difficulty": "Vertiefung",
+    "normRef": "",
+    "question": "Ein Blech steht unter σ_x = 120 N/mm², σ_y = −40 N/mm² und τ_xy = 60 N/mm². Wie groß sind die Hauptspannungen σ₁ und σ₂?",
+    "options": [
+      "σ₁ = 180 N/mm², σ₂ = −100 N/mm²",
+      "σ₁ = 140 N/mm², σ₂ = −60 N/mm²",
+      "σ₁ = 100 N/mm², σ₂ = −100 N/mm²",
+      "σ₁ = 120 N/mm², σ₂ = −40 N/mm²"
+    ],
+    "correctIdx": 1,
+    "explanation": "σ_M = (120 − 40)/2 = 40 N/mm²; R = √(80² + 60²) = 100 N/mm²; σ₁ = 40 + 100 = 140 N/mm², σ₂ = 40 − 100 = −60 N/mm².",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Hier wurde der Radius als Summe 80 + 60 = 140 statt nach Pythagoras √(80² + 60²) = 100 gebildet.",
+      "",
+      "Das ist nur ±R ohne den Mittelpunkt σ_M = 40 N/mm²; der Kreis liegt nicht um den Ursprung.",
+      "Das sind die Ausgangsspannungen; sie sind nur ohne Schubspannung zugleich Hauptspannungen."
+    ],
+    "gapAnalysis": {
+      "topic": "Hauptspannungen",
+      "misconception": "Mittelpunkt und Radius des Mohr'schen Kreises werden verwechselt.",
+      "coreRule": "σ₁,₂ = (σ_x + σ_y)/2 ± √(((σ_x − σ_y)/2)² + τ_xy²).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Spannungszustand & Mohr-Kreis“ im Modul Festigkeitsberechnungen noch einmal durch.",
+      "targetModuleTab": "festigkeit",
+      "targetModuleLabel": "Festigkeitsberechnungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_festigkeit_mohr_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "festigkeit",
+    "moduleTitle": "Festigkeitsberechnungen",
+    "topic": "Hauptrichtung",
+    "difficulty": "Vertiefung",
+    "normRef": "",
+    "question": "Für σ_x = 80 N/mm², σ_y = 20 N/mm² und τ_xy = 30 N/mm²: Unter welchem Winkel φ₁ zur x-Achse wirkt die größere Hauptspannung σ₁?",
+    "options": [
+      "φ₁ = 45,0°",
+      "φ₁ = −22,5°",
+      "φ₁ = 22,5°",
+      "φ₁ = 67,5°"
+    ],
+    "correctIdx": 2,
+    "explanation": "tan 2φ₁ = 2τ_xy/(σ_x − σ_y) = 60/60 = 1 → 2φ₁ = 45° → φ₁ = 22,5°. Die Richtung von σ₂ steht senkrecht dazu (−67,5°).",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "45° ist der Winkel 2φ₁ auf dem Mohr'schen Kreis; am Element gilt die Hälfte.",
+      "Das Vorzeichen ist falsch: Bei positivem τ_xy und σ_x > σ_y dreht σ₁ gegen den Uhrzeigersinn.",
+      "",
+      "Unter 67,5° wäre σ₁ nur bei negativem Vorzeichen der Rechnung zu erwarten; die Hauptrichtungen sind 22,5° und −67,5°."
+    ],
+    "gapAnalysis": {
+      "topic": "Hauptrichtung",
+      "misconception": "Der Winkel 2φ am Kreis wird mit dem Winkel φ am Element verwechselt.",
+      "coreRule": "tan 2φ₁ = 2τ_xy/(σ_x − σ_y); der Bildpunkt wandert am Kreis um den doppelten Winkel.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Spannungszustand & Mohr-Kreis“ im Modul Festigkeitsberechnungen noch einmal durch.",
+      "targetModuleTab": "festigkeit",
+      "targetModuleLabel": "Festigkeitsberechnungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_festigkeit_mohr_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "festigkeit",
+    "moduleTitle": "Festigkeitsberechnungen",
+    "topic": "Mohr'scher Spannungskreis",
+    "difficulty": "Basis",
+    "normRef": "",
+    "question": "Der Schnitt durch einen Bauteilpunkt wird um den Winkel θ gedreht. Wie bewegt sich der zugehörige Bildpunkt auf dem Mohr'schen Spannungskreis?",
+    "options": [
+      "Er dreht sich um θ um den Kreismittelpunkt.",
+      "Er dreht sich um 2θ um den Kreismittelpunkt.",
+      "Er dreht sich um θ/2 um den Ursprung.",
+      "Er dreht sich um 2θ um den Ursprung."
+    ],
+    "correctIdx": 1,
+    "explanation": "Die Transformationsgleichungen enthalten cos 2θ und sin 2θ: Der Bildpunkt läuft um den doppelten Winkel auf dem Kreis um den Mittelpunkt σ_M. Eine Drehung des Elements um 90° führt daher zum diametral gegenüberliegenden Punkt.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Am Kreis erscheint der doppelte Winkel, weil die Spannungen von 2θ abhängen.",
+      "",
+      "Der Ursprung ist nicht der Kreismittelpunkt, und der Winkel wird am Kreis verdoppelt, nicht halbiert.",
+      "Der Winkel 2θ stimmt, der Drehpunkt ist aber der Mittelpunkt σ_M = (σ_x + σ_y)/2, nicht der Ursprung."
+    ],
+    "gapAnalysis": {
+      "topic": "Mohr'scher Spannungskreis",
+      "misconception": "Die Winkelverdopplung am Mohr'schen Kreis ist nicht bekannt.",
+      "coreRule": "Schnittdrehung um θ entspricht 2θ auf dem Kreis um σ_M; X und Y liegen diametral gegenüber.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Spannungszustand & Mohr-Kreis“ im Modul Festigkeitsberechnungen noch einmal durch.",
+      "targetModuleTab": "festigkeit",
+      "targetModuleLabel": "Festigkeitsberechnungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_festigkeit_mohr_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "festigkeit",
+    "moduleTitle": "Festigkeitsberechnungen",
+    "topic": "Reiner Schub",
+    "difficulty": "Vertiefung",
+    "normRef": "",
+    "question": "Ein Stegblech steht unter reinem Schub τ_xy = 50 N/mm² (σ_x = σ_y = 0). Welche Aussage über die Hauptspannungen trifft zu?",
+    "options": [
+      "±25 N/mm² in Richtung der x- und y-Achse",
+      "50 und 0 N/mm² unter 45° zur x-Achse",
+      "±50 N/mm² unter 45° zur x-Achse",
+      "±70,7 N/mm² unter 22,5° zur x-Achse"
+    ],
+    "correctIdx": 2,
+    "explanation": "Bei reinem Schub liegt der Kreismittelpunkt im Ursprung, R = τ_xy = 50 N/mm²: σ₁ = +50, σ₂ = −50 N/mm² unter ±45°. Deshalb verlaufen Schubrisse in Betonstegen schräg unter etwa 45°.",
+    "bloom": "Analysieren",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Die Hauptspannungen sind so groß wie τ_xy, und sie liegen unter 45°, nicht in den Achsen.",
+      "Bei reinem Schub ist σ_M = 0; der Kreis liefert eine Zug- und eine gleich große Druckspannung.",
+      "",
+      "70,7 N/mm² entstünde mit √2 · τ; der Radius ist aber genau τ_xy, und die Richtung beträgt 45°."
+    ],
+    "gapAnalysis": {
+      "topic": "Reiner Schub",
+      "misconception": "Reiner Schub wird nicht als Überlagerung von Zug und Druck unter 45° erkannt.",
+      "coreRule": "Reiner Schub: σ₁,₂ = ±τ_xy unter ±45° – Ursache schräger Schubrisse.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Spannungszustand & Mohr-Kreis“ im Modul Festigkeitsberechnungen noch einmal durch.",
+      "targetModuleTab": "festigkeit",
+      "targetModuleLabel": "Festigkeitsberechnungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_festigkeit_mohr_5",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "festigkeit",
+    "moduleTitle": "Festigkeitsberechnungen",
+    "topic": "Vergleichsspannung",
+    "difficulty": "Transfer",
+    "normRef": "",
+    "question": "Zwei ebene Spannungszustände in Baustahl: A mit σ₁ = σ₂ = 200 N/mm², B mit σ₁ = 200 und σ₂ = −200 N/mm². Welcher ist nach von Mises ungünstiger?",
+    "options": [
+      "A, weil beide Hauptspannungen Zug sind (σ_v = 400 N/mm²)",
+      "B, weil Zug und Druck zusammenwirken (σ_v ≈ 346 N/mm²)",
+      "Beide gleich, weil |σ₁| und |σ₂| gleich groß sind",
+      "A, weil σ_v = σ₁ + σ₂ = 400 N/mm² größer ist"
+    ],
+    "correctIdx": 1,
+    "explanation": "σ_v = √(σ₁² − σ₁σ₂ + σ₂²): A ergibt √(40 000 − 40 000 + 40 000) = 200 N/mm², B ergibt √(3 · 40 000) ≈ 346 N/mm². Gleichsinniger zweiachsiger Zug ist für Fließen günstiger als Zug-Druck.",
+    "bloom": "Bewerten",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Für A gilt σ_v = 200 N/mm²: Das gemischte Glied −σ₁σ₂ hebt sich bei gleichen Zugspannungen teilweise auf.",
+      "",
+      "Die Beträge sind gleich, die Vorzeichen aber nicht; das Produkt σ₁σ₂ ändert σ_v deutlich.",
+      "Die Vergleichsspannung ist keine Summe der Hauptspannungen."
+    ],
+    "gapAnalysis": {
+      "topic": "Vergleichsspannung",
+      "misconception": "Die Vergleichsspannung wird als Summe oder nach den Beträgen der Hauptspannungen beurteilt.",
+      "coreRule": "von Mises: σ_v = √(σ₁² − σ₁σ₂ + σ₂²); Zug-Druck-Zustände sind ungünstiger als gleichsinnige.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Spannungszustand & Mohr-Kreis“ im Modul Festigkeitsberechnungen noch einmal durch.",
+      "targetModuleTab": "festigkeit",
+      "targetModuleLabel": "Festigkeitsberechnungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_formaenderungen_bl_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "formaenderungen",
+    "moduleTitle": "Formänderungen",
+    "topic": "Biegelinie Einfeldträger",
+    "difficulty": "Vertiefung",
+    "normRef": "",
+    "question": "Ein Einfeldträger mit L = 4,0 m und E·I = 10 000 kNm² trägt eine Gleichlast q = 10 kN/m. Wie groß ist die Durchbiegung in Feldmitte?",
+    "options": [
+      "w ≈ 0,83 mm",
+      "w ≈ 32,0 mm",
+      "w ≈ 3,33 mm",
+      "w ≈ 33,3 mm"
+    ],
+    "correctIdx": 2,
+    "explanation": "w = 5·q·L⁴/(384·E·I) = 5 · 10 · 256/(384 · 10 000) m = 0,00333 m ≈ 3,33 mm.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Hier wurde L³ statt L⁴ eingesetzt.",
+      "Das ist die Formel des Kragarms q·L⁴/(8·EI); der Einfeldträger hat den Beiwert 5/384.",
+      "",
+      "Hier liegt ein Einheitenfehler um den Faktor 10 vor (Meter in Millimeter: ×1 000)."
+    ],
+    "gapAnalysis": {
+      "topic": "Biegelinie Einfeldträger",
+      "misconception": "Beiwert und Potenz der Durchbiegungsformel werden verwechselt.",
+      "coreRule": "Einfeldträger unter Gleichlast: w_max = 5·q·L⁴/(384·E·I) in Feldmitte.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Biegelinie“ im Modul Formänderungen noch einmal durch.",
+      "targetModuleTab": "formaenderungen",
+      "targetModuleLabel": "Formänderungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_formaenderungen_bl_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "formaenderungen",
+    "moduleTitle": "Formänderungen",
+    "topic": "Biegelinie Kragarm",
+    "difficulty": "Vertiefung",
+    "normRef": "",
+    "question": "Ein Kragarm (L = 2,0 m, E·I = 4 000 kNm²) trägt am freien Ende F = 12 kN. Wie groß sind Durchbiegung und Neigung am Kragarmende?",
+    "options": [
+      "w = 0,5 mm; φ = 1,5 mrad",
+      "w = 8,0 mm; φ = 6,0 mrad",
+      "w = 24,0 mm; φ = 12,0 mrad",
+      "w = 8,0 mm; φ = 12,0 mrad"
+    ],
+    "correctIdx": 1,
+    "explanation": "w = F·L³/(3·EI) = 12 · 8/(3 · 4 000) m = 8,0 mm; φ = F·L²/(2·EI) = 12 · 4/(2 · 4 000) = 0,006 rad = 6,0 mrad.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Das sind die Formeln des Einfeldträgers mit Last in Feldmitte (F·L³/48 und F·L²/16).",
+      "",
+      "Hier fehlen die Nenner 3 bzw. 2 der Kragarmformeln.",
+      "Die Durchbiegung stimmt, bei der Neigung fehlt der Faktor 1/2: φ = F·L²/(2·EI)."
+    ],
+    "gapAnalysis": {
+      "topic": "Biegelinie Kragarm",
+      "misconception": "Die Grundlastfälle von Kragarm und Einfeldträger werden verwechselt.",
+      "coreRule": "Kragarm mit Endlast: w = F·L³/(3·EI), φ = F·L²/(2·EI).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Biegelinie“ im Modul Formänderungen noch einmal durch.",
+      "targetModuleTab": "formaenderungen",
+      "targetModuleLabel": "Formänderungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_formaenderungen_bl_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "formaenderungen",
+    "moduleTitle": "Formänderungen",
+    "topic": "Biegesteifigkeit",
+    "difficulty": "Basis",
+    "normRef": "",
+    "question": "Bei einem Rechteckbalken wird die Höhe h verdoppelt, Breite, Werkstoff und Last bleiben gleich. Wie ändert sich die Durchbiegung?",
+    "options": [
+      "Sie sinkt auf die Hälfte.",
+      "Sie sinkt auf ein Viertel.",
+      "Sie sinkt auf ein Achtel.",
+      "Sie sinkt auf ein Sechzehntel."
+    ],
+    "correctIdx": 2,
+    "explanation": "I = b·h³/12 wächst mit der dritten Potenz der Höhe auf das Achtfache; da w ∝ 1/(E·I), sinkt die Durchbiegung auf ein Achtel.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Linear geht nur die Breite b in I ein, die Höhe mit der dritten Potenz.",
+      "Das Quadrat der Höhe bestimmt das Widerstandsmoment W = b·h²/6, nicht das Trägheitsmoment.",
+      "",
+      "Die vierte Potenz gilt für die Spannweite L, nicht für die Querschnittshöhe."
+    ],
+    "gapAnalysis": {
+      "topic": "Biegesteifigkeit",
+      "misconception": "Trägheitsmoment und Widerstandsmoment bzw. Höhe und Spannweite werden verwechselt.",
+      "coreRule": "I = b·h³/12; w ∝ 1/(E·I) – doppelte Höhe ergibt ein Achtel der Durchbiegung.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Biegelinie“ im Modul Formänderungen noch einmal durch.",
+      "targetModuleTab": "formaenderungen",
+      "targetModuleLabel": "Formänderungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_formaenderungen_bl_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "formaenderungen",
+    "moduleTitle": "Formänderungen",
+    "topic": "Werkstoffvergleich",
+    "difficulty": "Basis",
+    "normRef": "",
+    "question": "Zwei Balken mit gleichem Querschnitt und gleicher Last: einer aus Baustahl (E = 210 000 N/mm²), einer aus Nadelholz C24 (E = 11 000 N/mm²). Wie verhält sich die Durchbiegung des Holzbalkens?",
+    "options": [
+      "Sie ist etwa 5-mal so groß.",
+      "Sie ist etwa 19-mal so groß.",
+      "Sie ist etwa gleich groß.",
+      "Sie ist etwa halb so groß."
+    ],
+    "correctIdx": 1,
+    "explanation": "Bei gleichem I gilt w ∝ 1/E: 210 000/11 000 ≈ 19. Holzbauteile werden daher deutlich höher ausgeführt; zusätzlich vergrößert Kriechen (k_def) die Enddurchbiegung.",
+    "bloom": "Analysieren",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Faktor 5 entspricht etwa dem Verhältnis der Festigkeiten, nicht der E-Moduln.",
+      "",
+      "Gleicher Querschnitt bedeutet gleiches I, aber nicht gleiche Steifigkeit E·I.",
+      "Holz hat den kleineren E-Modul und biegt sich deshalb stärker, nicht schwächer durch."
+    ],
+    "gapAnalysis": {
+      "topic": "Werkstoffvergleich",
+      "misconception": "Der Einfluss des E-Moduls auf die Durchbiegung wird unterschätzt.",
+      "coreRule": "w ∝ 1/(E·I); bei gleichem Querschnitt bestimmt das Verhältnis der E-Moduln die Durchbiegung.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Biegelinie“ im Modul Formänderungen noch einmal durch.",
+      "targetModuleTab": "formaenderungen",
+      "targetModuleLabel": "Formänderungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_formaenderungen_bl_5",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "formaenderungen",
+    "moduleTitle": "Formänderungen",
+    "topic": "Spannweite",
+    "difficulty": "Vertiefung",
+    "normRef": "",
+    "question": "Die Spannweite eines Einfeldträgers unter gleicher Gleichlast q wird von 4 m auf 8 m verdoppelt. Wie ändert sich die größte Durchbiegung?",
+    "options": [
+      "Sie wird 4-mal so groß.",
+      "Sie wird 8-mal so groß.",
+      "Sie wird 16-mal so groß.",
+      "Sie wird 2-mal so groß."
+    ],
+    "correctIdx": 2,
+    "explanation": "w_max = 5·q·L⁴/(384·E·I): Die Spannweite geht mit der vierten Potenz ein, 2⁴ = 16. Das Moment wächst dagegen nur mit L².",
+    "bloom": "Analysieren",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Mit L² wächst das Biegemoment, die Durchbiegung wächst stärker.",
+      "Mit L³ wächst die Durchbiegung unter einer Einzellast F, unter Gleichlast mit L⁴.",
+      "",
+      "Die Durchbiegung ist nicht proportional zur Spannweite."
+    ],
+    "gapAnalysis": {
+      "topic": "Spannweite",
+      "misconception": "Die Potenz der Spannweite in der Durchbiegungsformel ist nicht bekannt.",
+      "coreRule": "Unter Gleichlast w ∝ L⁴, unter Einzellast w ∝ L³, Moment ∝ L².",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Biegelinie“ im Modul Formänderungen noch einmal durch.",
+      "targetModuleTab": "formaenderungen",
+      "targetModuleLabel": "Formänderungen"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_stahl_fec_1",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "stahl",
+    "moduleTitle": "Stahl",
+    "topic": "Hebelgesetz",
+    "difficulty": "Vertiefung",
+    "normRef": "",
+    "question": "Ein unlegierter Stahl mit 0,45 % C kühlt langsam ab. Welche Gefügeanteile ergeben sich bei Raumtemperatur nach dem Hebelgesetz (0,02 / 0,8 / 6,67 % C)?",
+    "options": [
+      "Perlit ≈ 45 %, Ferrit ≈ 55 %",
+      "Perlit ≈ 55 %, Ferrit ≈ 45 %",
+      "Perlit ≈ 7 %, Ferrit ≈ 93 %",
+      "Perlit 100 %, kein Ferrit"
+    ],
+    "correctIdx": 1,
+    "explanation": "m_Perlit = (0,45 − 0,02)/(0,8 − 0,02) = 0,43/0,78 ≈ 55 %; der Rest von rund 45 % ist voreutektoider Ferrit.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Hier wurden die Hebelarme vertauscht: Der Perlitanteil wächst mit dem C-Gehalt.",
+      "",
+      "Das ist der Phasenanteil Zementit (0,43/6,65 ≈ 6,5 %), nicht der Gefügeanteil Perlit.",
+      "Nur der eutektoide Stahl mit 0,8 % C besteht vollständig aus Perlit."
+    ],
+    "gapAnalysis": {
+      "topic": "Hebelgesetz",
+      "misconception": "Hebelarme werden vertauscht oder Phasen- und Gefügeanteile verwechselt.",
+      "coreRule": "Untereutektoid: m_Perlit = (C − 0,02)/(0,8 − 0,02), Ferrit = Rest.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Eisen-Kohlenstoff-Diagramm“ im Modul Stahl noch einmal durch.",
+      "targetModuleTab": "stahl",
+      "targetModuleLabel": "Stahl"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_stahl_fec_2",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "stahl",
+    "moduleTitle": "Stahl",
+    "topic": "Eutektoider Punkt",
+    "difficulty": "Basis",
+    "normRef": "",
+    "question": "Bei welchem Kohlenstoffgehalt und welcher Temperatur liegt nach der deutschsprachigen Lehrbuchliteratur der eutektoide Punkt S des Fe-Fe₃C-Diagramms?",
+    "options": [
+      "4,3 % C bei 1147 °C",
+      "2,06 % C bei 1147 °C",
+      "0,8 % C bei 723 °C",
+      "0,02 % C bei 723 °C"
+    ],
+    "correctIdx": 2,
+    "explanation": "Im Punkt S (0,8 % C, 723 °C) zerfällt Austenit zu Perlit; internationale Werke nennen 0,76 % C und 727 °C. 4,3 % C / 1147 °C ist der eutektische Punkt C (Ledeburit).",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Das ist der eutektische Punkt C, an dem die Schmelze zu Ledeburit erstarrt.",
+      "Das ist Punkt E: die größte Löslichkeit von Kohlenstoff im Austenit (Grenze Stahl/Gusseisen).",
+      "",
+      "Das ist Punkt P: die größte Löslichkeit von Kohlenstoff im Ferrit."
+    ],
+    "gapAnalysis": {
+      "topic": "Eutektoider Punkt",
+      "misconception": "Die Eckpunkte des Fe-C-Diagramms werden verwechselt.",
+      "coreRule": "S: 0,8 % C / 723 °C (eutektoid, Perlit); C: 4,3 % C / 1147 °C (eutektisch, Ledeburit).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Eisen-Kohlenstoff-Diagramm“ im Modul Stahl noch einmal durch.",
+      "targetModuleTab": "stahl",
+      "targetModuleLabel": "Stahl"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_stahl_fec_3",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "stahl",
+    "moduleTitle": "Stahl",
+    "topic": "Übereutektoider Stahl",
+    "difficulty": "Vertiefung",
+    "normRef": "",
+    "question": "Ein Werkzeugstahl mit 1,2 % C kühlt langsam ab. Wie groß sind die Anteile von Sekundärzementit und Perlit bei Raumtemperatur (0,8 / 6,67 % C)?",
+    "options": [
+      "Fe₃C II ≈ 17,7 %, Perlit ≈ 82,3 %",
+      "Fe₃C II ≈ 31,7 %, Perlit ≈ 68,3 %",
+      "Fe₃C II ≈ 50 %, Perlit ≈ 50 %",
+      "Fe₃C II ≈ 6,8 %, Perlit ≈ 93,2 %"
+    ],
+    "correctIdx": 3,
+    "explanation": "m_Fe₃C II = (1,2 − 0,8)/(6,67 − 0,8) = 0,4/5,87 ≈ 6,8 %; Perlit = 93,2 %. Der Sekundärzementit scheidet sich entlang der Linie ES an den Korngrenzen aus.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "17,7 % ist der gesamte Phasenanteil Zementit (1,18/6,65), einschließlich des Zementits im Perlit.",
+      "Hier wurde die Konode bis Punkt E (2,06 %) statt bis zum Zementit (6,67 %) gezogen.",
+      "Hier wurde der Hebelarm 0,4 auf 0,8 statt auf 5,87 bezogen.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Übereutektoider Stahl",
+      "misconception": "Die Konode endet an der falschen Phasengrenze.",
+      "coreRule": "Übereutektoid: m_Fe₃C II = (C − 0,8)/(6,67 − 0,8), Perlit = Rest.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Eisen-Kohlenstoff-Diagramm“ im Modul Stahl noch einmal durch.",
+      "targetModuleTab": "stahl",
+      "targetModuleLabel": "Stahl"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_stahl_fec_4",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "stahl",
+    "moduleTitle": "Stahl",
+    "topic": "Kohlenstoffäquivalent",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 10025-2",
+    "question": "Ein Baustahl enthält 0,16 % C, 1,20 % Mn, Cr + Mo + V = 0,10 % und Ni + Cu = 0,30 %. Wie groß ist das Kohlenstoffäquivalent CEV?",
+    "options": [
+      "CEV = 1,76 %",
+      "CEV = 0,38 %",
+      "CEV = 0,60 %",
+      "CEV = 0,40 %"
+    ],
+    "correctIdx": 3,
+    "explanation": "CEV = C + Mn/6 + (Cr + Mo + V)/5 + (Ni + Cu)/15 = 0,16 + 0,20 + 0,02 + 0,02 = 0,40 %. Der Wert liegt unter dem Höchstwert 0,45 für S355J2 (≤ 30 mm).",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Das ist die einfache Summe der Gehalte; die Elemente gehen mit Teilern ein.",
+      "Hier fehlt der Anteil (Ni + Cu)/15 = 0,02 %.",
+      "Hier wurde Mn/3 statt Mn/6 gerechnet.",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Kohlenstoffäquivalent",
+      "misconception": "Die Teiler der IIW-Formel werden falsch angewendet.",
+      "coreRule": "CEV = C + Mn/6 + (Cr + Mo + V)/5 + (Ni + Cu)/15.",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Eisen-Kohlenstoff-Diagramm“ im Modul Stahl noch einmal durch.",
+      "targetModuleTab": "stahl",
+      "targetModuleLabel": "Stahl"
+    },
+    "verified": false
+  },
+  {
+    "id": "qn_stahl_fec_5",
+    "category": "metalle_holz",
+    "categoryLabel": "Metalle & Holzwerkstoffe",
+    "moduleId": "stahl",
+    "moduleTitle": "Stahl",
+    "topic": "Kohlenstoff in Baustahl",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 10025-2",
+    "question": "Warum ist der Kohlenstoffgehalt unlegierter Baustähle wie S235 und S355 auf etwa 0,17 bis 0,24 % begrenzt?",
+    "options": [
+      "Mehr Kohlenstoff senkt den E-Modul deutlich unter 210 000 N/mm².",
+      "Kohlenstoff verringert die Korrosionsbeständigkeit sehr stark.",
+      "Mehr Kohlenstoff erhöht Aufhärtung und CEV und mindert die Zähigkeit.",
+      "Über 0,24 % C lässt sich Stahl nicht mehr warmwalzen."
+    ],
+    "correctIdx": 2,
+    "explanation": "Mit steigendem C-Gehalt wächst der Perlitanteil, Festigkeit und Härte steigen, Zähigkeit und Schweißeignung sinken (Aufhärtung in der Wärmeeinflusszone, höheres CEV). Baustähle bleiben deshalb untereutektoid mit überwiegend Ferrit.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Der E-Modul von Stahl hängt kaum vom C-Gehalt ab (rund 210 000 N/mm²).",
+      "Die Korrosion unlegierter Stähle hängt vor allem von Umgebung und Schutz ab, kaum vom C-Gehalt.",
+      "",
+      "Auch Stähle mit deutlich mehr Kohlenstoff (z. B. Schienenstahl) werden warmgewalzt."
+    ],
+    "gapAnalysis": {
+      "topic": "Kohlenstoff in Baustahl",
+      "misconception": "Der Zusammenhang zwischen C-Gehalt, Zähigkeit und Schweißeignung ist nicht bekannt.",
+      "coreRule": "Mehr C → mehr Perlit, höhere Festigkeit, geringere Zähigkeit und Schweißeignung (CEV).",
+      "actionableAdvice": "Arbeiten Sie den Reiter „Eisen-Kohlenstoff-Diagramm“ im Modul Stahl noch einmal durch.",
+      "targetModuleTab": "stahl",
+      "targetModuleLabel": "Stahl"
+    },
+    "verified": false
   }
 ]

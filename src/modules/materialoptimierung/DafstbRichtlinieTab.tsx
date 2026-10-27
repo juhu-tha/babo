@@ -4,9 +4,11 @@ import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/materialoptimierung/DafstbRichtlinieTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import type { Hinweis } from '@/src/calc/plausibilitaet';
 
 export interface DafstbRichtlinieTabProps {
-  dafstbCalc: { label: string; areaUnit: string; refArea: number; refBetonVol: number; refStahlKg: number; optBetonVol: number; optStahlKg: number; optConcreteGwpPerM3: number; refTotalGwp: number; optTotalGwp: number; refConcreteGwpTotal: number; optConcreteGwpTotal: number; refSteelGwpTotal: number; optSteelGwpTotal: number; refSpecificGwp: number; optSpecificGwp: number; diffAbs: number; diffPct: number; efficiencyClass: string; efficiencyBadge: string; classLabel: string; classStar: string; };
+  dafstbCalc: { label: string; areaUnit: string; refArea: number; refBetonVol: number; refStahlKg: number; optBetonVol: number; optStahlKg: number; optConcreteGwpPerM3: number; refTotalGwp: number; optTotalGwp: number; refConcreteGwpTotal: number; optConcreteGwpTotal: number; refSteelGwpTotal: number; optSteelGwpTotal: number; refSpecificGwp: number; optSpecificGwp: number; diffAbs: number; diffPct: number; efficiencyClass: string; efficiencyBadge: string; classLabel: string; classStar: string; hinweise: readonly Hinweis[]; };
   dafstbBauteil: "decke" | "stuetze" | "wand" | "bodenplatte";
   setDafstbBauteil: Dispatch<SetStateAction<"decke" | "stuetze" | "wand" | "bodenplatte">>;
   setDafstbBauweise: Dispatch<SetStateAction<string>>;
@@ -215,6 +217,7 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
             <Award size={14} /> {dafstbCalc.efficiencyClass} ({dafstbCalc.classLabel})
           </div>
         </div>
+        <EingabeHinweise hinweise={dafstbCalc.hinweise} />
     
         {/* Controls Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4 rounded-xl bg-slate-50 border border-home-grau/20">

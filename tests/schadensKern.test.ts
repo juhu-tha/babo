@@ -43,5 +43,11 @@ near('wk', w.wk, w.srMax * Math.max((250 - 0.4 * 2.9 / 0.02 * (1 + 200000 / 3300
 const p = K.din1076Plan(2020, 7).map(x => x.art).join('');
 if (p !== 'HBBEBBH') { fails++; console.log('FAIL din1076Plan', p); } else console.log('OK   din1076Plan', p);
 if (K.riebwClass(3.0) !== 'nicht ausreichender Bauwerkszustand' || K.riebwClass(2.2) !== 'befriedigender Bauwerkszustand') { fails++; console.log('FAIL riebw'); } else console.log('OK   riebwClass');
+// Runde 5 (Z22): k_n nach EN 13791 zwischen den Stützstellen linear in 1/n (wie statistik.ts), für n > 30 gegen 1,64
+//   n = 40: t₃₉ = 1,685 · √(1 + 1/40) = 1,706; Interpolation 1,73 + (1,64 − 1,73) · (1/30 − 1/40)/(1/30) = 1,7075
+near('kn13791(40)', K.kn13791(40), 1.7075, 0.001);
+near('kn13791(9)', K.kn13791(9), 2.0 + (1.92 - 2.0) * (1 / 8 - 1 / 9) / (1 / 8 - 1 / 10), 0.0001);
+near('kn13791(16)', K.kn13791(16), 1.81, 0.0001);
+if (!Number.isNaN(K.kn13791(7)) || !(K.kn13791(1e6) < 1.65)) { fails++; console.log('FAIL kn13791 Grenzen'); } else console.log('OK   kn13791 Grenzen');
 console.log(fails ? `${fails} FEHLER` : 'ALLE TESTS BESTANDEN');
 process.exit(fails ? 1 : 0);

@@ -29,7 +29,8 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { gleichgewichtsfeuchte, feuchteNachLagerung, schwinden, schwindmass } from '@/src/calc/holzphysik';
-import { festigkeitswerte, kdefFuer, KLED_NAME, type Nutzungsklasse } from '@/src/calc/holzbau';
+import { festigkeitswerte, kdefFuer, KLED_NAME, GAMMA_M_HOLZ, type Nutzungsklasse } from '@/src/calc/holzbau';
+import { BSH_EN14080, HOLZ_EN338, type HolzKennwerte } from '@/src/data/kennwerte';
 
 ChartJS.register(
   CategoryScale,
@@ -60,12 +61,14 @@ const crossSections = [
   { id: 'rund', name: 'Rundholz' },
 ];
 
+// Kennwerte zentral nach DIN EN 338:2016 und DIN EN 14080:2013 (src/data/kennwerte.ts), γ_M = 1,3 nach NA (DE)
+const ausNorm = (k: HolzKennwerte) => ({ fm: k.fmk, ft0: k.ft0k, ft90: k.ft90k, fc0: k.fc0k, fc90: k.fc90k, fv: k.fvk, E0mean: k.E0mean, gammaM: GAMMA_M_HOLZ });
 const festigkeitsklassen = {
-  'C16 (Vollholz)': { fm: 16, ft0: 8.5, ft90: 0.4, fc0: 17, fc90: 2.2, fv: 3.2, E0mean: 8000, gammaM: 1.3 },
-  'C24 (Vollholz)': { fm: 24, ft0: 14.5, ft90: 0.4, fc0: 21, fc90: 2.5, fv: 4.0, E0mean: 11000, gammaM: 1.3 },
-  'C30 (Vollholz)': { fm: 30, ft0: 19, ft90: 0.4, fc0: 24, fc90: 2.7, fv: 4.0, E0mean: 12000, gammaM: 1.3 },
-  'GL24h (BSH)': { fm: 24, ft0: 19.2, ft90: 0.5, fc0: 24, fc90: 2.5, fv: 3.5, E0mean: 11500, gammaM: 1.3 },
-  'GL30h (BSH)': { fm: 30, ft0: 24, ft90: 0.5, fc0: 30, fc90: 2.5, fv: 3.5, E0mean: 13600, gammaM: 1.3 },
+  'C16 (Vollholz)': ausNorm(HOLZ_EN338.C16),
+  'C24 (Vollholz)': ausNorm(HOLZ_EN338.C24),
+  'C30 (Vollholz)': ausNorm(HOLZ_EN338.C30),
+  'GL24h (BSH)': ausNorm(BSH_EN14080.GL24h),
+  'GL30h (BSH)': ausNorm(BSH_EN14080.GL30h),
 };
 
 type NklName = 'NKL 1' | 'NKL 2' | 'NKL 3';

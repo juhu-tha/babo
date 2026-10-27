@@ -63,7 +63,10 @@ const r460 = bemesseDruckstab({ ...basis, guete: 'S460' });
 pruefe(r460.vorschlagY === 'a' && r460.vorschlagZ === 'a' && r460.NbRd > r.NbRd, 'S460 Tab. 6.2');
 // Manuelle Knicklinie → Hinweis; kurze Knicklänge → Knicknachweis vernachlässigbar
 pruefe(bemesseDruckstab({ ...basis, knicklinieZ: 'b' }).hinweise.some(h => h.feld === 'knicklinie'), 'Hinweis abweichende Knicklinie');
-pruefe(bemesseDruckstab({ ...basis, LcrY: 0.5, LcrZ: 0.5 }).vernachlaessigbar, 'λ̄ ≤ 0,2');
+const kurz = bemesseDruckstab({ ...basis, LcrY: 0.5, LcrZ: 0.5 });
+// Runde 5: Knicknachweis entfällt (6.3.1.2(4)) → maßgebend N_c,Rd = A·f_y/γ_M0 = 1 835,4 kN statt N_b,Rd mit γ_M1 = 1,1 (1 668,5 kN)
+pruefe(kurz.vernachlaessigbar && nahe(kurz.NRd, kurz.NcRd, 1e-9) && kurz.NbRd < kurz.NcRd && nahe(kurz.ausnutzung, 800 / kurz.NcRd, 1e-9), 'λ̄ ≤ 0,2 → N_c,Rd maßgebend');
+pruefe(r.NRd === r.NbRd, 'sonst N_b,Rd maßgebend');
 
 // 5. Tab. 6.2 und Querschnittsklassen (Tab. 5.2)
 pruefe(knicklinieNachTab62(profil('IPE 300')!, 'S235', 'y') === 'a' && knicklinieNachTab62(profil('IPE 300')!, 'S235', 'z') === 'b', 'IPE h/b > 1,2');
@@ -71,7 +74,7 @@ pruefe(knicklinieNachTab62(profil('IPE 300')!, 'S460', 'z') === 'a0', 'IPE S460'
 //    IPE 300: Steg c = 300 − 2·10,7 − 2·15 = 248,6 mm, c/t = 35,0 → S235: Klasse 2 (≤ 38), S355: 42ε = 34,2 → Klasse 4
 const k235 = klassifiziere(profil('IPE 300')!, 235, 'druck'), k355 = klassifiziere(profil('IPE 300')!, 355, 'druck');
 pruefe(nahe(k235.steg.ct, 35.01, 1e-3) && k235.klasse === 2 && k355.klasse === 4, `IPE 300 Klassen ${k235.klasse}/${k355.klasse}`);
-pruefe(bemesseDruckstab({ ...basis, profil: 'IPE 300', guete: 'S355' }).hinweise.some(h => h.feld === 'klasse'), 'Hinweis Klasse 4');
+pruefe(bemesseDruckstab({ ...basis, profil: 'IPE 300', guete: 'S355' }).hinweise.some(h => h.feld === 'klasse' && h.text.includes('Steg') && !h.text.includes('Flansch')), 'Hinweis Klasse 4 nennt das maßgebende Teil');
 //    Flansch HEB 200: c = (200 − 9 − 36)/2 = 77,5 mm, c/t = 5,17 → Klasse 1
 pruefe(nahe(klassifiziere(profil('HEB 200')!, 235, 'druck').flansch.ct, 5.1667, 1e-4), 'Flansch c/t');
 

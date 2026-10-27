@@ -8,7 +8,7 @@
  *    Innen σ_i = 0,316·P/h²·[4·lg(l/b) + 1,069], Rand σ_e = 0,572·P/h²·[4·lg(l/b) + 0,359], Ecke σ_c = 3·P/h²·[1 − (a·√2/l)^0,6]
  *    (Koeffizienten für ν = 0,15 abgeleitet, daher ν = 0,15; Runde 5: vorher l/r statt l/b und ν = 0,2), zulässig 2,25 N/mm² (Lehrannahme);
  *    Fugenabstand L ≤ min(25·h; 5,0 m) (Lehrannahme)
- *  - Rigole: Q_zu = A·ψ·r/10 000 [l/s], V_zu = Q_zu·D, Q_s = k_f·A_s, V_R = f_Z·(V_zu − V_s)/s_R (≥ 0,1 m³)
+ *  - Rigole: Q_zu = A·ψ·r/10 000 [l/s], V_zu = Q_zu·D, Q_s = (k_f/2)·A_s (ungesättigte Zone, DWA-A 138), V_R = f_Z·(V_zu − V_s)/s_R (≥ 0,1 m³)
  *  - Spritzbetonring: Kesselformel σ = p·R/d, f_cd = α_cc·f_ck/γ_c mit γ_c = 1,5 (ständige/vorübergehende Bemessungssituation,
  *    Runde 5; vorher 1,3); γ_c = 1,3 nur außergewöhnlich (NA DE Tab. 2.1DE; EC2 empfohlen 1,2)
  * Einheiten stehen an den Feldern. Reiner Rechenkern – geprüft in tests/verkehrswegebau.test.ts.
@@ -185,8 +185,9 @@ export interface RigolenErgebnis extends Ergebnis {
   /** Zufluss in l/s und m³ */
   qZu: number;
   vZu: number;
-  /** Sohlfläche m², Sickerrate l/s, versickertes Volumen m³ */
+  /** Sohlfläche m², Durchlässigkeit der ungesättigten Zone k_f,u = k_f/2 in m/s, Sickerrate l/s, versickertes Volumen m³ */
   aSohle: number;
+  kfu: number;
   qSicker: number;
   vSicker: number;
   /** Rigolen-Bruttovolumen und speicherwirksames Volumen in m³ */
@@ -205,15 +206,18 @@ export function rigole(e: RigolenEingabe): RigolenErgebnis {
   const qZu = aRed * (e.regenspende / 10000);
   const vZu = (qZu * (e.dauerMin * 60)) / 1000;
   const aSohle = Math.max(1.5, vZu * 0.35);
-  const qSicker = kf * aSohle * 1000;
+  // DWA-A 138: maßgebend ist die Durchlässigkeit der ungesättigten Zone k_f,u = k_f/2
+  // (öffentlich: WWA Regensburg/LfU, Folien „DWA-A 138“, „k_f,u = k_f/2 – maßgebend für Versickerung“)
+  const kfu = kf / 2;
+  const qSicker = kfu * aSohle * 1000;
   const vSicker = (qSicker * (e.dauerMin * 60)) / 1000;
   const vRigole = Math.max(0.1, fZ * (vZu - vSicker) / e.speicherKoeff);
   const vNutz = vRigole * e.speicherKoeff;
   const laengeM = vRigole / (0.6 * 1.2);
   const boxen = Math.ceil(vNutz / 0.24);
-  h.push({ stufe: 'warnung', feld: 'kf', text: 'Vereinfachung: Nach DWA-A 138 wird in der ungesättigten Zone mit k_f/2 versickert und das Volumen über mehrere Regendauern iteriert.' });
+  h.push({ stufe: 'warnung', feld: 'kf', text: 'Vereinfachung: Versickerung nur über die Sohle mit k_f,u = k_f/2 (DWA-A 138); Seitenflächen und die Iteration über mehrere Regendauern sind nicht abgebildet.' });
   if (e.psi < 0 || e.psi > 1) h.push({ stufe: 'warnung', feld: 'psi', text: 'Der Abflussbeiwert liegt üblicherweise zwischen 0 und 1.' });
-  return { aRed, qZu, vZu, aSohle, qSicker, vSicker, vRigole, vNutz, laengeM, boxen, ...abschluss(h) };
+  return { aRed, qZu, vZu, aSohle, kfu, qSicker, vSicker, vRigole, vNutz, laengeM, boxen, ...abschluss(h) };
 }
 
 // ---------------------------------------------------------------- Tunnelbau

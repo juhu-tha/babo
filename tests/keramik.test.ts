@@ -1,4 +1,5 @@
 // Rechenkern Keramik und Ziegel (AP 3.13): Wasseraufnahme E_b, Fliesengruppe nach DIN EN 14411, Rohdichte, Porosität, Formmaß
+import fs from 'fs';
 import { keramikKennwerte, fliesenGruppe, scherbenTyp, schwindmass, formmass } from '../src/calc/keramik';
 
 const fehler: string[] = [];
@@ -65,6 +66,16 @@ for (let i = 0; i < 1000; i++) {
   pruefe(Number.isFinite(formmass(l, st, sb)) && formmass(l, st, sb) >= l, `Fuzz ${i}: Formmaß`);
 }
 pruefe(gueltige > 500, `Fuzz: nur ${gueltige} gültige Fälle`);
+
+// Runde 5 (Z30): Inhaltsdatei verwendet die Begriffe der DIN EN 771-1 (LD-/HD-Ziegel, öffentlich: Normzusammenfassung
+// standards.globalspec.com, EN 771-1: LD ≤ 1 000 kg/m³ nur geschütztes Mauerwerk; HD alle ungeschützten Anwendungen)
+// und das Verhältnis Mittelwert/Klasse 1,25 der Druckfestigkeitsklassen (Klasse 12 → 15, Klasse 60 → 75 N/mm²; bauprofessor.de)
+{
+  const kz = JSON.parse(fs.readFileSync('content/keramikziegel/KeramikZiegel.json', 'utf8'));
+  const text = JSON.stringify(kz);
+  pruefe(!/P-Ziegel|U-Ziegel/.test(text) && /LD-Ziegel/.test(text) && /HD-Ziegel/.test(text), 'LD/HD statt P/U');
+  pruefe(/Klasse 12 mindestens 15 N\/mm²/.test(kz.texte.klassenZB4) && /Klasse 60 mindestens 75/.test(kz.texte.klassenZB4), 'Druckfestigkeitsklassen');
+}
 
 if (fehler.length) { for (const x of fehler) console.error(`FAIL: ${x}`); process.exit(1); }
 console.log(`OK: Keramik (${gueltige} gültige Fuzz-Fälle)`);

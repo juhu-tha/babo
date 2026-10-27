@@ -13,7 +13,16 @@ import { type Hinweis, hatFehler } from './plausibilitaet';
 export type DafstbBauteil = 'decke' | 'stuetze' | 'wand' | 'bodenplatte';
 export type DafstbZement = 'cem1' | 'cem2_all' | 'cem2_bs' | 'cem3_a' | 'cem2_cm';
 
+/**
+ * LEHRWERTE (Runde 5 gekennzeichnet, keine Normwerte): GWP A1–A3 eines Normalbetons je m³ nach Zementart [kg CO₂e/m³].
+ * Größenordnung typischer Muster-EPD von Transportbeton C25/30–C30/37; projektbezogen sind die EPD des Betonwerks bzw. die
+ * ÖKOBAUDAT-Datensätze maßgebend. Quelle der konkreten Zahlen offen – Prüfpunkt F-Freigabe (Fehlliste PR).
+ */
 export const ZEMENT_GWP: Readonly<Record<DafstbZement, number>> = { cem1: 310, cem2_all: 250, cem2_bs: 190, cem3_a: 135, cem2_cm: 105 };
+/** LEHRWERTE Betonstahl [kg CO₂e/kg]: Hochofenroute (BOF) bzw. Elektrostahl mit Schrott und Grünstrom (EAF); EPD des Herstellers maßgebend */
+export const STAHL_GWP = { standard_bof: 0.98, gruen_eaf: 0.42 } as const;
+/** LEHRWERT Abschlag auf das Beton-GWP bei Prüfalter 56 d (Zementreduktion durch Nacherhärtung) */
+export const ABSCHLAG_56D = 0.91;
 
 interface Menge { betonM3: number; stahlKg: number }
 interface BauteilDaten { label: string; bezug: number; einheit: string; referenz: Menge; varianten: Readonly<Record<string, Menge>> }
@@ -63,9 +72,10 @@ export function dafstbVergleich(e: DafstbEingabe): DafstbErgebnis {
   const b = DAFSTB_BAUTEILE[e.bauteil];
   const opt = b.varianten[e.bauweise] ?? b.referenz;
   if (!(e.bauweise in b.varianten)) hinweise.push({ stufe: 'warnung', feld: 'bauweise', text: 'Bauweise für dieses Bauteil nicht hinterlegt: Es werden die Referenzmengen angesetzt.' });
-  const optConcreteGwpPerM3 = Math.round(ZEMENT_GWP[e.zement] * (e.pruefalter === 56 ? 0.91 : 1.0));
-  const refSteel = 0.98;
-  const optSteel = e.stahlRoute === 'gruen_eaf' ? 0.42 : 0.98;
+  const optConcreteGwpPerM3 = Math.round(ZEMENT_GWP[e.zement] * (e.pruefalter === 56 ? ABSCHLAG_56D : 1.0));
+  const refSteel = STAHL_GWP.standard_bof;
+  const optSteel = STAHL_GWP[e.stahlRoute];
+  hinweise.push({ stufe: 'warnung', feld: 'gwp', text: 'Lehrwerte: GWP-Faktoren für Beton (je Zementart), Betonstahl und den 56-Tage-Abschlag sind gerundete Lehrannahmen, keine EPD- oder Normwerte; Mengen und Klassengrenzen sind Lehrbeispiele.' });
   const refConcreteGwpTotal = Math.round(b.referenz.betonM3 * 310);
   const refSteelGwpTotal = Math.round(b.referenz.stahlKg * refSteel);
   const refTotalGwp = refConcreteGwpTotal + refSteelGwpTotal;

@@ -15,7 +15,7 @@
  *  - Wenner-Sonde: ρ = 2π·a·R; 1 Ω·m = 0,1 kΩ·cm; Korrosionsrisiko nach RILEM TC 154-EMC (Polder 2000, Tab. 2):
  *    < 100 Ω·m hoch, 100 … 500 mäßig, 500 … 1000 niedrig, > 1000 Ω·m vernachlässigbar (vorher Grenze 120 Ω·m)
  *  - Potential: einheitliche Einstufung potentialStufe aus bauwerksuntersuchung.ts (ASTM C876)
- *  - Karsten-Röhrchen: w = V/(0,491·√t) [kg/(m²·√h)] (Prüffläche 4,91 cm², V in ml, t in h)
+ *  - Karsten-Röhrchen: w = V·10/(A·√t) [kg/(m²·√h)] und Einstufung nach DIN 4108-3 einheitlich aus src/calc/karsten.ts
  *  - Durchstrahlung: I/I₀ = exp(−μ·d) mit μ = 0,15/E (cm⁻¹, stark vereinfachtes Lehrmodell)
  *  - GUM: u_A = s/√n, u_B,1 = d/(2√3) (Rechteckverteilung), u_B,2 = U_kal/2, u_c = √(Σu²), U = k·u_c
  *  - Ringversuch (DIN EN ISO 13528): z = (x − X)/σ_pt, E_n = (x − X)/√(U_lab² + U_ref²)
@@ -37,6 +37,7 @@ import { fckZumAlter, fckCubeVonFck, fckVonFckCube, BETONSTAHL } from '../data/k
 import { betaCc, ZEMENT_S } from './betonkennwerte';
 import type { Zementklasse } from './kriechenSchwinden';
 import { stichprobe } from './statistik';
+import { karstenAuswertung, saugKlasse } from './karsten';
 
 export interface PruefErgebnis { gueltig: boolean; hinweise: Hinweis[] }
 const abschluss = (h: Hinweis[]): PruefErgebnis => ({ gueltig: !hatFehler(h), hinweise: h });
@@ -161,10 +162,12 @@ export function karstenZfp(zeitMin: number, wasserMl: number): KarstenZfpErgebni
   const h: Hinweis[] = [];
   muss(h, istEndlich(zeitMin, wasserMl) && zeitMin > 0 && wasserMl >= 0, 'karsten', 'Prüfzeit > 0 und Wassermenge ≥ 0 erforderlich.');
   const tHours = zeitMin / 60;
-  const w = wasserMl / (0.491 * Math.sqrt(tHours));
-  const stufe: KarstenStufe = w > 0.5 ? 'saugend' : w > 0.1 ? 'hemmend' : 'abweisend';
-  h.push({ stufe: 'warnung', feld: 'w', text: 'Das Karsten-Röhrchen liefert nur einen Schätzwert; der w-Wert nach DIN 4108-3 wird nach DIN EN ISO 15148 bestimmt.' });
-  return { w, tHours, stufe, ...abschluss(h) };
+  // Runde 5: Prüffläche und Grenzwerte DIN 4108-3 (0,5 / 2,0 kg/(m²·√h)) einheitlich mit der Bauwerksuntersuchung
+  const k = karstenAuswertung(wasserMl, zeitMin);
+  const klasse = saugKlasse(k.w);
+  const stufe: KarstenStufe = klasse === 'wassersaugend' ? 'saugend' : klasse === 'wasserhemmend' ? 'hemmend' : 'abweisend';
+  if (!hatFehler(h)) h.push(...k.hinweise);
+  return { w: hatFehler(h) ? 0 : k.w, tHours, stufe, ...abschluss(h) };
 }
 
 // ---------------------------------------------------------------- Thermografie und Durchstrahlung
