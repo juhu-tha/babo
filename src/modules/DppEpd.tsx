@@ -8,6 +8,7 @@ import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import inhalt from '@/content/dppepd/DppEpd.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 const DPP_MOCK_DATA = inhalt.daten.DPP_MOCK_DATA;
 
@@ -674,9 +675,9 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
               <p><MdText text={inhalt.texte.eineEnvironmentalProductDeclaration} /></p>
             </div>
 
-            <div className="flex border-b border-home-grau/30 overflow-x-auto scrollbar-none">
+            <AuswahlGruppe label="Material" className="flex border-b border-home-grau/30 overflow-x-auto scrollbar-none">
               {EPD_DATA.map((epd) => (
-                <button aria-pressed={activeMaterial === epd.id}
+                <button {...alsOption(activeMaterial === epd.id)}
                   key={epd.id}
                   onClick={() => setActiveMaterial(epd.id)}
                   className={`px-4 py-2 rounded-lg text-sm font-bold whitespace-nowrap transition-colors ${
@@ -688,7 +689,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
                   {epd.name}
                 </button>
               ))}
-            </div>
+            </AuswahlGruppe>
 
             <div className="border border-home-grau/30 rounded-xl overflow-hidden">
               <div className="bg-home-grau/10 p-4 border-b border-home-grau/30 flex flex-col md:flex-row justify-between gap-4">

@@ -9,6 +9,7 @@ import {
   Sparkles,
   BookmarkCheck
 } from 'lucide-react';
+import { ReiterLeiste, alsReiter, reiterPanel } from './ui/Auswahlgruppe';
 
 // Joint calculation parameters
 interface SubstrateMaterial {
@@ -184,8 +185,8 @@ export function KlebstoffBerater() {
       </div>
 
       {/* Sub Tabs Selection */}
-      <div className="flex border-b border-slate-200">
-        <button aria-pressed={activeSubTab === 'rechner'}
+      <ReiterLeiste label="Bereiche Klebstoffberater" className="flex border-b border-slate-200">
+        <button {...alsReiter(activeSubTab === 'rechner', 'kleb-bereich', 'rechner')}
           onClick={() => setActiveSubTab('rechner')}
           className={`px-4 py-2 text-xs font-bold border-b-2 transition-all flex items-center gap-1.5 cursor-pointer ${
             activeSubTab === 'rechner' 
@@ -195,7 +196,7 @@ export function KlebstoffBerater() {
         >
           <Sliders size={14} /> Fugen-Dimensions-Rechner (DIN 18540)
         </button>
-        <button aria-pressed={activeSubTab === 'untergrund'}
+        <button {...alsReiter(activeSubTab === 'untergrund', 'kleb-bereich', 'untergrund')}
           onClick={() => setActiveSubTab('untergrund')}
           className={`px-4 py-2 text-xs font-bold border-b-2 transition-all flex items-center gap-1.5 cursor-pointer ${
             activeSubTab === 'untergrund' 
@@ -205,7 +206,7 @@ export function KlebstoffBerater() {
         >
           <Layers size={14} /> Untergrund &amp; Primer-Matrix
         </button>
-        <button aria-pressed={activeSubTab === 'regeln'}
+        <button {...alsReiter(activeSubTab === 'regeln', 'kleb-bereich', 'regeln')}
           onClick={() => setActiveSubTab('regeln')}
           className={`px-4 py-2 text-xs font-bold border-b-2 transition-all flex items-center gap-1.5 cursor-pointer ${
             activeSubTab === 'regeln' 
@@ -215,11 +216,11 @@ export function KlebstoffBerater() {
         >
           <Sparkles size={14} /> Die 5 goldenen Kleb-Regeln
         </button>
-      </div>
+      </ReiterLeiste>
 
       {/* SUB-TAB 1: CALCULATOR */}
       {activeSubTab === 'rechner' && (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div {...reiterPanel('kleb-bereich', activeSubTab)} className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           
           {/* Inputs Column */}
           <div className="lg:col-span-5 space-y-4">
@@ -346,7 +347,7 @@ export function KlebstoffBerater() {
               <div className="relative flex items-stretch h-[100px] border border-slate-200 rounded-xl overflow-hidden bg-slate-50">
                 
                 {/* Flanke Links */}
-                <div className="w-[28%] bg-slate-300 dark:bg-slate-700 border-r-4 border-emerald-600 flex flex-col items-center justify-center p-1 text-center select-none">
+                <div className="w-[28%] bg-slate-300 border-r-4 border-emerald-600 flex flex-col items-center justify-center p-1 text-center select-none">
                   <span className="text-[10px] font-black text-slate-800 leading-none">{SUBSTRATES[subA].name.split(' (')[0].split(' /')[0]}</span>
                   <span className="text-[8px] text-slate-700 font-mono mt-1">Grenzfläche A</span>
                 </div>
@@ -374,7 +375,7 @@ export function KlebstoffBerater() {
                 </div>
 
                 {/* Flanke Rechts */}
-                <div className="w-[28%] bg-slate-300 dark:bg-slate-700 border-l-4 border-emerald-600 flex flex-col items-center justify-center p-1 text-center select-none">
+                <div className="w-[28%] bg-slate-300 border-l-4 border-emerald-600 flex flex-col items-center justify-center p-1 text-center select-none">
                   <span className="text-[10px] font-black text-slate-800 leading-none">{SUBSTRATES[subB].name.split(' (')[0].split(' /')[0]}</span>
                   <span className="text-[8px] text-slate-700 font-mono mt-1">Grenzfläche B</span>
                 </div>
@@ -444,7 +445,7 @@ export function KlebstoffBerater() {
 
       {/* SUB-TAB 2: SUBSTRATE MATRIX */}
       {activeSubTab === 'untergrund' && (
-        <div className="space-y-4">
+        <div {...reiterPanel('kleb-bereich', activeSubTab)} className="space-y-4">
           <div className="bg-white p-4.5 rounded-xl border border-slate-200 space-y-3">
             <span className="text-xs font-bold text-slate-500 uppercase tracking-widest block">
               Interaktive herstellerneutrale Vorbehandlungs- &amp; Primer-Matrix
@@ -511,11 +512,11 @@ export function KlebstoffBerater() {
 
       {/* SUB-TAB 3: THE 5 GOLDEN RULES */}
       {activeSubTab === 'regeln' && (
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+        <div {...reiterPanel('kleb-bereich', activeSubTab)} className="grid grid-cols-1 md:grid-cols-5 gap-4">
           
           <div className="bg-white p-4.5 rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between font-normal">
             <div>
-              <span className="text-xl font-black text-shiraz/35 font-mono block leading-none mb-1">01</span>
+              <span className="text-xl font-black text-shiraz/70 dark:text-slate-400 font-mono block leading-none mb-1">01</span>
               <h4 className="text-xs font-bold text-slate-800 mb-1 leading-tight">Drahttrocken &amp; Schichtfrei</h4>
               <p className="text-[11px] text-slate-500 leading-normal">
                 Der Fugenuntergrund muss tragfähig und frei von Zementschlämme, Rost oder alter Farbschicht sein. Mechanische Reinigung geht vor Chemie!
@@ -528,7 +529,7 @@ export function KlebstoffBerater() {
 
           <div className="bg-white p-4.5 rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between font-normal">
             <div>
-              <span className="text-xl font-black text-blue-800/35 font-mono block leading-none mb-1">02</span>
+              <span className="text-xl font-black text-blue-800/70 dark:text-slate-400 font-mono block leading-none mb-1">02</span>
               <h4 className="text-xs font-bold text-slate-800 mb-1 leading-tight">Glutheiß entfettet (Zwei-Tuch Methodik)</h4>
               <p className="text-[11px] text-slate-500 leading-normal">
                 Metalle/Glas mit unverdünntem Reiniger abwischen und sofort trocken nachreiben. Kein Ablüften des Drecks erlauben!
@@ -541,7 +542,7 @@ export function KlebstoffBerater() {
 
           <div className="bg-white p-4.5 rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between font-normal">
             <div>
-              <span className="text-xl font-black text-amber-800/35 font-mono block leading-none mb-1">03</span>
+              <span className="text-xl font-black text-amber-800/70 dark:text-slate-400 font-mono block leading-none mb-1">03</span>
               <h4 className="text-xs font-bold text-slate-800 mb-1 leading-tight">Ablüftzeiten zwingend stoppen</h4>
               <p className="text-[11px] text-slate-500 leading-normal">
                 Die chemische Veresterung der Primer benötigt die vorgeschriebene Wartezeit, um Blasenbildung im verlegten Dichtstoff auszuschalten.
@@ -554,7 +555,7 @@ export function KlebstoffBerater() {
 
           <div className="bg-white p-4.5 rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between font-normal">
             <div>
-              <span className="text-xl font-black text-emerald-800/35 font-mono block leading-none mb-1">04</span>
+              <span className="text-xl font-black text-emerald-800/70 dark:text-slate-400 font-mono block leading-none mb-1">04</span>
               <h4 className="text-xs font-bold text-slate-800 mb-1 leading-tight">Flankenhaftung rein eloxieren</h4>
               <p className="text-[11px] text-slate-500 leading-normal">
                 3-Punkt-Behinderung im Fugenboden verhindern. PE-Rundschnur elastisch einschieben, ohne deren geschlossenzellige Außenhaut zu ritzen.
@@ -567,7 +568,7 @@ export function KlebstoffBerater() {
 
           <div className="bg-white p-4.5 rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between font-normal">
             <div>
-              <span className="text-xl font-black text-slate-800/35 font-mono block leading-none mb-1">05</span>
+              <span className="text-xl font-black text-slate-800/70 dark:text-slate-400 font-mono block leading-none mb-1">05</span>
               <h4 className="text-xs font-bold text-slate-800 mb-1 leading-tight">Perfekt abgezogenes Profil</h4>
               <p className="text-[11px] text-slate-500 leading-normal">
                 Nur neutrale Spezialglättmittel verwenden. Zu viel Seifenwasser wäscht Dispersionen aus und führt zur Verfärbung oder vorzeitiger Alterung.

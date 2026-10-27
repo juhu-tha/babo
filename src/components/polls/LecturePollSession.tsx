@@ -21,6 +21,7 @@ import {
   AlertCircle
 } from 'lucide-react';
 import { PollQuestion, getLecturePolls } from '@/src/data/lecturePollsData';
+import { AuswahlGruppe, alsOption } from '../ui/Auswahlgruppe';
 
 interface LecturePollSessionProps {
   lectureId: 'bauen_im_bestand' | 'nachhaltiges_bauen' | 'bauschaeden' | 'baustoffkunde' | 'instandhaltung';
@@ -641,8 +642,8 @@ export default function LecturePollSession({ lectureId, lectureTitle }: LectureP
                 <label className="text-xs font-bold text-slate-700 block mb-1">
                   Umfang des Resets:
                 </label>
-                <div className="grid grid-cols-2 gap-2 text-xs">
-                  <button aria-pressed={resetScope === 'current'}
+                <AuswahlGruppe label="Umfang des Resets" className="grid grid-cols-2 gap-2 text-xs">
+                  <button {...alsOption(resetScope === 'current')}
                     type="button"
                     onClick={() => setResetScope('current')}
                     className={`p-2.5 rounded-xl border text-left font-semibold cursor-pointer transition-all ${
@@ -653,7 +654,7 @@ export default function LecturePollSession({ lectureId, lectureTitle }: LectureP
                   >
                     Aktuelle Frage (Q{formatDeWert(currentIdx + 1)})
                   </button>
-                  <button aria-pressed={resetScope === 'all'}
+                  <button {...alsOption(resetScope === 'all')}
                     type="button"
                     onClick={() => setResetScope('all')}
                     className={`p-2.5 rounded-xl border text-left font-semibold cursor-pointer transition-all ${
@@ -664,7 +665,7 @@ export default function LecturePollSession({ lectureId, lectureTitle }: LectureP
                   >
                     Alle Fragen ({questions.length})
                   </button>
-                </div>
+                </AuswahlGruppe>
               </div>
 
               <div>

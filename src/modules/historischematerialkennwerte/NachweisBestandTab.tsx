@@ -4,6 +4,7 @@ import { BlockMath, InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 import inhalt from '@/content/historischematerialkennwerte/NachweisBestandTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 export interface NachweisBestandTabProps {
   setNachweisMaterial: Dispatch<SetStateAction<"stahl" | "beton" | "mauerwerk">>;
@@ -85,8 +86,8 @@ export function NachweisBestandTab({ setNachweisMaterial, setSampleMean, setSamp
     
             <div>
               <label className="text-xs font-medium text-slate-700 block mb-1.5">Versagensmechanismus:</label>
-              <div className="grid grid-cols-2 gap-1.5">
-                <button aria-pressed={failureDuctility === 'duktil'}
+              <AuswahlGruppe label="Versagensmechanismus" className="grid grid-cols-2 gap-1.5">
+                <button {...alsOption(failureDuctility === 'duktil')}
                   type="button"
                   onClick={() => setFailureDuctility('duktil')}
                   className={`py-1.5 px-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${
@@ -95,7 +96,7 @@ export function NachweisBestandTab({ setNachweisMaterial, setSampleMean, setSamp
                             : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-100'
                         }`}
                 ><MdText text={inhalt.texte.duktilBiegezug} /></button>
-                <button aria-pressed={failureDuctility === 'sproed'}
+                <button {...alsOption(failureDuctility === 'sproed')}
                   type="button"
                   onClick={() => setFailureDuctility('sproed')}
                   className={`py-1.5 px-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${
@@ -104,7 +105,7 @@ export function NachweisBestandTab({ setNachweisMaterial, setSampleMean, setSamp
                             : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-100'
                         }`}
                 ><MdText text={inhalt.texte.sprödeQuerkraftKnick} /></button>
-              </div>
+              </AuswahlGruppe>
             </div>
     
             <div className="pt-2 border-t border-slate-200">

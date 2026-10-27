@@ -83,7 +83,7 @@ export default function MechanischTab({ angle, chartData, karstenAbsorbed, karst
             </div>
 
             <div className="mt-4 p-4 bg-shiraz text-white rounded-xl shadow-md relative overflow-hidden">
-              <div className="text-sm opacity-90 mb-1"><MdText text={inhalt.texte.geschätzteDruckfestigkeit} /></div>
+              <div className="text-sm mb-1"><MdText text={inhalt.texte.geschätzteDruckfestigkeit} /></div>
               <div className="text-3xl font-bold">{formatDeZahl(reboundResults.fc, 1)} N/mm²</div>
               <div className="text-xs opacity-75 mt-2"><MdText text={inhalt.texte.korrigiertesR} />{formatDeZahl(reboundResults.rCorr, 1)}
               </div>

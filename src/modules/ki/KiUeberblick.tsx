@@ -19,6 +19,7 @@ import PipelineTab from './ueberblick/PipelineTab';
 import VergleichTab from './ueberblick/VergleichTab';
 import inhalt from '@/content/ki/KiUeberblick.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ReiterLeiste, alsReiter, reiterPanel } from '../../components/ui/Auswahlgruppe';
 
 export default function KiUeberblick() {
   const [activeTab, setActiveTab] = useState<'kernbegriffe' | 'historie' | 'stand' | 'ausblick' | 'pipeline' | 'vergleich'>('kernbegriffe');
@@ -52,8 +53,8 @@ export default function KiUeberblick() {
         </div>
 
         {/* Tab-Navigation */}
-        <div className="flex flex-wrap gap-2 pt-5 border-t border-home-grau/20 mt-5">
-          <button aria-pressed={activeTab === 'kernbegriffe'}
+        <ReiterLeiste label="Bereiche KI-Überblick" className="flex flex-wrap gap-2 pt-5 border-t border-home-grau/20 mt-5">
+          <button {...alsReiter(activeTab === 'kernbegriffe', 'ki-ueberblick-bereich', 'kernbegriffe')}
             onClick={() => setActiveTab('kernbegriffe')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'kernbegriffe'
@@ -62,7 +63,7 @@ export default function KiUeberblick() {
             }`}
           >
             <Boxes size={16} /><MdText text={inhalt.texte.t1KernbegriffeVerständlichMl} /></button>
-          <button aria-pressed={activeTab === 'historie'}
+          <button {...alsReiter(activeTab === 'historie', 'ki-ueberblick-bereich', 'historie')}
             onClick={() => setActiveTab('historie')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'historie'
@@ -71,7 +72,7 @@ export default function KiUeberblick() {
             }`}
           >
             <Clock size={16} /><MdText text={inhalt.texte.t2Historie1960Bis} /></button>
-          <button aria-pressed={activeTab === 'stand'}
+          <button {...alsReiter(activeTab === 'stand', 'ki-ueberblick-bereich', 'stand')}
             onClick={() => setActiveTab('stand')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'stand'
@@ -80,7 +81,7 @@ export default function KiUeberblick() {
             }`}
           >
             <TrendingUp size={16} /><MdText text={inhalt.texte.t3StandHeutePraxis} /></button>
-          <button aria-pressed={activeTab === 'ausblick'}
+          <button {...alsReiter(activeTab === 'ausblick', 'ki-ueberblick-bereich', 'ausblick')}
             onClick={() => setActiveTab('ausblick')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'ausblick'
@@ -89,7 +90,7 @@ export default function KiUeberblick() {
             }`}
           >
             <Compass size={16} /><MdText text={inhalt.texte.t4AusblickNächste5} /></button>
-          <button aria-pressed={activeTab === 'pipeline'}
+          <button {...alsReiter(activeTab === 'pipeline', 'ki-ueberblick-bereich', 'pipeline')}
             onClick={() => setActiveTab('pipeline')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'pipeline'
@@ -98,7 +99,7 @@ export default function KiUeberblick() {
             }`}
           >
             <Database size={16} /><MdText text={inhalt.texte.t5EnterpriseRagVom} /></button>
-          <button aria-pressed={activeTab === 'vergleich'}
+          <button {...alsReiter(activeTab === 'vergleich', 'ki-ueberblick-bereich', 'vergleich')}
             onClick={() => setActiveTab('vergleich')}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'vergleich'
@@ -107,26 +108,26 @@ export default function KiUeberblick() {
             }`}
           >
             <Workflow size={16} /><MdText text={inhalt.texte.t6InteraktiverRagSimulator} /></button>
-        </div>
+        </ReiterLeiste>
       </div>
 
       {/* 2. TAB CONTENT: KERNBEGRIFFE */}
-      {activeTab === 'kernbegriffe' && <KernbegriffeTab detailSubTab={detailSubTab} selectedExampleIndex={selectedExampleIndex} selectedTerm={selectedTerm} setDetailSubTab={setDetailSubTab} setSelectedExampleIndex={setSelectedExampleIndex} setSelectedTerm={setSelectedTerm} />}
+      {activeTab === 'kernbegriffe' && <div {...reiterPanel('ki-ueberblick-bereich', activeTab)}><KernbegriffeTab detailSubTab={detailSubTab} selectedExampleIndex={selectedExampleIndex} selectedTerm={selectedTerm} setDetailSubTab={setDetailSubTab} setSelectedExampleIndex={setSelectedExampleIndex} setSelectedTerm={setSelectedTerm} /></div>}
 
       {/* 3. TAB CONTENT: HISTORIE */}
-      {activeTab === 'historie' && <HistorieTab />}
+      {activeTab === 'historie' && <div {...reiterPanel('ki-ueberblick-bereich', activeTab)}><HistorieTab /></div>}
 
       {/* 4. TAB CONTENT: STAND HEUTE */}
-      {activeTab === 'stand' && <StandTab />}
+      {activeTab === 'stand' && <div {...reiterPanel('ki-ueberblick-bereich', activeTab)}><StandTab /></div>}
 
       {/* 5. TAB CONTENT: AUSBLICK */}
-      {activeTab === 'ausblick' && <AusblickTab />}
+      {activeTab === 'ausblick' && <div {...reiterPanel('ki-ueberblick-bereich', activeTab)}><AusblickTab /></div>}
 
       {/* 5. TAB CONTENT: ENTERPRISE RAG-PIPELINE (SCHRITT FÜR SCHRITT) */}
-      {activeTab === 'pipeline' && <PipelineTab pipelineStep={pipelineStep} setPipelineStep={setPipelineStep} />}
+      {activeTab === 'pipeline' && <div {...reiterPanel('ki-ueberblick-bereich', activeTab)}><PipelineTab pipelineStep={pipelineStep} setPipelineStep={setPipelineStep} /></div>}
 
       {/* 6. TAB CONTENT: INTERAKTIVER VERGLEICH (RAG-SIMULATOR) */}
-      {activeTab === 'vergleich' && <VergleichTab setSimMode={setSimMode} setSimQuestion={setSimQuestion} simMode={simMode} simQuestion={simQuestion} />}
+      {activeTab === 'vergleich' && <div {...reiterPanel('ki-ueberblick-bereich', activeTab)}><VergleichTab setSimMode={setSimMode} setSimQuestion={setSimQuestion} simMode={simMode} simQuestion={simQuestion} /></div>}
 
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox

@@ -20,6 +20,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/instandsetzungchecklisten/InstandsetzungChecklisten.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 interface ChecklistItem {
   id: string;
@@ -470,14 +471,14 @@ export default function InstandsetzungChecklisten() {
         </div>
 
         {/* Sub-Tabs Selector (Phasen) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 mt-4">
+        <ReiterLeiste label="Phase" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 mt-4">
           {Object.values(INSTANDSETZUNG_CHECKLISTS).map((sec) => {
             const Icon = sec.icon;
             const isActive = activeSubTab === sec.id;
             const prog = getSectionProgress(sec.id);
 
             return (
-              <button aria-pressed={isActive}
+              <button {...alsReiter(isActive, 'instandsetzung-checkliste', sec.id)}
                 key={sec.id}
                 onClick={() => setActiveSubTab(sec.id)}
                 className={`p-3 rounded-xl border text-left flex flex-col justify-between transition-all duration-150 cursor-pointer shadow-xs ${
@@ -513,7 +514,7 @@ export default function InstandsetzungChecklisten() {
               </button>
             );
           })}
-        </div>
+        </ReiterLeiste>
       </div>
 
       {/* Filter & Toolbar */}
@@ -540,10 +541,11 @@ export default function InstandsetzungChecklisten() {
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
+          <AuswahlGruppe label="Filter Status" className="flex flex-wrap items-center gap-2">
           <span className="text-xs font-semibold text-slate-500 flex items-center gap-1">
             <Filter size={12} /> Status:
           </span>
-          <button aria-pressed={statusFilter === 'all'}
+          <button {...alsOption(statusFilter === 'all')}
             onClick={() => setStatusFilter('all')}
             className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-colors cursor-pointer ${
               statusFilter === 'all' ? 'bg-shiraz text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
@@ -551,13 +553,13 @@ export default function InstandsetzungChecklisten() {
           >
             Alle
           </button>
-          <button aria-pressed={statusFilter === 'critical'}
+          <button {...alsOption(statusFilter === 'critical')}
             onClick={() => setStatusFilter('critical')}
             className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-colors cursor-pointer ${
               statusFilter === 'critical' ? 'bg-rose-600 text-white' : 'bg-rose-50 text-rose-700 hover:bg-rose-100 border border-rose-200'
             }`}
           ><MdText text={inhalt.texte.nurZwingend} /></button>
-          <button aria-pressed={statusFilter === 'mandatory'}
+          <button {...alsOption(statusFilter === 'mandatory')}
             onClick={() => setStatusFilter('mandatory')}
             className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-colors cursor-pointer ${
               statusFilter === 'mandatory' ? 'bg-amber-600 text-white' : 'bg-amber-50 text-amber-700 hover:bg-amber-100 border border-amber-200'
@@ -565,6 +567,7 @@ export default function InstandsetzungChecklisten() {
           >
             Normativ
           </button>
+          </AuswahlGruppe>
 
           <div className="h-4 w-px bg-slate-200 mx-1 hidden sm:block"></div>
 
@@ -583,7 +586,7 @@ export default function InstandsetzungChecklisten() {
       </div>
 
       {/* Items Section */}
-      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
+      <div {...reiterPanel('instandsetzung-checkliste', activeSubTab)} className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-home-grau/20 pb-3 gap-2">
           <div>
             <div className="flex items-center gap-2">

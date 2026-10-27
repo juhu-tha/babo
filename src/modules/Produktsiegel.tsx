@@ -3,6 +3,7 @@ import { Award, Leaf, Trees, ShieldCheck, Building, FileText, CheckCircle2, Info
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import inhalt from '@/content/produktsiegel/Produktsiegel.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 export default function Produktsiegel() {
   const [activeIsoType, setActiveIsoType] = useState<'type1' | 'type2' | 'type3'>('type1');
@@ -57,11 +58,11 @@ export default function Produktsiegel() {
         </div>
 
         {/* Dynamic Buttons for Types */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+        <AuswahlGruppe label="Typ der Umweltkennzeichnung" className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
           {isoTypes.map((type) => {
             const isActive = activeIsoType === type.id;
             return (
-              <button aria-pressed={isActive}
+              <button {...alsOption(isActive)}
                 key={type.id}
                 onClick={() => setActiveIsoType(type.id)}
                 className={`p-4 rounded-xl border text-left transition-all duration-200 cursor-pointer flex flex-col justify-between h-full gap-2 ${
@@ -91,7 +92,7 @@ export default function Produktsiegel() {
               </button>
             );
           })}
-        </div>
+        </AuswahlGruppe>
 
         {/* Selected ISO Type Details Display */}
         <div className="bg-slate-50 p-6 rounded-xl border border-home-grau/30 animate-in fade-in duration-300">

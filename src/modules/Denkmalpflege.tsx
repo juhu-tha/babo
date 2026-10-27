@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import inhalt from '@/content/denkmalpflege/Denkmalpflege.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 export default function Denkmalpflege() {
   const [activeSubTab, setActiveSubTab] = useState<'allgemeines' | 'baydschg' | 'bauphysik' | 'ablauf'>('allgemeines');
@@ -26,7 +27,7 @@ export default function Denkmalpflege() {
 
         {/* Dynamic Sub-Navigation Grid */}
         <div className="p-4 bg-slate-50 border border-home-grau/30 rounded-2xl mb-6">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          <ReiterLeiste label="Bereiche Denkmalpflege" className="grid grid-cols-2 lg:grid-cols-4 gap-3">
             {[
               { id: 'allgemeines' as const, label: inhalt.werte.grundlagenCharta, sub: inhalt.werte.definitionenWerteChartaVon, icon: Landmark },
               { id: 'baydschg' as const, label: inhalt.werte.fokusBayernBaydschg, sub: inhalt.werte.deklaratorischesPrinzipArt6, icon: Scale },
@@ -36,7 +37,7 @@ export default function Denkmalpflege() {
               const Icon = tab.icon;
               const isActive = activeSubTab === tab.id;
               return (
-                <button aria-pressed={isActive}
+                <button {...alsReiter(isActive, 'denkmal-bereich', tab.id)}
                   key={tab.id}
                   onClick={() => setActiveSubTab(tab.id)}
                   className={`p-4 rounded-xl border transition-all duration-200 flex flex-col items-start gap-1.5 text-left h-full cursor-pointer group ${
@@ -57,7 +58,7 @@ export default function Denkmalpflege() {
                 </button>
               );
             })}
-          </div>
+          </ReiterLeiste>
         </div>
 
         {/* Tab content area */}
@@ -65,7 +66,7 @@ export default function Denkmalpflege() {
 
           {/* Sub-Tab 1: Allgemeines */}
           {activeSubTab === 'allgemeines' && (
-            <div className="flex flex-col gap-6 animate-in fade-in duration-300">
+            <div {...reiterPanel('denkmal-bereich', activeSubTab)} className="flex flex-col gap-6 animate-in fade-in duration-300">
               <div className="bg-slate-50 border border-home-grau/30 p-5 rounded-2xl flex flex-col md:flex-row gap-5">
                 <div className="flex-1 space-y-2">
                   <h3 className="font-bold text-slate-900 text-sm flex items-center gap-1.5">
@@ -136,7 +137,7 @@ export default function Denkmalpflege() {
 
           {/* Sub-Tab 2: Fokus Bayern (BayDSchG) */}
           {activeSubTab === 'baydschg' && (
-            <div className="flex flex-col gap-6 animate-in fade-in duration-300">
+            <div {...reiterPanel('denkmal-bereich', activeSubTab)} className="flex flex-col gap-6 animate-in fade-in duration-300">
               
               {/* Highlight Banner: Das Deklaratorische Prinzip */}
               <div className="bg-rose-50/50 border border-rose-200/60 p-5 rounded-2xl space-y-3">
@@ -216,7 +217,7 @@ export default function Denkmalpflege() {
 
           {/* Sub-Tab 3: Sanierung & Bauphysik */}
           {activeSubTab === 'bauphysik' && (
-            <div className="flex flex-col gap-6 animate-in fade-in duration-300">
+            <div {...reiterPanel('denkmal-bereich', activeSubTab)} className="flex flex-col gap-6 animate-in fade-in duration-300">
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* GEG Befreiung */}
@@ -270,7 +271,7 @@ export default function Denkmalpflege() {
 
           {/* Sub-Tab 4: Behörden & Steuern */}
           {activeSubTab === 'ablauf' && (
-            <div className="flex flex-col gap-6 animate-in fade-in duration-300">
+            <div {...reiterPanel('denkmal-bereich', activeSubTab)} className="flex flex-col gap-6 animate-in fade-in duration-300">
               
               {/* Dreistufigkeit in Bayern */}
               <div className="border border-home-grau/30 p-5 rounded-2xl bg-white space-y-4 shadow-sm">

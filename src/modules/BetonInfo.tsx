@@ -29,6 +29,7 @@ import ModuleOverviewView from '@/src/components/ui/ModuleOverviewView';
 import { MODULE_HISTORY_DATA } from '@/src/data/moduleHistoryData';
 import inhalt from '@/content/betoninfo/BetonInfo.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 interface SubmoduleCard {
   title: string;
@@ -191,8 +192,8 @@ export default function BetonInfo() {
 
         {/* SECTION TABS */}
         <div className="border-b border-home-grau/30 bg-slate-50/30 p-4">
-          <div className="flex flex-wrap gap-2">
-            <button aria-pressed={activeSection === 'grundlagen'}
+          <ReiterLeiste label="Bereiche Beton" className="flex flex-wrap gap-2">
+            <button {...alsReiter(activeSection === 'grundlagen', 'beton-info-bereich', 'grundlagen')}
               onClick={() => setActiveSection('grundlagen')}
               className={`py-2 px-3.5 rounded-xl text-xs sm:text-sm font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeSection === 'grundlagen'
@@ -203,7 +204,7 @@ export default function BetonInfo() {
               <Info size={15} />
               Grundlagen
             </button>
-            <button aria-pressed={activeSection === 'ueberblick'}
+            <button {...alsReiter(activeSection === 'ueberblick', 'beton-info-bereich', 'ueberblick')}
               onClick={() => setActiveSection('ueberblick')}
               className={`py-2 px-3.5 rounded-xl text-xs sm:text-sm font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeSection === 'ueberblick'
@@ -214,7 +215,7 @@ export default function BetonInfo() {
               <Compass size={15} />
               Überblick
             </button>
-            <button aria-pressed={activeSection === 'inhalte'}
+            <button {...alsReiter(activeSection === 'inhalte', 'beton-info-bereich', 'inhalte')}
               onClick={() => setActiveSection('inhalte')}
               className={`py-2 px-3.5 rounded-xl text-xs sm:text-sm font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeSection === 'inhalte'
@@ -225,7 +226,7 @@ export default function BetonInfo() {
               <BookOpen size={15} />
               Inhalte
             </button>
-            <button aria-pressed={activeSection === 'anwendung'}
+            <button {...alsReiter(activeSection === 'anwendung', 'beton-info-bereich', 'anwendung')}
               onClick={() => setActiveSection('anwendung')}
               className={`py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all text-center flex items-center justify-center gap-2 cursor-pointer ${
                 activeSection === 'anwendung'
@@ -236,7 +237,7 @@ export default function BetonInfo() {
               <UserCheck size={16} />
               Anwendung
             </button>
-            <button aria-pressed={activeSection === 'weiterfuehrend'}
+            <button {...alsReiter(activeSection === 'weiterfuehrend', 'beton-info-bereich', 'weiterfuehrend')}
               onClick={() => setActiveSection('weiterfuehrend')}
               className={`py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all text-center flex items-center justify-center gap-2 cursor-pointer ${
                 activeSection === 'weiterfuehrend'
@@ -247,7 +248,7 @@ export default function BetonInfo() {
               <Compass size={16} />
               Weiterführend
             </button>
-            <button aria-pressed={activeSection === 'historie'}
+            <button {...alsReiter(activeSection === 'historie', 'beton-info-bereich', 'historie')}
               onClick={() => setActiveSection('historie')}
               className={`py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all text-center flex items-center justify-center gap-2 cursor-pointer ${
                 activeSection === 'historie'
@@ -258,13 +259,13 @@ export default function BetonInfo() {
               <History size={16} />
               Historie
             </button>
-          </div>
+          </ReiterLeiste>
         </div>
 
         {/* CONTENT PANEL */}
         <div className="p-6">
           {activeSection === 'grundlagen' && (
-            <div className="space-y-6 animate-in fade-in duration-300">
+            <div {...reiterPanel('beton-info-bereich', activeSection)} className="space-y-6 animate-in fade-in duration-300">
               <div className="space-y-3">
                 <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
                   <FileText className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.wissenschaftlicheGrundlagenDerBetontechn} /></h3>
@@ -348,7 +349,7 @@ export default function BetonInfo() {
           )}
 
           {activeSection === 'inhalte' && (
-            <div className="space-y-6 animate-in fade-in duration-300">
+            <div {...reiterPanel('beton-info-bereich', activeSection)} className="space-y-6 animate-in fade-in duration-300">
               <div className="space-y-2">
                 <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
                   <BookOpen className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.inhalteUntermoduleImÜberblick} /></h3>
@@ -378,11 +379,11 @@ export default function BetonInfo() {
           )}
 
           {activeSection === 'ueberblick' && (
-            <ModuleOverviewView groupKey="beton" />
+            <div {...reiterPanel('beton-info-bereich', activeSection)}><ModuleOverviewView groupKey="beton" /></div>
           )}
 
           {activeSection === 'anwendung' && (
-            <div className="space-y-6 animate-in fade-in duration-300">
+            <div {...reiterPanel('beton-info-bereich', activeSection)} className="space-y-6 animate-in fade-in duration-300">
               <div className="space-y-3">
                 <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
                   <UserCheck className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.anwendungInLehreUnd} /></h3>
@@ -404,7 +405,7 @@ export default function BetonInfo() {
           )}
 
           {activeSection === 'weiterfuehrend' && (
-            <div className="space-y-8 animate-in fade-in duration-300">
+            <div {...reiterPanel('beton-info-bereich', activeSection)} className="space-y-8 animate-in fade-in duration-300">
               <div className="space-y-3">
                 <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
                   <Compass className="text-shiraz w-5 h-5" /><MdText text={inhalt.texte.umfangreicheWissenschaftlicheRessourcenF} /></h3>
@@ -494,7 +495,7 @@ export default function BetonInfo() {
           )}
 
           {activeSection === 'historie' && (
-            <div className="animate-in fade-in duration-300">
+            <div {...reiterPanel('beton-info-bereich', activeSection)} className="animate-in fade-in duration-300">
               <ModuleHistoryView history={MODULE_HISTORY_DATA.beton} />
             </div>
           )}

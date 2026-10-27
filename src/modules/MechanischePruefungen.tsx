@@ -20,6 +20,7 @@ import inhalt from '@/content/mechanischepruefungen/MechanischePruefungen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { bohrkernPruefung, spaltzugfestigkeit, marshallQuotient, zugversuchStahl, holzSchaetzung } from '@/src/calc/pruefverfahren';
+import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 // Define categories of building materials
 type MaterialCategory = 'beton_mineralisch' | 'asphalt_bituminoes' | 'stahl_metalle' | 'holz_organisch';
@@ -435,8 +436,8 @@ export default function MechanischePruefungen() {
               {activeCategory === 'asphalt_bituminoes' && (
                 <div className="space-y-4">
                   {/* Asphalt SubTest Selector Toggle */}
-                  <div className="grid grid-cols-2 gap-2 bg-slate-100 p-1 rounded-lg border border-home-grau/30">
-                    <button aria-pressed={asphaltSubTest === 'spaltzug'}
+                  <ReiterLeiste label="Asphaltprüfung" className="grid grid-cols-2 gap-2 bg-slate-100 p-1 rounded-lg border border-home-grau/30">
+                    <button {...alsReiter(asphaltSubTest === 'spaltzug', 'asphalt-pruefung', 'spaltzug')}
                       onClick={() => setAsphaltSubTest('spaltzug')}
                       className={`py-1.5 text-[11px] font-bold rounded-md transition-all cursor-pointer ${
                         asphaltSubTest === 'spaltzug' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
@@ -444,7 +445,7 @@ export default function MechanischePruefungen() {
                     >
                       Spaltzugfestigkeit
                     </button>
-                    <button aria-pressed={asphaltSubTest === 'marshall'}
+                    <button {...alsReiter(asphaltSubTest === 'marshall', 'asphalt-pruefung', 'marshall')}
                       onClick={() => setAsphaltSubTest('marshall')}
                       className={`py-1.5 text-[11px] font-bold rounded-md transition-all cursor-pointer ${
                         asphaltSubTest === 'marshall' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
@@ -452,10 +453,10 @@ export default function MechanischePruefungen() {
                     >
                       Marshall-Stabilität
                     </button>
-                  </div>
+                  </ReiterLeiste>
 
                   {asphaltSubTest === 'spaltzug' ? (
-                    <div className="space-y-3 pt-1">
+                    <div {...reiterPanel('asphalt-pruefung', asphaltSubTest)} className="space-y-3 pt-1">
                       <div className="inline-flex items-center gap-1 px-2.5 py-1 text-[10px] font-bold text-emerald-800 bg-emerald-50 rounded border border-emerald-150 font-mono uppercase"><MdText text={inhalt.texte.spaltzugbelastungIndirekt} /></div>
 
                       <div className="space-y-1">
@@ -521,7 +522,7 @@ export default function MechanischePruefungen() {
                     </div>
                   ) : (
                     // Marshall-Stabilität Rechner
-                    <div className="space-y-3 pt-1">
+                    <div {...reiterPanel('asphalt-pruefung', asphaltSubTest)} className="space-y-3 pt-1">
                       <div className="inline-flex items-center gap-1 px-2.5 py-1 text-[10px] font-bold text-emerald-800 bg-emerald-50 rounded border border-emerald-150 font-mono uppercase"><MdText text={inhalt.texte.marshallKompressionBei60} /></div>
 
                       <div className="bg-white text-slate-850 border border-slate-200 p-2.5 rounded-lg text-[10.5px] leading-snug flex gap-2">

@@ -21,6 +21,7 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import inhalt from '@/content/ki/ToolsFuerThesen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 interface ThesisTool {
   id: string;
@@ -590,9 +591,9 @@ export default function ToolsFuerThesen() {
           </div>
 
           {/* Scenario Selector */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <AuswahlGruppe label="Szenario" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {THESIS_PROMPTS.map(p => (
-              <button aria-pressed={activePromptId === p.id}
+              <button {...alsOption(activePromptId === p.id)}
                 key={p.id}
                 onClick={() => setActivePromptId(p.id)}
                 className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between gap-2 ${
@@ -612,7 +613,7 @@ export default function ToolsFuerThesen() {
                 </div>
               </button>
             ))}
-          </div>
+          </AuswahlGruppe>
 
           {/* Parameters Customizer */}
           <div className="p-5 bg-white rounded-2xl border border-home-grau/30 space-y-4">

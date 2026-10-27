@@ -24,6 +24,7 @@ import {
 import inhalt from '@/content/bpinnovationen/BpInnovationen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 interface InnovationPreset {
   id: string;
@@ -363,9 +364,9 @@ export default function BpInnovationen() {
         {activeTab === 'werkstoffe' && (
           <div className="space-y-6 animate-in fade-in duration-300">
             {/* Preset Selector */}
-            <div className="flex flex-wrap gap-2">
+            <AuswahlGruppe label="Werkstoff-Voreinstellung" className="flex flex-wrap gap-2">
               {PRESETS.map((preset) => (
-                <button aria-pressed={selectedPresetId === preset.id}
+                <button {...alsOption(selectedPresetId === preset.id)}
                   key={preset.id}
                   onClick={() => setSelectedPresetId(preset.id)}
                   className={`px-3 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 border ${
@@ -383,7 +384,7 @@ export default function BpInnovationen() {
                   </span>
                 </button>
               ))}
-            </div>
+            </AuswahlGruppe>
 
             {/* Detailkarte des ausgewählten Werkstoffs */}
             <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">

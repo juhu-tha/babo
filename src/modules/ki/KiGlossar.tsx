@@ -18,6 +18,7 @@ import {
 import { useTabContext, TabId } from '@/src/contexts/TabContext';
 import inhalt from '@/content/ki/KiGlossar.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 export interface GlossarEntry {
   id: string;
@@ -168,12 +169,12 @@ export default function KiGlossar({ initialExpanded = true }: KiGlossarProps) {
           
           {/* SCHNELLAUSWAHL-CHIPS & SUCHE */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
-            <div className="flex flex-wrap gap-1.5">
+            <AuswahlGruppe label="Begriff" className="flex flex-wrap gap-1.5">
               {GLOSSAR_ENTRIES.map(entry => {
                 const IconComponent = entry.icon;
                 const isSelected = selectedTermId === entry.id;
                 return (
-                  <button aria-pressed={isSelected}
+                  <button {...alsOption(isSelected)}
                     key={entry.id}
                     onClick={() => setSelectedTermId(entry.id)}
                     className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 border cursor-pointer ${
@@ -187,7 +188,7 @@ export default function KiGlossar({ initialExpanded = true }: KiGlossarProps) {
                   </button>
                 );
               })}
-            </div>
+            </AuswahlGruppe>
 
             {/* KLEINES SUCHFELD */}
             <div className="relative min-w-[180px]">

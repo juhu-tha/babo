@@ -8,6 +8,7 @@ import inhalt from '@/content/formaenderungen/Formaenderungen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import Biegelinie, { BIEGELINIE_FUSS } from './formaenderungen/Biegelinie';
+import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 const REITER = [
   { id: 'tabelle', label: inhalt.texte.systematikTabelle, icon: Activity },
@@ -81,49 +82,49 @@ export default function Formaenderungen() {
           <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2"><MdText text={inhalt.texte.visualisierungDerVerformungsarten} /></h3>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="md:col-span-1 flex flex-col gap-2">
+            <ReiterLeiste label="Verformungsart" className="md:col-span-1 flex flex-col gap-2">
               <div className="font-bold text-sm text-text-main mb-2">Spannungsabhängig</div>
-              <button aria-pressed={activeVis === 'elastisch'} 
+              <button {...alsReiter(activeVis === 'elastisch', 'formaend-vis', 'elastisch')} 
                 onClick={() => setActiveVis('elastisch')}
                 className={`p-3 text-left rounded-lg text-sm transition-colors ${activeVis === 'elastisch' ? 'bg-shiraz text-white' : 'bg-off-white hover:bg-home-grau/20'}`}
               ><MdText text={inhalt.texte.elastischSofortReversibel} /></button>
-              <button aria-pressed={activeVis === 'plastisch'} 
+              <button {...alsReiter(activeVis === 'plastisch', 'formaend-vis', 'plastisch')} 
                 onClick={() => setActiveVis('plastisch')}
                 className={`p-3 text-left rounded-lg text-sm transition-colors ${activeVis === 'plastisch' ? 'bg-shiraz text-white' : 'bg-off-white hover:bg-home-grau/20'}`}
               ><MdText text={inhalt.texte.plastischSofortIrreversibel} /></button>
-              <button aria-pressed={activeVis === 'verzoegert'} 
+              <button {...alsReiter(activeVis === 'verzoegert', 'formaend-vis', 'verzoegert')} 
                 onClick={() => setActiveVis('verzoegert')}
                 className={`p-3 text-left rounded-lg text-sm transition-colors ${activeVis === 'verzoegert' ? 'bg-shiraz text-white' : 'bg-off-white hover:bg-home-grau/20'}`}
               ><MdText text={inhalt.texte.verzögertElastischZeitabhReversibel} /></button>
-              <button aria-pressed={activeVis === 'viskos'} 
+              <button {...alsReiter(activeVis === 'viskos', 'formaend-vis', 'viskos')} 
                 onClick={() => setActiveVis('viskos')}
                 className={`p-3 text-left rounded-lg text-sm transition-colors ${activeVis === 'viskos' ? 'bg-shiraz text-white' : 'bg-off-white hover:bg-home-grau/20'}`}
               ><MdText text={inhalt.texte.viskosZeitabhIrreversibel} /></button>
 
               <div className="font-bold text-sm text-text-main mt-4 mb-2">Spannungsunabhängig</div>
-              <button aria-pressed={activeVis === 'waerme'} 
+              <button {...alsReiter(activeVis === 'waerme', 'formaend-vis', 'waerme')} 
                 onClick={() => setActiveVis('waerme')}
                 className={`p-3 text-left rounded-lg text-sm transition-colors ${activeVis === 'waerme' ? 'bg-shiraz text-white' : 'bg-off-white hover:bg-home-grau/20'}`}
               >
                 Wärmedehnung
               </button>
-              <button aria-pressed={activeVis === 'feuchte'} 
+              <button {...alsReiter(activeVis === 'feuchte', 'formaend-vis', 'feuchte')} 
                 onClick={() => setActiveVis('feuchte')}
                 className={`p-3 text-left rounded-lg text-sm transition-colors ${activeVis === 'feuchte' ? 'bg-shiraz text-white' : 'bg-off-white hover:bg-home-grau/20'}`}
               >
                 Feuchtedehnung
               </button>
-              <button aria-pressed={activeVis === 'chemisch'} 
+              <button {...alsReiter(activeVis === 'chemisch', 'formaend-vis', 'chemisch')} 
                 onClick={() => setActiveVis('chemisch')}
                 className={`p-3 text-left rounded-lg text-sm transition-colors ${activeVis === 'chemisch' ? 'bg-shiraz text-white' : 'bg-off-white hover:bg-home-grau/20'}`}
               ><MdText text={inhalt.texte.chemischeDehnung} /></button>
-            </div>
+            </ReiterLeiste>
 
             <div className="md:col-span-3 bg-off-white rounded-xl border border-home-grau/30 p-8 flex flex-col items-center justify-center min-h-[400px] relative overflow-hidden">
               
               {/* Visualisierungen */}
               {activeVis === 'elastisch' && (
-                <div className="flex flex-col items-center gap-8 w-full max-w-md">
+                <div {...reiterPanel('formaend-vis', activeVis)} className="flex flex-col items-center gap-8 w-full max-w-md">
                   <p className="text-center text-sm text-text-main/80"><MdText text={inhalt.texte.elastischeVerformungTrittSofort} /></p>
                   <div className="relative w-full h-32 flex items-center justify-center">
                     <motion.div 
@@ -151,7 +152,7 @@ export default function Formaenderungen() {
               )}
 
               {activeVis === 'plastisch' && (
-                <div className="flex flex-col items-center gap-8 w-full max-w-md">
+                <div {...reiterPanel('formaend-vis', activeVis)} className="flex flex-col items-center gap-8 w-full max-w-md">
                   <p className="text-center text-sm text-text-main/80"><MdText text={inhalt.texte.plastischeVerformungTrittSofort} /></p>
                   <div className="relative w-full h-32 flex items-center justify-center">
                     <motion.div 
@@ -179,7 +180,7 @@ export default function Formaenderungen() {
               )}
 
               {activeVis === 'verzoegert' && (
-                <div className="flex flex-col items-center gap-8 w-full max-w-md">
+                <div {...reiterPanel('formaend-vis', activeVis)} className="flex flex-col items-center gap-8 w-full max-w-md">
                   <p className="text-center text-sm text-text-main/80"><MdText text={inhalt.texte.verzögertElastischeVerformungNimmt} /></p>
                   <div className="relative w-full h-32 flex items-center justify-center">
                     <motion.div 
@@ -207,7 +208,7 @@ export default function Formaenderungen() {
               )}
 
               {activeVis === 'viskos' && (
-                <div className="flex flex-col items-center gap-8 w-full max-w-md">
+                <div {...reiterPanel('formaend-vis', activeVis)} className="flex flex-col items-center gap-8 w-full max-w-md">
                   <p className="text-center text-sm text-text-main/80"><MdText text={inhalt.texte.viskoseVerformungFließenNimmt} /></p>
                   <div className="relative w-full h-32 flex items-center justify-center">
                     <motion.div 
@@ -235,7 +236,7 @@ export default function Formaenderungen() {
               )}
 
               {activeVis === 'waerme' && (
-                <div className="flex flex-col items-center gap-8 w-full max-w-md">
+                <div {...reiterPanel('formaend-vis', activeVis)} className="flex flex-col items-center gap-8 w-full max-w-md">
                   <p className="text-center text-sm text-text-main/80"><MdText text={inhalt.texte.wärmedehnungSpannungsunabhängigeReversib} /></p>
                   <div className="relative w-full h-32 flex items-center justify-center">
                     <motion.div 
@@ -254,8 +255,6 @@ export default function Formaenderungen() {
                     </motion.div>
                     <motion.div 
                       className="absolute -top-4 flex flex-col items-center"
-                      animate={{ opacity: [0, 1, 1, 0] }}
-                      transition={{ duration: 4, repeat: Infinity, times: [0, 0.4, 0.6, 1] }}
                     >
                       <div className="text-shiraz font-bold bg-white/80 px-2 rounded"><MdText text={inhalt.texte.temperatur} /></div>
                     </motion.div>
@@ -264,7 +263,7 @@ export default function Formaenderungen() {
               )}
 
               {activeVis === 'feuchte' && (
-                <div className="flex flex-col items-center gap-8 w-full max-w-md">
+                <div {...reiterPanel('formaend-vis', activeVis)} className="flex flex-col items-center gap-8 w-full max-w-md">
                   <p className="text-center text-sm text-text-main/80"><MdText text={inhalt.texte.feuchtedehnungQuellenSchwindenSpannungsu} /></p>
                   <div className="relative w-full h-32 flex items-center justify-center">
                     <motion.div 
@@ -282,8 +281,6 @@ export default function Formaenderungen() {
                     </motion.div>
                     <motion.div 
                       className="absolute -top-4 flex flex-col items-center"
-                      animate={{ opacity: [0, 1, 0, 0, 1, 0] }}
-                      transition={{ duration: 6, repeat: Infinity, times: [0, 0.2, 0.4, 0.6, 0.8, 1] }}
                     >
                       <div className="text-blue-600 font-bold bg-white/80 px-2 rounded"><MdText text={inhalt.texte.quellenSchwinden} /></div>
                     </motion.div>
@@ -292,7 +289,7 @@ export default function Formaenderungen() {
               )}
 
               {activeVis === 'chemisch' && (
-                <div className="flex flex-col items-center gap-8 w-full max-w-md">
+                <div {...reiterPanel('formaend-vis', activeVis)} className="flex flex-col items-center gap-8 w-full max-w-md">
                   <p className="text-center text-sm text-text-main/80"><MdText text={inhalt.texte.chemischeDehnungSpannungsunabhängigeMeis} /></p>
                   <div className="relative w-full h-32 flex items-center justify-center">
                     <motion.div 
@@ -311,8 +308,6 @@ export default function Formaenderungen() {
                     </motion.div>
                     <motion.div 
                       className="absolute -top-4 flex flex-col items-center"
-                      animate={{ opacity: [0, 1, 1, 0] }}
-                      transition={{ duration: 4, repeat: Infinity, times: [0, 0.5, 0.8, 1] }}
                     >
                       <div className="text-green-700 font-bold bg-white/80 px-2 rounded"><MdText text={inhalt.texte.chemischeReaktion} /></div>
                     </motion.div>

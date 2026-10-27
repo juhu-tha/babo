@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import inhalt from '@/content/spannbeton/BeiwerteKatalog.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 interface BeiwerterDetail {
   id: string;
@@ -360,8 +361,8 @@ export default function BeiwerteKatalog() {
 
       {/* Filterleiste */}
       <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
-        <div className="flex flex-wrap gap-1.5">
-          <button aria-pressed={selectedFilter === 'alle'}
+        <AuswahlGruppe label="Filter Kategorie" className="flex flex-wrap gap-1.5">
+          <button {...alsOption(selectedFilter === 'alle')}
             type="button"
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               selectedFilter === 'alle'
@@ -371,7 +372,7 @@ export default function BeiwerteKatalog() {
             onClick={() => setSelectedFilter('alle')}
           ><MdText text={inhalt.texte.alleBeiwerte} />{BEIWERTE_KATALOG.length})
           </button>
-          <button aria-pressed={selectedFilter === 'kriechen'}
+          <button {...alsOption(selectedFilter === 'kriechen')}
             type="button"
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               selectedFilter === 'kriechen'
@@ -380,7 +381,7 @@ export default function BeiwerteKatalog() {
             }`}
             onClick={() => setSelectedFilter('kriechen')}
           ><MdText text={inhalt.texte.kriechen} /></button>
-          <button aria-pressed={selectedFilter === 'schwinden'}
+          <button {...alsOption(selectedFilter === 'schwinden')}
             type="button"
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               selectedFilter === 'schwinden'
@@ -389,7 +390,7 @@ export default function BeiwerteKatalog() {
             }`}
             onClick={() => setSelectedFilter('schwinden')}
           ><MdText text={inhalt.texte.schwindenCs} /></button>
-          <button aria-pressed={selectedFilter === 'relaxation'}
+          <button {...alsOption(selectedFilter === 'relaxation')}
             type="button"
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               selectedFilter === 'relaxation'
@@ -398,7 +399,7 @@ export default function BeiwerteKatalog() {
             }`}
             onClick={() => setSelectedFilter('relaxation')}
           ><MdText text={inhalt.texte.stahlrelaxationPr} /></button>
-          <button aria-pressed={selectedFilter === 'mechanisch'}
+          <button {...alsOption(selectedFilter === 'mechanisch')}
             type="button"
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               selectedFilter === 'mechanisch'
@@ -407,7 +408,7 @@ export default function BeiwerteKatalog() {
             }`}
             onClick={() => setSelectedFilter('mechanisch')}
           ><MdText text={inhalt.texte.reibungSchlupfKW} /></button>
-          <button aria-pressed={selectedFilter === 'sicherheit'}
+          <button {...alsOption(selectedFilter === 'sicherheit')}
             type="button"
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               selectedFilter === 'sicherheit'
@@ -416,7 +417,7 @@ export default function BeiwerteKatalog() {
             }`}
             onClick={() => setSelectedFilter('sicherheit')}
           ><MdText text={inhalt.texte.sicherheitsbeiwertePR} /></button>
-        </div>
+        </AuswahlGruppe>
 
         <div className="w-full sm:w-64">
           <input

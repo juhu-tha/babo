@@ -19,6 +19,7 @@ import '@/src/lib/chartSetup';
 import { validateMechanicalTestIntegrity, exportToCSV, LabProtocolRecord } from '@/src/utils/labExportUtils';
 import { saveStoredLabProtocol } from '@/src/utils/studyStorage';
 import { BETONSTAHL, E_BETONSTAHL } from '@/src/data/kennwerte';
+import { AuswahlGruppe, alsOption } from '../ui/Auswahlgruppe';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -1123,7 +1124,8 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
                 {/* Diagram Mode Switcher & Chart Header */}
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                   <div className="flex flex-wrap items-center gap-1.5">
-                    <button aria-pressed={chartViewMode === 'sigma_eps'}
+                    <AuswahlGruppe label="Diagrammdarstellung" className="flex flex-wrap items-center gap-1.5">
+                    <button {...alsOption(chartViewMode === 'sigma_eps')}
                       onClick={() => setChartViewMode('sigma_eps')}
                       className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer ${
                         chartViewMode === 'sigma_eps'
@@ -1133,7 +1135,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
                     >
                       Spannung-Dehnung (σ – ε)
                     </button>
-                    <button aria-pressed={chartViewMode === 'f_delta'}
+                    <button {...alsOption(chartViewMode === 'f_delta')}
                       onClick={() => setChartViewMode('f_delta')}
                       className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer ${
                         chartViewMode === 'f_delta'
@@ -1143,9 +1145,10 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
                     >
                       Last-Verformung (F – ΔL)
                     </button>
+                    </AuswahlGruppe>
                     {testType === 'emodul' && (
-                      <div className="inline-flex rounded-lg border border-home-grau/30 p-0.5 bg-slate-50 text-xs">
-                        <button
+                      <AuswahlGruppe label="Hilfslinien" className="inline-flex rounded-lg border border-home-grau/30 p-0.5 bg-slate-50 text-xs">
+                        <button type="button" {...alsOption(!showAuxLines)}
                           onClick={() => setShowAuxLines(false)}
                           className={`px-2 py-0.5 rounded-md font-bold transition-all cursor-pointer ${
                             !showAuxLines ? 'bg-white text-shiraz shadow-xs' : 'text-text-main/60 hover:text-text-main'
@@ -1154,7 +1157,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
                         >
                           Ohne Linien
                         </button>
-                        <button
+                        <button type="button" {...alsOption(showAuxLines)}
                           onClick={() => setShowAuxLines(true)}
                           className={`px-2 py-0.5 rounded-md font-bold transition-all cursor-pointer ${
                             showAuxLines ? 'bg-emerald-700 text-white shadow-xs' : 'text-text-main/60 hover:text-text-main'
@@ -1163,7 +1166,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
                         >
                           Mit Hilfslinien
                         </button>
-                      </div>
+                      </AuswahlGruppe>
                     )}
                     <button
                       onClick={() => setShowGrid(!showGrid)}

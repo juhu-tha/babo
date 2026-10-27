@@ -6,6 +6,7 @@ import { Search, Info, Check, ShieldCheck, AlertTriangle, Layers, Activity, Slid
 import { METHOD_DIAGNOSE_DETAILS } from './diagnoseData';
 import inhalt from '@/content/bauwerksuntersuchung/PruefverfahrenKatalog.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 export default function PruefverfahrenKatalog() {
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'zfp' | 'minimalinvasiv' | 'zerstoerend'>('all');
@@ -42,8 +43,8 @@ export default function PruefverfahrenKatalog() {
 
         {/* Filter Toolbar */}
         <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-home-grau/20">
-          <div className="flex flex-wrap gap-1.5">
-            <button aria-pressed={selectedCategory === 'all'}
+          <AuswahlGruppe label="Filter Kategorie" className="flex flex-wrap gap-1.5">
+            <button {...alsOption(selectedCategory === 'all')}
               type="button"
               onClick={() => setSelectedCategory('all')}
               className={`px-3 py-1.5 rounded-xl font-bold text-xs transition-all cursor-pointer ${
@@ -54,7 +55,7 @@ export default function PruefverfahrenKatalog() {
             >
               Alle ({PRUEFVERFAHREN_LIST.length})
             </button>
-            <button aria-pressed={selectedCategory === 'zfp'}
+            <button {...alsOption(selectedCategory === 'zfp')}
               type="button"
               onClick={() => setSelectedCategory('zfp')}
               className={`px-3 py-1.5 rounded-xl font-bold text-xs transition-all cursor-pointer ${
@@ -63,7 +64,7 @@ export default function PruefverfahrenKatalog() {
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             ><MdText text={inhalt.texte.zerstörungsfreiZfp6} /></button>
-            <button aria-pressed={selectedCategory === 'minimalinvasiv'}
+            <button {...alsOption(selectedCategory === 'minimalinvasiv')}
               type="button"
               onClick={() => setSelectedCategory('minimalinvasiv')}
               className={`px-3 py-1.5 rounded-xl font-bold text-xs transition-all cursor-pointer ${
@@ -72,7 +73,7 @@ export default function PruefverfahrenKatalog() {
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             ><MdText text={inhalt.texte.minimalinvasiv4} /></button>
-            <button aria-pressed={selectedCategory === 'zerstoerend'}
+            <button {...alsOption(selectedCategory === 'zerstoerend')}
               type="button"
               onClick={() => setSelectedCategory('zerstoerend')}
               className={`px-3 py-1.5 rounded-xl font-bold text-xs transition-all cursor-pointer ${
@@ -81,7 +82,7 @@ export default function PruefverfahrenKatalog() {
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             ><MdText text={inhalt.texte.zerstörendLabor4} /></button>
-          </div>
+          </AuswahlGruppe>
 
           <div className="relative min-w-[200px]">
             <input

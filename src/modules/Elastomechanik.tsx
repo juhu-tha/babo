@@ -6,6 +6,7 @@ import { Slider } from '@/src/components/ui/Slider';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import inhalt from '@/content/elastomechanik/Elastomechanik.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 // List of preset materials for physical and mechanical properties comparison
 interface MaterialPreset {
@@ -114,8 +115,8 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
       )}
 
       {/* Tabs configuration inside layout */}
-      <div className="flex flex-wrap gap-2 border-b border-home-grau/20 pb-px">
-        <button aria-pressed={activeTab === 'spannungen'}
+      <ReiterLeiste label="Bereiche Elastomechanik" className="flex flex-wrap gap-2 border-b border-home-grau/20 pb-px">
+        <button {...alsReiter(activeTab === 'spannungen', 'elasto-bereich', 'spannungen')}
           onClick={() => setActiveTab('spannungen')}
           className={`px-4 py-2 text-xs font-semibold rounded-t-xl transition-all border-b-2 flex items-center gap-1.5 ${
             activeTab === 'spannungen'
@@ -124,7 +125,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
           }`}
         >
           <Weight className="w-4 h-4" /><MdText text={inhalt.texte.t1SpannungenStress} /></button>
-        <button aria-pressed={activeTab === 'dehnungen'}
+        <button {...alsReiter(activeTab === 'dehnungen', 'elasto-bereich', 'dehnungen')}
           onClick={() => setActiveTab('dehnungen')}
           className={`px-4 py-2 text-xs font-semibold rounded-t-xl transition-all border-b-2 flex items-center gap-1.5 ${
             activeTab === 'dehnungen'
@@ -133,7 +134,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
           }`}
         >
           <Ruler className="w-4 h-4" /><MdText text={inhalt.texte.t2DehnungenStrain} /></button>
-        <button aria-pressed={activeTab === 'emodul'}
+        <button {...alsReiter(activeTab === 'emodul', 'elasto-bereich', 'emodul')}
           onClick={() => setActiveTab('emodul')}
           className={`px-4 py-2 text-xs font-semibold rounded-t-xl transition-all border-b-2 flex items-center gap-1.5 ${
             activeTab === 'emodul'
@@ -142,11 +143,11 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
           }`}
         >
           <Sparkles className="w-4 h-4" /><MdText text={inhalt.texte.t3EModulElastizität} /></button>
-      </div>
+      </ReiterLeiste>
 
       {/* Tab 1: Spannungen (Stress) */}
       {activeTab === 'spannungen' && (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div {...reiterPanel('elasto-bereich', activeTab)} className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Slider & inputs column */}
           <div className="space-y-6">
             <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm space-y-4">
@@ -184,8 +185,8 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                 {/* Querschnitts-Geometriewähler */}
                 <div className="space-y-2 pt-2">
                   <label className="text-xs font-bold text-text-main/80 block"><MdText text={inhalt.texte.querschnittsgeometrieA} /></label>
-                  <div className="grid grid-cols-3 gap-2">
-                    <button aria-pressed={shapeInputType === 'rectangle'}
+                  <AuswahlGruppe label="Querschnittsgeometrie" className="grid grid-cols-3 gap-2">
+                    <button {...alsOption(shapeInputType === 'rectangle')}
                       onClick={() => setShapeInputType('rectangle')}
                       className={`py-1.5 px-3 text-xs font-semibold rounded-lg border text-center transition-all ${
                         shapeInputType === 'rectangle'
@@ -195,7 +196,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                     >
                       Rechteck
                     </button>
-                    <button aria-pressed={shapeInputType === 'circle'}
+                    <button {...alsOption(shapeInputType === 'circle')}
                       onClick={() => setShapeInputType('circle')}
                       className={`py-1.5 px-3 text-xs font-semibold rounded-lg border text-center transition-all ${
                         shapeInputType === 'circle'
@@ -205,7 +206,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                     >
                       Kreis
                     </button>
-                    <button aria-pressed={shapeInputType === 'direct'}
+                    <button {...alsOption(shapeInputType === 'direct')}
                       onClick={() => setShapeInputType('direct')}
                       className={`py-1.5 px-3 text-xs font-semibold rounded-lg border text-center transition-all ${
                         shapeInputType === 'direct'
@@ -213,7 +214,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                           : 'border-slate-200 text-slate-700 hover:bg-slate-50'
                       }`}
                     ><MdText text={inhalt.texte.flächeDirekt} /></button>
-                  </div>
+                  </AuswahlGruppe>
                 </div>
 
                 {/* Inputs responsive based on selected shape geometry */}
@@ -343,7 +344,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
 
       {/* Tab 2: Dehnungen (Strain) */}
       {activeTab === 'dehnungen' && (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div {...reiterPanel('elasto-bereich', activeTab)} className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Slider & inputs column */}
           <div className="space-y-6">
             <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm space-y-4">
@@ -468,7 +469,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
 
       {/* Tab 3: E-Modul & Elastizität */}
       {activeTab === 'emodul' && (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div {...reiterPanel('elasto-bereich', activeTab)} className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Preset selection & custom Emodul section */}
           <div className="space-y-6">
             <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm space-y-4">

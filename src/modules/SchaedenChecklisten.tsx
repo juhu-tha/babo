@@ -12,6 +12,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/schaedenchecklisten/SchaedenChecklisten.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 interface ChecklistItem {
   id: string;
@@ -241,13 +242,13 @@ export default function SchaedenChecklisten() {
         </div>
 
         {/* Sub-Tabs Selector */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 mt-4">
+        <ReiterLeiste label="Checkliste" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 mt-4">
           {Object.values(INITIAL_CHECKLISTS).map((sec) => {
             const Icon = sec.icon;
             const isActive = activeSubTab === sec.id;
 
             return (
-              <button aria-pressed={isActive}
+              <button {...alsReiter(isActive, 'schaeden-checkliste', sec.id)}
                 key={sec.id}
                 onClick={() => setActiveSubTab(sec.id)}
                 className={`p-3 rounded-xl border text-left flex flex-col justify-between transition-all duration-150 cursor-pointer shadow-xs ${
@@ -268,11 +269,11 @@ export default function SchaedenChecklisten() {
               </button>
             );
           })}
-        </div>
+        </ReiterLeiste>
       </div>
 
       {/* Items Section */}
-      <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
+      <div {...reiterPanel('schaeden-checkliste', activeSubTab)} className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 space-y-4">
         <div className="flex items-center justify-between border-b border-home-grau/20 pb-3">
           <div>
             <h3 className="font-bold text-base text-slate-900">{currentSection.title}</h3>

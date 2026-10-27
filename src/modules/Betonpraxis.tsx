@@ -30,6 +30,7 @@ import { ExpositionsKurzkarte } from '@/src/components/ui/ExpositionsKurzkarte';
 import { formatDeZahl, formatDeWert, formatDeTeXWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/betonpraxis/Betonpraxis.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 // Mindestdauer der Nachbehandlung: zentrale Werte nach DIN 1045-3 (normParams)
 const curingTable: Record<string, Record<string, number>> = {
@@ -748,8 +749,8 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                 {/* 1. Exposures */}
                 <div className="space-y-1.5">
                   <label className="text-xs font-bold text-text-main block"><MdText text={inhalt.texte.t1ExpositionsklasseSchutzbedürfnis} /></label>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-                    <button aria-pressed={curingExposure === 'x0_xc1'}
+                  <AuswahlGruppe label="Expositionsklasse" className="grid grid-cols-1 md:grid-cols-3 gap-2">
+                    <button {...alsOption(curingExposure === 'x0_xc1')}
                       type="button"
                       onClick={() => setCuringExposure('x0_xc1')}
                       className={`p-2.5 text-xs font-semibold rounded-lg border transition-all ${
@@ -758,7 +759,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                           : 'bg-white text-text-main/70 border-home-grau/30 hover:bg-home-grau/5'
                       }`}
                     ><MdText text={inhalt.texte.x0Xc1TrockenKein} /></button>
-                    <button aria-pressed={curingExposure === 'standard'}
+                    <button {...alsOption(curingExposure === 'standard')}
                       type="button"
                       onClick={() => setCuringExposure('standard')}
                       className={`p-2.5 text-xs font-semibold rounded-lg border transition-all ${
@@ -767,7 +768,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                           : 'bg-white text-text-main/70 border-home-grau/30 hover:bg-home-grau/5'
                       }`}
                     ><MdText text={inhalt.texte.alleÜbrigenKlassen} /></button>
-                    <button aria-pressed={curingExposure === 'erhoeht'}
+                    <button {...alsOption(curingExposure === 'erhoeht')}
                       type="button"
                       onClick={() => setCuringExposure('erhoeht')}
                       className={`p-2.5 text-xs font-semibold rounded-lg border transition-all ${
@@ -776,7 +777,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                           : 'bg-white text-text-main/70 border-home-grau/30 hover:bg-home-grau/5'
                       }`}
                     ><MdText text={inhalt.texte.xmVerschleiß} /></button>
-                  </div>
+                  </AuswahlGruppe>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

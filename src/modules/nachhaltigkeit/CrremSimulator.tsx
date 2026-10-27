@@ -3,6 +3,7 @@ import { formatDeWert, formatDeZahl } from '@/src/utils/numberFormat';
 import type { Dispatch, SetStateAction } from 'react';
 import inhalt from '@/content/nachhaltigkeit/CrremSimulator.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 
 interface CrremSimulatorProps {
   crremBuildingType: "office" | "residential";
@@ -47,8 +48,8 @@ export default function CrremSimulator({ crremBuildingType, crremCurrentGwp, crr
         {/* Building Type Selector */}
         <div>
           <label className="block text-xs font-bold text-slate-900 mb-2">Immobilien-Assetklasse:</label>
-          <div className="grid grid-cols-2 gap-3">
-            <button aria-pressed={crremBuildingType === 'office'}
+          <AuswahlGruppe label="Assetklasse" className="grid grid-cols-2 gap-3">
+            <button {...alsOption(crremBuildingType === 'office')}
               onClick={() => setCrremBuildingType('office')}
               className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                       crremBuildingType === 'office'
@@ -60,7 +61,7 @@ export default function CrremSimulator({ crremBuildingType, crremCurrentGwp, crr
               <strong className="block text-xs"><MdText text={inhalt.texte.büroimmobilieCommercialOffice} /></strong>
               <span className="text-[10px] text-slate-400 font-normal"><MdText text={inhalt.texte.crremBasispfad52Kg} /></span>
             </button>
-            <button aria-pressed={crremBuildingType === 'residential'}
+            <button {...alsOption(crremBuildingType === 'residential')}
               onClick={() => setCrremBuildingType('residential')}
               className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                       crremBuildingType === 'residential'
@@ -72,7 +73,7 @@ export default function CrremSimulator({ crremBuildingType, crremCurrentGwp, crr
               <strong className="block text-xs"><MdText text={inhalt.texte.wohngebäudeMultiFamilyResidential} /></strong>
               <span className="text-[10px] text-slate-400 font-normal"><MdText text={inhalt.texte.crremBasispfad35Kg} /></span>
             </button>
-          </div>
+          </AuswahlGruppe>
         </div>
 
         {/* Slider Current GWP Intensity */}

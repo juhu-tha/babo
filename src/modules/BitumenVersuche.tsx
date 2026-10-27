@@ -5,6 +5,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import inhalt from '@/content/bitumenversuche/BitumenVersuche.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 type BitumenSorte = '160/220' | '70/100' | '50/70' | '30/45' | '20/30' | 'PmB 25/55-55';
 
@@ -85,8 +86,8 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
         </div>
 
         {/* Tab-Navigation */}
-        <div className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
-          <button aria-pressed={activeTab === 'steckbrief'}
+        <ReiterLeiste label="Bereiche Bitumen" className="flex flex-wrap gap-2 pb-3 border-b border-home-grau/20">
+          <button {...alsReiter(activeTab === 'steckbrief', 'bitumen-bereich', 'steckbrief')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'steckbrief' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -96,7 +97,7 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
           >
             <BookOpen size={16} /> Steckbrief
           </button>
-          <button aria-pressed={activeTab === 'versuche'}
+          <button {...alsReiter(activeTab === 'versuche', 'bitumen-bereich', 'versuche')}
             className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
               activeTab === 'versuche' 
                 ? 'bg-shiraz text-white border-shiraz shadow-md' 
@@ -105,17 +106,17 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
             onClick={() => setActiveTab('versuche')}
           >
             <Activity size={16} /><MdText text={inhalt.texte.virtuelleVersuchePenetrationEp} /></button>
-        </div>
+        </ReiterLeiste>
 
         {activeTab === 'steckbrief' && (
-          <div className="animate-in fade-in duration-300">
+          <div {...reiterPanel('bitumen-bereich', activeTab)} className="animate-in fade-in duration-300">
             <BaustoffProfil materialKey="bitumen" />
           </div>
         )}
       </div>
 
       {activeTab === 'versuche' && (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 animate-in fade-in duration-300">
+        <div {...reiterPanel('bitumen-bereich', activeTab)} className="grid grid-cols-1 lg:grid-cols-12 gap-8 animate-in fade-in duration-300">
           <div className="lg:col-span-4 flex flex-col gap-6">
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-6">
               <h3 className="text-lg font-bold text-text-main border-b border-home-grau/30 pb-2"><MdText text={inhalt.texte.t1Konfiguration} /></h3>
@@ -139,8 +140,8 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
 
             <div className="space-y-3 pt-4 border-t border-home-grau/30">
                <label className="text-sm font-bold text-text-main">Versuchsart</label>
-               <div className="grid grid-cols-2 gap-2">
-                 <button aria-pressed={activeTest === 'penetration'}
+               <AuswahlGruppe label="Versuchsart" className="grid grid-cols-2 gap-2">
+                 <button {...alsOption(activeTest === 'penetration')}
                    onClick={() => setActiveTest('penetration')}
                    disabled={testStatus === 'running'}
                    className={`py-3 px-2 text-xs font-medium rounded-lg border transition-colors flex flex-col items-center gap-2 ${
@@ -152,7 +153,7 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
                    <ArrowDownToLine size={18} />
                    Nadelpenetration
                  </button>
-                 <button aria-pressed={activeTest === 'ruk'}
+                 <button {...alsOption(activeTest === 'ruk')}
                    onClick={() => setActiveTest('ruk')}
                    disabled={testStatus === 'running'}
                    className={`py-3 px-2 text-xs font-medium rounded-lg border transition-colors flex flex-col items-center gap-2 ${
@@ -164,7 +165,7 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
                    <Thermometer size={18} />
                    Erweichungspunkt
                  </button>
-               </div>
+               </AuswahlGruppe>
             </div>
 
             <div className="pt-4 border-t border-home-grau/30 flex gap-2">

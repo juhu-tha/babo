@@ -13,6 +13,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/rueckbauchecklisten/RueckbauChecklisten.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 // Define structures for checklists
 interface ChecklistItem {
@@ -252,13 +253,13 @@ export default function RueckbauChecklisten() {
       </div>
 
       {/* Sub-Tabs Selector (Button wieder highlighted mit shiraz) */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
+      <ReiterLeiste label="Checkliste" className="grid grid-cols-1 md:grid-cols-4 gap-2">
         {Object.values(INITIAL_CHECKLISTS).map((sec) => {
           const Icon = sec.icon;
           const isActive = activeSubTab === sec.id;
 
           return (
-            <button aria-pressed={isActive}
+            <button {...alsReiter(isActive, 'rueckbau-checkliste', sec.id)}
               key={sec.id}
               onClick={() => setActiveSubTab(sec.id)}
               className={`p-3 rounded-lg border text-left flex flex-col justify-between transition-all duration-150 cursor-pointer shadow-xs ${
@@ -283,10 +284,10 @@ export default function RueckbauChecklisten() {
             </button>
           );
         })}
-      </div>
+      </ReiterLeiste>
 
       {/* Main Checklist Card & Controls */}
-      <div className="bg-white rounded-xl border border-home-grau/20 shadow-xs overflow-hidden min-h-[350px] flex flex-col justify-between">
+      <div {...reiterPanel('rueckbau-checkliste', activeSubTab)} className="bg-white rounded-xl border border-home-grau/20 shadow-xs overflow-hidden min-h-[350px] flex flex-col justify-between">
         
         {/* Section Title */}
         <div className="p-4 border-b border-home-grau/10 bg-off-white/50">

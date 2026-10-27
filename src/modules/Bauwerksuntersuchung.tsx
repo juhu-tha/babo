@@ -13,6 +13,7 @@ import type { TabId } from '@/src/contexts/TabContext';
 import inhalt from '@/content/bauwerksuntersuchung/Bauwerksuntersuchung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 const ZfP = React.lazy(() => import('./ZfP'));
 
 type UntersuchungReiter = 'diagnose' | 'probenahme' | 'interpretation' | 'katalog' | 'zfp';
@@ -121,12 +122,12 @@ export default function Bauwerksuntersuchung() {
             {/* Linke Auswahlliste */}
             <div className="lg:col-span-5 flex flex-col gap-3">
               <h3 className="text-xs font-bold text-gray-550 uppercase tracking-widest pl-1"><MdText text={inhalt.texte.phasenDerTragwerksdiagnose} /></h3>
-              <div className="flex flex-col gap-2.5">
+              <AuswahlGruppe label="Phase der Tragwerksdiagnose" className="flex flex-col gap-2.5">
                 {stepsDetails.map((step) => {
                   const StepIcon = step.icon;
                   const isActive = activeStep === step.id;
                   return (
-                    <button aria-pressed={isActive}
+                    <button {...alsOption(isActive)}
                       key={step.id}
                       onClick={() => setActiveStep(step.id)}
                       className={`w-full p-4 rounded-xl border text-left transition-all flex items-center gap-3.5 relative ${
@@ -150,7 +151,7 @@ export default function Bauwerksuntersuchung() {
                     </button>
                   );
                 })}
-              </div>
+              </AuswahlGruppe>
             </div>
 
             {/* Rechte Detailanzeige */}

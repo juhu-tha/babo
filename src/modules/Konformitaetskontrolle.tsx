@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import inhalt from '@/content/konformitaetskontrolle/Konformitaetskontrolle.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 interface ConcreteClass {
   name: string;
@@ -431,22 +432,22 @@ export default function Konformitaetskontrolle() {
               <div className="grid grid-cols-2 gap-2 mt-3 text-xs">
                 <div>
                   <span className="font-semibold text-text-main/80 block mb-1">Prüfkörper-Form:</span>
-                  <div className="flex rounded-lg border border-home-grau/35 overflow-hidden bg-white">
-                    <button aria-pressed={specimenType === 'cube'}
+                  <AuswahlGruppe label="Prüfkörper-Form" className="flex rounded-lg border border-home-grau/35 overflow-hidden bg-white">
+                    <button {...alsOption(specimenType === 'cube')}
                       type="button"
                       onClick={() => setSpecimenType('cube')}
                       className={`flex-1 py-1.5 text-center font-bold font-mono transition-all text-xs ${
                         specimenType === 'cube' ? 'bg-shiraz text-white' : 'text-slate-600'
                       }`}
                     ><MdText text={inhalt.texte.würfelFCkCube} /></button>
-                    <button aria-pressed={specimenType === 'cylinder'}
+                    <button {...alsOption(specimenType === 'cylinder')}
                       type="button"
                       onClick={() => setSpecimenType('cylinder')}
                       className={`flex-1 py-1.5 text-center font-bold font-mono transition-all text-xs ${
                         specimenType === 'cylinder' ? 'bg-shiraz text-white' : 'text-slate-600'
                       }`}
                     ><MdText text={inhalt.texte.zylinderFCkCyl} /></button>
-                  </div>
+                  </AuswahlGruppe>
                 </div>
 
                 <div>
