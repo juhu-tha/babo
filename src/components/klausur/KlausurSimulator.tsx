@@ -4,7 +4,8 @@ import {
   Trophy, Clock, AlertTriangle, CheckCircle2, XCircle, ArrowRight, ArrowLeft, 
   RotateCcw, Bookmark, BarChart3, BookOpen, FileText, Check, ListChecks
 } from 'lucide-react';
-import { QUIZ_CATEGORIES, QuizQuestion, QuizCategory } from '@/src/data/quizModell';
+import { QUIZ_CATEGORIES, QuizQuestion, QuizCategory, anzahlFreigegeben } from '@/src/data/quizModell';
+import { FreigabeEtikett } from '@/src/components/quiz/FreigabeEtikett';
 import { useAlleFragen } from '@/src/data/quizLader';
 import { mischeAntworten } from '@/src/utils/mischeAntworten';
 import { KlausurResult, saveKlausurResult, getKlausurHistory } from '@/src/utils/studyStorage';
@@ -300,7 +301,7 @@ export const KlausurSimulator: React.FC<KlausurSimulatorProps> = ({ routen, tite
 
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-home-grau/20">
             <div className="text-xs text-text-main/60">
-              Verfügbarer Aufgabenpool: <strong>{alleFragen ? alleFragen.length : '…'} Fragen</strong>{alleFragen && <> (davon {alleFragen.filter(q => q.verified !== false).length} fachlich geprüft)</>}
+              Verfügbarer Aufgabenpool: <strong>{alleFragen ? alleFragen.length : '…'} Fragen</strong>{alleFragen && <> (davon {formatDeWert(anzahlFreigegeben(alleFragen))} fachlich freigegeben; ungeprüfte Fragen sind gekennzeichnet)</>}
             </div>
             <button
               onClick={startExam}
@@ -454,7 +455,7 @@ export const KlausurSimulator: React.FC<KlausurSimulatorProps> = ({ routen, tite
         {/* Active Question Box */}
         <div className="bg-white p-6 sm:p-8 rounded-3xl border border-home-grau/30 shadow-sm flex flex-col gap-6">
           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-home-grau/20 pb-4">
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <span className="text-[11px] font-bold uppercase tracking-wider bg-shiraz/10 text-shiraz px-2.5 py-1 rounded-lg">
                 {currentQuestion.categoryLabel}
               </span>
@@ -463,6 +464,7 @@ export const KlausurSimulator: React.FC<KlausurSimulatorProps> = ({ routen, tite
                   {currentQuestion.normRef}
                 </span>
               )}
+              <FreigabeEtikett frage={currentQuestion} />
             </div>
             {currentQuestion.difficulty && (
               <span className="text-[10px] text-text-main/50 uppercase font-bold">

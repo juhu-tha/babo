@@ -450,7 +450,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       recycling: "Ausgezeichnet recyclingfähig. Altzink aus Dächern und Rinnen wird im Zuge des selektiven Rückbaus sauber separiert und zu nahezu 100% in Sekundärschmelzhütten zur Herstellung neuer Bänder oder Zinkoxiden verarbeitet.",
       besonderheiten: "Vermeiden Sie beim Dachaufbau stehendes Wasser an der Unterseite von Titanzinkblechen. Setzen Sie strukturierte, diffusionsoffene Trennlagen/Strukturmatten ein, damit die Blechunterseite hinterlüftet ist und Weißrostbildung verhindert wird.",
       innovationen: "Werkseitig mechanisch-chemisch vorpatinierte Titanzinkbleche (z.B. in Schiefergrau oder Anthrazit), die von Tag eins an die gewünschte, homogene Schutzoptik aufweisen und keine unregelmäßige Anfangshydrolyse zeigen.",
-      historie: "Feingewalztes Zinkblech wurde ab ca. 1805 in Mitteleuropa herstellt und schützte Kirchen- und Palastdächer. Die Legierung mit Titan und Kupfer (Titanzink) im Jahr 1966 überwand die unerwünschte materialeigene Kriechneigung des reinen Zinks vollends und etablierte das Material dauerhaft an der anspruchsvollen Gebäudehülle."
+      historie: "Feingewalztes Zinkblech wurde ab ca. 1805 in Mitteleuropa hergestellt und schützte Kirchen- und Palastdächer. Die Legierung mit Titan und Kupfer (Titanzink) im Jahr 1966 überwand die unerwünschte materialeigene Kriechneigung des reinen Zinks vollends und etablierte das Material dauerhaft an der anspruchsvollen Gebäudehülle."
     }
   },
   blei: {

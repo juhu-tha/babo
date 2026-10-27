@@ -31,6 +31,15 @@ bestehen), *ersetzen* (vor Aktivierung durch eigenes oder frei lizenziertes Mate
 | Externe Inhalte (Wikipedia ≈ 700 Links, YouTube 11, Hersteller-/Verbandsseiten) | Verlinkung | – | kompatibel (nur Links, keine eingebetteten Inhalte; keine iframes) |
 | Marken/Logos von Siegeln und Zertifikaten (DGNB, QNG, Blauer Engel, LEED …) | nur als Text genannt | Markenrecht | ausnehmen (Namensnennung zulässig; keine Logos im Repo) |
 
+**Drittlizenzliste in der App (Nachtrag 27.10.2026):** Die Komponenten aus dieser Tabelle stehen als
+`DRITTKOMPONENTEN` in `src/data/lizenzTexte.ts` und erscheinen im Impressum („Verwendete Komponenten Dritter“,
+Tabelle mit Verwendung, SPDX-Lizenz und Links) – unabhängig von `LIZENZ_AKTIV`, weil sie die Lizenzen Dritter
+betrifft, nicht die Projektlizenz. `tests/lizenz.test.ts` gleicht jede Lizenzangabe mit
+`node_modules/<paket>/package.json` ab und meldet Laufzeitpakete aus `package.json`, die in der Liste fehlen
+(ausgenommen reine Bau-/Typpakete). `dotenv` steht in `package.json`, wird aber derzeit nirgends importiert und
+ist deshalb nicht gelistet. Offen bleibt der Mangel bei Inter (OFL-Text liegt den Schriftdaten nicht bei, siehe
+oben) – die Liste verlinkt den OFL-Text, ersetzt aber nicht die Ablage von `OFL.txt` vor der Aktivierung.
+
 ## 2. Normen und Regelwerke (DIN-/CEN-Urheberrecht!)
 
 Normen sind urheberrechtlich geschützt (DIN Media/Beuth, CEN/ISO); das gilt nach § 5 Abs. 3 UrhG auch für

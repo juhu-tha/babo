@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import { h, rendere, text, kompakt, sicher, testlauf } from './hilfen/komponenten';
 const { LicenseNotice } = await import('../src/components/ui/LicenseNotice');
-const { LIZENZ_AKTIV, LIZENZ, NAMENSNENNUNG, IMPRESSUM_URHEBERRECHT_OFFEN } = await import('../src/data/lizenzTexte');
+const { LIZENZ_AKTIV, LIZENZ, NAMENSNENNUNG, IMPRESSUM_URHEBERRECHT_OFFEN, DRITTKOMPONENTEN, LIZENZ_LINKS } = await import('../src/data/lizenzTexte');
 
 const t = testlauf('Lizenzhinweis');
 
@@ -37,6 +37,34 @@ t.test('Lizenzdateien: vor der Freigabe nur Entwurf, danach im Wurzelverzeichnis
   }
   const zenodo = JSON.parse(fs.readFileSync(`${ort}/.zenodo.json`, 'utf8')) as { creators: { name: string; affiliation: string }[]; license: string };
   sicher(zenodo.creators[0].name === 'Huber, Jürgen' && zenodo.creators[0].affiliation === 'Technische Hochschule Augsburg', 'Zenodo-Urheber falsch');
+});
+
+t.test('Drittlizenzliste: Lizenz je Paket wie in node_modules/<paket>/package.json, alle Laufzeitpakete erfasst', () => {
+  const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8')) as { dependencies: Record<string, string>; devDependencies?: Record<string, string> };
+  const abh = { ...pkg.dependencies, ...(pkg.devDependencies ?? {}) };
+  const erfasst = new Set<string>();
+  for (const k of DRITTKOMPONENTEN) {
+    sicher(!!LIZENZ_LINKS[k.lizenz], `${k.name}: kein Link zur Lizenz ${k.lizenz}`);
+    sicher(/^https:\/\//.test(k.url), `${k.name}: Projektseite fehlt`);
+    for (const p of k.pakete ?? []) {
+      erfasst.add(p);
+      sicher(p in abh, `${k.name}: Paket ${p} steht nicht in package.json`);
+      const pfad = `node_modules/${p}/package.json`;
+      if (!fs.existsSync(pfad)) continue; // ohne Installation nur Liste prüfen
+      const lizenz = (JSON.parse(fs.readFileSync(pfad, 'utf8')) as { license?: string }).license;
+      sicher(lizenz === k.lizenz, `${k.name}: ${p} hat Lizenz ${lizenz}, Liste sagt ${k.lizenz}`);
+    }
+  }
+  // nur zum Bauen/Prüfen oder Typen, nicht ausgeliefert (dotenv: derzeit nirgends importiert)
+  const nurBau = /^(@types\/|@vitejs\/|@tailwindcss\/vite$|autoprefixer$|esbuild$|tsx$|typescript$|vite$|dotenv$|playwright|@axe-core\/|axe-core$)/;
+  for (const p of Object.keys(abh)) sicher(erfasst.has(p) || nurBau.test(p), `Paket ${p} fehlt in DRITTKOMPONENTEN (src/data/lizenzTexte.ts)`);
+  sicher(DRITTKOMPONENTEN.some(k => k.name.startsWith('Inter') && k.lizenz === 'OFL-1.1'), 'Schrift Inter (OFL 1.1) fehlt');
+});
+t.test('Impressum zeigt die Drittlizenzliste unabhängig von LIZENZ_AKTIV', () => {
+  const src = fs.readFileSync('src/modules/Impressum.tsx', 'utf8');
+  const i = src.indexOf('<Drittkomponenten />');
+  sicher(i > 0, 'Drittkomponenten fehlt im Impressum');
+  sicher(!/LIZENZ_AKTIV\s*&&\s*<Drittkomponenten/.test(src), 'Drittlizenzliste darf nicht an LIZENZ_AKTIV hängen');
 });
 
 t.ende();
