@@ -42383,35 +42383,36 @@
     "topic": "Bemessungsdruckfestigkeit",
     "difficulty": "Basis",
     "normRef": "DIN EN 1996-3",
-    "question": "Für Kalksandstein-Mauerwerk setzt das Modul f_k = 5,6 N/mm² und γ_M = 1,5 an. Welcher Bemessungswert f_d ergibt sich?",
+    "question": "Für Kalksandstein-Mauerwerk setzt das Modul f_k = 5,6 N/mm², den Dauerstandsbeiwert ζ = 0,85 und γ_M = 1,5 an. Welcher Bemessungswert f_d ergibt sich?",
     "options": [
-      "f_d = 8,40 N/mm²",
-      "f_d = 5,60 N/mm²",
-      "f_d = 4,87 N/mm²",
-      "f_d = 3,73 N/mm²"
+      "f_d = 7,14 N/mm²",
+      "f_d = 3,73 N/mm²",
+      "f_d = 4,14 N/mm²",
+      "f_d = 3,17 N/mm²"
     ],
     "correctIdx": 3,
-    "explanation": "f_d = f_k/γ_M = 5,6/1,5 = 3,73 N/mm². Der Teilsicherheitsbeiwert reduziert die charakteristische Festigkeit.",
+    "explanation": "f_d = ζ · f_k/γ_M = 0,85 · 5,6/1,5 = 3,17 N/mm². ζ = 0,85 erfasst die Langzeitwirkung der Last (Dauerstand), γ_M = 1,5 ist der Teilsicherheitsbeiwert für Mauerwerk.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "Hier wurde mit γ_M multipliziert statt dividiert.",
-      "Das ist die charakteristische Festigkeit f_k ohne Teilsicherheitsbeiwert.",
+      "Hier fehlt der Dauerstandsbeiwert ζ = 0,85; f_k/γ_M allein ergibt 3,73 N/mm².",
       "γ = 1,15 ist der Teilsicherheitsbeiwert für Betonstahl, nicht für Mauerwerk.",
       ""
     ],
     "gapAnalysis": {
       "topic": "Bemessungsdruckfestigkeit",
-      "misconception": "Der Teilsicherheitsbeiwert wird falsch angewendet oder mit dem für Stahl verwechselt.",
-      "coreRule": "f_d = f_k/γ_M mit γ_M = 1,5 (vereinfachtes Verfahren im Modul).",
+      "misconception": "Dauerstandsbeiwert ζ oder Teilsicherheitsbeiwert γ_M werden vergessen oder falsch angewendet.",
+      "coreRule": "f_d = ζ · f_k/γ_M mit ζ = 0,85 und γ_M = 1,5 (DIN EN 1996-3/NA, wie im Modul).",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Schritt 1: Rechnerische Mauerwerksfestigkeit f_d“ im Modul Mauerwerk: Tragfähigkeit noch einmal durch.",
       "targetModuleTab": "rechnung_mauerwerk",
       "targetModuleLabel": "Mauerwerk: Tragfähigkeit"
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-27",
+      "ergebnis": "korrigiert",
+      "hinweis": "Gutachten 27.10.2026: Rechnung auf f_d = ζ · f_k/γ_M mit ζ = 0,85 umgestellt wie im Modul (src/calc/mauerwerk.ts); Werte und Distraktoren mit dem Rechenkern neu gerechnet, abgesichert in tests/quizRechenfragen.test.ts."
     }
   },
   {
@@ -42425,33 +42426,34 @@
     "normRef": "DIN EN 1996-3",
     "question": "Eine zweiseitig gehaltene Wand mit h_ef = 2,75 m hat eine Dicke von 17,5 cm. Welche Schlankheit ergibt sich, und ist der Grenzwert des vereinfachten Verfahrens eingehalten?",
     "options": [
-      "h_ef/t = 15,7 ≤ 25, eingehalten",
-      "h_ef/t = 0,16 ≤ 25, eingehalten",
+      "h_ef/t = 15,7 ≤ 27, eingehalten",
+      "h_ef/t = 0,16 ≤ 27, eingehalten",
       "h_ef/t = 15,7 > 12, nicht eingehalten",
-      "h_ef/t = 6,4 ≤ 25, eingehalten"
+      "h_ef/t = 6,4 ≤ 27, eingehalten"
     ],
     "correctIdx": 0,
-    "explanation": "h_ef/t = 2,75 m/0,175 m = 15,71. Das vereinfachte Verfahren erlaubt höchstens 25; der Wert ist eingehalten.",
+    "explanation": "h_ef/t = 2,75 m/0,175 m = 15,71. Die Schlankheit darf nach DIN EN 1996-1-1, 5.5.1.4 höchstens 27 betragen; der Wert ist eingehalten.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "",
       "Hier wurden Meter und Zentimeter gemischt; die Schlankheit ist dimensionslos und deutlich größer.",
-      "Der Grenzwert im vereinfachten Verfahren des Moduls beträgt 25, nicht 12.",
+      "Der Grenzwert der Schlankheit beträgt im Modul 27, nicht 12.",
       "Hier wurde t/h_ef statt h_ef/t gebildet."
     ],
     "gapAnalysis": {
       "topic": "Schlankheit",
       "misconception": "Einheiten werden gemischt oder der Grenzwert falsch erinnert.",
-      "coreRule": "Schlankheit = h_ef/t ≤ 25 (vereinfachtes Verfahren).",
+      "coreRule": "Schlankheit = h_ef/t ≤ 27 (DIN EN 1996-1-1, 5.5.1.4).",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Schritt 2: Wirksame Schlankheit bestimmen“ im Modul Mauerwerk: Tragfähigkeit noch einmal durch.",
       "targetModuleTab": "rechnung_mauerwerk",
       "targetModuleLabel": "Mauerwerk: Tragfähigkeit"
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-27",
+      "ergebnis": "korrigiert",
+      "hinweis": "Gutachten 27.10.2026: Grenzschlankheit 25 → 27 wie im Modul (SCHLANKHEIT_MAX in src/calc/mauerwerk.ts, DIN EN 1996-1-1, 5.5.1.4); abgesichert in tests/quizRechenfragen.test.ts."
     }
   },
   {
@@ -42503,26 +42505,26 @@
     "topic": "Traglastwiderstand",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1996-3",
-    "question": "Für die KS-Wand gilt Φ = 0,578, t = 0,175 m und f_d = 3,73 N/mm². Welcher Traglastwiderstand N_Rd je Meter Wandlänge ergibt sich?",
+    "question": "Für die KS-Wand gilt Φ = 0,578, t = 175 mm und f_d = ζ · f_k/γ_M = 3,17 N/mm². Welcher Traglastwiderstand N_Rd je Meter Wandlänge ergibt sich?",
     "options": [
-      "N_Rd ≈ 653 kN/m",
+      "N_Rd ≈ 555 kN/m",
+      "N_Rd ≈ 321 kN/m",
       "N_Rd ≈ 378 kN/m",
-      "N_Rd ≈ 567 kN/m",
-      "N_Rd ≈ 37,8 kN/m"
+      "N_Rd ≈ 32,1 kN/m"
     ],
     "correctIdx": 1,
-    "explanation": "N_Rd = Φ · t · f_d = 0,578 · 0,175 m · 3,73 MN/m² · 1000 = 377,9 kN/m. Bei N_Ed = 90 kN/m ist die Wand zu rund 24 % ausgelastet.",
+    "explanation": "N_Rd = Φ · t · f_d = 0,578 · 175 mm · 3,17 N/mm² = 321 N/mm = 321 kN/m. Bei N_Ed = 90 kN/m ist die Wand zu rund 28 % ausgelastet.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "Hier fehlt der Abminderungsfaktor Φ für Schlankheit und Exzentrizität.",
       "",
-      "Hier wurde f_k statt des Bemessungswerts f_d eingesetzt.",
+      "Hier wurde f_d ohne Dauerstandsbeiwert ζ = 0,85 eingesetzt (f_k/γ_M = 3,73 N/mm²).",
       "Hier ist ein Einheitenfehler um den Faktor 10 aufgetreten."
     ],
     "gapAnalysis": {
       "topic": "Traglastwiderstand",
-      "misconception": "Φ oder der Bemessungswert der Festigkeit fehlen im Widerstand.",
+      "misconception": "Φ oder der Bemessungswert der Festigkeit (mit ζ) fehlen im Widerstand.",
       "coreRule": "N_Rd = Φ · t · f_d je Meter Wandlänge.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Schritt 4: Vertikaler Traglastwiderstand N_Rd“ im Modul Mauerwerk: Tragfähigkeit noch einmal durch.",
       "targetModuleTab": "rechnung_mauerwerk",
@@ -42530,8 +42532,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-27",
+      "ergebnis": "korrigiert",
+      "hinweis": "Gutachten 27.10.2026: Rechnung auf f_d = ζ · f_k/γ_M mit ζ = 0,85 umgestellt wie im Modul (src/calc/mauerwerk.ts); Werte und Distraktoren mit dem Rechenkern neu gerechnet, abgesichert in tests/quizRechenfragen.test.ts."
     }
   },
   {
@@ -42543,35 +42546,36 @@
     "topic": "Grenzschlankheit",
     "difficulty": "Transfer",
     "normRef": "DIN EN 1996-3",
-    "question": "Eine 11,5 cm dicke KS-Innenwand mit h_ef = 3,00 m soll N_Ed = 60 kN/m tragen. Der Rechner zeigt h_ef/t = 26,1, Φ = 0,10 und η = 1,38. Wie ist der Befund einzuordnen?",
+    "question": "Eine 11,5 cm dicke KS-Innenwand (f_k = 5,6 N/mm²) mit h_ef = 3,00 m soll N_Ed = 60 kN/m tragen. Nach dem Modul ergeben sich h_ef/t = 26,1, Φ = Φ2 ≈ 0,10 und η ≈ 1,62. Wie ist der Befund einzuordnen?",
     "options": [
       "Der Nachweis scheitert an der Last; die Schlankheit spielt dabei keine Rolle",
-      "Der Nachweis scheitert nur, weil Kalksandstein für Innenwände ungeeignet ist",
-      "Der Nachweis ist erfüllt, da Φ positiv bleibt und das Verfahren anwendbar ist",
-      "Die Wand ist zu schlank (> 25) und mit Φ ≈ 0,10 zugleich deutlich überlastet"
+      "Der Nachweis scheitert, weil Kalksandstein für tragende Innenwände ungeeignet ist",
+      "Der Nachweis ist erfüllt, da Φ positiv und die Grenzschlankheit 27 eingehalten ist",
+      "Grenze 27 knapp eingehalten, doch mit Φ ≈ 0,10 ist die Wand deutlich überlastet"
     ],
     "correctIdx": 3,
-    "explanation": "Mit h_ef/t = 26,1 > 25 ist das vereinfachte Verfahren nicht anwendbar. Zusätzlich fällt Φ quadratisch auf 0,10, sodass N_Rd = 43,5 kN/m < 60 kN/m. Abhilfe: größere Wanddicke, z. B. 17,5 cm.",
+    "explanation": "h_ef/t = 26,1 ≤ 27: Die Grenzschlankheit nach DIN EN 1996-1-1, 5.5.1.4 ist knapp eingehalten. Φ2 = 0,85 − 0,0011 · 26,1² = 0,10 fällt aber quadratisch ab; mit f_d = 0,85 · 5,6/1,5 = 3,17 N/mm² wird N_Rd = 0,10 · 115 mm · 3,17 N/mm² = 37,0 kN/m < 60 kN/m (η = 1,62). Abhilfe: größere Wanddicke, z. B. 17,5 cm.",
     "bloom": "Analysieren",
     "niveau": "M",
     "distraktorFeedback": [
       "Die Überlastung entsteht gerade durch die große Schlankheit, die Φ stark abmindert.",
       "Kalksandstein ist für tragende Innenwände üblich; das Problem ist die geringe Dicke.",
-      "Φ > 0 genügt nicht: Grenzschlankheit 25 und η ≤ 1 müssen beide eingehalten sein.",
+      "Φ > 0 und eingehaltene Grenzschlankheit genügen nicht: Auch η = N_Ed/N_Rd ≤ 1 muss erfüllt sein.",
       ""
     ],
     "gapAnalysis": {
       "topic": "Grenzschlankheit",
       "misconception": "Schlankheitsgrenze und Tragfähigkeitsnachweis werden getrennt statt gemeinsam beurteilt.",
-      "coreRule": "h_ef/t ≤ 25 und η = N_Ed/N_Rd ≤ 1 müssen gleichzeitig erfüllt sein.",
+      "coreRule": "h_ef/t ≤ 27 und η = N_Ed/N_Rd ≤ 1 müssen gleichzeitig erfüllt sein; nahe der Grenzschlankheit ist Φ sehr klein.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Schritt 2: Wirksame Schlankheit bestimmen“ im Modul Mauerwerk: Tragfähigkeit noch einmal durch.",
       "targetModuleTab": "rechnung_mauerwerk",
       "targetModuleLabel": "Mauerwerk: Tragfähigkeit"
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-27",
+      "ergebnis": "korrigiert",
+      "hinweis": "Gutachten 27.10.2026: Rechnung auf f_d = ζ · f_k/γ_M mit ζ = 0,85 umgestellt wie im Modul (src/calc/mauerwerk.ts); Werte und Distraktoren mit dem Rechenkern neu gerechnet, abgesichert in tests/quizRechenfragen.test.ts. Grenzschlankheit 25 → 27 wie im Modul; Befund dadurch neu eingeordnet (Schlankheit knapp eingehalten, Tragfähigkeit nicht)."
     }
   },
   {
@@ -42583,22 +42587,22 @@
     "topic": "Steinart und Wanddicke",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1996-3",
-    "question": "Eine Wand (h_ef = 2,75 m) erhält N_Ed = 150 kN/m. Welcher Vergleich der Ausnutzungsgrade nach dem Modul (KS: f_k = 5,6; HLz: f_k = 3,2 N/mm²) ist richtig?",
+    "question": "Eine Wand (h_ef = 2,75 m, Φ2 maßgebend) erhält N_Ed = 150 kN/m. Welcher Vergleich der Ausnutzungsgrade nach dem Modul (f_d = ζ · f_k/γ_M; KS: f_k = 5,6; HLz: f_k = 3,2 N/mm²) ist richtig?",
     "options": [
-      "KS 17,5 cm: η ≈ 0,40; HLz 17,5 cm: η ≈ 0,69; HLz 24 cm: η ≈ 0,42",
-      "KS 17,5 cm: η ≈ 0,69; HLz 17,5 cm: η ≈ 0,40; HLz 24 cm: η ≈ 0,42",
-      "KS 17,5 cm: η ≈ 0,40; HLz 17,5 cm: η ≈ 0,69; HLz 24 cm: η ≈ 0,51",
-      "KS 17,5 cm: η ≈ 0,60; HLz 17,5 cm: η ≈ 1,04; HLz 24 cm: η ≈ 0,62"
+      "KS 17,5 cm: η ≈ 0,47; HLz 17,5 cm: η ≈ 0,82; HLz 24 cm: η ≈ 0,49",
+      "KS 17,5 cm: η ≈ 0,82; HLz 17,5 cm: η ≈ 0,47; HLz 24 cm: η ≈ 0,49",
+      "KS 17,5 cm: η ≈ 0,47; HLz 17,5 cm: η ≈ 0,82; HLz 24 cm: η ≈ 0,60",
+      "KS 17,5 cm: η ≈ 0,40; HLz 17,5 cm: η ≈ 0,69; HLz 24 cm: η ≈ 0,42"
     ],
     "correctIdx": 0,
-    "explanation": "N_Rd: KS 17,5 cm 378 kN/m, HLz 17,5 cm 216 kN/m, HLz 24 cm 361 kN/m. Die größere Dicke hilft doppelt: über t direkt und über die kleinere Schlankheit (Φ = 0,71 statt 0,58).",
+    "explanation": "f_d = 0,85 · f_k/1,5: KS 3,17 N/mm², HLz 1,81 N/mm². N_Rd: KS 17,5 cm 321 kN/m, HLz 17,5 cm 184 kN/m, HLz 24 cm 307 kN/m. Die größere Dicke hilft doppelt: über t direkt und über die kleinere Schlankheit (Φ = 0,71 statt 0,58).",
     "bloom": "Analysieren",
     "niveau": "M",
     "distraktorFeedback": [
       "",
       "Hier sind die Werte für KS und HLz vertauscht; KS hat die höhere Festigkeit und damit die geringere Ausnutzung.",
       "Der Wert für 24 cm berücksichtigt nur die Dicke linear; die geringere Schlankheit erhöht zusätzlich Φ.",
-      "Diese Werte enthalten γ_M doppelt (Faktor 1,5 zu viel)."
+      "Diese Werte lassen den Dauerstandsbeiwert ζ = 0,85 weg; f_d ist dadurch um den Faktor 1/0,85 zu hoch."
     ],
     "gapAnalysis": {
       "topic": "Steinart und Wanddicke",
@@ -42610,8 +42614,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-27",
+      "ergebnis": "korrigiert",
+      "hinweis": "Gutachten 27.10.2026: Rechnung auf f_d = ζ · f_k/γ_M mit ζ = 0,85 umgestellt wie im Modul (src/calc/mauerwerk.ts); Werte und Distraktoren mit dem Rechenkern neu gerechnet, abgesichert in tests/quizRechenfragen.test.ts."
     }
   },
   {

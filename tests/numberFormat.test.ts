@@ -1,4 +1,4 @@
-import { formatDeZahl, formatDeTeX } from '../src/utils/numberFormat';
+import { formatDeZahl, formatDeTeX, formatDeTeXWert, formatDeWert, TAUSENDER_TRENNER } from '../src/utils/numberFormat';
 let fails = 0;
 const eq = (name: string, a: string, b: string) => {
   const ok = a === b;
@@ -17,7 +17,10 @@ eq('-Infinity → Strich', formatDeZahl(-Infinity), '–');
 eq('null → Strich', formatDeZahl(null), '–');
 eq('nicht-numerischer String bleibt', formatDeZahl('k. A.'), 'k. A.');
 eq('TeX Dezimal', formatDeTeX(0.5, 2), '0{,}50');
-eq('TeX Tausender', formatDeTeX(12345.678, 2), '12\\,345{,}68');
+eq('TeX Tausender (Punkt wie im Fließtext)', formatDeTeX(12345.678, 2), '12.345{,}68');
+eq('TeX-Wert Tausender', formatDeTeXWert(210000), '210.000');
+eq('Wert ohne Gruppierung unter 10 000', formatDeWert(2160), '2160');
+eq('Trennzeichen-Konstante', TAUSENDER_TRENNER, '.');
 eq('TeX NaN', formatDeTeX(NaN, 1), '\\text{–}');
 eq('TeX Division durch 0', formatDeTeX(1 / 0, 1), '\\text{–}');
 if (fails) { console.log(`${fails} FAIL`); process.exit(1); }

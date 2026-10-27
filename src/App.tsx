@@ -491,12 +491,11 @@ function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps,
                       {tabDisplayName}
                     </span>
 
-                    {/* Quick favorite star in breadcrumbs */}
+                    {/* Quick favorite star in breadcrumbs – Zielgröße ≥ 24 × 24 px (WCAG 2.2, 2.5.8; Gutachten 27.10.2026) */}
                     <button
-                      onClick={(e) => toggleFavorite(activeTab, e)}
                       type="button"
-                      // WCAG 2.2 2.5.8 (target-size): Zielfläche mindestens 24 × 24 px
-                      className={`inline-flex items-center justify-center min-w-6 min-h-6 shrink-0 p-1 rounded-md transition-colors hover:bg-home-grau/10 dark:hover:bg-slate-800 ${favorites.includes(activeTab) ? "text-amber-500" : "text-slate-400 opacity-60 hover:opacity-100"}`}
+                      onClick={(e) => toggleFavorite(activeTab, e)}
+                      className={`min-w-6 min-h-6 inline-flex items-center justify-center shrink-0 p-1 rounded-md transition-colors hover:bg-home-grau/10 dark:hover:bg-slate-800 ${favorites.includes(activeTab) ? "text-amber-500" : "text-slate-400 opacity-60 hover:opacity-100"}`}
                       title={favorites.includes(activeTab) ? (language === 'en' ? "Remove from favorites" : "Aus Favoriten entfernen") : (language === 'en' ? "Mark as favorite" : "Als Favorit markieren")}
                     >
                       <Star size={13} className={favorites.includes(activeTab) ? "fill-amber-500" : ""} />
