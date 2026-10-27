@@ -33,8 +33,9 @@ Fachmodule brauchen außerdem einen Prüfvermerk in `src/data/pruefvermerke.ts` 
 - Einstiegs-Chunk enthält nur Layout, Navigation, Registry und React. Module, Modulkopf, Modul-Selbsttest, Abstimmungsansicht und SEO-Audit werden nachgeladen.
 - three.js / @react-three nur in den 3D-Teilansichten von Holz und Mauerwerk (`React.lazy` innerhalb des Moduls).
 - Große Teilansichten neuer Module ebenso per `React.lazy` + `<React.Suspense>` auslagern.
-- `scripts/qa/check-bundle.mjs` prüft die gzip-Größen als Ratsche (Einstieg ≤ 140 kB, jeder Chunk ≤ 300 kB, keine Ausnahmen).
-- Schriften: Inter Regular/Bold als WOFF2-Teilmenge in `public/fonts/` (`font-display: swap`, Regular per Preload). Neue Sonderzeichen außerhalb der Teilmenge erscheinen in der Fallback-Schrift – dann Teilmenge neu erzeugen (Befehl in `docs/performance.md`).
+- `scripts/qa/check-bundle.mjs` prüft die gzip-Größen als Ratsche (Einstieg ≤ 108 kB, Stand 27.10.2026: 102,5 kB; jeder Chunk ≤ 300 kB, keine Ausnahmen).
+- Schriften: Inter Regular/Bold als WOFF2-Teilmenge, **als Base64-Text** in `src/lib/schriftDaten.ts` (generiert, nicht von Hand ändern; Grund: AI Studio übernimmt neue/geänderte Binärdateien beim Pull nicht zuverlässig). `src/lib/schriften.ts` lädt sie nach dem ersten Bild als `FontFace` (eigener Chunk ≈ 112 kB roh, nicht im Einstieg; bis dahin Systemschrift wie bei `font-display: swap`). Neue Sonderzeichen außerhalb der Teilmenge erscheinen in der Ersatzschrift – dann Teilmenge neu erzeugen (Befehl in `docs/performance.md`) und `schriftDaten.ts` neu schreiben.
+  Die TTF-Dateien in `public/fonts/` (`inter-regular.ttf`, `inter-bold.ttf`, `worksans-regular.ttf`) sind **ungenutzt** und wurden absichtlich byte-identisch wiederhergestellt (Commit `b7798995`), damit der AI-Studio-Pull keine Binäränderung sieht; `worksans-regular.ttf` ist inhaltlich eine HTML-Seite (Commit `cc1dd60c`). Entfernen nur nach Entscheidung Prof. Huber und Test des AI-Studio-Pulls.
 - Messung (LCP, CLS, TBT-Näherung, Klick-Latenz): `scripts/qa/perf-messung.mjs`, Ergebnisse in `docs/performance.md`.
 
 ### Ladezeit (AP 5.5)
@@ -59,7 +60,7 @@ Neue große Rechnerseite: Abschnitte unterhalb der ersten Bildschirmhöhe in `<N
 |---|---|---|---|
 | `virtual:quiz-pool` | Anzahl Fragen je `moduleId` + Lader | 5,5 kB (mit `quizLader`) | `ModulTest`-Kopfzeile, Lernziele-Kopfzeile, Cluster-Angabe in Aufgaben |
 | `virtual:quiz-pool/quiz-modul-<id>` | Fragen eines Moduls | 0,9–4,7 kB | `ModulTest` |
-| `virtual:quiz-pool/quiz-teil-1…4` | zusammenhängende Viertel des Pools | je 94–99 kB | Quiz, Klausursimulator, Quiz-Dashboard, Fragenfreigabe (parallel) |
+| `virtual:quiz-pool/quiz-teil-1…4` | zusammenhängende Viertel des Pools | je 120–126 kB (Stand 27.10.2026, 1 282 Fragen; Messung `check-bundle.mjs`) | Quiz, Klausursimulator, Quiz-Dashboard, Fragenfreigabe (parallel) |
 
 Zugriff im Frontend nur über `src/data/quizLader.ts`: `useModulFragen(id)`, `useAlleFragen()` (liefern `null`, solange geladen wird), `anzahlFragenModul/-Route`, `clusterDerGruppen`. `src/data/quizData.ts` (`QUIZ_QUESTIONS`, synchron, ganzer Pool) ist Tests und Node-Skripten vorbehalten; `tests/quiz.test.ts` schlägt fehl, wenn Code unter `src/` `quizData` oder `quiz.json` importiert, und prüft, dass die Teilpakete zusammen genau `quiz.json` ergeben.
 
@@ -96,6 +97,12 @@ Ein `*` mit Leerzeichen dahinter (z. B. AVV `17 06 05* (…)`) bleibt ohne Maski
 **Prüfungen:** `tests/inhalt.test.ts` (gültige Dateien, nur die drei Gruppen, jeder Verweis vorhanden, jede Datei genau einmal importiert, keine verwaisten Einträge, Markdown eindeutig); `check:formeln` prüft `$…$` in `texte` und Formel-Felder (`formel`, `math`, `latex` …) in `daten`; `check:zahlen` (Dezimalkomma), `check:quellen` (Normlinks, Du-Imperative, Normenstand der `regelwerke`) und `tests/begriffe.test.ts` lesen `content/` mit (`scripts/qa/inhaltDateien.mjs`). Literaltypen (`kategorie: 'Mineralisch' | …`) bleiben im TSX, damit `tsc` sie weiter prüft.
 
 **Weitere Module auslagern:** `npx tsx scripts/inhalt-auslagern.ts src/modules/<Datei>.tsx` (Codemod; ersetzt nur Literale durch Verweise auf denselben Wert, JSX-Leerraum und Entities wie esbuild). Danach `npx tsc --noEmit`; Stellen mit Literaltypen per `--ausschluss` im Code lassen. Zeichengleichheit belegen mit `scripts/qa/inhalt-vergleich.mjs` (Playwright: innerText und `.katex`-Anzahl je Route und Reiter, Desktop + Mobil, alter gegen neuen Build). Anteil: `node scripts/qa/inhalt-anteil.mjs`. Nicht ausgelagert (Rechtstexte/Verwaltung bzw. von Tests im TSX gelesen): `Admin`, `Datenschutz`, `Impressum`, `Festbeton` (Lehrtabelle) und `Startseite` (`tests/startSchale.test.ts` vergleicht die statische Schale mit dem Quelltext).
+
+## Zahlformat
+
+Zahlen werden ausschließlich über `src/utils/numberFormat.ts` formatiert: Dezimalkomma, **Tausendertrennung einheitlich mit Punkt** (`TAUSENDER_TRENNER`) in Fließtext, Rechnerausgaben, Diagrammen und KaTeX-Formeln (`formatDeTeX` seit 27.10.2026 ebenfalls mit Punkt statt `\,`). `formatDeZahl` gliedert ab 4 Stellen (1.000), `formatDeWert` ab 5 Stellen (Jahreszahlen bleiben ungegliedert).
+
+Begründung (Gutachten 27.10.2026): Projektkonvention seit Phase 1 (README, Anleitung), Ausgabe von `toLocaleString('de-DE')` an rund 115 Stellen im Code und Mehrheit im Fließtext (`content/`: 247 Zahlen mit Punkt gegen 86 mit Leerzeichen, Zählung 27.10.2026). Die Gliederung ist eindeutig, weil das Dezimalzeichen immer das Komma ist. Abweichung von der Norm: DIN 5008 gliedert Zahlen mit Leerzeichen (Punkt nur bei Geldbeträgen), DIN 1333 sieht ebenfalls Zwischenräume vor. Eine Umstellung auf das schmale geschützte Leerzeichen (U+202F) wäre zentral über `TAUSENDER_TRENNER` plus Ersatz der Direktaufrufe von `toLocaleString` möglich – **Entscheidung Prof. Huber**. Neue Fachtexte in `content/` bitte mit Punkt schreiben.
 
 ## QA-Skripte
 

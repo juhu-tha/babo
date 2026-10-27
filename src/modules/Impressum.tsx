@@ -135,7 +135,7 @@ export default function Impressum() {
               </p>
               
               <p>
-                <strong>Haftung für Links:</strong> Diese Anwendung enthält Links zu externen Webseiten Dritter. Auf deren Inhalte haben wir keinen Einfluss; deshalb distanzieren wir uns hiermit ausdrücklich von den Inhalten aller verlinkten Seiten und übernehmen für diese Fremdinhalte keine Gewähr. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+                <strong>Haftung für Links:</strong> Diese Anwendung enthält Links zu externen Webseiten Dritter. Für deren Inhalte ist der jeweilige Anbieter verantwortlich (§§ 7 ff. DDG). Zum Zeitpunkt der Verlinkung waren keine Rechtsverstöße erkennbar; eine ständige Kontrolle der verlinkten Seiten ist ohne konkrete Anhaltspunkte nicht zumutbar. Werden uns Rechtsverletzungen bekannt, entfernen wir den betreffenden Link umgehend.
               </p>
               
               <p>

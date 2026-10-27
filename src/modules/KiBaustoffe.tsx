@@ -32,6 +32,7 @@ import {
   Server,
   Video
 } from 'lucide-react';
+import { KI_FUNKTION_AKTIV, KI_HINWEIS_AUS } from '@/src/data/kiSchalter';
 import inhalt from '@/content/kibaustoffe/KiBaustoffe.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 
@@ -500,7 +501,8 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                     className="p-5 font-mono text-xs leading-relaxed bg-slate-950 text-emerald-400 overflow-y-auto whitespace-pre-wrap outline-none border-none focus:ring-0 resize-y max-h-80 select-all"
                   />
 
-                  {/* Footer with run button */}
+                  {/* Footer with run button – nur bei eingeschalteter KI-Funktion (src/data/kiSchalter.ts) */}
+                  {KI_FUNKTION_AKTIV ? (
                   <div className="p-4 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <label className="flex items-start gap-2 text-xs text-slate-700 font-medium max-w-xl cursor-pointer">
                       <input
@@ -530,6 +532,9 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                       )}
                     </button>
                   </div>
+                  ) : (
+                    <p role="note" className="p-4 bg-slate-50 border-t border-slate-200 text-xs text-slate-700 font-medium">{KI_HINWEIS_AUS}</p>
+                  )}
 
                   <div className="p-4 bg-amber-50/50 border-t border-slate-200 text-xxs text-amber-950 font-normal">
                     <div className="flex gap-1.5 items-center font-bold text-amber-900 mb-1">
@@ -541,7 +546,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                 </div>
 
                 {/* LIVE GEMINI OUTPUT CARD */}
-                {(isLoadingAi || aiOutput) && (
+                {KI_FUNKTION_AKTIV && (isLoadingAi || aiOutput) && (
                   <div className="bg-white rounded-2xl border border-slate-200 shadow-md overflow-hidden animate-in fade-in slide-in-from-bottom-2 duration-300">
                     <div className="bg-slate-900 text-white px-5 py-3 border-b border-slate-800 flex justify-between items-center">
                       <div className="flex items-center gap-2">

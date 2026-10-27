@@ -751,7 +751,7 @@ input[type=range]::-webkit-slider-runnable-track {
   border-radius: 2px;
 }
 
-input[type=range]:focus {
+input[type=range]:focus:not(:focus-visible) {
   outline: none;
 }
 
@@ -989,7 +989,24 @@ input[type=range]:focus {
   transition-duration: 0.001ms !important;
 }
 
-/* 4. Tastatur-Fokusindikator */
+/* Sichtbarer Tastaturfokus für alle Bedienelemente (WCAG 2.4.7, 2.4.11, 1.4.11; Gutachten 27.10.2026).
+   Gilt nur für :focus-visible (Tastatur), überschreibt deshalb bewusst Tailwind-„focus:outline-none“.
+   Kontrast der Fokusfarbe zum Seitenhintergrund: hell #A3113E auf #FFFFFF ≈ 7,8 : 1 (auf #FCFAF7 ≈ 7,5 : 1),
+   dunkel #FF3B77 auf #040814 ≈ 5,9 : 1 (auf #0F172A ≈ 5,2 : 1); auf Shiraz-Flächen weiß (≥ 3,4 : 1). */
+:root { --fokus-farbe: #A3113E; }
+.dark { --fokus-farbe: #FF3B77; }
+:focus-visible {
+  outline: 2px solid var(--fokus-farbe) !important;
+  outline-offset: 2px !important;
+}
+.bg-shiraz :focus-visible,
+.bg-shiraz-700 :focus-visible,
+.bg-shiraz-800 :focus-visible,
+.bg-shiraz-900 :focus-visible {
+  outline-color: #FFFFFF !important;
+}
+
+/* 4. Tastatur-Fokusindikator (verstärkt, über die Barrierefreiheits-Leiste) */
 .a11y-focus-ring *:focus-visible {
   outline: 3px solid #ff0350 !important;
   outline-offset: 3px !important;
