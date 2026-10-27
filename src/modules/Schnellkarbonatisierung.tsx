@@ -8,6 +8,7 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { Querverweis } from '@/src/components/ui/Querverweis';
+import { LebensdauerUebernehmen } from '@/src/components/ui/LebensdauerUebernehmen';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import inhalt from '@/content/schnellkarbonatisierung/Schnellkarbonatisierung.json';
@@ -316,6 +317,11 @@ export default function Schnellkarbonatisierung() {
                       ) : <p><MdText text={inhalt.texte.keineAuswertungEingabenPrüfen} /></p>}
                       <p className="text-[11px] text-text-main/60 mt-1.5"><MdText text={inhalt.texte.näherungOhneFeuchteBeregnungs} /></p>
                     </div>
+                    <LebensdauerUebernehmen
+                      aktiv={erg.gueltig}
+                      daten={{ quelle: 'schnellkarbonatisierung', mech: 'karbonatisierung', kac: erg.kAC, cAcc, deckM: deckung, tSL: nutzung }}
+                      art="schnell"
+                    />
                   </div>
 
                   <FormulaDerivationBox

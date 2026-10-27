@@ -22,6 +22,7 @@
  */
 import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
 import { saugKlasse, wWertAusKarsten, type SaugKlasse } from './karsten';
+import { koeffizientAusTiefe, zeitBisTiefe } from './schnellkarbonatisierung';
 
 export interface Ergebnis { gueltig: boolean; hinweise: Hinweis[] }
 const abschluss = (h: Hinweis[]): Ergebnis => ({ gueltig: !hatFehler(h), hinweise: h });
@@ -229,8 +230,9 @@ export function karbonatisierung(tiefeMm: number, alterJahre: number, deckungMm:
   muss(h, istEndlich(tiefeMm, alterJahre, deckungMm), 'eingabe', 'Alle Eingaben müssen Zahlen sein.');
   muss(h, alterJahre > 0, 'alterJahre', 'Das Bauteilalter muss größer als 0 sein.');
   muss(h, tiefeMm >= 0 && deckungMm >= 0, 'tiefeMm', 'Tiefe und Deckung dürfen nicht negativ sein.');
-  const k = tiefeMm / Math.sqrt(alterJahre);
-  const tDepass = Math.pow(deckungMm / Math.max(0.1, k), 2);
+  // Wurzel-t-Gesetz aus dem gemeinsamen Kern src/calc/schnellkarbonatisierung.ts (Runde 7, Ergebnis unverändert)
+  const k = koeffizientAusTiefe(tiefeMm, alterJahre);
+  const tDepass = zeitBisTiefe(deckungMm, Math.max(0.1, k));
   const restJahre = Math.max(0, Math.round(tDepass - alterJahre));
   if (k < 0.1) h.push({ stufe: 'warnung', feld: 'tiefeMm', text: 'K < 0,1 mm/√a: Für die Prognose wird K = 0,1 mm/√a angesetzt.' });
   return { k, tDepass, restJahre, depassiviert: deckungMm <= tiefeMm, ...abschluss(h) };

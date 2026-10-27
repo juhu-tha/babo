@@ -41,7 +41,8 @@ pruefe(nahe(chloridGehalt(x05, 20, 2, 4, 0), 4 * (1 - 0.5205), 0.001), 'C bei z 
 
 // 4. Alterung D(t) = D₀·(t₀/t)^a; Grenzen
 pruefe(dAppAlterung(5, T0_CHLORID, 0.5) === 5 && dAppAlterung(5, T0_CHLORID / 2, 0.5) === 5, 'D(t ≤ t₀) = D₀');
-pruefe(nahe(dAppAlterung(5, 50, 0.2), 5 * Math.pow((28 / 365) / 50, 0.2), 1e-12), 'D(50 a), a = 0,2');
+// Runde 7: t₀ = 0,0767 a wie in der Lebensdauerbemessung (fib Bulletin 34; vorher 28/365 a)
+pruefe(T0_CHLORID === 0.0767 && nahe(dAppAlterung(5, 50, 0.2), 5 * Math.pow(0.0767 / 50, 0.2), 1e-12), 'D(50 a), a = 0,2');
 pruefe(dAppAlterung(5, 50, 0) === 5, 'a = 0 → konstant');
 const p0 = chloridProfil({ t: 50, cNom: 35, dApp: 5, cS: 3, a: 0.2 });
 pruefe(p0.gueltig && p0.profil.length === 101 && Math.abs(p0.profil[0] - 3) < 1e-6, 'C(0) = C_s');
