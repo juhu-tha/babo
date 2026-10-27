@@ -16,7 +16,7 @@ const STAHLBETON: RechnerGrenzen = {
   kurz: 'Bemessung von Stahlbetonquerschnitten nach DIN EN 1992-1-1 mit NA (DE) für Biegung, Querkraft, Stützen, Durchstanzen, Verankerung und Rissbreite.',
   grenzen: [
     'Rechteckquerschnitte bis C50/60 (λ = 0,8, η = 1,0); darüber im Kern λ, η, ε_cu3 nach EC2 3.1.7/Tab. 3.1 und ξ_lim = 0,35 (vorläufig); weitere NA-Regeln für hochfesten Beton fehlen.',
-    'f_cd zentral = α_cc·f_ck/γ_c (α_cc = 0,85, γ_c = 1,5); eine zusätzliche Abminderung ab C55/67 · (1,1 − f_ck/500) ist vorbereitet, aber ausgeschaltet, bis der Normtext vorliegt; hochfester Beton wird über λ, η und ξ_lim = 0,35 erfasst; V_Rd,max mit ν₁ = 0,75·ν₂.',
+    'f_cd zentral = α_cc·f_ck/γ_c (α_cc = 0,85, γ_c = 1,5); Zusatzabminderung ab C55/67 vorbereitet, aber aus (Normtext ausstehend); Hochfestigkeit über λ, η, ξ_lim = 0,35.',
     'Biegung: eine Zug- und eine Druckbewehrungslage, ξ_lim = 0,45; nichtmetallische Bewehrung vereinfacht linear-elastisch, maßgebend ist die Zulassung.',
     'Querkraft: z = 0,9·d, senkrechte Bügel, ohne Normalkraft (σ_cp = 0).',
     'Stütze: Theorie I. Ordnung mit e_i = l₀/400 und Mindestausmitte; bei λ > λ_lim nur Hinweis, kein Nachweis nach Theorie II. Ordnung.',
