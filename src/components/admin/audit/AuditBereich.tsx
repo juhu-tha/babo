@@ -274,9 +274,10 @@ function PrueflistenAnsicht() {
       <h3 id="pruefliste-titel" className={titel}>Quiz-Prüflisten je Cluster</h3>
       <p className={info}>
         Zahlen beim Build am {datumDe(daten.erzeugtAm)} aus <code className="font-mono">src/data/quiz.json</code> ermittelt:
-        „auffällig“ = Vorprüfung „korrigiert“ oder „fraglich“ bzw. offener Prüfhinweis in <Pfad p="docs/quiz-pruefhinweise.md" />;
+        „auffällig“ = Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis in <Pfad p="docs/quiz-pruefhinweise.md" /> oder
+        neu seit 26.10.2026 ohne Freigabe;
         „verified“ = fachlich freigegeben. Die Spalte „Prüfliste“ zeigt die Kopfzahlen der Datei; weichen sie ab, ist die Liste
-        neu zu erzeugen (neue Fragen seit ihrer Erstellung). Freigabe im Reiter „Fragenfreigabe“.
+        mit <code className="font-mono">npx tsx scripts/pruefliste.ts</code> neu zu erzeugen. Freigabe im Reiter „Fragenfreigabe“.
       </p>
       <TabellenRahmen label="Prüflisten je Cluster">
         <table className={tabelle}>

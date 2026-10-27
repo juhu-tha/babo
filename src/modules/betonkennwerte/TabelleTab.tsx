@@ -2,6 +2,7 @@
 import { InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { EC2_CONCRETE_CLASSES } from './daten';
+import { fcdBeton, FCD_MODUL } from '@/src/data/kennwerte';
 import inhalt from '@/content/betonkennwerte/TabelleTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 
@@ -47,7 +48,7 @@ export default function TabelleTab({ selectedClassIdx, setSelectedClassIdx }: Ta
               {EC2_CONCRETE_CLASSES.map((c, idx) => {
                 const isSelected = idx === selectedClassIdx;
                 const isHighStrength = c.fck > 50;
-                const fcdVal = (0.85 * c.fck) / 1.50;
+                const fcdVal = fcdBeton(c.fck, FCD_MODUL.betonkennwerteTabelle);
 
                 return (
                   <tr 

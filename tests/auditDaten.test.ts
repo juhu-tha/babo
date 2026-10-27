@@ -4,7 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import {
   erzeugeAuditDaten, auditDatenPlugin, AUDIT_DATEN_ID, F_ORDNER, F_MARKE, FACHGEBIET_SONST,
-  kontextVon, fachgebietVon, offenePruefhinweise, prueflistenKopf, einstiegGzipKB,
+  kontextVon, fachgebietVon, offenePruefhinweise, prueflistenKopf, einstiegGzipKB, NEU_SEIT_26_10,
 } from '../scripts/auditDaten';
 import { GUTACHTEN_27_10, notenMittel } from '../src/data/audit/gutachten';
 import { ZULIEFERUNGEN } from '../src/data/audit/zulieferungen';
@@ -57,7 +57,8 @@ for (const c of d.quiz.cluster) {
   const f = fragen.filter(q => quizCluster(q.moduleId)?.id === c.cluster);
   pruefe(c.gesamt === f.length, `Cluster ${c.cluster}: gesamt ${c.gesamt} ≠ ${f.length}`);
   pruefe(c.verified === f.filter(q => q.verified === true).length, `Cluster ${c.cluster}: verified weicht ab`);
-  pruefe(c.auffaellig === f.filter(q => ['korrigiert', 'fraglich'].includes(q.vorpruefung?.ergebnis ?? '') || hinweise.has(q.id)).length, `Cluster ${c.cluster}: auffällig weicht ab`);
+  pruefe(c.auffaellig === f.filter(q => ['korrigiert', 'fraglich'].includes(q.vorpruefung?.ergebnis ?? '') || hinweise.has(q.id) || (NEU_SEIT_26_10.test(q.id) && q.verified !== true)).length, `Cluster ${c.cluster}: auffällig weicht ab`);
+  pruefe(!c.liste || (c.liste.gesamt === c.gesamt && c.liste.auffaellig === c.auffaellig), `Cluster ${c.cluster}: Prüfliste veraltet (${c.liste?.auffaellig}/${c.liste?.gesamt} statt ${c.auffaellig}/${c.gesamt}) → npx tsx scripts/pruefliste.ts`);
   pruefe(c.auffaellig <= c.gesamt && c.verified <= c.gesamt, `Cluster ${c.cluster}: Zähler > gesamt`);
   pruefe(!!c.datei, `Cluster ${c.cluster}: Prüfliste docs/pruefung/quiz-cluster-${c.cluster}.md fehlt`);
   pruefe(!c.datei || !!c.liste, `Cluster ${c.cluster}: Kopfzahlen der Prüfliste nicht lesbar („umfasst N Fragen … Aufgeführt sind M auffällige“)`);

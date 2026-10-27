@@ -1,6 +1,7 @@
 import { Layers } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
+import { fcdBeton, FCD_MODUL } from '@/src/data/kennwerte';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
@@ -43,11 +44,9 @@ export default function Carbonbeton() {
   const results = useMemo(() => {
     // Bemessungswerte
     const gammaTex = 1.3; // Lehrannahme – maßgebend: DAfStb-Richtlinie (2024) bzw. Zulassung
-    const gammaC = 1.5;   // Teilsicherheitsbeiwert Beton
-    const alphaCc = 0.85;
 
     const fTd = fTk / gammaTex;
-    const fCd = (alphaCc * fCk) / gammaC;
+    const fCd = fcdBeton(fCk, FCD_MODUL.carbonbeton); // α_cc = 0,85, γ_c = 1,5 (zentral, src/data/kennwerte.ts)
 
     const d = h - c; // statische Nutzhöhe in mm
 

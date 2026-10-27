@@ -1,8 +1,10 @@
 # Prüfliste Quiz – Cluster III: Entwurf & Bemessung
 
-Stand: 27.10.2026 · Grundlage: `src/data/quiz.json` (Feld `vorpruefung`, Stand 25.10.2026), `docs/quiz-pruefhinweise.md`, Vorprüfungsberichte `docs/quiz-vorpruefung-cluster-I-III.md` und `docs/quiz-vorpruefung-cluster-IV-VII.md`. quiz.json wurde für diese Liste nicht verändert.
+Stand: 27.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster III umfasst 192 Fragen aus 32 Modulen. Aufgeführt sind 17 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“ bzw. offener Prüfhinweis) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster III umfasst 192 Fragen aus 32 Modulen. Aufgeführt sind 41 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+
+Auffällig im Einzelnen (Mehrfachnennung möglich): 34 korrigiert, 0 fraglich, 9 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -30,6 +32,30 @@ Cluster III umfasst 192 Fragen aus 32 Modulen. Aufgeführt sind 17 auffällige F
 - [ ] ok
 - [ ] ändern: …
 
+### q_cbm_2 · Carbonbeton
+
+- **Frage:** Warum kann die Betondeckung bei Carbonbeton deutlich kleiner sein als bei Stahlbeton?
+- **Richtige Antwort:** Carbon korrodiert nicht; die Deckung dient im Wesentlichen dem Verbund
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
+- [ ] ok
+- [ ] ändern: …
+
+### q_cbm_4 · Carbonbeton
+
+- **Frage:** Welches Regelwerk ist in Deutschland für Betonbauteile mit Carbonbewehrung maßgebend?
+- **Richtige Antwort:** DAfStb-Richtlinie Betonbauteile mit nichtmetallischer Bewehrung
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
+- [ ] ok
+- [ ] ändern: …
+
+### q_esx_3 · Eigenspannungen
+
+- **Frage:** Welcher Anteil einer Temperaturverteilung erzeugt auch im frei gelagerten Bauteil Spannungen?
+- **Richtige Antwort:** Der nichtlineare Anteil T_V
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
 ### q_hee_1 · Herstellung & Einbau
 
 - **Frage:** Bis wann soll ein Fahrmischer nach der ersten Wasserzugabe vollständig entladen sein?
@@ -42,7 +68,7 @@ Cluster III umfasst 192 Fragen aus 32 Modulen. Aufgeführt sind 17 auffällige F
 
 - **Frage:** Der Beton ist bei Ankunft zu steif. Was ist zulässig?
 - **Richtige Antwort:** Ausnahmsweise, unter Verantwortung des Herstellers und mit Lieferscheinvermerk
-- **Auffälligkeit:** Prüfhinweis: Widerspruch zur nachträglichen Fließmittelzugabe – angleichen.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · Prüfhinweis: Widerspruch zur nachträglichen Fließmittelzugabe – angleichen.
 - [ ] ok
 - [ ] ändern: …
 
@@ -59,6 +85,14 @@ Cluster III umfasst 192 Fragen aus 32 Modulen. Aufgeführt sind 17 auffällige F
 - **Frage:** Welcher Wassereinwirkungsklasse ist eine bodengleiche Dusche im Wohnungsbau zugeordnet?
 - **Richtige Antwort:** W2-I
 - **Auffälligkeit:** Prüfhinweis: W2-I für bodengleiche Dusche gilt für die Bodenfläche – im Fragetext nennen.
+- [ ] ok
+- [ ] ändern: …
+
+### q_iax_4 · Innenausbau
+
+- **Frage:** Welche Qualitätsstufe ist für glänzende Lacke und Streiflicht erforderlich?
+- **Richtige Antwort:** Q4
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
 - [ ] ok
 - [ ] ändern: …
 
@@ -94,11 +128,27 @@ Cluster III umfasst 192 Fragen aus 32 Modulen. Aufgeführt sind 17 auffällige F
 - [ ] ok
 - [ ] ändern: …
 
+### q_sbt_2 · Sichtbeton
+
+- **Frage:** Was ist eine typische Ursache für Marmorierungen (Wolkenbildung) auf Sichtbetonflächen?
+- **Richtige Antwort:** Örtlich unterschiedliche w/z-Werte in der Randzone, z. B. durch Trennmittelpfützen
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
+- [ ] ok
+- [ ] ändern: …
+
 ### q_sob_2 · Sonderbetone
 
 - **Frage:** Welche Aussage zu ultrahochfestem Beton (UHPC) trifft zu?
 - **Richtige Antwort:** Hohe Festigkeit durch w/z < 0,25, Silikastaub und dichte Packung; DAfStb-Richtlinie in Vorbereitung
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Erklärung: veraltete Zeitangabe „Stand Herbst 2024“ entfernt, Zulassung/ZiE ergänzt · Prüfhinweis: „DAfStb-Richtlinie UHFB in Vorbereitung, Stand Herbst 2024“ – aktuellen Stand prüfen.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · Prüfhinweis: „DAfStb-Richtlinie UHFB in Vorbereitung, Stand Herbst 2024“ – aktuellen Stand prüfen.
+- [ ] ok
+- [ ] ändern: …
+
+### q_stb_4 · Stahlbeton
+
+- **Frage:** Wozu dient die Mindestbiegebewehrung A_s,min?
+- **Richtige Antwort:** Damit beim Erstriss kein sprödes Versagen eintritt (Rissmoment aufnehmen)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
 - [ ] ok
 - [ ] ändern: …
 
@@ -110,11 +160,59 @@ Cluster III umfasst 192 Fragen aus 32 Modulen. Aufgeführt sind 17 auffällige F
 - [ ] ok
 - [ ] ändern: …
 
+### qn_betonpraxis_1 · Betonpraxis
+
+- **Frage:** Bestandsbauteil, festgelegt f_ck = 30 N/mm², drei Bohrkerne (umgerechnet): 26,0; 25,5; 27,0 N/mm². Anforderungen laut Modul: Mittelwert ≥ 0,85·(f_ck + 1), kleinster Wert ≥ 0,85·(f_ck − 4). Wie lautet das Ergebnis?
+- **Richtige Antwort:** Nicht erfüllt – Mittelwert 26,2 < 26,4 N/mm², kleinster Wert ≥ 22,1 N/mm²
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
+- [ ] ok
+- [ ] ändern: …
+
+### qn_bindemittel_2 · Bindemittel
+
+- **Frage:** Worin unterscheidet sich ein latent-hydraulischer Stoff (Hüttensand) von einem puzzolanischen Stoff (Flugasche)?
+- **Richtige Antwort:** Hüttensand enthält selbst CaO und erhärtet nach alkalischer Anregung; Flugasche braucht Ca(OH)₂ als Partner
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_carbonbeton_1 · Carbonbeton
+
+- **Frage:** Carbonbetonplatte: h = 30 mm, c = 10 mm (d = h − c), a_tex = 80 mm²/m, f_tk = 3 000 N/mm² (γ_tex = 1,3), C45/55 mit f_cd = 0,85·45/1,5. Welches Moment m_Rd ergibt sich vereinfacht mit y = F_t/(b·f_cd) und z = d − y/2?
+- **Richtige Antwort:** rund 3,0 kNm/m
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_carbonbeton_2 · Carbonbeton
+
+- **Frage:** h = 40 mm, c = 10 mm, f_tk = 2 500 N/mm², C50/60: Wird a_tex von 100 auf 200 mm²/m verdoppelt, steigt m_Rd nur von rund 5,1 auf rund 8,9 kNm/m. Warum nicht auf das Doppelte?
+- **Richtige Antwort:** Die Druckzone y wächst mit, der Hebelarm z = d − y/2 wird kleiner
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_festbeton_3 · Festbeton
+
+- **Frage:** Warum liefert ein Würfel 150 mm bei gleichem Beton eine höhere Druckfestigkeit als ein Zylinder 150/300 mm?
+- **Richtige Antwort:** Beim Würfel (h/d = 1) überlagern sich die Reibungskegel; die behinderte Querdehnung erhöht den Prüfwert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
 ### qn_grundlagen_2 · Ausgangsstoffe des Betons
 
 - **Frage:** C30/37, XF1, D_max = 16 mm, Zementgehalt z = 330 kg/m³. Höchstwerte: 400 kg/m³ bei z ≤ 300 kg/m³ und 450 kg/m³ bei z ≥ 350 kg/m³. Welcher höchstzulässige Mehlkorngehalt ergibt sich?
 - **Richtige Antwort:** 430 kg/m³
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Höchstwerte 400/450 kg/m³ (XF/XM, D_max ≥ 16 mm, bis C50/60) und Interpolationsregel nach aktuellem Tabellenwerk bestätigt (Heidelberg Materials, Betontechnische Daten 6.3.4); normRef auf die Registry-Ausgabe 2023-08 umgestellt. Tabellennummer der Ausgabe 2023-08 öffentlich nicht verifizierbar und daher weggelassen (2008-08: Tab. F.4.1). · Vorprüfung (fraglich): normRef nennt DIN 1045-2:2008-08, Tab. F.4.1; Registry: DIN 1045-2:2023-08. Bitte prüfen, ob Mehlkornhöchstwerte (400/450 kg/m³) und Tabellennummer in der Ausgabe 2023-08 unverändert sind – dann normRef umstellen.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Höchstwerte 400/450 kg/m³ (XF/XM, D_max ≥ 16 mm, bis C50/60) und Interpolationsregel nach aktuellem Tabellenwerk bestätigt (Heidelberg Materials, Betontechnische Daten 6.3.4); normRef auf die Registry-Ausgabe 2023-08 umgestellt. Tabellennummer der Ausgabe 2023-08 öffentlich nicht verifizierbar und daher weggelassen (2008-08: Tab. F.4.1).
+- [ ] ok
+- [ ] ändern: …
+
+### qn_grundlagen_3 · Ausgangsstoffe des Betons
+
+- **Frage:** Welcher Betonzusatzstoff gehört zum Typ I (nahezu inert)?
+- **Richtige Antwort:** Kalksteinmehl
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
 - [ ] ok
 - [ ] ändern: …
 
@@ -126,6 +224,30 @@ Cluster III umfasst 192 Fragen aus 32 Modulen. Aufgeführt sind 17 auffällige F
 - [ ] ok
 - [ ] ändern: …
 
+### qn_holzbau_bauphysik_5 · Bauphysik & Brandschutz
+
+- **Frage:** Zur Verbesserung des Trittschallschutzes soll auf einer BSP-Decke mit f₁ = 8,2 Hz die Schüttung deutlich schwerer ausgeführt werden. Welche Folge ist für den Schwingungsnachweis zu erwarten?
+- **Richtige Antwort:** f₁ sinkt, da m wächst – der Nachweis f₁ > 8 Hz kann verloren gehen
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_holzbau_verbindung_4 · Verbindungen & Anschlüsse
+
+- **Frage:** Vollgewindeschraube d = 8 mm, l_ef = 100 mm, rechtwinklig zur Faser (k_α = 1,0), in GL24h (ρ_k = 385 kg/m³). Mit dem Lehrwert f_ax,k = 12 N/mm² und F_ax,Rk = f_ax,k·k_α·(ρ_k/350)^0,8·d·l_ef: Wie groß ist F_ax,Rk einer Schraube?
+- **Richtige Antwort:** rund 10,4 kN
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_innenausbau_1 · Sammlung
+
+- **Frage:** Zwei Estriche werden mit der CM-Methode geprüft: beheizter Calciumsulfat-Fließestrich 0,4 CM-%, unbeheizter Zementestrich 1,9 CM-%. Welche Aussage trifft nach den Richtwerten des Moduls zu?
+- **Richtige Antwort:** Nur der Zementestrich ist belegreif (1,9 ≤ 2,0); der CAF nicht (0,4 > 0,3)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
+- [ ] ok
+- [ ] ändern: …
+
 ### qn_innovative_werkstoffe_1 · Entwicklungen
 
 - **Frage:** 3D-Druck: ρ = 2 000 kg/m³, Zielhöhe H = 0,5 m, τ₀,₀ = 500 Pa, Thixotropierate A_thix = 100 Pa/min. Mit τ₀(t) = τ₀,₀ + A_thix·t und τ_req = ρ·g·H/√3: Welche Steigrate darf höchstens gewählt werden?
@@ -134,17 +256,89 @@ Cluster III umfasst 192 Fragen aus 32 Modulen. Aufgeführt sind 17 auffällige F
 - [ ] ok
 - [ ] ändern: …
 
+### qn_innovative_werkstoffe_4 · Entwicklungen
+
+- **Frage:** Für Stahlbetondecken im üblichen Hochbau soll der CO₂-Fußabdruck des Bindemittels deutlich sinken, ohne den Transportbetonprozess grundlegend zu ändern. Welche Wahl ist nach dem Modul am besten begründet?
+- **Richtige Antwort:** LC³-artiger Zement (CEM II/C-M, Q-LL): halber Klinkeranteil, genormt nach DIN EN 197-5
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
+- [ ] ok
+- [ ] ändern: …
+
 ### qn_mischungsberechnung_1 · Mischungsberechnung
 
 - **Frage:** Sand 0/4: 750 kg/m³ (trocken), Gesamtfeuchte 5,0 M.-%, Kernfeuchte (Wasseraufnahme) 1,0 M.-%. Der wirksame Wassergehalt soll 170 kg/m³ betragen. Wie viel Zugabewasser ist zu dosieren?
 - **Richtige Antwort:** 140 kg/m³
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Rückmeldung zu Option 3: 177,5 = 170 + Kernfeuchte
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_mischungsberechnung_4 · Mischungsberechnung
+
+- **Frage:** Ein Gemisch mit D_max = 16 mm hat die Durchgänge 45 % bei 4 mm und 65 % bei 8 mm. Regelsieblinien bei 4/8 mm: A16 = 35/50 %, B16 = 50/71 %, C16 = 71/85 %. Wie ist die Ist-Sieblinie einzuordnen?
+- **Richtige Antwort:** Zwischen A16 und B16 – günstiger Bereich
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_nachbehandlung_1 · Nachbehandlung
+
+- **Frage:** E = 5·[(T_c + 18)^2,5 − r·(T_a + 18)^2,5]·(V + 4)·10⁻⁶ mit Betontemperatur 25 °C, Lufttemperatur 20 °C, r = 0,50 und Wind 20 km/h. Wie groß ist E und wie ist sie einzustufen?
+- **Richtige Antwort:** 0,92 kg/(m²·h) – knapp unter dem kritischen Wert 1,0
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_nachbehandlung_3 · Nachbehandlung
+
+- **Frage:** Warum entstehen auf einer ungeschützten frischen Betonfläche bei trockenem, windigem Wetter Frühschwindrisse?
+- **Richtige Antwort:** Verdunstung übersteigt die Wassernachlieferung durch Bluten; kapillare Zugspannungen reißen den jungen Beton
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
+- [ ] ok
+- [ ] ändern: …
+
+### qn_nachbehandlung_4 · Nachbehandlung
+
+- **Frage:** Eine Bodenplatte wird bei 30 °C, 30 % relativer Luftfeuchte und kräftigem Wind betoniert (berechnete Verdunstung > 1,0 kg/(m²·h)). Welche Maßnahme ist am besten geeignet?
+- **Richtige Antwort:** Unmittelbar nach dem Abziehen abdecken oder Nachbehandlungsmittel aufsprühen
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_sichtbeton_3 · Sichtbeton (SB 1–4)
+
+- **Frage:** An einer Sichtbetonwand treten entlang der Schalungsstöße Kiesnester auf, die Fläche dazwischen ist einwandfrei. Welche Ursache ist am wahrscheinlichsten?
+- **Richtige Antwort:** Undichte Schalungsfugen, durch die Zementleim ausgelaufen ist
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_sichtbeton_4 · Sichtbeton (SB 1–4)
+
+- **Frage:** Wie soll Trennmittel bei Sichtbeton aufgebracht werden, und warum?
+- **Richtige Antwort:** Sehr dünn und gleichmäßig, da Überschuss zu Flecken und Verfärbungen führt
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_spannbeton_1 · Spannbeton
+
+- **Frage:** Kriechen und Schwinden verkürzen den Beton um Δε = 1,2 ‰. Wie groß ist der Spannungsverlust einer Litze Y1860 (E_p = 195 000 N/mm², σ_pm0 = 1 360 N/mm²) in Prozent von σ_pm0?
+- **Richtige Antwort:** rund 17 %
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt
+- [ ] ok
+- [ ] ändern: …
+
+### qn_wu-bauwerke_1 · WU-Bauwerke (Weiße Wannen)
+
+- **Frage:** Welche Bauweise verhindert durch vollflächigen Verbund der Abdichtung mit dem Frischbeton, dass Wasser bei einer punktuellen Verletzung die Abdichtung hinterläuft?
+- **Richtige Antwort:** Gelbe Wanne (FBV-Bahnen)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen
 - [ ] ok
 - [ ] ändern: …
 
 ## B. Stichprobe unauffälliger Fragen (5)
 
-Auswahl deterministisch (Sortierung nach Hash der Frage-ID), damit die Stichprobe nachvollziehbar ist.
+Auswahl deterministisch (Sortierung nach FNV-1a-Hash der Frage-ID), damit die Stichprobe nachvollziehbar ist.
 
 ### q_hyf_2 · Hydratation & Folgen
 
@@ -202,7 +396,7 @@ Niveau B/M · 90 min · Vorwissen: holzbau_bemessung, brandschutz
 - [ ] ok
 - [ ] ändern: …
 
-### nachbehandlung · Nachbehandlung & Curing
+### nachbehandlung · Nachbehandlung
 
 Niveau B · 45 min · Vorwissen: frischbeton, hydratation_folgen
 
@@ -214,7 +408,7 @@ Niveau B · 45 min · Vorwissen: frischbeton, hydratation_folgen
 - [ ] ok
 - [ ] ändern: …
 
-### festbeton · Festbetoneigenschaften
+### festbeton · Festbeton
 
 Niveau B · 75 min · Vorwissen: grundlagen, statistik
 
@@ -226,7 +420,7 @@ Niveau B · 75 min · Vorwissen: grundlagen, statistik
 - [ ] ok
 - [ ] ändern: …
 
-### holzbau_werkstoffe · Holzwerkstoffe & dataholz
+### holzbau_werkstoffe · Werkstoffe & dataholz
 
 Niveau B · 45 min · Vorwissen: holz, holzwerkstoffe
 
@@ -238,7 +432,7 @@ Niveau B · 45 min · Vorwissen: holz, holzwerkstoffe
 - [ ] ok
 - [ ] ändern: …
 
-### innenausbau · Innenausbau-Zentrum
+### innenausbau · Sammlung
 
 Niveau B · 120 min · Vorwissen: gips, daemmstoffe, ausbau
 

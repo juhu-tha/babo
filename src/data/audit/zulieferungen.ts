@@ -19,7 +19,7 @@ export const ZULIEFERUNGEN: readonly Zulieferung[] = [
   { nr: 'Z15', gegenstand: 'Branch-Schutz main', stand: 'Zurückgestellt (GitHub Actions gesperrt)', status: 'zurueckgestellt' },
   { nr: 'Z16/Z44', gegenstand: 'Terminpläne 7 Lernpfade, TTZ-Kursliste', stand: 'Entwürfe erstellt (App: „Woche ab …, Entwurf“)', status: 'wartet', statusText: 'wartet auf Abgleich', dateien: ['docs/entwuerfe/terminplaene-ws2627.md'] },
   { nr: 'Z18', gegenstand: 'Neue Themen vor/nach Konsolidierung', stand: 'Nach Konsolidierung', status: 'erledigt' },
-  { nr: 'Z19/Z23/Z26/Z38', gegenstand: 'Freigabe Quizfragen, Prüfhinweise, Lernziele, Prüfvermerke', stand: 'Prüflisten je Cluster (80 auffällige Fragen + Stichproben)', status: 'wartet', statusText: 'wartet auf Durchsicht', dateien: ['docs/pruefung/', 'docs/quiz-pruefhinweise.md'] },
+  { nr: 'Z19/Z23/Z26/Z38', gegenstand: 'Freigabe Quizfragen, Prüfhinweise, Lernziele, Prüfvermerke', stand: 'Prüflisten je Cluster (auffällige Fragen + Stichproben, erzeugt mit scripts/pruefliste.ts)', status: 'wartet', statusText: 'wartet auf Durchsicht', dateien: ['docs/pruefung/', 'docs/quiz-pruefhinweise.md'] },
   { nr: 'Z21', gegenstand: 'Alte Merges', stand: 'Erledigt', status: 'erledigt' },
   { nr: 'Z22', gegenstand: 'Fachentscheidungen Rechner-Durchsicht', stand: 'Normgemäß umgesetzt (Prüfpunkte im PR)', status: 'erledigt', prs: [189] },
   { nr: 'Z24', gegenstand: 'Fehlende Themen', stand: 'Mohr, Biegelinie, Fe-C, t-Test, Trittschall, Atterberg', status: 'erledigt', prs: [190, 191] },
