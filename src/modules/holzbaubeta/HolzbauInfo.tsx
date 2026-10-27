@@ -4,6 +4,7 @@ import { MODULE_HISTORY_DATA } from '@/src/data/moduleHistoryData';
 import type { Dispatch, SetStateAction } from 'react';
 import inhalt from '@/content/holzbaubeta/HolzbauInfo.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 interface HolzbauInfoProps {
   infoView: "uebersicht" | "historie";
@@ -14,28 +15,18 @@ export default function HolzbauInfo({ infoView, setInfoView }: HolzbauInfoProps)
   return (
       <div className="flex flex-col gap-6 animate-in fade-in duration-300" id="holz_tab_info">
 
-        {/* Sub-Navigation between Übersicht and Historie */}
-        <div className="flex flex-wrap gap-2 p-1.5 bg-slate-100/80 border border-home-grau/25 rounded-xl w-fit">
-          <button aria-pressed={infoView === 'uebersicht'}
-            onClick={() => setInfoView('uebersicht')}
-            className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
-                infoView === 'uebersicht'
-                  ? 'bg-shiraz text-white shadow-xs'
-                  : 'text-text-main/80 hover:text-text-main hover:bg-white/60'
-              }`}
-          >
-            <Info size={14} /><MdText text={inhalt.texte.fachportaleSystemvorteile} /></button>
-          <button aria-pressed={infoView === 'historie'}
-            onClick={() => setInfoView('historie')}
-            className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
-                infoView === 'historie'
-                  ? 'bg-shiraz text-white shadow-xs'
-                  : 'text-text-main/80 hover:text-text-main hover:bg-white/60'
-              }`}
-          >
-            <History size={14} /><MdText text={inhalt.texte.historieNormenwandel} /></button>
-        </div>
-
+        {/* Unteransichten Übersicht/Historie (gemeinsame Reiter-Komponente, ARIA-Tabs; Gutachten 27.10.2026) */}
+        <ModuleTabs
+          label="Ansicht der Modulinfos"
+          tabs={[
+            { id: 'uebersicht' as const, label: inhalt.texte.fachportaleSystemvorteile, icon: Info },
+            { id: 'historie' as const, label: inhalt.texte.historieNormenwandel, icon: History },
+          ]}
+          aktiv={infoView}
+          onWechsel={setInfoView}
+          className="flex flex-col gap-6"
+          panelKlasse="flex flex-col gap-6"
+        >
         {infoView === 'uebersicht' ? (
           <>
             {/* Reference sources grids */}
@@ -138,6 +129,7 @@ export default function HolzbauInfo({ infoView, setInfoView }: HolzbauInfoProps)
         ) : (
           <ModuleHistoryView history={MODULE_HISTORY_DATA.holzbau} accentColor="text-amber-800" />
         )}
+        </ModuleTabs>
 
       </div>
     );

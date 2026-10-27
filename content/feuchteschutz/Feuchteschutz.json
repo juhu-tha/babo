@@ -2,7 +2,7 @@
   "texte": {
     "feuchteschutzWasserdampfTaupunkt": "Feuchteschutz & Wasserdampf-Taupunkt",
     "berechnungsverfahrenNachDin4108": "Berechnungsverfahren nach DIN 4108-3 & Sättigungsdampfdruck nach der Magnus-Formel",
-    "feuchtigkeitImBauwerkFührt": "Feuchtigkeit im Bauwerk führt zu Bauschäden und gesundheitsschädlichem Schimmel. Mit diesem Berechnungs- und Demonstrationstool lassen sich die Luftfeuchte, der **Taupunkt (Kondensation)**sowie der Diffusionswiderstand geschichteter Konstruktionen nach dem **Periodenbilanzverfahren (Glaser-Verfahren)** analysieren.",
+    "feuchtigkeitImBauwerkFührt": "Feuchtigkeit im Bauwerk führt zu Bauschäden und gesundheitsschädlichem Schimmel. Mit diesem Berechnungs- und Demonstrationstool lassen sich die Luftfeuchte, der **Taupunkt (Kondensation)** sowie der Diffusionswiderstand geschichteter Konstruktionen nach dem **Periodenbilanzverfahren (Glaser-Verfahren)** analysieren.",
     "raumklimaBauteiloberfläche": " Raumklima & Bauteiloberfläche",
     "innenLufttemperaturTI": "Innen-Lufttemperatur (T_i):",
     "relRaumluftfeuchteI": "Rel. Raumluftfeuchte (φ_i):",
@@ -37,7 +37,7 @@
     "glaserDiagrammTauwasserbilanzDin": " Glaser-Diagramm & Tauwasserbilanz (DIN 4108-3)",
     "schichtaufbauAusDerS": "Schichtaufbau aus der s_d-Sandbox, aufgetragen über der diffusionsäquivalenten Luftschichtdicke s_d: Sättigungsdampfdruck p_sat aus dem Temperaturverlauf (Feuchteschutz: R_si = 0,25, R_se = 0,04 m²K/W) und Dampfdruck p. Der Dampfdruckverlauf ergibt sich aus der Tangentenkonstruktion als straff gespannter Faden von p_i nach p_e unterhalb von p_sat. Berührt er die Sättigungslinie in einem Punkt, liegt dort eine Tauwasserebene; folgt er ihr über eine Strecke, ein Tauwasserbereich.",
     "dauerDerTauperiode": "Dauer der Tauperiode:",
-    "klassischesGlaserKlima90": "Normklima nach DIN 4108-3 (seit Ausgabe 2014): Tauperiode 90 Tage mit innen 20 °C / 50 % und außen −5 °C / 80 %; Verdunstungsperiode 90 Tage mit p_i = p_e = 1 200 Pa und 1 700 Pa (Wand) bzw. 2 000 Pa (Dach) in der Tauwasserzone. Werte aus öffentlichen Sekundärquellen, Abgleich mit DIN 4108-3:2024-03 vorläufig (fachliche Freigabe ausstehend).",
+    "klassischesGlaserKlima90": "Normklima nach DIN 4108-3 (seit Ausgabe 2014): Tauperiode 90 Tage mit innen 20 °C / 50 % und außen −5 °C / 80 %; Verdunstungsperiode 90 Tage mit p_i = p_e = 1.200 Pa und 1.700 Pa (Wand) bzw. 2.000 Pa (Dach) in der Tauwasserzone. Werte aus öffentlichen Sekundärquellen, Abgleich mit DIN 4108-3:2024-03 vorläufig (fachliche Freigabe ausstehend).",
     "keinTauwasserInDer": "Kein Tauwasser in der Tauperiode",
     "anKeinerSchichtgrenzeErreicht": "An keiner Stelle des Bauteils erreicht der Dampfdruck p den Sättigungsdampfdruck (",
     "rechnerischeTauwassermasse0G": "). Rechnerische Tauwassermasse 0 kg/m².",
@@ -98,8 +98,8 @@
     "glaserKlimaNorm": "Normklima DIN 4108-3",
     "glaserKlimaRegler": "Innenklima aus den Reglern (Lehrvariante)",
     "glaserBauteilWahl": "Bauteilart für die Verdunstungsperiode",
-    "glaserBauteilWand": "Wand (1 700 Pa)",
-    "glaserBauteilDach": "Dach (2 000 Pa)",
+    "glaserBauteilWand": "Wand (1.700 Pa)",
+    "glaserBauteilDach": "Dach (2.000 Pa)",
     "schichtgrenzen": "Schichtgrenzen",
     "tauwasserbereich": "Tauwasserbereich",
     "tauwasserebene": "Tauwasserebene",
@@ -196,12 +196,12 @@
       },
       {
         "formel": "M_c = \\delta_0 \\cdot t_c \\cdot \\left( \\frac{p_i - p_{sat,c}}{s_{d,i}} - \\frac{p_{sat,c} - p_e}{s_{d,e}} \\right)",
-        "erklaerung": "Tauwassermasse M_c [kg/m²] der Tauperiode (Periodenbilanzverfahren, Tangentenkonstruktion); δ_0 = 2,0 · 10⁻¹⁰ kg/(m·s·Pa) = 7,2 · 10⁻⁷ kg/(m·h·Pa), t_c = 2 160 h, s_d,i bzw. s_d,e = s_d-Wert raumseitig bzw. außenseitig der Tauwasserebene (beim Tauwasserbereich bis zu dessen Rändern).",
+        "erklaerung": "Tauwassermasse M_c [kg/m²] der Tauperiode (Periodenbilanzverfahren, Tangentenkonstruktion); δ_0 = 2,0 · 10⁻¹⁰ kg/(m·s·Pa) = 7,2 · 10⁻⁷ kg/(m·h·Pa), t_c = 2.160 h, s_d,i bzw. s_d,e = s_d-Wert raumseitig bzw. außenseitig der Tauwasserebene (beim Tauwasserbereich bis zu dessen Rändern).",
         "quelle": "DIN 4108-3:2018-10; Rechenkern src/calc/glaser.ts"
       },
       {
         "formel": "M_{ev} = \\delta_0 \\cdot t_{ev} \\cdot \\left( \\frac{p_{sat,c} - p_i}{s_{d,i}} + \\frac{p_{sat,c} - p_e}{s_{d,e}} \\right)",
-        "erklaerung": "Verdunstungsmasse M_ev [kg/m²] der Verdunstungsperiode mit t_ev = 2 160 h, p_i = p_e = 1 200 Pa und p_sat,c = 1 700 Pa (Wand) bzw. 2 000 Pa (Dach) in der Tauwasserzone (Werte vorläufig, fachliche Freigabe ausstehend).",
+        "erklaerung": "Verdunstungsmasse M_ev [kg/m²] der Verdunstungsperiode mit t_ev = 2.160 h, p_i = p_e = 1.200 Pa und p_sat,c = 1.700 Pa (Wand) bzw. 2.000 Pa (Dach) in der Tauwasserzone (Werte vorläufig, fachliche Freigabe ausstehend).",
         "quelle": "DIN 4108-3:2018-10 (öffentliche Wiedergabe: ubakus.de, BaunetzWissen)"
       }
     ]

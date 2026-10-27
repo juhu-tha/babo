@@ -26,6 +26,7 @@ import { CalculationDashboard } from './interactivelcacalc/CalculationDashboard'
 import { ModulDLabor } from './interactivelcacalc/ModulDLabor';
 import inhalt from '@/content/interactivelcacalc/InteractiveLCACalc.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 export default function InteractiveLCACalc() {
   const [calcView, setCalcView] = useState<'konfigurator' | 'modul_d_labor' | 'vergleich'>('konfigurator');
@@ -313,38 +314,19 @@ export default function InteractiveLCACalc() {
         </div>
       </div>
 
-      {/* Main View Mode Selector (Konfigurator vs. Modul D Eingabemaske vs. Szenarien-Vergleich) */}
-      <div className="bg-white p-2 rounded-2xl border border-home-grau/30 shadow-xs flex flex-wrap gap-2">
-        {[
-          { id: 'konfigurator' as const, label: inhalt.werte.t1BaustoffeMassenLogistik, icon: Layers, badge: `${rows.length} Baustoffe` },
-          { id: 'modul_d_labor' as const, label: inhalt.werte.t2EingabemaskeModulD, icon: Recycle, badge: `${formatDeZahl(results.overallCircularityRate, 0)}% Zirkulär` },
-          { id: 'vergleich' as const, label: inhalt.werte.t3QngBenchmarkSzenarienvergleich, icon: Activity, badge: benchmarkStatus.label.split(' ')[0] }
-        ].map((v) => {
-          const Icon = v.icon;
-          const isActive = calcView === v.id;
-          return (
-            <button aria-pressed={isActive}
-              key={v.id}
-              onClick={() => setCalcView(v.id)}
-              className={`flex-1 min-w-[200px] p-3 rounded-xl border text-xs font-bold transition-all flex items-center justify-between gap-2 cursor-pointer ${
-                isActive
-                  ? 'bg-shiraz text-white border-shiraz shadow-xs'
-                  : 'bg-white text-slate-700 border-home-grau/30 hover:bg-off-white'
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <Icon size={16} className={isActive ? 'text-white' : 'text-shiraz'} />
-                <span>{v.label}</span>
-              </div>
-              <span className={`text-[10px] px-2 py-0.5 rounded-full font-mono font-bold ${
-                isActive ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
-              }`}>
-                {v.badge}
-              </span>
-            </button>
-          );
-        })}
-      </div>
+      {/* Hauptansichten (gemeinsame Reiter-Komponente, ARIA-Tabs; Gutachten 27.10.2026) */}
+      <ModuleTabs
+        label="Ansicht des Ökobilanz-Rechners"
+        tabs={[
+          { id: 'konfigurator' as const, label: inhalt.werte.t1BaustoffeMassenLogistik, icon: Layers, zusatz: `${rows.length} Baustoffe` },
+          { id: 'modul_d_labor' as const, label: inhalt.werte.t2EingabemaskeModulD, icon: Recycle, zusatz: `${formatDeZahl(results.overallCircularityRate, 0)}% Zirkulär` },
+          { id: 'vergleich' as const, label: inhalt.werte.t3QngBenchmarkSzenarienvergleich, icon: Activity, zusatz: benchmarkStatus.label.split(' ')[0] }
+        ]}
+        aktiv={calcView}
+        onWechsel={setCalcView}
+        className="space-y-6 [&>[role=tablist]]:bg-white [&>[role=tablist]]:p-2 [&>[role=tablist]]:rounded-2xl [&>[role=tablist]]:border [&>[role=tablist]]:border-home-grau/30"
+        panelKlasse="space-y-6"
+      >
 
       {/* Building Type Switch & QNG Benchmark Selection */}
       <div className="bg-white p-4 rounded-xl border border-home-grau/30 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -770,6 +752,7 @@ export default function InteractiveLCACalc() {
           </div>
         </div>
       )}
+      </ModuleTabs>
 
       <ModuleFooter
         wikipedia={[
