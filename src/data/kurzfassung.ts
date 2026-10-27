@@ -266,6 +266,13 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "DIN-Normen sind kein Gesetz, gelten aber widerlegbar als anerkannte Regeln der Technik; verbindlich werden sie als Technische Baubestimmung über die MVV TB oder durch Vertrag.",
     "Ohne Technische Baubestimmung braucht ein Produkt eine abZ bzw. aBG des DIBt, ein abP oder eine objektbezogene ZiE bzw. vBG; Mängelansprüche verjähren nach BGB in 5, nach VOB/B in 4 Jahren.",
   ],
+  lebensdauerbemessung: [
+    "Lebensdauerbemessung nach dem Leistungsprinzip weist nach, dass der Grenzzustand Depassivierung während der Nutzungsdauer nur mit kleiner Wahrscheinlichkeit erreicht wird.",
+    "fib Bulletin 34 empfiehlt dafür den Zuverlässigkeitsindex β₀ = 1,3, also eine Versagenswahrscheinlichkeit von etwa 10 %; den Deckungstabellen der EN 1992-1-1:2023 liegt β = 1,5 zugrunde.",
+    "Das Karbonatisierungsmodell erweitert das Wurzel-t-Gesetz um Feuchte, Nachbehandlung, Prüfkennwert R⁻¹_ACC,0 und Beregnung; das Chloridmodell nutzt D_RCM,0, Alterung, Temperatur und die Konvektionszone Δx.",
+    "Eine Monte-Carlo-Simulation mit festem Startwert liefert p_f(t) und β(t); daraus folgen die erforderliche mittlere Betondeckung und die rechnerische Lebensdauer.",
+    "Die Mittelwertrechnung zeigt den Rechenweg, ersetzt aber nicht die Streuungsbetrachtung; maßgebend für die Planung bleiben die eingeführten Regeln von DIN EN 1992-1-1/NA und DIN 1045-2.",
+  ],
   sonderbetone: [
     "Das Modul ordnet 15 Sonderbetone, von Leicht-, Schwer- und Infraleichtbeton über Spritz-, Faser- und Recyclingbeton bis zu UHPC, SVB und Bohrpfahlbeton; Sichtbeton ist kein eigener Betontyp.",
     "Konstruktionsleichtbeton mit 800 bis 2 000 kg/m³ bricht meist durch das weiche Korn und ist bei gleicher Festigkeitsklasse nur rund halb so steif wie Normalbeton; E-Modul und Zugfestigkeit werden über η_E und η_1 abgemindert.",

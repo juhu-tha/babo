@@ -34,7 +34,8 @@
     "achtungDepassivierungErreichtDie": "ACHTUNG: Depassivierung erreicht! Die Karbonatisierungsfront hat die Bewehrung erreicht.",
     "parameterSchnelltest": "Parameter (Schnelltest)",
     "schnellkarbonatisierungVsNatürlich": "Schnellkarbonatisierung vs. Natürlich",
-    "äquivalenterNatürlicherKWert": "Äquivalenter natürlicher K-Wert:"
+    "äquivalenterNatürlicherKWert": "Äquivalenter natürlicher K-Wert:",
+    "querLebensdauerText": "Mit Streuung von Deckung, $D_{RCM,0}$, Alterung und kritischem Chloridgehalt rechnet das Modul Lebensdauerbemessung die Versagenswahrscheinlichkeit und den Zuverlässigkeitsindex β nach fib Bulletin 34."
   },
   "werte": {
     "passivGeschützt": "Passiv (Geschützt)",
@@ -90,7 +91,9 @@
     "faradayschesGesetzDinEn": "Faradaysches Gesetz; DIN EN ISO 8044",
     "oktober2026Ap10": "Oktober 2026 (AP 10 Dauerhaftigkeit: Chlorid- und Karbonatisierungsmodelle, Alterungsexponenten, Normausgaben geprüft; fachliche Freigabe durch den Autor ausstehend)",
     "karbonatisierungBeton": "Karbonatisierung (Beton)",
-    "reiterBereiche": "Bereiche des Moduls Bewehrungskorrosion"
+    "reiterBereiche": "Bereiche des Moduls Bewehrungskorrosion",
+    "querLebensdauerTitel": "Probabilistisch weiterrechnen",
+    "querLebensdauerLink": "Zum Modul Lebensdauerbemessung"
   },
   "daten": {
     "Korrosion.schritte": [

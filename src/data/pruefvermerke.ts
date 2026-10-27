@@ -228,6 +228,7 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   schadstoffe: { status: 'offen' },
   schallschutz: { status: 'offen' },
   schnellkarbonatisierung: { status: 'offen' },
+  lebensdauerbemessung: { status: 'offen' },
   labor_potentialmessung: { status: 'offen' },
   labor_auslagerung: { status: 'offen' },
   labor_frischbeton: { status: 'offen' },
