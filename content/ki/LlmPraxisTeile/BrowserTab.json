@@ -2,14 +2,14 @@
   "texte": {
     "browserNutzungWebGrounding": " Browser-Nutzung & Web-Grounding: Normenrecherche ohne Halluzinationen",
     "wieSieEchtzeitSuchwerkzeuge": "Wie Sie Echtzeit-Suchwerkzeuge mit gezielten Suchfiltern einsetzen, um stets den tagesaktuellen Stand der Bautechnik zu verifizieren",
-    "perplexityDeepResearch": "Perplexity / Deep Research",
-    "chatgptSearch": "ChatGPT Search",
-    "claudeWebSearch": "Claude Web Search",
-    "perplexityDeepResearchSynthese": " Perplexity & Deep Research: Synthese aus 30+ Primärquellen",
+    "suchassistentDeepResearch": "Such-Assistent / Deep Research",
+    "websucheImChat": "Websuche im Chat",
+    "websucheImAgenten": "Websuche im Agenten-Workflow",
+    "suchassistentDeepResearchSynthese": " Such-Assistenten & Deep Research: Synthese aus 30+ Primärquellen",
     "idealFürWissenschaftlicheLiteraturrecher": "Ideal für wissenschaftliche Literaturrecherchen und neue bauaufsichtliche Zulassungen. Deep Research führt mehrstufige Suchketten aus, filtert Werbetexte heraus und belegt jede Aussage mit Fußnoten und direkten DOI/URL-Nachweisen.",
-    "chatgptSearchInteraktivesFact": " ChatGPT Search: Interaktives Fact-Checking mit Karten & News",
+    "websucheImChatFactChecking": " Websuche im Chat: Schnelles Fact-Checking mit aktuellen Quellen",
     "hervorragendZurSchnellenÜberprüfung": "Hervorragend zur schnellen Überprüfung von Baustoffpreisen, Hersteller-Lieferzeiten oder regionalen Verwaltungsvorschriften der Bundesländer (z. B. VV TB Bayern).",
-    "claudeWebSearchGezielter": " Claude Web Search: Gezielter Abruf während der Code- & Dokumentenerstellung",
+    "websucheImAgentenGezielter": " Websuche im Agenten-Workflow: Gezielter Abruf während der Code- & Dokumentenerstellung",
     "ruftBeiUnklarenNormentexten": "Ruft bei unklaren Normentexten oder fehlenden API-Parametern selbstständig die Dokumentation ab und bettet die verifizierten Daten direkt in Ihre Markdown-Berichte oder Berechnungen ein.",
     "gezielteSuchOperatorenGoogle": "Gezielte Such-Operatoren (Google Dorks) für Bau-Recherchen im LLM",
     "siteDibtDeZulassungsnr": "site:dibt.de [Zulassungsnr]",
@@ -28,7 +28,7 @@
     "t2BlindtextVerbotNegativ": "**2. Blindtext-Verbot (Negativ-Constraint):**",
     "reineSprachmodelleRechnenPer": "Reine Sprachmodelle rechnen per Token-Wahrscheinlichkeit. Zwingen Sie das Modell per Code-Interpreter oder Vorrechnung per Hand zur Plausibilitätsprüfung.",
     "t3RechnenImmerMit": "**3. Rechnen immer mit Python-Tool:**",
-    "lassenSieEinenStatischen": "Lassen Sie einen statischen Nachweis von Claude formulieren und übergeben Sie die Lösung an ChatGPT (Reasoning-Modus) mit dem Prompt: *\"Finde den Rechenfehler in diesem statischen Nachweis.\"*",
+    "lassenSieEinenStatischen": "Lassen Sie einen statischen Nachweis von einem Modell formulieren und übergeben Sie die Lösung an ein zweites, unabhängiges Modell (möglichst eines anderen Anbieters, im Reasoning-Modus) mit dem Prompt: *\"Finde den Rechenfehler in diesem statischen Nachweis.\"*",
     "t4ZweiModellValidierung": "**4. Zwei-Modell-Validierung (Cross-Checking):**"
   }
 }

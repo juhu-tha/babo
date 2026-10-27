@@ -28,7 +28,7 @@ interface ThesisTool {
   category: 'literatur' | 'schreiben' | 'coding';
   badge: string;
   badgeColor: string;
-  url: string;
+  url?: string;
   pricing: string;
   summary: string;
   thesisWorkflow: string;
@@ -105,11 +105,10 @@ const THESIS_TOOLS: ThesisTool[] = [
   },
   {
     id: 'deep_research',
-    name: inhalt.werte.deepResearchOpenaiGemini,
+    name: inhalt.werte.deepResearchAgenten,
     category: 'literatur',
     badge: inhalt.werte.autonomesWebResearch,
     badgeColor: 'bg-shiraz/10 text-shiraz border-shiraz/20',
-    url: 'https://perplexity.ai',
     pricing: 'Freemium',
     summary: inhalt.werte.autonomeKiAgentenDie,
     thesisWorkflow: inhalt.werte.eignetSichFürKomplexe,
@@ -158,8 +157,8 @@ const THESIS_TOOLS: ThesisTool[] = [
     caution: inhalt.werte.kopiereNichtUnbesehenGanze
   },
   {
-    id: 'overleaf_copilot',
-    name: inhalt.werte.overleafLatexCopilots,
+    id: 'overleaf_ki',
+    name: inhalt.werte.overleafLatexKi,
     category: 'schreiben',
     badge: inhalt.werte.formelsatzTikzGrafiken,
     badgeColor: 'bg-green-50 text-green-700 border-green-200',
@@ -186,8 +185,8 @@ const THESIS_TOOLS: ThesisTool[] = [
 
   // 3. Coding & Datenauswertung
   {
-    id: 'cursor_claude',
-    name: inhalt.werte.cursorClaudeCode,
+    id: 'cursor_coding',
+    name: inhalt.werte.kiCodeEditorenAgenten,
     category: 'coding',
     badge: inhalt.werte.kiGestütztesProgrammieren,
     badgeColor: 'bg-purple-50 text-purple-700 border-purple-200',
@@ -334,15 +333,17 @@ export default function ToolsFuerThesen() {
                     <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${tool.badgeColor}`}>
                       {tool.badge}
                     </span>
-                    <a 
-                      href={tool.url} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="text-text-main/40 hover:text-shiraz transition-colors p-1"
-                      title={inhalt.werte.websiteÖffnen}
-                    >
-                      <ExternalLink size={16} />
-                    </a>
+                    {tool.url && (
+                      <a 
+                        href={tool.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-text-main/40 hover:text-shiraz transition-colors p-1"
+                        title={inhalt.werte.websiteÖffnen}
+                      >
+                        <ExternalLink size={16} />
+                      </a>
+                    )}
                   </div>
 
                   <div>
@@ -428,15 +429,17 @@ export default function ToolsFuerThesen() {
                     <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${tool.badgeColor}`}>
                       {tool.badge}
                     </span>
-                    <a 
-                      href={tool.url} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="text-text-main/40 hover:text-shiraz transition-colors p-1"
-                      title={inhalt.werte.websiteÖffnen2}
-                    >
-                      <ExternalLink size={16} />
-                    </a>
+                    {tool.url && (
+                      <a 
+                        href={tool.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-text-main/40 hover:text-shiraz transition-colors p-1"
+                        title={inhalt.werte.websiteÖffnen2}
+                      >
+                        <ExternalLink size={16} />
+                      </a>
+                    )}
                   </div>
 
                   <div>
@@ -504,15 +507,17 @@ export default function ToolsFuerThesen() {
                     <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${tool.badgeColor}`}>
                       {tool.badge}
                     </span>
-                    <a 
-                      href={tool.url} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="text-text-main/40 hover:text-shiraz transition-colors p-1"
-                      title={inhalt.werte.websiteÖffnen3}
-                    >
-                      <ExternalLink size={16} />
-                    </a>
+                    {tool.url && (
+                      <a 
+                        href={tool.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-text-main/40 hover:text-shiraz transition-colors p-1"
+                        title={inhalt.werte.websiteÖffnen3}
+                      >
+                        <ExternalLink size={16} />
+                      </a>
+                    )}
                   </div>
 
                   <div>
@@ -800,8 +805,8 @@ export default function ToolsFuerThesen() {
                     <td className="p-3"><MdText text={inhalt.texte.stilistischerFeinschliffEliminierungVon} /></td>
                   </tr>
                   <tr className="hover:bg-off-white/50">
-                    <td className="p-3 font-bold text-shiraz"><MdText text={inhalt.texte.cursorZBMit} /></td>
-                    <td className="p-3 font-mono text-[11px]"><MdText text={inhalt.texte.anysphereAnthropic} /></td>
+                    <td className="p-3 font-bold text-shiraz"><MdText text={inhalt.texte.cursorKiCodeEditor} /></td>
+                    <td className="p-3 font-mono text-[11px]"><MdText text={inhalt.texte.anysphereModellAngeben} /></td>
                     <td className="p-3"><MdText text={inhalt.texte.kap4Versuchsauswertung} /></td>
                     <td className="p-3"><MdText text={inhalt.texte.generierungDesPythonMatplotlib} /></td>
                   </tr>

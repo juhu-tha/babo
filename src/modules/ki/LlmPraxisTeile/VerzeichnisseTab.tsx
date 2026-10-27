@@ -17,7 +17,7 @@ export function VerzeichnisseTab({ dirProjectType, setDirProjectType, copyToClip
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div className="space-y-1">
                     <h3 className="text-lg font-bold text-text-main flex items-center gap-2">
-                      <FolderTree size={20} className="text-shiraz" /><MdText text={inhalt.texte.projektverzeichnisseClaudeMdLeitfaden} /></h3>
+                      <FolderTree size={20} className="text-shiraz" /><MdText text={inhalt.texte.projektverzeichnisseAnweisungsdateiLeitfaden} /></h3>
                     <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.strukturierteDatenhaltungFürReibungslose} /></p>
                   </div>
     
@@ -50,7 +50,7 @@ export function VerzeichnisseTab({ dirProjectType, setDirProjectType, copyToClip
                     </div>
     
                     <div className="pt-2 text-slate-300">
-                      <div className="pl-2">├── 📄 <span className="text-emerald-300 font-bold">CLAUDE.md</span> <span className="text-slate-400"><MdText text={inhalt.texte.zentraleBüroProjektrichtlinien} /></span></div>
+                      <div className="pl-2">├── 📄 <span className="text-emerald-300 font-bold">PROJEKTANWEISUNGEN.md</span> <span className="text-slate-400"><MdText text={inhalt.texte.zentraleBüroProjektrichtlinien} /></span></div>
                       <div className="pl-2">├── 📄 <span className="text-amber-300 font-bold">.cursorrules</span> <span className="text-slate-400"><MdText text={inhalt.texte.codingFormelstandardsFürKi} /></span></div>
                       
                       {dirProjectType === 'bauleitung' && (
@@ -108,8 +108,8 @@ export function VerzeichnisseTab({ dirProjectType, setDirProjectType, copyToClip
                       <h4 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.dieGoldenenVerzeichnisRegeln} /></h4>
                       
                       <div className="p-2.5 bg-slate-50 rounded-lg border border-home-grau/20">
-                        <strong className="text-shiraz"><MdText text={inhalt.texte.t1ClaudeMdIm} /></strong>
-                        <p className="text-text-main/70 mt-0.5"><MdText text={inhalt.texte.wirdVonClaudeDesktop} /></p>
+                        <strong className="text-shiraz"><MdText text={inhalt.texte.t1AnweisungsdateiIm} /></strong>
+                        <p className="text-text-main/70 mt-0.5"><MdText text={inhalt.texte.wirdVonAgentenGeladen} /></p>
                       </div>
     
                       <div className="p-2.5 bg-slate-50 rounded-lg border border-home-grau/20">
@@ -123,26 +123,26 @@ export function VerzeichnisseTab({ dirProjectType, setDirProjectType, copyToClip
                       </div>
                     </div>
     
-                    <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl text-amber-900"><MdText text={inhalt.texte.proTippFürClaude} /><code className="font-mono">CLAUDE.md</code><MdText text={inhalt.texte.direktInDieProject} /></div>
+                    <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl text-amber-900"><MdText text={inhalt.texte.proTippProjektbereiche} /><code className="font-mono">PROJEKTANWEISUNGEN.md</code><MdText text={inhalt.texte.direktInDieProject} /></div>
                   </div>
                 </div>
     
-                {/* READY-TO-USE CLAUDE.MD CODE TEMPLATE */}
+                {/* READY-TO-USE VORLAGE PROJEKTANWEISUNGSDATEI */}
                 <div className="space-y-2 pt-2">
                   <div className="flex items-center justify-between">
                     <span className="font-bold text-xs uppercase tracking-wider text-shiraz flex items-center gap-1.5">
-                      <FileCode size={15} /><MdText text={inhalt.texte.vollständigeBüroVorlageClaude} /></span>
+                      <FileCode size={15} /><MdText text={inhalt.texte.vollständigeBüroVorlageAnweisungsdatei} /></span>
                     <button
-                      onClick={() => copyToClipboard(inhalt.werte.claudeMdIngenieurbüroRichtlinien, 'claudemd_full')}
+                      onClick={() => copyToClipboard(inhalt.werte.anweisungsdateiIngenieurbüroRichtlinien, 'anweisungsdatei_voll')}
                       className="px-2.5 py-1 bg-slate-100 hover:bg-shiraz hover:text-white rounded text-xxs font-bold flex items-center gap-1 transition-all"
                     >
-                      {copiedKey === 'claudemd_full' ? <Check size={12} /> : <Copy size={12} />}
-                      <span><MdText text={inhalt.texte.claudeMdKopieren} /></span>
+                      {copiedKey === 'anweisungsdatei_voll' ? <Check size={12} /> : <Copy size={12} />}
+                      <span><MdText text={inhalt.texte.anweisungsdateiKopieren} /></span>
                     </button>
                   </div>
     
                   <pre className="p-4 bg-slate-950 text-slate-200 rounded-xl text-xs font-mono overflow-x-auto leading-relaxed border border-slate-800">
-    {inhalt.werte.claudeMdIngenieurbüroRichtlinien2}
+    {inhalt.werte.anweisungsdateiIngenieurbüroRichtlinien2}
                   </pre>
                 </div>
               </div>

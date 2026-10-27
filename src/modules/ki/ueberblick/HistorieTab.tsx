@@ -53,7 +53,7 @@ export default function HistorieTab() {
             <span className="text-xs font-mono font-bold text-shiraz bg-shiraz/10 px-2 py-0.5 rounded">2022 – 2024</span>
             <h4 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.dieGenerativeKiRevolution} /></h4>
           </div>
-          <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.mitChatgptClaudeUnd} /></p>
+          <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.mitChatAssistenten} /></p>
           <div className="text-[11px] text-text-main/60 bg-off-white p-2 rounded-lg border border-home-grau/20"><MdText text={inhalt.texte.paradigmenwechselSoftwareentwicklungWird} /></div>
         </div>
 

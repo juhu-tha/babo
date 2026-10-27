@@ -99,7 +99,7 @@ export function SkillsKonnektorenTab({ skillSubTab, setSkillSubTab, copyToClipbo
                 {/* SUB-VIEW 2: MCP ARCHITEKTUR */}
                 {skillSubTab === 'mcp_arch' && (
                   <div className="space-y-5 animate-in fade-in duration-200">
-                    <p className="text-sm text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.mitDemVonAnthropic} /></p>
+                    <p className="text-sm text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.mcpOffenerStandard} /></p>
     
                     {/* Architecture diagram */}
                     <div className="p-5 bg-off-white rounded-xl border border-home-grau/20 my-4 space-y-4">
@@ -109,7 +109,7 @@ export function SkillsKonnektorenTab({ skillSubTab, setSkillSubTab, copyToClipbo
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                         <div className="p-4 bg-white rounded-xl border border-home-grau/30 shadow-xs space-y-2">
                           <div className="font-bold text-text-main flex items-center gap-1.5">
-                            <Laptop size={15} className="text-blue-600" /><MdText text={inhalt.texte.t1LlmClientClaude} /></div>
+                            <Laptop size={15} className="text-blue-600" /><MdText text={inhalt.texte.t1LlmClient} /></div>
                           <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.verstehtDieAbsichtDes} /></p>
                         </div>
     
@@ -141,8 +141,8 @@ export function SkillsKonnektorenTab({ skillSubTab, setSkillSubTab, copyToClipbo
                       <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 text-xs space-y-2">
                         <div className="font-bold text-text-main flex items-center gap-2">
                           <FolderTree size={16} className="text-shiraz" /><MdText text={inhalt.texte.filesystemMcpServer} /></div>
-                        <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.ermöglichtClaudeGezieltIn} /></p>
-                        <div className="text-[11px] text-text-main/60 bg-white p-2 rounded border border-home-grau/20 font-mono"><MdText text={inhalt.texte.claudeDesktopConfigJson} /></div>
+                        <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.ermöglichtDemAssistentenGezielt} /></p>
+                        <div className="text-[11px] text-text-main/60 bg-white p-2 rounded border border-home-grau/20 font-mono"><MdText text={inhalt.texte.mcpClientKonfiguration} /></div>
                       </div>
     
                       <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 text-xs space-y-2">

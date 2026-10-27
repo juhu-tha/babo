@@ -23,7 +23,7 @@
     "brProjektIdBv": "{<br>  projekt_id: \"BV-2024-Tiefgarage-Nord\",<br>  dokument_typ: \"Baugrundgutachten\",<br>  bauwerks_teil: \"Untergeschoss_2\",<br>  gueltig_ab: \"2024-03-15\",<br>  sicherheitsstufe: \"vertraulich\"<br>}",
     "schritt3VektorisierungDurch": "Schritt 3: Vektorisierung durch moderne Embedding-Modelle",
     "übersetzungMenschlicherBaubegriffeIn": "Übersetzung menschlicher Baubegriffe in hochdimensionale Geometrie",
-    "einComputerKannTexte": "Ein Computer kann Texte nicht wie ein Mensch \"verstehen\". Ein **Embedding-Modell** (z. B. `text-embedding-3-large` von OpenAI oder das quelloffene `bge-m3` / `nomic-embed-text` für lokalen Offline-Betrieb) liest den Text-Chunk und wandelt ihn in eine Liste von 1.536 bis 3.072 Zahlen (Vektor) um.",
+    "einComputerKannTexte": "Ein Computer kann Texte nicht wie ein Mensch \"verstehen\". Ein **Embedding-Modell** (z. B. ein Embedding-Dienst eines Cloud-Anbieters oder das quelloffene `bge-m3` / `nomic-embed-text` für lokalen Offline-Betrieb) liest den Text-Chunk und wandelt ihn in eine Liste von typischerweise 768 bis 3.072 Zahlen (Vektor) um.",
     "textFrostTausalzAngriff": "# Text: \"Frost-Tausalz-Angriff auf Brückenkappe mit Taumitteln\"",
     "embedding004210": "Embedding: [0.0421, -0.1983, 0.8124, 0.0039, ..., -0.4412] (3072 Dimensionen)",
     "derClouDerSemantik": "**Der Clou der Semantik:** Die Suchanfrage *\"Taumittelschäden Parkhaus\"* erhält einen mathematisch fast identischen Vektor wie der Absatz *\"Expositionsklasse XF4 und Taumittelbeanspruchung\"*. Die Suchmaschine findet den Absatz, obwohl völlig unterschiedliche Wörter verwendet wurden!",
