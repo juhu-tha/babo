@@ -82,7 +82,7 @@
     "konformitätsbeauftragterPrüfer": "Konformitätsbeauftragter / Prüfer:",
     "prüfdatumFestigkeitsAbnahme": "Prüfdatum (Festigkeits-Abnahme):",
     "fremdüberwachungsHinweisDiesesPrüfprotok": "**Fremdüberwachungs-Hinweis:** Dieses Prüfprotokoll dient zur Dokumentation der Betonsorte ",
-    "beiPrüfklasseÜk2Oder": "). Bei Prüfklasse ÜK2 oder ÜK3 ist die zusätzliche Absignatur des Fremdüberwachers (z. B. TÜV, Bau-Zert) gesetzlich vorgeschrieben und bewahrt die Ausführenden vor massiven Planerhaftungsansprüchen bei nachträglichen Bauschäden."
+    "beiPrüfklasseÜk2Oder": "). Bei Beton der Überwachungsklasse ÜK 2 (DIN 1045-3:2023-08; eine ÜK 3 gibt es seither nicht mehr) prüft zusätzlich eine anerkannte Überwachungsstelle im Rahmen der Fremdüberwachung die Eigenüberwachung der ständigen Betonprüfstelle. Ob dieses Protokoll gegenzuzeichnen ist, regeln Überwachungs- und Bauvertrag."
   },
   "werte": {
     "beispielprojektBauteilStützeA1": "Beispielprojekt, Bauteil Stütze A1",

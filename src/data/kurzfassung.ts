@@ -257,7 +257,7 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "Konform ist die Druckfestigkeit bei Erstherstellung (mindestens 3 Ergebnisse) mit f_cm ≥ f_ck + 4, bei stetiger Herstellung (mindestens 15) mit f_cm ≥ f_ck + 1,48 · σ; jeder Einzelwert muss f_ck − 4 erreichen.",
     "Auf der Baustelle sind Lieferschein mit Festigkeits-, Expositions- und Konsistenzklasse sowie Größtkorn und die Entladung spätestens 90 Minuten nach erster Wasserzugabe zu prüfen; Zusatzwasser ist unzulässig.",
     "DIN 1045-1000 kennt BBQ-N, BBQ-E und BBQ-S; BBQ-E und BBQ-S erfordern ein Betonbaukonzept, die Einstufung trifft der Planer und sie steuert die Aufgaben von Planer, Hersteller und Ausführenden.",
-    "Neben der Eigenüberwachung fordert DIN 1045-3 je nach Überwachungsklasse eine Fremdüberwachung; ÜK 1 braucht keine externe Prüfstelle, ein Beton C55/67 fällt in ÜK 3.",
+    "Neben der Eigenüberwachung fordert DIN 1045-3 je nach Überwachungsklasse eine Fremdüberwachung; ÜK 1 braucht keine externe Prüfstelle, ein Beton C55/67 fällt nach DIN 1045-3:2023-08 in ÜK 2 (die frühere ÜK 3 ist entfallen).",
   ],
   regularien: [
     "Die Regelungen im Bauwesen bilden sechs Stufen: EU-Recht, Bundesrecht, Landesrecht, kommunales Satzungsrecht, vertragliches Privatrecht und private technische Regeln wie DIN-Normen.",

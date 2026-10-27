@@ -15,7 +15,8 @@ interface BauteilTemplate {
   id: string;
   name: string;
   bbqClass: 'BBQ-N' | 'BBQ-E' | 'BBQ-S';
-  ueberwachungsklasse: 'ÜK 1' | 'ÜK 2' | 'ÜK 3';
+  /** DIN 1045-3:2023-08 kennt nur noch ÜK 1 und ÜK 2 (die frühere ÜK 3 ist entfallen). */
+  ueberwachungsklasse: 'ÜK 1' | 'ÜK 2';
   description: string;
   dangerLevel: string;
   phases: {
@@ -97,7 +98,7 @@ const BAUTEIL_TEMPLATES: BauteilTemplate[] = [
     id: 'sichtbeton_sb4',
     name: inhalt.werte.sichtbetonstützenKlasseSb4,
     bbqClass: 'BBQ-S',
-    ueberwachungsklasse: 'ÜK 3',
+    ueberwachungsklasse: 'ÜK 2',
     description: inhalt.werte.raumhoheHochausgelasteteTragstützenEines,
     dangerLevel: inhalt.werte.sehrHochOptischerSachmangel,
     phases: {
@@ -137,7 +138,7 @@ const BAUTEIL_TEMPLATES: BauteilTemplate[] = [
     id: 'spannbeton_binder',
     name: inhalt.werte.spannbetonHauptträgerWeitspan,
     bbqClass: 'BBQ-S',
-    ueberwachungsklasse: 'ÜK 3',
+    ueberwachungsklasse: 'ÜK 2',
     description: inhalt.werte.vorgespannterDachbinderImIndustriebau,
     dangerLevel: inhalt.werte.kritischVersagensrisikoBeiFehlerhaftem,
     phases: {
