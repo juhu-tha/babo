@@ -8,6 +8,7 @@
  */
 import fs from 'fs';
 import path from 'path';
+import { seitenUrl } from './seitenUrl.mjs';
 const { chromium } = await import('playwright');
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..');
 const ai = n => { const i = process.argv.indexOf(n); return i > 0 ? process.argv[i + 1] : undefined; };
@@ -23,7 +24,7 @@ const p = await ctx.newPage();
 const erg = {};
 for (const id of routen) {
   await p.goto('about:blank');
-  await p.goto(`${BASIS}#${id}`, { waitUntil: 'networkidle' });
+  await p.goto(seitenUrl(BASIS, id), { waitUntil: 'networkidle' });
   await p.waitForTimeout(250);
   erg[id] = await p.evaluate(() => {
     const vw = window.innerWidth;

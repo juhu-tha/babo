@@ -9,6 +9,7 @@ import {bedarfsLadenPlugin} from './scripts/bedarfsLaden';
 import {inhaltEinbettenPlugin} from './scripts/inhaltEinbetten';
 import {registryKernPlugin} from './scripts/registryKern';
 import {startSchalePlugin} from './scripts/startSchale';
+import {vorrendernPlugin} from './scripts/vorrendernPlugin';
 
 export default defineConfig(() => {
   return {
@@ -19,7 +20,8 @@ export default defineConfig(() => {
     // startSchalePlugin: statische Schale der Startseite in #root (AP 5.5 Nachtrag, scripts/startschale.html)
     // registryKernPlugin: schlanker Registry-Auszug im Einstieg, volle Registry bei Bedarf (AP 5.5 Nachtrag)
     // inhaltEinbettenPlugin: Werte aus content/**.json an den Verweisstellen einsetzen (AP 5.3)
-    plugins: [inhaltEinbettenPlugin(), bedarfsLadenPlugin(), registryKernPlugin(), react(), tailwindcss(), quizPoolPlugin(), modulKopfPlugin(), modulVorladenPlugin(), startSchalePlugin()],
+    // vorrendernPlugin: nach dem Build je Modul dist/modul/<id>.html vorrendern (Z52, scripts/vorrendern.ts)
+    plugins: [inhaltEinbettenPlugin(), bedarfsLadenPlugin(), registryKernPlugin(), react(), tailwindcss(), quizPoolPlugin(), modulKopfPlugin(), modulVorladenPlugin(), startSchalePlugin(), vorrendernPlugin()],
     // Hinweis: GEMINI_API_KEY wird bewusst NICHT per `define` in das Frontend geschrieben.
     // Der Schlüssel wird nur im Server (server.ts) verwendet.
     resolve: {

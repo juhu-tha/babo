@@ -1,14 +1,22 @@
-// Startseiten-Schale nur zeigen, wo sie dem ersten Bild von React entspricht (Umsetzungsplan Phase 5, AP 5.5 Nachtrag).
-// Browser-Skript (kein Node): Das Vite-Plugin scripts/startSchale.ts setzt es beim Build als Inline-Skript an den
-// Anfang von <head> – vor jedes Stylesheet, damit es sofort läuft (ein Skript hinter einem Stylesheet wartet auf
-// dessen Laden, der Browser zeichnet aber schon vorher). Es setzt die Klasse bb-schale an <html>; nur dann blendet
-// das Inline-Stylesheet die Schale ein. server.ts erlaubt das Skript per CSP-Hash.
+// Startseiten- bzw. Modulseiten-Schale nur zeigen, wo sie dem ersten Bild von React entspricht (Umsetzungsplan
+// Phase 5, AP 5.5 Nachtrag; Modulseiten Z52). Browser-Skript (kein Node): Das Vite-Plugin scripts/startSchale.ts
+// setzt es beim Build als Inline-Skript an den Anfang von <head> – vor jedes Stylesheet, damit es sofort läuft (ein
+// Skript hinter einem Stylesheet wartet auf dessen Laden, der Browser zeichnet aber schon vorher). Es setzt die
+// Klasse bb-schale an <html>; nur dann blendet das Inline-Stylesheet die Schale ein. server.ts erlaubt das Skript
+// per CSP-Hash. Welche Seite die Datei enthält, steht in <meta name="bb-vorgerendert"> davor (Modulseiten aus
+// scripts/vorrendern.ts; fehlt = Startseite). Pfadregel wie src/routing/pfad.ts.
 (function () {
   try {
+    var meta = document.querySelector('meta[name="bb-vorgerendert"]');
+    var seite = meta ? meta.getAttribute('content') : 'start';
+    var pfad = location.pathname;
+    var m = /^\/modul\/([^/]+)\/?$/.exec(pfad);
     var hash = decodeURIComponent(location.hash.slice(1)).trim().toLowerCase();
+    var adresse = m ? decodeURIComponent(m[1]).trim().toLowerCase()
+      : (pfad === '/' || pfad === '/index.html') && (hash === '' || hash === 'start') ? 'start' : '';
     var ls = window.localStorage;
     var breite = ls.getItem('baustoffboard_screen_width');
-    if ((hash === '' || hash === 'start')
+    if (adresse === seite
       && !/[?&]poll=/.test(location.search)
       && ls.getItem('baustoffboard_lang') !== 'en'
       && ls.getItem('theme') !== 'dark'

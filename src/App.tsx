@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   MoreHorizontal,
   GraduationCap,
@@ -34,13 +34,17 @@ import { tabGroups } from './routing/tabGroups';
 import { ModulNavigation, suchbegriffeLaden } from './components/navigation/ModulNavigation';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { LIZENZ_AKTIV } from './data/lizenz';
+import { lazySofort, vorladenFuer } from './routing/sofortLaden';
+import { modulPfad } from './routing/pfad';
 
 import type { TabId } from '@/src/contexts/TabContext';
 // Nur bei Bedarf geladen (Bundle-Budget, Phase 5 AP 5.4): Modulkopf mit Lernziel-/Erkundungsdaten,
 // Modul-Selbsttest (zieht quiz.json), Abstimmungsansicht (?poll=…) und SEO-Audit-Modal
 const AKTUELLE_VERSION = `v${PAKET_VERSION}`;
-const ModulInhalt = React.lazy(() => import('./routing/ModulInhalt'));
-const ModulKopf = React.lazy(() => import('./routing/ModulKopf'));
+// lazySofort: vorgerenderte Modulseiten (Z52) laden Inhalt und Kopf vor dem ersten Rendern, damit React die
+// statische Seite ohne Zwischenbild (Spinner) ersetzt – s. vorbereiten() und main.tsx
+const ModulInhalt = lazySofort(() => import('./routing/ModulInhalt'));
+const ModulKopf = lazySofort(() => import('./routing/ModulKopf'));
 const ModulTest = React.lazy(() => import('./components/quiz/ModulTest').then(m => ({ default: m.ModulTest })));
 const StudentPollVoteView = React.lazy(() => import('./components/polls/StudentPollVoteView'));
 const Kurzfragebogen = React.lazy(() => import('./components/feedback/Kurzfragebogen'));
@@ -48,8 +52,29 @@ const LicenseNotice = React.lazy(() => import('./components/ui/LicenseNotice'));
 const MetadataAuditModal = React.lazy(() => import('./components/seo/MetadataAuditModal').then(m => ({ default: m.MetadataAuditModal })));
 
 
-function AppContent() {
+/** Alles laden, was die Modulseite beim ersten Rendern braucht: Inhaltsverteiler, Modulkomponente, Modulkopf, Kopfdaten */
+export async function vorbereiten(tab: TabId): Promise<void> {
+  const [inhalt] = await Promise.all([
+    ModulInhalt.vorladen(),
+    ModulKopf.vorladen(),
+    import('./routing/modulKopfDaten').then(m => m.ladeKopfDaten(tab)),
+  ]);
+  await vorladenFuer(inhalt.default({ activeTab: tab }));
+}
+
+interface AppProps {
+  /** Startmodul statt Adresse (nur Vorrendern im Build) */
+  startTab?: TabId;
+  /** Seite wurde vorgerendert ausgeliefert: erstes Bild ohne Einblend-Animation (gleich der statischen Seite) */
+  vorgerendert?: boolean;
+  /** Vorrendern im Build (scripts/vorrendern.ts): Modulkopf und Inhalt in getrennten Suspense-Grenzen */
+  vorrendern?: boolean;
+}
+
+function AppContent({ vorgerendert = false, vorrendern = false }: Omit<AppProps, 'startTab'>) {
   const { activeTab, setActiveTab, theme, toggleTheme } = useTabContext();
+  const ersterTab = useRef(activeTab);
+  const ohneEinblenden = vorgerendert && activeTab === ersterTab.current;
   const { language, t, getTabLabel, getGroupName, getClusterName } = useLanguage();
   const [activePollParam, setActivePollParam] = useState<{ poll: string; qid?: string } | null>(() => {
     if (typeof window !== 'undefined') {
@@ -260,7 +285,7 @@ function AppContent() {
     const ogDesc = document.querySelector('meta[property="og:description"]');
     if (ogDesc) ogDesc.setAttribute('content', descriptionText);
     const ogUrl = document.querySelector('meta[property="og:url"]');
-    if (ogUrl && typeof window !== 'undefined') ogUrl.setAttribute('content', `${window.location.origin}/#${activeTab}`);
+    if (ogUrl && typeof window !== 'undefined') ogUrl.setAttribute('content', `${window.location.origin}${modulPfad(activeTab)}`);
   }, [activeTab, TAB_DESCRIPTIONS]);
 
   if (activePollParam) {
@@ -592,7 +617,7 @@ function AppContent() {
           }`}
         >
           <LanguageBanner />
-          <div id="module-content" className="animate-in fade-in slide-in-from-bottom-4 duration-500 pb-8 relative flex-1">
+          <div id="module-content" className={`${ohneEinblenden ? '' : 'animate-in fade-in slide-in-from-bottom-4 duration-500 '}pb-8 relative flex-1`}>
             {/* Running Header auf jeder Druckseite */}
             <div className="hidden print:block fixed top-0 left-0 right-0 text-center text-[10px] text-gray-500 py-1 bg-white border-b border-gray-300 font-sans z-50">
               Ausschließlich für akademische Lehrzwecke!
@@ -620,13 +645,22 @@ function AppContent() {
               </div>
             </div>
 {/* Platzhalter mindestens bildschirmhoch: sonst steht die Fußzeile beim Nachladen im Bild und springt weg (CLS, AP 5.5) */}
+{vorrendern ? (
+          // Build-Vorrendern: Fehler im Modul (Browser-APIs beim Rendern) sollen den Modulkopf nicht mitnehmen
+          <>
+            {activeTab !== 'start' && <React.Suspense fallback={null}><ModulKopf activeTab={activeTab} setActiveTab={setActiveTab} /></React.Suspense>}
+            <React.Suspense fallback={null}><ModulInhalt activeTab={activeTab} /></React.Suspense>
+          </>
+        ) : (
 <React.Suspense fallback={<div className="flex justify-center items-start pt-32 min-h-[100svh]"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-shiraz"></div></div>}>
           {/* Startseite hat keinen Modulkopf – Daten dort nicht laden */}
           {activeTab !== 'start' && <ModulKopf activeTab={activeTab} setActiveTab={setActiveTab} />}
           <ModulInhalt activeTab={activeTab} />
-          {/* Selbsttest für Module ohne eigenen Test in der Komponente (Phase 3, AP 3.4) */}
-          {MODULTEST_IN_APP.has(activeTab) && <div className="mt-8"><ModulTest moduleId={activeTab} /></div>}
+          {/* Selbsttest für Module ohne eigenen Test in der Komponente (Phase 3, AP 3.4); eigene Grenze, damit er
+              das erste Bild einer vorgerenderten Seite nicht aufhält */}
+          {MODULTEST_IN_APP.has(activeTab) && <React.Suspense fallback={null}><div className="mt-8"><ModulTest moduleId={activeTab} /></div></React.Suspense>}
           </React.Suspense>
+        )}
           </div>
 
           {/* Global Footer */}
@@ -659,11 +693,11 @@ function AppContent() {
 }
 
 
-export default function App() {
+export default function App({ startTab, vorgerendert, vorrendern }: AppProps = {}) {
   return (
     <ErrorBoundary>
-      <TabProvider>
-        <AppContent />
+      <TabProvider startTab={startTab}>
+        <AppContent vorgerendert={vorgerendert} vorrendern={vorrendern} />
       </TabProvider>
     </ErrorBoundary>
   );

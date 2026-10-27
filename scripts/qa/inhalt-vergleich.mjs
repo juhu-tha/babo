@@ -16,6 +16,7 @@ import fs from 'fs';
 import path from 'path';
 import { createRequire } from 'module';
 import { execSync } from 'child_process';
+import { seitenUrl } from './seitenUrl.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..');
 const [modus, ...rest] = process.argv.slice(2);
@@ -94,7 +95,7 @@ for (const [gname, vp] of Object.entries(GROESSEN)) {
     fehler = [];
     await p.goto('about:blank');
     const t0 = Date.now();
-    await p.goto(`${BASIS}#${id}`, { waitUntil: 'load' }).catch(e => fehler.push('goto: ' + e.message));
+    await p.goto(seitenUrl(BASIS, id), { waitUntil: 'load' }).catch(e => fehler.push('goto: ' + e.message));
     await p.waitForSelector('#module-content h1, #module-content h2', { timeout: 15000 }).catch(() => {});
     await p.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     if (process.env.ZEIT) console.log('geladen', id, Date.now() - t0);

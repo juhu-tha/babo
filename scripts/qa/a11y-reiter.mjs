@@ -8,6 +8,7 @@
  */
 import fs from 'fs';
 import { createRequire } from 'module';
+import { seitenUrl } from './seitenUrl.mjs';
 
 const lade = async n => { try { return await import(n); } catch { return createRequire(import.meta.url)(n); } };
 const { chromium } = await lade('playwright');
@@ -64,7 +65,7 @@ for (const modus of MODI) {
   const page = await ctx.newPage();
   for (const id of ROUTEN) {
     await page.goto('about:blank');
-    await page.goto(`${BASIS}#${id}`, { waitUntil: 'networkidle' });
+    await page.goto(seitenUrl(BASIS, id), { waitUntil: 'networkidle' });
     await page.waitForTimeout(300);
     const oben = await reiterNamen(page);
     if (!oben.length) { await pruefe(page, `${modus}:${id}`); continue; }

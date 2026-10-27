@@ -44,10 +44,13 @@ pruefe(index.includes(KOPF_ANKER) && !/<link[^>]*stylesheet|<style/.test(index.s
 
 // 4. Boot-Skript: Schale nur auf der Startseite mit Standardeinstellungen
 const boot = fs.readFileSync('scripts/startschale-boot.js', 'utf8');
-function laufe(hash: string, search: string, speicher: Record<string, string>): 'behalten' | 'entfernt' {
+// pfad/seite: Adresse und Inhalt der Datei (<meta name="bb-vorgerendert">, Modulseiten aus scripts/vorrendern.ts, Z52)
+function laufe(hash: string, search: string, speicher: Record<string, string>, pathname = '/', seite?: string): 'behalten' | 'entfernt' {
   const klassen = new Set<string>();
   const ls = { getItem: (k: string) => (k in speicher ? speicher[k] : null) };
-  vm.runInNewContext(boot, { document: { documentElement: { classList: { add: (k: string) => klassen.add(k) } } }, location: { hash, search }, window: { localStorage: ls }, decodeURIComponent });
+  const meta = seite === undefined ? null : { getAttribute: (n: string) => (n === 'content' ? seite : null) };
+  const document = { documentElement: { classList: { add: (k: string) => klassen.add(k) } }, querySelector: (q: string) => (q === 'meta[name="bb-vorgerendert"]' ? meta : null) };
+  vm.runInNewContext(boot, { document, location: { hash, search, pathname }, window: { localStorage: ls }, decodeURIComponent });
   return klassen.has('bb-schale') ? 'behalten' : 'entfernt';
 }
 pruefe(laufe('', '', {}) === 'behalten', 'Startseite ohne Hash: Schale fehlt');
@@ -58,6 +61,15 @@ pruefe(laufe('', '', { baustoffboard_lang: 'en' }) === 'entfernt', 'Englisch: Sc
 pruefe(laufe('', '', { theme: 'dark' }) === 'entfernt', 'Dunkelmodus: Schale bleibt');
 pruefe(laufe('', '', { baustoffboard_screen_width: 'full' }) === 'entfernt', 'Vollbreite: Schale bleibt');
 pruefe(laufe('', '', { baustoffboard_fluid_width: 'false' }) === 'entfernt', 'alte Breiten-Einstellung: Schale bleibt');
+// Modulseiten (Z52): nur die zur Adresse passende vorgerenderte Datei zeigen
+pruefe(laufe('', '', {}, '/modul/glas', 'glas') === 'behalten', '/modul/glas: vorgerenderte Seite fehlt');
+pruefe(laufe('', '', {}, '/modul/Glas/', 'glas') === 'behalten', '/modul/Glas/: Groß-/Kleinschreibung, Schrägstrich');
+pruefe(laufe('#abschnitt', '', {}, '/modul/glas', 'glas') === 'behalten', '/modul/glas#abschnitt: Anker blendet Seite aus');
+pruefe(laufe('', '', {}, '/modul/glas') === 'entfernt', '/modul/glas mit index.html (Start-Schale): Schale bleibt');
+pruefe(laufe('', '', {}, '/modul/glas', 'holz') === 'entfernt', 'falsche Modulseite: Schale bleibt');
+pruefe(laufe('', '', {}, '/', 'glas') === 'entfernt', 'Modulseite unter /: Schale bleibt');
+pruefe(laufe('', '', { theme: 'dark' }, '/modul/glas', 'glas') === 'entfernt', 'Modulseite im Dunkelmodus: Schale bleibt');
+pruefe(laufe('', '?poll=x', {}, '/modul/glas', 'glas') === 'entfernt', 'Modulseite mit Umfrage: Schale bleibt');
 
 if (fehler.length) {
   for (const f of fehler) console.error(`FAIL: ${f}`);

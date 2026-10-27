@@ -32,6 +32,7 @@ import os from 'os';
 import path from 'path';
 import { createRequire } from 'module';
 import { execSync } from 'child_process';
+import { seitenUrl } from './seitenUrl.mjs';
 
 async function ladePlaywright() {
   try { return await import('playwright'); } catch { /* nicht lokal installiert */ }
@@ -163,7 +164,7 @@ async function neueSeite(opt = {}) {
   return { ctx, page, seitenfehler };
 }
 async function oeffne(page, id) {
-  await page.goto(`${BASIS}#${id}`, { waitUntil: 'networkidle' });
+  await page.goto(seitenUrl(BASIS, id), { waitUntil: 'networkidle' });
   await page.locator('#module-content h1, #module-content h2').first().waitFor({ timeout: 15000 });
   await page.waitForTimeout(400);
 }
@@ -192,7 +193,7 @@ async function pdfExport(e, id, knopfName, vorher_klicks = [], langsam = false) 
   try {
     if (langsam) {
       await page.route(/\/assets\/(react-katex|chart)-[\w-]+\.js$/, async r => { await new Promise(f => setTimeout(f, 2500)); await r.continue(); });
-      await page.goto(`${BASIS}#${id}`, { waitUntil: 'domcontentloaded' });
+      await page.goto(seitenUrl(BASIS, id), { waitUntil: 'domcontentloaded' });
       await page.locator('#module-content h1, #module-content h2').first().waitFor({ timeout: 15000 });
     } else await oeffne(page, id);
     for (const k of vorher_klicks) { await knopf(page, k).click(); await page.waitForTimeout(300); }

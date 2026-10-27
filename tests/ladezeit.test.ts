@@ -44,7 +44,7 @@ pruefe(z.tabs.get('glas') === 'Glas', `glas → ${z.tabs.get('glas')}`);
 
 // 3. Vorlade-Skript (Browser-Code) mit einer Attrappe von document/location ausführen
 const boot = fs.readFileSync('scripts/vorladen-boot.js', 'utf8');
-function fuehreAus(hash: string, karte: unknown) {
+function fuehreAus(hash: string, karte: unknown, pathname = '/') {
   const links: Array<Record<string, string>> = [];
   const document = {
     getElementById: (id: string) => (id === 'modul-vorladen' ? { textContent: JSON.stringify(karte) } : null),
@@ -52,12 +52,15 @@ function fuehreAus(hash: string, karte: unknown) {
     createElement: () => ({} as Record<string, string>),
     head: { appendChild: (l: Record<string, string>) => links.push(l) },
   };
-  vm.runInNewContext(boot, { document, location: { hash } });
+  vm.runInNewContext(boot, { document, location: { hash, pathname } });
   return links;
 }
 const karte = { b: '/assets/', d: ['ModulInhalt.js', 'ModulKopf.js', 'Glas.js', 'icons.js', 'kopf-glas.js', 'Startseite.js', 'Aufgaben.js', 'app.css'], i: [0], k: [1], c: [[2, 3, 7], [5, 3], [6]], t: { glas: 0, start: 1 }, p: [['aufgaben', 2]], h: { glas: 4 } };
 const glas = fuehreAus('#glas', karte);
 pruefe(JSON.stringify(glas.map(l => l.href)) === JSON.stringify(['/assets/ModulInhalt.js', '/assets/ModulKopf.js', '/assets/Glas.js', '/assets/icons.js', '/assets/app.css', '/assets/kopf-glas.js']), `#glas: ${glas.map(l => l.href).join(', ')}`);
+// Pfad-Routing (Z52): /modul/glas lädt dasselbe vor wie der alte Hash-Link
+pruefe(JSON.stringify(fuehreAus('', karte, '/modul/glas').map(l => l.href)) === JSON.stringify(glas.map(l => l.href)), '/modul/glas lädt anders vor als #glas');
+pruefe(fuehreAus('#holz', karte, '/modul/glas').some(l => l.href === '/assets/Glas.js'), 'Pfad geht vor Hash (Anker im Modul)');
 pruefe(glas.find(l => l.href.endsWith('.css'))?.rel === 'preload' && glas.find(l => l.href.endsWith('.css'))?.as === 'style', 'CSS nicht als preload/style');
 pruefe(glas.filter(l => l.href.endsWith('.js')).every(l => l.rel === 'modulepreload'), 'JS nicht als modulepreload');
 const start = fuehreAus('', karte);

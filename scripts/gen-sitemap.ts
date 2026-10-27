@@ -26,7 +26,7 @@ export function erzeugeSitemap(): string {
     const inGruppe = eintraege.filter(m => m.gruppe === g);
     if (!inGruppe.length) continue;
     teile.push('', `  <!-- ${g ?? 'Direktlinks (ohne Menüeintrag)'} -->`);
-    for (const m of inGruppe) teile.push(url(`${BASIS}#${m.id}`, 'weekly', g ? '0.8' : '0.6'));
+    for (const m of inGruppe) teile.push(url(`${BASIS}modul/${m.id}`, 'weekly', g ? '0.8' : '0.6'));
   }
   teile.push('</urlset>', '');
   return teile.join('\n');

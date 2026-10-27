@@ -4,7 +4,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { ChevronDown, ChevronUp, HelpCircle, Lightbulb, BookOpen, Search, Tags, GraduationCap, Trophy, ClipboardCheck, ArrowRight, Calculator } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaText } from '@/src/components/ui/FormulaText';
-import { useTabContext } from '@/src/contexts/TabContext';
+import { useTabContext, tabAusAdresse } from '@/src/contexts/TabContext';
 import { BloomLernziele } from '@/src/components/ui/BloomLernziele';
 // Klausur, Quiz, Trainer und Forensik je Modus als eigener Chunk (Phase 5, AP 5.5 Nachtrag): Die Seite lud
 // sonst alle vier samt Diagrammbibliothek (~200 kB gzip). Der Modus des Direktaufrufs wird sofort angefordert.
@@ -18,7 +18,8 @@ const DynamischerAufgabenGenerator = React.lazy(ladeTrainer);
 const SchadensforensikSimulator = React.lazy(ladeForensik);
 try {
   const direkt: Record<string, () => Promise<unknown>> = { aufgaben_klausur: ladeKlausur, aufgaben_quiz: ladeQuiz, aufgaben_trainer: ladeTrainer, aufgaben_komplex: ladeForensik };
-  void direkt[decodeURIComponent(window.location.hash.slice(1)).trim().toLowerCase()]?.();
+  // Adresse /modul/<id> bzw. alter Hash-Link (Z52)
+  void direkt[tabAusAdresse() ?? '']?.();
 } catch { /* nur Beschleunigung */ }
 import { taskCategories } from '../data/aufgabenData';
 import inhalt from '@/content/aufgaben/Aufgaben.json';

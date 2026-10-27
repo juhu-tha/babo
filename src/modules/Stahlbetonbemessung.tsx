@@ -11,7 +11,8 @@ import {
   Sparkles,
   GraduationCap
 } from 'lucide-react';
-import { useTabContext } from '@/src/contexts/TabContext';
+import { useTabContext, isKnownTab } from '@/src/contexts/TabContext';
+import { modulPfad } from '@/src/routing/pfad';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { GruppierteModuleTabs, type ModulTabGruppe } from '@/src/components/ui/GruppierteModuleTabs';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
@@ -104,7 +105,8 @@ export default function Stahlbetonbemessung({ initialTab }: { initialTab?: Bemes
   const handleTabChange = (tab: BemessungSubTab) => {
     setCurrentTab(tab);
     if (typeof window !== 'undefined' && window.history?.replaceState) {
-      window.history.replaceState(null, '', `#${tab}`);
+      // Unterreiter mit eigener Modul-ID → deren Pfad (Z52), sonst Anker an der aktuellen Adresse
+      window.history.replaceState(null, '', isKnownTab(tab) ? modulPfad(tab) + window.location.search : `#${tab}`);
     }
   };
 
