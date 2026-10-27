@@ -4,7 +4,7 @@
  * Betonstahl bilinear mit horizontalem Ast. Reiner Rechenkern – geprüft in tests/stuetze.test.ts.
  */
 import { EC2_NA_DE } from '../data/normParams';
-import { E_BETONSTAHL } from '../data/kennwerte';
+import { E_BETONSTAHL, fcdBeton, fcdHochfestHinweis } from '../data/kennwerte';
 import { formatDeZahl } from '../utils/numberFormat';
 import { type Hinweis, hatFehler, istEndlich, muss, bereich } from './plausibilitaet';
 
@@ -93,7 +93,10 @@ export function bemesseStuetze(e: StuetzeEingabe): StuetzeErgebnis {
   if (hatFehler(hinweise)) return leer;
 
   const b_m = e.b / 100, h_m = e.h / 100, d1_m = e.d1 / 100;
-  const fcd = (EC2_NA_DE.alphaCC * e.fck) / EC2_NA_DE.gammaC;
+  // f_cd zentral (src/data/kennwerte.ts): α_cc·f_ck/γ_c, ab C55/67 · (1,1 − f_ck/500) (vorläufig, F-Freigabe)
+  const fcd = fcdBeton(e.fck);
+  const hfHinweis = fcdHochfestHinweis(e.fck);
+  if (hfHinweis) hinweise.push({ stufe: 'warnung', feld: 'fck', text: hfHinweis });
   const fyd = e.fyk / EC2_NA_DE.gammaS;
   const e0_m = EC2_NA_DE.e0Min_mm(e.h * 10) / 1000; // 6.1(4): e0 = max(h/30; 20 mm)
   const ei_m = e.l0 / 400;                         // 5.2(9): e_i = l0/400 (Einzelbauteil)

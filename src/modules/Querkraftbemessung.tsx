@@ -311,7 +311,7 @@ export default function Querkraftbemessung() {
                 {
                   titel: 'Druckstrebentragfähigkeit',
                   erklaerung: `ν₁ = 0,75 · min(1,0; 1,1 − f_ck/500). Ausnutzung der Druckstrebe: ${formatDeZahl((vEd / results.vRd_max) * 100, 1)} %.`,
-                  formel: `V_{Rd,max} = \\frac{b \\cdot z \\cdot \\nu_1 \\cdot f_{cd}}{\\tan\\theta + \\cot\\theta} = \\frac{${formatDeTeX(b / 100, 2)} \\cdot ${formatDeTeX(results.z / 100, 3)} \\cdot ${formatDeTeX(EC2_NA_DE.nu1 * Math.min(1.0, 1.1 - fck / 500), 3)} \\cdot ${formatDeTeX(results.fcd, 1)}}{${formatDeTeX(1 / results.cot_theta_eff, 3)} + ${formatDeTeX(results.cot_theta_eff, 3)}} \\cdot 10^3 = ${formatDeTeX(results.vRd_max, 0)}\\,\\text{kN} \\;${results.isVRdMaxExceeded ? '<' : '\\ge'}\\; V_{Ed} = ${formatDeTeX(vEd, 0)}\\,\\text{kN}`,
+                  formel: `V_{Rd,max} = \\frac{b \\cdot z \\cdot \\nu_1 \\cdot f_{cd}}{\\tan\\theta + \\cot\\theta} = \\frac{${formatDeTeX(b / 100, 2)} \\cdot ${formatDeTeX(results.z / 100, 3)} \\cdot ${formatDeTeX(EC2_NA_DE.nu1 * Math.min(1.0, 1.1 - fck / 500), 3)} \\cdot ${formatDeTeX(results.fcd_vRdMax, 1)}}{${formatDeTeX(1 / results.cot_theta_eff, 3)} + ${formatDeTeX(results.cot_theta_eff, 3)}} \\cdot 10^3 = ${formatDeTeX(results.vRd_max, 0)}\\,\\text{kN} \\;${results.isVRdMaxExceeded ? '<' : '\\ge'}\\; V_{Ed} = ${formatDeTeX(vEd, 0)}\\,\\text{kN}`,
                 },
                 {
                   titel: inhalt.werte.rechnerischErforderlicheBügelbewehrung,

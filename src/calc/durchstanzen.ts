@@ -5,6 +5,7 @@
  * Reiner Rechenkern – geprüft in tests/durchstanzen.test.ts.
  */
 import { EC2_NA_DE } from '../data/normParams';
+import { fcdBeton } from '../data/kennwerte';
 import { type Hinweis, bereich, hatFehler, istEndlich, muss } from './plausibilitaet';
 
 export interface DurchstanzEingabe {
@@ -58,7 +59,8 @@ export function bemesseDurchstanzen(e: DurchstanzEingabe): DurchstanzErgebnis {
   const u1 = e.form === 'rund' ? Math.PI * (e.c + 4 * e.d) : 2 * (e.cx + e.cy) + 4 * Math.PI * e.d;
   const vEd_stress = (e.beta * e.vEd * 1000) / (u1 * e.d); // (6.38)
 
-  const fcd = (EC2_NA_DE.alphaCC * e.fck) / EC2_NA_DE.gammaC;
+  // f_cd zentral (src/data/kennwerte.ts); geht nur in die Grenze ρ_l ≤ 0,5·f_cd/f_yd ein
+  const fcd = fcdBeton(e.fck);
   const fyd = (e.fyk ?? 500) / EC2_NA_DE.gammaS;
   const k = Math.min(1 + Math.sqrt(200 / e.d), 2.0);
   const rhoL_eff = Math.min(e.rhoL, 0.02, (0.5 * fcd) / fyd); // NA DE 6.4.4(1)
