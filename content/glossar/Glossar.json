@@ -557,9 +557,9 @@
       {
         "term": "Kritischer Chloridgehalt",
         "category": "Dauerhaftigkeit & Korrosion",
-        "definition": "Grenzkonzentration freier Chloride im Beton bezogen auf die Zementmasse (typisch 0,40 bis 0,50 M-% für Stahlbeton), ab der mit Lochfraßkorrosion gerechnet werden muss.",
+        "definition": "Chloridgehalt an der Bewehrung, ab dem die Passivschicht örtlich durchbrochen werden kann (Lochfraß); kein Normwert. In Deutschland üblicher Bewertungswert ≈ 0,5 M.-% bez. auf Zement, objektspezifisch festzulegen; fib Bulletin 34 setzt im Lebensdauermodell den Mittelwert 0,6 M.-% an (Betaverteilung). 0,40 M.-% ist der Höchstwert der Chloridklasse Cl 0,40 für Stahlbeton bei der Herstellung (DIN EN 206/DIN 1045-2), kein Auslösewert.",
         "unit": "M-% bez. auf Zement",
-        "standards": "Erfahrungswert (TR Instandhaltung); Chloridklassen der Ausgangsmischung nach DIN EN 206"
+        "standards": "Bewertungswert nach DAfStb-Richtlinie Schutz und Instandsetzung (Breit et al., Beton- und Stahlbetonbau 106, 2011); fib Bulletin 34; Chloridklassen der Ausgangsmischung nach DIN EN 206/DIN 1045-2"
       },
       {
         "term": "Alkali-Kieselsäure-Reaktion (AKR)",

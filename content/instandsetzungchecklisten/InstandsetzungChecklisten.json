@@ -27,7 +27,7 @@
     "chloridTiefenstufenprofilImLabor": "Chlorid-Tiefenstufenprofil im Labor ermitteln",
     "trockenbohrmehlentnahmeInTiefenstufen0": "Trockenbohrmehlentnahme in Tiefenstufen (0-10 mm, 10-20 mm, 20-30 mm etc.) und potentiometrische Titration des säurelöslichen Chlorids im Labor.",
     "dinEn14629Dafstb": "DIN EN 14629 / DAfStb-Heft 510",
-    "cKrit050": "C_krit <= 0,50 M.-% / Zement (Normalbeton) bzw. 0,20 M.-% (Spannbeton)",
+    "cKrit050": "C_krit ≈ 0,50 M.-% / Zement (Bewertungswert, objektspezifisch); Spannbeton gesondert beurteilen (Herstellungsgrenze Cl 0,20)",
     "abreißfestigkeitDesAltbetonsPrüfen": "Abreißfestigkeit des Altbetons prüfen",
     "haftzugprüfungAnRepräsentativenVorbereit": "Haftzugprüfung an repräsentativen, vorbereiteten Stellen durchführen (Kernbohrung 50 mm Durchmesser).",
     "mittelwert15N": "Mittelwert >= 1,5 N/mm²; kleinster Einzelwert >= 1,0 N/mm²",

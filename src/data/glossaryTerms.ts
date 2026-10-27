@@ -100,7 +100,7 @@ export const GLOSSARY_TERMS: Record<string, GlossaryTerm> = {
     term: 'Passivschicht',
     category: 'Dauerhaftigkeit',
     kurzdefinition: 'Mikroskopisch dünne Eisenoxid-/Hydroxidschicht auf Bewehrungsstahl im alkalischen Milieu (pH > 12,5).',
-    details: 'Verhindert den anodischen Eisenabtrag. Wird durch Karbonatisierung (pH < 9,0) oder durch kritischen Chloridgehalt (Cl⁻ > 0,40 Gew.-% bez. auf Zement) zerstört.',
+    details: 'Verhindert den anodischen Eisenabtrag. Wird durch Karbonatisierung (pH < 9,0) oder durch Chloride oberhalb des korrosionsauslösenden Gehalts (Bewertungswert ≈ 0,5 M.-% bez. auf Zement; 0,40 M.-% ist nur die Herstellungsgrenze Cl 0,40) zerstört.',
     norm: 'DIN EN 1504 / DAfStb'
   },
   'akr': {

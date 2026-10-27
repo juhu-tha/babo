@@ -4,7 +4,7 @@
     "t1KorrosionsParameter": " 1. Korrosions-Parameter",
     "chloridgehaltAmBewehrungsstahl": "Chloridgehalt am Bewehrungsstahl:",
     "t010Passiv": "0,10 % (Passiv)",
-    "kritisch050": "Kritisch: 0,50 %",
+    "kritisch050": "Bewertungswert: 0,50 %",
     "t250Extrem": "2,50 % (Extrem)",
     "relativeBetonfeuchteRh": "Relative Betonfeuchte (RH):",
     "betondeckungCnom": "Betondeckung (cnom):",
@@ -109,7 +109,7 @@
       },
       {
         "titel": "Chloridgehalt",
-        "erklaerung": "Vergleich mit dem kritischen Gehalt (Orientierungswert 0,5 M.-% v. z.):",
+        "erklaerung": "Vergleich mit dem korrosionsauslösenden Chloridgehalt (kein Normwert; in Deutschland üblicher Bewertungswert 0,5 M.-% v. z. nach Breit et al. 2011; fib Bulletin 34: Mittelwert 0,6 M.-%; Cl 0,40 ist nur die Herstellungsgrenze):",
         "formel": "C = 3{,}0 \\cdot (1 - 0{,}856) = 0{,}43 < 0{,}5 \\Rightarrow \\text{noch passiv}"
       }
     ],
@@ -134,6 +134,7 @@
       "fib Model Code for Concrete Structures 2010 (International Federation for Structural Concrete)",
       "DAfStb-Heft 526: Erläuterungen zu den Normen DIN EN 206-1, DIN 1045-2, DIN 1045-3, DIN 1045-4 und DIN EN 12620, 2. überarb. Aufl. Berlin: Beuth 2011 (keine Neuausgabe zur DIN 1045:2023, Stand 10/2026)",
       "fib Bulletin 34: Model Code for Service Life Design. Lausanne: fib 2006",
+      "Breit, W.; Dauberschmidt, C.; Gehlen, C.; Sodeikat, C.; Taffe, A.; Wiens, U.: Zum Ansatz eines kritischen Chloridgehaltes bei Stahlbetonbauwerken. Beton- und Stahlbetonbau 106 (2011), H. 5, S. 290–298 (Bewertungswert 0,5 M.-% bez. auf Zement, im Einklang mit der DAfStb-Richtlinie Schutz und Instandsetzung)",
       "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
     ],
     "Korrosion.regelwerke": [

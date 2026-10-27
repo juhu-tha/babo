@@ -565,7 +565,7 @@
           "haftzugStempel": 10,
           "rasterMass": "15 × 15 cm bis 25 × 25 cm"
         },
-        "normativeBegruendung": "DBV-Merkblatt und DGZfP B1 fordern engmaschiges Raster zur Makroelementdetektion; DIBt TR Instandhaltung fordert Chloridprofile an mind. 5–6 Stellen.",
+        "normativeBegruendung": "DBV-Merkblatt und DGZfP-Merkblatt B 03 fordern engmaschiges Raster zur Makroelementdetektion; DIBt TR Instandhaltung fordert Chloridprofile an mind. 5–6 Stellen.",
         "konditionierungsFokus": "Oberflächenvorbefeuchtung für Potentialmessung (R_c < 10 kΩ); absolut trockenes Bohren bei Bohrmehl; Fräsen/Strahlen vor Haftzug."
       },
       {

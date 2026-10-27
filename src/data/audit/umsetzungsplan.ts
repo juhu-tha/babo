@@ -9,7 +9,7 @@ import type { AuditStatus, Phase } from './typen';
 
 export const UMSETZUNGSPLAN_STAND = '2026-10-27';
 /** zusammengeführte Pull Requests bis zum Stand (laut Audit-Stand) */
-export const PRS_GEMERGT = 'bis #194 (#189 und #190 über den Merge von #191)';
+export const PRS_GEMERGT = 'bis #214 (#189 und #190 über den Merge von #191)';
 
 export const UMSETZUNGSPLAN: readonly Phase[] = [
   { nr: 0, titel: 'Grundlagen und Baseline', aps: [
@@ -33,7 +33,7 @@ export const UMSETZUNGSPLAN: readonly Phase[] = [
     { ap: '2.5', titel: 'Mobil: Werkzeugmenü, aktuelles Modul in der Kopfzeile', status: 'erledigt' },
     { ap: '2.6', titel: 'Mobil-Layout-Prüfung', status: 'erledigt' },
     { ap: '2.7', titel: 'Mindestgröße Bedienelemente 24 × 24 px (WCAG 2.2)', status: 'erledigt', hinweis: 'restliche target-size-Elemente mit #192/#193' },
-    { ap: '2.8', titel: 'Reiter vereinheitlichen (ModuleTabs)', status: 'erledigt', hinweis: 'Reiterleisten umgestellt (#193); rund 50 Ansichtsumschalter mit aria-pressed bleiben (Maßnahme 7)' },
+    { ap: '2.8', titel: 'Reiter vereinheitlichen (ModuleTabs)', status: 'erledigt', hinweis: 'Reiterleisten umgestellt (#193); Ansichtsumschalter auf Reiterleisten/Optionsgruppen umgestellt (#210)' },
     { ap: '2.9', titel: 'Volltextsuche über den Inhalt aller Module', status: 'erledigt' },
     { ap: '2.10', titel: 'Einstieg in die Themen je Cluster', status: 'erledigt' },
     { ap: '2.11', titel: 'Lesbarkeit', status: 'erledigt' },
@@ -54,7 +54,7 @@ export const UMSETZUNGSPLAN: readonly Phase[] = [
   { nr: 4, titel: 'Rechner', aps: [
     { ap: '4.1', titel: 'Reine Rechenkerne in src/calc (Muster und Tests)', status: 'erledigt', hinweis: 'Titel nicht im Code belegt' },
     { ap: '4.2', titel: 'Rechenkerne der Fachrechner (u. a. Bauglas, Schwinden/Kriechen)', status: 'erledigt' },
-    { ap: '4.3', titel: 'Rechenkerne gegen Literatur prüfen', status: 'wartet', hinweis: 'Literaturauszüge (Z1–Z4, Fehlliste)' },
+    { ap: '4.3', titel: 'Rechenkerne gegen Literatur prüfen', status: 'wartet', hinweis: 'Literaturauszüge (Z1–Z4, Fehlliste); öffentliche Belege für Mauerwerk, Querkraft, Sieblinien, Lebensdauer ergänzt (#213, #214)' },
     { ap: '4.4', titel: 'Normtext-Prüfpunkte (NA DE)', status: 'wartet', hinweis: 'Normtextauszüge (Z1–Z4, docs/normwerte-belege.md)' },
     { ap: '4.5', titel: 'Absicherung gegen unsinnige Eingaben', status: 'erledigt' },
     { ap: '4.6', titel: 'Rechenkern Schwingung Brettsperrholzdecke', status: 'erledigt' },
@@ -80,7 +80,7 @@ export const UMSETZUNGSPLAN: readonly Phase[] = [
     { ap: '6.2', titel: 'Neue Forschungsthemen (u. a. Biokohlebeton, PFAS, Altholz)', status: 'wartet' },
     { ap: '6.3', titel: 'TTZ-Weiterbildungspfad und Kursquiz', status: 'wartet', hinweis: 'TTZ-Kursliste (Z44)' },
     { ap: '6.4', titel: 'Versuchs-Handouts', status: 'wartet', hinweis: 'Laborpilot WS 26/27 (Z37/Z42)' },
-    { ap: '6.5', titel: 'KI-Master: Grundlagen und Hands-on-Übungen', status: 'wartet' },
+    { ap: '6.5', titel: 'KI-Master: Grundlagen und Hands-on-Übungen', status: 'wartet', hinweis: 'Übungen mit neutralem „KI-Assistent der Hochschule“ (#212)' },
     { ap: '6.6', titel: 'Admin-Ansicht „Meine Module“, Paten je Cluster', status: 'wartet', hinweis: 'Prüfvermerke (Z38)' },
     { ap: '6.7', titel: 'Halbjährlicher Normen- und Rechtsstand-Check', status: 'erledigt' },
     { ap: '6.8', titel: 'Offene Lizenz', status: 'wartet', hinweis: 'THA-Klärung (Z13/Z45)' },

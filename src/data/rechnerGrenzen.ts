@@ -496,7 +496,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     grenzen: [
       "Rückprall: Lehrkurve f_c ≈ 0,0125·R^2,22; Richtungskorrektur ΔR(R, α) nach Herstellerformel Original Schmidt Typ N (Screening Eagle/Proceq) – ohne Kalibrierkerne (DIN EN 13791:2020, 8.2/8.3) nur Schätzwert.",
       "Ultraschall: E_dyn mit fester Dichte 2400 kg/m³ und ν = 0,2; die Festigkeit aus v_p ist nur eine grobe Lehrschätzung.",
-      "Feste Schwellen: Potential nach ASTM C876 (−200/−350 mV; DGZfP B3 empfiehlt objektbezogene Auswertung), Wenner nach RILEM TC 154 (100/500/1000 Ω·m); Torrent, Karsten, Thermografie als Lehrschwellen.",
+      "Feste Schwellen: Potential nach ASTM C876 (−200/−350 mV; DGZfP-Merkblatt B 03 empfiehlt objektbezogene Auswertung), Wenner nach RILEM TC 154 (100/500/1000 Ω·m); Torrent, Karsten, Thermografie als Lehrschwellen.",
       "Bewehrungssignal und Durchstrahlung (μ = 0,15/E) sind qualitative Anzeigemodelle ohne Gerätekennlinie.",
     ],
   },

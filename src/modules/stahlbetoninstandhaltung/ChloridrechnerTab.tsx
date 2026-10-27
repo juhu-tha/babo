@@ -185,7 +185,7 @@ export default function ChloridrechnerTab({ bauteilAlter, betondeckung, chloridC
                     <g>
                       <line x1="50" y1={yCrit} x2="470" y2={yCrit} stroke="#A3113E" strokeWidth="1.5" strokeDasharray="5,2" />
                       <text x="465" y={yCrit - 4} fill="#A3113E" fontSize="9" textAnchor="end" fontWeight="bold">
-                        C_krit = 0,50 M.-% (Lochfraßgrenze)
+                        C_krit ≈ 0,50 M.-% (Bewertungswert)
                       </text>
                     </g>
                   );
