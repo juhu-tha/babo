@@ -570,9 +570,9 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 65 korrigiert, 0 fraglich, 8
 
 ### qn_statistik_2 · Statistik
 
-- **Frage:** Eine Prüfserie mit n = 8 Würfeln hat x̄ = 31,4 N/mm² und s = 1,9 N/mm². Der kleinste Wert beträgt 27,0 N/mm², G_krit(n = 8; α = 5 %) = 2,03. Wie ist der Wert einzustufen?
-- **Richtige Antwort:** G ≈ 2,32 > 2,03; auffällig, vor dem Streichen technische Ursache prüfen
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- **Frage:** Eine Prüfserie mit n = 8 Würfeln hat x̄ = 31,4 N/mm² und s = 1,9 N/mm². Der kleinste Wert beträgt 27,0 N/mm², G_krit(n = 8; α = 5 %, ISO 5725-2) = 2,13. Wie ist der Wert einzustufen?
+- **Richtige Antwort:** G ≈ 2,32 > 2,13; auffällig, vor dem Streichen technische Ursache prüfen
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt; Zweitprüfung 27.10.: G_krit nach ISO 5725-2 (2,13 statt 2,03) – korrigiert, Freigabe zurückgenommen
 - [x] ok
 - [ ] ändern: …
 

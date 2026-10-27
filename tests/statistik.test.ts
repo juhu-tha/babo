@@ -19,11 +19,19 @@ pruefe(nahe(erf(1), 0.8427008, 2e-7) && nahe(erf(-0.5), -0.5204999, 2e-7) && nah
 pruefe(nahe(normalCDF(38, 38, 4), 0.5, 1e-8) && nahe(normalCDF(38 - 1.645 * 4, 38, 4), 0.05, 1e-4), 'Φ(μ) und 5-%-Quantil');
 pruefe(nahe(normalPDF(38, 38, 4), 1 / (4 * Math.sqrt(2 * Math.PI)), 1e-15) && normalPDF(1, 1, 0) === 1 && normalCDF(0, 1, 0) === 0, 'φ und Sonderfall σ = 0');
 
-// 3. Tabellen: k_n (DIN EN 1990 Tab. D1) und G_krit (ASTM E178, einseitig 5 %)
+// 3. Tabellen: k_n (DIN EN 1990 Tab. D1) und G_krit (ISO 5725-2 Tab. 5, ein Ausreißer, α = 5 %, beidseitig = ASTM E178 einseitig 2,5 %)
 pruefe(fraktilfaktorKn(3) === 3.37 && fraktilfaktorKn(10) === 1.92 && fraktilfaktorKn(30) === 1.73 && Number.isNaN(fraktilfaktorKn(2)), 'k_n Stützstellen');
 //    n = 7: 2,18 + (2,00 − 2,18)·(1/6 − 1/7)/(1/6 − 1/8) = 2,0771; n = 50: 1,73 + (1,64 − 1,73)·(1/30 − 1/50)/(1/30) = 1,694
 pruefe(nahe(fraktilfaktorKn(7), 2.07714, 1e-5) && nahe(fraktilfaktorKn(50), 1.694, 1e-12) && nahe(fraktilfaktorKn(1e9), 1.64, 1e-6), `k_n Zwischenwerte ${fraktilfaktorKn(7)} ${fraktilfaktorKn(50)}`);
-pruefe(grubbsKritisch(3) === 1.153 && grubbsKritisch(2) === 1.153 && nahe(grubbsKritisch(11), 2.2305, 1e-12) && grubbsKritisch(80) === 2.956, `G_krit ${grubbsKritisch(11)}`);
+//    Stützstellen n = 7: 2,020; n = 8: 2,126; n = 10: 2,290 (Harvey, Analytical Chemistry 2.1, App. 7; ISO 5725-2 Tab. 5)
+//    n = 11 interpoliert: 2,290 + (2,412 − 2,290)/2 = 2,351
+pruefe(grubbsKritisch(3) === 1.155 && grubbsKritisch(2) === 1.155 && grubbsKritisch(7) === 2.02 && grubbsKritisch(8) === 2.126 && grubbsKritisch(10) === 2.29 && nahe(grubbsKritisch(11), 2.351, 1e-12) && grubbsKritisch(80) === 3.128, `G_krit ${grubbsKritisch(11)}`);
+//    Abgleich aller Stützstellen mit der exakten Formel G = (n − 1)/√n · √(t²/(n − 2 + t²)), t = t(1 − α/(2n); n − 2), α = 0,05
+for (const nn of [3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20, 25, 30, 40, 50]) {
+  const t = tQuantil(1 - 0.05 / (2 * nn), nn - 2);
+  const gFormel = (nn - 1) / Math.sqrt(nn) * Math.sqrt(t * t / (nn - 2 + t * t));
+  pruefe(nahe(grubbsKritisch(nn), gFormel, 2e-3), `G_krit(${nn}) = ${grubbsKritisch(nn)} ≠ Formel ${gFormel}`);
+}
 
 // 4. Handrechnung Prüfserie mit Ausreißer (Beton): 10 Werte um 38 N/mm² + 60,0
 //    x̄ = 40,427; s = 6,681 → 2σ-Grenzen 27,07 … 53,79 → 60,0 ist Ausreißer
@@ -35,9 +43,9 @@ pruefe(a.sauber.n === 10 && nahe(a.sauber.mittelwert, 38.47, 1e-9) && nahe(a.sau
 //    Boxplot: Q₁ = sortiert[⌊2,75⌋] = 37,1; Q₃ = sortiert[⌊8,25⌋] = 40,1 → 32,6 … 44,6
 const bx = statistikAuswertung({ werte: serie, methode: 'boxplot', material: 'stahl', ausreisserPruefen: true });
 pruefe(nahe(bx.untereGrenze, 32.6, 1e-9) && nahe(bx.obereGrenze, 44.6, 1e-9) && bx.ausreisser.length === 1 && bx.gammaM === 1.15, `Boxplot ${bx.untereGrenze} ${bx.obereGrenze}`);
-//    Grubbs n = 11: G_krit = 2,2305 → 25,53 … 55,33
+//    Grubbs n = 11: G_krit = 2,351 → 40,4273 ∓ 2,351 · 6,6810 = 24,72 … 56,13
 const gr = statistikAuswertung({ werte: serie, methode: 'grubbs', material: 'holz', ausreisserPruefen: true });
-pruefe(nahe(gr.untereGrenze, 25.5252, 1e-4) && nahe(gr.obereGrenze, 55.3293, 1e-4) && gr.gKrit === 2.2305 && gr.ausreisser.length === 1 && nahe(gr.xd, gr.xk / 1.3, 1e-12), `Grubbs ${gr.untereGrenze} ${gr.obereGrenze}`);
+pruefe(nahe(gr.untereGrenze, 24.7202, 1e-4) && nahe(gr.obereGrenze, 56.1344, 1e-4) && nahe(gr.gKrit ?? NaN, 2.351, 1e-12) && gr.ausreisser.length === 1 && nahe(gr.xd, gr.xk / 1.3, 1e-12), `Grubbs ${gr.untereGrenze} ${gr.obereGrenze}`);
 //    ohne Prüfung (Serie läuft noch): Grenzen 0, keine Ausreißer, X_k aus allen Werten
 const ohne = statistikAuswertung({ werte: serie, methode: '2sigma', material: 'beton', ausreisserPruefen: false });
 pruefe(ohne.untereGrenze === 0 && ohne.obereGrenze === 0 && ohne.ausreisser.length === 0 && ohne.sauber.n === 11, 'ohne Ausreißerprüfung');

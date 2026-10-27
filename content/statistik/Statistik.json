@@ -65,7 +65,7 @@
     "dinEn199020212": "DIN EN 1990:2021-10, Anhang D, Tab. D1",
     "beispiel2IstDer": "Beispiel 2: Ist der Höchstwert ein Ausreißer? (Grubbs-Test)",
     "derTestZeigtNur": "Der Test zeigt nur statistische Auffälligkeit. Gestrichen werden darf der Wert erst, wenn eine technische Ursache belegt ist (z. B. Prüffehler, falsch gekennzeichneter Probekörper) – sonst verfälscht das Streichen die Streuung nach unten.",
-    "grubbsTestKritischeWerte": "Grubbs-Test, kritische Werte z. B. nach ISO 5725-2",
+    "grubbsTestKritischeWerte": "Grubbs-Test, kritische Werte für einen Ausreißer nach ISO 5725-2, Tab. 5 (α = 5 %: auffällig; α = 1 %: Ausreißer)",
     "oktober2026Ap4": "Oktober 2026 (AP 4 Labor: Lage- und Streumaße, Fraktilfaktoren nach DIN EN 1990 Anhang D, Ausreißertests geprüft; fachliche Freigabe durch den Autor ausstehend)",
     "anzahlDerPrüfwerteN": "Anzahl der Prüfwerte (n)",
     "vereinfachtOhneKMod": " (vereinfacht ohne k_mod nach DIN EN 1995-1-1)",
@@ -108,8 +108,8 @@
       },
       {
         "titel": "Vergleich",
-        "erklaerung": "Kritischer Wert (einseitig, α = 5 %) für n = 10:",
-        "formel": "G = 2{,}74 > G_{krit} = 2{,}18 \\;\\Rightarrow\\; \\text{auffällig}"
+        "erklaerung": "Kritischer Wert für einen Ausreißer nach ISO 5725-2 (größter oder kleinster Wert, α = 5 %; entspricht einseitig 2,5 %) für n = 10; auch die 1-%-Grenze 2,48 wird überschritten:",
+        "formel": "G = 2{,}74 > G_{krit} = 2{,}29 \\;\\Rightarrow\\; \\text{auffällig}"
       }
     ],
     "Statistik.literatur": [
