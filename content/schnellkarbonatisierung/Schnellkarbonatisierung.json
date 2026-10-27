@@ -54,7 +54,8 @@
     "messungAnEckenUnd": "Messung an Ecken und groben Gesteinskörnern statt im Mittelbereich der Seiten",
     "zuFeuchteProbekörperNach": "zu feuchte Probekörper nach verkürzter Vorlagerung (langsame Karbonatisierung)",
     "einheitenVerwechseltKAc": "Einheiten verwechselt: K_AC in mm/√d, K_nat in mm/√a",
-    "en199211": "EN 1992-1-1:2023 ordnet Betone Expositionswiderstandsklassen zu; die XRC-Klassenzahl ist wie K_nat eine Rate in mm/√a. Stand der Einführung und Rolle von DIN EN 12390-12 fasst das Ausblick-Modul zusammen."
+    "en199211": "EN 1992-1-1:2023 ordnet Betone Expositionswiderstandsklassen zu; die XRC-Klassenzahl ist wie K_nat eine Rate in mm/√a. Stand der Einführung und Rolle von DIN EN 12390-12 fasst das Ausblick-Modul zusammen.",
+    "querLebensdauerText": "Den probabilistischen Nachweis mit Streuung von Deckung, Feuchte und Widerstand – Zuverlässigkeitsindex β statt Einzelprognose – führt das Modul Lebensdauerbemessung nach fib Bulletin 34."
   },
   "werte": {
     "auswertungUmrechnung": "Auswertung & Umrechnung",
@@ -95,7 +96,9 @@
     "lehrbeispielPrüfungNachDin": "Lehrbeispiel; Prüfung nach DIN EN 12390-12:2020-04",
     "ausblickKarbonatisierungswiderstandAlsKl": "Ausblick: Karbonatisierungswiderstand als Klasse (XRC)",
     "zumModulAusblickNeue": "Zum Modul Ausblick: neue Normengeneration",
-    "oktober2026Ap6": "Oktober 2026 (AP 6.2: Modul neu erstellt; fachliche Freigabe durch den Autor ausstehend)"
+    "oktober2026Ap6": "Oktober 2026 (AP 6.2: Modul neu erstellt; fachliche Freigabe durch den Autor ausstehend)",
+    "querLebensdauerTitel": "Vom Prüfkennwert zur Zuverlässigkeit",
+    "querLebensdauerLink": "Zum Modul Lebensdauerbemessung"
   },
   "daten": {
     "REIHEN": [
