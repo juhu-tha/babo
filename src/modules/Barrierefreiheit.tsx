@@ -4,7 +4,7 @@ import { Accessibility, ClipboardCheck, AlertTriangle, Mail, Scale } from 'lucid
 import inhalt from '@/content/barrierefreiheit/Barrierefreiheit.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 
-// Erklärung zur Barrierefreiheit nach Art. 13 BayBGG i. V. m. § 11 BayDiV und Richtlinie (EU) 2016/2102
+// Erklärung zur Barrierefreiheit nach Art. 14 BayBGG i. V. m. §§ 9–11 BayDiV (§ 9 Abs. 1 → § 3 Abs. 1 BITV 2.0) und Richtlinie (EU) 2016/2102
 // (Umsetzungsplan Phase 1, AP 1.4). Liste der Mängel nach jeder Prüfung aktualisieren (Phase 2, AP 2.1).
 
 const STAND = '27.10.2026';

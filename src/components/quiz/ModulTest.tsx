@@ -4,6 +4,8 @@ import { GraduationCap, CheckCircle2, XCircle, AlertTriangle, ExternalLink, Rota
 import { useTabContext, TabType } from '@/src/contexts/TabContext';
 import { anzahlFragenModul, useModulFragen } from '@/src/data/quizLader';
 import { mischeAntworten } from '@/src/utils/mischeAntworten';
+import { anzahlFreigegeben } from '@/src/data/quizModell';
+import { FreigabeEtikett } from './FreigabeEtikett';
 
 /**
  * Stufe 4 des Lehrpfads (Grundlagen → Labor → Bemessung → Test):
@@ -104,6 +106,14 @@ export function ModulTest({ moduleId, title, defaultOpen = false }: ModulTestPro
             )}
           </div>
 
+          {anzahlFreigegeben(questions) < questions.length && (
+            <p className="text-xs text-text-main/80 leading-relaxed">
+              {anzahlFreigegeben(questions) === 0
+                ? 'Die Fragen dieses Selbsttests sind technisch vorgeprüft, aber noch nicht fachlich freigegeben.'
+                : `${formatDeWert(anzahlFreigegeben(questions))} von ${formatDeWert(questions.length)} Fragen sind fachlich freigegeben; die übrigen sind gekennzeichnet („noch nicht fachlich freigegeben“).`}
+            </p>
+          )}
+
           <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
             <div
               className="h-full bg-shiraz rounded-full transition-all duration-300"
@@ -139,6 +149,7 @@ export function ModulTest({ moduleId, title, defaultOpen = false }: ModulTestPro
                     {q.difficulty}
                   </span>
                 )}
+                <FreigabeEtikett frage={q} />
               </div>
               <h3 className="text-base sm:text-lg font-bold text-text-main leading-snug">
                 {q.question}
