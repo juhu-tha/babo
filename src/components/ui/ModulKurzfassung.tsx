@@ -20,4 +20,13 @@ export function ModulKurzfassung({ punkte }: { punkte: readonly string[] }) {
   );
 }
 
+/** nur die nummerierte Liste (für die Kopfleiste) */
+export function KurzfassungPunkte({ punkte }: { punkte: readonly string[] }) {
+  return (
+    <ol className="space-y-1.5 list-decimal pl-5 text-text-main">
+      {punkte.map((p, i) => <li key={i}>{p}</li>)}
+    </ol>
+  );
+}
+
 export default ModulKurzfassung;

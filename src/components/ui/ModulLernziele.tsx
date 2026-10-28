@@ -24,6 +24,17 @@ export function ModulLernziele({ moduleId, daten, oeffneModul }: { moduleId: str
       </button>
       {offen && (
         <div id={id} className="px-4 pb-4 pt-1 border-t border-home-grau/20 space-y-3">
+          <LernzieleZiele daten={daten} oeffneModul={oeffneModul} />
+        </div>
+      )}
+    </section>
+  );
+}
+
+/** Inhalt der Lernziele (Ziele + Vorwissen), auch in der Kopfleiste (ModulKopfLeiste) verwendet */
+export function LernzieleZiele({ daten, oeffneModul }: { daten: Daten; oeffneModul: (id: string) => void }) {
+  return (
+    <>
           <div>
             <p className="font-semibold text-text-main">Nach der Bearbeitung können Sie …</p>
             <ol className="mt-1 space-y-1 list-decimal pl-5">
@@ -45,9 +56,20 @@ export function ModulLernziele({ moduleId, daten, oeffneModul }: { moduleId: str
               ))}
             </p>
           )}
-        </div>
-      )}
-    </section>
+        
+    </>
+  );
+}
+
+/** Kopfzeilen-Angaben der Lernziele (Niveau, Dauer, Selbsttest) als kurze Zeile */
+export function LernzieleMeta({ moduleId, daten }: { moduleId: string; daten: Daten }) {
+  const fragen = anzahlFragenRoute(moduleId);
+  return (
+    <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-text-main/70">
+      <span>{NIVEAU[daten.niveau]}</span>
+      <span className="flex items-center gap-1"><Clock size={13} aria-hidden="true" /> ca. {formatDeWert(daten.minuten)} min</span>
+      {fragen > 0 && <span>Selbsttest: {formatDeWert(fragen)} {fragen === 1 ? 'Frage' : 'Fragen'}</span>}
+    </p>
   );
 }
 
