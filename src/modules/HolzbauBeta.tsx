@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Trees } from 'lucide-react';
 import { abbrandQuerschnitt, bemesseDruckstab, bemesseQuerdruck, holzschraube, type AbbrandArt, type KLED, type Nutzungsklasse, type Querdruckfall } from '@/src/calc/holzbau';
-import { bspSchwingung, BSP_AUFBAUTEN, type EiVerfahren, type Estrichart } from '@/src/calc/bspSchwingung';
+import { bspSchwingung, BSP_AUFBAUTEN, BSP_ROLLSCHUB, type EiVerfahren, type Estrichart } from '@/src/calc/bspSchwingung';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Querverweis } from '@/src/components/ui/Querverweis';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -118,6 +118,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
   const [vibEstrichDicke, setVibEstrichDicke] = useState<number>(0); // mm, 0 = Estrichsteifigkeit nicht ansetzen
   const [vibEstrichArt, setVibEstrichArt] = useState<Estrichart>('zement');
   const [vibVerfahren, setVibVerfahren] = useState<EiVerfahren>('gamma');
+  const [vibRollschub, setVibRollschub] = useState<number>(BSP_ROLLSCHUB.standard); // G_r [N/mm²], T10-HB-2
 
   // Derived Materials values
   const currentMaterial = useMemo(() => {
@@ -151,8 +152,8 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
   // Deckenschwingung Brettsperrholz (Rechenkern src/calc/bspSchwingung.ts)
   const vibResults = useMemo(() => bspSchwingung({
     spannweite: vibSpan, lagen: (BSP_AUFBAUTEN[vibAufbau] ?? BSP_AUFBAUTEN.l5_150).lagen, deckenbreite: vibBreite,
-    zusatzmasse: vibExtraMass, estrichDicke: vibEstrichDicke, estrichArt: vibEstrichArt, verfahren: vibVerfahren,
-  }), [vibSpan, vibAufbau, vibBreite, vibExtraMass, vibEstrichDicke, vibEstrichArt, vibVerfahren]);
+    zusatzmasse: vibExtraMass, estrichDicke: vibEstrichDicke, estrichArt: vibEstrichArt, verfahren: vibVerfahren, GR: vibRollschub,
+  }), [vibSpan, vibAufbau, vibBreite, vibExtraMass, vibEstrichDicke, vibEstrichArt, vibVerfahren, vibRollschub]);
 
   // Eurocode 5 Knicknachweis (Rechenkern src/calc/holzbau.ts)
   const calculationResults = useMemo(() => bemesseDruckstab({
@@ -207,7 +208,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
 
       {activeSubTab === 'verbindung' && <HolzbauVerbindung connAngle={connAngle} connCount={connCount} connD={connD} connForce={connForce} connLef={connLef} connLoadDuration={connLoadDuration} connResults={connResults} connServiceClass={connServiceClass} connWoodClass={connWoodClass} setConnAngle={setConnAngle} setConnCount={setConnCount} setConnD={setConnD} setConnForce={setConnForce} setConnLef={setConnLef} setConnLoadDuration={setConnLoadDuration} setConnServiceClass={setConnServiceClass} setConnWoodClass={setConnWoodClass} />}
 
-      {activeSubTab === 'bauphysik' && <HolzbauBauphysik fireB={fireB} fireH={fireH} fireResults={fireResults} fireSides={fireSides} fireTime={fireTime} fireType={fireType} setFireB={setFireB} setFireH={setFireH} setFireSides={setFireSides} setFireTime={setFireTime} setFireType={setFireType} vib={{ aufbau: vibAufbau, setAufbau: setVibAufbau, span: vibSpan, setSpan: setVibSpan, extraMass: vibExtraMass, setExtraMass: setVibExtraMass, breite: vibBreite, setBreite: setVibBreite, estrichDicke: vibEstrichDicke, setEstrichDicke: setVibEstrichDicke, estrichArt: vibEstrichArt, setEstrichArt: setVibEstrichArt, verfahren: vibVerfahren, setVerfahren: setVibVerfahren, ergebnis: vibResults }} />}
+      {activeSubTab === 'bauphysik' && <HolzbauBauphysik fireB={fireB} fireH={fireH} fireResults={fireResults} fireSides={fireSides} fireTime={fireTime} fireType={fireType} setFireB={setFireB} setFireH={setFireH} setFireSides={setFireSides} setFireTime={setFireTime} setFireType={setFireType} vib={{ aufbau: vibAufbau, setAufbau: setVibAufbau, span: vibSpan, setSpan: setVibSpan, extraMass: vibExtraMass, setExtraMass: setVibExtraMass, breite: vibBreite, setBreite: setVibBreite, estrichDicke: vibEstrichDicke, setEstrichDicke: setVibEstrichDicke, estrichArt: vibEstrichArt, setEstrichArt: setVibEstrichArt, verfahren: vibVerfahren, setVerfahren: setVibVerfahren, rollschub: vibRollschub, setRollschub: setVibRollschub, ergebnis: vibResults }} />}
 
       {activeSubTab === 'bemessung' && (
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">

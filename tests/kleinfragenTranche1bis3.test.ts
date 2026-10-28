@@ -55,7 +55,13 @@ pruefe('H-3 l_ef', q3.l_ef, 230); pruefe('H-3 k_c,90', q3.k_c90, 1.75); pruefe('
 pruefe('H-3 NH', bemesseQuerdruck({ F: 40, b: 160, l: 200, fall: 'traeger_ende', ueberstand: true, fc90k: 2.5, art: 'nadelvollholz', nkl: 1, kled: 'mtl' }).k_c90, 1.5);
 const qa = bemesseQuerdruck({ F: 40, b: 160, l: 200, fall: 'allgemein', ueberstand: true, fc90k: 2.5, art: 'bsh', nkl: 1, kled: 'mtl' });
 pruefe('H-3 allgemein k', qa.k_c90, 1.0); pruefe('H-3 allgemein l_ef', qa.l_ef, 260);
-gilt(bemesseQuerdruck({ F: 40, b: 160, l: 450, fall: 'traeger_ende', ueberstand: false, fc90k: 2.5, art: 'bsh', nkl: 1, kled: 'mtl' }).hinweise.some(h => h.text.includes('400 mm')), 'H-3 Hinweis l > 400');
+// #239-H-3 (Umsetzung 29.10.2026): BSH-Einzelauflager l = 450 mm > 400 mm → k_c,90 = 1,0; f_c,90,d = 0,8·2,5/1,3 = 1,5385 N/mm²,
+// F_c,90,Rd = 1,0 · 1,5385 · 160 · 450 / 1000 = 110,77 kN (l = 400 mm: 1,75 · 1,5385 · 160 · 400 / 1000 = 172,31 kN)
+const q450 = bemesseQuerdruck({ F: 40, b: 160, l: 450, fall: 'traeger_ende', ueberstand: false, fc90k: 2.5, art: 'bsh', nkl: 1, kled: 'mtl' });
+gilt(q450.hinweise.some(h => h.text.includes('400 mm')), 'H-3 Hinweis l > 400');
+pruefe('#239-H-3 BSH l > 400 mm', q450.k_c90, 1.0); pruefe('#239-H-3 F_c,90,Rd l = 450', q450.F_c90Rd_kN, 110.769);
+const q400 = bemesseQuerdruck({ F: 40, b: 160, l: 400, fall: 'pfosten_riegel', ueberstand: false, fc90k: 2.5, art: 'bsh', nkl: 1, kled: 'mtl' });
+pruefe('#239-H-3 BSH l = 400 mm', q400.k_c90, 1.75); pruefe('#239-H-3 F_c,90,Rd l = 400', q400.F_c90Rd_kN, 172.308);
 // H-2: keine Grenzschlankheit 120 – erst ab λ > 200 ein Lehrhinweis (C24 100/100, l = 6 m: λ = 207,8)
 const d2 = bemesseDruckstab({ b: 100, h: 100, laenge: 6, nEd: 5, fc0k: 21, E005: 7400, nkl: 1, kled: 'mtl', eulerFall: 2, brettschichtholz: false });
 pruefe('H-2 λ', d2.lambda_z, 207.846); gilt(d2.hinweise.some(h => h.text.includes('λ > 200')), 'H-2 Hinweis λ > 200');

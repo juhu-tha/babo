@@ -67,7 +67,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       'Zentrischer Druck um die schwache Achse; Biegung, Exzentrizitäten und Kippen sind nicht enthalten.',
       'Vollholz nach EN 338 und Brettschichtholz nach EN 14080, γ_M = 1,3; k_mod nach Tab. 3.1.',
       'Querdruck: wirksame Kontaktlänge mit pauschal 30 mm Überstand je Seite.',
-      'Querdruck: k_c,90 = 1,5/1,75 bei Einzelauflagern auch am Trägerende, sofern l₁ ≥ 2h (nicht geprüft, Fall „Allgemein“ mit 1,0 wählbar).',
+      'Querdruck: k_c,90 = 1,5/1,75 bei Einzelauflagern auch am Trägerende, sofern l₁ ≥ 2h (nicht geprüft, Fall „Allgemein“ mit 1,0 wählbar); BSH mit l > 400 mm: k_c,90 = 1,0.',
       'Druckstab: EN 1995-1-1 nennt keine Grenzschlankheit; der Hinweis ab λ > 200 ist eine Lehrgrenze.',
     ],
   },
@@ -357,7 +357,8 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   holzbau_verbindung: {
     kurz: "Holzschrauben: Tragfähigkeit auf Herausziehen (Gl. 8.38–8.41) und Abscheren (Johansen mit Seileffekt) nach DIN EN 1995-1-1.",
     grenzen: [
-      "Normformeln ohne ETA: f_ax,k = 0,52·d^−0,5·l_ef^−0,1·ρ_k^0,8, M_y,Rk = 0,3·f_u·d^2,6 mit f_u = 400 N/mm² (Lehrwert); Herstellerwerte sind meist höher.",
+      "Normformeln ohne ETA: f_ax,k = 0,52·d^−0,5·l_ef^−0,1·ρ_k^0,8, M_y,Rk = 0,3·f_u·d_ef^2,6 mit f_u = 400 N/mm² (Lehrwert); Herstellerwerte sind meist höher.",
+      "Abscheren mit d_ef = 1,1·d₁, Kerndurchmesser d₁ = 0,65·d als Lehrwert; d_ef ≤ 6 mm Lochleibung nach den Regeln für Nägel (nicht vorgebohrt), sonst für Bolzen, jeweils ohne Faserwinkel.",
       "k_mod aus NKL und KLED, γ_M = 1,3; einschnittig Holz–Holz, nur Versagensarten Lochleibung und Fließgelenk.",
       "n_ef = n^0,9 nur beim Herausziehen; ohne Mindestabstände, Blockscheren und Interaktion axial/quer (8.7.3).",
     ],
@@ -368,7 +369,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Brand: feste Abbrandraten nach DIN EN 1995-1-2:2010-12 (Neuausgabe 2026-10 nicht berücksichtigt), nur Restquerschnitt und Widerstandsmoment, keine Tragfähigkeit.",
       "Schwingung: zweiseitig gelenkig gelagerter Einfeldstreifen; Biegesteifigkeit nur aus den Längslagen, netto oder nach dem γ-Verfahren (DIN EN 1995-1-1 Anhang B, nur symmetrisch 3- und 5-lagig).",
       "Bei 7 und mehr Lagen wird die Netto-Biegesteifigkeit angesetzt; das Schubanalogieverfahren ist nicht umgesetzt.",
-      "Kennwerte E_0,mean = 11 550 N/mm², G_r,mean = 65 N/mm² und Wichte 5,5 kN/m³ nach proHolz Austria (Band II, 2018) statt Werten aus der ETA des Herstellers.",
+      "Kennwerte E_0,mean = 11 550 N/mm², Wichte 5,5 kN/m³ nach proHolz Austria (Band II, 2018), Rollschubmodul G_r,mean wählbar 50 N/mm² (Standard, viele ETAs) oder 65 N/mm² (proHolz) statt Werten aus der ETA des Herstellers.",
       "Steifigkeitskriterium mit mitwirkender Breite b_F nach Hamm/Richter; Orientierungswerte der Deckenklassen nach ÖNORM B 1995-1-1, keine Grenzwerte nach NA (DE).",
       "Nicht enthalten: Beschleunigungs- und Geschwindigkeitskriterium, Durchlaufträger, vierseitige Lagerung, Auflagernachgiebigkeit; das Ergebnis bestätigt keine Deckenklasse.",
     ],
@@ -503,7 +504,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     kurz: "Einfeldbalken unter Gleichlast aus Vollholz oder BSH: Biegung, Schub mit k_cr sowie w_inst, w_fin und w_net,fin mit k_def nach DIN EN 1995-1-1 mit NA (DE).",
     grenzen: [
       "k_mod nach Tab. 3.1, γ_G = 1,35, γ_Q = 1,5; eine Nutzlast (ψ₂ = 0,3, Kategorie A); nachgewiesen werden 1,35·g + 1,5·q (k_mod der Nutzlast) und 1,35·g (k_mod ständig), maßgebend die größere Ausnutzung.",
-      "w_fin = w_G·(1 + k_def) + w_Q·(1 + ψ₂·k_def) ≤ l/200, w_net,fin ≤ l/300 ohne Überhöhung, w_inst ≤ l/300 (Grenzwerte NA, vorläufig); Schwingungen fehlen.",
+      "w_fin = w_G·(1 + k_def) + w_Q·(1 + ψ₂·k_def) ≤ l/200, w_net,fin ≤ l/300 ohne Überhöhung, w_inst ≤ l/300 (Empfehlungswerte nach DIN EN 1995-1-1, Tab. 7.2 mit NA, vorläufig); Schwingungen fehlen.",
       "Kein Kipp-, Auflager- oder Querdrucknachweis; Rohdichten für das Eigengewicht als Mittelwerte.",
     ],
   },

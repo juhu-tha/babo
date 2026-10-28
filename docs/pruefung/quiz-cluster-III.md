@@ -1,10 +1,10 @@
 # Prüfliste Quiz – Cluster III: Entwurf & Bemessung
 
-Stand: 28.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
+Stand: 29.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster III umfasst 192 Fragen aus 33 Modulen. Aufgeführt sind 41 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster III umfasst 192 Fragen aus 33 Modulen. Aufgeführt sind 42 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 41 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 42 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -238,6 +238,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 41 korrigiert, 0 fraglich, 0
 - **Richtige Antwort:** rund 10,4 kN
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### qn_holzbau_verbindung_6 · Verbindungen & Anschlüsse
+
+- **Frage:** Schraube d = 8 mm (Kerndurchmesser d₁ = 5,2 mm, d_ef = 1,1·d₁ = 5,72 mm) in C24 (f_h,k = 17,0 N/mm², M_y,Rk = 11 180 Nmm), l_ef = 80 mm. Modell des Moduls: F₁ = f_h,k·l_ef·d_ef und F₂ = 1,15·√(2·M_y,Rk·f_h,k·d_ef) + Seileffekt min(F_ax,Rk/4; Johansen-Anteil) mit F_ax,Rk/4 = 2 060 N. Welcher Wert ist maßgebend?
+- **Richtige Antwort:** F₂ ≈ 3,4 kN – Fließgelenk mit begrenztem Seileffekt
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: Abscheren im Modul mit d_ef = 1,1·d₁ (T10-HV-3, Nagelregeln bei d_ef ≤ 6 mm); Frage, Werte, Optionen und Rückmeldungen auf d_ef umgestellt, Distraktor „voller Seileffekt“ statt Summe der Modi – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### qn_innenausbau_1 · Sammlung

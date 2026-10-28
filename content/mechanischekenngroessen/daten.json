@@ -7,7 +7,7 @@
     "normalbetonC3037": "Normalbeton C30/37",
     "sprödesHeterogenesMehrphasenmaterialZeig": "Sprödes, heterogenes Mehrphasenmaterial. Zeigt ausgeprägtes Kriechen und Schwinden über Monate bis Jahre.",
     "nadelholzC24Parallel": "Nadelholz C24 (parallel)",
-    "anisotroperNaturbaustoffMitHoher": "Anisotroper Naturbaustoff mit hoher spezifischer Steifigkeit längs zur Faser und Feuchtekriechen (k_def).",
+    "anisotroperNaturbaustoffMitHoher": "Anisotroper Naturbaustoff mit hoher spezifischer Steifigkeit längs zur Faser und Feuchtekriechen (k_def). Querdehnzahl ν = 0,05 (richtungsabhängig etwa 0,02 bis 0,5) und Schwindmaß längs −0,20 ‰ (bei 0,01 %/% und 10 bis 20 % Feuchteänderung eher −1 bis −2 ‰) sind vorläufige Lehrwerte.",
     "aluminiumEnAw6060": "Aluminium EN AW-6060 T66",
     "leichtmetallMitGeringemE": "Leichtmetall mit geringem E-Modul (1/3 des Stahls), aber hervorragender Korrosionsbeständigkeit.",
     "bauglasKalkNatronFloatglas": "Bauglas (Kalk-Natron-Floatglas)",

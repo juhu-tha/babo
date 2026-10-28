@@ -37,7 +37,7 @@
     "nMmBEf": " N/mm² (b_ef = k_cr · b, k_cr = ",
     "vsFVd": ") vs. f_vd = ",
     "t3DurchbiegungSlsComfort": "3. Durchbiegung (SLS, Kriechen mit k_def):",
-    "mmVsMaxL": " mm vs. Max (L/300) = ",
+    "mmVsMaxL": " mm vs. Empfehlungswert L/300 (EC 5, Tab. 7.2 mit NA) = ",
     "eigengewicht": "• Eigengewicht: ",
     "kgMDensity": " kg/m³ density)",
     "teilsicherheitsbeiwerteG135": "• Teilsicherheitsbeiwerte: γ_G = 1,35, γ_Q = 1,50",
@@ -71,7 +71,7 @@
     "ausbaulastGk": "Ausbaulast g_k:",
     "nutzungsklasseEinfeld": "Nutzungsklasse",
     "kledEinfeld": "Lasteinwirkungsdauer",
-    "mmVsMaxL200": " mm vs. Max (L/200) = "
+    "mmVsMaxL200": " mm vs. Empfehlungswert L/200 (EC 5, Tab. 7.2 mit NA) = "
   },
   "werte": {
     "verwendeteHolzgüte": "Verwendete Holzgüte",
@@ -224,7 +224,7 @@
       {
         "titel": "5. Durchbiegung mit Kriechen",
         "formel": "w_{inst} = 5{,}2 + 6{,}8 = 12{,}0 \\le 15{,}0\\,\\text{mm};\\; w_{fin} = 5{,}2 \\cdot 1{,}6 + 6{,}8 \\cdot (1 + 0{,}3 \\cdot 0{,}6) = 16{,}3 \\le 22{,}5\\,\\text{mm}",
-        "erklaerung": "DIN EN 1995-1-1, 2.2.3: k_def = 0,6 (Vollholz, NKL 1), ψ₂ = 0,3; Grenzwerte l/300 und l/200 nach NA (DE). Maßgebend ist w_inst mit 80 %."
+        "erklaerung": "DIN EN 1995-1-1, 2.2.3: k_def = 0,6 (Vollholz, NKL 1), ψ₂ = 0,3; Empfehlungswerte l/300 und l/200 nach DIN EN 1995-1-1, Tab. 7.2 mit NA (DE), keine verbindlichen Grenzwerte. Maßgebend ist w_inst mit 80 %."
       }
     ],
     "BpHolzprodukte.literatur": [
@@ -263,7 +263,7 @@
       },
       {
         "formel": "w_{\\text{inst}} = \\frac{5 \\cdot q_{\\text{inst}} \\cdot L^4}{384 \\cdot E_{0,\\text{mean}} \\cdot I_y} \\le \\frac{L}{300} \\dots \\frac{L}{500}",
-        "erklaerung": "Gebrauchstauglichkeit: elastische Anfangsdurchbiegung unter der charakteristischen Kombination; Grenzwerte: Empfehlung EN 1995-1-1, Tab. 7.2, l/300 bis l/500; nach NA (DE) w_inst ≤ l/300.",
+        "erklaerung": "Gebrauchstauglichkeit: elastische Anfangsdurchbiegung unter der charakteristischen Kombination; Empfehlungswerte nach EN 1995-1-1, Tab. 7.2: l/300 bis l/500; nach NA (DE) empfohlen w_inst ≤ l/300 (keine verbindlichen Grenzwerte, im Einzelfall vereinbaren).",
         "quelle": "DIN EN 1995-1-1 Abs. 7.2"
       }
     ]

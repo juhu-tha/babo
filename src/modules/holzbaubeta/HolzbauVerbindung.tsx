@@ -307,7 +307,9 @@ export default function HolzbauVerbindung({ connAngle, connCount, connD, connFor
                   {
                     titel: inhalt.werte.lochleibungsfestigkeitUndFließmoment,
                     erklaerung: inhalt.werte.lochleibungsfestigkeitNachEc5Ansatz,
-                    formel: `f_{h,k} = 0{,}082 \\cdot (1 - 0{,}01 \\cdot ${formatDeTeX(connD, 0)}) \\cdot ${formatDeTeX(connResults.rho_k, 0)} = ${formatDeTeX(connResults.f_h_k, 2)}\\,\\text{N/mm}^2;\\quad M_{y,Rk} = 0{,}3 \\cdot 400 \\cdot ${formatDeTeX(connD, 0)}^{2{,}6} = ${formatDeTeX(connResults.M_y_Rk, 0)}\\,\\text{Nmm}`,
+                    formel: `d_{ef} = 1{,}1 \\cdot d_1 = 1{,}1 \\cdot ${formatDeTeX(connResults.d_kern, 2)} = ${formatDeTeX(connResults.d_ef, 2)}\\,\\text{mm};\\quad ${connResults.lochleibungNach === 'nagel'
+                      ? `f_{h,k} = 0{,}082 \\cdot ${formatDeTeX(connResults.rho_k, 0)} \\cdot ${formatDeTeX(connResults.d_ef, 2)}^{-0{,}3}`
+                      : `f_{h,k} = 0{,}082 \\cdot (1 - 0{,}01 \\cdot ${formatDeTeX(connResults.d_ef, 2)}) \\cdot ${formatDeTeX(connResults.rho_k, 0)}`} = ${formatDeTeX(connResults.f_h_k, 2)}\\,\\text{N/mm}^2;\\quad M_{y,Rk} = 0{,}3 \\cdot 400 \\cdot ${formatDeTeX(connResults.d_ef, 2)}^{2{,}6} = ${formatDeTeX(connResults.M_y_Rk, 0)}\\,\\text{Nmm}`,
                   },
                   {
                     titel: inhalt.werte.schertragfähigkeitJeSchraube,

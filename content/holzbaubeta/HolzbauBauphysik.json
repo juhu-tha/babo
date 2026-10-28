@@ -45,7 +45,7 @@
     "gebrauchstauglichkeitsnachweisEc5": "Frequenz- und Steifigkeitskriterium (Lehrrechnung)",
     "auswertbareDeckenEigenmasseG": "Eigenmasse BSP (Wichte 5,5 kN/m³):",
     "gesamtmasseMTotInkl": "Masse $m$ aus ständigen Lasten:",
-    "biegesteifigkeitEiLPro": "Biegesteifigkeit je m Plattenbreite ($E_{0,mean}$ = 11 550 N/mm², $G_{r,mean}$ = 65 N/mm²):",
+    "biegesteifigkeitEiLPro": "Biegesteifigkeit je m Plattenbreite ($E_{0,mean}$ = 11 550 N/mm², $G_{r,mean}$ nach Auswahl 50 oder 65 N/mm²):",
     "grundfrequenzF1Einer": "Erste Eigenfrequenz $f_{1}$ des Einfeldträgers (DIN EN 1995-1-1, Gl. 7.5):",
     "schwingungsnachweisKriterium80": "Einordnung gegenüber Orientierungswerten",
     "schwingungsgefahrDieFrequenzLiegt": "**Hinweis:** Bei $f_{1} \\le 8 \\text{ Hz}$ ist das Verfahren nach DIN EN 1995-1-1, 7.3.3, nicht anwendbar; spürbare Schwingungen sind möglich und eine gesonderte Untersuchung (z. B. Beschleunigungsnachweis) ist nötig. Größere Plattendicke oder kleinere Spannweite erhöhen $f_{1}$.",
@@ -60,7 +60,8 @@
     "bspEiAngesetzt": "$(EI)_\\ell$ angesetzt",
     "bspEiQuer": "$(EI)_b$ quer (Querlagen + Estrich)",
     "steifigkeitskriteriumW1kN": "Steifigkeitskriterium: Durchbiegung unter 1 kN in Feldmitte (Hamm/Richter):",
-    "bspOrientierungNeutral": "Orientierungswerte nach Hamm/Richter (2009), aufgenommen in ÖNORM B 1995-1-1:2015: $f_{1}$ ≥ 8 Hz bzw. 6 Hz und $w$ ≤ 0,25 mm bzw. 0,50 mm unter 1 kN (Deckenklasse I bzw. II). Für DIN EN 1995-1-1 mit NA (DE) gelten eigene Grenzwerte (vorläufig, F-Freigabe). Nicht erfasst sind Beschleunigungs- und Geschwindigkeitskriterium, Durchlaufwirkung, vierseitige Lagerung und Schubverformung bei 7 und mehr Lagen (Schubanalogieverfahren nach Kreuzinger)."
+    "bspOrientierungNeutral": "Orientierungswerte nach Hamm/Richter (2009), aufgenommen in ÖNORM B 1995-1-1:2015: $f_{1}$ ≥ 8 Hz bzw. 6 Hz und $w$ ≤ 0,25 mm bzw. 0,50 mm unter 1 kN (Deckenklasse I bzw. II). Für DIN EN 1995-1-1 mit NA (DE) gelten eigene Grenzwerte (vorläufig, F-Freigabe). Nicht erfasst sind Beschleunigungs- und Geschwindigkeitskriterium, Durchlaufwirkung, vierseitige Lagerung und Schubverformung bei 7 und mehr Lagen (Schubanalogieverfahren nach Kreuzinger).",
+    "bspRollschub": "Rollschubmodul $G_{r,mean}$ der Querlagen"
   },
   "werte": {
     "materialtypUndAbbrandrate": "Materialtyp und Abbrandrate",
@@ -83,6 +84,9 @@
     "bspF1Bis8": "f₁ bis 8 Hz – gesonderte Untersuchung",
     "bspWBisI": "w bis Orientierungswert Klasse I",
     "bspWBisII": "w bis Orientierungswert Klasse II",
-    "bspWUeberII": "w über Orientierungswert Klasse II"
+    "bspWUeberII": "w über Orientierungswert Klasse II",
+    "bspRollschub": "Rollschubmodul der Querlagen",
+    "bspRollschubStandard": "50 N/mm² (viele ETAs, EC 5 Neuausgabe; Standard)",
+    "bspRollschubProHolz": "65 N/mm² (proHolz Austria 2018)"
   }
 }
