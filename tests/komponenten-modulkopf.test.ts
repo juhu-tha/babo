@@ -124,10 +124,10 @@ t.test('ErkundungsAuftrag: alle Datensätze rendern fehlerfrei', () => {
 
 // ── ModulKurzfassung ─────────────────────────────────────────────────────────
 const [kfId, kf] = Object.entries(KURZFASSUNG)[0];
-t.test('ModulKurzfassung: standardmäßig aufgeklappt mit 5 Punkten in Reihenfolge', () => {
+t.test('ModulKurzfassung: standardmäßig eingeklappt, 5 Punkte in Reihenfolge im HTML (hidden)', () => {
   const html = rendere(h(ModulKurzfassung, { punkte: kf }));
   const s = text(html);
-  sicher(html.includes('aria-expanded="true"') && html.includes('aria-label="Das Wichtigste in 5 Punkten"'), 'ARIA/Label fehlt');
+  sicher(html.includes('aria-expanded="false"') && html.includes('aria-controls=') && html.includes('hidden=""') && html.includes('aria-label="Das Wichtigste in 5 Punkten"'), 'ARIA/Label/hidden fehlt');
   sicher(anzahl(html, /<li>/) === 5, `${kfId}: 5 Listenpunkte erwartet`);
   const pos = kf.map(p => s.indexOf(kompakt(p)));
   sicher(pos.every((p, i) => p >= 0 && (i === 0 || p > pos[i - 1])), 'Punkte fehlen oder falsche Reihenfolge');
