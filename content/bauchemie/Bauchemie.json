@@ -86,7 +86,7 @@
     "leichtLöslicheSalzeWerden": "Leicht lösliche Salze werden durch kapillaren Wassertransport in das Bauteil (oft Mauerwerk) transportiert. Verdunstet das Wasser an der Oberfläche, reichern sich die Salze an.",
     "chlorideTausalzMeerwasserSehr": "**Chloride (Tausalz, Meerwasser):** Sehr gut wasserlöslich und extrem hygroskopisch. Halten das Mauerwerk dauerfeucht und verursachen schwere Bewehrungskorrosion in Stahlbeton.",
     "nitrateFäkalienLandwirtschaftEbenfalls": "**Nitrate (Fäkalien, Landwirtschaft):** Ebenfalls stark hygroskopisch. Treten häufig in landwirtschaftlichen Gebäuden oder an alten Stallungen auf (Mauersalpeter).",
-    "sulfateGipsSaurerRegen": "**Sulfate (Gips, saurer Regen, Boden):** Weniger hygroskopisch, verursachen aber beim Kristallisieren und beim Wechsel der Hydratstufe (z. B. Thenardit Na₂SO₄ → Mirabilit Na₂SO₄·10H₂O, rund dreifaches Volumen) hohe Drücke.",
+    "sulfateGipsSaurerRegen": "**Sulfate (Gips, saurer Regen, Boden):** Weniger hygroskopisch, verursachen aber beim Kristallisieren und beim Wechsel der Hydratstufe (z. B. Thenardit Na₂SO₄ → Mirabilit Na₂SO₄·10H₂O, Volumenzunahme um gut 300 %, also rund das Vierfache) hohe Drücke.",
     "kristallisationsdruckInDerPore": "Kristallisationsdruck in der Pore",
     "wachsenderSalzkristallSprengtDas": "Wachsender Salzkristall sprengt das Gefüge",
     "schädigungsmechanismenSanierung": "Schädigungsmechanismen & Sanierung",

@@ -80,7 +80,7 @@
     "Schallschutz.schritte_2": [
       {
         "titel": "Hochlochziegel",
-        "erklaerung": "HLZ 24 cm (ρ = 800 kg/m³) mit 1,5 cm Gipsputz innen und 2 cm Zementputz außen:",
+        "erklaerung": "HLZ 24 cm (ρ = 800 kg/m³) mit 1,5 cm Gipsputz innen und 2 cm Zementputz außen. Nur zur Veranschaulichung: Für Hochlochziegel gilt die Massekurve nach DIN 4109-32 wegen Lochbild, Lochanteil und gegebenenfalls Dämmstofffüllung nur eingeschränkt; im Nachweis zählen Prüfwerte des Herstellers (vorläufig, F-Freigabe).",
         "formel": "m' = 192 + 15 + 36 = 243\\,\\text{kg/m}^2 \\Rightarrow R_w = 30{,}9 \\cdot \\lg 243 - 22{,}2 = 51{,}5\\,\\text{dB}"
       },
       {

@@ -12,6 +12,10 @@ import inhalt from '@/content/probenahme/Probenahme.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { rueckprall, rueckprallLehrkurve, SCHLAGWINKEL, type Schlagrichtung } from '@/src/calc/bauwerksuntersuchung';
+
+/** Schlagwinkel des Simulators (−90° Boden, 0° Wand, +90° Decke) → Schlagrichtung des zentralen Rechenkerns */
+const RICHTUNG_AUS_WINKEL = Object.fromEntries(Object.entries(SCHLAGWINKEL).map(([r, a]) => [a, r])) as Record<number, Schlagrichtung>;
 
 export default function Probenahme() {
   const [activeTab, setActiveTab] = useState<'haufwerk' | 'diagnostik'>('haufwerk');
@@ -558,25 +562,16 @@ export default function Probenahme() {
                     </div>
 
                     {(() => {
-                      // Winkelkorrektur: typische Herstellerwerte für Schmidt-Hammer Typ N (gerätespezifisch!),
-                      // linear interpoliert zwischen R = 20 und R = 60.
-                      // Nach unten (−90°): Rückprall gegen die Schwerkraft → R zu niedrig → Korrektur positiv.
-                      // Nach oben (+90°): Rückprall mit der Schwerkraft → R zu hoch → Korrektur negativ.
-                      const rKlemm = Math.min(60, Math.max(20, rawR));
-                      const interpol = (a20: number, a60: number) => a20 + (a60 - a20) * (rKlemm - 20) / 40;
-                      let angleCorr = 0;
-                      if (impactAngle === -90) angleCorr = interpol(3.4, 1.7);
-                      else if (impactAngle === 90) angleCorr = interpol(-5.4, -2.3);
-
-                      // Karbonatisierung: Lehrmodell (−0,15 Skt. je mm, max. −6 Skt.). Kein Normansatz –
-                      // in der Praxis wird der Einfluss über Vergleichsbohrkerne (DIN EN 13791) kalibriert.
-                      let carbCorr = carbX > 0 ? -0.15 * carbX : 0;
-                      if (carbCorr < -6.0) carbCorr = -6.0;
-
-                      const finalR = rawR + angleCorr + carbCorr;
-                      // Festigkeitsschätzung: lineare Lehr-Näherung f ≈ 1,4·R − 20 (nicht normativ).
-                      const rawEstStr = Math.max(10, (rawR * 1.4) - 20);
-                      const finalEstStr = Math.max(10, (finalR * 1.4) - 20);
+                      // Modulprüfung Tranche 4 (T4-PN-1): dieselben Lehransätze wie Bauwerksuntersuchung, ZfP und Labor
+                      // (Runde 5, Z55: eine Lehrkurve im Repo) statt eigener Werte (vorher 1,4·R − 20, −0,15 Skt./mm):
+                      // Richtungskorrektur nach Herstellerformel Original Schmidt Typ N, Karbonatisierungsfaktor
+                      // k = max(0,75; 1 − 0,015·(d_k − 5)) und Lehrkurve f_c ≈ 0,0125·R^2,22 aus src/calc/bauwerksuntersuchung.ts.
+                      const rp = rueckprall(rawR, RICHTUNG_AUS_WINKEL[impactAngle] ?? 'horiz', carbX);
+                      const angleCorr = rp.rKorr - rawR;
+                      const carbCorr = rp.rFinal - rp.rKorr;
+                      const finalR = rp.rFinal;
+                      const rawEstStr = rueckprallLehrkurve(rawR);
+                      const finalEstStr = rp.fcSchaetz;
 
                       return (
                         <div className="p-3 bg-white border border-home-grau/30 rounded-lg space-y-2 mt-2 leading-relaxed text-[11px] text-slate-700">

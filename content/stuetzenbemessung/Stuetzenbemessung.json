@@ -17,7 +17,8 @@
     "erfGesamtbewehrung": "Erf. Gesamtbewehrung ",
     "cmMindestbewehrungNaDe": " cm² | Mindestbewehrung NA DE: ",
     "querschnittNichtAusreichend": "Querschnitt nicht ausreichend!",
-    "interaktionsdiagrammDehnungsiteration": "Interaktionsdiagramm (Dehnungsiteration)"
+    "interaktionsdiagrammDehnungsiteration": "Interaktionsdiagramm (Parabel-Rechteck-Diagramm, Dehnungsiteration)",
+    "vergleichSpannungsblock": "Vergleich Spannungsblock (λ = 0,8, nur zur Einordnung): "
   },
   "werte": {
     "einwirkungEdEd": "Einwirkung (μ_Ed, ν_Ed)",
@@ -28,14 +29,14 @@
     "druckkraftNEd": "Druckkraft N_{Ed}",
     "biegemomentMEd": "Biegemoment M_{Ed}",
     "ihrRechenwegStützenbemessungMit": "Ihr Rechenweg: Stützenbemessung mit den aktuellen Eingaben",
-    "dinEn19921": "DIN EN 1992-1-1 mit NA (DE), 5.2, 5.8.3.1, 6.1 und 9.5.2",
+    "dinEn19921": "DIN EN 1992-1-1 mit NA (DE), 3.1.7, 5.2, 5.8.3.1, 6.1 und 9.5.2",
     "ausmittenUndMaßgebendesMoment": "Ausmitten und maßgebendes Moment",
     "imperfektionEIL": "Imperfektion e_i = l₀/400 und Mindestausmitte e₀ = max(h/30; 20 mm) werden nicht addiert; maßgebend ist der größere Wert.",
     "limTheorieIiOrdnung": "λ > λ_lim: Theorie II. Ordnung wäre erforderlich; das Ergebnis nach Theorie I. Ordnung liegt auf der unsicheren Seite.",
     "limDieBemessungNach": "λ ≤ λ_lim: Die Bemessung nach Theorie I. Ordnung ist zulässig.",
     "bezogeneSchnittgrößen": "Bezogene Schnittgrößen",
     "mechanischerBewehrungsgradAusDem": "Mechanischer Bewehrungsgrad aus dem Interaktionsdiagramm",
-    "derRechnerSuchtIn": "Der Rechner sucht in Schritten von 0,01 das kleinste ω, dessen Interaktionskurve den Punkt (μ_Ed; ν_Ed) umschließt.",
+    "derRechnerSuchtIn": "Der Rechner sucht in Schritten von 0,01 das kleinste ω, dessen Interaktionskurve den Punkt (μ_Ed; ν_Ed) umschließt. Die Kurven beruhen auf dem Parabel-Rechteck-Diagramm (ε_c2 = 2 ‰, ε_cu2 = 3,5 ‰, n = 2) wie die gängigen Bemessungsdiagramme; der Spannungsblock liegt bei hoher Druckausnutzung auf der unsicheren Seite und wird nur zum Vergleich angezeigt.",
     "auchMit25": "Auch mit ω = 2,5 wird der Punkt (μ_Ed; ν_Ed) nicht umschlossen: Der Querschnitt reicht nicht aus.",
     "mindestbewehrungUndMaßgebenderWert": "Mindestbewehrung und maßgebender Wert",
     "mindestlängsbewehrungNachNaDe": "Mindestlängsbewehrung nach NA (DE) 9.5.2(2): A_s,min = 0,15 · |N_Ed| / f_yd.",

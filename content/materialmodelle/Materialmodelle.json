@@ -239,7 +239,7 @@
         "formel": "\\tau = \\tau_0 + \\mu_p \\cdot \\dot{\\gamma} \\quad \\text{für } |\\tau| > \\tau_0"
       },
       {
-        "erklaerung": "Dissipationsarbeit / Hysteresefläche pro Zyklus\nW_{diss}: mechanische Dissipationsenergie (in kJ/m³ bzw. N/mm²)\n\\sigma: Spannung, \\varepsilon: Dehnung",
+        "erklaerung": "Dissipationsarbeit / Hysteresefläche pro Zyklus\nW_{diss}: mechanische Dissipationsenergie (Energie je Volumen in N/mm² = MJ/m³)\n\\sigma: Spannung, \\varepsilon: Dehnung",
         "formel": "W_{\\text{diss}} = \\oint \\sigma \\, d\\varepsilon"
       }
     ]

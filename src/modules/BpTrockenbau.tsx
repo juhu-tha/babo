@@ -1,4 +1,5 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { trockenbauBedarf } from '@/src/calc/bauprodukte';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -65,13 +66,15 @@ export default function BpTrockenbau() {
   const [includeInsulation, setIncludeInsulation] = useState<boolean>(true);
 
   // Calculation coefficients
-  const plasterboardArea = parseFloat((wallArea * layerCount * 2 * 1.05).toFixed(1)); // both sides + 5% waste
-  const cwProfilesMeter = parseFloat((wallArea * (profileSpacing === 62.5 ? 2.0 : 3.8) * 1.05).toFixed(1));
-  const uwProfilesMeter = parseFloat((wallArea * 0.7 * 1.05).toFixed(1));
-  const screwsCount = Math.ceil(wallArea * (layerCount === 1 ? 30 : 55) * 1.05);
-  const jointFillerKg = parseFloat((wallArea * layerCount * 2 * 0.45).toFixed(1)); // 0.45 kg per m² per layer per side
-  const sealTapeMeter = parseFloat((wallArea * 0.8).toFixed(1));
-  const insulationArea = includeInsulation ? parseFloat((wallArea * 1.02).toFixed(1)) : 0;
+  // Rechenkern src/calc/bauprodukte.ts (Richtwerte inkl. ca. 5 % Verschnitt)
+  const bedarf = trockenbauBedarf({ flaeche: wallArea, lagen: layerCount, achsabstand: profileSpacing, daemmung: includeInsulation });
+  const plasterboardArea = bedarf.platten;
+  const cwProfilesMeter = bedarf.cw;
+  const uwProfilesMeter = bedarf.uw;
+  const screwsCount = bedarf.schrauben;
+  const jointFillerKg = bedarf.spachtel;
+  const sealTapeMeter = bedarf.dichtband;
+  const insulationArea = bedarf.daemmung;
 
   // Selected details
   const activeProduct = DRY_PRODUCTS_DB.find(p => p.id === selectedProductId) || DRY_PRODUCTS_DB[0];

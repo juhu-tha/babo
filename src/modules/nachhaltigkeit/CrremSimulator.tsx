@@ -13,7 +13,7 @@ interface CrremSimulatorProps {
   setCrremBuildingType: Dispatch<SetStateAction<"office" | "residential">>;
   setCrremCurrentGwp: Dispatch<SetStateAction<number>>;
   setCrremRetrofit: Dispatch<SetStateAction<"none" | "opex" | "capex_huelle" | "capex_deep">>;
-  setRegulatorikSubTab: Dispatch<SetStateAction<"rechtsrahmen" | "crrem_sim">>;
+  setRegulatorikSubTab: Dispatch<SetStateAction<"rechtsrahmen" | "crrem_sim" | "cbam">>;
 }
 
 export default function CrremSimulator({ crremBuildingType, crremCurrentGwp, crremResult, crremRetrofit, setCrremBuildingType, setCrremCurrentGwp, setCrremRetrofit, setRegulatorikSubTab }: CrremSimulatorProps) {

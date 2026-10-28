@@ -252,7 +252,7 @@ Die drei Beispiele des Moduls (Flachstahl 254,0 kN; IPE 300 S235 147,7/130,9 kNm
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (28.10.2026)
 
 ## 8. Asphalt (`asphalt`)
 
@@ -358,7 +358,26 @@ Die Beispiele (366 kg/m² für 57 dB, +9,3 dB je Masseverdopplung) und die Anfor
 | T3-BR-3 | Brandschutz | PP-Fasern bei hochfestem Beton „zwingend“ (NA DE) oder eine von mehreren Methoden? |
 | T3-TS-1 | Schallschutz | Hinweis zur eingeschränkten Gültigkeit der Massekurve für Hochlochziegel ergänzen? |
 
+## Umsetzung der Entscheidungen vom 28.10.2026 (abends)
+
+Umgesetzt im Branch `rechner/dwa-cbam-t3-10-28` (T3-MW-1, T3-MW-2 und T3-HY-2 in einem eigenen Branch):
+
+| Nr. | Entscheidung | Umsetzung | Quelle |
+|---|---|---|---|
+| T3-SW-2 | bei 2013-02 bleiben, Hinweis auf 2026-05 | Rechenkern gibt bei jedem Ergebnis einen Normenstand-Hinweis aus (Rechenweg 2013-02, Neuausgabe 2026-05 nicht eingearbeitet); Werte unverändert | DIN-Inhaltsverzeichnisse (oben) |
+| T3-EX-1 | Schalter XF2/XF3 mit/ohne LP | `huellwerte(…, xfOhneLp)`: ohne LP (w/z)_eq ≤ 0,50, C35/45, z ≥ 320 kg/m³, kein Luftgehalt; mit XF4 bleibt LP-Beton maßgebend; Kontrollkästchen im Hüllwertrechner | DIN 1045-2, Tab. F.2.1 (Wiedergabe im Modultext) |
+| T3-EX-2 | AKR-Text prüfen | WF/WA: E I (E I-O, E I-OF, E I-S) ohne vorbeugende Maßnahmen; bei E II-O/-OF, E III-O/-OF, E III-S je nach Klasse und Zementgehalt NA-Zement, Austausch oder Gutachten; „E II-S“ und „NA-Zement obligatorisch“ entfernt (vorläufig, F-Freigabe Tabellenwortlaut) | [InformationsZentrum Beton, Handout Alkali-Richtlinie 09/2025](https://www.beton.org/fileadmin/beton-org/media/Organisation/InformationsZentrum-Beton/Handouts/2025/2025-09-Fachkundige_Person/07_Regelwerke_Alkali-Richtline-ROe.pdf) |
+| T3-BR-2 | Stützen um μ_fi = 0,7 ergänzen | Stützenspalten μ_fi = 0,5 (200/25, 200/36 o. 300/31, 300/45 o. 400/38, 350/45 o. 450/40) und μ_fi = 0,7 (200/32 o. 300/27, 250/46 o. 350/40, 350/53 o. 450/40, 350/57 o. 450/51) aus `src/data/brandschutzBeton.ts`; Anwendungsgrenzen im Text (vorläufig, F-Freigabe mit NA DE) | [Structville, Table 10 nach EN 1992-1-2](https://structville.com/fire-resistance-design-of-reinforced-concrete-structures) |
+| T3-BR-3 | PP-Fasern als eine von mehreren Methoden | Text nennt Methoden A–D (Bewehrungsnetz, Betonzusammensetzung, Schutzschicht, PP-Fasern) und die Silikastaub-Grenze 6 % für C55/67 bis C80/95; „zwingend“ entfernt; Auswahl nach NA DE vorläufig | [The Concrete Centre, Practical Design to EC2, Fire](https://www.concretecentre.com/TCC/media/TCCMediaLibrary/PDF%20attachments/Lecture-8-Fire-jb.pdf) |
+| T3-TS-1 | Hinweis Massekurve Hochlochziegel | Hinweis im Beispiel (`Schallschutz.json`) und bei Auswahl HLz in der Beispielrechnung: Massekurve nur eingeschränkt, Prüfwerte des Herstellers maßgebend | [DAGA 2020, Beitrag 391](https://www.pub.dega-akustik.de/DAGA_2020/data/articles/000391.pdf) |
+
+Regressionstest: `tests/tranche3Entscheidungen.test.ts`.
+
 ## Nachweis der Prüfung
 
 - Unabhängige Nachrechnung: eigenes Skript (Python) mit eigener Umsetzung der Norm- und Modellgleichungen, Vergleich gegen die Kernausgaben und Tabellendaten (83 Vergleiche im Test); die Inline-Rechnungen (Heißbemessung Holz, Mauerwerksreiter) wurden über die Formeln abgeglichen. Die Sollwerte sind als `tests/modulpruefungTranche3.test.ts` übernommen.
 - Öffentliche Quellen dieser Prüfung: [DIN Media, DIN 4108-2:2026-05](https://www.dinmedia.de/en/standard/din-4108-2/401017482); [DIN, Inhaltsverzeichnis DIN 4108-2:2026-05](https://www.din.de/de/mitwirken/normenausschuesse/nabau/veroeffentlichungen/wdc-beuth:din21:401017482/toc-3688761/download); [DIN, Inhaltsverzeichnis DIN 4108-2:2013-02](https://www.din.de/de/mitwirken/normenausschuesse/nabau/veroeffentlichungen/wdc-beuth:din21:167922321/toc-1929159/download); [Glinicki 2004 (Luftgehalt, EN 206)](https://yadda.icm.edu.pl/baztech/element/bwmeta1.element.baztech-article-BTB2-0059-0196/c/Glinicki_Wlasciwe_2_2004.pdf); [umwelt-online, DIN EN 206-1](https://umwelt-online.de/recht/bau/din/206_1e.htm); [Kasal, ČVUT 2020 (gewogene Reife)](https://concrete.fsv.cvut.cz/phdworkshop/proceedings/2020/pdf/Kasal_Pavel.pdf); [Giatec, Maturity Methods](https://www.giatecscientific.com/?p=26197); [Eurocode Applied, Stahlkennwerte EN 1993-1-1](https://cdn.eurocodeapplied.com/design/en1993/steel-design-properties); [Handwerksblatt, AGW Bitumen ab 2027](https://www.handwerksblatt.de/betriebsfuehrung/temperaturabgesenkter-asphalt-wird-2027-pflicht); [ARS 08/2026](https://www.ingenieurkammer.de/fileadmin/dokumente/News/PDF-Dateien/2026_06_05_Einf_ARS_2026_08-ZTV_Asphalt_T1.pdf); [FGSV, TL/ZTV Asphalt-StB 26](https://www.fgsv.de/fileadmin/PRESSE/Pressemitteilungen/2026-04-23_TL_ZTV_Asphalt_StB_26.pdf); [Acta Technica Napocensis 2014 (EC2-1-2 Balken)](https://oldconstructii.utcluj.ro/ActaCivilEng/download/atn/ATN2014(2)_4.pdf).
+
+## Freigabe 28.10.2026
+
+Freigegeben (Empfehlung „freigabefähig“, keine offenen Fragen; Prüfvermerk in `src/data/pruefvermerke.ts` „geprueft“, am 2026-10-28, passiv ohne Namen): `stahlbau_ec3` (Nr. 7). Alle übrigen Prüfeinheiten dieser Tranche sind erst nach Korrektur bzw. Klärung freigabefähig.

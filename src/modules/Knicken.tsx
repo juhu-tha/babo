@@ -1,4 +1,4 @@
-import { EULER_BETA } from '@/src/calc/stabilitaet';
+import { EULER_BETA, eulerEigenform } from '@/src/calc/stabilitaet';
 import React, { useState, useMemo } from 'react';
 import { Activity, Sliders, BookOpen } from 'lucide-react';
 import { Slider } from '@/src/components/ui/Slider';
@@ -77,34 +77,16 @@ export default function Knicken() {
     const amplification = isBuckled ? 12.5 : (1 / Math.max(0.08, 1 - (loadPercent / 100)));
     const maxDeflectionMm = w0_mm * amplification;
 
-    // Qualitative Biegelinie für Diagramm
+    // Biegelinie im Diagramm: erste Eigenform des Euler-Falls (src/calc/stabilitaet.ts), skaliert auf w_max in mm
+    // (vorher Fall 3 mit falscher Form, w = 0 ab 0,7·l, und Werte je Fall durch 15 bis 25 geteilt – Modulprüfung Tranche 10)
     const steps = 50;
-    const dx = l / steps;
     const labels: string[] = [];
     const deflectionData: number[] = [];
 
     for (let j = 0; j <= steps; j++) {
-      const x = j * dx;
-      labels.push(formatDeZahl(x, 2));
-      const pi_x_l = (Math.PI * x) / l;
-
-      let w = 0;
-      switch (eulerFall) {
-        case 1: // w(x) = 1 - cos(pi*x / (2l))
-          w = (1 - Math.cos((Math.PI * x) / (2 * l))) * (maxDeflectionMm / 20);
-          break;
-        case 2: // w(x) = sin(pi*x / l)
-          w = Math.sin(pi_x_l) * (maxDeflectionMm / 20);
-          break;
-        case 3: // w(x) ~ sin(pi*x / (0.7l))
-          w = Math.sin((Math.PI * x) / (0.7 * l)) * (1 - x / l) * (maxDeflectionMm / 15);
-          if (x > 0.7 * l) w = 0;
-          break;
-        case 4: // w(x) = 1 - cos(2*pi*x / l)
-          w = (1 - Math.cos(2 * pi_x_l)) * (maxDeflectionMm / 25);
-          break;
-      }
-      deflectionData.push(w);
+      const xi = j / steps;
+      labels.push(formatDeZahl(xi * l, 2));
+      deflectionData.push(eulerEigenform(eulerFall as 1 | 2 | 3 | 4, xi) * maxDeflectionMm);
     }
 
     const chartData = {
@@ -463,7 +445,7 @@ export default function Knicken() {
             <h3 className="font-bold text-base text-text-main mb-3 flex items-center gap-2">
               <Activity className="text-shiraz" /><MdText text={inhalt.texte.biegelinienverlaufÜberDieStablänge} /></h3>
             <div className="h-[360px] relative w-full">
-              <Line data={results.chartData} options={{ responsive: true, maintainAspectRatio: false }} />
+              <Line data={results.chartData} options={{ responsive: true, maintainAspectRatio: false, scales: { x: { title: { display: true, text: inhalt.werte.achseX } }, y: { title: { display: true, text: inhalt.werte.achseW } } } }} />
             </div>
           </div>
         )}

@@ -151,7 +151,7 @@
     "weitgehendUnzulässigNurNach": "Weitgehend unzulässig – nur nach Einbautabelle.",
     "höherBelasteteKlassenSind": "Höher belastete Klassen sind in Zone III A/III B nur in wenigen, in Anlage 2 EBV ausdrücklich zugelassenen (gebundenen bzw. abgedeckten) Einbauweisen möglich; in Karst- und stark klüftigen Gebieten sind RC-3, BM-F3, BG-F3 und GS-3 verboten (§ 19 Abs. 7). Die Lehrlogik stuft dies vereinfacht als unzulässig ein.",
     "uneingeschränktZulässig": "Uneingeschränkt zulässig.",
-    "derWerkstoffBesitztProduktstatus": "Der Werkstoff besitzt Produktstatus und ist ohne hydrogeologische/wasserrechtliche Restriktionen einbaubar.",
+    "derWerkstoffBesitztProduktstatus": "Der Werkstoff ist ohne hydrogeologische Einschränkungen nach Anlage 2 EBV einbaubar (Produktstatus nur nach § 5 KrWG im Einzelfall).",
     "zulässigUnterSchutzauflagen": "Zulässig unter Schutzauflagen.",
     "ohneGünstigeDeckschichtGelten": "Ohne günstige Deckschicht gelten die Spalten „ungünstig“ der Einbautabellen; für RC-1, BM-0* u. a. ist eine Sickerstrecke von mindestens 0,1 bis 1 m zuzüglich 0,5 m Sicherheitsabstand nachzuweisen (§ 19 Abs. 8 EBV).",
     "günstigeGrundwasserdeckschichtSickerstre2": "Günstige Grundwasserdeckschicht: Sickerstrecke > 1 m zuzüglich 0,5 m Sicherheitsabstand (§ 19 Abs. 8 EBV).",
@@ -226,7 +226,7 @@
         "url": "https://www.gesetze-im-internet.de/krwg/"
       },
       {
-        "title": "Ersatzbaustoffverordnung (ErsatzbaustoffV), in Kraft seit 01.08.2023; Novelle im Referentenentwurf 08/2026",
+        "title": "Ersatzbaustoffverordnung (ErsatzbaustoffV), in Kraft seit 01.08.2023; Novelle im Referentenentwurf vom 15.07.2026",
         "url": "https://www.gesetze-im-internet.de/ersatzbaustoffv/"
       },
       {

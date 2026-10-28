@@ -137,7 +137,7 @@
     "BpFarbenLacke": [
       {
         "cat": "a",
-        "name": "Wandfarben für den Innenbereich (matt, Glanz < 25@85°)",
+        "name": "Wandfarben für den Innenbereich (matt, Glanz < 25@60°)",
         "wb": "30 g/l",
         "sb": "30 g/l (selten)",
         "desc": "Standarddispersionsfarben"
@@ -359,8 +359,8 @@
       },
       {
         "titel": "4. Mit Verlusten (Rauheit, Rollen ca. 20 %)",
-        "formel": "V_{prakt} \\approx 0{,}20 \\cdot 1{,}2 = 0{,}24\\,\\text{l/m}^2",
-        "erklaerung": "Verlustfaktor als Lehrwert; Herstellerangaben beachten."
+        "formel": "V_{prakt} = 0{,}20 / (1 - 0{,}20) = 0{,}25\\,\\text{l/m}^2",
+        "erklaerung": "Verlustfaktor als Lehrwert, wie im Rechner als V/(1 − Verlust) angesetzt; Herstellerangaben beachten."
       }
     ],
     "BpFarbenLacke.literatur": [

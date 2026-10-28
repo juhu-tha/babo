@@ -74,7 +74,8 @@
     "äquivalenterBindemittelgehaltBEq": "Äquivalenter Bindemittelgehalt b_eq:",
     "äquivalenterWZEq": "Äquivalenter (w/z)eq:",
     "eingehaltenGrenzwert": "✓ Eingehalten (Grenzwert: ",
-    "überschrittenGrenzwert": "✕ Überschritten (Grenzwert: "
+    "überschrittenGrenzwert": "✕ Überschritten (Grenzwert: ",
+    "xfOhneLpSchalter": "XF2/XF3 ohne Luftporen (LP) ausführen: (w/z)_eq ≤ 0,50, C35/45, z ≥ 320 kg/m³ statt LP-Beton mit 0,55, C25/30, 300 kg/m³ (DIN 1045-2, Tab. F.2.1); XF4 nur mit LP"
   },
   "werte": {
     "beiSulfatangriff600Mg": "Bei Sulfatangriff (> 600 mg/l SO₄²⁻ im Wasser) SR-Zement; bis 1500 mg/l alternativ Zement-Flugasche-Gemisch.",
@@ -95,7 +96,9 @@
     "dinEn19921": "DIN EN 1992-1-1 mit NA:2013-04, Tab. 4.4DE",
     "cNom40Mm": "c_nom = 40 mm; Beton mindestens C25/30 mit (w/z)eq ≤ 0,60 und z ≥ 280 kg/m³.",
     "betonAbschnittDauerhaftigkeit": "Beton (Abschnitt Dauerhaftigkeit)",
-    "karbonatisierungBeton": "Karbonatisierung (Beton)"
+    "karbonatisierungBeton": "Karbonatisierung (Beton)",
+    "xfOhneLpGewaehlt": "XF2/XF3 ohne LP: (w/z)_eq ≤ 0,50, C35/45, z ≥ 320 kg/m³ (DIN 1045-2, Tab. F.2.1).",
+    "xfOhneLpMitXf4": "XF2/XF3 ohne LP gewählt; wegen XF4 bleibt LP-Beton erforderlich, es gelten die LP-Werte."
   },
   "daten": {
     "Expositionsklassen": [

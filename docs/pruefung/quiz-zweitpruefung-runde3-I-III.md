@@ -2,7 +2,7 @@
 
 Stand: 28.10.2026 · Grundlage: `src/data/quiz.json` auf main (Stand fc525dc5) · Prüfschema wie Zweitprüfung 27.10. (Frage, Optionen, richtige Antwort, Erklärung, Rückmeldungen zu den Distraktoren und normRef gegen Modulinhalt, Rechenkerne, Kennwerte und öffentliche Quellen; Rechenfragen nachgerechnet; Distraktoren, Längen- und Formulierungshinweise, Zahlformat). Tausendertrennung wurde nicht angefasst (separate Umstellung).
 
-**Wichtig:** In dieser Runde wurde **nichts freigegeben** (`verified` bleibt `false`, kein `reviewer`/`reviewedAt`). Die Liste ist ein Vorschlag; freigegeben wird erst nach Bestätigung durch Ankreuzen.
+**Nachtrag 28.10.2026:** Sammelfreigabe erteilt, siehe Schlusszeile. – **Ursprünglich:** In dieser Runde wurde **nichts freigegeben** (`verified` bleibt `false`, kein `reviewer`/`reviewedAt`). Die Liste ist ein Vorschlag; freigegeben wird erst nach Bestätigung durch Ankreuzen.
 
 ## Umfang
 
@@ -991,4 +991,6 @@ Anlass: unabhängige Stichprobe (25 Fragen, 2 Befunde zu Normstand/Kennwert). Er
 
 ---
 
-Freigabe aller mit ok bewerteten Fragen (401; ohne „korrigiert“ und „Klärung“, diese einzeln über ihre Checkbox): [ ]
+Freigabe aller mit ok bewerteten Fragen (401; ohne „korrigiert“ und „Klärung“, diese einzeln über ihre Checkbox): [x] (28.10.2026)
+
+400 Fragen mit Ergebnis „ok“ am 28.10.2026 freigegeben (`verified: true`, `reviewer` „freigegeben 28.10.2026 (Zweitprüfung)“, `reviewedAt` 2026-10-28). Vor der Freigabe wurde jede Frage mit dem Stand der Liste nach dem Abgleich (quiz.json in 55da85e9) verglichen: keine inhaltliche Änderung, nur Tausendertrennung. Nicht freigegeben: `q_boden_1` – nach der Liste mit #239 geändert (Zustandsformen nach DIN EN ISO 14688-2, T2-B-1; Vorprüfung „korrigiert“), braucht eine Einzelfreigabe. Offen (Einzelcheckbox): `q_we_4`, `qn_festigkeit_2`, `qn_sommerlicher_waermeschutz_1`, `qn_sommerlicher_waermeschutz_2`, `qn_sommerlicher_waermeschutz_3`, `qn_sommerlicher_waermeschutz_4`, `qn_sommerlicher_waermeschutz_5`, `qn_sommerlicher_waermeschutz_6`, `qn_sommerlicher_waermeschutz_7`, `q_bre_4`, `qn_asphalt_1`, `qn_bp_verkehr_tiefbau_3`, `qn_bp_verkehr_tiefbau_4`, `qn_keramik_ziegel_5`, `qn_membranen_etfe_3`, `q_inw_1`

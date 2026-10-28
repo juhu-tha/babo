@@ -20,9 +20,12 @@ const STAHLBETON: RechnerGrenzen = {
     'Biegung: eine Zug- und eine Druckbewehrungslage, ξ_lim = 0,45; nichtmetallische Bewehrung vereinfacht linear-elastisch, maßgebend ist die Zulassung.',
     'Querkraft: z = min(0,9·d; max(d − c_v,l − 30 mm; d − 2·c_v,l)) nach NA DE, NCI zu 6.2.3(1) (c_v,l Standard 3,5 cm, einstellbar); senkrechte Bügel, ohne Normalkraft (σ_cp = 0).',
     'Stütze: Theorie I. Ordnung mit e_i = l₀/400 und Mindestausmitte; bei λ > λ_lim nur Hinweis, kein Nachweis nach Theorie II. Ordnung.',
-    'Stütze: Interaktionskurven mit Spannungsblock (λ = 0,8, bei x > h auf h begrenzt); bei |ν| > 0,8 liegt µ_Rd bis rund 10 % über dem Parabel-Rechteck-Diagramm (Prüfpunkt).',
+    'Stütze: Interaktion mit Parabel-Rechteck-Diagramm (n = 2, ε_c2 = 2 ‰, ε_cu2 = 3,5 ‰), zwei symmetrische Lagen, ε_ud unbegrenzt; Spannungsblock nur Vergleich (bei |ν| > 0,8 bis rund 10 % unsicher).',
     'Durchstanzen: nur Flachdecken; Fundamente und Bodenplatten (NA DE 6.4.4(2)) sind nicht abgebildet.',
-    'Durchstanzen: konstantes β, keine Öffnungen, keine Abminderung durch Bodenpressung; erhöhte Faktoren κ_sw der ersten Bewehrungsreihen nicht berücksichtigt.',
+    'Durchstanzen: konstantes β nach NA DE 6.4.3(6) (1,10/1,40/1,50; unverschiebliche Systeme, Stützweiten ±25 %), keine genauere β-Ermittlung; keine Öffnungen, keine Bodenpressung, ohne erhöhte κ_sw der ersten Reihen.',
+    'Durchstanzen: Rand-/Eckstützen mit u₁ nach EC2 Bild 6.15 (Rand parallel zu c_x; Ecke mit gleichem Abstand zu beiden Rändern; runde Stützen sinngemäß); u₀ nach 6.4.5(3) nur Anzeige.',
+    'Querkraft/Verankerung: ρ_w,min = 0,16·f_ctm/f_yk nach NA DE Gl. (9.5aDE); gegliederte Querschnitte mit vorgespanntem Zuggurt (9.5bDE) sind nicht abgebildet.',
+    'Verankerung: NA-Form l_bd = α₁·α₄·α₅·l_b,rqd·A_s,erf/A_s,vorh, α₅ = 2/3 bei direkter Lagerung, Mindestwerte ohne 100 mm; α₆ nach NA DE Tab. 8.3DE; l₀,min nach (8.11) (vorläufig, F-Freigabe).',
     'Rissbreite: direkte Berechnung mit einer Bewehrungslage; bei Stababständen > 5·(c + φ/2) gilt 7.3.4(4) (nur Hinweis).',
     'σ-ε-Linien: Parabel-Rechteck und Gl. (3.14) mit den Parametern der Tab. 3.1 bis C90/105 (darüber auf C90/105 gehalten); Betonstahl B500 bilinear mit E_s = 200 000 N/mm² und ε_ud = 25 ‰ (NA DE).',
   ],
@@ -234,6 +237,30 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Es wird keine Stichprobe aus Einzelwerten geprüft, nur Grenzwerte angezeigt.",
     ],
   },
+  // Modulprüfung Tranche 4 (28.10.2026): Module, die rechnen, aber nicht als Rechner einsortiert sind
+  sicherheitskonzept: {
+    kurz: "Bemessungswert der Einwirkungen nach DIN EN 1990, Gl. 6.10, aus einer ständigen und zwei veränderlichen Einwirkungen.",
+    grenzen: [
+      "Nur Grundkombination Gl. 6.10 (ständige und vorübergehende Situation); keine Gl. 6.10a/b, keine außergewöhnliche oder Erdbebensituation.",
+      "Q_k,1 ist fest die Leiteinwirkung; welche Einwirkung maßgebend ist, muss durch Vertauschen selbst geprüft werden.",
+      "Eine ständige Einwirkung mit einem γ_G für alle Anteile; günstig wirkende Anteile mit γ_G,inf = 1,00 nur über die Auswahl.",
+    ],
+  },
+  probenahme: {
+    kurz: "Bohrmehlmenge je Tiefenstufe, Größtkorn- und Schlankheitsprüfung von Bohrkernen sowie Korrektur und Lehrschätzung des Rückprallwerts.",
+    grenzen: [
+      "Bohrmehl mit fester Rohdichte 2,2 g/cm³ und Richtwert 5 g je Stufe; die Mindestmenge legt das Prüflabor fest.",
+      "Bohrkern: Faktoren nach ASTM C42 nur für 1 ≤ h/d ≤ 2; keine Bewertung der In-situ-Festigkeit nach DIN EN 13791.",
+      "Rückprall: Richtungskorrektur Original Schmidt Typ N, Karbonatisierungsfaktor und Lehrkurve 0,0125·R^2,22 sind Lehransätze ohne Kalibrierkerne.",
+    ],
+  },
+  analytik: {
+    kurz: "Lehrsimulatoren für die Massenstufen der Thermogravimetrie und den Porenradius der Quecksilberdruckporosimetrie (Washburn).",
+    grenzen: [
+      "TGA: feste Massenanteile einer Lehrprobe mit linearen Stufen; keine Heizrate, keine Überlappung der Zersetzungsbereiche.",
+      "MIP: Zylinderporenmodell mit γ = 0,485 N/m und θ = 140°; erfasst werden Porenzugänge, nicht die Porenkörper (Flaschenhals-Effekt).",
+    ],
+  },
   erdbau: {
     kurz: "Grobe Zuordnung zu Bodengruppe und Frostempfindlichkeitsklasse sowie Mindestdicke des frostsicheren Oberbaus nach vereinfachtem RStO-Schema.",
     grenzen: [
@@ -268,7 +295,8 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   bp_verkehr_tiefbau: {
     kurz: "Speichervolumen und Länge einer Rigole (Lehrmodell in Anlehnung an DWA-A 138-1:2024-10); dazu Betondecken, Bahn- und Tunnelbau.",
     grenzen: [
-      "Rigole: k_f = 1·10⁻⁵ m/s fest, k_f,u = k_f/2 (Ansatz 2005) nur über die Sohle; f_Ort und Seitenflächen nach DWA-A 138-1 nicht abgebildet; Querschnitt fest, ein Regenereignis ohne Häufigkeit.",
+      "Rigole: vereinfachtes Verfahren DWA-A 138-1:2024-10, k_i = f_Ort·f_Methode·k_f, Seiten/Stirn mit halber bzw. bei vollständiger Durchsickerung voller Höhe; f_Ort, f_Methode vorläufig.",
+      "Rigole: Querschnitt 1,2 × 0,6 m und f_Z = 1,2 fest; eine Regendauer ohne Iteration über die Dauerstufen der Regenstatistik (KOSTRA-DWD), kein Drosselabfluss, keine Mulde.",
       "Betondecke: Westergaard-Randspannung (Originalgleichung mit Ersatzradius b, ν = 0,15) ohne Wölbspannungen und Ermüdung; zulässige Spannung pauschal 2,25 N/mm².",
       "Schiene: σ = E·α·ΔT bei vollständiger Behinderung; Tunnel: Kesselformel ohne Biegung, γ_c = 1,5 (vorübergehend); ZTV-ING Teil 5 / Ril 853 nicht abgebildet.",
     ],
@@ -339,7 +367,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   holzbau_bauphysik: {
     kurz: "Brand mit reduziertem Querschnitt; Eigenfrequenz f₁ und Durchbiegung unter 1 kN einer Brettsperrholzdecke als Einfeldträger.",
     grenzen: [
-      "Brand: feste Abbrandraten, nur Restquerschnitt und Widerstandsmoment, keine Tragfähigkeit.",
+      "Brand: feste Abbrandraten nach DIN EN 1995-1-2:2010-12 (Neuausgabe 2026-10 nicht berücksichtigt), nur Restquerschnitt und Widerstandsmoment, keine Tragfähigkeit.",
       "Schwingung: zweiseitig gelenkig gelagerter Einfeldstreifen; Biegesteifigkeit nur aus den Längslagen, netto oder nach dem γ-Verfahren (DIN EN 1995-1-1 Anhang B, nur symmetrisch 3- und 5-lagig).",
       "Bei 7 und mehr Lagen wird die Netto-Biegesteifigkeit angesetzt; das Schubanalogieverfahren ist nicht umgesetzt.",
       "Kennwerte E_0,mean = 11 550 N/mm², G_r,mean = 65 N/mm² und Wichte 5,5 kN/m³ nach proHolz Austria (Band II, 2018) statt Werten aus der ETA des Herstellers.",
@@ -377,7 +405,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     grenzen: [
       "Ideal-elastischer Stab ohne Fließen und ohne Knicklinien (keine χ-Abminderung).",
       "Vorkrümmung w₀ = l/300 pauschal.",
-      "Biegelinie im Diagramm qualitativ.",
+      "Biegelinie im Diagramm: erste Eigenform des gewählten Euler-Falls, skaliert auf die Ausbiegung nach Theorie II. Ordnung (Lehrmodell; Imperfektionsform nicht fallabhängig).",
     ],
   },
   energieausweis: {
@@ -428,8 +456,10 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     ],
   },
   lca_regulatorik: {
-    kurz: "CRREM-Stranding-Jahr eines Büro- oder Wohngebäudes für vier Sanierungsstufen.",
+    kurz: "CRREM-Stranding-Jahr eines Büro- oder Wohngebäudes für vier Sanierungsstufen; CBAM-Kosten für Zementimporte im Jahrespfad 2026–2034.",
     grenzen: [
+      "CBAM: Anpassung an die kostenlose Zuteilung (CBAM-Faktor nach RL 2003/87/EG Art. 10a, Benchmark nach DVO (EU) 2025/2620), CSCF = 1; Herkunftspreis auf alle Emissionen angerechnet (vorläufig).",
+      "CBAM: ein Jahrespreis statt Quartals- bzw. Wochenpreisen; Standardwert-Aufschläge und Schwellenwert 50 t je Jahr nicht abgebildet; nur Zement und Klinker.",
       "Zielpfade als lineare Interpolation vereinfachter CRREM-Stützwerte, nicht die aktuellen länderspezifischen Pfade.",
       "Minderung je Sanierungsstufe pauschal (15, 35 oder 75 %), sofort wirksam und über die Zeit konstant.",
       "Kein Netzdekarbonisierungs-Effekt auf den Bestand.",

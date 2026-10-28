@@ -26,7 +26,7 @@
     "uaAussteifungsprofil20": "**UA-Aussteifungsprofil:** 2,0 mm starke massive Spezial-Profile zur Lastaufnahme von schweren Türen und Sanitäreinbaugestellen.",
     "deckenrasterKorrosionsschutz": "Deckenraster & Korrosionsschutz",
     "udWandprofilCdTragprofil": "**UD-Wandprofil & CD-Tragprofil:** Horizontale Wandrahmen (UD) gekoppelt mit flächig justierbaren Tragprofilen (CD 60/27) an Schwingungshängern zur hocheffektiven Körperschallminderung.",
-    "schnellbauschraubenDin18182Phosphatbesch": "**Schnellbauschrauben (DIN 18182):** Phosphatbeschichtet (mattschwarz) gegen aggressive Säurekorrosion im feuchten Gipsbett. Feingewinde für Stahlbleche, Grobgewinde für Holzständerwerke.",
+    "schnellbauschraubenDin18182Phosphatbesch": "**Schnellbauschrauben (DIN 18182):** Phosphatiert (mattschwarz) als einfacher Korrosionsschutz für trockene Innenräume. Feingewinde für Stahlbleche, Grobgewinde für Holzständerwerke.",
     "oberflächenqualitätenNachBundesverbandDe": "Oberflächenqualitäten nach Bundesverband der Gipsindustrie",
     "dieSpachtelklassenRegelnDie": "Die Spachtelklassen regeln die optischen und ebenheitstechnischen Abnahmekriterien für Gipsplatten-Oberflächen vor Maler- oder Tapezierarbeiten. Bei fehlender Vereinbarung gilt stets die Standardspachtelung Q2 als vereinbart.",
     "grundverspachtelungNurStoßfugenFüllen": "**Grundverspachtelung:** Nur Stoßfugen füllen und sichtbare Teile der Schnellbauschrauben überspachteln.",
@@ -74,7 +74,7 @@
     "elastischesSchaumstoffbandFürEntkopplung": "Elastisches Schaumstoffband für Entkopplung zur aRdT",
     "trennwandDämmungMineralwolle": "Trennwand-Dämmung (Mineralwolle)",
     "dickeAngepasstAnCw": "Dicke angepasst an CW-Profil (40 / 60 / 80 mm)",
-    "t1ZweitlagigeVerschraubungBei": "**1. Zweitlagige Verschraubung:** Bei einer doppelten Beplankung muss die erste Lage nur mit ca. einem Drittel der Schrauben (Ständerachsabstand 75 cm) fixiert werden. Die zweite Lage wird voll verschraubt (Achsabstand 25 cm).",
+    "t1ZweitlagigeVerschraubungBei": "**1. Zweitlagige Verschraubung:** Bei einer doppelten Beplankung wird die erste Lage nur mit ca. einem Drittel der Schrauben (Schraubenabstand ≤ 750 mm) fixiert. Die äußere Lage wird voll verschraubt (Schraubenabstand ≤ 250 mm, DIN 18181).",
     "t2FugenversatzVermeidenSie": "**2. Fugenversatz:** Vermeiden Sie unbedingt Kreuzfugen! Die Stoßfugen der Gipsplatten müssen zur Rissvermeidung um mindestens **400 mm** zueinander horizontal versetzt werden. Bei doppelter Beplankung sind auch die Fugen der 1. und 2. Lage zueinander zu versetzen.",
     "t3SchallentkopplungOhneDas": "**3. Schallentkopplung:** Ohne das untergelegte Schaumstoff-Dichtungsband leitet die Trockenbauwand Körperschall ungehindert in Decke, Flur und Wände. Das ist einer der häufigsten Baumängel (Schallbrücke!)."
   },
@@ -171,9 +171,9 @@
           "Besserer Schallschutz durch höhere flächenbezogene Masse",
           "Hohe Oberflächenhärte gegen Stöße und Kratzer",
           "Sehr hohe Dübelbelastbarkeit (bis zu 45 kg je Hohlraumdübel)",
-          "Werksseitig imprägniert für universelle Einsetzbarkeit"
+          "Als Typ DFH2IR zusätzlich hydrophobiert erhältlich (Herstellerangabe)"
         ],
-        "description": "Platte mit hoher Rohdichte, Glasfaserzusatz und Hydrophobierung. Für Bereiche mit hohen Anforderungen an Robustheit, Schallschutz und Befestigung von Lasten wie Hängeschränken.",
+        "description": "Platte mit hoher Rohdichte und Glasfaserzusatz (als DFH2IR zusätzlich hydrophobiert). Für Bereiche mit hohen Anforderungen an Robustheit, Schallschutz und Befestigung von Lasten wie Hängeschränken.",
         "systemIntegration": "Hochleistungsschallschutzwände, Krankenhäuser, Schulgänge, Sporthallen, Einbruchschutz-Systeme."
       },
       {

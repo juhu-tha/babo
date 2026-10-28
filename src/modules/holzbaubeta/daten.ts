@@ -82,7 +82,7 @@ export const dataholzConstructions: DataholzConstruction[] = [
     name: inhalt.werte.geschossdeckeBrettsperrholzMitEstrich,
     type: 'Decke',
     structure: inhalt.werte.cltTragschale140Mm,
-    uValue: 0.32,
+    uValue: 0.41, // nachgerechnet aus den Schichten (λ: BSP 0,13, Splitt 0,70, MW 0,035, CAF 1,2; R_si = 2 · 0,17), vorher 0,32 – Modulprüfung Tranche 10
     fireClass: 'REI 60 / REI 90 (klassifiziert ab 140 mm CLT)',
     soundRating: 62,
     components: [

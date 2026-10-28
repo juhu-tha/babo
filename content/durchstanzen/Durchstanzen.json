@@ -24,7 +24,7 @@
     "seitenlängeCY": "Seitenlänge c_y",
     "mittlereNutzhöheD": "Mittlere Nutzhöhe d",
     "querkraftVEd": "Querkraft V_{Ed}",
-    "berücksichtigtDieUngleicheSchubspannungs": "Berücksichtigt die ungleiche Schubspannungsverteilung: 1,10 für Innenstützen, 1,40 für Randstützen, 1,50 für Eckstützen nach DIN EN 1992-1-1/NA.",
+    "berücksichtigtDieUngleicheSchubspannungs": "Berücksichtigt die ungleiche Schubspannungsverteilung: 1,10 für Innenstützen, 1,40 für Randstützen, 1,50 für Eckstützen (konstante Werte nach DIN EN 1992-1-1/NA, 6.4.3(6); nur für unverschiebliche Systeme mit Stützweitenunterschieden benachbarter Felder ≤ 25 %). Bei Rand- und Eckstützen endet der kritische Rundschnitt u₁ am freien Rand (EC2 Bild 6.15).",
     "stützenpositionLasterhöhungsfaktorNachNa": "Stützenposition (Lasterhöhungsfaktor β nach NA DE)",
     "betonfestigkeitFCk": "Betonfestigkeit f_{ck}",
     "mittlererBewehrungsgradDerBiegezugbewehr": "Mittlerer Bewehrungsgrad der Biegezugbewehrung in x- und y-Richtung. Max. anrechenbar 0.02 (2%).",
@@ -32,7 +32,7 @@
     "maximaltragfähigkeitÜberschrittenDruckst": "➜ Maximaltragfähigkeit überschritten (Druckstrebenversagen)! Deckenstärke vergrößern oder Stützenquerschnitt erweitern.",
     "maximaltragfähigkeitEingehaltenVEd": "➜ Maximaltragfähigkeit eingehalten (v_Ed ≤ v_Rd,max).",
     "ihrRechenwegDurchstanznachweisMit": "Ihr Rechenweg: Durchstanznachweis mit den aktuellen Eingaben",
-    "dinEn19921": "DIN EN 1992-1-1 mit NA (DE), 6.4",
+    "dinEn19921": "DIN EN 1992-1-1 mit NA (DE), 6.4 (Bild 6.15, 6.4.3(6))",
     "kreisförmigeStützeStützenumfangU": "Kreisförmige Stütze: Stützenumfang u₀ und kritischer Rundschnitt u₁ im Abstand 2d.",
     "rechteckstützeStützenumfangUDer": "Rechteckstütze: Stützenumfang u₀; der kritische Rundschnitt u₁ im Abstand 2d hat ausgerundete Ecken.",
     "einwirkendeSchubspannung": "Einwirkende Schubspannung",
@@ -46,6 +46,12 @@
     "keineBemessungMöglichDa": "Keine Bemessung möglich, da v_Rd,max überschritten ist.",
     "vEdVRd3": "v_Ed ≤ v_Rd,c: Es ist keine Durchstanzbewehrung erforderlich.",
     "vRdMaxÜberschritten": "v_Rd,max überschritten – Querschnitt vergrößern",
-    "keineDurchstanzbewehrungErforderlich2": "Keine Durchstanzbewehrung erforderlich"
+    "keineDurchstanzbewehrungErforderlich2": "Keine Durchstanzbewehrung erforderlich",
+    "randabstandStützeFreierRand": "Abstand Stütze – freier Plattenrand",
+    "randabstandInfo": "Abstand der Stützenaußenkante vom freien Rand (0 = bündig). Randstütze: Rand parallel zu c_x; Eckstütze: gleicher Abstand zu beiden Rändern. Die Zeichnung zeigt höchstens 2d.",
+    "rundschnittRandstütze": "Randstütze: Der kritische Rundschnitt u₁ verläuft im Abstand 2d um die drei inneren Seiten und senkrecht auf den freien Rand (EC2 Bild 6.15); u₀ = min(c₂ + 3d; c₂ + 2c₁) nach 6.4.5(3).",
+    "rundschnittEckstütze": "Eckstütze: Der kritische Rundschnitt u₁ verläuft im Abstand 2d um die beiden inneren Seiten und senkrecht auf beide freien Ränder (EC2 Bild 6.15); u₀ = min(3d; c₁ + c₂) nach 6.4.5(3).",
+    "randnaherRundschnittMaßgebend": "Der randnahe Rundschnitt ist kürzer als der volle und damit maßgebend (6.4.2(4)).",
+    "vollerRundschnittMaßgebend": "Bei diesem Randabstand ist der volle Rundschnitt kürzer und damit maßgebend (6.4.2(4))."
   }
 }
