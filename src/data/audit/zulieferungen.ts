@@ -5,13 +5,13 @@
  */
 import type { Zulieferung } from './typen';
 
-export const ZULIEFERUNGEN_STAND = '2026-10-27';
+export const ZULIEFERUNGEN_STAND = '2026-10-28';
 
 export const ZULIEFERUNGEN: readonly Zulieferung[] = [
   { nr: 'Z1–Z4, Z20, Z25', gegenstand: 'Normtext- und Literaturauszüge (EC2/NA κ_sw, α6, Dekompression; Schneider/Wendehorst/DAfStb; Holzbau; RStO-Tafeln; Normwerte AP 3.4)', stand: 'Erst öffentliche Quellen (erledigt #187–#189), Rest als Fehlliste', status: 'wartet', statusText: 'wartet auf Upload', prs: [187, 188, 189], dateien: ['docs/entwuerfe/literatur-fehlliste.md', 'docs/normwerte-belege.md'] },
   { nr: 'Z5–Z8', gegenstand: 'Literaturbeispiele Mauerwerk, Glaser, eLCA, BSP', stand: 'Öffentlich belegt', status: 'erledigt', prs: [170, 171, 172, 173, 187] },
   { nr: 'Z9', gegenstand: 'Mischung Beispiel 5', stand: 'Nachgerechnet, korrekt; Quellenangabe korrigiert', status: 'erledigt', prs: [187] },
-  { nr: 'Z10/Z17', gegenstand: 'Gegenrechnung 10 Rechner, Nutzertest mit 5 Studierenden', stand: 'Abschlussarbeit bzw. Hiwi; Ausschreibung liegt vor', status: 'wartet', statusText: 'wartet: Stunden, Vergütung, ECTS, Beginn', dateien: ['docs/entwuerfe/ausschreibung-pruefung.md'] },
+  { nr: 'Z10/Z17', gegenstand: 'Gegenrechnung 10 Rechner, Nutzertest mit 5 Studierenden, manuelle BITV-Stichprobe', stand: 'Entscheidung 28.10. (abends): Bachelorarbeit mit 12 ECTS, ohne Vergütung, einschließlich BITV-Stichprobe mit Screenreader (NVDA/Firefox, VoiceOver/Safari) nach BITV 2.0/BayDiV. Ausschreibung umgeschrieben (Ablauf, Betreuung, Ergebnisformat)', status: 'wartet', statusText: 'wartet: Studiengang/Bearbeitungszeit nach SPO, Zweitprüfer/in, Beginn, Veröffentlichung der Ausschreibung', dateien: ['docs/entwuerfe/ausschreibung-pruefung.md'] },
   { nr: 'Z11/Z39', gegenstand: 'Betreiber/Verantwortlicher, Freigabe durch DSB', stand: 'Später klären', status: 'offen' },
   { nr: 'Z12', gegenstand: 'Gemini', stand: 'Zunächst: behalten mit Tageslimit (300/Tag). Entscheidung 27.10.: KI-Funktion vorerst aus', status: 'erledigt', statusText: 'entschieden, umgesetzt (#193)', prs: [193] },
   { nr: 'Z13/Z45', gegenstand: 'Lizenz/Rechteinhaberschaft', stand: 'Anfrage an die THA vorbereitet', status: 'wartet', statusText: 'wartet auf Weiterleitung', dateien: ['docs/entwuerfe/anfrage-tha-lizenz.md'] },
@@ -39,7 +39,7 @@ export const ZULIEFERUNGEN: readonly Zulieferung[] = [
   { nr: 'neu', gegenstand: 'Trittschall Wohnungstrenndecke 50 oder 53 dB', stand: 'Entscheidung 27.10.: 50 dB', status: 'erledigt', prs: [190] },
   { nr: 'neu', gegenstand: 'Fe-C Standard 0,8 %/723 °C oder 0,76 %/727 °C; Mohr τ-Achse', stand: 'Entscheidung 27.10.: 0,8 %/723 °C; Mohr τ nach unten positiv', status: 'erledigt', prs: [191] },
   { nr: 'neu', gegenstand: 'Merge-Nachricht GitHub auf „Pull request title and description“', stand: '–', status: 'wartet', statusText: 'offen – Einstellung im Repository ausstehend' },
-  { nr: 'neu', gegenstand: 'Texte „Forschung und Transfer“ (4 Platzhalter), Projekte, Publikationen, ORCID', stand: 'Texte freigegeben und eingesetzt (Gutachten Maßnahme 1); offen: URL der Personenseite', status: 'erledigt', statusText: 'erledigt (Rest: URL Personenseite)', prs: [192] },
+  { nr: 'neu', gegenstand: 'Texte „Forschung und Transfer“ (4 Platzhalter), Projekte, Publikationen, ORCID', stand: 'Texte freigegeben und eingesetzt (Gutachten Maßnahme 1); offen: URL der Personenseite. 28.10.: öffentliche Suche fand nur die englische Seite tha.de/en/Architecture-and-Civil-Engineering/Juergen-Huber.html, die nach dem Relaunch von tha.de 404 liefert – nicht eingetragen; bitte aktuelle URL zuliefern', status: 'erledigt', statusText: 'erledigt (Rest: URL Personenseite)', prs: [192] },
   { nr: 'neu', gegenstand: 'Hinweis „Fachliche Prüfung ausstehend“', stand: 'Entscheidung 27.10.: ausblenden', status: 'erledigt', prs: [193] },
   { nr: 'neu', gegenstand: 'Quiz: Distraktoren angleichen, normRef ergänzen', stand: 'Umgesetzt: richtige Antwort am längsten 27,3 % statt 37 %', status: 'erledigt', prs: [194] },
   { nr: 'neu', gegenstand: 'CSP scharf schalten', stand: 'Entscheidung 27.10.: zwei Wochen nach dem Cloud-Run-Umzug', status: 'wartet', statusText: 'wartet auf Z50 (Hosting)' },
@@ -56,4 +56,5 @@ export const ZULIEFERUNGEN: readonly Zulieferung[] = [
   { nr: 'neu', gegenstand: 'Lebensdauerbemessung: Konvention p_SR (Anteil Schlagregen) für horizontale/vertikale Flächen', stand: 'Öffentlich nicht eindeutig belegt: rational-rc 1,0 vertikal, 0,0 horizontal; Modul bisher horizontal = 1, vertikal aus Wetterdaten. Beide Lesarten im Modul genannt, vorläufig (p_SR = 0 sicher); am Original fib Bulletin 34 prüfen', status: 'wartet', statusText: 'wartet auf F-Freigabe', prs: [214] },
   { nr: 'neu', gegenstand: 'Quizfreigabe und Modulprüfung in Tranchen (zuerst Module ohne freigegebene Frage, lange Module geteilt) – Vorgehen bestätigen', stand: 'Vorschlag nach Gutachten 27.10. (abends), Maßnahmen 1 und 2: rund 20 Module je Woche, lehrrelevante Rechner zuerst', status: 'wartet', statusText: 'wartet auf Entscheidung' },
   { nr: 'neu', gegenstand: 'Lernpfade nach Lehrveranstaltung (AP 6.1)', stand: 'inaktiv geschaltet (Schalter INAKTIVE_GRUPPEN, #197)', status: 'erledigt', prs: [197] },
+  { nr: 'neu', gegenstand: 'γ_c = 1,35 bei der Bestandsbewertung (Historische Materialkennwerte, #200)', stand: 'Entscheidung 28.10. (abends): recherchieren. Beleg: DIN EN 1992-1-1:2011-01, Anhang A.2.2(2), γ_C,red3 = 1,35 bei am Bauwerk gemessener Geometrie und V_c ≤ 10 %; Bedingung in Tipp und Kern angeglichen (vorher „über Bohrkerne bestätigt“). Alternative für Bestandsbauten: DBV-Merkblatt „Modifizierte Teilsicherheitsbeiwerte für Stahlbetonbauteile“ (03/2013), γ_C,mod abhängig von V_c. Rest: F-Freigabe (Anwendbarkeit von Anhang A nach NA DE)', status: 'wartet', statusText: 'Quelle eingetragen, wartet auf F-Freigabe (NA DE)', dateien: ['src/data/kennwerte.ts', 'content/historischematerialkennwerte/RechnerLaborTab.json'] },
 ];

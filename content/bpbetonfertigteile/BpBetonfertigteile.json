@@ -58,7 +58,7 @@
     "hoherPlanerischerVorlaufSämtliche": "**Hoher planerischer Vorlauf:** Sämtliche Einbauteile, Aussparungen, Kabelführungen und Sanitärauslässe müssen vor dem Betonier-Werksprozess endgültig festgelegt sein. Nachträgliches Bohren nur nach Freigabe durch die Tragwerksplanung (Spannglieder, Bewehrung).",
     "schwertransportLogistikTransportVon": "**Schwertransport-Logistik:** Transport von tonnenschweren Hohlwänden, Bindern oder sperrigen Raumzellen bedarf polizeilicher Routenfreigaben und logistischer Just-In-Time-Genauigkeit.",
     "statischeFugenproblematikKnotenpunkteAn": "**Statische Fugenproblematik:** Knotenpunkte an Bauteilgrenzen (Vergussfugen, Koppelstellen, Scherkraftdübel) sind konstruktive Schwachstellen bezüglich Kraftfluss, Feuchtigkeit, Dichtigkeit und mechanischer Dauerhaftigkeit.",
-    "bauaufsichtlicheZulassungGemäßDin": "**Bauaufsichtliche Zulassung:** Gemäß **DIN 1045-4** sowie der harmonisierten europäischen Grundnorm **DIN EN 13369** unterliegen alle tragenden Fertigteile strengen Konformitätsnachweisen. Der Hersteller deklariert die mechanische Tragfähigkeit und Dauerhaftigkeit über das CE-Kennzeichen und die Leistungserklärung (DoP)."
+    "bauaufsichtlicheZulassungGemäßDin": "**Bauaufsichtliche Einordnung:** **DIN EN 13369** enthält die gemeinsamen Regeln für Betonfertigteile und ist in Deutschland mit **DIN 1045-4:2023-08** (Betonfertigteile – Allgemeine Regeln) umgesetzt. Für Fertigteile mit harmonisierter Produktnorm (z. B. DIN EN 1168, DIN EN 13747, DIN EN 14992) deklariert der Hersteller die Leistung in der Leistungserklärung (DoP) und bringt das CE-Kennzeichen an; tragende Fertigteile ohne spezifische Produktnorm regelt **DIN 1045-40:2023-08**."
   },
   "werte": {
     "anwendungsbeispielEigengewichtSpannbeton": "Anwendungsbeispiel: Eigengewicht Spannbeton-Hohlplatte vs. Massivdecke",
@@ -160,7 +160,7 @@
         "title": "DIN EN 14992 (Betonfertigteile - Wandelemente)"
       },
       {
-        "title": "DIN 1045-4:2023-08 (Zusatzregeln für Herstellung und Konformität von Fertigteilen)"
+        "title": "DIN 1045-4:2023-08 (Betonfertigteile – Allgemeine Regeln; ersetzt DIN 1045-4:2012-02) und DIN 1045-40:2023-08 (Betonfertigteile ohne spezifische Norm)"
       }
     ],
     "BpBetonfertigteile.formeln": [

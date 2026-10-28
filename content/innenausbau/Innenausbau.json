@@ -58,8 +58,8 @@
     "keineAbdichtungAufFeuchteunempfindlichen": "Keine Abdichtung auf feuchteunempfindlichen Untergründen zwingend gefordert.",
     "wandflächenÜberBadewannenUnd": "Wandflächen über Badewannen und in Duschen im häuslichen Bereich; Bodenflächen im Bad ohne Ablauf.",
     "verbundabdichtungFlüssigPolymerdispersio": "Verbundabdichtung flüssig (Polymerdispersion) zulässig.",
-    "wandUndBodenflächenIn": "Wand- und Bodenflächen in bodengleichen Duschen, gewerblichen Küchen und Sanitärräumen mit Bodenablauf.",
-    "bahnenförmigeAbdichtungAivB": "Bahnenförmige Abdichtung (AIV-B) oder MDS vorgeschrieben; Dichtmanschetten Pflicht!",
+    "wandUndBodenflächenIn": "Bodenflächen mit Abläufen und/oder Rinnen (z. B. bodengleiche Duschen), Wandflächen von Duschen in Sport- und Gewerbestätten.",
+    "bahnenförmigeAbdichtungAivB": "Abdichtung zwingend (z. B. AIV-B oder MDS; Stoffauswahl nach DIN 18534-2 bis -6); keine feuchteempfindlichen Untergründe; Dichtmanschetten Pflicht!",
     "flächenMitSehrHäufiger": "Flächen mit sehr häufiger oder langanhaltender Einwirkung von Spritz- und Brauchwasser (z. B. Hallenbäder, gewerbliche Großküchen).",
     "reaktionsharzabdichtungenEpoxidPolyureth": "Reaktionsharzabdichtungen (Epoxid / Polyurethan) oder mineralische Dichtschlämmen.",
     "häufigeSchadensursachenImAusbau": " Häufige Schadensursachen im Ausbau:",
@@ -225,7 +225,7 @@
     "Innenausbau.tools.rechnung_u_wert.features": [
       "Berechnung von Wärmedurchlasswiderständen R = d / λ",
       "Einfluss von Luftschichten & Dämmstoffstärken",
-      "Nachweis der Grenzwerte nach Gebäudeenergiegesetz (GEG)",
+      "Vergleich mit den Höchstwerten nach GModG (vormals GEG)",
       "Temperaturverlauf im Querschnitt grafisch visualisiert"
     ],
     "Innenausbau.schritte": [
