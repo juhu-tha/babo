@@ -4657,7 +4657,7 @@
     "distraktorFeedback": [
       "",
       "4,8 · 10⁶ ist die volumenbezogene Wärmespeicherkapazität ρ·c in J/(m³K), nicht a.",
-      "Hier wurde durch ρ allein statt durch ρ·c geteilt (2,0/2 400); das Ergebnis ist um den Faktor c = 1 000 zu groß.",
+      "Hier wurde durch ρ allein statt durch ρ·c geteilt (2,0/2 400); das Ergebnis ist um den Faktor c = 1000 zu groß.",
       "Der Wert passt zu einem Metall mit hoher Wärmeleitfähigkeit, nicht zu Beton."
     ],
     "gapAnalysis": {
