@@ -178,7 +178,7 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "Vorspannung überdrückt den Querschnitt planmäßig; die Randspannungen folgen im Zustand I aus σ = −P/A_c ± P·e_p/W ∓ M/W und werden für t = 0 und t = ∞ geprüft.",
     "Hochfester Spannstahl wie Y1860 ist nötig, weil Kriech- und Schwindstauchungen von etwa 1 ‰ bei Betonstahl B500 rund 46 % der Vorspannung aufzehren würden.",
     "Im GZG gilt nach DIN EN 1992-1-1: Betondruck ≤ 0,60 f_ck unter seltener und ≤ 0,45 f_ck unter quasi-ständiger Kombination, sonst ist nichtlineares Kriechen anzusetzen.",
-    "Spannkraftverluste aus Reibung, Keilschlupf und elastischer Verkürzung sowie aus Kriechen, Schwinden und Relaxation sind nach EC2 gekoppelt und dürfen nicht linear addiert werden.",
+    "Sofortverluste aus Reibung, Keilschlupf und elastischer Verkürzung kommen zuerst; Kriechen, Schwinden und Relaxation koppelt EC2 in einer gemeinsamen Gleichung.",
     "Vergütete Spannstähle wie Hennigsdorfer St 140/160 neigen zu Spannungsrisskorrosion ohne Vorankündigung; an Spannstahl gilt zudem ein striktes Schweißverbot.",
   ],
   stahl: [

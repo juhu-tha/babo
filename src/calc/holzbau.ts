@@ -218,7 +218,8 @@ export interface EinfeldbalkenEingabe {
 
 /**
  * Einfeldbalken unter Gleichlast nach DIN EN 1995-1-1 mit NA (DE): Biegung (6.11), Schub mit k_cr (6.13),
- * k_mod nach Tab. 3.1 aus Nutzungsklasse und KLED, Durchbiegungen nach 2.2.3 mit k_def nach Tab. 3.2:
+ * k_mod nach Tab. 3.1 aus Nutzungsklasse und KLED; Tragfähigkeit für 1,35·g + 1,5·q (k_mod der Nutzlast) und für die
+ * ständige Kombination 1,35·g (k_mod ständig), maßgebend die größere Ausnutzung (2.4.1, 3.1.3(2)); Durchbiegungen nach 2.2.3 mit k_def nach Tab. 3.2:
  * w_inst = w_inst,G + w_inst,Q; w_fin = w_inst,G·(1 + k_def) + w_inst,Q·(1 + ψ₂·k_def); w_net,fin = (w_inst,G + ψ₂·w_inst,Q)·(1 + k_def).
  */
 export function bemesseEinfeldbalken(e: EinfeldbalkenEingabe) {
@@ -237,16 +238,26 @@ export function bemesseEinfeldbalken(e: EinfeldbalkenEingabe) {
   const kdef = KDEF[e.brettschichtholz ? 'bsh' : 'vollholz'][e.nkl] ?? 0;
   const leer = {
     masse: 0, g_k: 0, q_k: 0, q_d: 0, q_inst: 0, M_Ed: 0, V_Ed: 0, W: 0, I: 0, kmod: 0, kdef, psi2, sigma_md: 0, f_md: 0, k_cr: 0, tau_d: 0, f_vd: 0,
+    kombination: 'G+Q' as 'G+Q' | 'G', kmodGQ: 0, kmodG: 0, q_d_GQ: 0, q_d_G: 0, eta_m_GQ: 0, eta_m_G: 0,
     w_inst_G: 0, w_inst_Q: 0, w_inst: 0, w_fin: 0, w_net_fin: 0, w_grenz: 0, w_grenz_fin: 0, w_grenz_net: 0,
     eta_m: 0, eta_v: 0, eta_w_inst: 0, eta_w_fin: 0, eta_w_net: 0, eta_w: 0, eta_max: 0, ok: false, hinweise,
   };
   if (hatFehler(hinweise)) return leer;
 
-  const kmod = KMOD[e.nkl][e.kled];
   const masse = ((e.b * e.h) / 1e6) * e.rhoMean;      // [kg/m]
   const g_k = masse * G_KN_PRO_KG + e.gk * e.abstand; // ständig: Eigengewicht + Ausbau [kN/m]
   const q_k = e.qk * e.abstand;                       // veränderlich [kN/m]
-  const q_d = GAMMA_G * g_k + GAMMA_Q * q_k;
+  // Modulprüfung Tranche 2 (28.10.2026): Nach DIN EN 1995-1-1, 2.4.1 und 3.1.3(2) gehört k_mod zur kürzesten Einwirkung
+  // der jeweiligen Kombination. Neben 1,35·g + 1,5·q (k_mod der Nutzlast) ist daher die ständige Kombination 1,35·g
+  // mit k_mod(ständig) nachzuweisen; sie wird z. B. bei NKL 1, KLED mittel maßgebend, wenn g_k > 3,33·q_k ist.
+  // Vorher fehlte sie. Maßgebend ist die Kombination mit der größeren Ausnutzung σ_m,d/f_m,d (gleich für Schub).
+  const kmodGQ = KMOD[e.nkl][e.kled];
+  const kmodG = KMOD[e.nkl].stnd;
+  const q_d_GQ = GAMMA_G * g_k + GAMMA_Q * q_k;
+  const q_d_G = GAMMA_G * g_k;
+  const kombination: 'G+Q' | 'G' = q_d_G / kmodG > q_d_GQ / kmodGQ * (1 + 1e-12) ? 'G' : 'G+Q';
+  const kmod = kombination === 'G' ? kmodG : kmodGQ;
+  const q_d = kombination === 'G' ? q_d_G : q_d_GQ;
   const q_inst = g_k + q_k;
   const M_Ed = (q_d * e.l ** 2) / 8;                  // [kNm]
   const V_Ed = (q_d * e.l) / 2;                       // [kN]
@@ -256,6 +267,9 @@ export function bemesseEinfeldbalken(e: EinfeldbalkenEingabe) {
   const k_cr = rissfaktor(e.fvk, e.brettschichtholz);
   const tau_d = (1.5 * V_Ed * 1000) / (k_cr * e.b * e.h);
   const f_vd = bemessungswert(e.fvk, kmod, e.gammaM);
+  /** Biegeausnutzung beider Kombinationen [%] */
+  const eta_m_GQ = ((q_d_GQ * e.l ** 2 / 8) * 1e6 / W) / bemessungswert(e.fmk, kmodGQ, e.gammaM) * 100;
+  const eta_m_G = ((q_d_G * e.l ** 2 / 8) * 1e6 / W) / bemessungswert(e.fmk, kmodG, e.gammaM) * 100;
   const lmm = e.l * 1000;
   const w = (q: number) => (5 * q * lmm ** 4) / (384 * e.E0mean * I); // q in kN/m = N/mm
   const w_inst_G = w(g_k), w_inst_Q = w(q_k);
@@ -269,8 +283,10 @@ export function bemesseEinfeldbalken(e: EinfeldbalkenEingabe) {
   const eta_max = Math.max(eta_m, eta_v, eta_w);
   bereich(hinweise, 'h', e.h / e.b, 0, 10, 'Verhältnis h/b > 10: Kippen (6.3.3) und seitliche Halterung gesondert prüfen.');
   if (e.nkl === 3) hinweise.push({ stufe: 'warnung', feld: 'nkl', text: 'Nutzungsklasse 3: k_def = 2,0 – die Kriechverformung wird maßgebend; der Schwingungsnachweis (7.3) ist nicht enthalten.' });
+  if (kombination === 'G') hinweise.push({ stufe: 'warnung', feld: 'kled', text: 'Maßgebend ist die ständige Kombination 1,35·g_k mit k_mod(ständig) – die Nutzlast ist im Verhältnis zur ständigen Last klein.' });
   return {
     masse, g_k, q_k, q_d, q_inst, M_Ed, V_Ed, W, I, kmod, kdef, psi2, sigma_md, f_md, k_cr, tau_d, f_vd,
+    kombination, kmodGQ, kmodG, q_d_GQ, q_d_G, eta_m_GQ, eta_m_G,
     w_inst_G, w_inst_Q, w_inst, w_fin, w_net_fin, w_grenz, w_grenz_fin, w_grenz_net,
     eta_m, eta_v, eta_w_inst, eta_w_fin, eta_w_net, eta_w, eta_max, ok: eta_max <= 100, hinweise,
   };

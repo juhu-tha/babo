@@ -143,6 +143,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       'Erddruck: glatte, lotrechte Wand, waagerechtes Gelände, kohäsionsloser Boden ohne Wasser.',
       'Konsolidierung eindimensional mit konstantem c_v und E_s, Näherungsformel für U(T_v).',
       'Klassifikation nur über das Plastizitätsdiagramm, ohne Korngrößenverteilung; organische Beimengungen (OU/OT) nur nach Angabe, ohne Glühverlust.',
+      'Zustandsformen in der Einteilung der früheren DIN 18122-1 (breiig bis I_C = 0,5); DIN EN ISO 14688-2 grenzt abweichend ab (vorläufig, F-Freigabe).',
     ],
   },
   // Weitere Rechner (Durchsicht 24.10.2026, Belege im PR)
@@ -457,7 +458,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   bp_holzprodukte: {
     kurz: "Einfeldbalken unter Gleichlast aus Vollholz oder BSH: Biegung, Schub mit k_cr sowie w_inst, w_fin und w_net,fin mit k_def nach DIN EN 1995-1-1 mit NA (DE).",
     grenzen: [
-      "k_mod nach Tab. 3.1 aus NKL und KLED, γ_G = 1,35, γ_Q = 1,5; eine Nutzlast (ψ₂ = 0,3, Kategorie A), nur eine Lastfallkombination.",
+      "k_mod nach Tab. 3.1, γ_G = 1,35, γ_Q = 1,5; eine Nutzlast (ψ₂ = 0,3, Kategorie A); nachgewiesen werden 1,35·g + 1,5·q (k_mod der Nutzlast) und 1,35·g (k_mod ständig), maßgebend die größere Ausnutzung.",
       "w_fin = w_G·(1 + k_def) + w_Q·(1 + ψ₂·k_def) ≤ l/200, w_net,fin ≤ l/300 ohne Überhöhung, w_inst ≤ l/300 (Grenzwerte NA, vorläufig); Schwingungen fehlen.",
       "Kein Kipp-, Auflager- oder Querdrucknachweis; Rohdichten für das Eigengewicht als Mittelwerte.",
     ],
