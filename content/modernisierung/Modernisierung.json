@@ -111,11 +111,11 @@
     "t20Klimageschwindigkeitsbonus": "+ 20 % Klimageschwindigkeitsbonus",
     "nurSelbstnutzerTauschVon": "nur Selbstnutzer; Tausch von Öl-, Kohle-, Nachtspeicher- oder ≥ 20 Jahre alten Gas-/Biomasseheizungen (Konditionen vor Antragstellung bei KfW/BAFA prüfen)",
     "t30Einkommensbonus": "+ 30 % Einkommensbonus",
-    "haushaltseinkommen40000A": "Haushaltseinkommen ≤ 40.000 €/a",
+    "haushaltseinkommen40000A": "Haushaltseinkommen ≤ 40 000 €/a",
     "t5Effizienzbonus": "+ 5 % Effizienzbonus",
     "fürErdwärmeOderNatürliches": "für Erdwärme oder natürliches Kältemittel (R290)",
     "maximalerFördersatz": "Maximaler Fördersatz:",
-    "t70Max21000": "70 % (max. 21.000 € Zuschuss auf 30.000 €)",
+    "t70Max21000": "70 % (max. 21 000 € Zuschuss auf 30 000 €)",
     "derIndividuelleSanierungsfahrplanIsfp": " Der Individuelle Sanierungsfahrplan (iSFP)",
     "derIndividuelleSanierungsfahrplanIsfp2": "Der **Individuelle Sanierungsfahrplan (iSFP)** nach BAFA-/DENA-Standard ist das zentrale Instrument für eine schrittweise, wirtschaftlich und bauphysikalisch aufeinander abgestimmte Gesamtsanierung von Wohngebäuden. Er vermeidet Bauschäden durch falsche Sanierungsreihenfolgen (z. B. Schimmelbildung nach dichtem Fenstertausch ohne Wanddämmung) und sichert finanzielle Förderboni.",
     "dieGoldeneSanierungsregelHülle": "Die goldene Sanierungsregel: „Hülle vor Technik“",
@@ -128,7 +128,7 @@
     "t5IsfpZuschussbonus": "+ 5 % iSFP-Zuschussbonus",
     "derRegelfördersatzFürHüllmaßnahmen": "Der Regelfördersatz für Hüllmaßnahmen steigt von 15 % auf **20 % direkte Zuschussförderung**.",
     "verdopplungDesFörderbudgets": "Verdopplung des Förderbudgets",
-    "dieMaximalAnrechenbarenAusgaben": "Die maximal anrechenbaren Ausgaben pro Kalenderjahr steigen von 30.000 € auf **60.000 € je Wohneinheit** (max. 12.000 € Zuschuss/a statt 4.500 €)."
+    "dieMaximalAnrechenbarenAusgaben": "Die maximal anrechenbaren Ausgaben pro Kalenderjahr steigen von 30 000 € auf **60 000 € je Wohneinheit** (max. 12 000 € Zuschuss/a statt 4500 €)."
   },
   "werte": {
     "außenwandPutzWdvsBekleidung": "Außenwand (Putz / WDVS / Bekleidung)",
@@ -231,12 +231,12 @@
     "Modernisierung.schritte_2": [
       {
         "titel": "Einsparung",
-        "erklaerung": "ΔU = 1,40 − 0,197 = 1,20 W/(m²K), A = 160 m², F_x = 1,0, G = 3 500 Kd/a, η = 0,90:",
+        "erklaerung": "ΔU = 1,40 − 0,197 = 1,20 W/(m²K), A = 160 m², F_x = 1,0, G = 3500 Kd/a, η = 0,90:",
         "formel": "\\Delta Q_E = \\frac{1{,}20 \\cdot 160 \\cdot 3\\,500 \\cdot 24}{1\\,000 \\cdot 0{,}90} = 17\\,970\\,\\text{kWh/a}"
       },
       {
         "titel": "Kosten",
-        "erklaerung": "Energiepreis 0,12 €/kWh; Vollkosten 16 400 € (Dämmstoff 14 cm EPS 032 und 85 €/m² für Gerüst, Armierung, Putz):",
+        "erklaerung": "Energiepreis 0,12 €/kWh; Vollkosten 16 400 € (Dämmstoff 14 cm EPS 032 und 85 €/m² für Gerüst, Armierung, Putz):",
         "formel": "17\\,970 \\cdot 0{,}12 = 2\\,156\\,\\text{EUR/a}"
       },
       {

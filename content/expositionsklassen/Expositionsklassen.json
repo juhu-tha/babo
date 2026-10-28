@@ -37,7 +37,7 @@
     "frostTausalzPrüfungCdf": " Frost-Tausalz-Prüfung (CDF / CIF-Verfahren)",
     "normDinCenTs": "**Norm:** DIN CEN/TS 12390-9 / BAW-Merkblatt Frostprüfung",
     "cdfTestPrüfungMit": "**CDF-Test:** Prüfung mit 3%iger NaCl-Lösung und 28 Frost-Tau-Wechseln (-20 °C bis +20 °C).",
-    "kriteriumXf4MittlereAbwitterung": "**Kriterium XF4:** Mittlere Abwitterung $m_{28} \\le 1.500\\text{ g/m}^2$ (für ZTV-ING oft $\\le 1.000\\text{ g/m}^2$).",
+    "kriteriumXf4MittlereAbwitterung": "**Kriterium XF4:** Mittlere Abwitterung $m_{28} \\le 1500\\text{ g/m}^2$ (für ZTV-ING oft $\\le 1000\\text{ g/m}^2$).",
     "cifTestZusätzlicheMessung": "**CIF-Test:** Zusätzliche Messung des relativen dynamischen E-Moduls (RDM) zur Detektion innerer Gefügeschädigung ($RDM \\ge 75\\,\\%$).",
     "chloridMigrationsversuchRcmTest": " Chlorid-Migrationsversuch (RCM-Test)",
     "normRichtlinieBawMerkblatt": "**Norm / Richtlinie:** BAW-Merkblatt MDCC / NT BUILD 492",
@@ -77,7 +77,7 @@
     "überschrittenGrenzwert": "✕ Überschritten (Grenzwert: "
   },
   "werte": {
-    "beiSulfatangriff600Mg": "Bei Sulfatangriff (> 600 mg/l SO₄²⁻ im Wasser) SR-Zement; bis 1 500 mg/l alternativ Zement-Flugasche-Gemisch.",
+    "beiSulfatangriff600Mg": "Bei Sulfatangriff (> 600 mg/l SO₄²⁻ im Wasser) SR-Zement; bis 1500 mg/l alternativ Zement-Flugasche-Gemisch.",
     "xa3ZusätzlichSchutzDes": "XA3: zusätzlich Schutz des Betons oder Gutachten (DIN 1045-2).",
     "xm2OberflächenbehandlungDesBetons": "XM2: Oberflächenbehandlung des Betons – sonst w/z ≤ 0,45 und C35/45.",
     "xm3HartstoffeNachDin": "XM3: Hartstoffe nach DIN 1100.",

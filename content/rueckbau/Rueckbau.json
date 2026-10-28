@@ -196,7 +196,7 @@
     "Rueckbau.schritte": [
       {
         "titel": "Mengen aus dem Rückbaukonzept",
-        "erklaerung": "Beton 1 200 m³ (ρ = 2,4 t/m³), Mauerwerk 300 m³ (1,6 t/m³), Holz 60 m³ (0,5 t/m³), Metalle 40 t:",
+        "erklaerung": "Beton 1200 m³ (ρ = 2,4 t/m³), Mauerwerk 300 m³ (1,6 t/m³), Holz 60 m³ (0,5 t/m³), Metalle 40 t:",
         "formel": "m_B = 2\\,880\\,\\text{t}, \\; m_Z = 480\\,\\text{t}, \\; m_H = 30\\,\\text{t}, \\; m_M = 40\\,\\text{t}"
       },
       {
@@ -213,12 +213,12 @@
     "Rueckbau.schritte_2": [
       {
         "titel": "Ansatz",
-        "erklaerung": "Mauerwerks- und Betonabbruch 3 360 t; Annahmepreis RC-Anlage sortenrein 12 €/t, Bauschuttgemisch mit Störstoffen 35 €/t (Lehrwerte):",
+        "erklaerung": "Mauerwerks- und Betonabbruch 3360 t; Annahmepreis RC-Anlage sortenrein 12 €/t, Bauschuttgemisch mit Störstoffen 35 €/t (Lehrwerte):",
         "formel": "p_{Gemisch} - p_{getrennt} = 23\\,\\text{EUR/t}"
       },
       {
         "titel": "Mehrkosten Entkernung",
-        "erklaerung": "Zusätzlicher Personal- und Geräteeinsatz für die Entkernung: 40 000 €.",
+        "erklaerung": "Zusätzlicher Personal- und Geräteeinsatz für die Entkernung: 40 000 €.",
         "formel": "K_{Sortierung} = 40\\,000\\,\\text{EUR}"
       },
       {

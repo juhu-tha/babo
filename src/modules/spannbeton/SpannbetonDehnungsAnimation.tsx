@@ -304,11 +304,11 @@ export default function SpannbetonDehnungsAnimation() {
             <div className="flex justify-between text-[10px] text-slate-400 font-mono px-1">
               <span>0 kN</span>
               <span>500 kN</span>
-              <span>1.000 kN</span>
-              <span>1.500 kN</span>
-              <span>2.000 kN</span>
-              <span>2.500 kN</span>
-              <span>3.000 kN</span>
+              <span>1000 kN</span>
+              <span>1500 kN</span>
+              <span>2000 kN</span>
+              <span>2500 kN</span>
+              <span>3000 kN</span>
             </div>
           </div>
 

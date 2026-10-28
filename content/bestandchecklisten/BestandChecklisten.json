@@ -83,7 +83,7 @@
     "BestandChecklisten.schritte": [
       {
         "titel": "Analyse",
-        "erklaerung": "Bohrmehl aus 20–40 mm Tiefe: 0,08 M.-% Chlorid bezogen auf Beton; Rohdichte 2 350 kg/m³, Zementgehalt laut Bestandsunterlagen 300 kg/m³.",
+        "erklaerung": "Bohrmehl aus 20–40 mm Tiefe: 0,08 M.-% Chlorid bezogen auf Beton; Rohdichte 2350 kg/m³, Zementgehalt laut Bestandsunterlagen 300 kg/m³.",
         "formel": "Cl_B = 0{,}08\\,\\text{M.-\\%}"
       },
       {

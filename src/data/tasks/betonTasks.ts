@@ -157,7 +157,7 @@ export const betonTasks: Task[] = [
     id: 't_trennrisse_zwang',
     difficulty: 'Schwer',
     title: 'Äußerer Zwang: Trennrisse infolge Abkühlung',
-    question: 'Eine 30 cm dicke Betonwand kühlt um \\Delta T = 22 K bei äußerem Zwang K = 0.85 ab. Gegeben: \\alpha_T = 10 · 10^-6 K^-1, E_{\\text{cm,eff}} = 15.000 N/mm². Berechnen Sie die induzierte Zugspannung und vergleichen Sie mit f_{\\text{ct,eff}} = 1,6 N/mm².',
+    question: 'Eine 30 cm dicke Betonwand kühlt um \\Delta T = 22 K bei äußerem Zwang K = 0.85 ab. Gegeben: \\alpha_T = 10 · 10^-6 K^-1, E_{\\text{cm,eff}} = 15 000 N/mm². Berechnen Sie die induzierte Zugspannung und vergleichen Sie mit f_{\\text{ct,eff}} = 1,6 N/mm².',
     moduleHint: { id: 'hydratation_folgen', name: 'Zwang & Risse' },
     solution: '1. Behinderte Wärmedehnung: $\\varepsilon_{\\text{zwang}} = K \\cdot \\alpha_T \\cdot \\Delta T = 0{,}85 \\cdot (10 \\cdot 10^{-6}) \\cdot 22 = 1{,}87 \\cdot 10^{-4}$.\n2. Zugspannung: $\\sigma_{\\text{ct}} = E_{\\text{cm,eff}} \\cdot \\varepsilon_{\\text{zwang}} = 15000 \\cdot 1{,}87 \\cdot 10^{-4} = 2.805\\text{ N/mm}^2$.\nDa $\\sigma_{\\text{ct}} = 2{,}81\\text{ N/mm}^2 > f_{\\text{ct,eff}} = 1{,}6\\text{ N/mm}^2$, reißt die Wand vollständig auf (durchgehender Trennriss). Mindestbewehrung nach DIN EN 1992-1-1 ist zur Rissbreitenbegrenzung zwingend erforderlich.'
   },

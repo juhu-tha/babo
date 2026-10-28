@@ -153,7 +153,7 @@
     "Materialmodelle.schritte": [
       {
         "titel": "Gegeben",
-        "erklaerung": "Bilineares Modell: f_y = 500 MPa, E = 200 000 MPa, Verfestigungsmodul E_t = 2 000 MPa; Stab wird bis ε_max = 20 ‰ gedehnt und entlastet.",
+        "erklaerung": "Bilineares Modell: f_y = 500 MPa, E = 200 000 MPa, Verfestigungsmodul E_t = 2000 MPa; Stab wird bis ε_max = 20 ‰ gedehnt und entlastet.",
         "formel": "f_y = 500\\,\\text{MPa},\\; E = 200\\,000\\,\\text{MPa},\\; E_t = 2\\,000\\,\\text{MPa}"
       },
       {

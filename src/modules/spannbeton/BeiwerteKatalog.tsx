@@ -228,7 +228,7 @@ export const BEIWERTE_KATALOG: BeiwerterDetail[] = [
     einheit: 'dimensionslos [-]',
     schaetzwertKurz: inhalt.werte.t55Bis6,
     schaetzwert: inhalt.werte.wirdOftPauschalMit,
-    rechenwertNorm: '\\alpha_e = \\frac{E_p}{E_{cm}} = \\frac{195.000\\text{ MPa}}{E_{cm}}',
+    rechenwertNorm: '\\alpha_e = \\frac{E_p}{E_{cm}} = \\frac{195\\,000\\text{ MPa}}{E_{cm}}',
     normBezug: inhalt.werte.ec2Abs510,
     bedeutungUndEinfluss: inhalt.werte.maßFürDieSteifigkeitskompatibilität,
     einflussparameter: [inhalt.werte.spannstahlartLitzen195Gpa, inhalt.werte.betongüteC3037Bis]

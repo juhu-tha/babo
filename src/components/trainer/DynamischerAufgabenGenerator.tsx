@@ -106,13 +106,13 @@ const GENERATOR_TASKS: GeneratorTask[] = [
         tolerancePercent: 3,
         hints: [
           'Euler-Formel: F_K = (π² · E · I) / l_k²',
-          'Achtung bei der Einheitenumrechnung: 1 cm⁴ = 10.000 mm⁴ = 10⁴ mm⁴!',
-          'Rechnen Sie die Länge L von Metern in Millimeter um (1 m = 1.000 mm).'
+          'Achtung bei der Einheitenumrechnung: 1 cm⁴ = 10 000 mm⁴ = 10⁴ mm⁴!',
+          'Rechnen Sie die Länge L von Metern in Millimeter um (1 m = 1000 mm).'
         ],
         commonMistakes: [
           {
             check: (val) => Math.abs(val - F_K_kN / 10) < 5 || Math.abs(val - F_K_kN * 10) < 50,
-            message: 'Typischer Fehler bei der cm⁴-Umrechnung: 1 cm⁴ entspricht 10.000 mm⁴ (nicht 100 oder 1.000!).'
+            message: 'Typischer Fehler bei der cm⁴-Umrechnung: 1 cm⁴ entspricht 10 000 mm⁴ (nicht 100 oder 1000!).'
           },
           {
             check: (val) => Math.abs(val - F_K_N) < 500,
@@ -133,7 +133,7 @@ const GENERATOR_TASKS: GeneratorTask[] = [
           {
             step: '3. Umrechnung in kN',
             math: `F_K = ${formatDeTeX(F_K_N, 0)}\\text{ N} = \\mathbf{${formatDeTeX(F_K_kN, 1)}}\\text{ kN}`,
-            explanation: 'Division durch 1.000 liefert die Knicklast in Kilonewton.'
+            explanation: 'Division durch 1000 liefert die Knicklast in Kilonewton.'
           }
         ]
       };
@@ -159,14 +159,14 @@ const GENERATOR_TASKS: GeneratorTask[] = [
 
       return {
         params: { sigma_c, phi, Ecm },
-        questionText: `Eine Betonstütze aus Normalbeton C30/37 (E_cm = 33.000 MPa) steht unter einer zentrischen Dauerlastspannung von σ_c = ${formatDeWert(sigma_c)} MPa. Die berechnete Endkriechzahl nach DIN EN 1992-1-1 beträgt φ(∞, t₀) = ${formatDeWert(phi)}. Berechnen Sie die reine Kriechdehnung ε_cr in Promille (‰).`,
+        questionText: `Eine Betonstütze aus Normalbeton C30/37 (E_cm = 33 000 MPa) steht unter einer zentrischen Dauerlastspannung von σ_c = ${formatDeWert(sigma_c)} MPa. Die berechnete Endkriechzahl nach DIN EN 1992-1-1 beträgt φ(∞, t₀) = ${formatDeWert(phi)}. Berechnen Sie die reine Kriechdehnung ε_cr in Promille (‰).`,
         correctAnswer: Number(eps_cr_promille.toFixed(3)),
         unit: '‰ (Promille)',
         tolerancePercent: 3,
         hints: [
           'Elastische Anfangsdehnung: ε_el = σ_c / E_cm',
           'Kriechdehnung: ε_cr = φ(t, t₀) · σ_c / E_c mit E_c = 1,05 · E_cm (DIN EN 1992-1-1, 3.1.4(3))',
-          'Um von der dimensionslosen Dehnung auf Promille (‰) zu kommen, multiplizieren Sie mit 1.000.'
+          'Um von der dimensionslosen Dehnung auf Promille (‰) zu kommen, multiplizieren Sie mit 1000.'
         ],
         commonMistakes: [
           {
@@ -179,7 +179,7 @@ const GENERATOR_TASKS: GeneratorTask[] = [
           },
           {
             check: (val) => Math.abs(val - eps_cr) < 0.0001,
-            message: 'Sie haben das Ergebnis dimensionslos angegeben. Gefragt war die Dehnung in Promille (‰), also Faktor 1.000!'
+            message: 'Sie haben das Ergebnis dimensionslos angegeben. Gefragt war die Dehnung in Promille (‰), also Faktor 1000!'
           }
         ],
         solutionSteps: [

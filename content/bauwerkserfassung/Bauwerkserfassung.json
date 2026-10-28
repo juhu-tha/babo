@@ -169,7 +169,7 @@
         "tol": "± 1,0 - 3,0 mm",
         "speed": "Sehr schnell",
         "work": "Hoch (Registrierung, Filterung in Leica Cyclone)",
-        "pros": "Bis 680.000 Punkte/s (BLK360 G2), lückenlose 3D-Erfassung, Genauigkeit laut Datenblatt im Bereich weniger Millimeter (z. B. 4 mm @ 10 m).",
+        "pros": "Bis 680 000 Punkte/s (BLK360 G2), lückenlose 3D-Erfassung, Genauigkeit laut Datenblatt im Bereich weniger Millimeter (z. B. 4 mm @ 10 m).",
         "cons": "Hohe Anschaffungskosten, enorme Datenmengen, Abschattung (tote Winkel) erfordern viele Standpunkte.",
         "bg": "bg-slate-50/15"
       },
@@ -187,7 +187,7 @@
       {
         "step": "01",
         "title": "Erfassung am Objekt",
-        "detail": "Der Leica BLK360 wird auf einem stabilen Stativ platziert. Er emittiert 680.000 Laserpunkte pro Sekunde und nimmt ein HDR-Farbpanorama auf. Pro Standpunkt dauert die kombinierte Aufnahme ca. 1-2 Minuten."
+        "detail": "Der Leica BLK360 wird auf einem stabilen Stativ platziert. Er emittiert 680 000 Laserpunkte pro Sekunde und nimmt ein HDR-Farbpanorama auf. Pro Standpunkt dauert die kombinierte Aufnahme ca. 1-2 Minuten."
       },
       {
         "step": "02",
@@ -230,7 +230,7 @@
       },
       {
         "titel": "Spannungen und Knickbeiwert",
-        "erklaerung": "f_c,0,d = 0,9 · 21/1,3 = 14,5 N/mm²; λ_y = 4 000/(140/√12) = 99, λ_rel,y = 99/π · √(21/7 400) = 1,68 mit E_0,05 = 7 400 N/mm² → k_c,y = 0,31:",
+        "erklaerung": "f_c,0,d = 0,9 · 21/1,3 = 14,5 N/mm²; λ_y = 4000/(140/√12) = 99, λ_rel,y = 99/π · √(21/7 400) = 1,68 mit E_0,05 = 7400 N/mm² → k_c,y = 0,31:",
         "formel": "\\sigma_{c,0,d} = \\frac{20\\,000}{14\\,000} = 1{,}43, \\quad \\sigma_{m,d} = 12{,}2 + 2{,}8 = 15{,}0\\,\\text{N/mm}^2, \\quad k_{c,y} = 0{,}31"
       },
       {

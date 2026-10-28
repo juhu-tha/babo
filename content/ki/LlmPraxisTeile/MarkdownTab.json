@@ -15,7 +15,7 @@
     "eingebettetUndFehlerfreiInterpretiert": " eingebettet und fehlerfrei interpretiert.",
     "liveVergleichSchlechterPdf": "Live-Vergleich: Schlechter PDF-OCR-Scan vs. Strukturiertes Markdown",
     "schlechterPdfTextOcr": "❌ Schlechter PDF-Text (OCR-Artefakte)",
-    "t1400Tokens": "~1.400 Tokens",
+    "t1400Tokens": "~1400 Tokens",
     "headerBaugrundinstitutDrMuelller": "[Header: Baugrundinstitut Dr. Muelller S. 42]<br>Schicht 2.... Sand Kies k_f = 1,4 * 10^-4 m/s?<br>c=0 phi = 32,5? Wichte gamma=19kN/m3?<br>[Footer: DIN 4020 Vertraulichkeitsvermerk...]",
     "gefahrFragmenteImTabellenumbruch": "Gefahr: Fragmente im Tabellenumbruch werden fehlinterpretiert; hohe Token-Verschwendung.",
     "reinesMarkdownMd": "✅ Reines Markdown (.md)",

@@ -50,9 +50,9 @@ export default function KennwerteBeispielrechnung({ exCalc, exConc, exConcreteCl
                   onChange={(e) => setExConcreteClass(e.target.value as "C45/55" | "C35/45" | "C70/85")}
                   className="w-full p-2 border border-home-grau/30 rounded-lg bg-white font-medium font-mono"
                 >
-                  <option value="C35/45">C35/45 (Ecm = 34.000 MPa)</option>
-                  <option value="C45/55">C45/55 (Standard, Ecm = 36.000 MPa)</option>
-                  <option value="C70/85">C70/85 (Hochfest, Ecm = 41.000 MPa)</option>
+                  <option value="C35/45">C35/45 (Ecm = 34 000 MPa)</option>
+                  <option value="C45/55">C45/55 (Standard, Ecm = 36 000 MPa)</option>
+                  <option value="C70/85">C70/85 (Hochfest, Ecm = 41 000 MPa)</option>
                 </select>
               </div>
 
@@ -93,9 +93,9 @@ export default function KennwerteBeispielrechnung({ exCalc, exConc, exConcreteCl
                   onChange={(e) => setExP0(Number(e.target.value))}
                   className="w-full p-2 border border-home-grau/30 rounded-lg bg-white font-medium font-mono"
                 >
-                  <option value={3800}>3.800 kN (moderate Ausnutzung)</option>
-                  <option value={4500}>4.500 kN (σ_p0 = 1250 MPa)</option>
-                  <option value={5000}>5.000 kN (Standard, σ_p0 ≈ 1390 MPa)</option>
+                  <option value={3800}>3800 kN (moderate Ausnutzung)</option>
+                  <option value={4500}>4500 kN (σ_p0 = 1250 MPa)</option>
+                  <option value={5000}>5000 kN (Standard, σ_p0 ≈ 1390 MPa)</option>
                 </select>
               </div>
             </div>
@@ -108,7 +108,7 @@ export default function KennwerteBeispielrechnung({ exCalc, exConc, exConcreteCl
                 <Building size={14} className="text-shiraz" /><MdText text={inhalt.texte.t1TragwerkQuerschnitt} /></span>
               <div className="space-y-1 text-text-main/80 font-mono">
                 <div className="flex justify-between"><span><MdText text={inhalt.texte.stützweiteL} /></span><span className="font-bold">24,00 m</span></div>
-                <div className="flex justify-between"><span><MdText text={inhalt.texte.betonflächeAc} /></span><span className="font-bold">500.000 mm²</span></div>
+                <div className="flex justify-between"><span><MdText text={inhalt.texte.betonflächeAc} /></span><span className="font-bold">500 000 mm²</span></div>
                 <div className="flex justify-between"><span><MdText text={inhalt.texte.trägheitsmomentIc} /></span><span className="font-bold"><MdText text={inhalt.texte.t85010Mm} /></span></div>
                 <div className="flex justify-between"><span><MdText text={inhalt.texte.exzentrizitätEp} /></span><span className="font-bold"><MdText text={inhalt.texte.t450MmMitte} /></span></div>
                 <div className="flex justify-between"><span><MdText text={inhalt.texte.eigengewichtG} /></span><span className="font-bold">12,5 kN/m</span></div>
@@ -121,9 +121,9 @@ export default function KennwerteBeispielrechnung({ exCalc, exConc, exConcreteCl
               <div className="space-y-1 text-text-main/80 font-mono">
                 <div className="flex justify-between"><span>Spannstahl:</span><span className="font-bold"><MdText text={inhalt.texte.y1860S7157} /></span></div>
                 <div className="flex justify-between"><span><MdText text={inhalt.texte.anzahlLitzen} /></span><span className="font-bold"><MdText text={inhalt.texte.t21224Litzen} /></span></div>
-                <div className="flex justify-between"><span><MdText text={inhalt.texte.spannstahlflächeAp} /></span><span className="font-bold">3.600 mm²</span></div>
+                <div className="flex justify-between"><span><MdText text={inhalt.texte.spannstahlflächeAp} /></span><span className="font-bold">3600 mm²</span></div>
                 <div className="flex justify-between"><span>E-Modul Ep:</span><span className="font-bold"><MdText text={inhalt.texte.t195000NMm} /></span></div>
-                <div className="flex justify-between"><span><MdText text={inhalt.texte.zugfestigkeitFpk} /></span><span className="font-bold">1.860 N/mm²</span></div>
+                <div className="flex justify-between"><span><MdText text={inhalt.texte.zugfestigkeitFpk} /></span><span className="font-bold">1860 N/mm²</span></div>
               </div>
             </div>
 
@@ -146,7 +146,7 @@ export default function KennwerteBeispielrechnung({ exCalc, exConc, exConcreteCl
               <CheckCircle2 className="h-4 w-4 text-emerald-600" /><MdText text={inhalt.texte.schritt1BetonspannungIn} /></h5>
             <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.zurErmittlungDesKriechverlusts} /></p>
             <div className="p-3 bg-off-white/80 rounded-lg border border-home-grau/20 text-center font-mono text-xs overflow-x-auto">
-              <BlockMath math={`\\sigma_{c,QP} = \\frac{P_{m0}}{A_c} + \\frac{P_{m0} \\cdot e_p^2}{I_c} - \\frac{M_g \\cdot e_p}{I_c} = \\frac{${formatDeTeXWert((exCalc.Pm0 * 1000))}}{500.000} + \\frac{${formatDeTeXWert((exCalc.Pm0 * 1000))} \\cdot 450^2}{8{,}5 \\cdot 10^{10}} - \\frac{900 \\cdot 10^6 \\cdot 450}{8{,}5 \\cdot 10^{10}} = ${exCalc.sig_c_p0}\\text{ N/mm}^2`} />
+              <BlockMath math={`\\sigma_{c,QP} = \\frac{P_{m0}}{A_c} + \\frac{P_{m0} \\cdot e_p^2}{I_c} - \\frac{M_g \\cdot e_p}{I_c} = \\frac{${formatDeTeXWert((exCalc.Pm0 * 1000))}}{500\\,000} + \\frac{${formatDeTeXWert((exCalc.Pm0 * 1000))} \\cdot 450^2}{8{,}5 \\cdot 10^{10}} - \\frac{900 \\cdot 10^6 \\cdot 450}{8{,}5 \\cdot 10^{10}} = ${exCalc.sig_c_p0}\\text{ N/mm}^2`} />
             </div>
             <div className="grid grid-cols-3 gap-2 text-[11px] text-center text-slate-600 pt-1">
               <div className="p-1.5 bg-slate-50 rounded border"><MdText text={inhalt.texte.normalkraftanteil} />{formatDeZahl(((exCalc.Pm0 * 1000) / 500000), 2)} N/mm²</div>

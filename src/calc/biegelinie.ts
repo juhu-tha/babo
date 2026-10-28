@@ -149,7 +149,7 @@ export function biegelinie(e: BiegelinieEingabe, n = 200): BiegelinieErgebnis {
 
   if (e.F === 0 && e.q === 0) hinweise.push({ stufe: 'warnung', feld: 'F', text: 'Keine Last angesetzt – der Träger bleibt gerade.' });
   bereich(hinweise, 'L', e.L, 0.5, 30, 'Länge außerhalb des üblichen Bereichs von Biegeträgern im Hochbau (etwa 0,5–30 m).');
-  bereich(hinweise, 'E', e.E, 1000, 250000, 'E-Modul außerhalb des Bereichs üblicher Baustoffe (etwa 1 000–250 000 N/mm²).');
+  bereich(hinweise, 'E', e.E, 1000, 250000, 'E-Modul außerhalb des Bereichs üblicher Baustoffe (etwa 1000–250 000 N/mm²).');
   // Grenze der linearen Theorie: kleine Neigungen (|w'| ≤ 0,1 rad)
   if (Math.max(...verlauf.map(p => Math.abs(p.phi))) > 100) hinweise.push({ stufe: 'warnung', feld: 'I', text: 'Neigung über 0,1 rad: Die lineare Biegetheorie (kleine Verformungen) ist hier nicht mehr zutreffend.' });
   const grenze = e.lagerung === 'einfeldtraeger' ? 300 : 150;

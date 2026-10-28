@@ -2,7 +2,7 @@
   "texte": {
     "titel": "Biegelinie von Einfeldträger und Kragarm",
     "einleitung": "Die **Biegelinie** $w(x)$ beschreibt die Durchbiegung der Stabachse. Sie folgt aus der Differentialgleichung $E I \\, w''(x) = -M(x)$: Die Krümmung ist dem Biegemoment proportional und der **Biegesteifigkeit** $E \\cdot I$ umgekehrt proportional. Die Neigung $w'(x)$ ist der Drehwinkel des Querschnitts.",
-    "steifigkeit": "**Werkstoff und Querschnitt:** Der E-Modul geht linear ein, die Bauteilhöhe beim Rechteck mit der dritten Potenz ($I = b h^3/12$). Bei gleicher Querschnittsform biegt sich Holz rund 19-mal stärker durch als Stahl (11 000 gegenüber 210 000 N/mm²); eine Verdoppelung der Höhe verringert die Durchbiegung auf ein Achtel.",
+    "steifigkeit": "**Werkstoff und Querschnitt:** Der E-Modul geht linear ein, die Bauteilhöhe beim Rechteck mit der dritten Potenz ($I = b h^3/12$). Bei gleicher Querschnittsform biegt sich Holz rund 19-mal stärker durch als Stahl (11 000 gegenüber 210 000 N/mm²); eine Verdoppelung der Höhe verringert die Durchbiegung auf ein Achtel.",
     "grenzen": "**Einordnung:** Lineare Biegetheorie (kleine Verformungen, Bernoulli-Hypothese, ohne Schubverformung). Bei Holz kommen Kriechen ($k_{\\mathrm{def}}$) und Schubverformung hinzu, bei Stahlbeton Rissbildung (Zustand II) und Kriechen – die Durchbiegung kann dort ein Mehrfaches des Werts im Zustand I betragen.",
     "eingaben": "System und Lasten",
     "querschnitt": "Werkstoff und Querschnitt",

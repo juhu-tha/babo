@@ -38,7 +38,7 @@
     "RessourcenUmwelt.schritte_2": [
       {
         "titel": "Werte (Lehrbeispiel)",
-        "erklaerung": "1 m³ Transportbeton: energetisch genutzt PENRE = 1 050 MJ, stofflich gebunden PENRM = 50 MJ (z. B. Zusatzmittel):",
+        "erklaerung": "1 m³ Transportbeton: energetisch genutzt PENRE = 1050 MJ, stofflich gebunden PENRM = 50 MJ (z. B. Zusatzmittel):",
         "formel": "\\text{PENRT} = 1\\,050 + 50 = 1\\,100\\,\\text{MJ}"
       },
       {

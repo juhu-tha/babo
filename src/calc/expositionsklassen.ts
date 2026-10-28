@@ -71,7 +71,7 @@ export function huellwerte(alle: readonly ExpositionsAnforderung[], gewaehlt: re
   const cNom = maxCoverDur + deltaCdev;
   const has = (k: string) => gewaehlt.includes(k);
   const specialReqs: string[] = [];
-  if (has('XA2') || has('XA3')) specialReqs.push('Bei Sulfatangriff (> 600 mg/l SO₄²⁻ im Wasser) SR-Zement; bis 1 500 mg/l alternativ Zement-Flugasche-Gemisch.');
+  if (has('XA2') || has('XA3')) specialReqs.push('Bei Sulfatangriff (> 600 mg/l SO₄²⁻ im Wasser) SR-Zement; bis 1500 mg/l alternativ Zement-Flugasche-Gemisch.');
   if (has('XA3')) specialReqs.push('XA3: zusätzlich Schutz des Betons oder Gutachten (DIN 1045-2).');
   if (has('XM2')) specialReqs.push('XM2: Oberflächenbehandlung des Betons – sonst w/z ≤ 0,45 und C35/45.');
   if (has('XM3')) specialReqs.push('XM3: Hartstoffe nach DIN 1100.');

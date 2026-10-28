@@ -52,12 +52,12 @@
     "OekobilanzLCA.schritte_2": [
       {
         "titel": "Konstruktion",
-        "erklaerung": "Module A1–A3, B4 (Austausch), C3–C4 für ein Mehrfamilienhaus mit 1 200 m² NRF:",
+        "erklaerung": "Module A1–A3, B4 (Austausch), C3–C4 für ein Mehrfamilienhaus mit 1200 m² NRF:",
         "formel": "\\text{GWP}_{\\text{Konstruktion}} = 1\\,050\\,000\\,\\text{kg CO}_2\\text{-Äq.}"
       },
       {
         "titel": "Betrieb",
-        "erklaerung": "Modul B6 mit 8 000 kg CO₂-Äq. je Jahr über 50 Jahre:",
+        "erklaerung": "Modul B6 mit 8000 kg CO₂-Äq. je Jahr über 50 Jahre:",
         "formel": "\\text{GWP}_{\\text{Betrieb}} = 8\\,000 \\cdot 50 = 400\\,000\\,\\text{kg CO}_2\\text{-Äq.}"
       },
       {

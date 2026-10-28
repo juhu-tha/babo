@@ -113,7 +113,7 @@ export function hauptspannungen(z: EbenerSpannungszustand, fy?: number): Spannun
   const eta = fy !== undefined ? sigmaVMises / fy : NaN;
 
   for (const [feld, w] of [['sx', z.sx], ['sy', z.sy], ['txy', z.txy]] as const) {
-    bereich(hinweise, feld, w, -1000, 1000, 'Spannungen über 1 000 N/mm² liegen oberhalb der Festigkeit üblicher Baustähle – Eingabe prüfen.');
+    bereich(hinweise, feld, w, -1000, 1000, 'Spannungen über 1000 N/mm² liegen oberhalb der Festigkeit üblicher Baustähle – Eingabe prüfen.');
   }
   if (isotrop) hinweise.push({ stufe: 'warnung', feld: 'txy', text: 'Hydrostatischer (isotroper) Spannungszustand: Der Mohr\'sche Kreis ist ein Punkt, jede Richtung ist Hauptrichtung (φ₁ = 0° gesetzt).' });
   if (sigma1 > 0 && sigma2 > 0 && tauMaxRaeumlich > R) hinweise.push({ stufe: 'warnung', feld: 'txy', text: 'Beide Hauptspannungen sind Zug: Die größte Schubspannung tritt räumlich mit σ₃ = 0 auf (τ = σ₁/2), nicht in der Ebene.' });

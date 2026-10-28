@@ -372,7 +372,7 @@
       },
       {
         "titel": "Bewertung",
-        "erklaerung": "PCB-Richtlinie: unter 300 ng/m³ langfristig tolerabel (Zielwert), über 3 000 ng/m³ unverzüglich Maßnahmen:",
+        "erklaerung": "PCB-Richtlinie: unter 300 ng/m³ langfristig tolerabel (Zielwert), über 3000 ng/m³ unverzüglich Maßnahmen:",
         "formel": "300 < 1\\,400 < 3\\,000\\,\\text{ng/m}^3"
       },
       {

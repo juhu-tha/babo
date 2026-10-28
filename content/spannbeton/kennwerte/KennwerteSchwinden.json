@@ -13,7 +13,7 @@
     "dieserUnterdruckZiehtDas": "Dieser Unterdruck zieht das elastische C-S-H-Gefüge zusammen wie einen trocknenden Schwamm.",
     "einflussDerBauteilabmessungDas": "**Einfluss der Bauteilabmessung:** Das Trocknungsschwinden hängt massiv von der wirksamen Bauteildicke $h_0 = 2 A_c / u$ ab. Dicke Brückenkästen trocknen über Jahrzehnte hinweg aus, während dünne Stege bereits nach wenigen Monaten geschwunden sind.",
     "auswirkungAufDenSpannstahl": "Auswirkung auf den Spannstahl im Tragwerk (Zahlenbeispiel):",
-    "beträgtDasGesamtschwindmaßVarepsilon": "Beträgt das Gesamtschwindmaß $\\varepsilon_{cs} = -0{,}35\\text{ mm/m} = -0{,}00035$ und der Spannstahl-E-Modul $E_p = 195.000\\text{ N/mm}^2$, so verkürzt sich das Bauteil lastfrei. Da das Spannglied starr im Bauteil verankert ist, wird der Stahl um genau dieses Maß zusammengestaucht:",
+    "beträgtDasGesamtschwindmaßVarepsilon": "Beträgt das Gesamtschwindmaß $\\varepsilon_{cs} = -0{,}35\\text{ mm/m} = -0{,}00035$ und der Spannstahl-E-Modul $E_p = 195\\,000\\text{ N/mm}^2$, so verkürzt sich das Bauteil lastfrei. Da das Spannglied starr im Bauteil verankert ist, wird der Stahl um genau dieses Maß zusammengestaucht:",
     "beiEinerTypischenAnfangsspannung": "Bei einer typischen Anfangsspannung von $\\sigma_{p0} = 1400\\text{ N/mm}^2$ entspricht allein der Schwindverlust einem dauerhaften Spannungsverlust von rund **5 %**.",
     "größenordnungenDerSchwindbeiwerteSchätzw": "Größenordnungen der Schwindbeiwerte: Schätzwerte vs. Rechenwerte nach EC2",
     "dinEn19921": "DIN EN 1992-1-1 Abs. 3.1.4 & Anhang B.2",

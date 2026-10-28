@@ -57,7 +57,7 @@
       {
         "titel": "1. Gegeben (Lehrwerte)",
         "formel": "\\tau_0 = 200\\,\\text{Pa},\\; \\mu_p = 20\\,\\text{Pa s},\\; R = 0{,}0625\\,\\text{m},\\; L = 50\\,\\text{m},\\; H = 20\\,\\text{m},\\; Q = 30\\,\\text{m}^3/\\text{h}",
-        "erklaerung": "Förderleitung DN 125, Frischbetonrohdichte 2 400 kg/m³."
+        "erklaerung": "Förderleitung DN 125, Frischbetonrohdichte 2400 kg/m³."
       },
       {
         "titel": "2. Fließgeschwindigkeit",

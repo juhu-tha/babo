@@ -45,7 +45,7 @@
     "KiUeberblick.schritte_2": [
       {
         "titel": "Ist-Auflösung",
-        "erklaerung": "Bildbreite 1,20 m auf 4 000 Pixel:",
+        "erklaerung": "Bildbreite 1,20 m auf 4000 Pixel:",
         "formel": "GSD = \\frac{1\\,200\\ \\text{mm}}{4\\,000} = 0{,}30\\ \\text{mm/px}"
       },
       {
@@ -55,7 +55,7 @@
       },
       {
         "titel": "Folge",
-        "erklaerung": "Bei 4 000 Pixeln darf die Bildbreite höchstens betragen:",
+        "erklaerung": "Bei 4000 Pixeln darf die Bildbreite höchstens betragen:",
         "formel": "B_{max} = 4\\,000 \\cdot 0{,}10 = 400\\ \\text{mm}"
       }
     ],

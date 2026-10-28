@@ -4,7 +4,7 @@
     "zementbeiwertSAbschnitt1": "Zementbeiwert s (Abschnitt 1)",
     "steuertCcTSchwindbeiwerte": "Steuert β_cc(t), Schwindbeiwerte α_ds1/2 & t_0,eff",
     "gesteinskörnungEAbschnitt3": "Gesteinskörnung α_E (Abschnitt 3)",
-    "eCm22000": "E_cm = 22.000 · (f_cm/10)^0,3 · α_E [MPa]",
+    "eCm22000": "E_cm = 22 000 · (f_cm/10)^0,3 · α_E [MPa]",
     "luftfeuchteRhAbschnitt5": "Luftfeuchte RH (Abschnitt 5 & 6)",
     "innenraum50FeuchtesFreiland": "Innenraum ~50 %, feuchtes Freiland ~80 %",
     "querschnittsflächeACM": "Querschnittsfläche A_c [m²]",

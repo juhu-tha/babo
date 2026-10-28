@@ -60,7 +60,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       rohstoffe: "Ausgangsmaterialien sind magmatische Tiefen-/Ergussgesteine (z. B. Granit, Basalt), sedimentäre Ablagerungsgesteine (z. B. Kalkstein, Sandstein) oder metamorphe Umwandlungsgesteine (z. B. Marmor, Gneis, Schiefer). Abbau erfolgt im Festgesteinstagebau (Sprengung) oder Nass- und Trockenabbau von Lockergesteinen (Sand/Kies).",
       herstellung: "Bei Naturwerkstein erfolgt der mechanische Nasszuschnitt (Gattersägen, Seilsägen) im Steinmetzbetrieb gefolgt von Oberflächenveredelung (Polieren, Schleißen, Flammen). Gesteinskörnungen für Beton/Asphalt werden im Bohr- und Sprengbetrieb gewonnen, in Brecheranlagen zerkleinert und in Siebmaschinen in genormte Kornklassen fraktioniert.",
       eigenschaften: {
-        technisch: "Enorm hohe Druckfestigkeit (Granit ca. 150-250 MPa, Basalt bis zu 350 MPa). Hohe Rohdichte (2.200-3.000 kg/m³). Sprödes Versagensverhalten ohne plastische Zugreserven. Wärmeleitfähigkeit ist hoch (λ ≈ 1,5 - 3,5 W/(m·K)). Mohshärte variiert stark von Weichgestein (Marmor Härte 3) bis Hartgestein (Granit/Quarzit Härte 7).",
+        technisch: "Enorm hohe Druckfestigkeit (Granit ca. 150-250 MPa, Basalt bis zu 350 MPa). Hohe Rohdichte (2200-3.000 kg/m³). Sprödes Versagensverhalten ohne plastische Zugreserven. Wärmeleitfähigkeit ist hoch (λ ≈ 1,5 - 3,5 W/(m·K)). Mohshärte variiert stark von Weichgestein (Marmor Härte 3) bis Hartgestein (Granit/Quarzit Härte 7).",
         oekologisch: "Hervorragende Ökobilanz als Primärbaustoff. Geringer Treibhausgas-Emissionsgrad bei regionalem Abbau (Richtwert ca. 5–15 kg CO₂-Äq./t für Gesteinskörnung). Extrem hohe Graue Energie entsteht jedoch bei importierten Natursteinen (z.B. Granit aus Fernost-Transportwegen)."
       },
       anwendungen: "Grobe/feine Körnungen als tragendes Skelett in Beton (70-80 Vol.-%) und Asphalt. Naturwerkstein als hinterlüftete Außenwandbekleidung (DIN 18516-3), widerstandsfähige Boden- und Pflasterbeläge im Straßen-/U-Bahnbereich, Bordsteine, Treppenstufen, Gleisschotter (Basalt) und Wasserbausteine im Wasserbau.",
@@ -80,7 +80,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       rohstoffe: "Abhängig von der Steinart: Sand, Kalk und Wasser bei Kalksandstein (KS). Reiner Ton, Schluff, Lehm und Wasser für gebrannte Mauerziegel (Z) bzw. ungebrannte Lehmbausteine (LH, teils mit Pflanzenfasern wie Stroh/Hanf armiert). Kalk, Zement, Quarzmehl und Aluminiumpulver (Blähmittel) bei Porenbeton (PB). Zementgebundener Leichtbeton mit Bims/Blähton bei Leichtbetonsteinen.",
       herstellung: "Tonziegel werden geformt, getrocknet und bei 900-1100 °C im Tunnelofen gebrannt. Kalksandsteine entstehen durch Pressen der Rohmischung und anschließendes hydrothermalen Härten im Autoklaven unter Wasserdampf (16 bar, 200 °C). Porenbeton gärt zunächst durch die H2-Gasbläschen des Aluminiums auf und wird danach analog autoklaviert. Lehmbausteine werden lediglich mechanisch verdichtet und rein solar an der Luft getrocknet (völlig CO₂-frei).",
       eigenschaften: {
-        technisch: "Druckfestigkeiten variieren dramatisch zwischen den Steinklassen: Porenbeton (f_b ≈ 2-8 MPa), Lehmbausteine (f_b ≈ 2-5 MPa, sehr feuchtigkeitsempfindlich), Kalksandstein (f_b ≈ 12-28 MPa) und schwere Tonziegel/Klinker (f_b ≈ 12-45+ MPa). Die Rohdichten reichen von superleichten Wärmedämmsteinen wie PB (300-600 kg/m³) bis hin zu massiven KSV (1.800-2.200 kg/m³) für erstklassigen Schallschutz.",
+        technisch: "Druckfestigkeiten variieren dramatisch zwischen den Steinklassen: Porenbeton (f_b ≈ 2-8 MPa), Lehmbausteine (f_b ≈ 2-5 MPa, sehr feuchtigkeitsempfindlich), Kalksandstein (f_b ≈ 12-28 MPa) und schwere Tonziegel/Klinker (f_b ≈ 12-45+ MPa). Die Rohdichten reichen von superleichten Wärmedämmsteinen wie PB (300-600 kg/m³) bis hin zu massiven KSV (1800-2.200 kg/m³) für erstklassigen Schallschutz.",
         oekologisch: "Keramisches Brennen von Ziegeln besitzt aufgrund der Prozesstemperaturen über 1000 °C den höchsten Primärenergiebedarf. Kalksandstein besitzt dank der Kaltpressung und moderaten Erwärmung im Autoklaven (200 °C) eine weitaus vorteilhaftere CO₂-Bilanz. Lehmbausteine sind der absolute ökologische Spitzenreiter (nahezu CO₂-neutral, luftgetrocknet und 100% zirkulär)."
       },
       anwendungen: "Tragendes und aussteifendes Außen- und Innenmauerwerk. Schallschutz-Wohnungstrennwände (bevorzugt schwerer Kalksandstein). Monolithisches hochwärmedämmendes Außenmauerwerk (Hochlochziegel oder Porenbeton). Ökologischer, raumklimatisch hoch-aktiver Innenausbau (Lehmbausteine zur Feuchtigkeitsregulation). Zweischaliges Sicht- und Verblendmauerwerk (Klinker für extremen Wetterschutz).",
@@ -90,7 +90,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       recycling: "Konventionell vermauertes Steinmaterial lässt sich als sortenreiner Bauschutt brechen (z. B. Ziegelsplitt zur Dachbegrünung, Kalksandkies im Erdbau). Dünnbettvermauerte Wände vereinfachen die werkzeugfreie Trennung beim Abbruch. Ungebrannter Lehm is das Musterbeispiel perfekter Kreislaufwirtschaft: Er lässt sich unbegrenzt oft wieder mit Wasser einsumpfen, kneten und neu verbauen oder schadstofffrei in den Naturkreislauf rückführen.",
       besonderheiten: "Statische Bemessungsgrundlage (EC6): Tragfähigkeit von Mauerwerk ist primär eine Systemfestigkeit und hängt massiv von der Stein-Mörtel-Kombination ab. Dünnbettmörtel erhöht die nutzbare Druckfestigkeit des Mauerwerks um bis zu 40% gegenüber Normalmörtel, da dicke Mörtelfugen Querdehnungen begünstigen.",
       innovationen: "Ziegel mit integrierten Vakuum-Isolationspaneelen (VIP) für Passivhausstandards bei minimalen Wanddicken. Entwicklung geschosshoher Mauerwerks-Montageelemente (Robotervorfertigung im Werk). Leimmörtel in der Sprühdose zur rasanten, wasserlosen Montage auf der Baustelle.",
-      historie: "Die baugeschichtliche Entwicklung reicht über 10.000 Jahre zurück zu getrockneten Lehm-Mauersteinen (Jericho). Im antiken Mesopotamien wurden erste Ziegel gebrannt. Die Römer führten mit dem Opus Caementitium und flachen Ziegeln (lateres) eine weitgehende Standardisierung der Mauerwerkstechnik ein."
+      historie: "Die baugeschichtliche Entwicklung reicht über 10 000 Jahre zurück zu getrockneten Lehm-Mauersteinen (Jericho). Im antiken Mesopotamien wurden erste Ziegel gebrannt. Die Römer führten mit dem Opus Caementitium und flachen Ziegeln (lateres) eine weitgehende Standardisierung der Mauerwerkstechnik ein."
     }
   },
   mauerziegel: {
@@ -110,7 +110,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       recycling: "Ziegelbruch ist hervorragend stofflich recyclingfähig und wird thermisch-mechanisch als Zuschlag für Vegetationssubstrate (Dachbegrünung), Tennisplatzbeläge (Ziegelmehl) oder als RC-Gesteinskörnung im Wegebau verarbeitet.",
       besonderheiten: "Konstruktionstipp: Um die statische Druckfestigkeit zu optimieren, weisen Planziegel geschliffene Lagerflächen auf. Sie werden mit Dünnbettmörtel verklebt (Lagerfuge nur ca. 1-3 mm dicke Fuge), wodurch das Auspressen dicker Mörtelschichten und elastische Querdehnungen in den Fugen minimiert werden.",
       innovationen: "Mit Vakuumisolationspaneelen (VIP) oder Aerogelen gefüllte Hohlkammerziegel, die extrem geringe Wanddicken bei Erreichen des Passivhausstandards ermöglichen.",
-      historie: "Der gebrannte Tonziegel entstand um ca. 3.000 v. Chr. im Zweistromland. Im europäischen Mittelalter prägte die herrschaftliche Backsteingotik weite Landschaften. Die Erfindung des kontinuierlich arbeitenden Hoffmannschen Ringofens im Jahr 1858 ebnete den Weg für die kostengünstige Massenproduktion."
+      historie: "Der gebrannte Tonziegel entstand um ca. 3000 v. Chr. im Zweistromland. Im europäischen Mittelalter prägte die herrschaftliche Backsteingotik weite Landschaften. Die Erfindung des kontinuierlich arbeitenden Hoffmannschen Ringofens im Jahr 1858 ebnete den Weg für die kostengünstige Massenproduktion."
     }
   },
   kalksandstein: {
@@ -190,7 +190,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       recycling: "Der Inbegriff perfekten Recyclings: Ausgebauter Lehm lässt sich ohne Qualitätsverluste unendlich oft einsumpfen, kneten, verformen und wieder vermauern – absolut rückstandsfrei für Umwelt und Deponie.",
       besonderheiten: "Konstruktions-Tipp: Muss zwingend mit speziellem Lehmmörtel ohne Zementzusatz vermauert werden, um elastische, rissfreie Verbundkoeffizienten zu gewährleisten. Trocknungsphasen sind abzuwarten.",
       innovationen: "Industrieller 3D-Druck von raumumschließenden Stampflehmelementen aus Baugrubenaushub; hydraulisch hochdruckgepresste Lehm-Plansteine zur Unterstützung tragender Funktionen nach der brandneuen DIN 18940.",
-      historie: "Zusammen mit geflochtenen Holzkonstruktionen der älteste gemauerte Werkstoff der Menschheit (historische Bauten im fruchtbaren Halbmond vor ca. 9.000 Jahren). Über Jahrhunderte dominierte er als Ausfachung im Lehmfachwerkbau Nordeuropas und feiert heute wegen seiner unschlagbaren Kreislauf- und Klimabilanz eine glorreiche Wiederkehr."
+      historie: "Zusammen mit geflochtenen Holzkonstruktionen der älteste gemauerte Werkstoff der Menschheit (historische Bauten im fruchtbaren Halbmond vor ca. 9000 Jahren). Über Jahrhunderte dominierte er als Ausfachung im Lehmfachwerkbau Nordeuropas und feiert heute wegen seiner unschlagbaren Kreislauf- und Klimabilanz eine glorreiche Wiederkehr."
     }
   },
   putzemoertel: {
@@ -210,7 +210,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       recycling: "Als mineralisches Mischsystem im Verbund schwer stofflich im Hochbau einzusetzen. Im Zuge von Sanierung und Abbruch wird verputztes Mauerwerk als herkömmlicher Bauschutt deponiert, gebrochen oder im Tiefbau als Füllmaterial oder Straßenbau-Unterbau thermisch-mechanisch verwertet.",
       besonderheiten: "Eindringende Baufeuchte im frisch verputzten Zustand zwingend meiden. Auf WDVS-Platten ist der Putzaufbau sorgfältig diffusionsoffen auszuführen, um der Taupunktverschiebung im winterlichen Abkühlungszyklus ohne bauphysikalischen Feuchtigkeitsstau zu trotzen.",
       innovationen: "Entwicklung von Aerogel-Hochleistungsdämmputzen mit Wärmeleitfähigkeiten von λ ≈ 0,028 W/(m·K) zur energetischen Altbausanierung im Denkmalschutz. Selbstreinigende hydrophobe Putze mit Lotuseffekt. Faserarmierte Funktionsputze zur Minimierung von Schwundrissen.",
-      historie: "Schon in der Vorgeschichte (ca. 7.000 v. Chr.) wurden Putze aus Gips und Lehm aufgetragen. Vulkansande erlaubten den Römern die Entwicklung hochfester Luft- und Wasserkalke. Mit der Etablierung des Portlandzements im 19. Jahrhundert wuchs das Portfolio der Außenputze zu widerstandsfähigen Mehrschichtsystemen."
+      historie: "Schon in der Vorgeschichte (ca. 7000 v. Chr.) wurden Putze aus Gips und Lehm aufgetragen. Vulkansande erlaubten den Römern die Entwicklung hochfester Luft- und Wasserkalke. Mit der Etablierung des Portlandzements im 19. Jahrhundert wuchs das Portfolio der Außenputze zu widerstandsfähigen Mehrschichtsystemen."
     }
   },
   gips: {
@@ -250,7 +250,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       recycling: "Stoffliches Recycling ist unkompliziert. Carbonatisiertes Kalkmörtelmauerwerk lässt sich einfach brechen und im Zuge des Betonrecyclings als Kreislaufmaterial einsetzen, da es ungiftige, rein mineralische Calcitstrukturen aufweist.",
       besonderheiten: "Frischer, ungehärteter Löschkalk besitzt durch seinen extrem hohen pH-Wert (ca. 12.6) eine stark alkalische, ätzende Wirkung. Bei Haut- und Augenkontakt drohen irreversible Verätzungen (Erblindungsgefahr!). Strenge persönliche Schutzausrüstung zwingend erforderlich.",
       innovationen: "Entwicklung von carbonatisierenden Nanokalk-Suspensionen zur zerstörungsfreien Festigung von sandenden, historischen Fresken und Denkmälern. Einmischen von kohlensäure-katalysierenden Enzymen zur extremen Beschleunigung der Luftkalkhärtung.",
-      historie: "Kalkbrennen gehört zu den ältesten thermischen Prozessen der Menschheit (nachgewiesen im antiken Göbekli Tepe um 9.000 v. Chr.). Römische Architekten formulierten ausgefeilte Rezepturen für hydraulische Kalke. Im 19. Jahrhundert wurde der Luftkalk durch die Erfindung des künstlichen Portlandzements in tragenden Bereichen verdrängt."
+      historie: "Kalkbrennen gehört zu den ältesten thermischen Prozessen der Menschheit (nachgewiesen im antiken Göbekli Tepe um 9000 v. Chr.). Römische Architekten formulierten ausgefeilte Rezepturen für hydraulische Kalke. Im 19. Jahrhundert wurde der Luftkalk durch die Erfindung des künstlichen Portlandzements in tragenden Bereichen verdrängt."
     }
   },
   lehmbau: {
@@ -260,7 +260,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       rohstoffe: "Natürlich vorkommende Lehmvorkommen. Lehm ist ein physikalisches Gemisch aus tonigen Mineralien (als Bindemittel), Schluff (Feinstsand als Füllstoff) und Sand/Kiesen (als Stützgerüst). Oft mit organischen Zuschlägen (Stroh, Hanffasern) versetzt.",
       herstellung: "Lehm wird trocken oder erdfeucht abgebaut, mechanisch aufbereitet (Zerkleinerung von Tonklumpen) und gemischt. Im Gegensatz zu Zement oder Kalk wird Lehm nicht gebrannt. Er härtet rein physikalisch durch den Entzug von Wasser beim Trocknen aus (reversibles Bindemittel).",
       eigenschaften: {
-        technisch: "Geringe Druckfestigkeit (0,5 - 4,0 MPa). Hohe Trockenrohdichte bei Stampflehm (1.700-2.100 kg/m³). Überragende Sorptionsfähigkeit (puffert Feuchtespitzen der Raumluft und wirkt ausgleichend auf die relative Luftfeuchte). Wasserlöslich und quellfähig bei Wasserzufuhr. Schwindmaß beim Trocknen beträgt ca. 1-4%.",
+        technisch: "Geringe Druckfestigkeit (0,5 - 4,0 MPa). Hohe Trockenrohdichte bei Stampflehm (1700-2.100 kg/m³). Überragende Sorptionsfähigkeit (puffert Feuchtespitzen der Raumluft und wirkt ausgleichend auf die relative Luftfeuchte). Wasserlöslich und quellfähig bei Wasserzufuhr. Schwindmaß beim Trocknen beträgt ca. 1-4%.",
         oekologisch: "Spitzenreiter im ökologischen Bauen. Keine Brennprozesse zur Herstellung nötig, daher sehr geringe graue Energie und niedriges Treibhauspotenzial (Aufbereitung, Trocknung und Transport verursachen dennoch Emissionen). Hervorragende CO2-Bilanz. Kann vollständig schadstoff- und abfallfrei in die Natur zurückgeführt werden."
       },
       anwendungen: "Durch die Produktnormen DIN 18945–18948 und die Bemessungsnorm DIN 18940 (2023) ist tragendes Lehmsteinmauerwerk im Anwendungsbereich der Norm ohne Einzelfallgenehmigung möglich; andere Bauweisen (z. B. tragender Stampflehm) benötigen weiterhin vBG bzw. ZiE. Ausmauerung von Gefachen im Fachwerkbau. Lehmbauplatten als ökologischer Trockenbau. Einschubdecken mit Lehmwickeln als Schall- und Hitzeschutz im Holzbau. Lehm-Dekorputze.",
@@ -310,7 +310,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       recycling: "Scherben aus der Produktion sind zu 100 % im Schmelzofen recycelbar, was Schmelzenergie spart. Herausforderung im Rückbau: Ausgebaute Verbundgläser (VSG) erfordern das aufwendige mechanische Trennen der PVB-Sicherheitsfolien von den klebrigen Glasschichten.",
       besonderheiten: "Spontanbruchgefahr bei ESG durch winzige Nickelsulfid-Einschlüsse (NiS), die sich verzögert im Glasgefüge ausdehnen. Wichtigste Sicherheitsregel: Für ESG im Fassadenbereich immer den Heat-Soak-Test (Heißlagerungsprüfung nach DIN EN 14179) vorschreiben!",
       innovationen: "Elektrochromes Glas (schaltbares Smart Glass), das sich per Knopfdruck oder sensorabhängig zur Reduktion solarer Lasten von transparent auf dunkeltürkis einfärbt. Vakuumisolationsglas (VIG) mit hochdämmenden Mikrogitterstäben für minimalste Bautiefe.",
-      historie: "Die Phönizier und Ägypter stellten vor ca. 4.000 Jahren erstes Glas her. Die Römer verglasten ab dem 1. Jh. n. Chr. erste repräsentative Villenfenster. Nach dem Londoner Kristallpalast (1851) und Erfindung des kontinuierlichen Zylinderblasverfahrens markierte die Entwicklung des Floatglasprozesses durch Alastair Pilkington (1959) die Moderne."
+      historie: "Die Phönizier und Ägypter stellten vor ca. 4000 Jahren erstes Glas her. Die Römer verglasten ab dem 1. Jh. n. Chr. erste repräsentative Villenfenster. Nach dem Londoner Kristallpalast (1851) und Erfindung des kontinuierlichen Zylinderblasverfahrens markierte die Entwicklung des Floatglasprozesses durch Alastair Pilkington (1959) die Moderne."
     }
   },
   stahl: {
@@ -320,7 +320,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       rohstoffe: "Eisenerz, Koks (Kohlenstoffträger) und Zuschlagstoffe (Kalk) beim Primärweg (Hochofenroute) sowie fast ausschließlich Stahlschrott und recycelte Legierungsmetalle beim ressourcenschonenden Sekundärweg (Elektrolichtbogenofen-Route).",
       herstellung: "Erschmelzen des Vormaterials im Hochofen oder Elektroofen, Entkohlen und Frischen im Konverter (Reduktion des Kohlenstoffgehaltes auf unter 2,0% zur Erzielung der Verformbarkeit). Vergießen im Stranggussverfahren und anschließendes Warmwalzen zu Profilen.",
       eigenschaften: {
-        technisch: "Hervorragende Zug- und Druckfestigkeit (Streckgrenze f_y von 235 MPa bei S235 bis über 460 MPa bei hochfestem Stahl; Bewehrungsstahl B500B f_yk = 500 MPa). Extrem ausgeprägte Duktilität (elastisch-plastisches Verformungsverhalten). E-Modul E = 210.000 N/mm².",
+        technisch: "Hervorragende Zug- und Druckfestigkeit (Streckgrenze f_y von 235 MPa bei S235 bis über 460 MPa bei hochfestem Stahl; Bewehrungsstahl B500B f_yk = 500 MPa). Extrem ausgeprägte Duktilität (elastisch-plastisches Verformungsverhalten). E-Modul E = 210 000 N/mm².",
         oekologisch: "Hochofenroute ist energieintensiv und stößt erhebliche Mengen CO2 aus (ca. 1,8-2,2 t CO2/t Stahl). Der Sekundärweg über Altstahlschrott im Elektrolichtbogenofen reduziert die CO2-Emissionen um ca. 70-80 % auf unter 0,4 t CO2/t."
       },
       anwendungen: "Skeletttragwerke von Hallen- und Hochhäusern, Brückenbau, Fachwerkträger, Schweißkonstruktionen, Bewehrungseinlagen (Betonstahlmatten und Stabstahl) im Verbundbaustoff Stahlbeton zur sicheren Aufnahme der entstehenden Zugkräfte.",
@@ -350,7 +350,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       recycling: "Nichteisenmetalle weisen im Baubereich extrem hohe Rücklaufquoten auf (> 95%), da die Restmaterialien einen sehr hohen Schrottwert besitzen. Die Metalle werden verlustgetreu geschmolzen und ohne Qualitätsminderung zu neuen Walzfabrikaten verarbeitet.",
       besonderheiten: "Achten Sie sorgfältig auf die elektrochemische Spannungsreihe zur Vermeidung von Kontaktkorrosion. Titanzinkbleche dürfen niemals im Fließwasserweg hinter Kupferteilen montiert werden, da gelöste Kupferionen die Zinkschicht innerhalb kürzester Zeit durchlöchern.",
       innovationen: "Anodisch oxidiertes Aluminium mit hocheffizienten schmutzabweisenden Nanobeschichtungen gegen städtische Grauschleier. Konstruktiver Einsatz hochelastischer Formgedächtnislegierungen aus Nickel-Titan zur Erdbebenpufferung.",
-      historie: "Kupfer und Blei gehören zu den ersten verarbeiteten Metallen der Kupfersteinzeit (ca. 5.000 v. Chr.). Die Römer setzten Blei im großen Stil für Wasserleitungen und Dächer ein. Zinkblech verbreitete sich ab dem frühen 19. Jahrhundert rasant als Korrosionsschutz an Dächern, während Aluminium erst ab ca. 1900 industriell bedeutsam wurde."
+      historie: "Kupfer und Blei gehören zu den ersten verarbeiteten Metallen der Kupfersteinzeit (ca. 5000 v. Chr.). Die Römer setzten Blei im großen Stil für Wasserleitungen und Dächer ein. Zinkblech verbreitete sich ab dem frühen 19. Jahrhundert rasant als Korrosionsschutz an Dächern, während Aluminium erst ab ca. 1900 industriell bedeutsam wurde."
     }
   },
   aluminium: {
@@ -360,7 +360,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       rohstoffe: "Ausgangsstoff ist primäres Bauxit-Erz. Die Hauptelemente werden im Tagebau vor allem in tropischen Regionen (z. B. Guinea, Australien, Brasilien) gewonnen.",
       herstellung: "Bauxit wird im Bayer-Verfahren zu Aluminiumoxid aufgeschlossen. Die anschließende Schmelzflusselektrolyse (Hall-Héroult-Prozess) erzeugt flüssiges Primäraluminium. Durch Strangpressen entstehen komplexe Fenster- und Tragprofile.",
       eigenschaften: {
-        technisch: "Geringe Dichte (~2700 kg/m³). E-Modul mit ~70.000 MPa relativ niedrig (1/3 von Stahl). Zugfestigkeiten von legiertem Konstruktionsaluminium liegen zwischen 150 und 350 MPa. Schmelzpunkt bei 660 °C.",
+        technisch: "Geringe Dichte (~2700 kg/m³). E-Modul mit ~70 000 MPa relativ niedrig (1/3 von Stahl). Zugfestigkeiten von legiertem Konstruktionsaluminium liegen zwischen 150 und 350 MPa. Schmelzpunkt bei 660 °C.",
         oekologisch: "Äußerst energieintensive Primärherstellung (hoher Stromverbrauch, ~15-20 kg CO₂-Äq/kg). Der ökologische Fußabdruck verbessert sich jedoch dramatisch bei der Verwendung von Sekundäraluminium (Recycling spart 95% der Energie)."
       },
       anwendungen: "Tragende und nichttragende Profilkonstruktionen für Glasfassaden (Pfosten-Riegel), Fensterrahmen, Dacheindeckungen (Kantbleche, Stehfalz), Solarträger-Strukturen und dekorative Eloxalanbauteile.",
@@ -380,7 +380,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       rohstoffe: "Kupferhaltige Sulfiderze (Kupferkies, Buntkupfererz) aus dem Untertage- oder Tagebau (z. B. in Chile, Peru). Hoher Anteil an Kupfer-Recyclingschrotten schont die natürlichen Ressourcen.",
       herstellung: "Mechanische Aufbereitung und Flotation des Erzes, gefolgt vom Schmelzen im Schwebeschmelzofen zu Kupferstein. Die elektrolytische Raffination reinigt das Rohmetall auf über 99,9% Reinheit. Auswalzen zu flexiblen Blechen.",
       eigenschaften: {
-        technisch: "Dichte ~8960 kg/m³. Mittlerer E-Modul (~130.000 MPa). Sehr gute thermische und elektrische Leitfähigkeit. Hervorragende Duktilität und Verformbarkeit, auch bei eisigen Temperaturen rissfrei kantbar.",
+        technisch: "Dichte ~8960 kg/m³. Mittlerer E-Modul (~130 000 MPa). Sehr gute thermische und elektrische Leitfähigkeit. Hervorragende Duktilität und Verformbarkeit, auch bei eisigen Temperaturen rissfrei kantbar.",
         oekologisch: "Rohstoffgewinnung und Schmelzprozess belasten d. Umwelt. Kupfer besitzt jedoch eine extrem lange Lebensdauer im Bauwerk (oft >200 Jahre), wodurch sich die graue Energie über die Nutzungszeit vollständig relativiert."
       },
       anwendungen: "Witterungsbeständige Dacheindeckungen, traditionelle und moderne Entwässerungssysteme (Dachrinnen, Fallrohre), witterungsexponierte Fassadenbekleidungen und Rohrleitungssysteme für Haustechnik.",
@@ -390,7 +390,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       recycling: "100% unbegrenzt kreislauffähig. Kupferschrott besitzt einen sehr guten materiellen Marktwert, weshalb Rückbaustoffe sortenrein erfasst und vollständig metallurgisch recycelt werden (Upcycling auf Primärniveau).",
       besonderheiten: "Unbedingt die Fließregel beachten: Kupfer darf niemals oberhalb von unedleren Metallen wie Zink, Titanzink oder verzinktem Stahl verbaut werden, da korrosive Kupferionen im ablaufenden Regenwasser Lochfraß (Kontaktkorrosion) verursachen.",
       innovationen: "Werkseitig vorpatinierte Kupferbleche mit definierten Farbtönen von anfangsanisierter Optik; antimikrobielle Oberflächenlegierungen aus Kupfer für hygienisch sensible Handläufe und Griffe im öffentlichen Raum.",
-      historie: "Kupfer bildete die Grundlage der frühesten Metallzeit (Chalkolithikum ab 5.000 v. Chr.). Die Römer deckten repräsentative Monumentalgewölbe mit Bronze- und Kupferplatten. Seit dem europäischen Mittelalter schmücken edle Kupferdächer mit ihrer schützenden grünen Alterungspatina Kirchtürme und repräsentative Bürgerbauten."
+      historie: "Kupfer bildete die Grundlage der frühesten Metallzeit (Chalkolithikum ab 5000 v. Chr.). Die Römer deckten repräsentative Monumentalgewölbe mit Bronze- und Kupferplatten. Seit dem europäischen Mittelalter schmücken edle Kupferdächer mit ihrer schützenden grünen Alterungspatina Kirchtürme und repräsentative Bürgerbauten."
     }
   },
   baustahl: {
@@ -400,7 +400,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       rohstoffe: "Eisenerz (Magnetit, Hämatit), Kohle/Koks als Reduktionsmittel im Hochofen sowie nennenswerte Mengen aufbereiteter Stahlschrott aus dem Abbruch von Gebäuden und Fahrzeugen.",
       herstellung: "Primärweg: Schmelzen im Hochofen unter Zugabe von Koks zum Roheisen, Entkohlen und Frischen im Sauerstoffkonverter. Sekundärweg: Direktes Schmelzen von Stahlschrott im Elektrolichtbogenofen. Anschließend Warmwalzen zu I-Trägern.",
       eigenschaften: {
-        technisch: "Hohe Streckgrenze (f_y von 235 bis 460 MPa). Sehr hoher elastischer E-Modul (210.000 MPa). Hohe Duktilität (Bruchdehnung >15%), die plastische Verformungsreserven bei Überlast bietet (sprödes Versagen wird verhindert).",
+        technisch: "Hohe Streckgrenze (f_y von 235 bis 460 MPa). Sehr hoher elastischer E-Modul (210 000 MPa). Hohe Duktilität (Bruchdehnung >15%), die plastische Verformungsreserven bei Überlast bietet (sprödes Versagen wird verhindert).",
         oekologisch: "Die Primärroute im Hochofen emittiert erhebliche Mengen Treibhausgase (~1,8-2,2 t CO₂/t). Die sekundäre Elektrostahl-Route erzielt dank des konsequenten Schrott-Recyclings extreme Einsparungen (~75% Reduktion)."
       },
       anwendungen: "Tragende Rahmenkonstruktionen für Hochhäuser, weitgespannte Brückentragwerke, Hallendächer, Bewehrungselemente für Stahlbeton und Spundwände für den anspruchsvollen geotechnischen Tiefbau.",
@@ -420,7 +420,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       rohstoffe: "Eisenbasis kombiniert mit hohem Schrottanteil sowie teuren, strategischen Legierungselementen wie Chrom (mindestens 10,5 %), Nickel, Molybdän und Mangan.",
       herstellung: "Zusammenschmelzen der Rohstoffe im Elektrolichtbogenofen. Präzises Einstellen der Legierungszusammensetzung durch Vakuumentgasung. Warm- oder Kaltwalzen zu extrem glatten Blechen, Profilen oder Gewindestangen.",
       eigenschaften: {
-        technisch: "Zugfestigkeiten von 500 bis 800 MPa, hoher E-Modul (~200.000 MPa). Schlechte Wärmeleitfähigkeit im Vergleich zu Baustahl. Ausgeprägte Zähigkeit und sehr gute Festigkeitswerte auch bei extremen Tieftemperaturen.",
+        technisch: "Zugfestigkeiten von 500 bis 800 MPa, hoher E-Modul (~200 000 MPa). Schlechte Wärmeleitfähigkeit im Vergleich zu Baustahl. Ausgeprägte Zähigkeit und sehr gute Festigkeitswerte auch bei extremen Tieftemperaturen.",
         oekologisch: "Hoher Erstellungsaufwand und Legierungsanteil erhöhen die graue Herstellungsenergie. Edelstahl gleicht dies jedoch durch seine extreme Lebensdauer, völlige Wartungsfreiheit und den Verzicht auf umweltschädliche Korrosionsschutzanstriche aus."
       },
       anwendungen: "Mechanische Befestigungsmittel (Schrauben, Dübel, Anker), Sicht- und Schutzfassaden im architektonischen Premiumsegment, Treppengeländer, Schwimmbadtechnik und Konstruktionen in chemisch aggressiven Medien.",
@@ -440,7 +440,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       rohstoffe: "Primäre Zinkerze (Zinkblende, Galmei) aus mineralischen Abbaugebieten sowie Sekundärzink aus d. industriellen Schrottkreislauf. Für Baubahnen wird Kleinstmengen an Titan und Kupfer hinzulegiert.",
       herstellung: "Röstprozess des Erzes zu Zinkoxid, gefolgt von der hydrometallurgischen Gewinnung mittels Zinkelektrolyse auf über 99,99% Reinheit. Zulegieren von Titan (~0,1%) und Kupfer zur Steigerung der Kriechfestigkeit; anschließendes Auswalzen.",
       eigenschaften: {
-        technisch: "Dichte ~7140 kg/m³. Mittlerer E-Modul (~100.000 MPa). Schmelzpunkt bei 420 °C relativ niedrig. Hoher Wärmeausdehnungskoeffizient. Durch das Zulegieren von Titan wird das temperaturbedingte Fließen (Kriechen) unter Last gehemmt.",
+        technisch: "Dichte ~7140 kg/m³. Mittlerer E-Modul (~100 000 MPa). Schmelzpunkt bei 420 °C relativ niedrig. Hoher Wärmeausdehnungskoeffizient. Durch das Zulegieren von Titan wird das temperaturbedingte Fließen (Kriechen) unter Last gehemmt.",
         oekologisch: "Geringer Erstellungsaufwand beim Schmelzen im Vergleich zu Aluminium. Hohe Recyclingquote im Dachbereich dämpft den primären Carbon Footprint. Titan- und Kupfereinschlüsse sind in den geringen Konzentrationen ökologisch unbedenklich."
       },
       anwendungen: "Fassaden- und Stehfalzdacheindeckungen im gehobenen Wohnungs- und Verwaltungsbau. Traditionelle Dachentwässerungen (Dachrinnen, Abfallrohre) sowie als Schutzüberzug (Feuerverzinken) für tragenden Baustahl.",
@@ -460,7 +460,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       rohstoffe: "Bleiglanz (Bleisulfid) aus Bergwerken. Blei besitzt heute eine der global höchsten Recyclingraten aller Gebrauchsmetalle, weshalb fast das gesamte Baublei aus wiederaufbereiteten Altblei-Quellen (Akkumulatoren, Rohre) stammt.",
       herstellung: "Röstreaktions- oder Reduktionsverfahren im Schachtofen zur Rohbleigewinnung. Eine anschließende Raffination entfernt Verunreinigungen. Biegsames Vergusswalzen zu extrem dünnen, schweren Walzbleibahnen.",
       eigenschaften: {
-        technisch: "Sehr hohe Rohdichte (~11.340 kg/m³). Sehr geringe Festigkeit und minimaler E-Modul (~16.000 MPa). Extrem weich, zäh und plastisch verformbar. Schmelzpunkt liegt bei kühlen 327 °C. Hervorragende Absorptionsfähigkeit von Gamma- und Röntgenstrahlen.",
+        technisch: "Sehr hohe Rohdichte (~11 340 kg/m³). Sehr geringe Festigkeit und minimaler E-Modul (~16 000 MPa). Extrem weich, zäh und plastisch verformbar. Schmelzpunkt liegt bei kühlen 327 °C. Hervorragende Absorptionsfähigkeit von Gamma- und Röntgenstrahlen.",
         oekologisch: "Blei ist ein toxisches Schwermetall. Ein direkter Hautkontakt oder d. Freisetzung in d. Umwelt muss akribisch vermieden werden. Ökologisch vorteilhaft ist der extrem niedrige Schmelzpunkt (~327 °C), der hocheffizientes Sekundärrecycling erlaubt."
       },
       anwendungen: "Formbare Anschluss- und Abdichtungsschalungen an Steildächern (z.B. Kamineinfassungen, Kehlbleche), Strahlenschutzwände in medizinischen Röntgendiagnosen und hochdichte Schalldämmelemente im Akustikbau.",
@@ -470,7 +470,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       recycling: "Nahezu 100% im geschlossenen Werkstoffkreislauf rückführbar. Gebrauchtblei wird in Bleihütten ohne Qualitätsverlust mit geringstem energetischem Aufwand eingeschmolzen und fließt direkt zurück in den Produktionskreislauf.",
       besonderheiten: "Aufgrund des Verdachts der Bleitoxizität ist der direkte Hautkontakt bei der Montage durch das Tragen von Schutzhandschuhen zu vermeiden. Bauschollen niemals sägen oder schleifen (Einatmen von Bleistaub verhindern)!",
       innovationen: "Entwicklung von bleifreien Dach-Anschlussbändern auf Basis polymerer Streckmetalle; bleischonende Zinn-Legierungsbeschichtungen zur Verhinderung des minimalen bleihaltigen Abwassers bei historisch denkmalgeschützten Dächern.",
-      historie: "Seit ca. 4.000 v. Chr. verhüttet, nutzten die Römer Blei für Zisternenauskleidungen und Röhrenleitungen. Im gotischen Epochenzeitalter des mittelalterlichen Sakralbaus dienten elastische Bleiprofile als Halterungen für kunstvolle Buntglasfenster, während Walzblei zur rissfreien Dichtung exponierter Kehlen und Kamineinflansche diente."
+      historie: "Seit ca. 4000 v. Chr. verhüttet, nutzten die Römer Blei für Zisternenauskleidungen und Röhrenleitungen. Im gotischen Epochenzeitalter des mittelalterlichen Sakralbaus dienten elastische Bleiprofile als Halterungen für kunstvolle Buntglasfenster, während Walzblei zur rissfreien Dichtung exponierter Kehlen und Kamineinflansche diente."
     }
   },
   titan: {
@@ -480,7 +480,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       rohstoffe: "Ausgangsmineralien sind primär Rutil (Titan(IV)-oxid) oder Ilmenit. Das Metall ist in der Erdkruste reichlich vorhanden, der chemische Extraktionsprozess ist jedoch extrem komplex.",
       herstellung: "Gewinnung über das aufwendige Kroll-Verfahren: Reduktion von Titantetrachlorid mit flüssigem Magnesium unter Argon-Schutzgas zu Titanschwamm. Anschließendes Vakuum-Umschmelzen und Walzen zu hochwertigsten Blechplatinen.",
       eigenschaften: {
-        technisch: "Geringe Dichte (~4500 kg/m³ - etwa halb so schwer wie Stahl). Extrem hohe Zugfestigkeiten (bis zu 1000 MPa bei Legierungen). Mittlerer E-Modul (~105.000 MPa). Extrem hoher Schmelzpunkt (1668 °C). Seidig-glänzende, edle Optik.",
+        technisch: "Geringe Dichte (~4500 kg/m³ - etwa halb so schwer wie Stahl). Extrem hohe Zugfestigkeiten (bis zu 1000 MPa bei Legierungen). Mittlerer E-Modul (~105 000 MPa). Extrem hoher Schmelzpunkt (1668 °C). Seidig-glänzende, edle Optik.",
         oekologisch: "Der energie- und apparatetechnische Aufwand der Herstellung ist der absolut höchste unter allen Baumaterialien (immense graue Energie). Dieser wird im Bauwesen nur durch d. unbegrenzte Lebensdauer ohne jeglichen Schutzanstrich kompensiert."
       },
       anwendungen: "Architektonisch anspruchsvolle Premiumfassaden und Dacheindeckungen im Prestigebau (z. B. Guggenheim-Museum Bilbao), Tragelemene in extrem salzhaltiger Meeresluft sowie im hoch-korrosiven chemischen Anlagenbau.",
@@ -550,7 +550,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       recycling: "Ein vorbildlicher Kreislaufwerkstoff: Altasphalt kann zu nahezu 100 % abgefräst, im Mischwerk aufbereitet und als Asphaltgranulat dem neuen Frischasphalt im Heißbetrieb zu Dosierquoten von bis zu 60-80 % zugeschlagen werden.",
       besonderheiten: "Einbau-Ausschlaggebend: Luft- und Untergrundtemperaturgrenzen während des Asphalteinbaus penibel einhalten! Walzverdichtung ist nur bei Temperaturen des Mischgutes oberhalb von 100 °C tragfähig machbar; kalter Asphalt lässt sich nicht verdichten.",
       innovationen: "Niedrigtemperaturasphalt (NTA) unter Einsatz von Wachsen, um den Einbau bei nur ca. 110 °C zu ermöglichen (spart Energie und verringert Dämpfe). Gekoppelte Photovoltaik-Straßenbeläge sowie selbstkühlender Asphalt durch Titanoxid-Pigmente.",
-      historie: "Natürlicher Asphalt (Erdpech) diente im antiken Mesopotamien vor ca. 4.000 Jahren als Bindemittel für Festungsmauern und Flussabdichtungen. Der moderne Straßenasphalt entwickelte sich im frühen 19. Jahrhundert im Zuge des Makadam-Verfahrens, bevor die industrielle Gewinnung von Bitumen aus Erdöl ab 1900 die schadstoffbelasteten Kohlenteere ablöste."
+      historie: "Natürlicher Asphalt (Erdpech) diente im antiken Mesopotamien vor ca. 4000 Jahren als Bindemittel für Festungsmauern und Flussabdichtungen. Der moderne Straßenasphalt entwickelte sich im frühen 19. Jahrhundert im Zuge des Makadam-Verfahrens, bevor die industrielle Gewinnung von Bitumen aus Erdöl ab 1900 die schadstoffbelasteten Kohlenteere ablöste."
     }
   },
   kunststoffe: {
@@ -580,8 +580,8 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       rohstoffe: "Hochleistungsfasern (Carbonfasern gewonnen aus Polyacrylnitril-Pyrolyse oder Glasfasern aus dem Glasschmelzprozess) eingebettet in eine erhärtende polymere Duroplast-Matrix (Epoxidharz, Polyesterharz, Vinylesterharz).",
       herstellung: "Pultrusion (Strangziehverfahren) zur kontinuierlichen Fertigung hoch-zugfester Stäbe und Lamellen. Filament-Winding für Hohlkörper. Schichtlaminieren im Vakuum-Infusionsverfahren für komplizierte Freiformen und Plattensegmente.",
       eigenschaften: {
-        technisch: "Enorm hohe Zugfestigkeiten (Carbonfaser-Zuggurtfestigkeit f_fk > 2.500-3.000 MPa - etwa das 6-fache von Baustahl). Extrem leichtgewichtig im Vergleich (Dichte ca. 1.500-1.800 kg/m³). Korrosionsfrei. E-Modul bei Carbon sehr hoch, bei Glasfaser geringer.",
-        oekologisch: "Das Herstellen von Carbonfasern durch Hochtemperaturpyrolyse (bis 1.500 °C) besitzt einen extrem hohen Primärenergiebedarf und CO2-Ausstoß (ca. 15-20 kg CO2-Äq./kg). Die Langlebigkeit und der Wegfall von Sanierungen im Brückenbau relativieren diesen Aspekt."
+        technisch: "Enorm hohe Zugfestigkeiten (Carbonfaser-Zuggurtfestigkeit f_fk > 2500-3.000 MPa - etwa das 6-fache von Baustahl). Extrem leichtgewichtig im Vergleich (Dichte ca. 1500-1.800 kg/m³). Korrosionsfrei. E-Modul bei Carbon sehr hoch, bei Glasfaser geringer.",
+        oekologisch: "Das Herstellen von Carbonfasern durch Hochtemperaturpyrolyse (bis 1500 °C) besitzt einen extrem hohen Primärenergiebedarf und CO2-Ausstoß (ca. 15-20 kg CO2-Äq./kg). Die Langlebigkeit und der Wegfall von Sanierungen im Brückenbau relativieren diesen Aspekt."
       },
       anwendungen: "Nachträgliche Verstärkung von Betonbauteilen (Aufkleben von CFK-Lamellen auf Brückenträger), korrosionsfreie GFK-Bewehrungsstäbe im Tunnelbau und in Kläranlagen, ultra-filigrane Textilbetonfassaden, weitgespannte Fußgängerbrücken.",
       produkte: "CFK-Lamellen (Carbonfaser-Kunststoff-Streifen zur Rissüberbrückung), GFK-Bewehrungsstäbe (Schöck Combar), Glasgittermatten zur Betonputzarmierung, Faserverbundrohre für extreme Innendrücke.",
@@ -618,9 +618,9 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
     subtitle: "Hydraulische Bindemittel nach DIN EN 197-1 (CEM I bis CEM V) und DIN EN 197-5 (CEM II/C-M, CEM VI)",
     sections: {
       rohstoffe: "Ausgangsstoffe sind Kalkstein (Calciumcarbonat, CaCO₃) und tonige Komponenten (Mergel, Ton mit SiO₂, Al₂O₃, Fe₂O₃), aufbereitet im Rohmehl-Mischungsverhältnis (Kalkstandard KSt ca. 90-105). Als Zumahlstoffe dienen Hüttensand (granulierte Hochofenschlacke), Steinkohlenflugasche, calciniertes Schiefermehl, Puzzolane und hochreines Kalksteinmehl sowie Calciumsulfat (Gips/Anhydrit als Erstarrungsregler).",
-      herstellung: "Gewinnung im Tagebau, Vorzerkleinerung, Homogenisierung und Trocknung zum Rohmehl. Brennen im Drehrohrofen mit Zyklonvorwärmer und Calcinator bei ca. 1.450 °C (Sinterung). Dabei laufen Entsäuerung (Kalzination bei ca. 900 °C) und Klinkerbildung zu Alit (C₃S), Belit (C₂S), Aluminat (C₃A) und Ferrit (C₄AF) ab. Rasche Kühlung und Feinmahlung des Klinkers mit Gips und Zumahlstoffen in Kugelmühlen oder Vertikal-Wälzmühlen.",
+      herstellung: "Gewinnung im Tagebau, Vorzerkleinerung, Homogenisierung und Trocknung zum Rohmehl. Brennen im Drehrohrofen mit Zyklonvorwärmer und Calcinator bei ca. 1450 °C (Sinterung). Dabei laufen Entsäuerung (Kalzination bei ca. 900 °C) und Klinkerbildung zu Alit (C₃S), Belit (C₂S), Aluminat (C₃A) und Ferrit (C₄AF) ab. Rasche Kühlung und Feinmahlung des Klinkers mit Gips und Zumahlstoffen in Kugelmühlen oder Vertikal-Wälzmühlen.",
       eigenschaften: {
-        technisch: "Reindichte von Portlandzement ca. 3,10-3,20 g/cm³, Schüttdichte ca. 0,9-1,2 kg/dm³. Spezifische Oberfläche nach Blaine typisch 3.000-5.500 cm²/g. Normdruckfestigkeiten nach 28 Tagen (Klassen 32.5, 42.5, 52.5 jeweils N oder R). Erstarrungsbeginn nach Norm ≥ 45 bis ≥ 75 Minuten; Raumvolumenbeständigkeit nach Le Chatelier ≤ 10 mm.",
+        technisch: "Reindichte von Portlandzement ca. 3,10-3,20 g/cm³, Schüttdichte ca. 0,9-1,2 kg/dm³. Spezifische Oberfläche nach Blaine typisch 3000-5.500 cm²/g. Normdruckfestigkeiten nach 28 Tagen (Klassen 32.5, 42.5, 52.5 jeweils N oder R). Erstarrungsbeginn nach Norm ≥ 45 bis ≥ 75 Minuten; Raumvolumenbeständigkeit nach Le Chatelier ≤ 10 mm.",
         oekologisch: "Konventioneller CEM I Klinker verursacht ca. 800-850 kg CO₂/t Klinker (davon ca. 60-65% rohstoffbedingt durch Kalkstein-Entsäuerung CaCO₃ → CaO + CO₂). Durch gezielte Klinkersubstitution (z.B. CEM II/B-M, CEM III/A, CEM II/C-M) und calcinierte Tone (LC3) kann der CO₂-Ausstoß auf unter 450 kg CO₂/t Zement gesenkt werden."
       },
       anwendungen: "Universelles Bindemittel für Ortbeton, Transportbeton, Betonfertigteile, Spannbeton, Spritzbeton, Mörtel, Estriche, Injektionsgüter im Spezialtiefbau sowie Bodenstabilisierungen.",
@@ -640,7 +640,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       rohstoffe: "Gesteinskörnungen (Kies, Sand, Splitt nach DIN EN 12620, Sieblinien A/B/C), Zement als hydraulisches Bindemittel (DIN EN 197-1), Zugabewasser nach DIN EN 1008, Betonzusatzmittel (Fließmittel, Luftporenbildner, Verzögerer nach DIN EN 934-2) sowie Betonzusatzstoffe (Flugasche Typ II, Silikastaub, Hüttensandmehl, Kalksteinmehl Typ I).",
       herstellung: "Rechnergestützte Mischungsberechnung nach der Stoffraumrechnung (1 m³ verdichteter Frischbeton = 1000 dm³ Stoffraumvolumen). Dosierung im Betonwerk, Transport im Fahrmischer, Förderung per Betonpumpe, fachgerechtes schichtweises Verdichten mit Innen- oder Schalungsrüttlern sowie sofortige Nachbehandlung gegen vorzeitiges Austrocknen.",
       eigenschaften: {
-        technisch: "Trockenrohdichte 2.000 bis 2.600 kg/m³ (Standard ~2.400 kg/m³). Druckfestigkeitsklassen von C12/15 bis C100/115. Zugfestigkeit beträgt ca. 10% der Druckfestigkeit. Elastizitätsmodul E_cm von 27.000 bis 44.000 MPa. Wärmedehnungskoeffizient α_T ≈ 10·10⁻⁶ K⁻¹ (exakt abgestimmt auf Betonstahl!).",
+        technisch: "Trockenrohdichte 2000 bis 2600 kg/m³ (Standard ~2400 kg/m³). Druckfestigkeitsklassen von C12/15 bis C100/115. Zugfestigkeit beträgt ca. 10% der Druckfestigkeit. Elastizitätsmodul E_cm von 27 000 bis 44 000 MPa. Wärmedehnungskoeffizient α_T ≈ 10·10⁻⁶ K⁻¹ (exakt abgestimmt auf Betonstahl!).",
         oekologisch: "Treibhausgaspotenzial konventioneller Betone ca. 180-260 kg CO₂-Äq./m³, durch klinkereffiziente Zemente (CEM II/C, CEM III) und optimierte Kornpackung absenkbar auf unter 100 kg CO₂-Äq./m³. Geringer Primärenergieaufwand bei Gesteinskörnungen; regionale Verfügbarkeit durch kurze Transportwege (< 30 km)."
       },
       anwendungen: "Tragende Bauteile im Hoch-, Ingenieur-, Verkehrs- und Wasserbau: Fundamente, Bodenplatten, Stützen, Wände, Decken, Brückenpfeiler und Überbauten, Tunnelinnenschalen, Klärbecken und Industrieböden.",

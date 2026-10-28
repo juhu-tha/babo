@@ -26,7 +26,7 @@ export const ZULIEFERUNGEN: readonly Zulieferung[] = [
   { nr: 'Z30–Z33', gegenstand: 'Normfragen neue Module (Keramik, Korrosionsschutz, EC3, DIN 4108-2)', stand: 'Normgemäß umgesetzt, Rest in der Fehlliste', status: 'erledigt', statusText: 'erledigt (Rest Fehlliste)', prs: [189] },
   { nr: 'Z37/Z42', gegenstand: 'Laborpilot Versuchs-Handouts', stand: 'Pilot WS 26/27; Feedbackbögen liegen vor', status: 'in_arbeit', statusText: 'im Semester', dateien: ['docs/entwuerfe/laborpilot-feedback.md'] },
   { nr: 'Z43', gegenstand: 'Speicherort Fragebogen', stand: 'Datei im Cloud-Run-Volume', status: 'erledigt', statusText: 'entschieden, umgesetzt', prs: [183] },
-  { nr: 'Z48/Z53', gegenstand: 'Normtextfragen; 3 000-Wörter-Schwelle', stand: 'Z53: teilen + Kurzfassung', status: 'in_arbeit' },
+  { nr: 'Z48/Z53', gegenstand: 'Normtextfragen; 3000-Wörter-Schwelle', stand: 'Z53: teilen + Kurzfassung', status: 'in_arbeit' },
   { nr: 'Z49', gegenstand: 'Repository öffentlich', stand: 'Ja, nach Z51 und THA-Klärung', status: 'wartet' },
   { nr: 'Z50/Z56', gegenstand: 'Weg B: Cloud Run, Frankfurt; Anleitung liegt vor. Entscheidung 27.10. (abends): erst THA-IT fragen, Cloud Run bleibt Rückfalloption; Anfrage-Entwurf docs/entwuerfe/anfrage-tha-it-hosting.md', stand: 'Weg B: Cloud Run, Frankfurt; Anleitung liegt vor. 27.10.: Firebase Hosting vor Cloud Run statt Load Balancer wird geprüft', status: 'wartet', statusText: 'wartet auf Weiterleitung der Anfrage an die THA-IT', prs: [183], dateien: ['docs/entwuerfe/anfrage-tha-it-hosting.md', 'docs/betrieb-cloud-run.md'] },
   { nr: 'Z51', gegenstand: 'Neues Administrator-Kennwort', stand: 'Später; als Secret im Secret Manager', status: 'offen' },

@@ -4,7 +4,7 @@
     "marshallStabilitätUndFließwert": "Marshall-Stabilität und -Fließwert (DIN EN 12697-34)",
     "mischprobenWerdenMitDem": "Mischproben werden mit dem Standard-Marshall-Hammer typischerweise mit 2x50 Schlägen im Zylinder verdichtet. Anschließend wird der Probekörper bei 60 °C (kritische Sommertemperatur) bis zum Bruch beansprucht. Die Maximalkraft ist die **Marshall-Stabilität**, die Verformung der **Fließwert (in mm)**. In Deutschland dienen Marshall-Probekörper vor allem zur Bestimmung von Raumdichte und Hohlraumgehalt.",
     "spurbildungsversuchWheelTrackingDin": "Spurbildungsversuch / Wheel-Tracking (DIN EN 12697-22)",
-    "simuliertDieSpurinnenbildungUnter": "Simuliert die Spurinnenbildung unter schweren Radlasten. Ein Prüfrad überrollt eine Asphaltplatte (DIN EN 12697-22, z. B. 20.000 Überrollungen bei 50 °C oder 60 °C). Die gemessene Profiltiefe (Spurrinne in %) ist das Maß für die hochtemperierte Standfestigkeit.",
+    "simuliertDieSpurinnenbildungUnter": "Simuliert die Spurinnenbildung unter schweren Radlasten. Ein Prüfrad überrollt eine Asphaltplatte (DIN EN 12697-22, z. B. 20 000 Überrollungen bei 50 °C oder 60 °C). Die gemessene Profiltiefe (Spurrinne in %) ist das Maß für die hochtemperierte Standfestigkeit.",
     "interaktiverHohlraumrechnerRiceMaximaldi": " Interaktiver Hohlraumrechner & Rice-Maximaldichte",
     "studentischeÜbungsrechnungBestimmenSie": "Studentische Übungsrechnung: Bestimmen Sie den Hohlraumgehalt eines Asphaltprobekörpers. Zu viel Hohlraum fördert Alterung und Wassereintritt, zu wenig führt zu Spurrinnen und Bindemittelanreicherung an der Oberfläche (Grenzwerte im Rechner: Lehrwerte).",
     "bitumengehaltB": "Bitumengehalt ($B$):",

@@ -219,13 +219,13 @@ export const LECTURE_POLLS: Record<string, PollQuestion[]> = {
       category: 'Schätzfrage',
       question: 'Wie hoch ist die typische Trockenrohdichte von unbewehrtem Normalbeton (ohne Stahl)?',
       options: [
-        'ca. 1.200 kg/m³ (schwimmt fast auf Wasser)',
-        'ca. 1.800 kg/m³',
-        'ca. 2.200 bis 2.400 kg/m³ (2,2–2,4 t/m³)',
-        'ca. 3.500 kg/m³'
+        'ca. 1200 kg/m³ (schwimmt fast auf Wasser)',
+        'ca. 1800 kg/m³',
+        'ca. 2200 bis 2400 kg/m³ (2,2–2,4 t/m³)',
+        'ca. 3500 kg/m³'
       ],
       correctIndex: 2,
-      didaktik: 'Normalbeton wiegt trocken ca. 2.300–2.400 kg/m³. Rechnet man Stahlbewehrung hinzu, setzt die Norm DIN EN 1991-1-1 standardmäßig 2.500 kg/m³ (25 kN/m³) als Eigenlast an. Leichtbeton liegt unter 2.000 kg/m³, Schwerbeton über 2.600 kg/m³.',
+      didaktik: 'Normalbeton wiegt trocken ca. 2300–2400 kg/m³. Rechnet man Stahlbewehrung hinzu, setzt die Norm DIN EN 1991-1-1 standardmäßig 2500 kg/m³ (25 kN/m³) als Eigenlast an. Leichtbeton liegt unter 2000 kg/m³, Schwerbeton über 2600 kg/m³.',
       norm: 'DIN EN 206 / DIN EN 1991-1-1',
       initialVotes: [0, 0, 0, 0]
     },
@@ -249,7 +249,7 @@ export const LECTURE_POLLS: Record<string, PollQuestion[]> = {
       id: 'bk_q3',
       lectureId: 'baustoffkunde',
       category: 'Schätzfrage',
-      question: 'Um welchen Faktor ist das Elastizitätsmodul (Steifigkeit) von Baustahl (ca. 210.000 N/mm²) größer als das von Normalbeton C25/30 (ca. 31.000 N/mm²)?',
+      question: 'Um welchen Faktor ist das Elastizitätsmodul (Steifigkeit) von Baustahl (ca. 210 000 N/mm²) größer als das von Normalbeton C25/30 (ca. 31 000 N/mm²)?',
       options: [
         'Beide Werkstoffe besitzen nahezu das gleiche E-Modul (Faktor 1)',
         'Stahl ist ca. 2-mal steifer als Beton',

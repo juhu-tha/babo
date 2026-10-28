@@ -32,7 +32,7 @@
     "beiWalzprofilenIstW": "Bei Walzprofilen ist W_pl,y etwa 12 bis 15 % größer als W_el,y; diese plastische Reserve darf nur in den Klassen 1 und 2 genutzt werden.",
     "realeDruckstäbeSindNie": "Reale Druckstäbe sind nie ideal gerade und enthalten Walzeigenspannungen. Sie versagen deshalb unterhalb der idealen Verzweigungslast N_cr. Der Eurocode erfasst das mit dem Abminderungsbeiwert χ, der aus dem bezogenen Schlankheitsgrad und einer von fünf Knicklinien folgt:",
     "derImperfektionsbeiwertTab6": "Der Imperfektionsbeiwert α (Tab. 6.1) bildet ab, wie empfindlich ein Querschnitt auf Vorkrümmung und Eigenspannungen reagiert; die Zuordnung zur Knicklinie regelt Tab. 6.2. Ist λ̄ ≤ 0,2 oder N_Ed/N_cr ≤ 0,04, darf der Biegeknicknachweis entfallen (6.3.1.2(4)).",
-    "für40MmT": "Für 40 mm < t ≤ 80 mm sind die Werte abgemindert (z. B. S235: f_y = 215 N/mm²; S355: f_y = 335 N/mm²). E = 210 000 N/mm²; γ_M0 = 1,0, γ_M1 = 1,1, γ_M2 = 1,25 (NA DE).",
+    "für40MmT": "Für 40 mm < t ≤ 80 mm sind die Werte abgemindert (z. B. S235: f_y = 215 N/mm²; S355: f_y = 335 N/mm²). E = 210 000 N/mm²; γ_M0 = 1,0, γ_M1 = 1,1, γ_M2 = 1,25 (NA DE).",
     "stegBeidseitigGestützt": "Steg (beidseitig gestützt)",
     "stegBeidseitigGestützt2": "Steg (beidseitig gestützt)",
     "flanschEinseitigGestützt": "Flansch (einseitig gestützt)",
@@ -99,7 +99,7 @@
     "unterReinemDruckWäre": "Unter reinem Druck wäre derselbe Steg (c/t = 35,0) in S235 Klasse 2, in S355 dagegen Klasse 4 (42ε = 34,2): Die Klasse hängt von Beanspruchung und Stahlgüte ab.",
     "dinEn199313": "DIN EN 1993-1-1, 5.5 und 6.2.5",
     "beispiel3BiegeknickenEiner": "Beispiel 3: Biegeknicken einer Stütze HEB 200, S235, L_cr = 4,0 m",
-    "derQuerschnittswiderstandNC": "Der Querschnittswiderstand N_c,Rd = 1 835 kN wird durch das Knicken um die schwache Achse auf 58 % abgemindert.",
+    "derQuerschnittswiderstandNC": "Der Querschnittswiderstand N_c,Rd = 1835 kN wird durch das Knicken um die schwache Achse auf 58 % abgemindert.",
     "dinEn199314": "DIN EN 1993-1-1, 6.3.1 mit NA (DE)",
     "neueEurocodeGenerationErschienen": "Neue Eurocode-Generation erschienen",
     "zumModulAusblickNeue": "Zum Modul Ausblick: neue Normengeneration",
@@ -176,7 +176,7 @@
       },
       {
         "titel": "Vergleich y-Achse und Nachweis",
-        "erklaerung": "λ̄_y = 0,499 und χ_y = 0,885 ergeben 1 476 kN; maßgebend ist z. Mit N_Ed = 800 kN:",
+        "erklaerung": "λ̄_y = 0,499 und χ_y = 0,885 ergeben 1476 kN; maßgebend ist z. Mit N_Ed = 800 kN:",
         "formel": "\\frac{N_{Ed}}{N_{b,Rd}} = \\frac{800}{1\\,063} = 0{,}75 \\le 1{,}0"
       }
     ],

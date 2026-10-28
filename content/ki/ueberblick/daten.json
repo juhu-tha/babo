@@ -62,7 +62,7 @@
             "category": "LPH 8 / Bauoberleitung & Ausführung",
             "scenario": "Termin- und Ressourcenoptimierung getakteter Ortbetonierabschnitte bei beengten innerstädtischen Baustellenverhältnissen.",
             "input": "4D-BIM-Bauzeitenplan, betontechnologische Mindestausschalfristen (Reifegradberechnung, z. B. gewogene Reife nach NEN 5970), Wetterdaten und Krankapazitäten.",
-            "process": "Monte-Carlo-Simulation von 10.000 Bauablaufszenarien zur stochastischen Ermittlung von Pufferzeitverbrauch und logistischen Engpässen.",
+            "process": "Monte-Carlo-Simulation von 10 000 Bauablaufszenarien zur stochastischen Ermittlung von Pufferzeitverbrauch und logistischen Engpässen.",
             "output": "Dynamisch angepasster Taktterminplan mit probabilistischer Eintrittswahrscheinlichkeit für Meilensteintermine.",
             "benefit": "Minimierung von Bauzeitverzug und vertraglichen Pönalen nach VOB/B § 5; Vermeidung von Frischbeton-Verzögerungsschäden.",
             "normRef": "VOB/B § 5 (Ausführungsfristen) & VDI 2552 (Building Information Modeling)"
@@ -125,7 +125,7 @@
         "analogy": "Multivariate Inferenzmodelle & Statistische Versuchsfeldkalibrierung",
         "summary": "Mathematische Verfahren zur Extraktion verallgemeinerungsfähiger Gesetzmäßigkeiten aus empirischen Versuchs- und Messdaten ohne explizite analytische Modellierung.",
         "simpleExpl": "Maschinelles Lernen approximiert die unbekannte multivariate Übertragungsfunktion zwischen Materialzusammensetzungen und mechanischen Kennwerten. Anhand historischer Labordaten minimiert das Modell eine quadratische oder logarithmische Verlustfunktion, wodurch hochkomplexe nichtlineare Zusammenhänge (z. B. Hydratationskinetik von Klinkerersatzstoffen) exakt abgebildet werden.",
-        "constructionExample": "Aus 5.000 protokollierten Beton-Druckprüfungen prognostiziert das Modell die 28-Tage-Druckfestigkeit einer neuen Mischung.",
+        "constructionExample": "Aus 5000 protokollierten Beton-Druckprüfungen prognostiziert das Modell die 28-Tage-Druckfestigkeit einer neuen Mischung.",
         "technicalMechanism": [
           {
             "step": "01",
@@ -160,7 +160,7 @@
             "category": "Baustoffprüfung & Betontechnologie (DIN EN 206)",
             "scenario": "Echtzeit-Konformitätsprüfung im Transportbetonwerk zur Minimierung von Schalungsstandzeiten im Hochbau.",
             "input": "Zusammensetzungsvektor (CEM-Typ, Klinkergehalt, Hüttensandanteil, PCE-Fließmitteldosierung, (w/z)_eq) und 24h-Frühdruckfestigkeit f_c,1d.",
-            "process": "Gradient-Boosted Decision Trees (XGBoost) ermitteln die nichtlineare Kinetik der Festigkeitsentwicklung auf Basis von 12.000 Laborversuchsreihen.",
+            "process": "Gradient-Boosted Decision Trees (XGBoost) ermitteln die nichtlineare Kinetik der Festigkeitsentwicklung auf Basis von 12 000 Laborversuchsreihen.",
             "output": "Prognostizierte 28-Tage-Druckfestigkeit f_ck,28d mit zweiseitigem 95%-Konfidenzintervall (z. B. 37,8 ± 1,4 N/mm² -> gesicherte Einstufung in C30/37).",
             "benefit": "Sichere Reduktion der Ausschalfristen um bis zu 48 Stunden; unmittelbare Chargenkorrektur vor Einbau im Folgegeschoss.",
             "normRef": "DIN EN 206 / DIN 1045-2 & DIN EN 12390-3"
@@ -524,7 +524,7 @@
             "category": "Bestandssanierung & Erhaltungsmanagement",
             "scenario": "Ursachenermittlung und Materialrecherche bei wiederkehrenden Feuchteschäden in einer Tiefgarage.",
             "input": "Abfrage: \"Welches Injektionsharzsystem und welcher Packerabstand wurden bei der Rissverpressung im Bauabschnitt 2 (Jahr 2017) eingesetzt?\"",
-            "process": "RAG durchsucht 40.000 Seiten gescannter Bautagesberichte, Lieferscheine und ZfP-Prüfprotokolle.",
+            "process": "RAG durchsucht 40 000 Seiten gescannter Bautagesberichte, Lieferscheine und ZfP-Prüfprotokolle.",
             "output": "Exakter Beleg: \"2K-Polyurethanharz MC-Injekt 2300 NV gemäß DIN EN 1504-5, Packerabstand 15 cm im 45°-Winkel, dokumentiert im Abnahmeprotokoll vom 12.06.2017.\"",
             "benefit": "Erhaltung von firmenspezifischem Erfahrungswissen; Vermeidung chemischer Materialunverträglichkeiten bei Nachinjektionen.",
             "normRef": "DIN EN 1504-5 (Instandsetzung von Betonbauwerken - Injektion von Rissen)"
@@ -532,7 +532,7 @@
           {
             "title": "Vertragliche Nachtragsprüfung nach VOB/B & Leistungsbeschreibungsabgleich",
             "category": "Projektsteuerung & Bauvertragsrecht",
-            "scenario": "Prüfung eines Nachtrags über 48.000 € für behaupteten bodenmechanischen Mehraufwand bei Rammkernbohrungen.",
+            "scenario": "Prüfung eines Nachtrags über 48 000 € für behaupteten bodenmechanischen Mehraufwand bei Rammkernbohrungen.",
             "input": "Nachtragsbegründung des Auftragnehmers im Abgleich mit Hauptbauvertrag, Baubeschreibung und Baugrundgutachten.",
             "process": "RAG führt einen semantischen Abgleich mit den Vertragsklauseln durch und identifiziert explizite Vergütungsregelungen.",
             "output": "Nachweisdokumentation: \"Bodenklasse 5 war gemäß Pos. 01.02.0018 der Leistungsbeschreibung ausdrücklich mit dem Einheitspreis abgegolten; die Forderung widerspricht VOB/B § 2 Abs. 1.\"",
@@ -628,7 +628,7 @@
             "scenario": "Metrische Erfassung des Rohbauzustands und Volumenabgleich von Erdbewegungen auf Großbaustellen.",
             "input": "UAV-Befliegung (500 Luftbilder mit RTK-GNSS-Georeferenzierung) + IFC-Ausführungsmodell.",
             "process": "Dense Matching generiert eine dichte 3D-Punktwolke; Algorithmen berechnen Soll-Ist-Abweichungen und Massendifferenzen zur Abrechnung.",
-            "output": "Metrischer Differenzbericht: \"Deckendurchbiegung im Feld 3 beträgt 14 mm (L/430); Aushubvolumen Baugrube: 14.250 m³ (98 % Soll)\".",
+            "output": "Metrischer Differenzbericht: \"Deckendurchbiegung im Feld 3 beträgt 14 mm (L/430); Aushubvolumen Baugrube: 14 250 m³ (98 % Soll)\".",
             "benefit": "Rechtlich belastbare Dokumentation für Abschlagsrechnungen nach VOB/B § 16; lückenlose Beweissicherung vor Folgegewerken.",
             "normRef": "DIN 18202 & VOB/B § 16 (Zahlungen)"
           },
@@ -764,7 +764,7 @@
             "title": "Automatisierte Ökobilanzierung (LCA) und Lebenszyklus-Treibhauspotenzialberechnung",
             "category": "Nachhaltigkeit & Green Building (QNG / DGNB)",
             "scenario": "Erstellung des Treibhauspotenzial-Nachweises (GWP) für ein Bürogebäude im Rahmen der KfW-Förderung.",
-            "input": "IFC-Fachmodell mit Mengenermittlung für 4.800 Bauteilobjekte.",
+            "input": "IFC-Fachmodell mit Mengenermittlung für 4800 Bauteilobjekte.",
             "process": "Agent fragt die ÖKOBAUDAT-API des Bundesministeriums ab, ordnet EPD-Datensätze (Environmental Product Declarations) zu, bilanziert Module A1–A3, B, C und D und testet alternative Klinkerersatz-Zemente (CEM III/A).",
             "output": "Prüffähiger LCA-Nachweisbericht mit Ausweis von kg CO2-Äq./(m² · a) und Nachweis der QNG-Grenzwerteinhaltung.",
             "benefit": "Reduktion der Zertifizierungsdauer von 3 Wochen auf 10 Minuten; sichere Erlangung zinsgünstiger Förderkredite.",

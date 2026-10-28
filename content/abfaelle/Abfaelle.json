@@ -189,24 +189,24 @@
     "Abfaelle.schritte": [
       {
         "titel": "Analysenwerte",
-        "erklaerung": "Eluat: Sulfat 1 450 mg/l, Chlorid 120 mg/l, Blei 0,08 mg/l; Feststoff: TOC 0,6 M.-%, Glühverlust 2,4 M.-%.",
+        "erklaerung": "Eluat: Sulfat 1450 mg/l, Chlorid 120 mg/l, Blei 0,08 mg/l; Feststoff: TOC 0,6 M.-%, Glühverlust 2,4 M.-%.",
         "formel": "\\text{SO}_4^{2-} = 1\\,450\\,\\text{mg/l}"
       },
       {
         "titel": "Vergleich DK 0",
-        "erklaerung": "Sulfat 1 450 > 100 mg/l, Chlorid 120 > 80 mg/l, Blei 0,08 > 0,05 mg/l:",
+        "erklaerung": "Sulfat 1450 > 100 mg/l, Chlorid 120 > 80 mg/l, Blei 0,08 > 0,05 mg/l:",
         "formel": "\\text{DK 0 nicht eingehalten}"
       },
       {
         "titel": "Vergleich DK I",
-        "erklaerung": "Sulfat ≤ 2 000, Chlorid ≤ 1 500, Blei ≤ 0,2 mg/l, TOC ≤ 1, Glühverlust ≤ 3 M.-%:",
+        "erklaerung": "Sulfat ≤ 2000, Chlorid ≤ 1500, Blei ≤ 0,2 mg/l, TOC ≤ 1, Glühverlust ≤ 3 M.-%:",
         "formel": "\\Rightarrow \\text{Deponieklasse I}"
       }
     ],
     "Abfaelle.schritte_2": [
       {
         "titel": "Volumen",
-        "erklaerung": "Tragschicht unter Asphalt, Fläche 1 200 m², Dicke 0,25 m, Material RC-3:",
+        "erklaerung": "Tragschicht unter Asphalt, Fläche 1200 m², Dicke 0,25 m, Material RC-3:",
         "formel": "V_{ges} = 1\\,200 \\cdot 0{,}25 = 300\\,\\text{m}^3"
       },
       {

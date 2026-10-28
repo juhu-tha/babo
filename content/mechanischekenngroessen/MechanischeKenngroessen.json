@@ -23,7 +23,7 @@
     "schubmodulGWiderstandGegen": "Schubmodul G (Widerstand gegen Scherung / Gestaltänderung):",
     "kompressionsmodulKWiderstandGegen": "Kompressionsmodul K (Widerstand gegen allseitigen hydrostatischen Druck):",
     "berechnungsbeispielBaustahl": "**Berechnungsbeispiel Baustahl:**",
-    "e210000Mpa": "E = 210.000 MPa, ν = 0,30<br>G = 210.000 / (2 · 1,30) ≈ **80.769 MPa**<br>K = 210.000 / (3 · 0,40) ≈ **175.000 MPa**",
+    "e210000Mpa": "E = 210 000 MPa, ν = 0,30<br>G = 210 000 / (2 · 1,30) ≈ **80 769 MPa**<br>K = 210 000 / (3 · 0,40) ≈ **175 000 MPa**",
     "hinweisGehtGegen0": "Hinweis: Geht ν gegen 0,5, strebt der Kompressionsmodul K gegen Unendlich (reine Inkompressibilität).",
     "vergleichendeWerkstoffkennwerteImBauwese": " Vergleichende Werkstoffkennwerte im Bauwesen",
     "gegenüberstellungTypischerElastischerRhe": "Gegenüberstellung typischer elastischer, rheologischer und bruchmechanischer Kennwerte nach Eurocodes (EC2, EC3, EC5, DIN 18008).",
@@ -35,9 +35,9 @@
     "streckgrenzeFyMpa": "Streckgrenze fy [MPa]",
     "dichteKgM": "Dichte ρ [kg/m³]",
     "wichtigeBaustofflicheFaustregeln": "Wichtige baustoffliche Faustregeln:",
-    "baustahlS235S355Der": "**Baustahl (S235/S355):** Der E-Modul ist mit $210.000\\text{ MPa}$ für alle Festigkeitsklassen identisch! Höherfester Stahl ist nicht dehnsteifer, sondern beginnt erst bei höherer Last zu fließen.",
+    "baustahlS235S355Der": "**Baustahl (S235/S355):** Der E-Modul ist mit $210\\,000\\text{ MPa}$ für alle Festigkeitsklassen identisch! Höherfester Stahl ist nicht dehnsteifer, sondern beginnt erst bei höherer Last zu fließen.",
     "dehnsteifigkeitVsBiegesteifigkeitBei": "**Dehnsteifigkeit vs. Biegesteifigkeit:** Bei Verdopplung der Bauteilhöhe verdoppelt sich die Dehnsteifigkeit ($EA \\propto h$), während sich die Biegesteifigkeit **verachtfacht** ($EI \\propto h^3$).",
-    "betonkriechenBeiDauerbelastetenBauteilen": "**Betonkriechen:** Bei dauerbelasteten Bauteilen sinkt der effektive E-Modul auf $E_{c,\\text{eff}} = \\frac{E_{cm}}{1+\\varphi}$ (z. B. von 33.000 MPa auf 11.000 MPa bei $\\varphi = 2{,}0$).",
+    "betonkriechenBeiDauerbelastetenBauteilen": "**Betonkriechen:** Bei dauerbelasteten Bauteilen sinkt der effektive E-Modul auf $E_{c,\\text{eff}} = \\frac{E_{cm}}{1+\\varphi}$ (z. B. von 33 000 MPa auf 11 000 MPa bei $\\varphi = 2{,}0$).",
     "maßgebendBleibenDieBauaufsichtlich": "Maßgebend bleiben die bauaufsichtlich eingeführten Eurocodes mit Nationalen Anhängen (MVV TB 2025/1). Welche Teile der 2. Generation erschienen sind, was sich ändert und welche Termine bekannt sind, fasst das Ausblick-Modul zusammen."
   },
   "werte": {

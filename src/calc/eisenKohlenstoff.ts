@@ -110,7 +110,7 @@ export function feCZustand(c: number, t: number): FeCZustand {
   muss(hinweise, istEndlich(c, t), 'eingabe', 'Kohlenstoffgehalt und Temperatur müssen Zahlen sein.');
   if (!hatFehler(hinweise)) {
     muss(hinweise, c >= 0 && c <= P.K.c, 'c', 'Der Kohlenstoffgehalt muss zwischen 0 und 6,67 % liegen (metastabiles System bis Fe₃C).');
-    muss(hinweise, t >= 0 && t <= 1700, 't', 'Die Temperatur muss zwischen 0 und 1 700 °C liegen.');
+    muss(hinweise, t >= 0 && t <= 1700, 't', 'Die Temperatur muss zwischen 0 und 1700 °C liegen.');
   }
   const werkstoff: FeCZustand['werkstoff'] = c <= P.E.c ? 'Stahl' : 'Gusseisen';
   if (hatFehler(hinweise)) return { phasen: [], feld: '–', gefuege: '–', werkstoff, hinweise };

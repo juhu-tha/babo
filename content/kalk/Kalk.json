@@ -82,7 +82,7 @@
     ],
     "Kalk.formeln": [
       {
-        "formel": "CaCO_3 \\xrightarrow{\\approx 900\\text{ bis }1.100^{\\circ}\\text{C}} CaO + CO_2 \\uparrow",
+        "formel": "CaCO_3 \\xrightarrow{\\approx 900\\text{ bis }1100^{\\circ}\\text{C}} CaO + CO_2 \\uparrow",
         "erklaerung": "Thermische Zersetzung (Kalzinieren) von Calciumcarbonat (Kalkstein) zu Calciumoxid (Branntkalk) unter Abspaltung von Kohlendioxid. Die Reaktion ist stark endotherm.",
         "quelle": "DIN EN 459-1:2015-07"
       },

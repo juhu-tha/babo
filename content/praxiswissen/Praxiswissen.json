@@ -659,7 +659,7 @@
     "Praxiswissen.schritte_5": [
       {
         "titel": "Feuchte Einwaage",
-        "erklaerung": "Sollmenge trocken 1 000 kg, Oberflächenfeuchte u = 4 %:",
+        "erklaerung": "Sollmenge trocken 1000 kg, Oberflächenfeuchte u = 4 %:",
         "formel": "m_{feucht} = 1\\,000 \\cdot 1{,}04 = 1\\,040\\,\\text{kg}"
       },
       {

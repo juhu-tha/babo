@@ -133,7 +133,7 @@
       },
       {
         "formel": "LA = \\frac{m_0 - m_1}{m_0} \\cdot 100\\%",
-        "erklaerung": "Los-Angeles-Koeffizient (Widerstand gegen Zertrümmerung): m0 = Einwaage (5.000 g), m1 = Rückstand auf dem 1,6-mm-Sieb nach der Trommelprüfung.",
+        "erklaerung": "Los-Angeles-Koeffizient (Widerstand gegen Zertrümmerung): m0 = Einwaage (5000 g), m1 = Rückstand auf dem 1,6-mm-Sieb nach der Trommelprüfung.",
         "quelle": "DIN EN 1097-2:2020-09"
       },
       {

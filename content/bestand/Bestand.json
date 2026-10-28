@@ -26,7 +26,7 @@
     "t1WärmedurchgangswiderstandDesUngedämmten": "1. Wärmedurchgangswiderstand des ungedämmten Bestandsbauteils:",
     "t2ZusätzlicherWärmedurchlasswiderstandDer": "2. Zusätzlicher Wärmedurchlasswiderstand der Dämmschicht (Dicke d = ",
     "t3GesamtwiderstandUndNeuer": "3. Gesamtwiderstand und neuer Wärmedurchgangskoeffizient:",
-    "t4JährlicheHeizwärmeeinsparungMit": "4. Jährliche Heizwärmeeinsparung mit Gradtagzahl G_t20/15 = 3 500 Kd/a und Temperatur-Korrekturfaktor F_x (DIN V 4108-6):",
+    "t4JährlicheHeizwärmeeinsparungMit": "4. Jährliche Heizwärmeeinsparung mit Gradtagzahl G_t20/15 = 3500 Kd/a und Temperatur-Korrekturfaktor F_x (DIN V 4108-6):",
     "historischerTrendDerBauteil": "Historischer Trend der Bauteil-U-Werte von 1880 bis heute",
     "entwicklungDesThermischenStandards": "Entwicklung des thermischen Standards über 10 Baualtersklassen im Vergleich zu den heutigen Sanierungsanforderungen des GModG / GEG.",
     "bauphysikalischeEpochensprünge": "Bauphysikalische Epochensprünge:",
@@ -276,7 +276,7 @@
     "Bestand.schritte_2": [
       {
         "titel": "Gegeben",
-        "erklaerung": "100 m² Außenwand, Heizgradtage 3 500 Kd/a:",
+        "erklaerung": "100 m² Außenwand, Heizgradtage 3500 Kd/a:",
         "formel": "\\Delta U = 1{,}50 - 0{,}60 = 0{,}90\\,\\text{W/(m}^2\\text{K)}"
       },
       {

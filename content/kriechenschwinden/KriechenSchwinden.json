@@ -1,8 +1,8 @@
 {
   "texte": {
     "eingabeparameterBeton": "Eingabeparameter (Beton)",
-    "t10000DT": "φ(10 000 d, t₀)",
-    "cd10000D": "ε_cd (10 000 d)",
+    "t10000DT": "φ(10 000 d, t₀)",
+    "cd10000D": "ε_cd (10 000 d)",
     "kHCd0": "k_h · ε_cd,0",
     "fürVerformungenUnterDauerlast": "Für Verformungen unter Dauerlast wird nach DIN EN 1992-1-1, Gl. (7.20) der wirksame E-Modul ",
     "angesetztFürZwangsspannungenRelaxation": " angesetzt. Für Zwangsspannungen (Relaxation) ist das eine grobe Näherung; genauer ist ",
@@ -42,7 +42,7 @@
     "standzeitDesTragwerks": "Standzeit des Tragwerks:",
     "randbedingungenDerStütze": "Randbedingungen der Stütze:",
     "stützenhöheL": "Stützenhöhe L₀:",
-    "t3000Mm3": "3.000 mm (3 m)",
+    "t3000Mm3": "3000 mm (3 m)",
     "dauerlastC": "Dauerlast σc:",
     "t85MpaLehrannahme": "8,5 MPa (Lehrannahme)",
     "eModulEcm": "E-Modul Ecm:",

@@ -235,7 +235,7 @@ export default function Lebensdauerbemessung() {
   ] : [
     {
       titel: 'Diffusionskoeffizient (Mittelwerte)',
-      erklaerung: `T = ${formatDeZahl(z.tM, 0)} °C, b_e = 4.800 K, a = ${formatDeZahl(FIB_CHLORID.alterung[z.binder].m, 2)}, k_t = 1:`,
+      erklaerung: `T = ${formatDeZahl(z.tM, 0)} °C, b_e = 4800 K, a = ${formatDeZahl(FIB_CHLORID.alterung[z.binder].m, 2)}, k_t = 1:`,
       formel: `D_{app,C} = ${tex(mw.faktoren.ke, 3)} \\cdot ${tex(mw.faktoren.d0, 1)} \\cdot ${tex(mw.faktoren.A, 4)} = ${tex(mw.kennwert, 2)}\\,\\tfrac{\\text{mm}^2}{\\text{a}}`,
     },
     {

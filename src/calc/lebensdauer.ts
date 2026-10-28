@@ -468,7 +468,7 @@ export function lebensdauerbemessung(e: LebensdauerEingabe): LebensdauerErgebnis
   if (!istEndlich(e.nutzungsdauer) || e.nutzungsdauer <= 0) h.push({ stufe: 'fehler', feld: 'nutzungsdauer', text: 'Nutzungsdauer > 0 Jahre angeben.' });
   else if (e.nutzungsdauer > 200) h.push({ stufe: 'warnung', feld: 'nutzungsdauer', text: 'Nutzungsdauer über 200 Jahre: Die Modelle sind dafür nicht kalibriert.' });
   if (!istEndlich(e.betaZiel) || e.betaZiel < 0 || e.betaZiel > 4) h.push({ stufe: 'fehler', feld: 'betaZiel', text: 'Zielzuverlässigkeit β₀ zwischen 0 und 4 angeben.' });
-  if (!Number.isInteger(e.laeufe) || e.laeufe < 1000 || e.laeufe > 200000) h.push({ stufe: 'fehler', feld: 'laeufe', text: 'Anzahl der Läufe: ganze Zahl von 1.000 bis 200.000.' });
+  if (!Number.isInteger(e.laeufe) || e.laeufe < 1000 || e.laeufe > 200000) h.push({ stufe: 'fehler', feld: 'laeufe', text: 'Anzahl der Läufe: ganze Zahl von 1000 bis 200 000.' });
   if (!istEndlich(e.startwert)) h.push({ stufe: 'fehler', feld: 'startwert', text: 'Startwert des Zufallsgenerators fehlt.' });
 
   if (e.mechanismus === 'karbonatisierung') {
@@ -520,7 +520,7 @@ export function lebensdauerbemessung(e: LebensdauerEingabe): LebensdauerErgebnis
   const lebensdauer = kurve.find(p => p.beta < e.betaZiel)?.t ?? null;
   const erfDeckung = erforderlicheDeckung(s, deckung, tSL, n, pfZiel);
   if (amEnde.untergrenze) h.push({ stufe: 'warnung', feld: 'laeufe', text: `In keinem der ${n} Läufe versagt: β ist nur als Untergrenze angegeben.` });
-  if (n < 10000) h.push({ stufe: 'warnung', feld: 'laeufe', text: 'Weniger als 10.000 Läufe: Der Standardfehler von p_f ist groß.' });
+  if (n < 10000) h.push({ stufe: 'warnung', feld: 'laeufe', text: 'Weniger als 10 000 Läufe: Der Standardfehler von p_f ist groß.' });
   if (erfDeckung === null) h.push({ stufe: 'warnung', feld: 'deckung', text: 'Auch mit 400 mm Deckung wird β₀ nicht erreicht.' });
 
   return {

@@ -77,7 +77,7 @@
     "Knicken.schritte": [
       {
         "titel": "Gegeben",
-        "erklaerung": "Stahlstütze l = 3,5 m, E = 210 000 N/mm², maßgebendes Trägheitsmoment I = 850 cm⁴ = 8,5 · 10⁶ mm⁴.",
+        "erklaerung": "Stahlstütze l = 3,5 m, E = 210 000 N/mm², maßgebendes Trägheitsmoment I = 850 cm⁴ = 8,5 · 10⁶ mm⁴.",
         "formel": "E \\cdot I = 210\\,000 \\cdot 8{,}5 \\cdot 10^{6}\\,\\text{Nmm}^2"
       },
       {

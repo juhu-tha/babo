@@ -133,7 +133,7 @@
     "MaterialitaetArchitektur.formeln": [
       {
         "formel": "b = \\sqrt{\\lambda \\cdot \\rho \\cdot c} \\quad [\\text{J} / (\\text{m}^2 \\text{K} \\sqrt{\\text{s}})]",
-        "erklaerung": "Wärmeeindringkoeffizient b des Baustoffs: Bestimmt die taktile Temperaturwahrnehmung bei Berührung. Niedriges b (z. B. Nadelholz b ≈ 300–400) fühlt sich sofort handwarm an; hohes b (z. B. Stahl b ≈ 14.000 oder Beton b ≈ 2.000) entzieht der Haut rasch Wärme und fühlt sich kühl/kalt an.",
+        "erklaerung": "Wärmeeindringkoeffizient b des Baustoffs: Bestimmt die taktile Temperaturwahrnehmung bei Berührung. Niedriges b (z. B. Nadelholz b ≈ 300–400) fühlt sich sofort handwarm an; hohes b (z. B. Stahl b ≈ 14 000 oder Beton b ≈ 2000) entzieht der Haut rasch Wärme und fühlt sich kühl/kalt an.",
         "quelle": "Bauphysik & Thermodynamik"
       },
       {

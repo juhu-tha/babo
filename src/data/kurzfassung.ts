@@ -109,7 +109,7 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "Gusseisen ist druckfest, aber spröde und nicht schweißbar; es bricht ohne Vorwarnung, daher sind Zugspannungszonen konstruktiv zu vermeiden.",
     "Thomas-Stahl ist alterungsversprödet und für tragende Anschlüsse nicht schweißbar; Ertüchtigungen historischer Stähle erfolgen über Schraub-, Niet- oder Klemmverbindungen.",
     "Typische Schadstoffträger sind Asbestzement, Teer-Parkettkleber mit PAK, PCB-haltige Thiokol-Fugen und PCP-/Lindan-Holzschutz; vor jedem Eingriff ist eine Materialprobe nötig.",
-    "Nach PCB-Richtlinie gilt Raumluft unter 300 ng/m³ als langfristig tolerabel, über 3 000 ng/m³ sind unverzüglich Maßnahmen nötig; für Blei im Trinkwasser gelten ab 2028 höchstens 5 µg/l.",
+    "Nach PCB-Richtlinie gilt Raumluft unter 300 ng/m³ als langfristig tolerabel, über 3000 ng/m³ sind unverzüglich Maßnahmen nötig; für Blei im Trinkwasser gelten ab 2028 höchstens 5 µg/l.",
   ],
   instandhaltung: [
     "Standsicherheitsrelevante Instandsetzungen folgen der TR Instandhaltung des DIBt mit sachkundigem Planer (SKP); DIN EN 1504 regelt nur Produkteigenschaften und CE-Kennzeichnung.",
@@ -129,7 +129,7 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "Der LCA-Rechner bilanziert das Treibhauspotenzial von Gebäudevarianten nach DIN EN 15978 über 50 Jahre, bezogen auf m² NRF und Jahr in kg CO₂-Äq./(m²·a).",
     "Für Wohngebäude gelten nach QNG-Handbuch QNG-PLUS ≤ 24 und QNG-PREMIUM ≤ 20 kg CO₂-Äq./(m² NRF·a), zusätzlich PENRT ≤ 96 bzw. 64 kWh/(m²a).",
     "Typischer Fehler: Gutschriften aus Modul D werden mit A bis C verrechnet; nach DIN EN 15804 und QNG sind sie separat auszuweisen und dürfen nicht abgezogen werden.",
-    "Im Rechenbeispiel verfehlt ein Mehrfamilienhaus mit 1 200 m² NRF mit 24,2 kg CO₂-Äq./(m²a) QNG-PLUS knapp; die Holzhybrid-Variante erreicht 21,5.",
+    "Im Rechenbeispiel verfehlt ein Mehrfamilienhaus mit 1200 m² NRF mit 24,2 kg CO₂-Äq./(m²a) QNG-PLUS knapp; die Holzhybrid-Variante erreicht 21,5.",
     "GWP-Faktoren in kg CO₂-Äq./kg sind mit Volumen mal Rohdichte zu multiplizieren; biogener Kohlenstoff aus A1–A3 wird am Lebensende in C3 wieder freigesetzt.",
   ],
   lca_regulatorik: [
@@ -150,7 +150,7 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "Nachhaltiges Bauen bewertet nach DIN EN 15643 ökologische, ökonomische und soziokulturelle Qualität über den gesamten Lebenszyklus, ergänzt um technische und Prozessqualität.",
     "Das Bauwesen verursacht rund 40 % der energiebedingten CO₂-Emissionen (28 % Betrieb, 11–12 % graue Emissionen) und beansprucht über 50 % des weltweiten Rohstoffverbrauchs.",
     "Von 220 bis 230 Mio. t Bauabfällen in Deutschland ist Bodenaushub mit rund 130 Mio. t die größte Fraktion; Bauschutt wird zu etwa 80 % zu RC-Schotter downgecycelt.",
-    "Taxonomiekonform ist ein Neubau nur mit Primärenergiebedarf mindestens 10 % unter NZEB, ab 5 000 m² zusätzlich mit offengelegtem Lebenszyklus-GWP und erfüllten DNSH-Kriterien.",
+    "Taxonomiekonform ist ein Neubau nur mit Primärenergiebedarf mindestens 10 % unter NZEB, ab 5000 m² zusätzlich mit offengelegtem Lebenszyklus-GWP und erfüllten DNSH-Kriterien.",
     "EPDs nach DIN EN 15804+A2 weisen GWP-total, -fossil, -biogenic und -luluc aus; generische ÖKOBAUDAT-Daten erhalten im QNG/BNB einen Sicherheitsaufschlag von 10 %.",
   ],
   rueckbau: [
@@ -172,7 +172,7 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "Asbest ist in Deutschland seit dem 31. Oktober 1993 verboten; verdeckt steckt er oft in Putzen, Spachtelmassen und Fliesenklebern, die nach VDI 6202 Blatt 3 zu beproben sind.",
     "Nach § 5a GefStoffV übergibt der Veranlasser alle vorliegenden Informationen und das Baujahr; bei Errichtung zwischen 1993 und 1996 ist der Baubeginn mitzuteilen.",
     "Mineralwolle wird über den Kanzerogenitätsindex eingestuft: KI ≤ 30 bedeutet krebserzeugend Kategorie 1B, KI ≥ 40 keine Einstufung; vor Juni 2000 eingebaute KMF gelten als alt.",
-    "Schutzmaßnahmen folgen dem STOP-Prinzip; bei Asbest bestimmen Akzeptanzkonzentration (10 000 F/m³) und Toleranzkonzentration (100 000 F/m³) die Risikostufe.",
+    "Schutzmaßnahmen folgen dem STOP-Prinzip; bei Asbest bestimmen Akzeptanzkonzentration (10 000 F/m³) und Toleranzkonzentration (100 000 F/m³) die Risikostufe.",
   ],
   spannbeton: [
     "Vorspannung überdrückt den Querschnitt planmäßig; die Randspannungen folgen im Zustand I aus σ = −P/A_c ± P·e_p/W ∓ M/W und werden für t = 0 und t = ∞ geprüft.",
@@ -239,7 +239,7 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "Für die Datenauswertung eignen sich Python mit Jupyter, Streamlit und Wolfram Alpha; generierte Berechnungen sind an zwei bis drei Handrechnungen gegenzuprüfen, Grafiken als SVG oder PDF zu exportieren.",
   ],
   mischungsberechnung: [
-    "Die Stoffraumrechnung setzt die Volumina von Zement, wirksamem Wasser, Zusatzstoffen, Luft und Gesteinskörnung so zusammen, dass genau 1 000 dm³ verdichteter Frischbeton entstehen.",
+    "Die Stoffraumrechnung setzt die Volumina von Zement, wirksamem Wasser, Zusatzstoffen, Luft und Gesteinskörnung so zusammen, dass genau 1000 dm³ verdichteter Frischbeton entstehen.",
     "Expositionsklassen bestimmen höchstzulässigen (w/z)eq, Mindestzementgehalt und Mindestfestigkeitsklasse; der Zementgehalt folgt aus Wasseranspruch und w/z, maßgebend ist der größere Wert gegenüber dem Mindestgehalt.",
     "Zusatzstoffe werden über k-Werte angerechnet, etwa Flugasche mit k = 0,4 bis f/z ≤ 0,33 und Silikastaub mit k = 1,0; der Empfehlungswert k = 2,0 der DIN EN 206 gilt in Deutschland nicht.",
     "Die Masse der Gesteinskörnung ergibt sich aus dem Reststoffraum mal Rohdichte; ihre Eigenfeuchte ist vom Zugabewasser abzuziehen und der Einwaage der Gesteinskörnung hinzuzurechnen.",
@@ -275,10 +275,10 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
   ],
   sonderbetone: [
     "Das Modul ordnet 15 Sonderbetone, von Leicht-, Schwer- und Infraleichtbeton über Spritz-, Faser- und Recyclingbeton bis zu UHPC, SVB und Bohrpfahlbeton; Sichtbeton ist kein eigener Betontyp.",
-    "Konstruktionsleichtbeton mit 800 bis 2 000 kg/m³ bricht meist durch das weiche Korn und ist bei gleicher Festigkeitsklasse nur rund halb so steif wie Normalbeton; E-Modul und Zugfestigkeit werden über η_E und η_1 abgemindert.",
+    "Konstruktionsleichtbeton mit 800 bis 2000 kg/m³ bricht meist durch das weiche Korn und ist bei gleicher Festigkeitsklasse nur rund halb so steif wie Normalbeton; E-Modul und Zugfestigkeit werden über η_E und η_1 abgemindert.",
     "Spritzbeton wird durch die Aufprallenergie verdichtet; der Rückprall liegt beim Trockenspritzen bei etwa 15 bis 30 %, beim Nassspritzen bei 5 bis 15 % und macht die verbleibende Schicht zementreicher.",
     "Bei Beton mit rezyklierter Gesteinskörnung ist das Zugabewasser um die 24-Stunden-Wasseraufnahme der porösen Altmörtelanteile zu korrigieren; mit steigendem RC-Anteil sinkt der E-Modul.",
-    "SVB wird über das Setzfließmaß nach DIN EN 12350-8 in SF1 bis SF3 und über t500 in VS1 und VS2 eingestuft; Schwerbeton mit Trockenrohdichte über 2 600 kg/m³ dient etwa dem Strahlenschutz.",
+    "SVB wird über das Setzfließmaß nach DIN EN 12350-8 in SF1 bis SF3 und über t500 in VS1 und VS2 eingestuft; Schwerbeton mit Trockenrohdichte über 2600 kg/m³ dient etwa dem Strahlenschutz.",
   ],
 };
 

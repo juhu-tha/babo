@@ -35,13 +35,13 @@
     "typischeFörderprogrammeAkteure": "Typische Förderprogramme & Akteure",
     "fördererDfgDeutscheForschungsgemeinschaf": "• **Förderer:** DFG (Deutsche Forschungsgemeinschaft), EU Horizon Europe (Pillar 1 - ERC / Marie Curie).",
     "akteureUniversitätenMaxPlanck": "• **Akteure:** Universitäten, Max-Planck-Institute, BAM (Bundesanstalt für Materialforschung).",
-    "kostenrahmen50000300": "• **Kostenrahmen:** 50.000 – 300.000 € (überwiegend Personalmittel für Doktoranden / Postdocs).",
+    "kostenrahmen50000300": "• **Kostenrahmen:** 50 000 – 300 000 € (überwiegend Personalmittel für Doktoranden / Postdocs).",
     "fördererZukunftBauBbsr": "• **Förderer:** Zukunft Bau (BBSR), ZIM (Zentrales Innovationsprogramm Mittelstand), KMU-innovativ.",
     "akteureFraunhoferInstituteIbp": "• **Akteure:** Fraunhofer-Institute (IBP, WKI), industrielle F&E-Abteilungen, Zement- und Bauchemie-KMU.",
-    "kostenrahmen3000002": "• **Kostenrahmen:** 300.000 – 2.000.000 € (Pilotanlagen, Prüfkörper, Versuchsserien).",
+    "kostenrahmen3000002": "• **Kostenrahmen:** 300 000 – 2 000 000 € (Pilotanlagen, Prüfkörper, Versuchsserien).",
     "fördererEuInnovationFund": "• **Förderer:** EU Innovation Fund, BMWE Klimaschutzverträge, Reallabore der Energiewende.",
     "akteureDibtMpaMaterialprüfanstalten": "• **Akteure:** DIBt, MPA (Materialprüfanstalten), Baukonzerne, Generalübernehmer, Investoren.",
-    "kostenrahmen1000000": "• **Kostenrahmen:** 1.000.000 – 10.000.000+ € (Zulassungsprüfungen, Brandprüfungen, Industrieanlagen).",
+    "kostenrahmen1000000": "• **Kostenrahmen:** 1 000 000 – 10 000 000+ € (Zulassungsprüfungen, Brandprüfungen, Industrieanlagen).",
     "phasenmodellEinesBaustoffF": "Phasenmodell eines Baustoff-F&E-Projekts",
     "phase1SyntheseRezepturoptimierung": "Phase 1: Synthese & Rezepturoptimierung",
     "reaktionskinetikPartikelgrößenverteilung": "Reaktionskinetik, Partikelgrößenverteilung (Sieblinie), rheologische Modellierung (Viskosität, Fließgrenze nach Bingham).",
@@ -156,7 +156,7 @@
         "advantages": [
           "Deutlich schlankere und leichtere Bauteile; CO₂-Einsparung durch geringeren Betonbedarf",
           "Vollständige Korrosionsfreiheit gegenüber Tausalzen (keine Lochfraßkorrosion)",
-          "Zugfestigkeit der Carbonfaser (bis zu 3.000 MPa) ca. 6-mal höher als B500B"
+          "Zugfestigkeit der Carbonfaser (bis zu 3000 MPa) ca. 6-mal höher als B500B"
         ],
         "bottlenecks": [
           "Geringere Bruchdehnung (sprödes Versagen ohne ausgeprägte Fließzone)",
@@ -175,7 +175,7 @@
         "advantages": [
           "Bis zu 75 % weniger CO₂-Emissionen im Vergleich zu reinem CEM I",
           "Extrem hohe Säure- und Sulfatbeständigkeit (z. B. im Abwasserbereich / Biogas)",
-          "Hervorragende thermische Beständigkeit bis 1.000 °C"
+          "Hervorragende thermische Beständigkeit bis 1000 °C"
         ],
         "bottlenecks": [
           "Handhabung hochalkalischer Aktivatorlösungen im Transportbetonwerk (Arbeitsschutz)",
