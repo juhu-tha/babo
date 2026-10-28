@@ -12,8 +12,8 @@
     "gemesseneRaumdichteRhoR": "Gemessene Raumdichte ($\\rho_r$ / Bulk Density):",
     "theorHohlraumfreieDichte": "Theor. Hohlraumfreie Dichte:",
     "errechneterLuftporengehaltVU": "Errechneter Luftporengehalt ($V_u$):",
-    "konformZtvAsphaltStb": "✓ Konform (ZTV Asphalt-StB Zielbereich 1,5 - 4,5% für Deckschichten eingehalten!)",
-    "nichtKonformFürDeckschichten": "✗ Nicht konform für Deckschichten ("
+    "konformZtvAsphaltStb": "✓ Im Lehrbereich 1,5 bis 4,5 Vol.-% (maßgebend sind die Anforderungen je Mischgutsorte nach TL/ZTV Asphalt-StB 26)",
+    "nichtKonformFürDeckschichten": "✗ Außerhalb des Lehrbereichs ("
   },
   "werte": {
     "zuDichtGefahrVon": "zu dicht – Gefahr von Bindemittelanreicherung und Spurrinnen",

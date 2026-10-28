@@ -90,7 +90,7 @@ const EINZELRECHNER: readonly { ziel: UebergabeQuelle; label: string }[] = [
   { ziel: 'korrosion', label: inhalt.werte.einzelKorrosion },
   { ziel: 'expositionsklassen', label: inhalt.werte.einzelExposition },
   { ziel: 'dauerhaftigkeit', label: inhalt.werte.einzelDauerhaftigkeit },
-  { ziel: 'bauwerksuntersuchung', label: inhalt.werte.einzelBauwerk },
+  { ziel: 'pruefverfahren_katalog', label: inhalt.werte.einzelBauwerk },
 ];
 
 /** R⁻¹_ACC,0 (10⁻¹¹ (m²/s)/(kg/m³)) aus der gewählten Eingabeart */
