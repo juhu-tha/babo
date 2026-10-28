@@ -143,7 +143,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   kunststoffe: {
     kurz: 'E-Modul von Kunststoffen über der Temperatur als Lehrmodell je Strukturtyp (amorph, teilkristallin, Elastomer, Duroplast) und Wärmedehnung ΔL = L₀·α_T·ΔT.',
     grenzen: [
-      'Logistische Modellkurven mit festen Übergangstemperaturen (z. B. T_g = 100 °C amorph); keine Werkstoffdaten eines bestimmten Kunststoffs, maßgebend sind Produktdatenblätter.',
+      'Logistische Modellkurven mit festen Übergangstemperaturen (z. B. T_g = 100 °C amorph; Duroplast-Plateau oberhalb T_g 80 MPa als Lehrwert im Bereich 50–100 MPa); keine Werkstoffdaten eines bestimmten Kunststoffs, maßgebend sind Produktdatenblätter.',
       'Kurzzeitmodul ohne Zeit- und Lasteinfluss: Kriechen, Relaxation, Alterung und Feuchte sind nicht abgebildet.',
       'Werte unter 0,1 MPa werden für die logarithmische Darstellung auf 0,1 MPa gesetzt (Fließ- bzw. Schmelzbereich ohne Tragfunktion).',
     ],
@@ -271,7 +271,9 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     grenzen: [
       "Faserverbund mit idealer Haftung (Lehrmodell).",
       "U-Wert mit R_si = 0,13 und R_se = 0,04 m²K/W, ohne Wärmebrücken und ohne Glaser-Nachweis.",
-      "Tauwasser-Hinweis als Faustregel nach den nachweisfreien nicht belüfteten Dächern der DIN 4108-3 (s_d,i ≥ 1,0 m / 2,0 m / 6·s_d,e) über die Schichthälften; kein Glaser-Nachweis.",
+      "Tauwasser-Hinweis als Faustregel nach den nachweisfreien nicht belüfteten Dächern der DIN 4108-3 (s_d,i ≥ 1,0 m / 2,0 m / 6·s_d,e), geteilt an der Dämmschicht (größter Wärmedurchlasswiderstand, selbst nicht mitgezählt); kein Glaser-Nachweis.",
+      "Außendämmung auf tragender Schicht (z. B. WDVS auf Mauerwerk) wird als Außenwand ohne rechnerischen Tauwassernachweis nach DIN 4108-3 eingeordnet, Innendämmung mit Hinweis auf den rechnerischen Nachweis; Einordnung nur über die Lage der Schichtkategorie „tragend“.",
+      "Unzulässige Eingaben (Dicke ≤ 0, λ ≤ 0, μ < 1) werden gemeldet statt still begrenzt.",
     ],
   },
   bp_verkehr_rsto: {

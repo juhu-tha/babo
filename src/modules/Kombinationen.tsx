@@ -38,7 +38,8 @@ import {
 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import inhalt from '@/content/kombinationen/Kombinationen.json';
-import { sdRegel } from '@/src/calc/glaser';
+import { faserverbund, eModulLaengs, eModulQuer, schichtaufbau, RSI_WAND, RSE_WAND } from '@/src/calc/kombinationen';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
@@ -109,18 +110,12 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
   const sm = matrices[matrixType].sm;
 
   const fvkResults = useMemo(() => {
-    const v_f = vf / 100;
-    const v_m = 1 - v_f;
-    
-    // Voigt-Modell (Parallel, Längsrichtung)
-    const E_parallel = ef * v_f + em * v_m;
-    // Mischungsregel Festigkeit (Lehrmodell): Versagen bei Faserbruchdehnung sf/ef; Matrixspannung dann em·sf/ef (≤ sm)
-    const S_parallel = sf * v_f + Math.min(sm, em * sf / ef) * v_m;
-    
-    // Reuss-Modell (Reihe, Querrichtung)
-    const E_quer = (ef * em) / (v_f * em + v_m * ef);
-    
-    const rho_composite = fibers[fiberType].rho * v_f + matrices[matrixType].rho * v_m;
+    // Rechenkern src/calc/kombinationen.ts (Voigt/Reuss, Mischungsregel Festigkeit als Lehrmodell)
+    const fvk = faserverbund({ ef, sf, rhoF: fibers[fiberType].rho, em, sm, rhoM: matrices[matrixType].rho, vf });
+    const E_parallel = fvk.eLaengs;
+    const S_parallel = fvk.festigkeitLaengs;
+    const E_quer = fvk.eQuer;
+    const rho_composite = fvk.rho;
 
     const labels = [];
     const eParallelData = [];
@@ -130,11 +125,8 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
 
     for (let v = 0; v <= 100; v += 5) {
       labels.push(v.toFixed(0));
-      const current_v_f = v / 100;
-      const current_v_m = 1 - current_v_f;
-      
-      const current_E_parallel = ef * current_v_f + em * current_v_m;
-      const current_E_quer = (ef * em) / (current_v_f * em + current_v_m * ef);
+      const current_E_parallel = eModulLaengs(ef, em, v / 100);
+      const current_E_quer = eModulQuer(ef, em, v / 100);
       
       eParallelData.push(current_E_parallel);
       eQuerData.push(current_E_quer);
@@ -188,7 +180,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
       ]
     };
 
-    return { E_parallel, E_quer, S_parallel, chartData, rho_composite };
+    return { E_parallel, E_quer, S_parallel, chartData, rho_composite, hinweise: fvk.hinweise };
   }, [vf, ef, em, sf, sm, fiberType, matrixType]);
 
   const chartOptions = {
@@ -210,49 +202,27 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
 
   // --- Mehrschicht-Wand-Kalkulator State ---
   const [layers, setLayers] = useState<WallLayer[]>(PRESET_LAYERS);
-  const [rsi] = useState<number>(0.13); // m²K/W (Wand horizontal)
-  const [rse] = useState<number>(0.04); // m²K/W (Außenluft)
+  const rsi = RSI_WAND; // m²K/W (Wand horizontal)
+  const rse = RSE_WAND; // m²K/W (Außenluft)
 
+  // Rechenkern src/calc/kombinationen.ts (T6-KO-4/-5): R, U, s_d je Schicht; s_d-Regel geteilt an der Dämmschicht,
+  // Außenwände mit Außendämmung nach den nachweisfreien Konstruktionen der DIN 4108-3
   const calcResults = useMemo(() => {
-    let totalR = rsi + rse;
-    let totalSd = 0;
-    let totalThicknessM = 0;
-
-    const layerCalculations = layers.map(layer => {
-      const dM = layer.thickness / 1000;
-      totalThicknessM += dM;
-      const r = layer.lambda > 0 ? dM / layer.lambda : 0;
-      totalR += r;
-      const sd = layer.mu * dM;
-      totalSd += sd;
-      return {
-        ...layer,
-        dM,
-        r,
-        sd
-      };
-    });
-
-    const uValue = totalR > 0 ? 1 / totalR : 0;
-
-    const innerLayersSd = layerCalculations.slice(0, Math.ceil(layers.length / 2)).reduce((acc, l) => acc + l.sd, 0);
-    const outerLayersSd = layerCalculations.slice(Math.ceil(layers.length / 2)).reduce((acc, l) => acc + l.sd, 0);
-    
-    // Faustregel nach DIN 4108-3 (nachweisfreie nicht belüftete Dächer, Rechenkern src/calc/glaser.ts):
-    // s_d,e ≤ 0,1 m → s_d,i ≥ 1,0 m; ≤ 0,3 m → ≥ 2,0 m; ≤ 2,0 m → ≥ 6·s_d,e; darüber rechnerischer Nachweis
-    const sdPruefung = sdRegel(innerLayersSd, outerLayersSd);
-    const hasDiffusionTrap = !sdPruefung.eingehalten;
-
+    const e = schichtaufbau(layers.map(l => ({ dicke: l.thickness, lambda: l.lambda, mu: l.mu, kategorie: l.category })), rsi, rse);
     return {
-      layerCalculations,
-      totalR,
-      uValue,
-      totalSd,
-      totalThicknessM,
-      hasDiffusionTrap,
-      sdPruefung,
-      innerLayersSd,
-      outerLayersSd
+      layerCalculations: layers.map((layer, i) => ({ ...layer, r: e.schichten[i]?.r ?? NaN, sd: e.schichten[i]?.sd ?? NaN })),
+      totalR: e.rT,
+      uValue: e.u,
+      totalSd: e.sdGesamt,
+      totalThicknessM: e.dickeGesamt,
+      hasDiffusionTrap: e.gueltig && !e.unkritisch,
+      sdPruefung: e.sdPruefung,
+      einordnung: e.einordnung,
+      iDaemm: e.iDaemm,
+      innerLayersSd: e.sdInnen,
+      outerLayersSd: e.sdAussen,
+      gueltig: e.gueltig,
+      hinweise: e.hinweise,
     };
   }, [layers, rsi, rse]);
 
@@ -912,8 +882,8 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                           min="1"
                           max="1000"
                           step="1"
-                          value={layer.thickness}
-                          onChange={(e) => updateLayer(layer.id, 'thickness', Math.max(1, parseFloat(e.target.value) || 1))}
+                          value={Number.isFinite(layer.thickness) ? layer.thickness : ''}
+                          onChange={(e) => updateLayer(layer.id, 'thickness', parseFloat(e.target.value))}
                           className="w-20 p-1.5 border border-home-grau/30 rounded bg-white text-text-main text-xs font-mono"
                         />
                       </td>
@@ -923,8 +893,8 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                           min="0.01"
                           max="5.00"
                           step="0.005"
-                          value={layer.lambda}
-                          onChange={(e) => updateLayer(layer.id, 'lambda', Math.max(0.005, parseFloat(e.target.value) || 0.01))}
+                          value={Number.isFinite(layer.lambda) ? layer.lambda : ''}
+                          onChange={(e) => updateLayer(layer.id, 'lambda', parseFloat(e.target.value))}
                           className="w-24 p-1.5 border border-home-grau/30 rounded bg-white text-text-main text-xs font-mono"
                         />
                       </td>
@@ -934,8 +904,8 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                           min="1"
                           max="100000"
                           step="1"
-                          value={layer.mu}
-                          onChange={(e) => updateLayer(layer.id, 'mu', Math.max(1, parseFloat(e.target.value) || 1))}
+                          value={Number.isFinite(layer.mu) ? layer.mu : ''}
+                          onChange={(e) => updateLayer(layer.id, 'mu', parseFloat(e.target.value))}
                           className="w-20 p-1.5 border border-home-grau/30 rounded bg-white text-text-main text-xs font-mono"
                         />
                       </td>
@@ -987,10 +957,10 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
               <div className="p-4 bg-white rounded-xl border border-home-grau/30 shadow-xxs flex flex-col justify-between">
                 <span className="text-xs text-text-main/60 font-medium"><MdText text={inhalt.texte.wärmedurchgangskoeffizientU} /></span>
                 <div className={`text-xl font-bold font-mono mt-1 ${calcResults.uValue <= 0.24 ? 'text-emerald-700' : 'text-amber-700'}`}>
-                  {formatDeZahl(calcResults.uValue, 3)} W/(m²K)
+                  {calcResults.gueltig ? `${formatDeZahl(calcResults.uValue, 3)} W/(m²K)` : '–'}
                 </div>
                 <span className="text-[11px] text-text-main/60 mt-1">
-                  {calcResults.uValue <= 0.20 ? inhalt.werte.gegStandardÜbertroffen : calcResults.uValue <= 0.24 ? inhalt.werte.gegMindestwertEingehalten : inhalt.werte.gegVorgabeU0}
+                  {!calcResults.gueltig ? '' : calcResults.uValue <= 0.20 ? inhalt.werte.gegStandardÜbertroffen : calcResults.uValue <= 0.24 ? inhalt.werte.gegMindestwertEingehalten : inhalt.werte.gegVorgabeU0}
                 </span>
               </div>
 
@@ -1003,7 +973,10 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
               </div>
             </div>
 
+            <EingabeHinweise hinweise={calcResults.hinweise} />
+
             {/* Hygrothermische Risikobewertung (Feuchte-Ampel) */}
+            {calcResults.gueltig && (
             <div className={`p-4 rounded-xl border text-xs leading-relaxed flex items-start gap-3 ${
               calcResults.hasDiffusionTrap 
                 ? 'bg-rose-50 border-rose-200 text-rose-950' 
@@ -1016,20 +989,27 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
               )}
               <div>
                 <h4 className="font-bold text-sm mb-1">
-                  {calcResults.hasDiffusionTrap 
-                    ? inhalt.werte.hinweisMöglichesTauwasserrisikoIm 
+                  {calcResults.hasDiffusionTrap
+                    ? inhalt.werte.hinweisMöglichesTauwasserrisikoIm
+                    : calcResults.einordnung === 'aussendaemmung'
+                    ? inhalt.werte.außendämmungÜberschrift
                     : inhalt.werte.schichtfolgeEntsprichtDerGrundregel}
                 </h4>
                 <p>
-                  {calcResults.hasDiffusionTrap ? (
+                  {calcResults.einordnung === 'innendaemmung' ? (
+                    <><MdText text={inhalt.texte.innendämmungNachweisErforderlich} /></>
+                  ) : calcResults.hasDiffusionTrap ? (
                     <><MdText text={inhalt.texte.dieÄußerenSchichtenWeisen} />{formatDeZahl(calcResults.outerLayersSd, 2)}<MdText text={inhalt.texte.mVsInnereSchichten} />{formatDeZahl(calcResults.innerLayersSd, 2)}<MdText text={inhalt.texte.mImWinterDiffundierender} /></>
+                  ) : calcResults.einordnung === 'aussendaemmung' ? (
+                    <><MdText text={inhalt.texte.außendämmungNachweisfrei} /></>
                   ) : (
                     <><MdText text={inhalt.texte.dieSDWerte} /></>
                   )}
-                  <span className="block mt-1 font-mono text-[11px]">{calcResults.sdPruefung.text}</span>
+                  <span className="block mt-1 font-mono text-[11px]">Teilung an Schicht {calcResults.iDaemm + 1} (Dämmschicht, nicht mitgezählt): s_d,i = {formatDeZahl(calcResults.innerLayersSd, 2)} m, s_d,e = {formatDeZahl(calcResults.outerLayersSd, 2)} m. {calcResults.sdPruefung?.text}</span>
                 </p>
               </div>
             </div>
+            )}
 
             <Querverweis ziel="feuchteschutz" titel={inhalt.werte.tauwassernachweisNachGlaser} linkText={inhalt.werte.zumGlaserRechnerFeuchteschutz}>
               <p><MdText text={inhalt.texte.dieSDAmpel} /></p>

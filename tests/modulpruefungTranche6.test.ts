@@ -1,12 +1,13 @@
 // Modulprüfung Tranche 6 (28.10.2026): unabhängige Nachrechnungen (Befundliste docs/pruefung/module-tranche-6.md).
 // Die Sollwerte stammen aus einem eigenen Prüfskript (eigene Umsetzung der Modell- und Normgleichungen in Python,
 // Gleichgewichtsfeuchte über die Fahrenheit-Fassung des Wood Handbook), nicht aus den Kernen oder vorhandenen Tests.
-import { gleichgewichtsfeuchte, feuchteNachLagerung, schwinden } from '../src/calc/holzphysik';
+import { gleichgewichtsfeuchte, feuchteNachLagerung, schwinden, HOLZWERKSTOFF_SCHWINDMASSE } from '../src/calc/holzphysik';
 import { festigkeitswerte, druckUnterWinkel, kdefFuer, KLED_NAME, GAMMA_M_HOLZ } from '../src/calc/holzbau';
 import { HOLZ_EN338, BSH_EN14080 } from '../src/data/kennwerte';
 import { emodulKunststoff, kunststoffTemperatur, waermedehnung } from '../src/calc/werkstoffmodelle';
 import { membranNachweis, radiusAusStich, MEMBRAN_LEHRWERTE } from '../src/calc/membran';
 import { sdRegel } from '../src/calc/glaser';
+import { schichtaufbau } from '../src/calc/kombinationen';
 
 const fehler: string[] = [];
 const nahe = (ist: number, soll: number, tol = 5e-3) => Math.abs(ist - soll) <= tol * Math.max(Math.abs(soll), 1e-9);
@@ -26,6 +27,11 @@ pruefe('H5 Breite', sw.neueBreite, 112.872); pruefe('H5 Dicke', sw.neueDicke, 23
 pruefe('H5 ε_V', sw.epsV * 100, 8.8134);
 const sw40 = schwinden({ uStart: 40, uEnde: 12, qt: 0.33, qr: 0.16, ql: 0.01, breite: 120, dicke: 24, laenge: 3500 });
 pruefe('H5b ε_T ab Fasersättigung', sw40.epsT * 100, 5.94); gilt(sw40.hinweise.some(h => h.stufe === 'warnung'), 'H5b Hinweis Fasersättigung');
+// T6-HO-1 (Umsetzung 29.10.2026): OSB-Platte 600 × 18 × 2 500 mm, u 15 → 9 %: Dicke 18·(1 − 0,30·6/100) = 17,676 mm,
+// Breite 600·(1 − 0,02·0,06) = 599,28 mm; FSH-Dicke 45 mm: 45·(1 − 0,24·0,06) = 44,352 mm
+const osb = schwinden({ uStart: 15, uEnde: 9, ...HOLZWERKSTOFF_SCHWINDMASSE.OSB, breite: 600, dicke: 18, laenge: 2500 });
+pruefe('HO1 OSB Dicke', osb.neueDicke, 17.676); pruefe('HO1 OSB Breite', osb.neueBreite, 599.28);
+pruefe('HO1 FSH Dicke', schwinden({ uStart: 15, uEnde: 9, ...HOLZWERKSTOFF_SCHWINDMASSE.FSH, breite: 600, dicke: 45, laenge: 2500 }).neueDicke, 44.352);
 
 // 2. Holz – Bemessungswerte nach DIN EN 1995-1-1/NA (k_mod Tab. 3.1, γ_M = 1,3), Gl. (6.16)
 const c24 = HOLZ_EN338.C24;
@@ -47,7 +53,8 @@ pruefe('KU1 amorph 150 °C', emodulKunststoff('amorphous', 150), 5.8264);
 pruefe('KU2 teilkristallin 20 °C', emodulKunststoff('semicrystalline', 20), 1650);
 pruefe('KU2 teilkristallin 160 °C', emodulKunststoff('semicrystalline', 160), 150.001);
 pruefe('KU3 Elastomer 20 °C', emodulKunststoff('elastomer', 20), 3.0184);
-pruefe('KU4 Duroplast 150 °C', emodulKunststoff('duroplast', 150), 2400);
+pruefe('KU4 Duroplast 150 °C', emodulKunststoff('duroplast', 150), 2040);
+pruefe('KU4b Duroplast 250 °C (Plateau, T6-KU-1)', emodulKunststoff('duroplast', 250), 80.1780);
 gilt(kunststoffTemperatur('semicrystalline', 160).hinweise.some(h => h.stufe === 'warnung'), 'KU2 Warnung Schmelzbereich');
 pruefe('KU5 ΔL PVC-U', waermedehnung(10000, 80e-6, 40), 32); pruefe('KU5 ΔL Stahl', waermedehnung(10000, 12e-6, 40), 4.8);
 
@@ -69,7 +76,11 @@ pruefe('KO1 U', 1 / RT, 0.177614);
 const sdi = lagen.slice(0, 3).reduce((s, [d, , m]) => s + d * m, 0), sde = lagen.slice(3).reduce((s, [d, , m]) => s + d * m, 0);
 const regel = sdRegel(sdi, sde);
 pruefe('KO1 s_d,i', sdi, 8.95); pruefe('KO1 s_d,e', sde, 0.215); pruefe('KO1 s_d,i erf.', regel.sdiErforderlich as number, 2.0); gilt(regel.eingehalten, 'KO1 Regel eingehalten');
-gilt(!sdRegel(2.55, 6.615).eingehalten, 'KO1b Teilung an der Dämmschicht: außerhalb der Regel (Frage T6-KO-1)');
+gilt(!sdRegel(2.55, 6.615).eingehalten, 'KO1b Dämmschicht außen mitgezählt: außerhalb der Regel');
+// T6-KO-4 (Umsetzung 29.10.2026): Teilung an der Dämmschicht ohne diese selbst: s_d,i = 2,55 m, s_d,e = 0,215 m; WDVS auf Mauerwerk nachweisfrei
+const ko4 = schichtaufbau(lagen.map(([d, l, m], i) => ({ dicke: d * 1000, lambda: l, mu: m, kategorie: i === 1 ? 'tragend' as const : i === 2 ? 'daemmend' as const : 'schuetzend' as const })));
+pruefe('KO4 s_d,i', ko4.sdInnen, 2.55); pruefe('KO4 s_d,e', ko4.sdAussen, 0.215); pruefe('KO4 U', ko4.u, 0.177614);
+gilt(ko4.einordnung === 'aussendaemmung' && ko4.unkritisch, 'KO4 WDVS auf Mauerwerk nachweisfrei');
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
 console.log('OK: Modulprüfung Tranche 6');

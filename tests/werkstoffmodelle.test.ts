@@ -143,7 +143,7 @@ pruefe(betonstahlLinien('B500A').punkte[50].char === 525 && betonstahlLinien('B5
 //    Formelbeispiel des Moduls: PVC-U, L_0 = 10 m, α_T = 80·10⁻⁶ 1/K, ΔT = 40 K → ΔL = 32 mm; Stahl α_T = 12·10⁻⁶ → 4,8 mm
 pruefe(nahe(waermedehnung(10000, 80e-6, 40), 32, 1e-12) && nahe(waermedehnung(10000, 12e-6, 40), 4.8, 1e-12), 'Wärmedehnung PVC / Stahl');
 pruefe(nahe(emodulKunststoff('elastomer', -40), (3000 + 3) / 2, 1e-12), 'Elastomer: Mittelwert bei T_g');
-pruefe(nahe(emodulKunststoff('duroplast', -100), 4000, 0.001) && nahe(emodulKunststoff('duroplast', 300), 800, 0.001), 'Duroplast: Glas- und Plateauwert');
+pruefe(nahe(emodulKunststoff('duroplast', -100), 4000, 0.001) && nahe(emodulKunststoff('duroplast', 300), 80, 0.001), 'Duroplast: Glas- und Plateauwert');
 pruefe(emodulKunststoff('amorphous', 300) === 0.1 && emodulKunststoff('semicrystalline', 250) === 0.1, 'Thermoplast oberhalb T_f/T_m: Untergrenze 0,1 MPa');
 pruefe(nahe(emodulKunststoff('semicrystalline', 100), 300 + 2700 / (1 + Math.exp(8)), 0.01), 'teilkristallin: lederartiges Plateau ≈ 300 MPa');
 for (const typ of Object.keys(KUNSTSTOFF_MODELLE) as Kunststofftyp[]) {

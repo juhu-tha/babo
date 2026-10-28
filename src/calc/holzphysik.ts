@@ -13,6 +13,16 @@ export const FASERSAETTIGUNG = 30;
 export interface Schwindmasse { qt: number; qr: number; ql: number }
 
 /**
+ * Holzwerkstoffe (T6-HO-1, Umsetzung 29.10.2026): Quell- und Schwindmaße getrennt nach Plattenebene (qt quer, ql längs)
+ * und Dickenrichtung (qr). In Plattenebene sperren Furniere bzw. Strands; in Dickenrichtung quellen FSH und OSB etwa
+ * wie Vollholz radial oder stärker. Dickenwerte sind Lehrwerte (vorläufig, F-Freigabe), Plattenwerte Richtwerte.
+ */
+export const HOLZWERKSTOFF_SCHWINDMASSE: Readonly<Record<'FSH' | 'OSB', Schwindmasse>> = {
+  FSH: { qt: 0.05, ql: 0.01, qr: 0.24 },
+  OSB: { qt: 0.02, ql: 0.02, qr: 0.30 },
+};
+
+/**
  * Gleichgewichtsfeuchte u_gl [%] aus relativer Luftfeuchte φ [%] und Temperatur θ [°C] nach dem Sorptionsmodell von
  * Hailwood und Horrobin (1946) in der Anpassung von Simpson (1973) an die Tabellen des Forest Products Laboratory
  * (Wood Handbook, FPL-GTR-113, Kap. 3, Gl. 3-3; metrische Koeffizienten):
