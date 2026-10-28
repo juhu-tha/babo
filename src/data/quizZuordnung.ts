@@ -19,7 +19,6 @@ export const QUIZ_MODUL_ROUTE: Readonly<Record<string, ModulId>> = {
   bp_verkehrswegebau: 'bp_verkehr_rsto',
   kriechen_schwinden: 'hydratation_folgen',
   eigenspannungen: 'hydratation_folgen',
-  zfp: 'bauwerksuntersuchung',
   ki_baustoffe: 'ki_ueberblick',
 };
 
@@ -59,6 +58,6 @@ export const MODULTEST_IN_APP: ReadonlySet<string> = new Set([
   'holzbau_bauphysik', 'holzbau_bemessung', 'holzbau_konstruktion', 'holzbau_verbindung', 'holzbau_werkstoffe',
   'rechnung_bestand', 'rechnung_beton', 'rechnung_brandschutz', 'rechnung_holzbau', 'rechnung_mauerwerk',
   'rechnung_nachhaltigkeit', 'rechnung_schallschutz', 'rechnung_stahlbeton', 'rechnung_u_wert',
-  'spannbeton', 'stahlbeton_info',
+  'spannbeton_grundlagen', 'spannbeton_kennwerte', 'stahlbeton_info',
   'labor_sicherheit', 'zwang',
 ]);
