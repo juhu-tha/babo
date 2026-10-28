@@ -19,7 +19,7 @@
     "regelwerkskonformeParameter": " Regelwerkskonforme Parameter",
     "derMechanischVerpressteSofortentschalte": "Der mechanisch verpresste, sofortentschalte Betonwarenkörper ist bei richtiger Verlegung sehr dauerhaft.",
     "t50MpaKlasse": "≥ 5,0 MPa (Klasse 3, Kennz. U)",
-    "xf410Kg": "XF4 (≤ 1,0 kg/m² Abwitterung)",
+    "xf410Kg": "Klasse 3 (Kennz. D): Abwitterung ≤ 1,0 kg/m² im Mittel",
     "betonUndStahlbetonrohreNach": "Beton- und Stahlbetonrohre nach DIN EN 1916 tragen statisch schwere Erdlasten und bleiben durch gedichtete Muffen bei kleinen Setzungen beweglich.",
     "dinEn1916Din": "DIN EN 1916 / DIN V 1201",
     "prüfdruck05Bar": "Prüfdruck ≥ 0,5 bar (Kanal)",
@@ -98,7 +98,7 @@
       },
       "pipe-wall": {
         "title": "Hochfester Rohrkörper (Beton/Stahlbeton)",
-        "description": "Betonrohre werden aus hochfestem, dichten Beton (meist C40/50 bis C60/75) im Radialpress- oder Rüttelverfahren hergestellt. Sie sind dicht und tragen Erd- und Verkehrslasten (z. B. SLW 60) nach statischer Berechnung (z. B. ATV-DVWK-A 127).",
+        "description": "Betonrohre werden aus hochfestem, dichten Beton (meist C40/50 bis C60/75) im Radialpress- oder Rüttelverfahren hergestellt. Sie sind dicht und tragen Erd- und Verkehrslasten (z. B. SLW 60) nach statischer Berechnung (z. B. DWA-A 127-1, früher ATV-DVWK-A 127).",
         "tag": "Schwerlast-Festigkeit"
       },
       "pipe-spigot": {

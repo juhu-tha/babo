@@ -112,7 +112,7 @@ export default function Nawaro() {
           const muVal = parseFloat(p.mu.split('-')[1] || p.mu);
           if (p.id === 'hempcrete' || p.id === 'paludikultur') {
             score += 48; reason = inhalt.werte.kapillaraktivUndSorptionsfähigGeeignet;
-          } else if (muVal < 5) {
+          } else if (muVal <= 5) {
             score += 35; reason = inhalt.werte.diffusionsoffenNiedrigerWertErleichtert;
           } else {
             score += 20; reason = inhalt.werte.sorptionsfähigAberHöhererDiffusionswider;

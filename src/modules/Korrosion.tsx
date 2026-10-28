@@ -217,18 +217,18 @@ function LokalelementSimulator() {
             </div>
 
             {/* SVG Visualizer */}
-            <div className="relative w-full aspect-4/3 max-h-[380px] bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shadow-inner flex items-center justify-center">
+            <div className="relative w-full aspect-4/3 max-h-[380px] svg-buehne rounded-xl overflow-hidden border shadow-inner flex items-center justify-center">
               <svg width="100%" height="100%" viewBox="0 0 540 380" className="select-none">
                 <defs>
                   {/* Concrete matrix gradient */}
                   <linearGradient id="concreteCrossGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#94a3b8" />
-                    <stop offset="100%" stopColor="#475569" />
+                    <stop offset="0%" stopColor="var(--bu-beton-hell)" />
+                    <stop offset="100%" stopColor="var(--bu-beton)" />
                   </linearGradient>
 
                   {/* Steel rebar cross section */}
                   <radialGradient id="rebarGrad" cx="40%" cy="40%" r="60%">
-                    <stop offset="0%" stopColor="#e2e8f0" />
+                    <stop offset="0%" stopColor="#94a3b8" />
                     <stop offset="65%" stopColor="#64748b" />
                     <stop offset="100%" stopColor="#1e293b" />
                   </radialGradient>
@@ -244,29 +244,29 @@ function LokalelementSimulator() {
                 <rect x="30" y="40" width="480" height="300" fill="url(#concreteCrossGrad)" rx="4" />
 
                 {/* Concrete Top Surface Line */}
-                <line x1="30" y1="40" x2="510" y2="40" stroke="#0f172a" strokeWidth="4" />
-                <text x="270" y="30" fill="#cbd5e1" fontSize="11" fontWeight="bold" textAnchor="middle">
+                <line x1="30" y1="40" x2="510" y2="40" stroke="var(--bu-kontur)" strokeWidth="4" />
+                <text x="270" y="30" fill="var(--bu-text2)" fontSize="11" fontWeight="bold" textAnchor="middle">
                   Betonaußenfläche (Exposition Tausalz / Feuchte)
                 </text>
 
                 {/* Ingress arrows for Chloride & Moisture from top */}
                 <g opacity="0.8">
-                  <path d="M 120 12 L 120 36" stroke="#38bdf8" strokeWidth="2.5" markerEnd="url(#arrow)" />
-                  <text x="120" y="8" fill="#38bdf8" fontSize="10" fontWeight="bold" textAnchor="middle">Cl⁻</text>
+                  <path d="M 120 12 L 120 36" stroke="var(--bu-blau)" strokeWidth="2.5" markerEnd="url(#arrow)" />
+                  <text x="120" y="8" fill="var(--bu-blau)" fontSize="10" fontWeight="bold" textAnchor="middle">Cl⁻</text>
 
-                  <path d="M 270 12 L 270 36" stroke="#38bdf8" strokeWidth="2.5" markerEnd="url(#arrow)" />
-                  <text x="270" y="8" fill="#38bdf8" fontSize="10" fontWeight="bold" textAnchor="middle">H₂O</text>
+                  <path d="M 270 12 L 270 36" stroke="var(--bu-blau)" strokeWidth="2.5" markerEnd="url(#arrow)" />
+                  <text x="270" y="8" fill="var(--bu-blau)" fontSize="10" fontWeight="bold" textAnchor="middle">H₂O</text>
 
-                  <path d="M 420 12 L 420 36" stroke="#cbd5e1" strokeWidth="2.5" markerEnd="url(#arrow)" />
-                  <text x="420" y="8" fill="#cbd5e1" fontSize="10" fontWeight="bold" textAnchor="middle">O₂</text>
+                  <path d="M 420 12 L 420 36" stroke="var(--bu-text2)" strokeWidth="2.5" markerEnd="url(#arrow)" />
+                  <text x="420" y="8" fill="var(--bu-text2)" fontSize="10" fontWeight="bold" textAnchor="middle">O₂</text>
                 </g>
 
                 {/* Dimension Line of Concrete Cover c_nom */}
                 <g transform="translate(480, 0)">
-                  <line x1="0" y1="40" x2="0" y2={40 + coverMm * 3.5} stroke="#fde047" strokeWidth="2" />
-                  <line x1="-5" y1="40" x2="5" y2="40" stroke="#fde047" strokeWidth="2" />
-                  <line x1="-5" y1={40 + coverMm * 3.5} x2="5" y2={40 + coverMm * 3.5} stroke="#fde047" strokeWidth="2" />
-                  <text x="-12" y={40 + (coverMm * 3.5) / 2 + 4} fill="#fde047" fontSize="10" fontWeight="bold" textAnchor="end">
+                  <line x1="0" y1="40" x2="0" y2={40 + coverMm * 3.5} stroke="var(--bu-gelb)" strokeWidth="2" />
+                  <line x1="-5" y1="40" x2="5" y2="40" stroke="var(--bu-gelb)" strokeWidth="2" />
+                  <line x1="-5" y1={40 + coverMm * 3.5} x2="5" y2={40 + coverMm * 3.5} stroke="var(--bu-gelb)" strokeWidth="2" />
+                  <text x="-12" y={40 + (coverMm * 3.5) / 2 + 4} fill="var(--bu-gelb)" fontSize="10" fontWeight="bold" textAnchor="end">
                     cnom = {formatDeWert(coverMm)} mm
                   </text>
                 </g>
@@ -284,8 +284,8 @@ function LokalelementSimulator() {
                       {isSpalled && (
                         <path
                           d={`M 180 40 L 270 ${rebarCenterY - rebarRadius} L 360 40 Z`}
-                          fill="#475569"
-                          stroke="#ef4444"
+                          fill="var(--bu-beton-tief)"
+                          stroke="var(--bu-rot)"
                           strokeWidth="2"
                           strokeDasharray="4 2"
                           transform="translate(0, -12)"
@@ -298,7 +298,7 @@ function LokalelementSimulator() {
                           {/* Main Vertical Crack */}
                           <path
                             d={`M 270 ${rebarCenterY - rebarRadius - rustThickness} L 270 40`}
-                            stroke="#dc2626"
+                            stroke="var(--bu-fehler)"
                             strokeWidth={Math.min(6, 1.5 + (radialStressMPa / fctm) * 1.5)}
                             fill="none"
                           />
@@ -307,13 +307,13 @@ function LokalelementSimulator() {
                             <>
                               <path
                                 d={`M 240 ${rebarCenterY - rebarRadius * 0.7} L 180 40`}
-                                stroke="#dc2626"
+                                stroke="var(--bu-fehler)"
                                 strokeWidth={Math.min(4, 1 + radialStressMPa * 0.3)}
                                 fill="none"
                               />
                               <path
                                 d={`M 300 ${rebarCenterY - rebarRadius * 0.7} L 360 40`}
-                                stroke="#dc2626"
+                                stroke="var(--bu-fehler)"
                                 strokeWidth={Math.min(4, 1 + radialStressMPa * 0.3)}
                                 fill="none"
                               />
@@ -339,7 +339,7 @@ function LokalelementSimulator() {
                         cy={rebarCenterY}
                         r={rebarRadius}
                         fill="url(#rebarGrad)"
-                        stroke="#0f172a"
+                        stroke="var(--bu-kontur)"
                         strokeWidth="3"
                       />
 
@@ -350,7 +350,7 @@ function LokalelementSimulator() {
                           cy={rebarCenterY}
                           r={rebarRadius + 2}
                           fill="none"
-                          stroke="#10b981"
+                          stroke="var(--bu-gruen)"
                           strokeWidth="3"
                           strokeDasharray="none"
                         />
@@ -361,33 +361,33 @@ function LokalelementSimulator() {
                           <path
                             d={`M ${270 - rebarRadius + 4} ${rebarCenterY} A ${rebarRadius + 2} ${rebarRadius + 2} 0 1 0 ${270 + rebarRadius - 4} ${rebarCenterY}`}
                             fill="none"
-                            stroke="#10b981"
+                            stroke="var(--bu-gruen)"
                             strokeWidth="3"
                           />
                           {/* Active Anode Crater at top */}
                           <path
                             d={`M ${270 - 24} ${rebarCenterY - rebarRadius + 5} Q 270 ${rebarCenterY - rebarRadius + 18} ${270 + 24} ${rebarCenterY - rebarRadius + 5}`}
                             fill="#b91c1c"
-                            stroke="#ef4444"
+                            stroke="var(--bu-rot)"
                             strokeWidth="2"
                           />
-                          <text x="270" y={rebarCenterY - rebarRadius + 32} fill="#fca5a5" fontSize="10" fontWeight="bold" textAnchor="middle">
+                          <text x="270" y={rebarCenterY - rebarRadius + 32} fill="#fca5a5" stroke="#0f172a" strokeWidth="3" paintOrder="stroke" fontSize="10" fontWeight="bold" textAnchor="middle">
                             ANODE (Fe → Fe²⁺ + 2e⁻)
                           </text>
 
                           {/* Electron flow arrows inside rebar */}
-                          <path d="M 270 240 Q 230 250 200 230" stroke="#fde047" strokeWidth="2.5" markerEnd="url(#arrow)" fill="none" />
-                          <text x="235" y="270" fill="#fde047" fontSize="10" fontWeight="bold">e⁻ Strom</text>
+                          <path d="M 270 240 Q 230 250 200 230" stroke="var(--bu-gelb)" strokeWidth="2.5" markerEnd="url(#arrow)" fill="none" />
+                          <text x="235" y="270" fill="var(--bu-gelb)" fontSize="10" fontWeight="bold">e⁻ Strom</text>
 
                           {/* Cathode Zone Label at bottom/side */}
-                          <text x="270" y={rebarCenterY + 30} fill="#86efac" fontSize="10" fontWeight="bold" textAnchor="middle">
+                          <text x="270" y={rebarCenterY + 30} fill="#86efac" stroke="#0f172a" strokeWidth="3" paintOrder="stroke" fontSize="10" fontWeight="bold" textAnchor="middle">
                             KATHODE (O₂ + 2H₂O + 4e⁻ → 4OH⁻)
                           </text>
                         </g>
                       )}
 
                       {/* Rebar Diameter Label */}
-                      <text x="270" y={rebarCenterY + 4} fill="#ffffff" fontSize="13" fontWeight="bold" textAnchor="middle">
+                      <text x="270" y={rebarCenterY + 4} fill="#ffffff" stroke="#0f172a" strokeWidth="3" paintOrder="stroke" fontSize="13" fontWeight="bold" textAnchor="middle">
                         Ø 16 mm B500B
                       </text>
                     </g>
@@ -396,8 +396,8 @@ function LokalelementSimulator() {
 
                 {/* Chemical Reaction Equation Footnote inside canvas */}
                 <g transform="translate(40, 310)">
-                  <rect width="460" height="25" rx="4" fill="#0f172a" opacity="0.85" />
-                  <text x="230" y="16" fill="#38bdf8" fontSize="10" className="font-mono" textAnchor="middle">
+                  <rect width="460" height="25" rx="4" fill="var(--bu-panel)" opacity="0.92" stroke="var(--bu-panel-rand)" />
+                  <text x="230" y="16" fill="var(--bu-blau)" fontSize="10" className="font-mono" textAnchor="middle">
                     Rostbildung: Fe²⁺ + 2 OH⁻ → Fe(OH)₂  ⎯⎯(+O₂)⎯→  FeOOH (Volumen × 2 bis 6!)
                   </text>
                 </g>
