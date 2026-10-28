@@ -15,6 +15,7 @@ import { formatDeWert } from '../utils/numberFormat';
 import { kopfDatenSofort, ladeKopfDaten } from './modulKopfDaten';
 import { PruefVermerk } from '../components/ui/PruefVermerk';
 import { pruefvermerkFuer } from '../data/pruefvermerke';
+import { TeilmodulNavigation } from '../components/ui/TeilmodulNavigation';
 
 export default function ModulKopf({ activeTab, setActiveTab }: { activeTab: TabId; setActiveTab: (tab: TabId) => void }) {
   // Bereits geladen → sofort rendern; sonst bis zum Eintreffen der (vorgeladenen) Daten suspendieren,
@@ -36,6 +37,8 @@ export default function ModulKopf({ activeTab, setActiveTab }: { activeTab: TabI
     <>
       {/* Redaktionsmodell: „fachlich geprüft am … von …“ (Phase 6, AP 6.6); Status „offen“ öffentlich ausgeblendet (27.10.2026) */}
       {vermerk && <PruefVermerk vermerk={vermerk} />}
+      {/* aufgeteilte Module (src/registry/teilmodule.ts): „Teil 1 von 2“ mit Links auf alle Teile */}
+      <TeilmodulNavigation aktiv={activeTab} oeffne={oeffne} />
       {/* Lernziele, Kurzfassung, Ausprobieren und Annahmen als Schaltflächen nebeneinander (Entscheidung 28.10.2026) */}
       <ModulKopfLeiste key={activeTab} eintraege={eintraege} />
       {/* Haftungshinweis für alle Rechner-Module (Phase 1, AP 1.10); Annahmen und Grenzen stehen in der Kopfleiste */}

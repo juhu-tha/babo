@@ -283,7 +283,7 @@ Niveau B · 30 min · Vorwissen: –
 
 ### rechnung_bestand · Bauen im Bestand
 
-Niveau B/M · 45 min · Vorwissen: historisch, bauwerksuntersuchung, stahlbeton_bemessung
+Niveau B/M · 45 min · Vorwissen: historisch, bauwerksdiagnose, stahlbeton_bemessung
 
 - (Anwenden) Sie können historische Betonfestigkeitsklassen nach DIN 1045:1972 über Würfelnormierung und Zylinderumrechnung einer heutigen Festigkeitsklasse zuordnen.
 - (Anwenden) Sie können den Bemessungswert der Betondruckfestigkeit im Bestand mit und ohne Bohrkernprüfung berechnen.

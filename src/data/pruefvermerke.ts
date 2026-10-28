@@ -76,7 +76,9 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   baustoffkunde: { status: 'offen' },
   bauwerkserfassung: { status: 'offen' },
   bauwerksunters_monitoring: { status: 'offen' },
-  bauwerksuntersuchung: { status: 'offen' },
+  bauwerksdiagnose: { status: 'offen' },
+  pruefverfahren_katalog: { status: 'offen' },
+  zfp: { status: 'offen' },
   bestand: { status: 'offen' },
   beton_a_z: { status: 'offen' },
   betonkennwerte: { status: 'offen' },
@@ -243,7 +245,8 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   sommerlicher_waermeschutz: { status: 'offen' },
   sonderbetone: { status: 'offen' },
   sonstiges: { status: 'offen' },
-  spannbeton: { status: 'geprueft', am: '2026-10-28' }, // Zweitprüfung, freigegeben 28.10.2026 (docs/pruefung/module-tranche-2.md)
+  spannbeton_grundlagen: { status: 'geprueft', am: '2026-10-28' }, // Zweitprüfung, freigegeben 28.10.2026 (docs/pruefung/module-tranche-2.md; Modul „spannbeton“, seit 28.10. in zwei Teilen)
+  spannbeton_kennwerte: { status: 'geprueft', am: '2026-10-28' }, // Zweitprüfung, freigegeben 28.10.2026 (docs/pruefung/module-tranche-2.md; Modul „spannbeton“, seit 28.10. in zwei Teilen)
   stahl: { status: 'offen' },
   stahlbau_ec3: { status: 'geprueft', am: '2026-10-28' }, // Zweitprüfung, freigegeben 28.10.2026 (docs/pruefung/module-tranche-3.md)
   stahlbeton_bemessung: { status: 'offen' },

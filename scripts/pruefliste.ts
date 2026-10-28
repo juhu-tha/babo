@@ -128,7 +128,10 @@ export function erzeugePrueflisten(wurzel = process.cwd()): ClusterListe[] {
     const unauff = f.filter(q => !istAuffaellig(q, hinweise)).sort((a, b) => nachHash(a.id, b.id)).slice(0, STICHPROBE);
     const module = new Set(f.map(q => q.moduleId)).size;
     const zahl = (fn: (q: QuizFrage) => boolean) => auff.filter(fn).length;
-    const lz = Object.keys(LERNZIELE).filter(id => quizCluster(id)?.id === c.number).sort(nachHash).slice(0, STICHPROBE);
+    // Lernziel-Stichprobe: bereits entschiedene Module (Kreuze) bleiben vorn, damit neue Modul-IDs (z. B. Teilmodule,
+    // 28.10.2026) keine geprüften Einträge aus der Stichprobe verdrängen; aufgefüllt wird nach FNV-1a-Hash
+    const lzAlle = Object.keys(LERNZIELE).filter(id => quizCluster(id)?.id === c.number).sort(nachHash);
+    const lz = [...lzAlle.filter(id => kreuze.has(id)), ...lzAlle.filter(id => !kreuze.has(id))].slice(0, STICHPROBE);
 
     const teile: string[] = [
       `# Prüfliste Quiz – Cluster ${c.number}: ${c.name}`,

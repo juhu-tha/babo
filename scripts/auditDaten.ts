@@ -62,7 +62,7 @@ export const FACHGEBIETE: readonly { name: string; datei: RegExp; text: RegExp }
   { name: 'Prüfverfahren & Bauwerksdiagnostik', datei: /pruefverfahren|bauwerksuntersuchung|karsten|zfp/i, text: /Prüfverfahren|Rückprall|Karsten/ },
   { name: 'Verkehrswege- & Tunnelbau', datei: /verkehrswegebau|tunnel|tiefbau|asphalt/i, text: /Tunnel|ZTV-ING|RStO|DWA-A 138|Rigole|f_Ort/ },
   { name: 'Brandschutz', datei: /brandschutz/i, text: /DIN EN 1992-1-2|Heißbemessung|Feuerwiderstand/ },
-  { name: 'Beton & Stahlbeton', datei: /biegung|kennwerte|mischung|hydratation|festbeton|spannbeton|beton|lebensdauer/i, text: /DIN EN 1992|DIN 1045|DIN EN 197|C55\/67|C90\/105|fib Bulletin 34|Reifefunktion|de Vree|Karbonatisierung|Chlorid|Konsistenz|Grenzabmaß/ },
+  { name: 'Beton & Stahlbeton', datei: /biegung|kennwerte|mischung|hydratation|festbeton|spannbeton|beton|lebensdauer/i, text: /DIN EN 1992|DIN 1045|DIN EN 197|C55\/67|C90\/105|fib Bulletin 34|Reifefunktion|de Vree|Karbonatisierung|Chlorid|Konsistenz|Grenzabmaß|Stahlbetonbauteile/ },
 ];
 export const FACHGEBIET_SONST = 'Weitere';
 

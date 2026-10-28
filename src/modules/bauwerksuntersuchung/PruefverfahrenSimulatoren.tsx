@@ -746,7 +746,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 : inhalt.werte.passivierungsschutzBestehtNochFür}
             </div>
             <LebensdauerUebernehmen aktiv={carbCalc.gueltig && carbCalc.k > 0} art="bauwerk" className="pt-3"
-              daten={{ quelle: 'bauwerksuntersuchung', mech: 'karbonatisierung', deckM: elementCover, kNat: carbCalc.k }} />
+              daten={{ quelle: 'pruefverfahren_katalog', mech: 'karbonatisierung', deckM: elementCover, kNat: carbCalc.k }} />
           </div>
         </div>
       )}

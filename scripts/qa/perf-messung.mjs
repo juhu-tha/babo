@@ -31,7 +31,7 @@ const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../.
 const ai = n => { const i = process.argv.indexOf(n); return i > 0 ? process.argv[i + 1] : undefined; };
 const BASIS = (ai('--basis') ?? 'http://localhost:4206/').replace(/\/?$/, '/');
 const LAEUFE = Number(ai('--laeufe') ?? 3);
-const ROUTEN = ai('--routen')?.split(',') ?? ['start', 'mischungsberechnung', 'biegebemessung', 'bauphysik', 'feuchteschutz', 'oekobilanz_lca', 'abfaelle', 'spannbeton', 'glas', 'aufgaben_trainer'];
+const ROUTEN = ai('--routen')?.split(',') ?? ['start', 'mischungsberechnung', 'biegebemessung', 'bauphysik', 'feuchteschutz', 'oekobilanz_lca', 'abfaelle', 'spannbeton_grundlagen', 'glas', 'aufgaben_trainer'];
 const ZIEL = { lcp: 2500, cls: 0.1, tbt: 200, klick: 200 };
 
 // Chrome DevTools „Fast 3G“ (wie Lighthouse-Vorgabe der DevTools): 562,5 ms RTT, 1,44 Mbit/s ↓, 675 kbit/s ↑
