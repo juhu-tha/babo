@@ -188,7 +188,7 @@ export default function BpHolzprodukte() {
               <Info size={14} className="text-shiraz" />
               <span><MdText text={inhalt.texte.nutzungsklassenNklNachEc} /></span>
             </div>
-            <p className="font-normal text-[11px] text-slate-900/80"><MdText text={inhalt.texte.nkl1HolzfeuchteEntspricht} /></p>
+            <p className="font-normal text-[11px] text-text-main/80"><MdText text={inhalt.texte.nkl1HolzfeuchteEntspricht} /></p>
           </div>
         </div>
 

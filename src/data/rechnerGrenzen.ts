@@ -458,7 +458,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   bp_holzprodukte: {
     kurz: "Einfeldbalken unter Gleichlast aus Vollholz oder BSH: Biegung, Schub mit k_cr sowie w_inst, w_fin und w_net,fin mit k_def nach DIN EN 1995-1-1 mit NA (DE).",
     grenzen: [
-      "k_mod nach Tab. 3.1 aus NKL und KLED, γ_G = 1,35, γ_Q = 1,5; eine Nutzlast (ψ₂ = 0,3, Kategorie A); nachgewiesen werden 1,35·g + 1,5·q (k_mod der Nutzlast) und die ständige Kombination 1,35·g (k_mod ständig), maßgebend die größere Ausnutzung.",
+      "k_mod nach Tab. 3.1, γ_G = 1,35, γ_Q = 1,5; eine Nutzlast (ψ₂ = 0,3, Kategorie A); nachgewiesen werden 1,35·g + 1,5·q (k_mod der Nutzlast) und 1,35·g (k_mod ständig), maßgebend die größere Ausnutzung.",
       "w_fin = w_G·(1 + k_def) + w_Q·(1 + ψ₂·k_def) ≤ l/200, w_net,fin ≤ l/300 ohne Überhöhung, w_inst ≤ l/300 (Grenzwerte NA, vorläufig); Schwingungen fehlen.",
       "Kein Kipp-, Auflager- oder Querdrucknachweis; Rohdichten für das Eigengewicht als Mittelwerte.",
     ],
