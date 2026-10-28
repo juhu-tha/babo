@@ -261,7 +261,7 @@
     "grenzzuständeDerTragfähigkeitUnd": "Grenzzustände der Tragfähigkeit und Gebrauchstauglichkeit nach Eurocode 2",
     "dasVerbundverhaltenImMassivbau": "Das Verbundverhalten im Massivbau",
     "derMassivbauStahlbetonSpannbeton": "Der Massivbau (Stahlbeton, Spannbeton, Carbonbeton) verbindet die hohe Druckfestigkeit des Betons mit der Zugfestigkeit der Bewehrung (Betonstahl, Carbon). Voraussetzung sind ein ausreichender Verbund und bei Stahl eine ähnliche Wärmedehnung.",
-    "inDiesemBerechnungsUnd": "In diesem Berechnungs- und Konstruktionsmodul analysieren wir die Rissbreitenbegrenzung, Biegung mit und ohne Längskraft, ermitteln Schubbemessungen (Querkraft), dimensionieren druckbelastete Stützen nach Theorie II. Ordnung und erfassen Durchstanzrisiken im Stützenbereich.",
+    "inDiesemBerechnungsUnd": "In diesem Berechnungs- und Konstruktionsmodul analysieren wir die Rissbreitenbegrenzung, Biegung mit und ohne Längskraft, ermitteln Schubbemessungen (Querkraft), bemessen Stützen nach Theorie I. Ordnung mit Imperfektion und Mindestausmitte (Grenzschlankheit als Hinweis, kein Nachweis nach Theorie II. Ordnung) und erfassen Durchstanzrisiken im Stützenbereich.",
     "kontrolleDerRechnerischenRissbreiten": "Kontrolle der rechnerischen Rissbreiten w_k im Grenzzustand der Gebrauchstauglichkeit.",
     "dinEn19921": "DIN EN 1992-1-1 (EC2) Kap. 7.3",
     "auslegungEinerDeckenplatteBzgl": "Auslegung einer Deckenplatte bzgl. Mindestbewehrung zur Begrenzung von Rissen infolge abfließender Hydratationswärme.",
@@ -276,7 +276,7 @@
     "nachweisDerDruckstrebenfestigkeitVrd": "Nachweis der Druckstrebenfestigkeit VRd,max zur Vermeidung von Stegbruch.",
     "interaktionsdiagrammFürBiegungMit": "Interaktionsdiagramm für Biegung mit Längskraft, Mindestausmitte und Prüfung der Grenzschlankheit (Theorie II. Ordnung nur als Hinweis).",
     "dinEn199215": "DIN EN 1992-1-1 Kap. 5.8",
-    "tragfähigkeitsnachweisEinerSchlankenPend": "Tragfähigkeitsnachweis einer schlanken Pendelstütze mit Imperfektionen.",
+    "tragfähigkeitsnachweisEinerSchlankenPend": "Vorbemessung einer Pendelstütze mit Imperfektion und Prüfung der Grenzschlankheit.",
     "abschätzungDesDurchstanzkriteriumsAn": "Abschätzung des Durchstanzkriteriums an Flachdecken im kritischen Rundschnitt.",
     "dinEn199216": "DIN EN 1992-1-1 Kap. 6.4",
     "dimensionierungEinerDurchstanzbewehrungZ": "Dimensionierung einer Durchstanzbewehrung (z.B. Dübelleisten) zur Stützenauflagerung.",
@@ -965,6 +965,12 @@
       },
       {
         "title": "DAfStb-Richtlinie: Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie)"
+      },
+      {
+        "title": "DIN 1045-1000:2023-08 (Grundlagen und Betonbauqualitätsklassen BBQ)"
+      },
+      {
+        "title": "DIN 1045-2:2023-08 (Beton) und DIN 1045-3:2023-08 (Bauausführung; Überwachungsklassen ÜK 1 und ÜK 2)"
       }
     ],
     "MODULES_DATA.stahlbeton.formeln": [

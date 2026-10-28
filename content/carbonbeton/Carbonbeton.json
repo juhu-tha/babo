@@ -11,7 +11,8 @@
     "schematischeDarstellungQuerschnittDehnun": "Schematische Darstellung: Querschnitt & Dehnungen",
     "carbonbetonErmöglichtSehrGeringe": "Carbonbeton ermöglicht sehr geringe Betondeckungen, da Carbon nicht rostet. Dies führt zu deutlich schlankeren Bauteilen (geringeres h) bei gleichem Hebelarm (z) im Vergleich zu Stahlbeton.",
     "imGegensatzZuBetonstahl": "Im Gegensatz zu Betonstahl (B500B), der nach Erreichen der Fließgrenze ein duktiles Plateau aufweist, verhält sich Carbonbewehrung bis zum Bruch streng linear-elastisch. Dies erfordert besondere Sicherheitskonzepte bei der Bemessung, da sich ein Versagen nicht durch große Verformungen ankündigt.",
-    "materialHerstellungUndAnwendungen": "Material, Herstellung und Anwendungen von Carbonbeton finden Sie im Modul "
+    "materialHerstellungUndAnwendungen": "Material, Herstellung und Anwendungen von Carbonbeton finden Sie im Modul ",
+    "regelwerkCarbonbeton": "**Regelwerk:** Für Bauteile mit nichtmetallischer Bewehrung gilt die DAfStb-Richtlinie „Betonbauteile mit nichtmetallischer Bewehrung“ (2024-01): Teil 1 (Bemessung) folgt dem Aufbau von DIN EN 1992-1-1 mit NA, Teil 3 (Bauausführung) DIN EN 13670 mit DIN 1045-3. Der Beton richtet sich nach DIN EN 206 mit DIN 1045-2:2023-08 (kein Leichtbeton), die Betonbauqualitätsklasse (BBQ-N, BBQ-E oder BBQ-S) ist nach DIN 1045-1000:2023-08 festzulegen. Für die Überwachung kennt DIN 1045-3:2023-08 nur noch ÜK 1 und ÜK 2; die frühere ÜK 3 ist entfallen. Die Bewehrungsprodukte brauchen Verwendbarkeits- bzw. Anwendbarkeitsnachweise (Teil 5 der Richtlinie; abZ bzw. aBG des DIBt)."
   },
   "werte": {
     "betonstahlB500b": "Betonstahl (B500B)",
@@ -68,6 +69,15 @@
       },
       {
         "title": "DIN EN 1992-1-1:2011-01 + NA:2013-04 (Eurocode 2, Grundlage der Bemessungslogik)"
+      },
+      {
+        "title": "DIN 1045-1000:2023-08 (Grundlagen und Betonbauqualitätsklassen BBQ)"
+      },
+      {
+        "title": "DIN 1045-2:2023-08 (Beton – Anwendungsregeln zu DIN EN 206)"
+      },
+      {
+        "title": "DIN 1045-3:2023-08 (Bauausführung; Überwachungsklassen ÜK 1 und ÜK 2)"
       }
     ],
     "Carbonbeton.literatur": [
