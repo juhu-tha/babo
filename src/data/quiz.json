@@ -38734,6 +38734,42 @@
     }
   },
   {
+    "id": "qn_lca_rechner_fe2",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "lca_rechner",
+    "moduleTitle": "LCA-Rechner & QNG-Nachweis",
+    "topic": "Funktionelle Einheit berechnen",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 15978",
+    "question": "Eine Dämmschicht (deklarierte Einheit 1 kg; A1–A3 + C3/C4 = 5,0 kg CO₂-Äq./kg) hat ρ = 20 kg/m³, d = 0,15 m und eine Nutzungsdauer von 40 Jahren. Wie groß ist das GWP je m² Wand über 50 Jahre?",
+    "options": [
+      "15,0 kg CO₂-Äq./m²",
+      "18,8 kg CO₂-Äq./m²",
+      "30,0 kg CO₂-Äq./m²",
+      "45,0 kg CO₂-Äq./m²"
+    ],
+    "correctIdx": 2,
+    "explanation": "Referenzfluss 0,15 m · 20 kg/m³ = 3,0 kg/m²; einmalig 3,0 · 5,0 = 15,0 kg CO₂-Äq./m². Ersatzmaßnahmen n = ⌈50/40⌉ − 1 = 1, also 15,0 · (1 + 1) = 30,0 kg CO₂-Äq./m².",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Das ist nur die einmalige Herstellung und Entsorgung – der Ersatz nach 40 Jahren (B4) fehlt.",
+      "Anteilig 50/40 hochgerechnet: Ersatz erfolgt in ganzen Maßnahmen, hier einmal.",
+      "",
+      "Zwei Ersatzmaßnahmen wären erst bei einer Nutzungsdauer unter 25 Jahren nötig."
+    ],
+    "gapAnalysis": {
+      "topic": "Funktionelle Einheit berechnen",
+      "misconception": "Die Nutzungsdauer wird bei der Umrechnung auf die funktionelle Einheit vergessen oder anteilig angesetzt.",
+      "coreRule": "GWP_FE = d · ρ · (A1–A3 + C3/C4) · (1 + n), n = ⌈T/ND⌉ − 1.",
+      "actionableAdvice": "Rechnen Sie im Wandaufbau-Konfigurator des Moduls LCA-Rechner & QNG-Nachweis die Tabelle „Bezugsgröße und Umrechnung auf die funktionelle Einheit“ nach.",
+      "targetModuleTab": "lca_rechner",
+      "targetModuleLabel": "LCA-Rechner & QNG-Nachweis"
+    },
+    "verified": false
+  },
+  {
     "id": "qn_lca_ingenieurbau_x_2",
     "category": "nachhaltigkeit",
     "categoryLabel": "Zirkularität & Ökobilanzierung",
@@ -46884,6 +46920,42 @@
       "am": "2026-10-25",
       "ergebnis": "ok"
     }
+  },
+  {
+    "id": "qn_oekobilanz_lca_fe1",
+    "category": "nachhaltigkeit",
+    "categoryLabel": "Zirkularität & Ökobilanzierung",
+    "moduleId": "oekobilanz_lca",
+    "moduleTitle": "Ökobilanzierung (LCA): Grundlagen",
+    "topic": "Funktionelle und deklarierte Einheit",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 15804+A2",
+    "question": "Die EPD einer Mineralwolle nennt das GWP je 1 m³, die EPD eines EPS-Dämmstoffs je 1 kg. Was ist für einen fachgerechten Vergleich der beiden Dämmstoffe zuerst erforderlich?",
+    "options": [
+      "Beide auf 1 m² Wand mit gleichem U-Wert über 50 Jahre umrechnen.",
+      "Den Dämmstoff mit dem kleineren GWP-Zahlenwert als günstiger werten.",
+      "Beide Werte über die Rohdichte auf je 1 m³ Dämmstoff umrechnen.",
+      "Nur die Entsorgung C3/C4 beider Dämmstoffe miteinander vergleichen."
+    ],
+    "correctIdx": 0,
+    "explanation": "Die deklarierten Einheiten (1 m³, 1 kg) sind reine Produktmengen ohne Funktion. Vergleichbar wird erst die funktionelle Einheit: 1 m² Bauteil mit gleichem Wärmeschutz über den Betrachtungszeitraum, also Dicke aus U-Wert und λ, Masse aus Dicke × Rohdichte und Ersatz nach Nutzungsdauer.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Die Zahlenwerte beziehen sich auf verschiedene Einheiten (1 m³ und 1 kg) und sind direkt nicht vergleichbar.",
+      "Gleiches Volumen heißt nicht gleiche Funktion: Für denselben U-Wert sind je nach λ unterschiedliche Dicken nötig.",
+      "Herstellung A1–A3 und Ersatz B4 fehlen; der Vergleich muss die gesamte Bilanz je funktioneller Einheit umfassen."
+    ],
+    "gapAnalysis": {
+      "topic": "Funktionelle und deklarierte Einheit",
+      "misconception": "EPD-Werte mit unterschiedlicher deklarierter Einheit werden direkt verglichen.",
+      "coreRule": "Vergleich nur je funktioneller Einheit: 1 m² Bauteil mit gleicher Leistung über 50 a.",
+      "actionableAdvice": "Arbeiten Sie den Kasten „Funktionelle und deklarierte Einheit“ im Modul Ökobilanzierung (LCA): Grundlagen noch einmal durch.",
+      "targetModuleTab": "oekobilanz_lca",
+      "targetModuleLabel": "Ökobilanzierung (LCA): Grundlagen"
+    },
+    "verified": false
   },
   {
     "id": "qn_stahlbau_ec3_1",

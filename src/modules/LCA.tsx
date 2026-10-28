@@ -4,6 +4,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { BlockMath, InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import IngenieurbauLCA from './lca/IngenieurbauLCA';
+import BezugseinheitKasten from './lca/BezugseinheitKasten';
 import inhalt from '@/content/lca/LCA.json';
 import { einzelbaustoffA1A4 } from '@/src/calc/lca';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
@@ -41,6 +42,7 @@ export default function LCA() {
     return {
       materialName: selectedMat.name,
       materialQuantityText,
+      deklarierteEinheit: selectedMat.einheit,
       weightInTonnes: r.masse,
       gwpA1A3: r.gwpA1A3,
       gwpA4: r.gwpA4,
@@ -154,6 +156,9 @@ export default function LCA() {
               </div>
             </div>
           </div>
+
+          {/* Funktionelle und deklarierte Einheit (Auftrag 28.10.2026) */}
+          <BezugseinheitKasten />
         </div>
       )}
 
@@ -860,6 +865,12 @@ export default function LCA() {
                   </div>
 
                   <EingabeHinweise hinweise={calcResults.hinweise} />
+
+                  {/* Bezugsgröße des Ergebnisses: deklarierte Einheit der EPD (Auftrag 28.10.2026) */}
+                  <p className="mb-4 p-3 bg-sky-50 border border-sky-200 rounded-lg text-[11px] text-slate-800 leading-relaxed" data-testid="bezug-einzelbaustoff">
+                    <MdText text={inhalt.texte.bezugEinzelBezogen} /><strong>{calcResults.deklarierteEinheit}</strong><MdText text={inhalt.texte.bezugEinzelRechnung} />
+                    <span className="font-mono">{formatDeWert(calcQuantity)} × {calcResults.deklarierteEinheit}</span>. <MdText text={inhalt.texte.bezugEinzelKeineFe} />
+                  </p>
 
                   {/* Impact split */}
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 text-center">

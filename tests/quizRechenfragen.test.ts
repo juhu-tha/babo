@@ -10,6 +10,7 @@ import { formatDeZahl } from '../src/utils/numberFormat';
 import { fdAusFk, phi2, bemesseWandVereinfacht, ZETA_MW, GAMMA_M_MW, SCHLANKHEIT_MAX, H_ERWEITERT_INNEN_MAX } from '../src/calc/mauerwerk';
 import { rwMassiv, wandSchalldaemmung, PUTZ_MASSE_BEIDSEITIG } from '../src/calc/schall';
 import { istSieblinie, regelDurchgang } from '../src/calc/mischung';
+import { funktionelleEinheitBauteil } from '../src/calc/lca';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -155,6 +156,25 @@ const OHNE_RECHNUNG: Record<string, string> = {};
     id: 'qn_mischungsberechnung_4',
     richtig: 'Zwischen A16 und B16 – günstiger Bereich',
     frage: [w('A'), w('B'), w('C'), '45 % bei 4 mm', '65 % bei 8 mm'],
+  });
+}
+
+// ------------------------------------------------------------------------------------------------
+// LCA (src/calc/lca.ts): deklarierte Einheit 1 kg → funktionelle Einheit 1 m² Wand über 50 a
+// ------------------------------------------------------------------------------------------------
+{
+  const s = { name: 'Dämmung', einheit: 'kg' as const, dickeM: 0.15, rohdichte: 20, gwpA1A3: 3.0, gwpC: 2.0, nutzungsdauer: 40 };
+  const fe = funktionelleEinheitBauteil([s], 50);
+  const ohneErsatz = funktionelleEinheitBauteil([{ ...s, nutzungsdauer: 50 }], 50);
+  const zweiErsatz = funktionelleEinheitBauteil([{ ...s, nutzungsdauer: 20 }], 50);
+  const opt = (x: number) => `${z(x, 1)} kg CO₂-Äq./m²`;
+  // Distraktoren: ohne Ersatz, anteilig 50/40, zwei Ersatzmaßnahmen
+  PRUEFUNGEN.push({
+    id: 'qn_lca_rechner_fe2',
+    richtig: opt(fe.summe),
+    optionen: [opt(ohneErsatz.summe), opt(ohneErsatz.summe * 50 / 40), opt(fe.summe), opt(zweiErsatz.summe)],
+    frage: ['5,0 kg CO₂-Äq./kg', 'ρ = 20 kg/m³', 'd = 0,15 m', '40 Jahren'],
+    erklaerung: ['3,0 kg/m²', 'n = ⌈50/40⌉ − 1 = 1'],
   });
 }
 

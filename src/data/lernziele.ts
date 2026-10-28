@@ -1081,6 +1081,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
       { stufe: "Verstehen", text: "die Lebenszyklusmodule A bis D nach DIN EN 15978 und DIN EN 15804 den Phasen eines Bauwerks zuordnen und die Systemgrenzen erläutern." },
       { stufe: "Verstehen", text: "die Wirkungsindikatoren GWP, ODP, AP, EP und POCP unterscheiden und ihre Einheiten angeben." },
       { stufe: "Anwenden", text: "mit der EPD-Musterdatenbank das GWP der Herstellung (A1–A3) und des Transports (A4) einer Materialmenge berechnen." },
+      { stufe: "Anwenden", text: "deklarierte und funktionelle Einheit unterscheiden und EPD-Werte über Dicke, Rohdichte und Austauschzyklen auf 1 m² Bauteil über 50 Jahre umrechnen." },
       { stufe: "Analysieren", text: "den Zementanteil am GWP eines Transportbetons abschätzen und die Wirkung der Zementart auf das Ergebnis vergleichen." },
     ],
   },
