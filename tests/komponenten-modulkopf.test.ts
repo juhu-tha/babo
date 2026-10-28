@@ -4,6 +4,7 @@ const { ModulTest } = await import('../src/components/quiz/ModulTest');
 const { ModulLernziele } = await import('../src/components/ui/ModulLernziele');
 const { ErkundungsAuftrag } = await import('../src/components/ui/ErkundungsAuftrag');
 const { ModulKurzfassung } = await import('../src/components/ui/ModulKurzfassung');
+const { ModulKopfLeiste } = await import('../src/components/ui/ModulKopfLeiste');
 const { QUIZ_QUESTIONS } = await import('../src/data/quizData');
 const { LERNZIELE } = await import('../src/data/lernziele');
 const { ERKUNDUNG } = await import('../src/data/erkundung');
@@ -135,6 +136,23 @@ t.test('ModulKurzfassung: standardmäßig eingeklappt, 5 Punkte in Reihenfolge i
 t.test('ModulKurzfassung: Sonderzeichen werden maskiert', () => {
   const html = rendere(h(ModulKurzfassung, { punkte: ['w/z < 0,45 & <b>fett</b>'] }));
   sicher(html.includes('&lt;b&gt;') && !html.includes('<b>'), 'HTML nicht maskiert');
+});
+
+// ── ModulKopfLeiste (Entscheidung 28.10.2026) ────────────────────────────────
+t.test('ModulKopfLeiste: Schaltflächen nebeneinander, alles eingeklappt, Inhalte im HTML (hidden) und verknüpft', () => {
+  const html = rendere(h(ModulKopfLeiste, { eintraege: [
+    { id: 'lernziele', label: 'Lernziele', icon: null, inhalt: h('p', null, 'Ziel A') },
+    { id: 'kurzfassung', label: 'Das Wichtigste in 5 Punkten', icon: null, inhalt: h('p', null, 'Punkt B') },
+    { id: 'ausprobieren', label: 'Ausprobieren', zusatz: '3', icon: null, inhalt: h('p', null, 'Auftrag C') },
+    { id: 'annahmen', label: 'Annahmen des Rechners', zusatz: '4', icon: null, inhalt: h('p', null, 'Grenze D') },
+  ] }));
+  sicher(html.includes('role="group"') && anzahl(html, /aria-expanded="false"/) === 4, '4 eingeklappte Schaltflächen erwartet');
+  sicher(anzahl(html, /aria-controls="/) === 4 && anzahl(html, /<section[^>]*hidden=""/) === 4, 'Bereiche fehlen oder nicht hidden');
+  const s = text(html);
+  sicher(['Ziel A', 'Punkt B', 'Auftrag C', 'Grenze D', 'Ausprobieren', '(3)', 'Annahmen des Rechners', '(4)'].every(x => s.includes(x)), 'Inhalte/Beschriftungen fehlen');
+});
+t.test('ModulKopfLeiste: ohne Einträge keine Ausgabe', () => {
+  sicher(rendere(h(ModulKopfLeiste, { eintraege: [] })) === '', 'leere Ausgabe erwartet');
 });
 
 t.ende();

@@ -41,4 +41,17 @@ export function CalculatorDisclaimerBanner({
   );
 }
 
+/** nur „Annahmen und Grenzen“ (für die Kopfleiste); null, wenn nichts anzuzeigen ist */
+export const hatGrenzen = (g?: RechnerGrenzen): g is RechnerGrenzen => !!g && g.rechnet !== false && g.grenzen.length > 0;
+export function RechnerGrenzenListe({ grenzen }: { grenzen: RechnerGrenzen }) {
+  return (
+    <>
+      <p className="leading-snug">{grenzen.kurz}</p>
+      <ul className="mt-1.5 list-disc pl-5 space-y-0.5 leading-snug">
+        {grenzen.grenzen.map((g, i) => <li key={i}>{g}</li>)}
+      </ul>
+    </>
+  );
+}
+
 export default CalculatorDisclaimerBanner;

@@ -143,7 +143,7 @@ export function modulVorladenPlugin(wurzel = process.cwd()): Plugin {
  */
 const MODUL_BASIS: RegExp[] = [
   /\/src\/routing\/(ModulKopf\.tsx|modulKopfDaten\.ts)$/,
-  /\/src\/components\/ui\/(ModuleFooter|FormulaText|FormulaDerivationBox|ModulLernziele|ErkundungsAuftrag|ModulKurzfassung|CalculatorDisclaimerBanner)\.tsx$/,
+  /\/src\/components\/ui\/(ModuleFooter|FormulaText|FormulaDerivationBox|ModulLernziele|ErkundungsAuftrag|ModulKurzfassung|ModulKopfLeiste|CalculatorDisclaimerBanner)\.tsx$/,
   /\/src\/components\/quiz\/ModulTest\.tsx$/,
   /\/src\/data\/quizLader\.ts$/,
   /\/src\/utils\/mischeAntworten\.ts$/,
