@@ -266,7 +266,7 @@
 - Hinweis: Das CRREM-Beispiel rechnet linear 52 → 18 (2020 bis 2030). Der Simulator im Modul `lca_regulatorik` nutzt Stützwerte 52 → 38 (2025) → 18. Beides ist als Lehrwert gekennzeichnet.
 
 **Umsetzung 29.10.2026**
-- **GT-E:** Gebäudetyp E überall als „Gesetzentwurf, Stand 10/2026“ bezeichnet (Rechtsrahmen-Kompendium: Kurzname, Norm, Rechtsform, Zusammenfassung, Meilensteine; Daten & Regeln Reiter 5; Leitfaden-Daten; Praxis-Reiter; Moduleinleitung Nachhaltigkeit). Der Regierungsentwurf 2024 (BT-Drs. 20/13959, § 650o BGB-E) ist als erledigt ausgewiesen. Quelle: Modultext Praxis/Gebäudetyp E (Stand Prüfung 28.10.).
+- **GT-E:** Gebäudetyp E überall als „Gesetzentwurf, Stand 10/2026“ bezeichnet (Rechtsrahmen-Kompendium: Kurzname, Norm, Zusammenfassung, Meilensteine; Daten & Regeln Reiter 5; Leitfaden-Daten; Praxis-Reiter; Moduleinleitung Nachhaltigkeit). Der Regierungsentwurf 2024 (BT-Drs. 20/13959, § 650o BGB-E) ist als erledigt ausgewiesen. Quelle: Modultext Praxis/Gebäudetyp E (Stand Prüfung 28.10.).
 
 **Empfehlung:** freigabefähig nach Korrektur T11-NDR-1 bis -4 (F-Stelle Gebäudetyp E).
 
