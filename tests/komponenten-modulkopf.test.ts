@@ -4,6 +4,7 @@ const { ModulTest } = await import('../src/components/quiz/ModulTest');
 const { ModulLernziele } = await import('../src/components/ui/ModulLernziele');
 const { ErkundungsAuftrag } = await import('../src/components/ui/ErkundungsAuftrag');
 const { ModulKurzfassung } = await import('../src/components/ui/ModulKurzfassung');
+const { ModulKopfLeiste } = await import('../src/components/ui/ModulKopfLeiste');
 const { QUIZ_QUESTIONS } = await import('../src/data/quizData');
 const { LERNZIELE } = await import('../src/data/lernziele');
 const { ERKUNDUNG } = await import('../src/data/erkundung');
@@ -124,10 +125,10 @@ t.test('ErkundungsAuftrag: alle Datensätze rendern fehlerfrei', () => {
 
 // ── ModulKurzfassung ─────────────────────────────────────────────────────────
 const [kfId, kf] = Object.entries(KURZFASSUNG)[0];
-t.test('ModulKurzfassung: standardmäßig aufgeklappt mit 5 Punkten in Reihenfolge', () => {
+t.test('ModulKurzfassung: standardmäßig eingeklappt, 5 Punkte in Reihenfolge im HTML (hidden)', () => {
   const html = rendere(h(ModulKurzfassung, { punkte: kf }));
   const s = text(html);
-  sicher(html.includes('aria-expanded="true"') && html.includes('aria-label="Das Wichtigste in 5 Punkten"'), 'ARIA/Label fehlt');
+  sicher(html.includes('aria-expanded="false"') && html.includes('aria-controls=') && html.includes('hidden=""') && html.includes('aria-label="Das Wichtigste in 5 Punkten"'), 'ARIA/Label/hidden fehlt');
   sicher(anzahl(html, /<li>/) === 5, `${kfId}: 5 Listenpunkte erwartet`);
   const pos = kf.map(p => s.indexOf(kompakt(p)));
   sicher(pos.every((p, i) => p >= 0 && (i === 0 || p > pos[i - 1])), 'Punkte fehlen oder falsche Reihenfolge');
@@ -135,6 +136,23 @@ t.test('ModulKurzfassung: standardmäßig aufgeklappt mit 5 Punkten in Reihenfol
 t.test('ModulKurzfassung: Sonderzeichen werden maskiert', () => {
   const html = rendere(h(ModulKurzfassung, { punkte: ['w/z < 0,45 & <b>fett</b>'] }));
   sicher(html.includes('&lt;b&gt;') && !html.includes('<b>'), 'HTML nicht maskiert');
+});
+
+// ── ModulKopfLeiste (Entscheidung 28.10.2026) ────────────────────────────────
+t.test('ModulKopfLeiste: Schaltflächen nebeneinander, alles eingeklappt, Inhalte im HTML (hidden) und verknüpft', () => {
+  const html = rendere(h(ModulKopfLeiste, { eintraege: [
+    { id: 'lernziele', label: 'Lernziele', icon: null, inhalt: h('p', null, 'Ziel A') },
+    { id: 'kurzfassung', label: 'Das Wichtigste in 5 Punkten', icon: null, inhalt: h('p', null, 'Punkt B') },
+    { id: 'ausprobieren', label: 'Ausprobieren', zusatz: '3', icon: null, inhalt: h('p', null, 'Auftrag C') },
+    { id: 'annahmen', label: 'Annahmen des Rechners', zusatz: '4', icon: null, inhalt: h('p', null, 'Grenze D') },
+  ] }));
+  sicher(html.includes('role="group"') && anzahl(html, /aria-expanded="false"/) === 4, '4 eingeklappte Schaltflächen erwartet');
+  sicher(anzahl(html, /aria-controls="/) === 4 && anzahl(html, /<section[^>]*hidden=""/) === 4, 'Bereiche fehlen oder nicht hidden');
+  const s = text(html);
+  sicher(['Ziel A', 'Punkt B', 'Auftrag C', 'Grenze D', 'Ausprobieren', '(3)', 'Annahmen des Rechners', '(4)'].every(x => s.includes(x)), 'Inhalte/Beschriftungen fehlen');
+});
+t.test('ModulKopfLeiste: ohne Einträge keine Ausgabe', () => {
+  sicher(rendere(h(ModulKopfLeiste, { eintraege: [] })) === '', 'leere Ausgabe erwartet');
 });
 
 t.ende();

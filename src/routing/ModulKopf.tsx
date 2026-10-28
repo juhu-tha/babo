@@ -5,10 +5,13 @@
 import React from 'react';
 import type { TabId } from '../contexts/TabContext';
 import { MODUL_KERN } from '../registry/kern';
-import { CalculatorDisclaimerBanner } from '../components/ui/CalculatorDisclaimerBanner';
-import { ModulLernziele } from '../components/ui/ModulLernziele';
-import { ErkundungsAuftrag } from '../components/ui/ErkundungsAuftrag';
-import { ModulKurzfassung } from '../components/ui/ModulKurzfassung';
+import { Target, ListChecks, FlaskConical, SlidersHorizontal } from 'lucide-react';
+import { CalculatorDisclaimerBanner, RechnerGrenzenListe, hatGrenzen } from '../components/ui/CalculatorDisclaimerBanner';
+import { LernzieleMeta, LernzieleZiele } from '../components/ui/ModulLernziele';
+import { ErkundungAuftraege, alleAuftraege } from '../components/ui/ErkundungsAuftrag';
+import { KurzfassungPunkte } from '../components/ui/ModulKurzfassung';
+import { ModulKopfLeiste, type KopfEintrag } from '../components/ui/ModulKopfLeiste';
+import { formatDeWert } from '../utils/numberFormat';
 import { kopfDatenSofort, ladeKopfDaten } from './modulKopfDaten';
 import { PruefVermerk } from '../components/ui/PruefVermerk';
 import { pruefvermerkFuer } from '../data/pruefvermerke';
@@ -19,21 +22,26 @@ export default function ModulKopf({ activeTab, setActiveTab }: { activeTab: TabI
   const daten = kopfDatenSofort(activeTab) ?? React.use(ladeKopfDaten(activeTab));
   const { lernziele, kurzfassung, erkundung, grenzen } = daten;
   const vermerk = pruefvermerkFuer(activeTab);
+  const oeffne = (id: string) => setActiveTab(id as TabId);
+  const eintraege: KopfEintrag[] = [];
+  if (lernziele) eintraege.push({ id: 'lernziele', label: 'Lernziele', icon: <Target size={14} aria-hidden="true" />,
+    inhalt: <><LernzieleMeta moduleId={activeTab} daten={lernziele} /><LernzieleZiele daten={lernziele} oeffneModul={oeffne} /></> });
+  if (kurzfassung) eintraege.push({ id: 'kurzfassung', label: 'Das Wichtigste in 5 Punkten', icon: <ListChecks size={14} aria-hidden="true" />,
+    inhalt: <KurzfassungPunkte punkte={kurzfassung} /> });
+  if (erkundung) eintraege.push({ id: 'ausprobieren', label: 'Ausprobieren', zusatz: formatDeWert(alleAuftraege(erkundung).length),
+    icon: <FlaskConical size={14} aria-hidden="true" />, inhalt: <ErkundungAuftraege daten={erkundung} /> });
+  if (hatGrenzen(grenzen)) eintraege.push({ id: 'annahmen', label: 'Annahmen des Rechners', zusatz: formatDeWert(grenzen.grenzen.length),
+    icon: <SlidersHorizontal size={14} aria-hidden="true" />, inhalt: <RechnerGrenzenListe grenzen={grenzen} /> });
   return (
     <>
       {/* Redaktionsmodell: „fachlich geprüft am … von …“ (Phase 6, AP 6.6); Status „offen“ öffentlich ausgeblendet (27.10.2026) */}
       {vermerk && <PruefVermerk vermerk={vermerk} />}
-      {/* Lernziele je Fachmodul (Phase 3, AP 3.6) */}
-      {lernziele && <ModulLernziele moduleId={activeTab} daten={lernziele} oeffneModul={(id) => setActiveTab(id as TabId)} />}
-      {/* „Das Wichtigste in 5 Punkten“ vor langen Modulen (Phase 3, AP 3.8) */}
-      {kurzfassung && <ModulKurzfassung key={activeTab} punkte={kurzfassung} />}
-      {/* Erkundungsauftrag „Ausprobieren“ für Rechner (Phase 3, AP 3.7) */}
-      {erkundung && <ErkundungsAuftrag key={activeTab} daten={erkundung} />}
-      {/* Haftungshinweis für alle Rechner-Module (Phase 1, AP 1.10) */}
+      {/* Lernziele, Kurzfassung, Ausprobieren und Annahmen als Schaltflächen nebeneinander (Entscheidung 28.10.2026) */}
+      <ModulKopfLeiste key={activeTab} eintraege={eintraege} />
+      {/* Haftungshinweis für alle Rechner-Module (Phase 1, AP 1.10); Annahmen und Grenzen stehen in der Kopfleiste */}
       {(MODUL_KERN.get(activeTab)?.typ === 'calculator' || grenzen) && (
         <CalculatorDisclaimerBanner
           className="mb-4"
-          grenzen={grenzen}
           customText="Lehr- und Vorbemessungswerkzeug: Die Ergebnisse sind vereinfachte Berechnungen zu Lernzwecken und ersetzen keinen bauaufsichtlichen Nachweis (MVV TB / LBO) und keine Prüfung durch fachkundige Personen. Maßgebende Normausgaben stehen in den Quellen am Modulende."
         />
       )}
