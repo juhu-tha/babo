@@ -805,10 +805,10 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                       onChange={(e) => setCuringTemp(e.target.value as typeof curingTemp)}
                       className="w-full text-xs p-2 border border-home-grau/30 rounded"
                     >
-                      <option value="5_9">5 °C bis 9 °C (Winterlich kühl)</option>
-                      <option value="10_14">10 °C bis 14 °C (Übergangszeit)</option>
-                      <option value="15_24">15 °C bis 24 °C (Standardklima)</option>
-                      <option value="ge_25">≥ 25 °C (Sommerliche Wärme)</option>
+                      <option value="5_9">5 °C ≤ ϑ &lt; 10 °C (winterlich kühl)</option>
+                      <option value="10_14">10 °C ≤ ϑ &lt; 15 °C (Übergangszeit)</option>
+                      <option value="15_24">15 °C ≤ ϑ &lt; 25 °C (Standardklima)</option>
+                      <option value="ge_25">ϑ ≥ 25 °C (sommerliche Wärme)</option>
                     </select>
                     <span className="text-xs text-text-main/50 block"><MdText text={inhalt.texte.wichtigKerntemperaturSollStets} /></span>
                   </div>
