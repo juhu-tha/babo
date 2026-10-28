@@ -10,7 +10,7 @@ import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberForma
 import { InlineMath, BlockMath } from 'react-katex';
 import inhalt from '@/content/energieausweis/Energieausweis.json';
 import { MdText } from '@/src/components/inhalt/MdText';
-import { energieausweis } from '@/src/calc/energieausweis';
+import { energieausweis, rechtsstandAm, FAKTOREN, type Rechtsstand } from '@/src/calc/energieausweis';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
@@ -41,6 +41,9 @@ export default function Energieausweis() {
   const [simHuelleStandard, setSimHuelleStandard] = useState<'unsaniert' | 'bestand_teilsaniert' | 'geg_standard' | 'effizienzhaus40'>('geg_standard');
   const [simVentilation, setSimVentilation] = useState<'fenster' | 'abluft' | 'kwl_wrg'>('fenster');
   const [simHeizung, setSimHeizung] = useState<'gas_brennwert' | 'oel_kessel' | 'pellets' | 'wp_luft' | 'wp_sole' | 'fernwaerme'>('wp_luft');
+  // Stichtagsschalter GModG (T11-EA-2): Standard nach heutigem Datum
+  const [simRechtsstand, setSimRechtsstand] = useState<Rechtsstand>(() => rechtsstandAm(new Date()));
+  const fpVon = (h: keyof typeof FAKTOREN.bis_2026) => formatDeZahl(FAKTOREN[simRechtsstand][h].fp, 1);
 
   // Skalenwerte für Übersicht
   const getScaleValue = () => {
@@ -62,13 +65,13 @@ export default function Energieausweis() {
   // Berechnungslogik für den interaktiven Simulator
   // Rechenkern src/calc/energieausweis.ts (Lehrmodell): H_T, H_V, Verluste/Gewinne, Q_h, Q_E, Q_P, CO₂, Effizienzklasse
   const simResults = useMemo(() => {
-    const r = energieausweis({ typ: simBuildingType, flaeche: simArea, huelle: simHuelleStandard, lueftung: simVentilation, heizung: simHeizung });
+    const r = energieausweis({ typ: simBuildingType, flaeche: simArea, huelle: simHuelleStandard, lueftung: simVentilation, heizung: simHeizung, rechtsstand: simRechtsstand });
     return {
       ...r,
       h_t_prime: formatDeZahl(r.h_t_prime, 2),
       klasseColor: KLASSEN_FARBE[r.klasse] ?? 'bg-red-800 text-white',
     };
-  }, [simBuildingType, simArea, simHuelleStandard, simVentilation, simHeizung]);
+  }, [simBuildingType, simArea, simHuelleStandard, simVentilation, simHeizung, simRechtsstand]);
 
   return (
     <div className="flex flex-col gap-8 animate-in fade-in duration-300">
@@ -447,6 +450,26 @@ export default function Energieausweis() {
               {/* Parameter-Eingaben (7 Spalten) */}
               <div className="lg:col-span-7 space-y-4">
                 
+                {/* 0. Rechtsstand (Stichtag 01.01.2027) */}
+                <div className="p-4 bg-off-white rounded-xl border border-home-grau/30 space-y-3">
+                  <span className="text-xs font-bold text-text-main flex items-center gap-1.5">
+                    <Scale size={15} className="text-shiraz" /><MdText text={inhalt.texte.t0RechtsstandStichtag} /></span>
+                  <AuswahlGruppe label="Rechtsstand" className="grid grid-cols-2 gap-2">
+                    {([['bis_2026', inhalt.texte.rechtsstandBis2026, inhalt.texte.rechtsstandBis2026Info], ['ab_2027', inhalt.texte.rechtsstandAb2027, inhalt.texte.rechtsstandAb2027Info]] as const).map(([id, titel, info]) => (
+                      <button key={id} {...alsOption(simRechtsstand === id)}
+                        onClick={() => setSimRechtsstand(id)}
+                        className={`p-2 rounded-lg text-center border transition-all cursor-pointer ${
+                          simRechtsstand === id ? 'bg-shiraz text-white border-shiraz shadow-xs' : 'bg-white text-text-main border-home-grau/30'
+                        }`}
+                      >
+                        <strong className="block text-xxs sm:text-xs">{titel}</strong>
+                        <span className="text-xxs opacity-80">{info}</span>
+                      </button>
+                    ))}
+                  </AuswahlGruppe>
+                  <p className="text-xxs text-text-main/80"><MdText text={inhalt.texte.rechtsstandHinweis} /></p>
+                </div>
+
                 {/* 1. Gebäudegeometrie */}
                 <div className="p-4 bg-off-white rounded-xl border border-home-grau/30 space-y-3">
                   <span className="text-xs font-bold text-text-main flex items-center gap-1.5">
@@ -584,7 +607,7 @@ export default function Energieausweis() {
                       }`}
                     >
                       <strong className="block text-xxs sm:text-xs">Luft-Wasser-WP</strong>
-                      <span className="text-xxs opacity-80"><MdText text={inhalt.texte.jaz33Fp} /></span>
+                      <span className="text-xxs opacity-80"><MdText text={inhalt.texte.jaz33Fp} />{fpVon('wp_luft')}</span>
                     </button>
 
                     <button {...alsOption(simHeizung === 'wp_sole')}
@@ -594,7 +617,7 @@ export default function Energieausweis() {
                       }`}
                     >
                       <strong className="block text-xxs sm:text-xs">Sole-Wasser-WP</strong>
-                      <span className="text-xxs opacity-80"><MdText text={inhalt.texte.jaz43Fp} /></span>
+                      <span className="text-xxs opacity-80"><MdText text={inhalt.texte.jaz43Fp} />{fpVon('wp_sole')}</span>
                     </button>
 
                     <button {...alsOption(simHeizung === 'gas_brennwert')}
@@ -604,7 +627,7 @@ export default function Energieausweis() {
                       }`}
                     >
                       <strong className="block text-xxs sm:text-xs">Gas-Brennwert</strong>
-                      <span className="text-xxs opacity-80"><MdText text={inhalt.texte.t096Fp1} /></span>
+                      <span className="text-xxs opacity-80"><MdText text={inhalt.texte.t096Fp1} />{fpVon('gas_brennwert')}</span>
                     </button>
 
                     <button {...alsOption(simHeizung === 'pellets')}
@@ -614,7 +637,7 @@ export default function Energieausweis() {
                       }`}
                     >
                       <strong className="block text-xxs sm:text-xs">Holzpellets</strong>
-                      <span className="text-xxs opacity-80"><MdText text={inhalt.texte.t088Fp0} /></span>
+                      <span className="text-xxs opacity-80"><MdText text={inhalt.texte.t088Fp0} />{fpVon('pellets')}</span>
                     </button>
 
                     <button {...alsOption(simHeizung === 'fernwaerme')}
@@ -624,7 +647,7 @@ export default function Energieausweis() {
                       }`}
                     >
                       <strong className="block text-xxs sm:text-xs"><MdText text={inhalt.texte.fernwärmeKwk2} /></strong>
-                      <span className="text-xxs opacity-80"><MdText text={inhalt.texte.t098Fp0} /></span>
+                      <span className="text-xxs opacity-80"><MdText text={inhalt.texte.t098Fp0} />{fpVon('fernwaerme')}</span>
                     </button>
 
                     <button {...alsOption(simHeizung === 'oel_kessel')}
@@ -634,7 +657,7 @@ export default function Energieausweis() {
                       }`}
                     >
                       <strong className="block text-xxs sm:text-xs">Öl-Heizkessel</strong>
-                      <span className="text-xxs opacity-80"><MdText text={inhalt.texte.t084Fp1} /></span>
+                      <span className="text-xxs opacity-80"><MdText text={inhalt.texte.t084Fp1} />{fpVon('oel_kessel')}</span>
                     </button>
                   </AuswahlGruppe>
                 </div>
@@ -692,7 +715,7 @@ export default function Energieausweis() {
                     </div>
                     <div className="flex justify-between py-1 text-slate-600">
                       <span><MdText text={inhalt.texte.geschätzteCoEmissionen} /></span>
-                      <strong className="font-mono">{formatDeWert(simResults.co2_emissionen)}<MdText text={inhalt.texte.kgCoMA} /></strong>
+                      <strong className="font-mono">{formatDeWert(simResults.co2_emissionen)}<MdText text={inhalt.texte.kgCoMA} /><span className="font-normal text-slate-500">{inhalt.texte.coFaktor}{formatDeWert(simResults.co2_faktor)}{inhalt.texte.gKwh}</span></strong>
                     </div>
                   </div>
 
@@ -744,10 +767,10 @@ export default function Energieausweis() {
                       titel: 'Primärenergiebedarf',
                       erklaerung: simResults.istWP
                         ? `Der Strom der Wärmepumpe wird mit dem Primärenergiefaktor f_p = ${formatDeZahl(simResults.f_p, 1)} bewertet:`
-                        : `Brennstoff mit f_p = ${formatDeZahl(simResults.f_p, 1)}, Hilfsstrom mit f_p = 1,8:`,
+                        : `Brennstoff mit f_p = ${formatDeZahl(simResults.f_p, 1)}, Hilfsstrom mit f_p = ${formatDeZahl(simResults.fp_strom, 1)}:`,
                       formel: simResults.istWP
                         ? `Q_P = ${formatDeTeX(simResults.q_e, 0)} \\cdot ${formatDeTeX(simResults.f_p, 1)} \\approx ${formatDeTeX(simResults.q_p, 0)}\\,\\text{kWh/(m}^2\\text{a)}`
-                        : `Q_P = ${formatDeTeX((simResults.q_h + simResults.q_w + simResults.q_verlust_netz) / simResults.eta_erzeuger, 1)} \\cdot ${formatDeTeX(simResults.f_p, 1)} + ${formatDeTeX(simResults.w_hilfsstrom, 1)} \\cdot 1{,}8 \\approx ${formatDeTeX(simResults.q_p, 0)}\\,\\text{kWh/(m}^2\\text{a)}`
+                        : `Q_P = ${formatDeTeX((simResults.q_h + simResults.q_w + simResults.q_verlust_netz) / simResults.eta_erzeuger, 1)} \\cdot ${formatDeTeX(simResults.f_p, 1)} + ${formatDeTeX(simResults.w_hilfsstrom, 1)} \\cdot ${formatDeTeX(simResults.fp_strom, 1)} \\approx ${formatDeTeX(simResults.q_p, 0)}\\,\\text{kWh/(m}^2\\text{a)}`
                     }
                   ]}
                   ergebnisHinweis={`Effizienzklasse ${simResults.klasse} ergibt sich aus dem Endenergiebedarf Q_E. Vereinfachte Lehrbilanz – kein Ersatz für eine Berechnung nach DIN V 18599.`}

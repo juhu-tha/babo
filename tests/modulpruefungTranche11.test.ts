@@ -25,6 +25,13 @@ gilt(ea3.q_h === 10 && ea3.q_e === 9 && ea3.q_p === 16 && ea3.klasse === 'A+', `
 gilt(ea3.hinweise.some(h => h.feld === 'q_h'), 'EA3 Hinweis Mindestwert 10 kWh/(m²a)');
 const ea4 = energieausweis({ typ: 'mfh', flaeche: 1200, huelle: 'bestand_teilsaniert', lueftung: 'abluft', heizung: 'fernwaerme' });
 gilt(ea4.q_h === 34 && ea4.q_e === 58 && ea4.q_p === 28 && ea4.klasse === 'B', `EA4 ${ea4.q_h}/${ea4.q_e}/${ea4.q_p}/${ea4.klasse}`);
+// Umsetzung 29.10.2026 (T11-EA-2/-3): Rechtsstand ab 01.01.2027 und CO₂ nach Anlage 9 (eigenes Prüfskript)
+const ea2_27 = energieausweis({ typ: 'mfh', flaeche: 800, huelle: 'unsaniert', lueftung: 'fenster', heizung: 'oel_kessel', rechtsstand: 'ab_2027' });
+gilt(ea2.co2_emissionen === 58 && ea2_27.q_p === 208 && ea2_27.co2_emissionen === 58, `EA2 CO₂ 58, 2027 q_P 208: ${ea2.co2_emissionen}/${ea2_27.q_p}`);
+const ea3_27 = energieausweis({ typ: 'efh', flaeche: 150, huelle: 'effizienzhaus40', lueftung: 'kwl_wrg', heizung: 'wp_sole', rechtsstand: 'ab_2027' });
+gilt(ea3.co2_emissionen === 5 && ea3_27.q_p === 14 && ea3_27.co2_emissionen === 1, `EA3 CO₂ 5 (560 g/kWh), 2027 q_P 14 / CO₂ 1: ${ea3.co2_emissionen}/${ea3_27.q_p}/${ea3_27.co2_emissionen}`);
+const ea4_27 = energieausweis({ typ: 'mfh', flaeche: 1200, huelle: 'bestand_teilsaniert', lueftung: 'abluft', heizung: 'fernwaerme', rechtsstand: 'ab_2027' });
+gilt(ea4_27.q_p === 43 && ea4_27.klasse === 'B', `EA4 2027 Fernwärme f_p 0,7: ${ea4_27.q_p}`);
 gilt(effizienzklasse(30) === 'A+' && effizienzklasse(30.5) === 'A' && effizienzklasse(250) === 'G' && effizienzklasse(251) === 'H', 'EA5 Klassengrenzen Anlage 10');
 
 // 2. Thermische Kennwerte und Dämmdicke (Modulbeispiele Waermeeigenschaften)

@@ -410,7 +410,9 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Hüllflächen pauschal aus der Nutzfläche, U-Werte je Standard fest.",
       "Klimafaktor und Gewinne pauschal; Warmwasser, Verluste und Hilfsstrom als feste Werte.",
       "Kein Nachweis nach DIN V 18599.",
-      "Primärenergiefaktoren und Klassengrenzen nach dem Stand bis 31.12.2026 (ab 01.01.2027 u. a. Strom 1,5); CO₂-Faktoren sind Lehrwerte (Strom 380 g/kWh), nicht die Werte der Anlage 9.",
+      "Stichtagsschalter GModG: bis 31.12.2026 f_p nach Anlage 4 und CO₂ nach Anlage 9 (Netzstrom 1,8 / 560 g/kWh); ab 01.01.2027 f_p nach neuer Anlage 4 (Netzstrom 1,5, Holz 0,7, Fernwärme 0,7). Klassengrenzen Anlage 10 unverändert.",
+      "CO₂-Faktor Netzstrom ab 2027 (100 g/kWh) vorläufig, F-Freigabe (GModG Anlage 9, Fassung 2027); Fernwärme bis 2026 mit Lehrwerten f_p 0,4 und 120 g/kWh; das neue Referenzgebäude ist nicht abgebildet.",
+      "Interne Gewinne pauschal 35 kWh/(m²a) statt Nutzungsprofil nach DIN/TS 18599-10 (Lehrwert, vorläufig, F-Freigabe); CO₂ mit dem Faktor des Hauptenergieträgers auf die gesamte Endenergie.",
     ],
   },
   materialoptimierung: {
