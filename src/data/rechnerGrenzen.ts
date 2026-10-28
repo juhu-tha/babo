@@ -258,6 +258,15 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "MIP: Zylinderporenmodell mit γ = 0,485 N/m und θ = 140°; erfasst werden Porenzugänge, nicht die Porenkörper (Flaschenhals-Effekt).",
     ],
   },
+  lehm: {
+    kurz: "Lehrmodell Stampflehm: Tendenzen von Rohdichte, Druckfestigkeit, Schwindmaß, Wärmeleitfähigkeit und Feuchtepuffer aus Ton-, Schluff- und Sandanteil.",
+    grenzen: [
+      "Lehrmodell mit linearen Ansätzen ohne Quelle und ohne Normbezug; keine Bemessungswerte nach DIN 18940/18945.",
+      "Druckfestigkeit des Modells etwa 0,6 bis 2,2 N/mm²; für Stampflehm nennt die Fachliteratur etwa 2 bis 4 N/mm².",
+      "Feuchtepuffer-Kennzahl ohne Zeitbezug; Sorptionsklassen nach DIN 18947 beziehen sich auf Zeitstufen bis 12 h.",
+      "Außerhalb des Reglerbereichs (Ton 3–60 %, Sand 15–85 %, Herstellfeuchte 5–25 %) warnt der Kern.",
+    ],
+  },
   erdbau: {
     kurz: "Grobe Zuordnung zu Bodengruppe und Frostempfindlichkeitsklasse sowie Mindestdicke des frostsicheren Oberbaus nach vereinfachtem RStO-Schema.",
     grenzen: [
