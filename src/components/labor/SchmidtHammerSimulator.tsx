@@ -330,10 +330,10 @@ export default function SchmidtHammerSimulator() {
                         disabled={isTested || isStriking}
                         className={`aspect-square rounded-xl border-2 flex flex-col items-center justify-center font-mono font-bold transition-all relative cursor-pointer ${
                           !isTested
-                            ? 'bg-stone-100/90 hover:bg-amber-100 border-stone-400 text-stone-500 hover:scale-105 shadow-sm'
+                            ? 'bg-stone-100/90 hover:bg-amber-100 border-stone-400 text-stone-500 dark:!text-stone-300 hover:scale-105 shadow-sm'
                             : isOutlier
-                            ? 'bg-red-100 border-red-500 text-red-700 shadow-md'
-                            : 'bg-emerald-50 border-emerald-500 text-emerald-800 shadow-md'
+                            ? 'bg-red-100 border-red-500 text-red-700 shadow-md dark:!text-red-200'
+                            : 'bg-emerald-50 border-emerald-500 text-emerald-800 shadow-md dark:!text-emerald-100'
                         }`}
                       >
                         <span className="text-[10px] text-stone-400 absolute top-1 left-1.5">#{idx + 1}</span>
