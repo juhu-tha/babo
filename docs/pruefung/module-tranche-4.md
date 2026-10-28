@@ -50,6 +50,7 @@
 - **T4-BC-1:** Für die Umwandlung Thenardit → Mirabilit stand „rund dreifaches Volumen“. Richtig ist eine Volumenzunahme um gut 300 %, also rund das Vierfache.
 - **T4-SK-1:** Normenstand Eurocode 0: DIN EN 1990-1:2026-12 (EN 1990-1:2023+A1:2026) ist angekündigt, der Nationale Anhang liegt im Entwurf vor.
 - **T4-BSK-1:** Monier-Lizenz: 1884 an Freytag & Heidschuch (Süddeutschland), 1885 die Rechte für Norddeutschland an Wayss. Herausgeber von „Das System Monier“ (1887) war Wayss.
+- **Barrierefreiheit Bauchemie:** pH-Skala, Segment „Säureangriff“ im Dunkelmodus mit Kontrast 3,4 : 1 (axe color-contrast); jetzt `dark:bg-rose-800`.
 - **Grenzen und Erkundung:** neue Einträge in `rechnerGrenzen.ts` und je zwei Erkundungsaufträge in `erkundung.ts` für drei Module, die rechnen, aber nicht als Rechner einsortiert sind: `sicherheitskonzept`, `probenahme`, `analytik`. Die Auflösungen sind mit dem Prüfskript nachgerechnet.
 
 ---
