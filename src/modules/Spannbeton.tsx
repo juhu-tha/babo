@@ -17,7 +17,11 @@ const ladeDauerhaftigkeit = () => import('./spannbeton/SpannbetonDauerhaftigkeit
 const SpannbetonPrinzipien = React.lazy(ladePrinzipien);
 const SpannbetonKennwerte = React.lazy(ladeKennwerte);
 const SpannbetonDauerhaftigkeit = React.lazy(ladeDauerhaftigkeit);
-const ladeReiter = () => { void ladePrinzipien(); void ladeKennwerte(); void ladeDauerhaftigkeit(); };
+const ladeReiter = (bereiche: readonly string[]) => {
+  if (bereiche.includes('grundprinzipien')) void ladePrinzipien();
+  if (bereiche.includes('kennwerte')) void ladeKennwerte();
+  if (bereiche.includes('dauerhaftigkeit')) void ladeDauerhaftigkeit();
+};
 const Reiterplatz = () => <div className="min-h-screen" aria-busy="true" />;
 import SpannbetonNullBisHundert from './spannbeton/SpannbetonNullBisHundert';
 import { fckT, creep, shrinkage, relaxation, frictionSlip, timeDependentLoss, CONCRETE, pruefeSpannbeton, type RelaxationClass } from '@/src/calc/spannbeton';
@@ -52,6 +56,7 @@ import {
 import inhalt from '@/content/spannbeton/Spannbeton.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { useTabContext, type TabId } from '@/src/contexts/TabContext';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 ChartJS.register(
@@ -96,8 +101,20 @@ const REITER = [
   { id: 'rechner', label: inhalt.texte.querschnittsRechnerSpannungsverlauf, icon: Activity },
   { id: 'dauerhaftigkeit', label: inhalt.texte.dauerhaftigkeitKorrosionsschutz, icon: ShieldCheck },
 ] as const;
+export type SpannbetonReiter = (typeof REITER)[number]['id'];
 
-export default function Spannbeton() {
+// Aufteilung in zwei Teilmodule (28.10.2026, src/registry/teilmodule.ts): Reiter → Route des Teilmoduls.
+// Die Routen übergeben ihre Reiter über `bereiche` (src/routing/ModulInhalt.tsx).
+export const SPANNBETON_TEIL: Readonly<Record<SpannbetonReiter, TabId>> = {
+  null_bis_hundert: 'spannbeton_grundlagen', grundprinzipien: 'spannbeton_grundlagen', dauerhaftigkeit: 'spannbeton_grundlagen',
+  kennwerte: 'spannbeton_kennwerte', rechner: 'spannbeton_kennwerte',
+};
+// Zielreiter beim Wechsel ins andere Teilmodul (z. B. „Zu den Baustoffkennwerten“ aus dem Reiter 0–100)
+let naechsterReiter: SpannbetonReiter | undefined;
+
+export default function Spannbeton({ bereiche }: { bereiche: readonly SpannbetonReiter[] }) {
+  const { setActiveTab } = useTabContext();
+  const reiter = REITER.filter(r => bereiche.includes(r.id));
   // Geometric & Force States
   const [p0, setP0] = useState(3200); // kN (Nenn-Vorspannkraft)
   const [h, setH] = useState(1000); // mm
@@ -114,7 +131,17 @@ export default function Spannbeton() {
   const [environmentRH, setEnvironmentRH] = useState<number>(50); // 50% = Innenraum/trocken, 80% = Außenklima/feucht
   const [timeState, setTimeState] = useState<'short_term' | 'long_term'>('short_term'); // t=0 vs t=inf
   const [lossTab, setLossTab] = useState<'overview' | 'calculations'>('overview');
-  const [mainTab, setMainTab] = useState<'null_bis_hundert' | 'grundprinzipien' | 'kennwerte' | 'rechner' | 'dauerhaftigkeit'>('null_bis_hundert');
+  const [mainTab, setMainTab] = useState<SpannbetonReiter>(() => {
+    const start = naechsterReiter && bereiche.includes(naechsterReiter) ? naechsterReiter : bereiche[0];
+    naechsterReiter = undefined;
+    return start;
+  });
+  // Reiter dieses Teilmoduls direkt zeigen, sonst das andere Teilmodul mit diesem Reiter öffnen
+  const zeigeReiter = (r: SpannbetonReiter) => {
+    if (bereiche.includes(r)) { setMainTab(r); return; }
+    naechsterReiter = r;
+    setActiveTab(SPANNBETON_TEIL[r]);
+  };
 
   // Advanced material-relevant components for professional prestressed concrete calculation
   const [cementType, setCementType] = useState<'R' | 'N' | 'S'>('R'); // R: schnell, N: normal, S: langsam erhärtend
@@ -395,30 +422,30 @@ export default function Spannbeton() {
       </div>
 
       {/* Reiter-Chunks beim Überfahren/Fokussieren vorladen (wie bisher an der Reiterleiste) */}
-      <div onPointerEnter={ladeReiter} onFocus={ladeReiter} onTouchStart={ladeReiter}>
-      <ModuleTabs label="Bereiche Spannbeton" tabs={REITER} aktiv={mainTab} onWechsel={setMainTab} className="[&>[role=tablist]]:mb-6">
+      <div onPointerEnter={() => ladeReiter(bereiche)} onFocus={() => ladeReiter(bereiche)} onTouchStart={() => ladeReiter(bereiche)}>
+      <ModuleTabs label="Bereiche Spannbeton" tabs={reiter} aktiv={mainTab} onWechsel={setMainTab} className="[&>[role=tablist]]:mb-6">
       {/* 0. TAB: 0-100 VORLESUNGS-LEITFADEN */}
-      {mainTab === 'null_bis_hundert' && (
+      {bereiche.includes('null_bis_hundert') && mainTab === 'null_bis_hundert' && (
         <div className="animate-in fade-in duration-300">
-          <SpannbetonNullBisHundert onNavigateTab={(tab) => setMainTab(tab)} />
+          <SpannbetonNullBisHundert onNavigateTab={zeigeReiter} />
         </div>
       )}
 
       {/* 1. TAB: GRUNDPRINZIPIEN & TRAGWERKSTHEORIE */}
-      {mainTab === 'grundprinzipien' && (
+      {bereiche.includes('grundprinzipien') && mainTab === 'grundprinzipien' && (
         <div className="animate-in fade-in duration-300">
           <React.Suspense fallback={<Reiterplatz />}><SpannbetonPrinzipien /></React.Suspense>
         </div>
       )}
 
       {/* 2. TAB: BAUSTOFFKENNWERTE */}
-      {mainTab === 'kennwerte' && (
+      {bereiche.includes('kennwerte') && mainTab === 'kennwerte' && (
         <div className="animate-in fade-in duration-300">
           <React.Suspense fallback={<Reiterplatz />}><SpannbetonKennwerte /></React.Suspense>
         </div>
       )}
 
-      {mainTab === 'rechner' && (
+      {bereiche.includes('rechner') && mainTab === 'rechner' && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 animate-in fade-in duration-300">
         {/* Left Input Settings - Span 5 cols */}
         <div className="lg:col-span-5 space-y-6">
@@ -1180,7 +1207,7 @@ export default function Spannbeton() {
                 <span className="font-bold text-shiraz block"><MdText text={inhalt.texte.didaktischeErklärungDerKenngrößen} /></span><MdText text={inhalt.texte.physikalischeWirkmechanismenMikrostruktu} /></div>
               <button
                 type="button"
-                onClick={() => setMainTab('kennwerte')}
+                onClick={() => zeigeReiter('kennwerte')}
                 className="px-3.5 py-2 rounded-lg bg-shiraz text-white hover:bg-shiraz/90 font-bold text-xs flex items-center gap-1.5 shrink-0 transition-colors shadow-xs cursor-pointer"
               >
                 <BookOpen size={14} /><MdText text={inhalt.texte.zuDenBaustoffkennwerten} /><ArrowRight size={14} />
@@ -1251,7 +1278,7 @@ export default function Spannbeton() {
       </div>
       )}
 
-      {mainTab === 'dauerhaftigkeit' && (
+      {bereiche.includes('dauerhaftigkeit') && mainTab === 'dauerhaftigkeit' && (
         <div className="animate-in fade-in duration-300">
           <React.Suspense fallback={<Reiterplatz />}><SpannbetonDauerhaftigkeit /></React.Suspense>
         </div>
