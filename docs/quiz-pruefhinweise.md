@@ -38,7 +38,7 @@ Bei der Überarbeitung der Antwortoptionen (AP 3.3, PR #113) wurden Fragetexte u
 ## Cluster IV – Bestand & Nachhaltigkeit
 - [ ] **q_dc_2**: korrigiert auf 0,3 mm – bestätigen.
 - [ ] **q_bst_2, q_mod_2, q_dp_2**: GModG §§ 35, 36, 105 und Anlage 7 – Rechtsstand.
-- [ ] **q_ndr_2**: Gebäudetyp E – Stand des Gesetzgebungsverfahrens.
+- [x] **q_ndr_2**: Gebäudetyp E – Stand des Gesetzgebungsverfahrens. → Einzelfreigabe 28.10.2026 (FR-2) auf Stand Referentenentwurf 26.10.2026; bei Kabinettsbeschluss neu fassen.
 - [ ] **q_sb_2**: Zementart im Fragetext nennen (0,60 % gilt für CEM I-NA).
 - [ ] **q_rc_1**: GefStoffV 2024 – Genehmigung bzw. Zulassung je Risikobereich prüfen.
 - [ ] **q_rc_2**: 4. BImSchV – Zwölf-Monats-Regel vereinfacht.

@@ -40,7 +40,7 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 
 | ID | Teil | Kurztext | Ergebnis | Freigabe |
 |---|---|---|---|---|
-| `q_ndr_2` | A | Wie ist der Rechtsstand des „Gebäudetyp E“ im Oktober 2026? | ok (Rechtsstand nach Referentenentwurf 26.10.2026, Quelle docs/fachklaerung-2026-10-26.md; bei Kabinettsbeschluss neu fassen) | - [ ] freigeben |
+| `q_ndr_2` | A | Wie ist der Rechtsstand des „Gebäudetyp E“ im Oktober 2026? | ok (Rechtsstand nach Referentenentwurf 26.10.2026, Quelle docs/fachklaerung-2026-10-26.md; bei Kabinettsbeschluss neu fassen) | - [x] freigegeben 28.10.2026 (Einzelfreigabe) |
 | `q_ndr_4` | B | Für einen Neubau liegt die NZEB-Anforderung bei 50 kWh/(m²a) Primärenergie, gep… | ok | - [ ] freigeben |
 | `q_ndr_5` | B | Welche Lebenszyklusmodule muss eine EPD nach DIN EN 15804+A2 im Regelfall minde… | ok | - [ ] freigeben |
 | `q_ndr_6` | B | Ein Wohngebäude in EH 40 mit Wärmepumpe erreicht GWP = 22,8 kg CO₂-Äq./(m² NRF·… | ok | - [ ] freigeben |
@@ -143,7 +143,7 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 
 | ID | Teil | Kurztext | Ergebnis | Freigabe |
 |---|---|---|---|---|
-| `qn_lca_ingenieurbau_4` | A | Bei 1500 m² Deckfläche und 100 Jahren liefert der Simulator für die Module A–C:… | ok (alle Zahlen mit dem Simulator nachgerechnet: 863,4 t / 824,6 t; 5,76 / 5,50 kg/(m²·a)) | - [ ] freigeben |
+| `qn_lca_ingenieurbau_4` | A | Bei 1500 m² Deckfläche und 100 Jahren liefert der Simulator für die Module A–C:… | ok (alle Zahlen mit dem Simulator nachgerechnet: 863,4 t / 824,6 t; 5,76 / 5,50 kg/(m²·a)) | - [x] freigegeben 28.10.2026 (Einzelfreigabe) |
 
 ## Statistik (`statistik`)
 
@@ -209,7 +209,7 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 | ID | Teil | Kurztext | Ergebnis | Freigabe |
 |---|---|---|---|---|
 | `qn_rechnung_mauerwerk_2` | A | Eine zweiseitig gehaltene Wand mit h_ef = 2,75 m hat eine Dicke von 17,5 cm. We… | ok | - [ ] freigeben |
-| `qn_rechnung_mauerwerk_5` | A | Eine 11,5 cm dicke KS-Innenwand (f_k = 5,6 N/mm², Decke voll aufliegend) mit li… | ok (Φ₂ = 0,244, N_Rd = 88,9 kN/m, η = 1,35 nachgerechnet) | - [ ] freigeben |
+| `qn_rechnung_mauerwerk_5` | A | Eine 11,5 cm dicke KS-Innenwand (f_k = 5,6 N/mm², Decke voll aufliegend) mit li… | ok (Φ₂ = 0,244, N_Rd = 88,9 kN/m, η = 1,35 nachgerechnet) | - [x] freigegeben 28.10.2026 (Einzelfreigabe) |
 
 ## Bauakustik: Schallschutz (`rechnung_schallschutz`)
 
@@ -254,9 +254,9 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 | `qn_lebensdauer_1` | A | Welchen Zielwert des Zuverlässigkeitsindex empfiehlt fib Bulletin 34 für den Gr… | ok | - [ ] freigeben |
 | `qn_lebensdauer_2` | A | Warum gilt die Depassivierung der Bewehrung als Grenzzustand der Gebrauchstaugl… | ok | - [ ] freigeben |
 | `qn_lebensdauer_3` | A | Im ACC-Test (2 Vol.-% CO₂, 28 d) wird x_c = 5,0 mm gemessen. Welcher inverse Ka… | ok | - [ ] freigeben |
-| `qn_lebensdauer_4` | A | Für einen CEM III/B gelten nach 50 Jahren k_e = 0,566, D_RCM,0 = 59,9 mm²/a, k_… | ok (= Modul Beispiel 2, nachgerechnet) | - [ ] freigeben |
+| `qn_lebensdauer_4` | A | Für einen CEM III/B gelten nach 50 Jahren k_e = 0,566, D_RCM,0 = 59,9 mm²/a, k_… | ok (= Modul Beispiel 2, nachgerechnet) | - [x] freigegeben 28.10.2026 (Einzelfreigabe) |
 | `qn_lebensdauer_5` | A | Im Parkdeck-Beispiel liegt der Chloridgehalt an der Bewehrung im Mittel bei 0,1… | ok | - [ ] freigeben |
-| `qn_lebensdauer_6` | A | Für ein Parkdeck XD3 mit CEM I (w/z = 0,45) ergibt die Simulation eine erforder… | ok (129 mm bzw. 55,8 mm = Modul/tests/lebensdauer.test.ts) | - [ ] freigeben |
+| `qn_lebensdauer_6` | A | Für ein Parkdeck XD3 mit CEM I (w/z = 0,45) ergibt die Simulation eine erforder… | ok (129 mm bzw. 55,8 mm = Modul/tests/lebensdauer.test.ts) | - [x] freigegeben 28.10.2026 (Einzelfreigabe) |
 
 ## Baustatik (`baustatik`)
 
@@ -496,7 +496,7 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 | `qn_rechnung_holzbau_2` | B | Eine pendelnd gelagerte Stütze (Euler-Fall 2) aus Vollholz 14 × 14 cm hat eine… | ok | - [ ] freigeben |
 | `qn_rechnung_holzbau_3` | B | Für die Stütze C24 (f_c,0,k = 21 N/mm², E_0,05 = 7 400 N/mm²) gilt λ = 74,2. We… | ok | - [ ] freigeben |
 | `qn_rechnung_holzbau_1` | B | Wie groß ist der Bemessungswert der Druckfestigkeit f_c,0,d einer Vollholzstütz… | ok | - [ ] freigeben |
-| `qn_rechnung_holzbau_6` | B | Eine Stütze C24, 12 × 12 cm, L = 3,5 m, N_d = 90 kN ist mit η = 1,44 überlastet… | ok (η = 1,43 / 1,32 / 0,80 / 0,54 nachgerechnet) | - [ ] freigeben |
+| `qn_rechnung_holzbau_6` | B | Eine Stütze C24, 12 × 12 cm, L = 3,5 m, N_d = 90 kN ist mit η = 1,44 überlastet… | ok (η = 1,43 / 1,32 / 0,80 / 0,54 nachgerechnet) | - [x] freigegeben 28.10.2026 (Einzelfreigabe) |
 | `qn_rechnung_holzbau_4` | B | Für eine Vollholzstütze ist λ_rel = 1,259 (β_c = 0,2). Welchen Knickbeiwert k_c… | ok | - [ ] freigeben |
 | `qn_rechnung_holzbau_5` | B | Die Stütze 14 × 14 cm (L = 3,0 m, C24) erhält N_d = 65 kN. Mit k_c = 0,507 und… | ok | - [ ] freigeben |
 
@@ -548,11 +548,11 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 
 | ID | Teil | Kurztext | Ergebnis | Freigabe |
 |---|---|---|---|---|
-| `qn_normen_ausblick_2` | B | Welcher Inhalt wurde bei der Neuausgabe aus EN 206 in den eigenen Teil EN 206-2… | ok (EN 206-2:2026 „Konformitätsbewertung und Zertifizierung“ bestätigt) | - [ ] freigeben |
+| `qn_normen_ausblick_2` | B | Welcher Inhalt wurde bei der Neuausgabe aus EN 206 in den eigenen Teil EN 206-2… | ok (EN 206-2:2026 „Konformitätsbewertung und Zertifizierung“ bestätigt) | - [x] freigegeben 28.10.2026 (Einzelfreigabe) |
 | `qn_normen_ausblick_3` | B | Welche Rolle übernehmen die Expositionswiderstandsklassen (ERC) in EN 1992-1-1:… | ok | - [ ] freigeben |
 | `qn_normen_ausblick_1` | B | Ein Tragwerksplaner legt im Oktober 2026 einen Beton für ein Parkhaus in Bayern… | ok | - [ ] freigeben |
 | `qn_normen_ausblick_6` | B | Welche Termine hat CEN für die Eurocodes der 2. Generation festgelegt (national… | ok | - [ ] freigeben |
-| `qn_normen_ausblick_7` | B | DIN EN 1995-1-1:2026-09 ist erschienen. Was folgt daraus für eine Holzbaustatik… | ok (DIN EN 1995-1-1:2026-09 erschienen, bauaufsichtlich nicht eingeführt) | - [ ] freigeben |
+| `qn_normen_ausblick_7` | B | DIN EN 1995-1-1:2026-09 ist erschienen. Was folgt daraus für eine Holzbaustatik… | ok (DIN EN 1995-1-1:2026-09 erschienen, bauaufsichtlich nicht eingeführt) | - [x] freigegeben 28.10.2026 (Einzelfreigabe) |
 | `qn_normen_ausblick_4` | B | Ein Beton ist der Klasse XRC 2 zugeordnet (Rate in mm/√a). Welche Karbonatisier… | ok | - [ ] freigeben |
 
 ## Zwangspannungen (`zwang`)

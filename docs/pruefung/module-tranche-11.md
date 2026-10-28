@@ -206,6 +206,9 @@
 - **offen – Frage T11-EA-4 (interne Gewinne):** Der Text nennt für q_i = 5 W/m² „rund 25 bis 30 kWh/(m²a)“, der Kern setzt pauschal 35 an. Das Heizperiodenverfahren der EnEV setzte Q_i = 22·A_N kWh/a. Wert vereinheitlichen?
 - Hinweis Quiz (nicht geändert): Die Erklärung zu `q_ea_2` sagt „§§ 15, 16 und 79 bis 88 bleiben inhaltlich bestehen“. Ab 01.01.2027 ändern sich die Inhalte (Referenzgebäude, Energiebilanzausweis, digitale Ausweise). Die Nummern bleiben, „inhaltlich“ sollte entfallen. Die `coreRule` zu `q_ea_1` („Primärenergie ≤ 0,55 · Referenzgebäude“) gilt nur bis 31.12.2026.
 
+**Umsetzung 29.10.2026 (QZ-2):** `q_ea_2`: Erklärung „bleiben inhaltlich bestehen“ → „bleiben in der Nummerierung bestehen; ab 01.01.2027 (bis 31.12.2026 gilt der bisherige Inhalt) ändern sich u. a. Referenzgebäude und Energieausweis“, Lernhilfe entsprechend. `q_ea_1`: Lernhilfe „Neubaunachweis bis 31.12.2026: Primärenergie ≤ 0,55 · Referenzgebäude“. Beide Freigaben zurückgenommen (verified false), Vorprüfung „korrigiert“. Quelle: Hinweis dieses Abschnitts (GModG, Inkrafttreten der Stufe 01.01.2027).
+
+
 **F-Freigabe-Stellen**
 - Anlage 4 GModG (Fassung 01.01.2027): f_P,tot je Energieträger (T11-EA-2).
 - Anlage 9 GModG: CO₂-Emissionsfaktoren (T11-EA-3).

@@ -193,6 +193,9 @@ Die Beispiele im Modul (0,078/0,061; 0,065/0,071; 0,059/0,084; „ohne Nachtlüf
 - behoben: keine.
 - **offen – Frage T3-HY-1 (Form der gewogenen Reife):** Nach meinem Kenntnisstand lautet die integrierte gewogene Reife nach de Vree/NEN 5970 R = Σ 10·(C^(0,1·T − 1,245) − C^(−2,245))/ln C · Δt in °C·h (Datumstemperatur −10 °C; die Struktur „10(…)/ln …“ ist in Kasal, ČVUT 2020, erkennbar, die Konstanten sind öffentlich nicht lesbar). Bezogen auf 20 °C ergibt diese Form andere Faktoren als der im Kern verwendete Temperaturfaktor C^((T − 20)/10): bei C = 1,45 und 5 °C 0,364 statt 0,573, bei 35 °C 2,11 statt 1,75. Frage: Form am Normtext NEN 5970 bestätigen und ggf. auf die integrierte Form umstellen? Bis dahin bleibt der Wert „vorläufig, F-Freigabe“ (wie im Kern vermerkt).
 - **offen – Frage T3-HY-2:** Das Anwendungsbeispiel rechnet ΔT_ad mit c·ρ = 2 500 kJ/(m³K) (44,8 K ≈ 45 K), der Kern mit 2 400 (46,7 K). Beides sind Lehrwerte. Angleichen?
+
+**Umsetzung 29.10.2026 (QZ-4, Quizteil von T3-HY-2):** `q_hyf_2` und `q_hyf_4` rechnen jetzt wie der Kern mit c·ρ = 2400 kJ/(m³·K) (`WAERMEKAPAZITAET_VOL`, src/calc/hydratation.ts): ΔT_ad = 70 000/2400 = 29,2 K → „rund 29 K“ (vorher 28 K; Distraktoren 15/58/70 K); T_Kern = 15 + 112 000/2400 = 61,7 °C → „etwa 62 °C“ (vorher 60 °C; Distraktoren 47/31/75 °C). Nachrechnung in tests/quizRechenfragen.test.ts gegen den Kern. Freigaben zurückgenommen (verified false), Vorprüfung „korrigiert“. Das Anwendungsbeispiel im Modul ist nicht Teil dieser Umsetzung.
+
 - Hinweis (Kurzfassung): „E-Modul nach 2 Tagen etwa 70 bis 80 %“ – nach Gl. 3.2/3.5 sind es 73 % (S), 81 % (N) und 85 % (R). „Etwa 70 bis 85 %“ wäre genauer.
 
 **F-Freigabe-Stellen**

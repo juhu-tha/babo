@@ -352,6 +352,9 @@
   Betonbauweise (Tafel 2, Zeile 1, Betondecke auf HGT): Bk100 hat im Modul 30 cm, nach meinem Kenntnisstand gelten 27 cm (Bk32: 26 cm). Die Gesamtdicken 85/75/65/60/55/50 cm sind keine Tafelwerte; sie ergeben sich erst aus der Mindestdicke des frostsicheren Oberbaus mit Mehr- und Minderdicken. Frage: Tafelwerte am Regelwerkstext übernehmen (dann auch Bk1,8 ergänzen) oder die Profile ausdrücklich als „vereinfachte Lehraufbauten, nicht Tafel 1/2“ kennzeichnen? Die Grenzen sagen bereits „vereinfachte Lehrwerte“.
 - Hinweis Quiz (nicht geändert): Die Erklärung von `q_rsto_1` nennt „rund 160 000-mal stärker (4. Potenzgesetz: (10/1)^4 = 10 000 bis 160 000)“. Nach dem 4.-Potenz-Gesetz ergibt sich für eine 10-t- gegenüber einer 1-t-Achse der Faktor 10 000; 160 000 ist (20/1)^4. Für den laufenden Quiz-Abgleich.
 
+**Umsetzung 29.10.2026 (QZ-1):** Lernhilfe von `q_rsto_1` berichtigt: „rund 10 000-mal stärker (4.-Potenz-Gesetz: (10/1)^4 = 10 000)“; Bloom-Stufe, Niveau und Rückmeldungen ergänzt. Freigabe zurückgenommen (verified false), Vorprüfung „korrigiert“. Quelle: 4.-Potenz-Gesetz (AASHO Road Test), Rechnung (10/1)^4.
+
+
 **F-Freigabe-Stellen:** Schichtdicken RStO 12/24, Tafel 1 und 2 (T7-RS-2); Lastkollektivquotienten q_Bm je Straßenklasse (in der Aufgabe als Annahme).
 
 **Empfehlung:** freigabefähig nach Korrektur T7-RS-1 und Klärung von T7-RS-2.

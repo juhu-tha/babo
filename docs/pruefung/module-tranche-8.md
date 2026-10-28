@@ -145,6 +145,9 @@
 - **behoben – T8-DA-5:** Beispiel „Anforderung Bestand (GEG Anlage 7)“ an die Benennung im Modul angeglichen („Anlage 7 GModG, vormals GEG“).
 - **offen – Frage T8-DA-Q1:** Der CO₂-Faktor 0,22 kg/kWh („Gas/Öl-Mittel“) liegt unter den Emissionsfaktoren der Anlage 9 (Erdgas 0,240, Heizöl 0,310 kg/kWh). Zudem wird die Einsparung ΔU·84 kKh ohne Anlagenaufwand und ohne Temperatur-Korrekturfaktor (Kellerdecke gegen unbeheizt) gerechnet. Faktor auf 0,24 (Erdgas) setzen und Kellerdecke mit F_x ≈ 0,5 abmindern? (vorläufig, F-Freigabe)
 - **offen – Frage T8-DA-Q2:** Quizfrage `q_daemm_1` (freigegeben): Die Lernhilfe („coreRule“) sagt „im Erdreich … darf nur XPS oder Schaumglas eingesetzt werden“. Das widerspricht jetzt T8-DA-1. Die Frage selbst bleibt richtig; deshalb nicht geändert. Soll die Lernhilfe angepasst werden (Freigabe ginge verloren)?
+
+**Umsetzung 29.10.2026 (QZ-3, beantwortet T8-DA-Q2):** Erklärung und Lernhilfe von `q_daemm_1` ergänzt: EPS-Perimeterdämmplatten sind mit Bauartgenehmigung zulässig, in der Regel bei Bodenfeuchte (W1-E); „nur XPS oder Schaumglas“ entfällt. Frage und richtige Antwort (XPS) unverändert; Bloom-Stufe, Niveau und Rückmeldungen ergänzt. Freigabe zurückgenommen (verified false), Vorprüfung „korrigiert“. Quelle: wie T8-DA-1 (DIBt Z-23.33-2113).
+
 - Hinweis: Blähperlit als Schüttung fällt unter DIN EN 14316-1 (DIN EN 13169 gilt für Platten).
 
 **F-Freigabe-Stellen:** CO₂-Faktor und Einsparansatz (T8-DA-Q1).

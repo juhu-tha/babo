@@ -4,7 +4,7 @@ Stand: 29.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `
 
 Cluster IV umfasst 314 Fragen aus 50 Modulen. Aufgeführt sind 96 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 76 korrigiert, 0 fraglich, 12 mit offenem Prüfhinweis, 12 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 76 korrigiert, 0 fraglich, 11 mit offenem Prüfhinweis, 12 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -212,7 +212,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 76 korrigiert, 0 fraglich, 1
 
 - **Frage:** Wie ist der Rechtsstand des „Gebäudetyp E“ im Oktober 2026?
 - **Richtige Antwort:** Der Entwurf von 2024 ist erledigt; seit 10/2026 liegt ein neuer Entwurf zur Anhörung vor
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · Zweitprüfung 27.10.: Erklärung auf Referentenentwurf vom 26.10.2026 (Stellungnahmefrist 09.11.2026) präzisiert, unbelegte Prognose „Mitte 2027“ entfernt – korrigiert · Prüfhinweis: Gebäudetyp E – Stand des Gesetzgebungsverfahrens. · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · Zweitprüfung 27.10.: Erklärung auf Referentenentwurf vom 26.10.2026 (Stellungnahmefrist 09.11.2026) präzisiert, unbelegte Prognose „Mitte 2027“ entfernt – korrigiert · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Erklärung präzisiert (Referentenentwurf BMJV 26.10.2026, Frist 09.11.2026; Prognose „Mitte 2027“ ohne Beleg entfernt), korrigiert
 
