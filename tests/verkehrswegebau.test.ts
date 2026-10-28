@@ -1,5 +1,5 @@
 // Rechenkern Verkehrswegebau (Z3): Asphalt-Hohlraum, Gleis-Temperaturspannung, Westergaard, Fugen, Rigole, Spritzbetonring
-import { asphaltHohlraum, schienenTemperatur, westergaardRand, westergaardSpannungen, westergaardErsatzradius, betondeckenFugen, rigole, spritzbetonRing, GAMMA_C_TUNNEL, type Bettung } from '../src/calc/verkehrswegebau';
+import { asphaltHohlraum, schienenTemperatur, westergaardRand, westergaardSpannungen, westergaardErsatzradius, betondeckenFugen, rigole, F_METHODE, spritzbetonRing, GAMMA_C_TUNNEL, type Bettung } from '../src/calc/verkehrswegebau';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -38,18 +38,32 @@ pruefe(!westergaardRand({ dickeCm: 15, achslastKn: 180, bettungMNm3: 30 }).ok &&
 const f = betondeckenFugen(5.0, 26);
 pruefe(f.maxAbstandM === 5 && f.ok && f.duebel === 15 && f.anker === 4 && !betondeckenFugen(5.5, 26).ok && nahe(betondeckenFugen(4, 18).maxAbstandM, 4.5, 1e-12), 'Fugenabstand');
 
-// 4. Rigole (Startwerte): A = 355 m², ψ = 0,9, r = 240 l/(s·ha), D = 15 min, s_R = 0,95
-//    A_red = 319,5 m²; Q_zu = 319,5·0,024 = 7,668 l/s; V_zu = 7,668·900/1000 = 6,901 m³
-//    A_s = max(1,5; 0,35·6,901) = 2,415 m²; Q_s = 10⁻⁵·2,415·1000 = 0,02415 l/s; V_s = 0,02174 m³
-//    V_R = 1,1·(6,901 − 0,0217)/0,95 = 7,966 m³; nutzbar 7,567 m³; Länge 7,966/0,72 = 11,06 m; 32 Boxen
+// 4. Rigole nach DWA-A 138-1:2024-10 (vereinfachtes Verfahren; Runde 28.10.: vorher Ausgabe 2005 mit k_f,u = k_f/2)
+//    a) Öffentliche Bemessung Weilheim i. OB, TGB West („vereinfachtes Verfahren nach DWA-A 138-1“): A_u = 272 m², r = 16,3 l/(s·ha),
+//       D = 1080 min, k_i = 2,1·10⁻⁶ m/s, b = 5,0 m, h = 1,5 m, s_R = 0,35, f_Z = 1,2 → L = 9,0 m, V_R = 23,7 m³, Q_s = 0,14 l/s
+//       Hand: Zähler 272·10⁻⁷·16,3 − 5·1,5·2,1·10⁻⁶ = 4,27585·10⁻⁴; Nenner 2,625/77 760 + 6,5·2,1·10⁻⁶ = 4,74058·10⁻⁵ → L = 9,0198 m
+const wh = rigole({ flaecheM2: 272, psi: 1, regenspende: 16.3, dauerMin: 1080, speicherKoeff: 0.35, kf: 2.1e-6, fOrt: 1, fMethode: 1, breiteM: 5, hoeheM: 1.5, fZ: 1.2 });
+pruefe(wh.gueltig && nahe(wh.laengeM, 9.01984, 1e-4) && nahe(wh.vNutz, 23.677, 1e-3) && nahe(wh.qSicker, 0.1389, 1e-4) && nahe(wh.aS, 9.01984 * 6.5 + 7.5, 1e-3), `Rigole Weilheim ${wh.laengeM} ${wh.vNutz} ${wh.qSicker}`);
+//    b) Startwerte: A = 355 m², ψ = 0,9, r = 240, D = 15 min, s_R = 0,95, k_f = 10⁻⁵, f_Ort = 0,5, f_Methode = 0,8 (Open-End-Test),
+//       b × h = 1,2 × 0,6 m, f_Z = 1,2: k_i = 0,4·10⁻⁵ = 4·10⁻⁶ m/s; A_u = 319,5 m²; Q_zu = 7,668 l/s; V_zu = 6,9012 m³
+//       Zähler 319,5·10⁻⁷·240 − 2·1,2·0,3·4·10⁻⁶ = 7,668·10⁻³ − 2,88·10⁻⁶ = 7,66512·10⁻³
+//       Nenner 1,2·0,6·0,95/(900·1,2) + 1,8·4·10⁻⁶ = 6,33333·10⁻⁴ + 7,2·10⁻⁶ = 6,40533·10⁻⁴ → L = 11,9668 m
+//       V_R = 11,9668·0,72 = 8,6161 m³; nutzbar 8,1853 m³ → 35 Boxen à 0,24 m³
 const rg = rigole({ flaecheM2: 355, psi: 0.9, regenspende: 240, dauerMin: 15, speicherKoeff: 0.95 });
-pruefe(nahe(rg.aRed, 319.5, 1e-12) && nahe(rg.qZu, 7.668, 1e-12) && nahe(rg.vZu, 6.9012, 1e-12) && nahe(rg.aSohle, 2.41542, 1e-12), `Rigole Zufluss ${JSON.stringify(rg)}`);
-// Runde 5: DWA-A 138 – Versickerung mit k_f,u = k_f/2 = 5·10⁻⁶ m/s (öffentlich: WWA Regensburg/LfU, Folien „DWA-A 138“)
-//   Q_s = 5·10⁻⁶ · 2,41542 · 1000 = 0,012077 l/s; V_s = 0,012077 · 900/1000 = 0,010869 m³
-//   V_R = 1,1 · (6,9012 − 0,010869)/0,95 = 7,97828 m³; L = 7,97828/0,72 = 11,0809 m
-pruefe(rg.kfu === 5e-6 && nahe(rg.vSicker, 0.0108694, 1e-7) && nahe(rg.vRigole, 7.97828, 1e-5) && nahe(rg.vNutz, 7.57936, 1e-5) && nahe(rg.laengeM, 11.0809, 1e-4) && rg.boxen === 32, `Rigole Volumen ${rg.vRigole} ${rg.boxen}`);
-pruefe(nahe(rigole({ flaecheM2: 355, psi: 0.9, regenspende: 240, dauerMin: 15, speicherKoeff: 0.95, kf: 1e-4 }).qSicker, 0.5e-4 * 2.41542 * 1000, 1e-9), 'k_f/2 auch bei vorgegebenem k_f');
-pruefe(rigole({ flaecheM2: 0, psi: 0.9, regenspende: 240, dauerMin: 15, speicherKoeff: 0.3 }).vRigole === 0.1 && !rigole({ flaecheM2: 355, psi: 0.9, regenspende: 240, dauerMin: 15, speicherKoeff: 0 }).gueltig, 'Mindestvolumen, s_R = 0 → Fehler');
+pruefe(nahe(rg.aRed, 319.5, 1e-12) && nahe(rg.qZu, 7.668, 1e-12) && nahe(rg.vZu, 6.9012, 1e-12) && nahe(rg.ki, 4e-6, 1e-15) && nahe(rg.fK, 0.4, 1e-12), `Rigole Zufluss ${JSON.stringify(rg)}`);
+pruefe(nahe(rg.laengeM, 11.9668, 1e-4) && nahe(rg.vRigole, 8.6161, 1e-4) && nahe(rg.vNutz, 8.1853, 1e-4) && rg.boxen === 35 && rg.hWirksam === 0.3, `Rigole Volumen ${rg.laengeM} ${rg.vRigole} ${rg.boxen}`);
+//    Bilanz: V_nutz = f_Z·(V_zu − V_s)
+pruefe(nahe(rg.vNutz, 1.2 * (rg.vZu - rg.vSicker), 1e-9) && nahe(wh.vNutz, 1.2 * (wh.vZu - wh.vSicker), 1e-9), 'Rigole Bilanz V_nutz = f_Z·(V_zu − V_s)');
+//    c) vollständige Durchsickerung: h_w = h → größere Versickerungsfläche, kürzere Rigole (Weilheim: Nenner 3,37577·10⁻⁵ + 8·2,1·10⁻⁶,
+//       Zähler 4,4336·10⁻⁴ − 15·2,1·10⁻⁶ → L = 4,1186·10⁻⁴/5,05577·10⁻⁵ = 8,1463 m)
+const whv = rigole({ flaecheM2: 272, psi: 1, regenspende: 16.3, dauerMin: 1080, speicherKoeff: 0.35, kf: 2.1e-6, fOrt: 1, fMethode: 1, breiteM: 5, hoeheM: 1.5, fZ: 1.2, vollDurchsickert: true });
+pruefe(nahe(whv.laengeM, 8.1463, 1e-3) && whv.hWirksam === 1.5 && whv.laengeM < wh.laengeM && rigole({ flaecheM2: 355, psi: 0.9, regenspende: 240, dauerMin: 15, speicherKoeff: 0.95, vollDurchsickert: true }).laengeM < rg.laengeM, `Rigole voll durchsickert ${whv.laengeM}`);
+//    d) Korrekturfaktoren und Fehler
+pruefe(F_METHODE.feldGross === 1 && F_METHODE.openEnd === 0.8 && F_METHODE.sieblinie === 0.1 && nahe(rigole({ ...{ flaecheM2: 355, psi: 0.9, regenspende: 240, dauerMin: 15, speicherKoeff: 0.95 }, fOrt: 0.3, fMethode: F_METHODE.doppelring }).ki, 2.7e-6, 1e-15), 'f_Methode-Tabelle, k_i = f_Ort·f_Methode·k_f');
+pruefe(!rigole({ flaecheM2: 355, psi: 0.9, regenspende: 240, dauerMin: 15, speicherKoeff: 0 }).gueltig && !rigole({ flaecheM2: 355, psi: 0.9, regenspende: 240, dauerMin: 15, speicherKoeff: 0.3, fOrt: 1.2 }).gueltig && !rigole({ flaecheM2: 355, psi: 0.9, regenspende: 240, dauerMin: 0, speicherKoeff: 0.3 }).gueltig, 's_R = 0, f_Ort > 1, D = 0 → Fehler');
+const r0 = rigole({ flaecheM2: 0, psi: 0.9, regenspende: 240, dauerMin: 15, speicherKoeff: 0.3 });
+pruefe(r0.gueltig && r0.laengeM === 0 && r0.vRigole === 0 && r0.boxen === 0, 'A = 0 → keine Rigole');
+pruefe(rigole({ flaecheM2: 20, psi: 0.3, regenspende: 80, dauerMin: 60, speicherKoeff: 0.3, kf: 1e-3, fOrt: 1, fMethode: 1 }).hinweise.some(x => x.feld === 'flaecheM2'), 'Stirnflächen genügen → Hinweis');
 
 // 5. Spritzbeton (Startwerte): R = 4,5 m, p = 0,15 N/mm², d = 15 cm, C25/30; Runde 5: γ_c = 1,5 (Bauzustand = vorübergehend,
 //    DIN EN 1992-1-1/NA Tab. 2.1DE) statt 1,3: σ = 0,15·4,5/0,15 = 4,5 N/mm²; f_cd = 0,85·25/1,5 = 14,17 N/mm² → 31,8 %; N = 675 kN/m
@@ -69,9 +83,9 @@ for (let i = 0; i < 1000; i++) {
   pruefe(a.gueltig && Number.isFinite(a.sigmaE) && a.sigmaE > 0 && dicker.sigmaE < a.sigmaE && schwerer.sigmaE > a.sigmaE, `Fuzz ${i}: Westergaard`);
   const ts = -30 + rnd() * 90, gl = schienenTemperatur(ts, 20, BET[i % 3]), gl2 = schienenTemperatur(ts + 5, 20, BET[i % 3]);
   pruefe(Number.isFinite(gl.kraftGleisKn) && gl2.sigmaT > gl.sigmaT, `Fuzz ${i}: Gleis`);
-  const e = { flaecheM2: rnd() * 2000, psi: rnd(), regenspende: 50 + rnd() * 400, dauerMin: 5 + rnd() * 60, speicherKoeff: 0.3 + rnd() * 0.65 };
-  const r1 = rigole(e), r2 = rigole({ ...e, flaecheM2: e.flaecheM2 + 100 });
-  pruefe(r1.gueltig && [r1.vRigole, r1.laengeM, r1.vNutz].every(Number.isFinite) && r1.vRigole >= 0.1 && r2.vRigole >= r1.vRigole && r2.boxen >= r1.boxen, `Fuzz ${i}: Rigole`);
+  const e = { flaecheM2: rnd() * 2000, psi: rnd(), regenspende: 50 + rnd() * 400, dauerMin: 5 + rnd() * 60, speicherKoeff: 0.3 + rnd() * 0.65, kf: 1e-6 + rnd() * 1e-4, fOrt: 0.3 + rnd() * 0.7, fMethode: 0.1 + rnd() * 0.9, vollDurchsickert: rnd() < 0.5 };
+  const r1 = rigole(e), r2 = rigole({ ...e, flaecheM2: e.flaecheM2 + 100 }), r3 = rigole({ ...e, vollDurchsickert: true });
+  pruefe(r1.gueltig && [r1.vRigole, r1.laengeM, r1.vNutz, r1.aS].every(Number.isFinite) && r1.vRigole >= 0 && r2.vRigole >= r1.vRigole && r2.boxen >= r1.boxen && r3.laengeM <= r1.laengeM + 1e-9, `Fuzz ${i}: Rigole`);
   const s1 = spritzbetonRing(2 + rnd() * 6, rnd() * 0.5, 10 + rnd() * 30, 20 + rnd() * 20), s2 = spritzbetonRing(4, 0.2, 10 + i % 30, 25), s3 = spritzbetonRing(4, 0.2, 11 + i % 30, 25);
   pruefe(Number.isFinite(s1.ausnutzung) && s3.sigmaRing < s2.sigmaRing, `Fuzz ${i}: Spritzbeton`);
   const asE = { gesteinAnteil: 95 - rnd() * 3, bitumenAnteil: 5, rhoGestein: 2.6 + rnd() * 0.3, rhoBitumen: 1.02, raumdichteMischung: 2.1 + rnd() * 0.3 };
