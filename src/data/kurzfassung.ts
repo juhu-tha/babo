@@ -109,7 +109,7 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "Gusseisen ist druckfest, aber spröde und nicht schweißbar; es bricht ohne Vorwarnung, daher sind Zugspannungszonen konstruktiv zu vermeiden.",
     "Thomas-Stahl ist alterungsversprödet und für tragende Anschlüsse nicht schweißbar; Ertüchtigungen historischer Stähle erfolgen über Schraub-, Niet- oder Klemmverbindungen.",
     "Typische Schadstoffträger sind Asbestzement, Teer-Parkettkleber mit PAK, PCB-haltige Thiokol-Fugen und PCP-/Lindan-Holzschutz; vor jedem Eingriff ist eine Materialprobe nötig.",
-    "Nach PCB-Richtlinie gilt Raumluft unter 300 ng/m³ als langfristig tolerabel, über 3000 ng/m³ sind unverzüglich Maßnahmen nötig; für Blei im Trinkwasser gelten ab 2028 höchstens 5 µg/l.",
+    "Für PCB in der Raumluft gelten die AIR-Richtwerte 2025 (RW I 80, RW II 800 ng/m³; frühere PCB-Richtlinie: 300/3000 ng/m³), über RW II ist unverzüglich zu handeln; für Blei im Trinkwasser gelten ab 2028 höchstens 5 µg/l.",
   ],
   instandhaltung: [
     "Standsicherheitsrelevante Instandsetzungen folgen der TR Instandhaltung des DIBt mit sachkundigem Planer (SKP); DIN EN 1504 regelt nur Produkteigenschaften und CE-Kennzeichnung.",

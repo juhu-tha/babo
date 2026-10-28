@@ -14300,7 +14300,7 @@
       "Sie sind zwingend aufzunehmen, damit Nachträge ausgeschlossen werden"
     ],
     "correctIdx": 2,
-    "explanation": "Nach § 7 Abs. 1 Nr. 4 VOB/A sind Bedarfspositionen grundsätzlich nicht in die Leistungsbeschreibung aufzunehmen; angehängte Stundenlohnarbeiten nur im unbedingt erforderlichen Umfang. Sie erschweren die Kalkulation und laden zu Spekulationspreisen ein.",
+    "explanation": "Nach § 7 Abs. 1 Nr. 4 VOB/A sind Bedarfspositionen grundsätzlich nicht in die Leistungsbeschreibung aufzunehmen; angehängte Stundenlohnarbeiten nur im unbedingt erforderlichen Umfang. Sie erschweren die Kalkulation und laden zu Spekulationspreisen ein. Oberhalb der EU-Schwellenwerte gilt seit 08.09.2026 die VOB/A 2026; ihr § 7 EU Abs. 1 Nr. 4 enthält denselben Grundsatz.",
     "bloom": "Verstehen",
     "niveau": "M",
     "distraktorFeedback": [
@@ -14317,11 +14317,12 @@
       "targetModuleTab": "px_planung",
       "targetModuleLabel": "Planung & Ausschreibung"
     },
-    "quelle": "VOB/A (2019) § 7 Abs. 1 Nr. 4",
+    "quelle": "VOB/A Abschnitt 1 (2019) § 7 Abs. 1 Nr. 4; gleichlautend § 7 EU Abs. 1 Nr. 4 VOB/A 2026 (Abschnitte 2/3, BAnz AT 24.08.2026 B6)",
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-26",
-      "ergebnis": "ok"
+      "am": "2026-10-28",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 28.10. (Abgleich Runde 3): Quelle um VOB/A 2026 (Abschnitte 2/3, § 7 EU Abs. 1 Nr. 4, BAnz AT 24.08.2026 B6) ergänzt, Abschnitt 1 benannt – korrigiert"
     }
   },
   {
@@ -14358,11 +14359,12 @@
       "targetModuleTab": "px_planung",
       "targetModuleLabel": "Planung & Ausschreibung"
     },
-    "quelle": "VOB/A (2019) § 7 Abs. 1 Nr. 3",
+    "quelle": "VOB/A Abschnitt 1 (2019) § 7 Abs. 1 Nr. 3; gleichlautend § 7 EU Abs. 1 Nr. 3 VOB/A 2026 (Abschnitte 2/3, BAnz AT 24.08.2026 B6)",
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-26",
-      "ergebnis": "ok"
+      "am": "2026-10-28",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 28.10. (Abgleich Runde 3): Quelle um VOB/A 2026 (§ 7 EU Abs. 1 Nr. 3 gleichlautend) ergänzt, Abschnitt 1 benannt – korrigiert"
     }
   },
   {
@@ -16184,16 +16186,17 @@
     ],
     "gapAnalysis": {
       "topic": "3D-Betondruck",
-      "misconception": "Die Druckgeschwindigkeit spiele für die Standsicherheit keine Rolle.",
-      "coreRule": "Die Fließgrenze muss schneller wachsen als die Auflast aus den folgenden Schichten.",
+      "misconception": "Der Formfaktor 1/√3 wird vergessen, doppelt oder multiplikativ angesetzt.",
+      "coreRule": "Mindest-Fließgrenze der untersten Schicht τ ≥ ρ·g·H/√3 (Roussel 2018); sie muss mit der Druckhöhe mitwachsen.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „3D-Betondruck“ im Modul Entwicklungen noch einmal durch.",
       "targetModuleTab": "innovative_werkstoffe",
       "targetModuleLabel": "Entwicklungen"
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-28",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 28.10. (Abgleich Runde 3): gapAnalysis an die Rechenaufgabe angepasst (Formfaktor 1/√3 statt Druckgeschwindigkeit) – korrigiert"
     }
   },
   {
@@ -21056,7 +21059,7 @@
     "moduleTitle": "Bauproduktenrecht",
     "topic": "AVCP-System 4",
     "difficulty": "Basis",
-    "normRef": "VO (EU) 305/2011, Anhang V",
+    "normRef": "VO (EU) 2024/3110, Anhang IX",
     "question": "In welchem AVCP-System ist keine notifizierte Stelle beteiligt?",
     "options": [
       "System 4",
@@ -21082,11 +21085,12 @@
       "targetModuleTab": "bp_recht",
       "targetModuleLabel": "Bauproduktenrecht"
     },
-    "quelle": "Verordnung (EU) Nr. 305/2011, Anhang V",
+    "quelle": "Verordnung (EU) 2024/3110, Anhang IX (System 4: keine Aufgabe für die notifizierte Stelle); vormals VO (EU) Nr. 305/2011, Anhang V",
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-26",
-      "ergebnis": "ok"
+      "am": "2026-10-28",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 28.10. (Abgleich Runde 3): Rechtsgrundlage auf BauPVO (EU) 2024/3110, Anhang IX umgestellt (gilt seit 08.01.2026); Antwort unverändert – korrigiert"
     }
   },
   {
@@ -21959,7 +21963,7 @@
     "moduleTitle": "Verkehrswegebau",
     "topic": "Regenabfluss",
     "difficulty": "Basis",
-    "normRef": "DWA-A 138",
+    "normRef": "DWA-A 138-1:2024-10",
     "question": "Asphaltfläche 1000 m² (Abflussbeiwert 0,9), Bemessungsregen 150 l/(s·ha). Wie groß ist der Zufluss zur Versickerungsanlage?",
     "options": [
       "135 l/s",
@@ -21988,8 +21992,9 @@
     "quelle": "DWA-A 138-1:2024-10",
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-26",
-      "ergebnis": "ok"
+      "am": "2026-10-28",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 28.10. (Abgleich Runde 3): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert – korrigiert"
     }
   },
   {
@@ -24930,30 +24935,31 @@
       "Für Brücken wird die Betriebsenergie B6 zur dominierenden Lebenszyklusphase erklärt.",
       "Sie verwendet einen Betrachtungszeitraum von typisch 50 Jahren wie bei QNG und DGNB.",
       "Sie bezieht die Wirkungen auf 1 m² Nettoraumfläche des zugehörigen Betriebsgebäudes.",
-      "Sie bilanziert Stauemissionen der Nutzer in Modul B8 über 80 bis 100 Jahre."
+      "Sie kennt ein eigenes Nutzermodul B8; bei Brücken meist 80 bis 100 Jahre."
     ],
     "correctIdx": 3,
-    "explanation": "DIN EN 17472 verankert lange Nutzungsdauern von 80 bis 100+ Jahren (DIN EN 1990, Auslegungskategorie 5), eigene funktionelle Einheiten wie 1 m² Brückendeckfläche und das Modul B8 für baustellenbedingte Nutzer- und Stauemissionen.",
+    "explanation": "DIN EN 17472 kennt mit B8 ein eigenes Modul für die Nutzung des Bauwerks durch die Nutzer (im Modul vereinfacht als sperrungsbedingte Stauemissionen modelliert) und eigene funktionelle Einheiten wie 1 m² Brückendeckfläche. Den Betrachtungszeitraum legt der Auftraggeber fest (Begriff 3.69); bei Brücken sind 80 bis 100 Jahre üblich (DIN EN 1990, Kategorie 5: 100 Jahre).",
     "bloom": "Verstehen",
     "niveau": "B",
     "distraktorFeedback": [
       "Bei Ingenieurbauwerken dominieren A1–A3, die Austauschzyklen B2–B5 und B8, nicht die Betriebsenergie.",
-      "Die 50 Jahre sind typisch für Gebäude; Brücken werden über 80 bis 100+ Jahre betrachtet.",
+      "Die 50 Jahre sind typisch für Gebäude (QNG/DGNB); bei Brücken legt der Auftraggeber meist 80 bis 100 Jahre fest.",
       "Bezugsgrößen sind z. B. 1 m² Brückendeckfläche, 1 km Trasse oder die Verkehrsleistung in tkm.",
       ""
     ],
     "gapAnalysis": {
       "topic": "Normenvergleich Hoch-/Tiefbau",
       "misconception": "Methodik des Hochbaus wird unverändert auf Infrastruktur übertragen.",
-      "coreRule": "DIN EN 17472: eigene funktionelle Einheiten, 80–100+ a Betrachtungszeitraum, Modul B8 für Nutzerstau.",
+      "coreRule": "DIN EN 17472: eigene funktionelle Einheiten, Betrachtungszeitraum vom Auftraggeber festgelegt (Brücken typisch 80–100 a), Nutzermodul B8.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Differenzierungsmatrix: Hochbau vs. Tiefbau“ im Modul LCA im Ingenieurbau (DIN EN 17472) noch einmal durch.",
       "targetModuleTab": "lca_ingenieurbau",
       "targetModuleLabel": "LCA im Ingenieurbau (DIN EN 17472)"
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-28",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 28.10. (Abgleich Runde 3): Aussagen zu DIN EN 17472 vorsichtig formuliert: Betrachtungszeitraum vom Auftraggeber festgelegt (3.69), typisch 80–100 a; B8 als Nutzermodul, Stau-Zuordnung als Modellannahme – korrigiert"
     }
   },
   {
@@ -25331,8 +25337,8 @@
     "moduleTitle": "Rechtsrahmen, CRREM & Praxis",
     "topic": "CBAM-Ausgleich berechnen",
     "difficulty": "Vertiefung",
-    "normRef": "VO (EU) 2023/956",
-    "question": "Ein Importeur führt 1000 t Zement mit 0,8 t CO₂ je t Zement ein. Der EU-ETS-Preis beträgt 80 €/t CO₂, im Herkunftsland wurden bereits 20 €/t CO₂ gezahlt. Welche CBAM-Kosten ergeben sich nach der im Modul angegebenen Formel?",
+    "normRef": "VO (EU) 2023/956, Art. 9, 21, 31",
+    "question": "Ein Importeur führt 1000 t Zement mit 0,8 t CO₂ je t Zement ein. Der EU-ETS-Preis beträgt 80 €/t CO₂, im Herkunftsland wurden bereits 20 €/t CO₂ gezahlt. Welche CBAM-Kosten ergeben sich nach der im Modul angegebenen Formel (Endzustand ohne kostenlose Zuteilung)?",
     "options": [
       "48 000 €",
       "64 000 €",
@@ -25340,27 +25346,28 @@
       "16 000 €"
     ],
     "correctIdx": 0,
-    "explanation": "CBAM-Kosten = Importmenge · GWP_spec · (P_ETS − P_Origin) = 1000 t · 0,8 t CO₂/t · (80 − 20) €/t CO₂ = 48 000 €. Der im Ursprungsland gezahlte CO₂-Preis wird angerechnet.",
+    "explanation": "CBAM-Kosten = Importmenge · GWP_spec · (P_ETS − P_Origin) = 1000 t · 0,8 t CO₂/t · (80 − 20) €/t CO₂ = 48 000 €. Der im Ursprungsland gezahlte CO₂-Preis wird nach Art. 9 angerechnet, der Zertifikatspreis folgt Art. 21. Bis 2034 wird die Zahl der Zertifikate zusätzlich um die Anpassung an die kostenlose EU-ETS-Zuteilung gekürzt (Art. 31; CBAM-Faktor 2026: 97,5 %); 2026 fiele also nur ein kleiner Bruchteil an.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "",
-      "Hier fehlt die Anrechnung des im Herkunftsland gezahlten CO₂-Preises von 20 €/t.",
+      "Hier fehlt die Anrechnung des im Herkunftsland gezahlten CO₂-Preises von 20 €/t (Art. 9).",
       "Hier wurde der volle Preis je Tonne Zement statt je Tonne CO₂ angesetzt (1000 · 80 €).",
       "Hier wurde nur der Preis im Herkunftsland (20 €/t) angesetzt statt der Differenz zum ETS-Preis."
     ],
     "gapAnalysis": {
       "topic": "CBAM-Formel",
       "misconception": "Der Herkunftslandpreis oder der Emissionsfaktor wird in der Ausgleichsformel vergessen.",
-      "coreRule": "CBAM-Kosten = Menge · eingebettete Emissionen · (P_ETS − P_Herkunft).",
+      "coreRule": "Endzustand: CBAM-Kosten = Menge · eingebettete Emissionen · (P_ETS − P_Herkunft); bis 2034 Kürzung um die kostenlose Zuteilung (Art. 31).",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Rechtsrahmen-Kompendium & Hierarchie“ im Modul Rechtsrahmen, CRREM & Praxis noch einmal durch.",
       "targetModuleTab": "lca_regulatorik",
       "targetModuleLabel": "Rechtsrahmen, CRREM & Praxis"
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-28",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 28.10. (Abgleich Runde 3): Frage auf Endzustand ohne kostenlose Zuteilung eingegrenzt; Erklärung um Art. 31 (Anpassung kostenlose Zuteilung, CBAM-Faktor 2026 97,5 %) ergänzt, Artikelverweise korrigiert (Art. 9 Anrechnung, Art. 21 Preis) – korrigiert"
     }
   },
   {
@@ -28373,23 +28380,23 @@
     "moduleTitle": "Festigkeitsberechnungen",
     "topic": "Reißlänge",
     "difficulty": "Basis",
-    "normRef": "",
-    "question": "Welche Reißlänge hat ein frei hängender Stab aus Nadelholz C24 (f_t = 14 N/mm², ρ = 450 kg/m³)?",
+    "normRef": "DIN EN 338:2016-07",
+    "question": "Welche Reißlänge hat ein frei hängender Stab aus Nadelholz C24 (f_t,0,k = 14,5 N/mm², ρ_mean = 420 kg/m³)?",
     "options": [
-      "L ≈ 31 km",
-      "L ≈ 4,8 km",
-      "L ≈ 3,2 km",
-      "L ≈ 320 m"
+      "L ≈ 35 km",
+      "L ≈ 5,1 km",
+      "L ≈ 3,5 km",
+      "L ≈ 350 m"
     ],
     "correctIdx": 2,
-    "explanation": "L = f_t/(ρ · g) = 14 · 10⁶/(450 · 9,81) ≈ 3170 m ≈ 3,2 km.",
+    "explanation": "L = f_t,0,k/(ρ_mean · g) = 14,5 · 10⁶/(420 · 9,81) ≈ 3519 m ≈ 3,5 km. Kennwerte nach DIN EN 338:2016-07; das Eigengewicht wird mit der mittleren Rohdichte angesetzt.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "Hier fehlt die Erdbeschleunigung g = 9,81 m/s²; das Ergebnis wäre etwa zehnmal zu groß.",
-      "4,8 km ergäben sich mit der Druckfestigkeit f_c = 21 N/mm²; für die Reißlänge gilt die Zugfestigkeit.",
+      "5,1 km ergäben sich mit der Druckfestigkeit f_c,0,k = 21 N/mm²; für die Reißlänge gilt die Zugfestigkeit.",
       "",
-      "Das Ergebnis ist um den Faktor 10 zu klein; f_t = 14 N/mm² = 14 · 10⁶ N/m²."
+      "Das Ergebnis ist um den Faktor 10 zu klein; f_t,0,k = 14,5 N/mm² = 14,5 · 10⁶ N/m²."
     ],
     "gapAnalysis": {
       "topic": "Reißlänge",
@@ -28401,8 +28408,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-28",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 28.10. (Abgleich Runde 3): C24-Kennwerte an DIN EN 338:2016-07 bzw. src/data/kennwerte.ts angeglichen (f_t,0,k 14,5 statt 14 N/mm², ρ_mean 420 statt 450 kg/m³), neu gerechnet: 3,5 km; Distraktoren 35 km/5,1 km/350 m – korrigiert"
     }
   },
   {
@@ -29889,7 +29897,7 @@
     "moduleTitle": "Asphalt & Bitumen",
     "topic": "Raumdichte",
     "difficulty": "Vertiefung",
-    "normRef": "DIN EN 12697-5/-8",
+    "normRef": "DIN EN 12697-5/-6/-8",
     "question": "Ein Asphaltmischgut enthält B = 6,0 M.-% Bitumen (ρ_B = 1,02 g/cm³) und Gestein mit ρ_G = 2,70 g/cm³; der Hohlraumgehalt beträgt 4,0 Vol.-%. Wie groß ist die Raumdichte ρ_b?",
     "options": [
       "ρ_b ≈ 2,359 g/cm³",
@@ -29917,8 +29925,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-28",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 28.10. (Abgleich Runde 3): normRef um DIN EN 12697-6 (Raumdichte) ergänzt – korrigiert"
     }
   },
   {
@@ -32676,7 +32685,7 @@
     "moduleTitle": "Tiefbau & Entwässerung",
     "topic": "Regenwasserbewirtschaftung",
     "difficulty": "Basis",
-    "normRef": "DWA-A 138",
+    "normRef": "DWA-A 138-1:2024-10",
     "question": "Welche Aufgaben umfasst das Wassermanagement im Tiefbau nach dem Modul?",
     "options": [
       "Nur die schnelle Ableitung in den Mischwasserkanal",
@@ -32702,14 +32711,12 @@
       "targetModuleTab": "bp_verkehr_tiefbau",
       "targetModuleLabel": "Tiefbau & Entwässerung"
     },
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-10-28",
       "ergebnis": "korrigiert",
-      "hinweis": "Distraktoren angeglichen"
-    },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27"
+      "hinweis": "Distraktoren angeglichen · Zweitprüfung 28.10. (Abgleich Runde 3): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert (Freigabe zurückgenommen) – korrigiert"
+    }
   },
   {
     "id": "qn_bp_verkehr_tiefbau_3",
@@ -32719,7 +32726,7 @@
     "moduleTitle": "Tiefbau & Entwässerung",
     "topic": "Zuflussvolumen",
     "difficulty": "Vertiefung",
-    "normRef": "DWA-A 138",
+    "normRef": "DWA-A 138-1:2024-10",
     "question": "Eine Asphaltfläche von 500 m² (ψ = 0,90) wird mit r_D = 200 l/(s·ha) über t_d = 15 min beregnet. Welches Zuflussvolumen ergibt der Rechner?",
     "options": [
       "9,0 m³",
@@ -32741,14 +32748,15 @@
       "topic": "Zuflussvolumen",
       "misconception": "Der Abflussbeiwert oder die Zeitumrechnung wird vergessen.",
       "coreRule": "V_zu = A · ψ · r_D/10 000 · t_d · 60 [l]; 1 ha = 10 000 m².",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „II. Interaktives Planungs-Muster: Rigolenbemessung nach DWA-A 138“ im Modul Tiefbau & Entwässerung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „II. Interaktives Planungs-Muster: Rigolenbemessung in Anlehnung an DWA-A 138-1“ im Modul Tiefbau & Entwässerung noch einmal durch.",
       "targetModuleTab": "bp_verkehr_tiefbau",
       "targetModuleLabel": "Tiefbau & Entwässerung"
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-28",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 28.10. (Abgleich Runde 3): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert – korrigiert"
     }
   },
   {
@@ -32759,7 +32767,7 @@
     "moduleTitle": "Tiefbau & Entwässerung",
     "topic": "Rigolenlänge",
     "difficulty": "Vertiefung",
-    "normRef": "DWA-A 138",
+    "normRef": "DWA-A 138-1:2024-10",
     "question": "Eine Kiesrigole (s_R = 0,30, Querschnitt 0,60 m × 1,20 m) soll ein Nutzvolumen von 5,4 m³ speichern. Welche Länge ist erforderlich?",
     "options": [
       "7,5 m",
@@ -32781,14 +32789,15 @@
       "topic": "Rigolenlänge",
       "misconception": "Der Speicherkoeffizient wird multipliziert statt dividiert oder ganz vergessen.",
       "coreRule": "V_Graben = V_Nutz / s_R; L = V_Graben / (h · b).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „II. Interaktives Planungs-Muster: Rigolenbemessung nach DWA-A 138“ im Modul Tiefbau & Entwässerung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „II. Interaktives Planungs-Muster: Rigolenbemessung in Anlehnung an DWA-A 138-1“ im Modul Tiefbau & Entwässerung noch einmal durch.",
       "targetModuleTab": "bp_verkehr_tiefbau",
       "targetModuleLabel": "Tiefbau & Entwässerung"
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-28",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 28.10. (Abgleich Runde 3): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert – korrigiert"
     }
   },
   {
@@ -32799,7 +32808,7 @@
     "moduleTitle": "Tiefbau & Entwässerung",
     "topic": "Kiesrigole vs. Sickerbox",
     "difficulty": "Transfer",
-    "normRef": "DWA-A 138",
+    "normRef": "DWA-A 138-1:2024-10",
     "question": "Warum benötigt eine Kunststoff-Sickerbox für dasselbe Speichervolumen deutlich weniger Platz als eine Kiesrigole?",
     "options": [
       "Ihr Speicherkoeffizient beträgt bis 0,95, der von Kies nur ca. 0,30",
@@ -32821,18 +32830,16 @@
       "topic": "Kiesrigole vs. Sickerbox",
       "misconception": "Der Platzbedarf wird der Versickerungsleistung statt dem Speicherkoeffizienten zugeschrieben.",
       "coreRule": "Grabenvolumen ∝ 1/s_R: Box (0,95) ≈ 1/3 des Kiesvolumens (0,30).",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „II. Interaktives Planungs-Muster: Rigolenbemessung nach DWA-A 138“ im Modul Tiefbau & Entwässerung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „II. Interaktives Planungs-Muster: Rigolenbemessung in Anlehnung an DWA-A 138-1“ im Modul Tiefbau & Entwässerung noch einmal durch.",
       "targetModuleTab": "bp_verkehr_tiefbau",
       "targetModuleLabel": "Tiefbau & Entwässerung"
     },
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-10-28",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
-    },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27"
+      "hinweis": "normRef ergänzt · Zweitprüfung 28.10. (Abgleich Runde 3): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert (Freigabe zurückgenommen) – korrigiert"
+    }
   },
   {
     "id": "qn_bp_verkehr_tiefbau_6",
@@ -32842,7 +32849,7 @@
     "moduleTitle": "Tiefbau & Entwässerung",
     "topic": "Abflussbeiwert",
     "difficulty": "Vertiefung",
-    "normRef": "DWA-A 138",
+    "normRef": "DWA-A 138-1:2024-10",
     "question": "Was beschreibt der Abflussbeiwert ψ im Rigolenrechner?",
     "options": [
       "Den Hohlraumanteil des Speichermaterials in der Rigole",
@@ -32864,18 +32871,16 @@
       "topic": "Abflussbeiwert",
       "misconception": "Abflussbeiwert, Speicherkoeffizient und Durchlässigkeitsbeiwert werden verwechselt.",
       "coreRule": "ψ = Abflussanteil der Fläche; s_R = Hohlraum der Rigole; k_f = Bodendurchlässigkeit.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „II. Interaktives Planungs-Muster: Rigolenbemessung nach DWA-A 138“ im Modul Tiefbau & Entwässerung noch einmal durch.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „II. Interaktives Planungs-Muster: Rigolenbemessung in Anlehnung an DWA-A 138-1“ im Modul Tiefbau & Entwässerung noch einmal durch.",
       "targetModuleTab": "bp_verkehr_tiefbau",
       "targetModuleLabel": "Tiefbau & Entwässerung"
     },
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-10-28",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
-    },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27"
+      "hinweis": "normRef ergänzt · Zweitprüfung 28.10. (Abgleich Runde 3): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert (Freigabe zurückgenommen) – korrigiert"
+    }
   },
   {
     "id": "qn_bp_verkehr_bahn_1",
@@ -38866,7 +38871,7 @@
     "topic": "Re-Use-Inventar",
     "difficulty": "Vertiefung",
     "normRef": "DIN SPEC 91484",
-    "question": "Im Re-Use-Inventar nach DIN SPEC 91484 werden vier Bauteile erfasst. Welches ist nach Verbindungsart und Schadstoffstatus am besten für die Wiederverwendung geeignet?",
+    "question": "Bei der Erfassung vor dem Rückbau (in Anlehnung an DIN SPEC 91484) werden vier Bauteile aufgenommen. Welches ist nach Verbindungsart und Schadstoffstatus am besten für die Wiederverwendung geeignet?",
     "options": [
       "Vollflächig verklebtes Parkett, schadstofffrei, in gutem Zustand",
       "Geschraubte Stahlträger mit asbesthaltiger Brandschutzbekleidung",
@@ -38874,11 +38879,11 @@
       "Genagelte Holzschalung mit Verdacht auf PCP-Holzschutzmittel"
     ],
     "correctIdx": 2,
-    "explanation": "Geschraubte Verbindungen (Klasse A) sind zerstörungsfrei demontierbar, und ohne Schadstoffe bleibt das Bauteil im Re-Use-Kanal. Schadstoffbelastete Bauteile fallen aus der Re-Use-Kette heraus.",
+    "explanation": "Geschraubte Verbindungen (Fügungsklasse A im Simulator des Moduls) sind zerstörungsfrei demontierbar, und ohne Schadstoffe bleibt das Bauteil im Re-Use-Kanal. Schadstoffbelastete Bauteile fallen aus der Re-Use-Kette heraus.",
     "bloom": "Analysieren",
     "niveau": "B",
     "distraktorFeedback": [
-      "Geklebte Verbindungen (Klasse D) lassen sich kaum zerstörungsfrei lösen; die Re-Use-Quote ist sehr gering.",
+      "Geklebte Verbindungen (Fügungsklasse D im Modul) lassen sich kaum zerstörungsfrei lösen; die Re-Use-Quote ist sehr gering.",
       "Asbestbelastung führt zur fachgerechten Entsorgung; das Bauteil fällt trotz guter Fügung aus der Re-Use-Kette.",
       "",
       "Schadstoffverdacht muss erst im Labor geklärt werden; zudem ist die Nagelung nur eingeschränkt demontabel."
@@ -38893,8 +38898,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-28",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 28.10. (Abgleich Runde 3): Klassen A–D als Fügungsklassen des Modul-Simulators gekennzeichnet (nicht aus DIN SPEC 91484); Fragetext „in Anlehnung an“ – korrigiert"
     }
   },
   {
@@ -42125,7 +42131,7 @@
     "distraktorFeedback": [
       "12,0 A entsteht mit der Bauteilfläche statt der Stahloberfläche.",
       "0,96 A ist um den Faktor 10 zu klein; mA/m² · m² ergibt 9600 mA = 9,6 A.",
-      "96 A entsteht mit 150 statt 15 mA/m²; die Einheit mA muss in A umgerechnet werden.",
+      "96 A entsteht mit 150 statt 15 mA/m² (Kommafehler um eine Stelle bei der Schutzstromdichte).",
       ""
     ],
     "gapAnalysis": {
@@ -42138,8 +42144,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-28",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 28.10. (Abgleich Runde 3): Rückmeldung zu 96 A an den Fehlerweg angepasst (150 statt 15 mA/m²) – korrigiert"
     }
   },
   {

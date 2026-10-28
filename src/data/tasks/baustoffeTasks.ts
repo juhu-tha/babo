@@ -5,7 +5,7 @@ export const baustoffeTasks: Task[] = [
     id: 't_stahlbau',
     difficulty: 'Schwer',
     title: 'Stahl: Profilbemessung auf Biegung nach DIN EN 1993-1-1',
-    question: 'Ein Stahlträger (S235) muss ein Biegemoment von M_Ed = 150 kNm aufnehmen. Welches IPE-Profil ist mindestens erforderlich (Querschnittsklasse 1/2, Teilsicherheitsbeiwert \\gamma_M0 = 1.0)?',
+    question: 'Ein Stahlträger (S235) muss ein Biegemoment von M_Ed = 150 kNm aufnehmen. Welches IPE-Profil ist mindestens erforderlich (Querschnittsklasse 1/2, Teilsicherheitsbeiwert \\gamma_M0 = 1,0)?',
     moduleHint: { id: 'stahl', name: 'Stahl' },
     solution: 'Bemessungsverfahren für statischen Biegetraglastnachweis:\n1. **Bemessungsfestigkeit ($f_{yd}$):** Für Baustahl S235 gilt $f_{yd} = f_y / \\gamma_{M0} = 235\\text{ N/mm}^2 / 1{,}0 = 23{,}5\\text{ kN/cm}^2$.\n2. **Erforderliches elastisches Widerstandsmoment ($W_{el,y}$):**\n$$W_{\\text{erf}} = \\frac{M_{Ed}}{f_{yd}} = \\frac{150\\text{ kNm}}{23{,}5\\text{ kN/cm}^2} = \\frac{15000\\text{ kNcm}}{23{,}5\\text{ kN/cm}^2} \\approx **638{,}3\\text{ cm}^3**$$\n3. **Profilauswahl (IPE-Reihe):**\n- IPE 300: $W_y = 557\\text{ cm}^3$ (nicht ausreichend).\n- IPE 330: $W_y = 713\\text{ cm}^3$ (ausreichend, da $713\\text{ cm}^3 \\ge 638{,}3\\text{ cm}^3$).\nMindestens zu wählen ist somit ein **IPE 330**.'
   },

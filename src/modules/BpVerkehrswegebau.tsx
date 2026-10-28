@@ -59,7 +59,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
   const [spritzbetonDicke, setSpritzbetonDicke] = useState<number>(15); // in cm
   const [betonKlasse, setBetonKlasse] = useState<'C20/25' | 'C25/30' | 'C30/37'>('C25/30');
 
-  // Tiefbau-Zustände (Versickerungsrechner nach DWA-A 138 / simplified)
+  // Tiefbau-Zustände (Versickerungsrechner, vereinfacht in Anlehnung an DWA-A 138-1)
   const [tiefbauArea, setTiefbauArea] = useState<number>(355); // m²
   const [tiefbauPsi, setTiefbauPsi] = useState<number>(0.9); // abflussbeiwert (Asphalt = 0.9, Pflaster = 0.7, Gründach = 0.3)
   const [tiefbauRain, setTiefbauRain] = useState<number>(240); // l/(s*ha) Bemessungsregen

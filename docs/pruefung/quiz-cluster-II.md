@@ -2,9 +2,9 @@
 
 Stand: 28.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster II umfasst 344 Fragen aus 56 Modulen. Aufgeführt sind 106 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster II umfasst 344 Fragen aus 56 Modulen. Aufgeführt sind 111 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 101 korrigiert, 0 fraglich, 16 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 106 korrigiert, 0 fraglich, 16 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -248,6 +248,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 101 korrigiert, 0 fraglich, 
 - [x] ok
 - [ ] ändern: …
 
+### q_bre_4 · Bauproduktenrecht
+
+- **Frage:** In welchem AVCP-System ist keine notifizierte Stelle beteiligt?
+- **Richtige Antwort:** System 4
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Abgleich Runde 3): Rechtsgrundlage auf BauPVO (EU) 2024/3110, Anhang IX umgestellt (gilt seit 08.01.2026); Antwort unverändert – korrigiert
+- [ ] ok
+- [ ] ändern: …
+
 ### q_btb_3 · Trockenbau
 
 - **Frage:** Warum verbessert Gips den Feuerwiderstand von Trockenbauwänden?
@@ -446,6 +454,22 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 101 korrigiert, 0 fraglich, 
 - **Richtige Antwort:** 1,5–5,0 N/mm²
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### q_vwb_6 · Verkehrswegebau
+
+- **Frage:** Asphaltfläche 1000 m² (Abflussbeiwert 0,9), Bemessungsregen 150 l/(s·ha). Wie groß ist der Zufluss zur Versickerungsanlage?
+- **Richtige Antwort:** 13,5 l/s
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Abgleich Runde 3): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert – korrigiert
+- [ ] ok
+- [ ] ändern: …
+
+### qn_asphalt_1 · Asphalt & Bitumen
+
+- **Frage:** Ein Asphaltmischgut enthält B = 6,0 M.-% Bitumen (ρ_B = 1,02 g/cm³) und Gestein mit ρ_G = 2,70 g/cm³; der Hohlraumgehalt beträgt 4,0 Vol.-%. Wie groß ist die Raumdichte ρ_b?
+- **Richtige Antwort:** ρ_b ≈ 2,359 g/cm³
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Abgleich Runde 3): normRef um DIN EN 12697-6 (Raumdichte) ergänzt – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### qn_ausbau_3 · Ausbau & Abdichtung
@@ -668,15 +692,31 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 101 korrigiert, 0 fraglich, 
 
 - **Frage:** Welche Aufgaben umfasst das Wassermanagement im Tiefbau nach dem Modul?
 - **Richtige Antwort:** Ableitung, Rückhaltung, Versickerung und Reinigung
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · Zweitprüfung 28.10. (Abgleich Runde 3): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert (Freigabe zurückgenommen) – korrigiert
 - [x] ok
+- [ ] ändern: …
+
+### qn_bp_verkehr_tiefbau_3 · Tiefbau & Entwässerung
+
+- **Frage:** Eine Asphaltfläche von 500 m² (ψ = 0,90) wird mit r_D = 200 l/(s·ha) über t_d = 15 min beregnet. Welches Zuflussvolumen ergibt der Rechner?
+- **Richtige Antwort:** 8,1 m³
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Abgleich Runde 3): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert – korrigiert
+- [ ] ok
+- [ ] ändern: …
+
+### qn_bp_verkehr_tiefbau_4 · Tiefbau & Entwässerung
+
+- **Frage:** Eine Kiesrigole (s_R = 0,30, Querschnitt 0,60 m × 1,20 m) soll ein Nutzvolumen von 5,4 m³ speichern. Welche Länge ist erforderlich?
+- **Richtige Antwort:** 25,0 m
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Abgleich Runde 3): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### qn_bp_verkehr_tiefbau_5 · Tiefbau & Entwässerung
 
 - **Frage:** Warum benötigt eine Kunststoff-Sickerbox für dasselbe Speichervolumen deutlich weniger Platz als eine Kiesrigole?
 - **Richtige Antwort:** Ihr Speicherkoeffizient beträgt bis 0,95, der von Kies nur ca. 0,30
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · Zweitprüfung 28.10. (Abgleich Runde 3): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert (Freigabe zurückgenommen) – korrigiert
 - [x] ok
 - [ ] ändern: …
 
@@ -684,7 +724,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 101 korrigiert, 0 fraglich, 
 
 - **Frage:** Was beschreibt der Abflussbeiwert ψ im Rigolenrechner?
 - **Richtige Antwort:** Den Anteil des Regens, der von der Fläche abfließt
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · Zweitprüfung 28.10. (Abgleich Runde 3): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert (Freigabe zurückgenommen) – korrigiert
 - [x] ok
 - [ ] ändern: …
 

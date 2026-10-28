@@ -109,6 +109,14 @@
       {
         "title": "EC3 Tool – Building Transparency",
         "url": "https://www.buildingtransparency.org/"
+      },
+      {
+        "title": "EN 17472:2022 – Vorschau mit Begriffen (Betrachtungszeitraum 3.69: vom Auftraggeber festgelegt)",
+        "url": "https://standards.iteh.ai/catalog/standards/cen/7229e408-a746-43b1-aafb-1b7ff46a0c7b/en-17472-2022"
+      },
+      {
+        "title": "One Click LCA: Infrastructure LCA nach EN 17472 (Systemgrenze Modul B8)",
+        "url": "https://help.oneclicklca.com/en/articles/275776-infrastructure-lca-en-17472"
       }
     ],
     "OekobilanzLCA.formeln": [
@@ -119,7 +127,7 @@
       },
       {
         "formel": "GWP_{\\text{Ing}} = \\frac{\\text{GWP}_{\\text{A1-A5}} + \\sum_{k} \\text{GWP}_{\\text{B2-B5},k} + \\text{GWP}_{\\text{B8}} + \\text{GWP}_{\\text{C1-C4}}}{A_{\\text{Deck}} \\cdot t_{\\text{ref}}} \\quad [\\text{kg CO}_2\\text{-eq/(m}^2\\cdot\\text{a)}]",
-        "erklaerung": "Lebenszyklus-Treibhausgasbilanzierung von Ingenieurbauwerken über 80 bis 100 Jahre (DIN EN 1990 Auslegungskategorie 5) unter Berücksichtigung von periodischen Austauschzyklen (Lager, Übergänge, Beläge B2-B5) und verkehrsbedingten Stauemissionen während Baustellen (Modul B8).",
+        "erklaerung": "Lebenszyklus-Treibhausgasbilanzierung von Ingenieurbauwerken über einen vom Auftraggeber festgelegten Betrachtungszeitraum (bei Brücken typisch 80 bis 100 Jahre, vgl. DIN EN 1990, Kategorie 5) unter Berücksichtigung von periodischen Austauschzyklen (Lager, Übergänge, Beläge B2-B5) und Modul B8 (Nutzung durch die Nutzer; hier vereinfacht als verkehrsbedingte Stauemissionen während Baustellen, vorläufig).",
         "quelle": "DIN EN 17472:2024-06"
       }
     ]

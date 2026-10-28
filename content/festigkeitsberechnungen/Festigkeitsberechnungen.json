@@ -93,10 +93,10 @@
         "color": "#94a3b8"
       },
       "holz_fichte_par": {
-        "name": "Holz C24 (faserparallel, charakt.)",
-        "rho": 450,
+        "name": "Holz C24 (faserparallel, f_k und ρ_mean)",
+        "rho": 420,
         "fc": 21,
-        "ft": 14,
+        "ft": 14.5,
         "E": 11000,
         "color": "#475569"
       },
