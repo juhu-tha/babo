@@ -60,7 +60,7 @@ export const FACHGEBIETE: readonly { name: string; datei: RegExp; text: RegExp }
   { name: 'Nachhaltigkeit (LCA/LCC)', datei: /lca|lcc|materialoptimierung|oekobilanz|modulD/i, text: /QNG|ÖKOBAUDAT|Ökobilanz|Restwert|Modul D|EN 15804|KrWG/ },
   { name: 'Stahl & Korrosionsschutz', datei: /korrosionsschutz|eisenKohlenstoff|stahlbau/i, text: /ISO 12944|DIN EN 10025|Eisen-Kohlenstoff/ },
   { name: 'Prüfverfahren & Bauwerksdiagnostik', datei: /pruefverfahren|bauwerksuntersuchung|karsten|zfp/i, text: /Prüfverfahren|Rückprall|Karsten/ },
-  { name: 'Verkehrswege- & Tunnelbau', datei: /verkehrswegebau|tunnel/i, text: /Tunnel|ZTV-ING|RStO/ },
+  { name: 'Verkehrswege- & Tunnelbau', datei: /verkehrswegebau|tunnel|tiefbau/i, text: /Tunnel|ZTV-ING|RStO|DWA-A 138/ },
   { name: 'Beton & Stahlbeton', datei: /biegung|kennwerte|mischung|hydratation|festbeton|spannbeton|beton|lebensdauer/i, text: /DIN EN 1992|DIN 1045|DIN EN 197|C55\/67|C90\/105|fib Bulletin 34|Reifefunktion|de Vree|Karbonatisierung|Chlorid/ },
 ];
 export const FACHGEBIET_SONST = 'Weitere';
