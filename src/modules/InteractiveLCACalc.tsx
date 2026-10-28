@@ -29,6 +29,9 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
+/** Anzeigenamen für den Rechenweg (deklarierte Einheit → Bezugsgröße) */
+const MATERIAL_NAMEN: Record<string, string> = Object.fromEntries(MATERIAL_DATABASE.map(m => [m.id, m.name]));
+
 export default function InteractiveLCACalc() {
   const [calcView, setCalcView] = useState<'konfigurator' | 'modul_d_labor' | 'vergleich'>('konfigurator');
   const [buildingType, setBuildingType] = useState<"wohnbau" | "nichtwohnbau">("wohnbau");
@@ -692,7 +695,7 @@ export default function InteractiveLCACalc() {
 
           {/* Right Dashboard / Results (5 Cols) */}
           <div className="lg:col-span-5 space-y-6">
-            <CalculationDashboard ergebnis={ergebnis} qngThresholds={qngThresholds} benchmarkStatus={benchmarkStatus} />
+            <CalculationDashboard ergebnis={ergebnis} qngThresholds={qngThresholds} benchmarkStatus={benchmarkStatus} nrfR={buildingArea} betrachtungszeitraum={studyPeriod} namen={MATERIAL_NAMEN} />
           </div>
         </div>
       )}

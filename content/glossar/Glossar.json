@@ -616,6 +616,27 @@
         "definition": "Typ-III-Umweltproduktdeklaration nach ISO 14025 und DIN EN 15804; unabhängig verifizierte Ökobilanz-Datenbasis von Bauprodukten für BNB-, DGNB- und QNG-Zertifizierungen."
       },
       {
+        "term": "Deklarierte Einheit (Declared Unit)",
+        "category": "Nachhaltigkeit & Ökobilanz",
+        "definition": "Menge eines Bauprodukts, auf die sich die Ergebnisse einer EPD beziehen, z. B. 1 m³ Beton, 1 t Betonstahl oder 1 m² Dämmstoff mit festgelegtem Wärmedurchlasswiderstand R. Sie wird verwendet, wenn Funktion und Nutzung im Gebäude nicht festgelegt sind (typisch Cradle-to-Gate, A1–A3 mit C1–C4 und D), und enthält keine Nutzungsdauer. EPDs mit unterschiedlicher deklarierter Einheit sind erst nach Umrechnung auf eine gemeinsame funktionelle Einheit vergleichbar.",
+        "unit": "m³, t, kg, m², Stück",
+        "standards": "DIN EN 15804+A2 (Abschn. 3.9, 6.3.3)"
+      },
+      {
+        "term": "Funktionelle Einheit (Functional Unit)",
+        "category": "Nachhaltigkeit & Ökobilanz",
+        "definition": "Quantifizierter Nutzen eines Produktsystems als Vergleichseinheit einer Ökobilanz: Funktion, Leistungsanforderung und Dauer, z. B. 1 m² Außenwand mit U = 0,24 W/(m²K) über 50 Jahre. Die zur Erfüllung nötige Produktmenge ist der Referenzfluss (z. B. 0,20 m³ Beton je m² Wand). Erforderlich, sobald der gesamte Lebenszyklus einschließlich Nutzungsphase (Ersatz B4 nach Nutzungsdauer) bilanziert wird; in DIN EN 15804 als „funktionale Einheit“ bezeichnet.",
+        "unit": "z. B. m² Bauteil über 50 a",
+        "standards": "DIN EN ISO 14040/14044, DIN EN 15804+A2 (Abschn. 3.13, 6.3.2)"
+      },
+      {
+        "term": "Funktionales Äquivalent",
+        "category": "Nachhaltigkeit & Ökobilanz",
+        "definition": "Gebäudebezogene Vergleichsbasis nach DIN EN 15978: quantifizierte funktionale und technische Anforderungen an ein Gebäude (Gebäudetyp, Nutzung, Anforderungen, geforderte Nutzungsdauer). Im QNG wird das Ergebnis der Gebäudeökobilanz auf 1 m² NRF(R) und Jahr über einen Betrachtungszeitraum von 50 Jahren bezogen.",
+        "unit": "kg CO₂-Äq./(m² NRF·a)",
+        "standards": "DIN EN 15978 (Abschn. 3.14), QNG-Handbuch Anlage 3"
+      },
+      {
         "term": "Circularity Index (CI)",
         "category": "Nachhaltigkeit & Ökobilanz",
         "definition": "Kennwert für den Zirkularitätsgrad eines Gebäudes nach Madaster/Ellen MacArthur Foundation (0 % linear bis 100 % voll zirkulär), basierend auf Rezyklatanteil, Langlebigkeit und Rückbaubarkeit.",

@@ -9,6 +9,10 @@ import type { MaterialData } from './daten';
 import inhalt from '@/content/nachhaltigkeit/Wandkonfigurator.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
+import { useState } from 'react';
+import { funktionelleEinheitBauteil, BETRACHTUNGSZEITRAUM_QNG } from '@/src/calc/lca';
+
+const ND_OPTIONEN = [15, 20, 25, 30, 40, 50] as const;
 
 interface WandkonfiguratorProps {
   addLayer: () => void;
@@ -30,6 +34,14 @@ interface WandkonfiguratorProps {
 }
 
 export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, chartData, chartOptions, computedWall, connectionType, gegRating, handleThicknessChange, moveLayer, removeLayer, selectedAddMaterial, setAddThickness, setConnectionType, setSelectedAddMaterial, wallLayers }: WandkonfiguratorProps) {
+  // Nutzungsdauer je Schicht (Schlüssel: Position + Baustoff), Vorgabe ≥ 50 a; nur für die Anzeige der funktionellen Einheit
+  const [nutzungsdauern, setNutzungsdauern] = useState<Record<string, number>>({});
+  const ndSchluessel = (i: number, key: string) => `${i}-${key}`;
+  const fe = funktionelleEinheitBauteil(computedWall.layers.map((l, i) => ({
+    name: l.mat.name, einheit: 'kg' as const, dickeM: l.thicknessCm / 100, rohdichte: l.mat.density,
+    gwpA1A3: l.mat.gwp_fossil_a1a3 + l.mat.gwp_biogenic_a1a3, gwpC: l.mat.gwp_c3c4,
+    nutzungsdauer: nutzungsdauern[ndSchluessel(i, l.materialKey)] ?? BETRACHTUNGSZEITRAUM_QNG,
+  })), BETRACHTUNGSZEITRAUM_QNG);
   return (
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 animate-in fade-in duration-300">
 
@@ -289,6 +301,59 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
               </div>
             </div>
           </div>
+
+          {/* Bezugsgröße: deklarierte Einheit 1 kg → funktionelle Einheit 1 m² Wand über 50 a (Auftrag 28.10.2026) */}
+          <section aria-labelledby="wand-fe-titel" className="bg-white p-5 rounded-2xl shadow-sm border border-emerald-300 flex flex-col gap-3 text-[11px] text-slate-800" data-testid="wand-funktionelle-einheit">
+            <h3 id="wand-fe-titel" className="font-bold text-sm text-slate-900 uppercase tracking-wider border-b border-home-grau/30 pb-1">{inhalt.texte.feTitel}</h3>
+            <p className="leading-relaxed"><MdText text={inhalt.texte.feDeklariert} /></p>
+            <p className="leading-relaxed"><MdText text={inhalt.texte.feFunktionell} /><strong>{formatDeZahl(computedWall.uValue, 2)} W/(m²K)</strong><MdText text={inhalt.texte.feUeber} /></p>
+            <p className="leading-relaxed text-slate-700"><MdText text={inhalt.texte.feRechenweg} /></p>
+            {fe.gueltig && (
+              <>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-[10.5px] font-mono">
+                    <caption className="sr-only">{inhalt.werte.feCaption}</caption>
+                    <thead className="text-slate-600 font-sans">
+                      <tr className="border-b border-slate-200">
+                        <th scope="col" className="text-left p-1">{inhalt.werte.feSchicht}</th>
+                        <th scope="col" className="text-right p-1">{inhalt.werte.feMasse}</th>
+                        <th scope="col" className="text-right p-1">{inhalt.werte.feEinmal}</th>
+                        <th scope="col" className="text-right p-1">{inhalt.werte.feNd}</th>
+                        <th scope="col" className="text-right p-1">{inhalt.werte.feSumme}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {fe.schichten.map((z, i) => {
+                        const key = ndSchluessel(i, computedWall.layers[i].materialKey);
+                        const nd = nutzungsdauern[key] ?? BETRACHTUNGSZEITRAUM_QNG;
+                        return (
+                          <tr key={key} className="border-b border-slate-100">
+                            <th scope="row" className="text-left p-1 font-sans font-medium">{z.name}</th>
+                            <td className="text-right p-1">{formatDeZahl(z.menge, 1)}</td>
+                            <td className="text-right p-1">{formatDeZahl(z.a1a3 + z.c, 1)}</td>
+                            <td className="text-right p-1">
+                              <select aria-label={`${inhalt.werte.feNd} ${z.name}`} value={String(nd)}
+                                onChange={(e) => setNutzungsdauern(v => ({ ...v, [key]: Number(e.target.value) }))}
+                                className="text-[10px] p-0.5 bg-white border border-home-grau/30 rounded cursor-pointer">
+                                {ND_OPTIONEN.map(x => <option key={x} value={String(x)}>{x === 50 ? '≥ 50' : String(x)} a</option>)}
+                              </select>
+                              <span className="block text-slate-500">n = {formatDeZahl(z.ersatz, 0)}</span>
+                            </td>
+                            <td className="text-right p-1">{formatDeZahl(z.summe, 1)}</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="font-mono bg-emerald-50 border border-emerald-200 rounded-lg p-2.5 leading-relaxed">
+                  {inhalt.werte.feErgebnis}: <strong>{formatDeZahl(fe.summe, 1)} kg CO₂-Äq./m²</strong> über {formatDeZahl(fe.betrachtungszeitraum, 0)} a
+                  {' '}({inhalt.werte.feJeJahr}: {formatDeZahl(fe.jeJahr, 2)} kg CO₂-Äq./(m²·a))
+                </p>
+              </>
+            )}
+            <p className="text-slate-600 leading-relaxed"><MdText text={inhalt.texte.feHinweisDiagramm} /></p>
+          </section>
 
           {/* Footprint visualization card */}
           <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">

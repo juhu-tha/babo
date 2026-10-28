@@ -1,0 +1,48 @@
+{
+  "texte": {
+    "titel": "Funktionelle und deklarierte Einheit",
+    "untertitel": "Worauf sich ein Ökobilanzergebnis bezieht",
+    "einleitung": "Ein Ökobilanzergebnis ist nur zusammen mit seiner **Bezugsgröße** aussagekräftig: „12 kg CO₂-Äq.“ ohne die Angabe *je was* und *über welchen Zeitraum* lässt sich weder prüfen noch vergleichen. Die Normen unterscheiden dafür die deklarierte Einheit (Produktebene), die funktionelle Einheit (Leistung über die Zeit) und auf Gebäudeebene das funktionale Äquivalent.",
+    "deklariertTitel": "Deklarierte Einheit (DIN EN 15804+A2)",
+    "deklariertText": "Menge eines Bauprodukts, auf die sich die Ergebnisse einer EPD beziehen – z. B. **1 m³** Transportbeton, **1 t** Betonstahl, **1 kg** oder **1 m² Dämmstoff mit festgelegtem Wärmedurchlasswiderstand R**. Sie wird verwendet, wenn Funktion und Nutzung im Gebäude nicht festgelegt sind, typisch bei Cradle-to-Gate-EPDs (A1–A3, nach A2 zusammen mit C1–C4 und D). Eine Nutzungsdauer gehört nicht dazu.",
+    "funktionellTitel": "Funktionelle Einheit (DIN EN ISO 14040/14044)",
+    "funktionellText": "Quantifizierter Nutzen eines Produktsystems, der als Vergleichseinheit dient: *was* geleistet wird, *mit welcher Anforderung* und *wie lange*. Beispiel: **1 m² Außenwand mit U = 0,24 W/(m²K) über 50 Jahre**. Die dafür nötige Produktmenge heißt **Referenzfluss**. Zwingend, sobald der vollständige Lebenszyklus einschließlich Nutzungsphase (B, z. B. Ersatz B4) und Entsorgung (C) bilanziert wird. DIN EN 15804 verwendet den gleichbedeutenden Begriff „funktionale Einheit“.",
+    "aequivalentTitel": "Funktionales Äquivalent (DIN EN 15978)",
+    "aequivalentText": "Gebäudeebene: die quantifizierten funktionalen und technischen Anforderungen an ein Gebäude (Gebäudetyp, Nutzung, Anforderungen, geforderte Nutzungsdauer) als Vergleichsbasis. In der QNG-Bilanzierung wird das Ergebnis auf **1 m² NRF(R) und Jahr** über einen Betrachtungszeitraum von **50 Jahren** bezogen.",
+    "tabelleTitel": "Gegenüberstellung",
+    "tabelleCaption": "Deklarierte und funktionelle Einheit im Vergleich",
+    "beispieleTitel": "Beispiele aus dem Bauwesen",
+    "umrechnungTitel": "Umrechnung: deklarierte Einheit → funktionelle Einheit",
+    "umrechnungText": "Je Schicht wird zuerst der Referenzfluss je m² Bauteil bestimmt, dann mit den EPD-Werten je deklarierter Einheit multipliziert und über die Austauschzyklen auf den Betrachtungszeitraum hochgerechnet. Die Rechner dieses Moduls zeigen den Rechenweg an.",
+    "umrechnungBeispiel": "**Rechenbeispiel (Lehrwerte):** Stahlbeton 20 cm, deklarierte Einheit 1 m³ mit 250 + 10 kg CO₂-Äq. (A1–A3 + C3/C4), Nutzungsdauer ≥ 50 a: $0{,}20 \\cdot 260 = 52{,}0$ kg CO₂-Äq./m². EPS 14 cm, deklarierte Einheit 1 kg, ρ = 20 kg/m³, 3,0 + 2,5 kg CO₂-Äq./kg, Nutzungsdauer 40 a ($n = 1$): $2{,}8 \\cdot 5{,}5 \\cdot 2 = 30{,}8$ kg CO₂-Äq./m². Funktionelle Einheit 1 m² Wand über 50 a: **82,8 kg CO₂-Äq./m²** bzw. 1,66 kg CO₂-Äq./(m²·a).",
+    "fehlerTitel": "Typische Fehler",
+    "quellen": "Quellen (Definitionen sinngemäß, Normtexte nicht wiedergegeben): DIN EN ISO 14040/14044:2006 (funktionelle Einheit, Referenzfluss); DIN EN 15804:2012+A2:2019, deutsche Fassung DIN EN 15804:2022-03, Abschn. 3.9, 3.13 und 6.3.1–6.3.3; DIN EN 15978:2011, Abschn. 3.14 (funktionales Äquivalent) und 3.25 (Betrachtungszeitraum); BCS Öko-Garantie, General Program Category Rules for Construction Products v1.1 (05.06.2017), Abschn. 5.3; QNG-Handbuch Anlage 3, Anhang 3.1.1 v1.4 (50 a, m² NRF(R)·a); Nutzungsdauern nach BBSR, Nutzungsdauern von Bauteilen für Lebenszyklusanalysen nach BNB (2017)."
+  },
+  "werte": {
+    "merkmal": "Merkmal",
+    "deklariert": "Deklarierte Einheit",
+    "funktionell": "Funktionelle Einheit"
+  },
+  "daten": {
+    "tabelle": [
+      { "merkmal": "Bezug", "deklariert": "Produktmenge: 1 m³, 1 t, 1 kg, 1 m² oder 1 Stück", "funktionell": "Leistung eines Bauteils oder Systems, z. B. 1 m² Außenwand mit festgelegtem U-Wert" },
+      { "merkmal": "Funktion und Nutzung", "deklariert": "nicht festgelegt", "funktionell": "festgelegt: U-Wert, Tragfähigkeit, Brand- und Schallschutz" },
+      { "merkmal": "Zeitbezug", "deklariert": "keiner – Herstellung einmalig", "funktionell": "Nutzungsdauer bzw. Betrachtungszeitraum, z. B. 50 a" },
+      { "merkmal": "Typische Module", "deklariert": "A1–A3 (+ C1–C4, D): Cradle-to-Gate mit Optionen", "funktionell": "A bis C einschließlich B4 (Ersatz): Cradle-to-Grave" },
+      { "merkmal": "Wo sie vorkommt", "deklariert": "EPD, ÖKOBAUDAT-Datensatz", "funktionell": "Bauteilvergleich; Gebäude: funktionales Äquivalent je m² NRF(R)·a" },
+      { "merkmal": "Vergleich", "deklariert": "nur bei gleicher Einheit und gleicher Funktion im Bauteil", "funktionell": "zulässig zwischen Varianten mit gleicher Funktion" }
+    ],
+    "beispiele": [
+      { "titel": "Beton", "deklariert": "1 m³ Transportbeton C30/37, A1–A3", "funktionell": "1 m² tragende Wand, d = 20 cm, über 50 a → Referenzfluss 0,20 m³/m²" },
+      { "titel": "Betonstahl", "deklariert": "1 t Betonstahl B500B, A1–A3", "funktionell": "Bewehrung von 1 m² Decke mit 25 kg/m² über 50 a → Referenzfluss 0,025 t/m²" },
+      { "titel": "Dämmung", "deklariert": "1 m² Dämmstoff mit R = 1 m²K/W (oder 1 kg, 1 m³)", "funktionell": "1 m² Außenwand mit U = 0,24 W/(m²K) über 50 a; Dicke aus U-Wert und λ, Ersatz aus der Nutzungsdauer (z. B. WDVS 40 a → 1 Ersatz)" }
+    ],
+    "fehler": [
+      "**EPDs mit unterschiedlicher deklarierter Einheit direkt verglichen:** 1 kg EPS, 1 m³ Mineralwolle und 1 m² Holzfaser mit R = 1 m²K/W sind nicht vergleichbar – erst auf 1 m² Bauteil mit gleichem U- bzw. R-Wert umrechnen (Dicke × Rohdichte).",
+      "**Gleiches Volumen statt gleicher Funktion:** 1 m³ Brettschichtholz gegen 1 m³ Beton sagt nichts über eine Stütze aus; für dieselbe Tragfähigkeit sind unterschiedliche Querschnitte nötig.",
+      "**Nutzungsdauer fehlt:** Ohne Austauschzyklen (B4) erscheint ein Bauteil mit 40 a Nutzungsdauer im 50-Jahres-Betrachtungszeitraum zu günstig – es wird einmal ersetzt.",
+      "**Zeitbezug vermischt:** Ein Gebäudewert in kg CO₂-Äq./(m² NRF·a) ist nicht mit einem Produktwert in kg CO₂-Äq. je m³ vergleichbar.",
+      "**Unterschiedliche Module:** Eine EPD mit A1–A3 wird gegen eine mit A1–C4 gestellt oder Modul D in die Summe eingerechnet."
+    ]
+  }
+}

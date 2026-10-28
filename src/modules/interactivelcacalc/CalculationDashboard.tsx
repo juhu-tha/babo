@@ -12,11 +12,19 @@ export interface QngBenchmarkStatus { label: string; color: string; badge: strin
 export function CalculationDashboard({
   ergebnis,
   qngThresholds,
-  benchmarkStatus
+  benchmarkStatus,
+  nrfR,
+  betrachtungszeitraum,
+  namen = {},
 }: {
   ergebnis: LcaErgebnis;
   qngThresholds: QngSchwellen;
   benchmarkStatus: QngBenchmarkStatus;
+  /** Netto-Raumfläche NRF(R) [m²] und Betrachtungszeitraum [a] für die Anzeige der Bezugsgröße */
+  nrfR: number;
+  betrachtungszeitraum: number;
+  /** Anzeigenamen der Baustoffe je id */
+  namen?: Record<string, string>;
 }) {
   const s = ergebnis.spez;
   const farbe = ergebnis.aussage === 'premium' ? 'text-emerald-700' : ergebnis.aussage === 'plus' ? 'text-teal-700' : ergebnis.aussage === 'ueberschritten' ? 'text-shiraz' : 'text-slate-700';
@@ -45,6 +53,12 @@ export function CalculationDashboard({
 
       {ergebnis.gueltig && (
         <>
+          {/* Bezugsgröße (Auftrag 28.10.2026): funktionales Äquivalent je m² NRF(R)·a, Baustoffdaten je deklarierter Einheit */}
+          <p className="p-3 bg-sky-50 border border-sky-200 rounded-xl text-[11px] text-slate-800 leading-relaxed" data-testid="bezug-gebaeude">
+            <MdText text={inhalt.texte.bezugGebaeudeTitel} /><strong>{formatDeZahl(betrachtungszeitraum, 0)} a</strong> (NRF(R) = {formatDeZahl(nrfR, 0)} m²). <MdText text={inhalt.texte.bezugGebaeudeDaten} />
+            {!ergebnis.enthaeltB4 && <> <MdText text={inhalt.texte.bezugGebaeudeOhneB4} /></>}
+          </p>
+
           {/* Hauptwert je m² NRF(R) und Jahr (vereinfachte Bilanz, kein QNG-Nachweis) */}
           <div className="text-center py-4 bg-slate-50 rounded-2xl border border-slate-200 shadow-inner flex flex-col justify-center items-center">
             <span className="text-[10px] uppercase font-extrabold text-slate-500 tracking-wider font-mono px-3">
@@ -131,6 +145,42 @@ export function CalculationDashboard({
               {formatDeZahl(summe, 0)} kg CO₂-eq
             </strong>
           </div>
+
+          {/* Rechenweg deklarierte Einheit → Bezugsgröße (nur Anzeige; Zahlen aus lcaBilanz) */}
+          <details className="border-t pt-3 text-[11px] text-slate-700" data-testid="rechenweg-bezug">
+            <summary className="cursor-pointer font-bold text-slate-800">{inhalt.texte.rechenwegTitel}</summary>
+            <p className="mt-2 leading-relaxed"><MdText text={inhalt.texte.rechenwegText} /></p>
+            <div className="overflow-x-auto mt-2">
+              <table className="w-full text-[10.5px] font-mono">
+                <caption className="sr-only">{inhalt.werte.rwCaption}</caption>
+                <thead className="text-slate-600 font-sans">
+                  <tr className="border-b border-slate-200">
+                    <th scope="col" className="text-left p-1">{inhalt.werte.rwBaustoff}</th>
+                    <th scope="col" className="text-right p-1">{inhalt.werte.rwMenge}</th>
+                    <th scope="col" className="text-right p-1">{inhalt.werte.rwJeEinsatz}</th>
+                    <th scope="col" className="text-right p-1">{inhalt.werte.rwErsatz}</th>
+                    <th scope="col" className="text-right p-1">{inhalt.werte.rwSumme}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {ergebnis.zeilen.map((z, i) => (
+                    <tr key={`${z.id}-${i}`} className="border-b border-slate-100">
+                      <th scope="row" className="text-left p-1 font-sans font-medium">{namen[z.id] ?? z.id}</th>
+                      <td className="text-right p-1">{formatDeZahl(z.menge, 2)} {z.einheit}</td>
+                      <td className="text-right p-1">{formatDeZahl(z.a1a3 + z.c, 0)}</td>
+                      <td className="text-right p-1">{formatDeZahl(z.ersatz, 0)}</td>
+                      <td className="text-right p-1">{formatDeZahl(z.a1a3 + z.c + z.b4, 0)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-2 font-mono leading-relaxed">
+              {inhalt.werte.rwKonstruktion}: {formatDeZahl(ergebnis.a1a3 + ergebnis.c3c4 + ergebnis.b4, 0)} + {formatDeZahl(ergebnis.sockelTga, 0)} = {formatDeZahl(ergebnis.a1a3 + ergebnis.c3c4 + ergebnis.b4 + ergebnis.sockelTga, 0)} kg CO₂-Äq.
+              {' '}÷ ({formatDeZahl(nrfR, 0)} m² · {formatDeZahl(betrachtungszeitraum, 0)} a) = <strong>{formatDeZahl(s.konstruktion, 2)} kg CO₂-Äq./(m²·a)</strong> {inhalt.werte.rwJeFlaeche}
+              {ergebnis.enthaeltB6 && <>; {inhalt.werte.rwMitB6}: {formatDeZahl(s.konstruktion, 2)} + {formatDeZahl(s.b6, 2)} = <strong>{formatDeZahl(s.qng, 2)}</strong></>}
+            </p>
+          </details>
 
           {ergebnis.vorlaeufig.length > 0 && (
             <div className="text-[10px] text-slate-500 leading-snug border-t pt-2">

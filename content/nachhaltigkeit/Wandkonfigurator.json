@@ -26,12 +26,26 @@
     "kgCoEqM": " kg CO₂-eq/m²",
     "mitDiesemSchichtenaufbauBinden": "Mit diesem Schichtenaufbau binden die nachwachsenden Anteile rechnerisch ",
     "biogenenKohlenstoffInDer": " biogenen Kohlenstoff in der Herstellungsphase. Die herstellungsbedingten fossilen Emissionen belaufen sich auf ",
-    "derNettoWertEnthält": ". Der Netto-Wert enthält zur Veranschaulichung die Gutschriften aus Modul D; in EPD und QNG-Nachweis wird Modul D getrennt ausgewiesen und nicht angerechnet."
+    "derNettoWertEnthält": ". Der Netto-Wert enthält zur Veranschaulichung die Gutschriften aus Modul D; in EPD und QNG-Nachweis wird Modul D getrennt ausgewiesen und nicht angerechnet.",
+    "feTitel": "Bezugsgröße und Umrechnung auf die funktionelle Einheit",
+    "feDeklariert": "**Deklarierte Einheit der Datensätze:** 1 kg Baustoff (A1–A3, C3/C4, D je kg).",
+    "feFunktionell": "**Funktionelle Einheit:** 1 m² Außenwand mit U = ",
+    "feUeber": " über Δt = 50 a (Betrachtungszeitraum QNG). Tragfähigkeit, Brand- und Schallschutz sind hier nicht nachgewiesen und müssen bei einem Variantenvergleich gleich sein.",
+    "feRechenweg": "Je Schicht: Masse je m² = Dicke × Rohdichte; × (A1–A3 + C3/C4 je kg) × (1 + n) mit n = ⌈50/ND⌉ − 1 Ersatzmaßnahmen. Nutzungsdauern bitte nach BNB-Tabelle festlegen (z. B. WDVS 40 a); voreingestellt ist ≥ 50 a.",
+    "feHinweisDiagramm": "Diagramm und Kennwerte oben zeigen die einmalige Herstellung und Entsorgung je m² ohne Ersatz (entspricht n = 0)."
   },
   "werte": {
     "nachLinksInnenSchieben": "Nach links / innen schieben",
     "nachRechtsAußenSchieben": "Nach rechts / außen schieben",
     "schichtLöschen": "Schicht löschen",
-    "werkstoffAuswählen": "Werkstoff auswählen"
+    "werkstoffAuswählen": "Werkstoff auswählen",
+    "feSchicht": "Schicht",
+    "feMasse": "d · ρ [kg/m²]",
+    "feEinmal": "A1–A3 + C3/C4 [kg/m²]",
+    "feNd": "ND",
+    "feSumme": "× (1 + n) [kg/m²]",
+    "feCaption": "Umrechnung je Schicht von 1 kg auf 1 m² Wand über 50 Jahre",
+    "feErgebnis": "Funktionelle Einheit",
+    "feJeJahr": "je Jahr"
   }
 }
