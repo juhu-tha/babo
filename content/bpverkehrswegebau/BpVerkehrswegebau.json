@@ -41,11 +41,11 @@
     ],
     "BpVerkehrswegebau.regelwerke": [
       {
-        "title": "RStO 12/24 (Richtlinien für die Standardisierung des Oberbaus von Verkehrsflächen, Ausgabe 2012, Fassung 2024)",
+        "title": "RStO 12/24 (Richtlinien für die Standardisierung des Oberbaus von Verkehrsflächen, Ausgabe 2012, Fassung 2024; ARS 02/2024)",
         "url": "https://www.fgsv-verlag.de/"
       },
       {
-        "title": "ZTV SoB-StB (Schichten ohne Bindemittel)",
+        "title": "ZTV SoB-StB 20 / TL SoB-StB 20 (Schichten ohne Bindemittel)",
         "url": "https://www.fgsv-verlag.de/"
       },
       {
@@ -55,23 +55,27 @@
         "title": "DAfStb-Alkali-Richtlinie"
       },
       {
-        "title": "ZTV Asphalt-StB (Zusätzliche Technische Vertragsbedingungen für Asphalt)",
+        "title": "ZTV Asphalt-StB 26 Teil 1 (ARS 08/2026; Zusätzliche Technische Vertragsbedingungen für Asphalt)",
         "url": "https://www.fgsv-verlag.de/"
       },
       {
-        "title": "TL Asphalt-StB (Technische Lieferbedingungen für Asphaltmischgut)",
+        "title": "TL Asphalt-StB 26 (ARS 07/2026; Technische Lieferbedingungen für Asphaltmischgut)",
         "url": "https://www.fgsv-verlag.de/"
       },
       {
-        "title": "ZTV Beton-StB (Zusätzliche Technische Vertragsbedingungen für Betonfahrbahnen)",
+        "title": "ZTV Beton-StB 26 / TL Beton-StB 26 (ARS 09/2026 und 10/2026; Fahrbahndecken aus Beton) sowie RDO Beton 24 (ARS 17/2024)",
+        "url": "https://www.fgsv-verlag.de/"
+      },
+      {
+        "title": "TL Gestein-StB 04/23 (Gesteinskörnungen im Straßenbau, Ausgabe 2004, Fassung 2023; ARS 17/2023)",
         "url": "https://www.fgsv-verlag.de/"
       }
     ],
     "BpVerkehrswegebau.formeln": [
       {
-        "formel": "B = \\sum_{i=1}^m DTV^{(SV)}_i \\cdot q_i \\cdot f_1 \\cdot f_2 \\cdot f_3 \\cdot f_z \\cdot 365 \\quad [\\text{Äquivalente 10-t-Achsübergänge}]",
-        "erklaerung": "Dimensionierungsrelevante Beanspruchung B für die Ermittlung der Belastungsklasse (Bk100 bis Bk0,3) nach RStO 12/24 aus dem Schwerverkehrsaufkommen.",
-        "quelle": "RStO 12/24 Gl. 1"
+        "formel": "B = N \\cdot DTA^{(SV)} \\cdot q_{Bm} \\cdot f_1 \\cdot f_2 \\cdot f_3 \\cdot f_z \\cdot 365 \\quad [\\text{äquivalente 10-t-Achsübergänge}]",
+        "erklaerung": "Dimensionierungsrelevante Beanspruchung B für die Belastungsklasse (Bk100 bis Bk0,3): N Nutzungszeitraum in Jahren, DTA^(SV) = DTV^(SV) · f_A tägliche Achsübergänge des Schwerverkehrs (Achszahlfaktor f_A), q_Bm Lastkollektivquotient, f_1 Fahrstreifenfaktor, f_2 Fahrstreifenbreitenfaktor, f_3 Steigungsfaktor, f_z = ((1 + p)^N − 1)/(p · N) Zuwachsfaktor bei der jährlichen Zunahme p des Schwerverkehrs.",
+        "quelle": "RStO 12/24, Abschn. 2.7 (bisher Anhang 1); Rechenbeispiel: Regierung von Mittelfranken, Planfeststellung St 2245, Unterlage 14.1"
       },
       {
         "formel": "E_{v2} \\ge 120\\,\\text{MN/m}^2, \\quad \\frac{E_{v2}}{E_{v1}} \\le 2{,}2",

@@ -434,7 +434,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
     niveau: "B", minuten: 60, vorwissen: ["asphalt", "erdbau"],
     ziele: [
       { stufe: "Erinnern", text: "die Belastungsklassen Bk0,3 bis Bk100 typischen Straßenkategorien zuordnen." },
-      { stufe: "Verstehen", text: "die Ermittlung der bemessungsrelevanten Beanspruchung B aus Verkehrsstärke und Achszahl-, Spurbreiten- und Achslastfaktor erläutern." },
+      { stufe: "Verstehen", text: "die Ermittlung der bemessungsrelevanten Beanspruchung B aus Schwerverkehrsstärke, Achszahlfaktor, Lastkollektivquotient sowie Fahrstreifen-, Fahrstreifenbreiten-, Steigungs- und Zuwachsfaktor erläutern." },
       { stufe: "Anwenden", text: "für eine gegebene Belastungsklasse einen Oberbau in Asphalt- oder Betonbauweise mit Schichtfolge und Schichtdicken nach RStO 12/24 zusammenstellen." },
       { stufe: "Anwenden", text: "die Tragfähigkeit des Planums anhand des Verformungsmoduls EV2 aus dem Plattendruckversuch prüfen und Maßnahmen bei Unterschreitung ableiten." },
     ],
