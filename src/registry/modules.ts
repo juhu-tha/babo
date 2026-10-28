@@ -367,7 +367,7 @@ export const MODULE = [
     meta: 'Fahrbahndecken aus Beton nach ZTV Beton-StB und RLaO: Interaktive Westergaard-Randspannung, LP-Gehalt und AKR-Screening.',
     suche: ['betondecken', 'straßendecken', 'ztv beton', 'ztv beton-stb', 'rlao', 'fugen', 'dübel', 'anker', 'westergaard', 'alkali-kieselsäure-reaktion', 'akr', 'betonkrebs', 'luftporen', 'lp-beton', 'waschbeton'] },
   { id: 'bp_verkehr_tiefbau', label: 'Tiefbau & Entwässerung', icon: 'Droplets', gruppe: 'Bauprodukte',
-    baum: { titel: 'Tiefbau & Entwässerung', typ: 'calculator', kurz: 'Rohrwerkstoffe PVC/PP, Rigolenversickerung nach DWA-A 138.', icon: 'Droplets', norm: 'DWA-A 138' },
+    baum: { titel: 'Tiefbau & Entwässerung', typ: 'calculator', kurz: 'Rohrwerkstoffe PVC/PP, Rigolenversickerung in Anlehnung an DWA-A 138-1.', icon: 'Droplets', norm: 'DWA-A 138-1:2024-10' },
     meta: 'Entwässerungssysteme, Kanalrohre (PVC, PP), Rigolen zur Versickerung, Geotextilien und Grabenschutz.',
     suche: ['tiefbau', 'entwässerung', 'drainage', 'regenwasser', 'abwasser', 'kanal', 'schacht', 'kanalisation', 'rigolen', 'rinnen', 'geotextil', 'kabelschutz', 'hangbefestigung', 'funktionspflaster', 'retention', 'abwasserrohre'] },
   { id: 'bp_verkehr_bahn', label: 'Bahnbau (Kompakt)', icon: 'Train', gruppe: 'Bauprodukte',

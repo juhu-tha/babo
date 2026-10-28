@@ -314,7 +314,7 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
 
             {/* Calculations and visualization */}
             {(() => {
-              // Rechenkern src/calc/verkehrswegebau.ts (Rigole, vereinfacht nach DWA-A 138: k_f = 1,0·10⁻⁵ m/s, f_Z = 1,1, Rigole 1,2 m × 0,6 m)
+              // Rechenkern src/calc/verkehrswegebau.ts (Rigole, vereinfacht in Anlehnung an DWA-A 138-1: k_f = 1,0·10⁻⁵ m/s, f_Z = 1,1, Rigole 1,2 m × 0,6 m)
               const rig = rigole({ flaecheM2: tiefbauArea, psi: tiefbauPsi, regenspende: tiefbauRain, dauerMin: tiefbauDuration, speicherKoeff: tiefbauFss });
               const a_red = rig.aRed;
               const q_in = rig.qZu; // l/s

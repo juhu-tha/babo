@@ -91,5 +91,24 @@ for (const f of ['src/modules/Bauwerkserfassung.tsx', 'src/modules/holzbaubeta/d
   pruefe(!/fc0k:\s*23\b/.test(s2) && !/D30:\s*8\.0/.test(s2) && !/density:\s*450/.test(s2) && !/rho_mean:\s*430/.test(s2) && !/f_mk:\s*\d+,\s*f_t0k/.test(s2), `${f}: lokale abweichende Holzkennwerte`);
 }
 
+// 7. Modul-eigene Kennwertdatensätze in content/*.json (Abgleich vor Sammelfreigabe Runde 3, 28.10.): Werte, die eine
+//    Normklasse benennen, stimmen mit den zentralen Kennwerten überein (Anlass: Festigkeitsvergleich hatte C24 mit
+//    f_t = 14 N/mm² und ρ = 450 kg/m³ statt f_t,0,k = 14,5 N/mm² und ρ_mean = 420 kg/m³ nach DIN EN 338:2016-07).
+const lies = (p: string) => JSON.parse(fs.readFileSync(p, 'utf8'));
+const fest = lies('content/festigkeitsberechnungen/Festigkeitsberechnungen.json').daten.materials;
+pruefe(fest.holz_fichte_par.ft === C.C24.ft0k && fest.holz_fichte_par.fc === C.C24.fc0k && fest.holz_fichte_par.rho === C.C24.rhoMean && fest.holz_fichte_par.E === C.C24.E0mean, 'Festigkeitsberechnungen.json: Holz C24');
+for (const [k, kl] of [['beton_c20', 'C20/25'], ['beton_c50', 'C50/60']] as const) {
+  const c = BETON_EC2[kl];
+  pruefe(fest[k].fc === c.fck && fest[k].ft === c.fctm && fest[k].E === c.Ecm, `Festigkeitsberechnungen.json: ${kl}`);
+}
+pruefe(fest.stahl_s235.fc === BAUSTAHL_EC3.S235.fy && fest.stahl_s235.ft === BAUSTAHL_EC3.S235.fu && fest.stahl_s235.E === E_BAUSTAHL, 'Festigkeitsberechnungen.json: S235');
+const holzprod = lies('content/bpholzprodukte/BpHolzprodukte.json').daten.woodProducts;
+pruefe(holzprod[0].density === C.C24.rhoMean && holzprod[0].eModulus === C.C24.E0mean && holzprod[0].f_mk === C.C24.fmk && holzprod[0].f_vk === C.C24.fvk, 'BpHolzprodukte.json: KVH C24');
+pruefe(holzprod[1].density === G.GL24h.rhoMean && holzprod[1].eModulus === G.GL24h.E0mean && holzprod[1].f_mk === G.GL24h.fmk && holzprod[1].f_vk === G.GL24h.fvk, 'BpHolzprodukte.json: BSH GL24h');
+const elasto = lies('content/elastomechanik/Elastomechanik.json').daten.MATERIAL_PRESETS;
+pruefe(elasto[0].eModul === E_BAUSTAHL && elasto[0].f_yk === BAUSTAHL_EC3.S235.fy && elasto[1].eModul === BETON_EC2['C30/37'].Ecm && elasto[2].eModul === C.C24.E0mean, 'Elastomechanik.json: S235/C30/37/C24');
+const bim = lies('content/bimbaustoffe/BimBaustoffe.json').daten.ARCHETYPES;
+pruefe(bim[0].defaultEModulus === BETON_EC2['C30/37'].Ecm && bim[3].defaultEModulus === E_BAUSTAHL, 'BimBaustoffe.json: C30/37/S355');
+
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
 console.log('OK: zentrale Beton-, Stahl- und Holzkennwerte konsistent');

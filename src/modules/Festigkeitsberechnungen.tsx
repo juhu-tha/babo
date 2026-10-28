@@ -46,7 +46,8 @@ type Material = {
 };
 
 // Lehrvergleich: Beton f_ck/f_ctm und E_cm nach DIN EN 1992-1-1 Tab. 3.1, Stahl f_y/f_u (Mindestwerte),
-// Holz C24 nach DIN EN 338 (charakteristisch), übrige Werte typische Literaturwerte (Größenordnung).
+// Holz C24 nach DIN EN 338:2016-07 wie src/data/kennwerte.ts (HOLZ_EN338.C24: f_t,0,k = 14,5, f_c,0,k = 21 N/mm²,
+// Eigengewicht mit ρ_mean = 420 kg/m³; Abgleich in tests/kennwerte.test.ts), übrige Werte typische Literaturwerte (Größenordnung).
 const materials: Record<string, Material> = inhalt.daten.materials;
 
 type Reiter = 'eigengewicht' | 'spannungszustand';

@@ -250,7 +250,7 @@
     "SCHADSTOFFE_DATA.pcb.gefahren": [
       "Gesundheitsgefahr: Hochgradig chronisch toxisch, immuntoxisch und hormonell wirksam. PCB steht im Verdacht, krebserzeugend zu sein, und wird biologisch extrem langsam abgebaut.",
       "Sekundärkontamination (großes Problem): Da PCB aus dem Fugendichtstoff kontinuierlich in die Raumluft ausgast, zieht es in angrenzende mineralische Bauteile (Putz, Beton, Mauerwerk) sowie Einrichtung (Möbel, Tapeten) ein. Bei einer Sanierung müssen daher auch diese sekundären Quellen mechanisch abgetragen oder luftdicht maskiert werden.",
-      "Sanierung: Ausbau von Primärfugen durch Herausschneiden ohne thermische Einwirkung (Verhinderung hochgiftiger Dioxinbildung). Sanierungsrichtlinie PCB beachten."
+      "Sanierung: Ausbau von Primärfugen durch Herausschneiden ohne thermische Einwirkung (Verhinderung hochgiftiger Dioxinbildung). PCB-Richtlinie (1994, über die MVV TB eingeführt) beachten. Für die Raumluft gelten seit 2025 die AIR-Richtwerte RW I = 80 ng/m³ und RW II = 800 ng/m³ (PCBges = Σ PCB6 · 5); die früheren Werte von 300/3000 ng/m³ gelten danach als nicht mehr ausreichend schützend."
     ],
     "SCHADSTOFFE_DATA.pcb.entsorgung": [
       "AVV-Schlüssel: 17 09 02* (Bau- und Abbruchabfälle, die PCB enthalten).",
@@ -694,6 +694,10 @@
       {
         "title": "PCB-Richtlinie (Richtlinie für die Bewertung und Sanierung PCB-belasteter Baustoffe und Bauteile in Gebäuden, Fassung September 1994; MVV TB 2025/1, lfd. Nr. A 3.2.4 mit Anlage A 3.2/1; Landesumsetzung über die jeweilige VV TB)",
         "url": "https://www.dibt.de/"
+      },
+      {
+        "title": "AIR-Richtwerte für PCB in der Innenraumluft (2025): RW I 80 ng/m³, RW II 800 ng/m³ (IFA/DGUV)",
+        "url": "https://dguv.de/medien/ifa/de/pra/ira/air_pcb_2025.pdf"
       }
     ],
     "Schadstoffe.formeln": [

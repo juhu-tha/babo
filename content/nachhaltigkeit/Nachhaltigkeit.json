@@ -146,8 +146,8 @@
       },
       {
         "formel": "\\text{CBAM-Abgabe} = M_{\\text{Import}} \\cdot \\text{GWP}_{\\text{spec}} \\cdot \\left( P_{\\text{ETS}} - P_{\\text{Herkunft}} \\right) \\quad [\\text{EUR}]",
-        "erklaerung": "CO2-Grenzausgleichsabgabe für importierte emissionsintensive Baustoffe (Zement, Stahl, Aluminium) zur Vermeidung von Carbon Leakage.",
-        "quelle": "VO (EU) 2023/956 (CBAM) Art. 21"
+        "erklaerung": "CO2-Grenzausgleich für importierte emissionsintensive Baustoffe (Zement, Stahl, Aluminium) zur Vermeidung von Carbon Leakage. Die Formel beschreibt den Endzustand ohne kostenlose Zuteilung (ab 2034): Zertifikatspreis nach Art. 21, Anrechnung des im Ursprungsland tatsächlich gezahlten CO2-Preises nach Art. 9. Bis dahin wird die Zahl der abzugebenden Zertifikate zusätzlich um die Anpassung an die kostenlose Zuteilung im EU-ETS gekürzt (Art. 31); der CBAM-Faktor beträgt 2026 noch 97,5 % und sinkt bis 2034 auf 0 % (Art. 10a Abs. 1a RL 2003/87/EG). Bei grauen Emissionen auf Höhe des Benchmarks fallen 2026 also nur rund 2,5 % der Formelkosten an.",
+        "quelle": "VO (EU) 2023/956 (CBAM) Art. 9, 21 und 31; RL 2003/87/EG Art. 10a Abs. 1a"
       },
       {
         "formel": "\\text{GHG-Intensität} = \\frac{\\sum_{j} E_j \\cdot f_{\\text{CO2},j}}{\\text{NFA}} \\le \\text{Target}_{\\text{CRREM}}(t) \\quad [\\text{kg CO}_2\\text{e/(m}^2_{\\text{NFA}}\\cdot\\text{a})]",

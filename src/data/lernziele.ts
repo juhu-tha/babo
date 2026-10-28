@@ -444,7 +444,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
     ziele: [
       { stufe: "Erinnern", text: "die Produktgruppen des Tiefbaus wie Anschlussformteile, Dränleitungen, Schächte und Rigolenelemente ihrer Funktion zuordnen." },
       { stufe: "Verstehen", text: "die Aufgaben der Regenwasserbewirtschaftung mit Ableitung, Rückhaltung, Versickerung und Reinigung erläutern." },
-      { stufe: "Anwenden", text: "aus Einzugsfläche, Abflussbeiwert, Regenspende und Regendauer das erforderliche Speichervolumen und die Länge einer Rigole nach vereinfachtem Ansatz der DWA-A 138 ermitteln." },
+      { stufe: "Anwenden", text: "aus Einzugsfläche, Abflussbeiwert, Regenspende und Regendauer das erforderliche Speichervolumen und die Länge einer Rigole nach vereinfachtem Ansatz in Anlehnung an DWA-A 138-1 ermitteln." },
       { stufe: "Analysieren", text: "die Bauweisen Kiesrigole und Kunststoff-Sickerbox hinsichtlich Speicherkoeffizient und Platzbedarf vergleichen." },
     ],
   },

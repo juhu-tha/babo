@@ -1,7 +1,7 @@
 {
   "texte": {
     "tiefbauSystemtechnikUrbanDrainage": " Tiefbau-Systemtechnik & Urban Drainage (DWA & DIN)",
-    "derModerneTiefbauUmfasst": "Der moderne Tiefbau umfasst sämtliche baulichen Maßnahmen unterhalb der Erdoberfläche. Neben der Bodenstabilisierung bildet das **Wassermanagement (Abflusstransport, Rückhaltung, Versickerung und Reinigung)** nach **DIN EN 752** und den relevanten **DWA-Regelwerken (z.B. DWA-A 138)** das schützende Rückgrat urbaner Infrastrukturen. Die hier dargelegten Systeme decken die gesamte Palette modernen Tiefbaumaterials ab.",
+    "derModerneTiefbauUmfasst": "Der moderne Tiefbau umfasst sämtliche baulichen Maßnahmen unterhalb der Erdoberfläche. Neben der Bodenstabilisierung bildet das **Wassermanagement (Abflusstransport, Rückhaltung, Versickerung und Reinigung)** nach **DIN EN 752** und den relevanten **DWA-Regelwerken (z. B. DWA-A 138-1)** das schützende Rückgrat urbaner Infrastrukturen. Die hier dargelegten Systeme decken die gesamte Palette modernen Tiefbaumaterials ab.",
     "iProduktbereicheTechnischeSysteme": "I. Produktbereiche & Technische Systeme im Tief- und Straßenbau",
     "t1AnschlusssystemeFormteile": "1. Anschlusssysteme & Formteile",
     "dinEn14011": "DIN EN 1401-1",
@@ -50,7 +50,7 @@
     "hofabläufeStraßenabläufeStandardisierteP": "• **Hofabläufe & Straßenabläufe:** Standardisierte Punktentwässerungen (Gully DN 450) mit integriertem Schlammeimer zur mechanischen Feststoff-Vorreinigung.",
     "schlitzrinnenExtremUnauffälligeFlächenbü": "• **Schlitzrinnen:** Extrem unauffällige, flächenbündige Schlitzsysteme für repräsentative Fußgänger- und Marktplatzflächen.",
     "t9RegenwasserBewirtschaftung": "9. Regenwasser-Bewirtschaftung",
-    "dwaA138Dwa": "DWA-A 138 / DWA-M 153",
+    "dwaA138Dwa": "DWA-A 138-1:2024-10 / DWA-M 153",
     "moderneRegenrückhaltungVersickerungUnd": "Moderne Regenrückhaltung, Versickerung und kontrollierte Einleitung zur Entlastung des urbanen Mischwassernetzes.",
     "füllkörperrigolenPpSickerboxenKubische": "• **Füllkörperrigolen (PP Sickerboxen):** Kubische Netzwerkkörper mit bis zu 95% freiem Hohlvolumen. Spül- und kamerabefahrbar zur Funktionsüberwachung.",
     "regenwasserrückhaltebeckenZisternenUnter": "• **Regenwasserrückhaltebecken & Zisternen:** Unterirdische Staukanäle und Betongroßbehälter zur Sammlung und gedrosselten Abgabe.",
@@ -60,8 +60,8 @@
     "bitumenSchmelzbänderRissbänderHeiß": "• **Bitumen-Schmelzbänder (Rissbänder):** Heiß oder kalt verlegbare Anschlussbänder zur dichten Verbindung von neuem Asphalt an Ränder und Schächte (Nahtausbildung).",
     "reparaturmörtelVergussSchachtrahmenRegul": "• **Reparaturmörtel & Verguss:** Schachtrahmen-Reguliermörtel mit sehr hoher Frühfestigkeit (frühe Verkehrsfreigabe nach Herstellerangabe).",
     "kaltasphaltReaktivMischgutGesteinsmischu": "• **Kaltasphalt (Reaktiv-Mischgut):** Gesteinsmischung mit polymerem Bindemittel, härtet unter Feuchtigkeitseinwirkung für eilige Schadstellenbeseitigungen aus.",
-    "iiInteraktivesPlanungsMuster": " II. Interaktives Planungs-Muster: Rigolenbemessung nach DWA-A 138",
-    "dieBemessungEinesUnterirdischen": "Die Bemessung eines unterirdischen Sickerelements (Rigole) basiert auf der Niederschlagsfläche A_E, dem spezifischen Spitzenregen r_D und der Infiltration in das umgebende Erdreich. Der vereinfachte Rechner schätzt das erforderliche Speichervolumen ab (Lehrmodell; Bemessung nach DWA-A 138).",
+    "iiInteraktivesPlanungsMuster": " II. Interaktives Planungs-Muster: Rigolenbemessung in Anlehnung an DWA-A 138-1",
+    "dieBemessungEinesUnterirdischen": "Die Bemessung eines unterirdischen Sickerelements (Rigole) basiert auf der Niederschlagsfläche A_E, dem spezifischen Spitzenregen r_D und der Infiltration in das umgebende Erdreich. Der vereinfachte Rechner schätzt das erforderliche Speichervolumen ab (Lehrmodell in Anlehnung an DWA-A 138-1:2024-10, das die Ausgabe von 2005 ersetzt). Nicht abgebildet sind die Neuerungen der Ausgabe 2024: der standortspezifische Faktor f_Ort zur Anpassung des gemessenen Durchlässigkeitsbeiwerts (statt pauschaler Faktoren) und die Anrechnung der gesamten Rigolenhöhe als Versickerungsfläche bei vollständiger Durchsickerung (bisher halbe Höhe); vorläufig, F-Freigabe.",
     "angeschlosseneAuffangflächeAE": "Angeschlossene Auffangfläche (A_E):",
     "abflussbeiwert": "Abflussbeiwert (ψ):",
     "bemessungsregenIntensitätRD": "Bemessungsregen-Intensität (r_D):",
@@ -73,7 +73,7 @@
     "infiltrationÜberSohleA": "Infiltration über Sohle (A_soh ≈ ",
     "mBeiSandSchluff": " m²) bei Sand/Schluff-Boden (k_f = 10⁻⁵ m/s): ",
     "erforderlichesRigolenBruttovolumenV": "Erforderliches Rigolen-Bruttovolumen (V_rig)",
-    "dwaA138Planungsentwurf": "DWA-A 138 Planungsentwurf",
+    "dwaA138Planungsentwurf": "Planungsentwurf in Anlehnung an DWA-A 138-1",
     "sicherheitsbeiwertFS1": "Sicherheitsbeiwert f_S = 1,1 integriert",
     "konstruktiveEmpfehlung": "Konstruktive Empfehlung:",
     "verwendungVonPpSickerboxen": "Verwendung von PP-Sickerboxen (Rigolenfüllkörper): ",
@@ -81,7 +81,7 @@
     "verwendungEinesKiesgrabensKörnung": "Verwendung eines Kiesgrabens (Körnung 16/32, Hohlraumfaktor s_R = 0,3): Der Kieskörper benötigt ein Bruttovolumen von ca. ",
     "davonSpeicherwirksamPorenraumCa": ", davon speicherwirksam (Porenraum) ca. ",
     "erforderlicheLänge": "Erforderliche Länge: ",
-    "dwaA138Speicherbemessungsgleichung": "DWA-A 138 Speicherbemessungsgleichung:",
+    "dwaA138Speicherbemessungsgleichung": "Speicherbemessungsgleichung (vereinfacht in Anlehnung an DWA-A 138-1):",
     "hierbeiStehtSR": "Hierbei steht s_R für den systembedingten Hohlraumgehalt, der bei synthetischen Füllkörperblöcken (Hohlraumboxen) bis zu 95% beträgt, wohingegen Kiesträgerbetten nur etwa 30% Hohlvolumen einbringen können."
   }
 }

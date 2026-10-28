@@ -67,8 +67,8 @@
     "polychlorierteBiphenylePcb": "Polychlorierte Biphenyle (PCB)",
     "pcbGemischeWeichmacher": "PCB-Gemische (Weichmacher)",
     "dauerelastischeFugendichtungsmassenThiok": "Dauerelastische Fugendichtungsmassen (Thiokolfugen), Flammschutzanstriche, Deckenplatten kleber.",
-    "herausschneidenDerFugenflankenUnterdruck": "Herausschneiden der Fugenflanken, Unterdruck, PCB-Richtlinie: Raumluft ≤ 300 ng/m³ Zielwert (langfristig tolerierbar), 300–3000 ng/m³ Quellensuche und mittelfristige Sanierung, > 3000 ng/m³ unverzügliche Sanierung (Gefahrenwert).",
-    "pcbRichtlinieBayernTrgs": "PCB-Richtlinie (Bayern), TRGS 524",
+    "herausschneidenDerFugenflankenUnterdruck": "Herausschneiden der Fugenflanken, Unterdruck, Bewertung der Raumluft nach den AIR-Richtwerten 2025 (PCBges): unter RW I = 80 ng/m³ kein Handlungsbedarf, zwischen 80 und 800 ng/m³ Quellen suchen und mindern, über RW II = 800 ng/m³ unverzüglich handeln (Gefahrenwert). Die Werte der PCB-Richtlinie 1994 (300/3000 ng/m³) gelten nach AIR als nicht mehr ausreichend schützend.",
+    "pcbRichtlinieBayernTrgs": "AIR-Richtwerte PCB (2025), PCB-Richtlinie (1994, MVV TB), TRGS 524",
     "bleiSchwermetalle": "Blei & Schwermetalle",
     "roteBleimennigeAnstricheRostschutz": "Rote Bleimennige-Anstriche (Rostschutz auf Altstahl), Bleirohre in Sanitärinstallationen.",
     "staubarmesAbsaugenKeinMechanisches": "Staubarmes Absaugen, kein mechanisches Schleifen ohne Absaugung der Staubklasse M/H.",
@@ -258,6 +258,10 @@
       {
         "title": "TRGS 519 (Asbest), Fassung 2014, zuletzt geändert 28.01.2025",
         "url": "https://www.baua.de/DE/Angebote/Regelwerk/TRGS/TRGS-519"
+      },
+      {
+        "title": "AIR-Richtwerte für PCB in der Innenraumluft (2025): RW I 80 ng/m³, RW II 800 ng/m³ (IFA/DGUV)",
+        "url": "https://dguv.de/medien/ifa/de/pra/ira/air_pcb_2025.pdf"
       }
     ],
     "Rueckbau.formeln": [

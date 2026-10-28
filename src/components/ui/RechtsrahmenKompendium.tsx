@@ -540,7 +540,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     leadQuote: 'Verhindert Carbon Leakage: Gleicher CO₂-Preis für Import-Baustoffe wie für europäische Produktion.',
     coreSummary: 'Der CBAM schützt die europäische Grundstoffindustrie vor Billigimporten aus Drittländern ohne CO₂-Preis. Importeure von Zement, Stahl und Aluminium müssen ab 2026 CBAM-Zertifikate erwerben, deren Preis an die wöchentlichen EU-ETS-Auktionen gekoppelt ist. Dadurch wird der CO₂-Preisunterschied zwischen der EU und dem Herkunftsland an der EU-Außengrenze exakt ausgeglichen.',
     keyDuties: [
-      'Quartalsweise Berichtspflicht der Importeure über eingebettete Emissionen (Scope 1 und Vorprodukte).',
+      'Übergangsphase 2023–2025: quartalsweise Berichte über eingebettete Emissionen (Scope 1 und Vorprodukte); ab 2026 jährliche CBAM-Erklärung (Art. 6).',
       'Zulassung als "autorisierter CBAM-Anmelder" bei der zuständigen nationalen Behörde (in DE: DEHSt); die Einfuhr selbst wickelt der Zoll ab.',
       'Ab 2026: Verpflichtender Kauf und Abgabe von CBAM-Zertifikaten für jede importierte Tonne Baustoff.',
       'Verifizierung der Emissionsdaten durch akkreditierte EU-Prüfstellen.'
@@ -549,13 +549,13 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     milestones: [
       { year: '2023', text: '01. Oktober 2023: Start der Übergangsphase (Berichtspflicht ohne Zahlung).' },
       { year: '2025', text: '31. Dezember 2025: Ende der zollrechtlichen Übergangsphase.' },
-      { year: '2026', text: '01. Januar 2026: Beginn der finanziellen Zahlungspflicht für CBAM-Zertifikate.' },
+      { year: '2026', text: '01. Januar 2026: Zertifikatspflicht für Einfuhren ab 2026; Verkauf der Zertifikate ab 01.02.2027 (rückwirkend für 2026).' },
       { year: '2034', text: 'Vollständige Deckung aller Importemissionen (analog 100 % ETS-Auktion).' }
     ],
     formula: {
       math: '\\text{CBAM-Kosten} = \\text{Importmenge} \\cdot \\text{GWP}_{\\text{spec}} \\cdot \\left( P_{\\text{ETS}} - P_{\\text{Origin}} \\right)',
-      explanation: 'Ausgleichszahlung basierend auf den eingebetteten Emissionen, dem EU-ETS-Preis und dem bereits im Ursprungsland gezahlten CO2-Preis.',
-      source: 'VO (EU) 2023/956 Art. 21'
+      explanation: 'Endzustand ohne kostenlose Zuteilung (ab 2034): eingebettete Emissionen mal Zertifikatspreis (Art. 21) abzüglich des im Ursprungsland gezahlten CO2-Preises (Art. 9). Bis 2034 wird die Zertifikatszahl zusätzlich um die Anpassung an die kostenlose EU-ETS-Zuteilung gekürzt (Art. 31; CBAM-Faktor 2026: 97,5 %, danach sinkend bis 0 %).',
+      source: 'VO (EU) 2023/956 Art. 9, 21, 31'
     }
   },
 
