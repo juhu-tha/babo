@@ -1,6 +1,6 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
-import { daemmBerater } from '@/src/calc/bauprodukte';
+import { daemmBerater, FX_KELLERDECKE } from '@/src/calc/bauprodukte';
 import { 
   Calculator, 
   Info, 
@@ -83,10 +83,10 @@ export function DaemmungBerater() {
   const existing = useMemo(() => EXISTING_LAYERS.find(e => e.id === selectedExisting)!, [selectedExisting]);
   const material = useMemo(() => MATERIALS.find(m => m.name === selectedMaterial)!, [selectedMaterial]);
 
-  // Rechenkern src/calc/bauprodukte.ts: U nach DIN EN ISO 6946, Einsparung ΔU · 84 kKh/a (≈ 3 500 Kd), CO₂ 0,22 kg/kWh (Lehrwerte)
+  // Rechenkern src/calc/bauprodukte.ts: U nach DIN EN ISO 6946, Einsparung ΔU · F_x · 84 kKh/a (≈ 3 500 Kd), CO₂ 0,24 kg/kWh (Erdgas, Anlage 9)
   const r_existing = existing.r_value;
-  const berechnung = useMemo(() => daemmBerater({ rBestand: r_existing, dickeCm: thickness, lambda: material.lambda, rsi: app.r_si, rse: app.r_se, uZiel: app.gegTarget, ohneBestand: existing.id === 'none' }),
-    [r_existing, thickness, material.lambda, app, existing.id]);
+  const berechnung = useMemo(() => daemmBerater({ rBestand: r_existing, dickeCm: thickness, lambda: material.lambda, rsi: app.r_si, rse: app.r_se, uZiel: app.gegTarget, ohneBestand: existing.id === 'none', fx: selectedApp === 'basement_ceiling' ? FX_KELLERDECKE : 1.0 }),
+    [r_existing, thickness, material.lambda, app, existing.id, selectedApp]);
   const u_value = berechnung.uNeu;
   const u_existing = berechnung.uAlt;
   const meetsGeg = berechnung.erfuellt;
@@ -392,7 +392,7 @@ export function DaemmungBerater() {
                 )}
               </div>
               <span className="text-[10px] text-slate-500 font-normal leading-normal">
-                Verringerung der Transmissionswärmeverluste pro m² Bauteilfläche.
+                Verringerung der Transmissionswärmeverluste pro m² Bauteilfläche (ΔU · F_x · 84 kKh/a{selectedApp === 'basement_ceiling' ? ', F_x = 0,5 gegen unbeheizten Keller, vorläufig' : ''}; ohne Anlagenaufwand).
               </span>
             </div>
 
@@ -410,7 +410,7 @@ export function DaemmungBerater() {
                 )}
               </div>
               <span className="text-[10px] text-slate-500 font-normal leading-normal">
-                Basierend auf durchschnittlichen fossilen Heizanlagen in DE.
+                Emissionsfaktor Erdgas 0,24 kg CO₂/kWh (Anlage 9 GModG), bezogen auf die eingesparte Wärme.
               </span>
             </div>
 
