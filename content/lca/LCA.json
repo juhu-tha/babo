@@ -165,7 +165,10 @@
     "wichtigerHinweisZumBaustoffvergleich": "**Wichtiger Hinweis zum Baustoffvergleich:** Vergleichen Sie verschiedene Baustoffe (z.B. $1\\text{ m}^3$ Brettschichtholz vs. $1\\text{ m}^3$ Normalbeton) niemals unreflektiert auf Basis ihres reinen Volumens ($\\text{m}^3$) oder ihrer reinen Masse ($\\text{kg, t}$). Für einen normenkonformen Vergleich müssen Sie stets die **funktionelle Einheit** mit **gleicher Leistungsfähigkeit (funktionale Äquivalenz)** betrachten. Ein Quadratmeter Außenwand aus Beton benötigt für den gleichen Wärmeschutz (U-Wert) einen völlig anderen Dämmstoff-Schichtaufbau als eine Holztafelwand. Auch statisch müssen die Schichten so dimensioniert sein, dass sie dieselbe Traglast über die geforderte Nutzungsdauer (z.B. 50 oder 100 Jahre) abtragen können.",
     "excelArbeitsmappeXlsxÖkobilanzierung": "Excel-Arbeitsmappe (.xlsx): Ökobilanzierung Transportbeton",
     "interaktiveBerechnungsdateiFürStudierend": "Interaktive Berechnungsdatei für Studierende mit dynamischen Formeln (CEM I vs. CEM III/A vs. RC-Beton), ÖKOBAUDAT-Faktoren und einer DGNB-Optimierungsaufgabe (850 m³ Bodenplatte).",
-    "excelÜbungHerunterladen": "Excel-Übung herunterladen"
+    "excelÜbungHerunterladen": "Excel-Übung herunterladen",
+    "bezugEinzelBezogen": "**Bezogen auf:** deklarierte Einheit ",
+    "bezugEinzelRechnung": " der EPD (A1–A3, Cradle-to-Gate). Ergebnis = Menge in deklarierten Einheiten × EPD-Wert, ergänzt um den Transport A4: ",
+    "bezugEinzelKeineFe": "Keine funktionelle Einheit: Funktion im Bauteil und Nutzungsdauer sind nicht festgelegt. Für einen Baustoffvergleich zuerst auf 1 m² Bauteil gleicher Funktion über 50 a umrechnen (Kasten „Funktionelle und deklarierte Einheit“ im ersten Reiter)."
   },
   "werte": {
     "zertifizierungDeklarationen": "Zertifizierung & Deklarationen",

@@ -212,6 +212,10 @@ export interface LcaEingabe {
 
 export interface LcaZeilenErgebnis {
   id: string;
+  /** Menge in deklarierten Einheiten der EPD (Bezugsgröße des Datensatzes) */
+  menge: number;
+  /** deklarierte Einheit des Datensatzes */
+  einheit: LcaBaustoff['einheit'];
   masse: number;
   nutzungsdauer: number;
   ersatz: number;
@@ -317,7 +321,7 @@ export function lcaBilanz(e: LcaEingabe): LcaErgebnis {
     if (s.biogen > 0) biogen += z.menge * s.biogen;
     penrt += z.menge * s.penrt;
     umiSumme += m * Math.min(100, Math.round(z.kreislaufquote * 0.7 + z.sortenreinheit * 0.3));
-    zeilen.push({ id: s.id, masse: m, nutzungsdauer: nd, ersatz: n, a1a3: zA, c: zC, b4: zB4, d: zD, kreislaufMasse, rueckgewonnen });
+    zeilen.push({ id: s.id, menge: z.menge, einheit: s.einheit, masse: m, nutzungsdauer: nd, ersatz: n, a1a3: zA, c: zC, b4: zB4, d: zD, kreislaufMasse, rueckgewonnen });
     if (s.gwpD !== 0 && !vorlaeufig.includes(QUELLE_VERWERTUNGSFAKTOR) && (z.verwertung !== (s.refVerwertung ?? 'high_grade'))) vorlaeufig.push(QUELLE_VERWERTUNGSFAKTOR);
     const nda = BNB_NUTZUNGSDAUER[s.id];
     if (e.mitB4 && z.nutzungsdauer === undefined && nda?.vorlaeufig && !vorlaeufig.includes(nda.quelle)) vorlaeufig.push(nda.quelle);
@@ -413,4 +417,103 @@ export function einzelbaustoffA1A4(e: EinzelbaustoffEingabe) {
     anteilA4: betrag > 0 ? (Math.abs(gwpA4) / betrag) * 100 : 0,
     penrt: e.penrt * e.menge, faktor,
   };
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Bezugsgrößen der Ökobilanz (Auftrag 28.10.2026): deklarierte Einheit → funktionelle Einheit
+//
+// DIN EN ISO 14040/14044:2006: funktionelle Einheit = „quantifizierter Nutzen eines Produktsystems für die Verwendung als
+// Vergleichseinheit“ (engl. „quantified performance of a product system … used as a reference unit“), Referenzfluss = die zur
+// Erfüllung dieser Funktion nötige Produktmenge. DIN EN 15804+A2 (3.9/3.13; 6.3.1–6.3.3): deklarierte Einheit = „Menge eines
+// Bauprodukts zur Verwendung als Bezugseinheit einer EPD“ (z. B. 1 m³ Beton, 1 t Betonstahl, 1 m² Dämmung mit R-Wert), wenn
+// Funktion und Nutzung im Gebäude nicht festgelegt sind; die funktionale/funktionelle Einheit nur bei Betrachtung des gesamten
+// Lebenszyklus (Programmregeln BCS Öko-Garantie, General PCR v1.1, 05.06.2017, Abschn. 5.3). DIN EN 15978:2011 (3.14):
+// funktionales Äquivalent des Gebäudes, Bezug im QNG: 1 m² NRF(R) und Jahr über 50 a.
+// Die Umrechnung je Schicht: Menge je m² Bauteil = Dicke × Rohdichte (kg, t) bzw. Dicke (m³) bzw. 1 (m²),
+// Umweltwirkung über den Betrachtungszeitraum = Menge × (A1–A3 + C3/C4) × (1 + n), n = ersatzzyklen(ND, T).
+// Reine Anzeige- und Lernhilfe; die Ergebnisse von lcaBilanz und einzelbaustoffA1A4 bleiben unverändert.
+// ---------------------------------------------------------------------------------------------------------------------
+
+export type DeklarierteEinheit = 'kg' | 't' | 'm³' | 'm²';
+
+/** Menge in deklarierten Einheiten je m² Bauteilfläche aus Schichtdicke [m] und Rohdichte [kg/m³]; NaN bei unzulässiger Eingabe */
+export function mengeJeM2Bauteil(einheit: DeklarierteEinheit, dickeM: number, rohdichte: number): number {
+  if (einheit === 'm²') return 1;
+  if (!(dickeM > 0) || !Number.isFinite(dickeM)) return NaN;
+  if (einheit === 'm³') return dickeM;
+  if (!(rohdichte > 0) || !Number.isFinite(rohdichte)) return NaN;
+  return einheit === 'kg' ? dickeM * rohdichte : (dickeM * rohdichte) / 1000;
+}
+
+export interface FeSchicht {
+  name: string;
+  /** deklarierte Einheit des Datensatzes */
+  einheit: DeklarierteEinheit;
+  /** Schichtdicke [m] (bei einheit m² ohne Bedeutung) */
+  dickeM: number;
+  /** Rohdichte [kg/m³] (nur für kg und t erforderlich) */
+  rohdichte: number;
+  /** GWP A1–A3 je deklarierte Einheit [kg CO₂-Äq.] */
+  gwpA1A3: number;
+  /** GWP C3/C4 je deklarierte Einheit [kg CO₂-Äq.] */
+  gwpC: number;
+  /** Nutzungsdauer der Schicht [a] */
+  nutzungsdauer: number;
+}
+
+export interface FeSchichtErgebnis {
+  name: string;
+  einheit: DeklarierteEinheit;
+  /** Menge je m² Bauteil in deklarierten Einheiten (Referenzfluss) */
+  menge: number;
+  /** einmalig je m² Bauteil [kg CO₂-Äq./m²] */
+  a1a3: number; c: number;
+  /** Anzahl Ersatzmaßnahmen im Betrachtungszeitraum */
+  ersatz: number;
+  /** Ersatz B4 = n · (A1–A3 + C3/C4) [kg CO₂-Äq./m²] */
+  b4: number;
+  /** A1–A3 + B4 + C3/C4 über den Betrachtungszeitraum [kg CO₂-Äq./m²] */
+  summe: number;
+}
+
+export interface FeErgebnis {
+  gueltig: boolean;
+  hinweise: Hinweis[];
+  schichten: FeSchichtErgebnis[];
+  betrachtungszeitraum: number;
+  /** Summen je m² Bauteil [kg CO₂-Äq./m²] */
+  a1a3: number; c: number; b4: number; summe: number;
+  /** je m² Bauteil und Jahr [kg CO₂-Äq./(m²·a)] */
+  jeJahr: number;
+}
+
+/**
+ * Funktionelle Einheit eines flächigen Bauteils: 1 m² Bauteil über den Betrachtungszeitraum T, aus Datensätzen je
+ * deklarierter Einheit. Je Schicht Menge = mengeJeM2Bauteil(…), Wirkung = Menge · (A1–A3 + C3/C4) · (1 + n).
+ */
+export function funktionelleEinheitBauteil(schichten: readonly FeSchicht[], betrachtungszeitraum: number = BETRACHTUNGSZEITRAUM_QNG): FeErgebnis {
+  const hinweise: Hinweis[] = [];
+  muss(hinweise, istEndlich(betrachtungszeitraum) && betrachtungszeitraum > 0, 'betrachtungszeitraum', 'Der Betrachtungszeitraum muss größer als 0 sein.');
+  muss(hinweise, schichten.length > 0, 'schichten', 'Mindestens eine Schicht ist erforderlich.');
+  schichten.forEach((s, i) => {
+    const n = `Schicht ${i + 1}`;
+    if (s.einheit !== 'm²') muss(hinweise, istEndlich(s.dickeM) && s.dickeM > 0, `dicke${i}`, `${n}: Die Dicke muss größer als 0 sein.`);
+    if (s.einheit === 'kg' || s.einheit === 't') muss(hinweise, istEndlich(s.rohdichte) && s.rohdichte > 0, `rohdichte${i}`, `${n}: Die Rohdichte muss größer als 0 sein.`);
+    muss(hinweise, istEndlich(s.gwpA1A3, s.gwpC), `gwp${i}`, `${n}: Die GWP-Werte müssen endlich sein.`);
+    muss(hinweise, istEndlich(s.nutzungsdauer) && s.nutzungsdauer > 0, `nd${i}`, `${n}: Die Nutzungsdauer muss größer als 0 sein.`);
+  });
+  if (hatFehler(hinweise)) return { gueltig: false, hinweise, schichten: [], betrachtungszeitraum, a1a3: NaN, c: NaN, b4: NaN, summe: NaN, jeJahr: NaN };
+  const T = betrachtungszeitraum;
+  const ergebnis = schichten.map((s): FeSchichtErgebnis => {
+    const menge = mengeJeM2Bauteil(s.einheit, s.dickeM, s.rohdichte);
+    const a1a3 = menge * s.gwpA1A3;
+    const c = menge * s.gwpC;
+    const ersatz = ersatzzyklen(s.nutzungsdauer, T);
+    const b4 = ersatz * (a1a3 + c);
+    return { name: s.name, einheit: s.einheit, menge, a1a3, c, ersatz, b4, summe: a1a3 + c + b4 };
+  });
+  const sum = (f: (x: FeSchichtErgebnis) => number) => ergebnis.reduce((a, x) => a + f(x), 0);
+  const summe = sum(x => x.summe);
+  if (T !== BETRACHTUNGSZEITRAUM_QNG) hinweise.push({ stufe: 'warnung', feld: 'betrachtungszeitraum', text: 'Betrachtungszeitraum abweichend von 50 a (QNG) – Ergebnisse nur untereinander vergleichbar.' });
+  return { gueltig: true, hinweise, schichten: ergebnis, betrachtungszeitraum: T, a1a3: sum(x => x.a1a3), c: sum(x => x.c), b4: sum(x => x.b4), summe, jeJahr: summe / T };
 }
