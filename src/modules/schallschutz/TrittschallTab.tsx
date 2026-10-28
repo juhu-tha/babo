@@ -70,19 +70,19 @@ export default function TrittschallTab() {
           </div>
         </section>
 
-        <section className="bg-orange-800 text-white p-5 rounded-2xl shadow-md flex flex-col gap-3" aria-live="polite">
+        <section className="bg-off-white border border-home-grau/30 text-text-main p-5 rounded-2xl shadow-md flex flex-col gap-3" aria-live="polite">
           <h3 className="text-sm font-bold uppercase tracking-wider opacity-90"><MdText text={inhalt.texte.ergebnisTitel} /></h3>
           <dl className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
-            <dt className="text-white/80"><FormulaText text="$m'_s$ Rohdecke" /></dt><dd className="font-semibold">{formatDeZahl(r.mDecke, 0)} kg/m²</dd>
-            <dt className="text-white/80"><FormulaText text="$L_{n,eq,0,w}$" /></dt><dd className="font-semibold">{formatDeZahl(r.lnEq0w, 1)} dB</dd>
-            <dt className="text-white/80"><FormulaText text="$m'$ Estrich, $f_0$" /></dt><dd className="font-semibold">{formatDeZahl(r.mEstrich, 0)} kg/m², {formatDeZahl(r.f0, 0)} Hz</dd>
-            <dt className="text-white/80"><FormulaText text="$\Delta L_w$ (vorläufig)" /></dt><dd className="font-semibold">{formatDeZahl(r.deltaLw, 1)} dB</dd>
-            <dt className="text-white/80"><FormulaText text="$K$ (vorläufig)" /></dt><dd className="font-semibold">{formatDeZahl(r.k, 1)} dB</dd>
-            <dt className="text-white/80"><FormulaText text="$L'_{n,w}$" /></dt><dd className="text-2xl font-bold">{formatDeZahl(r.lnwStrich, 1)} dB</dd>
-            <dt className="text-white/80"><FormulaText text="$L'_{n,w} + u_{prog}$" /></dt><dd className="font-semibold">{formatDeZahl(r.nachweis, 1)} dB ≤ {formatDeZahl(anf.wert, 0)} dB?</dd>
+            <dt className="text-slate-600"><FormulaText text="$m'_s$ Rohdecke" /></dt><dd className="font-semibold">{formatDeZahl(r.mDecke, 0)} kg/m²</dd>
+            <dt className="text-slate-600"><FormulaText text="$L_{n,eq,0,w}$" /></dt><dd className="font-semibold">{formatDeZahl(r.lnEq0w, 1)} dB</dd>
+            <dt className="text-slate-600"><FormulaText text="$m'$ Estrich, $f_0$" /></dt><dd className="font-semibold">{formatDeZahl(r.mEstrich, 0)} kg/m², {formatDeZahl(r.f0, 0)} Hz</dd>
+            <dt className="text-slate-600"><FormulaText text="$\Delta L_w$ (vorläufig)" /></dt><dd className="font-semibold">{formatDeZahl(r.deltaLw, 1)} dB</dd>
+            <dt className="text-slate-600"><FormulaText text="$K$ (vorläufig)" /></dt><dd className="font-semibold">{formatDeZahl(r.k, 1)} dB</dd>
+            <dt className="text-slate-600"><FormulaText text="$L'_{n,w}$" /></dt><dd className="text-2xl font-bold">{formatDeZahl(r.lnwStrich, 1)} dB</dd>
+            <dt className="text-slate-600"><FormulaText text="$L'_{n,w} + u_{prog}$" /></dt><dd className="font-semibold">{formatDeZahl(r.nachweis, 1)} dB ≤ {formatDeZahl(anf.wert, 0)} dB?</dd>
           </dl>
           {r.gueltig && (
-            <p className={`text-sm font-bold p-3 rounded-lg border ${r.erfuellt ? 'bg-white/10 border-white/30' : 'bg-red-950/40 border-red-200/60'}`}>
+            <p className={`text-sm font-bold p-3 rounded-lg border ${r.erfuellt ? 'bg-white border-home-grau/30' : 'bg-rose-50 border-rose-200'}`}>
               {r.erfuellt ? inhalt.werte.erfuellt : inhalt.werte.nichtErfuellt} – {inhalt.werte.reserve} {formatDeZahl(r.reserve, 1)} dB
             </p>
           )}

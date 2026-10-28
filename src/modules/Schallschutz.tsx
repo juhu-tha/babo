@@ -175,7 +175,7 @@ export default function Schallschutz() {
                 <h3 className="text-sm font-bold text-text-main uppercase tracking-wider">Bauteilaufbau</h3>
                 <button 
                   onClick={addLayer}
-                  className="text-xs bg-orange-800 text-white px-3 py-1.5 rounded-lg hover:bg-torch-red transition-colors flex items-center gap-1"
+                  className="text-xs bg-shiraz text-white px-3 py-1.5 rounded-lg hover:bg-shiraz/90 transition-colors flex items-center gap-1"
                 >
                   + Schicht
                 </button>
@@ -222,18 +222,18 @@ export default function Schallschutz() {
               </div>
             </div>
 
-            <div className="bg-orange-800 text-white p-6 rounded-xl shadow-md">
+            <div className="bg-off-white border border-home-grau/30 text-text-main p-6 rounded-xl shadow-md">
               <h3 className="text-sm font-bold uppercase tracking-wider mb-4 opacity-90">Ergebnisse</h3>
               
               <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <div className="text-white/70 text-sm mb-1 flex items-center gap-1">
+                  <div className="text-slate-600 text-sm mb-1 flex items-center gap-1">
                     <FormulaText text={inhalt.werte.flächenbezogeneMasseM} />
                   </div>
                   <div className="text-3xl font-bold">{formatDeZahl(schallData.m_prime, 1)} <span className="text-lg font-normal">kg/m²</span></div>
                 </div>
                 <div>
-                  <div className="text-white/70 text-sm mb-1 flex items-center gap-1">
+                  <div className="text-slate-600 text-sm mb-1 flex items-center gap-1">
                     <FormulaText text={inhalt.werte.schalldämmMaßRW2} />
                     <InfoTooltip text={inhalt.werte.berechnetNachDin4109} />
                   </div>
@@ -243,13 +243,13 @@ export default function Schallschutz() {
 
               <EingabeHinweise hinweise={schallData.hinweise} />
               {!schallData.isValidRange && (
-                <div className="mt-3 p-3 bg-amber-500/20 border border-amber-300/40 rounded-lg text-amber-200 text-xs"><MdText text={inhalt.texte.gültigkeitsbereichBeachtenDieFormel} />{formatDeZahl(schallData.m_prime, 1)} kg/m²).
+                <div className="mt-3 p-3 bg-amber-50 border border-amber-200 rounded-lg text-amber-900 text-xs"><MdText text={inhalt.texte.gültigkeitsbereichBeachtenDieFormel} />{formatDeZahl(schallData.m_prime, 1)} kg/m²).
                 </div>
               )}
 
-              <div className="mt-4 bg-white/10 p-3 rounded-lg border border-white/20 text-xs space-y-1.5 leading-relaxed">
+              <div className="mt-4 bg-white p-3 rounded-lg border border-home-grau/30 text-xs space-y-1.5 leading-relaxed">
                 <p><MdText text={inhalt.texte.berechnungsgrundlageDin410932} /><FormulaText text="R_w = 30{,}9 \cdot \log_{10}(m'/1) - 22{,}2 \text{ dB}" /><MdText text={inhalt.texte.fürEinschaligeMassiveBauteile} /></p>
-                <p className="text-white/80"><MdText text={inhalt.texte.hinweisZuDämmschichtenDämmschichten} /></p>
+                <p className="text-slate-600"><MdText text={inhalt.texte.hinweisZuDämmschichtenDämmschichten} /></p>
               </div>
             </div>
 

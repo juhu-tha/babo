@@ -117,15 +117,15 @@ Begründung (Gutachten 27.10.2026): Projektkonvention seit Phase 1 (README, Anle
 
 ## Design
 
-**Grundsatz „keine schwarzen Boxen“ (Prof. Huber, 28.10.2026):** Im Hellmodus erhalten Inhaltsboxen, Kopfboxen, Hinweisboxen, Mess-/Ergebnisanzeigen in Simulatoren, Code-/Prompt-Blöcke, Schaltflächen und Badges **keinen schwarzen oder sehr dunklen Hintergrund** (`bg-slate|gray|zinc|neutral|stone-800…950`, `bg-black`, `bg-text-main`, dunkle Verläufe). Einheitliche helle Muster:
+**Grundsatz „keine schwarzen Boxen“ (Prof. Huber, 28.10.2026):** Im Hellmodus erhalten Inhaltsboxen, Kopfboxen, Hinweisboxen, Mess-/Ergebnisanzeigen in Simulatoren, Code-/Prompt-Blöcke, Schaltflächen und Badges **keinen schwarzen oder sehr dunklen Hintergrund** (`bg-slate|gray|zinc|neutral|stone-800…950`, `bg-black`, `bg-text-main`, dunkle Verläufe). Achtung: `@theme` in `src/index.css` bildet blue/emerald/green/teal/cyan/sky/indigo/violet/purple/amber/yellow/orange auf die Slate-Stufen ab – `bg-orange-800` oder `bg-emerald-900` sind im Ergebnis ebenfalls schwarzgraue Flächen und fallen unter den Grundsatz. Einheitliche helle Muster:
 
 | Element | Klassen |
 |---|---|
 | Kopf-/Hero-Box, Info-Box | `bg-shiraz/5 border border-shiraz/20 text-text-main` (Nebentext `text-slate-700`) |
-| Mess-/Ergebnisanzeige | `bg-off-white border border-home-grau/30 text-text-main`, Bezeichnung `text-slate-600`, Ziffern kräftig (`text-amber-700`, `text-emerald-700`, `text-cyan-700` …) |
+| Mess-/Ergebnisanzeige | `bg-off-white border border-home-grau/30 text-text-main`, Bezeichnung `text-slate-600`, Ziffern fett in `text-text-main` bzw. `text-…-700` |
 | Code-/Prompt-/Terminal-Block | `bg-off-white border border-home-grau/30 font-mono text-text-main` (in `bg-slate-50`-Karten `bg-white`) |
 | Aktive Auswahl, Hauptschaltfläche | `bg-shiraz text-white border-shiraz` bzw. `bg-shiraz hover:bg-shiraz/90 text-white` |
-| „Gut/richtig“-Zustand mit Füllung | `bg-emerald-700 text-white` |
+| „Richtig“-Markierung (Quiz) | `bg-slate-200 text-text-main border-text-main` |
 | Badge/Chip | `bg-shiraz/10 text-shiraz` oder `bg-white border border-home-grau/30 text-text-main` |
 
 Der Dunkelmodus braucht dafür keine eigenen `dark:`-Klassen: die globalen `.dark`-Regeln in `src/index.css` bilden `bg-white`, `bg-off-white`, `bg-shiraz/5|10`, `text-text-main`, `text-slate-600|700`, farbige Textstufen und `border-home-grau/*` auf dunkle Flächen mit ≥ 4,5:1 ab; `bg-shiraz` wird dort `#be185d` (weiß 6:1).

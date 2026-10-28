@@ -500,7 +500,7 @@ export default function KiOnlinekurse() {
                 <Terminal className="text-emerald-700" size={18} />
                 <h3 className="text-sm font-bold text-text-main tracking-wide"><MdText text={inhalt.texte.sofortStarterPythonDatenanalyse} /></h3>
               </div>
-              <p className="text-xs text-slate-600 mt-1"><MdText text={inhalt.texte.kopiereDiesenCodeDirekt} /><a href="https://colab.research.google.com" target="_blank" rel="noopener noreferrer" className="text-emerald-700 underline hover:text-emerald-300"><MdText text={inhalt.texte.googleColab} /></a><MdText text={inhalt.texte.oderIhrLokalesJupyter} /></p>
+              <p className="text-xs text-slate-600 mt-1"><MdText text={inhalt.texte.kopiereDiesenCodeDirekt} /><a href="https://colab.research.google.com" target="_blank" rel="noopener noreferrer" className="text-emerald-700 underline hover:text-emerald-800"><MdText text={inhalt.texte.googleColab} /></a><MdText text={inhalt.texte.oderIhrLokalesJupyter} /></p>
             </div>
             <button
               onClick={handleCopyCode}

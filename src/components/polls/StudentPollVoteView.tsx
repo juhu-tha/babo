@@ -114,7 +114,7 @@ export default function StudentPollVoteView({
         {/* Header Bar */}
         <div className="bg-white border border-home-grau/30 rounded-2xl p-4 flex items-center justify-between shadow-md">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-shiraz text-text-main font-extrabold flex items-center justify-center text-sm shadow-xs">
+            <div className="w-9 h-9 rounded-xl bg-shiraz text-white font-extrabold flex items-center justify-center text-sm shadow-xs">
               THA
             </div>
             <div>
@@ -173,7 +173,7 @@ export default function StudentPollVoteView({
                   }}
                   className={`w-7 h-7 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center justify-center ${
                     active 
-                      ? 'bg-shiraz text-text-main shadow-xs ring-2 ring-shiraz/30' 
+                      ? 'bg-shiraz text-white shadow-xs ring-2 ring-shiraz/30' 
                       : answered 
                         ? 'bg-emerald-50 text-emerald-700 border border-emerald-300' 
                         : 'bg-slate-100 text-slate-600 hover:text-text-main'
@@ -239,9 +239,9 @@ export default function StudentPollVoteView({
                   >
                     <span className={`w-6 h-6 rounded-md flex items-center justify-center font-bold text-xs shrink-0 ${
                       isUserChoice
-                        ? 'bg-emerald-600 text-text-main'
+                        ? 'bg-emerald-600 text-white'
                         : isSelected
-                          ? 'bg-shiraz text-text-main'
+                          ? 'bg-shiraz text-white'
                           : 'bg-slate-100 text-slate-700'
                     }`}>
                       {optionLetters[idx]}
@@ -277,7 +277,7 @@ export default function StudentPollVoteView({
               type="button"
               disabled={selectedOption === null || isSubmitting}
               onClick={handleVoteSubmit}
-              className="w-full mt-2 py-3 rounded-xl font-bold text-xs sm:text-sm bg-shiraz text-text-main hover:bg-rose-700 disabled:opacity-40 transition-all shadow-md cursor-pointer flex items-center justify-center gap-2"
+              className="w-full mt-2 py-3 rounded-xl font-bold text-xs sm:text-sm bg-shiraz text-white hover:bg-rose-700 disabled:opacity-40 transition-all shadow-md cursor-pointer flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 <>Übertrage...</>

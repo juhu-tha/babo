@@ -126,20 +126,20 @@ export default function TTestTab() {
           </div>
         </section>
 
-        <section className="bg-orange-800 text-white p-5 rounded-2xl shadow-md flex flex-col gap-3" aria-live="polite">
+        <section className="bg-off-white border border-home-grau/30 text-text-main p-5 rounded-2xl shadow-md flex flex-col gap-3" aria-live="polite">
           <h3 className="text-sm font-bold uppercase tracking-wider opacity-90"><MdText text={inhalt.texte.ergebnisTitel} /></h3>
           <dl className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
-            <dt className="text-white/80"><FormulaText text="$n_1,\ \bar{x}_1,\ s_1$" /></dt>
+            <dt className="text-slate-600"><FormulaText text="$n_1,\ \bar{x}_1,\ s_1$" /></dt>
             <dd className="font-semibold">{formatDeZahl(k1.n, 0)} · {formatDeZahl(k1.mittelwert, 2)} · {formatDeZahl(k1.stdAbw, 2)}</dd>
-            {k2 && <><dt className="text-white/80"><FormulaText text="$n_2,\ \bar{x}_2,\ s_2$" /></dt><dd className="font-semibold">{formatDeZahl(k2.n, 0)} · {formatDeZahl(k2.mittelwert, 2)} · {formatDeZahl(k2.stdAbw, 2)}</dd></>}
-            <dt className="text-white/80"><FormulaText text="Prüfgröße $t$" /></dt><dd className="text-xl font-bold">{formatDeZahl(r.t, 3)}</dd>
-            <dt className="text-white/80"><FormulaText text="Freiheitsgrade $\nu$" /></dt><dd className="font-semibold">{formatDeZahl(r.nu, 2)}</dd>
-            <dt className="text-white/80"><FormulaText text="kritischer Wert $t_{krit}$" /></dt><dd className="font-semibold">{formatDeZahl(r.tKrit, 3)}</dd>
-            <dt className="text-white/80"><FormulaText text="p-Wert" /></dt><dd className="text-xl font-bold">{r.gueltig ? (r.p < 0.0001 ? '< 0,0001' : formatDeZahl(r.p, 4)) : '–'}</dd>
-            <dt className="text-white/80">{modus === 'ein' ? <FormulaText text="Konfidenzintervall für $\mu$" /> : <FormulaText text="Konfidenzintervall für $\mu_1 - \mu_2$" />}</dt>
+            {k2 && <><dt className="text-slate-600"><FormulaText text="$n_2,\ \bar{x}_2,\ s_2$" /></dt><dd className="font-semibold">{formatDeZahl(k2.n, 0)} · {formatDeZahl(k2.mittelwert, 2)} · {formatDeZahl(k2.stdAbw, 2)}</dd></>}
+            <dt className="text-slate-600"><FormulaText text="Prüfgröße $t$" /></dt><dd className="text-xl font-bold">{formatDeZahl(r.t, 3)}</dd>
+            <dt className="text-slate-600"><FormulaText text="Freiheitsgrade $\nu$" /></dt><dd className="font-semibold">{formatDeZahl(r.nu, 2)}</dd>
+            <dt className="text-slate-600"><FormulaText text="kritischer Wert $t_{krit}$" /></dt><dd className="font-semibold">{formatDeZahl(r.tKrit, 3)}</dd>
+            <dt className="text-slate-600"><FormulaText text="p-Wert" /></dt><dd className="text-xl font-bold">{r.gueltig ? (r.p < 0.0001 ? '< 0,0001' : formatDeZahl(r.p, 4)) : '–'}</dd>
+            <dt className="text-slate-600">{modus === 'ein' ? <FormulaText text="Konfidenzintervall für $\mu$" /> : <FormulaText text="Konfidenzintervall für $\mu_1 - \mu_2$" />}</dt>
             <dd className="font-semibold">{Number.isFinite(r.kiUnten) ? formatDeZahl(r.kiUnten, 2) : '−∞'} … {Number.isFinite(r.kiOben) ? formatDeZahl(r.kiOben, 2) : '+∞'}</dd>
           </dl>
-          {r.gueltig && <p className="text-sm font-bold bg-white/10 p-3 rounded-lg border border-white/20">{r.verworfen ? inhalt.werte.verworfen : inhalt.werte.beibehalten}</p>}
+          {r.gueltig && <p className="text-sm font-bold bg-white p-3 rounded-lg border border-home-grau/30">{r.verworfen ? inhalt.werte.verworfen : inhalt.werte.beibehalten}</p>}
           <EingabeHinweise hinweise={r.hinweise} />
         </section>
       </div>

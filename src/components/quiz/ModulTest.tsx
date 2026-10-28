@@ -180,7 +180,7 @@ export function ModulTest({ moduleId, title, defaultOpen = false }: ModulTestPro
                   >
                     <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 border ${
                       isRevealed && isCorrectOption
-                        ? 'bg-emerald-700 text-white border-emerald-700'
+                        ? 'bg-slate-200 text-text-main border-text-main'
                         : isRevealed && isSelected
                         ? 'bg-shiraz text-white border-shiraz'
                         : 'bg-off-white text-text-main/70 border-home-grau/30'

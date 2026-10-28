@@ -921,7 +921,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
                 >
                   <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 border ${
                     isRevealed && isCorrectOption
-                      ? 'bg-emerald-700 text-white border-emerald-700'
+                      ? 'bg-slate-200 text-text-main border-text-main'
                       : isRevealed && isSelected && !isCorrectOption
                       ? 'bg-shiraz text-white border-shiraz'
                       : isSelected

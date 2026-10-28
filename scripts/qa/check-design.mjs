@@ -3,7 +3,8 @@
  * Designgrundsatz „keine schwarzen Boxen“ (28.10.2026): Im Hellmodus keine schwarzen/sehr dunklen
  * Hintergründe für Inhaltsboxen, Kopfboxen, Mess-/Ergebnisanzeigen, Code-/Prompt-Blöcke, Schaltflächen
  * und Badges. Erkannt werden Tailwind-Klassen ohne `dark:`-Variante (andere Varianten wie hover: zählen mit):
- *   bg-(slate|gray|zinc|neutral|stone)-(800|850|900|950), bg-black, bg-text-main,
+ *   bg-(slate|gray|zinc|neutral|stone)-(800|850|900|950), bg-black, bg-text-main – ebenso blue/emerald/green/teal/
+ *   cyan/sky/indigo/violet/purple/amber/yellow/orange-800…950, weil @theme in src/index.css diese Familien auf Slate abbildet –,
  *   from-/via-/to-…-(800|850|900|950) bzw. -black, bg-[#…] mit relativer Leuchtdichte < 0,04
  *   sowie Inline-Stile `style={{ background(Color): '#…' }}` in derselben Zeile.
  * Transparente Tönungen unter 50 % Deckkraft (bg-black/10, bg-slate-800/10 …) gelten nicht als dunkel.
@@ -94,12 +95,25 @@ export const AUSNAHMEN = {
   'src/modules/DppEpd.tsx|bg-slate-950/85': [2, 'Smartphone-Attrappe mit Kameraansicht (Gerätedarstellung)'],
   'src/modules/DppEpd.tsx|bg-slate-850': [2, 'Smartphone-Attrappe mit Kameraansicht (Gerätedarstellung)'],
   'src/modules/DppEpd.tsx|hover:bg-slate-800': [1, 'Smartphone-Attrappe mit Kameraansicht (Gerätedarstellung)'],
+  'src/modules/Bauwerksunters_Monitoring.tsx|bg-yellow-900/60': [1, 'Fäulniszone im Holzquerschnitt (Schemadarstellung)'],
+  'src/modules/Bauwerksunters_Monitoring.tsx|bg-amber-950/70': [1, 'Larvenfraß im Holzquerschnitt (Schemadarstellung)'],
+  'src/modules/Bodenmechanik.tsx|bg-amber-800': [1, 'Zustandsfarbe „fest“ der Konsistenzskala (Diagramm-Interna)'],
+  'src/modules/KeramikZiegel.tsx|bg-emerald-800': [1, 'Farbskala der Ziegelgruppen (Legende)'],
+  'src/modules/MaterialitaetArchitektur.tsx|bg-amber-800': [1, 'Materialmuster (Farbmuster Klinker)'],
+  'src/modules/MaterialitaetArchitektur.tsx|bg-amber-900': [1, 'Materialmuster (Farbmuster)'],
+  'src/modules/Metallkorrosion.tsx|to-amber-900': [1, W],
+  'src/modules/Metallkorrosion.tsx|bg-amber-800/95': [1, 'Beschriftung in der Rostschicht-Grafik (Diagramm-Interna)'],
+  'src/modules/Metallkorrosion.tsx|bg-amber-900/90': [1, 'Beschriftung in der Rostschicht-Grafik (Diagramm-Interna)'],
+  'src/modules/WUBauwerke.tsx|bg-amber-800': [1, 'Legendenpunkt (Bauweise)'],
+  'src/modules/Zementchemie.tsx|bg-sky-900': [1, 'Legendenfeld „Porenlösung“ der REM-Ansicht'],
+  'src/modules/DppEpd.tsx|bg-amber-950/95': [1, 'Smartphone-Attrappe mit Kameraansicht (Gerätedarstellung)'],
   // Dokumentation des Grundsatzes selbst (Klassennamen als Text, kein Hintergrund)
   'src/modules/Admin.tsx|bg-slate-900': [1, 'Klassenname im Redaktionshinweis (Text)'],
   'src/modules/Admin.tsx|bg-black': [1, 'Klassenname im Redaktionshinweis (Text)'],
 };
 
-const GRAU = '(?:slate|gray|zinc|neutral|stone)';
+// Grautöne sowie die Farbfamilien, die src/index.css (@theme) auf die Slate-Graustufen abbildet
+const GRAU = '(?:slate|gray|zinc|neutral|stone|blue|emerald|green|teal|cyan|sky|indigo|violet|purple|amber|yellow|orange)';
 const STUFE = '(?:800|850|900|950)';
 const RE = new RegExp(String.raw`(?<![\w:\-/\[])((?:[a-z0-9\-\[\]&>=*]+:)*)(bg-${GRAU}-${STUFE}(?:\/\d+)?|bg-black(?:\/\d+)?|bg-text-main(?:\/\d+)?|(?:from|via|to)-${GRAU}-${STUFE}(?:\/\d+)?|(?:from|via|to)-black(?:\/\d+)?|bg-\[#[0-9a-fA-F]{3,6}\])(?![\w\-/\]])`, 'g');
 

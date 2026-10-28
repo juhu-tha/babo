@@ -456,16 +456,16 @@ export function OerEncyclopedia() {
 
                 {/* INTERACTIVE COMPONENT 1: Steel Tensile Test Simulator */}
                 <div className="border border-indigo-200 rounded-2xl overflow-hidden shadow-xs bg-white">
-                  <div className="bg-indigo-900 p-4 text-white flex items-center justify-between">
+                  <div className="bg-shiraz/5 p-4 text-text-main flex items-center justify-between">
                     <div>
                       <h5 className="text-sm font-bold flex items-center gap-1.5">
-                        <FlaskConical className="text-indigo-300" size={15} /> 4.2 Interaktiver Virtueller Zugversuch (Steel Tensile Test)
+                        <FlaskConical className="text-shiraz" size={15} /> 4.2 Interaktiver Virtueller Zugversuch (Steel Tensile Test)
                       </h5>
-                      <span className="text-[9px] text-indigo-200">Simuliertes Baustahlelement (d₀ = 12 mm, l₀ = 100 mm)</span>
+                      <span className="text-[9px] text-slate-700">Simuliertes Baustahlelement (d₀ = 12 mm, l₀ = 100 mm)</span>
                     </div>
                     <button 
                       onClick={resetTensile}
-                      className="p-1 px-2.5 bg-indigo-800 hover:bg-indigo-800 text-[10px] rounded border border-indigo-700 font-semibold flex items-center gap-1 transition-all"
+                      className="p-1 px-2.5 bg-white hover:bg-slate-100 text-[10px] rounded border border-home-grau/30 font-semibold flex items-center gap-1 transition-all"
                     >
                       <RotateCcw size={11} /> Reset Test
                     </button>
@@ -557,16 +557,16 @@ export function OerEncyclopedia() {
 
                 {/* INTERACTIVE COMPONENT 2: Concrete Compression Test Simulator */}
                 <div className="border border-emerald-250 rounded-2xl overflow-hidden shadow-xs bg-white">
-                  <div className="bg-emerald-900 p-4 text-white flex items-center justify-between">
+                  <div className="bg-shiraz/5 p-4 text-text-main flex items-center justify-between">
                     <div>
                       <h5 className="text-sm font-bold flex items-center gap-1.5">
-                        <FlaskConical className="text-emerald-300" size={15} /> 4.3 Interaktiver Virtueller Druckversuch (Concrete Compression)
+                        <FlaskConical className="text-shiraz" size={15} /> 4.3 Interaktiver Virtueller Druckversuch (Concrete Compression)
                       </h5>
-                      <span className="text-[9px] text-emerald-200">Bruchversuch mineralischer Bauteile</span>
+                      <span className="text-[9px] text-slate-700">Bruchversuch mineralischer Bauteile</span>
                     </div>
                     <button 
                       onClick={resetCompression}
-                      className="p-1 px-2.5 bg-emerald-800 hover:bg-emerald-800 text-[10px] rounded border border-emerald-700 font-semibold flex items-center gap-1 transition-all"
+                      className="p-1 px-2.5 bg-white hover:bg-slate-100 text-[10px] rounded border border-home-grau/30 font-semibold flex items-center gap-1 transition-all"
                     >
                       <RotateCcw size={11} /> Reset Test
                     </button>

@@ -354,7 +354,7 @@ export function NormenLinkMonitor() {
               </p>
               <button
                 onClick={() => setReportSuccess(false)}
-                className="mt-2 px-4 py-2 bg-emerald-700 text-white rounded-xl text-xs font-bold hover:bg-emerald-800 cursor-pointer"
+                className="mt-2 px-4 py-2 bg-shiraz text-white rounded-xl text-xs font-bold hover:bg-shiraz/90 cursor-pointer"
               >
                 Weitere Meldung verfassen
               </button>
