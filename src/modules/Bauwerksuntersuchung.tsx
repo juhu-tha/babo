@@ -25,25 +25,30 @@ const REITER: readonly ModulTab<UntersuchungReiter>[] = [
   { id: 'zfp', label: inhalt.texte.dgzfpAusbildung, icon: Activity },
 ];
 
-export default function Bauwerksuntersuchung() {
-  const { activeTab, setActiveTab } = useTabContext();
-  const [subTab, setSubTab] = useState<UntersuchungReiter>(activeTab === 'zfp' ? 'zfp' : 'diagnose');
+// Aufteilung in drei Teilmodule (28.10.2026, src/registry/teilmodule.ts): Reiter → Route des Teilmoduls.
+// Die Routen übergeben ihre Reiter über `bereiche` (src/routing/ModulInhalt.tsx).
+export const UNTERSUCHUNG_TEIL: Readonly<Record<UntersuchungReiter, TabId>> = {
+  diagnose: 'bauwerksdiagnose', probenahme: 'bauwerksdiagnose', interpretation: 'bauwerksdiagnose',
+  katalog: 'pruefverfahren_katalog', zfp: 'zfp',
+};
+// Zielreiter beim Wechsel ins andere Teilmodul (z. B. „Alle Prüfverfahren im Detailkatalog“)
+let naechsterReiter: UntersuchungReiter | undefined;
+
+export default function Bauwerksuntersuchung({ bereiche }: { bereiche: readonly UntersuchungReiter[] }) {
+  const { setActiveTab } = useTabContext();
+  const reiter = REITER.filter(r => bereiche.includes(r.id));
+  const [subTab, setSubTab] = useState<UntersuchungReiter>(() => {
+    const start = naechsterReiter && bereiche.includes(naechsterReiter) ? naechsterReiter : bereiche[0];
+    naechsterReiter = undefined;
+    return start;
+  });
   const [activeStep, setActiveStep] = useState<number>(1);
 
-  // Sync state if activeTab changes externally
-  React.useEffect(() => {
-    if (activeTab === 'zfp') {
-      setSubTab('zfp');
-    } else if (activeTab === 'bauwerksuntersuchung') {
-      setSubTab('diagnose');
-    }
-  }, [activeTab]);
-
-  // Reiterwechsel; „zfp“ ist zugleich eigene Route (Direktlink), die übrigen Bereiche gehören zu „bauwerksuntersuchung“
-  const wechsleBereich = (id: UntersuchungReiter) => {
-    setSubTab(id);
-    if (id === 'zfp') { if (activeTab === 'bauwerksuntersuchung') setActiveTab('zfp'); }
-    else if (activeTab === 'zfp') setActiveTab('bauwerksuntersuchung');
+  // Reiter dieses Teilmoduls direkt zeigen, sonst das andere Teilmodul mit diesem Reiter öffnen
+  const zeigeBereich = (id: UntersuchungReiter) => {
+    if (bereiche.includes(id)) { setSubTab(id); return; }
+    naechsterReiter = id;
+    setActiveTab(UNTERSUCHUNG_TEIL[id]);
   };
 
   const stepsDetails = [
@@ -93,13 +98,12 @@ export default function Bauwerksuntersuchung() {
     }
   ];
 
-  return (
-    <div className="flex flex-col gap-6 animate-in fade-in duration-300">
-      
-      <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={REITER} aktiv={subTab} onWechsel={wechsleBereich} className="flex flex-col gap-6 [&>[role=tablist]]:border [&>[role=tablist]]:border-home-grau/30 [&>[role=tablist]]:bg-white [&>[role=tablist]]:p-1 [&>[role=tablist]]:rounded-2xl [&>[role=tablist]]:shadow-sm">
+  // Inhalt der Bereiche dieses Teilmoduls; die Reiterleiste erscheint nur in Teil 1 mit drei Bereichen,
+  // Teil 2 (Katalog) und Teil 3 (ZfP) bestehen aus je einem Bereich (keine Leiste mit nur einem Reiter).
+  const bereichsInhalt = (
       <div className="flex flex-col gap-6">
 
-      {subTab === 'diagnose' && (
+      {bereiche.includes('diagnose') && subTab === 'diagnose' && (
         <>
           {/* Haupt-Einführung */}
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">
@@ -203,11 +207,8 @@ export default function Bauwerksuntersuchung() {
                     <div className="mt-6 pt-4 border-t border-home-grau/30">
                       <button
                         onClick={() => {
-                          if (current.linkTab === 'katalog') {
-                            setSubTab('katalog');
-                          } else if (current.linkTab === 'zfp') {
-                            setSubTab('zfp');
-                            setActiveTab('zfp');
+                          if (current.linkTab === 'katalog' || current.linkTab === 'zfp') {
+                            zeigeBereich(current.linkTab);
                           } else {
                             setActiveTab(current.linkTab as TabId);
                           }
@@ -239,7 +240,7 @@ export default function Bauwerksuntersuchung() {
                 <span className="text-xs text-slate-500"><MdText text={inhalt.texte.zustandsbewertungNachDin1076} /></span>
               </button>
               <button
-                onClick={() => setSubTab('katalog')}
+                onClick={() => zeigeBereich('katalog')}
                 className="p-3 bg-white hover:bg-slate-100 border border-home-grau/30 hover:border-shiraz/40 rounded-xl text-left transition-all cursor-pointer flex flex-col gap-1"
               >
                 <span className="font-bold text-xs text-slate-800">Prüfkatalog</span>
@@ -265,31 +266,41 @@ export default function Bauwerksuntersuchung() {
       )}
 
       {/* SUBTAB: PROBENAHME & KONDITIONIERUNG (NEU NACH NUTZERANFORDERUNG) */}
-      {subTab === 'probenahme' && (
+      {bereiche.includes('probenahme') && subTab === 'probenahme' && (
         <ProbenahmePlaner />
       )}
 
       {/* SUBTAB: INTERPRETATION & ANWENDUNG DER ERGEBNISSE (NEU NACH NUTZERANFORDERUNG) */}
-      {subTab === 'interpretation' && (
+      {bereiche.includes('interpretation') && subTab === 'interpretation' && (
         <InterpretationNavigator />
       )}
 
       {/* SUBTAB: PRÜFVERFAHREN-KATALOG (DETAILGRAD BOHRWIDERSTAND) */}
-      {subTab === 'katalog' && (
+      {bereiche.includes('katalog') && subTab === 'katalog' && (
         <PruefverfahrenKatalog />
       )}
 
       {/* SUBTAB 3: DGZfP & ZfP-AUSBILDUNG */}
-      {subTab === 'zfp' && (
+      {bereiche.includes('zfp') && subTab === 'zfp' && (
         <React.Suspense fallback={<div className="flex justify-center items-center py-20"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-shiraz"></div></div>}>
           <ZfP />
         </React.Suspense>
       )}
       </div>
-      </ModuleTabs>
+  );
+
+  return (
+    <div className="flex flex-col gap-6 animate-in fade-in duration-300">
+      
+      {bereiche.includes('diagnose') ? (
+        <ModuleTabs label={inhalt.werte.reiterBereiche} tabs={reiter} aktiv={subTab} onWechsel={setSubTab} className="flex flex-col gap-6 [&>[role=tablist]]:border [&>[role=tablist]]:border-home-grau/30 [&>[role=tablist]]:bg-white [&>[role=tablist]]:p-1 [&>[role=tablist]]:rounded-2xl [&>[role=tablist]]:shadow-sm">
+        {bereichsInhalt}
+        </ModuleTabs>
+      ) : bereichsInhalt}
 
       {/* Standardisierter ModuleFooter für Bauwerksuntersuchung */}
-      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
+      {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) – gehören zu Teil 1 (Diagnose und Interpretation) */}
+      {bereiche.includes('diagnose') && (<>
       <FormulaDerivationBox
         title={inhalt.werte.beispiel1RestnutzungsdauerBis}
         zielGleichung="t_{krit} = \left(\frac{c_{0{,}05}}{k_{carb}}\right)^2"
@@ -304,9 +315,12 @@ export default function Bauwerksuntersuchung() {
         ergebnisHinweis={inhalt.werte.fürDieNachrechnungWird}
         normQuelle={inhalt.werte.dinEn137912020}
       />
+      </>)}
 
       {/* SELBSTTEST (Stufe 4 des Lehrpfads) */}
-      <ModulTest moduleId="bauwerksuntersuchung" />
+      {bereiche.includes('diagnose') && <ModulTest moduleId="bauwerksdiagnose" />}
+      {bereiche.includes('katalog') && <ModulTest moduleId="pruefverfahren_katalog" />}
+      {bereiche.includes('zfp') && <ModulTest moduleId="zfp" />}
 
       <ModuleFooter
         lastReviewed={inhalt.werte.oktober2026Ap8}
