@@ -25,15 +25,20 @@ export default function Verankerungslaenge() {
   const [alpha2, setAlpha2] = useState(1.0); // Betondeckung
   const [alpha3, setAlpha3] = useState(1.0); // Querbewehrung
   const [alpha5, setAlpha5] = useState(1.0); // Querdruck
-  const [alpha6, setAlpha6] = useState(1.5); // Stoßanteil (für Übergreifung)
+  const [stossanteil, setStossanteil] = useState<'bis33' | 'ueber33'>('ueber33'); // α₆ nach NA DE Tab. 8.3DE
+  const [stossAbstandGross, setStossAbstandGross] = useState(false); // lichter Stoßabstand ≥ 8Ø und Randabstand ≥ 4Ø
+  const [querstab, setQuerstab] = useState(false); // α₄ = 0,7
+  const [verfahren, setVerfahren] = useState<'en' | 'naVereinfacht'>('en');
+  const [lagerung, setLagerung] = useState<'direkt' | 'sonst'>('direkt');
   
   const [asErf, setAsErf] = useState(10); // cm²
   const [asVorh, setAsVorh] = useState(12); // cm²
 
   const results = useMemo(
-    () => bemesseVerankerung({ fck, fyk, phi, verbund: verbundBedingung, beanspruchung, art: berechnungsArt, form: verankerungsArt, alpha2, alpha3, alpha5, alpha6, asErf, asVorh }),
-    [fck, fyk, phi, verbundBedingung, beanspruchung, berechnungsArt, verankerungsArt, alpha2, alpha3, alpha5, alpha6, asErf, asVorh]
+    () => bemesseVerankerung({ fck, fyk, phi, verbund: verbundBedingung, beanspruchung, art: berechnungsArt, form: verankerungsArt, alpha2, alpha3, alpha5, stossanteil, stossAbstandGross, querstab, verfahren, lagerung, asErf, asVorh }),
+    [fck, fyk, phi, verbundBedingung, beanspruchung, berechnungsArt, verankerungsArt, alpha2, alpha3, alpha5, stossanteil, stossAbstandGross, querstab, verfahren, lagerung, asErf, asVorh]
   );
+  const naForm = berechnungsArt === 'verankerung' && verfahren === 'naVereinfacht';
 
   return (
     <div className="space-y-8">
@@ -146,7 +151,43 @@ export default function Verankerungslaenge() {
                 </select>
               </div>
 
-              {beanspruchung === 'zug' && (
+              {berechnungsArt === 'verankerung' && (
+                <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <label className="text-sm font-medium text-text-main mb-1 block"><MdText text={inhalt.texte.nachweisform} /></label>
+                    <select aria-label={inhalt.werte.nachweisform}
+                      className="w-full p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz"
+                      value={verfahren}
+                      onChange={(e) => setVerfahren(e.target.value as 'en' | 'naVereinfacht')}
+                    >
+                      <option value="en">{inhalt.werte.nachweisformEn}</option>
+                      <option value="naVereinfacht">{inhalt.werte.nachweisformNa}</option>
+                    </select>
+                  </div>
+                  {naForm && (
+                    <div>
+                      <label className="text-sm font-medium text-text-main mb-1 block"><MdText text={inhalt.texte.lagerung} /></label>
+                      <select aria-label={inhalt.werte.lagerung}
+                        className="w-full p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz"
+                        value={lagerung}
+                        onChange={(e) => setLagerung(e.target.value as 'direkt' | 'sonst')}
+                      >
+                        <option value="direkt">{inhalt.werte.lagerungDirekt}</option>
+                        <option value="sonst">{inhalt.werte.lagerungSonst}</option>
+                      </select>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {berechnungsArt === 'verankerung' && (
+                <label className="flex items-center gap-2 text-sm text-text-main mb-4">
+                  <input type="checkbox" checked={querstab} onChange={(e) => setQuerstab(e.target.checked)} />
+                  <span><MdText text={inhalt.texte.angeschweißteQuerstäbe} /></span>
+                </label>
+              )}
+
+              {beanspruchung === 'zug' && !naForm && (
                 <div className="grid grid-cols-3 gap-2 mb-4">
                   <div>
                     <label className="text-xs font-medium text-text-main mb-1 block"><MdText text={inhalt.texte.betondeckung} /><FormulaText text="\alpha_2" />)</label>
@@ -166,15 +207,19 @@ export default function Verankerungslaenge() {
               {berechnungsArt === 'uebergreifung' && (
                 <div className="mb-4">
                   <label className="text-sm font-medium text-text-main mb-1 block"><MdText text={inhalt.texte.stoßanteilAbstand} /><FormulaText text="\alpha_6" />)</label>
-                  <select aria-label={inhalt.werte.stoßanteilAbstand} 
+                  <select aria-label={inhalt.werte.stoßanteilAbstand}
                     className="w-full p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz"
-                    value={alpha6}
-                    onChange={(e) => setAlpha6(Number(e.target.value))}
+                    value={stossanteil}
+                    onChange={(e) => setStossanteil(e.target.value as 'bis33' | 'ueber33')}
                   >
-                    <option value={EC2_NA_DE.alpha6_33}>&lt; 33% gestoßen (α₆ = {formatDeZahl(EC2_NA_DE.alpha6_33, 2)})</option>
-                    <option value={1.41}>&lt; 50% gestoßen (α₆ = 1,41)</option>
-                    <option value={1.5}>&gt; 50% gestoßen (α₆ = 1,50)</option>
+                    <option value="bis33">{inhalt.werte.stossanteilBis33}</option>
+                    <option value="ueber33">{inhalt.werte.stossanteilUeber33}</option>
                   </select>
+                  <label className="flex items-center gap-2 text-sm text-text-main mt-2">
+                    <input type="checkbox" checked={stossAbstandGross} onChange={(e) => setStossAbstandGross(e.target.checked)} />
+                    <span><MdText text={inhalt.texte.stossAbstandGross} /></span>
+                  </label>
+                  <p className="text-xs text-text-main/70 mt-1"><MdText text={inhalt.texte.alpha6Tabelle} /></p>
                 </div>
               )}
 
@@ -276,17 +321,23 @@ export default function Verankerungslaenge() {
                 },
                 {
                   titel: 'Beiwerte',
-                  erklaerung: beanspruchung === 'zug'
-                    ? `Zug: α₁ = ${formatDeZahl(results.currentAlpha1, 1)}, das Produkt α₂ · α₃ · α₅ ist nach unten auf 0,7 begrenzt${berechnungsArt === 'uebergreifung' ? `; Stoßanteil α₆ = ${formatDeZahl(results.a6, 2)}` : ''}.`
-                    : `Druck: Alle Formbeiwerte sind 1,0${berechnungsArt === 'uebergreifung' ? `; Stoßanteil α₆ = ${formatDeZahl(results.a6, 2)}` : ''}.`,
-                  formel: beanspruchung === 'zug'
-                    ? `\\prod \\alpha_i = ${formatDeTeX(results.currentAlpha1, 1)} \\cdot \\max(0{,}7;\\; ${formatDeTeX(alpha2, 2)} \\cdot ${formatDeTeX(alpha3, 2)} \\cdot ${formatDeTeX(alpha5, 2)}) \\cdot ${formatDeTeX(results.a6, 2)} = ${formatDeTeX(results.totalAlpha, 3)}`
-                    : `\\prod \\alpha_i = 1{,}0 \\cdot ${formatDeTeX(results.a6, 2)} = ${formatDeTeX(results.totalAlpha, 3)}`,
+                  erklaerung: naForm
+                    ? `Vereinfachte NA-Form (vorläufig): α₁ = ${formatDeZahl(results.currentAlpha1, 1)}, α₄ = ${formatDeZahl(results.a4, 1)}, α₅ = ${lagerung === 'direkt' && beanspruchung === 'zug' ? '2/3 (direkte Lagerung)' : '1,0'}; α₂ und α₃ werden nicht angesetzt.`
+                    : beanspruchung === 'zug'
+                    ? `Zug: α₁ = ${formatDeZahl(results.currentAlpha1, 1)}, α₄ = ${formatDeZahl(results.a4, 1)}, das Produkt α₂ · α₃ · α₅ ist nach unten auf 0,7 begrenzt${berechnungsArt === 'uebergreifung' ? `; α₆ = ${formatDeZahl(results.a6, 2)} nach NA DE Tab. 8.3DE (vorläufig)` : ''}.`
+                    : `Druck: α₄ = ${formatDeZahl(results.a4, 1)}, alle übrigen Formbeiwerte sind 1,0${berechnungsArt === 'uebergreifung' ? `; α₆ = ${formatDeZahl(results.a6, 2)} (Druckstoß)` : ''}.`,
+                  formel: naForm
+                    ? `\\alpha_1 \\cdot \\alpha_4 \\cdot \\alpha_5 = ${formatDeTeX(results.currentAlpha1, 1)} \\cdot ${formatDeTeX(results.a4, 1)} \\cdot ${formatDeTeX(results.a5, 3)} = ${formatDeTeX(results.totalAlpha, 3)}`
+                    : beanspruchung === 'zug'
+                    ? `\\prod \\alpha_i = ${formatDeTeX(results.currentAlpha1, 1)} \\cdot ${formatDeTeX(results.a4, 1)} \\cdot \\max(0{,}7;\\; ${formatDeTeX(alpha2, 2)} \\cdot ${formatDeTeX(alpha3, 2)} \\cdot ${formatDeTeX(alpha5, 2)}) \\cdot ${formatDeTeX(results.a6, 2)} = ${formatDeTeX(results.totalAlpha, 3)}`
+                    : `\\prod \\alpha_i = ${formatDeTeX(results.a4, 1)} \\cdot ${formatDeTeX(results.a6, 2)} = ${formatDeTeX(results.totalAlpha, 3)}`,
                 },
                 {
                   titel: berechnungsArt === 'verankerung' ? 'Verankerungslänge' : 'Übergreifungslänge',
                   erklaerung: berechnungsArt === 'verankerung'
-                    ? `Mindestwert l_b,min = max(${beanspruchung === 'zug' ? '0,3' : '0,6'} · l_b,rqd; 10 Ø; 100 mm) = ${formatDeZahl(results.lbMin, 0)} mm.`
+                    ? (naForm
+                      ? `Mindestwert nach NA (vorläufig) l_b,min = max(${beanspruchung === 'zug' ? '0,3 · α₁ · α₄' : '0,6'} · l_b,rqd; ${beanspruchung === 'zug' && lagerung === 'direkt' ? '6,7' : '10'} Ø) = ${formatDeZahl(results.lbMin, 0)} mm.`
+                      : `Mindestwert l_b,min = max(${beanspruchung === 'zug' ? '0,3' : '0,6'} · l_b,rqd; 10 Ø; 100 mm) = ${formatDeZahl(results.lbMin, 0)} mm.`)
                     : `Mindestwert l_0,min = max(0,3 · α₆ · l_b,rqd; 15 Ø; 200 mm) = ${formatDeZahl(results.lbMin, 0)} mm.`,
                   formel: `${berechnungsArt === 'verankerung' ? 'l_{bd}' : 'l_0'} = \\max(${formatDeTeX(results.totalAlpha, 3)} \\cdot ${formatDeTeX(results.lbRqd, 0)} \\cdot \\tfrac{${formatDeTeX(asErf, 1)}}{${formatDeTeX(asVorh, 1)}};\\; ${formatDeTeX(results.lbMin, 0)}) = ${formatDeTeX(results.lbd, 0)}\\,\\text{mm}`,
                 },

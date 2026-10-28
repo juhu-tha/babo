@@ -23,13 +23,14 @@ const gilt = (ok: boolean, fall: string) => { if (!ok) fehler.push(fall); };
 console.log('--- Test: Modulprüfung Tranche 2 (Nachrechnungen) ---');
 
 // 1. Verankerung (EC2 8.4 + NA DE, f_ctk;0,05 aus Tab. 3.1): V1 C30/37 Ø16 gut, Zug, gerade, A_s,erf/A_s,vorh = 10/12
-const vB = { fck: 30, fyk: 500, phi: 16, verbund: 'gut', beanspruchung: 'zug', art: 'verankerung', form: 'gerade', alpha2: 1, alpha3: 1, alpha5: 1, alpha6: 1.5, asErf: 10, asVorh: 12 } as const;
+const vB = { fck: 30, fyk: 500, phi: 16, verbund: 'gut', beanspruchung: 'zug', art: 'verankerung', form: 'gerade', alpha2: 1, alpha3: 1, alpha5: 1, asErf: 10, asVorh: 12 } as const;
 const v1 = bemesseVerankerung(vB);
 pruefe('V1 f_bd', v1.fbd, 3.0); pruefe('V1 l_b,rqd', v1.lbRqd, 579.710); pruefe('V1 l_bd', v1.lbd, 483.092);
 // V2: C50/60 Ø28 mäßig, Haken, α₂·α₃ = 0,72 → l_bd = 0,7·0,72·999,5 = 503,7 mm
 pruefe('V2 l_bd', bemesseVerankerung({ ...vB, fck: 50, phi: 28, verbund: 'maessig', form: 'haken', alpha2: 0.9, alpha3: 0.8, asErf: 1, asVorh: 1 }).lbd, 503.748);
 // V3: Übergreifung C25/30 Ø12, α₆ = 1,5 → l₀ = 724,6 mm; V4: Druck Ø40 (η₂ = 0,92), Mindestlänge 0,6·l_b,rqd = 945,2 mm maßgebend
-pruefe('V3 l_0', bemesseVerankerung({ ...vB, fck: 25, phi: 12, art: 'uebergreifung', asErf: 1, asVorh: 1 }).lbd, 724.638);
+// V3 seit T2-S-1 (28.10.2026) mit α₆ nach NA DE Tab. 8.3DE (vorläufig): Ø 12, Stoßanteil > 33 % → α₆ = 1,4 (EC2-Empfehlung 1,5: 724,638)
+pruefe('V3 l_0', bemesseVerankerung({ ...vB, fck: 25, phi: 12, art: 'uebergreifung', asErf: 1, asVorh: 1 }).lbd, 676.329);
 pruefe('V4 l_b,min', bemesseVerankerung({ ...vB, phi: 40, beanspruchung: 'druck', asErf: 2, asVorh: 10 }).lbd, 945.180);
 // V5: C70/85 → f_ctd mit C60/75 begrenzt (f_ctk;0,05 = 3,1)
 pruefe('V5 f_bd', bemesseVerankerung({ ...vB, fck: 70, asErf: 1, asVorh: 1 }).fbd, 4.65);

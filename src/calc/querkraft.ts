@@ -139,7 +139,7 @@ export function bemesseQuerkraft(e: QuerkraftEingabe): QuerkraftErgebnis {
 
   // a_sw,erf (6.8)
   const asw_req = (vEd_MN / (z * fyd * cot_theta_eff)) * 10000;
-  // ρ_w,min = 0,16·f_ctm/f_yk (NA DE 9.2.2(5))
+  // ρ_w,min = 0,16·f_ctm/f_yk (NA DE 9.2.2(5), Gl. (9.5aDE))
   const fctm = fctmVonFck(e.fck);
   const asw_min = EC2_NA_DE.rhoWmin(fctm, isStahl ? e.fyk : e.ftk) * b_m * 10000;
 

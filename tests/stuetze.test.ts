@@ -1,5 +1,5 @@
 // Rechenkern Stützenbemessung (Umsetzungsplan Phase 4, AP 4.3)
-import { bemesseStuetze, interaktionskurve, muGrenze, type StuetzeEingabe } from '../src/calc/stuetze';
+import { bemesseStuetze, betonDruckPR, interaktionskurve, muGrenze, type StuetzeEingabe } from '../src/calc/stuetze';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -15,7 +15,8 @@ pruefe(nahe(k.nu_comp, -1 - 0.6 * 400 / fyd, 1e-12), `reiner Druck ${k.nu_comp}`
 
 // 2. Unabhängige Referenz: Dehnungsverträglichkeit mit Parabel-Rechteck-Diagramm (ε_c2 = 2 ‰, ε_cu2 = 3,5 ‰, n = 2),
 //    numerische Integration über die Querschnittshöhe, ε_ud = 25 ‰. Daraus µ_Rd(ν) für ω = 0,2/0,6/1,0 bei
-//    ν = −0,2/−0,5/−0,8. Ergebnis: Abweichung ≤ 4,5 % (größte bei ω = 0,2, ν = −0,8), Toleranz 5 %.
+//    ν = −0,2/−0,5/−0,8. Seit der Umstellung auf das Parabel-Rechteck-Diagramm (Entscheidung S-2, 28.10.2026) weicht der Kern
+//    höchstens 0,4 % ab (Sehnen-Interpolation, sichere Seite), Toleranz 1 %. Der Spannungsblock als Vergleich bleibt ≤ 5 %.
 function muPR(omega: number, nu: number, d1h = 0.1): number {
   const sc = (e: number) => (e >= 0 ? 0 : e >= -2 ? -(1 - (1 + e / 2) ** 2) : -1); // σ_c/f_cd, Stauchung negativ [‰]
   const ss = (e: number) => Math.max(-1, Math.min(1, (e / 1000) * 200000 / fyd));  // σ_s/f_yd
@@ -48,9 +49,17 @@ for (const omega of [0.2, 0.6, 1.0]) {
     const ist = muGrenze(kk, nu);
     pruefe(ref > 0, `Referenz ω=${omega}, ν=${nu}`);
     if (process.env.ZEIGE) console.log(omega, nu, ist.toFixed(4), ref.toFixed(4));
-    if (ref > 0) pruefe(nahe(ist, ref, 0.05), `ω=${omega}, ν=${nu}: Block ${ist.toFixed(3)} vs. Parabel-Rechteck ${ref.toFixed(3)}`);
+    if (ref > 0) pruefe(nahe(ist, ref, 0.01) && ist <= ref * 1.001, `ω=${omega}, ν=${nu}: Kern ${ist.toFixed(4)} vs. Referenz ${ref.toFixed(4)}`);
+    const block = muGrenze(interaktionskurve(omega, 0.3, 0.3, 0.03, fcd, fyd, 'block'), nu);
+    if (ref > 0) pruefe(nahe(block, ref, 0.05), `ω=${omega}, ν=${nu}: Block ${block.toFixed(3)} vs. Parabel-Rechteck ${ref.toFixed(3)}`);
   }
 }
+// Völligkeit und Schwerpunkt der Parabel-Rechteck-Druckzone bei ε_c = −3,5 ‰ (Lehrbuchwerte α_R = 0,810, k_a = 0,416)
+const pr = betonDruckPR(3.5, 1, 2);
+pruefe(nahe(pr.F, 17 / 21, 1e-12) && nahe(pr.a, 0.41597, 1e-4), `α_R ${pr.F}, k_a ${pr.a}`);
+// voll überdrückt (Drehpunkt 3/7·h), ξ = 100 wie der letzte Kurvenpunkt: nahezu gleichmäßig 2 ‰ → F ≈ h, a ≈ h/2
+const prVoll = betonDruckPR(200 / (100 - 3 / 7), 100, 1);
+pruefe(nahe(prVoll.F, 1, 1e-4) && nahe(prVoll.a, 0.5, 1e-4), `voll überdrückt ${prVoll.F}, ${prVoll.a}`);
 
 // 3. Handrechnung Bemessungsmoment: b = h = 30 cm, l0 = 3 m, N = 1000 kN, M = 50 kNm
 //    e_i = 3/400 = 7,5 mm → M_0 + N·e_i = 57,5 kNm; N·e_0 = 1000·0,02 = 20 kNm → M_Ed = 57,5 kNm
@@ -72,6 +81,12 @@ pruefe(nahe(rs.as_min, 3.45, 1e-3), `A_s,min ${rs.as_min}`);
 // zu große Last → nicht aufnehmbar, kein NaN
 const rz = bemesseStuetze({ ...basis, nEd: 20000 });
 pruefe(!rz.isPossible && rz.hinweise.some(x => x.stufe === 'fehler'), 'nicht aufnehmbar');
+
+// Handrechnung S-2 (eigenes Skript, Streifenintegration Parabel-Rechteck, Gleichgewicht per Bisektion):
+//    40/40/5 cm, l0 = 4 m, N = 3000 kN, M = 0 → ν = −1,103, µ = 0,0551 → ω_exakt = 0,254 → Stufe 0,26 (Block: 0,24)
+const rS2 = bemesseStuetze({ b: 40, h: 40, d1: 5, l0: 4, nEd: 3000, mEd: 0, fck: 30, fyk: 500 });
+pruefe(rS2.req_omega === 0.26 && rS2.req_omega_block === 0.24, `S2 ω ${rS2.req_omega} / Block ${rS2.req_omega_block}`);
+pruefe(rS2.as_tot_req > rS2.as_tot_req_block, 'Parabel-Rechteck liegt bei hoher Druckausnutzung über dem Block');
 
 // 4. Unsinnige Eingaben
 for (const u of [{ d1: 15 }, { b: 0 }, { l0: 0 }, { nEd: -100 }, { fck: 0 }, { mEd: NaN }] as Partial<StuetzeEingabe>[]) {
