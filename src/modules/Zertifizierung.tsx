@@ -1,6 +1,7 @@
 import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
-import { Award, CheckCircle2, Leaf, Building, Users, Zap, Settings, ShieldCheck, Calculator, Building2, Activity } from 'lucide-react';
+import { Award, CheckCircle2, Leaf, Building, Users, Zap, Settings, ShieldCheck, Calculator, Building2, Activity, Landmark } from 'lucide-react';
+import { KfnFoerderung } from './zertifizierung/KfnFoerderung';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Bar } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
@@ -172,7 +173,7 @@ const SYSTEMS = [
 ];
 
 export default function Zertifizierung() {
-  const [activeTab, setActiveTab] = useState<'systeme' | 'beispiele'>('systeme');
+  const [activeTab, setActiveTab] = useState<'systeme' | 'beispiele' | 'kfn'>('systeme');
   const [activeSystem, setActiveSystem] = useState(SYSTEMS[0].id);
   const [beispieleSubTab, setBeispieleSubTab] = useState<'dgnb' | 'bnb' | 'qng' | 'birn'>('dgnb');
 
@@ -189,7 +190,7 @@ export default function Zertifizierung() {
           <Award size={24} />
         </div>
         <h2 className="text-xl font-bold text-text-main flex items-center gap-2">
-          Gebäudezertifizierung
+          Zertifizierungen und Förderungen
         </h2>
         <div className="text-sm text-text-main/80 bg-off-white p-4 rounded-xl border border-home-grau/30">
           <p><MdText text={inhalt.texte.nachhaltigkeitszertifikateDgnbLeedBreeam} /></p>
@@ -216,7 +217,23 @@ export default function Zertifizierung() {
           onClick={() => setActiveTab('beispiele')}
         >
           <Activity size={16} /><MdText text={inhalt.texte.beispieleDgnbBnbQng} /></button>
+        <button {...alsReiter(activeTab === 'kfn', 'zert-bereich', 'kfn')}
+          className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 border shadow-sm cursor-pointer ${
+            activeTab === 'kfn'
+              ? 'bg-shiraz text-white border-shiraz shadow-md'
+              : 'bg-white text-text-main border-home-grau/30 hover:bg-off-white hover:text-text-main'
+          }`}
+          onClick={() => setActiveTab('kfn')}
+        >
+          <Landmark size={16} /> Förderung: Klimafreundlicher Neubau
+        </button>
       </ReiterLeiste>
+
+        {activeTab === 'kfn' && (
+          <div {...reiterPanel('zert-bereich', activeTab)} className="animate-in fade-in duration-300">
+            <KfnFoerderung />
+          </div>
+        )}
 
         {activeTab === 'systeme' && (
           <div {...reiterPanel('zert-bereich', activeTab)} className="flex flex-col gap-6 animate-in fade-in duration-300">

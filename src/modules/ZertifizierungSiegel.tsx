@@ -13,7 +13,7 @@ export default function ZertifizierungSiegel() {
   const [activeTab, setActiveTab ] = useState<'Zertifizierung' | 'Produktsiegel'>('Zertifizierung');
 
   const tabs = [
-    { id: 'Zertifizierung' as const, label: 'Gebäudezertifizierungen', icon: Award },
+    { id: 'Zertifizierung' as const, label: 'Zertifizierungen und Förderungen', icon: Award },
     { id: 'Produktsiegel' as const, label: inhalt.werte.produktsiegelZertifikate, icon: ShieldCheck }
   ];
 
