@@ -2,7 +2,7 @@
   "texte": {
     "tragfähigerBrandschutzDurchVerkohlung": " Tragfähiger Brandschutz durch Verkohlung des Holzes",
     "holzIstBrennbarBrennt": "Holz ist brennbar, brennt bei größeren Querschnitten aber mit annähernd konstanter Geschwindigkeit ab. Die entstehende Holzkohleschicht leitet Wärme schlecht und verzögert die Erwärmung des Restquerschnitts; unmittelbar hinter der Kohleschicht ist das Holz jedoch bereits erwärmt und geschwächt (berücksichtigt über d₀).",
-    "standardAbbrandratenNachDin": "Standard-Abbrandraten nach DIN EN 1995-1-2:",
+    "standardAbbrandratenNachDin": "Standard-Abbrandraten nach DIN EN 1995-1-2:2010-12, Tab. 3.1 (Neuausgabe 2026-10 noch nicht eingeführt):",
     "nadelholzVollholzBshBeta": "Nadelholz (Vollholz / BSH): $\\beta_0 = 0{,}65;\\; \\beta_n = 0{,}80 \\,/\\, 0{,}70 \\text{ mm/min}$",
     "laubholzRhoKGe": "Laubholz ($\\rho_k \\ge 450$): $\\beta_0 = 0{,}50;\\; \\beta_n = 0{,}55 \\text{ mm/min}$",
     "imRechnerWirdN": "Im Rechner wird β_n (inkl. Eckausrundung) verwendet; Brettsperrholz eindimensional mit β₀.",

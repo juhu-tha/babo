@@ -17,7 +17,7 @@
     "HolzbauBeta.shrinkageCoeffs": {
       "fichte": {
         "radial": 0.19,
-        "tangential": 0.33,
+        "tangential": 0.36,
         "longitudinal": 0.01,
         "label": "Fichte / Tanne (Nadelholz)"
       },
@@ -28,8 +28,8 @@
         "label": "Kiefer (Nadelholz)"
       },
       "laerche": {
-        "radial": 0.18,
-        "tangential": 0.38,
+        "radial": 0.14,
+        "tangential": 0.29,
         "longitudinal": 0.01,
         "label": "Lärche (Nadelholz)"
       },
@@ -40,8 +40,8 @@
         "label": "Buche (Laubholz)"
       },
       "eiche": {
-        "radial": 0.15,
-        "tangential": 0.28,
+        "radial": 0.18,
+        "tangential": 0.34,
         "longitudinal": 0.01,
         "label": "Eiche (Laubholz)"
       }
@@ -78,7 +78,7 @@
         "title": "DIN EN 1995-1-1:2010-12 + A2:2014-07 mit DIN EN 1995-1-1/NA:2013-08 (Eurocode 5, Teil 1-1; bauaufsichtlich eingeführt); Neue Ausgabe 2026-09 erschienen; bauaufsichtlich noch nicht eingeführt"
       },
       {
-        "title": "DIN EN 1995-1-2:2010-12 mit NA (Eurocode 5, Teil 1-2: Brandfall)"
+        "title": "DIN EN 1995-1-2:2010-12 mit NA (Eurocode 5, Teil 1-2: Brandfall; bauaufsichtlich eingeführt); Neue Ausgabe DIN EN 1995-1-2:2026-10 erschienen (2. Generation); bauaufsichtlich noch nicht eingeführt"
       },
       {
         "title": "DIN EN 338:2016-07 (Festigkeitsklassen Bauholz) und DIN EN 14080:2013-09 (Brettschichtholz)"

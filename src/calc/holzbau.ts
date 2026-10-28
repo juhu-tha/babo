@@ -441,3 +441,35 @@ export function holzschraube(e: HolzschraubeEingabe) {
     f_h_k, M_y_Rk, F_v_Rk_1, johansen, rope_effect, F_v_Rk_single_N, F_v_Rk_total_kN, F_v_Rd_total_kN, hinweise,
   };
 }
+
+/** Werkstoffgruppen des Abbrandrechners (Modul holzbau_bauphysik) */
+export type AbbrandArt = 'nadel' | 'bsh' | 'laub' | 'clt';
+/**
+ * Abbrandraten [mm/min]: β_n inkl. Eckausrundung für Nadel-Vollholz (0,80), Nadelholz-BSH (0,70) und Laubholz ρ_k ≥ 450 kg/m³ (0,55)
+ * nach DIN EN 1995-1-2:2010-12, Tab. 3.1; Brettsperrholz als Lehrannahme mit β₀ = 0,65 (eindimensional, ohne Lagenabfall).
+ */
+export const ABBRANDRATE: Readonly<Record<AbbrandArt, number>> = { nadel: 0.8, bsh: 0.7, laub: 0.55, clt: 0.65 };
+/** Schicht ohne Festigkeit d₀ [mm] (DIN EN 1995-1-2, 4.2.2) */
+export const D0_ABBRAND = 7;
+
+/**
+ * Methode mit reduziertem Querschnitt (DIN EN 1995-1-2, 4.2.2): d_ef = β·t + k₀·d₀ mit k₀ = min(1; t/20) (ungeschützte Flächen),
+ * Restquerschnitt bei 3-seitiger (Breite beidseitig, Höhe einseitig) bzw. 4-seitiger Brandbeanspruchung.
+ * Verhalten 1:1 aus src/modules/HolzbauBeta.tsx übernommen (Modulprüfung Tranche 10); Maße in mm, Zeit in min.
+ */
+export function abbrandQuerschnitt(art: AbbrandArt, t: number, b: number, h: number, seiten: 3 | 4) {
+  const beta_0 = ABBRANDRATE[art] ?? ABBRANDRATE.nadel;
+  const d_char0 = beta_0 * t;
+  const k_0 = Math.min(1, t / 20);
+  const d_ef = d_char0 + k_0 * D0_ABBRAND;
+  const b_fi = Math.max(0, b - 2 * d_ef);
+  const h_fi = Math.max(0, h - (seiten === 4 ? 2 : 1) * d_ef);
+  const A_0 = b * h;
+  const W_y0 = (b * h * h) / 6;
+  const A_fi = b_fi * h_fi;
+  const W_yfi = b_fi > 0 && h_fi > 0 ? (b_fi * h_fi * h_fi) / 6 : 0;
+  const areaLossPercent = A_0 > 0 ? ((A_0 - A_fi) / A_0) * 100 : 100;
+  /** Verlust an Widerstandsmoment W (nicht EI) */
+  const stiffnessLossPercent = W_y0 > 0 ? ((W_y0 - W_yfi) / W_y0) * 100 : 100;
+  return { beta_0, d_char0, k_0, d_ef, b_fi, h_fi, A_0, W_y0, A_fi, W_yfi, areaLossPercent, stiffnessLossPercent, isCollapsed: b_fi <= 0 || h_fi <= 0 };
+}

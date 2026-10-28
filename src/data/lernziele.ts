@@ -741,7 +741,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
     niveau: "B/M", minuten: 90, vorwissen: ["holzbau_bemessung"],
     ziele: [
       { stufe: "Verstehen", text: "die Versagensmechanismen einschnittiger Holz-Holz-Verbindungen nach Johansen erläutern." },
-      { stufe: "Anwenden", text: "die Tragfähigkeit von Stabdübel- und Bolzenverbindungen aus Lochleibungsfestigkeit und Fließmoment nach Eurocode 5 berechnen." },
+      { stufe: "Anwenden", text: "die Abschertragfähigkeit stiftförmiger Verbindungsmittel am Beispiel der Holzschraube aus Lochleibungsfestigkeit und Fließmoment nach Eurocode 5 berechnen." },
       { stufe: "Anwenden", text: "den Ausziehwiderstand von Vollgewindeschrauben berechnen und die Bedeutung der Mindestabstände für das Spaltversagen begründen." },
       { stufe: "Analysieren", text: "für einen Anschluss den maßgebenden Versagensmodus ermitteln und Verbindungsmittel vergleichen." },
     ],
