@@ -1,10 +1,10 @@
 # Prüfliste Quiz – Cluster V: Digitales & Infos
 
-Stand: 27.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
+Stand: 28.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster V umfasst 132 Fragen aus 22 Modulen. Aufgeführt sind 27 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster V umfasst 132 Fragen aus 22 Modulen. Aufgeführt sind 29 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 27 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 29 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -96,6 +96,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 27 korrigiert, 0 fraglich, 0
 - [x] ok
 - [ ] ändern: …
 
+### q_ki_ub_5 · KI: Überblick & Grundlagen
+
+- **Frage:** Risserkennung: TP = 45, FP = 5, FN = 15. Wie groß ist der F1-Wert?
+- **Richtige Antwort:** 0,82
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Runde 3): Rückmeldung zu 0,90 berichtigt (Genauigkeit/Accuracy ist ohne TN nicht bestimmbar; 0,90 ist die Precision) – korrigiert
+- [ ] ok
+- [ ] ändern: …
+
 ### q_ku_2 · Kuriositäten & Rekorde
 
 - **Frage:** Was erklärt nach neueren Studien die Dauerhaftigkeit römischen Hafenbetons?
@@ -182,6 +190,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 27 korrigiert, 0 fraglich, 0
 - **Richtige Antwort:** Vollständig laden (Budget 240 Seiten), wichtige Stellen aber gezielt zitieren lassen
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### qn_ki_system_1 · Systemarchitektur
+
+- **Frage:** Ein Frage-Embedding q = (1; 1; 0) wird mit drei Textabschnitten verglichen: A = (2; 0; 0), B = (1; 1; 1), C = (0; 3; 3). Welcher Abschnitt steht im Retrieval-Ranking nach Kosinus-Ähnlichkeit an erster Stelle?
+- **Richtige Antwort:** Abschnitt B mit cos θ ≈ 0,82
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Runde 3): Rückmeldung zum Distraktor „C mit cos θ ≈ 1,00“ berichtigt (fehlende Normierung ergäbe 3, nicht 1,00) – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### qn_px_bauleitung_1 · Bauleitung & Baustelle
