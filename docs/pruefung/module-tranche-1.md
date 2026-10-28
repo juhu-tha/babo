@@ -324,3 +324,9 @@ Die Beispiele (KS 17,5 cm: m′ = 380 kg/m², R_w = 57,5 dB; HLz 24 cm: 243 kg/m
 
 - Unabhängige Nachrechnung: eigenes Skript (Python) mit eigener Umsetzung der Normgleichungen, Vergleich gegen die Kernausgaben (159 Vergleiche). Die Sollwerte sind als `tests/modulpruefungTranche1.test.ts` übernommen (ohne Rückgriff auf vorhandene Testwerte).
 - Öffentliche Quellen dieser Prüfung: [Heidelberg Materials, Flyer „Beton bestellen nach Norm“](https://heidelbergmaterials.de/sites/default/files/2024-09/flyer_beton_bestellen_nach_norm.pdf) (XM-Höchstzementgehalt), [umwelt-online, DIN 1045-2 (archiviert)](https://umwelt-online.de/recht/bau/din/1045_2g.htm) (Zuschläge Größtkorn, Bezug unklar), [BauNetz Wissen: GModG](https://www.baunetzwissen.de/daemmstoffe/fachwissen/richtlinien-verordnungen/gebaeudemodernisierungsgesetz-gmodg-10411131).
+
+## Nachtrag 28.10.2026 (abends): Entscheidungen S-2, P-2, Q-1 umgesetzt
+
+- **S-2 (Stütze):** Interaktionskurven jetzt mit dem Parabel-Rechteck-Diagramm (n = 2, ε_c2 = 2 ‰, ε_cu2 = 3,5 ‰, analytisch integriert); der Spannungsblock wird nur noch zum Vergleich angezeigt. Nachrechnung mit eigenem Skript (Streifenintegration, Gleichgewicht per Bisektion): S1 ω_exakt = 0,0665 → ω_erf = 0,07 (vorher 0,05), S2 ω_exakt = 0,254 → 0,26 (vorher 0,24). Regressionstest angepasst.
+- **P-2 (Durchstanzen):** Stützenlage innen/Rand/Ecke als Eingabe, u₁ nach EC2 Bild 6.15 (Schnitt endet senkrecht am freien Rand, Randabstand einstellbar, maßgebend der kürzere Rundschnitt nach 6.4.2(4)), β konstant nach NA DE 6.4.3(6) (1,10/1,40/1,50). Fünf Handrechnungsfälle in `tests/durchstanzen.test.ts`.
+- **Q-1 (Querkraft):** Gleichungsnummer auf (9.5aDE) korrigiert (vorläufig, Nummer nicht öffentlich belegt; Wert unverändert).

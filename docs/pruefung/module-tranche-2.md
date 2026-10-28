@@ -427,3 +427,8 @@ Offen aus Tranche 1 und für den Prüfvermerk `stahlbeton_bemessung` weiter nöt
   - die im jeweiligen Modul genannten Quellen (fib Bulletin 34 in öffentlicher Wiedergabe, QNG-Anhänge, UBA TREMOD, ISO 5725-2 über Harvey/LibreTexts), stichprobenweise gegengerechnet.
 - **Barrierefreiheit:** a11y-reiter auf den geänderten Routen (`bp_holzprodukte`, `stahlbeton_bemessung`, `spannbeton`, `statistik`, `bodenmechanik`; hell, mobil, dunkel; 138 Reiter-Prüfungen): 0 Verstöße. Dabei behoben: ein bereits vorhandener Kontrastfehler im Dunkelmodus von `bp_holzprodukte` (NKL-Erläuterung `text-slate-900/80` → `text-text-main/80`).
 - **Nicht öffentlich belegbar (F-Freigabe):** NA DE Tab. 8.3DE und (8.6)/(8.7)/(8.10). Ein Bericht der BASt war durch Bot-Schutz gesperrt und wurde nicht umgangen.
+
+## Nachtrag 28.10.2026 (abends): Entscheidungen T2-S-1 und T2-S-2 umgesetzt
+
+- **T2-S-1:** α₆ nach NA DE Tab. 8.3DE (Zugstoß ≤ 33 %: 1,2/1,4 für Ø < 16/≥ 16 mm; > 33 %: 1,4/2,0; bei lichtem Stoßabstand ≥ 8Ø und Randabstand ≥ 4Ø 1,0 bzw. 1,4; Druckstoß 1,0), vorläufig, F-Freigabe. V3 (Ø 12, > 33 %): l₀ = 676,3 mm statt 724,6 mm.
+- **T2-S-2:** vereinfachte NA-Form l_bd = α₁·α₄·α₅·l_b,rqd·A_s,erf/A_s,vorh mit α₅ = 2/3 bei direkter Lagerung als wählbare Nachweisform; Mindestwerte max(0,3·α₁·α₄·l_b,rqd; 10Ø) bzw. 6,7Ø bei direkter Lagerung, Druck max(0,6·l_b,rqd; 10Ø), ohne 100 mm (vorläufig, F-Freigabe). α₄ (angeschweißte Querstäbe) ergänzt.
