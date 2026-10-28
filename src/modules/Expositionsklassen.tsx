@@ -49,6 +49,7 @@ export default function Expositionsklassen() {
   const [selectedClasses, setSelectedClasses] = useState<string[]>(['XC4', 'XF1']);
   const [selectedDmax, setSelectedDmax] = useState<32 | 16 | 8>(16);
   const [deltaCdev, setDeltaCdev] = useState<number>(15); // DIN EN 1992-1-1/NA: 15 mm, bei XC1 10 mm
+  const [xfOhneLp, setXfOhneLp] = useState<boolean>(false); // T3-EX-1: XF2/XF3 alternativ ohne LP (DIN 1045-2, Tab. F.2.1)
 
   // k-Wert-Rechner States
   const [zementGehalt, setZementGehalt] = useState<number>(310);
@@ -71,7 +72,7 @@ export default function Expositionsklassen() {
 
     // Rechenkern src/calc/expositionsklassen.ts: strengste Einzelwerte der gewählten Klassen (DIN 1045-2, Tab. F.2.1/F.2.2;
     // DIN EN 1992-1-1/NA, Tab. 4.4DE); die Texte der Sonderanforderungen bleiben in content/
-    const h = huellwerte(NORMATIVE_EXPOSURE_CLASSES, selectedClasses, selectedDmax, deltaCdev);
+    const h = huellwerte(NORMATIVE_EXPOSURE_CLASSES, selectedClasses, selectedDmax, deltaCdev, xfOhneLp);
     if (!h) return null;
     const { minWzEq, highestClass, maxCement, requiresLP, minAirVal, maxCoverDur, cNom } = h;
 
@@ -92,6 +93,9 @@ export default function Expositionsklassen() {
     if (selectedClasses.includes('XF4')) {
       specialReqs.push(inhalt.werte.xf4NurLuftporenbeton);
     }
+    if (xfOhneLp && (selectedClasses.includes('XF2') || selectedClasses.includes('XF3'))) {
+      specialReqs.push(selectedClasses.includes('XF4') ? inhalt.werte.xfOhneLpMitXf4 : inhalt.werte.xfOhneLpGewaehlt);
+    }
     if (selectedClasses.includes('XC1') && maxCoverDur <= 10) {
       specialReqs.push(inhalt.werte.nurXc1CDev);
     }
@@ -106,7 +110,7 @@ export default function Expositionsklassen() {
       cNom,
       specialReqs
     };
-  }, [selectedClasses, selectedDmax, deltaCdev]);
+  }, [selectedClasses, selectedDmax, deltaCdev, xfOhneLp]);
 
   // Berechnung k-Wert-Ansatz
   // Berechnung k-Wert-Ansatz (Rechenkern): Flugasche k_f = 0,40 mit f ≤ 0,33·z; Silikastaub k_s = 1,0 nach DIN 1045-2
@@ -486,6 +490,11 @@ export default function Expositionsklassen() {
                   ))}
                 </div>
               </div>
+
+              <label className="flex items-start gap-2 text-xs text-text-main cursor-pointer">
+                <input type="checkbox" checked={xfOhneLp} onChange={(e) => setXfOhneLp(e.target.checked)} className="mt-0.5 accent-shiraz" />
+                <span><MdText text={inhalt.texte.xfOhneLpSchalter} /></span>
+              </label>
             </div>
 
             {/* Ausgabe der Hüllwerte */}

@@ -79,7 +79,9 @@ for (const r of [
   const e = sonneneintrag(r);
   pruefe(!e.gueltig && e.hinweise.some(x => x.stufe === 'fehler') && Number.isNaN(e.Svorh), `Fehlerfall ${JSON.stringify(r).slice(0, 80)}`);
 }
-pruefe(sonneneintrag({ ...wohnzimmer, fenster: [fenster(2, 0.6, 'S', 'rollladen_zu')] }).hinweise.some(x => x.stufe === 'warnung'), 'Warnung geschlossener Sonnenschutz');
+pruefe(sonneneintrag({ ...wohnzimmer, fenster: [fenster(2, 0.6, 'S', 'rollladen_zu')] }).hinweise.some(x => x.stufe === 'warnung' && x.feld === 'fenster0'), 'Warnung geschlossener Sonnenschutz');
+// Runde 28.10.: Hinweis auf DIN 4108-2:2026-05 bei jedem gültigen Ergebnis, Rechenweg bleibt 2013-02
+pruefe(sonneneintrag(wohnzimmer).hinweise.some(x => x.feld === 'normstand' && x.text.includes('2026-05') && x.text.includes('2013-02')), 'Hinweis Normenstand 2026-05');
 
 // 7. Fuzz-Test: 1000 Zufallsräume → gültige Ergebnisse sind endlich, S_vorh ≥ 0
 let seed = 4108;

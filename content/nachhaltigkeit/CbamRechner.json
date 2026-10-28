@@ -1,0 +1,24 @@
+{
+  "texte": {
+    "titel": "CBAM-Rechner: Jahrespfad 2026–2034 mit Anpassung an die kostenlose Zuteilung",
+    "einleitung": "Bis 2034 erhalten EU-Hersteller noch einen Teil ihrer Emissionszertifikate kostenlos. Damit Importe nicht schlechter gestellt werden, kürzt Art. 31 VO (EU) 2023/956 die Zahl der abzugebenden CBAM-Zertifikate um die **Anpassung an die kostenlose Zuteilung**: je Tonne Ware CBAM-Faktor · CSCF · Benchmark (Durchführungs-VO (EU) 2025/2620). Der CBAM-Faktor ist der Anteil der noch kostenlosen Zuteilung nach Art. 10a Abs. 1a RL 2003/87/EG; er sinkt von 97,5 % (2026) auf 0 % (2034). Ab 2034 gilt der Endzustand ohne kostenlose Zuteilung.",
+    "jahrLabel": "Einfuhrjahr (CBAM-Faktor):",
+    "wareLabel": "Ware (Benchmark nach DVO (EU) 2025/2620, Anhang Nr. 5.3):",
+    "mengeLabel": "Eingeführte Menge M",
+    "emissionenLabel": "Eingebettete Emissionen e",
+    "preisLabel": "CBAM-Zertifikatspreis P_CBAM (an EU-ETS gekoppelt)",
+    "herkunftLabel": "Im Ursprungsland gezahlter CO₂-Preis P_H",
+    "ergebnisKosten": "CBAM-Kosten im gewählten Jahr",
+    "ergebnisZertifikate": "Abzugebende Zertifikate",
+    "ergebnisAnpassung": "Anpassung an die kostenlose Zuteilung je t",
+    "ergebnisAnteil": "Anteil am Endzustand (2034)",
+    "pfadTitel": "Jahrespfad bei sonst gleichen Eingaben",
+    "pfadSpalteJahr": "Jahr",
+    "pfadSpalteFaktor": "CBAM-Faktor",
+    "pfadSpalteKosten": "Kosten",
+    "pfadSpalteJeT": "je t Ware",
+    "formelTitel": "Rechenweg (Lehrmodell)",
+    "formelErklaerung": "CBAM_j: CBAM-Faktor des Jahres, CSCF: sektorübergreifender Korrekturfaktor (hier 1), BM: Benchmark. Die Anrechnung des Herkunftspreises nach Art. 9 ist vereinfacht auf die gesamten eingebetteten Emissionen bezogen (vorläufig, F-Freigabe). Lehr- und Vorbemessungswerkzeug, keine Rechtsberatung.",
+    "quellen": "Quellen: VO (EU) 2023/956 Art. 9, 21, 31; RL 2003/87/EG Art. 10a Abs. 1a; Durchführungs-VO (EU) 2025/2620 (Anpassung an die kostenlose Zuteilung, Benchmarks); VO (EU) 2025/2083 (Vereinfachung, Schwellenwert 50 t)."
+  }
+}

@@ -413,8 +413,10 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     ],
   },
   lca_regulatorik: {
-    kurz: "CRREM-Stranding-Jahr eines Büro- oder Wohngebäudes für vier Sanierungsstufen.",
+    kurz: "CRREM-Stranding-Jahr eines Büro- oder Wohngebäudes für vier Sanierungsstufen; CBAM-Kosten für Zementimporte im Jahrespfad 2026–2034.",
     grenzen: [
+      "CBAM: Anpassung an die kostenlose Zuteilung mit CBAM-Faktor nach Art. 10a Abs. 1a RL 2003/87/EG und Benchmark nach DVO (EU) 2025/2620; CSCF = 1, Herkunftspreis vereinfacht auf alle eingebetteten Emissionen angerechnet (vorläufig).",
+      "CBAM: ein Jahrespreis statt Quartals- bzw. Wochenpreisen; Standardwert-Aufschläge und Schwellenwert 50 t je Jahr nicht abgebildet; nur Zement und Klinker.",
       "Zielpfade als lineare Interpolation vereinfachter CRREM-Stützwerte, nicht die aktuellen länderspezifischen Pfade.",
       "Minderung je Sanierungsstufe pauschal (15, 35 oder 75 %), sofort wirksam und über die Zeit konstant.",
       "Kein Netzdekarbonisierungs-Effekt auf den Bestand.",
