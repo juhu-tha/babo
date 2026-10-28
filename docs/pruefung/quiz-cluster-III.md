@@ -1,10 +1,10 @@
 # Prüfliste Quiz – Cluster III: Entwurf & Bemessung
 
-Stand: 28.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
+Stand: 29.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster III umfasst 192 Fragen aus 33 Modulen. Aufgeführt sind 41 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster III umfasst 194 Fragen aus 33 Modulen. Aufgeführt sind 45 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 41 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 43 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 2 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -70,6 +70,22 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 41 korrigiert, 0 fraglich, 0
 - **Richtige Antwort:** Ausnahmsweise, unter Verantwortung des Herstellers und mit Lieferscheinvermerk
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### q_hyf_2 · Hydratation & Folgen
+
+- **Frage:** z = 280 kg/m³ LH-Zement mit Q = 250 kJ/kg, c·ρ = 2400 kJ/(m³·K). Wie groß ist ΔT_ad?
+- **Richtige Antwort:** rund 29 K
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: c·ρ 2500 → 2400 kJ/(m³·K) wie im Rechenkern (T3-HY-2, QZ-4); neu gerechnet: ΔT_ad = 70 000/2400 = 29,2 K (vorher 28 K), Distraktoren 15/58/70 K – korrigiert
+- [x] ok
+- [ ] ändern: …
+
+### q_hyf_4 · Hydratation & Folgen
+
+- **Frage:** z = 320 kg/m³, Q = 350 kJ/kg, c·ρ = 2400 kJ/(m³·K), Frischbetontemperatur 15 °C. Welche Kerntemperatur ist näherungsweise zu erwarten?
+- **Richtige Antwort:** etwa 62 °C
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: c·ρ 2500 → 2400 kJ/(m³·K) wie im Rechenkern (T3-HY-2, QZ-4); neu gerechnet: ΔT_ad = 112 000/2400 = 46,7 K, T_Kern ≈ 62 °C (vorher 60 °C), Distraktoren 47/31/75 °C – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### q_iax_1 · Innenausbau
@@ -336,17 +352,25 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 41 korrigiert, 0 fraglich, 0
 - [x] ok
 - [ ] ändern: …
 
+### qt_spannbeton_kennwerte_1 · Spannbeton
+
+- **Frage:** Litze Y1860, Relaxationsklasse 2 (ρ₁₀₀₀ = 2,5 %), σ_pi = 1302 N/mm² (μ = 0,70). Welchen Relaxationsverlust Δσ_pr liefert EC2 Gl. (3.29) für den Endwert t = 500 000 h?
+- **Richtige Antwort:** Δσ_pr ≈ 51 N/mm²
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_spannbeton_kennwerte_2 · Spannbeton
+
+- **Frage:** Welche Anforderungen an Zementeinpressmörtel für Spannglieder im Verbund nennt das Modul nach DIN EN 447?
+- **Richtige Antwort:** Wasserabsondern nach 3 h ≤ 0,3 %, Volumenänderung nach 24 h −1 % bis +5 %
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
 ## B. Stichprobe unauffälliger Fragen (5)
 
 Auswahl deterministisch (Sortierung nach FNV-1a-Hash der Frage-ID), damit die Stichprobe nachvollziehbar ist.
-
-### q_hyf_2 · Hydratation & Folgen
-
-- **Frage:** z = 280 kg/m³ LH-Zement mit Q = 250 kJ/kg, c·ρ = 2500 kJ/(m³·K). Wie groß ist ΔT_ad?
-- **Richtige Antwort:** rund 28 K
-- **Auffälligkeit:** keine – Vorprüfung „ok“
-- [x] ok
-- [ ] ändern: …
 
 ### qn_holzbau_bemessung_1 · Bemessung (EC5)
 
@@ -378,6 +402,14 @@ Auswahl deterministisch (Sortierung nach FNV-1a-Hash der Frage-ID), damit die St
 - **Richtige Antwort:** 17,0 N/mm²
 - **Auffälligkeit:** keine – Vorprüfung „ok“
 - [x] ok
+- [ ] ändern: …
+
+### q_stb_3 · Stahlbeton
+
+- **Frage:** Bei welchem bezogenen Moment μ_Eds wird für B500 und Beton bis C50/60 üblicherweise Druckbewehrung erforderlich?
+- **Richtige Antwort:** μ_Eds > 0,296
+- **Auffälligkeit:** keine – Vorprüfung „ok“
+- [ ] ok
 - [ ] ändern: …
 
 ## C. Lernziel-Stichprobe (5 Module)

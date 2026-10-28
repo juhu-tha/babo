@@ -1,6 +1,6 @@
 # Prüfliste Quiz – Cluster VI: Studium & Lehre
 
-Stand: 28.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
+Stand: 29.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
 Cluster VI umfasst 60 Fragen aus 10 Modulen. Aufgeführt sind 22 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
@@ -76,7 +76,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 22 korrigiert, 0 fraglich, 0
 
 - **Frage:** Eine 11,5 cm dicke KS-Innenwand (f_k = 5,6 N/mm², Decke voll aufliegend) mit lichter Höhe h = 3,60 m soll N_Ed = 120 kN/m tragen. Nach dem Modul ergeben sich h_ef = 0,75 · 3,60 m = 2,70 m, h_ef/t = 23,5, Φ = Φ2 ≈ 0,24 und η ≈ 1,35. Wie ist der Befund einzuordnen?
 - **Richtige Antwort:** Erweiterte Bedingungen erlauben h = 3,60 m, doch mit Φ ≈ 0,24 ist sie überlastet
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: erweiterte Bedingungen für h > 2,75 m (DIN EN 1996-3/NA:2019-12, Tab. NA.2; KS-Merkblatt 04/2020) eingearbeitet; Beispiel auf Innenwand 115 mm mit h = 3,60 m und N_Ed = 120 kN/m umgestellt, Werte mit src/calc/mauerwerk.ts gerechnet (tests/quizRechenfragen.test.ts) – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: erweiterte Bedingungen für h > 2,75 m (DIN EN 1996-3/NA:2019-12, Tab. NA.2; KS-Merkblatt 04/2020) eingearbeitet; Beispiel auf Innenwand 115 mm mit h = 3,60 m und N_Ed = 120 kN/m umgestellt, Werte mit src/calc/mauerwerk.ts gerechnet (tests/quizRechenfragen.test.ts) – korrigiert · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Klärung erforderlich: Nach DIN EN 1996-3/NA gilt das vereinfachte Verfahren für Innenwände mit 11,5 cm ≤ t < 24 cm nur bis zu einer lichten Geschosshöhe von 2,75 m; h_ef = 3,00 m bei t = 11,5 cm liegt außerhalb der Anwendungsgrenze (auch im Modul nicht geprüft). Wandhöhe auf 2,75 m ändern oder Anwendungsgrenze in Frage und Modul aufnehmen? Rechnung selbst nachgerechnet und richtig.
 
