@@ -70,7 +70,7 @@
     "b2NormalentflammbarE": "B2 (normalentflammbar) / E",
     "primärenergieNichtErneuerbarPenrt": "Primärenergie nicht erneuerbar (PENRT, Richtwert)",
     "t100MjKgNicht": "~100 MJ/kg (nicht erneuerbar)",
-    "t15MjKgBiogen": "~15 MJ/kg (biogen)",
+    "t15MjKgBiogen": "~15 MJ/kg (nicht erneuerbar; Rohstoff biogen, verfahrensabhängig)",
     "tragwerkNormalbetonVsBrettschichtholz": " Tragwerk: Normalbeton vs. Brettschichtholz (GL24h)",
     "normalbetonC2530": "Normalbeton (C25/30)",
     "brettschichtholzBsh": "Brettschichtholz (BSH)",
@@ -356,7 +356,7 @@
     ],
     "Nawaro.regelwerke": [
       {
-        "title": "DIN 4108-2 (Mindestanforderungen an den Wärmeschutz; Neuausgabe 2026-05, bisher 2013-02)"
+        "title": "DIN 4108-2:2026-05 (Wärmeschutz – Anforderungen, Berechnungsverfahren und Hinweise für Planung und Ausführung; bisher 2013-02 „Mindestanforderungen an den Wärmeschutz“)"
       },
       {
         "title": "DIN 4108-10:2021-11 (Wärmeschutz und Energie-Einsparung in Gebäuden - Anwendungsbezogene Anforderungen an Dämmstoffe)"

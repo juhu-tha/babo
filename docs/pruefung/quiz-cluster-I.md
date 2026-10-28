@@ -2,9 +2,9 @@
 
 Stand: 28.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 74 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 76 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 67 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 1 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -54,6 +54,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 67 korrigiert, 0 fraglich, 8
 - **Richtige Antwort:** Zementgel mit Gelporen plus Kapillarporen, deren Anteil von w/z-Wert und Hydratationsgrad abhängt
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### q_boden_1 · Bodenmechanik
+
+- **Frage:** Ein Ton hat w = 25 %, w_L = 45 % und w_P = 20 %. Welche Zustandsform liegt vor?
+- **Richtige Antwort:** halbfest (I_C = 0,80)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Abgleich 28.10.2026: Zustandsformen auf DIN EN ISO 14688-2 umgestellt (T2-B-1), I_C = 0,80 → halbfest – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### q_boden_2 · Bodenmechanik
@@ -275,8 +283,8 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 67 korrigiert, 0 fraglich, 8
 ### qn_bodenmechanik_1 · Bodenmechanik
 
 - **Frage:** Ein bindiger Boden hat w = 32 %, w_L = 48 % und w_P = 22 %. Welche Zustandsform liegt vor?
-- **Richtige Antwort:** I_C ≈ 0,62 – weich
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- **Richtige Antwort:** I_C ≈ 0,62 – steif
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt; Abgleich 28.10.2026: Zustandsformen auf DIN EN ISO 14688-2 umgestellt (T2-B-1), I_C = 0,62 → steif – korrigiert
 - [x] ok
 - [ ] ändern: …
 
@@ -590,6 +598,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 67 korrigiert, 0 fraglich, 8
 - **Richtige Antwort:** G ≈ 2,32 > 2,13; auffällig, vor dem Streichen technische Ursache prüfen
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt; Zweitprüfung 27.10.: G_krit nach ISO 5725-2 (2,13 statt 2,03) – korrigiert, Freigabe zurückgenommen · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### qz24_atterberg_3 · Bodenmechanik
+
+- **Frage:** Ein Ton hat w_L = 42 %, w_P = 22 % und den natürlichen Wassergehalt w = 30 %. Welche Zustandsform liegt vor?
+- **Richtige Antwort:** I_C = 0,60 – steif
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Abgleich 28.10.2026: Zustandsformen auf DIN EN ISO 14688-2 umgestellt (T2-B-1), I_C = 0,60 → steif – korrigiert · neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
 - [ ] ändern: …
 
 ### qz24_ttest_5 · Statistik

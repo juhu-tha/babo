@@ -43,7 +43,7 @@ export const UMSETZUNGSPLAN: readonly Phase[] = [
     { ap: '3.2', titel: 'Schema-Erweiterung (Bloom-Stufe, Niveau)', status: 'erledigt' },
     { ap: '3.3', titel: 'Qualität der Antwortoptionen', status: 'erledigt', hinweis: 'Distraktoren angeglichen, normRef ergänzt (#194: 27,3 % statt 37 %)' },
     { ap: '3.4', titel: 'Selbsttest-Abdeckung der Fachmodule', status: 'erledigt' },
-    { ap: '3.5', titel: 'Fachliche Freigabe der Quizfragen je Cluster', status: 'in_arbeit', hinweis: 'Sammelfreigabe 28.10.: 1234 von 1290 Fragen freigegeben (95,7 %); 56 Einzelfreigaben offen (Z19/Z23)' },
+    { ap: '3.5', titel: 'Fachliche Freigabe der Quizfragen je Cluster', status: 'in_arbeit', hinweis: 'Sammelfreigabe 28.10.: 1230 von 1290 Fragen freigegeben (95,3 %); 60 Einzelfreigaben offen (Z19/Z23)' },
     { ap: '3.6', titel: 'Lernziele je Fachmodul', status: 'erledigt', hinweis: 'fachliche Durchsicht Z26' },
     { ap: '3.7', titel: 'Erkundungsauftrag „Ausprobieren“ für Rechner', status: 'erledigt' },
     { ap: '3.8', titel: 'Zweistufige Reiter (höchstens 7 je Leiste)', status: 'erledigt' },

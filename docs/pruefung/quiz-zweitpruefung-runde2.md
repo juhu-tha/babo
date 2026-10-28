@@ -375,7 +375,7 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 | `q_bgl_1` | B | Ein Frischbeton hat ein Ausbreitmaß von 450 mm. Welche Konsistenzklasse und -be… | ok | - [ ] freigeben |
 | `q_frb_2` | B | Wandschalung, Beton F3, Steiggeschwindigkeit 1 m/h, K₁ = 1,0. Wie groß ist σ_hk… | ok | - [ ] freigeben |
 | `q_frb_1` | B | XF4-Beton, Größtkorn 16 mm: Ablesung 4,4 %, Gesteinskorrektur 0,3 %. Ist der Ei… | ok | - [ ] freigeben |
-| `qn_frischbeton_4` | B | XF4-Beton, D_max = 16 mm (Mindestluftgehalt 4,5 Vol.-%). Gemessen werden 9,0 Vo… | Klärung: Modul und Frage nennen Mindestwert + 4 Vol.-% (hier 8,5 %) als „Richtwert“. Ist das nach DIN EN 206 (Luftgehalt, Abschn. 5.4.3) eine verbindliche Obergrenze? Dann wären 9,0 % nicht konform, und Option 3 sowie der Modultext („Richtwert“ → „Höchstwert“) wären anzupassen. Öffentlich nicht eindeutig belegbar. | – |
+| `qn_frischbeton_4` | B | XF4-Beton, D_max = 16 mm (Mindestluftgehalt 4,5 Vol.-%). Gemessen werden 9,0 Vo… | korrigiert (Tranche 3, 28.10.): obere Grenze nach DIN EN 206, 5.4.3 (Mindestwert + 4 %), Einzelwert bis +1,0 % zulässig | – |
 | `qn_frischbeton_3` | B | Welche Größe des Bingham-Modells τ = τ₀ + μ_p·γ̇ bestimmt vor allem das Ausbrei… | ok | - [ ] freigeben |
 | `qn_frischbeton_2` | B | Wand 2,5 m hoch, Konsistenz F4, Steiggeschwindigkeit v = 1,5 m/h, K₁ = 1,0, γ_c… | ok | - [ ] freigeben |
 
