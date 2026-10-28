@@ -1178,3 +1178,28 @@ html:not(.dark) :is(.text-shiraz\/40, .text-shiraz\/50, .text-shiraz\/60, .text-
 
 /* Links im Fließtext erkennbar machen (WCAG 1.4.1, link-in-text-block) */
 #module-content :is(p, li, td, dd) a[href] { text-decoration: underline; text-underline-offset: 2px; }
+
+/* SVG-/Canvas-Bühnen (Schadensforensik, Korrosion, Kriechen/Schwinden, Schadreaktionen, Youden-Plot):
+   heller Grund im Hellmodus, dunkler Grund im Dunkelmodus. Grafiken nutzen fill/stroke="var(--bu-…)".
+   Kontrast: Text ≥ 4,5:1 auf grund/panel/beton/bauteil, Grafik ≥ 3:1 auf grund (geprüft 28.10.2026). */
+.svg-buehne {
+  --bu-grund: #f8fafc; --bu-rahmen: #cbd5e1; --bu-panel: #ffffff; --bu-panel-rand: #94a3b8;
+  --bu-beton-hell: #f1f5f9; --bu-beton: #e2e8f0; --bu-beton-tief: #cbd5e1; --bu-bauteil: #dbe3ec;
+  --bu-korn: #94a3b8; --bu-kontur: #475569; --bu-raster: #cbd5e1; --bu-linie: #64748b; --bu-stahl: #475569;
+  --bu-text: #0f172a; --bu-text2: #334155;
+  --bu-rot: #b91c1c; --bu-blau: #075985; --bu-violett: #7e22ce; --bu-gelb: #854d0e; --bu-amber: #92400e;
+  --bu-gruen: #065f46; --bu-pink: #be185d; --bu-hellblau: #1d4ed8;
+  --bu-ok: #15803d; --bu-warn: #b45309; --bu-fehler: #b91c1c; --bu-punkt: #64748b; --bu-gel-rand: #475569;
+  background-color: var(--bu-grund);
+  border-color: var(--bu-rahmen);
+}
+.dark .svg-buehne {
+  --bu-grund: #0f172a; --bu-rahmen: #334155; --bu-panel: #0f172a; --bu-panel-rand: #334155;
+  --bu-beton-hell: #475569; --bu-beton: #334155; --bu-beton-tief: #1e293b; --bu-bauteil: #1e293b;
+  --bu-korn: #475569; --bu-kontur: #0f172a; --bu-raster: #334155; --bu-linie: #94a3b8; --bu-stahl: #cbd5e1;
+  --bu-text: #f8fafc; --bu-text2: #cbd5e1;
+  --bu-rot: #fca5a5; --bu-blau: #38bdf8; --bu-violett: #d8b4fe; --bu-gelb: #fde047; --bu-amber: #fbbf24;
+  --bu-gruen: #34d399; --bu-pink: #f9a8d4; --bu-hellblau: #93c5fd;
+  --bu-ok: #22c55e; --bu-warn: #f59e0b; --bu-fehler: #f87171; --bu-punkt: #94a3b8; --bu-gel-rand: transparent;
+}
+.svg-buehne .bu-text2 { color: var(--bu-text2); }
