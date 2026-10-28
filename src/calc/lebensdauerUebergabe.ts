@@ -19,6 +19,8 @@ export const UEBERGABE_QUELLEN = {
   schnellkarbonatisierung: 'Schnellkarbonatisierung (DIN EN 12390-12)',
   korrosion: 'Bewehrungskorrosion',
   dauerhaftigkeit: 'Dauerhaftigkeit – Lebensdauersimulator',
+  // Prüfverfahren-Katalog seit der Aufteilung (28.10.2026) eigenes Teilmodul; „bauwerksuntersuchung“ bleibt für alte Links (?von=…)
+  pruefverfahren_katalog: 'Bauwerksdiagnose – Karbonatisierungsmessung',
   bauwerksuntersuchung: 'Bauwerksdiagnose – Karbonatisierungsmessung',
   bauwerksunters_monitoring: 'Bauwerksdiagnose – Karbonatisierungsmessung',
   expositionsklassen: 'Expositionsklassen',

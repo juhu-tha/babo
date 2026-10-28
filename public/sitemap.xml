@@ -664,7 +664,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://baustoffboard.de/modul/spannbeton</loc>
+    <loc>https://baustoffboard.de/modul/spannbeton_grundlagen</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baustoffboard.de/modul/spannbeton_kennwerte</loc>
     <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -952,7 +958,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://baustoffboard.de/modul/bauwerksuntersuchung</loc>
+    <loc>https://baustoffboard.de/modul/bauwerksdiagnose</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baustoffboard.de/modul/pruefverfahren_katalog</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baustoffboard.de/modul/zfp</loc>
     <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1749,12 +1767,6 @@
   </url>
   <url>
     <loc>https://baustoffboard.de/modul/verankerungslaenge</loc>
-    <lastmod>2026-10-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://baustoffboard.de/modul/zfp</loc>
     <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
