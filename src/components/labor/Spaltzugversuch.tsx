@@ -18,6 +18,9 @@ import '@/src/lib/chartSetup';
 import { validateMechanicalTestIntegrity, exportToCSV, LabProtocolRecord } from '@/src/utils/labExportUtils';
 import { saveStoredLabProtocol } from '@/src/utils/studyStorage';
 import { AuswahlGruppe, alsOption } from '../ui/Auswahlgruppe';
+import { Fz } from '../ui/Formelzeichen';
+import { hoechstwert, spaltkraft } from '@/src/calc/laborVersuch';
+import { useDiagrammFarben, linAchse, PfeilDefs } from './laborGrafik';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -171,6 +174,11 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
     return () => clearCurrentInterval();
   }, []);
 
+  // Ergebnis aus dem Höchstwert der aufgezeichneten Kurve (nach dem Spalten fällt die Kraft auf 0)
+  const spitze = useMemo(() => hoechstwert(testData), [testData]);
+  const fctsp = spitze.y;
+  const fMaxKN = spaltkraft(spitze.y, diameter, length);
+
   // Archive protocol
   const handleArchive = () => {
     if (testStatus !== 'finished') return;
@@ -178,7 +186,7 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
     const validation = validateMechanicalTestIntegrity(
       'beton',
       'zug',
-      currentStressMPa,
+      fctsp,
       gradeProps.E / 1000,
       0.15
     );
@@ -202,10 +210,10 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
         'Zylinderlänge': `${length} mm`
       },
       metrics: {
-        'Spaltzugfestigkeit fct,sp (MPa)': formatDeZahl(currentStressMPa, 2),
-        'Zentrische Zugfestigkeit fct ≈ 0,9·fct,sp (MPa)': formatDeZahl((currentStressMPa * 0.9), 2),
-        'Bruchlast Fmax (kN)': formatDeZahl(currentForceKN, 1),
-        'Verformung Δd (mm)': formatDeZahl(currentDeformationMm, 3),
+        'Spaltzugfestigkeit f_ct,sp (N/mm²)': formatDeZahl(fctsp, 2),
+        'Zentrische Zugfestigkeit f_ct ≈ 0,9·f_ct,sp (N/mm²)': formatDeZahl((fctsp * 0.9), 2),
+        'Bruchlast F_max (kN)': formatDeZahl(fMaxKN, 1),
+        'Weg bei F_max Δd (mm)': formatDeZahl(spitze.x, 3),
         'E-Modul (GPa)': formatDeZahl((gradeProps.E / 1000), 1)
       },
       status: validation.status,
@@ -227,29 +235,14 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
     }));
   }, [testData, chartMode, diameter, length]);
 
+  const farben = useDiagrammFarben();
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
     animation: { duration: 0 },
     scales: {
-      x: {
-        type: 'linear' as const,
-        title: { display: true, text: 'Zylinderstauchung / Weg Δd (mm)', font: { weight: 'bold' as const, size: 12 } },
-        min: 0,
-        max: maxDeformationMm * 1.15,
-        grid: { display: showGrid, color: 'rgba(0,0,0,0.06)' }
-      },
-      y: {
-        type: 'linear' as const,
-        title: {
-          display: true,
-          text: chartMode === 'stress' ? 'Spaltzugspannung σx (MPa = N/mm²)' : 'Prüfkraft F (kN)',
-          font: { weight: 'bold' as const, size: 12 }
-        },
-        min: 0,
-        max: chartMode === 'stress' ? gradeProps.fctsp * 1.25 : maxForceKN * 1.25,
-        grid: { display: showGrid, color: 'rgba(0,0,0,0.06)' }
-      }
+      x: linAchse(farben, 'Weg Δd in mm', maxDeformationMm * 1.05, showGrid),
+      y: linAchse(farben, chartMode === 'stress' ? 'σₓ in N/mm²' : 'F in kN', chartMode === 'stress' ? gradeProps.fctsp * 1.1 : maxForceKN * 1.1, showGrid),
     },
     plugins: {
       legend: { display: false },
@@ -257,12 +250,20 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
         callbacks: {
           title: (items: TooltipItem<'line'>[]) => `Weg Δd = ${formatDeZahl(Number(items[0].parsed.x), 3)} mm`,
           label: (ctx: TooltipItem<'line'>) => chartMode === 'stress'
-            ? `Spaltzugspannung: ${formatDeZahl(Number(ctx.parsed.y), 2)} MPa`
+            ? `Spaltzugspannung: ${formatDeZahl(Number(ctx.parsed.y), 2)} N/mm²`
             : `Prüfkraft F: ${formatDeZahl(Number(ctx.parsed.y), 1)} kN`
         }
       }
     }
   };
+
+  // Querschnitt im Maßstab 1 px = 1 mm (d = 150 mm → r = 75); Hartfaserstreifen b × 4 mm oben und unten
+  const rZyl = 75;
+  const cx = 120;
+  const cy = 135;
+  const gebrochen = crackOpeningMm > 0;
+  const rigLabel = `Querschnitt des Zylinders Ø ${formatDeWert(diameter)} mm zwischen oberer und unterer Druckplatte; Last über Hartfaserstreifen ${formatDeWert(stripWidth)} × 4 mm entlang der Lastebene. `
+    + (testStatus === 'idle' ? 'Versuch noch nicht gestartet.' : gebrochen ? `Spaltriss in der Lastebene; Höchstkraft ${formatDeZahl(fMaxKN, 1)} kN.` : `Aktuelle Kraft ${formatDeZahl(currentForceKN, 1)} kN, Querzugspannung σx wirkt rechtwinklig zur Lastebene.`);
 
   return (
     <div className="flex flex-col gap-6 animate-in fade-in duration-300">
@@ -396,81 +397,75 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
             {/* Split Visualizer & Diagram */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-5 my-4 flex-1">
               
-              {/* Graphic Rig View (Cross-section and 3D) */}
-              <div className="md:col-span-5 bg-gradient-to-b from-slate-100 to-slate-200 dark:from-slate-900 dark:to-slate-900 dark:bg-slate-900 p-4 rounded-xl border border-slate-300 dark:border-slate-800 flex flex-col items-center justify-between relative shadow-inner min-h-[340px]">
-                
-                {/* Upper Pressure Platen with Force Arrow */}
-                <div className="w-full flex flex-col items-center">
-                  <div className="flex items-center gap-1 text-[10px] font-mono font-bold text-red-700 dark:text-red-400 mb-1">
-                    <span>F = {formatDeZahl(currentForceKN, 1)} kN</span>
-                  </div>
-                  {/* Hydraulic Platen */}
-                  <div className="w-48 h-5 bg-gradient-to-r from-slate-700 to-slate-800 dark:from-slate-800 dark:to-slate-800 dark:bg-slate-800 rounded-t shadow-md border border-slate-600 dark:border-slate-700 flex items-center justify-center">
-                    <div className="w-12 h-1 bg-red-400 rounded-full animate-pulse"></div>
-                  </div>
-                  {/* Top Hardboard packing strip */}
-                  <div className="w-8 h-2 bg-amber-700 rounded-xs shadow-xs border border-amber-900"></div>
-                </div>
+              {/* Prüfeinrichtung im Querschnitt (DIN EN 12390-6) */}
+              <figure className="pruefgeraet md:col-span-5 p-3 rounded-xl border flex flex-col items-center justify-center gap-2 m-0">
+                <svg viewBox="0 0 240 290" className="w-full max-w-[320px] h-auto select-none" role="img" aria-label={rigLabel}>
+                  <title>{rigLabel}</title>
+                  <PfeilDefs praefix="spz" />
+                  <defs>
+                    <clipPath id="spz-zylinder"><circle cx={cx} cy={cy} r={rZyl} /></clipPath>
+                  </defs>
 
-                {/* Cylinder Cross Section SVG */}
-                <div className="relative my-auto flex items-center justify-center">
-                  <svg width="180" height="180" viewBox="0 0 180 180">
-                    <defs>
-                      <radialGradient id="concreteGrad" cx="50%" cy="50%" r="50%">
-                        <stop offset="0%" stopColor="#cbd5e1" />
-                        <stop offset="85%" stopColor="#94a3b8" />
-                        <stop offset="100%" stopColor="#64748b" />
-                      </radialGradient>
-                    </defs>
+                  {/* Kraft F mit Pfeil auf die obere Druckplatte */}
+                  <text x={cx - 8} y="16" textAnchor="end" fontSize="12" fontWeight="bold" fill="var(--pg-akzent)">F = {formatDeZahl(currentForceKN, 1)} kN</text>
+                  <line x1={cx} y1="4" x2={cx} y2="34" stroke="var(--pg-akzent)" strokeWidth="2.5" markerEnd="url(#spz-pfeil)" />
 
-                    {/* Cylinder Body */}
-                    <circle cx="90" cy="90" r="75" fill="url(#concreteGrad)" stroke="#475569" strokeWidth="2.5" />
+                  {/* obere Druckplatte */}
+                  <rect x="30" y="36" width="180" height="20" rx="2" fill="var(--pg-stahl)" stroke="var(--pg-kontur)" strokeWidth="1.5" />
+                  <text x="66" y="50" textAnchor="middle" fontSize="11" fill="var(--pg-text)">Druckplatte</text>
+                  {/* Hartfaserstreifen oben */}
+                  <rect x={cx - stripWidth / 2} y="56" width={stripWidth} height="4" fill="var(--pg-hartfaser)" stroke="var(--pg-hartfaser-rand)" strokeWidth="0.8" />
 
-                    {/* Aggregate Speckles */}
-                    <circle cx="60" cy="70" r="6" fill="#334155" opacity="0.6" />
-                    <circle cx="120" cy="80" r="8" fill="#1e293b" opacity="0.6" />
-                    <circle cx="85" cy="125" r="7" fill="#334155" opacity="0.5" />
-                    <circle cx="110" cy="130" r="5" fill="#475569" opacity="0.6" />
-                    <circle cx="70" cy="110" r="9" fill="#1e293b" opacity="0.5" />
-                    <circle cx="100" cy="55" r="7" fill="#334155" opacity="0.6" />
-
-                    {/* Transverse Tensile Stress Field Arrows (Horizontal) */}
-                    <g opacity={Math.min(1, progress / 60)}>
-                      {/* Center Arrows pointing outward */}
-                      <path d="M 85 90 L 55 90" stroke="#A3113E" strokeWidth="2" markerEnd="url(#arrow)" />
-                      <path d="M 95 90 L 125 90" stroke="#A3113E" strokeWidth="2" markerEnd="url(#arrow)" />
-                      <path d="M 85 65 L 60 65" stroke="#A3113E" strokeWidth="1.5" />
-                      <path d="M 95 65 L 120 65" stroke="#A3113E" strokeWidth="1.5" />
-                      <path d="M 85 115 L 60 115" stroke="#A3113E" strokeWidth="1.5" />
-                      <path d="M 95 115 L 120 115" stroke="#A3113E" strokeWidth="1.5" />
-                      <text x="90" y="80" textAnchor="middle" fill="#881235" fontSize="10" fontWeight="bold">σx &gt; 0 (Zug)</text>
-                    </g>
-
-                    {/* Vertical Diametral Split Crack */}
-                    {crackOpeningMm > 0 && (
-                      <g>
-                        <path
-                          d={`M 90 15 Q ${88 + Math.sin(progress) * 2} 90 90 165`}
-                          stroke="#0f172a"
-                          strokeWidth={2 + crackOpeningMm * 2.5}
-                          fill="none"
-                        />
-                        {/* Secondary micro-branching */}
-                        <path d="M 89 75 L 78 88" stroke="#1e293b" strokeWidth="1.5" fill="none" opacity="0.8" />
-                        <path d="M 91 105 L 102 118" stroke="#1e293b" strokeWidth="1.5" fill="none" opacity="0.8" />
-                      </g>
+                  {/* Zylinder (Beton mit Gesteinskörnung) */}
+                  <g clipPath="url(#spz-zylinder)">
+                    <circle cx={cx} cy={cy} r={rZyl} fill="var(--pg-beton)" />
+                    {[[88, 112, 7], [150, 104, 9], [112, 170, 8], [160, 158, 6], [80, 152, 10], [134, 86, 7], [98, 82, 5], [170, 128, 5], [72, 122, 6], [140, 190, 6]].map(([x, y, r], i) => (
+                      <circle key={i} cx={x} cy={y} r={r} fill="var(--pg-beton2)" stroke="var(--pg-korn)" strokeWidth="0.6" />
+                    ))}
+                    {/* Spaltriss in der Lastebene */}
+                    {gebrochen && (
+                      <path d={`M ${cx} ${cy - rZyl} L ${cx - 2} ${cy - 50} L ${cx + 2} ${cy - 25} L ${cx - 1.5} ${cy} L ${cx + 2} ${cy + 25} L ${cx - 2} ${cy + 50} L ${cx} ${cy + rZyl}`}
+                        stroke="var(--pg-riss)" strokeWidth={1.5 + crackOpeningMm * 1.6} strokeLinejoin="round" fill="none" />
                     )}
-                  </svg>
-                </div>
+                  </g>
+                  <circle cx={cx} cy={cy} r={rZyl} fill="none" stroke="var(--pg-kontur)" strokeWidth="2" />
 
-                {/* Lower Hardboard Strip and Bed Platen */}
-                <div className="w-full flex flex-col items-center">
-                  <div className="w-8 h-2 bg-amber-700 rounded-xs shadow-xs border border-amber-900"></div>
-                  <div className="w-48 h-6 bg-gradient-to-r from-slate-800 to-slate-900 dark:from-slate-800 dark:to-slate-800 dark:bg-slate-800 rounded-b shadow-lg border border-slate-600 dark:border-slate-700 flex items-center justify-center">
-                    <span className="text-[9px] font-mono text-slate-300">Stahl-Druckplatte (DIN EN 12390-4)</span>
-                  </div>
-                </div>
-              </div>
+                  {/* Lastebene (gestrichelt) */}
+                  {!gebrochen && (
+                    <line x1={cx} y1={cy - rZyl} x2={cx} y2={cy + rZyl} stroke="var(--pg-akzent)" strokeWidth="1" strokeDasharray="4 3" />
+                  )}
+
+                  {/* Querzugspannung σx rechtwinklig zur Lastebene */}
+                  <g opacity={testStatus === 'idle' ? 0.4 : Math.max(0.4, Math.min(1, progress / 60))}>
+                    <line x1={cx + 6} y1={cy} x2={cx + 40} y2={cy} stroke="var(--pg-akzent)" strokeWidth="2" markerEnd="url(#spz-pfeil)" />
+                    <line x1={cx - 6} y1={cy} x2={cx - 40} y2={cy} stroke="var(--pg-akzent)" strokeWidth="2" markerEnd="url(#spz-pfeil)" />
+                    <line x1={cx + 6} y1={cy - 34} x2={cx + 30} y2={cy - 34} stroke="var(--pg-akzent)" strokeWidth="1.5" markerEnd="url(#spz-pfeil)" />
+                    <line x1={cx - 6} y1={cy - 34} x2={cx - 30} y2={cy - 34} stroke="var(--pg-akzent)" strokeWidth="1.5" markerEnd="url(#spz-pfeil)" />
+                    <line x1={cx + 6} y1={cy + 34} x2={cx + 30} y2={cy + 34} stroke="var(--pg-akzent)" strokeWidth="1.5" markerEnd="url(#spz-pfeil)" />
+                    <line x1={cx - 6} y1={cy + 34} x2={cx - 30} y2={cy + 34} stroke="var(--pg-akzent)" strokeWidth="1.5" markerEnd="url(#spz-pfeil)" />
+                  </g>
+                  <rect x={cx + 9} y={cy - 24} width="56" height="17" rx="3" fill="var(--pg-anzeige)" stroke="var(--pg-akzent)" strokeWidth="0.6" />
+                  <text x={cx + 13} y={cy - 12} fontSize="11" fontWeight="bold" fill="var(--pg-akzent)">σ<tspan fontSize="9" dy="3">x</tspan><tspan dy="-3"> (Zug)</tspan></text>
+
+                  {/* Hartfaserstreifen unten und untere Druckplatte */}
+                  <rect x={cx - stripWidth / 2} y={cy + rZyl} width={stripWidth} height="4" fill="var(--pg-hartfaser)" stroke="var(--pg-hartfaser-rand)" strokeWidth="0.8" />
+                  <rect x="30" y={cy + rZyl + 4} width="180" height="20" rx="2" fill="var(--pg-stahl)" stroke="var(--pg-kontur)" strokeWidth="1.5" />
+                  <text x="66" y={cy + rZyl + 18} textAnchor="middle" fontSize="11" fill="var(--pg-text)">Druckplatte</text>
+
+                  {/* Legende */}
+                  <rect x="22" y="250" width="15" height="5" fill="var(--pg-hartfaser)" stroke="var(--pg-hartfaser-rand)" strokeWidth="0.8" />
+                  <text x="44" y="256" fontSize="11" fill="var(--pg-text)">Hartfaserstreifen {formatDeWert(stripWidth)} × 4 mm</text>
+                  {gebrochen ? (
+                    <line x1="22" y1="274" x2="37" y2="274" stroke="var(--pg-riss)" strokeWidth="3" />
+                  ) : (
+                    <line x1="22" y1="274" x2="37" y2="274" stroke="var(--pg-akzent)" strokeWidth="1" strokeDasharray="4 3" />
+                  )}
+                  <text x="44" y="278" fontSize="11" fill="var(--pg-text)">{gebrochen ? 'Spaltriss in der Lastebene' : 'Lastebene (Linienlast)'}</text>
+                </svg>
+                <figcaption className="text-[11px] text-center leading-snug" style={{ color: 'var(--pg-text2)' }}>
+                  Querschnitt, Maßstab in mm · Druckplatten nach DIN EN 12390-4
+                </figcaption>
+              </figure>
 
               {/* Stress Chart & Numerical Display (7 cols) */}
               <div className="md:col-span-7 flex flex-col justify-between">
@@ -478,21 +473,21 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
                 {/* Real-time Display Cards */}
                 <div className="grid grid-cols-3 gap-2.5 mb-2.5">
                   <div className="bg-off-white text-text-main p-3 rounded-xl border border-home-grau/30 shadow-inner">
-                    <span className="text-[10px] font-mono text-slate-600 font-bold uppercase tracking-wider block">Spaltkraft F</span>
+                    <span className="text-[11px] font-mono text-slate-600 font-bold uppercase tracking-wider block">Spaltkraft <Fz>F</Fz></span>
                     <span className="text-lg font-mono font-bold text-amber-700">
                       {formatDeZahl(currentForceKN, 1)} <span className="text-xs text-slate-700 font-normal">kN</span>
                     </span>
                   </div>
 
                   <div className="bg-off-white text-text-main p-3 rounded-xl border border-home-grau/30 shadow-inner">
-                    <span className="text-[10px] font-mono text-slate-600 font-bold uppercase tracking-wider block">Spaltzugspannung σx</span>
+                    <span className="text-[11px] font-mono text-slate-600 font-bold uppercase tracking-wider block">Spaltzug&shy;spannung <Fz idx="x">σ</Fz></span>
                     <span className="text-lg font-mono font-bold text-emerald-700">
-                      {formatDeZahl(currentStressMPa, 2)} <span className="text-xs text-slate-700 font-normal">MPa</span>
+                      {formatDeZahl(currentStressMPa, 2)} <span className="text-xs text-slate-700 font-normal">N/mm²</span>
                     </span>
                   </div>
 
                   <div className="bg-off-white text-text-main p-3 rounded-xl border border-home-grau/30 shadow-inner">
-                    <span className="text-[10px] font-mono text-slate-600 font-bold uppercase tracking-wider block">Stauchung Δd</span>
+                    <span className="text-[11px] font-mono text-slate-600 font-bold uppercase tracking-wider block">Weg <Fz>Δd</Fz></span>
                     <span className="text-lg font-mono font-bold text-cyan-700">
                       {formatDeZahl(currentDeformationMm, 3)} <span className="text-xs text-slate-700 font-normal">mm</span>
                     </span>
@@ -511,7 +506,7 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
                           : 'bg-white text-text-main/80 border border-home-grau/30 hover:bg-slate-100'
                       }`}
                     >
-                      Spaltspannung (σx – Δd)
+                      Spaltspannung (σₓ – Δd)
                     </button>
                     <button {...alsOption(chartMode === 'force')}
                       onClick={() => setChartMode('force')}
@@ -575,20 +570,20 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
               <div className="mt-2 p-4 bg-off-white rounded-xl border border-home-grau/30 flex flex-col gap-3 animate-in fade-in slide-in-from-bottom-2">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
                   <div>
-                    <span className="text-text-main/60 uppercase text-[10px] font-bold block">Spaltzugfestigkeit fct,sp</span>
-                    <strong className="text-base text-shiraz font-mono">{formatDeZahl(currentStressMPa, 2)} MPa</strong>
+                    <span className="text-text-main/60 uppercase text-[11px] font-bold block">Spaltzugfestigkeit <Fz idx="ct,sp">f</Fz></span>
+                    <strong className="text-base text-shiraz font-mono">{formatDeZahl(fctsp, 2)} N/mm²</strong>
                   </div>
                   <div>
-                    <span className="text-text-main/60 uppercase text-[10px] font-bold block">Zentrische Zugfestigkeit fct (≈ 0,9·fct,sp)</span>
-                    <strong className="text-base text-emerald-700 font-mono">{formatDeZahl((currentStressMPa * 0.9), 2)} MPa</strong>
+                    <span className="text-text-main/60 uppercase text-[11px] font-bold block">Zentrische Zugfestigkeit <Fz><>f<sub>ct</sub> ≈ 0,9 · f<sub>ct,sp</sub></></Fz></span>
+                    <strong className="text-base text-emerald-700 font-mono">{formatDeZahl((fctsp * 0.9), 2)} N/mm²</strong>
                   </div>
                   <div>
-                    <span className="text-text-main/60 uppercase text-[10px] font-bold block">Bruchlast Fmax</span>
-                    <strong className="text-base text-text-main font-mono">{formatDeZahl(currentForceKN, 1)} kN</strong>
+                    <span className="text-text-main/60 uppercase text-[11px] font-bold block">Bruchlast <Fz idx="max">F</Fz></span>
+                    <strong className="text-base text-text-main font-mono">{formatDeZahl(fMaxKN, 1)} kN</strong>
                   </div>
                   <div>
-                    <span className="text-text-main/60 uppercase text-[10px] font-bold block">Verhältnis fct,sp / fck</span>
-                    <strong className="text-base text-text-main font-mono">{formatDeZahl(((currentStressMPa / gradeProps.fck) * 100), 1)} %</strong>
+                    <span className="text-text-main/60 uppercase text-[11px] font-bold block">Verhältnis <Fz><>f<sub>ct,sp</sub> / f<sub>ck</sub></></Fz></span>
+                    <strong className="text-base text-text-main font-mono">{formatDeZahl(((fctsp / gradeProps.fck) * 100), 1)} %</strong>
                   </div>
                 </div>
 
@@ -621,8 +616,8 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
 
                     <button
                       onClick={() => {
-                        const rows = testData.map(d => [d.x.toFixed(2), d.y.toFixed(3)]);
-                        exportToCSV(`Spaltzug_${grade}`, ['Fortschritt_Prozent', 'Spaltspannung_MPa'], rows);
+                        const rows = testData.map(d => [d.x.toFixed(4), d.y.toFixed(3), spaltkraft(d.y, diameter, length).toFixed(2)]);
+                        exportToCSV(`Spaltzug_${grade}`, ['Weg_mm', 'Spaltzugspannung_N_mm2', 'Kraft_kN'], rows);
                       }}
                       className="px-3 py-1.5 bg-white hover:bg-slate-100 text-text-main text-xs font-bold rounded-xl border border-home-grau/30 shadow-xs transition-all flex items-center gap-1.5 cursor-pointer"
                     >

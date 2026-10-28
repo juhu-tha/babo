@@ -1203,3 +1203,29 @@ html:not(.dark) :is(.text-shiraz\/40, .text-shiraz\/50, .text-shiraz\/60, .text-
   --bu-ok: #22c55e; --bu-warn: #f59e0b; --bu-fehler: #f87171; --bu-punkt: #94a3b8; --bu-gel-rand: transparent;
 }
 .svg-buehne .bu-text2 { color: var(--bu-text2); }
+
+/* Prüfgeräte der virtuellen Versuche (src/components/labor/*, Bitumen): Maschinenrahmen, Druckplatten, Traversen.
+   Hellmodus: hellgrauer Stahl mit dunkler Kontur und dunklem Text; Dunkelmodus: dunkler Stahl mit heller Kontur.
+   Bitumen bleibt in beiden Modi schwarz (Materialfarbe), erhält aber eine Kontur. Text ≥ 4,5:1 auf grund/stahl. */
+.pruefgeraet {
+  --pg-grund: #f8fafc; --pg-rahmen: #cbd5e1;
+  --pg-stahl: #e2e8f0; --pg-stahl2: #cbd5e1; --pg-stahl3: #94a3b8; --pg-glanz: #ffffff;
+  --pg-kontur: #334155; --pg-text: #0f172a; --pg-text2: #475569;
+  --pg-beton: #cbd5e1; --pg-beton2: #94a3b8; --pg-korn: #64748b; --pg-riss: #0f172a;
+  --pg-hartfaser: #b98b54; --pg-hartfaser-rand: #78350f; --pg-holz: #d6b98c; --pg-holz-faser: #92643a;
+  --pg-akzent: #a3113e; --pg-akzent-hell: rgba(163, 17, 62, 0.12); --pg-mass: #a3113e;
+  --pg-bitumen: #18181b; --pg-bitumen-rand: #52525b; --pg-wasser: #e0f2fe; --pg-wasser-rand: #0369a1;
+  --pg-ok: #15803d; --pg-anzeige: #ffffff; --pg-anzeige-rand: #94a3b8;
+  background-color: var(--pg-grund);
+  border-color: var(--pg-rahmen);
+}
+.dark .pruefgeraet {
+  --pg-grund: #0f172a; --pg-rahmen: #334155;
+  --pg-stahl: #334155; --pg-stahl2: #475569; --pg-stahl3: #64748b; --pg-glanz: #64748b;
+  --pg-kontur: #cbd5e1; --pg-text: #f1f5f9; --pg-text2: #cbd5e1;
+  --pg-beton: #64748b; --pg-beton2: #475569; --pg-korn: #334155; --pg-riss: #020617;
+  --pg-hartfaser: #92643a; --pg-hartfaser-rand: #fbbf24; --pg-holz: #92643a; --pg-holz-faser: #d6b98c;
+  --pg-akzent: #ff85aa; --pg-akzent-hell: rgba(255, 133, 170, 0.16); --pg-mass: #ff85aa;
+  --pg-bitumen: #09090b; --pg-bitumen-rand: #a1a1aa; --pg-wasser: #0c4a6e; --pg-wasser-rand: #7dd3fc;
+  --pg-ok: #4ade80; --pg-anzeige: #1e293b; --pg-anzeige-rand: #64748b;
+}
