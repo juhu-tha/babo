@@ -1,4 +1,5 @@
 import { formatDeZahl, formatDeTeX, formatDeWert } from '@/src/utils/numberFormat';
+import { lehmWand } from '@/src/calc/bauprodukte';
 import React, { useState } from 'react';
 import { 
   Layers, 
@@ -46,40 +47,17 @@ export default function BpLehmbauprodukte() {
   const [holdsTopAndBottom, setHoldsTopAndBottom] = useState<boolean>(true); // held on both ends
   const [designLoad, setDesignLoad] = useState<number>(35); // kN/m
 
-  // Calculations for structural checker
-  const effectiveHeightBeiwert = holdsTopAndBottom ? 0.75 : 1.0;
-  const effectiveHeight = height * effectiveHeightBeiwert;
-  const slenderness = (effectiveHeight * 100) / thickness; // lambda = h_e / t_ef
-
-  // Lehrannahme: Schlankheitsgrenze 21 (Wert nach DIN 18940 manuell prüfen)
-  const isSlendernessOk = slenderness <= 21;
-
-  // Approximate design strength for loam masonry according to DIN 18940
-  // Safe design compressive strength f_d based on strength classes matching real codes:
-  // Safety factor gamma_M = 2.0
-  const getFk = (fkClass: number) => {
-    // Druckfestigkeitsklassen nach DIN 18945: 2 bis 6 N/mm²
-    // fk nach DIN 18940 aus Steinklasse und Normalmörtel M10/M15
-    if (fkClass === 2) return 0.9;
-    if (fkClass === 2.5) return 1.1;
-    if (fkClass === 3) return 1.3;
-    if (fkClass === 4) return 1.6;
-    if (fkClass === 5) return 1.9;
-    if (fkClass === 6) return 2.2;
-    return 1.3;
-  };
-
-  const f_k = getFk(strengthClass);
-  const f_d = f_k / 2.0; // N/mm² (gamma_M = 2.0)
-
-  // Reduction factor for eccentricity and buckling Phi
-  // Phi = 0.85 * (1 - (lambda / 24)^2)
-  const phi = Math.max(0, 0.85 * (1 - Math.pow(slenderness / 24, 2)));
-
-  // Ultimate axial capacity N_Rd in kN per meter of wall:
-  // N_Rd = Phi * t (in m) * f_d (in N/mm² * 1000 to convert to kN/m²)
+  // Rechenkern src/calc/bauprodukte.ts (vereinfachter Lehransatz; f_k-Werte, γ_M = 2,0, λ ≤ 21 und Φ vorläufig, F-Freigabe)
+  const wand = lehmWand(height, thickness, strengthClass, holdsTopAndBottom);
+  const effectiveHeightBeiwert = wand.beta;
+  const effectiveHeight = wand.hef;
+  const slenderness = wand.lambda;
+  const isSlendernessOk = wand.schlankOk;
+  const f_k = wand.fk;
+  const f_d = wand.fd;
+  const phi = wand.phi;
   const wallThicknessM = thickness / 100;
-  const n_Rd = phi * wallThicknessM * (f_d * 1000); // kN/m
+  const n_Rd = wand.nRd; // kN/m
   const isCapacityOk = isSlendernessOk && designLoad <= n_Rd;
 
   const currentStandard = LOAM_STANDARDS_DB.find(s => s.id === selectedStandard) || LOAM_STANDARDS_DB[0];
@@ -271,7 +249,7 @@ export default function BpLehmbauprodukte() {
                       </button>
                     ))}
                   </div>
-                  <span className="text-[10px] text-slate-500 leading-normal block pt-1"><MdText text={inhalt.texte.charakteristischeMauerwerksdruckfestigke} />{formatDeZahl(getFk(strengthClass), 1)}<MdText text={inhalt.texte.nMmNachDin} /></span>
+                  <span className="text-[10px] text-slate-500 leading-normal block pt-1"><MdText text={inhalt.texte.charakteristischeMauerwerksdruckfestigke} />{formatDeZahl(f_k, 1)}<MdText text={inhalt.texte.nMmNachDin} /></span>
                 </div>
 
                 <div className="space-y-2">

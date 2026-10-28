@@ -1,5 +1,6 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
+import { zusatzmittelWz } from '@/src/calc/bauprodukte';
 import { 
   Droplet, 
   BookOpen, 
@@ -71,18 +72,18 @@ export default function BpBetonzusatzmittel() {
   const [admixtureChlorideContent, setAdmixtureChlorideContent] = useState<number>(0.04); // M.-%
 
   // Calculation results
-  const admixtureMass = cementContent * (dosagePercent / 100); // kg/m³
-  const admixtureVolume = admixtureMass / admixtureDensity; // l/m³
-  const admixtureWaterMass = admixtureMass * (admixtureWaterContent / 100); // kg/m³ (approx. l/m³)
+  // Rechenkern src/calc/bauprodukte.ts (Wasseranrechnung bei > 3 l/m³ flüssiger Zusatzmittel, DIN EN 206)
+  const zm = zusatzmittelWz({ zement: cementContent, dosierung: dosagePercent, dichte: admixtureDensity, wasseranteil: admixtureWaterContent, wasser: freshWaterAdd });
+  const admixtureMass = zm.masse; // kg/m³
+  const admixtureVolume = zm.volumen; // l/m³
+  const admixtureWaterMass = zm.wasserZm; // kg/m³ (≈ l/m³)
+  const isWaterAnrechnungMandatory = zm.anrechnung;
+  const effectiveWater = zm.wasserEff;
+  const rawWcRatio = zm.wzRoh;
+  const effectiveWcRatio = zm.wzEff;
 
-  // The 3-liter / 3-kg rule of German E-Schein
-  const isWaterAnrechnungMandatory = admixtureVolume > 3.0;
-  const effectiveWater = isWaterAnrechnungMandatory ? (freshWaterAdd + admixtureWaterMass) : freshWaterAdd;
-  const rawWcRatio = freshWaterAdd / cementContent;
-  const effectiveWcRatio = effectiveWater / cementContent;
-
-  const isDosingTooLow = dosagePercent < 0.2;
-  const isDosingTooHigh = dosagePercent > 5.0;
+  const isDosingTooLow = zm.zuNiedrig;
+  const isDosingTooHigh = zm.zuHoch;
   const isChlorideExcessive = concreteApplication === 'spann' && admixtureChlorideContent > 0.10;
 
   return (

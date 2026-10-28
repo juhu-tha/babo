@@ -156,7 +156,7 @@
           "Untergrundvorbereitung (Schnitt / Porenschluss)",
           "Feinspachtelung (Porenfüller) mit PCC-Mörtel oder Epoxid-Zement-Spachtel",
           "Grundierung (Haftbrücke, meist verdünntes Systemmaterial)",
-          "1. und 2. Deckbeschichtung mit elastischem Reinacrylat"
+          "1. und 2. Deckbeschichtung mit Reinacrylat"
         ]
       },
       {
@@ -283,7 +283,7 @@
         "name": "Polyaddition (2K-Epoxidharze)",
         "type": "Chemisch vernetzend (Duromer-Reaktionsharz)",
         "reactants": "Komponente A (Epoxidharz-Prepolymer, z. B. Bisphenol-A-Diglycidylether) + Komponente B (Amin-Härter, z. B. Polyamine oder Polyamidoamine)",
-        "catalysts": "Säurehaltige Härtungsbeschleuniger (herstellerneutral: tertiäre Amine, Salicylsäure)",
+        "catalysts": "Härtungsbeschleuniger (herstellerneutral: tertiäre Amine, Salicylsäure, Phenole)",
         "molecularReaction": "          O\n         / \\\nR - CH - CH2   +   H2N - R' (Amin)   ---->   R - CH(OH) - CH2 - NH - R' (Alkohol + sekundäres Amin)\n(Freie Aminogruppen greifen nucleophil an den polarisierten Sauerstoffring unter Ringöffnung an. Keine Spaltprodukte!)",
         "description": "Die reaktiven Oxiranringe (Epoxidgruppen) der Stammkomponente reagieren ohne Abspaltung von Nebenprodukten mit den aktiven Wasserstoffatomen der Aminogruppen. Durch progressive Polyaddition entsteht ein hochfestes, chemikalienbeständiges und steifes, duroplastisches Epoxidnetzwerk.",
         "processingRules": [
@@ -308,9 +308,9 @@
       "polyurethane": {
         "name": "Polyaddition (2K-Polyurethane)",
         "type": "Chemisch vernetzend (Hydrophobe Polyisocyanat-Reaktion)",
-        "reactants": "Komponente A (Polyol, z. B. verzweigte Polyester, Acrylate oder Polyether) + Komponente B (Polyisocyanate, z. B. ungeladene cycloaliphatische Diisocyanate wie HDI oder IPDI)",
+        "reactants": "Komponente A (Polyol, z. B. verzweigte Polyester, Acrylate oder Polyether) + Komponente B (Polyisocyanate, z. B. aliphatische bzw. cycloaliphatische Diisocyanate wie HDI bzw. IPDI)",
         "catalysts": "Metallorganische Katalysatoren (herstellerneutral: Dibutylzinndilaurat - DBTDL) oder tertiäre Aminverbindungen",
-        "molecularReaction": "R - N=C=O (Isocyanatgruppe)   +   HO - R' (Hydroxylgruppe, Polyol)   ---->   R - NH - CO - O - R' (Urethangruppe)\nGravotrope Störreaktion (Gefahr!):\nR - N=C=O (Isocyanat)  +  H2O (Wasser/Feuchte)   ---->   R - NH2 (Amin)  +  CO2↑ (Kohlendioxid-Blasengas!)",
+        "molecularReaction": "R - N=C=O (Isocyanatgruppe)   +   HO - R' (Hydroxylgruppe, Polyol)   ---->   R - NH - CO - O - R' (Urethangruppe)\nNebenreaktion mit Wasser (Gefahr!):\nR - N=C=O (Isocyanat)  +  H2O (Wasser/Feuchte)   ---->   R - NH2 (Amin)  +  CO2↑ (Kohlendioxid-Blasengas!)",
         "description": "Die Hydroxylgruppen der Bindemittelmatrix addieren sich an die hochreaktiven Isocyanatgruppen der Härterkomponente. Es entstehen hochfeste, zäh-elastische Urethanverknüpfungen. 2K-Polyurethan-Verbindungen auf aliphatischer Isocyanatbasis (HDI/IPDI) bieten die weltweit beste Licht-, UV- und Kreidungsbeständigkeit im Bautenschutz.",
         "processingRules": [
           "Vorzeitiger Kontakt mit Wasser oder Substratfeuchtigkeit führt zur Zersetzung des Härters unter Freisetzung von CO2-Gasen. Die Folge sind sichtbare Mikroporen, Krater und Bläschen im gehärteten Lackfilm.",

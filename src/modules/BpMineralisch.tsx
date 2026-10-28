@@ -1,4 +1,5 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { belagMasse } from '@/src/calc/bauprodukte';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -143,12 +144,11 @@ export default function BpMineralisch() {
 
   // Calculations
   // Volume: V = Area * (tickness/1000) m³
-  const volumeM3 = calcArea * (tileThick / 1000);
-  // Dry weight: W_dry = V * density (kg)
-  const dryWeightKg = volumeM3 * calcMat.density;
-  // Saturated weight: W_wet = W_dry * (1 + waterAbs / 100) kg
-  const waterAbsorbedKg = dryWeightKg * (calcMat.waterAbs / 100);
-  const wetWeightKg = dryWeightKg + waterAbsorbedKg;
+  const belag = belagMasse(calcArea, tileThick, calcMat.density, calcMat.waterAbs); // Rechenkern src/calc/bauprodukte.ts
+  const volumeM3 = belag.volumen;
+  const dryWeightKg = belag.trocken;
+  const waterAbsorbedKg = belag.wasser;
+  const wetWeightKg = belag.nass;
 
   // Render safety warning on specific material selections
   const showSecurityWarning = (mat: MineralMaterial) => {

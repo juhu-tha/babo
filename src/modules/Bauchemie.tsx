@@ -209,7 +209,7 @@ export const Bauchemie: React.FC = () => {
               <div className="mt-2">
                 <h4 className="font-bold text-sm text-text-main mb-2"><MdText text={inhalt.texte.phSkalaBeton} /></h4>
                 <div className="relative h-12 w-full rounded-full overflow-hidden flex text-xs font-bold text-white shadow-inner">
-                  <div className="bg-torch-red flex items-center justify-center" style={{ width: '42.8%' }}><MdText text={inhalt.texte.säureangriffPh6} /></div>
+                  <div className="bg-torch-red dark:bg-rose-800 flex items-center justify-center" style={{ width: '42.8%' }}><MdText text={inhalt.texte.säureangriffPh6} /></div>
                   <div className="bg-amber-500 flex items-center justify-center" style={{ width: '21.4%' }}><MdText text={inhalt.texte.karbonatisiertPh69} /></div>
                   <div className="bg-emerald-500 flex items-center justify-center" style={{ width: '35.8%' }}><MdText text={inhalt.texte.alkalischPh9Passivschicht} /></div>
                 </div>

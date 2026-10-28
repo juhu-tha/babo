@@ -261,7 +261,7 @@
     "grenzzuständeDerTragfähigkeitUnd": "Grenzzustände der Tragfähigkeit und Gebrauchstauglichkeit nach Eurocode 2",
     "dasVerbundverhaltenImMassivbau": "Das Verbundverhalten im Massivbau",
     "derMassivbauStahlbetonSpannbeton": "Der Massivbau (Stahlbeton, Spannbeton, Carbonbeton) verbindet die hohe Druckfestigkeit des Betons mit der Zugfestigkeit der Bewehrung (Betonstahl, Carbon). Voraussetzung sind ein ausreichender Verbund und bei Stahl eine ähnliche Wärmedehnung.",
-    "inDiesemBerechnungsUnd": "In diesem Berechnungs- und Konstruktionsmodul analysieren wir die Rissbreitenbegrenzung, Biegung mit und ohne Längskraft, ermitteln Schubbemessungen (Querkraft), dimensionieren druckbelastete Stützen nach Theorie II. Ordnung und erfassen Durchstanzrisiken im Stützenbereich.",
+    "inDiesemBerechnungsUnd": "In diesem Berechnungs- und Konstruktionsmodul analysieren wir die Rissbreitenbegrenzung, Biegung mit und ohne Längskraft, ermitteln Schubbemessungen (Querkraft), bemessen Stützen nach Theorie I. Ordnung mit Imperfektion und Mindestausmitte (Grenzschlankheit als Hinweis, kein Nachweis nach Theorie II. Ordnung) und erfassen Durchstanzrisiken im Stützenbereich.",
     "kontrolleDerRechnerischenRissbreiten": "Kontrolle der rechnerischen Rissbreiten w_k im Grenzzustand der Gebrauchstauglichkeit.",
     "dinEn19921": "DIN EN 1992-1-1 (EC2) Kap. 7.3",
     "auslegungEinerDeckenplatteBzgl": "Auslegung einer Deckenplatte bzgl. Mindestbewehrung zur Begrenzung von Rissen infolge abfließender Hydratationswärme.",
@@ -276,7 +276,7 @@
     "nachweisDerDruckstrebenfestigkeitVrd": "Nachweis der Druckstrebenfestigkeit VRd,max zur Vermeidung von Stegbruch.",
     "interaktionsdiagrammFürBiegungMit": "Interaktionsdiagramm für Biegung mit Längskraft, Mindestausmitte und Prüfung der Grenzschlankheit (Theorie II. Ordnung nur als Hinweis).",
     "dinEn199215": "DIN EN 1992-1-1 Kap. 5.8",
-    "tragfähigkeitsnachweisEinerSchlankenPend": "Tragfähigkeitsnachweis einer schlanken Pendelstütze mit Imperfektionen.",
+    "tragfähigkeitsnachweisEinerSchlankenPend": "Vorbemessung einer Pendelstütze mit Imperfektion und Prüfung der Grenzschlankheit.",
     "abschätzungDesDurchstanzkriteriumsAn": "Abschätzung des Durchstanzkriteriums an Flachdecken im kritischen Rundschnitt.",
     "dinEn199216": "DIN EN 1992-1-1 Kap. 6.4",
     "dimensionierungEinerDurchstanzbewehrungZ": "Dimensionierung einer Durchstanzbewehrung (z.B. Dübelleisten) zur Stützenauflagerung.",
@@ -311,8 +311,8 @@
     "einstellungElastischPlastischerVerfestig": "Einstellung elastisch-plastischer Verfestigungsparameter im FE-Programm.",
     "eModulMikromechanik": "E-Modul & Mikromechanik",
     "ermittlungDesElastizitätsmodulsAus": "Ermittlung des Elastizitätsmoduls aus Spannungs-Dehnungs-Messkurven und mikromechanischen Mischungsregeln.",
-    "dinEnIso527": "DIN EN ISO 527-1",
-    "bestimmungDesHomogenisiertenQuer": "Bestimmung des homogenisierten Quer-E-Moduls eines Faserverbundes.",
+    "dinEnIso527": "DIN EN 1992-1-1, 3.1.3; DIN EN 12390-13",
+    "bestimmungDesHomogenisiertenQuer": "Abschätzung des Beton-E-Moduls aus Gesteinskörnung und Zementstein (Schranken nach Voigt, Reuss und Hashin-Shtrikman).",
     "festigkeitskennwerteImVergleichSpezifisc": "Festigkeitskennwerte im Vergleich, spezifische Festigkeit und Reißlänge (Grenzlänge unter Eigengewicht).",
     "dinEn1992111": "DIN EN 1992-1-1 / DIN EN 1993-1-1 (charakteristische Festigkeiten)",
     "materialvergleichÜberDieReißlänge": "Materialvergleich über die Reißlänge und Grenzhöhe unter Eigengewicht.",
@@ -324,7 +324,7 @@
     "dinEn19931": "DIN EN 1993-1-1 (EC3), 6.3",
     "ermittlungDerKritischenEuler": "Ermittlung der kritischen Euler-Knicklast für ein beidseitig gelenkig gelagertes Stützenprofil.",
     "spannungsintensitätsfaktorenKKonzeptEner": "Spannungsintensitätsfaktoren (K-Konzept), Energiefreisetzungsrate G und Rissausbreitungskriterien von Griffith.",
-    "iso12737MetalleFib": "ISO 12737 (Metalle); fib Model Code 2010 (Beton)",
+    "iso12737MetalleFib": "ISO 12135 (Metalle; Nachfolge der zurückgezogenen ISO 12737); fib Model Code 2010 (Beton)",
     "abschätzungDerKritischenRisslänge": "Abschätzung der kritischen Risslänge bzw. Bruchspannung bei spröden Glas- und Keramikbauteilen.",
     "konsistenzgrenzenUndBodengruppenScherfes": "Konsistenzgrenzen und Bodengruppen, Scherfestigkeit nach Mohr-Coulomb, Erddruck nach Rankine sowie Setzung und Konsolidation nach Terzaghi.",
     "dinEn19971": "DIN EN 1997-1 / DIN 1054; DIN 4085; DIN 18196; DIN 4019",
@@ -965,6 +965,12 @@
       },
       {
         "title": "DAfStb-Richtlinie: Wasserundurchlässige Bauwerke aus Beton (WU-Richtlinie)"
+      },
+      {
+        "title": "DIN 1045-1000:2023-08 (Grundlagen und Betonbauqualitätsklassen BBQ)"
+      },
+      {
+        "title": "DIN 1045-2:2023-08 (Beton) und DIN 1045-3:2023-08 (Bauausführung; Überwachungsklassen ÜK 1 und ÜK 2)"
       }
     ],
     "MODULES_DATA.stahlbeton.formeln": [

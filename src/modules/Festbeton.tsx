@@ -705,7 +705,7 @@ export default function Festbeton() {
                     <span className="font-bold text-shiraz block">Kriterium 1: Mittelwert (f_cm)</span>
                     <ul className="list-disc list-inside space-y-1 text-text-main/80">
                       <li>
-                        <strong>Erstprüfung (Anfangsproduktion n = 3 bis 14):</strong><br />
+                        <strong>Erstherstellung (Herstellungsbeginn, n = 3 bis 14; nicht zu verwechseln mit der Erstprüfung der Rezeptur):</strong><br />
                         <span className="font-mono font-bold ml-4">f_cm &ge; f_ck + 4,0 N/mm²</span>
                       </li>
                       <li>
@@ -779,7 +779,7 @@ export default function Festbeton() {
                         }}
                         className="w-full p-2 bg-off-white border border-home-grau/30 rounded-xl font-bold"
                       >
-                        <option value="erst">Erstprüfung (n = 3 Proben)</option>
+                        <option value="erst">Erstherstellung (n = 3 Proben)</option>
                         <option value="stetig">Stetige Produktion (n &ge; 15 Proben)</option>
                       </select>
                     </div>
@@ -936,7 +936,7 @@ export default function Festbeton() {
           },
           {
             formel: 'f_{cm} \\ge f_{ck} + \\lambda \\quad \\text{und} \\quad f_{ci} \\ge f_{ck} - 4\\,\\text{N/mm}^2',
-            erklaerung: 'Konformitätskriterien nach DIN EN 206 Abs. 8 (Erstprüfung: λ = 4,0 N/mm² für n=3; stetige Herstellung: λ = 1,48·s für n>=15).',
+            erklaerung: 'Konformitätskriterien nach DIN EN 206 Abs. 8 (Erstherstellung: λ = 4,0 N/mm² für n = 3; stetige Herstellung: λ = 1,48·s für n>=15).',
             quelle: 'DIN EN 206:2021 Tabelle 14 & 15'
           }
         ]}

@@ -81,11 +81,11 @@
     "rohwertRückprallMedianR": "Rohwert Rückprall (Median R):",
     "karbonatisierungsTiefeXCo": "Karbonatisierungs-Tiefe (x_CO₂):",
     "schlagrichtungEinbauwinkel": "Schlagrichtung / Einbauwinkel (α):",
-    "korrekturKarbonatisierungLehrmodell": "Korrektur Karbonatisierung (Lehrmodell):",
+    "korrekturKarbonatisierungLehrmodell": "Korrektur Karbonatisierung (Lehrmodell, Faktor k):",
     "korrekturWinkelHerstellerrichtwert": "Korrektur Winkel (Herstellerrichtwert):",
     "schätzungAusRohwertLehr": "Schätzung aus Rohwert (Lehr-Näherung):",
     "schätzungAusKorrigiertemR": "Schätzung aus korrigiertem R (Lehr-Näherung):",
-    "lehrmodellWinkelkorrekturNachTypischen": "Lehrmodell: Winkelkorrektur nach typischen Herstellertabellen, Karbonatisierungsabzug und Festigkeitsgerade sind didaktische Näherungen. Eine belastbare Festigkeitsaussage ist nur mit einer Beziehung aus Vergleichsbohrkernen nach DIN EN 13791 möglich.",
+    "lehrmodellWinkelkorrekturNachTypischen": "Lehrmodell wie im Modul Bauwerksuntersuchung: Winkelkorrektur nach der Herstellerformel Original Schmidt Typ N, ΔR = (−a₀ + a₁·R)·sin α; Karbonatisierungsfaktor k = max(0,75; 1 − 0,015·(d_k − 5 mm)); Lehrkurve f_c ≈ 0,0125·R^2,22. Eine belastbare Festigkeitsaussage ist nur mit einer Beziehung aus Vergleichsbohrkernen nach DIN EN 13791 möglich.",
     "merksatzDerDiagnostikAuswertungsmethoden": "**Merksatz der Diagnostik:** Auswertungsmethoden an Bauwerken unterliegen immer statistischen Einflüssen. Ein einzelnes Testergebnis besitzt keine normative Aussagekraft. Durch Mehrfachbeprobung und konsequente Fehlerbereinigung (Schleifen, Absaugen) werden verfälschte Beurteilungen effektiv ausgeschlossen."
   },
   "werte": {
@@ -205,9 +205,9 @@
         "formel": "\\Delta R_{\\alpha} < 0"
       },
       {
-        "titel": "Korrekturwert (Herstellertabelle, interpoliert)",
-        "erklaerung": "Typische Werte Typ N: −5,4 bei R = 20 und −2,3 bei R = 60:",
-        "formel": "\\Delta R_{\\alpha} = -5{,}4 + 3{,}1 \\cdot \\frac{36-20}{40} = -4{,}2"
+        "titel": "Korrekturwert (Herstellerformel Typ N)",
+        "erklaerung": "Original Schmidt Typ N, Schlag nach oben (α ≥ 0°): ΔR = (−7,1 + 0,08 · R) · sin α, also −5,5 bei R = 20 und −2,3 bei R = 60:",
+        "formel": "\\Delta R_{\\alpha} = (-7{,}1 + 0{,}08 \\cdot 36) \\cdot \\sin 90^\\circ = -4{,}2"
       },
       {
         "titel": "Ergebnis",
