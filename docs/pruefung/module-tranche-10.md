@@ -1,6 +1,6 @@
 # Modulprüfung Tranche 10 – Holzbau und Mechanik (Befundliste zur Freigabe)
 
-**Stand:** 28.10.2026 (Branch `pruefung/module-tranche10-10-28`, Basis origin/main b2cb8367)
+**Stand:** 28.10.2026 (Branch `pruefung/module-tranche10-10-28`, Basis origin/main b2cb8367, main b0169af5 eingemergt)
 **Status:** Vorschlag zur fachlichen Freigabe – noch nicht bestätigt.
 
 > Nach der Freigabe eines Moduls wird in `src/data/pruefvermerke.ts` der Prüfvermerk „geprüft am …“ gesetzt (Passiv, ohne Namen). Mit dieser Befundliste wurden **keine** Prüfvermerke und **keine** Quizfragen geändert.
