@@ -7,7 +7,7 @@
     "fVKScheren": "f_v,k (Scheren)",
     "e0MeanE": "E_0,mean (E-Modul)",
     "kCharakt": "ρ_k (charakt.)",
-    "hinweisCharakteristischeWerte5": "*Hinweis: charakteristische Werte (5%-Quantilwerte. Zur Bemessung müssen diese mit $k_{mod}$ modifiziert und durch den materialspezifischen Teilsicherheitsbeiwert $\\gamma_{M}$ geteilt werden).",
+    "hinweisCharakteristischeWerte5": "*Hinweis: Festigkeiten und ρ_k sind charakteristische Werte (5-%-Quantile), E_0,mean ist ein Mittelwert. Für die Bemessung werden die Festigkeiten mit $k_{mod}$ modifiziert und durch den Teilsicherheitsbeiwert $\\gamma_{M}$ geteilt.",
     "dataholzEuLizenzStandard": "dataholz.eu Lizenz-Standard",
     "interaktiverDataholzEuBauteilexplorer": "Interaktiver dataholz.eu Bauteilexplorer",
     "beispielaufbautenZurLehreAngelehnt": "Beispielaufbauten zur Lehre, angelehnt an Bauteilkataloge wie dataholz.eu. Kennwerte sind Richtwerte – für die Planung gelten die klassifizierten Originaleinträge.",

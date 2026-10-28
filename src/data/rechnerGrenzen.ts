@@ -324,7 +324,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   holzbau_bauphysik: {
     kurz: "Brand mit reduziertem Querschnitt; Eigenfrequenz f₁ und Durchbiegung unter 1 kN einer Brettsperrholzdecke als Einfeldträger.",
     grenzen: [
-      "Brand: feste Abbrandraten, nur Restquerschnitt und Widerstandsmoment, keine Tragfähigkeit.",
+      "Brand: feste Abbrandraten nach DIN EN 1995-1-2:2010-12 (Neuausgabe 2026-10 nicht berücksichtigt), nur Restquerschnitt und Widerstandsmoment, keine Tragfähigkeit.",
       "Schwingung: zweiseitig gelenkig gelagerter Einfeldstreifen; Biegesteifigkeit nur aus den Längslagen, netto oder nach dem γ-Verfahren (DIN EN 1995-1-1 Anhang B, nur symmetrisch 3- und 5-lagig).",
       "Bei 7 und mehr Lagen wird die Netto-Biegesteifigkeit angesetzt; das Schubanalogieverfahren ist nicht umgesetzt.",
       "Kennwerte E_0,mean = 11 550 N/mm², G_r,mean = 65 N/mm² und Wichte 5,5 kN/m³ nach proHolz Austria (Band II, 2018) statt Werten aus der ETA des Herstellers.",
@@ -362,7 +362,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     grenzen: [
       "Ideal-elastischer Stab ohne Fließen und ohne Knicklinien (keine χ-Abminderung).",
       "Vorkrümmung w₀ = l/300 pauschal.",
-      "Biegelinie im Diagramm qualitativ.",
+      "Biegelinie im Diagramm: erste Eigenform des gewählten Euler-Falls, skaliert auf die Ausbiegung nach Theorie II. Ordnung (Lehrmodell; Imperfektionsform nicht fallabhängig).",
     ],
   },
   energieausweis: {
