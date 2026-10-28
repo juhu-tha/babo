@@ -1,6 +1,6 @@
 // Rechenkern Gebäude-Ökobilanz (AP 4.10): A1–A3, B4 (BNB-Nutzungsdauern), B6 (QNG-Rechenwerte), C3/C4, D getrennt, je m² NRF(R)·a
 import {
-  lcaBilanz, ersatzzyklen, einzelbaustoffA1A4, B6_FAKTOREN, VERWERTUNGSFAKTOR, VERWERTUNG_RANGFOLGE, BNB_NUTZUNGSDAUER, TGA_SOCKEL, A4_FAKTOR_GEBAEUDE, A4_FAKTOR_EINZEL,
+  lcaBilanz, ersatzzyklen, einzelbaustoffA1A4, mengeJeM2Bauteil, funktionelleEinheitBauteil, type FeSchicht, B6_FAKTOREN, VERWERTUNGSFAKTOR, VERWERTUNG_RANGFOLGE, BNB_NUTZUNGSDAUER, TGA_SOCKEL, A4_FAKTOR_GEBAEUDE, A4_FAKTOR_EINZEL,
   type LcaBaustoff, type LcaEingabe, type LcaZeile, type Verwertung, type TgaSockel, type Energietraeger,
 } from '../src/calc/lca';
 import { MATERIAL_DATABASE, alsLcaBaustoff } from '../src/modules/interactivelcacalc/daten';
@@ -190,6 +190,46 @@ for (let i = 0; i < 1000; i++) {
     const mehr = lcaBilanz({ ...e, energie: { ...e.energie, waerme: e.energie.waerme + 1000 } });
     pruefe(mehr.spez.b6 > a.spez.b6, `Fuzz ${i}: B6 monoton`);
   }
+}
+
+// 9. Bezugsgrößen (28.10.2026): deklarierte Einheit → funktionelle Einheit 1 m² Bauteil über 50 a
+//    Umrechnung nach DIN EN 15804+A2 / DIN EN 15978: Menge je m² = Dicke × Rohdichte (kg, t) bzw. Dicke (m³) bzw. 1 (m²),
+//    Wirkung über T = Menge · (A1–A3 + C3/C4) · (1 + n), n = ⌈T/ND⌉ − 1
+pruefe(nahe(mengeJeM2Bauteil('m³', 0.2, 2400), 0.2, 1e-12), 'Menge m³: 0,20 m → 0,20 m³/m²');
+pruefe(nahe(mengeJeM2Bauteil('t', 0.2, 2400), 0.48, 1e-12), 'Menge t: 0,20 m · 2 400 kg/m³ → 0,48 t/m²');
+pruefe(nahe(mengeJeM2Bauteil('kg', 0.2, 2400), 480, 1e-9), 'Menge kg: 480 kg/m² (wie Hinweis Wandkonfigurator „20 cm Betonwand 480 kg/m²“)');
+pruefe(mengeJeM2Bauteil('m²', 0, 0) === 1, 'Menge m²: 1 m² Dämmung mit festgelegtem R-Wert je m² Bauteil');
+pruefe(Number.isNaN(mengeJeM2Bauteil('m³', 0, 2400)) && Number.isNaN(mengeJeM2Bauteil('kg', 0.1, 0)) && Number.isNaN(mengeJeM2Bauteil('t', -0.1, 2400)), 'Menge: unzulässige Dicke/Rohdichte → NaN');
+// Handbeispiel Außenwand (Lehrwerte): Stahlbeton 20 cm (DE 1 m³: A1–A3 250, C3/C4 10 kg CO₂-Äq., ND ≥ 50 a)
+// + EPS 14 cm (DE 1 kg, ρ = 20 kg/m³: A1–A3 3,0, C3/C4 2,5 kg CO₂-Äq./kg, ND 40 a → n = 1)
+// Beton: 0,20 m³/m² · 260 = 52,0; EPS: 2,8 kg/m² · 5,5 = 15,4, × (1 + 1) = 30,8; Summe 82,8 kg/m²; je Jahr 1,656 kg/(m²·a)
+const WAND: FeSchicht[] = [
+  { name: 'Stahlbeton', einheit: 'm³', dickeM: 0.2, rohdichte: 2400, gwpA1A3: 250, gwpC: 10, nutzungsdauer: 50 },
+  { name: 'EPS', einheit: 'kg', dickeM: 0.14, rohdichte: 20, gwpA1A3: 3.0, gwpC: 2.5, nutzungsdauer: 40 },
+];
+const FE = funktionelleEinheitBauteil(WAND, 50);
+pruefe(FE.gueltig && FE.hinweise.length === 0, 'FE: gültig ohne Hinweise');
+pruefe(nahe(FE.schichten[0].summe, 52, 1e-9) && FE.schichten[0].ersatz === 0, `FE: Beton ${FE.schichten[0].summe}`);
+pruefe(nahe(FE.schichten[1].menge, 2.8, 1e-12) && FE.schichten[1].ersatz === 1 && nahe(FE.schichten[1].b4, 15.4, 1e-9) && nahe(FE.schichten[1].summe, 30.8, 1e-9), `FE: EPS ${FE.schichten[1].summe}`);
+pruefe(nahe(FE.summe, 82.8, 1e-9) && nahe(FE.jeJahr, 1.656, 1e-12) && nahe(FE.a1a3 + FE.c + FE.b4, FE.summe, 1e-9), `FE: Summe ${FE.summe}, je Jahr ${FE.jeJahr}`);
+// Grenze: ND = T → kein Ersatz; ND knapp unter T → ein Ersatz
+pruefe(funktionelleEinheitBauteil([{ ...WAND[1], nutzungsdauer: 50 }]).schichten[0].ersatz === 0 && funktionelleEinheitBauteil([{ ...WAND[1], nutzungsdauer: 49 }]).schichten[0].ersatz === 1, 'FE: Grenze ND = 50 a / 49 a');
+pruefe(!funktionelleEinheitBauteil([{ ...WAND[0], dickeM: 0 }]).gueltig && !funktionelleEinheitBauteil([{ ...WAND[1], nutzungsdauer: 0 }]).gueltig && !funktionelleEinheitBauteil([]).gueltig, 'FE: Dicke 0, ND 0, leer → ungültig');
+pruefe(funktionelleEinheitBauteil(WAND, 80).hinweise.some(h => h.feld === 'betrachtungszeitraum'), 'FE: Hinweis bei T ≠ 50 a');
+// Querprüfung mit dem Gebäuderechner: dieselbe Betonschicht als Zeile (0,20 m³ auf 1 m² NRF, ohne Transport/B6/TGA) ergibt
+// A1–A3 + B4 + C3/C4 identisch zur funktionellen Einheit; die Zeile trägt Menge und deklarierte Einheit für den Rechenweg.
+const betonDE: LcaBaustoff = { id: 'test-beton', einheit: 'm³', rohdichte: 2400, gwpA1A3: 250, gwpC: 10, gwpD: 0, biogen: 0, penrt: 0, refKreislaufquote: 100 };
+const QP = lcaBilanz({ zeilen: [{ baustoff: betonDE, menge: 0.2, kreislaufquote: 0, sortenreinheit: 0, verwertung: 'high_grade', nutzungsdauer: 30 }], nrfR: 1, betrachtungszeitraum: 50, transportDistanz: 0, transportFaktor: 0, mitB4: true, energie: null, tgaSockel: 'keiner', gebaeudeart: 'wohnbau' });
+const QF = funktionelleEinheitBauteil([{ ...WAND[0], nutzungsdauer: 30 }], 50);
+pruefe(nahe(QP.a1a3 + QP.b4 + QP.c3c4, QF.summe, 1e-9) && QF.schichten[0].ersatz === 1, `FE ↔ lcaBilanz: ${QP.a1a3 + QP.b4 + QP.c3c4} ≠ ${QF.summe}`);
+pruefe(QP.zeilen[0].menge === 0.2 && QP.zeilen[0].einheit === 'm³', 'lcaBilanz: Zeile mit Menge und deklarierter Einheit');
+// Fuzz Bezugsgrößen: 1 000 Zufallsaufbauten endlich, Summe = Teilsummen, Ersatz ganzzahlig
+const EH: FeSchicht['einheit'][] = ['kg', 't', 'm³', 'm²'];
+for (let i = 0; i < 1000; i++) {
+  const sch: FeSchicht[] = Array.from({ length: 1 + Math.floor(rnd() * 5) }, (_, k) => ({ name: `S${k}`, einheit: EH[Math.floor(rnd() * 4)], dickeM: 0.005 + rnd() * 0.5, rohdichte: 10 + rnd() * 7900, gwpA1A3: -2 + rnd() * 400, gwpC: rnd() * 50, nutzungsdauer: 1 + rnd() * 99 }));
+  const f = funktionelleEinheitBauteil(sch, 50);
+  pruefe(f.gueltig && [f.a1a3, f.c, f.b4, f.summe, f.jeJahr].every(Number.isFinite), `Fuzz FE ${i}: nicht endlich`);
+  pruefe(nahe(f.summe, f.a1a3 + f.c + f.b4, 1e-9 * Math.max(1, Math.abs(f.summe))) && f.schichten.every(x => Number.isInteger(x.ersatz) && x.ersatz >= 0), `Fuzz FE ${i}: Summe/Ersatz`);
 }
 
 if (fehler.length) { for (const x of fehler) console.error(`FAIL: ${x}`); process.exit(1); }
