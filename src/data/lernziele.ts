@@ -200,8 +200,8 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
   bp_abdichtung: {
     niveau: "B", minuten: 75, vorwissen: ["ausbau", "wu-bauwerke"],
     ziele: [
-      { stufe: "Verstehen", text: "die Wasserbeanspruchungsklassen W1-E bis W4-E nach DIN 18533 (bis 2017-07: Wassereinwirkungsklassen) anhand von Baugrund und Grundwasserstand unterscheiden." },
-      { stufe: "Anwenden", text: "für eine Bauwerksabdichtung die Wassereinwirkungsklasse bestimmen und ein Abdichtungssystem wie PMBC oder FPD auswählen." },
+      { stufe: "Verstehen", text: "die Wasserbeanspruchungsklassen W1-E bis W4-E nach DIN 18533 (in der Ausgabe 2017-07: Wassereinwirkungsklassen) anhand von Baugrund und Grundwasserstand unterscheiden." },
+      { stufe: "Anwenden", text: "für eine Bauwerksabdichtung die Wasserbeanspruchungsklasse bestimmen und ein Abdichtungssystem wie PMBC oder FPD auswählen." },
       { stufe: "Anwenden", text: "die erforderliche Nassschichtdicke einer PMBC-Abdichtung aus der Mindesttrockenschichtdicke und dem Feststoffanteil berechnen." },
       { stufe: "Analysieren", text: "die Fugenabdichtungen Fugenblech, Fugenband, Quellband und Injektionsschläuche für Arbeits- und Dehnungsfugen in WU-Bauteilen vergleichen." },
       { stufe: "Bewerten", text: "für einen Riss einen Injektionsstoff (Acrylatgel, PUR- oder EP-Harz) nach dessen Zustand (trocken, wasserführend, bewegt) auswählen und begründen." },
@@ -277,7 +277,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
     ziele: [
       { stufe: "Verstehen", text: "die Glasarten Floatglas, ESG, TVG und VSG nach Herstellung, Bruchbild und Anwendung nach DIN 18008 unterscheiden." },
       { stufe: "Verstehen", text: "den Aufbau und die Wirkung von Mehrscheiben-Isolierglas mit Edelgasfüllung, Low-E-Beschichtung und warmer Kante erläutern." },
-      { stufe: "Anwenden", text: "den Uw-Wert eines Fensters nach DIN EN ISO 10077-1 für verschiedene Abstandhalter berechnen und auf GEG-Konformität prüfen." },
+      { stufe: "Anwenden", text: "den Uw-Wert eines Fensters nach DIN EN ISO 10077-1 für verschiedene Abstandhalter berechnen und mit dem Höchstwert nach Anlage 7 GModG (vormals GEG) vergleichen." },
       { stufe: "Anwenden", text: "die Bemessungsfestigkeit von Floatglas, TVG und ESG berechnen und vergleichen." },
       { stufe: "Bewerten", text: "den Glasaufbau und den Rahmenwerkstoff eines Fensters für Wärme-, Sonnen- und Schallschutzanforderungen auswählen." },
     ],

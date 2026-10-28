@@ -1,4 +1,5 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { randspannung } from '@/src/calc/bauprodukte';
 import React, { useState, useMemo } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -99,11 +100,11 @@ const HEM_PROFILES: ProfileData[] = [
   { name: 'HEM 220', h: 240, b: 226, tw: 15.5, tf: 26.0, A: 149.0, Iy: 14610, Iz: 5030, Wy: 1220, Wz: 445, iy: 9.90, iz: 5.81 },
   { name: 'HEM 240', h: 270, b: 248, tw: 18.0, tf: 32.0, A: 199.0, Iy: 24290, Iz: 8150, Wy: 1800, Wz: 657, iy: 11.1, iz: 6.40 },
   { name: 'HEM 260', h: 290, b: 268, tw: 18.0, tf: 32.5, A: 220.0, Iy: 31310, Iz: 10410, Wy: 2160, Wz: 777, iy: 11.9, iz: 6.88 },
-  { name: 'HEM 280', h: 310, b: 288, tw: 18.5, tf: 33.0, A: 240.0, Iy: 39550, Iz: 13160, Wy: 2550, Wz: 914, iy: 12.8, iz: 7.40 },
+  { name: 'HEM 280', h: 310, b: 288, tw: 18.5, tf: 33.0, A: 241.0, Iy: 39717, Iz: 13167, Wy: 2562, Wz: 914, iy: 12.8, iz: 7.38 },
   { name: 'HEM 300', h: 340, b: 310, tw: 21.0, tf: 39.0, A: 303.0, Iy: 59200, Iz: 19400, Wy: 3480, Wz: 1250, iy: 14.0, iz: 8.00 },
-  { name: 'HEM 400', h: 432, b: 307, tw: 21.0, tf: 40.0, A: 285.0, Iy: 104100, Iz: 19340, Wy: 4820, Wz: 1260, iy: 19.1, iz: 8.24 },
-  { name: 'HEM 500', h: 534, b: 310, tw: 21.0, tf: 40.0, A: 307.0, Iy: 161900, Iz: 20080, Wy: 6060, Wz: 1300, iy: 22.9, iz: 8.09 },
-  { name: 'HEM 600', h: 634, b: 312, tw: 22.0, tf: 40.0, A: 332.0, Iy: 237400, Iz: 20740, Wy: 7490, Wz: 1330, iy: 26.7, iz: 7.91 },
+  { name: 'HEM 400', h: 432, b: 307, tw: 21.0, tf: 40.0, A: 326.0, Iy: 104119, Iz: 19335, Wy: 4820, Wz: 1260, iy: 17.9, iz: 7.70 },
+  { name: 'HEM 500', h: 524, b: 306, tw: 21.0, tf: 40.0, A: 344.0, Iy: 161929, Iz: 19155, Wy: 6180, Wz: 1252, iy: 21.7, iz: 7.46 },
+  { name: 'HEM 600', h: 620, b: 305, tw: 21.0, tf: 40.0, A: 364.0, Iy: 237448, Iz: 18975, Wy: 7660, Wz: 1244, iy: 25.6, iz: 7.22 },
 ];
 
 const UPN_PROFILES: ProfileData[] = [
@@ -155,15 +156,17 @@ export default function BpStahlbauprofile() {
   const activeProfileIndex = Math.min(selectedIx, activeProfileList.length - 1);
   const activeProfile = activeProfileList[activeProfileIndex];
 
-  // Stress calculation
-  // sigma = N / A + M / W
-  // area is in cm2 -> * 10^2 -> mm²
-  // W is in cm³ -> * 10^3 -> mm³
-  // N is in kN -> * 10^3 -> N
-  // M is in kNm -> * 10^6 -> Nmm
-  const stressN = useMemo(() => {
-    if (!activeProfile || activeProfile.A <= 0) return 0;
-    return (ned * 1000) / (activeProfile.A * 100);
+  // Rechenkern src/calc/bauprodukte.ts: σ = N/A + M/W_y, η = σ/f_yd (elastisch)
+  const fy = steelGrades[selectedGrade].fy;
+  const spannung = useMemo(() => randspannung(ned, myed, activeProfile?.A ?? 0, activeProfile?.Wy ?? 0, fy, safetyFactor),
+    [ned, myed, activeProfile, fy, safetyFactor]);
+  const stressN = spannung.sigmaN;
+  const stressM = spannung.sigmaM;
+  const totalStress = spannung.sigma;
+  const fyd = spannung.fyd;
+  const utilization = spannung.eta;
+
+  return (ned * 1000) / (activeProfile.A * 100);
   }, [ned, activeProfile]);
 
   const stressM = useMemo(() => {

@@ -1,5 +1,6 @@
 import { formatDeZahl, formatDeWert, formatDeIntl } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
+import { beschichtungsmenge } from '@/src/calc/bauprodukte';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
@@ -34,11 +35,16 @@ export default function BpFarbenLacke() {
   const [areaSquareMeters, setAreaSquareMeters] = useState<number>(120); // m²
   const [numCoats, setNumCoats] = useState<number>(2); // Number of coats
 
-  // Calculations
-  // 1. Wet Film Thickness without dilution: WFT = (DFT * 100) / Solids_Vol
-  const baseWft = useMemo(() => {
-    if (solidsVol <= 0) return 0;
-    return (targetDft * 100) / solidsVol;
+  // Rechenkern src/calc/bauprodukte.ts: WFT = DFT·100/VS, Verbrauch_eff = WFT/(1 − Verlust)
+  const menge = useMemo(() => beschichtungsmenge({ dft: targetDft, vs: solidsVol, verduennung: thinning, verlust: lossFactor, flaeche: areaSquareMeters, anstriche: numCoats }),
+    [targetDft, solidsVol, thinning, lossFactor, areaSquareMeters, numCoats]);
+  const baseWft = menge.wft;
+  const thinnedWft = menge.wftVerduennt;
+  const theoreticalConsumption = menge.verbrauch;
+  const effectiveConsumption = menge.verbrauchEff;
+  const totalLitersRequired = menge.liter;
+
+  return (targetDft * 100) / solidsVol;
   }, [targetDft, solidsVol]);
 
   // 2. Wet Film Thickness including thinning: WFT_thinned = WFT * (1 + thin/100)

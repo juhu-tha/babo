@@ -387,7 +387,7 @@
       {
         "name": "Hanffaser (Klemmdämmstoff)",
         "abbreviation": "HF",
-        "standard": "DIN EN 13171",
+        "standard": "ETA bzw. abZ (keine harmonisierte Produktnorm)",
         "lambdaRange": "0,039 - 0,045",
         "density": "30 - 45 kg/m³",
         "vaporResistance": "μ = 1 - 2",
@@ -411,7 +411,7 @@
       {
         "name": "Baustroh / Strohballen (Stroh)",
         "abbreviation": "ST",
-        "standard": "ETA-17/0559 / Allgemeingültige Zulassung",
+        "standard": "ETA-17/0247 (Baustroh), abZ Z-23.11-1595",
         "lambdaRange": "0,042 - 0,048",
         "density": "85 - 110 kg/m³",
         "vaporResistance": "μ = 1 - 2",
@@ -576,7 +576,7 @@
       {
         "titel": "4. U-Wert",
         "formel": "U = 1/4{,}96 = 0{,}20\\,\\text{W/(m}^2\\text{K)}",
-        "erklaerung": "Anforderung Bestand (GEG Anlage 7): U ≤ 0,24 – erfüllt."
+        "erklaerung": "Anforderung Bestand (Anlage 7 GModG, vormals GEG): U ≤ 0,24 – erfüllt."
       }
     ],
     "BpDaemmung.literatur": [
