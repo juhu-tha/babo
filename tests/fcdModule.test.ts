@@ -19,7 +19,7 @@ const FAELLE: { modul: keyof typeof FCD_MODUL; datei: string; alt: (fck: number)
   { modul: 'stahlbetonNullBisHundert', datei: 'src/modules/stahlbeton/StahlbetonNullBisHundert.tsx', alt: f => (0.85 * f) / 1.5, werte: [20, 25, 30, 35, 40, 50] },
   { modul: 'betonkennwerteTabelle', datei: 'src/modules/betonkennwerte/TabelleTab.tsx', alt: f => (0.85 * f) / 1.50, werte: fckKlassen },
   { modul: 'spannbetonKennwerte', datei: 'src/modules/spannbeton/SpannbetonKennwerte.tsx', alt: f => Number((0.85 * f / 1.5).toFixed(1)), werte: [...fckKlassen, ...bereich(0, 100, 0.1)], runden: 1 },
-  { modul: 'carbonbeton', datei: 'src/modules/Carbonbeton.tsx', alt: f => (0.85 * f) / 1.5, werte: bereich(30, 100, 5) },
+  { modul: 'carbonbeton', datei: 'src/calc/carbonbeton.ts', alt: f => (0.85 * f) / 1.5, werte: bereich(30, 100, 5) },
   { modul: 'interpretationNavigator', datei: 'src/modules/bauwerksuntersuchung/InterpretationNavigator.tsx', alt: f => (0.85 * f) / 1.5, werte: bereich(10, 50, 1) },
   { modul: 'historischStandard', datei: 'src/modules/HistorischeMaterialkennwerte.tsx', alt: f => (0.85 * f) / 1.5, werte: bereich(0, 120, 0.25) },
   { modul: 'historischBewertung', datei: 'src/modules/HistorischeMaterialkennwerte.tsx', alt: f => (0.85 * f) / 1.35, werte: bereich(0, 120, 0.25) },

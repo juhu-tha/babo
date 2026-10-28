@@ -5,6 +5,8 @@ import { verdunstungsrate, nachbehandlungsdauer } from '../src/calc/hydratation'
 import { bemessungswerteBeton, festigkeitsentwicklung } from '../src/calc/pruefverfahren';
 import { festbetonStatistik, konformitaetDruck } from '../src/calc/festbetonStatistik';
 import { biokohleBilanz } from '../src/calc/biokohlebeton';
+import { carbonbetonBiegung } from '../src/calc/carbonbeton';
+import { rcAufteilung } from '../src/calc/rcBeton';
 
 const fehler: string[] = [];
 const nahe = (ist: number, soll: number, tol = 5e-3) => Math.abs(ist - soll) <= tol * Math.max(Math.abs(soll), 1e-9);
@@ -53,6 +55,18 @@ pruefe('BK2 Speicher', b2.co2Speicher, 25.025); pruefe('BK2 Zementeinsparung', b
 pruefe('BK2 Minderung %', b2.minderungProzent, 16.7534); pruefe('BK2 w/z', b2.wzNeu, 0.548387);
 const b3 = biokohleBilanz({ mPK: 1, cGehalt: 80, fPerm: 0.80, ePK: 0.3, zRef: 300, deltaZ: 0, gwpZ: 0.80, w: 150, wAufnahme: 0 });
 pruefe('BK3 Zementäquivalent je kg Kohle', b3.nettoPK / 0.80, 2.55833);
+
+// Umsetzung 29.10.2026 (Entscheidungen 28.10. nachts)
+// T9-NB-1: XF3/XF4 doppelte Dauer wie XM (vorläufig): 5 ≤ T < 10 °C, sehr langsam → 2 · 15 = 30 d; < 5 °C mit Verlängerungshinweis
+const nbXf = nachbehandlungsdauer('sehr_langsam', 'xf34', '5_10');
+gilt(nbXf.tage === 30 && nbXf.hinweise.some(h => h.text.includes('vorläufig')), 'NB7 XF3/XF4 → 30 d, vorläufig');
+gilt(nachbehandlungsdauer('mittel', 'andere', '<5').hinweise.some(h => h.text.includes('verlängern')), 'NB8 < 5 °C Verlängerung');
+// T9-CB-1: Dehnungskontrolle – CB2/CB3: ε_c wäre 3,79 ‰ → Beton maßgebend, x = 8,20 mm, σ_tex = 1 860, m_Rd = 4,97 kNm/m
+const cb = carbonbetonBiegung({ h: 40, c: 10, aTex: 100, fTk: 2500, eTexGPa: 200, fCk: 50 });
+pruefe('CB3 x', cb.x, 8.204); pruefe('CB3 σ_tex', cb.sigmaTex, 1859.8); pruefe('CB3 m_Rd', cb.mRd, 4.969); pruefe('CB1 m_Rd ohne Kontrolle', cb.mRdOhneDehnungskontrolle, 5.117);
+gilt(cb.versagen === 'beton', 'CB2 Beton maßgebend');
+// T12-RE-1 (Betonteil, mit T9-GL-1): RC 45 Vol.-% der groben Gesteinskörnung (70 %) → 31,5 % der Gesteinskörnung
+pruefe('RE1 RC-Anteil', rcAufteilung(1, true).anteilGesamt, 0.315, 1e-9);
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
 console.log('OK: Modulprüfung Tranche 9');

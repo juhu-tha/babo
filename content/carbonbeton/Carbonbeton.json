@@ -31,7 +31,7 @@
     "spannungMpa": "Spannung (MPa)",
     "anwendungsbeispielCarbonbetonplatteStand": "Anwendungsbeispiel: Carbonbetonplatte (Standardwerte)",
     "gleichgewichtAmRechteckquerschnittTex": "Gleichgewicht am Rechteckquerschnitt; γ_tex = 1,3 als Lehrannahme",
-    "mRd51": "m_Rd ≈ 5,1 kNm/m bei nur 40 mm Plattendicke.",
+    "mRd51": "m_Rd ≈ 5,0 kNm/m bei nur 40 mm Plattendicke; maßgebend ist hier die Betonranddehnung 3,5 ‰, das Textil erreicht f_td nicht ganz.",
     "betonWikiTextilbetonCarbonbeton": "Beton.wiki: Textilbeton / Carbonbeton",
     "kohlenstofffaserverstärkterKunststoff": "Kohlenstofffaserverstärkter Kunststoff"
   },
@@ -39,23 +39,28 @@
     "Carbonbeton.schritte": [
       {
         "titel": "1. Gegeben",
-        "formel": "h = 40\\,\\text{mm},\\; c = 10\\,\\text{mm},\\; d = 30\\,\\text{mm},\\; a_{tex} = 100\\,\\text{mm}^2/\\text{m},\\; \\text{C50/60}",
+        "formel": "h = 40\\,\\text{mm},\\; c = 10\\,\\text{mm},\\; d = 30\\,\\text{mm},\\; a_{tex} = 100\\,\\text{mm}^2/\\text{m},\\; E_{tex} = 200\\,\\text{GPa},\\; \\text{C50/60}",
         "erklaerung": "Textile Carbonbewehrung, f_tk = 2500 N/mm²."
       },
       {
         "titel": "2. Bemessungswerte",
         "formel": "f_{td} = 2500/1{,}3 = 1923\\,\\text{N/mm}^2;\\; f_{cd} = 0{,}85 \\cdot 50/1{,}5 = 28{,}3\\,\\text{N/mm}^2",
-        "erklaerung": "α_cc = 0,85 nach NA."
+        "erklaerung": "α_cc = 0,85 nach NA; γ_tex = 1,3 als Lehrannahme."
       },
       {
-        "titel": "3. Druckzone",
-        "formel": "y = \\frac{100 \\cdot 1923}{1000 \\cdot 28{,}3} = 6{,}8\\,\\text{mm};\\; z = 30 - 6{,}8/2 = 26{,}6\\,\\text{mm}",
-        "erklaerung": "Gleichgewicht F_c = F_t."
+        "titel": "3. Annahme Textilbruch und Dehnungskontrolle",
+        "formel": "y = \\frac{100 \\cdot 1923}{1000 \\cdot 28{,}3} = 6{,}8\\,\\text{mm};\\; x = y/0{,}8 = 8{,}5\\,\\text{mm};\\; \\varepsilon_c = \\frac{1923}{200\\,000} \\cdot \\frac{8{,}5}{30 - 8{,}5} = 3{,}79\\,\\text{‰} > 3{,}5\\,\\text{‰}",
+        "erklaerung": "Der Beton würde vor dem Textil versagen – die Annahme „Textil erreicht f_td“ trifft nicht zu."
       },
       {
-        "titel": "4. Biegewiderstand",
-        "formel": "m_{Rd} = 100 \\cdot 1923 \\cdot 26{,}6 \\cdot 10^{-6} = 5{,}1\\,\\text{kNm/m}",
-        "erklaerung": "Je Meter Plattenbreite."
+        "titel": "4. Gleichgewicht bei Betonversagen",
+        "formel": "a_{tex} E_{tex} \\cdot 3{,}5\\,\\text{‰} \\cdot \\frac{d - x}{x} = 1000 \\cdot 0{,}8\\,x\\,f_{cd} \\Rightarrow x = 8{,}20\\,\\text{mm};\\; \\sigma_{tex} = 1860\\,\\text{N/mm}^2;\\; z = 30 - 0{,}8 \\cdot 8{,}20/2 = 26{,}7\\,\\text{mm}",
+        "erklaerung": "Quadratische Gleichung in x; die Textilspannung bleibt unter f_td."
+      },
+      {
+        "titel": "5. Biegewiderstand",
+        "formel": "m_{Rd} = 100 \\cdot 1860 \\cdot 26{,}7 \\cdot 10^{-6} = 4{,}97\\,\\text{kNm/m}",
+        "erklaerung": "Je Meter Plattenbreite; ohne Dehnungskontrolle ergäben sich 5,12 kNm/m (3 % auf der unsicheren Seite)."
       }
     ],
     "Carbonbeton.weblinks.0": {
@@ -94,6 +99,11 @@
         "erklaerung": "Aufnehmbares Biegemoment m_Rd [kNm/m]: Bewehrungsquerschnitt a_tex multipliziert mit Bemessungszugfestigkeit f_td und innerem Hebelarm z.",
         "formel": "m_{Rd} = a_{tex} \\cdot f_{td} \\cdot z",
         "quelle": "Gleichgewicht am Rechteckquerschnitt (analog EC2)"
+      },
+      {
+        "erklaerung": "Dehnungskontrolle: Die Betonranddehnung beim Erreichen von f_td darf ε_cu3 = 3,5 ‰ nicht überschreiten; sonst Gleichgewicht mit σ_tex = E_tex·ε_tex < f_td.",
+        "formel": "\\varepsilon_c = \\frac{f_{td}}{E_{tex}} \\cdot \\frac{x}{d - x} \\le \\varepsilon_{cu3} = 3{,}5\\,\\text{‰}",
+        "quelle": "Ebenbleiben des Querschnitts (analog DIN EN 1992-1-1, 6.1)"
       },
       {
         "erklaerung": "Linear-elastisches Spannungs-Dehnungs-Verhalten bis zum Sprödbruch ohne plastisches Fließplateau.",
