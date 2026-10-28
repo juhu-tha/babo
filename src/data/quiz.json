@@ -2583,7 +2583,7 @@
       "Der kleinste Einzelwert"
     ],
     "correctIdx": 2,
-    "explanation": "Kennwert ist der Median. Weichen mehr als 20 % der Werte um mehr als 25 % vom Median ab, wird die ganze Messreihe verworfen.",
+    "explanation": "Kennwert ist der Median. Weichen mehr als 20 % der Werte um mehr als 6 Einheiten vom Median ab, wird der ganze Messsatz verworfen.",
     "bloom": "Erinnern",
     "niveau": "B",
     "distraktorFeedback": [
@@ -2595,18 +2595,17 @@
     "gapAnalysis": {
       "topic": "Rückprallhammer: Auswertung",
       "misconception": "Mittelwertbildung wie bei Festigkeitsprüfungen wird übertragen.",
-      "coreRule": "≥ 9 Schläge, Abstand ≥ 25 mm, Median; Verwerfungskriterium 20 %/25 %.",
+      "coreRule": "≥ 9 Schläge, Abstand ≥ 25 mm, Median; Verwerfungskriterium: mehr als 20 % der Werte mehr als 6 Einheiten vom Median.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Rückprallhammer: Auswertung“ im Modul Probenahme & Erkundung noch einmal durch.",
       "targetModuleTab": "probenahme",
       "targetModuleLabel": "Probenahme & Erkundung"
     },
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
-    },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27"
+      "ergebnis": "korrigiert",
+      "hinweis": "Umsetzung 29.10.: Verwerfungskriterium auf „mehr als 20 % der Einzelwerte um mehr als 6 Einheiten vom Median“ umgestellt (Entscheidung 28.10., Normtext DIN EN 12504-2 vorläufig) – korrigiert"
+    }
   },
   {
     "id": "q_prob_5",

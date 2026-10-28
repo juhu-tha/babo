@@ -5,7 +5,9 @@ import { umrechnen } from '../src/calc/einheiten';
 import { molmasse, stoffumsatz, zeitBisBewehrung, phAusHydroxid, hydroxidAusPh, akrDehnung, stellmittelViskositaet } from '../src/calc/bauchemie';
 import { festbetonStatistik, konformitaetDruck } from '../src/calc/festbetonStatistik';
 import { gumMessunsicherheit, ringversuch, werkzeugToleranz, bohrkernPruefung, spaltzugfestigkeit, zugversuchStahl, holzSchaetzung } from '../src/calc/pruefverfahren';
-import { rueckprall, rueckprallLehrkurve } from '../src/calc/bauwerksuntersuchung';
+import { rueckprall, rueckprallLehrkurve, rueckprallMesssatz } from '../src/calc/bauwerksuntersuchung';
+import { kombination610 } from '../src/calc/sicherheitskonzept';
+import materials from '../src/data/materials.json';
 import { potentialReihe, auslagerung, frischbeton, druckpruefung, moertelprismen } from '../src/calc/laborversuche';
 
 const fehler: string[] = [];
@@ -95,6 +97,26 @@ const mp = moertelprismen([{ Ff: 2.9, Fc1: 79.2, Fc2: 81.0 }, { Ff: 3.1, Fc1: 80
 pruefe('HM1 R_f', mp.rfMittel, 7.03125, 1e-9); pruefe('HM2 R_c', mp.druck.mittel, 50.07292, 1e-6); gilt(mp.klasse === '42,5', 'HM2 Klasse 42,5');
 const mp2 = moertelprismen([{ Ff: 2.9, Fc1: 79.2, Fc2: 81.0 }, { Ff: 3.1, Fc1: 80.1, Fc2: 65.0 }, { Ff: 3.0, Fc1: 82.3, Fc2: 79.6 }], 28);
 pruefe('HM3 Mittel der übrigen 5', mp2.druck.mittel, 50.275, 1e-9); gilt(mp2.druck.verworfen === 3 && mp2.druck.gueltig, 'HM3 Wert 4 verworfen, Serie gültig');
+
+// Umsetzung 29.10.2026 (Entscheidungen 28.10. nachts)
+// T4-PN-2: Messsatz verwerfen, wenn > 20 % der Einzelwerte > 6 Einheiten vom Median abweichen (vorläufig)
+//   9 Werte 36 36 37 38 38 39 40 44 46: Median 38; |44−38| = 6 zählt nicht, 46 → 1 von 9 = 11 % → gültig
+const ms1 = rueckprallMesssatz([36, 38, 46, 37, 39, 40, 38, 44, 36]);
+pruefe('PN8 Median', ms1.median, 38, 1e-12); gilt(ms1.abweichend.length === 1 && !ms1.verworfen, 'PN8 ein Ausreißer, Messsatz gültig');
+//   zwei Werte > 6 Einheiten (27, 47) von 9: 22 % > 20 % → verworfen; mit 10 Werten 2/10 = 20 % → nicht verworfen
+const ms2 = rueckprallMesssatz([27, 38, 47, 37, 39, 40, 38, 41, 36]);
+gilt(ms2.verworfen && ms2.abweichend.length === 2, 'PN9 2 von 9 → verworfen');
+const ms3 = rueckprallMesssatz([27, 38, 47, 37, 39, 40, 38, 41, 36, 38]);
+gilt(!ms3.verworfen && Math.abs(ms3.anteil - 0.2) < 1e-12, 'PN10 2 von 10 = 20 % → nicht verworfen');
+//   Altregel 25 %: 27 weicht um 29 % ab, 47 um 24 % – die neue Regel zählt beide
+gilt(!rueckprallMesssatz([]).gueltig && rueckprallMesssatz([30, 31]).hinweise.some(h => h.text.includes('mindestens 9')), 'PN11 Grenzen Messsatz');
+// T4-SK-2: Startwerte und getauschte Leiteinwirkung (23,7 bzw. 23,25 kN)
+const sk = kombination610({ gk: 10, qk1: 5, qk2: 3, psi01: 0.7, psi02: 0.6, gammaG: 1.35, gammaQ: 1.5, getauscht: true });
+pruefe('SK4 getauscht', sk.ed, 23.25, 1e-12); pruefe('SK4 Maximum', sk.edMax, 23.7, 1e-12);
+// T4-MK-1 / T4-KG-1: λ KS 1,8 = 0,99, Mauerziegel 1,6 = 0,68 (DIN 4108-4), c_p Stahl 450 J/(kgK) (DIN EN ISO 10456)
+const mat = (id: string) => materials.materials.find(m => m.id === id)!.properties;
+pruefe('MK1 λ KS 12', mat('mauerwerk').thermalCond, 0.99, 1e-12); pruefe('MK2 λ MZ 12', mat('ziegel').thermalCond, 0.68, 1e-12);
+pruefe('KG6 c_p Baustahl', mat('stahl').heatCap, 450, 1e-12); pruefe('KG7 c_p Spannstahl', mat('spannstahl').heatCap, 450, 1e-12);
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
 console.log('OK: alle Nachrechnungen der Tranche 4 stimmen');

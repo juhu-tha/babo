@@ -4,7 +4,7 @@ import { Play, RotateCcw, ShieldCheck, Check, Download, FileText, Target, Crossh
 import { InlineMath } from 'react-katex';
 import { LabProtocolRecord, exportToCSV, generateIntegrityChecksum } from '@/src/utils/labExportUtils';
 import { saveStoredLabProtocol } from '@/src/utils/studyStorage';
-import { rueckprallLehrkurve, rueckprallRichtungskorrektur } from '@/src/calc/bauwerksuntersuchung';
+import { rueckprallLehrkurve, rueckprallRichtungskorrektur, rueckprallMesssatz } from '@/src/calc/bauwerksuntersuchung';
 
 type ImpactAngle = 'horizontal' | 'downward' | 'upward';
 type ConcreteAge = '28d' | '1year' | 'bestand_alt';
@@ -100,15 +100,12 @@ export default function SchmidtHammerSimulator() {
       return { count: 0, median: 0, mean: 0, stdDev: 0, correctedR: 0, estFck: 0, outliers: [] as number[], seriesInvalid: false };
     }
 
-    // Calculate median
-    const sorted = [...valid].sort((a, b) => a - b);
-    const mid = Math.floor(sorted.length / 2);
-    const median = sorted.length % 2 !== 0 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
-
-    // DIN EN 12504-2: Kennwert ist der Median. Weichen mehr als 20 % der Einzelwerte um mehr als 25 %
-    // vom Median ab, ist die gesamte Messreihe zu verwerfen. Einzelwerte werden nicht gestrichen.
-    const outliers = valid.filter(v => Math.abs(v - median) / median > 0.25);
-    const seriesInvalid = outliers.length > 0.2 * valid.length;
+    // DIN EN 12504-2: Kennwert ist der Median. Weichen mehr als 20 % der Einzelwerte um mehr als 6 Einheiten
+    // vom Median ab, ist der ganze Messsatz zu verwerfen; Einzelwerte werden nicht gestrichen (zentraler Kern, Umsetzung 29.10.)
+    const satz = rueckprallMesssatz(valid);
+    const median = satz.median;
+    const outliers = satz.abweichend;
+    const seriesInvalid = satz.verworfen;
 
     const mean = valid.reduce((a, b) => a + b, 0) / valid.length;
     const variance = valid.reduce((acc, v) => acc + Math.pow(v - mean, 2), 0) / (valid.length > 1 ? valid.length - 1 : 1);
@@ -162,12 +159,12 @@ export default function SchmidtHammerSimulator() {
         'Standardabweichung s': formatDeZahl(stats.stdDev, 2),
         'Korrigierter Rückprallwert R_korr (aus Median)': formatDeZahl(stats.correctedR, 1),
         'Schätzwert Druckfestigkeit, Lehr-Näherung (MPa)': formatDeZahl(stats.estFck, 1),
-        'Werte mit > 25 % Abweichung vom Median': formatDeWert(stats.outliers.length)
+        'Werte mit > 6 Einheiten Abweichung vom Median': formatDeWert(stats.outliers.length)
       },
       status: stats.seriesInvalid ? 'Ungültig' : 'Plausibel',
       validationNotes: [
         stats.seriesInvalid
-          ? 'Mehr als 20 % der Einzelwerte weichen um mehr als 25 % vom Median ab: Messreihe nach DIN EN 12504-2 verwerfen und wiederholen.'
+          ? 'Mehr als 20 % der Einzelwerte weichen um mehr als 6 Einheiten vom Median ab: Messsatz nach DIN EN 12504-2 verwerfen und wiederholen (Schwelle vorläufig, am Normtext zu bestätigen).'
           : 'Messreihe mit 9 Schlägen; Verwerfungskriterium nach DIN EN 12504-2 nicht erfüllt, Median ist gültiger Kennwert.',
         `Schätzwert ${formatDeZahl(stats.estFck, 1)} MPa aus einer Lehr-Näherung – eine Festigkeitsaussage erfordert die Kalibrierung an Bohrkernen nach DIN EN 13791.`
       ],
@@ -427,7 +424,7 @@ export default function SchmidtHammerSimulator() {
               <div className="p-3 bg-amber-50 rounded-xl border border-amber-200 text-amber-900 text-xs flex items-center gap-2 mb-2">
                 <AlertTriangle size={16} className="text-amber-700 shrink-0" />
                 <span>
-                  <strong>{formatDeWert(stats.outliers.length)} Einzelwert(e)</strong> weichen um mehr als 25 % vom Median ab. Nach DIN EN 12504-2 ist die Messreihe zu verwerfen, wenn das mehr als 20 % der Werte betrifft{stats.seriesInvalid ? ' – hier der Fall: Messreihe wiederholen.' : ' – hier nicht der Fall; der Median bleibt gültig.'}
+                  <strong>{formatDeWert(stats.outliers.length)} Einzelwert(e)</strong> weichen um mehr als 6 Einheiten vom Median ab. Nach DIN EN 12504-2 ist der Messsatz zu verwerfen, wenn das mehr als 20 % der Werte betrifft (Schwelle vorläufig){stats.seriesInvalid ? ' – hier der Fall: Messreihe wiederholen.' : ' – hier nicht der Fall; der Median bleibt gültig.'}
                 </span>
               </div>
             )}

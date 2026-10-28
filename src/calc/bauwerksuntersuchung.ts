@@ -98,6 +98,36 @@ export function rueckprallKalibrierung(paare: readonly KalibrierPaar[]): Kalibri
   return { n: paare.length, deltaF, sDelta, ...abschluss(h) };
 }
 
+/**
+ * Auswertung eines Messsatzes (Einzelschläge einer Prüffläche) nach DIN EN 12504-2:2021-10 (Umsetzung 29.10.2026,
+ * T4-PN-2/T12-BU-7): Kennwert ist der Median aller Einzelwerte; Einzelwerte werden nicht gestrichen. Weichen mehr als
+ * 20 % der Einzelwerte um mehr als 6 Einheiten vom Median ab, wird der ganze Messsatz verworfen. Schwelle und Anteil
+ * öffentlich nicht im Wortlaut belegt (vorläufig, F-Freigabe Rückprall am Normtext DIN EN 12504-2).
+ */
+export const RUECKPRALL_MESSSATZ = { abweichungEinheiten: 6, anteilMax: 0.2, nMin: 9 } as const;
+export interface RueckprallMesssatzErgebnis extends Ergebnis {
+  n: number; median: number;
+  /** Einzelwerte mit |R − Median| > 6 */
+  abweichend: number[];
+  /** Anteil der abweichenden Werte (0 … 1) */
+  anteil: number;
+  verworfen: boolean;
+}
+export function rueckprallMesssatz(werte: readonly number[]): RueckprallMesssatzErgebnis {
+  const h: Hinweis[] = [];
+  muss(h, werte.length > 0 && werte.every(v => Number.isFinite(v)), 'messsatz', 'Der Messsatz braucht mindestens einen Rückprallwert, alle Werte als Zahl.');
+  if (hatFehler(h)) return { n: werte.length, median: NaN, abweichend: [], anteil: NaN, verworfen: false, ...abschluss(h) };
+  const s = [...werte].sort((a, b) => a - b);
+  const m = Math.floor(s.length / 2);
+  const median = s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
+  const abweichend = werte.filter(v => Math.abs(v - median) > RUECKPRALL_MESSSATZ.abweichungEinheiten + 1e-9);
+  const anteil = abweichend.length / werte.length;
+  const verworfen = anteil > RUECKPRALL_MESSSATZ.anteilMax + 1e-12;
+  if (werte.length < RUECKPRALL_MESSSATZ.nMin) h.push({ stufe: 'warnung', feld: 'messsatz', text: `Weniger als ${RUECKPRALL_MESSSATZ.nMin} Einzelwerte: DIN EN 12504-2 verlangt mindestens 9 gültige Schläge je Prüffläche.` });
+  if (verworfen) h.push({ stufe: 'warnung', feld: 'messsatz', text: 'Mehr als 20 % der Einzelwerte weichen um mehr als 6 Einheiten vom Median ab: Messsatz verwerfen und wiederholen (DIN EN 12504-2; vorläufig, Normtext prüfen).' });
+  return { n: werte.length, median, abweichend, anteil, verworfen, ...abschluss(h) };
+}
+
 export function rueckprall(rueckprallwert: number, richtung: Schlagrichtung, karbTiefeMm: number): RueckprallErgebnis {
   const h: Hinweis[] = [];
   muss(h, istEndlich(rueckprallwert, karbTiefeMm), 'eingabe', 'Rückprallwert und Karbonatisierungstiefe müssen Zahlen sein.');
