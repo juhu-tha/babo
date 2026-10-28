@@ -6491,8 +6491,8 @@
     "niveau": "B",
     "distraktorFeedback": [
       "0,19 W/(m²K) ergäbe sich mit rund 16 cm Dämmung; bei 12 cm bleibt U bei etwa 0,24.",
-      "0,29 W/(m²K) entspräche nur rund 10 cm Dämmung oder einem schlechteren λ.",
-      "0,35 W/(m²K) entsteht, wenn der Bestandswiderstand nicht addiert wird; richtig ist 1/(R_alt + R_Dä).",
+      "0,29 W/(m²K) entsteht, wenn der Bestandswiderstand nicht addiert wird (1/3,43); richtig ist 1/(R_alt + R_Dä).",
+      "0,35 W/(m²K) entspräche nur rund 7,5 cm Dämmung; bei 12 cm ergibt sich etwa 0,24.",
       ""
     ],
     "gapAnalysis": {
@@ -6506,8 +6506,9 @@
     "quelle": "DIN EN ISO 6946:2018-03",
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-26",
-      "ergebnis": "ok"
+      "am": "2026-10-28",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 28.10. (Runde 3): Rückmeldungen zu 0,29 und 0,35 W/(m²K) korrigiert (0,29 ist der Wert ohne R_alt, 0,35 entspräche rund 7,5 cm Dämmung) – korrigiert"
     }
   },
   {
@@ -9760,7 +9761,7 @@
       "≈ 42,5 mm – über c_min, ohne weitere Folgen",
       "≈ 39,6 mm – knapp unter c_min = 40 mm",
       "≈ 51,5 mm – das Vorhaltemaß ist erfüllt",
-      "≈ 33,0 mm – Rückbau des Bauteils nötig"
+      "≈ 33,5 mm – Rückbau des Bauteils nötig"
     ],
     "correctIdx": 1,
     "explanation": "c_5% = 47 − 1,645 · 4,5 = 39,6 mm < c_min = 40 mm. Eine knappe Unterschreitung ist mit dem Tragwerksplaner zu bewerten (z. B. Oberflächenschutz, Instandhaltungsplan).",
@@ -9770,7 +9771,7 @@
       "42,5 mm entsprechen nur einer Standardabweichung (1,0 · s) unter dem Mittelwert, nicht dem 5-%-Quantil.",
       "",
       "51,5 mm liegen über dem Mittelwert; das Quantil muss darunter liegen.",
-      "33 mm ergäben sich mit 3 · s; das wäre ein 0,1-%-Quantil und überzeichnet den Befund."
+      "33,5 mm ergäben sich mit 3 · s; das wäre etwa ein 0,1-%-Quantil und überzeichnet den Befund."
     ],
     "gapAnalysis": {
       "topic": "Betondeckung auswerten",
@@ -9783,8 +9784,9 @@
     "quelle": "DBV-Merkblatt Betondeckung und Bewehrung; DIN EN 1992-1-1 + NA, 4.4.1",
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-26",
-      "ergebnis": "ok"
+      "am": "2026-10-28",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 28.10. (Runde 3): Distraktor 33,0 mm auf 33,5 mm berichtigt (47 − 3 · 4,5 = 33,5 mm), Rückmeldung angepasst – korrigiert"
     }
   },
   {
@@ -10865,7 +10867,7 @@
     "question": "Bohrmehlprobe: feucht 85,0 g, darrtrocken 80,2 g, maximale Wasseraufnahme 15,0 M.-%. Wie groß ist der Durchfeuchtungsgrad?",
     "options": [
       "6,0 %",
-      "37 %",
+      "38 %",
       "40 %",
       "60 %"
     ],
@@ -10875,7 +10877,7 @@
     "niveau": "B",
     "distraktorFeedback": [
       "6,0 % ist der massebezogene Feuchtegehalt, noch nicht der Durchfeuchtungsgrad.",
-      "37 % ergeben sich, wenn die Feuchte fälschlich auf die Feuchtmasse bezogen wird (5,6 M.-%).",
+      "38 % ergeben sich, wenn die Feuchte fälschlich auf die Feuchtmasse bezogen wird (4,8/85,0 = 5,6 M.-%).",
       "",
       "60 % wären es erst bei einem Feuchtegehalt von 9,0 M.-%."
     ],
@@ -10890,8 +10892,9 @@
     "quelle": "DIN EN ISO 12570 (Darrverfahren); WTA-Merkblatt 4-11",
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-26",
-      "ergebnis": "ok"
+      "am": "2026-10-28",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 28.10. (Runde 3): Distraktor 37 % auf 38 % berichtigt (Bezug auf Feuchtmasse: 5,65/15,0 = 38 %), Rückmeldung angepasst – korrigiert"
     }
   },
   {
@@ -12674,7 +12677,7 @@
     "distraktorFeedback": [
       "0,75 ist der Recall allein.",
       "",
-      "0,90 ist die Precision bzw. hier auch die Genauigkeit.",
+      "0,90 ist nur die Precision TP/(TP + FP); der Recall von 0,75 fehlt.",
       "0,69 ergibt sich aus TP/(TP + FP + FN) (Jaccard-Index), nicht aus F1."
     ],
     "gapAnalysis": {
@@ -12688,8 +12691,9 @@
     "quelle": "ISO/IEC 22989:2022; Goodfellow/Bengio/Courville: Deep Learning, Kap. 11",
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-26",
-      "ergebnis": "ok"
+      "am": "2026-10-28",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 28.10. (Runde 3): Rückmeldung zu 0,90 berichtigt (Genauigkeit/Accuracy ist ohne TN nicht bestimmbar; 0,90 ist die Precision) – korrigiert"
     }
   },
   {
@@ -43304,7 +43308,7 @@
     "topic": "Abminderungsfaktor",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1996-3",
-    "question": "Wie groß ist der Abminderungsfaktor Φ = 0,85 − 0,0011 · (h_ef/t)² für die Wand mit h_ef/t = 15,71?",
+    "question": "Wie groß ist der Abminderungsfaktor Φ = 0,85 − 0,0011 · (h_ef/t)² für die Wand mit h_ef/t = 2,75 m/0,175 m ≈ 15,71?",
     "options": [
       "Φ = 0,833",
       "Φ = 0,272",
@@ -43312,7 +43316,7 @@
       "Φ = 0,578"
     ],
     "correctIdx": 3,
-    "explanation": "Φ = 0,85 − 0,0011 · 15,71² = 0,85 − 0,272 = 0,578.",
+    "explanation": "Φ = 0,85 − 0,0011 · 15,714² = 0,85 − 0,272 = 0,578 (mit dem ungerundeten Wert h_ef/t = 2,75/0,175).",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -43331,8 +43335,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-28",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 28.10. (Runde 3): Rundung klargestellt: mit gerundetem 15,71 ergäbe sich 0,579; Frage nennt jetzt h_ef/t = 2,75 m/0,175 m, Erklärung rechnet mit 15,714 – korrigiert"
     }
   },
   {
@@ -43595,10 +43600,10 @@
     "normRef": "",
     "question": "Für 200 m³ Beton werden verglichen: Rezeptur A mit 320 kg/m³ CEM I (850 kg CO₂-eq/t) und Rezeptur B mit 340 kg/m³ CEM III/B (300 kg CO₂-eq/t). Welche Einsparung erzielt B gegenüber A beim Zement-GWP?",
     "options": [
-      "34,0 t CO₂-eq, das sind rund 62 %",
-      "34,0 t CO₂-eq, das sind rund 167 %",
-      "35,2 t CO₂-eq, das sind rund 65 %",
-      "20,4 t CO₂-eq, das sind rund 38 %"
+      "34,0 t CO₂-eq, das sind rund 62,5 %",
+      "34,0 t CO₂-eq, das sind rund 166,7 %",
+      "35,2 t CO₂-eq, das sind rund 64,7 %",
+      "20,4 t CO₂-eq, das sind rund 37,5 %"
     ],
     "correctIdx": 0,
     "explanation": "GWP_A = 64 t · 0,85 = 54,4 t; GWP_B = 68 t · 0,30 = 20,4 t. ΔGWP = 34,0 t, bezogen auf A rund 62,5 %. Der höhere Zementgehalt von B mindert die Einsparung gegenüber dem reinen Faktorvergleich.",
@@ -43620,8 +43625,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-28",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 28.10. (Runde 3): Prozentangaben auf eine Nachkommastelle wie im Modul (62,5 % statt „rund 62 %“; Distraktoren 166,7/64,7/37,5 %) – korrigiert"
     }
   },
   {
@@ -45082,7 +45088,7 @@
       "Das Skalarprodukt allein hängt von der Vektorlänge ab; erst die Normierung liefert die Kosinus-Ähnlichkeit.",
       "A ist mit 0,707 zweitplatziert; B ist dem Fragevektor ähnlicher.",
       "",
-      "Die Kosinus-Ähnlichkeit von C beträgt nur 0,50; hier fehlt die Division durch die Vektorlängen."
+      "Die Kosinus-Ähnlichkeit von C beträgt nur 3/(1,414 · 4,243) = 0,50; C zeigt in eine andere Richtung als q."
     ],
     "gapAnalysis": {
       "topic": "Kosinus-Ähnlichkeit",
@@ -45094,8 +45100,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-28",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 28.10. (Runde 3): Rückmeldung zum Distraktor „C mit cos θ ≈ 1,00“ berichtigt (fehlende Normierung ergäbe 3, nicht 1,00) – korrigiert"
     }
   },
   {
