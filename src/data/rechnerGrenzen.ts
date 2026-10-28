@@ -253,7 +253,8 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   bp_verkehr_tiefbau: {
     kurz: "Speichervolumen und Länge einer Rigole (Lehrmodell in Anlehnung an DWA-A 138-1:2024-10); dazu Betondecken, Bahn- und Tunnelbau.",
     grenzen: [
-      "Rigole: k_f = 1·10⁻⁵ m/s fest, k_f,u = k_f/2 (Ansatz 2005) nur über die Sohle; f_Ort und Seitenflächen nach DWA-A 138-1 nicht abgebildet; Querschnitt fest, ein Regenereignis ohne Häufigkeit.",
+      "Rigole: vereinfachtes Verfahren nach DWA-A 138-1:2024-10 mit k_i = f_Ort·f_Methode·k_f und Seiten-/Stirnflächen mit halber bzw. (vollständige Durchsickerung) voller Höhe; f_Ort und f_Methode vorläufig nach Sekundärquellen.",
+      "Rigole: Querschnitt 1,2 × 0,6 m und f_Z = 1,2 fest; eine Regendauer ohne Iteration über die Dauerstufen der Regenstatistik (KOSTRA-DWD), kein Drosselabfluss, keine Mulde.",
       "Betondecke: Westergaard-Randspannung (Originalgleichung mit Ersatzradius b, ν = 0,15) ohne Wölbspannungen und Ermüdung; zulässige Spannung pauschal 2,25 N/mm².",
       "Schiene: σ = E·α·ΔT bei vollständiger Behinderung; Tunnel: Kesselformel ohne Biegung, γ_c = 1,5 (vorübergehend); ZTV-ING Teil 5 / Ril 853 nicht abgebildet.",
     ],
