@@ -126,6 +126,8 @@ Weitere Angaben sind plausibel und ohne Befund: Pantheon 43,3 m, Monier-Patent 1
 
 **F-Freigabe-Stellen:** λ der Mauersteine nach DIN 4108-4 (falls T4-MK-1 so entschieden wird).
 
+**Umsetzung 29.10.2026 – T4-MK-1:** λ Kalksandstein KS 12 (Rohdichteklasse 1,8) 0,9 → **0,99 W/(mK)**, Ziegelmauerwerk MZ 12 (1,6) 0,5 → **0,68 W/(mK)** nach DIN 4108-4, Tab. 1 (Mauerwerk mit Normal- oder Dünnbettmörtel); Vollziegel 1,8 mit 0,81 unverändert. Lesehinweis im Modul nennt Quelle und Werte („vorläufig, F-Freigabe“). Zugleich c_p Baustahl/Spannstahl 440 → 450 J/(kgK) (T4-KG-1). Test `tests/modulpruefungTranche4.test.ts` (MK1, MK2, KG6, KG7). Quelle: DIN 4108-4 (Bemessungswerte, Normtext zur Bestätigung).
+
 **Empfehlung:** freigabefähig nach Klärung von T4-MK-1.
 
 - [ ] Modul freigeben
@@ -160,6 +162,8 @@ Weitere Angaben sind plausibel und ohne Befund: Pantheon 43,3 m, Monier-Patent 1
   
   DIN EN ISO 10456 nennt 450 J/(kgK). Kein Rechenfehler; eine Vereinheitlichung wird empfohlen.
 
+**Umsetzung 29.10.2026 – T4-KG-1:** c_p von Stahl einheitlich **450 J/(kgK)**: Vorbelegung „Stahl“ des Wärmeeindringkoeffizienten (460 → 450), Auswahl der Wärmespeicherung (480 → 450; Schlüssel `stahlC480` unverändert, Text „Stahl (c=450)“), Kennwerte-Datenbank (440 → 450). Quelle: DIN EN ISO 10456.
+
 **Empfehlung:** freigabefähig.
 
 - [ ] Modul freigeben
@@ -190,6 +194,8 @@ Weitere Angaben sind plausibel und ohne Befund: Pantheon 43,3 m, Monier-Patent 1
 - **offen – Frage T4-BC-2 (Fugendimensionierung):** Das Modul gibt für DIN 18540 an: b : t ≈ 1 : 1 bis 10 mm Fugenbreite, darüber 2 : 1 (z. B. 20 mm → 10 mm). Die Norm tabelliert die Dichtstoffdicke je Fugenbreite mit Grenzabmaßen. Bitte am Normtext bestätigen, dass die Faustregel die Tabelle abbildet; sonst durch die Tabellenwerte ersetzen.
 
 **F-Freigabe-Stellen:** DIN 18540, Tabelle Fugenbreite/Dichtstoffdicke (T4-BC-2).
+
+**Umsetzung 29.10.2026 – T4-BC-2:** Normtext: Die Faustregel b : t bleibt und ist jetzt als „Faustregel … Lehrwert; DIN 18540 tabelliert die Dichtstoffdicke je Fugenbreite mit Grenzabmaßen – Tabellenwerte am Normtext prüfen, vorläufig, F-Freigabe“ gekennzeichnet. Fachgebiet: `DIN 18540` als Alternative bei „Bauprodukte“ in `scripts/auditDaten.ts` angehängt. Quelle: DIN 18540 (Normtext).
 
 **Empfehlung:** freigabefähig nach Korrektur T4-BC-1 und Klärung von T4-BC-2.
 
@@ -222,6 +228,8 @@ Teilsicherheitsbeiwerte (1,35/1,00; 1,50/0; γ_C 1,50, γ_S 1,15, γ_M0 1,00, γ
   - ein gemeinsames γ_G.
 - **offen – Frage T4-SK-2:** Der Rechner setzt Q_k,1 immer als Leiteinwirkung an. Nach Gl. 6.10 ist jede veränderliche Einwirkung einmal als Leiteinwirkung zu untersuchen. Soll ein Schalter „Leiteinwirkung tauschen“ mit Anzeige des Maximums ergänzt werden? Der Zustand `psi0_1` wird in der Komponente nicht verwendet.
 - Hinweis für andere Module: `normen_ausblick` und `statistik` nennen EN 1990:2023 ohne die neue Benennung EN 1990-1. Sie gehören nicht zu dieser Tranche und wurden nicht geändert.
+
+**Umsetzung 29.10.2026 – T4-SK-2:** Neuer Kern `src/calc/sicherheitskonzept.ts` (`kombination610`): beide Kombinationen nach Gl. 6.10 (Q_k,1 bzw. Q_k,2 als Leiteinwirkung), Schalter „Leiteinwirkung tauschen“, ψ₀ für Q_k,1 jetzt wählbar und wirksam (vorher unbenutzter Zustand `psi0_1`), Anzeige des Maximums mit maßgebender Leiteinwirkung und Hinweis, wenn die gewählte Kombination nicht maßgebend ist. Startwerte: 23,7 kN (Q_k,1 Leit) bzw. 23,25 kN (getauscht). Grenzen in `rechnerGrenzen.ts` angepasst. Test `tests/sicherheitskonzept.test.ts` (3 Fälle, Grenzen, Fuzz 1 000). Quelle: DIN EN 1990, 6.4.3.2, Gl. 6.10.
 
 **Empfehlung:** freigabefähig nach Korrektur T4-SK-1 und Klärung von T4-SK-2.
 
@@ -268,6 +276,8 @@ Dazu `content/probenahme/Probenahme.json` mit drei Beispielen und die Lernziele.
 - **offen – Frage T4-PN-2 (Messreihe nach DIN EN 12504-2):** Das Modul schreibt: „Weichen mehr als 20 % der Einzelwerte um mehr als 25 % vom Median ab, wird die gesamte Messreihe verworfen“. Nach meinem Kenntnisstand nennt DIN EN 12504-2 als Schwelle eine Abweichung um **6 Einheiten** vom Median. Öffentlich war der Wortlaut nicht belegbar. Bitte am Normtext bestätigen.
 
 **F-Freigabe-Stellen:** Verwerfungsregel der Messreihe, DIN EN 12504-2:2021-10, Auswertung (T4-PN-2).
+
+**Umsetzung 29.10.2026 – T4-PN-2:** Verwerfungsregel als Kern `rueckprallMesssatz` in `src/calc/bauwerksuntersuchung.ts`: Median aller Einzelwerte, keine Streichung; der Messsatz wird verworfen, wenn **mehr als 20 % der Einzelwerte um mehr als 6 Einheiten** vom Median abweichen (vorher 25 %). Als „vorläufig, F-Freigabe“ gekennzeichnet. Verwendet im Schmidt-Hammer-Simulator (Labor); Texte in Probenahme, Prüfkatalog und Diagnosedaten angepasst (zugleich T12-BU-7). Quizfrage `q_prob_4` (Erklärung, Kernregel) korrigiert, Freigabe zurückgenommen. Hinweis: Die Zweitprüfung vom 27.10. hatte die 25-%-Regel nach einer Sekundärquelle (TUM-ZfP-Wiki) bestätigt; der Widerspruch ist nur am Normtext DIN EN 12504-2:2021-10 aufzulösen. Test `tests/modulpruefungTranche4.test.ts` (PN8–PN11). Quelle: Entscheidung 28.10. (Normtext DIN EN 12504-2:2021-10).
 
 **Empfehlung:** freigabefähig nach Korrektur T4-PN-1 und Klärung von T4-PN-2.
 

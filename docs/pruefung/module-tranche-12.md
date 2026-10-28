@@ -187,6 +187,8 @@ Tab. 4.4DE (c_min,dur, Δc_dev), E_dyn-Formel, β = 0,96 und ASTM-C876-Grenzen i
 
 **F-Freigabe-Stellen:** k_n-Tabelle und M nach DIN EN 13791:2020-02; Verwerfungsregel DIN EN 12504-2.
 
+**Umsetzung 29.10.2026 – T12-BU-7:** Prüfkatalog: „Ausreißer eliminieren (> 6 Einheiten streichen)“ → Median aller Einzelwerte, keine Streichung; Messsatz verwerfen, wenn mehr als 20 % der Einzelwerte mehr als 6 Einheiten vom Median abweichen (vorläufig, F-Freigabe). Diagnosedaten entsprechend. Regel zentral im Kern `rueckprallMesssatz` (mit T4-PN-2). Quelle: Entscheidung 28.10. (Normtext DIN EN 12504-2:2021-10).
+
 **Empfehlung:** freigabefähig nach Korrektur T12-BU-1 bis -6 und Klärung von T12-BU-7.
 
 - [ ] Modul freigeben (`bauwerksdiagnose`)
@@ -373,6 +375,8 @@ Tab. D.1/D.2 der DIN EN 1990 im Kern vollständig richtig. Beispiele 1 (15,7 N/m
 
 **Befunde**
 - **offen – Frage T12-RE-1:** Der Simulator setzt für „RC-Beton“ 50 % der Gesteinskörnung als rezykliert an. Nach DAfStb-Richtlinie sind höchstens 45 Vol.-% (Typ 1) bzw. 35 Vol.-% (Typ 2) zulässig, je nach Expositionsklasse weniger. Auf 45 % (bzw. wählbar) begrenzen?
+
+**Umsetzung 29.10.2026 – T12-RE-1:** RC-Anteil im Bauteil-Simulator nach DIN 1045-2:2023-08, Anhang E: 45 Vol.-% der groben Gesteinskörnung (Typ 1, X0–XC4/XF1/XF3) bei 70 % Grobanteil (Lehrwert) = 31,5 % der Gesteinskörnung (vorher pauschal 50 %). Kern `src/calc/rcBeton.ts`; Standardplatte 120 m³: 68 t statt 108 t RC-Körnung; Text und Erkundungsauftrag angepasst. Test `tests/rcBeton.test.ts`, `tests/modulpruefungTranche9.test.ts` (RE1). Quelle: DIN 1045-2:2023-08, Anhang E (vorläufig, F-Freigabe; mit T9-GL-1).
 
 **Empfehlung:** freigabefähig nach Klärung von T12-RE-1.
 
