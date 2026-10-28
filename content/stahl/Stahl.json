@@ -63,7 +63,7 @@
         "title": "DIN EN 1090-2:2018-09 (Ausführung von Stahltragwerken und Aluminiumtragwerken - Technische Regeln für Stahltragwerke)"
       },
       {
-        "title": "DIN 488-1:2009-08 (Betonstahl – Sorten, Eigenschaften, Kennzeichen)"
+        "title": "DIN 488-1:2009-08 (Betonstahl – Teil 1: Stahlsorten, Eigenschaften, Kennzeichnung)"
       },
       {
         "title": "DIN EN ISO 12944-2 (Korrosionsschutz – Einteilung der Umgebungsbedingungen)"
@@ -96,8 +96,8 @@
         "quelle": "Petersen: Stahlbau"
       },
       {
-        "formel": "E_s = \\eta \\cdot \\frac{U \\cdot I}{v} \\quad [\\text{kJ/mm}]",
-        "erklaerung": "Streckenenergie beim Lichtbogenschweißen: \\eta = thermischer Wirkungsgrad, U = Schweißspannung [V], I = Schweißstrom [A], v = Schweißgeschwindigkeit [mm/s]. Bestimmt die Ausdehnung der Wärmeeinflusszone (WEZ).",
+        "formel": "Q = k \\cdot \\frac{U \\cdot I}{v} \\cdot 10^{-3} \\quad [\\text{kJ/mm}]",
+        "erklaerung": "Wärmeeinbringung beim Lichtbogenschweißen (DIN EN 1011-1): Streckenenergie E = U·I/v·10⁻³ in kJ/mm, multipliziert mit dem thermischen Wirkungsgrad k des Verfahrens (z. B. 0,8 für Lichtbogenhand- und MAG-Schweißen, 1,0 für UP-Schweißen); U = Schweißspannung [V], I = Schweißstrom [A], v = Schweißgeschwindigkeit [mm/s]. Bestimmt die Ausdehnung der Wärmeeinflusszone (WEZ).",
         "quelle": "DIN EN 1011-1"
       }
     ]
