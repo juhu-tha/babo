@@ -818,9 +818,9 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 106 korrigiert, 0 fraglich, 
 
 ### qn_mauerwerk_1 · Mauerwerk
 
-- **Frage:** Kalksandstein mit Normalmörtel: f_vk0 = 0,20 N/mm², f_b = 20 N/mm², Auflast σ_d = 1,0 N/mm². Wie groß ist f_vk nach dem vereinfachten Ansatz des Moduls (f_vk = f_vk0 + 0,4 · σ_d, begrenzt auf 0,065 · f_b)?
-- **Richtige Antwort:** f_vk = 0,60 N/mm²
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- **Frage:** Kalksandstein mit Normalmörtel NM III: f_vk0 = 0,22 N/mm² (DIN EN 1996-1-1/NA), f_b = 20 N/mm², Auflast σ_d = 1,0 N/mm². Wie groß ist f_vk nach dem vereinfachten Ansatz des Moduls (f_vk = f_vk0 + 0,4 · σ_d, begrenzt auf 0,065 · f_b)?
+- **Richtige Antwort:** f_vk = 0,62 N/mm²
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt; Abgleich 28.10.2026: f_vk0 nach DIN EN 1996-1-1/NA je Mörtelgruppe (T3-MW-1), 0,20 → 0,22 (NM III), f_vk 0,60 → 0,62 – korrigiert
 - [x] ok
 - [ ] ändern: …
 

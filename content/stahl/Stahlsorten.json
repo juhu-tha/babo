@@ -62,7 +62,7 @@
     "wahlDerStahlsorteZur": "Wahl der Stahlsorte zur Gewichtsreduktion und Erhöhung der materialeffizienten Tragfähigkeit",
     "t1GewähltesTrägerprofilWalzstahl": "1. Gewähltes Trägerprofil (Walzstahl)",
     "t2BemessungsbiegemomentMEd": "2. Bemessungsbiegemoment $M_{Ed}$",
-    "entsprichtDerMaximalenBiegungsbeanspruch": "* Entspricht der maximalen Biegungsbeanspruchung im Feld eines Einfeldträgers durch äußere Lasten. Es gilt d. Tragsicherheitsnachweis: $M_{Ed} \\le M_{pl,Rd}$.",
+    "entsprichtDerMaximalenBiegungsbeanspruch": "* Entspricht der maximalen Biegungsbeanspruchung im Feld eines Einfeldträgers durch äußere Lasten. Es gilt der Tragsicherheitsnachweis: $M_{Ed} \\le M_{pl,Rd}$.",
     "liveFestigkeitsvergleichDesProfils": " Live-Festigkeitsvergleich des Profils ",
     "inAbhängigkeitDerStahlgüten": " in Abhängigkeit der Stahlgüten:",
     "plastischerMomentenwiderstandMplRd": "Plastischer Momentenwiderstand Mpl,Rd",
@@ -74,6 +74,6 @@
     "profilhöhenReduzierungS235Vs": " Profilhöhen-Reduzierung (S235 vs. S690)",
     "ipe300422": "IPE 300 (42,2 kg) kann beansprucht wie IPE 200 (22,4 kg) in S690 ausgeführt werden!",
     "coEmissionsvorteilBeiOptimierung": " CO₂-Emissionsvorteil bei Optimierung",
-    "vermeideteCoEmissionenDurch": "Vermeidete CO₂-Emissionen durch d. verringerten Vormaterialbedarf (Emissionsbasis: 1,8 kg CO₂/kg Baustahl)."
+    "vermeideteCoEmissionenDurch": "Vermiedene CO₂-Emissionen durch den verringerten Vormaterialbedarf (Emissionsbasis: 1,8 kg CO₂/kg Baustahl)."
   }
 }

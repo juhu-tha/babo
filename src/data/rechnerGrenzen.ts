@@ -67,6 +67,8 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       'Zentrischer Druck um die schwache Achse; Biegung, Exzentrizitäten und Kippen sind nicht enthalten.',
       'Vollholz nach EN 338 und Brettschichtholz nach EN 14080, γ_M = 1,3; k_mod nach Tab. 3.1.',
       'Querdruck: wirksame Kontaktlänge mit pauschal 30 mm Überstand je Seite.',
+      'Querdruck: k_c,90 = 1,5/1,75 bei Einzelauflagern auch am Trägerende, sofern l₁ ≥ 2h (nicht geprüft, Fall „Allgemein“ mit 1,0 wählbar).',
+      'Druckstab: EN 1995-1-1 nennt keine Grenzschlankheit; der Hinweis ab λ > 200 ist eine Lehrgrenze.',
     ],
   },
   bauphysik: {
@@ -116,7 +118,10 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     kurz: 'Stoffraumrechnung für 1 m³ Beton mit Feuchtekorrektur, (w/z)_eq, Expositionsanforderungen und CO₂-Abschätzung.',
     grenzen: [
       'Rohdichten der Zusatzstoffe, Zusatzmittel und Fasern als feste Lehrwerte.',
-      'k-Wert-Ansatz nach DIN 1045-2 (f/z ≤ 0,33/0,25, s/z ≤ 0,11, Alkalitätsreserve f + s); Zementarten ohne Hauptbestandteil zugeordnet (vorläufig); XF2/XF4 nicht abgebildet.',
+      'k-Wert-Ansatz nach DIN 1045-2 (f/z ≤ 0,33/0,25, s/z ≤ 0,11, Alkalitätsreserve f + s); Zementarten ohne Hauptbestandteil zugeordnet (vorläufig).',
+      'XF2/XF4: nur Flugasche anrechenbar, bei gleichzeitiger Zugabe von Silikastaub keine Anrechnung; der verringerte Mindestzementgehalt bei Anrechnung wird nicht geprüft.',
+      'Kornrohdichte als ofentrockener Wert (ρ_rd); das Kernwasser (Wasseraufnahme) zählt zur Frischbetonrohdichte, nicht zum wirksamen Wasser.',
+      'Mindestzementgehalt ohne Größtkornabhängigkeit (Beton nach Eigenschaften); die Zuschläge für Standardbeton und die Verringerung bei 63 mm sind nicht abgebildet.',
       'CO₂-Werte sind Lehrwerte und ersetzen keine EPD.',
       'Packungsdichte: Siebdurchgänge der Komponenten sind Lehrwerte; geschätzte Packungsdichte und „reales“ Zweikornmodell veranschaulichen nur (kein CPM nach de Larrard).',
       'Walz-Kurven: Abrams-Näherung f = A/5^(w/z) mit A = 100/120/140 N/mm² (Lehrwerte) für w/z 0,35 bis 0,80; ersetzt keine Erstprüfung.',
@@ -151,7 +156,8 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       'Erddruck: glatte, lotrechte Wand, waagerechtes Gelände, kohäsionsloser Boden ohne Wasser.',
       'Konsolidierung eindimensional mit konstantem c_v und E_s, Näherungsformel für U(T_v).',
       'Klassifikation nur über das Plastizitätsdiagramm, ohne Korngrößenverteilung; organische Beimengungen (OU/OT) nur nach Angabe, ohne Glühverlust.',
-      'Zustandsformen in der Einteilung der früheren DIN 18122-1 (breiig bis I_C = 0,5); DIN EN ISO 14688-2 grenzt abweichend ab (vorläufig, F-Freigabe).',
+      'Zustandsformen nach DIN EN ISO 14688-2 (I_C-Grenzen 0,25 / 0,50 / 0,75 / 1,00); die deutschen Bezeichnungen breiig/weich/steif/halbfest/fest sind am Normtext zu bestätigen (vorläufig, F-Freigabe).',
+      'Atterberg/DIN 18196 – organischer Boden mit w_L > 50 % unterhalb der A-Linie: keine eindeutige Gruppe im Plastizitätsdiagramm; Ausgabe UA mit Prüfhinweis (vorläufig, F-Freigabe).',
     ],
   },
   // Weitere Rechner (Durchsicht 24.10.2026, Belege im PR)
@@ -212,7 +218,8 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     kurz: "Mittelwert, Standardabweichung, Median, Variationskoeffizient, Ausreißertests und 5-%-Fraktilwert x_k = m − k_n·s sowie x_d = x_k/γ_M.",
     grenzen: [
       "k_n nach DIN EN 1990 Anhang D (V_X unbekannt), interpoliert; erst ab n ≥ 3.",
-      "Grubbs-Test vereinfacht (nicht iterativ), Boxplot-Quartile ohne Interpolation.",
+      "Grubbs vereinfacht (nicht iterativ): entfernt ab 1-%-Grenze, zwischen 5 % und 1 % nur markiert (ISO 5725-2); die technische Prüfung vor dem Streichen ersetzt der Rechner nicht.",
+      "Boxplot-Quartile ohne Interpolation.",
       "Normalverteilung angenommen, keine log-normale Auswertung.",
       "x_d ohne k_mod und ohne Umrechnungsfaktor η.",
       "t-Test: unabhängige, annähernd normalverteilte Werte vorausgesetzt (nicht geprüft); t-Verteilung numerisch (Betafunktion), p-Werte unter 0,0001 nur als Schranke.",
@@ -279,7 +286,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   hydratation_folgen: {
     kurz: "Wärmeentwicklung und Reife, Festigkeits- und E-Modul-Entwicklung, Zwang mit Rissrisiko und Mindestbewehrung, Kriechen und Schwinden.",
     grenzen: [
-      "Temperaturverlauf mit pauschaler Wärmeabfuhr und festen Stoffwerten.",
+      "Temperaturverlauf mit pauschaler Wärmeabfuhr und festen Stoffwerten (c·ρ = 2400 kJ/(m³·K) einheitlich in Rechner, Beispiel und Modul Massige Bauteile).",
       "Rissnachweis mit f_ct,eff = 0,7·f_ctm und k_c = 1,0 (zentrischer Zwang), σ_s aus vereinfachter Tabelle.",
       "Praxisbeispiel mit festen Kennwerten, linear mit β_cc skaliert.",
       "Zwang & Risse (massige Bauteile): Temperaturkurve als Lehransatz, Zwang α_T·ΔT·E_c(t)·R nur in der Abkühlphase.",
@@ -609,6 +616,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "f_k aus Herstellertafeln (KS-Themenheft Eurocode 6, 10/2012; Lücking 2026) oder frei eingegeben; KS P und KS L-P vorläufig, Übereinstimmung mit der NA-Fassung 2019-12 nicht am Normtext geprüft.",
       "h_ef = ρ2·h mit ρ2 = 0,75/0,90/1,0 nach Wanddicke (bei a < t: 1,0) – belegt durch AMz 2016 (S. 12), TU Dresden 2025 und die KS-Tragfähigkeitstafeln; ρ2 = 1,0 für 2/3 < a/t < 1 vorläufig.",
       "Anwendungsgrenzen nach Tab. NA.2 (Gebäudehöhe, Nutzlast, Windzone) nur teilweise geprüft: l_f ≤ 6,0 m, h_ef/t ≤ 27.",
+      "Mauerwerk-Innenwände (Zwischenauflager): Φ1 = 0,9 auch bei teilweise aufliegender Decke (a < t); a/t geht über Φ2 ein (vorläufig, F-Freigabe).",
       "Wandhöhe über 2,75 m nur als Hinweis auf die erweiterten Bedingungen (DIN EN 1996-3/NA:2019-12; KS-Merkblatt 04/2020): Innenwände ab 115 mm bis 3,60 m, ab 240 mm ohne Höhengrenze; Außenwände vorläufig.",
     ],
   },

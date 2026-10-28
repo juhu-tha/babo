@@ -45,7 +45,7 @@
     "stoffraumDerGesteinskörnung": "Stoffraum der Gesteinskörnung",
     "derRestBis1000": "Der Rest bis 1000 dm³ steht für die Gesteinskörnung zur Verfügung:",
     "masseDerGesteinskörnungTrocken": "Masse der Gesteinskörnung (trocken)",
-    "summeAllerAusgangsstoffmassenJe": "Summe aller Ausgangsstoffmassen je m³:",
+    "summeAllerAusgangsstoffmassenJe": "Summe aller Ausgangsstoffmassen je m³ einschließlich des Kernwassers der Gesteinskörnung (Kornrohdichte ofentrocken, DIN EN 1097-6; das Kernwasser liegt im Kornvolumen und zählt nicht zum wirksamen Wasser):",
     "dieAufteilungAufDie": "Die Aufteilung auf die Kornfraktionen und die Korrektur der Eigenfeuchte folgen in der Dosiertabelle.",
     "dinEn2062021": "DIN EN 206:2021-06; DIN 1045-2:2023-08",
     "co2FußabdruckGwp": "CO_2-Fußabdruck (GWP)",

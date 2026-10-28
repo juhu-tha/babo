@@ -60,9 +60,9 @@ export const FACHGEBIETE: readonly { name: string; datei: RegExp; text: RegExp }
   { name: 'Nachhaltigkeit (LCA/LCC)', datei: /lca|lcc|materialoptimierung|oekobilanz|modulD|dafstb/i, text: /QNG|ÖKOBAUDAT|Ökobilanz|Restwert|Modul D|EN 15804|KrWG/ },
   { name: 'Stahl & Korrosionsschutz', datei: /korrosionsschutz|eisenKohlenstoff|stahlbau/i, text: /ISO 12944|DIN EN 10025|Eisen-Kohlenstoff/ },
   { name: 'Prüfverfahren & Bauwerksdiagnostik', datei: /pruefverfahren|bauwerksuntersuchung|karsten|zfp/i, text: /Prüfverfahren|Rückprall|Karsten/ },
-  { name: 'Verkehrswege- & Tunnelbau', datei: /verkehrswegebau|tunnel|tiefbau/i, text: /Tunnel|ZTV-ING|RStO|DWA-A 138|Rigole|f_Ort/ },
+  { name: 'Verkehrswege- & Tunnelbau', datei: /verkehrswegebau|tunnel|tiefbau|asphalt/i, text: /Tunnel|ZTV-ING|RStO|DWA-A 138|Rigole|f_Ort|ZTV Asphalt|Bitumen/ },
   { name: 'Bauprodukte', datei: /bauprodukte|^Bp[A-Z]/, text: /Lehmstein|DIN 1894[0-8]|Fugenband|DIN 18533/ },
-  { name: 'Beton & Stahlbeton', datei: /biegung|kennwerte|mischung|hydratation|festbeton|spannbeton|beton|lebensdauer/i, text: /DIN EN 1992|DIN 1045|DIN EN 197|C55\/67|C90\/105|fib Bulletin 34|Reifefunktion|de Vree|Karbonatisierung|Chlorid|Stahlbetonbauteile/ },
+  { name: 'Beton & Stahlbeton', datei: /biegung|kennwerte|mischung|hydratation|festbeton|spannbeton|beton|lebensdauer|brandschutz|frischbeton/i, text: /Konsistenz|Luftgehalt|DIN EN 206|DIN EN 1992|DIN 1045|DIN EN 197|C55\/67|C90\/105|fib Bulletin 34|Reifefunktion|de Vree|Karbonatisierung|Chlorid|Stahlbetonbauteile/ },
 ];
 export const FACHGEBIET_SONST = 'Weitere';
 

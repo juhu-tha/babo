@@ -24,7 +24,7 @@ import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import inhalt from '@/content/mauerwerk/Mauerwerk.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
-import { fkEmpfehlungEN, fdAusFk, phiAusmitte } from '@/src/calc/mauerwerk';
+import { fkEmpfehlungENGenormt, fdAusFk, fvk0NA, phiAusmitte } from '@/src/calc/mauerwerk';
 
 ChartJS.register(
   CategoryScale,
@@ -37,7 +37,7 @@ ChartJS.register(
 );
 
 // K-Werte: Empfehlungswerte nach EN 1996-1-1, Tab. 3.3 (Mauerziegel Gruppe 1 bzw. Hochlochziegel Gruppe 2);
-// in Deutschland gelten nach DIN EN 1996-1-1/NA eigene Parameter (f_k = K · f_st^α · f_m^β bzw. Tabellenwerte f_k). Lehmsteine (DIN 18946) und LM-Wert für KS: Lehrannahme.
+// in Deutschland gelten nach DIN EN 1996-1-1/NA eigene Parameter (f_k = K · f_st^α · f_m^β bzw. Tabellenwerte f_k). Lehmsteine (DIN 18940) und KS + LM: kein genormter K-Wert, Rechner gesperrt (MW-2, 28.10.2026).
 const stoneTypes = inhalt.daten.stoneTypes;
 
 const bonds = [
@@ -164,8 +164,11 @@ export default function Mauerwerk() {
   const results = useMemo(() => {
     // 1. Mauerwerksdruckfestigkeit fk – EN-Empfehlung K (Vergleich); NA-Ansatz und vereinfachtes Verfahren
     //    nach DIN EN 1996-3/NA in der Beispielrechnung „Mauerwerk: Tragfähigkeit“ (src/calc/mauerwerk.ts)
-    const K = stoneTypes[stone].K[mortar];
-    const fk = fkEmpfehlungEN(K, fb, fm, mortar, stone === 'HLZ');
+    //    MW-2 (28.10.2026): ohne genormten K-Wert (Lehmstein, KS + Leichtmörtel) ist der f_k-Rechner gesperrt (fk = null)
+    const K: number | null = stoneTypes[stone].K[mortar];
+    const fkGenormt = fkEmpfehlungENGenormt(K, fb, fm, mortar, stone === 'HLZ');
+    const gesperrt = fkGenormt === null;
+    const fk = fkGenormt ?? NaN;
     const fd = fdAusFk(fk); // NA DE: f_d = ζ · f_k / γ_M mit ζ = 0,85, γ_M = 1,5
 
     // 2. Lastausmitte am Wandkopf/-fuß: Φ_i = 1 − 2e/t (Slider begrenzt e ≤ t/2)
@@ -177,7 +180,9 @@ export default function Mauerwerk() {
     const NRd = phi * A * fd * 1000; // in kN/m
 
     // 3. Schubfestigkeit fvk
-    const fvk0 = stoneTypes[stone].fvk0[mortar];
+    // MW-1 (28.10.2026): f_vk0 nach DIN EN 1996-1-1/NA aus der Mörtelgruppe (src/calc/mauerwerk.ts, FVK0_NA)
+    const fvk0Info = fvk0NA(mortar, fm);
+    const fvk0 = fvk0Info.fvk0;
     // fvk = fvk0 + 0.4 * sigma_d (vereinfacht nach EC6)
     // Begrenzung auf max Werte je nach Stein/Mörtel (hier vereinfacht)
     const fvk_calc = fvk0 + 0.4 * sigmaD;
@@ -231,7 +236,7 @@ export default function Mauerwerk() {
       ]
     };
 
-    return { fk, fd, slenderness, phi, NRd, K, fvk0, fvk, fvd, minOverlap, actualOverlap, overlapValid, chartData };
+    return { fk, fd, slenderness, phi, NRd, K, gesperrt, fvk0, fvk0Gruppe: fvk0Info.gruppe, fvk0Vorlaeufig: fvk0Info.vorlaeufig, fvk, fvd, minOverlap, actualOverlap, overlapValid, chartData };
   }, [stone, mortar, fb, fm, height, thickness, eccentricity, sigmaD, stoneLength, stoneHeight, bond]);
 
   const chartOptions = {
@@ -454,15 +459,16 @@ export default function Mauerwerk() {
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div>
                   <div className="text-white/70 text-sm mb-1"><FormulaText text={inhalt.werte.charaktFestigkeitFK} /></div>
-                  <div className="text-3xl font-bold">{formatDeZahl(results.fk, 2)} MPa</div>
+                  <div className="text-3xl font-bold">{results.gesperrt ? '–' : `${formatDeZahl(results.fk, 2)} MPa`}</div>
                 </div>
                 <div>
                   <div className="text-white/70 text-sm mb-1"><FormulaText text={inhalt.werte.bemessungswertFD} /></div>
-                  <div className="text-3xl font-bold">{formatDeZahl(results.fd, 2)} MPa</div>
+                  <div className="text-3xl font-bold">{results.gesperrt ? '–' : `${formatDeZahl(results.fd, 2)} MPa`}</div>
                 </div>
               </div>
+              {results.gesperrt && <p className="text-sm text-white border-t border-white/20 pt-4 mb-2" role="status"><MdText text={inhalt.texte.fkGesperrtOhneKWert} /></p>}
               <div className="text-sm text-white/80 border-t border-white/20 pt-4">
-                Formel: <FormulaText text={mortar === 'DM' ? (stone === 'HLZ' ? 'f_k = K \\cdot f_b^{0{,}7}' : 'f_k = K \\cdot f_b^{0{,}85}') : mortar === 'LM' ? 'f_k = K \\cdot f_b^{0{,}7}' : 'f_k = K \\cdot f_b^{0{,}7} \\cdot f_m^{0{,}3}'} /> (K = {formatDeWert(results.K)}<MdText text={inhalt.texte.empfehlungEn} /><FormulaText text="f_d = 0{,}85 \cdot f_k / 1{,}5" />
+                Formel: <FormulaText text={mortar === 'DM' ? (stone === 'HLZ' ? 'f_k = K \\cdot f_b^{0{,}7}' : 'f_k = K \\cdot f_b^{0{,}85}') : mortar === 'LM' ? 'f_k = K \\cdot f_b^{0{,}7}' : 'f_k = K \\cdot f_b^{0{,}7} \\cdot f_m^{0{,}3}'} /> (K = {results.K === null ? '–' : formatDeWert(results.K)}<MdText text={inhalt.texte.empfehlungEn} /><FormulaText text="f_d = 0{,}85 \cdot f_k / 1{,}5" />
               </div>
             </div>
 
@@ -485,7 +491,7 @@ export default function Mauerwerk() {
               </div>
               <div className="bg-shiraz/5 p-4 rounded-lg border border-shiraz/20">
                 <div className="text-shiraz text-sm font-bold mb-1"><FormulaText text={inhalt.werte.maxNormalkraftNRd} /></div>
-                <div className="text-3xl font-bold text-shiraz">{formatDeZahl(results.NRd, 0)} kN/m</div>
+                <div className="text-3xl font-bold text-shiraz">{results.gesperrt ? '–' : `${formatDeZahl(results.NRd, 0)} kN/m`}</div>
               </div>
             </div>
 
@@ -495,6 +501,7 @@ export default function Mauerwerk() {
                 <div>
                   <div className="text-home-grau text-sm mb-1"><FormulaText text={inhalt.werte.haftscherfestigkeitFVk0} /></div>
                   <div className="text-xl font-bold text-text-main">{formatDeZahl(results.fvk0, 2)} MPa</div>
+                  <div className="text-xs text-home-grau">{results.fvk0Gruppe}{inhalt.texte.fvk0NachNa}{results.fvk0Vorlaeufig ? inhalt.texte.fvk0Vorlaeufig : ''}</div>
                 </div>
                 <div>
                   <div className="text-home-grau text-sm mb-1"><FormulaText text={inhalt.werte.charaktSchubfestigkeitFVk} /></div>
