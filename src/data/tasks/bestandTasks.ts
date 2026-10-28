@@ -6,7 +6,7 @@ export const bestandTasks: Task[] = [
     difficulty: 'Mittel',
     title: 'ZfP: Rückprallhammer nach DIN EN 12504-2',
     question: 'Bei der Prüfung einer Bestandsstütze mit dem Schmidt-Rückprallhammer messen Sie einen mittleren Rückprallwert von R = 38. Welche ungefähre Würfeldruckfestigkeit können Sie erwarten?',
-    moduleHint: { id: 'bauwerksuntersuchung', name: 'Bauwerksuntersuchung (ZfP)' },
+    moduleHint: { id: 'zfp', name: 'Prüfverfahren & ZfP' },
     solution: 'Ein Rückprallwert von R = 38 entspricht bei waagerechter Prüfung und normalem Alter des Betons nach einer typischen Herstellerkurve einer Würfeldruckfestigkeit von grob 35–40 N/mm² (Größenordnung C25/30 bis C30/37). Der Wert ist nur ein Schätzwert, da die Umrechnungskurven geräte- und betonabhängig sind. Bei Bestandsbeton muss jedoch berücksichtigt werden, dass eine carbonatisierte Randzone die Oberflächenhärte künstlich erhöht. Für statisch verwertbare Gutachten ist eine Kalibrierung an Bohrkernen nach DIN EN 13791:2020-02 + A20:2022-04 erforderlich; die Prüfung selbst erfolgt nach DIN EN 12504-2:2021-10.'
   },
   {

@@ -49,7 +49,7 @@ export default function ElektrochemischTab({ potential, potentialResults, render
           <div className={`mt-4 p-4 text-white rounded-xl shadow-md transition-colors duration-500 ${potentialResults.color}`}>
             <div className="text-sm mb-1">Korrosionswahrscheinlichkeit</div>
             <div className="text-3xl font-bold">{potentialResults.risk}</div>
-            <div className="text-xs opacity-75 mt-2">
+            <div className="text-xs mt-2">
               <FormulaText text="Referenzelektrode: \text{Cu/CuSO}_4" />
             </div>
           </div>
