@@ -99,7 +99,7 @@
     "t3ArbeitsschutzGesundheitMak": "3. Arbeitsschutz, Gesundheit & MAK/AGW Gesetzgebung",
     "trgs900GrenzwertToxikologie": "TRGS 900 Grenzwert & Toxikologie",
     "bitumenSetztBeiErhitzung": "Bitumen setzt bei Erhitzung über 150 °C an der Baustelle Aerosole und Dämpfe frei, die kondensierbare polyzyklische aromatische Kohlenwasserstoffe (PAK) und flüchtige organische Verbindungen (VOC) enthalten.",
-    "derNeueAgwWert": "**Der neue AGW-Wert (Arbeitsplatzgrenzwert):** Gemäß TRGS 900 (Technische Regeln für Gefahrstoffe) gilt ein Arbeitsplatzgrenzwert von **1,5 mg/m³** für Dämpfe und Aerosole aus Bitumen bei der Heißverarbeitung; die Übergangsfrist für den Straßenbau endete Ende 2024. Bei konventionellen Einbautemperaturen ist der Wert ohne Maßnahmen schwer einzuhalten (vgl. Branchenlösung Walzasphalt der BG BAU).",
+    "derNeueAgwWert": "**Der neue AGW-Wert (Arbeitsplatzgrenzwert):** Gemäß TRGS 900 (Technische Regeln für Gefahrstoffe) gilt ein Arbeitsplatzgrenzwert von **1,5 mg/m³** für Dämpfe und Aerosole aus Bitumen bei der Heißverarbeitung; die Ausnahmen für den Walzasphalt-Einbau gelten nur noch bis 31.12.2026 – ab 01.01.2027 ist der Wert einzuhalten (Handwerksblatt, „Temperaturabgesenkter Asphalt wird 2027 Pflicht“; ARS 08/2026: ab 01.01.2027 ist das Absenken der Einbautemperaturen der Regelfall). Bei konventionellen Einbautemperaturen ist der Wert ohne Maßnahmen schwer einzuhalten (vgl. Branchenlösung Walzasphalt der BG BAU).",
     "exponentielleAbsenkungDieDampf": "**Exponentielle Absenkung:** Die Dampf- und Aerosolfreisetzung von Bitumen unterliegt einer thermodynamischen Arrhenius-Abhängigkeit. Eine Absenkung der Mischguttemperatur um 20–30 K verringert die Emissionen deutlich (Richtwert aus der Literatur: mehr als die Hälfte).",
     "arbeitsplatzvorteileGeringereHitzeUnd": "**Arbeitsplatzvorteile:** Geringere Hitze- und Dampfbelastung für die Einbaukolonne; weniger Dampfschwaden verbessern die Sicht am Fertiger.",
     "t4TechnischeHerausforderungenSchadensbild": "4. Technische Herausforderungen & Schadensbilder",
@@ -120,7 +120,7 @@
     "vergleichbarDurchAdditiveLehrwert": "vergleichbar durch Additive (Lehrwert)",
     "gleichwertigeVerarbeitbarkeitTrotzVerrin": "Gleichwertige Verarbeitbarkeit trotz verringerter Hitze",
     "mindestLufttemperaturBeimEinbau": "Mindest-Lufttemperatur beim Einbau",
-    "deckschicht3Cm5": "Deckschicht ≥ 3 cm: +5 °C, < 3 cm: +10 °C; Binder- und Tragdeckschicht: 0 °C; Tragschicht: −3 °C (ZTV Asphalt-StB 07/13, Tab. 6)",
+    "deckschicht3Cm5": "Deckschicht ≥ 3 cm: +5 °C, < 3 cm: +10 °C; Binder- und Tragdeckschicht: 0 °C; Tragschicht: −3 °C (ZTV Asphalt-StB 07/13, Tab. 6; Werte der ZTV Asphalt-StB 26 Teil 1 noch nicht abgeglichen – vorläufig, F-Freigabe)",
     "eherHöherWählenSchnellere": "eher höher wählen – schnellere Auskühlung (DAV: volles Absenkpotenzial erst ab ca. 20 °C Lufttemperatur und trockener Unterlage)",
     "ltaIstWindUnd": "LTA ist wind- und kälteempfindlicher während des Einbaus",
     "haftverhaltenZumGestein": "Haftverhalten zum Gestein",
@@ -192,7 +192,11 @@
     ],
     "Asphalt.regelwerke": [
       {
-        "title": "ZTV Asphalt-StB 07/13:2013 (FGSV: Zusätzliche Technische Vertragsbedingungen und Richtlinien für den Bau von Verkehrsflächenbefestigungen aus Asphalt)",
+        "title": "ZTV Asphalt-StB 26 Teil 1 (FGSV, Ausgabe 2026; eingeführt mit ARS 08/2026 vom 25.03.2026, ersetzt die ZTV Asphalt-StB 07/13); TL Asphalt-StB 26 (FGSV, 23.04.2026)",
+        "url": "https://www.fgsv-verlag.de/"
+      },
+      {
+        "title": "ZTV Asphalt-StB 07/13:2013 (Vorgängerausgabe; für Altverträge und die hier zitierten Tabellenwerte)",
         "url": "https://www.fgsv-verlag.de/"
       },
       {

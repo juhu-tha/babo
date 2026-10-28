@@ -267,7 +267,9 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   frischbeton: {
     kurz: "Konsistenz gegen Grenzabmaße, korrigierter Luftgehalt, Frischbetonrohdichte, Schalungsdruck und Frischbetontemperatur.",
     grenzen: [
-      "Grenzabmaße nach hinterlegter Tabelle; LP-Obergrenze pauschal Mindestwert + 4 % (keine Normgröße).",
+      "Grenzabmaße der Konsistenz nach hinterlegter Tabelle (Staffeln vorläufig, F-Freigabe).",
+      "Luftgehalt als Einzelwert: Mindestwert nach DIN 1045-2, obere Grenze Mindestwert + 4 % (DIN EN 206, 5.4.3), Grenzabweichung −0,5/+1,0 %; keine Annahmekennzahl.",
+      "Expositionsklasse XF2/XF3 nur in der LP-Variante bzw. ohne LP-Anforderung wählbar; XF3 mit LP ist nicht getrennt abgebildet.",
       "Schalungsdruck mit genähertem Erstarrungsbeiwert; SVB voll hydrostatisch.",
       "Frischbetontemperatur über Mischungsregel mit festen Wärmekapazitäten.",
     ],
@@ -572,6 +574,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     grenzen: [
       "R_si = 0,13 und R_se = 0,04 m²K/W fest.",
       "Homogene Schichten ohne Wärmebrücken und Korrekturen.",
+      "Vergleichswert 0,24 W/(m²K) ist der Höchstwert nach Anlage 7 GModG (vormals GEG) für die Änderung von Außenwänden bestehender Wohngebäude; für Neubauten gilt der Referenzgebäude-Nachweis.",
     ],
   },
   rechnung_beton: {

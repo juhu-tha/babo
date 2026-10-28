@@ -29,7 +29,7 @@
     "derBemessungswertDerZugbeanspruchbarkeit": "Der Bemessungswert der Zugbeanspruchbarkeit ist der kleinere Wert aus Fließen im Bruttoquerschnitt und Bruch im Nettoquerschnitt:",
     "aNetIstDie": "A_net ist die Nettoquerschnittsfläche nach Abzug der Lochflächen (bei versetzten Löchern nach 6.2.2.2).",
     "derBiegewiderstandHängtVon": "Der Biegewiderstand hängt von der Querschnittsklasse ab:",
-    "beiWalzprofilenIstW": "Bei Walzprofilen ist W_pl,y etwa 12 bis 15 % größer als W_el,y; diese plastische Reserve darf nur in den Klassen 1 und 2 genutzt werden.",
+    "beiWalzprofilenIstW": "Bei Walzprofilen ist W_pl,y etwa 10 bis 15 % größer als W_el,y (HEA rund 10 bis 11 %, IPE und HEB rund 11 bis 14 %); diese plastische Reserve darf nur in den Klassen 1 und 2 genutzt werden.",
     "realeDruckstäbeSindNie": "Reale Druckstäbe sind nie ideal gerade und enthalten Walzeigenspannungen. Sie versagen deshalb unterhalb der idealen Verzweigungslast N_cr. Der Eurocode erfasst das mit dem Abminderungsbeiwert χ, der aus dem bezogenen Schlankheitsgrad und einer von fünf Knicklinien folgt:",
     "derImperfektionsbeiwertTab6": "Der Imperfektionsbeiwert α (Tab. 6.1) bildet ab, wie empfindlich ein Querschnitt auf Vorkrümmung und Eigenspannungen reagiert; die Zuordnung zur Knicklinie regelt Tab. 6.2. Ist λ̄ ≤ 0,2 oder N_Ed/N_cr ≤ 0,04, darf der Biegeknicknachweis entfallen (6.3.1.2(4)).",
     "für40MmT": "Für 40 mm < t ≤ 80 mm sind die Werte abgemindert (z. B. S235: f_y = 215 N/mm²; S355: f_y = 335 N/mm²). E = 210 000 N/mm²; γ_M0 = 1,0, γ_M1 = 1,1, γ_M2 = 1,25 (NA DE).",

@@ -5,6 +5,15 @@ import React from 'react';
 import inhalt from '@/content/beispielrechnungen/RechnungBrandschutz.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../../components/ui/Auswahlgruppe';
+import { EC2_BRAND_MINDESTMASSE } from '@/src/data/brandschutzBeton';
+
+/** Zeilenbeschriftung und Stützenmaß je Feuerwiderstandsklasse (Reihenfolge wie EC2_BRAND_MINDESTMASSE) */
+const TABELLE_TEXTE: readonly (readonly [string, string])[] = [
+  [inhalt.texte.r3030Min, inhalt.texte.t200MmA25],
+  [inhalt.texte.r6060Min, inhalt.texte.t250MmA35],
+  [inhalt.texte.r9090Min, inhalt.texte.t300MmA45],
+  [inhalt.texte.r120120Min, inhalt.texte.t350MmA55],
+];
 
 interface RechnungBrandschutzProps {
   M_fi_Ed: number;
@@ -233,34 +242,15 @@ export default function RechnungBrandschutz({ M_fi_Ed, M_fi_Rd, W_ef_mm3, b_ef_m
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 text-slate-700 text-[11px]">
-                  <tr>
-                    <td className="py-2.5 font-bold text-shiraz"><MdText text={inhalt.texte.r3030Min} /></td>
-                    <td className="py-2.5 font-mono">80 mm</td>
-                    <td className="py-2.5 font-mono">25 mm</td>
-                    <td className="py-2.5 font-mono">60 mm</td>
-                    <td className="py-2.5 font-mono"><MdText text={inhalt.texte.t200MmA25} /></td>
-                  </tr>
-                  <tr>
-                    <td className="py-2.5 font-bold text-shiraz"><MdText text={inhalt.texte.r6060Min} /></td>
-                    <td className="py-2.5 font-mono">120 mm</td>
-                    <td className="py-2.5 font-mono">35 mm</td>
-                    <td className="py-2.5 font-mono">80 mm</td>
-                    <td className="py-2.5 font-mono"><MdText text={inhalt.texte.t250MmA35} /></td>
-                  </tr>
-                  <tr>
-                    <td className="py-2.5 font-bold text-shiraz"><MdText text={inhalt.texte.r9090Min} /></td>
-                    <td className="py-2.5 font-mono">160 mm</td>
-                    <td className="py-2.5 font-mono">45 mm</td>
-                    <td className="py-2.5 font-mono">100 mm</td>
-                    <td className="py-2.5 font-mono"><MdText text={inhalt.texte.t300MmA45} /></td>
-                  </tr>
-                  <tr>
-                    <td className="py-2.5 font-bold text-shiraz"><MdText text={inhalt.texte.r120120Min} /></td>
-                    <td className="py-2.5 font-mono">200 mm</td>
-                    <td className="py-2.5 font-mono">55 mm</td>
-                    <td className="py-2.5 font-mono">120 mm</td>
-                    <td className="py-2.5 font-mono"><MdText text={inhalt.texte.t350MmA55} /></td>
-                  </tr>
+                  {EC2_BRAND_MINDESTMASSE.map((z, i) => (
+                    <tr key={z.klasse}>
+                      <td className="py-2.5 font-bold text-shiraz"><MdText text={TABELLE_TEXTE[i][0]} /></td>
+                      <td className="py-2.5 font-mono">{formatDeWert(z.balkenB)} mm</td>
+                      <td className="py-2.5 font-mono">{formatDeWert(z.balkenA)} mm</td>
+                      <td className="py-2.5 font-mono">{formatDeWert(z.platteH)} mm</td>
+                      <td className="py-2.5 font-mono"><MdText text={TABELLE_TEXTE[i][1]} /></td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
