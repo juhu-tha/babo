@@ -4,7 +4,7 @@ Stand: 28.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `
 
 Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 76 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 4 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 1 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -244,7 +244,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 8
 
 - **Frage:** Eine Außenwand besteht aus 20 cm Stahlbeton (λ = 2,0 W/(m·K)) und 12 cm EPS (λ = 0,035 W/(m·K)); R_si = 0,13 und R_se = 0,04 m²K/W. Welcher U-Wert ergibt sich, und wird der Höchstwert 0,24 W/(m²K) eingehalten?
 - **Richtige Antwort:** U ≈ 0,27 W/(m²K); der Höchstwert wird nicht eingehalten
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt; Zweitprüfung 27.10.: Distraktor 1 widersprach sich selbst (0,25 > 0,24 „eingehalten“); Aussage zum Höchstwert und Rückmeldung korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt; Zweitprüfung 27.10.: Distraktor 1 widersprach sich selbst (0,25 > 0,24 „eingehalten“); Aussage zum Höchstwert und Rückmeldung korrigiert · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Distraktor 1 widersprüchlich (0,25 „eingehalten“), auf „knapp überschritten“ geändert, korrigiert
 
@@ -364,7 +364,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 8
 
 - **Frage:** Ein Wohngebäude hat einen Wärmebedarf (Heizung, Warmwasser, Verluste) von 80 kWh/(m²a) und wird mit einem Pelletkessel beheizt (Nutzungsgrad 0,88, f_P = 0,2; Hilfsstrom 3,5 kWh/(m²a) mit f_P = 1,8). Welche Ergebnisse folgen?
 - **Richtige Antwort:** q_E ≈ 94 kWh/(m²a) (Klasse C), q_P ≈ 24 kWh/(m²a)
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt; Zweitprüfung 27.10.: Distraktor 4 passend zur Rückmeldung (80 · 0,88 + 3,5 = 74 kWh/(m²a), Klasse B statt 84/Klasse C) korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt; Zweitprüfung 27.10.: Distraktor 4 passend zur Rückmeldung (80 · 0,88 + 3,5 = 74 kWh/(m²a), Klasse B statt 84/Klasse C) korrigiert · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Distraktor 4 auf 74 kWh/(m²a), Klasse B (passend zur Rückmeldung), korrigiert
 
@@ -396,7 +396,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 8
 
 - **Frage:** C30/37 aus stetiger Herstellung: 15 Würfelergebnisse mit Mittelwert 42,0 N/mm², kleinster Einzelwert 34,5 N/mm², σ = 4,5 N/mm² (aus 35 Vorwerten). Wie ist die Produktion zu beurteilen?
 - **Richtige Antwort:** Nicht konform, weil 42,0 N/mm² unter f_ck + 1,48 · σ = 43,7 N/mm² liegt
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen; Zweitprüfung 27.10.: Distraktor 3 widersprach sich selbst (34,5 „unter“ 30,3); durch plausiblen Fehlschluss (Einzelwert < f_ck) ersetzt, Rückmeldung angepasst – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen; Zweitprüfung 27.10.: Distraktor 3 widersprach sich selbst (34,5 „unter“ 30,3); durch plausiblen Fehlschluss (Einzelwert < f_ck) ersetzt, Rückmeldung angepasst – korrigiert · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Distraktor 3 widersprüchlich (34,5 < 30,3), ersetzt durch „Einzelwert unter f_ck“, korrigiert
 
@@ -444,7 +444,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 8
 
 - **Frage:** Ein Einfeldträger mit L = 4,0 m und E·I = 10 000 kNm² trägt eine Gleichlast q = 10 kN/m. Wie groß ist die Durchbiegung in Feldmitte?
 - **Richtige Antwort:** w ≈ 3,33 mm
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Rückmeldung zu Distraktor 4 (Faktor 10 statt „×1000“) korrigiert · neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Rückmeldung zu Distraktor 4 (Faktor 10 statt „×1000“) korrigiert · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Rückmeldung Distraktor 4 (Faktor 10), korrigiert
 
@@ -452,7 +452,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 8
 
 - **Frage:** Ein Kragarm (L = 2,0 m, E·I = 4000 kNm²) trägt am freien Ende F = 12 kN. Wie groß sind Durchbiegung und Neigung am Kragarmende?
 - **Richtige Antwort:** w = 8,0 mm; φ = 6,0 mrad
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Distraktor 1: Neigung 1,5 → 0,75 mrad (F·L²/(16·EI) wie in der Rückmeldung) korrigiert · neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Distraktor 1: Neigung 1,5 → 0,75 mrad (F·L²/(16·EI) wie in der Rückmeldung) korrigiert · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Distraktor 1 Neigung 1,5 → 0,75 mrad, korrigiert
 
@@ -460,7 +460,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 8
 
 - **Frage:** Zwei Balken mit gleichem Querschnitt und gleicher Last: einer aus Baustahl (E = 210 000 N/mm²), einer aus Nadelholz C24 (E = 11 000 N/mm²). Wie verhält sich die Durchbiegung des Holzbalkens?
 - **Richtige Antwort:** Sie ist etwa 19-mal so groß.
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen; Zweitprüfung 27.10.: Rückmeldung zu Distraktor 1 (Festigkeitsverhältnis Stahl/Holz ist nicht 5) korrigiert · neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen; Zweitprüfung 27.10.: Rückmeldung zu Distraktor 1 (Festigkeitsverhältnis Stahl/Holz ist nicht 5) korrigiert · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Rückmeldung Distraktor 1 (Faktor 5), korrigiert
 
@@ -492,7 +492,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 8
 
 - **Frage:** Eine Stahlprobe (A = 40 cm², ρ = 7,85 g/cm³) verliert in 28 Tagen 0,24 g (blindwertkorrigiert). Welche gleichmäßige Abtragsrate ergibt sich etwa?
 - **Richtige Antwort:** 100 µm/a
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Rückmeldung zu Option 1 berichtigt; Distraktor 3: 1000 → 780 µm/a; Zweitprüfung 27.10.: Distraktor 1: 9,9 → 10 µm/a (99,6/10 gerundet) korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Rückmeldung zu Option 1 berichtigt; Distraktor 3: 1000 → 780 µm/a; Zweitprüfung 27.10.: Distraktor 1: 9,9 → 10 µm/a (99,6/10 gerundet) korrigiert · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Distraktor 1 9,9 → 10 µm/a, korrigiert
 
@@ -556,7 +556,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 8
 
 - **Frage:** Eine Betonstütze (E_cm = 30 000 MPa) steht unter der Dauerdruckspannung σ = 9 N/mm², die Kriechzahl beträgt φ = 2,5. Welcher effektive E-Modul und welche Endstauchung ergeben sich?
 - **Richtige Antwort:** E_c,eff ≈ 8571 MPa; ε_end ≈ 1,05 ‰
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt; Zweitprüfung 27.10.: Rückmeldung zu Distraktor 3 (75 000 MPa folgt aus E_cm · φ, nicht · (1 + φ)) korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt; Zweitprüfung 27.10.: Rückmeldung zu Distraktor 3 (75 000 MPa folgt aus E_cm · φ, nicht · (1 + φ)) korrigiert · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Rückmeldung Distraktor 3 (E_cm · φ), korrigiert
 
@@ -596,7 +596,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 8
 
 - **Frage:** Eine Prüfserie mit n = 8 Würfeln hat x̄ = 31,4 N/mm² und s = 1,9 N/mm². Der kleinste Wert beträgt 27,0 N/mm², G_krit(n = 8; α = 5 %, ISO 5725-2) = 2,13. Wie ist der Wert einzustufen?
 - **Richtige Antwort:** G ≈ 2,32 > 2,13; auffällig, vor dem Streichen technische Ursache prüfen
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt; Zweitprüfung 27.10.: G_krit nach ISO 5725-2 (2,13 statt 2,03) – korrigiert, Freigabe zurückgenommen
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt; Zweitprüfung 27.10.: G_krit nach ISO 5725-2 (2,13 statt 2,03) – korrigiert, Freigabe zurückgenommen · bereits freigegeben (verified)
 - [x] ok
 - [ ] ändern: …
 

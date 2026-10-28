@@ -553,7 +553,7 @@ export default function InnovativeWerkstoffe() {
               const sfPlasticVal = developedYieldBase / requiredYieldBase;
               
               // Elastic Buckling
-              // Youngs Modulus estimate: E ≈ 1000 * yield_strength (highly realistic transition for fresh cement paste)
+              // Lehrannahme: E ≈ 1200 · τ_0 für jungen Mörtel (grobe Näherung, nicht normativ)
               const E_mod_base = 1200 * developedYieldBase; // in Pa
               const b_m = layerWidth3d / 1000; // width of layer in m
               const shapeFactor = structuralShape === 'straight' ? 1.0 : structuralShape === 'rounded' ? 4.0 : 8.0;

@@ -141,7 +141,7 @@
     "t2SchlagregendichtheitDinEn": "2. Schlagregendichtheit (DIN EN 1027)",
     "berieselungMitWasserBei": "Berieselung mit Wasser bei pulsierendem Überdruck. Klasse E900: dicht bis 900 Pa Prüfdruck (DIN EN 12208).",
     "t3EinbruchhemmungDinEn": "3. Einbruchhemmung (DIN EN 1627)",
-    "widerstandsklassenRc1N": "Widerstandsklassen RC 1 N bis RC 4. Prüfung statisch, dynamisch (Pendel) und manueller Werkzeugangriff (Kuhfuß)."
+    "widerstandsklassenRc1N": "Widerstandsklassen RC 1 N bis RC 6 (im Wohnungsbau meist RC 2 N oder RC 2). Prüfung statisch, dynamisch (Pendel) und manueller Werkzeugangriff (Kuhfuß)."
   },
   "werte": {
     "anwendungsbeispielBemessungsfestigkeitVo": "Anwendungsbeispiel: Bemessungsfestigkeit von Float, TVG und ESG",

@@ -44,7 +44,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 76 korrigiert, 0 fraglich, 1
 
 - **Frage:** Ein 36 Jahre altes Bauteil hat eine Karbonatisierungstiefe von 15 mm. Bei welchem Bauteilalter erreicht die Front nach dem √t-Gesetz eine Betondeckung von 25 mm?
 - **Richtige Antwort:** bei einem Alter von ca. 100 Jahren
-- **Auffälligkeit:** Prüfhinweis: „nach ca. 100 Jahren“ (Bauteilalter) eindeutig formulieren.
+- **Auffälligkeit:** Prüfhinweis: „nach ca. 100 Jahren“ (Bauteilalter) eindeutig formulieren. · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Bezugszeitpunkt eindeutig (Bauteilalter) formuliert, korrigiert
 
@@ -244,7 +244,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 76 korrigiert, 0 fraglich, 1
 
 - **Frage:** Eine mobile Brechanlage bricht auf einer Abbruchbaustelle den dort angefallenen Bauschutt (Behandlung am Entstehungsort). Ab wann ist sie nach der 4. BImSchV genehmigungsbedürftig?
 - **Richtige Antwort:** Wenn sie länger als zwölf Monate am selben Ort betrieben wird
-- **Auffälligkeit:** Prüfhinweis: 4. BImSchV – Zwölf-Monats-Regel vereinfacht.
+- **Auffälligkeit:** Prüfhinweis: 4. BImSchV – Zwölf-Monats-Regel vereinfacht. · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Frage auf Behandlung am Entstehungsort eingegrenzt (sonst gilt § 1 Abs. 1 Satz 2 4. BImSchV: Abfallanlagen Nr. 8 ab dem ersten Tag), korrigiert
 
@@ -364,7 +364,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 76 korrigiert, 0 fraglich, 1
 
 - **Frage:** In einem Gebäude von 1965 liegt unter dem Parkett ein schwarzer, pechartiger Kleber. Welcher Schadstoff ist nach dem Modul vorrangig zu vermuten?
 - **Richtige Antwort:** PAK aus Steinkohlenteerpech im sogenannten Schwarzkleber (Teerkleber)
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · Zweitprüfung 27.10.: richtige Option verlängert (war deutlich kürzeste, Längenverhältnis 1,27) – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · Zweitprüfung 27.10.: richtige Option verlängert (war deutlich kürzeste, Längenverhältnis 1,27) – korrigiert · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Längenhinweis beseitigt (richtige Option war kürzeste, Verhältnis 1,27), korrigiert
 

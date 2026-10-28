@@ -2,7 +2,7 @@
 
 Stand: 27.10.2026 · Grundlage: `src/data/quiz.json` auf main (Stand 9f67cda3) · Prüfschema wie Zweitprüfung 27.10. (Frage, Optionen, richtige Antwort, Erklärung und normRef gegen Modulinhalt, Rechenkerne, Kennwerte und öffentliche Quellen; Rechenfragen nachgerechnet; Distraktoren, Längen- und Formulierungshinweise, Zahlformat).
 
-**Wichtig:** In dieser Runde wurde **nichts freigegeben** (`verified` bleibt `false`, kein `reviewer`/`reviewedAt`). Die Liste ist ein Vorschlag; freigegeben wird erst nach Bestätigung durch Ankreuzen.
+**Nachtrag 28.10.2026:** Sammelfreigabe erteilt, siehe Schlusszeile. – **Ursprünglich:** In dieser Runde wurde **nichts freigegeben** (`verified` bleibt `false`, kein `reviewer`/`reviewedAt`). Die Liste ist ein Vorschlag; freigegeben wird erst nach Bestätigung durch Ankreuzen.
 
 ## Umfang
 
@@ -579,4 +579,12 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 
 ---
 
-Freigabe aller mit ok bewerteten Fragen: [ ]
+Freigabe aller mit ok bewerteten Fragen: [x] (28.10.2026)
+
+233 Fragen mit Ergebnis „ok“ ohne Vorbehalt am 28.10.2026 freigegeben (`verified: true`, `reviewer` „freigegeben 28.10.2026 (Zweitprüfung)“, `reviewedAt` 2026-10-28). Vor der Freigabe wurde jede Frage mit dem Stand der Liste (quiz.json in 66b00b65) verglichen; reine Umstellungen der Tausendertrennung gelten nicht als inhaltliche Änderung.
+
+Nicht von der Sammelfreigabe erfasst (Einzelcheckbox bleibt offen):
+
+- „ok (…)“ mit Vermerk: `q_ndr_2`, `qn_lca_ingenieurbau_4`, `qn_rechnung_mauerwerk_5`, `qn_lebensdauer_4`, `qn_lebensdauer_6`, `qn_rechnung_holzbau_6`, `qn_normen_ausblick_2`, `qn_normen_ausblick_7`
+- „korrigiert“ bzw. „Klärung“: `q_dauer_2`, `qn_frischbeton_4`
+- seit der Listenerstellung inhaltlich geändert: `q_vwb_6` (normRef DWA-A 138 → DWA-A 138-1:2024-10 im Abgleich Runde 3, Vorprüfung jetzt „korrigiert“)

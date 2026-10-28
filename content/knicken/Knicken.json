@@ -41,7 +41,9 @@
     "zumModulStahlbauNach": "Zum Modul Stahlbau nach Eurocode 3",
     "dieEulerLastIst": "Die Euler-Last ist die ideale Obergrenze. Den Bemessungswert N_b,Rd mit Knicklinien und χ berechnet das Modul Stahlbau nach Eurocode 3.",
     "oktober2026Ap5": "Oktober 2026 (AP 5 Mechanik: Euler-Fälle, Theorie II. Ordnung und Normbezüge geprüft; fachliche Freigabe durch den Autor ausstehend)",
-    "eulerscheKnickfälle": "Eulersche Knickfälle"
+    "eulerscheKnickfälle": "Eulersche Knickfälle",
+    "achseX": "Stelle x [m] (x = 0 am Stabfuß)",
+    "achseW": "Ausbiegung w [mm]"
   },
   "daten": {
     "Knicken": [

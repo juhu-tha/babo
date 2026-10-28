@@ -62,15 +62,19 @@ const TGAInteraction = () => {
   );
 };
 
+/** Washburn: r·p = −2γ·cos θ mit Hg γ = 0,485 N/m, θ = 140° (Überschrift und Beispiel 2), umgerechnet auf r in nm und p in bar
+ *  (≈ 7431 nm·bar; Modulprüfung Tranche 4, T4-AN-1: vorher gerundet 7500, im Beispiel 74 nm statt 75 nm bei 100 bar) */
+const WASHBURN_NM_BAR = (-2 * 0.485 * Math.cos((140 * Math.PI) / 180)) / 1e5 * 1e9;
+
 const MIPInteraction = () => {
   const [pressure, setPressure] = useState(1);
-  
+
   const getPoreRadius = (p: number) => {
-    return formatDeZahl(7500 / p, 1);
+    return formatDeZahl(WASHBURN_NM_BAR / p, 1);
   };
 
   const getPoreType = (p: number) => {
-    const r = 7500 / p;
+    const r = WASHBURN_NM_BAR / p;
     if (r > 50) return inhalt.werte.kapillarporenTransportVonWasser;
     if (r > 10) return inhalt.werte.übergangsbereichKleineKapillarporenGroße;
     return inhalt.werte.gelporenTeilDesC;

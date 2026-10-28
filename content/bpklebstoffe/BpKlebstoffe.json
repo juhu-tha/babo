@@ -5,7 +5,7 @@
     "basiswissenProduktkatalog": " Basiswissen & Produktkatalog",
     "fugenKlebetechnikRechner": " Fugen- & Klebetechnik-Rechner",
     "verfügbareKlebUndDichtstoffe": "Verfügbare Kleb- und Dichtstoffe:",
-    "silikonDreipunfthaftungVerhindern": "Silikon-Dreipunfthaftung verhindern!",
+    "silikonDreipunfthaftungVerhindern": "Silikon-Dreiflankenhaftung verhindern!",
     "beiBauDehnungsfugenDarf": "Bei Bau-Dehnungsfugen darf das Silikon zwingend **nur an zwei Fugenflanken** anhaften. Kommt es zu einer Haftung am Fugenboden (Dreipunkthaftung), reißt der Dichtstoff bei Fugenbewegungen, weil er sich nicht frei dehnen kann. Abhilfe schaffen \\*\\*Fugenfüllprofile/Rundschnüre\\*\\* aus PE.",
     "werkstoffdatenblattBauchemie": "Werkstoffdatenblatt Bauchemie",
     "chemischeBasis": "Chemische Basis",
@@ -20,7 +20,7 @@
     "sanitärFeuchtraumdichtstoffeDinEn": "Sanitär- & Feuchtraumdichtstoffe (DIN EN 15651-3 - Typ S)",
     "spezialsystemeFürDehnungsfugenIm": "Spezialsysteme für Dehnungsfugen im Nassbereich (Sanitäreinrichtungen, Fliesenanschlüsse). Zum Schutz vor mikrobiellem Befall sind diese Silicondichtstoffe fungizid ausgerüstet (Sanitärdichtstoffe nach DIN EN 15651-3, Klassen XS1/XS2).",
     "bodenfugensystemeDinEn15651": "Bodenfugensysteme (DIN EN 15651-4 - Typ PW)",
-    "hochelastischeSystemeFürBefahrbare": "Hochelastische Systeme für befahrbare oder mechanisch beanspruchte Bodenflächen (Logistikhallen, Parkdecks). Sie erfordern Dichtstoffe mit höherer Shore-A-Härte, hoher Weiterreißfestigkeit und Beständigkeit gegen Treib- und Schmierstoffe (Hinweise in IVD-Merkblättern).",
+    "hochelastischeSystemeFürBefahrbare": "Dichtstoffe für begehbare Bodenfugen (PW: Fußgängerwege). Für befahrene Flächen wie Logistikhallen und Parkdecks gelten zusätzliche Anforderungen nach Herstellerangabe. Sie erfordern Dichtstoffe mit höherer Shore-A-Härte, hoher Weiterreißfestigkeit und Beständigkeit gegen Treib- und Schmierstoffe (Hinweise in IVD-Merkblättern).",
     "konstruktiveBausystemverklebungenDinEn": "Konstruktive Bausystemverklebungen (DIN EN 1504-4)",
     "strukturelleEpoxidharzKlebemittelZur": "Strukturelle Epoxidharz-Klebemittel zur hochfesten Verklebung von Betonbauteilen, Stahllaschen oder Carbonfaserlamellen (CFK) zur statischen Tragwerkssanierung. Sie haben hohe Haft- und Scherfestigkeiten (starre Klebefuge)."
   },
@@ -53,7 +53,7 @@
       },
       {
         "name": "D3 / D4 PVAc-Holzleim (Weißleim)",
-        "category": "Holzklebemörtel nach DIN EN 204",
+        "category": "Holzklebstoff nach DIN EN 204",
         "standard": "DIN EN 204 / 205 (Klasse D3/D4)",
         "chemicalBase": "Polyvinylacetat (PVAc-Dispersion)",
         "curingType": "Physikalische Trocknung (Wasserverdunstung)",
@@ -78,7 +78,7 @@
         "curingType": "Chemisch vernetzend durch Luftfeuchtigkeit (Kondensation)",
         "durabilityClass": "XS1 (Höchste Schimmelresistenz)",
         "maxElongation": "Zulässige Gesamtverformung 25 %",
-        "description": "Dauerelastischer Dichtstoff für Dehnfugen in Bädern und Fliesenbelägen. Neutralvernetzende Silikone setzen beim Abbinden unbedenkliche Alkohole frei und greifen im Gegensatz zu essigsäurehaltigen Systemen Metalle und Beton nicht an.",
+        "description": "Dauerelastischer Dichtstoff für Dehnfugen in Bädern und Fliesenbelägen. Neutralvernetzende Silikone spalten beim Abbinden Alkohol (Alkoxy-System) bzw. Oxim (Oxim-System) ab und greifen im Gegensatz zu essigsäurevernetzenden Systemen Beton und die meisten Metalle nicht an (Oxim-Systeme nicht auf Kupfer oder Messing).",
         "advantages": [
           "Sehr gute Pilzbeständigkeit (fungizid ausgerüstet)",
           "Sehr hohe Rückstellfähigkeit und UV-Resistenz",

@@ -324,3 +324,7 @@ Die Beispiele (KS 17,5 cm: m′ = 380 kg/m², R_w = 57,5 dB; HLz 24 cm: 243 kg/m
 
 - Unabhängige Nachrechnung: eigenes Skript (Python) mit eigener Umsetzung der Normgleichungen, Vergleich gegen die Kernausgaben (159 Vergleiche). Die Sollwerte sind als `tests/modulpruefungTranche1.test.ts` übernommen (ohne Rückgriff auf vorhandene Testwerte).
 - Öffentliche Quellen dieser Prüfung: [Heidelberg Materials, Flyer „Beton bestellen nach Norm“](https://heidelbergmaterials.de/sites/default/files/2024-09/flyer_beton_bestellen_nach_norm.pdf) (XM-Höchstzementgehalt), [umwelt-online, DIN 1045-2 (archiviert)](https://umwelt-online.de/recht/bau/din/1045_2g.htm) (Zuschläge Größtkorn, Bezug unklar), [BauNetz Wissen: GModG](https://www.baunetzwissen.de/daemmstoffe/fachwissen/richtlinien-verordnungen/gebaeudemodernisierungsgesetz-gmodg-10411131).
+
+## Freigabe 28.10.2026
+
+Freigegeben wurden Module mit Empfehlung „freigabefähig“ ohne offene Fragen. In dieser Tranche trifft das auf kein ganzes Modul zu. Der Reiter Querkraft (Nr. 2) ist freigabefähig, zählt aber erst mit dem ganzen Modul `stahlbeton_bemessung` (offen: F-1, S-2, P-2, Tranche 2 T2-S-1/-2); der Prüfvermerk bleibt „offen“.

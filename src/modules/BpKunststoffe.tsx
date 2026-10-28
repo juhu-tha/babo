@@ -1,4 +1,5 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { burgersDehnung, laengenaenderungMm } from '@/src/calc/bauprodukte';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -259,9 +260,9 @@ export default function BpKunststoffe() {
   const compObj = plasticsDatabase.find((x) => x.id === comparativePlastic) || plasticsDatabase[0];
 
   // Elongations: Delta_L = alpha * L * delta_T (10^-6 * m * K -> mm)
-  const elongationPlastic = compObj.alpha * length * tempDelta * 0.001; // mm
-  const elongationSteel = 12 * length * tempDelta * 0.001; // mm (Steel ~ 12)
-  const elongationConcrete = 10 * length * tempDelta * 0.001; // mm (Concrete ~ 10)
+  const elongationPlastic = laengenaenderungMm(compObj.alpha, length, tempDelta); // mm
+  const elongationSteel = laengenaenderungMm(12, length, tempDelta); // mm (Stahl α ≈ 12·10⁻⁶/K)
+  const elongationConcrete = laengenaenderungMm(10, length, tempDelta); // mm (Beton α ≈ 10·10⁻⁶/K)
 
   // Burgers calculation
   const burgersParams = inhalt.daten["BpKunststoffe.burgersParams"];
@@ -270,11 +271,11 @@ export default function BpKunststoffe() {
   
   // Math: Burgers Strain formula: epsilon(t) = sigma_0/E_1 + sigma_0/eta_1 * t + sigma_0/E_2 * (1 - exp(-E_2/eta_2 * t))
   // We represent strain in % (so multiplying by 100)
-  const strainElastic = (burgersStress / currentBurgers.E1) * 100; // in %
-  const strainViscous = ((burgersStress / currentBurgers.eta1) * burgersTime) * 100; // in %
-  const exponentMultiplier = currentBurgers.E2 / currentBurgers.eta2;
-  const strainDelayed = ((burgersStress / currentBurgers.E2) * (1 - Math.exp(-exponentMultiplier * burgersTime))) * 100; // in %
-  const strainTotal = strainElastic + strainDelayed + strainViscous; // in %
+  const burgers = burgersDehnung(currentBurgers, burgersStress, burgersTime); // Rechenkern src/calc/bauprodukte.ts, Dehnungen in %
+  const strainElastic = burgers.elastisch;
+  const strainViscous = burgers.viskos;
+  const strainDelayed = burgers.verzoegert;
+  const strainTotal = burgers.gesamt;
 
   // Resistance rating renderer helper
   const renderRating = (r: 'A' | 'B' | 'C') => {

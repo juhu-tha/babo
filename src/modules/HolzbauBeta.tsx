@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { Trees } from 'lucide-react';
-import { bemesseDruckstab, bemesseQuerdruck, holzschraube, type KLED, type Nutzungsklasse, type Querdruckfall } from '@/src/calc/holzbau';
+import { abbrandQuerschnitt, bemesseDruckstab, bemesseQuerdruck, holzschraube, type AbbrandArt, type KLED, type Nutzungsklasse, type Querdruckfall } from '@/src/calc/holzbau';
 import { bspSchwingung, BSP_AUFBAUTEN, type EiVerfahren, type Estrichart } from '@/src/calc/bspSchwingung';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Querverweis } from '@/src/components/ui/Querverweis';
@@ -142,53 +142,11 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
     return { ...r, utilAxial, utilShear, isAxialUnsafe: utilAxial > 100, isShearUnsafe: utilShear > 100 };
   }, [connWoodClass, connD, connLef, connAngle, connCount, connForce, connServiceClass, connLoadDuration]);
 
-  const fireResults = useMemo(() => {
-    // ideelle Abbrandrate beta_n inkl. Eckausrundung (DIN EN 1995-1-2, Tab. 3.1)
-    let beta_0 = 0.80; // Nadel-Vollholz
-    if (fireType === 'bsh') beta_0 = 0.70; // Nadelholz-BSH
-    if (fireType === 'laub') beta_0 = 0.55; // Laubholz rho_k >= 450
-    if (fireType === 'clt') beta_0 = 0.65; // eindimensional, Lehrannahme (ohne Lagenabfall)
-
-    const d_char0 = beta_0 * fireTime; // mm
-    const k_0 = Math.min(1, fireTime / 20); // ungeschützte Oberfläche
-    const d_0 = 7.0; // mm Schicht ohne Festigkeit
-    const d_ef = d_char0 + k_0 * d_0; // mm
-
-    let b_fi = fireB;
-    let h_fi = fireH;
-
-    if (fireSides === 4) {
-      b_fi = Math.max(0, fireB - 2 * d_ef);
-      h_fi = Math.max(0, fireH - 2 * d_ef);
-    } else { 
-      b_fi = Math.max(0, fireB - 2 * d_ef);
-      h_fi = Math.max(0, fireH - d_ef);
-    }
-
-    const A_0 = fireB * fireH; // mm²
-    const W_y0 = (fireB * Math.pow(fireH, 2)) / 6; // mm³
-
-    const A_fi = b_fi * h_fi; // mm²
-    const W_yfi = b_fi > 0 && h_fi > 0 ? (b_fi * Math.pow(h_fi, 2)) / 6 : 0; // mm³
-
-    const areaLossPercent = A_0 > 0 ? ((A_0 - A_fi) / A_0) * 100 : 100;
-    const stiffnessLossPercent /* Verlust an Widerstandsmoment W (nicht EI) */ = W_y0 > 0 ? ((W_y0 - W_yfi) / W_y0) * 100 : 100;
-
-    return {
-      beta_0,
-      d_char0,
-      d_ef,
-      b_fi,
-      h_fi,
-      A_0,
-      W_y0,
-      A_fi,
-      W_yfi,
-      areaLossPercent,
-      stiffnessLossPercent,
-      isCollapsed: b_fi <= 0 || h_fi <= 0
-    };
-  }, [fireTime, fireSides, fireB, fireH, fireType]);
+  // Abbrand mit reduziertem Querschnitt (Rechenkern src/calc/holzbau.ts, DIN EN 1995-1-2:2010-12, 4.2.2)
+  const fireResults = useMemo(
+    () => abbrandQuerschnitt(fireType as AbbrandArt, fireTime, fireB, fireH, fireSides === 4 ? 4 : 3),
+    [fireTime, fireSides, fireB, fireH, fireType],
+  );
 
   // Deckenschwingung Brettsperrholz (Rechenkern src/calc/bspSchwingung.ts)
   const vibResults = useMemo(() => bspSchwingung({

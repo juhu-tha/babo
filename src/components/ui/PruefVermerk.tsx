@@ -6,10 +6,10 @@ import { datumDe, type Pruefvermerk } from '@/src/data/pruefvermerke';
  *  (Entscheidung 27.10.2026; die Admin-Ansicht „Meine Module“ listet offene weiterhin). */
 export const vermerkOeffentlich = (vermerk: Pruefvermerk | undefined): boolean => !!vermerk && vermerk.status !== 'offen';
 
-/** Zeile „fachlich geprüft am … von …“ im Kopf jedes Fachmoduls (Umsetzungsplan Phase 6, AP 6.6) */
+/** Zeile „Fachlich geprüft am …“ (mit „von …“ nur, wenn eine Person eingetragen ist) im Kopf jedes Fachmoduls (Umsetzungsplan Phase 6, AP 6.6) */
 export function PruefVermerk({ vermerk }: { vermerk: Pruefvermerk }) {
   if (!vermerkOeffentlich(vermerk)) return null;
-  const geprueft = vermerk.status === 'geprueft' && vermerk.am && vermerk.von;
+  const geprueft = vermerk.status === 'geprueft' && !!vermerk.am;
   const nach = vermerk.status === 're-review';
   const Icon = geprueft ? BadgeCheck : nach ? RefreshCw : CircleDashed;
   const farbe = geprueft
@@ -18,7 +18,7 @@ export function PruefVermerk({ vermerk }: { vermerk: Pruefvermerk }) {
       ? 'border-amber-300 bg-amber-50 text-amber-950'
       : 'border-home-grau/30 bg-off-white text-text-main/80';
   let text: string;
-  if (geprueft) text = `Fachlich geprüft am ${datumDe(vermerk.am)} von ${vermerk.von}`;
+  if (geprueft) text = `Fachlich geprüft am ${datumDe(vermerk.am)}${vermerk.von ? ` von ${vermerk.von}` : ''}`;
   else if (nach) text = `Fachliche Nachprüfung erforderlich${vermerk.am && vermerk.von ? ` (zuletzt geprüft am ${datumDe(vermerk.am)} von ${vermerk.von})` : ''}`;
   else text = 'Fachliche Prüfung ausstehend';
   return (

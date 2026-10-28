@@ -84,7 +84,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 106 korrigiert, 0 fraglich, 
 
 - **Frage:** Welcher TRL-Stufe entspricht der Einbau eines neuen Baustoffs in ein Pilotgebäude über eine vorhabenbezogene Bauartgenehmigung (vBG)?
 - **Richtige Antwort:** TRL 7
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Erklärung: Zuordnung Zulassungsweg → TRL als Lehrkonvention gekennzeichnet (nicht ISO 16290) – korrigiert · Prüfhinweis: Zuordnung der Zulassungsarten zu TRL-Stufen ist Lehrkonvention, nicht ISO 16290 – kennzeichnen.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Erklärung: Zuordnung Zulassungsweg → TRL als Lehrkonvention gekennzeichnet (nicht ISO 16290) – korrigiert · Prüfhinweis: Zuordnung der Zulassungsarten zu TRL-Stufen ist Lehrkonvention, nicht ISO 16290 – kennzeichnen. · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Erklärung: Zuordnung Zulassungsweg → TRL als Lehrkonvention gekennzeichnet (nicht ISO 16290), korrigiert
 
@@ -92,7 +92,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 106 korrigiert, 0 fraglich, 
 
 - **Frage:** Wofür wird eine allgemeine Bauartgenehmigung (aBG) erteilt?
 - **Richtige Antwort:** Für das Zusammenfügen von Bauprodukten zu einer Bauart
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · Zweitprüfung 27.10.: Erklärung: „Seit 2017“ → MBO-Novelle 2016, Umsetzung in den Ländern 2017/2018 – korrigiert · Prüfhinweis: „seit 2017“ – MBO 2016, Landesbauordnungen 2017/2018.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · Zweitprüfung 27.10.: Erklärung: „Seit 2017“ → MBO-Novelle 2016, Umsetzung in den Ländern 2017/2018 – korrigiert · Prüfhinweis: „seit 2017“ – MBO 2016, Landesbauordnungen 2017/2018. · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Erklärung: „Seit 2017“ → MBO-Novelle 2016, Umsetzung in den Ländern 2017/2018, korrigiert
 
@@ -108,7 +108,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 106 korrigiert, 0 fraglich, 
 
 - **Frage:** Welche Exponenten empfiehlt DIN EN 1996-1-1 (ohne NA DE) in f_k = K · f_b^α · f_m^β für Normalmauermörtel?
 - **Richtige Antwort:** α = 0,70, β = 0,30
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Frage auf Empfehlungswerte der DIN EN 1996-1-1 präzisiert, NA DE in der Erklärung ergänzt – korrigiert · Prüfhinweis: Distraktor α = 0,65 / β = 0,25 als ENV 1996-1-1 bezeichnet – bestätigen; Frage um NA DE ergänzen.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Frage auf Empfehlungswerte der DIN EN 1996-1-1 präzisiert, NA DE in der Erklärung ergänzt – korrigiert · Prüfhinweis: Distraktor α = 0,65 / β = 0,25 als ENV 1996-1-1 bezeichnet – bestätigen; Frage um NA DE ergänzen. · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Frage auf Empfehlungswerte der DIN EN 1996-1-1 präzisiert, NA DE in der Erklärung ergänzt, korrigiert
 
@@ -236,7 +236,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 106 korrigiert, 0 fraglich, 
 
 - **Frage:** Was bestätigt das CE-Kennzeichen auf einem Bauprodukt?
 - **Richtige Antwort:** Das Produkt entspricht der erklärten Leistung (Leistungserklärung)
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · Zweitprüfung 27.10.: Erklärung: Hinweis auf neue BauPVO (EU) 2024/3110 ergänzt – korrigiert · Prüfhinweis: Übergang auf VO (EU) 2024/3110 in der Begründung erwähnen.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · Zweitprüfung 27.10.: Erklärung: Hinweis auf neue BauPVO (EU) 2024/3110 ergänzt – korrigiert · Prüfhinweis: Übergang auf VO (EU) 2024/3110 in der Begründung erwähnen. · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Erklärung: Hinweis auf neue BauPVO (EU) 2024/3110 ergänzt, korrigiert
 
@@ -316,7 +316,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 106 korrigiert, 0 fraglich, 
 
 - **Frage:** Bis zu welcher oberen Siebgröße D spricht man nach DIN EN 12620 von feiner Gesteinskörnung?
 - **Richtige Antwort:** 4 mm
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Erklärung: Feinanteil „≤ 0,063 mm“ → „< 0,063 mm“ (Durchgang durch das 0,063-mm-Sieb) – korrigiert · Prüfhinweis: Feinanteil < 0,063 mm (nicht ≤).
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Erklärung: Feinanteil „≤ 0,063 mm“ → „< 0,063 mm“ (Durchgang durch das 0,063-mm-Sieb) – korrigiert · Prüfhinweis: Feinanteil < 0,063 mm (nicht ≤). · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Erklärung: Feinanteil „≤ 0,063 mm“ → „< 0,063 mm“ (Durchgang durch das 0,063-mm-Sieb), korrigiert
 
@@ -356,7 +356,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 106 korrigiert, 0 fraglich, 
 
 - **Frage:** Welche der genannten OSB-Klassen ist nach DIN EN 300 für tragende Zwecke im Feuchtbereich vorgesehen?
 - **Richtige Antwort:** OSB/3
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Frage präzisiert („Welche der genannten OSB-Klassen“), da auch OSB/4 für tragende Zwecke im Feuchtbereich gilt – korrigiert · Prüfhinweis: OSB/4 ebenfalls für tragende Zwecke im Feuchtbereich – Fragetext „Welche OSB-Klasse“ präzisieren.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Frage präzisiert („Welche der genannten OSB-Klassen“), da auch OSB/4 für tragende Zwecke im Feuchtbereich gilt – korrigiert · Prüfhinweis: OSB/4 ebenfalls für tragende Zwecke im Feuchtbereich – Fragetext „Welche OSB-Klasse“ präzisieren. · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Frage präzisiert („Welche der genannten OSB-Klassen“), da auch OSB/4 für tragende Zwecke im Feuchtbereich gilt, korrigiert
 
@@ -404,7 +404,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 106 korrigiert, 0 fraglich, 
 
 - **Frage:** Welche Kunststoffgruppe ist schmelzbar und schweißbar?
 - **Richtige Antwort:** Thermoplaste
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Erklärung und Rückmeldung: thermoplastische Elastomere (TPE) als schmelz- und schweißbare Ausnahme ergänzt – korrigiert · Prüfhinweis: thermoplastische Elastomere sind schweißbar – Begründung ergänzen.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Erklärung und Rückmeldung: thermoplastische Elastomere (TPE) als schmelz- und schweißbare Ausnahme ergänzt – korrigiert · Prüfhinweis: thermoplastische Elastomere sind schweißbar – Begründung ergänzen. · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Erklärung und Rückmeldung: thermoplastische Elastomere (TPE) als schmelz- und schweißbare Ausnahme ergänzt, korrigiert
 
@@ -412,7 +412,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 106 korrigiert, 0 fraglich, 
 
 - **Frage:** Welches Merkmal kennzeichnet Duroplaste (z. B. Epoxid- oder UP-Harze) im Vergleich zu Thermoplasten?
 - **Richtige Antwort:** Sie sind engmaschig vernetzt und zersetzen sich, statt zu schmelzen
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Tippfehler in der richtigen Antwort: „du bist engmaschig …“ → „Sie sind engmaschig …“. Freigegebene Frage daher unverändert gelassen – bitte korrigieren; Vorschlag für Distraktoren (Ratsche, „ausschließlich“) im Bericht. · Zweitprüfung 27.10.: Tippfehler „du bist“ in der richtigen Antwort behoben, Antworten auf vergleichbare Länge gebracht (ohne „ausschließlich“), Rückmeldungen ergänzt, Erklärung (engmaschig statt „weit- oder engmaschig“) berichtigt; Freigabe vom 28.09.2026 wegen Inhaltsänderung zurückgenommen – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Tippfehler in der richtigen Antwort: „du bist engmaschig …“ → „Sie sind engmaschig …“. Freigegebene Frage daher unverändert gelassen – bitte korrigieren; Vorschlag für Distraktoren (Ratsche, „ausschließlich“) im Bericht. · Zweitprüfung 27.10.: Tippfehler „du bist“ in der richtigen Antwort behoben, Antworten auf vergleichbare Länge gebracht (ohne „ausschließlich“), Rückmeldungen ergänzt, Erklärung (engmaschig statt „weit- oder engmaschig“) berichtigt; Freigabe vom 28.09.2026 wegen Inhaltsänderung zurückgenommen – korrigiert · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Tippfehler „du bist“ in der richtigen Antwort behoben, Antworten auf vergleichbare Länge gebracht (ohne „ausschließlich“), Rückmeldungen ergänzt, Erklärung (engmaschig statt „weit- oder engmaschig“) berichtigt; Freigabe vom 28.09.2026 wegen Inhaltsänderung zurückgenommen, korrigiert
 
@@ -436,7 +436,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 106 korrigiert, 0 fraglich, 
 
 - **Frage:** Welches Metall hat die größte Wärmedehnung?
 - **Richtige Antwort:** Zink
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Erklärung präzisiert (Reinzink ≈ 30, Titanzink ≈ 22 · 10⁻⁶/K) · Zweitprüfung 27.10.: Zahlenwerte aus den Antworten entfernt (verrieten die Lösung); Werte bleiben in Rückmeldung und Erklärung – korrigiert · Prüfhinweis: 30·10⁻⁶/K gilt für Reinzink; Titanzink in Walzrichtung ca. 22·10⁻⁶/K (unter Aluminium). Außerdem nennen die Antworten die Werte.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Erklärung präzisiert (Reinzink ≈ 30, Titanzink ≈ 22 · 10⁻⁶/K) · Zweitprüfung 27.10.: Zahlenwerte aus den Antworten entfernt (verrieten die Lösung); Werte bleiben in Rückmeldung und Erklärung – korrigiert · Prüfhinweis: 30·10⁻⁶/K gilt für Reinzink; Titanzink in Walzrichtung ca. 22·10⁻⁶/K (unter Aluminium). Außerdem nennen die Antworten die Werte. · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Zahlenwerte aus den Antworten entfernt (verrieten die Lösung); Werte bleiben in Rückmeldung und Erklärung, korrigiert
 
@@ -444,7 +444,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 106 korrigiert, 0 fraglich, 
 
 - **Frage:** Wovon hängt die charakteristische Mauerwerksdruckfestigkeit f_k bei Normalmörtel ab?
 - **Richtige Antwort:** Von f_b, f_m und dem Beiwert K
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Erklärung: Exponenten 0,7/0,3 als EN-Empfehlung gekennzeichnet, NA DE (je Stein- und Mörtelart) ergänzt – korrigiert · Prüfhinweis: Exponenten 0,7/0,3 sind EN-Empfehlung; nach NA DE abhängig von Stein- und Mörtelart.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Erklärung: Exponenten 0,7/0,3 als EN-Empfehlung gekennzeichnet, NA DE (je Stein- und Mörtelart) ergänzt – korrigiert · Prüfhinweis: Exponenten 0,7/0,3 sind EN-Empfehlung; nach NA DE abhängig von Stein- und Mörtelart. · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Erklärung: Exponenten 0,7/0,3 als EN-Empfehlung gekennzeichnet, NA DE (je Stein- und Mörtelart) ergänzt, korrigiert
 
@@ -476,7 +476,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 106 korrigiert, 0 fraglich, 
 
 - **Frage:** Für eine frostbeanspruchte Außentreppe wird ein keramischer Belag mit Kleber gesucht. Welche Kombination ist am besten geeignet?
 - **Richtige Antwort:** Feinsteinzeug mit zementärem Flexkleber C2
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · Zweitprüfung 27.10.: Erklärung: Wasseraufnahme Feinsteinzeug „< 0,5 %“ → „≤ 0,5 %“ (Gruppe BIa, DIN EN 14411) – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · Zweitprüfung 27.10.: Erklärung: Wasseraufnahme Feinsteinzeug „< 0,5 %“ → „≤ 0,5 %“ (Gruppe BIa, DIN EN 14411) – korrigiert · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Erklärung: Wasseraufnahme Feinsteinzeug „< 0,5 %“ → „≤ 0,5 %“ (Gruppe BIa, DIN EN 14411), korrigiert
 
@@ -612,7 +612,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 106 korrigiert, 0 fraglich, 
 
 - **Frage:** Welche Asphaltsorte hat nach dem Modul den höchsten Bindemittelgehalt?
 - **Richtige Antwort:** Gussasphalt (MA)
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · Zweitprüfung 27.10.: Bindemittelgehalte aus den Antworten entfernt (verrieten die Lösung); Werte bleiben in der Erklärung – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · Zweitprüfung 27.10.: Bindemittelgehalte aus den Antworten entfernt (verrieten die Lösung); Werte bleiben in der Erklärung – korrigiert · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Bindemittelgehalte aus den Antworten entfernt (verrieten die Lösung); Werte bleiben in der Erklärung, korrigiert
 
