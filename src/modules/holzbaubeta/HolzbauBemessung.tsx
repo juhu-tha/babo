@@ -307,7 +307,8 @@ export default function HolzbauBemessung({ calculationResults, colB, colH, colLe
                 >
                   <option value="schwelle">Kontinuierliche Lagerung, Schwelle (k_c,90 = 1,25 Vollholz / 1,5 BSH)</option>
                   <option value="pfosten_riegel">Einzelauflager, l₁ ≥ 2h (k_c,90 = 1,5 Vollholz / 1,75 BSH, l ≤ 400 mm)</option>
-                  <option value="traeger_ende">Allgemeiner Fall (k_c,90 = 1,0)</option>
+                  <option value="traeger_ende">Endauflager am Trägerende, l₁ ≥ 2h (k_c,90 = 1,5 / 1,75; Überstand nur einseitig)</option>
+                  <option value="allgemein">Allgemeiner Fall, l₁ &lt; 2h (k_c,90 = 1,0)</option>
                   <option value="clt_plate">Brettsperrholz (Wert nach ETA; hier 1,0 als Lehrannahme)</option>
                 </select>
               </div>

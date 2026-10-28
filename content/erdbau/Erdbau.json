@@ -23,8 +23,8 @@
     "frostschädenZBFrosthebungen": "Frostschäden (z.B. Frosthebungen im Winter und Tragfähigkeitsverlust beim Auftauen) entstehen durch Eislinsenbildung im Boden.",
     "bedingungenFürFrostschädenFrostempfindli": "Bedingungen für Frostschäden: Frostempfindlicher Boden + Wasserangebot + Frosttemperaturen.",
     "f1NichtFrostempfindlichZ": "F1: Nicht frostempfindlich (z.B. reiner Kies/Sand)",
-    "f2GeringBisMittel": "F2: Gering bis mittel frostempfindlich (gemischtkörnige Böden mit 5-15% Feinanteil < 0,063mm)",
-    "f3SehrFrostempfindlichSchluff": "F3: Sehr frostempfindlich (Schluff, Ton, Böden mit hohem Feinanteil > 15%)",
+    "f2GeringBisMittel": "F2: Gering bis mittel frostempfindlich (gemischtkörnige Böden mit 5–15 % Feinanteil < 0,063 mm sowie die Gruppen TA, OT, OH und OK nach ZTV E-StB 17, Tab. 1)",
+    "f3SehrFrostempfindlichSchluff": "F3: Sehr frostempfindlich (Schluff, leicht und mittelplastischer Ton, gemischtkörnige Böden mit Feinanteil > 15 %)",
     "frostempfindlichkeitsklassenF1F3": "**Frostempfindlichkeitsklassen (F1 - F3):**",
     "verschneidenSieKornverteilungSieblinie": "Verschneiden Sie Kornverteilung (Sieblinie) und Plastizität, um den Boden in Bodengruppen (z.B. GW, SU, TL) einzuteilen. Dies bestimmt die Eignung als Baugrundstoff.",
     "aufteilungGrobkornÜber0": "Aufteilung Grobkorn (über 0,063 mm)",
@@ -33,7 +33,7 @@
     "organischeBeimengungen": "Organische Beimengungen",
     "bodengruppeNachDin18196": "Bodengruppe nach DIN 18196 (vereinfachte Zuordnung)",
     "bautechnischeEignung": "Bautechnische Eignung",
-    "straßenbaulicheBemessungErfordertEine": "Straßenbauliche Bemessung erfordert eine ausreichende Dicke des frostsicheren Oberbaus, um ein Auffrieren des Planums zu verhindern. Sie ist abhängig von Frostzone, Belastung (Belastungsklasse Bk nach RStO 12/24/24) und anstehendem Boden (Frostempfindlichkeitsklasse F1 bis F3) und anstehendem Boden.",
+    "straßenbaulicheBemessungErfordertEine": "Straßenbauliche Bemessung erfordert eine ausreichende Dicke des frostsicheren Oberbaus, um ein Auffrieren des Planums zu verhindern. Sie ist abhängig von Frostzone, Belastung (Belastungsklasse Bk nach RStO 12/24) und anstehendem Boden (Frostempfindlichkeitsklasse F1 bis F3).",
     "belastungsklasseRsto": "Belastungsklasse (RStO)",
     "frostzoneKlimaregionInDe": "Frostzone (Klimaregion in DE)",
     "bodenklasseDesAnstehendenPlanums": "Bodenklasse des anstehenden Planums",
@@ -100,8 +100,8 @@
     "Erdbau_7": {
       "gruppe": "TA",
       "name": "Ausgeprägt plastischer Ton",
-      "frost": "F3",
-      "tauglich": "Stark setzungsempfindlich, sehr frostempfindlich."
+      "frost": "F2",
+      "tauglich": "Stark setzungs- und witterungsempfindlich; wegen der sehr geringen Durchlässigkeit nur gering bis mittel frostempfindlich (F2 nach ZTV E-StB 17)."
     },
     "Erdbau_8": {
       "gruppe": "UL / UM",

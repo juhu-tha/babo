@@ -17,7 +17,7 @@
     "t2BezogeneSchlankheitLambda": "2. Bezogene Schlankheit $\\lambda_{rel,z}$ und Knickbeiwert $k_{c,z}$:",
     "wirksameLängeLEf": "• Wirksame Länge $l_{ef}$: ",
     "schlankheitsgradLambdaZ": "• Schlankheitsgrad $\\lambda_z$: ",
-    "grenzschlankheitNachEc5120": " (Grenzschlankheit nach EC5 = 120)",
+    "grenzschlankheitNachEc5120": " (EN 1995-1-1 nennt keine Grenzschlankheit; der Rechner weist ab λ > 200 auf außergewöhnliche Schlankheit hin)",
     "bezogeneSchlankheitLambdaRel": "• Bezogene Schlankheit $\\lambda_{rel,z}$: ",
     "knickminderungsbeiwertKCZ": "• Knickminderungsbeiwert $k_{c,z}$: ",
     "t3KnickWiderstandskraftF": "3. Knick-Widerstandskraft $F_{c,R,d}$:",

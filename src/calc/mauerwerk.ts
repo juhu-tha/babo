@@ -6,7 +6,7 @@
  *      Φ1 (Endauflager, Deckenverdrehung) = 1,6 − l_f/6 ≤ 0,9·a/t für f_k ≥ 1,8 N/mm²,
  *                                         = 1,6 − l_f/5 ≤ 0,9·a/t für f_k < 1,8 N/mm²,
  *                                         = 0,333 unter der Dachdecke (oberstes Geschoss),
- *                                         = 0,9 bei Innenwänden (Zwischenauflager)
+ *                                         = 0,9 bei Innenwänden (Zwischenauflager), auch bei a < t (W-1, 28.10.2026)
  *      Φ2 (Knicken in Wandmitte)          = 0,85·a/t − 0,0011·(h_ef/t)²,  h_ef = ρ2 · h
  *    Öffentliche Quellen für die Formeln: mb AEC Software, mb-news 7/2013, S. 34–36 (Mauerwerksnachweis,
  *    Φ1/Φ2-Formeln einschließlich Φ1 = 0,9 für Innenwände und 0,333 im obersten Geschoss, Rechenbeispiel Pos. W4);
@@ -117,6 +117,40 @@ export function fkEmpfehlungEN(K: number, fb: number, fm: number, moertel: Moert
   if (moertel === 'DM') return K * Math.pow(fb, gruppe2DM ? 0.7 : 0.85);
   if (moertel === 'LM') return K * Math.pow(fb, 0.7);
   return K * Math.pow(fb, 0.7) * Math.pow(fm, 0.3);
+}
+
+/**
+ * MW-2 (Entscheidung 28.10.2026): f_k nach EN-Empfehlung nur mit genormtem K-Wert (EN 1996-1-1, Tab. 3.3). Für Lehmsteine
+ * (nicht in EN 1996-1-1; Bemessung nach DIN 18940) und für Kalksandstein mit Leichtmörtel (Tab. 3.3 ohne Wert) ist kein
+ * K-Wert genormt – dann `null`, der Rechner wird gesperrt.
+ */
+export function fkEmpfehlungENGenormt(K: number | null | undefined, fb: number, fm: number, moertel: MoertelEN, gruppe2DM: boolean): number | null {
+  return typeof K === 'number' && K > 0 ? fkEmpfehlungEN(K, fb, fm, moertel, gruppe2DM) : null;
+}
+
+/** Mörtelgruppe des Normalmauermörtels aus der Mörteldruckfestigkeit f_m (M 2,5 → II, M 5 → IIa, M 10 → III, M 20 → IIIa) */
+export function normalmoertelGruppe(fm: number): 'NM I' | 'NM II' | 'NM IIa' | 'NM III' | 'NM IIIa' {
+  return fm < 2.5 ? 'NM I' : fm < 5 ? 'NM II' : fm < 10 ? 'NM IIa' : fm < 20 ? 'NM III' : 'NM IIIa';
+}
+
+/**
+ * MW-1 (Entscheidung 28.10.2026): Haftscherfestigkeit f_vk0 nach DIN EN 1996-1-1/NA (in Deutschland statt der
+ * EN-Empfehlung Tab. 3.4), unabhängig von der Steinart, abhängig von der Mörtelgruppe [N/mm²]:
+ * NM I 0,02 · NM II 0,08 · NM IIa 0,18 · NM III 0,22 · NM IIIa 0,26 · LM 0,18 · DM 0,22.
+ * Öffentlich belegt: NM IIa 0,18, NM III 0,22, LM 36 0,18, DM 0,22 (Referenzwerte nach NA in Mauerwerk-Kalender 2024,
+ * Ernst & Sohn, Leseprobe Kap. 1, Tab. 6). Vorläufig, F-Freigabe: NM I, NM II, NM IIIa (Tabelle des NA zur
+ * Haftscherfestigkeit; Werte = 2·σ_0HS der früheren DIN 1053-1). Vorher je Steinart nach EN-Muster hinterlegt
+ * (z. B. Hochlochziegel NM 0,15 / LM 0,10 / DM 0,20).
+ */
+export const FVK0_NA: Readonly<Record<'NM I' | 'NM II' | 'NM IIa' | 'NM III' | 'NM IIIa' | 'LM' | 'DM', number>> = {
+  'NM I': 0.02, 'NM II': 0.08, 'NM IIa': 0.18, 'NM III': 0.22, 'NM IIIa': 0.26, LM: 0.18, DM: 0.22,
+};
+export const FVK0_NA_VORLAEUFIG: readonly string[] = ['NM I', 'NM II', 'NM IIIa'];
+
+/** f_vk0 nach NA DE für Mörtelart (und bei Normalmörtel f_m); liefert auch die Mörtelgruppe und ob der Wert vorläufig ist */
+export function fvk0NA(moertel: MoertelEN, fm: number): { fvk0: number; gruppe: string; vorlaeufig: boolean } {
+  const gruppe = moertel === 'NM' ? normalmoertelGruppe(fm) : moertel;
+  return { fvk0: FVK0_NA[gruppe], gruppe, vorlaeufig: FVK0_NA_VORLAEUFIG.includes(gruppe) };
 }
 
 /** Bemessungswert der Druckfestigkeit f_d = ζ · f_k / γ_M */
@@ -251,6 +285,10 @@ export function bemesseWandVereinfacht(e: WandEingabe): WandErgebnis {
     }
   }
   if (e.t < 115) hinweise.push({ stufe: 'warnung', feld: 't', text: 'Wanddicke < 115 mm: für tragende Wände im vereinfachten Verfahren nicht vorgesehen.' });
+  // W-1 (Entscheidung 28.10.2026): Φ1 = 0,9 gilt bei Innenwänden (Zwischenauflager) auch bei teilweise aufliegender Decke;
+  // die Auflagertiefe geht dort über Φ2 = 0,85·a/t − 0,0011·(h_ef/t)² und ρ2 = 1,0 ein (DIN EN 1996-3/NA; Formel für
+  // Endauflager mit 0,9·a/t nur bei Decken zwischen Geschossen am Endauflager). Vorläufig, F-Freigabe.
+  if (e.lage === 'innen' && aDurchT < 1 - 1e-9) hinweise.push({ stufe: 'warnung', feld: 'a', text: 'Innenwand mit teilweise aufliegender Decke (a < t): Φ1 = 0,9 ohne Abminderung mit a/t (Zwischenauflager); a/t wird in Φ2 und in der Knicklänge berücksichtigt (vorläufig, Prüfung am Normtext DIN EN 1996-3/NA).' });
   if (aDurchT < 2 / 3 - 1e-9) hinweise.push({ stufe: 'warnung', feld: 'a', text: 'Auflagertiefe a < 2/3·t: außerhalb der hier abgebildeten Fälle (Herstellertafeln für a/t = 1 und 2/3).' });
   if (eta > 1) hinweise.push({ stufe: 'warnung', feld: 'nEd', text: 'N_Ed > N_Rd: Der Nachweis ist nicht erfüllt.' });
 

@@ -9,7 +9,13 @@ console.log('--- Test: Boden ---');
 
 // 1. Zustandsgrenzen: w = 25, w_L = 45, w_P = 20 → I_P = 25, I_c = 0,8 (steif); oberhalb A-Linie (14,6) → TM
 const z = zustandsgrenzen(25, 45, 20);
-pruefe(z.iP === 25 && z.iC === 0.8 && z.zustand === 'steif' && z.klasse.startsWith('TM'), JSON.stringify(z));
+// T2-B-1 (28.10.2026): Zustandsformen nach DIN EN ISO 14688-2 – I_C = 0,80 liegt in 0,75 … 1,00 → halbfest (vorher „steif“ nach früherer DIN 18122-1)
+pruefe(z.iP === 25 && z.iC === 0.8 && z.zustand === 'halbfest' && z.klasse.startsWith('TM'), JSON.stringify(z));
+// Grenzen 0 / 0,25 / 0,50 / 0,75 / 1,00 (Geocentrix, ISO 14688-2 Consistency); genau 1,00 noch halbfest
+for (const [w, soll] of [[45, 'breiig'], [40, 'breiig'], [38.75, 'weich'], [35, 'weich'], [32.5, 'steif'], [30, 'steif'], [26.25, 'halbfest'], [20, 'halbfest'], [19, 'fest']] as const) {
+  const zz = zustandsgrenzen(w, 45, 20);
+  pruefe(zz.zustand === soll, `ISO 14688-2: w = ${w} → I_C = ${zz.iC} → ${zz.zustand} statt ${soll}`);
+}
 pruefe(zustandsgrenzen(20, 25, 20).klasse.startsWith('UL/TL'), 'Zwischenbereich I_P = 5');
 pruefe(zustandsgrenzen(30, 60, 45).klasse.startsWith('UA'), 'unterhalb A-Linie, w_L > 50');
 pruefe(zustandsgrenzen(50, 45, 20).zustand === 'flüssig', 'I_c < 0');
@@ -52,7 +58,7 @@ pruefe(nahe(ar.wP, 22.2, 1e-12) && ar.hinweise.length === 0, 'Ausrollgrenze');
 pruefe(ausrollgrenze([20, 23.5]).hinweise.some(x => x.feld === 'wP') && ausrollgrenze([22]).hinweise.length === 1 && ausrollgrenze([]).hinweise[0].stufe === 'fehler', 'Ausrollgrenze Streuung/ein Wert/leer');
 //    Gesamtauswertung mit w = 30 %: I_P = 19,64 %, I_C = (41,84 − 30)/19,64 = 0,603 → weich; A-Linie 15,94 < 19,64 → TM
 const at = atterberg({ w: 30, versuche: fv, ausroll: [21.8, 22.6], organisch: false });
-pruefe(at.gueltig && nahe(at.iP, 19.63832, 1e-5) && nahe(at.iC, 0.602817, 1e-5) && at.zustand === 'weich' && at.gruppe?.kuerzel === 'TM' && nahe(at.gruppe.aLinie, 15.94198, 1e-5), `Atterberg ${JSON.stringify(at.gruppe)} ${at.iC}`);
+pruefe(at.gueltig && nahe(at.iP, 19.63832, 1e-5) && nahe(at.iC, 0.602817, 1e-5) && at.zustand === 'steif' && at.gruppe?.kuerzel === 'TM' && nahe(at.gruppe.aLinie, 15.94198, 1e-5), `Atterberg ${JSON.stringify(at.gruppe)} ${at.iC}`);
 //    Konsistenz mit dem bestehenden Kern zustandsgrenzen(): gleiche I_C, gleiche Zustandsform, Gruppe als Präfix der Klasse
 const zg = zustandsgrenzen(30, at.wL, at.wP);
 pruefe(nahe(zg.iC, at.iC, 1e-12) && zg.zustand === at.zustand && zg.klasse.startsWith(at.gruppe!.kuerzel), 'Konsistenz mit zustandsgrenzen()');
@@ -61,7 +67,7 @@ pruefe(nahe(zg.iC, at.iC, 1e-12) && zg.zustand === at.zustand && zg.klasse.start
 const G: [number, number, boolean, string][] = [
   [30, 15, false, 'TL'], [25, 7, false, 'TL'], [34.9, 11, false, 'TL'], [34.9, 10, false, 'UL'], [35, 15, false, 'TM'], [50, 25, false, 'TM'], [50.1, 30, false, 'TA'],
   [28, 6, false, 'UL/TL'], [30, 6, false, 'UL'], [25, 4, false, 'UL/TL'], [30, 3.9, false, 'UL'], [45, 10, false, 'UM'], [60, 20, false, 'UA'],
-  [45, 10, true, 'OU'], [60, 20, true, 'OU'], [60, 35, true, 'OT'], [40, 20, true, 'TM'], [30, 2, true, 'UL'],
+  [45, 10, true, 'OU'], [60, 20, true, 'UA'] /* T2-B-2: organisch, w_L > 50 %, unter A-Linie → UA + Prüfhinweis statt OU */, [60, 35, true, 'OT'], [40, 20, true, 'TM'], [30, 2, true, 'UL'],
 ];
 for (const [wL, iP, org, soll] of G) pruefe(bodengruppePlastizitaet(wL, iP, org).kuerzel === soll, `Gruppe w_L = ${wL}, I_P = ${iP}, organisch ${org}: ${bodengruppePlastizitaet(wL, iP, org).kuerzel} statt ${soll}`);
 //    genau auf der A-Linie gilt „oberhalb“ (Ton), wie in zustandsgrenzen()

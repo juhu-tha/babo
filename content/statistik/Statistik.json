@@ -38,7 +38,8 @@
     "bereinigterMittelwert": "Bereinigter Mittelwert",
     "charaktWertXK": "Charakt. Wert (X_k)",
     "t5QuantilDinEn": "5-%-Quantil, DIN EN 1990 Tab. D1 (k_n = ",
-    "bemessungswertXD": "Bemessungswert (X_d)"
+    "bemessungswertXD": "Bemessungswert (X_d)",
+    "wertEAuffaellig": " Wert(e) zwischen 5-%- und 1-%-Grenze (gestrichelt): auffällig nach ISO 5725-2, markiert und in der Auswertung belassen."
   },
   "werte": {
     "wirdNachGenerierungBerechnet": "Wird nach Generierung berechnet...",
