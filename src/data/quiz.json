@@ -41111,22 +41111,22 @@
     "topic": "Charakteristische In-situ-Festigkeit",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 13791",
-    "question": "Acht Bohrkerne ergeben f_m,is = 34,5 N/mm², s = 3,0 N/mm² und f_is,lowest = 30,0 N/mm². Wie groß ist f_ck,is nach dem Modulansatz min(f_m,is − 1,48 · s; f_is,lowest + 4)?",
+    "question": "Acht Bohrkerne ergeben f_m,is = 34,5 N/mm², s = 3,0 N/mm² und f_is,lowest = 30,0 N/mm². Wie groß ist f_ck,is nach DIN EN 13791:2020 mit min(f_m,is − k_n · s; f_is,lowest + 4) und k_n = 2,00 für n = 8?",
     "options": [
-      "rund 30,1 N/mm²",
-      "rund 35,4 N/mm²",
+      "rund 28,5 N/mm²",
+      "rund 33,5 N/mm²",
       "rund 34,0 N/mm²",
-      "rund 34,5 N/mm²"
+      "rund 30,1 N/mm²"
     ],
     "correctIdx": 0,
-    "explanation": "f_m,is − 1,48 · s = 34,5 − 4,44 = 30,06; f_is,lowest + 4 = 34,0. Maßgebend ist das Minimum: f_ck,is ≈ 30,1 N/mm².",
+    "explanation": "f_m,is − 2,00 · s = 34,5 − 6,0 = 28,5; f_is,lowest + 4 = 34,0. Maßgebend ist das Minimum: f_ck,is = 28,5 N/mm².",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
       "",
-      "35,4 ist bereits durch 0,85 dividiert; das ist der Einstufungswert, nicht f_ck,is.",
+      "33,5 ist bereits durch 0,85 dividiert; das ist der Einstufungswert, nicht f_ck,is.",
       "34,0 ist der zweite Term der Minimumbildung; maßgebend ist der kleinere Wert.",
-      "34,5 ist nur der Mittelwert; die Streuung muss über k_n · s abgezogen werden."
+      "30,1 ergibt sich mit dem Faktor 1,48 der früheren Fassung (ab 15 Kernen); für n = 8 gilt k_n = 2,00."
     ],
     "gapAnalysis": {
       "topic": "Charakteristische In-situ-Festigkeit",
@@ -41141,7 +41141,8 @@
     "reviewedAt": "2026-10-28",
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "ok",
+      "hinweis": "Modulprüfung Tranche 12 (28.10.): k_n = 1,48 (Fassung 2008, ab 15 Kernen) durch k_n = 2,00 für n = 8 nach DIN EN 13791:2020 ersetzt – korrigiert"
     }
   },
   {

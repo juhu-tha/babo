@@ -445,7 +445,7 @@
     ],
     "HistorischeBauprodukte.formeln": [
       {
-        "formel": "5\\text{Ca(OH)}_2 + 6\\text{SiO}_2 + 5\\text{H}_2\\text{O} \\xrightarrow{\\text{Autoklav, } \\approx 200^{\\circ}\\text{C}} \\text{Ca}_5\\text{Si}_6\\text{O}_{16}(\\text{OH})_2 \\cdot 4\\text{H}_2\\text{O}",
+        "formel": "5\\text{Ca(OH)}_2 + 6\\text{SiO}_2 \\xrightarrow{\\text{Autoklav, } \\approx 200^{\\circ}\\text{C}} \\text{Ca}_5\\text{Si}_6\\text{O}_{16}(\\text{OH})_2 \\cdot 4\\text{H}_2\\text{O}",
         "erklaerung": "Hydrothermale Bildungsreaktion von kristallinem Tobermorit (C-S-H Phase) im Autoklav bei der Herstellung von Porenbeton und Kalksandsteinen.",
         "quelle": "Baustoffchemie-Lehrbuch"
       },
