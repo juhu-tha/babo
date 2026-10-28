@@ -2,7 +2,7 @@
 
 Stand: 28.10.2026 · Grundlage: `src/data/quiz.json` auf main (Stand fc525dc5) · Prüfschema wie Zweitprüfung 27.10. (Frage, Optionen, richtige Antwort, Erklärung, Rückmeldungen zu den Distraktoren und normRef gegen Modulinhalt, Rechenkerne, Kennwerte und öffentliche Quellen; Rechenfragen nachgerechnet; Distraktoren, Längen- und Formulierungshinweise, Zahlformat).
 
-**Wichtig:** In dieser Runde wurde **nichts freigegeben** (`verified` bleibt `false`, kein `reviewer`/`reviewedAt`). Die Liste ist ein Vorschlag; freigegeben wird erst nach Bestätigung durch Ankreuzen. Die Tausendertrennung wurde nicht angefasst (separate Umstellung).
+**Nachtrag 28.10.2026:** Sammelfreigabe erteilt, siehe Schlusszeile. – **Ursprünglich:** In dieser Runde wurde **nichts freigegeben** (`verified` bleibt `false`, kein `reviewer`/`reviewedAt`). Die Liste ist ein Vorschlag; freigegeben wird erst nach Bestätigung durch Ankreuzen. Die Tausendertrennung wurde nicht angefasst (separate Umstellung).
 
 ## Umfang
 
@@ -614,4 +614,6 @@ Anlass: unabhängige Stichprobe (20 Fragen, 0 Fehler, 2 fraglich in Rechts-/Norm
 
 ---
 
-Freigabe aller mit ok bewerteten Fragen (228; ohne „korrigiert“ und „Klärung“, diese einzeln über ihre Checkbox): [ ]
+Freigabe aller mit ok bewerteten Fragen (228; ohne „korrigiert“ und „Klärung“, diese einzeln über ihre Checkbox): [x] (28.10.2026)
+
+228 Fragen mit Ergebnis „ok“ am 28.10.2026 freigegeben (`verified: true`, `reviewer` „freigegeben 28.10.2026 (Zweitprüfung)“, `reviewedAt` 2026-10-28). Vor der Freigabe wurde jede Frage mit dem Stand der Liste nach dem Abgleich (quiz.json in 55da85e9) verglichen: keine inhaltliche Änderung, nur Tausendertrennung. Offen (Einzelcheckbox): `q_zs_3`, `q_zs_5`, `qn_kreislauf_dpp_2`, `q_bst_3`, `q_bst_5`, `q_hp_2`, `q_bm_2`, `q_sch_4`, `qn_altholz_urban_mining_6`, `q_dc_3`, `q_ms_sc_3`, `qn_instandhaltung_1`, `qn_lca_ingenieurbau_1`, `qn_lca_ingenieurbau_3`, `qn_lca_ingenieurbau_5`, `qn_lca_regulatorik_2`, `qn_lca_regulatorik_3`, `qn_lca_regulatorik_5`, `q_ki_ub_5`, `qn_ki_system_1`, `q_px_pl_5`, `q_px_pl_6`, `qn_rechnung_mauerwerk_3`, `qn_rechnung_nachhaltigkeit_4`

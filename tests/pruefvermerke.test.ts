@@ -22,7 +22,9 @@ for (const [id, v] of Object.entries(PRUEFVERMERKE)) {
   pruefe(['geprueft', 'offen', 're-review'].includes(v.status), `${id}: Status ${v.status} ungültig`);
   if (v.status !== 'offen') {
     pruefe(!!v.am && ISO.test(v.am) && v.am <= heute, `${id}: Prüfdatum fehlt, ist kein JJJJ-MM-TT oder liegt in der Zukunft`);
-    pruefe(!!v.von && v.von.trim().length >= 3, `${id}: prüfende Person fehlt`);
+    // 'geprueft' darf passiv ohne Namen sein (Entscheidung 28.10.2026); 're-review' braucht die zuletzt prüfende Person
+    if (v.status === 're-review' || v.von !== undefined) pruefe(!!v.von && v.von.trim().length >= 3, `${id}: prüfende Person fehlt oder ist zu kurz`);
+    if (v.von) pruefe(!/claude/i.test(v.von), `${id}: kein Assistenzname als Prüfer`);
   } else {
     pruefe(!v.von && !v.am, `${id}: Status offen, aber Prüfdatum/-person eingetragen`);
   }

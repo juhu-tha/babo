@@ -52,7 +52,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 22 korrigiert, 0 fraglich, 0
 
 - **Frage:** Eine zweiseitig gehaltene Wand mit h_ef = 2,75 m hat eine Dicke von 17,5 cm. Welche Schlankheit ergibt sich, und ist der Grenzwert des vereinfachten Verfahrens eingehalten?
 - **Richtige Antwort:** h_ef/t = 15,7 ≤ 27, eingehalten
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Gutachten 27.10.2026: Grenzschlankheit 25 → 27 wie im Modul (SCHLANKHEIT_MAX in src/calc/mauerwerk.ts, DIN EN 1996-1-1, 5.5.1.4); abgesichert in tests/quizRechenfragen.test.ts. Zweitprüfung 27.10.: Rückmeldung zu Option 4 (6,4 = 17,5 cm/2,75 m, Kehrwert mit gemischten Einheiten) korrigiert.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Gutachten 27.10.2026: Grenzschlankheit 25 → 27 wie im Modul (SCHLANKHEIT_MAX in src/calc/mauerwerk.ts, DIN EN 1996-1-1, 5.5.1.4); abgesichert in tests/quizRechenfragen.test.ts. Zweitprüfung 27.10.: Rückmeldung zu Option 4 (6,4 = 17,5 cm/2,75 m, Kehrwert mit gemischten Einheiten) korrigiert. · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Rückmeldung zu Option 4 (17,5/2,75 = 6,4, gemischte Einheiten), korrigiert
 
@@ -108,7 +108,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 22 korrigiert, 0 fraglich, 0
 
 - **Frage:** Welches Direktschalldämm-Maß R_w liefert die Massekurve des Moduls (DIN 4109-32: R_w = 30,9 · lg m′ − 22,2) für m′ = 390 kg/m²?
 - **Richtige Antwort:** R_w ≈ 57,9 dB
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Massekurve auf DIN 4109-32 umgestellt (R_w = 30,9 · lg m′ − 22,2 dB statt 32,4 · lg m′ − 26,0, Beiblatt 1 nur früherer Stand), Werte mit src/calc/schall.ts neu gerechnet – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Massekurve auf DIN 4109-32 umgestellt (R_w = 30,9 · lg m′ − 22,2 dB statt 32,4 · lg m′ − 26,0, Beiblatt 1 nur früherer Stand), Werte mit src/calc/schall.ts neu gerechnet – korrigiert · bereits freigegeben (verified)
 - [ ] ok
 - [ ] ändern: …
 
@@ -116,7 +116,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 22 korrigiert, 0 fraglich, 0
 
 - **Frage:** Eine Wohnungstrennwand aus Hochlochziegeln (24 cm, ρ = 1200 kg/m³) erhält beidseitig 40 kg/m² Putz; die Flanken sind schwer und massiv (K_F = 2 dB). Ist R′_w ≥ 53 dB eingehalten?
 - **Richtige Antwort:** R′_w ≈ 53,5 dB: knapp eingehalten
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Massekurve auf DIN 4109-32 umgestellt (R_w = 30,9 · lg m′ − 22,2 dB statt 32,4 · lg m′ − 26,0, Beiblatt 1 nur früherer Stand), Werte mit src/calc/schall.ts neu gerechnet – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Massekurve auf DIN 4109-32 umgestellt (R_w = 30,9 · lg m′ − 22,2 dB statt 32,4 · lg m′ − 26,0, Beiblatt 1 nur früherer Stand), Werte mit src/calc/schall.ts neu gerechnet – korrigiert · bereits freigegeben (verified)
 - [ ] ok
 - [ ] ändern: …
 
@@ -124,7 +124,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 22 korrigiert, 0 fraglich, 0
 
 - **Frage:** Eine Wohnungstrennwand aus Porenbeton (24 cm, ρ = 500 kg/m³, Putz 40 kg/m², leichte Flanken K_F = 4 dB) erreicht R′_w ≈ 41,9 dB statt 53 dB. Welche Maßnahme ist nach dem Modul zielführend?
 - **Richtige Antwort:** Schwerere Steine (z. B. KS, RDK ≥ 2,0) und günstigere Flanken wählen
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Massekurve auf DIN 4109-32 umgestellt (R_w = 30,9 · lg m′ − 22,2 dB statt 32,4 · lg m′ − 26,0, Beiblatt 1 nur früherer Stand), Werte mit src/calc/schall.ts neu gerechnet – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Massekurve auf DIN 4109-32 umgestellt (R_w = 30,9 · lg m′ − 22,2 dB statt 32,4 · lg m′ − 26,0, Beiblatt 1 nur früherer Stand), Werte mit src/calc/schall.ts neu gerechnet – korrigiert · bereits freigegeben (verified)
 - [ ] ok
 - [ ] ändern: …
 
@@ -132,7 +132,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 22 korrigiert, 0 fraglich, 0
 
 - **Frage:** Um wie viel steigt R_w nach der Massekurve des Moduls (DIN 4109-32: R_w = 30,9 · lg m′ − 22,2), wenn die flächenbezogene Masse einer Wand verdoppelt wird?
 - **Richtige Antwort:** um rund 9,3 dB
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Massekurve auf DIN 4109-32 umgestellt (R_w = 30,9 · lg m′ − 22,2 dB statt 32,4 · lg m′ − 26,0, Beiblatt 1 nur früherer Stand), Werte mit src/calc/schall.ts neu gerechnet – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Massekurve auf DIN 4109-32 umgestellt (R_w = 30,9 · lg m′ − 22,2 dB statt 32,4 · lg m′ − 26,0, Beiblatt 1 nur früherer Stand), Werte mit src/calc/schall.ts neu gerechnet – korrigiert · bereits freigegeben (verified)
 - [ ] ok
 - [ ] ändern: …
 
