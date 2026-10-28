@@ -1,4 +1,4 @@
-import { formatDeZahl, formatDeTeX, formatDeTeXWert, formatDeWert, formatDeIntl, parseDeZahl, TAUSENDER_TRENNER } from '../src/utils/numberFormat';
+import { formatDeZahl, formatDeTeX, formatDeTeXWert, formatDeWert, formatDeIntl, parseDeZahl, umgruppiereDe, TAUSENDER_TRENNER } from '../src/utils/numberFormat';
 const S = '\u202F'; // schmales geschütztes Leerzeichen
 let fails = 0;
 const eq = (name: string, a: string, b: string) => {
@@ -37,4 +37,7 @@ eq('parse U+202F', String(parseDeZahl(`12${S}345,5`)), '12345.5');
 eq('parse Punkt', String(parseDeZahl('12.345,5')), '12345.5');
 eq('TeX NaN', formatDeTeX(NaN, 1), '\\text{–}');
 eq('TeX Division durch 0', formatDeTeX(1 / 0, 1), '\\text{–}');
+eq('Chart.js-Ausgabe umgruppiert', umgruppiereDe('-1.234.567,5'), `-1${S}234${S}567,5`);
+eq('Chart.js-Ausgabe vierstellig', umgruppiereDe('2.500'), '2500');
+eq('Chart.js-Ausgabe klein', umgruppiereDe('0,25'), '0,25');
 if (fails) { console.log(`${fails} FAIL`); process.exit(1); }

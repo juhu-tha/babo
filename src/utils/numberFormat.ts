@@ -26,6 +26,15 @@ export function gruppiere(s: string, trenner: string = TAUSENDER_TRENNER): strin
 }
 
 /**
+ * Stellt eine fremd erzeugte de-DE-Ausgabe von Intl (Tausenderpunkt, z. B. Chart.js-Achsen „12.500“) auf die
+ * Projektregel um („12 500“; „2.500“ → „2500“). Nur für Intl-Ausgaben mit Locale de-DE (dort ist der Punkt
+ * ausschließlich Tausendertrenner), nicht für beliebige Texte.
+ */
+export function umgruppiereDe(s: string): string {
+  return gruppiere(s.replace(/(\d)\.(?=\d{3}(?!\d))/g, '$1'));
+}
+
+/**
  * Ersatz für `x.toLocaleString('de-DE', optionen)`: gleiche Rundungsoptionen, aber Tausendertrennung
  * nach Projektregel (U+202F ab 5 Stellen). Mit `useGrouping: false` bleibt die Zahl ungegliedert.
  * NaN/Infinity → "–".
