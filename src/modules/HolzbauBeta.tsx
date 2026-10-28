@@ -90,7 +90,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
   const [qpForce, setQpForce] = useState<number>(30); // F_c90_d in kN
   const [qpB, setQpB] = useState<number>(100); // beam width in mm
   const [qpL, setQpL] = useState<number>(120); // support length in mm
-  const [qpConfig, setQpConfig] = useState<string>('schwelle'); // schwelle, traeger_ende, pfosten_riegel, clt_plate
+  const [qpConfig, setQpConfig] = useState<string>('schwelle'); // schwelle, pfosten_riegel, traeger_ende, allgemein, clt_plate
   const [qpOverhang, setQpOverhang] = useState<boolean>(true); // overhang left/right
 
   // 3. Spax- / Holzschrauben-Verbindungsrechner nach Eurocode 5

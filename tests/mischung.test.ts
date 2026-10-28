@@ -21,8 +21,20 @@ pruefe(nahe(r.volGestein, 1000 - 320 / 3.1 - 160 - 20, 1e-12) && nahe(r.volGeste
 pruefe(nahe(r.masseGestein, 1899.5, 1e-4), `m_g ${r.masseGestein}`);
 pruefe(nahe(r.zugabewasser, 160 - r.masseGestein * (0.4 * 0.025 + 0.2 * 0.005), 1e-12) && nahe(r.zugabewasser, 139.1, 1e-3), `w_zug ${r.zugabewasser}`);
 pruefe(r.wz === 0.5 && r.wzEq === 0.5, 'w/z');
-// Frischbetonrohdichte = (320 + 160 + 1899,5)/1000 = 2,380 kg/dm³
-pruefe(nahe(r.rohdichte, 2.3795, 1e-3), `ρ ${r.rohdichte}`);
+// Frischbetonrohdichte (M-7, 28.10.2026: Kornrohdichte ofentrocken, Kernwasser zählt zur Masse):
+// Kernwasser = 1899,5 · 0,5 % = 9,50 kg → ρ_fb = (320 + 160 + 9,50 + 1899,5)/1000 = 2,389 kg/dm³ (vorher ohne Kernwasser 2,3795)
+pruefe(nahe(r.kernwasser, 9.4975, 1e-3) && nahe(r.gesamtwasser, 169.4975, 1e-4), `Kernwasser ${r.kernwasser}`);
+pruefe(nahe(r.rohdichte, 2.3890, 2e-4), `ρ ${r.rohdichte}`);
+// trockene Körnung (Feuchte 0): Zugabewasser deckt Kernwasser; ρ_fb bleibt gleich, da die Gesamtwassermasse gleich bleibt
+const rTrocken = stoffraum({ ...basis, fraktionen: basis.fraktionen.map(f => ({ ...f, feuchte: 0 })) });
+pruefe(nahe(rTrocken.rohdichte, r.rohdichte, 1e-12) && nahe(rTrocken.zugabewasser, 160 + rTrocken.kernwasser, 1e-12), 'M-7: ρ_fb unabhängig von der Eigenfeuchte');
+// M-6 (28.10.2026): XF2/XF4 – Silikastaub nicht angerechnet; Flugasche + Silikastaub gemeinsam → auch Flugasche nicht
+const xfS = stoffraum({ ...basis, sf: 25, frostTausalz: true });
+pruefe(xfS.anrechenbarSf === 0 && xfS.wzEq === 0.5 && xfS.hinweise.some(x => x.feld === 'sf' && x.text.includes('XF2/XF4')), `M-6 nur SF ${xfS.wzEq}`);
+const xfF = stoffraum({ ...basis, fa: 80, frostTausalz: true });
+pruefe(nahe(xfF.anrechenbarFa, 80, 1e-12) && nahe(xfF.wzEq, 160 / (320 + 0.4 * 80), 1e-12), `M-6 nur FA ${xfF.wzEq}`);
+const xfFS = stoffraum({ ...basis, fa: 80, sf: 25, zementArt: 'CEM I', frostTausalz: true });
+pruefe(xfFS.anrechenbarFa === 0 && xfFS.anrechenbarSf === 0 && xfFS.wzEq === 0.5 && xfFS.maxFaKombination === null, `M-6 FA+SF ${xfFS.wzEq}`);
 
 // 2. Äquivalenter w/z-Wert (DIN 1045-2): z = 280, f = 120 (CEM I, max f = 0,33·280 = 92,4) → (w/z)_eq = 160/(280 + 0,4·92,4) = 0,5042
 const rf = stoffraum({ ...basis, zement: 280, fa: 120 });
@@ -40,6 +52,7 @@ for (const b of BENCHMARK_EXAMPLES) {
     zusatzmittel: b.zusatzmittel, luft: b.luft, stahlfaser: b.stahlfaser ?? 0, ppFaser: b.ppFaser ?? 0, rhoGestein: b.rhoGestein ?? 2.65,
     fraktionen: [[b.f04, b.feuchte04, b.wa04], [b.f48, b.feuchte48, b.wa48], [b.f816, b.feuchte816, b.wa816], [b.f1632, b.feuchte1632, b.wa1632]].map(([anteil, feuchte, wa]) => ({ anteil, feuchte, wa })),
     biocharFeuchte: 0, biocharWa: 30, k: { fa: 0.4, sf: 1.0, hues: 0.4, biochar: 0 }, maxFaFaktor: maxFaFaktor(b.zementArt),
+    frostTausalz: b.expClasses.includes('XF2') || b.expClasses.includes('XF4'),
   });
   const naheAbs = (ist: number, soll: number, tol: number) => Math.abs(ist - soll) <= tol;
   pruefe(naheAbs(rb.volGestein, b.stoffraum.gesteinVol, 2), `${b.id}: V_Gestein ${rb.volGestein.toFixed(1)} vs ${b.stoffraum.gesteinVol}`);
@@ -47,7 +60,7 @@ for (const b of BENCHMARK_EXAMPLES) {
   pruefe(naheAbs(rb.zugabewasser, b.feuchteRechnung.zugabewasser, 2), `${b.id}: Zugabewasser ${rb.zugabewasser.toFixed(1)} vs ${b.feuchteRechnung.zugabewasser}`);
   pruefe(naheAbs(rb.wasserAusGestein, b.feuchteRechnung.wasserAusGestein, 1), `${b.id}: Oberflächenwasser ${rb.wasserAusGestein.toFixed(1)} vs ${b.feuchteRechnung.wasserAusGestein}`);
   rb.fraktionen.forEach((f, i) => { const soll = [b.feuchteRechnung.m04Feucht, b.feuchteRechnung.m48Feucht, b.feuchteRechnung.m816Feucht, b.feuchteRechnung.m1632Feucht][i]; if (soll !== undefined) pruefe(naheAbs(f.feucht, soll, 2), `${b.id}: m_feucht[${i}] ${f.feucht.toFixed(1)} vs ${soll}`); });
-  pruefe(naheAbs(rb.rohdichte, b.frischbetonDichte, 0.02), `${b.id}: ρ ${rb.rohdichte.toFixed(3)} vs ${b.frischbetonDichte}`);
+  pruefe(naheAbs(rb.rohdichte, b.frischbetonDichte, 0.001), `${b.id}: ρ ${rb.rohdichte.toFixed(3)} vs ${b.frischbetonDichte}`);
 }
 
 // 2c. k-Wert-Ansatz DIN 1045-2 (Runde 5, Z55; öffentliche Quellen: UniBw München „Flugasche“, umwelt-online DIN 1045-2 5.2.5):

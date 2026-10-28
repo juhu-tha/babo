@@ -13,6 +13,8 @@ import inhalt from '@/content/putzemoertel/PutzeMoertel.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { putzbedarf, mauermoertelNormalfuge, duennbettmoertel, type Putzart, type Wanddicke, type Steinformat } from '@/src/calc/moertelbedarf';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 
 interface MortarProduct {
   id: string;
@@ -181,77 +183,10 @@ export default function PutzeMoertel() {
   const activePlaster = PLASTER_PRODUCTS.find(p => p.id === selectedPlasterId) || PLASTER_PRODUCTS[0];
   const activeSystem = BUILDING_SYSTEMS.find(s => s.id === selectedSystemId) || BUILDING_SYSTEMS[0];
 
-  // Plaster calculation math
-  const calculatePlaster = () => {
-    // Richtwerte in kg je m² und mm Putzdicke (Herstellerangaben, Produktdatenblatt beachten)
-    const plasterFactors: Record<string, number> = {
-      gips: 1.1,
-      luftkalk: 1.3,
-      kalkzement: 1.25,
-      zement: 1.6,
-      sanier: 1.2,
-      aerogel: 0.28
-    };
-    const factor = plasterFactors[plasterType] || 1.2;
-    const weight = plasterArea * plasterThickness * factor;
-    const bags = Math.ceil(weight / 25);
-    const water = weight * 0.26; // liters representation
-
-    return {
-      weight: parseFloat(weight.toFixed(1)),
-      bags,
-      water: parseFloat(water.toFixed(1))
-    };
-  };
-
-  // Normalfuge calculation math
-  const calculateNormalfuge = () => {
-    const baseLiters: Record<string, number> = {
-      df: 38,
-      nf: 30,
-      twoDF: 24,
-      hlz: 18
-    };
-    const thicknessFactors: Record<string, number> = {
-      '11.5': 1.0,
-      '24.0': 2.1,
-      '30.0': 2.6,
-      '36.5': 3.2
-    };
-    const base = baseLiters[brickFormat] || 30;
-    const tFactor = thicknessFactors[wallThickness] || 1.0;
-    
-    const totalLiters = masonryArea * base * tFactor;
-    const dryWeight = totalLiters * 1.55; // 1.55 kg dry mix per liter of wet mortar
-    const bags = Math.ceil(dryWeight / 25);
-    const water = dryWeight * 0.21;
-    
-    return {
-      liters: parseFloat(totalLiters.toFixed(1)),
-      weight: parseFloat(dryWeight.toFixed(1)),
-      bags,
-      water: parseFloat(water.toFixed(1))
-    };
-  };
-
-  // Planstein Dünnbett math
-  const calculatePlanstein = () => {
-    const thicknessVal = parseFloat(plansteinThickness);
-    const adhesivePerM2 = (thicknessVal / 10.0) * 1.2;
-    const totalWeight = plansteinArea * adhesivePerM2;
-    const bags = Math.ceil(totalWeight / 25);
-    const water = totalWeight * 0.26;
-    
-    return {
-      weight: parseFloat(totalWeight.toFixed(1)),
-      bags,
-      water: parseFloat(water.toFixed(1))
-    };
-  };
-
-  const plasterResult = calculatePlaster();
-  const normalfugeResult = calculateNormalfuge();
-  const plansteinResult = calculatePlanstein();
+  // Orientierungsrechner: Rechenkern src/calc/moertelbedarf.ts (Modulprüfung Tranche 5)
+  const plasterResult = putzbedarf({ flaeche: plasterArea, dickeMm: plasterThickness, art: plasterType as Putzart });
+  const normalfugeResult = mauermoertelNormalfuge({ flaeche: masonryArea, wanddicke: wallThickness as Wanddicke, format: brickFormat as Steinformat });
+  const plansteinResult = duennbettmoertel({ flaeche: plansteinArea, wanddickeCm: parseFloat(plansteinThickness) });
 
   return (
     <div className="flex flex-col gap-8">
@@ -686,17 +621,18 @@ export default function PutzeMoertel() {
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-150 mt-6 space-y-2">
                   <div className="flex justify-between items-center">
                     <span className="text-[10px] uppercase font-bold text-slate-400">Trockenmischung:</span>
-                    <span className="text-sm font-mono font-black text-slate-900">{formatDeWert(plasterResult.weight)} kg</span>
+                    <span className="text-sm font-mono font-black text-slate-900">{formatDeWert(plasterResult.masse)} kg</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-[10px] uppercase font-bold text-slate-400"><MdText text={inhalt.texte.anteilSäcke25Kg} /></span>
-                    <span className="text-sm font-mono font-black text-shiraz">{formatDeWert(plasterResult.bags)} Stk.</span>
+                    <span className="text-sm font-mono font-black text-shiraz">{formatDeWert(plasterResult.saecke)} Stk.</span>
                   </div>
                   <div className="flex justify-between items-center border-t border-slate-200 pt-1.5">
                     <span className="text-[10px] uppercase font-bold text-slate-400"><MdText text={inhalt.texte.wasserbedarfCa} /></span>
-                    <span className="text-xs font-mono font-bold text-slate-700">{formatDeWert(plasterResult.water)} Liter</span>
+                    <span className="text-xs font-mono font-bold text-slate-700">{formatDeWert(plasterResult.wasser)} Liter</span>
                   </div>
                 </div>
+                <EingabeHinweise hinweise={plasterResult.hinweise} />
               </div>
 
               {/* Masonry Normalfuge Panel (Card 2) */}
@@ -763,17 +699,18 @@ export default function PutzeMoertel() {
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-150 mt-6 space-y-2">
                   <div className="flex justify-between items-center">
                     <span className="text-[10px] uppercase font-bold text-slate-400">Nass-Mörtelvolumen:</span>
-                    <span className="text-sm font-mono font-black text-slate-900">{formatDeWert(normalfugeResult.liters)} Liter</span>
+                    <span className="text-sm font-mono font-black text-slate-900">{formatDeWert(normalfugeResult.liter)} Liter</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-[10px] uppercase font-bold text-slate-400"><MdText text={inhalt.texte.trockengewichtCa} /></span>
-                    <span className="text-sm font-mono font-black text-slate-900">{formatDeWert(normalfugeResult.weight)} kg</span>
+                    <span className="text-sm font-mono font-black text-slate-900">{formatDeWert(normalfugeResult.masse)} kg</span>
                   </div>
                   <div className="flex justify-between items-center border-t border-slate-200 pt-1.5 text-shiraz">
                     <span className="text-[10px] uppercase font-bold text-slate-400"><MdText text={inhalt.texte.säcke25Kg} /></span>
-                    <span className="text-sm font-mono font-black">{formatDeWert(normalfugeResult.bags)} Stk.</span>
+                    <span className="text-sm font-mono font-black">{formatDeWert(normalfugeResult.saecke)} Stk.</span>
                   </div>
                 </div>
+                <EingabeHinweise hinweise={normalfugeResult.hinweise} />
               </div>
 
               {/* Planstein ThinBed Calculator Panel (Card 3) */}
@@ -830,17 +767,18 @@ export default function PutzeMoertel() {
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-150 mt-6 space-y-2">
                   <div className="flex justify-between items-center">
                     <span className="text-[10px] uppercase font-bold text-slate-400">Gesamt-Trockenbedarf:</span>
-                    <span className="text-sm font-mono font-black text-slate-900">{formatDeWert(plansteinResult.weight)} kg</span>
+                    <span className="text-sm font-mono font-black text-slate-900">{formatDeWert(plansteinResult.masse)} kg</span>
                   </div>
                   <div className="flex justify-between items-center text-shiraz">
                     <span className="text-[10px] uppercase font-bold text-slate-400"><MdText text={inhalt.texte.anteileSäcke25Kg} /></span>
-                    <span className="text-sm font-mono font-black">{formatDeWert(plansteinResult.bags)} Stk.</span>
+                    <span className="text-sm font-mono font-black">{formatDeWert(plansteinResult.saecke)} Stk.</span>
                   </div>
                   <div className="flex justify-between items-center border-t border-slate-200 pt-1.5">
                     <span className="text-[10px] uppercase font-bold text-slate-400"><MdText text={inhalt.texte.wasserbedarfCa2} /></span>
-                    <span className="text-xs font-mono font-bold text-slate-700">{formatDeWert(plansteinResult.water)} Liter</span>
+                    <span className="text-xs font-mono font-bold text-slate-700">{formatDeWert(plansteinResult.wasser)} Liter</span>
                   </div>
                 </div>
+                <EingabeHinweise hinweise={plansteinResult.hinweise} />
               </div>
             </div>
           </div>

@@ -92,7 +92,10 @@
     "hintermauerziegelWerdenVerputztOder": "**Hintermauerziegel:** Werden verputzt oder verkleidet. Optimiert auf Bauphysik (Wärmeschutz / Schallschutz).",
     "vormauerziegelKlinkerSichtbaresMauerwerk": "**Vormauerziegel / Klinker:** Sichtbares Mauerwerk (Verblender). Sie sind frostbeständig, weisen eine geringe Wasseraufnahme auf und schützen die Fassade vor der Witterung.",
     "wärmedämmziegelOftMitHohlkammern": "**Wärmedämmziegel:** Oft mit Hohlkammern, die passgenau mit Dämmstoff (z.B. Mineralwolle oder Perlit) gefüllt sind, um U-Werte für Plus-Energie-Häuser zu erfüllen.",
-    "wählenSieDenGewünschten": "Wählen Sie den gewünschten Baustoff-Steckbrief:"
+    "wählenSieDenGewünschten": "Wählen Sie den gewünschten Baustoff-Steckbrief:",
+    "fkGesperrtOhneKWert": "Für diese Kombination ist in DIN EN 1996-1-1, Tab. 3.3 kein K-Wert genormt (Lehmsteine: Bemessung nach DIN 18940; Kalksandstein mit Leichtmörtel: kein Tabellenwert). Der f_k-Rechner ist gesperrt.",
+    "fvk0NachNa": " nach DIN EN 1996-1-1/NA",
+    "fvk0Vorlaeufig": " (vorläufig)"
   },
   "werte": {
     "schubfestigkeitFVkMpa": "Schubfestigkeit f_vk [MPa]",
@@ -138,11 +141,6 @@
           "LM": 0.3,
           "DM": 0.75
         },
-        "fvk0": {
-          "NM": 0.2,
-          "LM": 0.15,
-          "DM": 0.3
-        },
         "lambda": 0.81,
         "rho": 1800,
         "desc": "Keramisch gebrannter Ton. Sehr hohe Lebensdauer, sehr gute Dauerhaftigkeit (Klinker), hervorragender Witterungswiderstand, hoher Energiewert bei Herstellung."
@@ -151,13 +149,8 @@
         "name": "Kalksandstein (KS)",
         "K": {
           "NM": 0.55,
-          "LM": 0.45,
+          "LM": null,
           "DM": 0.8
-        },
-        "fvk0": {
-          "NM": 0.2,
-          "LM": 0.15,
-          "DM": 0.4
         },
         "lambda": 0.99,
         "rho": 2000,
@@ -170,11 +163,6 @@
           "LM": 0.45,
           "DM": 0.8
         },
-        "fvk0": {
-          "NM": 0.15,
-          "LM": 0.15,
-          "DM": 0.3
-        },
         "lambda": 0.09,
         "rho": 400,
         "desc": "Aufgeblähter und dampfgehärteter Quarz-Kalk-Zementstein. Herausragende monolithische Wärmedämmung, sehr geringe Masse, mäßiger Schallschutz"
@@ -186,11 +174,6 @@
           "LM": 0.25,
           "DM": 0.7
         },
-        "fvk0": {
-          "NM": 0.15,
-          "LM": 0.1,
-          "DM": 0.2
-        },
         "lambda": 0.12,
         "rho": 800,
         "desc": "Tonziegel mit wärmetechnisch optimiertem Lochbild, teils mit Naturdämmstoff-Verfüllung (Perlit/Mineralwolle) für monolithische Wände"
@@ -198,14 +181,9 @@
       "LH": {
         "name": "Lehmbaustein (LH)",
         "K": {
-          "NM": 0.35,
-          "LM": 0.3,
-          "DM": 0.5
-        },
-        "fvk0": {
-          "NM": 0.1,
-          "LM": 0.08,
-          "DM": 0.15
+          "NM": null,
+          "LM": null,
+          "DM": null
         },
         "lambda": 0.73,
         "rho": 1600,
@@ -217,11 +195,6 @@
           "NM": 0.55,
           "LM": 0.45,
           "DM": 0.8
-        },
-        "fvk0": {
-          "NM": 0.15,
-          "LM": 0.15,
-          "DM": 0.3
         },
         "lambda": 0.16,
         "rho": 800,

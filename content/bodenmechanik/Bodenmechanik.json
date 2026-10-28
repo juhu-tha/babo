@@ -72,7 +72,7 @@
     "artDerWasserableitungVom": "Art der Wasserableitung vom Bauteil.",
     "endsetzungSEnd": "Endsetzung (s_{end})",
     "beispiel1ZustandsformUnd": "Beispiel 1: Zustandsform und Bodengruppe eines bindigen Bodens",
-    "einSteiferMittelplastischerTon": "Ein steifer, mittelplastischer Ton (TM) ist ein typischer Baugrund für Flachgründungen, aber setzungs- und frostempfindlich. Steigt w auf 35 %, sinkt I_C auf 0,40 (breiig).",
+    "einSteiferMittelplastischerTon": "Ein halbfester, mittelplastischer Ton (TM) ist ein typischer Baugrund für Flachgründungen, aber setzungs- und frostempfindlich. Steigt w auf 35 %, sinkt I_C auf 0,40 (weich).",
     "dinEnIso178922": "DIN EN ISO 17892-12:2022-08; DIN 18196:2023-02",
     "beispiel2AktiverErddruck": "Beispiel 2: Aktiver Erddruck auf eine Stützwand und Konsolidationssetzung",
     "beiEinseitigerEntwässerungVerdoppelt": "Bei einseitiger Entwässerung verdoppelt sich d und die Konsolidationszeit vervierfacht sich (etwa 6,8 Jahre) – Dränschichten oder Vertikaldräns verkürzen sie gezielt.",
@@ -93,8 +93,8 @@
       },
       {
         "titel": "Zustandsform",
-        "erklaerung": "I_C zwischen 0,75 und 1,00 bedeutet steif.",
-        "formel": "0{,}75 \\le I_C = 0{,}80 < 1{,}00 \\Rightarrow \\text{steif}"
+        "erklaerung": "I_C zwischen 0,75 und 1,00 bedeutet nach DIN EN ISO 14688-2 halbfest (nach der früheren DIN 18122-1: steif).",
+        "formel": "0{,}75 \\le I_C = 0{,}80 \\le 1{,}00 \\Rightarrow \\text{halbfest}"
       },
       {
         "titel": "Bodengruppe",
@@ -154,7 +154,7 @@
       {
         "formel": "I_c = \\frac{w_L - w}{I_P}",
         "erklaerung": "Konsistenzzahl: I_c gibt die plastische Zustandsform bindiger Böden an (w_L = Fließgrenze, w = aktueller Wassergehalt, I_P = Plastizitätszahl).",
-        "quelle": "DIN EN ISO 17892-12; Zustandsformen in der Einteilung der früheren DIN 18122-1 (DIN EN ISO 14688-2 grenzt abweichend ab: < 0,25 / 0,25–0,50 / 0,50–0,75 / 0,75–1,00 / > 1,00; vorläufig, F-Freigabe)"
+        "quelle": "DIN EN ISO 17892-12; Zustandsformen nach DIN EN ISO 14688-2: < 0,25 breiig / 0,25–0,50 weich / 0,50–0,75 steif / 0,75–1,00 halbfest / > 1,00 fest (deutsche Bezeichnungen vorläufig, F-Freigabe; früher DIN 18122-1: breiig bis 0,5, weich bis 0,75, steif bis 1,0)"
       },
       {
         "formel": "\\tau_f = c + \\sigma \\cdot \\tan(\\varphi)",
