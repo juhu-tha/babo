@@ -3,7 +3,7 @@
     "grenzwerteKlassen": " Grenzwerte & Klassen",
     "geprüfteBeispielrechnungen": " Geprüfte Beispielrechnungen",
     "mischungsberechnungBetonrezeptur": "Mischungsberechnung & Betonrezeptur",
-    "berechnetNachDinEn": "Berechnet nach DIN EN 1992-1-1 + NA (DE)",
+    "berechnetNachDinEn": "Berechnet nach DIN EN 206 / DIN 1045-2",
     "dieMischungsberechnungStoffraumrechnungE": "Die Mischungsberechnung (Stoffraumrechnung) ermittelt die Volumina aller Betonbestandteile, die zusammen genau 1 m³ (1000 dm³) ergeben müssen. Hierbei werden auch Zusatzstoffe (mit k-Wert-Ansatz), die Gesteinsfeuchte (für das Zugabewasser) und der detaillierte CO₂-Fußabdruck berücksichtigt. Zudem wird geprüft, ob die normativen Grenzwerte für Zementgehalt und w/z-Wert eingehalten werden."
   },
   "werte": {
@@ -65,12 +65,12 @@
       },
       {
         "formel": "w/z_{eq} = \\frac{w_{eff}}{z + k \\cdot f}",
-        "erklaerung": "Äquivalenter Wasserzementwert (w/z)eq unter Anrechnung von Zusatzstoffen (z.B. Flugasche mit k = 0,4 oder Silikastaub mit k = 1,0 nach DIN 1045-2:2023-08; der Wert k = 2,0 ist eine EC-Empfehlung und in DE nicht zulässig).",
+        "erklaerung": "Äquivalenter Wasserzementwert (w/z)eq unter Anrechnung von Zusatzstoffen (z.B. Flugasche mit k = 0,4 oder Silikastaub mit k = 1,0 nach DIN 1045-2:2023-08; der Empfehlungswert k = 2,0 der DIN EN 206 gilt in Deutschland nicht).",
         "quelle": "DIN 1045-2:2023-08 / DIN EN 206:2021-06"
       },
       {
-        "formel": "w_{zugabe} = w_{eff} - \\sum \\left( g_i \\cdot \\frac{h_i}{100} \\right)",
-        "erklaerung": "Tatsächlich beizumischendes Zugabewasser unter Abzug der in der feuchten Gesteinskörnung bereits enthaltenen Eigenfeuchte hi [%].",
+        "formel": "w_{zugabe} = w_{eff} - \\sum \\left( g_i \\cdot \\frac{h_i - WA_i}{100} \\right)",
+        "erklaerung": "Tatsächlich beizumischendes Zugabewasser unter Abzug der Oberflächenfeuchte der Gesteinskörnung: Gesamtfeuchte h_i minus Wasseraufnahme (Kernfeuchte) WA_i in M.-%, bezogen auf die trockene Masse g_i; bei h_i < WA_i erhöht sich das Zugabewasser.",
         "quelle": "DIN 1045-2:2023-08 / DBV-Merkblatt Beton"
       }
     ]

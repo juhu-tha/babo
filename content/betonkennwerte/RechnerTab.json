@@ -84,7 +84,7 @@
       {
         "titel": "3. Kriechzahl und Feuchteeinfluss",
         "formel": "\\varphi_0 = \\varphi_{RH} \\cdot \\beta(f_{cm}) \\cdot \\beta(t_0) = \\left[1 + \\frac{1 - RH/100}{0{,}10 \\cdot \\sqrt[3]{h_0}}\\right] \\cdot \\frac{16{,}8}{\\sqrt{f_{cm}}} \\cdot \\frac{1}{0{,}1 + t_{0,\\text{eff}}^{0{,}20}}",
-        "erklaerung": "Kriechen ist viskoses Gleiten der C-S-H-Schichten unter äußerer Dauerlast. Je jünger der Beton bei Erstbelastung (t_0) und je trockener das Milieu (geringe RH), desto größer ist die Kriechzahl."
+        "erklaerung": "Kriechen ist viskoses Gleiten der C-S-H-Schichten unter äußerer Dauerlast. Je jünger der Beton bei Erstbelastung (t_0) und je trockener das Milieu (geringe RH), desto größer ist die Kriechzahl. Die Klammer für φ_RH gilt in dieser Form für f_cm ≤ 35 N/mm² (Gl. B.3a); für f_cm > 35 N/mm² (ab C30/37) gilt Gl. (B.3b) mit den Beiwerten α₁ und α₂, die der Rechner verwendet."
       }
     ],
     "RechnerTab.schritte_2": [

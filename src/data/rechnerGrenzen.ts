@@ -20,6 +20,8 @@ const STAHLBETON: RechnerGrenzen = {
     'Biegung: eine Zug- und eine Druckbewehrungslage, ξ_lim = 0,45; nichtmetallische Bewehrung vereinfacht linear-elastisch, maßgebend ist die Zulassung.',
     'Querkraft: z = min(0,9·d; max(d − c_v,l − 30 mm; d − 2·c_v,l)) nach NA DE, NCI zu 6.2.3(1) (c_v,l Standard 3,5 cm, einstellbar); senkrechte Bügel, ohne Normalkraft (σ_cp = 0).',
     'Stütze: Theorie I. Ordnung mit e_i = l₀/400 und Mindestausmitte; bei λ > λ_lim nur Hinweis, kein Nachweis nach Theorie II. Ordnung.',
+    'Stütze: Interaktionskurven mit Spannungsblock (λ = 0,8, bei x > h auf h begrenzt); bei |ν| > 0,8 liegt µ_Rd bis rund 10 % über dem Parabel-Rechteck-Diagramm (Prüfpunkt).',
+    'Durchstanzen: nur Flachdecken; Fundamente und Bodenplatten (NA DE 6.4.4(2)) sind nicht abgebildet.',
     'Durchstanzen: konstantes β, keine Öffnungen, keine Abminderung durch Bodenpressung; erhöhte Faktoren κ_sw der ersten Bewehrungsreihen nicht berücksichtigt.',
     'Rissbreite: direkte Berechnung mit einer Bewehrungslage; bei Stababständen > 5·(c + φ/2) gilt 7.3.4(4) (nur Hinweis).',
     'σ-ε-Linien: Parabel-Rechteck und Gl. (3.14) mit den Parametern der Tab. 3.1 bis C90/105 (darüber auf C90/105 gehalten); Betonstahl B500 bilinear mit E_s = 200 000 N/mm² und ε_ud = 25 ‰ (NA DE).',

@@ -46,7 +46,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
   bauphysik: {
     niveau: 'B', minuten: 90, vorwissen: ['baustoffkenngroessen'],
     ziele: [
-      { stufe: 'Anwenden', text: 'den U-Wert eines mehrschichtigen Bauteils nach DIN EN ISO 6946 berechnen und mit dem GEG-Höchstwert vergleichen.' },
+      { stufe: 'Anwenden', text: 'den U-Wert eines mehrschichtigen Bauteils nach DIN EN ISO 6946 berechnen und mit dem Höchstwert nach Anlage 7 des GModG (vormals GEG) vergleichen.' },
       { stufe: 'Anwenden', text: 'den Temperaturverlauf in einem Bauteil ermitteln und mit dem Temperaturfaktor f_Rsi das Schimmelrisiko nach DIN 4108-2 prüfen.' },
       { stufe: 'Analysieren', text: 'die Wirkung von Speichermasse und Schichtfolge auf Phasenverschiebung und Amplitudendämpfung im sommerlichen Wärmeschutz vergleichen.' },
     ],
