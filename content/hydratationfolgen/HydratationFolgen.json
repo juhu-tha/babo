@@ -47,8 +47,8 @@
     "HydratationFolgen.schritte_2": [
       {
         "titel": "1. Gegeben (Lehrwerte)",
-        "formel": "z = 320\\,\\text{kg/m}^3,\\; Q = 350\\,\\text{kJ/kg},\\; c \\cdot \\rho = 2500\\,\\text{kJ/(m}^3\\text{K)}",
-        "erklaerung": "Q = 350 J/g entspricht 350 kJ/kg Zement."
+        "formel": "z = 320\\,\\text{kg/m}^3,\\; Q = 350\\,\\text{kJ/kg},\\; c \\cdot \\rho = 2400\\,\\text{kJ/(m}^3\\text{K)}",
+        "erklaerung": "Q = 350 J/g entspricht 350 kJ/kg Zement; c·ρ = 1,0 kJ/(kg·K) · 2400 kg/m³ wie im Rechner."
       },
       {
         "titel": "2. Wärmemenge",
@@ -57,7 +57,7 @@
       },
       {
         "titel": "3. Temperaturerhöhung",
-        "formel": "\\Delta T_{ad} = 112\\,000 / 2500 \\approx 45\\,\\text{K}",
+        "formel": "\\Delta T_{ad} = 112\\,000 / 2400 \\approx 47\\,\\text{K}",
         "erklaerung": "Ohne Wärmeabfuhr; im Bauteilkern wird dieser Wert näherungsweise erreicht."
       }
     ],

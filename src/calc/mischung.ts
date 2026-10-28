@@ -20,6 +20,12 @@ export interface MischungEingabe {
   maxFaFaktor: number;                         // anrechenbare Flugasche f ≤ maxFaFaktor·z
   /** Zementart (Schlüssel aus ZEMENT_DATA) für die Kombinationsregel Flugasche + Silikastaub; ohne Angabe keine Prüfung */
   zementArt?: string;
+  /**
+   * true, wenn XF2 oder XF4 gefordert ist (M-6, DIN 1045-2): Anrechnung auf w/z-Wert und Mindestzementgehalt nur für
+   * Flugasche; Silikastaub wird nicht angerechnet, bei gleichzeitiger Zugabe von Flugasche und Silikastaub auch die
+   * Flugasche nicht. Ohne Angabe: false.
+   */
+  frostTausalz?: boolean;
 }
 
 /** Zementarten: Rohdichte [kg/dm³] und GWP-Lehrwert [kg CO₂-Äq./kg] */
@@ -109,15 +115,30 @@ export function stoffraum(e: MischungEingabe) {
   });
   const wasserAusGestein = fr.reduce((a, f) => a + f.oberflaechenwasser, 0);
   const wasserAusBiochar = e.biochar * ((e.biocharFeuchte - e.biocharWa) / 100);
+  // M-7 (Entscheidung 28.10.2026): Kornrohdichte ρ_G ofentrocken (ρ_rd nach DIN EN 1097-6). Dann liegt das von der
+  // Gesteinskörnung aufgenommene Kernwasser (Wasseraufnahme WA) im Kornvolumen V_G und zählt nicht zum wirksamen Wasser,
+  // gehört aber zur Masse des Frischbetons: ρ_fb = (Σ Ausgangsstoffe trocken + wirksames Wasser + Kernwasser)/1 000 dm³.
+  const kernwasser = fr.reduce((a, f, i) => a + f.trocken * (e.fraktionen[i].wa / 100), 0) + e.biochar * (e.biocharWa / 100);
 
   // Anrechenbare Zusatzstoffe: Flugasche f ≤ maxFaFaktor·z, Silikastaub s ≤ 0,11·z (DIN 1045-2); Überschuss wird nicht angerechnet
   const maxFa = e.maxFaFaktor * e.zement;
-  const anrechenbarFa = Math.min(e.fa, maxFa);
   const maxSf = K_WERT_DIN1045_2.maxSfFaktor * e.zement;
-  const anrechenbarSf = Math.min(e.sf, maxSf);
+  // M-6 (Entscheidung 28.10.2026): XF2/XF4 – Anrechnung nur für Flugasche; bei gleichzeitiger Zugabe von Silikastaub
+  // entfällt auch die Anrechnung der Flugasche (DIN 1045-2, Fußnote zur Grenzwerttabelle; 5.2.5.2.4 gilt „für alle
+  // Expositionsklassen außer XF2 und XF4“). Öffentlich: SCHWENK, „Beton – Herstellung nach den aktuellen Normen“ (2026),
+  // Fußnote 4 der Expositionstabelle; umwelt-online, DIN 1045-2, 5.2.5.2.4.
+  const xfOhneSf = e.frostTausalz === true;
+  const xfOhneFa = xfOhneSf && e.fa > 0 && e.sf > 0;
+  const anrechenbarFa = xfOhneFa ? 0 : Math.min(e.fa, maxFa);
+  const anrechenbarSf = xfOhneSf ? 0 : Math.min(e.sf, maxSf);
+  if (!fehlerhaft && xfOhneSf && e.sf > 0) {
+    hinweise.push({ stufe: 'warnung', feld: 'sf', text: xfOhneFa
+      ? 'XF2/XF4: Bei gleichzeitiger Zugabe von Flugasche und Silikastaub ist keine Anrechnung zulässig – auch die Flugasche wird im äquivalenten w/z-Wert nicht angerechnet (DIN 1045-2).'
+      : 'XF2/XF4: Silikastaub darf nicht auf w/z-Wert und Mindestzementgehalt angerechnet werden, nur Flugasche (DIN 1045-2).' });
+  }
   // Runde 5 (Z55): Kombinationsregel Flugasche + Silikastaub (Alkalitätsreserve der Porenlösung)
   let maxFaKombination: number | null = null;
-  if (!fehlerhaft && e.fa > 0 && e.sf > 0 && e.zementArt !== undefined) {
+  if (!fehlerhaft && !xfOhneFa && e.fa > 0 && e.sf > 0 && e.zementArt !== undefined) {
     const g = kombinationsGrenze(e.zementArt);
     if (g === null) {
       hinweise.push({ stufe: 'warnung', feld: 'sf', text: `Flugasche und Silikastaub gemeinsam sind nach DIN 1045-2 mit ${e.zementArt} nicht zulässig (nur CEM I, CEM II-S, CEM II/A-D, CEM II-T, CEM II/A-LL, CEM III/A).` });
@@ -126,19 +147,20 @@ export function stoffraum(e: MischungEingabe) {
       if (e.fa > maxFaKombination + 1e-9) hinweise.push({ stufe: 'warnung', feld: 'fa', text: `Kombination Flugasche + Silikastaub: f/z ≤ 3·(${formatDeIntl(g)} − s/z) verletzt – höchstens ${formatDeIntl(Math.round(maxFaKombination))} kg/m³ Flugasche bei ${e.zementArt} (Alkalitätsreserve, DIN 1045-2).` });
     }
   }
-  if (!fehlerhaft && e.sf > maxSf + 1e-9) hinweise.push({ stufe: 'warnung', feld: 'sf', text: 'Silikastaub über s/z = 0,11: Der Überschuss wird im äquivalenten w/z-Wert nicht angerechnet.' });
+  if (!fehlerhaft && !xfOhneSf && e.sf > maxSf + 1e-9) hinweise.push({ stufe: 'warnung', feld: 'sf', text: 'Silikastaub über s/z = 0,11: Der Überschuss wird im äquivalenten w/z-Wert nicht angerechnet.' });
   const bindemittelEq = e.zement + e.k.fa * anrechenbarFa + e.k.sf * anrechenbarSf + e.k.hues * e.hues + e.k.biochar * e.biochar;
 
   return {
     hinweise, fehlerhaft, vol, volGestein, masseGestein, fraktionen: fr,
     wasserAusGestein, wasserAusBiochar, zugabewasser: e.wasser - wasserAusGestein - wasserAusBiochar,
+    kernwasser, gesamtwasser: e.wasser + kernwasser,
     biocharFeucht: e.biochar * (1 + e.biocharFeuchte / 100),
     wz: fehlerhaft ? NaN : e.wasser / e.zement,
     wzEq: fehlerhaft ? NaN : e.wasser / bindemittelEq,
     wb: fehlerhaft ? NaN : e.wasser / (e.zement + e.fa + e.sf + e.hues + e.biochar),
     maxFa, anrechenbarFa, maxSf, anrechenbarSf, maxFaKombination,
     volLeim: vol.zement + vol.wasser + vol.fa + vol.sf + vol.hues + vol.biochar + vol.zusatzmittel,
-    rohdichte: fehlerhaft ? NaN : (e.zement + e.wasser + e.fa + e.sf + e.hues + e.biochar + e.zusatzmittel + e.stahlfaser + e.ppFaser + masseGestein) / 1000,
+    rohdichte: fehlerhaft ? NaN : (e.zement + e.wasser + kernwasser + e.fa + e.sf + e.hues + e.biochar + e.zusatzmittel + e.stahlfaser + e.ppFaser + masseGestein) / 1000,
   };
 }
 

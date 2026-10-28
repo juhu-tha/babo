@@ -17,6 +17,6 @@
     "mitLpMin4": "mit LP (min. 4,0%)",
     "nichtGeregeltNurLp": "nicht geregelt (nur LP-Beton)",
     "mitLpMin42": "mit LP (min. 4,0%)",
-    "hinweisBeiGesteinskörnungDmax": "Hinweis: Bei Gesteinskörnung Dmax = 16 mm erhöht sich der erforderliche Mindestzementgehalt teils um ~20 kg/m³ und bei Dmax = 8 mm um ~40 kg/m³."
+    "hinweisBeiGesteinskörnungDmax": "Hinweis: Für Beton nach Eigenschaften hängt der Mindestzementgehalt nicht vom Größtkorn ab; nur bei Dmax = 63 mm darf er um 30 kg/m³ verringert werden (DIN 1045-2, Fußnote zur Grenzwerttabelle). Die Erhöhung um 10 % (Dmax = 16 mm) bzw. 20 % (Dmax = 8 mm) gilt nur für Standardbeton nach DIN 1045-2 (Mindestzementgehalte für Standardbeton, Tab. F.5 der Ausgabe 2008)."
   }
 }
