@@ -221,7 +221,7 @@ export function KalkulatorTab({ fensterBreite, setFensterBreite, fensterHoehe, s
                 <span className="text-xs uppercase tracking-wider font-bold text-home-grau"><MdText text={inhalt.texte.ergebnisNachDinEn} /></span>
                 <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
                       calcResults.passivhausStandard 
-                        ? 'bg-slate-800 text-white' 
+                        ? 'bg-emerald-700 text-white' 
                         : calcResults.gegKonform 
                           ? 'bg-slate-600 text-white' 
                           : 'bg-shiraz text-white'

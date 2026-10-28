@@ -376,15 +376,15 @@ export default function Asphalt() {
             <div className="flex flex-col gap-8 animate-in fade-in duration-300">
               
               {/* Introduction Banner */}
-              <div className="bg-gradient-to-r from-stone-900 to-slate-800 text-white p-6 rounded-2xl border border-stone-800 shadow-lg flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+              <div className="bg-shiraz/5 text-text-main p-6 rounded-2xl border border-shiraz/20 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div className="space-y-1 max-w-2xl">
                   <span className="text-shiraz font-mono text-xs tracking-wider uppercase font-semibold">Technologie-Fokus</span>
                   <h3 className="text-xl font-bold tracking-tight"><MdText text={inhalt.texte.nachhaltigerVerkehrswegebauNiedrigtemper} /></h3>
-                  <p className="text-xs text-stone-300 leading-relaxed"><MdText text={inhalt.texte.niedrigtemperaturasphaltAuchTemperaturab} /></p>
+                  <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.niedrigtemperaturasphaltAuchTemperaturab} /></p>
                 </div>
-                <div className="bg-white/10 backdrop-blur-md px-4 py-3 rounded-lg border border-white/20 flex flex-col items-center">
-                  <span className="text-[10px] uppercase font-mono tracking-wide text-stone-300">TRGS 900</span>
-                  <span className="text-lg font-bold text-white font-mono">1,5 mg/m³</span>
+                <div className="bg-white px-4 py-3 rounded-lg border border-home-grau/30 flex flex-col items-center">
+                  <span className="text-[10px] uppercase font-mono tracking-wide text-slate-700">TRGS 900</span>
+                  <span className="text-lg font-bold text-text-main font-mono">1,5 mg/m³</span>
                   <span className="text-[9px] text-stone-400"><MdText text={inhalt.texte.arbeitsplatzgrenzwertAgw} /></span>
                 </div>
               </div>

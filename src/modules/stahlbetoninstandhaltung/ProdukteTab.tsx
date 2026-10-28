@@ -87,12 +87,12 @@ export default function ProdukteTab({ productApp, setProductApp, setStatikRequir
                 <button
                   type="button"
                   onClick={() => setStatikRequired(true)}
-                  className={`py-2 px-3 rounded-lg border text-center transition-all ${statikRequired ? 'bg-slate-800 text-white border-home-grau/30 font-bold' : 'bg-slate-50 text-slate-700 hover:bg-slate-100'}`}
+                  className={`py-2 px-3 rounded-lg border text-center transition-all ${statikRequired ? 'bg-shiraz text-white border-shiraz font-bold' : 'bg-slate-50 text-slate-700 hover:bg-slate-100'}`}
                 ><MdText text={inhalt.texte.jaTragend} /></button>
                 <button
                   type="button"
                   onClick={() => setStatikRequired(false)}
-                  className={`py-2 px-3 rounded-lg border text-center transition-all ${!statikRequired ? 'bg-slate-800 text-white border-home-grau/30 font-bold' : 'bg-slate-50 text-slate-700 hover:bg-slate-100'}`}
+                  className={`py-2 px-3 rounded-lg border text-center transition-all ${!statikRequired ? 'bg-shiraz text-white border-shiraz font-bold' : 'bg-slate-50 text-slate-700 hover:bg-slate-100'}`}
                   style={{ background: !statikRequired ? '#1e293b' : '', color: !statikRequired ? '#ffffff' : '', borderColor: !statikRequired ? '#1e293b' : '' }}
                 ><MdText text={inhalt.texte.neinNichtTragend} /></button>
               </div>

@@ -340,16 +340,16 @@ export default function Materialoptimierung() {
           <div className="relative bg-white w-full max-w-3xl rounded-2xl shadow-2xl border border-rose-200 overflow-hidden flex flex-col my-8 animate-scale-in max-h-[85vh] font-sans">
             
             {/* Header Banner */}
-            <div className="bg-gradient-to-r from-shiraz via-fuchsia-900 to-slate-950 p-6 text-white flex justify-between items-start">
+            <div className="bg-shiraz/5 p-6 text-text-main flex justify-between items-start">
               <div className="space-y-1.5">
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-rose-500/20 text-shiraz-300 border border-rose-500/30 text-xxs font-bold uppercase tracking-wider">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-rose-500/20 text-shiraz border border-rose-500/30 text-xxs font-bold uppercase tracking-wider">
                   <Trees size={12} /><MdText text={inhalt.texte.klimapositiverBetonbestandteil} /></div>
                 <h3 className="text-lg md:text-xl font-extrabold tracking-tight"><MdText text={inhalt.texte.pyrogenePflanzenkohleImBetongefüge} /></h3>
-                <p className="text-fuchsia-200/80 text-xs font-normal"><MdText text={inhalt.texte.wissenschaftlicheHintergründeZurKohlenst} /></p>
+                <p className="text-slate-700 text-xs font-normal"><MdText text={inhalt.texte.wissenschaftlicheHintergründeZurKohlenst} /></p>
               </div>
               <button 
                 onClick={() => setShowPflanzenkohleModal(false)}
-                className="text-white/60 hover:text-white bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg border border-white/10 transition-all text-xs font-bold cursor-pointer"
+                className="text-slate-600 hover:text-text-main bg-white hover:bg-slate-100 px-3 py-1.5 rounded-lg border border-home-grau/30 transition-all text-xs font-bold cursor-pointer"
               >
                 ✕ Schließen
               </button>

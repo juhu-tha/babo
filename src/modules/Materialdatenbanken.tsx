@@ -373,75 +373,75 @@ export default function Materialdatenbanken() {
           </div>
 
           {/* Details Column representing the ÖKOBAUDAT Datasheet schema */}
-          <div className="lg:col-span-7 bg-slate-950 p-5 rounded-2xl text-slate-300 font-mono text-[11px] leading-relaxed flex flex-col justify-between shadow-inner">
+          <div className="lg:col-span-7 bg-off-white border border-home-grau/30 p-5 rounded-2xl text-slate-700 font-mono text-[11px] leading-relaxed flex flex-col justify-between shadow-inner">
             <div>
-              <div className="flex items-center justify-between border-b border-gray-800 pb-3 mb-4">
+              <div className="flex items-center justify-between border-b border-home-grau/30 pb-3 mb-4">
                 <div className="flex items-center gap-2">
-                  <FileSpreadsheet className="text-emerald-400 shrink-0" size={16} />
-                  <span className="text-xs font-bold text-emerald-300 uppercase"><MdText text={inhalt.texte.ökobaudatDatasheetView} /></span>
+                  <FileSpreadsheet className="text-emerald-700 shrink-0" size={16} />
+                  <span className="text-xs font-bold text-emerald-700 uppercase"><MdText text={inhalt.texte.ökobaudatDatasheetView} /></span>
                 </div>
-                <span className="text-[10px] text-gray-500 font-mono">ID: {activeRecord.id.toUpperCase()}-LCA</span>
+                <span className="text-[10px] text-slate-600 font-mono">ID: {activeRecord.id.toUpperCase()}-LCA</span>
               </div>
 
-              <div className="grid grid-cols-2 gap-y-2 pb-3 mb-3 border-b border-gray-900 leading-normal text-xs font-sans text-gray-400">
-                <div>Bezeichnung: <strong className="text-white block font-semibold">{activeRecord.name}</strong></div>
-                <div>Filterklasse: <strong className="text-white block font-semibold">{activeRecord.category}</strong></div>
-                <div>Datenquellen-Typ: <strong className="text-white block font-semibold">{activeRecord.type}</strong></div>
-                <div>Deklarationseinheit: <strong className="text-white block font-semibold">{activeRecord.unit}</strong></div>
-                <div className="col-span-2">Herausgeber/Hersteller: <strong className="text-white block font-semibold truncate">{activeRecord.manufacturer}</strong></div>
+              <div className="grid grid-cols-2 gap-y-2 pb-3 mb-3 border-b border-home-grau/30 leading-normal text-xs font-sans text-slate-600">
+                <div>Bezeichnung: <strong className="text-text-main block font-semibold">{activeRecord.name}</strong></div>
+                <div>Filterklasse: <strong className="text-text-main block font-semibold">{activeRecord.category}</strong></div>
+                <div>Datenquellen-Typ: <strong className="text-text-main block font-semibold">{activeRecord.type}</strong></div>
+                <div>Deklarationseinheit: <strong className="text-text-main block font-semibold">{activeRecord.unit}</strong></div>
+                <div className="col-span-2">Herausgeber/Hersteller: <strong className="text-text-main block font-semibold truncate">{activeRecord.manufacturer}</strong></div>
               </div>
 
               {/* LCIA indicators block */}
               <div className="space-y-2 mt-4">
-                <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider block"><MdText text={inhalt.texte.wirkungsabschätzungsindikatorenLciaModul} /></span>
+                <span className="text-[10px] font-bold text-slate-600 uppercase tracking-wider block"><MdText text={inhalt.texte.wirkungsabschätzungsindikatorenLciaModul} /></span>
                 <div className="grid grid-cols-2 gap-3 mt-1.5 text-xs font-sans">
-                  <div className="bg-gray-900 border border-gray-850 p-2.5 rounded-xl">
-                    <span className="text-[9px] text-gray-400 uppercase font-semibold block"><MdText text={inhalt.texte.gwpTreibhauspotenzial} /></span>
-                    <strong className="text-base text-emerald-400 font-bold block mt-0.5">
-                      {formatDeZahl(activeRecord.gwp, 2)} <span className="text-[10px] text-gray-300 font-normal">kg CO₂-eq/{activeRecord.unit.split(' ').pop()}</span>
+                  <div className="bg-white border border-home-grau/30 p-2.5 rounded-xl">
+                    <span className="text-[9px] text-slate-600 uppercase font-semibold block"><MdText text={inhalt.texte.gwpTreibhauspotenzial} /></span>
+                    <strong className="text-base text-emerald-700 font-bold block mt-0.5">
+                      {formatDeZahl(activeRecord.gwp, 2)} <span className="text-[10px] text-slate-700 font-normal">kg CO₂-eq/{activeRecord.unit.split(' ').pop()}</span>
                     </strong>
-                    <span className="text-[9px] text-gray-500 leading-tight block mt-0.5"><MdText text={inhalt.texte.einflussAufDieErderwärmung} /></span>
+                    <span className="text-[9px] text-slate-600 leading-tight block mt-0.5"><MdText text={inhalt.texte.einflussAufDieErderwärmung} /></span>
                   </div>
 
-                  <div className="bg-gray-900 border border-gray-850 p-2.5 rounded-xl">
-                    <span className="text-[9px] text-gray-400 uppercase font-semibold block"><MdText text={inhalt.texte.penrtPrimärenergie} /></span>
-                    <strong className="text-base text-amber-500 font-bold block mt-0.5">
-                      {activeRecord.penrt.toLocaleString('de-DE')} <span className="text-[10px] text-gray-300 font-normal">MJ/{activeRecord.unit.split(' ').pop()}</span>
+                  <div className="bg-white border border-home-grau/30 p-2.5 rounded-xl">
+                    <span className="text-[9px] text-slate-600 uppercase font-semibold block"><MdText text={inhalt.texte.penrtPrimärenergie} /></span>
+                    <strong className="text-base text-amber-700 font-bold block mt-0.5">
+                      {activeRecord.penrt.toLocaleString('de-DE')} <span className="text-[10px] text-slate-700 font-normal">MJ/{activeRecord.unit.split(' ').pop()}</span>
                     </strong>
-                    <span className="text-[9px] text-gray-500 leading-tight block mt-0.5"><MdText text={inhalt.texte.nichtErneuerbarePrimärenergie} /></span>
+                    <span className="text-[9px] text-slate-600 leading-tight block mt-0.5"><MdText text={inhalt.texte.nichtErneuerbarePrimärenergie} /></span>
                   </div>
 
-                  <div className="bg-gray-900 border border-gray-850 p-2.5 rounded-xl">
-                    <span className="text-[9px] text-gray-400 uppercase font-semibold block"><MdText text={inhalt.texte.apVersauerung} /></span>
-                    <strong className="text-base text-blue-400 font-bold block mt-0.5">
-                      {formatDeZahl(activeRecord.ap, 3)} <span className="text-[10px] text-gray-300 font-normal">kg SO₂-eq</span>
+                  <div className="bg-white border border-home-grau/30 p-2.5 rounded-xl">
+                    <span className="text-[9px] text-slate-600 uppercase font-semibold block"><MdText text={inhalt.texte.apVersauerung} /></span>
+                    <strong className="text-base text-blue-700 font-bold block mt-0.5">
+                      {formatDeZahl(activeRecord.ap, 3)} <span className="text-[10px] text-slate-700 font-normal">kg SO₂-eq</span>
                     </strong>
-                    <span className="text-[9px] text-gray-500 leading-tight block mt-0.5"><MdText text={inhalt.texte.saurerRegenBelastung} /></span>
+                    <span className="text-[9px] text-slate-600 leading-tight block mt-0.5"><MdText text={inhalt.texte.saurerRegenBelastung} /></span>
                   </div>
 
-                  <div className="bg-gray-900 border border-gray-850 p-2.5 rounded-xl">
-                    <span className="text-[9px] text-gray-400 uppercase font-semibold block"><MdText text={inhalt.texte.epEutrophierung} /></span>
-                    <strong className="text-base text-purple-400 font-bold block mt-0.5">
-                      {formatDeZahl(activeRecord.ep, 3)} <span className="text-[10px] text-gray-300 font-normal">kg PO₄-eq</span>
+                  <div className="bg-white border border-home-grau/30 p-2.5 rounded-xl">
+                    <span className="text-[9px] text-slate-600 uppercase font-semibold block"><MdText text={inhalt.texte.epEutrophierung} /></span>
+                    <strong className="text-base text-purple-700 font-bold block mt-0.5">
+                      {formatDeZahl(activeRecord.ep, 3)} <span className="text-[10px] text-slate-700 font-normal">kg PO₄-eq</span>
                     </strong>
-                    <span className="text-[9px] text-gray-500 leading-tight block mt-0.5"><MdText text={inhalt.texte.nährstoffeintragInGewässer} /></span>
+                    <span className="text-[9px] text-slate-600 leading-tight block mt-0.5"><MdText text={inhalt.texte.nährstoffeintragInGewässer} /></span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Wecobis safety profiles */}
-            <div className="mt-4 pt-3 border-t border-gray-900 font-sans">
-              <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 flex items-center gap-1">
-                <Leaf size={12} className="text-green-500" /><MdText text={inhalt.texte.ökologischeBegleitinformationWecobisSchn} /></span>
+            <div className="mt-4 pt-3 border-t border-home-grau/30 font-sans">
+              <span className="text-[10px] font-bold text-slate-600 uppercase tracking-wider block mb-1.5 flex items-center gap-1">
+                <Leaf size={12} className="text-green-700" /><MdText text={inhalt.texte.ökologischeBegleitinformationWecobisSchn} /></span>
               <div className="flex flex-wrap gap-1">
                 {activeRecord.wecobisSafety.map((saf, sIdx) => (
-                  <span key={sIdx} className="text-[9px] font-semibold bg-gray-900 border border-gray-800 text-green-300 px-2.5 py-0.5 rounded-lg">
+                  <span key={sIdx} className="text-[9px] font-semibold bg-white border border-home-grau/30 text-green-700 px-2.5 py-0.5 rounded-lg">
                     ✓ {saf}
                   </span>
                 ))}
                 {activeRecord.recycledContent > 0 && (
-                  <span className="text-[9px] font-semibold bg-gray-900 border border-gray-800 text-blue-300 px-2.5 py-0.5 rounded-lg"><MdText text={inhalt.texte.postConsumerRecycling} />{formatDeWert(activeRecord.recycledContent)}%
+                  <span className="text-[9px] font-semibold bg-white border border-home-grau/30 text-blue-700 px-2.5 py-0.5 rounded-lg"><MdText text={inhalt.texte.postConsumerRecycling} />{formatDeWert(activeRecord.recycledContent)}%
                   </span>
                 )}
               </div>

@@ -251,12 +251,12 @@ export default function Bauwerksunters_Monitoring() {
                         onClick={() => setSelectedState(key)}
                         className={`py-2 px-3 text-xs font-bold rounded-xl border text-left transition-all ${
                           selectedState === key
-                            ? 'bg-slate-900 text-white border-slate-900'
+                            ? 'bg-shiraz text-white border-shiraz'
                             : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-700'
                         }`}
                       >
                         <div className="font-bold text-xs">{item.name}</div>
-                        <div className={`text-[10px] ${selectedState === key ? 'text-slate-300' : 'text-slate-500'} font-normal mt-0.5 leading-snug`}>{item.desc}</div>
+                        <div className={`text-[10px] ${selectedState === key ? 'text-rose-100' : 'text-slate-600'} font-normal mt-0.5 leading-snug`}>{item.desc}</div>
                       </button>
                     ))}
                   </div>
@@ -268,15 +268,15 @@ export default function Bauwerksunters_Monitoring() {
 
               {/* Diagramm & Visualisierung */}
               <div className="lg:col-span-8 flex flex-col justify-between">
-                <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800 flex-1 flex flex-col gap-4 relative overflow-hidden">
+                <div className="bg-off-white p-5 rounded-2xl border border-home-grau/30 flex-1 flex flex-col gap-4 relative overflow-hidden">
                   <div className="absolute top-2 right-2 flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span className="text-[9px] font-mono text-slate-400 uppercase tracking-widest"><MdText text={inhalt.texte.activeSimulatorMonitor} /></span>
+                    <span className="text-[9px] font-mono text-slate-600 uppercase tracking-widest"><MdText text={inhalt.texte.activeSimulatorMonitor} /></span>
                   </div>
                   
                   {/* Schematic Timber Cross-section visualization */}
-                  <div className="flex items-center gap-4 bg-slate-900 px-4 py-3 rounded-xl border border-slate-800">
-                    <div className="text-[10px] font-mono text-slate-300"><MdText text={inhalt.texte.querschnittsModell120Mm} /></div>
+                  <div className="flex items-center gap-4 bg-white px-4 py-3 rounded-xl border border-home-grau/30">
+                    <div className="text-[10px] font-mono text-slate-700"><MdText text={inhalt.texte.querschnittsModell120Mm} /></div>
                     <div className="flex-1 h-6 rounded bg-[#1e293b] relative border border-[#334155] overflow-hidden flex">
                       {/* Left healthy bark segment */}
                       <div className="w-[10%] h-full bg-[#475569] shrink-0 border-r border-[#64748b]"></div>
@@ -311,15 +311,15 @@ export default function Bauwerksunters_Monitoring() {
                   </div>
 
                   {/* Drilling graph rendering using interactive SVG */}
-                  <div className="flex-1 min-h-[220px] bg-slate-900 border border-slate-800 rounded-xl p-3 flex flex-col justify-end">
+                  <div className="flex-1 min-h-[220px] bg-white border border-home-grau/30 rounded-xl p-3 flex flex-col justify-end">
                     <div className="flex-1 relative">
                       {/* Grid lines */}
                       <div className="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-10">
-                        <div className="border-b border-white w-full"></div>
-                        <div className="border-b border-white w-full"></div>
-                        <div className="border-b border-white w-full"></div>
-                        <div className="border-b border-white w-full"></div>
-                        <div className="border-b border-white w-full"></div>
+                        <div className="border-b border-slate-400 w-full"></div>
+                        <div className="border-b border-slate-400 w-full"></div>
+                        <div className="border-b border-slate-400 w-full"></div>
+                        <div className="border-b border-slate-400 w-full"></div>
+                        <div className="border-b border-slate-400 w-full"></div>
                       </div>
                       
                       {/* SVG plotting path */}
@@ -350,11 +350,11 @@ export default function Bauwerksunters_Monitoring() {
                       </svg>
                       
                       {/* Axis indicators in graph */}
-                      <div className="absolute left-2 top-2 bg-slate-950 px-1.5 py-0.5 rounded text-[8px] font-mono text-slate-400"><MdText text={inhalt.texte.amplitudenhöheInBohrwiderstand} /></div>
+                      <div className="absolute left-2 top-2 bg-white px-1.5 py-0.5 rounded text-[8px] font-mono text-slate-600"><MdText text={inhalt.texte.amplitudenhöheInBohrwiderstand} /></div>
                     </div>
                     
                     {/* X-Axis labels */}
-                    <div className="flex justify-between text-[9px] font-mono text-slate-500 pt-2 border-t border-slate-800">
+                    <div className="flex justify-between text-[9px] font-mono text-slate-600 pt-2 border-t border-home-grau/30">
                       <span><MdText text={inhalt.texte.t0MmEintritt} /></span>
                       <span>30 mm</span>
                       <span>60 mm</span>
@@ -431,19 +431,19 @@ export default function Bauwerksunters_Monitoring() {
                 <p className="text-xs text-slate-600 leading-normal"><MdText text={inhalt.texte.risseInBauwerkenStehen} /></p>
               </div>
 
-              <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 my-4 text-white">
-                <div className="flex justify-between items-center text-[10px] font-mono text-slate-400 mb-2 border-b border-slate-800 pb-1">
+              <div className="bg-off-white p-4 rounded-xl border border-home-grau/30 my-4 text-text-main">
+                <div className="flex justify-between items-center text-[10px] font-mono text-slate-600 mb-2 border-b border-home-grau/30 pb-1">
                   <span><MdText text={inhalt.texte.sensorIdLvdtC12} /></span>
-                  <span className="text-emerald-400"><MdText text={inhalt.texte.streamOnline} /></span>
+                  <span className="text-emerald-700"><MdText text={inhalt.texte.streamOnline} /></span>
                 </div>
 
                 <div className="h-44 relative flex flex-col justify-end">
                   {/* Grid overlay */}
                   <div className="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-5">
-                    <div className="border-b border-white w-full"></div>
-                    <div className="border-b border-white w-full"></div>
-                    <div className="border-b border-white w-full"></div>
-                    <div className="border-b border-white w-full"></div>
+                    <div className="border-b border-slate-400 w-full"></div>
+                    <div className="border-b border-slate-400 w-full"></div>
+                    <div className="border-b border-slate-400 w-full"></div>
+                    <div className="border-b border-slate-400 w-full"></div>
                   </div>
 
                   {/* Double line plotting */}
@@ -459,7 +459,7 @@ export default function Bauwerksunters_Monitoring() {
                     {/* Crack width Line (Blue) - Inverted relationship, as heat closes the crack */}
                     <path
                       fill="none"
-                      stroke="#94a3b8"
+                      stroke="#64748b"
                       strokeWidth="1.1"
                       strokeDasharray="2,1"
                       d="M 0,15 C 15,15 25,40 50,40 C 75,40 85,15 100,15"
@@ -467,12 +467,12 @@ export default function Bauwerksunters_Monitoring() {
                   </svg>
 
                   {/* Vertical markers for noon */}
-                  <div className="absolute left-[50%] top-0 bottom-0 border-l border-dashed border-white/20"></div>
-                  <div className="absolute left-[50%] top-2 bg-slate-900 border border-slate-800 px-1 text-[8px] rounded text-slate-300 -translate-x-[50%]"><MdText text={inhalt.texte.mittagshitzeTMax} /></div>
+                  <div className="absolute left-[50%] top-0 bottom-0 border-l border-dashed border-slate-400/60"></div>
+                  <div className="absolute left-[50%] top-2 bg-white border border-home-grau/30 px-1 text-[8px] rounded text-slate-700 -translate-x-[50%]"><MdText text={inhalt.texte.mittagshitzeTMax} /></div>
                 </div>
 
                 {/* X-axis time indicator */}
-                <div className="flex justify-between text-[9px] font-mono text-slate-500 pt-1.5 border-t border-slate-800">
+                <div className="flex justify-between text-[9px] font-mono text-slate-600 pt-1.5 border-t border-home-grau/30">
                   <span><MdText text={inhalt.texte.t0600Morgen} /></span>
                   <span>12:00</span>
                   <span>18:00</span>
@@ -595,7 +595,7 @@ export default function Bauwerksunters_Monitoring() {
             <div className="bg-white p-5 rounded-2xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
               <div className="space-y-4">
                 <div className="flex items-center gap-2 border-b border-home-grau/25 pb-2 mb-2">
-                  <span className="p-1.5 bg-slate-900 text-white rounded-lg">
+                  <span className="p-1.5 bg-shiraz text-white rounded-lg">
                     <Ruler size={16} strokeWidth={2.5} />
                   </span>
                   <div>
@@ -662,10 +662,10 @@ export default function Bauwerksunters_Monitoring() {
                       <span className="text-[9px] text-slate-400 font-bold block mb-1"><MdText text={inhalt.texte.qualitativeEinordnungRelativvergleich} /></span>
                       <strong className="text-sm font-mono text-rose-600">{reboundEvaluation.correction}</strong>
                     </div>
-                    <div className="bg-[#1e293b] p-2.5 rounded-lg border border-[#334155] col-span-2 text-white">
-                      <span className="text-[9px] text-orange-200 font-bold block mb-1">Prüffläche:</span>
-                      <strong className="text-base font-black font-mono text-amber-300">{reboundEvaluation.correctedStrength}</strong>
-                      <span className="text-[9px] text-slate-300 block mt-1 leading-normal italic">{reboundEvaluation.karbonatisiert ? inhalt.werte.karbonatisierteRandzonenErhöhenR : inhalt.werte.inFestigkeitUmrechnenNur}</span>
+                    <div className="bg-off-white p-2.5 rounded-lg border border-home-grau/30 col-span-2 text-text-main">
+                      <span className="text-[9px] text-orange-700 font-bold block mb-1">Prüffläche:</span>
+                      <strong className="text-base font-black font-mono text-amber-700">{reboundEvaluation.correctedStrength}</strong>
+                      <span className="text-[9px] text-slate-700 block mt-1 leading-normal italic">{reboundEvaluation.karbonatisiert ? inhalt.werte.karbonatisierteRandzonenErhöhenR : inhalt.werte.inFestigkeitUmrechnenNur}</span>
                     </div>
                   </div>
                   <div className="text-[10px] text-slate-500 leading-normal pt-1.5 border-t border-slate-200"><MdText text={inhalt.texte.progressKoeffizientFKarbonatfront} />{reboundEvaluation.k_c} mm/Jahr<sup>0,5</sup>

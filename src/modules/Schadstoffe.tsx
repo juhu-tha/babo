@@ -456,7 +456,7 @@ export default function Schadstoffe() {
                             onClick={() => setFinderZeitraum(z.id)}
                             className={`p-3 text-left rounded-xl border transition-all cursor-pointer ${
                               finderZeitraum === z.id
-                                ? 'bg-slate-900 text-white border-home-grau/30 shadow-sm font-semibold'
+                                ? 'bg-shiraz text-white border-shiraz shadow-sm font-semibold'
                                 : 'bg-slate-50 border-home-grau/30 hover:bg-slate-100 text-slate-700'
                             }`}
                           >
@@ -673,19 +673,19 @@ export default function Schadstoffe() {
                       <AuswahlGruppe label="Mineralischer Ersatzbaustoff" className="grid grid-cols-3 gap-2 mb-4">
                         <button {...alsOption(selectedMEB === 'rc_baustoff')} 
                           onClick={() => setSelectedMEB('rc_baustoff')}
-                          className={`px-2.5 py-2 rounded-xl text-center text-xs font-bold border transition-all ${selectedMEB === 'rc_baustoff' ? 'bg-slate-900 text-white border-home-grau/30' : 'bg-slate-50 hover:bg-slate-100 border-home-grau/30 text-slate-700'}`}
+                          className={`px-2.5 py-2 rounded-xl text-center text-xs font-bold border transition-all ${selectedMEB === 'rc_baustoff' ? 'bg-shiraz text-white border-shiraz' : 'bg-slate-50 hover:bg-slate-100 border-home-grau/30 text-slate-700'}`}
                         >
                           RC-Bauschutt
                         </button>
                         <button {...alsOption(selectedMEB === 'bodenaushub')} 
                           onClick={() => setSelectedMEB('bodenaushub')}
-                          className={`px-2.5 py-2 rounded-xl text-center text-xs font-bold border transition-all ${selectedMEB === 'bodenaushub' ? 'bg-slate-900 text-white border-home-grau/30' : 'bg-slate-50 hover:bg-slate-100 border-home-grau/30 text-slate-700'}`}
+                          className={`px-2.5 py-2 rounded-xl text-center text-xs font-bold border transition-all ${selectedMEB === 'bodenaushub' ? 'bg-shiraz text-white border-shiraz' : 'bg-slate-50 hover:bg-slate-100 border-home-grau/30 text-slate-700'}`}
                         >
                           Bodenaushub
                         </button>
                         <button {...alsOption(selectedMEB === 'hm_asche')} 
                           onClick={() => setSelectedMEB('hm_asche')}
-                          className={`px-2.5 py-2 rounded-xl text-center text-xs font-bold border transition-all ${selectedMEB === 'hm_asche' ? 'bg-slate-900 text-white border-home-grau/30' : 'bg-slate-50 hover:bg-slate-100 border-home-grau/30 text-slate-700'}`}
+                          className={`px-2.5 py-2 rounded-xl text-center text-xs font-bold border transition-all ${selectedMEB === 'hm_asche' ? 'bg-shiraz text-white border-shiraz' : 'bg-slate-50 hover:bg-slate-100 border-home-grau/30 text-slate-700'}`}
                         >
                           Hausmüll-Asche
                         </button>
@@ -740,7 +740,7 @@ export default function Schadstoffe() {
                 {/* Gefahrstoffverordnung (GefStoffV) - Das Neue Gesetz */}
                 <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
                   <div className="flex items-center gap-3 border-b border-home-grau/30 pb-4 mb-4">
-                    <div className="p-2 bg-slate-900 text-white rounded-lg">
+                    <div className="p-2 bg-shiraz text-white rounded-lg">
                       <Shield size={24} />
                     </div>
                     <h3 className="text-xl font-bold text-text-main flex items-center gap-2"><MdText text={inhalt.texte.aktuelleGefahrstoffverordnungGefstoffv} /></h3>

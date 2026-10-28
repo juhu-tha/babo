@@ -481,7 +481,7 @@ export default function ToolsFuerThesen() {
             <h4 className="font-bold text-sm text-text-main flex items-center gap-2">
               <FileCode2 className="text-shiraz w-4 h-4" /><MdText text={inhalt.texte.bestPracticeTabellenFormelgenerierung} /></h4>
             <p className="text-xs text-text-main/80 leading-relaxed"><MdText text={inhalt.texte.stattMühsamTabellenspaltenVon} /><code className="bg-slate-100 px-1 py-0.5 rounded font-mono text-shiraz">booktabs</code> und <code className="bg-slate-100 px-1 py-0.5 rounded font-mono text-shiraz">siunitx</code><MdText text={inhalt.texte.zuTransformieren} /></p>
-            <div className="bg-slate-900 text-slate-100 p-4 rounded-xl font-mono text-xs overflow-x-auto">
+            <div className="bg-off-white border border-home-grau/30 text-text-main p-4 rounded-xl font-mono text-xs overflow-x-auto">
               <pre><MdText text={inhalt.texte.empfohlenerLatexPromptFür} /></pre>
             </div>
           </div>
@@ -682,7 +682,7 @@ export default function ToolsFuerThesen() {
               </button>
             </div>
 
-            <div className="bg-slate-900 text-slate-100 p-4 rounded-xl font-mono text-xs overflow-x-auto whitespace-pre-wrap leading-relaxed">
+            <div className="bg-off-white border border-home-grau/30 text-text-main p-4 rounded-xl font-mono text-xs overflow-x-auto whitespace-pre-wrap leading-relaxed">
               {dynamicPromptString}
             </div>
 

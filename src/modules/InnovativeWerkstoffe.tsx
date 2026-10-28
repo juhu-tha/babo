@@ -460,10 +460,10 @@ export default function InnovativeWerkstoffe() {
                   </div>
                 </div>
 
-                <div className="bg-slate-900 p-6 rounded-2xl text-white">
-                  <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-widest block font-mono mb-2"><MdText text={inhalt.texte.ingenieurpraxisRegelwerk} /></span>
+                <div className="bg-shiraz/5 border border-shiraz/20 p-6 rounded-2xl text-text-main">
+                  <span className="text-[10px] font-bold text-indigo-700 uppercase tracking-widest block font-mono mb-2"><MdText text={inhalt.texte.ingenieurpraxisRegelwerk} /></span>
                   <h4 className="text-base font-bold mb-2"><MdText text={inhalt.texte.normativeSituationTeilsicherheitskonzept} /></h4>
-                  <p className="text-xs text-slate-300 leading-relaxed"><MdText text={inhalt.texte.daFürDen3d} /></p>
+                  <p className="text-xs text-slate-700 leading-relaxed"><MdText text={inhalt.texte.daFürDen3d} /></p>
                 </div>
               </div>
             )}
@@ -1051,7 +1051,7 @@ export default function InnovativeWerkstoffe() {
 
                 <button
                   onClick={calculateBestMaterial}
-                  className="w-full py-3 bg-gradient-to-r from-slate-900 to-indigo-950 text-white rounded-xl text-xs font-bold hover:shadow-md active:scale-98 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full py-3 bg-shiraz hover:bg-shiraz/90 text-white rounded-xl text-xs font-bold hover:shadow-md active:scale-98 transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <Activity size={14} className="animate-pulse" /><MdText text={inhalt.texte.eignungBerechnenMaterialVorschlagen} /></button>
               </div>

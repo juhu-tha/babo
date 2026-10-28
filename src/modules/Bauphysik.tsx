@@ -513,7 +513,7 @@ export default function Bauphysik() {
                 <button 
                   onClick={addLayer}
                   aria-label={inhalt.werte.schichtHinzufügenNeueBauteilschicht}
-                  className="px-2.5 py-1 bg-shiraz hover:bg-slate-900 border border-transparent hover:border-slate-800 text-white rounded-lg text-[10px] font-extrabold flex items-center gap-1 cursor-pointer transition-all uppercase tracking-wider shadow pointer-events-auto"
+                  className="px-2.5 py-1 bg-shiraz hover:bg-shiraz/90 border border-transparent text-white rounded-lg text-[10px] font-extrabold flex items-center gap-1 cursor-pointer transition-all uppercase tracking-wider shadow pointer-events-auto"
                 >
                   <Plus size={12} /> Schicht
                 </button>
@@ -1186,7 +1186,7 @@ export default function Bauphysik() {
                   {formatDeZahl(acousticsResults.reverberationTime, 2)} <span className="text-lg">Sekunden</span>
                 </span>
                 
-                <span className="text-xs bg-slate-900 border border-slate-800 text-slate-200 font-bold font-mono px-3 py-1 rounded-full flex items-center gap-1">
+                <span className="text-xs bg-white border border-home-grau/30 text-text-main font-bold font-mono px-3 py-1 rounded-full flex items-center gap-1">
                   Typ: {acousticsResults.roomLabel}<MdText text={inhalt.texte.dinEmpfehlung} />{formatDeZahl(acousticsResults.T_target, 2)} s ({formatDeZahl(acousticsResults.minTarget, 2)} s - {formatDeZahl(acousticsResults.maxTarget, 2)} s)
                 </span>
               </div>

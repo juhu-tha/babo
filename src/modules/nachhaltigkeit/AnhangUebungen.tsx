@@ -120,7 +120,7 @@ export default function AnhangUebungen() {
           {/* Aufgabe 4 */}
           <div className="bg-slate-50/50 p-5 rounded-xl border border-stone-200/80">
             <div className="flex gap-2.5 items-start">
-              <span className="px-2 py-0.5 bg-slate-900 text-white font-bold font-mono text-[10px] rounded uppercase mt-0.5" style={{ backgroundColor: '#1e293b' }}>A 4</span>
+              <span className="px-2 py-0.5 bg-shiraz/10 text-shiraz border border-shiraz/20 font-bold font-mono text-[10px] rounded uppercase mt-0.5">A 4</span>
               <div className="space-y-0.5">
                 <strong className="text-slate-900 text-xs font-bold block"><MdText text={inhalt.texte.lcaTransferReduzierungVon} /></strong>
                 <p className="text-[11px] text-slate-700 leading-relaxed pt-1"><MdText text={inhalt.texte.derBerechneteLebenszyklusTreibhauswert} /></p>
@@ -145,7 +145,7 @@ export default function AnhangUebungen() {
           {/* Aufgabe 5 */}
           <div className="bg-slate-50/50 p-5 rounded-xl border border-stone-200/80">
             <div className="flex gap-2.5 items-start">
-              <span className="px-2 py-0.5 bg-slate-900 text-white font-bold font-mono text-[10px] rounded uppercase mt-0.5" style={{ backgroundColor: '#1e293b' }}>A 5</span>
+              <span className="px-2 py-0.5 bg-shiraz/10 text-shiraz border border-shiraz/20 font-bold font-mono text-[10px] rounded uppercase mt-0.5">A 5</span>
               <div className="space-y-0.5">
                 <strong className="text-slate-900 text-xs font-bold block"><MdText text={inhalt.texte.kritischesDenkenBewertungVon} /></strong>
                 <p className="text-[11px] text-slate-700 leading-relaxed pt-1"><MdText text={inhalt.texte.einDämmstoffherstellerBewirbtSein} /></p>

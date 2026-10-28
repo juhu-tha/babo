@@ -107,7 +107,7 @@ export function NormenLinkMonitor() {
         <button
           onClick={handleRunAudit}
           disabled={isSimulatingCheck}
-          className="flex items-center gap-2 px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold transition-all shadow-sm cursor-pointer disabled:opacity-50"
+          className="flex items-center gap-2 px-4 py-2.5 bg-shiraz hover:bg-shiraz/90 text-white rounded-xl text-xs font-bold transition-all shadow-sm cursor-pointer disabled:opacity-50"
         >
           <RefreshCw size={14} className={isSimulatingCheck ? "animate-spin" : ""} />
           {isSimulatingCheck ? "Ansicht wird aktualisiert …" : "Ansicht aktualisieren"}
@@ -213,7 +213,7 @@ export function NormenLinkMonitor() {
                   onClick={() => setCategoryFilter(cat.id)}
                   className={`px-2.5 py-1.5 text-[11px] font-bold rounded-lg whitespace-nowrap transition-all border ${
                     categoryFilter === cat.id
-                      ? 'bg-slate-900 text-white border-slate-900'
+                      ? 'bg-shiraz text-white border-shiraz'
                       : 'bg-white text-text-main/70 border-home-grau/30 hover:bg-slate-50'
                   }`}
                 >

@@ -92,7 +92,7 @@ export function FilmchemieTab({ setSelectedMech, selectedMech }: FilmchemieTabPr
                 {/* Molekülgleichung */}
                 <div className="space-y-2">
                   <span className="text-[10px] font-bold text-text-main/50 uppercase tracking-wider block"><MdText text={inhalt.texte.chemischeStrukturUndVernetzungs} /></span>
-                  <pre className="font-mono text-xs p-4 bg-stone-900 text-stone-200 rounded-xl overflow-x-auto whitespace-pre leading-relaxed border border-stone-850 shadow-inner">
+                  <pre className="font-mono text-xs p-4 bg-off-white text-text-main rounded-xl overflow-x-auto whitespace-pre leading-relaxed border border-home-grau/30 shadow-inner">
                     {mech.molecularReaction}
                   </pre>
                 </div>

@@ -477,24 +477,24 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
                 
                 {/* Real-time Display Cards */}
                 <div className="grid grid-cols-3 gap-2.5 mb-2.5">
-                  <div className="bg-slate-900 text-white p-3 rounded-xl border border-slate-800 shadow-inner">
-                    <span className="text-[10px] font-mono text-slate-400 font-bold uppercase tracking-wider block">Spaltkraft F</span>
-                    <span className="text-lg font-mono font-bold text-amber-400">
-                      {formatDeZahl(currentForceKN, 1)} <span className="text-xs text-slate-300 font-normal">kN</span>
+                  <div className="bg-off-white text-text-main p-3 rounded-xl border border-home-grau/30 shadow-inner">
+                    <span className="text-[10px] font-mono text-slate-600 font-bold uppercase tracking-wider block">Spaltkraft F</span>
+                    <span className="text-lg font-mono font-bold text-amber-700">
+                      {formatDeZahl(currentForceKN, 1)} <span className="text-xs text-slate-700 font-normal">kN</span>
                     </span>
                   </div>
 
-                  <div className="bg-slate-900 text-white p-3 rounded-xl border border-slate-800 shadow-inner">
-                    <span className="text-[10px] font-mono text-slate-400 font-bold uppercase tracking-wider block">Spaltzugspannung σx</span>
-                    <span className="text-lg font-mono font-bold text-emerald-400">
-                      {formatDeZahl(currentStressMPa, 2)} <span className="text-xs text-slate-300 font-normal">MPa</span>
+                  <div className="bg-off-white text-text-main p-3 rounded-xl border border-home-grau/30 shadow-inner">
+                    <span className="text-[10px] font-mono text-slate-600 font-bold uppercase tracking-wider block">Spaltzugspannung σx</span>
+                    <span className="text-lg font-mono font-bold text-emerald-700">
+                      {formatDeZahl(currentStressMPa, 2)} <span className="text-xs text-slate-700 font-normal">MPa</span>
                     </span>
                   </div>
 
-                  <div className="bg-slate-900 text-white p-3 rounded-xl border border-slate-800 shadow-inner">
-                    <span className="text-[10px] font-mono text-slate-400 font-bold uppercase tracking-wider block">Stauchung Δd</span>
-                    <span className="text-lg font-mono font-bold text-cyan-400">
-                      {formatDeZahl(currentDeformationMm, 3)} <span className="text-xs text-slate-300 font-normal">mm</span>
+                  <div className="bg-off-white text-text-main p-3 rounded-xl border border-home-grau/30 shadow-inner">
+                    <span className="text-[10px] font-mono text-slate-600 font-bold uppercase tracking-wider block">Stauchung Δd</span>
+                    <span className="text-lg font-mono font-bold text-cyan-700">
+                      {formatDeZahl(currentDeformationMm, 3)} <span className="text-xs text-slate-700 font-normal">mm</span>
                     </span>
                   </div>
                 </div>
@@ -528,7 +528,7 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
                       onClick={() => setShowGrid(!showGrid)}
                       className={`px-2 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer border ${
                         showGrid
-                          ? 'bg-slate-800 text-white border-slate-800 shadow-xs'
+                          ? 'bg-shiraz text-white border-shiraz shadow-xs'
                           : 'bg-white text-text-main/70 border-home-grau/30 hover:bg-slate-100'
                       }`}
                       title="Gitterlinien ein- oder ausblenden"

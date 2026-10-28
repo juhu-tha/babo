@@ -41,13 +41,13 @@ export function TreffbildTab({ accuracy, setAccuracy, precision, setPrecision, t
                   <button {...alsOption(accuracy === 'high')}
                     onClick={() => setAccuracy('high')}
                     className={`py-2 px-3 text-xs font-semibold rounded-lg border transition-all font-sans ${
-                          accuracy === 'high' ? 'bg-slate-800 text-white border-home-grau/30 shadow-sm' : 'bg-white text-slate-600 border-home-grau/30 hover:bg-slate-50'
+                          accuracy === 'high' ? 'bg-shiraz text-white border-shiraz shadow-sm' : 'bg-white text-slate-600 border-home-grau/30 hover:bg-slate-50'
                         }`}
                   ><MdText text={inhalt.texte.hochZentriert} /></button>
                   <button {...alsOption(accuracy === 'low')}
                     onClick={() => setAccuracy('low')}
                     className={`py-2 px-3 text-xs font-semibold rounded-lg border transition-all font-sans ${
-                          accuracy === 'low' ? 'bg-slate-800 text-white border-home-grau/30 shadow-sm' : 'bg-white text-slate-600 border-home-grau/30 hover:bg-slate-50'
+                          accuracy === 'low' ? 'bg-shiraz text-white border-shiraz shadow-sm' : 'bg-white text-slate-600 border-home-grau/30 hover:bg-slate-50'
                         }`}
                   ><MdText text={inhalt.texte.niedrigVerschoben} /></button>
                 </AuswahlGruppe>
@@ -68,13 +68,13 @@ export function TreffbildTab({ accuracy, setAccuracy, precision, setPrecision, t
                   <button {...alsOption(precision === 'high')}
                     onClick={() => setPrecision('high')}
                     className={`py-2 px-3 text-xs font-semibold rounded-lg border transition-all font-sans ${
-                          precision === 'high' ? 'bg-slate-800 text-white border-home-grau/30 shadow-sm' : 'bg-white text-slate-600 border-home-grau/30 hover:bg-slate-50'
+                          precision === 'high' ? 'bg-shiraz text-white border-shiraz shadow-sm' : 'bg-white text-slate-600 border-home-grau/30 hover:bg-slate-50'
                         }`}
                   ><MdText text={inhalt.texte.hochGeringeStreuung} /></button>
                   <button {...alsOption(precision === 'low')}
                     onClick={() => setPrecision('low')}
                     className={`py-2 px-3 text-xs font-semibold rounded-lg border transition-all font-sans ${
-                          precision === 'low' ? 'bg-slate-800 text-white border-home-grau/30 shadow-sm' : 'bg-white text-slate-600 border-home-grau/30 hover:bg-slate-50'
+                          precision === 'low' ? 'bg-shiraz text-white border-shiraz shadow-sm' : 'bg-white text-slate-600 border-home-grau/30 hover:bg-slate-50'
                         }`}
                   ><MdText text={inhalt.texte.niedrigWeitGestreut} /></button>
                 </AuswahlGruppe>
