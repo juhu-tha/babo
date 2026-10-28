@@ -4,7 +4,7 @@
     "nachDemWurzelZeit": "Nach dem Wurzel-Zeit-Gesetz dringt die Karbonatisierungsfront ein: s(t) = k·√t. stetig ein: ",
     "sinktDerPhWert": ". Sinkt der pH-Wert des Betons von anfänglich > 12,5 auf unter 9.0 (Depassivierung), entfällt der Rostschutz des Stahls.",
     "schnellKonfigurationDinEn": "Schnell-Konfiguration (DIN EN 206)",
-    "dichteZementeC3545": "Dichte Zemente (C35/45) weisen k ~ 1,0 auf; magere k > 4.0.",
+    "dichteZementeC3545": "Dichte Betone (z. B. C35/45) weisen k ≈ 1,0 mm/√a auf, magere Betone k > 4,0 mm/√a.",
     "vorgeschriebenIstCNom": "Vorgeschrieben ist c_nom = c_min + Δc_dev mit c_min,dur z. B. 20–40 mm und Δc_dev = 15 mm (nur XC1: 10 mm) nach NA.",
     "rechnerischeKarbonatisierungstiefe": "Rechnerische Karbonatisierungstiefe",
     "alkalischPh125": "Alkalisch (pH > 12,5)",
@@ -17,7 +17,7 @@
     "schrittFürSchrittHerleitung": "Schritt-für-Schritt Herleitung der Stahlbeton-Lebensdauer",
     "schritt1BestimmungDes": "Schritt 1: Bestimmung des Karbonatisierungsbeiwerts k (",
     "derWiderstandDesZementsteins": "Der Widerstand des Zementsteins gegen neutralisierendes Kohlendioxid (CO₂) hängt maßgeblich von der Betondichte (niedriger w/z-Wert) und der Erhärtungszeit ab. Ihre aktuelle Auswahl simuliert einen Beiwert von ",
-    "schritt2DasQuadratische": "Schritt 2: Das quadratische Zeitgesetz",
+    "schritt2DasQuadratische": "Schritt 2: Das Wurzel-t-Gesetz",
     "dieGasdiffusionImPorensystem": "Die Gasdiffusion im Porensystem verläuft nicht-linear. Die Lage der Carbonatisierungsfront s(t) nach ",
     "jahrenBerechnetSichAus": " Jahren berechnet sich aus:",
     "schritt3AbgleichMit": "Schritt 3: Abgleich mit der installierten Betondeckung c_nom (",
@@ -35,7 +35,7 @@
     "rechnerischVerbleibendeRestlebensdauerVo": "Rechnerisch verbleibende Restlebensdauer vor Depassivierung: ",
     "schritt5KonstruktiveUnd": "Schritt 5: Konstruktive und betontechnologische Stellschrauben",
     "geringererWZWert": "**Geringerer w/z-Wert (dichterer Zementstein):** Reduziert das kapillare Porenvolumen und senkt den k-Wert drastisch (z. B. von 4,5 auf 1,5 mm/√a).",
-    "erhöhterVorhaltemaßDcEin": "**Erhöhter Vorhaltemaß dc:** Ein Erhöhen der Schalungspräzision ermöglicht dickere Bauteildeckungen (z.B. 35mm anstelle von 15mm), was die t_crit-Schutzdauer quadratisch vergrößert."
+    "erhöhterVorhaltemaßDcEin": "**Größeres Nennmaß und gesicherte Lage der Bewehrung:** Ein größeres Nennmaß c_nom (z. B. 35 mm statt 20 mm) und eine kontrollierte Lage der Bewehrung (Abstandhalter, Kontrolle vor dem Betonieren) vergrößern t_krit quadratisch; das Vorhaltemaß Δc_dev deckt nur die Ausführungstoleranz ab."
   },
   "werte": {
     "gefahrDepassivierungEingetreten": "Gefahr: Depassivierung eingetreten!",

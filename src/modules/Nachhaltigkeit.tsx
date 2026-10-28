@@ -48,7 +48,7 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
   const zeige = (b: NachhaltigkeitBereich) => bereiche.includes(b);
   const [activeStep, setActiveStep] = useState<number>(0);
   const [activeEcoDb, setActiveEcoDb] = useState<'oekobaudat' | 'dgnb' | 'ibu' | 'wecobis'>('oekobaudat');
-  const [regulatorikSubTab, setRegulatorikSubTab] = useState<'rechtsrahmen' | 'crrem_sim'>('rechtsrahmen');
+  const [regulatorikSubTab, setRegulatorikSubTab] = useState<'rechtsrahmen' | 'crrem_sim' | 'cbam'>('rechtsrahmen');
 
   // CRREM Simulator States
   const [crremBuildingType, setCrremBuildingType] = useState<'office' | 'residential'>('office');

@@ -1345,7 +1345,7 @@
     "MODULES_DATA.dauerhaftigkeit.formeln": [
       {
         "formel": "s(t) = k \\cdot \\sqrt{t}",
-        "erklaerung": "Quadratisches Zeitgesetz der Carbonatisierungstiefe s(t) in Abhängigkeit vom Carbonatisierungsbeiwert k [mm/√a] und Bauteilalter t [Jahre]. Die Norm gibt keine k-Werte vor; Anhaltswerte liefern Messungen oder Modelle nach fib Bulletin 34.",
+        "erklaerung": "Wurzel-t-Gesetz der Carbonatisierungstiefe s(t) in Abhängigkeit vom Carbonatisierungsbeiwert k [mm/√a] und Bauteilalter t [Jahre]. Die Norm gibt keine k-Werte vor; Anhaltswerte liefern Messungen oder Modelle nach fib Bulletin 34.",
         "quelle": "Stark/Wicht: Dauerhaftigkeit von Beton"
       },
       {

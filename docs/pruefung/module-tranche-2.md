@@ -433,3 +433,8 @@ Offen aus Tranche 1 und für den Prüfvermerk `stahlbeton_bemessung` weiter nöt
 Freigegeben (Empfehlung „freigabefähig“, keine offenen Fragen; Prüfvermerk in `src/data/pruefvermerke.ts` „geprueft“, am 2026-10-28, passiv ohne Namen): `bp_holzprodukte` (Nr. 4), `spannbeton` (Nr. 5; seit der Aufteilung am 28.10.2026 die Teilmodule `spannbeton_grundlagen` und `spannbeton_kennwerte`, beide mit Vermerk – die bei der Aufteilung neu formulierten Einträge (Lernziel 1 von `spannbeton_kennwerte`, zwei Erkundungsaufträge von `spannbeton_grundlagen`, Grenzen-Kurztexte) wurden dabei nachgesehen, die Zahlen der Aufträge nachgerechnet: Δσ = E·Δε 240/120 bzw. 234/117 N/mm², P = g·L²/(8·f) 3571/8036 kN, 21/47 Litzen), `korrosion` (Nr. 7), `schnellkarbonatisierung` (Nr. 8).
 
 Nicht freigegeben, obwohl freigabefähig: die Reiter Rissbreite (Nr. 2) und σ-ε-Linien (Nr. 3) von `stahlbeton_bemessung` – sie zählen erst mit dem ganzen Modul (offen: F-1, S-2, P-2 aus Tranche 1, T2-S-1/-2). `lebensdauerbemessung` (Nr. 6) nur „Rechnung freigabefähig“, Kennwerte vorläufig.
+
+## Nachtrag 28.10.2026 (abends): Entscheidungen T2-S-1 und T2-S-2 umgesetzt
+
+- **T2-S-1:** α₆ nach NA DE Tab. 8.3DE (Zugstoß ≤ 33 %: 1,2/1,4 für Ø < 16/≥ 16 mm; > 33 %: 1,4/2,0; bei lichtem Stoßabstand ≥ 8Ø und Randabstand ≥ 4Ø 1,0 bzw. 1,4; Druckstoß 1,0), vorläufig, F-Freigabe. V3 (Ø 12, > 33 %): l₀ = 676,3 mm statt 724,6 mm.
+- **T2-S-2:** vereinfachte NA-Form l_bd = α₁·α₄·α₅·l_b,rqd·A_s,erf/A_s,vorh mit α₅ = 2/3 bei direkter Lagerung als wählbare Nachweisform; Mindestwerte max(0,3·α₁·α₄·l_b,rqd; 10Ø) bzw. 6,7Ø bei direkter Lagerung, Druck max(0,6·l_b,rqd; 10Ø), ohne 100 mm (vorläufig, F-Freigabe). α₄ (angeschweißte Querstäbe) ergänzt.

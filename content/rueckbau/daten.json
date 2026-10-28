@@ -9,7 +9,7 @@
         "subtitle": "Wichtigste stoffliche Fraktion der mineralischen Ersatzbaustoffe im Hoch- und Tiefbau",
         "process": "Brechen (Prallbrecher), Absieben in definierte Fraktionen (0/4, 4/8, 8/16, 16/32), Nassklassierung zur Leichtstoffabtrennung, Magnetscheidung für Bewehrungsstahl.",
         "useCases": [
-          "Gesteinskörnung für R-Beton im Hochbau (Ersatz von Primärkies bis zu 35/45 Gew.-% nach DIN EN 206 / DIN 1045-2).",
+          "Gesteinskörnung für R-Beton im Hochbau (Anteil rezyklierter Gesteinskörnung > 2 mm bis 45 Vol.-% bei Typ 1 bzw. 35 Vol.-% bei Typ 2 je nach Expositionsklasse, DAfStb-Richtlinie / DIN 1045-2).",
           "Ungebundene Tragschichten im Straßenbau (Frostschutzschichten) nach Ersatzbaustoffverordnung (EBV) Güteklasse RC-1 / RC-2.",
           "Gesteinskörnungen für die Asphaltproduktion (feine Gesteinsmehle)."
         ],
@@ -104,7 +104,7 @@
           "Ersatzbrennstoff in Zementwerken (Thermische Verwertung hochkalorischer, zersplitterter Fraktionen)."
         ],
         "risks": "Hexabromcyclododecan (HBCD) in Dämmstoffen des Typs EPS/XPS bis Baujahr ca. 2015 (Flammschutzmittel, giftig/schädlich). Weichmacher (Phthalate in PVC-Böden, chlorierte Paraffine).",
-        "regulations": "POP-Verordnung der EU: Dämmstoffe mit > 1000 mg/kg HBCD gelten als persistente organische Abfälle und müssen in zugelassenen Müllverbrennungsanlagen zerstört werden."
+        "regulations": "POP-Verordnung der EU: Dämmstoffe mit ≥ 500 mg/kg HBCDD (Anhang IV, vorher 1000 mg/kg) sind POP-haltige Abfälle; der POP-Gehalt ist zu zerstören (thermische Behandlung). Gefährlicher Abfall nach AVV erst ab 30 000 mg/kg."
       },
       {
         "name": "Teerfreie Bitumenmischungen (Asphalt)",

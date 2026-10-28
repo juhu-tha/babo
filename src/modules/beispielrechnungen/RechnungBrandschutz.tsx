@@ -7,13 +7,11 @@ import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../../components/ui/Auswahlgruppe';
 import { EC2_BRAND_MINDESTMASSE } from '@/src/data/brandschutzBeton';
 
-/** Zeilenbeschriftung und Stützenmaß je Feuerwiderstandsklasse (Reihenfolge wie EC2_BRAND_MINDESTMASSE) */
-const TABELLE_TEXTE: readonly (readonly [string, string])[] = [
-  [inhalt.texte.r3030Min, inhalt.texte.t200MmA25],
-  [inhalt.texte.r6060Min, inhalt.texte.t250MmA35],
-  [inhalt.texte.r9090Min, inhalt.texte.t300MmA45],
-  [inhalt.texte.r120120Min, inhalt.texte.t350MmA55],
-];
+/** Zeilenbeschriftung je Feuerwiderstandsklasse (Reihenfolge wie EC2_BRAND_MINDESTMASSE) */
+const TABELLE_TEXTE: readonly string[] = [inhalt.texte.r3030Min, inhalt.texte.r6060Min, inhalt.texte.r9090Min, inhalt.texte.r120120Min];
+/** Stützenmaß b_min/a, ggf. mit Alternative (Tab. 5.2a) */
+const stuetzeText = (w: readonly [number, number], alt?: readonly [number, number]) =>
+  `${formatDeWert(w[0])}/${formatDeWert(w[1])}${alt ? ` oder ${formatDeWert(alt[0])}/${formatDeWert(alt[1])}` : ''} mm`;
 
 interface RechnungBrandschutzProps {
   M_fi_Ed: number;
@@ -239,16 +237,18 @@ export default function RechnungBrandschutz({ M_fi_Ed, M_fi_Rd, W_ef_mm3, b_ef_m
                     <th className="py-2"><MdText text={inhalt.texte.achsabstandABalken} /></th>
                     <th className="py-2"><MdText text={inhalt.texte.plattendickeHMin} /></th>
                     <th className="py-2"><MdText text={inhalt.texte.stützenMindestmaßBMin} /></th>
+                    <th className="py-2"><MdText text={inhalt.texte.stuetzeMu07} /></th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 text-slate-700 text-[11px]">
                   {EC2_BRAND_MINDESTMASSE.map((z, i) => (
                     <tr key={z.klasse}>
-                      <td className="py-2.5 font-bold text-shiraz"><MdText text={TABELLE_TEXTE[i][0]} /></td>
+                      <td className="py-2.5 font-bold text-shiraz"><MdText text={TABELLE_TEXTE[i]} /></td>
                       <td className="py-2.5 font-mono">{formatDeWert(z.balkenB)} mm</td>
                       <td className="py-2.5 font-mono">{formatDeWert(z.balkenA)} mm</td>
                       <td className="py-2.5 font-mono">{formatDeWert(z.platteH)} mm</td>
-                      <td className="py-2.5 font-mono"><MdText text={TABELLE_TEXTE[i][1]} /></td>
+                      <td className="py-2.5 font-mono">{stuetzeText(z.stuetze05, z.stuetze05Alt)}</td>
+                      <td className="py-2.5 font-mono">{stuetzeText(z.stuetze07, z.stuetze07Alt)}</td>
                     </tr>
                   ))}
                 </tbody>

@@ -451,6 +451,8 @@
 | RI2 | 500 m², ψ = 0,7, r = 150, 30 min, Kies s_R = 0,3 | V_R = 34,54 m³; V_nutz = 10,36 m³; L = 47,97 m | identisch |
 | RI3 | 10 m², ψ = 0,3, r = 50, 5 min (Randfall) | Mindestwerte A_Sohle = 1,5 m², V_R = 0,1 m³ | identisch |
 
+*Nachtrag 28.10.2026 (abends):* Der Kern rechnet nach Entscheidung jetzt das vereinfachte Verfahren nach DWA-A 138-1:2024-10 (k_i = f_Ort·f_Methode·k_f, Seiten- und Stirnflächen mit h/2 bzw. h, f_Z = 1,2; Branch `rechner/dwa-cbam-t3-10-28`). Neue Sollwerte im Test: RI1 L = 11,97 m, V_R = 8,62 m³, 35 Boxen; RI2 L = 48,95 m, V_R = 35,24 m³, V_nutz = 10,57 m³; RI3 L = 0,006 m (kein Mindestvolumen mehr).
+
 **Normstand DWA-A 138-1:** Die Umstellung auf DWA-A 138-1:2024-10 ist im Text, im Kernkommentar und in den Grenzen vollständig. Als „vorläufig, F-Freigabe“ gekennzeichnet sind f_Ort und die Anrechnung der gesamten Rigolenhöhe. Kein neuer Befund.
 
 **Befunde**
