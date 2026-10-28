@@ -4150,36 +4150,37 @@
     "moduleTitle": "Bodenmechanik",
     "topic": "Konsistenzzahl",
     "difficulty": "Basis",
-    "normRef": "DIN EN ISO 17892-12",
+    "normRef": "DIN EN ISO 17892-12, DIN EN ISO 14688-2",
     "question": "Ein Ton hat w = 25 %, w_L = 45 % und w_P = 20 %. Welche Zustandsform liegt vor?",
     "options": [
-      "steif (I_C = 0,80)",
-      "weich (I_C = 0,60)",
-      "breiig (I_C = 0,40)",
-      "halbfest (I_C = 1,20)"
+      "halbfest (I_C = 0,80)",
+      "steif (I_C = 0,60)",
+      "weich (I_C = 0,40)",
+      "fest (I_C = 1,20)"
     ],
     "correctIdx": 0,
-    "explanation": "I_C = (w_L − w)/(w_L − w_P) = 20/25 = 0,80; 0,75 ≤ I_C < 1,00 entspricht steif.",
+    "explanation": "I_C = (w_L − w)/(w_L − w_P) = 20/25 = 0,80; nach DIN EN ISO 14688-2 entspricht 0,75 ≤ I_C ≤ 1,00 der Zustandsform halbfest.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "",
-      "Weich gilt für 0,50 ≤ I_C < 0,75; mit I_C = (45 − 25)/(45 − 20) = 0,80 ist der Ton steif.",
-      "Breiig gilt für 0,25 ≤ I_C < 0,50; der berechnete Wert 0,80 liegt deutlich höher.",
-      "Halbfest erfordert I_C ≥ 1,00, also w ≤ w_P; hier liegt w = 25 % über der Ausrollgrenze."
+      "Steif gilt für 0,50 ≤ I_C < 0,75; mit I_C = (45 − 25)/(45 − 20) = 0,80 ist der Ton halbfest.",
+      "Weich gilt für 0,25 ≤ I_C < 0,50; der berechnete Wert 0,80 liegt deutlich höher.",
+      "Fest erfordert I_C > 1,00, also w < w_P; hier liegt w = 25 % über der Ausrollgrenze."
     ],
     "gapAnalysis": {
       "topic": "Konsistenzzahl",
       "misconception": "Zähler und Nenner werden vertauscht oder w_P statt w_L im Zähler verwendet.",
-      "coreRule": "I_C = (w_L − w)/I_P; < 0,5 breiig, 0,5–0,75 weich, 0,75–1,0 steif, > 1,0 halbfest.",
+      "coreRule": "I_C = (w_L − w)/I_P; nach DIN EN ISO 14688-2: < 0,25 breiig, 0,25–0,50 weich, 0,50–0,75 steif, 0,75–1,00 halbfest, > 1,00 fest.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Konsistenzzahl“ im Modul Bodenmechanik noch einmal durch.",
       "targetModuleTab": "bodenmechanik",
       "targetModuleLabel": "Bodenmechanik"
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-28",
+      "ergebnis": "korrigiert",
+      "hinweis": "Abgleich 28.10.2026: Zustandsformen auf DIN EN ISO 14688-2 umgestellt (T2-B-1), I_C = 0,80 → halbfest – korrigiert"
     }
   },
   {
@@ -27343,40 +27344,38 @@
     "moduleTitle": "Bodenmechanik",
     "topic": "Konsistenzzahl",
     "difficulty": "Basis",
-    "normRef": "DIN EN ISO 17892-12",
+    "normRef": "DIN EN ISO 17892-12, DIN EN ISO 14688-2",
     "question": "Ein bindiger Boden hat w = 32 %, w_L = 48 % und w_P = 22 %. Welche Zustandsform liegt vor?",
     "options": [
-      "I_C ≈ 0,62 – weich",
-      "I_C ≈ 0,38 – breiig",
-      "I_C ≈ 0,80 – steif",
-      "I_C ≈ 1,10 – halbfest"
+      "I_C ≈ 0,62 – steif",
+      "I_C ≈ 0,38 – weich",
+      "I_C ≈ 0,80 – halbfest",
+      "I_C ≈ 1,10 – fest"
     ],
     "correctIdx": 0,
-    "explanation": "I_P = 48 − 22 = 26 %; I_C = (w_L − w)/I_P = (48 − 32)/26 = 0,62. Für 0,50 ≤ I_C < 0,75 ist der Boden weich.",
+    "explanation": "I_P = 48 − 22 = 26 %; I_C = (w_L − w)/I_P = (48 − 32)/26 = 0,62. Nach DIN EN ISO 14688-2 ist der Boden für 0,50 ≤ I_C < 0,75 steif.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "",
       "0,38 entsteht mit (w − w_P)/I_P; das ist die Liquiditätszahl, nicht die Konsistenzzahl.",
-      "Steif wäre der Boden erst ab I_C = 0,75; mit 0,62 liegt er im weichen Bereich.",
-      "Halbfest setzt I_C ≥ 1,0 voraus, also w ≤ w_P; hier liegt w deutlich über der Ausrollgrenze."
+      "Halbfest wäre der Boden erst ab I_C = 0,75; mit 0,62 liegt er im steifen Bereich.",
+      "Fest setzt I_C > 1,00 voraus, also w < w_P; hier liegt w deutlich über der Ausrollgrenze."
     ],
     "gapAnalysis": {
       "topic": "Konsistenzzahl",
       "misconception": "Zähler der Konsistenzzahl falsch gebildet oder Zustandsgrenzen verwechselt.",
-      "coreRule": "I_C = (w_L − w)/(w_L − w_P); breiig < 0,5 ≤ weich < 0,75 ≤ steif < 1,0 ≤ halbfest.",
+      "coreRule": "I_C = (w_L − w)/I_P; nach DIN EN ISO 14688-2: < 0,25 breiig, 0,25–0,50 weich, 0,50–0,75 steif, 0,75–1,00 halbfest, > 1,00 fest.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Atterberg-Kennwerte“ im Modul Bodenmechanik noch einmal durch.",
       "targetModuleTab": "bodenmechanik",
       "targetModuleLabel": "Bodenmechanik"
     },
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-10-28",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
-    },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27"
+      "hinweis": "normRef ergänzt; Abgleich 28.10.2026: Zustandsformen auf DIN EN ISO 14688-2 umgestellt (T2-B-1), I_C = 0,62 → steif – korrigiert"
+    }
   },
   {
     "id": "qn_bodenmechanik_2",
@@ -28625,19 +28624,19 @@
     "topic": "Schubfestigkeit",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1996-1-1/NA",
-    "question": "Kalksandstein mit Normalmörtel: f_vk0 = 0,20 N/mm², f_b = 20 N/mm², Auflast σ_d = 1,0 N/mm². Wie groß ist f_vk nach dem vereinfachten Ansatz des Moduls (f_vk = f_vk0 + 0,4 · σ_d, begrenzt auf 0,065 · f_b)?",
+    "question": "Kalksandstein mit Normalmörtel NM III: f_vk0 = 0,22 N/mm² (DIN EN 1996-1-1/NA), f_b = 20 N/mm², Auflast σ_d = 1,0 N/mm². Wie groß ist f_vk nach dem vereinfachten Ansatz des Moduls (f_vk = f_vk0 + 0,4 · σ_d, begrenzt auf 0,065 · f_b)?",
     "options": [
-      "f_vk = 0,20 N/mm²",
+      "f_vk = 0,22 N/mm²",
       "f_vk = 0,40 N/mm²",
       "f_vk = 1,30 N/mm²",
-      "f_vk = 0,60 N/mm²"
+      "f_vk = 0,62 N/mm²"
     ],
     "correctIdx": 3,
-    "explanation": "f_vk = 0,20 + 0,4 · 1,0 = 0,60 N/mm²; die Obergrenze 0,065 · 20 = 1,30 N/mm² ist nicht maßgebend. Die Auflast erhöht über Reibung die Schubfestigkeit.",
+    "explanation": "f_vk = 0,22 + 0,4 · 1,0 = 0,62 N/mm²; die Obergrenze 0,065 · 20 = 1,30 N/mm² ist nicht maßgebend. Die Auflast erhöht über Reibung die Schubfestigkeit.",
     "bloom": "Analysieren",
     "niveau": "B",
     "distraktorFeedback": [
-      "0,20 N/mm² ist nur die Haftscherfestigkeit ohne den Reibungsanteil aus der Auflast.",
+      "0,22 N/mm² ist nur die Haftscherfestigkeit ohne den Reibungsanteil aus der Auflast.",
       "0,40 N/mm² ist nur der Reibungsanteil 0,4 · σ_d ohne die Haftscherfestigkeit.",
       "1,30 N/mm² ist die Obergrenze 0,065 · f_b; sie greift erst bei deutlich höherer Auflast.",
       ""
@@ -28650,14 +28649,12 @@
       "targetModuleTab": "mauerwerk",
       "targetModuleLabel": "Mauerwerk"
     },
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-10-28",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
-    },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27"
+      "hinweis": "normRef ergänzt; Abgleich 28.10.2026: f_vk0 nach DIN EN 1996-1-1/NA je Mörtelgruppe (T3-MW-1), 0,20 → 0,22 (NM III), f_vk 0,60 → 0,62 – korrigiert"
+    }
   },
   {
     "id": "qn_mauerwerk_2",
@@ -51494,16 +51491,16 @@
     "moduleTitle": "Bodenmechanik",
     "topic": "Konsistenzzahl",
     "difficulty": "Vertiefung",
-    "normRef": "DIN 18122",
+    "normRef": "DIN EN ISO 17892-12, DIN EN ISO 14688-2",
     "question": "Ein Ton hat w_L = 42 %, w_P = 22 % und den natürlichen Wassergehalt w = 30 %. Welche Zustandsform liegt vor?",
     "options": [
-      "I_C = 0,40 – breiig",
-      "I_C = 0,60 – weich",
-      "I_C = 1,36 – halbfest",
-      "I_C = 0,80 – steif"
+      "I_C = 0,40 – weich",
+      "I_C = 0,60 – steif",
+      "I_C = 1,36 – fest",
+      "I_C = 0,80 – halbfest"
     ],
     "correctIdx": 1,
-    "explanation": "I_P = 42 − 22 = 20 %; I_C = (w_L − w)/I_P = (42 − 30)/20 = 0,60. Der Bereich 0,5 bis 0,75 entspricht der Zustandsform weich.",
+    "explanation": "I_P = 42 − 22 = 20 %; I_C = (w_L − w)/I_P = (42 − 30)/20 = 0,60. Der Bereich 0,50 bis 0,75 entspricht nach DIN EN ISO 14688-2 der Zustandsform steif.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -51515,14 +51512,17 @@
     "gapAnalysis": {
       "topic": "Konsistenzzahl",
       "misconception": "Die Konsistenzzahl wird mit der Liquiditätszahl verwechselt.",
-      "coreRule": "I_C = (w_L − w)/(w_L − w_P).",
+      "coreRule": "I_C = (w_L − w)/(w_L − w_P); Zustandsform nach DIN EN ISO 14688-2.",
       "actionableAdvice": "Arbeiten Sie den Reiter „Atterberg-Versuch“ im Modul Bodenmechanik noch einmal durch.",
       "targetModuleTab": "bodenmechanik",
       "targetModuleLabel": "Bodenmechanik"
     },
-    "verified": true,
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27"
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-28",
+      "ergebnis": "korrigiert",
+      "hinweis": "Abgleich 28.10.2026: Zustandsformen auf DIN EN ISO 14688-2 umgestellt (T2-B-1), I_C = 0,60 → steif – korrigiert"
+    }
   },
   {
     "id": "qz24_atterberg_4",
