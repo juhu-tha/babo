@@ -97,7 +97,7 @@ export function MeineModule() {
                 <td className="p-2.5">{z.cluster}{istClusterNr(z.cluster) ? ` · ${CLUSTER_NAMEN[z.cluster]}` : ''}</td>
                 <td className="p-2.5">{z.pate || '–'}</td>
                 <td className="p-2.5">{PRUEF_STATUS_TEXT[z.vermerk.status]}</td>
-                <td className="p-2.5">{z.vermerk.am ? `${datumDe(z.vermerk.am)} · ${z.vermerk.von ?? ''}` : '–'}</td>
+                <td className="p-2.5">{z.vermerk.am ? `${datumDe(z.vermerk.am)}${z.vermerk.von ? ` · ${z.vermerk.von}` : ''}` : '–'}</td>
                 <td className="p-2.5">
                   {z.vermerk.offenePunkte?.length
                     ? <ul className="list-disc pl-4 space-y-0.5">{z.vermerk.offenePunkte.map((p, i) => <li key={i}>{p}</li>)}</ul>

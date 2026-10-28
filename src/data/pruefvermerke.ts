@@ -5,7 +5,8 @@
  * Neue Fachmodule werden mit { status: 'offen' } eingetragen. Prüfdaten trägt nur ein, wer die Prüfung
  * tatsächlich durchgeführt hat – keine Namen oder Daten vorwegnehmen.
  *
- *   geprüft:    modul_id: { status: 'geprueft', am: '2026-11-03', von: 'Vorname Nachname' },
+ *   geprüft:    modul_id: { status: 'geprueft', am: '2026-11-03' }   (passiv „Fachlich geprüft am …“, ohne Namen)
+ *               modul_id: { status: 'geprueft', am: '2026-11-03', von: 'Vorname Nachname' }   (mit prüfender Person)
  *   Nachprüfung: modul_id: { status: 're-review', am: '2026-11-03', von: '…', offenePunkte: ['Normausgabe EC 2 prüfen'] },
  *
  * Getrennt von src/registry/modules.ts gehalten, damit Prüfvermerke ohne Eingriff in die Registry
@@ -21,7 +22,7 @@ export interface Pruefvermerk {
   status: PruefStatus;
   /** Datum der (letzten) fachlichen Prüfung, ISO-Format JJJJ-MM-TT; Pflicht bei 'geprueft' und 're-review' */
   am?: string;
-  /** prüfende Person; Pflicht bei 'geprueft' und 're-review' */
+  /** prüfende Person; Pflicht bei 're-review'. Bei 'geprueft' optional – ohne Angabe passiver Vermerk ohne Namen */
   von?: string;
   /** offene fachliche Punkte (Anzeige im Admin-Bereich) */
   offenePunkte?: readonly string[];
@@ -59,6 +60,8 @@ export function datumDe(iso: string | undefined): string {
 }
 
 // Stand 25.10.2026: Im Repository liegen keine dokumentierten Modulprüfungen vor → alle 'offen'.
+// 28.10.2026: Module mit Empfehlung „freigabefähig“ ohne offene Fragen aus den Modulprüfungen Tranche 1–3 freigegeben
+// (docs/pruefung/module-tranche-2.md, -3.md); Vermerk passiv ohne Namen.
 export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   abfaelle: { status: 'offen' },
   altholz_urban_mining: { status: 'offen' },
@@ -93,7 +96,7 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   bp_daemmung: { status: 'offen' },
   bp_farben_lacke: { status: 'offen' },
   bp_glaeser: { status: 'offen' },
-  bp_holzprodukte: { status: 'offen' },
+  bp_holzprodukte: { status: 'geprueft', am: '2026-10-28' }, // Zweitprüfung, freigegeben 28.10.2026 (docs/pruefung/module-tranche-2.md)
   bp_innovationen: { status: 'offen' },
   bp_klebstoffe: { status: 'offen' },
   bp_kunststoffe: { status: 'offen' },
@@ -168,7 +171,7 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   ki_uebungen: { status: 'offen' },
   knicken: { status: 'offen' },
   kombinationen: { status: 'offen' },
-  korrosion: { status: 'offen' },
+  korrosion: { status: 'geprueft', am: '2026-10-28' }, // Zweitprüfung, freigegeben 28.10.2026 (docs/pruefung/module-tranche-2.md)
   korrosionsschutz_beschichtungen: { status: 'offen' },
   kreislauf_dpp: { status: 'offen' },
   kunststoffe: { status: 'offen' },
@@ -227,7 +230,7 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   schadreaktionen_beton: { status: 'offen' },
   schadstoffe: { status: 'offen' },
   schallschutz: { status: 'offen' },
-  schnellkarbonatisierung: { status: 'offen' },
+  schnellkarbonatisierung: { status: 'geprueft', am: '2026-10-28' }, // Zweitprüfung, freigegeben 28.10.2026 (docs/pruefung/module-tranche-2.md)
   lebensdauerbemessung: { status: 'offen' },
   labor_potentialmessung: { status: 'offen' },
   labor_auslagerung: { status: 'offen' },
@@ -240,9 +243,9 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   sommerlicher_waermeschutz: { status: 'offen' },
   sonderbetone: { status: 'offen' },
   sonstiges: { status: 'offen' },
-  spannbeton: { status: 'offen' },
+  spannbeton: { status: 'geprueft', am: '2026-10-28' }, // Zweitprüfung, freigegeben 28.10.2026 (docs/pruefung/module-tranche-2.md)
   stahl: { status: 'offen' },
-  stahlbau_ec3: { status: 'offen' },
+  stahlbau_ec3: { status: 'geprueft', am: '2026-10-28' }, // Zweitprüfung, freigegeben 28.10.2026 (docs/pruefung/module-tranche-3.md)
   stahlbeton_bemessung: { status: 'offen' },
   statistik: { status: 'offen' },
   vdi6200: { status: 'offen' },
