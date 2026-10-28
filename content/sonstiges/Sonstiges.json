@@ -60,7 +60,7 @@
     "bauwerksüberwachungShmLeitfähigerBeton": "**Bauwerksüberwachung (SHM):** Leitfähiger Beton kann als eigener Sensor für Dehnungen und Risse dienen (Forschungsstand).",
     "thermobimetallePassiveMetallkomponentenA": "**Thermobimetalle:** Passive Metallkomponenten an Fassaden, die sich rein temperaturabhängig krümmen und so Lüftungsschlitze steuern.",
     "photokatalytischeNoXReduzierung": "Photokatalytische NO_x Reduzierung",
-    "tioAnatasHUv": "TiO₂ (Anatas) + hν (UV) → e⁻ + h⁺<br>H₂O + h⁺ → ·OH (Hydroxylradikale) <br>NO + ·OH + O₂⁻ → NO₃⁻ (Nitrat, abwaschbar) + H₂O",
+    "tioAnatasHUv": "TiO₂ (Anatas) + hν (UV) → e⁻ + h⁺<br>H₂O + h⁺ → ·OH (Hydroxylradikale) + H⁺; O₂ + e⁻ → ·O₂⁻ (Superoxid)<br>NO + ·OH → HNO₂; HNO₂ + ·OH → NO₂ + H₂O; NO₂ + ·OH → HNO₃<br>NO + ·O₂⁻ → NO₃⁻ (Nitrat, abwaschbar)",
     "photokatalytischePflastersteineBelägeUnd": "Photokatalytische Pflastersteine, Beläge und Dachsteine bauen im Labor nachweislich Stickoxide ab; die Wirkung im Stadtmaßstab ist umstritten.",
     "vakuumisolationspaneeleVipUndBiogene": "**Vakuumisolationspaneele (VIP)** und **biogene Myzel-Baustoffe** stehen an der Spitze hocheffizienter bzw. ressourcen-kreislauffähiger Dämmtechnologien. Sie lösen funktionale Platzprobleme und minimieren den CO₂-Fußabdruck im Baustoffbereich.",
     "vakuumisolationspaneeleVip": " Vakuumisolationspaneele (VIP)",

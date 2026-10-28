@@ -70,7 +70,7 @@
     "b2NormalentflammbarE": "B2 (normalentflammbar) / E",
     "primärenergieNichtErneuerbarPenrt": "Primärenergie nicht erneuerbar (PENRT, Richtwert)",
     "t100MjKgNicht": "~100 MJ/kg (nicht erneuerbar)",
-    "t15MjKgBiogen": "~15 MJ/kg (biogen)",
+    "t15MjKgBiogen": "~15 MJ/kg (nicht erneuerbar; Rohstoff biogen, verfahrensabhängig)",
     "tragwerkNormalbetonVsBrettschichtholz": " Tragwerk: Normalbeton vs. Brettschichtholz (GL24h)",
     "normalbetonC2530": "Normalbeton (C25/30)",
     "brettschichtholzBsh": "Brettschichtholz (BSH)",
