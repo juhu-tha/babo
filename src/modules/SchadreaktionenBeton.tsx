@@ -153,7 +153,7 @@ function AkrGefuegeSimulator() {
                     }`}
                   >
                     <span className="block text-xs">{item.id}</span>
-                    <span className="text-[9px] opacity-75">{item.sub}</span>
+                    <span className="text-[10px]">{item.sub}</span>
                   </button>
                 ))}
               </div>
@@ -178,7 +178,7 @@ function AkrGefuegeSimulator() {
                     }`}
                   >
                     <span className="block text-xs">{item.id}</span>
-                    <span className="text-[9px] opacity-80">{item.sub}</span>
+                    <span className="text-[10px]">{item.sub}</span>
                   </button>
                 ))}
               </div>
