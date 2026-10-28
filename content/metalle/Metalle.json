@@ -75,7 +75,7 @@
         "thermalConductivity": 15,
         "meltingPoint": 1450,
         "corrosionBehavior": "Durch Legierung mit mindestens 10,5 % Chrom (in der Praxis 17–19 % Cr und 8–12 % Ni) bildet sich bei Sauerstoffkontakt spontan eine nanometerdünne, selbsterneuernde Passivschicht aus Chromoxid (Cr₂O₃). In Gegenwart von Chloriden (Tausalz, Meeresluft, Schwimmbäder) besteht jedoch bei unzureichender Legierungswahl akute Gefahr von mikroskopischem Lochfraß und unter Zugspannung von katastrophaler Spannungsrisskorrosion (SCC).",
-        "corrosionProtection": "Genaue Abstimmung der Werkstoffgüte auf die Umgebungsbedingungen: A2 (1.4301, CRC II) für normale Innen- und Landatmosphäre; A4 (1.4404 mit Molybdän, CRC III) für mäßig chloridbelastete Außenatmosphäre, z. B. küstennah; CRC V (z. B. 1.4529, 1.4565) für Straßentunnel mit Tausalzeintrag und für nicht regelmäßig gereinigte, sicherheitsrelevante Bauteile in Hallenschwimmbädern.; hochlegierte Sonderstähle wie 1.4529 (CRC IV/V) zwingend für Hallenschwimmbäder. Vermeidung von Kontakt mit gewöhnlichem ferritischen Eisenstaub (Fremdrost).",
+        "corrosionProtection": "Genaue Abstimmung der Werkstoffgüte auf die Umgebungsbedingungen: A2 (1.4301, CRC II) für normale Innen- und Landatmosphäre; A4 (1.4404 mit Molybdän, CRC III) für mäßig chloridbelastete Außenatmosphäre, z. B. küstennah; CRC V (z. B. 1.4529, 1.4565) für Straßentunnel mit Tausalzeintrag und für nicht regelmäßig gereinigte, sicherheitsrelevante Bauteile in Hallenschwimmbädern. Vermeidung von Kontakt mit gewöhnlichem ferritischen Eisenstaub (Fremdrost).",
         "applications": "Fassadenbefestigungen, tragende Unterkonstruktionen, Glasfassadenanker, Geländer, Schwimmbaddächer, Bewehrung in hochbelasteten Bauteilen",
         "description": "Austenitischer Hochleistungsstahl mit dichter kubisch-flächenzentrierter Atompackung. Hohe Zähigkeit ohne Tieftemperaturversprödung, sehr wartungsarm und repräsentativ. Geringe Wärmeleitung (15 W/(m·K)) minimiert Wärmebrücken."
       },
@@ -87,7 +87,7 @@
         "thermalConductivity": 110,
         "meltingPoint": 420,
         "corrosionBehavior": "Bildet unter atmosphärischer Einwirkung von CO₂ und Feuchte eine dichte, mattgraue Deckschicht aus basischem Zinkcarbonat (2 ZnCO₃ · 3 Zn(OH)₂). Bei stehender Nässe und behinderter Belüftung (z.B. mangelhafte Hinterlüftung an Dachunterseiten) bildet sich stattdessen mehliger, zerstörerischer Weißrost (Zinkhydroxid). Extrem empfindlich gegenüber saurem Regen und herablaufendem kupferhaltigem Wasser.",
-        "corrosionProtection": "Zwingend vollflächig hinterlüftete Dach- und Wandkonstruktionen ausführen (Verhinderung von Tauwasserstau an der Blechunterseite). Strukturierte Trennlagen einsetzen. Niemals in Fließrichtung unterhalb von Kupfer anordnen (Fließregel)..",
+        "corrosionProtection": "Zwingend vollflächig hinterlüftete Dach- und Wandkonstruktionen ausführen (Verhinderung von Tauwasserstau an der Blechunterseite). Strukturierte Trennlagen einsetzen. Niemals in Fließrichtung unterhalb von Kupfer anordnen (Fließregel).",
         "applications": "Dacheindeckungen (Stehfalztechnik), Rinnen, Fallrohre, Gaubenbekleidungen, Feuerverzinkungsschichten für Tragwerksstahl",
         "description": "Im Hochbau vor allem als Titanzink nach DIN EN 988 (Feinzink mit geringen Anteilen Titan und Kupfer zur Begrenzung des Kriechverhaltens) eingesetzt. Sehr gut falzbar, erfordert jedoch aufgrund der hohen Wärmedehnung (22 × 10⁻⁶/K) sorgfältig dimensionierte Schiebehafte."
       },
@@ -110,7 +110,7 @@
         "eModul": 105000,
         "thermalConductivity": 22,
         "meltingPoint": 1668,
-        "corrosionBehavior": "Unter allen Baumetallen die höchste Korrosionsbeständigkeit. Bildet spontan eine chemisch extrem inerte, festhaftende Rutil-Oxidschicht (TiO₂), die das Metall selbst gegen konzentrierte Meersalzlösungen, Industrieabgase und aggressive Säuren vollkommen resistent macht.",
+        "corrosionBehavior": "Unter allen Baumetallen die höchste Korrosionsbeständigkeit. Bildet spontan eine chemisch extrem inerte, festhaftende Rutil-Oxidschicht (TiO₂), die das Metall gegen Meerwasser, chloridhaltige Lösungen, Industrieatmosphäre und viele Säuren sehr beständig macht (nicht beständig gegen Flusssäure und heiße, konzentrierte reduzierende Säuren).",
         "corrosionProtection": "Vollkommen wartungsfrei; keinerlei Beschichtungen oder Schutzmaßnahmen erforderlich. Selbst bei mechanischen Kratzern passiviert sich die Stelle im Kontakt mit Luftsauerstoff binnen Millisekunden neu.",
         "applications": "Monumentale Architekturfassaden, extrem beanspruchte Dächer repräsentativer Kulturbauten, korrosionskritische Spezialverankerungen",
         "description": "Leichtmetall (hdp) mit hoher Festigkeit im Verhältnis zur Dichte und der geringsten Wärmedehnzahl der üblichen Fassadenmetalle (α ≈ 8,6 · 10⁻⁶/K). Das verringert thermische Wellenbildung bei großformatigen Bekleidungen."
@@ -149,7 +149,7 @@
         "corrosionBehavior": "Deutlich beständiger gegen atmosphärische und bodenmechanische Korrosion als unlegierter Stahl. Bildet im Erdreich eine stabile, festhaftende Oxidhaut. Graphitkugeln wirken als Barrieren gegen das Fortschreiten mikroskopischer Risse.",
         "corrosionProtection": "Für Tiefbauanwendungen werkseitig mit Zinküberzügen und Epoxidharz- bzw. Polyurethanbeschichtungen nach DIN EN 545 geschützt. Schachtabdeckungen erhalten bituminöse Tauchlackierungen.",
         "applications": "Schachtabdeckungen und Entwässerungsrinnen (DIN EN 124, Klassen D400 bis F900), Druckrohre für Trink- und Abwasser, Brückenlager, historische Rekonstruktion tragender Stützen",
-        "description": "Gusswerkstoff, bei dem freier Kohlenstoff durch Magnesiumbehandlung in kugelförmiger Graphitgestalt (Nodules) erstarrt. Weist im Gegensatz zum spröden Lamellengrauguss hohe Duktilität (Bruchdehnung bis 18 %) und Weist im Gegensatz zum spröden Lamellengrauguss hohe Duktilität (Bruchdehnung bis 18 %) auf; die Schwingungsdämpfung ist geringer als bei Lamellengrauguss, aber höher als bei Stahl. auf."
+        "description": "Gusswerkstoff, bei dem freier Kohlenstoff durch Magnesiumbehandlung in kugelförmiger Graphitgestalt (Nodules) erstarrt. Weist im Gegensatz zum spröden Lamellengrauguss eine hohe Duktilität (Bruchdehnung bis 18 %) auf; die Schwingungsdämpfung ist geringer als bei Lamellengrauguss, aber höher als bei Stahl."
       }
     ],
     "Metalle.schritte": [

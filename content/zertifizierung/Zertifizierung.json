@@ -58,7 +58,7 @@
     "wannZielgruppe": "Wann / Zielgruppe",
     "privatwirtschaftlicheUndÖffentlicheProje": "Privatwirtschaftliche und öffentliche Projekte jeder Größenordnung (Büros, Wohngebäude, Quartiere, Bildungsbauten, Industriebauten). Ideal für Investoren, die internationale Standards (Heuristik) mit maximaler deutscher Qualitätsprüfung anstreben.",
     "wasWirdGefordert": "Was wird gefordert?",
-    "gleichwertigeGewichtungVonÖkologie": "Gleichwertige Gewichtung von **Ökologie**, **Ökonomie** und **Soziokulturellen / funktionale Kriterien** (jeweils 22,5%). Ergänzt durch Technik (15%), Prozesse (12,5%) und Standort (5%). Lebenszyklusanalysen und Lebenszykluskostenrechnung über 50 Jahre sind zwingend.",
+    "gleichwertigeGewichtungVonÖkologie": "Gleichwertige Gewichtung von **Ökologie**, **Ökonomie** und **Soziokulturellen / funktionale Kriterien** (jeweils 22,5%). Ergänzt durch Technik (15%), Prozesse (12,5%) und Standort (5%) – Gewichtung der Version 2018; in der seit 01.10.2026 gültigen Marktversion 2023.2 je 25 % für Ökologie, Ökonomie und Soziokultur, je 10 % für Technik und Prozess, 5 % für den Standort. Lebenszyklusanalysen und Lebenszykluskostenrechnung über 50 Jahre sind zwingend.",
     "platinGesamterfüllung80": "**Platin:** Gesamterfüllung ≥ 80%",
     "goldGesamterfüllung65": "**Gold:** Gesamterfüllung ≥ 65%",
     "silberGesamterfüllung50": "**Silber:** Gesamterfüllung ≥ 50%",
@@ -268,8 +268,8 @@
     ],
     "Zertifizierung.formeln": [
       {
-        "formel": "\\text{GEG}_{\\text{DGNB}} = \\sum_{i=1}^6 W_i \\cdot E_i \\ge 80\\% \\implies \\text{Zertifikat: Platin}",
-        "erklaerung": "DGNB-Gesamterfüllungsgrad aus den 6 Themenfeldern Ökologie (22,5%), Ökonomie (22,5%), Soziokulturelles (22,5%), Technik (15%), Prozess (12,5%) und Standort (5%). Platin ab 80%, Gold ab 65%, Silber ab 50%.",
+        "formel": "\\text{GE}_{\\text{DGNB}} = \\sum_{i=1}^6 W_i \\cdot E_i \\ge 80\\% \\implies \\text{Zertifikat: Platin}",
+        "erklaerung": "DGNB-Gesamterfüllungsgrad GE (Version 2018) aus den 6 Themenfeldern Ökologie (22,5%), Ökonomie (22,5%), Soziokulturelles (22,5%), Technik (15%), Prozess (12,5%) und Standort (5%). Platin ab 80%, Gold ab 65%, Silber ab 50%.",
         "quelle": "DGNB Kriterienkatalog"
       },
       {

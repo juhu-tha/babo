@@ -241,6 +241,8 @@ export default function Statistik() {
     const lowerBound = r.untereGrenze;
     const upperBound = r.obereGrenze;
     const isOutlierFn = testStatus === 'finished' ? (v: number) => v < lowerBound || v > upperBound : (_v: number) => false;
+    // T2-ST-1 (28.10.2026): Grubbs – zwischen 5-%- und 1-%-Grenze nur markiert (auffällig), nicht entfernt
+    const isAuffaelligFn = (v: number) => r.auffaellig.includes(v);
 
     let thresholdDesc = inhalt.werte.wirdNachGenerierungBerechnet;
     let formula = '';
@@ -254,7 +256,7 @@ export default function Statistik() {
       } else if (outlierMethod === 'grubbs') {
         // Kritische Werte des Grubbs-Tests für einen Ausreißer, α = 5 % nach ISO 5725-2, Tab. 5 (beidseitig = ASTM E178 einseitig 2,5 %);
         // vereinfacht auf alle Werte angewendet (der strenge Test prüft iterativ nur den Extremwert).
-        thresholdDesc = `Grubbs G > ${formatDeZahl(r.gKrit ?? NaN, 3)} (n = ${formatDeWert(n)}; α = 5 %, ISO 5725-2)`;
+        thresholdDesc = `Grubbs: Ausreißer G > ${formatDeZahl(r.gKrit ?? NaN, 3)} (α = 1 %), auffällig G > ${formatDeZahl(r.gKrit5 ?? NaN, 3)} (α = 5 %); n = ${formatDeWert(n)}, ISO 5725-2`;
         formula = '\\mu \\pm G_{crit} \\cdot \\sigma';
       }
     }
@@ -268,7 +270,7 @@ export default function Statistik() {
 
     return {
       n, mean, stdDev, cv, median,
-      cleanedValues, outliers, isOutlierFn, thresholdDesc,
+      cleanedValues, outliers, isOutlierFn, isAuffaelligFn, auffaellig: r.auffaellig, thresholdDesc,
       lowerBound, upperBound, formula,
       nClean, meanClean, stdDevClean,
       kn, xk, xd, gammaM
@@ -1062,8 +1064,9 @@ export default function Statistik() {
                         <div className="grid grid-cols-5 gap-2">
                           {statValues.map((val, idx) => {
                             const isOutlier = val !== undefined ? stats.isOutlierFn(val) : false;
+                            const isAuffaellig = val !== undefined && !isOutlier ? stats.isAuffaelligFn(val) : false;
                             return (
-                              <div key={idx} className={`p-2 text-center rounded-md border text-sm font-medium ${isOutlier ? 'bg-torch-red/10 border-torch-red text-torch-red' : 'bg-white border-home-grau/30 text-text-main'}`}>
+                              <div key={idx} className={`p-2 text-center rounded-md border text-sm font-medium ${isOutlier ? 'bg-torch-red/10 border-torch-red text-torch-red' : isAuffaellig ? 'bg-amber-50 border-amber-600 border-dashed text-amber-900' : 'bg-white border-home-grau/30 text-text-main'}`}>
                                 {formatDeZahl(val, 1) ?? '-'}
                               </div>
                             );
@@ -1072,6 +1075,10 @@ export default function Statistik() {
                         {stats.outliers.length > 0 && (
                           <div className="mt-3 text-sm text-torch-red font-medium">
                             {formatDeWert(stats.outliers.length)}<MdText text={inhalt.texte.wertEAlsAusreißer} /></div>
+                        )}
+                        {stats.auffaellig.length > 0 && (
+                          <div className="mt-2 text-sm text-amber-900 font-medium">
+                            {formatDeWert(stats.auffaellig.length)}<MdText text={inhalt.texte.wertEAuffaellig} /></div>
                         )}
                       </div>
 

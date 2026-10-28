@@ -486,22 +486,22 @@ export default function MessenPruefen() {
                   </div>
 
                   {/* SVG Youden-Plot Canvas */}
-                  <div className="w-full bg-slate-900 rounded-xl p-3 flex flex-col items-center justify-center relative overflow-hidden">
+                  <div className="w-full svg-buehne border rounded-xl p-3 flex flex-col items-center justify-center relative overflow-hidden">
                     <svg width="100%" height="220" viewBox="0 0 460 220" className="select-none">
                       {/* Grid Lines */}
-                      <line x1="30" y1="110" x2="430" y2="110" stroke="#334155" strokeWidth="1" strokeDasharray="3,3" />
-                      <line x1="230" y1="20" x2="230" y2="200" stroke="#334155" strokeWidth="1" strokeDasharray="3,3" />
+                      <line x1="30" y1="110" x2="430" y2="110" stroke="var(--bu-raster)" strokeWidth="1" strokeDasharray="3,3" />
+                      <line x1="230" y1="20" x2="230" y2="200" stroke="var(--bu-raster)" strokeWidth="1" strokeDasharray="3,3" />
 
                       {/* 45-Degree Diagonal Line (Systematic Error Axis) */}
-                      <line x1="60" y1="180" x2="400" y2="40" stroke="#64748b" strokeWidth="1.5" strokeDasharray="5,3" />
-                      <text x="390" y="32" fill="#94a3b8" fontSize="9" fontWeight="bold">45°-Systematik-Achse</text>
+                      <line x1="60" y1="180" x2="400" y2="40" stroke="var(--bu-linie)" strokeWidth="1.5" strokeDasharray="5,3" />
+                      <text x="390" y="32" fill="var(--bu-text2)" fontSize="9" fontWeight="bold">45°-Systematik-Achse</text>
 
                       {/* Tolerance Ellipse (Confidence Zone 95%) */}
-                      <ellipse cx="230" cy="110" rx="90" ry="38" transform="rotate(-23 230 110)" fill="rgba(16, 185, 129, 0.08)" stroke="#10b981" strokeWidth="1.5" strokeDasharray="4,2" />
+                      <ellipse cx="230" cy="110" rx="90" ry="38" transform="rotate(-23 230 110)" fill="rgba(16, 185, 129, 0.08)" stroke="var(--bu-gruen)" strokeWidth="1.5" strokeDasharray="4,2" />
 
                       {/* Reference Center Cross (X_A, X_B) */}
-                      <circle cx="230" cy="110" r="4" fill="#38bdf8" />
-                      <text x="238" y="106" fill="#38bdf8" fontSize="9" fontWeight="bold">Referenzzentrum (X)</text>
+                      <circle cx="230" cy="110" r="4" fill="var(--bu-blau)" />
+                      <text x="238" y="106" fill="var(--bu-blau)" fontSize="9" fontWeight="bold">Referenzzentrum (X)</text>
 
                       {/* Other Benchmark Laboratories */}
                       {rvStats.baseLabs.map(lab => {
@@ -514,8 +514,8 @@ export default function MessenPruefen() {
                             cx={px}
                             cy={py}
                             r="3"
-                            fill="#94a3b8"
-                            opacity="0.75"
+                            fill="var(--bu-punkt)"
+                            opacity="0.9"
                           />
                         );
                       })}
@@ -524,18 +524,18 @@ export default function MessenPruefen() {
                       {(() => {
                         const curX = Math.max(35, Math.min(425, 230 + (rvStats.currentLab.a - 50.0) * 28));
                         const curY = Math.max(25, Math.min(195, 110 - (rvStats.currentLab.b - 48.0) * 28));
-                        const col = rvStats.zStatus === 'ok' ? '#22c55e' : rvStats.zStatus === 'warning' ? '#f59e0b' : '#ef4444';
+                        const col = rvStats.zStatus === 'ok' ? 'var(--bu-ok)' : rvStats.zStatus === 'warning' ? 'var(--bu-warn)' : 'var(--bu-fehler)';
                         return (
                           <g>
                             {/* Pulse Aura */}
                             <circle cx={curX} cy={curY} r="9" fill={col} opacity="0.35" className="animate-ping" />
                             {/* Outer Border */}
-                            <circle cx={curX} cy={curY} r="6.5" fill="#ffffff" stroke={col} strokeWidth="2.5" />
+                            <circle cx={curX} cy={curY} r="6.5" fill="var(--bu-panel)" stroke={col} strokeWidth="2.5" />
                             {/* Center Dot */}
                             <circle cx={curX} cy={curY} r="3" fill={col} />
                             {/* Label */}
-                            <rect x={curX - 45} y={curY - 24} width="90" height="16" fill="rgba(15, 23, 42, 0.9)" rx="3" stroke={col} strokeWidth="1" />
-                            <text x={curX} y={curY - 13} textAnchor="middle" fill="#ffffff" fontSize="8.5" fontWeight="bold">
+                            <rect x={curX - 45} y={curY - 24} width="90" height="16" fill="var(--bu-panel)" rx="3" stroke={col} strokeWidth="1" />
+                            <text x={curX} y={curY - 13} textAnchor="middle" fill="var(--bu-text)" fontSize="8.5" fontWeight="bold">
                               Ihr Labor (z={formatDeZahl(rvStats.zScore, 1)})
                             </text>
                           </g>
@@ -543,11 +543,11 @@ export default function MessenPruefen() {
                       })()}
 
                       {/* Axis Labels */}
-                      <text x="425" y="125" textAnchor="end" fill="#cbd5e1" fontSize="9">Probe A (MPa) &rarr;</text>
-                      <text x="240" y="28" fill="#cbd5e1" fontSize="9">&uarr; Probe B (MPa)</text>
+                      <text x="425" y="125" textAnchor="end" fill="var(--bu-text2)" fontSize="9">Probe A (MPa) &rarr;</text>
+                      <text x="240" y="28" fill="var(--bu-text2)" fontSize="9">&uarr; Probe B (MPa)</text>
                     </svg>
 
-                    <div className="w-full flex items-center justify-between text-[10px] text-slate-400 mt-1 font-mono">
+                    <div className="w-full flex items-center justify-between text-[10px] bu-text2 mt-1 font-mono">
                       <span><MdText text={inhalt.texte.grauePunkte18Teilnehmende} /></span>
                       <span><MdText text={inhalt.texte.grüneEllipseSchematischerBereich} /></span>
                     </div>
