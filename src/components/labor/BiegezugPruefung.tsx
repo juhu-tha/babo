@@ -810,11 +810,11 @@ export default function BiegezugPruefung() {
                     <strong className="text-base text-text-main font-mono">{formatDeZahl(maxForceObserved, 1)} kN</strong>
                   </div>
                   <div>
-                    <span className="text-text-main/60 uppercase text-[11px] font-bold block">Enddurchbiegung <Fz idx="u">δ</Fz></span>
+                    <span className="text-text-main/60 uppercase text-[11px] font-bold block">End&shy;durchbiegung <Fz idx="u">δ</Fz></span>
                     <strong className="text-base text-cyan-800 font-mono">{formatDeZahl(currentDeflectionMm, 2)} mm</strong>
                   </div>
                   <div>
-                    <span className="text-text-main/60 uppercase text-[11px] font-bold block">Widerstandsmoment <Fz>W</Fz></span>
+                    <span className="text-text-main/60 uppercase text-[11px] font-bold block">Widerstands&shy;moment <Fz>W</Fz></span>
                     <strong className="text-base text-text-main font-mono">{formatDeZahl((W / 1000), 0)} cm³</strong>
                   </div>
                 </div>

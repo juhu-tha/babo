@@ -167,7 +167,7 @@ export function SetzFormen({ aktiv }: { aktiv: SetzForm | null }) {
   const formen: { id: SetzForm; name: string; zusatz: string; pfad: string }[] = [
     { id: 'setzung', name: 'Setzung', zusatz: 'gültig', pfad: 'M 10 56 L 22 22 Q 30 16 38 22 L 50 56 Z' },
     { id: 'scherung', name: 'Scherung', zusatz: 'wiederholen', pfad: 'M 10 56 L 20 16 L 44 34 L 50 56 Z' },
-    { id: 'zusammenbruch', name: 'Zusammenbruch', zusatz: 'sehr fließfähig', pfad: 'M 2 56 Q 18 40 30 40 Q 42 40 58 56 Z' },
+    { id: 'zusammenbruch', name: 'Zusammen­bruch', zusatz: 'sehr fließfähig', pfad: 'M 2 56 Q 18 40 30 40 Q 42 40 58 56 Z' },
   ];
   return (
     <ul className="grid grid-cols-3 gap-2" aria-label="Setzformen nach DIN EN 12350-2">

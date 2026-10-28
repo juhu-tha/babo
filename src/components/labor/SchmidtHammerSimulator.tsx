@@ -387,7 +387,7 @@ export default function SchmidtHammerSimulator() {
                       {[10, 20, 30, 40, 50, 60, 70].map(r => (
                         <g key={r}>
                           <line x1={skalaX(r)} y1="32" x2={skalaX(r)} y2="38" stroke="var(--pg-kontur)" strokeWidth="1" />
-                          <text x={skalaX(r)} y="52" textAnchor="middle" fontSize="12" fill="var(--pg-text)">{r}</text>
+                          <text x={skalaX(r)} y="52" textAnchor="middle" fontSize="12" fill="var(--pg-text)">{formatDeWert(r)}</text>
                         </g>
                       ))}
                       <text x="4" y="32" fontSize="12" fontWeight="bold" fill="var(--pg-text)">R</text>

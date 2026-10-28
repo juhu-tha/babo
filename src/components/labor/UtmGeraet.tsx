@@ -114,6 +114,7 @@ export default function UtmGeraet({ material, testType, specimenShape, progress,
   // Füllmuster je Werkstoff
   const muster = material === 'beton' ? 'url(#utm-beton)' : material === 'holz' ? 'url(#utm-holz)' : material === 'ziegel' ? 'url(#utm-poren)' : undefined;
   const zylinderSchatten = specimenShape === 'zylinder150';
+  const holzDrehung = "rotate(" + String(woodAngle) + ")";
 
   const probe = (
     <g>
@@ -153,7 +154,7 @@ export default function UtmGeraet({ material, testType, specimenShape, progress,
         <pattern id="utm-poren" width="8" height="8" patternUnits="userSpaceOnUse">
           <circle cx="3" cy="3" r="1" fill="#3f0a1a" opacity="0.45" />
         </pattern>
-        <pattern id="utm-holz" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform={`rotate(${woodAngle})`}>
+        <pattern id="utm-holz" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform={holzDrehung}>
           <line x1="0" y1="0" x2="0" y2="8" stroke="var(--pg-holz-faser)" strokeWidth="1.4" opacity="0.7" />
         </pattern>
         <linearGradient id="utm-zylinder" x1="0" y1="0" x2="1" y2="0">

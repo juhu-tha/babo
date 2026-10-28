@@ -251,7 +251,7 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
                      {[0, 50, 100, 150, 200].map(v => (
                        <g key={v}>
                          <line x1="190" y1={oberflaecheY + v * 0.4} x2="202" y2={oberflaecheY + v * 0.4} stroke="var(--pg-kontur)" strokeWidth="1" />
-                         <text x="208" y={oberflaecheY + v * 0.4 + 4} fontSize="11" fill="var(--pg-text)">{v}</text>
+                         <text x="208" y={oberflaecheY + v * 0.4 + 4} fontSize="11" fill="var(--pg-text)">{formatDeWert(v)}</text>
                        </g>
                      ))}
                      <line x1="112" y1={spitzeY} x2="196" y2={spitzeY} stroke="var(--pg-akzent)" strokeWidth="1" strokeDasharray="3 2" />
@@ -288,7 +288,7 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
                      {[20, 40, 60, 80].map(t => (
                        <g key={t}>
                          <line x1="256" y1={230 - (t / 100) * 200} x2="262" y2={230 - (t / 100) * 200} stroke="var(--pg-kontur)" strokeWidth="1" />
-                         <text x="264" y={234 - (t / 100) * 200} fontSize="11" fill="var(--pg-text)">{t} °C</text>
+                         <text x="264" y={234 - (t / 100) * 200} fontSize="11" fill="var(--pg-text)">{formatDeWert(t)} °C</text>
                        </g>
                      ))}
                      <text x="120" y="20" textAnchor="middle" fontSize="12" fontWeight="bold" fill="var(--pg-akzent)">T = {formatDeZahl(temperatur, 1)} °C</text>
