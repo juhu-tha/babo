@@ -261,7 +261,8 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   frischbeton: {
     kurz: "Konsistenz gegen Grenzabmaße, korrigierter Luftgehalt, Frischbetonrohdichte, Schalungsdruck und Frischbetontemperatur.",
     grenzen: [
-      "Grenzabmaße nach hinterlegter Tabelle; Luftgehalt als Einzelwert bewertet: Mindestwert (DIN 1045-2, Tab. F.2.2), obere Grenze Mindestwert + 4 % (DIN EN 206, 5.4.3), Grenzabweichungen −0,5/+1,0 %; Annahmekennzahl über mehrere Proben nicht abgebildet.",
+      "Grenzabmaße der Konsistenz nach hinterlegter Tabelle (Staffeln vorläufig, F-Freigabe).",
+      "Luftgehalt als Einzelwert: Mindestwert nach DIN 1045-2, obere Grenze Mindestwert + 4 % (DIN EN 206, 5.4.3), Grenzabweichung −0,5/+1,0 %; keine Annahmekennzahl.",
       "Expositionsklasse XF2/XF3 nur in der LP-Variante bzw. ohne LP-Anforderung wählbar; XF3 mit LP ist nicht getrennt abgebildet.",
       "Schalungsdruck mit genähertem Erstarrungsbeiwert; SVB voll hydrostatisch.",
       "Frischbetontemperatur über Mischungsregel mit festen Wärmekapazitäten.",

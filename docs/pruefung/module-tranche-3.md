@@ -1,6 +1,6 @@
 # Modulprüfung Tranche 3 – Rechner- und Fachmodule (Befundliste zur Freigabe)
 
-**Stand:** 28.10.2026 (Branch `pruefung/module-tranche3-10-28`, Basis origin/main 10e8190d)
+**Stand:** 28.10.2026 (Branch `pruefung/module-tranche3-10-28`, Basis origin/main 10e8190d, main 1974ca9b eingemergt)
 **Status:** Vorschlag zur fachlichen Freigabe – noch nicht bestätigt.
 
 > Nach der Freigabe eines Moduls wird in `src/data/pruefvermerke.ts` der Prüfvermerk „geprüft am …“ gesetzt (Passiv, ohne Namen). Mit dieser Befundliste wurden **keine** Prüfvermerke und **keine** Quizfragen geändert.
