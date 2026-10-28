@@ -17,7 +17,7 @@
     "schritt2EffektiverRestquerschnitt": "**Schritt 2: Effektiver Restquerschnitt b_ef × h_ef**",
     "schritt3HeißtragfähigkeitM": "**Schritt 3: Heißtragfähigkeit M_fi,Rd vs. Einwirkung M_fi,Ed**",
     "stahlbetonBrandschutzTabellarischeMindes": "Stahlbeton-Brandschutz: Tabellarische Mindestmaße nach DIN EN 1992-1-2",
-    "dieHeißbemessungVonBetonbauteilen": "Die Heißbemessung von Betonbauteilen erfolgt in der Praxis meist über das normative Tabellenverfahren. Maßgebend sind die Mindestbauteildicke $b_{\\text{min}}$ und der Achsabstand $a$ der Bewehrungsstäbe zum Brandrand, um die Stahltemperatur unter $500^\\circ\\text{C}$ zu halten.",
+    "dieHeißbemessungVonBetonbauteilen": "Die Heißbemessung von Betonbauteilen erfolgt in der Praxis meist über das normative Tabellenverfahren. Maßgebend sind die Mindestbauteildicke $b_{\\text{min}}$ und der Achsabstand $a$ der Bewehrungsstäbe zum Brandrand, um die Stahltemperatur unter $500^\\circ\\text{C}$ zu halten. **Balken:** statisch bestimmt gelagerte Balken, kleinste Breite mit zugehörigem Achsabstand nach DIN EN 1992-1-2, Tab. 5.5 (breitere Balken erlauben kleinere Achsabstände, z. B. R90: 200/45, 300/40 mm). **Platten:** einachsig gespannte Platten (Tab. 5.8). **Stützen:** Richtwerte ohne Angabe des Ausnutzungsgrads μ_fi (Methode A, Tab. 5.2a) – vorläufig, F-Freigabe.",
     "einfeldträgerMindestbreiteBMin": "Einfeldträger Mindestbreite b_min",
     "achsabstandABalken": "Achsabstand a (Balken)",
     "plattendickeHMin": "Plattendicke h_min",

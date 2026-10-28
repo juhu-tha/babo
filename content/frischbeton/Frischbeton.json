@@ -67,6 +67,8 @@
     "berechnetL": "(Berechnet: L = ",
     "geforderterMindestwert": "Geforderter Mindestwert:",
     "zulässigerEinzelwertDin1045": "Zulässiger Einzelwert (DIN 1045-2):",
+    "obereGrenzeDinEn206": "Obere Grenze (DIN EN 206, 5.4.3):",
+    "obererEinzelwertDinEn206": "Oberer Einzelwert (Grenzabweichung +1,0 %):",
     "frischbetonrohdichteDinEn12350": " Frischbetonrohdichte (DIN EN 12350-6)",
     "m1TopfLeerKg": "m1 Topf leer [kg]",
     "m2TopfVollKg": "m2 Topf voll [kg]",
@@ -87,7 +89,7 @@
     "t35Vol2": "≥ 3,5 Vol.-%",
     "t30Vol": "≥ 3,0 Vol.-%",
     "einflussAufDieDruckfestigkeit": "Einfluss auf die Druckfestigkeit (Faustregel)",
-    "jedesZusätzlicheProzentLuftgehalt": "Jedes zusätzliche Prozent Luftgehalt verringert die Druckfestigkeit des erhärteten Betons um ca. **3 bis 5 N/mm²** (entspricht ca. 5 bis 10 %). Daher darf der Luftgehalt auf der Baustelle auch nach oben hin nicht unbegrenzt streuen (Richtwert: max. 4 Vol.-% über Sollwert).",
+    "jedesZusätzlicheProzentLuftgehalt": "Jedes zusätzliche Prozent Luftgehalt verringert die Druckfestigkeit des erhärteten Betons um ca. **3 bis 5 N/mm²** (entspricht ca. 5 bis 10 %). Deshalb begrenzt DIN EN 206, 5.4.3 den Luftgehalt auch nach oben: Die **obere Grenze** ist der festgelegte Mindestwert **+ 4 % (absolut)**. Einzelwerte dürfen den Mindestwert um höchstens 0,5 % unterschreiten und die obere Grenze um höchstens 1,0 % überschreiten; Ergebnisse dazwischen zählen bei der Konformitätskontrolle als außerhalb des Grenzwerts.",
     "abstandsfaktorLPrüfungNach": "Abstandsfaktor L (Prüfung nach DIN EN 480-11)",
     "fürDieFrostbeständigkeitIst": "Für die Frostbeständigkeit ist nicht der Gesamtluftgehalt allein entscheidend, sondern die Verteilung im Zementstein. Der am Festbeton mikroskopisch bestimmte **Abstandsfaktor L** sollte als Richtwert **≤ 0,20 mm** betragen (z. B. bei der Prüfung von LP-Bildnern nach DIN EN 934-2); ein Abnahmekriterium nach DIN 1045-2 ist er nicht."
   },
@@ -106,6 +108,9 @@
     "keineBauaufsichtlicheMindestluftporenanf": "Keine bauaufsichtliche Mindestluftporenanforderung für diese Expositionsklasse.",
     "anforderungNachDin1045": "Anforderung nach DIN 1045-2:2023-08 Tab. F.2.2 erfüllt. Frost-Tausalz-Widerstand gewährleistet.",
     "achtungMindestluftporengehaltUnterschrit": "Achtung: Mindestluftporengehalt unterschritten! Hohes Risiko für Frost-Tausalz-Schäden (Abplatzungen). Beton darf nicht in XF2/XF4 eingebaut werden.",
+    "luftgehaltUnterMindestwert": "Mindestwert knapp unterschritten: Als Einzelwert ist der Luftgehalt noch zulässig (höchstens 0,5 % unter dem Mindestwert), das Ergebnis zählt aber als außerhalb des Grenzwerts. Weitere Prüfungen abwarten bzw. LP-Dosierung nachsteuern.",
+    "luftgehaltUeberObergrenze": "Obere Grenze (Mindestwert + 4 %) überschritten: Als Einzelwert ist der Luftgehalt noch zulässig (höchstens 1,0 % über der oberen Grenze), das Ergebnis zählt aber als außerhalb des Grenzwerts. Mit merklichem Festigkeitsverlust rechnen und die LP-Dosierung verringern.",
+    "luftgehaltObergrenzeUeberschritten": "Achtung: Luftgehalt zu hoch! Die obere Grenze (Mindestwert + 4 %) ist um mehr als 1,0 % überschritten. Deutlicher Festigkeitsverlust; Beton nicht konform.",
     "m1TopfLeerKg": "m1 Topf leer [kg]",
     "m2TopfVollKg": "m2 Topf voll [kg]",
     "volumenLiter": "Volumen [Liter]",
@@ -141,7 +146,7 @@
       {
         "titel": "4. Nachweis",
         "formel": "4{,}6\\,\\% \\ge 4{,}0\\,\\% \\;\\text{und}\\; 4{,}6\\,\\% \\le 4{,}0 + 4{,}0 = 8{,}0\\,\\%",
-        "erklaerung": "Mindestwert erfüllt, Obergrenze (Mindestwert + 4 %) eingehalten."
+        "erklaerung": "Mindestwert erfüllt, obere Grenze nach DIN EN 206, 5.4.3 (Mindestwert + 4 %) eingehalten."
       }
     ],
     "Frischbeton.schritte_2": [
