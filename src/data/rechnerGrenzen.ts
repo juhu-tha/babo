@@ -20,9 +20,12 @@ const STAHLBETON: RechnerGrenzen = {
     'Biegung: eine Zug- und eine Druckbewehrungslage, ξ_lim = 0,45; nichtmetallische Bewehrung vereinfacht linear-elastisch, maßgebend ist die Zulassung.',
     'Querkraft: z = min(0,9·d; max(d − c_v,l − 30 mm; d − 2·c_v,l)) nach NA DE, NCI zu 6.2.3(1) (c_v,l Standard 3,5 cm, einstellbar); senkrechte Bügel, ohne Normalkraft (σ_cp = 0).',
     'Stütze: Theorie I. Ordnung mit e_i = l₀/400 und Mindestausmitte; bei λ > λ_lim nur Hinweis, kein Nachweis nach Theorie II. Ordnung.',
-    'Stütze: Interaktionskurven mit Spannungsblock (λ = 0,8, bei x > h auf h begrenzt); bei |ν| > 0,8 liegt µ_Rd bis rund 10 % über dem Parabel-Rechteck-Diagramm (Prüfpunkt).',
+    'Stütze: Interaktion mit Parabel-Rechteck-Diagramm (n = 2, ε_c2 = 2 ‰, ε_cu2 = 3,5 ‰), zwei symmetrische Lagen, ε_ud unbegrenzt; Spannungsblock nur Vergleich (bei |ν| > 0,8 bis rund 10 % unsicher).',
     'Durchstanzen: nur Flachdecken; Fundamente und Bodenplatten (NA DE 6.4.4(2)) sind nicht abgebildet.',
-    'Durchstanzen: konstantes β, keine Öffnungen, keine Abminderung durch Bodenpressung; erhöhte Faktoren κ_sw der ersten Bewehrungsreihen nicht berücksichtigt.',
+    'Durchstanzen: konstantes β nach NA DE 6.4.3(6) (1,10/1,40/1,50; unverschiebliche Systeme, Stützweiten ±25 %), keine genauere β-Ermittlung; keine Öffnungen, keine Bodenpressung, ohne erhöhte κ_sw der ersten Reihen.',
+    'Durchstanzen: Rand-/Eckstützen mit u₁ nach EC2 Bild 6.15 (Rand parallel zu c_x; Ecke mit gleichem Abstand zu beiden Rändern; runde Stützen sinngemäß); u₀ nach 6.4.5(3) nur Anzeige.',
+    'Querkraft/Verankerung: ρ_w,min = 0,16·f_ctm/f_yk nach NA DE Gl. (9.5aDE); gegliederte Querschnitte mit vorgespanntem Zuggurt (9.5bDE) sind nicht abgebildet.',
+    'Verankerung: NA-Form l_bd = α₁·α₄·α₅·l_b,rqd·A_s,erf/A_s,vorh, α₅ = 2/3 bei direkter Lagerung, Mindestwerte ohne 100 mm; α₆ nach NA DE Tab. 8.3DE; l₀,min nach (8.11) (vorläufig, F-Freigabe).',
     'Rissbreite: direkte Berechnung mit einer Bewehrungslage; bei Stababständen > 5·(c + φ/2) gilt 7.3.4(4) (nur Hinweis).',
     'σ-ε-Linien: Parabel-Rechteck und Gl. (3.14) mit den Parametern der Tab. 3.1 bis C90/105 (darüber auf C90/105 gehalten); Betonstahl B500 bilinear mit E_s = 200 000 N/mm² und ε_ud = 25 ‰ (NA DE).',
   ],
@@ -143,7 +146,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   kunststoffe: {
     kurz: 'E-Modul von Kunststoffen über der Temperatur als Lehrmodell je Strukturtyp (amorph, teilkristallin, Elastomer, Duroplast) und Wärmedehnung ΔL = L₀·α_T·ΔT.',
     grenzen: [
-      'Logistische Modellkurven mit festen Übergangstemperaturen (z. B. T_g = 100 °C amorph; Duroplast-Plateau oberhalb T_g 80 MPa als Lehrwert im Bereich 50–100 MPa); keine Werkstoffdaten eines bestimmten Kunststoffs, maßgebend sind Produktdatenblätter.',
+      'Logistische Modellkurven mit festen Übergangstemperaturen (z. B. T_g = 100 °C amorph), Duroplast-Plateau oberhalb T_g 80 MPa (Lehrwert, 50–100 MPa); maßgebend sind Produktdatenblätter.',
       'Kurzzeitmodul ohne Zeit- und Lasteinfluss: Kriechen, Relaxation, Alterung und Feuchte sind nicht abgebildet.',
       'Werte unter 0,1 MPa werden für die logarithmische Darstellung auf 0,1 MPa gesetzt (Fließ- bzw. Schmelzbereich ohne Tragfunktion).',
     ],
@@ -271,8 +274,8 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     grenzen: [
       "Faserverbund mit idealer Haftung (Lehrmodell).",
       "U-Wert mit R_si = 0,13 und R_se = 0,04 m²K/W, ohne Wärmebrücken und ohne Glaser-Nachweis.",
-      "Tauwasser-Hinweis als Faustregel nach den nachweisfreien nicht belüfteten Dächern der DIN 4108-3 (s_d,i ≥ 1,0 m / 2,0 m / 6·s_d,e), geteilt an der Dämmschicht (größter Wärmedurchlasswiderstand, selbst nicht mitgezählt); kein Glaser-Nachweis.",
-      "Außendämmung auf tragender Schicht (z. B. WDVS auf Mauerwerk) wird als Außenwand ohne rechnerischen Tauwassernachweis nach DIN 4108-3 eingeordnet, Innendämmung mit Hinweis auf den rechnerischen Nachweis; Einordnung nur über die Lage der Schichtkategorie „tragend“.",
+      "Tauwasser-Hinweis nach den nachweisfreien Dächern der DIN 4108-3 (s_d,i ≥ 1,0 m / 2,0 m / 6·s_d,e), geteilt an der Dämmschicht (größter Wärmedurchlasswiderstand, nicht mitgezählt); kein Glaser-Nachweis.",
+      "Außendämmung auf tragender Schicht (z. B. WDVS auf Mauerwerk): Außenwand ohne rechnerischen Tauwassernachweis nach DIN 4108-3; Innendämmung: Hinweis auf Nachweis. Einordnung nur über die Kategorie „tragend“.",
       "Unzulässige Eingaben (Dicke ≤ 0, λ ≤ 0, μ < 1) werden gemeldet statt still begrenzt.",
     ],
   },
@@ -294,7 +297,8 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   bp_verkehr_tiefbau: {
     kurz: "Speichervolumen und Länge einer Rigole (Lehrmodell in Anlehnung an DWA-A 138-1:2024-10); dazu Betondecken, Bahn- und Tunnelbau.",
     grenzen: [
-      "Rigole: k_f = 1·10⁻⁵ m/s fest, k_f,u = k_f/2 (Ansatz 2005) nur über die Sohle; f_Ort und Seitenflächen nach DWA-A 138-1 nicht abgebildet; Querschnitt fest, ein Regenereignis ohne Häufigkeit.",
+      "Rigole: vereinfachtes Verfahren DWA-A 138-1:2024-10, k_i = f_Ort·f_Methode·k_f, Seiten/Stirn mit halber bzw. bei vollständiger Durchsickerung voller Höhe; f_Ort, f_Methode vorläufig.",
+      "Rigole: Querschnitt 1,2 × 0,6 m und f_Z = 1,2 fest; eine Regendauer ohne Iteration über die Dauerstufen der Regenstatistik (KOSTRA-DWD), kein Drosselabfluss, keine Mulde.",
       "Betondecke: Westergaard-Randspannung (Originalgleichung mit Ersatzradius b, ν = 0,15) ohne Wölbspannungen und Ermüdung; zulässige Spannung pauschal 2,25 N/mm².",
       "Schiene: σ = E·α·ΔT bei vollständiger Behinderung; Tunnel: Kesselformel ohne Biegung, γ_c = 1,5 (vorübergehend); ZTV-ING Teil 5 / Ril 853 nicht abgebildet.",
     ],
@@ -455,8 +459,10 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     ],
   },
   lca_regulatorik: {
-    kurz: "CRREM-Stranding-Jahr eines Büro- oder Wohngebäudes für vier Sanierungsstufen.",
+    kurz: "CRREM-Stranding-Jahr eines Büro- oder Wohngebäudes für vier Sanierungsstufen; CBAM-Kosten für Zementimporte im Jahrespfad 2026–2034.",
     grenzen: [
+      "CBAM: Anpassung an die kostenlose Zuteilung (CBAM-Faktor nach RL 2003/87/EG Art. 10a, Benchmark nach DVO (EU) 2025/2620), CSCF = 1; Herkunftspreis auf alle Emissionen angerechnet (vorläufig).",
+      "CBAM: ein Jahrespreis statt Quartals- bzw. Wochenpreisen; Standardwert-Aufschläge und Schwellenwert 50 t je Jahr nicht abgebildet; nur Zement und Klinker.",
       "Zielpfade als lineare Interpolation vereinfachter CRREM-Stützwerte, nicht die aktuellen länderspezifischen Pfade.",
       "Minderung je Sanierungsstufe pauschal (15, 35 oder 75 %), sofort wirksam und über die Zeit konstant.",
       "Kein Netzdekarbonisierungs-Effekt auf den Bestand.",

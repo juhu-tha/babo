@@ -35,11 +35,12 @@ const q2 = bemesseQuerkraft({ ...qB, h: 100, b: 40, asl: 30, vEd: 300, theta: 45
 pruefe('Q2 V_Rd,c', q2.vRd_c, 159.1995); pruefe('Q2 cot θ,max', q2.cot_theta_max, 3.0); pruefe('Q2 V_Rd,max', q2.vRd_max, 2180.25);
 
 // Stütze 40/40, d₁ = 5 cm, C30/37, l₀ = 4 m, N_Ed = 2000 kN, M_Ed = 100 kNm: µ_Ed = 0,1103, ν_Ed = −0,735;
-// eigene Dehnungsiteration (Spannungsblock) → ω_erf = 0,05 (bis 27.10. mit Zuschlag +0,002 auf µ_Rd: 0,04)
+// eigene Dehnungsiteration (Parabel-Rechteck seit S-2, 28.10.2026; Skript Streifenintegration: ω_exakt = 0,0665) → ω_erf = 0,07
+// (Spannungsblock bis 28.10.: 0,05; bis 27.10. mit Zuschlag +0,002 auf µ_Rd: 0,04); S2: ω_exakt = 0,254 → 0,26 (Block 0,24)
 const s1 = bemesseStuetze({ b: 40, h: 40, d1: 5, l0: 4, nEd: 2000, mEd: 100, fck: 30, fyk: 500 });
-pruefe('S1 µ_Ed', s1.mu_Ed, 0.11029); pruefe('S1 ν_Ed', s1.nu_Ed, -0.73529); pruefe('S1 ω_erf', s1.req_omega, 0.05, 1e-9); pruefe('S1 λ_lim', s1.lambda_lim, 25);
+pruefe('S1 µ_Ed', s1.mu_Ed, 0.11029); pruefe('S1 ν_Ed', s1.nu_Ed, -0.73529); pruefe('S1 ω_erf', s1.req_omega, 0.07, 1e-9); pruefe('S1 λ_lim', s1.lambda_lim, 25);
 const s2 = bemesseStuetze({ b: 40, h: 40, d1: 5, l0: 4, nEd: 3000, mEd: 0, fck: 30, fyk: 500 });
-pruefe('S2 ω_erf', s2.req_omega, 0.24, 1e-9); pruefe('S2 A_s,min', s2.as_min, 10.35);
+pruefe('S2 ω_erf', s2.req_omega, 0.26, 1e-9); pruefe('S2 A_s,min', s2.as_min, 10.35);
 
 // Durchstanzen Innenstütze rund c = 400 mm, d = 220 mm, ρ_l = 1 %, C30/37, β = 1,10
 const d1 = bemesseDurchstanzen({ form: 'rund', vEd: 800, d: 220, c: 400, cx: 0, cy: 0, fck: 30, rhoL: 0.01, beta: 1.1 });

@@ -1126,6 +1126,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
     ziele: [
       { stufe: "Verstehen", text: "die Ebenen des Rechtsrahmens von Green Deal und EU-Klimagesetz bis BauPVO, EPBD, ESPR und CBAM einordnen." },
       { stufe: "Anwenden", text: "mit dem CRREM-Simulator das Stranding-Jahr eines Büro- oder Wohngebäudes für verschiedene Sanierungsstufen bestimmen." },
+      { stufe: "Anwenden", text: "die CBAM-Kosten eines Zementimports für ein Einfuhrjahr zwischen 2026 und 2034 mit der Anpassung an die kostenlose Zuteilung berechnen." },
       { stufe: "Analysieren", text: "die Wirkung von Betriebsoptimierung, Hüllsanierung und Tiefensanierung auf den Dekarbonisierungspfad vergleichen." },
       { stufe: "Bewerten", text: "Praxisansätze wie Gebäudetyp E, Urban Mining, Lehmbau und Holz-Hybrid hinsichtlich ihres Beitrags zur Ressourcenschonung beurteilen." },
     ],

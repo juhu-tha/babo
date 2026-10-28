@@ -4,6 +4,8 @@ import { formatDeIntl } from '../utils/numberFormat';
  *  - maßgebende Hüllwerte mehrerer Expositionsklassen (DIN 1045-2, Tab. F.2.1/F.2.2; DIN EN 1992-1-1/NA, Tab. 4.4DE):
  *    kleinster (w/z)_eq, höchste Mindestdruckfestigkeitsklasse, größter Mindestzementgehalt, größter Mindestluftgehalt
  *    (je Größtkorn), größte c_min,dur (mindestens 10 mm) und c_nom = c_min,dur + Δc_dev
+ *  - Schalter XF2/XF3 mit/ohne LP (Runde 28.10., T3-EX-1): ohne LP gelten nach DIN 1045-2, Tab. F.2.1 (w/z)_eq ≤ 0,50,
+ *    C35/45 und z ≥ 320 kg/m³; XF4 ist nur als LP-Beton zulässig
  *  - k-Wert-Ansatz (DIN 1045-2, 5.2.5.2): Flugasche k_f = 0,4 mit f ≤ 0,33·z, Silikastaub k_s = 1,0 mit s ≤ 0,11·z;
  *    äquivalenter Bindemittelgehalt z_eq = z + k_f·f + k_s·s, (w/z)_eq = w/z_eq
  * Einheiten: Gehalte in kg/m³, Luftgehalt in Vol.-%, Deckung in mm. Die Klassendaten werden übergeben (Daten liegen im Modul).
@@ -27,6 +29,8 @@ export interface ExpositionsAnforderung {
   minAirContent?: { dmax32: number; dmax16: number; dmax8: number };
   requiresAirEntrainment?: boolean;
   minCoverDurMm: number | null;
+  /** Alternative ohne Luftporen (XF2, XF3 nach DIN 1045-2, Tab. F.2.1) */
+  ohneLp?: { maxWzEq: number; minStrengthClass: string; minCement: number };
 }
 
 export interface HuellwerteErgebnis {
@@ -43,11 +47,14 @@ export interface HuellwerteErgebnis {
 }
 
 /** Maßgebende Hüllwerte; null, wenn keine Klasse gewählt ist (wie im Modul). */
-export function huellwerte(alle: readonly ExpositionsAnforderung[], gewaehlt: readonly string[], dmax: Groesstkorn, deltaCdev: number): HuellwerteErgebnis | null {
+export function huellwerte(alle: readonly ExpositionsAnforderung[], gewaehlt: readonly string[], dmax: Groesstkorn, deltaCdev: number, xfOhneLp = false): HuellwerteErgebnis | null {
   if (gewaehlt.length === 0) return null;
   const hinweise: Hinweis[] = [];
   muss(hinweise, Number.isFinite(deltaCdev) && deltaCdev >= 0, 'deltaCdev', 'Δc_dev muss ≥ 0 mm sein.');
-  const matched = alle.filter(c => gewaehlt.includes(c.code));
+  // XF2/XF3 ohne LP: Alternativwerte statt LP-Variante (XF4 hat keine Alternative und bleibt LP-Beton)
+  const ohneLp = xfOhneLp && !gewaehlt.includes('XF4');
+  const matched = alle.filter(c => gewaehlt.includes(c.code)).map(c => (ohneLp && c.ohneLp)
+    ? { ...c, ...c.ohneLp, requiresAirEntrainment: false, minAirContent: undefined } : c);
   let minWzEq: number | null = null;
   for (const c of matched) if (c.maxWzEq !== null && (minWzEq === null || c.maxWzEq < minWzEq)) minWzEq = c.maxWzEq;
   let highestClass = 'C8/10', highestRank = 1;
@@ -76,6 +83,7 @@ export function huellwerte(alle: readonly ExpositionsAnforderung[], gewaehlt: re
   if (has('XM2')) specialReqs.push('XM2: Oberflächenbehandlung des Betons – sonst w/z ≤ 0,45 und C35/45.');
   if (has('XM3')) specialReqs.push('XM3: Hartstoffe nach DIN 1100.');
   if (has('XF4')) specialReqs.push('XF4: nur Luftporenbeton.');
+  if (xfOhneLp && (has('XF2') || has('XF3'))) specialReqs.push(has('XF4') ? 'XF2/XF3 ohne LP gewählt, wegen XF4 bleibt LP-Beton erforderlich.' : 'XF2/XF3 ohne LP: (w/z)_eq ≤ 0,50, C35/45, z ≥ 320 kg/m³ (DIN 1045-2, Tab. F.2.1).');
   if (has('XC1') && maxCoverDur <= 10) specialReqs.push('Nur XC1: Δc_dev darf auf 10 mm verringert werden.');
   if (matched.length < gewaehlt.length) hinweise.push({ stufe: 'warnung', feld: 'klassen', text: 'Mindestens eine gewählte Klasse ist in den Daten nicht vorhanden.' });
   return { minWzEq, highestClass, maxCement, requiresLP, minAirVal, maxCoverDur, cNom, specialReqs, gueltig: !hatFehler(hinweise), hinweise };

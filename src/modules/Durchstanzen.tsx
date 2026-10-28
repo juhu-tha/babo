@@ -5,7 +5,7 @@ import { Slider } from '@/src/components/ui/Slider';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import { EC2_NA_DE } from '@/src/data/normParams';
-import { bemesseDurchstanzen } from '@/src/calc/durchstanzen';
+import { bemesseDurchstanzen, betaNaDe } from '@/src/calc/durchstanzen';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -22,12 +22,15 @@ export default function Durchstanzen() {
   const [cy, setCy] = useState(400); // mm (Seitenlänge y)
   const [fck, setFck] = useState(30); // MPa
   const [rhoL, setRhoL] = useState(0.01); // Längsbewehrungsgrad
-  const [beta, setBeta] = useState(EC2_NA_DE.betaInnen); // 1.10 (Innenstütze nach NA DE)
+  const [lage, setLage] = useState<'innen' | 'rand' | 'ecke'>('innen');
+  const [aRand, setARand] = useState(0); // mm, Abstand Stützenaußenkante – freier Rand (Rand-/Eckstütze)
+  const beta = betaNaDe(lage); // NA DE 6.4.3(6): 1,10 / 1,40 / 1,50
 
   const results = useMemo(
-    () => bemesseDurchstanzen({ form: colType, vEd, d, c, cx, cy, fck, rhoL, beta, lage: beta === EC2_NA_DE.betaEcke ? 'ecke' : beta === EC2_NA_DE.betaRand ? 'rand' : 'innen' }),
-    [colType, vEd, d, c, cx, cy, fck, rhoL, beta]
+    () => bemesseDurchstanzen({ form: colType, vEd, d, c, cx, cy, fck, rhoL, lage, aRand: lage === 'innen' ? 0 : aRand }),
+    [colType, vEd, d, c, cx, cy, fck, rhoL, lage, aRand]
   );
+  const randnah = lage !== 'innen' && results.u1 < results.u1Voll - 1e-9;
 
   // Dimensions for SVG Diagram
   const svgSize = 250;
@@ -40,6 +43,17 @@ export default function Durchstanzen() {
   const scaledC = c * scale;
   const scaledCx = cx * scale;
   const scaledCy = cy * scale;
+  // Draufsicht Rand-/Eckstütze (Bild 6.15): freier Rand oben (Rand und Ecke) und links (Ecke); Randabstand zeichnerisch <= 2d
+  const halbX = colType === 'rund' ? scaledC / 2 : scaledCx / 2;
+  const halbY = colType === 'rund' ? scaledC / 2 : scaledCy / 2;
+  const aZeich = Math.min(aRand, 2 * d) * scale;
+  const randOben = center - halbY - aZeich;
+  const randLinks = center - halbX - aZeich;
+  const r1Zeich = colType === 'rund' ? scaledC / 2 + 2 * scaledD : 2 * scaledD;
+  const clipOben = lage === 'innen' ? -svgSize : colType === 'rund' ? center : center - halbY;
+  const clipLinks = lage === 'ecke' ? (colType === 'rund' ? center : center - halbX) : -svgSize;
+  const seiteX = colType === 'rund' ? center + r1Zeich : center + halbX + 2 * scaledD;
+  const seiteY = colType === 'rund' ? center + r1Zeich : center + halbY + 2 * scaledD;
 
   return (
     <div className="space-y-8">
@@ -136,14 +150,28 @@ export default function Durchstanzen() {
                 </div>
                 <select aria-label={inhalt.werte.stützenpositionLasterhöhungsfaktorNachNa} 
                   className="p-2 border border-home-grau rounded-md bg-white focus:outline-none focus:border-shiraz"
-                  value={beta}
-                  onChange={(e) => setBeta(Number(e.target.value))}
+                  value={lage}
+                  onChange={(e) => setLage(e.target.value as 'innen' | 'rand' | 'ecke')}
                 >
-                  <option value={EC2_NA_DE.betaInnen}>Innenstütze (β = {formatDeZahl(EC2_NA_DE.betaInnen, 2)})</option>
-                  <option value={EC2_NA_DE.betaRand}>Randstütze (β = {formatDeZahl(EC2_NA_DE.betaRand, 2)})</option>
-                  <option value={EC2_NA_DE.betaEcke}>Eckstütze (β = {formatDeZahl(EC2_NA_DE.betaEcke, 2)})</option>
+                  <option value="innen">Innenstütze (β = {formatDeZahl(EC2_NA_DE.betaInnen, 2)})</option>
+                  <option value="rand">Randstütze (β = {formatDeZahl(EC2_NA_DE.betaRand, 2)})</option>
+                  <option value="ecke">Eckstütze (β = {formatDeZahl(EC2_NA_DE.betaEcke, 2)})</option>
                 </select>
               </div>
+              {lage !== 'innen' && (
+                <div className="mt-4">
+                  <Slider
+                    label={inhalt.werte.randabstandStützeFreierRand}
+                    info={inhalt.werte.randabstandInfo}
+                    value={aRand}
+                    min={0}
+                    max={1000}
+                    step={10}
+                    onChange={(e) => setARand(Number(e.target.value))}
+                    unit="mm"
+                  />
+                </div>
+              )}
             </div>
 
             <div className="bg-off-white p-5 rounded-xl border border-home-grau/30">
@@ -228,10 +256,22 @@ export default function Durchstanzen() {
               schritte={[
                 {
                   titel: 'Rundschnitte',
-                  erklaerung: colType === 'rund'
+                  erklaerung: lage !== 'innen'
+                    ? `${lage === 'rand' ? inhalt.werte.rundschnittRandstütze : inhalt.werte.rundschnittEckstütze} ${randnah ? inhalt.werte.randnaherRundschnittMaßgebend : inhalt.werte.vollerRundschnittMaßgebend}`
+                    : colType === 'rund'
                     ? inhalt.werte.kreisförmigeStützeStützenumfangU
                     : inhalt.werte.rechteckstützeStützenumfangUDer,
-                  formel: colType === 'rund'
+                  formel: lage !== 'innen'
+                    ? (randnah
+                      ? (colType === 'rund'
+                        ? (lage === 'rand'
+                          ? `u_1 = \\pi \\cdot (\\tfrac{${formatDeTeX(c, 0)}}{2} + 2 \\cdot ${formatDeTeX(d, 0)}) + ${formatDeTeX(c, 0)} + 2 \\cdot ${formatDeTeX(aRand, 0)} = ${formatDeTeX(results.u1, 0)}\\,\\text{mm}`
+                          : `u_1 = \\tfrac{\\pi}{2} \\cdot (\\tfrac{${formatDeTeX(c, 0)}}{2} + 2 \\cdot ${formatDeTeX(d, 0)}) + ${formatDeTeX(c, 0)} + 2 \\cdot ${formatDeTeX(aRand, 0)} = ${formatDeTeX(results.u1, 0)}\\,\\text{mm}`)
+                        : (lage === 'rand'
+                          ? `u_1 = ${formatDeTeX(cx, 0)} + 2 \\cdot (${formatDeTeX(cy, 0)} + ${formatDeTeX(aRand, 0)}) + 2\\pi \\cdot ${formatDeTeX(d, 0)} = ${formatDeTeX(results.u1, 0)}\\,\\text{mm}`
+                          : `u_1 = ${formatDeTeX(cx, 0)} + ${formatDeTeX(cy, 0)} + 2 \\cdot ${formatDeTeX(aRand, 0)} + \\pi \\cdot ${formatDeTeX(d, 0)} = ${formatDeTeX(results.u1, 0)}\\,\\text{mm}`))
+                      : `u_{1,\\text{voll}} = ${formatDeTeX(results.u1Voll, 0)}\\,\\text{mm} \\le u_{1,\\text{Rand}}`) + `;\\quad u_0 = ${formatDeTeX(results.u0, 0)}\\,\\text{mm}`
+                    : colType === 'rund'
                     ? `u_0 = \\pi \\cdot ${formatDeTeX(c, 0)} = ${formatDeTeX(results.u0, 0)}\\,\\text{mm};\\quad u_1 = \\pi \\cdot (${formatDeTeX(c, 0)} + 4 \\cdot ${formatDeTeX(d, 0)}) = ${formatDeTeX(results.u1, 0)}\\,\\text{mm}`
                     : `u_0 = 2 \\cdot (${formatDeTeX(cx, 0)} + ${formatDeTeX(cy, 0)}) = ${formatDeTeX(results.u0, 0)}\\,\\text{mm};\\quad u_1 = u_0 + 4\\pi \\cdot ${formatDeTeX(d, 0)} = ${formatDeTeX(results.u1, 0)}\\,\\text{mm}`,
                 },
@@ -242,7 +282,7 @@ export default function Durchstanzen() {
                 },
                 {
                   titel: inhalt.werte.beiwerteFürDenBetonwiderstand,
-                  erklaerung: results.u0_d < 4 && beta !== EC2_NA_DE.betaRand && beta !== EC2_NA_DE.betaEcke
+                  erklaerung: results.u0_d < 4 && lage === 'innen'
                     ? `Wegen u₀/d = ${formatDeZahl(results.u0_d, 2)} < 4 wird C_Rd,c bei der Innenstütze nach NA (DE) abgemindert; ρ_l ist auf min(0,02; 0,5 · f_cd/f_yd) begrenzt.`
                     : results.u0_d < 4
                     ? `u₀/d = ${formatDeZahl(results.u0_d, 2)} < 4, die Abminderung von C_Rd,c gilt nach NA (DE) aber nur für Innenstützen: C_Rd,c = 0,18/γ_c; ρ_l ist auf min(0,02; 0,5 · f_cd/f_yd) begrenzt.`
@@ -281,10 +321,26 @@ export default function Durchstanzen() {
               <h3 className="font-semibold mb-4 text-text-main"><MdText text={inhalt.texte.schematischeDarstellungDraufsicht} /></h3>
               <div className="flex flex-col items-center bg-off-white rounded-lg border border-home-grau/30 p-4 relative overflow-hidden">
                 <svg width={svgSize} height={svgSize} viewBox={`0 0 ${svgSize} ${svgSize}`} className="overflow-visible">
+                  <defs>
+                    <clipPath id="durchstanzen-u1-clip">
+                      <rect x={clipLinks} y={clipOben} width={2 * svgSize} height={2 * svgSize} />
+                    </clipPath>
+                  </defs>
+                  {lage !== 'innen' && (
+                    <>
+                      <line x1={lage === 'ecke' ? randLinks : 0} y1={randOben} x2={svgSize} y2={randOben} stroke="#475569" strokeWidth="2" />
+                      {lage === 'ecke' && <line x1={randLinks} y1={randOben} x2={randLinks} y2={svgSize} stroke="#475569" strokeWidth="2" />}
+                      {/* Bild 6.15: Rundschnitt läuft senkrecht auf den freien Rand */}
+                      <line x1={seiteX} y1={clipOben} x2={seiteX} y2={randOben} stroke="#A3113E" strokeWidth="2" strokeDasharray="4 4" />
+                      {lage === 'rand' && <line x1={2 * center - seiteX} y1={clipOben} x2={2 * center - seiteX} y2={randOben} stroke="#A3113E" strokeWidth="2" strokeDasharray="4 4" />}
+                      {lage === 'ecke' && <line x1={clipLinks} y1={seiteY} x2={randLinks} y2={seiteY} stroke="#A3113E" strokeWidth="2" strokeDasharray="4 4" />}
+                      <text x={svgSize - 4} y={randOben - 4} fontSize="10" fill="#475569" textAnchor="end">freier Rand</text>
+                    </>
+                  )}
                   {colType === 'rund' ? (
                     <>
                       <circle cx={center} cy={center} r={scaledC / 2} fill="#64748b" />
-                      <circle cx={center} cy={center} r={scaledC / 2 + 2 * scaledD} fill="none" stroke="#A3113E" strokeWidth="2" strokeDasharray="4 4" />
+                      <circle cx={center} cy={center} r={scaledC / 2 + 2 * scaledD} fill="none" stroke="#A3113E" strokeWidth="2" strokeDasharray="4 4" clipPath="url(#durchstanzen-u1-clip)" />
                       <line x1={center + scaledC / 2} y1={center} x2={center + scaledC / 2 + 2 * scaledD} y2={center} stroke="#1e293b" strokeWidth="1.5" />
                       <line x1={center + scaledC / 2} y1={center - 4} x2={center + scaledC / 2} y2={center + 4} stroke="#1e293b" strokeWidth="1.5" />
                       <line x1={center + scaledC / 2 + 2 * scaledD} y1={center - 4} x2={center + scaledC / 2 + 2 * scaledD} y2={center + 4} stroke="#1e293b" strokeWidth="1.5" />
@@ -305,7 +361,7 @@ export default function Durchstanzen() {
                         L ${center - scaledCx / 2 - 2 * scaledD} ${center - scaledCy / 2}
                         A ${2 * scaledD} ${2 * scaledD} 0 0 1 ${center - scaledCx / 2} ${center - scaledCy / 2 - 2 * scaledD}
                         Z
-                      `} fill="none" stroke="#A3113E" strokeWidth="2" strokeDasharray="4 4" />
+                      `} fill="none" stroke="#A3113E" strokeWidth="2" strokeDasharray="4 4" clipPath="url(#durchstanzen-u1-clip)" />
                       
                       <line x1={center + scaledCx / 2} y1={center} x2={center + scaledCx / 2 + 2 * scaledD} y2={center} stroke="#1e293b" strokeWidth="1.5" />
                       <line x1={center + scaledCx / 2} y1={center - 4} x2={center + scaledCx / 2} y2={center + 4} stroke="#1e293b" strokeWidth="1.5" />
@@ -313,7 +369,7 @@ export default function Durchstanzen() {
                       <text x={center + scaledCx / 2 + scaledD} y={center - 6} fontSize="10" fill="#1e293b" fontWeight="bold" textAnchor="middle">2d</text>
                     </>
                   )}
-                  <text x={center} y={colType === 'rund' ? "15" : center - scaledCy / 2 - 2 * scaledD - 10} fontSize="12" fill="#A3113E" textAnchor="middle">Kritischer Rundschnitt u₁</text>
+                  <text x={center} y={lage !== 'innen' ? svgSize - 2 : colType === 'rund' ? "15" : center - scaledCy / 2 - 2 * scaledD - 10} fontSize="12" fill="#A3113E" textAnchor="middle">Kritischer Rundschnitt u₁</text>
                 </svg>
                 <div className="text-xs text-text-main/70 text-center mt-6 z-10 relative"><MdText text={inhalt.texte.derKritischeRundschnitt} /><FormulaText text="u_1" /><MdText text={inhalt.texte.liegtImAbstand} /><FormulaText text="2d" /><MdText text={inhalt.texte.vomStützenrandHierWird} /></div>
               </div>

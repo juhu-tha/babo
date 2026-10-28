@@ -28,7 +28,7 @@
     "gesetzlicheNachrüstUndSanierungspflichte": " Gesetzliche Nachrüst- und Sanierungspflichten nach GModG",
     "dasGebäudemodernisierungsgesetzGmodgBis": "Das Gebäudemodernisierungsgesetz (GModG, bis 28.07.2026 GEG) unterscheidet zwischen *unbedingten Nachrüstpflichten* (die Eigentümer unabhängig von Bauarbeiten erfüllen müssen) und *bedingten Sanierungspflichten* (die greifen, wenn mehr als 10 % eines Außenbauteils saniert oder erneuert werden – § 36 GModG).",
     "dämmungObersteGeschossdecke35": "Dämmung oberste Geschossdecke (§ 35 GModG)",
-    "begehbareSowieNichtBegehbare": "Begehbare sowie nicht begehbare oberste Geschossdecken, die beheizte Räume gegen einen unbeheizten Dachraum abgrenzen, müssen so gedämmt sein, dass der Wärmedurchgangskoeffizient den Grenzwert einhält.",
+    "begehbareSowieNichtBegehbare": "Begehbare sowie nicht begehbare oberste Geschossdecken, die beheizte Räume gegen einen unbeheizten Dachraum abgrenzen und nicht den Mindestwärmeschutz nach DIN 4108-2:2013-02 erfüllen, müssen so gedämmt sein, dass der Wärmedurchgangskoeffizient den Grenzwert einhält (§ 35 Abs. 1 GModG).",
     "grenzwert35GmodgU": "**Grenzwert (§ 35 GModG):** $U \\le 0{,}24 \\text{ W/(m}^2\\text{K)}$<br>Alternativ kann das darüberliegende Dach wärmetechnisch gleichwertig gedämmt werden.",
     "dämmungWärmeführenderLeitungen69": "Dämmung wärmeführender Leitungen (§ 69 GModG)",
     "ungedämmteZugänglicheHeizungsUnd": "Ungedämmte, zugängliche Heizungs- und Warmwasserrohrleitungen sowie Armaturen in unbeheizten Räumen (z. B. Keller) müssen nach Anlage 8 GModG gedämmt werden, um Verteilungsverluste zu minimieren.",
