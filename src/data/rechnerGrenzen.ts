@@ -239,7 +239,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     kurz: "Bemessungswert der Einwirkungen nach DIN EN 1990, Gl. 6.10, aus einer ständigen und zwei veränderlichen Einwirkungen.",
     grenzen: [
       "Nur Grundkombination Gl. 6.10 (ständige und vorübergehende Situation); keine Gl. 6.10a/b, keine außergewöhnliche oder Erdbebensituation.",
-      "Q_k,1 ist fest die Leiteinwirkung; welche Einwirkung maßgebend ist, muss durch Vertauschen selbst geprüft werden.",
+      "Zwei veränderliche Einwirkungen; beide Kombinationen (Q_k,1 bzw. Q_k,2 als Leiteinwirkung) werden gerechnet, das Maximum wird angezeigt.",
       "Eine ständige Einwirkung mit einem γ_G für alle Anteile; günstig wirkende Anteile mit γ_G,inf = 1,00 nur über die Auswahl.",
     ],
   },

@@ -154,7 +154,7 @@ export default function Baustoffkenngroessen() {
     } else if (preset === 'stahl') {
       setThermischLambda(50.0);
       setThermischRho(7850);
-      setThermischC(460);
+      setThermischC(450);
     } else if (preset === 'eps') {
       setThermischLambda(0.035);
       setThermischRho(30);

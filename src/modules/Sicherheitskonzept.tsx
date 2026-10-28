@@ -9,6 +9,8 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/sicherheitskonzept/Sicherheitskonzept.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { kombination610 } from '@/src/calc/sicherheitskonzept';
 
 const REITER = [
   { id: 'eurocodes', label: inhalt.texte.dieEurocodesÜbersicht, icon: Shield },
@@ -21,13 +23,17 @@ export default function Sicherheitskonzept() {
   const [gk, setGk] = useState(10);
   const [qk1, setQk1] = useState(5);
   const [qk2, setQk2] = useState(3);
-  const [psi0_1, setPsi0_1] = useState(0.7); // e.g. gathering areas
-  const [psi0_2, setPsi0_2] = useState(0.6); // e.g. wind
-  
+  const [psi0_1, setPsi0_1] = useState(0.7); // ψ₀ von Q_k,1 (z. B. Nutzlast Kat. A–D)
+  const [psi0_2, setPsi0_2] = useState(0.6); // ψ₀ von Q_k,2 (z. B. Wind)
+  const [getauscht, setGetauscht] = useState(false);
+
   const [gammaG, setGammaG] = useState(1.35);
   const [gammaQ, setGammaQ] = useState(1.50);
 
-  const ed = gammaG * gk + gammaQ * qk1 + gammaQ * psi0_2 * qk2;
+  const k = kombination610({ gk, qk1, qk2, psi01: psi0_1, psi02: psi0_2, gammaG, gammaQ, getauscht });
+  const ed = k.ed;
+  const leitIdx = getauscht ? 2 : 1, begleitIdx = getauscht ? 1 : 2;
+  const qLeit = getauscht ? qk2 : qk1, qBegleit = getauscht ? qk1 : qk2, psiBegleit = getauscht ? psi0_1 : psi0_2;
 
   return (
     <div className="flex flex-col gap-8">
@@ -246,6 +252,23 @@ export default function Sicherheitskonzept() {
                   </select>
                 </div>
               </div>
+              <div className="flex flex-col gap-2">
+                <label htmlFor="psi01" className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.beiwertFuerQk1} /></label>
+                <select id="psi01"
+                  className="p-2 border border-home-grau rounded-md bg-off-white text-sm focus:outline-none focus:border-shiraz"
+                  value={psi0_1}
+                  onChange={(e) => setPsi0_1(Number(e.target.value))}
+                >
+                  <option value={0.7}>0,7 (Nutzlast Kat. A–D; Schnee über NN + 1000 m)</option>
+                  <option value={0.6}>0,6 (Wind; Temperatur)</option>
+                  <option value={0.5}>0,5 (Schnee bis NN + 1000 m)</option>
+                  <option value={1.0}>1,0 (Nutzlast Kat. E – Lagerflächen)</option>
+                </select>
+              </div>
+              <label className="flex items-center gap-2 text-sm text-text-main cursor-pointer">
+                <input type="checkbox" className="accent-shiraz w-4 h-4" checked={getauscht} onChange={(e) => setGetauscht(e.target.checked)} />
+                <MdText text={inhalt.texte.leiteinwirkungTauschen} />
+              </label>
             </div>
 
             <div className="bg-off-white border border-home-grau/50 rounded-xl p-6">
@@ -258,19 +281,24 @@ export default function Sicherheitskonzept() {
                   <span>{formatDeZahl((gammaG * gk), 2)} kN</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-text-main/70">Leit-Einw: <FormulaText text={`\\gamma_Q \\cdot Q_{k,1} = ${formatDeTeX(gammaQ, 2)} \\cdot ${formatDeTeXWert(qk1)}`} /></span>
-                  <span>{formatDeZahl((gammaQ * qk1), 2)} kN</span>
+                  <span className="text-text-main/70">Leit-Einw: <FormulaText text={`\\gamma_Q \\cdot Q_{k,${leitIdx}} = ${formatDeTeX(gammaQ, 2)} \\cdot ${formatDeTeXWert(qLeit)}`} /></span>
+                  <span>{formatDeZahl(k.leit, 2)} kN</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-text-main/70">Weitere: <FormulaText text={`\\gamma_Q \\cdot \\psi_0 \\cdot Q_{k,2} = ${formatDeTeX(gammaQ, 2)} \\cdot ${formatDeTeXWert(psi0_2)} \\cdot ${formatDeTeXWert(qk2)}`} /></span>
-                  <span>{formatDeZahl((gammaQ * psi0_2 * qk2), 2)} kN</span>
+                  <span className="text-text-main/70">Weitere: <FormulaText text={`\\gamma_Q \\cdot \\psi_{0,${begleitIdx}} \\cdot Q_{k,${begleitIdx}} = ${formatDeTeX(gammaQ, 2)} \\cdot ${formatDeTeXWert(psiBegleit)} \\cdot ${formatDeTeXWert(qBegleit)}`} /></span>
+                  <span>{formatDeZahl(k.begleit, 2)} kN</span>
                 </div>
                 <hr className="border-home-grau/50" />
                 <div className="flex justify-between text-shiraz font-bold text-lg pt-2">
                   <span><FormulaText text="E_d" /> =</span>
                   <span>{formatDeZahl(ed, 2)} kN</span>
                 </div>
+                <div className="flex justify-between text-text-main/80 text-xs pt-1">
+                  <span><MdText text={inhalt.texte.maximumBeiderKombinationen} /><FormulaText text={`Q_{k,${k.massgebend}}`} />)</span>
+                  <span className="font-bold">{formatDeZahl(k.edMax, 2)} kN</span>
+                </div>
               </div>
+              <div className="mt-3"><EingabeHinweise hinweise={k.hinweise} /></div>
               
               <div className="mt-6 bg-white p-3 rounded-lg border border-home-grau/25">
                 <div className="text-[10px] text-text-main/70 mb-1"><MdText text={inhalt.texte.gleichung610} /></div>

@@ -22,7 +22,7 @@
     "eineHolzweichfaserwandMitMasse": "Eine Holzweichfaserwand mit Masse $m = 500 \\text{ kg}$ ($c = 2100 \\text{ J/(kg·K)} = 2{,}1 \\text{ kJ/(kg·K)}$) erwärmt sich um $\\Delta T = 10 \\text{ K}$.",
     "spezifischeWärmekapazitätC": "Spezifische Wärmekapazität (c)",
     "jKgK": " J / (kg · K)",
-    "stahlC480": "Stahl (c=480)",
+    "stahlC480": "Stahl (c=450)",
     "betonZiegelC1000": "Beton/Ziegel (c=1000)",
     "holzC1600": "Holz (c=1600)",
     "strohDämmungC2100": "Stroh/Dämmung (c=2100)",
