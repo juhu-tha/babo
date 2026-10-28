@@ -1,5 +1,6 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
+import { daemmBerater } from '@/src/calc/bauprodukte';
 import { 
   Calculator, 
   Info, 
@@ -82,41 +83,19 @@ export function DaemmungBerater() {
   const existing = useMemo(() => EXISTING_LAYERS.find(e => e.id === selectedExisting)!, [selectedExisting]);
   const material = useMemo(() => MATERIALS.find(m => m.name === selectedMaterial)!, [selectedMaterial]);
 
-  // Calculations
+  // Rechenkern src/calc/bauprodukte.ts: U nach DIN EN ISO 6946, Einsparung ΔU · 84 kKh/a (≈ 3 500 Kd), CO₂ 0,22 kg/kWh (Lehrwerte)
   const r_existing = existing.r_value;
-  const r_insulation = useMemo(() => {
-    const thicknessM = thickness / 100;
-    return thicknessM / material.lambda;
-  }, [thickness, material.lambda]);
-
-  const r_total = r_existing + r_insulation + app.r_si + app.r_se;
-  const u_value = 1 / r_total;
-
-  const u_existing = useMemo(() => {
-    const total_r_old = r_existing + app.r_si + app.r_se;
-    return total_r_old > 0 ? 1 / total_r_old : 10;
-  }, [r_existing, app]);
-
-  const meetsGeg = u_value <= app.gegTarget;
-
-  // Real physical approximate calculations:
-  // Heating degree hours index in Germany approx: 66.000 degree hours (matching heating energy demand delta)
-  const energySavingsKwh = useMemo(() => {
-    if (existing.id === 'none') return 0;
-    const u_delta = u_existing - u_value;
-    if (u_delta <= 0) return 0;
-    // Standard Formula: Saved energy kWh/m²a ≈ ΔU * 80 kWh/a (climate zone Germany average)
-    return Math.round(u_delta * 84 * 100) / 100;
-  }, [u_existing, u_value, existing]);
-
-  const co2SavingsKg = useMemo(() => {
-    // Average 0.22 kg CO2 per kWh heating energy (Gas / Oil average)
-    return Math.round(energySavingsKwh * 0.22 * 100) / 100;
-  }, [energySavingsKwh]);
+  const berechnung = useMemo(() => daemmBerater({ rBestand: r_existing, dickeCm: thickness, lambda: material.lambda, rsi: app.r_si, rse: app.r_se, uZiel: app.gegTarget, ohneBestand: existing.id === 'none' }),
+    [r_existing, thickness, material.lambda, app, existing.id]);
+  const u_value = berechnung.uNeu;
+  const u_existing = berechnung.uAlt;
+  const meetsGeg = berechnung.erfuellt;
+  const energySavingsKwh = berechnung.einsparung;
+  const co2SavingsKg = berechnung.co2;
 
   // Dynamic hygrothermal behavior assessment (Bauphysikalische Risikoanalyse)
   const hydroThermalAssessment = useMemo(() => {
-    if (selectedApp === 'basement_ceiling' && material.vaporResistance > 100) {
+    if (selectedApp === 'basement_ceiling' && material.vaporResistance >= 100) {
       return {
         class: 'warning',
         title: 'Erhöhter Feuchtestau bei Holzbalkendecken möglich',
@@ -128,7 +107,7 @@ export function DaemmungBerater() {
       return {
         class: 'danger',
         title: 'Risiko durch kapillaren Feuchteeintrag',
-        text: 'Für erdberührte Perimeterdämmung sind ausschließlich absolut wasserbeständige, verrottungsfeste Materialien mit bauaufsichtlicher Zulassung (XPS oder Schaumglas) zulässig. Faserdämmstoffe nehmen Feuchtigkeit auf und verlieren sämtliche Dämmkraft.',
+        text: 'Für erdberührte Perimeterdämmung sind nur wasserbeständige, verrottungsfeste Dämmstoffe mit Verwendbarkeitsnachweis zulässig, z. B. XPS oder Schaumglas; EPS nur als Perimeterdämmplatte mit Bauartgenehmigung und meist nur bei Bodenfeuchte (W1-E). Faserdämmstoffe nehmen Feuchtigkeit auf und verlieren einen Großteil ihrer Dämmwirkung.',
         icon: AlertTriangle
       };
     }
@@ -156,14 +135,8 @@ export function DaemmungBerater() {
     };
   }, [selectedApp, material]);
 
-  // Recommended minimum thickness to hit GEG automatically
-  const recThickness = useMemo(() => {
-    const targetR = 1 / app.gegTarget;
-    const reqR_ins = targetR - r_existing - app.r_si - app.r_se;
-    if (reqR_ins <= 0) return 2;
-    const reqThicknessCm = reqR_ins * material.lambda * 100;
-    return Math.max(2, Math.ceil(reqThicknessCm));
-  }, [app, r_existing, material]);
+  // Mindestdicke für den Höchstwert nach Anlage 7 GModG (vormals GEG)
+  const recThickness = berechnung.empfDickeCm;
 
   return (
     <div className="flex flex-col gap-6 animate-in fade-in duration-300">
@@ -377,7 +350,7 @@ export function DaemmungBerater() {
 
             <div className="flex justify-between items-center text-[10px] text-slate-400 font-mono font-bold">
               <span>R_si: {formatDeZahl(app.r_si, 2)} m²K/W (Innen)</span>
-              <span>Dämmwiderstand R: {formatDeZahl(r_insulation, 3)} m²K/W</span>
+              <span>Dämmwiderstand R: {formatDeZahl(berechnung.rDaemm, 3)} m²K/W</span>
               <span>R_se: {formatDeZahl(app.r_se, 2)} m²K/W (Außen)</span>
             </div>
           </div>
@@ -491,7 +464,7 @@ export function DaemmungBerater() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-xs text-slate-700">
               <div className="flex justify-between border-b border-dashed border-slate-200 py-1 font-normal">
                 <span>Wärmedurchgangswiderstand R_T:</span>
-                <span className="font-mono font-bold text-slate-800">{formatDeZahl(r_total, 3)} m²K/W</span>
+                <span className="font-mono font-bold text-slate-800">{formatDeZahl(1 / u_value, 3)} m²K/W</span>
               </div>
               <div className="flex justify-between border-b border-dashed border-slate-200 py-1 font-normal">
                 <span>Dampfdiffusions-Äquivalent d_s:</span>

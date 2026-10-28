@@ -1,4 +1,5 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { fugenbandPruefung } from '@/src/calc/bauprodukte';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -516,45 +517,18 @@ export default function BpAbdichtung() {
               {/* Fugenband Analysis calculations */}
               {(() => {
                 // Erforderliche Breite determinieren nach DIN 18197 / DIN 18533
-                let reqWidth = 200; // in mm
-                let bandDesignation = '';
-                
-                if (fbJointType === 'arbeitsfuge') {
-                  if (fbWaterPressure <= 5) {
-                    reqWidth = 200;
-                    bandDesignation = inhalt.werte.a200BitumenkompatibelPvc;
-                  } else if (fbWaterPressure <= 12) {
-                    reqWidth = 240;
-                    bandDesignation = inhalt.werte.a240PvcP;
-                  } else {
-                    reqWidth = 320;
-                    bandDesignation = inhalt.werte.a320PvcP;
-                  }
-                } else {
-                  // Dehnungsfuge
-                  if (fbWaterPressure <= 3) {
-                    reqWidth = 240;
-                    bandDesignation = inhalt.werte.d240PvcP;
-                  } else if (fbWaterPressure <= 8) {
-                    reqWidth = 320;
-                    bandDesignation = inhalt.werte.d320StandardPvc;
-                  } else {
-                    reqWidth = 400;
-                    bandDesignation = inhalt.werte.fm400HochelastomerDehnfugenband;
-                  }
-                }
-
-                // Check 1: Bauteildicke im Vergleich zur Bandbreite
-                // Faustregel nach DIN 18197: Bandbreite (a) darf nicht größer sein als die Bauteildicke (d).
-                // d (in cm) * 10 (in mm) >= reqWidth
-                const isThicknessOk = (fbSlabThickness * 10) >= reqWidth;
-
-                // Check 2: Betonüberdeckung & Größtkorn
-                // Einbetonierungstiefe min. b_anker >= 3 * D_max
-                const minCoverFromGK = (fbMaxAggregate * 3) / 10; // in cm
-                // Der raue Abstand des Bandes vom Bauteilrand sollte min. reqWidth/2 betragen
-                const actualCoverEdge = (fbSlabThickness - (reqWidth / 20)) / 2;
-                const isGkCoverOk = actualCoverEdge >= minCoverFromGK;
+                // Rechenkern src/calc/bauprodukte.ts: Bandbreite je Wasserdruck und 3 · Größtkorn sind Lehrannahmen;
+                // DIN 18197 bemisst über Diagramme aus Wasserdruck und Fugenverformung. Regel d ≥ a für innenliegende Bänder.
+                const fb = fugenbandPruefung(fbJointType, fbWaterPressure, fbSlabThickness, fbMaxAggregate);
+                const reqWidth = fb.breite;
+                const bandDesignation = {
+                  A200: inhalt.werte.a200BitumenkompatibelPvc, A240: inhalt.werte.a240PvcP, A320: inhalt.werte.a320PvcP,
+                  D240: inhalt.werte.d240PvcP, D320: inhalt.werte.d320StandardPvc, FM400: inhalt.werte.fm400HochelastomerDehnfugenband,
+                }[fb.typ];
+                const isThicknessOk = fb.dickeOk;
+                const minCoverFromGK = fb.minRandCm;
+                const actualCoverEdge = fb.randCm;
+                const isGkCoverOk = fb.randOk;
 
                 return (
                   <div className="bg-white p-4 border border-zinc-200 rounded-lg space-y-3 text-xs">

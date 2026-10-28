@@ -252,7 +252,7 @@ Die drei Beispiele des Moduls (Flachstahl 254,0 kN; IPE 300 S235 147,7/130,9 kNm
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (28.10.2026)
 
 ## 8. Asphalt (`asphalt`)
 
@@ -362,3 +362,7 @@ Die Beispiele (366 kg/m² für 57 dB, +9,3 dB je Masseverdopplung) und die Anfor
 
 - Unabhängige Nachrechnung: eigenes Skript (Python) mit eigener Umsetzung der Norm- und Modellgleichungen, Vergleich gegen die Kernausgaben und Tabellendaten (83 Vergleiche im Test); die Inline-Rechnungen (Heißbemessung Holz, Mauerwerksreiter) wurden über die Formeln abgeglichen. Die Sollwerte sind als `tests/modulpruefungTranche3.test.ts` übernommen.
 - Öffentliche Quellen dieser Prüfung: [DIN Media, DIN 4108-2:2026-05](https://www.dinmedia.de/en/standard/din-4108-2/401017482); [DIN, Inhaltsverzeichnis DIN 4108-2:2026-05](https://www.din.de/de/mitwirken/normenausschuesse/nabau/veroeffentlichungen/wdc-beuth:din21:401017482/toc-3688761/download); [DIN, Inhaltsverzeichnis DIN 4108-2:2013-02](https://www.din.de/de/mitwirken/normenausschuesse/nabau/veroeffentlichungen/wdc-beuth:din21:167922321/toc-1929159/download); [Glinicki 2004 (Luftgehalt, EN 206)](https://yadda.icm.edu.pl/baztech/element/bwmeta1.element.baztech-article-BTB2-0059-0196/c/Glinicki_Wlasciwe_2_2004.pdf); [umwelt-online, DIN EN 206-1](https://umwelt-online.de/recht/bau/din/206_1e.htm); [Kasal, ČVUT 2020 (gewogene Reife)](https://concrete.fsv.cvut.cz/phdworkshop/proceedings/2020/pdf/Kasal_Pavel.pdf); [Giatec, Maturity Methods](https://www.giatecscientific.com/?p=26197); [Eurocode Applied, Stahlkennwerte EN 1993-1-1](https://cdn.eurocodeapplied.com/design/en1993/steel-design-properties); [Handwerksblatt, AGW Bitumen ab 2027](https://www.handwerksblatt.de/betriebsfuehrung/temperaturabgesenkter-asphalt-wird-2027-pflicht); [ARS 08/2026](https://www.ingenieurkammer.de/fileadmin/dokumente/News/PDF-Dateien/2026_06_05_Einf_ARS_2026_08-ZTV_Asphalt_T1.pdf); [FGSV, TL/ZTV Asphalt-StB 26](https://www.fgsv.de/fileadmin/PRESSE/Pressemitteilungen/2026-04-23_TL_ZTV_Asphalt_StB_26.pdf); [Acta Technica Napocensis 2014 (EC2-1-2 Balken)](https://oldconstructii.utcluj.ro/ActaCivilEng/download/atn/ATN2014(2)_4.pdf).
+
+## Freigabe 28.10.2026
+
+Freigegeben (Empfehlung „freigabefähig“, keine offenen Fragen; Prüfvermerk in `src/data/pruefvermerke.ts` „geprueft“, am 2026-10-28, passiv ohne Namen): `stahlbau_ec3` (Nr. 7). Alle übrigen Prüfeinheiten dieser Tranche sind erst nach Korrektur bzw. Klärung freigabefähig.

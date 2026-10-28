@@ -392,25 +392,25 @@ export default function BetonAZ() {
                     <td className="py-1 font-bold">XC2 / XC3</td>
                     <td className="py-1 text-slate-500"><MdText text={inhalt.texte.nassMäßigFeucht} /></td>
                     <td className="py-1 font-mono">20 mm</td>
-                    <td className="py-1 font-mono">30 mm</td>
+                    <td className="py-1 font-mono">35 mm</td>
                   </tr>
                   <tr>
                     <td className="py-1 font-bold">XC4</td>
                     <td className="py-1 text-slate-600"><MdText text={inhalt.texte.direktBeregnetAußenwände} /></td>
                     <td className="py-1 font-mono">25 mm</td>
-                    <td className="py-1 font-mono">35 mm</td>
+                    <td className="py-1 font-mono">40 mm</td>
                   </tr>
                   <tr>
                     <td className="py-1 font-bold">XD1</td>
                     <td className="py-1 text-slate-500"><MdText text={inhalt.texte.mäßigFeuchtSprühkanal} /></td>
-                    <td className="py-1 font-mono">35 mm</td>
-                    <td className="py-1 font-mono">45 mm</td>
+                    <td className="py-1 font-mono">40 mm</td>
+                    <td className="py-1 font-mono">55 mm</td>
                   </tr>
                   <tr>
                     <td className="py-1 font-bold">XD3</td>
                     <td className="py-1 text-slate-500"><MdText text={inhalt.texte.wechselndNassParkdecks} /></td>
                     <td className="py-1 font-mono">40 mm</td>
-                    <td className="py-1 font-mono">50 mm</td>
+                    <td className="py-1 font-mono">55 mm</td>
                   </tr>
                 </tbody>
               </table>

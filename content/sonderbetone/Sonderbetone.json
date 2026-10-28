@@ -150,7 +150,7 @@
         "title": "DIN EN 14487-1 / -2 (Spritzbeton - Teil 1: Begriffe, Festlegungen und Konformität; Teil 2: Ausführung)"
       },
       {
-        "title": "DIN 18551 (Spritzbeton; Herstellung und Güteüberwachung)"
+        "title": "DIN 18551:2014-08 (Spritzbeton – Nationale Anwendungsregeln zur Reihe DIN EN 14487 und Regeln für die Bemessung von Spritzbetonkonstruktionen; Entwurf der Neuausgabe 2026-05)"
       },
       {
         "title": "DIN 18314 (VOB/C: Spritzbetonarbeiten)"
@@ -186,7 +186,7 @@
         "title": "DIN EN 12620 (Gesteinskörnungen für Beton - Anforderungen an eng gestufte Korngruppen)"
       },
       {
-        "title": "DAfStb-Richtlinie Stahlfaserbeton (2012-11; Leistungsklassen L0,9/0,6 bis L3,0/2,4)"
+        "title": "DAfStb-Richtlinie Stahlfaserbeton (2021-06, ersetzt 2012-11; Leistungsklassen L0,9/0,6 bis L3,0/2,4)"
       },
       {
         "title": "DIN EN 14889-1 (Fasern für Beton - Teil 1: Stahlfasern)"
@@ -328,8 +328,8 @@
       },
       {
         "formel": "E_{\\text{cm,RC}} = E_{\\text{cm}} \\cdot \\left( 1 - \\alpha_{\\text{RC}} \\cdot \\frac{\\text{RC\\%}}{100} \\right)",
-        "erklaerung": "Abminderung des statischen E-Moduls infolge des geringeren E-Moduls der Altmörtel- und Ziegelphasen (α_RC ≈ 0.25 bis 0.40 je nach Typ 1 oder 2).",
-        "quelle": "DAfStb Heft 600"
+        "erklaerung": "Abminderung des statischen E-Moduls infolge des geringeren E-Moduls der Altmörtel- und Ziegelphasen (α_RC ≈ 0,25 bis 0,40 je nach Typ 1 oder 2; Lehrmodell, vorläufig, F-Freigabe).",
+        "quelle": "Lehrmodell (Näherung; Quelle zu belegen)"
       },
       {
         "formel": "f_{ck} \\ge 150\\,\\text{N/mm}^2 \\quad (f_{cm} > 165 - 200\\,\\text{N/mm}^2)",
@@ -387,7 +387,7 @@
         "quelle": "DIN EN 12350-8"
       },
       {
-        "formel": "t_{500} \\le 2\\,\\text{s} \\quad (\\text{Viskosität VS1}) \\quad \\text{bzw.} \\quad t_{500} > 2\\,\\text{s} \\quad (\\text{Viskosität VS2})",
+        "formel": "t_{500} < 2\\,\\text{s} \\quad (\\text{Viskosität VS1}) \\quad \\text{bzw.} \\quad t_{500} \\ge 2\\,\\text{s} \\quad (\\text{Viskosität VS2})",
         "erklaerung": "Zeitdauer bis zum Erreichen eines Fließkreisdurchmessers von 500 mm zur Beurteilung der plastischen Viskosität.",
         "quelle": "DIN EN 206"
       },
@@ -412,8 +412,8 @@
         "quelle": "DAfStb Heft 555"
       },
       {
-        "formel": "\\Delta p = \\frac{2 \\cdot \\tau_0 \\cdot L}{R} + \\frac{4 \\cdot \\mu \\cdot Q \\cdot L}{\\pi \\cdot R^4}",
-        "erklaerung": "Druckverlust Δp bei der Rohrströmung (Bingham-Fluid / Buckingham-Reiner-Beziehung) über Rohrlänge L, Innenradius R, Fließgrenze τ_0 und plastische Viskosität μ.",
+        "formel": "\\Delta p = \\frac{2 \\cdot \\tau_0 \\cdot L}{R} + \\frac{8 \\cdot \\mu \\cdot Q \\cdot L}{\\pi \\cdot R^4}",
+        "erklaerung": "Druckverlust Δp bei der Rohrströmung (Bingham-Fluid / Buckingham-Reiner-Beziehung) über Rohrlänge L, Innenradius R, Fließgrenze τ_0 und plastische Viskosität μ (Viskositätsanteil nach Hagen-Poiseuille mit Faktor 8; Lehrmodell, Gleitschicht vernachlässigt).",
         "quelle": "Kaplan et al. (2005)"
       },
       {

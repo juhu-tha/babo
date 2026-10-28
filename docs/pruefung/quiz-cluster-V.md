@@ -44,7 +44,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 31 korrigiert, 0 fraglich, 0
 
 - **Frage:** Welche zentrale Aufgabe erfüllt der Digitale Produktpass (DPP) im Lebenszyklus von Bauprodukten?
 - **Richtige Antwort:** Er liefert maschinenlesbare Daten zu Material, Rezyklat und Schadstoffen
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Optionen in der Länge angeglichen, Absolutwort „ausschließlich“ entfernt, Rückmeldungen ergänzt korrigiert (Freigabe vom 28.09.2026 damit aufgehoben).
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Optionen in der Länge angeglichen, Absolutwort „ausschließlich“ entfernt, Rückmeldungen ergänzt korrigiert (Freigabe vom 28.09.2026 damit aufgehoben). · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Optionen in der Länge angeglichen, „ausschließlich“ entfernt, Rückmeldungen ergänzt; bisherige Freigabe aufgehoben, korrigiert
 
@@ -124,7 +124,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 31 korrigiert, 0 fraglich, 0
 
 - **Frage:** Wofür wird der E-Schein (erweiterte betontechnologische Kenntnisse) nach DIN 1045-3 benötigt?
 - **Richtige Antwort:** Leitung der ständigen Betonprüfstelle für Beton der ÜK 2
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: ÜK 2 und 3 → ÜK 2 (DIN 1045-3:2023-08 kennt nur noch ÜK 1 und ÜK 2), normRef mit Ausgabe korrigiert. · Normenabgleich: DIN 1045-3:2023: DIN Media nennt DIN 1045-3:2023-08 → Ausgabe bestätigt
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: ÜK 2 und 3 → ÜK 2 (DIN 1045-3:2023-08 kennt nur noch ÜK 1 und ÜK 2), normRef mit Ausgabe korrigiert. · Normenabgleich: DIN 1045-3:2023: DIN Media nennt DIN 1045-3:2023-08 → Ausgabe bestätigt · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: „ÜK 2 und 3“ → „ÜK 2“ (DIN 1045-3:2023), normRef mit Ausgabe, korrigiert
 
@@ -156,7 +156,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 31 korrigiert, 0 fraglich, 0
 
 - **Frage:** Erstherstellung C30/37, drei Würfel: 41, 39, 43 N/mm². Sind die Konformitätskriterien erfüllt?
 - **Richtige Antwort:** Ja: f_cm = 41 ≥ 37 + 4 und f_ci,min = 39 ≥ 37 − 4
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Rückmeldung zu Option 2: f_ck + 8 als Mittelwertbeziehung nach DIN EN 1992-1-1 statt als „Vorhaltemaß“ erklärt korrigiert.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Rückmeldung zu Option 2: f_ck + 8 als Mittelwertbeziehung nach DIN EN 1992-1-1 statt als „Vorhaltemaß“ erklärt korrigiert. · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Rückmeldung zu f_ck + 8 (Mittelwertbeziehung DIN EN 1992-1-1, kein Vorhaltemaß), korrigiert
 
@@ -228,7 +228,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 31 korrigiert, 0 fraglich, 0
 
 - **Frage:** Welche Zuordnung von Anlass und Instrument nach VOB/B ist richtig?
 - **Richtige Antwort:** Fehlende Vorleistung: Behinderungsanzeige (§ 6 Abs. 1); mangelhafte Vorgabe: Bedenkenanmeldung (§ 4 Abs. 3)
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen Zweitprüfung 27.10.: Rückmeldung zu Option 3 (Mängelrüge § 13 Abs. 5 durch den Auftraggeber) korrigiert.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen Zweitprüfung 27.10.: Rückmeldung zu Option 3 (Mängelrüge § 13 Abs. 5 durch den Auftraggeber) korrigiert. · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Rückmeldung zur Mängelrüge (§ 13 Abs. 5, Auftraggeber) richtiggestellt, korrigiert
 
@@ -244,7 +244,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 31 korrigiert, 0 fraglich, 0
 
 - **Frage:** Für welches Tätigkeitsfeld ist nach dem Modul der SIVV-Schein die maßgebende Zusatzqualifikation?
 - **Richtige Antwort:** Führungspersonal bei Schutz und Instandsetzung von Beton, z. B. Parkhäuser
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Überwachungsklasse 3 entfallen (DIN 1045-3:2023-08) – korrigiert.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Überwachungsklasse 3 entfallen (DIN 1045-3:2023-08) – korrigiert. · bereits freigegeben (verified)
 - [ ] ok
 - [ ] ändern: …
 

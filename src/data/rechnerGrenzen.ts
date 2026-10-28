@@ -237,6 +237,30 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Es wird keine Stichprobe aus Einzelwerten geprüft, nur Grenzwerte angezeigt.",
     ],
   },
+  // Modulprüfung Tranche 4 (28.10.2026): Module, die rechnen, aber nicht als Rechner einsortiert sind
+  sicherheitskonzept: {
+    kurz: "Bemessungswert der Einwirkungen nach DIN EN 1990, Gl. 6.10, aus einer ständigen und zwei veränderlichen Einwirkungen.",
+    grenzen: [
+      "Nur Grundkombination Gl. 6.10 (ständige und vorübergehende Situation); keine Gl. 6.10a/b, keine außergewöhnliche oder Erdbebensituation.",
+      "Q_k,1 ist fest die Leiteinwirkung; welche Einwirkung maßgebend ist, muss durch Vertauschen selbst geprüft werden.",
+      "Eine ständige Einwirkung mit einem γ_G für alle Anteile; günstig wirkende Anteile mit γ_G,inf = 1,00 nur über die Auswahl.",
+    ],
+  },
+  probenahme: {
+    kurz: "Bohrmehlmenge je Tiefenstufe, Größtkorn- und Schlankheitsprüfung von Bohrkernen sowie Korrektur und Lehrschätzung des Rückprallwerts.",
+    grenzen: [
+      "Bohrmehl mit fester Rohdichte 2,2 g/cm³ und Richtwert 5 g je Stufe; die Mindestmenge legt das Prüflabor fest.",
+      "Bohrkern: Faktoren nach ASTM C42 nur für 1 ≤ h/d ≤ 2; keine Bewertung der In-situ-Festigkeit nach DIN EN 13791.",
+      "Rückprall: Richtungskorrektur Original Schmidt Typ N, Karbonatisierungsfaktor und Lehrkurve 0,0125·R^2,22 sind Lehransätze ohne Kalibrierkerne.",
+    ],
+  },
+  analytik: {
+    kurz: "Lehrsimulatoren für die Massenstufen der Thermogravimetrie und den Porenradius der Quecksilberdruckporosimetrie (Washburn).",
+    grenzen: [
+      "TGA: feste Massenanteile einer Lehrprobe mit linearen Stufen; keine Heizrate, keine Überlappung der Zersetzungsbereiche.",
+      "MIP: Zylinderporenmodell mit γ = 0,485 N/m und θ = 140°; erfasst werden Porenzugänge, nicht die Porenkörper (Flaschenhals-Effekt).",
+    ],
+  },
   erdbau: {
     kurz: "Grobe Zuordnung zu Bodengruppe und Frostempfindlichkeitsklasse sowie Mindestdicke des frostsicheren Oberbaus nach vereinfachtem RStO-Schema.",
     grenzen: [
@@ -342,7 +366,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   holzbau_bauphysik: {
     kurz: "Brand mit reduziertem Querschnitt; Eigenfrequenz f₁ und Durchbiegung unter 1 kN einer Brettsperrholzdecke als Einfeldträger.",
     grenzen: [
-      "Brand: feste Abbrandraten, nur Restquerschnitt und Widerstandsmoment, keine Tragfähigkeit.",
+      "Brand: feste Abbrandraten nach DIN EN 1995-1-2:2010-12 (Neuausgabe 2026-10 nicht berücksichtigt), nur Restquerschnitt und Widerstandsmoment, keine Tragfähigkeit.",
       "Schwingung: zweiseitig gelenkig gelagerter Einfeldstreifen; Biegesteifigkeit nur aus den Längslagen, netto oder nach dem γ-Verfahren (DIN EN 1995-1-1 Anhang B, nur symmetrisch 3- und 5-lagig).",
       "Bei 7 und mehr Lagen wird die Netto-Biegesteifigkeit angesetzt; das Schubanalogieverfahren ist nicht umgesetzt.",
       "Kennwerte E_0,mean = 11 550 N/mm², G_r,mean = 65 N/mm² und Wichte 5,5 kN/m³ nach proHolz Austria (Band II, 2018) statt Werten aus der ETA des Herstellers.",
@@ -380,7 +404,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     grenzen: [
       "Ideal-elastischer Stab ohne Fließen und ohne Knicklinien (keine χ-Abminderung).",
       "Vorkrümmung w₀ = l/300 pauschal.",
-      "Biegelinie im Diagramm qualitativ.",
+      "Biegelinie im Diagramm: erste Eigenform des gewählten Euler-Falls, skaliert auf die Ausbiegung nach Theorie II. Ordnung (Lehrmodell; Imperfektionsform nicht fallabhängig).",
     ],
   },
   energieausweis: {

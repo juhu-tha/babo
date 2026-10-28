@@ -369,6 +369,8 @@ export default function Carbonbeton() {
         </div>
       </div>
 
+      <p className="text-xs text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.regelwerkCarbonbeton} /></p>
+
       <CarbonVerweis />
 
       <FormulaDerivationBox
