@@ -56,6 +56,7 @@ export default function BpLehmbauprodukte() {
   const f_k = wand.fk;
   const f_d = wand.fd;
   const phi = wand.phi;
+  const wallThicknessM = thickness / 100;
   const n_Rd = wand.nRd; // kN/m
   const isCapacityOk = isSlendernessOk && designLoad <= n_Rd;
 
@@ -248,7 +249,7 @@ export default function BpLehmbauprodukte() {
                       </button>
                     ))}
                   </div>
-                  <span className="text-[10px] text-slate-500 leading-normal block pt-1"><MdText text={inhalt.texte.charakteristischeMauerwerksdruckfestigke} />{formatDeZahl(getFk(strengthClass), 1)}<MdText text={inhalt.texte.nMmNachDin} /></span>
+                  <span className="text-[10px] text-slate-500 leading-normal block pt-1"><MdText text={inhalt.texte.charakteristischeMauerwerksdruckfestigke} />{formatDeZahl(f_k, 1)}<MdText text={inhalt.texte.nMmNachDin} /></span>
                 </div>
 
                 <div className="space-y-2">

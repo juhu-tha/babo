@@ -44,37 +44,6 @@ export default function BpFarbenLacke() {
   const effectiveConsumption = menge.verbrauchEff;
   const totalLitersRequired = menge.liter;
 
-  return (targetDft * 100) / solidsVol;
-  }, [targetDft, solidsVol]);
-
-  // 2. Wet Film Thickness including thinning: WFT_thinned = WFT * (1 + thin/100)
-  const thinnedWft = useMemo(() => {
-    return baseWft * (1 + thinning / 100);
-  }, [baseWft, thinning]);
-
-  // 3. Spreading Rate (theoretisch) in m²/Liter: 10 * VolumeSolids[%] / DFT[µm]
-  const theoreticalSpreadingRate = useMemo(() => {
-    if (targetDft <= 0) return 0;
-    return (10 * solidsVol) / targetDft;
-  }, [solidsVol, targetDft]);
-
-  // 4. Consumption rate:
-  // Theoretical Consumption (ml/m² per coat) = WFT (without dilution, because dilution evaporates)
-  // Effective Consumption with loss factor = Theoretical Consumption / (1 - loss/100)
-  const theoreticalConsumption = useMemo(() => {
-    return baseWft; // µm is equal to ml/m² for liquids without loss and before thinning evaporation
-  }, [baseWft]);
-
-  const effectiveConsumption = useMemo(() => {
-    if (lossFactor >= 100) return 0;
-    return theoreticalConsumption / (1 - lossFactor / 100);
-  }, [theoreticalConsumption, lossFactor]);
-
-  // Total required quantity in liters = (effectiveConsumption * area * coats) / 1000
-  const totalLitersRequired = useMemo(() => {
-    return (effectiveConsumption * areaSquareMeters * numCoats) / 1000;
-  }, [effectiveConsumption, areaSquareMeters, numCoats]);
-
   return (
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">

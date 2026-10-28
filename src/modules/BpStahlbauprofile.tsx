@@ -166,25 +166,6 @@ export default function BpStahlbauprofile() {
   const fyd = spannung.fyd;
   const utilization = spannung.eta;
 
-  return (ned * 1000) / (activeProfile.A * 100);
-  }, [ned, activeProfile]);
-
-  const stressM = useMemo(() => {
-    if (!activeProfile || activeProfile.Wy <= 0) return 0;
-    return (myed * 1e6) / (activeProfile.Wy * 1000);
-  }, [myed, activeProfile]);
-
-  const totalStress = useMemo(() => {
-    return stressN + stressM;
-  }, [stressN, stressM]);
-
-  const fy = steelGrades[selectedGrade].fy;
-  const fyd = fy / safetyFactor;
-  const utilization = useMemo(() => {
-    if (fyd <= 0) return 0;
-    return (totalStress / fyd) * 100;
-  }, [totalStress, fyd]);
-
   return (
     <div className="flex flex-col gap-8">
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">
