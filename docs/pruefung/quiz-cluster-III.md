@@ -2,9 +2,9 @@
 
 Stand: 28.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster III umfasst 192 Fragen aus 32 Modulen. Aufgeführt sind 40 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster III umfasst 192 Fragen aus 32 Modulen. Aufgeführt sind 41 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 40 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 41 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -190,6 +190,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 40 korrigiert, 0 fraglich, 0
 - **Richtige Antwort:** Beim Würfel (h/d = 1) überlagern sich die Reibungskegel; die behinderte Querdehnung erhöht den Prüfwert
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### qn_frischbeton_4 · Frischbeton
+
+- **Frage:** XF4-Beton, D_max = 16 mm (Mindestluftgehalt 4,5 Vol.-%). Gemessen werden 9,0 Vol.-% nach Gesteinskorrektur. Wie ist der Wert zu bewerten?
+- **Richtige Antwort:** Mindestwert erfüllt, obere Grenze 8,5 % überschritten, als Einzelwert aber noch zulässig
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Tranche 3): „Richtwert“ → obere Grenze nach DIN EN 206, 5.4.3, Einzelwert +1,0 % – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### qn_grundlagen_2 · Ausgangsstoffe des Betons
