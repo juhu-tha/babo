@@ -608,21 +608,21 @@
     "moduleTitle": "Typische Bauschäden & Schadensanalyse",
     "topic": "Chloridinduzierte Lochfraßkorrosion (Pitting)",
     "difficulty": "Vertiefung",
-    "question": "Was kennzeichnet die gefürchtete 'Lochfraßkorrosion' (Pitting) an Bewehrungsstahl durch Chlorideintrag?",
+    "question": "Was kennzeichnet die gefürchtete Lochfraßkorrosion (Pitting) an Bewehrungsstahl durch Chlorideintrag?",
     "options": [
-      "Gleichmäßiger, sichtbarer Flächenabtrag mit großflächiger Braunfärbung der Betonoberfläche.",
-      "Punktuelle, hochgradig lokalisierte Zerstörung der Passivschicht ohne merkliche Volumenzunahme; extrem schneller Querschnittsverlust des Stahls ohne vorherige Riss- oder Rostwarnsignale am Beton.",
-      "Korrosion, die ausschließlich bei Minustemperaturen im Vakuum auftritt.",
-      "Verformung des Stahls durch Wasserstoffversprödung ohne Massenverlust."
+      "Gleichmäßiger Flächenabtrag, der sich früh durch großflächige Rostfahnen am Beton zeigt",
+      "Örtlicher Durchbruch der Passivschicht mit tiefen Löchern, oft ohne Vorwarnung am Beton",
+      "Flächige Depassivierung, weil der pH-Wert der Porenlösung im Randbereich unter 9 sinkt",
+      "Versprödung des Stahls durch eingelagerten Wasserstoff, ohne nennenswerten Massenverlust"
     ],
     "correctIdx": 1,
     "explanation": "Chloridinduzierte Korrosion ist besonders tückisch: Chloride (z. B. aus Tausalz oder Meerwasser) durchbrechen die Passivschicht lokal. Es entsteht ein winziges Lokalelement mit extrem hoher Korrosionsstromdichte (große Kathode, winzige Anode). Tragstäbe können unbemerkt durchrosten, bevor an der Betonoberfläche Abplatzungen sichtbar werden.",
     "bloom": "Verstehen",
     "niveau": "M",
     "distraktorFeedback": [
-      "Gleichmäßiger Flächenabtrag mit Braunfärbung ist typisch für karbonatisierungsbedingte Korrosion, nicht für Lochfraß.",
+      "Gleichmäßiger Flächenabtrag mit großflächigen Rostfahnen ist typisch für karbonatisierungsbedingte Korrosion; Lochfraß bleibt dagegen lange unsichtbar.",
       "",
-      "Lochfraß tritt bei üblichen Bauwerkstemperaturen auf und braucht Feuchte und Sauerstoff, kein Vakuum.",
+      "Das Absinken des pH-Werts unter etwa 9 beschreibt die Depassivierung durch Karbonatisierung; Chloride zerstören die Passivschicht dagegen örtlich, auch bei hohem pH-Wert.",
       "Wasserstoffversprödung ist ein eigener Schädigungsmechanismus (v. a. Spannstahl); Lochfraß ist Materialabtrag."
     ],
     "gapAnalysis": {
@@ -637,7 +637,7 @@
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "Zweitprüfung 27.10.: Hinweistext „kritische Chloridgehalte 0,4–0,5 M.-%“ korrigiert – 0,40 M.-% ist die Herstellungsgrenze Cl 0,40 (DIN EN 206/DIN 1045-2), Bewertungswert ≈ 0,5 M.-% bez. auf Zement (Breit et al. 2011, DAfStb-Richtlinie); Frage und Antworten unverändert; Bloom-Stufe, Niveau und Rückmeldungen zu den Distraktoren ergänzt – korrigiert"
+      "hinweis": "Zweitprüfung 27.10.: Hinweistext „kritische Chloridgehalte 0,4–0,5 M.-%“ korrigiert – 0,40 M.-% ist die Herstellungsgrenze Cl 0,40 (DIN EN 206/DIN 1045-2), Bewertungswert ≈ 0,5 M.-% bez. auf Zement (Breit et al. 2011, DAfStb-Richtlinie); Frage und Antworten unverändert; Bloom-Stufe, Niveau und Rückmeldungen zu den Distraktoren ergänzt – korrigiert · Zweitprüfung 27.10. (Runde 2): richtige Option gekürzt (Längenverhältnis 2,5 → ≈ 1,0), Distraktor „ausschließlich bei Minustemperaturen im Vakuum“ (Absolutwort, unplausibel) durch Depassivierung infolge Karbonatisierung ersetzt, Rückmeldungen angepasst – korrigiert"
     }
   },
   {

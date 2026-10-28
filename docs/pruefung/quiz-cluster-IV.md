@@ -50,9 +50,9 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 1
 
 ### q_dauer_2 · Typische Bauschäden & Schadensanalyse
 
-- **Frage:** Was kennzeichnet die gefürchtete 'Lochfraßkorrosion' (Pitting) an Bewehrungsstahl durch Chlorideintrag?
-- **Richtige Antwort:** Punktuelle, hochgradig lokalisierte Zerstörung der Passivschicht ohne merkliche Volumenzunahme; extrem schneller Querschnittsverlust des Stahls ohne vorherige Riss- oder Rostwarnsignale am Beton.
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Hinweistext „kritische Chloridgehalte 0,4–0,5 M.-%“ korrigiert – 0,40 M.-% ist die Herstellungsgrenze Cl 0,40 (DIN EN 206/DIN 1045-2), Bewertungswert ≈ 0,5 M.-% bez. auf Zement (Breit et al. 2011, DAfStb-Richtlinie); Frage und Antworten unverändert; Bloom-Stufe, Niveau und Rückmeldungen zu den Distraktoren ergänzt – korrigiert
+- **Frage:** Was kennzeichnet die gefürchtete Lochfraßkorrosion (Pitting) an Bewehrungsstahl durch Chlorideintrag?
+- **Richtige Antwort:** Örtlicher Durchbruch der Passivschicht mit tiefen Löchern, oft ohne Vorwarnung am Beton
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Hinweistext „kritische Chloridgehalte 0,4–0,5 M.-%“ korrigiert – 0,40 M.-% ist die Herstellungsgrenze Cl 0,40 (DIN EN 206/DIN 1045-2), Bewertungswert ≈ 0,5 M.-% bez. auf Zement (Breit et al. 2011, DAfStb-Richtlinie); Frage und Antworten unverändert; Bloom-Stufe, Niveau und Rückmeldungen zu den Distraktoren ergänzt – korrigiert · Zweitprüfung 27.10. (Runde 2): richtige Option gekürzt (Längenverhältnis 2,5 → ≈ 1,0), Distraktor „ausschließlich bei Minustemperaturen im Vakuum“ (Absolutwort, unplausibel) durch Depassivierung infolge Karbonatisierung ersetzt, Rückmeldungen angepasst – korrigiert
 - [ ] ok
 - [ ] ändern: …
 
