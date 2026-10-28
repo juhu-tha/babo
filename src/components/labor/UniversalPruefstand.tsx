@@ -1,5 +1,5 @@
 import type { ChartDataset, Point } from 'chart.js';
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeIntl } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Play, RotateCcw, Activity, ShieldCheck, Check, Download, FileText, ArrowRight, Gauge, Sliders, Zap } from 'lucide-react';
 import { InlineMath } from 'react-katex';
@@ -888,7 +888,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
               </div>
               <div className="text-[11px] text-text-main/70 bg-off-white px-3 py-1.5 rounded-lg border border-home-grau/20 flex justify-between items-center">
                 <span className="flex items-center gap-1">Prüffläche <InlineMath math="A_0" />:</span>
-                <strong className="font-mono text-text-main">{specimenCrossSection.toLocaleString('de-DE')} mm²</strong>
+                <strong className="font-mono text-text-main">{formatDeIntl(specimenCrossSection)} mm²</strong>
               </div>
             </div>
 

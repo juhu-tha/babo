@@ -1,4 +1,4 @@
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeIntl } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -625,7 +625,7 @@ export default function BpFarbenLacke() {
                                     <span>{row.material}</span>
                                   </div>
                                   <div className="col-span-2 text-center font-mono text-text-main/70">{formatDeZahl(row.rate, 2)} kg/m²</div>
-                                  <div className="col-span-2 text-center font-mono font-black text-shiraz bg-shiraz/5 py-1 rounded">{calculatedTotal.toLocaleString('de-DE', { maximumFractionDigits: 0 })} kg</div>
+                                  <div className="col-span-2 text-center font-mono font-black text-shiraz bg-shiraz/5 py-1 rounded">{formatDeIntl(calculatedTotal, { maximumFractionDigits: 0 })} kg</div>
                                   <div className="col-span-3 text-text-main/60 italic leading-snug">{row.remark}</div>
                                 </div>
                               );
@@ -636,7 +636,7 @@ export default function BpFarbenLacke() {
                               <div className="col-span-12 font-sans flex justify-between font-black">
                                 <span><MdText text={inhalt.texte.zusammenfassungHarzSand} /></span>
                                 <span className="text-shiraz border-2 border-shiraz/35 px-3 py-1 rounded bg-shiraz/10 font-bold">
-                                  {totalVolumeSum.toLocaleString('de-DE', { maximumFractionDigits: 0 })} kg Gesamt
+                                  {formatDeIntl(totalVolumeSum, { maximumFractionDigits: 0 })} kg Gesamt
                                 </span>
                               </div>
                             </div>

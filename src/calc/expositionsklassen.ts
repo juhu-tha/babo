@@ -1,3 +1,4 @@
+import { formatDeIntl } from '../utils/numberFormat';
 /**
  * Rechenkern Expositionsklassen (Z3), übernommen aus src/modules/Expositionsklassen.tsx:
  *  - maßgebende Hüllwerte mehrerer Expositionsklassen (DIN 1045-2, Tab. F.2.1/F.2.2; DIN EN 1992-1-1/NA, Tab. 4.4DE):
@@ -114,7 +115,7 @@ export function kWertAnsatz(e: KWertEingabe): KWertErgebnis {
   // Runde 5 (Z55): Kombinationsregel DIN 1045-2 (Alkalitätsreserve) f/z ≤ 3·(0,22 − s/z), d. h. f ≤ 0,66·z − 3·s (CEM I);
   // für CEM II-S, CEM II/A-D, CEM II-T, CEM II/A-LL und CEM III/A gilt f ≤ 0,45·z − 3·s (Zementart hier nicht wählbar)
   const maxFKombination = Math.max(0, 0.66 * e.zement - 3 * e.silika);
-  if (e.flugasche > 0 && e.silika > 0 && e.flugasche > maxFKombination + 1e-9) hinweise.push({ stufe: 'warnung', feld: 'flugasche', text: `Flugasche und Silikastaub gemeinsam: f ≤ 0,66·z − 3·s = ${Math.round(maxFKombination).toLocaleString('de-DE')} kg/m³ (CEM I, DIN 1045-2) ist überschritten; mit CEM II-S, II/A-D, II-T, II/A-LL, III/A gilt f ≤ 0,45·z − 3·s.` });
+  if (e.flugasche > 0 && e.silika > 0 && e.flugasche > maxFKombination + 1e-9) hinweise.push({ stufe: 'warnung', feld: 'flugasche', text: `Flugasche und Silikastaub gemeinsam: f ≤ 0,66·z − 3·s = ${formatDeIntl(Math.round(maxFKombination))} kg/m³ (CEM I, DIN 1045-2) ist überschritten; mit CEM II-S, II/A-D, II-T, II/A-LL, III/A gilt f ≤ 0,45·z − 3·s.` });
   else if (e.flugasche > 0 && e.silika > 0) hinweise.push({ stufe: 'warnung', feld: 'flugasche', text: 'Flugasche und Silikastaub gemeinsam: f ≤ 0,66·z − 3·s (CEM I) eingehalten; mit CEM II-S, II/A-D, II-T, II/A-LL, III/A gilt die strengere Grenze f ≤ 0,45·z − 3·s.' });
   return { rawWz, maxF, effectiveF, kF, maxS, effectiveS, kS, beq, wzEq, gueltig: !hatFehler(hinweise), hinweise };
 }

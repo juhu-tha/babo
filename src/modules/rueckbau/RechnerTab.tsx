@@ -1,6 +1,6 @@
 import type { Dispatch, SetStateAction } from 'react';
 import { Hammer } from 'lucide-react';
-import { formatDeWert, formatDeTeXWert } from '@/src/utils/numberFormat';
+import { formatDeWert, formatDeTeXWert, formatDeIntl } from '@/src/utils/numberFormat';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import inhalt from '@/content/rueckbau/RechnerTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
@@ -67,7 +67,7 @@ export function RechnerTab({ setBuildingVolume, setStructureType, buildingVolume
           <div>
             <label className="text-xs font-bold text-text-main flex justify-between mb-1.5">
               <span><MdText text={inhalt.texte.gebäudevolumenBri} /></span>
-              <span className="text-shiraz font-mono">{buildingVolume.toLocaleString('de-DE')} m³</span>
+              <span className="text-shiraz font-mono">{formatDeIntl(buildingVolume)} m³</span>
             </label>
             <input
               type="range"
@@ -127,7 +127,7 @@ export function RechnerTab({ setBuildingVolume, setStructureType, buildingVolume
         <div className="pt-4 border-t border-home-grau/10 text-xs text-text-main/70 bg-slate-50 p-3 rounded-xl border border-home-grau/5 leading-relaxed space-y-2">
           <div className="flex justify-between font-bold text-text-main">
             <span><MdText text={inhalt.texte.geschätzteGesamtmasse} /></span>
-            <span className="font-mono text-xs">{totalMass.toLocaleString('de-DE')} t</span>
+            <span className="font-mono text-xs">{formatDeIntl(totalMass)} t</span>
           </div>
           <div className="flex justify-between">
             <span><MdText text={inhalt.texte.mineralischerAnteil} /></span>
@@ -164,7 +164,7 @@ export function RechnerTab({ setBuildingVolume, setStructureType, buildingVolume
                     </span>
                     <div className="flex items-center gap-2">
                       <span className="text-xs font-mono text-slate-500 bg-slate-100 p-0.5 rounded">AVV {item.avv}</span>
-                      <span className="font-bold font-mono text-text-main">{item.mass.toLocaleString('de-DE')} t ({formatDeWert(percent)}%)</span>
+                      <span className="font-bold font-mono text-text-main">{formatDeIntl(item.mass)} t ({formatDeWert(percent)}%)</span>
                     </div>
                   </div>
                   <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
@@ -191,7 +191,7 @@ export function RechnerTab({ setBuildingVolume, setStructureType, buildingVolume
                 <div>
                   <h5 className="font-bold text-slate-800 text-xs mb-1.5 flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-indigo-600"></span><MdText text={inhalt.texte.schritt1ErmittlungDes} /></h5>
-                  <p className="mb-2 text-text-main/75 text-xs"><MdText text={inhalt.texte.ausgangspunktIstDerBrutto} /><FormulaText text="V" /> = {buildingVolume.toLocaleString('de-DE')}<MdText text={inhalt.texte.mSowieDerTragende} /><strong>{
+                  <p className="mb-2 text-text-main/75 text-xs"><MdText text={inhalt.texte.ausgangspunktIstDerBrutto} /><FormulaText text="V" /> = {formatDeIntl(buildingVolume)}<MdText text={inhalt.texte.mSowieDerTragende} /><strong>{
                       structureType === 'concrete' ? 'Stahlbetonbau' :
                       structureType === 'masonry' ? 'Mauerwerksbau' :
                       structureType === 'timber' ? 'Holzständerbau' : 'Mischbauweise'

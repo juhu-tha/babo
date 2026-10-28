@@ -1,3 +1,4 @@
+import { formatDeIntl } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { 
   Shield, 
@@ -451,7 +452,7 @@ export default function SchutzGrundlagen() {
               <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
                 <span className="text-slate-500 font-bold block mb-1"><MdText text={inhalt.texte.entwurfUndBau1} /></span>
                 <span className="text-lg font-bold text-slate-800 block">
-                  {deSitterInitialCost.toLocaleString('de-DE')} €
+                  {formatDeIntl(deSitterInitialCost)} €
                 </span>
                 <span className="text-[11px] text-slate-500 block mt-1"><MdText text={inhalt.texte.qualitätszementBetondeckung15Mm} /></span>
               </div>
@@ -459,7 +460,7 @@ export default function SchutzGrundlagen() {
               <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
                 <span className="text-slate-500 font-bold block mb-1"><MdText text={inhalt.texte.vorSchadensbeginn5} /></span>
                 <span className="text-lg font-bold text-blue-700 block">
-                  {(deSitterInitialCost * 5).toLocaleString('de-DE')} €
+                  {formatDeIntl(deSitterInitialCost * 5)} €
                 </span>
                 <span className="text-[11px] text-slate-500 block mt-1"><MdText text={inhalt.texte.präventiveHydrophobierungVorBeginn} /></span>
               </div>
@@ -467,7 +468,7 @@ export default function SchutzGrundlagen() {
               <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
                 <span className="text-slate-500 font-bold block mb-1"><MdText text={inhalt.texte.schadensfortschrittLokal25} /></span>
                 <span className="text-lg font-bold text-amber-700 block">
-                  {(deSitterInitialCost * 25).toLocaleString('de-DE')} €
+                  {formatDeIntl(deSitterInitialCost * 25)} €
                 </span>
                 <span className="text-[11px] text-slate-500 block mt-1"><MdText text={inhalt.texte.lokaleBetoninstandsetzungBeiErsten} /></span>
               </div>
@@ -475,7 +476,7 @@ export default function SchutzGrundlagen() {
               <div className="p-3 bg-rose-50 rounded-lg border border-rose-200 text-center">
                 <span className="text-rose-800 font-bold block mb-1"><MdText text={inhalt.texte.umfassendeInstandsetzung125} /></span>
                 <span className="text-lg font-bold text-rose-700 block">
-                  {(deSitterInitialCost * 125).toLocaleString('de-DE')} €
+                  {formatDeIntl(deSitterInitialCost * 125)} €
                 </span>
                 <span className="text-[11px] text-rose-700 block mt-1"><MdText text={inhalt.texte.umfassendeBetonsanierungQuerschnittsverl} /></span>
               </div>

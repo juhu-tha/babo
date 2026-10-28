@@ -1,4 +1,4 @@
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeIntl } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { Database, Leaf, Search, Globe, FileText, CheckCircle2, ShieldAlert, FileSpreadsheet, Info, RotateCcw, Calculator } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -406,7 +406,7 @@ export default function Materialdatenbanken() {
                   <div className="bg-gray-900 border border-gray-850 p-2.5 rounded-xl">
                     <span className="text-[9px] text-gray-400 uppercase font-semibold block"><MdText text={inhalt.texte.penrtPrimärenergie} /></span>
                     <strong className="text-base text-amber-500 font-bold block mt-0.5">
-                      {activeRecord.penrt.toLocaleString('de-DE')} <span className="text-[10px] text-gray-300 font-normal">MJ/{activeRecord.unit.split(' ').pop()}</span>
+                      {formatDeIntl(activeRecord.penrt)} <span className="text-[10px] text-gray-300 font-normal">MJ/{activeRecord.unit.split(' ').pop()}</span>
                     </strong>
                     <span className="text-[9px] text-gray-500 leading-tight block mt-0.5"><MdText text={inhalt.texte.nichtErneuerbarePrimärenergie} /></span>
                   </div>
@@ -660,7 +660,7 @@ export default function Materialdatenbanken() {
                     <td className="p-3 text-right font-mono font-bold text-slate-900">
                       {numericQty > 0 ? (
                         <span className={rowGwp < 0 ? 'text-emerald-600' : 'text-shiraz'}>
-                          {rowGwp.toLocaleString('de-DE', { maximumFractionDigits: 1 })} kg
+                          {formatDeIntl(rowGwp, { maximumFractionDigits: 1 })} kg
                         </span>
                       ) : (
                         <span className="text-slate-300">-</span>

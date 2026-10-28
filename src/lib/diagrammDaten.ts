@@ -1,3 +1,4 @@
+import { formatDeIntl } from '../utils/numberFormat';
 // Textalternative für Diagramme (Paket Z8, WCAG 1.1.1 / 1.3.1): Kurzbeschreibung und Datentabelle
 // werden aus der Chart.js-Datenkonfiguration (labels/datasets) und den Achsentiteln der Optionen erzeugt.
 // Reine Funktionen ohne React und ohne Chart.js – genutzt von src/lib/diagrammAlternative.tsx.
@@ -62,7 +63,7 @@ export function zahl(w: number): string {
   const opt: Intl.NumberFormatOptions = g >= 1000 || g === 0 || Number.isInteger(w)
     ? { maximumFractionDigits: g >= 1000 ? 0 : 3 }
     : { maximumSignificantDigits: 4 };
-  return w.toLocaleString('de-DE', { ...opt, useGrouping: g >= 10000 });
+  return formatDeIntl(w, opt);
 }
 
 function zelle(w: Wert, feld: 'x' | 'y' = 'y'): string {

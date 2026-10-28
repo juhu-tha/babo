@@ -63,7 +63,7 @@ const GENERATOR_TASKS: GeneratorTask[] = [
         solutionSteps: [
           {
             step: '1. Umrechnung der Höchstkraft in Newton',
-            math: `F = ${formatDeTeXWert(F_kN)}\\text{ kN} = ${F_N.toLocaleString('de-DE')}\\text{ N}`,
+            math: `F = ${formatDeTeXWert(F_kN)}\\text{ kN} = ${formatDeTeXWert(F_N)}\\text{ N}`,
             explanation: 'Für Spannungen in N/mm² muss die Prüflast in Newton eingesetzt werden.'
           },
           {
@@ -122,12 +122,12 @@ const GENERATOR_TASKS: GeneratorTask[] = [
         solutionSteps: [
           {
             step: '1. Einheiten angleichen',
-            math: `l_k = 1{,}0 \\cdot ${formatDeTeXWert(L_m)}\\text{ m} = ${L_mm.toLocaleString('de-DE')}\\text{ mm}, \\quad I = ${formatDeTeXWert(I_cm4)}\\text{ cm}^4 = ${I_mm4.toLocaleString('de-DE')}\\text{ mm}^4`,
+            math: `l_k = 1{,}0 \\cdot ${formatDeTeXWert(L_m)}\\text{ m} = ${formatDeTeXWert(L_mm)}\\text{ mm}, \\quad I = ${formatDeTeXWert(I_cm4)}\\text{ cm}^4 = ${formatDeTeXWert(I_mm4)}\\text{ mm}^4`,
             explanation: 'Konsistente Einheitenbasis in Newton und Millimeter.'
           },
           {
             step: '2. Einsetzen in die Euler-Formel',
-            math: `F_K = \\frac{\\pi^2 \\cdot E \\cdot I}{l_k^2} = \\frac{\\pi^2 \\cdot 210000 \\cdot ${I_mm4.toLocaleString('de-DE')}}{(${L_mm.toLocaleString('de-DE')})^2}`,
+            math: `F_K = \\frac{\\pi^2 \\cdot E \\cdot I}{l_k^2} = \\frac{\\pi^2 \\cdot 210\\,000 \\cdot ${formatDeTeXWert(I_mm4)}}{(${formatDeTeXWert(L_mm)})^2}`,
             explanation: 'Ideale Verzweigungslast ohne Berücksichtigung geometrischer Imperfektionen.'
           },
           {

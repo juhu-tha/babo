@@ -1,6 +1,6 @@
 import type { Dispatch, SetStateAction } from 'react';
 import { FileCode, Sliders, Code, AlertTriangle, Table, CheckSquare } from 'lucide-react';
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeIntl } from '@/src/utils/numberFormat';
 import inhalt from '@/content/ki/LlmPraxisTeile/MarkdownTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../../../components/ui/Auswahlgruppe';
@@ -208,7 +208,7 @@ export function MarkdownTab({ markdownView, setMarkdownView, calcDocPages, setCa
                       <div className="p-3 bg-white rounded-xl border border-home-grau/20">
                         <span className="text-[10px] uppercase font-bold text-text-main/60 block"><MdText text={inhalt.texte.geschätzteToken} /></span>
                         <span className="text-lg font-black text-text-main font-mono">
-                          {tokenStats.totalTokens.toLocaleString('de-DE')}
+                          {formatDeIntl(tokenStats.totalTokens)}
                         </span>
                       </div>
     

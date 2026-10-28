@@ -11,7 +11,7 @@ import {
   Download
 } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
-import { formatDeZahl, formatDeWert, formatDeTeX, formatDeTeXWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeTeX, formatDeTeXWert, formatDeIntl } from '@/src/utils/numberFormat';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 
@@ -442,13 +442,13 @@ export default function LCC() {
                 <div>
                   <h4 className="text-base font-bold">
                     {calcData.saving >= 0 
-                      ? `Option B spart über den Lebenszyklus ${calcData.saving.toLocaleString('de-DE', {maximumFractionDigits: 0})} €`
-                      : `Option A bleibt wirtschaftlicher um ${(Math.abs(calcData.saving)).toLocaleString('de-DE', {maximumFractionDigits: 0})} €`
+                      ? `Option B spart über den Lebenszyklus ${formatDeIntl(calcData.saving, {maximumFractionDigits: 0})} €`
+                      : `Option A bleibt wirtschaftlicher um ${formatDeIntl(Math.abs(calcData.saving), {maximumFractionDigits: 0})} €`
                     }
                   </h4>
                   <p className="text-xs leading-relaxed mt-1">
                     {calcData.saving >= 0 
-                      ? `Trotz einer höheren Initialinvestition an Tag Null (CapEx-Aufpreis von ${(activeScenario.optionB.capex - activeScenario.optionA.capex).toLocaleString('de-DE')} €) amortisiert sich Option B über die Lebensdauer von ${formatDeWert(analysisPeriod)} Jahren durch immense OpEx-Vorteile und das Ausbleiben teurer Austauschzyklen. Ein klarer Beleg für nachhaltiges Investment!`
+                      ? `Trotz einer höheren Initialinvestition an Tag Null (CapEx-Aufpreis von ${formatDeIntl(activeScenario.optionB.capex - activeScenario.optionA.capex)} €) amortisiert sich Option B über die Lebensdauer von ${formatDeWert(analysisPeriod)} Jahren durch immense OpEx-Vorteile und das Ausbleiben teurer Austauschzyklen. Ein klarer Beleg für nachhaltiges Investment!`
                       : inhalt.werte.unterDenGewähltenFinanzrandbedingungen
                     }
                   </p>
@@ -509,7 +509,7 @@ export default function LCC() {
                 <div className="space-y-1.5">
                   <div className="flex justify-between items-center text-xs">
                     <span className="font-bold text-slate-800">{activeScenario.optionA.name}</span>
-                    <span className="font-mono font-bold text-slate-950">{calcData.resultA.totalLCCDiscounted.toLocaleString('de-DE', {maximumFractionDigits: 0})} €</span>
+                    <span className="font-mono font-bold text-slate-950">{formatDeIntl(calcData.resultA.totalLCCDiscounted, {maximumFractionDigits: 0})} €</span>
                   </div>
                   
                   {/* Visual segments bar */}
@@ -518,7 +518,7 @@ export default function LCC() {
                     <div 
                       className="bg-red-600 h-full flex items-center justify-center cursor-help"
                       style={{ width: `${Math.max(10, (calcData.resultA.capex / Math.max(calcData.resultA.totalLCCDiscounted, calcData.resultB.totalLCCDiscounted)) * 100)}%` }}
-                      title={`Schritt 1 (Initialkosten): ${calcData.resultA.capex.toLocaleString('de-DE')} €`}
+                      title={`Schritt 1 (Initialkosten): ${formatDeIntl(calcData.resultA.capex)} €`}
                     >
                       Cap{calcData.resultA.capex > 8000 ? 'Ex' : ''}
                     </div>
@@ -526,7 +526,7 @@ export default function LCC() {
                     <div 
                       className="bg-amber-500 h-full flex items-center justify-center cursor-help border-l border-white/20"
                       style={{ width: `${Math.max(10, (calcData.resultA.cumulativeOpExDiscounted / Math.max(calcData.resultA.totalLCCDiscounted, calcData.resultB.totalLCCDiscounted)) * 100)}%` }}
-                      title={`Betrieb (abgezinst): ${calcData.resultA.cumulativeOpExDiscounted.toLocaleString('de-DE', {maximumFractionDigits: 0})} €`}
+                      title={`Betrieb (abgezinst): ${formatDeIntl(calcData.resultA.cumulativeOpExDiscounted, {maximumFractionDigits: 0})} €`}
                     >
                       Op{calcData.resultA.cumulativeOpExDiscounted > 8000 ? 'Ex' : ''}
                     </div>
@@ -534,7 +534,7 @@ export default function LCC() {
                     <div 
                       className="bg-indigo-500 h-full flex items-center justify-center cursor-help border-l border-white/20"
                       style={{ width: `${Math.max(5, (calcData.resultA.cumulativeMaintenanceDiscounted / Math.max(calcData.resultA.totalLCCDiscounted, calcData.resultB.totalLCCDiscounted)) * 100)}%` }}
-                      title={`Wartung (abgezinst): ${calcData.resultA.cumulativeMaintenanceDiscounted.toLocaleString('de-DE', {maximumFractionDigits: 0})} €`}
+                      title={`Wartung (abgezinst): ${formatDeIntl(calcData.resultA.cumulativeMaintenanceDiscounted, {maximumFractionDigits: 0})} €`}
                     >
                       {calcData.resultA.cumulativeMaintenanceDiscounted > 3000 ? 'Wart.' : 'W'}
                     </div>
@@ -543,7 +543,7 @@ export default function LCC() {
                       <div 
                         className="bg-violet-600 h-full flex items-center justify-center cursor-help border-l border-white/20"
                         style={{ width: `${Math.max(5, (calcData.resultA.cumulativeReplacementDiscounted / Math.max(calcData.resultA.totalLCCDiscounted, calcData.resultB.totalLCCDiscounted)) * 100)}%` }}
-                        title={`Austausch (abgezinst): ${calcData.resultA.cumulativeReplacementDiscounted.toLocaleString('de-DE', {maximumFractionDigits: 0})} €`}
+                        title={`Austausch (abgezinst): ${formatDeIntl(calcData.resultA.cumulativeReplacementDiscounted, {maximumFractionDigits: 0})} €`}
                       >
                         {calcData.resultA.cumulativeReplacementDiscounted > 4000 ? 'Aust.' : 'A'}
                       </div>
@@ -553,7 +553,7 @@ export default function LCC() {
                       <div 
                         className="bg-emerald-600 h-full flex items-center justify-center cursor-help border-l border-white/20"
                         style={{ width: `${Math.max(5, (((calcData.resultA.initialCO2Cost + calcData.resultA.cumulativeCO2Discounted) / Math.max(calcData.resultA.totalLCCDiscounted, calcData.resultB.totalLCCDiscounted)) * 100))}%` }}
-                        title={`CO2-Umweltpreis (abgezinst): ${(calcData.resultA.initialCO2Cost + calcData.resultA.cumulativeCO2Discounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €`}
+                        title={`CO2-Umweltpreis (abgezinst): ${formatDeIntl(calcData.resultA.initialCO2Cost + calcData.resultA.cumulativeCO2Discounted, {maximumFractionDigits: 0})} €`}
                       >
                         CO₂
                       </div>
@@ -563,7 +563,7 @@ export default function LCC() {
                       <div 
                         className="bg-stone-500 h-full flex items-center justify-center cursor-help border-l border-white/20"
                         style={{ width: `${Math.max(5, (calcData.resultA.eolDiscounted / Math.max(calcData.resultA.totalLCCDiscounted, calcData.resultB.totalLCCDiscounted)) * 100)}%` }}
-                        title={`Rückbau (abgezinst): ${calcData.resultA.eolDiscounted.toLocaleString('de-DE', {maximumFractionDigits: 0})} €`}
+                        title={`Rückbau (abgezinst): ${formatDeIntl(calcData.resultA.eolDiscounted, {maximumFractionDigits: 0})} €`}
                       >
                         EOL
                       </div>
@@ -575,7 +575,7 @@ export default function LCC() {
                 <div className="space-y-1.5">
                   <div className="flex justify-between items-center text-xs">
                     <span className="font-bold text-slate-800">{activeScenario.optionB.name}</span>
-                    <span className="font-mono font-bold text-slate-950">{calcData.resultB.totalLCCDiscounted.toLocaleString('de-DE', {maximumFractionDigits: 0})} €</span>
+                    <span className="font-mono font-bold text-slate-950">{formatDeIntl(calcData.resultB.totalLCCDiscounted, {maximumFractionDigits: 0})} €</span>
                   </div>
                   
                   {/* Visual segments bar */}
@@ -584,7 +584,7 @@ export default function LCC() {
                     <div 
                       className="bg-red-600 h-full flex items-center justify-center cursor-help"
                       style={{ width: `${Math.max(10, (calcData.resultB.capex / Math.max(calcData.resultA.totalLCCDiscounted, calcData.resultB.totalLCCDiscounted)) * 100)}%` }}
-                      title={`Schritt 1 (Initialkosten abzügl. Förderung): ${calcData.resultB.capex.toLocaleString('de-DE')} €`}
+                      title={`Schritt 1 (Initialkosten abzügl. Förderung): ${formatDeIntl(calcData.resultB.capex)} €`}
                     >
                       Cap{calcData.resultB.capex > 8000 ? 'Ex' : ''}
                     </div>
@@ -592,7 +592,7 @@ export default function LCC() {
                     <div 
                       className="bg-amber-500 h-full flex items-center justify-center cursor-help border-l border-white/20"
                       style={{ width: `${Math.max(10, (calcData.resultB.cumulativeOpExDiscounted / Math.max(calcData.resultA.totalLCCDiscounted, calcData.resultB.totalLCCDiscounted)) * 100)}%` }}
-                      title={`Betrieb (abgezinst): ${calcData.resultB.cumulativeOpExDiscounted.toLocaleString('de-DE', {maximumFractionDigits: 0})} €`}
+                      title={`Betrieb (abgezinst): ${formatDeIntl(calcData.resultB.cumulativeOpExDiscounted, {maximumFractionDigits: 0})} €`}
                     >
                       Op{calcData.resultB.cumulativeOpExDiscounted > 8000 ? 'Ex' : ''}
                     </div>
@@ -600,7 +600,7 @@ export default function LCC() {
                     <div 
                       className="bg-indigo-500 h-full flex items-center justify-center cursor-help border-l border-white/20"
                       style={{ width: `${Math.max(5, (calcData.resultB.cumulativeMaintenanceDiscounted / Math.max(calcData.resultA.totalLCCDiscounted, calcData.resultB.totalLCCDiscounted)) * 100)}%` }}
-                      title={`Wartung (abgezinst): ${calcData.resultB.cumulativeMaintenanceDiscounted.toLocaleString('de-DE', {maximumFractionDigits: 0})} €`}
+                      title={`Wartung (abgezinst): ${formatDeIntl(calcData.resultB.cumulativeMaintenanceDiscounted, {maximumFractionDigits: 0})} €`}
                     >
                       {calcData.resultB.cumulativeMaintenanceDiscounted > 3000 ? 'Wart.' : 'W'}
                     </div>
@@ -609,7 +609,7 @@ export default function LCC() {
                       <div 
                         className="bg-violet-600 h-full flex items-center justify-center cursor-help border-l border-white/20"
                         style={{ width: `${Math.max(5, (calcData.resultB.cumulativeReplacementDiscounted / Math.max(calcData.resultA.totalLCCDiscounted, calcData.resultB.totalLCCDiscounted)) * 100)}%` }}
-                        title={`Austausch (abgezinst): ${calcData.resultB.cumulativeReplacementDiscounted.toLocaleString('de-DE', {maximumFractionDigits: 0})} €`}
+                        title={`Austausch (abgezinst): ${formatDeIntl(calcData.resultB.cumulativeReplacementDiscounted, {maximumFractionDigits: 0})} €`}
                       >
                         {calcData.resultB.cumulativeReplacementDiscounted > 4000 ? 'Aust.' : 'A'}
                       </div>
@@ -619,7 +619,7 @@ export default function LCC() {
                       <div 
                         className="bg-emerald-600 h-full flex items-center justify-center cursor-help border-l border-white/20"
                         style={{ width: `${Math.max(5, (((calcData.resultB.initialCO2Cost + calcData.resultB.cumulativeCO2Discounted) / Math.max(calcData.resultA.totalLCCDiscounted, calcData.resultB.totalLCCDiscounted)) * 100))}%` }}
-                        title={`CO2-Umweltpreis (abgezinst): ${(calcData.resultB.initialCO2Cost + calcData.resultB.cumulativeCO2Discounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €`}
+                        title={`CO2-Umweltpreis (abgezinst): ${formatDeIntl(calcData.resultB.initialCO2Cost + calcData.resultB.cumulativeCO2Discounted, {maximumFractionDigits: 0})} €`}
                       >
                         CO₂
                       </div>
@@ -629,7 +629,7 @@ export default function LCC() {
                       <div 
                         className="bg-stone-500 h-full flex items-center justify-center cursor-help border-l border-white/20"
                         style={{ width: `${Math.max(5, (calcData.resultB.eolDiscounted / Math.max(calcData.resultA.totalLCCDiscounted, calcData.resultB.totalLCCDiscounted)) * 100)}%` }}
-                        title={`Rückbau (abgezinst): ${calcData.resultB.eolDiscounted.toLocaleString('de-DE', {maximumFractionDigits: 0})} €`}
+                        title={`Rückbau (abgezinst): ${formatDeIntl(calcData.resultB.eolDiscounted, {maximumFractionDigits: 0})} €`}
                       >
                         EOL
                       </div>
@@ -665,70 +665,70 @@ export default function LCC() {
                     <tbody className="divide-y divide-slate-100">
                       <tr>
                         <td className="p-3 font-medium"><MdText text={inhalt.texte.t1ErrichtungskostenCapex} /></td>
-                        <td className="p-3 text-right text-slate-500">{(activeScenario.optionA.capex).toLocaleString('de-DE')} €</td>
-                        <td className="p-3 text-right font-bold bg-slate-100/30">{(activeScenario.optionA.capex).toLocaleString('de-DE')} €</td>
-                        <td className="p-3 text-right text-slate-500">{(activeScenario.optionB.capex).toLocaleString('de-DE')} €</td>
-                        <td className="p-3 text-right font-bold bg-indigo-50/30 text-indigo-950">{(activeScenario.optionB.capex).toLocaleString('de-DE')} €</td>
+                        <td className="p-3 text-right text-slate-500">{formatDeIntl(activeScenario.optionA.capex)} €</td>
+                        <td className="p-3 text-right font-bold bg-slate-100/30">{formatDeIntl(activeScenario.optionA.capex)} €</td>
+                        <td className="p-3 text-right text-slate-500">{formatDeIntl(activeScenario.optionB.capex)} €</td>
+                        <td className="p-3 text-right font-bold bg-indigo-50/30 text-indigo-950">{formatDeIntl(activeScenario.optionB.capex)} €</td>
                       </tr>
                       {subsidyEnabled && (
                         <tr className="bg-blue-50/40 text-blue-900 border-b border-blue-100/30">
                           <td className="p-2.5 pl-6 font-normal text-[11px] text-blue-800 flex items-center gap-1"><MdText text={inhalt.texte.staatlKfwZuschuss} />{formatDeWert(subsidyPercent)}%)</td>
                           <td className="p-2.5 text-right text-slate-400 font-mono">- 0 €</td>
                           <td className="p-2.5 text-right font-mono bg-slate-100/20 text-slate-700">- 0 €</td>
-                          <td className="p-2.5 text-right font-mono text-blue-700">- {((activeScenario.optionB.capex * subsidyPercent) / 100).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
-                          <td className="p-2.5 text-right font-bold font-mono bg-indigo-50/20 text-blue-800">- {((activeScenario.optionB.capex * subsidyPercent) / 100).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
+                          <td className="p-2.5 text-right font-mono text-blue-700">- {formatDeIntl((activeScenario.optionB.capex * subsidyPercent) / 100, {maximumFractionDigits: 0})} €</td>
+                          <td className="p-2.5 text-right font-bold font-mono bg-indigo-50/20 text-blue-800">- {formatDeIntl((activeScenario.optionB.capex * subsidyPercent) / 100, {maximumFractionDigits: 0})} €</td>
                         </tr>
                       )}
                       <tr>
                         <td className="p-3 font-medium text-slate-750"><MdText text={inhalt.texte.t2BetriebskostenNettoOpex} /></td>
-                        <td className="p-3 text-right text-slate-500">{(calcData.resultA.cumulativeOpExNominal).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
-                        <td className="p-3 text-right font-bold bg-slate-100/30">{(calcData.resultA.cumulativeOpExDiscounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
-                        <td className="p-3 text-right text-slate-500">{(calcData.resultB.cumulativeOpExNominal).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
-                        <td className="p-3 text-right font-bold bg-indigo-50/30 text-indigo-950">{(calcData.resultB.cumulativeOpExDiscounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
+                        <td className="p-3 text-right text-slate-500">{formatDeIntl(calcData.resultA.cumulativeOpExNominal, {maximumFractionDigits: 0})} €</td>
+                        <td className="p-3 text-right font-bold bg-slate-100/30">{formatDeIntl(calcData.resultA.cumulativeOpExDiscounted, {maximumFractionDigits: 0})} €</td>
+                        <td className="p-3 text-right text-slate-500">{formatDeIntl(calcData.resultB.cumulativeOpExNominal, {maximumFractionDigits: 0})} €</td>
+                        <td className="p-3 text-right font-bold bg-indigo-50/30 text-indigo-950">{formatDeIntl(calcData.resultB.cumulativeOpExDiscounted, {maximumFractionDigits: 0})} €</td>
                       </tr>
                       <tr>
                         <td className="p-3 font-medium"><MdText text={inhalt.texte.t3LaufendeInstandhaltung} /></td>
-                        <td className="p-3 text-right text-slate-500">{(calcData.resultA.cumulativeMaintenanceNominal).toLocaleString('de-DE')} €</td>
-                        <td className="p-3 text-right font-bold bg-slate-100/30">{(calcData.resultA.cumulativeMaintenanceDiscounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
-                        <td className="p-3 text-right text-slate-500">{(calcData.resultB.cumulativeMaintenanceNominal).toLocaleString('de-DE')} €</td>
-                        <td className="p-3 text-right font-bold bg-indigo-50/30 text-indigo-950">{(calcData.resultB.cumulativeMaintenanceDiscounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
+                        <td className="p-3 text-right text-slate-500">{formatDeIntl(calcData.resultA.cumulativeMaintenanceNominal)} €</td>
+                        <td className="p-3 text-right font-bold bg-slate-100/30">{formatDeIntl(calcData.resultA.cumulativeMaintenanceDiscounted, {maximumFractionDigits: 0})} €</td>
+                        <td className="p-3 text-right text-slate-500">{formatDeIntl(calcData.resultB.cumulativeMaintenanceNominal)} €</td>
+                        <td className="p-3 text-right font-bold bg-indigo-50/30 text-indigo-950">{formatDeIntl(calcData.resultB.cumulativeMaintenanceDiscounted, {maximumFractionDigits: 0})} €</td>
                       </tr>
                       <tr>
                         <td className="p-3 font-medium"><MdText text={inhalt.texte.t4ErneuerungBauteiltausch} /></td>
-                        <td className="p-3 text-right text-slate-500">{(calcData.resultA.cumulativeReplacementNominal).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
-                        <td className="p-3 text-right font-bold bg-slate-100/30">{(calcData.resultA.cumulativeReplacementDiscounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
-                        <td className="p-3 text-right text-slate-500">{(calcData.resultB.cumulativeReplacementNominal).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
-                        <td className="p-3 text-right font-bold bg-indigo-50/30 text-indigo-950">{(calcData.resultB.cumulativeReplacementDiscounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
+                        <td className="p-3 text-right text-slate-500">{formatDeIntl(calcData.resultA.cumulativeReplacementNominal, {maximumFractionDigits: 0})} €</td>
+                        <td className="p-3 text-right font-bold bg-slate-100/30">{formatDeIntl(calcData.resultA.cumulativeReplacementDiscounted, {maximumFractionDigits: 0})} €</td>
+                        <td className="p-3 text-right text-slate-500">{formatDeIntl(calcData.resultB.cumulativeReplacementNominal, {maximumFractionDigits: 0})} €</td>
+                        <td className="p-3 text-right font-bold bg-indigo-50/30 text-indigo-950">{formatDeIntl(calcData.resultB.cumulativeReplacementDiscounted, {maximumFractionDigits: 0})} €</td>
                       </tr>
                       <tr>
                         <td className="p-3 font-medium"><MdText text={inhalt.texte.t5RückbauRestwertEol} /></td>
-                        <td className="p-3 text-right text-slate-500">{(calcData.resultA.eolNominal).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
-                        <td className="p-3 text-right font-bold bg-slate-100/30">{(calcData.resultA.eolDiscounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
-                        <td className="p-3 text-right text-slate-500">{(calcData.resultB.eolNominal).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
-                        <td className="p-3 text-right font-bold bg-indigo-50/30 text-indigo-950">{(calcData.resultB.eolDiscounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
+                        <td className="p-3 text-right text-slate-500">{formatDeIntl(calcData.resultA.eolNominal, {maximumFractionDigits: 0})} €</td>
+                        <td className="p-3 text-right font-bold bg-slate-100/30">{formatDeIntl(calcData.resultA.eolDiscounted, {maximumFractionDigits: 0})} €</td>
+                        <td className="p-3 text-right text-slate-500">{formatDeIntl(calcData.resultB.eolNominal, {maximumFractionDigits: 0})} €</td>
+                        <td className="p-3 text-right font-bold bg-indigo-50/30 text-indigo-950">{formatDeIntl(calcData.resultB.eolDiscounted, {maximumFractionDigits: 0})} €</td>
                       </tr>
                       {co2PricingEnabled && (
                         <tr className="bg-emerald-50/45 text-emerald-950 border-t border-emerald-100">
                           <td className="p-3 font-medium text-emerald-900"><MdText text={inhalt.texte.t6CoSchattenpreisKlima} /></td>
-                          <td className="p-3 text-right text-slate-500 font-mono">{(calcData.resultA.initialCO2Cost + calcData.resultA.cumulativeCO2Nominal).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
-                          <td className="p-3 text-right font-bold font-mono bg-[#fcf8f2]/30 text-emerald-800">{(calcData.resultA.initialCO2Cost + calcData.resultA.cumulativeCO2Discounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
-                          <td className="p-3 text-right text-slate-500 font-mono">{(calcData.resultB.initialCO2Cost + calcData.resultB.cumulativeCO2Nominal).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
-                          <td className="p-3 text-right font-bold font-mono bg-indigo-50/30 text-emerald-900">{(calcData.resultB.initialCO2Cost + calcData.resultB.cumulativeCO2Discounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
+                          <td className="p-3 text-right text-slate-500 font-mono">{formatDeIntl(calcData.resultA.initialCO2Cost + calcData.resultA.cumulativeCO2Nominal, {maximumFractionDigits: 0})} €</td>
+                          <td className="p-3 text-right font-bold font-mono bg-[#fcf8f2]/30 text-emerald-800">{formatDeIntl(calcData.resultA.initialCO2Cost + calcData.resultA.cumulativeCO2Discounted, {maximumFractionDigits: 0})} €</td>
+                          <td className="p-3 text-right text-slate-500 font-mono">{formatDeIntl(calcData.resultB.initialCO2Cost + calcData.resultB.cumulativeCO2Nominal, {maximumFractionDigits: 0})} €</td>
+                          <td className="p-3 text-right font-bold font-mono bg-indigo-50/30 text-emerald-900">{formatDeIntl(calcData.resultB.initialCO2Cost + calcData.resultB.cumulativeCO2Discounted, {maximumFractionDigits: 0})} €</td>
                         </tr>
                       )}
                       {restwertEnabled && (calcData.resultA.restwertNominal > 0 || calcData.resultB.restwertNominal > 0) && (
                         <tr>
                           <td className="p-3 font-medium"><MdText text={inhalt.texte.t7RestwertLinear} /></td>
-                          <td className="p-3 text-right text-slate-500">- {(calcData.resultA.restwertNominal).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
-                          <td className="p-3 text-right font-bold bg-slate-100/30">- {(calcData.resultA.restwertDiscounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
-                          <td className="p-3 text-right text-slate-500">- {(calcData.resultB.restwertNominal).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
-                          <td className="p-3 text-right font-bold bg-indigo-50/30 text-indigo-950">- {(calcData.resultB.restwertDiscounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
+                          <td className="p-3 text-right text-slate-500">- {formatDeIntl(calcData.resultA.restwertNominal, {maximumFractionDigits: 0})} €</td>
+                          <td className="p-3 text-right font-bold bg-slate-100/30">- {formatDeIntl(calcData.resultA.restwertDiscounted, {maximumFractionDigits: 0})} €</td>
+                          <td className="p-3 text-right text-slate-500">- {formatDeIntl(calcData.resultB.restwertNominal, {maximumFractionDigits: 0})} €</td>
+                          <td className="p-3 text-right font-bold bg-indigo-50/30 text-indigo-950">- {formatDeIntl(calcData.resultB.restwertDiscounted, {maximumFractionDigits: 0})} €</td>
                         </tr>
                       )}
                       <tr className="bg-slate-100 font-bold text-slate-900 border-t-2 border-slate-350">
                         <td className="p-3 uppercase tracking-wide text-[10px]"><MdText text={inhalt.texte.lccGesamtsummeBarwert} /></td>
-                        <td colSpan={2} className="p-3 text-right text-sm">{(calcData.resultA.totalLCCDiscounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
-                        <td colSpan={2} className="p-3 text-right text-sm text-indigo-850">{(calcData.resultB.totalLCCDiscounted).toLocaleString('de-DE', {maximumFractionDigits: 0})} €</td>
+                        <td colSpan={2} className="p-3 text-right text-sm">{formatDeIntl(calcData.resultA.totalLCCDiscounted, {maximumFractionDigits: 0})} €</td>
+                        <td colSpan={2} className="p-3 text-right text-sm text-indigo-850">{formatDeIntl(calcData.resultB.totalLCCDiscounted, {maximumFractionDigits: 0})} €</td>
                       </tr>
                     </tbody>
                   </table>

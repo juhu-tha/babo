@@ -8,7 +8,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeIntl } from '@/src/utils/numberFormat';
 import inhalt from '@/content/kreislaufwirtschaft/Kreislaufwirtschaft.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
@@ -943,7 +943,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                       <strong className={`text-[15px] font-mono font-bold ${
                         auditStats.estimatedRevenueEur >= 0 ? 'text-emerald-700' : 'text-shiraz'
                       }`}>
-                        {auditStats.estimatedRevenueEur >= 0 ? '+' : ''}{auditStats.estimatedRevenueEur.toLocaleString('de-DE')} €
+                        {auditStats.estimatedRevenueEur >= 0 ? '+' : ''}{formatDeIntl(auditStats.estimatedRevenueEur)} €
                       </strong>
                     </div>
 
