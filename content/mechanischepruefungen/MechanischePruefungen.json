@@ -192,10 +192,10 @@
           "norm": "DIN EN 12697-22 (Prüfverfahren für Heißasphalt - Teil 22: Spurbildungstest)",
           "material": "Hochbelastetes Asphaltmischgut (z. B. Asphaltbeton AC, Splittmastixasphalt SMA) zur Absicherung des Spurrinnenwiderstandes.",
           "proben": "Asphaltplatten (im Labor mit Walzsektor-Verdichter nach DIN EN 12697-33 hergestellt) oder Bohrkerne aus der Fahrbahn; Abmessungen und Dicke nach Gerätegröße und Schichtdicke.",
-          "durchfuehrung": "Kleines Prüfgerät, Verfahren in Luft: Temperierung bei z. B. $60\\text{ }^\\circ\\text{C}$, ein gummibereiftes Rad mit $700\\text{ N}$ Radlast fährt mit $26{,}5$ Lastwechseln je Minute hin und her, Regeldauer $10.000$ Lastwechsel. In Deutschland wird der Spurbildungsversuch üblicherweise im Wasserbad nach TP Asphalt-StB, Teil 22 durchgeführt.",
+          "durchfuehrung": "Kleines Prüfgerät, Verfahren in Luft: Temperierung bei z. B. $60\\text{ }^\\circ\\text{C}$, ein gummibereiftes Rad mit $700\\text{ N}$ Radlast fährt mit $26{,}5$ Lastwechseln je Minute hin und her, Regeldauer $10\\,000$ Lastwechsel. In Deutschland wird der Spurbildungsversuch üblicherweise im Wasserbad nach TP Asphalt-StB, Teil 22 durchgeführt.",
           "ergebnisse": "Aufzeichnung der kontinuierlichen Einsinktiefe des Rads über Wegaufnehmer. Berechnet werden die Spurrinnentiefe nach Abschluss des Versuchs (in mm) sowie die Spurbildungsrate $WTS_{air}$ (Steigung im annähernd linearen Bereich) in mm je 1000 Lastwechsel.",
           "kennwerte": [
-            "Spurrinnentiefe nach 10.000 Lastwechseln [mm]",
+            "Spurrinnentiefe nach 10 000 Lastwechseln [mm]",
             "Spurbildungsrate $WTS_{air}$ [mm/1000 Lastwechsel]",
             "Proportionale Spurrinnentiefe $PRD_{air}$ [%]"
           ]

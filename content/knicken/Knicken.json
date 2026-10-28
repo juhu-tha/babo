@@ -77,25 +77,25 @@
     "Knicken.schritte": [
       {
         "titel": "Gegeben",
-        "erklaerung": "Stahlstütze l = 3,5 m, E = 210 000 N/mm², maßgebendes Trägheitsmoment I = 850 cm⁴ = 8,5 · 10⁶ mm⁴.",
+        "erklaerung": "Stahlstütze l = 3,5 m, E = 210 000 N/mm², maßgebendes Trägheitsmoment I = 850 cm⁴ = 8,5 · 10⁶ mm⁴.",
         "formel": "E \\cdot I = 210\\,000 \\cdot 8{,}5 \\cdot 10^{6}\\,\\text{Nmm}^2"
       },
       {
         "titel": "Euler-Fall 2 (β = 1,0)",
         "erklaerung": "Beidseitig gelenkig, Knicklänge 3500 mm:",
-        "formel": "F_K = \\frac{\\pi^2 \\cdot 210\\,000 \\cdot 8{,}5 \\cdot 10^{6}}{3\\,500^2} = 1\\,438\\,\\text{kN}"
+        "formel": "F_K = \\frac{\\pi^2 \\cdot 210\\,000 \\cdot 8{,}5 \\cdot 10^{6}}{3500^2} = 1438\\,\\text{kN}"
       },
       {
         "titel": "Euler-Fall 1 (β = 2,0)",
         "erklaerung": "Kragstütze: doppelte Knicklänge, also ein Viertel der Knicklast:",
-        "formel": "F_K = \\frac{1\\,438}{4} = 360\\,\\text{kN}"
+        "formel": "F_K = \\frac{1438}{4} = 360\\,\\text{kN}"
       }
     ],
     "Knicken.schritte_2": [
       {
         "titel": "Vorkrümmung",
         "erklaerung": "Angenommene Vorkrümmung l/300 bei l = 3,5 m:",
-        "formel": "w_0 = \\frac{3\\,500}{300} = 11{,}7\\,\\text{mm}"
+        "formel": "w_0 = \\frac{3500}{300} = 11{,}7\\,\\text{mm}"
       },
       {
         "titel": "Vergrößerungsfaktor",

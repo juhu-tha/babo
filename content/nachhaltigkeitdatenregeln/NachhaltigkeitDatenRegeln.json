@@ -125,7 +125,7 @@
   "werte": {
     "direkteKernrelevanzFürDas": "Direkte Kernrelevanz für das Bauwesen",
     "beispiel1EuTaxonomie": "Beispiel 1: EU-Taxonomie – Primärenergie-Kriterium für einen Neubau",
-    "fürGebäudeÜber5": "Für Gebäude über 5 000 m² ist zusätzlich das Lebenszyklus-GWP zu berechnen und offenzulegen; außerdem gelten Luftdichtheits- bzw. Thermografie-Nachweise und die DNSH-Kriterien.",
+    "fürGebäudeÜber5": "Für Gebäude über 5000 m² ist zusätzlich das Lebenszyklus-GWP zu berechnen und offenzulegen; außerdem gelten Luftdichtheits- bzw. Thermografie-Nachweise und die DNSH-Kriterien.",
     "delegierteVoEu2021": "Delegierte VO (EU) 2021/2139, Anhang I, Abschnitt 7.1 (Stand manuell prüfen)",
     "beispiel2CrremPfad": "Beispiel 2: CRREM-Pfad – wann wird ein Bürogebäude „stranded“?",
     "crremPfadeSindLänder": "CRREM-Pfade sind länder- und nutzungsspezifisch; für Investitionsentscheidungen sind die aktuellen veröffentlichten Pfade zu verwenden, nicht diese Lehrwerte.",
@@ -173,7 +173,7 @@
       {
         "id": 1,
         "title": "1. Klimaschutz (Climate Mitigation)",
-        "desc": "Neubau: Primärenergiebedarf mind. 10 % unter NZEB/GEG. Bei Gebäuden > 5 000 m² zusätzlich Berechnung und Offenlegung des Lebenszyklus-GWP (Delegierte VO (EU) 2021/2139, Anhang I, 7.1)."
+        "desc": "Neubau: Primärenergiebedarf mind. 10 % unter NZEB/GEG. Bei Gebäuden > 5000 m² zusätzlich Berechnung und Offenlegung des Lebenszyklus-GWP (Delegierte VO (EU) 2021/2139, Anhang I, 7.1)."
       },
       {
         "id": 2,

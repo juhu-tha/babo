@@ -435,7 +435,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                     </div>
                     <div className="flex items-center justify-between p-2 rounded-lg bg-emerald-50 border border-emerald-100">
                       <span><MdText text={inhalt.texte.stahldehnungBeiStreckgrenzeS235} /></span>
-                      <span className="font-mono font-bold text-emerald-950">235 / 210.000 = 1,12 ‰</span>
+                      <span className="font-mono font-bold text-emerald-950">235 / 210 000 = 1,12 ‰</span>
                     </div>
                   </div>
                 </div>

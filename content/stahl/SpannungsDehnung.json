@@ -5,7 +5,7 @@
     "dinEn19931": "DIN EN 1993-1-1 / DIN EN ISO 6892-1",
     "dieSpannungsDehnungsLinie": "Die **Spannungs-Dehnungs-Linie** ist der maßgebende Fingerabdruck jedes metallischen Werkstoffs. Sie beschreibt die mechanische Reaktion eines Prüfstabs unter einachsiger Zugbeanspruchung und gliedert sich in vier charakteristische Werkstoffphasen:",
     "t1ElastischerBereichHooke": " 1. Elastischer Bereich (Hooke)",
-    "lineareSteigungDurchAtomare": "Lineare Steigung durch atomare Gitterdehnung: $\\sigma = E \\cdot \\varepsilon$. Vollständig reversibel. Steigung entspricht dem $E$-Modul ($\\approx 210.000\\text{ MPa}$).",
+    "lineareSteigungDurchAtomare": "Lineare Steigung durch atomare Gitterdehnung: $\\sigma = E \\cdot \\varepsilon$. Vollständig reversibel. Steigung entspricht dem $E$-Modul ($\\approx 210\\,000\\text{ MPa}$).",
     "t2FließbeginnFY": " 2. Fließbeginn ($f_y$ bzw. $R_{p0{,}2}$)",
     "übergangZuIrreversiblenVersetzungsbewegu": "Übergang zu irreversiblen Versetzungsbewegungen. Baustähle zeigen ein horizontales Lüders-Plateau; hochfeste Stähle fließen stetig (Ersatzstreckgrenze $R_{p0{,}2}$).",
     "t3KaltverfestigungFU": " 3. Kaltverfestigung ($f_u$)",

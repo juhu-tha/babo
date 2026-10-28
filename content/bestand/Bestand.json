@@ -26,7 +26,7 @@
     "t1WärmedurchgangswiderstandDesUngedämmten": "1. Wärmedurchgangswiderstand des ungedämmten Bestandsbauteils:",
     "t2ZusätzlicherWärmedurchlasswiderstandDer": "2. Zusätzlicher Wärmedurchlasswiderstand der Dämmschicht (Dicke d = ",
     "t3GesamtwiderstandUndNeuer": "3. Gesamtwiderstand und neuer Wärmedurchgangskoeffizient:",
-    "t4JährlicheHeizwärmeeinsparungMit": "4. Jährliche Heizwärmeeinsparung mit Gradtagzahl G_t20/15 = 3 500 Kd/a und Temperatur-Korrekturfaktor F_x (DIN V 4108-6):",
+    "t4JährlicheHeizwärmeeinsparungMit": "4. Jährliche Heizwärmeeinsparung mit Gradtagzahl G_t20/15 = 3500 Kd/a und Temperatur-Korrekturfaktor F_x (DIN V 4108-6):",
     "historischerTrendDerBauteil": "Historischer Trend der Bauteil-U-Werte von 1880 bis heute",
     "entwicklungDesThermischenStandards": "Entwicklung des thermischen Standards über 10 Baualtersklassen im Vergleich zu den heutigen Sanierungsanforderungen des GModG / GEG.",
     "bauphysikalischeEpochensprünge": "Bauphysikalische Epochensprünge:",
@@ -276,18 +276,18 @@
     "Bestand.schritte_2": [
       {
         "titel": "Gegeben",
-        "erklaerung": "100 m² Außenwand, Heizgradtage 3 500 Kd/a:",
+        "erklaerung": "100 m² Außenwand, Heizgradtage 3500 Kd/a:",
         "formel": "\\Delta U = 1{,}50 - 0{,}60 = 0{,}90\\,\\text{W/(m}^2\\text{K)}"
       },
       {
         "titel": "Einsparung Nutzwärme",
         "erklaerung": "Umrechnung von Kd in kWh:",
-        "formel": "\\Delta Q = 0{,}90 \\cdot 100 \\cdot 3\\,500 \\cdot 24 / 1\\,000 = 7\\,560\\,\\text{kWh/a}"
+        "formel": "\\Delta Q = 0{,}90 \\cdot 100 \\cdot 3500 \\cdot 24 / 1000 = 7560\\,\\text{kWh/a}"
       },
       {
         "titel": "Einordnung",
         "erklaerung": "Bei Gas (≈ 0,24 kg CO₂-Äq./kWh) entspricht das rund 1,8 t CO₂-Äq. pro Jahr.",
-        "formel": "7\\,560 \\cdot 0{,}24 = 1\\,814\\,\\text{kg CO}_2\\text{-Äq./a}"
+        "formel": "7560 \\cdot 0{,}24 = 1814\\,\\text{kg CO}_2\\text{-Äq./a}"
       }
     ],
     "Bestand.literatur": [

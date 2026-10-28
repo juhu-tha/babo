@@ -326,18 +326,18 @@
     "Ressourceneffizienz.schritte_2": [
       {
         "titel": "Gegeben",
-        "erklaerung": "Bürogebäude mit 2 500 m³ Beton, Gesteinskörnung 1 850 kg/m³, Austauschanteil grober Körnung 35 % (Lehrwert; zulässige Anteile nach DAfStb-Richtlinie je Expositionsklasse prüfen):",
-        "formel": "m_{RC} = 2\\,500 \\cdot 1{,}85 \\cdot 0{,}35 = 1\\,619\\,\\text{t}"
+        "erklaerung": "Bürogebäude mit 2500 m³ Beton, Gesteinskörnung 1850 kg/m³, Austauschanteil grober Körnung 35 % (Lehrwert; zulässige Anteile nach DAfStb-Richtlinie je Expositionsklasse prüfen):",
+        "formel": "m_{RC} = 2500 \\cdot 1{,}85 \\cdot 0{,}35 = 1619\\,\\text{t}"
       },
       {
         "titel": "Lkw-Fahrten",
         "erklaerung": "Bei 25 t Nutzlast:",
-        "formel": "n = \\frac{1\\,619}{25} = 65\\,\\text{Fahrten Primärkies weniger}"
+        "formel": "n = \\frac{1619}{25} = 65\\,\\text{Fahrten Primärkies weniger}"
       },
       {
         "titel": "Massenbezogene Quote",
         "erklaerung": "Bezogen auf die gesamte Gesteinskörnung:",
-        "formel": "RER = \\frac{1\\,619}{2\\,500 \\cdot 1{,}85} = 0{,}35 = 35\\,\\%"
+        "formel": "RER = \\frac{1619}{2500 \\cdot 1{,}85} = 0{,}35 = 35\\,\\%"
       }
     ],
     "Ressourceneffizienz.literatur": [

@@ -68,7 +68,7 @@ export default function KennwerteSchwinden() {
               <Info className="h-4 w-4 text-amber-600" /><MdText text={inhalt.texte.auswirkungAufDenSpannstahl} /></div>
             <p><MdText text={inhalt.texte.beträgtDasGesamtschwindmaßVarepsilon} /></p>
             <div className="font-mono bg-white p-2.5 rounded border border-amber-200 font-bold text-center">
-              <InlineMath math="\Delta\sigma_{p,s} = \varepsilon_{cs} \cdot E_p = 0{,}00035 \cdot 195.000\text{ N/mm}^2 = 68{,}25\text{ N/mm}^2" />
+              <InlineMath math="\Delta\sigma_{p,s} = \varepsilon_{cs} \cdot E_p = 0{,}00035 \cdot 195\,000\text{ N/mm}^2 = 68{,}25\text{ N/mm}^2" />
             </div>
             <p><MdText text={inhalt.texte.beiEinerTypischenAnfangsspannung} /></p>
           </div>

@@ -109,7 +109,7 @@ export function membranNachweis(e: MembranEingabe): MembranErgebnis {
   let nZul: number, sigma = NaN;
   if (e.werkstoff === 'gewebe') {
     nZul = (e.festigkeitGewebe as number) / 0.05 / e.gamma;
-    bereich(hinweise, 'festigkeitGewebe', e.festigkeitGewebe as number, 1000, 12000, 'Gewebefestigkeit außerhalb der üblichen Spanne architektonischer Membranen (rund 1 000–12 000 N/5 cm).');
+    bereich(hinweise, 'festigkeitGewebe', e.festigkeitGewebe as number, 1000, 12000, 'Gewebefestigkeit außerhalb der üblichen Spanne architektonischer Membranen (rund 1000–12 000 N/5 cm).');
   } else {
     const tMm = (e.dickeUm as number) / 1000;
     nZul = ((e.festigkeitFolie as number) * tMm * 1000) / e.gamma; // N/mm → N/m
@@ -117,7 +117,7 @@ export function membranNachweis(e: MembranEingabe): MembranErgebnis {
     bereich(hinweise, 'dickeUm', e.dickeUm as number, 50, 400, 'Foliendicke außerhalb des üblichen Bereichs für ETFE-Bauteile (etwa 50–400 µm).');
     bereich(hinweise, 'festigkeitFolie', e.festigkeitFolie as number, 5, 60, 'Folienfestigkeit außerhalb der üblichen Spanne für ETFE (Bruchspannung um 50 N/mm²).');
   }
-  bereich(hinweise, 'p', e.p, 100, 1000, 'Innendruck außerhalb des üblichen Bereichs pneumatischer Konstruktionen (etwa 100–1 000 Pa).');
+  bereich(hinweise, 'p', e.p, 100, 1000, 'Innendruck außerhalb des üblichen Bereichs pneumatischer Konstruktionen (etwa 100–1000 Pa).');
   if (e.gamma < 1.5) warnung(hinweise, 'gamma', 'Sehr kleiner Sicherheitsbeiwert: Langzeit-, Temperatur- und Fügungseinflüsse mindern die Festigkeit von Membranen deutlich.');
   if (!mitRadius && f / L < 0.05) warnung(hinweise, 'stich', 'Sehr flache Wölbung (f/L < 1/20): Der Radius und damit die Membrankraft werden groß.');
 

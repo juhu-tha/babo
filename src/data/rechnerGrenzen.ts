@@ -24,7 +24,7 @@ const STAHLBETON: RechnerGrenzen = {
     'Durchstanzen: nur Flachdecken; Fundamente und Bodenplatten (NA DE 6.4.4(2)) sind nicht abgebildet.',
     'Durchstanzen: konstantes β, keine Öffnungen, keine Abminderung durch Bodenpressung; erhöhte Faktoren κ_sw der ersten Bewehrungsreihen nicht berücksichtigt.',
     'Rissbreite: direkte Berechnung mit einer Bewehrungslage; bei Stababständen > 5·(c + φ/2) gilt 7.3.4(4) (nur Hinweis).',
-    'σ-ε-Linien: Parabel-Rechteck und Gl. (3.14) mit den Parametern der Tab. 3.1 bis C90/105 (darüber auf C90/105 gehalten); Betonstahl B500 bilinear mit E_s = 200 000 N/mm² und ε_ud = 25 ‰ (NA DE).',
+    'σ-ε-Linien: Parabel-Rechteck und Gl. (3.14) mit den Parametern der Tab. 3.1 bis C90/105 (darüber auf C90/105 gehalten); Betonstahl B500 bilinear mit E_s = 200 000 N/mm² und ε_ud = 25 ‰ (NA DE).',
   ],
 };
 
@@ -49,10 +49,10 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     kurz: 'Spannkraftverluste (Reibung, Keilschlupf, elastische Verkürzung, Kriechen, Schwinden, Relaxation) und Spannungsnachweise eines Rechteckquerschnitts.',
     grenzen: [
       'Einfeldträger mit Nachweisschnitt in Feldmitte, Rechteckquerschnitt ohne Spannglied-Hüllrohrabzug.',
-      'Zeitabhängige Verluste nach Gl. (5.46) mit φ(∞,t₀) und ε_cs(∞) nach Anhang B; Relaxation für 500 000 h.',
+      'Zeitabhängige Verluste nach Gl. (5.46) mit φ(∞,t₀) und ε_cs(∞) nach Anhang B; Relaxation für 500 000 h.',
       'Dekompression als größte Betonspannung an den Grenzen e_p ± max(100 mm; h/10) nach NA DE (EN-Empfehlung: 25 mm), vereinfacht am ungerissenen Querschnitt (Zustand I).',
       'Dehnungsanimation: Lehrträger L = 20 m, 500 × 1000 mm, C40/50 (E_cm, f_ctm aus Tab. 3.1), linear-elastisch am Bruttoquerschnitt; Randzug gegen f_ctm,fl (3.1.8), danach qualitativ.',
-      '„Von 0 bis 100“: Verlust durch Betonstauchung Δσ = E·Δε ohne Relaxation; Lastausgleich u = 8·P·f/L²; Litzen = ⌈P/173 kN⌉ (150 mm² · 1 360 N/mm², 15 % Verluste als Lehrannahme).',
+      '„Von 0 bis 100“: Verlust durch Betonstauchung Δσ = E·Δε ohne Relaxation; Lastausgleich u = 8·P·f/L²; Litzen = ⌈P/173 kN⌉ (150 mm² · 1360 N/mm², 15 % Verluste als Lehrannahme).',
     ],
   },
   holzbau_bemessung: {
@@ -76,8 +76,8 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     grenzen: [
       'Sättigungsdampfdruck nach der Magnus-Formel der DIN 4108-3 (über Eis unter 0 °C).',
       'Glaser-Verfahren (Periodenbilanz) mit Tangentenkonstruktion über der s_d-Achse; Tauwasserebenen und -bereiche werden erkannt, die p_sat-Kurve wird je Schicht in 40 Teilpunkten aufgelöst.',
-      'Tauperiode nach DIN 4108-3 (seit 2014): 2 160 h, innen 20 °C / 50 %, außen −5 °C / 80 %, R_si = 0,25 und R_se = 0,04 m²K/W.',
-      'Verdunstungsperiode: 2 160 h, p_i = p_e = 1 200 Pa, 1 700 Pa (Wand) bzw. 2 000 Pa (Dach) in der Tauwasserzone.',
+      'Tauperiode nach DIN 4108-3 (seit 2014): 2160 h, innen 20 °C / 50 %, außen −5 °C / 80 %, R_si = 0,25 und R_se = 0,04 m²K/W.',
+      'Verdunstungsperiode: 2160 h, p_i = p_e = 1200 Pa, 1700 Pa (Wand) bzw. 2000 Pa (Dach) in der Tauwasserzone.',
       'Klimawerte belegt durch BaunetzWissen und den Forschungsbericht T 3288 (Fraunhofer IRB 2012); Abgleich mit dem Normtext DIN 4108-3:2024-03 vorläufig (fachliche Freigabe ausstehend).',
       'Nicht abgebildet (DIN 4108-3:2024-03): Begrenzung des Verfahrens auf Höhenlagen bis 700 m und neue Außendampfdrücke für verschattete oder helle Dächer (Anhang A).',
       'Mehrere Tauwasserzonen: Verdunstung vereinfacht gemeinsam (innerste Zone nach innen, äußerste nach außen); der zeitliche Ablauf des Austrocknens ist nicht abgebildet.',
@@ -178,7 +178,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     grenzen: [
       "Bilinear mit konstantem Verfestigungsmodul E_t, einachsig, monoton bis ε_max und eine Entlastung; keine zyklische Belastung, kein Bauschinger-Effekt, keine Einschnürung.",
       "k = σ_max/f_y bezieht sich auf die gewählte Dehnung ε_max, nicht auf charakteristische Werte (f_t/f_y)_k nach DIN EN 1992-1-1 Anhang C.",
-      "Linear, nichtlinear, ideal-plastisch, viskoelastisch und Thixotropie/Rheopexie sind qualitative Kurven mit festen Parametern (E = 210 000, f_y = 355 N/mm²).",
+      "Linear, nichtlinear, ideal-plastisch, viskoelastisch und Thixotropie/Rheopexie sind qualitative Kurven mit festen Parametern (E = 210 000, f_y = 355 N/mm²).",
     ],
   },
   baustoffkenngroessen: {
@@ -324,7 +324,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Brand: feste Abbrandraten, nur Restquerschnitt und Widerstandsmoment, keine Tragfähigkeit.",
       "Schwingung: zweiseitig gelenkig gelagerter Einfeldstreifen; Biegesteifigkeit nur aus den Längslagen, netto oder nach dem γ-Verfahren (DIN EN 1995-1-1 Anhang B, nur symmetrisch 3- und 5-lagig).",
       "Bei 7 und mehr Lagen wird die Netto-Biegesteifigkeit angesetzt; das Schubanalogieverfahren ist nicht umgesetzt.",
-      "Kennwerte E_0,mean = 11 550 N/mm², G_r,mean = 65 N/mm² und Wichte 5,5 kN/m³ nach proHolz Austria (Band II, 2018) statt Werten aus der ETA des Herstellers.",
+      "Kennwerte E_0,mean = 11 550 N/mm², G_r,mean = 65 N/mm² und Wichte 5,5 kN/m³ nach proHolz Austria (Band II, 2018) statt Werten aus der ETA des Herstellers.",
       "Steifigkeitskriterium mit mitwirkender Breite b_F nach Hamm/Richter; Orientierungswerte der Deckenklassen nach ÖNORM B 1995-1-1, keine Grenzwerte nach NA (DE).",
       "Nicht enthalten: Beschleunigungs- und Geschwindigkeitskriterium, Durchlaufträger, vierseitige Lagerung, Auflagernachgiebigkeit; das Ergebnis bestätigt keine Deckenklasse.",
     ],
@@ -433,7 +433,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Karbonatisierung deterministisch mit dem Wurzel-t-Gesetz; Feuchte, Beregnung und Streuung von Deckung und Material bleiben unberücksichtigt.",
       "Lebensdauersimulator (Dauerhaftigkeit): t_krit = (c/k)² auf ganze Jahre gerundet, k-Werte der Schnellwahl als Lehrwerte; über 200 Jahre nicht abgesichert.",
       "Schnelltest-Umrechnung nur über die CO₂-Konzentration (K ∝ √c) – Größenordnung, kein Normwert.",
-      "Lokalelement: i_corr, Rostvolumenfaktor 2,5, E_eff = 12 000 MPa und Schadensschwellen sind qualitative Lehrannahmen; Abtrag 11,6 µm/a je µA/cm² (Faraday, Eisen).",
+      "Lokalelement: i_corr, Rostvolumenfaktor 2,5, E_eff = 12 000 MPa und Schadensschwellen sind qualitative Lehrannahmen; Abtrag 11,6 µm/a je µA/cm² (Faraday, Eisen).",
     ],
   },
   glas: {
@@ -623,7 +623,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     kurz: "Zufallsaufgaben mit Prüfung der Antwort über eine relative Toleranz.",
     grenzen: [
       "Toleranz ±2–3 % zum gerundeten Sollwert.",
-      "Feste Annahmen je Aufgabentyp (z. B. Zylinder 150/300 mm, E = 210 000 MPa).",
+      "Feste Annahmen je Aufgabentyp (z. B. Zylinder 150/300 mm, E = 210 000 MPa).",
     ],
   },
   online_tools: {

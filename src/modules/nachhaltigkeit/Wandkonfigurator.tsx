@@ -73,7 +73,7 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
               <strong className="font-bold text-amber-900 block mb-0.5"><MdText text={inhalt.texte.falleDerÖkobilanzierungMassebezug} /></strong>
               <p>
                 In EPDs werden Materialwerte häufig auf 1 kg Masse bezogen. Hier wirkt Normalbeton (CEM I) mit ca. <strong><MdText text={inhalt.texte.t010KgCo} /></strong> scheinbar harmlos. 
-                Aufgrund der hohen Rohdichte (2.400 kg/m³) wiegt jedoch eine 20 cm Betonwand 480 kg/m² und verursacht ca. <strong><MdText text={inhalt.texte.t49KgCoE} /></strong>! 
+                Aufgrund der hohen Rohdichte (2400 kg/m³) wiegt jedoch eine 20 cm Betonwand 480 kg/m² und verursacht ca. <strong><MdText text={inhalt.texte.t49KgCoE} /></strong>! 
                 Konstruktionsvollholz (KVH) speichert hingegen biogenes CO₂ (-1,47 kg CO₂e/kg), und ein Lehmstein (DIN 18940) benötigt überhaupt keine klinkerspezifische Brennenergie (nur 0,022 kg CO₂e/kg). 
                 <strong> Grundsatz:</strong> Bauteile müssen immer auf die funktionelle Einheit (1 m² Bauteil mit gefordertem U-Wert und Tragfähigkeit) bezogen verglichen werden.
               </p>

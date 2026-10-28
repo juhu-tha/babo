@@ -46,12 +46,12 @@
       },
       {
         "titel": "2. Klammerausdruck",
-        "formel": "43^{2{,}5} \\cdot (1 - 0{,}30) = 12\\,124 \\cdot 0{,}70 = 8\\,487",
+        "formel": "43^{2{,}5} \\cdot (1 - 0{,}30) = 12\\,124 \\cdot 0{,}70 = 8487",
         "erklaerung": "Bei gleicher Beton- und Lufttemperatur vereinfacht sich der Ausdruck."
       },
       {
         "titel": "3. Verdunstungsrate",
-        "formel": "E = 5 \\cdot 8\\,487 \\cdot 29 \\cdot 10^{-6} = 1{,}23\\,\\text{kg/(m}^2\\text{h)}",
+        "formel": "E = 5 \\cdot 8487 \\cdot 29 \\cdot 10^{-6} = 1{,}23\\,\\text{kg/(m}^2\\text{h)}",
         "erklaerung": "Wind erhöht den Wert linear über (V + 4)."
       },
       {

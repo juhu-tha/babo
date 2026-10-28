@@ -127,7 +127,7 @@ export default function Glas() {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-text-main/60">E-Modul <FormulaText text="E" />:</span>
-                    <span className="font-bold">70.000 MPa</span>
+                    <span className="font-bold">70 000 MPa</span>
                   </div>
                 </div>
               </div>

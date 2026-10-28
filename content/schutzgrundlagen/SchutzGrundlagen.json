@@ -112,7 +112,7 @@
     "kontinuierlicheFernüberwachungSchutzstro": "Kontinuierliche Fernüberwachung: Schutzstromdichte, Ausschaltpotenzial, 100-mV-Depolarisation",
     "einsatzgrenzenRisiken": "Einsatzgrenzen & Risiken",
     "osmotischeBlasenbildungBeiRückseitiger": "Osmotische Blasenbildung bei rückseitiger Durchfeuchtung; UV-Alterung",
-    "gefahrVonWasserstoffversprödungBei": "Gefahr von Wasserstoffversprödung bei hochfesten Spannstählen ($R_m > 1.000\\text{ N/mm}^2$)",
+    "gefahrVonWasserstoffversprödungBei": "Gefahr von Wasserstoffversprödung bei hochfesten Spannstählen ($R_m > 1000\\text{ N/mm}^2$)",
     "neubautenParkdecksOs8": "Neubauten, Parkdecks (OS 8/11), Tunnelwände, Balkone, Fassaden",
     "salzbelasteteBrückenpfeilerTiefgaragenst": "Salzbelastete Brückenpfeiler, Tiefgaragenstützen, Hafenkaimauern, historische Baudenkmäler",
     "analogieAktiveUndPassive": "Analogie: Aktive und passive Schutzkonzepte in weiteren Baustoffdisziplinen",
@@ -211,17 +211,17 @@
       {
         "titel": "Planung",
         "erklaerung": "Erhöhung der Betondeckung und bessere Nachbehandlung kosten im Entwurf (n = 0):",
-        "formel": "K_0 = 2\\,000\\,\\text{EUR}"
+        "formel": "K_0 = 2000\\,\\text{EUR}"
       },
       {
         "titel": "Vor Schadensbeginn",
         "erklaerung": "Vorbeugende Oberflächenschutzmaßnahme (n = 1):",
-        "formel": "K_1 = 2\\,000 \\cdot 5 = 10\\,000\\,\\text{EUR}"
+        "formel": "K_1 = 2000 \\cdot 5 = 10\\,000\\,\\text{EUR}"
       },
       {
         "titel": "Umfassende Instandsetzung",
         "erklaerung": "Nach Schadensausbreitung (n = 3):",
-        "formel": "K_3 = 2\\,000 \\cdot 125 = 250\\,000\\,\\text{EUR}"
+        "formel": "K_3 = 2000 \\cdot 125 = 250\\,000\\,\\text{EUR}"
       }
     ],
     "SchutzGrundlagen.schritte_2": [

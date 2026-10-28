@@ -58,7 +58,7 @@
         "name": "🏢 Mehrfamilienhaus (MFH)",
         "vol": 3500,
         "type": "concrete",
-        "label": "3.500 m³ • Stahlbeton"
+        "label": "3500 m³ • Stahlbeton"
       },
       {
         "name": "🪵 Holzhaus (EFH-Leichtbau)",
@@ -70,7 +70,7 @@
         "name": "🏭 Gewerbehalle (Mittel)",
         "vol": 12000,
         "type": "concrete",
-        "label": "12.000 m³ • Skelettbau"
+        "label": "12 000 m³ • Skelettbau"
       }
     ]
   }

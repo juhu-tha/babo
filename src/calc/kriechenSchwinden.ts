@@ -337,7 +337,7 @@ export function relaxationsVerlauf(klasse: Relaxationsklasse, mu: number, zeitpu
   muss(hinweise, klasse in RELAXATION_KLASSEN, 'klasse', 'Unbekannte Relaxationsklasse (1, 2 oder 3).');
   if (mu > 0.8) hinweise.push({ stufe: 'warnung', feld: 'mu', text: 'μ > 0,8: Die Relaxationsgleichungen sind für übliche Spannungsniveaus bis etwa 0,8·f_pk aufgestellt.' });
   if (mu <= 0.5) hinweise.push({ stufe: 'warnung', feld: 'mu', text: 'μ ≤ 0,5: Die Relaxation wird im Lehrmodell vernachlässigt (Verlust 0).' });
-  if (zeitpunkteH.some(t => t > 500000)) hinweise.push({ stufe: 'warnung', feld: 't', text: 'Über 500 000 h (≈ 57 Jahre) hinaus ist die Relaxationsfunktion nicht abgesichert.' });
+  if (zeitpunkteH.some(t => t > 500000)) hinweise.push({ stufe: 'warnung', feld: 't', text: 'Über 500 000 h (≈ 57 Jahre) hinaus ist die Relaxationsfunktion nicht abgesichert.' });
   return { zeitpunkteH: [...zeitpunkteH], verlustProzent: zeitpunkteH.map(t => spannstahlRelaxation(klasse, mu, t)), gueltig: !hatFehler(hinweise), hinweise };
 }
 

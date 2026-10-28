@@ -1,4 +1,4 @@
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeIntl } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -190,7 +190,7 @@ export default function BimBaustoffe() {
                   <div>
                     <div className="flex justify-between items-center mb-1 text-xs">
                       <span className="font-semibold text-slate-900">Zylinder-E-Modulus:</span>
-                      <span className="font-mono text-xs text-shiraz font-bold">{eModulus.toLocaleString('de-DE')} N/mm²</span>
+                      <span className="font-mono text-xs text-shiraz font-bold">{formatDeIntl(eModulus)} N/mm²</span>
                     </div>
                     <input 
                       type="range" 

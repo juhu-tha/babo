@@ -43,7 +43,7 @@ t.test('Zusammenfassung: Streudiagramm mit x/y-Punkten, Einheiten aus Angaben; o
   sicher(zusammenfassung('line', { datasets: [] }) === 'Liniendiagramm (keine Daten).', 'leere Daten');
 });
 t.test('Zahlformat: Komma, 4 signifikante Stellen, Tausendertrennung ab 5 Stellen', () => {
-  sicher(zahl(0.12345) === '0,1235' && zahl(1234.6) === '1235' && zahl(210000) === '210.000' && zahl(3) === '3', `${zahl(0.12345)} ${zahl(1234.6)} ${zahl(210000)}`);
+  sicher(zahl(0.12345) === '0,1235' && zahl(1234.6) === '1235' && zahl(210000) === '210\u202F000' && zahl(3) === '3', `${zahl(0.12345)} ${zahl(1234.6)} ${zahl(210000)}`);
 });
 
 // ── Tabelle ──────────────────────────────────────────────────────────────────

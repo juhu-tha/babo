@@ -123,12 +123,12 @@
       {
         "titel": "Masse",
         "erklaerung": "Dachfläche 450 m², flächenbezogene Masse der Wellplatten ca. 18 kg/m² (Lehrwert):",
-        "formel": "m = 450 \\cdot 18 = 8\\,100\\,\\text{kg}"
+        "formel": "m = 450 \\cdot 18 = 8100\\,\\text{kg}"
       },
       {
         "titel": "Verpackung",
         "erklaerung": "Platten-Bags mit zulässiger Nutzlast 1,5 t:",
-        "formel": "n_{Bag} = \\lceil 8\\,100 / 1\\,500 \\rceil = \\lceil 5{,}4 \\rceil = 6"
+        "formel": "n_{Bag} = \\lceil 8100 / 1500 \\rceil = \\lceil 5{,}4 \\rceil = 6"
       },
       {
         "titel": "Entsorgung",

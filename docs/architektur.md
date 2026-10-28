@@ -111,9 +111,19 @@ Ein `*` mit Leerzeichen dahinter (z. B. AVV `17 06 05* (…)`) bleibt ohne Maski
 
 ## Zahlformat
 
-Zahlen werden ausschließlich über `src/utils/numberFormat.ts` formatiert: Dezimalkomma, **Tausendertrennung einheitlich mit Punkt** (`TAUSENDER_TRENNER`) in Fließtext, Rechnerausgaben, Diagrammen und KaTeX-Formeln (`formatDeTeX` seit 27.10.2026 ebenfalls mit Punkt statt `\,`). `formatDeZahl` gliedert ab 4 Stellen (1.000), `formatDeWert` ab 5 Stellen (Jahreszahlen bleiben ungegliedert).
+Zahlen werden ausschließlich über `src/utils/numberFormat.ts` formatiert (Entscheidung Prof. Huber, 28.10.2026, nach DIN 5008 und DIN 1333):
 
-Begründung (Gutachten 27.10.2026): Projektkonvention seit Phase 1 (README, Anleitung), Ausgabe von `toLocaleString('de-DE')` an rund 115 Stellen im Code und Mehrheit im Fließtext (`content/`: 247 Zahlen mit Punkt gegen 86 mit Leerzeichen, Zählung 27.10.2026). Die Gliederung ist eindeutig, weil das Dezimalzeichen immer das Komma ist. Abweichung von der Norm: DIN 5008 gliedert Zahlen mit Leerzeichen (Punkt nur bei Geldbeträgen), DIN 1333 sieht ebenfalls Zwischenräume vor. Eine Umstellung auf das schmale geschützte Leerzeichen (U+202F) wäre zentral über `TAUSENDER_TRENNER` plus Ersatz der Direktaufrufe von `toLocaleString` möglich – **Entscheidung Prof. Huber**. Neue Fachtexte in `content/` bitte mit Punkt schreiben.
+- **Dezimalzeichen:** Komma (`0,40`; in KaTeX `0{,}40`).
+- **Tausendertrennung:** schmales geschütztes Leerzeichen **U+202F** (`TAUSENDER_TRENNER`), gegliedert erst **ab 5 Stellen** vor dem Komma (`10 000`, `210 000`, `1 234 567`); **vierstellige Zahlen bleiben ungegliedert** (`2400`, Jahreszahlen `2024`). Gilt einheitlich in Fließtext (`content/**/*.json`, `src/data/*.ts`, Quiz), Rechnerausgaben, Tabellen, Diagrammachsen und Tooltips (`src/lib/chartBedarf.tsx`, `umgruppiereDe`), Textalternativen der Diagramme, PDF-Export und auch bei **Geldbeträgen** (`100 000 €`).
+- **KaTeX:** `formatDeTeX`/`formatDeTeXWert` gliedern mit `\,` (U+202F hat im Mathe-Modus keine Schriftmetrik); handgeschriebene Formeln in `content/` ebenso (`210\,000`, aber `2400`).
+- **Kein `toLocaleString` auf Zahlen:** Intl liefert für de-DE den Punkt. Statt `x.toLocaleString('de-DE', opt)` → `formatDeIntl(x, opt)` (gleiche Rundungsoptionen, Gliederung nach Projektregel; `useGrouping: false` bleibt ungegliedert). Datumsangaben (`Date#toLocaleString`) sind nicht betroffen.
+- **Eingaben:** `parseDeZahl` akzeptiert U+202F, Leerzeichen und Punkt als Tausendertrenner.
+- **CSV-/Excel-Export:** echte Zahlen ohne Gliederung (Tabellenkalkulation formatiert selbst).
+- **Nicht umgestellt:** Normnummern (DIN EN 1992-1-1), Datumsangaben, Versionsnummern, Paragrafen, URLs, Code, BNB-Bauteilnummern.
+
+Prüfung (Ratsche, Grenze 0): `node scripts/qa/zahlformat-tausender.mjs --check` meldet Tausenderpunkt oder normales Leerzeichen als Trenner, vierstellige Gliederung (U+202F oder `\,`) und direkte `toLocaleString`-Aufrufe in Anzeigetexten; `--show` listet die Fundstellen. Der Test `tests/zahlformatTausender.test.ts` (in `npm test`) prüft Erkennung und Bestand. Neue Fachtexte bitte gleich mit U+202F schreiben (Eingabe z. B. über die Zeichentabelle oder `\u202f` in JSON).
+
+Vorher (bis 27.10.2026) galt die Projektkonvention Tausenderpunkt ab 4 Stellen; die Umstellung (PR „Zahlformat: Tausendertrennung mit schmalem Leerzeichen (DIN 5008)“) ist eine reine Formatänderung.
 
 ## Design
 

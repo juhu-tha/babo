@@ -50,7 +50,7 @@
     "geschwindigkeitsreduzierungenZBVon": "Geschwindigkeitsreduzierungen (z. B. von 120 km/h auf 60 km/h oder 80 km/h).",
     "stoppAndGoVerkehr": "Stopp-and-Go-Verkehr und Kolonnenbildung mit extrem erhöhtem spezifischen Treibstoffverbrauch.",
     "umwegfahrtenDesSchwerlastverkehrsÜber": "Umwegfahrten des Schwerlastverkehrs über das nachgeordnete Landstraßennetz.",
-    "verblüffendesPraxisfaktumAufEiner": "**Verblüffendes Praxisfaktum:** Auf einer Bundesautobahn mit $5.000$ Schwerlast-Fahrzeugen pro Tag verursacht eine 30-tägige Baustellen-Verzögerung nach dem vereinfachten Modell dieses Rechners (40 % der Lkw betroffen, 0,95 kg CO₂-Äq. je Lkw) rund $57\\text{ t CO}_2\\text{-eq}$ an reinen Stau-Mehrverbräuchen – oft mehr als die gesamte Herstellungsenergie des eingebauten Asphalts!",
+    "verblüffendesPraxisfaktumAufEiner": "**Verblüffendes Praxisfaktum:** Auf einer Bundesautobahn mit $5000$ Schwerlast-Fahrzeugen pro Tag verursacht eine 30-tägige Baustellen-Verzögerung nach dem vereinfachten Modell dieses Rechners (40 % der Lkw betroffen, 0,95 kg CO₂-Äq. je Lkw) rund $57\\text{ t CO}_2\\text{-eq}$ an reinen Stau-Mehrverbräuchen – oft mehr als die gesamte Herstellungsenergie des eingebauten Asphalts!",
     "ingenieurtechnischeOptimierungshebelNach": "Ingenieurtechnische Optimierungshebel nach DIN EN 17472",
     "t1ModulareVorfertigungSchnellbaumethoden": "1. Modulare Vorfertigung & Schnellbaumethoden:",
     "vorgefertigteVerbundträgerOderFertigteil": "Vorgefertigte Verbundträger oder Fertigteil-Fahrbahnplatten verkürzen die Sperrzeiten auf wenige Tage (z. B. Brückeneinschub an einem Wochenende).",
@@ -89,7 +89,7 @@
     "tCoÄquivalent2": " t CO₂-Äquivalent",
     "sehrHohesModulD": "Sehr hohes Modul-D-Recyclingpotenzial",
     "didaktischeAuswertungNachDin": " Didaktische Auswertung nach DIN EN 17472:",
-    "derStauImpactIm": "**Der Stau-Impact im Modul B8:** Bei hohem LKW-Aufkommen ($DTV_{\\text{SV}} \\ge 4.500$) verursacht der Verkehrsstau während der Sanierungsphasen (",
+    "derStauImpactIm": "**Der Stau-Impact im Modul B8:** Bei hohem LKW-Aufkommen ($DTV_{\\text{SV}} \\ge 4500$) verursacht der Verkehrsstau während der Sanierungsphasen (",
     "tCoEEinen": " t CO₂e) einen maßgeblichen Anteil der Gesamtbilanz. Eine beschleunigte Schnellbau-Strategie spart auf einen Schlag massiv Emissionen ein!",
     "materialspezifischeLebenszyklusEigenscha": "**Materialspezifische Lebenszyklus-Eigenschaften:** Die Stahlverbundbrücke startet mit geringerer Anfangsfracht (A1–A3) und punktet beim Rückbau mit einer gigantischen Modul-D-Gutschrift (Stahlschrott im Elektroofen). Dafür erfordert sie in Phase B4 regelmäßige, aufwendige Korrosionsschutz-Erneuerungen.",
     "vergleichsmaßstabNachEn17472": "**Vergleichsmaßstab nach EN 17472:** Durch die Normierung auf $1\\text{ m}^2$ Deckfläche und Jahr ($\\text{kg CO}_2\\text{e}/(\\text{m}^2\\cdot\\text{a})$) können unterschiedliche Brücken-Tragwerke über 100 Jahre objektiv verglichen werden."

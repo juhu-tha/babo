@@ -15,6 +15,7 @@ import type * as ReactChartjs from 'react-chartjs-2';
 import { verbinde, istMarke } from './chartJsBedarf';
 import { beimDrucken, STUFE } from './druckVorbereitung';
 import { DiagrammHuelle, type DiagrammModus } from './diagrammAlternative';
+import { umgruppiereDe } from '../utils/numberFormat';
 
 type Bibliothek = typeof ReactChartjs;
 type Art = 'Chart' | 'Line' | 'Bar' | 'Radar' | 'Doughnut' | 'PolarArea' | 'Bubble' | 'Pie' | 'Scatter';
@@ -27,9 +28,19 @@ export function ladeDiagramme(): Promise<Bibliothek> {
   // diese Datei ist von der Umlenkung ausgenommen → echtes chart.js / react-chartjs-2
   laden ??= Promise.all([import('react-chartjs-2'), import('chart.js')]).then(([rc, cj]) => {
     const echt = cj as unknown as Record<string, unknown>;
-    // Achsen und Tooltips im deutschen Zahlformat (Dezimalkomma, Punkt als Tausendertrenner), passend zu formatDeWert;
+    // Achsen und Tooltips im deutschen Zahlformat (Dezimalkomma), passend zu formatDeWert;
     // einzelne Diagramme können options.locale weiterhin selbst setzen.
     cj.Chart.defaults.locale = 'de-DE';
+    // Tausendertrennung wie in der übrigen App (U+202F ab 5 Stellen statt Intl-Punkt): Standard-Achsenbeschriftung
+    // der Zahlenachsen und Tooltip-Werte (getLabelForValue) umstellen – vor der Registrierung, weil Chart.js die
+    // statischen Voreinstellungen beim Registrieren übernimmt.
+    const achse = (f: (...a: never[]) => unknown) => function (this: unknown, ...a: never[]) { const s = f.apply(this, a); return typeof s === 'string' ? umgruppiereDe(s) : s; };
+    for (const [skala, formatierer] of [[cj.LinearScale, cj.Ticks.formatters.numeric], [cj.LogarithmicScale, cj.Ticks.formatters.logarithmic], [cj.RadialLinearScale, cj.Ticks.formatters.numeric]] as const) {
+      const ticks = (skala.defaults as { ticks?: { callback?: unknown } }).ticks;
+      if (ticks) ticks.callback = achse(formatierer as (...a: never[]) => unknown);
+      const proto = skala.prototype as unknown as { getLabelForValue: (...a: never[]) => unknown };
+      proto.getLabelForValue = achse(proto.getLabelForValue);
+    }
     verbinde(eintraege => cj.Chart.register(...eintraege.map(e => (istMarke(e) ? echt[e.__chartBaustein] : e)) as Parameters<typeof cj.Chart.register>));
     bibliothek = rc;
     warten.forEach(f => f());

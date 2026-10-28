@@ -1473,7 +1473,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
     ziele: [
       { stufe: "Erinnern", text: "die Ausbreitmaßklassen F1 bis F6 mit typischen Einsatzbereichen sowie Kontrollpunkte für Lieferschein, Einbau und Nachbehandlung benennen." },
       { stufe: "Verstehen", text: "den Einfluss des w/z-Werts auf Kapillarporen, Gefügedichtheit und Dauerhaftigkeit erläutern und die Dichtheitsgrenze bei etwa 0,50 begründen." },
-      { stufe: "Anwenden", text: "eine Betonrezeptur über die Stoffraumgleichung auf 1 000 dm³ prüfen und den äquivalenten Wasserzementwert mit dem k-Wert für Flugasche berechnen." },
+      { stufe: "Anwenden", text: "eine Betonrezeptur über die Stoffraumgleichung auf 1000 dm³ prüfen und den äquivalenten Wasserzementwert mit dem k-Wert für Flugasche berechnen." },
       { stufe: "Anwenden", text: "das Nennmaß der Betondeckung c_nom = c_min + Δc_dev für eine Expositionsklasse XC oder XD ermitteln." },
     ],
   },

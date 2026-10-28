@@ -1,3 +1,4 @@
+import { formatDeIntl } from '../utils/numberFormat';
 /**
  * Stoffraumrechnung für 1 m³ Beton und Wasserzementwert nach DIN EN 206 / DIN 1045-2.
  * Reiner Rechenkern – geprüft in tests/mischung.test.ts. Die Anforderungen der Expositionsklassen bleiben im Modul.
@@ -78,7 +79,7 @@ export function pruefeMischung(e: MischungEingabe): Hinweis[] {
   if ([e.fa, e.sf, e.hues, e.biochar, e.zusatzmittel, e.stahlfaser, e.ppFaser, e.luft].some(x => x < 0)) h.push({ stufe: 'fehler', feld: 'eingabe', text: 'Mengen und Luftgehalt dürfen nicht negativ sein.' });
   if (e.fraktionen.some(f => f.anteil < 0 || f.feuchte < 0 || f.wa < 0)) h.push({ stufe: 'fehler', feld: 'fraktionen', text: 'Anteile, Feuchte und Wasseraufnahme der Fraktionen dürfen nicht negativ sein.' });
   const summe = e.fraktionen.reduce((a, f) => a + f.anteil, 0);
-  if (Math.abs(summe - 100) >= 0.1) h.push({ stufe: 'warnung', feld: 'fraktionen', text: `Die Fraktionsanteile ergeben ${summe.toLocaleString('de-DE')} % statt 100 %.` });
+  if (Math.abs(summe - 100) >= 0.1) h.push({ stufe: 'warnung', feld: 'fraktionen', text: `Die Fraktionsanteile ergeben ${formatDeIntl(summe)} % statt 100 %.` });
   if (e.luft > 12) h.push({ stufe: 'warnung', feld: 'luft', text: 'Luftgehalt über 12 Vol.-% ist für Normalbeton unüblich.' });
   return h;
 }
@@ -96,7 +97,7 @@ export function stoffraum(e: MischungEingabe) {
   const volOhneGestein = Object.values(vol).reduce((a, v) => a + v, 0);
   const volGestein = 1000 - volOhneGestein;
   if (!hinweise.some(x => x.stufe === 'fehler') && volGestein <= 0) {
-    hinweise.push({ stufe: 'fehler', feld: 'zement', text: `Leim, Luft und Fasern füllen bereits ${Math.round(volOhneGestein).toLocaleString('de-DE')} dm³ – für die Gesteinskörnung bleibt kein Stoffraum.` });
+    hinweise.push({ stufe: 'fehler', feld: 'zement', text: `Leim, Luft und Fasern füllen bereits ${formatDeIntl(Math.round(volOhneGestein))} dm³ – für die Gesteinskörnung bleibt kein Stoffraum.` });
   } else if (volGestein > 0 && volGestein < 500) {
     hinweise.push({ stufe: 'warnung', feld: 'zement', text: 'Weniger als 500 dm³/m³ Gesteinskörnung – sehr leimreiche Mischung, Schwinden und Wärmeentwicklung prüfen.' });
   }
@@ -122,7 +123,7 @@ export function stoffraum(e: MischungEingabe) {
       hinweise.push({ stufe: 'warnung', feld: 'sf', text: `Flugasche und Silikastaub gemeinsam sind nach DIN 1045-2 mit ${e.zementArt} nicht zulässig (nur CEM I, CEM II-S, CEM II/A-D, CEM II-T, CEM II/A-LL, CEM III/A).` });
     } else {
       maxFaKombination = Math.max(0, 3 * (g - e.sf / e.zement)) * e.zement;
-      if (e.fa > maxFaKombination + 1e-9) hinweise.push({ stufe: 'warnung', feld: 'fa', text: `Kombination Flugasche + Silikastaub: f/z ≤ 3·(${g.toLocaleString('de-DE')} − s/z) verletzt – höchstens ${Math.round(maxFaKombination).toLocaleString('de-DE')} kg/m³ Flugasche bei ${e.zementArt} (Alkalitätsreserve, DIN 1045-2).` });
+      if (e.fa > maxFaKombination + 1e-9) hinweise.push({ stufe: 'warnung', feld: 'fa', text: `Kombination Flugasche + Silikastaub: f/z ≤ 3·(${formatDeIntl(g)} − s/z) verletzt – höchstens ${formatDeIntl(Math.round(maxFaKombination))} kg/m³ Flugasche bei ${e.zementArt} (Alkalitätsreserve, DIN 1045-2).` });
     }
   }
   if (!fehlerhaft && e.sf > maxSf + 1e-9) hinweise.push({ stufe: 'warnung', feld: 'sf', text: 'Silikastaub über s/z = 0,11: Der Überschuss wird im äquivalenten w/z-Wert nicht angerechnet.' });

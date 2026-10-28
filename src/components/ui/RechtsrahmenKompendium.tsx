@@ -173,7 +173,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     coreSummary: 'Die neugefasste EPBD ist das zentraleuropäische Leitgesetz für den Bau- und Immobiliensektor. Sie verlangt ab 2028 (öffentliche Neubauten) bzw. 2030 (alle Neubauten) den Standard des Null-Emissions-Gebäudes (Zero-Emission Building, ZEB). Revolutionär: Sie dehnt das Baurecht erstmals von der reinen Betriebsenergie auf den gesamten Lebenszyklus aus – das Treibhauspotenzial (Lebenszyklus-GWP) muss zwingend im Energieausweis ausgewiesen werden.',
     keyDuties: [
       'Null-Emissions-Gebäude (ZEB): 0 kg CO₂e operative Emissionen aus fossilen Brennstoffen vor Ort (ab 2028 für öffentliche Bauten, ab 2030 für alle Neubauten).',
-      'Lebenszyklus-GWP (GWP_tot in kg CO₂e/m²a): Verpflichtende Ausweisung im Energieausweis ab 2028 (> 1.000 m²) und ab 2030 für alle Neubauten.',
+      'Lebenszyklus-GWP (GWP_tot in kg CO₂e/m²a): Verpflichtende Ausweisung im Energieausweis ab 2028 (> 1000 m²) und ab 2030 für alle Neubauten.',
       'Sanierung Nichtwohngebäude: Mindesteffizienzstandards (MEPS) – 16 % der schlechtesten Bestandsgebäude bis 2030, 26 % bis 2033 sanieren.',
       'Sanierung Wohngebäude: Senkung des durchschnittlichen Primärenergieverbrauchs um 16 % bis 2030 und 20–22 % bis 2035 (55 % durch die schlechtesten 43 % des Bestands).',
       'Fossiler Kesselausstieg: Komplettes Verbot fossiler Heizkessel bis spätestens 2040; Subventionsstopp ab 01.01.2025.',
@@ -183,7 +183,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     milestones: [
       { year: '2024', text: 'Inkrafttreten (Mai 2024); Start der 24-monatigen Umsetzungsfrist für Mitgliedstaaten.' },
       { year: '2025', text: 'Subventionsstopp für eigenständige fossile Heizkessel (Öl/Gas).' },
-      { year: '2028', text: 'ZEB-Standard für neue öffentliche Gebäude; Lebenszyklus-GWP-Ausweis für alle Neubauten > 1.000 m².' },
+      { year: '2028', text: 'ZEB-Standard für neue öffentliche Gebäude; Lebenszyklus-GWP-Ausweis für alle Neubauten > 1000 m².' },
       { year: '2030', text: 'ZEB & GWP für ausnahmslos alle Neubauten; 16 % MEPS-Sanierung Nichtwohn.' },
       { year: '2035', text: '20–22 % Primärenergiereduktion im Wohngebäudebestand.' },
       { year: '2040', text: 'Vollständiger Ausstieg aus fossilen Brennstoffen in der Gebäudeheizung.' }
@@ -234,17 +234,17 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     audiences: ['bestand', 'planer', 'finanzen'],
     primaryTarget: 'Kommunen, Netzbetreiber, Stadtwerke, Hauseigentümer',
     leadQuote: 'Verbindliche kommunale Wärmepläne bis 2026 bzw. 2028 als Grundlage für Sanierungsentscheidungen.',
-    coreSummary: 'Das WPG verpflichtet alle rund 11.000 deutschen Kommunen zur Erstellung eines verbindlichen Wärmeplans. Dadurch erfahren Hauseigentümer verlässlich, ob ihr Gebäude an ein Fernwärmenetz oder Wasserstoffnetz angeschlossen werden kann oder ob sie eigenständig dezentral (Wärmepumpe + Dämmung) dekarbonisieren müssen.',
+    coreSummary: 'Das WPG verpflichtet alle rund 11 000 deutschen Kommunen zur Erstellung eines verbindlichen Wärmeplans. Dadurch erfahren Hauseigentümer verlässlich, ob ihr Gebäude an ein Fernwärmenetz oder Wasserstoffnetz angeschlossen werden kann oder ob sie eigenständig dezentral (Wärmepumpe + Dämmung) dekarbonisieren müssen.',
     keyDuties: [
-      'Wärmeplanpflicht für Großstädte (> 100.000 Einw.) bis 30. Juni 2026.',
-      'Wärmeplanpflicht für kleinere Kommunen (< 100.000 Einw.) bis 30. Juni 2028.',
+      'Wärmeplanpflicht für Großstädte (> 100 000 Einw.) bis 30. Juni 2026.',
+      'Wärmeplanpflicht für kleinere Kommunen (< 100 000 Einw.) bis 30. Juni 2028.',
       'Wärmenetze müssen bis 2030 mindestens 30 % und bis 2040 mindestens 80 % erneuerbare Wärme einspeisen.',
       'Vollständige Klimaneutralität aller Wärmenetze bis 2045.'
     ],
     impactOnMaterials: 'Entscheidet über den Sanierungsumfang: Gebäude ohne Wärmenetzanschluss benötigen tiefere Hüllsanierungen, um Vorlauftemperaturen für Niedertemperatur-Wärmepumpen (≤ 55 °C) zu erreichen.',
     milestones: [
       { year: '2024', text: 'Inkrafttreten am 01.01.2024.' },
-      { year: '2026', text: 'Stichtag Wärmeplanung für Städte > 100.000 Einwohner.' },
+      { year: '2026', text: 'Stichtag Wärmeplanung für Städte > 100 000 Einwohner.' },
       { year: '2028', text: 'Stichtag Wärmeplanung für alle übrigen Kommunen in Deutschland.' },
       { year: '2030', text: 'Wärmenetze müssen mind. 30 % Erneuerbare/Abwärme liefern.' }
     ]
@@ -574,7 +574,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     coreSummary: 'Die EU-Taxonomie legt Kriterien fest, wann eine Bau- oder Immobilientätigkeit als ökologisch nachhaltig gilt. Zentral ist das Doppelkriterium: Substantial Contribution zu einem Umweltziel (z. B. Primärenergiebedarf 10 % unter dem Niedrigstenergiegebäude-Standard NZEB) UND die Einhaltung aller Do-No-Significant-Harm-Kriterien (DNSH) bezüglich Kreislaufwirtschaft, Schadstoffen, Wasser und Biodiversität.',
     keyDuties: [
       'Neubau: Primärenergiebedarf mindestens 10 % besser als der nationale GEG-Standard.',
-      'Neubau > 5.000 m²: Verpflichtende Lebenszyklus-Ökobilanz (LCA nach EN 15978) und Offenlegung des GWP.',
+      'Neubau > 5000 m²: Verpflichtende Lebenszyklus-Ökobilanz (LCA nach EN 15978) und Offenlegung des GWP.',
       'Sanierung: Mindestens 30 % Primärenergieeinsparung nachgewiesen im Energieausweis.',
       'DNSH Kreislaufwirtschaft: Mindestens 70 % der Bau- und Abbruchabfälle müssen stofflich recycelt werden.',
       'DNSH Schadstoffe: Ausschluss von SVHC-Gefahrstoffen (REACH Art. 57) in verbauten Materialien.'
@@ -597,7 +597,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     audiences: ['finanzen', 'baustoffe'],
     primaryTarget: 'Börsennotierte und große Bauunternehmen, Wohnungsbaugesellschaften, Baustoffindustrie',
     leadQuote: 'Doppelte Wesentlichkeit und auditierte Offenlegung der Scope-3-Emissionen der Lieferkette.',
-    coreSummary: 'Die CSRD löst die bisherige NFRD ab und zwingt rund 50.000 Unternehmen in Europa zu einer extern geprüften Nachhaltigkeitsberichterstattung im Lagebericht. Baukonzerne und Bestandshalter müssen nach Standard ESRS E1 ihre vor- und nachgelagerten Scope-3-Emissionen quantifizieren – das umfasst alle grauen Emissionen der eingekauften Baustoffe und Nachunternehmerleistungen.',
+    coreSummary: 'Die CSRD löst die bisherige NFRD ab und zwingt rund 50 000 Unternehmen in Europa zu einer extern geprüften Nachhaltigkeitsberichterstattung im Lagebericht. Baukonzerne und Bestandshalter müssen nach Standard ESRS E1 ihre vor- und nachgelagerten Scope-3-Emissionen quantifizieren – das umfasst alle grauen Emissionen der eingekauften Baustoffe und Nachunternehmerleistungen.',
     keyDuties: [
       'Berichterstattung nach dem Prinzip der doppelten Wesentlichkeit (Impact & Financial Materiality).',
       'Detaillierte Bilanzierung von Scope 1, Scope 2 und vor allem Scope 3 (eingekaufte Güter & Baustoffe).',
@@ -631,10 +631,10 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     ],
     impactOnMaterials: 'Erzwingt Auditierungen von Steinbrüchen in Übersee und zertifizierte Herkunftsnachweise für Gesteinskörnungen, Metalle und Hölzer.',
     milestones: [
-      { year: '2023', text: 'LkSG gilt in DE für Unternehmen > 3.000 Mitarbeiter.' },
-      { year: '2024', text: 'LkSG-Schwelle sinkt in DE auf Unternehmen > 1.000 Mitarbeiter.' },
-      { year: '2027', text: 'Start der CSDDD für Konzerne > 5.000 MA und 1,5 Mrd. € Umsatz.' },
-      { year: '2029', text: 'Vollständige Anwendbarkeit der CSDDD (> 1.000 MA / 450 Mio. € Umsatz).' }
+      { year: '2023', text: 'LkSG gilt in DE für Unternehmen > 3000 Mitarbeiter.' },
+      { year: '2024', text: 'LkSG-Schwelle sinkt in DE auf Unternehmen > 1000 Mitarbeiter.' },
+      { year: '2027', text: 'Start der CSDDD für Konzerne > 5000 MA und 1,5 Mrd. € Umsatz.' },
+      { year: '2029', text: 'Vollständige Anwendbarkeit der CSDDD (> 1000 MA / 450 Mio. € Umsatz).' }
     ]
   },
   {
@@ -1277,7 +1277,7 @@ export const RechtsrahmenKompendium: React.FC = () => {
                 items: [
                   'EPBD Nationale Frist (Mai 2026): Novelle des deutschen Gebäudeenergiegesetzes (GEG) zur Verankerung der EPBD-Vorgaben.',
                   'CBAM Zahlungsphase (01.01.2026): Importeure von Zement, Stahl und Aluminium müssen offizielle CBAM-Zertifikate erwerben.',
-                  'Wärmeplanung Großstädte: Bis 30.06.2026 müssen Kommunen > 100.000 Einw. Wärmepläne vorlegen.',
+                  'Wärmeplanung Großstädte: Bis 30.06.2026 müssen Kommunen > 100 000 Einw. Wärmepläne vorlegen.',
                   'EU-ETS I Klinker-Abschlag: Erstes Abschmelzen freier Zertifikatezuteilungen für Zementwerke (-2,5 %).'
                 ]
               },
@@ -1298,8 +1298,8 @@ export const RechtsrahmenKompendium: React.FC = () => {
                 badgeColor: 'bg-rose-100 text-rose-900 border-rose-300',
                 items: [
                   'EPBD ZEB-Pflicht: Alle neuen öffentlichen Gebäude müssen dem Null-Emissions-Standard (ZEB) entsprechen.',
-                  'EPBD GWP-Pflicht: Verpflichtende Ausweisung des Lebenszyklus-Treibhauspotenzials (GWP) im Energieausweis für Neubauten > 1.000 m².',
-                  'Wärmeplanung flächendeckend: Bis 30.06.2028 müssen alle 11.000 deutschen Kommunen fertige Wärmepläne haben.'
+                  'EPBD GWP-Pflicht: Verpflichtende Ausweisung des Lebenszyklus-Treibhauspotenzials (GWP) im Energieausweis für Neubauten > 1000 m².',
+                  'Wärmeplanung flächendeckend: Bis 30.06.2028 müssen alle 11 000 deutschen Kommunen fertige Wärmepläne haben.'
                 ]
               },
               {

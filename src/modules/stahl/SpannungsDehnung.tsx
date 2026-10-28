@@ -325,7 +325,7 @@ export default function SpannungsDehnung({ activeSimSteel, selectedCurves, setSe
             <div className="text-xs text-text-main/80 space-y-2 leading-relaxed">
               <p><MdText text={inhalt.texte.warumSteigtDieSteifigkeit} /></p>
               <div className="p-3 bg-emerald-50/60 rounded-lg border border-emerald-200/60 text-emerald-950 font-semibold text-center">
-                <InlineMath math="E \approx 210.000\text{ N/mm}^2\text{ (MPa) für ALLE Baustähle!}" />
+                <InlineMath math="E \approx 210\,000\text{ N/mm}^2\text{ (MPa) für ALLE Baustähle!}" />
               </div>
               <p><MdText text={inhalt.texte.atomareUrsacheDerElastizitätsmodul} /></p>
               <p><MdText text={inhalt.texte.praxisfolgeBeiSchlankenTragwerken} /></p>

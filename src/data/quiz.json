@@ -16,7 +16,7 @@
       "Reindichte und Rohdichte sind bei mineralischen Baustoffen definitionsgemäß identisch."
     ],
     "correctIdx": 0,
-    "explanation": "Die Reindichte ist das reine Feststoffgewicht bezogen auf das reine Feststoffvolumen (ohne Poren). Zermahlt man z. B. hochporösen Blähton vollständig, erhält man die Reindichte (ca. 2.650 kg/m³). Die Rohdichte schließt die Poren des intakten Festkörpers ein, weshalb sie viel geringer ist (z. B. 650 kg/m³).",
+    "explanation": "Die Reindichte ist das reine Feststoffgewicht bezogen auf das reine Feststoffvolumen (ohne Poren). Zermahlt man z. B. hochporösen Blähton vollständig, erhält man die Reindichte (ca. 2650 kg/m³). Die Rohdichte schließt die Poren des intakten Festkörpers ein, weshalb sie viel geringer ist (z. B. 650 kg/m³).",
     "gapAnalysis": {
       "topic": "Dichtebegriffe & Porenvolumen",
       "misconception": "Verwechslung von Reindichte, Rohdichte und Raumgewicht.",
@@ -377,7 +377,7 @@
     "gapAnalysis": {
       "topic": "Straßenbau-Dimensionierung nach RStO 12/24",
       "misconception": "Annahme, dass Gesamtfahrzeugzahlen oder PKW-Mengen den Fahrbahnaufbau maßgeblich dimensionieren.",
-      "coreRule": "Eine 10-t-LKW-Achse schädigt die Straße rund 160.000-mal stärker als eine 1-t-PKW-Achse (4. Potenzgesetz: (10/1)^4 = 10.000 bis 160.000).",
+      "coreRule": "Eine 10-t-LKW-Achse schädigt die Straße rund 160 000-mal stärker als eine 1-t-PKW-Achse (4. Potenzgesetz: (10/1)^4 = 10 000 bis 160 000).",
       "actionableAdvice": "Lesen Sie im Modul RStO 12/24 das Berechnungsverfahren zur Ermittlung der dimensionierungsrelevanten Achsübergänge B.",
       "targetModuleTab": "bp_verkehr_rsto",
       "targetModuleLabel": "Verkehrswegebau (RStO 12/24)"
@@ -689,7 +689,7 @@
       "Weil schwach gebundener Asbest radioaktive Strahlung abgibt."
     ],
     "correctIdx": 1,
-    "explanation": "Schwach gebundener Asbest weist eine Rohdichte < 1.000 kg/m³ auf und kann schon durch minimale Luftströmungen oder Erschütterungen krebserregende Fasern freisetzen. Fest gebundener Asbestzement (Rohdichte > 1.400 kg/m³, Fasergehalt ca. 10-15%) setzt Fasern hingegen fast nur bei mechanischer Zerstörung (Brechen, Schleifen, Hochdruckreinigen) frei.",
+    "explanation": "Schwach gebundener Asbest weist eine Rohdichte < 1000 kg/m³ auf und kann schon durch minimale Luftströmungen oder Erschütterungen krebserregende Fasern freisetzen. Fest gebundener Asbestzement (Rohdichte > 1400 kg/m³, Fasergehalt ca. 10-15%) setzt Fasern hingegen fast nur bei mechanischer Zerstörung (Brechen, Schleifen, Hochdruckreinigen) frei.",
     "gapAnalysis": {
       "topic": "Asbestklassifizierung & Schutzstufen nach TRGS 519",
       "misconception": "Fehlende Unterscheidung zwischen schwach und fest gebundenen Asbestprodukten.",
@@ -1130,13 +1130,13 @@
       "556 N/mm²"
     ],
     "correctIdx": 1,
-    "explanation": "In N und mm umgerechnet: σ = 500 000 N / 90 000 mm² = 5,56 N/mm² (= 5,56 MPa). Wer kN durch cm² teilt, erhält 0,556 kN/cm² – ein um den Faktor 10 anderer Zahlenwert, weil 1 kN/cm² = 10 N/mm² ist.",
+    "explanation": "In N und mm umgerechnet: σ = 500 000 N / 90 000 mm² = 5,56 N/mm² (= 5,56 MPa). Wer kN durch cm² teilt, erhält 0,556 kN/cm² – ein um den Faktor 10 anderer Zahlenwert, weil 1 kN/cm² = 10 N/mm² ist.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "0,556 entsteht, wenn kN durch cm² geteilt wird (0,556 kN/cm²) und das Ergebnis nicht in N/mm² umgerechnet wird.",
       "",
-      "Hier wurde die Fläche zu klein angesetzt (9000 mm²); 30 cm × 30 cm = 300 mm × 300 mm = 90 000 mm².",
+      "Hier wurde die Fläche zu klein angesetzt (9000 mm²); 30 cm × 30 cm = 300 mm × 300 mm = 90 000 mm².",
       "556 entsteht, wenn die Kraft in N, die Fläche aber in cm² (900 cm²) eingesetzt wird – das Ergebnis wäre N/cm², nicht N/mm²."
     ],
     "gapAnalysis": {
@@ -1330,14 +1330,14 @@
       "138 mm"
     ],
     "correctIdx": 0,
-    "explanation": "ΔL = α_T · L₀ · ΔT = 23 · 10⁻⁶ · 10 000 mm · 60 K = 13,8 mm. Stahlbeton (α_T = 10 · 10⁻⁶ 1/K) dehnt sich unter gleichen Bedingungen nur um 6,0 mm – die Differenz muss die Befestigung aufnehmen.",
+    "explanation": "ΔL = α_T · L₀ · ΔT = 23 · 10⁻⁶ · 10 000 mm · 60 K = 13,8 mm. Stahlbeton (α_T = 10 · 10⁻⁶ 1/K) dehnt sich unter gleichen Bedingungen nur um 6,0 mm – die Differenz muss die Befestigung aufnehmen.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "",
       "6,0 mm gilt für Stahlbeton mit α_T = 10 · 10⁻⁶ 1/K; Aluminium dehnt sich mehr als doppelt so stark.",
-      "Um den Faktor 10 zu klein – vermutlich wurde L₀ mit 1000 mm statt 10 000 mm eingesetzt.",
-      "Um den Faktor 10 zu groß; ΔL = 23 · 10⁻⁶ · 10 000 mm · 60 K = 13,8 mm."
+      "Um den Faktor 10 zu klein – vermutlich wurde L₀ mit 1000 mm statt 10 000 mm eingesetzt.",
+      "Um den Faktor 10 zu groß; ΔL = 23 · 10⁻⁶ · 10 000 mm · 60 K = 13,8 mm."
     ],
     "gapAnalysis": {
       "topic": "Wärmedehnung im Vergleich",
@@ -1362,7 +1362,7 @@
     "topic": "Spezifische Steifigkeit",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 338",
-    "question": "Baustahl hat E ≈ 210 000 MPa, Nadelholz C24 faserparallel E₀,mean ≈ 11 000 MPa. Was folgt daraus für die auf das Gewicht bezogene Steifigkeit E/ρ?",
+    "question": "Baustahl hat E ≈ 210 000 MPa, Nadelholz C24 faserparallel E₀,mean ≈ 11 000 MPa. Was folgt daraus für die auf das Gewicht bezogene Steifigkeit E/ρ?",
     "options": [
       "Stahl ist auch gewichtsbezogen rund 20-mal steifer als Holz.",
       "Holz ist gewichtsbezogen rund 20-mal steifer als Stahl, da es leichter ist.",
@@ -1370,14 +1370,14 @@
       "Holz ist gewichtsbezogen etwa doppelt so steif wie Stahl (faserparallel)."
     ],
     "correctIdx": 2,
-    "explanation": "E/ρ: Stahl 210 000 / 7850 ≈ 26,8; Holz 11 000 / 420 ≈ 26,2 (jeweils MPa je kg/m³). Bezogen auf das Gewicht sind beide nahezu gleich steif – ein Grund für die Effizienz des Holzbaus. Quer zur Faser gilt das nicht.",
+    "explanation": "E/ρ: Stahl 210 000 / 7850 ≈ 26,8; Holz 11 000 / 420 ≈ 26,2 (jeweils MPa je kg/m³). Bezogen auf das Gewicht sind beide nahezu gleich steif – ein Grund für die Effizienz des Holzbaus. Quer zur Faser gilt das nicht.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "Der Faktor 20 gilt nur für E selbst; Stahl ist aber auch rund 19-mal schwerer, sodass sich der Vorteil bei E/ρ aufhebt.",
       "Hier wurde nur die Dichte berücksichtigt; der rund 19-fach höhere E-Modul des Stahls gleicht seine höhere Dichte aus.",
       "",
-      "E/ρ ergibt für Holz 11 000/420 ≈ 26 und für Stahl 210 000/7850 ≈ 27 – nahezu gleich, nicht doppelt so groß."
+      "E/ρ ergibt für Holz 11 000/420 ≈ 26 und für Stahl 210 000/7850 ≈ 27 – nahezu gleich, nicht doppelt so groß."
     ],
     "gapAnalysis": {
       "topic": "Spezifische Steifigkeit",
@@ -2942,7 +2942,7 @@
     "gapAnalysis": {
       "topic": "Quecksilberporosimetrie",
       "misconception": "Ein quadratischer Zusammenhang wie beim Kapillarsaugen wird angenommen.",
-      "coreRule": "Washburn: r = −2γ cos θ / p; r [nm] ≈ 7 400 / p [bar].",
+      "coreRule": "Washburn: r = −2γ cos θ / p; r [nm] ≈ 7400 / p [bar].",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Quecksilberporosimetrie“ im Modul Analytik & Diagnostik noch einmal durch.",
       "targetModuleTab": "analytik",
       "targetModuleLabel": "Analytik & Diagnostik"
@@ -3094,13 +3094,13 @@
       "8,89 N/mm²"
     ],
     "correctIdx": 0,
-    "explanation": "f_ct,sp = 2F/(π·L·d) = 2·200 000/(π·300·150) = 2,83 N/mm². Die zentrische Zugfestigkeit wäre ≈ 0,9 · 2,83 = 2,55 N/mm².",
+    "explanation": "f_ct,sp = 2F/(π·L·d) = 2·200 000/(π·300·150) = 2,83 N/mm². Die zentrische Zugfestigkeit wäre ≈ 0,9 · 2,83 = 2,55 N/mm².",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "",
       "1,41 N/mm² entsteht, wenn der Faktor 2 im Zähler vergessen wird: F/(π · L · d).",
-      "4,44 N/mm² = 200 000/(150 · 300); hier wurde die Kraft auf die Längsschnittfläche bezogen und der Faktor 2/π vergessen.",
+      "4,44 N/mm² = 200 000/(150 · 300); hier wurde die Kraft auf die Längsschnittfläche bezogen und der Faktor 2/π vergessen.",
       "8,89 N/mm² = 2F/(L · d) ohne π; der Faktor π ist Teil der Spaltzugformel."
     ],
     "gapAnalysis": {
@@ -3139,7 +3139,7 @@
     "bloom": "Erinnern",
     "niveau": "B",
     "distraktorFeedback": [
-      "Beide Sorten haben R_e ≥ 500 N/mm² und denselben E-Modul von rund 200 000 N/mm²; sie unterscheiden sich in der Duktilität.",
+      "Beide Sorten haben R_e ≥ 500 N/mm² und denselben E-Modul von rund 200 000 N/mm²; sie unterscheiden sich in der Duktilität.",
       "Die Kerbschlagarbeit kennzeichnet die Gütegruppen von Baustählen (z. B. J2); für Betonstahl ist die Duktilitätsklasse maßgebend.",
       "",
       "Wärmedehnzahl und Querdehnzahl sind Werkstoffkonstanten des Stahls und für beide Sorten praktisch gleich."
@@ -3386,7 +3386,7 @@
     "bloom": "Verstehen",
     "niveau": "B",
     "distraktorFeedback": [
-      "Spannstahl hat mit rund 195 000 N/mm² sogar einen etwas kleineren E-Modul als Betonstahl; die Steifigkeit erklärt die höhere Risslast nicht.",
+      "Spannstahl hat mit rund 195 000 N/mm² sogar einen etwas kleineren E-Modul als Betonstahl; die Steifigkeit erklärt die höhere Risslast nicht.",
       "Auch bei gleicher Festigkeitsklasse reißt der Spannbetonbalken später; entscheidend ist der Vordruck am Biegezugrand.",
       "",
       "Vor der Rissbildung trägt der Beton die Biegezugspannung; die Stahlfestigkeit bestimmt die Bruchlast, nicht die Risslast."
@@ -3709,12 +3709,12 @@
       "6 mm"
     ],
     "correctIdx": 3,
-    "explanation": "Δl = α_T·ΔT·l = 10·10⁻⁶ · 30 · 20 000 mm = 6 mm.",
+    "explanation": "Δl = α_T·ΔT·l = 10·10⁻⁶ · 30 · 20 000 mm = 6 mm.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
-      "Um den Faktor 10 zu klein, vermutlich mit l = 2000 mm statt 20 000 mm gerechnet.",
-      "Um den Faktor 100 zu klein; mit l = 20 000 mm ergibt sich Δl = 10 · 10⁻⁶ · 30 · 20 000 mm = 6 mm.",
+      "Um den Faktor 10 zu klein, vermutlich mit l = 2000 mm statt 20 000 mm gerechnet.",
+      "Um den Faktor 100 zu klein; mit l = 20 000 mm ergibt sich Δl = 10 · 10⁻⁶ · 30 · 20 000 mm = 6 mm.",
       "Um den Faktor 10 zu groß, z. B. durch α_T = 10⁻⁴ statt 10 · 10⁻⁶ 1/K.",
       ""
     ],
@@ -3741,7 +3741,7 @@
     "topic": "Kriechzahl",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1, 3.1.4",
-    "question": "Eine Stütze wird mit σ_c = 12 N/mm² belastet (E_c = 34 650 N/mm²). Wie groß ist die Kriechdehnung bei einer Endkriechzahl φ = 2,5?",
+    "question": "Eine Stütze wird mit σ_c = 12 N/mm² belastet (E_c = 34 650 N/mm²). Wie groß ist die Kriechdehnung bei einer Endkriechzahl φ = 2,5?",
     "options": [
       "0,35 ‰",
       "1,21 ‰",
@@ -4314,7 +4314,7 @@
     "topic": "Dehnsteifigkeit",
     "difficulty": "Basis",
     "normRef": "DIN EN 1993-1-1, 3.2.6",
-    "question": "Ein Rundstab S235 (d = 30 mm, L = 4 m, E = 210 000 MPa) wird mit 120 kN gezogen. Wie groß ist die Verlängerung?",
+    "question": "Ein Rundstab S235 (d = 30 mm, L = 4 m, E = 210 000 MPa) wird mit 120 kN gezogen. Wie groß ist die Verlängerung?",
     "options": [
       "0,32 mm",
       "32,3 mm",
@@ -4322,12 +4322,12 @@
       "3,23 mm"
     ],
     "correctIdx": 3,
-    "explanation": "A = 706,9 mm², EA = 148 440 kN; ΔL = F · L/EA = 120 · 4000/148 440 = 3,23 mm.",
+    "explanation": "A = 706,9 mm², EA = 148 440 kN; ΔL = F · L/EA = 120 · 4000/148 440 = 3,23 mm.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "Um den Faktor 10 zu klein, z. B. durch L = 400 mm statt 4000 mm.",
-      "Um den Faktor 10 zu groß, z. B. mit E = 21 000 MPa statt 210 000 MPa gerechnet.",
+      "Um den Faktor 10 zu groß, z. B. mit E = 21 000 MPa statt 210 000 MPa gerechnet.",
       "0,81 mm ergibt sich, wenn der Durchmesser als Radius eingesetzt wird (A = π · 30² mm²); richtig ist A = π · 15² = 706,9 mm².",
       ""
     ],
@@ -4643,7 +4643,7 @@
     "topic": "Temperaturleitfähigkeit",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN ISO 10456",
-    "question": "Beton: λ = 2,0 W/(m·K), ρ = 2 400 kg/m³, c = 1 000 J/(kg·K). Wie groß ist die Temperaturleitfähigkeit a?",
+    "question": "Beton: λ = 2,0 W/(m·K), ρ = 2400 kg/m³, c = 1000 J/(kg·K). Wie groß ist die Temperaturleitfähigkeit a?",
     "options": [
       "8,3 · 10⁻⁷ m²/s",
       "4,8 · 10⁶ m²/s",
@@ -4651,7 +4651,7 @@
       "2,1 · 10⁻⁵ m²/s"
     ],
     "correctIdx": 0,
-    "explanation": "a = λ/(ρ·c) = 2,0 / (2 400 · 1 000) = 8,3 · 10⁻⁷ m²/s. Je größer a, desto schneller folgt die Bauteiltemperatur einer Temperaturänderung an der Oberfläche.",
+    "explanation": "a = λ/(ρ·c) = 2,0 / (2400 · 1000) = 8,3 · 10⁻⁷ m²/s. Je größer a, desto schneller folgt die Bauteiltemperatur einer Temperaturänderung an der Oberfläche.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -4693,7 +4693,7 @@
       "Weil Holzfaser eine geringere Rohdichte als EPS besitzt"
     ],
     "correctIdx": 1,
-    "explanation": "Holzfaser hat bei etwa 150–250 kg/m³ und c ≈ 2 100 J/(kg·K) ein vielfach höheres ρ·c als EPS (≈ 20 kg/m³). Die Temperaturamplitude wird gedämpft und phasenverschoben.",
+    "explanation": "Holzfaser hat bei etwa 150–250 kg/m³ und c ≈ 2100 J/(kg·K) ein vielfach höheres ρ·c als EPS (≈ 20 kg/m³). Die Temperaturamplitude wird gedämpft und phasenverschoben.",
     "bloom": "Verstehen",
     "niveau": "B",
     "distraktorFeedback": [
@@ -5093,7 +5093,7 @@
     "options": [
       "s1: hohe Standsicherheit im Brand; d0: keine Verformung bis 30 Minuten",
       "s1: geringe Rauchentwicklung; d0: kein brennendes Abtropfen",
-      "s1: Schmelzpunkt über 1 000 °C; d0: keine Dämpfe beim Erhitzen",
+      "s1: Schmelzpunkt über 1000 °C; d0: keine Dämpfe beim Erhitzen",
       "s1: Schallschutzklasse 1; d0: Dichtheit gegen Rauchgase"
     ],
     "correctIdx": 1,
@@ -5341,25 +5341,25 @@
     "normRef": "Richtlinie (EU) 2024/1275, Art. 7",
     "question": "Ab wann muss nach der EPBD-Neufassung das Lebenszyklus-GWP für alle neuen Gebäude berechnet und offengelegt werden?",
     "options": [
-      "ab 2026 für alle Neubauten (ab 2025 für Gebäude über 1 000 m²)",
-      "ab 2028 für alle Neubauten (ab 2026 für Gebäude über 1 000 m²)",
-      "ab 2035 für alle Neubauten (ab 2030 für Gebäude über 1 000 m²)",
-      "ab 2030 für alle Neubauten (ab 2028 für Gebäude über 1 000 m²)"
+      "ab 2026 für alle Neubauten (ab 2025 für Gebäude über 1000 m²)",
+      "ab 2028 für alle Neubauten (ab 2026 für Gebäude über 1000 m²)",
+      "ab 2035 für alle Neubauten (ab 2030 für Gebäude über 1000 m²)",
+      "ab 2030 für alle Neubauten (ab 2028 für Gebäude über 1000 m²)"
     ],
     "correctIdx": 3,
-    "explanation": "Art. 7 EPBD: ab 1.1.2028 für neue Gebäude mit mehr als 1 000 m² Nutzfläche, ab 1.1.2030 für alle neuen Gebäude; Betrachtungszeitraum 50 Jahre.",
+    "explanation": "Art. 7 EPBD: ab 1.1.2028 für neue Gebäude mit mehr als 1000 m² Nutzfläche, ab 1.1.2030 für alle neuen Gebäude; Betrachtungszeitraum 50 Jahre.",
     "bloom": "Erinnern",
     "niveau": "B",
     "distraktorFeedback": [
       "Die EPBD-Neufassung trat erst 2024 in Kraft; die GWP-Pflicht beginnt nach Art. 7 nicht vor 2028.",
-      "2028 ist der Stichtag für Gebäude über 1 000 m² Nutzfläche; für alle Neubauten gilt die Pflicht erst ab 2030.",
+      "2028 ist der Stichtag für Gebäude über 1000 m² Nutzfläche; für alle Neubauten gilt die Pflicht erst ab 2030.",
       "Diese Termine sind zu spät; 2030 ist bereits der Stichtag für alle neuen Gebäude, nicht nur für große.",
       ""
     ],
     "gapAnalysis": {
       "topic": "EPBD Lebenszyklus-GWP",
       "misconception": "Die gestufte Einführung wird übersehen.",
-      "coreRule": "GWP-Offenlegung: 2028 (> 1 000 m²), 2030 (alle Neubauten).",
+      "coreRule": "GWP-Offenlegung: 2028 (> 1000 m²), 2030 (alle Neubauten).",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „EPBD Lebenszyklus-GWP“ im Modul Daten & Regeln noch einmal durch.",
       "targetModuleTab": "nachhaltigkeit_daten_regeln",
       "targetModuleLabel": "Daten & Regeln"
@@ -5469,7 +5469,7 @@
       "Nein, verlangt sind mindestens 20 % unter NZEB, also höchstens 40 kWh/(m²a)"
     ],
     "correctIdx": 1,
-    "explanation": "Nach Anhang I, 7.1 muss der Primärenergiebedarf mindestens 10 % unter der NZEB-Anforderung liegen: 0,90 · 50 = 45 kWh/(m²a). Mit 47 kWh/(m²a) ist das Kriterium verfehlt. Bei Gebäuden über 5 000 m² sind zusätzlich das Lebenszyklus-GWP zu berechnen und offenzulegen sowie Luftdichtheit und Wärmebrücken zu prüfen.",
+    "explanation": "Nach Anhang I, 7.1 muss der Primärenergiebedarf mindestens 10 % unter der NZEB-Anforderung liegen: 0,90 · 50 = 45 kWh/(m²a). Mit 47 kWh/(m²a) ist das Kriterium verfehlt. Bei Gebäuden über 5000 m² sind zusätzlich das Lebenszyklus-GWP zu berechnen und offenzulegen sowie Luftdichtheit und Wärmebrücken zu prüfen.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -5545,25 +5545,25 @@
     "normRef": "KfW-Merkblatt 297/298 (07/2026), TMA",
     "question": "Ein Wohngebäude in EH 40 mit Wärmepumpe erreicht GWP = 22,8 kg CO₂-Äq./(m² NRF·a) und PENRT = 101 kWh/(m² NRF·a). Welche Förderstufe im KfW-Programm 297/298 ist erreichbar?",
     "options": [
-      "Die Stufe mit QNG (bis 150 000 € je Wohneinheit), da das GWP eingehalten ist",
+      "Die Stufe mit QNG (bis 150 000 € je Wohneinheit), da das GWP eingehalten ist",
       "Keine Stufe, weil PENRT über dem QNG-PLUS-Grenzwert von 96 kWh/(m²a) liegt",
       "Nur die befristete Stufe EH 55, da EH 40 ohne QNG-Siegel nicht gefördert wird",
-      "Klimafreundliches Wohngebäude (bis 100 000 € je WE), nicht aber mit QNG"
+      "Klimafreundliches Wohngebäude (bis 100 000 € je WE), nicht aber mit QNG"
     ],
     "correctIdx": 3,
-    "explanation": "Die Stufe „Klimafreundliches Wohngebäude“ verlangt EH 40, keinen fossilen oder Biomasse-Wärmeerzeuger und die THG-Anforderung von QNG-PLUS (GWP ≤ 24 kg CO₂-Äq./(m² NRF·a), 50 Jahre). Für „mit QNG“ (bis 150 000 €) ist das Siegel nötig, und QNG-PLUS verlangt zusätzlich PENRT ≤ 96 kWh/(m² NRF·a) – das wird verfehlt.",
+    "explanation": "Die Stufe „Klimafreundliches Wohngebäude“ verlangt EH 40, keinen fossilen oder Biomasse-Wärmeerzeuger und die THG-Anforderung von QNG-PLUS (GWP ≤ 24 kg CO₂-Äq./(m² NRF·a), 50 Jahre). Für „mit QNG“ (bis 150 000 €) ist das Siegel nötig, und QNG-PLUS verlangt zusätzlich PENRT ≤ 96 kWh/(m² NRF·a) – das wird verfehlt.",
     "bloom": "Analysieren",
     "niveau": "M",
     "distraktorFeedback": [
       "Für die Stufe mit QNG muss das Siegel vorliegen; QNG-PLUS verlangt zusätzlich PENRT ≤ 96, hier 101.",
       "PENRT ist nur für das QNG-Siegel maßgebend; die Stufe ohne QNG prüft im Lebenszyklus nur das GWP.",
-      "EH 40 wird auch ohne QNG gefördert (bis 100 000 € je WE), wenn die THG-Anforderung erfüllt ist.",
+      "EH 40 wird auch ohne QNG gefördert (bis 100 000 € je WE), wenn die THG-Anforderung erfüllt ist.",
       ""
     ],
     "gapAnalysis": {
       "topic": "KfW-Neubauförderung und QNG",
       "misconception": "Förderstufe ohne QNG und QNG-Siegel werden gleichgesetzt.",
-      "coreRule": "KFN: EH 40 + GWP ≤ 24 → 100 000 €/WE; zusätzlich QNG-Zertifikat (GWP und PENRT) → 150 000 €/WE.",
+      "coreRule": "KFN: EH 40 + GWP ≤ 24 → 100 000 €/WE; zusätzlich QNG-Zertifikat (GWP und PENRT) → 150 000 €/WE.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Qualitätssiegel Nachhaltiges Gebäude (QNG)“ im Modul Daten & Regeln noch einmal durch.",
       "targetModuleTab": "nachhaltigkeit_daten_regeln",
       "targetModuleLabel": "Daten & Regeln"
@@ -6235,7 +6235,7 @@
     "options": [
       "etwa 220 kg",
       "etwa 920 kg",
-      "etwa 1 640 kg",
+      "etwa 1640 kg",
       "etwa 820 kg"
     ],
     "correctIdx": 3,
@@ -6245,7 +6245,7 @@
     "distraktorFeedback": [
       "223 kg ist die Kohlenstoffmasse; sie muss noch mit 44/12 in CO₂ umgerechnet werden.",
       "Hier wurde die Feuchte nicht abgezogen: 500 · 0,5 · 44/12 ≈ 920 kg; maßgebend ist die Darrmasse.",
-      "Hier fehlt der Kohlenstoffanteil von 50 %: 446 · 44/12 ≈ 1 640 kg.",
+      "Hier fehlt der Kohlenstoffanteil von 50 %: 446 · 44/12 ≈ 1640 kg.",
       ""
     ],
     "gapAnalysis": {
@@ -6314,26 +6314,26 @@
     "topic": "Rentenbarwert",
     "difficulty": "Vertiefung",
     "normRef": "ISO 15686-5",
-    "question": "Barwert von 2 000 €/a über 30 Jahre bei r = 2 %?",
+    "question": "Barwert von 2000 €/a über 30 Jahre bei r = 2 %?",
     "options": [
-      "60 000 €",
-      "33 100 €",
-      "81 100 €",
-      "44 800 €"
+      "60 000 €",
+      "33 100 €",
+      "81 100 €",
+      "44 800 €"
     ],
     "correctIdx": 3,
-    "explanation": "Rentenbarwertfaktor (1 − 1,02⁻³⁰)/0,02 = 22,40; 2 000 · 22,40 = 44 800 €.",
+    "explanation": "Rentenbarwertfaktor (1 − 1,02⁻³⁰)/0,02 = 22,40; 2000 · 22,40 = 44 800 €.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
-      "60 000 € ist die undiskontierte Summe 30 · 2 000 €; die Abzinsung fehlt.",
-      "Hier wurde die Gesamtsumme komplett auf das Jahr 30 abgezinst (60 000 · 1,02⁻³⁰); die Zahlungen fallen aber jährlich an.",
-      "81 100 € ist der Endwert der Zahlungsreihe nach 30 Jahren, nicht ihr Barwert.",
+      "60 000 € ist die undiskontierte Summe 30 · 2000 €; die Abzinsung fehlt.",
+      "Hier wurde die Gesamtsumme komplett auf das Jahr 30 abgezinst (60 000 · 1,02⁻³⁰); die Zahlungen fallen aber jährlich an.",
+      "81 100 € ist der Endwert der Zahlungsreihe nach 30 Jahren, nicht ihr Barwert.",
       ""
     ],
     "gapAnalysis": {
       "topic": "Rentenbarwert",
-      "misconception": "Die Zahlungen werden nicht abgezinst (60 000 €).",
+      "misconception": "Die Zahlungen werden nicht abgezinst (60 000 €).",
       "coreRule": "BW = C · (1 − (1 + r)^−T)/r.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Rentenbarwert“ im Modul Lebenszyklus & Kosten noch einmal durch.",
       "targetModuleTab": "lebenszyklus_kosten",
@@ -7298,27 +7298,27 @@
     "topic": "PCB-Raumluft",
     "difficulty": "Basis",
     "normRef": "PCB-Richtlinie, Fassung September 1994 (MVV TB 2025/1, lfd. Nr. A 3.2.4 mit Anlage A 3.2/1)",
-    "question": "Eine Raumluftmessung ergibt 1 400 ng/m³ PCB. Wie ist das nach PCB-Richtlinie einzuordnen?",
+    "question": "Eine Raumluftmessung ergibt 1400 ng/m³ PCB. Wie ist das nach PCB-Richtlinie einzuordnen?",
     "options": [
-      "Unter dem Vorsorgewert (< 3 000 ng/m³): langfristig tolerierbar, keine weiteren Maßnahmen",
-      "Zwischen Vorsorge- und Eingreifwert (300–3 000 ng/m³): Quelle suchen, mittelfristig sanieren",
-      "Über dem Eingreifwert (> 1 000 ng/m³): unverzüglich Maßnahmen zur Minderung der Belastung einleiten",
-      "Zwischen Vorsorge- und Eingreifwert (300–3 000 ng/m³): nur jährliche Kontrollmessung"
+      "Unter dem Vorsorgewert (< 3000 ng/m³): langfristig tolerierbar, keine weiteren Maßnahmen",
+      "Zwischen Vorsorge- und Eingreifwert (300–3000 ng/m³): Quelle suchen, mittelfristig sanieren",
+      "Über dem Eingreifwert (> 1000 ng/m³): unverzüglich Maßnahmen zur Minderung der Belastung einleiten",
+      "Zwischen Vorsorge- und Eingreifwert (300–3000 ng/m³): nur jährliche Kontrollmessung"
     ],
     "correctIdx": 1,
-    "explanation": "300 ng/m³ ist der Vorsorgewert, 3 000 ng/m³ der Eingreifwert; dazwischen sind Quellensuche und mittelfristige Sanierung angezeigt.",
+    "explanation": "300 ng/m³ ist der Vorsorgewert, 3000 ng/m³ der Eingreifwert; dazwischen sind Quellensuche und mittelfristige Sanierung angezeigt.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
-      "Der Vorsorgewert liegt bei 300 ng/m³; 3 000 ng/m³ ist der Eingreifwert.",
+      "Der Vorsorgewert liegt bei 300 ng/m³; 3000 ng/m³ ist der Eingreifwert.",
       "",
-      "Der Eingreifwert beträgt 3 000 ng/m³; 1 400 ng/m³ liegen darunter, sofortige Maßnahmen sind nicht gefordert.",
+      "Der Eingreifwert beträgt 3000 ng/m³; 1400 ng/m³ liegen darunter, sofortige Maßnahmen sind nicht gefordert.",
       "Die Einstufung stimmt, doch die Richtlinie verlangt Quellensuche und mittelfristige Sanierung, nicht nur Kontrollen."
     ],
     "gapAnalysis": {
       "topic": "PCB-Raumluft",
       "misconception": "Jeder PCB-Nachweis erfordert sofortige Räumung.",
-      "coreRule": "PCB-Raumluft: < 300 langfristig tolerierbar, 300–3 000 mittelfristig sanieren, > 3 000 sofort handeln.",
+      "coreRule": "PCB-Raumluft: < 300 langfristig tolerierbar, 300–3000 mittelfristig sanieren, > 3000 sofort handeln.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „PCB-Raumluft“ im Modul Hist. Bauprodukte noch einmal durch.",
       "targetModuleTab": "historische_bauprodukte",
       "targetModuleLabel": "Hist. Bauprodukte"
@@ -7794,7 +7794,7 @@
     "topic": "Deponieklasse",
     "difficulty": "Basis",
     "normRef": "DepV Anhang 3 Tabelle 2",
-    "question": "Ein Bauschutt hält alle DK-0-Werte ein, nur Sulfat im Eluat liegt bei 1 450 mg/l. Welche Deponieklasse ist mindestens erforderlich (ohne Sonderregeln)?",
+    "question": "Ein Bauschutt hält alle DK-0-Werte ein, nur Sulfat im Eluat liegt bei 1450 mg/l. Welche Deponieklasse ist mindestens erforderlich (ohne Sonderregeln)?",
     "options": [
       "DK 0",
       "DK I",
@@ -7802,13 +7802,13 @@
       "DK III"
     ],
     "correctIdx": 1,
-    "explanation": "Sulfat: DK 0 ≤ 100 mg/l (mit Fußnotenregelung bis 600), DK I ≤ 2 000 mg/l. Maßgebend ist der ungünstigste Parameter.",
+    "explanation": "Sulfat: DK 0 ≤ 100 mg/l (mit Fußnotenregelung bis 600), DK I ≤ 2000 mg/l. Maßgebend ist der ungünstigste Parameter.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "Der DK-0-Wert für Sulfat (100 mg/l, mit Fußnotenregel 600 mg/l) ist deutlich überschritten.",
       "",
-      "DK I hält den Sulfatwert von 2 000 mg/l bereits ein; DK II ist nicht mindestens erforderlich.",
+      "DK I hält den Sulfatwert von 2000 mg/l bereits ein; DK II ist nicht mindestens erforderlich.",
       "DK III ist für gefährliche Abfälle mit höheren Belastungen vorgesehen; hier genügt bereits DK I."
     ],
     "gapAnalysis": {
@@ -7838,7 +7838,7 @@
     "options": [
       "Ab 500 m³ Gesamtvolumen: Voranzeige zwei Wochen vorher, ohne Abschlussanzeige",
       "Erst nach Fertigstellung, als Abschlussanzeige mit Lageplan und Einbaumengen",
-      "Nur bei Einbau über 10 000 m³ und nur außerhalb von Wasserschutzgebieten",
+      "Nur bei Einbau über 10 000 m³ und nur außerhalb von Wasserschutzgebieten",
       "Ab 250 m³ Gesamtvolumen: Voranzeige vier Wochen vorher und Abschlussanzeige"
     ],
     "correctIdx": 3,
@@ -8121,25 +8121,25 @@
     "normRef": "TRGS 910; TRGS 519",
     "question": "Welche Faserkonzentrationen begrenzen den Bereich mittleren Risikos bei Asbest?",
     "options": [
-      "10 000 (Akzeptanz) bis 100 000 F/m³ (Toleranz)",
-      "1 000 (Akzeptanz) bis 10 000 F/m³ (Toleranz)",
-      "100 000 (Akzeptanz) bis 1 000 000 F/m³ (Toleranz)",
-      "10 000 (Toleranz) bis 100 000 F/m³ (Akzeptanz)"
+      "10 000 (Akzeptanz) bis 100 000 F/m³ (Toleranz)",
+      "1000 (Akzeptanz) bis 10 000 F/m³ (Toleranz)",
+      "100 000 (Akzeptanz) bis 1 000 000 F/m³ (Toleranz)",
+      "10 000 (Toleranz) bis 100 000 F/m³ (Akzeptanz)"
     ],
     "correctIdx": 0,
-    "explanation": "Akzeptanzkonzentration 10 000 F/m³ (Risiko 4:10 000), Toleranzkonzentration 100 000 F/m³ (4:1 000). Darüber: hohes Risiko, zulassungspflichtige Tätigkeiten.",
+    "explanation": "Akzeptanzkonzentration 10 000 F/m³ (Risiko 4:10 000), Toleranzkonzentration 100 000 F/m³ (4:1000). Darüber: hohes Risiko, zulassungspflichtige Tätigkeiten.",
     "bloom": "Erinnern",
     "niveau": "M",
     "distraktorFeedback": [
       "",
-      "Die Werte sind um eine Zehnerpotenz zu niedrig; die Akzeptanzkonzentration liegt bei 10 000 F/m³.",
-      "Die Werte sind um eine Zehnerpotenz zu hoch; oberhalb von 100 000 F/m³ beginnt bereits das hohe Risiko.",
+      "Die Werte sind um eine Zehnerpotenz zu niedrig; die Akzeptanzkonzentration liegt bei 10 000 F/m³.",
+      "Die Werte sind um eine Zehnerpotenz zu hoch; oberhalb von 100 000 F/m³ beginnt bereits das hohe Risiko.",
       "Begriffe vertauscht: Die Akzeptanzkonzentration ist der niedrigere, die Toleranzkonzentration der höhere Wert."
     ],
     "gapAnalysis": {
       "topic": "Risikokonzept Asbest",
       "misconception": "Unterhalb einer Wirkschwelle sei Asbest unbedenklich.",
-      "coreRule": "Niedrig < 10 000, mittel 10 000–100 000, hoch > 100 000 F/m³.",
+      "coreRule": "Niedrig < 10 000, mittel 10 000–100 000, hoch > 100 000 F/m³.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Risikokonzept Asbest“ im Modul Schad- und Gefahrstoffe noch einmal durch.",
       "targetModuleTab": "schadstoffe",
       "targetModuleLabel": "Schad- und Gefahrstoffe"
@@ -8200,22 +8200,22 @@
     "topic": "PCB in der Innenraumluft",
     "difficulty": "Vertiefung",
     "normRef": "AIR-Richtwerte PCB (UBA 2025); PCB-Richtlinie",
-    "question": "In einem Klassenzimmer werden 1 200 ng/m³ PCB (PCBges) in der Raumluft gemessen. Wie ist der Wert nach den 2025 veröffentlichten Richtwerten des Ausschusses für Innenraumrichtwerte (AIR) einzuordnen?",
+    "question": "In einem Klassenzimmer werden 1200 ng/m³ PCB (PCBges) in der Raumluft gemessen. Wie ist der Wert nach den 2025 veröffentlichten Richtwerten des Ausschusses für Innenraumrichtwerte (AIR) einzuordnen?",
     "options": [
       "Er überschreitet den Gefahrenwert RW II von 800 ng/m³; unverzüglich handeln",
-      "Er liegt unter dem Interventionswert von 3 000 ng/m³; es besteht kein Handlungsbedarf",
-      "Er liegt unter dem Vorsorgewert RW I von 2 000 ng/m³; regelmäßiges Lüften genügt",
-      "Er überschreitet nur den Zielwert von 1 000 ng/m³; Nachmessung in fünf Jahren"
+      "Er liegt unter dem Interventionswert von 3000 ng/m³; es besteht kein Handlungsbedarf",
+      "Er liegt unter dem Vorsorgewert RW I von 2000 ng/m³; regelmäßiges Lüften genügt",
+      "Er überschreitet nur den Zielwert von 1000 ng/m³; Nachmessung in fünf Jahren"
     ],
     "correctIdx": 0,
-    "explanation": "Der AIR hat 2025 für PCBges (Σ PCB6 · 5) RW I = 80 ng/m³ (Vorsorgewert) und RW II = 800 ng/m³ (Gefahrenwert) abgeleitet. Oberhalb RW II besteht unverzüglicher Handlungsbedarf. Die Werte der PCB-Richtlinie von 1994 (300 bzw. 3 000 ng/m³) hält der AIR für nicht mehr ausreichend schützend.",
+    "explanation": "Der AIR hat 2025 für PCBges (Σ PCB6 · 5) RW I = 80 ng/m³ (Vorsorgewert) und RW II = 800 ng/m³ (Gefahrenwert) abgeleitet. Oberhalb RW II besteht unverzüglicher Handlungsbedarf. Die Werte der PCB-Richtlinie von 1994 (300 bzw. 3000 ng/m³) hält der AIR für nicht mehr ausreichend schützend.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
       "",
-      "3 000 ng/m³ ist der Interventionswert der alten PCB-Richtlinie; nach den AIR-Werten ist RW II mit 800 ng/m³ überschritten.",
-      "Der Vorsorgewert RW I beträgt 80 ng/m³; 1 200 ng/m³ liegen sogar über dem Gefahrenwert RW II.",
-      "Einen Zielwert von 1 000 ng/m³ gibt es nicht; maßgebend sind RW I = 80 und RW II = 800 ng/m³."
+      "3000 ng/m³ ist der Interventionswert der alten PCB-Richtlinie; nach den AIR-Werten ist RW II mit 800 ng/m³ überschritten.",
+      "Der Vorsorgewert RW I beträgt 80 ng/m³; 1200 ng/m³ liegen sogar über dem Gefahrenwert RW II.",
+      "Einen Zielwert von 1000 ng/m³ gibt es nicht; maßgebend sind RW I = 80 und RW II = 800 ng/m³."
     ],
     "gapAnalysis": {
       "topic": "PCB in der Innenraumluft",
@@ -9229,7 +9229,7 @@
     "topic": "Chemischer Angriff",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 206; DIN 1045-2",
-    "question": "Ein Grundwasser enthält 1 500 mg/l Sulfat. Welche Expositionsklasse liegt vor und was folgt daraus?",
+    "question": "Ein Grundwasser enthält 1500 mg/l Sulfat. Welche Expositionsklasse liegt vor und was folgt daraus?",
     "options": [
       "XA1, keine besonderen Anforderungen an den Zement",
       "XA3, zusätzlich ein Schutz durch Beschichtung erforderlich",
@@ -9237,19 +9237,19 @@
       "XA2, Zement mit hohem Sulfatwiderstand (SR) erforderlich"
     ],
     "correctIdx": 3,
-    "explanation": "Sulfat über 600 bis 3 000 mg/l entspricht XA2; ab 600 mg/l ist nach DIN 1045-2 ein SR-Zement zu verwenden.",
+    "explanation": "Sulfat über 600 bis 3000 mg/l entspricht XA2; ab 600 mg/l ist nach DIN 1045-2 ein SR-Zement zu verwenden.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
-      "XA1 reicht nur bis 600 mg/l Sulfat; 1 500 mg/l liegen im Bereich von XA2.",
-      "XA3 beginnt erst über 3 000 mg/l Sulfat; 1 500 mg/l entsprechen XA2.",
+      "XA1 reicht nur bis 600 mg/l Sulfat; 1500 mg/l liegen im Bereich von XA2.",
+      "XA3 beginnt erst über 3000 mg/l Sulfat; 1500 mg/l entsprechen XA2.",
       "NA-Zemente betreffen die Alkali-Kieselsäure-Reaktion; gegen Sulfatangriff ist ein SR-Zement erforderlich.",
       ""
     ],
     "gapAnalysis": {
       "topic": "Chemischer Angriff",
       "misconception": "Sulfat sei über die Expositionsklasse XD geregelt.",
-      "coreRule": "Sulfat: XA1 200–600, XA2 > 600–3 000, XA3 > 3 000–6 000 mg/l.",
+      "coreRule": "Sulfat: XA1 200–600, XA2 > 600–3000, XA3 > 3000–6000 mg/l.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Chemischer Angriff“ im Modul Prinzipien & Übersicht noch einmal durch.",
       "targetModuleTab": "dauerhaftigkeit",
       "targetModuleLabel": "Prinzipien & Übersicht"
@@ -11068,7 +11068,7 @@
       "s_d,CO₂ ≥ 0,5 m",
       "s_d,CO₂ ≥ 50 m",
       "s_d,CO₂ ≥ 5 m",
-      "s_d,CO₂ ≥ 5 000 m"
+      "s_d,CO₂ ≥ 5000 m"
     ],
     "correctIdx": 1,
     "explanation": "Klopfer-Kriterium s_d,CO₂ ≥ 50 m; gleichzeitig soll die Beschichtung wasserdampfdurchlässig bleiben.",
@@ -11078,7 +11078,7 @@
       "0,5 m entspricht dünnen diffusionsoffenen Anstrichen und bremst die Karbonatisierung kaum.",
       "",
       "5 m ist eine Zehnerpotenz zu niedrig; das Klopfer-Kriterium verlangt mindestens 50 m.",
-      "5 000 m ist überzogen; solche Schichten wären auch für Wasserdampf nahezu dicht."
+      "5000 m ist überzogen; solche Schichten wären auch für Wasserdampf nahezu dicht."
     ],
     "gapAnalysis": {
       "topic": "Klopfer-Kriterium",
@@ -11102,22 +11102,22 @@
     "moduleTitle": "Schutz- & Instands.-Grundlagen",
     "topic": "De-Sitter-Regel",
     "difficulty": "Basis",
-    "question": "Ein Schutzdetail kostet in der Planung 2 000 €. Was kostet es nach der De-Sitter-Regel in der vierten Phase (umfassende Sanierung)?",
+    "question": "Ein Schutzdetail kostet in der Planung 2000 €. Was kostet es nach der De-Sitter-Regel in der vierten Phase (umfassende Sanierung)?",
     "options": [
-      "10 000 €",
-      "50 000 €",
-      "250 000 €",
-      "1 250 000 €"
+      "10 000 €",
+      "50 000 €",
+      "250 000 €",
+      "1 250 000 €"
     ],
     "correctIdx": 2,
-    "explanation": "Je Phase verfünffachen sich die Kosten: 2 000 · 5 · 5 · 5 = 2 000 · 125 = 250 000 €.",
+    "explanation": "Je Phase verfünffachen sich die Kosten: 2000 · 5 · 5 · 5 = 2000 · 125 = 250 000 €.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
-      "10 000 € entsprechen erst der zweiten Phase (Faktor 5).",
-      "50 000 € entsprechen der dritten Phase (Faktor 25).",
+      "10 000 € entsprechen erst der zweiten Phase (Faktor 5).",
+      "50 000 € entsprechen der dritten Phase (Faktor 25).",
       "",
-      "1 250 000 € entsprächen einer fünften Phase (Faktor 625)."
+      "1 250 000 € entsprächen einer fünften Phase (Faktor 625)."
     ],
     "gapAnalysis": {
       "topic": "De-Sitter-Regel",
@@ -12206,7 +12206,7 @@
     "topic": "GWP einer Wand aus Datenbankwerten",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 15978",
-    "question": "Eine Kalksandsteinwand ist 17,5 cm dick (ρ = 1 800 kg/m³). Der Datensatz nennt GWP A1–A3 = 0,12 kg CO₂-Äq./kg (Lehrwert). Wie groß ist das GWP A1–A3 je m² Wand?",
+    "question": "Eine Kalksandsteinwand ist 17,5 cm dick (ρ = 1800 kg/m³). Der Datensatz nennt GWP A1–A3 = 0,12 kg CO₂-Äq./kg (Lehrwert). Wie groß ist das GWP A1–A3 je m² Wand?",
     "options": [
       "rund 21,6 kg CO₂-Äq./m²",
       "rund 378 kg CO₂-Äq./m²",
@@ -12214,7 +12214,7 @@
       "rund 37,8 kg CO₂-Äq./m²"
     ],
     "correctIdx": 3,
-    "explanation": "Flächenbezogene Masse: 0,175 m · 1 800 kg/m³ = 315 kg/m²; GWP = 315 · 0,12 = 37,8 kg CO₂-Äq./m². Entscheidend ist, die deklarierte Einheit (hier kg) in die Bezugsgröße des Bauteils (m²) umzurechnen.",
+    "explanation": "Flächenbezogene Masse: 0,175 m · 1800 kg/m³ = 315 kg/m²; GWP = 315 · 0,12 = 37,8 kg CO₂-Äq./m². Entscheidend ist, die deklarierte Einheit (hier kg) in die Bezugsgröße des Bauteils (m²) umzurechnen.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -12535,15 +12535,15 @@
     "topic": "Bildauflösung",
     "difficulty": "Vertiefung",
     "normRef": "Bildverarbeitung",
-    "question": "Ein Foto bildet 1,20 m auf 4 000 Pixel ab. Kann eine KI darauf zuverlässig 0,2-mm-Risse erkennen?",
+    "question": "Ein Foto bildet 1,20 m auf 4000 Pixel ab. Kann eine KI darauf zuverlässig 0,2-mm-Risse erkennen?",
     "options": [
       "Ja: 0,30 mm/px genügen, da KI auch Strukturen unter einem Pixel sicher findet",
       "Nein: 0,30 mm/px ist gröber als die Rissbreite; nötig wären etwa 0,10 mm/px",
       "Ja: Mit 3,33 px/mm ist die Auflösung feiner als die Rissbreite von 0,2 mm",
-      "Ja, sofern das Bild nachträglich auf 8 000 Pixel Breite hochskaliert wird"
+      "Ja, sofern das Bild nachträglich auf 8000 Pixel Breite hochskaliert wird"
     ],
     "correctIdx": 1,
-    "explanation": "1 200 mm / 4 000 px = 0,30 mm/px; ein 0,2-mm-Riss sollte mindestens zwei Pixel überdecken.",
+    "explanation": "1200 mm / 4000 px = 0,30 mm/px; ein 0,2-mm-Riss sollte mindestens zwei Pixel überdecken.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -12577,7 +12577,7 @@
     "topic": "Überwachtes Lernen",
     "difficulty": "Basis",
     "normRef": "–",
-    "question": "Ein Modell soll Risse auf Fotos erkennen und wird dazu mit 5 000 von Fachleuten markierten Bildern trainiert. Welche Lernform ist das?",
+    "question": "Ein Modell soll Risse auf Fotos erkennen und wird dazu mit 5000 von Fachleuten markierten Bildern trainiert. Welche Lernform ist das?",
     "options": [
       "Unüberwachtes Lernen (Clustering ohne Vorgaben)",
       "Bestärkendes Lernen (Belohnung für Aktionen)",
@@ -12866,7 +12866,7 @@
     "topic": "Tokenbudget",
     "difficulty": "Vertiefung",
     "normRef": "Lehrbeispiel",
-    "question": "Ein Kontext von 128 000 Token, 2 000 Token Systemprompt und 8 000 Token Antwortreserve: Wie viele Seiten à 750 Token passen etwa hinein?",
+    "question": "Ein Kontext von 128 000 Token, 2000 Token Systemprompt und 8000 Token Antwortreserve: Wie viele Seiten à 750 Token passen etwa hinein?",
     "options": [
       "etwa 168",
       "etwa 171",
@@ -12874,14 +12874,14 @@
       "etwa 160"
     ],
     "correctIdx": 2,
-    "explanation": "(128 000 − 2 000 − 8 000)/750 = 118 000/750 ≈ 157 Seiten.",
+    "explanation": "(128 000 − 2000 − 8000)/750 = 118 000/750 ≈ 157 Seiten.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
-      "168 = (128 000 − 2 000)/750; die Antwortreserve von 8 000 Token wurde nicht abgezogen.",
-      "171 = 128 000/750; weder Systemprompt noch Antwortreserve wurden abgezogen.",
+      "168 = (128 000 − 2000)/750; die Antwortreserve von 8000 Token wurde nicht abgezogen.",
+      "171 = 128 000/750; weder Systemprompt noch Antwortreserve wurden abgezogen.",
       "",
-      "160 = (128 000 − 8 000)/750; der Systemprompt von 2 000 Token wurde vergessen."
+      "160 = (128 000 − 8000)/750; der Systemprompt von 2000 Token wurde vergessen."
     ],
     "gapAnalysis": {
       "topic": "Tokenbudget",
@@ -13404,7 +13404,7 @@
       "Ja: Der Unterschied von 4 Prozentpunkten ist bei 200 Aufgaben signifikant",
       "Ja: Das 95-%-Intervall beträgt nur etwa ±2,9 Prozentpunkte",
       "Nicht belastbar: Das 95-%-Intervall beträgt etwa ±5,7 Prozentpunkte",
-      "Nein: Erst ab 1 000 Aufgaben lässt sich ein Intervall überhaupt angeben"
+      "Nein: Erst ab 1000 Aufgaben lässt sich ein Intervall überhaupt angeben"
     ],
     "correctIdx": 2,
     "explanation": "1,96 · √(0,78 · 0,22/200) ≈ 0,057 > 0,04.",
@@ -14453,7 +14453,7 @@
     "topic": "Feuchtekorrektur",
     "difficulty": "Basis",
     "normRef": "DIN EN 206",
-    "question": "1 000 kg Sand (trocken) haben 4 % Oberflächenfeuchte. Wie viel Wasser ist von 165 kg Sollwasser abzuziehen?",
+    "question": "1000 kg Sand (trocken) haben 4 % Oberflächenfeuchte. Wie viel Wasser ist von 165 kg Sollwasser abzuziehen?",
     "options": [
       "4 kg",
       "125 kg",
@@ -14461,14 +14461,14 @@
       "38 kg"
     ],
     "correctIdx": 2,
-    "explanation": "0,04 · 1 000 kg = 40 kg; zugegeben werden 125 kg, die Sandeinwaage beträgt 1 040 kg.",
+    "explanation": "0,04 · 1000 kg = 40 kg; zugegeben werden 125 kg, die Sandeinwaage beträgt 1040 kg.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
-      "4 kg entspricht 0,4 %; 4 % von 1 000 kg sind 40 kg.",
+      "4 kg entspricht 0,4 %; 4 % von 1000 kg sind 40 kg.",
       "125 kg ist die noch zuzugebende Wassermenge (165 − 40), nicht der Abzug.",
       "",
-      "38 kg ergibt sich, wenn die 4 % auf die Feuchtmasse bezogen werden; angegeben ist der Bezug auf 1 000 kg trockenen Sand."
+      "38 kg ergibt sich, wenn die 4 % auf die Feuchtmasse bezogen werden; angegeben ist der Bezug auf 1000 kg trockenen Sand."
     ],
     "gapAnalysis": {
       "topic": "Feuchtekorrektur",
@@ -14575,22 +14575,22 @@
     "topic": "Kalkulation",
     "difficulty": "Vertiefung",
     "normRef": "KLR Bau",
-    "question": "Herstellkosten 100 000 €, AGK 9 %, Wagnis und Gewinn 5 %. Wie hoch ist der Angebotspreis nach K = (S + AGK)(1 + W_G)?",
+    "question": "Herstellkosten 100 000 €, AGK 9 %, Wagnis und Gewinn 5 %. Wie hoch ist der Angebotspreis nach K = (S + AGK)(1 + W_G)?",
     "options": [
-      "105 000 €",
-      "109 000 €",
-      "114 450 €",
-      "114 000 €"
+      "105 000 €",
+      "109 000 €",
+      "114 450 €",
+      "114 000 €"
     ],
     "correctIdx": 2,
-    "explanation": "109 000 € · 1,05 = 114 450 €.",
+    "explanation": "109 000 € · 1,05 = 114 450 €.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
-      "105 000 € berücksichtigt nur Wagnis und Gewinn; die AGK von 9 % fehlen.",
-      "109 000 € sind erst S + AGK; der Zuschlag für Wagnis und Gewinn fehlt noch.",
+      "105 000 € berücksichtigt nur Wagnis und Gewinn; die AGK von 9 % fehlen.",
+      "109 000 € sind erst S + AGK; der Zuschlag für Wagnis und Gewinn fehlt noch.",
       "",
-      "114 000 € addiert die Prozentsätze (9 % + 5 %); nach der Formel wird W+G auf (S + AGK) bezogen."
+      "114 000 € addiert die Prozentsätze (9 % + 5 %); nach der Formel wird W+G auf (S + AGK) bezogen."
     ],
     "gapAnalysis": {
       "topic": "Kalkulation",
@@ -14695,7 +14695,7 @@
     "topic": "Massenbeton",
     "difficulty": "Basis",
     "normRef": "DAfStb-Richtlinie Massige Bauteile aus Beton",
-    "question": "Wie groß ist der adiabatische Temperaturanstieg bei 260 kg/m³ Zement mit 350 kJ/kg, c = 1,0 kJ/(kg·K) und ρ = 2 400 kg/m³?",
+    "question": "Wie groß ist der adiabatische Temperaturanstieg bei 260 kg/m³ Zement mit 350 kJ/kg, c = 1,0 kJ/(kg·K) und ρ = 2400 kg/m³?",
     "options": [
       "etwa 16 K",
       "etwa 91 K",
@@ -14703,12 +14703,12 @@
       "etwa 3,8 K"
     ],
     "correctIdx": 2,
-    "explanation": "ΔT = 260 · 350 / (1,0 · 2 400) ≈ 37,9 K – ohne Kühlung steigt die Kerntemperatur entsprechend.",
+    "explanation": "ΔT = 260 · 350 / (1,0 · 2400) ≈ 37,9 K – ohne Kühlung steigt die Kerntemperatur entsprechend.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
-      "16 K ergibt sich, wenn zusätzlich noch einmal durch 2,4 geteilt wird; ΔT = 91 000/2 400 ≈ 38 K.",
-      "91 K entsteht mit 1 000 kg statt ρ = 2 400 kg/m³ im Nenner; die Rohdichte des Betons wurde nicht eingesetzt.",
+      "16 K ergibt sich, wenn zusätzlich noch einmal durch 2,4 geteilt wird; ΔT = 91 000/2 400 ≈ 38 K.",
+      "91 K entsteht mit 1000 kg statt ρ = 2400 kg/m³ im Nenner; die Rohdichte des Betons wurde nicht eingesetzt.",
       "",
       "3,8 K ist um den Faktor 10 zu klein; 260 · 350/2 400 ergibt etwa 38 K."
     ],
@@ -14777,7 +14777,7 @@
     "moduleTitle": "Kuriositäten & Rekorde",
     "topic": "Pumpdruck Burj Khalifa",
     "difficulty": "Vertiefung",
-    "question": "Beton (ρ = 2 400 kg/m³) wird 606 m senkrecht gepumpt. Wie groß ist allein der hydrostatische Druck am Fuß der Steigleitung?",
+    "question": "Beton (ρ = 2400 kg/m³) wird 606 m senkrecht gepumpt. Wie groß ist allein der hydrostatische Druck am Fuß der Steigleitung?",
     "options": [
       "etwa 14 bar",
       "etwa 60 bar",
@@ -14785,7 +14785,7 @@
       "etwa 209 bar"
     ],
     "correctIdx": 2,
-    "explanation": "p = ρ · g · H = 2 400 · 9,81 · 606 = 14,3 · 10⁶ Pa ≈ 143 bar. Mit Rohrreibung (Lehrannahme) ergeben sich rund 209 bar Förderdruck.",
+    "explanation": "p = ρ · g · H = 2400 · 9,81 · 606 = 14,3 · 10⁶ Pa ≈ 143 bar. Mit Rohrreibung (Lehrannahme) ergeben sich rund 209 bar Förderdruck.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -14858,7 +14858,7 @@
     "topic": "UHPC-Stütze",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1/NA",
-    "question": "N_Ed = 5 000 kN. Normalbeton f_cd = 17 N/mm², UHPC f_cd = 85 N/mm² (Lehrwerte, nur Betonquerschnitt). Um wie viel sinkt die erforderliche Fläche?",
+    "question": "N_Ed = 5000 kN. Normalbeton f_cd = 17 N/mm², UHPC f_cd = 85 N/mm² (Lehrwerte, nur Betonquerschnitt). Um wie viel sinkt die erforderliche Fläche?",
     "options": [
       "um rund 50 %",
       "um rund 20 %",
@@ -14866,7 +14866,7 @@
       "um rund 80 %"
     ],
     "correctIdx": 3,
-    "explanation": "A = N/f_cd: 294 000 mm² gegenüber 58 800 mm²; 1 − 17/85 = 0,80, also rund 80 % weniger Querschnitt – die Stabilität wird dann maßgebend.",
+    "explanation": "A = N/f_cd: 294 000 mm² gegenüber 58 800 mm²; 1 − 17/85 = 0,80, also rund 80 % weniger Querschnitt – die Stabilität wird dann maßgebend.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -15187,25 +15187,25 @@
     "normRef": "DIN EN 206 / DIN 1045-2",
     "question": "1 m³ Beton: z = 300 kg (ρ = 3,1 kg/dm³), w = 165 kg, Luft 2 Vol.-%. Wie viel trockene Gesteinskörnung (ρ = 2,65 kg/dm³) wird benötigt?",
     "options": [
-      "rund 1 365 kg",
-      "rund 1 903 kg",
-      "rund 1 956 kg",
-      "rund 2 160 kg"
+      "rund 1365 kg",
+      "rund 1903 kg",
+      "rund 1956 kg",
+      "rund 2160 kg"
     ],
     "correctIdx": 1,
-    "explanation": "V_g = 1 000 − 300/3,1 − 165 − 20 = 718,2 dm³; m_g = 718,2 · 2,65 ≈ 1 903 kg.",
+    "explanation": "V_g = 1000 − 300/3,1 − 165 − 20 = 718,2 dm³; m_g = 718,2 · 2,65 ≈ 1903 kg.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "Hier wurde die Zementmasse (300 kg) statt des Zementvolumens (96,8 dm³) vom Kubikmeter abgezogen.",
       "",
-      "Hier fehlt der Abzug des Luftvolumens von 20 dm³ (2 Vol.-%): 738,2 dm³ · 2,65 ≈ 1 956 kg.",
-      "Hier wurde das Zementvolumen nicht abgezogen: (1 000 − 165 − 20) dm³ · 2,65 ≈ 2 160 kg."
+      "Hier fehlt der Abzug des Luftvolumens von 20 dm³ (2 Vol.-%): 738,2 dm³ · 2,65 ≈ 1956 kg.",
+      "Hier wurde das Zementvolumen nicht abgezogen: (1000 − 165 − 20) dm³ · 2,65 ≈ 2160 kg."
     ],
     "gapAnalysis": {
       "topic": "Stoffraumrechnung",
       "misconception": "Luftporen und Zementvolumen würden vernachlässigt.",
-      "coreRule": "Die Volumina aller Bestandteile ergeben zusammen 1 000 dm³.",
+      "coreRule": "Die Volumina aller Bestandteile ergeben zusammen 1000 dm³.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Stoffraumrechnung“ im Modul Mischungsberechnung noch einmal durch.",
       "targetModuleTab": "mischungsberechnung",
       "targetModuleLabel": "Mischungsberechnung"
@@ -15437,7 +15437,7 @@
       "72 h"
     ],
     "correctIdx": 1,
-    "explanation": "M = (5 + 10) · 72 = 1 080 °C·h; t₂₀ = 1 080 / 30 = 36 h.",
+    "explanation": "M = (5 + 10) · 72 = 1080 °C·h; t₂₀ = 1080 / 30 = 36 h.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -15469,7 +15469,7 @@
     "topic": "Adiabatische Temperaturerhöhung",
     "difficulty": "Vertiefung",
     "normRef": "Wärmebilanz",
-    "question": "z = 280 kg/m³ LH-Zement mit Q = 250 kJ/kg, c·ρ = 2 500 kJ/(m³·K). Wie groß ist ΔT_ad?",
+    "question": "z = 280 kg/m³ LH-Zement mit Q = 250 kJ/kg, c·ρ = 2500 kJ/(m³·K). Wie groß ist ΔT_ad?",
     "options": [
       "rund 14 K",
       "rund 28 K",
@@ -15477,14 +15477,14 @@
       "rund 70 K"
     ],
     "correctIdx": 1,
-    "explanation": "280 · 250 = 70 000 kJ/m³; 70 000 / 2 500 = 28 K.",
+    "explanation": "280 · 250 = 70 000 kJ/m³; 70 000 / 2500 = 28 K.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "14 K entspräche nur der halben Wärmemenge; adiabatisch wird die gesamte Wärme 280 · 250 kJ/m³ angesetzt.",
       "",
       "56 K ergäbe sich mit rund 500 kJ/kg, einem Wert für schnell erhärtenden CEM I, nicht für LH-Zement.",
-      "Hier wurde 70 000 kJ/m³ durch 1 000 statt durch c·ρ = 2 500 kJ/(m³·K) geteilt."
+      "Hier wurde 70 000 kJ/m³ durch 1000 statt durch c·ρ = 2500 kJ/(m³·K) geteilt."
     ],
     "gapAnalysis": {
       "topic": "Adiabatische Temperaturerhöhung",
@@ -15550,7 +15550,7 @@
     "moduleTitle": "Hydratation & Folgen",
     "topic": "Kerntemperatur",
     "difficulty": "Vertiefung",
-    "question": "z = 320 kg/m³, Q = 350 kJ/kg, c·ρ = 2 500 kJ/(m³·K), Frischbetontemperatur 15 °C. Welche Kerntemperatur ist näherungsweise zu erwarten?",
+    "question": "z = 320 kg/m³, Q = 350 kJ/kg, c·ρ = 2500 kJ/(m³·K), Frischbetontemperatur 15 °C. Welche Kerntemperatur ist näherungsweise zu erwarten?",
     "options": [
       "etwa 45 °C",
       "etwa 60 °C",
@@ -15558,7 +15558,7 @@
       "etwa 75 °C"
     ],
     "correctIdx": 1,
-    "explanation": "ΔT_ad = 320 · 350 / 2 500 ≈ 45 K. Im Kern massiger Bauteile wird dieser Wert näherungsweise erreicht: 15 + 45 ≈ 60 °C.",
+    "explanation": "ΔT_ad = 320 · 350 / 2500 ≈ 45 K. Im Kern massiger Bauteile wird dieser Wert näherungsweise erreicht: 15 + 45 ≈ 60 °C.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -15918,7 +15918,7 @@
     "topic": "Leichtbeton",
     "difficulty": "Basis",
     "normRef": "DIN EN 1992-1-1, 11.3.2",
-    "question": "Wie groß ist der Abminderungsbeiwert η_E = (ρ/2 200)² für einen Leichtbeton mit ρ = 1 800 kg/m³?",
+    "question": "Wie groß ist der Abminderungsbeiwert η_E = (ρ/2 200)² für einen Leichtbeton mit ρ = 1800 kg/m³?",
     "options": [
       "0,45",
       "0,67",
@@ -15926,13 +15926,13 @@
       "1,00"
     ],
     "correctIdx": 1,
-    "explanation": "(1 800/2 200)² = 0,818² = 0,67.",
+    "explanation": "(1800/2 200)² = 0,818² = 0,67.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "Hier wurde zweimal quadriert (0,67² ≈ 0,45); der Beiwert ist nur (ρ/2 200)².",
       "",
-      "0,82 ist nur das Verhältnis 1 800/2 200; das Quadrat wurde vergessen.",
+      "0,82 ist nur das Verhältnis 1800/2 200; das Quadrat wurde vergessen.",
       "1,00 gilt für Normalbeton; Leichtbeton hat einen kleineren E-Modul, daher η_E < 1."
     ],
     "gapAnalysis": {
@@ -16083,25 +16083,25 @@
     "normRef": "DIN EN 206",
     "question": "Ab welcher Trockenrohdichte spricht man nach DIN EN 206 von Schwerbeton?",
     "options": [
-      "über 2 000 kg/m³",
-      "über 2 400 kg/m³",
-      "über 2 600 kg/m³",
-      "über 3 000 kg/m³"
+      "über 2000 kg/m³",
+      "über 2400 kg/m³",
+      "über 2600 kg/m³",
+      "über 3000 kg/m³"
     ],
     "correctIdx": 2,
-    "explanation": "Normalbeton liegt zwischen 2 000 und 2 600 kg/m³, Schwerbeton darüber; Leichtbeton bei 800–2 000 kg/m³.",
+    "explanation": "Normalbeton liegt zwischen 2000 und 2600 kg/m³, Schwerbeton darüber; Leichtbeton bei 800–2000 kg/m³.",
     "bloom": "Erinnern",
     "niveau": "B",
     "distraktorFeedback": [
-      "2 000 kg/m³ ist die Grenze zwischen Leicht- und Normalbeton.",
-      "2 400 kg/m³ ist eine typische Rohdichte von Normalbeton, keine Klassengrenze für Schwerbeton.",
+      "2000 kg/m³ ist die Grenze zwischen Leicht- und Normalbeton.",
+      "2400 kg/m³ ist eine typische Rohdichte von Normalbeton, keine Klassengrenze für Schwerbeton.",
       "",
-      "3 000 kg/m³ ist kein Grenzwert der Norm; Schwerbeton beginnt bereits oberhalb von 2 600 kg/m³."
+      "3000 kg/m³ ist kein Grenzwert der Norm; Schwerbeton beginnt bereits oberhalb von 2600 kg/m³."
     ],
     "gapAnalysis": {
       "topic": "Schwerbeton",
       "misconception": "Jeder Beton mit Stahlfasern sei Schwerbeton.",
-      "coreRule": "Leichtbeton < 2 000, Normalbeton 2 000–2 600, Schwerbeton > 2 600 kg/m³.",
+      "coreRule": "Leichtbeton < 2000, Normalbeton 2000–2600, Schwerbeton > 2600 kg/m³.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Schwerbeton“ im Modul Sonderbetone noch einmal durch.",
       "targetModuleTab": "sonderbetone",
       "targetModuleLabel": "Sonderbetone"
@@ -16161,7 +16161,7 @@
     "topic": "3D-Betondruck",
     "difficulty": "Vertiefung",
     "normRef": "Roussel (2018)",
-    "question": "Eine gedruckte Wand (ρ = 2 200 kg/m³) soll 1,5 m hoch werden. Welche Fließgrenze muss die unterste Schicht mindestens erreichen (τ = ρ·g·H/√3)?",
+    "question": "Eine gedruckte Wand (ρ = 2200 kg/m³) soll 1,5 m hoch werden. Welche Fließgrenze muss die unterste Schicht mindestens erreichen (τ = ρ·g·H/√3)?",
     "options": [
       "rund 11 kPa",
       "rund 19 kPa",
@@ -16169,7 +16169,7 @@
       "rund 56 kPa"
     ],
     "correctIdx": 1,
-    "explanation": "2 200 · 9,81 · 1,5 = 32 373 Pa; / √3 = 18 691 Pa ≈ 19 kPa.",
+    "explanation": "2200 · 9,81 · 1,5 = 32 373 Pa; / √3 = 18 691 Pa ≈ 19 kPa.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
@@ -16566,7 +16566,7 @@
     "topic": "Chemischer Angriff",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 206; DIN 1045-2",
-    "question": "Grundwasser enthält 1 200 mg/l Sulfat. Welche Klasse und welche Zementanforderung gelten?",
+    "question": "Grundwasser enthält 1200 mg/l Sulfat. Welche Klasse und welche Zementanforderung gelten?",
     "options": [
       "XA1; Zement nach DIN EN 197-1 ohne Zusatzanforderung",
       "XA2; Zement mit hohem Sulfatwiderstand (SR)",
@@ -16574,13 +16574,13 @@
       "XA2; Zement mit niedrigem wirksamem Alkaligehalt (NA)"
     ],
     "correctIdx": 1,
-    "explanation": "600–3 000 mg/l Sulfat im Wasser → XA2. Über 600 mg/l ist nach DIN 1045-2 SR-Zement zu verwenden.",
+    "explanation": "600–3000 mg/l Sulfat im Wasser → XA2. Über 600 mg/l ist nach DIN 1045-2 SR-Zement zu verwenden.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
-      "XA1 reicht nur bis 600 mg/l Sulfat; 1 200 mg/l liegen in XA2 und erfordern SR-Zement.",
+      "XA1 reicht nur bis 600 mg/l Sulfat; 1200 mg/l liegen in XA2 und erfordern SR-Zement.",
       "",
-      "XA3 beginnt erst über 3 000 mg/l Sulfat; 1 200 mg/l entsprechen XA2.",
+      "XA3 beginnt erst über 3000 mg/l Sulfat; 1200 mg/l entsprechen XA2.",
       "NA-Zement schützt vor Alkali-Kieselsäure-Reaktion, nicht vor Sulfatangriff; hier ist SR-Zement nötig."
     ],
     "gapAnalysis": {
@@ -17261,7 +17261,7 @@
     "question": "Wie groß ist l_b,rqd für Ø 16, f_bd = 3,0 N/mm² und σ_sd = 435 N/mm²?",
     "options": [
       "rund 290 mm",
-      "rund 2 320 mm",
+      "rund 2320 mm",
       "rund 580 mm",
       "rund 830 mm"
     ],
@@ -17271,7 +17271,7 @@
     "niveau": "B",
     "distraktorFeedback": [
       "Hier wurde ⌀/8 statt ⌀/4 verwendet; die Grundformel lautet (⌀/4) · (σ_sd/f_bd).",
-      "Hier fehlt der Faktor 1/4: 16 · 435/3,0 ≈ 2 320 mm.",
+      "Hier fehlt der Faktor 1/4: 16 · 435/3,0 ≈ 2320 mm.",
       "",
       "Hier wurde f_bd zusätzlich mit 0,7 für mäßigen Verbund abgemindert, obwohl f_bd = 3,0 vorgegeben ist."
     ],
@@ -17581,15 +17581,15 @@
     "topic": "Bemessungswert",
     "difficulty": "Vertiefung",
     "normRef": "Lehrannahme γ_tex = 1,3",
-    "question": "f_tk = 3 000 N/mm², γ_tex = 1,3. Wie groß ist f_td?",
+    "question": "f_tk = 3000 N/mm², γ_tex = 1,3. Wie groß ist f_td?",
     "options": [
-      "2 308 N/mm²",
-      "3 900 N/mm²",
-      "2 609 N/mm²",
-      "2 000 N/mm²"
+      "2308 N/mm²",
+      "3900 N/mm²",
+      "2609 N/mm²",
+      "2000 N/mm²"
     ],
     "correctIdx": 0,
-    "explanation": "f_td = 3 000 / 1,3 = 2 308 N/mm².",
+    "explanation": "f_td = 3000 / 1,3 = 2308 N/mm².",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
@@ -19877,12 +19877,12 @@
       "320 mm"
     ],
     "correctIdx": 0,
-    "explanation": "ΔL = 10 000 mm · 80 · 10⁻⁶ · 40 = 32 mm. 4,8 mm wäre der Wert für Stahl.",
+    "explanation": "ΔL = 10 000 mm · 80 · 10⁻⁶ · 40 = 32 mm. 4,8 mm wäre der Wert für Stahl.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "",
-      "Kommafehler: 10 000 mm · 80 · 10⁻⁶ · 40 = 32 mm, nicht 3,2 mm.",
+      "Kommafehler: 10 000 mm · 80 · 10⁻⁶ · 40 = 32 mm, nicht 3,2 mm.",
       "4,8 mm ergäbe sich mit α ≈ 12 · 10⁻⁶ 1/K für Stahl, nicht für PVC-U.",
       "Zehnerpotenzfehler, etwa wenn α = 80 · 10⁻⁶ als 8 · 10⁻⁴ eingesetzt wird; das Ergebnis ist um den Faktor 10 zu groß."
     ],
@@ -19958,7 +19958,7 @@
       "Spezifische Wärmekapazität c allein"
     ],
     "correctIdx": 0,
-    "explanation": "Die Kontakttemperatur hängt vom Verhältnis der Wärmeeindringkoeffizienten von Haut und Material ab. Holz (b ≈ 300) fühlt sich wärmer an als Stahl (b ≈ 13 000).",
+    "explanation": "Die Kontakttemperatur hängt vom Verhältnis der Wärmeeindringkoeffizienten von Haut und Material ab. Holz (b ≈ 300) fühlt sich wärmer an als Stahl (b ≈ 13 000).",
     "bloom": "Verstehen",
     "niveau": "B",
     "distraktorFeedback": [
@@ -21835,7 +21835,7 @@
     "topic": "Lückenloses Gleis",
     "difficulty": "Vertiefung",
     "normRef": "",
-    "question": "Welche Zwangsspannung entsteht in einer Schiene (E = 210 000 N/mm², α = 1,2·10⁻⁵ 1/K) bei ΔT = 35 K?",
+    "question": "Welche Zwangsspannung entsteht in einer Schiene (E = 210 000 N/mm², α = 1,2·10⁻⁵ 1/K) bei ΔT = 35 K?",
     "options": [
       "ca. 88 N/mm²",
       "ca. 8,8 N/mm²",
@@ -21843,12 +21843,12 @@
       "ca. 25 N/mm²"
     ],
     "correctIdx": 0,
-    "explanation": "σ = 210 000 · 1,2·10⁻⁵ · 35 = 88 N/mm²; mit A = 7686 mm² ergibt sich eine Längskraft von rund 680 kN.",
+    "explanation": "σ = 210 000 · 1,2·10⁻⁵ · 35 = 88 N/mm²; mit A = 7686 mm² ergibt sich eine Längskraft von rund 680 kN.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "",
-      "Hier ist ein Zehnerpotenzfehler beim Ausdehnungskoeffizienten passiert; σ = 210 000 · 1,2·10⁻⁵ · 35 = 88 N/mm².",
+      "Hier ist ein Zehnerpotenzfehler beim Ausdehnungskoeffizienten passiert; σ = 210 000 · 1,2·10⁻⁵ · 35 = 88 N/mm².",
       "880 N/mm² entsteht bei einem Zehnerpotenzfehler (α = 1,2·10⁻⁴); dieser Wert läge über der Streckgrenze von Schienenstahl.",
       "25 N/mm² ergibt sich etwa, wenn ΔT = 10 K statt 35 K eingesetzt wird; die Spannung wächst linear mit ΔT."
     ],
@@ -21956,7 +21956,7 @@
     "topic": "Regenabfluss",
     "difficulty": "Basis",
     "normRef": "DWA-A 138",
-    "question": "Asphaltfläche 1 000 m² (Abflussbeiwert 0,9), Bemessungsregen 150 l/(s·ha). Wie groß ist der Zufluss zur Versickerungsanlage?",
+    "question": "Asphaltfläche 1000 m² (Abflussbeiwert 0,9), Bemessungsregen 150 l/(s·ha). Wie groß ist der Zufluss zur Versickerungsanlage?",
     "options": [
       "135 l/s",
       "1,35 l/s",
@@ -21976,7 +21976,7 @@
     "gapAnalysis": {
       "topic": "Regenabfluss",
       "misconception": "Die gesamte Regenmenge fließe ab.",
-      "coreRule": "Q = ψ · r · A; 1 ha = 10 000 m².",
+      "coreRule": "Q = ψ · r · A; 1 ha = 10 000 m².",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Regenabfluss“ im Modul Verkehrswegebau noch einmal durch.",
       "targetModuleTab": "bp_verkehrswegebau",
       "targetModuleLabel": "Verkehrswegebau"
@@ -23453,7 +23453,7 @@
     "topic": "Eigengewicht Profil",
     "difficulty": "Basis",
     "normRef": "DIN EN 10365",
-    "question": "Ein IPE 300 hat A = 53,8 cm². Wie groß ist das Eigengewicht je Meter (ρ = 7 850 kg/m³)?",
+    "question": "Ein IPE 300 hat A = 53,8 cm². Wie groß ist das Eigengewicht je Meter (ρ = 7850 kg/m³)?",
     "options": [
       "etwa 53,8 kg/m",
       "etwa 4,2 kg/m",
@@ -23461,7 +23461,7 @@
       "etwa 42,2 kg/m"
     ],
     "correctIdx": 3,
-    "explanation": "m = A · ρ = 53,8 · 10⁻⁴ m² · 7 850 kg/m³ = 42,2 kg/m (Tabellenwert IPE 300: 42,2 kg/m).",
+    "explanation": "m = A · ρ = 53,8 · 10⁻⁴ m² · 7850 kg/m³ = 42,2 kg/m (Tabellenwert IPE 300: 42,2 kg/m).",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -24311,20 +24311,20 @@
     "topic": "Wirksamer E-Modul",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1, Gl. (7.20)",
-    "question": "Wie groß ist der wirksame E-Modul bei E_cm = 33 000 N/mm² und φ = 2,0?",
+    "question": "Wie groß ist der wirksame E-Modul bei E_cm = 33 000 N/mm² und φ = 2,0?",
     "options": [
-      "66 000 N/mm²",
-      "33 000 N/mm²",
-      "11 000 N/mm²",
-      "16 500 N/mm²"
+      "66 000 N/mm²",
+      "33 000 N/mm²",
+      "11 000 N/mm²",
+      "16 500 N/mm²"
     ],
     "correctIdx": 2,
-    "explanation": "E_c,eff = E_cm/(1 + φ) = 33 000/3 = 11 000 N/mm² – Langzeitverformungen sind etwa dreimal so groß wie die elastischen.",
+    "explanation": "E_c,eff = E_cm/(1 + φ) = 33 000/3 = 11 000 N/mm² – Langzeitverformungen sind etwa dreimal so groß wie die elastischen.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
       "Hier wurde mit (1 + φ) bzw. φ multipliziert statt dividiert; Kriechen verringert den wirksamen E-Modul.",
-      "33 000 N/mm² ist der Kurzzeit-E-Modul; das Kriechen wurde nicht berücksichtigt.",
+      "33 000 N/mm² ist der Kurzzeit-E-Modul; das Kriechen wurde nicht berücksichtigt.",
       "",
       "Hier wurde nur durch φ = 2,0 geteilt; richtig ist die Division durch (1 + φ) = 3,0."
     ],
@@ -24392,7 +24392,7 @@
     "topic": "Kriechverformung",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1, 3.1.4",
-    "question": "Dauerlast σ_c = 10 N/mm², E_cm = 33 000 N/mm², φ = 2,0. Wie groß ist die Gesamtdehnung ohne Schwinden?",
+    "question": "Dauerlast σ_c = 10 N/mm², E_cm = 33 000 N/mm², φ = 2,0. Wie groß ist die Gesamtdehnung ohne Schwinden?",
     "options": [
       "0,30 ‰",
       "0,91 ‰",
@@ -24441,7 +24441,7 @@
       "30 mm"
     ],
     "correctIdx": 2,
-    "explanation": "Je Meter Wandlänge: A_c = 300 · 1 000 mm², trocknender Umfang u = 2 · 1 000 mm; h₀ = 2 · 300 000 / 2 000 = 300 mm.",
+    "explanation": "Je Meter Wandlänge: A_c = 300 · 1000 mm², trocknender Umfang u = 2 · 1000 mm; h₀ = 2 · 300 000 / 2000 = 300 mm.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -24596,7 +24596,7 @@
     "moduleTitle": "Eigenspannungen",
     "topic": "Eigenspannung berechnen",
     "difficulty": "Vertiefung",
-    "question": "Parabelförmiges Temperaturprofil: Rand 20 °C, Mitte 40 °C, Rand 20 °C; E_c,eff = 15 000 N/mm², α_T = 10⁻⁵ 1/K. Wie groß ist die Randspannung?",
+    "question": "Parabelförmiges Temperaturprofil: Rand 20 °C, Mitte 40 °C, Rand 20 °C; E_c,eff = 15 000 N/mm², α_T = 10⁻⁵ 1/K. Wie groß ist die Randspannung?",
     "options": [
       "1,0 N/mm² Druck",
       "3,0 N/mm² Zug",
@@ -24604,7 +24604,7 @@
       "6,0 N/mm² Zug"
     ],
     "correctIdx": 2,
-    "explanation": "ΔT_par = 40 − 20 = 20 K; nichtlinearer Anteil am Rand −2/3 · 20 = −13,3 K; σ = 15 000 · 10⁻⁵ · 13,3 = 2,0 N/mm² Zug.",
+    "explanation": "ΔT_par = 40 − 20 = 20 K; nichtlinearer Anteil am Rand −2/3 · 20 = −13,3 K; σ = 15 000 · 10⁻⁵ · 13,3 = 2,0 N/mm² Zug.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
@@ -24837,7 +24837,7 @@
     "topic": "QNG-Nachweis und Modul D",
     "difficulty": "Transfer",
     "normRef": "DIN EN 15978",
-    "question": "Ein Mehrfamilienhaus (1200 m² NRF, 50 a) erreicht 24,2 kg CO₂-Äq./(m²·a) (Konstruktion 1 050 000 kg, Betrieb 400 000 kg). Der Bauherr möchte 90 000 kg Recyclinggutschrift aus Modul D abziehen, um QNG-PLUS (≤ 24) zu erreichen. Wie ist das zu bewerten?",
+    "question": "Ein Mehrfamilienhaus (1200 m² NRF, 50 a) erreicht 24,2 kg CO₂-Äq./(m²·a) (Konstruktion 1 050 000 kg, Betrieb 400 000 kg). Der Bauherr möchte 90 000 kg Recyclinggutschrift aus Modul D abziehen, um QNG-PLUS (≤ 24) zu erreichen. Wie ist das zu bewerten?",
     "options": [
       "Zulässig: Mit Modul D ergeben sich 22,7 kg CO₂-Äq./(m²·a), damit ist QNG-PLUS erreicht.",
       "Zulässig, weil Modul D als Bestandteil des Betriebs B6 gilt und dort angerechnet wird.",
@@ -24845,7 +24845,7 @@
       "Unzulässig, weil QNG-PLUS nur für Holzgebäude ohne Betriebsemissionen vergeben wird."
     ],
     "correctIdx": 2,
-    "explanation": "Gutschriften aus Modul D liegen außerhalb der Systemgrenze und dürfen im QNG-Nachweis nicht verrechnet werden; der Kennwert bleibt 1 450 000 / 60 000 = 24,2 > 24. Wird die Konstruktion um 15 % reduziert (Holzhybrid), ergibt sich (892 500 + 400 000) / 60 000 = 21,5 ≤ 24: PLUS erreicht, PREMIUM (≤ 20) nicht.",
+    "explanation": "Gutschriften aus Modul D liegen außerhalb der Systemgrenze und dürfen im QNG-Nachweis nicht verrechnet werden; der Kennwert bleibt 1 450 000 / 60 000 = 24,2 > 24. Wird die Konstruktion um 15 % reduziert (Holzhybrid), ergibt sich (892 500 + 400 000) / 60 000 = 21,5 ≤ 24: PLUS erreicht, PREMIUM (≤ 20) nicht.",
     "bloom": "Bewerten",
     "niveau": "M",
     "distraktorFeedback": [
@@ -25009,7 +25009,7 @@
       "rund 30,8 t CO₂-Äq."
     ],
     "correctIdx": 0,
-    "explanation": "Stautage = 6 · 18 = 108 d. B8 = 108 d · (4500 · 0,4) Fahrzeuge/d · 0,95 kg = 184 680 kg ≈ 184,7 t CO₂-Äq. Mit Schnellbau (Faktor 0,35) wären es rund 64,6 t.",
+    "explanation": "Stautage = 6 · 18 = 108 d. B8 = 108 d · (4500 · 0,4) Fahrzeuge/d · 0,95 kg = 184 680 kg ≈ 184,7 t CO₂-Äq. Mit Schnellbau (Faktor 0,35) wären es rund 64,6 t.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -25290,7 +25290,7 @@
       "Rathaus Korbach: Bauschutt wird vor Ort zu RC-Gesteinskörnung für den Neubau gebrochen.",
       "Timber Pioneer: Die Holz-Hybrid-Tragstruktur ist mit 300 kg/m² rund 57 % leichter.",
       "Gebäudetyp E: Komfortnormen werden zugunsten einfacherer Bauweisen vertraglich abbedungen.",
-      "Neues Museum Berlin: rund 375 000 geborgene Ziegel werden erneut vermauert."
+      "Neues Museum Berlin: rund 375 000 geborgene Ziegel werden erneut vermauert."
     ],
     "correctIdx": 3,
     "explanation": "Die direkte Wiederverwendung ganzer Bauteile (Component-Re-Use) steht in der Abfallhierarchie vor dem Recycling: Die Ziegel behalten ihre Form und Funktion, für ihre Herstellung fällt keine neue graue Energie an. Korbach ist hochwertiges Recycling, Timber Pioneer und Gebäudetyp E setzen bei Materialeinsatz und Suffizienz an.",
@@ -25330,13 +25330,13 @@
     "normRef": "VO (EU) 2023/956",
     "question": "Ein Importeur führt 1000 t Zement mit 0,8 t CO₂ je t Zement ein. Der EU-ETS-Preis beträgt 80 €/t CO₂, im Herkunftsland wurden bereits 20 €/t CO₂ gezahlt. Welche CBAM-Kosten ergeben sich nach der im Modul angegebenen Formel?",
     "options": [
-      "48 000 €",
-      "64 000 €",
-      "80 000 €",
-      "16 000 €"
+      "48 000 €",
+      "64 000 €",
+      "80 000 €",
+      "16 000 €"
     ],
     "correctIdx": 0,
-    "explanation": "CBAM-Kosten = Importmenge · GWP_spec · (P_ETS − P_Origin) = 1000 t · 0,8 t CO₂/t · (80 − 20) €/t CO₂ = 48 000 €. Der im Ursprungsland gezahlte CO₂-Preis wird angerechnet.",
+    "explanation": "CBAM-Kosten = Importmenge · GWP_spec · (P_ETS − P_Origin) = 1000 t · 0,8 t CO₂/t · (80 − 20) €/t CO₂ = 48 000 €. Der im Ursprungsland gezahlte CO₂-Preis wird angerechnet.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -25536,13 +25536,13 @@
       "Falsch, die Rechnung liefert 0,5 kN/cm², das entspricht 5 N/mm²"
     ],
     "correctIdx": 3,
-    "explanation": "kN geteilt durch cm² ergibt kN/cm². Wegen 1 kN/cm² = 1000 N / 100 mm² = 10 N/mm² beträgt die Spannung 5 N/mm² (Kontrolle: 800 000 N / 160 000 mm² = 5 N/mm²).",
+    "explanation": "kN geteilt durch cm² ergibt kN/cm². Wegen 1 kN/cm² = 1000 N / 100 mm² = 10 N/mm² beträgt die Spannung 5 N/mm² (Kontrolle: 800 000 N / 160 000 mm² = 5 N/mm²).",
     "bloom": "Analysieren",
     "niveau": "B",
     "distraktorFeedback": [
-      "1 cm² entspricht 100 mm²; die Querschnittsfläche beträgt also 160 000 mm², nicht 1600 mm².",
+      "1 cm² entspricht 100 mm²; die Querschnittsfläche beträgt also 160 000 mm², nicht 1600 mm².",
       "Der Umrechnungsfaktor ist umgekehrt: 1 kN/cm² entspricht 10 N/mm², nicht 0,1 N/mm².",
-      "Der Flächenfaktor 100 geht nur einmal ein; mit F = 800 000 N und A = 160 000 mm² ergeben sich 5 N/mm².",
+      "Der Flächenfaktor 100 geht nur einmal ein; mit F = 800 000 N und A = 160 000 mm² ergeben sich 5 N/mm².",
       ""
     ],
     "gapAnalysis": {
@@ -25571,7 +25571,7 @@
     "topic": "Energieeinheiten",
     "difficulty": "Basis",
     "normRef": "DIN 1301-1",
-    "question": "Ein Gebäude hat einen Endenergiebedarf von 12 500 kWh pro Jahr. Wie viel ist das in Gigajoule?",
+    "question": "Ein Gebäude hat einen Endenergiebedarf von 12 500 kWh pro Jahr. Wie viel ist das in Gigajoule?",
     "options": [
       "45 GJ",
       "3,47 GJ",
@@ -25579,13 +25579,13 @@
       "450 GJ"
     ],
     "correctIdx": 0,
-    "explanation": "Mit 1 kWh = 3,6 MJ gilt: 12 500 · 3,6 MJ = 45 000 MJ = 45 GJ.",
+    "explanation": "Mit 1 kWh = 3,6 MJ gilt: 12 500 · 3,6 MJ = 45 000 MJ = 45 GJ.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "",
       "Hier wurde durch 3600 geteilt statt mit 3,6 MJ multipliziert.",
-      "Das Ergebnis ist um den Faktor 10 zu klein; 45 000 MJ sind 45 GJ.",
+      "Das Ergebnis ist um den Faktor 10 zu klein; 45 000 MJ sind 45 GJ.",
       "Das Ergebnis ist um den Faktor 10 zu groß; 1 GJ = 1000 MJ."
     ],
     "gapAnalysis": {
@@ -25619,10 +25619,10 @@
       "b ≈ 69 J/(m²·K·s^0,5); die Oberfläche wirkt fußwarm",
       "b ≈ 2191 J/(m²·K·s^0,5); die Oberfläche wirkt kühl",
       "b ≈ 0,83 J/(m²·K·s^0,5); die Oberfläche wirkt fußwarm",
-      "b ≈ 4 800 000 J/(m²·K·s^0,5); die Oberfläche wirkt kühl"
+      "b ≈ 4 800 000 J/(m²·K·s^0,5); die Oberfläche wirkt kühl"
     ],
     "correctIdx": 1,
-    "explanation": "b = √(λ · ρ · c) = √(2,0 · 2400 · 1000) = √4 800 000 ≈ 2191 J/(m²·K·s^0,5). Hohe b-Werte entziehen dem Fuß rasch Wärme, Beton wirkt daher kühl (Nadelholz: b ≈ 320).",
+    "explanation": "b = √(λ · ρ · c) = √(2,0 · 2400 · 1000) = √4 800 000 ≈ 2191 J/(m²·K·s^0,5). Hohe b-Werte entziehen dem Fuß rasch Wärme, Beton wirkt daher kühl (Nadelholz: b ≈ 320).",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -25654,7 +25654,7 @@
     "topic": "Zeitabhängige Verformung",
     "difficulty": "Transfer",
     "normRef": "DIN EN 1992-1-1, 3.1.4",
-    "question": "Eine Betonstütze steht unter der Dauerdruckspannung σ₀ = 10 MPa (E = 30 000 MPa, Endkriechzahl φ = 2,0) und schwindet zusätzlich um ε_cs = −0,30 ‰. Wie groß ist die gesamte Stauchung?",
+    "question": "Eine Betonstütze steht unter der Dauerdruckspannung σ₀ = 10 MPa (E = 30 000 MPa, Endkriechzahl φ = 2,0) und schwindet zusätzlich um ε_cs = −0,30 ‰. Wie groß ist die gesamte Stauchung?",
     "options": [
       "1,00 ‰, weil Schwinden lastunabhängig ist und daher nicht addiert wird",
       "0,70 ‰, weil das Schwinden die Kriechstauchung teilweise ausgleicht",
@@ -25871,7 +25871,7 @@
       "Nur B500A, weil R_m/R_e = 1,07 unter dem Wert 1,08 für B500B liegt"
     ],
     "correctIdx": 3,
-    "explanation": "R_e = 42 000/78,5 = 535 N/mm², R_m = 45 000/78,5 = 573 N/mm², R_m/R_e = 1,07. Das genügt B500A (≥ 1,05), nicht aber B500B (≥ 1,08), obwohl A_gt ≥ 5,0 % erfüllt ist.",
+    "explanation": "R_e = 42 000/78,5 = 535 N/mm², R_m = 45 000/78,5 = 573 N/mm², R_m/R_e = 1,07. Das genügt B500A (≥ 1,05), nicht aber B500B (≥ 1,08), obwohl A_gt ≥ 5,0 % erfüllt ist.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -26231,7 +26231,7 @@
     "topic": "Biegesteifigkeit EI",
     "difficulty": "Basis",
     "normRef": "DIN EN 338",
-    "question": "Ein Holzbalken C24 (E = 11 000 N/mm²) hat den Querschnitt b/h = 10/20 cm und wird um die starke Achse gebogen. Wie groß ist die Biegesteifigkeit EI?",
+    "question": "Ein Holzbalken C24 (E = 11 000 N/mm²) hat den Querschnitt b/h = 10/20 cm und wird um die starke Achse gebogen. Wie groß ist die Biegesteifigkeit EI?",
     "options": [
       "EI ≈ 183 kNm²",
       "EI ≈ 2933 kNm²",
@@ -26239,7 +26239,7 @@
       "EI ≈ 733 kNm²"
     ],
     "correctIdx": 3,
-    "explanation": "I = b · h³/12 = 100 · 200³/12 = 66,7 · 10⁶ mm⁴; EI = 11 000 · 66,7 · 10⁶ = 7,33 · 10¹¹ Nmm² = 733 kNm² (1 kNm² = 10⁹ Nmm²).",
+    "explanation": "I = b · h³/12 = 100 · 200³/12 = 66,7 · 10⁶ mm⁴; EI = 11 000 · 66,7 · 10⁶ = 7,33 · 10¹¹ Nmm² = 733 kNm² (1 kNm² = 10⁹ Nmm²).",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -26314,21 +26314,21 @@
     "topic": "Effektiver E-Modul",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1, 3.1.4",
-    "question": "Eine Betonstütze (E_cm = 30 000 MPa) steht unter der Dauerdruckspannung σ = 9 N/mm², die Kriechzahl beträgt φ = 2,5. Welcher effektive E-Modul und welche Endstauchung ergeben sich?",
+    "question": "Eine Betonstütze (E_cm = 30 000 MPa) steht unter der Dauerdruckspannung σ = 9 N/mm², die Kriechzahl beträgt φ = 2,5. Welcher effektive E-Modul und welche Endstauchung ergeben sich?",
     "options": [
-      "E_c,eff ≈ 12 000 MPa; ε_end ≈ 0,75 ‰",
-      "E_c,eff ≈ 8 571 MPa; ε_end ≈ 1,05 ‰",
-      "E_c,eff ≈ 75 000 MPa; ε_end ≈ 0,12 ‰",
-      "E_c,eff ≈ 30 000 MPa; ε_end ≈ 0,30 ‰"
+      "E_c,eff ≈ 12 000 MPa; ε_end ≈ 0,75 ‰",
+      "E_c,eff ≈ 8571 MPa; ε_end ≈ 1,05 ‰",
+      "E_c,eff ≈ 75 000 MPa; ε_end ≈ 0,12 ‰",
+      "E_c,eff ≈ 30 000 MPa; ε_end ≈ 0,30 ‰"
     ],
     "correctIdx": 1,
-    "explanation": "E_c,eff = E_cm/(1 + φ) = 30 000/3,5 = 8 571 MPa; ε_end = 9/8 571 = 1,05 ‰ = ε_0 · (1 + φ) mit ε_0 = 0,30 ‰.",
+    "explanation": "E_c,eff = E_cm/(1 + φ) = 30 000/3,5 = 8571 MPa; ε_end = 9/8 571 = 1,05 ‰ = ε_0 · (1 + φ) mit ε_0 = 0,30 ‰.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "Hier wurde E_cm/φ gerechnet; das liefert nur den Kriechanteil 0,75 ‰ ohne die elastische Anfangsstauchung.",
       "",
-      "Hier wurde E_cm mit φ multipliziert (30 000 · 2,5); Kriechen macht den Beton nachgiebiger, nicht steifer.",
+      "Hier wurde E_cm mit φ multipliziert (30 000 · 2,5); Kriechen macht den Beton nachgiebiger, nicht steifer.",
       "Das ist nur die elastische Sofortstauchung; die Kriechverformung unter Dauerlast fehlt."
     ],
     "gapAnalysis": {
@@ -26343,7 +26343,7 @@
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt; Zweitprüfung 27.10.: Rückmeldung zu Distraktor 3 (75 000 MPa folgt aus E_cm · φ, nicht · (1 + φ)) korrigiert"
+      "hinweis": "normRef ergänzt; Zweitprüfung 27.10.: Rückmeldung zu Distraktor 3 (75 000 MPa folgt aus E_cm · φ, nicht · (1 + φ)) korrigiert"
     }
   },
   {
@@ -26475,7 +26475,7 @@
     "topic": "Behinderte Wärmedehnung",
     "difficulty": "Vertiefung",
     "normRef": "",
-    "question": "Eine Bodenplatte aus Beton (E = 33 000 N/mm², α_T = 10 · 10⁻⁶ 1/K) ist vollständig an der Verkürzung gehindert und kühlt um 20 K ab. Welche Zwangszugspannung entsteht ohne Kriechen?",
+    "question": "Eine Bodenplatte aus Beton (E = 33 000 N/mm², α_T = 10 · 10⁻⁶ 1/K) ist vollständig an der Verkürzung gehindert und kühlt um 20 K ab. Welche Zwangszugspannung entsteht ohne Kriechen?",
     "options": [
       "σ ≈ 0,66 N/mm²",
       "σ ≈ 66 N/mm²",
@@ -26483,7 +26483,7 @@
       "σ ≈ 3,3 N/mm²"
     ],
     "correctIdx": 2,
-    "explanation": "σ = E · α_T · ΔT = 33 000 · 10 · 10⁻⁶ · 20 = 6,6 N/mm². Das liegt über der Betonzugfestigkeit (≈ 3 N/mm²) – ohne Fugen oder Bewehrung entstehen Risse.",
+    "explanation": "σ = E · α_T · ΔT = 33 000 · 10 · 10⁻⁶ · 20 = 6,6 N/mm². Das liegt über der Betonzugfestigkeit (≈ 3 N/mm²) – ohne Fugen oder Bewehrung entstehen Risse.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -26515,7 +26515,7 @@
     "topic": "Bilineare Verfestigung",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1, 3.2.7",
-    "question": "Ein Betonstahl wird mit dem bilinearen Modell beschrieben (f_y = 500 MPa, E = 200 000 MPa, E_t = 1600 MPa), bis ε_max = 30 ‰ gedehnt und dann entlastet. Wie groß ist die bleibende Dehnung?",
+    "question": "Ein Betonstahl wird mit dem bilinearen Modell beschrieben (f_y = 500 MPa, E = 200 000 MPa, E_t = 1600 MPa), bis ε_max = 30 ‰ gedehnt und dann entlastet. Wie groß ist die bleibende Dehnung?",
     "options": [
       "ε_p ≈ 27,5 ‰",
       "ε_p ≈ 30,0 ‰",
@@ -27001,7 +27001,7 @@
     "topic": "Euler-Knicklast Fall 3",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1993-1-1, 6.3.1",
-    "question": "Eine Stahlstütze (l = 4,0 m, E = 210 000 N/mm², I = 400 cm⁴) ist unten eingespannt und oben unverschieblich gelenkig gehalten (Euler-Fall 3, β = 0,7). Wie groß ist die ideale Knicklast F_K?",
+    "question": "Eine Stahlstütze (l = 4,0 m, E = 210 000 N/mm², I = 400 cm⁴) ist unten eingespannt und oben unverschieblich gelenkig gehalten (Euler-Fall 3, β = 0,7). Wie groß ist die ideale Knicklast F_K?",
     "options": [
       "F_K ≈ 1057 kN",
       "F_K ≈ 518 kN",
@@ -27009,7 +27009,7 @@
       "F_K ≈ 130 kN"
     ],
     "correctIdx": 0,
-    "explanation": "l_k = 0,7 · 4000 = 2800 mm; F_K = π² · 210 000 · 4 · 10⁶/2800² = 1,057 · 10⁶ N ≈ 1057 kN.",
+    "explanation": "l_k = 0,7 · 4000 = 2800 mm; F_K = π² · 210 000 · 4 · 10⁶/2800² = 1,057 · 10⁶ N ≈ 1057 kN.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -27095,7 +27095,7 @@
       "Sie bleibt gleich, weil F_K nur von E, I und l_k abhängt"
     ],
     "correctIdx": 3,
-    "explanation": "F_K = π² · E · I/l_k² enthält keine Festigkeit. Beide Stahlsorten haben E = 210 000 N/mm², die ideale Knicklast bleibt daher gleich.",
+    "explanation": "F_K = π² · E · I/l_k² enthält keine Festigkeit. Beide Stahlsorten haben E = 210 000 N/mm², die ideale Knicklast bleibt daher gleich.",
     "bloom": "Verstehen",
     "niveau": "B",
     "distraktorFeedback": [
@@ -27754,15 +27754,15 @@
     "topic": "s_d-Wert eines Aufbaus",
     "difficulty": "Vertiefung",
     "normRef": "DIN 4108-3",
-    "question": "Ein Aufbau besteht (innen nach außen) aus Gipskarton 12,5 mm (µ = 10), feuchtevariabler Dampfbremse 0,2 mm (µ = 15 000), Mineralwolle 16 cm (µ = 1) und Nadelholzschalung 24 mm (µ = 40). Wie groß ist s_d,ges?",
+    "question": "Ein Aufbau besteht (innen nach außen) aus Gipskarton 12,5 mm (µ = 10), feuchtevariabler Dampfbremse 0,2 mm (µ = 15 000), Mineralwolle 16 cm (µ = 1) und Nadelholzschalung 24 mm (µ = 40). Wie groß ist s_d,ges?",
     "options": [
       "s_d,ges ≈ 1,25 m",
       "s_d,ges ≈ 301 m",
       "s_d,ges ≈ 4,25 m",
-      "s_d,ges ≈ 15 051 m"
+      "s_d,ges ≈ 15 051 m"
     ],
     "correctIdx": 2,
-    "explanation": "s_d = µ · d: Gipskarton 10 · 0,0125 = 0,125 m; Dampfbremse 15 000 · 0,0002 = 3,0 m; Mineralwolle 1 · 0,16 = 0,16 m; Schalung 40 · 0,024 = 0,96 m; Summe ≈ 4,25 m. Die dünne Bahn liefert den größten Anteil.",
+    "explanation": "s_d = µ · d: Gipskarton 10 · 0,0125 = 0,125 m; Dampfbremse 15 000 · 0,0002 = 3,0 m; Mineralwolle 1 · 0,16 = 0,16 m; Schalung 40 · 0,024 = 0,96 m; Summe ≈ 4,25 m. Die dünne Bahn liefert den größten Anteil.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -28413,7 +28413,7 @@
     "question": "Betonwürfel C20/25 (f_c = 20 N/mm², ρ = 2400 kg/m³) mit a = 10 cm werden gestapelt, bis der unterste auf Druck versagt. Wie viele Würfel trägt der Stapel höchstens, und wie hoch ist er?",
     "options": [
       "N = 849 Würfel, H ≈ 85 m",
-      "N = 84 947 Würfel, H ≈ 8,5 km",
+      "N = 84 947 Würfel, H ≈ 8,5 km",
       "N = 8494 Würfel, H ≈ 849 m",
       "N = 8494 Würfel, H ≈ 8,5 m"
     ],
@@ -28450,7 +28450,7 @@
     "topic": "Stauchung des untersten Würfels",
     "difficulty": "Vertiefung",
     "normRef": "",
-    "question": "Im Würfelstapel aus C20/25 (a = 100 mm, E = 30 000 N/mm²) erreicht die Spannung im untersten Würfel nahezu σ = 20 N/mm². Wie groß ist dessen elastische Stauchung?",
+    "question": "Im Würfelstapel aus C20/25 (a = 100 mm, E = 30 000 N/mm²) erreicht die Spannung im untersten Würfel nahezu σ = 20 N/mm². Wie groß ist dessen elastische Stauchung?",
     "options": [
       "Δa ≈ 0,067 mm",
       "Δa ≈ 0,67 mm",
@@ -29228,7 +29228,7 @@
     "topic": "Thermischer Glasbruch",
     "difficulty": "Vertiefung",
     "normRef": "",
-    "question": "In einer teilbeschatteten Floatglasscheibe (E = 70 000 N/mm², α_T = 9 · 10⁻⁶ 1/K) herrscht zwischen Mitte und Rand ΔT = 30 K. Welche Randzugspannung ergibt das Lehrmodell σ_T ≈ E · α_T · ΔT?",
+    "question": "In einer teilbeschatteten Floatglasscheibe (E = 70 000 N/mm², α_T = 9 · 10⁻⁶ 1/K) herrscht zwischen Mitte und Rand ΔT = 30 K. Welche Randzugspannung ergibt das Lehrmodell σ_T ≈ E · α_T · ΔT?",
     "options": [
       "ca. 18,9 N/mm²",
       "ca. 1,9 N/mm²",
@@ -29236,7 +29236,7 @@
       "ca. 6,3 N/mm²"
     ],
     "correctIdx": 0,
-    "explanation": "σ_T ≈ 70 000 · 9 · 10⁻⁶ · 30 ≈ 18,9 N/mm². Bei größerem ΔT wird die Kantenfestigkeit von Floatglas schnell erreicht; TVG oder ESG vertragen deutlich mehr.",
+    "explanation": "σ_T ≈ 70 000 · 9 · 10⁻⁶ · 30 ≈ 18,9 N/mm². Bei größerem ΔT wird die Kantenfestigkeit von Floatglas schnell erreicht; TVG oder ESG vertragen deutlich mehr.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -29356,7 +29356,7 @@
       "M_pl,Rd ≈ 134 kNm; η ≈ 0,97"
     ],
     "correctIdx": 1,
-    "explanation": "M_pl,Rd = W_pl,y · f_y/γ_M0 = 642,5 cm³ · 23,5 kN/cm² = 15 099 kNcm ≈ 151 kNm; η = 130/151 ≈ 0,86 ≤ 1.",
+    "explanation": "M_pl,Rd = W_pl,y · f_y/γ_M0 = 642,5 cm³ · 23,5 kN/cm² = 15 099 kNcm ≈ 151 kNm; η = 130/151 ≈ 0,86 ≤ 1.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -29401,7 +29401,7 @@
     "niveau": "M",
     "distraktorFeedback": [
       "Dickere Bleche haben eher eine geringere Streckgrenze; das erklärt die Knicklinie nicht.",
-      "Der E-Modul ist eine Werkstoffkonstante (ca. 210 000 N/mm²) und von der Profilform unabhängig.",
+      "Der E-Modul ist eine Werkstoffkonstante (ca. 210 000 N/mm²) und von der Profilform unabhängig.",
       "Warmgewalzte Profile werden nicht kaltverfestigt; maßgebend ist die Abkühlung nach dem Walzen.",
       ""
     ],
@@ -29439,7 +29439,7 @@
       "ca. 8,4 mm"
     ],
     "correctIdx": 0,
-    "explanation": "Δl = l₀ · α_T · ΔT = 10 000 mm · 22 · 10⁻⁶ · 70 ≈ 15,4 mm.",
+    "explanation": "Δl = l₀ · α_T · ΔT = 10 000 mm · 22 · 10⁻⁶ · 70 ≈ 15,4 mm.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -30418,7 +30418,7 @@
       "A_s ≈ 345 mm²; A_f ≈ 50 mm²"
     ],
     "correctIdx": 0,
-    "explanation": "A_s = 150 000/434,8 ≈ 345 mm²; A_f = 150 000/1200 = 125 mm². Carbon spart rund den Faktor 2,8 an Querschnitt.",
+    "explanation": "A_s = 150 000/434,8 ≈ 345 mm²; A_f = 150 000/1200 = 125 mm². Carbon spart rund den Faktor 2,8 an Querschnitt.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -30951,7 +30951,7 @@
     "topic": "Spaltzugfestigkeit",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1338",
-    "question": "Ein Pflasterstein (Spaltlänge l = 220 mm, Dicke t = 80 mm, k = 1,0) bricht bei P = 90 000 N. Wie groß ist die Spaltzugfestigkeit T = 0,637 · k · P/(l · t), und ist der Einzelwert ≥ 2,9 N/mm² erfüllt?",
+    "question": "Ein Pflasterstein (Spaltlänge l = 220 mm, Dicke t = 80 mm, k = 1,0) bricht bei P = 90 000 N. Wie groß ist die Spaltzugfestigkeit T = 0,637 · k · P/(l · t), und ist der Einzelwert ≥ 2,9 N/mm² erfüllt?",
     "options": [
       "T ≈ 5,1 N/mm²; erfüllt",
       "T ≈ 3,26 N/mm²; erfüllt",
@@ -30959,7 +30959,7 @@
       "T ≈ 409 N/mm²; erfüllt"
     ],
     "correctIdx": 1,
-    "explanation": "S = 220 · 80 = 17 600 mm²; T = 0,637 · 90 000/17 600 ≈ 3,26 N/mm² ≥ 2,9 N/mm². Die Bruchlast je Länge 90 000/220 ≈ 409 N/mm ≥ 250 N/mm ist ebenfalls erfüllt.",
+    "explanation": "S = 220 · 80 = 17 600 mm²; T = 0,637 · 90 000/17 600 ≈ 3,26 N/mm² ≥ 2,9 N/mm². Die Bruchlast je Länge 90 000/220 ≈ 409 N/mm ≥ 250 N/mm ist ebenfalls erfüllt.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -32141,7 +32141,7 @@
     "question": "Was wird beim Marshall-Versuch als Marshall-Stabilität bezeichnet?",
     "options": [
       "Die Verformung des Probekörpers beim Bruch in Millimetern",
-      "Die Spurrinnentiefe nach 20 000 Überrollungen bei 50 °C",
+      "Die Spurrinnentiefe nach 20 000 Überrollungen bei 50 °C",
       "Die Anzahl der Hammerschläge bis zur vollständigen Verdichtung",
       "Die Maximalkraft beim Bruch des Probekörpers bei 60 °C"
     ],
@@ -32186,7 +32186,7 @@
       "Die Wasserdurchlässigkeit offenporiger Deckschichten"
     ],
     "correctIdx": 1,
-    "explanation": "Ein Prüfrad überrollt eine Asphaltplatte (z. B. 20 000 Überrollungen bei 50 oder 60 °C). Die gemessene Spurrinnentiefe ist das Maß für die Verformungsbeständigkeit bei hohen Temperaturen.",
+    "explanation": "Ein Prüfrad überrollt eine Asphaltplatte (z. B. 20 000 Überrollungen bei 50 oder 60 °C). Die gemessene Spurrinnentiefe ist das Maß für die Verformungsbeständigkeit bei hohen Temperaturen.",
     "bloom": "Verstehen",
     "niveau": "B",
     "distraktorFeedback": [
@@ -32478,7 +32478,7 @@
       "ca. 2,25 N/mm²"
     ],
     "correctIdx": 2,
-    "explanation": "log(897/155) = 0,762; Klammer = 4 · 0,762 + 0,359 = 3,41; σ_e = 0,572 · 60 000 / 260² · 3,41 ≈ 1,73 N/mm². Das ist kleiner als die angesetzten 2,25 N/mm² (Ausnutzung ca. 77 %).",
+    "explanation": "log(897/155) = 0,762; Klammer = 4 · 0,762 + 0,359 = 3,41; σ_e = 0,572 · 60 000 / 260² · 3,41 ≈ 1,73 N/mm². Das ist kleiner als die angesetzten 2,25 N/mm² (Ausnutzung ca. 77 %).",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
@@ -32736,7 +32736,7 @@
     "gapAnalysis": {
       "topic": "Zuflussvolumen",
       "misconception": "Der Abflussbeiwert oder die Zeitumrechnung wird vergessen.",
-      "coreRule": "V_zu = A · ψ · r_D/10 000 · t_d · 60 [l]; 1 ha = 10 000 m².",
+      "coreRule": "V_zu = A · ψ · r_D/10 000 · t_d · 60 [l]; 1 ha = 10 000 m².",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „II. Interaktives Planungs-Muster: Rigolenbemessung nach DWA-A 138“ im Modul Tiefbau & Entwässerung noch einmal durch.",
       "targetModuleTab": "bp_verkehr_tiefbau",
       "targetModuleLabel": "Tiefbau & Entwässerung"
@@ -33005,7 +33005,7 @@
     "topic": "Zwangsspannung im Winter",
     "difficulty": "Vertiefung",
     "normRef": "",
-    "question": "Die Neutraltemperatur eines lückenlosen Gleises beträgt 20 °C, die Schiene hat im Winter −10 °C. Welche Spannung entsteht (E = 210 000 N/mm², α = 1,2 · 10⁻⁵ 1/K)?",
+    "question": "Die Neutraltemperatur eines lückenlosen Gleises beträgt 20 °C, die Schiene hat im Winter −10 °C. Welche Spannung entsteht (E = 210 000 N/mm², α = 1,2 · 10⁻⁵ 1/K)?",
     "options": [
       "75,6 N/mm² Druck",
       "25,2 N/mm² Zug",
@@ -33013,7 +33013,7 @@
       "126,0 N/mm² Druck"
     ],
     "correctIdx": 2,
-    "explanation": "ΔT = −10 − 20 = −30 K; σ = 210 000 · 1,2 · 10⁻⁵ · 30 = 75,6 N/mm². Da die Verkürzung behindert ist, entsteht Zug – im Winter droht Schienenbruch, im Sommer Verwerfung.",
+    "explanation": "ΔT = −10 − 20 = −30 K; σ = 210 000 · 1,2 · 10⁻⁵ · 30 = 75,6 N/mm². Da die Verkürzung behindert ist, entsteht Zug – im Winter droht Schienenbruch, im Sommer Verwerfung.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
@@ -33053,7 +33053,7 @@
       "ca. 484 kN"
     ],
     "correctIdx": 3,
-    "explanation": "N = σ · A = 63 · 7686 = 484 218 N ≈ 484 kN je Schiene; für das Gleis mit zwei Schienen sind es rund 968 kN.",
+    "explanation": "N = σ · A = 63 · 7686 = 484 218 N ≈ 484 kN je Schiene; für das Gleis mit zwei Schienen sind es rund 968 kN.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -33941,13 +33941,13 @@
       "ca. 42,2 kN"
     ],
     "correctIdx": 3,
-    "explanation": "N⁰Rk,c = 7,7 · √30 · 100^1,5 = 7,7 · 5,48 · 1000 = 42 170 N ≈ 42,2 kN; der Bemessungswert ist N_Rd,c = 42,2 / 1,5 ≈ 28,1 kN.",
+    "explanation": "N⁰Rk,c = 7,7 · √30 · 100^1,5 = 7,7 · 5,48 · 1000 = 42 170 N ≈ 42,2 kN; der Bemessungswert ist N_Rd,c = 42,2 / 1,5 ≈ 28,1 kN.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
       "Das ist bereits der Bemessungswert N_Rd,c = N⁰Rk,c / 1,5.",
       "Hier wurden f_ck und h_ef linear statt mit Wurzel und Exponent 1,5 eingesetzt.",
-      "Einheitenfehler: 42 170 N entsprechen 42,2 kN.",
+      "Einheitenfehler: 42 170 N entsprechen 42,2 kN.",
       ""
     ],
     "gapAnalysis": {
@@ -34502,7 +34502,7 @@
     "topic": "Durchbiegung",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1995-1-1",
-    "question": "Ein Holzbalken C24 (b/h = 100/200 mm, E = 11 000 N/mm²) spannt L = 4,0 m bei q_inst = 2,0 kN/m. Wie groß ist w_inst und ist L/300 eingehalten?",
+    "question": "Ein Holzbalken C24 (b/h = 100/200 mm, E = 11 000 N/mm²) spannt L = 4,0 m bei q_inst = 2,0 kN/m. Wie groß ist w_inst und ist L/300 eingehalten?",
     "options": [
       "w ≈ 9,1 mm < 13,3 mm – eingehalten",
       "w ≈ 36,4 mm > 13,3 mm – nicht eingehalten",
@@ -34510,7 +34510,7 @@
       "w ≈ 9,1 mm > 8,0 mm – nicht eingehalten"
     ],
     "correctIdx": 0,
-    "explanation": "I = 100 · 200³ / 12 = 6,67 · 10⁷ mm⁴; w = 5 · 2,0 · 4000⁴ / (384 · 11 000 · 6,67 · 10⁷) ≈ 9,1 mm; L/300 = 13,3 mm → eingehalten.",
+    "explanation": "I = 100 · 200³ / 12 = 6,67 · 10⁷ mm⁴; w = 5 · 2,0 · 4000⁴ / (384 · 11 000 · 6,67 · 10⁷) ≈ 9,1 mm; L/300 = 13,3 mm → eingehalten.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
@@ -35233,7 +35233,7 @@
     "question": "In welchem Prozessschritt der Klinkerherstellung wird der größte Teil des rohstoffbedingten CO₂ freigesetzt?",
     "options": [
       "Bei der Entsäuerung des Kalksteins im Vorwärmer und Kalzinator bei 800–900 °C",
-      "Beim Sintern der Klinkerphasen im Drehrohrofen bei rund 1 450 °C Brenngut-Temperatur",
+      "Beim Sintern der Klinkerphasen im Drehrohrofen bei rund 1450 °C Brenngut-Temperatur",
       "Beim gemeinsamen Vermahlen des Klinkers mit Gips zur Regelung des Erstarrens",
       "Beim Abkühlen des heißen Klinkergranulats im Kühler hinter dem Drehrohrofen"
     ],
@@ -35723,7 +35723,7 @@
     "topic": "Pumpendruck",
     "difficulty": "Vertiefung",
     "normRef": "",
-    "question": "Bingham-Ansatz p = 2·τ₀·L/R + 8·μ_p·v·L/R² + ρ·g·H mit τ₀ = 150 Pa, μ_p = 25 Pa·s, R = 0,0625 m, L = 60 m, H = 15 m, Q = 25 m³/h, ρ = 2 400 kg/m³. Welcher Förderdruck ergibt sich näherungsweise?",
+    "question": "Bingham-Ansatz p = 2·τ₀·L/R + 8·μ_p·v·L/R² + ρ·g·H mit τ₀ = 150 Pa, μ_p = 25 Pa·s, R = 0,0625 m, L = 60 m, H = 15 m, Q = 25 m³/h, ρ = 2400 kg/m³. Welcher Förderdruck ergibt sich näherungsweise?",
     "options": [
       "rund 24 bar",
       "rund 6 bar",
@@ -35731,7 +35731,7 @@
       "rund 3 bar"
     ],
     "correctIdx": 0,
-    "explanation": "v = Q/(π·R²) = 0,00694/0,01227 = 0,57 m/s. Anteile: 2 · 150 · 60/0,0625 = 2,9 bar; 8 · 25 · 0,57 · 60/0,0625² = 17,4 bar; 2 400 · 9,81 · 15 = 3,5 bar; Summe ≈ 23,8 bar.",
+    "explanation": "v = Q/(π·R²) = 0,00694/0,01227 = 0,57 m/s. Anteile: 2 · 150 · 60/0,0625 = 2,9 bar; 8 · 25 · 0,57 · 60/0,0625² = 17,4 bar; 2400 · 9,81 · 15 = 3,5 bar; Summe ≈ 23,8 bar.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -35843,7 +35843,7 @@
     "topic": "Frischbetontemperatur",
     "difficulty": "Vertiefung",
     "normRef": "",
-    "question": "Mischungsregel: Zement 320 kg/m³ bei 50 °C, Wasser 170 kg/m³ bei 12 °C, trockene Gesteinskörnung 1 900 kg/m³ bei 18 °C (c_Zement = c_Gestein = 0,84; c_Wasser = 4,18 kJ/(kg·K)). Welche Frischbetontemperatur ergibt sich?",
+    "question": "Mischungsregel: Zement 320 kg/m³ bei 50 °C, Wasser 170 kg/m³ bei 12 °C, trockene Gesteinskörnung 1900 kg/m³ bei 18 °C (c_Zement = c_Gestein = 0,84; c_Wasser = 4,18 kJ/(kg·K)). Welche Frischbetontemperatur ergibt sich?",
     "options": [
       "21,9 °C",
       "26,7 °C",
@@ -35851,7 +35851,7 @@
       "19,7 °C"
     ],
     "correctIdx": 3,
-    "explanation": "T = Σ(m·c·T)/Σ(m·c) = (268,8 · 50 + 710,6 · 12 + 1 596 · 18)/(268,8 + 710,6 + 1 596) = 50 695/2 575 ≈ 19,7 °C.",
+    "explanation": "T = Σ(m·c·T)/Σ(m·c) = (268,8 · 50 + 710,6 · 12 + 1596 · 18)/(268,8 + 710,6 + 1596) = 50 695/2 575 ≈ 19,7 °C.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -36011,7 +36011,7 @@
       "0,92 kg/(m²·h) – knapp unter dem kritischen Wert 1,0"
     ],
     "correctIdx": 3,
-    "explanation": "43^2,5 = 12 124; 0,50 · 38^2,5 = 4 451; Differenz 7 674. E = 5 · 7 674 · 24 · 10⁻⁶ = 0,92 kg/(m²·h) – knapp unter 1,0; eine normgerechte Nachbehandlung ist trotzdem nötig.",
+    "explanation": "43^2,5 = 12 124; 0,50 · 38^2,5 = 4451; Differenz 7674. E = 5 · 7674 · 24 · 10⁻⁶ = 0,92 kg/(m²·h) – knapp unter 1,0; eine normgerechte Nachbehandlung ist trotzdem nötig.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -36298,7 +36298,7 @@
     "question": "Was gibt die Bezeichnung LC25/28 an?",
     "options": [
       "Normalbeton mit f_ck,cyl = 25 und f_ck,cube = 28 N/mm²",
-      "Leichtbeton mit Rohdichte 2 500 kg/m³ und 28 N/mm² Würfelfestigkeit",
+      "Leichtbeton mit Rohdichte 2500 kg/m³ und 28 N/mm² Würfelfestigkeit",
       "Leichtbeton mit f_ck,cyl = 25 und f_ck,cube = 28 N/mm²",
       "Leichtbeton mit 25 N/mm² nach 28 Tagen Wasserlagerung"
     ],
@@ -36308,7 +36308,7 @@
     "niveau": "B",
     "distraktorFeedback": [
       "Normalbeton trägt das Kürzel C, nicht LC.",
-      "Die Rohdichte wird über eigene Klassen (D1,0 bis D2,0) angegeben; 2 500 kg/m³ wäre zudem kein Leichtbeton.",
+      "Die Rohdichte wird über eigene Klassen (D1,0 bis D2,0) angegeben; 2500 kg/m³ wäre zudem kein Leichtbeton.",
       "",
       "Die zweite Zahl ist die Würfelfestigkeit, kein Prüfalter."
     ],
@@ -36335,15 +36335,15 @@
     "topic": "E-Modul",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1, Tab. 3.1",
-    "question": "C40/50 mit Kalkstein-Gesteinskörnung (α_E = 0,9). Wie groß ist E_cm nach E_cm = 22 000·(f_cm/10)^0,3·α_E [N/mm²]?",
+    "question": "C40/50 mit Kalkstein-Gesteinskörnung (α_E = 0,9). Wie groß ist E_cm nach E_cm = 22 000·(f_cm/10)^0,3·α_E [N/mm²]?",
     "options": [
-      "rund 35 200 N/mm²",
-      "rund 30 000 N/mm²",
-      "rund 42 300 N/mm²",
-      "rund 31 700 N/mm²"
+      "rund 35 200 N/mm²",
+      "rund 30 000 N/mm²",
+      "rund 42 300 N/mm²",
+      "rund 31 700 N/mm²"
     ],
     "correctIdx": 3,
-    "explanation": "f_cm = 40 + 8 = 48 N/mm²; 22 000 · 4,8^0,3 = 35 220 N/mm²; mit α_E = 0,9 ergibt sich E_cm ≈ 31 700 N/mm².",
+    "explanation": "f_cm = 40 + 8 = 48 N/mm²; 22 000 · 4,8^0,3 = 35 220 N/mm²; mit α_E = 0,9 ergibt sich E_cm ≈ 31 700 N/mm².",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
@@ -36355,7 +36355,7 @@
     "gapAnalysis": {
       "topic": "E-Modul",
       "misconception": "Gesteinsbeiwert oder f_cm = f_ck + 8 werden übersehen.",
-      "coreRule": "E_cm = 22 000·(f_cm/10)^0,3·α_E mit f_cm = f_ck + 8.",
+      "coreRule": "E_cm = 22 000·(f_cm/10)^0,3·α_E mit f_cm = f_ck + 8.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „1. Interaktiver Kennwertrechner“ im Modul Betonkennwerte (EC2) noch einmal durch.",
       "targetModuleTab": "betonkennwerte",
       "targetModuleLabel": "Betonkennwerte (EC2)"
@@ -36615,7 +36615,7 @@
     "topic": "Porenflächenanteil",
     "difficulty": "Vertiefung",
     "normRef": "DBV/VDZ-Merkblatt Sichtbeton (2015)",
-    "question": "Auf einer Prüffläche 500 × 500 mm wird eine Porenfläche von 1 800 mm² ermittelt. Grenzwerte je Prüffläche: P1 ≤ 3 000, P2 ≤ 2 250, P3 ≤ 1 500, P4 ≤ 750 mm². Welcher Porenflächenanteil liegt vor, und welche anspruchsvollste Porigkeitsklasse wird eingehalten?",
+    "question": "Auf einer Prüffläche 500 × 500 mm wird eine Porenfläche von 1800 mm² ermittelt. Grenzwerte je Prüffläche: P1 ≤ 3000, P2 ≤ 2250, P3 ≤ 1500, P4 ≤ 750 mm². Welcher Porenflächenanteil liegt vor, und welche anspruchsvollste Porigkeitsklasse wird eingehalten?",
     "options": [
       "0,72 % – P3",
       "7,2 % – P1",
@@ -36623,14 +36623,14 @@
       "0,18 % – P4"
     ],
     "correctIdx": 2,
-    "explanation": "1 800/250 000 · 100 = 0,72 %. 1 800 mm² liegen über 1 500 mm² (P3), aber unter 2 250 mm² (P2) – eingehalten wird also P2.",
+    "explanation": "1800/250 000 · 100 = 0,72 %. 1800 mm² liegen über 1500 mm² (P3), aber unter 2250 mm² (P2) – eingehalten wird also P2.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
-      "P3 erlaubt höchstens 1 500 mm²; 1 800 mm² überschreiten diesen Wert.",
-      "Die Messfläche beträgt 250 000 mm², nicht 25 000 mm².",
+      "P3 erlaubt höchstens 1500 mm²; 1800 mm² überschreiten diesen Wert.",
+      "Die Messfläche beträgt 250 000 mm², nicht 25 000 mm².",
       "",
-      "Der Anteil wurde falsch bezogen; 1 800/250 000 · 100 ergibt 0,72 %."
+      "Der Anteil wurde falsch bezogen; 1800/250 000 · 100 ergibt 0,72 %."
     ],
     "gapAnalysis": {
       "topic": "Porenflächenanteil",
@@ -36741,7 +36741,7 @@
     "topic": "3D-Betondruck: Fließgrenze",
     "difficulty": "Vertiefung",
     "normRef": "",
-    "question": "3D-Druck: ρ = 2 000 kg/m³, Zielhöhe H = 0,5 m, τ₀,₀ = 500 Pa, Thixotropierate A_thix = 100 Pa/min. Mit τ₀(t) = τ₀,₀ + A_thix·t und τ_req = ρ·g·H/√3: Welche Steigrate darf höchstens gewählt werden?",
+    "question": "3D-Druck: ρ = 2000 kg/m³, Zielhöhe H = 0,5 m, τ₀,₀ = 500 Pa, Thixotropierate A_thix = 100 Pa/min. Mit τ₀(t) = τ₀,₀ + A_thix·t und τ_req = ρ·g·H/√3: Welche Steigrate darf höchstens gewählt werden?",
     "options": [
       "rund 0,32 m/h",
       "rund 0,58 m/h",
@@ -36749,7 +36749,7 @@
       "rund 0,01 m/h"
     ],
     "correctIdx": 1,
-    "explanation": "τ_req = 2 000 · 9,81 · 0,5/√3 = 5 664 Pa. Benötigte Zeit t = (5 664 − 500)/100 = 51,6 min. Steigrate v = 0,5 m/51,6 min ≈ 0,58 m/h – schneller darf nicht gedruckt werden.",
+    "explanation": "τ_req = 2000 · 9,81 · 0,5/√3 = 5664 Pa. Benötigte Zeit t = (5664 − 500)/100 = 51,6 min. Steigrate v = 0,5 m/51,6 min ≈ 0,58 m/h – schneller darf nicht gedruckt werden.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
@@ -36993,7 +36993,7 @@
     "topic": "Biegebemessung",
     "difficulty": "Vertiefung",
     "normRef": "DAfStb-Richtlinie nichtmetallische Bewehrung 2024",
-    "question": "Carbonbetonplatte: h = 30 mm, c = 10 mm (d = h − c), a_tex = 80 mm²/m, f_tk = 3 000 N/mm² (γ_tex = 1,3), C45/55 mit f_cd = 0,85·45/1,5. Welches Moment m_Rd ergibt sich vereinfacht mit y = F_t/(b·f_cd) und z = d − y/2?",
+    "question": "Carbonbetonplatte: h = 30 mm, c = 10 mm (d = h − c), a_tex = 80 mm²/m, f_tk = 3000 N/mm² (γ_tex = 1,3), C45/55 mit f_cd = 0,85·45/1,5. Welches Moment m_Rd ergibt sich vereinfacht mit y = F_t/(b·f_cd) und z = d − y/2?",
     "options": [
       "rund 3,7 kNm/m",
       "rund 4,9 kNm/m",
@@ -37001,7 +37001,7 @@
       "rund 3,0 kNm/m"
     ],
     "correctIdx": 3,
-    "explanation": "f_td = 3 000/1,3 = 2 308 N/mm²; F_t = 80 · 2 308 = 184,6 kN/m. f_cd = 25,5 N/mm² → y = 184 615/(1 000 · 25,5) = 7,2 mm; z = 20 − 3,6 = 16,4 mm; m_Rd = 184,6 · 0,0164 ≈ 3,0 kNm/m.",
+    "explanation": "f_td = 3000/1,3 = 2308 N/mm²; F_t = 80 · 2308 = 184,6 kN/m. f_cd = 25,5 N/mm² → y = 184 615/(1000 · 25,5) = 7,2 mm; z = 20 − 3,6 = 16,4 mm; m_Rd = 184,6 · 0,0164 ≈ 3,0 kNm/m.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
@@ -37036,7 +37036,7 @@
     "topic": "Bewehrungsgrad",
     "difficulty": "Transfer",
     "normRef": "DAfStb-Richtlinie nichtmetallische Bewehrung 2024",
-    "question": "h = 40 mm, c = 10 mm, f_tk = 2 500 N/mm², C50/60: Wird a_tex von 100 auf 200 mm²/m verdoppelt, steigt m_Rd nur von rund 5,1 auf rund 8,9 kNm/m. Warum nicht auf das Doppelte?",
+    "question": "h = 40 mm, c = 10 mm, f_tk = 2500 N/mm², C50/60: Wird a_tex von 100 auf 200 mm²/m verdoppelt, steigt m_Rd nur von rund 5,1 auf rund 8,9 kNm/m. Warum nicht auf das Doppelte?",
     "options": [
       "Die Druckzone y wächst mit, der Hebelarm z = d − y/2 wird kleiner",
       "Die Zugfestigkeit des Textils sinkt bei größerem Querschnitt deutlich ab",
@@ -37445,7 +37445,7 @@
     "topic": "Bezogene Schlankheit",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1995-1-1, 6.3.2",
-    "question": "Stütze C24 (f_c,0,k = 21 N/mm², E_0,05 = 7 400 N/mm²), b/h = 120/160 mm, l_ef = 2,6 m. Wie groß ist die bezogene Schlankheit λ_rel,z um die schwache Achse?",
+    "question": "Stütze C24 (f_c,0,k = 21 N/mm², E_0,05 = 7400 N/mm²), b/h = 120/160 mm, l_ef = 2,6 m. Wie groß ist die bezogene Schlankheit λ_rel,z um die schwache Achse?",
     "options": [
       "0,95",
       "1,04",
@@ -37453,12 +37453,12 @@
       "75,1"
     ],
     "correctIdx": 2,
-    "explanation": "i_z = 120/√12 = 34,6 mm; λ_z = 2 600/34,6 = 75,1. λ_rel = (75,1/π) · √(21/7 400) = 23,9 · 0,0533 = 1,27.",
+    "explanation": "i_z = 120/√12 = 34,6 mm; λ_z = 2600/34,6 = 75,1. λ_rel = (75,1/π) · √(21/7 400) = 23,9 · 0,0533 = 1,27.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "Hier wurde die starke Achse (h = 160 mm) verwendet; maßgebend ist die schwache Achse.",
-      "Für λ_rel ist E_0,05 = 7 400 N/mm² einzusetzen, nicht E_0,mean = 11 000 N/mm².",
+      "Für λ_rel ist E_0,05 = 7400 N/mm² einzusetzen, nicht E_0,mean = 11 000 N/mm².",
       "",
       "75,1 ist die Schlankheit λ_z; λ_rel ist noch auf Festigkeit und Steifigkeit zu beziehen."
     ],
@@ -37493,7 +37493,7 @@
       "rund 124 kN"
     ],
     "correctIdx": 3,
-    "explanation": "f_c,0,d = 0,8 · 21/1,3 = 12,9 N/mm²; A = 120 · 160 = 19 200 mm². N_Rd = 0,50 · 19 200 · 12,9 ≈ 124 kN.",
+    "explanation": "f_c,0,d = 0,8 · 21/1,3 = 12,9 N/mm²; A = 120 · 160 = 19 200 mm². N_Rd = 0,50 · 19 200 · 12,9 ≈ 124 kN.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -37533,7 +37533,7 @@
       "rund 41,5 kN"
     ],
     "correctIdx": 0,
-    "explanation": "f_c,90,d = 0,8 · 2,5/1,3 = 1,54 N/mm²; A_ef = 100 · 180 = 18 000 mm². F_c,90,Rd = 1,25 · 1,54 · 18 000 ≈ 34,6 kN.",
+    "explanation": "f_c,90,d = 0,8 · 2,5/1,3 = 1,54 N/mm²; A_ef = 100 · 180 = 18 000 mm². F_c,90,Rd = 1,25 · 1,54 · 18 000 ≈ 34,6 kN.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -37653,7 +37653,7 @@
       "rund 76,7 Nm"
     ],
     "correctIdx": 3,
-    "explanation": "12^2,6 = 639,5; M_y,Rk = 0,3 · 400 · 639,5 ≈ 76 700 Nmm = 76,7 Nm.",
+    "explanation": "12^2,6 = 639,5; M_y,Rk = 0,3 · 400 · 639,5 ≈ 76 700 Nmm = 76,7 Nm.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
@@ -37693,7 +37693,7 @@
       "rund 41,4 kN"
     ],
     "correctIdx": 0,
-    "explanation": "(385/350)^0,8 = 1,079; f_ax = 12 · 1,079 = 12,95 N/mm². F_ax,Rk = 12,95 · 8 · 100 = 10 360 N ≈ 10,4 kN.",
+    "explanation": "(385/350)^0,8 = 1,079; f_ax = 12 · 1,079 = 12,95 N/mm². F_ax,Rk = 12,95 · 8 · 100 = 10 360 N ≈ 10,4 kN.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
@@ -37768,7 +37768,7 @@
     "topic": "Maßgebender Versagensmodus",
     "difficulty": "Transfer",
     "normRef": "DIN EN 1995-1-1, 8.2.2",
-    "question": "Schraube d = 8 mm in C24 (f_h,k = 26,4 N/mm², M_y,Rk = 26 740 Nmm), l_ef = 80 mm. Modell des Moduls: F₁ = f_h,k·l_ef·d und F₂ = 1,15·√(2·M_y,Rk·f_h,k·d) + Seileffekt F_ax,Rk/4 = 1 920 N. Welcher Wert ist maßgebend?",
+    "question": "Schraube d = 8 mm in C24 (f_h,k = 26,4 N/mm², M_y,Rk = 26 740 Nmm), l_ef = 80 mm. Modell des Moduls: F₁ = f_h,k·l_ef·d und F₂ = 1,15·√(2·M_y,Rk·f_h,k·d) + Seileffekt F_ax,Rk/4 = 1920 N. Welcher Wert ist maßgebend?",
     "options": [
       "F₁ ≈ 16,9 kN – reine Lochleibung im Holz",
       "F₂ ≈ 3,9 kN – Fließgelenk ohne Seileffekt",
@@ -37776,7 +37776,7 @@
       "F₁ + F₂ ≈ 22,7 kN – beide Anteile zusammen"
     ],
     "correctIdx": 2,
-    "explanation": "F₁ = 26,4 · 80 · 8 = 16,9 kN; F₂ = 1,15 · √(2 · 26 740 · 26,4 · 8) + 1 920 N = 3,87 + 1,92 ≈ 5,8 kN. Maßgebend ist der kleinere Wert, also der Fließgelenkmodus mit Seileffekt.",
+    "explanation": "F₁ = 26,4 · 80 · 8 = 16,9 kN; F₂ = 1,15 · √(2 · 26 740 · 26,4 · 8) + 1920 N = 3,87 + 1,92 ≈ 5,8 kN. Maßgebend ist der kleinere Wert, also der Fließgelenkmodus mit Seileffekt.",
     "bloom": "Analysieren",
     "niveau": "M",
     "distraktorFeedback": [
@@ -37928,7 +37928,7 @@
     "topic": "Deckenschwingung",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1995-1-1, 7.3",
-    "question": "BSP-Decke, Einfeld L = 5,0 m, t = 160 mm, E = 11 000 N/mm², Eigenmasse 450 kg/m³ · 0,16 m, Zusatzmasse 150 kg/m². Mit f₁ = π/(2L²)·√(EI/m) je Meter Breite: Wie groß ist f₁, und ist f₁ > 8 Hz erfüllt?",
+    "question": "BSP-Decke, Einfeld L = 5,0 m, t = 160 mm, E = 11 000 N/mm², Eigenmasse 450 kg/m³ · 0,16 m, Zusatzmasse 150 kg/m². Mit f₁ = π/(2L²)·√(EI/m) je Meter Breite: Wie groß ist f₁, und ist f₁ > 8 Hz erfüllt?",
     "options": [
       "rund 9,9 Hz – erfüllt",
       "rund 40,9 Hz – deutlich erfüllt",
@@ -37936,7 +37936,7 @@
       "rund 4,1 Hz – nicht erfüllt"
     ],
     "correctIdx": 2,
-    "explanation": "EI = 11 000·10⁶ · 0,16³/12 = 3,75·10⁶ Nm²/m; m = 72 + 150 = 222 kg/m². f₁ = π/(2 · 25) · √(3,75·10⁶/222) = 0,0628 · 130 ≈ 8,2 Hz > 8 Hz – knapp erfüllt.",
+    "explanation": "EI = 11 000·10⁶ · 0,16³/12 = 3,75·10⁶ Nm²/m; m = 72 + 150 = 222 kg/m². f₁ = π/(2 · 25) · √(3,75·10⁶/222) = 0,0628 · 130 ≈ 8,2 Hz > 8 Hz – knapp erfüllt.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -38134,7 +38134,7 @@
     "topic": "Spannstahl vs. Betonstahl",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1, 5.10.6",
-    "question": "Kriechen und Schwinden verkürzen den Beton um Δε = 1,2 ‰. Wie groß ist der Spannungsverlust einer Litze Y1860 (E_p = 195 000 N/mm², σ_pm0 = 1 360 N/mm²) in Prozent von σ_pm0?",
+    "question": "Kriechen und Schwinden verkürzen den Beton um Δε = 1,2 ‰. Wie groß ist der Spannungsverlust einer Litze Y1860 (E_p = 195 000 N/mm², σ_pm0 = 1360 N/mm²) in Prozent von σ_pm0?",
     "options": [
       "rund 55 %",
       "rund 13 %",
@@ -38142,7 +38142,7 @@
       "rund 17 %"
     ],
     "correctIdx": 3,
-    "explanation": "Δσ_p = E_p · Δε = 195 000 · 0,0012 = 234 N/mm². Bezogen auf σ_pm0 = 1 360 N/mm² sind das rund 17 % – der Großteil der Vorspannung bleibt erhalten, anders als bei B500.",
+    "explanation": "Δσ_p = E_p · Δε = 195 000 · 0,0012 = 234 N/mm². Bezogen auf σ_pm0 = 1360 N/mm² sind das rund 17 % – der Großteil der Vorspannung bleibt erhalten, anders als bei B500.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
@@ -38177,21 +38177,21 @@
     "topic": "Spannungsgrenzen Spannstahl",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1 Gl. (5.43)",
-    "question": "Spannstahl Y1770 mit f_pk = 1 770 N/mm² und f_p0,1k = 1 520 N/mm². Welche Spannung σ_pm0 darf unmittelbar nach dem Verankern höchstens vorhanden sein?",
+    "question": "Spannstahl Y1770 mit f_pk = 1770 N/mm² und f_p0,1k = 1520 N/mm². Welche Spannung σ_pm0 darf unmittelbar nach dem Verankern höchstens vorhanden sein?",
     "options": [
-      "1 292 N/mm²",
-      "1 368 N/mm²",
-      "1 328 N/mm²",
-      "1 416 N/mm²"
+      "1292 N/mm²",
+      "1368 N/mm²",
+      "1328 N/mm²",
+      "1416 N/mm²"
     ],
     "correctIdx": 0,
-    "explanation": "σ_pm0 = min(0,75 · f_pk; 0,85 · f_p0,1k) = min(1 327,5; 1 292) = 1 292 N/mm². Maßgebend ist hier die 0,1-%-Dehngrenze.",
+    "explanation": "σ_pm0 = min(0,75 · f_pk; 0,85 · f_p0,1k) = min(1327,5; 1292) = 1292 N/mm². Maßgebend ist hier die 0,1-%-Dehngrenze.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
       "",
-      "1 368 N/mm² = min(0,80·f_pk; 0,90·f_p0,1k) ist die Höchstspannung an der Presse σ_p,max.",
-      "Es ist das Minimum beider Kriterien zu bilden; 0,85·f_p0,1k = 1 292 N/mm² ist kleiner.",
+      "1368 N/mm² = min(0,80·f_pk; 0,90·f_p0,1k) ist die Höchstspannung an der Presse σ_p,max.",
+      "Es ist das Minimum beider Kriterien zu bilden; 0,85·f_p0,1k = 1292 N/mm² ist kleiner.",
       "0,80·f_pk gehört zum Pressenkriterium und wird dort zudem durch 0,90·f_p0,1k begrenzt."
     ],
     "gapAnalysis": {
@@ -38217,7 +38217,7 @@
     "topic": "Randspannungen",
     "difficulty": "Vertiefung",
     "normRef": "",
-    "question": "Rechteckquerschnitt b/h = 400/800 mm, P = 2 000 kN, Exzentrizität e_p = 250 mm nach unten, Eigengewichtsmoment M_g1 = 400 kNm. Wie groß ist die Spannung am unteren Rand (Druck negativ)?",
+    "question": "Rechteckquerschnitt b/h = 400/800 mm, P = 2000 kN, Exzentrizität e_p = 250 mm nach unten, Eigengewichtsmoment M_g1 = 400 kNm. Wie groß ist die Spannung am unteren Rand (Druck negativ)?",
     "options": [
       "−18,0 N/mm²",
       "−8,6 N/mm²",
@@ -38225,7 +38225,7 @@
       "+3,1 N/mm²"
     ],
     "correctIdx": 1,
-    "explanation": "A = 320 000 mm², W = 400 · 800²/6 = 42,67·10⁶ mm³. σ_u = −P/A − P·e_p/W + M/W = −6,25 − 11,72 + 9,38 = −8,6 N/mm².",
+    "explanation": "A = 320 000 mm², W = 400 · 800²/6 = 42,67·10⁶ mm³. σ_u = −P/A − P·e_p/W + M/W = −6,25 − 11,72 + 9,38 = −8,6 N/mm².",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
@@ -38265,7 +38265,7 @@
       "Sie viertelt sich"
     ],
     "correctIdx": 2,
-    "explanation": "Die Umlenkkraft u = 8·P·f/L² ist proportional zu P·f. Bei doppeltem Stich genügt für u = g die halbe Vorspannkraft – z. B. g = 30 kN/m, L = 24 m: f = 0,40 m → 5 400 kN, f = 0,80 m → 2 700 kN.",
+    "explanation": "Die Umlenkkraft u = 8·P·f/L² ist proportional zu P·f. Bei doppeltem Stich genügt für u = g die halbe Vorspannkraft – z. B. g = 30 kN/m, L = 24 m: f = 0,40 m → 5400 kN, f = 0,80 m → 2700 kN.",
     "bloom": "Analysieren",
     "niveau": "M",
     "distraktorFeedback": [
@@ -38337,7 +38337,7 @@
     "topic": "Elastische Verkürzung",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1, 5.10.5.1",
-    "question": "Nachträglicher Verbund: n = 4 Spannglieder werden nacheinander gespannt; σ_c in Spanngliedhöhe = 12 N/mm², E_p = 195 000 N/mm², E_cm(t₀) = 30 000 N/mm². Wie groß ist der mittlere Verlust Δσ_p,el = j·E_p·σ_c/E_cm(t₀) mit j = (n − 1)/(2n)?",
+    "question": "Nachträglicher Verbund: n = 4 Spannglieder werden nacheinander gespannt; σ_c in Spanngliedhöhe = 12 N/mm², E_p = 195 000 N/mm², E_cm(t₀) = 30 000 N/mm². Wie groß ist der mittlere Verlust Δσ_p,el = j·E_p·σ_c/E_cm(t₀) mit j = (n − 1)/(2n)?",
     "options": [
       "29,3 N/mm²",
       "78,0 N/mm²",
@@ -38345,7 +38345,7 @@
       "58,5 N/mm²"
     ],
     "correctIdx": 0,
-    "explanation": "j = 3/8 = 0,375. Δσ_p,el = 0,375 · 195 000 · 12/30 000 = 29,3 N/mm². Das zuerst gespannte Glied verliert am meisten, das zuletzt gespannte nichts.",
+    "explanation": "j = 3/8 = 0,375. Δσ_p,el = 0,375 · 195 000 · 12/30 000 = 29,3 N/mm². Das zuerst gespannte Glied verliert am meisten, das zuletzt gespannte nichts.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
@@ -38620,15 +38620,15 @@
     "topic": "THG-Bilanz eines Bauteils",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 15804+A2",
-    "question": "Eine Hohlkörperdecke enthält 19,5 m³ Beton (CEM III/A, Prüfalter 56 d: 123 kg CO₂-Äq./m³) und 2 470 kg Betonstahl aus der Elektroofenroute (0,42 kg CO₂-Äq./kg). Wie groß ist das GWP A1–A3 nach GWP = V_c · gwp_c + m_s · gwp_s?",
+    "question": "Eine Hohlkörperdecke enthält 19,5 m³ Beton (CEM III/A, Prüfalter 56 d: 123 kg CO₂-Äq./m³) und 2470 kg Betonstahl aus der Elektroofenroute (0,42 kg CO₂-Äq./kg). Wie groß ist das GWP A1–A3 nach GWP = V_c · gwp_c + m_s · gwp_s?",
     "options": [
-      "rund 2 400 kg CO₂-Äq.",
-      "rund 3 670 kg CO₂-Äq.",
-      "rund 4 820 kg CO₂-Äq.",
-      "rund 3 440 kg CO₂-Äq."
+      "rund 2400 kg CO₂-Äq.",
+      "rund 3670 kg CO₂-Äq.",
+      "rund 4820 kg CO₂-Äq.",
+      "rund 3440 kg CO₂-Äq."
     ],
     "correctIdx": 3,
-    "explanation": "Beton: 19,5 · 123 = 2 398,5 kg; Stahl: 2 470 · 0,42 = 1 037,4 kg; Summe ≈ 3 436 kg CO₂-Äq.",
+    "explanation": "Beton: 19,5 · 123 = 2398,5 kg; Stahl: 2470 · 0,42 = 1037,4 kg; Summe ≈ 3436 kg CO₂-Äq.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -38703,12 +38703,12 @@
     "topic": "Modul A2 Transport",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 15804+A2",
-    "question": "In der Transportbeton-Übung werden 320 kg Zement über 80 km und 1 870 kg Gesteinskörnung über 25 km per Lkw (0,068 kg CO₂-Äq./(t·km)) zum Betonwerk gefahren. Wie groß ist das GWP im Modul A2 je m³ Beton?",
+    "question": "In der Transportbeton-Übung werden 320 kg Zement über 80 km und 1870 kg Gesteinskörnung über 25 km per Lkw (0,068 kg CO₂-Äq./(t·km)) zum Betonwerk gefahren. Wie groß ist das GWP im Modul A2 je m³ Beton?",
     "options": [
       "rund 1,7 kg CO₂-Äq./m³",
       "rund 4,9 kg CO₂-Äq./m³",
       "rund 3,2 kg CO₂-Äq./m³",
-      "rund 4 900 kg CO₂-Äq./m³"
+      "rund 4900 kg CO₂-Äq./m³"
     ],
     "correctIdx": 1,
     "explanation": "A2 = 0,320 t · 80 km · 0,068 + 1,870 t · 25 km · 0,068 = 1,74 + 3,18 ≈ 4,9 kg CO₂-Äq./m³. Die Massen sind in Tonnen einzusetzen, weil der Faktor auf t·km bezogen ist.",
@@ -38988,7 +38988,7 @@
     "question": "Warum reichen alternative Brennstoffe im Drehrohrofen allein nicht aus, um die Zementherstellung weitgehend zu dekarbonisieren?",
     "options": [
       "Der größte Anteil der Emissionen entsteht beim Mahlen des Klinkers mit Strom",
-      "Ersatzbrennstoffe erreichen die nötige Sintertemperatur von etwa 1 450 °C nicht",
+      "Ersatzbrennstoffe erreichen die nötige Sintertemperatur von etwa 1450 °C nicht",
       "Ersatzbrennstoffe verursachen mehr CO₂ als Kohle, weil sie feucht eingesetzt werden",
       "Rund zwei Drittel der Emissionen stammen aus der Entsäuerung des Kalksteins"
     ],
@@ -39033,7 +39033,7 @@
       "Ihr Gehalt an biogenem Kohlenstoff bindet Wärme chemisch in der Faser"
     ],
     "correctIdx": 2,
-    "explanation": "Mit a = λ/(ρ · c) dringt eine Temperaturwelle umso langsamer ein, je größer ρ · c ist. Holzfaser hat c ≈ 2 100 J/(kg·K) und eine hohe Rohdichte, EPS dagegen sehr wenig Speichermasse.",
+    "explanation": "Mit a = λ/(ρ · c) dringt eine Temperaturwelle umso langsamer ein, je größer ρ · c ist. Holzfaser hat c ≈ 2100 J/(kg·K) und eine hohe Rohdichte, EPS dagegen sehr wenig Speichermasse.",
     "bloom": "Analysieren",
     "niveau": "M",
     "distraktorFeedback": [
@@ -39105,22 +39105,22 @@
     "topic": "Abzinsung einer Einmalzahlung",
     "difficulty": "Basis",
     "normRef": "ISO 15686-5",
-    "question": "Eine Flachdachabdichtung muss nach 20 Jahren für 14 000 € erneuert werden. Welcher Barwert ist bei r = 2 % in der LCC-Bilanz anzusetzen?",
+    "question": "Eine Flachdachabdichtung muss nach 20 Jahren für 14 000 € erneuert werden. Welcher Barwert ist bei r = 2 % in der LCC-Bilanz anzusetzen?",
     "options": [
-      "rund 9 420 €",
-      "rund 14 000 €",
-      "rund 7 750 €",
-      "rund 8 400 €"
+      "rund 9420 €",
+      "rund 14 000 €",
+      "rund 7750 €",
+      "rund 8400 €"
     ],
     "correctIdx": 0,
-    "explanation": "BW = C_t/(1 + r)^t = 14 000/1,02^20 = 14 000/1,486 ≈ 9 420 €.",
+    "explanation": "BW = C_t/(1 + r)^t = 14 000/1,02^20 = 14 000/1,486 ≈ 9420 €.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "",
       "Das ist der Nominalwert ohne Abzinsung; künftige Kosten sind auf den Barwert abzuzinsen.",
       "Hier wurde mit r = 3 % statt mit 2 % abgezinst.",
-      "Hier wurde linear mit 2 % je Jahr abgezogen (14 000 · 0,6) statt exponentiell abgezinst."
+      "Hier wurde linear mit 2 % je Jahr abgezogen (14 000 · 0,6) statt exponentiell abgezinst."
     ],
     "gapAnalysis": {
       "topic": "Abzinsung einer Einmalzahlung",
@@ -39231,22 +39231,22 @@
     "topic": "Preisgleitklausel",
     "difficulty": "Vertiefung",
     "normRef": "VOB/A § 9d",
-    "question": "Ein Bauvertrag über 80 000 € wurde bei einem Baustoffpreisindex von 140 geschlossen; bei Lieferung steht der Index bei 175. Welcher angepasste Betrag ergibt sich mit K_t = K_0 · I_t/I_0?",
+    "question": "Ein Bauvertrag über 80 000 € wurde bei einem Baustoffpreisindex von 140 geschlossen; bei Lieferung steht der Index bei 175. Welcher angepasste Betrag ergibt sich mit K_t = K_0 · I_t/I_0?",
     "options": [
-      "64 000 €",
-      "100 000 €",
-      "108 000 €",
-      "20 000 €"
+      "64 000 €",
+      "100 000 €",
+      "108 000 €",
+      "20 000 €"
     ],
     "correctIdx": 1,
-    "explanation": "K_t = 80 000 · 175/140 = 100 000 €. Die Mehrkosten betragen ΔK = 20 000 €.",
+    "explanation": "K_t = 80 000 · 175/140 = 100 000 €. Die Mehrkosten betragen ΔK = 20 000 €.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "Hier wurde das Indexverhältnis umgekehrt (140/175); das ergäbe eine Preissenkung.",
       "",
-      "Hier wurde die Indexdifferenz von 35 Punkten als Prozentsatz (+ 35 % = 28 000 €) aufgeschlagen statt das Indexverhältnis 175/140 = 1,25 zu bilden.",
-      "20 000 € sind nur die Mehrkosten ΔK, nicht der angepasste Vertragsbetrag K_t."
+      "Hier wurde die Indexdifferenz von 35 Punkten als Prozentsatz (+ 35 % = 28 000 €) aufgeschlagen statt das Indexverhältnis 175/140 = 1,25 zu bilden.",
+      "20 000 € sind nur die Mehrkosten ΔK, nicht der angepasste Vertragsbetrag K_t."
     ],
     "gapAnalysis": {
       "topic": "Preisgleitklausel",
@@ -39405,7 +39405,7 @@
       "rund 1,16"
     ],
     "correctIdx": 1,
-    "explanation": "W = 120 · 160²/6 = 512 000 mm³; M = 2,5 · 4,5²/8 + 25 · 0,040 = 6,33 + 1,00 = 7,33 kNm → σ_m,d = 14,3 N/mm². σ_c,0,d = 25 000/19 200 = 1,30 N/mm². (1,30/14,5)² + 14,3/16,6 ≈ 0,01 + 0,86 = 0,87.",
+    "explanation": "W = 120 · 160²/6 = 512 000 mm³; M = 2,5 · 4,5²/8 + 25 · 0,040 = 6,33 + 1,00 = 7,33 kNm → σ_m,d = 14,3 N/mm². σ_c,0,d = 25 000/19 200 = 1,30 N/mm². (1,30/14,5)² + 14,3/16,6 ≈ 0,01 + 0,86 = 0,87.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
@@ -39445,7 +39445,7 @@
       "rund 62,5 MPa"
     ],
     "correctIdx": 0,
-    "explanation": "R · T = 8,314 · 293 = 2 436 J/mol; 2 436/(27,0 · 10⁻⁶ m³/mol) = 9,02 · 10⁷ Pa; · ln 1,5 = 0,405 → p ≈ 36,6 MPa – weit über der Zugfestigkeit historischer Steine (1 bis 5 MPa).",
+    "explanation": "R · T = 8,314 · 293 = 2436 J/mol; 2436/(27,0 · 10⁻⁶ m³/mol) = 9,02 · 10⁷ Pa; · ln 1,5 = 0,405 → p ≈ 36,6 MPa – weit über der Zugfestigkeit historischer Steine (1 bis 5 MPa).",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
@@ -39640,7 +39640,7 @@
     "topic": "Statische Amortisation",
     "difficulty": "Vertiefung",
     "normRef": "",
-    "question": "Eine Fassadendämmung senkt den U-Wert um ΔU = 1,0 W/(m²K) auf A = 120 m² (F_x = 1,0, G_t20/15 = 3 500 Kd/a, η_sys = 0,90, Energiepreis 0,12 €/kWh). Wie lange beträgt die statische Amortisation bei 12 000 € Investition?",
+    "question": "Eine Fassadendämmung senkt den U-Wert um ΔU = 1,0 W/(m²K) auf A = 120 m² (F_x = 1,0, G_t20/15 = 3500 Kd/a, η_sys = 0,90, Energiepreis 0,12 €/kWh). Wie lange beträgt die statische Amortisation bei 12 000 € Investition?",
     "options": [
       "rund 11,0 Jahre",
       "rund 9,9 Jahre",
@@ -39648,19 +39648,19 @@
       "rund 8,9 Jahre"
     ],
     "correctIdx": 3,
-    "explanation": "ΔQ_E = 1,0 · 120 · 3 500 · 24/(1 000 · 0,90) = 11 200 kWh/a; Einsparung 11 200 · 0,12 = 1 344 €/a; t = 12 000/1 344 ≈ 8,9 a.",
+    "explanation": "ΔQ_E = 1,0 · 120 · 3500 · 24/(1000 · 0,90) = 11 200 kWh/a; Einsparung 11 200 · 0,12 = 1344 €/a; t = 12 000/1 344 ≈ 8,9 a.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
-      "11,0 Jahre entstehen, wenn mit η_sys multipliziert statt durch η_sys dividiert wird (9 072 kWh/a).",
+      "11,0 Jahre entstehen, wenn mit η_sys multipliziert statt durch η_sys dividiert wird (9072 kWh/a).",
       "9,9 Jahre entstehen ohne Division durch η_sys; der Anlagennutzungsgrad erhöht die eingesparte Endenergie.",
-      "1,8 Jahre ergäben sich nur für die energiebedingten Mehrkosten von rund 2 400 € (Kopplungsprinzip), nicht für 12 000 €.",
+      "1,8 Jahre ergäben sich nur für die energiebedingten Mehrkosten von rund 2400 € (Kopplungsprinzip), nicht für 12 000 €.",
       ""
     ],
     "gapAnalysis": {
       "topic": "Statische Amortisation",
       "misconception": "Anlagennutzungsgrad oder Bezugsgröße der Investition werden falsch berücksichtigt.",
-      "coreRule": "ΔQ_E = ΔU · A · F_x · G_t · 24/(1 000 · η_sys); t_Amort = Investition/Kosteneinsparung.",
+      "coreRule": "ΔQ_E = ΔU · A · F_x · G_t · 24/(1000 · η_sys); t_Amort = Investition/Kosteneinsparung.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Beispiel 2: Energieeinsparung und Amortisation“ im Modul Modernisierung & GModG noch einmal durch.",
       "targetModuleTab": "modernisierung",
       "targetModuleLabel": "Modernisierung & GModG"
@@ -40218,7 +40218,7 @@
       "rund 98,9 %"
     ],
     "correctIdx": 1,
-    "explanation": "m_B = 1 920 t, m_Z = 400 t, m_H = 25 t, m_M = 30 t; Σ = 2 375 t. Q_min = (1 920 + 400)/2 375 ≈ 97,7 %.",
+    "explanation": "m_B = 1920 t, m_Z = 400 t, m_H = 25 t, m_M = 30 t; Σ = 2375 t. Q_min = (1920 + 400)/2 375 ≈ 97,7 %.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -40413,7 +40413,7 @@
     "topic": "Trockenmassebezug",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 15934",
-    "question": "Eine Bodenprobe wiegt feucht 1 800 g und nach Trocknung bei 105 °C 1 500 g. Das Labor misst 12 mg/kg in der Originalsubstanz. Wie groß ist der Gehalt bezogen auf die Trockenmasse?",
+    "question": "Eine Bodenprobe wiegt feucht 1800 g und nach Trocknung bei 105 °C 1500 g. Das Labor misst 12 mg/kg in der Originalsubstanz. Wie groß ist der Gehalt bezogen auf die Trockenmasse?",
     "options": [
       "rund 14,4 mg/kg TM",
       "rund 15,0 mg/kg TM",
@@ -40421,7 +40421,7 @@
       "rund 10,0 mg/kg TM"
     ],
     "correctIdx": 0,
-    "explanation": "m_d/m_f = 1 500/1 800 = 0,833; c_TM = 12/0,833 = 14,4 mg/kg TM. Der Wassergehalt beträgt w = 300/1 500 = 20 %.",
+    "explanation": "m_d/m_f = 1500/1 800 = 0,833; c_TM = 12/0,833 = 14,4 mg/kg TM. Der Wassergehalt beträgt w = 300/1 500 = 20 %.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
@@ -40581,18 +40581,18 @@
     "normRef": "",
     "question": "Für eine Decke mit 120 m³ Beton (2,4 t/m³) sinkt die Transportentfernung durch regionale Gesteinskörnung von 65 auf 15 km. Wie viel CO₂ spart das mit 0,08 kg CO₂/(t·km) nach dem Baustoff-Simulator?",
     "options": [
-      "rund 1 150 kg CO₂",
-      "rund 1 500 kg CO₂",
+      "rund 1150 kg CO₂",
+      "rund 1500 kg CO₂",
       "rund 480 kg CO₂",
       "rund 345 kg CO₂"
     ],
     "correctIdx": 0,
-    "explanation": "Masse 120 · 2,4 = 288 t; Einsparung 288 t · (65 − 15) km · 0,08 = 1 152 kg CO₂.",
+    "explanation": "Masse 120 · 2,4 = 288 t; Einsparung 288 t · (65 − 15) km · 0,08 = 1152 kg CO₂.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "",
-      "1 500 kg entsprechen der gesamten Transportemission über 65 km, nicht der Einsparung.",
+      "1500 kg entsprechen der gesamten Transportemission über 65 km, nicht der Einsparung.",
       "480 kg entstehen, wenn das Volumen in m³ statt der Masse in t eingesetzt wird.",
       "345 kg entsprechen den verbleibenden Emissionen über 15 km, nicht der Differenz."
     ],
@@ -40621,17 +40621,17 @@
     "normRef": "",
     "question": "Im ROI-Rechner hat ein Projekt 800 m² Nutzfläche (1,45 t/m² verbaute Masse), davon 3,5 % Bauabfall. Durch Planung werden 40 % des Abfalls vermieden. Wie hoch ist die Entsorgungsersparnis bei 38 €/t?",
     "options": [
-      "rund 1 540 €",
+      "rund 1540 €",
       "rund 930 €",
       "rund 430 €",
       "rund 620 €"
     ],
     "correctIdx": 3,
-    "explanation": "Masse 800 · 1,45 = 1 160 t; Abfall 1 160 · 0,035 = 40,6 t; vermieden 40,6 · 0,40 = 16,2 t; Ersparnis 16,2 · 38 ≈ 617 €.",
+    "explanation": "Masse 800 · 1,45 = 1160 t; Abfall 1160 · 0,035 = 40,6 t; vermieden 40,6 · 0,40 = 16,2 t; Ersparnis 16,2 · 38 ≈ 617 €.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
-      "1 540 € sind die gesamten Entsorgungskosten ohne Optimierung, nicht die Ersparnis.",
+      "1540 € sind die gesamten Entsorgungskosten ohne Optimierung, nicht die Ersparnis.",
       "930 € sind die verbleibenden Kosten für 60 % des Abfalls.",
       "430 € entstehen, wenn die Nutzfläche in m² direkt als Masse in t angesetzt wird (ohne 1,45 t/m²).",
       ""
@@ -42120,7 +42120,7 @@
     "niveau": "B",
     "distraktorFeedback": [
       "12,0 A entsteht mit der Bauteilfläche statt der Stahloberfläche.",
-      "0,96 A ist um den Faktor 10 zu klein; mA/m² · m² ergibt 9 600 mA = 9,6 A.",
+      "0,96 A ist um den Faktor 10 zu klein; mA/m² · m² ergibt 9600 mA = 9,6 A.",
       "96 A entsteht mit 150 statt 15 mA/m²; die Einheit mA muss in A umgerechnet werden.",
       ""
     ],
@@ -42567,13 +42567,13 @@
     "normRef": "DIN 1045-2",
     "question": "Für XD3 ergibt sich mit w = 165 l/m³ ein Zementgehalt von c = 366,7 kg/m³ (ρ_z = 3,10 kg/dm³). Mit 15 dm³ Verdichtungsporen und ρ_g = 2,65 kg/dm³: Welche Masse an Gesteinskörnung je m³ liefert die Stoffraumrechnung?",
     "options": [
-      "m_g ≈ 1 899 kg/m³",
-      "m_g ≈ 2 297 kg/m³",
-      "m_g ≈ 1 201 kg/m³",
-      "m_g ≈ 1 860 kg/m³"
+      "m_g ≈ 1899 kg/m³",
+      "m_g ≈ 2297 kg/m³",
+      "m_g ≈ 1201 kg/m³",
+      "m_g ≈ 1860 kg/m³"
     ],
     "correctIdx": 3,
-    "explanation": "V_z = 366,7/3,10 = 118,3 dm³; V_g = 1000 − (118,3 + 165 + 15) = 701,7 dm³; m_g = 701,7 · 2,65 ≈ 1 860 kg/m³.",
+    "explanation": "V_z = 366,7/3,10 = 118,3 dm³; V_g = 1000 − (118,3 + 165 + 15) = 701,7 dm³; m_g = 701,7 · 2,65 ≈ 1860 kg/m³.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -42645,7 +42645,7 @@
     "topic": "Frischbetontemperatur",
     "difficulty": "Vertiefung",
     "normRef": "",
-    "question": "Mischung je m³: 320 kg Zement mit 20 °C, 165 kg Wasser mit 12 °C und 1 850 kg Gesteinskörnung mit 4 °C (c = 0,84 kJ/(kg·K) für Zement und Gestein, 4,18 kJ/(kg·K) für Wasser). Welche Frischbetontemperatur ergibt die Mischungsrechnung?",
+    "question": "Mischung je m³: 320 kg Zement mit 20 °C, 165 kg Wasser mit 12 °C und 1850 kg Gesteinskörnung mit 4 °C (c = 0,84 kJ/(kg·K) für Zement und Gestein, 4,18 kJ/(kg·K) für Wasser). Welche Frischbetontemperatur ergibt die Mischungsrechnung?",
     "options": [
       "T_B ≈ 12,0 °C",
       "T_B ≈ 6,8 °C",
@@ -42653,7 +42653,7 @@
       "T_B ≈ 7,9 °C"
     ],
     "correctIdx": 3,
-    "explanation": "T_B = Σ(m·c·T)/Σ(m·c) = (5 376 + 8 276 + 6 216) kJ / 2 512 kJ/K ≈ 7,9 °C. Das Wasser hebt die Temperatur wegen seiner hohen Wärmekapazität deutlich über die Gesteinstemperatur.",
+    "explanation": "T_B = Σ(m·c·T)/Σ(m·c) = (5376 + 8276 + 6216) kJ / 2512 kJ/K ≈ 7,9 °C. Das Wasser hebt die Temperatur wegen seiner hohen Wärmekapazität deutlich über die Gesteinstemperatur.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -42693,7 +42693,7 @@
       "Auf der verzögerten Hydratation, weil das Eis den Zement vorübergehend chemisch bindet"
     ],
     "correctIdx": 0,
-    "explanation": "Ersetzt man das Wasser nur durch 0 °C kaltes Wasser, ergäben sich etwa 26,1 °C. Erst die Schmelzwärme (30 kg · 334 kJ/kg ≈ 10 000 kJ) bringt die Absenkung auf 22,1 °C.",
+    "explanation": "Ersetzt man das Wasser nur durch 0 °C kaltes Wasser, ergäben sich etwa 26,1 °C. Erst die Schmelzwärme (30 kg · 334 kJ/kg ≈ 10 000 kJ) bringt die Absenkung auf 22,1 °C.",
     "bloom": "Analysieren",
     "niveau": "M",
     "distraktorFeedback": [
@@ -43097,7 +43097,7 @@
     "topic": "Bezogener Schlankheitsgrad",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1995-1-1",
-    "question": "Für die Stütze C24 (f_c,0,k = 21 N/mm², E_0,05 = 7 400 N/mm²) gilt λ = 74,2. Welcher bezogene Schlankheitsgrad λ_rel ergibt sich?",
+    "question": "Für die Stütze C24 (f_c,0,k = 21 N/mm², E_0,05 = 7400 N/mm²) gilt λ = 74,2. Welcher bezogene Schlankheitsgrad λ_rel ergibt sich?",
     "options": [
       "λ_rel = 3,95",
       "λ_rel = 1,26",
@@ -43111,7 +43111,7 @@
     "distraktorFeedback": [
       "Hier fehlt die Division durch π.",
       "",
-      "Hier wurde der Mittelwert E_0,mean = 11 000 N/mm² statt des 5-%-Quantils E_0,05 verwendet.",
+      "Hier wurde der Mittelwert E_0,mean = 11 000 N/mm² statt des 5-%-Quantils E_0,05 verwendet.",
       "Das ist λ_rel², das erst in der Formel für k benötigt wird."
     ],
     "gapAnalysis": {
@@ -44007,15 +44007,15 @@
     "topic": "Flächenbezogene Masse",
     "difficulty": "Basis",
     "normRef": "DIN 4109",
-    "question": "Eine Kalksandsteinwand ist 17,5 cm dick (ρ = 2 000 kg/m³) und beidseitig verputzt (zusammen 40 kg/m²). Welche flächenbezogene Masse m′ ergibt sich?",
+    "question": "Eine Kalksandsteinwand ist 17,5 cm dick (ρ = 2000 kg/m³) und beidseitig verputzt (zusammen 40 kg/m²). Welche flächenbezogene Masse m′ ergibt sich?",
     "options": [
       "m′ = 350 kg/m²",
       "m′ = 390 kg/m²",
       "m′ = 430 kg/m²",
-      "m′ = 3 540 kg/m²"
+      "m′ = 3540 kg/m²"
     ],
     "correctIdx": 1,
-    "explanation": "m′_0 = 0,175 m · 2 000 kg/m³ = 350 kg/m²; mit Putz m′ = 350 + 40 = 390 kg/m².",
+    "explanation": "m′_0 = 0,175 m · 2000 kg/m³ = 350 kg/m²; mit Putz m′ = 350 + 40 = 390 kg/m².",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -44088,7 +44088,7 @@
     "topic": "Nachweis Wohnungstrennwand",
     "difficulty": "Vertiefung",
     "normRef": "DIN 4109-1",
-    "question": "Eine Wohnungstrennwand aus Hochlochziegeln (24 cm, ρ = 1 200 kg/m³) erhält beidseitig 40 kg/m² Putz; die Flanken sind schwer und massiv (K_F = 2 dB). Ist R′_w ≥ 53 dB eingehalten?",
+    "question": "Eine Wohnungstrennwand aus Hochlochziegeln (24 cm, ρ = 1200 kg/m³) erhält beidseitig 40 kg/m² Putz; die Flanken sind schwer und massiv (K_F = 2 dB). Ist R′_w ≥ 53 dB eingehalten?",
     "options": [
       "R′_w ≈ 53,5 dB: knapp eingehalten",
       "R′_w ≈ 57,5 dB: deutlich eingehalten",
@@ -44096,7 +44096,7 @@
       "R′_w ≈ 51,5 dB: nicht eingehalten"
     ],
     "correctIdx": 0,
-    "explanation": "m′ = 0,24 · 1 200 + 40 = 328 kg/m²; R_w = 30,9 · lg 328 − 22,2 = 55,5 dB (DIN 4109-32); R′_w = 55,5 − 2 = 53,5 dB ≥ 53 dB.",
+    "explanation": "m′ = 0,24 · 1200 + 40 = 328 kg/m²; R_w = 30,9 · lg 328 − 22,2 = 55,5 dB (DIN 4109-32); R′_w = 55,5 − 2 = 53,5 dB ≥ 53 dB.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
@@ -44331,7 +44331,7 @@
     "topic": "Heißtragfähigkeit",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1995-1-2",
-    "question": "Für den Restquerschnitt 82 × 311 mm gilt W_ef ≈ 1 322 cm³. Mit k_fi = 1,15, f_m,k = 28 N/mm², γ_M,fi = 1,0 und M_fi,Ed = 0,60 · 45 kNm: Wie hoch ist die Ausnutzung im Brandfall?",
+    "question": "Für den Restquerschnitt 82 × 311 mm gilt W_ef ≈ 1322 cm³. Mit k_fi = 1,15, f_m,k = 28 N/mm², γ_M,fi = 1,0 und M_fi,Ed = 0,60 · 45 kNm: Wie hoch ist die Ausnutzung im Brandfall?",
     "options": [
       "η_fi ≈ 1,06",
       "η_fi ≈ 0,73",
@@ -44339,7 +44339,7 @@
       "η_fi ≈ 1,58"
     ],
     "correctIdx": 2,
-    "explanation": "M_fi,Rd = W_ef · k_fi · f_m,k = 1 322 cm³ · 32,2 N/mm² ≈ 42,6 kNm; M_fi,Ed = 27,0 kNm; η_fi = 27,0/42,6 ≈ 0,63 ≤ 1,0.",
+    "explanation": "M_fi,Rd = W_ef · k_fi · f_m,k = 1322 cm³ · 32,2 N/mm² ≈ 42,6 kNm; M_fi,Ed = 27,0 kNm; η_fi = 27,0/42,6 ≈ 0,63 ≤ 1,0.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
@@ -44531,7 +44531,7 @@
     "topic": "Durchbiegung",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1995-1-1",
-    "question": "Ein Holzbalken C24 (b/h = 120/240 mm, E_0,mean = 11 000 N/mm²) überspannt L = 5,0 m als Einfeldträger. Welche Durchbiegung ergibt die Kontrollrechnung für die quasi-ständige Last q = 3,0 kN/m (ohne Kriechen)?",
+    "question": "Ein Holzbalken C24 (b/h = 120/240 mm, E_0,mean = 11 000 N/mm²) überspannt L = 5,0 m als Einfeldträger. Welche Durchbiegung ergibt die Kontrollrechnung für die quasi-ständige Last q = 3,0 kN/m (ohne Kriechen)?",
     "options": [
       "w ≈ 1,6 mm",
       "≈ 20,0 mm (L/250)",
@@ -44539,13 +44539,13 @@
       "w ≈ 16,1 mm"
     ],
     "correctIdx": 3,
-    "explanation": "I = 120 · 240³/12 = 1,382 · 10⁸ mm⁴; w = 5 · 3,0 · 5 000⁴/(384 · 11 000 · 1,382 · 10⁸) ≈ 16,1 mm ≤ L/250 = 20 mm.",
+    "explanation": "I = 120 · 240³/12 = 1,382 · 10⁸ mm⁴; w = 5 · 3,0 · 5000⁴/(384 · 11 000 · 1,382 · 10⁸) ≈ 16,1 mm ≤ L/250 = 20 mm.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "Hier ist ein Einheitenfehler um den Faktor 10 aufgetreten (z. B. cm statt mm).",
       "Das ist der Grenzwert L/250, nicht die berechnete Durchbiegung.",
-      "Hier wurde E_0,05 = 7 400 N/mm² verwendet; für Verformungen im GZG gilt der Mittelwert E_0,mean.",
+      "Hier wurde E_0,05 = 7400 N/mm² verwendet; für Verformungen im GZG gilt der Mittelwert E_0,mean.",
       ""
     ],
     "gapAnalysis": {
@@ -44624,7 +44624,7 @@
     "niveau": "M",
     "distraktorFeedback": [
       "Doppelte Teilsicherheitsbeiwerte ergäben höchstens etwa den Faktor 1,35 bis 1,5, nicht 4.",
-      "Ein Einheitenfehler N statt kN führte zum Faktor 1 000, nicht 4.",
+      "Ein Einheitenfehler N statt kN führte zum Faktor 1000, nicht 4.",
       "",
       "Ein Biegeträger ohne Normalkraft erhält nach Theorie II. Ordnung keine nennenswerten Zusatzmomente."
     ],
@@ -44739,13 +44739,13 @@
     "normRef": "DIN EN 15804",
     "question": "Eine IfcWall aus Stahlbeton misst 8,0 m × 2,75 m × 0,20 m. Die verknüpfte EPD nennt für die Module A1–A3 gwp_V = 280 kg CO₂e/m³. Welches Treibhauspotenzial der Herstellung ergibt sich?",
     "options": [
-      "6 160 kg CO₂e",
-      "2 419 kg CO₂e",
-      "2 957 kg CO₂e",
-      "1 232 kg CO₂e"
+      "6160 kg CO₂e",
+      "2419 kg CO₂e",
+      "2957 kg CO₂e",
+      "1232 kg CO₂e"
     ],
     "correctIdx": 3,
-    "explanation": "V = 8,0 · 2,75 · 0,20 = 4,40 m³; GWP = 4,40 m³ · 280 kg CO₂e/m³ = 1 232 kg CO₂e.",
+    "explanation": "V = 8,0 · 2,75 · 0,20 = 4,40 m³; GWP = 4,40 m³ · 280 kg CO₂e/m³ = 1232 kg CO₂e.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -44785,7 +44785,7 @@
       "Kein Fehler, da Öffnungen in der Ökobilanz bilanziell neutral sind"
     ],
     "correctIdx": 0,
-    "explanation": "Brutto 8,64 m³, netto 8,16 m³: Differenz 0,48 m³ · 280 = 134 kg CO₂e. Bezogen auf den korrekten Wert 2 285 kg ist das eine Überschätzung um rund 5,9 %.",
+    "explanation": "Brutto 8,64 m³, netto 8,16 m³: Differenz 0,48 m³ · 280 = 134 kg CO₂e. Bezogen auf den korrekten Wert 2285 kg ist das eine Überschätzung um rund 5,9 %.",
     "bloom": "Analysieren",
     "niveau": "M",
     "distraktorFeedback": [
@@ -45021,15 +45021,15 @@
     "topic": "Primärenergie PENRT",
     "difficulty": "Basis",
     "normRef": "DIN EN 15804",
-    "question": "Eine Kunststoff-Abdichtungsbahn weist je m² PENRE = 2 400 MJ (energetisch) und PENRM = 350 MJ (stofflich gebunden) aus. Wie groß ist PENRT, und warum wird PENRM getrennt ausgewiesen?",
+    "question": "Eine Kunststoff-Abdichtungsbahn weist je m² PENRE = 2400 MJ (energetisch) und PENRM = 350 MJ (stofflich gebunden) aus. Wie groß ist PENRT, und warum wird PENRM getrennt ausgewiesen?",
     "options": [
-      "PENRT = 2 050 MJ, weil PENRM als Gutschrift abgezogen wird",
-      "PENRT = 2 400 MJ, weil stofflich gebundene Energie nicht zählt",
-      "PENRT = 2 750 MJ, PENRM wird bei Verbrennung am Lebensende frei",
+      "PENRT = 2050 MJ, weil PENRM als Gutschrift abgezogen wird",
+      "PENRT = 2400 MJ, weil stofflich gebundene Energie nicht zählt",
+      "PENRT = 2750 MJ, PENRM wird bei Verbrennung am Lebensende frei",
       "PENRT = 350 MJ, weil nur der stoffliche Anteil im Produkt verbleibt"
     ],
     "correctIdx": 2,
-    "explanation": "PENRT = PENRE + PENRM = 2 400 + 350 = 2 750 MJ. Der stoffliche Anteil (z. B. Erdöl im Kunststoff) ist im Produkt gespeichert und wird erst bei der Verbrennung am Lebensende als Energie frei.",
+    "explanation": "PENRT = PENRE + PENRM = 2400 + 350 = 2750 MJ. Der stoffliche Anteil (z. B. Erdöl im Kunststoff) ist im Produkt gespeichert und wird erst bei der Verbrennung am Lebensende als Energie frei.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -45307,7 +45307,7 @@
     "topic": "Kostenabschätzung",
     "difficulty": "Vertiefung",
     "normRef": "",
-    "question": "Eine Normenanalyse umfasst 60 Seiten à 500 Wörter (1,5 Token je Wort). Die Antwort hat 3 000 Token. Bei 3 € je Million Eingabe-Token und 15 € je Million Ausgabe-Token: Was kostet eine Anfrage?",
+    "question": "Eine Normenanalyse umfasst 60 Seiten à 500 Wörter (1,5 Token je Wort). Die Antwort hat 3000 Token. Bei 3 € je Million Eingabe-Token und 15 € je Million Ausgabe-Token: Was kostet eine Anfrage?",
     "options": [
       "K ≈ 0,14 €",
       "K ≈ 0,04 €",
@@ -45315,7 +45315,7 @@
       "K ≈ 0,18 €"
     ],
     "correctIdx": 3,
-    "explanation": "n_in = 60 · 500 · 1,5 = 45 000 Token; K = 0,045 · 3 € + 0,003 · 15 € = 0,135 € + 0,045 € = 0,18 €.",
+    "explanation": "n_in = 60 · 500 · 1,5 = 45 000 Token; K = 0,045 · 3 € + 0,003 · 15 € = 0,135 € + 0,045 € = 0,18 €.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -45347,7 +45347,7 @@
     "topic": "Kontextbudget",
     "difficulty": "Transfer",
     "normRef": "",
-    "question": "Ein Modell hat 200 000 Token Kontext; Systemprompt 4 000 Token, Antwortreserve 16 000 Token. Ein Gutachten umfasst 180 Seiten à 750 Token. Welche Verarbeitung ist nach dem Modul angemessen?",
+    "question": "Ein Modell hat 200 000 Token Kontext; Systemprompt 4000 Token, Antwortreserve 16 000 Token. Ein Gutachten umfasst 180 Seiten à 750 Token. Welche Verarbeitung ist nach dem Modul angemessen?",
     "options": [
       "Kapitelweise Verarbeitung, da 180 Seiten das freie Budget von 157 Seiten übersteigen",
       "RAG zwingend, da Dokumente mit über 100 Seiten nicht in den Kontext geladen werden können",
@@ -45355,11 +45355,11 @@
       "Vollständig laden ohne Einschränkung, da große Kontexte Details gleich gut finden"
     ],
     "correctIdx": 2,
-    "explanation": "n_frei = 200 000 − 4 000 − 16 000 = 180 000 Token = 240 Seiten > 180 Seiten. Das Gutachten passt hinein; weil Details in der Mitte langer Kontexte schlechter gefunden werden, sollten maßgebende Abschnitte gezielt zitiert werden.",
+    "explanation": "n_frei = 200 000 − 4000 − 16 000 = 180 000 Token = 240 Seiten > 180 Seiten. Das Gutachten passt hinein; weil Details in der Mitte langer Kontexte schlechter gefunden werden, sollten maßgebende Abschnitte gezielt zitiert werden.",
     "bloom": "Bewerten",
     "niveau": "M",
     "distraktorFeedback": [
-      "157 Seiten gelten für das Beispiel mit 128 000 Token Kontext, nicht für dieses Modell.",
+      "157 Seiten gelten für das Beispiel mit 128 000 Token Kontext, nicht für dieses Modell.",
       "Eine feste Seitengrenze gibt es nicht; maßgebend ist das freie Tokenbudget.",
       "",
       "Das Modul weist darauf hin, dass die Trefferquote für Details in der Mitte langer Kontexte sinkt."
@@ -45470,7 +45470,7 @@
     "topic": "Tokenbedarf nach Format",
     "difficulty": "Vertiefung",
     "normRef": "",
-    "question": "Der Token-Kostenrechner schätzt für 35 Seiten als PDF-Scan 100 800 Token und als Markdown 9 555 Token. Welche Schlussfolgerung ist richtig?",
+    "question": "Der Token-Kostenrechner schätzt für 35 Seiten als PDF-Scan 100 800 Token und als Markdown 9555 Token. Welche Schlussfolgerung ist richtig?",
     "options": [
       "Der Scan braucht rund das 10,5-Fache und belegt die Hälfte von 200k",
       "Der Scan braucht rund das 2,9-Fache, da nur die Token je Seite verschieden sind",
@@ -45478,7 +45478,7 @@
       "Markdown braucht rund das 10,5-Fache, da Tabellen als Text länger werden"
     ],
     "correctIdx": 0,
-    "explanation": "100 800/9 555 ≈ 10,5. Der Scan belegt 50 % eines 200k-Kontexts, Markdown unter 5 %. Ursache sind OCR-Artefakte und der höhere Overhead-Faktor (2,4 statt 0,65).",
+    "explanation": "100 800/9 555 ≈ 10,5. Der Scan belegt 50 % eines 200k-Kontexts, Markdown unter 5 %. Ursache sind OCR-Artefakte und der höhere Overhead-Faktor (2,4 statt 0,65).",
     "bloom": "Analysieren",
     "niveau": "B",
     "distraktorFeedback": [
@@ -46202,7 +46202,7 @@
     "normRef": "DIN EN 1992-1-1",
     "question": "Bei der Bewehrungsabnahme soll der Grundwert der Verankerungslänge für Ø 14 mm in C25/30 (guter Verbund, f_bd = 2,7 N/mm², σ_sd = 435 N/mm²) plausibilisiert werden. Welcher Wert ergibt sich?",
     "options": [
-      "l_b,rqd ≈ 2 256 mm",
+      "l_b,rqd ≈ 2256 mm",
       "l_b,rqd ≈ 564 mm",
       "l_b,rqd ≈ 846 mm",
       "l_b,rqd ≈ 483 mm"
@@ -46646,13 +46646,13 @@
     "normRef": "",
     "question": "Für 180 m² Mauerwerk werden ein Aufwandswert von 0,9 h/m² und ein Mittellohn von 32 €/h angesetzt. Wie hoch sind die Lohnkosten?",
     "options": [
-      "K_L = 5 184 €",
-      "K_L = 5 760 €",
-      "K_L = 6 400 €",
+      "K_L = 5184 €",
+      "K_L = 5760 €",
+      "K_L = 6400 €",
       "K_L = 162 €"
     ],
     "correctIdx": 0,
-    "explanation": "Stunden: 180 m² · 0,9 h/m² = 162 h; Lohnkosten: 162 h · 32 €/h = 5 184 €.",
+    "explanation": "Stunden: 180 m² · 0,9 h/m² = 162 h; Lohnkosten: 162 h · 32 €/h = 5184 €.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -47055,7 +47055,7 @@
       "138,7 kN"
     ],
     "correctIdx": 0,
-    "explanation": "A_net = 1 000 − 18 · 10 = 820 mm²; N_u,Rd = 0,9 · 820 · 360/1,25 = 212 544 N = 212,5 kN. Mit N_pl,Rd = 235,0 kN ist der Nettoquerschnitt maßgebend.",
+    "explanation": "A_net = 1000 − 18 · 10 = 820 mm²; N_u,Rd = 0,9 · 820 · 360/1,25 = 212 544 N = 212,5 kN. Mit N_pl,Rd = 235,0 kN ist der Nettoquerschnitt maßgebend.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -47095,7 +47095,7 @@
       "78,9"
     ],
     "correctIdx": 0,
-    "explanation": "λ_z = 4 000/50,7 = 78,9; λ₁ = π · √(210 000/235) = 93,9; λ̄_z = 78,9/93,9 = 0,84.",
+    "explanation": "λ_z = 4000/50,7 = 78,9; λ₁ = π · √(210 000/235) = 93,9; λ̄_z = 78,9/93,9 = 0,84.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -47181,7 +47181,7 @@
     "distraktorFeedback": [
       "",
       "Die Abmessungen eines Walzprofils sind von der Stahlgüte unabhängig.",
-      "Alle Baustähle haben nach DIN EN 1993-1-1 denselben E-Modul von 210 000 N/mm².",
+      "Alle Baustähle haben nach DIN EN 1993-1-1 denselben E-Modul von 210 000 N/mm².",
       "Der Steg ist bei beiden Güten ein beidseitig gestütztes Querschnittsteil."
     ],
     "gapAnalysis": {
@@ -47215,7 +47215,7 @@
       "Er bleibt gleich, da χ nur von f_y abhängt."
     ],
     "correctIdx": 0,
-    "explanation": "N_b,Rd fällt von 1 280 kN (λ̄_z = 0,63; χ = 0,767) auf 678 kN (λ̄_z = 1,26; χ = 0,406), also auf rund 53 %. N_cr sinkt auf ein Viertel, χ reagiert aber gedämpft, weil im mittleren Schlankheitsbereich Imperfektionen und Fließen zusammenwirken.",
+    "explanation": "N_b,Rd fällt von 1280 kN (λ̄_z = 0,63; χ = 0,767) auf 678 kN (λ̄_z = 1,26; χ = 0,406), also auf rund 53 %. N_cr sinkt auf ein Viertel, χ reagiert aber gedämpft, weil im mittleren Schlankheitsbereich Imperfektionen und Fließen zusammenwirken.",
     "bloom": "Bewerten",
     "niveau": "B",
     "distraktorFeedback": [
@@ -47830,13 +47830,13 @@
       "rund 24 MPa"
     ],
     "correctIdx": 1,
-    "explanation": "Die Stempelfläche ist A = π · (20 mm)² / 4 = 314 mm². Damit ist σ = 1 900 N / 314 mm² = 6,0 N/mm² = 6,0 MPa. Zusätzlich ist das Bruchbild anzugeben.",
+    "explanation": "Die Stempelfläche ist A = π · (20 mm)² / 4 = 314 mm². Damit ist σ = 1900 N / 314 mm² = 6,0 N/mm² = 6,0 MPa. Zusätzlich ist das Bruchbild anzugeben.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "Hier wurde mit einer quadratischen Fläche 20 · 20 = 400 mm² gerechnet.",
       "",
-      "Hier wurde der Durchmesser als Radius eingesetzt (A = 1 257 mm²).",
+      "Hier wurde der Durchmesser als Radius eingesetzt (A = 1257 mm²).",
       "Hier wurde der Radius 10 mm in A = π · d² / 4 eingesetzt (A = 79 mm²)."
     ],
     "gapAnalysis": {
@@ -47910,7 +47910,7 @@
       "12 kN/m"
     ],
     "correctIdx": 1,
-    "explanation": "Für den Zylinder gilt n = p · r = 300 N/m² · 4 m = 1 200 N/m = 1,2 kN/m. Die Kugelformel p · r/2 würde 0,6 kN/m liefern.",
+    "explanation": "Für den Zylinder gilt n = p · r = 300 N/m² · 4 m = 1200 N/m = 1,2 kN/m. Die Kugelformel p · r/2 würde 0,6 kN/m liefern.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -49861,12 +49861,12 @@
       "4,0 MPa"
     ],
     "correctIdx": 2,
-    "explanation": "f_c = 900 000 N / 22 500 mm² = 40,0 MPa.",
+    "explanation": "f_c = 900 000 N / 22 500 mm² = 40,0 MPa.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "Die Fläche wurde in cm² statt mm² eingesetzt und die Kraft nicht in N umgerechnet.",
-      "Hier wurde nur durch 15 000 statt 22 500 mm² geteilt.",
+      "Hier wurde nur durch 15 000 statt 22 500 mm² geteilt.",
       "",
       "Bei der Umrechnung von kN auf N fehlt eine Zehnerpotenz."
     ],
@@ -50101,7 +50101,7 @@
       "2,0 MPa"
     ],
     "correctIdx": 0,
-    "explanation": "R_f = 1,5 · 3200 N · 100 mm / 40³ mm³ = 480 000 / 64 000 = 7,5 MPa.",
+    "explanation": "R_f = 1,5 · 3200 N · 100 mm / 40³ mm³ = 480 000 / 64 000 = 7,5 MPa.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -50144,7 +50144,7 @@
       "4,5 MPa"
     ],
     "correctIdx": 1,
-    "explanation": "R_c = 72 000 N / 1600 mm² = 45,0 MPa.",
+    "explanation": "R_c = 72 000 N / 1600 mm² = 45,0 MPa.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -50588,7 +50588,7 @@
     "topic": "Zwang aus Abkühlung",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1 / DAfStb Heft 466",
-    "question": "Ein Betonbauteil (α_T = 10⁻⁵ 1/K, E = 30 000 N/mm²) kühlt um ΔT = 20 K ab und ist zu R = 50 % festgehalten; Schwinden bleibt unberücksichtigt. Wie groß ist die Zwangspannung σ_z = α_T·ΔT·E·R?",
+    "question": "Ein Betonbauteil (α_T = 10⁻⁵ 1/K, E = 30 000 N/mm²) kühlt um ΔT = 20 K ab und ist zu R = 50 % festgehalten; Schwinden bleibt unberücksichtigt. Wie groß ist die Zwangspannung σ_z = α_T·ΔT·E·R?",
     "options": [
       "6,0 N/mm²",
       "3,0 N/mm²",
@@ -50596,7 +50596,7 @@
       "1,5 N/mm²"
     ],
     "correctIdx": 1,
-    "explanation": "ε = 10⁻⁵ · 20 = 0,2 ‰; 0,0002 · 30 000 N/mm² = 6,0 N/mm² bei voller Festhaltung; mit R = 0,5 ergibt sich σ_z = 3,0 N/mm².",
+    "explanation": "ε = 10⁻⁵ · 20 = 0,2 ‰; 0,0002 · 30 000 N/mm² = 6,0 N/mm² bei voller Festhaltung; mit R = 0,5 ergibt sich σ_z = 3,0 N/mm².",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -50732,7 +50732,7 @@
     "topic": "Zwang aus Schwinden",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1",
-    "question": "Ein voll festgehaltenes Bauteil (R = 100 %, E_c,eff = 15 000 N/mm²) erfährt eine Schwinddehnung von 0,3 ‰ ohne Temperaturänderung. Wie groß ist die Zwangspannung?",
+    "question": "Ein voll festgehaltenes Bauteil (R = 100 %, E_c,eff = 15 000 N/mm²) erfährt eine Schwinddehnung von 0,3 ‰ ohne Temperaturänderung. Wie groß ist die Zwangspannung?",
     "options": [
       "45 N/mm²",
       "9,0 N/mm²",
@@ -50740,12 +50740,12 @@
       "4,5 N/mm²"
     ],
     "correctIdx": 3,
-    "explanation": "σ_z = ε · E_c,eff · R = 0,0003 · 15 000 N/mm² · 1,0 = 4,5 N/mm².",
+    "explanation": "σ_z = ε · E_c,eff · R = 0,0003 · 15 000 N/mm² · 1,0 = 4,5 N/mm².",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "Promille wurde als 10⁻² statt 10⁻³ umgerechnet (Faktor 10 zu groß).",
-      "9,0 N/mm² ergeben sich mit dem Kurzzeit-E-Modul 30 000 N/mm²; gegeben ist der abgeminderte E_c,eff.",
+      "9,0 N/mm² ergeben sich mit dem Kurzzeit-E-Modul 30 000 N/mm²; gegeben ist der abgeminderte E_c,eff.",
       "Hier ist eine Zehnerpotenz verloren gegangen (0,03 ‰ statt 0,3 ‰).",
       ""
     ],
@@ -51760,7 +51760,7 @@
       "A, weil σ_v = σ₁ + σ₂ = 400 N/mm² größer ist"
     ],
     "correctIdx": 1,
-    "explanation": "σ_v = √(σ₁² − σ₁σ₂ + σ₂²): A ergibt √(40 000 − 40 000 + 40 000) = 200 N/mm², B ergibt √(3 · 40 000) ≈ 346 N/mm². Gleichsinniger zweiachsiger Zug ist für Fließen günstiger als Zug-Druck.",
+    "explanation": "σ_v = √(σ₁² − σ₁σ₂ + σ₂²): A ergibt √(40 000 − 40 000 + 40 000) = 200 N/mm², B ergibt √(3 · 40 000) ≈ 346 N/mm². Gleichsinniger zweiachsiger Zug ist für Fließen günstiger als Zug-Druck.",
     "bloom": "Bewerten",
     "niveau": "B",
     "distraktorFeedback": [
@@ -51795,7 +51795,7 @@
     "topic": "Biegelinie Einfeldträger",
     "difficulty": "Vertiefung",
     "normRef": "",
-    "question": "Ein Einfeldträger mit L = 4,0 m und E·I = 10 000 kNm² trägt eine Gleichlast q = 10 kN/m. Wie groß ist die Durchbiegung in Feldmitte?",
+    "question": "Ein Einfeldträger mit L = 4,0 m und E·I = 10 000 kNm² trägt eine Gleichlast q = 10 kN/m. Wie groß ist die Durchbiegung in Feldmitte?",
     "options": [
       "w ≈ 0,83 mm",
       "w ≈ 32,0 mm",
@@ -51803,7 +51803,7 @@
       "w ≈ 33,3 mm"
     ],
     "correctIdx": 2,
-    "explanation": "w = 5·q·L⁴/(384·E·I) = 5 · 10 · 256/(384 · 10 000) m = 0,00333 m ≈ 3,33 mm.",
+    "explanation": "w = 5·q·L⁴/(384·E·I) = 5 · 10 · 256/(384 · 10 000) m = 0,00333 m ≈ 3,33 mm.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -51824,7 +51824,7 @@
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
-      "hinweis": "Zweitprüfung 27.10.: Rückmeldung zu Distraktor 4 (Faktor 10 statt „×1 000“) korrigiert"
+      "hinweis": "Zweitprüfung 27.10.: Rückmeldung zu Distraktor 4 (Faktor 10 statt „×1000“) korrigiert"
     }
   },
   {
@@ -51836,7 +51836,7 @@
     "topic": "Biegelinie Kragarm",
     "difficulty": "Vertiefung",
     "normRef": "",
-    "question": "Ein Kragarm (L = 2,0 m, E·I = 4 000 kNm²) trägt am freien Ende F = 12 kN. Wie groß sind Durchbiegung und Neigung am Kragarmende?",
+    "question": "Ein Kragarm (L = 2,0 m, E·I = 4000 kNm²) trägt am freien Ende F = 12 kN. Wie groß sind Durchbiegung und Neigung am Kragarmende?",
     "options": [
       "w = 0,5 mm; φ = 0,75 mrad",
       "w = 8,0 mm; φ = 6,0 mrad",
@@ -51844,7 +51844,7 @@
       "w = 8,0 mm; φ = 12,0 mrad"
     ],
     "correctIdx": 1,
-    "explanation": "w = F·L³/(3·EI) = 12 · 8/(3 · 4 000) m = 8,0 mm; φ = F·L²/(2·EI) = 12 · 4/(2 · 4 000) = 0,006 rad = 6,0 mrad.",
+    "explanation": "w = F·L³/(3·EI) = 12 · 8/(3 · 4000) m = 8,0 mm; φ = F·L²/(2·EI) = 12 · 4/(2 · 4000) = 0,006 rad = 6,0 mrad.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -51915,7 +51915,7 @@
     "topic": "Werkstoffvergleich",
     "difficulty": "Basis",
     "normRef": "",
-    "question": "Zwei Balken mit gleichem Querschnitt und gleicher Last: einer aus Baustahl (E = 210 000 N/mm²), einer aus Nadelholz C24 (E = 11 000 N/mm²). Wie verhält sich die Durchbiegung des Holzbalkens?",
+    "question": "Zwei Balken mit gleichem Querschnitt und gleicher Last: einer aus Baustahl (E = 210 000 N/mm²), einer aus Nadelholz C24 (E = 11 000 N/mm²). Wie verhält sich die Durchbiegung des Holzbalkens?",
     "options": [
       "Sie ist etwa 5-mal so groß.",
       "Sie ist etwa 19-mal so groß.",
@@ -51923,11 +51923,11 @@
       "Sie ist etwa halb so groß."
     ],
     "correctIdx": 1,
-    "explanation": "Bei gleichem I gilt w ∝ 1/E: 210 000/11 000 ≈ 19. Holzbauteile werden daher deutlich höher ausgeführt; zusätzlich vergrößert Kriechen (k_def) die Enddurchbiegung.",
+    "explanation": "Bei gleichem I gilt w ∝ 1/E: 210 000/11 000 ≈ 19. Holzbauteile werden daher deutlich höher ausgeführt; zusätzlich vergrößert Kriechen (k_def) die Enddurchbiegung.",
     "bloom": "Analysieren",
     "niveau": "B",
     "distraktorFeedback": [
-      "Faktor 5 hat keine mechanische Grundlage; bei gleichem I gilt w ∝ 1/E, also 210 000/11 000 ≈ 19.",
+      "Faktor 5 hat keine mechanische Grundlage; bei gleichem I gilt w ∝ 1/E, also 210 000/11 000 ≈ 19.",
       "",
       "Gleicher Querschnitt bedeutet gleiches I, aber nicht gleiche Steifigkeit E·I.",
       "Holz hat den kleineren E-Modul und biegt sich deshalb stärker, nicht schwächer durch."
@@ -52153,7 +52153,7 @@
     "normRef": "DIN EN 10025-2",
     "question": "Warum ist der Kohlenstoffgehalt unlegierter Baustähle wie S235 und S355 auf etwa 0,17 bis 0,24 % begrenzt?",
     "options": [
-      "Mehr Kohlenstoff senkt den E-Modul deutlich unter den Wert von 210 000 N/mm².",
+      "Mehr Kohlenstoff senkt den E-Modul deutlich unter den Wert von 210 000 N/mm².",
       "Kohlenstoff verringert die Korrosionsbeständigkeit des Stahls sehr stark.",
       "Mehr Kohlenstoff erhöht Aufhärtung und CEV und mindert die Zähigkeit.",
       "Über 0,24 % C lässt sich der Stahl nicht mehr wirtschaftlich warmwalzen."
@@ -52163,7 +52163,7 @@
     "bloom": "Verstehen",
     "niveau": "B",
     "distraktorFeedback": [
-      "Der E-Modul von Stahl hängt kaum vom C-Gehalt ab (rund 210 000 N/mm²).",
+      "Der E-Modul von Stahl hängt kaum vom C-Gehalt ab (rund 210 000 N/mm²).",
       "Die Korrosion unlegierter Stähle hängt vor allem von Umgebung und Schutz ab, kaum vom C-Gehalt.",
       "",
       "Auch Stähle mit deutlich mehr Kohlenstoff (z. B. Schienenstahl) werden warmgewalzt."
@@ -52341,7 +52341,7 @@
     "question": "Im Parkdeck-Beispiel liegt der Chloridgehalt an der Bewehrung im Mittel bei 0,10 M.-%, weit unter C_crit = 0,6 M.-%. Trotzdem ist β = 1,27. Woran liegt das?",
     "options": [
       "An den Ausläufern von Δx, C_S und Deckung: Ungünstige Kombinationen depassivieren in rund 10 % der Läufe.",
-      "An der Monte-Carlo-Simulation selbst: Mit 20.000 Läufen ist das Ergebnis vor allem durch Zufallsrauschen geprägt.",
+      "An der Monte-Carlo-Simulation selbst: Mit 20 000 Läufen ist das Ergebnis vor allem durch Zufallsrauschen geprägt.",
       "Am Anfangschloridgehalt C₀: Er wird in der Simulation mit jedem Jahr der Nutzungsdauer neu aufaddiert.",
       "Am Temperaturfaktor: Bei 10 °C diffundieren Chloride schneller als bei der Referenztemperatur von 20 °C."
     ],
@@ -52351,7 +52351,7 @@
     "niveau": "M",
     "distraktorFeedback": [
       "",
-      "Der Standardfehler von p_f liegt bei N = 20.000 um 0,2 Prozentpunkte – das erklärt keine 10 %.",
+      "Der Standardfehler von p_f liegt bei N = 20 000 um 0,2 Prozentpunkte – das erklärt keine 10 %.",
       "C₀ ist eine Konstante und geht nur einmal in die Lösung des Fickschen Gesetzes ein.",
       "Bei 10 °C ist k_e < 1, die Diffusion ist langsamer als bei 20 °C."
     ],

@@ -53,14 +53,14 @@
       },
       {
         "titel": "Behinderung",
-        "erklaerung": "Wäre die Dehnung vollständig behindert, entstünde (ohne Kriechen, E = 33 000 N/mm²) die Spannung:",
+        "erklaerung": "Wäre die Dehnung vollständig behindert, entstünde (ohne Kriechen, E = 33 000 N/mm²) die Spannung:",
         "formel": "\\sigma = E \\cdot \\alpha_T \\cdot \\Delta T = 33\\,000 \\cdot 4 \\cdot 10^{-4} = 13{,}2\\,\\text{N/mm}^2"
       }
     ],
     "Formaenderungen.schritte_2": [
       {
         "titel": "Gegeben",
-        "erklaerung": "C30/37, E_cm = 33 000 N/mm², Dauerspannung σ_c = 10 N/mm², Endkriechzahl φ = 2,0 (aus DIN EN 1992-1-1, Bild 3.1).",
+        "erklaerung": "C30/37, E_cm = 33 000 N/mm², Dauerspannung σ_c = 10 N/mm², Endkriechzahl φ = 2,0 (aus DIN EN 1992-1-1, Bild 3.1).",
         "formel": "E_c = 1{,}05 \\cdot E_{cm} = 34\\,650\\,\\text{N/mm}^2"
       },
       {

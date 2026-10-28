@@ -95,7 +95,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       location: 'Lehrbeispiel'
     },
     carbonContent: '≤ 0,17 %',
-    density: '7.850 kg/m³',
+    density: '7850 kg/m³',
     ductility: inhalt.werte.sehrHochBruchdehnungA,
     weldability: inhalt.werte.hervorragendOhneSondermaßnahmen
   },
@@ -128,7 +128,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       location: 'Lehrbeispiel'
     },
     carbonContent: '≤ 0,20 %',
-    density: '7.850 kg/m³',
+    density: '7850 kg/m³',
     ductility: inhalt.werte.ausgezeichnetBruchdehnungA22,
     weldability: inhalt.werte.gutBeiDickenBlechen
   },
@@ -161,7 +161,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       location: 'Lehrbeispiel'
     },
     carbonContent: '≤ 0,16 %',
-    density: '7.850 kg/m³',
+    density: '7850 kg/m³',
     ductility: inhalt.werte.gutBruchdehnungA17,
     weldability: inhalt.werte.gutVerlangtQualifizierteSchweißverfahren
   },
@@ -194,7 +194,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       location: 'Lehrbeispiel'
     },
     carbonContent: inhalt.werte.t020ZusatzVon,
-    density: '7.850 kg/m³',
+    density: '7850 kg/m³',
     ductility: inhalt.werte.mäßigBisGutBruchdehnung,
     weldability: inhalt.werte.anspruchsvollStrikteEinhaltungVon
   },
@@ -227,7 +227,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       location: 'Lehrbeispiel'
     },
     carbonContent: '≤ 0,16 %',
-    density: '7.850 kg/m³',
+    density: '7850 kg/m³',
     ductility: inhalt.werte.ausgezeichnetBruchdehnungA222,
     weldability: inhalt.werte.gutSchweißzusatzstoffeMüssenEbenfalls
   },
@@ -260,7 +260,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       location: inhalt.werte.usterSchweiz
     },
     carbonContent: inhalt.werte.t003ExtremAschearm,
-    density: '7.980 kg/m³',
+    density: '7980 kg/m³',
     ductility: inhalt.werte.herausragendBruchdehnungA40,
     weldability: inhalt.werte.sehrGutSchweißbarBenötigt
   },
@@ -293,7 +293,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       location: 'Lehrbeispiel'
     },
     carbonContent: inhalt.werte.t022Cev0,
-    density: '7.850 kg/m³',
+    density: '7850 kg/m³',
     ductility: inhalt.werte.hochduktilKlasseBAgt,
     weldability: inhalt.werte.sehrGutSchweißbarNach
   },
@@ -326,7 +326,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       location: 'Lehrbeispiel'
     },
     carbonContent: inhalt.werte.t022Kaltverfestigt,
-    density: '7.850 kg/m³',
+    density: '7850 kg/m³',
     ductility: inhalt.werte.normalduktilKlasseAAgt,
     weldability: inhalt.werte.werkseitigPunktgeschweißtBaustellenschwe
   },
@@ -359,7 +359,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       location: 'Lehrbeispiel'
     },
     carbonContent: inhalt.werte.t022Cev02,
-    density: '7.850 kg/m³',
+    density: '7850 kg/m³',
     ductility: inhalt.werte.extremHochKlasseC,
     weldability: inhalt.werte.sehrGutSchweißbarNach2
   },
@@ -392,7 +392,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       location: 'Lehrbeispiel'
     },
     carbonContent: inhalt.werte.t080085,
-    density: '7.850 kg/m³',
+    density: '7850 kg/m³',
     ductility: inhalt.werte.begrenztElastoplastischAgt3,
     weldability: inhalt.werte.strengVerbotenJederLichtbogenkontakt
   },
@@ -425,7 +425,7 @@ export const extendedSteelGrades: ExtendedSteelGrade[] = [
       location: 'Lehrbeispiel'
     },
     carbonContent: '0,40 - 0,55 %',
-    density: '7.850 kg/m³',
+    density: '7850 kg/m³',
     ductility: inhalt.werte.gutAgt50,
     weldability: inhalt.werte.bedingtSchweißbarSonderverfahrenErforder
   }

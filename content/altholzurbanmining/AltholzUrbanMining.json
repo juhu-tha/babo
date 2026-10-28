@@ -30,9 +30,9 @@
     "dieAltholzvVom15": "Die AltholzV vom 15. August 2002 (zuletzt geändert 2020) wird seit Jahren überarbeitet. Ein Diskussionsentwurf des Bundesumweltministeriums von 2020 sah u. a. vor: Aufbereitung allen Altholzes vor der Verwertung, Vorrang der stofflichen Verwertung für A I mit Recyclingquoten, Zuordnung von Sperrmüll-Holzgemischen zu A III und angepasste Grenzwerte in Anhang II. 2024 kündigte das Ministerium einen Referentenentwurf für die folgende Legislaturperiode an.",
     "einInkrafttretenDerNovelle": "**Ein Inkrafttreten der Novelle ist nach dem Stand der Recherche (Oktober 2026) nicht bekannt.** Maßgebend ist die geltende Fassung; vor Verwendung in Lehre oder Praxis den aktuellen Stand prüfen.",
     "prinzipDerNirSpektroskopie": "Prinzip der NIR-Spektroskopie",
-    "spektralbereichNahesInfrarotUmfasst": "**Spektralbereich:** Nahes Infrarot umfasst Wellenlängen ab rund 780 nm (nach ISO 20473 bis 3 µm). Sortiersysteme arbeiten typischerweise im Bereich von etwa 900 bis 1.700 nm oder bis 2.500 nm (Richtwerte, je nach Detektor).",
+    "spektralbereichNahesInfrarotUmfasst": "**Spektralbereich:** Nahes Infrarot umfasst Wellenlängen ab rund 780 nm (nach ISO 20473 bis 3 µm). Sortiersysteme arbeiten typischerweise im Bereich von etwa 900 bis 1700 nm oder bis 2500 nm (Richtwerte, je nach Detektor).",
     "wechselwirkungImNirLiegen": "**Wechselwirkung:** Im NIR liegen Ober- und Kombinationsschwingungen von C–H-, O–H- und N–H-Bindungen. Die Probe absorbiert je nach chemischem Aufbau bei charakteristischen Wellenlängen – das reflektierte Spektrum ist ein „Fingerabdruck“ der Oberfläche.",
-    "holzCelluloseHemicellulosenUnd": "**Holz:** Cellulose, Hemicellulosen und Lignin prägen das Spektrum von Vollholz; Wasser absorbiert stark (Banden um 1.450 nm und 1.940 nm).",
+    "holzCelluloseHemicellulosenUnd": "**Holz:** Cellulose, Hemicellulosen und Lignin prägen das Spektrum von Vollholz; Wasser absorbiert stark (Banden um 1450 nm und 1940 nm).",
     "holzfremdeStoffeBindemittelMit": "**Holzfremde Stoffe:** Bindemittel mit N–H-Gruppen (Harnstoff- und Melaminharze in Holzwerkstoffen), Lacke auf Acrylat- oder Polyurethanbasis und PVC-Beschichtungen erzeugen eigene Banden. Daran lassen sich Vollholz, Holzwerkstoffe sowie beschichtete und kunststoffbeschichtete Teile unterscheiden.",
     "ablaufDerSensorgestütztenSortierung": "Ablauf der sensorgestützten Sortierung",
     "aufbereitungVorzerkleinernAbtrennenVon": "**Aufbereitung:** Vorzerkleinern, Abtrennen von Metallen (Magnet, Wirbelstrom) und Feinanteil; die Stücke werden auf einem schnellen Förderband vereinzelt.",
@@ -165,12 +165,12 @@
       {
         "titel": "Holzmasse im Lager",
         "erklaerung": "Produkt aus Fläche und Materialintensität:",
-        "formel": "m = 36\\,000 \\cdot 60 = 2\\,160\\,000\\,\\text{kg} = 2\\,160\\,\\text{t}"
+        "formel": "m = 36\\,000 \\cdot 60 = 2\\,160\\,000\\,\\text{kg} = 2160\\,\\text{t}"
       },
       {
         "titel": "Stofflich verwertbarer Anteil",
         "erklaerung": "Angenommen: 40 % A IV (Dachstuhl mit Holzschutzmittel), 60 % A I/A II. Bei q_st = 90 % des Potenzials:",
-        "formel": "m_{st} = 2\\,160 \\cdot 0{,}60 \\cdot 0{,}90 \\approx 1\\,166\\,\\text{t}"
+        "formel": "m_{st} = 2160 \\cdot 0{,}60 \\cdot 0{,}90 \\approx 1166\\,\\text{t}"
       }
     ],
     "AltholzUrbanMining.weblinks.0": {

@@ -19,7 +19,7 @@
     "eigenspannungT": "Eigenspannung (σ_T):",
     "längskraftProSchiene": "Längskraft pro Schiene:",
     "gleislängskraft2Schienen": "Gleislängskraft (2 Schienen):",
-    "berechnungsformelTET": "Berechnungsformel: σ_T = E · α_T · (T_Schiene - T_Neutral) mit E = 210.000 N/mm² und α_T = 1,2 · 10⁻⁵ / K."
+    "berechnungsformelTET": "Berechnungsformel: σ_T = E · α_T · (T_Schiene - T_Neutral) mit E = 210 000 N/mm² und α_T = 1,2 · 10⁻⁵ / K."
   },
   "werte": {
     "oberbaubettungQuerverschiebewiderstandQV": "Oberbaubettung & Querverschiebewiderstand (Q_vw)",

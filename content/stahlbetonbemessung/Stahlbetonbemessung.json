@@ -52,7 +52,7 @@
         },
         {
           "formel": "\\sigma_s = E_s \\cdot \\varepsilon_s \\quad (\\varepsilon_s \\le \\varepsilon_{yd})",
-          "erklaerung": "Hookesches Gesetz für Betonstahl mit E_s = 200 000 N/mm² bis zur Fließdehnung ε_yd = f_yd/E_s ≈ 2,17 ‰.",
+          "erklaerung": "Hookesches Gesetz für Betonstahl mit E_s = 200 000 N/mm² bis zur Fließdehnung ε_yd = f_yd/E_s ≈ 2,17 ‰.",
           "quelle": "DIN EN 1992-1-1, 3.2.7"
         }
       ],
@@ -164,7 +164,7 @@
         },
         {
           "formel": "\\varepsilon_{sm} - \\varepsilon_{cm} = \\frac{\\sigma_s - k_t \\cdot \\frac{f_{ct,eff}}{\\rho_{p,eff}} \\cdot (1 + \\alpha_e \\cdot \\rho_{p,eff})}{E_s} \\ge 0{,}6 \\cdot \\frac{\\sigma_s}{E_s}",
-          "erklaerung": "Dehnungsdifferenz nach DIN EN 1992-1-1 Gl. (7.9).\nσ_s: Stahlspannung im gerissenen Zustand [MPa]\nk_t: Beiwert für Lasteinwirkungsdauer (0,6 für kurzzeitig, 0,4 für langzeitig)\nf_ct,eff: Effektive Betonzugfestigkeit [MPa]\nρ_p,eff: Effektiver Bewehrungsgrad (A_s / A_{c,eff}) [-]\nα_e: Modulverhältnis (E_s / E_{cm}) [-]\nE_s: Elastizitätsmodul des Betonstahls (200.000 MPa)",
+          "erklaerung": "Dehnungsdifferenz nach DIN EN 1992-1-1 Gl. (7.9).\nσ_s: Stahlspannung im gerissenen Zustand [MPa]\nk_t: Beiwert für Lasteinwirkungsdauer (0,6 für kurzzeitig, 0,4 für langzeitig)\nf_ct,eff: Effektive Betonzugfestigkeit [MPa]\nρ_p,eff: Effektiver Bewehrungsgrad (A_s / A_{c,eff}) [-]\nα_e: Modulverhältnis (E_s / E_{cm}) [-]\nE_s: Elastizitätsmodul des Betonstahls (200 000 MPa)",
           "quelle": "DIN EN 1992-1-1 Gl. (7.9)"
         }
       ]

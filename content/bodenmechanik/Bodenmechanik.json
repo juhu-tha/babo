@@ -116,7 +116,7 @@
       {
         "titel": "Endsetzung",
         "erklaerung": "Tonschicht h = 4 m, Zusatzspannung Δσ = 50 kN/m², Steifemodul E_s = 5 MN/m²:",
-        "formel": "s_\\infty = \\frac{50}{5\\,000} \\cdot 4\\,000\\,\\text{mm} = 40\\,\\text{mm}"
+        "formel": "s_\\infty = \\frac{50}{5000} \\cdot 4000\\,\\text{mm} = 40\\,\\text{mm}"
       },
       {
         "titel": "Zeitpunkt 90 % Konsolidierung",

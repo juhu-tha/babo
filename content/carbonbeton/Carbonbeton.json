@@ -39,21 +39,21 @@
       {
         "titel": "1. Gegeben",
         "formel": "h = 40\\,\\text{mm},\\; c = 10\\,\\text{mm},\\; d = 30\\,\\text{mm},\\; a_{tex} = 100\\,\\text{mm}^2/\\text{m},\\; \\text{C50/60}",
-        "erklaerung": "Textile Carbonbewehrung, f_tk = 2 500 N/mm²."
+        "erklaerung": "Textile Carbonbewehrung, f_tk = 2500 N/mm²."
       },
       {
         "titel": "2. Bemessungswerte",
-        "formel": "f_{td} = 2\\,500/1{,}3 = 1\\,923\\,\\text{N/mm}^2;\\; f_{cd} = 0{,}85 \\cdot 50/1{,}5 = 28{,}3\\,\\text{N/mm}^2",
+        "formel": "f_{td} = 2500/1{,}3 = 1923\\,\\text{N/mm}^2;\\; f_{cd} = 0{,}85 \\cdot 50/1{,}5 = 28{,}3\\,\\text{N/mm}^2",
         "erklaerung": "α_cc = 0,85 nach NA."
       },
       {
         "titel": "3. Druckzone",
-        "formel": "y = \\frac{100 \\cdot 1\\,923}{1\\,000 \\cdot 28{,}3} = 6{,}8\\,\\text{mm};\\; z = 30 - 6{,}8/2 = 26{,}6\\,\\text{mm}",
+        "formel": "y = \\frac{100 \\cdot 1923}{1000 \\cdot 28{,}3} = 6{,}8\\,\\text{mm};\\; z = 30 - 6{,}8/2 = 26{,}6\\,\\text{mm}",
         "erklaerung": "Gleichgewicht F_c = F_t."
       },
       {
         "titel": "4. Biegewiderstand",
-        "formel": "m_{Rd} = 100 \\cdot 1\\,923 \\cdot 26{,}6 \\cdot 10^{-6} = 5{,}1\\,\\text{kNm/m}",
+        "formel": "m_{Rd} = 100 \\cdot 1923 \\cdot 26{,}6 \\cdot 10^{-6} = 5{,}1\\,\\text{kNm/m}",
         "erklaerung": "Je Meter Plattenbreite."
       }
     ],

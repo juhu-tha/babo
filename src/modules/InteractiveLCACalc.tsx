@@ -606,7 +606,7 @@ export default function InteractiveLCACalc() {
                   />
                   <div className="flex justify-between text-[9px] text-slate-400 font-mono">
                     <span>30 m²</span>
-                    <span>1.200 m²</span>
+                    <span>1200 m²</span>
                   </div>
 
                   <div className="bg-slate-50 border border-slate-200 p-2.5 rounded-xl text-[10px] text-slate-600 leading-relaxed space-y-1">

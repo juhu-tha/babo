@@ -1,5 +1,5 @@
 // Ausgelagert aus src/modules/Baustoffkenngroessen.tsx (AP 5.2)
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeIntl } from '@/src/utils/numberFormat';
 import React from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { BlockMath, InlineMath } from 'react-katex';
@@ -129,7 +129,7 @@ export default function ThermischTab({ alphaT, deltaT, handleThermischPresetChan
             <div className="flex flex-col gap-1.5">
               <div className="flex justify-between text-xs font-bold text-slate-600">
                 <label><MdText text={inhalt.texte.spezifischeWärmekapazitätC} /></label>
-                <span className="text-indigo-600">{spezKapazitaetC.toLocaleString('de-DE')}<MdText text={inhalt.texte.jKgK} /></span>
+                <span className="text-indigo-600">{formatDeIntl(spezKapazitaetC)}<MdText text={inhalt.texte.jKgK} /></span>
               </div>
               <input 
                 type="range" 
@@ -157,7 +157,7 @@ export default function ThermischTab({ alphaT, deltaT, handleThermischPresetChan
             return (
               <div className="p-3 bg-emerald-50 border border-emerald-100 text-emerald-800 rounded-xl text-xs space-y-1 text-center font-sans">
                 <div className="font-bold"><MdText text={inhalt.texte.gespeicherteWärmeenergieQ} /></div>
-                <div className="text-xl font-black">{energyKJ.toLocaleString('de-DE', { maximumFractionDigits: 1 })} kJ <span className="text-xs font-normal">({formatDeZahl((energyWh / 1000), 2)} kWh)</span></div>
+                <div className="text-xl font-black">{formatDeIntl(energyKJ, { maximumFractionDigits: 1 })} kJ <span className="text-xs font-normal">({formatDeZahl((energyWh / 1000), 2)} kWh)</span></div>
               </div>
             );
           })()}

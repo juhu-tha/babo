@@ -368,12 +368,12 @@
       {
         "titel": "Messwert",
         "erklaerung": "Schule aus den 1970er Jahren, dauerelastische Fugenmassen; Gesamt-PCB in der Raumluft:",
-        "formel": "c_{PCB} = 1\\,400\\,\\text{ng/m}^3"
+        "formel": "c_{PCB} = 1400\\,\\text{ng/m}^3"
       },
       {
         "titel": "Bewertung",
-        "erklaerung": "PCB-Richtlinie: unter 300 ng/m³ langfristig tolerabel (Zielwert), über 3 000 ng/m³ unverzüglich Maßnahmen:",
-        "formel": "300 < 1\\,400 < 3\\,000\\,\\text{ng/m}^3"
+        "erklaerung": "PCB-Richtlinie: unter 300 ng/m³ langfristig tolerabel (Zielwert), über 3000 ng/m³ unverzüglich Maßnahmen:",
+        "formel": "300 < 1400 < 3000\\,\\text{ng/m}^3"
       },
       {
         "titel": "Folgerung",

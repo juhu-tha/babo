@@ -59,7 +59,7 @@
     "hinweisZurProbenahmestrategie": "Hinweis zur Probenahmestrategie:",
     "inhomogeneOderGeschichteteHaufwerke": "Inhomogene oder geschichtete Haufwerke sind nicht zur Verdünnung zu vermischen; erkennbar unterschiedliche Teilmengen sind getrennt zu beproben (separate Untersuchungseinheiten).",
     "erforderlicheAufteilungIn": "Erforderliche Aufteilung in ",
-    "dasHaufwerkÜbersteigt3": "Das Haufwerk übersteigt 3.000 m³. Nach der LfU-Arbeitshilfe „Umgang mit Bodenmaterial“ (Stand 10/2025) darf Material aus Zwischenlägern auf Grundlage einer Untersuchung bis höchstens 3.000 m³ in Verkehr gebracht werden – daher ",
+    "dasHaufwerkÜbersteigt3": "Das Haufwerk übersteigt 3000 m³. Nach der LfU-Arbeitshilfe „Umgang mit Bodenmaterial“ (Stand 10/2025) darf Material aus Zwischenlägern auf Grundlage einer Untersuchung bis höchstens 3000 m³ in Verkehr gebracht werden – daher ",
     "getrennteUntersuchungseinheitenUeBilden": " getrennte Untersuchungseinheiten (UE) bilden.",
     "formelZurProbenanzahlLaga": "Formel zur Probenanzahl (LAGA PN 98 Tabelle 2): bis 600 m³ tabelliert (2 bis 10 Mischproben); darüber ",
     "mitInDerRegel": " mit in der Regel ",
@@ -81,7 +81,7 @@
     "haufwerksvolumenMasse": "Haufwerksvolumen / Masse",
     "lautVermessungErfüllt": "Laut Vermessung erfüllt",
     "untersuchungseinheitenUe2": "Untersuchungseinheiten (UE)",
-    "ueMax3000": " UE (max. 3.000 m³)",
+    "ueMax3000": " UE (max. 3000 m³)",
     "anzahlMischprobenMp": "Anzahl Mischproben (MP)",
     "mpEntnommen": " MP entnommen",
     "anzahlEinzelprobenEp": "Anzahl Einzelproben (EP)",
@@ -208,7 +208,7 @@
             "Sedimentations- und Waschwasserbehandlung mit Fällungsmitteln zur Sulfat-Abreicherung.",
             "Analytischer Nachweis des Restsulfatgehalts im Feststoff."
           ],
-          "rules": "Ersatzbaustoffverordnung (EBV): Die Rest-Sulfatkonzentration im Eluat entscheidet über die Einstufung. Für Recycling-Baustoffe gelten Materialwerte für Sulfat im Eluat (EBV Anlage 1 Tab. 1: RC-1 ≤ 600 mg/l, RC-2 ≤ 1 000 mg/l, RC-3 ≤ 3 500 mg/l), um Schäden an nachfolgenden Bauteilen auszuschließen."
+          "rules": "Ersatzbaustoffverordnung (EBV): Die Rest-Sulfatkonzentration im Eluat entscheidet über die Einstufung. Für Recycling-Baustoffe gelten Materialwerte für Sulfat im Eluat (EBV Anlage 1 Tab. 1: RC-1 ≤ 600 mg/l, RC-2 ≤ 1000 mg/l, RC-3 ≤ 3500 mg/l), um Schäden an nachfolgenden Bauteilen auszuschließen."
         }
       },
       "boden_ton": {
@@ -456,8 +456,8 @@
     "BodenMaterialAufbereitung.schritte_2": [
       {
         "titel": "Wägung",
-        "erklaerung": "Feuchte Probe 2 450 g, nach Trocknung bei 105 °C 2 130 g:",
-        "formel": "w = \\frac{2\\,450 - 2\\,130}{2\\,130} = 0{,}150 = 15{,}0\\,\\%"
+        "erklaerung": "Feuchte Probe 2450 g, nach Trocknung bei 105 °C 2130 g:",
+        "formel": "w = \\frac{2450 - 2130}{2130} = 0{,}150 = 15{,}0\\,\\%"
       },
       {
         "titel": "Trockenmassebezug",

@@ -310,7 +310,7 @@ export function ExpositionsklassenSkizze({
                   Säure / Sulfat
                 </text>
                 <text x="672" y="228" textAnchor="middle" fill="#854d0e" fontSize="9">
-                  600–3.000 mg/l
+                  600–3000 mg/l
                 </text>
                 <text x="672" y="255" textAnchor="middle" fill={activeZoneId === 'industrie' ? '#9b111e' : '#1e293b'} fontSize="10.5" fontWeight="bold">
                   Schacht [XA2 | XM2]

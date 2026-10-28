@@ -1,3 +1,4 @@
+import { formatDeIntl } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { Scale, Calculator, ArrowRight } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -21,10 +22,10 @@ const HOCH: Record<string, string> = { '-': '⁻', '0': '⁰', '1': '¹', '2': '
 const formatErgebnis = (x: number): string => {
   if (!Number.isFinite(x)) return '–';
   const a = Math.abs(x);
-  if (a === 0 || (a >= 1e-4 && a < 1e12)) return x.toLocaleString('de-DE', { maximumSignificantDigits: 10 });
+  if (a === 0 || (a >= 1e-4 && a < 1e12)) return formatDeIntl(x, { maximumSignificantDigits: 10 });
   const exp = Math.floor(Math.log10(a));
   const mant = x / Math.pow(10, exp);
-  return `${mant.toLocaleString('de-DE', { maximumSignificantDigits: 6 })} · 10${String(exp).split('').map(c => HOCH[c] ?? c).join('')}`;
+  return `${formatDeIntl(mant, { maximumSignificantDigits: 6 })} · 10${String(exp).split('').map(c => HOCH[c] ?? c).join('')}`;
 };
 
 const REITER = [

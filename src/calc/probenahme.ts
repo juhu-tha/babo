@@ -54,7 +54,7 @@ export function pn98Plan(e: Pn98Eingabe) {
     einzelproben: jeUe.einzelproben * einheiten, mischproben: jeUe.mischproben * einheiten,
     sammelproben: jeUe.sammelproben * einheiten, laborproben: jeUe.laborproben * einheiten,
   };
-  if (volumenJeUe > 1200) hinweise.push({ stufe: 'warnung', feld: 'volumen', text: 'Tabelle 2 der LAGA PN 98 endet bei 1 200 m³; größere Grundmengen werden mit den Zuschlagsregeln fortgeschrieben.' });
+  if (volumenJeUe > 1200) hinweise.push({ stufe: 'warnung', feld: 'volumen', text: 'Tabelle 2 der LAGA PN 98 endet bei 1200 m³; größere Grundmengen werden mit den Zuschlagsregeln fortgeschrieben.' });
   return { einheiten, volumenJeUe, jeUe, gesamt, hinweise };
 }
 

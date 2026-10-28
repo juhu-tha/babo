@@ -98,7 +98,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 20 korrigiert, 0 fraglich, 0
 
 ### qn_rechnung_schallschutz_3 · Bauakustik: Schallschutz
 
-- **Frage:** Eine Wohnungstrennwand aus Hochlochziegeln (24 cm, ρ = 1 200 kg/m³) erhält beidseitig 40 kg/m² Putz; die Flanken sind schwer und massiv (K_F = 2 dB). Ist R′_w ≥ 53 dB eingehalten?
+- **Frage:** Eine Wohnungstrennwand aus Hochlochziegeln (24 cm, ρ = 1200 kg/m³) erhält beidseitig 40 kg/m² Putz; die Flanken sind schwer und massiv (K_F = 2 dB). Ist R′_w ≥ 53 dB eingehalten?
 - **Richtige Antwort:** R′_w ≈ 53,5 dB: knapp eingehalten
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Massekurve auf DIN 4109-32 umgestellt (R_w = 30,9 · lg m′ − 22,2 dB statt 32,4 · lg m′ − 26,0, Beiblatt 1 nur früherer Stand), Werte mit src/calc/schall.ts neu gerechnet – korrigiert
 - [ ] ok

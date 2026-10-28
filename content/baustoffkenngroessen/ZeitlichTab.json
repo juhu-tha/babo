@@ -5,8 +5,8 @@
     "t1KriechenCreep": "1. Kriechen (Creep)",
     "kontinuierlicheZunahmeDerViskosen": "Kontinuierliche Zunahme der viskosen Dehnung unter einer **konstanten langanhaltenden mechanischen Spannung ($\\sigma_0$)**.",
     "einfacheBeispielrechnung": "🔢 Einfache Beispielrechnung:",
-    "cr1030000": "ε_cr = (10 / 30.000) · 2,0 = 0,000333 · 2,0 = 0,000667 (0,67 ‰)",
-    "dauerlastspannungSigma010": "Dauerlastspannung $\\sigma_0 = 10 \\text{ MPa}$, E-Modul $E = 30.000 \\text{ MPa}$ (elastische Dehnung $\\varepsilon_{el} = 0{,}33 \\ \\text{\\char8240}$) und Endkriechbeiwert $\\phi = 2{,}0$.",
+    "cr1030000": "ε_cr = (10 / 30 000) · 2,0 = 0,000333 · 2,0 = 0,000667 (0,67 ‰)",
+    "dauerlastspannungSigma010": "Dauerlastspannung $\\sigma_0 = 10 \\text{ MPa}$, E-Modul $E = 30\\,000 \\text{ MPa}$ (elastische Dehnung $\\varepsilon_{el} = 0{,}33 \\ \\text{\\char8240}$) und Endkriechbeiwert $\\phi = 2{,}0$.",
     "t2SchwindenShrinkage": "2. Schwinden (Shrinkage)",
     "volumenminderungÜberDieZeit": "Volumenminderung über die Zeit **ohne jegliche äußere Krafteinwirkung** (rein hygrisch durch Wasserabgabe aus Kapillaren und Poren).",
     "einfacheBeispielrechnung2": "🔢 Einfache Beispielrechnung:",
@@ -57,7 +57,7 @@
       {
         "titel": "1. Elastische Dehnung",
         "formel": "\\varepsilon_{el} = \\frac{\\sigma_0}{E} = \\frac{10}{30\\,000} = 0{,}333 \\cdot 10^{-3}",
-        "erklaerung": "Sofortige, reversible Dehnung bei Lastaufbringung (σ₀ = 10 MPa, E = 30 000 MPa)."
+        "erklaerung": "Sofortige, reversible Dehnung bei Lastaufbringung (σ₀ = 10 MPa, E = 30 000 MPa)."
       },
       {
         "titel": "2. Kriechdehnung",

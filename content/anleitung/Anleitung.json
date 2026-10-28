@@ -16,7 +16,7 @@
     "expositionsklassenHüllwerteMehrfachselek": "**Expositionsklassen-Hüllwerte:** Mehrfachselektion von Umweltbeanspruchungen ermittelt automatisch die strengsten Grenzwerte für $(w/z)_{\\text{eq}}$, $f_{ck}$, Mindestzement und Betondeckung $c_{\\text{nom}}$.",
     "betonkennwerteNachEc2Zeitabhängige": "**Betonkennwerte nach EC2:** Zeitabhängige Kriechbeiwerte $\\varphi(t,t_0)$, Trocknungs- und autogenes Schwinden $\\varepsilon_{cs}$ sowie Spannungs-Dehnungs-Linien nach DIN EN 1992-1-1.",
     "laborBauphysiksimulationMischungsberechn": "**Labor- & Bauphysiksimulation:** Mischungsberechnung nach Stoffraumrechnung, Bogue-Klinkermineralien, U-Wert-Wandaufbauten und Schadstoffabbau.",
-    "zahlenformatAlleRechnerNutzen": "**Zahlenformat:** Alle Rechner nutzen strikte deutsche Formatierung (Tausendertrennung mit Punkt, Dezimalkomma via `formatDeZahl`).",
+    "zahlenformatAlleRechnerNutzen": "**Zahlenformat:** Alle Rechner nutzen strikte deutsche Formatierung (Tausendertrennung ab fünf Stellen mit schmalem geschütztem Leerzeichen nach DIN 5008, z. B. 10 000; Dezimalkomma via `formatDeZahl`).",
     "der3SchritteWorkflow": "Der 3-Schritte-Workflow im Studien- und Planungsalltag",
     "recherchierenErkunden": "Recherchieren & Erkunden",
     "wählenSieImMenü": "Wählen Sie im Menü das passende Fachmodul. Verschaffen Sie sich im **Steckbrief** und im **Klassenkatalog** einen kompakten Überblick über Normen, Werkstoffkennwerte und Einsatzgrenzen.",

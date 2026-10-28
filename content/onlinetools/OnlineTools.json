@@ -129,7 +129,7 @@
     "ökobaudatPlattform": "ÖKOBAUDAT Plattform",
     "lcaÖkobilanz": "LCA & Ökobilanz",
     "offizielleBundesdatenbankFürStandardisie": "Offizielle Bundesdatenbank für standardisierte Ökobilanzdaten von Bauprodukten und EPDs gemäß DIN EN 15804.",
-    "über1500Geprüfte": "Über 1.500 geprüfte Datensätze mit GWP-Fossil, GWP-Biogen, PENRT und Abfallkategorien",
+    "über1500Geprüfte": "Über 1500 geprüfte Datensätze mit GWP-Fossil, GWP-Biogen, PENRT und Abfallkategorien",
     "lebenszyklusphasenA1A3Herstellung": "Lebenszyklusphasen A1-A3 (Herstellung), C3-C4 (Entsorgung) und Modul D (Gutschriften)",
     "öffentlicheRestApiFür": "Öffentliche REST-API für nahtlose Software- und BIM-Anbindung",
     "verpflichtendeGrundlageFürQng": "Verpflichtende Grundlage für QNG-Zertifizierungen und BNB-Nachweise",
@@ -277,13 +277,13 @@
       },
       {
         "titel": "Steifigkeit",
-        "erklaerung": "E_0,mean = 11 000 N/mm², I = 120 · 240³/12:",
+        "erklaerung": "E_0,mean = 11 000 N/mm², I = 120 · 240³/12:",
         "formel": "I = 1{,}382 \\cdot 10^8\\,\\text{mm}^4"
       },
       {
         "titel": "Durchbiegung",
         "erklaerung": "Quasi-ständige Last 3,0 kN/m (ohne Kriechen):",
-        "formel": "w = \\frac{5 \\cdot 3{,}0 \\cdot 5\\,000^4}{384 \\cdot 11\\,000 \\cdot 1{,}382 \\cdot 10^8} = 16{,}1\\,\\text{mm} \\le \\frac{L}{250} = 20\\,\\text{mm}"
+        "formel": "w = \\frac{5 \\cdot 3{,}0 \\cdot 5000^4}{384 \\cdot 11\\,000 \\cdot 1{,}382 \\cdot 10^8} = 16{,}1\\,\\text{mm} \\le \\frac{L}{250} = 20\\,\\text{mm}"
       }
     ],
     "OnlineTools.schritte_2": [
