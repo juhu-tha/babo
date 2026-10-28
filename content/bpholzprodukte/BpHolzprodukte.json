@@ -263,7 +263,7 @@
       },
       {
         "formel": "w_{\\text{inst}} = \\frac{5 \\cdot q_{\\text{inst}} \\cdot L^4}{384 \\cdot E_{0,\\text{mean}} \\cdot I_y} \\le \\frac{L}{300} \\dots \\frac{L}{500}",
-        "erklaerung": "Gebrauchstauglichkeit: elastische Anfangsdurchbiegung unter der charakteristischen Kombination; Grenzwerte L/300 bis L/500 als Empfehlungen (NA).",
+        "erklaerung": "Gebrauchstauglichkeit: elastische Anfangsdurchbiegung unter der charakteristischen Kombination; Grenzwerte: Empfehlung EN 1995-1-1, Tab. 7.2, l/300 bis l/500; nach NA (DE) w_inst ≤ l/300.",
         "quelle": "DIN EN 1995-1-1 Abs. 7.2"
       }
     ]

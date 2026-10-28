@@ -17,10 +17,10 @@
     "standardAnwendungskriterienFürSystemputz": "Standard-Anwendungskriterien für Systemputze",
     "hinweisZurHerstellerneutralitätZur": "Hinweis zur Herstellerneutralität: Zur Wahrung vollständiger Produktneutralität und den Richtlinien für öffentliche Ausschreibungen nach VOB/A werden hier ausschließlich genormte Leistungsgruppen aufgeführt.",
     "oberflächenqualitätInnenputze": "Oberflächenqualität (Innenputze):",
-    "unterteilungInQualitätsstufenQ1": " Unterteilung in Qualitätsstufen Q1 (abgezogen), Q2 (standardgeqvölbt - tapezierfähig), Q3 (feingeglättet) und Q4 (vollflächig gespachtelt - absolut plan).",
+    "unterteilungInQualitätsstufenQ1": " Unterteilung in Qualitätsstufen Q1 (abgezogen), Q2 (Standard – tapezierfähig), Q3 (feingeglättet) und Q4 (vollflächig gespachtelt - absolut plan).",
     "festigkeitsklassenFürEstriche": "Festigkeitsklassen für Estriche:",
     "einteilungNachDinEn": " Einteilung nach DIN EN 13813 in Druckfestigkeit (C5 bis C80) und Biegezugfestigkeit (F1 bis F50) zur Dimensionierung von Lastverteilungsschichten.",
-    "kalkZementputzeCrCs": "Kalk-Zementputze (CR/CS III):",
+    "kalkZementputzeCrCs": "Kalk-Zementputze (GP, CS II–CS III):",
     "universellBeanspruchbaresAllwettersystem": " Universell beanspruchbares Allwettersystem, ideal für den dauerhaft bewitterten Außenbereich und feuchtebelastete Kellerzonen.",
     "reineSilikatSpachtelmassen": "Reine Silikat-Spachtelmassen:",
     "hochgradigDampfdiffusionsoffeneSystemeWe": " Hochgradig dampfdiffusionsoffene Systeme, welche für historische Fassadensanierungen und bauphysikalisch anspruchsvolle Innendämmungen eingesetzt werden."
@@ -36,7 +36,7 @@
     "plasterProducts": [
       {
         "name": "Gipsputzmörtel (Innenputz)",
-        "code": "GP / B1-B7",
+        "code": "B1–B7 (DIN EN 13279-1)",
         "standard": "DIN EN 13279-1",
         "strengthClass": "Druckfestigkeit ≥ 2,0 N/mm²",
         "binder": "Baugips (Calciumsulfat-Hemihydrat)",

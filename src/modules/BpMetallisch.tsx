@@ -1,4 +1,5 @@
 import { formatDeZahl, formatDeWert, formatDeIntl } from '@/src/utils/numberFormat';
+import { blechMasse, potentialDifferenz } from '@/src/calc/bauprodukte';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -200,15 +201,15 @@ export default function BpMetallisch() {
   const calcMetal = metalsDb.find(m => m.id === calcMetalId) || metalsDb[2];
 
   // Calculations weight: W = length * width * (thick / 1000) * density (kg)
-  const volM3 = sheetLength * sheetWidth * (sheetThick / 1000);
-  const totalWeightKg = volM3 * calcMetal.density;
+  const blech = blechMasse(sheetLength, sheetWidth, sheetThick, calcMetal.density); // Rechenkern src/calc/bauprodukte.ts
+  const totalWeightKg = blech.masse;
 
   // Bimetallic / Galvanic evaluation
   const anodeObj = metalsDb.find(m => m.id === metalAnode) || metalsDb[0];
   const cathodeObj = metalsDb.find(m => m.id === metalCathode) || metalsDb[4];
 
   // Potential difference deltaE
-  const deltaE = Math.abs(cathodeObj.potential - anodeObj.potential);
+  const deltaE = potentialDifferenz(cathodeObj.potential, anodeObj.potential);
 
   const getCorrosionRating = (val: number, an: string, cat: string) => {
     if (an === cat) {
@@ -540,14 +541,14 @@ export default function BpMetallisch() {
           <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/20 text-center">
             <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1"><MdText text={inhalt.texte.flächenbezogeneMasse} /></span>
             <span className="text-lg font-extrabold font-mono text-slate-800">
-              {formatDeZahl(((sheetThick / 1000) * calcMetal.density), 2)} kg/m²
+              {formatDeZahl(blech.flaechenmasse, 2)} kg/m²
             </span>
           </div>
 
           <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/20 text-center">
             <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-1"><MdText text={inhalt.texte.charakteristischesEigengewichtGk} /></span>
             <span className="text-lg font-extrabold font-mono text-shiraz">
-              {formatDeZahl((((sheetThick / 1000) * calcMetal.density * 9.81) / 1000), 3)} kN/m²
+              {formatDeZahl(blech.gkFlaeche, 3)} kN/m²
             </span>
           </div>
 
