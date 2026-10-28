@@ -49,12 +49,12 @@
       },
       {
         "titel": "3. Annahme Textilbruch und Dehnungskontrolle",
-        "formel": "y = \\frac{100 \\cdot 1923}{1000 \\cdot 28{,}3} = 6{,}8\\,\\text{mm};\\; x = y/0{,}8 = 8{,}5\\,\\text{mm};\\; \\varepsilon_c = \\frac{1923}{200\\,000} \\cdot \\frac{8{,}5}{30 - 8{,}5} = 3{,}79\\,\\text{‰} > 3{,}5\\,\\text{‰}",
+        "formel": "y = \\frac{100 \\cdot 1923}{1000 \\cdot 28{,}3} = 6{,}8\\,\\text{mm};\\; x = y/0{,}8 = 8{,}5\\,\\text{mm};\\; \\varepsilon_c = \\frac{1923}{200\\,000} \\cdot \\frac{8{,}5}{30 - 8{,}5} = 3{,}79 \\cdot 10^{-3} > 3{,}5 \\cdot 10^{-3}",
         "erklaerung": "Der Beton würde vor dem Textil versagen – die Annahme „Textil erreicht f_td“ trifft nicht zu."
       },
       {
         "titel": "4. Gleichgewicht bei Betonversagen",
-        "formel": "a_{tex} E_{tex} \\cdot 3{,}5\\,\\text{‰} \\cdot \\frac{d - x}{x} = 1000 \\cdot 0{,}8\\,x\\,f_{cd} \\Rightarrow x = 8{,}20\\,\\text{mm};\\; \\sigma_{tex} = 1860\\,\\text{N/mm}^2;\\; z = 30 - 0{,}8 \\cdot 8{,}20/2 = 26{,}7\\,\\text{mm}",
+        "formel": "a_{tex} E_{tex} \\cdot 3{,}5 \\cdot 10^{-3} \\cdot \\frac{d - x}{x} = 1000 \\cdot 0{,}8\\,x\\,f_{cd} \\Rightarrow x = 8{,}20\\,\\text{mm};\\; \\sigma_{tex} = 1860\\,\\text{N/mm}^2;\\; z = 30 - 0{,}8 \\cdot 8{,}20/2 = 26{,}7\\,\\text{mm}",
         "erklaerung": "Quadratische Gleichung in x; die Textilspannung bleibt unter f_td."
       },
       {
@@ -102,7 +102,7 @@
       },
       {
         "erklaerung": "Dehnungskontrolle: Die Betonranddehnung beim Erreichen von f_td darf ε_cu3 = 3,5 ‰ nicht überschreiten; sonst Gleichgewicht mit σ_tex = E_tex·ε_tex < f_td.",
-        "formel": "\\varepsilon_c = \\frac{f_{td}}{E_{tex}} \\cdot \\frac{x}{d - x} \\le \\varepsilon_{cu3} = 3{,}5\\,\\text{‰}",
+        "formel": "\\varepsilon_c = \\frac{f_{td}}{E_{tex}} \\cdot \\frac{x}{d - x} \\le \\varepsilon_{cu3} = 3{,}5 \\cdot 10^{-3}",
         "quelle": "Ebenbleiben des Querschnitts (analog DIN EN 1992-1-1, 6.1)"
       },
       {

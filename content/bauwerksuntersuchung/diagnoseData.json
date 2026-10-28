@@ -88,7 +88,7 @@
     "homogeneBauteilabschnitteDesselbenBetoni": "Homogene Bauteilabschnitte desselben Betonierabschnitts.",
     "prüfstellenNichtNäherAls": "Prüfstellen nicht näher als 50 mm von Kanten oder Fugen entfernt.",
     "freieZonenOhneHohlstellen": "Freie Zonen ohne Hohlstellen oder Bewehrung direkt unter der Oberfläche (Covermeter vorab nutzen!).",
-    "derMedianOderMittelwert": "Der Median aus mindestens 9 Schlägen dämpft lokale Ausreißer (z. B. Treffer auf großes Gesteinskorn oder Pore); weichen mehr als 20 % der Werte um mehr als 6 Einheiten vom Median ab, wird der Messsatz verworfen (vorläufig). Kalibrierung an Bohrkernen nach DIN EN 13791 ist zwingend zur Umrechnung in Druckfestigkeit.",
+    "derMedianOderMittelwert": "Der Median aus mindestens 9 Schlägen dämpft lokale Ausreißer (z. B. Treffer auf großes Gesteinskorn oder Pore); Verwerfungsregel siehe Prüfkatalog. Kalibrierung an Bohrkernen nach DIN EN 13791 ist zwingend zur Umrechnung in Druckfestigkeit.",
     "prüfflächenkonditionierungStoßwinkelKorr": "Prüfflächenkonditionierung & Stoßwinkel-Korrektur",
     "entfernenDerKarbonatisiertenZementschläm": "Entfernen der karbonatisierten Zementschlämme mittels Siliziumkarbid-Schleifstein (Schleifstein mit Körnung 60 im Lieferumfang) bis zu einer glatten, dichten Matrix.",
     "prüfflächeMussLufttrockenSein": "Prüffläche muss lufttrocken sein. Nasser Beton liefert bis zu 20 % niedrigere Rückprallwerte R als trockener Beton bei gleicher Festigkeit!",
