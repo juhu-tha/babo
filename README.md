@@ -35,7 +35,7 @@ Das Portal gliedert sich in folgende zentrale Themencluster:
 
 * **Frontend:** Modulare React-/TypeScript-/Vite-Architektur mit dynamischem Rendering und Tailwind CSS.
 * **Formelsatz:** Saubere Darstellung mathematischer und physikalischer Gleichungen mittels **KaTeX**.
-* **Zahlenformatierung:** Konsequenter Einsatz deutscher Formatierungsstandards (`formatDeZahl` für Komma-Dezimaltrennzeichen und Tausenderpunkte).
+* **Zahlenformatierung:** Konsequenter Einsatz deutscher Formatierungsstandards (`src/utils/numberFormat.ts`: Dezimalkomma; Tausendertrennung ab 5 Stellen mit schmalem geschütztem Leerzeichen U+202F nach DIN 5008/DIN 1333, in KaTeX `\,`; vierstellige Zahlen ungegliedert; Prüfung `node scripts/qa/zahlformat-tausender.mjs --check`, Details in `docs/architektur.md`, „Zahlformat“).
 * **Hosting:** Cloud-Infrastruktur über Google Cloud Run.
 
 ### Entwicklung & Qualitätssicherung
