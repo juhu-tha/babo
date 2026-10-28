@@ -71,7 +71,7 @@ export const massivbauTasks: Task[] = [
     title: 'Verankerungslänge: Alpha-Beiwerte nach DIN EN 1992-1-1',
     question: 'Warum darf das statisch erforderliche Grundmaß der Verankerungslänge durch sogenannte Alpha-Werte (α1, α2, α3...) abgemindert werden?',
     moduleHint: { id: 'verankerungslaenge', name: 'Verankerungslänge' },
-    solution: 'Die Alpha-Werte berücksichtigen günstige geometrische und mechanische Einflussfaktoren: $\\alpha_1$ berücksichtigt die Stabendform (z.B. Winkelhaken oder Schlaufen, die Formschluss liefern), $\\alpha_2$ den Einfluss einer dicken Mindestbetondeckung gegen Längsspaltung, $\\alpha_3$ die Umschnürung durch Querbewehrung, und $\\alpha_5$ den Einfluss von Querdruck senkrecht zur Verankerungsebene. Das Produkt $(\\alpha_1 \\cdot \\alpha_2 \\cdot \\alpha_3 \\cdot \\alpha_4 \\cdot \\alpha_5)$ darf minimal $0{,}7$ betragen.'
+    solution: 'Die Alpha-Werte berücksichtigen günstige geometrische und mechanische Einflussfaktoren: $\\alpha_1$ berücksichtigt die Stabendform (z.B. Winkelhaken oder Schlaufen, die Formschluss liefern), $\\alpha_2$ den Einfluss einer dicken Mindestbetondeckung gegen Längsspaltung, $\\alpha_3$ die Umschnürung durch Querbewehrung, und $\\alpha_5$ den Einfluss von Querdruck senkrecht zur Verankerungsebene. $\\alpha_4$ erfasst angeschweißte Querstäbe. Das Produkt $\\alpha_2 \\cdot \\alpha_3 \\cdot \\alpha_5$ darf nach Gl. (8.5) nicht kleiner als $0{,}7$ sein. Nach NA DE darf vereinfacht $l_{bd} = \\alpha_1 \\cdot \\alpha_4 \\cdot \\alpha_5 \\cdot l_{b,rqd} \\cdot A_{s,erf}/A_{s,vorh}$ mit $\\alpha_5 = 2/3$ bei direkter Lagerung gerechnet werden (vorläufig, Bestätigung am Normtext ausstehend).'
   },
   {
     id: 't_stuetzen',
