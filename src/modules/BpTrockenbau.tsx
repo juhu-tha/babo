@@ -13,6 +13,7 @@ import { PraxisTabContent, InnovationTabContent } from '@/src/components/ui/Inno
 import inhalt from '@/content/bptrockenbau/BpTrockenbau.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { Fz } from '@/src/components/ui/Formelzeichen';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 interface ProductSpec {
@@ -182,7 +183,7 @@ export default function BpTrockenbau() {
                     </div>
 
                     <div className="p-2.5 bg-white border border-slate-150 rounded-xl">
-                      <span className="text-[9px] font-extrabold text-slate-400 block uppercase">Rohdichte α</span>
+                      <span className="text-[9px] font-extrabold text-slate-400 block uppercase">Rohdichte <Fz>α</Fz></span>
                       <span className="text-sm font-mono font-black text-slate-800">{formatDeWert(activeProduct.density)} kg/m³</span>
                       <span className="text-[8px] text-slate-450 block font-bold leading-none mt-0.5">(Verdichtungsfaktor)</span>
                     </div>

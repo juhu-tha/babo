@@ -5,6 +5,7 @@ import { InlineMath } from 'react-katex';
 import { LabProtocolRecord, exportToCSV, generateIntegrityChecksum } from '@/src/utils/labExportUtils';
 import { saveStoredLabProtocol } from '@/src/utils/studyStorage';
 import { rueckprallLehrkurve, rueckprallRichtungskorrektur } from '@/src/calc/bauwerksuntersuchung';
+import { Fz } from '../ui/Formelzeichen';
 
 type ImpactAngle = 'horizontal' | 'downward' | 'upward';
 type ConcreteAge = '28d' | '1year' | 'bestand_alt';
@@ -135,6 +136,13 @@ export default function SchmidtHammerSimulator() {
     };
   }, [measurements, alpha, isCarbonated]);
 
+  // Skala R = 10 … 70 (x = 20 … 280) und Skizze des Rückprallhammers in der gewählten Stoßrichtung
+  const skalaX = (r: number) => 20 + ((Math.max(10, Math.min(70, r)) - 10) / 60) * 260;
+  const einzelwerte = measurements.filter((m): m is number => m !== null);
+  const skalaLabel = `Skala des Rückprallwerts R von 10 bis 70. ${einzelwerte.length ? `Einzelwerte: ${einzelwerte.map(v => formatDeWert(v)).join(', ')}; Median ${formatDeZahl(stats.median, 1)}.` : 'Noch keine Messwerte.'}`;
+  const richtungText = impactAngle === 'horizontal' ? 'horizontal gegen eine Wand (α = 0°)' : impactAngle === 'downward' ? 'senkrecht nach unten auf die Deckenoberseite (α = −90°)' : 'senkrecht nach oben gegen die Deckenuntersicht (α = +90°)';
+  const hammerLabel = `Skizze: Rückprallhammer Typ N, Stoßrichtung ${richtungText}.`;
+
   const handleArchive = () => {
     if (stats.count < 9) return;
 
@@ -244,8 +252,9 @@ export default function SchmidtHammerSimulator() {
             {/* Carbonation Factor Toggle */}
             <div className="space-y-2 pt-2 border-t border-home-grau/20">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-bold text-text-main uppercase tracking-wider">Karbonatisierung (dk &gt; 5 mm)</label>
+                <label htmlFor="schmidt-karbonatisiert" className="text-xs font-bold text-text-main uppercase tracking-wider">Karbonatisierung (<Fz><>d<sub>k</sub> &gt; 5 mm</></Fz>)</label>
                 <input
+                  id="schmidt-karbonatisiert"
                   type="checkbox"
                   checked={isCarbonated}
                   onChange={e => { setIsCarbonated(e.target.checked); handleReset(); }}
@@ -364,45 +373,108 @@ export default function SchmidtHammerSimulator() {
                     <span className="text-[10px] font-mono text-slate-600">W = 2,207 Nm</span>
                   </div>
 
-                  {/* Hammer Scale Graphic */}
-                  <div className="w-full bg-white rounded-lg p-2.5 border border-home-grau/30 flex flex-col gap-1.5">
-                    <div className="flex justify-between text-[10px] font-mono text-slate-600">
-                      <span>R=10</span>
-                      <span>20</span>
-                      <span>30</span>
-                      <span>40</span>
-                      <span>50</span>
-                      <span>60</span>
-                      <span>R=70</span>
-                    </div>
-                    {/* Scale bar with indicator */}
-                    <div className="w-full h-3 bg-gradient-to-r from-red-500 via-amber-400 to-emerald-500 rounded-full relative overflow-hidden shadow-inner">
-                      {stats.mean > 0 && (
-                        <div
-                          className="absolute top-0 bottom-0 w-1.5 bg-white border border-black shadow-md transition-all duration-300"
-                          style={{ left: `${Math.max(0, Math.min(100, ((stats.mean - 10) / 60) * 100))}%` }}
-                        ></div>
+                  {/* Skala R mit Einzelwerten und Median */}
+                  <figure className="pruefgeraet w-full rounded-lg p-2 border m-0">
+                    <svg viewBox="0 0 300 64" className="w-full h-auto" role="img" aria-label={skalaLabel}>
+                      <title>{skalaLabel}</title>
+                      <defs>
+                        <linearGradient id="shm-skala" x1="0" y1="0" x2="1" y2="0">
+                          <stop offset="0" stopColor="var(--pg-stahl)" />
+                          <stop offset="1" stopColor="var(--pg-stahl3)" />
+                        </linearGradient>
+                      </defs>
+                      <rect x="20" y="22" width="260" height="10" rx="5" fill="url(#shm-skala)" stroke="var(--pg-kontur)" strokeWidth="1" />
+                      {[10, 20, 30, 40, 50, 60, 70].map(r => (
+                        <g key={r}>
+                          <line x1={skalaX(r)} y1="32" x2={skalaX(r)} y2="38" stroke="var(--pg-kontur)" strokeWidth="1" />
+                          <text x={skalaX(r)} y="51" textAnchor="middle" fontSize="11" fill="var(--pg-text)">{r}</text>
+                        </g>
+                      ))}
+                      <text x="4" y="31" fontSize="11" fontWeight="bold" fill="var(--pg-text)">R</text>
+                      {einzelwerte.map((v, i) => (
+                        <circle key={i} cx={skalaX(v)} cy={14 - (i % 3) * 4} r="2.6" fill={stats.outliers.includes(v) ? 'var(--pg-akzent)' : 'var(--pg-text2)'} />
+                      ))}
+                      {stats.count > 0 && (
+                        <g>
+                          <line x1={skalaX(stats.median)} y1="19" x2={skalaX(stats.median)} y2="35" stroke="var(--pg-akzent)" strokeWidth="3" />
+                          <text x={Math.min(262, Math.max(38, skalaX(stats.median)))} y="62" textAnchor="middle" fontSize="11" fontWeight="bold" fill="var(--pg-akzent)">Median {formatDeZahl(stats.median, 1)}</text>
+                        </g>
                       )}
-                    </div>
-                  </div>
+                    </svg>
+                    <figcaption className="text-[11px] leading-snug mt-1" style={{ color: 'var(--pg-text2)' }}>
+                      Rückprallwert R (Skalenteile, ohne Einheit); Punkte = Einzelwerte (rot: &gt; 25 % vom Median), Strich = Median.
+                    </figcaption>
+                  </figure>
+
+                  {/* Skizze: Rückprallhammer in der gewählten Stoßrichtung */}
+                  <figure className="pruefgeraet w-full rounded-lg p-2 border m-0 flex items-center gap-3">
+                    <svg viewBox="0 0 160 120" className="w-32 sm:w-36 h-auto shrink-0" role="img" aria-label={hammerLabel}>
+                      <title>{hammerLabel}</title>
+                      <defs>
+                        <pattern id="shm-schraffur" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                          <line x1="0" y1="0" x2="0" y2="6" stroke="var(--pg-korn)" strokeWidth="1.2" />
+                        </pattern>
+                        <marker id="shm-pfeil" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                          <path d="M0,0 L10,5 L0,10 z" fill="var(--pg-akzent)" />
+                        </marker>
+                      </defs>
+                      {impactAngle === 'horizontal' && (
+                        <g>
+                          <rect x="138" y="4" width="18" height="112" fill="var(--pg-beton)" stroke="var(--pg-kontur)" strokeWidth="1.2" />
+                          <rect x="138" y="4" width="18" height="112" fill="url(#shm-schraffur)" />
+                          <rect x="18" y="50" width="96" height="20" rx="4" fill="var(--pg-stahl)" stroke="var(--pg-kontur)" strokeWidth="1.3" />
+                          <rect x="44" y="54" width="30" height="12" rx="1" fill="var(--pg-anzeige)" stroke="var(--pg-kontur)" strokeWidth="0.8" />
+                          <rect x="114" y="56" width="24" height="8" fill="var(--pg-stahl2)" stroke="var(--pg-kontur)" strokeWidth="1" />
+                          <line x1="20" y1="90" x2="130" y2="90" stroke="var(--pg-akzent)" strokeWidth="2" markerEnd="url(#shm-pfeil)" />
+                        </g>
+                      )}
+                      {impactAngle === 'downward' && (
+                        <g>
+                          <rect x="4" y="100" width="152" height="16" fill="var(--pg-beton)" stroke="var(--pg-kontur)" strokeWidth="1.2" />
+                          <rect x="4" y="100" width="152" height="16" fill="url(#shm-schraffur)" />
+                          <rect x="60" y="4" width="20" height="72" rx="4" fill="var(--pg-stahl)" stroke="var(--pg-kontur)" strokeWidth="1.3" />
+                          <rect x="64" y="20" width="12" height="26" rx="1" fill="var(--pg-anzeige)" stroke="var(--pg-kontur)" strokeWidth="0.8" />
+                          <rect x="66" y="76" width="8" height="24" fill="var(--pg-stahl2)" stroke="var(--pg-kontur)" strokeWidth="1" />
+                          <line x1="108" y1="10" x2="108" y2="92" stroke="var(--pg-akzent)" strokeWidth="2" markerEnd="url(#shm-pfeil)" />
+                        </g>
+                      )}
+                      {impactAngle === 'upward' && (
+                        <g>
+                          <rect x="4" y="4" width="152" height="16" fill="var(--pg-beton)" stroke="var(--pg-kontur)" strokeWidth="1.2" />
+                          <rect x="4" y="4" width="152" height="16" fill="url(#shm-schraffur)" />
+                          <rect x="60" y="44" width="20" height="72" rx="4" fill="var(--pg-stahl)" stroke="var(--pg-kontur)" strokeWidth="1.3" />
+                          <rect x="64" y="74" width="12" height="26" rx="1" fill="var(--pg-anzeige)" stroke="var(--pg-kontur)" strokeWidth="0.8" />
+                          <rect x="66" y="20" width="8" height="24" fill="var(--pg-stahl2)" stroke="var(--pg-kontur)" strokeWidth="1" />
+                          <line x1="108" y1="110" x2="108" y2="28" stroke="var(--pg-akzent)" strokeWidth="2" markerEnd="url(#shm-pfeil)" />
+                        </g>
+                      )}
+                    </svg>
+                    <figcaption className="text-xs leading-snug" style={{ color: 'var(--pg-text)' }}>
+                      <strong className="block">Stoßrichtung {impactAngle === 'horizontal' ? 'α = 0°' : impactAngle === 'downward' ? 'α = −90°' : 'α = +90°'}</strong>
+                      {impactAngle === 'horizontal' && 'Wand oder Stütze: keine Richtungskorrektur.'}
+                      {impactAngle === 'downward' && 'Deckenoberseite: Die Schwerkraft bremst den Rückprall, R wird zu klein abgelesen und nach oben korrigiert.'}
+                      {impactAngle === 'upward' && 'Deckenuntersicht: Die Schwerkraft unterstützt den Rückprall, R wird zu groß abgelesen und nach unten korrigiert.'}
+                    </figcaption>
+                  </figure>
                 </div>
 
                 {/* Live Statistics Cards */}
+                {/* Live Statistics Cards */}
                 <div className="grid grid-cols-2 gap-2 my-2 text-xs">
                   <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/25">
-                    <span className="text-text-main/60 block text-[10px] uppercase font-bold">Median R</span>
+                    <span className="text-text-main/60 block text-[11px] uppercase font-bold">Median <Fz>R</Fz></span>
                     <strong className="text-base text-text-main font-mono">{formatDeZahl(stats.median, 1)}</strong>
                   </div>
                   <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/25">
-                    <span className="text-text-main/60 block text-[10px] uppercase font-bold">Mittelwert R</span>
+                    <span className="text-text-main/60 block text-[11px] uppercase font-bold">Mittelwert <Fz>R̄</Fz></span>
                     <strong className="text-base text-shiraz font-mono">{formatDeZahl(stats.mean, 1)}</strong>
                   </div>
                   <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/25">
-                    <span className="text-text-main/60 block text-[10px] uppercase font-bold">Streuung s</span>
+                    <span className="text-text-main/60 block text-[11px] uppercase font-bold">Standardabweichung <Fz>s</Fz></span>
                     <strong className="text-base text-text-main font-mono">{formatDeZahl(stats.stdDev, 2)}</strong>
                   </div>
                   <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/25">
-                    <span className="text-text-main/60 block text-[10px] uppercase font-bold">Korrigierter Rkorr</span>
+                    <span className="text-text-main/60 block text-[11px] uppercase font-bold">Korrigiert <Fz idx="korr">R</Fz></span>
                     <strong className="text-base text-emerald-700 font-mono">{formatDeZahl(stats.correctedR, 1)}</strong>
                   </div>
                 </div>
@@ -410,9 +482,9 @@ export default function SchmidtHammerSimulator() {
                 {/* In-situ Strength Result Banner */}
                 <div className="p-3 bg-emerald-50 rounded-xl border border-emerald-200 flex items-center justify-between">
                   <div>
-                    <span className="text-[10px] uppercase font-bold text-emerald-900 block">Schätzwert Druckfestigkeit (Lehr-Näherung)</span>
+                    <span className="text-[11px] uppercase font-bold text-emerald-900 block">Schätzwert Druckfestigkeit (Lehr-Näherung)</span>
                     <span className="text-xl font-bold font-mono text-emerald-800">
-                      {stats.count >= 9 ? `${formatDeZahl(stats.estFck, 1)} MPa` : '— (9 Punkte nötig)'}
+                      {stats.count >= 9 ? `${formatDeZahl(stats.estFck, 1)} N/mm²` : '— (9 Punkte nötig)'}
                     </span>
                   </div>
                   <span className="text-xs font-bold text-emerald-900 bg-emerald-200/80 px-2.5 py-1 rounded-lg">

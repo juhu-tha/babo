@@ -60,11 +60,13 @@ export function PfeilDefs({ praefix }: { praefix: string }) {
 }
 
 /** Maßlinie mit Pfeilen an beiden Enden und Beschriftung in der Mitte (Text auf hellem Schild) */
-export function Masslinie({ x1, y1, x2, y2, text, praefix, versatz = -6, schrift = 12 }: {
+export function Masslinie({ x1, y1, x2, y2, text, praefix, versatz = -6, schrift = 12, anteil = 0.5 }: {
   x1: number; y1: number; x2: number; y2: number; text: string; praefix: string; versatz?: number; schrift?: number;
+  /** Lage der Beschriftung entlang der Linie (0 = Anfang, 1 = Ende) */
+  anteil?: number;
 }) {
-  const mx = (x1 + x2) / 2;
-  const my = (y1 + y2) / 2;
+  const mx = x1 + (x2 - x1) * anteil;
+  const my = y1 + (y2 - y1) * anteil;
   const senkrecht = Math.abs(x2 - x1) < Math.abs(y2 - y1);
   const breite = text.length * schrift * 0.58 + 8;
   return (

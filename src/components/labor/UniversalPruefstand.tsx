@@ -1,7 +1,7 @@
 import type { ChartDataset, Point } from 'chart.js';
 import { formatDeZahl, formatDeWert, formatDeIntl } from '@/src/utils/numberFormat';
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-import { Play, RotateCcw, Activity, ShieldCheck, Check, Download, FileText, ArrowRight, Gauge, Sliders, Zap } from 'lucide-react';
+import { Play, RotateCcw, Activity, ShieldCheck, Check, Download, FileText, ArrowRight, Sliders, Zap } from 'lucide-react';
 import { InlineMath } from 'react-katex';
 import {
   Chart as ChartJS,
@@ -20,6 +20,10 @@ import { validateMechanicalTestIntegrity, exportToCSV, LabProtocolRecord } from 
 import { saveStoredLabProtocol } from '@/src/utils/studyStorage';
 import { BETONSTAHL, E_BETONSTAHL } from '@/src/data/kennwerte';
 import { AuswahlGruppe, alsOption } from '../ui/Auswahlgruppe';
+import { Fz } from '../ui/Formelzeichen';
+import { hoechstwert } from '@/src/calc/laborVersuch';
+import { useDiagrammFarben, linAchse } from './laborGrafik';
+import UtmGeraet from './UtmGeraet';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -505,10 +509,8 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
   }, []);
 
   // Compute final summary metrics
-  const maxStressObserved = useMemo(() => {
-    if (mechData.length === 0) return 0;
-    return Math.max(...mechData.map(d => d.y), 0);
-  }, [mechData]);
+  // Höchstwert der aufgezeichneten Kurve (nach dem Bruch fällt die Anzeige auf 0)
+  const maxStressObserved = useMemo(() => Math.max(hoechstwert(mechData).y, 0), [mechData]);
 
   const maxForceObserved = useMemo(() => {
     return (maxStressObserved * specimenCrossSection) / 1000;
@@ -570,8 +572,8 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
         ...(material === 'holz' ? { 'Faserwinkel α': `${formatDeWert(woodAngle)}°` } : {})
       },
       metrics: {
-        'Höchstspannung (MPa)': formatDeZahl(maxStressObserved, 2),
-        'Höchstkraft Fmax (kN)': formatDeZahl(maxForceObserved, 1),
+        'Höchstspannung σ_max (N/mm²)': formatDeZahl(maxStressObserved, 2),
+        'Höchstkraft F_max (kN)': formatDeZahl(maxForceObserved, 1),
         'E-Modul (GPa)': formatDeZahl((materialProps.E / 1000), 2),
         'Enddehnung (‰)': formatDeZahl(finalStrainObserved, 3),
         'Rohdichte (kg/m³)': `${materialProps.density}`
@@ -608,6 +610,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
   }, [materialProps, material]);
 
   // Chart configuration
+  const farben = useDiagrammFarben();
   const chartScales = useMemo(() => {
     let xMax = materialProps.failureStrain * 1.15;
     let yMax = (materialProps.fc || materialProps.fu || materialProps.fy || 10) * 1.25;
@@ -653,8 +656,8 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
           ? `${materialProps.name} (${testType === 'emodul' ? 'Zyklen DIN EN 12390-13' : 'Messkurve'})` 
           : `${materialProps.name} (Last-Verformungskurve F-ΔL)`,
         data: mainCurve,
-        borderColor: '#A3113E',
-        backgroundColor: 'rgba(163, 17, 62, 0.08)',
+        borderColor: farben.linie,
+        backgroundColor: farben.flaeche,
         borderWidth: 2.8,
         pointRadius: 0,
         fill: testType !== 'emodul',
@@ -676,8 +679,8 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
       list.push({
         label: `Sekante Ec = ${formatDeZahl(measuredE, 1)} GPa (Δσ/Δε)`,
         data: [pt1, pt2],
-        borderColor: '#334155',
-        backgroundColor: '#334155',
+        borderColor: farben.hilfslinie,
+        backgroundColor: farben.hilfslinie,
         borderWidth: 2.5,
         pointRadius: 4,
         pointHoverRadius: 6,
@@ -689,9 +692,9 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
       const xMax = chartScales.xMax;
       const upperY = chartViewMode === 'sigma_eps' ? upperStress : (upperStress * specimenCrossSection) / 1000;
       list.push({
-        label: `Obere Spannung σa = ${formatDeZahl(upperStress, 1)} MPa`,
+        label: `Obere Spannung σa = ${formatDeZahl(upperStress, 1)} N/mm²`,
         data: [{ x: 0, y: upperY }, { x: xMax, y: upperY }],
-        borderColor: '#475569',
+        borderColor: farben.hilfslinie,
         borderWidth: 1.5,
         borderDash: [5, 4],
         pointRadius: 0,
@@ -701,9 +704,9 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
       // 3. Untere Basisspannungsgrenze
       const lowerY = chartViewMode === 'sigma_eps' ? lowerStress : (lowerStress * specimenCrossSection) / 1000;
       list.push({
-        label: `Basisspannung σb = ${formatDeZahl(lowerStress, 1)} MPa`,
+        label: `Basisspannung σb = ${formatDeZahl(lowerStress, 1)} N/mm²`,
         data: [{ x: 0, y: lowerY }, { x: xMax, y: lowerY }],
-        borderColor: '#64748b',
+        borderColor: farben.hilfslinie2,
         borderWidth: 1.5,
         borderDash: [5, 4],
         pointRadius: 0,
@@ -712,45 +715,28 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
     }
 
     return list;
-  }, [chartViewMode, mechData, specimenHeight, specimenCrossSection, materialProps, testType, emodulReference, chartScales, showAuxLines]);
+  }, [chartViewMode, mechData, specimenHeight, specimenCrossSection, materialProps, testType, emodulReference, chartScales, showAuxLines, farben]);
 
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
     animation: { duration: 0 },
     scales: {
-      x: {
-        type: 'linear' as const,
-        title: {
-          display: true,
-          text: chartViewMode === 'f_delta'
-            ? (testType === 'druck' ? 'Stauchung / Hub ΔL (mm)' : 'Dehnung / Weg ΔL (mm)')
-            : (testType === 'druck' ? 'Stauchung ε (‰)' : 'Dehnung ε (‰)'),
-          font: { weight: 'bold' as const, size: 12 }
-        },
-        min: 0,
-        max: chartScales.xMax,
-        grid: { display: showGrid, color: 'rgba(0,0,0,0.06)' }
-      },
-      y: {
-        type: 'linear' as const,
-        title: {
-          display: true,
-          text: chartViewMode === 'f_delta'
-            ? 'Prüfkraft F (kN)'
-            : 'Spannung σ (MPa = N/mm²)',
-          font: { weight: 'bold' as const, size: 12 }
-        },
-        min: 0,
-        max: chartScales.yMax,
-        grid: { display: showGrid, color: 'rgba(0,0,0,0.06)' }
-      }
+      x: linAchse(
+        farben,
+        chartViewMode === 'f_delta'
+          ? (testType === 'druck' ? 'Stauchung ΔL in mm' : 'Verlängerung ΔL in mm')
+          : (testType === 'druck' ? 'Stauchung ε in ‰' : 'Dehnung ε in ‰'),
+        chartScales.xMax,
+        showGrid
+      ),
+      y: linAchse(farben, chartViewMode === 'f_delta' ? 'F in kN' : 'σ in N/mm²', chartScales.yMax, showGrid),
     },
     plugins: {
       legend: {
         display: testType === 'emodul' && showAuxLines,
         position: 'top' as const,
-        labels: { boxWidth: 12, font: { size: 10, weight: 'bold' as const } }
+        labels: { boxWidth: 12, color: farben.titel, font: { size: 11, weight: 'bold' as const } }
       },
       tooltip: {
         callbacks: {
@@ -759,11 +745,20 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
             : `Dehnung ε = ${formatDeZahl(Number(items[0].parsed.x), 3)} ‰`,
           label: (item: TooltipItem<'line'>) => chartViewMode === 'f_delta'
             ? `Kraft F = ${formatDeZahl(Number(item.parsed.y), 1)} kN`
-            : `Spannung σ = ${formatDeZahl(Number(item.parsed.y), 2)} MPa (${formatDeZahl(((Number(item.parsed.y) * specimenCrossSection) / 1000), 1)} kN)`
+            : `Spannung σ = ${formatDeZahl(Number(item.parsed.y), 2)} N/mm² (${formatDeZahl(((Number(item.parsed.y) * specimenCrossSection) / 1000), 1)} kN)`
         }
       }
     }
   };
+
+  const probeName = specimenShape === 'wuerfel150' ? 'Würfel 150 mm' : specimenShape === 'zylinder150' ? 'Zylinder Ø 150/300 mm' : 'Flachzugstab nach DIN 50125';
+  const versuchName = testType === 'druck' ? 'Druckversuch' : testType === 'zug' ? 'Zugversuch' : 'E-Modul-Prüfung mit Lastzyklen';
+  const bruchText = testStatus !== 'finished' || testType === 'emodul' ? '' : testType === 'druck'
+    ? (material === 'beton' || material === 'ziegel' ? ' Bruchbild: Sanduhrform aus zwei Pyramidenstümpfen.' : material === 'gusseisen' ? ' Bruchbild: Schrägbruch.' : material === 'stahl' || material === 'aluminium' ? ' Probe tonnenförmig ausgebaucht, kein Bruch.' : '')
+    : (material === 'stahl' || material === 'aluminium' ? ' Bruch nach Einschnürung.' : ' Trennriss quer zur Zugrichtung.');
+  const utmLabel = `Universalprüfmaschine mit Querhaupt, Kraftmessdose und ${testType === 'zug' ? 'Spannbacken' : 'Druckplatten'}; ${versuchName} an ${materialProps.name}, Probekörper ${probeName}. `
+    + (testStatus === 'idle' ? 'Versuch noch nicht gestartet.' : testStatus === 'running' ? `Belastung läuft, Kraft ${formatDeZahl(currentForceKN, 1)} kN.` : `Prüfung beendet, Höchstkraft ${formatDeZahl(maxForceObserved, 1)} kN.`)
+    + bruchText;
 
   return (
     <div className="flex flex-col gap-6 animate-in fade-in duration-300">
@@ -961,138 +956,21 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
             {/* Machine & Diagram Split View */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-5 my-4 flex-1">
               
-              {/* Graphic Universal Testing Machine Rig (5 cols) */}
-              <div className="md:col-span-5 bg-gradient-to-b from-slate-100 via-slate-50 to-slate-200 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 dark:bg-slate-900 p-4 rounded-xl border border-slate-300 dark:border-slate-800 flex flex-col items-center justify-between relative shadow-inner overflow-hidden min-h-[360px]">
-                
-                {/* Rig Frame Top (Head crosshead with Load Cell) */}
-                <div className="w-full flex flex-col items-center z-10">
-                  <div className="w-full h-8 bg-gradient-to-r from-slate-700 via-slate-600 to-slate-700 dark:from-slate-800 dark:to-slate-800 dark:bg-slate-800 rounded-t-lg shadow-md flex items-center justify-center border-b border-slate-500 dark:border-slate-700">
-                    <span className="text-[10px] font-mono tracking-widest text-slate-200 font-bold uppercase">
-                      Universalprüfmaschine UTM-3000
-                    </span>
-                  </div>
-                  {/* Load Cell Sensor (Kraftmessdose) */}
-                  <div className="w-16 h-7 bg-amber-400 border border-amber-600 rounded-b shadow-sm flex items-center justify-center">
-                    <div className="flex items-center gap-1 text-[9px] font-bold font-mono text-amber-950">
-                      <Gauge size={10} /> DMS-Zelle
-                    </div>
-                  </div>
-                </div>
-
-                {/* Machine Columns (Left & Right Spindles) */}
-                <div className="absolute top-8 bottom-12 left-4 w-4 bg-gradient-to-r from-slate-400 via-slate-200 to-slate-500 dark:from-slate-700 dark:to-slate-700 dark:bg-slate-700 rounded-sm shadow-sm border border-slate-400 dark:border-slate-600"></div>
-                <div className="absolute top-8 bottom-12 right-4 w-4 bg-gradient-to-r from-slate-400 via-slate-200 to-slate-500 dark:from-slate-700 dark:to-slate-700 dark:bg-slate-700 rounded-sm shadow-sm border border-slate-400 dark:border-slate-600"></div>
-
-                {/* Central Testing Space: Platens, Specimen & Extensometer */}
-                <div className="w-44 flex flex-col items-center justify-center my-auto relative z-10">
-                  
-                  {/* Upper Compression Platen / Grip */}
-                  <div className="w-28 h-5 bg-gradient-to-r from-slate-600 to-slate-800 dark:from-slate-800 dark:to-slate-800 dark:bg-slate-800 rounded-t shadow-md border border-slate-500 dark:border-slate-700 flex items-center justify-center">
-                    <div className="w-8 h-1 bg-slate-400 dark:bg-slate-600 rounded-full"></div>
-                  </div>
-
-                  {/* Specimen Render */}
-                  <div
-                    className="relative transition-all duration-75 flex items-center justify-center shadow-lg border border-black/30 overflow-hidden"
-                    style={{
-                      backgroundColor: materialProps.color,
-                      height: `${
-                        testType === 'zug'
-                          ? Math.min(170, 120 + progress * 0.45)
-                          : Math.max(70, 120 - progress * 0.42)
-                      }px`,
-                      width: `${
-                        testType === 'zug'
-                          ? Math.max(34, 60 - progress * 0.22)
-                          : Math.min(94, 64 + progress * 0.28)
-                      }px`,
-                      borderRadius: specimenShape === 'zylinder150' ? '12px' : '4px'
-                    }}
-                  >
-                    {/* Material Textures Overlay */}
-                    {material === 'beton' && (
-                      <div className="absolute inset-0 opacity-40 mix-blend-multiply bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:6px_6px]"></div>
-                    )}
-                    {material === 'holz' && (
-                      <div
-                        className="absolute inset-0 opacity-50 bg-[repeating-linear-gradient(0deg,#475569,#475569_2px,#475569_2px,#475569_8px)]"
-                        style={{ transform: `rotate(${woodAngle}deg) scale(1.5)` }}
-                      ></div>
-                    )}
-                    {material === 'stahl' && (
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-                    )}
-
-                    {/* Crack Propagation Animation */}
-                    {crackSeverity > 0 && (
-                      <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
-                        {testType === 'druck' ? (
-                          <>
-                            {/* Concrete / Brick Shear Cone Cracks */}
-                            <path
-                              d="M 10 5 L 48 50 L 15 95"
-                              stroke="#1e293b"
-                              strokeWidth={2 + crackSeverity * 2.5}
-                              strokeLinecap="round"
-                              fill="none"
-                              opacity={crackSeverity}
-                            />
-                            <path
-                              d="M 90 5 L 52 50 L 85 95"
-                              stroke="#1e293b"
-                              strokeWidth={2 + crackSeverity * 2.5}
-                              strokeLinecap="round"
-                              fill="none"
-                              opacity={crackSeverity}
-                            />
-                          </>
-                        ) : (
-                          <>
-                            {/* Tensile Necking & Fracture Line */}
-                            <path
-                              d="M 5 50 Q 50 48 95 50"
-                              stroke="#0f172a"
-                              strokeWidth={2 + crackSeverity * 3.5}
-                              strokeDasharray={crackSeverity > 0.8 ? 'none' : '4,2'}
-                              fill="none"
-                              opacity={crackSeverity}
-                            />
-                          </>
-                        )}
-                      </svg>
-                    )}
-
-                    {/* LVDT Clip-on Extensometer Attached */}
-                    <div className="absolute left-[-10px] top-1/4 bottom-1/4 w-2.5 bg-slate-800 border border-slate-600 rounded-xs flex flex-col justify-between items-center py-0.5">
-                      <div className="w-1.5 h-1 bg-cyan-400 rounded-full"></div>
-                      <div className="w-1.5 h-1 bg-cyan-400 rounded-full"></div>
-                    </div>
-                  </div>
-
-                  {/* Lower Moving Crosshead Platen (stays flush with specimen bottom) */}
-                  <div className="w-28 h-6 bg-gradient-to-r from-slate-700 to-slate-900 dark:from-slate-800 dark:to-slate-800 dark:bg-slate-800 rounded-b shadow-lg border border-slate-500 dark:border-slate-700 flex items-center justify-center transition-all duration-75 z-10">
-                    <div className="w-12 h-1.5 bg-emerald-400/80 rounded-full animate-pulse"></div>
-                  </div>
-
-                  {/* Hydraulic Ram Piston Shaft */}
-                  <div
-                    className="w-10 bg-slate-400 dark:bg-slate-600 border-x border-slate-500 dark:border-slate-700 shadow-inner transition-all duration-75"
-                    style={{
-                      height: `${testType === 'zug' ? Math.max(8, 28 - progress * 0.22) : Math.min(60, 28 + progress * 0.28)}px`
-                    }}
-                  ></div>
-                </div>
-
-                {/* Base Plate with Drive Piston */}
-                <div className="w-full flex flex-col items-center z-10">
-                  <div className="w-full h-10 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 dark:from-slate-800 dark:to-slate-800 dark:bg-slate-800 rounded-b-lg shadow-xl flex items-center justify-between px-4 border-t border-slate-600 dark:border-slate-700">
-                    <span className="text-[10px] font-mono text-emerald-400 flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> ONLINE
-                    </span>
-                    <span className="text-[10px] font-mono text-slate-300">Hub: ±100 mm</span>
-                  </div>
-                </div>
-              </div>
+              {/* Universalprüfmaschine (Gerätezeichnung) */}
+              <figure className="pruefgeraet md:col-span-5 p-3 rounded-xl border flex flex-col items-center justify-center m-0">
+                <UtmGeraet
+                  material={material}
+                  testType={testType}
+                  specimenShape={specimenShape}
+                  progress={progress}
+                  crackSeverity={crackSeverity}
+                  materialColor={materialProps.color}
+                  woodAngle={woodAngle}
+                  aktiv={testStatus === 'running'}
+                  beendet={testStatus === 'finished'}
+                  ariaLabel={utmLabel}
+                />
+              </figure>
 
               {/* Stress-Strain Line Chart (7 cols) */}
               <div className="md:col-span-7 flex flex-col justify-between">
@@ -1100,21 +978,21 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
                 {/* Live Digital Display Bar (Force, Stress, Strain) */}
                 <div className="grid grid-cols-3 gap-2.5 mb-3">
                   <div className="bg-off-white text-text-main p-3 rounded-xl border border-home-grau/30 shadow-inner flex flex-col">
-                    <span className="text-[10px] font-mono text-slate-600 font-bold uppercase tracking-wider">Kraft F</span>
+                    <span className="text-[11px] font-mono text-slate-600 font-bold uppercase tracking-wider">Kraft <Fz>F</Fz></span>
                     <div className="text-xl font-mono font-bold text-amber-700 mt-0.5">
                       {formatDeZahl(currentForceKN, 1)} <span className="text-xs text-slate-700 font-normal">kN</span>
                     </div>
                   </div>
 
                   <div className="bg-off-white text-text-main p-3 rounded-xl border border-home-grau/30 shadow-inner flex flex-col">
-                    <span className="text-[10px] font-mono text-slate-600 font-bold uppercase tracking-wider">Spannung σ</span>
+                    <span className="text-[11px] font-mono text-slate-600 font-bold uppercase tracking-wider">Spannung <Fz>σ</Fz></span>
                     <div className="text-xl font-mono font-bold text-emerald-700 mt-0.5">
-                      {formatDeZahl(currentStressMPa, 2)} <span className="text-xs text-slate-700 font-normal">MPa</span>
+                      {formatDeZahl(currentStressMPa, 2)} <span className="text-xs text-slate-700 font-normal">N/mm²</span>
                     </div>
                   </div>
 
                   <div className="bg-off-white text-text-main p-3 rounded-xl border border-home-grau/30 shadow-inner flex flex-col">
-                    <span className="text-[10px] font-mono text-slate-600 font-bold uppercase tracking-wider">Dehnung ε</span>
+                    <span className="text-[11px] font-mono text-slate-600 font-bold uppercase tracking-wider">{testType === 'druck' ? 'Stauchung' : 'Dehnung'} <Fz>ε</Fz></span>
                     <div className="text-xl font-mono font-bold text-cyan-700 mt-0.5">
                       {formatDeZahl(currentStrainPermille, 2)} <span className="text-xs text-slate-700 font-normal">‰</span>
                     </div>
@@ -1217,40 +1095,40 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
                   {testType === 'emodul' ? (
                     <>
                       <div>
-                        <span className="text-text-main/60 uppercase text-[10px] font-bold block">Sekanten-E-Modul Ec</span>
+                        <span className="text-text-main/60 uppercase text-[11px] font-bold block">Sekanten-E-Modul <Fz idx="c">E</Fz></span>
                         <strong className="text-base text-emerald-700 font-mono">{formatDeZahl(emodulReference.measuredE, 1)} GPa</strong>
                       </div>
                       <div>
-                        <span className="text-text-main/60 uppercase text-[10px] font-bold block">E-Modul (Literatur)</span>
+                        <span className="text-text-main/60 uppercase text-[11px] font-bold block">E-Modul (Literatur)</span>
                         <strong className="text-base text-text-main font-mono">{formatDeZahl((materialProps.E / 1000), 1)} GPa</strong>
                       </div>
                       <div>
-                        <span className="text-text-main/60 uppercase text-[10px] font-bold block">Prüfspannungsbereich</span>
+                        <span className="text-text-main/60 uppercase text-[11px] font-bold block">Prüfspannungsbereich</span>
                         <strong className="text-base text-amber-700 font-mono">
-                          {formatDeZahl(emodulReference.lowerStress, 1)} – {formatDeZahl(emodulReference.upperStress, 1)} MPa
+                          {formatDeZahl(emodulReference.lowerStress, 1)} – {formatDeZahl(emodulReference.upperStress, 1)} N/mm²
                         </strong>
                       </div>
                       <div>
-                        <span className="text-text-main/60 uppercase text-[10px] font-bold block">Prüfvorschrift</span>
+                        <span className="text-text-main/60 uppercase text-[11px] font-bold block">Prüfvorschrift</span>
                         <strong className="text-base text-shiraz font-mono">DIN EN 12390-13</strong>
                       </div>
                     </>
                   ) : (
                     <>
                       <div>
-                        <span className="text-text-main/60 uppercase text-[10px] font-bold block">Höchstspannung σmax</span>
-                        <strong className="text-base text-shiraz font-mono">{formatDeZahl(maxStressObserved, 2)} MPa</strong>
+                        <span className="text-text-main/60 uppercase text-[11px] font-bold block">Höchstspannung <Fz idx="max">σ</Fz></span>
+                        <strong className="text-base text-shiraz font-mono">{formatDeZahl(maxStressObserved, 2)} N/mm²</strong>
                       </div>
                       <div>
-                        <span className="text-text-main/60 uppercase text-[10px] font-bold block">Höchstkraft Fmax</span>
+                        <span className="text-text-main/60 uppercase text-[11px] font-bold block">Höchstkraft <Fz idx="max">F</Fz></span>
                         <strong className="text-base text-text-main font-mono">{formatDeZahl(maxForceObserved, 1)} kN</strong>
                       </div>
                       <div>
-                        <span className="text-text-main/60 uppercase text-[10px] font-bold block">E-Modul (Literatur)</span>
+                        <span className="text-text-main/60 uppercase text-[11px] font-bold block">E-Modul (Literatur)</span>
                         <strong className="text-base text-text-main font-mono">{formatDeZahl((materialProps.E / 1000), 1)} GPa</strong>
                       </div>
                       <div>
-                        <span className="text-text-main/60 uppercase text-[10px] font-bold block">Formänderungsarbeit W (Fläche σ–ε)</span>
+                        <span className="text-text-main/60 uppercase text-[11px] font-bold block">Formänderungsarbeit <Fz>W</Fz> (Fläche unter <Fz>σ–ε</Fz>)</span>
                         <strong className="text-base text-emerald-700 font-mono">{formatDeZahl(elasticEnergy, 1)} kJ/m³</strong>
                       </div>
                     </>
@@ -1287,7 +1165,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
                     <button
                       onClick={() => {
                         const rows = mechData.map(d => [d.x.toFixed(4), d.y.toFixed(3)]);
-                        exportToCSV(`UTM_${material}_${testType}`, ['Dehnung_Promille', 'Spannung_MPa'], rows);
+                        exportToCSV(`UTM_${material}_${testType}`, ['Dehnung_Promille', 'Spannung_N_mm2'], rows);
                       }}
                       className="px-3 py-1.5 bg-white hover:bg-slate-100 text-text-main text-xs font-bold rounded-xl border border-home-grau/30 shadow-xs transition-all flex items-center gap-1.5 cursor-pointer"
                       title="Rohdaten exportieren"
