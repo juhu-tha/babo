@@ -86,7 +86,7 @@ export const massivbauTasks: Task[] = [
     difficulty: 'Mittel',
     title: 'Spannbeton: Umlenkkräfte parabolisch geführter Spannglieder',
     question: 'Spannglieder in Spannbetonbrücken werden oft nicht gerade, sondern parabolisch gekrümmt geführt. Welchen statischen Vorteil hat diese Linienführung?',
-    moduleHint: { id: 'spannbeton', name: 'Spannbeton' },
+    moduleHint: { id: 'spannbeton_grundlagen', name: 'Spannbeton: Grundlagen' },
     solution: 'Ein gekrümmtes Spannglied erzeugt aus der aufgebrachten Zugkraft $P$ eine stetige Umlenkkraft $u = \\frac{8 f P}{L^2}$ radial in Richtung Krümmungsmittelpunkt. Bei einem nach unten durchhängenden Spannglied wirken diese Umlenkkräfte als kontinuierliche Flächenlast nach oben. Sie wirken somit den Schwerkraftlasten (Eigengewicht $g$) entgegen (Lastkompensation) und reduzieren Feldmomente und Durchbiegungen drastisch.'
   },
   {

@@ -650,7 +650,8 @@ export default function ModuleInfo({ group }: ModuleInfoProps) {
                           { name: "Stahlbeton", tab: "labor" },
                           { name: "Carbonbeton", tab: "carbonbeton" },
                           { name: inhalt.werte.faserverbundFvk, tab: "faserverbund" },
-                          { name: "Spannbeton", tab: "spannbeton" },
+                          { name: "Spannbeton: Grundlagen", tab: "spannbeton_grundlagen" },
+                          { name: "Spannbeton: Kennwerte & Rechner", tab: "spannbeton_kennwerte" },
                           { name: "Gipskartonplatten", tab: "bp_trockenbau" }
                         ].map((m) => (
                           <button
