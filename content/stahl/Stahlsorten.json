@@ -21,7 +21,7 @@
     "höchsteDissipativeRotationskapazitätFür": "Höchste dissipative Rotationskapazität für seismische Zonen, Brückenpfeiler und Explosionsschutzbauwerke.",
     "verbundwirkungRippenprofilierungKraftübe": "Verbundwirkung: Rippenprofilierung & Kraftübertragung",
     "glatterRundstahlBesitztFast": "Glatter Rundstahl besitzt fast nur Haft- und Reibungsverbund. Betonstähle nach DIN 488 besitzen daher **Schrägrippen** (2- oder 4-reihig), sodass der Zementstein formschlüssig in die Rippenzwischenräume greift.",
-    "eta110": "$\\eta_1 = 1{,}0$ für gute Verbundbedingungen (untere Bauteilhälfte); $\\eta_1 = 0{,}7$ für mäßigen Verbund (oberste 25 cm wegen Wasseraufstieg/Bleeding).",
+    "eta110": "$\\eta_1 = 1{,}0$ für gute, $\\eta_1 = 0{,}7$ für mäßige Verbundbedingungen nach DIN EN 1992-1-1, 8.4.2 (Bild 8.2): gut sind alle Stäbe mit 45° bis 90° Neigung zur Horizontalen; bei flacher liegenden Stäben alle Stäbe in Bauteilen mit h ≤ 250 mm, bei 250 mm < h ≤ 600 mm die Stäbe in den unteren 250 mm und bei h > 600 mm die Stäbe mindestens 300 mm unter der Oberseite. Die übrigen Stäbe liegen im mäßigen Verbund (Absetzen und Wasseranreicherung unter der Oberfläche beim Betonieren).",
     "dasThermexVerfahrenTempcore": "Das Thermex-Verfahren (Tempcore)",
     "wieErreichtManHohe": "Wie erreicht man hohe Festigkeit bei geringem Kohlenstoffgehalt ($\\le 0{,}22\\%$ für perfekte Schweißbarkeit)?",
     "ausDerWalzhitzeApprox": "Aus der Walzhitze ($\\approx 950^\\circ\\text{C}$) durchläuft der Stab eine intensive Wasser-Kühlstrecke. Die äußere Randschicht kühlt schlagartig ab und wandelt sich in harten Martensit um. Der heiße Kern kühlt danach langsam an Luft ab und **lässt die Randschicht von innen heraus thermisch an**.",
