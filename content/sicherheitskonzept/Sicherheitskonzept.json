@@ -27,7 +27,7 @@
     "eurocode9DinEn": "Eurocode 9 (DIN EN 1999)",
     "bemessungUndKonstruktionVon6": "Bemessung und Konstruktion von Aluminiumtragwerken",
     "geltendeFassungInDeutschland": "**Geltende Fassung in Deutschland:** DIN EN 1990:2021-10 (berichtigte Neuausgabe von DIN EN 1990:2010-12) mit Nationalem Anhang DIN EN 1990/NA:2010-12 und Änderung /NA/A1:2012-08. Jeder Eurocode-Teil gilt nur zusammen mit seinem Nationalen Anhang (NA), der die national festzulegenden Parameter (NDP) – etwa Teilsicherheits- und Kombinationsbeiwerte – bestimmt. Bauaufsichtlich verbindlich werden die Normen über die Verwaltungsvorschrift Technische Baubestimmungen (MVV TB / VV TB der Länder).",
-    "zweiteEurocodeGenerationCen": "**Zweite Eurocode-Generation:** CEN hat die überarbeiteten Eurocodes (u. a. EN 1990:2023, EN 1992-1-1:2023) veröffentlicht; die ersten deutschen Fassungen sind erschienen (z. B. DIN EN 1993-1-1:2025-04, DIN EN 1992-1-1:2025-09). Bauaufsichtlich anwendbar werden sie erst mit Nationalem Anhang und Einführung in die MVV TB bzw. VV TB der Länder – bis dahin bleiben die oben genannten Fassungen maßgebend. Neu hinzu kommen Regeln für Glas (CEN/TS 19100) und Faserverbundkunststoffe (CEN/TS 19101).",
+    "zweiteEurocodeGenerationCen": "**Zweite Eurocode-Generation:** CEN hat die überarbeiteten Eurocodes (u. a. EN 1990:2023, mit A1:2026 als EN 1990-1 „Neubauten“ geführt, und EN 1992-1-1:2023) veröffentlicht; die ersten deutschen Fassungen sind erschienen (z. B. DIN EN 1993-1-1:2025-04, DIN EN 1992-1-1:2025-09). Bauaufsichtlich anwendbar werden sie erst mit Nationalem Anhang und Einführung in die MVV TB bzw. VV TB der Länder – bis dahin bleiben die oben genannten Fassungen maßgebend. Neu hinzu kommen Regeln für Glas (CEN/TS 19100) und Faserverbundkunststoffe (CEN/TS 19101).",
     "sicherheitskonzeptEc0": "Sicherheitskonzept (EC 0)",
     "einwirkungenE": " Einwirkungen (E)",
     "kräfteOderVerformungenDie": "Kräfte oder Verformungen, die auf das Tragwerk einwirken (z.B. Eigengewicht, Nutzlast, Wind).",
@@ -133,7 +133,7 @@
     ],
     "Sicherheitskonzept.regelwerke": [
       {
-        "title": "DIN EN 1990:2021-10 mit NA (Eurocode 0: Grundlagen der Tragwerksplanung; ersetzt DIN EN 1990:2010-12); Nachfolger DIN EN 1990 (EN 1990:2023) vorbestellbar, noch nicht eingeführt"
+        "title": "DIN EN 1990:2021-10 mit NA (Eurocode 0: Grundlagen der Tragwerksplanung; ersetzt DIN EN 1990:2010-12); Nachfolger DIN EN 1990-1:2026-12 (EN 1990-1:2023+A1:2026, Teil 1: Neubauten) angekündigt, Nationaler Anhang im Entwurf, bauaufsichtlich noch nicht eingeführt"
       },
       {
         "title": "DIN EN 1990/NA:2010-12 und DIN EN 1990/NA/A1:2012-08 (Nationaler Anhang)"
