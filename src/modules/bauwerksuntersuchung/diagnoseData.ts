@@ -276,10 +276,10 @@ export const METHOD_DIAGNOSE_DETAILS: Record<string, MethodDiagnoseInfo> = {
       titel: inhalt.werte.interpretationVonVL,
       kerndiagnose: inhalt.werte.hoheGeschwindigkeitenIndizierenEin,
       grenzwerte: [
-        { parameter: inhalt.werte.schallgeschwindigkeitVL, wert: '> 4.200 m/s', einheit: 'm/s', status: 'ok', bewertung: inhalt.werte.ausgezeichneteGefügequalitätDichtHochfes, massnahme: inhalt.werte.keineMängel },
+        { parameter: inhalt.werte.schallgeschwindigkeitVL, wert: '> 4200 m/s', einheit: 'm/s', status: 'ok', bewertung: inhalt.werte.ausgezeichneteGefügequalitätDichtHochfes, massnahme: inhalt.werte.keineMängel },
         { parameter: inhalt.werte.schallgeschwindigkeitVL2, wert: inhalt.werte.t35004200, einheit: 'm/s', status: 'ok', bewertung: inhalt.werte.guterNormalbeton, massnahme: inhalt.werte.regelkonformeFestigkeit },
         { parameter: inhalt.werte.schallgeschwindigkeitVL3, wert: inhalt.werte.t30003500, einheit: 'm/s', status: 'warn', bewertung: inhalt.werte.mäßigeQualitätMikrorisse, massnahme: inhalt.werte.prüfungAufFrostschädenOder },
-        { parameter: inhalt.werte.schallgeschwindigkeitVL4, wert: '< 3.000 m/s', einheit: 'm/s', status: 'crit', bewertung: inhalt.werte.starkZerrüttetesGefügeHohlraum, massnahme: inhalt.werte.instandsetzungsbedarfRissinjektionOderBe }
+        { parameter: inhalt.werte.schallgeschwindigkeitVL4, wert: '< 3000 m/s', einheit: 'm/s', status: 'crit', bewertung: inhalt.werte.starkZerrüttetesGefügeHohlraum, massnahme: inhalt.werte.instandsetzungsbedarfRissinjektionOderBe }
       ],
       tragwerksAuswirkung: inhalt.werte.ermittlungDesDynamischenElastizitätsmodu,
       instandsetzungsKonsequenz: inhalt.werte.dientDerErfolgskontrolleBei,

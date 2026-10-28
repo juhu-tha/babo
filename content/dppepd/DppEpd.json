@@ -309,7 +309,7 @@
       {
         "titel": "Energetisch",
         "erklaerung": "Nicht erneuerbare Primärenergie als Energieträger:",
-        "formel": "PENRE = 1\\,800\\,\\text{MJ}"
+        "formel": "PENRE = 1800\\,\\text{MJ}"
       },
       {
         "titel": "Stofflich",
@@ -319,7 +319,7 @@
       {
         "titel": "Summe",
         "erklaerung": "Gesamter nicht erneuerbarer Primärenergieeinsatz:",
-        "formel": "PENRT = 2\\,000\\,\\text{MJ}"
+        "formel": "PENRT = 2000\\,\\text{MJ}"
       }
     ],
     "DppEpd.literatur": [

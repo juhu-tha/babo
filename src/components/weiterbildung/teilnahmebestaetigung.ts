@@ -16,7 +16,7 @@ export interface BestaetigungDaten {
   modulTitel?: readonly string[];
 }
 
-const ERSATZ: Record<string, string> = { '–': '-', '—': '-', '„': '"', '“': '"', '”': '"', '‚': "'", '‘': "'", '’': "'", '…': '...', '₂': '2', '≥': '>=', '≤': '<=', '•': '·', 'Ł': 'L', 'ł': 'l', 'Đ': 'D', 'đ': 'd', 'Œ': 'OE', 'œ': 'oe', 'ı': 'i' };
+const ERSATZ: Record<string, string> = { '\u202F': '\u00A0', '\u2009': ' ', '–': '-', '—': '-', '„': '"', '“': '"', '”': '"', '‚': "'", '‘': "'", '’': "'", '…': '...', '₂': '2', '≥': '>=', '≤': '<=', '•': '·', 'Ł': 'L', 'ł': 'l', 'Đ': 'D', 'đ': 'd', 'Œ': 'OE', 'œ': 'oe', 'ı': 'i' };
 
 /** Text auf den Latin-1-Zeichensatz der PDF-Standardschriften abbilden (Diakritika notfalls entfernen) */
 export function pdfText(s: string): string {

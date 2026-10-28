@@ -8,7 +8,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeIntl } from '@/src/utils/numberFormat';
 import inhalt from '@/content/kreislaufwirtschaft/Kreislaufwirtschaft.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
@@ -864,7 +864,7 @@ export default function Kreislaufwirtschaft() {
                     {showPayloadSchema && (
                       <div className="mt-3 space-y-2 animate-in slide-in-from-top-1 duration-200">
                         <p className="text-[10px] text-slate-400 leading-normal"><MdText text={inhalt.texte.diesesStrukturierteJsonPayload} /></p>
-                        <pre className="bg-slate-900 text-emerald-400 p-3 rounded-lg text-[9px] overflow-x-auto select-all font-mono leading-normal shadow-inner max-h-56">
+                        <pre className="bg-off-white border border-home-grau/30 text-text-main p-3 rounded-lg text-[9px] overflow-x-auto select-all font-mono leading-normal shadow-inner max-h-56">
 {`{
   "api_version": "2026.1",
   "auth_header": "Bearer cnc_live_84b39a...",
@@ -943,7 +943,7 @@ ${auditComponents.slice(0, 2).map(c => `    {
                       <strong className={`text-[15px] font-mono font-bold ${
                         auditStats.estimatedRevenueEur >= 0 ? 'text-emerald-700' : 'text-shiraz'
                       }`}>
-                        {auditStats.estimatedRevenueEur >= 0 ? '+' : ''}{auditStats.estimatedRevenueEur.toLocaleString('de-DE')} €
+                        {auditStats.estimatedRevenueEur >= 0 ? '+' : ''}{formatDeIntl(auditStats.estimatedRevenueEur)} €
                       </strong>
                     </div>
 

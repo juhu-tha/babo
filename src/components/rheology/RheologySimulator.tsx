@@ -1,3 +1,4 @@
+import { formatDeIntl } from '@/src/utils/numberFormat';
 import React, { useMemo, useState } from 'react';
 import { Activity, AlertTriangle, Sliders, Timer, FlaskConical } from 'lucide-react';
 import { InlineMath } from 'react-katex';
@@ -91,7 +92,7 @@ const posToE = (p: number) => {
   return v >= 10 ? Math.round(v) : v >= 1 ? Math.round(v * 10) / 10 : Math.round(v * 100) / 100;
 };
 
-const de = (v: number, d = 3) => v.toLocaleString('de-DE', { maximumFractionDigits: d });
+const de = (v: number, d = 3) => formatDeIntl(v, { maximumFractionDigits: d });
 
 function Param({ label, value, unit, info, min, max, step, onChange, display }: {
   label: React.ReactNode; value: number; unit: string; info?: React.ReactNode;

@@ -125,7 +125,7 @@
         "location": "Campus TH Augsburg, Halle 4b",
         "client": "Staatliches Bauamt Augsburg / Freistaat Bayern",
         "structuralEngineer": "Ingenieurbüro Dr. Vrabec & Partner",
-        "budget": "€4.200.000",
+        "budget": "€4 200 000",
         "timeline": "12 Monate (Rohbau)",
         "description": "Forschungsbauwerk unter Verwendung von Carbonbeton. Erfordert hochfesten Feinbeton (Zementgehalt ≥ 450 kg/m³, w/z-Wert = 0.35) mit abgestimmter 2mm-Feingesteinskörnung, Hochleistungsfließmittel auf Polycarboxylatether-Basis (PCE) und korrosionsfreien Carbonfasergelegen.",
         "defaultTasks": [
@@ -142,7 +142,7 @@
         "location": "An der Hochschule 1, Augsburg",
         "client": "Technische Hochschule Augsburg (THA) (Körperschaft des öff. Rechts)",
         "structuralEngineer": "Tragwerksplanung Dipl.-Ing. Keller",
-        "budget": "€1.850.000",
+        "budget": "€1 850 000",
         "timeline": "6 Monate (Sommersemester)",
         "description": "Tragwerkssanierung im historischen Bestand. Einbau von Holz-Beton-Verbunddecken mit Trass-Kalk-Mörtel im Mauerwerksbereich zur Vermeidung alkalischer Ausblühungen sowie mineralischem Fließestrich (CA-C25-F5 auf Anhydritbasis) mit Belegreife-Analysen.",
         "defaultTasks": [
@@ -159,7 +159,7 @@
         "location": "Brunnenlechgässchen, Augsburg",
         "client": "Parkhaus GmbH Augsburg",
         "structuralEngineer": "Büro für Baustatik Müller & Co.",
-        "budget": "€3.100.000",
+        "budget": "€3 100 000",
         "timeline": "8 Monate (Schnellmontage)",
         "description": "Montage von großformatigen Fertigteilen hoher Festigkeitsklassen (C50/60). Kritische Schnittstellen sind das schwindkompensierte Ausgießen der lastübertragenden Fugen mit quellfähigem Vergussmörtel, Expositionsklassen XD3/XS3 sowie Tausalzbeständigkeit durch Hydrophobierung.",
         "defaultTasks": [

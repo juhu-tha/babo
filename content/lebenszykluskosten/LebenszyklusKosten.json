@@ -6,7 +6,7 @@
   "werte": {
     "lebenszykluskostenLcc": "Lebenszykluskosten (LCC)",
     "beispiel1BarwertJährlicher": "Beispiel 1: Barwert jährlicher Energiekosten über 30 Jahre",
-    "ohneAbzinsungWärenEs": "Ohne Abzinsung wären es 60 000 €. Je höher der Zins, desto weniger zählen Betriebskosten gegenüber der Investition – die Zinswahl beeinflusst den Variantenvergleich erheblich.",
+    "ohneAbzinsungWärenEs": "Ohne Abzinsung wären es 60 000 €. Je höher der Zins, desto weniger zählen Betriebskosten gegenüber der Investition – die Zinswahl beeinflusst den Variantenvergleich erheblich.",
     "iso1568652017": "ISO 15686-5:2017; DIN EN 16627:2015-09",
     "beispiel2ErsatzinvestitionFür": "Beispiel 2: Ersatzinvestition für Fenster nach 30 Jahren",
     "langlebigeBauteileMitSpäten": "Langlebige Bauteile mit späten Ersatzzeitpunkten erscheinen im Barwert günstig; die Nutzungsdauern nach BNB bzw. VDI 2067 bestimmen daher maßgeblich das Ergebnis.",
@@ -18,8 +18,8 @@
     "LebenszyklusKosten.schritte": [
       {
         "titel": "Gegeben",
-        "erklaerung": "Heizkosten 2 000 € pro Jahr (real konstant), Kalkulationszins r = 2 %, T = 30 Jahre.",
-        "formel": "C = 2\\,000\\,\\text{EUR/a},\\; r = 0{,}02,\\; T = 30"
+        "erklaerung": "Heizkosten 2000 € pro Jahr (real konstant), Kalkulationszins r = 2 %, T = 30 Jahre.",
+        "formel": "C = 2000\\,\\text{EUR/a},\\; r = 0{,}02,\\; T = 30"
       },
       {
         "titel": "Rentenbarwertfaktor",
@@ -29,13 +29,13 @@
       {
         "titel": "Barwert",
         "erklaerung": "Heutiger Wert aller künftigen Zahlungen:",
-        "formel": "BW = 2\\,000 \\cdot 22{,}40 = 44\\,800\\,\\text{EUR}"
+        "formel": "BW = 2000 \\cdot 22{,}40 = 44\\,800\\,\\text{EUR}"
       }
     ],
     "LebenszyklusKosten.schritte_2": [
       {
         "titel": "Gegeben",
-        "erklaerung": "Fenstertausch nach angenommener Nutzungsdauer von 30 Jahren für 20 000 €, r = 3 %.",
+        "erklaerung": "Fenstertausch nach angenommener Nutzungsdauer von 30 Jahren für 20 000 €, r = 3 %.",
         "formel": "C_{30} = 20\\,000\\,\\text{EUR}"
       },
       {
@@ -46,7 +46,7 @@
       {
         "titel": "Barwert",
         "erklaerung": "In der LCC-Bilanz anzusetzender Wert:",
-        "formel": "BW = \\frac{20\\,000}{2{,}427} = 8\\,240\\,\\text{EUR}"
+        "formel": "BW = \\frac{20\\,000}{2{,}427} = 8240\\,\\text{EUR}"
       }
     ],
     "LebenszyklusKosten.literatur": [

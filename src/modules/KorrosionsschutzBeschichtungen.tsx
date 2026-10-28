@@ -191,7 +191,7 @@ export default function KorrosionsschutzBeschichtungen({ startReiter = 'einfuehr
                   </div>
                 </div>
                 <div className="p-2 bg-off-white rounded-lg border border-home-grau/20 text-center overflow-x-auto">
-                  <BlockMath math="\sigma = \frac{F}{A} = \frac{4\,F}{\pi\,d^2} \qquad \text{z. B. } \frac{4 \cdot 1\,900\,\text{N}}{\pi \cdot (20\,\text{mm})^2} = 6{,}0\,\text{MPa}" />
+                  <BlockMath math="\sigma = \frac{F}{A} = \frac{4\,F}{\pi\,d^2} \qquad \text{z. B. } \frac{4 \cdot 1900\,\text{N}}{\pi \cdot (20\,\text{mm})^2} = 6{,}0\,\text{MPa}" />
                 </div>
               </section>
             </>

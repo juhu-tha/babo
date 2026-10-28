@@ -1,4 +1,4 @@
-import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeTeX, formatDeIntl } from '@/src/utils/numberFormat';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
@@ -637,13 +637,13 @@ export default function Spannbeton() {
                 <button
                   type="button"
                   onClick={() => setEnvironmentRH(50)}
-                  className={`py-2 px-2 rounded-lg text-xs font-medium border transition ${environmentRH === 50 ? 'bg-zinc-800 border-zinc-800 text-white' : 'bg-off-white border-home-grau/30 text-text-main'}`}
+                  className={`py-2 px-2 rounded-lg text-xs font-medium border transition ${environmentRH === 50 ? 'bg-shiraz border-shiraz text-white' : 'bg-off-white border-home-grau/30 text-text-main'}`}
                 ><MdText text={inhalt.texte.trockenesInnenraumUmfeld} /><div className="text-[10px] opacity-80"><MdText text={inhalt.texte.rh50} />{formatDeZahl(creep(materialResults.conc.fck, concreteAge, cementType, materialResults.h0, 50), 2)}</div>
                 </button>
                 <button
                   type="button"
                   onClick={() => setEnvironmentRH(80)}
-                  className={`py-2 px-2 rounded-lg text-xs font-medium border transition ${environmentRH === 80 ? 'bg-zinc-800 border-zinc-800 text-white' : 'bg-off-white border-home-grau/30 text-text-main'}`}
+                  className={`py-2 px-2 rounded-lg text-xs font-medium border transition ${environmentRH === 80 ? 'bg-shiraz border-shiraz text-white' : 'bg-off-white border-home-grau/30 text-text-main'}`}
                 ><MdText text={inhalt.texte.feuchtesAußenUmfeld} /><div className="text-[10px] opacity-80"><MdText text={inhalt.texte.rh80} />{formatDeZahl(creep(materialResults.conc.fck, concreteAge, cementType, materialResults.h0, 80), 2)}</div>
                 </button>
               </div>
@@ -1127,7 +1127,7 @@ export default function Spannbeton() {
                   <p className="text-[10px] text-slate-600 font-sans italic"><MdText text={inhalt.texte.verkürzungDesBetonsBeim} /></p>
                   <div className="bg-white p-2 rounded border border-blue-100/60 font-mono text-[11px] leading-relaxed space-y-1">
                     <div>Formel: <span className="text-blue-700 font-bold"><MdText text={inhalt.texte.pElJE} /></span></div>
-                    <div>Rechnung: {formatDeZahl(materialResults.factorEl, 3)} · {materialResults.steel.Ep.toLocaleString('de-DE')} · ({formatDeZahl(materialResults.sigmaCp0, 2)} / {Math.round(materialResults.Ecm_t0).toLocaleString('de-DE')}) = <span className="font-bold text-blue-700">{formatDeZahl(materialResults.deltaSigmaP_el, 1)} N/mm²</span></div>
+                    <div>Rechnung: {formatDeZahl(materialResults.factorEl, 3)} · {formatDeIntl(materialResults.steel.Ep)} · ({formatDeZahl(materialResults.sigmaCp0, 2)} / {formatDeIntl(Math.round(materialResults.Ecm_t0))}) = <span className="font-bold text-blue-700">{formatDeZahl(materialResults.deltaSigmaP_el, 1)} N/mm²</span></div>
                     <div>Verlustwert: <span className="font-bold text-blue-700"> {formatDeZahl(materialResults.elasticLossPct, 2)} %</span> (entspricht {formatDeZahl((p0 * materialResults.elasticLossPct / 100), 1)}<MdText text={inhalt.texte.knKraftverlust} /></div>
                   </div>
                 </div>
@@ -1148,7 +1148,7 @@ export default function Spannbeton() {
                     <div className="text-[10.5px]">
                       <div>Eingangswerte: <span className="text-amber-800">φ(∞,t₀) = {formatDeZahl(materialResults.phi, 2)}, ε_cs(∞) = {formatDeZahl(materialResults.epsCsPermille, 3)} ‰, σ_c,QP = {formatDeZahl(materialResults.sigmaCQP, 2)} N/mm²</span><MdText text={inhalt.texte.pM0MPerm} /></div>
                       <div>Zählerwert: <span className="text-amber-800"><MdText text={inhalt.texte.csEP0} /></span></div>
-                      <div className="pl-4">= ({formatDeZahl((materialResults.epsCs * 1000), 3)}·10⁻³ · {materialResults.steel.Ep.toLocaleString('de-DE')}) + (0,8 · {formatDeZahl(materialResults.deltaSigmaPr, 1)}) + ({formatDeZahl(materialResults.alphaP_lt, 2)} · {formatDeZahl(materialResults.phi, 2)} · {formatDeZahl(materialResults.sigmaCQP, 2)})</div>
+                      <div className="pl-4">= ({formatDeZahl((materialResults.epsCs * 1000), 3)}·10⁻³ · {formatDeIntl(materialResults.steel.Ep)}) + (0,8 · {formatDeZahl(materialResults.deltaSigmaPr, 1)}) + ({formatDeZahl(materialResults.alphaP_lt, 2)} · {formatDeZahl(materialResults.phi, 2)} · {formatDeZahl(materialResults.sigmaCQP, 2)})</div>
                       <div className="pl-4 font-bold text-amber-850">= {formatDeZahl((materialResults.epsCs * materialResults.steel.Ep), 1)} + {formatDeZahl((0.8 * materialResults.deltaSigmaPr), 1)} + {formatDeZahl((materialResults.phi * materialResults.alphaP_lt * materialResults.sigmaCQP), 1)} = {formatDeZahl(materialResults.numerator, 1)} N/mm²</div>
                     </div>
                     <div className="text-[10.5px] border-t border-dashed border-slate-200 pt-1.5">

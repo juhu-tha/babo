@@ -1,0 +1,46 @@
+{
+  "texte": {
+    "titel": "Klimafreundlicher Neubau (KFN)",
+    "einleitung": "Das Förderprogramm **Klimafreundlicher Neubau (KFN)** des Bundesbauministeriums (BMWSB) wird über die KfW abgewickelt. Es verknüpft Energieeffizienz mit der **Ökobilanz über den Lebenszyklus**: In den höheren Förderstufen müssen die Treibhausgasgrenzwerte des **Qualitätssiegels Nachhaltiges Gebäude (QNG)** eingehalten werden. Damit wird die Gebäudezertifizierung zur Voraussetzung für die günstigste Förderung.",
+    "stufenTitel": "Förderstufen Wohngebäude (Kredit 297/298) und Nichtwohngebäude (Kredit 299)",
+    "stufenHinweis": "Höchstbeträge nach den Programmseiten der KfW (Stand Oktober 2026). Zinssätze ändern sich laufend; zum 02.03.2026 wurden die Konditionen verbessert (EH 40 ab 0,6 % effektiv, EH 55 ab 1 % effektiv, jeweils 10 Jahre Laufzeit und Zinsbindung).",
+    "qngTitel": "Zusammenhang mit der Gebäudezertifizierung",
+    "qngText": "Die Stufe **EH 40** verlangt eine **Ökobilanz nach QNG-Methodik** mit Einhaltung der Treibhausgasanforderung von QNG-PLUS (Wohngebäude: GWP ≤ 24 kg CO₂-Äq./(m² NRF·a) über 50 Jahre), erstellt von einer Expertin oder einem Experten für Energieeffizienz. Die Stufe **EH 40 mit QNG** verlangt zusätzlich ein **QNG-Zertifikat** (PLUS oder PREMIUM) über ein akkreditiertes Bewertungssystem (z. B. DGNB, BNK, NaWoh) – also eine vollständige Nachhaltigkeitszertifizierung mit Nachhaltigkeitsberatung.",
+    "weitereTitel": "Weitere KFN-Programme",
+    "weitere296": "**Niedrigpreissegment (296, Nichtwohngebäude 596):** mindestens EH 55, Lebenszyklus-Emissionen und ausgewählte Lebenszykluskosten unter Grenzwerten, Mindestanzahl an Aufenthaltsräumen je Wohnfläche; Kredit bis 100 000 Euro je Wohneinheit.",
+    "weitere498": "**Kommunen (Zuschuss 498/499):** Zuschuss für Neubau und Erstkauf klimafreundlicher kommunaler Gebäude, auch im Niedrigpreissegment; die Zuschüsse wurden zum 02.03.2026 angehoben.",
+    "gemeinsamTitel": "Gemeinsame Bedingungen",
+    "gemeinsam": "Gefördert werden Neubau und Ersterwerb (bis ein Jahr nach Fertigstellung), nicht Umschuldung oder Grundstückskauf. Wärmeerzeuger mit Öl oder Gas sind ausgeschlossen, in den EH-40-Stufen auch Biomasse. Die Förderung steht unter dem Vorbehalt verfügbarer Bundesmittel; ein Rechtsanspruch besteht nicht. Antrag vor Abschluss des Kaufvertrags bzw. vor Vorhabenbeginn.",
+    "lernTitel": "Für die Lehre",
+    "lernText": "An KFN lässt sich zeigen, wie **Ökobilanz (GWP, PENRT), Effizienzhausstandard und Zertifizierung** zusammenwirken: Eine Holzbau- oder ressourcenschonende Massivbauvariante kann den QNG-Grenzwert erreichen und damit die Förderstufe und den Kreditrahmen erhöhen. Vergleichen Sie dazu den QNG-Nachweis im Reiter „Beispiele“ und den Ökobilanz-Rechner.",
+    "standHinweis": "Stand: 28.10.2026 – Förderkonditionen ändern sich häufig; maßgebend sind die aktuellen Merkblätter und Technischen Mindestanforderungen der KfW.",
+    "quellenTitel": "Quellen"
+  },
+  "werte": {
+    "spalteStufe": "Förderstufe",
+    "spalteAnforderung": "Anforderungen",
+    "spalteWohn": "Wohngebäude (297/298)",
+    "spalteNwg": "Nichtwohngebäude (299)",
+    "stufe55": "EH 55 / EG 55",
+    "anf55": "Effizienzhaus/-gebäude 55, keine Öl- oder Gasheizung (Biomasse zulässig), Baugenehmigung bei Antrag; ohne Ökobilanz und ohne QNG (seit 16.12.2025, befristet wieder eingeführt)",
+    "wohn55": "bis 100 000 € je Wohneinheit",
+    "nwg55": "bis 1000 €/m² NUF, max. 5 Mio. € je Vorhaben",
+    "stufe40": "EH 40 / EG 40",
+    "anf40": "Effizienzhaus/-gebäude 40, Treibhausgasanforderung QNG-PLUS per Ökobilanz, keine Öl-, Gas- oder Biomasseheizung",
+    "wohn40": "bis 100 000 € je Wohneinheit",
+    "nwg40": "bis 1500 €/m² NUF, max. 7,5 Mio. € je Vorhaben",
+    "stufe40qng": "EH 40 mit QNG",
+    "anf40qng": "wie EH 40, zusätzlich QNG-Zertifikat (PLUS oder PREMIUM) durch akkreditierte Zertifizierung und Nachhaltigkeitsberatung",
+    "wohn40qng": "bis 150 000 € je Wohneinheit",
+    "nwg40qng": "bis 2000 €/m² NUF, max. 10 Mio. € je Vorhaben"
+  },
+  "daten": {
+    "quellen": [
+      { "titel": "KfW: Klimafreundlicher Neubau – Wohngebäude (297, 298)", "url": "https://www.kfw.de/inlandsfoerderung/Privatpersonen/Neubau/F%C3%B6rderprodukte/Klimafreundlicher-Neubau-Wohngeb%C3%A4ude-(297-298)/" },
+      { "titel": "KfW: Klimafreundlicher Neubau – Nichtwohngebäude (299)", "url": "https://www.kfw.de/inlandsfoerderung/Unternehmen/Energie-und-Umwelt/F%C3%B6rderprodukte/Klimafreundlicher-Neubau-%E2%80%93-Nichtwohngeb%C3%A4ude-(299)/" },
+      { "titel": "KfW: Klimafreundlicher Neubau im Niedrigpreissegment (296)", "url": "https://www.kfw.de/inlandsfoerderung/Privatpersonen/Neubau/F%C3%B6rderprodukte/Klimafreundlicher-Neubau-im-Niedrigpreissegment-(296)/" },
+      { "titel": "KfW-Pressemitteilung: verbesserte Förderkonditionen zum 02.03.2026", "url": "https://www.kfw.de/%C3%9Cber-die-KfW/Newsroom/Aktuelles/Pressemitteilungen-Details_883456.html" },
+      { "titel": "KfW: Übersicht Klimafreundlicher Neubau", "url": "https://www.kfw.de/inlandsfoerderung/Klimafreundlicher-Neubau/" }
+    ]
+  }
+}

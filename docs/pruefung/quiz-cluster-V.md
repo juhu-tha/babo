@@ -186,7 +186,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 29 korrigiert, 0 fraglich, 0
 
 ### qn_ki_prompting_3 · Prompting-Praxis
 
-- **Frage:** Ein Modell hat 200 000 Token Kontext; Systemprompt 4 000 Token, Antwortreserve 16 000 Token. Ein Gutachten umfasst 180 Seiten à 750 Token. Welche Verarbeitung ist nach dem Modul angemessen?
+- **Frage:** Ein Modell hat 200 000 Token Kontext; Systemprompt 4000 Token, Antwortreserve 16 000 Token. Ein Gutachten umfasst 180 Seiten à 750 Token. Welche Verarbeitung ist nach dem Modul angemessen?
 - **Richtige Antwort:** Vollständig laden (Budget 240 Seiten), wichtige Stellen aber gezielt zitieren lassen
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
 - [x] ok
@@ -262,7 +262,7 @@ Auswahl deterministisch (Sortierung nach FNV-1a-Hash der Frage-ID), damit die St
 
 ### q_ki_ub_2 · KI: Überblick & Grundlagen
 
-- **Frage:** Ein Foto bildet 1,20 m auf 4 000 Pixel ab. Kann eine KI darauf zuverlässig 0,2-mm-Risse erkennen?
+- **Frage:** Ein Foto bildet 1,20 m auf 4000 Pixel ab. Kann eine KI darauf zuverlässig 0,2-mm-Risse erkennen?
 - **Richtige Antwort:** Nein: 0,30 mm/px ist gröber als die Rissbreite; nötig wären etwa 0,10 mm/px
 - **Auffälligkeit:** keine – Vorprüfung „ok“
 - [x] ok
@@ -270,7 +270,7 @@ Auswahl deterministisch (Sortierung nach FNV-1a-Hash der Frage-ID), damit die St
 
 ### q_ki_ub_3 · KI: Überblick & Grundlagen
 
-- **Frage:** Ein Modell soll Risse auf Fotos erkennen und wird dazu mit 5 000 von Fachleuten markierten Bildern trainiert. Welche Lernform ist das?
+- **Frage:** Ein Modell soll Risse auf Fotos erkennen und wird dazu mit 5000 von Fachleuten markierten Bildern trainiert. Welche Lernform ist das?
 - **Richtige Antwort:** Überwachtes Lernen mit gelabelten Daten
 - **Auffälligkeit:** keine – Vorprüfung „ok“
 - [x] ok

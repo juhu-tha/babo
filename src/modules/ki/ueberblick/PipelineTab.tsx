@@ -153,9 +153,9 @@ export default function PipelineTab({ pipelineStep, setPipelineStep }: PipelineT
             <div className="space-y-3 text-xs leading-relaxed text-text-main/80">
               <p><MdText text={inhalt.texte.einComputerKannTexte} /></p>
 
-              <div className="p-4 bg-slate-900 text-slate-100 rounded-xl font-mono text-[11px] space-y-1">
-                <div className="text-slate-400"><MdText text={inhalt.texte.textFrostTausalzAngriff} /></div>
-                <div className="text-emerald-400"><MdText text={inhalt.texte.embedding004210} /></div>
+              <div className="p-4 bg-off-white border border-home-grau/30 text-text-main rounded-xl font-mono text-[11px] space-y-1">
+                <div className="text-slate-600"><MdText text={inhalt.texte.textFrostTausalzAngriff} /></div>
+                <div className="text-emerald-700"><MdText text={inhalt.texte.embedding004210} /></div>
               </div>
 
               <div className="p-3.5 bg-blue-50/60 rounded-xl border border-blue-200 text-blue-950"><MdText text={inhalt.texte.derClouDerSemantik} /></div>
@@ -243,11 +243,11 @@ export default function PipelineTab({ pipelineStep, setPipelineStep }: PipelineT
             </div>
 
             <div className="space-y-4 text-xs leading-relaxed text-text-main/80">
-              <div className="p-4 bg-slate-900 text-slate-100 rounded-xl space-y-2 font-mono text-[10.5px]">
-                <span className="text-purple-400 block font-sans font-bold"><MdText text={inhalt.texte.wasDasLlmHinter} /></span>
-                <div className="text-slate-300"><MdText text={inhalt.texte.systemPromptDuBist} /></div>
-                <div className="text-emerald-400"><MdText text={inhalt.texte.kontextQuelleGutachtenBv2024} /></div>
-                <div className="text-amber-300"><MdText text={inhalt.texte.frageWelcheGründungWurde} /></div>
+              <div className="p-4 bg-off-white border border-home-grau/30 text-text-main rounded-xl space-y-2 font-mono text-[10.5px]">
+                <span className="text-purple-700 block font-sans font-bold"><MdText text={inhalt.texte.wasDasLlmHinter} /></span>
+                <div className="text-slate-700"><MdText text={inhalt.texte.systemPromptDuBist} /></div>
+                <div className="text-emerald-700"><MdText text={inhalt.texte.kontextQuelleGutachtenBv2024} /></div>
+                <div className="text-amber-700"><MdText text={inhalt.texte.frageWelcheGründungWurde} /></div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -1029,7 +1029,7 @@ export default function LaborAuswertung() {
                   </p>
                   <div className="bg-slate-50 p-3 rounded-lg border border-slate-150 text-xs text-slate-700">
                     <span className="font-bold block text-slate-800 mb-1">Sanierungsforensik per GC-MS:</span>
-                    Der Sanierungsumfang richtet sich nach der Abgrenzung von Primärquellen (Originalfuge mit teils &gt; 10.000 mg/kg PCB) zu sekundär kontaminierten Tragbauteilen (z.B. belasteter Umgebungsputz), um teure Staubablagerungen und Falschentsorgungen im Rückbau zu steuern.
+                    Der Sanierungsumfang richtet sich nach der Abgrenzung von Primärquellen (Originalfuge mit teils &gt; 10 000 mg/kg PCB) zu sekundär kontaminierten Tragbauteilen (z.B. belasteter Umgebungsputz), um teure Staubablagerungen und Falschentsorgungen im Rückbau zu steuern.
                   </div>
                   <div className="text-[10px] font-mono text-slate-400">Relevante Regelwerke: PCB-Richtlinie der Länder / VDI 4300 Blatt 2</div>
                 </div>

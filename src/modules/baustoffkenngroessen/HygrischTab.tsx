@@ -1,5 +1,5 @@
 // Ausgelagert aus src/modules/Baustoffkenngroessen.tsx (AP 5.2)
-import { formatDeZahl } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeIntl } from '@/src/utils/numberFormat';
 import React from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { BlockMath, InlineMath } from 'react-katex';
@@ -82,7 +82,7 @@ export default function HygrischTab({ masseFeucht, masseTrocken, sdDicke, sdMuWe
             <div className="flex flex-col gap-1.5">
               <div className="flex justify-between text-xs font-bold text-slate-600">
                 <label><MdText text={inhalt.texte.diffusionswiderstandszahl} /></label>
-                <span className="text-indigo-600">{sdMuWert.toLocaleString('de-DE')} [-]</span>
+                <span className="text-indigo-600">{formatDeIntl(sdMuWert)} [-]</span>
               </div>
               <input 
                 type="range" 

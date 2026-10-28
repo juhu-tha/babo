@@ -2,9 +2,9 @@
 
 Stand: 28.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 72 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 73 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 65 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 3 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 66 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 3 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -130,7 +130,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 65 korrigiert, 0 fraglich, 8
 
 ### q_kenn_3 · Kennwerte & Materialdatenbank
 
-- **Frage:** Baustahl hat E ≈ 210 000 MPa, Nadelholz C24 faserparallel E₀,mean ≈ 11 000 MPa. Was folgt daraus für die auf das Gewicht bezogene Steifigkeit E/ρ?
+- **Frage:** Baustahl hat E ≈ 210 000 MPa, Nadelholz C24 faserparallel E₀,mean ≈ 11 000 MPa. Was folgt daraus für die auf das Gewicht bezogene Steifigkeit E/ρ?
 - **Richtige Antwort:** Stahl und Holz (faserparallel) sind gewichtsbezogen etwa gleich steif.
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
 - [x] ok
@@ -216,6 +216,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 65 korrigiert, 0 fraglich, 8
 - [x] ok
 - [ ] ändern: …
 
+### q_we_4 · Thermische Eigenschaften & Dämmstoffe
+
+- **Frage:** Beton: λ = 2,0 W/(m·K), ρ = 2400 kg/m³, c = 1000 J/(kg·K). Wie groß ist die Temperaturleitfähigkeit a?
+- **Richtige Antwort:** 8,3 · 10⁻⁷ m²/s
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Runde 3): Distraktor „1,2 · 10⁻³ m²/s“ passte zu keinem Rechenweg; durch 8,3 · 10⁻⁴ m²/s (λ/ρ ohne c) ersetzt, Rückmeldung entsprechend präzisiert – korrigiert
+- [ ] ok
+- [ ] ändern: …
+
 ### qn_bauchemie_2 · Bauchemie
 
 - **Frage:** Eine Sichtbetonfassade nimmt bei Schlagregen viel Wasser auf. Sie soll wasserabweisend werden, das Erscheinungsbild und die Wasserdampfdurchlässigkeit sollen erhalten bleiben. Welche Maßnahme ist geeignet?
@@ -258,7 +266,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 65 korrigiert, 0 fraglich, 8
 
 ### qn_baustoffkenngroessen_2 · Baustoffkenngrößen
 
-- **Frage:** Eine Betonstütze steht unter der Dauerdruckspannung σ₀ = 10 MPa (E = 30 000 MPa, Endkriechzahl φ = 2,0) und schwindet zusätzlich um ε_cs = −0,30 ‰. Wie groß ist die gesamte Stauchung?
+- **Frage:** Eine Betonstütze steht unter der Dauerdruckspannung σ₀ = 10 MPa (E = 30 000 MPa, Endkriechzahl φ = 2,0) und schwindet zusätzlich um ε_cs = −0,30 ‰. Wie groß ist die gesamte Stauchung?
 - **Richtige Antwort:** 1,30 ‰, als Summe aus elastischer Stauchung, Kriechen und Schwinden
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen; normRef ergänzt · bereits freigegeben (verified)
 - [x] ok
@@ -330,7 +338,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 65 korrigiert, 0 fraglich, 8
 
 ### qn_einheiten_2 · Einheiten
 
-- **Frage:** Ein Gebäude hat einen Endenergiebedarf von 12 500 kWh pro Jahr. Wie viel ist das in Gigajoule?
+- **Frage:** Ein Gebäude hat einen Endenergiebedarf von 12 500 kWh pro Jahr. Wie viel ist das in Gigajoule?
 - **Richtige Antwort:** 45 GJ
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
 - [x] ok
@@ -410,7 +418,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 65 korrigiert, 0 fraglich, 8
 
 ### qn_feuchteschutz_3 · Feuchteschutz & Tauwasser
 
-- **Frage:** Ein Aufbau besteht (innen nach außen) aus Gipskarton 12,5 mm (µ = 10), feuchtevariabler Dampfbremse 0,2 mm (µ = 15 000), Mineralwolle 16 cm (µ = 1) und Nadelholzschalung 24 mm (µ = 40). Wie groß ist s_d,ges?
+- **Frage:** Ein Aufbau besteht (innen nach außen) aus Gipskarton 12,5 mm (µ = 10), feuchtevariabler Dampfbremse 0,2 mm (µ = 15 000), Mineralwolle 16 cm (µ = 1) und Nadelholzschalung 24 mm (µ = 40). Wie groß ist s_d,ges?
 - **Richtige Antwort:** s_d,ges ≈ 4,25 m
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
 - [x] ok
@@ -418,15 +426,15 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 65 korrigiert, 0 fraglich, 8
 
 ### qn_formaenderungen_bl_1 · Formänderungen
 
-- **Frage:** Ein Einfeldträger mit L = 4,0 m und E·I = 10 000 kNm² trägt eine Gleichlast q = 10 kN/m. Wie groß ist die Durchbiegung in Feldmitte?
+- **Frage:** Ein Einfeldträger mit L = 4,0 m und E·I = 10 000 kNm² trägt eine Gleichlast q = 10 kN/m. Wie groß ist die Durchbiegung in Feldmitte?
 - **Richtige Antwort:** w ≈ 3,33 mm
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Rückmeldung zu Distraktor 4 (Faktor 10 statt „×1 000“) korrigiert · neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Rückmeldung zu Distraktor 4 (Faktor 10 statt „×1000“) korrigiert · neu seit 26.10.2026 (Z24), noch nicht freigegeben
 - [ ] ok
 - [x] ändern: Rückmeldung Distraktor 4 (Faktor 10), korrigiert
 
 ### qn_formaenderungen_bl_2 · Formänderungen
 
-- **Frage:** Ein Kragarm (L = 2,0 m, E·I = 4 000 kNm²) trägt am freien Ende F = 12 kN. Wie groß sind Durchbiegung und Neigung am Kragarmende?
+- **Frage:** Ein Kragarm (L = 2,0 m, E·I = 4000 kNm²) trägt am freien Ende F = 12 kN. Wie groß sind Durchbiegung und Neigung am Kragarmende?
 - **Richtige Antwort:** w = 8,0 mm; φ = 6,0 mrad
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Distraktor 1: Neigung 1,5 → 0,75 mrad (F·L²/(16·EI) wie in der Rückmeldung) korrigiert · neu seit 26.10.2026 (Z24), noch nicht freigegeben
 - [ ] ok
@@ -434,7 +442,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 65 korrigiert, 0 fraglich, 8
 
 ### qn_formaenderungen_bl_4 · Formänderungen
 
-- **Frage:** Zwei Balken mit gleichem Querschnitt und gleicher Last: einer aus Baustahl (E = 210 000 N/mm²), einer aus Nadelholz C24 (E = 11 000 N/mm²). Wie verhält sich die Durchbiegung des Holzbalkens?
+- **Frage:** Zwei Balken mit gleichem Querschnitt und gleicher Last: einer aus Baustahl (E = 210 000 N/mm²), einer aus Nadelholz C24 (E = 11 000 N/mm²). Wie verhält sich die Durchbiegung des Holzbalkens?
 - **Richtige Antwort:** Sie ist etwa 19-mal so groß.
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen; Zweitprüfung 27.10.: Rückmeldung zu Distraktor 1 (Festigkeitsverhältnis Stahl/Holz ist nicht 5) korrigiert · neu seit 26.10.2026 (Z24), noch nicht freigegeben
 - [ ] ok
@@ -450,7 +458,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 65 korrigiert, 0 fraglich, 8
 
 ### qn_knicken_1 · Knicken (Euler)
 
-- **Frage:** Eine Stahlstütze (l = 4,0 m, E = 210 000 N/mm², I = 400 cm⁴) ist unten eingespannt und oben unverschieblich gelenkig gehalten (Euler-Fall 3, β = 0,7). Wie groß ist die ideale Knicklast F_K?
+- **Frage:** Eine Stahlstütze (l = 4,0 m, E = 210 000 N/mm², I = 400 cm⁴) ist unten eingespannt und oben unverschieblich gelenkig gehalten (Euler-Fall 3, β = 0,7). Wie groß ist die ideale Knicklast F_K?
 - **Richtige Antwort:** F_K ≈ 1057 kN
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
 - [x] ok
@@ -514,7 +522,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 65 korrigiert, 0 fraglich, 8
 
 ### qn_materialmodelle_1 · Materialmodelle
 
-- **Frage:** Ein Betonstahl wird mit dem bilinearen Modell beschrieben (f_y = 500 MPa, E = 200 000 MPa, E_t = 1600 MPa), bis ε_max = 30 ‰ gedehnt und dann entlastet. Wie groß ist die bleibende Dehnung?
+- **Frage:** Ein Betonstahl wird mit dem bilinearen Modell beschrieben (f_y = 500 MPa, E = 200 000 MPa, E_t = 1600 MPa), bis ε_max = 30 ‰ gedehnt und dann entlastet. Wie groß ist die bleibende Dehnung?
 - **Richtige Antwort:** ε_p ≈ 27,3 ‰
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
 - [x] ok
@@ -522,7 +530,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 65 korrigiert, 0 fraglich, 8
 
 ### qn_mechanische_kenngroessen_1 · Mechan. Kenngrößen
 
-- **Frage:** Ein Holzbalken C24 (E = 11 000 N/mm²) hat den Querschnitt b/h = 10/20 cm und wird um die starke Achse gebogen. Wie groß ist die Biegesteifigkeit EI?
+- **Frage:** Ein Holzbalken C24 (E = 11 000 N/mm²) hat den Querschnitt b/h = 10/20 cm und wird um die starke Achse gebogen. Wie groß ist die Biegesteifigkeit EI?
 - **Richtige Antwort:** EI ≈ 733 kNm²
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
 - [x] ok
@@ -530,9 +538,9 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 65 korrigiert, 0 fraglich, 8
 
 ### qn_mechanische_kenngroessen_3 · Mechan. Kenngrößen
 
-- **Frage:** Eine Betonstütze (E_cm = 30 000 MPa) steht unter der Dauerdruckspannung σ = 9 N/mm², die Kriechzahl beträgt φ = 2,5. Welcher effektive E-Modul und welche Endstauchung ergeben sich?
-- **Richtige Antwort:** E_c,eff ≈ 8 571 MPa; ε_end ≈ 1,05 ‰
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt; Zweitprüfung 27.10.: Rückmeldung zu Distraktor 3 (75 000 MPa folgt aus E_cm · φ, nicht · (1 + φ)) korrigiert
+- **Frage:** Eine Betonstütze (E_cm = 30 000 MPa) steht unter der Dauerdruckspannung σ = 9 N/mm², die Kriechzahl beträgt φ = 2,5. Welcher effektive E-Modul und welche Endstauchung ergeben sich?
+- **Richtige Antwort:** E_c,eff ≈ 8571 MPa; ε_end ≈ 1,05 ‰
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt; Zweitprüfung 27.10.: Rückmeldung zu Distraktor 3 (75 000 MPa folgt aus E_cm · φ, nicht · (1 + φ)) korrigiert
 - [ ] ok
 - [x] ändern: Rückmeldung Distraktor 3 (E_cm · φ), korrigiert
 

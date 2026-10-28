@@ -1,4 +1,4 @@
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeIntl } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { FileText, RefreshCw, Layers, Sparkles, AlertCircle, TrendingUp, CheckCircle, DollarSign, Award } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -224,7 +224,7 @@ export default function Materialpaesse() {
             <div className="bg-slate-50 p-4 rounded-xl border border-home-grau/30">
               <div className="flex justify-between items-center mb-1 text-xs">
                 <span className="font-bold text-slate-900"><MdText text={inhalt.texte.bruttogrundflächeBgf} /></span>
-                <span className="font-mono font-bold text-shiraz text-sm">{gfa.toLocaleString('de-DE')} m²</span>
+                <span className="font-mono font-bold text-shiraz text-sm">{formatDeIntl(gfa)} m²</span>
               </div>
               <input 
                 type="range" 
@@ -336,7 +336,7 @@ export default function Materialpaesse() {
                     <span className={`text-3xl md:text-4xl font-black ${
                       totalResidualValue >= 0 ? 'text-emerald-600' : 'text-red-500'
                     }`}>
-                      {totalResidualValue < 0 ? '-' : ''}€ {Math.abs(totalResidualValue).toLocaleString('de-DE')}
+                      {totalResidualValue < 0 ? '-' : ''}€ {formatDeIntl(Math.abs(totalResidualValue))}
                     </span>
                   </div>
                   <div className="text-[11px] text-slate-500 font-semibold mt-1">
@@ -395,7 +395,7 @@ export default function Materialpaesse() {
               <div className="flex justify-between items-center mb-3">
                 <h4 className="font-bold text-xs text-slate-900 uppercase tracking-wider"><MdText text={inhalt.texte.massenbilanzMaterialinventar} /></h4>
                 {carbonStoredTons > 0 && (
-                  <span className="bg-emerald-100/80 border border-emerald-300 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded flex items-center gap-1"><MdText text={inhalt.texte.coSpeicher} />{carbonStoredTons.toLocaleString('de-DE')} t CO₂-eq
+                  <span className="bg-emerald-100/80 border border-emerald-300 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded flex items-center gap-1"><MdText text={inhalt.texte.coSpeicher} />{formatDeIntl(carbonStoredTons)} t CO₂-eq
                   </span>
                 )}
               </div>
@@ -405,7 +405,7 @@ export default function Materialpaesse() {
                 <div>
                   <div className="flex justify-between text-[11px] mb-0.5 text-slate-700">
                     <span>Normalbeton-Anteil:</span>
-                    <span className="font-mono font-semibold">{concreteTons.toLocaleString('de-DE', {maximumFractionDigits: 0})} t</span>
+                    <span className="font-mono font-semibold">{formatDeIntl(concreteTons, {maximumFractionDigits: 0})} t</span>
                   </div>
                   <div className="w-full bg-white h-1.5 rounded-full overflow-hidden border">
                     <div className="bg-gray-400 h-full rounded-full" style={{ width: `${Math.min(100, (concreteTons / totalWeightTons) * 100)}%` }} />
@@ -416,7 +416,7 @@ export default function Materialpaesse() {
                 <div>
                   <div className="flex justify-between text-[11px] mb-0.5 text-slate-700">
                     <span>Baustahl-Anteil:</span>
-                    <span className="font-mono font-semibold">{steelTons.toLocaleString('de-DE', {maximumFractionDigits: 1})} t</span>
+                    <span className="font-mono font-semibold">{formatDeIntl(steelTons, {maximumFractionDigits: 1})} t</span>
                   </div>
                   <div className="w-full bg-white h-1.5 rounded-full overflow-hidden border">
                     <div className="bg-indigo-600 h-full rounded-full" style={{ width: `${Math.min(100, (steelTons / totalWeightTons) * 100)}%` }} />
@@ -428,7 +428,7 @@ export default function Materialpaesse() {
                   <div>
                     <div className="flex justify-between text-[11px] mb-0.5 text-slate-700">
                       <span><MdText text={inhalt.texte.nutzholzBshBiogen} /></span>
-                      <span className="font-mono font-semibold text-emerald-600 font-bold">{woodTons.toLocaleString('de-DE', {maximumFractionDigits: 0})} t</span>
+                      <span className="font-mono font-semibold text-emerald-600 font-bold">{formatDeIntl(woodTons, {maximumFractionDigits: 0})} t</span>
                     </div>
                     <div className="w-full bg-white h-1.5 rounded-full overflow-hidden border">
                       <div className="bg-emerald-500 h-full rounded-full" style={{ width: `${Math.min(100, (woodTons / totalWeightTons) * 100)}%` }} />
@@ -440,7 +440,7 @@ export default function Materialpaesse() {
                 <div>
                   <div className="flex justify-between text-[11px] mb-0.5 text-slate-700">
                     <span><MdText text={inhalt.texte.kupferleitungenMetalle} /></span>
-                    <span className="font-mono font-semibold">{copperTons.toLocaleString('de-DE', {maximumFractionDigits: 2})} t</span>
+                    <span className="font-mono font-semibold">{formatDeIntl(copperTons, {maximumFractionDigits: 2})} t</span>
                   </div>
                   <div className="w-full bg-white h-1.5 rounded-full overflow-hidden border">
                     <div className="bg-amber-600 h-full rounded-full" style={{ width: `${Math.min(100, (copperTons / totalWeightTons) * 100)}%` }} />
@@ -480,17 +480,17 @@ export default function Materialpaesse() {
           <div className="bg-white rounded-2xl max-w-2xl w-full shadow-2xl border border-home-grau/30 overflow-hidden flex flex-col font-sans text-slate-800 animate-in zoom-in-95 duration-200 max-h-[90vh]">
             
             {/* Modal Header */}
-            <div className="bg-purple-900 text-white p-5 flex justify-between items-center shrink-0">
+            <div className="bg-shiraz/5 text-text-main p-5 flex justify-between items-center shrink-0">
               <div className="flex items-center gap-2.5">
-                <Award className="text-purple-300 animate-bounce" size={24} style={{ animationDuration: '3s' }} />
+                <Award className="text-shiraz animate-bounce" size={24} style={{ animationDuration: '3s' }} />
                 <div>
-                  <h3 className="font-bold text-base tracking-tight text-white uppercase font-sans"><MdText text={inhalt.texte.gebäuderessourcenpassGrp} /></h3>
-                  <span className="text-[10px] text-purple-200 font-mono tracking-wider"><MdText text={inhalt.texte.offiziellesDgnbBerichtsformatEntwurf} /></span>
+                  <h3 className="font-bold text-base tracking-tight text-text-main uppercase font-sans"><MdText text={inhalt.texte.gebäuderessourcenpassGrp} /></h3>
+                  <span className="text-[10px] text-slate-700 font-mono tracking-wider"><MdText text={inhalt.texte.offiziellesDgnbBerichtsformatEntwurf} /></span>
                 </div>
               </div>
               <button
                 onClick={() => setShowCertificate(false)}
-                className="text-white bg-purple-950/40 hover:bg-purple-950/75 w-7 h-7 flex items-center justify-center rounded-full text-sm font-semibold transition-colors cursor-pointer"
+                className="text-text-main bg-white hover:bg-slate-100 w-7 h-7 flex items-center justify-center rounded-full text-sm font-semibold transition-colors cursor-pointer"
               >
                 ✕
               </button>
@@ -518,7 +518,7 @@ export default function Materialpaesse() {
                   <div className="grid grid-cols-2 gap-y-2 mt-2 p-3 bg-slate-50 border border-home-grau/30 rounded-lg text-xs font-normal text-slate-600">
                     <div>Szenario: <strong className="text-slate-900 block font-semibold">{archetype.name}</strong></div>
                     <div>Berechnungsgrundlage: <strong className="text-slate-900 block font-semibold"><MdText text={inhalt.texte.bomMassenTakeOff} /></strong></div>
-                    <div><MdText text={inhalt.texte.bruttogrundflächeBgf2} /><strong className="text-slate-900 block font-semibold">{gfa.toLocaleString('de-DE')} m²</strong></div>
+                    <div><MdText text={inhalt.texte.bruttogrundflächeBgf2} /><strong className="text-slate-900 block font-semibold">{formatDeIntl(gfa)} m²</strong></div>
                     <div><MdText text={inhalt.texte.konstruktiveFügung} /><strong className="text-slate-900 block font-semibold">
                       {joiningMethod === 'screwed' ? inhalt.werte.zerstörungsfreiTrocken : joiningMethod === 'mortar' ? 'Halb-demontierbar' : inhalt.werte.klassischNassStarr}
                     </strong></div>
@@ -543,7 +543,7 @@ export default function Materialpaesse() {
                     <div className="p-3 bg-slate-50 rounded-xl border border-home-grau/30 text-center">
                       <span className="text-[9px] text-slate-400 uppercase block font-medium"><MdText text={inhalt.texte.urbanMiningWert} /></span>
                       <strong className="text-xl font-black text-slate-900 block mt-0.5">
-                        € {totalResidualValue.toLocaleString('de-DE')}
+                        € {formatDeIntl(totalResidualValue)}
                       </strong>
                       <span className="text-[8px] text-slate-400 block leading-tight mt-0.5">
                         {formatDeWert(residualValuePerM2)} €/m² BGF
@@ -577,27 +577,27 @@ export default function Materialpaesse() {
                       <tbody className="divide-y divide-slate-100 font-normal">
                         <tr>
                           <td className="p-2 pl-3 font-semibold"><MdText text={inhalt.texte.normalbetonC3037} /></td>
-                          <td className="p-2 text-right font-mono">{concreteTons.toLocaleString('de-DE', {maximumFractionDigits: 0})} t</td>
+                          <td className="p-2 text-right font-mono">{formatDeIntl(concreteTons, {maximumFractionDigits: 0})} t</td>
                           <td className="p-2 text-right font-mono">{formatDeZahl(((concreteTons / totalWeightTons) * 100), 1)}%</td>
                           <td className="p-2 text-right font-mono">{joiningMethod === 'screwed' ? '90%' : joiningMethod === 'mortar' ? '60%' : '0%'}</td>
                         </tr>
                         <tr>
                           <td className="p-2 pl-3 font-semibold"><MdText text={inhalt.texte.tragwerksstahlHebB500} /></td>
-                          <td className="p-2 text-right font-mono">{steelTons.toLocaleString('de-DE', {maximumFractionDigits: 1})} t</td>
+                          <td className="p-2 text-right font-mono">{formatDeIntl(steelTons, {maximumFractionDigits: 1})} t</td>
                           <td className="p-2 text-right font-mono">{formatDeZahl(((steelTons / totalWeightTons) * 100), 1)}%</td>
                           <td className="p-2 text-right font-mono">{joiningMethod === 'screwed' ? '98%' : joiningMethod === 'mortar' ? '80%' : '50%'}</td>
                         </tr>
                         {woodTons > 0 && (
                           <tr>
                             <td className="p-2 pl-3 font-semibold text-emerald-700"><MdText text={inhalt.texte.brettschichtholzNadelholz} /></td>
-                            <td className="p-2 text-right font-mono text-emerald-700">{woodTons.toLocaleString('de-DE', {maximumFractionDigits: 0})} t</td>
+                            <td className="p-2 text-right font-mono text-emerald-700">{formatDeIntl(woodTons, {maximumFractionDigits: 0})} t</td>
                             <td className="p-2 text-right font-mono text-emerald-700">{formatDeZahl(((woodTons / totalWeightTons) * 100), 1)}%</td>
                             <td className="p-2 text-right font-mono text-emerald-700">{joiningMethod === 'screwed' ? '85%' : joiningMethod === 'mortar' ? '40%' : '5%'}</td>
                           </tr>
                         )}
                         <tr>
                           <td className="p-2 pl-3 font-semibold"><MdText text={inhalt.texte.kupferHaustechnikmetalle} /></td>
-                          <td className="p-2 text-right font-mono">{copperTons.toLocaleString('de-DE', {maximumFractionDigits: 2})} t</td>
+                          <td className="p-2 text-right font-mono">{formatDeIntl(copperTons, {maximumFractionDigits: 2})} t</td>
                           <td className="p-2 text-right font-mono">{formatDeZahl(((copperTons / totalWeightTons) * 100), 1)}%</td>
                           <td className="p-2 text-right font-mono">95%</td>
                         </tr>

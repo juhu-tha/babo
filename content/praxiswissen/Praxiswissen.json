@@ -659,8 +659,8 @@
     "Praxiswissen.schritte_5": [
       {
         "titel": "Feuchte Einwaage",
-        "erklaerung": "Sollmenge trocken 1 000 kg, Oberflächenfeuchte u = 4 %:",
-        "formel": "m_{feucht} = 1\\,000 \\cdot 1{,}04 = 1\\,040\\,\\text{kg}"
+        "erklaerung": "Sollmenge trocken 1000 kg, Oberflächenfeuchte u = 4 %:",
+        "formel": "m_{feucht} = 1000 \\cdot 1{,}04 = 1040\\,\\text{kg}"
       },
       {
         "titel": "Wasser",
@@ -699,7 +699,7 @@
       {
         "titel": "Allgemeine Geschäftskosten",
         "erklaerung": "Zuschlag 9 %:",
-        "formel": "AGK = 0{,}09 \\cdot 100\\,000 = 9\\,000\\ \\text{EUR}"
+        "formel": "AGK = 0{,}09 \\cdot 100\\,000 = 9000\\ \\text{EUR}"
       },
       {
         "titel": "Wagnis und Gewinn",
@@ -721,7 +721,7 @@
       {
         "titel": "Mittellohn",
         "erklaerung": "30 €/h (Lehrwert):",
-        "formel": "K_L = 200 \\cdot 30 = 6\\,000\\ \\text{EUR}"
+        "formel": "K_L = 200 \\cdot 30 = 6000\\ \\text{EUR}"
       }
     ],
     "Praxiswissen.literatur": [

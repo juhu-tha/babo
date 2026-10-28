@@ -9,6 +9,10 @@ import type { MaterialData } from './daten';
 import inhalt from '@/content/nachhaltigkeit/Wandkonfigurator.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
+import { useState } from 'react';
+import { funktionelleEinheitBauteil, BETRACHTUNGSZEITRAUM_QNG } from '@/src/calc/lca';
+
+const ND_OPTIONEN = [15, 20, 25, 30, 40, 50] as const;
 
 interface WandkonfiguratorProps {
   addLayer: () => void;
@@ -30,6 +34,14 @@ interface WandkonfiguratorProps {
 }
 
 export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, chartData, chartOptions, computedWall, connectionType, gegRating, handleThicknessChange, moveLayer, removeLayer, selectedAddMaterial, setAddThickness, setConnectionType, setSelectedAddMaterial, wallLayers }: WandkonfiguratorProps) {
+  // Nutzungsdauer je Schicht (Schlüssel: Position + Baustoff), Vorgabe ≥ 50 a; nur für die Anzeige der funktionellen Einheit
+  const [nutzungsdauern, setNutzungsdauern] = useState<Record<string, number>>({});
+  const ndSchluessel = (i: number, key: string) => `${i}-${key}`;
+  const fe = funktionelleEinheitBauteil(computedWall.layers.map((l, i) => ({
+    name: l.mat.name, einheit: 'kg' as const, dickeM: l.thicknessCm / 100, rohdichte: l.mat.density,
+    gwpA1A3: l.mat.gwp_fossil_a1a3 + l.mat.gwp_biogenic_a1a3, gwpC: l.mat.gwp_c3c4,
+    nutzungsdauer: nutzungsdauern[ndSchluessel(i, l.materialKey)] ?? BETRACHTUNGSZEITRAUM_QNG,
+  })), BETRACHTUNGSZEITRAUM_QNG);
   return (
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 animate-in fade-in duration-300">
 
@@ -61,7 +73,7 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
               <strong className="font-bold text-amber-900 block mb-0.5"><MdText text={inhalt.texte.falleDerÖkobilanzierungMassebezug} /></strong>
               <p>
                 In EPDs werden Materialwerte häufig auf 1 kg Masse bezogen. Hier wirkt Normalbeton (CEM I) mit ca. <strong><MdText text={inhalt.texte.t010KgCo} /></strong> scheinbar harmlos. 
-                Aufgrund der hohen Rohdichte (2.400 kg/m³) wiegt jedoch eine 20 cm Betonwand 480 kg/m² und verursacht ca. <strong><MdText text={inhalt.texte.t49KgCoE} /></strong>! 
+                Aufgrund der hohen Rohdichte (2400 kg/m³) wiegt jedoch eine 20 cm Betonwand 480 kg/m² und verursacht ca. <strong><MdText text={inhalt.texte.t49KgCoE} /></strong>! 
                 Konstruktionsvollholz (KVH) speichert hingegen biogenes CO₂ (-1,47 kg CO₂e/kg), und ein Lehmstein (DIN 18940) benötigt überhaupt keine klinkerspezifische Brennenergie (nur 0,022 kg CO₂e/kg). 
                 <strong> Grundsatz:</strong> Bauteile müssen immer auf die funktionelle Einheit (1 m² Bauteil mit gefordertem U-Wert und Tragfähigkeit) bezogen verglichen werden.
               </p>
@@ -289,6 +301,47 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
               </div>
             </div>
           </div>
+
+          {/* Bezugsgröße: deklarierte Einheit 1 kg → funktionelle Einheit 1 m² Wand über 50 a (Auftrag 28.10.2026) */}
+          <section aria-labelledby="wand-fe-titel" className="bg-white p-5 rounded-2xl shadow-sm border border-emerald-300 flex flex-col gap-3 text-[11px] text-slate-800" data-testid="wand-funktionelle-einheit">
+            <h3 id="wand-fe-titel" className="font-bold text-sm text-slate-900 uppercase tracking-wider border-b border-home-grau/30 pb-1">{inhalt.texte.feTitel}</h3>
+            <p className="leading-relaxed"><MdText text={inhalt.texte.feDeklariert} /></p>
+            <p className="leading-relaxed"><MdText text={inhalt.texte.feFunktionell} /><strong>{formatDeZahl(computedWall.uValue, 2)} W/(m²K)</strong><MdText text={inhalt.texte.feUeber} /></p>
+            <p className="leading-relaxed text-slate-700"><MdText text={inhalt.texte.feRechenweg} /></p>
+            {fe.gueltig && (
+              <>
+                <ul className="space-y-1.5" aria-label={inhalt.werte.feCaption}>
+                  {fe.schichten.map((z, i) => {
+                    const key = ndSchluessel(i, computedWall.layers[i].materialKey);
+                    const nd = nutzungsdauern[key] ?? BETRACHTUNGSZEITRAUM_QNG;
+                    return (
+                      <li key={key} className="border-b border-slate-100 pb-1.5">
+                        <span className="flex items-center justify-between gap-2">
+                          <span className="font-medium text-slate-900">{z.name}</span>
+                          <label className="flex items-center gap-1 shrink-0 text-slate-600">
+                            <span>{inhalt.werte.feNd}</span>
+                            <select value={String(nd)}
+                              onChange={(e) => setNutzungsdauern(v => ({ ...v, [key]: Number(e.target.value) }))}
+                              className="text-[10px] p-0.5 bg-white border border-home-grau/30 rounded cursor-pointer">
+                              {ND_OPTIONEN.map(x => <option key={x} value={String(x)}>{x === 50 ? '≥ 50' : String(x)} a</option>)}
+                            </select>
+                          </label>
+                        </span>
+                        <span className="block font-mono text-[10.5px] text-slate-700">
+                          {inhalt.werte.feMasse} = {formatDeZahl(z.menge, 1)} kg/m² → {formatDeZahl(z.a1a3 + z.c, 1)} · (1 + {formatDeZahl(z.ersatz, 0)}) = <strong>{formatDeZahl(z.summe, 1)} kg/m²</strong>
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
+                <p className="font-mono bg-emerald-50 border border-emerald-200 rounded-lg p-2.5 leading-relaxed">
+                  {inhalt.werte.feErgebnis}: <strong>{formatDeZahl(fe.summe, 1)} kg CO₂-Äq./m²</strong> über {formatDeZahl(fe.betrachtungszeitraum, 0)} a
+                  {' '}({inhalt.werte.feJeJahr}: {formatDeZahl(fe.jeJahr, 2)} kg CO₂-Äq./(m²·a))
+                </p>
+              </>
+            )}
+            <p className="text-slate-600 leading-relaxed"><MdText text={inhalt.texte.feHinweisDiagramm} /></p>
+          </section>
 
           {/* Footprint visualization card */}
           <div className="bg-white p-5 rounded-2xl shadow-sm border border-home-grau/30 flex flex-col gap-4">

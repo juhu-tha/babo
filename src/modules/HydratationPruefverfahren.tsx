@@ -388,7 +388,7 @@ export default function HydratationPruefverfahren() {
                 <div className="space-y-4">
                   <div className="p-5 bg-off-white rounded-2xl border border-home-grau/30">
                     <h4 className="font-bold text-xs uppercase tracking-wider text-slate-700 mb-2"><MdText text={inhalt.texte.schematischePrinzipskizze} /></h4>
-                    <div className="w-full h-44 bg-slate-900 rounded-xl relative flex flex-col justify-center items-center text-white p-4 font-mono text-[10px]">
+                    <div className="w-full h-44 bg-off-white border border-home-grau/30 rounded-xl relative flex flex-col justify-center items-center text-text-main p-4 font-mono text-[10px]">
                       {/* Drawing the shrinkage rig */}
                       <div className="w-4/5 h-8 bg-slate-700 rounded border-2 border-slate-500 flex justify-between items-center px-4 relative">
                         <span className="text-white text-[9px] z-10"><MdText text={inhalt.texte.ptfeGussrinne1000Mm} /></span>
@@ -397,7 +397,7 @@ export default function HydratationPruefverfahren() {
                           <span className="absolute left-4 bg-orange-400 dark:bg-orange-700 p-1 rounded text-black text-[8px] border">LVDT Sensor</span>
                         </div>
                       </div>
-                      <div className="w-full flex justify-between px-10 mt-6 text-slate-400">
+                      <div className="w-full flex justify-between px-10 mt-6 text-slate-600">
                         <span><MdText text={inhalt.texte.festlagerLinks} /></span>
                         <span><MdText text={inhalt.texte.konstanteTemperatursteuerung} /></span>
                         <span>[Gleitbett-Rinne]</span>

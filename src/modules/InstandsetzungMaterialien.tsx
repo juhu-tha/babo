@@ -102,7 +102,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
           onClick={() => setActiveSubSection('uebersicht')}
           className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
             activeSubSection === 'uebersicht'
-              ? 'bg-text-main text-white'
+              ? 'bg-shiraz text-white'
               : 'bg-white text-slate-700 border border-home-grau/30 hover:bg-off-white'
           }`}
         ><MdText text={inhalt.texte.übersichtSchadensmechanismen} /></button>
@@ -110,7 +110,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
           onClick={() => setActiveSubSection('schutz')}
           className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
             activeSubSection === 'schutz'
-              ? 'bg-text-main text-white'
+              ? 'bg-shiraz text-white'
               : 'bg-white text-slate-700 border border-home-grau/30 hover:bg-off-white'
           }`}
         ><MdText text={inhalt.texte.präventiverSchutz} /></button>
@@ -118,7 +118,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
           onClick={() => setActiveSubSection('instandsetzung')}
           className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
             activeSubSection === 'instandsetzung'
-              ? 'bg-text-main text-white'
+              ? 'bg-shiraz text-white'
               : 'bg-white text-slate-700 border border-home-grau/30 hover:bg-off-white'
           }`}
         ><MdText text={inhalt.texte.instandsetzungSanierung} /></button>
@@ -126,7 +126,7 @@ export default function InstandsetzungMaterialien({ initialMaterial = 'holz' }: 
           onClick={() => setActiveSubSection('praxis')}
           className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
             activeSubSection === 'praxis'
-              ? 'bg-text-main text-white'
+              ? 'bg-shiraz text-white'
               : 'bg-white text-slate-700 border border-home-grau/30 hover:bg-off-white'
           }`}
         ><MdText text={inhalt.texte.praxiswissenSchadensfälle} /></button>

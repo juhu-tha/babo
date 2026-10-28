@@ -152,7 +152,7 @@ export default function SommerlicherWaermeschutz() {
             <div className={karte}>
               <h3 className="font-bold text-text-main mb-2"><MdText text={inhalt.texte.thermischeGebäudesimulationAbschnitt8} /></h3>
               <p className="text-sm text-text-main/85 leading-relaxed"><MdText text={inhalt.texte.fürRäumeAufDie} />{formatDeZahl(UEBERTEMPERATURGRADSTUNDEN.wohn, 0)}<MdText text={inhalt.texte.khAFürWohngebäude} />{formatDeZahl(UEBERTEMPERATURGRADSTUNDEN.nichtwohn, 0)}<MdText text={inhalt.texte.khAFürNichtwohngebäude} /></p>
-              <BlockMath math="\sum_{t} \max\left(0;\; \theta_{op}(t) - \theta_{b,op}\right) \cdot 1\,\text{h} \;\le\; 1\,200\,\text{Kh/a (Wohnen)}" />
+              <BlockMath math="\sum_{t} \max\left(0;\; \theta_{op}(t) - \theta_{b,op}\right) \cdot 1\,\text{h} \;\le\; 1200\,\text{Kh/a (Wohnen)}" />
               <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.beispiel1200Kh} /></p>
             </div>
             <Querverweis ziel="feuchteschutz" titel={inhalt.werte.winterlicherWärmeUndFeuchteschutz} linkText={inhalt.werte.zumModulFeuchteschutz}>

@@ -94,7 +94,7 @@
     "handsOnÜbungenZum": "Hands-on-Übungen zum Master-Modul",
     "zuDenSechsÜbungen": "Zu den sechs Übungen",
     "inDieZwischenablage": "In die Zwischenablage",
-    "promptHöchstens4000": "Prompt (höchstens 4 000 Zeichen)",
+    "promptHöchstens4000": "Prompt (höchstens 4000 Zeichen)",
     "websiteÖffnen": "Website öffnen",
     "verwandteDigitalisierungsPlanungsmodule": "Verwandte Digitalisierungs- & Planungsmodule",
     "didaktischVernetzteQuerverweiseZu": "Didaktisch vernetzte Querverweise zu BIM, Datenanalyse, Automatisierung und wissenschaftlicher Abschlussarbeit",
@@ -321,7 +321,7 @@
       },
       {
         "titel": "Preise",
-        "erklaerung": "Lehrwerte: 3 € je Million Eingabe-Token, 15 € je Million Ausgabe-Token; Ausgabe 2 000 Token:",
+        "erklaerung": "Lehrwerte: 3 € je Million Eingabe-Token, 15 € je Million Ausgabe-Token; Ausgabe 2000 Token:",
         "formel": "K = 0{,}03 \\cdot 3 + 0{,}002 \\cdot 15 = 0{,}09 + 0{,}03"
       },
       {
@@ -333,8 +333,8 @@
     "KiBaustoffeInhalt.schritte_4": [
       {
         "titel": "Bilanz",
-        "erklaerung": "Kontext 128 000 Token, Systemprompt 2 000, Reserve für die Antwort 8 000:",
-        "formel": "n_{frei} = 128\\,000 - 2\\,000 - 8\\,000 = 118\\,000"
+        "erklaerung": "Kontext 128 000 Token, Systemprompt 2000, Reserve für die Antwort 8000:",
+        "formel": "n_{frei} = 128\\,000 - 2000 - 8000 = 118\\,000"
       },
       {
         "titel": "Seiten",

@@ -40,8 +40,8 @@
     "werkstoffkennwerteImVergleich": "Werkstoffkennwerte im Vergleich",
     "größenordnungenAusHerstellerdatenblätter": "Größenordnungen aus Herstellerdatenblättern (Lehrwerte, Nennwerte ohne Toleranz). Maßgebend sind die Werte der jeweiligen Zulassung bzw. Leistungserklärung.",
     "zugfestigkeitKetteSchussStreifenzugversu": "Zugfestigkeit Kette/Schuss (Streifenzugversuch)",
-    "rund3000Bis": "rund 3.000 bis 10.000 N/5 cm je nach Typ; z. B. 4.400/4.000 N/5 cm bei 900 g/m²",
-    "rund2000Bis": "rund 2.000 bis 5.000 N/5 cm; z. B. 5.000/4.500 N/5 cm bei 700 g/m²",
+    "rund3000Bis": "rund 3000 bis 10 000 N/5 cm je nach Typ; z. B. 4400/4.000 N/5 cm bei 900 g/m²",
+    "rund2000Bis": "rund 2000 bis 5000 N/5 cm; z. B. 5000/4.500 N/5 cm bei 700 g/m²",
     "bruchspannungUm50N": "Bruchspannung um 50 N/mm², Spannung bei 10 % Dehnung um 23 N/mm² (nahezu isotrop)",
     "zB580520": "z. B. 580/520 N (900 g/m²)",
     "zB450N": "z. B. 450 N (700 g/m²)",
@@ -62,7 +62,7 @@
     "rund10Bis30": "rund 10 bis 30 Jahre, je nach Decklack (Acryl kürzer, PVDF länger)",
     "rund25Bis35": "rund 25 bis 35 Jahre und mehr",
     "über30Jahre": "über 30 Jahre",
-    "dieZugfestigkeitVonGeweben": "Die Zugfestigkeit von Geweben wird in N/5 cm (Streifenbreite 50 mm) angegeben: 4.000 N/5 cm entsprechen 80 kN/m. ETFE: Dichte 1,75 g/cm³, Schmelzbereich um 265 °C.",
+    "dieZugfestigkeitVonGeweben": "Die Zugfestigkeit von Geweben wird in N/5 cm (Streifenbreite 50 mm) angegeben: 4000 N/5 cm entsprechen 80 kN/m. ETFE: Dichte 1,75 g/cm³, Schmelzbereich um 265 °C.",
     "wärmeschutzMehrlagigerEtfeKissen": " Wärmeschutz mehrlagiger ETFE-Kissen",
     "herstellerangabenRichtwerteOhneRandverbu": "Herstellerangaben (Richtwerte, ohne Randverbund); jede zusätzliche Luftschicht senkt den U-Wert, aber mit abnehmender Wirkung.",
     "uWertInW": "U-Wert in W/(m²K)",
@@ -93,7 +93,7 @@
     "zelteFliegendeBautenAus": "**Zelte:** Fliegende Bauten aus Zeltkonstruktionen behandelt DIN EN 13782:2015-06.",
     "brandverhaltenKlassifizierungNachDin": "**Brandverhalten:** Klassifizierung nach DIN EN 13501-1:2019-05; die Anforderungen ergeben sich aus Bauordnung und Sonderbauvorschriften.",
     "allianzArenaMünchen2005": "Allianz Arena, München (2005)",
-    "entwurfHerzogDeMeuron": "Entwurf Herzog & de Meuron. Fassade und Dach bestehen aus rund 2.800 rautenförmigen ETFE-Luftkissen. Die Kissen der Fassade lassen sich farbig hinterleuchten – das Stadion leuchtet je nach Anlass rot, blau oder weiß. Das Projekt zeigt, wie ETFE eine Gebäudehülle zugleich leicht, transluzent und gestaltbar macht.",
+    "entwurfHerzogDeMeuron": "Entwurf Herzog & de Meuron. Fassade und Dach bestehen aus rund 2800 rautenförmigen ETFE-Luftkissen. Die Kissen der Fassade lassen sich farbig hinterleuchten – das Stadion leuchtet je nach Anlass rot, blau oder weiß. Das Projekt zeigt, wie ETFE eine Gebäudehülle zugleich leicht, transluzent und gestaltbar macht.",
     "edenProjectCornwall2001": "Eden Project, Cornwall (2001)",
     "entwurfNicholasGrimshawPartners": "Entwurf Nicholas Grimshaw & Partners. Die Gewächshäuser („Biome“) sind geodätische Kuppeln, deren Felder mit sechseckigen, mehrlagigen ETFE-Kissen geschlossen sind. Ausschlaggebend waren das geringe Gewicht gegenüber Glas und die hohe Durchlässigkeit für Licht und UV-Strahlung, die den Pflanzen zugutekommt."
   },
@@ -104,8 +104,8 @@
     "regelwerkeBauten": "Regelwerke & Bauten",
     "etfeFolie200M": "ETFE-Folie 200 µm",
     "etfeFolie250M": "ETFE-Folie 250 µm",
-    "pvcPesTypIi": "PVC/PES Typ II (4.000 N/5 cm)",
-    "ptfeGlas4500": "PTFE/Glas (4.500 N/5 cm)",
+    "pvcPesTypIi": "PVC/PES Typ II (4000 N/5 cm)",
+    "ptfeGlas4500": "PTFE/Glas (4500 N/5 cm)",
     "schnittDurchEinenGewölbten": "Schnitt durch einen gewölbten Membranstreifen mit Innendruck",
     "sattelflächeMitGegensinnigerKrümmung": "Sattelfläche mit gegensinniger Krümmung und Kissen mit gleichsinniger Krümmung",
     "krümmungsradiusAusSpannweiteUnd": "Krümmungsradius aus Spannweite und Stich",
@@ -166,23 +166,23 @@
     "MembranenETFE.schritte": [
       {
         "titel": "Gegeben",
-        "erklaerung": "Tonnenförmige Traglufthalle (Querschnitt näherungsweise Halbkreis), Radius 18 m, Betriebsdruck 300 Pa (angenommen). Gewebe PVC/PES Typ II mit 4.000 N/5 cm in Schussrichtung.",
-        "formel": "r = 18\\,\\text{m}, \\quad p = 300\\,\\text{Pa}, \\quad f_t = 4\\,000\\,\\text{N/5 cm}"
+        "erklaerung": "Tonnenförmige Traglufthalle (Querschnitt näherungsweise Halbkreis), Radius 18 m, Betriebsdruck 300 Pa (angenommen). Gewebe PVC/PES Typ II mit 4000 N/5 cm in Schussrichtung.",
+        "formel": "r = 18\\,\\text{m}, \\quad p = 300\\,\\text{Pa}, \\quad f_t = 4000\\,\\text{N/5 cm}"
       },
       {
         "titel": "Membrankraft im Betrieb",
         "erklaerung": "Zylinder, Kraft in Umfangsrichtung:",
-        "formel": "n = 300 \\cdot 18 = 5\\,400\\,\\text{N/m} = 5{,}4\\,\\text{kN/m}"
+        "formel": "n = 300 \\cdot 18 = 5400\\,\\text{N/m} = 5{,}4\\,\\text{kN/m}"
       },
       {
         "titel": "Zulässige Membrankraft (Lehrwert)",
         "erklaerung": "Kurzzeitfestigkeit auf 1 m umgerechnet, Gesamtsicherheitsbeiwert 5 (Lehrwert):",
-        "formel": "n_{zul} = \\frac{4\\,000 / 0{,}05}{5} = \\frac{80\\,000}{5} = 16\\,000\\,\\text{N/m} = 16\\,\\text{kN/m}"
+        "formel": "n_{zul} = \\frac{4000 / 0{,}05}{5} = \\frac{80\\,000}{5} = 16\\,000\\,\\text{N/m} = 16\\,\\text{kN/m}"
       },
       {
         "titel": "Ausnutzung und Sturmbetrieb",
         "erklaerung": "Bei Sturm wird der Innendruck erhöht, z. B. auf 550 Pa:",
-        "formel": "\\eta = \\frac{5{,}4}{16} = 0{,}34; \\quad n_{Sturm} = 550 \\cdot 18 = 9\\,900\\,\\text{N/m} \\Rightarrow \\eta = 0{,}62"
+        "formel": "\\eta = \\frac{5{,}4}{16} = 0{,}34; \\quad n_{Sturm} = 550 \\cdot 18 = 9900\\,\\text{N/m} \\Rightarrow \\eta = 0{,}62"
       }
     ],
     "MembranenETFE.schritte_2": [
@@ -199,7 +199,7 @@
       {
         "titel": "Betrieb (300 Pa)",
         "erklaerung": "Membrankraft und Folienspannung:",
-        "formel": "n = 300 \\cdot 4{,}55 = 1\\,365\\,\\text{N/m}; \\quad \\sigma = \\frac{1{,}365\\,\\text{N/mm}}{0{,}25\\,\\text{mm}} = 5{,}46\\,\\text{N/mm}^2"
+        "formel": "n = 300 \\cdot 4{,}55 = 1365\\,\\text{N/m}; \\quad \\sigma = \\frac{1{,}365\\,\\text{N/mm}}{0{,}25\\,\\text{mm}} = 5{,}46\\,\\text{N/mm}^2"
       },
       {
         "titel": "Schnee (600 Pa)",

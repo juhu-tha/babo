@@ -2,7 +2,7 @@
 
 Stand: 28.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster IV umfasst 300 Fragen aus 48 Modulen. Aufgeführt sind 80 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster IV umfasst 302 Fragen aus 48 Modulen. Aufgeführt sind 80 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
 Auffällig im Einzelnen (Mehrfachnennung möglich): 72 korrigiert, 0 fraglich, 12 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
 
@@ -114,8 +114,8 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 72 korrigiert, 0 fraglich, 1
 
 ### q_hp_1 · Hist. Bauprodukte
 
-- **Frage:** Eine Raumluftmessung ergibt 1 400 ng/m³ PCB. Wie ist das nach PCB-Richtlinie einzuordnen?
-- **Richtige Antwort:** Zwischen Vorsorge- und Eingreifwert (300–3 000 ng/m³): Quelle suchen, mittelfristig sanieren
+- **Frage:** Eine Raumluftmessung ergibt 1400 ng/m³ PCB. Wie ist das nach PCB-Richtlinie einzuordnen?
+- **Richtige Antwort:** Zwischen Vorsorge- und Eingreifwert (300–3000 ng/m³): Quelle suchen, mittelfristig sanieren
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
 - [x] ok
 - [ ] ändern: …
@@ -338,7 +338,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 72 korrigiert, 0 fraglich, 1
 
 ### qn_boden_materialaufbereitung_2 · Boden- & Materialaufbereitung
 
-- **Frage:** Eine Bodenprobe wiegt feucht 1 800 g und nach Trocknung bei 105 °C 1 500 g. Das Labor misst 12 mg/kg in der Originalsubstanz. Wie groß ist der Gehalt bezogen auf die Trockenmasse?
+- **Frage:** Eine Bodenprobe wiegt feucht 1800 g und nach Trocknung bei 105 °C 1500 g. Das Labor misst 12 mg/kg in der Originalsubstanz. Wie groß ist der Gehalt bezogen auf die Trockenmasse?
 - **Richtige Antwort:** rund 14,4 mg/kg TM
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
 - [x] ok
@@ -499,7 +499,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 72 korrigiert, 0 fraglich, 1
 ### qn_lca_regulatorik_4 · Rechtsrahmen, CRREM & Praxis
 
 - **Frage:** Welcher der im Modul vorgestellten Praxisansätze schont Primärressourcen auf der höchsten Stufe der Abfallhierarchie?
-- **Richtige Antwort:** Neues Museum Berlin: rund 375 000 geborgene Ziegel werden erneut vermauert.
+- **Richtige Antwort:** Neues Museum Berlin: rund 375 000 geborgene Ziegel werden erneut vermauert.
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
 - [x] ok
 - [ ] ändern: …
@@ -522,8 +522,8 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 72 korrigiert, 0 fraglich, 1
 
 ### qn_lebenszyklus_kosten_4 · Lebenszyklus & Kosten
 
-- **Frage:** Ein Bauvertrag über 80 000 € wurde bei einem Baustoffpreisindex von 140 geschlossen; bei Lieferung steht der Index bei 175. Welcher angepasste Betrag ergibt sich mit K_t = K_0 · I_t/I_0?
-- **Richtige Antwort:** 100 000 €
+- **Frage:** Ein Bauvertrag über 80 000 € wurde bei einem Baustoffpreisindex von 140 geschlossen; bei Lieferung steht der Index bei 175. Welcher angepasste Betrag ergibt sich mit K_t = K_0 · I_t/I_0?
+- **Richtige Antwort:** 100 000 €
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
 - [x] ok
 - [ ] ändern: …
@@ -538,8 +538,8 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 72 korrigiert, 0 fraglich, 1
 
 ### qn_materialoptimierung_3 · Materialoptimierung
 
-- **Frage:** Eine Hohlkörperdecke enthält 19,5 m³ Beton (CEM III/A, Prüfalter 56 d: 123 kg CO₂-Äq./m³) und 2 470 kg Betonstahl aus der Elektroofenroute (0,42 kg CO₂-Äq./kg). Wie groß ist das GWP A1–A3 nach GWP = V_c · gwp_c + m_s · gwp_s?
-- **Richtige Antwort:** rund 3 440 kg CO₂-Äq.
+- **Frage:** Eine Hohlkörperdecke enthält 19,5 m³ Beton (CEM III/A, Prüfalter 56 d: 123 kg CO₂-Äq./m³) und 2470 kg Betonstahl aus der Elektroofenroute (0,42 kg CO₂-Äq./kg). Wie groß ist das GWP A1–A3 nach GWP = V_c · gwp_c + m_s · gwp_s?
+- **Richtige Antwort:** rund 3440 kg CO₂-Äq.
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
 - [x] ok
 - [ ] ändern: …
@@ -662,7 +662,7 @@ Auswahl deterministisch (Sortierung nach FNV-1a-Hash der Frage-ID), damit die St
 
 ### qn_lca_rechner_4 · LCA-Rechner & QNG-Nachweis
 
-- **Frage:** Ein Mehrfamilienhaus (1200 m² NRF, 50 a) erreicht 24,2 kg CO₂-Äq./(m²·a) (Konstruktion 1 050 000 kg, Betrieb 400 000 kg). Der Bauherr möchte 90 000 kg Recyclinggutschrift aus Modul D abziehen, um QNG-PLUS (≤ 24) zu erreichen. Wie ist das zu bewerten?
+- **Frage:** Ein Mehrfamilienhaus (1200 m² NRF, 50 a) erreicht 24,2 kg CO₂-Äq./(m²·a) (Konstruktion 1 050 000 kg, Betrieb 400 000 kg). Der Bauherr möchte 90 000 kg Recyclinggutschrift aus Modul D abziehen, um QNG-PLUS (≤ 24) zu erreichen. Wie ist das zu bewerten?
 - **Richtige Antwort:** Unzulässig, Modul D ist separat auszuweisen; PLUS gelänge z. B. als Holzhybrid (21,5).
 - **Auffälligkeit:** keine – Vorprüfung „ok“
 - [x] ok

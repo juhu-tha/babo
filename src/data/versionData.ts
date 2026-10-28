@@ -18,7 +18,7 @@ export const VERSION_HISTORY: VersionItem[] = [
       'Korrosionsschutz durch Beschichtungen: DIN EN ISO 12944 (C1–CX, Im1–Im4, Schutzdauer), Beschichtungssysteme, Feuerverzinken nach DIN EN ISO 1461, Duplex; Rechner für die Schutzdauer von Zinküberzügen.',
       'Membranen und ETFE-Folien: Gewebe und Folien, Tragverhalten, Kennwerte, Bauphysik, Regelwerke (DIN 4134-1, CEN/TS 19102); Rechner nach der Kesselformel.',
       'Sommerlicher Wärmeschutz nach DIN 4108-2: Sonneneintragskennwerte S_vorh und S_zul, F_C-Werte, Verzichtsregeln; Rechner für den kritischen Raum.',
-      'Jedes neue Modul mit Lernzielen, Selbsttest (39 neue Fragen, Pool 1 008), „Ausprobieren“, Live-Rechenweg, Annahmen und Grenzen sowie geprüftem Rechenkern mit Tests.'
+      'Jedes neue Modul mit Lernzielen, Selbsttest (39 neue Fragen, Pool 1008), „Ausprobieren“, Live-Rechenweg, Annahmen und Grenzen sowie geprüftem Rechenkern mit Tests.'
     ]
   },
   {
@@ -84,10 +84,10 @@ export const VERSION_HISTORY: VersionItem[] = [
     changes: [
       'Qualitätssicherung & Architektur (Phase 0): Automatische Prüfung jeder Änderung (Typprüfung, Tests, Formel-, Quellen-, Normen- und Zahlenformat-Checks, Build); zentrale Modul-Registry (src/registry/modules.ts) für Menü, Suche, Sitemap und Icons; zentrale Materialkennwerte (EC2 Tab. 3.1) und einheitlicher Normenstand.',
       'Recht & Datenschutz (Phase 1): Neu gefasste Datenschutzerklärung mit vollständigem Speicherregister, Erklärung zur Barrierefreiheit, aktualisiertes Impressum; KI-Assistent nur nach Einwilligung, mit Kennzeichnung, Herkunftsprüfung und Tageslimit; Sicherheits-Header (CSP); Haftungshinweis an allen Rechnern; Vorlesungsbereich ohne Passwort öffentlich zugänglich.',
-      'Barrierefreiheit & Bedienung (Phase 2): 0 Verstöße in der automatischen WCAG-Prüfung über alle Module (vorher 2 889 betroffene Elemente), Sprunglink, korrekte Überschriften, Kontraste in Hell- und Dunkelmodus, Tastaturbedienung der Reiter; mobile Darstellung ohne abgeschnittene Inhalte; Volltextsuche über alle Modulinhalte; Startseite mit Themen-Einstieg und „Zuletzt besucht“.',
+      'Barrierefreiheit & Bedienung (Phase 2): 0 Verstöße in der automatischen WCAG-Prüfung über alle Module (vorher 2889 betroffene Elemente), Sprunglink, korrekte Überschriften, Kontraste in Hell- und Dunkelmodus, Tastaturbedienung der Reiter; mobile Darstellung ohne abgeschnittene Inhalte; Volltextsuche über alle Modulinhalte; Startseite mit Themen-Einstieg und „Zuletzt besucht“.',
       'Selbsttests (Phase 3): Cluster-, Gruppen- und Modulzuordnung aller 427 Quizfragen aus der Registry abgeleitet (128 Fehlzuordnungen korrigiert); Sprungziele der Wissenslücken-Analyse führen immer auf ein existierendes Modul; Aufgaben-Reiter starten ein Themen-Quiz der passenden Menügruppen; Klausursimulator weist eine Orientierungsnote (keine Prüfungsleistung) aus.',
       'Begriffs-Styleguide (Phase 3): Einheitlich Wasserzementwert / w/z-Wert, Gesteinskörnung statt Zuschlag (DIN EN 12620), Euler-Fall 1–4 und Sie-Form in allen Lerntipps; automatische Prüfung der Regeln (docs/begriffe.md).',
-      'Geprüfte Rechenkerne (Phase 4): Biegung, Querkraft, Stütze, Durchstanzen, Verankerung, Rissbreite und Holzbau (Knicken, Querdruck) als getestete Funktionen in src/calc/ mit Handrechnungen, unabhängigen Vergleichsmodellen und je 1 000 Zufallseingaben; unzulässige Eingaben werden sichtbar gemeldet statt still ersetzt.',
+      'Geprüfte Rechenkerne (Phase 4): Biegung, Querkraft, Stütze, Durchstanzen, Verankerung, Rissbreite und Holzbau (Knicken, Querdruck) als getestete Funktionen in src/calc/ mit Handrechnungen, unabhängigen Vergleichsmodellen und je 1000 Zufallseingaben; unzulässige Eingaben werden sichtbar gemeldet statt still ersetzt.',
       'Fachliche Korrekturen in den Rechnern: Druckbewehrung mit σ_s2 = min(E_s·ε_s2; f_yd) und A_s,max = 0,04·A_c; nichtmetallische Bewehrung linear-elastisch; Stütze M_Ed = max(M_0Ed + N·e_i; N·e_0) und A_s,max = 0,09·A_c; Rissbreite mit h_c,ef = min{2,5(h − d); (h − x)/3; h/2}; Durchstanzen ρ_l ≤ 0,5·f_cd/f_yd; einheitliche Nummerierung der Euler-Fälle im Holzbau-Rechner; zuvor bereits Mauerwerk, v_min, Relaxation und LCA-Kennzeichnung.'
     ]
   },
@@ -110,7 +110,7 @@ export const VERSION_HISTORY: VersionItem[] = [
     badge: 'minor',
     changes: [
       'Didaktik- & Prüfungs-Offensive (AP 18/19): Ausbau des zentralen Prüfungsfragenpools von 26 auf 233 Fachfragen inkl. balancierter Antwortverteilung und dynamischer Zufallsmischung (mischeAntworten); Ausstattung von 80 Fachmodulen mit strukturierten Selbsttests (ModulTest) und 178 einklappbaren Rechenbeispielen (FormulaDerivationBox).',
-      'Berechnungs- & Formelpräzision (AP 2/5/6): Durchgängige Implementierung der formatDeZahl-Formatierung (DIN 1333, deutsches Dezimalkomma), NaN- und Nulldivisionsschutz für alle interaktiven Rechnerwerkzeuge sowie fehlerfreie Validierung von 3.103 KaTeX-Formeln.',
+      'Berechnungs- & Formelpräzision (AP 2/5/6): Durchgängige Implementierung der formatDeZahl-Formatierung (DIN 1333, deutsches Dezimalkomma), NaN- und Nulldivisionsschutz für alle interaktiven Rechnerwerkzeuge sowie fehlerfreie Validierung von 3103 KaTeX-Formeln.',
       'Normen- & Rechtsaktualisierung (AP 1/3/7/11/14): Bereinigung und Umstellung von 749 Normenverweisen auf das verifizierte DIN-Media-Suchschema; Einarbeitung aktueller Regelwerke wie DIN 1076:2026-01 (Ingenieurbauwerke), DIN EN 15978:2026-09 (Gebäudeökobilanz), GefStoffV 2024, EU-KI-Verordnung (Digital Omnibus) sowie GModG/GEG.',
       'Chart.js- & Performance-Härtung: Zentrale Chart.js-Registrierung (chartSetup.ts) zur Vermeidung redundanter Re-Registrierungen und Verhinderung von Canvas-Rendering-Kollisionen bei Diagrammaufrufen.'
     ]

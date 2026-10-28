@@ -243,7 +243,7 @@
       },
       {
         "formel": "m = \\frac{M \\cdot I \\cdot t}{z \\cdot F}",
-        "erklaerung": "Faradaysches Gesetz für den elektrolytischen Metallabtrag: m = abgebaute Masse, M = molare Masse, I = Korrosionsstrom, t = Zeit, z = Wertigkeit der Ionen, F = Faraday-Konstante (96.485 C/mol).",
+        "erklaerung": "Faradaysches Gesetz für den elektrolytischen Metallabtrag: m = abgebaute Masse, M = molare Masse, I = Korrosionsstrom, t = Zeit, z = Wertigkeit der Ionen, F = Faraday-Konstante (96 485 C/mol).",
         "quelle": "Elektrochemie / Werkstoffkunde"
       }
     ]

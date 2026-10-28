@@ -436,7 +436,7 @@ export default function LaborSicherheit() {
               <div className="p-5 bg-off-white rounded-xl border border-home-grau/20 flex flex-col gap-2">
                 <div className="flex items-center justify-between">
                   <h4 className="font-bold text-text-main text-sm"><MdText text={inhalt.texte.großprüfpressenDruckBiegung} /></h4>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-100 text-rose-800 font-bold">5.000 kN</span>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-100 text-rose-800 font-bold">5000 kN</span>
                 </div>
                 <ul className="text-xs text-text-main/80 space-y-1.5 list-disc pl-4 mt-1">
                   <li><MdText text={inhalt.texte.zentrischerEinbauProbekörperExakt} /></li>

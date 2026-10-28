@@ -122,7 +122,7 @@
       {
         "titel": "Ergebnis",
         "erklaerung": "Herstellungsphase der Wand:",
-        "formel": "GWP_{A1\\text{–}A3} = 8{,}64 \\cdot 280 = 2\\,419\\,\\text{kg CO}_2\\text{e}"
+        "formel": "GWP_{A1\\text{–}A3} = 8{,}64 \\cdot 280 = 2419\\,\\text{kg CO}_2\\text{e}"
       }
     ],
     "BimBaustoffe.schritte_2": [

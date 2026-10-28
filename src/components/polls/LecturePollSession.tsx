@@ -217,29 +217,29 @@ export default function LecturePollSession({ lectureId, lectureTitle }: LectureP
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-home-grau/30 overflow-hidden">
       {/* Top Banner: Lecture Hall Header */}
-      <div className="p-5 sm:p-6 bg-slate-900 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="p-5 sm:p-6 bg-shiraz/5 text-text-main flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-shiraz/30 text-rose-300 border border-shiraz/40 mb-2">
-            <Radio size={14} className="animate-pulse text-rose-400" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-shiraz/10 text-shiraz border border-shiraz/40 mb-2">
+            <Radio size={14} className="animate-pulse text-shiraz" />
             Hörsaal-Live-Voting (Kick-Off: 1. Vorlesungsstunde)
           </div>
-          <h3 className="text-xl font-bold text-white flex items-center gap-2">
+          <h3 className="text-xl font-bold text-text-main flex items-center gap-2">
             {lectureTitle}
           </h3>
-          <p className="text-xs text-slate-300 mt-1">
+          <p className="text-xs text-slate-700 mt-1">
             Interaktives Publikumsvoting: Scannen Sie den QR-Code mit dem Smartphone zur Live-Teilnahme ohne Login.
           </p>
         </div>
 
         {/* Live Audience Stat */}
-        <div className="flex items-center gap-3 bg-slate-800/80 px-4 py-2.5 rounded-xl border border-slate-700 shrink-0">
-          <div className="flex items-center gap-2 text-rose-400">
+        <div className="flex items-center gap-3 bg-white px-4 py-2.5 rounded-xl border border-home-grau/30 shrink-0">
+          <div className="flex items-center gap-2 text-shiraz">
             <Users size={18} />
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
           </div>
           <div>
-            <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Hörsaal-Stimmen</div>
-            <strong className="text-xl font-mono font-extrabold text-white">{formatDeWert(totalVotes)}</strong>
+            <div className="text-[10px] uppercase font-bold text-slate-600 tracking-wider">Hörsaal-Stimmen</div>
+            <strong className="text-xl font-mono font-extrabold text-text-main">{formatDeWert(totalVotes)}</strong>
           </div>
         </div>
       </div>
@@ -351,7 +351,7 @@ export default function LecturePollSession({ lectureId, lectureTitle }: LectureP
                         <span className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${
                           isRevealed && isCorrect
                             ? 'bg-emerald-600 text-white'
-                            : 'bg-slate-800 text-white'
+                            : 'bg-shiraz/10 text-shiraz'
                         }`}>
                           {optionLetters[oIdx]}
                         </span>
@@ -420,7 +420,7 @@ export default function LecturePollSession({ lectureId, lectureTitle }: LectureP
                 onClick={() => setRevealedSolutions(prev => ({ ...prev, [currentQ.id]: !prev[currentQ.id] }))}
                 className={`py-2 px-3.5 rounded-xl font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs ${
                   isRevealed
-                    ? 'bg-slate-700 text-white hover:bg-slate-800'
+                    ? 'bg-shiraz text-white hover:bg-shiraz/90'
                     : 'bg-emerald-600 text-white hover:bg-emerald-700'
                 }`}
               >

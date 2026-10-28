@@ -1,4 +1,4 @@
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeIntl } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -305,7 +305,7 @@ export default function BpMetallisch() {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               <div className="bg-slate-50/80 p-3 rounded-xl border border-home-grau/30">
                 <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-0.5"><MdText text={inhalt.texte.dichteRohdichte} /></span>
-                <span className="text-sm font-extrabold font-mono text-slate-800">{selectedMetal.density.toLocaleString('de-DE')} kg/m³</span>
+                <span className="text-sm font-extrabold font-mono text-slate-800">{formatDeIntl(selectedMetal.density)} kg/m³</span>
               </div>
               <div className="bg-slate-50/80 p-3 rounded-xl border border-home-grau/30">
                 <span className="text-[10px] text-text-main/50 block font-bold uppercase mb-0.5"><MdText text={inhalt.texte.wärmeleitfähigkeit} /></span>
@@ -344,7 +344,7 @@ export default function BpMetallisch() {
                 {selectedMetal.eModul && (
                   <div className="bg-white p-2.5 rounded-lg border border-home-grau/20 shadow-2xs">
                     <span className="text-[10px] text-text-main/50 block font-bold uppercase"><MdText text={inhalt.texte.eModulSteifigkeit} /></span>
-                    <span className="text-xs font-bold font-mono text-slate-800">{selectedMetal.eModul.toLocaleString('de-DE')} N/mm²</span>
+                    <span className="text-xs font-bold font-mono text-slate-800">{formatDeIntl(selectedMetal.eModul)} N/mm²</span>
                   </div>
                 )}
                 {selectedMetal.yieldStrength && (

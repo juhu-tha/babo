@@ -1,4 +1,4 @@
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeIntl } from '@/src/utils/numberFormat';
 import React, { useState } from 'react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -190,7 +190,7 @@ export default function BimBaustoffe() {
                   <div>
                     <div className="flex justify-between items-center mb-1 text-xs">
                       <span className="font-semibold text-slate-900">Zylinder-E-Modulus:</span>
-                      <span className="font-mono text-xs text-shiraz font-bold">{eModulus.toLocaleString('de-DE')} N/mm²</span>
+                      <span className="font-mono text-xs text-shiraz font-bold">{formatDeIntl(eModulus)} N/mm²</span>
                     </div>
                     <input 
                       type="range" 
@@ -230,64 +230,64 @@ export default function BimBaustoffe() {
             </div>
 
             {/* Right Column: Schema Code Output with pseudo Syntax Highlighting */}
-            <div className="lg:col-span-8 p-5 bg-gray-900 border-t lg:border-t-0 border-home-grau/30 flex flex-col">
+            <div className="lg:col-span-8 p-5 bg-off-white border-t lg:border-t-0 border-home-grau/30 flex flex-col">
               <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                 <div className="flex items-center gap-2">
                   <span className="w-3 h-3 rounded-full bg-red-500"></span>
                   <span className="w-3 h-3 rounded-full bg-yellow-500"></span>
                   <span className="w-3 h-3 rounded-full bg-green-500"></span>
-                  <span className="text-xs text-gray-300 font-mono ml-2"><MdText text={inhalt.texte.ifcExpressSchemaPhysical} /></span>
+                  <span className="text-xs text-slate-700 font-mono ml-2"><MdText text={inhalt.texte.ifcExpressSchemaPhysical} /></span>
                 </div>
                 
                 {/* Export & Copy actions */}
                 <div className="flex items-center gap-2">
                   <button
                     onClick={handleCopy}
-                    className="flex items-center gap-1 px-2.5 py-1 bg-gray-800 hover:bg-gray-700 text-white hover:text-shiraz rounded text-[11px] font-bold font-mono transition-all border border-gray-700/50 cursor-pointer"
+                    className="flex items-center gap-1 px-2.5 py-1 bg-white hover:bg-slate-100 text-text-main hover:text-shiraz rounded text-[11px] font-bold font-mono transition-all border border-home-grau/30 cursor-pointer"
                     title={inhalt.werte.codeInZwischenablageKopieren}
                   >
-                    {copied ? <Check size={12} className="text-emerald-400" /> : <Copy size={12} />}
+                    {copied ? <Check size={12} className="text-emerald-700" /> : <Copy size={12} />}
                     <span>{copied ? 'Kopiert!' : 'Kopieren'}</span>
                   </button>
                   <button
                     onClick={handleDownload}
-                    className="flex items-center gap-1 px-2.5 py-1 bg-gray-800 hover:bg-gray-700 text-white hover:text-shiraz rounded text-[11px] font-bold font-mono transition-all border border-gray-700/50 cursor-pointer"
+                    className="flex items-center gap-1 px-2.5 py-1 bg-white hover:bg-slate-100 text-text-main hover:text-shiraz rounded text-[11px] font-bold font-mono transition-all border border-home-grau/30 cursor-pointer"
                     title={inhalt.werte.alsIfcDateiHerunterladen}
                   >
                     <Download size={12} />
                     <span>Download</span>
                   </button>
-                  <span className="text-[10px] bg-gray-800 text-gray-400 font-mono px-2 py-1 rounded font-bold uppercase border border-gray-750"><MdText text={inhalt.texte.iso1030321} /></span>
+                  <span className="text-[10px] bg-white text-slate-600 font-mono px-2 py-1 rounded font-bold uppercase border border-home-grau/30"><MdText text={inhalt.texte.iso1030321} /></span>
                 </div>
               </div>
               
-              <div className="flex-1 bg-gray-950 p-4 rounded-xl font-mono text-[11px] leading-relaxed text-gray-300 overflow-x-auto whitespace-pre select-all shadow-inner">
+              <div className="flex-1 bg-white border border-home-grau/30 p-4 rounded-xl font-mono text-[11px] leading-relaxed text-slate-700 overflow-x-auto whitespace-pre select-all shadow-inner">
                 {/* Visualizing synthetic schema with customized token classes */}
-                <div><span className="text-gray-400"><MdText text={inhalt.texte.bauteilZuweisungsstrukturFürBuilding} /></span></div>
-                <div>#100 = <span className="text-emerald-400 font-bold">IFCWALL</span><MdText text={inhalt.texte.t2x3g5W1s15Aussenwand} /></div>
-                <div>#110 = <span className="text-emerald-400 font-bold">IFCMATERIAL</span>(<span className="text-amber-300">'{archetype.name}'</span>);</div>
-                <div>#120 = <span className="text-emerald-400 font-bold">IFCMATERIALCONSTITUENTSET</span><MdText text={inhalt.texte.schichtstruktur130} /></div>
-                <div>#130 = <span className="text-emerald-400 font-bold">IFCMATERIALCONSTITUENT</span><MdText text={inhalt.texte.t110TragendeSchicht} /></div>
-                <div>#140 = <span className="text-emerald-400 font-bold">IFCRELASSOCIATESMATERIAL</span><MdText text={inhalt.texte.t3j7y15MaterialAssoc} /></div>
+                <div><span className="text-slate-600"><MdText text={inhalt.texte.bauteilZuweisungsstrukturFürBuilding} /></span></div>
+                <div>#100 = <span className="text-emerald-700 font-bold">IFCWALL</span><MdText text={inhalt.texte.t2x3g5W1s15Aussenwand} /></div>
+                <div>#110 = <span className="text-emerald-700 font-bold">IFCMATERIAL</span>(<span className="text-amber-700">'{archetype.name}'</span>);</div>
+                <div>#120 = <span className="text-emerald-700 font-bold">IFCMATERIALCONSTITUENTSET</span><MdText text={inhalt.texte.schichtstruktur130} /></div>
+                <div>#130 = <span className="text-emerald-700 font-bold">IFCMATERIALCONSTITUENT</span><MdText text={inhalt.texte.t110TragendeSchicht} /></div>
+                <div>#140 = <span className="text-emerald-700 font-bold">IFCRELASSOCIATESMATERIAL</span><MdText text={inhalt.texte.t3j7y15MaterialAssoc} /></div>
                 <br />
-                <div><span className="text-gray-400"><MdText text={inhalt.texte.propertySetMechanischeWerkstoffdaten} /></span></div>
-                <div>#150 = <span className="text-blue-400 font-bold">IFCMATERIALPROPERTIES</span><MdText text={inhalt.texte.psetMaterialcommon160110} /></div>
-                <div>#155 = <span className="text-blue-400 font-bold">IFCMATERIALPROPERTIES</span><MdText text={inhalt.texte.psetMaterialmechanical170110} /></div>
-                <div>#160 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span><MdText text={inhalt.texte.massdensity} /><span className="text-yellow-400">IFCMASSDENSITYMEASURE</span>({formatDeZahl(density, 1)}), $);</div>
-                <div>#170 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span><MdText text={inhalt.texte.youngmodulus} /><span className="text-yellow-400">IFCMODULUSOFELASTICITYMEASURE</span>({formatDeZahl(eModulus, 1)}), $);</div>
+                <div><span className="text-slate-600"><MdText text={inhalt.texte.propertySetMechanischeWerkstoffdaten} /></span></div>
+                <div>#150 = <span className="text-blue-700 font-bold">IFCMATERIALPROPERTIES</span><MdText text={inhalt.texte.psetMaterialcommon160110} /></div>
+                <div>#155 = <span className="text-blue-700 font-bold">IFCMATERIALPROPERTIES</span><MdText text={inhalt.texte.psetMaterialmechanical170110} /></div>
+                <div>#160 = <span className="text-pink-700 font-bold">IFCPROPERTYSINGLEVALUE</span><MdText text={inhalt.texte.massdensity} /><span className="text-yellow-700">IFCMASSDENSITYMEASURE</span>({formatDeZahl(density, 1)}), $);</div>
+                <div>#170 = <span className="text-pink-700 font-bold">IFCPROPERTYSINGLEVALUE</span><MdText text={inhalt.texte.youngmodulus} /><span className="text-yellow-700">IFCMODULUSOFELASTICITYMEASURE</span>({formatDeZahl(eModulus, 1)}), $);</div>
                 <br />
-                <div><span className="text-gray-400"><MdText text={inhalt.texte.propertySetThermischeEigenschaften} /></span></div>
-                <div>#180 = <span className="text-blue-400 font-bold">IFCMATERIALPROPERTIES</span><MdText text={inhalt.texte.psetMaterialthermal190110} /></div>
-                <div>#190 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span><MdText text={inhalt.texte.thermalconductivity} /><span className="text-yellow-400">IFCTHERMALCONDUCTIVITYMEASURE</span>({formatDeZahl(conductivity, 3)}), $);</div>
+                <div><span className="text-slate-600"><MdText text={inhalt.texte.propertySetThermischeEigenschaften} /></span></div>
+                <div>#180 = <span className="text-blue-700 font-bold">IFCMATERIALPROPERTIES</span><MdText text={inhalt.texte.psetMaterialthermal190110} /></div>
+                <div>#190 = <span className="text-pink-700 font-bold">IFCPROPERTYSINGLEVALUE</span><MdText text={inhalt.texte.thermalconductivity} /><span className="text-yellow-700">IFCTHERMALCONDUCTIVITYMEASURE</span>({formatDeZahl(conductivity, 3)}), $);</div>
                 <br />
-                <div><span className="text-gray-400"><MdText text={inhalt.texte.projektspezifischesPropertySetKein} /></span></div>
-                <div>#200 = <span className="text-blue-400 font-bold">IFCMATERIALPROPERTIES</span><MdText text={inhalt.texte.cpsetUmweltdaten210110} /></div>
-                <div>#210 = <span className="text-pink-400 font-bold">IFCPROPERTYSINGLEVALUE</span><MdText text={inhalt.texte.gwpA1A3} /><span className="text-yellow-400">IFCREAL</span>({formatDeZahl(gwp, 2)}), $);</div>
+                <div><span className="text-slate-600"><MdText text={inhalt.texte.projektspezifischesPropertySetKein} /></span></div>
+                <div>#200 = <span className="text-blue-700 font-bold">IFCMATERIALPROPERTIES</span><MdText text={inhalt.texte.cpsetUmweltdaten210110} /></div>
+                <div>#210 = <span className="text-pink-700 font-bold">IFCPROPERTYSINGLEVALUE</span><MdText text={inhalt.texte.gwpA1A3} /><span className="text-yellow-700">IFCREAL</span>({formatDeZahl(gwp, 2)}), $);</div>
               </div>
 
               {/* Explanatory footer */}
-              <div className="mt-3 text-[10px] text-gray-300 font-normal leading-relaxed">
-                <span className="text-shiraz font-bold">Info:</span><MdText text={inhalt.texte.inDerIfcDatei} /><span className="text-mono bg-gray-800 text-gray-300 px-1 py-0.2 rounded">IFCWALL</span><MdText text={inhalt.texte.überBeziehungsentitäten} /><span className="text-mono bg-gray-800 text-gray-300 px-1 py-0.2 rounded">IFCREL...</span><MdText text={inhalt.texte.sauberVonMaterialressourcen} /><span className="text-mono bg-gray-800 text-gray-300 px-1 py-0.2 rounded">IFCMATERIAL</span><MdText text={inhalt.texte.undAttributSets} /><span className="text-mono bg-gray-800 text-gray-300 px-1 py-0.2 rounded">Pset_*</span><MdText text={inhalt.texte.getrenntDeklariertDiesErmöglicht} /></div>
+              <div className="mt-3 text-[10px] text-slate-700 font-normal leading-relaxed">
+                <span className="text-shiraz font-bold">Info:</span><MdText text={inhalt.texte.inDerIfcDatei} /><span className="text-mono bg-white text-slate-700 px-1 py-0.2 rounded">IFCWALL</span><MdText text={inhalt.texte.überBeziehungsentitäten} /><span className="text-mono bg-white text-slate-700 px-1 py-0.2 rounded">IFCREL...</span><MdText text={inhalt.texte.sauberVonMaterialressourcen} /><span className="text-mono bg-white text-slate-700 px-1 py-0.2 rounded">IFCMATERIAL</span><MdText text={inhalt.texte.undAttributSets} /><span className="text-mono bg-white text-slate-700 px-1 py-0.2 rounded">Pset_*</span><MdText text={inhalt.texte.getrenntDeklariertDiesErmöglicht} /></div>
             </div>
 
           </div>

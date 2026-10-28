@@ -1,7 +1,7 @@
 import type { Dispatch, SetStateAction } from 'react';
 import { Beaker, Layers, CheckCircle2, Calculator, BookOpen, Scale, Award, Building2, Sliders } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeIntl } from '@/src/utils/numberFormat';
 import inhalt from '@/content/materialoptimierung/DafstbRichtlinieTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
@@ -335,13 +335,13 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
               <div>
                 <span className="text-xs text-slate-500 block"><MdText text={inhalt.texte.referenzCemIBof} /></span>
                 <strong className="text-lg font-bold text-slate-700 line-through decoration-slate-400">
-                  {dafstbCalc.refTotalGwp.toLocaleString('de-DE')} kg
+                  {formatDeIntl(dafstbCalc.refTotalGwp)} kg
                 </strong>
               </div>
               <div className="text-right">
                 <span className="text-xs text-slate-500 block">DAfStb-Optimiert:</span>
                 <strong className="text-2xl font-black text-shiraz">
-                  {dafstbCalc.optTotalGwp.toLocaleString('de-DE')} kg
+                  {formatDeIntl(dafstbCalc.optTotalGwp)} kg
                 </strong>
               </div>
             </div>
@@ -349,7 +349,7 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
             <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
               <span className="text-slate-600"><MdText text={inhalt.texte.eingespartesCoÄquivalent} /></span>
               <span className="font-extrabold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                - {dafstbCalc.diffAbs.toLocaleString('de-DE')} kg CO₂-eq
+                - {formatDeIntl(dafstbCalc.diffAbs)} kg CO₂-eq
               </span>
             </div>
           </div>
@@ -417,8 +417,8 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
             {/* Reference bar */}
             <div>
               <div className="flex justify-between text-[11px] text-slate-600 mb-1">
-                <span>Referenz ({dafstbCalc.refTotalGwp.toLocaleString('de-DE')} kg CO₂)</span>
-                <span>Beton: {dafstbCalc.refConcreteGwpTotal.toLocaleString('de-DE')} kg | Stahl: {dafstbCalc.refSteelGwpTotal.toLocaleString('de-DE')} kg</span>
+                <span>Referenz ({formatDeIntl(dafstbCalc.refTotalGwp)} kg CO₂)</span>
+                <span>Beton: {formatDeIntl(dafstbCalc.refConcreteGwpTotal)} kg | Stahl: {formatDeIntl(dafstbCalc.refSteelGwpTotal)} kg</span>
               </div>
               <div className="h-4 w-full rounded-md bg-slate-200 overflow-hidden flex">
                 <div 
@@ -437,8 +437,8 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
             {/* Optimized bar */}
             <div>
               <div className="flex justify-between text-[11px] text-slate-600 mb-1">
-                <span className="font-bold text-emerald-800">Optimiert ({dafstbCalc.optTotalGwp.toLocaleString('de-DE')} kg CO₂)</span>
-                <span>Beton: {dafstbCalc.optConcreteGwpTotal.toLocaleString('de-DE')} kg | Stahl: {dafstbCalc.optSteelGwpTotal.toLocaleString('de-DE')} kg</span>
+                <span className="font-bold text-emerald-800">Optimiert ({formatDeIntl(dafstbCalc.optTotalGwp)} kg CO₂)</span>
+                <span>Beton: {formatDeIntl(dafstbCalc.optConcreteGwpTotal)} kg | Stahl: {formatDeIntl(dafstbCalc.optSteelGwpTotal)} kg</span>
               </div>
               <div className="h-4 w-full rounded-md bg-slate-200 overflow-hidden flex">
                 <div 

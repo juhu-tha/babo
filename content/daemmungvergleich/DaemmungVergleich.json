@@ -62,12 +62,12 @@
       {
         "titel": "Dampfdruck der Raumluft",
         "erklaerung": "Raumklima 20 °C / 50 % r. F. (Sättigungsdampfdruck nach Magnus-Formel):",
-        "formel": "p = 0{,}50 \\cdot 2\\,337 = 1\\,169\\,\\text{Pa}"
+        "formel": "p = 0{,}50 \\cdot 2337 = 1169\\,\\text{Pa}"
       },
       {
         "titel": "Schimmelkriterium",
         "erklaerung": "An der Oberfläche darf die relative Feuchte 80 % nicht überschreiten:",
-        "formel": "p_{sat}(\\theta_{si,min}) = \\frac{1\\,169}{0{,}80} = 1\\,461\\,\\text{Pa} \\Rightarrow \\theta_{si,min} = 12{,}6\\,^\\circ\\text{C}"
+        "formel": "p_{sat}(\\theta_{si,min}) = \\frac{1169}{0{,}80} = 1461\\,\\text{Pa} \\Rightarrow \\theta_{si,min} = 12{,}6\\,^\\circ\\text{C}"
       },
       {
         "titel": "Temperaturfaktor",

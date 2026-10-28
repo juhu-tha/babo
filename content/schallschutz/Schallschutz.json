@@ -64,7 +64,7 @@
       {
         "titel": "Flächenbezogene Masse",
         "erklaerung": "KS 17,5 cm (ρ = 2000 kg/m³) mit beidseitig 1,5 cm Gipsputz (ρ = 1000 kg/m³):",
-        "formel": "m' = 0{,}175 \\cdot 2\\,000 + 2 \\cdot 0{,}015 \\cdot 1\\,000 = 350 + 30 = 380\\,\\text{kg/m}^2"
+        "formel": "m' = 0{,}175 \\cdot 2000 + 2 \\cdot 0{,}015 \\cdot 1000 = 350 + 30 = 380\\,\\text{kg/m}^2"
       },
       {
         "titel": "Schalldämm-Maß",

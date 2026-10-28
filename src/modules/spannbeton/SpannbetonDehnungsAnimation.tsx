@@ -304,11 +304,11 @@ export default function SpannbetonDehnungsAnimation() {
             <div className="flex justify-between text-[10px] text-slate-400 font-mono px-1">
               <span>0 kN</span>
               <span>500 kN</span>
-              <span>1.000 kN</span>
-              <span>1.500 kN</span>
-              <span>2.000 kN</span>
-              <span>2.500 kN</span>
-              <span>3.000 kN</span>
+              <span>1000 kN</span>
+              <span>1500 kN</span>
+              <span>2000 kN</span>
+              <span>2500 kN</span>
+              <span>3000 kN</span>
             </div>
           </div>
 
@@ -320,7 +320,7 @@ export default function SpannbetonDehnungsAnimation() {
               onClick={() => handleJumpTo(0)}
               className={`px-2.5 py-1 rounded-lg text-[11px] font-bold border transition-all cursor-pointer ${
                 prestressForce === 0
-                  ? 'bg-slate-800 text-white border-slate-800 shadow-2xs'
+                  ? 'bg-shiraz text-white border-shiraz shadow-2xs'
                   : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-300'
               }`}
             ><MdText text={inhalt.texte.t1P0Kn} /></button>

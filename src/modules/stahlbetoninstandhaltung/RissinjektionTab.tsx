@@ -78,7 +78,7 @@ export default function RissinjektionTab({ bauteilDicke, crackActivity, crackMoi
                 onClick={() => setCrackActivity('ruhend')}
                 className={`p-2 rounded-lg border text-center transition-all cursor-pointer ${
                   crackActivity === 'ruhend' 
-                    ? 'bg-slate-800 text-white border-slate-800 font-bold' 
+                    ? 'bg-shiraz text-white border-shiraz font-bold' 
                     : 'bg-white text-slate-700 border-home-grau/30 hover:bg-slate-100'
                 }`}
               ><MdText text={inhalt.texte.ruhenderRissW0} /></button>
@@ -87,7 +87,7 @@ export default function RissinjektionTab({ bauteilDicke, crackActivity, crackMoi
                 onClick={() => setCrackActivity('dynamisch')}
                 className={`p-2 rounded-lg border text-center transition-all cursor-pointer ${
                   crackActivity === 'dynamisch' 
-                    ? 'bg-slate-800 text-white border-slate-800 font-bold' 
+                    ? 'bg-shiraz text-white border-shiraz font-bold' 
                     : 'bg-white text-slate-700 border-home-grau/30 hover:bg-slate-100'
                 }`}
               ><MdText text={inhalt.texte.dynamischBewegtW0} /></button>

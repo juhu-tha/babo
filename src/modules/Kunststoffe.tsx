@@ -1,5 +1,5 @@
 import type { Scale } from 'chart.js';
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeIntl } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import {
   Chart as ChartJS,
@@ -186,7 +186,7 @@ export default function Kunststoffe() {
         ticks: {
           callback: function(value: string | number) {
             if (value === 0.1 || value === 1 || value === 10 || value === 100 || value === 1000 || value === 10000) {
-              return value;
+              return formatDeIntl(Number(value));
             }
             return null;
           }

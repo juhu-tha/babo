@@ -159,8 +159,8 @@ export default function ProbenahmePlaner() {
               />
               <div className="flex justify-between text-[10px] text-slate-400 font-mono mt-1">
                 <span>50 m²</span>
-                <span>1.500 m²</span>
-                <span>3.000 m²</span>
+                <span>1500 m²</span>
+                <span>3000 m²</span>
               </div>
             </div>
 

@@ -118,7 +118,7 @@ export function TimberDurabilitySimulator() {
         <div className="lg:col-span-7 flex flex-col gap-4">
           <div className="bg-slate-100 border border-home-grau/30 p-4 rounded-xl space-y-1.5 text-slate-900 animate-in fade-in">
             <div className="flex items-center gap-2">
-              <span className="bg-slate-800 text-white text-xs px-2.5 py-0.5 rounded-full font-black font-mono">
+              <span className="bg-shiraz text-white text-xs px-2.5 py-0.5 rounded-full font-black font-mono">
                 {gkInfo.gk}
               </span>
               <span className="text-xs font-bold">{gkInfo.name}</span>

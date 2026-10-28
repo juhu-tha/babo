@@ -162,7 +162,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 39 korrigiert, 0 fraglich, 0
 
 ### qn_carbonbeton_1 · Carbonbeton
 
-- **Frage:** Carbonbetonplatte: h = 30 mm, c = 10 mm (d = h − c), a_tex = 80 mm²/m, f_tk = 3 000 N/mm² (γ_tex = 1,3), C45/55 mit f_cd = 0,85·45/1,5. Welches Moment m_Rd ergibt sich vereinfacht mit y = F_t/(b·f_cd) und z = d − y/2?
+- **Frage:** Carbonbetonplatte: h = 30 mm, c = 10 mm (d = h − c), a_tex = 80 mm²/m, f_tk = 3000 N/mm² (γ_tex = 1,3), C45/55 mit f_cd = 0,85·45/1,5. Welches Moment m_Rd ergibt sich vereinfacht mit y = F_t/(b·f_cd) und z = d − y/2?
 - **Richtige Antwort:** rund 3,0 kNm/m
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
 - [x] ok
@@ -170,7 +170,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 39 korrigiert, 0 fraglich, 0
 
 ### qn_carbonbeton_2 · Carbonbeton
 
-- **Frage:** h = 40 mm, c = 10 mm, f_tk = 2 500 N/mm², C50/60: Wird a_tex von 100 auf 200 mm²/m verdoppelt, steigt m_Rd nur von rund 5,1 auf rund 8,9 kNm/m. Warum nicht auf das Doppelte?
+- **Frage:** h = 40 mm, c = 10 mm, f_tk = 2500 N/mm², C50/60: Wird a_tex von 100 auf 200 mm²/m verdoppelt, steigt m_Rd nur von rund 5,1 auf rund 8,9 kNm/m. Warum nicht auf das Doppelte?
 - **Richtige Antwort:** Die Druckzone y wächst mit, der Hebelarm z = d − y/2 wird kleiner
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
 - [x] ok
@@ -234,7 +234,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 39 korrigiert, 0 fraglich, 0
 
 ### qn_innovative_werkstoffe_1 · Entwicklungen
 
-- **Frage:** 3D-Druck: ρ = 2 000 kg/m³, Zielhöhe H = 0,5 m, τ₀,₀ = 500 Pa, Thixotropierate A_thix = 100 Pa/min. Mit τ₀(t) = τ₀,₀ + A_thix·t und τ_req = ρ·g·H/√3: Welche Steigrate darf höchstens gewählt werden?
+- **Frage:** 3D-Druck: ρ = 2000 kg/m³, Zielhöhe H = 0,5 m, τ₀,₀ = 500 Pa, Thixotropierate A_thix = 100 Pa/min. Mit τ₀(t) = τ₀,₀ + A_thix·t und τ_req = ρ·g·H/√3: Welche Steigrate darf höchstens gewählt werden?
 - **Richtige Antwort:** rund 0,58 m/h
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Rückmeldung: „Tresca“ → „von Mises“ · bereits freigegeben (verified)
 - [x] ok
@@ -306,7 +306,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 39 korrigiert, 0 fraglich, 0
 
 ### qn_spannbeton_1 · Spannbeton
 
-- **Frage:** Kriechen und Schwinden verkürzen den Beton um Δε = 1,2 ‰. Wie groß ist der Spannungsverlust einer Litze Y1860 (E_p = 195 000 N/mm², σ_pm0 = 1 360 N/mm²) in Prozent von σ_pm0?
+- **Frage:** Kriechen und Schwinden verkürzen den Beton um Δε = 1,2 ‰. Wie groß ist der Spannungsverlust einer Litze Y1860 (E_p = 195 000 N/mm², σ_pm0 = 1360 N/mm²) in Prozent von σ_pm0?
 - **Richtige Antwort:** rund 17 %
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
 - [x] ok
@@ -326,7 +326,7 @@ Auswahl deterministisch (Sortierung nach FNV-1a-Hash der Frage-ID), damit die St
 
 ### q_hyf_2 · Hydratation & Folgen
 
-- **Frage:** z = 280 kg/m³ LH-Zement mit Q = 250 kJ/kg, c·ρ = 2 500 kJ/(m³·K). Wie groß ist ΔT_ad?
+- **Frage:** z = 280 kg/m³ LH-Zement mit Q = 250 kJ/kg, c·ρ = 2500 kJ/(m³·K). Wie groß ist ΔT_ad?
 - **Richtige Antwort:** rund 28 K
 - **Auffälligkeit:** keine – Vorprüfung „ok“
 - [x] ok

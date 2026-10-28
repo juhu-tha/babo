@@ -18,7 +18,7 @@
     "dieSpezifischeWärmekapazitätBeschreibt": "Die spezifische Wärmekapazität beschreibt die thermische Speicherfähigkeit eines Baustoffs. Sie gibt an, wie viel Wärmeenergie benötigt wird, um 1 kg eines Stoffes um 1 K zu erwärmen.",
     "qZugeführteWärmemengeKj": "Q = Zugeführte Wärmemenge [kJ] | m = Bauteilmasse [kg] | c = spez. Wärmekapazität [J / (kg · K)] | \\Delta T = Temperaturhub [K]",
     "einfacheBeispielrechnung2": "🔢 Einfache Beispielrechnung:",
-    "q500Kg2": "Q = 500 kg · 2,1 kJ/(kg·K) · 10 K = 10.500 kJ (ca. 2,92 kWh)",
+    "q500Kg2": "Q = 500 kg · 2,1 kJ/(kg·K) · 10 K = 10 500 kJ (ca. 2,92 kWh)",
     "eineHolzweichfaserwandMitMasse": "Eine Holzweichfaserwand mit Masse $m = 500 \\text{ kg}$ ($c = 2100 \\text{ J/(kg·K)} = 2{,}1 \\text{ kJ/(kg·K)}$) erwärmt sich um $\\Delta T = 10 \\text{ K}$.",
     "spezifischeWärmekapazitätC": "Spezifische Wärmekapazität (c)",
     "jKgK": " J / (kg · K)",

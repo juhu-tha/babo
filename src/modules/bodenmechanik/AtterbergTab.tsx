@@ -87,7 +87,7 @@ export default function AtterbergTab() {
               ))}
             </tbody>
           </table>
-          <button type="button" disabled={versuche.length >= 8} onClick={() => setVersuche(x => [...x, { schlaege: 25, w: 40 }])} className="self-start text-xs bg-orange-800 text-white px-3 py-1.5 rounded-lg hover:bg-torch-red disabled:opacity-40">{inhalt.werte.hinzufuegen}</button>
+          <button type="button" disabled={versuche.length >= 8} onClick={() => setVersuche(x => [...x, { schlaege: 25, w: 40 }])} className="self-start text-xs bg-shiraz text-white px-3 py-1.5 rounded-lg hover:bg-torch-red disabled:opacity-40">{inhalt.werte.hinzufuegen}</button>
           <div>
             <label htmlFor="atterberg-ausroll" className="text-sm font-medium text-text-main block mb-1">{inhalt.werte.ausroll}</label>
             <input id="atterberg-ausroll" type="text" inputMode="decimal" className={feld} value={ausrollText} onChange={e => setAusrollText(e.target.value)} />
@@ -99,16 +99,16 @@ export default function AtterbergTab() {
           </label>
         </section>
 
-        <section className="bg-orange-800 text-white p-5 rounded-2xl shadow-md flex flex-col gap-3" aria-live="polite">
+        <section className="bg-off-white border border-home-grau/30 text-text-main p-5 rounded-2xl shadow-md flex flex-col gap-3" aria-live="polite">
           <h3 className="text-sm font-bold uppercase tracking-wider opacity-90"><MdText text={inhalt.texte.ergebnisTitel} /></h3>
           <dl className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
-            <dt className="text-white/80"><FormulaText text="Fließgrenze $w_L$" /></dt><dd className="text-xl font-bold">{formatDeZahl(r.wL, 1)} % <span className="text-xs font-normal">({fl.verfahren === 'einpunkt' ? 'Einpunkt' : 'Mehrpunkt'})</span></dd>
-            {fl.verfahren === 'mehrpunkt' && <><dt className="text-white/80"><FormulaText text="$R^2$ der Fließkurve" /></dt><dd className="font-semibold">{formatDeZahl(fl.r2, 3)}</dd></>}
-            <dt className="text-white/80"><FormulaText text="Ausrollgrenze $w_P$" /></dt><dd className="font-semibold">{formatDeZahl(r.wP, 1)} %</dd>
-            <dt className="text-white/80"><FormulaText text="Plastizitätszahl $I_P$" /></dt><dd className="font-semibold">{formatDeZahl(r.iP, 1)} %</dd>
-            <dt className="text-white/80"><FormulaText text="Konsistenzzahl $I_C$" /></dt><dd className="font-semibold">{formatDeZahl(r.iC, 2)} ({r.zustand})</dd>
-            <dt className="text-white/80"><FormulaText text="A-Linie bei $w_L$" /></dt><dd className="font-semibold">{formatDeZahl(r.gruppe?.aLinie, 1)} %</dd>
-            <dt className="text-white/80">Bodengruppe (DIN 18196)</dt><dd className="text-xl font-bold">{r.gruppe?.text ?? '–'}</dd>
+            <dt className="text-slate-600"><FormulaText text="Fließgrenze $w_L$" /></dt><dd className="text-xl font-bold">{formatDeZahl(r.wL, 1)} % <span className="text-xs font-normal">({fl.verfahren === 'einpunkt' ? 'Einpunkt' : 'Mehrpunkt'})</span></dd>
+            {fl.verfahren === 'mehrpunkt' && <><dt className="text-slate-600"><FormulaText text="$R^2$ der Fließkurve" /></dt><dd className="font-semibold">{formatDeZahl(fl.r2, 3)}</dd></>}
+            <dt className="text-slate-600"><FormulaText text="Ausrollgrenze $w_P$" /></dt><dd className="font-semibold">{formatDeZahl(r.wP, 1)} %</dd>
+            <dt className="text-slate-600"><FormulaText text="Plastizitätszahl $I_P$" /></dt><dd className="font-semibold">{formatDeZahl(r.iP, 1)} %</dd>
+            <dt className="text-slate-600"><FormulaText text="Konsistenzzahl $I_C$" /></dt><dd className="font-semibold">{formatDeZahl(r.iC, 2)} ({r.zustand})</dd>
+            <dt className="text-slate-600"><FormulaText text="A-Linie bei $w_L$" /></dt><dd className="font-semibold">{formatDeZahl(r.gruppe?.aLinie, 1)} %</dd>
+            <dt className="text-slate-600">Bodengruppe (DIN 18196)</dt><dd className="text-xl font-bold">{r.gruppe?.text ?? '–'}</dd>
           </dl>
           <EingabeHinweise hinweise={r.hinweise} />
         </section>

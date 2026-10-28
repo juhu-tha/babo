@@ -63,8 +63,8 @@
       {
         "gas": "SF₆",
         "name": "Schwefelhexafluorid",
-        "factor": "24.300",
-        "units": "24.300 kg CO₂-eq",
+        "factor": "24 300",
+        "units": "24 300 kg CO₂-eq",
         "desc": "stärkstes THG (z.B. Isoliergase)"
       }
     ],
@@ -141,7 +141,7 @@
       },
       {
         "formel": "\\text{GWP}_{\\text{life-cycle}} = \\frac{\\text{GWP}_{\\text{emb}} + \\sum_{t=1}^{50} \\text{GWP}_{\\text{use}}(t) + \\text{GWP}_{\\text{EoL}}}{A_{\\text{NFA}} \\cdot 50\\,\\text{a}} \\quad [\\text{kg CO}_2\\text{e/(m}^2\\cdot\\text{a})]",
-        "erklaerung": "Lebenszyklus-GWP nach EPBD (EU 2024/1275) Art. 7 und Anhang III: Berechnung und Offenlegung für Neubauten ab 01.01.2028 (Nutzfläche > 1 000 m²) bzw. ab 01.01.2030 (alle Neubauten), Betrachtungszeitraum 50 Jahre.",
+        "erklaerung": "Lebenszyklus-GWP nach EPBD (EU 2024/1275) Art. 7 und Anhang III: Berechnung und Offenlegung für Neubauten ab 01.01.2028 (Nutzfläche > 1000 m²) bzw. ab 01.01.2030 (alle Neubauten), Betrachtungszeitraum 50 Jahre.",
         "quelle": "EPBD (EU 2024/1275) / DIN EN 15978"
       },
       {

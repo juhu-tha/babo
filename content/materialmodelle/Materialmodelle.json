@@ -153,8 +153,8 @@
     "Materialmodelle.schritte": [
       {
         "titel": "Gegeben",
-        "erklaerung": "Bilineares Modell: f_y = 500 MPa, E = 200 000 MPa, Verfestigungsmodul E_t = 2 000 MPa; Stab wird bis ε_max = 20 ‰ gedehnt und entlastet.",
-        "formel": "f_y = 500\\,\\text{MPa},\\; E = 200\\,000\\,\\text{MPa},\\; E_t = 2\\,000\\,\\text{MPa}"
+        "erklaerung": "Bilineares Modell: f_y = 500 MPa, E = 200 000 MPa, Verfestigungsmodul E_t = 2000 MPa; Stab wird bis ε_max = 20 ‰ gedehnt und entlastet.",
+        "formel": "f_y = 500\\,\\text{MPa},\\; E = 200\\,000\\,\\text{MPa},\\; E_t = 2000\\,\\text{MPa}"
       },
       {
         "titel": "Fließdehnung",
@@ -164,12 +164,12 @@
       {
         "titel": "Höchstspannung",
         "erklaerung": "Verfestigungsast bis ε_max:",
-        "formel": "\\sigma_{max} = 500 + 2\\,000 \\cdot (0{,}020 - 0{,}0025) = 535\\,\\text{MPa}"
+        "formel": "\\sigma_{max} = 500 + 2000 \\cdot (0{,}020 - 0{,}0025) = 535\\,\\text{MPa}"
       },
       {
         "titel": "Entlastung",
         "erklaerung": "Rückfederung parallel zur Hookeschen Geraden:",
-        "formel": "\\varepsilon_p = 20 - \\frac{535}{200\\,000} \\cdot 1\\,000 = 20 - 2{,}68 = 17{,}3\\,\\char8240"
+        "formel": "\\varepsilon_p = 20 - \\frac{535}{200\\,000} \\cdot 1000 = 20 - 2{,}68 = 17{,}3\\,\\char8240"
       }
     ],
     "Materialmodelle.schritte_2": [

@@ -175,7 +175,7 @@
       {
         "titel": "Ergebnis",
         "erklaerung": "Länge, bei der ein frei hängender Stab an der Aufhängung reißt:",
-        "formel": "L = \\frac{360 \\cdot 10^{6}}{7850 \\cdot 9{,}81} = 4\\,675\\,\\text{m} \\approx 4{,}7\\,\\text{km}"
+        "formel": "L = \\frac{360 \\cdot 10^{6}}{7850 \\cdot 9{,}81} = 4675\\,\\text{m} \\approx 4{,}7\\,\\text{km}"
       }
     ],
     "Festigkeitsberechnungen.regelwerke": [

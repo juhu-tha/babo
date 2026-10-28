@@ -84,7 +84,7 @@
       {
         "titel": "90 Minuten",
         "erklaerung": "Feuerbeständig (F 90 / R 90):",
-        "formel": "\\theta_g = 20 + 345 \\cdot \\lg 721 = 1\\,006\\,^\\circ\\text{C}"
+        "formel": "\\theta_g = 20 + 345 \\cdot \\lg 721 = 1006\\,^\\circ\\text{C}"
       }
     ],
     "Brandschutz.schritte_2": [

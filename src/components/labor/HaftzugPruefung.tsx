@@ -745,7 +745,7 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
                       onClick={() => setShowGrid(!showGrid)}
                       className={`px-2 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer border ${
                         showGrid
-                          ? 'bg-slate-800 text-white border-slate-800 shadow-xs'
+                          ? 'bg-shiraz text-white border-shiraz shadow-xs'
                           : 'bg-white text-text-main/80 border-home-grau/30 hover:bg-slate-100'
                       }`}
                     >

@@ -164,7 +164,7 @@
     ],
     "Systemarchitektur.techDetails.ml.datenanforderungen": {
       "inputFormat": "Tabellarische Daten (CSV, Parquet, SQL-Datenbanken)",
-      "datenvolumen": "100 bis 50.000 kalibrierte Labor- oder Baustellenmesspunkte",
+      "datenvolumen": "100 bis 50 000 kalibrierte Labor- oder Baustellenmesspunkte",
       "latenz": "Inferenzzeit < 1 Millisekunde pro Einzelvorhersage",
       "hardware": "Standard-CPU (keine Hochleistungs-GPU erforderlich)"
     },
@@ -216,7 +216,7 @@
     ],
     "Systemarchitektur.techDetails.dl.datenanforderungen": {
       "inputFormat": "Matrizen, Tensoren, FE-Netze (Mesh-Objekte), Rohbilder",
-      "datenvolumen": "10.000 bis 1.000.000 Trainingszustände (oft synthetisch via FEM generiert)",
+      "datenvolumen": "10 000 bis 1 000 000 Trainingszustände (oft synthetisch via FEM generiert)",
       "latenz": "Inferenz 2–50 ms; Trainingszeit mehrere Stunden bis Tage auf GPUs",
       "hardware": "Dedizierte Tensor-Recheneinheiten (NVIDIA CUDA / Tensor Cores)"
     },
@@ -268,7 +268,7 @@
     ],
     "Systemarchitektur.techDetails.llm.datenanforderungen": {
       "inputFormat": "Unstrukturierter Fließtext, Markdown, PDF-Extrakte, JSON",
-      "datenvolumen": "Kontextfenster von 8.000 bis zu 2.000.000 Tokens (ganze Projektordner)",
+      "datenvolumen": "Kontextfenster von 8000 bis zu 2 000 000 Tokens (ganze Projektordner)",
       "latenz": "15 bis 100 Tokens pro Sekunde (1–10 Sekunden pro Antwort)",
       "hardware": "Server-Cluster für Cloud-APIs oder High-End Workstation (VRAM-intensiv)"
     },
@@ -371,7 +371,7 @@
     ],
     "Systemarchitektur.techDetails.vision.datenanforderungen": {
       "inputFormat": "Hochauflösende RGB-Bilder (RAW/JPG), Drohnen-Orthofotos, LiDAR-Punktwolken (.las, .e57)",
-      "datenvolumen": "10 bis 10.000 Fotos pro Inspektionsbefliegung (Gigabyte-Bereich)",
+      "datenvolumen": "10 bis 10 000 Fotos pro Inspektionsbefliegung (Gigabyte-Bereich)",
       "latenz": "Echtzeit (30 fps) für Sicherheits-Kameras; Batch-Verarbeitung für 3D-Inspektionen",
       "hardware": "GPU-Cluster für 3D-Photogrammetrie und Deep-Learning-Segmentierung"
     },

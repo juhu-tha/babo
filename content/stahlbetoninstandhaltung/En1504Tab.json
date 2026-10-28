@@ -20,7 +20,7 @@
     "aufgeklebteLamellenAussenCfk": "**Aufgeklebte Lamellen (Aussen):** CFK-Lamellen werden mittels Epoxidharzkleber direkt auf die vorbehandelte Beton-Zugzone geklebt. Typisch bei Deckenbalken zur Biegemomenterhöhung.",
     "inSchlitzeEingeklebteLamellen": "**In Schlitze eingeklebte Lamellen (Schlitzlamellen):** Schlitze werden ca. 15-25 mm tief in den Beton gefräst. Kohlenstoff-Streifen werden hochkant eingeschlitzt und verklebt. Bietet extrem guten Verbund und ist brandschutztechnisch geschützter.",
     "bruchmechanischerGrenznachweisVerbundbru": "Bruchmechanischer Grenznachweis (Verbundbruch):",
-    "dieHoheZugfestigkeitDes": "Die hohe Zugfestigkeit des CFK (ca. 3.000 N/mm²) kann nur ausgenutzt werden, wenn kein Schälbruch eintritt. Der Verbundversatz wird limitiert durch die maximale Verankerungskraft (F_bd), welche stark von der Betonzugfestigkeit abhängt:",
+    "dieHoheZugfestigkeitDes": "Die hohe Zugfestigkeit des CFK (ca. 3000 N/mm²) kann nur ausgenutzt werden, wenn kein Schälbruch eintritt. Der Verbundversatz wird limitiert durch die maximale Verankerungskraft (F_bd), welche stark von der Betonzugfestigkeit abhängt:",
     "wobeiGCbdDie": "Wobei G_cbd die spezifische Verbundenergie und E_f der Elastizitätsmodul des Materials sind. Die Betonoberflächen-Abreißfestigkeit muss zwingend ≥ 1,5 N/mm² betragen.",
     "brandschutzEinschränkung": "🛡️ Brandschutz & Einschränkung:",
     "epoxidharzKlebstoffeSindHitzeempfindlich": "Epoxidharz-Klebstoffe sind hitzeempfindlich. Ab ca. 55-80°C (Glasübergangstemperatur T_g) verliert der Kleber seine Wirksamkeit. Daher müssen CFK-Systeme im Hochbau fast immer mit Brandschutzdecken oder dämmschichtbildenden Beschichtungen geschützt werden.",

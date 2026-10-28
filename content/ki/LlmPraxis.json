@@ -37,7 +37,7 @@
     "mtxTypA": "Typ A (Dokumente & Code)",
     "mtxProjektbereich": "Projektbereich + großes Kontextfenster",
     "höchsteSchärfeBeimAuffinden": "Große Kontextfenster finden einzelne Schichtdicken auch tief im Fließtext (\"Needle in a Haystack\"-Tests); Fundstellen trotzdem im Original gegenprüfen.",
-    "zugversuchsRohdatenCsvMit": "Zugversuchs-Rohdaten (CSV mit 50.000 Messpunkten)",
+    "zugversuchsRohdatenCsvMit": "Zugversuchs-Rohdaten (CSV mit 50 000 Messpunkten)",
     "mtxTypB": "Typ B (Datenanalyse)",
     "advancedDataAnalysisPython2": "Code-Ausführung (Python)",
     "rechnetMitEchtenPandas": "Rechnet mit echten Pandas-Bibliotheken im Sandbox-Container; kein Token-Verbrauch für reine Zahlenkolonnen.",

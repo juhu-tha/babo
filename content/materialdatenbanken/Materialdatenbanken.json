@@ -64,7 +64,7 @@
     "imTabUmweltindikatorenLies": "Im Tab \"Umweltindikatoren\" lies für die Herstellungsphase (A1-A3) den Wert für das Treibhausgaspotenzial (GWP) ab:",
     "gwpA1A3245": "GWP (A1-A3) = 245 kg CO₂-Äqv. / m³",
     "schritt4AnwendungIn": "Schritt 4: Anwendung in der Bauwerksbilanz",
-    "sieMultiplizierenIhreAbgerufene": "Sie multiplizieren Ihre abgerufene Kubatur aus dem CAD-Modell (z. B. 10 m³) mit dem Datenbankwert, um die CO₂-Emissionen der Stützen zu ermitteln: <br>`10 m³ × 245 kg CO₂/m³ = 2.450 kg CO₂`.",
+    "sieMultiplizierenIhreAbgerufene": "Sie multiplizieren Ihre abgerufene Kubatur aus dem CAD-Modell (z. B. 10 m³) mit dem Datenbankwert, um die CO₂-Emissionen der Stützen zu ermitteln: <br>`10 m³ × 245 kg CO₂/m³ = 2450 kg CO₂`.",
     "tippSpäterImBauprojekt": "Tipp: Später im Bauprojekt, wenn der reale Hersteller feststeht, suchen Sie nach der herstellerspezifischen EPD dieses Zementwerks, die oft deutlich niedriger liegt (z. B. 180 kg CO₂-Äqv. / m³), um Ihre Ökobilanz zu verbessern."
   },
   "werte": {
@@ -173,8 +173,8 @@
     "Materialdatenbanken.schritte": [
       {
         "titel": "Kalksandstein",
-        "erklaerung": "d = 0,175 m, ρ = 1 800 kg/m³, gwp = 0,13 kg CO₂e/kg (Lehrwert):",
-        "formel": "0{,}175 \\cdot 1\\,800 \\cdot 0{,}13 = 40{,}95\\,\\text{kg CO}_2\\text{e/m}^2"
+        "erklaerung": "d = 0,175 m, ρ = 1800 kg/m³, gwp = 0,13 kg CO₂e/kg (Lehrwert):",
+        "formel": "0{,}175 \\cdot 1800 \\cdot 0{,}13 = 40{,}95\\,\\text{kg CO}_2\\text{e/m}^2"
       },
       {
         "titel": "EPS-Dämmung",

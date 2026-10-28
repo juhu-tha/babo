@@ -111,9 +111,38 @@ Ein `*` mit Leerzeichen dahinter (z. B. AVV `17 06 05* (…)`) bleibt ohne Maski
 
 ## Zahlformat
 
-Zahlen werden ausschließlich über `src/utils/numberFormat.ts` formatiert: Dezimalkomma, **Tausendertrennung einheitlich mit Punkt** (`TAUSENDER_TRENNER`) in Fließtext, Rechnerausgaben, Diagrammen und KaTeX-Formeln (`formatDeTeX` seit 27.10.2026 ebenfalls mit Punkt statt `\,`). `formatDeZahl` gliedert ab 4 Stellen (1.000), `formatDeWert` ab 5 Stellen (Jahreszahlen bleiben ungegliedert).
+Zahlen werden ausschließlich über `src/utils/numberFormat.ts` formatiert (Entscheidung Prof. Huber, 28.10.2026, nach DIN 5008 und DIN 1333):
 
-Begründung (Gutachten 27.10.2026): Projektkonvention seit Phase 1 (README, Anleitung), Ausgabe von `toLocaleString('de-DE')` an rund 115 Stellen im Code und Mehrheit im Fließtext (`content/`: 247 Zahlen mit Punkt gegen 86 mit Leerzeichen, Zählung 27.10.2026). Die Gliederung ist eindeutig, weil das Dezimalzeichen immer das Komma ist. Abweichung von der Norm: DIN 5008 gliedert Zahlen mit Leerzeichen (Punkt nur bei Geldbeträgen), DIN 1333 sieht ebenfalls Zwischenräume vor. Eine Umstellung auf das schmale geschützte Leerzeichen (U+202F) wäre zentral über `TAUSENDER_TRENNER` plus Ersatz der Direktaufrufe von `toLocaleString` möglich – **Entscheidung Prof. Huber**. Neue Fachtexte in `content/` bitte mit Punkt schreiben.
+- **Dezimalzeichen:** Komma (`0,40`; in KaTeX `0{,}40`).
+- **Tausendertrennung:** schmales geschütztes Leerzeichen **U+202F** (`TAUSENDER_TRENNER`), gegliedert erst **ab 5 Stellen** vor dem Komma (`10 000`, `210 000`, `1 234 567`); **vierstellige Zahlen bleiben ungegliedert** (`2400`, Jahreszahlen `2024`). Gilt einheitlich in Fließtext (`content/**/*.json`, `src/data/*.ts`, Quiz), Rechnerausgaben, Tabellen, Diagrammachsen und Tooltips (`src/lib/chartBedarf.tsx`, `umgruppiereDe`), Textalternativen der Diagramme, PDF-Export und auch bei **Geldbeträgen** (`100 000 €`).
+- **KaTeX:** `formatDeTeX`/`formatDeTeXWert` gliedern mit `\,` (U+202F hat im Mathe-Modus keine Schriftmetrik); handgeschriebene Formeln in `content/` ebenso (`210\,000`, aber `2400`).
+- **Kein `toLocaleString` auf Zahlen:** Intl liefert für de-DE den Punkt. Statt `x.toLocaleString('de-DE', opt)` → `formatDeIntl(x, opt)` (gleiche Rundungsoptionen, Gliederung nach Projektregel; `useGrouping: false` bleibt ungegliedert). Datumsangaben (`Date#toLocaleString`) sind nicht betroffen.
+- **Eingaben:** `parseDeZahl` akzeptiert U+202F, Leerzeichen und Punkt als Tausendertrenner.
+- **CSV-/Excel-Export:** echte Zahlen ohne Gliederung (Tabellenkalkulation formatiert selbst).
+- **Nicht umgestellt:** Normnummern (DIN EN 1992-1-1), Datumsangaben, Versionsnummern, Paragrafen, URLs, Code, BNB-Bauteilnummern.
+
+Prüfung (Ratsche, Grenze 0): `node scripts/qa/zahlformat-tausender.mjs --check` meldet Tausenderpunkt oder normales Leerzeichen als Trenner, vierstellige Gliederung (U+202F oder `\,`) und direkte `toLocaleString`-Aufrufe in Anzeigetexten; `--show` listet die Fundstellen. Der Test `tests/zahlformatTausender.test.ts` (in `npm test`) prüft Erkennung und Bestand. Neue Fachtexte bitte gleich mit U+202F schreiben (Eingabe z. B. über die Zeichentabelle oder `\u202f` in JSON).
+
+Vorher (bis 27.10.2026) galt die Projektkonvention Tausenderpunkt ab 4 Stellen; die Umstellung (PR „Zahlformat: Tausendertrennung mit schmalem Leerzeichen (DIN 5008)“) ist eine reine Formatänderung.
+
+## Design
+
+**Grundsatz „keine schwarzen Boxen“ (Prof. Huber, 28.10.2026):** Im Hellmodus erhalten Inhaltsboxen, Kopfboxen, Hinweisboxen, Mess-/Ergebnisanzeigen in Simulatoren, Code-/Prompt-Blöcke, Schaltflächen und Badges **keinen schwarzen oder sehr dunklen Hintergrund** (`bg-slate|gray|zinc|neutral|stone-800…950`, `bg-black`, `bg-text-main`, dunkle Verläufe). Achtung: `@theme` in `src/index.css` bildet blue/emerald/green/teal/cyan/sky/indigo/violet/purple/amber/yellow/orange auf die Slate-Stufen ab – `bg-orange-800` oder `bg-emerald-900` sind im Ergebnis ebenfalls schwarzgraue Flächen und fallen unter den Grundsatz. Einheitliche helle Muster:
+
+| Element | Klassen |
+|---|---|
+| Kopf-/Hero-Box, Info-Box | `bg-shiraz/5 border border-shiraz/20 text-text-main` (Nebentext `text-slate-700`) |
+| Mess-/Ergebnisanzeige | `bg-off-white border border-home-grau/30 text-text-main`, Bezeichnung `text-slate-600`, Ziffern fett in `text-text-main` bzw. `text-…-700` |
+| Code-/Prompt-/Terminal-Block | `bg-off-white border border-home-grau/30 font-mono text-text-main` (in `bg-slate-50`-Karten `bg-white`) |
+| Aktive Auswahl, Hauptschaltfläche | `bg-shiraz text-white border-shiraz` bzw. `bg-shiraz hover:bg-shiraz/90 text-white` |
+| „Richtig“-Markierung (Quiz) | `bg-slate-200 text-text-main border-text-main` |
+| Badge/Chip | `bg-shiraz/10 text-shiraz` oder `bg-white border border-home-grau/30 text-text-main` |
+
+Der Dunkelmodus braucht dafür keine eigenen `dark:`-Klassen: die globalen `.dark`-Regeln in `src/index.css` bilden `bg-white`, `bg-off-white`, `bg-shiraz/5|10`, `text-text-main`, `text-slate-600|700`, farbige Textstufen und `border-home-grau/*` auf dunkle Flächen mit ≥ 4,5:1 ab; `bg-shiraz` wird dort `#be185d` (weiß 6:1).
+
+Ausnahmen (bleiben dunkel, Liste mit Begründung in `scripts/qa/check-design.mjs`, `AUSNAHMEN`): Overlays/Backdrops hinter Dialogen (`bg-black/50` o. ä.), Tooltips, SVG-/Canvas-Bühnen mit auf dunklen Grund abgestimmter Grafik, Diagramm-Interna (Marker, Zeiger, Balken), Material- und Gerätedarstellungen (Stahlplatten der Prüfmaschine, Bitumen, Smartphone-Attrappe) sowie die Nachtvorschau der Lichtsimulation. Transparente Tönungen unter 50 % (`bg-black/10`) gelten nicht als dunkel.
+
+Ratsche: `node scripts/qa/check-design.mjs [--liste]` und `tests/designDunkleBoxen.test.ts` (Grenze 0) melden jeden neuen dunklen Hintergrund ohne `dark:`-Variante außerhalb der Ausnahmeliste.
 
 ## QA-Skripte
 
@@ -127,6 +156,7 @@ Begründung (Gutachten 27.10.2026): Projektkonvention seit Phase 1 (README, Anle
 | `npm run build` + `node scripts/qa/check-bundle.mjs` | Build und Bundle-Budget |
 | `node scripts/qa/inhalt-anteil.mjs` | Anteil der Fachtexte in `content/` (AP 5.3) |
 | `node scripts/qa/check-verwaist.mjs [--strict]` | Dateien unter `src/`, die von `src/main.tsx` aus nicht erreichbar sind |
+| `node scripts/qa/check-design.mjs [--liste]` | Designgrundsatz „keine schwarzen Boxen“: neue dunkle Hintergründe im Hellmodus außerhalb der Ausnahmeliste (Abschnitt Design) |
 | `scripts/qa/a11y.mjs`, `layout-mobil.mjs` | Barrierefreiheit / Mobil-Layout (Playwright, eigener Workflow `a11y.yml`; in PRs Desktop auf allen Routen, Mobil auf Stichprobe + betroffenen Routen aus `a11y-routen.mjs`) |
 | `node scripts/qa/a11y-diagramme.mjs [--basis URL] [--routen a,b]` | Diagramm-Textalternativen (Z8) auf 3 Diagrammrouten hell/dunkel/mobil: `role="img"` + `aria-label` je Leinwand, alle Datentabellen geöffnet (caption, `th scope`), axe auf die Diagrammhüllen, Druckansicht (Job `a11y` in `a11y.yml`) |
 | `node scripts/qa/e2e-pdf.mjs [--basis URL]` | PDF-Export (Kopfleiste, LCC-Gutachten), Druckknöpfe der Module, Labor-Prüfbericht und Druckansicht: gültige PDF-Datei, alle Diagramme gezeichnet, keine Formel-/Diagramm-/Abschnittsplatzhalter (Playwright, Job `pdf-druck` in `a11y.yml`) |

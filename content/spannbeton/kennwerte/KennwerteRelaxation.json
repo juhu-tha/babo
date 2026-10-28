@@ -32,8 +32,8 @@
     "t15201600NMm": "1520 – 1600 N/mm²",
     "elastizitätsgrenzeMaßgebendFürZulässige": "Elastizitätsgrenze; maßgebend für zulässige Vorspannkraft beim Spannen",
     "elastizitätsmodulLitzenDrähte": "Elastizitätsmodul (Litzen / Drähte)",
-    "ca195000N": "ca. 195.000 N/mm²",
-    "geringerAlsStabstahl205": "Geringer als Stabstahl (205.000 N/mm²) infolge des Dralls der 7 Einzeldrähte",
+    "ca195000N": "ca. 195 000 N/mm²",
+    "geringerAlsStabstahl205": "Geringer als Stabstahl (205 000 N/mm²) infolge des Dralls der 7 Einzeldrähte",
     "charaktDehnungBeiHöchstlast": "Charakt. Dehnung bei Höchstlast",
     "mindestduktilitätZurVorankündigungUnd": "Mindestduktilität zur Vorankündigung und Rotationsfähigkeit im Bruchzustand",
     "größenordnungenDerRelaxationsbeiwerteSch": "Größenordnungen der Relaxationsbeiwerte: Schätzwerte vs. Rechenwerte nach EC2",
@@ -41,11 +41,11 @@
     "praxisSchätzwerteVordimensionierung": "Praxis-Schätzwerte (Vordimensionierung):",
     "t1000StundenReferenzverlustRho": "**1000-Stunden-Referenzverlust:** $\\rho_{1000} = 2{,}5\\,\\%$ für moderne Litzen der Klasse 2 (niedrige Relaxation).",
     "alteBauwerkeDrahtKlasse": "**Alte Bauwerke / Draht:** Klasse 1 mit $\\rho_{1000} = 8{,}0\\,\\%$ (dreifacher Verlust!).",
-    "langzeitRelaxationsverlust500000": "**Langzeit-Relaxationsverlust (500.000 h):** Ca. das 2,5- bis 3,0-Fache des 1000-h-Werts (~4 % bis 7 % von $\\sigma_{p0}$).",
+    "langzeitRelaxationsverlust500000": "**Langzeit-Relaxationsverlust (500 000 h):** Ca. das 2,5- bis 3,0-Fache des 1000-h-Werts (~4 % bis 7 % von $\\sigma_{p0}$).",
     "spannkraftverlustEntsprichtTypischerweis": "**Spannkraftverlust:** Entspricht typischerweise 30 bis 60 MPa Spannungsabfall (~2–5 % von P₀).",
     "normativerRechenwertEurocode2": "Normativer Rechenwert (Eurocode 2 Ausführungsstatik):",
     "muSigmaPiF": "$\\mu = \\sigma_{pi} / f_{pk}$ (Ausnutzungsgrad, typ. 0,70 bis 0,80). Die Formel reagiert *exponentiell* auf $\\mu$!",
-    "t500000Stunden": "$t$ = 500.000 Stunden (~57 Jahre) als normativer Dauerstandswert.",
+    "t500000Stunden": "$t$ = 500 000 Stunden (~57 Jahre) als normativer Dauerstandswert.",
     "wärmebehandlungBeiDampfhärtung50": "**Wärmebehandlung:** Bei Dampfhärtung (> 50 °C) muss die Relaxation um bis zu Faktor 2 bis 3 erhöht werden!"
   }
 }

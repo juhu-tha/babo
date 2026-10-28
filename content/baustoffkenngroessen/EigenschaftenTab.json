@@ -52,7 +52,7 @@
         "description": "Naturbaustoff aus organischen Fasern (Zellulose, Lignin) mit ausgeprägter anisotrop-röhrenförmiger Zellstruktur.",
         "isotropy": "Anisotrop (Orthotrop)",
         "isotropyBadge": "bg-rose-50 text-rose-700 border-rose-200",
-        "isotropyDesc": "Zeigt in den drei Achsenachsen (axial/Faserrichtung, radial und tangential) völlig unterschiedliche physikalische Profile. Das E-Modul parallel zur Faser ist um ein Vielfaches höher (ca. 11.000 MPa) als quer zur Faser (ca. 300 - 450 MPa). Schwinden parallel ist vernachlässigbar (< 0,1 %), während es tangential ca. 8 % erreicht.",
+        "isotropyDesc": "Zeigt in den drei Achsenachsen (axial/Faserrichtung, radial und tangential) völlig unterschiedliche physikalische Profile. Das E-Modul parallel zur Faser ist um ein Vielfaches höher (ca. 11 000 MPa) als quer zur Faser (ca. 300 - 450 MPa). Schwinden parallel ist vernachlässigbar (< 0,1 %), während es tangential ca. 8 % erreicht.",
         "homogeneity": "Stark Heterogen",
         "homogeneityBadge": "bg-amber-50 text-amber-700 border-amber-200",
         "homogeneityDesc": "Charakterisiert durch natürliches Wachstum: Jahresringgrenzen (Frühholz vs. Spätholz), Astansätze, Kern-/Splintholzanteile und Markstrahlen führen zu ortsabhängigen Dichteunterschieden im Millimetermaßstab.",

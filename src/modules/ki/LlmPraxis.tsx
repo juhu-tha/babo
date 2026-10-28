@@ -398,7 +398,7 @@ ${normGuidelines[genNorm]}
 
             {/* GENERATED TEMPLATE OUTPUT BOX */}
             <div className="relative">
-              <div className="flex items-center justify-between bg-slate-900 text-slate-200 px-4 py-2.5 rounded-t-xl text-xs font-mono">
+              <div className="flex items-center justify-between bg-slate-100 text-text-main px-4 py-2.5 rounded-t-xl text-xs font-mono">
                 <span className="flex items-center gap-2">
                   <FileCode size={14} className="text-shiraz" /> 
                   {genFormat === 'anweisungsdatei' ? 'PROJEKTANWEISUNGEN.md' : genFormat === 'eigener_assistent' ? 'Assistent_System_Anweisungen.txt' : 'Analyse_Prompt.md'}
@@ -418,7 +418,7 @@ ${normGuidelines[genNorm]}
                 </button>
               </div>
 
-              <pre className="p-4 bg-slate-950 text-slate-200 rounded-b-xl text-xs font-mono overflow-x-auto border border-slate-800 leading-relaxed max-h-96">
+              <pre className="p-4 bg-off-white text-text-main rounded-b-xl text-xs font-mono overflow-x-auto border border-home-grau/30 leading-relaxed max-h-96">
                 {generatedTemplate}
               </pre>
             </div>

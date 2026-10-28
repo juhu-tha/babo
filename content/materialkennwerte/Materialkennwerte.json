@@ -17,7 +17,7 @@
     "einWärmedehnkoeffizientVon0": "). Ein Wärmedehnkoeffizient von 0 bei Faserdämmstoffen und VIP bedeutet „kein sinnvoller Kennwert“ (lose bzw. faserige Struktur), nicht „keine Wärmedehnung“. Für Nachweise sind stets die Werte der jeweiligen Produktnorm, Leistungserklärung bzw. Bemessungsnorm maßgebend.",
     "hintergrundEinordnungPhysikalischMechani": " Hintergrund & Einordnung (Physikalisch-mechanische Grundlagen)",
     "steifigkeitVsFestigkeit": "Steifigkeit vs. Festigkeit",
-    "stahlHatEinenSehr": "Stahl hat einen sehr hohen E-Modul (210.000 MPa) und ist sehr fest, aber auch schwer. Holz ist leicht, hat parallel zur Faser aber nur etwa ein Zwanzigstel der Steifigkeit von Stahl (E₀,mean ≈ 11.000 MPa bei C24). Die Abstimmung dieser Eigenschaften entscheidet über Bauteilschlankheit und Durchbiegungsstufen.",
+    "stahlHatEinenSehr": "Stahl hat einen sehr hohen E-Modul (210 000 MPa) und ist sehr fest, aber auch schwer. Holz ist leicht, hat parallel zur Faser aber nur etwa ein Zwanzigstel der Steifigkeit von Stahl (E₀,mean ≈ 11 000 MPa bei C24). Die Abstimmung dieser Eigenschaften entscheidet über Bauteilschlankheit und Durchbiegungsstufen.",
     "zugVsDruckfestigkeit": "Zug- vs. Druckfestigkeit",
     "betonUndMauerwerkKönnen": "Beton und Mauerwerk können hohe Druckkräfte aufnehmen, versagen aber bei Zugbeanspruchung sehr früh (Beton: mittlere Zugfestigkeit f_ctm nur etwa 7–10 % der Druckfestigkeit), weshalb sie im Verbund mit zugfestem Stahl bewehrt werden müssen.",
     "bauphysikDämmung": "Bauphysik & Dämmung",
@@ -68,18 +68,18 @@
     "Materialkennwerte.schritte_2": [
       {
         "titel": "Baustahl S235",
-        "erklaerung": "E = 210.000 MPa, ρ = 7.850 kg/m³:",
-        "formel": "\\frac{E}{\\rho} = \\frac{210\\,000}{7\\,850} \\approx 26{,}8\\ \\frac{\\text{MPa}}{\\text{kg/m}^3}"
+        "erklaerung": "E = 210 000 MPa, ρ = 7850 kg/m³:",
+        "formel": "\\frac{E}{\\rho} = \\frac{210\\,000}{7850} \\approx 26{,}8\\ \\frac{\\text{MPa}}{\\text{kg/m}^3}"
       },
       {
         "titel": "Nadelholz C24 (faserparallel)",
-        "erklaerung": "E₀,mean = 11.000 MPa, ρ_mean = 420 kg/m³:",
+        "erklaerung": "E₀,mean = 11 000 MPa, ρ_mean = 420 kg/m³:",
         "formel": "\\frac{E}{\\rho} = \\frac{11\\,000}{420} \\approx 26{,}2\\ \\frac{\\text{MPa}}{\\text{kg/m}^3}"
       },
       {
         "titel": "Beton C30/37",
-        "erklaerung": "E_cm = 33.000 MPa, ρ = 2.400 kg/m³:",
-        "formel": "\\frac{E}{\\rho} = \\frac{33\\,000}{2\\,400} \\approx 13{,}8\\ \\frac{\\text{MPa}}{\\text{kg/m}^3}"
+        "erklaerung": "E_cm = 33 000 MPa, ρ = 2400 kg/m³:",
+        "formel": "\\frac{E}{\\rho} = \\frac{33\\,000}{2400} \\approx 13{,}8\\ \\frac{\\text{MPa}}{\\text{kg/m}^3}"
       }
     ],
     "Materialkennwerte.regelwerke": [

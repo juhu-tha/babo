@@ -1,5 +1,5 @@
 // Ausgelagert aus src/modules/Baustoffkenngroessen.tsx (AP 5.2)
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeIntl } from '@/src/utils/numberFormat';
 import React from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { InlineMath } from 'react-katex';
@@ -66,8 +66,8 @@ export default function RechenbeispieleTab({ deltaLA, handleSaeulenMaterialChang
             <div className="p-3 bg-slate-50 rounded-lg border border-home-grau/30 text-xs">
               <p className="font-semibold text-slate-700"><MdText text={inhalt.texte.festgelegteMaterialempfehlungen} /></p>
               <ul className="list-disc list-inside mt-1 space-y-1 text-slate-600">
-                <li>E-Modul: <strong>{saeulenE.toLocaleString('de-DE')} MPa</strong></li>
-                <li><MdText text={inhalt.texte.druckfestigkeitFCrit} /><strong>{saeulenFy.toLocaleString('de-DE')} MPa</strong></li>
+                <li>E-Modul: <strong>{formatDeIntl(saeulenE)} MPa</strong></li>
+                <li><MdText text={inhalt.texte.druckfestigkeitFCrit} /><strong>{formatDeIntl(saeulenFy)} MPa</strong></li>
               </ul>
               <p className="mt-2 text-[11px] text-slate-500"><MdText text={inhalt.texte.charakteristischeWerteOhneTeilsicherheit} /></p>
             </div>
@@ -99,7 +99,7 @@ export default function RechenbeispieleTab({ deltaLA, handleSaeulenMaterialChang
               <div className="mt-3">
                 <span className="text-[11px] text-slate-500 block">Rechnung:</span>
                 <code className="text-xs text-shiraz font-bold block bg-white p-2 rounded border border-home-grau/30 mt-1 flex flex-col">
-                  <span>{formatDeZahl(stressA, 2)} MPa / {saeulenE.toLocaleString('de-DE')} MPa</span>
+                  <span>{formatDeZahl(stressA, 2)} MPa / {formatDeIntl(saeulenE)} MPa</span>
                   <span className="text-shiraz font-black text-sm mt-0.5">= {formatDeZahl(strainA, 6)} ({formatDeZahl(strainAPromille, 3)} ‰)</span>
                 </code>
               </div>

@@ -76,7 +76,7 @@
     "wählenSieEinenRepräsentativen": "Wählen Sie einen repräsentativen Baustoff aus, um die Grenzwerte und Einbauklassen der EBV zu visualisieren.",
     "recyclingKlasseRc1": "Recycling-Klasse: RC-1 & RC-2",
     "bauschuttAufbereitet": "Bauschutt aufbereitet",
-    "leitparameterImEluatEbv": "**Leitparameter im Eluat (EBV Anlage 1 Tab. 1):** Sulfat (RC-1: ≤ 600 mg/l, RC-2: ≤ 1 000 mg/l), Kupfer (RC-1: ≤ 110 µg/l, RC-2: ≤ 250 µg/l), Leitfähigkeit (RC-1: ≤ 2 500 µS/cm).",
+    "leitparameterImEluatEbv": "**Leitparameter im Eluat (EBV Anlage 1 Tab. 1):** Sulfat (RC-1: ≤ 600 mg/l, RC-2: ≤ 1000 mg/l), Kupfer (RC-1: ≤ 110 µg/l, RC-2: ≤ 250 µg/l), Leitfähigkeit (RC-1: ≤ 2500 µS/cm).",
     "erlaubteEinbaulagenUnterWasserundurchläs": "**Erlaubte Einbaulagen:** Unter wasserundurchlässigen Deckschichten (Asphalt, Beton) im Straßenbau uneingeschränkt einsetzbar. Im unversiegelten Offen-Einbau verboten.",
     "bodenklassenBm0Bm": "Bodenklassen: BM-0, BM-0\\*, BM-F0\\* bis BM-F3",
     "reinerErdaushub": "Reiner Erdaushub",
@@ -99,15 +99,15 @@
     "übergangszeit19931996Der": "⚠️ ÜBERGANGSZEIT 1993–1996: Der Veranlasser muss den Baubeginn mitteilen (§ 5a Abs. 2 GefStoffV), da vor dem Verbot beschaffte asbesthaltige Produkte noch verbaut worden sein können.",
     "baujahrNach1996Die": "✅ BAUJAHR NACH 1996: Die Angabe des Baujahrs genügt (§ 5a Abs. 2 GefStoffV). Asbest ist nicht zu erwarten; andere Gefahrstoffe (z. B. KMF vor 2000, PAK, Holzschutzmittel) bleiben zu prüfen.",
     "expositionsRisikoStufenmodellFür": "Expositions-Risiko-Stufenmodell für krebserzeugende Stoffe",
-    "dieIntensitätDesArbeitsschutzes": "Die Intensität des Arbeitsschutzes bei Asbest und anderen Feinstäuben richtet sich nach der zu erwartenden Faserkonzentration in der Atemluft (F/m³); die Grenzen des risikobasierten Konzepts sind die Akzeptanzkonzentration 10.000 F/m³ und die Toleranzkonzentration 100.000 F/m³ (TRGS 910, TRGS 519). Klicken Sie eine Konzentration an:",
+    "dieIntensitätDesArbeitsschutzes": "Die Intensität des Arbeitsschutzes bei Asbest und anderen Feinstäuben richtet sich nach der zu erwartenden Faserkonzentration in der Atemluft (F/m³); die Grenzen des risikobasierten Konzepts sind die Akzeptanzkonzentration 10 000 F/m³ und die Toleranzkonzentration 100 000 F/m³ (TRGS 910, TRGS 519). Klicken Sie eine Konzentration an:",
     "t1NiedrigesRisiko": "1. Niedriges Risiko",
-    "t10000FM": "< 10.000 F/m³",
+    "t10000FM": "< 10 000 F/m³",
     "fasernProKubikmeterAtemluft": "Fasern pro Kubikmeter Atemluft",
     "t2MittleresRisiko": "2. Mittleres Risiko",
-    "t10000100000": "10.000–100.000 F/m³",
+    "t10000100000": "10 000–100 000 F/m³",
     "zwischenAkzeptanzUndToleranzkonzentratio": "zwischen Akzeptanz- und Toleranzkonzentration",
     "t3HohesRisiko": "3. Hohes Risiko",
-    "t100000FM": "> 100.000 F/m³",
+    "t100000FM": "> 100 000 F/m³",
     "oberhalbDerToleranzkonzentration": "oberhalb der Toleranzkonzentration",
     "akzeptablerSchutzbereichGeringeGefährdun": "Akzeptabler Schutzbereich (Geringe Gefährdung):",
     "unterhalbDerAkzeptanzkonzentrationIst": "Unterhalb der Akzeptanzkonzentration ist das Restrisiko niedrig – eine Wirkschwelle gibt es bei krebserzeugenden Fasern nicht. Typisch sind emissionsarme Verfahren (BT-Verfahren) mit Absaugung; Schutzmaßnahmen nach TRGS 519 (z. B. FFP3 nach Verfahrensbeschreibung) bleiben erforderlich.",
@@ -292,7 +292,7 @@
     "SCHADSTOFFE_DATA.chlorparaffine.gefahren": [
       "Gesundheitsgefahr: SCCPs sind nachweislich krebserzeugend im Tierversuch und schädigen Wasserorganismen langfristig. Sie besitzen ein hohes Bioakkumulationspotenzial.",
       "Rückbaumaßnahmen: Strikt staubreduzierte Ausbauverfahren bei Fugenproben und Kabelkanälen.",
-      "Abfallrechtliche Einstufung: Überschreiten CPs bestimmte Grenzwerte (POP-Abfallgrenzwert von 10.000 mg/kg), dürfen diese Abfälle nicht normal recycelt werden und unterliegen einer gesetzlichen Verbrennungspflicht."
+      "Abfallrechtliche Einstufung: Überschreiten CPs bestimmte Grenzwerte (POP-Abfallgrenzwert von 10 000 mg/kg), dürfen diese Abfälle nicht normal recycelt werden und unterliegen einer gesetzlichen Verbrennungspflicht."
     ],
     "SCHADSTOFFE_DATA.chlorparaffine.entsorgung": [
       "AVV-Schlüssel: 17 02 03 (Kunststoffe), bei Kontamination 17 09 03* (Bauabfälle mit gefährlichen Inhaltsstoffen).",
@@ -385,7 +385,7 @@
             "Sedimentations- und Waschwasserbehandlung mit Fällungsmitteln zur Sulfat-Abreicherung.",
             "Analytischer Nachweis des Restsulfatgehalts im Feststoff."
           ],
-          "rules": "Ersatzbaustoffverordnung (EBV): Die Rest-Sulfatkonzentration im Eluat entscheidet über die Einstufung. Für Recycling-Baustoffe gelten Materialwerte für Sulfat im Eluat (EBV Anlage 1 Tab. 1: RC-1 ≤ 600 mg/l, RC-2 ≤ 1 000 mg/l, RC-3 ≤ 3 500 mg/l), um Schäden an nachfolgenden Bauteilen auszuschließen."
+          "rules": "Ersatzbaustoffverordnung (EBV): Die Rest-Sulfatkonzentration im Eluat entscheidet über die Einstufung. Für Recycling-Baustoffe gelten Materialwerte für Sulfat im Eluat (EBV Anlage 1 Tab. 1: RC-1 ≤ 600 mg/l, RC-2 ≤ 1000 mg/l, RC-3 ≤ 3500 mg/l), um Schäden an nachfolgenden Bauteilen auszuschließen."
         }
       },
       "boden_ton": {

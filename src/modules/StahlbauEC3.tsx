@@ -380,7 +380,7 @@ export default function StahlbauEC3() {
                   schritte={[
                     {
                       titel: 'Bezugsschlankheit',
-                      erklaerung: `Für ${guete} mit f_y = ${formatDeWert(r.fy)} N/mm² und E = 210 000 N/mm²:`,
+                      erklaerung: `Für ${guete} mit f_y = ${formatDeWert(r.fy)} N/mm² und E = 210 000 N/mm²:`,
                       formel: `\\lambda_1 = \\pi \\sqrt{\\frac{210\\,000}{${tex(r.fy, 0)}}} = ${tex(r.lambda1, 2)}`,
                     },
                     {
