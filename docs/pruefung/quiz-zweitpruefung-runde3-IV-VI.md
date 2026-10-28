@@ -15,7 +15,7 @@ Stand: 28.10.2026 · Grundlage: `src/data/quiz.json` auf main (Stand fc525dc5) �
 
 | ok | korrigiert | Klärung |
 |---:|---:|---:|
-| 245 | 7 | 0 |
+| 228 | 13 | 11 |
 
 Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Zweitprüfung 28.10. (Runde 3): … – korrigiert“). Die richtigen Antworten aller korrigierten Fragen bleiben inhaltlich unverändert; berichtigt wurden Rundungen und Rückmeldungen zu Distraktoren.
 
@@ -59,9 +59,9 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 |---|---|---|---|---|
 | `q_zs_1` | IV | Ein Projekt erreicht einen Gesamterfüllungsgrad von 77 %. Welche DGNB-Auszeichnu… | ok | - [ ] freigeben |
 | `q_zs_2` | IV | Was ist eine Umweltproduktdeklaration (EPD) nach DIN EN 15804? | ok | - [ ] freigeben |
-| `q_zs_3` | IV | Wie sind die Themenfelder im DGNB System Gebäude Neubau (Version 2023 und 2023.2… | ok (Gewichtung 25/25/25/10/10/5 % für Version 2023.2 auf dgnb.de bestätigt) | - [ ] freigeben |
+| `q_zs_3` | IV | Wie sind die Themenfelder im DGNB System Gebäude Neubau (Version 2023 und 2023.2… | Klärung (Einzelfreigabe; Vermerk der Erstprüfung: Gewichtung 25/25/25/10/10/5 % für Version 2023.2 auf dgnb.de bestätigt) | - [ ] freigeben |
 | `q_zs_4` | IV | Was bestätigt ein DGNB-Vorzertifikat für einen Neubau? | ok | - [ ] freigeben |
-| `q_zs_5` | IV | Welche Mindestanforderung gilt im DGNB System Neubau 2023.2 für alle Gebäude, un… | ok (Mindestanforderungen ENV1.1, SOC1.2, SITE1.1 auf dgnb.de bestätigt) | - [ ] freigeben |
+| `q_zs_5` | IV | Welche Mindestanforderung gilt im DGNB System Neubau 2023.2 für alle Gebäude, un… | Klärung (Einzelfreigabe; Vermerk der Erstprüfung: Mindestanforderungen ENV1.1, SOC1.2, SITE1.1 auf dgnb.de bestätigt) | - [ ] freigeben |
 | `q_zs_7` | IV | Wer bestätigt in der Bundesförderung, dass ein Gebäude die Anforderungen von QNG… | ok | - [ ] freigeben |
 | `q_zs_8` | IV | Wie wird der GWP-Anforderungswert für ein Nichtwohngebäude nach QNG (NWG23) fest… | ok | - [ ] freigeben |
 
@@ -72,7 +72,7 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 | `q_kw_1` | IV | LFI = 0,40, Nutzungsfaktor X = 2,0. Wie groß ist der MCI = 1 − LFI · 0,9/X? | ok | - [ ] freigeben |
 | `q_kw_2` | IV | Welche Mindestquote für die stoffliche Verwertung nicht gefährlicher Bau- und Ab… | ok | - [ ] freigeben |
 | `qn_kreislauf_dpp_1` | IV | Ein Produkt enthält 30 % Rezyklat und 10 % wiederverwendete Teile; am Lebensende… | ok | - [ ] freigeben |
-| `qn_kreislauf_dpp_2` | IV | Im Re-Use-Inventar nach DIN SPEC 91484 werden vier Bauteile erfasst. Welches ist… | ok | - [ ] freigeben |
+| `qn_kreislauf_dpp_2` | IV | Im Re-Use-Inventar nach DIN SPEC 91484 werden vier Bauteile erfasst. Welches ist… | korrigiert (Abgleich 28.10.): Klassen A–D als Fügungsklassen des Modul-Simulators gekennzeichnet (nicht aus DIN SPEC 91484); Fragetext „in Anlehnung an“ | - [ ] freigeben |
 
 ## Ressourcen & Umwelt (`ressourcen_umwelt`)
 
@@ -98,7 +98,7 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 |---|---|---|---|---|
 | `q_bst_3` | IV | Eine Bestandswand hat U = 1,40 W/(m²K). Sie erhält 12 cm Dämmung mit λ = 0,035 W… | korrigiert: Rückmeldungen zu 0,29 und 0,35 W/(m²K) berichtigt (0,29 ist der Wert ohne R_alt; 0,35 entspräche rund 7,5 cm Dämmung) | - [ ] freigeben |
 | `q_bst_4` | IV | Wie funktioniert eine kapillaraktive Innendämmung (z. B. Calciumsilikat) bauphys… | ok | - [ ] freigeben |
-| `q_bst_5` | IV | In einer Außenwandecke wird bei θ_i = 20 °C und θ_e = −5 °C eine Oberflächentemp… | ok | - [ ] freigeben |
+| `q_bst_5` | IV | In einer Außenwandecke wird bei θ_i = 20 °C und θ_e = −5 °C eine Oberflächentemp… | Klärung: f_Rsi ≥ 0,70 nach DIN 4108-2:2013-02, 6.2; Neuausgabe DIN 4108-2:2026-05 erschienen (Abschnitt 6 weiterhin Wärmebrücken), Zahlenwert öffentlich nicht prüfbar – F-Freigabe | - [ ] freigeben |
 | `q_bst_6` | IV | Warum sinken die typischen U-Werte von Außenwänden in Westdeutschland ab Ende de… | ok | - [ ] freigeben |
 
 ## Bauwerkserfassung (`bauwerkserfassung`)
@@ -141,7 +141,7 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 
 | ID | Cluster | Kurztext | Ergebnis | Freigabe |
 |---|---|---|---|---|
-| `q_hp_2` | IV | Was gilt nach der Trinkwasserverordnung 2023 für Trinkwasserleitungen aus Blei? | ok (Blei 5 µg/l ab 12.01.2028 bestätigt, Infoblatt Kreis Gütersloh) | - [ ] freigeben |
+| `q_hp_2` | IV | Was gilt nach der Trinkwasserverordnung 2023 für Trinkwasserleitungen aus Blei? | Klärung (Einzelfreigabe; Vermerk der Erstprüfung: Blei 5 µg/l ab 12.01.2028 bestätigt, Infoblatt Kreis Gütersloh) | - [ ] freigeben |
 | `qn_historische_bauprodukte_1` | IV | Welcher Bauepoche ordnet das Modul den Isteg-Stahl (zwei kalt verdrillte Rundstä… | ok | - [ ] freigeben |
 | `qn_historische_bauprodukte_2` | IV | Bei der Umnutzung einer Fabrikhalle des 19. Jahrhunderts sollen gusseiserne Stüt… | ok | - [ ] freigeben |
 | `qn_historische_bauprodukte_4` | IV | Bei einer Dachsanierung wird Glaswolle gefunden, die nachweislich 1985 hergestel… | ok | - [ ] freigeben |
@@ -161,7 +161,7 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 | ID | Cluster | Kurztext | Ergebnis | Freigabe |
 |---|---|---|---|---|
 | `q_bm_1` | IV | Wie viele Mischproben verlangt die LAGA PN 98 mindestens für ein Haufwerk von 10… | ok | - [ ] freigeben |
-| `q_bm_2` | IV | Welches Mindestvolumen muss eine Einzelprobe bei einem Größtkorn von 32 mm nach… | ok (Modultabelle d_max ≤ 32 mm: 2 l; Laborprobe = 2 · Einzelprobe) | - [ ] freigeben |
+| `q_bm_2` | IV | Welches Mindestvolumen muss eine Einzelprobe bei einem Größtkorn von 32 mm nach… | Klärung (Einzelfreigabe; Vermerk der Erstprüfung: Modultabelle d_max ≤ 32 mm: 2 l; Laborprobe = 2 · Einzelprobe) | - [ ] freigeben |
 | `qn_boden_materialaufbereitung_1` | IV | Wie viele Mischproben verlangt die LAGA PN 98 (Tabelle 2) nach dem Probenahme-Re… | ok | - [ ] freigeben |
 | `qn_boden_materialaufbereitung_4` | IV | Ein toniger, schluffiger Boden ist mit Schwermetallen belastet. Welches Aufberei… | ok | - [ ] freigeben |
 
@@ -178,7 +178,7 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 | `q_sch_1` | IV | Was muss der Veranlasser (Bauherr) nach § 5a GefStoffV vor Arbeiten an einem Geb… | ok | - [ ] freigeben |
 | `q_sch_2` | IV | Welche Faserkonzentrationen begrenzen den Bereich mittleren Risikos bei Asbest? | ok | - [ ] freigeben |
 | `q_sch_3` | IV | Die Laboranalyse einer ausgebauten Mineralwolle ergibt einen Kanzerogenitätsinde… | ok | - [ ] freigeben |
-| `q_sch_4` | IV | In einem Klassenzimmer werden 1 200 ng/m³ PCB (PCBges) in der Raumluft gemessen.… | ok (AIR 2025: RW I 80, RW II 800 ng/m³ PCBges bestätigt, Quelle IFA/DGUV „air_pcb_2025.pdf“; Hinweis: Module Hist. Bauprodukte und Rückbau nennen nur die PCB-Richtlinie 1994 mit 300/3 000 ng/m³) | - [ ] freigeben |
+| `q_sch_4` | IV | In einem Klassenzimmer werden 1 200 ng/m³ PCB (PCBges) in der Raumluft gemessen.… | Klärung (Einzelfreigabe): AIR 2025: RW I 80, RW II 800 ng/m³ PCBges bestätigt, Quelle IFA/DGUV „air_pcb_2025.pdf“; Module Historische Bauprodukte, Rückbau und Schadstoffe am 28.10. auf AIR 2025 umgestellt | - [ ] freigeben |
 | `q_sch_5` | IV | Welche Substanz dient bei teerhaltigen Parkettklebern und Asphalten als Leitsubs… | ok | - [ ] freigeben |
 
 ## Altholz-NIR-Sortierung und Urban Mining (`altholz_urban_mining`)
@@ -188,7 +188,7 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 | `qn_altholz_urban_mining_3` | IV | Worauf beruht die Unterscheidung von Holz, Holzwerkstoffen und Beschichtungen mi… | ok | - [ ] freigeben |
 | `qn_altholz_urban_mining_4` | IV | Warum reicht eine NIR-Sortierung allein nicht aus, um mit Kupfer-Chrom-Salzen im… | ok | - [ ] freigeben |
 | `qn_altholz_urban_mining_5` | IV | Eine Anlage erhält 100 t Altholz: 60 t A I/A II und 40 t A III/A IV. 54 t A I/A… | ok | - [ ] freigeben |
-| `qn_altholz_urban_mining_6` | IV | In einer Sortierbilanz werden von 25 t A IV 1,25 t in die stoffliche Linie fehlg… | ok (Sortierbilanz mit Rechnerwerten nachgerechnet: 1,25/58,25 t; Fehlsortierquote 8,75 %) | - [ ] freigeben |
+| `qn_altholz_urban_mining_6` | IV | In einer Sortierbilanz werden von 25 t A IV 1,25 t in die stoffliche Linie fehlg… | Klärung (Einzelfreigabe; Vermerk der Erstprüfung: Sortierbilanz mit Rechnerwerten nachgerechnet: 1,25/58,25 t; Fehlsortierquote 8,75 %) | - [ ] freigeben |
 | `qn_altholz_urban_mining_7` | IV | Was beschreibt ein Materialkataster im Sinne des Urban Mining? | ok | - [ ] freigeben |
 
 ## PFAS in Baustoffen (`pfas_baustoffe`)
@@ -304,7 +304,7 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 |---|---|---|---|---|
 | `q_is_sb_1` | IV | Wer plant nach TR Instandhaltung Instandsetzungsmaßnahmen an Betonbauwerken? | ok | - [ ] freigeben |
 | `q_is_sb_2` | IV | Welches Oberflächenschutzsystem eignet sich für eine befahrene Parkdeckfläche mi… | ok | - [ ] freigeben |
-| `qn_instandhaltung_1` | IV | Für eine Tiefgaragendecke von 800 m² mit 0,8 m² Bewehrungsoberfläche je m² Baute… | ok | - [ ] freigeben |
+| `qn_instandhaltung_1` | IV | Für eine Tiefgaragendecke von 800 m² mit 0,8 m² Bewehrungsoberfläche je m² Baute… | korrigiert (Abgleich 28.10.): Rückmeldung zu 96 A an den Fehlerweg angepasst (150 statt 15 mA/m²) | - [ ] freigeben |
 | `qn_instandhaltung_2` | IV | Ein 0,3 mm breiter Riss in einer Wand ändert seine Breite temperaturbedingt; er… | ok | - [ ] freigeben |
 
 ## Instandsetzung nach Material (`instandsetzung_materialien`)
@@ -341,19 +341,19 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 
 | ID | Cluster | Kurztext | Ergebnis | Freigabe |
 |---|---|---|---|---|
-| `qn_lca_ingenieurbau_1` | IV | Welches Merkmal unterscheidet die Ökobilanz von Ingenieurbauwerken nach DIN EN 1… | ok | - [ ] freigeben |
+| `qn_lca_ingenieurbau_1` | IV | Welches Merkmal unterscheidet die Ökobilanz von Ingenieurbauwerken nach DIN EN 1… | korrigiert (Abgleich 28.10.): Aussagen zu DIN EN 17472 vorsichtig formuliert: Betrachtungszeitraum vom Auftraggeber festgelegt (3.69), typisch 80–100 a; B8 als Nutzermodul, Stau-Zuordnung als Modellannahme | - [ ] freigeben |
 | `qn_lca_ingenieurbau_2` | IV | Der Brücken-Simulator rechnet mit Austauschintervallen von 15 a (Fahrbahnbelag),… | ok | - [ ] freigeben |
-| `qn_lca_ingenieurbau_3` | IV | Spannbeton-Hohlkasten im Simulator: 100 Jahre, 6 Belagswechsel mit je 18 Tagen T… | ok | - [ ] freigeben |
-| `qn_lca_ingenieurbau_5` | IV | Mit Schnellbau (−65 % Sperrzeit) sinkt die Summe A–C der Spannbetonbrücke im Sim… | ok | - [ ] freigeben |
+| `qn_lca_ingenieurbau_3` | IV | Spannbeton-Hohlkasten im Simulator: 100 Jahre, 6 Belagswechsel mit je 18 Tagen T… | Klärung: Rechnung im Simulator richtig; Zuordnung sperrungsbedingter Stauemissionen zu B8 ist Modellannahme des Moduls, gegen DIN EN 17472 (8.6) prüfen – F-Freigabe | - [ ] freigeben |
+| `qn_lca_ingenieurbau_5` | IV | Mit Schnellbau (−65 % Sperrzeit) sinkt die Summe A–C der Spannbetonbrücke im Sim… | Klärung: Rechnung im Simulator richtig; Zuordnung sperrungsbedingter Stauemissionen zu B8 ist Modellannahme des Moduls, gegen DIN EN 17472 (8.6) prüfen – F-Freigabe | - [ ] freigeben |
 | `qn_lca_ingenieurbau_6` | IV | Auf welche Bezugsgröße wird der spezifische Kennwert GWP_Ing einer Brücke im Mod… | ok | - [ ] freigeben |
 
 ## Rechtsrahmen, CRREM & Praxis (`lca_regulatorik`)
 
 | ID | Cluster | Kurztext | Ergebnis | Freigabe |
 |---|---|---|---|---|
-| `qn_lca_regulatorik_2` | IV | CRREM-Simulator, Büroimmobilie: Ausgangsintensität 45 kg CO₂-Äq./(m²·a), Maßnahm… | ok (Zielpfad im Simulator nachgerechnet) | - [ ] freigeben |
-| `qn_lca_regulatorik_3` | IV | Wohngebäude mit 30 kg CO₂-Äq./(m²·a): Der Simulator liefert als Stranding-Jahr o… | ok (Zielpfad im Simulator nachgerechnet) | - [ ] freigeben |
-| `qn_lca_regulatorik_5` | IV | Ein Importeur führt 1000 t Zement mit 0,8 t CO₂ je t Zement ein. Der EU-ETS-Prei… | ok | - [ ] freigeben |
+| `qn_lca_regulatorik_2` | IV | CRREM-Simulator, Büroimmobilie: Ausgangsintensität 45 kg CO₂-Äq./(m²·a), Maßnahm… | Klärung (Einzelfreigabe; Vermerk der Erstprüfung: Zielpfad im Simulator nachgerechnet) | - [ ] freigeben |
+| `qn_lca_regulatorik_3` | IV | Wohngebäude mit 30 kg CO₂-Äq./(m²·a): Der Simulator liefert als Stranding-Jahr o… | Klärung (Einzelfreigabe; Vermerk der Erstprüfung: Zielpfad im Simulator nachgerechnet) | - [ ] freigeben |
+| `qn_lca_regulatorik_5` | IV | Ein Importeur führt 1000 t Zement mit 0,8 t CO₂ je t Zement ein. Der EU-ETS-Prei… | korrigiert (Abgleich 28.10.): Frage auf Endzustand ohne kostenlose Zuteilung eingegrenzt; Erklärung um Art. 31 (Anpassung kostenlose Zuteilung, CBAM-Faktor 2026 97,5 %) ergänzt, Artikelverweise korrigiert (Art. 9 Anrechnung, Art. 21 Preis) | - [ ] freigeben |
 | `qn_lca_regulatorik_6` | IV | Ab wann ist das Lebenszyklus-GWP nach der EPBD (EU) 2024/1275 laut Modul für Neu… | ok | - [ ] freigeben |
 
 ## Denkmalpflege (`denkmalpflege`)
@@ -505,8 +505,8 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 | `q_px_pl_1` | V | Welches Nennmaß c_nom ergibt sich für XC4 (c_min,dur = 25 mm), Ø 12 mm und Δc_de… | ok | - [ ] freigeben |
 | `q_px_pl_3` | V | In welcher Leistungsphase der HOAI (Gebäude) werden die Leistungsverzeichnisse a… | ok | - [ ] freigeben |
 | `q_px_pl_4` | V | Welche Leistungsphase hat beim Leistungsbild Gebäude und Innenräume nach § 34 HO… | ok | - [ ] freigeben |
-| `q_px_pl_5` | V | Wie sind Bedarfspositionen (Eventualpositionen) in einer Leistungsbeschreibung n… | ok | - [ ] freigeben |
-| `q_px_pl_6` | V | Ein öffentlicher Auftraggeber will im LV festschreiben: „Mehrkosten aus unvorher… | ok | - [ ] freigeben |
+| `q_px_pl_5` | V | Wie sind Bedarfspositionen (Eventualpositionen) in einer Leistungsbeschreibung n… | korrigiert (Abgleich 28.10.): Quelle um VOB/A 2026 (Abschnitte 2/3, § 7 EU Abs. 1 Nr. 4, BAnz AT 24.08.2026 B6) ergänzt, Abschnitt 1 benannt | - [ ] freigeben |
+| `q_px_pl_6` | V | Ein öffentlicher Auftraggeber will im LV festschreiben: „Mehrkosten aus unvorher… | korrigiert (Abgleich 28.10.): Quelle um VOB/A 2026 (§ 7 EU Abs. 1 Nr. 3 gleichlautend) ergänzt, Abschnitt 1 benannt | - [ ] freigeben |
 
 ## Bauleitung & Baustelle (`px_bauleitung`)
 
@@ -591,6 +591,27 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 | `qn_rechnung_nachhaltigkeit_4` | VI | Für 200 m³ Beton werden verglichen: Rezeptur A mit 320 kg/m³ CEM I (850 kg CO₂-e… | korrigiert: Prozentwerte mit einer Nachkommastelle wie im Modul (62,5 % statt „rund 62 %“; Distraktoren 166,7/64,7/37,5 %) | - [ ] freigeben |
 | `qn_rechnung_nachhaltigkeit_6` | VI | Die Re-Karbonatisierung bindet CO₂ und verbessert rechnerisch die Klimabilanz. W… | ok | - [ ] freigeben |
 
+## Abgleich 28.10.
+
+Anlass: unabhängige Stichprobe (20 Fragen, 0 Fehler, 2 fraglich in Rechts-/Normfragen). Ergebnis nach dem Abgleich: 228 ok, 13 korrigiert, 11 Klärung. Fragen mit „korrigiert“ oder „Klärung“ und alle früheren „ok (…)“-Fragen mit Vorbehalt sind aus der Sammelfreigabe herausgenommen und haben eine eigene Checkbox. Es wurde nichts freigegeben.
+
+- `qn_lca_regulatorik_5`: auf den Endzustand ohne kostenlose Zuteilung eingegrenzt, Art. 31 VO (EU) 2023/956 mit Auslaufpfad (CBAM-Faktor 2026 97,5 %, bis 2034 0 %) ergänzt, Artikel korrigiert (Art. 9 Anrechnung, Art. 21 Preis); Modulformel in Nachhaltigkeit.json und im Rechtsrahmen-Kompendium entsprechend. Übrige Fragen des Moduls: `qn_lca_regulatorik_6` (EPBD-Fristen) ok; `_2`/`_3` (CRREM) rechnen mit dem vereinfachten Lehrpfad des Simulators – Klärung (Einzelfreigabe).
+- `qn_lca_ingenieurbau_1`: DIN EN 17472 vorsichtig formuliert (Betrachtungszeitraum vom Auftraggeber, Begriff 3.69; B8 als Nutzermodul), Modultexte LCA.json, IngenieurbauLCA.json, OekobilanzLCA.json angepasst (Stau-Zuordnung zu B8 „vorläufig, F-Freigabe“). `_3`/`_5` → Klärung (B8-Zuordnung), `_2`/`_6` (reine Simulator- bzw. Modulgrößen) ok.
+- `q_px_pl_5` (und analog `q_px_pl_6`): VOB/A 2026 ergänzt. Kleinere Hinweise `qn_instandhaltung_1` (Rückmeldung 96 A) und `qn_kreislauf_dpp_2` (Fügungsklassen als Modulsystematik) bereinigt; `q_ki_pr_1` (Preisaussage vereinfacht) bleibt ok.
+- Antwortschlüssel: unverändert; in `qn_lca_ingenieurbau_1` wurde die richtige Option sinngleich, aber normgerechter formuliert, in `qn_lca_regulatorik_5` der Fragetext eingegrenzt.
+
+- **Suchlauf 1 – Normstände** (Suchskript außerhalb des Repos, über alle 669 Fragen beider Listen; normRef, quelle, Fragetext, Optionen, Erklärung, Rückmeldungen, gapAnalysis):
+  - DWA-A 138 ohne „-1“: 2 Treffer (`qn_bp_verkehr_tiefbau_3`, `_4`) → auf DWA-A 138-1:2024-10 umgestellt (Ersatz der Ausgabe 2005 laut BauNetz Wissen und FORUM VERLAG); zusätzlich außerhalb der Listen `qn_bp_verkehr_tiefbau_2/_5/_6` (Freigabe zurückgenommen) und `q_vwb_6`. Modul Tiefbau, Rechenkern-Hinweis, Grenzen, Lernziel und Registry ebenfalls umgestellt; geänderte Rechenregeln (Standortfaktor f_Ort, Rigolenhöhe) nur als vorläufiger Hinweis, Rechenweg unverändert.
+  - DIN 4108-2: 11 Treffer. Die Neuausgabe DIN 4108-2:2026-05 ist erschienen (DIN-Katalog, Inhaltsverzeichnis öffentlich: Abschnitte 5 Mindestwärmeschutz, 6 Wärmebrücken, 8 sommerlicher Wärmeschutz); eine Änderungsliste und die Zahlenwerte sind öffentlich nicht einsehbar. `qn_sommerlicher_waermeschutz_1`–`_7` und `q_bst_5` (ausdrücklich Ausgabe 2013-02 mit Zahlenwerten) → Klärung; `qn_bauphysik_6`, `q_fs_1`, `q_we_5` (allgemeine Bauphysik ohne normabhängigen Zahlenwert) bleiben ok, Ausgabe in `q_we_5`/quelle beim Normtext-Abgleich nachziehen.
+  - DIN 1045-2:2008, DIN EN 206-1:2001, DIN 4109:1989/Beiblatt 1, DIN 1045 (1988/2001), DIN 18195: 0 Treffer.
+  - EnEV/GEG: 4 Treffer, alle mit GModG-Bezug bzw. historischer Abfolge (`q_bst_6`) – ok.
+  - VOB/A 2019: 2 Treffer (`q_px_pl_5`, `q_px_pl_6`) → Quelle auf Abschnitt 1 (2019) präzisiert und VOB/A 2026 (Abschnitte 2/3, BAnz AT 24.08.2026 B6, seit 08.09.2026 anzuwenden; § 7 EU Abs. 1 Nr. 3/4 gleichlautend) ergänzt. VOB/B-Fundstellen (4) unverändert ok.
+  - PCB-Richtlinie 1994 / 300/3000 ng/m³: 1 Treffer (`q_sch_4`, bereits AIR 2025); Module Historische Bauprodukte, Rückbau und Schadstoffe sowie Kurzfassung auf AIR-Richtwerte 2025 (RW I 80 / RW II 800 ng/m³, IFA/DGUV „air_pcb_2025“) umgestellt, PCB-Richtlinie als früherer Bewertungsstand (über MVV TB weiterhin eingeführt).
+  - BauPVO 305/2011: 3 Treffer; `q_bpr_3` und `q_dg_dpp_2` nennen die alte Verordnung nur als Abgrenzung (ok), `q_bre_4` → VO (EU) 2024/3110, Anhang IX (System 4 ohne notifizierte Stelle, gesetze.legal). `q_bre_2` („BauPVO Anhang“) ok, System 1+ bleibt die stärkste Beteiligung.
+  - TRGS 519: 4 Treffer, aktueller Stand – ok.
+- **Suchlauf 2 – Kennwerte** (Suchskript außerhalb des Repos): Zahlen mit Symbol (f_ck, f_cm, f_ctm, E_cm, f_y, f_u, f_yk, E_s, f_m,k, f_t,0,k, f_c,0,k, E_0,mean, E_0,05, ρ_k, ρ_mean, ρ) in Fragetext, Optionen und Erklärung gegen `src/data/kennwerte.ts` für die in der Frage genannte Klasse (Beton C12/15–C90/105, S235/S355/S460, B500A/B, C16–D40, GL24h–GL28c). Einzige echte Abweichung: `qn_festigkeit_2` (C24 mit 14 N/mm²/450 kg/m³) → korrigiert. Übrige Treffer sind beabsichtigte Distraktoren (`q_kenn_1`, `q_kenn_5`, `qn_emodul_1`, `q_sta_3`) oder Konformitätskriterien (`qn_festbeton_statistik_2`, `q_qsi_2`, `q_qsi_3`).
+- **Modul-eigene Kennwertdatensätze** (Suche über content/*.json): Nur „holz_fichte_par“ im Festigkeitsvergleich wich ab (angeglichen, Erkundungsauftrag neu gerechnet: Holz 3519 m statt 3171 m, Turmhöhe 5097 m). Beton C20/25, C50/60, C30/37, S235/S355, KVH C24 und BSH GL24h in Festigkeitsberechnungen, Elastomechanik, BIM-Baustoffe und Holzprodukte stimmen; neue Ratsche in `tests/kennwerte.test.ts` (Abschnitt 7). Expositionsklassen der Mischungsberechnung (Mindestfestigkeit, w/z, Zementgehalt, c_min) entsprechen DIN 1045-2; S690 (f_u 770) liegt außerhalb von kennwerte.ts und stimmt mit EN 10025-6.
+
 ---
 
-Freigabe aller mit ok bewerteten Fragen: [ ]
+Freigabe aller mit ok bewerteten Fragen (228; ohne „korrigiert“ und „Klärung“, diese einzeln über ihre Checkbox): [ ]
