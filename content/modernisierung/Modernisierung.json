@@ -232,17 +232,17 @@
       {
         "titel": "Einsparung",
         "erklaerung": "ΔU = 1,40 − 0,197 = 1,20 W/(m²K), A = 160 m², F_x = 1,0, G = 3500 Kd/a, η = 0,90:",
-        "formel": "\\Delta Q_E = \\frac{1{,}20 \\cdot 160 \\cdot 3\\,500 \\cdot 24}{1\\,000 \\cdot 0{,}90} = 17\\,970\\,\\text{kWh/a}"
+        "formel": "\\Delta Q_E = \\frac{1{,}20 \\cdot 160 \\cdot 3500 \\cdot 24}{1000 \\cdot 0{,}90} = 17\\,970\\,\\text{kWh/a}"
       },
       {
         "titel": "Kosten",
         "erklaerung": "Energiepreis 0,12 €/kWh; Vollkosten 16 400 € (Dämmstoff 14 cm EPS 032 und 85 €/m² für Gerüst, Armierung, Putz):",
-        "formel": "17\\,970 \\cdot 0{,}12 = 2\\,156\\,\\text{EUR/a}"
+        "formel": "17\\,970 \\cdot 0{,}12 = 2156\\,\\text{EUR/a}"
       },
       {
         "titel": "Statische Amortisation",
         "erklaerung": "Vollkosten bzw. nur energiebedingte Mehrkosten, wenn Gerüst und Putz ohnehin anfallen (Kopplungsprinzip):",
-        "formel": "t = \\frac{16\\,400}{2\\,156} = 7{,}6\\,\\text{a}, \\qquad t_{Kopplung} = \\frac{2\\,800}{2\\,156} = 1{,}3\\,\\text{a}"
+        "formel": "t = \\frac{16\\,400}{2156} = 7{,}6\\,\\text{a}, \\qquad t_{Kopplung} = \\frac{2800}{2156} = 1{,}3\\,\\text{a}"
       }
     ],
     "Modernisierung.literatur": [

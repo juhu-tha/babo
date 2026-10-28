@@ -167,22 +167,22 @@
       {
         "titel": "Gegeben",
         "erklaerung": "Tonnenförmige Traglufthalle (Querschnitt näherungsweise Halbkreis), Radius 18 m, Betriebsdruck 300 Pa (angenommen). Gewebe PVC/PES Typ II mit 4000 N/5 cm in Schussrichtung.",
-        "formel": "r = 18\\,\\text{m}, \\quad p = 300\\,\\text{Pa}, \\quad f_t = 4\\,000\\,\\text{N/5 cm}"
+        "formel": "r = 18\\,\\text{m}, \\quad p = 300\\,\\text{Pa}, \\quad f_t = 4000\\,\\text{N/5 cm}"
       },
       {
         "titel": "Membrankraft im Betrieb",
         "erklaerung": "Zylinder, Kraft in Umfangsrichtung:",
-        "formel": "n = 300 \\cdot 18 = 5\\,400\\,\\text{N/m} = 5{,}4\\,\\text{kN/m}"
+        "formel": "n = 300 \\cdot 18 = 5400\\,\\text{N/m} = 5{,}4\\,\\text{kN/m}"
       },
       {
         "titel": "Zulässige Membrankraft (Lehrwert)",
         "erklaerung": "Kurzzeitfestigkeit auf 1 m umgerechnet, Gesamtsicherheitsbeiwert 5 (Lehrwert):",
-        "formel": "n_{zul} = \\frac{4\\,000 / 0{,}05}{5} = \\frac{80\\,000}{5} = 16\\,000\\,\\text{N/m} = 16\\,\\text{kN/m}"
+        "formel": "n_{zul} = \\frac{4000 / 0{,}05}{5} = \\frac{80\\,000}{5} = 16\\,000\\,\\text{N/m} = 16\\,\\text{kN/m}"
       },
       {
         "titel": "Ausnutzung und Sturmbetrieb",
         "erklaerung": "Bei Sturm wird der Innendruck erhöht, z. B. auf 550 Pa:",
-        "formel": "\\eta = \\frac{5{,}4}{16} = 0{,}34; \\quad n_{Sturm} = 550 \\cdot 18 = 9\\,900\\,\\text{N/m} \\Rightarrow \\eta = 0{,}62"
+        "formel": "\\eta = \\frac{5{,}4}{16} = 0{,}34; \\quad n_{Sturm} = 550 \\cdot 18 = 9900\\,\\text{N/m} \\Rightarrow \\eta = 0{,}62"
       }
     ],
     "MembranenETFE.schritte_2": [
@@ -199,7 +199,7 @@
       {
         "titel": "Betrieb (300 Pa)",
         "erklaerung": "Membrankraft und Folienspannung:",
-        "formel": "n = 300 \\cdot 4{,}55 = 1\\,365\\,\\text{N/m}; \\quad \\sigma = \\frac{1{,}365\\,\\text{N/mm}}{0{,}25\\,\\text{mm}} = 5{,}46\\,\\text{N/mm}^2"
+        "formel": "n = 300 \\cdot 4{,}55 = 1365\\,\\text{N/m}; \\quad \\sigma = \\frac{1{,}365\\,\\text{N/mm}}{0{,}25\\,\\text{mm}} = 5{,}46\\,\\text{N/mm}^2"
       },
       {
         "titel": "Schnee (600 Pa)",

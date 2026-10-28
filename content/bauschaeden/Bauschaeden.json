@@ -273,7 +273,7 @@
       {
         "titel": "Längenänderung",
         "erklaerung": "Betonfertigteil L = 6,0 m, α_T = 10 · 10⁻⁶ 1/K, Temperaturspanne der Bauteiloberfläche ΔT = 80 K:",
-        "formel": "\\Delta L = 6\\,000 \\cdot 10 \\cdot 10^{-6} \\cdot 80 = 4{,}8\\,\\text{mm}"
+        "formel": "\\Delta L = 6000 \\cdot 10 \\cdot 10^{-6} \\cdot 80 = 4{,}8\\,\\text{mm}"
       },
       {
         "titel": "Dichtstoffklasse",

@@ -425,7 +425,7 @@
       {
         "titel": "Index",
         "erklaerung": "Einsetzen:",
-        "formel": "\\beta = \\frac{200}{\\sqrt{2\\,500 + 900}} = \\frac{200}{58{,}3} = 3{,}43"
+        "formel": "\\beta = \\frac{200}{\\sqrt{2500 + 900}} = \\frac{200}{58{,}3} = 3{,}43"
       },
       {
         "titel": "Versagenswahrscheinlichkeit",

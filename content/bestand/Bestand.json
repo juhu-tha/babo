@@ -282,12 +282,12 @@
       {
         "titel": "Einsparung Nutzwärme",
         "erklaerung": "Umrechnung von Kd in kWh:",
-        "formel": "\\Delta Q = 0{,}90 \\cdot 100 \\cdot 3\\,500 \\cdot 24 / 1\\,000 = 7\\,560\\,\\text{kWh/a}"
+        "formel": "\\Delta Q = 0{,}90 \\cdot 100 \\cdot 3500 \\cdot 24 / 1000 = 7560\\,\\text{kWh/a}"
       },
       {
         "titel": "Einordnung",
         "erklaerung": "Bei Gas (≈ 0,24 kg CO₂-Äq./kWh) entspricht das rund 1,8 t CO₂-Äq. pro Jahr.",
-        "formel": "7\\,560 \\cdot 0{,}24 = 1\\,814\\,\\text{kg CO}_2\\text{-Äq./a}"
+        "formel": "7560 \\cdot 0{,}24 = 1814\\,\\text{kg CO}_2\\text{-Äq./a}"
       }
     ],
     "Bestand.literatur": [

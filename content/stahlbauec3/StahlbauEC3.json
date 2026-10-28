@@ -113,12 +113,12 @@
       {
         "titel": "Gegeben",
         "erklaerung": "Flachstahl 120 × 10 mm, S235 (f_y = 235, f_u = 360 N/mm²), ein Loch d₀ = 22 mm im Querschnitt:",
-        "formel": "A = 120 \\cdot 10 = 1\\,200\\,\\text{mm}^2, \\quad A_{net} = 1\\,200 - 22 \\cdot 10 = 980\\,\\text{mm}^2"
+        "formel": "A = 120 \\cdot 10 = 1200\\,\\text{mm}^2, \\quad A_{net} = 1200 - 22 \\cdot 10 = 980\\,\\text{mm}^2"
       },
       {
         "titel": "Fließen im Bruttoquerschnitt",
         "erklaerung": "Gl. (6.6) mit γ_M0 = 1,0:",
-        "formel": "N_{pl,Rd} = \\frac{1\\,200 \\cdot 235}{1{,}0} = 282{,}0\\,\\text{kN}"
+        "formel": "N_{pl,Rd} = \\frac{1200 \\cdot 235}{1{,}0} = 282{,}0\\,\\text{kN}"
       },
       {
         "titel": "Bruch im Nettoquerschnitt",
@@ -162,7 +162,7 @@
       {
         "titel": "Schlankheit um z",
         "erklaerung": "i_z = 5,07 cm, λ₁ = 93,9:",
-        "formel": "\\bar\\lambda_z = \\frac{4\\,000/50{,}7}{93{,}9} = \\frac{78{,}9}{93{,}9} = 0{,}840"
+        "formel": "\\bar\\lambda_z = \\frac{4000/50{,}7}{93{,}9} = \\frac{78{,}9}{93{,}9} = 0{,}840"
       },
       {
         "titel": "Abminderungsbeiwert",
@@ -172,12 +172,12 @@
       {
         "titel": "Knickwiderstand",
         "erklaerung": "A = 78,1 cm², γ_M1 = 1,1:",
-        "formel": "N_{b,z,Rd} = \\frac{0{,}637 \\cdot 7\\,810 \\cdot 235}{1{,}1} = 1\\,063\\,\\text{kN}"
+        "formel": "N_{b,z,Rd} = \\frac{0{,}637 \\cdot 7810 \\cdot 235}{1{,}1} = 1063\\,\\text{kN}"
       },
       {
         "titel": "Vergleich y-Achse und Nachweis",
         "erklaerung": "λ̄_y = 0,499 und χ_y = 0,885 ergeben 1476 kN; maßgebend ist z. Mit N_Ed = 800 kN:",
-        "formel": "\\frac{N_{Ed}}{N_{b,Rd}} = \\frac{800}{1\\,063} = 0{,}75 \\le 1{,}0"
+        "formel": "\\frac{N_{Ed}}{N_{b,Rd}} = \\frac{800}{1063} = 0{,}75 \\le 1{,}0"
       }
     ],
     "StahlbauEC3.regelwerke": [

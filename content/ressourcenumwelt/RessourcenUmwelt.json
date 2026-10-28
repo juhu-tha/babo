@@ -39,12 +39,12 @@
       {
         "titel": "Werte (Lehrbeispiel)",
         "erklaerung": "1 m³ Transportbeton: energetisch genutzt PENRE = 1050 MJ, stofflich gebunden PENRM = 50 MJ (z. B. Zusatzmittel):",
-        "formel": "\\text{PENRT} = 1\\,050 + 50 = 1\\,100\\,\\text{MJ}"
+        "formel": "\\text{PENRT} = 1050 + 50 = 1100\\,\\text{MJ}"
       },
       {
         "titel": "Umrechnung",
         "erklaerung": "1 kWh = 3,6 MJ:",
-        "formel": "\\frac{1\\,100}{3{,}6} = 306\\,\\text{kWh}"
+        "formel": "\\frac{1100}{3{,}6} = 306\\,\\text{kWh}"
       },
       {
         "titel": "Einordnung",

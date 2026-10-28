@@ -165,12 +165,12 @@
       {
         "titel": "Holzmasse im Lager",
         "erklaerung": "Produkt aus Fläche und Materialintensität:",
-        "formel": "m = 36\\,000 \\cdot 60 = 2\\,160\\,000\\,\\text{kg} = 2\\,160\\,\\text{t}"
+        "formel": "m = 36\\,000 \\cdot 60 = 2\\,160\\,000\\,\\text{kg} = 2160\\,\\text{t}"
       },
       {
         "titel": "Stofflich verwertbarer Anteil",
         "erklaerung": "Angenommen: 40 % A IV (Dachstuhl mit Holzschutzmittel), 60 % A I/A II. Bei q_st = 90 % des Potenzials:",
-        "formel": "m_{st} = 2\\,160 \\cdot 0{,}60 \\cdot 0{,}90 \\approx 1\\,166\\,\\text{t}"
+        "formel": "m_{st} = 2160 \\cdot 0{,}60 \\cdot 0{,}90 \\approx 1166\\,\\text{t}"
       }
     ],
     "AltholzUrbanMining.weblinks.0": {

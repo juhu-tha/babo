@@ -156,7 +156,7 @@ export default function Sonderbetone() {
 
       <FormulaDerivationBox
         title={inhalt.werte.anwendungsbeispielIstEsSchwerbeton}
-        zielGleichung="\rho = \frac{m_z + m_w + m_g}{V} > 2\,600\,\text{kg/m}^3"
+        zielGleichung="\rho = \frac{m_z + m_w + m_g}{V} > 2600\,\text{kg/m}^3"
         normQuelle={inhalt.werte.dinEn206Schwerbeton}
         schritte={inhalt.daten["Sonderbetone.schritte_5"]}
         ergebnisHinweis={inhalt.werte.rund3300Kg}

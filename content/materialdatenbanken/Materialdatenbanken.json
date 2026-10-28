@@ -174,7 +174,7 @@
       {
         "titel": "Kalksandstein",
         "erklaerung": "d = 0,175 m, ρ = 1800 kg/m³, gwp = 0,13 kg CO₂e/kg (Lehrwert):",
-        "formel": "0{,}175 \\cdot 1\\,800 \\cdot 0{,}13 = 40{,}95\\,\\text{kg CO}_2\\text{e/m}^2"
+        "formel": "0{,}175 \\cdot 1800 \\cdot 0{,}13 = 40{,}95\\,\\text{kg CO}_2\\text{e/m}^2"
       },
       {
         "titel": "EPS-Dämmung",

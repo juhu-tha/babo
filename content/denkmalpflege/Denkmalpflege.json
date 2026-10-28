@@ -109,12 +109,12 @@
       {
         "titel": "Gegeben",
         "erklaerung": "Natriumchlorid (Halit), molares Volumen V_m = 27,0 cm³/mol, T = 293 K, Übersättigung c/c_s = 2:",
-        "formel": "R \\cdot T = 8{,}314 \\cdot 293 = 2\\,437\\,\\text{J/mol}"
+        "formel": "R \\cdot T = 8{,}314 \\cdot 293 = 2437\\,\\text{J/mol}"
       },
       {
         "titel": "Kristallisationsdruck",
         "erklaerung": "Einsetzen in die Correns-Gleichung:",
-        "formel": "p = \\frac{2\\,437}{27{,}0 \\cdot 10^{-6}} \\cdot \\ln 2 = 9{,}0 \\cdot 10^{7} \\cdot 0{,}693 = 62\\,\\text{MPa}"
+        "formel": "p = \\frac{2437}{27{,}0 \\cdot 10^{-6}} \\cdot \\ln 2 = 9{,}0 \\cdot 10^{7} \\cdot 0{,}693 = 62\\,\\text{MPa}"
       },
       {
         "titel": "Vergleich",

@@ -334,7 +334,7 @@
       {
         "titel": "Bilanz",
         "erklaerung": "Kontext 128 000 Token, Systemprompt 2000, Reserve für die Antwort 8000:",
-        "formel": "n_{frei} = 128\\,000 - 2\\,000 - 8\\,000 = 118\\,000"
+        "formel": "n_{frei} = 128\\,000 - 2000 - 8000 = 118\\,000"
       },
       {
         "titel": "Seiten",

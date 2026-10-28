@@ -130,22 +130,22 @@
       {
         "titel": "Dampfdruck",
         "erklaerung": "Raumklima 20 °C / 50 % r. F.:",
-        "formel": "p_{sat}(20\\,^\\circ\\text{C}) = 2\\,337\\,\\text{Pa}, \\quad p = 0{,}50 \\cdot 2\\,337 = 1\\,169\\,\\text{Pa}"
+        "formel": "p_{sat}(20\\,^\\circ\\text{C}) = 2337\\,\\text{Pa}, \\quad p = 0{,}50 \\cdot 2337 = 1169\\,\\text{Pa}"
       },
       {
         "titel": "Taupunkt",
         "erklaerung": "Umkehrung der Magnus-Formel:",
-        "formel": "\\ln\\frac{1\\,169}{610{,}5} = 0{,}650 \\Rightarrow \\theta_d = \\frac{237{,}3 \\cdot 0{,}650}{17{,}269 - 0{,}650} = 9{,}3\\,^\\circ\\text{C}"
+        "formel": "\\ln\\frac{1169}{610{,}5} = 0{,}650 \\Rightarrow \\theta_d = \\frac{237{,}3 \\cdot 0{,}650}{17{,}269 - 0{,}650} = 9{,}3\\,^\\circ\\text{C}"
       },
       {
         "titel": "Schimmelgrenze (80 % r. F.)",
         "erklaerung": "Sättigungsdampfdruck, bei dem die Oberflächenfeuchte 80 % erreicht:",
-        "formel": "p_{sat} = \\frac{1\\,169}{0{,}80} = 1\\,461\\,\\text{Pa} \\Rightarrow \\theta_{si,min} = 12{,}6\\,^\\circ\\text{C}"
+        "formel": "p_{sat} = \\frac{1169}{0{,}80} = 1461\\,\\text{Pa} \\Rightarrow \\theta_{si,min} = 12{,}6\\,^\\circ\\text{C}"
       },
       {
         "titel": "Bei höherer Raumfeuchte",
         "erklaerung": "Bad oder schlecht gelüftetes Schlafzimmer mit 65 % r. F.:",
-        "formel": "p = 1\\,519\\,\\text{Pa} \\Rightarrow \\theta_d = 13{,}2\\,^\\circ\\text{C}, \\quad \\theta_{si,min} = 16{,}7\\,^\\circ\\text{C}"
+        "formel": "p = 1519\\,\\text{Pa} \\Rightarrow \\theta_d = 13{,}2\\,^\\circ\\text{C}, \\quad \\theta_{si,min} = 16{,}7\\,^\\circ\\text{C}"
       }
     ],
     "Feuchteschutz.schritte_2": [

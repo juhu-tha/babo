@@ -19,7 +19,7 @@
       {
         "titel": "Gegeben",
         "erklaerung": "Heizkosten 2000 € pro Jahr (real konstant), Kalkulationszins r = 2 %, T = 30 Jahre.",
-        "formel": "C = 2\\,000\\,\\text{EUR/a},\\; r = 0{,}02,\\; T = 30"
+        "formel": "C = 2000\\,\\text{EUR/a},\\; r = 0{,}02,\\; T = 30"
       },
       {
         "titel": "Rentenbarwertfaktor",
@@ -29,7 +29,7 @@
       {
         "titel": "Barwert",
         "erklaerung": "Heutiger Wert aller künftigen Zahlungen:",
-        "formel": "BW = 2\\,000 \\cdot 22{,}40 = 44\\,800\\,\\text{EUR}"
+        "formel": "BW = 2000 \\cdot 22{,}40 = 44\\,800\\,\\text{EUR}"
       }
     ],
     "LebenszyklusKosten.schritte_2": [
@@ -46,7 +46,7 @@
       {
         "titel": "Barwert",
         "erklaerung": "In der LCC-Bilanz anzusetzender Wert:",
-        "formel": "BW = \\frac{20\\,000}{2{,}427} = 8\\,240\\,\\text{EUR}"
+        "formel": "BW = \\frac{20\\,000}{2{,}427} = 8240\\,\\text{EUR}"
       }
     ],
     "LebenszyklusKosten.literatur": [

@@ -284,12 +284,12 @@
       {
         "titel": "Massenbilanz",
         "erklaerung": "1200 t nicht gefährliche Bau- und Abbruchabfälle: 950 t Recycling (RC-Baustoffe), 120 t Verfüllung, 50 t energetische Verwertung, 80 t Deponie.",
-        "formel": "950 + 120 + 50 + 80 = 1\\,200\\,\\text{t}"
+        "formel": "950 + 120 + 50 + 80 = 1200\\,\\text{t}"
       },
       {
         "titel": "Stoffliche Verwertung",
         "erklaerung": "Recycling und Verfüllung zählen, energetische Verwertung nicht:",
-        "formel": "Q = \\frac{950 + 120}{1\\,200} = 89\\,\\%"
+        "formel": "Q = \\frac{950 + 120}{1200} = 89\\,\\%"
       },
       {
         "titel": "Zielvorgabe",

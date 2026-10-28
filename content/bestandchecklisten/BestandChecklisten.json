@@ -89,7 +89,7 @@
       {
         "titel": "Umrechnung",
         "erklaerung": "Bezug auf Zementmasse:",
-        "formel": "Cl_Z = 0{,}08 \\cdot \\frac{2\\,350}{300} = 0{,}63\\,\\text{M.-\\% v. z}"
+        "formel": "Cl_Z = 0{,}08 \\cdot \\frac{2350}{300} = 0{,}63\\,\\text{M.-\\% v. z}"
       },
       {
         "titel": "Bewertung",

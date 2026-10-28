@@ -266,12 +266,12 @@
     "InnovativeWerkstoffe.schritte": [
       {
         "titel": "1. Gegeben",
-        "formel": "\\rho = 2\\,100\\,\\text{kg/m}^3,\\; H = 2{,}0\\,\\text{m}",
+        "formel": "\\rho = 2100\\,\\text{kg/m}^3,\\; H = 2{,}0\\,\\text{m}",
         "erklaerung": "Gedruckte Wand, Endhöhe 2 m (Standardwerte des Simulators)."
       },
       {
         "titel": "2. Spannung in der untersten Schicht",
-        "formel": "\\rho g H = 2\\,100 \\cdot 9{,}81 \\cdot 2{,}0 = 41\\,202\\,\\text{Pa}",
+        "formel": "\\rho g H = 2100 \\cdot 9{,}81 \\cdot 2{,}0 = 41\\,202\\,\\text{Pa}",
         "erklaerung": "Eigengewicht aller darüberliegenden Schichten."
       },
       {

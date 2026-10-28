@@ -190,7 +190,7 @@
       {
         "titel": "Analysenwerte",
         "erklaerung": "Eluat: Sulfat 1450 mg/l, Chlorid 120 mg/l, Blei 0,08 mg/l; Feststoff: TOC 0,6 M.-%, Glühverlust 2,4 M.-%.",
-        "formel": "\\text{SO}_4^{2-} = 1\\,450\\,\\text{mg/l}"
+        "formel": "\\text{SO}_4^{2-} = 1450\\,\\text{mg/l}"
       },
       {
         "titel": "Vergleich DK 0",
@@ -207,7 +207,7 @@
       {
         "titel": "Volumen",
         "erklaerung": "Tragschicht unter Asphalt, Fläche 1200 m², Dicke 0,25 m, Material RC-3:",
-        "formel": "V_{ges} = 1\\,200 \\cdot 0{,}25 = 300\\,\\text{m}^3"
+        "formel": "V_{ges} = 1200 \\cdot 0{,}25 = 300\\,\\text{m}^3"
       },
       {
         "titel": "Schwellenwert",

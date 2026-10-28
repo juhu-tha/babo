@@ -457,7 +457,7 @@
       {
         "titel": "Wägung",
         "erklaerung": "Feuchte Probe 2450 g, nach Trocknung bei 105 °C 2130 g:",
-        "formel": "w = \\frac{2\\,450 - 2\\,130}{2\\,130} = 0{,}150 = 15{,}0\\,\\%"
+        "formel": "w = \\frac{2450 - 2130}{2130} = 0{,}150 = 15{,}0\\,\\%"
       },
       {
         "titel": "Trockenmassebezug",

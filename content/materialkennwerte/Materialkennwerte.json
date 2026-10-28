@@ -69,7 +69,7 @@
       {
         "titel": "Baustahl S235",
         "erklaerung": "E = 210 000 MPa, ρ = 7850 kg/m³:",
-        "formel": "\\frac{E}{\\rho} = \\frac{210\\,000}{7\\,850} \\approx 26{,}8\\ \\frac{\\text{MPa}}{\\text{kg/m}^3}"
+        "formel": "\\frac{E}{\\rho} = \\frac{210\\,000}{7850} \\approx 26{,}8\\ \\frac{\\text{MPa}}{\\text{kg/m}^3}"
       },
       {
         "titel": "Nadelholz C24 (faserparallel)",
@@ -79,7 +79,7 @@
       {
         "titel": "Beton C30/37",
         "erklaerung": "E_cm = 33 000 MPa, ρ = 2400 kg/m³:",
-        "formel": "\\frac{E}{\\rho} = \\frac{33\\,000}{2\\,400} \\approx 13{,}8\\ \\frac{\\text{MPa}}{\\text{kg/m}^3}"
+        "formel": "\\frac{E}{\\rho} = \\frac{33\\,000}{2400} \\approx 13{,}8\\ \\frac{\\text{MPa}}{\\text{kg/m}^3}"
       }
     ],
     "Materialkennwerte.regelwerke": [
