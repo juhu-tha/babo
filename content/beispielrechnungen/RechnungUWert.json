@@ -1,7 +1,7 @@
 {
   "texte": {
     "wärmedurchgangskoeffizientUWertEiner": "Wärmedurchgangskoeffizient (U-Wert) einer gedämmten Betonwand",
-    "wasBerechnetWirdDer": "**Was?** Berechnet wird der Wärmedurchgangskoeffizient $U$ einer mehrschichtigen Wandkonstruktion in $\\text{W/(m}^2\\text{K)}$. <br>**Warum?** Der U-Wert beschreibt den stationären Wärmestrom durch ein Bauteil bei einer Temperaturdifferenz von 1 Kelvin. Ein kleinerer Wert bedeutet eine bessere Wärmedämmung. Er ist das fundamentale Kriterium zur Begrenzung von Transmissionswärmeverlusten nach dem **Gebäudeenergiegesetz (GEG)**. <br>**Wie?** Durch die Addition der inneren und äußeren Wärmeübergangswiderstände $R_{si}$ und $R_{se}$ mit den Wärmedurchlasswiderständen der einzelnen Baustoffschichten $R_i = d_i / \\lambda_i$.",
+    "wasBerechnetWirdDer": "**Was?** Berechnet wird der Wärmedurchgangskoeffizient $U$ einer mehrschichtigen Wandkonstruktion in $\\text{W/(m}^2\\text{K)}$. <br>**Warum?** Der U-Wert beschreibt den stationären Wärmestrom durch ein Bauteil bei einer Temperaturdifferenz von 1 Kelvin. Ein kleinerer Wert bedeutet eine bessere Wärmedämmung. Er ist das fundamentale Kriterium zur Begrenzung von Transmissionswärmeverlusten nach dem **Gebäudemodernisierungsgesetz (GModG, in Kraft seit 29.07.2026, vormals GEG)**. <br>**Wie?** Durch die Addition der inneren und äußeren Wärmeübergangswiderstände $R_{si}$ und $R_{se}$ mit den Wärmedurchlasswiderständen der einzelnen Baustoffschichten $R_i = d_i / \\lambda_i$.",
     "parameterAnpassenEchtzeitNachweis": " Parameter anpassen (Echtzeit-Nachweis)",
     "schicht1Normalbeton": "Schicht 1: Normalbeton",
     "dickeD1Cm": "Dicke $d_1$ (cm):",
@@ -22,12 +22,12 @@
     "schritt4WärmedurchgangskoeffizientU": "**Schritt 4: Wärmedurchgangskoeffizient U ermitteln**",
     "ergebnisbewertungInterpretation": "Ergebnisbewertung & Interpretation:",
     "ihrBerechneterUWert": "Ihr berechneter U-Wert beträgt ",
-    "dasGebäudeenergiegesetzGegAnlage": ". Das Gebäudeenergiegesetz (GEG), Anlage 7 fordert bei nachträglicher Sanierung oder Neuerrichtung von Außenwänden einen maximalen U-Wert von **0,24 W/(m²K)**."
+    "dasGebäudeenergiegesetzGegAnlage": ". Anlage 7 des Gebäudemodernisierungsgesetzes (GModG, vormals GEG) begrenzt bei der **Änderung** von Außenwänden bestehender Wohngebäude (z. B. Erneuerung oder nachträgliche Dämmung) den U-Wert auf höchstens **0,24 W/(m²K)**. Für Neubauten gilt kein Bauteilhöchstwert, sondern der Nachweis über das Referenzgebäude."
   },
   "werte": {
-    "bestandenGegKonform": "Bestanden (GEG-konform)",
-    "nichtBestandenGegenGeg": "Nicht bestanden (Gegen GEG)",
-    "dieDämmstoffstärkeIstEnergetisch": "Die Dämmstoffstärke ist energetisch ausreichend dimensioniert. Das Risiko von Oberflächenkondensat an der Innenseite bei üblichen Raumklimaten (20°C, 50% r.F.) ist extrem gering, wodurch Schimmelpilzbildung konstruktiv unterbunden wird.",
-    "dieDämmwirkungIstUnzureichend": "Die Dämmwirkung ist unzureichend. Erhöhen Sie die Dicke der EPS-Dämmung (Schicht 2) im interaktiven Regler auf mindestens 14 cm, um den Mindestwärmeschutz einzuhalten und Tauwasserausfall zu verhindern."
+    "bestandenGegKonform": "Bestanden (Höchstwert Anlage 7 GModG eingehalten)",
+    "nichtBestandenGegenGeg": "Nicht bestanden (Höchstwert Anlage 7 GModG überschritten)",
+    "dieDämmstoffstärkeIstEnergetisch": "Die Dämmstoffstärke ist energetisch ausreichend dimensioniert. Das Risiko von Oberflächenkondensat an der Innenseite bei üblichen Raumklimaten (20°C, 50% r.F.) ist in der ungestörten Wandfläche gering; Wärmebrücken (Anschlüsse, Ecken) sind gesondert nach DIN 4108-2 zu prüfen.",
+    "dieDämmwirkungIstUnzureichend": "Die Dämmwirkung ist unzureichend. Erhöhen Sie die Dicke der EPS-Dämmung (Schicht 2) im interaktiven Regler auf mindestens 14 cm, um den Höchstwert nach Anlage 7 GModG einzuhalten. Der Mindestwärmeschutz für Außenwände (DIN 4108-2:2013-02, Tab. 3: R ≥ 1,2 m²K/W) ist dagegen schon mit wenigen Zentimetern Dämmung erfüllt."
   }
 }

@@ -10,6 +10,8 @@ import Frischbetontemperatur from './Frischbetontemperatur';
 import inhalt from '@/content/frischbeton/Frischbeton.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { bewerteLuftgehalt } from '@/src/calc/frischbeton';
 
 type TabKey = 'konsistenz' | 'ausbreitversuch' | 'luftporen' | 'frischbetondruck' | 'frischbetontemperatur';
 type TestVerfahren = 'ausbreitmass' | 'verdichtungsmass' | 'setzmass' | 'setzfliessmass';
@@ -66,27 +68,20 @@ export default function Frischbeton() {
   const istKonform = messwert >= minZul && messwert <= maxZul;
   const abweichung = messwert - zielwert;
 
-  // Berechnung Luftgehalt und Rohdichte
-  const lEffektiv = Math.max(0, lAbg - kGestein);
-  
-  // Mindestluftporengehalte nach DIN 1045-2:2023-08 Tabelle F.2.2 & Tabelle 2 für XF2 / XF4
-  const getMinLp = (d: number, klasse: 'XF2' | 'XF4' | 'X0_XF1_XF3') => {
-    if (klasse === 'X0_XF1_XF3') return 0;
-    switch (d) {
-      case 8: return 5.5;
-      case 16: return 4.5;
-      case 32: return 4.0;
-      case 63: return 3.5;
-      default: return 4.0;
-    }
-  };
-
-  const minLpGefordert = getMinLp(dMax, expKlasse);
-  // Einzelwertkriterium nach DIN 1045-2 (Fußnote zur Grenzwerttabelle): höchstens 0,5 Vol.-% unter dem Mindestwert
-  const minLpEinzelwert = Math.max(0, minLpGefordert - 0.5);
-  // Maximal empfohlener Luftgehalt zur Vermeidung übermäßiger Druckfestigkeitseinbußen (~4% über Sollwert)
-  const maxLpSinnvoll = minLpGefordert > 0 ? minLpGefordert + 4.0 : 4.0;
-  const lpKonform = expKlasse === 'X0_XF1_XF3' ? true : lEffektiv >= minLpEinzelwert && lEffektiv <= maxLpSinnvoll;
+  // Luftgehalt: Bewertung im Rechenkern src/calc/frischbeton.ts (Mindestwert DIN 1045-2 Tab. F.2.2,
+  // obere Grenze Mindestwert + 4 % nach DIN EN 206, 5.4.3, Grenzabweichungen der Einzelwerte −0,5/+1,0 %)
+  const lp = bewerteLuftgehalt({ ablesung: lAbg, gesteinskorrektur: kGestein, klasse: expKlasse, dmax: dMax });
+  const lEffektiv = lp.luftgehalt;
+  const minLpGefordert = lp.mindestwert;
+  const minLpEinzelwert = lp.einzelwertMin;
+  const lpKonform = lp.bewertung === 'erfuellt' || lp.bewertung === 'keineAnforderung';
+  const lpGrenzbereich = lp.bewertung === 'unterMindestwert' || lp.bewertung === 'ueberObergrenze';
+  const lpMeldung = lp.bewertung === 'keineAnforderung' ? inhalt.werte.keineBauaufsichtlicheMindestluftporenanf
+    : lp.bewertung === 'erfuellt' ? inhalt.werte.anforderungNachDin1045
+    : lp.bewertung === 'unterMindestwert' ? inhalt.werte.luftgehaltUnterMindestwert
+    : lp.bewertung === 'ueberObergrenze' ? inhalt.werte.luftgehaltUeberObergrenze
+    : lp.bewertung === 'ueberschritten' ? inhalt.werte.luftgehaltObergrenzeUeberschritten
+    : inhalt.werte.achtungMindestluftporengehaltUnterschrit;
 
   // Frischbetonrohdichte D in kg/m³ (DIN EN 12350-6)
   const volumenM3 = volumenL / 1000;
@@ -443,16 +438,19 @@ export default function Frischbeton() {
                   </div>
 
                   {/* Ergebnis Luftgehalt */}
+                  <EingabeHinweise hinweise={lp.hinweise} />
                   <div className={`p-4 rounded-xl border flex flex-col gap-2 transition-all ${
-                    lpKonform 
-                      ? 'bg-emerald-50/70 border-emerald-300 text-emerald-950' 
-                      : 'bg-rose-50/70 border-rose-300 text-rose-950'
+                    lpKonform
+                      ? 'bg-emerald-50/70 border-emerald-300 text-emerald-950'
+                      : lpGrenzbereich
+                        ? 'bg-amber-50/70 border-amber-300 text-amber-950'
+                        : 'bg-rose-50/70 border-rose-300 text-rose-950'
                   }`}>
                     <div className="flex items-center gap-2">
                       {lpKonform ? (
                         <CheckCircle2 size={20} className="text-emerald-600 shrink-0" />
                       ) : (
-                        <AlertTriangle size={20} className="text-rose-600 shrink-0" />
+                        <AlertTriangle size={20} className={`${lpGrenzbereich ? 'text-amber-700' : 'text-rose-600'} shrink-0`} />
                       )}
                       <div>
                         <span className="font-bold text-sm block"><MdText text={inhalt.texte.tatsächlicherLuftgehalt} />{formatDeZahl(lEffektiv, 1)} Vol.-%
@@ -472,17 +470,19 @@ export default function Frischbeton() {
                           <span className="text-text-main/70 block"><MdText text={inhalt.texte.zulässigerEinzelwertDin1045} /></span>
                           <span className="font-mono font-bold">≥ {formatDeZahl(minLpEinzelwert, 1)} Vol.-%</span>
                         </div>
+                        <div>
+                          <span className="text-text-main/70 block"><MdText text={inhalt.texte.obereGrenzeDinEn206} /></span>
+                          <span className="font-mono font-bold">≤ {formatDeZahl(lp.obergrenze, 1)} Vol.-%</span>
+                        </div>
+                        <div>
+                          <span className="text-text-main/70 block"><MdText text={inhalt.texte.obererEinzelwertDinEn206} /></span>
+                          <span className="font-mono font-bold">≤ {formatDeZahl(lp.einzelwertMax, 1)} Vol.-%</span>
+                        </div>
                       </div>
                     )}
 
                     <div className="text-[11px] pt-1 text-text-main/80">
-                      {expKlasse === 'X0_XF1_XF3' ? (
-                        inhalt.werte.keineBauaufsichtlicheMindestluftporenanf
-                      ) : lpKonform ? (
-                        inhalt.werte.anforderungNachDin1045
-                      ) : (
-                        inhalt.werte.achtungMindestluftporengehaltUnterschrit
-                      )}
+                      {lpMeldung}
                     </div>
                   </div>
                 </div>

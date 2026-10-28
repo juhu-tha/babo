@@ -44,7 +44,7 @@
     "pvc091": "PVC: 0,9–1,2 | Holz: 1,1–1,3 | Alu: 1,1–1,4",
     "uwWMK": "Uw [W/(m²K)]",
     "gesamterWärmeverlustDesFensters": "Gesamter Wärmeverlust des Fensters inkl. Glas, Rahmen und Glasrandverbund ($\\Psi_g$).",
-    "gegMax130": "GEG-Max: 1,30 | Standard: 0,80 – 0,95",
+    "gegMax130": "Höchstwert GModG (Anlage 7, Fensteraustausch): 1,30 | Standard: 0,80 – 0,95",
     "gWert": "g-Wert [- / %]",
     "anteilDerGesamtenSonnenenergie": "Anteil der gesamten Sonnenenergie, die durch das Glas in den Raum gelangt (0 bis 1).",
     "wärmeschutz0500": "Wärmeschutz: 0,50–0,62 | Sonnenschutz: 0,22–0,38",
