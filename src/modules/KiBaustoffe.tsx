@@ -499,7 +499,7 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                     maxLength={4000}
                     aria-label={inhalt.werte.promptHöchstens4000}
                     onChange={(e) => setCustomPromptText(e.target.value)}
-                    className="p-5 font-mono text-xs leading-relaxed bg-slate-950 text-emerald-400 overflow-y-auto whitespace-pre-wrap outline-none border-none focus:ring-0 resize-y max-h-80 select-all"
+                    className="p-5 font-mono text-xs leading-relaxed bg-off-white text-text-main overflow-y-auto whitespace-pre-wrap outline-none border-none focus:ring-0 resize-y max-h-80 select-all"
                   />
 
                   {/* Footer with run button – nur bei eingeschalteter KI-Funktion (src/data/kiSchalter.ts) */}
@@ -549,20 +549,20 @@ function KiBaustoffeInhalt({ forceTab }: KiBaustoffeProps) {
                 {/* LIVE GEMINI OUTPUT CARD */}
                 {KI_FUNKTION_AKTIV && (isLoadingAi || aiOutput) && (
                   <div className="bg-white rounded-2xl border border-slate-200 shadow-md overflow-hidden animate-in fade-in slide-in-from-bottom-2 duration-300">
-                    <div className="bg-slate-900 text-white px-5 py-3 border-b border-slate-800 flex justify-between items-center">
+                    <div className="bg-off-white text-text-main px-5 py-3 border-b border-home-grau/30 flex justify-between items-center">
                       <div className="flex items-center gap-2">
                         <Cpu size={14} className="text-shiraz animate-pulse" />
                         <span className="text-xs font-bold font-mono">KI-Kernel-Terminal</span>
                       </div>
                       <div className="flex items-center gap-2">
                         {isLoadingAi ? (
-                          <span className="bg-slate-800 text-slate-300 text-[10px] uppercase tracking-wider font-extrabold px-2.5 py-0.5 rounded-lg border border-slate-700 flex items-center gap-1">
+                          <span className="bg-white text-slate-700 text-[10px] uppercase tracking-wider font-extrabold px-2.5 py-0.5 rounded-lg border border-home-grau/30 flex items-center gap-1">
                             <Loader2 size={10} className="animate-spin" /> Verarbeite...
                           </span>
                         ) : apiMode === 'live' ? (
-                          <span className="bg-emerald-950 text-emerald-400 text-[10px] uppercase tracking-wider font-extrabold px-2.5 py-0.5 rounded-lg border border-emerald-800"><MdText text={inhalt.texte.kiGeneriertGoogleGemini} /></span>
+                          <span className="bg-emerald-50 text-emerald-800 text-[10px] uppercase tracking-wider font-extrabold px-2.5 py-0.5 rounded-lg border border-emerald-200"><MdText text={inhalt.texte.kiGeneriertGoogleGemini} /></span>
                         ) : (
-                          <span className="bg-amber-950 text-amber-400 text-[10px] uppercase tracking-wider font-extrabold px-2.5 py-0.5 rounded-lg border border-amber-800"><MdText text={inhalt.texte.demoModus} /></span>
+                          <span className="bg-amber-50 text-amber-800 text-[10px] uppercase tracking-wider font-extrabold px-2.5 py-0.5 rounded-lg border border-amber-200"><MdText text={inhalt.texte.demoModus} /></span>
                         )}
                       </div>
                     </div>

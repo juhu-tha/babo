@@ -157,18 +157,18 @@ export function OerEncyclopedia() {
   return (
     <div className="space-y-6" id="oer-enzyklopaedie">
       {/* Intro Hero Banner */}
-      <div className="relative bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 p-8 rounded-2xl border border-indigo-900/40 text-white overflow-hidden shadow-lg">
+      <div className="relative bg-shiraz/5 p-8 rounded-2xl border border-shiraz/20 text-text-main overflow-hidden shadow-sm">
         <div className="absolute top-0 right-0 p-8 opacity-10 shrink-0 select-none">
-          <BookMarked size={160} className="text-white" />
+          <BookMarked size={160} className="text-text-main" />
         </div>
         <div className="relative z-10 max-w-4xl space-y-3">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-400/20 text-indigo-300 text-[10px] font-extrabold tracking-wider uppercase">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-400/20 text-indigo-700 text-[10px] font-extrabold tracking-wider uppercase">
             <Sparkles size={11} /> akademisches OER-Referenzwerk
           </div>
           <h3 className="text-2xl font-black tracking-tight leading-tight md:text-3xl">
             Digitale Transformation in der Baustofflehre
           </h3>
-          <p className="text-indigo-200 text-xs md:text-sm leading-relaxed max-w-3xl">
+          <p className="text-slate-700 text-xs md:text-sm leading-relaxed max-w-3xl">
             Eine wissenschaftlich kuratierte Enzyklopädie freier Lehrmaterialien, interaktiver Materialdatenbanken, virtueller Laborsimulationen und industrieller Weiterbildungsangebote für Lehre und Praxis.
           </p>
         </div>
@@ -294,10 +294,10 @@ export function OerEncyclopedia() {
                         <Play size={10} /> Suchen
                       </button>
                     </div>
-                    <div className="bg-slate-900 text-white p-2.5 rounded text-[9px] font-mono flex items-center justify-between">
-                      <span className="text-slate-400">[Found at 04:12]</span>
-                      <span className="text-emerald-300">"...wird beim Erhärten des Zements Hydratationswärme frei, die..."</span>
-                      <span className="text-indigo-300 bg-indigo-500/20 px-1 rounded hover:underline cursor-pointer">Jump to frame 📌</span>
+                    <div className="bg-off-white border border-home-grau/30 text-text-main p-2.5 rounded text-[9px] font-mono flex items-center justify-between">
+                      <span className="text-slate-600">[Found at 04:12]</span>
+                      <span className="text-emerald-700">"...wird beim Erhärten des Zements Hydratationswärme frei, die..."</span>
+                      <span className="text-indigo-700 bg-indigo-500/20 px-1 rounded hover:underline cursor-pointer">Jump to frame 📌</span>
                     </div>
                   </div>
 
@@ -456,16 +456,16 @@ export function OerEncyclopedia() {
 
                 {/* INTERACTIVE COMPONENT 1: Steel Tensile Test Simulator */}
                 <div className="border border-indigo-200 rounded-2xl overflow-hidden shadow-xs bg-white">
-                  <div className="bg-indigo-900 p-4 text-white flex items-center justify-between">
+                  <div className="bg-shiraz/5 p-4 text-text-main flex items-center justify-between">
                     <div>
                       <h5 className="text-sm font-bold flex items-center gap-1.5">
-                        <FlaskConical className="text-indigo-300" size={15} /> 4.2 Interaktiver Virtueller Zugversuch (Steel Tensile Test)
+                        <FlaskConical className="text-shiraz" size={15} /> 4.2 Interaktiver Virtueller Zugversuch (Steel Tensile Test)
                       </h5>
-                      <span className="text-[9px] text-indigo-200">Simuliertes Baustahlelement (d₀ = 12 mm, l₀ = 100 mm)</span>
+                      <span className="text-[9px] text-slate-700">Simuliertes Baustahlelement (d₀ = 12 mm, l₀ = 100 mm)</span>
                     </div>
                     <button 
                       onClick={resetTensile}
-                      className="p-1 px-2.5 bg-indigo-800 hover:bg-indigo-800 text-[10px] rounded border border-indigo-700 font-semibold flex items-center gap-1 transition-all"
+                      className="p-1 px-2.5 bg-white hover:bg-slate-100 text-[10px] rounded border border-home-grau/30 font-semibold flex items-center gap-1 transition-all"
                     >
                       <RotateCcw size={11} /> Reset Test
                     </button>
@@ -557,16 +557,16 @@ export function OerEncyclopedia() {
 
                 {/* INTERACTIVE COMPONENT 2: Concrete Compression Test Simulator */}
                 <div className="border border-emerald-250 rounded-2xl overflow-hidden shadow-xs bg-white">
-                  <div className="bg-emerald-900 p-4 text-white flex items-center justify-between">
+                  <div className="bg-shiraz/5 p-4 text-text-main flex items-center justify-between">
                     <div>
                       <h5 className="text-sm font-bold flex items-center gap-1.5">
-                        <FlaskConical className="text-emerald-300" size={15} /> 4.3 Interaktiver Virtueller Druckversuch (Concrete Compression)
+                        <FlaskConical className="text-shiraz" size={15} /> 4.3 Interaktiver Virtueller Druckversuch (Concrete Compression)
                       </h5>
-                      <span className="text-[9px] text-emerald-200">Bruchversuch mineralischer Bauteile</span>
+                      <span className="text-[9px] text-slate-700">Bruchversuch mineralischer Bauteile</span>
                     </div>
                     <button 
                       onClick={resetCompression}
-                      className="p-1 px-2.5 bg-emerald-800 hover:bg-emerald-800 text-[10px] rounded border border-emerald-700 font-semibold flex items-center gap-1 transition-all"
+                      className="p-1 px-2.5 bg-white hover:bg-slate-100 text-[10px] rounded border border-home-grau/30 font-semibold flex items-center gap-1 transition-all"
                     >
                       <RotateCcw size={11} /> Reset Test
                     </button>

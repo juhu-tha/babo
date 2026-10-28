@@ -131,7 +131,7 @@ export function AktualitaetTab({  }: AktualitaetTabProps) {
           <div className="p-4 rounded-xl border border-home-grau/20 bg-off-white hover:border-shiraz/30 transition-all flex flex-col justify-between">
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <span className="font-mono text-xs font-bold px-2 py-0.5 bg-slate-800 text-white rounded"><MdText text={inhalt.texte.vdi6210Blatt1} /></span>
+                <span className="font-mono text-xs font-bold px-2 py-0.5 bg-shiraz/10 text-shiraz rounded"><MdText text={inhalt.texte.vdi6210Blatt1} /></span>
                 <span className="text-[11px] text-slate-500 font-medium"><MdText text={inhalt.texte.abbruchSchadstoffsanierung} /></span>
               </div>
               <h5 className="font-bold text-sm text-text-main"><MdText text={inhalt.texte.abbruchVonBaulichenUnd} /></h5>
@@ -147,7 +147,7 @@ export function AktualitaetTab({  }: AktualitaetTabProps) {
           <div className="p-4 rounded-xl border border-home-grau/20 bg-off-white hover:border-shiraz/30 transition-all flex flex-col justify-between">
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <span className="font-mono text-xs font-bold px-2 py-0.5 bg-slate-800 text-white rounded">
+                <span className="font-mono text-xs font-bold px-2 py-0.5 bg-shiraz/10 text-shiraz rounded">
                   DIN 18007
                 </span>
                 <span className="text-[11px] text-slate-500 font-medium"><MdText text={inhalt.texte.abbrucharbeitenBegriffeVerfahren} /></span>

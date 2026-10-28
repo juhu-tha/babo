@@ -353,7 +353,7 @@ export default function LokaleKI() {
                 </button>
               </div>
 
-              <div className="p-4 bg-slate-900 rounded-xl border border-slate-800 text-xxs font-mono text-slate-200 overflow-x-auto leading-relaxed">
+              <div className="p-4 bg-off-white rounded-xl border border-home-grau/30 text-xxs font-mono text-text-main overflow-x-auto leading-relaxed">
                 <pre>{inhalt.werte.fromOpenaiImportOpenai2}</pre>
               </div>
             </div>

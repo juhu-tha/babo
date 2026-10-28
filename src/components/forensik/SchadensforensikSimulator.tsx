@@ -761,7 +761,7 @@ export function SchadensforensikSimulator() {
             <div className="flex justify-end">
               <button
                 onClick={() => handleResetCase(selectedCaseId)}
-                className="px-4 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs rounded-xl flex items-center gap-2 cursor-pointer"
+                className="px-4 py-2 bg-shiraz hover:bg-shiraz/90 text-white font-bold text-xs rounded-xl flex items-center gap-2 cursor-pointer"
               >
                 <RotateCcw size={14} /> Fallstudie zurücksetzen &amp; erneut versuchen
               </button>

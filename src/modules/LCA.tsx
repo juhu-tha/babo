@@ -980,7 +980,7 @@ export default function LCA() {
                 onClick={() => {
                   import('@/src/modules/lca/TransportbetonExcelExport').then(m => m.generateTransportbetonExcel());
                 }}
-                className="shrink-0 px-4 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl font-bold text-xs flex items-center gap-2 shadow-xs transition-all cursor-pointer"
+                className="shrink-0 px-4 py-2.5 bg-shiraz hover:bg-shiraz/90 text-white rounded-xl font-bold text-xs flex items-center gap-2 shadow-xs transition-all cursor-pointer"
               >
                 <FileText size={15} />
                 <span><MdText text={inhalt.texte.excelÜbungHerunterladen} /></span>

@@ -232,21 +232,21 @@ export default function Ressourceneffizienz() {
     <div className="space-y-6 animate-in fade-in duration-300">
       
       {/* Top Welcome Title Card */}
-      <div className="bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white rounded-2xl p-6 md:p-8 shadow-md border border-slate-800/40 dark:border-slate-800 relative overflow-hidden">
+      <div className="bg-shiraz/5 text-text-main rounded-2xl p-6 md:p-8 shadow-md border border-shiraz/20 relative overflow-hidden">
         <div className="absolute top-0 right-0 p-8 opacity-5 pointer-events-none">
-          <Leaf size={140} className="text-slate-400" />
+          <Leaf size={140} className="text-shiraz" />
         </div>
         
         <div className="relative z-10 space-y-4">
           <div className="flex flex-wrap items-center gap-2.5">
             <span className="bg-shiraz/20 text-shiraz dark:text-rose-300 border border-shiraz/35 px-3 py-1 rounded-full text-xs font-bold leading-none uppercase tracking-wider"><MdText text={inhalt.texte.kooperationThAugsburgRez} /></span>
-            <span className="bg-slate-800 text-slate-300 border border-slate-700 px-3 py-1 rounded-full text-xs font-mono"><MdText text={inhalt.texte.standLfu2026} /></span>
+            <span className="bg-white text-slate-700 border border-home-grau/30 px-3 py-1 rounded-full text-xs font-mono"><MdText text={inhalt.texte.standLfu2026} /></span>
           </div>
 
           <div className="space-y-2">
-            <h2 className="text-2xl md:text-3.5xl font-extrabold tracking-tight text-white flex items-center gap-3">
+            <h2 className="text-2xl md:text-3.5xl font-extrabold tracking-tight text-text-main flex items-center gap-3">
               <Leaf className="text-shiraz dark:text-rose-400 shrink-0 w-8 h-8" /><MdText text={inhalt.texte.ressourceneffizienzImBauwesen} /></h2>
-            <p className="text-slate-300 max-w-3xl text-sm md:text-base leading-relaxed">
+            <p className="text-slate-700 max-w-3xl text-sm md:text-base leading-relaxed">
               Die Schonung natürlicher Ressourcen gehört zu den drängendsten Aufgaben im Bauwesen. 
               Durch Materialeinsparung, selektiven Rückbau und den zielführenden Einsatz von mineralischen Recycling-Baustoffen 
               schließen wir Kreisläufe und dekarbonisieren die Wertschöpfungskette. Entdecken Sie die vier Säulen des 
@@ -467,7 +467,7 @@ export default function Ressourceneffizienz() {
                             
                             {/* Column 0: Produkte einsparen (R0-R2) */}
                             <div className="flex flex-col gap-3">
-                              <div className="bg-slate-800 dark:bg-slate-950 border border-slate-750 dark:border-slate-800 text-white px-3 py-2 text-center text-xs uppercase font-black tracking-tight rounded-t-xl select-none min-h-[46px] flex items-center justify-center"><MdText text={inhalt.texte.produkteEinsparenKlügerNutzen} /></div>
+                              <div className="bg-shiraz/10 dark:bg-slate-950 border border-shiraz/20 dark:border-slate-800 text-text-main px-3 py-2 text-center text-xs uppercase font-black tracking-tight rounded-t-xl select-none min-h-[46px] flex items-center justify-center"><MdText text={inhalt.texte.produkteEinsparenKlügerNutzen} /></div>
                               <div className="flex flex-col gap-3 bg-slate-50/40 dark:bg-slate-900/10 p-2.5 rounded-b-xl border border-slate-150 dark:border-slate-800 p-3 flex-1">
                                 {R_STRATEGIES.filter(r => r.categoryIndex === 0).map((strategy) => (
                                   <button {...alsOption(selectedR === strategy.id)}
@@ -498,7 +498,7 @@ export default function Ressourceneffizienz() {
 
                             {/* Column 1: Lebensdauer erhöhen (R3-R6) */}
                             <div className="flex flex-col gap-3">
-                              <div className="bg-slate-800 dark:bg-slate-950 border border-slate-750 dark:border-slate-800 text-white px-3 py-2 text-center text-xs uppercase font-black tracking-tight rounded-t-xl select-none min-h-[46px] flex items-center justify-center"><MdText text={inhalt.texte.lebensdauerVonProduktenOder} /></div>
+                              <div className="bg-shiraz/10 dark:bg-slate-950 border border-shiraz/20 dark:border-slate-800 text-text-main px-3 py-2 text-center text-xs uppercase font-black tracking-tight rounded-t-xl select-none min-h-[46px] flex items-center justify-center"><MdText text={inhalt.texte.lebensdauerVonProduktenOder} /></div>
                               <div className="flex flex-col gap-3 bg-slate-50/40 dark:bg-slate-900/20 p-2.5 rounded-b-xl border border-slate-150 dark:border-slate-800 p-3 flex-1">
                                 {R_STRATEGIES.filter(r => r.categoryIndex === 1).map((strategy) => (
                                   <button {...alsOption(selectedR === strategy.id)}
@@ -529,7 +529,7 @@ export default function Ressourceneffizienz() {
 
                             {/* Column 2: Material sinnvoll wiederverwenden (R7-R9) */}
                             <div className="flex flex-col gap-3">
-                              <div className="bg-slate-800 dark:bg-slate-950 border border-slate-750 dark:border-slate-800 text-white px-3 py-2 text-center text-xs uppercase font-black tracking-tight rounded-t-xl select-none min-h-[46px] flex items-center justify-center"><MdText text={inhalt.texte.materialSinnvollWiederverwenden} /></div>
+                              <div className="bg-shiraz/10 dark:bg-slate-950 border border-shiraz/20 dark:border-slate-800 text-text-main px-3 py-2 text-center text-xs uppercase font-black tracking-tight rounded-t-xl select-none min-h-[46px] flex items-center justify-center"><MdText text={inhalt.texte.materialSinnvollWiederverwenden} /></div>
                               <div className="flex flex-col gap-3 bg-slate-50/40 dark:bg-slate-900/20 p-2.5 rounded-b-xl border border-slate-150 dark:border-slate-800 p-3 flex-1">
                                 {R_STRATEGIES.filter(r => r.categoryIndex === 2).map((strategy) => (
                                   <button {...alsOption(selectedR === strategy.id)}

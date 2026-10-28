@@ -115,6 +115,25 @@ Zahlen werden ausschließlich über `src/utils/numberFormat.ts` formatiert: Dezi
 
 Begründung (Gutachten 27.10.2026): Projektkonvention seit Phase 1 (README, Anleitung), Ausgabe von `toLocaleString('de-DE')` an rund 115 Stellen im Code und Mehrheit im Fließtext (`content/`: 247 Zahlen mit Punkt gegen 86 mit Leerzeichen, Zählung 27.10.2026). Die Gliederung ist eindeutig, weil das Dezimalzeichen immer das Komma ist. Abweichung von der Norm: DIN 5008 gliedert Zahlen mit Leerzeichen (Punkt nur bei Geldbeträgen), DIN 1333 sieht ebenfalls Zwischenräume vor. Eine Umstellung auf das schmale geschützte Leerzeichen (U+202F) wäre zentral über `TAUSENDER_TRENNER` plus Ersatz der Direktaufrufe von `toLocaleString` möglich – **Entscheidung Prof. Huber**. Neue Fachtexte in `content/` bitte mit Punkt schreiben.
 
+## Design
+
+**Grundsatz „keine schwarzen Boxen“ (Prof. Huber, 28.10.2026):** Im Hellmodus erhalten Inhaltsboxen, Kopfboxen, Hinweisboxen, Mess-/Ergebnisanzeigen in Simulatoren, Code-/Prompt-Blöcke, Schaltflächen und Badges **keinen schwarzen oder sehr dunklen Hintergrund** (`bg-slate|gray|zinc|neutral|stone-800…950`, `bg-black`, `bg-text-main`, dunkle Verläufe). Achtung: `@theme` in `src/index.css` bildet blue/emerald/green/teal/cyan/sky/indigo/violet/purple/amber/yellow/orange auf die Slate-Stufen ab – `bg-orange-800` oder `bg-emerald-900` sind im Ergebnis ebenfalls schwarzgraue Flächen und fallen unter den Grundsatz. Einheitliche helle Muster:
+
+| Element | Klassen |
+|---|---|
+| Kopf-/Hero-Box, Info-Box | `bg-shiraz/5 border border-shiraz/20 text-text-main` (Nebentext `text-slate-700`) |
+| Mess-/Ergebnisanzeige | `bg-off-white border border-home-grau/30 text-text-main`, Bezeichnung `text-slate-600`, Ziffern fett in `text-text-main` bzw. `text-…-700` |
+| Code-/Prompt-/Terminal-Block | `bg-off-white border border-home-grau/30 font-mono text-text-main` (in `bg-slate-50`-Karten `bg-white`) |
+| Aktive Auswahl, Hauptschaltfläche | `bg-shiraz text-white border-shiraz` bzw. `bg-shiraz hover:bg-shiraz/90 text-white` |
+| „Richtig“-Markierung (Quiz) | `bg-slate-200 text-text-main border-text-main` |
+| Badge/Chip | `bg-shiraz/10 text-shiraz` oder `bg-white border border-home-grau/30 text-text-main` |
+
+Der Dunkelmodus braucht dafür keine eigenen `dark:`-Klassen: die globalen `.dark`-Regeln in `src/index.css` bilden `bg-white`, `bg-off-white`, `bg-shiraz/5|10`, `text-text-main`, `text-slate-600|700`, farbige Textstufen und `border-home-grau/*` auf dunkle Flächen mit ≥ 4,5:1 ab; `bg-shiraz` wird dort `#be185d` (weiß 6:1).
+
+Ausnahmen (bleiben dunkel, Liste mit Begründung in `scripts/qa/check-design.mjs`, `AUSNAHMEN`): Overlays/Backdrops hinter Dialogen (`bg-black/50` o. ä.), Tooltips, SVG-/Canvas-Bühnen mit auf dunklen Grund abgestimmter Grafik, Diagramm-Interna (Marker, Zeiger, Balken), Material- und Gerätedarstellungen (Stahlplatten der Prüfmaschine, Bitumen, Smartphone-Attrappe) sowie die Nachtvorschau der Lichtsimulation. Transparente Tönungen unter 50 % (`bg-black/10`) gelten nicht als dunkel.
+
+Ratsche: `node scripts/qa/check-design.mjs [--liste]` und `tests/designDunkleBoxen.test.ts` (Grenze 0) melden jeden neuen dunklen Hintergrund ohne `dark:`-Variante außerhalb der Ausnahmeliste.
+
 ## QA-Skripte
 
 | Befehl | Prüfung |
@@ -127,6 +146,7 @@ Begründung (Gutachten 27.10.2026): Projektkonvention seit Phase 1 (README, Anle
 | `npm run build` + `node scripts/qa/check-bundle.mjs` | Build und Bundle-Budget |
 | `node scripts/qa/inhalt-anteil.mjs` | Anteil der Fachtexte in `content/` (AP 5.3) |
 | `node scripts/qa/check-verwaist.mjs [--strict]` | Dateien unter `src/`, die von `src/main.tsx` aus nicht erreichbar sind |
+| `node scripts/qa/check-design.mjs [--liste]` | Designgrundsatz „keine schwarzen Boxen“: neue dunkle Hintergründe im Hellmodus außerhalb der Ausnahmeliste (Abschnitt Design) |
 | `scripts/qa/a11y.mjs`, `layout-mobil.mjs` | Barrierefreiheit / Mobil-Layout (Playwright, eigener Workflow `a11y.yml`; in PRs Desktop auf allen Routen, Mobil auf Stichprobe + betroffenen Routen aus `a11y-routen.mjs`) |
 | `node scripts/qa/a11y-diagramme.mjs [--basis URL] [--routen a,b]` | Diagramm-Textalternativen (Z8) auf 3 Diagrammrouten hell/dunkel/mobil: `role="img"` + `aria-label` je Leinwand, alle Datentabellen geöffnet (caption, `th scope`), axe auf die Diagrammhüllen, Druckansicht (Job `a11y` in `a11y.yml`) |
 | `node scripts/qa/e2e-pdf.mjs [--basis URL]` | PDF-Export (Kopfleiste, LCC-Gutachten), Druckknöpfe der Module, Labor-Prüfbericht und Druckansicht: gültige PDF-Datei, alle Diagramme gezeichnet, keine Formel-/Diagramm-/Abschnittsplatzhalter (Playwright, Job `pdf-druck` in `a11y.yml`) |

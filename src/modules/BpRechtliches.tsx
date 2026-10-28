@@ -563,12 +563,12 @@ export default function BpRechtliches({ isEmbedded = false, activeSubTab: active
         {activeSubTab === 'normenarbeit' && (
           <div className="flex flex-col gap-6 animate-in fade-in duration-300">
             {/* Intro Header */}
-            <div className="bg-gradient-to-r from-slate-800 to-indigo-900 text-white p-5 rounded-xl shadow-sm border border-home-grau/30 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="bg-shiraz/5 text-text-main p-5 rounded-xl shadow-sm border border-shiraz/20 flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div className="space-y-1.5">
-                <span className="px-2 py-0.5 bg-indigo-500/30 text-indigo-300 font-mono text-[10px] uppercase rounded border border-indigo-400/20"><MdText text={inhalt.texte.anerkannteRegelnDerTechnik} /></span>
-                <h3 className="font-bold text-lg text-white flex items-center gap-2">
-                  <BookOpen size={20} className="text-indigo-400" /><MdText text={inhalt.texte.technischeNormenarbeitImBauwesen} /></h3>
-                <p className="text-xs text-indigo-100/80 leading-relaxed max-w-3xl"><MdText text={inhalt.texte.normenSindKeineGesetze} /></p>
+                <span className="px-2 py-0.5 bg-indigo-500/10 text-indigo-700 font-mono text-[10px] uppercase rounded border border-indigo-400/20"><MdText text={inhalt.texte.anerkannteRegelnDerTechnik} /></span>
+                <h3 className="font-bold text-lg text-text-main flex items-center gap-2">
+                  <BookOpen size={20} className="text-indigo-700" /><MdText text={inhalt.texte.technischeNormenarbeitImBauwesen} /></h3>
+                <p className="text-xs text-slate-700 leading-relaxed max-w-3xl"><MdText text={inhalt.texte.normenSindKeineGesetze} /></p>
               </div>
             </div>
 

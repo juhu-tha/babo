@@ -268,47 +268,47 @@ function DynamicInteractiveDegradationCalculator() {
           <motion.div 
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-3 p-4 sm:p-5 bg-slate-950 text-slate-200 rounded-xl border border-slate-800 space-y-4 font-sans text-xs sm:text-sm"
+            className="mt-3 p-4 sm:p-5 bg-off-white text-text-main rounded-xl border border-home-grau/30 space-y-4 font-sans text-xs sm:text-sm"
           >
-            <h5 className="font-bold text-white border-b border-slate-800 pb-2 text-xs uppercase tracking-wider flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-amber-400" /><MdText text={inhalt.texte.wissenschaftlicheHerleitungZersetzungski} /></h5>
+            <h5 className="font-bold text-text-main border-b border-home-grau/30 pb-2 text-xs uppercase tracking-wider flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-amber-700" /><MdText text={inhalt.texte.wissenschaftlicheHerleitungZersetzungski} /></h5>
 
             <div className="space-y-4">
               {/* Formula 1: Arrhenius Equation */}
-              <div className="bg-slate-900/60 p-3 sm:p-4 rounded-lg border border-slate-800/80">
-                <p className="font-semibold text-amber-300 text-xs uppercase mb-1"><MdText text={inhalt.texte.t1ThermischPhysikalischeAlterung} /></p>
-                <div className="flex flex-col md:flex-row items-center gap-4 py-2 justify-center bg-slate-950/80 my-2 rounded-lg border border-slate-900">
-                  <div className="text-base sm:text-lg font-mono font-bold text-white tracking-wide border-b md:border-b-0 md:border-r border-slate-800 pb-2 md:pb-0 md:pr-4"><MdText text={inhalt.texte.kTAE} /></div>
-                  <div className="text-xs text-slate-400 max-w-md font-medium leading-relaxed"><MdText text={inhalt.texte.regeltDieGeschwindigkeit} /><strong className="text-white">k</strong><MdText text={inhalt.texte.chemischerAlterungsreaktionenZB} /><strong className="text-white"><MdText text={inhalt.texte.tInKelvin} /></strong>. <strong className="text-white">E<sub>A</sub></strong><MdText text={inhalt.texte.istDieAktivierungsenergie} /><strong className="text-white">R</strong><MdText text={inhalt.texte.dieAllgemeineGaskonstanteUnd} /><strong className="text-white">A</strong><MdText text={inhalt.texte.derFrequenzfaktorEineTemperaturerhöhung} /></div>
+              <div className="bg-white p-3 sm:p-4 rounded-lg border border-home-grau/30">
+                <p className="font-semibold text-amber-700 text-xs uppercase mb-1"><MdText text={inhalt.texte.t1ThermischPhysikalischeAlterung} /></p>
+                <div className="flex flex-col md:flex-row items-center gap-4 py-2 justify-center bg-off-white my-2 rounded-lg border border-home-grau/30">
+                  <div className="text-base sm:text-lg font-mono font-bold text-text-main tracking-wide border-b md:border-b-0 md:border-r border-home-grau/30 pb-2 md:pb-0 md:pr-4"><MdText text={inhalt.texte.kTAE} /></div>
+                  <div className="text-xs text-slate-600 max-w-md font-medium leading-relaxed"><MdText text={inhalt.texte.regeltDieGeschwindigkeit} /><strong className="text-text-main">k</strong><MdText text={inhalt.texte.chemischerAlterungsreaktionenZB} /><strong className="text-text-main"><MdText text={inhalt.texte.tInKelvin} /></strong>. <strong className="text-text-main">E<sub>A</sub></strong><MdText text={inhalt.texte.istDieAktivierungsenergie} /><strong className="text-text-main">R</strong><MdText text={inhalt.texte.dieAllgemeineGaskonstanteUnd} /><strong className="text-text-main">A</strong><MdText text={inhalt.texte.derFrequenzfaktorEineTemperaturerhöhung} /></div>
                 </div>
               </div>
 
               {/* Formula 2: Photooxidation / Light Weathering */}
-              <div className="bg-slate-900/60 p-3 sm:p-4 rounded-lg border border-slate-800/80">
-                <p className="font-semibold text-sky-400 text-xs uppercase mb-1"><MdText text={inhalt.texte.t2SolarePhotooxidationUv} /></p>
-                <div className="flex flex-col md:flex-row items-center gap-4 py-2 justify-center bg-slate-950/80 my-2 rounded-lg border border-slate-900">
-                  <div className="text-base sm:text-lg font-mono font-bold text-white tracking-wide border-b md:border-b-0 md:border-r border-slate-800 pb-2 md:pb-0 md:pr-4"><MdText text={inhalt.texte.vSubPhotoSub} /></div>
-                  <div className="text-xs text-slate-400 max-w-md font-medium leading-relaxed"><MdText text={inhalt.texte.beschreibtDasAusmaßDes} /><strong className="text-white">v<sub>Photo</sub></strong><MdText text={inhalt.texte.hängtVonDerQuantenausbeute} /><strong className="text-white">&Phi;</strong><MdText text={inhalt.texte.derSolarenAnfangsintensität} /><strong className="text-white">I<sub>0</sub></strong><MdText text={inhalt.texte.demExtinktionskoeffizienten} /><strong className="text-white">&epsilon;</strong><MdText text={inhalt.texte.undDerSchichtdicke} /><strong className="text-white">d</strong><MdText text={inhalt.texte.abIntegrierteUvStabilisatoren} /><strong className="text-white"><MdText text={inhalt.texte.copolymerModifierfaktorFSub} /></strong>.
+              <div className="bg-white p-3 sm:p-4 rounded-lg border border-home-grau/30">
+                <p className="font-semibold text-sky-700 text-xs uppercase mb-1"><MdText text={inhalt.texte.t2SolarePhotooxidationUv} /></p>
+                <div className="flex flex-col md:flex-row items-center gap-4 py-2 justify-center bg-off-white my-2 rounded-lg border border-home-grau/30">
+                  <div className="text-base sm:text-lg font-mono font-bold text-text-main tracking-wide border-b md:border-b-0 md:border-r border-home-grau/30 pb-2 md:pb-0 md:pr-4"><MdText text={inhalt.texte.vSubPhotoSub} /></div>
+                  <div className="text-xs text-slate-600 max-w-md font-medium leading-relaxed"><MdText text={inhalt.texte.beschreibtDasAusmaßDes} /><strong className="text-text-main">v<sub>Photo</sub></strong><MdText text={inhalt.texte.hängtVonDerQuantenausbeute} /><strong className="text-text-main">&Phi;</strong><MdText text={inhalt.texte.derSolarenAnfangsintensität} /><strong className="text-text-main">I<sub>0</sub></strong><MdText text={inhalt.texte.demExtinktionskoeffizienten} /><strong className="text-text-main">&epsilon;</strong><MdText text={inhalt.texte.undDerSchichtdicke} /><strong className="text-text-main">d</strong><MdText text={inhalt.texte.abIntegrierteUvStabilisatoren} /><strong className="text-text-main"><MdText text={inhalt.texte.copolymerModifierfaktorFSub} /></strong>.
                   </div>
                 </div>
               </div>
 
               {/* Formula 3: Sedlbauer Biological Deterioration */}
-              <div className="bg-slate-900/60 p-3 sm:p-4 rounded-lg border border-slate-800/80">
-                <p className="font-semibold text-emerald-400 text-xs uppercase mb-1"><MdText text={inhalt.texte.t3BiologischerAbbauVon} /></p>
-                <div className="flex flex-col md:flex-row items-center gap-4 py-2 justify-center bg-slate-950/80 my-2 rounded-lg border border-slate-900">
-                  <div className="text-base sm:text-lg font-mono font-bold text-white tracking-wide border-b md:border-b-0 md:border-r border-slate-800 pb-2 md:pb-0 md:pr-4"><MdText text={inhalt.texte.vSubBioSub} /></div>
-                  <div className="text-xs text-slate-400 max-w-md font-medium leading-relaxed"><MdText text={inhalt.texte.giltFürHanffasernUnd} /><strong className="text-white"><MdText text={inhalt.texte.subWoodSub20} /></strong><MdText text={inhalt.texte.vorausDieWachstumsgeschwindigkeitDes} /><strong className="text-white">v<sub>Bio</sub></strong><MdText text={inhalt.texte.skaliertLinearMitDer} /><strong className="text-white"><MdText text={inhalt.texte.subCritSubT} /></strong><MdText text={inhalt.texte.undWirdDurchImprägnierungen} /><strong className="text-white">f<sub>pH</sub> = 0,35</strong>).
+              <div className="bg-white p-3 sm:p-4 rounded-lg border border-home-grau/30">
+                <p className="font-semibold text-emerald-700 text-xs uppercase mb-1"><MdText text={inhalt.texte.t3BiologischerAbbauVon} /></p>
+                <div className="flex flex-col md:flex-row items-center gap-4 py-2 justify-center bg-off-white my-2 rounded-lg border border-home-grau/30">
+                  <div className="text-base sm:text-lg font-mono font-bold text-text-main tracking-wide border-b md:border-b-0 md:border-r border-home-grau/30 pb-2 md:pb-0 md:pr-4"><MdText text={inhalt.texte.vSubBioSub} /></div>
+                  <div className="text-xs text-slate-600 max-w-md font-medium leading-relaxed"><MdText text={inhalt.texte.giltFürHanffasernUnd} /><strong className="text-text-main"><MdText text={inhalt.texte.subWoodSub20} /></strong><MdText text={inhalt.texte.vorausDieWachstumsgeschwindigkeitDes} /><strong className="text-text-main">v<sub>Bio</sub></strong><MdText text={inhalt.texte.skaliertLinearMitDer} /><strong className="text-text-main"><MdText text={inhalt.texte.subCritSubT} /></strong><MdText text={inhalt.texte.undWirdDurchImprägnierungen} /><strong className="text-text-main">f<sub>pH</sub> = 0,35</strong>).
                   </div>
                 </div>
               </div>
 
               {/* Formula 4: Bitumen Colloidal State Transformation */}
-              <div className="bg-slate-900/60 p-3 sm:p-4 rounded-lg border border-slate-800/80">
-                <p className="font-semibold text-rose-300 text-xs uppercase mb-1"><MdText text={inhalt.texte.t4BitumenStrukturtransformationsKennzahl} /></p>
-                <div className="flex flex-col md:flex-row items-center gap-4 py-2 justify-center bg-slate-950/80 my-2 rounded-lg border border-slate-950">
-                  <div className="text-base sm:text-lg font-mono font-bold text-white tracking-wide border-b md:border-b-0 md:border-r border-slate-800 pb-2 md:pb-0 md:pr-4"><MdText text={inhalt.texte.iSubCSub} /></div>
-                  <div className="text-xs text-slate-400 max-w-md font-medium leading-relaxed"><MdText text={inhalt.texte.inDerAsphaltchemieBewertet} /><strong className="text-white">I<sub>C</sub></strong><MdText text={inhalt.texte.denAlterungszustandFrischBitumen} /><strong className="text-white">I<sub>C</sub></strong><MdText text={inhalt.texte.erhöhtBitumenWandeltSich} /></div>
+              <div className="bg-white p-3 sm:p-4 rounded-lg border border-home-grau/30">
+                <p className="font-semibold text-rose-700 text-xs uppercase mb-1"><MdText text={inhalt.texte.t4BitumenStrukturtransformationsKennzahl} /></p>
+                <div className="flex flex-col md:flex-row items-center gap-4 py-2 justify-center bg-off-white my-2 rounded-lg border border-home-grau/30">
+                  <div className="text-base sm:text-lg font-mono font-bold text-text-main tracking-wide border-b md:border-b-0 md:border-r border-home-grau/30 pb-2 md:pb-0 md:pr-4"><MdText text={inhalt.texte.iSubCSub} /></div>
+                  <div className="text-xs text-slate-600 max-w-md font-medium leading-relaxed"><MdText text={inhalt.texte.inDerAsphaltchemieBewertet} /><strong className="text-text-main">I<sub>C</sub></strong><MdText text={inhalt.texte.denAlterungszustandFrischBitumen} /><strong className="text-text-main">I<sub>C</sub></strong><MdText text={inhalt.texte.erhöhtBitumenWandeltSich} /></div>
                 </div>
               </div>
             </div>

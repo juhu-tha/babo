@@ -90,7 +90,7 @@ export function SkillsKonnektorenTab({ skillSubTab, setSkillSubTab, copyToClipbo
                         </button>
                       </div>
     
-                      <pre className="p-4 bg-slate-950 text-slate-200 rounded-xl text-xs font-mono overflow-x-auto leading-relaxed border border-slate-800">
+                      <pre className="p-4 bg-off-white text-text-main rounded-xl text-xs font-mono overflow-x-auto leading-relaxed border border-home-grau/30">
     {inhalt.werte.nameVobBedenkenhinweisPruefer2}
                       </pre>
                     </div>

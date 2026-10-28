@@ -296,7 +296,7 @@ function LectureModuleView({
           <button
             type="button"
             onClick={() => setActiveTab(relatedBoardTab)}
-            className="self-start sm:self-center py-2 px-4 rounded-xl text-xs font-bold bg-slate-900 text-white hover:bg-shiraz transition-colors flex items-center gap-1.5 shadow-xs cursor-pointer shrink-0"
+            className="self-start sm:self-center py-2 px-4 rounded-xl text-xs font-bold bg-shiraz text-white hover:bg-shiraz/90 transition-colors flex items-center gap-1.5 shadow-xs cursor-pointer shrink-0"
           >
             {relatedBoardTabLabel} <ArrowRight size={14} />
           </button>

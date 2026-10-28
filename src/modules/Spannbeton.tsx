@@ -637,13 +637,13 @@ export default function Spannbeton() {
                 <button
                   type="button"
                   onClick={() => setEnvironmentRH(50)}
-                  className={`py-2 px-2 rounded-lg text-xs font-medium border transition ${environmentRH === 50 ? 'bg-zinc-800 border-zinc-800 text-white' : 'bg-off-white border-home-grau/30 text-text-main'}`}
+                  className={`py-2 px-2 rounded-lg text-xs font-medium border transition ${environmentRH === 50 ? 'bg-shiraz border-shiraz text-white' : 'bg-off-white border-home-grau/30 text-text-main'}`}
                 ><MdText text={inhalt.texte.trockenesInnenraumUmfeld} /><div className="text-[10px] opacity-80"><MdText text={inhalt.texte.rh50} />{formatDeZahl(creep(materialResults.conc.fck, concreteAge, cementType, materialResults.h0, 50), 2)}</div>
                 </button>
                 <button
                   type="button"
                   onClick={() => setEnvironmentRH(80)}
-                  className={`py-2 px-2 rounded-lg text-xs font-medium border transition ${environmentRH === 80 ? 'bg-zinc-800 border-zinc-800 text-white' : 'bg-off-white border-home-grau/30 text-text-main'}`}
+                  className={`py-2 px-2 rounded-lg text-xs font-medium border transition ${environmentRH === 80 ? 'bg-shiraz border-shiraz text-white' : 'bg-off-white border-home-grau/30 text-text-main'}`}
                 ><MdText text={inhalt.texte.feuchtesAußenUmfeld} /><div className="text-[10px] opacity-80"><MdText text={inhalt.texte.rh80} />{formatDeZahl(creep(materialResults.conc.fck, concreteAge, cementType, materialResults.h0, 80), 2)}</div>
                 </button>
               </div>

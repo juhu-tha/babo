@@ -513,7 +513,7 @@ export default function Feuchteschutz() {
           
           <button 
             onClick={addLayer}
-            className="px-3 py-1.5 bg-orange-800 hover:bg-slate-900 text-white rounded-lg text-xs font-extrabold flex items-center gap-1 transition-all cursor-pointer shadow-sm uppercase tracking-wider"
+            className="px-3 py-1.5 bg-shiraz hover:bg-shiraz/90 text-white rounded-lg text-xs font-extrabold flex items-center gap-1 transition-all cursor-pointer shadow-sm uppercase tracking-wider"
           >
             <Plus size={14} /><MdText text={inhalt.texte.neueSchichtHinzufügen} /></button>
         </div>

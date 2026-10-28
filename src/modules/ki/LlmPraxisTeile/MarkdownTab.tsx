@@ -109,7 +109,7 @@ export function MarkdownTab({ markdownView, setMarkdownView, calcDocPages, setCa
                       <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 space-y-2">
                         <span className="font-bold text-text-main flex items-center gap-1.5">
                           <Table size={14} className="text-shiraz" /><MdText text={inhalt.texte.tabellenMitAusrichtungEinheiten} /></span>
-                        <pre className="p-2.5 bg-slate-900 text-slate-100 rounded font-mono text-[11px] overflow-x-auto">
+                        <pre className="p-2.5 bg-white border border-home-grau/30 text-text-main rounded font-mono text-[11px] overflow-x-auto">
     {inhalt.werte.bauteilBetonDickeCm}
                         </pre>
                       </div>
@@ -117,7 +117,7 @@ export function MarkdownTab({ markdownView, setMarkdownView, calcDocPages, setCa
                       <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 space-y-2">
                         <span className="font-bold text-text-main flex items-center gap-1.5">
                           <Code size={14} className="text-shiraz" /><MdText text={inhalt.texte.formelsatzNachEurocode} /></span>
-                        <pre className="p-2.5 bg-slate-900 text-slate-100 rounded font-mono text-[11px] overflow-x-auto">
+                        <pre className="p-2.5 bg-white border border-home-grau/30 text-text-main rounded font-mono text-[11px] overflow-x-auto">
     {inhalt.werte.bemessungswertDerBetondruckfestigkeitF}
                         </pre>
                       </div>
@@ -125,7 +125,7 @@ export function MarkdownTab({ markdownView, setMarkdownView, calcDocPages, setCa
                       <div className="p-4 bg-slate-50 rounded-xl border border-home-grau/20 space-y-2">
                         <span className="font-bold text-text-main flex items-center gap-1.5">
                           <AlertTriangle size={14} className="text-amber-600" /><MdText text={inhalt.texte.bedenkenGefahrenhinweise} /></span>
-                        <pre className="p-2.5 bg-slate-900 text-slate-100 rounded font-mono text-[11px] overflow-x-auto">
+                        <pre className="p-2.5 bg-white border border-home-grau/30 text-text-main rounded font-mono text-[11px] overflow-x-auto">
     {inhalt.werte.vobBBedenkenhinweisGem}
                         </pre>
                       </div>
@@ -134,7 +134,7 @@ export function MarkdownTab({ markdownView, setMarkdownView, calcDocPages, setCa
                         <span className="font-bold text-text-main flex items-center gap-1.5">
                           <CheckSquare size={14} className="text-emerald-600" /> Baustellen-Abnahmechecklisten
                         </span>
-                        <pre className="p-2.5 bg-slate-900 text-slate-100 rounded font-mono text-[11px] overflow-x-auto">
+                        <pre className="p-2.5 bg-white border border-home-grau/30 text-text-main rounded font-mono text-[11px] overflow-x-auto">
     {inhalt.werte.xBewehrungsabnahmeAchseA}
                         </pre>
                       </div>

@@ -258,7 +258,7 @@ export default function BodenMaterialAufbereitung() {
                     <ol className="space-y-1.5 text-xs text-slate-700">
                       {TREATMENT_OPTIONS[treatmentMaterial][treatmentContaminant].steps.map((step, idx) => (
                         <li key={idx} className="flex gap-3 items-start leading-relaxed animate-in fade-in slide-in-from-left-2 duration-200">
-                          <span className="flex-shrink-0 w-4 h-4 rounded-full bg-slate-900 text-white text-xs font-bold flex items-center justify-center mt-0.5">{idx + 1}</span>
+                          <span className="flex-shrink-0 w-4 h-4 rounded-full bg-shiraz text-white text-xs font-bold flex items-center justify-center mt-0.5">{idx + 1}</span>
                           <span>{step}</span>
                         </li>
                       ))}
@@ -807,7 +807,7 @@ export default function BodenMaterialAufbereitung() {
                   onClick={() => setIsFinalized(!isFinalized)}
                   className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-sm ${
                     isFinalized 
-                      ? 'bg-slate-700 text-white hover:bg-slate-800' 
+                      ? 'bg-shiraz text-white hover:bg-shiraz/90' 
                       : 'bg-shiraz hover:bg-shiraz/90 text-white'
                   }`}
                 >
@@ -823,7 +823,7 @@ export default function BodenMaterialAufbereitung() {
                     }
                     setTimeout(() => window.print(), 150);
                   }}
-                  className="px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 hover:bg-slate-900 text-white transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
+                  className="px-4 py-2 rounded-xl text-xs font-bold bg-shiraz hover:bg-shiraz/90 text-white transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
                 >
                   <Printer size={14} /><MdText text={inhalt.texte.alsOffiziellesPdfDrucken} /></button>
               </div>

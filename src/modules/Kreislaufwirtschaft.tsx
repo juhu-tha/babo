@@ -864,7 +864,7 @@ export default function Kreislaufwirtschaft() {
                     {showPayloadSchema && (
                       <div className="mt-3 space-y-2 animate-in slide-in-from-top-1 duration-200">
                         <p className="text-[10px] text-slate-400 leading-normal"><MdText text={inhalt.texte.diesesStrukturierteJsonPayload} /></p>
-                        <pre className="bg-slate-900 text-emerald-400 p-3 rounded-lg text-[9px] overflow-x-auto select-all font-mono leading-normal shadow-inner max-h-56">
+                        <pre className="bg-off-white border border-home-grau/30 text-text-main p-3 rounded-lg text-[9px] overflow-x-auto select-all font-mono leading-normal shadow-inner max-h-56">
 {`{
   "api_version": "2026.1",
   "auth_header": "Bearer cnc_live_84b39a...",

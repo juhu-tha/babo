@@ -38,7 +38,7 @@ export default function RstoRechnerTab({ activeProfile, bauweise, belastungsKlas
                 onClick={() => { setBauweise('asphalt'); setBelastungsKlasse('Bk32'); }}
                 className={`py-2 px-3 text-xs rounded-lg font-bold border transition-all ${
                   bauweise === 'asphalt'
-                    ? 'bg-zinc-800 text-white border-zinc-900 shadow-sm'
+                    ? 'bg-shiraz text-white border-shiraz shadow-sm'
                     : 'bg-white text-zinc-700 border-zinc-200 hover:bg-zinc-50'
                 }`}
               >

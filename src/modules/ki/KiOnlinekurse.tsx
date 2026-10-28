@@ -493,22 +493,22 @@ export default function KiOnlinekurse() {
         </div>
 
         {/* INTERAKTIVER STARTER-CODE BLOCK */}
-        <div className="mt-10 bg-slate-900 text-slate-100 rounded-2xl p-6 border border-slate-800 shadow-md">
+        <div className="mt-10 bg-off-white text-text-main rounded-2xl p-6 border border-home-grau/30 shadow-md">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
             <div>
               <div className="flex items-center gap-2">
-                <Terminal className="text-emerald-400" size={18} />
-                <h3 className="text-sm font-bold text-white tracking-wide"><MdText text={inhalt.texte.sofortStarterPythonDatenanalyse} /></h3>
+                <Terminal className="text-emerald-700" size={18} />
+                <h3 className="text-sm font-bold text-text-main tracking-wide"><MdText text={inhalt.texte.sofortStarterPythonDatenanalyse} /></h3>
               </div>
-              <p className="text-xs text-slate-400 mt-1"><MdText text={inhalt.texte.kopiereDiesenCodeDirekt} /><a href="https://colab.research.google.com" target="_blank" rel="noopener noreferrer" className="text-emerald-400 underline hover:text-emerald-300"><MdText text={inhalt.texte.googleColab} /></a><MdText text={inhalt.texte.oderIhrLokalesJupyter} /></p>
+              <p className="text-xs text-slate-600 mt-1"><MdText text={inhalt.texte.kopiereDiesenCodeDirekt} /><a href="https://colab.research.google.com" target="_blank" rel="noopener noreferrer" className="text-emerald-700 underline hover:text-emerald-800"><MdText text={inhalt.texte.googleColab} /></a><MdText text={inhalt.texte.oderIhrLokalesJupyter} /></p>
             </div>
             <button
               onClick={handleCopyCode}
-              className="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold px-3 py-1.5 rounded-xl border border-slate-700 transition-all shrink-0 cursor-pointer"
+              className="inline-flex items-center gap-1.5 bg-white hover:bg-slate-100 text-text-main text-xs font-semibold px-3 py-1.5 rounded-xl border border-home-grau/30 transition-all shrink-0 cursor-pointer"
             >
               {copiedSnippet ? (
                 <>
-                  <Check size={14} className="text-emerald-400" /> Kopiert!
+                  <Check size={14} className="text-emerald-700" /> Kopiert!
                 </>
               ) : (
                 <>
@@ -517,7 +517,7 @@ export default function KiOnlinekurse() {
             </button>
           </div>
 
-          <pre className="text-xxs font-mono bg-slate-950 p-4 rounded-xl overflow-x-auto text-slate-300 border border-slate-800/80 leading-relaxed max-h-72">
+          <pre className="text-xxs font-mono bg-white p-4 rounded-xl overflow-x-auto text-slate-700 border border-home-grau/30 leading-relaxed max-h-72">
             <code>{pythonStarterCode}</code>
           </pre>
         </div>

@@ -770,7 +770,7 @@ export default function OnlineTools() {
                 </div>
 
                 {/* Code Body */}
-                <div className="p-6 bg-slate-900 text-slate-100 overflow-x-auto font-mono text-xs leading-relaxed">
+                <div className="p-6 bg-white text-text-main overflow-x-auto font-mono text-xs leading-relaxed">
                   <pre>{snippet.code}</pre>
                 </div>
 
