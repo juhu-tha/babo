@@ -567,7 +567,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'nachhaltigkeit',
     ausgabeStand: '2024-06',
     status: 'gueltig',
-    beschreibung: 'Europäische Norm zur Nachhaltigkeits- und Ökobilanzierung von Ingenieurbauwerken (Brücken, Tunnel, Straßen, Bahntrassen) über 80-100 Jahre Betrachtungszeitraum inkl. Baustellen-Stauemissionen (Modul B8).',
+    beschreibung: 'Europäische Norm zur Nachhaltigkeits- und Ökobilanzierung von Ingenieurbauwerken (Brücken, Tunnel, Straßen, Bahntrassen) mit vom Auftraggeber festgelegtem Betrachtungszeitraum (bei Brücken typisch 80–100 Jahre) und eigenem Nutzermodul B8.',
     relevanteModule: ['nachhaltigkeit', 'lca', 'interactive_lca']
   },
   'DIN_18945': {

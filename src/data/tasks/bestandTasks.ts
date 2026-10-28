@@ -31,7 +31,7 @@ export const bestandTasks: Task[] = [
     title: 'Denkmalpflege: Mörtelwahl für historisches Natursteinmauerwerk',
     question: 'Bei der Sanierung einer denkmalgeschützten Bruchsteinmauer aus dem 15. Jahrhundert soll verwitterter Mörtel erneuert werden. Warum führt die Verwendung eines modernen, hochfesten Zementmörtels (M10) zu massiven Folgeschäden?',
     moduleHint: { id: 'denkmalpflege', name: 'Denkmalpflege' },
-    solution: 'Zementmörtel ist viel zu starr (hoher E-Modul) und dampfdicht. Historische Bruchsteine oder Ziegel dehnen sich thermisch aus; der zu harte Mörtel erzeugt Spannungsspitzen, die die empfindlichen historischen Steine zerdrücken oder abplatzen lassen. Zudem staut der dichte Zement Feuchtigkeit und Mauersalze im weicheren Stein, wo Salzkristallisation den Naturstein zerstört. Lösung: Verwendung kompatibler, kapillaraktiver Kalkmörtel oder Natürlich Hydraulischer Kalke (NHL 2 oder NHL 3.5).'
+    solution: 'Zementmörtel ist viel zu starr (hoher E-Modul) und dampfdicht. Historische Bruchsteine oder Ziegel dehnen sich thermisch aus; der zu harte Mörtel erzeugt Spannungsspitzen, die die empfindlichen historischen Steine zerdrücken oder abplatzen lassen. Zudem staut der dichte Zement Feuchtigkeit und Mauersalze im weicheren Stein, wo Salzkristallisation den Naturstein zerstört. Lösung: Verwendung kompatibler, kapillaraktiver Kalkmörtel oder Natürlich Hydraulischer Kalke (NHL 2 oder NHL 3,5).'
   },
   {
     id: 't_hist_mauerwerk_fk',

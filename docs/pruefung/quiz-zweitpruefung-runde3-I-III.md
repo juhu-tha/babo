@@ -14,7 +14,7 @@ Stand: 28.10.2026 · Grundlage: `src/data/quiz.json` auf main (Stand fc525dc5) �
 
 | ok | korrigiert | Klärung |
 |---:|---:|---:|
-| 416 | 1 | 0 |
+| 401 | 7 | 9 |
 
 Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Zweitprüfung 28.10. (Runde 3): … – korrigiert“). Spalte „Cl.“: Cluster.
 
@@ -272,7 +272,7 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 | ID | Cl. | Kurztext | Ergebnis | Freigabe |
 |---|---|---|---|---|
 | `qn_festigkeit_1` | I | Wie hoch könnte ein prismatischer Turm aus Mauerwerk (f_c = 12 N/mm², ρ = 1800 k… | ok | - [ ] freigeben |
-| `qn_festigkeit_2` | I | Welche Reißlänge hat ein frei hängender Stab aus Nadelholz C24 (f_t = 14 N/mm², … | ok | - [ ] freigeben |
+| `qn_festigkeit_2` | I | Welche Reißlänge hat ein frei hängender Stab aus Nadelholz C24 (f_t = 14 N/mm², … | korrigiert (Abgleich 28.10.): C24-Kennwerte an DIN EN 338:2016-07 bzw. src/data/kennwerte.ts angeglichen (f_t,0,k 14,5 statt 14 N/mm², ρ_mean 420 statt 450 kg/m³), neu gerechnet: 3,5 km; Distraktoren 35 km/5,1 km/350 m | - [ ] freigeben |
 | `qn_festigkeit_3` | I | Betonwürfel C20/25 (f_c = 20 N/mm², ρ = 2400 kg/m³) mit a = 10 cm werden gestape… | ok | - [ ] freigeben |
 | `qn_festigkeit_4` | I | Im Würfelstapel aus C20/25 (a = 100 mm, E = 30 000 N/mm²) erreicht die Spannung … | ok | - [ ] freigeben |
 | `qn_festigkeit_5` | I | Aluminium (f_t = 200 N/mm², ρ = 2700 kg/m³) hat eine geringere Zugfestigkeit als… | ok | - [ ] freigeben |
@@ -293,13 +293,13 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 
 | ID | Cl. | Kurztext | Ergebnis | Freigabe |
 |---|---|---|---|---|
-| `qn_sommerlicher_waermeschutz_1` | I | Welche Größe vergleicht das vereinfachte Nachweisverfahren nach DIN 4108-2:2013-… | ok (Werte nach DIN 4108-2:2013-02; Abgleich mit der Neuausgabe 2026-05 modulweit noch offen) | - [ ] freigeben |
-| `qn_sommerlicher_waermeschutz_2` | I | Ein Raum hat A_G = 20 m² und ein Südfenster mit 5 m², g = 0,60 und außenliegende… | ok (Werte nach DIN 4108-2:2013-02; Abgleich mit der Neuausgabe 2026-05 modulweit noch offen) | - [ ] freigeben |
-| `qn_sommerlicher_waermeschutz_3` | I | Warum erhöht eine erhöhte Nachtlüftung den zulässigen Sonneneintragskennwert S_z… | ok (Werte nach DIN 4108-2:2013-02; Abgleich mit der Neuausgabe 2026-05 modulweit noch offen) | - [ ] freigeben |
-| `qn_sommerlicher_waermeschutz_4` | I | Für einen Raum ergibt sich eine wirksame Wärmespeicherfähigkeit C_wirk/A_G = 140… | ok (Werte nach DIN 4108-2:2013-02; Abgleich mit der Neuausgabe 2026-05 modulweit noch offen) | - [ ] freigeben |
-| `qn_sommerlicher_waermeschutz_5` | I | Welcher Bezugswert der Innentemperatur ist nach DIN 4108-2:2013-02 der Sommerkli… | ok (Werte nach DIN 4108-2:2013-02; Abgleich mit der Neuausgabe 2026-05 modulweit noch offen) | - [ ] freigeben |
-| `qn_sommerlicher_waermeschutz_6` | I | Ein Wohnraum hat einen Fensterflächenanteil f_WG von 30 %; seine Süd- und Westfe… | ok (Werte nach DIN 4108-2:2013-02; Abgleich mit der Neuausgabe 2026-05 modulweit noch offen) | - [ ] freigeben |
-| `qn_sommerlicher_waermeschutz_7` | I | Warum ist ein außenliegender Sonnenschutz wirksamer als ein innenliegender? | ok (Werte nach DIN 4108-2:2013-02; Abgleich mit der Neuausgabe 2026-05 modulweit noch offen) | - [ ] freigeben |
+| `qn_sommerlicher_waermeschutz_1` | I | Welche Größe vergleicht das vereinfachte Nachweisverfahren nach DIN 4108-2:2013-… | Klärung: Werte nach DIN 4108-2:2013-02; Neuausgabe DIN 4108-2:2026-05 erschienen (Gliederung: Abschnitt 8 sommerlicher Wärmeschutz mit Sonneneintragskennwerten), Zahlenwerte öffentlich nicht prüfbar – Einzelfreigabe nach Abgleich mit dem Normtext | - [ ] freigeben |
+| `qn_sommerlicher_waermeschutz_2` | I | Ein Raum hat A_G = 20 m² und ein Südfenster mit 5 m², g = 0,60 und außenliegende… | Klärung: Werte nach DIN 4108-2:2013-02; Neuausgabe DIN 4108-2:2026-05 erschienen (Gliederung: Abschnitt 8 sommerlicher Wärmeschutz mit Sonneneintragskennwerten), Zahlenwerte öffentlich nicht prüfbar – Einzelfreigabe nach Abgleich mit dem Normtext | - [ ] freigeben |
+| `qn_sommerlicher_waermeschutz_3` | I | Warum erhöht eine erhöhte Nachtlüftung den zulässigen Sonneneintragskennwert S_z… | Klärung: Werte nach DIN 4108-2:2013-02; Neuausgabe DIN 4108-2:2026-05 erschienen (Gliederung: Abschnitt 8 sommerlicher Wärmeschutz mit Sonneneintragskennwerten), Zahlenwerte öffentlich nicht prüfbar – Einzelfreigabe nach Abgleich mit dem Normtext | - [ ] freigeben |
+| `qn_sommerlicher_waermeschutz_4` | I | Für einen Raum ergibt sich eine wirksame Wärmespeicherfähigkeit C_wirk/A_G = 140… | Klärung: Werte nach DIN 4108-2:2013-02; Neuausgabe DIN 4108-2:2026-05 erschienen (Gliederung: Abschnitt 8 sommerlicher Wärmeschutz mit Sonneneintragskennwerten), Zahlenwerte öffentlich nicht prüfbar – Einzelfreigabe nach Abgleich mit dem Normtext | - [ ] freigeben |
+| `qn_sommerlicher_waermeschutz_5` | I | Welcher Bezugswert der Innentemperatur ist nach DIN 4108-2:2013-02 der Sommerkli… | Klärung: Werte nach DIN 4108-2:2013-02; Neuausgabe DIN 4108-2:2026-05 erschienen (Gliederung: Abschnitt 8 sommerlicher Wärmeschutz mit Sonneneintragskennwerten), Zahlenwerte öffentlich nicht prüfbar – Einzelfreigabe nach Abgleich mit dem Normtext | - [ ] freigeben |
+| `qn_sommerlicher_waermeschutz_6` | I | Ein Wohnraum hat einen Fensterflächenanteil f_WG von 30 %; seine Süd- und Westfe… | Klärung: Werte nach DIN 4108-2:2013-02; Neuausgabe DIN 4108-2:2026-05 erschienen (Gliederung: Abschnitt 8 sommerlicher Wärmeschutz mit Sonneneintragskennwerten), Zahlenwerte öffentlich nicht prüfbar – Einzelfreigabe nach Abgleich mit dem Normtext | - [ ] freigeben |
+| `qn_sommerlicher_waermeschutz_7` | I | Warum ist ein außenliegender Sonnenschutz wirksamer als ein innenliegender? | Klärung: Werte nach DIN 4108-2:2013-02; Neuausgabe DIN 4108-2:2026-05 erschienen (Gliederung: Abschnitt 8 sommerlicher Wärmeschutz mit Sonneneintragskennwerten), Zahlenwerte öffentlich nicht prüfbar – Einzelfreigabe nach Abgleich mit dem Normtext | - [ ] freigeben |
 
 ## Potentialmessung (`labor_potentialmessung`)
 
@@ -340,7 +340,7 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 | `q_bpr_4` | II | Welches dieser Bauprodukte trägt in Deutschland kein CE-Zeichen, sondern wird na… | ok | - [ ] freigeben |
 | `q_bpr_5` | II | Ein CE-gekennzeichneter Dämmstoff soll eingebaut werden. Wer weist seit der Umst… | ok | - [ ] freigeben |
 | `q_bre_2` | II | In welchem AVCP-System ist die notifizierte Stelle am stärksten beteiligt (inkl.… | ok | - [ ] freigeben |
-| `q_bre_4` | II | In welchem AVCP-System ist keine notifizierte Stelle beteiligt? | ok | - [ ] freigeben |
+| `q_bre_4` | II | In welchem AVCP-System ist keine notifizierte Stelle beteiligt? | korrigiert (Abgleich 28.10.): Rechtsgrundlage auf BauPVO (EU) 2024/3110, Anhang IX umgestellt (gilt seit 08.01.2026); Antwort unverändert | - [ ] freigeben |
 | `q_bre_5` | II | Welche Stelle akkreditiert in Deutschland Prüflabore und Zertifizierungsstellen? | ok | - [ ] freigeben |
 | `q_bre_6` | II | Wer prüft eine Umweltproduktdeklaration (EPD) nach DIN EN 15804 vor der Veröffen… | ok | - [ ] freigeben |
 
@@ -459,7 +459,7 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 |---|---|---|---|---|
 | `q_asp_1` | II | Rohdichte ρ_m = 2,457 g/cm³, Raumdichte ρ_b = 2,383 g/cm³. Wie groß ist der Hohl… | ok | - [ ] freigeben |
 | `q_asp_3` | II | Welcher Arbeitsplatzgrenzwert gilt nach TRGS 900 für Dämpfe und Aerosole aus Bit… | ok | - [ ] freigeben |
-| `qn_asphalt_1` | II | Ein Asphaltmischgut enthält B = 6,0 M.-% Bitumen (ρ_B = 1,02 g/cm³) und Gestein … | ok | - [ ] freigeben |
+| `qn_asphalt_1` | II | Ein Asphaltmischgut enthält B = 6,0 M.-% Bitumen (ρ_B = 1,02 g/cm³) und Gestein … | korrigiert (Abgleich 28.10.): normRef um DIN EN 12697-6 (Raumdichte) ergänzt | - [ ] freigeben |
 | `qn_asphalt_2` | II | Im Lehrmodell steigt die Marshall-Stabilität bis zu einem Bitumengehalt von etwa… | ok | - [ ] freigeben |
 | `qn_asphalt_3` | II | Welches technische Risiko ist bei Niedrigtemperaturasphalt (NTA) aus der geringe… | ok | - [ ] freigeben |
 
@@ -689,8 +689,8 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 | ID | Cl. | Kurztext | Ergebnis | Freigabe |
 |---|---|---|---|---|
 | `qn_bp_verkehr_tiefbau_1` | II | Welches Tiefbauprodukt schützt tiefliegende Ablaufstellen vor drückendem Abwasse… | ok | - [ ] freigeben |
-| `qn_bp_verkehr_tiefbau_3` | II | Eine Asphaltfläche von 500 m² (ψ = 0,90) wird mit r_D = 200 l/(s·ha) über t_d = … | ok | - [ ] freigeben |
-| `qn_bp_verkehr_tiefbau_4` | II | Eine Kiesrigole (s_R = 0,30, Querschnitt 0,60 m × 1,20 m) soll ein Nutzvolumen v… | ok | - [ ] freigeben |
+| `qn_bp_verkehr_tiefbau_3` | II | Eine Asphaltfläche von 500 m² (ψ = 0,90) wird mit r_D = 200 l/(s·ha) über t_d = … | korrigiert (Abgleich 28.10.): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert | - [ ] freigeben |
+| `qn_bp_verkehr_tiefbau_4` | II | Eine Kiesrigole (s_R = 0,30, Querschnitt 0,60 m × 1,20 m) soll ein Nutzvolumen v… | korrigiert (Abgleich 28.10.): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert | - [ ] freigeben |
 
 ## Bahnbau (Kompakt) (`bp_verkehr_bahn`)
 
@@ -751,14 +751,14 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 | `qn_keramik_ziegel_1` | II | Welcher Vorgang macht beim Brand von Ziegelton die Umwandlung zur Keramik irreve… | ok | - [ ] freigeben |
 | `qn_keramik_ziegel_2` | II | Eine trockengepresste Fliese wiegt trocken 400 g und nach dem Kochverfahren 410 … | ok | - [ ] freigeben |
 | `qn_keramik_ziegel_3` | II | Ein Scherben hat die Trockenmasse 200 g, die Nassmasse 220 g und unter Wasser di… | ok | - [ ] freigeben |
-| `qn_keramik_ziegel_5` | II | Welche Norm legt in Deutschland die Regeln für die Verwendung von Mauerziegeln n… | ok (Nachfolge von DIN 105-100 in der Rückmeldung zu Distraktor 3 nicht öffentlich nachgeprüft) | - [ ] freigeben |
+| `qn_keramik_ziegel_5` | II | Welche Norm legt in Deutschland die Regeln für die Verwendung von Mauerziegeln n… | Klärung (Einzelfreigabe; Vermerk der Erstprüfung: Nachfolge von DIN 105-100 in der Rückmeldung zu Distraktor 3 nicht öffentlich nachgeprüft) | - [ ] freigeben |
 | `qn_keramik_ziegel_7` | II | Wie viel CO₂ setzt die Zersetzung von 1 kg Calcit (CaCO₃) im Ziegelton beim Bran… | ok | - [ ] freigeben |
 
 ## Membranen & ETFE (`membranen_etfe`)
 
 | ID | Cl. | Kurztext | Ergebnis | Freigabe |
 |---|---|---|---|---|
-| `qn_membranen_etfe_3` | II | Wodurch unterscheidet sich eine klare ETFE-Folie lichttechnisch deutlich von Flo… | ok (Floatglas lässt UV-A teilweise durch; „weitgehend“ gegenüber Floatglas vertretbar, ggf. später schärfen) | - [ ] freigeben |
+| `qn_membranen_etfe_3` | II | Wodurch unterscheidet sich eine klare ETFE-Folie lichttechnisch deutlich von Flo… | Klärung (Einzelfreigabe; Vermerk der Erstprüfung: Floatglas lässt UV-A teilweise durch; „weitgehend“ gegenüber Floatglas vertretbar, ggf. später schärfen) | - [ ] freigeben |
 | `qn_membranen_etfe_4` | II | Welcher U-Wert ist für ein dreilagiges ETFE-Kissen (zwei Luftkammern) nach Herst… | ok | - [ ] freigeben |
 | `qn_membranen_etfe_5` | II | Welches Dokument beschreibt europäisch die Bemessung vorgespannter Membrantragwe… | ok | - [ ] freigeben |
 | `qn_membranen_etfe_6` | II | Warum werden PTFE/Glas-Membranen bei Transport und Montage besonders sorgfältig … | ok | - [ ] freigeben |
@@ -843,7 +843,7 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 
 | ID | Cl. | Kurztext | Ergebnis | Freigabe |
 |---|---|---|---|---|
-| `q_inw_1` | III | Eine gedruckte Wand (ρ = 2 200 kg/m³) soll 1,5 m hoch werden. Welche Fließgrenze… | ok | - [ ] freigeben |
+| `q_inw_1` | III | Eine gedruckte Wand (ρ = 2 200 kg/m³) soll 1,5 m hoch werden. Welche Fließgrenze… | korrigiert (Abgleich 28.10.): gapAnalysis an die Rechenaufgabe angepasst (Formfaktor 1/√3 statt Druckgeschwindigkeit) | - [ ] freigeben |
 | `q_inw_2` | III | Wo sind die klinkerarmen Zemente CEM II/C-M und CEM VI genormt? | ok | - [ ] freigeben |
 | `qn_innovative_werkstoffe_2` | III | Eine dünne, gerade gedruckte Wand weicht während des Drucks seitlich aus, obwohl… | ok | - [ ] freigeben |
 | `qn_innovative_werkstoffe_3` | III | Für eine tragende 3D-gedruckte Wandscheibe soll die Bewehrung möglichst einfach … | ok | - [ ] freigeben |
@@ -970,6 +970,25 @@ Korrekturen sind in `src/data/quiz.json` eingetragen (`vorpruefung.hinweis` „Z
 |---|---|---|---|---|
 | `qn_biokohlebeton_4` | III | Warum wird Pflanzenkohle vor dem Mischen häufig vorgenässt oder das von ihr aufg… | ok | - [ ] freigeben |
 
+## Abgleich 28.10.
+
+Anlass: unabhängige Stichprobe (25 Fragen, 2 Befunde zu Normstand/Kennwert). Ergebnis nach dem Abgleich: 401 ok, 7 korrigiert, 9 Klärung. Fragen mit „korrigiert“ oder „Klärung“ und alle früheren „ok (…)“-Fragen mit Vorbehalt sind aus der Sammelfreigabe herausgenommen und haben eine eigene Checkbox. Es wurde nichts freigegeben.
+
+- Befunde der Stichprobe: `qn_festigkeit_2` (C24 nach DIN EN 338:2016-07 neu gerechnet: 3,5 km) und `qn_bp_verkehr_tiefbau_4` (DWA-A 138-1) korrigiert; Hinweise `qn_asphalt_1` (normRef + DIN EN 12697-6), `q_inw_1` (gapAnalysis) bereinigt.
+- Antwortschlüssel: nur `qn_festigkeit_2` wurde neu gerechnet (richtige Option jetzt 3,5 km statt 3,2 km); alle übrigen Korrekturen betreffen normRef, Quelle, Rückmeldungen oder gapAnalysis.
+
+- **Suchlauf 1 – Normstände** (Suchskript außerhalb des Repos, über alle 669 Fragen beider Listen; normRef, quelle, Fragetext, Optionen, Erklärung, Rückmeldungen, gapAnalysis):
+  - DWA-A 138 ohne „-1“: 2 Treffer (`qn_bp_verkehr_tiefbau_3`, `_4`) → auf DWA-A 138-1:2024-10 umgestellt (Ersatz der Ausgabe 2005 laut BauNetz Wissen und FORUM VERLAG); zusätzlich außerhalb der Listen `qn_bp_verkehr_tiefbau_2/_5/_6` (Freigabe zurückgenommen) und `q_vwb_6`. Modul Tiefbau, Rechenkern-Hinweis, Grenzen, Lernziel und Registry ebenfalls umgestellt; geänderte Rechenregeln (Standortfaktor f_Ort, Rigolenhöhe) nur als vorläufiger Hinweis, Rechenweg unverändert.
+  - DIN 4108-2: 11 Treffer. Die Neuausgabe DIN 4108-2:2026-05 ist erschienen (DIN-Katalog, Inhaltsverzeichnis öffentlich: Abschnitte 5 Mindestwärmeschutz, 6 Wärmebrücken, 8 sommerlicher Wärmeschutz); eine Änderungsliste und die Zahlenwerte sind öffentlich nicht einsehbar. `qn_sommerlicher_waermeschutz_1`–`_7` und `q_bst_5` (ausdrücklich Ausgabe 2013-02 mit Zahlenwerten) → Klärung; `qn_bauphysik_6`, `q_fs_1`, `q_we_5` (allgemeine Bauphysik ohne normabhängigen Zahlenwert) bleiben ok, Ausgabe in `q_we_5`/quelle beim Normtext-Abgleich nachziehen.
+  - DIN 1045-2:2008, DIN EN 206-1:2001, DIN 4109:1989/Beiblatt 1, DIN 1045 (1988/2001), DIN 18195: 0 Treffer.
+  - EnEV/GEG: 4 Treffer, alle mit GModG-Bezug bzw. historischer Abfolge (`q_bst_6`) – ok.
+  - VOB/A 2019: 2 Treffer (`q_px_pl_5`, `q_px_pl_6`) → Quelle auf Abschnitt 1 (2019) präzisiert und VOB/A 2026 (Abschnitte 2/3, BAnz AT 24.08.2026 B6, seit 08.09.2026 anzuwenden; § 7 EU Abs. 1 Nr. 3/4 gleichlautend) ergänzt. VOB/B-Fundstellen (4) unverändert ok.
+  - PCB-Richtlinie 1994 / 300/3000 ng/m³: 1 Treffer (`q_sch_4`, bereits AIR 2025); Module Historische Bauprodukte, Rückbau und Schadstoffe sowie Kurzfassung auf AIR-Richtwerte 2025 (RW I 80 / RW II 800 ng/m³, IFA/DGUV „air_pcb_2025“) umgestellt, PCB-Richtlinie als früherer Bewertungsstand (über MVV TB weiterhin eingeführt).
+  - BauPVO 305/2011: 3 Treffer; `q_bpr_3` und `q_dg_dpp_2` nennen die alte Verordnung nur als Abgrenzung (ok), `q_bre_4` → VO (EU) 2024/3110, Anhang IX (System 4 ohne notifizierte Stelle, gesetze.legal). `q_bre_2` („BauPVO Anhang“) ok, System 1+ bleibt die stärkste Beteiligung.
+  - TRGS 519: 4 Treffer, aktueller Stand – ok.
+- **Suchlauf 2 – Kennwerte** (Suchskript außerhalb des Repos): Zahlen mit Symbol (f_ck, f_cm, f_ctm, E_cm, f_y, f_u, f_yk, E_s, f_m,k, f_t,0,k, f_c,0,k, E_0,mean, E_0,05, ρ_k, ρ_mean, ρ) in Fragetext, Optionen und Erklärung gegen `src/data/kennwerte.ts` für die in der Frage genannte Klasse (Beton C12/15–C90/105, S235/S355/S460, B500A/B, C16–D40, GL24h–GL28c). Einzige echte Abweichung: `qn_festigkeit_2` (C24 mit 14 N/mm²/450 kg/m³) → korrigiert. Übrige Treffer sind beabsichtigte Distraktoren (`q_kenn_1`, `q_kenn_5`, `qn_emodul_1`, `q_sta_3`) oder Konformitätskriterien (`qn_festbeton_statistik_2`, `q_qsi_2`, `q_qsi_3`).
+- **Modul-eigene Kennwertdatensätze** (Suche über content/*.json): Nur „holz_fichte_par“ im Festigkeitsvergleich wich ab (angeglichen, Erkundungsauftrag neu gerechnet: Holz 3519 m statt 3171 m, Turmhöhe 5097 m). Beton C20/25, C50/60, C30/37, S235/S355, KVH C24 und BSH GL24h in Festigkeitsberechnungen, Elastomechanik, BIM-Baustoffe und Holzprodukte stimmen; neue Ratsche in `tests/kennwerte.test.ts` (Abschnitt 7). Expositionsklassen der Mischungsberechnung (Mindestfestigkeit, w/z, Zementgehalt, c_min) entsprechen DIN 1045-2; S690 (f_u 770) liegt außerhalb von kennwerte.ts und stimmt mit EN 10025-6.
+
 ---
 
-Freigabe aller mit ok bewerteten Fragen: [ ]
+Freigabe aller mit ok bewerteten Fragen (401; ohne „korrigiert“ und „Klärung“, diese einzeln über ihre Checkbox): [ ]

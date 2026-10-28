@@ -2,9 +2,9 @@
 
 Stand: 28.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 73 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 74 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 66 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 3 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 67 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 3 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -218,7 +218,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 66 korrigiert, 0 fraglich, 8
 
 ### q_we_4 · Thermische Eigenschaften & Dämmstoffe
 
-- **Frage:** Beton: λ = 2,0 W/(m·K), ρ = 2 400 kg/m³, c = 1 000 J/(kg·K). Wie groß ist die Temperaturleitfähigkeit a?
+- **Frage:** Beton: λ = 2,0 W/(m·K), ρ = 2400 kg/m³, c = 1000 J/(kg·K). Wie groß ist die Temperaturleitfähigkeit a?
 - **Richtige Antwort:** 8,3 · 10⁻⁷ m²/s
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Runde 3): Distraktor „1,2 · 10⁻³ m²/s“ passte zu keinem Rechenweg; durch 8,3 · 10⁻⁴ m²/s (λ/ρ ohne c) ersetzt, Rückmeldung entsprechend präzisiert – korrigiert
 - [ ] ok
@@ -391,6 +391,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 66 korrigiert, 0 fraglich, 8
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen; Zweitprüfung 27.10.: Distraktor 3 widersprach sich selbst (34,5 „unter“ 30,3); durch plausiblen Fehlschluss (Einzelwert < f_ck) ersetzt, Rückmeldung angepasst – korrigiert
 - [ ] ok
 - [x] ändern: Distraktor 3 widersprüchlich (34,5 < 30,3), ersetzt durch „Einzelwert unter f_ck“, korrigiert
+
+### qn_festigkeit_2 · Festigkeitsberechnungen
+
+- **Frage:** Welche Reißlänge hat ein frei hängender Stab aus Nadelholz C24 (f_t,0,k = 14,5 N/mm², ρ_mean = 420 kg/m³)?
+- **Richtige Antwort:** L ≈ 3,5 km
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Abgleich Runde 3): C24-Kennwerte an DIN EN 338:2016-07 bzw. src/data/kennwerte.ts angeglichen (f_t,0,k 14,5 statt 14 N/mm², ρ_mean 420 statt 450 kg/m³), neu gerechnet: 3,5 km; Distraktoren 35 km/5,1 km/350 m – korrigiert
+- [ ] ok
+- [ ] ändern: …
 
 ### qn_festigkeit_mohr_3 · Festigkeitsberechnungen
 

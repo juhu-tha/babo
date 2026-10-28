@@ -842,7 +842,7 @@ export default function HistorischeBauprodukte() {
       {/* ANWENDUNGSBEISPIELE (Stufe 3 des Lehrpfads) */}
       <FormulaDerivationBox
         title={inhalt.werte.beispiel1PcbRaumluftmessung}
-        zielGleichung="c_{PCB} \;\text{vs.}\; 300 \;\text{bzw.}\; 3000\,\text{ng/m}^3"
+        zielGleichung="c_{PCB} \;\text{vs.}\; \text{RW I} = 80 \;\text{bzw.}\; \text{RW II} = 800\,\text{ng/m}^3"
         schritte={inhalt.daten["HistorischeBauprodukte.schritte"]}
         ergebnisHinweis={inhalt.werte.fürDioxinähnlichePcbUnd}
         normQuelle={inhalt.werte.pcbRichtlinieFassungSeptember}

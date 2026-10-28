@@ -2,9 +2,9 @@
 
 Stand: 28.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster IV umfasst 302 Fragen aus 48 Modulen. Aufgeführt sind 77 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster IV umfasst 302 Fragen aus 48 Modulen. Aufgeführt sind 84 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 12 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 76 korrigiert, 0 fraglich, 12 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -22,6 +22,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 1
 - **Richtige Antwort:** Wenn mehr als 10 % der gesamten jeweiligen Bauteilfläche geändert werden
 - **Auffälligkeit:** Prüfhinweis: GModG §§ 35, 36, 105 und Anlage 7 – Rechtsstand. · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### q_bst_3 · Altbauatlas
+
+- **Frage:** Eine Bestandswand hat U = 1,40 W/(m²K). Sie erhält 12 cm Dämmung mit λ = 0,035 W/(m·K). Wie groß ist der neue U-Wert ungefähr?
+- **Richtige Antwort:** 0,24 W/(m²K)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Runde 3): Rückmeldungen zu 0,29 und 0,35 W/(m²K) korrigiert (0,29 ist der Wert ohne R_alt, 0,35 entspräche rund 7,5 cm Dämmung) – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### q_bwe_1 · Bauwerkserfassung
@@ -70,6 +78,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 1
 - **Richtige Antwort:** 0,3 mm
 - **Auffälligkeit:** Prüfhinweis: bereits korrigiert – bitte bestätigen. · Prüfhinweis: korrigiert auf 0,3 mm – bestätigen. · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### q_dc_3 · Checklisten
+
+- **Frage:** Betondeckungsmessung an einer XD1-Wand: Mittelwert 47 mm, Standardabweichung 4,5 mm. Wie groß ist das 5-%-Quantil und was folgt?
+- **Richtige Antwort:** ≈ 39,6 mm – knapp unter c_min = 40 mm
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Runde 3): Distraktor 33,0 mm auf 33,5 mm berichtigt (47 − 3 · 4,5 = 33,5 mm), Rückmeldung angepasst – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### q_dp_1 · Denkmalpflege
@@ -158,6 +174,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 1
 - **Richtige Antwort:** Erst der Bezug auf die maximale Wasseraufnahme macht Baustoffe vergleichbar
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### q_ms_sc_3 · Schadensaufnahme-Checklisten
+
+- **Frage:** Bohrmehlprobe: feucht 85,0 g, darrtrocken 80,2 g, maximale Wasseraufnahme 15,0 M.-%. Wie groß ist der Durchfeuchtungsgrad?
+- **Richtige Antwort:** 40 %
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Runde 3): Distraktor 37 % auf 38 % berichtigt (Bezug auf Feuchtmasse: 5,65/15,0 = 38 %), Rückmeldung angepasst – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### q_ms_tb_1 · Typische Bauschäden
@@ -376,6 +400,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 1
 - [x] ok
 - [ ] ändern: …
 
+### qn_instandhaltung_1 · Stahlbetoninstandhaltung
+
+- **Frage:** Für eine Tiefgaragendecke von 800 m² mit 0,8 m² Bewehrungsoberfläche je m² Bauteilfläche wird eine Schutzstromdichte von 15 mA/m² Stahloberfläche angesetzt. Welcher Gesamtschutzstrom ist auszulegen?
+- **Richtige Antwort:** rund 9,6 A
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Abgleich Runde 3): Rückmeldung zu 96 A an den Fehlerweg angepasst (150 statt 15 mA/m²) – korrigiert
+- [ ] ok
+- [ ] ändern: …
+
 ### qn_instandhaltung_3 · Stahlbetoninstandhaltung
 
 - **Frage:** Ein Tiefgaragenboden im Innenbereich ist mechanisch stark befahren, aber rissfrei und ohne Rissgefahr. Welches Oberflächenschutzsystem passt nach der OS-Übersicht des Moduls?
@@ -440,12 +472,28 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 1
 - [x] ok
 - [ ] ändern: …
 
+### qn_kreislauf_dpp_2 · Kreislaufwirtschaft
+
+- **Frage:** Bei der Erfassung vor dem Rückbau (in Anlehnung an DIN SPEC 91484) werden vier Bauteile aufgenommen. Welches ist nach Verbindungsart und Schadstoffstatus am besten für die Wiederverwendung geeignet?
+- **Richtige Antwort:** Geschraubte BSH-Unterzüge, schadstofffrei und lösbar
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Abgleich Runde 3): Klassen A–D als Fügungsklassen des Modul-Simulators gekennzeichnet (nicht aus DIN SPEC 91484); Fragetext „in Anlehnung an“ – korrigiert
+- [ ] ok
+- [ ] ändern: …
+
 ### qn_kreislauf_dpp_3 · Kreislaufwirtschaft
 
 - **Frage:** Ein Abbruchunternehmer will Betonbruch mit anhaftendem Gipsputz zu Gesteinskörnung für neuen Beton aufbereiten. Wie ist das nach dem Modul zu bewerten?
 - **Richtige Antwort:** Kritisch, denn das Sulfat des Gipses kann im neuen Beton Ettringittreiben auslösen
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### qn_lca_ingenieurbau_1 · LCA im Ingenieurbau (DIN EN 17472)
+
+- **Frage:** Welches Merkmal unterscheidet die Ökobilanz von Ingenieurbauwerken nach DIN EN 17472 von der Gebäudebilanz nach DIN EN 15978?
+- **Richtige Antwort:** Sie kennt ein eigenes Nutzermodul B8; bei Brücken meist 80 bis 100 Jahre.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Abgleich Runde 3): Aussagen zu DIN EN 17472 vorsichtig formuliert: Betrachtungszeitraum vom Auftraggeber festgelegt (3.69), typisch 80–100 a; B8 als Nutzermodul, Stau-Zuordnung als Modellannahme – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### qn_lca_ingenieurbau_4 · LCA im Ingenieurbau (DIN EN 17472)
@@ -478,6 +526,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 1
 - **Richtige Antwort:** Neues Museum Berlin: rund 375 000 geborgene Ziegel werden erneut vermauert.
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### qn_lca_regulatorik_5 · Rechtsrahmen, CRREM & Praxis
+
+- **Frage:** Ein Importeur führt 1000 t Zement mit 0,8 t CO₂ je t Zement ein. Der EU-ETS-Preis beträgt 80 €/t CO₂, im Herkunftsland wurden bereits 20 €/t CO₂ gezahlt. Welche CBAM-Kosten ergeben sich nach der im Modul angegebenen Formel (Endzustand ohne kostenlose Zuteilung)?
+- **Richtige Antwort:** 48 000 €
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Abgleich Runde 3): Frage auf Endzustand ohne kostenlose Zuteilung eingegrenzt; Erklärung um Art. 31 (Anpassung kostenlose Zuteilung, CBAM-Faktor 2026 97,5 %) ergänzt, Artikelverweise korrigiert (Art. 9 Anrechnung, Art. 21 Preis) – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### qn_lebenszyklus_kosten_2 · Lebenszyklus & Kosten

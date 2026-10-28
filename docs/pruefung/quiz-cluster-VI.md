@@ -2,9 +2,9 @@
 
 Stand: 28.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster VI umfasst 60 Fragen aus 10 Modulen. Aufgeführt sind 20 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster VI umfasst 60 Fragen aus 10 Modulen. Aufgeführt sind 22 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 20 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 22 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -56,6 +56,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 20 korrigiert, 0 fraglich, 0
 - [ ] ok
 - [x] ändern: Rückmeldung zu Option 4 (17,5/2,75 = 6,4, gemischte Einheiten), korrigiert
 
+### qn_rechnung_mauerwerk_3 · Mauerwerk: Tragfähigkeit
+
+- **Frage:** Wie groß ist der Abminderungsfaktor Φ = 0,85 − 0,0011 · (h_ef/t)² für die Wand mit h_ef/t = 2,75 m/0,175 m ≈ 15,71?
+- **Richtige Antwort:** Φ = 0,578
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Runde 3): Rundung klargestellt: mit gerundetem 15,71 ergäbe sich 0,579; Frage nennt jetzt h_ef/t = 2,75 m/0,175 m, Erklärung rechnet mit 15,714 – korrigiert
+- [ ] ok
+- [ ] ändern: …
+
 ### qn_rechnung_mauerwerk_4 · Mauerwerk: Tragfähigkeit
 
 - **Frage:** Für die KS-Wand gilt Φ = 0,578, t = 175 mm und f_d = ζ · f_k/γ_M = 3,17 N/mm². Welcher Traglastwiderstand N_Rd je Meter Wandlänge ergibt sich?
@@ -78,6 +86,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 20 korrigiert, 0 fraglich, 0
 - **Richtige Antwort:** KS 17,5 cm: η ≈ 0,47; HLz 17,5 cm: η ≈ 0,82; HLz 24 cm: η ≈ 0,49
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Gutachten 27.10.2026: Rechnung auf f_d = ζ · f_k/γ_M mit ζ = 0,85 umgestellt wie im Modul (src/calc/mauerwerk.ts); Werte und Distraktoren mit dem Rechenkern neu gerechnet, abgesichert in tests/quizRechenfragen.test.ts. · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### qn_rechnung_nachhaltigkeit_4 · Nachhaltigkeit & Dauerhaftigkeit
+
+- **Frage:** Für 200 m³ Beton werden verglichen: Rezeptur A mit 320 kg/m³ CEM I (850 kg CO₂-eq/t) und Rezeptur B mit 340 kg/m³ CEM III/B (300 kg CO₂-eq/t). Welche Einsparung erzielt B gegenüber A beim Zement-GWP?
+- **Richtige Antwort:** 34,0 t CO₂-eq, das sind rund 62,5 %
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Runde 3): Prozentangaben auf eine Nachkommastelle wie im Modul (62,5 % statt „rund 62 %“; Distraktoren 166,7/64,7/37,5 %) – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### qn_rechnung_nachhaltigkeit_5 · Nachhaltigkeit & Dauerhaftigkeit

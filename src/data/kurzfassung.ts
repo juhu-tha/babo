@@ -109,7 +109,7 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "Gusseisen ist druckfest, aber spröde und nicht schweißbar; es bricht ohne Vorwarnung, daher sind Zugspannungszonen konstruktiv zu vermeiden.",
     "Thomas-Stahl ist alterungsversprödet und für tragende Anschlüsse nicht schweißbar; Ertüchtigungen historischer Stähle erfolgen über Schraub-, Niet- oder Klemmverbindungen.",
     "Typische Schadstoffträger sind Asbestzement, Teer-Parkettkleber mit PAK, PCB-haltige Thiokol-Fugen und PCP-/Lindan-Holzschutz; vor jedem Eingriff ist eine Materialprobe nötig.",
-    "Nach PCB-Richtlinie gilt Raumluft unter 300 ng/m³ als langfristig tolerabel, über 3000 ng/m³ sind unverzüglich Maßnahmen nötig; für Blei im Trinkwasser gelten ab 2028 höchstens 5 µg/l.",
+    "Für PCB in der Raumluft gelten die AIR-Richtwerte 2025 (RW I 80, RW II 800 ng/m³; frühere PCB-Richtlinie: 300/3000 ng/m³), über RW II ist unverzüglich zu handeln; für Blei im Trinkwasser gelten ab 2028 höchstens 5 µg/l.",
   ],
   instandhaltung: [
     "Standsicherheitsrelevante Instandsetzungen folgen der TR Instandhaltung des DIBt mit sachkundigem Planer (SKP); DIN EN 1504 regelt nur Produkteigenschaften und CE-Kennzeichnung.",
@@ -178,7 +178,7 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "Vorspannung überdrückt den Querschnitt planmäßig; die Randspannungen folgen im Zustand I aus σ = −P/A_c ± P·e_p/W ∓ M/W und werden für t = 0 und t = ∞ geprüft.",
     "Hochfester Spannstahl wie Y1860 ist nötig, weil Kriech- und Schwindstauchungen von etwa 1 ‰ bei Betonstahl B500 rund 46 % der Vorspannung aufzehren würden.",
     "Im GZG gilt nach DIN EN 1992-1-1: Betondruck ≤ 0,60 f_ck unter seltener und ≤ 0,45 f_ck unter quasi-ständiger Kombination, sonst ist nichtlineares Kriechen anzusetzen.",
-    "Spannkraftverluste aus Reibung, Keilschlupf und elastischer Verkürzung sowie aus Kriechen, Schwinden und Relaxation sind nach EC2 gekoppelt und dürfen nicht linear addiert werden.",
+    "Sofortverluste aus Reibung, Keilschlupf und elastischer Verkürzung kommen zuerst; Kriechen, Schwinden und Relaxation koppelt EC2 in einer gemeinsamen Gleichung.",
     "Vergütete Spannstähle wie Hennigsdorfer St 140/160 neigen zu Spannungsrisskorrosion ohne Vorankündigung; an Spannstahl gilt zudem ein striktes Schweißverbot.",
   ],
   stahl: [
