@@ -155,9 +155,11 @@ export const FCD_MODUL = {
   /** Historische Materialkennwerte, Neubau-Ansatz γ_c = 1,5 */
   historischStandard: { hochfest: false },
   /**
-   * Historische Materialkennwerte, Bestandsbewertung mit γ_c = 1,35: fachlich bewusst abgeminderter Teilsicherheitsbeiwert
-   * für die Bewertung mit am Bauwerk über Bohrkerne bestätigter Festigkeit (Lehransatz des Moduls, kein Wert aus Tab. 2.1DE;
-   * Quelle bei der F-Freigabe benennen).
+   * Historische Materialkennwerte, Bestandsbewertung mit γ_c = 1,35. Quelle: DIN EN 1992-1-1:2011-01, Anhang A.2.2(2),
+   * γ_C,red3 = 1,35 (Empfehlungswert), wenn die maßgebenden geometrischen Daten am fertigen Bauwerk gemessen sind und der
+   * Variationskoeffizient der Betondruckfestigkeit nachweislich ≤ 10 % beträgt; kein Wert aus Tab. 2.1DE. Für Bestandsbauten
+   * in Deutschland alternativ DBV-Merkblatt „Modifizierte Teilsicherheitsbeiwerte für Stahlbetonbauteile“ (03/2013) mit
+   * γ_C,mod abhängig vom gemessenen V_c. Anwendbarkeit von Anhang A nach NA DE: vorläufig, F-Freigabe.
    */
   historischBewertung: { gammaC: 1.35, hochfest: false },
 } as const satisfies Record<string, FcdOptionen>;

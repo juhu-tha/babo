@@ -146,7 +146,7 @@
     "id": "q_zfp_1",
     "category": "baustoffkunde",
     "categoryLabel": "Werkstoffmechanik & Physik",
-    "moduleId": "bauwerksuntersuchung",
+    "moduleId": "zfp",
     "moduleTitle": "Zerstörungsfreie Prüfung (ZfP)",
     "topic": "Rückprallhammer & Kalibrierung",
     "difficulty": "Vertiefung",
@@ -166,7 +166,7 @@
       "coreRule": "Der Rückprallhammer erfasst nur oberflächennahe Härte. Karbonatisierte Randschichten täuschen zu hohe Festigkeiten vor!",
       "actionableAdvice": "Lesen Sie im Modul ZfP den Abschnitt über Einflussfaktoren (Karbonatisierung, Feuchte, Ausrichtung) auf den R-Wert.",
       "targetModuleTab": "zfp",
-      "targetModuleLabel": "Zerstörungsfreie Prüfung"
+      "targetModuleLabel": "ZfP-Simulatoren & DGZfP"
     },
     "reviewer": "freigegeben",
     "reviewedAt": "2026-09-28",
@@ -6890,7 +6890,7 @@
     "id": "q_bwu_1",
     "category": "dauerhaftigkeit_schaeden",
     "categoryLabel": "Dauerhaftigkeit & Schäden",
-    "moduleId": "bauwerksuntersuchung",
+    "moduleId": "bauwerksdiagnose",
     "moduleTitle": "Bauwerksdiagnose & ZfP",
     "topic": "Karbonatisierungsprognose",
     "difficulty": "Basis",
@@ -6917,8 +6917,8 @@
       "misconception": "Die Karbonatisierung schreitet linear mit der Zeit fort.",
       "coreRule": "x = k · √t; Prognose nur bei gleichbleibenden Feuchtebedingungen belastbar.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Karbonatisierungsprognose“ im Modul Bauwerksdiagnose & ZfP noch einmal durch.",
-      "targetModuleTab": "bauwerksuntersuchung",
-      "targetModuleLabel": "Bauwerksdiagnose & ZfP"
+      "targetModuleTab": "bauwerksdiagnose",
+      "targetModuleLabel": "Bauwerksdiagnose"
     },
     "verified": false,
     "vorpruefung": {
@@ -6931,7 +6931,7 @@
     "id": "q_bwu_2",
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
-    "moduleId": "bauwerksuntersuchung",
+    "moduleId": "pruefverfahren_katalog",
     "moduleTitle": "Bauwerksdiagnose & ZfP",
     "topic": "Rückprallhammer",
     "difficulty": "Vertiefung",
@@ -6958,8 +6958,8 @@
       "misconception": "Die Herstellerkurve liefert direkt die charakteristische Festigkeit.",
       "coreRule": "Indirekte Prüfverfahren immer an Bohrkernen kalibrieren.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Rückprallhammer“ im Modul Bauwerksdiagnose & ZfP noch einmal durch.",
-      "targetModuleTab": "bauwerksuntersuchung",
-      "targetModuleLabel": "Bauwerksdiagnose & ZfP"
+      "targetModuleTab": "pruefverfahren_katalog",
+      "targetModuleLabel": "Prüfverfahren-Katalog"
     },
     "verified": false,
     "vorpruefung": {
@@ -38138,7 +38138,7 @@
     "id": "qn_spannbeton_1",
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
-    "moduleId": "spannbeton",
+    "moduleId": "spannbeton_grundlagen",
     "moduleTitle": "Spannbeton",
     "topic": "Spannstahl vs. Betonstahl",
     "difficulty": "Vertiefung",
@@ -38165,8 +38165,8 @@
       "misconception": "Der zeitabhängige Verlust wird nicht über die hohe Vordehnung des Spannstahls bewertet.",
       "coreRule": "Δσ_p = E_p·Δε; hochfester Spannstahl → hohe Vordehnung → geringer relativer Verlust.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „2. Rheologische Baustoffphysik & Spannstahl“ im Modul Spannbeton noch einmal durch.",
-      "targetModuleTab": "spannbeton",
-      "targetModuleLabel": "Spannbeton"
+      "targetModuleTab": "spannbeton_grundlagen",
+      "targetModuleLabel": "Spannbeton: Grundlagen"
     },
     "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
     "reviewedAt": "2026-10-27",
@@ -38181,7 +38181,7 @@
     "id": "qn_spannbeton_2",
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
-    "moduleId": "spannbeton",
+    "moduleId": "spannbeton_kennwerte",
     "moduleTitle": "Spannbeton",
     "topic": "Spannungsgrenzen Spannstahl",
     "difficulty": "Vertiefung",
@@ -38208,8 +38208,8 @@
       "misconception": "Pressenkriterium und Verankerungskriterium werden verwechselt.",
       "coreRule": "σ_p,max = min(0,80 f_pk; 0,90 f_p0,1k); σ_pm0 = min(0,75 f_pk; 0,85 f_p0,1k).",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „1. Grundparameter (Inputs)“ im Modul Spannbeton noch einmal durch.",
-      "targetModuleTab": "spannbeton",
-      "targetModuleLabel": "Spannbeton"
+      "targetModuleTab": "spannbeton_kennwerte",
+      "targetModuleLabel": "Spannbeton: Kennwerte & Rechner"
     },
     "verified": false,
     "vorpruefung": {
@@ -38221,7 +38221,7 @@
     "id": "qn_spannbeton_3",
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
-    "moduleId": "spannbeton",
+    "moduleId": "spannbeton_kennwerte",
     "moduleTitle": "Spannbeton",
     "topic": "Randspannungen",
     "difficulty": "Vertiefung",
@@ -38248,8 +38248,8 @@
       "misconception": "Einzelne Spannungsanteile oder ihre Vorzeichen werden falsch überlagert.",
       "coreRule": "σ = −P/A ∓ P·e_p/W ± M/W (Druck negativ, Spannglied unten erzeugt Druck unten).",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Querschnitts-Rechner & Spannungsverlauf“ im Modul Spannbeton noch einmal durch.",
-      "targetModuleTab": "spannbeton",
-      "targetModuleLabel": "Spannbeton"
+      "targetModuleTab": "spannbeton_kennwerte",
+      "targetModuleLabel": "Spannbeton: Kennwerte & Rechner"
     },
     "verified": false,
     "vorpruefung": {
@@ -38261,7 +38261,7 @@
     "id": "qn_spannbeton_4",
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
-    "moduleId": "spannbeton",
+    "moduleId": "spannbeton_grundlagen",
     "moduleTitle": "Spannbeton",
     "topic": "Load Balancing",
     "difficulty": "Vertiefung",
@@ -38288,8 +38288,8 @@
       "misconception": "Die Rolle des Parabelstichs in der Umlenkkraft wird nicht erkannt.",
       "coreRule": "u = 8·P·f/L²; P_bal = g·L²/(8·f).",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „4. Tragwerksmechanik & Load Balancing“ im Modul Spannbeton noch einmal durch.",
-      "targetModuleTab": "spannbeton",
-      "targetModuleLabel": "Spannbeton"
+      "targetModuleTab": "spannbeton_grundlagen",
+      "targetModuleLabel": "Spannbeton: Grundlagen"
     },
     "verified": false,
     "vorpruefung": {
@@ -38301,7 +38301,7 @@
     "id": "qn_spannbeton_5",
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
-    "moduleId": "spannbeton",
+    "moduleId": "spannbeton_kennwerte",
     "moduleTitle": "Spannbeton",
     "topic": "Reibungsverluste",
     "difficulty": "Vertiefung",
@@ -38328,8 +38328,8 @@
       "misconception": "Planmäßige und ungewollte Umlenkung werden nicht zusammen erfasst.",
       "coreRule": "ΔP = P₀·(1 − e^(−μ(θ + k·x))) mit θ = Summe der Umlenkwinkel bis x.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „1.5 Mechanische Sofortverluste im Spannglied (Reibung & Schlupf)“ im Modul Spannbeton noch einmal durch.",
-      "targetModuleTab": "spannbeton",
-      "targetModuleLabel": "Spannbeton"
+      "targetModuleTab": "spannbeton_kennwerte",
+      "targetModuleLabel": "Spannbeton: Kennwerte & Rechner"
     },
     "verified": false,
     "vorpruefung": {
@@ -38341,7 +38341,7 @@
     "id": "qn_spannbeton_6",
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
-    "moduleId": "spannbeton",
+    "moduleId": "spannbeton_kennwerte",
     "moduleTitle": "Spannbeton",
     "topic": "Elastische Verkürzung",
     "difficulty": "Vertiefung",
@@ -38368,8 +38368,8 @@
       "misconception": "Der Faktor j für nacheinander gespannte Glieder wird nicht angewendet.",
       "coreRule": "Δσ_p,el = j·E_p·σ_c/E_cm(t₀); Spannbett j = 1, nacheinander j = (n − 1)/(2n).",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „2. Elastischer Sofortverlust (Kurzzeit t=0)“ im Modul Spannbeton noch einmal durch.",
-      "targetModuleTab": "spannbeton",
-      "targetModuleLabel": "Spannbeton"
+      "targetModuleTab": "spannbeton_kennwerte",
+      "targetModuleLabel": "Spannbeton: Kennwerte & Rechner"
     },
     "verified": false,
     "vorpruefung": {
@@ -38381,7 +38381,7 @@
     "id": "qn_spannbeton_7",
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
-    "moduleId": "spannbeton",
+    "moduleId": "spannbeton_grundlagen",
     "moduleTitle": "Spannbeton",
     "topic": "Vorspannverfahren",
     "difficulty": "Vertiefung",
@@ -38408,8 +38408,8 @@
       "misconception": "Die vier Vorspannverfahren werden nicht nach Verbund und Einsatzgebiet unterschieden.",
       "coreRule": "Ohne Verbund: Monolitzen, keine Injektion, Flachdecken im Hochbau.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „3. Die 4 Vorspannverfahren nach DIN EN 1992-1-1“ im Modul Spannbeton noch einmal durch.",
-      "targetModuleTab": "spannbeton",
-      "targetModuleLabel": "Spannbeton"
+      "targetModuleTab": "spannbeton_grundlagen",
+      "targetModuleLabel": "Spannbeton: Grundlagen"
     },
     "verified": false,
     "vorpruefung": {
@@ -38421,7 +38421,7 @@
     "id": "qn_spannbeton_8",
     "category": "dauerhaftigkeit_schaeden",
     "categoryLabel": "Dauerhaftigkeit & Schäden",
-    "moduleId": "spannbeton",
+    "moduleId": "spannbeton_grundlagen",
     "moduleTitle": "Spannbeton",
     "topic": "Zerstörungsfreie Prüfung",
     "difficulty": "Transfer",
@@ -38448,8 +38448,8 @@
       "misconception": "ZfP-Verfahren werden nicht nach ihrer Prüfaufgabe unterschieden.",
       "coreRule": "Drahtbruch → MFL/Remanenz, Hohlraum → Ultraschall, Lage → Radar, Korrosion → Potenzialfeld.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Dauerhaftigkeit & Korrosionsschutz“ im Modul Spannbeton noch einmal durch.",
-      "targetModuleTab": "spannbeton",
-      "targetModuleLabel": "Spannbeton"
+      "targetModuleTab": "spannbeton_grundlagen",
+      "targetModuleLabel": "Spannbeton: Grundlagen"
     },
     "verified": false,
     "vorpruefung": {
@@ -38461,7 +38461,7 @@
     "id": "qn_spannbeton_9",
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
-    "moduleId": "spannbeton",
+    "moduleId": "spannbeton_grundlagen",
     "moduleTitle": "Spannbeton",
     "topic": "Dekompression",
     "difficulty": "Basis",
@@ -38488,8 +38488,8 @@
       "misconception": "Dekompression wird mit anderen GZG-Spannungsgrenzen verwechselt.",
       "coreRule": "Dekompression NA(DE): Beton im Bereich max(100 mm; h/10) um das Spannglied überdrückt.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „6. Nachweiskonzept & Bemessungsregeln“ im Modul Spannbeton noch einmal durch.",
-      "targetModuleTab": "spannbeton",
-      "targetModuleLabel": "Spannbeton"
+      "targetModuleTab": "spannbeton_grundlagen",
+      "targetModuleLabel": "Spannbeton: Grundlagen"
     },
     "verified": false,
     "vorpruefung": {
@@ -38501,7 +38501,7 @@
     "id": "qn_spannbeton_10",
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
-    "moduleId": "spannbeton",
+    "moduleId": "spannbeton_grundlagen",
     "moduleTitle": "Spannbeton",
     "topic": "Querschnittswerte",
     "difficulty": "Basis",
@@ -38528,8 +38528,8 @@
       "misconception": "Netto-, Brutto- und ideeller Querschnitt werden nicht nach Bauzustand unterschieden.",
       "coreRule": "t = 0 (unverpresst): Nettoquerschnitt; nach dem Verpressen: ideeller Querschnitt.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „3. Die 4 Vorspannverfahren nach DIN EN 1992-1-1“ im Modul Spannbeton noch einmal durch.",
-      "targetModuleTab": "spannbeton",
-      "targetModuleLabel": "Spannbeton"
+      "targetModuleTab": "spannbeton_grundlagen",
+      "targetModuleLabel": "Spannbeton: Grundlagen"
     },
     "verified": false,
     "vorpruefung": {
@@ -39768,7 +39768,7 @@
     "id": "qn_bauwerksuntersuchung_1",
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
-    "moduleId": "bauwerksuntersuchung",
+    "moduleId": "bauwerksdiagnose",
     "moduleTitle": "Bauwerksdiagnose & ZfP",
     "topic": "Charakteristische In-situ-Festigkeit",
     "difficulty": "Vertiefung",
@@ -39795,8 +39795,8 @@
       "misconception": "Mittelwert und charakteristischer Wert werden verwechselt oder das Minimum nicht gebildet.",
       "coreRule": "f_ck,is = min(f_m,is − k_n · s; f_is,lowest + M); Einstufung über f_ck,is/0,85.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Beispiel 2: Charakteristische In-situ-Druckfestigkeit“ im Modul Bauwerksdiagnose & ZfP noch einmal durch.",
-      "targetModuleTab": "bauwerksuntersuchung",
-      "targetModuleLabel": "Bauwerksdiagnose & ZfP"
+      "targetModuleTab": "bauwerksdiagnose",
+      "targetModuleLabel": "Bauwerksdiagnose"
     },
     "verified": false,
     "vorpruefung": {
@@ -39809,7 +39809,7 @@
     "id": "qn_bauwerksuntersuchung_2",
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
-    "moduleId": "bauwerksuntersuchung",
+    "moduleId": "bauwerksdiagnose",
     "moduleTitle": "Bauwerksdiagnose & ZfP",
     "topic": "Kalibrierung der ZfP",
     "difficulty": "Basis",
@@ -39836,8 +39836,8 @@
       "misconception": "Die Rolle der zerstörenden Prüfung innerhalb der Diagnosephasen ist unklar.",
       "coreRule": "Recherche → visuelle Erfassung → ZfP → zerstörende Laborprüfung zur Kalibrierung.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Phasen der Tragwerksdiagnose“ im Modul Bauwerksdiagnose & ZfP noch einmal durch.",
-      "targetModuleTab": "bauwerksuntersuchung",
-      "targetModuleLabel": "Bauwerksdiagnose & ZfP"
+      "targetModuleTab": "bauwerksdiagnose",
+      "targetModuleLabel": "Bauwerksdiagnose"
     },
     "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
     "reviewedAt": "2026-10-27",
@@ -39852,7 +39852,7 @@
     "id": "qn_bauwerksuntersuchung_3",
     "category": "dauerhaftigkeit_schaeden",
     "categoryLabel": "Dauerhaftigkeit & Schäden",
-    "moduleId": "bauwerksuntersuchung",
+    "moduleId": "bauwerksdiagnose",
     "moduleTitle": "Bauwerksdiagnose & ZfP",
     "topic": "Befundinterpretation Spritzwasser",
     "difficulty": "Transfer",
@@ -39879,8 +39879,8 @@
       "misconception": "Karbonatisierung wird als einziger Depassivierungsmechanismus betrachtet.",
       "coreRule": "Bei Tausalz/Spritzwasser: Chloridprofil in Tiefenstufen bestimmen; √t-Gesetz gilt nur für Karbonatisierung.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Beispiel 1: Restnutzungsdauer bis zur Depassivierung“ im Modul Bauwerksdiagnose & ZfP noch einmal durch.",
-      "targetModuleTab": "bauwerksuntersuchung",
-      "targetModuleLabel": "Bauwerksdiagnose & ZfP"
+      "targetModuleTab": "bauwerksdiagnose",
+      "targetModuleLabel": "Bauwerksdiagnose"
     },
     "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
     "reviewedAt": "2026-10-27",
