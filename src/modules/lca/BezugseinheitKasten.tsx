@@ -12,40 +12,38 @@ const FORMEL_FE = String.raw`\text{GWP}_{\text{FE}} = m_{\text{FE}} \cdot \left(
  * Definitionen, Gegenüberstellung, Bauwesen-Beispiele, Umrechnung und typische Fehler.
  */
 export default function BezugseinheitKasten() {
-  const t = inhalt.texte;
-  const d = inhalt.daten;
   return (
     <section id="funktionelle-deklarierte-einheit" aria-labelledby="bezugseinheit-titel" className="lg:col-span-2 bg-white p-6 rounded-2xl shadow-sm border-2 border-emerald-300 flex flex-col gap-5 font-normal">
       <header className="flex items-start gap-3 border-b border-home-grau/30 pb-3">
         <span className="bg-emerald-50 text-emerald-800 p-2 rounded-lg border border-emerald-200 shrink-0" aria-hidden="true"><Ruler size={20} /></span>
         <div>
-          <h3 id="bezugseinheit-titel" className="text-lg font-bold text-slate-900">{t.titel}</h3>
-          <p className="text-xs text-slate-600">{t.untertitel}</p>
+          <h3 id="bezugseinheit-titel" className="text-lg font-bold text-slate-900">{inhalt.texte.titel}</h3>
+          <p className="text-xs text-slate-600">{inhalt.texte.untertitel}</p>
         </div>
       </header>
 
-      <p className="text-sm text-slate-800 leading-relaxed"><MdText text={t.einleitung} /></p>
+      <p className="text-sm text-slate-800 leading-relaxed"><MdText text={inhalt.texte.einleitung} /></p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
         <div className="bg-sky-50 border border-sky-200 rounded-xl p-4 space-y-1.5">
-          <h4 className="font-bold text-sky-950">{t.deklariertTitel}</h4>
-          <p className="text-slate-800 leading-relaxed"><MdText text={t.deklariertText} /></p>
+          <h4 className="font-bold text-sky-950">{inhalt.texte.deklariertTitel}</h4>
+          <p className="text-slate-800 leading-relaxed"><MdText text={inhalt.texte.deklariertText} /></p>
         </div>
         <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 space-y-1.5">
-          <h4 className="font-bold text-emerald-950">{t.funktionellTitel}</h4>
-          <p className="text-slate-800 leading-relaxed"><MdText text={t.funktionellText} /></p>
+          <h4 className="font-bold text-emerald-950">{inhalt.texte.funktionellTitel}</h4>
+          <p className="text-slate-800 leading-relaxed"><MdText text={inhalt.texte.funktionellText} /></p>
         </div>
         <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-1.5">
-          <h4 className="font-bold text-slate-900">{t.aequivalentTitel}</h4>
-          <p className="text-slate-800 leading-relaxed"><MdText text={t.aequivalentText} /></p>
+          <h4 className="font-bold text-slate-900">{inhalt.texte.aequivalentTitel}</h4>
+          <p className="text-slate-800 leading-relaxed"><MdText text={inhalt.texte.aequivalentText} /></p>
         </div>
       </div>
 
       <div className="space-y-2">
-        <h4 className="text-sm font-bold text-slate-900">{t.tabelleTitel}</h4>
+        <h4 className="text-sm font-bold text-slate-900">{inhalt.texte.tabelleTitel}</h4>
         <div className="overflow-x-auto rounded-xl border border-home-grau/30">
           <table className="w-full text-xs text-left">
-            <caption className="sr-only">{t.tabelleCaption}</caption>
+            <caption className="sr-only">{inhalt.texte.tabelleCaption}</caption>
             <thead className="bg-slate-50 text-slate-900">
               <tr>
                 <th scope="col" className="p-2.5 font-bold">{inhalt.werte.merkmal}</th>
@@ -54,7 +52,7 @@ export default function BezugseinheitKasten() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
-              {d.tabelle.map(z => (
+              {inhalt.daten.tabelle.map(z => (
                 <tr key={z.merkmal}>
                   <th scope="row" className="p-2.5 font-semibold text-slate-900 align-top">{z.merkmal}</th>
                   <td className="p-2.5 text-slate-700 align-top">{z.deklariert}</td>
@@ -67,9 +65,9 @@ export default function BezugseinheitKasten() {
       </div>
 
       <div className="space-y-2">
-        <h4 className="text-sm font-bold text-slate-900">{t.beispieleTitel}</h4>
+        <h4 className="text-sm font-bold text-slate-900">{inhalt.texte.beispieleTitel}</h4>
         <ul className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
-          {d.beispiele.map(b => (
+          {inhalt.daten.beispiele.map(b => (
             <li key={b.titel} className="border border-home-grau/30 rounded-xl p-3 space-y-1.5 bg-white">
               <strong className="block text-slate-900">{b.titel}</strong>
               <span className="block text-slate-700"><span className="font-semibold text-sky-900">{inhalt.werte.deklariert}: </span>{b.deklariert}</span>
@@ -80,21 +78,21 @@ export default function BezugseinheitKasten() {
       </div>
 
       <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-2 text-xs">
-        <h4 className="text-sm font-bold text-slate-900">{t.umrechnungTitel}</h4>
-        <p className="text-slate-800 leading-relaxed"><MdText text={t.umrechnungText} /></p>
+        <h4 className="text-sm font-bold text-slate-900">{inhalt.texte.umrechnungTitel}</h4>
+        <p className="text-slate-800 leading-relaxed"><MdText text={inhalt.texte.umrechnungText} /></p>
         <div className="overflow-x-auto text-slate-900"><BlockMath math={FORMEL_MENGE} /></div>
         <div className="overflow-x-auto text-slate-900"><BlockMath math={FORMEL_FE} /></div>
-        <p className="text-slate-800 leading-relaxed"><MdText text={t.umrechnungBeispiel} /></p>
+        <p className="text-slate-800 leading-relaxed"><MdText text={inhalt.texte.umrechnungBeispiel} /></p>
       </div>
 
       <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 space-y-2 text-xs">
-        <h4 className="text-sm font-bold text-amber-950 flex items-center gap-1.5"><AlertTriangle size={15} className="text-amber-700" aria-hidden="true" />{t.fehlerTitel}</h4>
+        <h4 className="text-sm font-bold text-amber-950 flex items-center gap-1.5"><AlertTriangle size={15} className="text-amber-700" aria-hidden="true" />{inhalt.texte.fehlerTitel}</h4>
         <ul className="list-disc pl-5 space-y-1.5 text-slate-800 leading-relaxed">
-          {d.fehler.map(f => <li key={f}><MdText text={f} /></li>)}
+          {inhalt.daten.fehler.map(f => <li key={f}><MdText text={f} /></li>)}
         </ul>
       </div>
 
-      <p className="text-[11px] text-slate-600 leading-relaxed border-t border-home-grau/30 pt-3"><MdText text={t.quellen} /></p>
+      <p className="text-[11px] text-slate-600 leading-relaxed border-t border-home-grau/30 pt-3"><MdText text={inhalt.texte.quellen} /></p>
     </section>
   );
 }

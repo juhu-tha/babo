@@ -39,11 +39,8 @@
     "nachRechtsAußenSchieben": "Nach rechts / außen schieben",
     "schichtLöschen": "Schicht löschen",
     "werkstoffAuswählen": "Werkstoff auswählen",
-    "feSchicht": "Schicht",
-    "feMasse": "d · ρ [kg/m²]",
-    "feEinmal": "A1–A3 + C3/C4 [kg/m²]",
+    "feMasse": "m = d · ρ",
     "feNd": "ND",
-    "feSumme": "× (1 + n) [kg/m²]",
     "feCaption": "Umrechnung je Schicht von 1 kg auf 1 m² Wand über 50 Jahre",
     "feErgebnis": "Funktionelle Einheit",
     "feJeJahr": "je Jahr"

@@ -310,42 +310,30 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
             <p className="leading-relaxed text-slate-700"><MdText text={inhalt.texte.feRechenweg} /></p>
             {fe.gueltig && (
               <>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-[10.5px] font-mono">
-                    <caption className="sr-only">{inhalt.werte.feCaption}</caption>
-                    <thead className="text-slate-600 font-sans">
-                      <tr className="border-b border-slate-200">
-                        <th scope="col" className="text-left p-1">{inhalt.werte.feSchicht}</th>
-                        <th scope="col" className="text-right p-1">{inhalt.werte.feMasse}</th>
-                        <th scope="col" className="text-right p-1">{inhalt.werte.feEinmal}</th>
-                        <th scope="col" className="text-right p-1">{inhalt.werte.feNd}</th>
-                        <th scope="col" className="text-right p-1">{inhalt.werte.feSumme}</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {fe.schichten.map((z, i) => {
-                        const key = ndSchluessel(i, computedWall.layers[i].materialKey);
-                        const nd = nutzungsdauern[key] ?? BETRACHTUNGSZEITRAUM_QNG;
-                        return (
-                          <tr key={key} className="border-b border-slate-100">
-                            <th scope="row" className="text-left p-1 font-sans font-medium">{z.name}</th>
-                            <td className="text-right p-1">{formatDeZahl(z.menge, 1)}</td>
-                            <td className="text-right p-1">{formatDeZahl(z.a1a3 + z.c, 1)}</td>
-                            <td className="text-right p-1">
-                              <select aria-label={`${inhalt.werte.feNd} ${z.name}`} value={String(nd)}
-                                onChange={(e) => setNutzungsdauern(v => ({ ...v, [key]: Number(e.target.value) }))}
-                                className="text-[10px] p-0.5 bg-white border border-home-grau/30 rounded cursor-pointer">
-                                {ND_OPTIONEN.map(x => <option key={x} value={String(x)}>{x === 50 ? '≥ 50' : String(x)} a</option>)}
-                              </select>
-                              <span className="block text-slate-500">n = {formatDeZahl(z.ersatz, 0)}</span>
-                            </td>
-                            <td className="text-right p-1">{formatDeZahl(z.summe, 1)}</td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </div>
+                <ul className="space-y-1.5" aria-label={inhalt.werte.feCaption}>
+                  {fe.schichten.map((z, i) => {
+                    const key = ndSchluessel(i, computedWall.layers[i].materialKey);
+                    const nd = nutzungsdauern[key] ?? BETRACHTUNGSZEITRAUM_QNG;
+                    return (
+                      <li key={key} className="border-b border-slate-100 pb-1.5">
+                        <span className="flex items-center justify-between gap-2">
+                          <span className="font-medium text-slate-900">{z.name}</span>
+                          <label className="flex items-center gap-1 shrink-0 text-slate-600">
+                            <span>{inhalt.werte.feNd}</span>
+                            <select value={String(nd)}
+                              onChange={(e) => setNutzungsdauern(v => ({ ...v, [key]: Number(e.target.value) }))}
+                              className="text-[10px] p-0.5 bg-white border border-home-grau/30 rounded cursor-pointer">
+                              {ND_OPTIONEN.map(x => <option key={x} value={String(x)}>{x === 50 ? '≥ 50' : String(x)} a</option>)}
+                            </select>
+                          </label>
+                        </span>
+                        <span className="block font-mono text-[10.5px] text-slate-700">
+                          {inhalt.werte.feMasse} = {formatDeZahl(z.menge, 1)} kg/m² → {formatDeZahl(z.a1a3 + z.c, 1)} · (1 + {formatDeZahl(z.ersatz, 0)}) = <strong>{formatDeZahl(z.summe, 1)} kg/m²</strong>
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
                 <p className="font-mono bg-emerald-50 border border-emerald-200 rounded-lg p-2.5 leading-relaxed">
                   {inhalt.werte.feErgebnis}: <strong>{formatDeZahl(fe.summe, 1)} kg CO₂-Äq./m²</strong> über {formatDeZahl(fe.betrachtungszeitraum, 0)} a
                   {' '}({inhalt.werte.feJeJahr}: {formatDeZahl(fe.jeJahr, 2)} kg CO₂-Äq./(m²·a))

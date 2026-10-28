@@ -150,31 +150,16 @@ export function CalculationDashboard({
           <details className="border-t pt-3 text-[11px] text-slate-700" data-testid="rechenweg-bezug">
             <summary className="cursor-pointer font-bold text-slate-800">{inhalt.texte.rechenwegTitel}</summary>
             <p className="mt-2 leading-relaxed"><MdText text={inhalt.texte.rechenwegText} /></p>
-            <div className="overflow-x-auto mt-2">
-              <table className="w-full text-[10.5px] font-mono">
-                <caption className="sr-only">{inhalt.werte.rwCaption}</caption>
-                <thead className="text-slate-600 font-sans">
-                  <tr className="border-b border-slate-200">
-                    <th scope="col" className="text-left p-1">{inhalt.werte.rwBaustoff}</th>
-                    <th scope="col" className="text-right p-1">{inhalt.werte.rwMenge}</th>
-                    <th scope="col" className="text-right p-1">{inhalt.werte.rwJeEinsatz}</th>
-                    <th scope="col" className="text-right p-1">{inhalt.werte.rwErsatz}</th>
-                    <th scope="col" className="text-right p-1">{inhalt.werte.rwSumme}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {ergebnis.zeilen.map((z, i) => (
-                    <tr key={`${z.id}-${i}`} className="border-b border-slate-100">
-                      <th scope="row" className="text-left p-1 font-sans font-medium">{namen[z.id] ?? z.id}</th>
-                      <td className="text-right p-1">{formatDeZahl(z.menge, 2)} {z.einheit}</td>
-                      <td className="text-right p-1">{formatDeZahl(z.a1a3 + z.c, 0)}</td>
-                      <td className="text-right p-1">{formatDeZahl(z.ersatz, 0)}</td>
-                      <td className="text-right p-1">{formatDeZahl(z.a1a3 + z.c + z.b4, 0)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            <ul className="mt-2 space-y-1.5" aria-label={inhalt.werte.rwCaption}>
+              {ergebnis.zeilen.map((z, i) => (
+                <li key={`${z.id}-${i}`} className="border-b border-slate-100 pb-1">
+                  <span className="block font-medium text-slate-800">{namen[z.id] ?? z.id}</span>
+                  <span className="block font-mono text-[10.5px] text-slate-700">
+                    {formatDeZahl(z.menge, 2)} {z.einheit} → {formatDeZahl(z.a1a3 + z.c, 0)} · (1 + {formatDeZahl(z.ersatz, 0)}) = <strong>{formatDeZahl(z.a1a3 + z.c + z.b4, 0)} kg</strong>
+                  </span>
+                </li>
+              ))}
+            </ul>
             <p className="mt-2 font-mono leading-relaxed">
               {inhalt.werte.rwKonstruktion}: {formatDeZahl(ergebnis.a1a3 + ergebnis.c3c4 + ergebnis.b4, 0)} + {formatDeZahl(ergebnis.sockelTga, 0)} = {formatDeZahl(ergebnis.a1a3 + ergebnis.c3c4 + ergebnis.b4 + ergebnis.sockelTga, 0)} kg CO₂-Äq.
               {' '}÷ ({formatDeZahl(nrfR, 0)} m² · {formatDeZahl(betrachtungszeitraum, 0)} a) = <strong>{formatDeZahl(s.konstruktion, 2)} kg CO₂-Äq./(m²·a)</strong> {inhalt.werte.rwJeFlaeche}
