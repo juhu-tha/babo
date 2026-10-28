@@ -83,6 +83,7 @@ export default function RechnungSchallschutz({ schallDicke, schallFlanke, schall
                   </button>
                 ))}
               </div>
+              {schallWandTyp === 'hlz' && <p className="text-[10.5px] text-slate-700 leading-snug"><MdText text={inhalt.texte.hinweisMassekurveHochlochziegel} /></p>}
             </div>
 
             {/* Wanddicke Slider */}

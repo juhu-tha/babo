@@ -20,7 +20,8 @@
     "schritt3BauschalldämmMaß": "**Schritt 3: Bauschalldämm-Maß R'_w mit Flankenabzug K_F**",
     "vorhandenesBauschalldämmMaß": "Vorhandenes Bauschalldämm-Maß ",
     "vsNormativeMindestanforderung": " vs. normative Mindestanforderung ",
-    "empfohleneGegenmaßnahmenWanddickeVergröß": "Empfohlene Gegenmaßnahmen: Wanddicke vergrößern (z.B. auf 24 cm KS), Baustoff mit höherer Rohdichteklasse wählen (RDK ≥ 2,0) oder flankierende Bauteile durch elastische Entkopplung optimieren."
+    "empfohleneGegenmaßnahmenWanddickeVergröß": "Empfohlene Gegenmaßnahmen: Wanddicke vergrößern (z.B. auf 24 cm KS), Baustoff mit höherer Rohdichteklasse wählen (RDK ≥ 2,0) oder flankierende Bauteile durch elastische Entkopplung optimieren.",
+    "hinweisMassekurveHochlochziegel": "Hinweis: Für Hochlochziegel hängt die Schalldämmung neben der Masse von Lochbild, Lochanteil und einer Dämmstofffüllung ab. Die Massekurve der DIN 4109-32 gilt für solche Steine nur eingeschränkt; maßgebend sind dann Prüfwerte des Herstellers (bauaufsichtlicher Verwendbarkeitsnachweis). Das Beispiel zeigt nur das Prinzip – vorläufig, F-Freigabe."
   },
   "werte": {
     "kalksandsteinKs": "Kalksandstein (KS)",

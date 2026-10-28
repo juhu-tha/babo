@@ -328,3 +328,9 @@ Die Beispiele (KS 17,5 cm: m′ = 380 kg/m², R_w = 57,5 dB; HLz 24 cm: 243 kg/m
 ## Freigabe 28.10.2026
 
 Freigegeben wurden Module mit Empfehlung „freigabefähig“ ohne offene Fragen. In dieser Tranche trifft das auf kein ganzes Modul zu. Der Reiter Querkraft (Nr. 2) ist freigabefähig, zählt aber erst mit dem ganzen Modul `stahlbeton_bemessung` (offen: F-1, S-2, P-2, Tranche 2 T2-S-1/-2); der Prüfvermerk bleibt „offen“.
+
+## Nachtrag 28.10.2026 (abends): Entscheidungen S-2, P-2, Q-1 umgesetzt
+
+- **S-2 (Stütze):** Interaktionskurven jetzt mit dem Parabel-Rechteck-Diagramm (n = 2, ε_c2 = 2 ‰, ε_cu2 = 3,5 ‰, analytisch integriert); der Spannungsblock wird nur noch zum Vergleich angezeigt. Nachrechnung mit eigenem Skript (Streifenintegration, Gleichgewicht per Bisektion): S1 ω_exakt = 0,0665 → ω_erf = 0,07 (vorher 0,05), S2 ω_exakt = 0,254 → 0,26 (vorher 0,24). Regressionstest angepasst.
+- **P-2 (Durchstanzen):** Stützenlage innen/Rand/Ecke als Eingabe, u₁ nach EC2 Bild 6.15 (Schnitt endet senkrecht am freien Rand, Randabstand einstellbar, maßgebend der kürzere Rundschnitt nach 6.4.2(4)), β konstant nach NA DE 6.4.3(6) (1,10/1,40/1,50). Fünf Handrechnungsfälle in `tests/durchstanzen.test.ts`.
+- **Q-1 (Querkraft):** Gleichungsnummer auf (9.5aDE) korrigiert (vorläufig, Nummer nicht öffentlich belegt; Wert unverändert).

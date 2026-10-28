@@ -85,8 +85,8 @@
     "idealisiertOrthogonal": "Idealisiert (Orthogonal)",
     "realitätsnahToleranzgerecht": "Realitätsnah (Toleranzgerecht)",
     "nANichtNachprüfbar": "N/A (nicht nachprüfbar)",
-    "grenzeSpalte516mm": "Grenze Spalte 5 (± 16mm auf 4m)",
-    "grenzeSpalte66mm": "Grenze Spalte 6 (± 6mm auf 4m)",
+    "grenzeSpalte516mm": "DIN 18202, Tab. 3, Zeile 5 (nichtflächenfertige Wände): Stichmaß 15 mm bei 4 m (vorläufig, F-Freigabe)",
+    "grenzeSpalte66mm": "DIN 18202, Tab. 3, Zeile 6 (flächenfertige Wände): Stichmaß 10 mm bei 4 m",
     "hochpräziseSpezialtoleranz2mm": "Hochpräzise Spezialtoleranz (< 2mm)",
     "durchDieVerortungDeformierter": "✓ Durch die Verortung deformierter Bauteile (z.B. durchbeugender Firstpfetten) können Knickeffekte und Exzentrizitätsmomente in der Statik korrekt zugewiesen werden.",
     "achtungVerformungenVonBauteilen": "⚠ Achtung: Verformungen von Bauteilen werden bei diesem Erfassungsgrad weg-idealisiert. Dies birgt Risiken beim nachträglichen Aufbringen neuer Dachlasten!",
@@ -187,7 +187,7 @@
       {
         "step": "01",
         "title": "Erfassung am Objekt",
-        "detail": "Der Leica BLK360 wird auf einem stabilen Stativ platziert. Er emittiert 680 000 Laserpunkte pro Sekunde und nimmt ein HDR-Farbpanorama auf. Pro Standpunkt dauert die kombinierte Aufnahme ca. 1-2 Minuten."
+        "detail": "Der Leica BLK360 wird auf einem stabilen Stativ platziert. Er emittiert 680 000 Laserpunkte pro Sekunde und nimmt ein HDR-Farbpanorama auf. Ein Vollkuppelscan mit Panoramabild dauert beim BLK360 G2 laut Datenblatt unter 20 s; ein HDR-Panorama benötigt zusätzlich bis zu 20 s."
       },
       {
         "step": "02",

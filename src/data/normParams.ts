@@ -17,7 +17,6 @@ export const EC2_NA_DE = {
   betaInnen: 1.10,
   betaRand: 1.40,
   betaEcke: 1.50,
-  alpha6_33: 1.15,
   CRdc_Durchstanz: 0.18 / 1.5,
   vRdMaxFaktor_u1: 1.4,
   AsMinStuetze: (NEd: number, fyd: number) => (0.15 * Math.abs(NEd)) / fyd,

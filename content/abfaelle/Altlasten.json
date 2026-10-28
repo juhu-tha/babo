@@ -16,8 +16,8 @@
     "bbodschvPrüfwerteKatalog": "BBodSchV Prüfwerte-Katalog",
     "nutzenSieDenInteraktiven": "Nutzen Sie den interaktiven Pfad-Checker, um die gesetzlichen Prüfwerte nach der novellierten Bundes-Bodenschutzverordnung (BBodSchV, gültig seit 01.08.2023) abzurufen.",
     "szenarioNutzungspfad": "Szenario / Nutzungspfad:",
-    "wirkungspfadLogikDieWerte": "📌 **Wirkungspfad-Logik:** Die Werte für Kinderspielplätze sind extrem niedrig angesetzt, da Kleinkinder beim Spielen Schmutz oral aufnehmen (\"Pica-Verhalten\"). Für Gewerbeflächen gelten bis zu 10-fach höhere Grenzwerte.",
-    "pfasMeilenstein2023Unter": "🌱 **PFAS-Meilenstein 2023:** Unter der novellierten BBodSchV sind die per- und polyfluorierten Alkylsubstanzen (PFAS, \"Ewigkeitschemikalien\") erstmals explizit mit einem bundeseinheitlichen Eluatprüfwert von 0.1 µg/l für die Summe aus vier Hauptverbindungen (PFOA, PFOS, PFHxS, PFNA) gesetzlich geregelt. Dies bürdet Bauherren erhebliche Erkundungspflichten auf.",
+    "wirkungspfadLogikDieWerte": "📌 **Wirkungspfad-Logik:** Die Werte für Kinderspielplätze sind extrem niedrig angesetzt, da Kleinkinder beim Spielen Schmutz oral aufnehmen (\"Pica-Verhalten\"). Für Industrie- und Gewerbeflächen gelten für viele Stoffe deutlich höhere Prüfwerte (Blei 10-fach, Nickel rund 13-fach); Prüfwerte sind keine Grenzwerte, sondern Auslöser einer Einzelfallprüfung.",
+    "pfasMeilenstein2023Unter": "🌱 **PFAS-Meilenstein 2023:** Die novellierte BBodSchV (seit 01.08.2023) enthält erstmals bundeseinheitliche Prüfwerte für sieben PFAS-Einzelstoffe im Sickerwasser bzw. Grundwasser (Anlage 2 Tabelle 3): PFOA, PFOS und PFHxS je 0,1 µg/l, PFNA 0,06 µg/l, PFBA 10 µg/l, PFHxA 6 µg/l, PFBS 6 µg/l. Eine Summenbewertung „PFAS-4“ sieht die BBodSchV nicht vor (diese gilt im Trinkwasser). Daraus folgen erhebliche Erkundungspflichten.",
     "physikalischerBodenschutzAufBaustellen": "Physikalischer Bodenschutz auf Baustellen (§ 17 BBodSchV)",
     "nebenDerChemischenSchadstoffbelastung": "Neben der chemischen Schadstoffbelastung verpflichtet das modernisierte Bodenschutzrecht Planer und Ausführende zu einem sorgsamen Umgang mit der Bodenstruktur selbst. Schwere Erdbewegungsmaschinen können irreversible Zerstörungen im Bodengefüge (Verdichtung, Scherspannungen) anrichten.",
     "t1VermeidungVonBodenschäden": "1. Vermeidung von Bodenschäden (Konstruktive Maßnahmen)",
@@ -64,77 +64,84 @@
   "daten": {
     "Altlasten.bbodData": {
       "spielplatz": {
-        "title": "Wirkpfad Boden-Mensch: Kinderspielplätze",
+        "title": "Wirkpfad Boden-Mensch: Kinderspielflächen (BBodSchV Anlage 2 Tab. 4; Cadmium 2,0 in Haus- und Kleingärten mit Nahrungspflanzenanbau)",
         "unit": "mg/kg TM (Trockenmasse im Feststoff)",
         "values": {
           "Arsen (As)": 25,
           "Blei (Pb)": 200,
-          "Cadmium (Cd)": 2,
-          "Chrom (Cr)": 100,
+          "Cadmium (Cd)": 10,
+          "Chrom (Cr)": 200,
+          "Chrom VI (Cr VI)": 130,
           "Nickel (Ni)": 70,
           "Quecksilber (Hg)": 10,
-          "Benzo(a)pyren": 2
+          "Benzo(a)pyren": 0.5
         }
       },
       "wohngebiet": {
-        "title": "Wirkpfad Boden-Mensch: Wohngebiete (Gärten etc.)",
+        "title": "Wirkpfad Boden-Mensch: Wohngebiete (BBodSchV Anlage 2 Tab. 4; Cadmium 2,0 in Haus- und Kleingärten mit Nahrungspflanzenanbau)",
         "unit": "mg/kg TM (Trockenmasse im Feststoff)",
         "values": {
           "Arsen (As)": 50,
           "Blei (Pb)": 400,
-          "Cadmium (Cd)": 10,
-          "Chrom (Cr)": 200,
+          "Cadmium (Cd)": 20,
+          "Chrom (Cr)": 400,
+          "Chrom VI (Cr VI)": 250,
           "Nickel (Ni)": 140,
           "Quecksilber (Hg)": 20,
-          "Benzo(a)pyren": 4
+          "Benzo(a)pyren": 1
         }
       },
       "park": {
-        "title": "Wirkpfad Boden-Mensch: Park- und Freizeitanlagen",
+        "title": "Wirkpfad Boden-Mensch: Park- und Freizeitanlagen (BBodSchV Anlage 2 Tab. 4)",
         "unit": "mg/kg TM (Trockenmasse im Feststoff)",
         "values": {
           "Arsen (As)": 125,
           "Blei (Pb)": 1000,
           "Cadmium (Cd)": 50,
-          "Chrom (Cr)": 500,
+          "Chrom (Cr)": 400,
+          "Chrom VI (Cr VI)": 250,
           "Nickel (Ni)": 350,
-          "Quecksilber (Hg)": 70,
-          "Benzo(a)pyren": 10
+          "Quecksilber (Hg)": 50,
+          "Benzo(a)pyren": 1
         }
       },
       "industrie": {
-        "title": "Wirkpfad Boden-Mensch: Industrie- und Gewerbeflächen",
+        "title": "Wirkpfad Boden-Mensch: Industrie- und Gewerbegrundstücke (BBodSchV Anlage 2 Tab. 4)",
         "unit": "mg/kg TM (Trockenmasse im Feststoff)",
         "values": {
           "Arsen (As)": 140,
           "Blei (Pb)": 2000,
           "Cadmium (Cd)": 60,
-          "Chrom (Cr)": 1000,
+          "Chrom (Cr)": 200,
+          "Chrom VI (Cr VI)": 130,
           "Nickel (Ni)": 900,
-          "Quecksilber (Hg)": 80,
-          "Benzo(a)pyren": 12
+          "Quecksilber (Hg)": 100,
+          "Benzo(a)pyren": 5
         }
       },
       "grundwasser": {
-        "title": "Wirkpfad Boden-Grundwasser: Sickerwasserpfad (Universal)",
-        "unit": "µg/l im Eluat / Sickerwasser",
+        "title": "Wirkpfad Boden-Grundwasser: Sickerwasser (BBodSchV Anlage 2 Tab. 2; PFAS Tab. 3)",
+        "unit": "µg/l im Sickerwasser",
         "values": {
           "Arsen (As)": 10,
           "Blei (Pb)": 10,
-          "Cadmium (Cd)": 0.5,
+          "Cadmium (Cd)": 3,
           "Chrom (Cr-Gesamt)": 50,
           "Nickel (Ni)": 20,
-          "Quecksilber (Hg)": 0.2,
-          "PFAS (Summe 4)": 0.1
+          "Quecksilber (Hg)": 1,
+          "PFOA": 0.1,
+          "PFOS": 0.1,
+          "PFHxS": 0.1,
+          "PFNA": 0.06
         }
       },
       "nutzpflanze": {
-        "title": "Wirkpfad Boden-Nutzpflanze: Landwirtschaft / Nutzgärten",
-        "unit": "mg/kg TM (Pflanzenverfügbare Fraktion)",
+        "title": "Wirkpfad Boden-Nutzpflanze: Ackerbau und Nutzgarten (BBodSchV Anlage 2 Tab. 6; Cadmium als Maßnahmenwert, 0,04 bei Brotweizen- oder Gemüseanbau)",
+        "unit": "mg/kg TM (Cd, Pb: Ammoniumnitrat-Extrakt; Hg: Königswasser)",
         "values": {
           "Cadmium (Cd)": 0.1,
           "Blei (Pb)": 0.1,
-          "Quecksilber (Hg)": 1
+          "Quecksilber (Hg)": 5
         }
       }
     }

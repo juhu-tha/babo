@@ -22,6 +22,8 @@ export interface NormExposureClass {
   };
   requiresAirEntrainment?: boolean;
   minCoverDurMm: number | null; // Betonstahl, DIN EN 1992-1-1/NA:2013-04 Tab. 4.4DE; null = keine eigene Anforderung
+  /** Alternative ohne Luftporen (XF2, XF3; DIN 1045-2, Tab. F.2.1) – Schalter im Hüllwertrechner (T3-EX-1) */
+  ohneLp?: { maxWzEq: number; minStrengthClass: string; minCement: number };
   specialNotes?: string;
 }
 
@@ -185,6 +187,7 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     minCement: 300,
     requiresAirEntrainment: true,
     minAirContent: { dmax32: 4.0, dmax16: 4.5, dmax8: 5.5 },
+    ohneLp: { maxWzEq: 0.50, minStrengthClass: 'C35/45', minCement: 320 },
     minCoverDurMm: null,
     specialNotes: inhalt.werte.alternativOhneLpW
   },
@@ -199,6 +202,7 @@ export const NORMATIVE_EXPOSURE_CLASSES: NormExposureClass[] = [
     minCement: 300,
     requiresAirEntrainment: true,
     minAirContent: { dmax32: 4.0, dmax16: 4.5, dmax8: 5.5 },
+    ohneLp: { maxWzEq: 0.50, minStrengthClass: 'C35/45', minCement: 320 },
     minCoverDurMm: null,
     specialNotes: inhalt.werte.alternativOhneLpW2
   },

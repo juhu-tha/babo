@@ -49,7 +49,7 @@
     ],
     "Bauwerksuntersuchung.stepsDetails.0.standards": [
       "VDI 6200 (\"Standsicherheit von Bauwerken\")",
-      "DIN 1076 (\"Ingenieurbauwerke - Überwachung\")",
+      "DIN 1076:2026-01 (\"Ingenieurbauwerke im Zuge von Straßen und Wegen – Überwachung und Prüfung\")",
       "TR Instandhaltung DIBt (\"Technische Regel Instandhaltung\")"
     ],
     "Bauwerksuntersuchung.stepsDetails.1.bullets": [
@@ -59,7 +59,7 @@
       "Fotodokumentation und Übertrag in ein Schadenskataster als Grundlage für Instandsetzungskonzepte."
     ],
     "Bauwerksuntersuchung.stepsDetails.1.standards": [
-      "DIN 1076 (\"Bauwerksprüfung Handbereich\")",
+      "DIN 1076:2026-01 (handnahe Bauwerksprüfung)",
       "DBV-Merkblatt \"Risse im Beton (Untersuchung & Bewertung)\"",
       "WTA-Merkblatt 4-5 (\"Beurteilung von Mauerwerk – Mauerwerksdiagnostik\")"
     ],
@@ -110,13 +110,13 @@
       },
       {
         "titel": "Charakteristischer Wert",
-        "erklaerung": "Mit k_n = 1,48 und M = 4 N/mm² (Ansatz des Moduls):",
-        "formel": "f_{ck,is} = \\min(31{,}0 - 1{,}48 \\cdot 2{,}5;\\; 28{,}0 + 4) = \\min(27{,}3;\\; 32{,}0) = 27{,}3\\,\\text{N/mm}^2"
+        "erklaerung": "Mit k_n = 2,00 für n = 8 Kerne und M = 4 N/mm² (DIN EN 13791:2020-02; Tabellenwerte am Normtext prüfen):",
+        "formel": "f_{ck,is} = \\min(31{,}0 - 2{,}00 \\cdot 2{,}5;\\; 28{,}0 + 4) = \\min(26{,}0;\\; 32{,}0) = 26{,}0\\,\\text{N/mm}^2"
       },
       {
         "titel": "Einstufung",
         "erklaerung": "Umrechnung auf die Druckfestigkeitsklasse (Faktor 0,85):",
-        "formel": "f_{ck} = \\frac{27{,}3}{0{,}85} = 32{,}1\\,\\text{N/mm}^2 \\ge 30 \\Rightarrow \\text{C30/37}"
+        "formel": "f_{ck} = \\frac{26{,}0}{0{,}85} = 30{,}6\\,\\text{N/mm}^2 \\ge 30 \\Rightarrow \\text{C30/37}"
       }
     ],
     "Bauwerksuntersuchung.literatur": [
@@ -192,7 +192,7 @@
         "quelle": "DIN EN 1542 / ZTV-ING"
       },
       {
-        "formel": "f_{ck,\\text{is}} = \\min\\left(f_{m,\\text{is}} - 1{,}48 \\cdot s, \\; f_{\\text{is,lowest}} + 4\\right)",
+        "formel": "f_{ck,\\text{is}} = \\min\\left(f_{m,\\text{is}} - k_n \\cdot s, \\; f_{\\text{is,lowest}} + M\\right)",
         "erklaerung": "Charakteristische In-situ-Druckfestigkeit nach DIN EN 13791:2020-02 (ab n = 8 Bohrkernen; k_n = 2,00 bis 1,64, s mindestens entsprechend V = 8 %, Zuschlag M = 1–4 N/mm²); Einstufung mit f_ck = f_ck,is / 0,85.",
         "quelle": "DIN EN 13791"
       },
