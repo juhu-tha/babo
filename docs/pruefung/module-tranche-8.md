@@ -149,6 +149,11 @@
 
 **F-Freigabe-Stellen:** CO₂-Faktor und Einsparansatz (T8-DA-Q1).
 
+**Umsetzung 29.10.2026**
+- **T8-DA-Q1:** CO₂-Faktor 0,22 → 0,24 kg/kWh (Erdgas, Anlage 9 GModG; [buzer.de](https://www.buzer.de/Anlage_9_GModG.htm)). Einsparung jetzt ΔU · F_x · 84 kKh/a; für die Kellerdecke F_x = 0,5 (Größenordnung DIN V 4108-6, vorläufig, F-Freigabe), sonst 1,0; weiter ohne Anlagenaufwand (Hinweis im Berater). Kern `src/calc/bauprodukte.ts` (`fx`, `FX_KELLERDECKE`), Anzeige `DaemmungBerater.tsx`.
+- Nachrechnung (eigenes Skript): DA2 Einsparung 114,5 kWh/(m²a), CO₂ 27,48 kg/(m²a) (vorher 25,23); DA4 Kellerdecke 11 cm XPS mit F_x: 85,92 kWh/(m²a), CO₂ 20,62 kg/(m²a). Test `tests/modulpruefungTranche8.test.ts`.
+- T8-DA-Q2 (Quiz `q_daemm_1`) ist nicht Teil dieser Umsetzung (QZ-3).
+
 **Empfehlung:** freigabefähig nach Klärung von T8-DA-Q1 und Q2.
 
 - [ ] Modul freigeben
@@ -337,6 +342,9 @@
 - **offen – Frage T8-GL-Q1:** „Hohe Primärenergie bei Neualuminium (~14 kWh/kg)“: 14–15 kWh/kg ist etwa der Strombedarf der Elektrolyse; die Primärenergie von Primäraluminium liegt nach meinem Kenntnisstand deutlich höher. Wert mit EPD-/ÖKOBAUDAT-Quelle belegen oder als „Strombedarf der Elektrolyse“ bezeichnen?
 
 **F-Freigabe-Stellen:** Ψ-Werte (Lehrwerte, bereits in den Grenzen).
+
+**Umsetzung 29.10.2026**
+- **T8-GL-Q1:** Formulierung als Strombedarf der Elektrolyse: „Allein die Schmelzflusselektrolyse benötigt rund 14 kWh Strom je kg Aluminium; die Primärenergie der gesamten Herstellung liegt deutlich darüber.“ (`content/bpglaeser/BpGlaeser.json`).
 
 **Empfehlung:** freigabefähig nach Klärung von T8-GL-Q1.
 
