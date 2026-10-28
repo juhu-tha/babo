@@ -11,7 +11,7 @@ import { DafstbRichtlinieTab } from './materialoptimierung/DafstbRichtlinieTab';
 import inhalt from '@/content/materialoptimierung/Materialoptimierung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
-import { dafstbVergleich, type DafstbBauteil, type DafstbZement } from '@/src/calc/materialoptimierung';
+import { dafstbVergleich, type DafstbBauteil, type DafstbZement, type DafstbStahlRoute } from '@/src/calc/materialoptimierung';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 export default function Materialoptimierung() {
@@ -25,7 +25,7 @@ export default function Materialoptimierung() {
   const [dafstbBauweise, setDafstbBauweise] = useState<string>('hohlkoerper');
   const [dafstbZement, setDafstbZement] = useState<DafstbZement>('cem3_a');
   const [dafstbPruefalter, setDafstbPruefalter] = useState<28 | 56>(56);
-  const [dafstbStahlRoute, setDafstbStahlRoute] = useState<'standard_bof' | 'gruen_eaf'>('gruen_eaf');
+  const [dafstbStahlRoute, setDafstbStahlRoute] = useState<DafstbStahlRoute>('gruen_eaf');
 
   const activeSaeuleData = useMemo(() => {
     return SAEULEN_DATA.find(s => s.id === selectedSaeule)!;

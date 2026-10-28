@@ -16,7 +16,7 @@
     "summationAllerTragwerkselementeBezogen": "Summation aller Tragwerkselemente bezogen auf die Nettogrundfläche (NGF) des Gebäudes. Nachweisbedingung nach DAfStb:",
     "fokusLastabtragStützenrasterFundamentier": "Fokus: Lastabtrag, Stützenraster, Fundamentierung",
     "thgEffizienzklassenNachDafstb": " THG-Minderungsstufen (Lehreinteilung)",
-    "klassifizierungDerTreibhausgasminderungG": "Lehreinteilung der Treibhausgasminderung gegenüber einem konventionellen Referenzbauteil (CEM I, Hochofenstahl); die Treibhausgas-Minderungsklassen der DAfStb-Richtlinie (Bezug 2020) sind hier nicht wiedergegeben",
+    "klassifizierungDerTreibhausgasminderungG": "Lehreinteilung der Treibhausgasminderung gegenüber einem konventionellen Referenzbauteil (CEM I, Betonstahl ÖKOBAUDAT-Mittel); die Treibhausgas-Minderungsklassen der DAfStb-Richtlinie (Bezug 2020) sind hier nicht wiedergegeben",
     "t5Dekarbonisierungsstufen": "5 Dekarbonisierungsstufen",
     "thgMinderung50": "THG-Minderung ≥ 50 %",
     "ultraLowCarbonStandard": "Ultra-Low-Carbon Standard. Zement CEM III/B oder CEM II/C-M, 56d-Prüfalter, Hohlkörper-/Vorspanndecke, 100% Elektroofenstahl.",
@@ -30,7 +30,7 @@
     "thgMinderung1024": "THG-Minderung 10–24 %",
     "einstiegsstandardLeichteZementoptimierun": "Einstiegsstandard. Leichte Zementoptimierung, Standardbewehrung, minimale Bauteilreduktion ohne Bauablaufanpassung.",
     "benchmark0": "Benchmark (0 %)",
-    "historischKonventionelleBauweiseNach": "Historisch-konventionelle Bauweise nach DIN EN 206 mit reinem CEM I (Klinker ≥ 95%) und BOF-Standardstahl.",
+    "historischKonventionelleBauweiseNach": "Konventionelle Bauweise nach DIN EN 206 mit reinem CEM I (Klinker ≥ 95 %) und Betonstahl im deutschen Mittel (ÖKOBAUDAT „Bewehrungsstahl (de)“, überwiegend Elektrostahl).",
     "die4PlanerischenHebel": " Die 4 planerischen Hebel des Tragwerksplaners nach DAfStb",
     "tragwerksgeometrieLeichtbau": "Tragwerksgeometrie & Leichtbau",
     "vorspannungMitSofortigemOder": " Vorspannung mit sofortigem oder nachträglichem Verbund",
@@ -39,7 +39,7 @@
     "dafstbRegelZumPrüfalter": " DAfStb-Regel zum Prüfalter:",
     "t56TageStatt28": "56 Tage statt 28 Tage",
     "bewehrungsstahlHerstellroute": "Bewehrungsstahl & Herstellroute",
-    "bewehrungsstahlEmittiertÜberDie": "Bewehrungsstahl emittiert über die Hochofenroute (BOF) rund **0,95 bis 1,2 kg CO₂-eq/kg**, über die Elektrolichtbogenroute (EAF / 100% Stahlschrott mit Grünstrom) nur **0,35 bis 0,45 kg CO₂-eq/kg** – eine Reduktion um fast 60 %! Zusätzlich lässt sich die Zwangsbewehrung zur Rissbreitenbegrenzung ($w_{\\text{max}}$) durch den Einsatz von Zementen mit geringer Hydratationswärme (LH-Zemente) und optimierte Nachbehandlung drastisch reduzieren.",
+    "bewehrungsstahlEmittiertÜberDie": "Betonstahl wird in Deutschland überwiegend im Elektrolichtbogenofen aus Schrott erzeugt; der generische ÖKOBAUDAT-Datensatz „Bewehrungsstahl (de)“ nennt rund **0,64 kg CO₂-Äq./kg** (A1–A3). Stahl aus der Hochofenroute (BOF) liegt deutlich darüber (Lehrwert im Rechner 0,98 kg/kg, vorläufig), Elektrostahl mit Grünstrom darunter (Lehrwert 0,42 kg/kg); maßgebend ist die EPD des Herstellers. Zusätzlich lässt sich die Zwangsbewehrung zur Rissbreitenbegrenzung ($w_{\\text{max}}$) durch den Einsatz von Zementen mit geringer Hydratationswärme (LH-Zemente) und optimierte Nachbehandlung drastisch reduzieren.",
     "bauablaufNachbehandlungDinEn": "Bauablauf & Nachbehandlung (DIN EN 13670)",
     "klinkerarmeBetoneErhärtenLangsamer": "Klinkerarme Betone erhärten langsamer und besitzen in den ersten Tagen eine empfindlichere Randzone. Die DAfStb-Richtlinie fordert daher eine **angepasste Nachbehandlung (Nachbehandlungsklasse 3 oder 4 nach DIN EN 13670 / DIN 1045-3)**: längeres Belassen der Schalung, Feuchthalten oder Nachbehandlungsfilme verhindern das vorzeitige Austrocknen und garantieren eine dichte, karbonatisierungsresistente Betondeckung.",
     "interaktiverDafstbBauteilrechnerVariante": " Interaktiver DAfStb-Bauteilrechner & Variantenvergleich",
@@ -53,7 +53,7 @@
     "t4PrüfalterStahlroute": "4. Prüfalter & Stahlroute",
     "nachweispfadSchrottElektroofenstahl": "Nachweispfad & Schrott-Elektroofenstahl",
     "gesamteTreibhausgasemissionenA1A3": "Gesamte Treibhausgasemissionen (A1–A3)",
-    "referenzCemIBof": "Referenz (CEM I + BOF):",
+    "referenzCemIBof": "Referenz (CEM I + Betonstahl DE):",
     "eingespartesCoÄquivalent": "Eingespartes CO₂-Äquivalent:",
     "spezifischerBauteilKennwert": "Spezifischer Bauteil-Kennwert",
     "emissionsanteileNachBaustoffBeton": "Emissionsanteile nach Baustoff (Beton vs. Bewehrungsstahl)",
@@ -81,7 +81,8 @@
     "erfülltHöchsteFördervorgabenNach": "✓ Sehr hohe Minderung gegenüber dem Referenzbauteil. QNG und DGNB bewerten das ganze Gebäude über den Lebenszyklus – ein Bauteilvergleich weist keine Siegelstufe nach.",
     "erfülltAnforderungenFürQng": "✓ Deutliche Minderung gegenüber dem Referenzbauteil; der Gebäudenachweis nach QNG bzw. DGNB ist gesondert zu führen.",
     "basisverbesserungFürQngDgnb": "Geringe Minderung. Weitere Hebel prüfen: Zementart, Bauteilgeometrie, Bewehrungsgrad.",
-    "eafGrün042": "EAF Grün 0,42 kg/kg",
-    "bofStandard098": "BOF Standard 0,98 kg/kg"
+    "eafGrün042": "EAF Grünstrom 0,42 kg/kg (Lehrwert)",
+    "eafDe064": "Elektrostahl DE 0,64 kg/kg (ÖKOBAUDAT)",
+    "bofStandard098": "Hochofenroute 0,98 kg/kg (Lehrwert)"
   }
 }
