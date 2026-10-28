@@ -8,6 +8,7 @@ import { grenzenFuer } from '../src/data/rechnerGrenzen';
 import { AUFGABEN_QUIZ_GRUPPEN } from '../src/data/aufgabenQuizGruppen';
 import { MODULTEST_IN_APP } from '../src/data/quizZuordnung';
 import { teileFragenpool, fragenJeModul, QUIZ_TEILE } from '../scripts/quizPool';
+import { TEILMODULE, teilmodulFamilie } from '../src/registry/teilmodule';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -114,7 +115,8 @@ for (const [tab, cfg] of Object.entries(AUFGABEN_QUIZ_GRUPPEN)) {
 
 // 6. Ratsche: Module mit weniger als 5 Fragen dürfen nicht mehr werden
 const MAX_DUENN = 2; // nur noch die reinen Infoseiten beton_info, stahlbeton_info
-const duenn = [...proModul.values()].filter(n => n < 5).length;
+// Teilmodule aufgeteilter Module zählen hier nicht, sie haben eine eigene Ratsche (7b, TEIL_UNTER_MINDEST)
+const duenn = [...proModul].filter(([id, n]) => n < 5 && !teilmodulFamilie(id)).length;
 pruefe(duenn <= MAX_DUENN, `${duenn} Module mit < 5 Fragen (Grenze ${MAX_DUENN})`);
 
 // 7. Abdeckung der Fachmodule (AP 3.4): je Route ≥ 6 Fragen, Rechner-Module mit Rechenfrage, Spannbeton ≥ 10, Pool ≥ 850
@@ -122,10 +124,32 @@ const OHNE = new Set(['Allgemein', 'Infos & Quellen', 'Studium THA', 'Weiter@THA
 const fach = (MODULE as readonly ModulEintrag[]).filter(m => (m.baum?.typ === 'standard' || m.baum?.typ === 'calculator') && !OHNE.has(m.gruppe ?? ''));
 const proRoute = new Map<string, typeof QUIZ_QUESTIONS>();
 for (const q of QUIZ_QUESTIONS) { const r = quizRoute(q.moduleId); if (r) proRoute.set(r, [...(proRoute.get(r) ?? []), q]); }
+const mindestFragen = (stamm: string) => (stamm === 'spannbeton' ? 10 : 6);
+const istRechenfrage = (q: (typeof QUIZ_QUESTIONS)[number]) => q.bloom === 'Anwenden' && /\d/.test(q.question);
 for (const m of fach) {
+  if (teilmodulFamilie(m.id)) continue; // Teilmodule: Familienregel unten
   const qs = proRoute.get(m.id) ?? [];
-  pruefe(qs.length >= (m.id === 'spannbeton' ? 10 : 6), `${m.id}: nur ${qs.length} Fragen`);
-  if (m.baum?.typ === 'calculator' || grenzenFuer(m.id)) pruefe(qs.some(q => q.bloom === 'Anwenden' && /\d/.test(q.question)), `${m.id}: Rechner-Modul ohne Rechenfrage`);
+  pruefe(qs.length >= mindestFragen(m.id), `${m.id}: nur ${qs.length} Fragen`);
+  if (m.baum?.typ === 'calculator' || grenzenFuer(m.id)) pruefe(qs.some(istRechenfrage), `${m.id}: Rechner-Modul ohne Rechenfrage`);
+}
+// 7b. Aufgeteilte Module (src/registry/teilmodule.ts, 28.10.2026): Die Fragen des früheren Moduls wurden ohne neue
+//     Fragen auf die Teile verteilt. Mindestzahl (Spannbeton 10) und Rechenfrage gelten für die Familie; je Teil
+//     mindestens 1 Frage. Teile unter 6 Fragen stehen in TEIL_UNTER_MINDEST (Ratsche: Liste darf nur kürzer werden;
+//     Aufstockung offen, docs/entwuerfe/lange-module-aufteilung.md).
+const MINDEST_TEIL = 6;
+const TEIL_UNTER_MINDEST: ReadonlySet<string> = new Set(['spannbeton_kennwerte', 'bauwerksdiagnose', 'pruefverfahren_katalog', 'zfp']);
+for (const f of TEILMODULE) {
+  const jeTeil = f.teile.map(id => proRoute.get(id) ?? []);
+  const alle = jeTeil.flat();
+  pruefe(!MODUL_BY_ID.has(f.stamm), `Teilmodule: Stammmodul ${f.stamm} ist noch eine Route (soll Alias sein)`);
+  pruefe(alle.length >= mindestFragen(f.stamm), `${f.stamm} (Teilmodule): nur ${alle.length} Fragen`);
+  pruefe(alle.some(istRechenfrage), `${f.stamm} (Teilmodule): keine Rechenfrage`);
+  f.teile.forEach((id, i) => {
+    pruefe(jeTeil[i].length >= 1, `${id}: keine Fragen (Teilmodul)`);
+    const unter = jeTeil[i].length < MINDEST_TEIL;
+    pruefe(!unter || TEIL_UNTER_MINDEST.has(id), `${id}: ${jeTeil[i].length} Fragen – unter ${MINDEST_TEIL}, nicht in TEIL_UNTER_MINDEST`);
+    pruefe(unter || !TEIL_UNTER_MINDEST.has(id), `${id}: hat jetzt ${jeTeil[i].length} Fragen – aus TEIL_UNTER_MINDEST streichen (Ratsche)`);
+  });
 }
 pruefe(QUIZ_QUESTIONS.length >= 850, `nur ${QUIZ_QUESTIONS.length} Fragen (≥ 850 verlangt)`);
 

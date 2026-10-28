@@ -48,12 +48,18 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   keramik_ziegel: {"kurz": "Wasseraufnahme E_b, Fliesengruppe nach DIN EN 14411, Rohdichte sowie offene und Gesamtporosität aus Trocken-, Nass- und Unterwasserwägung.", "grenzen": ["Ein Sättigungszustand für alle Größen; die Norm unterscheidet Kochverfahren (E_b) und Vakuumverfahren (E_v). Prüfkörperanzahl und Mittelung sind nicht abgebildet.", "Dichte des Wassers fest 1,0 g/cm³; keine Temperaturkorrektur der Unterwasserwägung.", "Gruppe nur aus E_b und Formgebung; die Unterteilung AIIa/AIIb in Teil 1 und 2 sowie weitere Anforderungen (Bruchkraft, Frost) werden nicht geprüft.", "Für Mauerziegel gelten andere Prüfverfahren (DIN EN 772-21, DIN EN 772-7); die Fliesengruppe dient dort nur zum Vergleich."]},
   stahlbau_ec3: {"kurz": "Querschnittsklasse, Querschnittswiderstände und Biegeknickwiderstand N_b,Rd gewalzter I-Profile unter zentrischem Druck nach DIN EN 1993-1-1 mit NA (DE).", "grenzen": ["Zentrischer Druck ohne Biegemomente; Biegedrillknicken, Drillknicken und die Interaktion nach 6.3.3 sind nicht enthalten.", "Querschnittsklasse 4 wird nur erkannt; der Nachweis mit wirksamer Fläche A_eff nach DIN EN 1993-1-5 fehlt (Ergebnis auf der unsicheren Seite).", "Nennwerte f_y und f_u für Erzeugnisdicken t ≤ 40 mm (Tab. 3.1); S460 als S460N/NL nach DIN EN 10025-3.", "Auswahl auf zehn IPE-, HEA- und HEB-Profile beschränkt; die Knicklängen L_cr sind vorzugeben und werden nicht aus Lagerung oder Rahmensystem ermittelt."]},
   stahlbeton_bemessung: STAHLBETON,
-  spannbeton: {
+  // Spannbeton in zwei Teilmodulen (28.10.2026): Grenzen des früheren Moduls „spannbeton“ nach Reitern verteilt
+  spannbeton_kennwerte: {
     kurz: 'Spannkraftverluste (Reibung, Keilschlupf, elastische Verkürzung, Kriechen, Schwinden, Relaxation) und Spannungsnachweise eines Rechteckquerschnitts.',
     grenzen: [
       'Einfeldträger mit Nachweisschnitt in Feldmitte, Rechteckquerschnitt ohne Spannglied-Hüllrohrabzug.',
       'Zeitabhängige Verluste nach Gl. (5.46) mit φ(∞,t₀) und ε_cs(∞) nach Anhang B; Relaxation für 500 000 h.',
       'Dekompression als größte Betonspannung an den Grenzen e_p ± max(100 mm; h/10) nach NA DE (EN-Empfehlung: 25 mm), vereinfacht am ungerissenen Querschnitt (Zustand I).',
+    ],
+  },
+  spannbeton_grundlagen: {
+    kurz: 'Lehrdemos zur Vorspannung: Dehnungsanimation eines Spannbetonträgers sowie Stauchungsverlust, Lastausgleich und Litzenanzahl im Leitfaden „Von 0 bis 100“.',
+    grenzen: [
       'Dehnungsanimation: Lehrträger L = 20 m, 500 × 1000 mm, C40/50 (E_cm, f_ctm aus Tab. 3.1), linear-elastisch am Bruttoquerschnitt; Randzug gegen f_ctm,fl (3.1.8), danach qualitativ.',
       '„Von 0 bis 100“: Verlust durch Betonstauchung Δσ = E·Δε ohne Relaxation; Lastausgleich u = 8·P·f/L²; Litzen = ⌈P/173 kN⌉ (150 mm² · 1360 N/mm², 15 % Verluste als Lehrannahme).',
     ],
@@ -491,12 +497,20 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Statische Amortisation ohne Zins und Preissteigerung.",
     ],
   },
-  bauwerksuntersuchung: {
-    kurz: "Prüfumfang, Bewertung von Befunden und einfache Prüfverfahren (Rückprall, Ultraschall, Karsten, Karbonatisierung, Bohrkern, Impact-Echo).",
+  // Bauwerksdiagnose in drei Teilmodulen (28.10.2026): Grenzen des früheren Moduls „bauwerksuntersuchung“ verteilt
+  bauwerksdiagnose: {
+    kurz: "Prüfumfang und Bewertung von Befunden (Probenahme-Planer, Interpretations-Navigator).",
     grenzen: [
       "Prüfumfang über Faustformeln aus der Fläche.",
       "Bewertung mit festen Schwellen (Chlorid, Potential, Festigkeit, Haftzug).",
-      "Rückprall-Festigkeit nach Lehr-Näherung, Richtungskorrektur nach Herstellerformel Original Schmidt Typ N (Screening Eagle/Proceq); Karbonatisierung nach √t-Gesetz ohne Klima- und Feuchteeinfluss.",
+    ],
+  },
+  // Prüfverfahren-Katalog (bis 28.10.2026 im Modul „bauwerksuntersuchung“)
+  pruefverfahren_katalog: {
+    kurz: "Simulatoren des Prüfverfahren-Katalogs: Rückprall, Ultraschall, Karsten, Karbonatisierung, Bohrkern, Impact-Echo.",
+    grenzen: [
+      "Rückprall-Festigkeit nach Lehr-Näherung, Richtungskorrektur nach Herstellerformel Original Schmidt Typ N (Screening Eagle/Proceq).",
+      "Karbonatisierung nach √t-Gesetz ohne Klima- und Feuchteeinfluss.",
     ],
   },
   zfp: {
