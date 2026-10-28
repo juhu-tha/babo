@@ -194,6 +194,8 @@ export function sonneneintrag(r: Raum) {
 
   if (Szul < 0) hinweise.push({ stufe: 'warnung', feld: 'fenster', text: 'S_zul ist negativ: Der Fensterflächenanteil ist für diese Randbedingungen zu groß; das Verfahren ist hier nicht mehr aussagekräftig.' });
   if (fWG > 0.7) hinweise.push({ stufe: 'warnung', feld: 'fenster', text: 'Fensterflächenanteil über 70 % der Grundfläche: Eine thermische Gebäudesimulation nach 8.4 ist zu empfehlen.' });
+  // Runde 28.10. (Entscheidung T3-SW-2): Rechner bleibt bei der Ausgabe 2013-02, Hinweis auf die Neuausgabe 2026-05
+  hinweise.push({ stufe: 'warnung', feld: 'normstand', text: 'Normenstand: Gerechnet wird nach DIN 4108-2:2013-02, auf die § 14 GModG verweist. Die Neuausgabe DIN 4108-2:2026-05 ist erschienen (sommerlicher Wärmeschutz neu gegliedert, u. a. Verzicht 8.3.2/Tab. 7, F_C in 8.6); ihre Tabellenwerte sind hier nicht eingearbeitet.' });
 
   return {
     gueltig: true as const, hinweise, fenster, AW, fWG, fNeig, fNord, fSSG,

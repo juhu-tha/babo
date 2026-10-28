@@ -2,7 +2,7 @@
   "texte": {
     "dinEnIso12944": "DIN EN ISO 12944-2: Werkstoffabtragungs-Projektion",
     "stahlUndZinkKorrodieren": "Stahl und Zink korrodieren abhängig von der Schadstoffbelastung in unterschiedlichen Millimeterraten. Wählen Sie die Korrosivitätskategorie und simulieren Sie den Schichtabtrag über Jahre:",
-    "luftreinheitsKlasseIso12944": "Luftreinheits-Klasse (ISO 12944)",
+    "luftreinheitsKlasseIso12944": "Korrosivitätskategorie (DIN EN ISO 12944-2)",
     "gerechneterSubstanzverlust": "Gerechneter Substanzverlust",
     "baustahlUnlegiert": "Baustahl unlegiert",
     "aSchutzzeitBei80": " a Schutzzeit bei 80 μm Zink)",
@@ -40,7 +40,7 @@
     "aluminiumNieteOderSchrauben": "Aluminium-Niete oder Schrauben werden in direktem Kupferkontakt rasend schnell elektrolytisch aufgelöst.",
     "mäßigesRisiko": "Mäßiges Risiko",
     "mäßigePotentialdifferenzUnverzinkteStahl": "Mäßige Potentialdifferenz. Unverzinkte Stahlbauteile rosten beschleunigt, falls sie von Feuchtigkeit umgeben sind.",
-    "luftreinheitsKlasseIso12944": "Luftreinheits-Klasse (ISO 12944)",
+    "luftreinheitsKlasseIso12944": "Korrosivitätskategorie (DIN EN ISO 12944-2)",
     "großteilZBBlech": "Großteil (z.B. Blech/Fassade)",
     "verbindungsmittelSchraubeNiet": "Verbindungsmittel (Schraube/Niet)",
     "feuchtigkeitUmgebung": "Feuchtigkeit / Umgebung",

@@ -16,11 +16,16 @@
     "bemessungswertVerbund": "Bemessungswert Verbund ",
     "schematischeDarstellung": "Schematische Darstellung",
     "wirdÜberVerbundspannungenEntlang": " wird über Verbundspannungen entlang der Länge ",
-    "inDenBetonEingeleitet": " in den Beton eingeleitet."
+    "inDenBetonEingeleitet": " in den Beton eingeleitet.",
+    "nachweisform": "Nachweisform der Verankerung",
+    "lagerung": "Lagerung (für α₅)",
+    "angeschweißteQuerstäbe": "Angeschweißte Querstäbe (α₄ = 0,7, z. B. Betonstahlmatten)",
+    "stossAbstandGross": "Lichter Abstand der Stöße ≥ 8 Ø und Randabstand c₁ ≥ 4 Ø",
+    "alpha6Tabelle": "α₆ nach NA DE Tab. 8.3DE (vorläufig, Bestätigung am Normtext ausstehend): Zugstoß ≤ 33 %: 1,2 (Ø < 16 mm) bzw. 1,4 (Ø ≥ 16 mm); > 33 %: 1,4 bzw. 2,0. Mit großem Stoß- und Randabstand 1,0 (statt 1,2 und 1,4) bzw. 1,4 (statt 2,0). Druckstoß: 1,0. Die EC2-Empfehlung (1,0 bis 1,5) gilt in Deutschland nicht."
   },
   "werte": {
     "artDerBerechnung": "Art der Berechnung",
-    "ausgewählteFaktorenZurReduktion": "Ausgewählte Faktoren zur Reduktion der Länge. Bei Druckbeanspruchung sind alle Formbeiwerte = 1.0.",
+    "ausgewählteFaktorenZurReduktion": "Ausgewählte Faktoren zur Reduktion der Länge. Bei Druckbeanspruchung sind alle Formbeiwerte außer α₄ = 1,0. In der vereinfachten NA-Form werden nur α₁, α₄ und α₅ (2/3 bei direkter Lagerung) angesetzt.",
     "formgebung": "Formgebung ()",
     "betondeckung": "Betondeckung ()",
     "querbewehrung": "Querbewehrung ()",
@@ -44,7 +49,15 @@
     "volleAusnutzungDesStabes": "Volle Ausnutzung des Stabes mit σ_sd = f_yd = f_yk/1,15.",
     "anwendungsbeispielGrundwertDerVerankerun": "Anwendungsbeispiel: Grundwert der Verankerungslänge (Ø 16, C30/37, guter Verbund)",
     "dinEn199212": "DIN EN 1992-1-1 mit NA, 8.4.2 und 8.4.3",
-    "lBRqd570": "l_b,rqd ≈ 580 mm (≈ 36 Ø); l_bd folgt mit den Beiwerten α₁…α₅ und A_s,erf/A_s,vorh."
+    "lBRqd570": "l_b,rqd ≈ 580 mm (≈ 36 Ø); l_bd folgt mit den Beiwerten α₁…α₅ (oder vereinfacht α₁ · α₄ · α₅ nach NA) und A_s,erf/A_s,vorh.",
+    "nachweisform": "Nachweisform der Verankerung",
+    "nachweisformEn": "EN-Form mit Tabelle 8.2 (α₁ … α₅)",
+    "nachweisformNa": "Vereinfachte NA-Form α₁ · α₄ · α₅ (vorläufig)",
+    "lagerung": "Lagerung (für α₅)",
+    "lagerungDirekt": "Direkte Lagerung (α₅ = 2/3)",
+    "lagerungSonst": "Indirekte Lagerung / sonst (α₅ = 1,0)",
+    "stossanteilBis33": "Stoßanteil ≤ 33 % je Lage",
+    "stossanteilUeber33": "Stoßanteil > 33 % je Lage"
   },
   "daten": {
     "Verankerungslaenge.schritte": [

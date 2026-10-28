@@ -212,6 +212,12 @@ export default function Stuetzenbemessung() {
                     <div className="text-xs mt-2 opacity-70">
                       (Rechnerisch: {formatDeZahl(results.as_tot_req, 2)}<MdText text={inhalt.texte.cmMindestbewehrungNaDe} />{formatDeZahl(results.as_min, 2)} cm²)
                     </div>
+                    <div className="text-xs mt-1 opacity-70">
+                      <MdText text={inhalt.texte.vergleichSpannungsblock} />
+                      {results.req_omega_block >= 0
+                        ? <>ω = {formatDeZahl(results.req_omega_block, 2)}, <FormulaText text="A_{s,tot}" /> = {formatDeZahl(results.as_tot_req_block, 2)} cm²</>
+                        : <>nicht aufnehmbar</>}
+                    </div>
                   </>
                 ) : (
                   <div className="text-xl font-bold text-red-600"><MdText text={inhalt.texte.querschnittNichtAusreichend} /></div>

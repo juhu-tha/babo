@@ -1,11 +1,22 @@
 // Ausgelagert aus src/modules/BpVerkehrswegebau.tsx (AP 5.2)
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
-import React from 'react';
+import React, { useState } from 'react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { Calculator, Droplets } from 'lucide-react';
 import inhalt from '@/content/bpverkehrswegebau/TiefbauTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
-import { rigole } from '@/src/calc/verkehrswegebau';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { rigole, F_METHODE, type KfMethode } from '@/src/calc/verkehrswegebau';
+
+/** Bestimmungsmethoden des k_f-Werts (DWA-A 138-1:2024-10, f_Methode vorläufig) */
+const METHODEN: readonly (readonly [KfMethode, string])[] = [
+  ['feldGross', 'Feldversuch, Testgrube ≥ 1 m²'],
+  ['feldKlein', 'Feldversuch, kleine Testgrube'],
+  ['doppelring', 'Doppelzylinder-Infiltrometer'],
+  ['openEnd', 'Open-End-Test'],
+  ['laborUngestoert', 'Labor, ungestörte Probe'],
+  ['sieblinie', 'Sieblinie (gestörte Probe)'],
+];
 
 export interface TiefbauTabProps {
   setTiefbauArea: React.Dispatch<React.SetStateAction<number>>;
@@ -21,6 +32,11 @@ export interface TiefbauTabProps {
 }
 
 export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTiefbauFss, setTiefbauPsi, setTiefbauRain, tiefbauArea, tiefbauDuration, tiefbauFss, tiefbauPsi, tiefbauRain }: TiefbauTabProps) {
+  // DWA-A 138-1:2024-10: k_f, Korrekturfaktoren f_Ort und f_Methode, vollständige Durchsickerung (Runde 28.10.)
+  const [kf, setKf] = useState<number>(1e-5);
+  const [fOrt, setFOrt] = useState<number>(0.5);
+  const [methode, setMethode] = useState<KfMethode>('openEnd');
+  const [vollDurchsickert, setVollDurchsickert] = useState<boolean>(false);
   return (
     <div className="flex flex-col gap-6 animate-in fade-in duration-300">
       {/* Intro */}
@@ -310,19 +326,59 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
                 </div>
               </div>
 
+              {/* Boden: k_f und Korrekturfaktoren nach DWA-A 138-1 */}
+              <div className="space-y-1">
+                <label htmlFor="rigole-kf" className="flex justify-between text-xs font-semibold text-text-main">
+                  <span><MdText text={inhalt.texte.rigoleKfLabel} /></span>
+                  <span className="font-mono text-zinc-900 font-bold">{formatDeZahl(kf * 1e5, 1)}·10⁻⁵ m/s</span>
+                </label>
+                <select id="rigole-kf" value={kf} onChange={(e) => setKf(parseFloat(e.target.value))} className="w-full text-xs p-2 rounded-lg border border-zinc-200 bg-white">
+                  <option value="1e-4">1·10⁻⁴ m/s (Sand, kiesig)</option>
+                  <option value="5e-5">5·10⁻⁵ m/s (Mittelsand)</option>
+                  <option value="1e-5">1·10⁻⁵ m/s (Feinsand)</option>
+                  <option value="5e-6">5·10⁻⁶ m/s (schluffiger Sand)</option>
+                  <option value="1e-6">1·10⁻⁶ m/s (sandiger Schluff)</option>
+                </select>
+              </div>
+              <div className="space-y-1">
+                <label htmlFor="rigole-fort" className="flex justify-between text-xs font-semibold text-text-main">
+                  <span><MdText text={inhalt.texte.rigoleFOrtLabel} /></span>
+                  <span className="font-mono text-zinc-900 font-bold">{formatDeZahl(fOrt, 1)}</span>
+                </label>
+                <select id="rigole-fort" value={fOrt} onChange={(e) => setFOrt(parseFloat(e.target.value))} className="w-full text-xs p-2 rounded-lg border border-zinc-200 bg-white">
+                  <option value="0.3">0,3 (Mindestwert, z. B. ein einzelner Versuch)</option>
+                  <option value="0.5">0,5</option>
+                  <option value="0.7">0,7</option>
+                  <option value="1">1,0 (Höchstwert, gut erkundeter homogener Boden)</option>
+                </select>
+              </div>
+              <div className="space-y-1">
+                <label htmlFor="rigole-methode" className="flex justify-between text-xs font-semibold text-text-main">
+                  <span><MdText text={inhalt.texte.rigoleFMethodeLabel} /></span>
+                  <span className="font-mono text-zinc-900 font-bold">{formatDeZahl(F_METHODE[methode], 1)}</span>
+                </label>
+                <select id="rigole-methode" value={methode} onChange={(e) => setMethode(e.target.value as KfMethode)} className="w-full text-xs p-2 rounded-lg border border-zinc-200 bg-white">
+                  {METHODEN.map(([id, name]) => <option key={id} value={id}>{name} ({formatDeZahl(F_METHODE[id], 1)})</option>)}
+                </select>
+              </div>
+              <label className="flex items-start gap-2 text-xs text-text-main cursor-pointer">
+                <input type="checkbox" checked={vollDurchsickert} onChange={(e) => setVollDurchsickert(e.target.checked)} className="mt-0.5 accent-shiraz" />
+                <span><MdText text={inhalt.texte.rigoleVollDurchsickert} /></span>
+              </label>
+
             </div>
 
             {/* Calculations and visualization */}
             {(() => {
-              // Rechenkern src/calc/verkehrswegebau.ts (Rigole, vereinfacht in Anlehnung an DWA-A 138-1: k_f = 1,0·10⁻⁵ m/s, f_Z = 1,1, Rigole 1,2 m × 0,6 m)
-              const rig = rigole({ flaecheM2: tiefbauArea, psi: tiefbauPsi, regenspende: tiefbauRain, dauerMin: tiefbauDuration, speicherKoeff: tiefbauFss });
+              // Rechenkern src/calc/verkehrswegebau.ts (Rigole, vereinfachtes Verfahren DWA-A 138-1:2024-10, f_Z = 1,2, Rigole 1,2 m × 0,6 m)
+              const rig = rigole({ flaecheM2: tiefbauArea, psi: tiefbauPsi, regenspende: tiefbauRain, dauerMin: tiefbauDuration, speicherKoeff: tiefbauFss, kf, fOrt, fMethode: F_METHODE[methode], vollDurchsickert });
               const a_red = rig.aRed;
               const q_in = rig.qZu; // l/s
               const v_zu_m3 = rig.vZu; // m³
-              const a_sohle = rig.aSohle; // m²
+              const a_s = rig.aS; // m² (Sohle + Seiten + Stirn)
               const q_sicker_l_s = rig.qSicker; // l/s
               const v_sicker_m3 = rig.vSicker;
-              // Bruttovolumen der Rigole (Füllkörper bzw. Kies inkl. Feststoff): V_R = f_S · (V_zu − V_s) / s_R
+              // Bruttovolumen der Rigole (Füllkörper bzw. Kies inkl. Feststoff): V_R = L · b · h
               const v_speicher_m3 = rig.vRigole;
               const v_nutz_m3 = rig.vNutz; // speicherwirksames Porenvolumen
               const l_rig = rig.laengeM;
@@ -344,7 +400,7 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
                     <div className="bg-zinc-50 p-4 rounded-xl border border-zinc-200">
                       <span className="text-[10px] uppercase font-mono font-bold text-zinc-500">Boden-Infiltration</span>
                       <div className="text-xl font-bold text-zinc-900 font-mono mt-1">{formatDeZahl(v_sicker_m3, 3)} m³</div>
-                      <p className="text-[10px] text-zinc-500 leading-normal mt-1 w-full"><MdText text={inhalt.texte.infiltrationÜberSohleA} />{formatDeZahl(a_sohle, 1)}<MdText text={inhalt.texte.mBeiSandSchluff} /><strong className="font-mono">{formatDeZahl(q_sicker_l_s, 3)} l/s</strong>.
+                      <p className="text-[10px] text-zinc-500 leading-normal mt-1 w-full"><MdText text={inhalt.texte.infiltrationÜberSohleA} />{formatDeZahl(a_s, 1)}<MdText text={inhalt.texte.mBeiSandSchluff} />{formatDeZahl(rig.ki * 1e6, 1)}·10⁻⁶ m/s (f_K = {formatDeZahl(rig.fK, 2)}): <strong className="font-mono">{formatDeZahl(q_sicker_l_s, 3)} l/s</strong>.
                       </p>
                     </div>
 
@@ -375,17 +431,18 @@ export default function TiefbauTab({ setTiefbauArea, setTiefbauDuration, setTief
                         )}
                       </div>
                       <div className="font-mono text-[11px] bg-white/60 p-2.5 rounded border border-home-grau/30 flex flex-col justify-center">
-                        <div>Sohlentiefe: <span className="font-bold">0,60 m</span></div>
-                        <div>Breite: <span className="font-bold">1,20 m</span></div>
+                        <div>Höhe h: <span className="font-bold">0,60 m</span></div>
+                        <div>Breite b: <span className="font-bold">1,20 m</span></div>
                         <div><MdText text={inhalt.texte.erforderlicheLänge} /><span className="font-bold text-slate-800">{formatDeZahl(l_rig, 2)} m</span></div>
                       </div>
                     </div>
                   </div>
+                  <EingabeHinweise hinweise={rig.hinweise} />
 
                   {/* Formel-Herleitung */}
                   <div className="p-3 text-[10.5px] text-text-main/60 bg-zinc-50 border border-zinc-200 rounded-lg">
                     <span className="font-bold text-text-main block mb-1"><MdText text={inhalt.texte.dwaA138Speicherbemessungsgleichung} /></span>
-                    <FormulaText text="V_{rig} = \frac{A_{red} \cdot 10^{-7} \cdot r_D \cdot t_d \cdot 60 - A_{sohle} \cdot k_f \cdot t_d \cdot 60}{s_R}" />
+                    <FormulaText text="L = \frac{A_u \cdot 10^{-7} \cdot r_D - 2 \cdot b \cdot h_w \cdot k_i}{\frac{b \cdot h \cdot s_R}{D \cdot 60 \cdot f_Z} + (b + 2 h_w) \cdot k_i}, \quad k_i = f_{Ort} \cdot f_{Methode} \cdot k_f" />
                     <span className="text-[10px] block mt-1 leading-normal"><MdText text={inhalt.texte.hierbeiStehtSR} /></span>
                   </div>
 

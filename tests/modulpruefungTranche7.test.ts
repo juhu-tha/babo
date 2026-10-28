@@ -35,14 +35,20 @@ pruefe('WG3 l', wg3.lMm, 898.651); pruefe('WG3 σ_e', wg3.sigmaE, 1.796);
 pruefe('FU1 L_max h = 18 cm', betondeckenFugen(5.0, 18).maxAbstandM, 4.5); gilt(!betondeckenFugen(5.0, 18).ok, 'FU1 5,0 m > 4,5 m');
 pruefe('FU2 L_max h = 26 cm', betondeckenFugen(5.0, 26).maxAbstandM, 5.0);
 
-// 3. Tiefbau: Rigole (Lehransatz in Anlehnung an DWA-A 138-1, k_f,u = k_f/2 über die Sohle, f_Z = 1,1)
+// 3. Tiefbau: Rigole – seit 28.10. (Entscheidung DWA-A 138-1) vereinfachtes Verfahren DWA-A 138-1:2024-10:
+//    k_i = f_Ort·f_Methode·k_f = 0,5·0,8·10⁻⁵ = 4·10⁻⁶ m/s, L = (A_u·10⁻⁷·r − 2·b·h_w·k_i)/(b·h·s_R/(D·60·f_Z) + (b + 2h_w)·k_i),
+//    b × h = 1,2 × 0,6 m, h_w = 0,3 m, f_Z = 1,2 (vorher Ansatz 2005: k_f/2 über eine geschätzte Sohle, f_Z = 1,1; RI1 7,98 m³)
+//    RI1: Zähler 7,668·10⁻³ − 2,88·10⁻⁶; Nenner 6,33333·10⁻⁴ + 7,2·10⁻⁶ → L = 11,9668 m; V_R = 8,6161 m³; 35 Boxen
 const ri1 = rigole({ flaecheM2: 355, psi: 0.9, regenspende: 240, dauerMin: 15, speicherKoeff: 0.95 });
-pruefe('RI1 Q_zu', ri1.qZu, 7.668); pruefe('RI1 V_zu', ri1.vZu, 6.9012); pruefe('RI1 A_Sohle', ri1.aSohle, 2.41542);
-pruefe('RI1 V_R', ri1.vRigole, 7.97828); pruefe('RI1 L', ri1.laengeM, 11.0809); gilt(ri1.boxen === 32, 'RI1 32 Boxen');
+pruefe('RI1 Q_zu', ri1.qZu, 7.668); pruefe('RI1 V_zu', ri1.vZu, 6.9012);
+pruefe('RI1 V_R', ri1.vRigole, 8.6161); pruefe('RI1 L', ri1.laengeM, 11.9668); gilt(ri1.boxen === 35, 'RI1 35 Boxen');
+//    RI2: A_u = 350 m², r = 150, D = 30 min, Kies s_R = 0,3: Zähler 5,25·10⁻³ − 2,88·10⁻⁶ = 5,24712·10⁻³; Nenner 1,0·10⁻⁴ + 7,2·10⁻⁶
+//         → L = 48,947 m; V_R = 35,242 m³; V_nutz = 10,573 m³; 45 Boxen
 const ri2 = rigole({ flaecheM2: 500, psi: 0.7, regenspende: 150, dauerMin: 30, speicherKoeff: 0.3 });
-pruefe('RI2 V_R', ri2.vRigole, 34.5409); pruefe('RI2 V_nutz', ri2.vNutz, 10.3623); gilt(ri2.boxen === 44, 'RI2 44 Boxen');
+pruefe('RI2 L', ri2.laengeM, 48.947); pruefe('RI2 V_R', ri2.vRigole, 35.242); pruefe('RI2 V_nutz', ri2.vNutz, 10.573); gilt(ri2.boxen === 45, 'RI2 45 Boxen');
+//    RI3 (Randfall): A_u = 3 m², r = 50, 5 min: Zähler 1,5·10⁻⁵ − 2,88·10⁻⁶ = 1,212·10⁻⁵; Nenner 1,9·10⁻³ + 7,2·10⁻⁶ → L = 0,006355 m
 const ri3 = rigole({ flaecheM2: 10, psi: 0.3, regenspende: 50, dauerMin: 5, speicherKoeff: 0.95 });
-pruefe('RI3 V_R (Mindestwert)', ri3.vRigole, 0.1); pruefe('RI3 A_Sohle (Mindestwert)', ri3.aSohle, 1.5);
+pruefe('RI3 L (Randfall)', ri3.laengeM, 0.0063549);
 
 // 4. Bahnbau: σ_T = E·α_T·ΔT, F = σ_T·A (A = 7686 mm², UIC 60)
 const gl1 = schienenTemperatur(55, 20, 'schotter_gut');
