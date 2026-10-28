@@ -75,7 +75,7 @@
     "rAbzinsungssatzKalkulationszinssatz": "• **r**: Abzinsungssatz (Kalkulationszinssatz)",
     "t3ÖkologischerÖkonomischerZielkonflikt": "3. Ökologischer & ökonomischer Zielkonflikt",
     "nationaleDgnbBnbNutzung": "Nationale DGNB-/BNB-Nutzung",
-    "umFürDasStaatliche": "Um für das staatliche QNG-Qualitätssiegel bezuschussungsfähig zu sein, fordert das Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen (BMWSB) die Durchführung beider Bilanzen. LCC-Szenarien werden regulär mit einem normativ fixierten Kalkulationszins von **1,5% oder 2,0%** über genau 50 Jahre modelliert.",
+    "umFürDasStaatliche": "Das QNG verlangt die Ökobilanz (Treibhausgas und Primärenergie); Lebenszykluskosten fordern die Bewertungssysteme BNB und DGNB sowie die KfW-Förderung im Niedrigpreissegment (KFN 296). LCC-Szenarien werden dort mit festgelegten Kennwerten über 50 Jahre modelliert, im BNB (Steckbrief 2.1.1) mit einem Kalkulationszins von **1,5 %**.",
     "wirtschaftlicheTriebfeder": "Wirtschaftliche Triebfeder",
     "währendEineGünstigeInvestition": "Während eine günstige Investition an Tag Null den schnellen Rendite-Fokus des Immobilienentwicklers befriedigt, ist sie für den langfristigen Betreiber (Eigennutzer, Wohnungsgesellschaften) oft unvorteilhaft. LCC macht diesen \"Trittbrettfahrer-Effekt\" transparent und schützt Planer und Bauherren vor unerwarteten Betriebskostenexplosionen."
   },
@@ -120,7 +120,7 @@
           "details": [
             "Kunststoffbasiertes System mit geringer dynamischer Wärmespeicherung",
             "Turnusmäßige biozide Anstriche gegen Veralgung notwendig",
-            "Sehr teure Entsorgung als gefährlicher Abfall am Lebensende"
+            "Aufwendige Entsorgung (thermische Verwertung; HBCD-haltige Altbestände als POP-Abfall nachweispflichtig)"
           ]
         },
         "optionB": {

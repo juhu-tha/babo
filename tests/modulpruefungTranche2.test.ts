@@ -108,7 +108,9 @@ const GEXAKT: [number, number][] = [[3, 1.1543], [5, 1.7150], [8, 2.1266], [10, 
 for (const [n, g] of GEXAKT) pruefe(`ST G_krit n = ${n}`, grubbsKritisch(n), g, 1e-3);
 pruefe('ST k_n n = 7', fraktilfaktorKn(7), 2.07735, 2e-3);
 const st = statistikAuswertung({ werte: [38.2, 41.5, 39.9, 40.3, 42.1, 37.6, 40.8, 31.0], methode: 'grubbs', material: 'beton', ausreisserPruefen: true });
-gilt(st.ausreisser.length === 1 && st.ausreisser[0] === 31.0, 'ST Grubbs: 31,0 auffällig (G = 2,233 > 2,127)'); pruefe('ST X_k', st.xk, 36.6251, 2e-3);
+// T2-ST-1 umgesetzt (28.10.2026): G = 2,233 liegt zwischen 2,127 (5 %) und 2,274 (1 %) → nur markiert, X_k mit allen 8 Werten:
+// x̄ = 38,925, s = 3,5487, k_n = 2,00 → X_k = 31,83 N/mm² (vorher 36,63 mit entferntem Wert)
+gilt(st.ausreisser.length === 0 && st.auffaellig.length === 1 && st.auffaellig[0] === 31.0, 'ST Grubbs: 31,0 auffällig (G = 2,233; 2,127 < G < 2,274), nicht entfernt'); pruefe('ST X_k', st.xk, 31.8275, 2e-3);
 pruefe('ST Welch p', zweistichprobenTTest([31.2, 33.5, 30.8, 34.1, 32.6, 33.0], [29.5, 30.2, 31.8, 28.9, 30.7], 0.05, 'welch').p, 0.011218, 1e-3);
 
 // 9. LCA: 400 m³ Beton CEM I, 20 m³ EPS (ND 40 a → 1 Ersatz), 30 m³ KVH; B6 Netzstrom 9 000 kWh/a + Fernwärme Erdgas-KWK 30 000 kWh/a
@@ -124,7 +126,7 @@ pruefe('LCA B4', lca.b4, 2720); pruefe('LCA B6', lca.b6, 939888.93); pruefe('LCA
 
 // 10. Boden: Mehrpunktverfahren (Ausgleichsgerade w über lg N) → w_L = 43,27 %, I_C = 0,715 (weich), TM
 const a1 = atterberg({ w: 28, versuche: [{ schlaege: 16, w: 46.1 }, { schlaege: 22, w: 44.0 }, { schlaege: 29, w: 42.4 }, { schlaege: 37, w: 40.8 }], ausroll: [21.5, 22.3], organisch: false });
-pruefe('BO w_L', a1.wL, 43.2722); pruefe('BO I_C', a1.iC, 0.714583); gilt(a1.gruppe?.kuerzel === 'TM' && a1.zustand === 'weich', 'BO TM/weich');
+pruefe('BO w_L', a1.wL, 43.2722); pruefe('BO I_C', a1.iC, 0.714583); gilt(a1.gruppe?.kuerzel === 'TM' && a1.zustand === 'steif', 'BO TM/steif (I_C = 0,715; DIN EN ISO 14688-2, T2-B-1 umgesetzt 28.10.2026)');
 pruefe('BO Einpunkt w_L', atterberg({ w: 18, versuche: [{ schlaege: 24, w: 31.0 }], ausroll: [19.0, 19.6], organisch: false }).wL, 30.8473);
 const ko = konsolidierung(4, 100, 5, 2, 'zweiseitig');
 pruefe('BO s_end', ko.s_end, 80); pruefe('BO t_90', ko.t_90, 1.696);

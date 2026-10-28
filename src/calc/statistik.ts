@@ -4,8 +4,10 @@
  *  - Stichprobenkennwerte: Mittelwert x̄, Median, Standardabweichung s = √(Σ(xᵢ − x̄)²/(n − 1)), Variationskoeffizient V = s/x̄·100 %
  *  - Ausreißerkriterien: x̄ ± 2s (Faustregel), Boxplot [Q₁ − 1,5·IQR; Q₃ + 1,5·IQR] (Quartile als sortierter Wert
  *    am Index ⌊0,25·n⌋ bzw. ⌊0,75·n⌋, ohne Interpolation), Grubbs x̄ ± G_krit·s (G_krit für einen Ausreißer,
- *    beidseitig geprüft, α = 5 % nach ISO 5725-2, Tab. 5 – entspricht einseitig α = 2,5 % nach ASTM E178;
- *    linear interpoliert; vereinfacht auf alle Werte angewendet)
+ *    beidseitig geprüft nach ISO 5725-2, Tab. 5 – entspricht einseitig α/2 nach ASTM E178; linear interpoliert;
+ *    vereinfacht auf alle Werte angewendet). T2-ST-1 (Entscheidung 28.10.2026): Entfernt werden nur Werte jenseits der
+ *    1-%-Grenze (Ausreißer); Werte zwischen 5-%- und 1-%-Grenze werden nur markiert (Straggler, „auffällig“) und bleiben in
+ *    der Auswertung (ISO 5725-2, 7.3.2/7.3.4). Auch Ausreißer sind nur nach technischer Prüfung zu streichen.
  *  - 5-%-Quantil X_k = x̄ − k_n·s mit k_n nach DIN EN 1990, Anhang D, Tab. D1 (V_X unbekannt), Zwischenwerte linear in 1/n;
  *    Bemessungswert X_d = X_k/γ_M (Beton 1,5, Betonstahl 1,15, Holz 1,3)
  *  - t-Test (Z24, unten): t-Verteilung numerisch, Ein- und Zweistichproben-t-Test (Student, Welch), p-Wert, t_krit, Konfidenzintervall
@@ -74,13 +76,20 @@ export function stichprobe(werte: readonly number[]): Stichprobe {
  */
 export const GRUBBS_TAB: readonly (readonly [number, number])[] = [[3, 1.155], [4, 1.481], [5, 1.715], [6, 1.887], [7, 2.020], [8, 2.126], [9, 2.215], [10, 2.290], [12, 2.412], [15, 2.549], [20, 2.709], [25, 2.822], [30, 2.908], [40, 3.036], [50, 3.128]];
 
-/** G_krit für n Werte; n < 3 → Wert für 3, n > 50 → Wert für 50, dazwischen linear in n. */
-export function grubbsKritisch(n: number): number {
-  let gCrit = GRUBBS_TAB[GRUBBS_TAB.length - 1][1];
-  if (n <= GRUBBS_TAB[0][0]) gCrit = GRUBBS_TAB[0][1];
-  for (let i = 0; i < GRUBBS_TAB.length - 1; i++) {
-    const [n0, g0] = GRUBBS_TAB[i];
-    const [n1, g1] = GRUBBS_TAB[i + 1];
+/**
+ * Kritische Werte für α = 1 % (Ausreißergrenze nach ISO 5725-2, Tab. 5), gleiche Stützstellen, aus der exakten Formel
+ * (siehe GRUBBS_TAB) auf 3 Stellen; z. B. n = 8: 2,274, n = 10: 2,482 (ISO 5725-2, Tab. 5). Geprüft in tests/statistik.test.ts.
+ */
+export const GRUBBS_TAB_1: readonly (readonly [number, number])[] = [[3, 1.155], [4, 1.496], [5, 1.764], [6, 1.973], [7, 2.139], [8, 2.274], [9, 2.387], [10, 2.482], [12, 2.636], [15, 2.806], [20, 3.001], [25, 3.135], [30, 3.236], [40, 3.381], [50, 3.482]];
+
+/** G_krit für n Werte und α = 5 % (Standard) oder 1 %; n < 3 → Wert für 3, n > 50 → Wert für 50, dazwischen linear in n. */
+export function grubbsKritisch(n: number, alpha: 0.05 | 0.01 = 0.05): number {
+  const tab = alpha === 0.01 ? GRUBBS_TAB_1 : GRUBBS_TAB;
+  let gCrit = tab[tab.length - 1][1];
+  if (n <= tab[0][0]) gCrit = tab[0][1];
+  for (let i = 0; i < tab.length - 1; i++) {
+    const [n0, g0] = tab[i];
+    const [n1, g1] = tab[i + 1];
     if (n >= n0 && n <= n1) { gCrit = g0 + (g1 - g0) * (n - n0) / (n1 - n0); break; }
   }
   return gCrit;
@@ -108,7 +117,8 @@ export function fraktilfaktorKn(n: number): number {
 /** Teilsicherheitsbeiwerte γ_M des Moduls */
 export const GAMMA_M: Readonly<Record<StatistikMaterial, number>> = { beton: 1.5, stahl: 1.15, holz: 1.3 };
 
-export interface AusreisserGrenzen { unten: number; oben: number; gKrit?: number }
+/** Grenzen des Kriteriums; Grubbs: unten/oben = 1-%-Grenze (Entfernung), unten5/oben5 = 5-%-Grenze (nur Markierung) */
+export interface AusreisserGrenzen { unten: number; oben: number; gKrit?: number; unten5?: number; oben5?: number; gKrit5?: number }
 
 /** Grenzen des gewählten Ausreißerkriteriums aus der vollständigen Stichprobe */
 export function ausreisserGrenzen(p: Stichprobe, methode: AusreisserMethode): AusreisserGrenzen {
@@ -120,8 +130,9 @@ export function ausreisserGrenzen(p: Stichprobe, methode: AusreisserMethode): Au
     const iqr = q3 - q1;
     return { unten: q1 - 1.5 * iqr, oben: q3 + 1.5 * iqr };
   }
-  const gKrit = grubbsKritisch(n);
-  return { unten: mittelwert - gKrit * stdAbw, oben: mittelwert + gKrit * stdAbw, gKrit };
+  const gKrit = grubbsKritisch(n, 0.01);
+  const gKrit5 = grubbsKritisch(n, 0.05);
+  return { unten: mittelwert - gKrit * stdAbw, oben: mittelwert + gKrit * stdAbw, gKrit, unten5: mittelwert - gKrit5 * stdAbw, oben5: mittelwert + gKrit5 * stdAbw, gKrit5 };
 }
 
 export interface StatistikEingabe {
@@ -137,9 +148,16 @@ export interface StatistikErgebnis {
   /** Ausreißergrenzen (0/0 ohne Prüfung, wie im Modul) */
   untereGrenze: number;
   obereGrenze: number;
+  /** Grubbs: G_krit der Entfernungsgrenze (α = 1 %) */
   gKrit?: number;
+  /** Grubbs: G_krit und Grenzen für α = 5 % (Markierung „auffällig“) */
+  gKrit5?: number;
+  untereGrenze5?: number;
+  obereGrenze5?: number;
   bereinigt: number[];
   ausreisser: number[];
+  /** Grubbs: zwischen 5-%- und 1-%-Grenze – markiert, bleibt in der Auswertung */
+  auffaellig: number[];
   sauber: Stichprobe;
   /** Fraktilfaktor k_n (NaN bei weniger als 3 bereinigten Werten) */
   kn: number;
@@ -156,15 +174,23 @@ export function statistikAuswertung(e: StatistikEingabe): StatistikErgebnis {
   if (e.werte.length === 0) hinweise.push({ stufe: 'fehler', feld: 'werte', text: 'Keine Messwerte vorhanden.' });
   if (!e.werte.every(Number.isFinite)) hinweise.push({ stufe: 'fehler', feld: 'werte', text: 'Alle Messwerte müssen endliche Zahlen sein.' });
   const roh = stichprobe(e.werte);
-  let untereGrenze = 0, obereGrenze = 0, gKrit: number | undefined;
+  let untereGrenze = 0, obereGrenze = 0, gKrit: number | undefined, gKrit5: number | undefined;
+  let untereGrenze5: number | undefined, obereGrenze5: number | undefined;
   let istAusreisser = (_v: number) => false;
+  let istAuffaellig = (_v: number) => false;
   if (e.ausreisserPruefen && roh.n > 0) {
     const g = ausreisserGrenzen(roh, e.methode);
-    untereGrenze = g.unten; obereGrenze = g.oben; gKrit = g.gKrit;
+    untereGrenze = g.unten; obereGrenze = g.oben; gKrit = g.gKrit; gKrit5 = g.gKrit5;
+    untereGrenze5 = g.unten5; obereGrenze5 = g.oben5;
     istAusreisser = v => v < g.unten || v > g.oben;
+    if (g.unten5 !== undefined && g.oben5 !== undefined) {
+      const u5 = g.unten5, o5 = g.oben5;
+      istAuffaellig = v => !istAusreisser(v) && (v < u5 || v > o5);
+    }
   }
   const bereinigt = e.werte.filter(v => !istAusreisser(v));
   const ausreisser = e.werte.filter(v => istAusreisser(v));
+  const auffaellig = e.werte.filter(v => istAuffaellig(v));
   const sauberRoh = stichprobe(bereinigt);
   // Modul: Mittelwert 0 bei leerer bereinigter Liste
   const sauber: Stichprobe = sauberRoh.n === 0 ? { ...sauberRoh, mittelwert: 0, stdAbw: 0, vk: 0 } : sauberRoh;
@@ -177,9 +203,11 @@ export function statistikAuswertung(e: StatistikEingabe): StatistikErgebnis {
   if (sauber.n > 0 && sauber.n < 3) hinweise.push({ stufe: 'warnung', feld: 'kn', text: 'Weniger als 3 bereinigte Werte: kein 5-%-Quantil.' });
   if (e.ausreisserPruefen && e.methode === 'grubbs' && roh.n > 50) hinweise.push({ stufe: 'warnung', feld: 'methode', text: 'n > 50: G_krit wird mit dem Tabellenwert für n = 50 angesetzt.' });
   if (e.ausreisserPruefen && e.methode === 'grubbs') hinweise.push({ stufe: 'warnung', feld: 'methode', text: 'Vereinfachter Grubbs-Test: Alle Werte werden gegen G_krit geprüft; der strenge Test prüft iterativ nur den Extremwert.' });
+  if (auffaellig.length > 0) hinweise.push({ stufe: 'warnung', feld: 'werte', text: `${auffaellig.length === 1 ? '1 Wert liegt' : `${auffaellig.length} Werte liegen`} zwischen der 5-%- und der 1-%-Grenze (auffällig, ISO 5725-2): markiert, bleibt in der Auswertung.` });
+  if (e.ausreisserPruefen && e.methode === 'grubbs' && ausreisser.length > 0) hinweise.push({ stufe: 'warnung', feld: 'werte', text: 'Werte jenseits der 1-%-Grenze sind statistische Ausreißer und hier entfernt; streichen nur nach technischer Prüfung (z. B. Prüffehler) und im Bericht dokumentieren.' });
   if (e.ausreisserPruefen && ausreisser.length > 0 && ausreisser.length >= e.werte.length / 2) hinweise.push({ stufe: 'warnung', feld: 'werte', text: 'Mindestens die Hälfte der Werte gilt als Ausreißer – Stichprobe prüfen.' });
 
-  return { roh, untereGrenze, obereGrenze, gKrit, bereinigt, ausreisser, sauber, kn, xk, xd, gammaM, gueltig: !hatFehler(hinweise), hinweise };
+  return { roh, untereGrenze, obereGrenze, gKrit, gKrit5, untereGrenze5, obereGrenze5, bereinigt, ausreisser, auffaellig, sauber, kn, xk, xd, gammaM, gueltig: !hatFehler(hinweise), hinweise };
 }
 
 /* ────────────────────────────────────────────────────────────────────────────────────────────────

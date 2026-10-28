@@ -4,7 +4,8 @@
  *    15 … < 40 % gemischtkörnig mit hohem Feinanteil (*), ≥ 40 % feinkörnig; Kies (G), wenn der Massenanteil ≤ 2 mm höchstens
  *    60 % beträgt (Kornanteil > 2 mm ≥ 40 % der Gesamtmasse), sonst Sand (S) – Runde 5, Quelle: FORUM VERLAG, „Bodengruppen
  *    nach DIN 18196“ (öffentliche Wiedergabe); Korngrenzen Ton/Schluff/Sand/Kies 0,002/0,063/2/63 mm nach DIN EN ISO 14688-1;
- *    Frostempfindlichkeit F1/F2/F3 (ZTV E-StB)
+ *    Frostempfindlichkeit F1/F2/F3 (ZTV E-StB 17, Tab. 1: F1 GW/GI/GE/SW/SI/SE; F2 TA, OT, OH, OK, ST, GT, SU, GU;
+ *    F3 TL, TM, UL, UM, UA, OU, ST*, GT*, SU*, GU*)
  *  - Mindestdicke des frostsicheren Oberbaus vereinfacht nach RStO 12, Tab. 6/7: Ausgangswert je F-Klasse und
  *    Belastungsklasse (F3: 65/60/50 cm, F2: 55/50/40 cm), Mehrdicke Frosteinwirkungszone I/II/III: 0/+5/+15 cm,
  *    ungünstige Wasserverhältnisse +5 cm; gebundene Schichten pauschal 30 cm (Bk100, Bk32) bzw. 15 cm; FSS ≥ 15 cm
@@ -58,7 +59,8 @@ export function bodengruppe(e: BodenEingabe): BodenErgebnis {
     if (istKies) return fertig({ gruppe: 'GU* / GT*', name: 'Kies-Schluff- / Kies-Ton-Gemisch (hoher Feinanteil)', frost: 'F3', tauglich: 'Eingeschränkt tragfähig, witterungs- und sehr frostempfindlich.' });
     return fertig({ gruppe: 'SU* / ST*', name: 'Sand-Schluff- / Sand-Ton-Gemisch (hoher Feinanteil)', frost: 'F3', tauglich: 'Eingeschränkt tragfähig, witterungs- und sehr frostempfindlich.' });
   }
-  if (e.plastizitaet === 'ausgeprägt') return fertig({ gruppe: 'TA', name: 'Ausgeprägt plastischer Ton', frost: 'F3', tauglich: 'Stark setzungsempfindlich, sehr frostempfindlich.' });
+  // geändert (Modulprüfung Tranche 5): TA gehört nach ZTV E-StB 17, Tab. 1 zur Klasse F2 (gering bis mittel frostempfindlich), nicht zu F3
+  if (e.plastizitaet === 'ausgeprägt') return fertig({ gruppe: 'TA', name: 'Ausgeprägt plastischer Ton', frost: 'F2', tauglich: 'Stark setzungsempfindlich und witterungsempfindlich; wegen der sehr geringen Durchlässigkeit nur gering bis mittel frostempfindlich (F2).' });
   return fertig({ gruppe: 'UL / UM', name: 'Feinkörniger Schluff', frost: 'F3', tauglich: 'Extrem witterungsempfindlich (fließt bei Wasserzutritt), frostempfindlich.' });
 }
 
