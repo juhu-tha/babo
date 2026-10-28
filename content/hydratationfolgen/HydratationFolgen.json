@@ -48,7 +48,7 @@
       {
         "titel": "1. Gegeben (Lehrwerte)",
         "formel": "z = 320\\,\\text{kg/m}^3,\\; Q = 350\\,\\text{kJ/kg},\\; c \\cdot \\rho = 2400\\,\\text{kJ/(m}^3\\text{K)}",
-        "erklaerung": "Q = 350 J/g entspricht 350 kJ/kg Zement; c·ρ = 1,0 kJ/(kg·K) · 2 400 kg/m³ wie im Rechner."
+        "erklaerung": "Q = 350 J/g entspricht 350 kJ/kg Zement; c·ρ = 1,0 kJ/(kg·K) · 2400 kg/m³ wie im Rechner."
       },
       {
         "titel": "2. Wärmemenge",
