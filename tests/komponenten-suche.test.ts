@@ -22,11 +22,11 @@ t.test('Menüsuche: ohne Suchbegriff alle Meta-Cluster, eingeklappt', () => {
   const s = text(html);
   const fehlend = META_CLUSTERS.filter(c => !s.includes(c.name));
   sicher(fehlend.length === 0, `Cluster fehlen: ${fehlend.map(c => c.number).join(', ')}`);
-  sicher(!s.includes(label('spannbeton')), 'Modul sichtbar, obwohl Cluster eingeklappt');
+  sicher(!s.includes(label('spannbeton_grundlagen')), 'Modul sichtbar, obwohl Cluster eingeklappt');
 });
-t.test('Menüsuche: Bezeichnung „spannbeton“ findet Modul Spannbeton und klappt Cluster auf', () => {
+t.test('Menüsuche: Bezeichnung „spannbeton“ findet beide Spannbeton-Teilmodule und klappt Cluster auf', () => {
   const s = text(nav('spannbeton'));
-  sicher(s.includes(label('spannbeton')), 'Spannbeton nicht gefunden');
+  sicher(s.includes(label('spannbeton_grundlagen')) && s.includes(label('spannbeton_kennwerte')), 'Spannbeton-Teilmodule nicht gefunden');
   const fremd = META_CLUSTERS.filter(c => c.id !== 'beton' && s.includes(c.name));
   sicher(fremd.length === 0, `nicht passende Cluster sichtbar: ${fremd.map(c => c.number).join(', ')}`);
 });
@@ -37,7 +37,7 @@ t.test('Menüsuche: Treffer über Suchbegriff (Keyword) statt Bezeichnung', () =
   sicher(text(nav(kw)).includes(label(id)), `Keyword „${kw}“ findet ${id} nicht`);
 });
 t.test('Menüsuche: Groß-/Kleinschreibung egal', () => {
-  sicher(text(nav('SPANNBETON')).includes(label('spannbeton')), 'Großschreibung findet nichts');
+  sicher(text(nav('SPANNBETON')).includes(label('spannbeton_grundlagen')), 'Großschreibung findet nichts');
 });
 t.test('Menüsuche: unbekannter Begriff → kein Cluster, nur Volltextbereich', () => {
   const s = text(nav('xqzxqz'));
@@ -58,9 +58,9 @@ t.test('Volltextsuche (echter Index): „Rückprallhammer“ findet Modul Messen
   sicher(tr.some(x => x.id === 'messen_pruefen'), `messen_pruefen nicht unter ${tr.map(x => x.id).join(', ')}`);
   sicher(tr.every(x => MODUL_BY_ID.has(x.id)), 'Treffer ohne Route');
 });
-t.test('Volltextsuche (echter Index): „Spannbeton“ → Modul Spannbeton zuerst', () => {
+t.test('Volltextsuche (echter Index): „Spannbeton“ → ein Spannbeton-Teilmodul zuerst', () => {
   const tr = suche(index, 'Spannbeton', titel);
-  sicher(tr[0]?.id === 'spannbeton', `erster Treffer ${tr[0]?.id}`);
+  sicher(['spannbeton_grundlagen', 'spannbeton_kennwerte'].includes(tr[0]?.id), `erster Treffer ${tr[0]?.id}`);
 });
 t.test('Volltextsuche (echter Index): jeder Eintrag hat eine gültige Route', () => {
   const ohne = index.filter((e: { id: string }) => !MODUL_BY_ID.has(e.id)).map((e: { id: string }) => e.id);
