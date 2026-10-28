@@ -18,7 +18,7 @@
     "schichtenverlaufVonAußenNach": "Schichtenverlauf (von Außen nach Innen):",
     "werkstoffprüfungHolzphysik": "Werkstoffprüfung & Holzphysik",
     "holzfeuchteSchwindQuellverhaltenRechner": " Holzfeuchte & Schwind-/Quellverhalten Rechner",
-    "holzIstEinHygroskopischer": "Holz ist ein hygroskopischer Baustoff. Unterhalb des Fasersättigungspunkts ($u_{fs} \\approx 30\\%$) führt Feuchtigkeitsaufnahme zum Quellen und Abgabe zum Schwinden. Durch die Anisotropie des Holzes unterscheidet sich das Dehnungsmaß in radialer, tangentialer und longitudinaler Richtung erheblich. Die hinterlegten differentiellen Schwind- und Quellmaße (% je % Holzfeuchteänderung) sind Richtwerte; die Literatur streut je nach Herkunft und Rohdichte. Als Rechenwert für Nadelholz quer zur Faser wird häufig 0,24 %/% angesetzt (DIN 1052; Fundstelle im NA zu EC5 manuell prüfen).",
+    "holzIstEinHygroskopischer": "Holz ist ein hygroskopischer Baustoff. Unterhalb des Fasersättigungspunkts ($u_{fs} \\approx 30\\%$) führt Feuchtigkeitsaufnahme zum Quellen und Abgabe zum Schwinden. Durch die Anisotropie des Holzes unterscheidet sich das Dehnungsmaß in radialer, tangentialer und longitudinaler Richtung erheblich. Die hinterlegten differentiellen Schwind- und Quellmaße (% je % Holzfeuchteänderung) sind Richtwerte (differentielle Quellmaße nach dem Skript „Holz – Eigenschaften, Merkmale“ der TU München); die Literatur streut je nach Herkunft und Rohdichte. Als Rechenwert für Nadelholz quer zur Faser wird häufig 0,24 %/% angesetzt (DIN 1052; Fundstelle im NA zu EC5 manuell prüfen).",
     "hölzerHolzart": "Hölzer / Holzart",
     "anfangsfeuchteU": "Anfangsfeuchte u₁ (%)",
     "zielEndfeuchteU": "Ziel-Endfeuchte u₂ (%)",

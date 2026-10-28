@@ -17,7 +17,7 @@
     "HolzbauBeta.shrinkageCoeffs": {
       "fichte": {
         "radial": 0.19,
-        "tangential": 0.33,
+        "tangential": 0.36,
         "longitudinal": 0.01,
         "label": "Fichte / Tanne (Nadelholz)"
       },
@@ -28,8 +28,8 @@
         "label": "Kiefer (Nadelholz)"
       },
       "laerche": {
-        "radial": 0.18,
-        "tangential": 0.38,
+        "radial": 0.14,
+        "tangential": 0.29,
         "longitudinal": 0.01,
         "label": "Lärche (Nadelholz)"
       },
@@ -40,8 +40,8 @@
         "label": "Buche (Laubholz)"
       },
       "eiche": {
-        "radial": 0.15,
-        "tangential": 0.28,
+        "radial": 0.18,
+        "tangential": 0.34,
         "longitudinal": 0.01,
         "label": "Eiche (Laubholz)"
       }
