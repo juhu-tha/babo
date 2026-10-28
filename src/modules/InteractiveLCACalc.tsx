@@ -226,21 +226,21 @@ export default function InteractiveLCACalc() {
   const benchmarkStatus = useMemo(() => {
     const wert = `${formatDeZahl(ergebnis.spez.qng, 2)} kg CO₂-eq/(m²·a)`;
     if (!ergebnis.gueltig) {
-      return { label: inhalt.werte.ohneVergleich, color: 'text-slate-700 border-slate-300 bg-slate-50/70', badge: 'bg-slate-500 text-white', desc: '' };
+      return { label: inhalt.werte.ohneVergleich, color: 'text-slate-700 border-slate-300 bg-slate-50/70', badge: 'bg-off-white text-text-main border border-home-grau/40', desc: '' };
     }
     if (ergebnis.aussage === 'premium') {
-      return { label: inhalt.werte.unterQngPremiumAnforderungswert, color: 'text-emerald-700 border-emerald-300 bg-emerald-50/70', badge: 'bg-emerald-600 text-white', desc: `${inhalt.werte.descPremium}${wert} ≤ ${formatDeZahl(qngThresholds.premium, 0)}.` };
+      return { label: inhalt.werte.unterQngPremiumAnforderungswert, color: 'text-emerald-700 border-emerald-300 bg-emerald-50/70', badge: 'bg-shiraz/10 text-shiraz border border-shiraz/30', desc: `${inhalt.werte.descPremium}${wert} ≤ ${formatDeZahl(qngThresholds.premium, 0)}.` };
     }
     if (ergebnis.aussage === 'plus') {
-      return { label: inhalt.werte.unterQngPlusAnforderungswert, color: 'text-teal-700 border-teal-300 bg-teal-50/70', badge: 'bg-teal-600 text-white', desc: `${inhalt.werte.descPlus}${wert} ≤ ${formatDeZahl(qngThresholds.plus, 0)}.` };
+      return { label: inhalt.werte.unterQngPlusAnforderungswert, color: 'text-teal-700 border-teal-300 bg-teal-50/70', badge: 'bg-shiraz/10 text-shiraz border border-shiraz/30', desc: `${inhalt.werte.descPlus}${wert} ≤ ${formatDeZahl(qngThresholds.plus, 0)}.` };
     }
     if (ergebnis.aussage === 'ueberschritten') {
-      return { label: inhalt.werte.standardNeubau, color: 'text-amber-700 border-amber-300 bg-amber-50/70', badge: 'bg-amber-600 text-white', desc: `${inhalt.werte.descUeber}${wert} > ${formatDeZahl(qngThresholds.plus, 0)}.` };
+      return { label: inhalt.werte.standardNeubau, color: 'text-amber-700 border-amber-300 bg-amber-50/70', badge: 'bg-off-white text-text-main border border-home-grau/40', desc: `${inhalt.werte.descUeber}${wert} > ${formatDeZahl(qngThresholds.plus, 0)}.` };
     }
     if (buildingType === 'nichtwohnbau' && ergebnis.enthaeltB4 && ergebnis.enthaeltB6) {
-      return { label: inhalt.werte.nwgNeutral, color: 'text-slate-700 border-slate-300 bg-slate-50/70', badge: 'bg-slate-600 text-white', desc: `${inhalt.werte.descNwg}${wert} (Lehrwert PLUS ${formatDeZahl(qngThresholds.plus, 0)}).` };
+      return { label: inhalt.werte.nwgNeutral, color: 'text-slate-700 border-slate-300 bg-slate-50/70', badge: 'bg-off-white text-text-main border border-home-grau/40', desc: `${inhalt.werte.descNwg}${wert} (Lehrwert PLUS ${formatDeZahl(qngThresholds.plus, 0)}).` };
     }
-    return { label: inhalt.werte.teilbilanzNeutral, color: 'text-slate-700 border-slate-300 bg-slate-50/70', badge: 'bg-slate-600 text-white', desc: `${inhalt.werte.descTeil}${wert}.` };
+    return { label: inhalt.werte.teilbilanzNeutral, color: 'text-slate-700 border-slate-300 bg-slate-50/70', badge: 'bg-off-white text-text-main border border-home-grau/40', desc: `${inhalt.werte.descTeil}${wert}.` };
   }, [ergebnis, qngThresholds, buildingType]);
 
   // Vergleichsvarianten mit denselben Einstellungen für B4, B6, TGA und Fläche (Standardwerte für Kreislauf und Nutzungsdauer)
