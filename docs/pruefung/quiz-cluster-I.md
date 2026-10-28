@@ -2,9 +2,9 @@
 
 Stand: 28.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 76 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 77 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 1 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 70 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 1 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -182,6 +182,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 8
 - **Richtige Antwort:** Fragwürdig (Warnsignal)
 - **Auffälligkeit:** Prüfhinweis: Ausgabe „DIN ISO 13528:2025-07“ prüfen. · Normenabgleich: DIN ISO 13528:2025-07: DIN Media nennt DIN ISO 13528:2025-07 → Ausgabe bestätigt · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### q_prob_4 · Probenahme & Erkundung
+
+- **Frage:** Welcher Kennwert wird nach DIN EN 12504-2 aus den mindestens 9 Einzelschlägen einer Prüffläche gebildet?
+- **Richtige Antwort:** Der Median aller Einzelwerte
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: Verwerfungskriterium auf „mehr als 20 % der Einzelwerte um mehr als 6 Einheiten vom Median“ umgestellt (Entscheidung 28.10., Normtext DIN EN 12504-2 vorläufig) – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### q_recht_3 · Baurecht & Normenwesen
