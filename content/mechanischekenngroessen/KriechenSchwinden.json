@@ -56,7 +56,7 @@
     "mechanismusKriechverformungenFindenFast": "**Mechanismus:** Kriechverformungen finden fast ausschließlich in den kalk- und zementgebundenen Lagerfugen (Mörtelbett) statt; Steine selbst kriechen werkstoffabhängig.",
     "mauerziegelMziPhiInfty": "• **Mauerziegel (MZI):** $\\Phi_{\\infty} \\approx 0{,}5 \\text{ bis } 1{,}5$ (geringes Kriechen).",
     "kalksandsteinKsPhiInfty": "• **Kalksandstein (KS):** $\\Phi_{\\infty} \\approx 1{,}0 \\text{ bis } 2{,}0$.",
-    "porenbetonPbLeichtbetonPhi": "• **Porenbeton (PB):** $\\Phi_{\\infty} \\approx 0{,}5$ (Wertebereich 0,2 bis 0,7; geringes Kriechen). **Leichtbeton:** $\\Phi_{\\infty} \\approx 1{,}5 \\text{ bis } 2{,}5$.",
+    "porenbetonPbLeichtbetonPhi": "• **Porenbeton (PB):** $\\Phi_{\\infty} \\approx 0{,}5$ (Wertebereich 0,2 bis 0,7; geringes Kriechen). **Leichtbeton:** $\\Phi_{\\infty} \\approx 1{,}5 \\text{ bis } 2{,}5$ (vorläufig, F-Freigabe: Endkriechzahlen nach DIN EN 1996-1-1/NA).",
     "baustahlMetalle": "Baustahl & Metalle",
     "ec3DinEn1993": "EC3 / DIN EN 1993",
     "raumtemperaturVarphiApprox0": "Raumtemperatur: $\\varphi \\approx 0$ | Brand: Hochtemperaturkriechen",
