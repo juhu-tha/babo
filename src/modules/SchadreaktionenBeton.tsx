@@ -464,6 +464,7 @@ function AkrGefuegeSimulator() {
 
 const REITER = [
   { id: 'akr', label: inhalt.texte.alkalitreibenAkr, icon: Sparkles },
+  { id: 'akr_simulation', label: 'AKR-Gefügesimulation', icon: Microscope },
   { id: 'frost', label: 'Frost-Tau-Widerstand', icon: Snowflake },
   { id: 'sulfat', label: 'Sulfattreiben', icon: AlertTriangle },
 ] as const;
@@ -755,6 +756,8 @@ export default function SchadreaktionenBeton() {
           </div>
         </div>
       )}
+
+      {activeTab === 'akr_simulation' && <AkrGefuegeSimulator />}
 
       {activeTab === 'frost' && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

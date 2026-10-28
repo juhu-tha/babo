@@ -26,6 +26,7 @@ import inhalt from '@/content/rueckbau/Rueckbau.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { MASSENKENNWERTE_BRI, rueckbauMassen } from '@/src/calc/rueckbauMassen';
 
 export default function Rueckbau() {
   const [activeTab, setActiveTab] = useState<'lfu_leitfaden' | 'schadstoffe' | 'baustoffrecycling' | 'rechner' | 'aktualitaet' | 'praxis'>('lfu_leitfaden');
@@ -154,27 +155,12 @@ export default function Rueckbau() {
     }
   };
 
-  // Selective Dismantling Mass Estimator Logic
-  // Density constants in t/m³ (approximate bulk/solid values used in deconstruction engineering)
-  const densities = {
-    concrete: { concrete: 1.5, masonry: 0.1, wood: 0.05, metals: 0.06, plastics: 0.02, gypsum: 0.04, hazardous: 0.015, mixed: 0.08 },
-    masonry: { concrete: 0.4, masonry: 1.2, wood: 0.08, metals: 0.04, plastics: 0.02, gypsum: 0.06, hazardous: 0.01, mixed: 0.09 },
-    timber: { concrete: 0.2, masonry: 0.1, wood: 0.5, metals: 0.03, plastics: 0.03, gypsum: 0.12, hazardous: 0.025, mixed: 0.12 },
-    composite: { concrete: 0.9, masonry: 0.6, wood: 0.08, metals: 0.08, plastics: 0.04, gypsum: 0.08, hazardous: 0.02, mixed: 0.14 }
-  };
-
-  const currentDensity = densities[structureType];
-  const massConcrete = Math.round(buildingVolume * currentDensity.concrete);
-  const massMasonry = Math.round(buildingVolume * currentDensity.masonry);
-  const massWood = Math.round(buildingVolume * currentDensity.wood);
-  const massMetals = Math.round(buildingVolume * currentDensity.metals);
-  const massPlastics = Math.round(buildingVolume * currentDensity.plastics);
-  const massGypsum = Math.round(buildingVolume * currentDensity.gypsum);
-  const massHazardous = Math.round(buildingVolume * currentDensity.hazardous);
-  const massMixed = Math.round(buildingVolume * currentDensity.mixed);
-
-  const totalMass = massConcrete + massMasonry + massWood + massMetals + massPlastics + massGypsum + massHazardous + massMixed;
-  const mineralPercentage = Math.round(((massConcrete + massMasonry) / (totalMass || 1)) * 100);
+  // Rückbaurechner: Massen aus BRI · Massenkennwert je Fraktion (Kern src/calc/rueckbauMassen.ts, Lehrwerte, T12-RB-4)
+  const currentDensity = MASSENKENNWERTE_BRI[structureType];
+  const rb = rueckbauMassen(buildingVolume, structureType);
+  const { concrete: massConcrete, masonry: massMasonry, wood: massWood, metals: massMetals, plastics: massPlastics, gypsum: massGypsum, hazardous: massHazardous, mixed: massMixed } = rb.massen;
+  const totalMass = rb.gesamt;
+  const mineralPercentage = rb.mineralischProzent;
 
   return (
     <div className="space-y-8" id="rueckbau-modul">

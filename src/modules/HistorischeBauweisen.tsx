@@ -8,6 +8,7 @@ import {
 import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/historischebauweisen/HistorischeBauweisen.json';
+import { SCHWINDBEIWERTE } from '@/src/calc/holzphysik';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
@@ -79,13 +80,9 @@ export default function HistorischeBauweisen() {
     const u2 = Math.max(0, moistureFinal);
     const d0 = Math.max(1, dimensionInitial);
 
-    // Shrinkage coefficients alpha per 1% moisture change (below fiber saturation point of ~30%)
-    // Coefficients approximate values for common European woods
-    const coefficients = {
-      fichte: { radial: 0.15, tangential: 0.27, longitudinal: 0.01 },
-      eiche: { radial: 0.18, tangential: 0.34, longitudinal: 0.01 },
-      kiefer: { radial: 0.16, tangential: 0.31, longitudinal: 0.01 }
-    };
+    // Differentielle Schwindmaße α je % Holzfeuchte (unterhalb der Fasersättigung, ~30 %);
+    // gemeinsame Werte mit dem Holzbau-Modul (src/calc/holzphysik.ts, T10-HW-1 / T12-HB-1)
+    const coefficients = SCHWINDBEIWERTE;
 
     const alpha = coefficients[woodType][grainDirection];
 

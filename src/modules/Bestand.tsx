@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { GMODG_ANLAGE7, FX, uRetrofit, dRequired } from '@/src/utils/bestandKern';
+import { GMODG_ANLAGE7, FX, uRetrofit, dRequired, CO2_ERDGAS } from '@/src/utils/bestandKern';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
@@ -65,7 +65,7 @@ interface Baualtersklasse {
 const BAUALTERSKLASSEN: Baualtersklasse[] = inhalt.daten.BAUALTERSKLASSEN;
 
 const HEATING_SOURCES = [
-  { id: 'gas', label: 'Erdgas-Heizung', co2Factor: 0.22, costPerKwh: 0.11 },
+  { id: 'gas', label: 'Erdgas-Heizung', co2Factor: CO2_ERDGAS, costPerKwh: 0.11 },
   { id: 'oil', label: 'Heizöl', co2Factor: 0.28, costPerKwh: 0.12 },
   { id: 'district', label: inhalt.werte.fernwärmeMix, co2Factor: 0.16, costPerKwh: 0.14 },
   { id: 'electricity', label: 'Direkt-Elektroheizung', co2Factor: 0.38, costPerKwh: 0.35 },

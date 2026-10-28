@@ -26,6 +26,7 @@ import inhalt from '@/content/ressourceneffizienz/Ressourceneffizienz.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { reiterZiel } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { RC_HOECHSTANTEIL, rcBilanz, ANTEIL_GROB, GESTEINSKOERNUNG_T_JE_M3, type RcTyp, type RcExpositionsgruppe } from '@/src/calc/rcGesteinskoernung';
 
 // Define the tabs representing the 4 concepts of REZ Bayern
 type RezTab = 'informieren' | 'handeln' | 'nutzen' | 'staerken';
@@ -68,6 +69,8 @@ export default function Ressourceneffizienz() {
   // Input states for Tab 2: Handeln (Material-Effizienz-Simulator)
   const [selectedBauteil, setSelectedBauteil] = useState<'slab' | 'column' | 'foundation'>('slab');
   const [concreteType, setConcreteType] = useState<'standard' | 'cem3' | 'rc_beton'>('standard');
+  const [rcTyp, setRcTyp] = useState<RcTyp>('typ1');
+  const [rcGruppe, setRcGruppe] = useState<RcExpositionsgruppe>('x0_xc_xf1_xf3');
   const [reinforcementRatio, setReinforcementRatio] = useState<number>(100); // 100% of standard reinforcement steel
   const [localAggregates, setLocalAggregates] = useState<boolean>(false); // Transportation distance
   const [optimizedGeometry, setOptimizedGeometry] = useState<boolean>(false); // 15% material reduction from structural optimization
@@ -127,8 +130,10 @@ export default function Ressourceneffizienz() {
     const finalVolume = volume * geomFactor;
 
     // Weight Calculations (approx. 2.4 t/m³ concrete)
-    const primaryGravelNeed = concreteType === 'rc_beton' ? finalVolume * 1.8 * 0.5 : finalVolume * 1.8; // 50% substituted in typical RC-beton
-    const secondaryGravelNeed = concreteType === 'rc_beton' ? finalVolume * 1.8 * 0.5 : 0;
+    // RC-Anteil: Höchstanteil der groben Gesteinskörnung nach DIN 1045-2:2023-08 Anhang E (Kern src/calc/rcGesteinskoernung.ts, T12-RE-1)
+    const rc = rcBilanz(finalVolume, rcTyp, rcGruppe, concreteType === 'rc_beton');
+    const primaryGravelNeed = rc.primaer;
+    const secondaryGravelNeed = rc.sekundaer;
     
     // Carbon footprint (kg CO2-eq per m³ concrete + steel contribution)
     // CEM I (Standard): ~310 kg; CEM III (low carbon): ~170 kg; RC-Beton (with CEM III): ~155 kg CO2/m³
@@ -158,7 +163,7 @@ export default function Ressourceneffizienz() {
     const baselineTotalCo2 = baselineConcreteCo2 + baselineSteelCo2 + baselineLogisticsCo2;
 
     const co2SavingsPercent = Math.max(0, ((baselineTotalCo2 - totalCo2) / baselineTotalCo2) * 100);
-    const primaryMineralSavings = Math.max(0, (baselineVolume * 1.8) - primaryGravelNeed);
+    const primaryMineralSavings = Math.max(0, (baselineVolume * GESTEINSKOERNUNG_T_JE_M3) - primaryGravelNeed);
 
     return {
       finalVolume: formatDeZahl(finalVolume, 0),
@@ -810,6 +815,36 @@ export default function Ressourceneffizienz() {
                         }`}
                       ><MdText text={inhalt.texte.rcBetonRezyklGesteinskörnung} /></button>
                     </AuswahlGruppe>
+                    {concreteType === 'rc_beton' && (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                        <label className="text-xs text-slate-700 dark:text-slate-300 block">
+                          <span className="block mb-1 font-semibold">Typ der RC-Gesteinskörnung</span>
+                          <select
+                            value={rcTyp}
+                            onChange={(e) => setRcTyp(e.target.value as RcTyp)}
+                            className="w-full px-2.5 py-1.5 border border-slate-250 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-lg text-xs text-slate-900 dark:text-slate-100 focus:ring-1 focus:ring-shiraz dark:focus:ring-rose-500"
+                          >
+                            <option value="typ1">Typ 1 (überwiegend Betonsplitt)</option>
+                            <option value="typ2">Typ 2 (Bauwerkssplitt)</option>
+                          </select>
+                        </label>
+                        <label className="text-xs text-slate-700 dark:text-slate-300 block">
+                          <span className="block mb-1 font-semibold">Expositionsklassen des Bauteils</span>
+                          <select
+                            value={rcGruppe}
+                            onChange={(e) => setRcGruppe(e.target.value as RcExpositionsgruppe)}
+                            className="w-full px-2.5 py-1.5 border border-slate-250 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-lg text-xs text-slate-900 dark:text-slate-100 focus:ring-1 focus:ring-shiraz dark:focus:ring-rose-500"
+                          >
+                            {(Object.keys(RC_HOECHSTANTEIL) as RcExpositionsgruppe[]).map((g) => (
+                              <option key={g} value={g}>{RC_HOECHSTANTEIL[g].label}</option>
+                            ))}
+                          </select>
+                        </label>
+                        <p className="sm:col-span-2 text-xs text-slate-600 dark:text-slate-400">
+                          Höchstanteil {formatDeZahl(RC_HOECHSTANTEIL[rcGruppe][rcTyp] * 100, 0)} Vol.-% der groben Gesteinskörnung nach DIN 1045-2:2023-08, Anhang E (vorläufig, F-Freigabe); bei {formatDeZahl(ANTEIL_GROB * 100, 0)} % Grobkorn (Lehrwert) sind das {formatDeZahl(RC_HOECHSTANTEIL[rcGruppe][rcTyp] * ANTEIL_GROB * 100, 1)} % der gesamten Gesteinskörnung.
+                        </p>
+                      </div>
+                    )}
                   </div>
 
                   {/* Reinforcement ratio */}
