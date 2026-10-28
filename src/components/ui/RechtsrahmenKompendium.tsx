@@ -554,7 +554,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     ],
     formula: {
       math: '\\text{CBAM-Kosten} = \\text{Importmenge} \\cdot \\text{GWP}_{\\text{spec}} \\cdot \\left( P_{\\text{ETS}} - P_{\\text{Origin}} \\right)',
-      explanation: 'Endzustand ohne kostenlose Zuteilung (ab 2034): eingebettete Emissionen mal Zertifikatspreis (Art. 21) abzüglich des im Ursprungsland gezahlten CO2-Preises (Art. 9). Bis 2034 wird die Zertifikatszahl zusätzlich um die Anpassung an die kostenlose EU-ETS-Zuteilung gekürzt (Art. 31; CBAM-Faktor 2026: 97,5 %, danach sinkend bis 0 %).',
+      explanation: 'Endzustand ohne kostenlose Zuteilung (ab 2034): eingebettete Emissionen mal Zertifikatspreis (Art. 21) abzüglich des im Ursprungsland gezahlten CO2-Preises (Art. 9). Bis 2034 wird die Zertifikatszahl zusätzlich um die Anpassung an die kostenlose EU-ETS-Zuteilung gekürzt (Art. 31; der CBAM-Faktor sinkt von 2026 bis 2034 schrittweise auf 0 %).',
       source: 'VO (EU) 2023/956 Art. 9, 21, 31'
     }
   },

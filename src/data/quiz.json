@@ -25346,7 +25346,7 @@
       "16 000 €"
     ],
     "correctIdx": 0,
-    "explanation": "CBAM-Kosten = Importmenge · GWP_spec · (P_ETS − P_Origin) = 1000 t · 0,8 t CO₂/t · (80 − 20) €/t CO₂ = 48 000 €. Der im Ursprungsland gezahlte CO₂-Preis wird nach Art. 9 angerechnet, der Zertifikatspreis folgt Art. 21. Bis 2034 wird die Zahl der Zertifikate zusätzlich um die Anpassung an die kostenlose EU-ETS-Zuteilung gekürzt (Art. 31; CBAM-Faktor 2026: 97,5 %); 2026 fiele also nur ein kleiner Bruchteil an.",
+    "explanation": "CBAM-Kosten = Importmenge · GWP_spec · (P_ETS − P_Origin) = 1000 t · 0,8 t CO₂/t · (80 − 20) €/t CO₂ = 48 000 €. Der im Ursprungsland gezahlte CO₂-Preis wird nach Art. 9 angerechnet, der Zertifikatspreis folgt Art. 21. Bis 2034 wird die Zahl der Zertifikate zusätzlich um die Anpassung an die kostenlose EU-ETS-Zuteilung gekürzt (Art. 31; CBAM-Faktor 2026: 97,5 %); 2026 fiele also nur ein kleiner Bruchteil an.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
