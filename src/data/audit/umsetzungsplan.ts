@@ -7,7 +7,7 @@
  */
 import type { AuditStatus, Phase } from './typen';
 
-export const UMSETZUNGSPLAN_STAND = '2026-10-27';
+export const UMSETZUNGSPLAN_STAND = '2026-10-28';
 /** zusammengeführte Pull Requests bis zum Stand (laut Audit-Stand) */
 export const PRS_GEMERGT = 'bis #214 (#189 und #190 über den Merge von #191)';
 
@@ -43,7 +43,7 @@ export const UMSETZUNGSPLAN: readonly Phase[] = [
     { ap: '3.2', titel: 'Schema-Erweiterung (Bloom-Stufe, Niveau)', status: 'erledigt' },
     { ap: '3.3', titel: 'Qualität der Antwortoptionen', status: 'erledigt', hinweis: 'Distraktoren angeglichen, normRef ergänzt (#194: 27,3 % statt 37 %)' },
     { ap: '3.4', titel: 'Selbsttest-Abdeckung der Fachmodule', status: 'erledigt' },
-    { ap: '3.5', titel: 'Fachliche Freigabe der Quizfragen je Cluster', status: 'wartet', hinweis: 'Prüflisten liegen vor (Z19/Z23)' },
+    { ap: '3.5', titel: 'Fachliche Freigabe der Quizfragen je Cluster', status: 'in_arbeit', hinweis: 'Sammelfreigabe 28.10.: 1234 von 1290 Fragen freigegeben (95,7 %); 56 Einzelfreigaben offen (Z19/Z23)' },
     { ap: '3.6', titel: 'Lernziele je Fachmodul', status: 'erledigt', hinweis: 'fachliche Durchsicht Z26' },
     { ap: '3.7', titel: 'Erkundungsauftrag „Ausprobieren“ für Rechner', status: 'erledigt' },
     { ap: '3.8', titel: 'Zweistufige Reiter (höchstens 7 je Leiste)', status: 'erledigt' },
@@ -81,7 +81,7 @@ export const UMSETZUNGSPLAN: readonly Phase[] = [
     { ap: '6.3', titel: 'TTZ-Weiterbildungspfad und Kursquiz', status: 'wartet', hinweis: 'TTZ-Kursliste (Z44)' },
     { ap: '6.4', titel: 'Versuchs-Handouts', status: 'wartet', hinweis: 'Laborpilot WS 26/27 (Z37/Z42)' },
     { ap: '6.5', titel: 'KI-Master: Grundlagen und Hands-on-Übungen', status: 'wartet', hinweis: 'Übungen mit neutralem „KI-Assistent der Hochschule“ (#212)' },
-    { ap: '6.6', titel: 'Admin-Ansicht „Meine Module“, Paten je Cluster', status: 'wartet', hinweis: 'Prüfvermerke (Z38)' },
+    { ap: '6.6', titel: 'Admin-Ansicht „Meine Module“, Paten je Cluster', status: 'wartet', hinweis: 'Prüfvermerke (Z38): 5 von 190 Fachmodulen fachlich geprüft (28.10.2026, Vermerk passiv ohne Namen)' },
     { ap: '6.7', titel: 'Halbjährlicher Normen- und Rechtsstand-Check', status: 'erledigt' },
     { ap: '6.8', titel: 'Offene Lizenz', status: 'wartet', hinweis: 'THA-Klärung (Z13/Z45)' },
     { ap: '6.9', titel: 'Anonymer Kurzfragebogen', status: 'wartet', hinweis: 'DSB-Freigabe (Z11/Z39)' },
