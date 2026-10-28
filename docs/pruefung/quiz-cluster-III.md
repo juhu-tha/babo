@@ -28,7 +28,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 40 korrigiert, 0 fraglich, 0
 
 - **Frage:** Der Beton ist auf der Baustelle zu steif. Was ist zulässig?
 - **Richtige Antwort:** Fließmittel unter Herstellerverantwortung, mit Lieferscheinvermerk
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: richtige Option und Erklärung an q_hee_2 und das Modul Herstellung & Einbau angeglichen (Fließmittel nur unter Verantwortung des Herstellers, Vermerk auf dem Lieferschein, DIN 1045-2, 7.5) korrigiert.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: richtige Option und Erklärung an q_hee_2 und das Modul Herstellung & Einbau angeglichen (Fließmittel nur unter Verantwortung des Herstellers, Vermerk auf dem Lieferschein, DIN 1045-2, 7.5) korrigiert. · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: an q_hee_2 angeglichen – Fließmittel nur unter Herstellerverantwortung mit Lieferscheinvermerk (DIN 1045-2, 7.5), korrigiert
 
@@ -60,7 +60,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 40 korrigiert, 0 fraglich, 0
 
 - **Frage:** Steifer Beton wird mit einem Fahrzeug ohne Rührwerk angeliefert. Bis wann soll er nach der ersten Wasserzugabe vollständig entladen sein?
 - **Richtige Antwort:** 45 Minuten
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Dopplung mit q_qsi_5 aufgelöst; Frage auf Fahrzeuge ohne Rührwerk (45 min, Modul Herstellung & Einbau, DIN 1045-2, 7.6) umgestellt, Optionen und Rückmeldungen angepasst korrigiert.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Dopplung mit q_qsi_5 aufgelöst; Frage auf Fahrzeuge ohne Rührwerk (45 min, Modul Herstellung & Einbau, DIN 1045-2, 7.6) umgestellt, Optionen und Rückmeldungen angepasst korrigiert. · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Dopplung mit q_qsi_5 aufgelöst – Frage auf Fahrzeuge ohne Rührwerk (45 min) umgestellt, korrigiert
 
@@ -76,7 +76,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 40 korrigiert, 0 fraglich, 0
 
 - **Frage:** Mit welchem Verfahren wird die Belegreife von Estrichen in Deutschland üblicherweise geprüft?
 - **Richtige Antwort:** CM-Methode (Calciumcarbid)
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: normRef DIN 18560-1 → TKB-Merkblatt 16 (12/2024) und DIN EN 13892-10 (Entwurf 2024-05), die die CM-Messung regeln, korrigiert.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: normRef DIN 18560-1 → TKB-Merkblatt 16 (12/2024) und DIN EN 13892-10 (Entwurf 2024-05), die die CM-Messung regeln, korrigiert. · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: normRef auf TKB-Merkblatt 16 (2024-12) und DIN EN 13892-10 (Entwurf) umgestellt, korrigiert
 
@@ -84,7 +84,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 40 korrigiert, 0 fraglich, 0
 
 - **Frage:** Welcher Wassereinwirkungsklasse ist die Bodenfläche einer bodengleichen Dusche im Wohnungsbau zugeordnet?
 - **Richtige Antwort:** W2-I
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Registry führt DIN 18534-1:2025-10; Klassenbezeichnung W2-I dort nicht separat geprüft. Zweitprüfung 27.10.: Fragetext auf die Bodenfläche der bodengleichen Dusche präzisiert (Wandflächen W1-I), Erklärung ergänzt korrigiert.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Registry führt DIN 18534-1:2025-10; Klassenbezeichnung W2-I dort nicht separat geprüft. Zweitprüfung 27.10.: Fragetext auf die Bodenfläche der bodengleichen Dusche präzisiert (Wandflächen W1-I), Erklärung ergänzt korrigiert. · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Fragetext auf die Bodenfläche präzisiert (Wandflächen W1-I), korrigiert
 
@@ -116,7 +116,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 40 korrigiert, 0 fraglich, 0
 
 - **Frage:** Welche Betonbauqualitätsklassen kennt DIN 1045-1000?
 - **Richtige Antwort:** BBQ-N, BBQ-E und BBQ-S
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Option 4, Rückmeldung und Erklärung: DIN 1045-3:2023-08 kennt nur noch ÜK 1 und ÜK 2 (ÜK 3 entfallen; Quelle SCHWENK, Beton-Herstellung nach den aktuellen Normen, 2026) korrigiert. · Normenabgleich: DIN 1045-3:2023: DIN Media nennt DIN 1045-3:2023-08 → Ausgabe bestätigt
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Option 4, Rückmeldung und Erklärung: DIN 1045-3:2023-08 kennt nur noch ÜK 1 und ÜK 2 (ÜK 3 entfallen; Quelle SCHWENK, Beton-Herstellung nach den aktuellen Normen, 2026) korrigiert. · Normenabgleich: DIN 1045-3:2023: DIN Media nennt DIN 1045-3:2023-08 → Ausgabe bestätigt · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: DIN 1045-3:2023 kennt nur noch ÜK 1 und ÜK 2 – Option 4, Rückmeldung und Erklärung angepasst, korrigiert
 
@@ -268,7 +268,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 40 korrigiert, 0 fraglich, 0
 
 - **Frage:** Ein Gemisch mit D_max = 16 mm hat die Durchgänge 45 % bei 4 mm und 65 % bei 8 mm. Regelsieblinien bei 4/8 mm: A16 = 36/60 %, B16 = 56/76 %, C16 = 74/88 %. Wie ist die Ist-Sieblinie einzuordnen?
 - **Richtige Antwort:** Zwischen A16 und B16 – günstiger Bereich
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Regelsieblinien A16/B16/C16 auf die üblichen Lehrbuchwerte nach DIN 1045-2 Anh. L korrigiert (4/8 mm: 36/60, 56/76, 74/88 %; vorläufig, F-Freigabe), Einordnung unverändert A–B, geprüft mit src/calc/mischung.ts – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: Regelsieblinien A16/B16/C16 auf die üblichen Lehrbuchwerte nach DIN 1045-2 Anh. L korrigiert (4/8 mm: 36/60, 56/76, 74/88 %; vorläufig, F-Freigabe), Einordnung unverändert A–B, geprüft mit src/calc/mischung.ts – korrigiert · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Klärung erforderlich: Die im Fragetext (und im Modul Mischungsberechnung, Sieblinien-Diagramm) genannten Durchgänge A16 = 35/50 %, B16 = 50/71 %, C16 = 71/85 % bei 4/8 mm weichen vermutlich von den Regelsieblinien nach DIN 1045-2, Anhang L ab (dort nach Literatur etwa A16 36/60 %, B16 56/76 %, C16 74/88 %); öffentlich nicht verifizierbar. Die Antwort „zwischen A16 und B16“ bliebe mit beiden Wertesätzen richtig. Werte am Normtext prüfen.
 
