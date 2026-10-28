@@ -6,11 +6,14 @@ import { LabProtocolRecord, exportToCSV, generateIntegrityChecksum } from '@/src
 import { saveStoredLabProtocol } from '@/src/utils/studyStorage';
 import { rueckprallLehrkurve, rueckprallRichtungskorrektur } from '@/src/calc/bauwerksuntersuchung';
 import { Fz } from '../ui/Formelzeichen';
+import { useTabContext } from '@/src/contexts/TabContext';
 
 type ImpactAngle = 'horizontal' | 'downward' | 'upward';
 type ConcreteAge = '28d' | '1year' | 'bestand_alt';
 
 export default function SchmidtHammerSimulator() {
+  // Dunkelmodus: Hintergründe der Messpunkte werden global abgedunkelt – Schriftfarbe hier hell setzen
+  const dunkel = useTabContext().theme === 'dark';
   const [targetClass, setTargetClass] = useState<'C20/25' | 'C25/30' | 'C30/37' | 'C35/45' | 'C50/60'>('C30/37');
   const [impactAngle, setImpactAngle] = useState<ImpactAngle>('horizontal');
   const [isCarbonated, setIsCarbonated] = useState<boolean>(false);
@@ -314,7 +317,7 @@ export default function SchmidtHammerSimulator() {
             <div className="grid grid-cols-1 md:grid-cols-12 gap-5 my-4 flex-1">
               
               {/* 3x3 Concrete Wall Grid (6 cols) */}
-              <div className="md:col-span-6 bg-stone-300 p-5 rounded-2xl border-2 border-stone-400 shadow-inner flex flex-col items-center justify-center relative overflow-hidden">
+              <div className="pruefgeraet md:col-span-6 p-5 rounded-2xl border-2 shadow-inner flex flex-col items-center justify-center relative overflow-hidden" style={{ backgroundColor: 'var(--pg-beton)' }}>
                 {/* Concrete Texture overlay */}
                 <div className="absolute inset-0 opacity-40 bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:12px_12px]"></div>
 
@@ -330,11 +333,12 @@ export default function SchmidtHammerSimulator() {
                         disabled={isTested || isStriking}
                         className={`aspect-square rounded-xl border-2 flex flex-col items-center justify-center font-mono font-bold transition-all relative cursor-pointer ${
                           !isTested
-                            ? 'bg-stone-100/90 hover:bg-amber-100 border-stone-400 text-stone-500 dark:!text-stone-300 hover:scale-105 shadow-sm'
+                            ? 'bg-stone-100/90 hover:bg-amber-100 border-stone-400 text-stone-500 hover:scale-105 shadow-sm'
                             : isOutlier
-                            ? 'bg-red-100 border-red-500 text-red-700 shadow-md dark:!text-red-200'
-                            : 'bg-emerald-50 border-emerald-500 text-emerald-800 shadow-md dark:!text-emerald-100'
+                            ? 'bg-red-100 border-red-500 text-red-700 shadow-md'
+                            : 'bg-emerald-50 border-emerald-500 text-emerald-800 shadow-md'
                         }`}
+                        style={dunkel ? { color: isOutlier ? '#991b1b' : isTested ? '#d1fae5' : '#cbd5e1' } : undefined}
                       >
                         <span className="text-[10px] text-stone-400 absolute top-1 left-1.5">#{idx + 1}</span>
                         {isTested ? (
@@ -356,7 +360,7 @@ export default function SchmidtHammerSimulator() {
                   })}
                 </div>
 
-                <div className="mt-3 text-[11px] text-stone-700 font-bold z-10">
+                <div className="mt-3 text-[11px] font-bold z-10" style={{ color: 'var(--pg-text)' }}>
                   Prüffeldabmessung: 300 × 300 mm (Punktabstand 50 mm)
                 </div>
               </div>
