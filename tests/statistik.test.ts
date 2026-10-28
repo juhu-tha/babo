@@ -31,7 +31,13 @@ for (const nn of [3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20, 25, 30, 40, 50]) {
   const t = tQuantil(1 - 0.05 / (2 * nn), nn - 2);
   const gFormel = (nn - 1) / Math.sqrt(nn) * Math.sqrt(t * t / (nn - 2 + t * t));
   pruefe(nahe(grubbsKritisch(nn), gFormel, 2e-3), `G_krit(${nn}) = ${grubbsKritisch(nn)} ≠ Formel ${gFormel}`);
+  // T2-ST-1 (28.10.2026): 1-%-Grenze (Ausreißer nach ISO 5725-2, Tab. 5), gleiche Formel mit α = 0,01
+  const t1 = tQuantil(1 - 0.01 / (2 * nn), nn - 2);
+  const g1 = (nn - 1) / Math.sqrt(nn) * Math.sqrt(t1 * t1 / (nn - 2 + t1 * t1));
+  pruefe(nahe(grubbsKritisch(nn, 0.01), g1, 1e-3) && grubbsKritisch(nn, 0.01) >= grubbsKritisch(nn), `G_krit,1%(${nn}) = ${grubbsKritisch(nn, 0.01)} ≠ Formel ${g1}`);
 }
+//    ISO 5725-2, Tab. 5 (1 %): n = 8: 2,274; n = 10: 2,482
+pruefe(grubbsKritisch(8, 0.01) === 2.274 && grubbsKritisch(10, 0.01) === 2.482, 'G_krit 1 % Tabellenwerte');
 
 // 4. Handrechnung Prüfserie mit Ausreißer (Beton): 10 Werte um 38 N/mm² + 60,0
 //    x̄ = 40,427; s = 6,681 → 2σ-Grenzen 27,07 … 53,79 → 60,0 ist Ausreißer
@@ -43,9 +49,16 @@ pruefe(a.sauber.n === 10 && nahe(a.sauber.mittelwert, 38.47, 1e-9) && nahe(a.sau
 //    Boxplot: Q₁ = sortiert[⌊2,75⌋] = 37,1; Q₃ = sortiert[⌊8,25⌋] = 40,1 → 32,6 … 44,6
 const bx = statistikAuswertung({ werte: serie, methode: 'boxplot', material: 'stahl', ausreisserPruefen: true });
 pruefe(nahe(bx.untereGrenze, 32.6, 1e-9) && nahe(bx.obereGrenze, 44.6, 1e-9) && bx.ausreisser.length === 1 && bx.gammaM === 1.15, `Boxplot ${bx.untereGrenze} ${bx.obereGrenze}`);
-//    Grubbs n = 11: G_krit = 2,351 → 40,4273 ∓ 2,351 · 6,6810 = 24,72 … 56,13
+//    Grubbs n = 11 (T2-ST-1): Entfernung ab 1 %: G_krit = 2,482 + (2,636 − 2,482)/2 = 2,559 → 40,4273 ∓ 2,559 · 6,6810 = 23,33 … 57,52;
+//    5-%-Grenze G = 2,351 → 24,72 … 56,13 (Markierung). 60,0 hat G = 2,93 > 2,559 → Ausreißer
 const gr = statistikAuswertung({ werte: serie, methode: 'grubbs', material: 'holz', ausreisserPruefen: true });
-pruefe(nahe(gr.untereGrenze, 24.7202, 1e-4) && nahe(gr.obereGrenze, 56.1344, 1e-4) && nahe(gr.gKrit ?? NaN, 2.351, 1e-12) && gr.ausreisser.length === 1 && nahe(gr.xd, gr.xk / 1.3, 1e-12), `Grubbs ${gr.untereGrenze} ${gr.obereGrenze}`);
+pruefe(nahe(gr.untereGrenze, 23.3305, 1e-4) && nahe(gr.obereGrenze, 57.5240, 1e-4) && nahe(gr.gKrit ?? NaN, 2.559, 1e-12) && nahe(gr.gKrit5 ?? NaN, 2.351, 1e-12)
+  && nahe(gr.untereGrenze5 ?? NaN, 24.7202, 1e-4) && nahe(gr.obereGrenze5 ?? NaN, 56.1344, 1e-4) && gr.ausreisser.length === 1 && gr.auffaellig.length === 0 && nahe(gr.xd, gr.xk / 1.3, 1e-12), `Grubbs ${gr.untereGrenze} ${gr.obereGrenze}`);
+//    Straggler (zwischen 5 % und 1 %): n = 8, 31,0 mit G = 2,233 (2,127 < G < 2,274) → markiert, nicht entfernt
+const stg = statistikAuswertung({ werte: [38.2, 41.5, 39.9, 40.3, 42.1, 37.6, 40.8, 31.0], methode: 'grubbs', material: 'beton', ausreisserPruefen: true });
+pruefe(stg.ausreisser.length === 0 && stg.auffaellig.length === 1 && stg.auffaellig[0] === 31.0 && stg.sauber.n === 8 && stg.hinweise.some(h => h.text.includes('5-%- und der 1-%-Grenze')), 'Straggler nur markiert');
+//    andere Methoden: keine Markierung
+pruefe(a.auffaellig.length === 0 && bx.auffaellig.length === 0, 'auffällig nur bei Grubbs');
 //    ohne Prüfung (Serie läuft noch): Grenzen 0, keine Ausreißer, X_k aus allen Werten
 const ohne = statistikAuswertung({ werte: serie, methode: '2sigma', material: 'beton', ausreisserPruefen: false });
 pruefe(ohne.untereGrenze === 0 && ohne.obereGrenze === 0 && ohne.ausreisser.length === 0 && ohne.sauber.n === 11, 'ohne Ausreißerprüfung');

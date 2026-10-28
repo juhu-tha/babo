@@ -112,7 +112,7 @@ export const BENCHMARK_EXAMPLES: BenchmarkData[] = [
     normVorgaben: {
       druckfestigkeit: 'C25/30',
       maxWz: 0.60,
-      minZement: 300, // 280 + 20 kg wegen Dmax 16 nach DIN 1045-2
+      minZement: 280, // DIN 1045-2 Tab. F.2.1 (XC4/XF1); kein Zuschlag für Dmax 16 bei Beton nach Eigenschaften (M-5, 28.10.2026; vorher 300)
       minLuft: 2.0,
     },
     stoffraum: {
@@ -136,9 +136,9 @@ export const BENCHMARK_EXAMPLES: BenchmarkData[] = [
       m48Feucht: 366.7,
       m816Feucht: 638.6,
     },
-    frischbetonDichte: 2.326,
+    frischbetonDichte: 2.335, // inkl. Kernwasser 9,1 kg (M-7, 28.10.2026; vorher 2,326 ohne Kernwasser)
     didaktischeHinweise: [
-      'Mindestzementgehalt nach DIN 1045-2 Tabelle F.2.1 beträgt für XC4/XF1 280 kg/m³. Da Dmax = 16 mm gewählt wurde, erhöht sich die Forderung normativ um +20 kg/m³ auf 300 kg/m³.',
+      'Mindestzementgehalt nach DIN 1045-2 Tabelle F.2.1 beträgt für XC4/XF1 280 kg/m³. Für Beton nach Eigenschaften hängt er nicht vom Größtkorn ab (Dmax = 16 mm ohne Zuschlag; die Erhöhung um 10 % bei 16 mm gilt nur für Standardbeton). Mit 320 kg/m³ ist die Forderung eingehalten.',
       'Der gewählte w/z-Wert von 190 / 320 = 0,594 hält das normative Limit von max. 0,60 sicher ein.',
       'Die Oberflächenfeuchte der Gesteinskörnungen (3,0% Gesamtfeuchte minus 0,5% Kernfeuchte) liefert 22,2 Liter Wasser aus den Zuschlägen, wodurch das tatsächliche Zugabewasser am Mischer auf 167,8 Liter reduziert werden muss.',
     ],
@@ -208,7 +208,7 @@ export const BENCHMARK_EXAMPLES: BenchmarkData[] = [
       m816Feucht: 396.2,
       m1632Feucht: 414.3,
     },
-    frischbetonDichte: 2.301,
+    frischbetonDichte: 2.310, // inkl. Kernwasser 9,0 kg (M-7; vorher 2,301)
     didaktischeHinweise: [
       'Gesteinsverdrängung durch LP: Gegenüber Normalbeton (20 dm³ Luft) beanspruchen 45 dm³ Luftporen 25 dm³ zusätzlichen Raum. Dadurch sinkt die Gesteinsmasse um ca. 66 kg/m³!',
       'Kugellagereffekt & Wasserbedarf: Die mikroskopisch kleinen Luftporen (10–300 µm) wirken wie reibungsfreie Kugeln. Dadurch sinkt der Wasseranspruch für Konsistenz F3 von 175 L auf 168 L/m³.',
@@ -282,7 +282,7 @@ export const BENCHMARK_EXAMPLES: BenchmarkData[] = [
       m816Feucht: 416.7,
       m1632Feucht: 416.7,
     },
-    frischbetonDichte: 2.382,
+    frischbetonDichte: 2.391, // inkl. Kernwasser 9,4 kg (M-7; vorher 2,382)
     didaktischeHinweise: [
       'Latent-hydraulische Wirkung: Hüttensandmehl (HüS nach DIN EN 15167-1) reagiert verzögert mit dem bei der Klinkerhydratation gebildeten Portlandit Ca(OH)₂ zu festigkeitsbildenden C-S-H-Phasen.',
       'Wärmeentwicklung: Durch die Substitution von 100 kg Klinkerzement durch HüS wird die adiabatische Temperaturspitze im Bauteil um über 30% gedämpft, was schädliche Zwang- und Trennrisse wirksam verhindert.',
@@ -353,7 +353,7 @@ export const BENCHMARK_EXAMPLES: BenchmarkData[] = [
       m48Feucht: 458.5,
       m816Feucht: 547.5,
     },
-    frischbetonDichte: 2.403,
+    frischbetonDichte: 2.408, // inkl. Kernwasser 9,1 kg (M-7; vorher 2,403)
     didaktischeHinweise: [
       'Stoffraumwirkung der Fasern: 35 kg Stahlfasern mit einer Dichte von 7,85 kg/dm³ verdrängen 4,46 Liter Gesteinsvolumen im 1000-Liter-Stoffraum (entspricht ca. 11,8 kg Gesteinsmasse).',
       'Flugasche als rheologisches Schmiermittel: Die sphärischen Flugaschepartikel (Kugellagereffekt) kompensieren die Versteifung der Frischbetonmischung durch die sperrigen Stahlfasern.',
@@ -424,7 +424,7 @@ export const BENCHMARK_EXAMPLES: BenchmarkData[] = [
       m48Feucht: 463.3,
       m816Feucht: 645.4,
     },
-    frischbetonDichte: 2.328,
+    frischbetonDichte: 2.337, // inkl. Kernwasser 9,2 kg (M-7; vorher 2,328)
     didaktischeHinweise: [
       'Rechenschema: Zement-Merkblatt Betontechnik B 20 „Zusammensetzung von Normalbeton“ (Ausgabe 2.2017): Stoffraumrechnung (Beispiel 4, Abschn. 6.2) und Zugabewasser = Gesamtwassermenge − Oberflächenfeuchte (Abschn. 4). Unabhängig nachgerechnet in tests/mischungBeispiel5.test.ts.',
       'Stoffraum-Gleichung: 1000 dm³ = (318 / 3,05) + (175 / 1,00) + V_gestein + 15 dm³ Poren => V_gestein = 705,74 dm³.',

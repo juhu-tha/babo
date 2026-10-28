@@ -4,14 +4,14 @@ import { Layers, ThermometerSun } from 'lucide-react';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import inhalt from '@/content/massigebauteile/MassigeBauteile.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { adiabatischeErwaermung } from '@/src/calc/hydratation';
 
 export default function MassigeBauteile() {
   const [zementGehalt, setZementGehalt] = useState(350);
   
-  // Adiabatischer Temperaturanstieg approx: dt = (z * H) / (c * rho)
-  // z: zementgehalt in kg/m3. H ~ 350 kJ/kg, c*rho ~ 2500 kJ/(m3 K)
-  // so dt ~ z * 350 / 2500 = z * 0.14
-  const deltaT = zementGehalt * 0.14;
+  // Adiabatischer Temperaturanstieg ΔT = z·Q/(c·ρ) mit Q = 350 kJ/kg und c·ρ = 2 400 kJ/(m³·K) wie im Kern
+  // src/calc/hydratation.ts (T3-HY-2, Entscheidung 28.10.2026: einheitlich 2 400; vorher hier 2 500, ΔT = 0,14·z)
+  const deltaT = adiabatischeErwaermung(zementGehalt, 350);
 
   return (
     <div className="flex flex-col gap-8">

@@ -22,6 +22,8 @@ for (const [fein, kies, gruppe, frost] of F) {
   const r = bodengruppe({ ...B, feinanteil: fein, kiesanteil: kies, sandanteil: 100 - kies });
   pruefe(r.gruppe === gruppe && r.frost === frost, `Feinkorn ${fein} %, Kies ${kies}: ${r.gruppe} ≠ ${gruppe}`);
 }
+// Tranche 5: TA ist nach ZTV E-StB 17, Tab. 1 gering bis mittel frostempfindlich (F2), nicht F3
+pruefe(bodengruppe({ ...B, feinanteil: 60, plastizitaet: 'ausgeprägt' }).frost === 'F2', 'TA → F2 (ZTV E-StB 17)');
 pruefe(bodengruppe({ ...B, feinanteil: 60, plastizitaet: 'ausgeprägt' }).gruppe === 'TA' && bodengruppe({ ...B, organik: 'stark' }).gruppe === 'HN / HZ / F', 'TA und organisch');
 pruefe(bodengruppe({ ...B, feinanteil: 60 }).hinweise.some(x => x.feld === 'plastizitaet'), 'feinkörnig ohne Plastizität → Hinweis');
 pruefe(bodengruppe({ ...B, kiesanteil: 0, sandanteil: 0, feinanteil: 2 }).gruppe === 'SW / SI / SE', 'ohne Grobkornangabe → Sand');
@@ -45,14 +47,15 @@ for (const bk of KL) for (const z of [1, 2, 3]) for (const w of ['guenstig', 'un
   if (z < 3) pruefe(frostschutz({ frostzone: z + 1, bauklasse: bk, bodengruppe: 'F3', wasser: w }).gesamtDicke > f3.gesamtDicke, `Zone (${bk}, ${z})`);
   if (w === 'guenstig') pruefe(frostschutz({ frostzone: z, bauklasse: bk, bodengruppe: 'F3', wasser: 'unguenstig' }).gesamtDicke === f3.gesamtDicke + 5, `Wasser (${bk}, ${z})`);
 }
-// 4. Fuzz Bodengruppe: mehr Feinkorn → Frostklasse nie günstiger
+// 4. Fuzz Bodengruppe: mehr Feinkorn → Frostklasse nie günstiger (ohne ausgeprägte Plastizität; TA ist nach ZTV E-StB 17
+//    mit F2 günstiger eingestuft als SU*/ST* mit F3 – das ist normgemäß, Tranche 5)
 let zufall = 18196;
 const rnd = () => { zufall = (zufall * 1103515245 + 12345) % 2147483648; return zufall / 2147483648; };
 const rang = { F1: 1, F2: 2, F3: 3 } as const;
 for (let i = 0; i < 1000; i++) {
   const e: BodenEingabe = { feinanteil: rnd() * 90, kiesanteil: rnd() * 100, sandanteil: rnd() * 100, organik: 'keine', plastizitaet: rnd() < 0.5 ? 'nicht' : 'ausgeprägt' };
   const a = bodengruppe(e), b = bodengruppe({ ...e, feinanteil: e.feinanteil + 5 });
-  pruefe(a.gueltig && rang[b.frost] >= rang[a.frost], `Fuzz ${i}: Frostmonotonie`);
+  pruefe(a.gueltig && (e.plastizitaet === 'ausgeprägt' || rang[b.frost] >= rang[a.frost]), `Fuzz ${i}: Frostmonotonie`);
 }
 
 if (fehler.length) { for (const x of fehler) console.error(`FAIL: ${x}`); process.exit(1); }

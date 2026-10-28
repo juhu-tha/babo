@@ -44,7 +44,7 @@
     "frostTausalzWiderstandVerschärfte": "**Frost-Tausalz-Widerstand:** Verschärfte Prüfung unter Zugabe von Tausalzlösung (z.B. NaCl), da Salze den osmotischen Druck in den Poren erhöhen.",
     "alkaliKieselsäureReaktivitätAkr": "**Alkali-Kieselsäure-Reaktivität (AKR):** Prüfung, ob amorphe Kieselsäure im Gestein mit den Alkalien des Zements reagiert und ein quellfähiges Gel bildet (Betontreiben).",
     "dichteWasseraufnahme": "Dichte & Wasseraufnahme",
-    "rohdichteScheinbareDichteDichte": "**Rohdichte (Scheinbare Dichte):** Dichte des Gesteinskorns inklusive der geschlossenen und offenen Poren (DIN EN 1097-6).",
+    "rohdichteScheinbareDichteDichte": "**Rohdichte (ofentrocken, ρ_rd):** Dichte des Gesteinskorns einschließlich der geschlossenen und der offenen Poren (DIN EN 1097-6). Die scheinbare Rohdichte ρ_a schließt nur die geschlossenen Poren ein, die Rohdichte wassergesättigt und oberflächentrocken ρ_ssd das Wasser in den offenen Poren.",
     "wasseraufnahmeWaMasseDes": "**Wasseraufnahme (WA):** Masse des aufgenommenen Wassers im Verhältnis zur Trockenmasse (DIN EN 1097-6). Ein Indikator für die offene Porosität und oft korrelierend mit dem Frostwiderstand.",
     "gesteinskörnungenFrüherZuschlagBilden": "Gesteinskörnungen (früher Zuschlag) bilden das Gerüst in Baustoffen wie Beton, Mörtel und Asphalt. Ihre Eigenschaften wie Kornzusammensetzung, Festigkeit und Dauerhaftigkeit sind maßgeblich für die Qualität des Endprodukts.",
     "kornklassenBezeichnungen": "Kornklassen & Bezeichnungen",
@@ -54,7 +54,7 @@
     "korngemischEineMischungVerschiedener": "**Korngemisch:** Eine Mischung verschiedener Kornklassen, angegeben als untere (d) und obere (D) Siebgröße, z.B. 0/32 für Beton.",
     "sieblinienKornzusammensetzung": "Sieblinien (Kornzusammensetzung)",
     "idealsieblinienFullerEmpaMathematische": "**Idealsieblinien (Fuller, EMPA):** Mathematische Kurven für das theoretische Dichteste Gefüge (minimaler Hohlraumgehalt).",
-    "regelsieblinienDin10452": "**Regelsieblinien (DIN 1045-2):** Grenzsieblinien A, B, C (und U für Ausfallkörnung) für Beton; Anhang manuell prüfen.<br>- **A-Linie:** gröberes Gemisch, wenig Feinkorn. Der günstige Bereich liegt zwischen A und B.<br>- **B-Linie:** mittleres Gemisch (Standard).<br>- **C-Linie:** feineres Gemisch, gut pumpbar, aber höherer Zementleim- und Wasserbedarf.",
+    "regelsieblinienDin10452": "**Regelsieblinien (DIN 1045-2):** Grenzsieblinien A, B, C (und U für Ausfallkörnung) für Beton; Zahlenwerte vorläufig, F-Freigabe (Abgleich mit dem Normtext DIN 1045-2:2023-08).<br>- **A-Linie:** gröberes Gemisch, wenig Feinkorn. Der günstige Bereich liegt zwischen A und B.<br>- **B-Linie:** mittleres Gemisch (Standard).<br>- **C-Linie:** feineres Gemisch, gut pumpbar, aber höherer Zementleim- und Wasserbedarf.",
     "ausfallkörnungFehlenBestimmterMittlerer": "**Ausfallkörnung:** Fehlen bestimmter mittlerer Kornklassen zur gezielten Verbesserung der Verarbeitbarkeit (Gap-Grading).",
     "natürlicheGesteinskörnungKiesSand": "**Natürliche Gesteinskörnung (Kies/Sand):** Rundkorn, gefördert aus Gruben oder Flussbetten. Bessere Verarbeitbarkeit im Beton.",
     "gebrocheneGesteinskörnungSplittBrechsand": "**Gebrochene Gesteinskörnung (Splitt/Brechsand):** Durch Zerkleinern im Brecher (z.B. aus Granit, Basalt, Kalkstein). Hohe innere Reibung, wichtig für den Straßen- und Asphaltbau.",
@@ -67,7 +67,7 @@
   },
   "werte": {
     "anwendungsbeispielKörnungszifferDerRegel": "Anwendungsbeispiel: Körnungsziffer der Regelsieblinie B16",
-    "sieblinieB16NachDin": "Sieblinie B16 nach DIN 1045-2 (Werte manuell prüfen); Siebsatz 0,25 bis 63 mm",
+    "sieblinieB16NachDin": "Sieblinie B16 nach DIN 1045-2 (Lehrbuchwerte, vorläufig, F-Freigabe); Siebsatz 0,25 bis 63 mm",
     "kB16366": "k(B16) ≈ 3,66 – zum Vergleich: A16 gröber (k größer), C16 feiner (k kleiner).",
     "reiterBereiche": "Bereiche Gesteine"
   },
@@ -111,7 +111,7 @@
         "title": "DIN EN 933-1:2012-03 (Prüfverfahren für geometrische Eigenschaften von Gesteinskörnungen - Teil 1: Korngrößenverteilung - Siebverfahren)"
       },
       {
-        "title": "DIN 4226-101:2017-08 (Rezyklierte Gesteinskörnungen für Beton nach DIN EN 12620)"
+        "title": "DIN 4226-101:2025-11 (Rezyklierte Gesteinskörnungen für Beton nach DIN EN 12620 – Teil 101: Typen und geregelte gefährliche Substanzen)"
       },
       {
         "title": "DIN EN 771-6:2015-11 (Festlegungen für Mauersteine - Teil 6: Natursteinmauersteine)"

@@ -269,8 +269,9 @@ export default function Mischungsberechnung() {
       ],
       biocharFeuchte: feuchteBiochar, biocharWa: waBiochar,
       k: { fa: kFa, sf: kSf, hues: kKsm, biochar: kBiochar }, maxFaFaktor: maxFaFaktor(zementArt), zementArt,
+      frostTausalz: expClasses.includes('XF2') || expClasses.includes('XF4'),
     });
-    const { maxFa, anrechenbarFa, maxSf, anrechenbarSf, volGestein, wasserAusGestein, wasserAusBiochar, zugabewasser } = sr;
+    const { maxFa, anrechenbarFa, maxSf, anrechenbarSf, volGestein, wasserAusGestein, wasserAusBiochar, zugabewasser, kernwasser } = sr;
     const { zement: volZement, fa: volFa, sf: volSf, hues: volKsm, biochar: volBiochar, zusatzmittel: volZM, luft: volLuft, stahlfaser: volStahlfaser, ppFaser: volPpFaser } = sr.vol;
     const volFasernGesamt = volStahlfaser + volPpFaser;
     const masseGesteinTrocken = sr.masseGestein;
@@ -406,7 +407,7 @@ export default function Mischungsberechnung() {
     };
 
     return {
-      wasserTrocken, zugabewasser, wasserAusGestein, wasserAusBiochar,
+      wasserTrocken, zugabewasser, wasserAusGestein, wasserAusBiochar, kernwasser,
       volZement, volFa, volSf, volKsm, volBiochar, volZM, volLuft, volGestein,
       volStahlfaser, volPpFaser, volFasernGesamt,
       masseGesteinTrocken, m04_tr, m48_tr, m816_tr, m1632_tr,
