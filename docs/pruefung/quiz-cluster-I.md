@@ -1,10 +1,10 @@
 # Prüfliste Quiz – Cluster I: Grundlagen & Labor
 
-Stand: 27.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
+Stand: 28.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 72 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 73 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 65 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 3 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 66 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 3 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -214,6 +214,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 65 korrigiert, 0 fraglich, 8
 - **Richtige Antwort:** Beton hat die größere Wärmeeindringfähigkeit b = √(λ·ρ·c) und entzieht der Haut schneller Wärme
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### q_we_4 · Thermische Eigenschaften & Dämmstoffe
+
+- **Frage:** Beton: λ = 2,0 W/(m·K), ρ = 2 400 kg/m³, c = 1 000 J/(kg·K). Wie groß ist die Temperaturleitfähigkeit a?
+- **Richtige Antwort:** 8,3 · 10⁻⁷ m²/s
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Runde 3): Distraktor „1,2 · 10⁻³ m²/s“ passte zu keinem Rechenweg; durch 8,3 · 10⁻⁴ m²/s (λ/ρ ohne c) ersetzt, Rückmeldung entsprechend präzisiert – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### qn_bauchemie_2 · Bauchemie
