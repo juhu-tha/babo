@@ -915,14 +915,14 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
             </div>
           </div>
 
-          <div className="md:col-span-6 bg-slate-900 text-white p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+          <div className="md:col-span-6 bg-off-white text-text-main p-4 rounded-xl border border-home-grau/30 flex flex-col justify-between">
             <div>
-              <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest block mb-2"><MdText text={inhalt.texte.resistogrammKurvensimulation0Bis} /></span>
-              <div className="h-16 w-full bg-slate-950 rounded-lg p-2 flex items-center relative overflow-hidden">
+              <span className="text-[10px] font-mono text-slate-600 uppercase tracking-widest block mb-2"><MdText text={inhalt.texte.resistogrammKurvensimulation0Bis} /></span>
+              <div className="h-16 w-full bg-white border border-home-grau/30 rounded-lg p-2 flex items-center relative overflow-hidden">
                 <svg viewBox="0 0 100 40" className="w-full h-full">
                   <polyline
                     fill="none"
-                    stroke={timberCondition === 'gesund' ? '#10b981' : timberCondition === 'faeule' ? '#f59e0b' : '#ef4444'}
+                    stroke={timberCondition === 'gesund' ? '#059669' : timberCondition === 'faeule' ? '#d97706' : '#ef4444'}
                     strokeWidth="1.5"
                     points={
                       timberCondition === 'gesund'
@@ -935,7 +935,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 </svg>
               </div>
             </div>
-            <div className="text-[11px] text-slate-300 pt-2 border-t border-slate-800">
+            <div className="text-[11px] text-slate-700 pt-2 border-t border-home-grau/30">
               {timberCondition === 'gesund' && inhalt.werte.regelmäßigeDichteOszillationenZwischen}
               {timberCondition === 'faeule' && inhalt.werte.einbruchDesBohrdrehmomentsIm}
               {timberCondition === 'hohl' && inhalt.werte.totalerWiderstandseinbruchAufNadelwellen}

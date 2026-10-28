@@ -278,7 +278,7 @@ export default function Nawaro() {
                   onClick={() => setDbCategory('all')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
                     dbCategory === 'all' 
-                      ? 'bg-text-main text-white border-text-main' 
+                      ? 'bg-shiraz text-white border-shiraz' 
                       : 'bg-white text-text-main border-home-grau/30 hover:bg-home-grau/10'
                   }`}
                 ><MdText text={inhalt.texte.alleProdukte} /></button>

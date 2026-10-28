@@ -41,30 +41,30 @@ export function VerzeichnisseTab({ dirProjectType, setDirProjectType, copyToClip
     
                 {/* DYNAMIC FOLDER TREE PER SCENARIO */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  <div className="p-4 bg-slate-950 text-slate-100 rounded-xl font-mono text-xs overflow-x-auto shadow-inner border border-slate-800 space-y-1">
-                    <div className="text-emerald-400 font-bold pb-2 border-b border-slate-800 flex items-center justify-between">
+                  <div className="p-4 bg-off-white text-text-main rounded-xl font-mono text-xs overflow-x-auto shadow-inner border border-home-grau/30 space-y-1">
+                    <div className="text-emerald-700 font-bold pb-2 border-b border-home-grau/30 flex items-center justify-between">
                       <span className="flex items-center gap-2">
                         <FolderTree size={14} /> 
                         {dirProjectType === 'bauleitung' ? 'BV_Wohnanlage_Augsburg_Bauleitung/' : dirProjectType === 'pruefstatik' ? 'BV_Gewerbepark_Tragwerksplanung/' : 'Masterarbeit_Recyclingbeton_THA/'}
                       </span>
-                      <span className="text-[10px] text-slate-400 font-normal"><MdText text={inhalt.texte.iso8601Nomenklatur} /></span>
+                      <span className="text-[10px] text-slate-600 font-normal"><MdText text={inhalt.texte.iso8601Nomenklatur} /></span>
                     </div>
     
-                    <div className="pt-2 text-slate-300">
-                      <div className="pl-2">├── 📄 <span className="text-emerald-300 font-bold">PROJEKTANWEISUNGEN.md</span> <span className="text-slate-400"><MdText text={inhalt.texte.zentraleBüroProjektrichtlinien} /></span></div>
-                      <div className="pl-2">├── 📄 <span className="text-amber-300 font-bold">.cursorrules</span> <span className="text-slate-400"><MdText text={inhalt.texte.codingFormelstandardsFürKi} /></span></div>
+                    <div className="pt-2 text-slate-700">
+                      <div className="pl-2">├── 📄 <span className="text-emerald-700 font-bold">PROJEKTANWEISUNGEN.md</span> <span className="text-slate-600"><MdText text={inhalt.texte.zentraleBüroProjektrichtlinien} /></span></div>
+                      <div className="pl-2">├── 📄 <span className="text-amber-700 font-bold">.cursorrules</span> <span className="text-slate-600"><MdText text={inhalt.texte.codingFormelstandardsFürKi} /></span></div>
                       
                       {dirProjectType === 'bauleitung' && (
                         <>
-                          <div className="pl-2">├── 📁 <span className="text-amber-300">01_vertrag_vob/</span></div>
+                          <div className="pl-2">├── 📁 <span className="text-amber-700">01_vertrag_vob/</span></div>
                           <div className="pl-6"><MdText text={inhalt.texte.bauvertragEckdatenMd} /></div>
                           <div className="pl-6"><MdText text={inhalt.texte.leistungsverzeichnisKurzMd} /></div>
-                          <div className="pl-2">├── 📁 <span className="text-amber-300">02_bautagebuch/</span></div>
+                          <div className="pl-2">├── 📁 <span className="text-amber-700">02_bautagebuch/</span></div>
                           <div className="pl-6"><MdText text={inhalt.texte.t20260312Bodenplatte} /></div>
                           <div className="pl-6"><MdText text={inhalt.texte.t20260313Stuetzen} /></div>
-                          <div className="pl-2">├── 📁 <span className="text-amber-300">03_lieferscheine/</span></div>
+                          <div className="pl-2">├── 📁 <span className="text-amber-700">03_lieferscheine/</span></div>
                           <div className="pl-6"><MdText text={inhalt.texte.t20260312Beton} /></div>
-                          <div className="pl-2">└── 📁 <span className="text-amber-300">04_maengel_behinderung/</span></div>
+                          <div className="pl-2">└── 📁 <span className="text-amber-700">04_maengel_behinderung/</span></div>
                           <div className="pl-6"><MdText text={inhalt.texte.maengellisteRohbauMd} /></div>
                           <div className="pl-6"><MdText text={inhalt.texte.vobBedenkenanmeldungenMd} /></div>
                         </>
@@ -72,31 +72,31 @@ export function VerzeichnisseTab({ dirProjectType, setDirProjectType, copyToClip
     
                       {dirProjectType === 'pruefstatik' && (
                         <>
-                          <div className="pl-2">├── 📁 <span className="text-amber-300">01_grundlagen_lasten/</span></div>
+                          <div className="pl-2">├── 📁 <span className="text-amber-700">01_grundlagen_lasten/</span></div>
                           <div className="pl-6"><MdText text={inhalt.texte.lastannahmenDinEn1991} /></div>
                           <div className="pl-6"><MdText text={inhalt.texte.baugrundschichtenEc7Md} /></div>
-                          <div className="pl-2">├── 📁 <span className="text-amber-300">02_baustoffe/</span></div>
-                          <div className="pl-6"><MdText text={inhalt.texte.betonStahlKennwerteMd} /><span className="text-slate-400"><MdText text={inhalt.texte.c3545B500b} /></span></div>
-                          <div className="pl-2">├── 📁 <span className="text-amber-300">03_bauteile/</span></div>
+                          <div className="pl-2">├── 📁 <span className="text-amber-700">02_baustoffe/</span></div>
+                          <div className="pl-6"><MdText text={inhalt.texte.betonStahlKennwerteMd} /><span className="text-slate-600"><MdText text={inhalt.texte.c3545B500b} /></span></div>
+                          <div className="pl-2">├── 📁 <span className="text-amber-700">03_bauteile/</span></div>
                           <div className="pl-6"><MdText text={inhalt.texte.deckeOg1DurchstanzenMd} /></div>
                           <div className="pl-6"><MdText text={inhalt.texte.stuetzenbemessungKnickenMd} /></div>
-                          <div className="pl-2">└── 📁 <span className="text-amber-300">04_positionsplaene/</span></div>
+                          <div className="pl-2">└── 📁 <span className="text-amber-700">04_positionsplaene/</span></div>
                           <div className="pl-6"><MdText text={inhalt.texte.posUebersichtAbmessungenMd} /></div>
                         </>
                       )}
     
                       {dirProjectType === 'masterarbeit' && (
                         <>
-                          <div className="pl-2">├── 📁 <span className="text-amber-300">01_expose_literatur/</span></div>
+                          <div className="pl-2">├── 📁 <span className="text-amber-700">01_expose_literatur/</span></div>
                           <div className="pl-6"><MdText text={inhalt.texte.forschungsfragenMd} /></div>
                           <div className="pl-6"><MdText text={inhalt.texte.literaturMatrixMd} /></div>
-                          <div className="pl-2">├── 📁 <span className="text-amber-300">02_labor_messdaten/</span></div>
+                          <div className="pl-2">├── 📁 <span className="text-amber-700">02_labor_messdaten/</span></div>
                           <div className="pl-6"><MdText text={inhalt.texte.druckversuch28dCsv} /></div>
                           <div className="pl-6"><MdText text={inhalt.texte.spaltzugversucheCsv} /></div>
-                          <div className="pl-2">├── 📁 <span className="text-amber-300">03_skripte_python/</span></div>
+                          <div className="pl-2">├── 📁 <span className="text-amber-700">03_skripte_python/</span></div>
                           <div className="pl-6"><MdText text={inhalt.texte.auswertungRegressionPy} /></div>
                           <div className="pl-6"><MdText text={inhalt.texte.sieblinienPlotterPy} /></div>
-                          <div className="pl-2">└── 📁 <span className="text-amber-300">04_manuskript/</span></div>
+                          <div className="pl-2">└── 📁 <span className="text-amber-700">04_manuskript/</span></div>
                           <div className="pl-6"><MdText text={inhalt.texte.kapitel04ErgebnisseMd} /></div>
                         </>
                       )}
@@ -142,7 +142,7 @@ export function VerzeichnisseTab({ dirProjectType, setDirProjectType, copyToClip
                     </button>
                   </div>
     
-                  <pre className="p-4 bg-slate-950 text-slate-200 rounded-xl text-xs font-mono overflow-x-auto leading-relaxed border border-slate-800">
+                  <pre className="p-4 bg-off-white text-text-main rounded-xl text-xs font-mono overflow-x-auto leading-relaxed border border-home-grau/30">
     {inhalt.werte.anweisungsdateiIngenieurbüroRichtlinien2}
                   </pre>
                 </div>

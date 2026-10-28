@@ -456,7 +456,7 @@ export default function Metallkorrosion() {
                             setRustThickness(0);
                             setAnodeErosion(0);
                           }}
-                          className="px-3.5 py-1.5 bg-slate-850 hover:bg-slate-900 text-xs text-white rounded-lg font-bold transition-all shadow-sm active:scale-95 flex items-center gap-1 shrink-0 cursor-pointer"
+                          className="px-3.5 py-1.5 bg-shiraz hover:bg-shiraz/90 text-xs text-white rounded-lg font-bold transition-all shadow-sm active:scale-95 flex items-center gap-1 shrink-0 cursor-pointer"
                         ><MdText text={inhalt.texte.rostReinigenEntfernen} /></button>
                       </div>
                     )}

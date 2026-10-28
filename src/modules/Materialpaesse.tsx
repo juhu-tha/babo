@@ -480,17 +480,17 @@ export default function Materialpaesse() {
           <div className="bg-white rounded-2xl max-w-2xl w-full shadow-2xl border border-home-grau/30 overflow-hidden flex flex-col font-sans text-slate-800 animate-in zoom-in-95 duration-200 max-h-[90vh]">
             
             {/* Modal Header */}
-            <div className="bg-purple-900 text-white p-5 flex justify-between items-center shrink-0">
+            <div className="bg-shiraz/5 text-text-main p-5 flex justify-between items-center shrink-0">
               <div className="flex items-center gap-2.5">
-                <Award className="text-purple-300 animate-bounce" size={24} style={{ animationDuration: '3s' }} />
+                <Award className="text-shiraz animate-bounce" size={24} style={{ animationDuration: '3s' }} />
                 <div>
-                  <h3 className="font-bold text-base tracking-tight text-white uppercase font-sans"><MdText text={inhalt.texte.gebäuderessourcenpassGrp} /></h3>
-                  <span className="text-[10px] text-purple-200 font-mono tracking-wider"><MdText text={inhalt.texte.offiziellesDgnbBerichtsformatEntwurf} /></span>
+                  <h3 className="font-bold text-base tracking-tight text-text-main uppercase font-sans"><MdText text={inhalt.texte.gebäuderessourcenpassGrp} /></h3>
+                  <span className="text-[10px] text-slate-700 font-mono tracking-wider"><MdText text={inhalt.texte.offiziellesDgnbBerichtsformatEntwurf} /></span>
                 </div>
               </div>
               <button
                 onClick={() => setShowCertificate(false)}
-                className="text-white bg-purple-950/40 hover:bg-purple-950/75 w-7 h-7 flex items-center justify-center rounded-full text-sm font-semibold transition-colors cursor-pointer"
+                className="text-text-main bg-white hover:bg-slate-100 w-7 h-7 flex items-center justify-center rounded-full text-sm font-semibold transition-colors cursor-pointer"
               >
                 ✕
               </button>

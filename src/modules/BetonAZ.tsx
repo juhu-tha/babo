@@ -132,7 +132,7 @@ export default function BetonAZ() {
             </div>
             <button 
               onClick={() => setActiveTab('festbeton')}
-              className="inline-flex items-center gap-1 px-3 py-1.5 bg-slate-800 hover:bg-slate-900 text-white rounded-lg text-xs font-bold transition-all shadow-sm active:scale-95 cursor-pointer"
+              className="inline-flex items-center gap-1 px-3 py-1.5 bg-shiraz hover:bg-shiraz/90 text-white rounded-lg text-xs font-bold transition-all shadow-sm active:scale-95 cursor-pointer"
             ><MdText text={inhalt.texte.kapillaranalyseImFestbetonModul} /><ArrowRight size={14} />
             </button>
           </div>
@@ -188,7 +188,7 @@ export default function BetonAZ() {
             <div className="flex gap-2">
               <button 
                 onClick={() => setActiveTab('frischbeton')}
-                className="inline-flex items-center gap-1 px-3 py-1.5 bg-slate-800 hover:bg-slate-900 text-white rounded-lg text-xs font-bold transition-all shadow-sm active:scale-95 cursor-pointer"
+                className="inline-flex items-center gap-1 px-3 py-1.5 bg-shiraz hover:bg-shiraz/90 text-white rounded-lg text-xs font-bold transition-all shadow-sm active:scale-95 cursor-pointer"
               >
                 Frischbeton-Modul <ArrowRight size={14} />
               </button>
@@ -427,7 +427,7 @@ export default function BetonAZ() {
             </div>
             <button 
               onClick={() => setActiveTab('instandhaltung')}
-              className="inline-flex items-center gap-1 px-3 py-1.5 bg-slate-800 hover:bg-slate-900 text-white rounded-lg text-xs font-bold transition-all shadow-sm active:scale-95 cursor-pointer"
+              className="inline-flex items-center gap-1 px-3 py-1.5 bg-shiraz hover:bg-shiraz/90 text-white rounded-lg text-xs font-bold transition-all shadow-sm active:scale-95 cursor-pointer"
             ><MdText text={inhalt.texte.instandhaltungSchutzÖffnen} /><ArrowRight size={14} />
             </button>
           </div>

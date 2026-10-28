@@ -549,24 +549,24 @@ export default function FrischbetonPruefung() {
               <div className="flex flex-col gap-4 my-3 flex-1">
                 
                 <div className="grid grid-cols-2 gap-3 text-xs">
-                  <div className="bg-slate-900 text-white p-3 rounded-xl border border-slate-800 shadow-inner">
-                    <span className="text-[10px] font-mono text-slate-400 font-bold uppercase tracking-wider block">
+                  <div className="bg-off-white text-text-main p-3 rounded-xl border border-home-grau/30 shadow-inner">
+                    <span className="text-[10px] font-mono text-slate-600 font-bold uppercase tracking-wider block">
                       Fließgrenze τ0 (Yield Stress)
                     </span>
-                    <span className="text-xl font-mono font-bold text-amber-400">
-                      {formatDeZahl(binghamYieldStress, 0)} <span className="text-xs text-slate-300 font-normal">Pa</span>
+                    <span className="text-xl font-mono font-bold text-amber-700">
+                      {formatDeZahl(binghamYieldStress, 0)} <span className="text-xs text-slate-700 font-normal">Pa</span>
                     </span>
-                    <span className="text-[10px] text-slate-400 block mt-0.5">Mindestspannung zum Fließbeginn</span>
+                    <span className="text-[10px] text-slate-600 block mt-0.5">Mindestspannung zum Fließbeginn</span>
                   </div>
 
-                  <div className="bg-slate-900 text-white p-3 rounded-xl border border-slate-800 shadow-inner">
-                    <span className="text-[10px] font-mono text-slate-400 font-bold uppercase tracking-wider block">
+                  <div className="bg-off-white text-text-main p-3 rounded-xl border border-home-grau/30 shadow-inner">
+                    <span className="text-[10px] font-mono text-slate-600 font-bold uppercase tracking-wider block">
                       Plastische Viskosität μp
                     </span>
-                    <span className="text-xl font-mono font-bold text-emerald-400">
-                      {formatDeZahl(binghamPlasticViscosity, 1)} <span className="text-xs text-slate-300 font-normal">Pa·s</span>
+                    <span className="text-xl font-mono font-bold text-emerald-700">
+                      {formatDeZahl(binghamPlasticViscosity, 1)} <span className="text-xs text-slate-700 font-normal">Pa·s</span>
                     </span>
-                    <span className="text-[10px] text-slate-400 block mt-0.5">Fließwiderstand in Bewegung</span>
+                    <span className="text-[10px] text-slate-600 block mt-0.5">Fließwiderstand in Bewegung</span>
                   </div>
                 </div>
 

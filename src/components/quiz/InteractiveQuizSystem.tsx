@@ -921,7 +921,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
                 >
                   <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 border ${
                     isRevealed && isCorrectOption
-                      ? 'bg-slate-800 text-white border-slate-800'
+                      ? 'bg-slate-200 text-text-main border-text-main'
                       : isRevealed && isSelected && !isCorrectOption
                       ? 'bg-shiraz text-white border-shiraz'
                       : isSelected
@@ -1101,7 +1101,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
                 <button
                   type="button"
                   onClick={() => setActiveMainTab('dashboard')}
-                  className="px-5 py-3 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-xl shadow-xs transition-all flex items-center gap-2 cursor-pointer active:scale-95"
+                  className="px-5 py-3 bg-shiraz hover:bg-shiraz/90 text-white text-xs font-bold rounded-xl shadow-xs transition-all flex items-center gap-2 cursor-pointer active:scale-95"
                 >
                   <BarChart3 size={15} />
                   <span>Im Dashboard analysieren</span>

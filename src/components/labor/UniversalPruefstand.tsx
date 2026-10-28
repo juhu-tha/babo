@@ -1099,24 +1099,24 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
                 
                 {/* Live Digital Display Bar (Force, Stress, Strain) */}
                 <div className="grid grid-cols-3 gap-2.5 mb-3">
-                  <div className="bg-slate-900 text-white p-3 rounded-xl border border-slate-800 shadow-inner flex flex-col">
-                    <span className="text-[10px] font-mono text-slate-400 font-bold uppercase tracking-wider">Kraft F</span>
-                    <div className="text-xl font-mono font-bold text-amber-400 mt-0.5">
-                      {formatDeZahl(currentForceKN, 1)} <span className="text-xs text-slate-300 font-normal">kN</span>
+                  <div className="bg-off-white text-text-main p-3 rounded-xl border border-home-grau/30 shadow-inner flex flex-col">
+                    <span className="text-[10px] font-mono text-slate-600 font-bold uppercase tracking-wider">Kraft F</span>
+                    <div className="text-xl font-mono font-bold text-amber-700 mt-0.5">
+                      {formatDeZahl(currentForceKN, 1)} <span className="text-xs text-slate-700 font-normal">kN</span>
                     </div>
                   </div>
 
-                  <div className="bg-slate-900 text-white p-3 rounded-xl border border-slate-800 shadow-inner flex flex-col">
-                    <span className="text-[10px] font-mono text-slate-400 font-bold uppercase tracking-wider">Spannung σ</span>
-                    <div className="text-xl font-mono font-bold text-emerald-400 mt-0.5">
-                      {formatDeZahl(currentStressMPa, 2)} <span className="text-xs text-slate-300 font-normal">MPa</span>
+                  <div className="bg-off-white text-text-main p-3 rounded-xl border border-home-grau/30 shadow-inner flex flex-col">
+                    <span className="text-[10px] font-mono text-slate-600 font-bold uppercase tracking-wider">Spannung σ</span>
+                    <div className="text-xl font-mono font-bold text-emerald-700 mt-0.5">
+                      {formatDeZahl(currentStressMPa, 2)} <span className="text-xs text-slate-700 font-normal">MPa</span>
                     </div>
                   </div>
 
-                  <div className="bg-slate-900 text-white p-3 rounded-xl border border-slate-800 shadow-inner flex flex-col">
-                    <span className="text-[10px] font-mono text-slate-400 font-bold uppercase tracking-wider">Dehnung ε</span>
-                    <div className="text-xl font-mono font-bold text-cyan-400 mt-0.5">
-                      {formatDeZahl(currentStrainPermille, 2)} <span className="text-xs text-slate-300 font-normal">‰</span>
+                  <div className="bg-off-white text-text-main p-3 rounded-xl border border-home-grau/30 shadow-inner flex flex-col">
+                    <span className="text-[10px] font-mono text-slate-600 font-bold uppercase tracking-wider">Dehnung ε</span>
+                    <div className="text-xl font-mono font-bold text-cyan-700 mt-0.5">
+                      {formatDeZahl(currentStrainPermille, 2)} <span className="text-xs text-slate-700 font-normal">‰</span>
                     </div>
                   </div>
                 </div>
@@ -1172,7 +1172,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
                       onClick={() => setShowGrid(!showGrid)}
                       className={`px-2 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer border ${
                         showGrid
-                          ? 'bg-slate-800 text-white border-slate-800 shadow-xs'
+                          ? 'bg-shiraz text-white border-shiraz shadow-xs'
                           : 'bg-white text-text-main/70 border-home-grau/30 hover:bg-slate-100'
                       }`}
                       title="Gitterlinien im Diagramm ein- oder ausblenden"

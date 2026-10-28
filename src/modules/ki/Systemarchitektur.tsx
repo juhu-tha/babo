@@ -392,7 +392,7 @@ export default function Systemarchitektur() {
               onClick={() => setTechViewMode('funktionsweise')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 techViewMode === 'funktionsweise'
-                  ? 'bg-slate-800 text-white shadow-xs'
+                  ? 'bg-shiraz text-white shadow-xs'
                   : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
               }`}
             >
@@ -401,7 +401,7 @@ export default function Systemarchitektur() {
               onClick={() => setTechViewMode('einsatzzwecke')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 techViewMode === 'einsatzzwecke'
-                  ? 'bg-slate-800 text-white shadow-xs'
+                  ? 'bg-shiraz text-white shadow-xs'
                   : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
               }`}
             >
@@ -410,7 +410,7 @@ export default function Systemarchitektur() {
               onClick={() => setTechViewMode('daten')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 techViewMode === 'daten'
-                  ? 'bg-slate-800 text-white shadow-xs'
+                  ? 'bg-shiraz text-white shadow-xs'
                   : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
               }`}
             >
@@ -419,7 +419,7 @@ export default function Systemarchitektur() {
               onClick={() => setTechViewMode('grenzen')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 techViewMode === 'grenzen'
-                  ? 'bg-slate-800 text-white shadow-xs'
+                  ? 'bg-shiraz text-white shadow-xs'
                   : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
               }`}
             >

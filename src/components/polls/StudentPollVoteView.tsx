@@ -108,24 +108,24 @@ export default function StudentPollVoteView({
   const totalVotes = currentCounts.reduce((a, b) => a + b, 0);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between p-4 sm:p-6 font-sans">
+    <div className="min-h-screen bg-off-white text-text-main flex flex-col justify-between p-4 sm:p-6 font-sans">
       {/* Top Navigation & Status */}
       <div className="max-w-md w-full mx-auto space-y-4">
         {/* Header Bar */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex items-center justify-between shadow-md">
+        <div className="bg-white border border-home-grau/30 rounded-2xl p-4 flex items-center justify-between shadow-md">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-shiraz text-white font-extrabold flex items-center justify-center text-sm shadow-xs">
               THA
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-xs font-bold text-white tracking-tight">Live-Abstimmung</span>
-                <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                <span className="text-xs font-bold text-text-main tracking-tight">Live-Abstimmung</span>
+                <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-700 border border-emerald-500/30">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
                   Live aktiv
                 </span>
               </div>
-              <span className="text-[11px] text-slate-400 block truncate max-w-[200px]">
+              <span className="text-[11px] text-slate-600 block truncate max-w-[200px]">
                 {LECTURE_TITLES[lectureId] || 'Vorlesung TH Augsburg'}
               </span>
             </div>
@@ -134,7 +134,7 @@ export default function StudentPollVoteView({
           {onExitToPortal && (
             <button
               onClick={onExitToPortal}
-              className="text-[11px] font-semibold text-slate-400 hover:text-white px-2.5 py-1.5 rounded-lg border border-slate-800 hover:bg-slate-800 transition-colors cursor-pointer"
+              className="text-[11px] font-semibold text-slate-600 hover:text-text-main px-2.5 py-1.5 rounded-lg border border-home-grau/30 hover:bg-slate-100 transition-colors cursor-pointer"
             >
               Zum Portal →
             </button>
@@ -142,20 +142,20 @@ export default function StudentPollVoteView({
         </div>
 
         {/* 100% Anonymous Banner */}
-        <div className="bg-emerald-950/40 border border-emerald-500/30 rounded-xl px-3.5 py-2 flex items-center gap-2.5 text-xs text-emerald-300 shadow-xs">
-          <ShieldCheck size={16} className="text-emerald-400 shrink-0" />
+        <div className="bg-emerald-50 border border-emerald-500/30 rounded-xl px-3.5 py-2 flex items-center gap-2.5 text-xs text-emerald-700 shadow-xs">
+          <ShieldCheck size={16} className="text-emerald-700 shrink-0" />
           <span><strong>100 % anonym:</strong> Kein Google-Konto und keine Anmeldung erforderlich.</span>
         </div>
 
         {/* Question Switcher (Carousel Pills) */}
-        <div className="flex items-center justify-between bg-slate-900/80 p-1.5 rounded-xl border border-slate-800">
+        <div className="flex items-center justify-between bg-white p-1.5 rounded-xl border border-home-grau/30">
           <button
             onClick={() => {
               setSelectedOption(null);
               setCurrentIdx(prev => Math.max(0, prev - 1));
             }}
             disabled={currentIdx === 0}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white disabled:opacity-30 disabled:pointer-events-none hover:bg-slate-800 cursor-pointer"
+            className="p-1.5 rounded-lg text-slate-600 hover:text-text-main disabled:opacity-30 disabled:pointer-events-none hover:bg-slate-100 cursor-pointer"
             title="Vorherige Frage"
           >
             <ChevronLeft size={18} />
@@ -173,10 +173,10 @@ export default function StudentPollVoteView({
                   }}
                   className={`w-7 h-7 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center justify-center ${
                     active 
-                      ? 'bg-shiraz text-white shadow-xs ring-2 ring-rose-400/30' 
+                      ? 'bg-shiraz text-white shadow-xs ring-2 ring-shiraz/30' 
                       : answered 
-                        ? 'bg-emerald-900/40 text-emerald-300 border border-emerald-700/50' 
-                        : 'bg-slate-800 text-slate-400 hover:text-white'
+                        ? 'bg-emerald-50 text-emerald-700 border border-emerald-300' 
+                        : 'bg-slate-100 text-slate-600 hover:text-text-main'
                   }`}
                 >
                   {answered ? <Check size={12} /> : idx + 1}
@@ -190,7 +190,7 @@ export default function StudentPollVoteView({
               setCurrentIdx(prev => Math.min(questions.length - 1, prev + 1));
             }}
             disabled={currentIdx === questions.length - 1}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white disabled:opacity-30 disabled:pointer-events-none hover:bg-slate-800 cursor-pointer"
+            className="p-1.5 rounded-lg text-slate-600 hover:text-text-main disabled:opacity-30 disabled:pointer-events-none hover:bg-slate-100 cursor-pointer"
             title="Nächste Frage"
           >
             <ChevronRight size={18} />
@@ -198,17 +198,17 @@ export default function StudentPollVoteView({
         </div>
 
         {/* Question Card */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-6 space-y-4 shadow-xl">
+        <div className="bg-white border border-home-grau/30 rounded-2xl p-5 sm:p-6 space-y-4 shadow-xl">
           <div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[11px] font-bold text-rose-400 uppercase tracking-wider">
+              <span className="text-[11px] font-bold text-rose-700 uppercase tracking-wider">
                 Frage {formatDeWert(currentIdx + 1)} von {questions.length} • {currentQ.category}
               </span>
-              <span className="text-[11px] text-slate-400 font-semibold">
+              <span className="text-[11px] text-slate-600 font-semibold">
                 {formatDeWert(totalVotes)} {totalVotes === 1 ? 'Stimme' : 'Stimmen'} live
               </span>
             </div>
-            <h2 className="text-base sm:text-lg font-bold text-white leading-snug">
+            <h2 className="text-base sm:text-lg font-bold text-text-main leading-snug">
               {currentQ.question}
             </h2>
           </div>
@@ -229,12 +229,12 @@ export default function StudentPollVoteView({
                     onClick={() => setSelectedOption(idx)}
                     className={`w-full p-3.5 rounded-xl border text-left text-xs sm:text-sm transition-all flex items-center gap-3 relative z-10 cursor-pointer ${
                       isUserChoice
-                        ? 'border-emerald-500 bg-emerald-950/40 text-emerald-200 font-bold ring-1 ring-emerald-500'
+                        ? 'border-emerald-500 bg-emerald-50 text-emerald-700 font-bold ring-1 ring-emerald-500'
                         : isSelected
-                          ? 'border-shiraz bg-rose-950/30 text-white font-bold ring-1 ring-rose-500'
+                          ? 'border-shiraz bg-rose-50 text-text-main font-bold ring-1 ring-rose-500'
                           : isQuestionAnswered
-                            ? 'border-slate-800 bg-slate-900/60 text-slate-400'
-                            : 'border-slate-800 bg-slate-950/70 hover:bg-slate-800 text-slate-200'
+                            ? 'border-home-grau/30 bg-slate-50 text-slate-600'
+                            : 'border-home-grau/30 bg-white hover:bg-slate-100 text-text-main'
                     }`}
                   >
                     <span className={`w-6 h-6 rounded-md flex items-center justify-center font-bold text-xs shrink-0 ${
@@ -242,26 +242,26 @@ export default function StudentPollVoteView({
                         ? 'bg-emerald-600 text-white'
                         : isSelected
                           ? 'bg-shiraz text-white'
-                          : 'bg-slate-800 text-slate-300'
+                          : 'bg-slate-100 text-slate-700'
                     }`}>
                       {optionLetters[idx]}
                     </span>
                     <span className="flex-1 leading-snug">{opt}</span>
                     {isUserChoice && (
-                      <CheckCircle2 size={16} className="text-emerald-400 shrink-0" />
+                      <CheckCircle2 size={16} className="text-emerald-700 shrink-0" />
                     )}
                   </button>
 
                   {/* If user has voted, show live bar below option */}
                   {isQuestionAnswered && (
                     <div className="mt-1 flex items-center gap-2 px-1">
-                      <div className="flex-1 bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                      <div className="flex-1 bg-slate-100 h-1.5 rounded-full overflow-hidden">
                         <div 
                           className={`h-full transition-all duration-500 ${isUserChoice ? 'bg-emerald-500' : 'bg-slate-600'}`}
                           style={{ width: `${percent}%` }}
                         />
                       </div>
-                      <span className="text-[11px] font-bold text-slate-400 w-9 text-right shrink-0">
+                      <span className="text-[11px] font-bold text-slate-600 w-9 text-right shrink-0">
                         {formatDeWert(percent)}%
                       </span>
                     </div>
@@ -286,16 +286,16 @@ export default function StudentPollVoteView({
               )}
             </button>
           ) : (
-            <div className="p-3.5 bg-emerald-950/50 border border-emerald-500/40 rounded-xl space-y-1.5 animate-in fade-in">
-              <div className="flex items-center gap-2 text-xs font-bold text-emerald-300">
-                <CheckCircle2 size={16} className="text-emerald-400" />
+            <div className="p-3.5 bg-emerald-50 border border-emerald-500/40 rounded-xl space-y-1.5 animate-in fade-in">
+              <div className="flex items-center gap-2 text-xs font-bold text-emerald-700">
+                <CheckCircle2 size={16} className="text-emerald-700" />
                 <span>Ihre Stimme wurde gewertet!</span>
               </div>
-              <p className="text-[11px] text-slate-300 leading-relaxed">
+              <p className="text-[11px] text-slate-700 leading-relaxed">
                 {currentQ.didaktik}
               </p>
               {currentQ.norm && (
-                <span className="text-[10px] text-slate-400 block pt-1 border-t border-emerald-900/60">
+                <span className="text-[10px] text-slate-600 block pt-1 border-t border-emerald-200">
                   Quelle / Regelwerk: {currentQ.norm}
                 </span>
               )}
@@ -305,7 +305,7 @@ export default function StudentPollVoteView({
       </div>
 
       {/* Footer Info */}
-      <div className="max-w-md w-full mx-auto text-center pt-4 pb-2 text-[11px] text-slate-500 space-y-1">
+      <div className="max-w-md w-full mx-auto text-center pt-4 pb-2 text-[11px] text-slate-600 space-y-1">
         <p>Technische Hochschule Augsburg • Fakultät für Architektur und Bauwesen</p>
         <p>BaustoffBoard Live-Voting • 100% Anonym • DSGVO-konform</p>
       </div>

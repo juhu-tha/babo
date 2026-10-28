@@ -356,17 +356,17 @@ export default function SchmidtHammerSimulator() {
               <div className="md:col-span-6 flex flex-col justify-between">
                 
                 {/* Instrument Drawing Banner */}
-                <div className="bg-slate-900 text-white p-4 rounded-xl border border-slate-800 shadow-inner flex flex-col gap-2">
+                <div className="bg-off-white text-text-main p-4 rounded-xl border border-home-grau/30 shadow-inner flex flex-col gap-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-mono font-bold text-amber-400 uppercase tracking-widest">
+                    <span className="text-xs font-mono font-bold text-amber-700 uppercase tracking-widest">
                       Schmidt-Rückprallhammer Typ N
                     </span>
-                    <span className="text-[10px] font-mono text-slate-400">W = 2,207 Nm</span>
+                    <span className="text-[10px] font-mono text-slate-600">W = 2,207 Nm</span>
                   </div>
 
                   {/* Hammer Scale Graphic */}
-                  <div className="w-full bg-slate-800 rounded-lg p-2.5 border border-slate-700 flex flex-col gap-1.5">
-                    <div className="flex justify-between text-[10px] font-mono text-slate-400">
+                  <div className="w-full bg-white rounded-lg p-2.5 border border-home-grau/30 flex flex-col gap-1.5">
+                    <div className="flex justify-between text-[10px] font-mono text-slate-600">
                       <span>R=10</span>
                       <span>20</span>
                       <span>30</span>

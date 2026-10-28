@@ -206,7 +206,7 @@ export default function Energieausweis() {
                   style={getPositionStyle(currentScale.val)}
                 >
                   <div
-                    className="bg-text-main text-white px-2.5 py-1 rounded-lg font-bold text-xs shadow-md whitespace-nowrap"
+                    className="bg-shiraz text-white px-2.5 py-1 rounded-lg font-bold text-xs shadow-md whitespace-nowrap"
                     style={(() => { const p = Math.min(100, Math.max(0, (currentScale.val / 250) * 100)); return { transform: `translateX(${p > 75 ? -(p - 75) * 1.6 : p < 25 ? (25 - p) * 1.6 : 0}%)` }; })()}
                   >
                     {formatDeWert(currentScale.val)}<span className="hidden sm:inline"> kWh/(m²a)</span> [Kl. {currentScale.class}]

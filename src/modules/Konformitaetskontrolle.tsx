@@ -536,7 +536,7 @@ export default function Konformitaetskontrolle() {
                   <button
                     type="button"
                     onClick={handleCsvImport}
-                    className="bg-slate-700 hover:bg-slate-800 text-white rounded-lg p-1.5 px-3 text-xs font-bold transition-colors cursor-pointer border-0 shrink-0"
+                    className="bg-shiraz hover:bg-shiraz/90 text-white rounded-lg p-1.5 px-3 text-xs font-bold transition-colors cursor-pointer border-0 shrink-0"
                   >
                     Serie Laden
                   </button>

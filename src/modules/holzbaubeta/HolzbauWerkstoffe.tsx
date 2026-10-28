@@ -94,7 +94,7 @@ export default function HolzbauWerkstoffe({ activeConstruction, dbSearch, dbType
                 onClick={() => setDbTypeFilter('all')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
                     dbTypeFilter === 'all' 
-                      ? 'bg-text-main text-white border-text-main' 
+                      ? 'bg-shiraz text-white border-shiraz' 
                       : 'bg-white text-text-main border-home-grau/30 hover:bg-home-grau/10'
                   }`}
               ><MdText text={inhalt.texte.alleBauteile} /></button>
@@ -102,7 +102,7 @@ export default function HolzbauWerkstoffe({ activeConstruction, dbSearch, dbType
                 onClick={() => setDbTypeFilter('Aussenwand')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
                     dbTypeFilter === 'Aussenwand' 
-                      ? 'bg-amber-800 text-white border-amber-800' 
+                      ? 'bg-shiraz text-white border-shiraz' 
                       : 'bg-white text-text-main border-home-grau/30 hover:bg-home-grau/10'
                   }`}
               >
@@ -112,7 +112,7 @@ export default function HolzbauWerkstoffe({ activeConstruction, dbSearch, dbType
                 onClick={() => setDbTypeFilter('Decke')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
                     dbTypeFilter === 'Decke' 
-                      ? 'bg-amber-800 text-white border-amber-800' 
+                      ? 'bg-shiraz text-white border-shiraz' 
                       : 'bg-white text-text-main border-home-grau/30 hover:bg-home-grau/10'
                   }`}
               >
@@ -122,7 +122,7 @@ export default function HolzbauWerkstoffe({ activeConstruction, dbSearch, dbType
                 onClick={() => setDbTypeFilter('Dach')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
                     dbTypeFilter === 'Dach' 
-                      ? 'bg-amber-800 text-white border-amber-800' 
+                      ? 'bg-shiraz text-white border-shiraz' 
                       : 'bg-white text-text-main border-home-grau/30 hover:bg-home-grau/10'
                   }`}
               >

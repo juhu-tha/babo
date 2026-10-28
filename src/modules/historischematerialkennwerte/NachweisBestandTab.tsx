@@ -293,10 +293,10 @@ export function NachweisBestandTab({ setNachweisMaterial, setSampleMean, setSamp
         </div>
     
         {/* Explanatory Formula Box */}
-        <div className="mt-5 p-4 rounded-xl bg-slate-900 text-white font-mono text-xs">
-          <span className="text-slate-400 block text-[10px] uppercase tracking-wider mb-1"><MdText text={inhalt.texte.lognormalerBemessungswertGrundgleichungN} /></span>
+        <div className="mt-5 p-4 rounded-xl bg-off-white border border-home-grau/30 text-text-main font-mono text-xs">
+          <span className="text-slate-600 block text-[10px] uppercase tracking-wider mb-1"><MdText text={inhalt.texte.lognormalerBemessungswertGrundgleichungN} /></span>
           <BlockMath math="f_d = \frac{f_m}{\gamma_{Rd}} \cdot \exp\left(-\alpha_R \cdot \beta \cdot \sigma_{\ln} - 0{,}5 \cdot \sigma_{\ln}^2\right),\quad \sigma_{\ln} = \sqrt{\ln(1 + V_f^2)}" />
-          <div className="text-[11px] text-slate-300 font-sans mt-2 leading-relaxed"><MdText text={inhalt.texte.ergebnisInterpretationDurchDen} /><InlineMath math={`V_f = ${formatDeTeX((sampleCov * 100), 1)}\\%`} /><MdText text={inhalt.texte.ergibtSichGegenüberDem} /><strong className="text-emerald-400">{nachweisCalc.gainPrenPercent >= 0 ? '+' : ''}{formatDeZahl(nachweisCalc.gainPrenPercent, 1)} %</strong><MdText text={inhalt.texte.ergibtSichEineReserve} /></div>
+          <div className="text-[11px] text-slate-700 font-sans mt-2 leading-relaxed"><MdText text={inhalt.texte.ergebnisInterpretationDurchDen} /><InlineMath math={`V_f = ${formatDeTeX((sampleCov * 100), 1)}\\%`} /><MdText text={inhalt.texte.ergibtSichGegenüberDem} /><strong className="text-emerald-700">{nachweisCalc.gainPrenPercent >= 0 ? '+' : ''}{formatDeZahl(nachweisCalc.gainPrenPercent, 1)} %</strong><MdText text={inhalt.texte.ergibtSichEineReserve} /></div>
         </div>
       </div>
     </div>
