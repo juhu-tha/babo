@@ -976,7 +976,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
               <div className="md:col-span-7 flex flex-col justify-between">
                 
                 {/* Live Digital Display Bar (Force, Stress, Strain) */}
-                <div className="grid grid-cols-3 gap-2.5 mb-3">
+                <div className="grid grid-cols-1 min-[480px]:grid-cols-3 gap-2.5 mb-3">
                   <div className="bg-off-white text-text-main p-3 rounded-xl border border-home-grau/30 shadow-inner flex flex-col">
                     <span className="text-[11px] font-mono text-slate-600 font-bold uppercase tracking-wider">Kraft <Fz>F</Fz></span>
                     <div className="text-xl font-mono font-bold text-amber-700 mt-0.5">
@@ -1066,7 +1066,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
                 </div>
 
                 {/* Chart.js Graph */}
-                <div className="w-full h-[260px] bg-off-white rounded-xl p-2.5 border border-home-grau/25 relative shadow-xs">
+                <div className={`w-full ${testType === 'emodul' && showAuxLines ? 'h-[360px]' : 'h-[260px]'} bg-off-white rounded-xl p-2.5 border border-home-grau/25 relative shadow-xs`}>
                   <Line
                     data={{
                       datasets: chartDatasets
@@ -1103,7 +1103,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
                         <strong className="text-base text-text-main font-mono">{formatDeZahl((materialProps.E / 1000), 1)} GPa</strong>
                       </div>
                       <div>
-                        <span className="text-text-main/60 uppercase text-[11px] font-bold block">Prüfspannungsbereich</span>
+                        <span className="text-text-main/60 uppercase text-[11px] font-bold block">Prüfspannungs&shy;bereich</span>
                         <strong className="text-base text-amber-700 font-mono">
                           {formatDeZahl(emodulReference.lowerStress, 1)} – {formatDeZahl(emodulReference.upperStress, 1)} N/mm²
                         </strong>
@@ -1116,7 +1116,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
                   ) : (
                     <>
                       <div>
-                        <span className="text-text-main/60 uppercase text-[11px] font-bold block">Höchstspannung <Fz idx="max">σ</Fz></span>
+                        <span className="text-text-main/60 uppercase text-[11px] font-bold block">Höchst&shy;spannung <Fz idx="max">σ</Fz></span>
                         <strong className="text-base text-shiraz font-mono">{formatDeZahl(maxStressObserved, 2)} N/mm²</strong>
                       </div>
                       <div>
@@ -1128,7 +1128,7 @@ export default function UniversalPruefstand({ onNavigateToProtocols }: Universal
                         <strong className="text-base text-text-main font-mono">{formatDeZahl((materialProps.E / 1000), 1)} GPa</strong>
                       </div>
                       <div>
-                        <span className="text-text-main/60 uppercase text-[11px] font-bold block">Formänderungsarbeit <Fz>W</Fz> (Fläche unter <Fz>σ–ε</Fz>)</span>
+                        <span className="text-text-main/60 uppercase text-[11px] font-bold block">Formänderungs&shy;arbeit <Fz>W</Fz> (Fläche unter <Fz>σ–ε</Fz>)</span>
                         <strong className="text-base text-emerald-700 font-mono">{formatDeZahl(elasticEnergy, 1)} kJ/m³</strong>
                       </div>
                     </>

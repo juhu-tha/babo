@@ -20,7 +20,7 @@ import { saveStoredLabProtocol } from '@/src/utils/studyStorage';
 import { AuswahlGruppe, alsOption } from '../ui/Auswahlgruppe';
 import { Fz } from '../ui/Formelzeichen';
 import { hoechstwert } from '@/src/calc/laborVersuch';
-import { useDiagrammFarben, linAchse, PfeilDefs, Masslinie } from './laborGrafik';
+import { useDiagrammFarben, linAchse, PfeilDefs, Masslinie, useSchriftFaktor } from './laborGrafik';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -404,6 +404,7 @@ export default function BiegezugPruefung() {
   }, [curveData, chartMode, lever, W]);
 
   const farben = useDiagrammFarben();
+  const fs = useSchriftFaktor();
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
@@ -661,32 +662,37 @@ export default function BiegezugPruefung() {
                     <rect x={mitteX - 18} y={yOben(mitteX) - 26} width="36" height="12" rx="2" fill="var(--pg-stahl)" stroke="var(--pg-kontur)" strokeWidth="1.3" />
                   )}
                   <line x1={mitteX} y1="6" x2={mitteX} y2={yOben(mitteX) - 28} stroke="var(--pg-akzent)" strokeWidth="2.5" markerEnd="url(#bzp-pfeil)" />
-                  <text x={mitteX + 8} y="20" fontSize="13" fontWeight="bold" fill="var(--pg-akzent)">F = {formatDeZahl(currentForceKN, 1)} kN</text>
+                  <text x={mitteX + 8} y="20" fontSize={13 * fs} fontWeight="bold" fill="var(--pg-akzent)">
+                    {testStatus === 'finished'
+                      ? <>F<tspan fontSize={10 * fs} dy="3">max</tspan><tspan dy="-3"> = {formatDeZahl(maxForceObserved, 1)} kN</tspan></>
+                      : `F = ${formatDeZahl(currentForceKN, 1)} kN`}
+                  </text>
 
                   {/* Wegaufnehmer unter Feldmitte */}
                   <line x1={mitteX} y1={ob + hb + durchbiegungPx + 2} x2={mitteX} y2={ob + hb + 24} stroke="var(--pg-kontur)" strokeWidth="1.5" />
                   <rect x={mitteX - 5} y={ob + hb + 22} width="10" height="12" rx="1.5" fill="var(--pg-stahl3)" stroke="var(--pg-kontur)" strokeWidth="1" />
-                  <text x={mitteX} y={ob + hb + 58} textAnchor="middle" fontSize="12" fill="var(--pg-text)">Wegaufnehmer in Feldmitte: δ = {formatDeZahl(currentDeflectionMm, 2)} mm</text>
+                  <text x={mitteX + 10} y={ob + hb + 30} fontSize={12 * fs} fill="var(--pg-text)">δ = {formatDeZahl(currentDeflectionMm, 2)} mm</text>
 
                   {/* Maßketten */}
                   {loadingSystem === '4punkt' ? (
                     <g>
-                      <Masslinie praefix="bzp" x1={A1} y1={ob + hb + 82} x2={lastPunkte[0]} y2={ob + hb + 82} text="L/3" />
-                      <Masslinie praefix="bzp" x1={lastPunkte[0]} y1={ob + hb + 82} x2={lastPunkte[1]} y2={ob + hb + 82} text="L/3" />
-                      <Masslinie praefix="bzp" x1={lastPunkte[1]} y1={ob + hb + 82} x2={A2} y2={ob + hb + 82} text="L/3" />
+                      <Masslinie praefix="bzp" schrift={12 * fs} x1={A1} y1={ob + hb + 82} x2={lastPunkte[0]} y2={ob + hb + 82} text="L/3" />
+                      <Masslinie praefix="bzp" schrift={12 * fs} x1={lastPunkte[0]} y1={ob + hb + 82} x2={lastPunkte[1]} y2={ob + hb + 82} text="L/3" />
+                      <Masslinie praefix="bzp" schrift={12 * fs} x1={lastPunkte[1]} y1={ob + hb + 82} x2={A2} y2={ob + hb + 82} text="L/3" />
                     </g>
                   ) : (
                     <g>
-                      <Masslinie praefix="bzp" x1={A1} y1={ob + hb + 82} x2={mitteX} y2={ob + hb + 82} text="L/2" />
-                      <Masslinie praefix="bzp" x1={mitteX} y1={ob + hb + 82} x2={A2} y2={ob + hb + 82} text="L/2" />
+                      <Masslinie praefix="bzp" schrift={12 * fs} x1={A1} y1={ob + hb + 82} x2={mitteX} y2={ob + hb + 82} text="L/2" />
+                      <Masslinie praefix="bzp" schrift={12 * fs} x1={mitteX} y1={ob + hb + 82} x2={A2} y2={ob + hb + 82} text="L/2" />
                     </g>
                   )}
-                  <Masslinie praefix="bzp" x1={A1} y1={ob + hb + 108} x2={A2} y2={ob + hb + 108} text={`L = ${formatDeWert(spanLength)} mm`} />
+                  <Masslinie praefix="bzp" schrift={12 * fs} x1={A1} y1={ob + hb + 112} x2={A2} y2={ob + hb + 112} text={`L = ${formatDeWert(spanLength)} mm`} />
                 </svg>
                 <figcaption className="text-[11px] text-center leading-snug px-2" style={{ color: 'var(--pg-text2)' }}>
                   {loadingSystem === '4punkt'
                     ? 'Lasten in den Drittelspunkten; zwischen den Lastrollen konstantes Moment ohne Querkraft (hinterlegt).'
                     : 'Einzellast in Feldmitte; größtes Moment unter der Lastrolle.'}
+                  {' '}Wegaufnehmer unter Feldmitte misst die Durchbiegung δ.
                   {material === 'beton_spannbeton' && ' Gestrichelt: Spannlitzen mit Vorspannkraft P₀ (Pfeile), Ankerplatten an den Enden.'}
                   {material === 'beton_stahlbewehrt' && ' Rot: Längsbewehrung in der Zugzone.'}
                   {material === 'beton_stahlfasern' && ' Kurze Striche: Stahlfasern mit Endhaken.'}
@@ -697,7 +703,7 @@ export default function BiegezugPruefung() {
               <div className="md:col-span-12 flex flex-col gap-3">
                 
                 {/* Metric Cards */}
-                <div className="grid grid-cols-3 gap-2.5">
+                <div className="grid grid-cols-1 min-[480px]:grid-cols-3 gap-2.5">
                   <div className="bg-off-white text-text-main p-3 rounded-xl border border-home-grau/30 shadow-inner">
                     <span className="text-[11px] font-mono text-slate-600 font-bold uppercase tracking-wider block">Prüfkraft <Fz>F</Fz></span>
                     <span className="text-xl font-mono font-bold text-amber-700">
@@ -796,7 +802,7 @@ export default function BiegezugPruefung() {
               <div className="mt-2 p-4 bg-off-white rounded-xl border border-home-grau/30 flex flex-col gap-3 animate-in fade-in">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
                   <div>
-                    <span className="text-text-main/60 uppercase text-[11px] font-bold block">Biegezugfestigkeit <Fz idx="ct,fl">f</Fz></span>
+                    <span className="text-text-main/60 uppercase text-[11px] font-bold block">Biegezug&shy;festigkeit <Fz idx="ct,fl">f</Fz></span>
                     <strong className="text-base text-shiraz font-mono">{formatDeZahl(maxStressObserved, 2)} N/mm²</strong>
                   </div>
                   <div>

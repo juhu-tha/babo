@@ -354,9 +354,13 @@ export default function FrischbetonPruefung() {
               <div className="flex flex-col gap-4 my-3 flex-1">
                 
                 {/* Ausbreittisch: Draufsicht und Seitenansicht */}
-                <figure className="pruefgeraet p-3 rounded-xl border flex flex-wrap items-center justify-center gap-4 m-0">
-                  <AusbreitDraufsicht ausbreitmass={spreadDiameterMm} kegelGehoben={coneLifted} hubschlaege={shocksDone} />
-                  <AusbreitSeitenansicht ausbreitmass={spreadDiameterMm} kegelGehoben={coneLifted} hubschlaege={shocksDone} gehoben={platteOben} />
+                <figure className="pruefgeraet p-3 rounded-xl border flex flex-col sm:flex-row sm:flex-wrap items-center justify-center gap-4 m-0">
+                  <div className="w-full sm:w-auto sm:flex-[3] flex justify-center min-w-0">
+                    <AusbreitDraufsicht ausbreitmass={spreadDiameterMm} kegelGehoben={coneLifted} hubschlaege={shocksDone} />
+                  </div>
+                  <div className="w-full sm:w-auto sm:flex-[2] flex justify-center min-w-0">
+                    <AusbreitSeitenansicht ausbreitmass={spreadDiameterMm} kegelGehoben={coneLifted} hubschlaege={shocksDone} gehoben={platteOben} />
+                  </div>
                   <figcaption className="w-full text-[11px] text-center leading-snug" style={{ color: 'var(--pg-text2)' }}>
                     Ausbreitmaß f = Mittel aus zwei Durchmessern d1 und d2, parallel zu den Tischkanten gemessen (DIN EN 12350-5).
                   </figcaption>
@@ -517,7 +521,7 @@ export default function FrischbetonPruefung() {
                       responsive: true,
                       maintainAspectRatio: false,
                       scales: {
-                        x: linAchse(farben, 'Schergeschwindigkeit γ̇ in 1/s', 50, true),
+                        x: linAchse(farben, 'Schergeschwindigkeit in 1/s', 50, true),
                         y: linAchse(farben, 'Schubspannung τ in Pa', Math.max(500, binghamYieldStress + binghamPlasticViscosity * 50 * 1.05), true),
                       },
                       plugins: {

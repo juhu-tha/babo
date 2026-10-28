@@ -375,7 +375,7 @@ export default function SchmidtHammerSimulator() {
 
                   {/* Skala R mit Einzelwerten und Median */}
                   <figure className="pruefgeraet w-full rounded-lg p-2 border m-0">
-                    <svg viewBox="0 0 300 64" className="w-full h-auto" role="img" aria-label={skalaLabel}>
+                    <svg viewBox="0 0 300 70" className="w-full h-auto" role="img" aria-label={skalaLabel}>
                       <title>{skalaLabel}</title>
                       <defs>
                         <linearGradient id="shm-skala" x1="0" y1="0" x2="1" y2="0">
@@ -387,17 +387,17 @@ export default function SchmidtHammerSimulator() {
                       {[10, 20, 30, 40, 50, 60, 70].map(r => (
                         <g key={r}>
                           <line x1={skalaX(r)} y1="32" x2={skalaX(r)} y2="38" stroke="var(--pg-kontur)" strokeWidth="1" />
-                          <text x={skalaX(r)} y="51" textAnchor="middle" fontSize="11" fill="var(--pg-text)">{r}</text>
+                          <text x={skalaX(r)} y="52" textAnchor="middle" fontSize="12" fill="var(--pg-text)">{r}</text>
                         </g>
                       ))}
-                      <text x="4" y="31" fontSize="11" fontWeight="bold" fill="var(--pg-text)">R</text>
+                      <text x="4" y="32" fontSize="12" fontWeight="bold" fill="var(--pg-text)">R</text>
                       {einzelwerte.map((v, i) => (
                         <circle key={i} cx={skalaX(v)} cy={14 - (i % 3) * 4} r="2.6" fill={stats.outliers.includes(v) ? 'var(--pg-akzent)' : 'var(--pg-text2)'} />
                       ))}
                       {stats.count > 0 && (
                         <g>
                           <line x1={skalaX(stats.median)} y1="19" x2={skalaX(stats.median)} y2="35" stroke="var(--pg-akzent)" strokeWidth="3" />
-                          <text x={Math.min(262, Math.max(38, skalaX(stats.median)))} y="62" textAnchor="middle" fontSize="11" fontWeight="bold" fill="var(--pg-akzent)">Median {formatDeZahl(stats.median, 1)}</text>
+                          <text x={Math.min(258, Math.max(42, skalaX(stats.median)))} y="67" textAnchor="middle" fontSize="12" fontWeight="bold" fill="var(--pg-akzent)">Median {formatDeZahl(stats.median, 1)}</text>
                         </g>
                       )}
                     </svg>
@@ -470,7 +470,7 @@ export default function SchmidtHammerSimulator() {
                     <strong className="text-base text-shiraz font-mono">{formatDeZahl(stats.mean, 1)}</strong>
                   </div>
                   <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/25">
-                    <span className="text-text-main/60 block text-[11px] uppercase font-bold">Standardabweichung <Fz>s</Fz></span>
+                    <span className="text-text-main/60 block text-[11px] uppercase font-bold">Standard&shy;abweichung <Fz>s</Fz></span>
                     <strong className="text-base text-text-main font-mono">{formatDeZahl(stats.stdDev, 2)}</strong>
                   </div>
                   <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/25">

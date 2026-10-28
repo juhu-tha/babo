@@ -407,7 +407,11 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
                   </defs>
 
                   {/* Kraft F mit Pfeil auf die obere Druckplatte */}
-                  <text x={cx - 8} y="16" textAnchor="end" fontSize="12" fontWeight="bold" fill="var(--pg-akzent)">F = {formatDeZahl(currentForceKN, 1)} kN</text>
+                  <text x={cx - 8} y="16" textAnchor="end" fontSize="12" fontWeight="bold" fill="var(--pg-akzent)">
+                    {testStatus === 'finished'
+                      ? <>F<tspan fontSize="9" dy="3">max</tspan><tspan dy="-3"> = {formatDeZahl(fMaxKN, 1)} kN</tspan></>
+                      : `F = ${formatDeZahl(currentForceKN, 1)} kN`}
+                  </text>
                   <line x1={cx} y1="4" x2={cx} y2="34" stroke="var(--pg-akzent)" strokeWidth="2.5" markerEnd="url(#spz-pfeil)" />
 
                   {/* obere Druckplatte */}
@@ -471,7 +475,7 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
               <div className="md:col-span-7 flex flex-col justify-between">
                 
                 {/* Real-time Display Cards */}
-                <div className="grid grid-cols-3 gap-2.5 mb-2.5">
+                <div className="grid grid-cols-1 min-[480px]:grid-cols-3 gap-2.5 mb-2.5">
                   <div className="bg-off-white text-text-main p-3 rounded-xl border border-home-grau/30 shadow-inner">
                     <span className="text-[11px] font-mono text-slate-600 font-bold uppercase tracking-wider block">Spaltkraft <Fz>F</Fz></span>
                     <span className="text-lg font-mono font-bold text-amber-700">
@@ -570,7 +574,7 @@ export default function Spaltzugversuch({ onNavigateToProtocols }: Spaltzugversu
               <div className="mt-2 p-4 bg-off-white rounded-xl border border-home-grau/30 flex flex-col gap-3 animate-in fade-in slide-in-from-bottom-2">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
                   <div>
-                    <span className="text-text-main/60 uppercase text-[11px] font-bold block">Spaltzugfestigkeit <Fz idx="ct,sp">f</Fz></span>
+                    <span className="text-text-main/60 uppercase text-[11px] font-bold block">Spaltzug&shy;festigkeit <Fz idx="ct,sp">f</Fz></span>
                     <strong className="text-base text-shiraz font-mono">{formatDeZahl(fctsp, 2)} N/mm²</strong>
                   </div>
                   <div>

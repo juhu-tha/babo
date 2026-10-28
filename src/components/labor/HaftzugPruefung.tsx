@@ -29,7 +29,7 @@ import { saveStoredLabProtocol } from '@/src/utils/studyStorage';
 import { AuswahlGruppe, alsOption } from '../ui/Auswahlgruppe';
 import { Fz } from '../ui/Formelzeichen';
 import { hoechstwert } from '@/src/calc/laborVersuch';
-import { useDiagrammFarben, linAchse, PfeilDefs, Masslinie } from './laborGrafik';
+import { useDiagrammFarben, linAchse, PfeilDefs, Masslinie, useSchriftFaktor } from './laborGrafik';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -350,6 +350,8 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
   };
 
   const farben = useDiagrammFarben();
+  const fs = useSchriftFaktor();
+  const zeile = 20 * fs;
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
@@ -570,7 +572,7 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
               
               {/* Prüfstelle im Schnitt mit Abreißgerät */}
               <figure className="pruefgeraet md:col-span-12 p-3 rounded-xl border flex flex-col items-center justify-center gap-2 m-0">
-                <svg viewBox="0 0 440 310" className="w-full max-w-[560px] h-auto select-none" role="img" aria-label={haftLabel}>
+                <svg viewBox={`0 0 440 ${fs > 1 ? 330 : 310}`} className="w-full max-w-[560px] h-auto select-none" role="img" aria-label={haftLabel}>
                   <title>{haftLabel}</title>
                   <PfeilDefs praefix="hzp" />
                   <defs>
@@ -590,7 +592,7 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
                   {/* Ringnut (Kernbohrung) */}
                   <rect x={CXH - halb - nut} y={schichtOben} width={nut} height={nutUnten - schichtOben} fill="var(--pg-grund)" stroke="var(--pg-kontur)" strokeWidth="0.8" />
                   <rect x={CXH + halb} y={schichtOben} width={nut} height={nutUnten - schichtOben} fill="var(--pg-grund)" stroke="var(--pg-kontur)" strokeWidth="0.8" />
-                  <Masslinie praefix="hzp" x1={CXH + halb + nut + 10} y1={fuge} x2={CXH + halb + nut + 10} y2={nutUnten} text={`t = ${formatDeWert(drillDepthMm)} mm`} />
+                  <Masslinie praefix="hzp" schrift={12 * fs} x1={CXH + halb + nut + 10} y1={fuge} x2={CXH + halb + nut + 10} y2={nutUnten} text={`t = ${formatDeWert(drillDepthMm)} mm`} />
 
                   {/* abgerissener Teil: Kern oberhalb der Bruchebene mit Kleber und Stempel */}
                   {isDetached && (
@@ -609,7 +611,7 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
                     {/* Kleber und Prüfstempel */}
                     <rect x={CXH - halb} y={schichtOben - 4} width={dPx} height="4" fill="var(--pg-hartfaser)" stroke="var(--pg-hartfaser-rand)" strokeWidth="0.6" />
                     <rect x={CXH - halb} y={schichtOben - 24} width={dPx} height="20" rx="2" fill="var(--pg-stahl)" stroke="var(--pg-kontur)" strokeWidth="1.5" />
-                    {dPx >= 90 && <text x={CXH} y={schichtOben - 10} textAnchor="middle" fontSize="12" fill="var(--pg-text)">Stempel Ø {stubDiameter} mm</text>}
+                    {dPx >= 150 && <text x={CXH} y={schichtOben - 10} textAnchor="middle" fontSize={12 * fs} fill="var(--pg-text)">Stempel Ø {stubDiameter} mm</text>}
                     <rect x={CXH - 9} y={schichtOben - 38} width="18" height="14" rx="2" fill="var(--pg-stahl2)" stroke="var(--pg-kontur)" strokeWidth="1" />
                     <line x1={CXH} y1={schichtOben - 38} x2={CXH} y2="70" stroke="var(--pg-kontur)" strokeWidth="3.5" />
                   </g>
@@ -621,26 +623,26 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
                   <rect x={CXH - fussAbstand - 16} y={schichtOben - 6} width="32" height="6" rx="1" fill="var(--pg-stahl3)" stroke="var(--pg-kontur)" strokeWidth="1" />
                   <rect x={CXH + fussAbstand - 16} y={schichtOben - 6} width="32" height="6" rx="1" fill="var(--pg-stahl3)" stroke="var(--pg-kontur)" strokeWidth="1" />
                   <rect x={CXH - Math.max(fussAbstand + 16, 100)} y="40" width={2 * Math.max(fussAbstand + 16, 100)} height="30" rx="4" fill="var(--pg-stahl)" stroke="var(--pg-kontur)" strokeWidth="1.5" />
-                  <text x={CXH} y="60" textAnchor="middle" fontSize="13" fontWeight="bold" fill="var(--pg-text)">
+                  <text x={CXH} y="60" textAnchor="middle" fontSize={13 * fs} fontWeight="bold" fill="var(--pg-text)">
                     {testStatus === 'running'
                       ? `F = ${formatDeZahl(currentForceKN, 2)} kN`
                       : testStatus === 'finished'
-                        ? <>F<tspan fontSize="10" dy="3">max</tspan><tspan dy="-3"> = {formatDeZahl(maxForceObserved, 2)} kN</tspan></>
+                        ? <>F<tspan fontSize={10 * fs} dy="3">max</tspan><tspan dy="-3"> = {formatDeZahl(maxForceObserved, 2)} kN</tspan></>
                         : 'Kraftmessdose 10 kN'}
                   </text>
 
                   {/* Zugkraft */}
                   <line x1={CXH} y1="38" x2={CXH} y2="6" stroke="var(--pg-akzent)" strokeWidth="2.5" markerEnd="url(#hzp-pfeil)" opacity={testStatus === 'idle' ? 0.45 : 1} />
-                  <text x={CXH + 10} y="22" fontSize="12" fontWeight="bold" fill="var(--pg-akzent)">Zugkraft F</text>
+                  <text x={CXH + 10} y="22" fontSize={12 * fs} fontWeight="bold" fill="var(--pg-akzent)">Zugkraft F</text>
 
                   {/* Legende */}
-                  <rect x="20" y="252" width="16" height="10" fill={schichtFarbe} stroke="var(--pg-kontur)" strokeWidth="0.8" />
-                  <text x="42" y="261" fontSize="12" fill="var(--pg-text)">{systemConfig.layerTopName}</text>
-                  <rect x="20" y="272" width="16" height="10" fill="var(--pg-beton2)" stroke="var(--pg-kontur)" strokeWidth="0.8" />
-                  <text x="42" y="281" fontSize="12" fill="var(--pg-text)">{systemConfig.layerSubstrateName}</text>
-                  <rect x="20" y="292" width="16" height="6" fill="var(--pg-stahl)" stroke="var(--pg-kontur)" strokeWidth="0.8" />
-                  <rect x="20" y="298" width="16" height="3" fill="var(--pg-hartfaser)" stroke="var(--pg-hartfaser-rand)" strokeWidth="0.5" />
-                  <text x="42" y="301" fontSize="12" fill="var(--pg-text)">Prüfstempel Ø {stubDiameter} mm, mit Epoxidharz aufgeklebt</text>
+                  <rect x="20" y={252} width="16" height="10" fill={schichtFarbe} stroke="var(--pg-kontur)" strokeWidth="0.8" />
+                  <text x="42" y={261 + (fs - 1) * 4} fontSize={12 * fs} fill="var(--pg-text)">{systemConfig.layerTopName}</text>
+                  <rect x="20" y={252 + zeile} width="16" height="10" fill="var(--pg-beton2)" stroke="var(--pg-kontur)" strokeWidth="0.8" />
+                  <text x="42" y={261 + zeile + (fs - 1) * 4} fontSize={12 * fs} fill="var(--pg-text)">{systemConfig.layerSubstrateName}</text>
+                  <rect x="20" y={252 + 2 * zeile} width="16" height="6" fill="var(--pg-stahl)" stroke="var(--pg-kontur)" strokeWidth="0.8" />
+                  <rect x="20" y={258 + 2 * zeile} width="16" height="3" fill="var(--pg-hartfaser)" stroke="var(--pg-hartfaser-rand)" strokeWidth="0.5" />
+                  <text x="42" y={261 + 2 * zeile + (fs - 1) * 4} fontSize={12 * fs} fill="var(--pg-text)">Prüfstempel Ø {stubDiameter} mm (aufgeklebt)</text>
                 </svg>
 
                 {/* Fortschritt */}
@@ -724,7 +726,7 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
                 </div>
 
                 <div className="bg-off-white p-3 rounded-xl border border-home-grau/20">
-                  <span className="text-[11px] uppercase font-bold text-text-main/60 block">Haftzugspannung <Fz>σ</Fz></span>
+                  <span className="text-[11px] uppercase font-bold text-text-main/60 block">Haftzug&shy;spannung <Fz>σ</Fz></span>
                   <span className="text-xl font-bold font-mono text-shiraz">
                     {formatDeZahl(currentStressMPa, 2)} <span className="text-xs font-normal">N/mm²</span>
                   </span>

@@ -31,6 +31,23 @@ export function useDiagrammFarben(): DiagrammFarben {
   return theme === 'dark' ? DUNKEL : HELL;
 }
 
+/**
+ * Schriftfaktor für breite Gerätezeichnungen (viewBox ≈ 440): auf schmalen Bildschirmen (< 640 px) wird die Zeichnung
+ * auf etwa 70 % verkleinert – die Schrift wird dann um 1,5 vergrößert, damit sie lesbar bleibt (≈ 11 px).
+ */
+export function useSchriftFaktor(): number {
+  const [schmal, setSchmal] = React.useState(false);
+  React.useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return;
+    const mq = window.matchMedia('(max-width: 639px)');
+    const neu = () => setSchmal(mq.matches);
+    neu();
+    mq.addEventListener?.('change', neu);
+    return () => mq.removeEventListener?.('change', neu);
+  }, []);
+  return schmal ? 1.5 : 1;
+}
+
 /** Lineare Achse 0 … glatte Obergrenze ≥ maxWert; Titel kurz halten („σ in N/mm²“), sonst wird er abgeschnitten */
 export function linAchse(farben: DiagrammFarben, titel: string, maxWert: number, gitter: boolean) {
   const a = schoeneAchse(maxWert);

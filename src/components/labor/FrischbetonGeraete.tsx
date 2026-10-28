@@ -8,7 +8,7 @@
 import React from 'react';
 import { formatDeWert } from '@/src/utils/numberFormat';
 import { ausbreitDurchmesser } from '@/src/calc/laborVersuch';
-import { PfeilDefs, Masslinie } from './laborGrafik';
+import { PfeilDefs, Masslinie, useSchriftFaktor } from './laborGrafik';
 
 // ── Ausbreittisch ──────────────────────────────────────────────────────────────
 const M = 300 / 700; // px je mm in der Draufsicht (Platte 700 mm → 300 px)
@@ -104,6 +104,7 @@ export function AusbreitSeitenansicht({ ausbreitmass, kegelGehoben, hubschlaege,
 export type SetzForm = 'setzung' | 'scherung' | 'zusammenbruch';
 
 export function SetzversuchAnsicht({ setzmass, gezogen, form }: { setzmass: number; gezogen: boolean; form: SetzForm }) {
+  const fs = useSchriftFaktor();
   const k = 0.6; // px je mm
   const boden = 240;
   const hForm = 300 * k;
@@ -140,9 +141,9 @@ export function SetzversuchAnsicht({ setzmass, gezogen, form }: { setzmass: numb
       <rect x={formX + roB + 8} y={boden - hForm * 0.62} width="10" height="6" rx="2" fill="var(--pg-stahl3)" stroke="var(--pg-kontur)" />
       {!gezogen && (
         <g>
-          <Masslinie praefix="slp" x1={cxB + ruB + 30} y1={boden} x2={cxB + ruB + 30} y2={boden - hForm} text="300 mm" />
-          <text x={cxB} y={boden - hForm - 8} textAnchor="middle" fontSize="11" fill="var(--pg-text)">Ø 100 mm</text>
-          <text x={cxB} y={boden + 24} textAnchor="middle" fontSize="11" fill="var(--pg-text)">Ø 200 mm</text>
+          <Masslinie praefix="slp" schrift={12 * fs} x1={cxB + ruB + 30} y1={boden} x2={cxB + ruB + 30} y2={boden - hForm} text="300 mm" />
+          <text x={cxB} y={boden - hForm - 8} textAnchor="middle" fontSize={11 * fs} fill="var(--pg-text)">Ø 100 mm</text>
+          <text x={cxB} y={boden + 24} textAnchor="middle" fontSize={11 * fs} fill="var(--pg-text)">Ø 200 mm</text>
         </g>
       )}
       {gezogen && (
@@ -151,10 +152,10 @@ export function SetzversuchAnsicht({ setzmass, gezogen, form }: { setzmass: numb
           <line x1={cxF - roB} y1={boden - hForm} x2={cxB - 30} y2={boden - hForm} stroke="var(--pg-mass)" strokeWidth="1" strokeDasharray="4 3" />
           <line x1={cxB - 30} y1={topY} x2={cxB + 30} y2={topY} stroke="var(--pg-mass)" strokeWidth="1" strokeDasharray="4 3" />
           {setzmass > 0 && (
-            <Masslinie praefix="slp" x1={cxB + 22} y1={boden - hForm} x2={cxB + 22} y2={topY} text={`h = ${formatDeWert(setzmass)} mm`} />
+            <Masslinie praefix="slp" schrift={12 * fs} x1={cxB + 22} y1={boden - hForm} x2={cxB + 22} y2={topY} text={`h = ${formatDeWert(setzmass)} mm`} />
           )}
-          <text x={cxF} y={boden + 24} textAnchor="middle" fontSize="11" fill="var(--pg-text)">Trichter (gezogen)</text>
-          <text x={cxB} y={boden + 24} textAnchor="middle" fontSize="11" fill="var(--pg-text)">Beton</text>
+          <text x={cxF} y={boden + 24} textAnchor="middle" fontSize={11 * fs} fill="var(--pg-text)">Trichter (gezogen)</text>
+          <text x={cxB} y={boden + 24} textAnchor="middle" fontSize={11 * fs} fill="var(--pg-text)">Beton</text>
         </g>
       )}
     </svg>

@@ -187,7 +187,7 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
                  disabled={testStatus !== 'idle'}
                  className="flex-1 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-bold flex items-center justify-center gap-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                >
-                 <Play size={18} /> Start
+                 <Play size={18} /> Versuch starten
                </button>
                <button
                  onClick={resetTest}
@@ -227,7 +227,8 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
                      {/* Stativ */}
                      <rect x="20" y="236" width="170" height="10" fill="var(--pg-stahl2)" stroke="var(--pg-kontur)" strokeWidth="1.2" />
                      <rect x="28" y="12" width="10" height="224" fill="var(--pg-stahl)" stroke="var(--pg-kontur)" strokeWidth="1.2" />
-                     <rect x="38" y="30" width="62" height="10" fill="var(--pg-stahl)" stroke="var(--pg-kontur)" strokeWidth="1.2" />
+                     <rect x="38" y="30" width="80" height="10" fill="var(--pg-stahl)" stroke="var(--pg-kontur)" strokeWidth="1.2" />
+                     <rect x="102" y="24" width="12" height="22" rx="1" fill="var(--pg-stahl2)" stroke="var(--pg-kontur)" strokeWidth="1" />
                      {/* Wasserbad mit Probengefäß */}
                      <rect x="56" y="128" width="104" height="104" rx="4" fill="var(--pg-wasser)" stroke="var(--pg-wasser-rand)" strokeWidth="1.2" />
                      <text x="108" y="230" textAnchor="middle" fontSize="11" fill="var(--pg-text)">Wasserbad 25 °C</text>
@@ -235,16 +236,17 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
                      <rect x="76" y={oberflaecheY} width="64" height="58" fill="var(--pg-bitumen)" stroke="var(--pg-bitumen-rand)" strokeWidth="1.2" />
                      {/* Fallstab mit Zusatzgewicht und Nadel */}
                      <g transform={`translate(0 ${spitzeY - oberflaecheY})`} className="transition-transform duration-300">
-                       <rect x="96" y="40" width="24" height="44" rx="2" fill="var(--pg-stahl2)" stroke="var(--pg-kontur)" strokeWidth="1.2" />
-                       <text x="108" y="66" textAnchor="middle" fontSize="11" fontWeight="bold" fill="var(--pg-text)">100 g</text>
+                       <line x1="108" y1="8" x2="108" y2="52" stroke="var(--pg-kontur)" strokeWidth="3" />
+                       <rect x="94" y="52" width="28" height="34" rx="2" fill="var(--pg-stahl2)" stroke="var(--pg-kontur)" strokeWidth="1.2" />
+                       <text x="108" y="73" textAnchor="middle" fontSize="11" fontWeight="bold" fill="var(--pg-text)">100 g</text>
                        <line x1="108" y1="84" x2="108" y2={oberflaecheY - 2} stroke="var(--pg-kontur)" strokeWidth="2.5" />
                        <path d={`M 106.5 ${oberflaecheY - 2} L 108 ${oberflaecheY + 2} L 109.5 ${oberflaecheY - 2} Z`} fill="var(--pg-kontur)" />
                      </g>
                      {/* Nadelspitze in der Probe (über dem Bitumen sichtbar) */}
-                     {tiefeEinheiten > 0 && <line x1="108" y1={oberflaecheY} x2="108" y2={spitzeY} stroke="var(--pg-bitumen-rand)" strokeWidth="2" />}
+                     {tiefeEinheiten > 0 && <line x1="108" y1={oberflaecheY} x2="108" y2={spitzeY} stroke="var(--pg-stahl3)" strokeWidth="2.5" />}
                      {/* Skala der Eindringtiefe */}
-                     <text x="226" y="132" textAnchor="middle" fontSize="11" fontWeight="bold" fill="var(--pg-text)">Eindringtiefe</text>
-                     <text x="226" y="145" textAnchor="middle" fontSize="11" fill="var(--pg-text2)">in 0,1 mm</text>
+                     <text x="226" y="118" textAnchor="middle" fontSize="11" fontWeight="bold" fill="var(--pg-text)">Eindringtiefe</text>
+                     <text x="226" y="131" textAnchor="middle" fontSize="11" fill="var(--pg-text2)">in 0,1 mm</text>
                      <line x1="196" y1={oberflaecheY} x2="196" y2={oberflaecheY + 80} stroke="var(--pg-kontur)" strokeWidth="1.2" />
                      {[0, 50, 100, 150, 200].map(v => (
                        <g key={v}>
@@ -258,7 +260,7 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
                      <text x="270" y="40" textAnchor="end" fontSize="12" fill="var(--pg-text)">{formatDeWert(Math.round(tiefeEinheiten))} · 0,1 mm</text>
                    </svg>
                  ) : (
-                   <svg viewBox="0 0 280 270" className="w-full h-auto select-none" role="img" aria-label={rukLabel}>
+                   <svg viewBox="0 0 300 270" className="w-full h-auto select-none" role="img" aria-label={rukLabel}>
                      <title>{rukLabel}</title>
                      {/* Heizplatte */}
                      <rect x="30" y="246" width="180" height="10" rx="2" fill={testStatus === 'running' ? 'var(--pg-akzent)' : 'var(--pg-stahl3)'} stroke="var(--pg-kontur)" strokeWidth="1" />
@@ -285,8 +287,8 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
                      <rect x="248" y={230 - ((temperatur - 0) / 100) * 200} width="6" height={((temperatur - 0) / 100) * 200} rx="3" fill="var(--pg-akzent)" />
                      {[20, 40, 60, 80].map(t => (
                        <g key={t}>
-                         <line x1="240" y1={230 - (t / 100) * 200} x2="246" y2={230 - (t / 100) * 200} stroke="var(--pg-kontur)" strokeWidth="1" />
-                         <text x="238" y={234 - (t / 100) * 200} textAnchor="end" fontSize="11" fill="var(--pg-text)">{t} °C</text>
+                         <line x1="256" y1={230 - (t / 100) * 200} x2="262" y2={230 - (t / 100) * 200} stroke="var(--pg-kontur)" strokeWidth="1" />
+                         <text x="264" y={234 - (t / 100) * 200} fontSize="11" fill="var(--pg-text)">{t} °C</text>
                        </g>
                      ))}
                      <text x="120" y="20" textAnchor="middle" fontSize="12" fontWeight="bold" fill="var(--pg-akzent)">T = {formatDeZahl(temperatur, 1)} °C</text>
