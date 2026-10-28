@@ -108,8 +108,8 @@
       },
       {
         "titel": "Vergleich",
-        "erklaerung": "Kritischer Wert für einen Ausreißer nach ISO 5725-2 (größter oder kleinster Wert, α = 5 %; entspricht einseitig 2,5 %) für n = 10; auch die 1-%-Grenze 2,48 wird überschritten:",
-        "formel": "G = 2{,}74 > G_{krit} = 2{,}29 \\;\\Rightarrow\\; \\text{auffällig}"
+        "erklaerung": "Kritische Werte nach ISO 5725-2, Tab. 5, für n = 10 (größter oder kleinster Wert): 2,29 bei α = 5 % (auffällig, entspricht einseitig 2,5 %) und 2,48 bei α = 1 % (Ausreißer). Beide werden überschritten:",
+        "formel": "G = 2{,}74 > G_{krit,5\\,\\%} = 2{,}29 \\text{ und } > G_{krit,1\\,\\%} = 2{,}48 \\;\\Rightarrow\\; \\text{statistischer Ausreißer nach ISO 5725-2}"
       }
     ],
     "Statistik.literatur": [

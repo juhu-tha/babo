@@ -17,7 +17,8 @@ export function zustandsgrenzen(w: number, wL: number, wP: number) {
 
   const iP = wL - wP;
   const iC = (wL - w) / iP;
-  // Konsistenzbereiche nach DIN EN ISO 14688-2 / DIN 18122
+  // Konsistenzbereiche in der Einteilung der früheren DIN 18122-1 (Lehrkonvention). DIN EN ISO 14688-2 grenzt abweichend ab
+  // (I_C < 0,25 / 0,25–0,50 / 0,50–0,75 / 0,75–1,00 / > 1,00) – Frage T2-B-1 der Modulprüfung Tranche 2, vorläufig, F-Freigabe.
   const zustand = iC < 0 ? 'flüssig' : iC < 0.5 ? 'breiig' : iC < 0.75 ? 'weich' : iC < 1.0 ? 'steif' : 'halbfest / fest';
   // Plastizitätsdiagramm DIN 18196: A-Linie I_P = 0,73·(w_L − 20); Zwischenbereich 4 ≤ I_P < 7 oberhalb der A-Linie
   const aLinie = 0.73 * (wL - 20);
@@ -36,7 +37,7 @@ export function zustandsgrenzen(w: number, wL: number, wP: number) {
  *    w_L = Wassergehalt bei N = 25 (HAW Kiel, Laborblatt „Fließgrenzengerät nach Casagrande“, 2025, nach DIN EN ISO 17892-12)
  *  - Einpunktverfahren: w_L = w_N·(N/25)^0,121 (ASTM D4318, Verfahren B; Exponent für DIN EN ISO 17892-12 vorläufig, F-Freigabe)
  *  - Ausrollgrenze w_P: Mittelwert der Ausrollversuche (Walzen von 3 mm Durchmesser zerbröckeln)
- *  - I_P = w_L − w_P, I_C = (w_L − w)/I_P und Zustandsform wie zustandsgrenzen() (DIN 18122, DIN EN ISO 14688-2)
+ *  - I_P = w_L − w_P, I_C = (w_L − w)/I_P und Zustandsform wie zustandsgrenzen() (Einteilung der früheren DIN 18122-1)
  *  - Bodengruppen: TL/UL w_L < 35 %, TM/UM 35 … 50 %, TA/UA > 50 %; oberhalb der A-Linie und I_P ≥ 7 % Ton,
  *    unterhalb oder I_P < 4 % Schluff, dazwischen (4 ≤ I_P < 7 % oberhalb der A-Linie) Zwischenbereich UL/TL;
  *    organogen: OU (unterhalb A-Linie, w_L 35 … 50 %), OT (oberhalb A-Linie, w_L > 50 %) – Organik selbst nicht bestimmbar.
