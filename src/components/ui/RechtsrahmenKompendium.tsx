@@ -89,7 +89,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     keyDuties: [
       'Verbindliche Einhaltung des Unions-Treibhausgasbudgets für 2030–2050.',
       'Sektorübergreifende Überprüfung der nationalen Energie- und Klimapläne (NECPs).',
-      'Gebäudesektor muss bis 2030 mindestens 60 % seiner betrieblichen Emissionen gegenüber 2015 einsparen.',
+      'Für den Gebäudesektor nennt die Renovierungswelle (COM(2020) 662) als Zielmarke −60 % THG bis 2030 gegenüber 2015.',
       'Festlegung eines wissenschaftlich fundierten Zwischenziels für 2040 (Empfehlung: -90 % THG).'
     ],
     impactOnMaterials: 'Macht CO₂ zu einem knappen und teuren Wirtschaftsgut. Zwingt Baustoffhersteller zu radikalen Dekarbonisierungsfahrplänen bei der Klinker-, Stahl- und Ziegelherstellung.',
@@ -146,7 +146,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     keyDuties: [
       'Erreichung von -65 % THG bis 2030, -88 % bis 2040 und Netto-Null bis 2045.',
       'Sektor Gebäude muss bis 2030 seinen Ausstoß nahezu halbieren.',
-      'Gesetzliche Pflicht zu Gegensteuerungsmaßnahmen bei Verfehlung der Sektorziele.',
+      'Seit der Novelle 2024 sektorübergreifende, mehrjährige Gesamtrechnung: Nachsteuerung, wenn die Projektionsdaten zwei Jahre in Folge eine Zielverfehlung zeigen.',
       'Bildet die verfassungsrechtliche Verankerung (BVerfG-Klimabeschluss 2021).'
     ],
     impactOnMaterials: 'Treibt das nationale Gebäudeenergiegesetz (GEG), die Bundesförderung für effiziente Gebäude (BEG) und die Einführung von grauen Emissionskriterien in deutschen Förderkulissen (QNG) voran.',
@@ -176,7 +176,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
       'Lebenszyklus-GWP (GWP_tot in kg CO₂e/m²a): Verpflichtende Ausweisung im Energieausweis ab 2028 (> 1000 m²) und ab 2030 für alle Neubauten.',
       'Sanierung Nichtwohngebäude: Mindesteffizienzstandards (MEPS) – 16 % der schlechtesten Bestandsgebäude bis 2030, 26 % bis 2033 sanieren.',
       'Sanierung Wohngebäude: Senkung des durchschnittlichen Primärenergieverbrauchs um 16 % bis 2030 und 20–22 % bis 2035 (55 % durch die schlechtesten 43 % des Bestands).',
-      'Fossiler Kesselausstieg: Komplettes Verbot fossiler Heizkessel bis spätestens 2040; Subventionsstopp ab 01.01.2025.',
+      'Fossiler Kesselausstieg: Ziel des vollständigen Ausstiegs aus fossilen Heizkesseln bis 2040 (Fahrplan in den nationalen Gebäuderenovierungsplänen, kein unmittelbares EU-Verbot); Subventionsstopp ab 01.01.2025.',
       'Solar-Mandat: Schrittweise Verpflichtung zur Solarenergienutzung auf Neubauten und öffentlichen/gewerblichen Dächern.'
     ],
     impactOnMaterials: 'Durch die Pflicht zur Berechnung des Lebenszyklus-GWP nach EN 15978 werden Baumaterialien mit hoher grauer Energie (Module A1–A3) unmittelbar bewertungsrelevant für die Baugenehmigung und den Gebäudewert.',
@@ -186,7 +186,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
       { year: '2028', text: 'ZEB-Standard für neue öffentliche Gebäude; Lebenszyklus-GWP-Ausweis für alle Neubauten > 1000 m².' },
       { year: '2030', text: 'ZEB & GWP für ausnahmslos alle Neubauten; 16 % MEPS-Sanierung Nichtwohn.' },
       { year: '2035', text: '20–22 % Primärenergiereduktion im Wohngebäudebestand.' },
-      { year: '2040', text: 'Vollständiger Ausstieg aus fossilen Brennstoffen in der Gebäudeheizung.' }
+      { year: '2040', text: 'Zieljahr für den Ausstieg aus fossilen Heizkesseln (nationale Fahrpläne).' }
     ],
     formula: {
       math: '\\text{GWP}_{\\text{life-cycle}} = \\frac{\\text{GWP}_{\\text{emb}} + \\sum_{t=1}^{50} \\text{GWP}_{\\text{use}}(t) + \\text{GWP}_{\\text{EoL}}}{A_{\\text{NFA}} \\cdot 50\\,\\text{a}} \\quad [\\text{kg CO}_2\\text{e/(m}^2\\cdot\\text{a})]',
@@ -209,7 +209,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     keyDuties: [
       'Stufenweise Bio-Treppe für flüssige/gasförmige Neuanlagen ab 2029 (10 % in 2029, 15 % in 2030, 30 % in 2035, 60 % in 2040, 100 % in 2045).',
       'Unbedingte Nachrüstpflicht: Dämmung der obersten Geschossdecke (§ 35 GModG, U ≤ 0,24 W/m²K) und von Wärmeverteilungsleitungen (§ 69 GModG).',
-      'Bedingte Sanierungspflicht: Einhaltung der Bauteil-U-Werte nach § 36 GModG bei mehr als 10 % Flächenänderung (Außenwand U ≤ 0,24, Dach U ≤ 0,14, Fenster Uw ≤ 1,30 W/m²K).',
+      'Bedingte Sanierungspflicht: Einhaltung der Bauteil-U-Werte nach § 36 GModG bei mehr als 10 % Flächenänderung (Außenwand U ≤ 0,24, Steildach U ≤ 0,24, Flachdach U ≤ 0,20, Fenster Uw ≤ 1,30 W/m²K).',
       'Ausnahmeregelung für Alt-Eigentümer (Stichtag 01.02.2002) mit 2-Jahres-Erfüllungsfrist bei Eigentumsübergang (§ 35 Abs. 3, § 69 Abs. 3 GModG).',
       'Wegfall des pauschalen 30-Jahre-Kesselaustausch-Betriebsverbots (bisher § 72 GEG a.F. entfallen).'
     ],
@@ -433,7 +433,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     keyDuties: [
       'Strikte Getrennthaltungspflicht auf der Baustelle vor Ort.',
       'Dokumentationspflicht für Ausnahmen (technische Unmöglichkeit oder unverhältnismäßige Kosten).',
-      'Erfüllung der gesetzlichen Quote: Mindestens 70 Masse-% aller Bau- und Abbruchabfälle müssen stofflich recycelt werden.',
+      'Zielvorgabe § 14 Abs. 3 KrWG: mindestens 70 Masse-% der nicht gefährlichen Bau- und Abbruchabfälle (ohne Boden und Steine) für Wiederverwendung, Recycling und sonstige stoffliche Verwertung (einschließlich Verfüllung).',
       'Vorrang für selektiven Rückbau und sortenreine Bauteiltrennung vor dem Totalabbruch.'
     ],
     impactOnMaterials: 'Verbundwerkstoffe (z. B. verklebte WDVS-Systeme) werden durch Entsorgungskosten massiv benachteiligt; trennbare Konstruktionen (mechanisch befestigt, sortenrein lösbar) gewinnen an Marktwert.',
@@ -449,7 +449,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     id: 'eu_ets_1',
     shortName: 'EU-ETS I (Industrie)',
     fullName: 'Europäisches Emissionshandelssystem I – Energieintensive Baustoffindustrie',
-    norm: 'Richtlinie 2003/87/EG i.d.F. der Richtlinie (EU) 2023/958',
+    norm: 'Richtlinie 2003/87/EG i.d.F. der Richtlinie (EU) 2023/959',
     level: 'ebene_4_bepreisung',
     levelLabel: 'Ebene 4: Emissionshandel & Bepreisung',
     legalType: 'EU-Richtlinie (national umzusetzen)',
@@ -472,7 +472,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     formula: {
       math: '\\Delta C_{\\text{Zement}} = \\text{Klinkeranteil} \\cdot 0{,}86\\,\\frac{\\text{t CO}_2}{\\text{t Klinker}} \\cdot P_{\\text{EUA}} \\cdot (1 - f_{\\text{free}})',
       explanation: 'Mehrkosten pro Tonne Zement durch CO2-Zertifikatspreis P_EUA bei sinkender freier Zuteilung f_free.',
-      source: 'EU-ETS Richtlinie (EU) 2023/958'
+      source: 'Richtlinie 2003/87/EG i.d.F. der Richtlinie (EU) 2023/959'
     }
   },
   {
@@ -1252,14 +1252,14 @@ export const RechtsrahmenKompendium: React.FC = () => {
                 items: [
                   'EBV (01.08.2023): Mineralische Ersatzbaustoffe bundesweit einheitlich klassifiziert; Katasterpflicht ab 250 m³.',
                   'CBAM (01.10.2023): Start der Übergangsphase mit Quartalsberichten über Importemissionen für Zement und Stahl.',
-                  'GEG (01.01.2024): 65-%-EE-Pflicht bei Neubauten in Neubaugebieten.',
+                  'GEG (01.01.2024): 65-%-EE-Pflicht bei Neubauten in Neubaugebieten (mit dem GModG am 29.07.2026 entfallen).',
                   'EPBD IV (Mai 2024): Inkrafttreten der Richtlinie EU 2024/1275; 24 Monate Umsetzungsfrist.',
                   'ESPR (Juli 2024): Inkrafttreten der Ökodesign-Verordnung EU 2024/1781.'
                 ]
               },
               {
                 year: '2025',
-                status: 'Kommender Stichtag',
+                status: 'Bereits wirksam',
                 title: 'Subventionsstopp & Vorbereitung ETS II',
                 badgeColor: 'bg-blue-100 text-blue-800 border-blue-300',
                 items: [
@@ -1275,8 +1275,8 @@ export const RechtsrahmenKompendium: React.FC = () => {
                 title: 'Nationale EPBD-Umsetzung, CBAM-Zahlungen & Wärmeplanung',
                 badgeColor: 'bg-amber-100 text-amber-900 border-amber-300',
                 items: [
-                  'EPBD Nationale Frist (Mai 2026): Novelle des deutschen Gebäudeenergiegesetzes (GEG) zur Verankerung der EPBD-Vorgaben.',
-                  'CBAM Zahlungsphase (01.01.2026): Importeure von Zement, Stahl und Aluminium müssen offizielle CBAM-Zertifikate erwerben.',
+                  'EPBD Nationale Frist (Mai 2026): Umsetzung im Gebäudemodernisierungsgesetz (GModG, in Kraft seit 29.07.2026, zweite Stufe ab 01.01.2027).',
+                  'CBAM Zertifikatspflicht (01.01.2026): Für Einfuhren von Zement, Stahl und Aluminium ab 2026 sind CBAM-Zertifikate abzugeben (Verkauf ab 01.02.2027, rückwirkend für 2026).',
                   'Wärmeplanung Großstädte: Bis 30.06.2026 müssen Kommunen > 100 000 Einw. Wärmepläne vorlegen.',
                   'EU-ETS I Klinker-Abschlag: Erstes Abschmelzen freier Zertifikatezuteilungen für Zementwerke (-2,5 %).'
                 ]
@@ -1284,10 +1284,11 @@ export const RechtsrahmenKompendium: React.FC = () => {
               {
                 year: '2027',
                 status: 'Kostenrevolution',
-                title: 'Start des EU-ETS II & Digitaler Bauproduktpass',
+                title: 'GModG zweite Stufe & Digitaler Bauproduktpass',
                 badgeColor: 'bg-purple-100 text-purple-900 border-purple-300',
                 items: [
-                  'EU-ETS II Start: Europaweiter CO₂-Handel für Heizöl und Erdgas im Gebäudesektor beginnt (sprunghafter Preisanstieg bei fossilen Heizungen).',
+                  'EU-ETS II: Der ursprünglich für 2027 geplante Start ist auf 2028 verschoben; bis dahin gilt in Deutschland das BEHG.',
+                  'GModG (01.01.2027): neues Referenzgebäude, DIN/TS 18599:2025-10, neue Primärenergiefaktoren, Energieausweis digital.',
                   'BauPVO Digitaler Bauproduktpass: Erste delegierte Rechtsakte verpflichten zur digitalen Bereitstellung von EPDs per QR-Code.'
                 ]
               },
@@ -1328,10 +1329,10 @@ export const RechtsrahmenKompendium: React.FC = () => {
               {
                 year: '2040',
                 status: 'Fossilausstieg',
-                title: 'Komplettes Verbot fossiler Kessel in der gesamten EU',
+                title: 'Zieljahr Ausstieg aus fossilen Heizkesseln',
                 badgeColor: 'bg-amber-100 text-amber-900 border-amber-300',
                 items: [
-                  'EPBD Fossilausstieg: Spätestens 2040 dürfen keine Gebäude in der EU mehr mit fossilen Brennstoffen (Erdgas, Öl, Kohle) beheizt werden.'
+                  'EPBD: Ziel des vollständigen Ausstiegs aus fossilen Heizkesseln bis 2040 über nationale Fahrpläne (kein unmittelbares Verbot in der Richtlinie); in Deutschland Bio-Treppe nach GModG (60 % klimafreundliche Brennstoffe ab 2040).'
                 ]
               },
               {

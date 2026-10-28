@@ -8,7 +8,7 @@
  *   from-/via-/to-…-(800|850|900|950) bzw. -black, bg-[#…] mit relativer Leuchtdichte < 0,04
  *   sowie Inline-Stile `style={{ background(Color): '#…' }}` in derselben Zeile.
  * Transparente Tönungen unter 50 % Deckkraft (bg-black/10, bg-slate-800/10 …) gelten nicht als dunkel.
- * Bewusste Ausnahmen (Overlays/Backdrops, Tooltips, SVG-/Canvas-Bühnen, Diagramm-Interna,
+ * Bewusste Ausnahmen (Overlays/Backdrops, Tooltips, bewusst dunkle Ansichten, Diagramm-Interna,
  * Material- und Gerätedarstellungen) stehen mit Begründung in AUSNAHMEN (Datei|Klasse → Anzahl).
  *   node scripts/qa/check-design.mjs [--liste]   → Exit 1 bei neuen dunklen Hintergründen.
  * tests/designDunkleBoxen.test.ts prüft dieselbe Logik (Grenze 0). Grundsatz: docs/architektur.md, Abschnitt Design.
@@ -24,7 +24,6 @@ export const GRENZE = 0;
 
 const D = 'Overlay/Backdrop hinter Dialog oder Menü';
 const T = 'Tooltip/Hover-Hinweis (kurzzeitig eingeblendet)';
-const S = 'SVG-/Canvas-Bühne mit auf dunklen Grund abgestimmter Grafik (Linien/Beschriftung hell)';
 const I = 'Diagramm-Interna (Marker, Zeiger, Balkenfüllung, Legendenpunkt)';
 const W = 'Material-/Gerätedarstellung (Stahlplatten, Bitumen, Düse, Messgerät, Schichtfarbe)';
 
@@ -46,13 +45,8 @@ export const AUSNAHMEN = {
   'src/modules/stahlbetoninstandhaltung/hilfen.tsx|bg-text-main': [2, T],
   'src/modules/bpverkehrswegebau/RstoRechnerTab.tsx|bg-black/95': [1, T],
   'src/modules/Analytik.tsx|bg-slate-800': [1, T],
-  // (d) SVG-/Canvas-Bühnen
-  'src/components/forensik/SchadensforensikSimulator.tsx|bg-slate-900': [1, S],
-  'src/modules/Korrosion.tsx|bg-slate-900': [1, S],
-  'src/modules/KriechenSchwinden.tsx|bg-slate-900': [1, S],
-  'src/modules/SchadreaktionenBeton.tsx|bg-slate-900': [1, S],
+  // (d) Bewusst dunkle Ansichten (REM-Sichtfeld, Nachtvorschau, Schemadarstellung); SVG-Bühnen sind seit 28.10.2026 hell (.svg-buehne in src/index.css)
   'src/modules/Zementchemie.tsx|bg-slate-900': [1, 'REM-Ansicht (Rasterelektronenmikroskop, dunkles Sichtfeld)'],
-  'src/modules/MessenPruefen.tsx|bg-slate-900': [1, S],
   'src/modules/MaterialitaetArchitektur.tsx|bg-slate-900': [1, 'Lichtsimulation „Nacht“ (bewusst dunkle Vorschau)'],
   'src/modules/MaterialitaetArchitektur.tsx|bg-slate-950': [1, 'Lichtsimulation „Nacht“ (bewusst dunkle Vorschau)'],
   'src/modules/MaterialitaetArchitektur.tsx|bg-slate-900/90': [1, 'Lichtsimulation „Nacht“ (bewusst dunkle Vorschau)'],

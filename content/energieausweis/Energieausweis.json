@@ -2,7 +2,7 @@
   "texte": {
     "derEnergieausweisNachGmodg": " Der Energieausweis (nach GModG/GEG & DIN V 18599)",
     "derEnergiebedarfsausweisBewertetDie": "Der **Energiebedarfsausweis** bewertet die energetische Beschaffenheit eines Gebäudes anhand einer ingenieurmäßigen Bilanzierung von Hüllfläche und Anlagentechnik nach **DIN V 18599**. Im Gegensatz zum verbrauchsbasierten Ausweis ist er **vollständig nutzerunabhängig** und erlaubt die objektive energetische Vergleichbarkeit von Gebäuden unabhängig vom individuellen Heizverhalten der Bewohner.",
-    "rechtsstandBeschlussVonBundestag": "**Rechtsstand:** Beschluss von Bundestag und Bundesrat am 10.07.2026, Verkündung am 28.07.2026, Inkrafttreten gestaffelt ab 29.07.2026. Das GEG heißt seither Gebäudemodernisierungsgesetz; Paragrafen zu Neubauanforderungen (§§ 15, 16) und Energieausweisen (§§ 79–88) bleiben bestehen. Die 65-%-Vorgabe entfällt; für neu eingebaute Gas- und Ölheizungen gilt eine „Bio-Treppe“ mit 10 % (2029), 15 % (2030), 30 % (2035) und 60 % (2040) klimafreundlichen Brennstoffen.",
+    "rechtsstandBeschlussVonBundestag": "**Rechtsstand:** Bundestagsbeschluss im Juli 2026 (BR-Drs. 409/26, kein Vermittlungsausschuss), Verkündung am 28.07.2026 (BGBl. 2026 I Nr. 226), Inkrafttreten gestaffelt: erste Stufe am 29.07.2026, zweite Stufe (u. a. neues Referenzgebäude, Energieausweise, DIN/TS 18599:2025-10, Ökobilanz) am 01.01.2027. Das GEG heißt seither Gebäudemodernisierungsgesetz; die Paragrafennummern zu Neubauanforderungen (§§ 15, 16) und Energieausweisen (§§ 79 ff.) bleiben erhalten. Die 65-%-Vorgabe entfällt; für neu eingebaute Gas- und Ölheizungen gilt eine „Bio-Treppe“ mit 10 % (2029), 15 % (2030), 30 % (2035) und 60 % (2040) klimafreundlichen Brennstoffen.",
     "übersichtSkala": " Übersicht & Skala",
     "annahmen3StufenRechnung": " Annahmen & 3-Stufen-Rechnung",
     "interaktiverBedarfsRechner": " Interaktiver Bedarfs-Rechner",
@@ -15,7 +15,7 @@
     "ermöglichtEnergetischeSanierungsfahrplän": "Ermöglicht energetische Sanierungsfahrpläne (iSFP) und deckt bauliche Schwachstellen zuverlässig auf.",
     "verbrauchsausweisAbrechnungsbasiert": " Verbrauchsausweis (Abrechnungsbasiert)",
     "eingeschränktZulässig": "Eingeschränkt zulässig",
-    "basiertAufDenRealen": "Basiert auf den **realen Heizkostenabrechnungen** von drei zusammenhängenden, aktuellen Jahren unter rechnerischer Klimabereinigung.",
+    "basiertAufDenRealen": "Basiert auf den **realen Heizkostenabrechnungen** von drei zusammenhängenden, aktuellen Jahren unter rechnerischer Klimabereinigung. Ab 01.01.2027 genügen bei Wohngebäuden zwei Verbrauchsjahre (jüngste Periode höchstens 18 Monate zurück); Nichtwohn- und gemischt genutzte Gebäude erhalten dann nur noch den bilanzierten Ausweis.",
     "starkNutzerabhängigSparsamesHeizen": "**Stark nutzerabhängig:** Sparsames Heizen oder Leerstand verfälscht die Kennwerte scheinbar ins Positive; hohes Komfortheizen (23 °C) bestraft das Gebäude.",
     "günstigerInDerErstellung": "Günstiger in der Erstellung, gibt aber **keine verlässliche Auskunft** über die tatsächliche bauliche Dämmqualität.",
     "nurZulässigBeiMehrfamilienhäusern": "Nur zulässig bei Mehrfamilienhäusern (≥ 5 Wohneinheiten) oder Bestandsgebäuden, die bereits das Niveau der WSVO 1977 erfüllen.",
@@ -38,7 +38,7 @@
     "t2024GegNovelleHeizungsgesetz": "2024 – GEG-Novelle („Heizungsgesetz“) [historisch]:",
     "pflichtZurNutzungVon": "Pflicht zur Nutzung von mindestens 65 % erneuerbaren Energien bei neu eingebauten Heizungen in Neubaugebieten bzw. nach Verabschiedung kommunaler Wärmepläne.",
     "t2026GebäudemodernisierungsgesetzGmodg": "2026 – Gebäudemodernisierungsgesetz (GModG):",
-    "beschlussVonBundestagUnd": "Beschluss von Bundestag und Bundesrat am 10.07.2026, Verkündung am 28.07.2026, Inkrafttreten gestaffelt ab 29.07.2026. Das GEG heißt seither Gebäudemodernisierungsgesetz; Paragrafen zu Neubauanforderungen (§§ 15, 16) und Energieausweisen (§§ 79–88) bleiben bestehen. Die 65-%-Vorgabe entfällt; für neu eingebaute Gas- und Ölheizungen gilt eine „Bio-Treppe“ mit 10 % (2029), 15 % (2030), 30 % (2035) und 60 % (2040) klimafreundlichen Brennstoffen.",
+    "beschlussVonBundestagUnd": "Bundestagsbeschluss im Juli 2026 (BR-Drs. 409/26, kein Vermittlungsausschuss), Verkündung am 28.07.2026 (BGBl. 2026 I Nr. 226), Inkrafttreten gestaffelt: erste Stufe am 29.07.2026, zweite Stufe (u. a. neues Referenzgebäude, Energieausweise, DIN/TS 18599:2025-10, Ökobilanz) am 01.01.2027. Das GEG heißt seither Gebäudemodernisierungsgesetz; die Paragrafennummern zu Neubauanforderungen (§§ 15, 16) und Energieausweisen (§§ 79 ff.) bleiben erhalten. Die 65-%-Vorgabe entfällt; für neu eingebaute Gas- und Ölheizungen gilt eine „Bio-Treppe“ mit 10 % (2029), 15 % (2030), 30 % (2035) und 60 % (2040) klimafreundlichen Brennstoffen.",
     "dieNormiertenStandardAnnahmen": "Die normierten Standard-Annahmen (Randbedingungen)",
     "umEineBundesweitObjektive": "Um eine bundesweit objektive Bewertung zu gewährleisten, schließt der Bedarfsausweis das individuelle Verhalten der Bewohner (wie Dauerlüften oder Raumtemperaturen von 24 °C) vollständig aus. Die Bilanzierung erfolgt auf Basis verbindlicher Normparameter nach **DIN V 18599-10**:",
     "referenzklimaStandort": " Referenzklima (Standort)",
@@ -73,7 +73,7 @@
     "primärenergiebedarfQP": "Primärenergiebedarf ($Q_P$)",
     "ökologischeGesamtbilanz": "Ökologische Gesamtbilanz",
     "derPrimärenergiebedarfBewertetDie": "Der Primärenergiebedarf bewertet die ökologische Umweltbelastung inklusive der gesamten Vorkette (Förderung, Raffination, Ferntransport, Leitungsverluste im Stromnetz):",
-    "primärenergiefaktorenFPNicht": "Primärenergiefaktoren ($f_P$, nicht erneuerbarer Anteil) nach GModG/GEG Anlage 4:",
+    "primärenergiefaktorenFPNicht": "Primärenergiefaktoren ($f_P$, nicht erneuerbarer Anteil) nach GModG/GEG Anlage 4 (Stand bis 31.12.2026; ab 01.01.2027 gelten neue Faktoren $f_{P,tot}$, u. a. Strom 1,5, biogene Brennstoffe 0,7, Fernwärme-Standardwert 0,7):",
     "erdgasHeizöl": "Erdgas & Heizöl",
     "holzpelletsScheitholz": "Holzpellets / Scheitholz",
     "stromMixNetzbezug": "Strom-Mix (Netzbezug)",
@@ -82,7 +82,7 @@
     "derGesetzlicheNachweisDas": "Der gesetzliche Nachweis: Das Referenzgebäude-Verfahren",
     "imNeubauSchreibtDas": "Im Neubau schreibt das GModG (vormals GEG) keine starre absolute Zahl vor, sondern arbeitet mit einem virtuellen **Referenzgebäude** (Anlage 1, §§ 15 und 16):",
     "t1PrimärenergieAnforderung": "1. Primärenergie-Anforderung:",
-    "seit2023GiltFür": "Seit 2023 gilt für neue Wohngebäude das EH-55-Niveau als gesetzlicher Mindeststandard (§ 15: 55 % des Referenzgebäudes).",
+    "seit2023GiltFür": "Seit 2023 gilt für neue Wohngebäude das EH-55-Niveau als gesetzlicher Mindeststandard (§ 15: 55 % des Referenzgebäudes). Ab 01.01.2027 entfällt der Faktor 0,55; maßgeblich ist dann das neu gefasste Referenzgebäude (Anlagen 1 und 2 GModG) mit geänderter Referenztechnik.",
     "t2BaulicherWärmeschutzHülle": "2. Baulicher Wärmeschutz (Hülle):",
     "t16HöchstensDas1": "§ 16: höchstens das 1,0-Fache des Referenzwerts. Verhindert, dass schlechte Dämmung durch effiziente Haustechnik ausgeglichen wird.",
     "liveSimulatorBedarfsausweisNach": "Live-Simulator: Bedarfsausweis nach DIN V 18599 berechnen",
@@ -146,7 +146,7 @@
     "pflichtangabenInImmobilienanzeigen87": "Pflichtangaben in Immobilienanzeigen (§ 87):",
     "inKommerziellenAnzeigenZ": "In kommerziellen Anzeigen (z. B. ImmoScout, Zeitungen) müssen Pflichtangaben zwingend genannt werden: Art des Ausweises (Bedarfs- oder Verbrauchsausweis), Endenergie-Kennwert, wesentlicher Energieträger der Heizung, Baujahr des Gebäudes und die Energieeffizienzklasse (A+ bis H).",
     "gültigkeitModernisierungsempfehlungen79A": "Gültigkeit & Modernisierungsempfehlungen (§ 79 Abs. 3, § 84):",
-    "energieausweiseSindGenau10": "Energieausweise sind genau **10 Jahre gültig**. Ein wesentlicher Bestandteil jedes Energieausweises für Bestandsgebäude sind fachlich fundierte und wirtschaftlich zumutbare **Modernisierungsempfehlungen** (z. B. Dämmung der obersten Geschossdecke, Fenstertausch, hydraulischer Abgleich, Heizungstausch).",
+    "energieausweiseSindGenau10": "Energieausweise gelten **längstens 10 Jahre** (§ 79 Abs. 3); nach wesentlichen Änderungen an der Gebäudehülle ist ein neuer Ausweis auszustellen. Ein wesentlicher Bestandteil jedes Energieausweises für Bestandsgebäude sind fachlich fundierte und wirtschaftlich zumutbare **Modernisierungsempfehlungen** (z. B. Dämmung der obersten Geschossdecke, Fenstertausch, hydraulischer Abgleich, Heizungstausch).",
     "aushangpflichtInÖffentlichenGebäuden": "Aushangpflicht in öffentlichen Gebäuden (§ 80 Abs. 6 und 7):",
     "inBehördlichenGebäudenMit": "In behördlichen Gebäuden mit starkem Publikumsverkehr über 250 m² Nutzfläche sowie gewerblichen Bauten über 500 m² Nutzfläche muss der Energieausweis an gut sichtbarer Stelle ausgehängt werden. Ab 01.01.2027 werden Nichtwohngebäude im Energieausweis erstmals in Effizienzklassen A bis G eingestuft (Anlage 10a GModG; Bezug: Primärenergiebedarf im Verhältnis zum Referenzgebäude); es ist dann nur noch der Bedarfsausweis zulässig."
   },
@@ -240,10 +240,10 @@
         "url": "https://www.gesetze-im-internet.de/geg/"
       },
       {
-        "title": "DIN V 18599:2018-09 (Energetische Bewertung von Gebäuden; im GModG § 20 referenziert); Nachfolgereihe DIN/TS 18599 seit 2025-10"
+        "title": "DIN V 18599:2018-09 (Energetische Bewertung von Gebäuden; im GModG § 20 referenziert); ab 01.01.2027 stellt das GModG auf DIN/TS 18599:2025-10 um"
       },
       {
-        "title": "DIN 4108-2 (Mindestanforderungen an den Wärmeschutz; Neuausgabe 2026-05, bisher 2013-02; §§ 11 und 14 GModG nehmen weiterhin die Ausgabe 2013-02 in Bezug)"
+        "title": "DIN 4108-2:2026-05 (Wärmeschutz – Anforderungen, Berechnungsverfahren und Hinweise für Planung und Ausführung; bisher 2013-02 „Mindestanforderungen an den Wärmeschutz“); § 14 GModG verweist bis 31.12.2026 auf die Ausgabe 2013-02, ab 01.01.2027 auf die Ausgabe 2026-05"
       }
     ],
     "Energieausweis": [

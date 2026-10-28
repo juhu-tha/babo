@@ -1034,7 +1034,7 @@
       },
       {
         "title": "Taupunkt-Lokalisator",
-        "desc": "Berechnung des Wasserdampfdruckverlaufs zur Verhinderung schädlichen Schimmelpilzwachstums."
+        "desc": "Berechnung des Wasserdampfdruckverlaufs zur Vermeidung von Tauwasser im Bauteil; Schimmelpilzgefahr an Oberflächen über den Temperaturfaktor f_Rsi."
       }
     ],
     "MODULES_DATA.bauphysik.didacticCards": [
