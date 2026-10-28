@@ -96,7 +96,7 @@ export default function RstoRechnerTab({ activeProfile, bauweise, belastungsKlas
           {/* Interactive Dimensioning Formula Context */}
           <div className="p-3 text-[11px] font-mono text-text-main/60 bg-white border border-home-grau/15 rounded-lg">
             <span className="font-bold text-text-main block mb-1"><MdText text={inhalt.texte.dimensionierungsformelÄquivalenz} /></span>
-            <FormulaText text="B = N \cdot  f_A \cdot  f_G \cdot  f_B \cdot  t_{N}" />
+            <FormulaText text="B = N \cdot DTA^{(SV)} \cdot q_{Bm} \cdot f_1 \cdot f_2 \cdot f_3 \cdot f_z \cdot 365" />
             <span className="text-[10px] text-text-main/70 block mt-1"><MdText text={inhalt.texte.nMittlereTäglicheLkw} /></span>
           </div>
         </div>

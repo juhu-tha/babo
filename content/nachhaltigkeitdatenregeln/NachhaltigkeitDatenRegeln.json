@@ -58,7 +58,7 @@
     "unLeitsatz": "UN-Leitsatz: „",
     "konkreteHandlungsfelderMaßnahmenIm": "Konkrete Handlungsfelder & Maßnahmen im Bauwesen:",
     "neuVollständigesRechtsrahmenHierarchie": " Neu: Vollständiges Rechtsrahmen- & Hierarchie-Kompendium",
-    "hierarchische5EbenenSystematik": "Hierarchische 5-Ebenen-Systematik aller 21 Rechtsakte (Green Deal, EU-Klimagesetz, Fit for 55, BauPVO 2024, EPBD, ESPR, CBAM, EU-ETS I/II, GEG, Gebäudetyp E u.v.m.) mit interaktiver Zeitleiste, Synopse-Matrix und Stichtags-Filtern.",
+    "hierarchische5EbenenSystematik": "Hierarchische 5-Ebenen-Systematik aller 23 Rechtsakte (Green Deal, EU-Klimagesetz, Fit for 55, BauPVO 2024, EPBD, ESPR, CBAM, EU-ETS I/II, GEG, Gebäudetyp E u.v.m.) mit interaktiver Zeitleiste, Synopse-Matrix und Stichtags-Filtern.",
     "zumRechtsrahmenKompendium": "Zum Rechtsrahmen-Kompendium ",
     "euTaxonomieVerordnungEu": "EU-Taxonomie-Verordnung (EU 2020/852) im Bausektor",
     "dasEuKlassifikationssystemFür": "Das EU-Klassifikationssystem für ökologisch nachhaltige Wirtschaftsaktivitäten und Green Finance.",
@@ -76,10 +76,10 @@
     "stufe2Ab2030": "Stufe 2 (ab 2030)",
     "zebWholeLifeCarbon": "ZEB & Whole-Life Carbon für alle Neubauten",
     "ausnahmslosAlleNeuenGebäude": "Ausnahmslos alle neuen Gebäude müssen Nullemissionsgebäude sein. Pflicht zur Ermittlung und Ausweisung des **Lebenszyklus-GWP** im Energieausweis!",
-    "gwpGrenzenImBauantrag": "GWP-Grenzen im Bauantrag",
+    "gwpGrenzenImBauantrag": "Lebenszyklus-GWP im Energieausweis",
     "fossilAusstieg20252040": "Fossil-Ausstieg (2025–2040)",
-    "ab2025KeineStaatlichen": "Ab **2025** keine staatlichen Subventionen mehr für eigenständige fossile Kessel. Bis spätestens **2040** vollständiger Ausstieg aus fossilen Brennstoffen zur Gebäudeheizung.",
-    "verbotVonGasÖlheizungen": "Verbot von Gas-/Ölheizungen",
+    "ab2025KeineStaatlichen": "Ab **2025** keine staatlichen Subventionen mehr für eigenständige fossile Kessel. Ziel: vollständiger Ausstieg aus fossilen Heizkesseln bis **2040** (Fahrplan in den nationalen Gebäuderenovierungsplänen, kein unmittelbares EU-Verbot).",
+    "verbotVonGasÖlheizungen": "Ausstiegsziel, kein EU-Verbot",
     "umweltproduktdeklarationenEpdNachDin": "Umweltproduktdeklarationen (EPD) nach DIN EN 15804+A2",
     "typIiiUmweltdeklarationenNach": "Typ-III-Umweltdeklarationen nach ISO 14025 als mathematische Datenbasis der Gebäude-Ökobilanz.",
     "dinEn15804A2": "DIN EN 15804+A2",
@@ -107,12 +107,12 @@
     "dieFünfSäulenDes": "Die fünf Säulen des deutschen Nachhaltigkeits-Baurechts",
     "vomGebäudemodernisierungsgesetzGmodgVorm": "Vom Gebäudemodernisierungsgesetz (GModG, vormals GEG) über die Ersatzbaustoffverordnung bis zum Gebäudetyp-E-Vorhaben.",
     "t1GebäudemodernisierungsgesetzGmodgVormal": "1. Gebäudemodernisierungsgesetz (GModG, vormals GEG 2024)",
-    "regeltDenPrimärenergetischenEffizienzhau": "Regelt den primärenergetischen Effizienzhausstandard (EH 55 als Neubaustandard) und die **65 %-Erneuerbare-Energien-Vorgabe** für neu eingebaute Heizungsanlagen (Kopplung an die kommunale Wärmeplanung).",
+    "regeltDenPrimärenergetischenEffizienzhau": "Regelt die Neubauanforderung (bis 31.12.2026 EH-55-Niveau, ab 01.01.2027 neu gefasstes Referenzgebäude) und die Anforderungen an Heizungsanlagen: Die **65 %-Erneuerbare-Energien-Vorgabe** des GEG 2024 ist mit dem GModG (29.07.2026) entfallen; neu eingebaute Gas- und Ölheizungen unterliegen der „Bio-Treppe“ (10 % ab 2029, 15 % ab 2030, 30 % ab 2035, 60 % ab 2040).",
     "maxTransmissionswärmeverlust": "Max. Transmissionswärmeverlust",
     "t2QualitätssiegelNachhaltigesGebäude": "2. Qualitätssiegel Nachhaltiges Gebäude (QNG)",
-    "staatlichesGütesiegelDesBmwsb": "Staatliches Gütesiegel des BMWSB für zinsgünstige KfW-Förderdarlehen (Klimafreundlicher Neubau KFN) und degressive AfA (5 %). Grenzwerte: **QNG-Plus ($\\le 24\\,\\text{kg CO}_2\\text{e}/(\\text{m}^2\\cdot\\text{a})$)** und **QNG-Premium ($\\le 20\\,\\text{kg CO}_2\\text{e}/(\\text{m}^2_{\\text{NRF}}\\cdot\\text{a})$)** für Wohngebäude (WG23) über 50 Jahre Betrachtungszeitraum.",
+    "staatlichesGütesiegelDesBmwsb": "Staatliches Gütesiegel des BMWSB für zinsgünstige KfW-Förderdarlehen (Klimafreundlicher Neubau KFN) und die Sonderabschreibung nach § 7b EStG (5 % jährlich in den ersten vier Jahren). Grenzwerte: **QNG-Plus ($\\le 24\\,\\text{kg CO}_2\\text{e}/(\\text{m}^2\\cdot\\text{a})$)** und **QNG-Premium ($\\le 20\\,\\text{kg CO}_2\\text{e}/(\\text{m}^2_{\\text{NRF}}\\cdot\\text{a})$)** für Wohngebäude (WG23) über 50 Jahre Betrachtungszeitraum.",
     "t3ErsatzbaustoffverordnungEbvSeit": "3. Ersatzbaustoffverordnung (EBV seit 01.08.2023)",
-    "bundesweitHarmonisierteQualitätsanforder": "Bundesweit harmonisierte Qualitätsanforderungen für mineralische Ersatzbaustoffe (RC-1 bis RC-3, Bodenmaterial BM-0 bis BM-F3, Gleisschotter). Regelt Grundwasserschutz und Kataster-Anzeigepflicht nach § 25 EBV bei Einbaumengen ab **250 m³**.",
+    "bundesweitHarmonisierteQualitätsanforder": "Bundesweit harmonisierte Qualitätsanforderungen für mineralische Ersatzbaustoffe (RC-1 bis RC-3, Bodenmaterial BM-0 bis BM-F3, Gleisschotter). Regelt Grundwasserschutz und die Anzeigepflicht nach § 22 EBV (Vor- und Abschlussanzeige) bei Einbaumengen ab **250 m³**.",
     "schwellenwertKataster": "Schwellenwert Kataster",
     "t4KreislaufwirtschaftsgesetzKrwg": "4. Kreislaufwirtschaftsgesetz (KrWG)",
     "verbindliche5StufigeAbfallhierarchie": "Verbindliche 5-stufige Abfallhierarchie: 1. Vermeidung > 2. Vorbereitung zur Wiederverwendung > 3. Recycling > 4. sonstige Verwertung > 5. Beseitigung (Deponierung als Ultima Ratio).",
@@ -161,7 +161,7 @@
       {
         "year": "2019",
         "title": "European Green Deal",
-        "desc": "Fahrplan der EU-Kommission zur Transformation Europas zum ersten klimaneutralen Kontinent bis 2050. Start der „Renovation Wave“ (Renovierungswelle zur Verdopplung der Sanierungsrate)."
+        "desc": "Fahrplan der EU-Kommission zur Transformation Europas zum ersten klimaneutralen Kontinent bis 2050. 2020 folgte die „Renovation Wave“ (Renovierungswelle zur Verdopplung der Sanierungsrate)."
       },
       {
         "year": "2023 / 2024",
@@ -204,7 +204,7 @@
     "NachhaltigkeitDatenRegeln.schritte": [
       {
         "titel": "NZEB-Schwelle",
-        "erklaerung": "In Deutschland entspricht der Niedrigstenergiegebäude-Standard der Neubauanforderung nach GModG § 15 (0,55 · Referenzgebäude). Angenommen: zulässiger Wert 40 kWh/(m²a).",
+        "erklaerung": "In Deutschland entspricht der Niedrigstenergiegebäude-Standard der Neubauanforderung nach GModG § 15 (bis 31.12.2026: 0,55 · Referenzgebäude; ab 01.01.2027 neu gefasstes Referenzgebäude). Angenommen: zulässiger Wert 40 kWh/(m²a).",
         "formel": "Q_{P,\\text{NZEB}} = 40\\,\\text{kWh/(m}^2\\text{a)}"
       },
       {

@@ -74,7 +74,9 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     grenzen: [
       'Homogene Schichten ohne Wärmebrücken, Befestigungsmittel und Luftschichtkorrekturen.',
       'f_Rsi mit R_si = 0,25 m²K/W in der ungestörten Fläche; Wärmebrücken sind nicht erfasst.',
-      'GEG-Höchstwerte für die Änderung bestehender Gebäude (Anlage 7).',
+      'GModG-Höchstwerte (vormals GEG) für die Änderung bestehender Gebäude (Anlage 7).',
+      'Phasenverschiebung und Amplitudenverhältnis als Summe d/δ der Schichten (ohne Übergangswiderstände und Reflexionen an Schichtgrenzen) – Größenordnung, kein Rechenverfahren nach DIN EN ISO 13786.',
+      'Nachhallzeit nach Sabine (diffuses Schallfeld, ohne Personen und Möblierung); T_soll nach DIN 18041 Gruppe A, Büro als Orientierungswert.',
     ],
   },
   feuchteschutz: {
@@ -378,6 +380,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Hüllflächen pauschal aus der Nutzfläche, U-Werte je Standard fest.",
       "Klimafaktor und Gewinne pauschal; Warmwasser, Verluste und Hilfsstrom als feste Werte.",
       "Kein Nachweis nach DIN V 18599.",
+      "Primärenergiefaktoren und Klassengrenzen nach dem Stand bis 31.12.2026 (ab 01.01.2027 u. a. Strom 1,5); CO₂-Faktoren sind Lehrwerte (Strom 380 g/kWh), nicht die Werte der Anlage 9.",
     ],
   },
   materialoptimierung: {
@@ -385,7 +388,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     grenzen: [
       "Beton- und Stahlmengen je Bauteil fest hinterlegt, keine Bemessung.",
       "Beton-GWP nur nach Zementart, unabhängig von der Festigkeitsklasse.",
-      "Bewertungsklassen über modellinterne Schwellen.",
+      "Bewertungsklassen über modellinterne Schwellen (Lehreinteilung, nicht die Treibhausgas-Minderungsklassen der DAfStb-Richtlinie).",
       "GWP-Faktoren (Beton je Zementart, Betonstahl, 56-d-Abschlag) sind gerundete Lehrwerte ohne EPD-Bezug.",
     ],
   },
