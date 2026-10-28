@@ -111,7 +111,7 @@ export function schichtaufbau(schichten: readonly Schicht[], rsi = RSI_WAND, rse
   if (hatFehler(hinweise)) return leer;
   schichten.forEach((s, i) => {
     const nr = i + 1;
-    bereich(hinweise, `dicke${nr}`, s.dicke, 1, 1000, `Schicht ${nr}: Dicke außerhalb 1–1 000 mm.`);
+    bereich(hinweise, `dicke${nr}`, s.dicke, 1, 1000, `Schicht ${nr}: Dicke außerhalb 1–1000 mm.`);
     bereich(hinweise, `lambda${nr}`, s.lambda, 0.005, 5, `Schicht ${nr}: λ außerhalb des üblichen Bereichs 0,005–5 W/(mK).`);
   });
 

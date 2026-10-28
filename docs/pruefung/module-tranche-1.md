@@ -328,3 +328,7 @@ Die Beispiele (KS 17,5 cm: m′ = 380 kg/m², R_w = 57,5 dB; HLz 24 cm: 243 kg/m
 ## Freigabe 28.10.2026
 
 Freigegeben wurden Module mit Empfehlung „freigabefähig“ ohne offene Fragen. In dieser Tranche trifft das auf kein ganzes Modul zu. Der Reiter Querkraft (Nr. 2) ist freigabefähig, zählt aber erst mit dem ganzen Modul `stahlbeton_bemessung` (offen: F-1, S-2, P-2, Tranche 2 T2-S-1/-2); der Prüfvermerk bleibt „offen“.
+
+## Umsetzung 29.10.2026
+
+- **#239-H-3 (Holzbau, Querdruck):** BSH-Einzelauflager mit Auflagerlänge l > 400 mm: k_c,90 = 1,0 (die Erhöhung auf 1,75 gilt nach DIN EN 1995-1-1, 6.1.5(4) nur für l ≤ 400 mm); vorher wurde 1,75 mit Warnung angesetzt. Kern `bemesseQuerdruck` in `src/calc/holzbau.ts`, Test `tests/kleinfragenTranche1bis3.test.ts`: l = 450 mm → F_c,90,Rd = 110,77 kN; l = 400 mm → 172,31 kN (b = 160 mm, GL, NKL 1, mittel).

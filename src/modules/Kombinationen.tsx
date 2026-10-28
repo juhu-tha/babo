@@ -1005,7 +1005,7 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
                   ) : (
                     <><MdText text={inhalt.texte.dieSDWerte} /></>
                   )}
-                  <span className="block mt-1 font-mono text-[11px]">Teilung an Schicht {calcResults.iDaemm + 1} (Dämmschicht, nicht mitgezählt): s_d,i = {formatDeZahl(calcResults.innerLayersSd, 2)} m, s_d,e = {formatDeZahl(calcResults.outerLayersSd, 2)} m. {calcResults.sdPruefung?.text}</span>
+                  <span className="block mt-1 font-mono text-[11px]">Teilung an Schicht {formatDeWert(calcResults.iDaemm + 1)} (Dämmschicht, nicht mitgezählt): s_d,i = {formatDeZahl(calcResults.innerLayersSd, 2)} m, s_d,e = {formatDeZahl(calcResults.outerLayersSd, 2)} m. {calcResults.sdPruefung?.text}</span>
                 </p>
               </div>
             </div>

@@ -433,3 +433,7 @@ Offen aus Tranche 1 und für den Prüfvermerk `stahlbeton_bemessung` weiter nöt
 Freigegeben (Empfehlung „freigabefähig“, keine offenen Fragen; Prüfvermerk in `src/data/pruefvermerke.ts` „geprueft“, am 2026-10-28, passiv ohne Namen): `bp_holzprodukte` (Nr. 4), `spannbeton` (Nr. 5; seit der Aufteilung am 28.10.2026 die Teilmodule `spannbeton_grundlagen` und `spannbeton_kennwerte`, beide mit Vermerk – die bei der Aufteilung neu formulierten Einträge (Lernziel 1 von `spannbeton_kennwerte`, zwei Erkundungsaufträge von `spannbeton_grundlagen`, Grenzen-Kurztexte) wurden dabei nachgesehen, die Zahlen der Aufträge nachgerechnet: Δσ = E·Δε 240/120 bzw. 234/117 N/mm², P = g·L²/(8·f) 3571/8036 kN, 21/47 Litzen), `korrosion` (Nr. 7), `schnellkarbonatisierung` (Nr. 8).
 
 Nicht freigegeben, obwohl freigabefähig: die Reiter Rissbreite (Nr. 2) und σ-ε-Linien (Nr. 3) von `stahlbeton_bemessung` – sie zählen erst mit dem ganzen Modul (offen: F-1, S-2, P-2 aus Tranche 1, T2-S-1/-2). `lebensdauerbemessung` (Nr. 6) nur „Rechnung freigabefähig“, Kennwerte vorläufig.
+
+## Umsetzung 29.10.2026
+
+- **FR-1 (`bp_holzprodukte`):** Prüfvermerk bleibt. Durchbiegungsgrenzen l/300 (w_inst, w_net,fin) und l/200 (w_fin) als Empfehlungswerte nach DIN EN 1995-1-1, Tab. 7.2 mit NA (DE) gekennzeichnet (Ergebnisanzeige, Rechenbeispiel, Formelkasten, Grenzen); Rechnung unverändert.

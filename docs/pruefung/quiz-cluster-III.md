@@ -242,8 +242,8 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 42 korrigiert, 0 fraglich, 0
 
 ### qn_holzbau_verbindung_6 · Verbindungen & Anschlüsse
 
-- **Frage:** Schraube d = 8 mm (Kerndurchmesser d₁ = 5,2 mm, d_ef = 1,1·d₁ = 5,72 mm) in C24 (f_h,k = 17,0 N/mm², M_y,Rk = 11 180 Nmm), l_ef = 80 mm. Modell des Moduls: F₁ = f_h,k·l_ef·d_ef und F₂ = 1,15·√(2·M_y,Rk·f_h,k·d_ef) + Seileffekt min(F_ax,Rk/4; Johansen-Anteil) mit F_ax,Rk/4 = 2 060 N. Welcher Wert ist maßgebend?
-- **Richtige Antwort:** F₂ ≈ 3,4 kN – Fließgelenk mit begrenztem Seileffekt
+- **Frage:** Schraube d = 8 mm (Kerndurchmesser d₁ = 5,2 mm, d_ef = 1,1·d₁ = 5,72 mm) in C24 (f_h,k = 17,0 N/mm², M_y,Rk = 11 180 Nmm), l_ef = 80 mm. Modell des Moduls: F₁ = f_h,k·l_ef·d_ef und F₂ = 1,15·√(2·M_y,Rk·f_h,k·d_ef) + Seileffekt min(F_ax,Rk/4; Johansen-Anteil) mit F_ax,Rk/4 = 2060 N. Welcher Wert ist maßgebend?
+- **Richtige Antwort:** F₂ ≈ 3,4 kN – Fließgelenk, Seileffekt begrenzt
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: Abscheren im Modul mit d_ef = 1,1·d₁ (T10-HV-3, Nagelregeln bei d_ef ≤ 6 mm); Frage, Werte, Optionen und Rückmeldungen auf d_ef umgestellt, Distraktor „voller Seileffekt“ statt Summe der Modi – korrigiert
 - [ ] ok
 - [ ] ändern: …
