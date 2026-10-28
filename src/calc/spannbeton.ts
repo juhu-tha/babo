@@ -29,7 +29,8 @@ export function pruefeSpannbeton(e: SpannbetonEingabe): Hinweis[] {
   if (Math.abs(e.ep) > e.h / 2 - 50) h.push({ stufe: 'warnung', feld: 'ep', text: 'Weniger als 50 mm zwischen Spanngliedachse und Rand – Betondeckung und Hüllrohrdurchmesser prüfen.' });
   if (e.mPerm > e.mChar) h.push({ stufe: 'warnung', feld: 'mPerm', text: 'Das quasi-ständige Moment ist größer als das charakteristische – Einwirkungskombinationen prüfen.' });
   if (e.mG1 > e.mPerm) h.push({ stufe: 'warnung', feld: 'mG1', text: 'M_g1 ist größer als das quasi-ständige Moment – das Eigengewicht ist in M_perm enthalten.' });
-  h.push({ stufe: 'warnung', feld: 'dekompression', text: 'Dekompression vereinfacht: Betonspannung in e_p + 25 mm. Die genaue Abgrenzung der Dekompressionszone nach NA DE ist ein offener Prüfpunkt (AP 4.4).' });
+  // Modulprüfung Tranche 2 (28.10.2026): Text an die Rechnung im Modul angeglichen (vorher „e_p + 25 mm“, offener Prüfpunkt AP 4.4)
+  h.push({ stufe: 'warnung', feld: 'dekompression', text: 'Dekompression vereinfacht am ungerissenen Querschnitt (Zustand I): größte Betonspannung an den Grenzen e_p ± max(100 mm; h/10) nach NA DE; Hüllrohrdurchmesser und Lage einzelner Litzen sind nicht abgebildet.' });
   return h;
 }
 

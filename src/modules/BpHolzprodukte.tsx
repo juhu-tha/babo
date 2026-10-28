@@ -503,6 +503,9 @@ export default function BpHolzprodukte() {
               <div><MdText text={inhalt.texte.eigengewicht} /><strong>{formatDeZahl(balken.masse, 1)} kg/m</strong> (~{formatDeWert(activeMat.density)}<MdText text={inhalt.texte.kgMDensity} /></div>
               <div><MdText text={inhalt.texte.teilsicherheitsbeiwerteG135} /></div>
               <div><MdText text={inhalt.texte.kModBeiwert0} />{formatDeZahl(balken.kmod, 2)} / γ_M = {formatDeZahl(activeMat.gammaM, 1)}</div>
+              <div>{balken.kombination === 'G'
+                ? <><MdText text={inhalt.texte.kombinationG} />{formatDeZahl(balken.eta_m_GQ, 1)}<MdText text={inhalt.texte.kombinationAusnutzung} /></>
+                : <><MdText text={inhalt.texte.kombinationGQ} />{formatDeZahl(balken.eta_m_G, 1)}<MdText text={inhalt.texte.kombinationAusnutzung} /></>}</div>
             </div>
           </div>
         </div>

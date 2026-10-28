@@ -154,7 +154,7 @@
       {
         "formel": "I_c = \\frac{w_L - w}{I_P}",
         "erklaerung": "Konsistenzzahl: I_c gibt die plastische Zustandsform bindiger Böden an (w_L = Fließgrenze, w = aktueller Wassergehalt, I_P = Plastizitätszahl).",
-        "quelle": "DIN EN ISO 17892-12; Zustandsformen nach DIN EN ISO 14688-2"
+        "quelle": "DIN EN ISO 17892-12; Zustandsformen in der Einteilung der früheren DIN 18122-1 (DIN EN ISO 14688-2 grenzt abweichend ab: < 0,25 / 0,25–0,50 / 0,50–0,75 / 0,75–1,00 / > 1,00; vorläufig, F-Freigabe)"
       },
       {
         "formel": "\\tau_f = c + \\sigma \\cdot \\tan(\\varphi)",
