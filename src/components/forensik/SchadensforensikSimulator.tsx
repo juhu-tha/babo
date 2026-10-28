@@ -407,61 +407,61 @@ export function SchadensforensikSimulator() {
           </div>
 
           {/* SVG Visual Representation of the Damage Scheme */}
-          <div className="bg-slate-900 rounded-xl p-4 border border-slate-800 flex flex-col items-center justify-center relative overflow-hidden min-h-[220px]">
-            <span className="absolute top-2 left-3 text-[10px] font-mono text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
+          <div className="svg-buehne rounded-xl p-4 border flex flex-col items-center justify-center relative overflow-hidden min-h-[220px]">
+            <span className="absolute top-2 left-3 text-[10px] font-mono bu-text2 uppercase tracking-widest flex items-center gap-1.5">
               <Eye size={12} className="text-shiraz" /> Schadensschematik (Querschnitt)
             </span>
 
             {currentCase.visualType === 'parkhaus' && (
               <svg width="340" height="180" viewBox="0 0 340 180" className="select-none">
                 {/* Concrete Column Body */}
-                <rect x="70" y="20" width="200" height="140" fill="#334155" stroke="#475569" strokeWidth="2" rx="4" />
+                <rect x="70" y="20" width="200" height="140" fill="var(--bu-beton)" stroke="var(--bu-kontur)" strokeWidth="2" rx="4" />
                 
                 {/* Carbonation zone boundary (dk = 18mm) */}
-                <rect x="70" y="20" width="30" height="140" fill="#e2e8f0" opacity="0.15" />
-                <rect x="240" y="20" width="30" height="140" fill="#e2e8f0" opacity="0.15" />
-                <line x1="100" y1="20" x2="100" y2="160" stroke="#a855f7" strokeWidth="1.5" strokeDasharray="3 3" />
-                <text x="105" y="35" fill="#c084fc" fontSize="8" className="font-mono">dk = 18 mm</text>
+                <rect x="70" y="20" width="30" height="140" fill="var(--bu-violett)" opacity="0.12" />
+                <rect x="240" y="20" width="30" height="140" fill="var(--bu-violett)" opacity="0.12" />
+                <line x1="100" y1="20" x2="100" y2="160" stroke="var(--bu-violett)" strokeWidth="1.5" strokeDasharray="3 3" />
+                <text x="105" y="35" fill="var(--bu-violett)" fontSize="8" className="font-mono">dk = 18 mm</text>
 
                 {/* Rebar position (c = 31mm) */}
-                <line x1="115" y1="20" x2="115" y2="160" stroke="#cbd5e1" strokeWidth="6" />
-                <text x="123" y="50" fill="#cbd5e1" fontSize="8" className="font-mono">Bewehrung (c=31mm)</text>
+                <line x1="115" y1="20" x2="115" y2="160" stroke="var(--bu-stahl)" strokeWidth="6" />
+                <text x="123" y="50" fill="var(--bu-text2)" fontSize="8" className="font-mono">Bewehrung (c=31mm)</text>
 
                 {/* Chloride Ingress arrows from bottom left (splash water) */}
-                <path d="M 30 140 Q 55 130 80 135" stroke="#38bdf8" strokeWidth="2.5" fill="none" markerEnd="url(#arrow)" />
-                <path d="M 30 110 Q 60 105 85 112" stroke="#38bdf8" strokeWidth="2.5" fill="none" />
-                <text x="25" y="95" fill="#38bdf8" fontSize="9" fontWeight="bold">Cl⁻ (Tausalz)</text>
-                <text x="25" y="105" fill="#38bdf8" fontSize="8">Spritzwasser</text>
+                <path d="M 30 140 Q 55 130 80 135" stroke="var(--bu-blau)" strokeWidth="2.5" fill="none" markerEnd="url(#arrow)" />
+                <path d="M 30 110 Q 60 105 85 112" stroke="var(--bu-blau)" strokeWidth="2.5" fill="none" />
+                <text x="25" y="95" fill="var(--bu-blau)" fontSize="9" fontWeight="bold">Cl⁻ (Tausalz)</text>
+                <text x="25" y="105" fill="var(--bu-blau)" fontSize="8">Spritzwasser</text>
 
                 {/* Spalled Concrete section at corner */}
-                <path d="M 70 100 Q 95 110 90 150 Q 80 160 70 160 Z" fill="#0f172a" stroke="#ef4444" strokeWidth="1.5" strokeDasharray="2 2" />
-                <text x="82" y="130" fill="#ef4444" fontSize="8" fontWeight="bold">Abplatzung</text>
+                <path d="M 70 100 Q 95 110 90 150 Q 80 160 70 160 Z" fill="var(--bu-grund)" stroke="var(--bu-rot)" strokeWidth="1.5" strokeDasharray="2 2" />
+                <text x="82" y="130" fill="var(--bu-rot)" fontSize="8" fontWeight="bold">Abplatzung</text>
 
                 {/* Rust / Pitting corrosion node on rebar */}
-                <circle cx="115" cy="125" r="7" fill="#b91c1c" stroke="#ef4444" strokeWidth="2" />
-                <text x="130" y="130" fill="#f87171" fontSize="8" fontWeight="bold">Lochfraß-Mulde!</text>
+                <circle cx="115" cy="125" r="7" fill="#b91c1c" stroke="var(--bu-rot)" strokeWidth="2" />
+                <text x="130" y="130" fill="var(--bu-rot)" fontSize="8" fontWeight="bold">Lochfraß-Mulde!</text>
               </svg>
             )}
 
             {currentCase.visualType === 'bruecke' && (
               <svg width="340" height="180" viewBox="0 0 340 180" className="select-none">
                 {/* Bridge Pier Body */}
-                <rect x="60" y="20" width="220" height="140" fill="#334155" stroke="#475569" strokeWidth="2" rx="4" />
+                <rect x="60" y="20" width="220" height="140" fill="var(--bu-beton)" stroke="var(--bu-kontur)" strokeWidth="2" rx="4" />
                 
                 {/* Reactive aggregate grain in center */}
-                <circle cx="170" cy="85" r="28" fill="#475569" stroke="#94a3b8" strokeWidth="2" />
-                <text x="170" y="85" fill="#ffffff" fontSize="8" textAnchor="middle" fontWeight="bold">Opalsandstein</text>
-                <text x="170" y="96" fill="#cbd5e1" fontSize="7" textAnchor="middle">(Korn E3)</text>
+                <circle cx="170" cy="85" r="28" fill="var(--bu-beton-hell)" stroke="var(--bu-linie)" strokeWidth="2" />
+                <text x="170" y="85" fill="var(--bu-text)" fontSize="8" textAnchor="middle" fontWeight="bold">Opalsandstein</text>
+                <text x="170" y="96" fill="var(--bu-text2)" fontSize="7" textAnchor="middle">(Korn E3)</text>
 
                 {/* Swelling Gel Ring */}
-                <circle cx="170" cy="85" r="38" fill="none" stroke="#f59e0b" strokeWidth="3" strokeDasharray="4 2" />
-                <text x="170" y="42" fill="#fbbf24" fontSize="8" textAnchor="middle" fontWeight="bold">Quelldruck &gt; 8 MPa</text>
+                <circle cx="170" cy="85" r="38" fill="none" stroke="var(--bu-amber)" strokeWidth="3" strokeDasharray="4 2" />
+                <text x="170" y="42" fill="var(--bu-amber)" fontSize="8" textAnchor="middle" fontWeight="bold">Quelldruck &gt; 8 MPa</text>
 
                 {/* Radiating 3-Star and Map Cracks */}
-                <path d="M 170 50 L 170 20 M 140 105 L 85 145 M 200 105 L 255 145" stroke="#ef4444" strokeWidth="2.5" />
-                <path d="M 170 20 L 195 25 M 85 145 L 60 135 M 255 145 L 280 130" stroke="#f87171" strokeWidth="1.5" />
+                <path d="M 170 50 L 170 20 M 140 105 L 85 145 M 200 105 L 255 145" stroke="var(--bu-rot)" strokeWidth="2.5" />
+                <path d="M 170 20 L 195 25 M 85 145 L 60 135 M 255 145 L 280 130" stroke="var(--bu-rot)" strokeWidth="1.5" />
                 
-                <text x="170" y="150" fill="#f87171" fontSize="9" textAnchor="middle" fontWeight="bold">
+                <text x="170" y="150" fill="var(--bu-rot)" fontSize="9" textAnchor="middle" fontWeight="bold">
                   Netzrissmuster &amp; Gelaustritt
                 </text>
               </svg>

@@ -74,7 +74,7 @@
     "mBeiSandSchluff": " m²) bei Sand/Schluff-Boden (k_f = 10⁻⁵ m/s): ",
     "erforderlichesRigolenBruttovolumenV": "Erforderliches Rigolen-Bruttovolumen (V_rig)",
     "dwaA138Planungsentwurf": "Planungsentwurf in Anlehnung an DWA-A 138-1",
-    "sicherheitsbeiwertFS1": "Sicherheitsbeiwert f_S = 1,1 integriert",
+    "sicherheitsbeiwertFS1": "Zuschlagsfaktor f_Z = 1,1 integriert",
     "konstruktiveEmpfehlung": "Konstruktive Empfehlung:",
     "verwendungVonPpSickerboxen": "Verwendung von PP-Sickerboxen (Rigolenfüllkörper): ",
     "t024mNutzkapazitätJe": " (0,24m³ Nutzkapazität je Box) mit umhüllendem Filtervlies (Geotextil) erforderlich.",

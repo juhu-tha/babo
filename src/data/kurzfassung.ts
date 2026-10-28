@@ -21,6 +21,24 @@ const VERKEHRSWEGEBAU: readonly string[] = [
   "Betondecken bilden keine Spurrinnen, brauchen aber Fugen mit Dübeln und Ankern sowie Luftporen gegen Frost-Tausalz; als Bauteile der Feuchtigkeitsklasse WS sind sie gegen eine Alkali-Kieselsäure-Reaktion zu sichern.",
 ];
 
+/** Spannbeton: zwei Teilmodule (spannbeton_grundlagen, spannbeton_kennwerte), gemeinsame Kurzfassung (Aufteilung 28.10.2026) */
+const SPANNBETON: readonly string[] = [
+  "Vorspannung überdrückt den Querschnitt planmäßig; die Randspannungen folgen im Zustand I aus σ = −P/A_c ± P·e_p/W ∓ M/W und werden für t = 0 und t = ∞ geprüft.",
+  "Hochfester Spannstahl wie Y1860 ist nötig, weil Kriech- und Schwindstauchungen von etwa 1 ‰ bei Betonstahl B500 rund 46 % der Vorspannung aufzehren würden.",
+  "Im GZG gilt nach DIN EN 1992-1-1: Betondruck ≤ 0,60 f_ck unter seltener und ≤ 0,45 f_ck unter quasi-ständiger Kombination, sonst ist nichtlineares Kriechen anzusetzen.",
+  "Sofortverluste aus Reibung, Keilschlupf und elastischer Verkürzung kommen zuerst; Kriechen, Schwinden und Relaxation koppelt EC2 in einer gemeinsamen Gleichung.",
+  "Vergütete Spannstähle wie Hennigsdorfer St 140/160 neigen zu Spannungsrisskorrosion ohne Vorankündigung; an Spannstahl gilt zudem ein striktes Schweißverbot.",
+];
+
+/** Bauwerksdiagnose: drei Teilmodule (bauwerksdiagnose, pruefverfahren_katalog, zfp), gemeinsame Kurzfassung (Aufteilung 28.10.2026) */
+const BAUWERKSDIAGNOSE: readonly string[] = [
+  "Die Bauwerksuntersuchung läuft in Phasen: Studium der Bestandsunterlagen, handnahe Sichtprüfung mit Rissaufnahme und Klopfprüfung, zerstörungsfreie Prüfung sowie Probenahme mit Laboranalyse.",
+  "Bewehrungsortung, Rückprallhammer und Potentialfeldmessung scannen das Tragwerk zerstörungsfrei; Bohrkerne und Bohrmehlproben kalibrieren diese Verfahren und liefern Festigkeiten und Chloridprofile.",
+  "Die Zeit bis zur Depassivierung folgt aus t_krit = (c/k)²; im Beispiel ergeben 25 mm Deckung und k = 2,5 mm/√a rund 100 Jahre, bei 36 Jahren Bauwerksalter also etwa 64 Jahre Reserve.",
+  "Die charakteristische In-situ-Druckfestigkeit nach DIN EN 13791 ist der kleinere Wert aus f_m,is − 1,48 · s und kleinstem Einzelwert plus 4; im Beispiel mit 8 Bohrkernen ergeben sich 27,3 N/mm².",
+  "Rückprallwerte sind nur über eine Kalibrierung an Bohrkernen in Festigkeiten umzurechnen; die Bohrwiderstandsmessung an Holz ist nicht genormt und verlangt fundierte Holzartenkenntnis bei der Auswertung.",
+];
+
 export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
   stahlbeton_bemessung: [
     "Das Modul bündelt die Bemessung nach DIN EN 1992-1-1 mit deutschem Nationalem Anhang in Reitern: Werkstoffgesetze, Biegung, Querkraft, Stützen, Durchstanzen, Verankerung und Rissbreite.",
@@ -174,13 +192,8 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "Mineralwolle wird über den Kanzerogenitätsindex eingestuft: KI ≤ 30 bedeutet krebserzeugend Kategorie 1B, KI ≥ 40 keine Einstufung; vor Juni 2000 eingebaute KMF gelten als alt.",
     "Schutzmaßnahmen folgen dem STOP-Prinzip; bei Asbest bestimmen Akzeptanzkonzentration (10 000 F/m³) und Toleranzkonzentration (100 000 F/m³) die Risikostufe.",
   ],
-  spannbeton: [
-    "Vorspannung überdrückt den Querschnitt planmäßig; die Randspannungen folgen im Zustand I aus σ = −P/A_c ± P·e_p/W ∓ M/W und werden für t = 0 und t = ∞ geprüft.",
-    "Hochfester Spannstahl wie Y1860 ist nötig, weil Kriech- und Schwindstauchungen von etwa 1 ‰ bei Betonstahl B500 rund 46 % der Vorspannung aufzehren würden.",
-    "Im GZG gilt nach DIN EN 1992-1-1: Betondruck ≤ 0,60 f_ck unter seltener und ≤ 0,45 f_ck unter quasi-ständiger Kombination, sonst ist nichtlineares Kriechen anzusetzen.",
-    "Sofortverluste aus Reibung, Keilschlupf und elastischer Verkürzung kommen zuerst; Kriechen, Schwinden und Relaxation koppelt EC2 in einer gemeinsamen Gleichung.",
-    "Vergütete Spannstähle wie Hennigsdorfer St 140/160 neigen zu Spannungsrisskorrosion ohne Vorankündigung; an Spannstahl gilt zudem ein striktes Schweißverbot.",
-  ],
+  spannbeton_grundlagen: SPANNBETON,
+  spannbeton_kennwerte: SPANNBETON,
   stahl: [
     "S235 und S355 zeigen eine ausgeprägte Streckgrenze mit Lüders-Plateau; Vergütungs- und Spannstähle fließen stetig und werden über Dehngrenzen wie Rp0,2 bzw. f_p0,1k beschrieben.",
     "Nach DIN EN 10027-1 bedeutet S355J2+N: Baustahl mit 355 N/mm² Mindeststreckgrenze, 27 J Kerbschlagarbeit bei −20 °C und normalisierend gewalztem Lieferzustand.",
@@ -217,13 +230,9 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "Für die Belegreife von Estrichen ist die CM-Messung das in der Praxis vereinbarte Prüfverfahren; kapazitive Hochfrequenzmessungen dienen nur der zerstörungsfreien Eingrenzung feuchter Zonen.",
     "Karbonatisierte Randzonen erhöhen die Rückprallzahl; in Festigkeiten wird sie nur über Bohrkerne desselben Bauteils nach DIN EN 13791 umgerechnet, geringe Schallgeschwindigkeit weist auf Fehlstellen hin.",
   ],
-  bauwerksuntersuchung: [
-    "Die Bauwerksuntersuchung läuft in Phasen: Studium der Bestandsunterlagen, handnahe Sichtprüfung mit Rissaufnahme und Klopfprüfung, zerstörungsfreie Prüfung sowie Probenahme mit Laboranalyse.",
-    "Bewehrungsortung, Rückprallhammer und Potentialfeldmessung scannen das Tragwerk zerstörungsfrei; Bohrkerne und Bohrmehlproben kalibrieren diese Verfahren und liefern Festigkeiten und Chloridprofile.",
-    "Die Zeit bis zur Depassivierung folgt aus t_krit = (c/k)²; im Beispiel ergeben 25 mm Deckung und k = 2,5 mm/√a rund 100 Jahre, bei 36 Jahren Bauwerksalter also etwa 64 Jahre Reserve.",
-    "Die charakteristische In-situ-Druckfestigkeit nach DIN EN 13791 ist der kleinere Wert aus f_m,is − 1,48 · s und kleinstem Einzelwert plus 4; im Beispiel mit 8 Bohrkernen ergeben sich 27,3 N/mm².",
-    "Rückprallwerte sind nur über eine Kalibrierung an Bohrkernen in Festigkeiten umzurechnen; die Bohrwiderstandsmessung an Holz ist nicht genormt und verlangt fundierte Holzartenkenntnis bei der Auswertung.",
-  ],
+  bauwerksdiagnose: BAUWERKSDIAGNOSE,
+  pruefverfahren_katalog: BAUWERKSDIAGNOSE,
+  zfp: BAUWERKSDIAGNOSE,
   hydratation_folgen: [
     "Hydratation, Eigenspannungen, Zwang sowie Kriechen und Schwinden laufen im jungen Beton gleichzeitig ab; übersteigt die Zwangspannung die aktuelle Zugfestigkeit, entsteht ein Trennriss.",
     "Der Reifegrad nach Saul summiert (T − T₀) · Δt mit T₀ = −10 °C; im Beispiel entsprechen 48 h bei 10 °C rund 32 h bei 20 °C, das Äquivalentalter nach Arrhenius nutzt Ea von 30 bis 50 kJ/mol.",
@@ -287,4 +296,4 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
  *  tests/kurzfassung.test.ts jedes Fachmodul über FLIESSTEXT_SCHWELLE (Ansichtsumfang laut tests/hilfen/fliesstext.ts,
  *  auch Reiter-Routen geteilter Komponenten) auf Kurzfassung und Reitergliederung. Die Liste hält zusätzlich Module,
  *  deren Kurzfassung bleiben soll, auch wenn sie die Schwelle später unterschreiten. */
-export const KURZFASSUNG_PFLICHT: readonly string[] = ['abfaelle', 'bauchemie', 'bauschaeden', 'baustoffkenngroessen', 'bauwerksunters_monitoring', 'bauwerksuntersuchung', 'betonpraxis', 'bp_abdichtung', 'bp_farben_lacke', 'bp_verkehr_asphalt', 'bp_verkehr_bahn', 'bp_verkehr_betondecken', 'bp_verkehr_bitumen', 'bp_verkehr_pruefung', 'bp_verkehr_rsto', 'bp_verkehr_tiefbau', 'bp_verkehr_tunnel', 'dauerhaftigkeit', 'historische_bauprodukte', 'hydratation_folgen', 'instandhaltung', 'ki_llmpraxis', 'ki_lokal', 'ki_recht_ethik', 'ki_system', 'ki_thesen', 'ki_ueberblick', 'lca_rechner', 'lca_regulatorik', 'material_schaeden_gross', 'mischungsberechnung', 'nachhaltigkeit_daten_regeln', 'oekobilanz_lca', 'px_bauleitung', 'px_karriere', 'px_planung', 'px_produktion', 'qualitaetssicherung', 'regularien', 'rueckbau', 'schadensbilder', 'schadstoffe', 'sonderbetone', 'spannbeton', 'stahl', 'stahlbeton_bemessung'];
+export const KURZFASSUNG_PFLICHT: readonly string[] = ['abfaelle', 'bauchemie', 'bauschaeden', 'baustoffkenngroessen', 'bauwerksdiagnose', 'bauwerksunters_monitoring', 'betonpraxis', 'bp_abdichtung', 'bp_farben_lacke', 'bp_verkehr_asphalt', 'bp_verkehr_bahn', 'bp_verkehr_betondecken', 'bp_verkehr_bitumen', 'bp_verkehr_pruefung', 'bp_verkehr_rsto', 'bp_verkehr_tiefbau', 'bp_verkehr_tunnel', 'dauerhaftigkeit', 'historische_bauprodukte', 'hydratation_folgen', 'instandhaltung', 'ki_llmpraxis', 'ki_lokal', 'ki_recht_ethik', 'ki_system', 'ki_thesen', 'ki_ueberblick', 'lca_rechner', 'lca_regulatorik', 'material_schaeden_gross', 'mischungsberechnung', 'nachhaltigkeit_daten_regeln', 'oekobilanz_lca', 'pruefverfahren_katalog', 'px_bauleitung', 'px_karriere', 'px_planung', 'px_produktion', 'qualitaetssicherung', 'regularien', 'rueckbau', 'schadensbilder', 'schadstoffe', 'sonderbetone', 'spannbeton_grundlagen', 'spannbeton_kennwerte', 'stahl', 'stahlbeton_bemessung', 'zfp'];

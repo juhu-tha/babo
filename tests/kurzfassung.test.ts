@@ -26,8 +26,12 @@ for (const [id, p] of Object.entries(KURZFASSUNG)) {
 // kleinsten Pflichtmodule); seit Z53 gilt sie für alle Fachmodule einschließlich der Reiter-Routen geteilter Komponenten.
 const FLIESSTEXT_SCHWELLE = 3000;
 const MAX_EBENEN = 2;
-/** Begründete Ausnahmen: Modul-ID → Begründung (derzeit keine) */
-const AUSNAHMEN: Readonly<Record<string, string>> = {};
+/** Begründete Ausnahmen: Modul-ID → Begründung */
+const AUSNAHMEN: Readonly<Record<string, string>> = {
+  // Teilmodule der Bauwerksdiagnose (Aufteilung 28.10.2026, src/registry/teilmodule.ts): je ein Bereich, daher keine Reiterleiste
+  pruefverfahren_katalog: 'Katalog mit Kategorie-Filter, Suche und Verfahrensauswahl (je ein Verfahren sichtbar); eine Reiterleiste mit einem Reiter brächte nichts',
+  zfp: 'eigene Reiterleiste (ReiterLeiste) mit sechs Verfahrensgruppen und DGZfP, formal kein ModuleTabs',
+};
 
 const dateien = modulDateien();
 let lang = 0;

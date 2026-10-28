@@ -104,7 +104,7 @@ export const LERNPFADE: readonly Lernpfad[] = [
       { nr: 1, wocheEntwurf: '2026-10-05', titel: 'Einführung: Bestand als Ressource, Baualtersklassen und Epochen', module: ['bestand_info', 'bestand'] },
       { nr: 2, wocheEntwurf: '2026-10-12', titel: 'Bauaufnahme, Archivrecherche und Bauwerkserfassung', module: ['bauwerkserfassung', 'probenahme'] },
       { nr: 3, wocheEntwurf: '2026-10-19', titel: 'Schadenskartierung und Kausalkette', module: ['schadensbilder', 'bauschaeden'] },
-      { nr: 4, wocheEntwurf: '2026-10-26', titel: 'Bauwerksdiagnose und zerstörungsfreie Prüfung', module: ['bauwerksuntersuchung', 'analytik'] },
+      { nr: 4, wocheEntwurf: '2026-10-26', titel: 'Bauwerksdiagnose und zerstörungsfreie Prüfung', module: ['bauwerksdiagnose', 'pruefverfahren_katalog', 'zfp', 'analytik'] },
       { nr: 5, wocheEntwurf: '2026-11-02', titel: 'Holz im Bestand: Diagnostik, Schädlinge und Pilze', module: ['holzkorrosion', 'holz'] },
       { nr: 6, wocheEntwurf: '2026-11-09', titel: 'Mauerwerk im Bestand: Diagnose und historische Bauweisen', module: ['mauerwerk', 'historische_bauweisen'] },
       { nr: 7, wocheEntwurf: '2026-11-16', titel: 'Feuchte und Hygrothermik, Innendämmung', module: ['feuchteschutz', 'daemmung_vergleich'] },

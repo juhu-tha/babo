@@ -26,7 +26,7 @@ export const UMSETZUNGSPLAN: readonly Phase[] = [
     { ap: '1.10', titel: 'Haftungshinweis für alle Rechner-Module', status: 'erledigt' },
   ] },
   { nr: 2, titel: 'Bedienung und Barrierefreiheit', aps: [
-    { ap: '2.1', titel: 'Barrierefreiheits-Prüfung über alle Modulrouten (axe)', status: 'erledigt', hinweis: 'manuelle BITV-Stichprobe offen (Gutachten Maßnahme 7)' },
+    { ap: '2.1', titel: 'Barrierefreiheits-Prüfung über alle Modulrouten (axe)', status: 'erledigt', hinweis: 'manuelle BITV-Stichprobe offen (Gutachten Maßnahme 7); Teil der Bachelorarbeit Z10/Z17' },
     { ap: '2.2', titel: 'Genau eine Hauptüberschrift je Seite', status: 'erledigt' },
     { ap: '2.3', titel: 'Tastatur- und Screenreader-Reihenfolge (Seitenleiste inert)', status: 'erledigt' },
     { ap: '2.4', titel: 'Dunkelmodus und Kontrast-Mindestwerte', status: 'erledigt' },
@@ -63,7 +63,7 @@ export const UMSETZUNGSPLAN: readonly Phase[] = [
     { ap: '4.9', titel: 'Glaser-Verfahren als einziger Rechenkern (src/calc/glaser.ts)', status: 'erledigt' },
     { ap: '4.10', titel: 'Rechenkern Gebäude-Ökobilanz', status: 'erledigt' },
     { ap: '4.11', titel: 'Annahmen und Grenzen der Rechner', status: 'erledigt' },
-    { ap: '4.12', titel: 'Gegenrechnung von 10 Rechnern', status: 'wartet', hinweis: 'Abschlussarbeit/Hiwi (Z10/Z17)' },
+    { ap: '4.12', titel: 'Gegenrechnung von 10 Rechnern', status: 'wartet', hinweis: 'Bachelorarbeit, 12 ECTS, ohne Vergütung (Z10/Z17, Entscheidung 28.10.)' },
   ] },
   { nr: 5, titel: 'Technik und Leistung', aps: [
     { ap: '5.1', titel: 'Typsicherheit: explizite any auf 0', status: 'erledigt' },
@@ -85,7 +85,7 @@ export const UMSETZUNGSPLAN: readonly Phase[] = [
     { ap: '6.7', titel: 'Halbjährlicher Normen- und Rechtsstand-Check', status: 'erledigt' },
     { ap: '6.8', titel: 'Offene Lizenz', status: 'wartet', hinweis: 'THA-Klärung (Z13/Z45)' },
     { ap: '6.9', titel: 'Anonymer Kurzfragebogen', status: 'wartet', hinweis: 'DSB-Freigabe (Z11/Z39)' },
-    { ap: '6.10', titel: 'Seite „Forschung und Transfer“', status: 'erledigt', hinweis: 'Texte ersetzt (#192); URL der Personenseite offen' },
+    { ap: '6.10', titel: 'Seite „Forschung und Transfer“', status: 'erledigt', hinweis: 'Texte ersetzt (#192); URL der Personenseite offen (28.10.: öffentlich keine gültige Adresse gefunden)' },
   ] },
 ];
 
