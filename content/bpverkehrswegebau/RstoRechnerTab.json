@@ -1,7 +1,7 @@
 {
   "texte": {
     "grundlagenDerBemessungNach": " Grundlagen der Bemessung nach RStO 12/24",
-    "dieRichtlinienFürDie": "Die **Richtlinien für die Standardisierung des Oberbaues von Verkehrsflächen (RStO 12/24, Ausgabe 2012, Fassung 2024)** regeln den Aufbau von Straßenquerschnitten in Deutschland. Die Schichtdicken im Rechner sind vereinfachte Lehrwerte – maßgebend sind die Tafeln der RStO 12/24 und die ZTV SoB-StB. Ziel ist die Festlegung der wirtschaftlichsten Dicke der einzelnen Schichten unter Berücksichtigung von **Schwerverkehr** (charakterisiert durch die Belastungsklasse $B_k$), Frostempfindlichkeit des Untergrundes und klimatischen Randbedingungen.",
+    "dieRichtlinienFürDie": "Die **Richtlinien für die Standardisierung des Oberbaues von Verkehrsflächen (RStO 12/24, Ausgabe 2012, Fassung 2024)** regeln den Aufbau von Straßenquerschnitten in Deutschland. Die Dicken der gebundenen Schichten folgen RStO 12/24, Tafel 1 (Asphalt) bzw. Tafel 2 (Beton), jeweils Zeile 1 (vorläufig, F-Freigabe am Regelwerkstext). Die Gesamtdicken sind Lehrannahmen: Sie ergeben sich aus der Mindestdicke des frostsicheren Oberbaus mit Mehr- und Minderdicken; die Frostschutzschicht füllt die Differenz. Ziel ist die Festlegung der wirtschaftlichsten Dicke der einzelnen Schichten unter Berücksichtigung von **Schwerverkehr** (charakterisiert durch die Belastungsklasse $B_k$), Frostempfindlichkeit des Untergrundes und klimatischen Randbedingungen.",
     "t1Überbaubauweise": "1. Überbaubauweise",
     "t2BelastungsklasseBK": "2. Belastungsklasse ($B_k$)",
     "ztvAsphaltStbHinweis": "ZTV Asphalt-StB Hinweis:",

@@ -287,7 +287,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     kurz: "Zeigt fest hinterlegte Schichtaufbauten je Belastungsklasse; es wird nichts gerechnet.",
     rechnet: false,
     grenzen: [
-      "Schichtdicken sind vereinfachte Lehrwerte, maßgebend sind die Tafeln der RStO 12/24.",
+      "Gebundene Schichten nach RStO 12/24, Tafel 1/2, Zeile 1 (vorläufig); Gesamtdicken und Frostschutzschicht sind Lehrannahmen.",
       "Frostzone, Frostempfindlichkeit und Wasserverhältnisse beeinflussen den Aufbau nicht.",
     ],
   },

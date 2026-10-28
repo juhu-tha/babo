@@ -17,7 +17,7 @@ const VERKEHRSWEGEBAU: readonly string[] = [
   "Das Modul gliedert den Verkehrswegebau in Reiter zu Oberbau nach RStO, Asphaltarten, Bitumen, Asphaltprüfung, Betondecken, Tiefbau und Entwässerung, Bahnbau sowie Tunnelbau.",
   "Die RStO 12/24 regeln den Aufbau von Straßenquerschnitten nach Belastungsklassen; die Tragfähigkeit des Planums wird mit dem statischen Plattendruckversuch nach DIN 18134 nachgewiesen.",
   "Asphalt besteht aus Füller, Gesteinskörnung und Bitumen: Splittmastixasphalt stützt sich auf ein Splittgerüst mit Mastix, Gussasphalt wird ohne Walzen eingebaut, offenporiger Asphalt ist wasserdurchlässig.",
-  "Bitumen ist thermoplastisch und wird über die Nadelpenetration bei 25 °C und den Erweichungspunkt Ring und Kugel eingestuft; für Autobahndeckschichten ist ein PSV-Wert von mindestens 51 bzw. 54 gefordert.",
+  "Bitumen ist thermoplastisch und wird über die Nadelpenetration bei 25 °C und den Erweichungspunkt Ring und Kugel eingestuft; für Autobahndeckschichten ist ein PSV-Wert von mindestens 51 bzw. 54 gefordert (TL Gestein-StB 04/23; vorläufig, F-Freigabe).",
   "Betondecken bilden keine Spurrinnen, brauchen aber Fugen mit Dübeln und Ankern sowie Luftporen gegen Frost-Tausalz; als Bauteile der Feuchtigkeitsklasse WS sind sie gegen eine Alkali-Kieselsäure-Reaktion zu sichern.",
 ];
 
