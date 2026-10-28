@@ -4647,7 +4647,7 @@
     "options": [
       "8,3 · 10⁻⁷ m²/s",
       "4,8 · 10⁶ m²/s",
-      "1,2 · 10⁻³ m²/s",
+      "8,3 · 10⁻⁴ m²/s",
       "2,1 · 10⁻⁵ m²/s"
     ],
     "correctIdx": 0,
@@ -4657,7 +4657,7 @@
     "distraktorFeedback": [
       "",
       "4,8 · 10⁶ ist die volumenbezogene Wärmespeicherkapazität ρ·c in J/(m³K), nicht a.",
-      "Hier wurde durch ρ allein statt durch ρ·c geteilt; die Größenordnung ist um Zehnerpotenzen zu hoch.",
+      "Hier wurde durch ρ allein statt durch ρ·c geteilt (2,0/2 400); das Ergebnis ist um den Faktor c = 1 000 zu groß.",
       "Der Wert passt zu einem Metall mit hoher Wärmeleitfähigkeit, nicht zu Beton."
     ],
     "gapAnalysis": {
@@ -4671,8 +4671,9 @@
     "quelle": "DIN EN ISO 10456:2010-05; Willems: Lehrbuch der Bauphysik, 8. Aufl. 2017",
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-26",
-      "ergebnis": "ok"
+      "am": "2026-10-28",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 28.10. (Runde 3): Distraktor „1,2 · 10⁻³ m²/s“ passte zu keinem Rechenweg; durch 8,3 · 10⁻⁴ m²/s (λ/ρ ohne c) ersetzt, Rückmeldung entsprechend präzisiert – korrigiert"
     }
   },
   {
