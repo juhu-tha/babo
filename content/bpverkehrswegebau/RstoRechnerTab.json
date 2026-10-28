@@ -6,7 +6,7 @@
     "t2BelastungsklasseBK": "2. Belastungsklasse ($B_k$)",
     "ztvAsphaltStbHinweis": "ZTV Asphalt-StB Hinweis:",
     "dimensionierungsformelÄquivalenz": "Dimensionierungsformel (Äquivalenz):",
-    "nMittlereTäglicheLkw": "$N$: Mittlere tägliche Lkw-Stärke, $f_A$: Achszahlfaktor, $f_G$: Spurbreitenfaktor, $f_B$: Achslastfaktor.",
+    "nMittlereTäglicheLkw": "$N$: Nutzungszeitraum in Jahren, $DTA^{(SV)}$: tägliche Achsübergänge des Schwerverkehrs ($DTV^{(SV)} \\cdot f_A$ mit Achszahlfaktor $f_A$), $q_{Bm}$: Lastkollektivquotient, $f_1$: Fahrstreifenfaktor, $f_2$: Fahrstreifenbreitenfaktor, $f_3$: Steigungsfaktor, $f_z$: Zuwachsfaktor (RStO 12/24, Abschn. 2.7).",
     "sollAufbauNachRsto": "Soll-Aufbau nach RStO ",
     "normativeAnforderungZtvAsphalt": "Normative Anforderung (ZTV Asphalt-StB / EN 13043):",
     "untergrundUnterbauPlanum": "Untergrund / Unterbau (Planum):",
