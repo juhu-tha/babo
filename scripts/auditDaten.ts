@@ -61,6 +61,7 @@ export const FACHGEBIETE: readonly { name: string; datei: RegExp; text: RegExp }
   { name: 'Stahl & Korrosionsschutz', datei: /korrosionsschutz|eisenKohlenstoff|stahlbau/i, text: /ISO 12944|DIN EN 10025|Eisen-Kohlenstoff/ },
   { name: 'Prüfverfahren & Bauwerksdiagnostik', datei: /pruefverfahren|bauwerksuntersuchung|karsten|zfp/i, text: /Prüfverfahren|Rückprall|Karsten/ },
   { name: 'Verkehrswege- & Tunnelbau', datei: /verkehrswegebau|tunnel|tiefbau/i, text: /Tunnel|ZTV-ING|RStO|DWA-A 138|Rigole|f_Ort/ },
+  { name: 'Bauen im Bestand & Aufmaß', datei: /bauwerkserfassung|altbau|denkmal|historisch/i, text: /DIN 18202|Aufmaß|Bauaufnahme/ },
   { name: 'Beton & Stahlbeton', datei: /biegung|kennwerte|mischung|hydratation|festbeton|spannbeton|beton|lebensdauer/i, text: /DIN EN 1992|DIN 1045|DIN EN 197|C55\/67|C90\/105|fib Bulletin 34|Reifefunktion|de Vree|Karbonatisierung|Chlorid|Stahlbetonbauteile/ },
 ];
 export const FACHGEBIET_SONST = 'Weitere';

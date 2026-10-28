@@ -1,6 +1,6 @@
 # Modulprüfung Tranche 12 – Bauen im Bestand, Rückbau & Schadstoffe, Dauerhaftigkeit (Befundliste zur Freigabe)
 
-**Stand:** 28.10.2026 (Branch `pruefung/module-tranche12-10-28`, Basis origin/main b2cb8367)
+**Stand:** 28.10.2026 (Branch `pruefung/module-tranche12-10-28`, Basis origin/main b2cb8367, main e3349921 eingemergt)
 **Status:** Vorschlag zur fachlichen Freigabe – noch nicht bestätigt.
 
 > Nach der Freigabe eines Moduls wird in `src/data/pruefvermerke.ts` der Prüfvermerk „geprüft am …“ gesetzt (Passiv, ohne Namen). Mit dieser Befundliste wurden **keine** Prüfvermerke geändert. Geändert wurde eine Quizfrage (`qn_bauwerksuntersuchung_1`), weil sie durch die Korrektur T12-BU-1 falsch geworden wäre.
@@ -24,7 +24,7 @@
 | 3 | `modernisierung` | `src/utils/bestandKern.ts` | freigabefähig nach Korrektur T12-MO-1 |
 | 4 | `bauwerkserfassung` | `src/calc/holzbau.ts` | freigabefähig nach Korrektur T12-BW-1/-2 (F-Stelle DIN 18202 Zeile 5) |
 | 5 | `denkmalpflege` | – | freigabefähig |
-| 6 | `bauwerksuntersuchung` | `src/calc/bauwerksuntersuchung.ts` | freigabefähig nach Korrektur T12-BU-1 bis -6 und Klärung von T12-BU-7 |
+| 6 | `bauwerksdiagnose`, `pruefverfahren_katalog`, `zfp` (vormals `bauwerksuntersuchung`) | `src/calc/bauwerksuntersuchung.ts` | freigabefähig nach Korrektur T12-BU-1 bis -6 und Klärung von T12-BU-7 |
 | 7 | `historisch` | `src/utils/bestandKern.ts` | freigabefähig (F-Stellen Datenbank) |
 | 8 | `historische_bauweisen` | inline | freigabefähig nach Klärung von T12-HB-1 |
 | 9 | `historische_bauprodukte` | – | freigabefähig nach Korrektur T12-HP-1 |
@@ -183,13 +183,15 @@ Tab. 4.4DE (c_min,dur, Δc_dev), E_dyn-Formel, β = 0,96 und ASTM-C876-Grenzen i
 - Hinweis: Die Gefügestufen des Ultraschallkerns (< 3000 kritisch, < 3800 mäßig) weichen von den Textstufen (3000/3500/4500 m/s) ab.
 - Hinweis: Ablesezeit Phenolphthalein „30–60 s“ (Diagnose, Planer) gegenüber „60–120 s abwarten“ (Prüfkatalog) – angleichen.
 
-**Zuordnung nach #231:** T12-BU-1 und -6 → `bauwerksdiagnose` (Hauptseite); T12-BU-2, -3, -7 → `pruefverfahren_katalog`; T12-BU-4 → `zfp` (Diagnosedaten); T12-BU-5 → `bauwerksdiagnose` (Probenahmeplaner).
+**Zuordnung nach #231 (gemergt, in diesen Branch eingemergt):** T12-BU-1 und -6 → `bauwerksdiagnose` (Phasen, Beispiele), T12-BU-5 → `bauwerksdiagnose` (Probenahmeplaner); T12-BU-2, -3, -4 und -7 → `pruefverfahren_katalog` (Prüfkatalog und Diagnosedaten der Verfahren). `zfp` (DGZfP & Ausbildung) ist von den Befunden nicht betroffen. Die Quizfrage `qn_bauwerksuntersuchung_1` gehört jetzt zu `bauwerksdiagnose`.
 
 **F-Freigabe-Stellen:** k_n-Tabelle und M nach DIN EN 13791:2020-02; Verwerfungsregel DIN EN 12504-2.
 
 **Empfehlung:** freigabefähig nach Korrektur T12-BU-1 bis -6 und Klärung von T12-BU-7.
 
-- [ ] Modul freigeben
+- [ ] Modul freigeben (`bauwerksdiagnose`)
+- [ ] Modul freigeben (`pruefverfahren_katalog`)
+- [ ] Modul freigeben (`zfp`)
 
 ## 7. Historische Kennwerte (`historisch`)
 
