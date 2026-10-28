@@ -201,7 +201,8 @@ export const TAB_EN: Record<string, string> = {
   "stuetzenbemessung": "Column Design (EC2)",
   "durchstanzen": "Punching Shear (EC2)",
   "verankerungslaenge": "Anchorage & Lap Length",
-  "spannbeton": "Prestressed Concrete",
+  "spannbeton_grundlagen": "Prestressed Concrete: Fundamentals",
+  "spannbeton_kennwerte": "Prestressed Concrete: Properties & Calculator",
   "wu_bauwerke": "Waterproof Tanks (White Tank)",
   "wu-bauwerke": "Waterproof Tanks (White Tank)",
   "carbonbeton": "Carbon Reinforced Concrete",
@@ -243,7 +244,8 @@ export const TAB_EN: Record<string, string> = {
   "bauwerkserfassung": "Building Condition Survey",
   "denkmalpflege": "Heritage Conservation",
   "modernisierung": "Energy Retrofit & Codes",
-  "bauwerksuntersuchung": "NDT & Diagnostics",
+  "bauwerksdiagnose": "Structural Diagnostics",
+  "pruefverfahren_katalog": "Testing Methods Catalogue",
   "historisch": "Historical Material Properties",
   "historische_bauweisen": "Historical Construction Types",
   "historische_bauprodukte": "Historical Building Products",
@@ -395,7 +397,7 @@ export const TAB_EN: Record<string, string> = {
   "instandsetzung_mauerwerk": "Repair: Masonry",
   "instandsetzung_metalle": "Repair: Metals",
   "kriechen": "Creep & Shrinkage",
-  "zfp": "Non-Destructive Testing",
+  "zfp": "NDT Simulators & DGZfP",
   "zwang": "Restraint Stresses"
 };
 
