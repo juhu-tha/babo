@@ -23,6 +23,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/ressourceneffizienz/Ressourceneffizienz.json';
+import { rcAufteilung } from '@/src/calc/rcBeton';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { reiterZiel } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
@@ -127,8 +128,10 @@ export default function Ressourceneffizienz() {
     const finalVolume = volume * geomFactor;
 
     // Weight Calculations (approx. 2.4 t/m³ concrete)
-    const primaryGravelNeed = concreteType === 'rc_beton' ? finalVolume * 1.8 * 0.5 : finalVolume * 1.8; // 50% substituted in typical RC-beton
-    const secondaryGravelNeed = concreteType === 'rc_beton' ? finalVolume * 1.8 * 0.5 : 0;
+    // RC-Anteil nach DIN 1045-2:2023-08, Anhang E: 45 Vol.-% der groben Gesteinskörnung (Typ 1), Kern src/calc/rcBeton.ts (T12-RE-1)
+    const rc = rcAufteilung(finalVolume, concreteType === 'rc_beton');
+    const primaryGravelNeed = rc.primaer;
+    const secondaryGravelNeed = rc.rezykliert;
     
     // Carbon footprint (kg CO2-eq per m³ concrete + steel contribution)
     // CEM I (Standard): ~310 kg; CEM III (low carbon): ~170 kg; RC-Beton (with CEM III): ~155 kg CO2/m³
@@ -158,7 +161,7 @@ export default function Ressourceneffizienz() {
     const baselineTotalCo2 = baselineConcreteCo2 + baselineSteelCo2 + baselineLogisticsCo2;
 
     const co2SavingsPercent = Math.max(0, ((baselineTotalCo2 - totalCo2) / baselineTotalCo2) * 100);
-    const primaryMineralSavings = Math.max(0, (baselineVolume * 1.8) - primaryGravelNeed);
+    const primaryMineralSavings = Math.max(0, rcAufteilung(baselineVolume, false).primaer - primaryGravelNeed);
 
     return {
       finalVolume: formatDeZahl(finalVolume, 0),
