@@ -431,7 +431,9 @@ export function ModulInhalt({ activeTab }: { activeTab: TabId }) {
 
     {activeTab === 'waermeeigenschaften' && <Waermeeigenschaften />}
     {activeTab === 'daemmung_vergleich' && <DaemmungVergleich />}
-    {activeTab === 'spannbeton' && <Spannbeton />}
+    {/* Spannbeton in zwei Teilmodulen (28.10.2026, src/registry/teilmodule.ts); 'spannbeton' ist Alias auf Teil 1 */}
+    {activeTab === 'spannbeton_grundlagen' && <Spannbeton bereiche={['null_bis_hundert', 'grundprinzipien', 'dauerhaftigkeit']} />}
+    {activeTab === 'spannbeton_kennwerte' && <Spannbeton bereiche={['kennwerte', 'rechner']} />}
     {/* Info */}
     {activeTab === 'glossar' && <Glossar />}
     {activeTab === 'regularien' && <Regularien />}
@@ -444,8 +446,10 @@ export function ModulInhalt({ activeTab }: { activeTab: TabId }) {
     {activeTab === 'bestand' && <Bestand />}
 
     {activeTab === 'bauwerkserfassung' && <Bauwerkserfassung />}
-    {activeTab === 'zfp' && <Bauwerksuntersuchung />}
-    {activeTab === 'bauwerksuntersuchung' && <Bauwerksuntersuchung />}
+    {/* Bauwerksdiagnose in drei Teilmodulen (28.10.2026, src/registry/teilmodule.ts); 'bauwerksuntersuchung' ist Alias auf Teil 1 */}
+    {activeTab === 'bauwerksdiagnose' && <Bauwerksuntersuchung bereiche={['diagnose', 'probenahme', 'interpretation']} />}
+    {activeTab === 'pruefverfahren_katalog' && <Bauwerksuntersuchung bereiche={['katalog']} />}
+    {activeTab === 'zfp' && <Bauwerksuntersuchung bereiche={['zfp']} />}
     {activeTab === 'historisch' && <HistorischeMaterialkennwerte />}
     {activeTab === 'historische_bauweisen' && <HistorischeBauweisen />}
     {activeTab === 'historische_bauprodukte' && <HistorischeBauprodukte />}

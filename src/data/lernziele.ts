@@ -129,7 +129,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
     ],
   },
   bauwerksunters_monitoring: {
-    niveau: "B/M", minuten: 90, vorwissen: ["bauwerksuntersuchung", "messen_pruefen"],
+    niveau: "B/M", minuten: 90, vorwissen: ["pruefverfahren_katalog", "messen_pruefen"],
     ziele: [
       { stufe: "Verstehen", text: "den Aufbau und Einsatzzweck eines Structural-Health-Monitorings mit Riss- und Dehnungsaufnehmern erläutern." },
       { stufe: "Analysieren", text: "die Bohrwiderstandsprofile von Hölzern auswerten und gesunde Querschnitte von Kernfäule und Hohlräumen unterscheiden." },
@@ -138,13 +138,31 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
       { stufe: "Bewerten", text: "geeignete Verfahren aus dem ZfP-Methodenkatalog für eine Überwachungsaufgabe auswählen." },
     ],
   },
-  bauwerksuntersuchung: {
-    niveau: "B/M", minuten: 120, vorwissen: ["bestand", "messen_pruefen", "korrosion"],
+  // Bauwerksdiagnose in drei Teilmodulen (28.10.2026): Ziele des früheren Moduls „bauwerksuntersuchung“ verteilt
+  // (Ziele 2 und 5 gelten für Katalog und ZfP gemeinsam)
+  bauwerksdiagnose: {
+    niveau: "B/M", minuten: 60, vorwissen: ["bestand", "messen_pruefen", "korrosion"],
     ziele: [
       { stufe: "Verstehen", text: "die Phasen einer Tragwerksdiagnose von der Archivrecherche bis zur zerstörenden Laborprüfung erläutern." },
-      { stufe: "Verstehen", text: "zerstörungsfreie Prüfverfahren wie Rückprallhammer, Ultraschall und Bewehrungsortung nach Messprinzip und Aussagekraft unterscheiden." },
       { stufe: "Anwenden", text: "die Probenahme- und Messstellen planen und aus Prüfergebnissen charakteristische Werte nach DIN EN 13791 ermitteln." },
       { stufe: "Analysieren", text: "die Messbefunde zu Betondeckung, Karbonatisierung und Chloridgehalt an Fallbeispielen interpretieren und Schadensursachen ableiten." },
+    ],
+  },
+  pruefverfahren_katalog: {
+    niveau: "B/M", minuten: 60, vorwissen: ["bauwerksdiagnose", "messen_pruefen"],
+    ziele: [
+      { stufe: "Verstehen", text: "zerstörungsfreie Prüfverfahren wie Rückprallhammer, Ultraschall und Bewehrungsortung nach Messprinzip und Aussagekraft unterscheiden." },
+      // neu bei der Aufteilung (28.10.2026), Prüfpunkt
+      { stufe: "Anwenden", text: "mit den Simulatoren des Katalogs die Restschutzdauer aus Karbonatisierungstiefe und Betondeckung sowie die Bauteildicke aus der Impact-Echo-Resonanzfrequenz ermitteln." },
+      { stufe: "Bewerten", text: "für eine Untersuchungsaufgabe geeignete Prüfverfahren auswählen und ihre Grenzen begründen." },
+    ],
+  },
+  zfp: {
+    niveau: "B/M", minuten: 45, vorwissen: ["pruefverfahren_katalog", "messen_pruefen"],
+    ziele: [
+      { stufe: "Verstehen", text: "zerstörungsfreie Prüfverfahren wie Rückprallhammer, Ultraschall und Bewehrungsortung nach Messprinzip und Aussagekraft unterscheiden." },
+      // neu bei der Aufteilung (28.10.2026), Prüfpunkt
+      { stufe: "Anwenden", text: "mit den Lehrsimulatoren aus Rückprallzahl, Schallgeschwindigkeit, Resonanzfrequenz oder Laufzeit Schätzwerte für Festigkeit, Bauteildicke und Reflektortiefe ermitteln." },
       { stufe: "Bewerten", text: "für eine Untersuchungsaufgabe geeignete Prüfverfahren auswählen und ihre Grenzen begründen." },
     ],
   },
@@ -1182,7 +1200,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
     ],
   },
   rechnung_bestand: {
-    niveau: "B/M", minuten: 45, vorwissen: ["historisch", "bauwerksuntersuchung", "stahlbeton_bemessung"],
+    niveau: "B/M", minuten: 45, vorwissen: ["historisch", "bauwerksdiagnose", "stahlbeton_bemessung"],
     ziele: [
       { stufe: "Anwenden", text: "historische Betonfestigkeitsklassen nach DIN 1045:1972 über Würfelnormierung und Zylinderumrechnung einer heutigen Festigkeitsklasse zuordnen." },
       { stufe: "Anwenden", text: "den Bemessungswert der Betondruckfestigkeit im Bestand mit und ohne Bohrkernprüfung berechnen." },
@@ -1341,14 +1359,22 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
       { stufe: "Bewerten", text: "die Chancen und Grenzen innovativer Baustoffe hinsichtlich Leistungsfähigkeit, Dauerhaftigkeit und Zulassungssituation beurteilen." },
     ],
   },
-  spannbeton: {
-    niveau: "M", minuten: 180, vorwissen: ["stahlbeton_bemessung", "betonkennwerte", "hydratation_folgen"],
+  // Spannbeton in zwei Teilmodulen (28.10.2026): Ziele des früheren Moduls „spannbeton“ verteilt
+  spannbeton_grundlagen: {
+    niveau: "M", minuten: 90, vorwissen: ["stahlbeton_bemessung", "betonkennwerte", "hydratation_folgen"],
     ziele: [
       { stufe: "Verstehen", text: "das Prinzip der Vorspannung und die Notwendigkeit hochfester Spannstähle anhand der Dehnungsverhältnisse erläutern." },
       { stufe: "Analysieren", text: "die Vorspannverfahren mit sofortigem, nachträglichem, ohne Verbund und externer Vorspannung unterscheiden." },
+      { stufe: "Bewerten", text: "die Risiken der Spannungsrisskorrosion bewerten und geeignete zerstörungsfreie Prüfverfahren für Spannglieder auswählen." },
+    ],
+  },
+  spannbeton_kennwerte: {
+    niveau: "M", minuten: 90, vorwissen: ["spannbeton_grundlagen", "betonkennwerte", "hydratation_folgen"],
+    ziele: [
+      // neu bei der Aufteilung (28.10.2026), Prüfpunkt
+      { stufe: "Verstehen", text: "den Einfluss von Zementart, Belastungsalter und Umgebungsfeuchte auf Kriechzahl und Schwinddehnung sowie der Relaxationsklasse auf den Spannstahlverlust erläutern." },
       { stufe: "Anwenden", text: "die Randspannungen eines vorgespannten Querschnitts aus Normalkraft- und Momentenanteil berechnen und die Spannungsgrenzen im GZG prüfen." },
       { stufe: "Anwenden", text: "die Reibungs-, Keilschlupf- und zeitabhängige Spannkraftverluste aus Kriechen, Schwinden und Relaxation berechnen." },
-      { stufe: "Bewerten", text: "die Risiken der Spannungsrisskorrosion bewerten und geeignete zerstörungsfreie Prüfverfahren für Spannglieder auswählen." },
     ],
   },
   stahl: {
@@ -1372,7 +1398,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
     ],
   },
   vdi6200: {
-    niveau: "B/M", minuten: 120, vorwissen: ["bauschaeden", "bauwerksuntersuchung"],
+    niveau: "B/M", minuten: 120, vorwissen: ["bauschaeden", "bauwerksdiagnose"],
     ziele: [
       { stufe: "Erinnern", text: "die Prüfungsarten nach DIN 1076 und VDI 6200 mit ihren Intervallen und den zuständigen Personen wiedergeben." },
       { stufe: "Verstehen", text: "die Schadensfolgeklassen CC 1 bis CC 3 und Robustheitsklassen RC 1 bis RC 4 nach VDI 6200 erläutern." },
