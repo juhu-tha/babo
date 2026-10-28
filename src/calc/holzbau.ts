@@ -72,12 +72,22 @@ export function bemesseDruckstab(e: DruckstabEingabe): DruckstabErgebnis {
   const F_c_R_d_kN = (k_cz * A * f_c0d) / 1000;
   const utilization = (e.nEd / F_c_R_d_kN) * 100;
 
+  // H-2 (28.10.2026): EN 1995-1-1 und NA DE nennen keine Grenzschlankheit für Druckstäbe; λ > 200 ist nur ein Lehrhinweis (keine Normgröße).
   bereich(hinweise, 'laenge', lambda_z, 0, 200, 'Schlankheit λ > 200: Für Druckstäbe außergewöhnlich schlank; Ausführung und Imperfektionen gesondert prüfen.');
   if (lambda_rel_z > 0.3) hinweise.push({ stufe: 'warnung', feld: 'info', text: 'Nachgewiesen wird nur zentrischer Druck um die schwache Achse; Biegung aus Exzentrizität oder Querlast und Kippen sind nicht enthalten.' });
   return { k_mod, gamma_M: GAMMA_M_HOLZ, f_c0d, E_05: e.E005, A, iy, iz, l_ef, lambda_z, sigma_c_crit, lambda_rel_z, k_cz, F_c_R_d_kN, utilization, isUnsafe: utilization > 100, hinweise };
 }
 
-export type Querdruckfall = 'schwelle' | 'pfosten_riegel' | 'traeger_ende' | 'clt_plate';
+/**
+ * Querdruckfälle nach DIN EN 1995-1-1 (A1), 6.1.5: schwelle = durchgehende Lagerung; pfosten_riegel = Einzelauflager
+ * (Zwischenauflager, Kontaktlänge beidseitig verlängerbar); traeger_ende = Endauflager am Trägerende (Einzelauflager,
+ * Kontaktlänge nur einseitig verlängerbar); allgemein = k_c,90 = 1,0 (Bedingung l₁ ≥ 2h nicht erfüllt oder nicht bekannt);
+ * clt_plate = Brettsperrholz (Wert nach ETA; Lehrannahme 1,0).
+ * H-3 (Entscheidung 28.10.2026): Am Trägerende gilt für Einzelauflager mit l₁ ≥ 2h ebenfalls k_c,90 = 1,5 (Nadelvollholz)
+ * bzw. 1,75 (BSH, l ≤ 400 mm). EN 1995-1-1, 6.1.5(4) unterscheidet nur durchgehende Lagerung und Einzelauflager (Bild 6.2),
+ * nicht die Lage am Trägerende (öffentlich: Wortlaut 6.1.5 auf dnaop.com, EN 1995-1-1:2004+A1). Vorher 1,0 am Trägerende.
+ */
+export type Querdruckfall = 'schwelle' | 'pfosten_riegel' | 'traeger_ende' | 'allgemein' | 'clt_plate';
 
 export interface QuerdruckEingabe {
   F: number;  // F_c,90,d [kN]
@@ -100,14 +110,16 @@ export function bemesseQuerdruck(e: QuerdruckEingabe) {
   const k_mod = KMOD[e.nkl][e.kled];
   const f_c90d = (k_mod * e.fc90k) / GAMMA_M_HOLZ;
   // 6.1.5: k_c,90 = 1,25 (Nadelvollholz) / 1,5 (BSH) bei durchgehender Lagerung; 1,5 / 1,75 bei Einzelauflager mit l1 ≥ 2h und l ≤ 400 mm
+  const einzelauflager = e.fall === 'pfosten_riegel' || e.fall === 'traeger_ende';
   const k_c90 = e.fall === 'schwelle' ? (e.art === 'bsh' ? 1.5 : e.art === 'nadelvollholz' ? 1.25 : 1.0)
-    : e.fall === 'pfosten_riegel' ? (e.art === 'bsh' ? 1.75 : e.art === 'nadelvollholz' ? 1.5 : 1.0) : 1.0;
+    : einzelauflager ? (e.art === 'bsh' ? 1.75 : e.art === 'nadelvollholz' ? 1.5 : 1.0) : 1.0;
   // wirksame Kontaktlänge: je Seite + 30 mm, höchstens um a, l oder l1/2 (hier: 30 mm je überstehender Seite)
   const l_ef = e.l + (e.ueberstand ? (e.fall === 'traeger_ende' ? 30 : 60) : 0);
   const A_ef = e.b * l_ef;
   const sigma_c90d = (e.F * 1000) / A_ef;
   const stressLimit = k_c90 * f_c90d;
-  if (e.fall === 'pfosten_riegel' && e.l > 400) hinweise.push({ stufe: 'warnung', feld: 'l', text: 'k_c,90 = 1,5/1,75 gilt nur für Auflagerlängen l ≤ 400 mm.' });
+  if (einzelauflager && e.art === 'bsh' && e.l > 400) hinweise.push({ stufe: 'warnung', feld: 'l', text: 'k_c,90 = 1,75 (BSH) gilt nur für Auflagerlängen l ≤ 400 mm.' });
+  if (einzelauflager && k_c90 > 1) hinweise.push({ stufe: 'warnung', feld: 'fall', text: 'Erhöhter Beiwert k_c,90 nur, wenn der Abstand l₁ zur nächsten Druckfläche mindestens 2h beträgt (DIN EN 1995-1-1, 6.1.5); sonst Fall „Allgemein“ (k_c,90 = 1,0) wählen.' });
   return {
     f_c90k: e.fc90k, f_c90d, k_c90, l_ef, A_ef, sigma_c90d, stressLimit, F_c90Rd_kN: (stressLimit * A_ef) / 1000,
     utilization: (sigma_c90d / stressLimit) * 100, gamma_M: GAMMA_M_HOLZ, isUnsafe: sigma_c90d > stressLimit, hinweise,

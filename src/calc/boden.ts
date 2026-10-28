@@ -6,6 +6,20 @@
 import { type Hinweis, istEndlich, muss, bereich, hatFehler } from './plausibilitaet';
 import { formatDeZahl } from '../utils/numberFormat';
 
+/**
+ * Zustandsform aus der Konsistenzzahl nach DIN EN ISO 14688-2 (T2-B-1, Entscheidung 28.10.2026):
+ * I_C < 0,25 breiig (very soft) · 0,25–0,50 weich (soft) · 0,50–0,75 steif (firm) · 0,75–1,00 halbfest (stiff) ·
+ * > 1,00 fest (very stiff); I_C < 0 zusätzlich „flüssig“ (oberhalb der Fließgrenze). Grenzen öffentlich: Geocentrix,
+ * „ISO 14688-2: Consistency of silts and clays“. Deutsche Bezeichnungen nach den Feldmerkmalen (breiig: quillt beim
+ * Pressen zwischen den Fingern; steif: schwer knetbar, zu 3-mm-Röllchen ausrollbar; halbfest: bröckelt beim Ausrollen;
+ * fest: nicht mehr knetbar), öffentlich: BGR, BoreholeML-Codeliste „Consistency“ v2 – Zuordnung zu den Normbegriffen
+ * vorläufig, F-Freigabe (Normtext DIN EN ISO 14688-2, Tabelle Konsistenz). Vorher Einteilung der früheren DIN 18122-1
+ * (breiig 0–0,5, weich 0,5–0,75, steif 0,75–1,0, halbfest/fest > 1,0).
+ */
+export function zustandsformISO14688(iC: number): string {
+  return iC < 0 ? 'flüssig' : iC < 0.25 ? 'breiig' : iC < 0.5 ? 'weich' : iC < 0.75 ? 'steif' : iC <= 1.0 ? 'halbfest' : 'fest';
+}
+
 export function zustandsgrenzen(w: number, wL: number, wP: number) {
   const hinweise: Hinweis[] = [];
   muss(hinweise, istEndlich(w, wL, wP), 'eingabe', 'Alle Wassergehalte müssen Zahlen sein.');
@@ -17,15 +31,13 @@ export function zustandsgrenzen(w: number, wL: number, wP: number) {
 
   const iP = wL - wP;
   const iC = (wL - w) / iP;
-  // Konsistenzbereiche in der Einteilung der früheren DIN 18122-1 (Lehrkonvention). DIN EN ISO 14688-2 grenzt abweichend ab
-  // (I_C < 0,25 / 0,25–0,50 / 0,50–0,75 / 0,75–1,00 / > 1,00) – Frage T2-B-1 der Modulprüfung Tranche 2, vorläufig, F-Freigabe.
-  const zustand = iC < 0 ? 'flüssig' : iC < 0.5 ? 'breiig' : iC < 0.75 ? 'weich' : iC < 1.0 ? 'steif' : 'halbfest / fest';
+  const zustand = zustandsformISO14688(iC);
   // Plastizitätsdiagramm DIN 18196: A-Linie I_P = 0,73·(w_L − 20); Zwischenbereich 4 ≤ I_P < 7 oberhalb der A-Linie
   const aLinie = 0.73 * (wL - 20);
   let klasse: string;
   if (iP >= aLinie && iP >= 7) klasse = wL < 35 ? 'TL (Ton, leicht plastisch)' : wL <= 50 ? 'TM (Ton, mittelplastisch)' : 'TA (Ton, ausgeprägt plastisch) bzw. OT bei organischen Beimengungen';
   else if (iP >= aLinie && iP >= 4) klasse = 'UL/TL (Zwischenbereich, 4 ≤ I_P < 7)';
-  else klasse = wL < 35 ? 'UL (Schluff, leicht plastisch)' : wL <= 50 ? 'UM (Schluff, mittelplastisch) bzw. OU bei organischen Beimengungen' : 'UA (Schluff, ausgeprägt plastisch)';
+  else klasse = wL < 35 ? 'UL (Schluff, leicht plastisch)' : wL <= 50 ? 'UM (Schluff, mittelplastisch) bzw. OU bei organischen Beimengungen' : 'UA (Schluff, ausgeprägt plastisch); bei organischen Beimengungen Gruppe nach DIN 18196 prüfen';
   if (wL > 120) hinweise.push({ stufe: 'warnung', feld: 'wL', text: 'w_L > 120 % liegt außerhalb des üblichen Plastizitätsdiagramms.' });
   return { iP, iC, zustand, klasse, hinweise };
 }
@@ -37,10 +49,12 @@ export function zustandsgrenzen(w: number, wL: number, wP: number) {
  *    w_L = Wassergehalt bei N = 25 (HAW Kiel, Laborblatt „Fließgrenzengerät nach Casagrande“, 2025, nach DIN EN ISO 17892-12)
  *  - Einpunktverfahren: w_L = w_N·(N/25)^0,121 (ASTM D4318, Verfahren B; Exponent für DIN EN ISO 17892-12 vorläufig, F-Freigabe)
  *  - Ausrollgrenze w_P: Mittelwert der Ausrollversuche (Walzen von 3 mm Durchmesser zerbröckeln)
- *  - I_P = w_L − w_P, I_C = (w_L − w)/I_P und Zustandsform wie zustandsgrenzen() (Einteilung der früheren DIN 18122-1)
+ *  - I_P = w_L − w_P, I_C = (w_L − w)/I_P und Zustandsform wie zustandsgrenzen() (DIN EN ISO 14688-2, T2-B-1)
  *  - Bodengruppen: TL/UL w_L < 35 %, TM/UM 35 … 50 %, TA/UA > 50 %; oberhalb der A-Linie und I_P ≥ 7 % Ton,
  *    unterhalb oder I_P < 4 % Schluff, dazwischen (4 ≤ I_P < 7 % oberhalb der A-Linie) Zwischenbereich UL/TL;
  *    organogen: OU (unterhalb A-Linie, w_L 35 … 50 %), OT (oberhalb A-Linie, w_L > 50 %) – Organik selbst nicht bestimmbar.
+ *    T2-B-2 (Entscheidung 28.10.2026): Organisch, w_L > 50 % und unterhalb der A-Linie liegt in keinem der Felder OU/OT;
+ *    ausgegeben wird UA mit Hinweis „Zuordnung (OU/OH) nach DIN 18196 prüfen“ statt OU (vorläufig, F-Freigabe).
  * Wassergehalte in %.
  * ──────────────────────────────────────────────────────────────────────────────────────────────── */
 
@@ -130,7 +144,8 @@ export function bodengruppePlastizitaet(wL: number, iP: number, organisch = fals
     return { kuerzel: `T${stufe}`, text: `T${stufe} (Ton, ${PLAST[stufe]})`, aLinie: a, oberhalbALinie: true };
   }
   if (oberhalb && iP >= 4) return { kuerzel: 'UL/TL', text: 'UL/TL (Zwischenbereich, 4 ≤ I_P < 7)', aLinie: a, oberhalbALinie: true };
-  if (organisch && stufe !== 'L') return { kuerzel: 'OU', text: 'OU (Schluff mit organischen Beimengungen)', aLinie: a, oberhalbALinie: oberhalb };
+  if (organisch && stufe === 'M') return { kuerzel: 'OU', text: 'OU (Schluff mit organischen Beimengungen)', aLinie: a, oberhalbALinie: oberhalb };
+  if (organisch && stufe === 'A') return { kuerzel: 'UA', text: 'UA mit organischen Beimengungen – w_L > 50 % unterhalb der A-Linie: kein Feld OU/OT, Zuordnung (OU/OH) nach DIN 18196 prüfen', aLinie: a, oberhalbALinie: oberhalb };
   return { kuerzel: `U${stufe}`, text: `U${stufe} (Schluff, ${PLAST[stufe]})`, aLinie: a, oberhalbALinie: oberhalb };
 }
 

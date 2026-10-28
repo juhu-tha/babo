@@ -13,7 +13,7 @@
     "dinEn15978Berechnungsmethode": "**DIN EN 15978:** Berechnungsmethode für Gebäude (Hochbau).",
     "dinEn17472Berechnungsmethode": "**DIN EN 17472:** Berechnungsmethode für Ingenieurbauwerke (Tiefbau & Infrastruktur).",
     "dinEn17472Verlangt": "DIN EN 17472 verlangt ausdrücklich die ganzheitliche Betrachtung über drei Hauptdimensionen:",
-    "umweltqualitätLca13Kernindikatoren": "**Umweltqualität (LCA):** 13 Kernindikatoren nach EN 15804 (GWP-total, ODP, AP, EP, POCP, PENRT, etc.).",
+    "umweltqualitätLca13Kernindikatoren": "**Umweltqualität (LCA):** 13 Kernindikatoren der Wirkungsabschätzung nach EN 15804+A2 (GWP-total, ODP, AP, EP, POCP, ADP, WDP u. a.), ergänzt um Indikatoren der Ressourcennutzung wie PENRT.",
     "wirtschaftsqualitätLccLebenszykluskosten": "**Wirtschaftsqualität (LCC):** Lebenszykluskosten nach ISO 15686-5 (Herstellung, Instandhaltung, Rückbau).",
     "sozialeFunktionaleLeistungVerkehrssicher": "**Soziale & funktionale Leistung:** Verkehrssicherheit, Zugänglichkeit, Lärmemissionen und Verkehrsbehinderungen.",
     "regulativeNormformel": "Regulative Normformel",

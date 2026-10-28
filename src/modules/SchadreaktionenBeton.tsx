@@ -261,14 +261,14 @@ function AkrGefuegeSimulator() {
             </div>
 
             {/* SVG Visualizer Canvas */}
-            <div className="relative w-full aspect-4/3 max-h-[380px] bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shadow-inner flex items-center justify-center">
+            <div className="relative w-full aspect-4/3 max-h-[380px] svg-buehne rounded-xl overflow-hidden border shadow-inner flex items-center justify-center">
               <svg width="100%" height="100%" viewBox="0 0 540 380" className="select-none">
                 <defs>
                   {/* Cement paste background */}
                   <radialGradient id="cementPasteGrad" cx="50%" cy="50%" r="65%">
-                    <stop offset="0%" stopColor="#475569" />
-                    <stop offset="70%" stopColor="#334155" />
-                    <stop offset="100%" stopColor="#1e293b" />
+                    <stop offset="0%" stopColor="var(--bu-beton-hell)" />
+                    <stop offset="70%" stopColor="var(--bu-beton)" />
+                    <stop offset="100%" stopColor="var(--bu-beton-tief)" />
                   </radialGradient>
 
                   {/* Reactive aggregate body */}
@@ -290,22 +290,22 @@ function AkrGefuegeSimulator() {
                 <rect width="540" height="380" fill="url(#cementPasteGrad)" />
 
                 {/* Surrounding Inert Aggregates */}
-                <circle cx="80" cy="80" r="38" fill="#475569" stroke="#334155" strokeWidth="2" opacity="0.6" />
-                <circle cx="460" cy="70" r="45" fill="#475569" stroke="#334155" strokeWidth="2" opacity="0.6" />
-                <circle cx="90" cy="300" r="42" fill="#475569" stroke="#334155" strokeWidth="2" opacity="0.6" />
-                <circle cx="450" cy="310" r="40" fill="#475569" stroke="#334155" strokeWidth="2" opacity="0.6" />
+                <circle cx="80" cy="80" r="38" fill="var(--bu-korn)" stroke="var(--bu-linie)" strokeWidth="2" opacity="0.6" />
+                <circle cx="460" cy="70" r="45" fill="var(--bu-korn)" stroke="var(--bu-linie)" strokeWidth="2" opacity="0.6" />
+                <circle cx="90" cy="300" r="42" fill="var(--bu-korn)" stroke="var(--bu-linie)" strokeWidth="2" opacity="0.6" />
+                <circle cx="450" cy="310" r="40" fill="var(--bu-korn)" stroke="var(--bu-linie)" strokeWidth="2" opacity="0.6" />
 
                 {/* Influx of Alkali and Water molecules from perimeter */}
                 {simResults.akrTriggered && (
                   <g opacity="0.85">
-                    <path d="M 170 80 L 220 130" stroke="#fde047" strokeWidth="2" strokeDasharray="3 3" />
-                    <text x="160" y="75" fill="#fde047" fontSize="10" fontWeight="bold">Na⁺ / K⁺</text>
+                    <path d="M 170 80 L 220 130" stroke="var(--bu-gelb)" strokeWidth="2" strokeDasharray="3 3" />
+                    <text x="160" y="75" fill="var(--bu-gelb)" fontSize="10" fontWeight="bold">Na⁺ / K⁺</text>
 
-                    <path d="M 370 80 L 320 130" stroke="#38bdf8" strokeWidth="2" strokeDasharray="3 3" />
-                    <text x="375" y="75" fill="#38bdf8" fontSize="10" fontWeight="bold">H₂O</text>
+                    <path d="M 370 80 L 320 130" stroke="var(--bu-blau)" strokeWidth="2" strokeDasharray="3 3" />
+                    <text x="375" y="75" fill="var(--bu-blau)" fontSize="10" fontWeight="bold">H₂O</text>
 
-                    <path d="M 150 260 L 210 230" stroke="#fde047" strokeWidth="2" strokeDasharray="3 3" />
-                    <text x="130" y="275" fill="#fde047" fontSize="10" fontWeight="bold">OH⁻</text>
+                    <path d="M 150 260 L 210 230" stroke="var(--bu-gelb)" strokeWidth="2" strokeDasharray="3 3" />
+                    <text x="130" y="275" fill="var(--bu-gelb)" fontSize="10" fontWeight="bold">OH⁻</text>
                   </g>
                 )}
 
@@ -315,7 +315,7 @@ function AkrGefuegeSimulator() {
                     {/* Star Ray 1: Top Right ~ 30 deg */}
                     <path
                       d="M 310 160 L 390 120 L 480 90"
-                      stroke="#fca5a5"
+                      stroke="var(--bu-rot)"
                       strokeWidth={2 + simResults.crackWidthMm * 2.5}
                       strokeLinecap="round"
                       fill="none"
@@ -323,7 +323,7 @@ function AkrGefuegeSimulator() {
                     {/* Star Ray 2: Top Left / North ~ 150 deg */}
                     <path
                       d="M 230 140 L 190 80 L 140 30"
-                      stroke="#fca5a5"
+                      stroke="var(--bu-rot)"
                       strokeWidth={2 + simResults.crackWidthMm * 2.5}
                       strokeLinecap="round"
                       fill="none"
@@ -331,7 +331,7 @@ function AkrGefuegeSimulator() {
                     {/* Star Ray 3: Bottom South ~ 270 deg */}
                     <path
                       d="M 270 240 L 265 310 L 280 370"
-                      stroke="#fca5a5"
+                      stroke="var(--bu-rot)"
                       strokeWidth={2 + simResults.crackWidthMm * 2.5}
                       strokeLinecap="round"
                       fill="none"
@@ -340,16 +340,16 @@ function AkrGefuegeSimulator() {
                     {/* Secondary crack branching */}
                     {simResults.crackWidthMm > 0.8 && (
                       <>
-                        <path d="M 390 120 L 440 160" stroke="#ef4444" strokeWidth="2" fill="none" />
-                        <path d="M 190 80 L 130 90" stroke="#ef4444" strokeWidth="2" fill="none" />
-                        <path d="M 265 310 L 220 340" stroke="#ef4444" strokeWidth="2" fill="none" />
+                        <path d="M 390 120 L 440 160" stroke="var(--bu-rot)" strokeWidth="2" fill="none" />
+                        <path d="M 190 80 L 130 90" stroke="var(--bu-rot)" strokeWidth="2" fill="none" />
+                        <path d="M 265 310 L 220 340" stroke="var(--bu-rot)" strokeWidth="2" fill="none" />
                       </>
                     )}
 
                     {/* Exuded White Alkali-Silica Gel inside crack mouths */}
-                    <circle cx="340" cy="145" r="4" fill="#ffffff" opacity="0.85" />
-                    <circle cx="215" cy="115" r="4" fill="#ffffff" opacity="0.85" />
-                    <circle cx="268" cy="275" r="4" fill="#ffffff" opacity="0.85" />
+                    <circle cx="340" cy="145" r="4" fill="#ffffff" stroke="var(--bu-gel-rand)" strokeWidth="1" />
+                    <circle cx="215" cy="115" r="4" fill="#ffffff" stroke="var(--bu-gel-rand)" strokeWidth="1" />
+                    <circle cx="268" cy="275" r="4" fill="#ffffff" stroke="var(--bu-gel-rand)" strokeWidth="1" />
                   </g>
                 )}
 
@@ -384,16 +384,16 @@ function AkrGefuegeSimulator() {
                   {/* Internal pressure radial arrows if swelling */}
                   {simResults.currentGelPressure > 1.5 && (
                     <g opacity="0.9">
-                      <line x1="0" y1="-30" x2="0" y2="-55" stroke="#ef4444" strokeWidth="2.5" />
-                      <polygon points="-4,-50 0,-58 4,-50" fill="#ef4444" />
+                      <line x1="0" y1="-30" x2="0" y2="-55" stroke="#b91c1c" strokeWidth="2.5" />
+                      <polygon points="-4,-50 0,-58 4,-50" fill="#b91c1c" />
 
-                      <line x1="30" y1="20" x2="52" y2="35" stroke="#ef4444" strokeWidth="2.5" />
-                      <polygon points="46,38 58,40 50,30" fill="#ef4444" />
+                      <line x1="30" y1="20" x2="52" y2="35" stroke="#b91c1c" strokeWidth="2.5" />
+                      <polygon points="46,38 58,40 50,30" fill="#b91c1c" />
 
-                      <line x1="-30" y1="20" x2="-52" y2="35" stroke="#ef4444" strokeWidth="2.5" />
-                      <polygon points="-46,38 -58,40 -50,30" fill="#ef4444" />
+                      <line x1="-30" y1="20" x2="-52" y2="35" stroke="#b91c1c" strokeWidth="2.5" />
+                      <polygon points="-46,38 -58,40 -50,30" fill="#b91c1c" />
 
-                      <text x="0" y="28" fill="#dc2626" fontSize="10" fontWeight="bold" textAnchor="middle">
+                      <text x="0" y="28" fill="#991b1b" fontSize="10" fontWeight="bold" textAnchor="middle">
                         p_gel = {formatDeZahl(simResults.currentGelPressure, 1)} MPa
                       </text>
                     </g>
@@ -402,44 +402,44 @@ function AkrGefuegeSimulator() {
 
                 {/* Legend Overlay top left */}
                 <g transform="translate(20, 20)">
-                  <rect width="180" height="75" rx="6" fill="#0f172a" opacity="0.85" stroke="#334155" />
-                  <circle cx="15" cy="18" r="5" fill="#38bdf8" />
-                  <text x="28" y="22" fill="#cbd5e1" fontSize="10">Quellendes Kieselgel</text>
+                  <rect width="180" height="75" rx="6" fill="var(--bu-panel)" opacity="0.92" stroke="var(--bu-panel-rand)" />
+                  <circle cx="15" cy="18" r="5" fill="var(--bu-blau)" />
+                  <text x="28" y="22" fill="var(--bu-text2)" fontSize="10">Quellendes Kieselgel</text>
 
-                  <line x1="10" y1="38" x2="20" y2="38" stroke="#ef4444" strokeWidth="3" />
-                  <text x="28" y="42" fill="#cbd5e1" fontSize="10">Drei-Sterne-Radialriss</text>
+                  <line x1="10" y1="38" x2="20" y2="38" stroke="var(--bu-rot)" strokeWidth="3" />
+                  <text x="28" y="42" fill="var(--bu-text2)" fontSize="10">Drei-Sterne-Radialriss</text>
 
-                  <circle cx="15" cy="58" r="4" fill="#ffffff" />
-                  <text x="28" y="62" fill="#cbd5e1" fontSize="10">Ausgetretenes Kieselgel</text>
+                  <circle cx="15" cy="58" r="4" fill="#ffffff" stroke="var(--bu-gel-rand)" strokeWidth="1" />
+                  <text x="28" y="62" fill="var(--bu-text2)" fontSize="10">Ausgetretenes Kieselgel</text>
                 </g>
 
                 {/* Surface Map Cracking (Netzrisse) Inset Preview bottom right */}
                 <g transform="translate(370, 230)">
-                  <rect width="150" height="130" rx="8" fill="#1e293b" stroke="#475569" strokeWidth="1.5" />
-                  <text x="75" y="18" fill="#ffffff" fontSize="9" fontWeight="bold" textAnchor="middle">
+                  <rect width="150" height="130" rx="8" fill="var(--bu-panel)" stroke="var(--bu-panel-rand)" strokeWidth="1.5" />
+                  <text x="75" y="18" fill="var(--bu-text)" fontSize="9" fontWeight="bold" textAnchor="middle">
                     Makroskopisches Bild
                   </text>
-                  <text x="75" y="30" fill="#94a3b8" fontSize="8" textAnchor="middle">
+                  <text x="75" y="30" fill="var(--bu-text2)" fontSize="8" textAnchor="middle">
                     (Netzrissmuster an Bauteil)
                   </text>
 
                   {/* Concrete Pavement Slab in inset */}
-                  <rect x="15" y="40" width="120" height="75" rx="4" fill="#64748b" stroke="#334155" />
+                  <rect x="15" y="40" width="120" height="75" rx="4" fill="var(--bu-beton-tief)" stroke="var(--bu-kontur)" />
 
                   {/* Map Cracking Network */}
                   {simResults.isCracked && (
                     <g opacity={Math.min(1, simResults.crackWidthMm * 0.8)}>
-                      <path d="M 25 55 L 50 65 L 75 50 L 110 60" stroke="#fca5a5" strokeWidth="1.5" fill="none" />
-                      <path d="M 50 65 L 45 95 L 70 105" stroke="#fca5a5" strokeWidth="1.5" fill="none" />
-                      <path d="M 75 50 L 95 80 L 125 75" stroke="#fca5a5" strokeWidth="1.5" fill="none" />
-                      <path d="M 95 80 L 90 105" stroke="#fca5a5" strokeWidth="1.5" fill="none" />
+                      <path d="M 25 55 L 50 65 L 75 50 L 110 60" stroke="var(--bu-rot)" strokeWidth="1.5" fill="none" />
+                      <path d="M 50 65 L 45 95 L 70 105" stroke="var(--bu-rot)" strokeWidth="1.5" fill="none" />
+                      <path d="M 75 50 L 95 80 L 125 75" stroke="var(--bu-rot)" strokeWidth="1.5" fill="none" />
+                      <path d="M 95 80 L 90 105" stroke="var(--bu-rot)" strokeWidth="1.5" fill="none" />
                       {/* Gel exudation spot */}
-                      <circle cx="50" cy="65" r="2.5" fill="#ffffff" />
-                      <circle cx="95" cy="80" r="2.5" fill="#ffffff" />
+                      <circle cx="50" cy="65" r="2.5" fill="#ffffff" stroke="var(--bu-gel-rand)" strokeWidth="1" />
+                      <circle cx="95" cy="80" r="2.5" fill="#ffffff" stroke="var(--bu-gel-rand)" strokeWidth="1" />
                     </g>
                   )}
                   {!simResults.isCracked && (
-                    <text x="75" y="80" fill="#a7f3d0" fontSize="9" textAnchor="middle">
+                    <text x="75" y="80" fill="var(--bu-gruen)" fontSize="9" textAnchor="middle">
                       Rissfreie Oberfläche
                     </text>
                   )}

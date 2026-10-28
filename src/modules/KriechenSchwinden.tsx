@@ -628,7 +628,7 @@ export default function KriechenSchwinden() {
               </div>
 
               {/* Visual SVG Canvas */}
-              <div className="relative w-full aspect-4/3 max-h-[380px] bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shadow-inner flex items-center justify-center">
+              <div className="relative w-full aspect-4/3 max-h-[380px] svg-buehne rounded-xl overflow-hidden border shadow-inner flex items-center justify-center">
                 <svg width="100%" height="100%" viewBox="0 0 540 380" className="select-none">
                   <defs>
                     <linearGradient id="columnGrad" x1="0" y1="0" x2="1" y2="0">
@@ -638,21 +638,21 @@ export default function KriechenSchwinden() {
                     </linearGradient>
 
                     <linearGradient id="pressGrad" x1="0" y1="0" x2="1" y2="0">
-                      <stop offset="0%" stopColor="#334155" />
-                      <stop offset="50%" stopColor="#64748b" />
-                      <stop offset="100%" stopColor="#1e293b" />
+                      <stop offset="0%" stopColor="#64748b" />
+                      <stop offset="50%" stopColor="#94a3b8" />
+                      <stop offset="100%" stopColor="#475569" />
                     </linearGradient>
                   </defs>
 
                   {/* Ceiling/Load distribution beam */}
-                  <rect x="20" y="20" width="500" height="18" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="1.5" />
-                  <text x="270" y="33" fill="#94a3b8" fontSize="10" fontWeight="bold" textAnchor="middle">
+                  <rect x="20" y="20" width="500" height="18" rx="2" fill="var(--bu-bauteil)" stroke="var(--bu-linie)" strokeWidth="1.5" />
+                  <text x="270" y="33" fill="var(--bu-text2)" fontSize="10" fontWeight="bold" textAnchor="middle">
                     Tragwerksebene (Deckenauflager)
                   </text>
 
                   {/* Floor slab bottom */}
-                  <rect x="20" y="340" width="500" height="24" rx="2" fill="#1e293b" stroke="#334155" strokeWidth="1.5" />
-                  <text x="270" y="356" fill="#94a3b8" fontSize="10" fontWeight="bold" textAnchor="middle">
+                  <rect x="20" y="340" width="500" height="24" rx="2" fill="var(--bu-bauteil)" stroke="var(--bu-linie)" strokeWidth="1.5" />
+                  <text x="270" y="356" fill="var(--bu-text2)" fontSize="10" fontWeight="bold" textAnchor="middle">
                     Fundament / Rohbeton-Bodenplatte
                   </text>
 
@@ -668,34 +668,34 @@ export default function KriechenSchwinden() {
                     return (
                       <g transform="translate(60, 0)">
                         {/* Hydraulic Jack Piston pressing down */}
-                        <rect x="18" y="38" width="44" height={loadedTopY - 38} fill="url(#pressGrad)" stroke="#475569" strokeWidth="1" />
+                        <rect x="18" y="38" width="44" height={loadedTopY - 38} fill="url(#pressGrad)" stroke="var(--bu-kontur)" strokeWidth="1" />
                         
                         {/* Hydraulic Platen */}
-                        <rect x="10" y={loadedTopY - 8} width="60" height="8" rx="1.5" fill="#e2e8f0" stroke="#0f172a" strokeWidth="1.5" />
+                        <rect x="10" y={loadedTopY - 8} width="60" height="8" rx="1.5" fill="#e2e8f0" stroke="var(--bu-kontur)" strokeWidth="1.5" />
 
                         {/* Force Arrow N */}
-                        <path d="M 40 42 L 40 70" stroke="#ef4444" strokeWidth="3" markerEnd="url(#arrow)" />
-                        <text x="56" y="58" fill="#ef4444" fontSize="11" fontWeight="bold">N (8,5 MPa)</text>
+                        <path d="M 40 42 L 40 70" stroke="var(--bu-rot)" strokeWidth="3" markerEnd="url(#arrow)" />
+                        <text x="56" y="58" fill="var(--bu-rot)" fontSize="11" fontWeight="bold">N (8,5 MPa)</text>
 
                         {/* Stütze Original Height Ghost Outline */}
-                        <rect x="10" y={baseTopY} width="60" height={baseHeight} fill="none" stroke="#64748b" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.5" />
+                        <rect x="10" y={baseTopY} width="60" height={baseHeight} fill="none" stroke="var(--bu-linie)" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.8" />
 
                         {/* Compressed Column Body */}
-                        <rect x="10" y={loadedTopY} width="60" height={loadedHeight} fill="url(#columnGrad)" stroke="#0f172a" strokeWidth="2" rx="2" />
+                        <rect x="10" y={loadedTopY} width="60" height={loadedHeight} fill="url(#columnGrad)" stroke="var(--bu-kontur)" strokeWidth="2" rx="2" />
 
                         {/* Shortening delta marker */}
-                        <line x1="74" y1={baseTopY} x2="74" y2={loadedTopY} stroke="#38bdf8" strokeWidth="2" />
-                        <line x1="71" y1={baseTopY} x2="77" y2={baseTopY} stroke="#38bdf8" strokeWidth="2" />
-                        <line x1="71" y1={loadedTopY} x2="77" y2={loadedTopY} stroke="#38bdf8" strokeWidth="2" />
-                        <text x="82" y={baseTopY + visualDef / 2 + 4} fill="#38bdf8" fontSize="10" fontWeight="bold">
+                        <line x1="74" y1={baseTopY} x2="74" y2={loadedTopY} stroke="var(--bu-blau)" strokeWidth="2" />
+                        <line x1="71" y1={baseTopY} x2="77" y2={baseTopY} stroke="var(--bu-blau)" strokeWidth="2" />
+                        <line x1="71" y1={loadedTopY} x2="77" y2={loadedTopY} stroke="var(--bu-blau)" strokeWidth="2" />
+                        <text x="82" y={baseTopY + visualDef / 2 + 4} fill="var(--bu-blau)" fontSize="10" fontWeight="bold">
                           - {formatDeZahl(currentState.dL_tot, 2)} mm
                         </text>
 
                         {/* Label under Column */}
-                        <text x="40" y="330" fill="#ffffff" fontSize="10" fontWeight="bold" textAnchor="middle">
+                        <text x="40" y="330" fill="var(--bu-text)" stroke="var(--bu-grund)" strokeWidth="3" paintOrder="stroke" fontSize="10" fontWeight="bold" textAnchor="middle">
                           Stütze unter Dauerlast
                         </text>
-                        <text x="40" y="318" fill="#cbd5e1" fontSize="9" textAnchor="middle">
+                        <text x="40" y="318" fill="var(--bu-text2)" stroke="var(--bu-grund)" strokeWidth="3" paintOrder="stroke" fontSize="9" textAnchor="middle">
                           (Elast. + Kriech. + Schwind.)
                         </text>
                       </g>
@@ -704,45 +704,45 @@ export default function KriechenSchwinden() {
 
                   {/* CENTER: Rheological Model (Maxwell / Kelvin-Voigt) */}
                   <g transform="translate(230, 65)">
-                    <rect x="0" y="0" width="130" height="260" rx="8" fill="#0f172a" stroke="#334155" opacity="0.9" />
-                    <text x="65" y="20" fill="#fde047" fontSize="10" fontWeight="bold" textAnchor="middle">
+                    <rect x="0" y="0" width="130" height="260" rx="8" fill="var(--bu-panel)" stroke="var(--bu-panel-rand)" />
+                    <text x="65" y="20" fill="var(--bu-gelb)" fontSize="10" fontWeight="bold" textAnchor="middle">
                       Rheologisches Modell
                     </text>
 
                     {/* Spring 1 (Hooke Element E1) */}
-                    <text x="65" y="42" fill="#93c5fd" fontSize="9" textAnchor="middle">Feder E₁ (Elastizität)</text>
-                    <path d="M 65 48 L 55 54 L 75 62 L 55 70 L 75 78 L 65 84" fill="none" stroke="#60a5fa" strokeWidth="2" />
+                    <text x="65" y="42" fill="var(--bu-hellblau)" fontSize="9" textAnchor="middle">Feder E₁ (Elastizität)</text>
+                    <path d="M 65 48 L 55 54 L 75 62 L 55 70 L 75 78 L 65 84" fill="none" stroke="var(--bu-hellblau)" strokeWidth="2" />
 
                     {/* Series connector to Kelvin-Voigt body */}
-                    <line x1="65" y1="84" x2="65" y2="105" stroke="#cbd5e1" strokeWidth="2" />
-                    <line x1="30" y1="105" x2="100" y2="105" stroke="#cbd5e1" strokeWidth="2" />
+                    <line x1="65" y1="84" x2="65" y2="105" stroke="var(--bu-linie)" strokeWidth="2" />
+                    <line x1="30" y1="105" x2="100" y2="105" stroke="var(--bu-linie)" strokeWidth="2" />
 
                     {/* Parallel branch Left: Spring E2 */}
-                    <line x1="40" y1="105" x2="40" y2="120" stroke="#cbd5e1" strokeWidth="1.5" />
-                    <path d="M 40 120 L 32 126 L 48 134 L 32 142 L 48 150 L 40 156" fill="none" stroke="#f472b6" strokeWidth="2" />
-                    <line x1="40" y1="156" x2="40" y2="175" stroke="#cbd5e1" strokeWidth="1.5" />
-                    <text x="40" y="190" fill="#f472b6" fontSize="8" textAnchor="middle">Feder E₂</text>
+                    <line x1="40" y1="105" x2="40" y2="120" stroke="var(--bu-linie)" strokeWidth="1.5" />
+                    <path d="M 40 120 L 32 126 L 48 134 L 32 142 L 48 150 L 40 156" fill="none" stroke="var(--bu-pink)" strokeWidth="2" />
+                    <line x1="40" y1="156" x2="40" y2="175" stroke="var(--bu-linie)" strokeWidth="1.5" />
+                    <text x="40" y="190" fill="var(--bu-pink)" fontSize="8" textAnchor="middle">Feder E₂</text>
 
                     {/* Parallel branch Right: Dashpot eta (Dämpfer) */}
-                    <line x1="90" y1="105" x2="90" y2="120" stroke="#cbd5e1" strokeWidth="1.5" />
+                    <line x1="90" y1="105" x2="90" y2="120" stroke="var(--bu-linie)" strokeWidth="1.5" />
                     {/* Cylinder housing */}
-                    <path d="M 80 125 L 80 155 L 100 155 L 100 125" fill="none" stroke="#38bdf8" strokeWidth="2" />
+                    <path d="M 80 125 L 80 155 L 100 155 L 100 125" fill="none" stroke="var(--bu-blau)" strokeWidth="2" />
                     {/* Dashpot Oil Fluid */}
                     <rect x="82" y="138" width="16" height="15" fill="#0284c7" opacity="0.6" />
                     {/* Piston Plate moving inside */}
-                    <line x1="84" y1={130 + (currentState.phiT / 3.0) * 12} x2="96" y2={130 + (currentState.phiT / 3.0) * 12} stroke="#f8fafc" strokeWidth="3" />
-                    <line x1="90" y1="120" x2="90" y2={130 + (currentState.phiT / 3.0) * 12} stroke="#f8fafc" strokeWidth="2" />
-                    <line x1="90" y1="155" x2="90" y2="175" stroke="#cbd5e1" strokeWidth="1.5" />
-                    <text x="90" y="190" fill="#38bdf8" fontSize="8" textAnchor="middle">Dämpfer η</text>
+                    <line x1="84" y1={130 + (currentState.phiT / 3.0) * 12} x2="96" y2={130 + (currentState.phiT / 3.0) * 12} stroke="var(--bu-text)" strokeWidth="3" />
+                    <line x1="90" y1="120" x2="90" y2={130 + (currentState.phiT / 3.0) * 12} stroke="var(--bu-text)" strokeWidth="2" />
+                    <line x1="90" y1="155" x2="90" y2="175" stroke="var(--bu-linie)" strokeWidth="1.5" />
+                    <text x="90" y="190" fill="var(--bu-blau)" fontSize="8" textAnchor="middle">Dämpfer η</text>
 
                     {/* Rejoining lower bar */}
-                    <line x1="30" y1="175" x2="100" y2="175" stroke="#cbd5e1" strokeWidth="2" />
-                    <line x1="65" y1="175" x2="65" y2="200" stroke="#cbd5e1" strokeWidth="2" />
+                    <line x1="30" y1="175" x2="100" y2="175" stroke="var(--bu-linie)" strokeWidth="2" />
+                    <line x1="65" y1="175" x2="65" y2="200" stroke="var(--bu-linie)" strokeWidth="2" />
 
-                    <text x="65" y="222" fill="#a7f3d0" fontSize="9" fontWeight="bold" textAnchor="middle">
+                    <text x="65" y="222" fill="var(--bu-gruen)" fontSize="9" fontWeight="bold" textAnchor="middle">
                       Kelvin-Voigt-Körper
                     </text>
-                    <text x="65" y="235" fill="#94a3b8" fontSize="8" textAnchor="middle">
+                    <text x="65" y="235" fill="var(--bu-text2)" fontSize="8" textAnchor="middle">
                       (Viskoelastisches Kriechen)
                     </text>
                   </g>
@@ -758,32 +758,32 @@ export default function KriechenSchwinden() {
                     return (
                       <g transform="translate(420, 0)">
                         {/* No external load/jack above */}
-                        <text x="30" y="58" fill="#a855f7" fontSize="10" fontWeight="bold" textAnchor="middle">Lastfrei (N = 0)</text>
+                        <text x="30" y="58" fill="var(--bu-violett)" fontSize="10" fontWeight="bold" textAnchor="middle">Lastfrei (N = 0)</text>
 
                         {/* Original Height Ghost Outline */}
-                        <rect x="10" y={baseTopY} width="40" height={baseHeight} fill="none" stroke="#64748b" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.5" />
+                        <rect x="10" y={baseTopY} width="40" height={baseHeight} fill="none" stroke="var(--bu-linie)" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.8" />
 
                         {/* Shrunken Prism Body */}
-                        <rect x="10" y={shrinkTopY} width="40" height={shrinkHeight} fill="#64748b" stroke="#0f172a" strokeWidth="2" rx="2" />
+                        <rect x="10" y={shrinkTopY} width="40" height={shrinkHeight} fill="#64748b" stroke="var(--bu-kontur)" strokeWidth="2" rx="2" />
 
                         {/* Evaporating Moisture Water Vapor squiggly arrows */}
-                        <path d="M 0 140 Q -8 130 0 120" stroke="#38bdf8" strokeWidth="1.5" fill="none" opacity="0.7" />
-                        <path d="M 60 170 Q 68 160 60 150" stroke="#38bdf8" strokeWidth="1.5" fill="none" opacity="0.7" />
-                        <text x="30" y="195" fill="#38bdf8" fontSize="9" textAnchor="middle">H₂O ↑</text>
+                        <path d="M 0 140 Q -8 130 0 120" stroke="var(--bu-blau)" strokeWidth="1.5" fill="none" opacity="0.7" />
+                        <path d="M 60 170 Q 68 160 60 150" stroke="var(--bu-blau)" strokeWidth="1.5" fill="none" opacity="0.7" />
+                        <text x="30" y="195" fill="var(--bu-blau)" fontSize="9" textAnchor="middle">H₂O ↑</text>
 
                         {/* Shortening delta marker */}
-                        <line x1="56" y1={baseTopY} x2="56" y2={shrinkTopY} stroke="#c084fc" strokeWidth="2" />
-                        <line x1="53" y1={baseTopY} x2="59" y2={baseTopY} stroke="#c084fc" strokeWidth="2" />
-                        <line x1="53" y1={shrinkTopY} x2="59" y2={shrinkTopY} stroke="#c084fc" strokeWidth="2" />
-                        <text x="64" y={baseTopY + visualDef / 2 + 4} fill="#c084fc" fontSize="9" fontWeight="bold">
+                        <line x1="56" y1={baseTopY} x2="56" y2={shrinkTopY} stroke="var(--bu-violett)" strokeWidth="2" />
+                        <line x1="53" y1={baseTopY} x2="59" y2={baseTopY} stroke="var(--bu-violett)" strokeWidth="2" />
+                        <line x1="53" y1={shrinkTopY} x2="59" y2={shrinkTopY} stroke="var(--bu-violett)" strokeWidth="2" />
+                        <text x="64" y={baseTopY + visualDef / 2 + 4} fill="var(--bu-violett)" fontSize="9" fontWeight="bold">
                           - {formatDeZahl(currentState.dL_cs, 2)} mm
                         </text>
 
                         {/* Label under Prism */}
-                        <text x="30" y="330" fill="#ffffff" fontSize="10" fontWeight="bold" textAnchor="middle">
+                        <text x="30" y="330" fill="var(--bu-text)" stroke="var(--bu-grund)" strokeWidth="3" paintOrder="stroke" fontSize="10" fontWeight="bold" textAnchor="middle">
                           Schwindprisma
                         </text>
-                        <text x="30" y="318" fill="#c084fc" fontSize="9" textAnchor="middle">
+                        <text x="30" y="318" fill="var(--bu-violett)" stroke="var(--bu-grund)" strokeWidth="3" paintOrder="stroke" fontSize="9" textAnchor="middle">
                           (Trocknungs- + autogenes Schwinden)
                         </text>
                       </g>

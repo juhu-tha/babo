@@ -30,7 +30,7 @@
     "mangelndeErfahrungAufDer": "Mangelnde Erfahrung auf der Baustelle; Verarbeiter greifen aus Gewohnheit auf bekannte Standardmischungen zurück.",
     "plugAndPlayFertigteile": "Plug-and-Play-Fertigteile, werkseitige Vorkonfektionierung, digitale Einbauanleitungen und Schulungsinitiativen der Hersteller.",
     "die9TechnologyReadiness": "Die 9 Technology Readiness Levels (TRL) nach NASA / EU Horizon Europe für Bauprodukte",
-    "dieTrlSkalaUrsprünglich": "Die TRL-Skala (ursprünglich von der NASA in den 1970er Jahren entwickelt und heute von der Europäischen Kommission nach **ISO 16290:2013** standardisiert) misst den technischen Reifegrad einer Innovation auf einer Skala von 1 bis 9. Im Bauwesen unterscheidet man drei übergeordnete Abschnitte: **Forschung (TRL 1–3)**,**Entwicklung & Prototyp (TRL 4–6)** sowie **Zulassung & Marktreife (TRL 7–9)**.",
+    "dieTrlSkalaUrsprünglich": "Die TRL-Skala (ursprünglich von der NASA in den 1970er Jahren entwickelt und von der Europäischen Kommission für die Forschungsrahmenprogramme übernommen und in **ISO 16290:2013** genormt) misst den technischen Reifegrad einer Innovation auf einer Skala von 1 bis 9. Im Bauwesen unterscheidet man drei übergeordnete Abschnitte: **Forschung (TRL 1–3)**,**Entwicklung & Prototyp (TRL 4–6)** sowie **Zulassung & Marktreife (TRL 7–9)**.",
     "wasBedeutetDasKonkret": "Was bedeutet das konkret auf der Baustelle / im Baustofflabor?",
     "typischeFörderprogrammeAkteure": "Typische Förderprogramme & Akteure",
     "fördererDfgDeutscheForschungsgemeinschaf": "• **Förderer:** DFG (Deutsche Forschungsgemeinschaft), EU Horizon Europe (Pillar 1 - ERC / Marie Curie).",
@@ -80,7 +80,7 @@
     "dieHarmonisierteEuropäischeBewertungsric": "Die harmonisierte europäische Bewertungsrichtlinie, die erarbeitet wird, wenn für ein neuartiges Produkt noch keine hEN existiert.",
     "etaEuropeanTechnicalAssessment": "ETA – European Technical Assessment",
     "europäischeTechnischeBewertungAuf": "Europäische Technische Bewertung auf Basis eines EAD. Ermöglicht die Anbringung der **CE-Kennzeichnung**und den freien Warenverkehr in allen 27 EU-Mitgliedsstaaten.",
-    "avcpSysteme11": "AVCP-Systeme (1+, 1, 2+, 3, 4)",
+    "avcpSysteme11": "AVCP-Systeme (1+, 1, 2+, 3, 4; neu 3+)",
     "festlegungObEineNotifizierte": "Festlegung, ob eine notifizierte Stelle (Notified Body) die werkseigene Produktionskontrolle (WPK) überwachen muss (bei tragenden Bauteilen meist AVCP 1 oder 1+).",
     "typischerZulassungsFahrplanFür": "Typischer Zulassungs-Fahrplan für eine Baustoff-Innovation",
     "antragstellungBeimDibtFestlegung": "Antragstellung beim DIBt, Festlegung des Prüfprogramms (Prüfplan durch Sachverständigenausschuss).",
@@ -163,7 +163,7 @@
           "Brandverhalten organischer Tränkungsmittel (Matrixabbau ab ca. 150 °C)",
           "Recycling und Trennung der Carbonfasern am Lebensende (Szenario C)"
         ],
-        "regulationPath": "Allgemeine bauaufsichtliche Zulassungen (abZ) und aBG für Einzelsysteme (z. B. TUDALIT, Solidian) beim DIBt; Normungsentwurf DIN 1045-100 in Vorbereitung.",
+        "regulationPath": "Allgemeine bauaufsichtliche Zulassungen (abZ) und aBG für Einzelsysteme (z. B. TUDALIT, Solidian) beim DIBt; seit 2024-01 gibt es die DAfStb-Richtlinie „Betonbauteile mit nichtmetallischer Bewehrung“ (Teil 1 Bemessung und Konstruktion, Teil 2 Bewehrungsprodukte, Teil 3 Bauausführung, Teil 5 Hinweise zu Verwendbarkeits- und Anwendbarkeitsnachweisen).",
         "foerderung": "BMBF Zwanzig20 \"C³ – Carbon Concrete Composite\", Zukunft Bau"
       },
       {
@@ -193,7 +193,7 @@
         "description": "Pilzmyzel (z. B. Ganoderma lucidum), das auf landwirtschaftlichen Reststoffen (Hanfschäben, Sägemehl, Stroh) wächst und diese zu druckfesten, formstabilen Dämm- und Akustikelementen verfilzt.",
         "advantages": [
           "100 % biobasiert, vollständig kompostierbar (Cradle-to-Cradle Gold-Potenzial)",
-          "Sehr gute Wärmeleitfähigkeit (λ ≈ 0,038 bis 0,042 W/(mK))",
+          "Niedrige Wärmeleitfähigkeit (Lehrwert λ ≈ 0,038 bis 0,042 W/(mK); maßgebend ist die Herstellerangabe)",
           "Natürlicher Brandschutz durch Chitinanteile in den Zellwänden (Klasse B2 / B1)"
         ],
         "bottlenecks": [
