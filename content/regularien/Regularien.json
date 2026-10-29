@@ -212,7 +212,7 @@
         "colorClass": "bg-emerald-50 border-emerald-200 text-emerald-900 border-l-4 border-l-emerald-500",
         "badgeColor": "bg-emerald-100 text-emerald-800",
         "bindingForce": "Verbindliches Recht des jeweiligen Bundeslandes. Maßgeblich für Genehmigungsverfahren und bauliche Ausführung.",
-        "summary": "Gesetze, die von den Landesparlamenten beschlossen werden. Aufgrund der Kulturhoheit und Bauordnungskompetenz liegt das technische Bauordnungsrecht vollständig bei den Ländern.",
+        "summary": "Gesetze, die von den Landesparlamenten beschlossen werden. Die Gesetzgebungskompetenz für das Bauordnungsrecht liegt bei den Ländern (Art. 70 GG); der Bund regelt das Bauplanungsrecht (Art. 74 Abs. 1 Nr. 18 GG).",
         "detailDesc": "Während das Bundesrecht die planerische Zulässigkeit (Wo?) regelt, bestimmt das Landesrecht die konkrete bauliche Ausführung (Wie darf gebaut werden, damit keine Gefahren entstehen?).",
         "items": [
           {

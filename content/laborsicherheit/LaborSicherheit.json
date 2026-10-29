@@ -81,7 +81,7 @@
     "gefahrstoffeZementQuarzstaubEpoxidharze": "Gefahrstoffe: Zement, Quarzstaub & Epoxidharze",
     "zementFrischbetonIstStark": "Zement / Frischbeton ist stark ätzend (pH > 12):",
     "verursachtSchwereAugenschädenUnd": "Verursacht schwere Augenschäden und Hautverätzungen (Zementdermatitis / Zementbrand). Spritzer sofort mit viel Wasser abwaschen; bei Augenkontakt **sofort 10–15 Minuten mit der Augendusche spülen** und umgehend zum Augenarzt!",
-    "quarzfeinstaubIstKrebserzeugendAlveoleng": "Quarzfeinstaub ist krebserzeugend (Alveolengängige Fraktion A-Staub):",
+    "quarzfeinstaubIstKrebserzeugendAlveoleng": "Quarzfeinstaub ist krebserzeugend (alveolengängige Fraktion, A-Staub; Tätigkeiten nach TRGS 906):",
     "immerPunktabsaugungNutzenAbsolutes": "Immer Punktabsaugung nutzen. **Absolutes Trockenkehrverbot (kein Besen!) und Abblasverbot mit Druckluft!** Boden und Maschinen nur nass reinigen oder mit zugelassenem Industriestaubsauger (Staubklasse M oder H) absaugen.",
     "keineSchadstoffprobenImBaustofflabor": "Keine Schadstoffproben im Baustofflabor:",
     "kontaminierteVerdachtsprobenZB": "Kontaminierte Verdachtsproben (z. B. Asbest, Teer/PAK, PCB, toxischer Schimmel) **dürfen im Labor nicht mechanisch bearbeitet werden!** (Zerkleinern, Sägen oder Brechen verboten!).",
@@ -132,8 +132,8 @@
     "beiKontaktMitWasser": "Bei Kontakt mit Wasser bildet Zement Calciumhydroxid $Ca(OH)_2$, wodurch der pH-Wert auf über 12 bis 13 ansteigt. Diese starke Alkalität führt zu tiefgreifenden Gewebsnekrosen auf Haut und Hornhaut.",
     "sofortmaßnahmeBeiAugenkontaktDas": "**Sofortmaßnahme bei Augenkontakt:** Das Auge unverzüglich **10 bis 15 Minuten unter der Augendusche spülen** (Lider mit den Fingern spreizen!). Danach sofort Augenarzt oder Notaufnahme konsultieren!",
     "t2QuarzfeinstaubAlveolengängigeFraktion": "2. Quarzfeinstaub (alveolengängige Fraktion A-Staub)",
-    "krebserzeugendKat1a": "Krebserzeugend (Kat. 1A)",
-    "kristallinesSiliciumdioxidTextSio": "Kristallines Siliciumdioxid ($\\text{SiO}_2$) in quarzhaltigen Sanden, Betonen und Ziegeln dringt beim Einatmen tief in die Lungenbläschen ein und verursacht Silikose (Quarzstaublunge) sowie Lungenkrebs.",
+    "krebserzeugendKat1a": "Krebserzeugend (Tätigkeit nach TRGS 906)",
+    "kristallinesSiliciumdioxidTextSio": "Kristallines Siliciumdioxid ($\\text{SiO}_2$) in quarzhaltigen Sanden, Betonen und Ziegeln dringt beim Einatmen tief in die Lungenbläschen ein und verursacht Silikose (Quarzstaublunge) sowie Lungenkrebs. Tätigkeiten mit alveolengängigem Quarz- und Cristobalitstaub gelten nach TRGS 906 als krebserzeugend; TRGS 559 nennt für Quarz (A-Staub) den Beurteilungsmaßstab 0,05 mg/m³ – auch darunter ist die Exposition weiter zu minimieren.",
     "striktesTrockenkehrverbotNiemalsTrockene": "⛔ **Striktes Trockenkehrverbot:** Niemals trockenen Staub mit dem Besen kehren oder mit Druckluft abblasen! Reinigung ausschließlich nass oder mit Industriestaubsaugern der Staubklasse M oder H nach TRGS 559.",
     "t3ReaktionsharzeEpoxidharzeEp": "3. Reaktionsharze & Epoxidharze (EP / PUR)",
     "sensibilisierendGhs0708": "Sensibilisierend (GHS07/08)",
@@ -166,7 +166,7 @@
     "zwingendEinePersonAn": "**Zwingend eine Person an die Campuseinfahrt und den Gebäudeeingang G2 stellen**, um den Rettungsdienst oder die Feuerwehr direkt zur Unfallstelle im Erdgeschoss einzuweisen!",
     "hausserviceInformierenKaiBolten": "Hausservice informieren: **Kai Bolten** (Raum B 0.03a), Tel. **-3720**",
     "dokumentationDArztDurchgangsarzt": "Dokumentation & D-Arzt (Durchgangsarzt)",
-    "jedeNochSoKleine": "Jede noch so kleine Verletzung (Schnittwunden, Zementspritzer, Prellungen) muss zwingend in das **Verbandbuch** im Erste-Hilfe-Kasten eingetragen werden (Versicherungsschutz über die Landesunfallkasse / Bayerische Unfallkasse).",
+    "jedeNochSoKleine": "Jede noch so kleine Verletzung (Schnittwunden, Zementspritzer, Prellungen) muss zwingend in das **Verbandbuch** im Erste-Hilfe-Kasten eingetragen werden (Versicherungsschutz über die Bayerische Landesunfallkasse).",
     "beiJedemArztbesuchNach": "Bei jedem Arztbesuch nach einem Arbeits- oder Praktikumsunfall ist zwingend ein Durchgangsarzt (D-Arzt) aufzusuchen und als Träger die Unfallkasse anzugeben!"
   },
   "werte": {
@@ -204,7 +204,7 @@
         "title": "DIN EN ISO 20345 (Sicherheitsschuhe – Kategorie S3)"
       },
       {
-        "title": "DGUV Regel 109-009 (Fahrzeuginstandhaltung / Hebebühnen und Krane)",
+        "title": "DGUV Vorschrift 52 (Krane) und DGUV Vorschrift 68 (Flurförderzeuge); Fahrausweis nach DGUV Grundsatz 308-001",
         "url": "https://publikationen.dguv.de/"
       }
     ],
@@ -212,7 +212,7 @@
       {
         "formel": "\\text{pH} = -\\log_{10}[H_3O^+] \\ge 12{,}5 \\quad \\implies \\quad [OH^-] \\ge 0{,}03\\,\\text{mol/l}",
         "erklaerung": "Starke Alkalität des Porenwassers von frischem Zementleim durch gelöstes Calciumhydroxid Ca(OH)₂ und Alkalihydroxide KOH/NaOH; verursacht schwere Ätzschäden an Augen und Haut.",
-        "quelle": "DIN EN 197-1 / TRGS 613"
+        "quelle": "Sicherheitsdatenblatt Zement (H315, H318); DIN EN 197-1"
       },
       {
         "formel": "L_{\\text{EX},8h} \\ge 85\\,\\text{dB(A)} \\quad \\implies \\quad \\text{Tragepflicht für Gehörschutz}",

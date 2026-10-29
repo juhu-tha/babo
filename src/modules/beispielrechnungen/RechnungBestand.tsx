@@ -178,9 +178,9 @@ export default function RechnungBestand({ bestandSubTab, beta_WN, beta_WN_150, d
                     onChange={(e) => setHistStahlKlasse(e.target.value as "BSt220" | "BSt420" | "BSt500")}
                     className="w-full p-2 mt-1 rounded-lg border border-slate-200 font-bold text-xs"
                   >
-                    <option value="BSt220">Betonstahl I (BSt 220/340 RU) - Glatt, warmgewalzt, unberuhigt</option>
-                    <option value="BSt420">Betonstahl III (BSt 420/500 RU) - Rippen/Sonderform, unberuhigt</option>
-                    <option value="BSt500">Betonstahl IV (BSt 500/550 RK) - Gerippt, kaltverformt</option>
+                    <option value="BSt220">Betonstahl I (BSt 220/340 GU) – glatt, warmgewalzt</option>
+                    <option value="BSt420">Betonstahl III (BSt 420/500 RU) – gerippt, warmgewalzt (naturhart)</option>
+                    <option value="BSt500">Betonstahl IV (BSt 500/550 RK) – gerippt, kaltverformt</option>
                   </select>
                 </div>
 

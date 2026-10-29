@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { HOLZ_EN338, fcdBeton, FCD_MODUL } from '@/src/data/kennwerte';
-import { MU_LIM_STAHL } from '@/src/calc/biegung';
+import { bemesseBiegung } from '@/src/calc/biegung';
+import { bemesseDruckstab } from '@/src/calc/holzbau';
+import { stoffraum, K_WERT_DIN1045_2, maxFaFaktor } from '@/src/calc/mischung';
+import { temperaturFaktor, betaCc, ZEMENT_S } from '@/src/calc/betonkennwerte';
+import { fckZumAlter } from '@/src/data/kennwerte';
 import { wandSchalldaemmung, PUTZ_MASSE_BEIDSEITIG } from '@/src/calc/schall';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { GruppierteModuleTabs } from '@/src/components/ui/GruppierteModuleTabs';
@@ -103,15 +107,19 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
   // Densities for absolute volume calculation (kg/dm³ or t/m³)
   const rho_c = 3.10; // Cement density
   const rho_a = 2.65; // Aggregate density
-  const rho_w = 1.00; // Water density
   const V_air = 15;   // Compaction pores in dm³/m³ (1.5%)
 
-  // Absolute volume method: V_c + V_w + V_air + V_a = 1000 dm³
-  const V_c = cementContent / rho_c;
-  const V_w = waterDemand / rho_w;
-  const V_a = 1000 - (V_c + V_w + V_air);
-  const aggregateMass = V_a * rho_a;
-  const freshConcreteDensity = cementContent + waterDemand + aggregateMass;
+  // Absolute volume method: V_c + V_w + V_air + V_a = 1000 dm³ – Rechenkern src/calc/mischung.ts (stoffraum, Modulprüfung T15-BE-3)
+  const mischErg = stoffraum({
+    zement: cementContent, rhoZement: rho_c, wasser: waterDemand, fa: 0, sf: 0, hues: 0, biochar: 0, zusatzmittel: 0,
+    luft: V_air / 10, stahlfaser: 0, ppFaser: 0, rhoGestein: rho_a, fraktionen: [{ anteil: 100, feuchte: 0, wa: 0 }],
+    biocharFeuchte: 0, biocharWa: 0, k: { fa: K_WERT_DIN1045_2.kF, sf: K_WERT_DIN1045_2.kS, hues: 0, biochar: 0 }, maxFaFaktor: maxFaFaktor('CEM I'),
+  });
+  const V_c = mischErg.vol.zement;
+  const V_w = mischErg.vol.wasser;
+  const V_a = mischErg.volGestein;
+  const aggregateMass = mischErg.masseGestein;
+  const freshConcreteDensity = mischErg.rohdichte * 1000;
 
   // --- NEW: EXTRA BETON CALCULATORS ---
   const [betonSubTab, setBetonSubTab] = useState<'mischung' | 'k_wert' | 'temperatur' | 'festigkeit'>('mischung');
@@ -122,8 +130,9 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
   const [kAddition, setKAddition] = useState<number>(60); // kg/m³
   const [kWater, setKWater] = useState<number>(150); // l/m³
 
-  const k_factor = kAddType === 'flugasche' ? 0.4 : 1.0; // DIN 1045-2: Flugasche k = 0,4; Silikastaub k = 1,0
-  const k_max_ratio = kAddType === 'flugasche' ? 0.33 : 0.11;
+  // DIN 1045-2 (k-Wert-Ansatz): Flugasche k = 0,4, f/z ≤ 0,33 (CEM I); Silikastaub k = 1,0, s/z ≤ 0,11 – Werte aus src/calc/mischung.ts
+  const k_factor = kAddType === 'flugasche' ? K_WERT_DIN1045_2.kF : K_WERT_DIN1045_2.kS;
+  const k_max_ratio = kAddType === 'flugasche' ? maxFaFaktor('CEM I') : K_WERT_DIN1045_2.maxSfFaktor;
   const k_max_allowed_addition = kCement * k_max_ratio;
   const k_credited_addition = Math.min(kAddition, k_max_allowed_addition);
   const k_w_z_pure = kWater / kCement;
@@ -156,7 +165,8 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
 
   const total_heat = heat_cement + heat_agg + heat_liquid_water + heat_ice_sensible + heat_ice_melting;
   const total_heat_capacity = (mCementInput * c_cement) + (mAggregateInput * c_agg) + (mWaterInput * c_water);
-  const finalFreshTemp = total_heat_capacity > 0 ? Math.max(-5, total_heat / total_heat_capacity) : 0;
+  // Modulprüfung T15-BE-5: keine stille Begrenzung auf −5 °C mehr; unter 0 °C gilt die Bilanz ohne Phasenwechsel nicht (Hinweis im Reiter)
+  const finalFreshTemp = total_heat / total_heat_capacity;
 
   // C. Festigkeitsentwicklung (EC2 Arrhenius maturity)
   const [strengthClassFck, setStrengthClassFck] = useState<number>(25); // e.g. 20, 25, 30, 37, 40, 50 MPa
@@ -164,18 +174,15 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
   const [strengthCureAge, setStrengthCureAge] = useState<number>(7); // days
   const [strengthCureTemp, setStrengthCureTemp] = useState<number>(12); // °C
 
-  // s-parameter based on strength class of cement
-  const s_param = strengthCementType === 'S' ? 0.38 : strengthCementType === 'N' ? 0.25 : 0.20;
-
-  // Temperature-adjusted age (maturity) in days (Arrhenius)
-  const maturityAge = strengthCureAge * Math.exp(4000 * (1/293 - 1/(273 + strengthCureTemp)));
-  // Strength ratio beta_cc(t)
-  const beta_cc = Math.exp(s_param * (1 - Math.sqrt(28 / Math.max(0.1, maturityAge))));
-  // Mean strength
+  // Rechenkern src/calc/betonkennwerte.ts (Modulprüfung T15-BE-1): s nach EC2 3.1.2(6), t_T nach Anhang B, Gl. (B.10)
+  // (Reifeansatz wie fib Model Code 2010, Schalter „festigkeitMitWirksamemAlter“ im Modul Betonkennwerte),
+  // β_cc(t) nach Gl. (3.2), f_ck(t) = f_cm(t) − 8 für t < 28 d bzw. f_ck für t ≥ 28 d (3.1.2(5)); vorher f_ck(t) = β_cc·f_ck.
+  const s_param = ZEMENT_S[strengthCementType];
+  const maturityAge = Math.max(0.1, strengthCureAge * temperaturFaktor(strengthCureTemp));
+  const beta_cc = betaCc(s_param, maturityAge);
   const f_cm_28 = strengthClassFck + 8;
   const f_cm_t = beta_cc * f_cm_28;
-  // Characteristic strength
-  const f_ck_t = beta_cc * strengthClassFck;
+  const f_ck_t = fckZumAlter(strengthClassFck, f_cm_t, maturityAge);
 
   // --- 3. STATE FOR STAHLBETON-BIEGUNG ---
   const [mEd, setMEd] = useState<number>(160); // Bending moment in kNm
@@ -184,31 +191,22 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
   const [hHeight, setHHeight] = useState<number>(50); // Beam height in cm
   const [d1Margin, setD1Margin] = useState<number>(4.5); // Effective depth cover d1 in cm
 
-  // Material properties
+  // Rechenkern src/calc/biegung.ts (Modulprüfung T15-SB-1; Ergebnisse gegenüber der bisherigen Inline-Rechnung unverändert):
+  // Spannungsblock λ = 0,8, η = 1,0, ξ_lim = 0,45 (NA DE 5.4.1), f_cd = α_cc·f_ck/γ_c, f_yd = f_yk/1,15
   const f_ck = concreteClass === 'C20/25' ? 20 : concreteClass === 'C25/30' ? 25 : 30; // MPa
-  const f_cd = fcdBeton(f_ck, FCD_MODUL.beispielrechnungen); // f_cd = α_cc·f_ck/γ_c (zentral, src/data/kennwerte.ts)
-  const f_yk = 500; // B500B steel in MPa
-  const f_yd = f_yk / 1.15; // design yield strength
-
-  // Dimensions
+  const biegErg = bemesseBiegung({ b: bWidth, h: hHeight, d1: d1Margin, d2: 4.5, med: mEd, fck: f_ck, bewehrung: 'Stahl', fyk: 500, ftk: 0, gammaFRP: 1 });
+  const f_cd = biegErg.fcd;
+  const f_yd = biegErg.fyd;
   const b_m = bWidth / 100; // m
-  const h_m = hHeight / 100; // m
-  const d_m = (hHeight - d1Margin) / 100; // effective depth in m
-
-  // Bending dimensionless coefficient
-  // mEd is in kNm, f_cd in MPa (= MN/m²). f_cd * 1000 converts MPa to kN/m² so that both numerator and denominator are in kNm:
-  const mu_Ed = mEd / (b_m * Math.pow(d_m, 2) * f_cd * 1000);
-  const mu_lim = MU_LIM_STAHL; // µ_Eds,lim ≈ 0,296 für ξ_lim = 0,45 (DIN EN 1992-1-1/NA, 5.4.1), wie src/calc/biegung.ts
-
-  // Mechanical reinforcement ratio omega
-  const omega = mu_Ed < mu_lim ? 1 - Math.sqrt(1 - 2 * mu_Ed) : 0;
-  // Lever arm coefficient zeta
-  const zeta = mu_Ed < mu_lim ? (1 + Math.sqrt(1 - 2 * mu_Ed)) / 2 : 0.8; // conservative fallback if fails
-  const z_m = zeta * d_m; // lever arm in m
-
-  // Required steel reinforcement area in cm²
-  // As = Med / (f_yd * z)
-  const a_s_req = mu_Ed < mu_lim ? (mEd * 10) / (f_yd * z_m) : 0; // unit conversion to cm²
+  const d_m = biegErg.d / 100; // Nutzhöhe in m
+  const mu_Ed = biegErg.mu_Ed;
+  const mu_lim = biegErg.muLim; // µ_Eds,lim = λ·ξ_lim·(1 − λ·ξ_lim/2) = 0,295
+  const biegungOk = mu_Ed <= mu_lim;
+  // Hebelarmbeiwert ζ = 1 − ω/2 = (1 + √(1 − 2µ))/2 (Spannungsblock, η = 1)
+  const zeta = biegungOk ? 1 - biegErg.omega / 2 : 0;
+  const z_m = zeta * d_m; // Hebelarm in m
+  const a_s_req = biegungOk ? biegErg.as1_req : 0; // A_s,erf = ω·b·d·f_cd/f_yd = M_Ed/(f_yd·z) in cm²
+  const a_s_min = biegErg.as_min; // Mindestbewehrung (Robustheit, NA DE 9.2.1.1) in cm²
 
   // --- 4. STATE FOR HOLZBAU KNICKEN ---
   const [colLength, setColLength] = useState<number>(3.0); // column length in m
@@ -217,36 +215,21 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
   const [designForce, setDesignForce] = useState<number>(65); // N_d in kN
   const [timberGrade, setTimberGrade] = useState<'C24' | 'C30'>('C24');
 
-  // Material parameters
-  const f_c0k = HOLZ_EN338[timberGrade].fc0k; // f_c,0,k nach DIN EN 338:2016 (zentral, src/data/kennwerte.ts)
-  const E_005 = HOLZ_EN338[timberGrade].E005; // E_0,05 nach DIN EN 338:2016
-  const k_mod = 0.90; // KLED kurz (maßgebende kurzzeitige Einwirkung angenommen), NKL 1 und 2 (DIN EN 1995-1-1, Tab. 3.1)
-  const gamma_M = 1.3; // Solid timber partial factor
-
-  const f_c0d = k_mod * f_c0k / gamma_M; // design compressive strength
-
-  // Cross section properties
+  // Rechenkern src/calc/holzbau.ts (Modulprüfung T15-HO-1; Ergebnisse unverändert): Vollholz nach DIN EN 338:2016,
+  // NKL 1, KLED kurz (k_mod = 0,9; maßgebende kurzzeitige Einwirkung angenommen), γ_M = 1,3, Euler-Fall 2 (s_k = L), β_c = 0,2
+  const f_c0k = HOLZ_EN338[timberGrade].fc0k;
+  const E_005 = HOLZ_EN338[timberGrade].E005;
+  const holzErg = bemesseDruckstab({ b: colWidth * 10, h: colHeight * 10, laenge: colLength, eulerFall: 2, nEd: designForce, fc0k: f_c0k, E005: E_005, brettschichtholz: false, nkl: 1, kled: 'krt' });
+  const f_c0d = holzErg.f_c0d;
   const A_wood = colWidth * colHeight; // cm²
-  const I_wood = (colWidth * Math.pow(colHeight, 3)) / 12; // cm⁴
-  const i_radius = Math.min(colWidth, colHeight) / Math.sqrt(12); // Trägheitsradius der schwachen Achse in cm
-  const slenderness = (colLength * 100) / i_radius; // lambda = s_k / i
-
-  // Relative slenderness
-  // lambda_rel = (lambda / pi) * sqrt(f_c0k / E_005)
-  const lambda_rel = (slenderness / Math.PI) * Math.sqrt(f_c0k / E_005);
-
-  // Factor k for solid timber (beta_c = 0.2)
-  const beta_c = 0.2;
-  const k_factor_wood = 0.5 * (1 + beta_c * (lambda_rel - 0.3) + Math.pow(lambda_rel, 2));
-
-  // Buckling coefficient k_c
-  const k_c = 1 / (k_factor_wood + Math.sqrt(Math.pow(k_factor_wood, 2) - Math.pow(lambda_rel, 2)));
-  const k_c_final = Math.min(1.0, k_c);
-
-  // Compressive stress
+  const i_radius = Math.min(holzErg.iy, holzErg.iz) / 10; // Trägheitsradius der schwachen Achse in cm
+  const slenderness = holzErg.lambda_z; // λ = s_k / i
+  const lambda_rel = holzErg.lambda_rel_z;
+  // Hilfswert k nach Gl. (6.27) für die Anzeige (Vollholz β_c = 0,2)
+  const k_factor_wood = 0.5 * (1 + 0.2 * (lambda_rel - 0.3) + Math.pow(lambda_rel, 2));
+  const k_c_final = holzErg.k_cz;
   const sigma_c0d = (designForce * 10) / A_wood; // N/mm²
-  const maxAllowedStress = k_c_final * f_c0d; // N/mm²
-  const utilizationWood = sigma_c0d / maxAllowedStress;
+  const utilizationWood = holzErg.utilization / 100;
 
   // --- 5. MAUERWERK: Zustand und Rechenkern in RechnungMauerwerk (src/calc/mauerwerk.ts) ---
 
@@ -271,7 +254,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
   const cementMassPerM2 = volumePerM2 * cementGehalt; // kg
   const caoMassPerM2 = cementMassPerM2 * (caoAnteil / 100); // kg
   const reactedCaoMassPerM2 = caoMassPerM2 * (carbGrad / 100); // kg
-  const co2UptakePerM2 = reactedCaoMassPerM2 * (44.0 / 56.1); // kg CO2/m²
+  const co2UptakePerM2 = reactedCaoMassPerM2 * (44.01 / 56.08); // kg CO2/m², Molmassen M(CO₂)/M(CaO) wie im Rechenweg (T15-NH-2)
 
   // Derived values for GWP Zement Vergleich:
   const totalCementA = (bauteilVol * cementGehaltA) / 1000; // t
@@ -411,7 +394,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
         {activeTab === 'beton' && <RechnungBeton V_a={V_a} V_air={V_air} V_c={V_c} V_w={V_w} actualWz={actualWz} aggregateMass={aggregateMass} beta_cc={beta_cc} betonSubTab={betonSubTab} cementContent={cementContent} cementFromWz={cementFromWz} consClass={consClass} f_ck_t={f_ck_t} f_cm_28={f_cm_28} f_cm_t={f_cm_t} finalFreshTemp={finalFreshTemp} freshConcreteDensity={freshConcreteDensity} heat_agg={heat_agg} heat_cement={heat_cement} heat_ice_melting={heat_ice_melting} heat_liquid_water={heat_liquid_water} kAddType={kAddType} kAddition={kAddition} kCement={kCement} kWater={kWater} k_credited_addition={k_credited_addition} k_factor={k_factor} k_max_allowed_addition={k_max_allowed_addition} k_max_ratio={k_max_ratio} k_w_z_eq={k_w_z_eq} k_w_z_pure={k_w_z_pure} mAggregateInput={mAggregateInput} mCementInput={mCementInput} mIceInput={mIceInput} mLiquidWater={mLiquidWater} mWaterInput={mWaterInput} maturityAge={maturityAge} maxGrainSize={maxGrainSize} maxWz={maxWz} minCement={minCement} s_param={s_param} setBetonSubTab={setBetonSubTab} setConsClass={setConsClass} setKAddType={setKAddType} setKAddition={setKAddition} setKCement={setKCement} setKWater={setKWater} setMIceInput={setMIceInput} setMaxGrainSize={setMaxGrainSize} setStrengthCementType={setStrengthCementType} setStrengthClassFck={setStrengthClassFck} setStrengthCureAge={setStrengthCureAge} setStrengthCureTemp={setStrengthCureTemp} setTargetExposure={setTargetExposure} setTempAggregate={setTempAggregate} setTempCement={setTempCement} setTempWater={setTempWater} strengthCementType={strengthCementType} strengthClassFck={strengthClassFck} strengthCureAge={strengthCureAge} strengthCureTemp={strengthCureTemp} targetExposure={targetExposure} tempAggregate={tempAggregate} tempCement={tempCement} tempWater={tempWater} total_heat={total_heat} total_heat_capacity={total_heat_capacity} waterDemand={waterDemand} />}
 
         {/* --- 3. TAB CONTENT: STAHLBETON-BIEGUNG --- */}
-        {activeTab === 'stahlbeton' && <RechnungStahlbeton a_s_req={a_s_req} bWidth={bWidth} b_m={b_m} concreteClass={concreteClass} d1Margin={d1Margin} d_m={d_m} f_cd={f_cd} f_ck={f_ck} f_yd={f_yd} hHeight={hHeight} mEd={mEd} mu_Ed={mu_Ed} mu_lim={mu_lim} setBWidth={setBWidth} setConcreteClass={setConcreteClass} setHHeight={setHHeight} setMEd={setMEd} z_m={z_m} zeta={zeta} />}
+        {activeTab === 'stahlbeton' && <RechnungStahlbeton a_s_req={a_s_req} a_s_min={a_s_min} bWidth={bWidth} b_m={b_m} concreteClass={concreteClass} d1Margin={d1Margin} d_m={d_m} f_cd={f_cd} f_ck={f_ck} f_yd={f_yd} hHeight={hHeight} mEd={mEd} mu_Ed={mu_Ed} mu_lim={mu_lim} setBWidth={setBWidth} setConcreteClass={setConcreteClass} setHHeight={setHHeight} setMEd={setMEd} z_m={z_m} zeta={zeta} />}
 
         {/* --- 4. TAB CONTENT: HOLZBAU KNICKEN --- */}
         {activeTab === 'holzbau' && <RechnungHolzbau A_wood={A_wood} E_005={E_005} colHeight={colHeight} colLength={colLength} colWidth={colWidth} designForce={designForce} f_c0d={f_c0d} f_c0k={f_c0k} i_radius={i_radius} k_c_final={k_c_final} k_factor_wood={k_factor_wood} lambda_rel={lambda_rel} setColHeight={setColHeight} setColLength={setColLength} setColWidth={setColWidth} setDesignForce={setDesignForce} setTimberGrade={setTimberGrade} sigma_c0d={sigma_c0d} slenderness={slenderness} timberGrade={timberGrade} utilizationWood={utilizationWood} />}

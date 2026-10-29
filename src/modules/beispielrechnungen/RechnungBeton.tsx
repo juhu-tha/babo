@@ -32,9 +32,9 @@ interface RechnungBetonProps {
   kCement: number;
   kWater: number;
   k_credited_addition: number;
-  k_factor: 1 | 0.4;
+  k_factor: number;
   k_max_allowed_addition: number;
-  k_max_ratio: 0.33 | 0.11;
+  k_max_ratio: number;
   k_w_z_eq: number;
   k_w_z_pure: number;
   mAggregateInput: number;
@@ -46,7 +46,7 @@ interface RechnungBetonProps {
   maxGrainSize: 16 | 32;
   maxWz: 0.6 | 0.45;
   minCement: 320 | 280;
-  s_param: 0.38 | 0.25 | 0.2;
+  s_param: number;
   setBetonSubTab: React.Dispatch<React.SetStateAction<"mischung" | "k_wert" | "temperatur" | "festigkeit">>;
   setConsClass: React.Dispatch<React.SetStateAction<"F2" | "F3" | "F4">>;
   setKAddType: React.Dispatch<React.SetStateAction<"flugasche" | "silikastaub">>;
@@ -164,7 +164,7 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
                     className="w-full p-2 rounded-lg border border-slate-200 font-bold text-xs"
                   >
                     <option value="F2">F2 (steifplastisch / plastisch)</option>
-                    <option value="F3">F3 (regelKonsistenz / weich)</option>
+                    <option value="F3">F3 (weich, Regelkonsistenz)</option>
                     <option value="F4">F4 (sehr weich)</option>
                   </select>
                 </div>
@@ -341,7 +341,7 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
                 <div className="space-y-4 text-xs text-text-main/80 leading-relaxed font-normal">
                   <div><MdText text={inhalt.texte.schritt1KBeiwert} /><p className="mt-1">
                       Für <span className="text-shiraz font-bold">{kAddType === 'flugasche' ? 'Flugasche' : 'Silikastaub'}</span><MdText text={inhalt.texte.istNormativEinK} /><InlineMath math={`k = ${formatDeTeXWert(k_factor)}`} /><MdText text={inhalt.texte.vorgegebenDieMaximaleAnrechenbare} /><InlineMath math={`${formatDeTeX((k_max_ratio*100), 0)}\\%`} /><MdText text={inhalt.texte.desZementgehaltsBeiCem} /></p>
-                    <BlockMath math={`f_{max} = ${k_max_ratio} \\cdot c = ${k_max_ratio} \\cdot \\color{#A3113E}{${kCement}} = \\color{#A3113E}{${formatDeTeX(k_max_allowed_addition, 1)}} \\, \\text{kg/m}^3`} />
+                    <BlockMath math={`f_{max} = ${formatDeTeXWert(k_max_ratio)} \\cdot c = ${formatDeTeXWert(k_max_ratio)} \\cdot \\color{#A3113E}{${kCement}} = \\color{#A3113E}{${formatDeTeX(k_max_allowed_addition, 1)}} \\, \\text{kg/m}^3`} />
                     <p className="mt-1"><MdText text={inhalt.texte.dieAnrechenbareZusatzstoffmengeF} /></p>
                     <BlockMath math={`f_{anr} = \\min(f, f_{max}) = \\min(\\color{#A3113E}{${kAddition}}, \\color{#A3113E}{${formatDeTeX(k_max_allowed_addition, 1)}}) = \\color{#A3113E}{${formatDeTeX(k_credited_addition, 1)}} \\, \\text{kg/m}^3`} />
                   </div>
@@ -349,7 +349,7 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
                   <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt2ÄquivalentenWasserzementwert} /><p className="mt-1"><MdText text={inhalt.texte.dieKlassischeWZ} /></p>
                     <BlockMath math={`w/z = \\frac{w}{c} = \\frac{\\color{#A3113E}{${kWater}}}{\\color{#A3113E}{${kCement}}} = \\color{#A3113E}{${formatDeTeX(k_w_z_pure, 3)}}`} />
                     <p className="mt-1"><MdText text={inhalt.texte.durchAnrechnungDesZusatzstoffs} /></p>
-                    <BlockMath math={`(w/z)_{eq} = \\frac{w}{c + k \\cdot f_{anr}} = \\frac{\\color{#A3113E}{${kWater}}}{\\color{#A3113E}{${kCement}} + ${k_factor} \\cdot \\color{#A3113E}{${formatDeTeX(k_credited_addition, 1)}}} = \\color{#A3113E}{${formatDeTeX(k_w_z_eq, 3)}}`} />
+                    <BlockMath math={`(w/z)_{eq} = \\frac{w}{c + k \\cdot f_{anr}} = \\frac{\\color{#A3113E}{${kWater}}}{\\color{#A3113E}{${kCement}} + ${formatDeTeXWert(k_factor)} \\cdot \\color{#A3113E}{${formatDeTeX(k_credited_addition, 1)}}} = \\color{#A3113E}{${formatDeTeX(k_w_z_eq, 3)}}`} />
                   </div>
                 </div>
 
@@ -480,6 +480,7 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
                         'Optimal'
                       })
                     </strong>
+                    {finalFreshTemp < 0 && <span className="block text-xxs font-bold mb-1"><MdText text={inhalt.werte.mischtemperaturUnterNull} /></span>}
                     <span className="text-xxs opacity-90">
                       {finalFreshTemp < 5 ? inhalt.werte.derBetonDrohtEinzufrieren :
                        finalFreshTemp > 30 ? inhalt.werte.dieErhärtungsreaktionLäuftZu :
@@ -570,8 +571,8 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
 
                 <div className="space-y-3.5 text-xs text-text-main/80 leading-relaxed font-normal">
                   <div><MdText text={inhalt.texte.schritt1ReifealterArrhenius} /><p className="mt-1"><MdText text={inhalt.texte.aufgrundErhöhterOderVerringerter} /></p>
-                    <BlockMath math={`t_T = t \\cdot \\exp\\left( 4000 \\cdot \\left[ \\frac{1}{293} - \\frac{1}{273 + T} \\right] \\right)`} />
-                    <BlockMath math={`t_T = \\color{#A3113E}{${formatDeTeXWert(strengthCureAge)}} \\cdot \\exp\\left( 4000 \\cdot \\left[ \\frac{1}{293} - \\frac{1}{273 + \\color{#A3113E}{${formatDeTeXWert(strengthCureTemp)}}} \\right] \\right) = \\color{#A3113E}{${formatDeTeX(maturityAge, 2)}} \\, \\text{Tage}`} />
+                    <BlockMath math={`t_T = t \\cdot \\exp\\left( -\\left[ \\frac{4000}{273 + T} - 13{,}65 \\right] \\right)`} />
+                    <BlockMath math={`t_T = \\color{#A3113E}{${formatDeTeXWert(strengthCureAge)}} \\cdot \\exp\\left( -\\left[ \\frac{4000}{273 + \\color{#A3113E}{${formatDeTeXWert(strengthCureTemp)}}} - 13{,}65 \\right] \\right) = \\color{#A3113E}{${formatDeTeX(maturityAge, 2)}} \\, \\text{Tage}`} />
                   </div>
 
                   <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt2FestigkeitsbeiwertBeta} /><BlockMath math={`\\beta_{cc}(t_T) = \\exp\\left( s \\cdot \\left[ 1 - \\sqrt{\\frac{28}{t_T}} \\right] \\right)`} />
