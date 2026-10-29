@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { GMODG_ANLAGE7, FX, uRetrofit, dRequired, CO2_ERDGAS } from '@/src/utils/bestandKern';
+import { GMODG_ANLAGE7, FX, uRetrofit, dRequired, CO2_ERDGAS, CO2_HEIZOEL, CO2_FERNWAERME, CO2_STROM, CO2_WAERMEPUMPE } from '@/src/utils/bestandKern';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
@@ -64,12 +64,14 @@ interface Baualtersklasse {
 
 const BAUALTERSKLASSEN: Baualtersklasse[] = inhalt.daten.BAUALTERSKLASSEN;
 
+// CO₂-Faktoren nach GModG Anlage 9 wie im Energieausweis-Kern (Erdgas 0,24, Heizöl 0,31, Netzstrom 0,56 kg/kWh;
+// Fernwärme 0,12 als Lehrwert); Wärmepumpe = Netzstrom/JAZ 3,5
 const HEATING_SOURCES = [
   { id: 'gas', label: 'Erdgas-Heizung', co2Factor: CO2_ERDGAS, costPerKwh: 0.11 },
-  { id: 'oil', label: 'Heizöl', co2Factor: 0.28, costPerKwh: 0.12 },
-  { id: 'district', label: inhalt.werte.fernwärmeMix, co2Factor: 0.16, costPerKwh: 0.14 },
-  { id: 'electricity', label: 'Direkt-Elektroheizung', co2Factor: 0.38, costPerKwh: 0.35 },
-  { id: 'heatpump', label: inhalt.werte.wärmepumpeJaz35, co2Factor: 0.11, costPerKwh: 0.09 },
+  { id: 'oil', label: 'Heizöl', co2Factor: CO2_HEIZOEL, costPerKwh: 0.12 },
+  { id: 'district', label: inhalt.werte.fernwärmeMix, co2Factor: CO2_FERNWAERME, costPerKwh: 0.14 },
+  { id: 'electricity', label: 'Direkt-Elektroheizung', co2Factor: CO2_STROM, costPerKwh: 0.35 },
+  { id: 'heatpump', label: inhalt.werte.wärmepumpeJaz35, co2Factor: CO2_WAERMEPUMPE, costPerKwh: 0.09 },
 ];
 
 type BestandReiter = 'steckbrief' | 'sanierung' | 'vergleich' | 'theorie';

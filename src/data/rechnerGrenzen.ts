@@ -371,7 +371,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     kurz: "Holzschrauben: Tragfähigkeit auf Herausziehen (Gl. 8.38–8.41) und Abscheren (Johansen mit Seileffekt) nach DIN EN 1995-1-1.",
     grenzen: [
       "Normformeln ohne ETA: f_ax,k = 0,52·d^−0,5·l_ef^−0,1·ρ_k^0,8, M_y,Rk = 0,3·f_u·d_ef^2,6 mit f_u = 400 N/mm² (Lehrwert); Herstellerwerte sind meist höher.",
-      "Abscheren mit d_ef = 1,1·d₁, Kerndurchmesser d₁ = 0,65·d als Lehrwert; d_ef ≤ 6 mm Lochleibung nach den Regeln für Nägel (nicht vorgebohrt), sonst für Bolzen, jeweils ohne Faserwinkel.",
+      "Abscheren mit d_ef = 1,1·d₁; Kerndurchmesser d₁ als Eingabe (leer: Lehrwert 0,65·d); d_ef ≤ 6 mm Lochleibung nach den Regeln für Nägel (nicht vorgebohrt), sonst für Bolzen, ohne Faserwinkel.",
       "k_mod aus NKL und KLED, γ_M = 1,3; einschnittig Holz–Holz, nur Versagensarten Lochleibung und Fließgelenk.",
       "n_ef = n^0,9 nur beim Herausziehen; ohne Mindestabstände, Blockscheren und Interaktion axial/quer (8.7.3).",
     ],

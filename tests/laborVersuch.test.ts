@@ -1,6 +1,6 @@
 // Auswertehilfen virtuelle Versuche (src/calc/laborVersuch.ts): Höchstwert statt letztem Messwert, glatte Achsen,
 // Spaltzugfestigkeit nach DIN EN 12390-6, Ausbreitmaß aus d1/d2 (Befund 28.10.2026: Ergebnis 0,00 MPa nach dem Bruch)
-import { hoechstwert, schoeneAchse, spaltzugfestigkeit, spaltkraft, ausbreitDurchmesser } from '../src/calc/laborVersuch';
+import { hoechstwert, schoeneAchse, spaltzugfestigkeit, spaltkraft, ausbreitDurchmesser, ausbreitAuswertung, ringKugelZustand, RUK_STARTTEMPERATUR, RUK_AUFHEIZRATE } from '../src/calc/laborVersuch';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -44,6 +44,26 @@ for (const f of [200, 350, 487, 740]) {
   pruefe((d1 + d2) / 2 === f && d1 > d2, `Ausbreitmaß ${f}: ${d1}/${d2}`);
 }
 pruefe(ausbreitDurchmesser(0).d1 === 0, 'Ausbreitmaß 0');
+
+// 4a. Ausbreitmaß auf 10 mm gerundet (DIN EN 12350-5), Klasse aus dem gerundeten Wert (Entscheidung 29.10.2026)
+for (const [fSim, fErw, kErw] of [[487, 490, 'F4'], [344, 340, 'F1'], [345, 350, 'F2'], [484, 480, 'F3'], [626, 630, 'F6'], [624, 620, 'F5'], [500, 500, 'F4']] as const) {
+  const a = ausbreitAuswertung(fSim);
+  pruefe(a.f === fErw && a.klasse === kErw && a.f % 10 === 0 && a.fRoh === fSim, `Ausbreitmaß ${fSim} → ${a.f} mm ${a.klasse}, erwartet ${fErw} ${kErw}`);
+}
+pruefe(ausbreitAuswertung(0).f === 0 && ausbreitAuswertung(NaN).klasse === '–', 'Ausbreitauswertung Randfälle');
+
+// 4b. Ring und Kugel (DIN EN 1427): Bad ab 5 °C, 5 K/min (Entscheidung 29.10.2026)
+pruefe(RUK_STARTTEMPERATUR === 5 && RUK_AUFHEIZRATE === 5, 'RuK Start 5 °C, 5 K/min');
+{
+  const start = ringKugelZustand(0, 50);
+  const halb = ringKugelZustand(0.5, 50);
+  const ende = ringKugelZustand(1, 50);
+  pruefe(start.temperatur === 5 && start.minuten === 0, 'RuK Start bei 5 °C');
+  pruefe(ende.temperatur === 50 && ende.dauer === 9 && ende.minuten === 9, `RuK 50/70: EP 50 °C nach 9 min, erhalten ${ende.temperatur} °C / ${ende.dauer} min`);
+  pruefe(Math.abs(halb.temperatur - 27.5) < 1e-9 && Math.abs(halb.minuten - 4.5) < 1e-9, 'RuK halbe Zeit 27,5 °C');
+  pruefe(ringKugelZustand(2, 39).temperatur === 39 && ringKugelZustand(-1, 39).temperatur === 5, 'RuK Fortschritt begrenzt');
+  pruefe(ringKugelZustand(0.5, NaN).temperatur === 5 && ringKugelZustand(1, 3).dauer === 0, 'RuK Randfälle');
+}
 
 // 5. Fuzz: 1 000 Zufallseingaben ohne NaN/∞; Achse ≥ Wert, Teilung ganzzahlig, höchstens 12 Teile
 let s = 7;

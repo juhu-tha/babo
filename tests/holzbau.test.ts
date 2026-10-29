@@ -1,5 +1,5 @@
 // Rechenkern Holzbau EC 5 (Umsetzungsplan Phase 4, AP 4.3)
-import { bemesseDruckstab, bemesseQuerdruck, knickbeiwert, KMOD, EULER_BETA, type DruckstabEingabe } from '../src/calc/holzbau';
+import { bemesseDruckstab, bemesseQuerdruck, knickbeiwert, KMOD, EULER_BETA, type DruckstabEingabe, holzschraube, KERN_VERHAELTNIS_SCHRAUBE } from '../src/calc/holzbau';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -43,6 +43,23 @@ const z = (a: number, c: number) => { seed = (seed * 1103515245 + 12345) % 21474
 for (let i = 0; i < 1000; i++) {
   const ru = bemesseDruckstab({ b: z(-10, 400), h: z(-10, 600), laenge: z(-1, 15), eulerFall: ((i % 4) + 1) as 1 | 2 | 3 | 4, nEd: z(-50, 2000), fc0k: z(-5, 35), E005: z(-100, 12000), brettschichtholz: i % 2 === 0, nkl: ((i % 3) + 1) as 1 | 2 | 3, kled: 'mtl' });
   if (![ru.F_c_R_d_kN, ru.k_cz, ru.utilization, ru.lambda_rel_z].every(Number.isFinite)) { pruefe(false, `Fuzz ${i}: ${JSON.stringify(ru)}`); break; }
+}
+
+// Holzschraube: Eingabe Kerndurchmesser d₁ (Entscheidung 29.10.2026), d_ef = 1,1·d₁; leer → Lehrwert 0,65·d
+{
+  const basis = { rhok: 350, d: 8, lef: 80, alpha: 90, n: 4, nkl: 1 as const, kled: 'mtl' as const };
+  const leer = holzschraube(basis);
+  const lehr = holzschraube({ ...basis, dKern: KERN_VERHAELTNIS_SCHRAUBE * 8 });
+  pruefe(Math.abs(leer.d_kern - 5.2) < 1e-12 && Math.abs(leer.d_ef - 5.72) < 1e-12 && leer.lochleibungNach === 'nagel', `Schraube leer: d₁ ${leer.d_kern}, d_ef ${leer.d_ef}`);
+  pruefe(leer.F_v_Rk_single_N === lehr.F_v_Rk_single_N, 'Schraube: leer gleich Lehrwert 0,65·d');
+  const k56 = holzschraube({ ...basis, dKern: 5.6 });
+  pruefe(Math.abs(k56.d_ef - 6.16) < 1e-12 && k56.lochleibungNach === 'bolzen', `Schraube d₁ 5,6: d_ef ${k56.d_ef} → Bolzen`);
+  // Handrechnung d_ef 6,16 mm: f_h,k = 0,082·(1 − 0,0616)·350 = 26,93 N/mm²
+  pruefe(Math.abs(k56.f_h_k - 0.082 * (1 - 0.0616) * 350) < 1e-9, `Schraube d₁ 5,6: f_h,k ${k56.f_h_k}`);
+  pruefe(k56.F_ax_Rk_single_N === leer.F_ax_Rk_single_N, 'Herausziehen unabhängig von d₁');
+  pruefe(holzschraube({ ...basis, dKern: 8 }).hinweise.some(h => h.feld === 'dKern' && h.stufe === 'fehler'), 'd₁ ≥ d abgelehnt');
+  pruefe(holzschraube({ ...basis, dKern: 4.4 }).hinweise.some(h => h.feld === 'dKern' && h.stufe === 'warnung'), 'd₁/d < 0,6 Warnung');
+  pruefe(holzschraube({ ...basis, dKern: NaN }).hinweise.some(h => h.stufe === 'fehler'), 'd₁ NaN abgelehnt');
 }
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }

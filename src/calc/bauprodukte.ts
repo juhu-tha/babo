@@ -38,8 +38,9 @@ export function fugenbandPruefung(art: Fugenart, wasserdruckM: number, dickeCm: 
   else { breite = 400; typ = 'FM400'; }
   const minRandCm = (groesstkornMm * 3) / 10;              // Lehrannahme 3 · Größtkorn
   const randCm = (dickeCm - breite / 20) / 2;
-  // Mindestbauteildicke d ≥ a; Ausnahme D 320: ≥ 30 cm nach Herstellerangabe (Sika, Fugenband-Ratgeber für die Praxis; T8-AB-Q1)
-  const dickeMinCm = typ === 'D320' ? 30 : breite / 10;
+  // Mindestbauteildicke d ≥ a; Ausnahme A 320 und D 320: ≥ 30 cm nach Herstellerangabe (Sika, Fugenband-Ratgeber für
+  // die Praxis; T8-AB-Q1, für A 320 Entscheidung 29.10.2026)
+  const dickeMinCm = typ === 'D320' || typ === 'A320' ? 30 : breite / 10;
   return { breite, typ, dickeMinCm, dickeOk: dickeCm >= dickeMinCm, minRandCm, randCm, randOk: randCm >= minRandCm, druckBar: wasserdruckM * 0.1 };
 }
 

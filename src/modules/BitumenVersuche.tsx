@@ -5,6 +5,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import inhalt from '@/content/bitumenversuche/BitumenVersuche.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ringKugelZustand, RUK_STARTTEMPERATUR, RUK_AUFHEIZRATE } from '@/src/calc/laborVersuch';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 type BitumenSorte = '160/220' | '70/100' | '50/70' | '30/45' | '20/30' | 'PmB 25/55-55';
@@ -45,11 +46,13 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
   const spitzeY = oberflaecheY + tiefeEinheiten * 0.4;
   const penLabel = `Penetrometer nach DIN EN 1426: Nadel mit 100 g Gesamtlast über der Bitumenprobe im Wasserbad 25 °C. `
     + (testStatus === 'idle' ? 'Versuch noch nicht gestartet.' : `Eindringtiefe ${formatDeWert(Math.round(tiefeEinheiten))} · 0,1 mm nach ${formatDeZahl(anteil * 5, 1)} s von 5 s.`);
-  // Ring-und-Kugel (DIN EN 1427): Abstand Ring – Bodenplatte 25 mm (2 px je mm), Bitumen sackt mit der Kugel durch
-  const temperatur = 20 + anteil * (currentProps.ruk - 20);
+  // Ring-und-Kugel (DIN EN 1427): Abstand Ring – Bodenplatte 25 mm (2 px je mm), Bitumen sackt mit der Kugel durch;
+  // Wasserbad ab 5 °C, gleichmäßig mit 5 K/min erwärmt
+  const ruk = ringKugelZustand(anteil, currentProps.ruk);
+  const temperatur = ruk.temperatur;
   const durchhang = anteil * 54;
   const rukLabel = `Ring-und-Kugel-Gerät nach DIN EN 1427: zwei Ringe mit Bitumen und Stahlkugeln im Wasserbad über der Bodenplatte (Abstand 25 mm), Thermometer rechts. `
-    + (testStatus === 'idle' ? 'Versuch noch nicht gestartet.' : testStatus === 'finished' ? `Bitumen berührt die Bodenplatte bei ${formatDeZahl(currentProps.ruk, 1)} °C (Erweichungspunkt).` : `Badtemperatur ${formatDeZahl(temperatur, 1)} °C.`);
+    + (testStatus === 'idle' ? 'Versuch noch nicht gestartet.' : testStatus === 'finished' ? `Bitumen berührt die Bodenplatte bei ${formatDeZahl(currentProps.ruk, 1)} °C (Erweichungspunkt) nach ${formatDeZahl(ruk.dauer, 1)} min Aufheizen ab ${formatDeWert(RUK_STARTTEMPERATUR)} °C mit ${formatDeWert(RUK_AUFHEIZRATE)} K/min.` : `Badtemperatur ${formatDeZahl(temperatur, 1)} °C nach ${formatDeZahl(ruk.minuten, 1)} min (Start ${formatDeWert(RUK_STARTTEMPERATUR)} °C, ${formatDeWert(RUK_AUFHEIZRATE)} K/min).`);
 
   const clearTestInterval = () => {
     if (intervalRef.current) {
@@ -285,13 +288,13 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
                      {/* Thermometer */}
                      <rect x="246" y="30" width="10" height="200" rx="5" fill="var(--pg-anzeige)" stroke="var(--pg-kontur)" strokeWidth="1.2" />
                      <rect x="248" y={230 - ((temperatur - 0) / 100) * 200} width="6" height={((temperatur - 0) / 100) * 200} rx="3" fill="var(--pg-akzent)" />
-                     {[20, 40, 60, 80].map(t => (
+                     {[0, 20, 40, 60, 80].map(t => (
                        <g key={t}>
                          <line x1="256" y1={230 - (t / 100) * 200} x2="262" y2={230 - (t / 100) * 200} stroke="var(--pg-kontur)" strokeWidth="1" />
                          <text x="264" y={234 - (t / 100) * 200} fontSize="11" fill="var(--pg-text)">{formatDeWert(t)} °C</text>
                        </g>
                      ))}
-                     <text x="120" y="20" textAnchor="middle" fontSize="12" fontWeight="bold" fill="var(--pg-akzent)">T = {formatDeZahl(temperatur, 1)} °C</text>
+                     <text x="120" y="20" textAnchor="middle" fontSize="12" fontWeight="bold" fill="var(--pg-akzent)">T = {formatDeZahl(temperatur, 1)} °C · t = {formatDeZahl(ruk.minuten, 1)} min</text>
                    </svg>
                  )}
                </figure>

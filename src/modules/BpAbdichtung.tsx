@@ -545,7 +545,7 @@ export default function BpAbdichtung() {
                       </div>
                       <div className="border-t border-zinc-100 pt-1.5">
                         <span className="text-zinc-500 block"><MdText text={inhalt.texte.geforderteMindestdeckendicke} /></span>
-                        <span>{formatDeWert(fb.dickeMinCm)}<MdText text={fb.typ === 'D320' ? inhalt.texte.cmSollD320 : inhalt.texte.cmSollDA} /></span>
+                        <span>{formatDeWert(fb.dickeMinCm)}<MdText text={fb.typ === 'D320' || fb.typ === 'A320' ? inhalt.texte.cmSollD320 : inhalt.texte.cmSollDA} /></span>
                       </div>
                       <div className="border-t border-zinc-100 pt-1.5">
                         <span className="text-zinc-500 block"><MdText text={inhalt.texte.mindestRandabstandGrößtkornCheck} /></span>

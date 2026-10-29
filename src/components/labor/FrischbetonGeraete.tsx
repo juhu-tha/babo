@@ -7,7 +7,7 @@
 //   Setzung (gültig), Scherung (ungültig, wiederholen), Zusammenbruch.
 import React from 'react';
 import { formatDeWert } from '@/src/utils/numberFormat';
-import { ausbreitDurchmesser } from '@/src/calc/laborVersuch';
+import { ausbreitAuswertung } from '@/src/calc/laborVersuch';
 import { PfeilDefs, Masslinie, useSchriftFaktor } from './laborGrafik';
 
 // ── Ausbreittisch ──────────────────────────────────────────────────────────────
@@ -16,9 +16,12 @@ const M = 300 / 700; // px je mm in der Draufsicht (Platte 700 mm → 300 px)
 export function AusbreitDraufsicht({ ausbreitmass, kegelGehoben, hubschlaege }: { ausbreitmass: number; kegelGehoben: boolean; hubschlaege: number }) {
   const cx = 160;
   const cy = 160;
-  const { d1, d2 } = kegelGehoben ? ausbreitDurchmesser(ausbreitmass) : { d1: 200, d2: 200 };
+  const aw = ausbreitAuswertung(ausbreitmass);
+  const { d1, d2 } = kegelGehoben ? aw : { d1: 200, d2: 200 };
+  // Mittel (d1 + d2)/2 und auf 10 mm gerundetes Ausbreitmaß f (DIN EN 12350-5)
+  const mittelText = aw.fRoh === aw.f ? `${formatDeWert(aw.f)} mm` : `${formatDeWert(aw.fRoh)} mm ≈ ${formatDeWert(aw.f)} mm`;
   const label = kegelGehoben
-    ? `Draufsicht Ausbreittisch 700 × 700 mm nach ${formatDeWert(hubschlaege)} von 15 Hubschlägen: Betonkuchen mit d1 = ${formatDeWert(d1)} mm parallel zur unteren Kante und d2 = ${formatDeWert(d2)} mm rechtwinklig dazu; Ausbreitmaß f = (d1 + d2)/2 = ${formatDeWert(ausbreitmass)} mm.`
+    ? `Draufsicht Ausbreittisch 700 × 700 mm nach ${formatDeWert(hubschlaege)} von 15 Hubschlägen: Betonkuchen mit d1 = ${formatDeWert(d1)} mm parallel zur unteren Kante und d2 = ${formatDeWert(d2)} mm rechtwinklig dazu; Ausbreitmaß f = (d1 + d2)/2 = ${mittelText}, auf 10 mm gerundet.`
     : 'Draufsicht Ausbreittisch 700 × 700 mm mit Mittelkreis Ø 210 mm, Diagonalen und Mittellinien; in der Mitte der gefüllte Ausbreitkegel (Kegelstumpf Ø 200 mm unten, Ø 130 mm oben).';
   const rx = (d1 / 2) * M;
   const ry = (d2 / 2) * M;
@@ -55,7 +58,7 @@ export function AusbreitDraufsicht({ ausbreitmass, kegelGehoben, hubschlaege }: 
       )}
       <text x="12" y="332" fontSize="12" fill={kegelGehoben ? 'var(--pg-mass)' : 'var(--pg-text2)'} fontWeight={kegelGehoben ? 'bold' : 'normal'}>
         {kegelGehoben
-          ? `d1 = ${formatDeWert(d1)} mm · d2 = ${formatDeWert(d2)} mm → f = ${formatDeWert(ausbreitmass)} mm`
+          ? `d1 = ${formatDeWert(d1)} · d2 = ${formatDeWert(d2)} → f = ${mittelText}`
           : 'Platte 700 × 700 mm · Mittelkreis Ø 210 mm'}
       </text>
     </svg>
