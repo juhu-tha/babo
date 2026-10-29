@@ -195,7 +195,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
   // Spannungsblock λ = 0,8, η = 1,0, ξ_lim = 0,45 (NA DE 5.4.1), f_cd = α_cc·f_ck/γ_c, f_yd = f_yk/1,15
   const f_ck = concreteClass === 'C20/25' ? 20 : concreteClass === 'C25/30' ? 25 : 30; // MPa
   const biegErg = bemesseBiegung({ b: bWidth, h: hHeight, d1: d1Margin, d2: 4.5, med: mEd, fck: f_ck, bewehrung: 'Stahl', fyk: 500, ftk: 0, gammaFRP: 1 });
-  const f_cd = biegErg.fcd;
+  const f_cd = fcdBeton(f_ck, FCD_MODUL.beispielrechnungen); // = biegErg.fcd (zentral, src/data/kennwerte.ts)
   const f_yd = biegErg.fyd;
   const b_m = bWidth / 100; // m
   const d_m = biegErg.d / 100; // Nutzhöhe in m

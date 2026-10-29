@@ -636,14 +636,16 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     grenzen: [
       "Wasseranspruch tabelliert, Rohdichten und Luftgehalt fest.",
       "Nur die Expositionsklassen XC4 und XD3.",
-      "Reife mit konstanter Temperatur (Arrhenius).",
+      "Reife mit konstanter Temperatur (Arrhenius, t_T nach EC2 Gl. B.10); f_ck(t) = f_cm(t) − 8 bis 28 Tage.",
+      "Frischbetontemperatur ohne Phasenwechsel; unter 0 °C nur Hinweis.",
     ],
   },
   rechnung_stahlbeton: {
     kurz: "Biegebemessung eines Rechteckquerschnitts mit dem µ-Verfahren.",
     grenzen: [
       "Nur Zugbewehrung, keine Druckbewehrung; oberhalb µ_lim nur Warnung.",
-      "Ohne Mindest- und Höchstbewehrung, Querkraft und Gebrauchstauglichkeit.",
+      "Mindestbewehrung (Robustheit, NA DE) nur angezeigt; ohne Höchstbewehrung, Querkraft und Gebrauchstauglichkeit.",
+      "Stabwahl ohne Prüfung von Stababständen und Einbaubreite.",
     ],
   },
   rechnung_holzbau: {
@@ -674,7 +676,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   rechnung_bestand: {
     kurz: "f_ck und f_cd aus historischen Betonklassen sowie Fließkraft historischer Betonstähle.",
     grenzen: [
-      "Pauschale Umrechnung der Würfelfestigkeit auf den Zylinderwert.",
+      "Pauschale Umrechnung der Würfelfestigkeit (DIN 1045 alt) auf den Zylinderwert; Abschlag 3 N/mm² ohne Bauwerksprüfung als Lehransatz (vorläufig, F-Freigabe).",
       "Prüfwerte ohne statistische Auswertung einer Klasse zugeordnet.",
     ],
   },

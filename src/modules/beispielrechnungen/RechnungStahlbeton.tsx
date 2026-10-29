@@ -165,7 +165,7 @@ export default function RechnungStahlbeton({ a_s_req, a_s_min, bWidth, b_m, conc
                 {vorschlaege.map(v => (
                   <div key={v.d} className="p-2 bg-slate-50 rounded-lg border text-center">
                     <span className="block font-bold mb-1"><MdText text={v.label} /></span>
-                    <strong className={v.farbe}>{v.n} Ø {v.d}</strong> ({formatDeZahl(v.as, 2)} cm²)
+                    <strong className={v.farbe}>{formatDeWert(v.n)} Ø {formatDeWert(v.d)}</strong> ({formatDeZahl(v.as, 2)} cm²)
                     <span className="block text-[10px] text-slate-500 mt-1">Auslastung: {formatDeZahl((asMass / v.as) * 100, 0)} %</span>
                   </div>
                 ))}
