@@ -113,7 +113,8 @@ const quellA2: [string, number, number, number, number, number][] = [
   // id, Faktor GWP Datensatz/Quelle, AP, EP-Süßwasser, EP-Meer, EP-terrestrisch (Quell-EPD)
   ['o-1', 245 / 191, 0.216, 0.0189, 0.0698, 0.890],
   ['o-2', 1, 0.468, 0.0917, 0.194, 2.16],
-  ['o-3', 640 / 598.8, // Konsistenz 29.10.2026 (F-3): Konsolenwert Betonstahl 1120 → 640 1.711, 25.03e-3 * P_JE_PO4, 0.4093, 4.687],
+  // o-3: Konsistenz 29.10.2026 (F-3): Konsolenwert Betonstahl 1120 → 640
+  ['o-3', 640 / 598.8, 1.711, 25.03e-3 * P_JE_PO4, 0.4093, 4.687],
   ['o-4', 45.5 / 115, 0.815, 5.71e-4, 0.0869, 2.35],
   ['o-5', 680 / 665, 0.94, 7.01e-4, 0.24, 3.07],
   ['o-6', 110 / 176, 0.198, 4.82e-5, 0.0664, 0.729],

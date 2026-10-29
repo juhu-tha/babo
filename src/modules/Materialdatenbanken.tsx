@@ -124,7 +124,7 @@ const MOCK_MOCK_RECORDS: OekobaudatRecord[] = [
     manufacturer: inhalt.werte.oekobaudatBewehrungsstahl,
     unit: '1 t',
     gwp: GWP.betonstahl.gwp, // Konsistenz 29.10.: 1120 → 640 (ÖKOBAUDAT „Bewehrungsstahl (de)“, F-3)
-    penrt: 8100, // Lehrwert, mit 640/1120 aus 14 200 MJ/t skaliert (vorläufig)
+    penrt: 8100, // Lehrwert, mit 640/1120 aus 14 200 MJ/t skaliert (vorläufig)
     recycledContent: 85,
     wecobisSafety: [inhalt.werte.unbegrenztRecyclingfähig, 'Schwermetallfrei', inhalt.werte.dgnbVocKonform]
   },

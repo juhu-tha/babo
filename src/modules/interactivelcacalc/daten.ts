@@ -150,7 +150,7 @@ export const MATERIAL_DATABASE: MaterialDefinition[] = [
     gwpD: -150, // Lehrwert: Nettoschrott (0,95 − 0,85) · ca. 1,5 t CO₂-Äq./t (vorläufig, Normprüfung ausstehend)
     biogenicContent: 0,
     umiScore: 95,
-    penrt: 8100, // Lehrwert, mit dem GWP-Verhältnis 640/1120 aus dem früheren Konsolenwert 14 200 MJ/t skaliert (vorläufig)
+    penrt: 8100, // Lehrwert, mit dem GWP-Verhältnis 640/1120 aus dem früheren Konsolenwert 14 200 MJ/t skaliert (vorläufig)
     description: inhalt.werte.betonstahlBeschreibung,
     defaultCircularQuota: 95,
     substitutesPrimary: inhalt.werte.primärRohstahlHochofenRoute,

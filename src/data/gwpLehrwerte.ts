@@ -11,7 +11,7 @@
  *  - Betonstahl: ÖKOBAUDAT „Bewehrungsstahl (de)“ 0,642 kg CO₂-Äq./kg (belegt, T11-MO-3; überwiegend Elektrostahl).
  *  - Beton C25/30 mit CEM I: 245 kg/m³ wie bisher im LCA-Rechner, in der Konsole und in der EPD-Musterdatenbank
  *    (Größenordnung ≈ 300 kg Zement · 0,665 + Rest, src/data/zementGwp.ts). Lehrwert.
- *  - Weitere Betone, BSH, KVH: Lehrwerte (vorläufig, Normprüfung ausstehend). Der biogene Anteil folgt DIN EN 16449
+ *  - Weitere Betone, BSH, KVH: Lehrwerte (vorläufig, Normprüfung ausstehend; ÖKOBAUDAT-Abgleich offen). Der biogene Anteil folgt DIN EN 16449
  *    (KVH 500 kg/m³ bei u = 12 % → −818 kg CO₂, gerundet −820); BSH −760 wie bisher in Wandkonfigurator und QNG-Tabelle.
  * Für Nachweise gelten die Datensätze der ÖKOBAUDAT bzw. die Produkt-EPD.
  */
@@ -30,7 +30,7 @@ export interface GwpLehrwert {
   rohdichte: number;
   /** Herkunft */
   quelle: string;
-  /** true = Lehrwert ohne abgerufenen Datensatz (vorläufig, Normprüfung ausstehend) */
+  /** true = Lehrwert ohne abgerufenen ÖKOBAUDAT-Datensatz (vorläufig, Normprüfung ausstehend) */
   vorlaeufig: boolean;
 }
 

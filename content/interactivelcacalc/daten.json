@@ -26,7 +26,7 @@
     "baustahlProfilstahlBewehrung": "Baustahl (Profilstahl, Lehrwert)",
     "betonstahlB500Elektrostahl": "Betonstahl B500 (Bewehrung, ÖKOBAUDAT)",
     "betonstahlBeschreibung": "Betonstahl für die Bewehrung, in Deutschland überwiegend im Elektrolichtbogenofen aus Schrott erzeugt (ÖKOBAUDAT „Bewehrungsstahl (de)“ 0,64 kg CO₂-Äq./kg). Gut kreislauffähig; die Gutschrift in Modul D ist klein, weil bereits viel Schrott eingesetzt wird (Lehrwert, vorläufig).",
-    "konstruktionsstahlEnormerSpezifischerEne": "Konstruktionsstahl (Walzprofile), Lehrwert 1,1 kg CO₂-Äq./kg für überwiegend primär erzeugten Stahl (vorläufig, Normprüfung ausstehend). Hoher Energiebedarf bei der Herstellung, dafür sehr gut kreislauffähig (Gutschrift in Modul D). Für Bewehrung den Betonstahl wählen.",
+    "konstruktionsstahlEnormerSpezifischerEne": "Konstruktionsstahl (Walzprofile), Lehrwert 1,1 kg CO₂-Äq./kg für überwiegend primär erzeugten Stahl (vorläufig, Normprüfung ausstehend; kein ÖKOBAUDAT-Datensatz abgerufen). Hoher Energiebedarf bei der Herstellung, dafür sehr gut kreislauffähig (Gutschrift in Modul D). Für Bewehrung den Betonstahl wählen.",
     "primärRohstahlHochofenRoute": "Primär-Rohstahl (Hochofen-Route / Koks)",
     "konstruktionsvollholzNadelholz": "Konstruktionsvollholz (Nadelholz)",
     "nachwachsendHolzbau": "Nachwachsend (Holzbau)",

@@ -452,7 +452,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   lca_rechner: {
     kurz: "Vereinfachte Gebäude-Ökobilanz nach QNG-Bilanzregeln je m² NRF(R) und Jahr: A1–A3, B4, C3/C4, Sockel TGA und B6; A4 und Modul D getrennt; dazu Kreislaufkennzahlen, Wandaufbau-GWP und QNG-Abschätzung.",
     grenzen: [
-      "Lehrdatenbank mit 18 Baustoffen (Mittelwerte, keine Produkt-EPD; Beton, Holz und Betonstahl aus der gemeinsamen Lehrwerttabelle src/data/gwpLehrwerte.ts, Betonstahl 0,64 kg/kg nach ÖKOBAUDAT, Profilstahl 1,1 kg/kg Lehrwert); C3 und C4 zusammengefasst; Mengen sind vom Nutzer anzugeben, keine Mengenermittlung.",
+      "Lehrdatenbank mit 18 Baustoffen (Mittelwerte, keine Produkt-EPD; Betonstahl 0,64 kg/kg nach ÖKOBAUDAT, Profilstahl 1,1 kg/kg Lehrwert); C3 und C4 zusammengefasst; Mengen sind vom Nutzer anzugeben, keine Mengenermittlung.",
       "B4 mit n = ⌈50/ND⌉ − 1 und BNB-Nutzungsdauern des BBSR (Stand 2017, Fassung 24.02.2017); Zuordnungen für Hanfkalk, Stroh, Lehmplatten, Geopolymer und WDVS vorläufig; eine BNB-Neufassung ist nicht eingearbeitet.",
       "B6: Endenergie nach GEG ist einzugeben (keine Energiebilanz); Netzstrom 0,53203 kg/kWh nach QNG-Rechenwerten 2023 v1.3 (Wiedergabe in der Berichtsvorlage der Landeshauptstadt München, FKG 2024).",
       "QNG-PLUS 24 und QNG-PREMIUM 20 kg/(m²·a) (KfW 09/2025); Stand QNG-Handbuch Anlage 3 v1.4; die seit 12/2025 vorübergehend geringeren QNG-Anforderungen sind nicht abgebildet.",
