@@ -109,14 +109,16 @@ const ZAHL_FREI_RE = new RegExp(String.raw`(?<![\w.,/])([-−–]?(?:${ZAHL}))(?
 
 /** zwischen Größe und Zahl nur „=“, „≈“, „:“, „von“, „beträgt“ … (keine Bedingung ≤/≥, keine Formel f_ck + 8) */
 const NAH_ZWISCHEN = /^[\s}]*(?:\([^()]{0,25}\))?\s*(?:\$\s*)?(?:=|≈|:|von|beträgt|ist|mit|liegt bei|um)?\s*(?:ca\.|rund|etwa|≈|~|mind\.|max\.)?\s*(?:\$\s*)?$/;
-const SATZENDE = /(?:[.!?]\s+(?=[A-ZÄÖÜ„"(])|\n|<br\s*\/?>|\\n|;\s)/g;
+/** Satzende (ohne Abkürzungen wie „z. B.“, „ca.“, „Tab.“, „Gl.“) */
+const SATZENDE_QUELLE = String.raw`(?:(?<!\b(?:[A-Za-z]|ca|bzw|Tab|Gl|Abs|Nr|vgl|ggf|inkl|max|min|Abschn|Anh|Kap|Dr|Prof|etc|evtl|usw|Std|Mio|Mrd|Abb|Bsp|Aufl|Hrsg))[.!?]\s+(?=[A-ZÄÖÜ„"(])|\n|<br\s*\/?>|\\n|;\s)`;
+const SATZENDE = new RegExp(SATZENDE_QUELLE, 'g');
 function umgebung(text, start, ende, vor = 140, nach = 60) {
   let v = text.slice(Math.max(0, start - vor), start);
   let letzte = -1;
   for (const m of v.matchAll(SATZENDE)) letzte = m.index + m[0].length;
   if (letzte >= 0) v = v.slice(letzte);
   let n = text.slice(ende, ende + nach);
-  const e = n.search(/(?:[.!?]\s+(?=[A-ZÄÖÜ„"(])|\n|<br\s*\/?>|\\n|;\s)/);
+  const e = n.search(new RegExp(SATZENDE_QUELLE));
   if (e >= 0) n = n.slice(0, e);
   return { vor: v, nach: n };
 }
@@ -157,11 +159,13 @@ export async function ladeReferenzen() {
   }
   // Beton, Holz, Betonstahl je m³ bzw. t
   const L = gwp.GWP_LEHRWERTE;
-  const beton = (kennung, kontext, werte, konst) => add({ familie: 'gwp-m3', kennung, bezeichnung: `GWP ${kennung}`, konstante: konst, werte, klasse: 'gwp', bezug: ['m³'], kontext });
+  // Werte anderer Lebenszyklusmodule (C = 15, A4 = …) und pauschale Restanteile sind keine A1–A3-Werte des Betons
+  const NICHT_A1A3 = /(?:\b(?:A[45]|B\d|C\d?|C1\s*[–-]\s*C4|D)\s*[=:]|pauschal|Rest|übrigen?)\s*$/;
+  const beton = (kennung, kontext, werte, konst) => add({ familie: 'gwp-m3', kennung, bezeichnung: `GWP ${kennung}`, konstante: konst, werte, klasse: 'gwp', bezug: ['m³'], kontext, nichtDirektNach: NICHT_A1A3 });
   add({ familie: 'gwp-m3', kennung: 'Beton CEM I (C25/30, C30/37)', bezeichnung: 'GWP Beton CEM I', konstante: 'GWP_LEHRWERTE.betonC2530CemI / .betonC3037CemI',
-    werte: [L.betonC2530CemI.gwp, L.betonC3037CemI.gwp], klasse: 'gwp', bezug: ['m³'], kontext: CEM['CEM I'], auch: /C25\/30|C30\/37|Normalbeton|Lehrbeton|Standardbeton/ });
+    werte: [L.betonC2530CemI.gwp, L.betonC3037CemI.gwp], klasse: 'gwp', bezug: ['m³'], kontext: CEM['CEM I'], auch: /C25\/30|C30\/37|Normalbeton|Lehrbeton|Standardbeton/, nichtDirektNach: NICHT_A1A3 });
   beton('Beton CEM II/C-M', CEM['CEM II/C-M'], [L.betonC2530CemIICM.gwp], 'GWP_LEHRWERTE.betonC2530CemIICM');
-  beton('Beton CEM III/A', CEM['CEM III/A'], [L.betonCemIIIA.gwp], 'GWP_LEHRWERTE.betonCemIIIA');
+  beton('Beton CEM III/A (C25/30, C30/37)', CEM['CEM III/A'], [L.betonCemIIIA.gwp, L.betonC3037CemIII.gwp], 'GWP_LEHRWERTE.betonCemIIIA / .betonC3037CemIII');
   beton('Beton C30/37 CEM III', /CEM\s?III(?!\s?\/)/, [L.betonC3037CemIII.gwp], 'GWP_LEHRWERTE.betonC3037CemIII');
   beton('RC-Beton', /RC-Beton|Recyclingbeton|R-Beton/, [L.betonRcC2530.gwp], 'GWP_LEHRWERTE.betonRcC2530');
   beton('Geopolymerbeton', /Geopolymer/, [L.betonGeopolymer.gwp], 'GWP_LEHRWERTE.betonGeopolymer');
@@ -182,8 +186,10 @@ export async function ladeReferenzen() {
   tr('Lkw 40 t (Last- und Sattelzüge)', /Lkw|Sattelzug|Lastzug|Diesel-Lkw/i, A4['lkw-heavy'], 'lkw-heavy');
   tr('Lkw 7,5 t', /7,5\s*t|3,5\s*[–-]\s*7,5|leichte[rn]?\s+Lkw|Kleinlaster/i, A4['lkw-light'], 'lkw-light');
   tr('Bahn', /Bahn|Güterzug|Schiene|\bZug\b/i, A4.zug, 'zug');
-  add({ familie: 'qng', kennung: 'QNG-PLUS', bezeichnung: 'QNG-PLUS Wohngebäude', konstante: 'QNG_WG.plus', werte: [lca.QNG_WG.plus], klasse: 'gwp', bezug: ['m²a'], kontext: /QNG[-‑ ]?PLUS|PLUS/i });
-  add({ familie: 'qng', kennung: 'QNG-PREMIUM', bezeichnung: 'QNG-PREMIUM Wohngebäude', konstante: 'QNG_WG.premium', werte: [lca.QNG_WG.premium], klasse: 'gwp', bezug: ['m²a'], kontext: /PREMIUM/i });
+  // nur Anforderungswerte (≤ 24), nicht Kennwerte von Gebäuden
+  const QNG_GRENZE = /≤|<=|Grenzwert|Anforderungswert|höchstens|max\./;
+  add({ familie: 'qng', kennung: 'QNG-PLUS', bezeichnung: 'QNG-PLUS Wohngebäude', konstante: 'QNG_WG.plus', werte: [lca.QNG_WG.plus], klasse: 'gwp', bezug: ['m²a'], kontext: /QNG[-‑ ]?PLUS|PLUS/i, nah: QNG_GRENZE, nahGruppe: 'qng' });
+  add({ familie: 'qng', kennung: 'QNG-PREMIUM', bezeichnung: 'QNG-PREMIUM Wohngebäude', konstante: 'QNG_WG.premium', werte: [lca.QNG_WG.premium], klasse: 'gwp', bezug: ['m²a'], kontext: /PREMIUM/i, nah: QNG_GRENZE, nahGruppe: 'qng' });
   // Energieausweis: f_p und CO₂-Faktor je Energieträger
   const TRAEGER = { strom: /strom|Wärmepumpe|\bWP\b/i, gas_brennwert: /Erdgas|Gas/, oel_kessel: /Heizöl|Öl/, pellets: /Holz|Pellet|Biomasse/, fernwaerme: /Fernwärme|Nahwärme/ };
   const fp = {}, co2 = {};
@@ -261,6 +267,7 @@ export function pruefeKennwerte(text, referenzen, { code = false } = {}) {
       const key = r.familie;
       const alt = familien.get(key);
       if (r.ausser && r.ausser.test(u.vor + ' ' + u.nach)) continue;
+      if (r.nichtDirektNach && r.nichtDirektNach.test(u.vor.slice(-25))) continue;
       const rang = r.nah ? [-1 - (r._nahPos ?? 0), d] : [0, d];
       if (!alt || rang[0] < alt.rang[0] || (rang[0] === alt.rang[0] && rang[1] < alt.rang[1])) familien.set(key, { r, rang });
     }
@@ -305,7 +312,7 @@ function ausschnitt(t, a, b) {
 // ------------------------------------------------------------------------------------------------ (2) feste Faktoren
 
 const TRIVIAL = new Set([0, 1, 2, 3, 4, 0.5, 0.25, 0.1, 0.01, 0.001, 10, 100, 1000, 10000, 100000, 1e6, 1e9, 1e-3, 1e-6, 1e-9, 60, 24, 12, 365, 180, 360, 90, 3600, 1024]);
-const DARSTELLUNG = /className|style=|style:|viewBox|<svg|<path|<rect|<line|<circle|<text|<g\b|\b(?:x|y|x1|x2|y1|y2|cx|cy|r|rx|ry|dx|dy|d|points|transform|fill|stroke)=|width|height|Width|Height|padding|margin|offset|Offset|radius|Radius|stroke|font|Font|angle|Angle|rotate|scale\(|Scale|translate|opacity|Opacity|delay|duration|setTimeout|setInterval|animation|anim|px\b|\bleft\b|\btop\b|\bright\b|\bbottom\b|zoom|camera|position|Position|chart|Chart|canvas|ctx\.|pixel|Pixel|grid|Grid|tick|Tick|axis|Axis|layout|Layout|index|Index|\bidx\b|\bi\b\s*[*+]|length|\.slice|\.substr|padStart|toFixed|seed|random|Math\.PI|Math\.sin|Math\.cos|hue|rgb|hsl|color|Color|breite|hoehe|Breite|Hoehe|svg|Svg|SVG|plot|Plot|xScale|yScale|sx\(|sy\(|toX|toY|mapX|mapY|\bX\(|\bY\(|\bpx\(|\bpy\(|\b(?:max|min|suggestedMax|suggestedMin|step|stepSize|steps|samples)\s*:|\b(?:p?[xy]|p[xXyY]\w*|[xy][A-Z]\w*|[xy]\d|[xy]Pos|[xy]Target)\s*=|yTarget|xTarget/;
+const DARSTELLUNG = /className|style=|style:|viewBox|<svg|<path|<rect|<line|<circle|<text|<g\b|\b(?:x|y|x1|x2|y1|y2|cx|cy|r|rx|ry|dx|dy|d|points|transform|fill|stroke)=|width|height|Width|Height|padding|margin|offset|Offset|radius|Radius|stroke|font|Font|angle|Angle|rotate|scale\(|Scale|translate|opacity|Opacity|delay|duration|setTimeout|setInterval|animation|anim|px\b|\bleft\b|\btop\b|\bright\b|\bbottom\b|zoom|camera|position|Position|chart|Chart|canvas|ctx\.|pixel|Pixel|grid|Grid|tick|Tick|axis|Axis|layout|Layout|index|Index|\bidx\b|\bi\b\s*[*+]|length|\.slice|\.substr|padStart|toFixed|seed|random|Math\.PI|Math\.sin|Math\.cos|hue|rgb|hsl|color|Color|breite|hoehe|Breite|Hoehe|svg|Svg|SVG|plot|Plot|xScale|yScale|sx\(|sy\(|toX|toY|mapX|mapY|\bX\(|\bY\(|\bpx\(|\bpy\(|\b(?:max|min|suggestedMax|suggestedMin|step|stepSize|steps|samples)\s*:|\b(?:p?[xy]|p[xXyY]\w*|[xy][A-Z]\w*|[xy]\d|[xy]Pos|[xy]Target)\s*=|yTarget|xTarget|\b(?:max|min)[XY]\b|[mM]ax[XY]\b|suggested|marker|Marker/;
 
 /**
  * Quelltext auf Code reduzieren: Kommentare und Zeichenketten durch Leerzeichen ersetzen (Zeilen bleiben erhalten),
@@ -349,11 +356,14 @@ export function festeFaktoren(quelltext) {
     if (/^\s*(?:import|export\s+type|type|interface|for\s*\()/.test(z)) return;
     if (!/[*\/]/.test(z) || DARSTELLUNG.test(z)) return;
     z = z.replace(/Math\.round\(\s*([^()]*?)\s*\*\s*10+\s*\)\s*\/\s*10+/g, '$1').replace(/(?:\*|\/)\s*1e[-+]?\d+/g, '').replace(/<\/?[A-Za-z][^>]*\/?>|<\/?>/g, ' ');
+    const gesehen = new Set();
     for (const m of z.matchAll(/(?:[*\/]\s*\(?\s*(-?\d+(?:\.\d+)?(?:e[-+]?\d+)?)(?![\w.])|(?<![\w.$#\]])(-?\d+(?:\.\d+)?)(?=\s*\)?\s*[*\/](?![*\/>])))/g)) {
       const lit = m[1] ?? m[2];
       const v = Math.abs(Number(lit));
       if (!Number.isFinite(v) || TRIVIAL.has(v)) continue;
       if (Number.isInteger(v) && v <= 8) continue;
+      if (gesehen.has(lit)) continue;
+      gesehen.add(lit);
       const k = (kommentare[i] ?? '') + ' ' + ((roh[i - 1] ?? '').trim().startsWith('//') ? roh[i - 1] : '');
       aus.push({ zeile: i + 1, literal: lit, ausschnitt: roh[i].trim().slice(0, 140),
         kommentiert: /Quelle|Lehrwert|vorläufig|nach |DIN|EN |Tab\.|Gl\.|≈|Näherung|Annahme|Faktor|Umrechnung|kWh|kJ|Wh|MJ|kg|N\/mm|MPa|‰|%/i.test(k) });
@@ -458,7 +468,7 @@ export function modulZuordnung() {
   const reg = lies(path.join(ROOT, 'src/registry/modules.ts'));
   const gruppe = new Map([...reg.matchAll(/\{\s*id:\s*'([^']+)'[^\n]*?gruppe:\s*'([^']+)'/g)].map(m => [m[1], m[2]]));
   const pv = lies(path.join(ROOT, 'src/data/pruefvermerke.ts'));
-  const status = new Map([...pv.matchAll(/^\s+(\w+):\s*\{\s*status:\s*'(\w[\w-]*)'/gm)].map(m => [m[1], m[2]]));
+  const status = new Map([...pv.matchAll(/^\s+'?([\w-]+)'?:\s*\{\s*status:\s*'(\w[\w-]*)'/gm)].map(m => [m[1], m[2]]));
   const idInfo = new Map();
   const einheiten = [];
   const zaehler = new Map();
@@ -712,7 +722,7 @@ function gesamtBericht(erg) {
     `| (3) Verweise abweichend von der Normen-Registry | ${erg.registryAbw.length} |`,
     `| (3) Tabellen unter verschiedenen Normteilen | ${erg.teilZuordnung.size} |`, '');
   L.push('## Zentrale Konstanten im Abgleich', '');
-  const konst = [...new Set(erg.referenzen.map(r => r.konstante.replace(/\['[^']+'\]|\.[A-Za-z0-9_]+$/g, '')))];
+  const konst = [...new Set(erg.referenzen.flatMap(r => r.konstante.split(' / ').map(k => k.split(/[.[]/)[0]).filter(k => /^[A-Z]/.test(k))))];
   L.push(konst.map(code).join(', '), '');
   L.push('## Module', '', '| Bericht | Modul-IDs | Gruppe | Status | (1) abw. | (1) ohne Zuordn. | (2) Faktoren | (3) Hinweise |', '|---|---|---|---|---|---|---|---|');
   for (const e of E) {
