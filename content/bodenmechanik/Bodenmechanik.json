@@ -77,7 +77,7 @@
     "beispiel2AktiverErddruck": "Beispiel 2: Aktiver Erddruck auf eine Stützwand und Konsolidationssetzung",
     "beiEinseitigerEntwässerungVerdoppelt": "Bei einseitiger Entwässerung verdoppelt sich d und die Konsolidationszeit vervierfacht sich (etwa 6,8 Jahre) – Dränschichten oder Vertikaldräns verkürzen sie gezielt.",
     "din4085201708": "DIN 4085:2017-08 (Erddruck); DIN 4019:2015-05 (Setzungen); Terzaghi-Konsolidationstheorie",
-    "oktober2026Ap5": "Oktober 2026 (AP 5 Mechanik: Konsistenzgrenzen, Bodengruppen nach DIN 18196, Mohr-Coulomb, Rankine-Erddruck und Terzaghi-Konsolidation geprüft, Normausgaben aktualisiert; fachliche Freigabe durch den Autor ausstehend)"
+    "oktober2026Ap5": "Oktober 2026 (Konsistenzgrenzen, Bodengruppen nach DIN 18196, Mohr-Coulomb, Rankine-Erddruck und Terzaghi-Konsolidation geprüft, Normausgaben aktualisiert; fachliche Freigabe durch den Autor ausstehend)"
   },
   "daten": {
     "Bodenmechanik.schritte": [
@@ -154,7 +154,7 @@
       {
         "formel": "I_c = \\frac{w_L - w}{I_P}",
         "erklaerung": "Konsistenzzahl: I_c gibt die plastische Zustandsform bindiger Böden an (w_L = Fließgrenze, w = aktueller Wassergehalt, I_P = Plastizitätszahl).",
-        "quelle": "DIN EN ISO 17892-12; Zustandsformen nach DIN EN ISO 14688-2: < 0,25 breiig / 0,25–0,50 weich / 0,50–0,75 steif / 0,75–1,00 halbfest / > 1,00 fest (deutsche Bezeichnungen vorläufig, F-Freigabe; früher DIN 18122-1: breiig bis 0,5, weich bis 0,75, steif bis 1,0)"
+        "quelle": "DIN EN ISO 17892-12; Zustandsformen nach DIN EN ISO 14688-2: < 0,25 breiig / 0,25–0,50 weich / 0,50–0,75 steif / 0,75–1,00 halbfest / > 1,00 fest (deutsche Bezeichnungen vorläufig, Normprüfung ausstehend; früher DIN 18122-1: breiig bis 0,5, weich bis 0,75, steif bis 1,0)"
       },
       {
         "formel": "\\tau_f = c + \\sigma \\cdot \\tan(\\varphi)",
@@ -178,7 +178,7 @@
       },
       {
         "formel": "w_L = w_N \\cdot (N/25)^{0{,}121}",
-        "erklaerung": "Einpunktverfahren für die Fließgrenze aus einem Versuch mit N Schlägen (etwa 20 bis 30) – Exponent nach ASTM D4318, für DIN EN ISO 17892-12 vorläufig (F-Freigabe).",
+        "erklaerung": "Einpunktverfahren für die Fließgrenze aus einem Versuch mit N Schlägen (etwa 20 bis 30) – Exponent nach ASTM D4318, für DIN EN ISO 17892-12 vorläufig (Normprüfung ausstehend).",
         "quelle": "ASTM D4318, Verfahren B"
       },
       {

@@ -109,7 +109,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
 
   // Bereiche (Meta-Cluster der Menüführung), für die Fragen vorliegen; vor dem Laden alle Bereiche
   const bereiche = useMemo(() => {
-    const vorhanden = new Set(allQuestions.map(q => q.clusterId));
+    const vorhanden = new Set<string>(allQuestions.map(q => q.clusterId));
     const liste = META_CLUSTERS.filter(c => allQuestions.length === 0 || vorhanden.has(c.number));
     return liste.map(c => ({ id: c.number, name: `Cluster ${c.number}: ${c.name}`, desc: c.shortDesc }));
   }, [allQuestions]);
@@ -647,7 +647,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
                 <div>
                   <h4 className="text-sm font-bold text-text-main">Vollständiger Fragenkatalog</h4>
                   <p className="text-xs text-text-main/70 mt-1 leading-relaxed">
-                    Alle {allQuestions.length} Fachfragen des Pools, davon {anzahlFreigegeben(allQuestions)} fachlich freigegeben; ungeprüfte Fragen sind gekennzeichnet.
+                    Alle {allQuestions.length} Fachfragen des Pools, davon {formatDeWert(anzahlFreigegeben(allQuestions))} fachlich freigegeben; ungeprüfte Fragen sind gekennzeichnet.
                   </p>
                 </div>
               </button>

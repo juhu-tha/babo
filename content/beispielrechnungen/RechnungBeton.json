@@ -97,7 +97,7 @@
     "schritt3ErreichteDruckfestigkeiten": "**Schritt 3: Erreichte Druckfestigkeiten**",
     "ausschaleignungCenRichtwert": "Ausschalhinweis (Vergleich mit der Vorgabe der Tragwerksplanung)",
     "ausschalVorgabeLabel": "Vorgabe der Tragwerksplanung (% von f_ck):",
-    "ausschalVorgabeHinweis": "Voreinstellung 50 % von f_ck ist eine Lehrannahme (keine Normvorgabe; vorläufig, F-Freigabe). Maßgebend ist die Vorgabe der Tragwerksplanung.",
+    "ausschalVorgabeHinweis": "Voreinstellung 50 % von f_ck ist eine Lehrannahme (keine Normvorgabe; vorläufig, Normprüfung ausstehend). Maßgebend ist die Vorgabe der Tragwerksplanung.",
     "einAusschalenTragenderBauteile": " Vorgabe erreicht. Maßgebend für das Ausschalen bleiben die Freigabe durch die Tragwerksplanung und der Festigkeitsnachweis nach DIN EN 13670/DIN 1045-3.",
     "einAusschalenTragenderBauteile2": " Vorgabe noch nicht erreicht – tragende Bauteile erst nach Festigkeitsnachweis bzw. Freigabe durch die Tragwerksplanung ausschalen.",
     "derBetonHat": "Erreicht: f_ck(t) = ",

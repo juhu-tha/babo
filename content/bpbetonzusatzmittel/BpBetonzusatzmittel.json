@@ -77,7 +77,7 @@
     "sollMindestdosierungEingehalten0": "Soll-Mindestdosierung eingehalten (≥ 0,2 M.-%). Homogene Dispersion im Zementleim gesichert.",
     "fehlerHöchstdosierungNachDin": "Fehler: Höchstdosierung nach DIN EN 206 verletzt!",
     "dieDosierungVon": "Die Dosierung von ",
-    "istZuHochZusatzmittel": " ist zu hoch. Zusatzmittel dürfen nach Norm grundsätzlich **nicht über 5,0 M.-%** bezogen auf den Zementgehalt dosiert werden. Höhere Mengen sind nur zulässig, wenn der Einfluss auf Leistung und Dauerhaftigkeit des Betons nachgewiesen ist (Nachweis nach DIN EN 206/DIN 1045-2; Höchstdosierung nach DIN 1045-2:2023-08, 5.2.6 am Normtext zu prüfen – vorläufig, F-Freigabe).",
+    "istZuHochZusatzmittel": " ist zu hoch. Zusatzmittel dürfen nach Norm grundsätzlich **nicht über 5,0 M.-%** bezogen auf den Zementgehalt dosiert werden. Höhere Mengen sind nur zulässig, wenn der Einfluss auf Leistung und Dauerhaftigkeit des Betons nachgewiesen ist (Nachweis nach DIN EN 206/DIN 1045-2; Höchstdosierung nach DIN 1045-2:2023-08, 5.2.6 am Normtext zu prüfen – vorläufig, Normprüfung ausstehend).",
     "maximaldosierungNachDinEn": "Maximaldosierung nach DIN EN 206 unbedenklich (≤ 5,0 M.-%).",
     "fehlerUnzulässigeKorrosionsgefährdungSpa": "Fehler: Unzulässige Korrosionsgefährdung (Spannbeton)",
     "fürSpannbetonVorgespannteGlieder": "Für Spannbeton (vorgespannte Glieder) muss der Chloridgehalt von Zusatzmitteln **≤ 0,10 M.-%** betragen. Der eingegebene Wert von ",

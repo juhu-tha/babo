@@ -14,7 +14,7 @@
     "glasCharakteristischeBiegezugfestigkeitF": "); Glas: charakteristische Biegezugfestigkeit (Floatglas 45, ESG 120 N/mm²); Mauerwerk: Steindruckfestigkeitsklasse des Steins, nicht die Mauerwerksfestigkeit ",
     "gesteineDämmUndKunststoffe": "; Gesteine, Dämm- und Kunststoffe: typische Mittelwerte aus Herstellerangaben.",
     "steifigkeitUndDichteSind": "**Steifigkeit und Dichte** sind Mittelwerte (",
-    "einWärmedehnkoeffizientVon0": "). Ein Wärmedehnkoeffizient von 0 bei Faserdämmstoffen und VIP bedeutet „kein sinnvoller Kennwert“ (lose bzw. faserige Struktur), nicht „keine Wärmedehnung“. Wärmeleitfähigkeit der Mauersteine: Bemessungswerte nach DIN 4108-4, Tab. 1, für Mauerwerk mit Normal- oder Dünnbettmörtel (Kalksandstein Rohdichteklasse 1,8: 0,99 W/(mK); Mauerziegel 1,6: 0,68 W/(mK); 1,8: 0,81 W/(mK); vorläufig, F-Freigabe). Spezifische Wärmekapazität von Baustahl 450 J/(kgK) nach DIN EN ISO 10456. Für Nachweise sind stets die Werte der jeweiligen Produktnorm, Leistungserklärung bzw. Bemessungsnorm maßgebend.",
+    "einWärmedehnkoeffizientVon0": "). Ein Wärmedehnkoeffizient von 0 bei Faserdämmstoffen und VIP bedeutet „kein sinnvoller Kennwert“ (lose bzw. faserige Struktur), nicht „keine Wärmedehnung“. Wärmeleitfähigkeit der Mauersteine: Bemessungswerte nach DIN 4108-4, Tab. 1, für Mauerwerk mit Normal- oder Dünnbettmörtel (Kalksandstein Rohdichteklasse 1,8: 0,99 W/(mK); Mauerziegel 1,6: 0,68 W/(mK); 1,8: 0,81 W/(mK); vorläufig, Normprüfung ausstehend). Spezifische Wärmekapazität von Baustahl 450 J/(kgK) nach DIN EN ISO 10456. Für Nachweise sind stets die Werte der jeweiligen Produktnorm, Leistungserklärung bzw. Bemessungsnorm maßgebend.",
     "hintergrundEinordnungPhysikalischMechani": " Hintergrund & Einordnung (Physikalisch-mechanische Grundlagen)",
     "steifigkeitVsFestigkeit": "Steifigkeit vs. Festigkeit",
     "stahlHatEinenSehr": "Stahl hat einen sehr hohen E-Modul (210 000 MPa) und ist sehr fest, aber auch schwer. Holz ist leicht, hat parallel zur Faser aber nur etwa ein Zwanzigstel der Steifigkeit von Stahl (E₀,mean ≈ 11 000 MPa bei C24). Die Abstimmung dieser Eigenschaften entscheidet über Bauteilschlankheit und Durchbiegungsstufen.",
@@ -38,7 +38,7 @@
     "beispiel2SpezifischeSteifigkeit": "Beispiel 2: Spezifische Steifigkeit – warum Holz trotz kleinem E-Modul effizient ist",
     "bezogenAufDasGewicht": "Bezogen auf das Gewicht sind Stahl und Holz (in Faserrichtung) etwa gleich steif, Beton nur halb so steif. Das Netzdiagramm zeigt absolute Werte – für den Leichtbau zählt das Verhältnis.",
     "kennwerteDinEn1993": "Kennwerte: DIN EN 1993-1-1, DIN EN 338, DIN EN 1992-1-1",
-    "oktober2026Ap3": "Oktober 2026 (AP 3 Grundlagen: Kennwerte gegen DIN EN 1992-1-1, DIN EN 338, DIN EN 14080, DIN EN 1993-1-4 geprüft; fachliche Freigabe durch den Autor ausstehend)"
+    "oktober2026Ap3": "Oktober 2026 (Kennwerte gegen DIN EN 1992-1-1, DIN EN 338, DIN EN 14080, DIN EN 1993-1-4 geprüft; fachliche Freigabe durch den Autor ausstehend)"
   },
   "daten": {
     "Materialkennwerte.schritte": [

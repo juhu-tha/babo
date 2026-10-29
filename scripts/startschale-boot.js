@@ -16,10 +16,14 @@
       : (pfad === '/' || pfad === '/index.html') && (hash === '' || hash === 'start') ? 'start' : '';
     var ls = window.localStorage;
     var breite = ls.getItem('baustoffboard_screen_width');
+    // Dunkelmodus wie src/contexts/TabContext.tsx: eigene Wahl vor Systemeinstellung; früh setzen gegen Aufblitzen
+    var wahl = ls.getItem('theme');
+    var dunkel = wahl === 'dark' || (wahl !== 'light' && !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    if (dunkel) document.documentElement.classList.add('dark');
     if (adresse === seite
       && !/[?&]poll=/.test(location.search)
       && ls.getItem('baustoffboard_lang') !== 'en'
-      && ls.getItem('theme') !== 'dark'
+      && !dunkel
       && (breite === null ? ls.getItem('baustoffboard_fluid_width') === null : breite === 'wide')) {
       document.documentElement.classList.add('bb-schale');
     }

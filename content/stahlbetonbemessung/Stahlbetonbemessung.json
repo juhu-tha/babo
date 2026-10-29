@@ -143,11 +143,11 @@
         },
         {
           "formel": "l_{bd} = \\alpha_1 \\cdot \\alpha_4 \\cdot \\alpha_5 \\cdot l_{b,rqd} \\cdot \\frac{A_{s,erf}}{A_{s,vorh}} \\ge l_{b,min}",
-          "erklaerung": "Vereinfachte Form nach NA DE (vorläufig, F-Freigabe)\nα₁: Formbeiwert (0,7 für Haken/Winkel unter Zug)\nα₄: angeschweißte Querstäbe (0,7)\nα₅: 2/3 bei direkter Lagerung, sonst 1,0\nl_b,min: max(0,3 · α₁ · α₄ · l_b,rqd; 10 Ø) unter Zug (6,7 Ø bei direkter Lagerung), max(0,6 · l_b,rqd; 10 Ø) unter Druck; der Wert 100 mm der EN entfällt",
-          "quelle": "DIN EN 1992-1-1/NA, 8.4.4 (vorläufig, F-Freigabe)"
+          "erklaerung": "Vereinfachte Form nach NA DE (vorläufig, Normprüfung ausstehend)\nα₁: Formbeiwert (0,7 für Haken/Winkel unter Zug)\nα₄: angeschweißte Querstäbe (0,7)\nα₅: 2/3 bei direkter Lagerung, sonst 1,0\nl_b,min: max(0,3 · α₁ · α₄ · l_b,rqd; 10 Ø) unter Zug (6,7 Ø bei direkter Lagerung), max(0,6 · l_b,rqd; 10 Ø) unter Druck; der Wert 100 mm der EN entfällt",
+          "quelle": "DIN EN 1992-1-1/NA, 8.4.4 (vorläufig, Normprüfung ausstehend)"
         },
         {
-          "erklaerung": "Bemessungswert der Übergreifungslänge\nα₆: Beiwert für den Anteil gestoßener Stäbe nach NA DE Tab. 8.3DE (Zugstoß 1,0 bis 2,0 je nach Stoßanteil ≤ 33 % / > 33 %, Ø < 16 / ≥ 16 mm und Stoß- bzw. Randabstand; Druckstoß 1,0; vorläufig, F-Freigabe). Die EC2-Empfehlung 1,0 bis 1,5 gilt in Deutschland nicht.",
+          "erklaerung": "Bemessungswert der Übergreifungslänge\nα₆: Beiwert für den Anteil gestoßener Stäbe nach NA DE Tab. 8.3DE (Zugstoß 1,0 bis 2,0 je nach Stoßanteil ≤ 33 % / > 33 %, Ø < 16 / ≥ 16 mm und Stoß- bzw. Randabstand; Druckstoß 1,0; vorläufig, Normprüfung ausstehend). Die EC2-Empfehlung 1,0 bis 1,5 gilt in Deutschland nicht.",
           "formel": "l_0 = \\left(\\prod_{i=1}^6 \\alpha_i\\right) \\cdot l_{b,rqd} \\cdot \\frac{A_{s,erf}}{A_{s,vorh}} \\ge l_{0,min}"
         }
       ],

@@ -357,7 +357,7 @@ export function zugversuchStahl(e: ZugversuchEingabe): ZugversuchErgebnis {
     : yieldStrength >= A.fyk && ratio >= A.k && elongation >= A.euk / 10 ? 'B500A' : 'nicht';
   if (e.kraftRmKn < e.kraftReKn) h.push({ stufe: 'warnung', feld: 'steelForceUltimate', text: 'F_m < F_e: Die Höchstkraft liegt unter der Streckgrenzenkraft.' });
   h.push({ stufe: 'warnung', feld: 'elongation', text: 'A_gt = (L_m − L₀)/L₀ aus der Messlänge unter Höchstkraft (einschließlich elastischem Anteil). Die Bruchdehnung A nach dem Bruch ist größer und darf nicht mit den A_gt-Grenzen der DIN 488-1 verglichen werden. Einzelwert – die Norm bewertet charakteristische Werte aus Prüfserien.' });
-  if (einstufung === 'B500B' && yieldStrength > 1.3 * B.fyk) h.push({ stufe: 'warnung', feld: 'steelForceYield', text: 'R_e > 1,30·R_e,nenn: Die Obergrenze R_e,ist/R_e,nenn für B500B ist zu prüfen (vorläufig, F-Freigabe).' });
+  if (einstufung === 'B500B' && yieldStrength > 1.3 * B.fyk) h.push({ stufe: 'warnung', feld: 'steelForceYield', text: 'R_e > 1,30·R_e,nenn: Die Obergrenze R_e,ist/R_e,nenn für B500B ist zu prüfen (vorläufig, Normprüfung ausstehend).' });
   return { area, yieldStrength, ultimateStrength, ratio, elongation, yieldPassed: yieldStrength >= B.fyk, ratiosPassed: ratio >= B.k, elongationPassed: elongation >= B.euk / 10, einstufung, ...abschluss(h) };
 }
 

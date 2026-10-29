@@ -10,7 +10,7 @@
             "name": "Asphaltdeckschicht (SMA 8 S oder PA)",
             "thickness": 4,
             "material": "Splittmastixasphalt / Offenporig mit PmB 25/55-55 A",
-            "normRequirement": "PSV-Wert ≥ 51 (TL Gestein-StB; vorläufig, F-Freigabe) (hohe Griffigkeit), Hohlraumgehalt 3,0-4,5 Vol.-%",
+            "normRequirement": "PSV-Wert ≥ 51 (TL Gestein-StB; vorläufig, Normprüfung ausstehend) (hohe Griffigkeit), Hohlraumgehalt 3,0-4,5 Vol.-%",
             "bgClass": "bg-zinc-800 text-white",
             "borderColor": "border-zinc-900"
           },
@@ -18,7 +18,7 @@
             "name": "Asphaltbinderschicht (AC 16 BS)",
             "thickness": 8,
             "material": "Asphaltbinder mit PmB 25/55-55 A",
-            "normRequirement": "Dicke 8 cm (RStO 12/24, Tafel 1, Zeile 1; vorläufig, F-Freigabe)",
+            "normRequirement": "Dicke 8 cm (RStO 12/24, Tafel 1, Zeile 1; vorläufig, Normprüfung ausstehend)",
             "bgClass": "bg-zinc-700 text-zinc-100",
             "borderColor": "border-zinc-800"
           },
@@ -26,7 +26,7 @@
             "name": "Asphalttragschicht (AC 32 TS)",
             "thickness": 22,
             "material": "Straßenbaubitumen 50/70 oder PmB",
-            "normRequirement": "Dicke 22 cm (RStO 12/24, Tafel 1, Zeile 1; vorläufig, F-Freigabe); Bindergehalt ≥ 4,2 M.-%",
+            "normRequirement": "Dicke 22 cm (RStO 12/24, Tafel 1, Zeile 1; vorläufig, Normprüfung ausstehend); Bindergehalt ≥ 4,2 M.-%",
             "bgClass": "bg-zinc-600 text-zinc-200",
             "borderColor": "border-zinc-700"
           },
@@ -49,7 +49,7 @@
             "name": "Asphaltdeckschicht (SMA 11 S oder AC 11 D S)",
             "thickness": 4,
             "material": "Splittmastix- / Beton-Asphalt mit PmB oder 50/70",
-            "normRequirement": "PSV-Wert ≥ 51 (TL Gestein-StB; vorläufig, F-Freigabe), Einbaudicke ca. 4 cm nach ZTV Asphalt-StB",
+            "normRequirement": "PSV-Wert ≥ 51 (TL Gestein-StB; vorläufig, Normprüfung ausstehend), Einbaudicke ca. 4 cm nach ZTV Asphalt-StB",
             "bgClass": "bg-zinc-800 text-white",
             "borderColor": "border-zinc-900"
           },
@@ -57,7 +57,7 @@
             "name": "Asphaltbinderschicht (AC 16 BS)",
             "thickness": 8,
             "material": "Asphaltbinder mit 50/70 oder PmB",
-            "normRequirement": "Dicke 8 cm (RStO 12/24, Tafel 1, Zeile 1; vorläufig, F-Freigabe)",
+            "normRequirement": "Dicke 8 cm (RStO 12/24, Tafel 1, Zeile 1; vorläufig, Normprüfung ausstehend)",
             "bgClass": "bg-zinc-700 text-zinc-100",
             "borderColor": "border-zinc-800"
           },
@@ -65,7 +65,7 @@
             "name": "Asphalttragschicht (AC 22 TS)",
             "thickness": 18,
             "material": "Straßenbaubitumen 50/70",
-            "normRequirement": "Dicke 18 cm (RStO 12/24, Tafel 1, Zeile 1; vorläufig, F-Freigabe); Bindergehalt ≥ 4,3 M.-%, Verdichtungsgrad ≥ 98,0%",
+            "normRequirement": "Dicke 18 cm (RStO 12/24, Tafel 1, Zeile 1; vorläufig, Normprüfung ausstehend); Bindergehalt ≥ 4,3 M.-%, Verdichtungsgrad ≥ 98,0%",
             "bgClass": "bg-zinc-600 text-zinc-200",
             "borderColor": "border-zinc-700"
           },
@@ -88,7 +88,7 @@
             "name": "Asphaltdeckschicht (AC 11 D S / SMA 8)",
             "thickness": 4,
             "material": "Asphaltbeton / SMA mit 50/70",
-            "normRequirement": "Gute Verschleißfestigkeit, PSV-Wert ≥ 48 (TL Gestein-StB; vorläufig, F-Freigabe)",
+            "normRequirement": "Gute Verschleißfestigkeit, PSV-Wert ≥ 48 (TL Gestein-StB; vorläufig, Normprüfung ausstehend)",
             "bgClass": "bg-zinc-800 text-white",
             "borderColor": "border-zinc-900"
           },
@@ -96,7 +96,7 @@
             "name": "Asphaltbinderschicht (AC 16 BS)",
             "thickness": 8,
             "material": "Binder mit Straßenbaubitumen 50/70",
-            "normRequirement": "Dicke 8 cm (RStO 12/24, Tafel 1, Zeile 1; vorläufig, F-Freigabe)",
+            "normRequirement": "Dicke 8 cm (RStO 12/24, Tafel 1, Zeile 1; vorläufig, Normprüfung ausstehend)",
             "bgClass": "bg-zinc-700 text-zinc-100",
             "borderColor": "border-zinc-800"
           },
@@ -104,7 +104,7 @@
             "name": "Asphalttragschicht (AC 22 TS)",
             "thickness": 14,
             "material": "Bitumen 50/70 oder 70/100",
-            "normRequirement": "Dicke 14 cm (RStO 12/24, Tafel 1, Zeile 1; vorläufig, F-Freigabe); Bindergehalt ≥ 4,3 M.-%",
+            "normRequirement": "Dicke 14 cm (RStO 12/24, Tafel 1, Zeile 1; vorläufig, Normprüfung ausstehend); Bindergehalt ≥ 4,3 M.-%",
             "bgClass": "bg-zinc-600 text-zinc-200",
             "borderColor": "border-zinc-700"
           },
@@ -135,7 +135,7 @@
             "name": "Asphaltbinderschicht (AC 16 BS)",
             "thickness": 6,
             "material": "Binder mit Straßenbaubitumen 50/70 oder 70/100",
-            "normRequirement": "Dicke 6 cm (RStO 12/24, Tafel 1, Zeile 1; vorläufig, F-Freigabe)",
+            "normRequirement": "Dicke 6 cm (RStO 12/24, Tafel 1, Zeile 1; vorläufig, Normprüfung ausstehend)",
             "bgClass": "bg-zinc-700 text-zinc-100",
             "borderColor": "border-zinc-800"
           },
@@ -143,7 +143,7 @@
             "name": "Asphalttragschicht (AC 22 TS)",
             "thickness": 12,
             "material": "Straßenbaubitumen 70/100",
-            "normRequirement": "Dicke 12 cm (RStO 12/24, Tafel 1, Zeile 1; vorläufig, F-Freigabe); Verdichtungsgrad ≥ 97,0%",
+            "normRequirement": "Dicke 12 cm (RStO 12/24, Tafel 1, Zeile 1; vorläufig, Normprüfung ausstehend); Verdichtungsgrad ≥ 97,0%",
             "bgClass": "bg-zinc-600 text-zinc-200",
             "borderColor": "border-zinc-700"
           },
@@ -174,7 +174,7 @@
             "name": "Asphaltbinderschicht (AC 16 BS)",
             "thickness": 6,
             "material": "Binder mit Straßenbaubitumen 50/70 oder 70/100",
-            "normRequirement": "Dicke 6 cm (RStO 12/24, Tafel 1, Zeile 1; vorläufig, F-Freigabe)",
+            "normRequirement": "Dicke 6 cm (RStO 12/24, Tafel 1, Zeile 1; vorläufig, Normprüfung ausstehend)",
             "bgClass": "bg-zinc-700 text-zinc-100",
             "borderColor": "border-zinc-800"
           },
@@ -182,7 +182,7 @@
             "name": "Asphalttragschicht (AC 22 TS)",
             "thickness": 10,
             "material": "Straßenbaubitumen 70/100",
-            "normRequirement": "Dicke 10 cm (RStO 12/24, Tafel 1, Zeile 1; vorläufig, F-Freigabe); Verdichtungsgrad ≥ 97,0%",
+            "normRequirement": "Dicke 10 cm (RStO 12/24, Tafel 1, Zeile 1; vorläufig, Normprüfung ausstehend); Verdichtungsgrad ≥ 97,0%",
             "bgClass": "bg-zinc-600 text-zinc-200",
             "borderColor": "border-zinc-700"
           },
@@ -205,7 +205,7 @@
             "name": "Asphaltdeckschicht (AC 8 N oder AC 11 N)",
             "thickness": 4,
             "material": "Asphaltbeton mit weicherem Bitumen 70/100",
-            "normRequirement": "Dichtheit gegen Sauerstoff/Wasser, PSV ≥ 45 (TL Gestein-StB; vorläufig, F-Freigabe) ausreichend",
+            "normRequirement": "Dichtheit gegen Sauerstoff/Wasser, PSV ≥ 45 (TL Gestein-StB; vorläufig, Normprüfung ausstehend) ausreichend",
             "bgClass": "bg-zinc-800 text-white",
             "borderColor": "border-zinc-900"
           },
@@ -213,7 +213,7 @@
             "name": "Asphalttragschicht (AC 22 TN)",
             "thickness": 14,
             "material": "Straßenbaubitumen 70/100",
-            "normRequirement": "Dicke 14 cm (RStO 12/24, Tafel 1, Zeile 1; vorläufig, F-Freigabe); Verdichtungsgrad ≥ 97,0%, Bindergehalt ≥ 4,3 M.-%",
+            "normRequirement": "Dicke 14 cm (RStO 12/24, Tafel 1, Zeile 1; vorläufig, Normprüfung ausstehend); Verdichtungsgrad ≥ 97,0%, Bindergehalt ≥ 4,3 M.-%",
             "bgClass": "bg-zinc-600 text-zinc-200",
             "borderColor": "border-zinc-700"
           },
@@ -245,7 +245,7 @@
             "thickness": 10,
             "material": "Bitumen 70/100",
             "bgClass": "bg-zinc-600 text-zinc-200",
-            "normRequirement": "Dicke 10 cm (RStO 12/24, Tafel 1, Zeile 1; vorläufig, F-Freigabe); Anforderungen nach TL/ZTV Asphalt-StB",
+            "normRequirement": "Dicke 10 cm (RStO 12/24, Tafel 1, Zeile 1; vorläufig, Normprüfung ausstehend); Anforderungen nach TL/ZTV Asphalt-StB",
             "borderColor": "border-zinc-700"
           },
           {
@@ -269,7 +269,7 @@
             "name": "Betondecke (ZTV Beton-StB) mit Dübeln",
             "thickness": 27,
             "material": "Beton C30/37 mit hohem Frost-Tausalz-Widerstand (XM2/XF4)",
-            "normRequirement": "Verschleißwiderstand, Gestein mit hohem PSV-Wert, Dübel in Quer- und Anker in Längsscheinfugen; Deckendicke 27 cm (RStO 12/24, Tafel 2, Zeile 1; vorläufig, F-Freigabe)",
+            "normRequirement": "Verschleißwiderstand, Gestein mit hohem PSV-Wert, Dübel in Quer- und Anker in Längsscheinfugen; Deckendicke 27 cm (RStO 12/24, Tafel 2, Zeile 1; vorläufig, Normprüfung ausstehend)",
             "bgClass": "bg-slate-300 text-slate-800",
             "borderColor": "border-home-grau/30"
           },
@@ -308,7 +308,7 @@
             "name": "Betondecke (bewehrt / verdübelt)",
             "thickness": 26,
             "material": "Fahrbahndeckenbeton C30/37 (Kornklasse 0/22)",
-            "normRequirement": "Festigkeitsklasse und Oberfläche nach ZTV Beton-StB (z. B. Waschbeton für Griffigkeit und Lärmminderung); Deckendicke 26 cm (RStO 12/24, Tafel 2, Zeile 1; vorläufig, F-Freigabe)",
+            "normRequirement": "Festigkeitsklasse und Oberfläche nach ZTV Beton-StB (z. B. Waschbeton für Griffigkeit und Lärmminderung); Deckendicke 26 cm (RStO 12/24, Tafel 2, Zeile 1; vorläufig, Normprüfung ausstehend)",
             "bgClass": "bg-slate-300 text-slate-800",
             "borderColor": "border-home-grau/30"
           },

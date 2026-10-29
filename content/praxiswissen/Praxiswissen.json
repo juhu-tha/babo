@@ -63,7 +63,7 @@
     "beispiel2LohnkostenEiner": "Beispiel 2: Lohnkosten einer Mauerwerksleistung",
     "aufwandswerteUndMittellohnStammen": "Aufwandswerte und Mittellohn stammen aus eigenen Nachkalkulationen; der Vergleich von Soll- und Ist-Stunden im Bautagebuch zeigt früh, ob ein Los aus dem Ruder läuft.",
     "baubetrieblicheKalkulationLehrbeispiel": "Baubetriebliche Kalkulation; Lehrbeispiel",
-    "oktober2026Ap15": "Oktober 2026 (AP 15 Praxiswissen: Normbezüge (DIN 1045-2/-3:2023-08, DIN EN 206, EN 12390-2, DIN 18014, HOAI 2021, VOB/B 2016), Bauvertragsrecht und Qualifikationen geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "oktober2026Ap15": "Oktober 2026 (Normbezüge (DIN 1045-2/-3:2023-08, DIN EN 206, EN 12390-2, DIN 18014, HOAI 2021, VOB/B 2016), Bauvertragsrecht und Qualifikationen geprüft; fachliche Freigabe durch den Autor ausstehend)",
     "leistungsbildHoai": "Leistungsbild HOAI",
     "vobBVergabeUnd": "VOB/B - Vergabe- und Vertragsordnung",
     "bereichePraxiswissen": "Bereiche Praxiswissen Bau"
@@ -469,7 +469,7 @@
             "title": "Substitutionsraten von Recycling-Baustoffen (RC-Splitt)",
             "description": "Strikte Einhaltung der maximal zulässigen Substitutionsraten bei der Zumischung von rezyklierten Gesteinskörnungen (Typ 1 und Typ 2 nach DIN 1045-2:2023-08, Anhang E) zur Einhaltung der Betoneigenschaften.",
             "standard": "DIN 1045-2:2023-08, Anhang E (ersetzt die DAfStb-Richtlinie 2010)",
-            "tip": "Die zulässigen Anteile rezyklierter Gesteinskörnung > 2 mm hängen von Typ, Expositions- und Feuchtigkeitsklasse ab (nach DIN 1045-2:2023-08, Anhang E, für Typ 1 etwa 25 bis 45 Vol.-%, für Typ 2 etwa 20 bis 35 Vol.-%; in XA2, XA3 und XM nicht zulässig; vorläufig, F-Freigabe). Die maßgebende Tabelle der geltenden Regel prüfen; die Erstprüfung bleibt erforderlich."
+            "tip": "Die zulässigen Anteile rezyklierter Gesteinskörnung > 2 mm hängen von Typ, Expositions- und Feuchtigkeitsklasse ab (nach DIN 1045-2:2023-08, Anhang E, für Typ 1 etwa 25 bis 45 Vol.-%, für Typ 2 etwa 20 bis 35 Vol.-%; in XA2, XA3 und XM nicht zulässig; vorläufig, Normprüfung ausstehend). Die maßgebende Tabelle der geltenden Regel prüfen; die Erstprüfung bleibt erforderlich."
           },
           {
             "id": "pr_bta_4",
@@ -652,7 +652,7 @@
       },
       {
         "titel": "Übergreifung",
-        "erklaerung": "Stoßanteil über 33 % (hier alle Stäbe in einem Schnitt), Ø < 16 mm: α_6 = 1,4 nach NA DE, Tab. 8.3DE (vorläufig, F-Freigabe; übrige Beiwerte 1,0):",
+        "erklaerung": "Stoßanteil über 33 % (hier alle Stäbe in einem Schnitt), Ø < 16 mm: α_6 = 1,4 nach NA DE, Tab. 8.3DE (vorläufig, Normprüfung ausstehend; übrige Beiwerte 1,0):",
         "formel": "l_0 = 1{,}4 \\cdot 483 = 677\\,\\text{mm}"
       }
     ],

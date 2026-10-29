@@ -27,7 +27,7 @@
     "c2100JKg": "c = 2100 J/(kg·K)",
     "fichtenholzMassivholz": "Fichtenholz / Massivholz",
     "c1600JKg": "c = 1600 J/(kg·K)",
-    "cWerteLehrwerte": "Lehrwerte; Abgleich mit DIN EN ISO 10456 Tab. 3 bzw. DIN 4108-4 ausstehend (vorläufig, F-Freigabe).",
+    "cWerteLehrwerte": "Lehrwerte; Abgleich mit DIN EN ISO 10456 Tab. 3 bzw. DIN 4108-4 ausstehend (vorläufig, Normprüfung ausstehend).",
     "normalbetonStahlbeton": "Normalbeton (Stahlbeton)",
     "c1000JKg": "c = 1000 J/(kg·K)",
     "ziegelmauerwerkHlzMz": "Ziegelmauerwerk (HLZ / MZ)",
@@ -125,7 +125,7 @@
     "beispiel2NachhallzeitEines": "Beispiel 2: Nachhallzeit eines Klassenraums nach Sabine",
     "eineVollflächigeAkustikdeckeSenkt": "Eine vollflächige Akustikdecke senkt die Nachhallzeit auf rund ein Sechstel. Personen und Möblierung bringen zusätzliche Absorption; für tiefe Frequenzen sind oft zusätzliche Absorber an der Rückwand nötig.",
     "din18041201603": "DIN 18041:2016-03 (Gruppe A, Nutzungsart A3)",
-    "oktober2026Ap6": "Oktober 2026 (AP 6 Bauphysik: Diffusionsleitkoeffizient korrigiert, Magnus über Eis, f_Rsi mit R_si = 0,25, T_soll nach DIN 18041 volumenabhängig, GEG → GModG; fachliche Freigabe durch den Autor ausstehend)",
+    "oktober2026Ap6": "Oktober 2026 (Diffusionsleitkoeffizient korrigiert, Magnus über Eis, f_Rsi mit R_si = 0,25, T_soll nach DIN 18041 volumenabhängig, GEG → GModG; fachliche Freigabe durch den Autor ausstehend)",
     "reiterBereiche": "Bereiche des Moduls Bauphysik"
   },
   "daten": {

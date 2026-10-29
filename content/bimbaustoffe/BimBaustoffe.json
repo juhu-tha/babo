@@ -61,7 +61,7 @@
     "beispiel2UWert": "Beispiel 2: U-Wert eines mehrschichtigen Bauteils aus den Materialattributen",
     "gehörtAlsBemessungswertIn": "λ gehört als Bemessungswert in die Material-Property ThermalConductivity (Pset_MaterialThermal); ohne gepflegte Attribute ist eine automatische Auswertung nicht möglich.",
     "dinEnIso6946": "DIN EN ISO 6946:2018-03; IFC 4.3",
-    "oktober2026Ap13": "Oktober 2026 (AP 13 Digitales: IFC-Property-Sets (Pset_MaterialCommon, YoungModulus, keine Fantasie-Psets), Normausgaben und Literatur geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "oktober2026Ap13": "Oktober 2026 (IFC-Property-Sets (Pset_MaterialCommon, YoungModulus, keine Fantasie-Psets), Normausgaben und Literatur geprüft; fachliche Freigabe durch den Autor ausstehend)",
     "buildingInformationModeling": "Building Information Modeling",
     "industryFoundationClasses": "Industry Foundation Classes"
   },

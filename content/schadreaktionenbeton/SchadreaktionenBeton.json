@@ -1,6 +1,6 @@
 {
   "texte": {
-    "mikrostrukturelleSimulationDerAlkali": "**Mikrostrukturelle Simulation der Alkali-Kieselsäure-Reaktion (AKR / „Betonkrebs“):** Alkalilösliche Kieselsäure ($\\text{SiO}_2$) aus empfindlichen Gesteinskörnern (Opalsandstein, reaktiver Flint) reagiert mit Alkalihydroxiden ($\\text{Na}^+, \\text{K}^+, \\text{OH}^-$) aus dem Zement und externen Tausalzen. Das gebildete Alkali-Kieselsäure-Gel nimmt Feuchtigkeit auf und quillt enorm. Sobald der osmotische Quelldruck die Betonzugfestigkeit ($f_{\\text{ctm}} \\approx 3{,}0\\text{ MPa}$) übersteigt, entstehen charakteristische **Drei-Sterne-Radialrisse** und das typische netzartige Oberflächenrissmuster. *Lehrmodell, vorläufig, F-Freigabe:* Auslöseschwelle (Na₂O-Äq. > 0,60 M.-%, NA-Grenze für CEM I), Faktoren für Gesteinskörnung und Feuchtigkeitsklasse, Gel-Druck, Rissweite und Dehnung sind schematisch und nicht aus der Alkali-Richtlinie abgeleitet. Die Richtlinie legt Maßnahmen je Alkaliempfindlichkeitsklasse, Zementgehalt und Feuchtigkeitsklasse fest (Reiter „Alkalitreiben (AKR)“); für andere Zementarten gelten höhere NA-Grenzen (DIN 1164-10).",
+    "mikrostrukturelleSimulationDerAlkali": "**Mikrostrukturelle Simulation der Alkali-Kieselsäure-Reaktion (AKR / „Betonkrebs“):** Alkalilösliche Kieselsäure ($\\text{SiO}_2$) aus empfindlichen Gesteinskörnern (Opalsandstein, reaktiver Flint) reagiert mit Alkalihydroxiden ($\\text{Na}^+, \\text{K}^+, \\text{OH}^-$) aus dem Zement und externen Tausalzen. Das gebildete Alkali-Kieselsäure-Gel nimmt Feuchtigkeit auf und quillt enorm. Sobald der osmotische Quelldruck die Betonzugfestigkeit ($f_{\\text{ctm}} \\approx 3{,}0\\text{ MPa}$) übersteigt, entstehen charakteristische **Drei-Sterne-Radialrisse** und das typische netzartige Oberflächenrissmuster. *Lehrmodell, vorläufig, Normprüfung ausstehend:* Auslöseschwelle (Na₂O-Äq. > 0,60 M.-%, NA-Grenze für CEM I), Faktoren für Gesteinskörnung und Feuchtigkeitsklasse, Gel-Druck, Rissweite und Dehnung sind schematisch und nicht aus der Alkali-Richtlinie abgeleitet. Die Richtlinie legt Maßnahmen je Alkaliempfindlichkeitsklasse, Zementgehalt und Feuchtigkeitsklasse fest (Reiter „Alkalitreiben (AKR)“); für andere Zementarten gelten höhere NA-Grenzen (DIN 1164-10).",
     "t1Reaktionsbedingungen": " 1. Reaktionsbedingungen",
     "alkaligehaltNaOÄquivalent": "Alkaligehalt (Na₂O-Äquivalent):",
     "naGrenze060": "NA-Grenze CEM I: 0,60 %",
@@ -27,7 +27,7 @@
     "schematischeDarstellungSulfattreiben": "Schematische Darstellung: Sulfattreiben",
     "sulfationenReagierenMitC3a": "Sulfationen reagieren mit C3A aus dem Zement zu Ettringit. Diese Kristallbildung ist mit einer starken Volumenzunahme verbunden und sprengt das Gefüge.",
     "bewertungExpositionsklasse": "Bewertung & Expositionsklasse",
-    "akrSimAlkalizufuhrHinweis": "*Lehrmodell, vorläufig, F-Freigabe:* Die Simulation berücksichtigt nur die Alkalien aus dem Zement. In WA und WS kommen Alkalien von außen hinzu (Tausalz); nach der Alkali-Richtlinie genügt dann ein NA-Zement nicht in jedem Fall (z. B. E III-O in WA: Austausch der Gesteinskörnung). Maßgebend ist die Maßnahmentabelle (Reiter „Alkalitreiben (AKR)“)."
+    "akrSimAlkalizufuhrHinweis": "*Lehrmodell, vorläufig, Normprüfung ausstehend:* Die Simulation berücksichtigt nur die Alkalien aus dem Zement. In WA und WS kommen Alkalien von außen hinzu (Tausalz); nach der Alkali-Richtlinie genügt dann ein NA-Zement nicht in jedem Fall (z. B. E III-O in WA: Austausch der Gesteinskörnung). Maßgebend ist die Maßnahmentabelle (Reiter „Alkalitreiben (AKR)“)."
   },
   "werte": {
     "keineAkrDauerhaft": "Keine AKR (Dauerhaft)",
@@ -80,7 +80,7 @@
     "beispiel2KritischerSättigungsgrad": "Beispiel 2: Kritischer Sättigungsgrad bei Frost",
     "deshalbFordertDin1045": "Deshalb fordert DIN 1045-2 bei XF2 bis XF4 (bzw. alternativ sehr dichten Beton bei XF3) Luftporenbildner mit einem Abstandsfaktor der Poren unter etwa 0,20 mm.",
     "powers1949Din1045": "Powers (1949); DIN 1045-2:2023-08",
-    "oktober2026Ap10": "Oktober 2026 (AP 10 Dauerhaftigkeit: AKR-Klassen nach Alkali-Richtlinie, Sulfat- und Frostangriff, Normausgaben geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "oktober2026Ap10": "Oktober 2026 (AKR-Klassen nach Alkali-Richtlinie, Sulfat- und Frostangriff, Normausgaben geprüft; fachliche Freigabe durch den Autor ausstehend)",
     "keineAkrAusZementalkalien": "Keine AKR aus Zementalkalien (Lehrmodell)"
   },
   "daten": {

@@ -127,7 +127,7 @@ export function fcdBeton(fck: number, opt: FcdOptionen = {}): number {
 export function fcdHochfestHinweis(fck: number): string | null {
   if (!FCD_HOCHFEST_AKTIV || !(fck >= 55)) return null;
   const f = hochfestFaktor(fck).toFixed(3).replace('.', ',');
-  return `Hochfester Beton (≥ C55/67): f_cd zusätzlich mit (1,1 − f_ck/500) = ${f} abgemindert (γ_c' = 1/(1,1 − f_ck/500); vorläufig, F-Freigabe).`;
+  return `Hochfester Beton (≥ C55/67): f_cd zusätzlich mit (1,1 − f_ck/500) = ${f} abgemindert (γ_c' = 1/(1,1 − f_ck/500); vorläufig, Normprüfung ausstehend).`;
 }
 
 /**

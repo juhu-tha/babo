@@ -25,7 +25,7 @@ const STAHLBETON: RechnerGrenzen = {
     'Durchstanzen: konstantes β nach NA DE 6.4.3(6) (1,10/1,40/1,50; unverschiebliche Systeme, Stützweiten ±25 %), keine genauere β-Ermittlung; keine Öffnungen, keine Bodenpressung, ohne erhöhte κ_sw der ersten Reihen.',
     'Durchstanzen: Rand-/Eckstützen mit u₁ nach EC2 Bild 6.15 (Rand parallel zu c_x; Ecke mit gleichem Abstand zu beiden Rändern; runde Stützen sinngemäß); u₀ nach 6.4.5(3) nur Anzeige.',
     'Querkraft/Verankerung: ρ_w,min = 0,16·f_ctm/f_yk nach NA DE Gl. (9.5aDE); gegliederte Querschnitte mit vorgespanntem Zuggurt (9.5bDE) sind nicht abgebildet.',
-    'Verankerung: NA-Form l_bd = α₁·α₄·α₅·l_b,rqd·A_s,erf/A_s,vorh, α₅ = 2/3 bei direkter Lagerung, Mindestwerte ohne 100 mm; α₆ nach NA DE Tab. 8.3DE; l₀,min nach (8.11) (vorläufig, F-Freigabe).',
+    'Verankerung: NA-Form l_bd = α₁·α₄·α₅·l_b,rqd·A_s,erf/A_s,vorh, α₅ = 2/3 bei direkter Lagerung, Mindestwerte ohne 100 mm; α₆ nach NA DE Tab. 8.3DE; l₀,min nach (8.11) (vorläufig, Normprüfung ausstehend).',
     'Rissbreite: direkte Berechnung mit einer Bewehrungslage; bei Stababständen > 5·(c + φ/2) gilt 7.3.4(4) (nur Hinweis).',
     'σ-ε-Linien: Parabel-Rechteck und Gl. (3.14) mit den Parametern der Tab. 3.1 bis C90/105 (darüber auf C90/105 gehalten); Betonstahl B500 bilinear mit E_s = 200 000 N/mm² und ε_ud = 25 ‰ (NA DE).',
   ],
@@ -39,7 +39,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   labor_druckfestigkeit: {"kurz": "Würfeldruckfestigkeit aus Höchstkraft und gemessener Fläche, Umrechnung trocken gelagerter Würfel und vereinfachte Klassenzuordnung.", "grenzen": ["Klassenzuordnung als Lehrvereinfachung nach den Kriterien der Erstherstellung (n = 3); keine Konformitätskontrolle einer Produktion.", "Umrechnungsfaktor 0,92 bzw. 0,95 nach dem gemessenen Mittelwert gewählt statt nach der festgelegten Klasse.", "Nur Normalbeton und Würfel; Zylinder, Bohrkerne, Leicht- und Schwerbeton werden nicht abgebildet."]},
   labor_moertelprismen: {"kurz": "Biegezug- und Druckfestigkeit an Normprismen 40 × 40 × 160 mm mit ±10-%-Regel und Zuordnung zur Zementfestigkeitsklasse nach 28 Tagen.", "grenzen": ["Klasse nur nach der Untergrenze der Normfestigkeit nach 28 Tagen; Anfangsfestigkeit (L, N, R) und Obergrenze werden nicht bewertet.", "Feste Prismengeometrie und Stützweite (l = 100 mm, b = 40 mm); abweichende Maße werden nicht berücksichtigt.", "Keine Konformitätsbewertung eines Zements; dafür gelten die statistischen Kriterien der DIN EN 197-1."]},
   schnellkarbonatisierung: {"kurz": "Karbonatisierungskoeffizient K_AC aus Messwerten nach DIN EN 12390-12 (Regression über √t), Umrechnung auf natürliche CO₂-Konzentration und Prognose gegenüber der Betondeckung.", "grenzen": ["Umrechnung nur über die CO₂-Konzentration (K ∝ √c); Feuchte, Beregnung, Temperatur und Nachbehandlung bleiben unberücksichtigt – Größenordnung, kein Normwert.", "Deterministische Prognose mit dem Wurzel-t-Gesetz; keine Streuung von Deckung und Material, kein probabilistischer Nachweis.", "Kein Dauerhaftigkeitsnachweis: Maßgebend bleiben Expositionsklasse, c_min,dur und Betonzusammensetzung nach DIN EN 1992-1-1 und DIN 1045-2.", "Mittelwerte je Zeitpunkt sind vorzugeben; Einzelmessungen, Probekörperanzahl und Messstellenauswahl der Norm werden nicht abgebildet."]},
-  lebensdauerbemessung: {"kurz": "Versagenswahrscheinlichkeit p_f(t) und Zuverlässigkeitsindex β(t) für den Grenzzustand Depassivierung (Karbonatisierung oder Chlorid nach fib Bulletin 34) per Monte-Carlo-Simulation, mit erforderlicher Betondeckung und rechnerischer Lebensdauer.", "grenzen": ["Nur Einleitungsphase bis zur Depassivierung; Schädigungsphase, Rissbildung, Abplatzungen und Querschnittsverlust sind nicht berechnet.", "Kennwerte sind Lehrwerte nach fib Bulletin 34 (Sekundärquellen), vorläufig; einzelne D_RCM,0-Werte, Streuung von R⁻¹_ACC,0, K_AC → R⁻¹, p_SR, ToW, C_S, C₀ und Temperaturstreuung vorläufig, F-Freigabe.", "Übernommene Werte der Einzelrechner werden geprüft; K nach dem Wurzel-t-Gesetz dient nur zum Vergleich, a wird auf das nächstliegende Bindemittel abgebildet.", "Ungerissener Beton, unlegierter Betonstahl, konstante Umgebung; keine Kombination von Karbonatisierung und Chlorid, keine Instandsetzung.", "Basisvariablen unabhängig; Monte-Carlo mit festem Startwert, β bei p_f = 0 nur als Untergrenze; Zeitachse in Schritten von 1 Jahr.", "Kein Nachweis nach den eingeführten Regeln: maßgebend bleiben Expositionsklasse, c_min,dur und Betonzusammensetzung nach DIN EN 1992-1-1/NA und DIN 1045-2."]},
+  lebensdauerbemessung: {"kurz": "Versagenswahrscheinlichkeit p_f(t) und Zuverlässigkeitsindex β(t) für den Grenzzustand Depassivierung (Karbonatisierung oder Chlorid nach fib Bulletin 34) per Monte-Carlo-Simulation, mit erforderlicher Betondeckung und rechnerischer Lebensdauer.", "grenzen": ["Nur Einleitungsphase bis zur Depassivierung; Schädigungsphase, Rissbildung, Abplatzungen und Querschnittsverlust sind nicht berechnet.", "Kennwerte sind Lehrwerte nach fib Bulletin 34 (Sekundärquellen), vorläufig; einzelne D_RCM,0-Werte, Streuung von R⁻¹_ACC,0, K_AC → R⁻¹, p_SR, ToW, C_S, C₀ und Temperaturstreuung vorläufig, Normprüfung ausstehend.", "Übernommene Werte der Einzelrechner werden geprüft; K nach dem Wurzel-t-Gesetz dient nur zum Vergleich, a wird auf das nächstliegende Bindemittel abgebildet.", "Ungerissener Beton, unlegierter Betonstahl, konstante Umgebung; keine Kombination von Karbonatisierung und Chlorid, keine Instandsetzung.", "Basisvariablen unabhängig; Monte-Carlo mit festem Startwert, β bei p_f = 0 nur als Untergrenze; Zeitachse in Schritten von 1 Jahr.", "Kein Nachweis nach den eingeführten Regeln: maßgebend bleiben Expositionsklasse, c_min,dur und Betonzusammensetzung nach DIN EN 1992-1-1/NA und DIN 1045-2."]},
   sommerlicher_waermeschutz: {"kurz": "Vorhandener und zulässiger Sonneneintragskennwert eines Raums nach dem vereinfachten Verfahren der DIN 4108-2:2013-02 mit Prüfung der Verzichtsregeln.", "grenzen": ["Tabellenwerte S1 bis S6 und F_C nach DIN 4108-2:2013-02 (Wiedergabe in KS-Planungshandbuch und BVRS-TR Sonnenschutz); die Neuausgabe 2026-05 ist nicht abgeglichen.", "F_C aus Tab. 7 als Anhaltswert; produktspezifische g_tot-Werte und Teilverschattung durch Vorsprünge (F_S nach DIN V 18599-2) werden nicht abgebildet.", "S3, S4 und S5 flächenanteilig; f_neig und f_nord auf die gesamte Fensterfläche bezogen; Nordwest und Nordost zählen in Tab. 6 zur 10-%-Gruppe.", "Nicht anwendbar bei Doppelfassaden, transparenter Wärmedämmung, unbeheizten Glasvorbauten, Hallen und mehrgeschossigen offenen Räumen; dort thermische Simulation nach 8.4.", "Bauart wird vorgegeben; C_wirk/A_G ist gesondert zu ermitteln. Die Raumtiefe ist bei A_G auf das Dreifache der lichten Raumhöhe zu begrenzen."]},
   membranen_etfe: {"kurz": "Membrankraft gewölbter Membranstreifen und Kissen unter Innendruck nach der Kesselformel (Zylinder n = p·r, Kugel n = p·r/2) und Vergleich mit einer zulässigen Membrankraft.", "grenzen": ["Membrantheorie für Kreiszylinder bzw. Kugel mit konstantem Radius; reale Kissen sind doppelt gekrümmt mit veränderlichen Radien, die Formfindung bleibt unberücksichtigt.", "Radius aus Spannweite und Stich als Kreisbogen; Dehnung der Membran unter Last (Zunahme des Stichs) nicht berücksichtigt (Theorie I. Ordnung).", "Festigkeiten (ETFE: Spannung bei 10 % Dehnung, Gewebe: Kurzzeitzugfestigkeit) und Gesamtsicherheitsbeiwert sind Lehrwerte; die Bemessung erfolgt mit Abminderungsbeiwerten nach abZ/aBG bzw. vBG oder CEN/TS 19102.", "Kein Nachweis von Nähten, Klemmprofilen, Randseilen, Weiterreißen, Kriechen, Temperatur oder Schneesack; bei mehrlagigen Kissen ist die maßgebende Druckdifferenz je Lage selbst anzusetzen."]},
   korrosionsschutz_beschichtungen: {"kurz": "Schutzdauer einer Zinkschicht aus Schichtdicke und Zinkabtragsrate je Korrosivitätskategorie, optional als Duplex-System, im Vergleich mit der Schutzdauerklasse.", "grenzen": ["Lineares Modell t = d_Zn / r_corr mit den Erstjahresraten nach DIN EN ISO 9223; der tatsächliche Langzeitabtrag (DIN EN ISO 9224) ist meist etwas geringer.", "Maßgebend ist die obere Abtragsrate der Kategorie; örtliche Einflüsse (Kondensat, Spritzwasser, Mikroklima) sind nicht erfasst.", "Synergiefaktor des Duplex-Systems und Schutzdauer der Beschichtung sind Literatur- bzw. Lehrwerte, keine Normwerte.", "Keine Bemessung von Beschichtungssystemen nach den Systemtabellen der DIN EN ISO 12944-5; Im-Kategorien sind nicht berechenbar."]},
@@ -105,7 +105,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       'Nur einschalige, biegesteife Bauteile; Vorsatzschalen, WDVS und Holzbau (Masse-Feder-Masse) werden nicht abgebildet.',
       'Ohne Flankenübertragung, also kein Nachweis von R′_w zwischen Räumen.',
       'Trittschall: L_n,eq,0,w = 164 − 35·lg m′ nur für Massivdecken mit 100 ≤ m′ ≤ 720 kg/m²; keine Holz-, Hohl- oder Rippendecken, keine Unterdecken.',
-      'Trittschall: zul. L′_n,w = 50 dB (DIN 4109-1:2018), 53 dB wählbar (DIN 4109:1989); ΔL_w-Näherung, K = 0,6 + 5,5·lg(m′_s/m′_f,m) und Treppenwerte vorläufig (F-Freigabe); ohne Herstellerprüfwerte und Beläge.',
+      'Trittschall: zul. L′_n,w = 50 dB (DIN 4109-1:2018), 53 dB wählbar (DIN 4109:1989); ΔL_w-Näherung, K = 0,6 + 5,5·lg(m′_s/m′_f,m) und Treppenwerte vorläufig (Normprüfung ausstehend); ohne Herstellerprüfwerte und Beläge.',
       'Trittschall: Diagonal- und Treppenübertragung, Schallbrücken und Estrichdröhnen werden nicht abgebildet; u_prog = 3 dB pauschal.',
     ],
   },
@@ -155,13 +155,13 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   bodenmechanik: {
     kurz: 'Zustandsgrenzen, Auswertung des Fließgrenzenversuchs nach Casagrande und Klassifikation nach DIN 18196, Mohr-Coulomb, Erddruck nach Rankine und Konsolidierung nach Terzaghi.',
     grenzen: [
-      'Fließgrenze: Ausgleichsgerade w über lg N (Mehrpunktverfahren); Einpunktverfahren mit dem Exponenten 0,121 (ASTM D4318) vorläufig (F-Freigabe).',
+      'Fließgrenze: Ausgleichsgerade w über lg N (Mehrpunktverfahren); Einpunktverfahren mit dem Exponenten 0,121 (ASTM D4318) vorläufig (Normprüfung ausstehend).',
       'Ausrollgrenze als einfacher Mittelwert; die zulässige Streuung von 2 Prozentpunkten ist eine Lehrannahme.',
       'Erddruck: glatte, lotrechte Wand, waagerechtes Gelände, kohäsionsloser Boden ohne Wasser.',
       'Konsolidierung eindimensional mit konstantem c_v und E_s, Näherungsformel für U(T_v).',
       'Klassifikation nur über das Plastizitätsdiagramm, ohne Korngrößenverteilung; organische Beimengungen (OU/OT) nur nach Angabe, ohne Glühverlust.',
-      'Zustandsformen nach DIN EN ISO 14688-2 (I_C-Grenzen 0,25 / 0,50 / 0,75 / 1,00); die deutschen Bezeichnungen breiig/weich/steif/halbfest/fest sind am Normtext zu bestätigen (vorläufig, F-Freigabe).',
-      'Atterberg/DIN 18196 – organischer Boden mit w_L > 50 % unterhalb der A-Linie: keine eindeutige Gruppe im Plastizitätsdiagramm; Ausgabe UA mit Prüfhinweis (vorläufig, F-Freigabe).',
+      'Zustandsformen nach DIN EN ISO 14688-2 (I_C-Grenzen 0,25 / 0,50 / 0,75 / 1,00); die deutschen Bezeichnungen breiig/weich/steif/halbfest/fest sind am Normtext zu bestätigen (vorläufig, Normprüfung ausstehend).',
+      'Atterberg/DIN 18196 – organischer Boden mit w_L > 50 % unterhalb der A-Linie: keine eindeutige Gruppe im Plastizitätsdiagramm; Ausgabe UA mit Prüfhinweis (vorläufig, Normprüfung ausstehend).',
     ],
   },
   // Weitere Rechner (Durchsicht 24.10.2026, Belege im PR)
@@ -316,7 +316,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   frischbeton: {
     kurz: "Konsistenz gegen Grenzabmaße, korrigierter Luftgehalt, Frischbetonrohdichte, Schalungsdruck und Frischbetontemperatur.",
     grenzen: [
-      "Grenzabmaße der Konsistenz nach hinterlegter Tabelle (Staffeln vorläufig, F-Freigabe).",
+      "Grenzabmaße der Konsistenz nach hinterlegter Tabelle (Staffeln vorläufig, Normprüfung ausstehend).",
       "Luftgehalt als Einzelwert: Mindestwert nach DIN 1045-2, obere Grenze Mindestwert + 4 % (DIN EN 206, 5.4.3), Grenzabweichung −0,5/+1,0 %; keine Annahmekennzahl.",
       "Expositionsklasse XF2/XF3 nur in der LP-Variante bzw. ohne LP-Anforderung wählbar; XF3 mit LP ist nicht getrennt abgebildet.",
       "Schalungsdruck mit genähertem Erstarrungsbeiwert; SVB voll hydrostatisch.",
@@ -332,7 +332,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Zwang & Risse (massige Bauteile): Temperaturkurve als Lehransatz, Zwang α_T·ΔT·E_c(t)·R nur in der Abkühlphase.",
       "Mindestbewehrung im Praxisbeispiel mit k_c = 1,0, k = 0,8, f_ct,eff = 2,5 N/mm² und σ_s = 240 N/mm² als feste Lehrwerte.",
       "Reife: wirksames Alter aus der Kerntemperatur (Schritt 0,1 d); f_ck aus der Zementfestigkeitsklasse, β_cc ≤ 1,25; Ausschalfrist über f_ck(t_e) = f_cm(t_e) − 8 (EC2 3.1.2(5)).",
-      "Reifefunktion gewogene Reife nach NEN 5970 nur als Faktor k_T = C^((T − 20)/10), C = 1,15 … 1,75, Standard 1,45 (einstellbar; Giatec, Kasal 2020); nicht die integrierte Reife in °C·h (vorläufig, F-Freigabe).",
+      "Reifefunktion gewogene Reife nach NEN 5970 nur als Faktor k_T = C^((T − 20)/10), C = 1,15 … 1,75, Standard 1,45 (einstellbar; Giatec, Kasal 2020); nicht die integrierte Reife in °C·h (vorläufig, Normprüfung ausstehend).",
       "Zementbeiwert s nach EC2 3.1.2(6) (R = 0,20, N = 0,25, S = 0,38); L-Zemente sind dort nicht geregelt und werden nach der Anfangsfestigkeit (DIN EN 197-1) als S bzw. 52,5 L als N eingeordnet.",
       "Wärme mit hyperbolischem Ansatz Q = H_max·t_e/(t_e + t₅₀) und Lehrwerten je Zementart; Zusatzstoffe über lineare Zu- und Abschläge.",
       "Bauteile unter 0,30 m: Die pauschale Wärmeabfuhr gleicht die Temperatur je Zeitschritt vollständig an die Umgebung an.",
@@ -428,8 +428,8 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Klimafaktor und Gewinne pauschal; Warmwasser, Verluste und Hilfsstrom als feste Werte.",
       "Kein Nachweis nach DIN V 18599.",
       "Stichtagsschalter GModG: bis 31.12.2026 f_p nach Anlage 4, CO₂ nach Anlage 9 (Strom 1,8 / 560 g/kWh); ab 01.01.2027 neue Anlage 4 (Strom 1,5, Holz 0,7, Fernwärme 0,7). Klassen Anlage 10 unverändert.",
-      "CO₂-Faktor Netzstrom ab 2027 (100 g/kWh) vorläufig, F-Freigabe (GModG Anlage 9, Fassung 2027); Fernwärme bis 2026 mit Lehrwerten f_p 0,4 und 120 g/kWh; das neue Referenzgebäude ist nicht abgebildet.",
-      "Interne Gewinne pauschal 35 kWh/(m²a) statt Nutzungsprofil nach DIN/TS 18599-10 (Lehrwert, vorläufig, F-Freigabe); CO₂ mit dem Faktor des Hauptenergieträgers auf die gesamte Endenergie.",
+      "CO₂-Faktor Netzstrom ab 2027 (100 g/kWh) vorläufig, Normprüfung ausstehend (GModG Anlage 9, Fassung 2027); Fernwärme bis 2026 mit Lehrwerten f_p 0,4 und 120 g/kWh; das neue Referenzgebäude ist nicht abgebildet.",
+      "Interne Gewinne pauschal 35 kWh/(m²a) statt Nutzungsprofil nach DIN/TS 18599-10 (Lehrwert, vorläufig, Normprüfung ausstehend); CO₂ mit dem Faktor des Hauptenergieträgers auf die gesamte Endenergie.",
     ],
   },
   materialoptimierung: {
@@ -438,7 +438,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Beton- und Stahlmengen je Bauteil fest hinterlegt, keine Bemessung.",
       "Beton-GWP nur nach Zementart, unabhängig von der Festigkeitsklasse.",
       "Bewertungsklassen über modellinterne Schwellen (Lehreinteilung, nicht die Treibhausgas-Minderungsklassen der DAfStb-Richtlinie).",
-      "GWP-Lehrwerte: Beton = 320 kg Zement · GWP_Zement + 30 kg/m³ (CEM II/A-LL ≈ ÖKOBAUDAT C25/30), Stahl-Referenz ÖKOBAUDAT 0,64 kg/kg; Hochofen 0,98, CEM II/B-S, II/C-M, 56-d-Abschlag vorläufig (F-Freigabe).",
+      "GWP-Lehrwerte: Beton = 320 kg Zement · GWP_Zement + 30 kg/m³ (CEM II/A-LL ≈ ÖKOBAUDAT C25/30), Stahl-Referenz ÖKOBAUDAT 0,64 kg/kg; Hochofen 0,98, CEM II/B-S, II/C-M, 56-d-Abschlag vorläufig (Normprüfung ausstehend).",
     ],
   },
   oekobilanz_lca: {
@@ -638,8 +638,8 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     kurz: 'Bohrplan einer Horizontalsperre (Bohrtiefe, Abstand, Wirkstoffbedarf) mit Verfahrenshinweis nach Durchfeuchtungsgrad sowie ein Punkteschema für Innendämmung im Bestand.',
     grenzen: [
       'Bohrtiefe Wand − 5 cm, Abstände 12/10/8 cm und Ø 12 mm fest; Bedarf aus dem Bohrlochvolumen · 1,15 ist eine Untergrenze, Herstellerangaben liegen höher (≈ 15 ml je m und cm).',
-      'Verfahren und zulässiger DFG des Mauerwerks laut WTA-Zertifikat bzw. Herstellerangabe des Stoffs (Prüfstufen 60/80/95 %); die Anzeige der Stufe ist ein Lehransatz (vorläufig, F-Freigabe).',
-      'Kombi-Planer: eigenes Punkteschema, keine Bewertung der WTA; Salzstufen im Mauerwerk vereinfacht für alle Salze gemeinsam (vorläufig, F-Freigabe).',
+      'Verfahren und zulässiger DFG des Mauerwerks laut WTA-Zertifikat bzw. Herstellerangabe des Stoffs (Prüfstufen 60/80/95 %); die Anzeige der Stufe ist ein Lehransatz (vorläufig, Normprüfung ausstehend).',
+      'Kombi-Planer: eigenes Punkteschema, keine Bewertung der WTA; Salzstufen im Mauerwerk vereinfacht für alle Salze gemeinsam (vorläufig, Normprüfung ausstehend).',
     ],
   },
   'wu-bauwerke': {
@@ -680,7 +680,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Nur die Expositionsklassen XC4 und XD3.",
       "Reife mit konstanter Temperatur (Arrhenius, t_T nach EC2 Gl. B.10); f_ck(t) = f_cm(t) − 8 bis 28 Tage.",
       "Frischbetontemperatur ohne Phasenwechsel; unter 0 °C nur Hinweis.",
-      "Ausschalen (DIN 1045-3): Vergleich von f_ck(t) mit der Vorgabe der Tragwerksplanung in % von f_ck; Voreinstellung 50 % als Lehrannahme (vorläufig, F-Freigabe).",
+      "Ausschalen (DIN 1045-3): Vergleich von f_ck(t) mit der Vorgabe der Tragwerksplanung in % von f_ck; Voreinstellung 50 % als Lehrannahme (vorläufig, Normprüfung ausstehend).",
     ],
   },
   rechnung_stahlbeton: {
@@ -705,7 +705,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "f_k aus Herstellertafeln (KS-Themenheft Eurocode 6, 10/2012; Lücking 2026) oder frei eingegeben; KS P und KS L-P vorläufig, Übereinstimmung mit der NA-Fassung 2019-12 nicht am Normtext geprüft.",
       "h_ef = ρ2·h mit ρ2 = 0,75/0,90/1,0 nach Wanddicke (bei a < t: 1,0) – belegt durch AMz 2016 (S. 12), TU Dresden 2025 und die KS-Tragfähigkeitstafeln; ρ2 = 1,0 für 2/3 < a/t < 1 vorläufig.",
       "Anwendungsgrenzen nach Tab. NA.2 (Gebäudehöhe, Nutzlast, Windzone) nur teilweise geprüft: l_f ≤ 6,0 m, h_ef/t ≤ 27.",
-      "Mauerwerk-Innenwände (Zwischenauflager): Φ1 = 0,9 auch bei teilweise aufliegender Decke (a < t); a/t geht über Φ2 ein (vorläufig, F-Freigabe).",
+      "Mauerwerk-Innenwände (Zwischenauflager): Φ1 = 0,9 auch bei teilweise aufliegender Decke (a < t); a/t geht über Φ2 ein (vorläufig, Normprüfung ausstehend).",
       "Wandhöhe über 2,75 m nur als Hinweis auf die erweiterten Bedingungen (DIN EN 1996-3/NA:2019-12; KS-Merkblatt 04/2020): Innenwände ab 115 mm bis 3,60 m, ab 240 mm ohne Höhengrenze; Außenwände vorläufig.",
     ],
   },
@@ -713,14 +713,14 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     kurz: "CO₂-Aufnahme durch Karbonatisierung und GWP-Vergleich zweier Zemente.",
     grenzen: [
       "Karbonatisierung nach √t-Gesetz mit konstantem k.",
-      "GWP-Vergleich nur über den Zement; Vorgaben CEM I 665 kg CO₂-Äq./t (VDZ-Branchen-EPD 2022 nach EN 15804, netto) und CEM III/B 260 kg/t (Lehrwert, vorläufig, F-Freigabe).",
+      "GWP-Vergleich nur über den Zement; Vorgaben CEM I 665 kg CO₂-Äq./t (VDZ-Branchen-EPD 2022 nach EN 15804, netto) und CEM III/B 260 kg/t (Lehrwert, vorläufig, Normprüfung ausstehend).",
     ],
   },
   rechnung_bestand: {
     kurz: "f_ck und f_cd aus historischen Betonklassen sowie Fließkraft historischer Betonstähle.",
     grenzen: [
       "Ohne Bauwerksprüfung: Zuordnung nach Tabelle (Schnell/Fischer/Loch 2008, Tab. 2.1; nur Vorbemessung); B 450/B 600 (Spannbeton) ohne Zuordnung.",
-      "Mit Bauwerksprüfung (Prüfverfahren Bohrkern): DIN EN 13791 erst ab 8 Kernen, ohne Mindeststandardabweichung (vorläufig, F-Freigabe); Kerne h/d = 1 als 150-mm-Würfel.",
+      "Mit Bauwerksprüfung (Prüfverfahren Bohrkern): DIN EN 13791 erst ab 8 Kernen, ohne Mindeststandardabweichung (vorläufig, Normprüfung ausstehend); Kerne h/d = 1 als 150-mm-Würfel.",
     ],
   },
   rechnung_schallschutz: {

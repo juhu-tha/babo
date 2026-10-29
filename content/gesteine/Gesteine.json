@@ -54,7 +54,7 @@
     "korngemischEineMischungVerschiedener": "**Korngemisch:** Eine Mischung verschiedener Kornklassen, angegeben als untere (d) und obere (D) Siebgröße, z.B. 0/32 für Beton.",
     "sieblinienKornzusammensetzung": "Sieblinien (Kornzusammensetzung)",
     "idealsieblinienFullerEmpaMathematische": "**Idealsieblinien (Fuller, EMPA):** Mathematische Kurven für das theoretische Dichteste Gefüge (minimaler Hohlraumgehalt).",
-    "regelsieblinienDin10452": "**Regelsieblinien (DIN 1045-2):** Grenzsieblinien A, B, C (und U für Ausfallkörnung) für Beton; Zahlenwerte vorläufig, F-Freigabe (Abgleich mit dem Normtext DIN 1045-2:2023-08).<br>- **A-Linie:** gröberes Gemisch, wenig Feinkorn. Der günstige Bereich liegt zwischen A und B.<br>- **B-Linie:** mittleres Gemisch (Standard).<br>- **C-Linie:** feineres Gemisch, gut pumpbar, aber höherer Zementleim- und Wasserbedarf.",
+    "regelsieblinienDin10452": "**Regelsieblinien (DIN 1045-2):** Grenzsieblinien A, B, C (und U für Ausfallkörnung) für Beton; Zahlenwerte vorläufig, Normprüfung ausstehend (Abgleich mit dem Normtext DIN 1045-2:2023-08).<br>- **A-Linie:** gröberes Gemisch, wenig Feinkorn. Der günstige Bereich liegt zwischen A und B.<br>- **B-Linie:** mittleres Gemisch (Standard).<br>- **C-Linie:** feineres Gemisch, gut pumpbar, aber höherer Zementleim- und Wasserbedarf.",
     "ausfallkörnungFehlenBestimmterMittlerer": "**Ausfallkörnung:** Fehlen bestimmter mittlerer Kornklassen zur gezielten Verbesserung der Verarbeitbarkeit (Gap-Grading).",
     "natürlicheGesteinskörnungKiesSand": "**Natürliche Gesteinskörnung (Kies/Sand):** Rundkorn, gefördert aus Gruben oder Flussbetten. Bessere Verarbeitbarkeit im Beton.",
     "gebrocheneGesteinskörnungSplittBrechsand": "**Gebrochene Gesteinskörnung (Splitt/Brechsand):** Durch Zerkleinern im Brecher (z.B. aus Granit, Basalt, Kalkstein). Hohe innere Reibung, wichtig für den Straßen- und Asphaltbau.",
@@ -67,7 +67,7 @@
   },
   "werte": {
     "anwendungsbeispielKörnungszifferDerRegel": "Anwendungsbeispiel: Körnungsziffer der Regelsieblinie B16",
-    "sieblinieB16NachDin": "Sieblinie B16 nach DIN 1045-2 (Lehrbuchwerte, vorläufig, F-Freigabe); Siebsatz 0,25 bis 63 mm",
+    "sieblinieB16NachDin": "Sieblinie B16 nach DIN 1045-2 (Lehrbuchwerte, vorläufig, Normprüfung ausstehend); Siebsatz 0,25 bis 63 mm",
     "kB16366": "k(B16) ≈ 3,66 – zum Vergleich: A16 gröber (k größer), C16 feiner (k kleiner).",
     "reiterBereiche": "Bereiche Gesteine"
   },

@@ -1012,13 +1012,6 @@ input[type=range]:focus:not(:focus-visible) {
   outline-offset: 3px !important;
 }
 
-/* Theme Toggle Button Layout Stability on Dark Mode Loading */
-@media (prefers-color-scheme: dark) {
-  #theme-toggle-btn {
-    display: block;
-  }
-}
-
 /* ==========================================================================
    BILDSCHIRMBREITE & FLUID-LAYOUT: Standard (1152px), Breit (1536px) & 100% Vollbild
    ========================================================================== */

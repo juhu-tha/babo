@@ -60,7 +60,7 @@
     "bspEiAngesetzt": "$(EI)_\\ell$ angesetzt",
     "bspEiQuer": "$(EI)_b$ quer (Querlagen + Estrich)",
     "steifigkeitskriteriumW1kN": "Steifigkeitskriterium: Durchbiegung unter 1 kN in Feldmitte (Hamm/Richter):",
-    "bspOrientierungNeutral": "Orientierungswerte nach Hamm/Richter (2009), aufgenommen in ÖNORM B 1995-1-1:2015: $f_{1}$ ≥ 8 Hz bzw. 6 Hz und $w$ ≤ 0,25 mm bzw. 0,50 mm unter 1 kN (Deckenklasse I bzw. II). Für DIN EN 1995-1-1 mit NA (DE) gelten eigene Grenzwerte (vorläufig, F-Freigabe). Nicht erfasst sind Beschleunigungs- und Geschwindigkeitskriterium, Durchlaufwirkung, vierseitige Lagerung und Schubverformung bei 7 und mehr Lagen (Schubanalogieverfahren nach Kreuzinger).",
+    "bspOrientierungNeutral": "Orientierungswerte nach Hamm/Richter (2009), aufgenommen in ÖNORM B 1995-1-1:2015: $f_{1}$ ≥ 8 Hz bzw. 6 Hz und $w$ ≤ 0,25 mm bzw. 0,50 mm unter 1 kN (Deckenklasse I bzw. II). Für DIN EN 1995-1-1 mit NA (DE) gelten eigene Grenzwerte (vorläufig, Normprüfung ausstehend). Nicht erfasst sind Beschleunigungs- und Geschwindigkeitskriterium, Durchlaufwirkung, vierseitige Lagerung und Schubverformung bei 7 und mehr Lagen (Schubanalogieverfahren nach Kreuzinger).",
     "bspRollschub": "Rollschubmodul $G_{r,mean}$ der Querlagen"
   },
   "werte": {
