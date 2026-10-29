@@ -24,7 +24,7 @@ export default function RegelwerkeTab({ selectedScenario, setSelectedScenario }:
         {/* TR Instandhaltung */}
         <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm flex flex-col justify-between">
           <div>
-            <div className="text-xs uppercase font-extrabold tracking-widest text-[#475569] bg-sky-50 border border-sky-100 rounded-full px-2.5 py-0.5 inline-block mb-3"><MdText text={inhalt.texte.staatlichGesetzlichStandsicherheit} /></div>
+            <div className="text-xs uppercase font-extrabold tracking-widest text-[#475569] dark:text-sky-100 bg-sky-50 border border-sky-100 rounded-full px-2.5 py-0.5 inline-block mb-3"><MdText text={inhalt.texte.staatlichGesetzlichStandsicherheit} /></div>
             <h4 className="text-lg font-bold text-text-main mb-2"><MdText text={inhalt.texte.trInstandhaltung} /></h4>
             <p className="text-xs text-home-grau mb-3 leading-relaxed"><MdText text={inhalt.texte.herausgegebenVomDeutschenInstitut} /></p>
             <div className="border-t border-home-grau/30 pt-3 mt-2 space-y-2">

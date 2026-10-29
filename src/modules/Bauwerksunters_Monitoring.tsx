@@ -216,7 +216,7 @@ export default function Bauwerksunters_Monitoring() {
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
               {/* Steuerung */}
-              <div className="lg:col-span-4 bg-[#f8fafc] p-5 rounded-2xl border border-home-grau/30 flex flex-col gap-4">
+              <div className="lg:col-span-4 bg-off-white p-5 rounded-2xl border border-home-grau/30 flex flex-col gap-4">
                 <span className="text-[10px] font-black text-shiraz uppercase tracking-wider block">Simulator-Parameter:</span>
                 
                 <div>
@@ -276,36 +276,36 @@ export default function Bauwerksunters_Monitoring() {
                   {/* Schematic Timber Cross-section visualization */}
                   <div className="flex items-center gap-4 bg-white px-4 py-3 rounded-xl border border-home-grau/30">
                     <div className="text-[10px] font-mono text-slate-700"><MdText text={inhalt.texte.querschnittsModell120Mm} /></div>
-                    <div className="flex-1 h-6 rounded bg-[#1e293b] relative border border-[#334155] overflow-hidden flex">
+                    <div className="flex-1 h-6 rounded bg-[#f3e3c3] dark:bg-[#4a3b26] relative border border-[#c9ad7f] overflow-hidden flex">
                       {/* Left healthy bark segment */}
-                      <div className="w-[10%] h-full bg-[#475569] shrink-0 border-r border-[#64748b]"></div>
+                      <div className="w-[10%] h-full bg-[#b88a55] dark:bg-[#6b4f2e] shrink-0 border-r border-[#9c7444]"></div>
                       
                       {/* Interactive defect overlay showing on wood model */}
                       <div className="flex-1 h-full relative">
                         {selectedState === 'kernfaeule' && (
-                          <div className="absolute left-[33%] right-[20%] top-0 bottom-0 bg-yellow-900/60 blur-[3px] border-l border-r border-dashed border-yellow-750 flex items-center justify-center">
-                            <span className="text-[8px] font-extrabold uppercase text-yellow-300 tracking-widest opacity-80"><MdText text={inhalt.texte.zersetzungPilz} /></span>
+                          <div className="absolute left-[33%] right-[20%] top-0 bottom-0 bg-amber-700/30 border-l border-r border-dashed border-amber-800 flex items-center justify-center">
+                            <span className="text-[8px] font-extrabold uppercase text-amber-950 dark:text-amber-50 tracking-widest"><MdText text={inhalt.texte.zersetzungPilz} /></span>
                           </div>
                         )}
                         {selectedState === 'kaefer' && (
-                          <div className="absolute left-0 w-[25%] top-0 bottom-0 bg-amber-950/70 border-r border-dashed border-red-900 flex items-center justify-center">
-                            <span className="text-[8px] font-extrabold uppercase text-amber-300 tracking-widest opacity-80">Larvenfraß</span>
+                          <div className="absolute left-0 w-[25%] top-0 bottom-0 bg-amber-800/25 border-r border-dashed border-red-900 flex items-center justify-center">
+                            <span className="text-[8px] font-extrabold uppercase text-amber-950 dark:text-amber-50 tracking-widest">Larvenfraß</span>
                           </div>
                         )}
                         {selectedState === 'hohl' && (
-                          <div className="absolute left-[41%] right-[33%] top-0 bottom-0 bg-black/90 border-l border-r border-dashed border-slate-800 flex items-center justify-center">
-                            <span className="text-[8px] font-extrabold uppercase text-slate-400 tracking-widest opacity-80">Hohlraum</span>
+                          <div className="absolute left-[41%] right-[33%] top-0 bottom-0 bg-white dark:bg-slate-900 border-l border-r border-dashed border-slate-600 flex items-center justify-center">
+                            <span className="text-[8px] font-extrabold uppercase text-slate-800 dark:text-slate-100 tracking-widest">Hohlraum</span>
                           </div>
                         )}
                         {selectedState === 'gesund' && (
-                          <div className="w-full h-full flex items-center justify-center opacity-40">
-                            <span className="text-[8px] font-mono text-emerald-400 uppercase tracking-widest"><MdText text={inhalt.texte.gefügeGesundKraftschlüssig} /></span>
+                          <div className="w-full h-full flex items-center justify-center">
+                            <span className="text-[8px] font-mono text-emerald-900 dark:text-emerald-100 uppercase tracking-widest"><MdText text={inhalt.texte.gefügeGesundKraftschlüssig} /></span>
                           </div>
                         )}
                       </div>
                       
                       {/* Right healthy bark segment */}
-                      <div className="w-[10%] h-full bg-[#475569] shrink-0 border-l border-[#64748b]"></div>
+                      <div className="w-[10%] h-full bg-[#b88a55] dark:bg-[#6b4f2e] shrink-0 border-l border-[#9c7444]"></div>
                     </div>
                   </div>
 
@@ -650,7 +650,7 @@ export default function Bauwerksunters_Monitoring() {
                   </div>
                 </div>
 
-                <div className="bg-[#f8fafc] p-4 rounded-xl border border-home-grau/25 space-y-2.5">
+                <div className="bg-off-white p-4 rounded-xl border border-home-grau/25 space-y-2.5">
                   <span className="text-[10px] font-black uppercase text-shiraz tracking-widest block">Auswertung:</span>
                   <div className="grid grid-cols-2 gap-3 text-xs leading-none">
                     <div className="bg-white p-2.5 rounded-lg border border-slate-100">
