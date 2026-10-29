@@ -71,6 +71,9 @@
     "gStändigeEinwirkung": "γ_G (ständige Einwirkung)",
     "beiwertFürQK": "ψ₀ Beiwert (für Q_k,2)",
     "gleichung610": "Gleichung 6.10:",
+    "beiwertFuerQk1": "ψ₀ Beiwert (für Q_k,1, wirkt bei getauschter Leiteinwirkung)",
+    "leiteinwirkungTauschen": "Leiteinwirkung tauschen (Q_k,2 als Leiteinwirkung, Q_k,1 als Begleiteinwirkung)",
+    "maximumBeiderKombinationen": "Maximum beider Kombinationen (maßgebend: Leiteinwirkung ",
     "anwendungVollständigerNachweisE": "Anwendung: Vollständiger Nachweis E<sub>d</sub> ≤ R<sub>d</sub>"
   },
   "werte": {

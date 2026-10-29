@@ -3,10 +3,11 @@
  * Verhalten aus src/modules/PutzeMoertel.tsx übernommen; geändert ist nur die Sackanzahl (siehe unten).
  *
  *  - Putzbedarf: m = A · d · f mit Verbrauchsrichtwert f in kg je m² und mm Putzdicke (Herstellerangaben,
- *    Produktdatenblatt maßgebend); Wasser pauschal 0,26 l je kg Trockenmörtel (Lehrwert)
+ *    Produktdatenblatt maßgebend); Wasser je Putzart (WASSER_PUTZ_L_JE_KG, Lehrwerte; Umsetzung 29.10.2026, T5-PM-5 –
+ *    vorher pauschal 0,26 l/kg für alle Putze)
  *  - Mauermörtel Normalfuge: V = A · v₀ · k_t mit Grundbedarf v₀ in l/m² je Steinformat (11,5-cm-Wand) und
  *    Dickenfaktor k_t; Trockenmörtel 1,55 kg je Liter Frischmörtel, Wasser 0,21 l/kg (Lehrwerte)
- *  - Dünnbettmörtel: m = A · (t/10 cm) · 1,2 kg/m² (Lehrwert), Wasser 0,26 l/kg
+ *  - Dünnbettmörtel: m = A · (t/10 cm) · 1,2 kg/m² (Lehrwert), Wasser 0,26 l/kg (Lehrwert)
  *  - Sackanzahl = ⌈m / 25 kg⌉. Geändert: Gleitkommareste werden vor dem Aufrunden entfernt
  *    (50 m² · 15 mm · 1,1 ergab 825,0000000000001 kg und damit 34 statt 33 Säcke).
  * Reiner Rechenkern – geprüft in tests/moertelbedarf.test.ts. Orientierungswerte, keine Ausschreibungsmengen.
@@ -26,7 +27,14 @@ export const WANDDICKE_FAKTOR = { '11.5': 1.0, '24.0': 2.1, '30.0': 2.6, '36.5':
 export type Wanddicke = keyof typeof WANDDICKE_FAKTOR;
 
 export const SACK_KG = 25;
-export const WASSER_PUTZ_L_JE_KG = 0.26;
+/**
+ * Anmachwasser in l je kg Trockenmörtel je Putzart (Lehrwerte, Größenordnung der Herstellerangaben; Produktdatenblatt
+ * maßgebend). Gipsputz ≈ 0,6 l/kg (Entscheidung 28.10.), Kalkzement ≈ 0,2 l/kg (Tranche 5, T5-PM-5), Aerogel-Dämmputz
+ * ≈ 1 l/kg (HAGATHERM Typ Aerogel: 7 l Wasser je 7-kg-Sack).
+ */
+export const WASSER_PUTZ_L_JE_KG: Readonly<Record<Putzart, number>> = { gips: 0.6, luftkalk: 0.22, kalkzement: 0.2, zement: 0.16, sanier: 0.2, aerogel: 1.0 };
+/** Anmachwasser Dünnbettmörtel in l je kg (Lehrwert, wie bisher) */
+export const WASSER_DUENNBETT_L_JE_KG = 0.26;
 export const WASSER_MAUERMOERTEL_L_JE_KG = 0.21;
 export const TROCKENMOERTEL_KG_JE_L = 1.55;
 export const DUENNBETT_KG_JE_M2_UND_10CM = 1.2;
@@ -61,7 +69,7 @@ export function putzbedarf(e: { flaeche: number; dickeMm: number; art: Putzart }
   muss(hinweise, istEndlich(e.dickeMm) && e.dickeMm > 0, 'dicke', 'Die Schichtdicke muss größer als 0 mm sein.');
   if (hatFehler(hinweise)) return leer(hinweise);
   const masse = e.flaeche * e.dickeMm * f;
-  return { masse: r1(masse), saecke: sackanzahl(masse), wasser: r1(masse * WASSER_PUTZ_L_JE_KG), gueltig: true, hinweise };
+  return { masse: r1(masse), saecke: sackanzahl(masse), wasser: r1(masse * WASSER_PUTZ_L_JE_KG[e.art]), gueltig: true, hinweise };
 }
 
 export function mauermoertelNormalfuge(e: { flaeche: number; wanddicke: Wanddicke; format: Steinformat }): BedarfErgebnis {
@@ -83,5 +91,5 @@ export function duennbettmoertel(e: { flaeche: number; wanddickeCm: number }): B
   muss(hinweise, istEndlich(e.wanddickeCm) && e.wanddickeCm > 0, 'wanddicke', 'Die Wanddicke muss größer als 0 cm sein.');
   if (hatFehler(hinweise)) return leer(hinweise);
   const masse = e.flaeche * (e.wanddickeCm / 10) * DUENNBETT_KG_JE_M2_UND_10CM;
-  return { masse: r1(masse), saecke: sackanzahl(masse), wasser: r1(masse * WASSER_PUTZ_L_JE_KG), gueltig: true, hinweise };
+  return { masse: r1(masse), saecke: sackanzahl(masse), wasser: r1(masse * WASSER_DUENNBETT_L_JE_KG), gueltig: true, hinweise };
 }

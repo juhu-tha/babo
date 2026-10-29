@@ -86,6 +86,7 @@ export function bemesseDruckstab(e: DruckstabEingabe): DruckstabErgebnis {
  * H-3 (Entscheidung 28.10.2026): Am Trägerende gilt für Einzelauflager mit l₁ ≥ 2h ebenfalls k_c,90 = 1,5 (Nadelvollholz)
  * bzw. 1,75 (BSH, l ≤ 400 mm). EN 1995-1-1, 6.1.5(4) unterscheidet nur durchgehende Lagerung und Einzelauflager (Bild 6.2),
  * nicht die Lage am Trägerende (öffentlich: Wortlaut 6.1.5 auf dnaop.com, EN 1995-1-1:2004+A1). Vorher 1,0 am Trägerende.
+ * #239-H-3 (Umsetzung 29.10.2026): BSH-Einzelauflager mit l > 400 mm → k_c,90 = 1,0 (Erhöhung 1,75 nur für l ≤ 400 mm, 6.1.5(4)).
  */
 export type Querdruckfall = 'schwelle' | 'pfosten_riegel' | 'traeger_ende' | 'allgemein' | 'clt_plate';
 
@@ -112,13 +113,13 @@ export function bemesseQuerdruck(e: QuerdruckEingabe) {
   // 6.1.5: k_c,90 = 1,25 (Nadelvollholz) / 1,5 (BSH) bei durchgehender Lagerung; 1,5 / 1,75 bei Einzelauflager mit l1 ≥ 2h und l ≤ 400 mm
   const einzelauflager = e.fall === 'pfosten_riegel' || e.fall === 'traeger_ende';
   const k_c90 = e.fall === 'schwelle' ? (e.art === 'bsh' ? 1.5 : e.art === 'nadelvollholz' ? 1.25 : 1.0)
-    : einzelauflager ? (e.art === 'bsh' ? 1.75 : e.art === 'nadelvollholz' ? 1.5 : 1.0) : 1.0;
+    : einzelauflager ? (e.art === 'bsh' ? (e.l <= 400 ? 1.75 : 1.0) : e.art === 'nadelvollholz' ? 1.5 : 1.0) : 1.0;
   // wirksame Kontaktlänge: je Seite + 30 mm, höchstens um a, l oder l1/2 (hier: 30 mm je überstehender Seite)
   const l_ef = e.l + (e.ueberstand ? (e.fall === 'traeger_ende' ? 30 : 60) : 0);
   const A_ef = e.b * l_ef;
   const sigma_c90d = (e.F * 1000) / A_ef;
   const stressLimit = k_c90 * f_c90d;
-  if (einzelauflager && e.art === 'bsh' && e.l > 400) hinweise.push({ stufe: 'warnung', feld: 'l', text: 'k_c,90 = 1,75 (BSH) gilt nur für Auflagerlängen l ≤ 400 mm.' });
+  if (einzelauflager && e.art === 'bsh' && e.l > 400) hinweise.push({ stufe: 'warnung', feld: 'l', text: 'Auflagerlänge l > 400 mm: k_c,90 = 1,75 (BSH) gilt nur für l ≤ 400 mm, angesetzt ist k_c,90 = 1,0.' });
   if (einzelauflager && k_c90 > 1) hinweise.push({ stufe: 'warnung', feld: 'fall', text: 'Erhöhter Beiwert k_c,90 nur, wenn der Abstand l₁ zur nächsten Druckfläche mindestens 2h beträgt (DIN EN 1995-1-1, 6.1.5); sonst Fall „Allgemein“ (k_c,90 = 1,0) wählen.' });
   return {
     f_c90k: e.fc90k, f_c90d, k_c90, l_ef, A_ef, sigma_c90d, stressLimit, F_c90Rd_kN: (stressLimit * A_ef) / 1000,
@@ -387,28 +388,38 @@ export interface HolzschraubeEingabe {
   nkl: Nutzungsklasse; kled: KLED;
   fuk?: number;   // Zugfestigkeit des Schraubendrahts [N/mm²], Lehrwert 400
   gammaM?: number;
+  dKern?: number; // Kerndurchmesser d₁ [mm]; ohne Angabe Lehrwert 0,65·d (Herstellerangabe maßgebend)
 }
+
+/** Lehrwert Kerndurchmesser/Nenndurchmesser d₁/d (Gültigkeitsbereich der Gl. (8.38): 0,6 … 0,75) */
+export const KERN_VERHAELTNIS_SCHRAUBE = 0.65;
 
 /**
  * Selbstbohrende Holzschrauben ohne ETA-Werte:
  *  - Herausziehen (8.38): F_ax,α,Rk = n_ef · f_ax,k · d · l_ef · k_d / (1,2·cos²α + sin²α), f_ax,k = 0,52·d^−0,5·l_ef^−0,1·ρ_k^0,8 (8.39),
  *    k_d = min(d/8; 1) (8.40), n_ef = n^0,9 (8.41); gültig für 6 mm ≤ d ≤ 12 mm und Kerndurchmesser 0,6 ≤ d₁/d ≤ 0,75.
- *  - Abscheren je Scherfuge: f_h,k = 0,082·(1 − 0,01·d)·ρ_k (8.32, Regeln für Bolzen nach 8.7.1(4) bei d > 6 mm),
- *    M_y,Rk = 0,3·f_u,k·d^2,6 (8.30); F_v,Rk = min(f_h,k·l_ef·d; 1,15·√(2·M_y,Rk·f_h,k·d) + F_ax,Rk/4), Seileffekt ≤ 100 % (8.2.2(2)).
+ *    Ausziehparameter nach NA DE (NCI, Schrauben ohne ETA) und Fassung der Gl. (8.38) nach A2:2014 am Normtext prüfen
+ *    (T10-HV-2) – vorläufig, F-Freigabe DIN EN 1995-1-1/NA.
+ *  - Abscheren je Scherfuge mit dem wirksamen Durchmesser d_ef = 1,1·d₁ (8.7.1(3), Gewinde im Scherbereich; T10-HV-3,
+ *    Umsetzung 29.10.2026): d_ef ≤ 6 mm Regeln für Nägel, f_h,k = 0,082·ρ_k·d_ef^−0,3 (8.15, nicht vorgebohrt); d_ef > 6 mm
+ *    Regeln für Bolzen, f_h,k = 0,082·(1 − 0,01·d_ef)·ρ_k (8.32) (8.7.1(4)); M_y,Rk = 0,3·f_u,k·d_ef^2,6 (8.14/8.30);
+ *    F_v,Rk = min(f_h,k·l_ef·d_ef; 1,15·√(2·M_y,Rk·f_h,k·d_ef) + F_ax,Rk/4), Seileffekt ≤ 100 % (8.2.2(2)).
  */
 export function holzschraube(e: HolzschraubeEingabe) {
   const hinweise: Hinweis[] = [];
   const fuk = e.fuk ?? 400, gammaM = e.gammaM ?? GAMMA_M_HOLZ;
-  muss(hinweise, istEndlich(e.rhok, e.d, e.lef, e.alpha, e.n, fuk, gammaM), 'eingabe', 'Alle Eingaben müssen Zahlen sein.');
+  const dKern = e.dKern ?? KERN_VERHAELTNIS_SCHRAUBE * e.d;
+  muss(hinweise, istEndlich(e.rhok, e.d, e.lef, e.alpha, e.n, fuk, gammaM, dKern), 'eingabe', 'Alle Eingaben müssen Zahlen sein.');
   muss(hinweise, KMOD[e.nkl]?.[e.kled] !== undefined, 'nkl', 'Nutzungsklasse 1 bis 3 und eine Klasse der Lasteinwirkungsdauer wählen.');
   if (!hatFehler(hinweise)) {
     muss(hinweise, e.rhok > 0 && e.d > 0 && e.lef > 0 && fuk > 0 && gammaM > 0, 'd', 'Rohdichte, Durchmesser, Einschraubtiefe und Festigkeit müssen größer als 0 sein.');
     muss(hinweise, e.n >= 1 && Number.isInteger(e.n), 'n', 'Die Schraubenanzahl muss eine ganze Zahl ≥ 1 sein.');
     muss(hinweise, e.alpha >= 0 && e.alpha <= 90, 'alpha', 'Der Winkel zwischen Schraubenachse und Faser liegt zwischen 0° und 90°.');
+    muss(hinweise, dKern > 0 && dKern < e.d, 'dKern', 'Der Kerndurchmesser muss größer als 0 und kleiner als der Nenndurchmesser sein.');
   }
   const leer = {
     k_mod: 0, rho_k: e.rhok, f_ax_k: 0, k_d: 0, n_ef: 0, factor_alpha: 0, f_ax_alpha_k: 0, F_ax_Rk_single_N: 0, F_ax_Rk_total_kN: 0, F_ax_Rd_total_kN: 0,
-    f_h_k: 0, M_y_Rk: 0, F_v_Rk_1: 0, johansen: 0, rope_effect: 0, F_v_Rk_single_N: 0, F_v_Rk_total_kN: 0, F_v_Rd_total_kN: 0, hinweise,
+    d_kern: dKern, d_ef: 0, lochleibungNach: 'nagel' as 'nagel' | 'bolzen', f_h_k: 0, M_y_Rk: 0, F_v_Rk_1: 0, johansen: 0, rope_effect: 0, F_v_Rk_single_N: 0, F_v_Rk_total_kN: 0, F_v_Rd_total_kN: 0, hinweise,
   };
   if (hatFehler(hinweise)) return leer;
 
@@ -423,10 +434,12 @@ export function holzschraube(e: HolzschraubeEingabe) {
   const F_ax_Rk_total_kN = (n_ef * F_ax_Rk_single_N) / 1000;
   const F_ax_Rd_total_kN = bemessungswert(F_ax_Rk_total_kN, k_mod, gammaM);
 
-  const f_h_k = 0.082 * (1 - 0.01 * e.d) * e.rhok;
-  const M_y_Rk = 0.3 * fuk * e.d ** 2.6;
-  const F_v_Rk_1 = f_h_k * e.lef * e.d;
-  const johansen = 1.15 * Math.sqrt(2 * M_y_Rk * f_h_k * e.d);
+  const d_ef = 1.1 * dKern;                                            // 8.7.1(3)
+  const lochleibungNach: 'nagel' | 'bolzen' = d_ef <= 6 ? 'nagel' : 'bolzen'; // 8.7.1(4)
+  const f_h_k = lochleibungNach === 'nagel' ? 0.082 * e.rhok * d_ef ** -0.3 : 0.082 * (1 - 0.01 * d_ef) * e.rhok;
+  const M_y_Rk = 0.3 * fuk * d_ef ** 2.6;
+  const F_v_Rk_1 = f_h_k * e.lef * d_ef;
+  const johansen = 1.15 * Math.sqrt(2 * M_y_Rk * f_h_k * d_ef);
   const rope_effect = Math.min(0.25 * F_ax_Rk_single_N, johansen);
   const F_v_Rk_single_N = Math.min(F_v_Rk_1, johansen + rope_effect);
   const F_v_Rk_total_kN = (e.n * F_v_Rk_single_N) / 1000;
@@ -435,10 +448,12 @@ export function holzschraube(e: HolzschraubeEingabe) {
   if (e.d < 6 || e.d > 12) hinweise.push({ stufe: 'warnung', feld: 'd', text: 'Gl. (8.38)/(8.39) gilt für 6 mm ≤ d ≤ 12 mm; sonst Werte der ETA verwenden.' });
   if (e.lef < 6 * e.d) hinweise.push({ stufe: 'warnung', feld: 'lef', text: 'Die Einschraubtiefe des Gewindes sollte mindestens 6·d betragen (8.7.2).' });
   if (e.alpha < 30) hinweise.push({ stufe: 'warnung', feld: 'alpha', text: 'Winkel zwischen Schraubenachse und Faser unter 30°: nach 8.7.2 nicht abgedeckt.' });
+  const kv = dKern / e.d;
+  if (kv < 0.6 - 1e-9 || kv > 0.75 + 1e-9) hinweise.push({ stufe: 'warnung', feld: 'dKern', text: 'Kerndurchmesser außerhalb 0,6·d … 0,75·d: Gl. (8.38) gilt nicht, Werte der ETA verwenden.' });
   hinweise.push({ stufe: 'warnung', feld: 'info', text: 'Normformeln ohne ETA; Hersteller deklarieren meist höhere Auszieh- und Fließmomentwerte. Mindestabstände, n_ef beim Abscheren und Blockscherversagen sind nicht nachgewiesen.' });
   return {
     k_mod, rho_k: e.rhok, f_ax_k, k_d, n_ef, factor_alpha, f_ax_alpha_k, F_ax_Rk_single_N, F_ax_Rk_total_kN, F_ax_Rd_total_kN,
-    f_h_k, M_y_Rk, F_v_Rk_1, johansen, rope_effect, F_v_Rk_single_N, F_v_Rk_total_kN, F_v_Rd_total_kN, hinweise,
+    d_kern: dKern, d_ef, lochleibungNach, f_h_k, M_y_Rk, F_v_Rk_1, johansen, rope_effect, F_v_Rk_single_N, F_v_Rk_total_kN, F_v_Rd_total_kN, hinweise,
   };
 }
 

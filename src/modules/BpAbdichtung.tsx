@@ -545,7 +545,7 @@ export default function BpAbdichtung() {
                       </div>
                       <div className="border-t border-zinc-100 pt-1.5">
                         <span className="text-zinc-500 block"><MdText text={inhalt.texte.geforderteMindestdeckendicke} /></span>
-                        <span>{formatDeWert(reqWidth / 10)}<MdText text={inhalt.texte.cmSollDA} /></span>
+                        <span>{formatDeWert(fb.dickeMinCm)}<MdText text={fb.typ === 'D320' || fb.typ === 'A320' ? inhalt.texte.cmSollD320 : inhalt.texte.cmSollDA} /></span>
                       </div>
                       <div className="border-t border-zinc-100 pt-1.5">
                         <span className="text-zinc-500 block"><MdText text={inhalt.texte.mindestRandabstandGrößtkornCheck} /></span>
@@ -560,7 +560,7 @@ export default function BpAbdichtung() {
                         {isThicknessOk ? (
                           <span><MdText text={inhalt.texte.bauteildickeKonformDieBauteildicke} />{formatDeWert(fbSlabThickness)}<MdText text={inhalt.texte.cmIstAusreichendGroß} />{formatDeWert(reqWidth)}<MdText text={inhalt.texte.mmVollständigBetoniertUnd} /></span>
                         ) : (
-                          <span><MdText text={inhalt.texte.bauteilZuDünnDie} />{formatDeWert(fbSlabThickness)}<MdText text={inhalt.texte.cmReichtFürEin} />{formatDeWert(reqWidth)}<MdText text={inhalt.texte.mmBreitesFugenbandNicht} />{formatDeWert(reqWidth / 10)}<MdText text={inhalt.texte.cmDickeEinplanen} /></span>
+                          <span><MdText text={inhalt.texte.bauteilZuDünnDie} />{formatDeWert(fbSlabThickness)}<MdText text={inhalt.texte.cmReichtFürEin} />{formatDeWert(reqWidth)}<MdText text={inhalt.texte.mmBreitesFugenbandNicht} />{formatDeWert(fb.dickeMinCm)}<MdText text={inhalt.texte.cmDickeEinplanen} /></span>
                         )}
                       </div>
 

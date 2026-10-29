@@ -82,15 +82,15 @@
   "werte": {
     "anwendungsbeispielLängenänderungEinesHei": "Anwendungsbeispiel: Längenänderung eines Heizestrichfeldes",
     "tUndCsAls": "α_T und ε_cs als Lehrwerte für Zementestrich",
-    "rund3MmDehnung": "Rund 3 mm Dehnung und 2–3 mm Verkürzung je Feldseite: Randdämmstreifen und Bewegungsfugen müssen diese Bewegungen aufnehmen.",
+    "rund3MmDehnung": "Rund 3 mm Dehnung und rund 4 mm Verkürzung je Feldseite (Spanne 3–5 mm bei 0,4–0,6 mm/m): Randdämmstreifen und Bewegungsfugen müssen diese Bewegungen aufnehmen.",
     "reiterBereiche": "Bereiche des Moduls Ausbau"
   },
   "daten": {
     "Ausbau.schritte": [
       {
         "titel": "1. Gegeben",
-        "formel": "L_0 = 8\\,\\text{m},\\; \\alpha_T = 12 \\cdot 10^{-6}\\,\\text{K}^{-1},\\; \\Delta T = 30\\,\\text{K},\\; \\varepsilon_{cs} = 0{,}3\\,\\text{mm/m}",
-        "erklaerung": "Aufheizen von 15 °C auf 45 °C Vorlauftemperatur im Estrich (vereinfacht)."
+        "formel": "L_0 = 8\\,\\text{m},\\; \\alpha_T = 12 \\cdot 10^{-6}\\,\\text{K}^{-1},\\; \\Delta T = 30\\,\\text{K},\\; \\varepsilon_{cs} = 0{,}5\\,\\text{mm/m}",
+        "erklaerung": "Aufheizen von 15 °C auf 45 °C Vorlauftemperatur im Estrich (vereinfacht). Schwindmaß Zementestrich als Lehrwert 0,5 mm/m (übliche Spanne etwa 0,4–0,6 mm/m, je nach Rezeptur und Trocknung)."
       },
       {
         "titel": "2. Temperaturdehnung",
@@ -99,7 +99,7 @@
       },
       {
         "titel": "3. Schwinden",
-        "formel": "\\Delta L_{cs} = 8 \\cdot 0{,}3 = 2{,}4\\,\\text{mm}",
+        "formel": "\\Delta L_{cs} = 8 \\cdot 0{,}5 = 4{,}0\\,\\text{mm}",
         "erklaerung": "Verkürzung beim Austrocknen."
       }
     ],

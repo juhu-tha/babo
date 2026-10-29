@@ -29,6 +29,12 @@ export const BSP_KENNWERTE = {
   wichte: 5.5,
 } as const;
 
+/**
+ * Rollschubmodul wählbar (T10-HB-2, Umsetzung 29.10.2026): 50 N/mm² wie in vielen ETAs und der Neuausgabe von EC 5
+ * (Standard), 65 N/mm² nach proHolz Austria (2018).
+ */
+export const BSP_ROLLSCHUB = { standard: 50, proHolz: BSP_KENNWERTE.GRmean } as const;
+
 /** E-Moduln von Estrichen [N/mm²] nach Hamm, KI-Journal 01/2016, S. 41 (Lehrwerte) */
 export const ESTRICH_E = { zement: 25000, anhydrit: 14000, gussasphalt: 10000 } as const;
 export type Estrichart = keyof typeof ESTRICH_E;
@@ -112,7 +118,7 @@ const istSymmetrisch = (l: readonly number[]) => l.every((t, i) => t === l[l.len
 export function bspSchwingung(e: BspSchwingungEingabe): BspSchwingungErgebnis {
   const hinweise: Hinweis[] = [];
   const E0 = e.E0mean ?? BSP_KENNWERTE.E0mean;
-  const GR = e.GR ?? BSP_KENNWERTE.GRmean;
+  const GR = e.GR ?? BSP_ROLLSCHUB.standard;
   const wichte = e.wichte ?? BSP_KENNWERTE.wichte;
   const lagen = Array.isArray(e.lagen) ? e.lagen : [];
 

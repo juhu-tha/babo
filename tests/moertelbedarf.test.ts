@@ -7,12 +7,14 @@ const nahe = (ist: number, soll: number, tol = 1e-9) => Math.abs(ist - soll) <= 
 console.log('--- Test: Mörtelbedarf ---');
 
 // 1. Anwendungsbeispiel im Modul (content/putzemoertel, Standardwerte): Gipsputz 50 m², 15 mm, f = 1,1 kg/(m²·mm)
-//    m = 50 · 15 · 1,1 = 825 kg → 33 Säcke à 25 kg (vorher wegen 825,0000000000001 kg: 34); Wasser 0,26 · 825 = 214,5 l
+//    m = 50 · 15 · 1,1 = 825 kg → 33 Säcke à 25 kg (vorher wegen 825,0000000000001 kg: 34); Wasser 0,6 · 825 = 495 l (Gipsputz, Umsetzung 29.10. T5-PM-5; vorher pauschal 0,26 → 214,5 l)
 const p0 = putzbedarf({ flaeche: 50, dickeMm: 15, art: 'gips' });
-pruefe(p0.gueltig && nahe(p0.masse, 825) && p0.saecke === 33 && nahe(p0.wasser, 214.5), `Beispiel Gipsputz ${p0.masse} kg, ${p0.saecke} Säcke`);
+pruefe(p0.gueltig && nahe(p0.masse, 825) && p0.saecke === 33 && nahe(p0.wasser, 495), `Beispiel Gipsputz ${p0.masse} kg, ${p0.saecke} Säcke`);
 // 2. Quizfall qn_putzemoertel_1: 80 m², 20 mm, Kalk-Zement-Leichtputz 1,25 → 2 000 kg = 80 Säcke
 const p1 = putzbedarf({ flaeche: 80, dickeMm: 20, art: 'kalkzement' });
-pruefe(nahe(p1.masse, 2000) && p1.saecke === 80, `Quiz 80 m² ${p1.saecke}`);
+pruefe(nahe(p1.masse, 2000) && p1.saecke === 80 && nahe(p1.wasser, 400), `Quiz 80 m² ${p1.saecke} ${p1.wasser}`);
+// Wasser je Putzart (Lehrwerte): Gips 0,6, Kalkzement 0,2, Aerogel 1,0 l/kg → je 100 kg Trockenmörtel 60 / 20 / 100 l
+pruefe(nahe(putzbedarf({ flaeche: 10, dickeMm: 10, art: 'aerogel' }).wasser, 28) && nahe(putzbedarf({ flaeche: 10, dickeMm: 10, art: 'zement' }).wasser, 25.6), 'Wasser je Putzart');
 // 3. Normalfuge 30 m², 24 cm, NF: 30 · 30 · 2,1 = 1 890 l; 1 890 · 1,55 = 2 929,5 kg → 118 Säcke; Wasser 615,2 l
 const n0 = mauermoertelNormalfuge({ flaeche: 30, wanddicke: '24.0', format: 'nf' });
 pruefe(n0.gueltig && nahe(n0.liter ?? NaN, 1890) && nahe(n0.masse, 2929.5) && n0.saecke === 118 && nahe(n0.wasser, 615.2), `Normalfuge ${n0.liter} l ${n0.masse} kg ${n0.saecke}`);

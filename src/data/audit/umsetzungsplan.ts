@@ -81,7 +81,7 @@ export const UMSETZUNGSPLAN: readonly Phase[] = [
     { ap: '6.3', titel: 'TTZ-Weiterbildungspfad und Kursquiz', status: 'wartet', hinweis: 'TTZ-Kursliste (Z44)' },
     { ap: '6.4', titel: 'Versuchs-Handouts', status: 'wartet', hinweis: 'Laborpilot WS 26/27 (Z37/Z42)' },
     { ap: '6.5', titel: 'KI-Master: Grundlagen und Hands-on-Übungen', status: 'wartet', hinweis: 'Übungen mit neutralem „KI-Assistent der Hochschule“ (#212)' },
-    { ap: '6.6', titel: 'Admin-Ansicht „Meine Module“, Paten je Cluster', status: 'wartet', hinweis: 'Prüfvermerke (Z38): 6 von 193 Fachmodulen fachlich geprüft (28.10.2026, Vermerk passiv ohne Namen)' },
+    { ap: '6.6', titel: 'Admin-Ansicht „Meine Module“, Paten je Cluster', status: 'wartet', hinweis: 'Prüfvermerke (Z38): 115 von 193 Fachmodulen fachlich geprüft (59,6 %; 6 am 28.10., 109 am 29.10.2026; Vermerk passiv ohne Namen)' },
     { ap: '6.7', titel: 'Halbjährlicher Normen- und Rechtsstand-Check', status: 'erledigt' },
     { ap: '6.8', titel: 'Offene Lizenz', status: 'wartet', hinweis: 'THA-Klärung (Z13/Z45); wird vom Professor gemeinsam versandt (Entscheidung 28.10.2026)' },
     { ap: '6.9', titel: 'Anonymer Kurzfragebogen', status: 'wartet', hinweis: 'DSB-Freigabe (Z11/Z39)' },

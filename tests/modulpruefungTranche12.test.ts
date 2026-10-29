@@ -2,7 +2,8 @@
 // Rückbau & Schadstoffe und Dauerhaftigkeit (Befundliste docs/pruefung/module-tranche-12.md).
 // Die Sollwerte stammen aus einem eigenen Prüfskript (eigene Umsetzung der Gleichungen in Python),
 // nicht aus den Kernen oder vorhandenen Tests übernommen.
-import { uRetrofit, dRequired, savings, charValue, designLognormal, fkMasonry, GMODG_ANLAGE7, CO2_ERDGAS } from '../src/utils/bestandKern';
+import { uRetrofit, dRequired, savings, charValue, designLognormal, fkMasonry, GMODG_ANLAGE7, CO2_ERDGAS, CO2_HEIZOEL, CO2_STROM, CO2_FERNWAERME, CO2_WAERMEPUMPE } from '../src/utils/bestandKern';
+import { FAKTOREN } from '../src/calc/energieausweis';
 import { SCHWINDBEIWERTE } from '../src/calc/holzphysik';
 import { MASSENKENNWERTE_BRI, massenkennwertSumme, rueckbauMassen, type Bauweise } from '../src/calc/rueckbauMassen';
 import { rcBilanz, RC_HOECHSTANTEIL } from '../src/calc/rcGesteinskoernung';
@@ -97,6 +98,13 @@ gilt(b.nutzpflanze.values['Quecksilber (Hg)'] === 5, 'BBodSchV Nutzpflanze Hg (K
 gilt(CO2_ERDGAS === 0.24, 'T12-BE-2 CO₂-Faktor Erdgas 0,24');
 const be2 = savings({ uOld: 1.5, uNew: 0.6, A: 100, bauteil: 'aussenwand', Gt: 3500, etaSys: 1, price: 0.11, co2: CO2_ERDGAS, invest: 0 });
 pruefe('BE2 ΔQ', be2.qEnd, 7560); pruefe('BE2 CO₂', be2.co2kg, 1814.4);
+// Umsetzung 29.10.2026 (Kleinpunkte): CO₂-Faktoren des Altbauatlas wie im Energieausweis-Kern (GModG Anlage 9, bis 31.12.2026)
+gilt(CO2_HEIZOEL === 0.31 && CO2_STROM === 0.56 && CO2_FERNWAERME === 0.12, 'Altbauatlas Heizöl 0,31, Strom 0,56, Fernwärme 0,12 kg/kWh');
+gilt(CO2_ERDGAS * 1000 === FAKTOREN.bis_2026.gas_brennwert.co2 && CO2_HEIZOEL * 1000 === FAKTOREN.bis_2026.oel_kessel.co2
+  && CO2_STROM * 1000 === FAKTOREN.bis_2026.wp_luft.co2 && CO2_FERNWAERME * 1000 === FAKTOREN.bis_2026.fernwaerme.co2, 'Altbauatlas-Faktoren gleich Energieausweis');
+pruefe('Wärmepumpe 0,56/3,5', CO2_WAERMEPUMPE, 0.16);
+const be2Oel = savings({ uOld: 1.5, uNew: 0.6, A: 100, bauteil: 'aussenwand', Gt: 3500, etaSys: 1, price: 0.12, co2: CO2_HEIZOEL, invest: 0 });
+pruefe('BE2 Heizöl CO₂', be2Oel.co2kg, 2343.6);
 // T12-HB-1: Schwindbeiwerte wie Tranche 10 (T10-HW-1), Beispiel 2: 220 · 0,36 · 18 / 100 = 14,256 mm
 gilt(SCHWINDBEIWERTE.fichte.tangential === 0.36 && SCHWINDBEIWERTE.fichte.radial === 0.19, 'T12-HB-1 Fichte 0,19/0,36');
 const hbJson = (holzbau as { daten: Record<string, Record<string, { radial: number; tangential: number }>> }).daten['HolzbauBeta.shrinkageCoeffs'];

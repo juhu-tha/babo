@@ -80,7 +80,7 @@ Weitere Angaben sind plausibel und ohne Befund: Pantheon 43,3 m, Monier-Patent 1
 
 **Empfehlung:** freigabefähig nach Korrektur T4-BSK-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 2. Einheiten (`einheiten`)
 
@@ -103,7 +103,7 @@ Weitere Angaben sind plausibel und ohne Befund: Pantheon 43,3 m, Monier-Patent 1
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 3. Kennwerte-Datenbank (`materialkennwerte`)
 
@@ -126,9 +126,11 @@ Weitere Angaben sind plausibel und ohne Befund: Pantheon 43,3 m, Monier-Patent 1
 
 **F-Freigabe-Stellen:** λ der Mauersteine nach DIN 4108-4 (falls T4-MK-1 so entschieden wird).
 
+**Umsetzung 29.10.2026 – T4-MK-1:** λ Kalksandstein KS 12 (Rohdichteklasse 1,8) 0,9 → **0,99 W/(mK)**, Ziegelmauerwerk MZ 12 (1,6) 0,5 → **0,68 W/(mK)** nach DIN 4108-4, Tab. 1 (Mauerwerk mit Normal- oder Dünnbettmörtel); Vollziegel 1,8 mit 0,81 unverändert. Lesehinweis im Modul nennt Quelle und Werte („vorläufig, F-Freigabe“). Zugleich c_p Baustahl/Spannstahl 440 → 450 J/(kgK) (T4-KG-1). Test `tests/modulpruefungTranche4.test.ts` (MK1, MK2, KG6, KG7). Quelle: DIN 4108-4 (Bemessungswerte, Normtext zur Bestätigung).
+
 **Empfehlung:** freigabefähig nach Klärung von T4-MK-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 4. Baustoffkenngrößen (`baustoffkenngroessen`)
 
@@ -160,9 +162,11 @@ Weitere Angaben sind plausibel und ohne Befund: Pantheon 43,3 m, Monier-Patent 1
   
   DIN EN ISO 10456 nennt 450 J/(kgK). Kein Rechenfehler; eine Vereinheitlichung wird empfohlen.
 
+**Umsetzung 29.10.2026 – T4-KG-1:** c_p von Stahl einheitlich **450 J/(kgK)**: Vorbelegung „Stahl“ des Wärmeeindringkoeffizienten (460 → 450), Auswahl der Wärmespeicherung (480 → 450; Schlüssel `stahlC480` unverändert, Text „Stahl (c=450)“), Kennwerte-Datenbank (440 → 450). Quelle: DIN EN ISO 10456.
+
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 5. Bauchemie (`bauchemie`)
 
@@ -190,6 +194,8 @@ Weitere Angaben sind plausibel und ohne Befund: Pantheon 43,3 m, Monier-Patent 1
 - **offen – Frage T4-BC-2 (Fugendimensionierung):** Das Modul gibt für DIN 18540 an: b : t ≈ 1 : 1 bis 10 mm Fugenbreite, darüber 2 : 1 (z. B. 20 mm → 10 mm). Die Norm tabelliert die Dichtstoffdicke je Fugenbreite mit Grenzabmaßen. Bitte am Normtext bestätigen, dass die Faustregel die Tabelle abbildet; sonst durch die Tabellenwerte ersetzen.
 
 **F-Freigabe-Stellen:** DIN 18540, Tabelle Fugenbreite/Dichtstoffdicke (T4-BC-2).
+
+**Umsetzung 29.10.2026 – T4-BC-2:** Normtext: Die Faustregel b : t bleibt und ist jetzt als „Faustregel … Lehrwert; DIN 18540 tabelliert die Dichtstoffdicke je Fugenbreite mit Grenzabmaßen – Tabellenwerte am Normtext prüfen, vorläufig, F-Freigabe“ gekennzeichnet. Fachgebiet: `DIN 18540` als Alternative bei „Bauprodukte“ in `scripts/auditDaten.ts` angehängt. Quelle: DIN 18540 (Normtext).
 
 **Empfehlung:** freigabefähig nach Korrektur T4-BC-1 und Klärung von T4-BC-2.
 
@@ -223,9 +229,11 @@ Teilsicherheitsbeiwerte (1,35/1,00; 1,50/0; γ_C 1,50, γ_S 1,15, γ_M0 1,00, γ
 - **offen – Frage T4-SK-2:** Der Rechner setzt Q_k,1 immer als Leiteinwirkung an. Nach Gl. 6.10 ist jede veränderliche Einwirkung einmal als Leiteinwirkung zu untersuchen. Soll ein Schalter „Leiteinwirkung tauschen“ mit Anzeige des Maximums ergänzt werden? Der Zustand `psi0_1` wird in der Komponente nicht verwendet.
 - Hinweis für andere Module: `normen_ausblick` und `statistik` nennen EN 1990:2023 ohne die neue Benennung EN 1990-1. Sie gehören nicht zu dieser Tranche und wurden nicht geändert.
 
+**Umsetzung 29.10.2026 – T4-SK-2:** Neuer Kern `src/calc/sicherheitskonzept.ts` (`kombination610`): beide Kombinationen nach Gl. 6.10 (Q_k,1 bzw. Q_k,2 als Leiteinwirkung), Schalter „Leiteinwirkung tauschen“, ψ₀ für Q_k,1 jetzt wählbar und wirksam (vorher unbenutzter Zustand `psi0_1`), Anzeige des Maximums mit maßgebender Leiteinwirkung und Hinweis, wenn die gewählte Kombination nicht maßgebend ist. Startwerte: 23,7 kN (Q_k,1 Leit) bzw. 23,25 kN (getauscht). Grenzen in `rechnerGrenzen.ts` angepasst. Test `tests/sicherheitskonzept.test.ts` (3 Fälle, Grenzen, Fuzz 1 000). Quelle: DIN EN 1990, 6.4.3.2, Gl. 6.10.
+
 **Empfehlung:** freigabefähig nach Korrektur T4-SK-1 und Klärung von T4-SK-2.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 7. Probenahme & Erkundung (`probenahme`)
 
@@ -269,6 +277,8 @@ Dazu `content/probenahme/Probenahme.json` mit drei Beispielen und die Lernziele.
 
 **F-Freigabe-Stellen:** Verwerfungsregel der Messreihe, DIN EN 12504-2:2021-10, Auswertung (T4-PN-2).
 
+**Umsetzung 29.10.2026 – T4-PN-2:** Verwerfungsregel als Kern `rueckprallMesssatz` in `src/calc/bauwerksuntersuchung.ts`: Median aller Einzelwerte, keine Streichung; der Messsatz wird verworfen, wenn **mehr als 20 % der Einzelwerte um mehr als 6 Einheiten** vom Median abweichen (vorher 25 %). Als „vorläufig, F-Freigabe“ gekennzeichnet. Verwendet im Schmidt-Hammer-Simulator (Labor); Texte in Probenahme, Prüfkatalog und Diagnosedaten angepasst (zugleich T12-BU-7). Quizfrage `q_prob_4` (Erklärung, Kernregel) korrigiert, Freigabe zurückgenommen. Hinweis: Die Zweitprüfung vom 27.10. hatte die 25-%-Regel nach einer Sekundärquelle (TUM-ZfP-Wiki) bestätigt; der Widerspruch ist nur am Normtext DIN EN 12504-2:2021-10 aufzulösen. Test `tests/modulpruefungTranche4.test.ts` (PN8–PN11). Quelle: Entscheidung 28.10. (Normtext DIN EN 12504-2:2021-10).
+
 **Empfehlung:** freigabefähig nach Korrektur T4-PN-1 und Klärung von T4-PN-2.
 
 - [ ] Modul freigeben
@@ -298,7 +308,7 @@ Dazu `content/probenahme/Probenahme.json` mit drei Beispielen und die Lernziele.
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 9. Analytik & Diagnostik (`analytik`)
 
@@ -321,7 +331,7 @@ Chloridklassen Cl 0,40 und Cl 0,20, Plasmatemperatur 6000–10 000 K, NIR 780–
 
 **Empfehlung:** freigabefähig nach Korrektur T4-AN-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 10. Mechanische Prüfungen (`mechanische_pruefungen`)
 
@@ -352,7 +362,7 @@ Prüfnormangaben ohne Befund:
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 11. Virtuelle Versuche (`labor`)
 
@@ -399,7 +409,7 @@ Die Betonkennwerte der Simulatoren (f_ctm, E_cm je Klasse nach Tab. 3.1; f_ct,sp
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 13. bis 17. Versuchs-Handouts (`labor_potentialmessung`, `labor_auslagerung`, `labor_frischbeton`, `labor_druckfestigkeit`, `labor_moertelprismen`)
 
@@ -442,11 +452,11 @@ Die Betonkennwerte der Simulatoren (f_ctm, E_cm je Klasse nach Tab. 3.1; f_ct,sp
 
 **Empfehlung:** alle fünf freigabefähig.
 
-- [ ] Modul freigeben (`labor_potentialmessung`)
-- [ ] Modul freigeben (`labor_auslagerung`)
-- [ ] Modul freigeben (`labor_frischbeton`)
-- [ ] Modul freigeben (`labor_druckfestigkeit`)
-- [ ] Modul freigeben (`labor_moertelprismen`)
+- [x] Modul freigeben (`labor_potentialmessung`; 29.10.2026)
+- [x] Modul freigeben (`labor_auslagerung`; 29.10.2026)
+- [x] Modul freigeben (`labor_frischbeton`; 29.10.2026)
+- [x] Modul freigeben (`labor_druckfestigkeit`; 29.10.2026)
+- [x] Modul freigeben (`labor_moertelprismen`; 29.10.2026)
 
 ---
 
@@ -474,3 +484,30 @@ Die Betonkennwerte der Simulatoren (f_ctm, E_cm je Klasse nach Tab. 3.1; f_ct,sp
   - [Deutsche Biographie, Koenen](https://www.deutsche-biographie.de/gnd117528471.html)
   - [TU Dresden, Einweihung CUBE](https://tu-dresden.de/tu-dresden/newsportal/news/feierliche-einweihung-des-weltweit-ersten-gebaeudes-aus-carbonbeton-cube)
   - [UNEP, Global Status Report for Buildings and Construction](https://www.unep.org/resources/report/global-status-report-buildings-and-construction)
+
+## Freigabe 29.10.2026
+
+Entscheidung vom 28.10.2026: „Module ohne offene Frage freigeben“; Punkte, die nur am Normtext zu klären sind, blockieren die Freigabe (Prüfbogen Normtext, Abschnitt „Was ohne Normtext nicht weiterkommt“). Geprüft wurde je Modul: Empfehlung erfüllt (Korrekturen behoben, Klärungen entschieden und in den Abschnitten „Umsetzung 29.10.2026“ bzw. in den genannten PRs umgesetzt oder gekennzeichnet) und kein Normtextpunkt offen. Prüfvermerk in `src/data/pruefvermerke.ts`: „geprueft“, am 2026-10-29, passiv ohne Namen. Quizfreigaben sind davon getrennt.
+
+Freigegeben:
+
+- `baustoffkunde` – nach Korrektur T4-BSK-1 (behoben, #244)
+- `einheiten` – freigabefähig, keine Frage
+- `materialkennwerte` – T4-MK-1 umgesetzt (#254, λ KS 12/MZ 12 nach DIN 4108-4, als F-Stelle gekennzeichnet); c_p Stahl 450 (T4-KG-1)
+- `baustoffkenngroessen` – Hinweis T4-KG-1 umgesetzt (#254, c_p Stahl 450 J/(kgK))
+- `sicherheitskonzept` – T4-SK-1 behoben (#244), T4-SK-2 umgesetzt (#254, Kern kombination610)
+- `messen_pruefen` – freigabefähig, keine Frage
+- `analytik` – nach Korrektur T4-AN-1 (behoben, #244)
+- `mechanische_pruefungen` – freigabefähig (F-Stelle B500B bleibt gekennzeichnet)
+- `festbeton_statistik` – freigabefähig (F-Stelle σ ≥ 3 N/mm² bleibt gekennzeichnet)
+- `labor_potentialmessung` – Versuchs-Handout freigabefähig
+- `labor_auslagerung` – Versuchs-Handout freigabefähig
+- `labor_frischbeton` – Versuchs-Handout freigabefähig
+- `labor_druckfestigkeit` – Versuchs-Handout freigabefähig
+- `labor_moertelprismen` – Versuchs-Handout freigabefähig
+
+Nicht freigegeben:
+
+- `bauchemie` – Prüfbogen: T4-BC-2 (Normtext DIN 18540)
+- `probenahme` – Prüfbogen: T4-PN-2 (Normtext DIN EN 12504-2)
+- `labor` – Der Schmidt-Hammer-Simulator rechnet mit der Verwerfungsregel aus T4-PN-2 (rueckprallMesssatz; Normtext DIN EN 12504-2, Prüfbogen Nr. 1) – nicht in der Blockliste, weil der Prüfbogen die Regel nur der Probenahme zuordnet

@@ -28,7 +28,7 @@ import inhalt from '@/content/holz/Holz.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
-import { gleichgewichtsfeuchte, feuchteNachLagerung, schwinden, schwindmass } from '@/src/calc/holzphysik';
+import { gleichgewichtsfeuchte, feuchteNachLagerung, schwinden, schwindmass, HOLZWERKSTOFF_SCHWINDMASSE } from '@/src/calc/holzphysik';
 import { festigkeitswerte, kdefFuer, KLED_NAME, GAMMA_M_HOLZ, type Nutzungsklasse } from '@/src/calc/holzbau';
 import { BSH_EN14080, HOLZ_EN338, type HolzKennwerte } from '@/src/data/kennwerte';
 
@@ -50,8 +50,9 @@ const holzArten = {
   'Buche (Vollholz)': { qr: 0.22, qt: 0.45, ql: 0.01, lambda: 0.17, rho: 720, beta0: 0.55 },
   'Eiche (Vollholz)': { qr: 0.18, qt: 0.34, ql: 0.01, lambda: 0.17, rho: 690, beta0: 0.55 },
   'Brettschichtholz (BSH)': { qr: 0.16, qt: 0.33, ql: 0.01, lambda: 0.13, rho: 450, beta0: 0.7 },
-  'Furnierschichtholz (FSH)': { qr: 0.05, qt: 0.05, ql: 0.01, lambda: 0.15, rho: 500, beta0: 0.7 },
-  'OSB': { qr: 0.02, qt: 0.02, ql: 0.02, lambda: 0.13, rho: 600, beta0: 0.9 },
+  // Holzwerkstoffe: qt/ql in Plattenebene, qr = Dickenrichtung (T6-HO-1, Kern src/calc/holzphysik.ts)
+  'Furnierschichtholz (FSH)': { ...HOLZWERKSTOFF_SCHWINDMASSE.FSH, lambda: 0.15, rho: 500, beta0: 0.7 },
+  'OSB': { ...HOLZWERKSTOFF_SCHWINDMASSE.OSB, lambda: 0.13, rho: 600, beta0: 0.9 },
 };
 
 const crossSections = [

@@ -188,6 +188,7 @@ for (const u of [{ rh: 120 }, { rh: -1 }, { wind: -1 }, { tLuft: -20 }, { tBeton
 pruefe(festigkeitsentwicklungAusR(0.25) === 'langsam' && oberflaechenTempBereich(12) === '10_15', 'Klassenzuordnung Beispiel');
 pruefe(nachbehandlungsdauer('langsam', 'andere', '10_15').tage === 7, 'XC4, 12 °C, langsam → 7 d');
 pruefe(nachbehandlungsdauer('langsam', 'xm', '10_15').tage === 14, 'XM → 14 d');
+pruefe(nachbehandlungsdauer('langsam', 'xf34', '10_15').tage === 14, 'XF3/XF4 → 14 d (vorläufig, Umsetzung 29.10.)');
 pruefe(nachbehandlungsdauer('sehr_langsam', 'andere', '5_10').tage === 15 && nachbehandlungsdauer('schnell', 'andere', 'ge25').tage === 1, 'Tabellenecken');
 pruefe(nachbehandlungsdauer('sehr_langsam', 'x0_xc1', '5_10').tage === 0.5, 'X0/XC1 → 0,5 d');
 const nb5 = nachbehandlungsdauer('mittel', 'x0_xc1', '<5');

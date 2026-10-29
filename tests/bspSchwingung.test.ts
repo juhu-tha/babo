@@ -32,16 +32,20 @@ pruefe(nahe(b.EI_l_netto, 11550e6 * 2.2275e-4, 1e-9), `EI netto ${b.EI_l_netto}`
 // 2. γ-Verfahren (DIN EN 1995-1-1 Anhang B), Handrechnung 150 L5s, ℓ = 4,6 m, G_R = 65 N/mm²:
 //    γ₁ = 1/(1 + π²·11 550·10⁶·0,03·0,03/(65·10⁶·4,6²)) = 1/(1 + 0,074594) = 0,93058
 //    I_ef = 3·0,03³/12 + 2·0,93058·0,03·0,06² = 2,0773·10⁻⁴ m⁴/m → EI_ef = 2,3993·10⁶ Nm²/m
-const g = bspSchwingung({ ...beispiel, estrichDicke: 0, verfahren: 'gamma' });
+const g = bspSchwingung({ ...beispiel, estrichDicke: 0, verfahren: 'gamma', GR: 65 });
 pruefe(g.gamma_aussen !== null && nahe(g.gamma_aussen, 0.93058, 1e-4), `γ ${g.gamma_aussen}`);
 pruefe(g.EI_l_gamma !== null && nahe(g.EI_l_gamma, 2.3993e6, 1e-3), `EI_ef ${g.EI_l_gamma}`);
+// Standard G_R = 50 N/mm² (T10-HB-2, 29.10.2026): γ₁ = 1/(1 + 0,074594·65/50) = 0,91160; I_ef = 6,75·10⁻⁶ + 2·0,91160·1,08·10⁻⁴ = 2,03656·10⁻⁴ → EI_ef = 2,3522·10⁶
+const g50 = bspSchwingung({ ...beispiel, estrichDicke: 0, verfahren: 'gamma' });
+pruefe(g50.gamma_aussen !== null && nahe(g50.gamma_aussen, 0.91160, 1e-4), `γ (G_R 50) ${g50.gamma_aussen}`);
+pruefe(g50.EI_l_gamma !== null && nahe(g50.EI_l_gamma, 2.35223e6, 1e-3), `EI_ef (G_R 50) ${g50.EI_l_gamma}`);
 pruefe(g.verfahrenAngesetzt === 'gamma' && g.EI_l < g.EI_l_netto && g.f1 < bspSchwingung({ ...beispiel, estrichDicke: 0 }).f1, 'γ-Verfahren abmindernd');
 // γ → 1 für sehr große Spannweite (Schubverformung vernachlässigbar)
 const lang = bspSchwingung({ ...beispiel, spannweite: 200, verfahren: 'gamma' });
 pruefe(lang.gamma_aussen !== null && lang.gamma_aussen > 0.999, 'γ → 1 für ℓ → ∞');
 // 3-lagig: Zwei-Gurt-Form; Handrechnung 100 L3s (30-40-30), ℓ = 4 m:
 //    γ = 1/(1 + π²·11 550·10⁶·0,03·0,04/(2·65·10⁶·16)) = 1/(1 + 0,065766) = 0,93829
-const l3 = bspSchwingung({ ...beispiel, lagen: [30, 40, 30], spannweite: 4, estrichDicke: 0, verfahren: 'gamma' });
+const l3 = bspSchwingung({ ...beispiel, lagen: [30, 40, 30], spannweite: 4, estrichDicke: 0, verfahren: 'gamma', GR: 65 });
 pruefe(l3.gamma_aussen !== null && nahe(l3.gamma_aussen, 0.93829, 1e-4), `γ 3-lagig ${l3.gamma_aussen}`);
 // 7-lagig: γ-Verfahren nicht umgesetzt → Warnung, Netto angesetzt
 const l7 = bspSchwingung({ ...beispiel, lagen: BSP_AUFBAUTEN.l7_200.lagen, verfahren: 'gamma' });

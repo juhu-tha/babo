@@ -71,6 +71,7 @@ export default function RstoRechnerTab({ activeProfile, bauweise, belastungsKlas
                 <>
                   <option value="Bk10">Bk10 (z.B. Landstraßen, stark befahren)</option>
                   <option value="Bk3.2">Bk3.2 (z.B. Kreisstraßen, Busstrecken)</option>
+                  <option value="Bk1.8">Bk1.8 (z.B. Sammelstraßen, Kreisstraßen mit mäßigem Schwerverkehr)</option>
                   <option value="Bk1.0">Bk1.0 (z.B. Erschließung, Gewerbestraßen)</option>
                   <option value="Bk0.3">Bk0.3 (z.B. Wohnstraßen, Nebenstraßen)</option>
                 </>

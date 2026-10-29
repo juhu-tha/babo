@@ -30,10 +30,8 @@ export default function Nachbehandlung() {
   const evaporationRate = verdunstung.E;
   const isCritical = verdunstung.kritisch;
 
-  const curingTime = useMemo(() => {
-    const { tage } = nachbehandlungsdauer(festigkeitsEntwicklung, expositionsklasse, oberflaechentemp);
-    return tage === null ? -1 : tage; // -1: Sondermaßnahmen erforderlich
-  }, [festigkeitsEntwicklung, expositionsklasse, oberflaechentemp]);
+  const nb = useMemo(() => nachbehandlungsdauer(festigkeitsEntwicklung, expositionsklasse, oberflaechentemp), [festigkeitsEntwicklung, expositionsklasse, oberflaechentemp]);
+  const curingTime = nb.tage === null ? -1 : nb.tage; // -1: Sondermaßnahmen erforderlich
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -131,8 +129,9 @@ export default function Nachbehandlung() {
                 onChange={(e) => setExpositionsklasse(e.target.value as typeof expositionsklasse)}
               >
                 <option value="x0_xc1">X0, XC1</option>
-                <option value="andere">Andere (XC2–XC4, XD, XS, XF, XA)</option>
+                <option value="andere">Andere (XC2–XC4, XD, XS, XF1, XF2, XA)</option>
                 <option value="xm">XM (Verschleiß: doppelte Dauer)</option>
+                <option value="xf34">XF3, XF4 (doppelte Dauer, vorläufig)</option>
               </select>
             </div>
 
@@ -165,6 +164,7 @@ export default function Nachbehandlung() {
             ) : expositionsklasse === 'x0_xc1' ? (
               <p className="text-xs text-text-main/70 mt-2 leading-relaxed"><MdText text={inhalt.texte.x0UndXc10} /></p>
             ) : null}
+            {nb.hinweise.some(h => h.feld === 'exposition') && <EingabeHinweise hinweise={nb.hinweise} />}
           </div>
 
           <details className="mt-2 group cursor-pointer border border-home-grau/30 rounded-lg bg-off-white">

@@ -76,7 +76,7 @@ k_mod (Tab. 3.1), k_def (Tab. 3.2: Vollholz/BSH/FSH 0,6/0,8/2,0; OSB/3 1,5/2,25/
 
 **Empfehlung:** freigabefähig nach Klärung von T6-HO-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 2. Holzwerkstoffe (`holzwerkstoffe`)
 
@@ -105,7 +105,7 @@ k_mod (Tab. 3.1), k_def (Tab. 3.2: Vollholz/BSH/FSH 0,6/0,8/2,0; OSB/3 1,5/2,25/
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 3. Biogene Baustoffe (`nawaro`)
 
@@ -136,7 +136,7 @@ k_mod (Tab. 3.1), k_def (Tab. 3.2: Vollholz/BSH/FSH 0,6/0,8/2,0; OSB/3 1,5/2,25/
 
 **Empfehlung:** freigabefähig nach Korrektur T6-NA-1/-2.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 4. Kunststoffe (`kunststoffe`)
 
@@ -161,7 +161,7 @@ k_mod (Tab. 3.1), k_def (Tab. 3.2: Vollholz/BSH/FSH 0,6/0,8/2,0; OSB/3 1,5/2,25/
 
 **Empfehlung:** freigabefähig nach Klärung von T6-KU-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 5. Membranen & ETFE (`membranen_etfe`)
 
@@ -194,7 +194,7 @@ k_mod (Tab. 3.1), k_def (Tab. 3.2: Vollholz/BSH/FSH 0,6/0,8/2,0; OSB/3 1,5/2,25/
 
 **Empfehlung:** freigabefähig nach Klärung von T6-ME-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 6. Dämmstoffe (`daemmstoffe`)
 
@@ -216,7 +216,7 @@ k_mod (Tab. 3.1), k_def (Tab. 3.2: Vollholz/BSH/FSH 0,6/0,8/2,0; OSB/3 1,5/2,25/
 
 **Empfehlung:** freigabefähig (Hinweis T6-DA-1).
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 7. Ausbau & Abdichtung (`ausbau`)
 
@@ -247,7 +247,7 @@ k_mod (Tab. 3.1), k_def (Tab. 3.2: Vollholz/BSH/FSH 0,6/0,8/2,0; OSB/3 1,5/2,25/
 
 **Empfehlung:** freigabefähig nach Korrektur T6-AU-1/-2 und Klärung von T6-AU-3.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 8. Werkstoff-Kombinationen (`kombinationen`)
 
@@ -273,7 +273,7 @@ Faser- und Matrixkennwerte (Carbon HT 230 GPa/3 500 MPa, HM 390/2 500, E-Glas 73
 
 **Empfehlung:** freigabefähig nach Korrektur T6-KO-1 bis -3 und Klärung von T6-KO-4/-5.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 9. Materialität (Architektur) (`materialitaet_architektur`)
 
@@ -304,7 +304,7 @@ Faser- und Matrixkennwerte (Carbon HT 230 GPa/3 500 MPa, HM 390/2 500, E-Glas 73
 
 **Empfehlung:** freigabefähig nach Korrektur T6-MA-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 10. Sonstige & Innovationen (`sonstiges`)
 
@@ -335,7 +335,7 @@ Faser- und Matrixkennwerte (Carbon HT 230 GPa/3 500 MPa, HM 390/2 500, E-Glas 73
 
 **Empfehlung:** freigabefähig nach Korrektur T6-SO-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 11. Innenausbau (`innenausbau`)
 
@@ -395,3 +395,37 @@ Hinweise ohne Entscheidungsbedarf: T6-DA-1 (Brandverhalten EPS), Abdichtungsnorm
 
 - Unabhängige Nachrechnung: eigenes Python-Skript (81 Werte). Die Kernwerte sind als `tests/modulpruefungTranche6.test.ts` übernommen. Die Inline-Rechnungen (Kombinationen, Navigator, Belegreife) und die Anwendungsbeispiele wurden über die Formeln abgeglichen.
 - Öffentliche Quellen dieser Prüfung: [DIN Media, DIN 4134-1](https://www.dinmedia.de/en/standard/din-4134-1/393467764); [DIN Media, DIN 4134-101](https://www.dinmedia.de/en/standard/din-4134-101/393467784); [DIN Media, DIN CEN/TS 19102](https://dinmedia.de/en/pre-standard/din-cen-ts-19102/362739883); [DIN Media, DIN EN 16351:2025-07](https://www.dinmedia.de/en/standard/din-en-16351/388285455); [DIN Media, Entwurf DIN EN ISO 11359-2](https://www.dinmedia.de/en/draft-standard/din-en-iso-11359-2/406342785); [Austrian Standards, DIN EN 1995-1-1:2026-09](https://www.austrian-standards.at/en/shop/din-en-1995-1-1-2026-09~p5057531); [bauprofessor, DIN 18534:2025-10](https://www.bauprofessor.de/news/ueberarbeitung-der-din-18534-zur-badabdichtung-veroeffentlicht/); [DIN, Inhaltsverzeichnis DIN 18534-1:2025-10](https://www.din.de/de/mitwirken/normenausschuesse/nabau/veroeffentlichungen/wdc-beuth:din21:391755876/toc-3620546/download); [Baunetz Wissen, Wassereinwirkungsklassen](https://www.baunetzwissen.de/glossar/w/wassereinwirkungsklassen-8432878); [Rigips, Wassereinwirkungsklassen](https://www.rigips.de/sites/mac3.rigips.de/files/dam_assets/Wassereinwirkungsklassen_nach_DIN_18534_1_13.pdf); [Stauf, Merkblatt SO 01](https://www.stauf.de/fileadmin/masterTemplate/Resources/Public/Files/tech_info/weitere_themenbereiche/SO_01_Parkett_und_Bodenbelaege_im_Bad_Ansicht.pdf); [Baunetz Wissen, Fliesengruppen](https://www.baunetzwissen.de/fliesen-und-platten/fachwissen/keramische-belaege/einteilung-keramischer-fliesen-und-platten-nach-norm-1584291); [WEKA, DIN 18157](https://www.weka.de/architekten-ingenieure/neue-din-18157-ausfuehrung-von-bekleidungen-und-belaegen-im-duennbettverfahren/); [IHK, REACH Formaldehyd](https://www.ihk.de/sbh/unternehmer/energie-umwelt/umwelt/gefahrstoffe/neue-beschraenkung-von-formaldehyd-5871186); [baulinks, Strohballenwand F90-B](https://www.baulinks.de/webplugin/2015/1569.php4); [Baunetz Wissen, Folienkissen](https://www.baunetzwissen.de/geneigtes-dach/fachwissen/dachdeckungen/folienkissen-158497); [Baunetz Wissen, Allianz Arena](https://www.baunetzwissen.de/fassade/objekte/sport-freizeit/allianz-arena-in-muenchen-70590); [TensiNet, Tropical Islands](https://tensinet.com/index.php/projects-database/projects/4286); [Wikipedia, Chapel of Reconciliation](https://en.wikipedia.org/wiki/Chapel_of_Reconciliation); [Baunetz Wissen, Alnatura](https://www.baunetzwissen.de/gesund-bauen/objekte/buero-arbeiten/firmenzentrale-alnatura-in-darmstadt-6504499); [Dezeen, Centre Pompidou-Metz](https://www.dezeen.com/?p=65106); [Baunetz Wissen, Merkblatt Sichtbeton](https://www.baunetzwissen.de/gerueste-und-schalungen/tipps/planungshilfen/dbv-vdz-merkblatt-sichtbeton-4812778); [Catalysts 15 (2025) 103, Photokatalyse](https://www.mdpi.com/2073-4344/15/2/103); [ITeC, EAD 040083-00-0404](https://en.itec.cat/infoitec/certification/new-ead-040083-00-0404-supersedes-etag-004-for-the-ce-marking-of-etics-systems/).
+
+## Umsetzung 29.10.2026
+
+Entscheidungen vom 28.10.2026 (nachts, „alle Vorschläge übernehmen“); Regressionstests in `tests/modulpruefungTranche6.test.ts` und `tests/kombinationen.test.ts`.
+
+- **T6-HO-1 (Holz):** Quell-/Schwindmaße der Holzwerkstoffe getrennt nach Plattenebene und Dickenrichtung im Kern (`HOLZWERKSTOFF_SCHWINDMASSE` in `src/calc/holzphysik.ts`): FSH q = 0,05/0,01 % je % in Plattenebene, 0,24 % je % in Dickenrichtung; OSB 0,02/0,02 bzw. 0,30 % je %. Die Dickenwerte sind Lehrwerte (vorläufig, F-Freigabe), Hinweistext im Modul. Nachrechnung: OSB 18 mm, u 15 → 9 %: 17,676 mm; FSH 45 mm: 44,352 mm. Quelle: Befund T6-HO-1 (Dickenquellung etwa wie Vollholz radial oder stärker, Lit.).
+- **T6-KU-1 (Kunststoffe):** Duroplast-Plateau oberhalb T_g von 800 auf 80 MPa (Lehrwert im Bereich 50–100 MPa) gesenkt; E(T_g) = 2 040 MPa, E(250 °C) = 80,18 MPa. Fachtext und Grenzen nennen die Spanne. Quelle: Lehrbuchwerte für den gummielastischen Modul engmaschig vernetzter Harze (Befund T6-KU-1).
+- **T6-ME-1 (Membranen & ETFE):** Kissendruck allgemein „etwa 200 bis 800 Pa“ ohne Projektzuordnung; das unbelegte Projektbeispiel ist entfernt.
+- **T6-AU-3 (Ausbau/Innenausbau):** Schwindmaß Zementestrich einheitlich 0,5 mm/m (Lehrwert), Spanne 0,4–0,6 mm/m im Text. Beispiel Ausbau: ΔL_cs = 8 · 0,5 = 4,0 mm (vorher 2,4 mm), Hinweis „rund 4 mm Verkürzung (3–5 mm)“.
+- **T6-KO-4 (Kombinationen):** Die s_d-Regel teilt jetzt an der Dämmschicht (Schicht mit dem größten Wärmedurchlasswiderstand, selbst nicht mitgezählt, wie bei den nachweisfreien Dächern der DIN 4108-3). Standardaufbau: s_d,i = 2,55 m, s_d,e = 0,215 m. Außenwände mit Außendämmung auf tragender Schicht (WDVS auf Mauerwerk) werden als Konstruktion ohne rechnerischen Tauwassernachweis nach DIN 4108-3 eingeordnet (Zuordnung im Einzelfall am Normtext; vorläufig, F-Freigabe), Innendämmung mit Hinweis auf Glaser/DIN EN 15026, sonst Dachregel als Orientierung.
+- **T6-KO-5 (Kombinationen):** Faserverbund und Schichtrechner rechnen im neuen Kern `src/calc/kombinationen.ts` (`faserverbund`, `schichtaufbau`) mit Plausibilitätsprüfung; die stille Eingabebegrenzung (`Math.max(1, … || 1)`) ist entfernt, unzulässige Eingaben (Dicke ≤ 0, λ ≤ 0, μ < 1, v_f außerhalb 0–100 %) werden gemeldet. Handwerte: CFK HT/EP 40 %: 93,92/5,284 GPa, 1 429,2 MPa; WDVS U = 0,17761 W/(m²K).
+- **T6-IA-3 (Innenausbau, Normtext):** Zuordnung bodengleicher Duschen und Klassenbeschreibungen als „vorläufig, F-Freigabe“ am Normtext DIN 18534-1:2025-10, Tab. 1 gekennzeichnet; Inhalt unverändert. `q_iax_3` bleibt unverändert (durch die Kennzeichnung nicht falsch). Fachgebiet: `DIN 18534` als Alternative an „Bauprodukte“ in `scripts/auditDaten.ts` angehängt.
+- **T6-IA-4 (Innenausbau, Normtext):** Einordnung der CM-Messung als Neben- oder Besondere Leistung nach DIN 18365, Abschnitt 4 als „vorläufig, F-Freigabe“ gekennzeichnet; Fachgebiet über die Alternative `DIN 18365`.
+
+## Freigabe 29.10.2026
+
+Entscheidung vom 28.10.2026: „Module ohne offene Frage freigeben“; Punkte, die nur am Normtext zu klären sind, blockieren die Freigabe (Prüfbogen Normtext, Abschnitt „Was ohne Normtext nicht weiterkommt“). Geprüft wurde je Modul: Empfehlung erfüllt (Korrekturen behoben, Klärungen entschieden und in den Abschnitten „Umsetzung 29.10.2026“ bzw. in den genannten PRs umgesetzt oder gekennzeichnet) und kein Normtextpunkt offen. Prüfvermerk in `src/data/pruefvermerke.ts`: „geprueft“, am 2026-10-29, passiv ohne Namen. Quizfreigaben sind davon getrennt.
+
+Freigegeben:
+
+- `holz` – T6-HO-1 umgesetzt (#251, Dickenrichtung getrennt, Lehrwerte vorläufig)
+- `holzwerkstoffe` – freigabefähig, keine Frage
+- `nawaro` – nach Korrektur T6-NA-1/-2 (behoben, #237)
+- `kunststoffe` – T6-KU-1 umgesetzt (#251, Plateau 80 MPa)
+- `membranen_etfe` – T6-ME-1 umgesetzt (#251, ohne Projektzuordnung)
+- `daemmstoffe` – freigabefähig (Hinweis T6-DA-1 ohne Entscheidungsbedarf)
+- `ausbau` – T6-AU-1/-2 behoben (#237), T6-AU-3 umgesetzt (#251, 0,5 mm/m)
+- `kombinationen` – T6-KO-1 bis -3 behoben (#237), T6-KO-4/-5 umgesetzt (#251, Kern kombinationen.ts)
+- `materialitaet_architektur` – nach Korrektur T6-MA-1 (behoben, #237)
+- `sonstiges` – nach Korrektur T6-SO-1 (behoben, #237)
+
+Nicht freigegeben:
+
+- `innenausbau` – Prüfbogen: T6-IA-3, T6-IA-4 (Normtext)

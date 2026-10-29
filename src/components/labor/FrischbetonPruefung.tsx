@@ -20,6 +20,7 @@ import { saveStoredLabProtocol } from '@/src/utils/studyStorage';
 import { Fz } from '../ui/Formelzeichen';
 import { useDiagrammFarben, linAchse } from './laborGrafik';
 import { AusbreitDraufsicht, AusbreitSeitenansicht, SetzversuchAnsicht, SetzFormen } from './FrischbetonGeraete';
+import { ausbreitAuswertung } from '@/src/calc/laborVersuch';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -137,16 +138,21 @@ export default function FrischbetonPruefung() {
     }, 40);
   };
 
-  // Consistency Class determination
-  const consistencyClass = (spread: number): { code: string; name: string } => {
-    // Ausbreitmaßklassen nach DIN EN 206 (Benennung nach DIN 1045-2)
-    if (spread <= 345) return { code: 'F1', name: 'steif (≤ 340 mm)' };
-    if (spread <= 415) return { code: 'F2', name: 'plastisch (350–410 mm)' };
-    if (spread <= 485) return { code: 'F3', name: 'weich (420–480 mm)' };
-    if (spread <= 555) return { code: 'F4', name: 'sehr weich (490–550 mm)' };
-    if (spread <= 625) return { code: 'F5', name: 'fließfähig (560–620 mm)' };
-    if (spread < 700) return { code: 'F6', name: 'sehr fließfähig (≥ 630 mm)' };
-    return { code: 'F6', name: 'sehr fließfähig – für SVB Setzfließversuch nach DIN EN 12350-8 (Klassen SF)' };
+  // Ausbreitmaß f = (d1 + d2)/2 auf 10 mm gerundet (DIN EN 12350-5); Klasse aus dem gerundeten Wert (DIN EN 206)
+  const ausbreit = ausbreitAuswertung(spreadDiameterMm);
+  const KLASSENNAMEN: Record<string, string> = {
+    F1: 'steif (≤ 340 mm)',
+    F2: 'plastisch (350–410 mm)',
+    F3: 'weich (420–480 mm)',
+    F4: 'sehr weich (490–550 mm)',
+    F5: 'fließfähig (560–620 mm)',
+    F6: 'sehr fließfähig (≥ 630 mm)',
+  };
+  // Ausbreitmaßklassen nach DIN EN 206 (Benennung nach DIN 1045-2), bestimmt aus dem auf 10 mm gerundeten Ausbreitmaß
+  const consistencyClass = (fGerundet: number): { code: string; name: string } => {
+    const code = ausbreitAuswertung(fGerundet).klasse;
+    if (code === 'F6' && fGerundet >= 700) return { code, name: 'sehr fließfähig – für SVB Setzfließversuch nach DIN EN 12350-8 (Klassen SF)' };
+    return { code, name: KLASSENNAMEN[code] ?? code };
   };
 
   const slumpClass = (slump: number): { code: string; name: string } => {
@@ -172,7 +178,7 @@ export default function FrischbetonPruefung() {
 
   const handleArchive = () => {
     const isSpread = activeTest === 'ausbreittisch';
-    const classInfo = isSpread ? consistencyClass(spreadDiameterMm) : slumpClass(slumpMm);
+    const classInfo = isSpread ? consistencyClass(ausbreit.f) : slumpClass(slumpMm);
 
     const newRecord: LabProtocolRecord = {
       id: `PROTO-FRISCH-${Date.now().toString(36).toUpperCase()}`,
@@ -193,7 +199,8 @@ export default function FrischbetonPruefung() {
         ...(isSpread ? { 'Hubschläge': `${formatDeWert(shocksDone)} / 15` } : {})
       },
       metrics: isSpread ? {
-        'Ausbreitmaß d (mm)': formatDeWert(spreadDiameterMm),
+        'Einzelmessungen d1 / d2 (mm)': `${formatDeWert(ausbreit.d1)} / ${formatDeWert(ausbreit.d2)}`,
+        'Ausbreitmaß f (mm, auf 10 mm gerundet)': formatDeWert(ausbreit.f),
         'Konsistenzklasse': `${classInfo.code} (${classInfo.name})`,
         'Fließgrenze τ0 (Pa, Lehrmodell)': formatDeZahl(binghamYieldStress, 0),
         'Plastische Viskosität μp (Pa·s, Lehrmodell)': formatDeZahl(binghamPlasticViscosity, 1)
@@ -362,7 +369,7 @@ export default function FrischbetonPruefung() {
                     <AusbreitSeitenansicht ausbreitmass={spreadDiameterMm} kegelGehoben={coneLifted} hubschlaege={shocksDone} gehoben={platteOben} />
                   </div>
                   <figcaption className="w-full text-[11px] text-center leading-snug" style={{ color: 'var(--pg-text2)' }}>
-                    Ausbreitmaß f = Mittel aus zwei Durchmessern d1 und d2, parallel zu den Tischkanten gemessen (DIN EN 12350-5).
+                    Ausbreitmaß f = Mittel aus zwei Durchmessern d1 und d2, parallel zu den Tischkanten gemessen, auf 10 mm gerundet (DIN EN 12350-5); die Klasse folgt aus dem gerundeten Wert.
                   </figcaption>
                 </figure>
 
@@ -400,13 +407,14 @@ export default function FrischbetonPruefung() {
                   <div className="p-3.5 bg-off-white rounded-xl border border-home-grau/30 flex flex-wrap items-center justify-between gap-3 text-xs">
                     <div>
                       <span className="text-text-main/60 block text-[11px] uppercase font-bold">Ausbreitmaß <Fz>f</Fz></span>
-                      <strong className="text-xl text-shiraz font-mono">{formatDeWert(spreadDiameterMm)} mm</strong>
+                      <strong className="text-xl text-shiraz font-mono">{formatDeWert(ausbreit.f)} mm</strong>
+                      <span className="block text-[11px] text-text-main/70">auf 10 mm gerundet (DIN EN 12350-5)</span>
                     </div>
 
                     <div>
                       <span className="text-text-main/60 block text-[11px] uppercase font-bold">Konsistenzklasse</span>
                       <strong className="text-base text-text-main font-bold">
-                        {consistencyClass(spreadDiameterMm).code} ({consistencyClass(spreadDiameterMm).name})
+                        {consistencyClass(ausbreit.f).code} ({consistencyClass(ausbreit.f).name})
                       </strong>
                     </div>
 

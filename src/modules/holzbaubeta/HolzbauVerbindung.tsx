@@ -1,6 +1,6 @@
 import { InlineMath } from 'react-katex';
 import { GitCommit, Wrench } from 'lucide-react';
-import { type Nutzungsklasse, type KLED, type holzschraube } from '@/src/calc/holzbau';
+import { type Nutzungsklasse, type KLED, type holzschraube, KERN_VERHAELTNIS_SCHRAUBE } from '@/src/calc/holzbau';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberFormat';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -12,6 +12,9 @@ interface HolzbauVerbindungProps {
   connAngle: number;
   connCount: number;
   connD: number;
+  /** Kerndurchmesser d₁ [mm] als Eingabetext; leer → Lehrwert 0,65·d */
+  connDKern: string;
+  setConnDKern: Dispatch<SetStateAction<string>>;
   connForce: number;
   connLef: number;
   connLoadDuration: KLED;
@@ -28,7 +31,7 @@ interface HolzbauVerbindungProps {
   setConnWoodClass: Dispatch<SetStateAction<string>>;
 }
 
-export default function HolzbauVerbindung({ connAngle, connCount, connD, connForce, connLef, connLoadDuration, connResults, connServiceClass, connWoodClass, setConnAngle, setConnCount, setConnD, setConnForce, setConnLef, setConnLoadDuration, setConnServiceClass, setConnWoodClass }: HolzbauVerbindungProps) {
+export default function HolzbauVerbindung({ connAngle, connCount, connD, connDKern, setConnDKern, connForce, connLef, connLoadDuration, connResults, connServiceClass, connWoodClass, setConnAngle, setConnCount, setConnD, setConnForce, setConnLef, setConnLoadDuration, setConnServiceClass, setConnWoodClass }: HolzbauVerbindungProps) {
   return (
       <div className="flex flex-col gap-6 animate-in fade-in duration-300" id="holz_tab_connections">
 
@@ -142,6 +145,27 @@ export default function HolzbauVerbindung({ connAngle, connCount, connD, connFor
                     className="border border-home-grau/30 rounded-lg p-2 text-xs bg-white text-text-main font-semibold"
                   />
                 </div>
+              </div>
+
+              {/* Kerndurchmesser d₁: leer → Lehrwert 0,65·d (DIN EN 1995-1-1, 8.7.1(3): d_ef = 1,1·d₁) */}
+              <div className="flex flex-col gap-1">
+                <label htmlFor="holz-schraube-kern" className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.kerndurchmesserD1Mm} /></label>
+                <input id="holz-schraube-kern"
+                  type="number"
+                  inputMode="decimal"
+                  min="0"
+                  step="0.1"
+                  value={connDKern}
+                  placeholder={`leer: ${formatDeZahl(KERN_VERHAELTNIS_SCHRAUBE * connD, 2)}`}
+                  onChange={(e) => setConnDKern(e.target.value)}
+                  aria-describedby="holz-schraube-kern-hinweis"
+                  className="border border-home-grau/30 rounded-lg p-2 text-xs bg-white text-text-main font-semibold"
+                />
+                <p id="holz-schraube-kern-hinweis" className="text-[10px] text-text-main/60 leading-snug">
+                  {connDKern.trim() === ''
+                    ? `Ohne Eingabe Lehrwert d₁ = 0,65 · d = ${formatDeZahl(KERN_VERHAELTNIS_SCHRAUBE * connD, 2)} mm; maßgebend ist der Kerndurchmesser nach ETA bzw. Herstellerangabe.`
+                    : `Abscheren mit d_ef = 1,1 · d₁ = ${formatDeZahl(connResults.d_ef, 2)} mm (DIN EN 1995-1-1, 8.7.1(3)).`}
+                </p>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
@@ -307,7 +331,9 @@ export default function HolzbauVerbindung({ connAngle, connCount, connD, connFor
                   {
                     titel: inhalt.werte.lochleibungsfestigkeitUndFließmoment,
                     erklaerung: inhalt.werte.lochleibungsfestigkeitNachEc5Ansatz,
-                    formel: `f_{h,k} = 0{,}082 \\cdot (1 - 0{,}01 \\cdot ${formatDeTeX(connD, 0)}) \\cdot ${formatDeTeX(connResults.rho_k, 0)} = ${formatDeTeX(connResults.f_h_k, 2)}\\,\\text{N/mm}^2;\\quad M_{y,Rk} = 0{,}3 \\cdot 400 \\cdot ${formatDeTeX(connD, 0)}^{2{,}6} = ${formatDeTeX(connResults.M_y_Rk, 0)}\\,\\text{Nmm}`,
+                    formel: `d_{ef} = 1{,}1 \\cdot d_1 = 1{,}1 \\cdot ${formatDeTeX(connResults.d_kern, 2)} = ${formatDeTeX(connResults.d_ef, 2)}\\,\\text{mm};\\quad ${connResults.lochleibungNach === 'nagel'
+                      ? `f_{h,k} = 0{,}082 \\cdot ${formatDeTeX(connResults.rho_k, 0)} \\cdot ${formatDeTeX(connResults.d_ef, 2)}^{-0{,}3}`
+                      : `f_{h,k} = 0{,}082 \\cdot (1 - 0{,}01 \\cdot ${formatDeTeX(connResults.d_ef, 2)}) \\cdot ${formatDeTeX(connResults.rho_k, 0)}`} = ${formatDeTeX(connResults.f_h_k, 2)}\\,\\text{N/mm}^2;\\quad M_{y,Rk} = 0{,}3 \\cdot 400 \\cdot ${formatDeTeX(connResults.d_ef, 2)}^{2{,}6} = ${formatDeTeX(connResults.M_y_Rk, 0)}\\,\\text{Nmm}`,
                   },
                   {
                     titel: inhalt.werte.schertragfähigkeitJeSchraube,

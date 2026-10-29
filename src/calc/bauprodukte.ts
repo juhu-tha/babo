@@ -9,7 +9,7 @@
 const r1 = (x: number) => parseFloat(x.toFixed(1));
 const r2 = (x: number) => Math.round(x * 100) / 100;
 
-// ── Trockenbau: Materialbedarf einer Metallständerwand (Richtwerte, inkl. ca. 5 % Verschnitt) ──
+// ── Trockenbau: Materialbedarf einer Metallständerwand (Herstellerrichtwerte, herstellerneutral zusammengefasst; T8-TB-Q1) ──
 export interface TrockenbauEingabe { flaeche: number; lagen: 1 | 2; achsabstand: 62.5 | 31.25; daemmung: boolean }
 export function trockenbauBedarf(e: TrockenbauEingabe) {
   const A = e.flaeche;
@@ -18,7 +18,7 @@ export function trockenbauBedarf(e: TrockenbauEingabe) {
     cw: r1(A * (e.achsabstand === 62.5 ? 2.0 : 3.8) * 1.05),
     uw: r1(A * 0.7 * 1.05),
     schrauben: Math.ceil(A * (e.lagen === 1 ? 30 : 55) * 1.05),
-    spachtel: r1(A * e.lagen * 2 * 0.45),           // 0,45 kg je m², Lage und Seite (Lehrwert)
+    spachtel: r1(A * e.lagen * 2 * 0.45),           // 0,45 kg je m², Lage und Seite (Herstellerrichtwert)
     dichtband: r1(A * 0.8),
     daemmung: e.daemmung ? r1(A * 1.02) : 0,
   };
@@ -38,7 +38,10 @@ export function fugenbandPruefung(art: Fugenart, wasserdruckM: number, dickeCm: 
   else { breite = 400; typ = 'FM400'; }
   const minRandCm = (groesstkornMm * 3) / 10;              // Lehrannahme 3 · Größtkorn
   const randCm = (dickeCm - breite / 20) / 2;
-  return { breite, typ, dickeOk: dickeCm * 10 >= breite, minRandCm, randCm, randOk: randCm >= minRandCm, druckBar: wasserdruckM * 0.1 };
+  // Mindestbauteildicke d ≥ a; Ausnahme A 320 und D 320: ≥ 30 cm nach Herstellerangabe (Sika, Fugenband-Ratgeber für
+  // die Praxis; T8-AB-Q1, für A 320 Entscheidung 29.10.2026)
+  const dickeMinCm = typ === 'D320' || typ === 'A320' ? 30 : breite / 10;
+  return { breite, typ, dickeMinCm, dickeOk: dickeCm >= dickeMinCm, minRandCm, randCm, randOk: randCm >= minRandCm, druckBar: wasserdruckM * 0.1 };
 }
 
 // ── Dämmung: U-Wert vor/nach Dämmung, Einsparung und Mindestdicke (Dämmstoff-Berater) ──

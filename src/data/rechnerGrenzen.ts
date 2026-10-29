@@ -70,7 +70,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       'Zentrischer Druck um die schwache Achse; Biegung, Exzentrizitäten und Kippen sind nicht enthalten.',
       'Vollholz nach EN 338 und Brettschichtholz nach EN 14080, γ_M = 1,3; k_mod nach Tab. 3.1.',
       'Querdruck: wirksame Kontaktlänge mit pauschal 30 mm Überstand je Seite.',
-      'Querdruck: k_c,90 = 1,5/1,75 bei Einzelauflagern auch am Trägerende, sofern l₁ ≥ 2h (nicht geprüft, Fall „Allgemein“ mit 1,0 wählbar).',
+      'Querdruck: k_c,90 = 1,5/1,75 bei Einzelauflagern auch am Trägerende, sofern l₁ ≥ 2h (nicht geprüft, Fall „Allgemein“ mit 1,0 wählbar); BSH mit l > 400 mm: k_c,90 = 1,0.',
       'Druckstab: EN 1995-1-1 nennt keine Grenzschlankheit; der Hinweis ab λ > 200 ist eine Lehrgrenze.',
     ],
   },
@@ -146,7 +146,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   kunststoffe: {
     kurz: 'E-Modul von Kunststoffen über der Temperatur als Lehrmodell je Strukturtyp (amorph, teilkristallin, Elastomer, Duroplast) und Wärmedehnung ΔL = L₀·α_T·ΔT.',
     grenzen: [
-      'Logistische Modellkurven mit festen Übergangstemperaturen (z. B. T_g = 100 °C amorph); keine Werkstoffdaten eines bestimmten Kunststoffs, maßgebend sind Produktdatenblätter.',
+      'Logistische Modellkurven mit festen Übergangstemperaturen (z. B. T_g = 100 °C amorph), Duroplast-Plateau oberhalb T_g 80 MPa (Lehrwert, 50–100 MPa); maßgebend sind Produktdatenblätter.',
       'Kurzzeitmodul ohne Zeit- und Lasteinfluss: Kriechen, Relaxation, Alterung und Feuchte sind nicht abgebildet.',
       'Werte unter 0,1 MPa werden für die logarithmische Darstellung auf 0,1 MPa gesetzt (Fließ- bzw. Schmelzbereich ohne Tragfunktion).',
     ],
@@ -242,7 +242,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     kurz: "Bemessungswert der Einwirkungen nach DIN EN 1990, Gl. 6.10, aus einer ständigen und zwei veränderlichen Einwirkungen.",
     grenzen: [
       "Nur Grundkombination Gl. 6.10 (ständige und vorübergehende Situation); keine Gl. 6.10a/b, keine außergewöhnliche oder Erdbebensituation.",
-      "Q_k,1 ist fest die Leiteinwirkung; welche Einwirkung maßgebend ist, muss durch Vertauschen selbst geprüft werden.",
+      "Zwei veränderliche Einwirkungen; beide Kombinationen (Q_k,1 bzw. Q_k,2 als Leiteinwirkung) werden gerechnet, das Maximum wird angezeigt.",
       "Eine ständige Einwirkung mit einem γ_G für alle Anteile; günstig wirkende Anteile mit γ_G,inf = 1,00 nur über die Auswahl.",
     ],
   },
@@ -261,6 +261,15 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "MIP: Zylinderporenmodell mit γ = 0,485 N/m und θ = 140°; erfasst werden Porenzugänge, nicht die Porenkörper (Flaschenhals-Effekt).",
     ],
   },
+  lehm: {
+    kurz: "Lehrmodell Stampflehm: Tendenzen von Rohdichte, Druckfestigkeit, Schwindmaß, Wärmeleitfähigkeit und Feuchtepuffer aus Ton-, Schluff- und Sandanteil.",
+    grenzen: [
+      "Lehrmodell mit linearen Ansätzen ohne Quelle und ohne Normbezug; keine Bemessungswerte nach DIN 18940/18945.",
+      "Druckfestigkeit des Modells etwa 0,6 bis 2,2 N/mm²; für Stampflehm nennt die Fachliteratur etwa 2 bis 4 N/mm².",
+      "Feuchtepuffer-Kennzahl ohne Zeitbezug; Sorptionsklassen nach DIN 18947 beziehen sich auf Zeitstufen bis 12 h.",
+      "Außerhalb des Reglerbereichs (Ton 3–60 %, Sand 15–85 %, Herstellfeuchte 5–25 %) warnt der Kern.",
+    ],
+  },
   erdbau: {
     kurz: "Grobe Zuordnung zu Bodengruppe und Frostempfindlichkeitsklasse sowie Mindestdicke des frostsicheren Oberbaus nach vereinfachtem RStO-Schema.",
     grenzen: [
@@ -274,14 +283,16 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     grenzen: [
       "Faserverbund mit idealer Haftung (Lehrmodell).",
       "U-Wert mit R_si = 0,13 und R_se = 0,04 m²K/W, ohne Wärmebrücken und ohne Glaser-Nachweis.",
-      "Tauwasser-Hinweis als Faustregel nach den nachweisfreien nicht belüfteten Dächern der DIN 4108-3 (s_d,i ≥ 1,0 m / 2,0 m / 6·s_d,e) über die Schichthälften; kein Glaser-Nachweis.",
+      "Tauwasser-Hinweis nach den nachweisfreien Dächern der DIN 4108-3 (s_d,i ≥ 1,0 m / 2,0 m / 6·s_d,e), geteilt an der Dämmschicht (größter Wärmedurchlasswiderstand, nicht mitgezählt); kein Glaser-Nachweis.",
+      "Außendämmung auf tragender Schicht (z. B. WDVS auf Mauerwerk): Außenwand ohne rechnerischen Tauwassernachweis nach DIN 4108-3; Innendämmung: Hinweis auf Nachweis. Einordnung nur über die Kategorie „tragend“.",
+      "Unzulässige Eingaben (Dicke ≤ 0, λ ≤ 0, μ < 1) werden gemeldet statt still begrenzt.",
     ],
   },
   bp_verkehr_rsto: {
     kurz: "Zeigt fest hinterlegte Schichtaufbauten je Belastungsklasse; es wird nichts gerechnet.",
     rechnet: false,
     grenzen: [
-      "Schichtdicken sind vereinfachte Lehrwerte, maßgebend sind die Tafeln der RStO 12/24.",
+      "Gebundene Schichten nach RStO 12/24, Tafel 1/2, Zeile 1 (vorläufig); Gesamtdicken und Frostschutzschicht sind Lehrannahmen.",
       "Frostzone, Frostempfindlichkeit und Wasserverhältnisse beeinflussen den Aufbau nicht.",
     ],
   },
@@ -359,7 +370,8 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   holzbau_verbindung: {
     kurz: "Holzschrauben: Tragfähigkeit auf Herausziehen (Gl. 8.38–8.41) und Abscheren (Johansen mit Seileffekt) nach DIN EN 1995-1-1.",
     grenzen: [
-      "Normformeln ohne ETA: f_ax,k = 0,52·d^−0,5·l_ef^−0,1·ρ_k^0,8, M_y,Rk = 0,3·f_u·d^2,6 mit f_u = 400 N/mm² (Lehrwert); Herstellerwerte sind meist höher.",
+      "Normformeln ohne ETA: f_ax,k = 0,52·d^−0,5·l_ef^−0,1·ρ_k^0,8, M_y,Rk = 0,3·f_u·d_ef^2,6 mit f_u = 400 N/mm² (Lehrwert); Herstellerwerte sind meist höher.",
+      "Abscheren mit d_ef = 1,1·d₁; Kerndurchmesser d₁ als Eingabe (leer: Lehrwert 0,65·d); d_ef ≤ 6 mm Lochleibung nach den Regeln für Nägel (nicht vorgebohrt), sonst für Bolzen, ohne Faserwinkel.",
       "k_mod aus NKL und KLED, γ_M = 1,3; einschnittig Holz–Holz, nur Versagensarten Lochleibung und Fließgelenk.",
       "n_ef = n^0,9 nur beim Herausziehen; ohne Mindestabstände, Blockscheren und Interaktion axial/quer (8.7.3).",
     ],
@@ -370,7 +382,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Brand: feste Abbrandraten nach DIN EN 1995-1-2:2010-12 (Neuausgabe 2026-10 nicht berücksichtigt), nur Restquerschnitt und Widerstandsmoment, keine Tragfähigkeit.",
       "Schwingung: zweiseitig gelenkig gelagerter Einfeldstreifen; Biegesteifigkeit nur aus den Längslagen, netto oder nach dem γ-Verfahren (DIN EN 1995-1-1 Anhang B, nur symmetrisch 3- und 5-lagig).",
       "Bei 7 und mehr Lagen wird die Netto-Biegesteifigkeit angesetzt; das Schubanalogieverfahren ist nicht umgesetzt.",
-      "Kennwerte E_0,mean = 11 550 N/mm², G_r,mean = 65 N/mm² und Wichte 5,5 kN/m³ nach proHolz Austria (Band II, 2018) statt Werten aus der ETA des Herstellers.",
+      "Kennwerte E_0,mean = 11 550 N/mm², Wichte 5,5 kN/m³ nach proHolz Austria (Band II, 2018), Rollschubmodul G_r,mean wählbar 50 N/mm² (Standard, viele ETAs) oder 65 N/mm² (proHolz) statt Werten aus der ETA des Herstellers.",
       "Steifigkeitskriterium mit mitwirkender Breite b_F nach Hamm/Richter; Orientierungswerte der Deckenklassen nach ÖNORM B 1995-1-1, keine Grenzwerte nach NA (DE).",
       "Nicht enthalten: Beschleunigungs- und Geschwindigkeitskriterium, Durchlaufträger, vierseitige Lagerung, Auflagernachgiebigkeit; das Ergebnis bestätigt keine Deckenklasse.",
     ],
@@ -509,7 +521,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     kurz: "Einfeldbalken unter Gleichlast aus Vollholz oder BSH: Biegung, Schub mit k_cr sowie w_inst, w_fin und w_net,fin mit k_def nach DIN EN 1995-1-1 mit NA (DE).",
     grenzen: [
       "k_mod nach Tab. 3.1, γ_G = 1,35, γ_Q = 1,5; eine Nutzlast (ψ₂ = 0,3, Kategorie A); nachgewiesen werden 1,35·g + 1,5·q (k_mod der Nutzlast) und 1,35·g (k_mod ständig), maßgebend die größere Ausnutzung.",
-      "w_fin = w_G·(1 + k_def) + w_Q·(1 + ψ₂·k_def) ≤ l/200, w_net,fin ≤ l/300 ohne Überhöhung, w_inst ≤ l/300 (Grenzwerte NA, vorläufig); Schwingungen fehlen.",
+      "w_fin = w_G·(1 + k_def) + w_Q·(1 + ψ₂·k_def) ≤ l/200, w_net,fin ≤ l/300 ohne Überhöhung, w_inst ≤ l/300 (Empfehlungswerte nach DIN EN 1995-1-1, Tab. 7.2 mit NA, vorläufig); Schwingungen fehlen.",
       "Kein Kipp-, Auflager- oder Querdrucknachweis; Rohdichten für das Eigengewicht als Mittelwerte.",
     ],
   },

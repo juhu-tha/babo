@@ -99,7 +99,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T9-AZ-1 bis -4.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 3. Ausgangsstoffe (`grundlagen`)
 
@@ -119,6 +119,8 @@
 - **offen – Frage T9-GL-1 (RC-Anteile):** Der Text nennt Höchstanteile rezyklierter Gesteinskörnung je Expositionsklasse (z. B. 45/35 Vol.-%). Nach dem Gelbdruck DIN 1045-2 (2022) ist in Betonklasse BK-N nur ≤ 25 Vol.-% (WO, WF) vorgesehen, darüber BK-E mit Tab. E.2.5 ([IFEU, Das neue Regelwerk DIN 1045-2](https://kreislaufwirtschaft-bau.rlp.de/fileadmin/kreislaufwirtschaft-bau/Startseite/Service/Fachgespraeche/neues_Regelwerk/220920_IFEU_Das_neue_Regelwerk_DIN_1045-2.pdf)). Bitte die Werte am Weißdruck 2023-08 (Anhang E) bestätigen und den Bezug zu BK-N/BK-E ergänzen.
 
 **F-Freigabe-Stellen:** Entfall der Mehlkorn-Höchstwerte und Mindest-Leimvolumen in DIN 1045-2:2023-08 (aus früherer Runde).
+
+**Umsetzung 29.10.2026 – T9-GL-1:** Normtext: Bezug zur Betonklasse ergänzt – in BK-N nach DIN 1045-1000 rezyklierte Gesteinskörnung nur bis 25 Vol.-% (WO, WF), höhere Anteile setzen BK-E voraus (Anhang E, Tab. E.2.5); Werte „vorläufig, F-Freigabe“. Mit T12-RE-1 (Ressourcen-Simulator) abgestimmt. Quelle: [IFEU, Das neue Regelwerk DIN 1045-2](https://kreislaufwirtschaft-bau.rlp.de/fileadmin/kreislaufwirtschaft-bau/Startseite/Service/Fachgespraeche/neues_Regelwerk/220920_IFEU_Das_neue_Regelwerk_DIN_1045-2.pdf); Normtext DIN 1045-2:2023-08.
 
 **Empfehlung:** freigabefähig nach Klärung von T9-GL-1.
 
@@ -145,6 +147,8 @@
 
 **F-Freigabe-Stellen:** Anrechnung von Zusatzstoffen bei XF2/XF4 (Frage M-6 aus Tranche 1, gilt mit).
 
+**Umsetzung 29.10.2026 – T9-BM-1:** Normtext: Hinweis der Zementkarten „manuell prüfen“ → „vorläufig, F-Freigabe am Normtext“ (Anwendungstabellen DIN 1045-2:2023-08); Karteninhalte unverändert. Quelle: DIN 1045-2:2023-08 (Normtext).
+
 **Empfehlung:** freigabefähig nach Klärung von T9-BM-1.
 
 - [ ] Modul freigeben
@@ -170,7 +174,7 @@
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 6. Nachbehandlung (`nachbehandlung`)
 
@@ -194,6 +198,8 @@ Die Tabelle (1/2/2/3, 1/2/4/5, 2/4/7/10, 3/6/10/15 d), X0/XC1 0,5 d und die Zuor
 - **offen – Frage T9-NB-1 (Temperaturen < 5 °C, XF3/XF4):** (a) Der Kern meldet unter 5 °C „Sondermaßnahmen“ ohne Dauer. Nach DIN 1045-3 ist die Dauer um die Zeit unter 5 °C zu verlängern; Winterbaumaßnahmen sind zusätzlich nötig. (b) Nach der Wiedergabe bei SCHWENK gilt die 70-%-Regel bzw. Verdopplung ohne genaueren Nachweis für XM **und XF3/XF4** (Nachbehandlungsklasse 4: XM1–XM3, XF4 bei langsamen und sehr langsamen Betonen). Der Rechner verdoppelt nur bei XM. Soll die Auswahl um XF4 (bzw. XF3) ergänzt und der Text zur Verlängerung unter 5 °C angepasst werden? (c) Betone ab C70/85: mindestens 1 Tag.
 
 **F-Freigabe-Stellen:** Abschnittsnummer „DIN 1045-3:2023-08, Abschn. 9.6“; Zuordnung XF3/XF4 zur Nachbehandlungsklasse 4.
+
+**Umsetzung 29.10.2026 – T9-NB-1:** Kern `nachbehandlungsdauer`: neue Auswahl **XF3, XF4** mit doppelter Dauer wie XM (vorläufig, Hinweis im Ergebnis); unter 5 °C Hinweis „Dauer um die Zeit unter 5 °C verlängern, Winterbaumaßnahmen zusätzlich“ (Kern und Modultext). „Andere“ nennt jetzt XF1, XF2. Tests `tests/hydratation.test.ts`, `tests/modulpruefungTranche9.test.ts` (NB7, NB8). Offen bleibt (c) Mindestdauer ab C70/85. Quelle: DIN 1045-3:2023-08, Tab. 3 (Normtext; Wiedergabe SCHWENK).
 
 **Empfehlung:** freigabefähig nach Klärung von T9-NB-1.
 
@@ -222,7 +228,7 @@ Die Tabelle (1/2/2/3, 1/2/4/5, 2/4/7/10, 3/6/10/15 d), X0/XC1 0,5 d und die Zuor
 
 **Empfehlung:** freigabefähig nach Korrektur T9-FB-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 8. Sichtbeton (`sichtbeton`)
 
@@ -238,7 +244,7 @@ Die Tabelle (1/2/2/3, 1/2/4/5, 2/4/7/10, 3/6/10/15 d), X0/XC1 0,5 d und die Zuor
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 9. Sonderbetone (`sonderbetone`, 14 Unterreiter)
 
@@ -266,7 +272,7 @@ Die Tabelle (1/2/2/3, 1/2/4/5, 2/4/7/10, 3/6/10/15 d), X0/XC1 0,5 d und die Zuor
 
 **Empfehlung:** freigabefähig nach Korrektur T9-SO-1 bis -4.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 10. Entwicklungen (`innovative_werkstoffe`)
 
@@ -288,9 +294,11 @@ Die Tabelle (1/2/2/3, 1/2/4/5, 2/4/7/10, 3/6/10/15 d), X0/XC1 0,5 d und die Zuor
 
 **F-Freigabe-Stellen:** keine.
 
+**Umsetzung 29.10.2026 – T9-IW-1:** „bis 0,8 mm Breite autonom abdichtet“ → „verschließt feine Risse selbstständig (Laborwerte um 0,5 mm Rissbreite, Jonkers)“. Quelle: Entscheidung 28.10..
+
 **Empfehlung:** freigabefähig nach Korrektur T9-IW-2/-3 und Klärung von T9-IW-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 11. Biokohlebeton (`biokohlebeton`)
 
@@ -312,9 +320,11 @@ Die Tabelle (1/2/2/3, 1/2/4/5, 2/4/7/10, 3/6/10/15 d), X0/XC1 0,5 d und die Zuor
 
 **F-Freigabe-Stellen:** keine neuen (Permanenz im Beton bleibt Richtwert).
 
+**Umsetzung 29.10.2026 – T9-BK-1:** Projekthinweis mit Nennung von Hochschule und Transferzentrum entfernt; der neutrale Hinweis („öffentlich zugänglicher Stand …, ersetzt keine Eignungsprüfung“) bleibt. Quelle: Entscheidung 28.10..
+
 **Empfehlung:** freigabefähig nach Klärung von T9-BK-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 12. Qualitätssicherung (`qualitaetssicherung`, 4 Unterreiter)
 
@@ -337,9 +347,11 @@ Identitätskriterien (n = 1: f_ci ≥ f_ck − 4; n = 2–4: f_cm ≥ f_ck + 1; 
 
 **F-Freigabe-Stellen:** Tabellennummer „DIN 1045-3, Tabelle 2“ (Nachbehandlung) im Reiter Betonbauklassen.
 
+**Umsetzung 29.10.2026 – T9-QS-3:** „BBQ-Koordinator“ → „bereichsübergreifender Fachkoordinator“ (drei Stellen im Reiter Betonbauklassen). Quelle: DIN 1045-1000:2023-08 (öffentliche Wiedergaben).
+
 **Empfehlung:** freigabefähig nach Korrektur T9-QS-1/-2 und Klärung von T9-QS-3.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 13. Betonpraxis (`betonpraxis`)
 
@@ -361,9 +373,11 @@ Identitätskriterien (n = 1: f_ci ≥ f_ck − 4; n = 2–4: f_cm ≥ f_ck + 1; 
 
 **F-Freigabe-Stellen:** Bohrkernkriterien DIN EN 13791:2020-02 (im Modul „manuell prüfen“).
 
+**Umsetzung 29.10.2026 – T9-BP-2:** WU-Fußnote: Abminderung der Ortbetonwand auf 200 mm betrifft **BK 1** (240 → 200 mm) bei besonderen betontechnischen und ausführungstechnischen Maßnahmen (vorher „BK 2“); „vorläufig, F-Freigabe am Richtlinientext“. Quelle: DAfStb-Richtlinie Wasserundurchlässige Bauwerke aus Beton (2017).
+
 **Empfehlung:** freigabefähig nach Korrektur T9-BP-1 und Klärung von T9-BP-2.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 14. Modulinfos Stahlbetonbau (`stahlbeton_info`)
 
@@ -398,9 +412,11 @@ Identitätskriterien (n = 1: f_ci ≥ f_ck − 4; n = 2–4: f_cm ≥ f_ck + 1; 
 
 **F-Freigabe-Stellen:** γ_tex und Dauerstandsbeiwerte nach DAfStb-Richtlinie Teil 1 (nicht öffentlich).
 
+**Umsetzung 29.10.2026 – T9-CB-1:** Neuer Kern `src/calc/carbonbeton.ts` (`carbonbetonBiegung`) mit Dehnungskontrolle ε_c ≤ 3,5 ‰: Erreicht der Beton die Grenzdehnung vor dem Textilbruch, folgt das Gleichgewicht mit σ_tex = E_tex·ε_tex < f_td. Standardfall: m_Rd = **4,97** statt 5,12 kNm/m (Beton maßgebend, x = 8,20 mm, σ_tex = 1 860 N/mm²). Anzeige von ε_c, σ_tex und maßgebendem Versagen, Beispiel um die Dehnungskontrolle ergänzt, neue Formel. f_cd weiter über `FCD_MODUL.carbonbeton` (Test `fcdModule` auf den Kern umgestellt). Tests `tests/carbonbeton.test.ts` (Standard, Textilversagen, Stetigkeit am Übergang, Grenzen, Fuzz 1 000) und `tests/modulpruefungTranche9.test.ts` (CB-Fälle). Quelle: Tranche 9, CB1–CB3; DIN EN 1992-1-1, 3.1.7/6.1 (analog).
+
 **Empfehlung:** freigabefähig nach Korrektur T9-CB-2 und Klärung von T9-CB-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ---
 
@@ -421,3 +437,28 @@ Identitätskriterien (n = 1: f_ci ≥ f_ck − 4; n = 2–4: f_cm ≥ f_ck + 1; 
 
 - Unabhängige Nachrechnung: eigenes Python-Skript mit eigener Umsetzung der Gleichungen (Uno/ACI 305R, DIN 1045-3-Tabelle, EC 2 Gl. 3.2, DIN EN 206 8.2.1 und Anhang B, 44/12 mit IPCC-F_perm, Bogue/ASTM C150, Powers, Roussel/Greenhill, Hagen-Poiseuille, Rechteckblock mit Dehnungskontrolle), 92 Vergleiche; die Kernwerte stehen in `tests/modulpruefungTranche9.test.ts`.
 - Öffentliche Quellen dieser Prüfung: [SCHWENK, Beton – Herstellung nach den aktuellen Normen (2026)](https://www.schwenk.de/wp-content/uploads/2026/03/swz_1671_02_Broschuere_Beton_Herstellung_nach_den_aktuellen_Normen_v4_Endfassung.pdf); [Baunetz Wissen, Beton nach Norm](https://www.baunetzwissen.de/beton/fachwissen/betonarten/beton-nach-norm-7680284); [Bauprofessor, BBQ](https://www.bauprofessor.de/news/betonbauqualitaetsklassen-bbq-din-norm-1045/); [DIN Media, DIN 1045-1000](https://www.dinmedia.de/de/norm/din-1045-1000/369463519); [DIN, Inhaltsverzeichnis DIN 1045-2:2023-08](https://www.din.de/de/mitwirken/normenausschuesse/nabau/veroeffentlichungen/wdc-beuth:din21:369550272/toc-3445766/download); [BFT International, DAfStb-THG-Richtlinie](https://bft-international.com/en/artikel/climate-friendly-concrete-construction-using-standardized-benchmarks-the-ghg-guideline-published-by-the-dafstb-4213466.html); [IFEU, Das neue Regelwerk DIN 1045-2](https://kreislaufwirtschaft-bau.rlp.de/fileadmin/kreislaufwirtschaft-bau/Startseite/Service/Fachgespraeche/neues_Regelwerk/220920_IFEU_Das_neue_Regelwerk_DIN_1045-2.pdf); [iTeh, EN 1008](https://standards.iteh.ai/catalog/standards/cen/8ab1a0fa-b727-48f7-9b31-739eba3732ca/en-1008-2002); [Heidelberg Materials, Sichtbetonklassen](https://www.heidelbergmaterials.de/system/files/2026-02/HM_Sichtbeton_Klassen_Anforderungen_Brosch%C3%BCre_1.pdf); [DIN Media, DAfStb Stahlfaserbeton 2021-06](https://www.dinmedia.de/de/technische-regel/dafstb-stahlfaserbeton/341626064); [Baunetz Wissen, DAfStb-Richtlinien](https://www.baunetzwissen.de/beton/fachwissen/regelwerke/dafstb-richtlinien-151216); [DIN Media, DIN 18551:2014-08](https://dinmedia.de/en/standard/din-18551/207441368); [DIN Media, Entwurf DIN 18551:2026-05](https://www.dinmedia.de/en/draft-standard/din-18551/400531731); [Baunetz Wissen, UHPC](https://www.baunetzwissen.de/beton/fachwissen/betonarten/ultrahochleistungsbeton-150988); [DIN Media, DAfStb nichtmetallische Bewehrung 2024-01](https://www.dinmedia.de/de/technische-regel/dafstb-betonbauteile-nichtmetallische-bewehrung/377433845); [IPCC 2019 Refinement, Biochar](https://www.Ipcc-nggip.Iges.Or.Jp/public/2019rf/pdf/4_Volume4/19R_V4_Ch02_Ap4_Biochar.pdf); [KIT-Katalog, Zement-Taschenbuch](https://katalog.bibliothek.kit.edu/bib/108549); [Schweitzer, Grübl u. a.](https://www.schweitzer-online.de/en/buch/Gruebl/Beton/9783433013403/A17510646/); [White Rose, Juenger u. a. 2019](https://eprints.whiterose.ac.uk/146768); [Structurae, De Larrard/Sedran 1994](https://structurae.net/en/literature/journal-article/optimization-of-ultra-high-performance-concrete-by-the-use-of-a-packing-model); [Bauhaus-Universität Weimar, Trümer 2019](https://www.uni-weimar.de/fileadmin/user/fak/bauing/professuren_institute/Finger_Institut/Studium/Promotionen/Zusammenfassung_der_Promotionsschrift_truemer.pdf); [DIN Media, DAfStb-Heft 561](https://6sku3uaup9f9.din.de/en/publication/heft-561-dafstb/107880416).
+
+## Freigabe 29.10.2026
+
+Entscheidung vom 28.10.2026: „Module ohne offene Frage freigeben“; Punkte, die nur am Normtext zu klären sind, blockieren die Freigabe (Prüfbogen Normtext, Abschnitt „Was ohne Normtext nicht weiterkommt“). Geprüft wurde je Modul: Empfehlung erfüllt (Korrekturen behoben, Klärungen entschieden und in den Abschnitten „Umsetzung 29.10.2026“ bzw. in den genannten PRs umgesetzt oder gekennzeichnet) und kein Normtextpunkt offen. Prüfvermerk in `src/data/pruefvermerke.ts`: „geprueft“, am 2026-10-29, passiv ohne Namen. Quizfreigaben sind davon getrennt.
+
+Freigegeben:
+
+- `beton_a_z` – nach Korrektur T9-AZ-1 bis -4 (behoben, #246)
+- `herstellung_einbau` – freigabefähig, keine Frage
+- `festbeton` – nach Korrektur T9-FB-1 (behoben, #246)
+- `sichtbeton` – freigabefähig, keine Frage
+- `sonderbetone` – nach Korrektur T9-SO-1 bis -4 (behoben, #246)
+- `innovative_werkstoffe` – T9-IW-2/-3 behoben (#246), T9-IW-1 umgesetzt (#254)
+- `biokohlebeton` – T9-BK-1 umgesetzt (#254, Projekthinweis entfernt)
+- `qualitaetssicherung` – T9-QS-1/-2 behoben (#246), T9-QS-3 umgesetzt (#254)
+- `betonpraxis` – T9-BP-1 behoben (#246), T9-BP-2 umgesetzt (#254, BK 1)
+- `carbonbeton` – T9-CB-2 behoben (#246), T9-CB-1 umgesetzt (#254, Kern carbonbetonBiegung)
+
+Nicht freigegeben:
+
+- `grundlagen` – Prüfbogen: T9-GL-1a/b (Normtext)
+- `bindemittel` – Prüfbogen: T9-BM-1a/b (Normtext)
+- `nachbehandlung` – Prüfbogen: T9-NB-1a–d (Normtext)
+
+Ohne Eintrag in `src/data/pruefvermerke.ts` (kein Fachmodul im Sinne der Prüfvermerke, daher kein Vermerk): `beton_info`, `stahlbeton_info`.
