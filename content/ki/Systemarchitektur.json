@@ -17,13 +17,13 @@
     "faltungsnetzeCnnsUndVision": "Faltungsnetze (CNNs) und Vision Transformer vermessen Rissbreiten ab 0,1 mm und gleichen Baustellen-Scans mit 4D-BIM ab.",
     "outputSchadenskatasterSollIst": "Output: Schadenskataster, Soll-Ist-Abweichung",
     "semantischeRagPipeline": "Semantische RAG-Pipeline",
-    "chunkingEmbeddingModelleUnd": "Chunking, Embedding-Modelle und Vektordatenbanken (Qdrant, Chroma) liefern Originalabschnitte aus Eurocodes als Antwortgrundlage; Halluzinationen werden verringert, nicht ausgeschlossen.",
+    "chunkingEmbeddingModelleUnd": "Chunking, Embedding-Modelle und Vektordatenbanken liefern Originalabschnitte aus Eurocodes als Antwortgrundlage; Halluzinationen werden verringert, nicht ausgeschlossen.",
     "outputRelevanteOriginalabschnitteMit": "Output: Relevante Originalabschnitte mit Paragraf",
     "kognitiveSprachmodelleLlm": "Kognitive Sprachmodelle (LLM)",
     "transformerKerneAnalysierenWidersprüche": "Transformer-Kerne analysieren Widersprüche im Leistungsverzeichnis, formulieren Bedenkenanzeigen und synthetisieren Gutachten.",
     "outputNormengerechteFachtexteReasoning": "Output: Normengerechte Fachtexte & Reasoning",
     "agentenApisHumanIn": "Agenten, APIs & Human-in-the-Loop",
-    "agentenRufenStatikApis": "Agenten rufen Statik-APIs (Dlubal, Sofistik) und AVA-Software auf. Der Ingenieur prüft und signiert das Ergebnis rechtlich belastbar.",
+    "agentenRufenStatikApis": "Agenten rufen Programmierschnittstellen (APIs) von Statiksoftware und AVA-Software auf. Der Ingenieur prüft und signiert das Ergebnis rechtlich belastbar.",
     "outputPrüffähigeStatikSignierte": "Output: Prüffähige Statik & signierte Freigabe",
     "datenflussImBüro": "Datenfluss im Büro:",
     "sensordatenPläne": "Sensordaten & Pläne",
@@ -106,7 +106,7 @@
     "lokaleEdgeKiOn": "Lokale Edge-KI & On-Premise-Systeme",
     "volleDatenhoheitUndNetzunabhängige": "Volle Datenhoheit und netzunabhängige Ausführung im Baustellenbüro",
     "quantisierungOfflineDatensicherheit": "Quantisierung & Offline Datensicherheit",
-    "lokaleKiBetreibtQuelloffene": "Lokale KI betreibt quelloffene Spitzenmodelle (Qwen, Llama, DeepSeek) auf eigener Büro- und Baustellenhardware – offline und ohne Cloud-Übermittlung; das erleichtert Datenschutz und Geheimschutz, ersetzt aber keine DSGVO-Prüfung.",
+    "lokaleKiBetreibtQuelloffene": "Lokale KI betreibt leistungsfähige Sprachmodelle mit offenen Gewichten auf eigener Büro- und Baustellenhardware – offline und ohne Cloud-Übermittlung; das erleichtert Datenschutz und Geheimschutz, ersetzt aber keine DSGVO-Prüfung.",
     "t1ClassicalMl": "1. Classical ML",
     "t2DeepLearning": "2. Deep Learning",
     "t3LlmTransformer": "3. LLM & Transformer",
@@ -218,7 +218,7 @@
       "inputFormat": "Matrizen, Tensoren, FE-Netze (Mesh-Objekte), Rohbilder",
       "datenvolumen": "10 000 bis 1 000 000 Trainingszustände (oft synthetisch via FEM generiert)",
       "latenz": "Inferenz 2–50 ms; Trainingszeit mehrere Stunden bis Tage auf GPUs",
-      "hardware": "Dedizierte Tensor-Recheneinheiten (NVIDIA CUDA / Tensor Cores)"
+      "hardware": "Dedizierte Tensor-Recheneinheiten (Grafikprozessoren mit Tensor-Kernen)"
     },
     "Systemarchitektur.techDetails.dl.grenzen": {
       "risiko": "Black-Box-Problematik: Die interne Argumentationskette eines tiefen Netzes mit Millionen Gewichten ist numerisch intransparent und kann im Bauwesen ohne Verifikation keine bauaufsichtliche Zulassung begründen.",
@@ -289,7 +289,7 @@
         },
         {
           "step": "3. Kosinus-Ähnlichkeitssuche (KNN / ANN)",
-          "desc": "Vergleich der Ingenieurfrage mit allen archivierten Chunks über die geometrische Kosinus-Distanz in einer Vektordatenbank (z. B. Qdrant, Chroma, Pinecone):",
+          "desc": "Vergleich der Ingenieurfrage mit allen archivierten Chunks über die geometrische Kosinus-Distanz in einer Vektordatenbank:",
           "formula": "\\text{Similarity}(q, d) = \\frac{\\mathbf{q} \\cdot \\mathbf{d}}{\\|\\mathbf{q}\\| \\|\\mathbf{d}\\|} = \\frac{\\sum_{i=1}^n q_i d_i}{\\sqrt{\\sum_{i=1}^n q_i^2} \\sqrt{\\sum_{i=1}^n d_i^2}}"
         },
         {
@@ -392,7 +392,7 @@
         },
         {
           "step": "3. Model Context Protocol (MCP)",
-          "desc": "Nutzung offener Standards (MCP) zur direkten Anbindung von Bürosoftware: Statikprogramme (Dlubal, Sofistik), BIM-Server (Revit, Allplan) und AVA-Datenbanken."
+          "desc": "Nutzung offener Standards (MCP) zur direkten Anbindung von Bürosoftware: Statiksoftware, BIM-Autorenwerkzeuge bzw. BIM-Server und AVA-Datenbanken."
         },
         {
           "step": "4. Fehlerselbstkorrektur (Self-Correction Loop)",
@@ -439,11 +439,11 @@
         },
         {
           "step": "2. VRAM- & Unified-Memory-Management",
-          "desc": "Laden der Modellparameter in den Grafikspeicher (NVIDIA RTX VRAM oder Apple Unified Memory) für maximale Durchsatzraten bei der Token-Generierung."
+          "desc": "Laden der Modellparameter in den Grafikspeicher (VRAM einer Grafikkarte oder gemeinsamer Arbeits- und Grafikspeicher) für maximale Durchsatzraten bei der Token-Generierung."
         },
         {
           "step": "3. Lokale Laufzeitumgebungen (Inference Engines)",
-          "desc": "Ausführung über hocheffiziente C++-Engines wie llama.cpp, Ollama oder LM Studio mit lokaler REST-API-Schnittstelle (kompatibel zu OpenAI-Standards)."
+          "desc": "Ausführung über quelloffene Inferenz-Laufzeitumgebungen mit lokaler REST-Schnittstelle (meist kompatibel zu verbreiteten Cloud-KI-Schnittstellen)."
         },
         {
           "step": "4. Vollständige physische Netzwerk-Isolation (Air-Gapping)",
