@@ -610,9 +610,9 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 82 korrigiert, 0 fraglich, 1
 
 ### qn_materialoptimierung_3 · Materialoptimierung
 
-- **Frage:** Eine Hohlkörperdecke enthält 19,5 m³ Beton (CEM III/A, Prüfalter 56 d: 144 kg CO₂-Äq./m³) und 2470 kg Betonstahl aus der Elektroofenroute (0,42 kg CO₂-Äq./kg). Wie groß ist das GWP A1–A3 nach GWP = V_c · gwp_c + m_s · gwp_s?
+- **Frage:** Eine Hohlkörperdecke enthält 19,5 m³ Beton (CEM III/A, Prüfalter 56 d: 144 kg CO₂-Äq./m³) und 2470 kg Betonstahl (Elektroofenstahl mit Grünstrom, Lehrwert 0,42 kg CO₂-Äq./kg). Wie groß ist das GWP A1–A3 nach GWP = V_c · gwp_c + m_s · gwp_s?
 - **Richtige Antwort:** rund 3850 kg CO₂-Äq.
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: Beton-GWP CEM III/A bei 56 d jetzt 144 statt 123 kg/m³ (Zement-GWP nach T15-NH-3) – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: Beton-GWP CEM III/A bei 56 d jetzt 144 statt 123 kg/m³ (Zement-GWP nach T15-NH-3) – korrigiert · Zweitprüfung 29.10. (Runde 5): Stahlkennwert 0,42 wie im Modul als „Elektroofenstahl mit Grünstrom (Lehrwert)“ bezeichnet; 0,64 (ÖKOBAUDAT „Bewehrungsstahl (de)“) ist ebenfalls überwiegend Elektroofenstahl – korrigiert
 - [x] ok
 - [ ] ändern: …
 
