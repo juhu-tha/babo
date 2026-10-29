@@ -9,6 +9,7 @@ import type { MaterialData } from './daten';
 import inhalt from '@/content/mechanischekenngroessen/Zugversuchsimulator.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
+import { Fz } from '@/src/components/ui/Formelzeichen';
 
 interface ZugversuchsimulatorProps {
   breiteMm: number;
@@ -222,7 +223,7 @@ export default function Zugversuchsimulator({ breiteMm, durchmesserMm, handleSel
             {/* Result Badges */}
             <div className="grid grid-cols-2 gap-2.5 pt-2 border-t border-home-grau/20">
               <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
-                <span className="text-[10px] uppercase font-bold text-text-main/60 block">Spannung σ</span>
+                <span className="text-[10px] uppercase font-bold text-text-main/60 block">Spannung <Fz>σ</Fz></span>
                 <span className={`text-lg font-mono font-bold ${sim.isVersagt ? 'text-red-600' : sim.isPlastisch ? 'text-amber-600' : 'text-shiraz'}`}>
                   {sim.sigma > 0 ? '+' : ''}{formatDeZahl(sim.sigma, 1)} MPa
                 </span>

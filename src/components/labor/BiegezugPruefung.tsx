@@ -18,6 +18,9 @@ import '@/src/lib/chartSetup';
 import { validateMechanicalTestIntegrity, exportToCSV, LabProtocolRecord } from '@/src/utils/labExportUtils';
 import { saveStoredLabProtocol } from '@/src/utils/studyStorage';
 import { AuswahlGruppe, alsOption } from '../ui/Auswahlgruppe';
+import { Fz } from '../ui/Formelzeichen';
+import { hoechstwert } from '@/src/calc/laborVersuch';
+import { useDiagrammFarben, linAchse, PfeilDefs, Masslinie, useSchriftFaktor } from './laborGrafik';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -335,10 +338,8 @@ export default function BiegezugPruefung() {
     return () => clearCurrentInterval();
   }, []);
 
-  const maxForceObserved = useMemo(() => {
-    if (curveData.length === 0) return 0;
-    return Math.max(...curveData.map(d => d.y), 0);
-  }, [curveData]);
+  // Höchstwert der aufgezeichneten Kurve (Bruchlast), nicht der letzte Messwert
+  const maxForceObserved = useMemo(() => Math.max(hoechstwert(curveData).y, 0), [curveData]);
 
   const maxStressObserved = useMemo(() => {
     return (maxForceObserved * 1000 * (loadingSystem === '4punkt' ? spanLength / 6 : spanLength / 4)) / W;
@@ -378,8 +379,8 @@ export default function BiegezugPruefung() {
         'Trägheitsmoment I': `${formatDeZahl((I / 10000), 1)} cm⁴`
       },
       metrics: {
-        'Biegezugfestigkeit fct,fl (MPa)': formatDeZahl(maxStressObserved, 2),
-        'Höchstkraft Fmax (kN)': formatDeZahl(maxForceObserved, 1),
+        'Biegezugfestigkeit f_ct,fl (N/mm²)': formatDeZahl(maxStressObserved, 2),
+        'Höchstkraft F_max (kN)': formatDeZahl(maxForceObserved, 1),
         'Mittige Durchbiegung δ (mm)': formatDeZahl(currentDeflectionMm, 2),
         'E-Modul (GPa)': formatDeZahl((matProps.E / 1000), 1)
       },
@@ -402,29 +403,20 @@ export default function BiegezugPruefung() {
     }));
   }, [curveData, chartMode, lever, W]);
 
+  const farben = useDiagrammFarben();
+  const fs = useSchriftFaktor();
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
     animation: { duration: 0 },
     scales: {
-      x: {
-        type: 'linear' as const,
-        title: { display: true, text: 'Mittige Durchbiegung δ (mm)', font: { weight: 'bold' as const, size: 12 } },
-        min: 0,
-        max: matProps.maxDeflection * 1.15,
-        grid: { display: showGrid, color: 'rgba(0,0,0,0.06)' }
-      },
-      y: {
-        type: 'linear' as const,
-        title: {
-          display: true,
-          text: chartMode === 'force' ? 'Prüfkraft F (kN)' : 'Biegezugspannung σfl (MPa = N/mm²)',
-          font: { weight: 'bold' as const, size: 12 }
-        },
-        min: 0,
-        max: chartMode === 'force' ? Math.max(maxEstimatedForce * 1.25, 4) : Math.max(estimatedPeakStress * 1.25, 4),
-        grid: { display: showGrid, color: 'rgba(0,0,0,0.06)' }
-      }
+      x: linAchse(farben, 'Durchbiegung δ in mm', matProps.maxDeflection * 1.05, showGrid),
+      y: linAchse(
+        farben,
+        chartMode === 'force' ? 'F in kN' : 'σ in N/mm²',
+        chartMode === 'force' ? Math.max(maxEstimatedForce * 1.1, 4) : Math.max(estimatedPeakStress * 1.1, 4),
+        showGrid
+      ),
     },
     plugins: {
       legend: { display: false },
@@ -433,11 +425,26 @@ export default function BiegezugPruefung() {
           title: (items: TooltipItem<'line'>[]) => `Durchbiegung δ = ${formatDeZahl(Number(items[0].parsed.x), 2)} mm`,
           label: (ctx: TooltipItem<'line'>) => chartMode === 'force'
             ? `Prüfkraft: ${formatDeZahl(Number(ctx.parsed.y), 2)} kN`
-            : `Biegezugspannung: ${formatDeZahl(Number(ctx.parsed.y), 2)} MPa`
+            : `Biegezugspannung: ${formatDeZahl(Number(ctx.parsed.y), 2)} N/mm²`
         }
       }
     }
   };
+
+  // Balkenansicht: Stützweite L zwischen den Auflagerrollen x = 60 … 380 (320 px), Überstand je Seite 25 px
+  const A1 = 60;
+  const A2 = 380;
+  const spannPx = A2 - A1;
+  const mitteX = (A1 + A2) / 2;
+  const lastPunkte = loadingSystem === '4punkt' ? [A1 + spannPx / 3, A1 + (2 * spannPx) / 3] : [mitteX];
+  const ob = 74; // Balkenoberkante
+  const hb = 40; // Balkenhöhe
+  const durchbiegungPx = Math.min(18, currentDeflectionMm * 3);
+  const gebrochen = (material === 'beton_unbewehrt' || material === 'moertel_din196' || material === 'holz_c24') && testStatus === 'finished';
+  const biegeLabel = `${loadingSystem === '4punkt' ? '4-Punkt-Biegeversuch: zwei Lasten in den Drittelspunkten L/3' : '3-Punkt-Biegeversuch: Einzellast in Feldmitte'}, Auflagerrollen im Abstand L = ${formatDeWert(spanLength)} mm; Balken ${formatDeWert(beamWidth)} × ${formatDeWert(beamHeight)} mm aus ${matProps.name}. `
+    + (testStatus === 'idle' ? 'Versuch noch nicht gestartet.' : testStatus === 'running' ? `Kraft ${formatDeZahl(currentForceKN, 1)} kN, Durchbiegung ${formatDeZahl(currentDeflectionMm, 2)} mm.` : `Versuch beendet, Höchstkraft ${formatDeZahl(maxForceObserved, 1)} kN${gebrochen ? ', Balken in Feldmitte gebrochen' : ''}.`);
+  const yUnten = (x: number) => ob + hb + durchbiegungPx * (1 - Math.pow((x - mitteX) / (spannPx / 2 + 25), 2));
+  const yOben = (x: number) => yUnten(x) - hb;
 
   return (
     <div className="flex flex-col gap-6 animate-in fade-in duration-300">
@@ -511,7 +518,7 @@ export default function BiegezugPruefung() {
 
             {/* Beam Dimensions */}
             <div className="space-y-2 pt-2 border-t border-home-grau/20 text-xs">
-              <label className="font-bold text-text-main uppercase tracking-wider block">Abmessungen (B × H × L)</label>
+              <label className="font-bold text-text-main uppercase tracking-wider block">Abmessungen (<Fz>b × h × L</Fz>)</label>
               <div className="grid grid-cols-3 gap-2">
                 <div className="bg-off-white p-2 rounded-lg border border-home-grau/20 text-center">
                   <span className="text-text-main/60 text-[10px] block">Breite b</span>
@@ -571,162 +578,148 @@ export default function BiegezugPruefung() {
             {/* Beam Graphic & Curve */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-5 my-4 flex-1">
               
-              {/* Graphic Beam Simulator SVG (12 cols full width or stacked) */}
-              <div className="md:col-span-12 bg-gradient-to-b from-slate-100 via-slate-50 to-slate-200 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 dark:bg-slate-900 p-4 rounded-xl border border-slate-300 dark:border-slate-800 flex flex-col items-center justify-center relative shadow-inner overflow-hidden min-h-[220px]">
-                
-                <svg width="100%" height="160" viewBox="0 0 540 160">
-                  {/* Left Roller Support */}
-                  <polygon points="50,110 40,130 60,130" fill="#64748b" stroke="#334155" strokeWidth="1.5" />
-                  <line x1="35" y1="130" x2="65" y2="130" stroke="#334155" strokeWidth="2" />
+              {/* Biegeprüfeinrichtung (Ansicht) */}
+              <figure className="pruefgeraet md:col-span-12 p-3 rounded-xl border flex flex-col items-center justify-center gap-1 m-0">
+                <svg viewBox="0 0 440 230" className="w-full max-w-[560px] h-auto select-none" role="img" aria-label={biegeLabel}>
+                  <title>{biegeLabel}</title>
+                  <PfeilDefs praefix="bzp" />
 
-                  {/* Right Roller Support (movable with wheels) */}
-                  <polygon points="490,110 480,126 500,126" fill="#64748b" stroke="#334155" strokeWidth="1.5" />
-                  <circle cx="485" cy="129" r="3" fill="#334155" />
-                  <circle cx="495" cy="129" r="3" fill="#334155" />
-                  <line x1="475" y1="132" x2="505" y2="132" stroke="#334155" strokeWidth="2" />
+                  {/* Bereich reiner Biegung (4-Punkt) */}
+                  {loadingSystem === '4punkt' && (
+                    <rect x={lastPunkte[0]} y={ob - 4} width={lastPunkte[1] - lastPunkte[0]} height={hb + 8 + durchbiegungPx} fill="var(--pg-akzent-hell)" />
+                  )}
 
-                  {/* Deflected Beam Body */}
-                  {/* SVG Path with curvature depending on currentDeflectionMm */}
-                  {material === 'beton_unbewehrt' && testStatus === 'finished' ? (
-                    <>
-                      {/* Broken Beam in Two Halves */}
-                      <path d="M 30 75 L 268 78 L 266 112 L 30 110 Z" fill="#94a3b8" stroke="#475569" strokeWidth="2" />
-                      <path d="M 272 78 L 510 75 L 510 110 L 274 112 Z" fill="#94a3b8" stroke="#475569" strokeWidth="2" />
-                      <line x1="268" y1="78" x2="272" y2="112" stroke="#881235" strokeWidth="2" strokeDasharray="3,2" />
-                    </>
+                  {/* Balken */}
+                  {gebrochen ? (
+                    <g>
+                      <path d={`M 35 ${ob} L ${mitteX - 3} ${ob + 4} L ${mitteX - 6} ${ob + hb + 6} L 35 ${ob + hb} Z`} fill={material === 'holz_c24' ? 'var(--pg-holz)' : 'var(--pg-beton)'} stroke="var(--pg-kontur)" strokeWidth="1.5" />
+                      <path d={`M ${mitteX + 3} ${ob + 4} L 405 ${ob} L 405 ${ob + hb} L ${mitteX + 6} ${ob + hb + 6} Z`} fill={material === 'holz_c24' ? 'var(--pg-holz)' : 'var(--pg-beton)'} stroke="var(--pg-kontur)" strokeWidth="1.5" />
+                    </g>
                   ) : (
-                    <>
+                    <g>
                       <path
-                        d={`M 30 75 Q 270 ${75 + currentDeflectionMm * 3} 510 75 L 510 110 Q 270 ${110 + currentDeflectionMm * 3} 30 110 Z`}
-                        fill={material === 'holz_c24' ? '#475569' : '#94a3b8'}
-                        stroke={material === 'holz_c24' ? '#334155' : '#475569'}
-                        strokeWidth="2"
+                        d={`M 35 ${yOben(35)} Q ${mitteX} ${ob + 2 * durchbiegungPx} 405 ${yOben(405)} L 405 ${yUnten(405)} Q ${mitteX} ${ob + hb + 2 * durchbiegungPx} 35 ${yUnten(35)} Z`}
+                        fill={material === 'holz_c24' ? 'var(--pg-holz)' : 'var(--pg-beton)'}
+                        stroke="var(--pg-kontur)"
+                        strokeWidth="1.5"
                       />
-
-                      {/* Reinforcing Steel Bar for Stahlbeton */}
                       {material === 'beton_stahlbewehrt' && (
-                        <path
-                          d={`M 40 102 Q 270 ${102 + currentDeflectionMm * 3} 500 102`}
-                          stroke="#A3113E"
-                          strokeWidth="3.5"
-                          fill="none"
-                        />
+                        <path d={`M 42 ${yUnten(42) - 7} Q ${mitteX} ${ob + hb - 7 + 2 * durchbiegungPx} 398 ${yUnten(398) - 7}`} stroke="var(--pg-akzent)" strokeWidth="3" fill="none" />
                       )}
-
-                      {/* Prestressing Steel Tendon (Spannlitzen Y1860) with Anchor Heads & Precompression Arrows */}
                       {material === 'beton_spannbeton' && (
                         <g>
-                          {/* Anchor plates at ends */}
-                          <rect x="23" y="93" width="8" height="18" fill="#1e293b" stroke="#0f172a" rx="1.5" />
-                          <rect x="509" y="93" width="8" height="18" fill="#1e293b" stroke="#0f172a" rx="1.5" />
-                          
-                          {/* Prestressing Tendon Path */}
-                          <path
-                            d={`M 31 102 Q 270 ${102 + currentDeflectionMm * 3} 509 102`}
-                            stroke="#334155"
-                            strokeWidth="3.8"
-                            strokeDasharray="6 2"
-                            fill="none"
-                          />
-
-                          {/* Precompression Arrows representing P0 */}
-                          <line x1="10" y1="102" x2="20" y2="102" stroke="#334155" strokeWidth="2.5" />
-                          <polygon points="20,99 26,102 20,105" fill="#334155" />
-                          
-                          <line x1="530" y1="102" x2="520" y2="102" stroke="#334155" strokeWidth="2.5" />
-                          <polygon points="520,99 514,102 520,105" fill="#334155" />
-
-                          {/* Prestress annotation */}
-                          <text x="270" y="95" textAnchor="middle" fill="#1e293b" fontSize="9" fontWeight="bold">
-                            Spannlitzen Y1860 mit Vorspannkraft P₀ (Drucküberdrückung)
-                          </text>
+                          <rect x="29" y={ob + hb - 16} width="7" height="14" rx="1" fill="var(--pg-stahl3)" stroke="var(--pg-kontur)" />
+                          <rect x="404" y={ob + hb - 16} width="7" height="14" rx="1" fill="var(--pg-stahl3)" stroke="var(--pg-kontur)" />
+                          <path d={`M 36 ${ob + hb - 9} Q ${mitteX} ${ob + hb - 9 + 2 * durchbiegungPx} 404 ${ob + hb - 9}`} stroke="var(--pg-kontur)" strokeWidth="3" strokeDasharray="6 2" fill="none" />
+                          <line x1="6" y1={ob + hb - 9} x2="26" y2={ob + hb - 9} stroke="var(--pg-akzent)" strokeWidth="2" markerEnd="url(#bzp-pfeil)" />
+                          <line x1="434" y1={ob + hb - 9} x2="414" y2={ob + hb - 9} stroke="var(--pg-akzent)" strokeWidth="2" markerEnd="url(#bzp-pfeil)" />
                         </g>
                       )}
-
-                      {/* Hooked Steel Fibers for Stahlfaserbeton */}
                       {material === 'beton_stahlfasern' && (
-                        <g opacity="0.6">
-                          <line x1="250" y1="95" x2="265" y2="92" stroke="#334155" strokeWidth="2" />
-                          <line x1="275" y1="98" x2="290" y2="95" stroke="#334155" strokeWidth="2" />
-                          <line x1="260" y1="104" x2="280" y2="102" stroke="#334155" strokeWidth="2" />
+                        <g stroke="var(--pg-kontur)" strokeWidth="1.5" opacity="0.7">
+                          {[[150, 90], [190, 104], [232, 86], [262, 100], [300, 92], [118, 104], [330, 104]].map(([x, y], i) => (
+                            <path key={i} d={`M ${x} ${y + durchbiegungPx * 0.6} l 4 -2 l 10 1 l 4 -2`} fill="none" />
+                          ))}
                         </g>
                       )}
-
-                      {/* Cracks in Bottom Tensile Zone */}
+                      {material === 'holz_c24' && (
+                        <g stroke="var(--pg-holz-faser)" strokeWidth="1" opacity="0.6" fill="none">
+                          <path d={`M 40 ${ob + 12} Q ${mitteX} ${ob + 12 + 2 * durchbiegungPx} 400 ${ob + 12}`} />
+                          <path d={`M 40 ${ob + 24} Q ${mitteX} ${ob + 24 + 2 * durchbiegungPx} 400 ${ob + 24}`} />
+                        </g>
+                      )}
                       {crackHeightPercent > 0 && (
-                        <g>
-                          {/* Center Primary Crack */}
-                          <path
-                            d={`M 270 ${110 + currentDeflectionMm * 3} L 270 ${110 + currentDeflectionMm * 3 - (35 * (crackHeightPercent / 100))}`}
-                            stroke="#0f172a"
-                            strokeWidth={1.5 + (currentDeflectionMm * 0.4)}
-                            strokeLinecap="round"
-                          />
-                          {/* Secondary Distributed Cracks for Rebar & Prestressed Concrete */}
+                        <g stroke="var(--pg-riss)" strokeLinecap="round">
+                          <line x1={mitteX} y1={ob + hb + durchbiegungPx} x2={mitteX + 1} y2={ob + hb + durchbiegungPx - hb * 0.9 * (crackHeightPercent / 100)} strokeWidth={1.5 + currentDeflectionMm * 0.25} />
                           {(material === 'beton_stahlbewehrt' || material === 'beton_spannbeton') && crackHeightPercent > 25 && (
                             <>
-                              <path d={`M 230 ${108 + currentDeflectionMm * 2.5} L 230 ${108 + currentDeflectionMm * 2.5 - 20}`} stroke="#0f172a" strokeWidth="1.5" />
-                              <path d={`M 310 ${108 + currentDeflectionMm * 2.5} L 310 ${108 + currentDeflectionMm * 2.5 - 20}`} stroke="#0f172a" strokeWidth="1.5" />
+                              <line x1={mitteX - 42} y1={ob + hb + durchbiegungPx * 0.9} x2={mitteX - 43} y2={ob + hb + durchbiegungPx * 0.9 - 20} strokeWidth="1.3" />
+                              <line x1={mitteX + 42} y1={ob + hb + durchbiegungPx * 0.9} x2={mitteX + 43} y2={ob + hb + durchbiegungPx * 0.9 - 20} strokeWidth="1.3" />
                             </>
                           )}
                         </g>
                       )}
-                    </>
+                    </g>
                   )}
+                  {gebrochen && <path d={`M ${mitteX - 2} ${ob + 2} L ${mitteX + 2} ${ob + 16} L ${mitteX - 3} ${ob + 28} L ${mitteX} ${ob + hb + 6}`} stroke="var(--pg-riss)" strokeWidth="2" fill="none" />}
 
-                  {/* Loading Points (Top Rollers) */}
+                  {/* Auflagerrollen */}
+                  {[A1, A2].map(x => (
+                    <g key={x}>
+                      <circle cx={x} cy={ob + hb + 7} r="7" fill="var(--pg-stahl2)" stroke="var(--pg-kontur)" strokeWidth="1.3" />
+                      <path d={`M ${x} ${ob + hb + 14} L ${x - 13} ${ob + hb + 34} L ${x + 13} ${ob + hb + 34} Z`} fill="var(--pg-stahl)" stroke="var(--pg-kontur)" strokeWidth="1.3" />
+                    </g>
+                  ))}
+                  <rect x="20" y={ob + hb + 34} width="400" height="8" fill="var(--pg-stahl2)" stroke="var(--pg-kontur)" strokeWidth="1" />
+
+                  {/* Lastrollen, Lastverteilungsträger und Kraft F */}
+                  {lastPunkte.map(x => (
+                    <circle key={x} cx={x} cy={yOben(x) - 7} r="7" fill="var(--pg-stahl2)" stroke="var(--pg-kontur)" strokeWidth="1.3" />
+                  ))}
                   {loadingSystem === '4punkt' ? (
-                    <>
-                      {/* Left Load Roller at L/3 (approx x = 196) */}
-                      <polygon points="196,72 188,54 204,54" fill="#64748b" stroke="#334155" />
-                      <line x1="196" y1="54" x2="196" y2="35" stroke="#A3113E" strokeWidth="2.5" />
-                      
-                      {/* Right Load Roller at 2L/3 (approx x = 344) */}
-                      <polygon points="344,72 336,54 352,54" fill="#64748b" stroke="#334155" />
-                      <line x1="344" y1="54" x2="344" y2="35" stroke="#A3113E" strokeWidth="2.5" />
-
-                      {/* Crossbeam connecting the two rollers */}
-                      <rect x="180" y="32" width="180" height="8" fill="#475569" rx="2" />
-                      <polygon points="270,32 260,15 280,15" fill="#A3113E" />
-                      <text x="270" y="12" textAnchor="middle" fill="#A3113E" fontSize="11" fontWeight="bold">F = {formatDeZahl(currentForceKN, 1)} kN</text>
-                    </>
+                    <rect x={lastPunkte[0] - 14} y={yOben(lastPunkte[0]) - 26} width={lastPunkte[1] - lastPunkte[0] + 28} height="12" rx="2" fill="var(--pg-stahl)" stroke="var(--pg-kontur)" strokeWidth="1.3" />
                   ) : (
-                    <>
-                      {/* 3-Point Center Load */}
-                      <polygon points="270,72 260,50 280,50" fill="#64748b" stroke="#334155" />
-                      <line x1="270" y1="50" x2="270" y2="25" stroke="#A3113E" strokeWidth="3" />
-                      <text x="270" y="20" textAnchor="middle" fill="#A3113E" fontSize="11" fontWeight="bold">F = {formatDeZahl(currentForceKN, 1)} kN</text>
-                    </>
+                    <rect x={mitteX - 18} y={yOben(mitteX) - 26} width="36" height="12" rx="2" fill="var(--pg-stahl)" stroke="var(--pg-kontur)" strokeWidth="1.3" />
                   )}
+                  <line x1={mitteX} y1="6" x2={mitteX} y2={yOben(mitteX) - 28} stroke="var(--pg-akzent)" strokeWidth="2.5" markerEnd="url(#bzp-pfeil)" />
+                  <text x={mitteX + 8} y="20" fontSize={13 * fs} fontWeight="bold" fill="var(--pg-akzent)">
+                    {testStatus === 'finished'
+                      ? <>F<tspan fontSize={10 * fs} dy="3">max</tspan><tspan dy="-3"> = {formatDeZahl(maxForceObserved, 1)} kN</tspan></>
+                      : `F = ${formatDeZahl(currentForceKN, 1)} kN`}
+                  </text>
 
-                  {/* LVDT Deflection Sensor in Center Bottom */}
-                  <line x1="270" y1={112 + currentDeflectionMm * 3} x2="270" y2="150" stroke="#475569" strokeWidth="2" />
-                  <rect x="264" y="135" width="12" height="18" fill="#334155" rx="2" />
-                  <text x="282" y="148" fill="#334155" fontSize="9" fontWeight="bold">LVDT: {formatDeZahl(currentDeflectionMm, 2)} mm</text>
+                  {/* Wegaufnehmer unter Feldmitte */}
+                  <line x1={mitteX} y1={ob + hb + durchbiegungPx + 2} x2={mitteX} y2={ob + hb + 24} stroke="var(--pg-kontur)" strokeWidth="1.5" />
+                  <rect x={mitteX - 5} y={ob + hb + 22} width="10" height="12" rx="1.5" fill="var(--pg-stahl3)" stroke="var(--pg-kontur)" strokeWidth="1" />
+                  <text x={mitteX + 10} y={ob + hb + 30} fontSize={12 * fs} fill="var(--pg-text)">δ = {formatDeZahl(currentDeflectionMm, 2)} mm</text>
+
+                  {/* Maßketten */}
+                  {loadingSystem === '4punkt' ? (
+                    <g>
+                      <Masslinie praefix="bzp" schrift={12 * fs} x1={A1} y1={ob + hb + 82} x2={lastPunkte[0]} y2={ob + hb + 82} text="L/3" />
+                      <Masslinie praefix="bzp" schrift={12 * fs} x1={lastPunkte[0]} y1={ob + hb + 82} x2={lastPunkte[1]} y2={ob + hb + 82} text="L/3" />
+                      <Masslinie praefix="bzp" schrift={12 * fs} x1={lastPunkte[1]} y1={ob + hb + 82} x2={A2} y2={ob + hb + 82} text="L/3" />
+                    </g>
+                  ) : (
+                    <g>
+                      <Masslinie praefix="bzp" schrift={12 * fs} x1={A1} y1={ob + hb + 82} x2={mitteX} y2={ob + hb + 82} text="L/2" />
+                      <Masslinie praefix="bzp" schrift={12 * fs} x1={mitteX} y1={ob + hb + 82} x2={A2} y2={ob + hb + 82} text="L/2" />
+                    </g>
+                  )}
+                  <Masslinie praefix="bzp" schrift={12 * fs} x1={A1} y1={ob + hb + 112} x2={A2} y2={ob + hb + 112} text={`L = ${formatDeWert(spanLength)} mm`} />
                 </svg>
-              </div>
+                <figcaption className="text-[11px] text-center leading-snug px-2" style={{ color: 'var(--pg-text2)' }}>
+                  {loadingSystem === '4punkt'
+                    ? 'Lasten in den Drittelspunkten; zwischen den Lastrollen konstantes Moment ohne Querkraft (hinterlegt).'
+                    : 'Einzellast in Feldmitte; größtes Moment unter der Lastrolle.'}
+                  {' '}Wegaufnehmer unter Feldmitte misst die Durchbiegung δ.
+                  {material === 'beton_spannbeton' && ' Gestrichelt: Spannlitzen mit Vorspannkraft P₀ (Pfeile), Ankerplatten an den Enden.'}
+                  {material === 'beton_stahlbewehrt' && ' Rot: Längsbewehrung in der Zugzone.'}
+                  {material === 'beton_stahlfasern' && ' Kurze Striche: Stahlfasern mit Endhaken.'}
+                </figcaption>
+              </figure>
 
               {/* Force-Deflection Line Chart (12 cols) */}
               <div className="md:col-span-12 flex flex-col gap-3">
                 
                 {/* Metric Cards */}
-                <div className="grid grid-cols-3 gap-2.5">
+                <div className="grid grid-cols-1 min-[480px]:grid-cols-3 gap-2.5">
                   <div className="bg-off-white text-text-main p-3 rounded-xl border border-home-grau/30 shadow-inner">
-                    <span className="text-[10px] font-mono text-slate-600 font-bold uppercase tracking-wider block">Prüfkraft F</span>
+                    <span className="text-[11px] font-mono text-slate-600 font-bold uppercase tracking-wider block">Prüfkraft <Fz>F</Fz></span>
                     <span className="text-xl font-mono font-bold text-amber-700">
                       {formatDeZahl(currentForceKN, 1)} <span className="text-xs text-slate-700 font-normal">kN</span>
                     </span>
                   </div>
 
                   <div className="bg-off-white text-text-main p-3 rounded-xl border border-home-grau/30 shadow-inner">
-                    <span className="text-[10px] font-mono text-slate-600 font-bold uppercase tracking-wider block">Biegezugspannung σ</span>
+                    <span className="text-[11px] font-mono text-slate-600 font-bold uppercase tracking-wider block">Biegezug&shy;spannung <Fz idx="fl">σ</Fz></span>
                     <span className="text-xl font-mono font-bold text-emerald-700">
-                      {formatDeZahl(currentBendingStressMPa, 2)} <span className="text-xs text-slate-700 font-normal">MPa</span>
+                      {formatDeZahl(currentBendingStressMPa, 2)} <span className="text-xs text-slate-700 font-normal">N/mm²</span>
                     </span>
                   </div>
 
                   <div className="bg-off-white text-text-main p-3 rounded-xl border border-home-grau/30 shadow-inner">
-                    <span className="text-[10px] font-mono text-slate-600 font-bold uppercase tracking-wider block">Durchbiegung δ</span>
+                    <span className="text-[11px] font-mono text-slate-600 font-bold uppercase tracking-wider block">Durchbiegung <Fz>δ</Fz></span>
                     <span className="text-xl font-mono font-bold text-cyan-700">
                       {formatDeZahl(currentDeflectionMm, 2)} <span className="text-xs text-slate-700 font-normal">mm</span>
                     </span>
@@ -755,7 +748,7 @@ export default function BiegezugPruefung() {
                           : 'bg-white text-text-main/80 border border-home-grau/30 hover:bg-slate-100'
                       }`}
                     >
-                      Biegespannung (σfl – δ)
+                      Biegespannung (σ<sub>fl</sub> – δ)
                     </button>
                     </AuswahlGruppe>
                     <button
@@ -783,8 +776,8 @@ export default function BiegezugPruefung() {
                         {
                           label: chartMode === 'force' ? 'Last-Verformungskurve F-δ' : 'Biegespannungsverlauf σ-δ',
                           data: displayChartData,
-                          borderColor: '#A3113E',
-                          backgroundColor: 'rgba(163, 17, 62, 0.08)',
+                          borderColor: farben.linie,
+                          backgroundColor: farben.flaeche,
                           borderWidth: 2.8,
                           pointRadius: 0,
                           fill: true,
@@ -809,19 +802,19 @@ export default function BiegezugPruefung() {
               <div className="mt-2 p-4 bg-off-white rounded-xl border border-home-grau/30 flex flex-col gap-3 animate-in fade-in">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
                   <div>
-                    <span className="text-text-main/60 uppercase text-[10px] font-bold block">Biegezugfestigkeit fct,fl</span>
-                    <strong className="text-base text-shiraz font-mono">{formatDeZahl(maxStressObserved, 2)} MPa</strong>
+                    <span className="text-text-main/60 uppercase text-[11px] font-bold block">Biegezug&shy;festigkeit <Fz idx="ct,fl">f</Fz></span>
+                    <strong className="text-base text-shiraz font-mono">{formatDeZahl(maxStressObserved, 2)} N/mm²</strong>
                   </div>
                   <div>
-                    <span className="text-text-main/60 uppercase text-[10px] font-bold block">Höchstkraft Fmax</span>
+                    <span className="text-text-main/60 uppercase text-[11px] font-bold block">Höchstkraft <Fz idx="max">F</Fz></span>
                     <strong className="text-base text-text-main font-mono">{formatDeZahl(maxForceObserved, 1)} kN</strong>
                   </div>
                   <div>
-                    <span className="text-text-main/60 uppercase text-[10px] font-bold block">Enddurchbiegung δu</span>
+                    <span className="text-text-main/60 uppercase text-[11px] font-bold block">End&shy;durchbiegung <Fz idx="u">δ</Fz></span>
                     <strong className="text-base text-cyan-800 font-mono">{formatDeZahl(currentDeflectionMm, 2)} mm</strong>
                   </div>
                   <div>
-                    <span className="text-text-main/60 uppercase text-[10px] font-bold block">Widerstandsmoment W</span>
+                    <span className="text-text-main/60 uppercase text-[11px] font-bold block">Widerstands&shy;moment <Fz>W</Fz></span>
                     <strong className="text-base text-text-main font-mono">{formatDeZahl((W / 1000), 0)} cm³</strong>
                   </div>
                 </div>
@@ -855,8 +848,8 @@ export default function BiegezugPruefung() {
 
                     <button
                       onClick={() => {
-                        const rows = curveData.map(d => [d.x.toFixed(3), d.y.toFixed(2)]);
-                        exportToCSV(`Biegezug_${material}_${loadingSystem}`, ['Durchbiegung_mm', 'Kraft_kN'], rows);
+                        const rows = curveData.map(d => [d.x.toFixed(3), d.y.toFixed(2), ((d.y * 1000 * lever) / W).toFixed(3)]);
+                        exportToCSV(`Biegezug_${material}_${loadingSystem}`, ['Durchbiegung_mm', 'Kraft_kN', 'Biegezugspannung_N_mm2'], rows);
                       }}
                       className="px-3 py-1.5 bg-white hover:bg-slate-100 text-text-main text-xs font-bold rounded-xl border border-home-grau/30 shadow-xs transition-all flex items-center gap-1.5 cursor-pointer"
                     >

@@ -9,6 +9,7 @@ import { DaemmungBerater } from '@/src/components/DaemmungBerater';
 import inhalt from '@/content/bpdaemmung/BpDaemmung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { Fz } from '@/src/components/ui/Formelzeichen';
 
 interface InsulationProduct {
   name: string;
@@ -187,7 +188,7 @@ export default function BpDaemmung() {
                       <span className="text-xs font-bold text-slate-700 font-mono">{selectedProduct.density}</span>
                     </div>
                     <div className="bg-white p-2.5 rounded-xl border border-slate-200/80">
-                      <span className="text-[9px] text-slate-400 block font-bold uppercase mb-0.5">Dampf (μ)</span>
+                      <span className="text-[9px] text-slate-400 block font-bold uppercase mb-0.5">Dampf (<Fz>μ</Fz>)</span>
                       <span className="text-xs font-bold text-slate-700 font-mono">{selectedProduct.vaporResistance}</span>
                     </div>
                     <div className="bg-white p-2.5 rounded-xl border border-slate-200/80">

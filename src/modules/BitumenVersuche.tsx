@@ -37,6 +37,19 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
   };
 
   const currentProps = getBitumenProps(sorte);
+  const anteil = testStatus === 'finished' ? 1 : progress / 100;
+
+  // Penetrometer (DIN EN 1426): Eindringtiefe 0 … 200 · 0,1 mm auf 0,4 px je Einheit; Oberfläche bei y = 150
+  const oberflaecheY = 150;
+  const tiefeEinheiten = anteil * currentProps.pen;
+  const spitzeY = oberflaecheY + tiefeEinheiten * 0.4;
+  const penLabel = `Penetrometer nach DIN EN 1426: Nadel mit 100 g Gesamtlast über der Bitumenprobe im Wasserbad 25 °C. `
+    + (testStatus === 'idle' ? 'Versuch noch nicht gestartet.' : `Eindringtiefe ${formatDeWert(Math.round(tiefeEinheiten))} · 0,1 mm nach ${formatDeZahl(anteil * 5, 1)} s von 5 s.`);
+  // Ring-und-Kugel (DIN EN 1427): Abstand Ring – Bodenplatte 25 mm (2 px je mm), Bitumen sackt mit der Kugel durch
+  const temperatur = 20 + anteil * (currentProps.ruk - 20);
+  const durchhang = anteil * 54;
+  const rukLabel = `Ring-und-Kugel-Gerät nach DIN EN 1427: zwei Ringe mit Bitumen und Stahlkugeln im Wasserbad über der Bodenplatte (Abstand 25 mm), Thermometer rechts. `
+    + (testStatus === 'idle' ? 'Versuch noch nicht gestartet.' : testStatus === 'finished' ? `Bitumen berührt die Bodenplatte bei ${formatDeZahl(currentProps.ruk, 1)} °C (Erweichungspunkt).` : `Badtemperatur ${formatDeZahl(temperatur, 1)} °C.`);
 
   const clearTestInterval = () => {
     if (intervalRef.current) {
@@ -174,7 +187,7 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
                  disabled={testStatus !== 'idle'}
                  className="flex-1 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-bold flex items-center justify-center gap-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                >
-                 <Play size={18} /> Start
+                 <Play size={18} /> Versuch starten
                </button>
                <button
                  onClick={resetTest}
@@ -207,92 +220,81 @@ export default function BitumenVersuche({ isEmbedded = false }: BitumenVersucheP
 
              <div className="flex-1 flex flex-col md:flex-row gap-8 items-center justify-center">
                
-               <div className="relative w-64 h-64 bg-off-white border-2 border-home-grau/30 rounded-xl overflow-hidden flex-shrink-0">
+               <figure className="pruefgeraet w-full max-w-[320px] p-2 rounded-xl border flex-shrink-0 m-0">
                  {activeTest === 'penetration' ? (
-                   <>
-                     <div className="absolute left-2 top-2 bottom-2 w-4 border-r border-home-grau/50 flex flex-col justify-between text-[8px] text-home-grau pb-8">
-                       <span>0</span>
-                       <span>50</span>
-                       <span>100</span>
-                       <span>150</span>
-                       <span>200</span>
-                     </div>
-                     <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-40 h-24 bg-zinc-300 rounded-sm border-2 border-zinc-400">
-                       <div className="absolute bottom-0 w-full h-20 bg-zinc-900 border-t border-zinc-700"></div>
-                     </div>
-                     
-                     <div 
-                       className="absolute left-1/2 -translate-x-1/2 transition-all duration-300 pointer-events-none"
-                       style={{ 
-                         bottom: `${100 - (progress / 100) * (currentProps.pen / 200) * 100}px` 
-                       }}
-                     >
-                       <div className="w-12 h-16 bg-slate-400 border-2 border-home-grau/30 rounded-sm mx-auto shadow-sm flex items-center justify-center -translate-y-full absolute bottom-8 left-1/2 -translate-x-1/2">
-                          <span className="text-xs font-bold text-white">100g</span>
-                       </div>
-                       <div className="w-1 h-32 bg-slate-300 border-x border-home-grau/30 mx-auto absolute bottom-0 left-1/2 -translate-x-1/2"></div>
-                       <div className="w-0 h-0 border-l-[2px] border-r-[2px] border-t-[8px] border-transparent border-t-slate-500 mx-auto absolute -bottom-2 left-1/2 -translate-x-1/2"></div>
-                     </div>
-
-                     {testStatus === 'running' && (
-                       <div className="absolute top-4 right-4 text-xs font-mono bg-white px-2 py-1 rounded border border-home-grau/30">
-                         {formatDeZahl(((progress / 100) * 5), 1)} s
-                       </div>
-                     )}
-                   </>
+                   <svg viewBox="0 0 280 260" className="w-full h-auto select-none" role="img" aria-label={penLabel}>
+                     <title>{penLabel}</title>
+                     {/* Stativ */}
+                     <rect x="20" y="236" width="170" height="10" fill="var(--pg-stahl2)" stroke="var(--pg-kontur)" strokeWidth="1.2" />
+                     <rect x="28" y="12" width="10" height="224" fill="var(--pg-stahl)" stroke="var(--pg-kontur)" strokeWidth="1.2" />
+                     <rect x="38" y="30" width="80" height="10" fill="var(--pg-stahl)" stroke="var(--pg-kontur)" strokeWidth="1.2" />
+                     <rect x="102" y="24" width="12" height="22" rx="1" fill="var(--pg-stahl2)" stroke="var(--pg-kontur)" strokeWidth="1" />
+                     {/* Wasserbad mit Probengefäß */}
+                     <rect x="56" y="128" width="104" height="104" rx="4" fill="var(--pg-wasser)" stroke="var(--pg-wasser-rand)" strokeWidth="1.2" />
+                     <text x="108" y="230" textAnchor="middle" fontSize="11" fill="var(--pg-text)">Wasserbad 25 °C</text>
+                     <rect x="72" y="146" width="72" height="66" fill="var(--pg-stahl2)" stroke="var(--pg-kontur)" strokeWidth="1.2" />
+                     <rect x="76" y={oberflaecheY} width="64" height="58" fill="var(--pg-bitumen)" stroke="var(--pg-bitumen-rand)" strokeWidth="1.2" />
+                     {/* Fallstab mit Zusatzgewicht und Nadel */}
+                     <g transform={`translate(0 ${spitzeY - oberflaecheY})`} className="transition-transform duration-300">
+                       <line x1="108" y1="8" x2="108" y2="52" stroke="var(--pg-kontur)" strokeWidth="3" />
+                       <rect x="94" y="52" width="28" height="34" rx="2" fill="var(--pg-stahl2)" stroke="var(--pg-kontur)" strokeWidth="1.2" />
+                       <text x="108" y="73" textAnchor="middle" fontSize="11" fontWeight="bold" fill="var(--pg-text)">100 g</text>
+                       <line x1="108" y1="84" x2="108" y2={oberflaecheY - 2} stroke="var(--pg-kontur)" strokeWidth="2.5" />
+                       <path d={`M 106.5 ${oberflaecheY - 2} L 108 ${oberflaecheY + 2} L 109.5 ${oberflaecheY - 2} Z`} fill="var(--pg-kontur)" />
+                     </g>
+                     {/* Nadelspitze in der Probe (über dem Bitumen sichtbar) */}
+                     {tiefeEinheiten > 0 && <line x1="108" y1={oberflaecheY} x2="108" y2={spitzeY} stroke="var(--pg-stahl3)" strokeWidth="2.5" />}
+                     {/* Skala der Eindringtiefe */}
+                     <text x="226" y="118" textAnchor="middle" fontSize="11" fontWeight="bold" fill="var(--pg-text)">Eindringtiefe</text>
+                     <text x="226" y="131" textAnchor="middle" fontSize="11" fill="var(--pg-text2)">in 0,1 mm</text>
+                     <line x1="196" y1={oberflaecheY} x2="196" y2={oberflaecheY + 80} stroke="var(--pg-kontur)" strokeWidth="1.2" />
+                     {[0, 50, 100, 150, 200].map(v => (
+                       <g key={v}>
+                         <line x1="190" y1={oberflaecheY + v * 0.4} x2="202" y2={oberflaecheY + v * 0.4} stroke="var(--pg-kontur)" strokeWidth="1" />
+                         <text x="208" y={oberflaecheY + v * 0.4 + 4} fontSize="11" fill="var(--pg-text)">{formatDeWert(v)}</text>
+                       </g>
+                     ))}
+                     <line x1="112" y1={spitzeY} x2="196" y2={spitzeY} stroke="var(--pg-akzent)" strokeWidth="1" strokeDasharray="3 2" />
+                     <path d={`M 190 ${spitzeY} l -7 -4 l 0 8 z`} fill="var(--pg-akzent)" />
+                     <text x="270" y="22" textAnchor="end" fontSize="12" fontWeight="bold" fill="var(--pg-akzent)">t = {formatDeZahl(anteil * 5, 1)} s / 5 s</text>
+                     <text x="270" y="40" textAnchor="end" fontSize="12" fill="var(--pg-text)">{formatDeWert(Math.round(tiefeEinheiten))} · 0,1 mm</text>
+                   </svg>
                  ) : (
-                   <>
-                     <div className="absolute left-2 top-2 bottom-2 w-4 flex flex-col justify-between text-[8px] text-home-grau pb-8 z-10">
-                       <span>80°C</span>
-                       <span>60°C</span>
-                       <span>40°C</span>
-                       <span>20°C</span>
-                     </div>
-                     
-                     <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-48 h-48 border-x-4 border-b-4 border-cyan-200 rounded-b-xl overflow-hidden">
-                       <div className="absolute bottom-0 w-full h-40 bg-cyan-100/50">
-                         {testStatus === 'running' && progress > 10 && (
-                           <div className="absolute bottom-0 w-full h-full">
-                             <div className="absolute w-2 h-2 bg-white/50 rounded-full left-1/4 animate-ping" style={{ bottom: `${(progress * 2) % 100}%` }}></div>
-                             <div className="absolute w-3 h-3 bg-white/40 rounded-full left-2/4 animate-ping" style={{ bottom: `${(progress * 1.5 + 20) % 100}%`, animationDelay: '0.2s' }}></div>
-                             <div className="absolute w-1.5 h-1.5 bg-white/60 rounded-full left-3/4 animate-ping" style={{ bottom: `${(progress * 2.5 + 10) % 100}%`, animationDelay: '0.5s' }}></div>
-                           </div>
-                         )}
-                       </div>
-                     </div>
-                     
-                     {testStatus === 'running' && (
-                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-3 bg-red-500 blur-sm rounded-full opacity-70"></div>
-                     )}
-                     
-                     <div className="absolute top-16 left-1/2 -translate-x-1/2 w-24 h-32 border-x-2 border-home-grau/30">
-                       <div className="absolute top-0 w-full h-1 bg-slate-400"></div>
-                       <div className="absolute bottom-0 w-full h-1 bg-slate-400"></div>
-                       
-                       <div className="absolute top-1/4 w-12 h-4 left-1/2 -translate-x-1/2">
-                          <div className="absolute w-full h-full border-x-4 border-amber-600 bg-zinc-900 z-10"></div>
-                          <div 
-                            className="absolute bg-zinc-900 w-8 left-1/2 -translate-x-1/2 rounded-b-full transition-all duration-300"
-                            style={{
-                              height: `${testStatus === 'finished' ? 24 : (progress / 100) * 24}px`,
-                              top: '100%'
-                            }}
-                          ></div>
-                          <div 
-                            className="absolute w-6 h-6 bg-slate-300 rounded-full border-2 border-home-grau/30 shadow-sm left-1/2 -translate-x-1/2 transition-all duration-300 z-20"
-                            style={{
-                              top: `${testStatus === 'finished' ? 16 : -12 + (progress / 100) * 28}px`,
-                            }}
-                          ></div>
-                       </div>
-                     </div>
-
-                     <div className="absolute top-4 right-4 text-xs font-mono bg-white px-2 py-1 rounded border border-home-grau/30 shadow-sm">
-                       {formatDeZahl((20 + (progress / 100) * (currentProps.ruk - 20)), 1)} °C
-                     </div>
-                   </>
+                   <svg viewBox="0 0 300 270" className="w-full h-auto select-none" role="img" aria-label={rukLabel}>
+                     <title>{rukLabel}</title>
+                     {/* Heizplatte */}
+                     <rect x="30" y="246" width="180" height="10" rx="2" fill={testStatus === 'running' ? 'var(--pg-akzent)' : 'var(--pg-stahl3)'} stroke="var(--pg-kontur)" strokeWidth="1" />
+                     {/* Becherglas mit Wasser */}
+                     <path d="M 40 30 L 40 240 L 200 240 L 200 30" fill="none" stroke="var(--pg-kontur)" strokeWidth="2" />
+                     <rect x="41" y="52" width="158" height="187" fill="var(--pg-wasser)" />
+                     {/* Haltestäbe, Ringplatte und Bodenplatte (Abstand 25 mm) */}
+                     <line x1="58" y1="20" x2="58" y2="160" stroke="var(--pg-kontur)" strokeWidth="2" />
+                     <line x1="182" y1="20" x2="182" y2="160" stroke="var(--pg-kontur)" strokeWidth="2" />
+                     <rect x="54" y="104" width="132" height="4" fill="var(--pg-stahl2)" stroke="var(--pg-kontur)" strokeWidth="0.8" />
+                     <rect x="54" y="158" width="132" height="5" fill="var(--pg-stahl2)" stroke="var(--pg-kontur)" strokeWidth="0.8" />
+                     <line x1="192" y1="108" x2="192" y2="158" stroke="var(--pg-mass)" strokeWidth="1" />
+                     <text x="196" y="137" fontSize="11" fill="var(--pg-mass)" fontWeight="bold">25 mm</text>
+                     {[90, 150].map(cxr => (
+                       <g key={cxr}>
+                         {/* durchhängendes Bitumen mit Kugel */}
+                         <path d={`M ${cxr - 14} 104 Q ${cxr - 14} ${104 + durchhang} ${cxr} ${104 + durchhang} Q ${cxr + 14} ${104 + durchhang} ${cxr + 14} 104 Z`} fill="var(--pg-bitumen)" stroke="var(--pg-bitumen-rand)" strokeWidth="1" />
+                         <rect x={cxr - 16} y="96" width="32" height="8" fill="var(--pg-bitumen)" stroke="var(--pg-kontur)" strokeWidth="1.5" />
+                         <circle cx={cxr} cy={90 + durchhang * 0.9} r="6" fill="var(--pg-stahl)" stroke="var(--pg-kontur)" strokeWidth="1.2" />
+                       </g>
+                     ))}
+                     {/* Thermometer */}
+                     <rect x="246" y="30" width="10" height="200" rx="5" fill="var(--pg-anzeige)" stroke="var(--pg-kontur)" strokeWidth="1.2" />
+                     <rect x="248" y={230 - ((temperatur - 0) / 100) * 200} width="6" height={((temperatur - 0) / 100) * 200} rx="3" fill="var(--pg-akzent)" />
+                     {[20, 40, 60, 80].map(t => (
+                       <g key={t}>
+                         <line x1="256" y1={230 - (t / 100) * 200} x2="262" y2={230 - (t / 100) * 200} stroke="var(--pg-kontur)" strokeWidth="1" />
+                         <text x="264" y={234 - (t / 100) * 200} fontSize="11" fill="var(--pg-text)">{formatDeWert(t)} °C</text>
+                       </g>
+                     ))}
+                     <text x="120" y="20" textAnchor="middle" fontSize="12" fontWeight="bold" fill="var(--pg-akzent)">T = {formatDeZahl(temperatur, 1)} °C</text>
+                   </svg>
                  )}
-               </div>
+               </figure>
 
                <div className="flex-1 space-y-4">
                  {testStatus === 'finished' ? (
