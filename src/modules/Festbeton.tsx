@@ -160,7 +160,7 @@ export default function Festbeton() {
         },
         {
           label: `Charakt. Wert f_ck (${formatDeZahl(statDisplayFck, 1)} N/mm²)`,
-          data: [{ x: statDisplayFck, y: 0 }, { x: statDisplayFck, y: Math.max(...yValues) * 1.05 }],
+          data: [{ x: statDisplayFck, y: 0 }, { x: statDisplayFck, y: Math.max(...yValues) * 1.05 }], // Darstellungsfaktor (Linienhöhe)
           borderColor: '#1e293b',
           borderWidth: 2,
           borderDash: [5, 5],

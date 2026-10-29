@@ -16,10 +16,10 @@ export default function CscZertifizierung() {
   // Management: 10%, Umwelt: 35%, Soziales: 15%, Ökonomie: 10%, Lieferkette: 30%
   const weightedScore = (
     (managementScore * 0.10) +
-    (umweltScore * 0.35) +
-    (sozialesScore * 0.15) +
+    (umweltScore * 0.35) + // Gewichtung Lehrannahme
+    (sozialesScore * 0.15) + // Gewichtung Lehrannahme
     (oekonomieScore * 0.10) +
-    (supplyChainScore * 0.30)
+    (supplyChainScore * 0.30) // Gewichtung Lehrannahme
   );
 
   // Lehrannahme: Gewichtung und Schwellen vereinfacht – nicht aus dem CSC Technical Manual übernommen

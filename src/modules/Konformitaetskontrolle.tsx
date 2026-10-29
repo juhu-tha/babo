@@ -214,7 +214,7 @@ export default function Konformitaetskontrolle() {
         limitMessage = `Achtung: Für die Anfangsproduktion sind mindestens n = 3 Messwerte normativ gefordert (aktuell: ${n}).`;
       }
     } else if (testMode === 'stetig') {
-      requiredMean = fck + 1.48 * stdDevUsed;
+      requiredMean = fck + 1.48 * stdDevUsed; // Kriterium 1 stetige Herstellung, DIN EN 206, 8.2.1.3 (Faktor 1,48)
       meanPassed = mean >= requiredMean;
       if (n < 15) {
         limitMessage = `Achtung: Für stetige Produktion sind mindestens n = 15 Messergebnisse aus den letzten 12 Monaten gefordert (aktuell: ${n}).`;

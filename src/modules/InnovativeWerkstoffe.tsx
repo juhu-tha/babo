@@ -288,7 +288,7 @@ export default function InnovativeWerkstoffe() {
     // Normalize out of 5 stars
     const normalizedRatings: Record<string, number> = {};
     Object.entries(scores).forEach(([id, score]) => {
-      const stars = Math.min(5, Math.max(1, Math.round((score / 130) * 5 * 10) / 10));
+      const stars = Math.min(5, Math.max(1, Math.round((score / 130) * 5 * 10) / 10)); // Darstellungsfaktor: Punktzahl 130 = 5 Sterne
       normalizedRatings[id] = stars;
     });
 
@@ -559,6 +559,7 @@ export default function InnovativeWerkstoffe() {
               const shapeFactor = structuralShape === 'straight' ? 1.0 : structuralShape === 'rounded' ? 4.0 : 8.0;
               
               // simplified self-weight elastic buckling height for column of thickness b:
+              // 0,653 = 7,837/12 (Suiker 2018: H_cr = (7,837·E·I/(ρ·g·A))^(1/3) mit I/A = b²/12 für die Rechteckwand)
               const H_critical_buckling = Math.pow((0.653 * E_mod_base * b_m * b_m * shapeFactor) / (concreteDensity * gVal), 1/3);
               const sfBucklingVal = H_critical_buckling / targetHeight;
               
