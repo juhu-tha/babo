@@ -13,6 +13,17 @@ export const FASERSAETTIGUNG = 30;
 export interface Schwindmasse { qt: number; qr: number; ql: number }
 
 /**
+ * Differentielle Schwind- und Quellmaße [% je % Holzfeuchte] für die Rechner „Historische Bauweisen“ und „Holzbau“,
+ * Werte wie in Tranche 10 übernommen (T10-HW-1; TU München, Skript „Holz – Eigenschaften, Merkmale“).
+ * Längs: Lehrwert 0,01. Quelle des Holzbau-Moduls: content/holzbaubeta/HolzbauBeta.json (shrinkageCoeffs).
+ */
+export const SCHWINDBEIWERTE = {
+  fichte: { radial: 0.19, tangential: 0.36, longitudinal: 0.01 },
+  kiefer: { radial: 0.19, tangential: 0.36, longitudinal: 0.01 },
+  eiche: { radial: 0.18, tangential: 0.34, longitudinal: 0.01 },
+} as const;
+
+/**
  * Gleichgewichtsfeuchte u_gl [%] aus relativer Luftfeuchte φ [%] und Temperatur θ [°C] nach dem Sorptionsmodell von
  * Hailwood und Horrobin (1946) in der Anpassung von Simpson (1973) an die Tabellen des Forest Products Laboratory
  * (Wood Handbook, FPL-GTR-113, Kap. 3, Gl. 3-3; metrische Koeffizienten):

@@ -598,7 +598,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   ressourceneffizienz: {
     kurz: "CO₂ und Primärgesteinsbedarf eines Bauteils im Vergleich mit einem Standardfall sowie eine grobe Kosten-Nutzen-Schätzung.",
     grenzen: [
-      "Bauteilvolumen, Optimierungs- und RC-Anteile pauschal.",
+      "Bauteilvolumen und Optimierung pauschal; RC-Anteil als Höchstanteil nach DIN 1045-2 Anhang E bezogen auf einen Grobkornanteil von 70 % (Lehrwert), Vol.-% gleich M.-% gesetzt.",
       "Feste CO₂-Faktoren für Beton, Stahl und Transport.",
       "Kosten-Nutzen-Werte und Förderbonus sind fiktive Lehrwerte.",
     ],

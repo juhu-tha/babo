@@ -19,7 +19,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeWert, formatDeTeX, formatDeTeXWert } from '@/src/utils/numberFormat';
-import { GMODG_ANLAGE7, savings, dRequired, type Bauteil } from '@/src/utils/bestandKern';
+import { GMODG_ANLAGE7, savings, dRequired, CO2_ERDGAS, type Bauteil } from '@/src/utils/bestandKern';
 import inhalt from '@/content/modernisierung/Modernisierung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
@@ -135,7 +135,7 @@ export default function Modernisierung() {
     // Amortisation auf energiebedingte Mehrkosten (ohne Sowieso-Kosten)
     const sav = savings({
       uOld: originalU, uNew: newU, A: componentArea, bauteil: activeComponent.bauteil, Gt: hgtVal,
-      etaSys, price: energyPriceKwh, co2: 0.22, invest: totalInvestEuro,
+      etaSys, price: energyPriceKwh, co2: CO2_ERDGAS, invest: totalInvestEuro,
       sowiesoKosten: sowiesoAktiv ? baseLaborCost : 0
     });
     const annualKwhSaved = sav.qEnd;
