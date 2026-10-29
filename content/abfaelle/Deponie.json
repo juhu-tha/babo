@@ -31,7 +31,7 @@
     "gipsdeponierungsverbotAufDk0": "**Gipsdeponierungsverbot auf DK 0:** Da DK 0 Deponien keine dichten geotechnischen Barrieren oder Sickerwasserreinigungen haben, führt die freie Auswaschung von Gips zu extrem hohen Sulfatkonzentrationen im Grundwasser.",
     "anaerobeFäulnisgasbildungH2sWerden": "**Anaerobe Fäulnisgasbildung (H2S):** Werden Gipsrückstände unkontrolliert mit organischen Abfallbestandteilen (z.B. Holzresten) vermischt, wandeln sulfatreduzierende Bakterien unter Luftabschluss im feuchten Deponiekörper das Sulfat in hochgiftigen, metallkorrosiven und stark riechenden **Schwefelwasserstoff (H2S)** um.",
     "ausschließlicheEntsorgungAlsMonofraktion": "**Ausschließliche Entsorgung als Monofraktion:** Gips muss am Abbruchort strikt getrennt gesammelt werden. Größere Bauteilmengen werden zur Kreislauf-Verwertung in Gipsrecyclingwerke transportiert oder sortenrein in abgeschotteten Monokompartimenten auf DK II / DK III Deponien abgelagert.",
-    "aufbauUndBarriereprinzipVon": "Aufbau- und Barriereprinzip von Deponien (§ 3-14 DepV)",
+    "aufbauUndBarriereprinzipVon": "Aufbau- und Barriereprinzip von Deponien (§ 3 und Anhang 1 DepV)",
     "dasSchutzkonzeptModernerDeponietechnisch": "Das Schutzkonzept moderner deponietechnischer Anlagen in Deutschland basiert auf dem **Multibarrierenkonzept** (Sicherheitsbarrieren) sowie einem hochpräzisen, regelkonformen **Schichtenaufbau** an Basis und Oberfläche.",
     "dasMultibarrierenkonzeptDie5": "Das Multibarrierenkonzept (Die 5 Sicherheitsbarrieren)",
     "durchDasIneinandergreifenVon": "Durch das Ineinandergreifen von fünf voneinander unabhängigen Sicherheitsbarrieren wird gewährleistet, dass selbst bei Ausfall einzelner Komponenten (z. B. einer Dichtungsbahn) keine Schadstoffe in die Biosphäre oder das Grundwasser gelangen können.",
@@ -159,7 +159,7 @@
         "num": 1,
         "label": "Barriere 1: Geologische Barriere (Standortwahllogik)",
         "desc": "Die erste Linie der Verteidigung ist der gewählte Bodenstandort selbst. Ein erstklassiger Deponiestandort befindet sich auf natürlichen Sedimentationsbecken (z.B. dicke Ton- oder Mergeldecken). Nach DepV Anhang 1 muss diese Schicht eine hohe Adsorptionskapazität aufweisen, um Kationen (z.B. Schwermetalle) durch Ionenaustausch an die Tonminerale (z.B. Montmorillonit) zu binden, falls es im Extremfall zu einer Sickerwasser-Migration kommen sollte.",
-        "norm": "§ 5 DepV sowie DepV Anhang 1 i.V.m. TA Abfall."
+        "norm": "§ 3 DepV (Errichtung) sowie DepV Anhang 1 (Standort, geologische Barriere); die TA Abfall ist durch die DepV abgelöst."
       },
       {
         "num": 2,
@@ -183,7 +183,7 @@
         "num": 5,
         "label": "Barriere 5: Systematisches Sickerwasser- & Grundwassermonitoring (Nachsorge)",
         "desc": "Regelmäßige Beprobungen an eigens dafür errichteten Grundwassermessstellen im direkten Anstrom (Referenzwert) und im Abstrom (Leckage-Detektion) der Deponie werden vierteljährlich durchgeführt. Das Sickerwasser wird über das Basisgefälle erfasst, in Schächten gesammelt und in speziellen physikalisch-chemischen und biologischen Reinigungsanlagen aufbereitet, bevor es in Vorfluter geleitet werden darf.",
-        "norm": "§ 12 - 14 DepV (Abschluss, Nachsorge und Monitoring)."
+        "norm": "§§ 10–13 DepV (Stilllegung, Nachsorge, Kontrolle von Emissionen, Information und Dokumentation)."
       }
     ],
     "Deponie_2": [

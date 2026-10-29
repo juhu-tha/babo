@@ -433,7 +433,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     keyDuties: [
       'Strikte Getrennthaltungspflicht auf der Baustelle vor Ort.',
       'Dokumentationspflicht für Ausnahmen (technische Unmöglichkeit oder unverhältnismäßige Kosten).',
-      'Zielvorgabe § 14 Abs. 3 KrWG: mindestens 70 Masse-% der nicht gefährlichen Bau- und Abbruchabfälle (ohne Boden und Steine) für Wiederverwendung, Recycling und sonstige stoffliche Verwertung (einschließlich Verfüllung).',
+      'Zielvorgabe § 14 Abs. 2 KrWG: mindestens 70 Masse-% der nicht gefährlichen Bau- und Abbruchabfälle (ohne Boden und Steine) für Wiederverwendung, Recycling und sonstige stoffliche Verwertung (einschließlich Verfüllung).',
       'Vorrang für selektiven Rückbau und sortenreine Bauteiltrennung vor dem Totalabbruch.'
     ],
     impactOnMaterials: 'Verbundwerkstoffe (z. B. verklebte WDVS-Systeme) werden durch Entsorgungskosten massiv benachteiligt; trennbare Konstruktionen (mechanisch befestigt, sortenrein lösbar) gewinnen an Marktwert.',

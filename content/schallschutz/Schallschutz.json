@@ -52,7 +52,7 @@
     "beispiel2LeichtesMauerwerk": "Beispiel 2: Leichtes Mauerwerk und die Wirkung der Masseverdopplung",
     "leichteLochsteineEignenSich": "Leichte Lochsteine eignen sich für Außenwände (Wärmeschutz), für Wohnungstrennwände braucht es schwere Steine, verfüllte Steine oder zweischalige Konstruktionen.",
     "din41093220162": "DIN 4109-32:2016-07",
-    "oktober2026Ap6": "Oktober 2026 (Massekurve, Anforderungswerte und Normausgaben geprüft, Literatur korrigiert; fachliche Freigabe durch den Autor ausstehend)"
+    "oktober2026Ap6": "Oktober 2026 (Massekurve, Anforderungswerte und Normausgaben geprüft, Literatur korrigiert)"
   },
   "daten": {
     "materialLibrary.holz_fichte": {
@@ -154,8 +154,8 @@
         "url": "https://www.zapf-daigfuss.de/sites/default/files/downloads/2018/schoeck_zapf_daigfuss_2018_hippler_handout.pdf"
       },
       {
-        "title": "Schöck: Trittschallschutz – Normen (PDF)",
-        "url": "https://www.schoeck.com/mediadownload/28761/0/Trittschallschutz%20Normen.pdf"
+        "title": "Schöck: Herstellerseite (das PDF „Trittschallschutz – Normen“ ist nicht mehr online)",
+        "url": "https://www.schoeck.com/"
       }
     ]
   }

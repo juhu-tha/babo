@@ -15,6 +15,10 @@ import { pfasSummenbewertung, type PfasId } from '../src/calc/pfas';
 import { zinkSchutzdauer } from '../src/calc/korrosionsschutz';
 import { karbonatisierungsLebensdauer } from '../src/calc/korrosion';
 import bbod from '../content/abfaelle/Altlasten.json';
+import { ALTBETON_1972_2001, altbeton1972, fcdBeton, FCD_MODUL } from '../src/data/kennwerte';
+import { historicalData } from '../src/data/historicalMaterialsData';
+import laborTab from '../content/historischematerialkennwerte/RechnerLaborTab.json';
+import fs from 'fs';
 
 const fehler: string[] = [];
 const nahe = (ist: number, soll: number, tol = 5e-3) => Math.abs(ist - soll) <= tol * Math.max(Math.abs(soll), 1e-9);
@@ -127,6 +131,37 @@ const re1 = rcBilanz(120, 'typ1', 'x0_xc_xf1_xf3');
 pruefe('RE1 sekundär Typ 1 X0–XC4', re1.sekundaer, 68.04); pruefe('RE1 primär', re1.primaer, 147.96);
 pruefe('RE1 sekundär Typ 2 XD/XS/XF2/XF4', rcBilanz(120, 'typ2', 'xd_xs_xf2_xf4').sekundaer, 30.24);
 gilt(rcBilanz(120, 'typ1', 'xa2_xa3_xm').sekundaer === 0 && rcBilanz(120, 'typ1', 'x0_xc_xf1_xf3', false).sekundaer === 0, 'RE1 XA2/XA3/XM und ohne RC: 0 t');
+
+// Nachtrag 29.10.2026: Bn-/B-/Bk-Klassen 1972–2001 nach Schnell/Fischer/Loch, Kurzbericht BBR 2008, Tab. 2.2 (Werte von Hand aus der Quelle)
+const TAB22: [string, number, string | null][] = [
+  ['Bn 50', 3.9, null], ['Bn 100', 7.7, '≈ C8/10'], ['Bn 150', 11.6, '≈ C12/15'], ['Bn 250', 19.3, 'C16/20'], ['Bn 350', 27.1, 'C25/30'], ['Bn 450', 34.8, '≈ C35/45'], ['Bn 550', 42.5, 'C40/50'],
+  ['B 5', 3.9, null], ['B 10', 7.7, '≈ C8/10'], ['B 15', 11.6, '≈ C12/15'], ['B 25', 19.3, 'C16/20'], ['B 35', 27.1, 'C25/30'], ['B 45', 34.8, '≈ C35/45'], ['B 55', 42.5, 'C40/50'],
+  ['Bk 5', 3.7, null], ['Bk 7,5', 5.5, null], ['Bk 10', 7.4, '≈ C8/10'], ['Bk 15', 11.0, '≈ C12/15'], ['Bk 20', 14.7, '≈ C12/15'], ['Bk 25', 18.4, 'C16/20'], ['Bk 35', 25.8, 'C25/30'], ['Bk 45', 33.1, 'C30/37'], ['Bk 55', 40.5, 'C40/50'],
+];
+for (const [bez, fck, klasse] of TAB22) {
+  const z = altbeton1972(bez);
+  gilt(!!z && z.fck === fck && z.klasse === klasse, `Bn-Nachtrag ${bez}: ${z?.fck}/${z?.klasse}, soll ${fck}/${klasse}`);
+}
+gilt(ALTBETON_1972_2001.length === 16, 'Bn-Nachtrag 16 Zeilen (7 Bn/B, 9 Bk)');
+// Gesamtfaktor Probeform/Lagerung: Bn/B ≈ 0,77, Bk ≈ 0,74
+for (const z of ALTBETON_1972_2001) {
+  const f = z.fck / z.nennfestigkeit;
+  gilt(z.label.startsWith('Bk') ? f > 0.73 && f < 0.745 : f > 0.765 && f < 0.785, `Bn-Nachtrag Faktor ${z.label}: ${f}`);
+}
+// Datenbank-Reiter aus der Tabelle; alte Zuordnungen entfernt
+const hist250 = historicalData.beton.data.find(z => z.old.startsWith('Bn 250'));
+gilt(!!hist250 && hist250.new === 'C16/20' && hist250.f_new === '19,3', `Bn-Nachtrag Datenbank Bn 250: ${hist250?.new} ${hist250?.f_new}`);
+gilt(!historicalData.beton.data.some(z => /^(Bn|B) ?\d/.test(z.old) && /20\/25|C 30\/37|C 45\/55/.test(z.new)), 'Bn-Nachtrag alte Zuordnungen (Bn 250 → C20/25 …) entfernt');
+gilt(!historicalData.beton.data.some(z => /BK (12\.5|17\.5|22\.5|27\.5|37\.5)/.test(z.old)), 'Bn-Nachtrag nicht belegte DDR-Klassen entfernt');
+gilt(historicalData.beton.data.every(z => typeof z.f_new !== 'number' || Number.isInteger(z.f_new)), 'Bn-Nachtrag Dezimalwerte mit Komma');
+// Beispiel 1 (Bn 250, 1974): f_cd = 0,85 · 19,3 / 1,5 = 10,94; Bestand γ_c 1,35: 12,15 N/mm²
+pruefe('Bn-Nachtrag Beispiel 1 f_cd', fcdBeton(19.3, FCD_MODUL.historischStandard), 10.936667, 1e-5);
+pruefe('Bn-Nachtrag Beispiel 1 f_cd Bestand', fcdBeton(19.3, FCD_MODUL.historischBewertung), 12.151852, 1e-5);
+gilt(laborTab.texte.tippWerdenImBestand.includes('12{,}15') && !laborTab.texte.tippWerdenImBestand.includes('12{,}59'), 'Bn-Nachtrag Tipp 12,15');
+gilt(laborTab.texte.damitEntsprichtDerBestandsbeton.includes('C16/20') && laborTab.texte.damitEntsprichtDerBestandsbeton.includes('19{,}3'), 'Bn-Nachtrag Beispieltext C16/20, 19,3');
+const laborSrc = fs.readFileSync('src/modules/historischematerialkennwerte/RechnerLaborTab.tsx', 'utf8');
+gilt(laborSrc.includes("altbeton1972('Bn 250')") && !laborSrc.includes('11{,}33'), 'Bn-Nachtrag Beispiel aus gemeinsamer Tabelle');
+gilt(fs.readFileSync('src/data/tasks/bestandTasks.ts', 'utf8').includes('f_ck = 19,3 N/mm² und die Klasse C16/20'), 'Bn-Nachtrag Aufgabe t22');
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
 console.log('OK: Modulprüfung Tranche 12');

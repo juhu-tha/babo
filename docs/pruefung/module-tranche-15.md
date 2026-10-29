@@ -104,7 +104,7 @@ Nicht umgestellt: Frischbetontemperatur (kein Kern; reine Energiebilanz, nachger
 
 **Empfehlung:** freigabefähig (T15-BE-2 und T15-BE-6 am 29.10.2026 umgesetzt; keine offene Frage).
 
-- [ ] Modul freigeben
+- [x] Modul freigeben – freigegeben 29.10.2026 (Nachtrag)
 
 ## 2. Massivbau: Biegung (`rechnung_stahlbeton`)
 
@@ -127,7 +127,7 @@ Nicht umgestellt: Frischbetontemperatur (kein Kern; reine Energiebilanz, nachger
 
 **Empfehlung:** freigabefähig nach Korrektur T15-SB-1/-2.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben – freigegeben 29.10.2026 (Nachtrag)
 
 ## 3. Holzbau: Stützenknicken (`rechnung_holzbau`)
 
@@ -139,7 +139,7 @@ Nicht umgestellt: Frischbetontemperatur (kein Kern; reine Energiebilanz, nachger
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben – freigegeben 29.10.2026 (Nachtrag)
 
 ## 4. Nachhaltigkeit & Dauerhaftigkeit (`rechnung_nachhaltigkeit`)
 
@@ -165,7 +165,7 @@ Nicht umgestellt: Frischbetontemperatur (kein Kern; reine Energiebilanz, nachger
 
 **Empfehlung:** freigabefähig (T15-NH-3 am 29.10.2026 umgesetzt; CEM-III/B-Wert ist gekennzeichneter Lehrwert, F-Stelle).
 
-- [ ] Modul freigeben
+- [x] Modul freigeben – freigegeben 29.10.2026 (Nachtrag)
 
 ## 5. Bauen im Bestand (`rechnung_bestand`)
 
@@ -199,7 +199,7 @@ Nicht umgestellt: Frischbetontemperatur (kein Kern; reine Energiebilanz, nachger
 
 **Empfehlung:** freigabefähig nach Korrektur T15-PP-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben – freigegeben 29.10.2026 (Nachtrag)
 
 ## 7. Bauleitung & Baustelle (`px_bauleitung`)
 
@@ -213,7 +213,7 @@ Nicht umgestellt: Frischbetontemperatur (kein Kern; reine Energiebilanz, nachger
 
 **Empfehlung:** freigabefähig nach Korrektur T15-PB-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben – freigegeben 29.10.2026 (Nachtrag)
 
 ## 8. Bautagebuch (`px_bautagebuch`)
 
@@ -226,7 +226,7 @@ Nicht umgestellt: Frischbetontemperatur (kein Kern; reine Energiebilanz, nachger
 
 **Empfehlung:** freigabefähig nach Korrektur T15-BT-1/-2.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben – freigegeben 29.10.2026 (Nachtrag)
 
 ## 9. Produktherstellung & QS (`px_produktion`)
 
@@ -264,7 +264,7 @@ Nicht umgestellt: Frischbetontemperatur (kein Kern; reine Energiebilanz, nachger
 
 **Empfehlung:** freigabefähig nach Korrektur T15-RG-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben – freigegeben 29.10.2026 (Nachtrag)
 
 ## 12. Neue Normengeneration (`normen_ausblick`)
 
@@ -274,7 +274,7 @@ Nicht umgestellt: Frischbetontemperatur (kein Kern; reine Energiebilanz, nachger
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben – freigegeben 29.10.2026 (Nachtrag)
 
 ## 13. Laborsicherheit (`labor_sicherheit`)
 
@@ -292,7 +292,7 @@ Nicht umgestellt: Frischbetontemperatur (kein Kern; reine Energiebilanz, nachger
 
 **Empfehlung:** freigabefähig (T15-LS-4 am 29.10.2026 umgesetzt).
 
-- [ ] Modul freigeben
+- [x] Modul freigeben – freigegeben 29.10.2026 (Nachtrag)
 
 ---
 
@@ -323,3 +323,28 @@ Nicht umgestellt: Frischbetontemperatur (kein Kern; reine Energiebilanz, nachger
 - Eigenes Python-Skript (eigene Umsetzung von Stoffraumrechnung, k-Wert-Ansatz, Energiebilanz, EC2 3.1.2/Anhang B, µ-Verfahren, EC5 6.3.2, √t-Gesetz und Stöchiometrie, Lehransatz Bestand, EC2 8.4/8.7, Kalkulation, Saul); 75 Prüfungen als `tests/modulpruefungTranche15.test.ts`.
 - QA (lokal, nach Einmergen von origin/main): `npx tsc --noEmit`, `npm test` (alle Tests, inkl. `fcdModule`, `auditDaten`, `quiz`, `pruefliste`), `check:formeln` (4490 Formeln, 0 fehlerhaft), `check:zahlen` (inkl. Tausender), `check-design`, `check-verwaist --strict`, `check-any`, Build, `check-bundle`; `a11y-reiter` (desk, mob, desk-dunkel) auf `rechnung_beton`, `rechnung_stahlbeton`, `rechnung_holzbau`, `rechnung_nachhaltigkeit`, `rechnung_bestand`, `px_planung`, `px_bauleitung`, `px_bautagebuch`, `px_produktion`, `labor_sicherheit`, `regularien`: 105 Reiter-Prüfungen, 0 Verstöße.
 - Öffentliche Quellen: [DIN Media, DIN EN 206-1:2026-07](https://www.dinmedia.de/de/norm/din-en-206-1/399836281); [DIN Media, DIN 18533-1](https://www.dinmedia.de/de/norm/din-18533-1/399850897); [Bauprofessor, DIN 18533-1 Änderungen](https://www.bauprofessor.de/din18533-1-abdichtung-von-erdberuehrten-bauteilen-die-wichtigsten-aenderungen/); [VDZ-EPD CEM I (2022)](https://www.beton.org/fileadmin/beton-org/media/Dokumente/PDF/Wissen/Beton-Bautechnik/Nachhaltigkeit/2022-06-08-EPD-CEM_I-D.pdf); [MATEC Web Conf. 289, 02001](https://www.matec-conferences.org/articles/matecconf/pdf/2019/38/matecconf_cs18_02001.pdf); [core.ac.uk 325948752](https://core.ac.uk/download/325948752.pdf); [Ernst & Sohn, Historische technische Regelwerke (Leseprobe)](https://www.ernst-und-sohn.de/sites/default/files/uploads/produkte/buecher/probekapitel/978-3-433-02925-3_histor._techn._regelwerke_diverse.pdf); [umwelt-online, TRGS 559](https://umwelt-online.de/recht/t_regeln/trgs/trgs500/559_20.htm); [BGN, TRGS 559 Abschn. 1](https://vorschriften.bgn-branchenwissen.de/daten/tr/trgs559/1.htm); [OTH Regensburg, Versicherungen](https://www.oth-regensburg.de/studieren/im-studium/formales/versicherungen); [TÜV Akademie, Bedienberechtigungen](https://akademie.tuv.com/page/mobilitaet/bedienberechtigungen).
+
+---
+
+## Freigabe 29.10.2026 (Nachtrag)
+
+Entscheidung vom 28.10.2026: „Module ohne offene Frage freigeben“; Punkte, die nur am Normtext zu klären sind, blockieren die Freigabe (Prüfbogen Normtext, Abschnitt „Was ohne Normtext nicht weiterkommt“, und die für diese Tranchen ergänzten Normtextpunkte). Geprüft wurde je Modul: Empfehlung erfüllt (Korrekturen behoben, Klärungen entschieden und in den Abschnitten „Umsetzung 29.10.2026“ bzw. in #260–#265 umgesetzt (Befundlisten #260–#262, Umsetzungen #263–#265)) und kein Normtextpunkt offen. Verfahren wie #256/#259: Prüfvermerk in `src/data/pruefvermerke.ts` „geprueft“, am 2026-10-29, passiv ohne Namen; Quizfreigaben sind davon getrennt.
+
+Freigegeben:
+
+- [x] `rechnung_beton` – T15-BE-2 und T15-BE-6 umgesetzt (#265)
+- [x] `rechnung_stahlbeton` – T15-SB-1/-2 behoben
+- [x] `rechnung_holzbau` – freigabefähig, keine Frage
+- [x] `rechnung_nachhaltigkeit` – T15-NH-3 umgesetzt (#265, Zement-GWP aus `src/data/zementGwp.ts`); CEM-III/B-Lehrwert als F-Stelle gekennzeichnet
+- [x] `labor_sicherheit` – T15-LS-1 bis -3 behoben, T15-LS-4 umgesetzt (#265, Funktionsbezeichnungen, Vermerk ohne Namen)
+- [x] `px_planung` – T15-PP-1 behoben
+- [x] `px_bauleitung` – T15-PB-1 behoben (α₆ nach NA DE als F-Stelle wie T2-S-1, nicht blockierend)
+- [x] `px_bautagebuch` – T15-BT-1/-2 behoben; Musterdaten neutral (#264)
+- [x] `regularien` – T15-RG-1 behoben
+- [x] `normen_ausblick` – freigabefähig, keine Frage
+
+Nicht freigegeben:
+
+- `rechnung_bestand` – Mindeststandardabweichung nach DIN EN 13791 (Normtext); T15-BS-3 bis -6 umgesetzt (#265)
+- `px_produktion` – RC-Höchstanteile nach DIN 1045-2, Anhang E (Normtext wie T9-GL-1a)
+- `px_karriere` – T15-PK-1 (Normtext DIN 1045-3, Überwachungsklasse 3)

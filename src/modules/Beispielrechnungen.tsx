@@ -57,7 +57,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
 
   // --- 1. STATE FOR U-WERT BERECHNUNG ---
   const [uConcreteThick, setUConcreteThick] = useState<number>(20); // in cm
-  const [uConcreteLambda, setUConcreteLambda] = useState<number>(2.3); // W/(mK) - Normalbeton
+  const [uConcreteLambda, setUConcreteLambda] = useState<number>(2.3); // W/(mK) – Stahlbeton (DIN EN ISO 10456: armiert 1 % 2,3; unbewehrt 2400 kg/m³ 2,0)
   const [uInsuThick, setUInsuThick] = useState<number>(14); // in cm
   const [uInsuLambda, setUInsuLambda] = useState<number>(0.035); // W/(mK) - EPS/Mineralwolle
   const [uPlasterThick, setUPlasterThick] = useState<number>(1.5); // in cm (Innenputz)

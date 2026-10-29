@@ -269,7 +269,7 @@ export function DaemmungBerater() {
             </div>
 
             <div className="bg-slate-50 p-3 rounded-lg border border-slate-150 flex items-center justify-between text-xs">
-              <span className="text-slate-600">Empfehlung für GEG:</span>
+              <span className="text-slate-600">Empfehlung für GModG (vormals GEG):</span>
               <button 
                 onClick={() => setThickness(recThickness)} 
                 className="font-bold text-shiraz hover:underline cursor-pointer flex items-center gap-1 font-mono text-[11px]"

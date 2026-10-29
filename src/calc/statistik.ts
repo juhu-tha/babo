@@ -15,6 +15,9 @@
  */
 import { type Hinweis, hatFehler, istEndlich, muss } from './plausibilitaet';
 import { formatDeZahl } from '../utils/numberFormat';
+import { GAMMA_C } from '../data/kennwerte';
+import { EC2_NA_DE } from '../data/normParams';
+import { GAMMA_M_HOLZ } from './holzbau';
 
 export type StatistikMaterial = 'beton' | 'stahl' | 'holz';
 export type AusreisserMethode = '2sigma' | 'grubbs' | 'boxplot';
@@ -114,8 +117,8 @@ export function fraktilfaktorKn(n: number): number {
   return NaN;
 }
 
-/** Teilsicherheitsbeiwerte γ_M des Moduls */
-export const GAMMA_M: Readonly<Record<StatistikMaterial, number>> = { beton: 1.5, stahl: 1.15, holz: 1.3 };
+/** Teilsicherheitsbeiwerte γ_M des Moduls – aus den zentralen Konstanten (Konsistenzprüfung 29.10.2026; Werte unverändert 1,5 / 1,15 / 1,3) */
+export const GAMMA_M: Readonly<Record<StatistikMaterial, number>> = { beton: GAMMA_C.staendig, stahl: EC2_NA_DE.gammaS, holz: GAMMA_M_HOLZ };
 
 /** Grenzen des Kriteriums; Grubbs: unten/oben = 1-%-Grenze (Entfernung), unten5/oben5 = 5-%-Grenze (nur Markierung) */
 export interface AusreisserGrenzen { unten: number; oben: number; gKrit?: number; unten5?: number; oben5?: number; gKrit5?: number }

@@ -245,7 +245,7 @@
       },
       {
         "formel": "\\Delta l = l_0 \\cdot \\frac{q}{100} \\cdot \\Delta u \\quad (u \\le u_{\\text{FSP}} \\approx 30\\,\\%)",
-        "erklaerung": "Differentielles Schwind- und Quellmaß q in % je 1 % Feuchteänderung (Fichte: radial ca. 0,16 %, tangential ca. 0,33 %, längs ca. 0,01 %). Nur unterhalb des Fasersättigungspunkts (FSP).",
+        "erklaerung": "Differentielles Schwind- und Quellmaß q in % je 1 % Feuchteänderung (Fichte: radial ca. 0,19 %, tangential ca. 0,36 %, längs ca. 0,01 %; TU München, Skript „Holz – Eigenschaften, Merkmale“). Nur unterhalb des Fasersättigungspunkts (FSP).",
         "quelle": "Niemz/Sonderegger: Holzphysik"
       },
       {

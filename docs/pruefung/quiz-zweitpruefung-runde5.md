@@ -1,0 +1,64 @@
+# Quiz: Zweitprüfung Runde 5 (seit 28.10. korrigierte Fragen) – Vorschlagsliste (ohne Freigabe)
+
+- [ ] Sammelfreigabe Runde 5 (alle Zeilen ‚ok‘)
+
+Stand: 29.10.2026 · Grundlage: `src/data/quiz.json` auf main (Stand 5e021ebd, nach #265) · Prüfschema wie Runde 4: Frage, Optionen, richtige Antwort, Erklärung, Rückmeldungen zu den Distraktoren und normRef gegen Modulinhalt und Rechenkerne geprüft. Rechenfragen mit eigenem Skript nachgerechnet, auch die Fehlerwege der Distraktoren; die Rechenkerne (`betonkennwerte.ts`, `materialoptimierung.ts`, `kennwerte.ts` Altbeton-Zuordnung, Transportbeton-Übung) wurden dazu direkt aufgerufen. Geprüft wurden außerdem Normstand, Zahlformat (Tausendertrennung U+202F ab 5 Stellen, vierstellig ohne Trennung) und die Längenratschen aus `tests/quiz.test.ts`.
+
+In dieser Runde wurde **nichts freigegeben**: `verified` bleibt `false`, `reviewer`/`reviewedAt` sind nicht gesetzt. Die Sammelzeile oben gilt nur für die 20 Zeilen mit „ok“. Die korrigierte Frage hat unten eine eigene Checkbox. Für „hängt an Prüfbogen“ ist noch der Normtext nötig.
+
+## Umfang
+
+- Alle Fragen mit `verified !== true`, die **nicht** schon in Runde 4 mit „ok“ stehen, oder die sich seit dem Prüfstand von Runde 4 (47385009) geändert haben: **23 von 84 offenen Fragen**.
+  - 12 Fragen, die in Runde 4 korrigiert wurden (darunter die vier am 29.10. entschiedenen Klärungen) und `q_prob_4` (Runde 4: hängt an Prüfbogen).
+  - 10 Fragen, die mit #261/#265 (Tranche 15) neu gefasst wurden: `q_mo_1`, `qn_materialoptimierung_3`, `qn_lca_rechner_3`, `qn_oekobilanz_lca_g1` (Zement-GWP, T15-NH-3), `qn_rechnung_beton_6` (T15-BE-2), `qn_rechnung_bestand_1`, `_4`, `_5`, `_6` (T15-BS-2/-3/-5/-6), `qn_px_bauleitung_2` (T15-PB-1).
+  - `qn_rechnung_nachhaltigkeit_4`: In Runde 4 „ok“, seitdem auf Zement-GWP 665/260 kg/t umgestellt (T15-NH-3), daher erneut geprüft.
+- **Nicht erneut geprüft** werden die übrigen 61 Fragen aus Runde 4 mit „ok“. Ihr Inhalt ist seit dem Prüfstand von Runde 4 unverändert (Vergleich aller Felder außer `vorpruefung`). Dazu gehören `q_rsto_1`, `q_ea_1`, `q_ea_2`, `q_hyf_2`, `q_hyf_4`, `qn_holzbau_verbindung_6` und 13 der 14 `qt_*`-Fragen; `qt_zfp_1` ist korrigiert und deshalb hier enthalten. Sie werden über die Sammelzeile von Runde 4 freigegeben. Ihr Feld `vorpruefung.ergebnis` steht oft noch auf „korrigiert“, weil es den Zustand vor Runde 4 beschreibt.
+- Nachkontrolle der Module, die sich seit Runde 4 geändert haben: Im Modul `hydratation_folgen` steht jetzt „rund 47 K … bis rund 62 °C“ (c·ρ = 2400 kJ/(m³K)). Das passt zu `q_hyf_2` und `q_hyf_4`. Die Änderungen in `ki_system` (Produktnamen entfernt), `instandhaltung` (Texte zu EN 1504/KKS) und `boden_materialaufbereitung` (Beispielnamen) berühren keine der Fragen aus Runde 4.
+- Öffentliche Quelle (Treffer aus der Websuche): DIN Media/din.de zu DIN EN 15978:2026-09 (deutsche Fassung EN 15978:2026). Damit ist der Satz in `qn_lca_ingenieurbau_1` belegt, dass DIN EN 15978 das Modul B8 „seit der Ausgabe 2026“ kennt.
+- Prüfbogen Normtext (Stand 28.10.2026): `q_prob_4` hängt an T4-PN-2. Neu dazu kommt `qn_px_bauleitung_2`: Die Rückmeldung zu Distraktor 3 nennt α₆ = 1,4 nach Tab. 8.3DE, und dieser Wert ist Punkt #242-1 des Prüfbogens. Die übrigen Normstellen des Prüfbogens kommen in den geprüften Fragen nicht vor: DWA-A 138-1 #247-1 bis -4, DIN EN 13791 T12-F-2/-3, DIN 1045-2 T9-*, DAfStb-Richtlinie T11-MO-2.
+
+## Ergebnis
+
+| ok | korrigiert | hängt an Prüfbogen | Klärung | gesamt |
+|---:|---:|---:|---:|---:|
+| 20 | 1 | 2 | 0 | 23 |
+
+Die Korrektur steht in `src/data/quiz.json`: `vorpruefung.ergebnis` „korrigiert“, `vorpruefung.hinweis` „Zweitprüfung 29.10. (Runde 5): … – korrigiert“, `verified` bleibt `false`. Richtige Antwort, Optionen und Rechenweg ändern sich nicht.
+
+## Prüftabelle
+
+| ID | Modul | Ergebnis | Begründung |
+|---|---|---|---|
+| `qt_zfp_1` | Zerstörungsfreie Prüfung (ZfP) (`zfp`) | ok | v = 300/√9 = 100 mm/ns, d = 100 · 2,0/2 = 100 mm. Fehlerwege nachgerechnet: 200 mm (nicht halbiert), 300 mm (ohne √ε_r, halbiert), 33,3 mm (durch ε_r geteilt). Die Rückmeldung zu 300 mm ist seit Runde 4 richtig. |
+| `q_daemm_1` | Dämmstoffe & Bauphysik (`bp_daemmung`) | ok | XPS ist richtig. Der EPS-Hinweis (Bauartgenehmigung, in der Regel W1-E) steht so auch im Modul. Der unbelegte Wert „< 1,5 Vol.-%“ ist entfernt. Hinweis: Die richtige Option ist 1,26-mal so lang wie der Mittelwert der Distraktoren (> 1,2). Die Optionen sind seit der früheren Freigabe unverändert, und die Ratsche `zuLang` (23 ≤ 26) bleibt eingehalten. |
+| `q_prob_4` | Probenahme & Erkundung (`probenahme`) | hängt an Prüfbogen T4-PN-2 | Kennwert Median unstrittig; Verwerfungskriterium „> 20 % der Werte > 6 Einheiten vom Median“ ist die vorläufige Fassung vom 28.10. Freigabe nach Eintrag T4-PN-2 (DIN EN 12504-2:2021-10). Der Prüfbogen nennt als App-Wert noch „25 % vom Median“ (Stand vor der Umsetzung 29.10.) – beim Eintrag die heutige Fassung vergleichen. |
+| `q_we_4` | Thermische Eigenschaften & Dämmstoffe (`waermeeigenschaften`) | ok | a = 2,0/(2400 · 1000) = 8,3 · 10⁻⁷ m²/s; 4,8 · 10⁶ (ρ·c), 8,3 · 10⁻⁴ (λ/ρ) nachgerechnet; 2400 vierstellig ohne Trennung. |
+| `q_mo_1` | Materialoptimierung (`materialoptimierung`) | ok | Lehrbeton aus `ZEMENT_GWP`: 320 · 0,665 + 30 = 243, mit CEM III/A 320 · 0,40 + 30 = 158 kg CO₂-Äq./m³. Minderung 35,0 %. Der Zementanteil am GWP liegt bei 87,6 % (CEM I) bzw. 81,0 % (CEM III/A) und damit im Bereich „80 bis 90 %“. Die Distraktoren (Transport, Fließmittel bei gleichem Zementgehalt, RC-Körnung) sind eindeutig schwächere Hebel. |
+| `q_bst_5` | Altbauatlas (`bestand`) | ok | f_Rsi = 16,5/25 = 0,66 < 0,70, Mindestwert θ_si = 12,5 °C. Mit der Magnus-Formel nachgerechnet: 80 % Oberflächenfeuchte bei 20 °C/50 % ergibt 12,6 °C, der Taupunkt liegt bei 9,3 °C. Die Fehlerwege 0,58 und 0,46 sind nachgerechnet. Die Frage nennt ausdrücklich die Ausgabe 2013-02. |
+| `qn_lca_rechner_3` | LCA-Rechner & QNG-Nachweis (`lca_rechner`) | ok | Mit den Kennwerten der Transportbeton-Übung nachgerechnet: Preset 1 ergibt 239,9 kg CO₂-Äq./m³ (= `refTotalA1A5`), Preset 3 ergibt 100,3 kg. Zement A1: 212,8 bzw. 72,8 kg. RC-Kies spart 0,94 kg; A2 beträgt 4,9 bzw. 4,1 kg, die Distanz 25 → 15 km macht 1,2 kg aus. Die Flugasche wird mit k = 0,4 angerechnet (`effectiveCem`). Die Zementfaktoren 0,665/0,26 sind die Werte aus `zementGwp.ts`; 0,26 ist ein Lehrwert. Die Frage bezieht sich ausdrücklich auf die Übung. |
+| `qn_lca_ingenieurbau_1` | LCA im Ingenieurbau (DIN EN 17472) (`lca_ingenieurbau`) | ok | Die richtige Option nennt die funktionellen Einheiten (1 m² Brückendeckfläche); so steht es im Modultext. Betrachtungszeitraum vom Auftraggeber (3.69), 80–100 a, DIN EN 1990 Kat. 5 wie Modul. „DIN EN 15978 … seit der Ausgabe 2026“ belegt (DIN EN 15978:2026-09, DIN Media). Distraktoren B6, 50 a, Nettoraumfläche eindeutig falsch. |
+| `qn_lca_ingenieurbau_3` | LCA im Ingenieurbau (DIN EN 17472) (`lca_ingenieurbau`) | ok | Formel wie in `IngenieurbauLCA.tsx` (Stauanteil 0,4, 0,95 kg je Fahrzeug, Schnellbau 0,35): 108 · 1800 · 0,95 = 184 680 kg (Trennung U+202F) = 184,7 t. Fehlerwege nachgerechnet: 461,7 t, 64,6 t, 30,8 t. Der Fragetext „im Simulator als B8 geführt“ ist wie am 29.10. entschieden umgesetzt. |
+| `qn_lca_ingenieurbau_5` | LCA im Ingenieurbau (DIN EN 17472) (`lca_ingenieurbau`) | ok | 863 − 0,65 · 184,7 = 743 t; Anteil B8 185/863 = 21,4 %; Vergleich 743 < 825 t trägt die richtige Option; Erklärung „im Simulator“ wie entschieden. |
+| `qn_bp_verkehr_tiefbau_3` | Tiefbau & Entwässerung (`bp_verkehr_tiefbau`) | ok | 450 · 200/10 000 · 900 = 8100 l = 8,1 m³; 9,0 (ohne ψ), 0,135 (15 s), 81 m³ (Faktor 10) nachgerechnet; „10 000“ mit U+202F, 8100 vierstellig. Keine Prüfbogenstelle (#247-1 bis -4) berührt. |
+| `qn_bp_verkehr_tiefbau_6` | Tiefbau & Entwässerung (`bp_verkehr_tiefbau`) | ok | Die ψ-Werte 0,90/0,75/0,50/0,30 entsprechen der Auswahl im Rigolenrechner. In der Rückmeldung heißt der Faktor jetzt f_Z, und sie nennt keinen Wert; #247-4 ist daher nicht berührt. |
+| `qn_frischbeton_4` | Frischbeton (`frischbeton`) | ok | Obere Grenze 4,5 + 4 = 8,5 %, Einzelwert bis 9,5 % (DIN EN 206, 5.4.3; Mindestwert XF4/16 mm 4,5 %); Festigkeitsminderung 3–5 N/mm² je Prozent wie Modultext Frischbeton; Lernhilfe angeglichen. |
+| `qn_materialoptimierung_3` | Materialoptimierung (`materialoptimierung`) | korrigiert | Mit `dafstbVergleich` nachgerechnet (Decke, Hohlkörper, CEM III/A, 56 d, `gruen_eaf`): 144 kg/m³, 2808 + 1037 = 3845 kg. Fehlerwege: 4118 kg (28 d), 4389 kg (Stahl 0,64), 2808 kg (nur Beton). Der Fragetext nannte 0,42 „Elektroofenroute“. Im Modul heißt 0,42 aber „EAF Grünstrom (Lehrwert)“, und 0,64 („Elektrostahl DE“, ÖKOBAUDAT) ist ebenfalls überwiegend Elektroofenstahl. Deshalb jetzt: „Elektroofenstahl mit Grünstrom, Lehrwert 0,42“. Die Rückmeldung zu Distraktor 3 nennt 0,64 als ÖKOBAUDAT „Bewehrungsstahl (de)“. |
+| `qn_rechnung_beton_6` | Beton: Mischungsentwurf (`rechnung_beton`) | ok | Mit `temperaturFaktor`, `betaCc` und `ausschalVergleich` nachgerechnet: t_T = 4,76 d, β_cc = 0,700, f_ck(t) = 15,1 N/mm² ≥ 12,5 N/mm² (60,4 %). Fehlerwege: 17,7 N/mm² (ohne Temperaturkorrektur), 23,1 N/mm² (f_cm), 10,3 d/20,0 N/mm² (Exponent mit falschem Vorzeichen). „50 % von f_ck“ ist als Vorgabe der Tragwerksplanung formuliert; im Kern steht es als Lehrannahme. |
+| `qn_rechnung_nachhaltigkeit_4` | Nachhaltigkeit & Dauerhaftigkeit (`rechnung_nachhaltigkeit`) | ok | 64 t · 0,665 = 42,56 t, 68 t · 0,26 = 17,68 t, Δ = 24,88 t, also 58,5 % von A. Fehlerwege: 140,7 % (Bezug B), 25,9 t/60,9 % (ohne höheren Zementgehalt), 17,7 t/41,5 % (GWP von B). Die Vorgaben 665/260 kg/t entsprechen den Startwerten des Moduls; 260 kg/t ist als Lehrwert gekennzeichnet. |
+| `qn_rechnung_bestand_1` | Bauen im Bestand (`rechnung_bestand`) | ok | `ALTBETON_ZUORDNUNG.B225`: f_ck 10,1/12,3 N/mm² (C8/10 bzw. C12/15, Schnell/Fischer/Loch 2008, Tab. 2.1). Ergebnis 0,85 · 10,1/1,5 = 5,72 N/mm². Fehlerwege: 12,75 (Klassenwert), 6,97 (obere Grenze), 9,04 (früherer Lehransatz). Ohne Kenntnis der Überwachung gilt die untere Grenze; das ist die Voreinstellung des Moduls und konservativ. |
+| `qn_rechnung_bestand_4` | Bauen im Bestand (`rechnung_bestand`) | ok | Schweißen nur nach Werkstoffprüfung und Verankerung über Haken: Das steht so im Modultext (Schritt 3), der Lehransatz „30 %“ ist entfallen. Die Distraktoren (Schweißbarkeit wegen niedriger Festigkeit, +10 %, Verbund wie Rippenstahl) sind eindeutig falsch. |
+| `qn_rechnung_bestand_5` | Bauen im Bestand (`rechnung_bestand`) | ok | Einstufung nach Aktenlage über die Zuordnungstabelle (nur Vorbemessung) und Bohrkerne nach DIN EN 13791 wie im Modul. Werte zu k_n und M (T12-F-2/-3) werden nicht genannt. Die Distraktoren (alte Norm, Bewehrungsermittlung, Verzicht auf γ_C) sind eindeutig falsch. |
+| `qn_rechnung_bestand_6` | Bauen im Bestand (`rechnung_bestand`) | ok | 314,2 mm² · 220/1,15 = 60,1 kN; 113,1 mm² · 500/1,15 = 49,2 kN. Fehlerwege: vertauscht, 55 kN, 69,1/56,5 ≈ 57 kN (ohne γ_S). Die Bezeichnung lautet BSt 220/340 GU (T15-BS-2). |
+| `qn_px_bauleitung_2` | Bauleitung & Baustelle (`px_bauleitung`) | hängt an Prüfbogen #242-1 | l_b,rqd = 3,5 · 435/2,7 = 563,9 ≈ 564 mm, mit f_bd = 2,25 · 1,8/1,5 = 2,7 N/mm² (C25/30). Fehlerwege: 2256 mm (ohne /4), 483 mm (Ø 12). Die richtige Antwort ist unabhängig vom Normtext. Die Rückmeldung zu 790 mm nennt aber α₆ = 1,4 (Ø < 16 mm, > 33 %), und diesen Wert aus Tab. 8.3DE muss #242-1 noch bestätigen. Bestätigt der Normtext 1,4, ist die Frage ohne Änderung „ok“. |
+| `qn_oekobilanz_lca_g1` | Ökobilanzierung (LCA): Grundlagen (`oekobilanz_lca`) | ok | 242,8 ≈ 243 bzw. 158 kg CO₂-Äq./m³, Minderung 35,0 %. Fehlerwege: 39,8 ≈ 40 % (nur Zement), 47,3 % (30 kg nur bei CEM I), 60,2 % (Verhältnis der Faktoren). Im Fragetext sind CEM I als VDZ-Branchen-EPD (netto) und CEM III/A als Lehrwert gekennzeichnet. |
+| `qn_membranen_etfe_3` | Membranen und ETFE-Folien (`membranen_etfe`) | ok | „Auch UV-B weitgehend durchlässig“ ist wie am 29.10. entschieden umgesetzt und fachlich richtig, denn Floatglas sperrt UV-B weitgehend und lässt UV-A teilweise durch. Die Distraktoren sind eindeutig falsch. Hinweis zum Modul (keine Bedingung für die Freigabe): Der Modultext sagt noch „anders als Floatglas – in hohem Maß UV-A-durchlässig“ (siehe „Offen“). |
+
+## Einzelfreigabe der korrigierten Fragen
+
+- [ ] `qn_materialoptimierung_3` freigeben (korrigiert)
+
+## Offen
+
+- **Klärung:** keine.
+- **Hängt an Prüfbogen:** `q_prob_4` → T4-PN-2 (DIN EN 12504-2:2021-10, Verwerfen der Messreihe); `qn_px_bauleitung_2` → #242-1 (DIN EN 1992-1-1/NA, Tab. 8.3DE, α₆; nur die Rückmeldung zu Distraktor 3).
+- **Hinweis Modultext (Vorschlag, nicht umgesetzt):** In `content/membranenetfe` an drei Stellen „UV-A-durchlässig“ durch „UV-durchlässig (UV-A und UV-B; Floatglas sperrt UV-B weitgehend)“ ersetzen. Dann stimmt der Text mit der am 29.10. entschiedenen Quizfassung überein.

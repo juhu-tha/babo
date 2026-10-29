@@ -1,4 +1,4 @@
-import { ALTBETON_ZUORDNUNG, KP_CM2_IN_N_MM2, type AltbetonKlasse } from './kennwerte';
+import { ALTBETON_ZUORDNUNG, ALTBETON_1972_2001, KP_CM2_IN_N_MM2, type AltbetonKlasse } from './kennwerte';
 import { formatDeZahl } from '../utils/numberFormat';
 
 export type MaterialCategory = 'beton' | 'betonstahl' | 'baustahl' | 'holz' | 'mauerwerk';
@@ -36,35 +36,53 @@ const klassenSpanne = (u: string | null, o: string | null) => (klasseOderStrich(
 const altbetonZeilen: HistoricalRecord[] = (Object.keys(ALTBETON_ZUORDNUNG) as AltbetonKlasse[]).map(k => {
   const z = ALTBETON_ZUORDNUNG[k];
   return z.spannbeton
-    ? { old: `${z.label} (DIN 1045 vor 1972, Spannbeton)`, new: '– (nicht tabelliert)', f_old: Math.round(z.kpCm2 * KP_CM2_IN_N_MM2 * 10) / 10, f_new: '–', explanation: ALTBETON_ERKLAERUNG[k] }
-    : { old: `${z.label} (DIN 1045 vor 1972)`, new: `${klassenSpanne(z.klasseUnten, z.klasseOben)} (nur Vorbemessung)`, f_old: Math.round(z.kpCm2 * KP_CM2_IN_N_MM2 * 10) / 10,
+    ? { old: `${z.label} (DIN 1045 vor 1972, Spannbeton)`, new: '– (nicht tabelliert)', f_old: formatDeZahl(z.kpCm2 * KP_CM2_IN_N_MM2, 1), f_new: '–', explanation: ALTBETON_ERKLAERUNG[k] }
+    : { old: `${z.label} (DIN 1045 vor 1972)`, new: `${klassenSpanne(z.klasseUnten, z.klasseOben)} (nur Vorbemessung)`, f_old: formatDeZahl(z.kpCm2 * KP_CM2_IN_N_MM2, 1),
         f_new: `${formatDeZahl(z.fckUnten, 1)} – ${formatDeZahl(z.fckOben, 1)}`, explanation: ALTBETON_ERKLAERUNG[k] };
 });
+
+/**
+ * Zeilen Bn/B (DIN 1045:1972/1988) und Bk (DDR 1981–1990) aus dem zweiten Teil der gemeinsamen Tabelle
+ * (ALTBETON_1972_2001; Schnell/Fischer/Loch 2008, Tab. 2.2; Entscheidung 29.10.2026, Nachtrag). Vorher Orientierungswerte
+ * u. a. „Bn 250 / B 25 → C 20/25“ und die nicht belegten DDR-Klassen BK 12.5 … BK 37.5.
+ */
+const ALTBETON_1972_ERKLAERUNG: Readonly<Record<string, string>> = {
+  'Bn 50 / B 5': 'Magerbeton für Sauberkeitsschichten und Füllbeton; keiner Festigkeitsklasse zugeordnet.',
+  'Bn 100 / B 10': 'Unbewehrter Beton geringer Festigkeit, z. B. für Streifenfundamente.',
+  'Bn 150 / B 15': 'Unterste Klasse für bewehrte Bauteile (Beton B I).',
+  'Bn 250 / B 25': 'Sehr verbreiteter Konstruktionsbeton für Decken, Wände und Stützen zwischen 1972 und 2001.',
+  'Bn 350 / B 35': 'Beton B II für höher beanspruchte Bauteile, z. B. Stützen und wasserundurchlässige Bauteile.',
+  'Bn 450 / B 45': 'Beton B II für hoch beanspruchte Bauteile und Fertigteile.',
+  'Bn 550 / B 55': 'Höchste Klasse der DIN 1045:1972/1988, vor allem für hoch beanspruchte Fertigteile.',
+  'Bk 5': 'DDR-Betonklasse für Sauberkeitsschichten und Füllbeton; keiner Festigkeitsklasse zugeordnet.',
+  'Bk 7,5': 'DDR-Betonklasse für unbewehrte, gering beanspruchte Bauteile; keiner Festigkeitsklasse zugeordnet.',
+  'Bk 10': 'DDR-Betonklasse für unbewehrte Fundamente und Massenbeton.',
+  'Bk 15': 'DDR-Betonklasse für gering beanspruchte bewehrte Bauteile.',
+  'Bk 20': 'DDR-Betonklasse für bewehrte Bauteile des Hochbaus.',
+  'Bk 25': 'DDR-Konstruktionsbeton für Decken, Wände und Fertigteile.',
+  'Bk 35': 'DDR-Betonklasse für höher beanspruchte Fertigteile, Stützen und Binder.',
+  'Bk 45': 'DDR-Betonklasse für hoch beanspruchte Fertigteile.',
+  'Bk 55': 'Höchste DDR-Betonklasse der Zuordnungstabelle, für hoch beanspruchte Fertigteile.',
+};
+const altbeton1972Zeilen: HistoricalRecord[] = ALTBETON_1972_2001.map(z => ({
+  old: `${z.label} (${z.regelwerk})`,
+  new: z.klasse ?? '– (keine Klasse)',
+  f_old: formatDeZahl(z.nennfestigkeit, Number.isInteger(z.nennfestigkeit) ? 0 : 1),
+  f_new: formatDeZahl(z.fck, 1),
+  explanation: ALTBETON_1972_ERKLAERUNG[z.label],
+}));
 
 export const historicalData: Record<MaterialCategory, HistoricalCategoryData> = {
   beton: {
     title: 'Beton (Druckfestigkeiten)',
-    description: 'Vergleich alter Betonfestigkeitsklassen (Bn / B) nach DIN 1045 (1972/1988) sowie DDR-Klassen (BK) nach TGL mit aktuellen Klassen (C) nach Eurocode 2 (DIN EN 1992-1-1). Ältere Klassen bezogen sich auf die 28-Tage-Würfeldruckfestigkeit (200-mm-Würfel; bis 1943 Serienmittelwerte, ab 1972 Nennfestigkeit als 5-%-Fraktile), die heutigen C-Klassen auf f_ck (Zylinder) und f_ck,cube (150-mm-Würfel). Für die Güten vor 1972 (B 120 bis B 600) gilt die gemeinsame Zuordnungstabelle wie in der Beispielrechnung „Bauen im Bestand“: charakteristische Festigkeit f_ck (Spalte „Neu“, MPa) und Klasse für die untere bis obere Grenze der damaligen Ausführungsqualität nach Schnell/Fischer/Loch (Kurzbericht BBR 2008, Tab. 2.1), nur für die Vorbemessung; B 450 und B 600 (Spannbeton) sind dort nicht enthalten. Die übrigen Zuordnungen (Bn/B 1972–2001, TGL) sind Orientierungswerte; maßgebend sind das DBV-Merkblatt „Bauen im Bestand – Beton und Betonstahl“ (03/2016) bzw. eine Bohrkernprüfung (DIN EN 13791). Wo f_ck,cube der zugeordneten Klasse über dem Altwert liegt, ist die Zuordnung nicht konservativ und durch Bohrkernprüfung abzusichern.',
+    description: 'Vergleich alter Betonfestigkeitsklassen (Bn / B) nach DIN 1045 (1972/1988) sowie DDR-Klassen (BK) nach TGL mit aktuellen Klassen (C) nach Eurocode 2 (DIN EN 1992-1-1). Ältere Klassen bezogen sich auf die 28-Tage-Würfeldruckfestigkeit (200-mm-Würfel; bis 1943 Serienmittelwerte, ab 1972 Nennfestigkeit als 5-%-Fraktile), die heutigen C-Klassen auf f_ck (Zylinder) und f_ck,cube (150-mm-Würfel). Für die Güten vor 1972 (B 120 bis B 600) gilt die gemeinsame Zuordnungstabelle wie in der Beispielrechnung „Bauen im Bestand“: charakteristische Festigkeit f_ck (Spalte „Neu“, MPa) und Klasse für die untere bis obere Grenze der damaligen Ausführungsqualität nach Schnell/Fischer/Loch (Kurzbericht BBR 2008, Tab. 2.1), nur für die Vorbemessung; B 450 und B 600 (Spannbeton) sind dort nicht enthalten. Für die Klassen 1972–2001 (Bn nach DIN 1045:1972, B nach DIN 1045:1978/1988) und die DDR-Klassen Bk (1981–1990) gilt Tab. 2.2 derselben Quelle: Da die Nennfestigkeit β_WN ab 1972 bereits ein 5-%-Quantil ist, rechnet sie nur Probeform und Lagerung um (f_ck rund 0,77·β_WN, Bk rund 0,74·Klassenwert); Spalte „Neu“ ist der Rechenwert f_ck, die Klasse ist teils nur näherungsweise („≈“). Alle Zuordnungen dienen der Vorbemessung; maßgebend ist eine Bauwerksuntersuchung mit Bohrkernprüfung (DIN EN 13791).',
     normOld: 'Bestimmungen des Deutschen Ausschusses für Eisenbeton (ab 1916), DIN 1045 (1932 / 1943 / 1972 / 1988), TGL (DDR)',
     normNew: 'DIN EN 1992-1-1 (Eurocode 2)',
     data: [
       { old: 'Stampfbeton (vor 1900)', new: '-', f_old: 'ca. 5 - 10', f_new: '-', explanation: 'Hauptsächlich für unbewehrte Gründungen, Widerlager und Kellerwände genutzt. Handgemischt, oft stark streuende Qualität.' },
       { old: 'Kiesbeton (ca. 1916)', new: '-', f_old: '11 - 14', f_new: '-', explanation: 'Erste bewehrte Platten und Balken. Verbundversagen durch mangelhafte Kornzusammensetzung war damals ein Risiko.' },
       ...altbetonZeilen,
-      { old: 'BK 5 (TGL, DDR)', new: '-', f_old: 5, f_new: '-', explanation: 'Magerbetonklasse der DDR-Standards. Vorrangig als Füllbeton und Sauberkeitsschichten genutzt.' },
-      { old: 'BK 7.5 (TGL, DDR)', new: 'C 8/10 (nicht konservativ – prüfen)', f_old: 7.5, f_new: 8, explanation: 'Unbewehrter Fundamentbeton und mäßig beanspruchter Massenbeton.' },
-      { old: 'BK 12.5 (TGL, DDR)', new: 'C 12/15 (nicht konservativ – prüfen)', f_old: 12.5, f_new: 12, explanation: 'DDR-Standardbeton im Wohnungsbau für unbewehrte Trennwände und Kellerfundamente.' },
-      { old: 'BK 17.5 (TGL, DDR)', new: 'C 16/20 (nicht konservativ – prüfen)', f_old: 17.5, f_new: 16, explanation: 'Äußerst verbreiteter Beton im DDR-Wohnungsbau. Fast alle tragenden Innenwände der WBS 70 Plattenbaureihe bestehen aus BK 17.5.' },
-      { old: 'BK 22.5 (TGL, DDR)', new: 'C 20/25 (nicht konservativ – prüfen)', f_old: 22.5, f_new: 20, explanation: 'Material für Außenwandplatten mit höherem Feuchtigkeitsangriff oder Deckenfertigteile.' },
-      { old: 'BK 27.5 (TGL, DDR)', new: 'C 25/30 (nicht konservativ – prüfen)', f_old: 27.5, f_new: 25, explanation: 'Hochwertigerer Konstruktionsbeton für Stützen und Binder bei industriellen Fabrikhallen.' },
-      { old: 'BK 37.5 (TGL, DDR)', new: 'C 30/37', f_old: 37.5, f_new: 30, explanation: 'Vorgespannte Deckenplatten und schwere Fertigteilpfeiler im DDR-Industriebau.' },
-      { old: 'Bn 50 / B 5 (DIN 1045:1972/88)', new: '-', f_old: 5, f_new: '-', explanation: 'Weicher Magerbeton der westdeutschen DIN-Normen für Sauberkeitsschichten.' },
-      { old: 'Bn 100 / B 10 (DIN 1045:1972/88)', new: 'C 8/10', f_old: 10, f_new: 8, explanation: 'Unbewehrter Beton für Streifenfundamente und geringe Frostbeanspruchung.' },
-      { old: 'Bn 150 / B 15 (DIN 1045:1972/88)', new: 'C 12/15', f_old: 15, f_new: 12, explanation: 'Mindestbetonklasse für bewehrte Bauteile bei mäßigem Feuchtigkeitseinfluss.' },
-      { old: 'Bn 250 / B 25 (DIN 1045:1972/88)', new: 'C 20/25', f_old: 25, f_new: 20, explanation: 'Der weitverbreitetste Standardbeton der Bundesrepublik zwischen 1972 und 2001. Nahezu alle Deckenplatten dieser Ära bestehen daraus.' },
-      { old: 'Bn 350 / B 35 (DIN 1045:1972/88)', new: 'C 30/37', f_old: 35, f_new: 30, explanation: 'Hochwertiger Beton für wasserundurchlässige Bauteile (Weiße Wannen), Brückenpfeiler und Kellerwände.' },
-      { old: 'Bn 450 / B 45 (DIN 1045:1972/88)', new: 'C 35/45', f_old: 45, f_new: 35, explanation: 'Eingesetzt bei schlanken Fertigteilbindern und weitgespannten, hochbewehrten Riegelkonstruktionen.' },
-      { old: 'Bn 550 / B 55 (DIN 1045:1972/88)', new: 'C 45/55', f_old: 55, f_new: 45, explanation: 'Historischer hochfester Beton, vorwiegend für weitgespannte Brückenüberbauten im Spannbetonbau verwendet.' }
+      ...altbeton1972Zeilen
     ]
   },
   betonstahl: {

@@ -24,7 +24,7 @@
     "brWennDerInteraktionseffekt": "<br>Wenn der Interaktionseffekt AB ungleich 0 ist (oder signifikant groß), bedeutet dies, dass die Auswirkung der Erhöhung des Zementgehalts (B) nicht unabhängig vom w/z-Wert (A) ist. In der Baupraxis ist dies essenziell: Mehr Zement bringt bei einem hohen w/z-Wert eventuell einen geringeren Festigkeitszuwachs als bei einem niedrigen w/z-Wert."
   },
   "werte": {
-    "oktober2026Ap4": "Oktober 2026 (2^k-Versuchspläne, Haupt- und Wechselwirkungseffekte geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "oktober2026Ap4": "Oktober 2026 (2^k-Versuchspläne, Haupt- und Wechselwirkungseffekte geprüft)",
     "statistischeVersuchsplanung": "Statistische Versuchsplanung"
   },
   "daten": {

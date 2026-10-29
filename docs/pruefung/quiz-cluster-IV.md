@@ -2,9 +2,9 @@
 
 Stand: 29.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster IV umfasst 314 Fragen aus 50 Modulen. Aufgeführt sind 101 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster IV umfasst 314 Fragen aus 50 Modulen. Aufgeführt sind 102 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 82 korrigiert, 0 fraglich, 11 mit offenem Prüfhinweis, 12 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 83 korrigiert, 0 fraglich, 11 mit offenem Prüfhinweis, 12 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -263,6 +263,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 82 korrigiert, 0 fraglich, 1
 - **Auffälligkeit:** Prüfhinweis: 4. BImSchV – Zwölf-Monats-Regel vereinfacht. · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Frage auf Behandlung am Entstehungsort eingegrenzt (sonst gilt § 1 Abs. 1 Satz 2 4. BImSchV: Abfallanlagen Nr. 8 ab dem ersten Tag), korrigiert
+
+### q_rc_4 · Checklisten
+
+- **Frage:** Bei einem kleinen Umbau fallen insgesamt 8 m³ Bau- und Abbruchabfälle an. Was gilt nach § 8 GewAbfV?
+- **Richtige Antwort:** Getrennt sammeln ist Pflicht, die Dokumentationspflicht entfällt bis 10 m³
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: Paragrafenprüfung – Distraktor-Rückmeldung „Teil 3 … §§ 8 bis 10“ auf „Abschnitt 3 … §§ 8 und 9“ berichtigt (gesetze-im-internet.de, GewAbfV); Antwort unverändert – korrigiert
+- [ ] ok
+- [ ] ändern: …
 
 ### q_re_2 · Ressourceneffizienz
 
@@ -610,9 +618,9 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 82 korrigiert, 0 fraglich, 1
 
 ### qn_materialoptimierung_3 · Materialoptimierung
 
-- **Frage:** Eine Hohlkörperdecke enthält 19,5 m³ Beton (CEM III/A, Prüfalter 56 d: 144 kg CO₂-Äq./m³) und 2470 kg Betonstahl aus der Elektroofenroute (0,42 kg CO₂-Äq./kg). Wie groß ist das GWP A1–A3 nach GWP = V_c · gwp_c + m_s · gwp_s?
+- **Frage:** Eine Hohlkörperdecke enthält 19,5 m³ Beton (CEM III/A, Prüfalter 56 d: 144 kg CO₂-Äq./m³) und 2470 kg Betonstahl (Elektroofenstahl mit Grünstrom, Lehrwert 0,42 kg CO₂-Äq./kg). Wie groß ist das GWP A1–A3 nach GWP = V_c · gwp_c + m_s · gwp_s?
 - **Richtige Antwort:** rund 3850 kg CO₂-Äq.
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: Beton-GWP CEM III/A bei 56 d jetzt 144 statt 123 kg/m³ (Zement-GWP nach T15-NH-3) – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: Beton-GWP CEM III/A bei 56 d jetzt 144 statt 123 kg/m³ (Zement-GWP nach T15-NH-3) – korrigiert · Zweitprüfung 29.10. (Runde 5): Stahlkennwert 0,42 wie im Modul als „Elektroofenstahl mit Grünstrom (Lehrwert)“ bezeichnet; 0,64 (ÖKOBAUDAT „Bewehrungsstahl (de)“) ist ebenfalls überwiegend Elektroofenstahl – korrigiert
 - [x] ok
 - [ ] ändern: …
 

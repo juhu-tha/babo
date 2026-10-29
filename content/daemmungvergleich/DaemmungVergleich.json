@@ -33,7 +33,7 @@
     "beispiel2WoherKommt": "Beispiel 2: Woher kommt der Temperaturfaktor f_Rsi ≥ 0,70?",
     "dieBestandswandAusBeispiel": "Für den Nachweis nach DIN 4108-2 ist f_Rsi mit dem erhöhten Übergangswiderstand R_si = 0,25 m²K/W zu rechnen: Die ungedämmte Bestandswand aus Beispiel 1 erreicht dann schon in der ungestörten Fläche nur f_Rsi = 1 − 0,25/0,71 = 0,65 < 0,70 (mit R_si = 0,13 wären es rechnerisch 0,82). Mit 6 cm Dämmung steigt f_Rsi auf 1 − 0,25/2,21 = 0,89. Kritisch bleiben Ecken, Fensteranschlüsse und einbindende Innenwände, für die f_Rsi mit Wärmebrückenberechnung (DIN EN ISO 10211) nachzuweisen ist.",
     "din410822013": "DIN 4108-2:2013-02 (Neuausgabe 2026-05 manuell abgleichen); DIN EN ISO 13788:2013-05",
-    "oktober2026Ap6": "Oktober 2026 (Temperaturverläufe, Temperaturfaktor, Normausgaben und Literatur geprüft; fachliche Freigabe durch den Autor ausstehend)"
+    "oktober2026Ap6": "Oktober 2026 (Temperaturverläufe, Temperaturfaktor, Normausgaben und Literatur geprüft)"
   },
   "daten": {
     "DaemmungVergleich.schritte": [

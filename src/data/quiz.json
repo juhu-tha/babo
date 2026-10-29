@@ -9782,7 +9782,7 @@
       "",
       "Die 10-m³-Grenze befreit nur von der Dokumentation, nicht von der Getrennthaltung.",
       "Eine Schwelle von 1 m³ kennt § 8 GewAbfV nicht; die Dokumentation entfällt bis 10 m³.",
-      "Teil 3 der GewAbfV regelt ausdrücklich Bau- und Abbruchabfälle (§§ 8 bis 10)."
+      "Abschnitt 3 der GewAbfV regelt ausdrücklich Bau- und Abbruchabfälle (§§ 8 und 9)."
     ],
     "gapAnalysis": {
       "topic": "Getrennthaltung nach GewAbfV",
@@ -9793,12 +9793,11 @@
       "targetModuleLabel": "Rückbau-Checklisten"
     },
     "quelle": "Gewerbeabfallverordnung (GewAbfV) § 8 Abs. 1 bis 3",
-    "verified": true,
-    "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
-    "reviewedAt": "2026-10-28",
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-26",
-      "ergebnis": "ok"
+      "am": "2026-10-29",
+      "ergebnis": "korrigiert",
+      "hinweis": "Umsetzung 29.10.: Paragrafenprüfung – Distraktor-Rückmeldung „Teil 3 … §§ 8 bis 10“ auf „Abschnitt 3 … §§ 8 und 9“ berichtigt (gesetze-im-internet.de, GewAbfV); Antwort unverändert – korrigiert"
     }
   },
   {
@@ -20565,7 +20564,7 @@
       "tangential ≈ 10 × radial, längs ≈ radial"
     ],
     "correctIdx": 0,
-    "explanation": "Fichte: q_t ≈ 0,33 %, q_r ≈ 0,16 %, q_l ≈ 0,01 % je 1 % Feuchteänderung. Das Verhältnis q_t/q_r ≈ 2 verursacht Schüsselung und Risse.",
+    "explanation": "Fichte: q_t ≈ 0,36 %, q_r ≈ 0,19 %, q_l ≈ 0,01 % je 1 % Feuchteänderung. Das Verhältnis q_t/q_r ≈ 2 verursacht Schüsselung und Risse.",
     "bloom": "Erinnern",
     "niveau": "B",
     "distraktorFeedback": [
@@ -20582,14 +20581,12 @@
       "targetModuleTab": "holz",
       "targetModuleLabel": "Holz"
     },
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-10-29",
       "ergebnis": "korrigiert",
-      "hinweis": "Distraktoren angeglichen; normRef ergänzt"
-    },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27"
+      "hinweis": "Umsetzung 29.10.: Konsistenzprüfung – Schwindmaße Fichte in der Erklärung an Modul und Kern angeglichen (0,36/0,19 statt 0,33/0,16; T10-HW-1) – korrigiert"
+    }
   },
   {
     "id": "q_hol_3",
@@ -40434,7 +40431,7 @@
     "topic": "THG-Bilanz eines Bauteils",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 15804+A2",
-    "question": "Eine Hohlkörperdecke enthält 19,5 m³ Beton (CEM III/A, Prüfalter 56 d: 144 kg CO₂-Äq./m³) und 2470 kg Betonstahl aus der Elektroofenroute (0,42 kg CO₂-Äq./kg). Wie groß ist das GWP A1–A3 nach GWP = V_c · gwp_c + m_s · gwp_s?",
+    "question": "Eine Hohlkörperdecke enthält 19,5 m³ Beton (CEM III/A, Prüfalter 56 d: 144 kg CO₂-Äq./m³) und 2470 kg Betonstahl (Elektroofenstahl mit Grünstrom, Lehrwert 0,42 kg CO₂-Äq./kg). Wie groß ist das GWP A1–A3 nach GWP = V_c · gwp_c + m_s · gwp_s?",
     "options": [
       "rund 2810 kg CO₂-Äq.",
       "rund 4120 kg CO₂-Äq.",
@@ -40448,7 +40445,7 @@
     "distraktorFeedback": [
       "Das ist nur der Betonanteil (19,5 · 144); der Bewehrungsstahl fehlt in der Summe.",
       "Hier wurde der Beton mit 158 kg/m³ (Prüfalter 28 d) statt mit 144 kg/m³ angesetzt.",
-      "Hier wurde der Stahl mit 0,64 (Betonstahl DE) statt mit 0,42 kg CO₂-Äq./kg gerechnet.",
+      "Hier wurde der Stahl mit 0,64 (ÖKOBAUDAT „Bewehrungsstahl (de)“) statt mit 0,42 kg CO₂-Äq./kg gerechnet.",
       ""
     ],
     "gapAnalysis": {
@@ -40463,7 +40460,7 @@
     "vorpruefung": {
       "am": "2026-10-29",
       "ergebnis": "korrigiert",
-      "hinweis": "Umsetzung 29.10.: Beton-GWP CEM III/A bei 56 d jetzt 144 statt 123 kg/m³ (Zement-GWP nach T15-NH-3) – korrigiert"
+      "hinweis": "Umsetzung 29.10.: Beton-GWP CEM III/A bei 56 d jetzt 144 statt 123 kg/m³ (Zement-GWP nach T15-NH-3) – korrigiert · Zweitprüfung 29.10. (Runde 5): Stahlkennwert 0,42 wie im Modul als „Elektroofenstahl mit Grünstrom (Lehrwert)“ bezeichnet; 0,64 (ÖKOBAUDAT „Bewehrungsstahl (de)“) ist ebenfalls überwiegend Elektroofenstahl – korrigiert"
     }
   },
   {

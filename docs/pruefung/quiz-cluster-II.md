@@ -356,7 +356,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 109 korrigiert, 0 fraglich, 
 
 - **Frage:** Wie verhalten sich die differentiellen Schwindmaße von Fichte in den drei Richtungen?
 - **Richtige Antwort:** tangential ≈ 2 × radial, längs vernachlässigbar
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen; normRef ergänzt · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: Konsistenzprüfung – Schwindmaße Fichte in der Erklärung an Modul und Kern angeglichen (0,36/0,19 statt 0,33/0,16; T10-HW-1) – korrigiert
 - [x] ok
 - [ ] ändern: …
 

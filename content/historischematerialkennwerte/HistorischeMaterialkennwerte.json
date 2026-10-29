@@ -22,7 +22,7 @@
     "beispiel2ZugversuchAn": "Beispiel 2: Zugversuch an einem historischen Flussstahl",
     "dieWerteLiegenIm": "Die Werte liegen im Bereich heutiger S235-Stähle. Vor einer Schweißung sind Schweißeignung (chemische Analyse, P- und S-Gehalt, Alterung) und Sprödbruchneigung zu prüfen; Flussstahl vor etwa 1900 kann auch Puddeleisen sein.",
     "dinEnIso6892": "DIN EN ISO 6892-1",
-    "oktober2026Ap8": "Oktober 2026 (probabilistischer Bemessungswert, Umrechnungen, Normausgaben und Literatur geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "oktober2026Ap8": "Oktober 2026 (probabilistischer Bemessungswert, Umrechnungen, Normausgaben und Literatur geprüft)",
     "reiterBereiche": "Bereiche des Moduls Historische Materialkennwerte"
   },
   "daten": {
@@ -91,7 +91,8 @@
       "DBV (Deutscher Beton- und Bautechnik-Verein): Merkblatt Modifizierte Teilsicherheitsbeiwerte",
       "Ahnert, R.; Krause, K. H.: Typische Baukonstruktionen von 1860 bis 1960, Bände 1–3. Berlin: Huss-Medien (aktuelle Auflage)",
       "DBV-Merkblätter „Bauen im Bestand“ (Beton und Betonstahl; Modifizierte Teilsicherheitsbeiwerte)",
-      "Fischer, A.: Bestimmung modifizierter Teilsicherheitsbeiwerte zur Beurteilung von Bestandsbauten (Dissertation)"
+      "Fischer, A.: Bestimmung modifizierter Teilsicherheitsbeiwerte zur Beurteilung von Bestandsbauten (Dissertation)",
+      "Schnell, J.; Fischer, A.; Loch, M.: Anwendung von Teilsicherheitsbeiwerten auf Bestandsbauten im Hochbau. Kurzbericht zum Forschungsvorhaben (BBR), TU Kaiserslautern 2008, Tab. 2.1 und 2.2 (Zuordnung alter Betongüten und -klassen)"
     ],
     "HistorischeMaterialkennwerte.formeln": [
       {
