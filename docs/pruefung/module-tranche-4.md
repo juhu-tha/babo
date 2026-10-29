@@ -80,7 +80,7 @@ Weitere Angaben sind plausibel und ohne Befund: Pantheon 43,3 m, Monier-Patent 1
 
 **Empfehlung:** freigabefähig nach Korrektur T4-BSK-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 2. Einheiten (`einheiten`)
 
@@ -103,7 +103,7 @@ Weitere Angaben sind plausibel und ohne Befund: Pantheon 43,3 m, Monier-Patent 1
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 3. Kennwerte-Datenbank (`materialkennwerte`)
 
@@ -130,7 +130,7 @@ Weitere Angaben sind plausibel und ohne Befund: Pantheon 43,3 m, Monier-Patent 1
 
 **Empfehlung:** freigabefähig nach Klärung von T4-MK-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 4. Baustoffkenngrößen (`baustoffkenngroessen`)
 
@@ -166,7 +166,7 @@ Weitere Angaben sind plausibel und ohne Befund: Pantheon 43,3 m, Monier-Patent 1
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 5. Bauchemie (`bauchemie`)
 
@@ -233,7 +233,7 @@ Teilsicherheitsbeiwerte (1,35/1,00; 1,50/0; γ_C 1,50, γ_S 1,15, γ_M0 1,00, γ
 
 **Empfehlung:** freigabefähig nach Korrektur T4-SK-1 und Klärung von T4-SK-2.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 7. Probenahme & Erkundung (`probenahme`)
 
@@ -308,7 +308,7 @@ Dazu `content/probenahme/Probenahme.json` mit drei Beispielen und die Lernziele.
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 9. Analytik & Diagnostik (`analytik`)
 
@@ -331,7 +331,7 @@ Chloridklassen Cl 0,40 und Cl 0,20, Plasmatemperatur 6000–10 000 K, NIR 780–
 
 **Empfehlung:** freigabefähig nach Korrektur T4-AN-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 10. Mechanische Prüfungen (`mechanische_pruefungen`)
 
@@ -362,7 +362,7 @@ Prüfnormangaben ohne Befund:
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 11. Virtuelle Versuche (`labor`)
 
@@ -409,7 +409,7 @@ Die Betonkennwerte der Simulatoren (f_ctm, E_cm je Klasse nach Tab. 3.1; f_ct,sp
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 13. bis 17. Versuchs-Handouts (`labor_potentialmessung`, `labor_auslagerung`, `labor_frischbeton`, `labor_druckfestigkeit`, `labor_moertelprismen`)
 
@@ -452,11 +452,11 @@ Die Betonkennwerte der Simulatoren (f_ctm, E_cm je Klasse nach Tab. 3.1; f_ct,sp
 
 **Empfehlung:** alle fünf freigabefähig.
 
-- [ ] Modul freigeben (`labor_potentialmessung`)
-- [ ] Modul freigeben (`labor_auslagerung`)
-- [ ] Modul freigeben (`labor_frischbeton`)
-- [ ] Modul freigeben (`labor_druckfestigkeit`)
-- [ ] Modul freigeben (`labor_moertelprismen`)
+- [x] Modul freigeben (`labor_potentialmessung`; 29.10.2026)
+- [x] Modul freigeben (`labor_auslagerung`; 29.10.2026)
+- [x] Modul freigeben (`labor_frischbeton`; 29.10.2026)
+- [x] Modul freigeben (`labor_druckfestigkeit`; 29.10.2026)
+- [x] Modul freigeben (`labor_moertelprismen`; 29.10.2026)
 
 ---
 
@@ -484,3 +484,30 @@ Die Betonkennwerte der Simulatoren (f_ctm, E_cm je Klasse nach Tab. 3.1; f_ct,sp
   - [Deutsche Biographie, Koenen](https://www.deutsche-biographie.de/gnd117528471.html)
   - [TU Dresden, Einweihung CUBE](https://tu-dresden.de/tu-dresden/newsportal/news/feierliche-einweihung-des-weltweit-ersten-gebaeudes-aus-carbonbeton-cube)
   - [UNEP, Global Status Report for Buildings and Construction](https://www.unep.org/resources/report/global-status-report-buildings-and-construction)
+
+## Freigabe 29.10.2026
+
+Entscheidung vom 28.10.2026: „Module ohne offene Frage freigeben“; Punkte, die nur am Normtext zu klären sind, blockieren die Freigabe (Prüfbogen Normtext, Abschnitt „Was ohne Normtext nicht weiterkommt“). Geprüft wurde je Modul: Empfehlung erfüllt (Korrekturen behoben, Klärungen entschieden und in den Abschnitten „Umsetzung 29.10.2026“ bzw. in den genannten PRs umgesetzt oder gekennzeichnet) und kein Normtextpunkt offen. Prüfvermerk in `src/data/pruefvermerke.ts`: „geprueft“, am 2026-10-29, passiv ohne Namen. Quizfreigaben sind davon getrennt.
+
+Freigegeben:
+
+- `baustoffkunde` – nach Korrektur T4-BSK-1 (behoben, #244)
+- `einheiten` – freigabefähig, keine Frage
+- `materialkennwerte` – T4-MK-1 umgesetzt (#254, λ KS 12/MZ 12 nach DIN 4108-4, als F-Stelle gekennzeichnet); c_p Stahl 450 (T4-KG-1)
+- `baustoffkenngroessen` – Hinweis T4-KG-1 umgesetzt (#254, c_p Stahl 450 J/(kgK))
+- `sicherheitskonzept` – T4-SK-1 behoben (#244), T4-SK-2 umgesetzt (#254, Kern kombination610)
+- `messen_pruefen` – freigabefähig, keine Frage
+- `analytik` – nach Korrektur T4-AN-1 (behoben, #244)
+- `mechanische_pruefungen` – freigabefähig (F-Stelle B500B bleibt gekennzeichnet)
+- `festbeton_statistik` – freigabefähig (F-Stelle σ ≥ 3 N/mm² bleibt gekennzeichnet)
+- `labor_potentialmessung` – Versuchs-Handout freigabefähig
+- `labor_auslagerung` – Versuchs-Handout freigabefähig
+- `labor_frischbeton` – Versuchs-Handout freigabefähig
+- `labor_druckfestigkeit` – Versuchs-Handout freigabefähig
+- `labor_moertelprismen` – Versuchs-Handout freigabefähig
+
+Nicht freigegeben:
+
+- `bauchemie` – Prüfbogen: T4-BC-2 (Normtext DIN 18540)
+- `probenahme` – Prüfbogen: T4-PN-2 (Normtext DIN EN 12504-2)
+- `labor` – Der Schmidt-Hammer-Simulator rechnet mit der Verwerfungsregel aus T4-PN-2 (rueckprallMesssatz; Normtext DIN EN 12504-2, Prüfbogen Nr. 1) – nicht in der Blockliste, weil der Prüfbogen die Regel nur der Probenahme zuordnet

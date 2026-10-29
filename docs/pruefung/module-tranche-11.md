@@ -148,7 +148,7 @@
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 4. Innendämmung vs. Außendämmung (`daemmung_vergleich`)
 
@@ -171,7 +171,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T11-DV-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 5. Energieausweis (`energieausweis`) – GModG-Rechtsstand
 
@@ -273,7 +273,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T11-NDR-1 bis -4 (F-Stelle Gebäudetyp E).
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 8. Materialoptimierung (`materialoptimierung`)
 
@@ -352,7 +352,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T11-LCA-1 und Klärung von T11-LCA-2.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 10. LCA: Ingenieurbau (`lca_ingenieurbau`)
 
@@ -378,7 +378,7 @@
 
 **Empfehlung:** freigabefähig (F-Stelle Modul B8 bleibt).
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 11. LCA: Rechtsrahmen & CRREM (`lca_regulatorik`)
 
@@ -429,7 +429,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T11-LR-1 und Klärung von T11-LR-2 bis -4.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 12. Zertifizierung & Deklarationen (`zertifizierung_siegel`)
 
@@ -488,7 +488,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T11-KW-1 und Klärung von T11-KW-2.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 14. Ressourcen & Umwelt (`ressourcen_umwelt`)
 
@@ -514,7 +514,7 @@
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 15. Lebenszyklus & Kosten (`lebenszyklus_kosten`)
 
@@ -548,7 +548,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T11-LZK-1 und Klärung von T11-LZK-2.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ---
 
@@ -581,3 +581,26 @@
 ## QA
 
 Die Ergebnisse stehen im PR-Text.
+
+## Freigabe 29.10.2026
+
+Entscheidung vom 28.10.2026: „Module ohne offene Frage freigeben“; Punkte, die nur am Normtext zu klären sind, blockieren die Freigabe (Prüfbogen Normtext, Abschnitt „Was ohne Normtext nicht weiterkommt“). Geprüft wurde je Modul: Empfehlung erfüllt (Korrekturen behoben, Klärungen entschieden und in den Abschnitten „Umsetzung 29.10.2026“ bzw. in den genannten PRs umgesetzt oder gekennzeichnet) und kein Normtextpunkt offen. Prüfvermerk in `src/data/pruefvermerke.ts`: „geprueft“, am 2026-10-29, passiv ohne Namen. Quizfreigaben sind davon getrennt.
+
+Freigegeben:
+
+- `waermeeigenschaften` – freigabefähig, keine Frage
+- `daemmung_vergleich` – nach Korrektur T11-DV-1 (behoben, #236)
+- `nachhaltigkeit_daten_regeln` – T11-NDR-1 bis -4 behoben (#236), Gebäudetyp E als „Gesetzentwurf, Stand 10/2026“ (GT-E, #250)
+- `oekobilanz_lca` – T11-LCA-1 behoben (#236), T11-LCA-2 umgesetzt (#250, Nutzungsdauern vorläufig)
+- `lca_ingenieurbau` – freigabefähig (F-Stelle Modul B8 bleibt)
+- `lca_regulatorik` – T11-LR-1 behoben (#236), T11-LR-2 bis -4 umgesetzt (#250)
+- `kreislauf_dpp` – T11-KW-1 behoben (#236), T11-KW-2 umgesetzt (#250, example.org)
+- `ressourcen_umwelt` – freigabefähig, keine Frage
+- `lebenszyklus_kosten` – T11-LZK-1 behoben (#236), T11-LZK-2 umgesetzt (#250)
+
+Nicht freigegeben:
+
+- `energieausweis` – Prüfbogen: T11-EA-4 (Normtext DIN/TS 18599-10)
+- `materialoptimierung` – Prüfbogen: T11-MO-2 (Richtlinientext DAfStb)
+
+Ohne Eintrag in `src/data/pruefvermerke.ts` (kein Fachmodul im Sinne der Prüfvermerke, daher kein Vermerk): `bauphysik_info`, `nachhaltigkeit_info`, `zertifizierung_siegel`.

@@ -33,7 +33,7 @@ async function main() {
     const d = mod[name] as VersuchsHandoutDaten;
     pruefe(!!d && d.id === id, `${id}: Handout-Daten ${name} fehlen`);
     if (!d) continue;
-    pruefe(MODUL_BY_ID.get(id)?.baum?.typ === 'calculator' && !!LERNZIELE[id] && PRUEFVERMERKE[id]?.status === 'offen', `${id}: Registry, Lernziele oder Prüfvermerk fehlen`);
+    pruefe(MODUL_BY_ID.get(id)?.baum?.typ === 'calculator' && !!LERNZIELE[id] && !!PRUEFVERMERKE[id],`${id}: Registry, Lernziele oder Prüfvermerk fehlen`);
     pruefe(d.ziel.length >= 2 && d.geraete.length >= 2 && d.material.length >= 1 && d.sicherheit.length >= 3 && d.ablauf.length >= 4, `${id}: Abschnitte unvollständig`);
     pruefe(d.fehlerquellen.length >= 4 && d.fragen.length >= 4, `${id}: Fehlerquellen/Fragen zu wenige`);
     pruefe([...d.geraete, ...d.material, ...d.ablauf, ...d.protokoll.kopf].some(x => x.laborAnpassen), `${id}: keine Angabe „${LABOR_ANPASSEN}“`);

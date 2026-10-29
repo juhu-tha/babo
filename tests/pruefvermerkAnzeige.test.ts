@@ -15,6 +15,13 @@ pruefe(/Fachlich geprüft am 01\.10\.2026 von Prof\. X/.test(html({ status: 'gep
 const passiv = html({ status: 'geprueft', am: '2026-10-28' });
 pruefe(/Fachlich geprüft am 28\.10\.2026</.test(passiv) && !/ von /.test(passiv), 'Vermerk ohne Person zeigt passiv nur das Datum');
 pruefe(/data-pruefstatus="geprueft"/.test(passiv), 'passiver Vermerk trägt den Status geprueft');
+// Freigaben 29.10.2026 (Module ohne offene Frage nach Tranche 1–12): ebenfalls passiv, Datum 29.10.2026
+const frei2910 = Object.entries(PRUEFVERMERKE).filter(([, v]) => v.status === 'geprueft' && v.am === '2026-10-29');
+pruefe(frei2910.length > 0, 'keine Freigaben vom 29.10.2026 im Datenbestand');
+for (const [id, v] of frei2910) {
+  const h = html(v);
+  pruefe(/Fachlich geprüft am 29\.10\.2026</.test(h) && !/ von /.test(h) && !v.von, `${id}: Vermerk 29.10.2026 nicht passiv ohne Namen`);
+}
 for (const [id, v] of Object.entries(PRUEFVERMERKE)) if (v.status === 'geprueft') pruefe(html(v).includes('Fachlich geprüft am'), `${id}: freigegebenes Modul ohne sichtbaren Vermerk`);
 pruefe(html({ status: 're-review', am: '2026-10-01', von: 'Prof. X' }).includes('Nachprüfung'), 'Nachprüfung eines freigegebenen Moduls bleibt sichtbar');
 pruefe(!vermerkOeffentlich(undefined), 'ohne Vermerk keine Anzeige');

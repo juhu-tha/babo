@@ -243,7 +243,7 @@ Das Anwendungsbeispiel (C24 120/160, N_Rd ≈ 97,6 kN, ohne Knicken rund 248 kN)
 
 **Empfehlung:** freigabefähig nach Klärung von H-2 und H-3.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 9. Wärme- und Feuchteschutz (`bauphysik`, `feuchteschutz`)
 
@@ -338,3 +338,21 @@ Freigegeben wurden Module mit Empfehlung „freigabefähig“ ohne offene Fragen
 ## Umsetzung 29.10.2026
 
 - **#239-H-3 (Holzbau, Querdruck):** BSH-Einzelauflager mit Auflagerlänge l > 400 mm: k_c,90 = 1,0 (die Erhöhung auf 1,75 gilt nach DIN EN 1995-1-1, 6.1.5(4) nur für l ≤ 400 mm); vorher wurde 1,75 mit Warnung angesetzt. Kern `bemesseQuerdruck` in `src/calc/holzbau.ts`, Test `tests/kleinfragenTranche1bis3.test.ts`: l = 450 mm → F_c,90,Rd = 110,77 kN; l = 400 mm → 172,31 kN (b = 160 mm, GL, NKL 1, mittel).
+
+## Freigabe 29.10.2026
+
+Entscheidung vom 28.10.2026: „Module ohne offene Frage freigeben“; Punkte, die nur am Normtext zu klären sind, blockieren die Freigabe (Prüfbogen Normtext, Abschnitt „Was ohne Normtext nicht weiterkommt“). Geprüft wurde je Modul: Empfehlung erfüllt (Korrekturen behoben, Klärungen entschieden und in den Abschnitten „Umsetzung 29.10.2026“ bzw. in den genannten PRs umgesetzt oder gekennzeichnet) und kein Normtextpunkt offen. Prüfvermerk in `src/data/pruefvermerke.ts`: „geprueft“, am 2026-10-29, passiv ohne Namen. Quizfreigaben sind davon getrennt.
+
+Freigegeben:
+
+- `holzbau_bemessung` – H-2 gestrichen, H-3 umgesetzt (#239), BSH l > 400 mm k_c,90 = 1,0 (#239-H-3, #251); keine F-Stelle im Modul
+
+Nicht freigegeben:
+
+- `stahlbeton_bemessung` – Prüfbogen: #242-1 bis -4 (Normtext NA DE); F-1 (hochfester Beton) offen
+- `mischungsberechnung` – Empfehlung verlangt Klärung der F-Stellen (Regelsieblinien, Zementzuordnung f/z, k-Wert Hüttensand) – offen
+- `betonkennwerte` – Empfehlung verlangt Klärung der F-Stellen (f_cd-Abminderung ab C55/67, C100/115) – offen
+- `rechnung_mauerwerk` – Prüfbogen: #239-W-1, #239-MW-1 (Normtext)
+- `bauphysik` – Prüfbogen: T11-BP-2 (Normtext); zudem F-Stellen DIN 4108-3:2024-03 aus T1
+- `feuchteschutz` – Empfehlung verlangt Klärung der F-Stellen DIN 4108-3:2024-03 (Klimarandbedingungen, δ₀) – offen
+- `schallschutz` – Prüfbogen: #247-9 (Normtext); F-Stellen Trittschall

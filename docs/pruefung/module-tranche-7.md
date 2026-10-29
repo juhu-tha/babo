@@ -124,7 +124,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T7-IN-1/-2/-3 und Klärung von T7-IN-4.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 4. CE vs. Ü & MVV TB (`bp_recht_grundlagen`)
 
@@ -158,7 +158,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T7-RG-1/-2.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 5. AVCP-Systeme (`bp_recht_avcp`)
 
@@ -178,7 +178,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T7-AV-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 6. Konformität & Auditierung (`bp_recht_konformitaet`)
 
@@ -191,7 +191,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T7-AV-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 7. Normenarbeit im Bauwesen (`bp_recht_normen`)
 
@@ -212,7 +212,7 @@
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 8. Beton (Frisch/Fest) (`bp_beton`)
 
@@ -236,7 +236,7 @@
 
 **Empfehlung:** freigabefähig nach Klärung von T7-BE-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 9. Betonfertigteile (`bp_betonfertigteile`)
 
@@ -256,7 +256,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T7-BF-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 10. Betonwaren (`bp_betonwaren`)
 
@@ -325,7 +325,7 @@
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 13. Dimensionierung RStO 12/24 (`bp_verkehr_rsto`)
 
@@ -376,7 +376,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T7-RS-1 und Klärung von T7-RS-2.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 14. Asphaltsorten (`bp_verkehr_asphalt`)
 
@@ -388,7 +388,7 @@
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 15. Bitumen & Gesteine (`bp_verkehr_bitumen`)
 
@@ -425,7 +425,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T7-PR-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 17. Betondecken (`bp_verkehr_betondecken`)
 
@@ -528,7 +528,7 @@
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ---
 
@@ -568,3 +568,33 @@
     - [LS Brandenburg, Regelwerksänderungen 07/2026](https://www.ls.brandenburg.de/sixcms/media.php/9/Ver%C3%A4nderungen%20aktuell%2007_2026_Stand%202026-07-21.pdf)
     - Bitumen-Kennwerte: [LOTOS 50/70](https://www.lotos.pl/en/859/p,710,c,1799/products/road_bitumen/road_bitumen_50/70), [LOTOS 70/100](https://www.lotos.pl/en/859/p,869,c,1799/products/road_bitumen/road_bitumen_70/100)
   - Bahnbau: [British Steel, Rail profiles and grades](https://www.britishsteel.co.uk/wp-content/uploads/2026/07/Rail-profiles-and-grades-20.07.26-1.pdf)
+
+## Freigabe 29.10.2026
+
+Entscheidung vom 28.10.2026: „Module ohne offene Frage freigeben“; Punkte, die nur am Normtext zu klären sind, blockieren die Freigabe (Prüfbogen Normtext, Abschnitt „Was ohne Normtext nicht weiterkommt“). Geprüft wurde je Modul: Empfehlung erfüllt (Korrekturen behoben, Klärungen entschieden und in den Abschnitten „Umsetzung 29.10.2026“ bzw. in den genannten PRs umgesetzt oder gekennzeichnet) und kein Normtextpunkt offen. Prüfvermerk in `src/data/pruefvermerke.ts`: „geprueft“, am 2026-10-29, passiv ohne Namen. Quizfreigaben sind davon getrennt.
+
+Freigegeben:
+
+- `bp_innovationen` – T7-IN-1 bis -3 behoben, T7-IN-4 umgesetzt (#250)
+- `bp_recht_grundlagen` – nach Korrektur T7-RG-1/-2 (behoben)
+- `bp_recht_avcp` – nach Korrektur T7-AV-1 (behoben)
+- `bp_recht_konformitaet` – nach Korrektur T7-AV-1 (behoben)
+- `bp_recht_normen` – freigabefähig, keine Frage
+- `bp_beton` – T7-BE-1 umgesetzt (#250, CSC auf DGNB/BNB)
+- `bp_betonfertigteile` – nach Korrektur T7-BF-1 (behoben)
+- `bp_dach_fassade` – freigabefähig, keine Frage
+- `bp_verkehr_rsto` – T7-RS-1 behoben, T7-RS-2 umgesetzt (#254, RStO 12/24 Tafel 1, Bk1,8); PSV-Angaben der Profile laut Prüfbogen nicht blockierend (F-Stelle T7-BT-1b)
+- `bp_verkehr_asphalt` – freigabefähig, keine Frage
+- `bp_verkehr_pruefung` – nach Korrektur T7-PR-1 (behoben)
+- `bp_verkehr_tunnel` – freigabefähig, keine Frage
+
+Nicht freigegeben:
+
+- `bp_betonwaren` – Prüfbogen: T7-BW-2a/b (Normtext)
+- `bp_mauerwerk` – Prüfbogen: T7-MW-3a/b (Normtext)
+- `bp_verkehr_bitumen` – Prüfbogen: T7-BT-1a (Normtext)
+- `bp_verkehr_betondecken` – Prüfbogen: T7-BD-2, T7-BD-3a/b (Normtext)
+- `bp_verkehr_tiefbau` – Prüfbogen: #247-1 bis -4 (Normtext DWA-A 138-1)
+- `bp_verkehr_bahn` – Prüfbogen: T7-BA-1a/b (Normtext)
+
+Ohne Eintrag in `src/data/pruefvermerke.ts` (kein Fachmodul im Sinne der Prüfvermerke, daher kein Vermerk): `bauprodukte_info`, `bp_baustoffindustrie`.
