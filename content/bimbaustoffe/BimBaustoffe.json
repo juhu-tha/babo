@@ -73,7 +73,7 @@
         "defaultDensity": 2400,
         "defaultConductivity": 2.1,
         "defaultEModulus": 33000,
-        "defaultGwp": 245,
+        "defaultGwp": 243,
         "description": "Klassischer mineralischer Baustoff mit hoher Tragfähigkeit, hoher thermischer Masse, aber signifikantem CO₂-Rucksack.",
         "ifcClass": "IfcMaterial"
       },
@@ -83,7 +83,7 @@
         "defaultDensity": 450,
         "defaultConductivity": 0.13,
         "defaultEModulus": 11000,
-        "defaultGwp": -480,
+        "defaultGwp": -650,
         "description": "Nachwachsender Tragwerksbaustoff mit integriertem biogenem Kohlenstoffspeicher und hervorragendem Gewichts-Festigkeits-Verhältnis.",
         "ifcClass": "IfcMaterial"
       },

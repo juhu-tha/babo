@@ -778,9 +778,9 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 109 korrigiert, 0 fraglich, 
 
 ### qn_holz_1 · Holz
 
-- **Frage:** Ein tangential geschnittenes Fichtenbrett (Breite 200 mm in Tangentialrichtung, q_t = 0,33 % je % Holzfeuchte) trocknet von 20 % auf 12 % Holzfeuchte. Um wie viel nimmt die Breite ab?
-- **Richtige Antwort:** ca. 5,3 mm
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- **Frage:** Ein tangential geschnittenes Fichtenbrett (Breite 200 mm in Tangentialrichtung, q_t = 0,36 % je % Holzfeuchte) trocknet von 20 % auf 12 % Holzfeuchte. Um wie viel nimmt die Breite ab?
+- **Richtige Antwort:** ca. 5,8 mm
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Konsistenz 29.10.: q_t Fichte 0,36 statt 0,33 (SCHWINDBEIWERTE, T10-HW-1; F-2), Ergebnis 5,8 mm und Distraktoren neu gerechnet – korrigiert
 - [x] ok
 - [ ] ändern: …
 

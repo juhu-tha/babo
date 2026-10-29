@@ -12629,7 +12629,7 @@
       "targetModuleTab": "instandsetzung_checklisten",
       "targetModuleLabel": "Instandsetzungs-Checklisten"
     },
-    "quelle": "DIN EN 1504-5:2005-03; Universität Duisburg-Essen, Institut für Massivbau: Eignung von Rissfüllstoffen",
+    "quelle": "DIN EN 1504-5:2005-03 (Ausgabe vorläufig, Normprüfung ausstehend); Universität Duisburg-Essen, Institut für Massivbau: Eignung von Rissfüllstoffen",
     "verified": true,
     "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
     "reviewedAt": "2026-10-28",
@@ -25184,22 +25184,22 @@
     "topic": "Schwinden quer zur Faser",
     "difficulty": "Vertiefung",
     "normRef": "Schwindmaße (Lehrwerte im Modul)",
-    "question": "Ein Fichtenbalken ist in der tangential orientierten Breite 200 mm breit und trocknet von 20 % auf 12 % Holzfeuchte. Wie stark schwindet die Breite (Schwindmaß tangential 0,33 % je % Holzfeuchte)?",
+    "question": "Ein Fichtenbalken ist in der tangential orientierten Breite 200 mm breit und trocknet von 20 % auf 12 % Holzfeuchte. Wie stark schwindet die Breite (Schwindmaß tangential 0,36 % je % Holzfeuchte)?",
     "options": [
       "etwa 0,2 mm",
-      "etwa 5,3 mm",
+      "etwa 5,8 mm",
       "etwa 3,0 mm",
-      "etwa 13,2 mm"
+      "etwa 14,4 mm"
     ],
     "correctIdx": 1,
-    "explanation": "Δb = α_t · Δu · b = 0,0033 · 8 · 200 mm ≈ 5,3 mm. Radial (0,19 %/%) wären es rund 3,0 mm, längs (0,01 %/%) nur 0,2 mm. Unterhalb des Fasersättigungsbereichs schwindet Holz tangential etwa doppelt so stark wie radial.",
+    "explanation": "Δb = α_t · Δu · b = 0,0036 · 8 · 200 mm ≈ 5,8 mm. Radial (0,19 %/%) wären es rund 3,0 mm, längs (0,01 %/%) nur 0,2 mm. Unterhalb des Fasersättigungsbereichs schwindet Holz tangential etwa doppelt so stark wie radial.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "0,2 mm ergibt sich mit dem Schwindmaß in Faserrichtung (0,01 %/%), nicht tangential.",
       "",
       "3,0 mm ergibt sich mit dem radialen Schwindmaß (0,19 %/%).",
-      "Hier wurde mit der gesamten Holzfeuchte von 20 % statt mit der Änderung Δu = 8 % gerechnet."
+      "Hier wurde mit der gesamten Holzfeuchte von 20 % statt mit der Änderung Δu = 8 % gerechnet (0,0036 · 20 · 200 mm = 14,4 mm)."
     ],
     "gapAnalysis": {
       "topic": "Schwinden quer zur Faser",
@@ -25210,12 +25210,11 @@
       "targetModuleLabel": "Werkstoffe & dataholz"
     },
     "quelle": "Lehrwerte Fichte im Modul (Holzfeuchte & Schwind-/Quellverhalten)",
-    "verified": true,
-    "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
-    "reviewedAt": "2026-10-28",
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-26",
-      "ergebnis": "ok"
+      "am": "2026-10-29",
+      "ergebnis": "korrigiert",
+      "hinweis": "Konsistenz 29.10.: q_t Fichte 0,36 statt 0,33 (SCHWINDBEIWERTE, T10-HW-1; F-2), Ergebnis 5,8 mm und Distraktor Δu = 20 % neu gerechnet – korrigiert"
     }
   },
   {
@@ -28860,7 +28859,7 @@
     "topic": "U-Wert und Höchstwert",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN ISO 6946; GModG Anlage 7",
-    "question": "Eine Außenwand besteht aus 20 cm Stahlbeton (λ = 2,0 W/(m·K)) und 12 cm EPS (λ = 0,035 W/(m·K)); R_si = 0,13 und R_se = 0,04 m²K/W. Welcher U-Wert ergibt sich, und wird der Höchstwert 0,24 W/(m²K) eingehalten?",
+    "question": "Eine Außenwand besteht aus 20 cm Normalbeton, unbewehrt (λ = 2,0 W/(m·K)) und 12 cm EPS (λ = 0,035 W/(m·K)); R_si = 0,13 und R_se = 0,04 m²K/W. Welcher U-Wert ergibt sich, und wird der Höchstwert 0,24 W/(m²K) eingehalten?",
     "options": [
       "U ≈ 0,25 W/(m²K); der Höchstwert wird knapp überschritten",
       "U ≈ 0,27 W/(m²K); der Höchstwert wird nicht eingehalten",
@@ -28885,13 +28884,11 @@
       "targetModuleTab": "bauphysik",
       "targetModuleLabel": "Bauphysik (Wärme & Akustik)"
     },
-    "verified": true,
-    "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
-    "reviewedAt": "2026-10-28",
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-10-29",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt; Zweitprüfung 27.10.: Distraktor 1 widersprach sich selbst (0,25 > 0,24 „eingehalten“); Aussage zum Höchstwert und Rückmeldung korrigiert"
+      "hinweis": "Konsistenz 29.10.: Begriff zu λ = 2,0 W/(m·K) „Normalbeton, unbewehrt“ statt „Stahlbeton“ (DIN EN ISO 10456; F-1), Rechnung unverändert – korrigiert"
     }
   },
   {
@@ -30976,22 +30973,22 @@
     "topic": "Schwindmaß",
     "difficulty": "Basis",
     "normRef": "DIN 68100",
-    "question": "Ein tangential geschnittenes Fichtenbrett (Breite 200 mm in Tangentialrichtung, q_t = 0,33 % je % Holzfeuchte) trocknet von 20 % auf 12 % Holzfeuchte. Um wie viel nimmt die Breite ab?",
+    "question": "Ein tangential geschnittenes Fichtenbrett (Breite 200 mm in Tangentialrichtung, q_t = 0,36 % je % Holzfeuchte) trocknet von 20 % auf 12 % Holzfeuchte. Um wie viel nimmt die Breite ab?",
     "options": [
-      "ca. 5,3 mm",
-      "ca. 10,6 mm",
-      "ca. 2,6 mm",
-      "ca. 0,5 mm"
+      "ca. 5,8 mm",
+      "ca. 11,5 mm",
+      "ca. 3,0 mm",
+      "ca. 0,6 mm"
     ],
     "correctIdx": 0,
-    "explanation": "Δb = b · q_t/100 · Δu = 200 · 0,0033 · 8 ≈ 5,3 mm. Beide Feuchten liegen unterhalb des Fasersättigungsbereichs, daher gilt das differentielle Schwindmaß.",
+    "explanation": "Δb = b · q_t/100 · Δu = 200 · 0,0036 · 8 ≈ 5,8 mm. Beide Feuchten liegen unterhalb des Fasersättigungsbereichs, daher gilt das differentielle Schwindmaß.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
       "",
-      "10,6 mm entspricht einer Feuchteänderung von 16 % statt 8 %.",
-      "2,6 mm ergibt sich mit dem radialen Schwindmaß q_r = 0,16 % statt des tangentialen.",
-      "0,5 mm ist um den Faktor 10 zu klein; der Prozentwert von q_t wurde falsch umgerechnet."
+      "11,5 mm entspricht einer Feuchteänderung von 16 % statt 8 %.",
+      "3,0 mm ergibt sich mit dem radialen Schwindmaß q_r = 0,19 % statt des tangentialen.",
+      "0,6 mm ist um den Faktor 10 zu klein; der Prozentwert von q_t wurde falsch umgerechnet."
     ],
     "gapAnalysis": {
       "topic": "Schwindmaß",
@@ -31001,14 +30998,12 @@
       "targetModuleTab": "holz",
       "targetModuleLabel": "Holz"
     },
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-10-29",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
-    },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27"
+      "hinweis": "Konsistenz 29.10.: q_t Fichte 0,36 statt 0,33 (SCHWINDBEIWERTE, T10-HW-1; F-2), Ergebnis 5,8 mm und Distraktoren neu gerechnet – korrigiert"
+    }
   },
   {
     "id": "qn_holz_2",
@@ -44316,7 +44311,7 @@
     "topic": "U-Wert-Berechnung",
     "difficulty": "Basis",
     "normRef": "DIN EN ISO 6946",
-    "question": "Eine Außenwand besteht aus 1,5 cm Kalkgipsputz (λ = 0,70 W/(mK)), 20 cm Normalbeton (λ = 2,3 W/(mK)) und 14 cm EPS-Dämmung (λ = 0,035 W/(mK)). Welcher U-Wert ergibt sich mit R_si = 0,13 und R_se = 0,04 m²K/W?",
+    "question": "Eine Außenwand besteht aus 1,5 cm Kalkgipsputz (λ = 0,70 W/(mK)), 20 cm Stahlbeton (λ = 2,3 W/(mK)) und 14 cm EPS-Dämmung (λ = 0,035 W/(mK)). Welcher U-Wert ergibt sich mit R_si = 0,13 und R_se = 0,04 m²K/W?",
     "options": [
       "U = 0,243 W/(m²K)",
       "U = 0,250 W/(m²K)",
@@ -44341,12 +44336,11 @@
       "targetModuleTab": "rechnung_u_wert",
       "targetModuleLabel": "Bauphysik: U-Wert"
     },
-    "verified": true,
-    "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
-    "reviewedAt": "2026-10-28",
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-29",
+      "ergebnis": "korrigiert",
+      "hinweis": "Konsistenz 29.10.: Begriff zu λ = 2,3 W/(mK) „Stahlbeton“ statt „Normalbeton“ (DIN EN ISO 10456, bewehrt; F-1), Rechnung unverändert – korrigiert"
     }
   },
   {
@@ -50834,22 +50828,22 @@
     "moduleTitle": "Biokohlebeton (Pflanzenkohle im Beton)",
     "topic": "Vergleich mit Zementreduktion",
     "difficulty": "Transfer",
-    "question": "Die Netto-Senke von 1 kg Pflanzenkohle beträgt 2,0 kg CO₂. Wie viel Zement mit einem Treibhauspotenzial von 0,80 kg CO₂e/kg müsste man einsparen, um dieselbe Bilanzwirkung zu erzielen?",
+    "question": "Die Netto-Senke von 1 kg Pflanzenkohle beträgt 2,0 kg CO₂. Wie viel Zement mit einem Treibhauspotenzial von 0,665 kg CO₂e/kg (CEM I, VDZ-Branchen-EPD) müsste man einsparen, um dieselbe Bilanzwirkung zu erzielen?",
     "options": [
-      "etwa 1,6 kg Zement",
-      "etwa 2,5 kg Zement",
+      "etwa 1,3 kg Zement",
+      "etwa 3,0 kg Zement",
       "etwa 2,0 kg Zement",
-      "etwa 0,4 kg Zement"
+      "etwa 0,33 kg Zement"
     ],
     "correctIdx": 1,
-    "explanation": "Gleichwertige Zementmenge = Netto-Senke / GWP_Z = 2,0 / 0,80 = 2,5 kg. Anders als eine Zementreduktion berührt die Kohlezugabe weder den Mindestzementgehalt noch den w/z-Wert.",
+    "explanation": "Gleichwertige Zementmenge = Netto-Senke / GWP_Z = 2,0 / 0,665 ≈ 3,0 kg. Anders als eine Zementreduktion berührt die Kohlezugabe weder den Mindestzementgehalt noch den w/z-Wert.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
-      "1,6 kg ergibt sich, wenn mit dem GWP multipliziert statt dividiert wird (2,0 · 0,80).",
+      "1,3 kg ergibt sich, wenn mit dem GWP multipliziert statt dividiert wird (2,0 · 0,665).",
       "",
       "Gleiche Massen setzen voraus, dass Zement 1,0 kg CO₂e/kg verursacht.",
-      "0,4 kg entspricht der Differenz 2,0 − 0,8 und hat keine physikalische Bedeutung."
+      "0,33 kg ergibt sich, wenn der Quotient umgekehrt gebildet wird (0,665 / 2,0); er hat keine physikalische Bedeutung."
     ],
     "gapAnalysis": {
       "topic": "Äquivalente Zementmenge",
@@ -50859,12 +50853,11 @@
       "targetModuleTab": "biokohlebeton",
       "targetModuleLabel": "Biokohlebeton (Pflanzenkohle im Beton)"
     },
-    "verified": true,
-    "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
-    "reviewedAt": "2026-10-28",
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-29",
+      "ergebnis": "korrigiert",
+      "hinweis": "Konsistenz 29.10.: Zement-GWP 0,665 statt 0,80 kg CO₂e/kg (CEM I, src/data/zementGwp.ts; F-8), Ergebnis 3,0 kg und Distraktoren neu gerechnet – korrigiert"
     }
   },
   {

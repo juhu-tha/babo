@@ -6,13 +6,23 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import inhalt from '@/content/dppepd/DppEpd.json';
+import { GWP_LEHRWERTE, type GwpLehrwertSchluessel } from '@/src/data/gwpLehrwerte';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
 const DPP_MOCK_DATA = inhalt.daten.DPP_MOCK_DATA;
 
-const EPD_DATA = inhalt.daten.EPD_DATA;
+// Muster-EPD (fiktiv): A1–A3 von Beton und BSH aus der gemeinsamen Lehrwerttabelle (Konsistenz 29.10.2026, F-4);
+// beim BSH gibt C3 den gespeicherten biogenen Kohlenstoff wieder ab (+ 10 kg CO₂e Aufbereitung, Lehrwert)
+const AUS_LEHRWERTTABELLE: Partial<Record<string, GwpLehrwertSchluessel>> = { beton: 'betonC2530CemI', holz: 'bsh' };
+const EPD_DATA = inhalt.daten.EPD_DATA.map(e => {
+  const s = AUS_LEHRWERTTABELLE[e.id];
+  if (!s) return e;
+  const w = GWP_LEHRWERTE[s];
+  const c3 = w.biogen < 0 ? { ...e.phasen.c3, gwp: -w.biogen + 10 } : e.phasen.c3;
+  return { ...e, phasen: { ...e.phasen, a1a3: { ...e.phasen.a1a3, gwp: w.gwp }, c3 } };
+});
 
 interface DppEpdProps {
   view?: 'dpp' | 'epd';

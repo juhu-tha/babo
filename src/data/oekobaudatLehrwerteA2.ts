@@ -28,8 +28,9 @@ export const LEHRWERTE_A2: Record<string, LehrwertA2> = {
   // Brettschichtholz, 1 m³: Quelle Konstruktionsvollholz (EN 15804+A2), unskaliert
   'o-2': { ap: 0.47, epSuesswasser: 0.092, epMeer: 0.19, epLand: 2.2, faktor: 1,
     quelle: 'https://www.rettenmeier.com/fileadmin/PDF/produktinformationen/EPD-konstruktionsvollholz-KVH-2026-de.pdf' },
-  // Betonstahl B500B, 1 t: Quelle Betonstahl Elektrostahlroute (GWP 599 je t) · 1120/599; EP-Süßwasser von kg PO₄-Äq. in kg P-Äq. umgerechnet (· 30,97/94,97)
-  'o-3': { ap: 3.2, epSuesswasser: 0.015, epMeer: 0.77, epLand: 8.8, faktor: 1.87,
+  // Betonstahl B500B, 1 t: Quelle Betonstahl Elektrostahlroute (GWP 599 je t) · 640/599 (Konsistenz 29.10.2026, F-3: Konsolenwert
+  // 1120 → 640 nach ÖKOBAUDAT „Bewehrungsstahl (de)“, vorher · 1120/599); EP-Süßwasser von kg PO₄-Äq. in kg P-Äq. umgerechnet (· 30,97/94,97)
+  'o-3': { ap: 1.8, epSuesswasser: 0.0087, epMeer: 0.44, epLand: 5.0, faktor: 1.07,
     quelle: 'https://www.feralpigroup.com/sites/default/files/ESF%20certificati/2023/EPD-ESF%20Elbe-Stahlwerke%20Feralpi-310-DE.pdf' },
   // Steinwolle-Dämmplatte, 1 m³: Quelle Steinwolle mittlere Rohdichte (99 kg/m³, GWP 115) · 45,5/115
   'o-4': { ap: 0.32, epSuesswasser: 0.00023, epMeer: 0.034, epLand: 0.93, faktor: 0.396,

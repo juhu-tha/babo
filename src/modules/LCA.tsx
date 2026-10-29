@@ -5,6 +5,7 @@ import { BlockMath, InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import IngenieurbauLCA from './lca/IngenieurbauLCA';
 import BezugseinheitKasten from './lca/BezugseinheitKasten';
+import { GWP_LEHRWERTE, type GwpLehrwertSchluessel } from '@/src/data/gwpLehrwerte';
 import inhalt from '@/content/lca/LCA.json';
 import { einzelbaustoffA1A4 } from '@/src/calc/lca';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
@@ -13,7 +14,14 @@ import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 // Comprehensive EPD Reference Database representing realistic German ÖKOBAUDAT entries for students
-const REFERENZEN_EPD = inhalt.daten.REFERENZEN_EPD;
+// Beton und BSH aus der gemeinsamen Lehrwerttabelle (Konsistenz 29.10.2026, F-4); übrige Datensätze aus dem Inhalt
+const AUS_LEHRWERTTABELLE: Partial<Record<string, GwpLehrwertSchluessel>> = { 'beton-cem1': 'betonC2530CemI', 'beton-rc': 'betonRcC2530', 'bsh-softwood': 'bsh' };
+const REFERENZEN_EPD = inhalt.daten.REFERENZEN_EPD.map(e => {
+  const s = AUS_LEHRWERTTABELLE[e.id];
+  if (!s) return e;
+  const w = GWP_LEHRWERTE[s];
+  return { ...e, gwp_total: w.gwp, gwp_biogenic: w.biogen, gwp_fossil: w.gwp - w.biogen };
+});
 
 export default function LCA() {
   const [activeTab, setActiveTab] = useState<'normen' | 'phasen' | 'indikatoren' | 'epd-db' | 'ingenieurbau' | 'student-guide'>('normen');

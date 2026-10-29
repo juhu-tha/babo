@@ -38,7 +38,7 @@ export default function InteractiveLCACalc() {
   const [rows, setRows] = useState<CustomRow[]>([
     { id: "1", materialId: "beton-cem1", quantity: 24, circularQuota: 65, sortingRate: 85, recoveryType: "downcycling" },
     { id: "2", materialId: "ziegel", quantity: 38, circularQuota: 55, sortingRate: 75, recoveryType: "downcycling" },
-    { id: "3", materialId: "baustahl", quantity: 1.8, circularQuota: 95, sortingRate: 95, recoveryType: "high_grade" },
+    { id: "3", materialId: "betonstahl", quantity: 1.8, circularQuota: 95, sortingRate: 95, recoveryType: "high_grade" },
     { id: "4", materialId: "eps-daemmung", quantity: 12, circularQuota: 25, sortingRate: 60, recoveryType: "thermal" }
   ]);
   
@@ -261,8 +261,8 @@ export default function InteractiveLCACalc() {
       if (e.aussage === 'ueberschritten') return inhalt.werte.ueberPlus;
       return inhalt.werte.ohneVergleich;
     };
-    const v1 = bilanz([{ id: "beton-cem1", qty: 36 }, { id: "ziegel", qty: 45 }, { id: "baustahl", qty: 2.5 }, { id: "eps-daemmung", qty: 16 }]);
-    const v2 = bilanz([{ id: "beton-cem3", qty: 22 }, { id: "rc-beton", qty: 16 }, { id: "ziegel", qty: 40 }, { id: "baustahl", qty: 2.2 }, { id: "zellulose", qty: 20 }]);
+    const v1 = bilanz([{ id: "beton-cem1", qty: 36 }, { id: "ziegel", qty: 45 }, { id: "betonstahl", qty: 2.5 }, { id: "eps-daemmung", qty: 16 }]);
+    const v2 = bilanz([{ id: "beton-cem3", qty: 22 }, { id: "rc-beton", qty: 16 }, { id: "ziegel", qty: 40 }, { id: "betonstahl", qty: 2.2 }, { id: "zellulose", qty: 20 }]);
     const v3 = bilanz([{ id: "beton-cem3", qty: 10 }, { id: "hbv-decke", qty: 18 }, { id: "clt", qty: 22 }, { id: "kvh", qty: 6 }, { id: "baustahl", qty: 0.8 }, { id: "holzfaser-daemmung", qty: 18 }]);
     const v4 = bilanz([{ id: "schaumglas", qty: 25 }, { id: "kvh", qty: 14 }, { id: "lehm-bauplatte", qty: 15 }, { id: "hanfkalk", qty: 24 }, { id: "strohballen", qty: 20 }, { id: "baustahl", qty: 0.3 }]);
     const ref = v1.spez.qng;
@@ -294,7 +294,7 @@ export default function InteractiveLCACalc() {
               setRows([
                 { id: "1", materialId: "beton-cem1", quantity: 24, circularQuota: 65, sortingRate: 85, recoveryType: "downcycling" },
                 { id: "2", materialId: "ziegel", quantity: 38, circularQuota: 55, sortingRate: 75, recoveryType: "downcycling" },
-                { id: "3", materialId: "baustahl", quantity: 1.8, circularQuota: 95, sortingRate: 95, recoveryType: "high_grade" },
+                { id: "3", materialId: "betonstahl", quantity: 1.8, circularQuota: 95, sortingRate: 95, recoveryType: "high_grade" },
                 { id: "4", materialId: "eps-daemmung", quantity: 12, circularQuota: 25, sortingRate: 60, recoveryType: "thermal" }
               ]);
               setTransportDistance(120);

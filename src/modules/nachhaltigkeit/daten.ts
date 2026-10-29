@@ -1,4 +1,5 @@
 import inhalt from '@/content/nachhaltigkeit/daten.json';
+import { GWP_LEHRWERTE, gwpJeKg, type GwpLehrwertSchluessel } from '@/src/data/gwpLehrwerte';
 // Scientific EPD Material Database for dynamic compilation
 export interface MaterialData {
   name: string;
@@ -13,7 +14,17 @@ export interface MaterialData {
   circularity_pct: number;  // Inherent recyclability or circularity score (0 - 100%)
 }
 
-export const EPD_DATABASE: Record<string, MaterialData> = inhalt.daten.EPD_DATABASE;
+// Beton und BSH je kg aus der gemeinsamen Lehrwerttabelle (Konsistenz 29.10.2026, F-4: 245, 195 und −650 kg CO₂-Äq./m³)
+const AUS_LEHRWERTTABELLE: Partial<Record<string, GwpLehrwertSchluessel>> = { concrete_cem1: 'betonC2530CemI', concrete_rc: 'betonRcC2530', bsh_softwood: 'bsh' };
+
+export const EPD_DATABASE: Record<string, MaterialData> = Object.fromEntries(
+  Object.entries(inhalt.daten.EPD_DATABASE as Record<string, MaterialData>).map(([k, m]) => {
+    const s = AUS_LEHRWERTTABELLE[k];
+    if (!s) return [k, m];
+    const j = gwpJeKg(s);
+    return [k, { ...m, density: GWP_LEHRWERTE[s].rohdichte, gwp_fossil_a1a3: j.fossil, gwp_biogenic_a1a3: j.biogen }];
+  }),
+);
 
 export interface ConfiguredLayer {
   materialKey: string;

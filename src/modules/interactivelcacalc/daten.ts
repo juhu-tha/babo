@@ -1,5 +1,6 @@
 import inhalt from '@/content/interactivelcacalc/daten.json';
 import type { LcaBaustoff } from '@/src/calc/lca';
+import { GWP_LEHRWERTE as GWP } from '@/src/data/gwpLehrwerte';
 export interface MaterialDefinition {
   id: string;
   name: string;
@@ -25,7 +26,7 @@ export const MATERIAL_DATABASE: MaterialDefinition[] = [
     category: inhalt.werte.mineralischMassivbau,
     unit: "m³",
     densityKg: 2400,
-    gwpA1A3: 245,
+    gwpA1A3: GWP.betonC2530CemI.gwp,
     gwpC: 15,
     gwpD: -8,
     biogenicContent: 0,
@@ -42,7 +43,7 @@ export const MATERIAL_DATABASE: MaterialDefinition[] = [
     category: inhalt.werte.mineralischMassivbau2,
     unit: "m³",
     densityKg: 2400,
-    gwpA1A3: 135,
+    gwpA1A3: GWP.betonCemIIIA.gwp,
     gwpC: 15,
     gwpD: -8,
     biogenicContent: 0,
@@ -59,7 +60,7 @@ export const MATERIAL_DATABASE: MaterialDefinition[] = [
     category: inhalt.werte.mineralischMassivbau3,
     unit: "m³",
     densityKg: 2400,
-    gwpA1A3: 155,
+    gwpA1A3: GWP.betonC2530CemIICM.gwp,
     gwpC: 15,
     gwpD: -9,
     biogenicContent: 0,
@@ -76,7 +77,7 @@ export const MATERIAL_DATABASE: MaterialDefinition[] = [
     category: inhalt.werte.mineralischZirkulär,
     unit: "m³",
     densityKg: 2350,
-    gwpA1A3: 145,
+    gwpA1A3: GWP.betonRcC2530.gwp, // Konsistenz 29.10.: 145 → 195 wie EPD-Musterdatenbank und Wandkonfigurator (F-4)
     gwpC: 14,
     gwpD: -22,
     biogenicContent: 0,
@@ -93,7 +94,7 @@ export const MATERIAL_DATABASE: MaterialDefinition[] = [
     category: inhalt.werte.mineralischZirkulär2,
     unit: "m³",
     densityKg: 2350,
-    gwpA1A3: 85,
+    gwpA1A3: GWP.betonGeopolymer.gwp,
     gwpC: 12,
     gwpD: -15,
     biogenicContent: 0,
@@ -127,7 +128,7 @@ export const MATERIAL_DATABASE: MaterialDefinition[] = [
     category: "Metallisch",
     unit: "t",
     densityKg: 7850,
-    gwpA1A3: 1100, // 1.1 kg CO2-eq per kg
+    gwpA1A3: 1100, // Lehrwert Profilstahl 1,1 kg CO₂-Äq./kg (vorläufig, Normprüfung ausstehend); Betonstahl getrennt (Konsistenz 29.10., F-3)
     gwpC: 45,
     gwpD: -750, // High recycling recovery credits
     biogenicContent: 0,
@@ -139,15 +140,32 @@ export const MATERIAL_DATABASE: MaterialDefinition[] = [
     defaultRecoveryType: "high_grade"
   },
   {
+    id: "betonstahl",
+    name: inhalt.werte.betonstahlB500Elektrostahl,
+    category: "Metallisch",
+    unit: "t",
+    densityKg: GWP.betonstahl.rohdichte,
+    gwpA1A3: GWP.betonstahl.gwp, // ÖKOBAUDAT „Bewehrungsstahl (de)“ 0,64 kg/kg (Konsistenz 29.10., F-3)
+    gwpC: 45,
+    gwpD: -150, // Lehrwert: Nettoschrott (0,95 − 0,85) · ca. 1,5 t CO₂-Äq./t (vorläufig, Normprüfung ausstehend)
+    biogenicContent: 0,
+    umiScore: 95,
+    penrt: 8100, // Lehrwert, mit dem GWP-Verhältnis 640/1120 aus dem früheren Konsolenwert 14 200 MJ/t skaliert (vorläufig)
+    description: inhalt.werte.betonstahlBeschreibung,
+    defaultCircularQuota: 95,
+    substitutesPrimary: inhalt.werte.primärRohstahlHochofenRoute,
+    defaultRecoveryType: "high_grade"
+  },
+  {
     id: "kvh",
     name: inhalt.werte.konstruktionsvollholzNadelholz,
     category: inhalt.werte.nachwachsendHolzbau,
     unit: "m³",
     densityKg: 500,
-    gwpA1A3: -740, // Lehrwert: biogener Kohlenstoff nach DIN EN 16449 (500 kg/m³ bei u = 12 %: ca. -820 kg CO2) + ca. 80 kg fossile Herstellung
+    gwpA1A3: GWP.kvh.gwp, // Lehrwert: biogener Kohlenstoff nach DIN EN 16449 (500 kg/m³ bei u = 12 %: ca. -820 kg CO2) + ca. 80 kg fossile Herstellung
     gwpC: 820,    // Freisetzung des biogenen Kohlenstoffs bei thermischer Verwertung (Modul C3)
     gwpD: -180,   // Energy recovery credit (thermal substitutes)
-    biogenicContent: 820,
+    biogenicContent: -GWP.kvh.biogen,
     umiScore: 85,
     penrt: 1650,
     description: inhalt.werte.nadelholzTechnischGetrocknetSpeichert,
@@ -360,7 +378,7 @@ export const PRESETS: ScenarioPreset[] = [
     rows: [
       { materialId: "beton-cem1", quantity: 36, circularQuota: 35, sortingRate: 75, recoveryType: "downcycling" },
       { materialId: "ziegel", quantity: 45, circularQuota: 25, sortingRate: 70, recoveryType: "downcycling" },
-      { materialId: "baustahl", quantity: 2.5, circularQuota: 90, sortingRate: 85, recoveryType: "high_grade" },
+      { materialId: "betonstahl", quantity: 2.5, circularQuota: 90, sortingRate: 85, recoveryType: "high_grade" },
       { materialId: "eps-daemmung", quantity: 16, circularQuota: 15, sortingRate: 50, recoveryType: "thermal" }
     ]
   },
@@ -377,7 +395,7 @@ export const PRESETS: ScenarioPreset[] = [
       { materialId: "beton-cem3", quantity: 22, circularQuota: 70, sortingRate: 85, recoveryType: "downcycling" },
       { materialId: "rc-beton", quantity: 16, circularQuota: 88, sortingRate: 90, recoveryType: "high_grade" },
       { materialId: "ziegel", quantity: 40, circularQuota: 60, sortingRate: 80, recoveryType: "downcycling" },
-      { materialId: "baustahl", quantity: 2.2, circularQuota: 95, sortingRate: 95, recoveryType: "high_grade" },
+      { materialId: "betonstahl", quantity: 2.2, circularQuota: 95, sortingRate: 95, recoveryType: "high_grade" },
       { materialId: "zellulose", quantity: 20, circularQuota: 85, sortingRate: 85, recoveryType: "thermal" }
     ]
   },

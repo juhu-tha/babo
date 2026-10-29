@@ -250,9 +250,9 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 72 korrigiert, 0 fraglich, 8
 
 ### qn_bauphysik_1 · Bauphysik (Wärme & Akustik)
 
-- **Frage:** Eine Außenwand besteht aus 20 cm Stahlbeton (λ = 2,0 W/(m·K)) und 12 cm EPS (λ = 0,035 W/(m·K)); R_si = 0,13 und R_se = 0,04 m²K/W. Welcher U-Wert ergibt sich, und wird der Höchstwert 0,24 W/(m²K) eingehalten?
+- **Frage:** Eine Außenwand besteht aus 20 cm Normalbeton, unbewehrt (λ = 2,0 W/(m·K)) und 12 cm EPS (λ = 0,035 W/(m·K)); R_si = 0,13 und R_se = 0,04 m²K/W. Welcher U-Wert ergibt sich, und wird der Höchstwert 0,24 W/(m²K) eingehalten?
 - **Richtige Antwort:** U ≈ 0,27 W/(m²K); der Höchstwert wird nicht eingehalten
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt; Zweitprüfung 27.10.: Distraktor 1 widersprach sich selbst (0,25 > 0,24 „eingehalten“); Aussage zum Höchstwert und Rückmeldung korrigiert · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Konsistenz 29.10.: Begriff zu λ = 2,0 W/(m·K) „Normalbeton, unbewehrt“ statt „Stahlbeton“ (DIN EN ISO 10456; F-1), Rechnung unverändert – korrigiert
 - [ ] ok
 - [x] ändern: Distraktor 1 widersprüchlich (0,25 „eingehalten“), auf „knapp überschritten“ geändert, korrigiert
 

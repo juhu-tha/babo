@@ -8,6 +8,7 @@ import inhalt from '@/content/materialdatenbanken/Materialdatenbanken.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 import { LEHRWERTE_A2 } from '@/src/data/oekobaudatLehrwerteA2';
+import { GWP_LEHRWERTE as GWP } from '@/src/data/gwpLehrwerte';
 
 /** Kleine Indikatorwerte mit zwei geltenden Ziffern; unter 0,001 als Zehnerpotenz (z. B. 8,8 · 10⁻⁶) */
 const HOCH: Record<string, string> = { '-': '⁻', '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴', '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹' };
@@ -98,7 +99,7 @@ const MOCK_MOCK_RECORDS: OekobaudatRecord[] = [
     type: 'Generisch',
     manufacturer: inhalt.werte.bbsrGenerischerDatensatz,
     unit: '1 m³',
-    gwp: 245.0,
+    gwp: GWP.betonC2530CemI.gwp,
     penrt: 1350,
     recycledContent: 0,
     wecobisSafety: [inhalt.werte.freiVonOrganischenLösemitteln, inhalt.werte.keinVocDampf, inhalt.werte.nichtBrennbarA1]
@@ -110,7 +111,7 @@ const MOCK_MOCK_RECORDS: OekobaudatRecord[] = [
     type: 'Generisch',
     manufacturer: inhalt.werte.bbsrGenerischerDatensatz2,
     unit: '1 m³',
-    gwp: -482.0, // Biogenes CO2
+    gwp: GWP.bsh.gwp, // inkl. biogenem CO₂; Konsistenz 29.10.: −482 → −650 (gemeinsame Lehrwerttabelle, F-4)
     penrt: 2600,
     recycledContent: 0,
     wecobisSafety: [inhalt.werte.biogenerCo2Speicher, inhalt.werte.formaldehydKlasseE1, inhalt.werte.pefcFscZertifiziert]
@@ -119,11 +120,11 @@ const MOCK_MOCK_RECORDS: OekobaudatRecord[] = [
     id: 'o-3',
     name: inhalt.werte.flachproduktStahlB500b,
     category: 'Metall',
-    type: 'Spezifisch (EPD)',
-    manufacturer: inhalt.werte.wirtschaftsvereinigungStahl,
+    type: 'Generisch',
+    manufacturer: inhalt.werte.oekobaudatBewehrungsstahl,
     unit: '1 t',
-    gwp: 1120.0,
-    penrt: 14200,
+    gwp: GWP.betonstahl.gwp, // Konsistenz 29.10.: 1120 → 640 (ÖKOBAUDAT „Bewehrungsstahl (de)“, F-3)
+    penrt: 8100, // Lehrwert, mit 640/1120 aus 14 200 MJ/t skaliert (vorläufig)
     recycledContent: 85,
     wecobisSafety: [inhalt.werte.unbegrenztRecyclingfähig, 'Schwermetallfrei', inhalt.werte.dgnbVocKonform]
   },
@@ -188,15 +189,15 @@ export interface QngMaterial {
 }
 
 export const QNG_DATA: QngMaterial[] = [
-  { name: inhalt.werte.normalbetonC2530Cem, category: 'Mineralisch', unit: 'm³', gwp: 235, penrt: 1250, rec: inhalt.werte.sehrGutRezyklierteGesteinskörnung },
-  { name: inhalt.werte.sonderbetonC3037Cem, category: 'Mineralisch', unit: 'm³', gwp: 145, penrt: 950, rec: inhalt.werte.sehrGutHüttensandmischungRessourcenspare },
+  { name: inhalt.werte.normalbetonC2530Cem, category: 'Mineralisch', unit: 'm³', gwp: GWP.betonC2530CemI.gwp, penrt: 1250, rec: inhalt.werte.sehrGutRezyklierteGesteinskörnung },
+  { name: inhalt.werte.sonderbetonC3037Cem, category: 'Mineralisch', unit: 'm³', gwp: GWP.betonC3037CemIII.gwp, penrt: 950, rec: inhalt.werte.sehrGutHüttensandmischungRessourcenspare },
   { name: inhalt.werte.kalksandsteinKsPlansteinRohdichte, category: 'Mineralisch', unit: 't', gwp: 110, penrt: 980, rec: inhalt.werte.mittelReinAufbereitetZu },
   { name: 'Porenbetonplanstein', category: 'Mineralisch', unit: 'm³', gwp: 185, penrt: 1850, rec: inhalt.werte.mittelRichtenFürSortenreines },
   { name: inhalt.werte.hochlochziegelUnverfüllt, category: 'Mineralisch', unit: 'm³', gwp: 220, penrt: 2300, rec: inhalt.werte.mittelVerwendungAlsZiegelmehl },
   { name: inhalt.werte.bewehrungsstahlSekundärroute100Elektro, category: 'Metalle', unit: 't', gwp: 450, penrt: 5800, rec: inhalt.werte.hervorragendUnendlichOftEinschmelzbar },
   { name: inhalt.werte.bewehrungsstahlPrimärrouteHochofenMit, category: 'Metalle', unit: 't', gwp: 1850, penrt: 24500, rec: inhalt.werte.hervorragendStahlschrottRückgewinnbar },
-  { name: inhalt.werte.konstruktionsvollholzKvhNadelholz, category: 'Holz & Organisch', unit: 'm³', gwp: -620, penrt: 1950, biogenicC: -780, rec: inhalt.werte.hochwertigLangfristigeStofflicheKaskaden },
-  { name: inhalt.werte.brettschichtholzBshBrettschichtholz, category: 'Holz & Organisch', unit: 'm³', gwp: -580, penrt: 2400, biogenicC: -760, rec: inhalt.werte.hochwertigLangfristigeStofflicheKaskaden2 },
+  { name: inhalt.werte.konstruktionsvollholzKvhNadelholz, category: 'Holz & Organisch', unit: 'm³', gwp: GWP.kvh.gwp, penrt: 1950, biogenicC: GWP.kvh.biogen, rec: inhalt.werte.hochwertigLangfristigeStofflicheKaskaden },
+  { name: inhalt.werte.brettschichtholzBshBrettschichtholz, category: 'Holz & Organisch', unit: 'm³', gwp: GWP.bsh.gwp, penrt: 2400, biogenicC: GWP.bsh.biogen, rec: inhalt.werte.hochwertigLangfristigeStofflicheKaskaden2 },
   { name: inhalt.werte.strohballendämmungBaustrohGepresst, category: 'Dämmstoffe', unit: 't', gwp: -1100, penrt: 2100, biogenicC: -1300, rec: inhalt.werte.exzellentBiologischerAbbauVollständige },
   { name: inhalt.werte.holzweichfaserdämmplatteWfFlexibel, category: 'Dämmstoffe', unit: 'm³', gwp: -210, penrt: 4100, biogenicC: -460, rec: inhalt.werte.gutThermischeVerwertbarkeitNach },
   { name: inhalt.werte.mineralwolleSteinwolleDämmplatte, category: 'Dämmstoffe', unit: 'm³', gwp: 45, penrt: 750, rec: inhalt.werte.mittelSchmelzRecyclingIm },

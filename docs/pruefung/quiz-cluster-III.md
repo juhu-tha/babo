@@ -2,9 +2,9 @@
 
 Stand: 29.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster III umfasst 194 Fragen aus 33 Modulen. Aufgeführt sind 46 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster III umfasst 194 Fragen aus 33 Modulen. Aufgeführt sind 48 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 44 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 2 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 46 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 2 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -70,6 +70,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 44 korrigiert, 0 fraglich, 0
 - **Richtige Antwort:** Ausnahmsweise, unter Verantwortung des Herstellers und mit Lieferscheinvermerk
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### q_hw_4 · Werkstoffe & dataholz
+
+- **Frage:** Ein Fichtenbalken ist in der tangential orientierten Breite 200 mm breit und trocknet von 20 % auf 12 % Holzfeuchte. Wie stark schwindet die Breite (Schwindmaß tangential 0,36 % je % Holzfeuchte)?
+- **Richtige Antwort:** etwa 5,8 mm
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Konsistenz 29.10.: q_t Fichte 0,36 statt 0,33 (SCHWINDBEIWERTE, T10-HW-1; F-2), Ergebnis 5,8 mm und Distraktor Δu = 20 % neu gerechnet – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### q_hyf_2 · Hydratation & Folgen
@@ -182,6 +190,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 44 korrigiert, 0 fraglich, 0
 - **Richtige Antwort:** Hüttensand enthält selbst CaO und erhärtet nach alkalischer Anregung; Flugasche braucht Ca(OH)₂ als Partner
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### qn_biokohlebeton_3 · Biokohlebeton (Pflanzenkohle im Beton)
+
+- **Frage:** Die Netto-Senke von 1 kg Pflanzenkohle beträgt 2,0 kg CO₂. Wie viel Zement mit einem Treibhauspotenzial von 0,665 kg CO₂e/kg (CEM I, VDZ-Branchen-EPD) müsste man einsparen, um dieselbe Bilanzwirkung zu erzielen?
+- **Richtige Antwort:** etwa 3,0 kg Zement
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Konsistenz 29.10.: Zement-GWP 0,665 statt 0,80 kg CO₂e/kg (CEM I, src/data/zementGwp.ts; F-8), Ergebnis 3,0 kg und Distraktoren neu gerechnet – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### qn_carbonbeton_1 · Carbonbeton

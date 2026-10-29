@@ -8,6 +8,10 @@ import type { Dispatch, SetStateAction } from 'react';
 import type { MaterialData } from './daten';
 import inhalt from '@/content/nachhaltigkeit/Wandkonfigurator.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { gwpJeKg } from '@/src/data/gwpLehrwerte';
+
+/** KVH je kg aus der gemeinsamen Lehrwerttabelle (Konsistenz 29.10.2026, F-4) */
+const KVH_JE_KG = gwpJeKg('kvh');
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
 import { useState } from 'react';
 import { funktionelleEinheitBauteil, BETRACHTUNGSZEITRAUM_QNG } from '@/src/calc/lca';
@@ -74,7 +78,7 @@ export default function Wandkonfigurator({ addLayer, addThickness, applyPreset, 
               <p>
                 In EPDs werden Materialwerte häufig auf 1 kg Masse bezogen. Hier wirkt Normalbeton (CEM I) mit ca. <strong><MdText text={inhalt.texte.t010KgCo} /></strong> scheinbar harmlos. 
                 Aufgrund der hohen Rohdichte (2400 kg/m³) wiegt jedoch eine 20 cm Betonwand 480 kg/m² und verursacht ca. <strong><MdText text={inhalt.texte.t49KgCoE} /></strong>! 
-                Konstruktionsvollholz (KVH) speichert hingegen biogenes CO₂ (-1,47 kg CO₂e/kg), und ein Lehmstein (DIN 18940) benötigt überhaupt keine klinkerspezifische Brennenergie (nur 0,022 kg CO₂e/kg). 
+                Konstruktionsvollholz (KVH) speichert hingegen biogenes CO₂ ({formatDeZahl(KVH_JE_KG.biogen, 2)} kg CO₂e/kg; netto A1–A3 {formatDeZahl(KVH_JE_KG.fossil + KVH_JE_KG.biogen, 2)} kg CO₂e/kg), und ein Lehmstein (DIN 18940) benötigt überhaupt keine klinkerspezifische Brennenergie (nur 0,022 kg CO₂e/kg). 
                 <strong> Grundsatz:</strong> Bauteile müssen immer auf die funktionelle Einheit (1 m² Bauteil mit gefordertem U-Wert und Tragfähigkeit) bezogen verglichen werden.
               </p>
             </div>
