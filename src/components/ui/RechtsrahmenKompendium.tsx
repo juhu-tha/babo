@@ -333,7 +333,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     milestones: [
       { year: '2024', text: 'Finale Verabschiedung der revidierten Verordnung im EU-Parlament/Rat.' },
       { year: '2025', text: 'Start der Überarbeitung harmonisierter europäischer Produktnormen (hEN).' },
-      { year: 'ab 2027', text: 'Schrittweise Einführung des Digitalen Produktpasses je Produktfamilie; verpflichtend 18 Monate nach Inkrafttreten des delegierten Rechtsakts nach Art. 75 Abs. 1 VO (EU) 2024/3110 (Stand 10/2026 noch nicht erlassen).' },
+      { year: 'ab 2027', text: 'Schrittweise Einführung des Digitalen Produktpasses je Produktfamilie über delegierte Rechtsakte nach Art. 75 Abs. 1 VO (EU) 2024/3110 (Stand 10/2026 noch nicht erlassen).' },
       { year: '2040', text: 'Spätestes Ende der schrittweisen Aufhebung der VO (EU) 305/2011 (2026 bis 2040); bis dahin gelten für Produkte unter alten harmonisierten Normen Übergangsregeln.' }
     ]
   },

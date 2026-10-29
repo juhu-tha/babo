@@ -8,6 +8,22 @@ export interface VersionItem {
 
 export const VERSION_HISTORY: VersionItem[] = [
   {
+    version: 'v4.4.0',
+    date: '29.10.2026',
+    title: 'Fachliche Modulprüfung aller 193 Fachmodule, Prüfvermerke, Quizprüfung und Systemdunkelmodus',
+    badge: 'minor',
+    changes: [
+      'Modulprüfung aller 193 Fachmodule in 15 Tranchen: eigene Nachrechnungen, Normstand, Quellen, Grenzen und Beispiele je Modul; eindeutige Fehler behoben, noch offene Normstellen als „vorläufig“ gekennzeichnet.',
+      'Prüfvermerke: Module mit abgeschlossener Prüfung tragen im Kopf und in der Fußzeile den Vermerk „Fachlich geprüft am …“; das Prüfverfahren ist im Impressum beschrieben.',
+      'Selbsttests: Zweitprüfung des Fragenpools, korrigierte Fragen erneut geprüft und freigegeben.',
+      'Energie- und CO₂-Kennwerte nach GModG Anlage 9 im Energieausweis und im Altbauatlas.',
+      'Modulübergreifende Prüfungen: Statik- und Bemessungsmodule, Konsistenz der Kennwerte zwischen den Modulen, Paragrafenzitate (u. a. KrWG, BBodSchV, EBV, DepV, VOB/B) und Erreichbarkeit der externen Links.',
+      'Kurzfassungen „Das Wichtigste in Kürze“ für die Kern- und Rechnermodule.',
+      'Virtuelle Versuche: Gerätezeichnungen und Grafiken überarbeitet, auf dem Mobilgerät und im Dunkelmodus lesbar.',
+      'Dunkelmodus folgt der Systemeinstellung des Geräts, solange keine eigene Auswahl gespeichert ist.'
+    ]
+  },
+  {
     version: 'v4.3.0',
     date: '25.10.2026',
     title: 'Fünf neue Module: Stahlbau EC 3, Keramik und Ziegel, Korrosionsschutz durch Beschichtungen, Membranen und ETFE, Sommerlicher Wärmeschutz',

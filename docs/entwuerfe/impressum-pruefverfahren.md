@@ -13,3 +13,7 @@ Anlass: Gutachten vom 29.10.2026, Abschnitt 4.5 (Recht/Datenschutz, Mangel 1): K
 1. Wortlaut wie vorgeschlagen bestätigen oder ändern.
 2. Optionaler Zusatzsatz zur Transparenz (Gutachten 29.10., 4.5: die Befundlisten wurden maschinell erstellt): „Die Befundlisten wurden KI-gestützt erstellt und vor der Freigabe durchgesehen.“ – aufnehmen ja/nein. Er passt zum bestehenden „Hinweis zur Erstellung“.
 3. Ob der Vermerk künftig eine prüfende Person nennen soll (Gutachten 4.5, „Braucht Entscheidung“). Bis dahin bleibt er passiv und ohne Namen.
+
+## Umsetzung 29.10.2026
+
+Wortlaut bestätigt und nach „Hinweis zur Erstellung“ in `src/modules/Impressum.tsx` eingefügt – ohne den optionalen Zusatzsatz (Punkt 2) und ohne Personennamen (Punkt 3: Vermerk bleibt passiv).

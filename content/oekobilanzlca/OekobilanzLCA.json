@@ -147,6 +147,47 @@
         "erklaerung": "Lebenszyklus-Treibhausgasbilanzierung von Ingenieurbauwerken über einen vom Auftraggeber festgelegten Betrachtungszeitraum (bei Brücken typisch 80 bis 100 Jahre, vgl. DIN EN 1990, Kategorie 5) unter Berücksichtigung von periodischen Austauschzyklen (Lager, Übergänge, Beläge B2-B5) und Modul B8 (Nutzung durch die Nutzer; hier vereinfacht als verkehrsbedingte Stauemissionen während Baustellen, vorläufig).",
         "quelle": "DIN EN 17472:2024-06"
       }
+    ],
+    "OekobilanzLCA.literatur_rechner": [
+      "König, H. et al. (2012): Lebenszyklusanalyse von Gebäuden (Detail Green Books)",
+      "Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen (BMWSB): Leitfaden Nachhaltiges Bauen",
+      "Wendehorst Baustoffkunde (37. Auflage, Springer Vieweg)"
+    ],
+    "OekobilanzLCA.formeln_rechner": [
+      {
+        "formel": "\\text{GWP}_{\\text{QNG}} = \\frac{\\text{GWP}_{A1\\text{–}A3} + \\text{GWP}_{B4} + \\text{GWP}_{C3/C4} + \\text{GWP}_{\\text{TGA}} + \\text{GWP}_{B6}}{A_{\\text{NRF(R)}} \\cdot \\Delta t} \\quad [\\text{kg CO}_2\\text{-eq}/(\\text{m}^2\\cdot\\text{a})]",
+        "erklaerung": "Bilanzrahmen der QNG-Bilanzierungsregeln für Wohngebäude mit Δt = 50 a; Modul D und Transport A4 werden getrennt ausgewiesen und nicht angerechnet.",
+        "quelle": "QNG-Handbuch Anlage 3, Anhang 3.1.1 (v1.4, 19.07.2024)"
+      },
+      {
+        "formel": "\\text{GWP}_{B4} = \\sum_i n_i \\cdot \\left(\\text{GWP}_{A1\\text{–}A3,i} + \\text{GWP}_{C3/C4,i}\\right), \\quad n_i = \\left\\lceil \\frac{\\Delta t}{ND_i} \\right\\rceil - 1",
+        "erklaerung": "Ersatz über den Betrachtungszeitraum mit Nutzungsdauern ND nach BNB; kein Ersatz im 50. Jahr (gleichwertig zur Zählung ⌊Δt/ND⌋ ohne Ersatz im Jahr 50).",
+        "quelle": "QNG Anhang 3.1.1, Abschnitt 6; BNB-Nutzungsdauern (Stand 24.02.2017)"
+      },
+      {
+        "formel": "\\text{GWP}_{B6} = \\Delta t \\cdot \\left[ (Q_{\\text{Strom,GEG}} - Q_{\\text{PV,eigen}}) \\cdot f_{\\text{Netz}} + Q_{\\text{Wärme}} \\cdot f_{\\text{Wärme}} + 20 \\cdot A_{\\text{NRF,beheizt}} \\cdot f_{\\text{Netz}} \\right]",
+        "erklaerung": "Betrieb mit Endenergie nach GEG (B6.1) und pauschalem Nutzerstrom (B6.3); Rechenwerte f je kWh Endenergie einschließlich Vorkette.",
+        "quelle": "QNG Anhang 3.1.1; Rechenwerte 2023; Anhang 3.4 (Fernwärme)"
+      },
+      {
+        "formel": "\\text{GWP}_{D,i} = - \\left( m_i \\cdot \\frac{r_{\\text{circ},i}}{100} \\cdot \\frac{s_{\\text{sort},i}}{100} \\cdot \\eta_{\\text{subst}} \\cdot \\text{GWP}_{\\text{primär,verdrängt}} \\right) \\quad [\\text{kg CO}_2\\text{-eq}]",
+        "erklaerung": "Gutschrift für Vermeidungs- und Recyclingpotenziale außerhalb der Systemgrenze (Modul D) basierend auf kreislauffähigem Stoffanteil und Sortenreinheit.",
+        "quelle": "DIN EN 15804+A2 / DIN EN 17472"
+      },
+      {
+        "formel": "\\text{UMI} = \\frac{\\sum (m_i \\cdot \\text{UMI}_i)}{\\sum m_i} \\quad [\\%]",
+        "erklaerung": "Gewichteter Urban Mining Index des Bauwerks zur Erfassung der stofflichen Rezyklierbarkeit und Zirkularität im Sinne der VDI 6210.",
+        "quelle": "VDI 6210 / DIN SPEC 91484"
+      }
+    ],
+    "OekobilanzLCA.regelwerke_rechner": [
+      {
+        "title": "VDI 6210 / DIN SPEC 91484 (Rückbau- und Zirkularitätsbewertung)"
+      },
+      {
+        "title": "ÖKOBAUDAT Plattform (BMWSB EPD-Datenbank)",
+        "url": "https://www.oekobaudat.de/"
+      }
     ]
   }
 }

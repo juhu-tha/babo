@@ -17,7 +17,7 @@
     "dinEn15804Bauprodukt": "DIN EN 15804 (Bauprodukt-Ebene)",
     "en15804A2Ist": "EN 15804+A2 ist die Kern-Produktkategorieregel (Core-PCR) für EPDs von Bauprodukten; Programmbetreiber wie das IBU ergänzen produktspezifische PCR. Hintergrunddatenbanken z. B. ÖKOBAUDAT, ecoinvent, LCA for Experts.",
     "dinEn15978Gebäude": "DIN EN 15978 (Gebäude-Ebene / Hochbau)",
-    "beschreibtDieRechenmethodeZur": "Beschreibt die Rechenmethode zur Bilanzierung von Gebäuden über **50 Jahre Betrachtungszeitraum** unter Summierung aller materiellen EPD-Anteile (Massenbilanz) und der prognostizierten Betriebsenergien (Modul B6).",
+    "beschreibtDieRechenmethodeZur": "Beschreibt die Rechenmethode zur Bilanzierung von Gebäuden über den Betrachtungszeitraum (in Deutschland nach BNB/QNG **50 Jahre**) unter Summierung aller materiellen EPD-Anteile (Massenbilanz) und der prognostizierten Betriebsenergien (Modul B6).",
     "dinEn174722024": "DIN EN 17472:2024-06 (Ingenieurbauwerke & Infrastruktur)",
     "europäischesPendantZuEn": "Europäisches Pendant zu EN 15978 für Brücken, Tunnel, Straßen, Bahntrassen und Wasserbauten. Wesentliche Spezifika: Betrachtungszeitraum vom Auftraggeber festgelegt (DIN EN 17472, Begriff 3.69), bei Brücken typisch **80–100 Jahre** (vgl. DIN EN 1990, Kategorie 5: 100 Jahre), Dominanz periodischer Bauteilaustauschzyklen (Lager, Fahrbahnübergänge, Asphaltschichten, Korrosionsschutz B2–B5) sowie ein eigenes **Modul B8 für die Nutzung des Bauwerks durch die Nutzer**. Die Lernumgebung bildet darin vereinfacht sperrungsbedingte Stauemissionen ab; diese Zuordnung ist gegen den Normtext noch zu prüfen (vorläufig, Normprüfung ausstehend).",
     "qualitätssiegelNachhaltigesGebäudeQng": "Qualitätssiegel Nachhaltiges Gebäude (QNG – Stand 2026)",
