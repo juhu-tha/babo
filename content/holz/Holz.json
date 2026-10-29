@@ -124,7 +124,7 @@
     "auswahlDerHolzartOder": "Auswahl der Holzart oder des Holzwerkstoffs. Dies beeinflusst Rohdichte, Schwindmaße und Festigkeiten.",
     "holzartWerkstoff": "Holzart / Werkstoff",
     "bshDieLamellenSind": "BSH: Die Lamellen sind parallel verklebt, es gibt keine Absperrung. Im Querschnitt schwindet BSH daher wie Vollholz. Vorteil: Die Lamellen werden vor dem Verkleben technisch getrocknet (ca. 12 %), Schwindrisse nach dem Einbau fallen deshalb geringer aus.",
-    "holzwerkstoffEffektAbsperrungOsb": "Holzwerkstoff-Effekt: Absperrung (OSB) bzw. Homogenisierung durch Furniere (FSH) reduziert die Maßänderung in Plattenebene deutlich. Die Kennwerte sind Richtwerte – maßgebend sind Leistungserklärung und Zulassung.",
+    "holzwerkstoffEffektAbsperrungOsb": "Holzwerkstoff-Effekt: Absperrung (OSB) bzw. Homogenisierung durch Furniere (FSH) reduziert die Maßänderung in Plattenebene deutlich. In Dickenrichtung (Wert „Radial“ = Plattendicke) quellen und schwinden FSH und OSB dagegen etwa wie Vollholz radial oder stärker; der Rechner setzt dafür getrennte Lehrwerte (FSH 0,24 %, OSB 0,30 % je % Holzfeuchteänderung; vorläufig, F-Freigabe). Breite und Länge gelten in Plattenebene. Die Kennwerte sind Richtwerte – maßgebend sind Leistungserklärung und Zulassung.",
     "naturwerkstoffVerhaltenDasHohe": "Naturwerkstoff-Verhalten: Das hohe Anisotropieverhältnis (qt / qr ≈ 2) führt bei ungleichmäßiger Trocknung zu typischen Schüssellungen, Verdrehungen oder Rissbildungen.",
     "artDesVerwendetenHolzes": "Art des verwendeten Holzes oder Holzwerkstoffs.",
     "holzproduktHolzart": "Holzprodukt / Holzart",

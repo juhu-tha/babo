@@ -39466,22 +39466,22 @@
     "topic": "Maßgebender Versagensmodus",
     "difficulty": "Transfer",
     "normRef": "DIN EN 1995-1-1, 8.2.2",
-    "question": "Schraube d = 8 mm in C24 (f_h,k = 26,4 N/mm², M_y,Rk = 26 740 Nmm), l_ef = 80 mm. Modell des Moduls: F₁ = f_h,k·l_ef·d und F₂ = 1,15·√(2·M_y,Rk·f_h,k·d) + Seileffekt F_ax,Rk/4 = 1920 N. Welcher Wert ist maßgebend?",
+    "question": "Schraube d = 8 mm (Kerndurchmesser d₁ = 5,2 mm, d_ef = 1,1·d₁ = 5,72 mm) in C24 (f_h,k = 17,0 N/mm², M_y,Rk = 11 180 Nmm), l_ef = 80 mm. Modell des Moduls: F₁ = f_h,k·l_ef·d_ef und F₂ = 1,15·√(2·M_y,Rk·f_h,k·d_ef) + Seileffekt min(F_ax,Rk/4; Johansen-Anteil) mit F_ax,Rk/4 = 2060 N. Welcher Wert ist maßgebend?",
     "options": [
-      "F₁ ≈ 16,9 kN – reine Lochleibung im Holz",
-      "F₂ ≈ 3,9 kN – Fließgelenk ohne Seileffekt",
-      "F₂ ≈ 5,8 kN – Fließgelenk mit Seileffekt",
-      "F₁ + F₂ ≈ 22,7 kN – beide Anteile zusammen"
+      "F₁ ≈ 7,8 kN – reine Lochleibung im Holz",
+      "F₂ ≈ 1,7 kN – Fließgelenk ohne Seileffekt",
+      "F₂ ≈ 3,4 kN – Fließgelenk, Seileffekt begrenzt",
+      "F₂ ≈ 3,8 kN – Fließgelenk, Seileffekt voll"
     ],
     "correctIdx": 2,
-    "explanation": "F₁ = 26,4 · 80 · 8 = 16,9 kN; F₂ = 1,15 · √(2 · 26 740 · 26,4 · 8) + 1920 N = 3,87 + 1,92 ≈ 5,8 kN. Maßgebend ist der kleinere Wert, also der Fließgelenkmodus mit Seileffekt.",
+    "explanation": "F₁ = 17,0 · 80 · 5,72 = 7,8 kN; Johansen-Anteil 1,15 · √(2 · 11 180 · 17,0 · 5,72) = 1,70 kN. Der Seileffekt F_ax,Rk/4 = 2,06 kN ist auf 100 % des Johansen-Anteils begrenzt, also 1,70 kN: F₂ = 1,70 + 1,70 ≈ 3,4 kN. Maßgebend ist der kleinere Wert, der Fließgelenkmodus mit Seileffekt (DIN EN 1995-1-1, 8.2.2 und 8.7.1(3) mit d_ef).",
     "bloom": "Analysieren",
     "niveau": "M",
     "distraktorFeedback": [
       "Maßgebend ist das Minimum der Versagensmodi; F₁ ist deutlich größer.",
       "Für Schrauben darf der Seileffekt F_ax,Rk/4 (begrenzt auf 100 % des Johansen-Anteils) addiert werden.",
       "",
-      "Die Modi sind Alternativen; es gilt der kleinste Wert, keine Summe."
+      "Der Seileffekt ist auf 100 % des Johansen-Anteils begrenzt (8.2.2(2)): hier 1,70 kN statt 2,06 kN."
     ],
     "gapAnalysis": {
       "topic": "Maßgebender Versagensmodus",
@@ -39491,12 +39491,11 @@
       "targetModuleTab": "holzbau_verbindung",
       "targetModuleLabel": "Verbindungen & Anschlüsse"
     },
-    "verified": true,
-    "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
-    "reviewedAt": "2026-10-28",
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-29",
+      "ergebnis": "korrigiert",
+      "hinweis": "Umsetzung 29.10.: Abscheren im Modul mit d_ef = 1,1·d₁ (T10-HV-3, Nagelregeln bei d_ef ≤ 6 mm); Frage, Werte, Optionen und Rückmeldungen auf d_ef umgestellt, Distraktor „voller Seileffekt“ statt Summe der Modi – korrigiert"
     }
   },
   {

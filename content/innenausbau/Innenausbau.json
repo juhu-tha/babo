@@ -12,7 +12,7 @@
     "estricheErfüllenImInnenausbau": "Estriche erfüllen im Innenausbau tragende, wärmeverteilende und lastverteilende Aufgaben. Bindemittelart und Trocknungsverhalten bestimmen maßgeblich die Belegreife.",
     "zementestrichCt": "Zementestrich (CT)",
     "bestehendAusZementCem": "Bestehend aus Zement (CEM I/II), Gesteinskörnung 0/8 mm und Wasser. Unempfindlich gegen Dauernässe, universell im Innen- und Außenbereich einsetzbar.",
-    "schwindmaßCa04": "**Schwindmaß:** ca. 0,4 – 0,6 mm/m (Schwindrissgefahr!)",
+    "schwindmaßCa04": "**Schwindmaß:** Lehrwert 0,5 mm/m (Spanne etwa 0,4 – 0,6 mm/m; Schwindrissgefahr!)",
     "belegreifeUnbeheizt20": "**Belegreife unbeheizt:** ≤ 2,0 CM-%",
     "belegreifeBeheizt18": "**Belegreife beheizt:** ≤ 1,8 CM-%",
     "neigtBeiSchnellerAustrocknung": "⚠️ Neigt bei schneller Austrocknung zum Aufschüsseln der Randbereiche.",
@@ -58,7 +58,7 @@
     "keineAbdichtungAufFeuchteunempfindlichen": "Keine Abdichtung auf feuchteunempfindlichen Untergründen zwingend gefordert.",
     "wandflächenÜberBadewannenUnd": "Wandflächen über Badewannen und in Duschen im häuslichen Bereich; Bodenflächen im Bad ohne Ablauf.",
     "verbundabdichtungFlüssigPolymerdispersio": "Verbundabdichtung flüssig (Polymerdispersion) zulässig.",
-    "wandUndBodenflächenIn": "Bodenflächen mit Abläufen und/oder Rinnen (z. B. bodengleiche Duschen), Wandflächen von Duschen in Sport- und Gewerbestätten.",
+    "wandUndBodenflächenIn": "Bodenflächen mit Abläufen und/oder Rinnen (z. B. bodengleiche Duschen), Wandflächen von Duschen in Sport- und Gewerbestätten. Klassenbeschreibungen nach Ausgabe 2017; Abgleich mit DIN 18534-1:2025-10, Tab. 1 vorläufig, F-Freigabe.",
     "bahnenförmigeAbdichtungAivB": "Abdichtung zwingend (z. B. AIV-B oder MDS; Stoffauswahl nach DIN 18534-2 bis -6); keine feuchteempfindlichen Untergründe; Dichtmanschetten Pflicht!",
     "flächenMitSehrHäufiger": "Flächen mit sehr häufiger oder langanhaltender Einwirkung von Spritz- und Brauchwasser (z. B. Hallenbäder, gewerbliche Großküchen).",
     "reaktionsharzabdichtungenEpoxidPolyureth": "Reaktionsharzabdichtungen (Epoxid / Polyurethan) oder mineralische Dichtschlämmen.",
@@ -79,7 +79,7 @@
     "t2NormativeBeurteilungDer": "2. Normative Beurteilung der Belegreife",
     "zulässigerGrenzwert": "Zulässiger Grenzwert:",
     "differenzÜberschreitung": "Differenz / Überschreitung:",
-    "rechtlicherHinweisNachVob": "**Rechtlicher Hinweis:** Nach VOB/C DIN 18365 gehört die Prüfung des Untergrunds einschließlich Feuchtemessung zu den Nebenleistungen des Bodenlegers; das Ergebnis sollte protokolliert werden (keine Rechtsberatung)."
+    "rechtlicherHinweisNachVob": "**Rechtlicher Hinweis:** Nach VOB/C DIN 18365 gehört die Prüfung des Untergrunds einschließlich Feuchtemessung zu den Nebenleistungen des Bodenlegers (Einordnung der CM-Messung als Neben- oder Besondere Leistung nach DIN 18365, Abschnitt 4: vorläufig, F-Freigabe); das Ergebnis sollte protokolliert werden (keine Rechtsberatung)."
   },
   "werte": {
     "trockenbausystemeStänderwerke": "Trockenbausysteme & Ständerwerke",
@@ -96,7 +96,7 @@
     "bodenaufbautenFliesenParkettDin": "Bodenaufbauten, Fliesen, Parkett & DIN 18534",
     "umfassendesFachmodulZuAusbaumaterialien": "Umfassendes Fachmodul zu Ausbaumaterialien, Bodenbelägen (Echtholzparkett, Laminat, Linoleum) und normgerechten Innenraumabdichtungen im Verbund (AIV) unter Fliesen und Platten.",
     "din18534Din18157": "DIN 18534 / DIN 18157",
-    "bodengleicheDuschenFallenNach": "Bodengleiche Duschen fallen nach DIN 18534-1 in W2-I; Rohrdurchführungen und Abläufe sind in allen Klassen mit Dichtmanschetten bzw. Flanschen einzubinden.",
+    "bodengleicheDuschenFallenNach": "Bodengleiche Duschen fallen nach DIN 18534-1 in W2-I (Zuordnung im häuslichen Bad W2-I/W3-I am Normtext DIN 18534-1:2025-10, Tab. 1 zu prüfen; vorläufig, F-Freigabe); Rohrdurchführungen und Abläufe sind in allen Klassen mit Dichtmanschetten bzw. Flanschen einzubinden.",
     "bindemittelGipsCalciumsulfat": "Bindemittel Gips & Calciumsulfat",
     "materialwissenschaftHydratationBrandschu": "Materialwissenschaft, Hydratation & Brandschutzwirkung",
     "tiefgehendesMaterialwissenschaftlichesPr": "Tiefgehendes materialwissenschaftliches Profil von Baugips, Anhydrit und Stuckgips. Chemischer Kreislauf, Kristallwasser im Brandschutz sowie Treibreaktionen (Ettringit) bei feuchtem Kontakt von Gips und Zement.",

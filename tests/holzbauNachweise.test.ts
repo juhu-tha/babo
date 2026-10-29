@@ -91,9 +91,10 @@ pruefe(verformterDruckstab({ ...sp, E005: 0 }).hinweise.some(h => h.stufe === 'f
 //    n_ef = 4^0,9 = 3,482 (8.41); F_ax,Rk = 3,482 · 12,86 · 8 · 80 / 1 = 28,66 kN; F_ax,Rd = 0,8 · 28,66/1,3 = 17,64 kN
 const hs = holzschraube({ rhok: 350, d: 8, lef: 80, alpha: 90, n: 4, nkl: 1, kled: 'mtl' });
 pruefe(Math.abs(hs.f_ax_k - 12.865) < 0.002 && hs.k_d === 1 && Math.abs(hs.n_ef - 3.4822) < 1e-4 && Math.abs(hs.F_ax_Rd_total_kN - 17.64) < 0.01, `Schraube axial ${hs.f_ax_k} ${hs.F_ax_Rd_total_kN}`);
-//    Abscheren: f_h,k = 0,082 · 0,92 · 350 = 26,40; M_y,Rk = 0,3 · 400 · 8^2,6 = 26 975 Nmm; Johansen 1,15·√(2·M·f_h·d) = 3 865 N;
-//    Seileffekt F_ax,Rk/4 = 8 233/4 = 2 058 N → F_v,Rk = 5 923 N je Schraube; F_v,Rd = 0,8 · 4 · 5,923/1,3 = 14,58 kN
-pruefe(Math.abs(hs.f_h_k - 26.404) < 0.001 && Math.abs(hs.johansen - 3865) < 1 && Math.abs(hs.rope_effect - 2058) < 1 && Math.abs(hs.F_v_Rd_total_kN - 14.58) < 0.01, `Schraube Abscheren ${hs.johansen} ${hs.F_v_Rd_total_kN}`);
+//    Abscheren (T10-HV-3, 29.10.2026) mit d_ef = 1,1 · 0,65 · 8 = 5,72 mm ≤ 6 mm → Nagelregeln: f_h,k = 0,082 · 350 · 5,72^−0,3 = 17,01;
+//    M_y,Rk = 0,3 · 400 · 5,72^2,6 = 11 179 Nmm; Johansen 1,15·√(2·M·f_h·d_ef) = 1 696 N; Seileffekt min(8 233/4; 1 696) = 1 696 N
+//    → F_v,Rk = 3 392 N je Schraube; F_v,Rd = 0,8 · 4 · 3,392/1,3 = 8,35 kN
+pruefe(Math.abs(hs.f_h_k - 17.008) < 0.001 && Math.abs(hs.johansen - 1696.1) < 1 && Math.abs(hs.rope_effect - 1696.1) < 1 && Math.abs(hs.F_v_Rd_total_kN - 8.35) < 0.01, `Schraube Abscheren ${hs.johansen} ${hs.F_v_Rd_total_kN}`);
 //    Winkel 0° zur Faser: Faktor 1/1,2; unter 30° Hinweis; Seileffekt höchstens 100 % des Johansen-Anteils
 const h0 = holzschraube({ rhok: 350, d: 8, lef: 80, alpha: 0, n: 1, nkl: 1, kled: 'mtl' });
 pruefe(nahe(h0.factor_alpha, 1 / 1.2, 1e-12) && h0.hinweise.some(h => h.feld === 'alpha'), 'α = 0° → 1/1,2 und Hinweis');

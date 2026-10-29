@@ -2,7 +2,7 @@ import { Flame, Volume2 } from 'lucide-react';
 import { InlineMath } from 'react-katex';
 import { formatDeWert, formatDeTeXWert, formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 import type { Dispatch, SetStateAction } from 'react';
-import { BSP_AUFBAUTEN, type BspSchwingungErgebnis, type EiVerfahren, type Estrichart } from '@/src/calc/bspSchwingung';
+import { BSP_AUFBAUTEN, BSP_ROLLSCHUB, type BspSchwingungErgebnis, type EiVerfahren, type Estrichart } from '@/src/calc/bspSchwingung';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import inhalt from '@/content/holzbaubeta/HolzbauBauphysik.json';
 import { MdText } from '@/src/components/inhalt/MdText';
@@ -31,6 +31,7 @@ export interface BspSchwingungZustand {
   estrichDicke: number; setEstrichDicke: Dispatch<SetStateAction<number>>;
   estrichArt: Estrichart; setEstrichArt: Dispatch<SetStateAction<Estrichart>>;
   verfahren: EiVerfahren; setVerfahren: Dispatch<SetStateAction<EiVerfahren>>;
+  rollschub: number; setRollschub: Dispatch<SetStateAction<number>>;
   ergebnis: BspSchwingungErgebnis;
 }
 
@@ -321,6 +322,19 @@ export default function HolzbauBauphysik({ fireB, fireH, fireResults, fireSides,
                 >
                   <option value="gamma">{inhalt.werte.bspVerfahrenGamma}</option>
                   <option value="netto">{inhalt.werte.bspVerfahrenNetto}</option>
+                </select>
+              </div>
+
+              {/* Rollschubmodul G_r (T10-HB-2) */}
+              <div className="flex flex-col gap-1">
+                <label className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.bspRollschub} /></label>
+                <select aria-label={inhalt.werte.bspRollschub}
+                  value={vib.rollschub}
+                  onChange={(e) => vib.setRollschub(Number(e.target.value))}
+                  className="border border-home-grau/30 bg-white text-xs p-2 rounded-lg text-text-main font-semibold"
+                >
+                  <option value={BSP_ROLLSCHUB.standard}>{inhalt.werte.bspRollschubStandard}</option>
+                  <option value={BSP_ROLLSCHUB.proHolz}>{inhalt.werte.bspRollschubProHolz}</option>
                 </select>
               </div>
 

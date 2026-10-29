@@ -334,3 +334,7 @@ Freigegeben wurden Module mit Empfehlung „freigabefähig“ ohne offene Fragen
 - **S-2 (Stütze):** Interaktionskurven jetzt mit dem Parabel-Rechteck-Diagramm (n = 2, ε_c2 = 2 ‰, ε_cu2 = 3,5 ‰, analytisch integriert); der Spannungsblock wird nur noch zum Vergleich angezeigt. Nachrechnung mit eigenem Skript (Streifenintegration, Gleichgewicht per Bisektion): S1 ω_exakt = 0,0665 → ω_erf = 0,07 (vorher 0,05), S2 ω_exakt = 0,254 → 0,26 (vorher 0,24). Regressionstest angepasst.
 - **P-2 (Durchstanzen):** Stützenlage innen/Rand/Ecke als Eingabe, u₁ nach EC2 Bild 6.15 (Schnitt endet senkrecht am freien Rand, Randabstand einstellbar, maßgebend der kürzere Rundschnitt nach 6.4.2(4)), β konstant nach NA DE 6.4.3(6) (1,10/1,40/1,50). Fünf Handrechnungsfälle in `tests/durchstanzen.test.ts`.
 - **Q-1 (Querkraft):** Gleichungsnummer auf (9.5aDE) korrigiert (vorläufig, Nummer nicht öffentlich belegt; Wert unverändert).
+
+## Umsetzung 29.10.2026
+
+- **#239-H-3 (Holzbau, Querdruck):** BSH-Einzelauflager mit Auflagerlänge l > 400 mm: k_c,90 = 1,0 (die Erhöhung auf 1,75 gilt nach DIN EN 1995-1-1, 6.1.5(4) nur für l ≤ 400 mm); vorher wurde 1,75 mit Warnung angesetzt. Kern `bemesseQuerdruck` in `src/calc/holzbau.ts`, Test `tests/kleinfragenTranche1bis3.test.ts`: l = 450 mm → F_c,90,Rd = 110,77 kN; l = 400 mm → 172,31 kN (b = 160 mm, GL, NKL 1, mittel).

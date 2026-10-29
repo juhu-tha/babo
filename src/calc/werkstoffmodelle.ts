@@ -445,7 +445,8 @@ export const KUNSTSTOFF_MODELLE: Readonly<Record<Kunststofftyp, KunststoffModell
   amorphous: { Tg: 100, kTg: 0.15, Eglas: 3000, Eplateau: 10, Tab: 150, kTab: 0.2 },
   semicrystalline: { Tg: 20, kTg: 0.1, Eglas: 3000, Eplateau: 300, Tab: 160, kTab: 0.5 },
   elastomer: { Tg: -40, kTg: 0.2, Eglas: 3000, Eplateau: 3 },
-  duroplast: { Tg: 150, kTg: 0.1, Eglas: 4000, Eplateau: 800 },
+  // T6-KU-1 (Umsetzung 29.10.2026): gummielastisches Plateau engmaschig vernetzter Harze etwa 50–100 MPa (Lehrwert 80 MPa)
+  duroplast: { Tg: 150, kTg: 0.1, Eglas: 4000, Eplateau: 80 },
 };
 
 /** Untergrenze für die logarithmische Darstellung [MPa] */
