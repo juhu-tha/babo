@@ -74,6 +74,6 @@
     "profilhöhenReduzierungS235Vs": " Profilhöhen-Reduzierung (S235 vs. S690)",
     "ipe300422": "IPE 300 (42,2 kg) kann beansprucht wie IPE 200 (22,4 kg) in S690 ausgeführt werden!",
     "coEmissionsvorteilBeiOptimierung": " CO₂-Emissionsvorteil bei Optimierung",
-    "vermeideteCoEmissionenDurch": "Vermiedene CO₂-Emissionen A1–A3 durch den verringerten Vormaterialbedarf: Lehrwert Profilstahl wie im LCA-Rechner (vorläufig, Normprüfung ausstehend; Spanne je nach Herstellungsroute etwa 0,56 bis 2,9 kg CO₂-Äq./kg) mal Einsparanteil aus den Profilgewichten IPE 300 → IPE 200"
+    "vermeideteCoEmissionenDurch": "Vermiedene CO₂-Emissionen A1–A3 durch den verringerten Vormaterialbedarf: Lehrwert Profilstahl wie im LCA-Rechner (ÖKOBAUDAT-Abgleich offen, vorläufig, Normprüfung ausstehend; Spanne für Profilstahl je nach Herstellungsroute etwa 0,56 bis 2,9 kg CO₂-Äq./kg nach EPD bzw. ÖKOBAUDAT) mal Einsparanteil aus den Profilgewichten IPE 300 → IPE 200"
   }
 }
