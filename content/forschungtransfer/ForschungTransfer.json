@@ -14,7 +14,7 @@
     "forschungUndTransferAnwendungsnahe": "**Forschung und Transfer:** anwendungsnahe Forschung, deren Ergebnisse in Unternehmen und Bauprojekte überführt werden.",
     "weiterbildungAusUndWeiterbildungsangebot": "**Weiterbildung:** Aus- und Weiterbildungsangebote für Fachkräfte.",
     "bezugDesLehrgebietsZum": "Bezug des Lehrgebiets zum TTZ Aichach: ",
-    "profHuberIstMitglied": "Prof. Huber ist Mitglied im TTZ Aichach, seine Lehrgebiete sind Baustofftechnologie, Prüfwesen und Kreislaufwirtschaft, unter anderem mit den Themen ressourceneffiziente Betone, Karbonatisierung und Rückbau. Die Ergebnisse fließen in Lehre und Weiterbildung ein, etwa in das Zertifikat „Ausbau und Bestand“.",
+    "profHuberIstMitglied": "Prof. Huber leitet das TTZ Aichach und das Baustofflabor der THA; seine Lehrgebiete sind Baustofftechnologie, Prüfwesen und Kreislaufwirtschaft, unter anderem mit den Themen ressourceneffiziente Betone, Karbonatisierung und Rückbau. Die Ergebnisse fließen in Lehre und Weiterbildung ein, etwa in das Zertifikat „Ausbau und Bestand“.",
     "zuDenFolgendenThemen": "Zu den folgenden Themen bietet das BaustoffBoard Lernmodule mit Grundlagen, Rechenwegen und Selbsttests. Die Module vermitteln den allgemeinen Stand des Wissens; sie geben keine Projektergebnisse wieder.",
     "dieThemenFließenIn": "Die Themen fließen in Lehrveranstaltungen der Bachelor- und Masterstudiengänge der Fakultät für Architektur und Bauwesen ein.",
     "abschlussarbeitenUndSemesterprojekte": "Abschlussarbeiten und Semesterprojekte: ",
@@ -24,8 +24,8 @@
     "rechtlicheAngabenZumBaustoffboard": "Rechtliche Angaben zum BaustoffBoard: ",
     "zitierenEinleitung": "Wenn Sie das BaustoffBoard in einer Arbeit verwenden, zitieren Sie es bitte so:",
     "zitatVorVersion": "Huber, J. (2026): *BaustoffBoard – Interaktive Lernplattform Baustoffkunde.* Technische Hochschule Augsburg. Version ",
-    "zitatNachVersion": ", https://baustoffboard.de, abgerufen am TT.MM.JJJJ.",
-    "zitierenHinweisDatum": "„TT.MM.JJJJ“ durch das Datum Ihres Abrufs ersetzen. Eine DOI folgt nach der Veröffentlichung als OER (Open Educational Resource)."
+    "zitatNachVersion": ", https://baustoffboard.de, abgerufen am ",
+    "zitierenHinweisDatum": "Version und Abrufdatum sind mit dem heutigen Stand vorbelegt; bei späterer Verwendung das Datum Ihres Abrufs einsetzen. Eine DOI folgt nach der Veröffentlichung als OER (Open Educational Resource)."
   },
   "werte": {
     "betonMitPflanzenkohleAls": "Ziel ist, Pflanzenkohle so in Beton einzusetzen, dass Kohlenstoff dauerhaft im Baustoff gespeichert wird und die Gebrauchseigenschaften erhalten bleiben.",

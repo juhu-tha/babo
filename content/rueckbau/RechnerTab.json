@@ -15,7 +15,7 @@
     "ausgangspunktIstDerBrutto": "Ausgangspunkt ist der Brutto-Rauminhalt des Abbruchobjekts (",
     "mSowieDerTragende": " m³) sowie der tragende Konstruktionstyp (",
     "schritt2SpezifischeMassendichten": "Schritt 2: Spezifische Massendichten (",
-    "fürDieGewählteBauart": "Für die gewählte Bauart gelten folgende Massenkennwerte (Tonnen je m³ Brutto-Rauminhalt; Lehrwerte, vorläufig, F-Freigabe). Die Summe liegt bei 0,5 t/m³ für Massivbau (Stahlbeton, Mauerwerk), 0,45 t/m³ für Mischbauweise und 0,3 t/m³ für Holzständerbau. Zur Einordnung: Für deutsche Wohngebäude werden 0,61–1,95 t/m² BGF (Einfamilienhäuser) bzw. 1,36–1,54 t/m² BGF (Mehrfamilienhäuser) angegeben (Krause/Hafner 2022, Energies 15, 5825), bei rund 3 m BRI je m² BGF also etwa 0,2–0,65 t/m³ BRI. Für eine Rückbauplanung ersetzt ein Massenaufmaß die Kennwerte:",
+    "fürDieGewählteBauart": "Für die gewählte Bauart gelten folgende Massenkennwerte (Tonnen je m³ Brutto-Rauminhalt; Lehrwerte, vorläufig, Normprüfung ausstehend). Die Summe liegt bei 0,5 t/m³ für Massivbau (Stahlbeton, Mauerwerk), 0,45 t/m³ für Mischbauweise und 0,3 t/m³ für Holzständerbau. Zur Einordnung: Für deutsche Wohngebäude werden 0,61–1,95 t/m² BGF (Einfamilienhäuser) bzw. 1,36–1,54 t/m² BGF (Mehrfamilienhäuser) angegeben (Krause/Hafner 2022, Energies 15, 5825), bei rund 3 m BRI je m² BGF also etwa 0,2–0,65 t/m³ BRI. Für eine Rückbauplanung ersetzt ein Massenaufmaß die Kennwerte:",
     "schritt3BerechnungDer": "Schritt 3: Berechnung der Einzelmassen (",
     "diePrognostiziertenMassenströmeErgeben": "Die prognostizierten Massenströme ergeben sich direkt aus dem Produkt des Raumvolumens mit der jeweiligen Dichte. Beispiel für Betonbruch:",
     "schritt4BestimmungDer": "Schritt 4: Bestimmung der Gesamtmasse (",

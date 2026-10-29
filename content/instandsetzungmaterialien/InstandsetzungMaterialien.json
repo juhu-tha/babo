@@ -176,7 +176,7 @@
     "häufigerPraxisfehlerZementputzAuf": " Häufiger Praxisfehler: Zementputz auf salzbelastetem Feuchtmauerwerk",
     "fehlerAufFeuchtemSalzbelastetem": "**Fehler:** Auf feuchtem, salzbelastetem Altziegelmauerwerk wird ein dichter, starrer Zementputz aufgetragen, um die Feuchte \"einzusperren\".",
     "fataleFolgeZementputzBesitzt": "**Fatale Folge:** Zementputz besitzt einen sehr hohen Diffusionswiderstand. Die aufsteigende Feuchte steigt im Mauerwerk kapillar noch höher auf (teilweise bis ins 1. OG). Hinter dem dichten Putz reichern sich Salze an; der Kristallisationsdruck sprengt nach 2 bis 3 Wintern den Putz mitsamt den Ziegelstirnen ab.",
-    "lösungAltputzMindestens80": "**Lösung:** Altputz mindestens 80 cm über die Schadensgrenze abschlagen (Maß vorläufig, F-Freigabe; im Modul WTA-Merkblätter 1 m – Normtext WTA 2-9 für Mauerwerk prüfen), Fugen 2 cm tief auskratzen, Mauerwerk trocken bürsten, WTA-zertifizierten Sanierputz aufbringen und Horizontalsperre herstellen."
+    "lösungAltputzMindestens80": "**Lösung:** Altputz mindestens 80 cm über die Schadensgrenze abschlagen (Maß vorläufig, Normprüfung ausstehend; im Modul WTA-Merkblätter 1 m – Normtext WTA 2-9 für Mauerwerk prüfen), Fugen 2 cm tief auskratzen, Mauerwerk trocken bürsten, WTA-zertifizierten Sanierputz aufbringen und Horizontalsperre herstellen."
   },
   "werte": {
     "beispiel1SchutzdauerEines": "Beispiel 1: Schutzdauer eines Duplex-Systems",
@@ -185,7 +185,7 @@
     "beispiel2ResttragfähigkeitEines": "Beispiel 2: Resttragfähigkeit eines angefaulten Holzbalkens",
     "schon3CmFäule": "Schon 3 cm Fäule ringsum halbieren die Biegetragfähigkeit. Vor der Sanierung nach DIN 68800-4 Feuchteursache beseitigen und den gesunden Restquerschnitt durch Bohrwiderstandsmessung bestimmen.",
     "din6880042020": "DIN 68800-4:2020-12; DIN EN 1995-1-1",
-    "oktober2026Ap12": "Oktober 2026 (AP 12 Schutz & Instandsetzung: Holz-, Metall- und Mauerwerksinstandsetzung, Normausgaben und Quellen geprüft)"
+    "oktober2026Ap12": "Oktober 2026 (Holz-, Metall- und Mauerwerksinstandsetzung, Normausgaben und Quellen geprüft)"
   },
   "daten": {
     "InstandsetzungMaterialien.schritte": [

@@ -68,7 +68,7 @@
     "begrenztDehnfähigesVerbindenBzw": "Begrenzt dehnfähiges Verbinden bzw. Abdichten wasserführender Risse.",
     "zementsuspensZs": "Zementsuspens. (ZS)",
     "mineralischStarrFüllstark": "Mineralisch, starr, füllstark",
-    "füllenBreiterRisse0": "Füllen breiter Risse (> 0,8 mm) & Hohlräume (Rissbreitengrenze für Stahlbetonbauteile vorläufig, F-Freigabe – TR Instandhaltung).",
+    "füllenBreiterRisse0": "Füllen breiter Risse (> 0,8 mm) & Hohlräume (Rissbreitengrenze für Stahlbetonbauteile vorläufig, Normprüfung ausstehend – TR Instandhaltung).",
     "acrylatgelGel": "Acrylatgel (GEL)",
     "extremDünnflüssigQuellfähig": "Extrem dünnflüssig, quellfähig",
     "schleierinjektionHintergelfüllung": "Schleierinjektion & Hintergelfüllung.",
@@ -193,7 +193,7 @@
     "beispiel2KritischeRisslänge": "Beispiel 2: Kritische Risslänge bei sprödem Versagen",
     "beiTiefenTemperaturenSinkt": "Bei tiefen Temperaturen sinkt K_Ic vieler Stähle stark – dann reichen schon Risse von wenigen Millimetern (vgl. Silver Bridge 1967).",
     "irwin1957Iso12135": "Irwin (1957); ISO 12135",
-    "oktober2026Ap11": "Oktober 2026 (AP 11 Mängel & Schäden: DIN 1076:2026-01, Rissbreiten, Bruchmechanik und Quellen geprüft)"
+    "oktober2026Ap11": "Oktober 2026 (DIN 1076:2026-01, Rissbreiten, Bruchmechanik und Quellen geprüft)"
   },
   "daten": {
     "TypischeBauschaeden.scenarios": [

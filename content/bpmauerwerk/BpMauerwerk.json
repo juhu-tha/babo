@@ -124,7 +124,7 @@
         "densityRange": "1800 - 2200 kg/m³",
         "strengthClass": "Druckfestigkeitsklasse 28 bis 60",
         "mortarType": "Zementmörtel / Trassmörtel",
-        "description": "Bis zur beginnenden Sinterung gebrannte Ziegel mit geringer Wasseraufnahme (≤ 6 M.-%; vorläufig, F-Freigabe Mauerwerk nach DIN 105-100 bzw. DIN 20000-401). Sie sind frostbeständig, widerstandsfähig gegen Säuren und mechanisch hoch belastbar.",
+        "description": "Bis zur beginnenden Sinterung gebrannte Ziegel mit geringer Wasseraufnahme (≤ 6 M.-%; vorläufig, Normprüfung ausstehend: Mauerwerk nach DIN 105-100 bzw. DIN 20000-401). Sie sind frostbeständig, widerstandsfähig gegen Säuren und mechanisch hoch belastbar.",
         "advantages": [
           "Witterungs- und frostbeständig",
           "Schmutzunempfindliche, wartungsarme Fassaden",
@@ -268,7 +268,7 @@
         "densityRange": "1200 - 1800 kg/m³",
         "strengthClass": "Druckfestigkeitsklasse 2 bis 4",
         "mortarType": "Lehmmörtel / Dünnbettlehmkleber",
-        "description": "Aus Lehm (Ton, Schluff, Sand) geformte, luftgetrocknete, ungebrannte Steine. Seit Jahrtausenden bewährt; günstig für das Raumklima. Wärmeleitfähigkeit nach DIN 4108-4 je Rohdichteklasse (Lehmstein: Zuordnung von 0,81 W/(m·K) zur Rohdichte vorläufig, F-Freigabe).",
+        "description": "Aus Lehm (Ton, Schluff, Sand) geformte, luftgetrocknete, ungebrannte Steine. Seit Jahrtausenden bewährt; günstig für das Raumklima. Wärmeleitfähigkeit nach DIN 4108-4 je Rohdichteklasse (Lehmstein: Zuordnung von 0,81 W/(m·K) zur Rohdichte vorläufig, Normprüfung ausstehend).",
         "advantages": [
           "Gute Pufferung von Schwankungen der Raumluftfeuchte",
           "Ohne Brennen hergestellt, wiederverwendbar",

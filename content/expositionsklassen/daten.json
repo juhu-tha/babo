@@ -181,14 +181,14 @@
         "title": "Feucht",
         "description": "Beton, der während der Nutzung häufig oder langzeitig feucht ist.",
         "examples": "Ungeschützte Außenbauteile (Fassaden, Brüstungen), Feuchträume, erdberührte Bauteile (Fundamente).",
-        "anforderung": "Gesteinskörnung der Alkaliempfindlichkeitsklasse E I (E I-O, E I-OF, E I-S): keine vorbeugenden Maßnahmen. Bei alkaliempfindlicher Gesteinskörnung (E II-O/-OF, E III-O/-OF, E III-S) je nach Klasse und Zementgehalt keine Maßnahme, Zement mit niedrigem wirksamen Alkaligehalt (NA-Zement nach DIN 1164-10) oder Austausch der Gesteinskörnung bzw. gutachtliche Stellungnahme (DAfStb-Alkali-Richtlinie, Teile 1 bis 3; vorläufig, F-Freigabe)."
+        "anforderung": "Gesteinskörnung der Alkaliempfindlichkeitsklasse E I (E I-O, E I-OF, E I-S): keine vorbeugenden Maßnahmen. Bei alkaliempfindlicher Gesteinskörnung (E II-O/-OF, E III-O/-OF, E III-S) je nach Klasse und Zementgehalt keine Maßnahme, Zement mit niedrigem wirksamen Alkaligehalt (NA-Zement nach DIN 1164-10) oder Austausch der Gesteinskörnung bzw. gutachtliche Stellungnahme (DAfStb-Alkali-Richtlinie, Teile 1 bis 3; vorläufig, Normprüfung ausstehend)."
       },
       {
         "code": "WA",
         "title": "Feucht + Alkalizufuhr von außen",
         "description": "Beton, der häufig feucht ist und zusätzlich Alkalien (insbesondere Taumittel oder Meerwasser) von außen aufnimmt.",
         "examples": "Direkt befahrene Parkdecks, Brückenkappen, Straßenbeläge, Spritzwasserbereiche an Straßen, Meeresbauwerke.",
-        "anforderung": "Gesteinskörnung E I (E I-O, E I-OF, E I-S): keine vorbeugenden Maßnahmen. Bei alkaliempfindlicher Gesteinskörnung (E II-O/-OF, E III-O/-OF, E III-S) sind die Maßnahmen strenger als bei WF: je nach Klasse und Zementgehalt NA-Zement (nach DIN 1164-10), Austausch der Gesteinskörnung oder gutachtliche Stellungnahme (DAfStb-Alkali-Richtlinie, Teile 1 bis 3; vorläufig, F-Freigabe)."
+        "anforderung": "Gesteinskörnung E I (E I-O, E I-OF, E I-S): keine vorbeugenden Maßnahmen. Bei alkaliempfindlicher Gesteinskörnung (E II-O/-OF, E III-O/-OF, E III-S) sind die Maßnahmen strenger als bei WF: je nach Klasse und Zementgehalt NA-Zement (nach DIN 1164-10), Austausch der Gesteinskörnung oder gutachtliche Stellungnahme (DAfStb-Alkali-Richtlinie, Teile 1 bis 3; vorläufig, Normprüfung ausstehend)."
       },
       {
         "code": "WS",

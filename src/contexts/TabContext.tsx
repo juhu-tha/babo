@@ -114,13 +114,22 @@ export function TabProvider({ children, startTab }: { children: ReactNode; /** n
   };
   const toggleFormulaDerivationMode = () => setFormulaDerivationMode(!formulaDerivationMode);
 
-  const [theme, setThemeState] = useState<'light' | 'dark'>(() => {
+  // Darstellung (Gutachten 29.10.2026): eigene Wahl (localStorage 'theme') hat Vorrang; ohne eigene Wahl gilt die
+  // Systemeinstellung (prefers-color-scheme) und folgt ihr auch bei Änderung. Speicherzugriffe immer in try/catch.
+  const gespeichertesTheme = (): 'light' | 'dark' | null => {
     try {
       const saved = localStorage.getItem('theme');
       if (saved === 'dark' || saved === 'light') return saved;
     } catch (e) {}
-    return 'light';
-  });
+    return null;
+  };
+  const systemDunkel = (): boolean => {
+    try {
+      return typeof window !== 'undefined' && typeof window.matchMedia === 'function'
+        && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    } catch (e) { return false; }
+  };
+  const [theme, setThemeState] = useState<'light' | 'dark'>(() => gespeichertesTheme() ?? (systemDunkel() ? 'dark' : 'light'));
 
   const setTheme = (newTheme: 'light' | 'dark') => {
     setThemeState(newTheme);
@@ -128,6 +137,15 @@ export function TabProvider({ children, startTab }: { children: ReactNode; /** n
       localStorage.setItem('theme', newTheme);
     } catch (e) {}
   };
+
+  useEffect(() => {
+    let mq: MediaQueryList | undefined;
+    try { mq = typeof window.matchMedia === 'function' ? window.matchMedia('(prefers-color-scheme: dark)') : undefined; } catch (e) {}
+    if (!mq) return;
+    const folgen = (e: MediaQueryListEvent) => { if (gespeichertesTheme() === null) setThemeState(e.matches ? 'dark' : 'light'); };
+    try { mq.addEventListener('change', folgen); } catch (e) { return; }
+    return () => { try { mq?.removeEventListener('change', folgen); } catch (e) {} };
+  }, []);
 
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');

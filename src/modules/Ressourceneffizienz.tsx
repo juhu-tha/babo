@@ -841,7 +841,7 @@ export default function Ressourceneffizienz() {
                           </select>
                         </label>
                         <p className="sm:col-span-2 text-xs text-slate-600 dark:text-slate-400">
-                          Höchstanteil {formatDeZahl(RC_HOECHSTANTEIL[rcGruppe][rcTyp] * 100, 0)} Vol.-% der groben Gesteinskörnung nach DIN 1045-2:2023-08, Anhang E (vorläufig, F-Freigabe); bei {formatDeZahl(ANTEIL_GROB * 100, 0)} % Grobkorn (Lehrwert) sind das {formatDeZahl(RC_HOECHSTANTEIL[rcGruppe][rcTyp] * ANTEIL_GROB * 100, 1)} % der gesamten Gesteinskörnung.
+                          Höchstanteil {formatDeZahl(RC_HOECHSTANTEIL[rcGruppe][rcTyp] * 100, 0)} Vol.-% der groben Gesteinskörnung nach DIN 1045-2:2023-08, Anhang E (vorläufig, Normprüfung ausstehend); bei {formatDeZahl(ANTEIL_GROB * 100, 0)} % Grobkorn (Lehrwert) sind das {formatDeZahl(RC_HOECHSTANTEIL[rcGruppe][rcTyp] * ANTEIL_GROB * 100, 1)} % der gesamten Gesteinskörnung.
                         </p>
                       </div>
                     )}

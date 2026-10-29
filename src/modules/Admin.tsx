@@ -71,7 +71,7 @@ Nur Ergebnisse berichten, die tatsächlich gelaufen sind; Abweichungen zum letzt
   [2] RECHNER
       - Stichproben: Ergebnisse der Rechenkerne (src/calc) unabhängig nachrechnen.
       - Normbezug, Eingabegrenzen (plausibilitaet.ts), Grenzen-Einträge (rechnerGrenzen.ts),
-        Fuzz-Tests; Werte „vorläufig, F-Freigabe“ zählen (Admin → Audit → „Prüfpunkte“).
+        Fuzz-Tests; Werte „vorläufig, Normprüfung ausstehend“ zählen (Admin → Audit → „Prüfpunkte“).
 
   [3] DIDAKTIK
       - Lernziele, Kurzfassung, Selbsttest, Erkundungsaufträge „Ausprobieren“, Grenzen.
@@ -101,7 +101,7 @@ Nur Ergebnisse berichten, die tatsächlich gelaufen sind; Abweichungen zum letzt
 --------------------------------------------------------------------------------
 4. REGELN
   - Werte nur aus öffentlich zugänglichen Quellen; ist der Normtext (NA DE) zur Bestätigung
-    nötig, Wert als „vorläufig, F-Freigabe“ kennzeichnen und als offenen Prüfpunkt
+    nötig, Wert als „vorläufig, Normprüfung ausstehend“ kennzeichnen und als offenen Prüfpunkt
     nennen (Normteil, Abschnitt/Tabelle).
   - Ergebnisse neutral formulieren (Lehr- und Vorbemessungswerkzeug).
   - Ausgabe: Notentabelle, Top-10-Maßnahmen mit Status, offene Zulieferungen.`;

@@ -52,7 +52,7 @@
     "beispiel2LeichtesMauerwerk": "Beispiel 2: Leichtes Mauerwerk und die Wirkung der Masseverdopplung",
     "leichteLochsteineEignenSich": "Leichte Lochsteine eignen sich für Außenwände (Wärmeschutz), für Wohnungstrennwände braucht es schwere Steine, verfüllte Steine oder zweischalige Konstruktionen.",
     "din41093220162": "DIN 4109-32:2016-07",
-    "oktober2026Ap6": "Oktober 2026 (AP 6 Bauphysik: Massekurve, Anforderungswerte und Normausgaben geprüft, Literatur korrigiert)"
+    "oktober2026Ap6": "Oktober 2026 (Massekurve, Anforderungswerte und Normausgaben geprüft, Literatur korrigiert)"
   },
   "daten": {
     "materialLibrary.holz_fichte": {
@@ -80,7 +80,7 @@
     "Schallschutz.schritte_2": [
       {
         "titel": "Hochlochziegel",
-        "erklaerung": "HLZ 24 cm (ρ = 800 kg/m³) mit 1,5 cm Gipsputz innen und 2 cm Zementputz außen. Nur zur Veranschaulichung: Für Hochlochziegel gilt die Massekurve nach DIN 4109-32 wegen Lochbild, Lochanteil und gegebenenfalls Dämmstofffüllung nur eingeschränkt; im Nachweis zählen Prüfwerte des Herstellers (vorläufig, F-Freigabe).",
+        "erklaerung": "HLZ 24 cm (ρ = 800 kg/m³) mit 1,5 cm Gipsputz innen und 2 cm Zementputz außen. Nur zur Veranschaulichung: Für Hochlochziegel gilt die Massekurve nach DIN 4109-32 wegen Lochbild, Lochanteil und gegebenenfalls Dämmstofffüllung nur eingeschränkt; im Nachweis zählen Prüfwerte des Herstellers (vorläufig, Normprüfung ausstehend).",
         "formel": "m' = 192 + 15 + 36 = 243\\,\\text{kg/m}^2 \\Rightarrow R_w = 30{,}9 \\cdot \\lg 243 - 22{,}2 = 51{,}5\\,\\text{dB}"
       },
       {
@@ -140,7 +140,7 @@
       },
       {
         "formel": "\\Delta L_w \\approx 13 \\cdot \\lg m' - 14{,}2 \\cdot \\lg s' + 20{,}8",
-        "erklaerung": "Näherung für die Trittschallminderung schwimmender Nassestriche – vorläufig, F-Freigabe.",
+        "erklaerung": "Näherung für die Trittschallminderung schwimmender Nassestriche – vorläufig, Normprüfung ausstehend.",
         "quelle": "DIN 4109-34:2016-07 (vorläufig)"
       }
     ],

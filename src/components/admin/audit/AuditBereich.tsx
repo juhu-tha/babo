@@ -225,7 +225,7 @@ function FFreigabeAnsicht() {
   return (
     <div className="space-y-4">
       <section className={karte} aria-labelledby="ffreigabe-titel">
-        <h3 id="ffreigabe-titel" className={titel}>Prüfpunkte „vorläufig, F-Freigabe“</h3>
+        <h3 id="ffreigabe-titel" className={titel}>Prüfpunkte „vorläufig, Normprüfung ausstehend“</h3>
         <p className={info}>
           {zahl(f.gesamt)} Fundstellen in {zahl(f.dateien)} Dateien, beim Build am {datumDe(daten.erzeugtAm)} aus dem Quelltext erzeugt
           (Suche nach „F-Freigabe“ in {f.ordner.map((o, i) => <React.Fragment key={o}>{i > 0 && ', '}<code className="font-mono">{o}</code></React.Fragment>)};

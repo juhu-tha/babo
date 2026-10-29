@@ -11,7 +11,8 @@ import {
   Target
 } from 'lucide-react';
 import { useTabContext, TabType } from '@/src/contexts/TabContext';
-import type { QuizQuestion } from '@/src/data/quizModell';
+import { anzahlFreigegeben, type QuizQuestion } from '@/src/data/quizModell';
+import { META_CLUSTERS } from '@/src/data/metaClusters';
 import { useAlleFragen } from '@/src/data/quizLader';
 import { questionsToCsv, parseCsvToQuestions } from '@/src/utils/quizCsv';
 import { mischeAntworten } from '@/src/utils/mischeAntworten';
@@ -105,6 +106,13 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
   // Fragenpool in Teilpaketen nachgeladen (quizLader); bis dahin leer
   const pool = useAlleFragen();
   const allQuestions = useMemo(() => [...(pool ?? []), ...customQuestions], [pool, customQuestions]);
+
+  // Bereiche (Meta-Cluster der Menüführung), für die Fragen vorliegen; vor dem Laden alle Bereiche
+  const bereiche = useMemo(() => {
+    const vorhanden = new Set<string>(allQuestions.map(q => q.clusterId));
+    const liste = META_CLUSTERS.filter(c => allQuestions.length === 0 || vorhanden.has(c.number));
+    return liste.map(c => ({ id: c.number, name: `Cluster ${c.number}: ${c.name}`, desc: c.shortDesc }));
+  }, [allQuestions]);
 
   // Unique modules list from available questions
   const availableModules = useMemo(() => {
@@ -432,8 +440,8 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
                   Interaktives Quiz-System &amp; Wissenslücken-Diagnostik
                 </h2>
                 <p className="text-xs sm:text-sm text-text-main/70 pt-1">
-                  Testen Sie Ihr Wissen über alle 5 Themen-Cluster. Nach Abschluss diagnostiziert das System 
-                  präzise Ihre Wissenslücken und verlinkt Sie direkt zu den entsprechenden Vorlesungsmodulen.
+                  Testen Sie Ihr Wissen über alle {bereiche.length} Bereiche. Nach Abschluss zeigt das System,
+                  in welchen Themen Lücken bestehen, und verlinkt Sie direkt zu den passenden Vorlesungsmodulen.
                 </p>
               </div>
             </div>
@@ -639,7 +647,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
                 <div>
                   <h4 className="text-sm font-bold text-text-main">Vollständiger Fragenkatalog</h4>
                   <p className="text-xs text-text-main/70 mt-1 leading-relaxed">
-                    Der gesamte didaktisch verifizierte Fragenpool ({allQuestions.length} Fachfragen) für maximale Vorbereitung.
+                    Alle {allQuestions.length} Fachfragen des Pools, davon {formatDeWert(anzahlFreigegeben(allQuestions))} fachlich freigegeben; ungeprüfte Fragen sind gekennzeichnet.
                   </p>
                 </div>
               </button>
@@ -653,13 +661,7 @@ export const InteractiveQuizSystem: React.FC<InteractiveQuizSystemProps> = ({
                 Themen-Cluster auswählen:
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
-                {[
-                  { id: 'I', name: 'Cluster I: Grundlagen & Labor', desc: 'Dichten, Mechanik, ZfP, Kalk, Zement' },
-                  { id: 'II', name: 'Cluster II: Materialien & Produkte', desc: 'Gläser, Metalle, Dämmstoffe, Kunststoffe, RStO' },
-                  { id: 'III', name: 'Cluster III: Entwurf & Bemessung', desc: 'Beton, Massivbau EC2, Holzbau EC5' },
-                  { id: 'IV', name: 'Cluster IV: Bestand & Nachhaltigkeit', desc: 'Dauerhaftigkeit, Bauschäden, VDI 6200, Schadstoffe & Nachhaltigkeit' },
-                  { id: 'V', name: 'Cluster V: Praxis, Digitales & Studium', desc: 'Ökobilanzierung LCA, Kreislauf, CPR, DPP' }
-                ].map(c => (
+                {bereiche.map(c => (
                   <button
                     key={c.id}
                     type="button"

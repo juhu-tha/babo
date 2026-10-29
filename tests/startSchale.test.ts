@@ -3,7 +3,7 @@
 import fs from 'fs';
 import vm from 'vm';
 import { erzeugeSchale, KOPF_ANKER, SCHALE_STIL } from '../scripts/startSchale';
-import { CURRENT_VERSION } from '../src/data/versionData';
+import { APP_VERSION, STAND_DE } from '../src/data/stand';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -35,7 +35,7 @@ for (const k of ['min-h-screen bg-off-white dark:bg-slate-950 text-text-main dar
 
 // 3. eingesetzte Version und Boot-Skript
 const { kopf, root: html } = await erzeugeSchale();
-pruefe(html.includes(`Version ${CURRENT_VERSION.version} (${CURRENT_VERSION.date})`), 'Version nicht eingesetzt');
+pruefe(html.includes(`Version ${APP_VERSION} (${STAND_DE})`), 'Version nicht eingesetzt');
 pruefe(html.startsWith('<div id="root"><div data-schale inert>') && !html.includes('<script'), 'Aufbau der Schale (Wurzel)');
 pruefe(kopf.includes('<script>') && !kopf.includes('<script src') && kopf.includes(`<style>${SCHALE_STIL}</style>`), 'Aufbau der Schale (Kopf)');
 // Kopfteil steht im Build vor jedem Stylesheet (sonst würde das Skript erst nach dem CSS laufen)
@@ -45,20 +45,26 @@ pruefe(index.includes(KOPF_ANKER) && !/<link[^>]*stylesheet|<style/.test(index.s
 // 4. Boot-Skript: Schale nur auf der Startseite mit Standardeinstellungen
 const boot = fs.readFileSync('scripts/startschale-boot.js', 'utf8');
 // pfad/seite: Adresse und Inhalt der Datei (<meta name="bb-vorgerendert">, Modulseiten aus scripts/vorrendern.ts, Z52)
-function laufe(hash: string, search: string, speicher: Record<string, string>, pathname = '/', seite?: string): 'behalten' | 'entfernt' {
+function laufe(hash: string, search: string, speicher: Record<string, string>, pathname = '/', seite?: string, systemDunkel = false): 'behalten' | 'entfernt' {
   const klassen = new Set<string>();
   const ls = { getItem: (k: string) => (k in speicher ? speicher[k] : null) };
   const meta = seite === undefined ? null : { getAttribute: (n: string) => (n === 'content' ? seite : null) };
   const document = { documentElement: { classList: { add: (k: string) => klassen.add(k) } }, querySelector: (q: string) => (q === 'meta[name="bb-vorgerendert"]' ? meta : null) };
-  vm.runInNewContext(boot, { document, location: { hash, search, pathname }, window: { localStorage: ls }, decodeURIComponent });
+  vm.runInNewContext(boot, { document, location: { hash, search, pathname }, window: { localStorage: ls, matchMedia: (q: string) => ({ matches: systemDunkel && q.includes('dark') }) }, decodeURIComponent });
+  letzteDunkel = klassen.has('dark');
   return klassen.has('bb-schale') ? 'behalten' : 'entfernt';
 }
+let letzteDunkel = false;
 pruefe(laufe('', '', {}) === 'behalten', 'Startseite ohne Hash: Schale fehlt');
 pruefe(laufe('#start', '', { baustoffboard_screen_width: 'wide' }) === 'behalten', '#start: Schale fehlt');
 pruefe(laufe('#glas', '', {}) === 'entfernt', '#glas: Schale bleibt');
 pruefe(laufe('', '?poll=abc', {}) === 'entfernt', 'Umfrage: Schale bleibt');
 pruefe(laufe('', '', { baustoffboard_lang: 'en' }) === 'entfernt', 'Englisch: Schale bleibt');
-pruefe(laufe('', '', { theme: 'dark' }) === 'entfernt', 'Dunkelmodus: Schale bleibt');
+pruefe(laufe('', '', { theme: 'dark' }) === 'entfernt' && letzteDunkel, 'Dunkelmodus: Schale bleibt');
+// Systemeinstellung dunkel (Gutachten 29.10.2026): gilt ohne eigene Wahl; eigene Wahl „hell“ hat Vorrang
+pruefe(laufe('', '', {}, '/', undefined, true) === 'entfernt' && letzteDunkel, 'System dunkel: Schale bleibt oder kein dark');
+pruefe(laufe('', '', { theme: 'light' }, '/', undefined, true) === 'behalten' && !letzteDunkel, 'System dunkel, Wahl hell: Schale fehlt oder dark gesetzt');
+pruefe(laufe('', '', {}, '/', undefined, false) === 'behalten' && !letzteDunkel, 'System hell: dark gesetzt');
 pruefe(laufe('', '', { baustoffboard_screen_width: 'full' }) === 'entfernt', 'Vollbreite: Schale bleibt');
 pruefe(laufe('', '', { baustoffboard_fluid_width: 'false' }) === 'entfernt', 'alte Breiten-Einstellung: Schale bleibt');
 // Modulseiten (Z52): nur die zur Adresse passende vorgerenderte Datei zeigen

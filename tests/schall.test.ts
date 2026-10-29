@@ -63,7 +63,7 @@ pruefe(U_PROG_TRITTSCHALL === 3 && ANFORDERUNGEN_TRITTSCHALL.some(a => a.wert ==
 // Entscheidung 27.10.: 50 dB (DIN 4109-1:2018) Standard, 53 dB (DIN 4109:1989) historische Option – bestätigt, ohne F-Freigabe;
 // Treppenwerte bleiben vorläufig
 const anf = Object.fromEntries(ANFORDERUNGEN_TRITTSCHALL.map(a => [a.id, a]));
-pruefe(anf.wtd_1989.wert === 53 && !anf.wtd_2018.quelle.includes('F-Freigabe') && !anf.wtd_1989.quelle.includes('F-Freigabe') && anf.treppe_2018.quelle.includes('F-Freigabe') && anf.treppe_rh.quelle.includes('F-Freigabe'), 'Kennzeichnung F-Freigabe nur noch für Treppenwerte');
+pruefe(anf.wtd_1989.wert === 53 && !/F-Freigabe|Normprüfung ausstehend/.test(anf.wtd_2018.quelle) && !/F-Freigabe|Normprüfung ausstehend/.test(anf.wtd_1989.quelle) && anf.treppe_2018.quelle.includes('Normprüfung ausstehend') && anf.treppe_rh.quelle.includes('Normprüfung ausstehend'), 'Kennzeichnung F-Freigabe nur noch für Treppenwerte');
 
 //    Handbeispiel Wohnungstrenndecke: 18 cm Stahlbeton (2400 kg/m³) + 10 kg/m² Putz → m' = 442 kg/m², L_n,eq,0,w = 71,41 dB;
 //    50 mm Zementestrich (2000 kg/m³) auf s' = 20 MN/m³ → m' = 100 kg/m², f₀ = 71,6 Hz, ΔL_w = 28,33 dB;

@@ -18,7 +18,7 @@
     "pfadSpalteKosten": "Kosten",
     "pfadSpalteJeT": "je t Ware",
     "formelTitel": "Rechenweg (Lehrmodell)",
-    "formelErklaerung": "CBAM_j: CBAM-Faktor des Jahres, CSCF: sektorübergreifender Korrekturfaktor (hier 1), BM: Benchmark. Die Anrechnung des Herkunftspreises nach Art. 9 ist vereinfacht auf die gesamten eingebetteten Emissionen bezogen (vorläufig, F-Freigabe). Lehr- und Vorbemessungswerkzeug, keine Rechtsberatung.",
+    "formelErklaerung": "CBAM_j: CBAM-Faktor des Jahres, CSCF: sektorübergreifender Korrekturfaktor (hier 1), BM: Benchmark. Die Anrechnung des Herkunftspreises nach Art. 9 ist vereinfacht auf die gesamten eingebetteten Emissionen bezogen (vorläufig, Normprüfung ausstehend). Lehr- und Vorbemessungswerkzeug, keine Rechtsberatung.",
     "quellen": "Quellen: VO (EU) 2023/956 Art. 9, 21, 31; RL 2003/87/EG Art. 10a Abs. 1a; Durchführungs-VO (EU) 2025/2620 (Anpassung an die kostenlose Zuteilung, Benchmarks); VO (EU) 2025/2083 (Vereinfachung, Schwellenwert 50 t)."
   }
 }

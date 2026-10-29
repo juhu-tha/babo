@@ -25,7 +25,7 @@
     "ökologischeBegleitinformationWecobisSchn": "Ökologische Begleitinformation (WECOBIS Schnittstelle):",
     "postConsumerRecycling": "♻ Post-Consumer Recycling: ",
     "qngRechenwerttabelleLcaSchätzer": "QNG-Rechenwerttabelle & LCA-Schätzer",
-    "offizielleStandarddatenDerÖkobau": "Gerundete Lehrwerte in Anlehnung an die ÖKOBAUDAT – keine offiziellen QNG-Rechenwerte (vorläufig, F-Freigabe)",
+    "offizielleStandarddatenDerÖkobau": "Gerundete Lehrwerte in Anlehnung an die ÖKOBAUDAT – keine offiziellen QNG-Rechenwerte (vorläufig, Normprüfung ausstehend)",
     "rechnerZurücksetzen": " Rechner zurücksetzen",
     "dasQualitätssiegelNachhaltigesGebäude": "Das **Qualitätssiegel Nachhaltiges Gebäude (QNG)** ist ein staatliches deutsches Gütesiegel. Es setzt anspruchsvolle Grenzwerte für die Treibhausgasemissionen (GWP) und den Primärenergiebedarf (PENRT) im Lebenszyklus eines Gebäudes (Herstellung A1–A3, Austausch B4, Betrieb B6, Entsorgung C3/C4; Gutschriften Modul D werden getrennt ausgewiesen – QNG-Bilanzierungsregeln, Anhang 3.1.1).",
     "dieseRechenwerttabelleBietetLehrenden": "Diese Rechenwerttabelle bietet Lehrenden und Studierenden der TH Augsburg eine interaktive Arbeitsdatei, um Baustoffentscheidungen bereits im Vorentwurf quantitativ zu bewerten. Tragen Sie einfach die geschätzten projektbezogenen Mengen ein, um die kumulierten Werte in Echtzeit zu überschauen.",
@@ -172,7 +172,7 @@
     "beispiel2UmrechnungEiner": "Beispiel 2: Umrechnung einer massebezogenen EPD auf die funktionale Einheit",
     "dämmstoffeNurBeiGleicher": "Dämmstoffe nur bei gleicher Wärmeschutzwirkung (gleicher R-Wert) vergleichen – ein besser dämmender Stoff braucht weniger Dicke.",
     "dinEn15804A22": "DIN EN 15804+A2; DIN EN ISO 6946",
-    "oktober2026Ap13": "Oktober 2026 (AP 13 Digitales: EN 15804+A2, ÖKOBAUDAT-Nutzung und Quellen geprüft)"
+    "oktober2026Ap13": "Oktober 2026 (EN 15804+A2, ÖKOBAUDAT-Nutzung und Quellen geprüft)"
   },
   "daten": {
     "Materialdatenbanken.schritte": [

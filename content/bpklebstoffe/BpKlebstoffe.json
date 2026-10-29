@@ -147,7 +147,7 @@
       {
         "titel": "4. Fugentiefe und Hinterfüllschnur",
         "formel": "b = 20\\,\\text{mm} \\Rightarrow t = 12 \\pm 2\\,\\text{mm},\\; \\varnothing_{\\text{Schnur}} \\approx 1{,}25 \\cdot b = 25\\,\\text{mm}",
-        "erklaerung": "Die Dichtstofftiefe t wächst unterproportional mit der Fugenbreite (Richtwerte für Außenwandfugen nach DIN 18540, Tab. 2: b = 10/15/20/25/30 mm → t = 8/10/12/15/15 mm; vorläufig, F-Freigabe am Normtext). Die Hinterfüllschnur (geschlossenzellige PE-Rundschnur) wird etwa 20–30 % dicker als die Fugenbreite gewählt, damit sie klemmt; sie begrenzt die Tiefe, gibt die konkave Rückseite vor und verhindert die Dreiflankenhaftung (Herstellerangabe, IVD-Merkblätter)."
+        "erklaerung": "Die Dichtstofftiefe t wächst unterproportional mit der Fugenbreite (Richtwerte für Außenwandfugen nach DIN 18540, Tab. 2: b = 10/15/20/25/30 mm → t = 8/10/12/15/15 mm; vorläufig, Normprüfung ausstehend). Die Hinterfüllschnur (geschlossenzellige PE-Rundschnur) wird etwa 20–30 % dicker als die Fugenbreite gewählt, damit sie klemmt; sie begrenzt die Tiefe, gibt die konkave Rückseite vor und verhindert die Dreiflankenhaftung (Herstellerangabe, IVD-Merkblätter)."
       }
     ],
     "BpKlebstoffe.literatur": [

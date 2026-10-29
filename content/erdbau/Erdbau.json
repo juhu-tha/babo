@@ -166,7 +166,7 @@
       },
       {
         "formel": "\\frac{E_{v2}}{E_{v1}} \\le 2{,}3 \\;(D_{Pr} \\ge 100\\,\\%), \\quad \\frac{E_{v2}}{E_{v1}} \\le 2{,}5 \\;(D_{Pr} \\ge 98\\,\\%)",
-        "erklaerung": "Verhältniswert der Verformungsmoduln aus Erst- und Zweitbelastung beim statischen Plattendruckversuch als Kriterium für ausreichende Verdichtung. Je Verdichtungsgrad gilt ein eigener Höchstwert; höhere Verhältniswerte sind zulässig, wenn E_v1 ≥ 0,6 · E_v2 ist (vorläufig, F-Freigabe am Text der ZTV E-StB 17, Verdichtungsanforderungen).",
+        "erklaerung": "Verhältniswert der Verformungsmoduln aus Erst- und Zweitbelastung beim statischen Plattendruckversuch als Kriterium für ausreichende Verdichtung. Je Verdichtungsgrad gilt ein eigener Höchstwert; höhere Verhältniswerte sind zulässig, wenn E_v1 ≥ 0,6 · E_v2 ist (vorläufig, Normprüfung ausstehend, ZTV E-StB 17, Verdichtungsanforderungen).",
         "quelle": "DIN 18134:2012-04 / ZTV E-StB 17"
       }
     ]

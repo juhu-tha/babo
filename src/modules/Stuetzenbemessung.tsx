@@ -245,7 +245,7 @@ export default function Stuetzenbemessung() {
                 },
                 {
                   titel: inhalt.werte.bezogeneSchnittgrößen,
-                  erklaerung: `Mit f_cd = 0,85 · ${formatDeZahl(fck, 0)} / 1,5${FCD_HOCHFEST_AKTIV && fck >= 55 ? ` · (1,1 − ${formatDeZahl(fck, 0)}/500)` : ''} = ${formatDeZahl(fcdBeton(fck), 2)} N/mm²${fck >= 55 ? (FCD_HOCHFEST_AKTIV ? ' (Hochfest-Abminderung, vorläufig)' : ' (hochfester Beton: vorläufig, F-Freigabe; ohne zusätzliche Abminderung)') : ''}; Druck negativ.`,
+                  erklaerung: `Mit f_cd = 0,85 · ${formatDeZahl(fck, 0)} / 1,5${FCD_HOCHFEST_AKTIV && fck >= 55 ? ` · (1,1 − ${formatDeZahl(fck, 0)}/500)` : ''} = ${formatDeZahl(fcdBeton(fck), 2)} N/mm²${fck >= 55 ? (FCD_HOCHFEST_AKTIV ? ' (Hochfest-Abminderung, vorläufig)' : ' (hochfester Beton: vorläufig, Normprüfung ausstehend; ohne zusätzliche Abminderung)') : ''}; Druck negativ.`,
                   formel: `\\nu_{Ed} = \\frac{-${formatDeTeX(nEd / 1000, 3)}}{${formatDeTeX(b / 100, 2)} \\cdot ${formatDeTeX(h / 100, 2)} \\cdot ${formatDeTeX(fcdBeton(fck), 2)}} = ${formatDeTeX(results.nu_Ed, 3)};\\quad \\mu_{Ed} = \\frac{${formatDeTeX(results.mEd_1 / 1000, 4)}}{${formatDeTeX(b / 100, 2)} \\cdot ${formatDeTeX(h / 100, 2)}^2 \\cdot ${formatDeTeX(fcdBeton(fck), 2)}} = ${formatDeTeX(results.mu_Ed, 3)}`,
                 },
                 {

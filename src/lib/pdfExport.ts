@@ -1,6 +1,6 @@
 import { jsPDF } from 'jspdf';
 import * as htmlToImage from 'html-to-image';
-import { CURRENT_VERSION } from '@/src/data/versionData';
+import { APP_VERSION } from '@/src/data/stand';
 import { allesDarstellen } from './druckVorbereitung';
 
 export const exportToPDF = async (elementId: string, filename: string) => {
@@ -129,7 +129,7 @@ export const exportToPDF = async (elementId: string, filename: string) => {
     const monat = String(now.getMonth() + 1).padStart(2, '0');
     const jahr = now.getFullYear();
     const datumStr = `${tag}.${monat}.${jahr}`;
-    const versionStr = CURRENT_VERSION.version;
+    const versionStr = APP_VERSION;
     const headerText = 'Ausschließlich für akademische Lehrzwecke!';
     const footerText = `BaustoffBoard · Prof. Dr.-Ing. Jürgen Huber · TH Augsburg · ${datumStr} · ${versionStr}`;
 

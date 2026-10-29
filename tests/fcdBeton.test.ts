@@ -24,7 +24,7 @@ pruefe(nahe(hochfestFaktor(55), 0.99) && nahe(fcdBeton(55, { hochfest: true }), 
 //    C70/85: 0,96 → 38,08; C100/115: 0,90 → 51,0
 pruefe(nahe(fcdBeton(70, { hochfest: true }), 38.08, 1e-12) && nahe(fcdBeton(100, { hochfest: true }), 0.85 * 100 / 1.5 * 0.9) && nahe(fcdBeton(70), 0.85 * 70 / 1.5 * HF(70)), 'C70/85 und C100/115');
 pruefe(nahe(fcdBeton(70, { hochfest: false }), 0.85 * 70 / 1.5), 'Abminderung abschaltbar');
-pruefe(FCD_HOCHFEST_AKTIV ? /vorläufig, F-Freigabe/.test(fcdHochfestHinweis(70) ?? '') : fcdHochfestHinweis(70) === null, 'Hinweis vorläufig bzw. aus');
+pruefe(FCD_HOCHFEST_AKTIV ? /vorläufig, Normprüfung ausstehend/.test(fcdHochfestHinweis(70) ?? '') : fcdHochfestHinweis(70) === null, 'Hinweis vorläufig bzw. aus');
 
 // 2. Kerne
 const qb: QuerkraftEingabe = { b: 30, h: 50, d1: 5, fck: 70, bewehrung: 'Stahl', fyk: 500, ftk: 3000, gammaFRP: 1.3, asl: 6, vEd: 250, theta: 40 };

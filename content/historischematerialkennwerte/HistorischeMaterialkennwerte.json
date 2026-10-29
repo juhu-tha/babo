@@ -22,7 +22,7 @@
     "beispiel2ZugversuchAn": "Beispiel 2: Zugversuch an einem historischen Flussstahl",
     "dieWerteLiegenIm": "Die Werte liegen im Bereich heutiger S235-Stähle. Vor einer Schweißung sind Schweißeignung (chemische Analyse, P- und S-Gehalt, Alterung) und Sprödbruchneigung zu prüfen; Flussstahl vor etwa 1900 kann auch Puddeleisen sein.",
     "dinEnIso6892": "DIN EN ISO 6892-1",
-    "oktober2026Ap8": "Oktober 2026 (AP 8 Bestand: probabilistischer Bemessungswert, Umrechnungen, Normausgaben und Literatur geprüft)",
+    "oktober2026Ap8": "Oktober 2026 (probabilistischer Bemessungswert, Umrechnungen, Normausgaben und Literatur geprüft)",
     "reiterBereiche": "Bereiche des Moduls Historische Materialkennwerte"
   },
   "daten": {
@@ -68,7 +68,7 @@
         "title": "EN 1990-2:2026 (Eurocode – Grundlagen der Bewertung und Ertüchtigung bestehender Tragwerke; ersetzt CEN/TS 17440:2020; DIN-Fassung noch nicht erschienen, geplant 2027)"
       },
       {
-        "title": "DBV-Merkblatt „Modifizierte Teilsicherheitsbeiwerte für Stahlbetonbauteile“, Fassung März 2013, Merkblattreihe „Bauen im Bestand“ – Quelle des Bestandswerts γ_c = 1,35 im Labor-Rechner (γ_C,mod abhängig vom gemessenen Variationskoeffizienten; Zuordnung vorläufig, F-Freigabe)",
+        "title": "DBV-Merkblatt „Modifizierte Teilsicherheitsbeiwerte für Stahlbetonbauteile“, Fassung März 2013, Merkblattreihe „Bauen im Bestand“ – Quelle des Bestandswerts γ_c = 1,35 im Labor-Rechner (γ_C,mod abhängig vom gemessenen Variationskoeffizienten; Zuordnung vorläufig, Normprüfung ausstehend)",
         "url": "https://www.din.de/de/wdc-beuth:din21:187208060/toc-2017479/download"
       },
       {
