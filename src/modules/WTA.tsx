@@ -21,78 +21,35 @@ import inhalt from '@/content/wta/WTA.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { wtaBohrplan, wtaKombiBewertung, type Daemmstoff, type SperreStatus, type Salzklasse, type Regengruppe, type KombiAlarm, type KombiEmpfehlung } from '@/src/calc/schutzInstandsetzung';
 
-// Hygrothermal evaluation for combination of WTA horizontal barrier and interior insulation
-const evaluateKombination = (
-  daemmType: 'calciumsilicat' | 'holzfaser' | 'mineralschaum' | 'pur_foelie',
-  sperreStatus: 'ok' | 'critical' | 'none',
-  salzClass: 'low' | 'medium' | 'high',
-  regenClass: 'group1' | 'group2' | 'group3'
-) => {
-  let score = 100; // Start with max safety points
-  const criticalAlarms: string[] = [];
-  const recommendations: string[] = [];
-  
-  // 1. Horizontalsperre check (WTA 4-10)
-  if (sperreStatus === 'none') {
-    score -= 50;
-    criticalAlarms.push(inhalt.werte.mangelhafteHorizontalsperreZwingtKapilla);
-    recommendations.push(inhalt.werte.sanierenSieZwingendZuerst);
-  } else if (sperreStatus === 'critical') {
-    score -= 20;
-    criticalAlarms.push(inhalt.werte.erhöhteMauerwerksRestfeuchteIm);
-    recommendations.push(inhalt.werte.trocknungsphaseDesMauerwerksEinplanen);
-  }
-  
-  // 2. Salzklasse check (WTA 2-9)
-  if (salzClass === 'high') {
-    score -= 30;
-    criticalAlarms.push(inhalt.werte.hoheSalzbeladungKlasseS3);
-    recommendations.push(inhalt.werte.tragenSieZwingendVor);
-  } else if (salzClass === 'medium' && daemmType !== 'calciumsilicat') {
-    score -= 10;
-    recommendations.push(inhalt.werte.beiMittleremSalzgehaltUnd);
-  }
-
-  // 3. Schlagregenschutz der Fassadenaußenfläche (DIN 4108-3)
-  if (regenClass === 'group3') {
-    score -= 25;
-    criticalAlarms.push(inhalt.werte.extremerSchlagregeneintragAnDer);
-    recommendations.push(inhalt.werte.bringenSieAußenEine);
-  } else if (regenClass === 'group2') {
-    recommendations.push(inhalt.werte.eventuellVorhandenePutzrisseAn);
-  }
-
-  // 4. Dämmstoff-Eigenschaften & Systemcharakter
-  if (daemmType === 'pur_foelie') {
-    score -= 40;
-    criticalAlarms.push(inhalt.werte.diffusionsdichtePurSystemeMit);
-    recommendations.push(inhalt.werte.wählenSieBevorzugtKapillaraktive);
-  } else if (daemmType === 'calciumsilicat') {
-    score += 15; // calcareous systems are highly robust
-    recommendations.push(inhalt.werte.calciumsilicatBietetDieHöchste);
-  } else if (daemmType === 'holzfaser') {
-    if (sperreStatus !== 'ok') {
-      score -= 15;
-      criticalAlarms.push(inhalt.werte.organischeHolzweichfaserplattenNeigenBei);
-    }
-    recommendations.push(inhalt.werte.holzfaserdämmungenNurAnHygrisch);
-  }
-
-  // Border constraints for Score
-  score = Math.max(0, Math.min(100, score));
-  
-  let ampelColor = "text-emerald-700 bg-emerald-50 border-emerald-200";
-  let suitabilityLabel = inhalt.werte.hygrischUnbedenklich;
-  if (score < 40) {
-    ampelColor = "text-red-700 bg-red-50 border-red-350 animate-pulse";
-    suitabilityLabel = inhalt.werte.sehrHohesSchadensrisikoNicht;
-  } else if (score < 75) {
-    ampelColor = "text-orange-700 bg-orange-50 border-orange-200";
-    suitabilityLabel = inhalt.werte.bedingtWtaKonformerAufbau;
-  }
-
-  return { score, suitabilityLabel, ampelColor, criticalAlarms, recommendations };
+// Kombi-Planer: Punkteschema im Kern src/calc/schutzInstandsetzung.ts (eigenes Lehrmodell, keine Bewertung der WTA)
+const ALARMTEXT: Record<KombiAlarm, string> = {
+  sperreFehlt: inhalt.werte.mangelhafteHorizontalsperreZwingtKapilla,
+  sperreKritisch: inhalt.werte.erhöhteMauerwerksRestfeuchteIm,
+  salzHoch: inhalt.werte.hoheSalzbeladungKlasseS3,
+  schlagregen: inhalt.werte.extremerSchlagregeneintragAnDer,
+  purFolie: inhalt.werte.diffusionsdichtePurSystemeMit,
+  holzfaserFeucht: inhalt.werte.organischeHolzweichfaserplattenNeigenBei,
+};
+const EMPFEHLUNGSTEXT: Record<KombiEmpfehlung, string> = {
+  sperreZuerst: inhalt.werte.sanierenSieZwingendZuerst,
+  trocknung: inhalt.werte.trocknungsphaseDesMauerwerksEinplanen,
+  porengrundputz: inhalt.werte.tragenSieZwingendVor,
+  ausgleichsputz: inhalt.werte.beiMittleremSalzgehaltUnd,
+  hydrophobierung: inhalt.werte.bringenSieAußenEine,
+  putzrisse: inhalt.werte.eventuellVorhandenePutzrisseAn,
+  kapillaraktiv: inhalt.werte.wählenSieBevorzugtKapillaraktive,
+  calciumsilicat: inhalt.werte.calciumsilicatBietetDieHöchste,
+  holzfaserTrocken: inhalt.werte.holzfaserdämmungenNurAnHygrisch,
+};
+const evaluateKombination = (daemmType: Daemmstoff, sperreStatus: SperreStatus, salzClass: Salzklasse, regenClass: Regengruppe) => {
+  const b = wtaKombiBewertung(daemmType, sperreStatus, salzClass, regenClass);
+  const ampelColor = b.stufe === 'rot' ? "text-red-700 bg-red-50 border-red-350 animate-pulse"
+    : b.stufe === 'orange' ? "text-orange-700 bg-orange-50 border-orange-200" : "text-emerald-700 bg-emerald-50 border-emerald-200";
+  const suitabilityLabel = b.stufe === 'rot' ? inhalt.werte.sehrHohesSchadensrisikoNicht
+    : b.stufe === 'orange' ? inhalt.werte.bedingtWtaKonformerAufbau : inhalt.werte.hygrischUnbedenklich;
+  return { score: b.score, suitabilityLabel, ampelColor, criticalAlarms: b.alarme.map(a => ALARMTEXT[a]), recommendations: b.empfehlungen.map(e => EMPFEHLUNGSTEXT[e]) };
 };
 
 type WtaReiter = 'injektion' | 'sanierputz' | 'innendaemmung' | 'pruefung' | 'kombination' | 'abdichtung_4_6';
@@ -120,29 +77,9 @@ export default function WTA() {
   const [saltLoad, setSaltLoad] = useState<'low' | 'medium' | 'high'>('medium');
   const [masonryType, setMasonryType] = useState<'brick' | 'mixed' | 'hollow'>('brick');
   
-  // Calculate Drilling Parameters based on WTA 4-10
-  const drillDepth = Math.max(1, wallThicknessInput - 5);
-  
-  // Bohrlochabstand can vary based on masonry structure
-  let drillSpacing = 12; // default in cm
-  if (masonryType === 'mixed') {
-    drillSpacing = 10;
-  } else if (masonryType === 'hollow') {
-    drillSpacing = 8; // tighter for hollow tile structures
-  }
-  
-  // Recommended Bohrlochdurchmesser
-  const drillDiameter = 1.2; // 12 mm for cream injection
-  
-  // Number of boreholes per meter
-  const holesPerMeter = Math.ceil(100 / drillSpacing);
-  
-  // Calculate Silane-Cream Consumption with Safety-Factor 1.15
-  // Vol = (pi * D^2 / 4) * L * n * 1.15 / 1000 (to get Liters)
-  const singleHoleVolume = (Math.PI * Math.pow(drillDiameter, 2) / 4) * drillDepth; // cm³
-  const rawTotalVolume = (singleHoleVolume * holesPerMeter) / 1000; // Liters
-  const creamConsumption = rawTotalVolume * 1.15; // Liter/m with 15% safety factor
-  
+  // Bohrrechner (Lehrmodell nach WTA-Merkblatt 4-10; Kern: src/calc/schutzInstandsetzung.ts)
+  const { drillDepth, drillSpacing, drillDiameter, holesPerMeter, singleHoleVolume, creamConsumption } = wtaBohrplan(wallThicknessInput, masonryType);
+
   // Infiltration selection logic based on WTA 4-10 moisture (DF) limits
   let injectionMethod = '';
   let maxDFAllowed = '';

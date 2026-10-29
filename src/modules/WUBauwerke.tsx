@@ -21,6 +21,7 @@ import {
   type TooltipItem
 } from 'chart.js';
 import inhalt from '@/content/wubauwerke/WUBauwerke.json';
+import { wuNachweis } from '@/src/calc/schutzInstandsetzung';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
@@ -54,43 +55,8 @@ export default function WUBauwerke() {
   const [bauteil, setBauteil] = useState<'Wand' | 'Bodenplatte'>('Wand');
   const [bauart, setBauart] = useState<'ortbeton' | 'elementwand'>('ortbeton');
 
-  const results = useMemo(() => {
-    // Druckgefälle I = h_w / h
-    const hMeter = h / 1000;
-    const druckgefaelle = hMeter > 0 ? hw / hMeter : 0;
-
-    // Mindestbauteildicken nach DAfStb-WU-Richtlinie 2017-12, Tab. 1 (Ortbeton / Elementwand / Fertigteil)
-    // Elementwand: Gesamtdicke 240 mm, Kernbeton (Ortbetonergänzung) ≥ 120 mm (WU-Richtlinie 2017-12, Empfehlung)
-    let mindestDicke = 200;
-    if (bk === '1') {
-      mindestDicke = bauteil === 'Wand' ? 240 : 250;
-    } else {
-      mindestDicke = bauteil === 'Wand' ? (bauart === 'ortbeton' ? 200 : 240) : 150;
-    }
-    const dickeOk = h >= mindestDicke;
-
-    // Rechnerische Trennrissbreite für Selbstheilung (Entwurfsgrundsatz b), abhängig von h_w/h
-    // Stufen ≤ 10 / ≤ 15 / ≤ 25 → 0,20 / 0,15 / 0,10 mm (WU-Richtlinie 2017-12, Entwurfsgrundsatz b)
-    // BK 2: keine Selbstheilungsanforderung; Orientierungswert w_max = 0,3 mm nach EC2/NA
-    let zulRissbreite = 0.30;
-    let selbstheilungMoeglich = true;
-    if (bk === '1') {
-      if (druckgefaelle <= 10) zulRissbreite = 0.20;
-      else if (druckgefaelle <= 15) zulRissbreite = 0.15;
-      else if (druckgefaelle <= 25) zulRissbreite = 0.10;
-      else { zulRissbreite = 0.10; selbstheilungMoeglich = false; }
-    }
-    const rissbreiteOk = rissbreite <= zulRissbreite + 0.001;
-
-    return {
-      druckgefaelle,
-      dickeOk,
-      mindestDicke,
-      rissbreiteOk,
-      zulRissbreite,
-      selbstheilungMoeglich,
-    };
-  }, [hw, h, rissbreite, bk, nk, bauteil, bauart]);
+  // Nachweis nach DAfStb-WU-Richtlinie 2017-12 (Kern: src/calc/schutzInstandsetzung.ts)
+  const results = useMemo(() => wuNachweis(hw, h, rissbreite, bk, bauteil, bauart), [hw, h, rissbreite, bk, bauteil, bauart]);
 
   const chartData = useMemo(() => {
     const labels = [];

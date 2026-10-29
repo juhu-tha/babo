@@ -809,7 +809,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
     ziele: [
       { stufe: "Verstehen", text: "präventive Schutzmaßnahmen und Instandsetzungsverfahren für Holz, Stahl, Kunststoffe, Asphalt und Mauerwerk unterscheiden." },
       { stufe: "Anwenden", text: "geeignete Korrosionsschutzsysteme nach DIN EN ISO 12944 einschließlich Duplexsystemen auswählen." },
-      { stufe: "Anwenden", text: "den Restquerschnitt eines geschädigten Stahlbauteils ermitteln und mit dem Ausgangsquerschnitt vergleichen." },
+      { stufe: "Anwenden", text: "die verbleibende Biegetragfähigkeit eines angefaulten Holzbalkens aus dem Restquerschnitt ermitteln und mit dem Ausgangsquerschnitt vergleichen." },
       { stufe: "Bewerten", text: "passende Instandsetzungsverfahren für Holztragwerke nach DIN 68800, für Asphaltbeläge nach ZTV BEA-StB und für Mauerwerk nach WTA begründet auswählen." },
     ],
   },

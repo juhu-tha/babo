@@ -37,7 +37,7 @@
     "trennrisseWerdenPlanmäßigZugelassen": "Trennrisse werden planmäßig zugelassen, jedoch durch gezielte Mindestbewehrung auf Breiten beschränkt (je nach Druckgefälle $w_k \\le 0{,}10 \\dots 0{,}20\\,\\text{mm}$), die eine **autogene Selbstheilung** ermöglichen.",
     "mindestbewehrungAuslegungAufFrühen": "**Mindestbewehrung:** Auslegung auf frühen Zwang (Hydratationswärme) nach DIN EN 1992-1-1.",
     "engeStababständeVieleDünne": "**Enge Stababstände:** Viele dünne Stäbe (z. B. $\\varnothing 10$ oder $\\varnothing 12$) statt weniger dicker Stäbe.",
-    "selbstheilungRisseDichtenSich": "**Selbstheilung:** Risse dichten sich durch Calciumcarbonat-Ausfällung bei Wasserdruck $I \\le 10$ eigenständig ab.",
+    "selbstheilungRisseDichtenSich": "**Selbstheilung:** Risse dichten sich durch Calciumcarbonat-Ausfällung eigenständig ab, wenn die Rissbreite zum Druckgefälle passt ($I \\le 10$: 0,20 mm, $I \\le 15$: 0,15 mm, $I \\le 25$: 0,10 mm).",
     "bewertungRobusterUndHäufig": "**Bewertung:** Robuster und häufig gewählter Ansatz. Erfordert genaue Bemessung.",
     "planmäßigeRissinjektion": "Planmäßige Rissinjektion",
     "breitereTrennrisseWerdenBewusst": "Breitere Trennrisse werden bewusst in Kauf genommen (geringere Zwangsbewehrung), um Baukosten zu senken. Alle auftretenden Risse werden planmäßig nachträglich injiziert.",

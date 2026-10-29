@@ -50,8 +50,6 @@ export const AUSNAHMEN = {
   'src/modules/MaterialitaetArchitektur.tsx|bg-slate-900': [1, 'Lichtsimulation „Nacht“ (bewusst dunkle Vorschau)'],
   'src/modules/MaterialitaetArchitektur.tsx|bg-slate-950': [1, 'Lichtsimulation „Nacht“ (bewusst dunkle Vorschau)'],
   'src/modules/MaterialitaetArchitektur.tsx|bg-slate-900/90': [1, 'Lichtsimulation „Nacht“ (bewusst dunkle Vorschau)'],
-  'src/modules/Bauwerksunters_Monitoring.tsx|bg-[#1e293b]': [1, 'Holzquerschnitt im Bohrwiderstands-Monitor (Schemadarstellung)'],
-  'src/modules/Bauwerksunters_Monitoring.tsx|bg-black/90': [1, 'Hohlraum im Holzquerschnitt (Schemadarstellung)'],
   // (d) Diagramm-Interna
   'src/components/korrosion/DeckschichtenVergleich.tsx|bg-black': [1, I],
   'src/components/quiz/InteractiveQuizSystem.tsx|bg-slate-800': [1, I],
@@ -81,8 +79,6 @@ export const AUSNAHMEN = {
   'src/modules/DppEpd.tsx|bg-slate-950/85': [2, 'Smartphone-Attrappe mit Kameraansicht (Gerätedarstellung)'],
   'src/modules/DppEpd.tsx|bg-slate-850': [2, 'Smartphone-Attrappe mit Kameraansicht (Gerätedarstellung)'],
   'src/modules/DppEpd.tsx|hover:bg-slate-800': [1, 'Smartphone-Attrappe mit Kameraansicht (Gerätedarstellung)'],
-  'src/modules/Bauwerksunters_Monitoring.tsx|bg-yellow-900/60': [1, 'Fäulniszone im Holzquerschnitt (Schemadarstellung)'],
-  'src/modules/Bauwerksunters_Monitoring.tsx|bg-amber-950/70': [1, 'Larvenfraß im Holzquerschnitt (Schemadarstellung)'],
   'src/modules/Bodenmechanik.tsx|bg-amber-800': [1, 'Zustandsfarbe „fest“ der Konsistenzskala (Diagramm-Interna)'],
   'src/modules/KeramikZiegel.tsx|bg-emerald-800': [1, 'Farbskala der Ziegelgruppen (Legende)'],
   'src/modules/MaterialitaetArchitektur.tsx|bg-amber-800': [1, 'Materialmuster (Farbmuster Klinker)'],

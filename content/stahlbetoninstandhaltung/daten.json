@@ -36,7 +36,7 @@
         "title": "Inverkehrbringen eines neuen Instandsetzungs-Produkts",
         "problem": "Ein Baustoffhersteller möchte einen neu entwickelten, carbonatisierungsbremsenden Anstrich in der EU vertreiben.",
         "regulatoryAnswer": "DIN EN 1504-2 (Harmonisierte europäische Produktnorm)",
-        "details": "Das reine Bereitstellen und Verkaufen von Produkten auf dem europäischen Markt unterliegt rein der DIN EN 1504-Reihe (in diesem Fall Teil 2 für Oberflächenschutz). Das Produkt muss die europäische Konformitätsbewertung durchlaufen, ein CE-Zeichen besitzen und die deklarierten Mindestwerte nachweisen. Für den standsicherheitsrelevanten Einbau in DE fordert die TR Instandhaltung (Teil 3) zusätzlich die nationalen Konformitätsnachweise.",
+        "details": "Das reine Bereitstellen und Verkaufen von Produkten auf dem europäischen Markt unterliegt rein der DIN EN 1504-Reihe (in diesem Fall Teil 2 für Oberflächenschutz). Das Produkt muss die europäische Konformitätsbewertung durchlaufen, ein CE-Zeichen besitzen und die deklarierten Mindestwerte nachweisen. Für den standsicherheitsrelevanten Einbau in DE fordert die TR Instandhaltung (Teil 2) zusätzlich die nationalen Konformitätsnachweise.",
         "badgeColor": "bg-blue-50 text-blue-700 border-blue-200"
       },
       {
@@ -92,8 +92,8 @@
       {
         "id": "OS 10",
         "old": "-",
-        "name": "Rissüberbrückende Beschichtung (befahrbar)",
-        "use": "Für befahrbare Flächen mit Rissgefahr. Besteht aus einer rissüberbrückenden Dichtungsschicht und einer mechanisch belastbaren Nutzschicht.",
+        "name": "Rissüberbrückende Dichtungsschicht unter Schutz- und Deckschichten",
+        "use": "Dichtungsschicht mit hoher Rissüberbrückung, die durch Schutz- und Deckschichten (z. B. Gussasphalt) abgedeckt wird; für begeh- und befahrbare Flächen wie Brücken und Parkdecks.",
         "thickness": "ca. 4,0 - 5,0 mm",
         "crackBridging": "Ja (dynamisch)"
       },

@@ -13,7 +13,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { CalculatorDisclaimerBanner } from '@/src/components/ui/CalculatorDisclaimerBanner';
 import { GruppierteModuleTabs, type ModulTabGruppe } from '@/src/components/ui/GruppierteModuleTabs';
-import { erf } from './stahlbetoninstandhaltung/hilfen';
+import { chloridAuswertung, rissinjektionPlan } from '@/src/calc/schutzInstandsetzung';
 import TrTab from './stahlbetoninstandhaltung/TrTab';
 import OsTab from './stahlbetoninstandhaltung/OsTab';
 import En1504Tab from './stahlbetoninstandhaltung/En1504Tab';
@@ -61,61 +61,17 @@ export function Stahlbetoninstandhaltung() {
   const [bauteilAlter, setBauteilAlter] = useState<number>(25); // Jahre
   const [betondeckung, setBetondeckung] = useState<number>(35); // mm
 
-  // Computed results for Chloriddiffusion
-  const chloridStats = useMemo(() => {
-    const tSeconds = bauteilAlter * 365.25 * 86400;
-    const Dsi = diffD * 1e-12;
-    const denom = 2 * Math.sqrt(Dsi * tSeconds);
-
-    // Profile curve points: x in mm from 0 to 65 mm
-    const points: { x: number; c: number }[] = [];
-    let depassivatedDepth = 0;
-    const critLimit = 0.50; // M.-% / Zement
-
-    for (let x = 0; x <= 65; x += 2.5) {
-      const xMeters = x * 1e-3;
-      const arg = xMeters / denom;
-      const cVal = chloridCs * (1 - erf(arg));
-      points.push({ x, c: Math.max(0, cVal) });
-      if (cVal >= critLimit) {
-        depassivatedDepth = x;
-      }
-    }
-
-    // Concentration at rebar position
-    const cRebarMeters = betondeckung * 1e-3;
-    const argRebar = cRebarMeters / denom;
-    const cAtRebar = Math.max(0, chloridCs * (1 - erf(argRebar)));
-
-    // Status: ok (< 0.40), warning (0.40 - 0.50), critical (>= 0.50)
-    let rebarStatus: 'ok' | 'warning' | 'critical' = 'ok';
-    if (cAtRebar >= 0.50) rebarStatus = 'critical';
-    else if (cAtRebar >= 0.40) rebarStatus = 'warning';
-
-    // Required removal depth for Principle R: depassivated depth + 15 mm Hinterstemmung
-    const erfAbtrag = depassivatedDepth > 0 ? depassivatedDepth + 15 : 0;
-
-    return {
-      points,
-      cAtRebar,
-      rebarStatus,
-      depassivatedDepth,
-      erfAbtrag,
-      critLimit
-    };
-  }, [chloridCs, diffD, bauteilAlter, betondeckung]);
+  // Chloriddiffusion (Kern: src/calc/schutzInstandsetzung.ts)
+  const chloridStats = useMemo(() => chloridAuswertung(chloridCs, diffD, bauteilAlter, betondeckung), [chloridCs, diffD, bauteilAlter, betondeckung]);
 
   // Computed recommendation for Rissinjektion
   const rissStats = useMemo(() => {
     let harzTyp = '';
     let harzKlasse = '';
     let detailVerfahren = '';
-    let maxPressureBar = 0;
-    const packerSpacingMm = Math.round(bauteilDicke / 2);
-
-    // Max zulässiger Verpressdruck nach ZTV-ING (Faustregel: p_max <= 0.5 * fctm * 10 bar, ca. 15-30 bar)
-    // Bei dünnen Bauteilen oder oberflächennahen Rissen Begrenzung auf 10-20 bar zur Vermeidung von Betonabplatzungen
-    maxPressureBar = Math.min(35, Math.max(12, Math.round(bauteilDicke * 0.08)));
+    // Packerabstand ≈ h/2; Verpressdruck 0,08 bar/mm, 12 bis 35 bar: Lehrwert ohne Regelwerksgrundlage für Stahlbetonbauteile
+    // (keine Regel der ZTV-ING; maßgebend sind Herstellerangaben und die Planung des sachkundigen Planers) – vorläufig, F-Freigabe
+    const { packerSpacingMm, maxPressureBar } = rissinjektionPlan(bauteilDicke);
 
     if (crackMoisture === 'drueckend') {
       harzTyp = inhalt.werte.t2StufenVerpressung2k;
