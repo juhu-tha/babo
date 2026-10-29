@@ -107,7 +107,8 @@ export default function OekobilanzLCA({ teil = 'grundlagen' }: { teil?: LcaTeil 
         wikipedia={[
           { title: 'Ökobilanz', url: 'https://de.wikipedia.org/wiki/%C3%96kobilanz' },
           { title: 'Treibhauspotenzial', url: 'https://de.wikipedia.org/wiki/Treibhauspotenzial' },
-          { title: inhaltJson.werte.graueEnergie, url: 'https://de.wikipedia.org/wiki/Graue_Energie' }
+          { title: inhaltJson.werte.graueEnergie, url: 'https://de.wikipedia.org/wiki/Graue_Energie' },
+          { title: inhaltJson.werte.umweltproduktdeklarationEpd, url: 'https://de.wikipedia.org/wiki/Environmental_Product_Declaration' }
         ]}
         literatur={inhaltJson.daten["OekobilanzLCA.literatur"]}
         normIds={['DIN_EN_15804', 'DIN_EN_15978', 'DIN_EN_17472']}

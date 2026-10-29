@@ -282,7 +282,7 @@
       },
       {
         "titel": "Durchbiegung",
-        "erklaerung": "Quasi-ständige Last 3,0 kN/m (ohne Kriechen):",
+        "erklaerung": "Quasi-ständige Last 3,0 kN/m (ohne Kriechen); Vergleichswert L/250 vorläufig, Normprüfung ausstehend (Grenzwerte für Holz nach DIN EN 1995-1-1/NA, Tab. NA.13, am Normtext prüfen):",
         "formel": "w = \\frac{5 \\cdot 3{,}0 \\cdot 5000^4}{384 \\cdot 11\\,000 \\cdot 1{,}382 \\cdot 10^8} = 16{,}1\\,\\text{mm} \\le \\frac{L}{250} = 20\\,\\text{mm}"
       }
     ],

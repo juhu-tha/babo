@@ -17,7 +17,7 @@
         ],
         "sdValue": "Mittel bis hoch (ca. 0,1 - 0,5 m)",
         "typicalUse": "Standard-Wandfarbe im Innenbereich, Gipsfaserplatten, Raufasertapeten.",
-        "pufCode": "BSW10 (Konservierungsmittelfrei)"
+        "pufCode": "BSW10 (wasserbasiert, konservierungsmittelarm)"
       },
       {
         "name": "Silikatfarbe (Reine Silikatfarbe / Dispersions-Silikat)",
@@ -35,7 +35,7 @@
         ],
         "sdValue": "Sehr gering (sd < 0,01 m - exzellent)",
         "typicalUse": "Kalk- oder Zementputze, historische Fassaden, feuchtebelastete Innenräume mit Schimmelrisiko.",
-        "pufCode": "BSW40 (Silikatfarben)"
+        "pufCode": "BSW40 (wasserbasiert, alkalisch)"
       },
       {
         "name": "Kalkfarbe (Sumpfkalkfarbe)",
@@ -53,7 +53,7 @@
         ],
         "sdValue": "Extrem gering (sd < 0,01 m - hervorragend)",
         "typicalUse": "Ökologischer Lehm- oder Kalkputz, Denkmalschutz, Kellerbereiche.",
-        "pufCode": "BSW60 (Kalkfarben)"
+        "pufCode": "BSW60 (wasserbasiert, alkalisch, ätzend)"
       },
       {
         "name": "Acryllack (Alkyd-Acryl / Dispersion)",
@@ -70,7 +70,7 @@
         ],
         "sdValue": "Hoch (Sperrschicht)",
         "typicalUse": "Holzbauteile im Innen- und Außenbereich (Fenster, Türen), Kinderspielzeug, Heizkörper.",
-        "pufCode": "BSW20 (Wasserlacke)"
+        "pufCode": "BSW20 (wasserbasiert)"
       },
       {
         "name": "Alkydharzlack (Kunstharzlack)",
@@ -87,7 +87,7 @@
         ],
         "sdValue": "Sehr hoch (Dampfsperrend)",
         "typicalUse": "Metallbeschichtungen, stark beanspruchter Holzschutz im Außenbereich, Maschinenbau.",
-        "pufCode": "BSL20 (Lösemittellacke)"
+        "pufCode": "BSL20 (lösemittelbasiert, aromatenfrei, gekennzeichnet)"
       },
       {
         "name": "Epoxidharzlack (2-Komponenten-EP)",
@@ -104,7 +104,7 @@
         ],
         "sdValue": "Absolut dampfdicht",
         "typicalUse": "Industrieböden, Garagenbeschichtungen, Tankinnenwände, hochbeanspruchte Schutzanstriche.",
-        "pufCode": "RE30 (Epoxidharzprodukte, lösungsmittelfrei)"
+        "pufCode": "RE30 (Epoxidharzprodukte, lösemittelfrei; vorläufig, Normprüfung ausstehend)"
       }
     ],
     "OS_SYSTEMS": [

@@ -48,9 +48,9 @@
     "strengeGrenzwerteFürIsothiazolinone": "Strenge Grenzwerte für Isothiazolinone (übliche Biozide als Topfkonservierer, die Allergien auslösen können)",
     "giscodeKlassifizierungssystemDerBg": "GISCODE-Klassifizierungssystem der BG BAU",
     "derGiscodeDientHandwerkern": "Der GISCODE dient Handwerkern und Planern zur schnellen Einstufung des Arbeitsschutzes und der gesundheitlichen Gefährdung bei der Verarbeitung vor Ort:",
-    "bsw10Bsw20WässrigeBeschichtungsstoffe": "**BSW10 / BSW20:** Wässrige Beschichtungsstoffe, weichmacherfrei bzw. lösemittelarm (sehr geringe Gefährdung).",
-    "bsl25LösemittelbasierteBautenschutzlacke": "**BSL25:** Lösemittelbasierte Bautenschutzlacke (erforderliche Schutzmaßnahmen wie Atemschutz).",
-    "re30EpoxidharzprodukteSensibilisierendZw": "**RE30:** Epoxidharzprodukte, sensibilisierend (zwingend Schutzhandschuhe erforderlich).",
+    "bsw10Bsw20WässrigeBeschichtungsstoffe": "**BSW10 / BSW20:** Beschichtungsstoffe, wasserbasiert, konservierungsmittelarm bzw. wasserbasiert (geringe Gefährdung); BSW40/BSW60: wasserbasiert, alkalisch bzw. alkalisch, ätzend (z. B. Silikat- und Kalkfarben) – nach Einstufungskatalog GISCODE Beschichtungsstoffe der BG BAU/GISBAU, Stand Juli 2024.",
+    "bsl20LoesemittelbasierteBeschichtungsstoffe": "**BSL20:** Beschichtungsstoffe, lösemittelbasiert, aromatenfrei, gekennzeichnet (Schutzmaßnahmen wie Atemschutz bei Spritzverarbeitung); aromatenhaltige bzw. stark lösemittelbasierte Produkte BSL30/BSL40 – nach Einstufungskatalog GISCODE Beschichtungsstoffe der BG BAU/GISBAU, Stand Juli 2024 (BSL25 ist dort nicht mehr enthalten).",
+    "re30EpoxidharzprodukteSensibilisierendZw": "**RE30:** Epoxidharzprodukte, sensibilisierend (zwingend Schutzhandschuhe erforderlich); Zuordnung vorläufig, Normprüfung ausstehend (eigener GISBAU-Einstufungskatalog für Epoxidharze, nicht abgeglichen).",
     "oberflächenschutzsystemeOsFürBeton": "Oberflächenschutzsysteme (OS) für Beton nach DIN EN 1504-2",
     "betonbauwerkeInsbesondereParkhäuserTiefg": "Betonbauwerke, insbesondere Parkhäuser, Tiefgaragen, Brücken und Tunnel, sind im Laufe ihrer Lebensdauer hohen physikalischen und chemischen Beanspruchungen ausgesetzt (Frost-Tausalz-Angriffe, Karbonatisierung, Chlorideindrang, mechanischer Verschleiß).",
     "oberflächenschutzsystemeOsNachDin": "Oberflächenschutzsysteme (OS) nach **DIN EN 1504-2** und der ergänzenden deutschen **TR Instandhaltung (DAfStb)** verhindern das Eindringen schädlicher Stoffe in das Porensystem des Betons. Damit stoppen sie das Fortschreiten der Karbonatisierung und verhindern die chloridinduzierte Korrosion der Stabbewehrung nachhaltig.",
@@ -371,6 +371,10 @@
     "BpFarbenLacke.regelwerke": [
       {
         "title": "DIN EN ISO 12944 (Korrosionsschutz von Stahlbauten durch Beschichtungssysteme - Teile 1 bis 9)"
+      },
+      {
+        "title": "BG BAU/GISBAU: Einstufungskatalog GISCODE Beschichtungsstoffe (Stand 07/2024)",
+        "url": "https://www.bgbau.de/fileadmin/Gisbau/Einstufungskatalog_GISCODE_Beschichtungsstoffe_202407.pdf"
       },
       {
         "title": "Decopaint-Richtlinie 2004/42/EG (Begrenzung der Emissionen flüchtiger organischer Verbindungen)",
