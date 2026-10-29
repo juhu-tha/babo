@@ -10,9 +10,9 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 24 korrigiert, 0 fraglich, 0
 
 ### qn_rechnung_bestand_1 · Bauen im Bestand
 
-- **Frage:** Aus den Bestandsunterlagen wurde für einen Altbeton f_ck,cyl = 17,1 N/mm² abgeleitet; Bohrkerne liegen nicht vor. Welcher Bemessungswert f_cd ergibt sich nach dem Vorgehen des Moduls (pauschaler Abschlag 3,0 N/mm², α_cc = 0,85, γ_C = 1,5)?
-- **Richtige Antwort:** f_cd = 7,99 N/mm²
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- **Frage:** Auf Altplänen ist ein Beton B 225 (DIN 1045 vor 1972) angegeben; Bohrkerne liegen nicht vor, über die damalige Bauüberwachung ist nichts bekannt. Welcher Bemessungswert f_cd ergibt sich nach dem Vorgehen des Moduls (Zuordnungstabelle, untere Grenze; α_cc = 0,85, γ_C = 1,5)?
+- **Richtige Antwort:** f_cd = 5,72 N/mm²
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: Einstufung nach Aktenlage über die Zuordnungstabelle (Schnell/Fischer/Loch 2008) statt Abschlag 3 N/mm² (T15-BS-3) – korrigiert
 - [x] ok
 - [ ] ändern: …
 
@@ -20,15 +20,15 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 24 korrigiert, 0 fraglich, 0
 
 - **Frage:** Bei einer Verstärkung sollen an vorhandene glatte Rundstähle BSt 220/340 GU neue Stäbe angeschweißt und gerade Stabenden über Verbund verankert werden. Wie ist das nach dem Modul zu beurteilen?
 - **Richtige Antwort:** Schweißen nur nach Werkstoffprüfung; Verbund so gering, dass Haken nötig sind
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Modulprüfung Tranche 15 (29.10.): Bezeichnung BSt 220/340 GU statt „RU“, „unberuhigt vergossen“ und „η_1 = 0,3“ entfallen; Schweißen nur nach Werkstoffprüfung (T15-BS-2) – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: Verbund-Lehransatz „30 % gerippter Stäbe“ gestrichen (T15-BS-6) – korrigiert
 - [x] ok
 - [ ] ändern: …
 
 ### qn_rechnung_bestand_5 · Bauen im Bestand
 
 - **Frage:** Ein Tragwerksplaner überlegt, ob sich Kernbohrungen in einer Stahlbetondecke aus den 1960er Jahren lohnen. Welches Argument stützt das Modul?
-- **Richtige Antwort:** Der pauschale Abschlag entfällt; die oft höhere reale Festigkeit wird nutzbar
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- **Richtige Antwort:** Statt Tabellenwerten nach Aktenlage gilt die oft höhere reale Festigkeit
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: kein pauschaler Abschlag mehr, Aktenlage über Zuordnungstabelle, Prüfung nach DIN EN 13791 (T15-BS-3/-5) – korrigiert
 - [x] ok
 - [ ] ändern: …
 
@@ -50,9 +50,9 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 24 korrigiert, 0 fraglich, 0
 
 ### qn_rechnung_beton_6 · Beton: Mischungsentwurf
 
-- **Frage:** Eine Decke aus C25/30 mit Zement der Klasse N (s = 0,25) erhärtet 7 Tage bei konstant 12 °C. Wie ist die Ausschaleignung nach dem Vorgehen des Moduls (Reifealter nach Arrhenius, Kriterium β_cc ≥ 0,5) zu bewerten?
-- **Richtige Antwort:** t_T ≈ 4,8 d, β_cc ≈ 0,70: Ausschalen im Regelfall möglich
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- **Frage:** Eine Decke aus C25/30 mit Zement der Klasse N (s = 0,25) erhärtet 7 Tage bei konstant 12 °C. Die Tragwerksplanung gibt für das Ausschalen 50 % von f_ck vor. Wie ist die Ausschaleignung nach dem Vorgehen des Moduls (Reifealter nach Arrhenius, f_ck(t) = f_cm(t) − 8) zu bewerten?
+- **Richtige Antwort:** t_T ≈ 4,8 d, f_ck(t) ≈ 15,1 N/mm² ≥ 12,5 N/mm²: Vorgabe erreicht
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: Ausschalkriterium jetzt f_ck(t) gegen die Vorgabe der Tragwerksplanung (50 % von f_ck) statt β_cc ≥ 0,5 (T15-BE-2) – korrigiert
 - [x] ok
 - [ ] ändern: …
 
@@ -106,9 +106,9 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 24 korrigiert, 0 fraglich, 0
 
 ### qn_rechnung_nachhaltigkeit_4 · Nachhaltigkeit & Dauerhaftigkeit
 
-- **Frage:** Für 200 m³ Beton werden verglichen: Rezeptur A mit 320 kg/m³ CEM I (850 kg CO₂-eq/t) und Rezeptur B mit 340 kg/m³ CEM III/B (300 kg CO₂-eq/t). Welche Einsparung erzielt B gegenüber A beim Zement-GWP?
-- **Richtige Antwort:** 34,0 t CO₂-eq, das sind rund 62,5 %
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Runde 3): Prozentangaben auf eine Nachkommastelle wie im Modul (62,5 % statt „rund 62 %“; Distraktoren 166,7/64,7/37,5 %) – korrigiert
+- **Frage:** Für 200 m³ Beton werden verglichen: Rezeptur A mit 320 kg/m³ CEM I (665 kg CO₂-eq/t, VDZ-Branchen-EPD) und Rezeptur B mit 340 kg/m³ CEM III/B (260 kg CO₂-eq/t, Lehrwert). Welche Einsparung erzielt B gegenüber A beim Zement-GWP?
+- **Richtige Antwort:** 24,9 t CO₂-eq, das sind rund 58,5 %
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: Zement-GWP CEM I 665 kg/t (VDZ-Branchen-EPD, netto) und CEM III/B 260 kg/t (Lehrwert) wie im Modul (T15-NH-3) – korrigiert
 - [ ] ok
 - [ ] ändern: …
 
@@ -301,9 +301,9 @@ Niveau B · 30 min · Vorwissen: –
 
 Niveau B/M · 45 min · Vorwissen: historisch, bauwerksdiagnose, stahlbeton_bemessung
 
-- (Anwenden) Sie können historische Betonfestigkeitsklassen nach DIN 1045:1972 über Würfelnormierung und Zylinderumrechnung einer heutigen Festigkeitsklasse zuordnen.
+- (Anwenden) Sie können historische Betongüten nach DIN 1045 vor 1972 mit einer Zuordnungstabelle einer heutigen Festigkeitsklasse zuordnen und den Einfluss der damaligen Ausführungsqualität erläutern.
 - (Anwenden) Sie können den Bemessungswert der Betondruckfestigkeit im Bestand mit und ohne Bohrkernprüfung berechnen.
-- (Bewerten) Sie können den Nutzen einer zerstörenden Bauwerksprüfung gegenüber einer Einstufung nach Aktenlage mit pauschalem Abschlag beurteilen.
+- (Bewerten) Sie können den Nutzen einer Bauwerksprüfung mit Auswertung nach DIN EN 13791 (Kernanzahl, Streuung, kleinster Einzelwert) gegenüber einer Einstufung nach Aktenlage beurteilen.
 - (Anwenden) Sie können für historische Betonstähle den Bemessungswert der Streckgrenze und die Zugkapazität eines Einzelstabs berechnen.
 - (Bewerten) Sie können die Schweißeignung und das Verbundverhalten historischer Betonstähle beurteilen und Konsequenzen für die Verankerung ableiten.
 

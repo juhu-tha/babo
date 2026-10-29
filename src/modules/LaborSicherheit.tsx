@@ -71,14 +71,14 @@ export default function LaborSicherheit() {
           </div>
           <div className="p-3 bg-off-white rounded-xl border border-home-grau/20">
             <span className="text-text-main/60 block font-medium">Laborleitung</span>
-            <strong className="text-shiraz text-sm block"><MdText text={inhalt.texte.profDrIngJürgen} /></strong>
-            <span className="text-text-main/80 text-[11px]"><MdText text={inhalt.texte.raumC210G2} /></span>
+            <strong className="text-shiraz text-sm block"><MdText text={inhalt.texte.laborleitungFunktion} /></strong>
+            <span className="text-text-main/80 text-[11px]"><MdText text={inhalt.texte.laborleitungErreichbar} /></span>
           </div>
           <div className="p-3 bg-rose-50/60 rounded-xl border border-rose-200 text-rose-950">
             <span className="text-rose-700 block font-bold text-[11px] uppercase tracking-wider flex items-center gap-1">
               <PhoneCall size={12} /><MdText text={inhalt.texte.notrufErsthelferG2} /></span>
             <strong className="text-rose-900 text-sm block"><MdText text={inhalt.texte.notruf112Festnetz0} /></strong>
-            <span className="text-rose-800 text-[11px]"><MdText text={inhalt.texte.ersthelferinSilviaLechner3220} /></span>
+            <span className="text-rose-800 text-[11px]"><MdText text={inhalt.texte.ersthelferAushang} /></span>
           </div>
         </div>
 
@@ -590,27 +590,24 @@ export default function LaborSicherheit() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2 text-xs">
                     <div className="p-3 bg-white rounded-lg border border-home-grau/20">
                       <span className="text-text-main/60 block text-[10px] font-bold uppercase"><MdText text={inhalt.texte.ersthelferinImLabor} /></span>
-                      <strong className="text-text-main block"><MdText text={inhalt.texte.silviaLechner} /></strong>
-                      <span className="text-shiraz font-mono font-bold block"><MdText text={inhalt.texte.tel082155863220} /></span>
-                      <span className="text-text-main/70 text-[11px]"><MdText text={inhalt.texte.raumG2122} /></span>
+                      <strong className="text-text-main block"><MdText text={inhalt.texte.ersthelferLabor} /></strong>
+                      <span className="text-shiraz font-bold block"><MdText text={inhalt.texte.ueberHochschulzentrale} /></span>
                     </div>
                     <div className="p-3 bg-white rounded-lg border border-home-grau/20">
                       <span className="text-text-main/60 block text-[10px] font-bold uppercase"><MdText text={inhalt.texte.ersthelferImG2Bau} /></span>
-                      <strong className="text-text-main block"><MdText text={inhalt.texte.michaelSedlmeier} /></strong>
-                      <span className="text-shiraz font-mono font-bold block"><MdText text={inhalt.texte.tel082155863127} /></span>
-                      <span className="text-text-main/70 text-[11px]"><MdText text={inhalt.texte.raumG2222} /></span>
+                      <strong className="text-text-main block"><MdText text={inhalt.texte.ersthelferGebaeude} /></strong>
+                      <span className="text-shiraz font-bold block"><MdText text={inhalt.texte.ueberHochschulzentrale} /></span>
                     </div>
                     <div className="p-3 bg-white rounded-lg border border-home-grau/20">
                       <span className="text-text-main/60 block text-[10px] font-bold uppercase">Laborpersonal</span>
-                      <strong className="text-text-main block"><MdText text={inhalt.texte.siegfriedHager} /></strong>
-                      <span className="text-shiraz font-mono font-bold block">Tel. -3121</span>
+                      <strong className="text-text-main block"><MdText text={inhalt.texte.sicherheitsbeauftragte} /></strong>
+                      <span className="text-shiraz font-bold block"><MdText text={inhalt.texte.ueberHochschulzentrale} /></span>
                       <span className="text-text-main/70 text-[11px]"><MdText text={inhalt.texte.baustofflaborEg} /></span>
                     </div>
                     <div className="p-3 bg-white rounded-lg border border-home-grau/20">
                       <span className="text-text-main/60 block text-[10px] font-bold uppercase">Laborleitung</span>
-                      <strong className="text-text-main block"><MdText text={inhalt.texte.profDrIngJürgen2} /></strong>
-                      <span className="text-shiraz font-mono font-bold block">Tel. -3710</span>
-                      <span className="text-text-main/70 text-[11px]"><MdText text={inhalt.texte.raumG2121} /></span>
+                      <strong className="text-text-main block"><MdText text={inhalt.texte.laborleitungKarte} /></strong>
+                      <span className="text-shiraz font-bold block"><MdText text={inhalt.texte.ueberHochschulzentrale} /></span>
                     </div>
                   </div>
                 </div>
@@ -639,7 +636,7 @@ export default function LaborSicherheit() {
                 <div>
                   <strong className="text-amber-950 text-sm block"><MdText text={inhalt.texte.einweiserSchickenHausserviceInformieren} /></strong>
                   <p className="text-xs text-amber-900 mt-1 leading-relaxed"><MdText text={inhalt.texte.zwingendEinePersonAn} /></p>
-                  <div className="mt-2 text-xs text-amber-950 font-medium"><MdText text={inhalt.texte.hausserviceInformierenKaiBolten} /></div>
+                  <div className="mt-2 text-xs text-amber-950 font-medium"><MdText text={inhalt.texte.hausserviceInformieren} /></div>
                 </div>
               </div>
 

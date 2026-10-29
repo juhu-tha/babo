@@ -2,9 +2,9 @@
 
 Stand: 29.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster IV umfasst 314 Fragen aus 50 Modulen. Aufgeführt sind 99 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster IV umfasst 314 Fragen aus 50 Modulen. Aufgeführt sind 101 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 80 korrigiert, 0 fraglich, 11 mit offenem Prüfhinweis, 12 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 82 korrigiert, 0 fraglich, 11 mit offenem Prüfhinweis, 12 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -142,6 +142,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 80 korrigiert, 0 fraglich, 1
 - **Richtige Antwort:** Salze im Putz einlagern, Feuchte verdampfen lassen; Oberfläche trocken, salzfrei
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### q_mo_1 · Materialoptimierung
+
+- **Frage:** Welche Maßnahme senkt das GWP (A1–A3) von Transportbeton meist am stärksten?
+- **Richtige Antwort:** Geringerer Klinkeranteil, z. B. CEM III/A statt CEM I
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: Lehrbeispiel mit Zement-GWP CEM I 0,665 (VDZ-Branchen-EPD) und CEM III/A 0,40 kg/kg neu gerechnet (T15-NH-3) – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### q_mod_2 · Modernisierung & GModG
@@ -536,6 +544,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 80 korrigiert, 0 fraglich, 1
 - [x] ok
 - [ ] ändern: …
 
+### qn_lca_rechner_3 · LCA-Rechner & QNG-Nachweis
+
+- **Frage:** In der Transportbeton-Übung sinkt das GWP A1–A5 von rund 240 kg CO₂-Äq./m³ (CEM I, 320 kg) auf rund 100 kg CO₂-Äq./m³ beim Preset mit CEM III/B (280 kg) und 550 kg RC-Kies. Worauf ist diese Minderung im Wesentlichen zurückzuführen?
+- **Richtige Antwort:** Auf den Emissionsfaktor des Zements (0,26 statt 0,665 kg CO₂-Äq./kg).
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: Transportbeton-Übung mit Zement-GWP CEM I 0,665 und CEM III/B 0,26 kg/kg neu gerechnet (T15-NH-3) – korrigiert
+- [ ] ok
+- [ ] ändern: …
+
 ### qn_lca_regulatorik_1 · Rechtsrahmen, CRREM & Praxis
 
 - **Frage:** Welche Einordnung entspricht dem Rechtsrahmen-Kompendium des Moduls?
@@ -594,9 +610,9 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 80 korrigiert, 0 fraglich, 1
 
 ### qn_materialoptimierung_3 · Materialoptimierung
 
-- **Frage:** Eine Hohlkörperdecke enthält 19,5 m³ Beton (CEM III/A, Prüfalter 56 d: 123 kg CO₂-Äq./m³) und 2470 kg Betonstahl aus der Elektroofenroute (0,42 kg CO₂-Äq./kg). Wie groß ist das GWP A1–A3 nach GWP = V_c · gwp_c + m_s · gwp_s?
-- **Richtige Antwort:** rund 3440 kg CO₂-Äq.
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- **Frage:** Eine Hohlkörperdecke enthält 19,5 m³ Beton (CEM III/A, Prüfalter 56 d: 144 kg CO₂-Äq./m³) und 2470 kg Betonstahl aus der Elektroofenroute (0,42 kg CO₂-Äq./kg). Wie groß ist das GWP A1–A3 nach GWP = V_c · gwp_c + m_s · gwp_s?
+- **Richtige Antwort:** rund 3850 kg CO₂-Äq.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: Beton-GWP CEM III/A bei 56 d jetzt 144 statt 123 kg/m³ (Zement-GWP nach T15-NH-3) – korrigiert
 - [x] ok
 - [ ] ändern: …
 
@@ -618,9 +634,9 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 80 korrigiert, 0 fraglich, 1
 
 ### qn_oekobilanz_lca_g1 · Ökobilanzierung (LCA): Grundlagen
 
-- **Frage:** 1 m³ C30/37 enthält 320 kg Zement. Mit GWP CEM I = 0,80 und CEM III/A = 0,45 kg CO₂-Äq./kg sowie pauschal 30 kg CO₂-Äq./m³ für die übrigen Bestandteile: Um wie viel Prozent sinkt das GWP (A1–A3) beim Wechsel auf CEM III/A?
-- **Richtige Antwort:** um rund 39 %
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktor 48 % → 50 %: der beschriebene Fehler ergibt (286 − 144)/286 ≈ 50 %. · bereits freigegeben (verified)
+- **Frage:** 1 m³ C30/37 enthält 320 kg Zement. Mit GWP CEM I = 0,665 (VDZ-Branchen-EPD, netto) und CEM III/A = 0,40 kg CO₂-Äq./kg (Lehrwert) sowie pauschal 30 kg CO₂-Äq./m³ für die übrigen Bestandteile: Um wie viel Prozent sinkt das GWP (A1–A3) beim Wechsel auf CEM III/A?
+- **Richtige Antwort:** um rund 35 %
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: Lehrbeispiel mit CEM I 0,665 (VDZ-Branchen-EPD, netto) und CEM III/A 0,40 kg/kg neu gerechnet (T15-NH-3) – korrigiert
 - [x] ok
 - [ ] ändern: …
 

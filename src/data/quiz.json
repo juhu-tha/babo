@@ -6061,7 +6061,7 @@
       "Rezyklierte Gesteinskörnung statt Kies und Splitt"
     ],
     "correctIdx": 2,
-    "explanation": "Der Zement verursacht 80 bis 90 % des Beton-GWP; im Lehrbeispiel sinkt das GWP mit CEM III/A von 286 auf 174 kg CO₂-Äq./m³ (−39 %).",
+    "explanation": "Der Zement verursacht 80 bis 90 % des Beton-GWP; im Lehrbeispiel sinkt das GWP mit CEM III/A von 243 auf 158 kg CO₂-Äq./m³ (−35 %).",
     "bloom": "Verstehen",
     "niveau": "B",
     "distraktorFeedback": [
@@ -6078,12 +6078,11 @@
       "targetModuleTab": "materialoptimierung",
       "targetModuleLabel": "Materialoptimierung"
     },
-    "verified": true,
-    "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
-    "reviewedAt": "2026-10-28",
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-29",
+      "ergebnis": "korrigiert",
+      "hinweis": "Umsetzung 29.10.: Lehrbeispiel mit Zement-GWP CEM I 0,665 (VDZ-Branchen-EPD) und CEM III/A 0,40 kg/kg neu gerechnet (T15-NH-3) – korrigiert"
     }
   },
   {
@@ -26079,15 +26078,15 @@
     "topic": "Transportbeton: Hebel der Rezeptur",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 15804+A2",
-    "question": "In der Transportbeton-Übung sinkt das GWP A1–A5 von rund 299 kg CO₂-Äq./m³ (CEM I, 320 kg) auf rund 106 kg CO₂-Äq./m³ beim Preset mit CEM III/B (280 kg) und 550 kg RC-Kies. Worauf ist diese Minderung im Wesentlichen zurückzuführen?",
+    "question": "In der Transportbeton-Übung sinkt das GWP A1–A5 von rund 240 kg CO₂-Äq./m³ (CEM I, 320 kg) auf rund 100 kg CO₂-Äq./m³ beim Preset mit CEM III/B (280 kg) und 550 kg RC-Kies. Worauf ist diese Minderung im Wesentlichen zurückzuführen?",
     "options": [
       "Auf den RC-Kies, dessen Emissionsfaktor nur etwa halb so hoch ist wie der von Primärkies.",
-      "Auf den Emissionsfaktor des Zements (0,28 statt 0,85 kg CO₂-Äq./kg).",
+      "Auf den Emissionsfaktor des Zements (0,26 statt 0,665 kg CO₂-Äq./kg).",
       "Auf die kürzere Anlieferung der Gesteinskörnung (15 statt 25 km) im Modul A2.",
       "Auf die Flugasche, die als Zusatzstoff den Zementgehalt vollständig ersetzt."
     ],
     "correctIdx": 1,
-    "explanation": "A1 Zement: 320 · 0,85 = 272 kg gegenüber 280 · 0,28 = 78,4 kg CO₂-Äq./m³. Der Ersatz von 550 kg Primärkies durch RC-Kies spart dagegen nur 550 · (0,0035 − 0,0018) ≈ 0,9 kg CO₂-Äq./m³; A2-Transporte liegen bei rund 4–5 kg. Das Beton-GWP wird von der Zementart dominiert.",
+    "explanation": "A1 Zement: 320 · 0,665 = 212,8 kg gegenüber 280 · 0,26 = 72,8 kg CO₂-Äq./m³. Der Ersatz von 550 kg Primärkies durch RC-Kies spart dagegen nur 550 · (0,0035 − 0,0018) ≈ 0,9 kg CO₂-Äq./m³; A2-Transporte liegen bei rund 4–5 kg. Das Beton-GWP wird von der Zementart dominiert.",
     "bloom": "Analysieren",
     "niveau": "M",
     "distraktorFeedback": [
@@ -26104,12 +26103,11 @@
       "targetModuleTab": "lca_rechner",
       "targetModuleLabel": "LCA-Rechner & QNG-Nachweis"
     },
-    "verified": true,
-    "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
-    "reviewedAt": "2026-10-28",
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-29",
+      "ergebnis": "korrigiert",
+      "hinweis": "Umsetzung 29.10.: Transportbeton-Übung mit Zement-GWP CEM I 0,665 und CEM III/B 0,26 kg/kg neu gerechnet (T15-NH-3) – korrigiert"
     }
   },
   {
@@ -40436,21 +40434,21 @@
     "topic": "THG-Bilanz eines Bauteils",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 15804+A2",
-    "question": "Eine Hohlkörperdecke enthält 19,5 m³ Beton (CEM III/A, Prüfalter 56 d: 123 kg CO₂-Äq./m³) und 2470 kg Betonstahl aus der Elektroofenroute (0,42 kg CO₂-Äq./kg). Wie groß ist das GWP A1–A3 nach GWP = V_c · gwp_c + m_s · gwp_s?",
+    "question": "Eine Hohlkörperdecke enthält 19,5 m³ Beton (CEM III/A, Prüfalter 56 d: 144 kg CO₂-Äq./m³) und 2470 kg Betonstahl aus der Elektroofenroute (0,42 kg CO₂-Äq./kg). Wie groß ist das GWP A1–A3 nach GWP = V_c · gwp_c + m_s · gwp_s?",
     "options": [
-      "rund 2400 kg CO₂-Äq.",
-      "rund 3670 kg CO₂-Äq.",
-      "rund 4820 kg CO₂-Äq.",
-      "rund 3440 kg CO₂-Äq."
+      "rund 2810 kg CO₂-Äq.",
+      "rund 4120 kg CO₂-Äq.",
+      "rund 4390 kg CO₂-Äq.",
+      "rund 3850 kg CO₂-Äq."
     ],
     "correctIdx": 3,
-    "explanation": "Beton: 19,5 · 123 = 2398,5 kg; Stahl: 2470 · 0,42 = 1037,4 kg; Summe ≈ 3436 kg CO₂-Äq.",
+    "explanation": "Beton: 19,5 · 144 = 2808 kg; Stahl: 2470 · 0,42 = 1037,4 kg; Summe ≈ 3845 kg CO₂-Äq.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
-      "Das ist nur der Betonanteil (19,5 · 123); der Bewehrungsstahl fehlt in der Summe.",
-      "Hier wurde der Beton mit 135 kg/m³ (Prüfalter 28 d) statt mit 123 kg/m³ angesetzt.",
-      "Hier wurde der Stahl mit dem BOF-Wert 0,98 statt mit 0,42 kg CO₂-Äq./kg gerechnet.",
+      "Das ist nur der Betonanteil (19,5 · 144); der Bewehrungsstahl fehlt in der Summe.",
+      "Hier wurde der Beton mit 158 kg/m³ (Prüfalter 28 d) statt mit 144 kg/m³ angesetzt.",
+      "Hier wurde der Stahl mit 0,64 (Betonstahl DE) statt mit 0,42 kg CO₂-Äq./kg gerechnet.",
       ""
     ],
     "gapAnalysis": {
@@ -40461,13 +40459,11 @@
       "targetModuleTab": "materialoptimierung",
       "targetModuleLabel": "Materialoptimierung"
     },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27",
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-10-29",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
+      "hinweis": "Umsetzung 29.10.: Beton-GWP CEM III/A bei 56 d jetzt 144 statt 123 kg/m³ (Zement-GWP nach T15-NH-3) – korrigiert"
     }
   },
   {
@@ -44747,38 +44743,36 @@
     "topic": "Reifealter und Ausschalen",
     "difficulty": "Transfer",
     "normRef": "DIN EN 1992-1-1, Gl. (3.2)",
-    "question": "Eine Decke aus C25/30 mit Zement der Klasse N (s = 0,25) erhärtet 7 Tage bei konstant 12 °C. Wie ist die Ausschaleignung nach dem Vorgehen des Moduls (Reifealter nach Arrhenius, Kriterium β_cc ≥ 0,5) zu bewerten?",
+    "question": "Eine Decke aus C25/30 mit Zement der Klasse N (s = 0,25) erhärtet 7 Tage bei konstant 12 °C. Die Tragwerksplanung gibt für das Ausschalen 50 % von f_ck vor. Wie ist die Ausschaleignung nach dem Vorgehen des Moduls (Reifealter nach Arrhenius, f_ck(t) = f_cm(t) − 8) zu bewerten?",
     "options": [
-      "t_T ≈ 4,8 d, β_cc ≈ 0,70: Ausschalen im Regelfall möglich",
-      "t_T ≈ 7,0 d, β_cc ≈ 0,78: Ausschalen ohne Temperaturkorrektur möglich",
-      "t_T ≈ 4,8 d, β_cc ≈ 0,45: Ausschalen noch nicht möglich",
-      "t_T ≈ 7,2 d, β_cc ≈ 0,80: Ausschalen sofort ohne Prüfung möglich"
+      "t_T ≈ 4,8 d, f_ck(t) ≈ 15,1 N/mm² ≥ 12,5 N/mm²: Vorgabe erreicht",
+      "t_T ≈ 7,0 d, f_ck(t) ≈ 17,7 N/mm²: Vorgabe ohne Temperaturkorrektur erreicht",
+      "t_T ≈ 4,8 d, f_ck(t) ≈ 23,1 N/mm²: Vorgabe weit übertroffen",
+      "t_T ≈ 10,3 d, f_ck(t) ≈ 20,0 N/mm²: Ausschalen sofort ohne Prüfung möglich"
     ],
     "correctIdx": 0,
-    "explanation": "t_T = 7 · exp(4000 · (1/293 − 1/285)) ≈ 4,77 d; β_cc = exp(0,25 · (1 − √(28/4,77))) ≈ 0,70. Mit rund 70 % der 28-Tage-Festigkeit ist das Kriterium von 50 % erfüllt.",
+    "explanation": "t_T = 7 · exp(−[4000/285 − 13,65]) ≈ 4,76 d; β_cc = exp(0,25 · (1 − √(28/4,76))) ≈ 0,70; f_cm(t) = 0,70 · 33 = 23,1 N/mm² und f_ck(t) = 23,1 − 8 = 15,1 N/mm². Die Vorgabe 0,50 · 25 = 12,5 N/mm² ist erreicht (rund 60 % von f_ck); maßgebend bleibt die Freigabe durch die Tragwerksplanung.",
     "bloom": "Bewerten",
     "niveau": "M",
     "distraktorFeedback": [
       "",
       "Die Temperatur von 12 °C verkürzt das wirksame Alter; ohne Korrektur wird die Festigkeit überschätzt.",
-      "Der Wert für β_cc ist zu niedrig; mit s = 0,25 und t_T ≈ 4,8 d ergibt sich etwa 0,70.",
-      "Bei 12 °C ist das Reifealter kleiner als 7 Tage, nicht größer; ein linearer Temperaturansatz ist falsch."
+      "23,1 N/mm² ist f_cm(t); charakteristisch gilt f_ck(t) = f_cm(t) − 8 = 15,1 N/mm².",
+      "Bei 12 °C ist das Reifealter kleiner als 7 Tage, nicht größer; die Temperaturkorrektur wurde falsch herum angesetzt."
     ],
     "gapAnalysis": {
       "topic": "Reifealter und Ausschalen",
       "misconception": "Die Temperaturabhängigkeit der Erhärtung wird vernachlässigt oder falsch herum angesetzt.",
-      "coreRule": "Kühle Bauteile reifen langsamer: t_T < t bei T < 20 °C; Ausschalen bei β_cc ≥ 0,5 (Modulkriterium).",
+      "coreRule": "Kühle Bauteile reifen langsamer: t_T < t bei T < 20 °C; ausgeschalt wird, wenn f_ck(t) die Vorgabe der Tragwerksplanung erreicht (im Modul voreingestellt 50 % von f_ck, Lehrannahme).",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „D. Festigkeitsentwicklung“ im Modul Beton: Mischungsentwurf noch einmal durch.",
       "targetModuleTab": "rechnung_beton",
       "targetModuleLabel": "Beton: Mischungsentwurf"
     },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27",
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-10-29",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
+      "hinweis": "Umsetzung 29.10.: Ausschalkriterium jetzt f_ck(t) gegen die Vorgabe der Tragwerksplanung (50 % von f_ck) statt β_cc ≥ 0,5 (T15-BE-2) – korrigiert"
     }
   },
   {
@@ -45678,15 +45672,15 @@
     "topic": "GWP-Vergleich",
     "difficulty": "Vertiefung",
     "normRef": "",
-    "question": "Für 200 m³ Beton werden verglichen: Rezeptur A mit 320 kg/m³ CEM I (850 kg CO₂-eq/t) und Rezeptur B mit 340 kg/m³ CEM III/B (300 kg CO₂-eq/t). Welche Einsparung erzielt B gegenüber A beim Zement-GWP?",
+    "question": "Für 200 m³ Beton werden verglichen: Rezeptur A mit 320 kg/m³ CEM I (665 kg CO₂-eq/t, VDZ-Branchen-EPD) und Rezeptur B mit 340 kg/m³ CEM III/B (260 kg CO₂-eq/t, Lehrwert). Welche Einsparung erzielt B gegenüber A beim Zement-GWP?",
     "options": [
-      "34,0 t CO₂-eq, das sind rund 62,5 %",
-      "34,0 t CO₂-eq, das sind rund 166,7 %",
-      "35,2 t CO₂-eq, das sind rund 64,7 %",
-      "20,4 t CO₂-eq, das sind rund 37,5 %"
+      "24,9 t CO₂-eq, das sind rund 58,5 %",
+      "24,9 t CO₂-eq, das sind rund 140,7 %",
+      "25,9 t CO₂-eq, das sind rund 60,9 %",
+      "17,7 t CO₂-eq, das sind rund 41,5 %"
     ],
     "correctIdx": 0,
-    "explanation": "GWP_A = 64 t · 0,85 = 54,4 t; GWP_B = 68 t · 0,30 = 20,4 t. ΔGWP = 34,0 t, bezogen auf A rund 62,5 %. Der höhere Zementgehalt von B mindert die Einsparung gegenüber dem reinen Faktorvergleich.",
+    "explanation": "GWP_A = 64 t · 0,665 = 42,56 t; GWP_B = 68 t · 0,26 = 17,68 t. ΔGWP = 24,88 t ≈ 24,9 t, bezogen auf A rund 58,5 %. Der höhere Zementgehalt von B mindert die Einsparung gegenüber dem reinen Faktorvergleich.",
     "bloom": "Analysieren",
     "niveau": "B",
     "distraktorFeedback": [
@@ -45705,9 +45699,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-28",
+      "am": "2026-10-29",
       "ergebnis": "korrigiert",
-      "hinweis": "Zweitprüfung 28.10. (Runde 3): Prozentangaben auf eine Nachkommastelle wie im Modul (62,5 % statt „rund 62 %“; Distraktoren 166,7/64,7/37,5 %) – korrigiert"
+      "hinweis": "Umsetzung 29.10.: Zement-GWP CEM I 665 kg/t (VDZ-Branchen-EPD, netto) und CEM III/B 260 kg/t (Lehrwert) wie im Modul (T15-NH-3) – korrigiert"
     }
   },
   {
@@ -45804,38 +45798,36 @@
     "topic": "Bemessungswert nach Aktenlage",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 1992-1-1/NA, 3.1.6",
-    "question": "Aus den Bestandsunterlagen wurde für einen Altbeton f_ck,cyl = 17,1 N/mm² abgeleitet; Bohrkerne liegen nicht vor. Welcher Bemessungswert f_cd ergibt sich nach dem Vorgehen des Moduls (pauschaler Abschlag 3,0 N/mm², α_cc = 0,85, γ_C = 1,5)?",
+    "question": "Auf Altplänen ist ein Beton B 225 (DIN 1045 vor 1972) angegeben; Bohrkerne liegen nicht vor, über die damalige Bauüberwachung ist nichts bekannt. Welcher Bemessungswert f_cd ergibt sich nach dem Vorgehen des Moduls (Zuordnungstabelle, untere Grenze; α_cc = 0,85, γ_C = 1,5)?",
     "options": [
-      "f_cd = 9,69 N/mm²",
-      "f_cd = 7,99 N/mm²",
-      "f_cd = 9,40 N/mm²",
-      "f_cd = 6,69 N/mm²"
+      "f_cd = 12,75 N/mm²",
+      "f_cd = 5,72 N/mm²",
+      "f_cd = 6,97 N/mm²",
+      "f_cd = 9,04 N/mm²"
     ],
     "correctIdx": 1,
-    "explanation": "f_ck,act = 17,1 − 3,0 = 14,1 N/mm²; f_cd = 0,85 · 14,1/1,5 = 7,99 N/mm².",
+    "explanation": "Die Zuordnungstabelle (Schnell/Fischer/Loch 2008, Tab. 2.1) nennt für B 225 f_ck = 10,1 N/mm² (untere Grenze, C8/10) bis 12,3 N/mm² (obere Grenze, C12/15). Ohne Kenntnis der Bauüberwachung gilt die untere Grenze: f_cd = 0,85 · 10,1/1,5 = 5,72 N/mm². Der Klassenwert 225 kp/cm² wird nicht direkt umgerechnet; die Werte dienen nur der Vorbemessung.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
-      "Hier fehlt der pauschale Abschlag für die Einstufung ohne Bauwerksprüfung.",
+      "12,75 N/mm² entsteht, wenn der Klassenwert 22,5 N/mm² wie ein heutiges f_ck verwendet wird.",
       "",
-      "Hier fehlt der Beiwert α_cc = 0,85.",
-      "Der Abschlag gehört auf die charakteristische Festigkeit, nicht auf den Bemessungswert."
+      "6,97 N/mm² gilt für die obere Grenze (f_ck = 12,3 N/mm²); ohne Kenntnis der Bauüberwachung ist die untere Grenze anzusetzen.",
+      "9,04 N/mm² folgt aus dem früheren Lehransatz 0,8 · 22,5/0,95 − 3; das Modul verwendet jetzt die Zuordnungstabelle."
     ],
     "gapAnalysis": {
       "topic": "Bemessungswert nach Aktenlage",
-      "misconception": "Der Abschlag wird vergessen oder an der falschen Stelle der Rechnung angesetzt.",
-      "coreRule": "Aktenlage: f_ck,act = f_ck,cyl − 3,0; danach f_cd = α_cc · f_ck,act/γ_C.",
-      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schritt 3: Sicherheitsabschlag (fehlende Bauwerksprüfung)“ im Modul Bauen im Bestand noch einmal durch.",
+      "misconception": "Der alte Klassenwert wird wie eine heutige charakteristische Festigkeit verwendet oder die Ausführungsqualität übersehen.",
+      "coreRule": "Aktenlage: f_ck aus der Zuordnungstabelle (untere bzw. obere Grenze der Ausführungsqualität); danach f_cd = α_cc · f_ck/γ_C.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Schritt 2: Zuordnung nach Tabelle (Aktenlage)“ im Modul Bauen im Bestand noch einmal durch.",
       "targetModuleTab": "rechnung_bestand",
       "targetModuleLabel": "Bauen im Bestand"
     },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27",
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-10-29",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
+      "hinweis": "Umsetzung 29.10.: Einstufung nach Aktenlage über die Zuordnungstabelle (Schnell/Fischer/Loch 2008) statt Abschlag 3 N/mm² (T15-BS-3) – korrigiert"
     }
   },
   {
@@ -45939,7 +45931,7 @@
       "Schweißen nur nach Werkstoffprüfung; der Verbund entspricht aber dem heutiger Rippenstähle"
     ],
     "correctIdx": 2,
-    "explanation": "Die Schweißeignung alter Stähle (u. a. Thomasstahl) ist nicht vorausgesetzt; geschweißt wird nur nach Werkstoffprüfung (chemische Analyse, Kerbschlagarbeit). Wegen der glatten Oberfläche ist die Verbundspannung stark abgemindert (Lehransatz im Modul: etwa 30 % gerippter Stäbe); verankert wird über Winkel- oder Endhaken.",
+    "explanation": "Die Schweißeignung alter Stähle (u. a. Thomasstahl) ist nicht vorausgesetzt; geschweißt wird nur nach Werkstoffprüfung (chemische Analyse, Kerbschlagarbeit). Wegen der glatten Oberfläche ist der Verbund stark abgemindert; die Verbundspannungen nach DIN EN 1992-1-1 für Rippenstähle sind nicht übertragbar, verankert wird über Winkel- oder Endhaken.",
     "bloom": "Bewerten",
     "niveau": "M",
     "distraktorFeedback": [
@@ -45958,9 +45950,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
+      "am": "2026-10-29",
       "ergebnis": "korrigiert",
-      "hinweis": "Modulprüfung Tranche 15 (29.10.): Bezeichnung BSt 220/340 GU statt „RU“, „unberuhigt vergossen“ und „η_1 = 0,3“ entfallen; Schweißen nur nach Werkstoffprüfung (T15-BS-2) – korrigiert"
+      "hinweis": "Umsetzung 29.10.: Verbund-Lehransatz „30 % gerippter Stäbe“ gestrichen (T15-BS-6) – korrigiert"
     }
   },
   {
@@ -45977,16 +45969,16 @@
       "Mit Bohrkernen entfällt die Bemessung nach Eurocode, es gilt dann die alte Norm",
       "Bohrkerne ersetzen die Ermittlung der Bewehrung und deren Lage im Bauteil",
       "Mit Bohrkernen darf auf den Teilsicherheitsbeiwert γ_C verzichtet werden",
-      "Der pauschale Abschlag entfällt; die oft höhere reale Festigkeit wird nutzbar"
+      "Statt Tabellenwerten nach Aktenlage gilt die oft höhere reale Festigkeit"
     ],
     "correctIdx": 3,
-    "explanation": "Ohne Prüfung wird nach Aktenlage eingestuft und ein pauschaler Abschlag (im Modul 3,0 N/mm²) abgezogen. Mit Bohrkernen wird die tatsächliche Festigkeit angesetzt; das vermeidet häufig teure Verstärkungen.",
+    "explanation": "Ohne Prüfung wird nach Aktenlage über eine Zuordnungstabelle eingestuft (nur für die Vorbemessung, je nach damaliger Ausführungsqualität). Mit Bohrkernen und Auswertung nach DIN EN 13791 (Kernanzahl, Streuung, kleinster Einzelwert) wird die tatsächliche Festigkeit angesetzt; das vermeidet häufig teure Verstärkungen.",
     "bloom": "Bewerten",
     "niveau": "M",
     "distraktorFeedback": [
       "Auch mit Bohrkernen wird nach heutigem Eurocode bemessen; die Prüfung liefert nur die Kennwerte.",
       "Bohrkerne liefern die Betonfestigkeit; Bewehrung und Lage werden gesondert erkundet.",
-      "γ_C bleibt erhalten; nur der zusätzliche Abschlag für Unsicherheit nach Aktenlage entfällt.",
+      "γ_C bleibt erhalten; nur die vorsichtige Einstufung nach Aktenlage entfällt.",
       ""
     ],
     "gapAnalysis": {
@@ -45997,13 +45989,11 @@
       "targetModuleTab": "rechnung_bestand",
       "targetModuleLabel": "Bauen im Bestand"
     },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27",
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-27",
+      "am": "2026-10-29",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt"
+      "hinweis": "Umsetzung 29.10.: kein pauschaler Abschlag mehr, Aktenlage über Zuordnungstabelle, Prüfung nach DIN EN 13791 (T15-BS-3/-5) – korrigiert"
     }
   },
   {
@@ -48971,22 +48961,22 @@
     "topic": "Zementanteil am Beton-GWP",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 15804+A2",
-    "question": "1 m³ C30/37 enthält 320 kg Zement. Mit GWP CEM I = 0,80 und CEM III/A = 0,45 kg CO₂-Äq./kg sowie pauschal 30 kg CO₂-Äq./m³ für die übrigen Bestandteile: Um wie viel Prozent sinkt das GWP (A1–A3) beim Wechsel auf CEM III/A?",
+    "question": "1 m³ C30/37 enthält 320 kg Zement. Mit GWP CEM I = 0,665 (VDZ-Branchen-EPD, netto) und CEM III/A = 0,40 kg CO₂-Äq./kg (Lehrwert) sowie pauschal 30 kg CO₂-Äq./m³ für die übrigen Bestandteile: Um wie viel Prozent sinkt das GWP (A1–A3) beim Wechsel auf CEM III/A?",
     "options": [
-      "um rund 44 %",
-      "um rund 39 %",
+      "um rund 40 %",
+      "um rund 47 %",
       "um rund 35 %",
-      "um rund 50 %"
+      "um rund 60 %"
     ],
-    "correctIdx": 1,
-    "explanation": "CEM I: 320 · 0,80 + 30 = 286; CEM III/A: 320 · 0,45 + 30 = 174 kg CO₂-Äq./m³. Minderung (286 − 174)/286 = 39 %.",
+    "correctIdx": 2,
+    "explanation": "CEM I: 320 · 0,665 + 30 = 242,8 ≈ 243; CEM III/A: 320 · 0,40 + 30 = 158 kg CO₂-Äq./m³. Minderung (243 − 158)/243 ≈ 35 %. Ohne die übrigen Bestandteile ergäben sich rund 40 %.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
-      "44 % ist die Minderung des Zement-GWP allein (0,35/0,80); der Pauschalanteil von 30 kg bleibt gleich und verdünnt die Wirkung.",
+      "40 % ist die Minderung des Zement-GWP allein (0,265/0,665); der Pauschalanteil von 30 kg bleibt gleich und verdünnt die Wirkung.",
+      "47 % entsteht ((243 − 128)/243), wenn die 30 kg nur bei CEM I addiert werden; sie gelten für beide Varianten.",
       "",
-      "35 % ergibt sich, wenn die Differenz auf 320 kg CO₂-Äq. statt auf das Gesamt-GWP von 286 kg bezogen wird.",
-      "50 % entsteht ((286 − 144)/286), wenn die 30 kg nur bei CEM I addiert werden; sie gelten für beide Varianten."
+      "60 % ist das Verhältnis der Zementfaktoren (0,40/0,665), nicht die Minderung."
     ],
     "gapAnalysis": {
       "topic": "Zementanteil am Beton-GWP",
@@ -48996,13 +48986,11 @@
       "targetModuleTab": "oekobilanz_lca",
       "targetModuleLabel": "Ökobilanzierung (LCA): Grundlagen"
     },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27",
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
+      "am": "2026-10-29",
       "ergebnis": "korrigiert",
-      "hinweis": "Distraktor 48 % → 50 %: der beschriebene Fehler ergibt (286 − 144)/286 ≈ 50 %."
+      "hinweis": "Umsetzung 29.10.: Lehrbeispiel mit CEM I 0,665 (VDZ-Branchen-EPD, netto) und CEM III/A 0,40 kg/kg neu gerechnet (T15-NH-3) – korrigiert"
     }
   },
   {

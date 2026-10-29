@@ -23,6 +23,8 @@
 import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
 import { saugKlasse, wWertAusKarsten, type SaugKlasse } from './karsten';
 import { koeffizientAusTiefe, zeitBisTiefe } from './schnellkarbonatisierung';
+import { kn13791, margin13791 } from '../utils/schadensKern';
+import { C_CLASSES } from '../utils/bestandKern';
 
 export interface Ergebnis { gueltig: boolean; hinweise: Hinweis[] }
 const abschluss = (h: Hinweis[]): Ergebnis => ({ gueltig: !hatFehler(h), hinweise: h });
@@ -279,6 +281,38 @@ export function bohrkern(durchmesserMm: number, laengeMm: number, kraftKn: numbe
   const bezug = Math.abs(schlankheit - 1) < 0.05 ? 'wuerfel' : Math.abs(schlankheit - 2) < 0.1 ? 'zylinder' : 'keiner';
   if (bezug === 'keiner') h.push({ stufe: 'warnung', feld: 'laengeMm', text: 'Kein Bezugskörper nach DIN EN 13791 – Kern auf L/D = 1 oder 2 ablängen.' });
   return { flaecheMm2, festigkeit, schlankheit, bezug, ...abschluss(h) };
+}
+
+// ---------------------------------------------------------------- In-situ-Druckfestigkeit (DIN EN 13791)
+/**
+ * Charakteristische In-situ-Druckfestigkeit aus einer Bohrkernserie nach DIN EN 13791 (n ≥ 8):
+ * f_ck,is = min(f_m,is − k_n·s; f_is,lowest + M) mit k_n und M aus dem Kern src/utils/schadensKern.ts (kn13791, margin13791;
+ * Modulprüfung T12/Runde 5). Zuordnung zur Festigkeitsklasse über f_ck,is ≥ 0,85·f_ck der Klasse (Würfel- bzw. Zylinderwert
+ * je nach Bezugskörper; Kern h/d = 1 entspricht dem 150-mm-Würfel). Für 3 bis 7 Kerne sieht die Norm ein eigenes Verfahren vor
+ * (hier nicht abgebildet). Eine Mindeststandardabweichung ist nicht angesetzt (am Normtext prüfen; vorläufig, F-Freigabe).
+ * Umsetzung 29.10.2026 (T15-BS-5) für die Beispielrechnung „Bauen im Bestand“.
+ */
+export interface InsituEingabe { n: number; mittel: number; s: number; kleinster: number; bezug: 'wuerfel' | 'zylinder' }
+export interface InsituErgebnis extends Ergebnis {
+  kn: number; M: number; ausStreuung: number; ausKleinstwert: number; fckIs: number;
+  /** höchste Klasse mit 0,85·f_ck(Klasse) ≤ f_ck,is; null = unter C8/10 */
+  klasse: string | null; fck: number; fckCube: number;
+}
+export function insituDruckfestigkeit13791(e: InsituEingabe): InsituErgebnis {
+  const h: Hinweis[] = [];
+  muss(h, istEndlich(e.n, e.mittel, e.s, e.kleinster) && e.mittel > 0 && e.s >= 0 && e.kleinster > 0, 'eingabe', 'Mittelwert und kleinster Wert müssen größer als 0 sein, die Standardabweichung ≥ 0.');
+  muss(h, e.n >= 8, 'n', 'Für weniger als 8 Kerne sieht DIN EN 13791 ein eigenes Verfahren vor; es ist hier nicht abgebildet.');
+  muss(h, e.kleinster <= e.mittel + 1e-9, 'kleinster', 'Der kleinste Einzelwert kann nicht über dem Mittelwert liegen.');
+  const kn = kn13791(e.n);
+  const M = margin13791(e.kleinster);
+  const ausStreuung = e.mittel - kn * e.s;
+  const ausKleinstwert = e.kleinster + M;
+  const fckIs = Math.min(ausStreuung, ausKleinstwert);
+  let klasse: string | null = null; let fck = 0; let fckCube = 0;
+  for (const [zyl, wue] of C_CLASSES) {
+    if (0.85 * (e.bezug === 'wuerfel' ? wue : zyl) <= fckIs + 1e-9) { klasse = `C${zyl}/${wue}`; fck = zyl; fckCube = wue; }
+  }
+  return { kn, M, ausStreuung, ausKleinstwert, fckIs, klasse, fck, fckCube, ...abschluss(h) };
 }
 
 // ---------------------------------------------------------------- Impact-Echo

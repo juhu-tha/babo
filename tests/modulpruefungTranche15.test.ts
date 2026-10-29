@@ -5,8 +5,14 @@
 // Kerne in src/calc/ (vorher inline in src/modules/Beispielrechnungen.tsx); geprüft werden daher die Kernaufrufe mit den Eingaben
 // des Moduls.
 import { stoffraum, K_WERT_DIN1045_2, maxFaFaktor, type MischungEingabe } from '../src/calc/mischung';
-import { temperaturFaktor, betaCc, ZEMENT_S } from '../src/calc/betonkennwerte';
-import { fckZumAlter, fcdBeton, FCD_MODUL, HOLZ_EN338 } from '../src/data/kennwerte';
+import { temperaturFaktor, betaCc, ZEMENT_S, ausschalVergleich, AUSSCHAL_VORGABE_LEHRANNAHME } from '../src/calc/betonkennwerte';
+import { insituDruckfestigkeit13791 } from '../src/calc/bauwerksuntersuchung';
+import { ZEMENT_GWP_KG, ZEMENT_GWP_BRUTTO_KG, KLINKER_MITTE, lehrwertAusKlinker } from '../src/data/zementGwp';
+import { ZEMENT_DATA } from '../src/calc/mischung';
+import { ZEMENT_GWP_JE_KG } from '../src/calc/materialoptimierung';
+import { LCA_BENCHMARKS } from '../src/modules/lca/transportbetonKennwerte';
+import { historicalData } from '../src/data/historicalMaterialsData';
+import { fckZumAlter, fcdBeton, FCD_MODUL, HOLZ_EN338, ALTBETON_ZUORDNUNG } from '../src/data/kennwerte';
 import { bemesseBiegung, MU_LIM_STAHL } from '../src/calc/biegung';
 import { bemesseDruckstab } from '../src/calc/holzbau';
 import { bemesseVerankerung } from '../src/calc/verankerung';
@@ -88,13 +94,16 @@ pruefe('HO3 12 × 12 cm η', holz(3.0, 12, 65).utilization / 100, 0.7892); pruef
 const uptake = (k: number, t: number) => (k * Math.sqrt(t)) / 1000 * 300 * 0.65 * 0.60 * (44.01 / 56.08);
 pruefe('NH1 k 4, 50 a', uptake(4, 50), 2.59701); pruefe('NH2 k 4, 100 a', uptake(4, 100), 3.67273);
 const gwp = (cA: number, gA: number, cB: number, gB: number) => { const A = 450 * cA / 1000 * gA / 1000, B = 450 * cB / 1000 * gB / 1000; return { d: A - B, p: (A - B) / A * 100 }; };
-pruefe('NH3 ΔGWP Vorgabe', gwp(340, 850, 350, 290).d, 84.375); pruefe('NH3 Einsparung %', gwp(340, 850, 350, 290).p, 64.8789);
-pruefe('NH4 c_B 450', gwp(340, 850, 450, 290).p, 54.8443);
+// Umsetzung 29.10.2026 (T15-NH-3): Vorgaben CEM I 665 kg/t (VDZ-Branchen-EPD 2022, netto), CEM III/B 260 kg/t (Lehrwert); vorher 850/290
+pruefe('NH3 ΔGWP Vorgabe', gwp(340, 665, 350, 260).d, 60.795); pruefe('NH3 Einsparung %', gwp(340, 665, 350, 260).p, 59.7523);
+pruefe('NH4 c_B 450', gwp(340, 665, 450, 260).p, 48.2530);
 gilt(!nachhaltigkeit.texte.typisch103.includes('Innenbereich/trocken'), 'T15-NH-1 Richtwerte k nicht mehr vertauscht (innen schneller als außen beregnet)');
 
-// 5. rechnung_bestand – Lehransatz 0,8·β_W/0,95 − 3 und Fließkraft
-const fcdBestand = (bw: number) => fcdBeton(0.8 * bw / 0.95 - 3, FCD_MODUL.beispielBestand);
-pruefe('BS1 B 225 f_cd', fcdBestand(22.5), 9.0368); pruefe('BS2 B 300 f_cd', fcdBestand(30), 12.6158);
+// 5. rechnung_bestand – Umsetzung 29.10.2026 (T15-BS-3 bis -6): Zuordnungstabelle (Schnell/Fischer/Loch 2008, Tab. 2.1) statt
+//    Lehransatz 0,8·β_W/0,95 − 3 (vorher B 225: f_cd 9,04; B 300: 12,62 N/mm²); Fließkraft unverändert
+const fcdTab = (fck: number | null) => fcdBeton(fck ?? NaN, FCD_MODUL.beispielBestand);
+pruefe('BS1 B 225 untere Grenze f_cd = 0,85·10,1/1,5', fcdTab(ALTBETON_ZUORDNUNG.B225.fckUnten), 5.72333); pruefe('BS1 B 225 obere Grenze', fcdTab(ALTBETON_ZUORDNUNG.B225.fckOben), 6.97);
+pruefe('BS2 B 300 untere Grenze f_cd = 0,85·15,5/1,5', fcdTab(ALTBETON_ZUORDNUNG.B300.fckUnten), 8.78333);
 pruefe('BS3 C20/25 f_cd', fcdBeton(20, FCD_MODUL.beispielBestand), 11.3333);
 const fyd = (fy: number) => (Math.PI * 144 / 4) * fy / 1.15 / 1000;
 pruefe('BS4 Ø 12 BSt 220', fyd(220), 21.636); pruefe('BS4 Ø 12 BSt 500', fyd(500), 49.1728);
@@ -111,6 +120,43 @@ pruefe('BT1 Saul f_T(5 °C)', 30 / (5 + 10), 2.0); pruefe('BT2 r = 18/40', 18 / 
 gilt(!JSON.stringify(bautagebuch).includes('verschlüsselt und') && !JSON.stringify(bautagebuch).includes('gerichtsicher'), 'T15-BT-1 keine Zusicherung „verschlüsselt“/„gerichtssicher“');
 gilt(labor.texte.jedeNochSoKleine.includes('Bayerische Landesunfallkasse') && !JSON.stringify(labor).includes('109-009') && !labor.texte.krebserzeugendKat1a.includes('1A'), 'T15-LS Unfallkasse, DGUV-Vorschriften, TRGS 906');
 gilt(beton.werte.mischtemperaturUnterNull.length > 0 && !beton.texte.ausschaleignungCenRichtwert.includes('CEN'), 'T15-BE-2/-5 Texte');
+
+// 7. Umsetzung 29.10.2026 (Entscheidungen zu Tranche 15) – Sollwerte von Hand
+// T15-BE-2: Ausschalen über f_ck(t) gegen Vorgabe der Tragwerksplanung (% von f_ck), Voreinstellung 50 % als Lehrannahme
+const au1 = ausschalVergleich(25, 15.1118, AUSSCHAL_VORGABE_LEHRANNAHME);
+pruefe('BE-2 Vorgabe 50 % von 25', au1.erforderlich, 12.5); pruefe('BE-2 Anteil f_ck(t)/f_ck', au1.anteil, 0.604472); gilt(au1.erfuellt, 'BE-2 15,11 ≥ 12,5 erfüllt');
+gilt(!ausschalVergleich(30, 17.1788, 60).erfuellt && ausschalVergleich(30, 17.1788, 55).erfuellt, 'BE-2 C30/37: 60 % (18,0) nicht, 55 % (16,5) erfüllt');
+gilt(beton.texte.ausschalVorgabeHinweis.includes('Lehrannahme') && !JSON.stringify(beton.texte).includes('β_cc = f_cm(t)/f_cm)'), 'BE-2 Texte');
+// T15-BE-6: Wasseranspruch als Lehrwerte gekennzeichnet
+gilt(beton.texte.derWasserbedarfRichtetSich.includes('Lehrwerte') && !beton.texte.derWasserbedarfRichtetSich.includes('DBV'), 'BE-6 Lehrwerte statt „Erfahrungswerte nach DBV“');
+// T15-NH-3: gemeinsame Konstante, VDZ-Branchen-EPD CEM I 665 (brutto 875), CEM II/C-M 400 (brutto 510); Lehrwerte aus Klinkeranteil
+gilt(ZEMENT_GWP_KG['CEM I'] === 0.665 && ZEMENT_GWP_KG['CEM II/C-M'] === 0.40 && ZEMENT_GWP_BRUTTO_KG['CEM I'] === 0.875 && ZEMENT_GWP_BRUTTO_KG['CEM II/C-M'] === 0.51, 'NH-3 belegte Werte');
+for (const [art, k] of Object.entries(KLINKER_MITTE)) pruefe(`NH-3 Lehrwert ${art}`, ZEMENT_GWP_KG[art as keyof typeof KLINKER_MITTE], lehrwertAusKlinker(k), 1e-9);
+pruefe('NH-3 Lehrwert CEM III/B von Hand: 0,400 + 0,265·(0,27 − 0,50)/0,45', 0.400 + 0.265 * (0.27 - 0.50) / 0.45, 0.264556, 1e-5);
+gilt(ZEMENT_DATA['CEM I'].co2 === 0.665 && ZEMENT_GWP_JE_KG.cem1 === 0.665 && LCA_BENCHMARKS.gwp_cem_I === 0.665 && LCA_BENCHMARKS.gwp_cem_III_B === 0.26, 'NH-3 Module mit gemeinsamer Konstante');
+gilt(nachhaltigkeit.texte.gwpVorgabenQuelle.includes('665') && nachhaltigkeit.texte.gwpVorgabenQuelle.includes('875'), 'NH-3 Quelle netto/brutto im Modul');
+// T15-BS-3/-4: gemeinsame Zuordnungstabelle, B 450/B 600 als Spannbeton, Historische Kennwerte aus derselben Tabelle
+gilt(ALTBETON_ZUORDNUNG.B225.fckUnten === 10.1 && ALTBETON_ZUORDNUNG.B225.klasseOben === 'C12/15' && ALTBETON_ZUORDNUNG.B300.fckOben === 18.0 && ALTBETON_ZUORDNUNG.B450.spannbeton && ALTBETON_ZUORDNUNG.B600.spannbeton, 'BS-3/-4 Tabelle');
+const histB225 = historicalData.beton.data.find(z => z.old.startsWith('B 225'));
+gilt(!!histB225 && histB225.new.includes('C8/10') && histB225.new.includes('C12/15') && String(histB225.f_new).includes('10,1'), 'BS-3 Historische Kennwerte aus gemeinsamer Tabelle');
+gilt(!historicalData.beton.data.some(z => /^B (120|160|225|300) /.test(z.old) && /C ?(20\/25|25\/30)/.test(z.new)), 'BS-3 alte Zuordnung B 225 → C20/25, B 300 → C25/30 entfernt');
+// T15-BS-5: DIN EN 13791 (n ≥ 8): f_ck,is = min(f_m − k_n·s; f_lowest + M); Klasse über 0,85·f_ck,cube
+const is1 = insituDruckfestigkeit13791({ n: 8, mittel: 28.5, s: 2.0, kleinster: 25.5, bezug: 'wuerfel' });
+pruefe('BS-5 f_ck,is = 28,5 − 2,00·2,0', is1.fckIs, 24.5); gilt(is1.klasse === 'C20/25' && is1.fck === 20 && is1.M === 4, `BS-5 Klasse ${is1.klasse}`);
+const is2 = insituDruckfestigkeit13791({ n: 8, mittel: 30.0, s: 2.0, kleinster: 25.5, bezug: 'wuerfel' });
+pruefe('BS-5 Mittel 30 → 26,0', is2.fckIs, 26.0); gilt(is2.klasse === 'C25/30', 'BS-5 26,0 ≥ 0,85·30 → C25/30');
+gilt(insituDruckfestigkeit13791({ n: 8, mittel: 30.0, s: 3.0, kleinster: 25.5, bezug: 'wuerfel' }).klasse === 'C20/25', 'BS-5 s = 3,0 → 24,0 → C20/25');
+const is3 = insituDruckfestigkeit13791({ n: 8, mittel: 30.0, s: 0.5, kleinster: 21.0, bezug: 'wuerfel' });
+pruefe('BS-5 kleinster Wert maßgebend: 21 + 4', is3.fckIs, 25.0); gilt(is3.klasse === 'C20/25', 'BS-5 25,0 < 25,5');
+pruefe('BS-5 n = 20: 28,5 − 1,76·2,0', insituDruckfestigkeit13791({ n: 20, mittel: 28.5, s: 2.0, kleinster: 25.5, bezug: 'wuerfel' }).fckIs, 24.98);
+gilt(insituDruckfestigkeit13791({ n: 8, mittel: 28.5, s: 2.0, kleinster: 25.5, bezug: 'zylinder' }).klasse === 'C25/30', 'BS-5 Zylinderbezug: 24,5 ≥ 0,85·25');
+gilt(!insituDruckfestigkeit13791({ n: 7, mittel: 28.5, s: 2.0, kleinster: 25.5, bezug: 'wuerfel' }).gueltig, 'BS-5 n < 8 nicht abgebildet');
+// T15-BS-6: Verbund-Lehransätze 30 %/70 % gestrichen
+gilt(!/30 %|70 %/.test(bestand.texte.keineSchweißeignungSchweißenIst + bestand.texte.schweißeignungKritischMeistUnberuhigt), 'BS-6 keine 30-/70-%-Ansätze');
+gilt(!JSON.stringify(bestand).includes('3,0 N/mm²'), 'BS-3 kein pauschaler Abschlag 3,0 N/mm² mehr');
+// T15-LS-4: Funktionsbezeichnungen statt Namen/Durchwahlen, Vermerk passiv ohne Namen
+gilt(!/Huber|Lechner|Sedlmeier|Hager|Bolten|5586|-3[0-9]{3}\b/.test(JSON.stringify(labor)), 'LS-4 keine Namen und Durchwahlen');
+gilt(labor.werte.oktober2026LaborordnungNotfallplan.includes('durch die Laborleitung geprüft') && labor.texte.ueberHochschulzentrale.includes('Hochschulzentrale') && labor.texte.sicherheitsbeauftragte.includes('Sicherheitsbeauftragte'), 'LS-4 Funktionsbezeichnungen');
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
 console.log('OK: Modulprüfung Tranche 15');

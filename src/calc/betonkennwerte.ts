@@ -125,6 +125,18 @@ export function betaCc(s: number, t: number): number {
   return Math.exp(s * (1 - Math.sqrt(28 / t)));
 }
 
+/**
+ * Ausschalkriterium (Entscheidung 29.10.2026, T15-BE-2): Vergleich der charakteristischen Festigkeit f_ck(t) mit der
+ * Vorgabe der Tragwerksplanung in % von f_ck. Die Voreinstellung 50 % ist eine Lehrannahme (keine Normvorgabe);
+ * maßgebend sind Tragwerksplanung und Festigkeitsnachweis nach DIN EN 13670/DIN 1045-3.
+ */
+export const AUSSCHAL_VORGABE_LEHRANNAHME = 50;
+export interface AusschalVergleich { erforderlich: number; anteil: number; erfuellt: boolean }
+export function ausschalVergleich(fck: number, fckT: number, vorgabeProzent: number): AusschalVergleich {
+  const erforderlich = (vorgabeProzent / 100) * fck;
+  return { erforderlich, anteil: fck > 0 ? fckT / fck : 0, erfuellt: fckT >= erforderlich - 1e-9 };
+}
+
 /** Mittlerer E-Modul E_cm = 22 000·(f_cm/10)^0,3·α_E in N/mm² (Tab. 3.1, 3.1.3(2)) */
 export function ecmVonFcm(fcm: number, alphaE = 1.0): number {
   return 22000 * Math.pow(fcm / 10, 0.3) * alphaE;

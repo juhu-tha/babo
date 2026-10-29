@@ -5,35 +5,61 @@ import React from 'react';
 import inhalt from '@/content/beispielrechnungen/RechnungBestand.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ReiterLeiste, alsReiter, reiterPanel } from '../../components/ui/Auswahlgruppe';
+import { ALTBETON_ZUORDNUNG, KP_CM2_IN_N_MM2, type AltbetonKlasse, type AltbetonZuordnung } from '@/src/data/kennwerte';
+import type { InsituErgebnis } from '@/src/calc/bauwerksuntersuchung';
 
 interface RechnungBestandProps {
   bestandSubTab: "beton" | "stahl";
-  beta_WN: number;
-  beta_WN_150: number;
+  altbeton: AltbetonZuordnung;
+  altbetonGrenze: 'unten' | 'oben';
+  setAltbetonGrenze: React.Dispatch<React.SetStateAction<'unten' | 'oben'>>;
+  fckTabelle: number | null;
+  klasseTabelle: string | null;
+  insitu: InsituErgebnis;
+  kernAnzahl: number;
+  setKernAnzahl: React.Dispatch<React.SetStateAction<number>>;
+  kernStreuung: number;
+  setKernStreuung: React.Dispatch<React.SetStateAction<number>>;
+  kernKleinster: number;
+  setKernKleinster: React.Dispatch<React.SetStateAction<number>>;
   diameterStahl: number;
-  f_cd_bestand: number;
-  f_ck_act: number;
-  f_ck_cyl_raw: number;
-  f_ck_final: number;
-  f_ck_tested: number;
+  f_cd_bestand: number | null;
+  f_ck_final: number | null;
   f_yd_stahl: number;
   f_yk_stahl: number;
   hasPruefung: boolean;
-  histBetonKlasse: "B100" | "B150" | "B225" | "B300" | "B450" | "B600";
+  histBetonKlasse: AltbetonKlasse;
   histStahlKlasse: "BSt220" | "BSt420" | "BSt500";
   pruefFestigkeit: number;
   setBestandSubTab: React.Dispatch<React.SetStateAction<"beton" | "stahl">>;
   setDiameterStahl: React.Dispatch<React.SetStateAction<number>>;
   setHasPruefung: React.Dispatch<React.SetStateAction<boolean>>;
-  setHistBetonKlasse: React.Dispatch<React.SetStateAction<"B100" | "B150" | "B225" | "B300" | "B450" | "B600">>;
+  setHistBetonKlasse: React.Dispatch<React.SetStateAction<AltbetonKlasse>>;
   setHistStahlKlasse: React.Dispatch<React.SetStateAction<"BSt220" | "BSt420" | "BSt500">>;
   setPruefFestigkeit: React.Dispatch<React.SetStateAction<number>>;
   steelArea: number;
-  testedKlasseLabel: string;
   yieldCapacity: number;
 }
 
-export default function RechnungBestand({ bestandSubTab, beta_WN, beta_WN_150, diameterStahl, f_cd_bestand, f_ck_act, f_ck_cyl_raw, f_ck_final, f_ck_tested, f_yd_stahl, f_yk_stahl, hasPruefung, histBetonKlasse, histStahlKlasse, pruefFestigkeit, setBestandSubTab, setDiameterStahl, setHasPruefung, setHistBetonKlasse, setHistStahlKlasse, setPruefFestigkeit, steelArea, testedKlasseLabel, yieldCapacity }: RechnungBestandProps) {
+const KLASSEN = Object.keys(ALTBETON_ZUORDNUNG) as AltbetonKlasse[];
+const klasseText = (k: string | null) => k ?? '–';
+
+/** Schieberegler mit Beschriftung und Wertanzeige */
+function Regler({ label, wert, einheit, min, max, step, setze }: { label: string; wert: number; einheit: string; min: number; max: number; step: number; setze: (v: number) => void }) {
+  return (
+    <div className="space-y-1">
+      <div className="flex justify-between font-bold">
+        <span className="text-slate-700"><MdText text={label} /></span>
+        <span className="text-shiraz">{formatDeWert(wert)}{einheit}</span>
+      </div>
+      <input type="range" aria-label={label} min={min} max={max} step={step} value={wert}
+        onChange={(e) => setze(parseFloat(e.target.value))} className="w-full accent-shiraz" />
+    </div>
+  );
+}
+
+export default function RechnungBestand({ bestandSubTab, altbeton, altbetonGrenze, setAltbetonGrenze, fckTabelle, klasseTabelle, insitu, kernAnzahl, setKernAnzahl, kernStreuung, setKernStreuung, kernKleinster, setKernKleinster, diameterStahl, f_cd_bestand, f_ck_final, f_yd_stahl, f_yk_stahl, hasPruefung, histBetonKlasse, histStahlKlasse, pruefFestigkeit, setBestandSubTab, setDiameterStahl, setHasPruefung, setHistBetonKlasse, setHistStahlKlasse, setPruefFestigkeit, steelArea, yieldCapacity }: RechnungBestandProps) {
+  const betaW = altbeton.kpCm2 * KP_CM2_IN_N_MM2;
   return (
       <div className="flex flex-col gap-6 animate-in fade-in duration-300">
         {/* SUB-TABS */}
@@ -63,30 +89,42 @@ export default function RechnungBestand({ bestandSubTab, beta_WN, beta_WN_150, d
                 <h3 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2 flex items-center gap-1.5">
                   <History className="text-shiraz" size={16} /><MdText text={inhalt.texte.historischeBetongüteNachweisart} /></h3>
 
-                {/* Betonklasse Selector */}
+                {/* Betonklasse (T15-BS-4: B 120 … B 300, B 450/B 600 als Spannbeton) */}
                 <div className="space-y-2 text-xs">
                   <label className="font-bold text-slate-700 block"><MdText text={inhalt.texte.historischeFestigkeitsklasseDin1045} /></label>
-                  <select aria-label={inhalt.werte.historischeFestigkeitsklasseDin1045} 
-                    value={histBetonKlasse} 
-                    onChange={(e) => setHistBetonKlasse(e.target.value as "B100" | "B150" | "B225" | "B300" | "B450" | "B600")}
+                  <select aria-label={inhalt.werte.historischeFestigkeitsklasseDin1045}
+                    value={histBetonKlasse}
+                    onChange={(e) => setHistBetonKlasse(e.target.value as AltbetonKlasse)}
                     className="w-full p-2 mt-1 rounded-lg border border-slate-200 font-bold text-xs"
                   >
-                    <option value="B100">B 100 (Nominalfestigkeit 10,0 N/mm²)</option>
-                    <option value="B150">B 150 (Nominalfestigkeit 15,0 N/mm²)</option>
-                    <option value="B225">B 225 (Nominalfestigkeit 22,5 N/mm²)</option>
-                    <option value="B300">B 300 (Nominalfestigkeit 30,0 N/mm²)</option>
-                    <option value="B450">B 450 (Nominalfestigkeit 45,0 N/mm²)</option>
-                    <option value="B600">B 600 (Nominalfestigkeit 60,0 N/mm²)</option>
+                    {KLASSEN.map(k => {
+                      const z = ALTBETON_ZUORDNUNG[k];
+                      return <option key={k} value={k}>{z.label} ({formatDeWert(z.kpCm2)} kp/cm² ≈ {formatDeZahl(z.kpCm2 * KP_CM2_IN_N_MM2, 1)} N/mm²){z.spannbeton ? ` – ${inhalt.werte.spannbetonKennzeichnung}` : ''}</option>;
+                    })}
                   </select>
                   <span className="text-xxs text-slate-500 block"><MdText text={inhalt.texte.damalsGemessenAnPrüfwürfeln} /></span>
                 </div>
 
+                {!hasPruefung && !altbeton.spannbeton && (
+                  <div className="space-y-2 text-xs">
+                    <label className="font-bold text-slate-700 block"><MdText text={inhalt.texte.ausfuehrungsqualitaet} /></label>
+                    <select aria-label={inhalt.werte.ausfuehrungsqualitaet}
+                      value={altbetonGrenze}
+                      onChange={(e) => setAltbetonGrenze(e.target.value as 'unten' | 'oben')}
+                      className="w-full p-2 mt-1 rounded-lg border border-slate-200 font-bold text-xs"
+                    >
+                      <option value="unten">{inhalt.werte.grenzeUnten}</option>
+                      <option value="oben">{inhalt.werte.grenzeOben}</option>
+                    </select>
+                  </div>
+                )}
+
                 {/* Checkbox for testing */}
                 <div className="pt-2 flex items-center gap-2">
-                  <input 
-                    type="checkbox" 
-                    id="hasPruefung" 
-                    checked={hasPruefung} 
+                  <input
+                    type="checkbox"
+                    id="hasPruefung"
+                    checked={hasPruefung}
                     onChange={(e) => setHasPruefung(e.target.checked)}
                     className="rounded accent-shiraz cursor-pointer"
                   />
@@ -94,23 +132,49 @@ export default function RechnungBestand({ bestandSubTab, beta_WN, beta_WN_150, d
                 </div>
 
                 {hasPruefung && (
-                  <div className="space-y-2 text-xs bg-slate-50 p-3 rounded-lg border border-slate-150 animate-in slide-in-from-top-2 duration-200">
-                    <div className="flex justify-between font-bold">
-                      <span className="text-slate-700"><MdText text={inhalt.texte.mittlerePrüffestigkeit150mmWürfel} /></span>
-                      <span className="text-shiraz">{formatDeZahl(pruefFestigkeit, 1)} N/mm²</span>
-                    </div>
-                    <input 
-                      type="range" 
-                      min="10.0" 
-                      max="70.0" 
-                      step="0.5" 
-                      value={pruefFestigkeit} 
-                      onChange={(e) => setPruefFestigkeit(parseFloat(e.target.value))}
-                      className="w-full accent-shiraz"
-                    />
+                  <div className="space-y-3 text-xs bg-slate-50 p-3 rounded-lg border border-slate-150 animate-in slide-in-from-top-2 duration-200">
+                    <Regler label={inhalt.texte.kernAnzahl} wert={kernAnzahl} einheit="" min={8} max={30} step={1} setze={setKernAnzahl} />
+                    <Regler label={inhalt.texte.mittlerePrüffestigkeit150mmWürfel} wert={pruefFestigkeit} einheit=" N/mm²" min={10} max={70} step={0.5} setze={setPruefFestigkeit} />
+                    <Regler label={inhalt.texte.kernStreuung} wert={kernStreuung} einheit=" N/mm²" min={0} max={8} step={0.1} setze={setKernStreuung} />
+                    <Regler label={inhalt.texte.kernKleinster} wert={kernKleinster} einheit=" N/mm²" min={5} max={70} step={0.5} setze={setKernKleinster} />
                     <span className="text-xxs text-slate-500 block"><MdText text={inhalt.texte.mittlererWertFCm} /></span>
                   </div>
                 )}
+              </div>
+
+              {/* Gemeinsame Zuordnungstabelle (T15-BS-3) */}
+              <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-2 text-xs">
+                <h3 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2"><MdText text={inhalt.texte.zuordnungstabelleTitel} /></h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left border-collapse">
+                    <thead>
+                      <tr className="border-b border-slate-200 text-slate-600">
+                        <th scope="col" className="py-1.5 pr-2 font-bold">{inhalt.werte.spalteGuete}</th>
+                        <th scope="col" className="py-1.5 pr-2 font-bold">{inhalt.werte.spalteUnten}</th>
+                        <th scope="col" className="py-1.5 font-bold">{inhalt.werte.spalteOben}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {KLASSEN.map(k => {
+                        const z = ALTBETON_ZUORDNUNG[k];
+                        return (
+                          <tr key={k} className={`border-b border-slate-100 ${k === histBetonKlasse ? 'bg-shiraz/5 font-bold' : ''}`}>
+                            <th scope="row" className="py-1.5 pr-2 font-bold text-slate-800">{z.label}</th>
+                            {z.spannbeton ? (
+                              <td colSpan={2} className="py-1.5 text-slate-600">{inhalt.werte.spannbetonKennzeichnung}</td>
+                            ) : (
+                              <>
+                                <td className="py-1.5 pr-2">{formatDeZahl(z.fckUnten, 1)} N/mm² · {klasseText(z.klasseUnten)}</td>
+                                <td className="py-1.5">{formatDeZahl(z.fckOben, 1)} N/mm² · {klasseText(z.klasseOben)}</td>
+                              </>
+                            )}
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="text-xxs text-slate-500"><MdText text={inhalt.texte.zuordnungstabelleQuelle} /></p>
               </div>
             </div>
 
@@ -119,27 +183,52 @@ export default function RechnungBestand({ bestandSubTab, beta_WN, beta_WN_150, d
                 <h3 className="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2"><MdText text={inhalt.texte.umrechnungNachDafstbRichtlinie} /></h3>
 
                 <div className="space-y-4 text-xs text-text-main/80 leading-relaxed font-normal font-sans">
-                  <div><MdText text={inhalt.texte.schritt1NormierungDes} /><p className="mt-1 text-xxs"><MdText text={inhalt.texte.dieHistorischeKantenlängeVon} /></p>
-                    <BlockMath math={`\\beta_{WN,150} = \\frac{\\beta_{WN,200}}{0{,}95} = \\frac{\\color{#A3113E}{${formatDeTeX(beta_WN, 1)}}}{0{,}95} = \\color{#A3113E}{${formatDeTeX(beta_WN_150, 2)}} \\, \\text{N/mm}^2`} />
-                  </div>
-
-                  <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt2UmrechnungAuf} /><p className="mt-1 text-xxs"><MdText text={inhalt.texte.dasStandardisierteZylinderZu} /></p>
-                    <BlockMath math={`f_{ck,cyl} = 0{,}80 \\cdot \\beta_{WN,150} = 0{,}80 \\cdot \\color{#A3113E}{${formatDeTeX(beta_WN_150, 2)}} = \\color{#A3113E}{${formatDeTeX(f_ck_cyl_raw, 2)}} \\, \\text{N/mm}^2`} />
-                  </div>
-
                   {!hasPruefung ? (
-                    <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt3SicherheitsabschlagFehlende} /><p className="mt-1 text-xxs text-red-700"><MdText text={inhalt.texte.wegenReinerEinstufungNach} /></p>
-                      <BlockMath math={`f_{ck,act} = f_{ck,cyl} - 3{,}0 = ${formatDeTeX(f_ck_cyl_raw, 2)} - 3{,}0 = \\color{#A3113E}{${formatDeTeX(f_ck_act, 2)}} \\, \\text{N/mm}^2`} />
-                    </div>
+                    <>
+                      <div><MdText text={inhalt.texte.schritt1NormierungDes} /><p className="mt-1 text-xxs"><MdText text={inhalt.texte.dieHistorischeKantenlängeVon} /></p>
+                        <BlockMath math={`\\beta_{W,200} = ${formatDeTeXWert(altbeton.kpCm2)}\\,\\text{kp/cm}^2 \\cdot 0{,}0981 = \\color{#A3113E}{${formatDeTeX(betaW, 2)}} \\, \\text{N/mm}^2`} />
+                      </div>
+                      <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt2UmrechnungAuf} />
+                        {altbeton.spannbeton || fckTabelle === null ? (
+                          <p className="mt-1 text-xxs text-red-700"><MdText text={inhalt.texte.keineZuordnungSpannbeton} /></p>
+                        ) : (
+                          <>
+                            <p className="mt-1 text-xxs"><MdText text={altbetonGrenze === 'unten' ? inhalt.texte.zuordnungUnten : inhalt.texte.zuordnungOben} /></p>
+                            <BlockMath math={`f_{ck} = \\color{#A3113E}{${formatDeTeX(fckTabelle, 1)}} \\, \\text{N/mm}^2`} />
+                            <p className="text-xxs"><MdText text={inhalt.texte.zuordnungKlasseTabelle} /><strong>{klasseTabelle ?? inhalt.werte.unterC8}</strong></p>
+                          </>
+                        )}
+                      </div>
+                    </>
                   ) : (
-                    <div className="border-t border-slate-100 pt-3 bg-green-50/50 p-2.5 rounded-lg border border-green-150"><MdText text={inhalt.texte.schritt3EinstufungNach} /><p className="mt-1 text-xxs text-green-700">
-                        Prüfwert: <InlineMath math={`f_{cm,cube} = ${formatDeTeX(pruefFestigkeit, 1)} \\, \\text{N/mm}^2`} /><MdText text={inhalt.texte.zuordnungZurFestigkeitsklasse} /><strong>{testedKlasseLabel}</strong> (<InlineMath math={`f_{ck} = ${f_ck_tested} \\, \\text{N/mm}^2`} />)
-                      </p>
-                    </div>
+                    <>
+                      <div><MdText text={inhalt.texte.schritt3EinstufungNach} /><p className="mt-1 text-xxs"><MdText text={inhalt.texte.insituFormelText} /></p>
+                        <BlockMath math={`f_{ck,is} = \\min\\left(f_{m,is} - k_n \\cdot s;\\; f_{is,lowest} + M\\right)`} />
+                        {insitu.gueltig ? (
+                          <BlockMath math={`f_{ck,is} = \\min\\left(${formatDeTeX(pruefFestigkeit, 1)} - ${formatDeTeX(insitu.kn, 2)} \\cdot ${formatDeTeX(kernStreuung, 1)};\\; ${formatDeTeX(kernKleinster, 1)} + ${formatDeTeXWert(insitu.M)}\\right) = \\color{#A3113E}{${formatDeTeX(insitu.fckIs, 1)}} \\, \\text{N/mm}^2`} />
+                        ) : (
+                          <ul className="mt-1 text-xxs text-red-700 list-disc pl-4">{insitu.hinweise.filter(x => x.stufe === 'fehler').map(x => <li key={x.feld}>{x.text}</li>)}</ul>
+                        )}
+                      </div>
+                      {insitu.gueltig && (
+                        <div className="border-t border-slate-100 pt-3 bg-green-50/50 p-2.5 rounded-lg border border-green-150"><MdText text={inhalt.texte.schritt3bKlasse} /><p className="mt-1 text-xxs text-green-800">
+                            {insitu.klasse ? (
+                              <><InlineMath math={`f_{ck,is} = ${formatDeTeX(insitu.fckIs, 1)} \\ge 0{,}85 \\cdot f_{ck,cube} = ${formatDeTeX(0.85 * insitu.fckCube, 2)} \\, \\text{N/mm}^2`} /><MdText text={inhalt.texte.zuordnungZurFestigkeitsklasse} /><strong>{insitu.klasse}</strong> (<InlineMath math={`f_{ck} = ${insitu.fck} \\, \\text{N/mm}^2`} />)</>
+                            ) : (
+                              <><MdText text={inhalt.texte.zuordnungKlasseTabelle} /><strong>{inhalt.werte.unterC8}</strong></>
+                            )}
+                          </p>
+                        </div>
+                      )}
+                    </>
                   )}
 
                   <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt4HeutigerBemessungswert} /><p className="mt-1 text-xxs"><MdText text={inhalt.texte.derBemessungswertFürDie} /></p>
-                    <BlockMath math={`f_{cd} = \\alpha_{cc} \\cdot \\frac{f_{ck}}{\\gamma_C} = 0{,}85 \\cdot \\frac{\\color{#A3113E}{${formatDeTeX(f_ck_final, 1)}}}{1{,}5} = \\color{#A3113E}{${formatDeTeX(f_cd_bestand, 2)}} \\, \\text{N/mm}^2`} />
+                    {f_ck_final !== null && f_cd_bestand !== null ? (
+                      <BlockMath math={`f_{cd} = \\alpha_{cc} \\cdot \\frac{f_{ck}}{\\gamma_C} = 0{,}85 \\cdot \\frac{\\color{#A3113E}{${formatDeTeX(f_ck_final, 1)}}}{1{,}5} = \\color{#A3113E}{${formatDeTeX(f_cd_bestand, 2)}} \\, \\text{N/mm}^2`} />
+                    ) : (
+                      <p className="mt-1 text-xxs text-red-700"><MdText text={inhalt.texte.keinBemessungswert} /></p>
+                    )}
                   </div>
                 </div>
               </div>
@@ -151,7 +240,7 @@ export default function RechnungBestand({ bestandSubTab, beta_WN, beta_WN_150, d
                   <Sparkles size={16} />
                   <span><MdText text={inhalt.texte.tragfähigkeitsPotenzialImBestand} /></span>
                 </div>
-                <p><MdText text={inhalt.texte.derBemessungswertDerBetondruckfestigkeit} /><strong>{formatDeZahl(f_cd_bestand, 2)} N/mm²</strong>.
+                <p><MdText text={inhalt.texte.derBemessungswertDerBetondruckfestigkeit} /><strong>{f_cd_bestand !== null ? `${formatDeZahl(f_cd_bestand, 2)} N/mm²` : '–'}</strong>.
                 </p>
                 {hasPruefung ? (
                   <p className="text-xxs opacity-95 mt-1"><MdText text={inhalt.texte.durchDieDurchführungVon} /></p>

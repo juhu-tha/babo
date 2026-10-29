@@ -1156,7 +1156,7 @@ export const MODULE = [
   { id: 'labor_sicherheit', label: 'Laborsicherheit', icon: 'ShieldAlert', gruppe: 'Baustofflabor',
     baum: { titel: 'Laborsicherheit Gebäude G2', typ: 'norm', kurz: 'Laborordnung, PSA-Vorschriften, Notfallkette und Sicherheitsunterweisung.', icon: 'ShieldAlert', norm: 'Laborordnung THA' },
     meta: 'Sicherheit im Baustofflabor der TH Augsburg: Laborordnung, PSA-Pflichten, Einzugsgefahren, Sperrgeräte, Notfallkette Gebäude G2 und Ersthelferkontakte.',
-    suche: ['sicherheit', 'labor', 'baustofflabor', 'psa', 'schutzbrille', 'sicherheitsschuhe', 'notfall', 'ersthelfer', 'hubervorlesung', 'gefahrstoffe', 'lechner', 'sedlmeier', 'g2', 'brandschutz', 'not-aus', 'betriebsanweisung'] },
+    suche: ['sicherheit', 'labor', 'baustofflabor', 'psa', 'schutzbrille', 'sicherheitsschuhe', 'notfall', 'ersthelfer', 'sicherheitsbeauftragte', 'gefahrstoffe', 'g2', 'brandschutz', 'not-aus', 'betriebsanweisung'] },
   { id: 'aufgaben', label: 'Übungsaufgaben', icon: 'BookOpen' },
   { id: 'aufgaben_klausur', label: 'Klausurtraining', icon: 'BookOpen' },
   { id: 'aufgaben_stahl', label: 'Klausurtraining Stahlbau', icon: 'BookOpen' },

@@ -5,8 +5,12 @@ import React from 'react';
 import inhalt from '@/content/beispielrechnungen/RechnungBeton.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ReiterLeiste, alsReiter, reiterPanel } from '../../components/ui/Auswahlgruppe';
+import type { AusschalVergleich } from '@/src/calc/betonkennwerte';
 
 interface RechnungBetonProps {
+  ausschal: AusschalVergleich;
+  ausschalVorgabe: number;
+  setAusschalVorgabe: React.Dispatch<React.SetStateAction<number>>;
   V_a: number;
   V_air: 15;
   V_c: number;
@@ -76,7 +80,7 @@ interface RechnungBetonProps {
   waterDemand: 165 | 175 | 185 | 180 | 190 | 200;
 }
 
-export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregateMass, beta_cc, betonSubTab, cementContent, cementFromWz, consClass, f_ck_t, f_cm_28, f_cm_t, finalFreshTemp, freshConcreteDensity, heat_agg, heat_cement, heat_ice_melting, heat_liquid_water, kAddType, kAddition, kCement, kWater, k_credited_addition, k_factor, k_max_allowed_addition, k_max_ratio, k_w_z_eq, k_w_z_pure, mAggregateInput, mCementInput, mIceInput, mLiquidWater, mWaterInput, maturityAge, maxGrainSize, maxWz, minCement, s_param, setBetonSubTab, setConsClass, setKAddType, setKAddition, setKCement, setKWater, setMIceInput, setMaxGrainSize, setStrengthCementType, setStrengthClassFck, setStrengthCureAge, setStrengthCureTemp, setTargetExposure, setTempAggregate, setTempCement, setTempWater, strengthCementType, strengthClassFck, strengthCureAge, strengthCureTemp, targetExposure, tempAggregate, tempCement, tempWater, total_heat, total_heat_capacity, waterDemand }: RechnungBetonProps) {
+export default function RechnungBeton({ ausschal, ausschalVorgabe, setAusschalVorgabe, V_a, V_air, V_c, V_w, actualWz, aggregateMass, beta_cc, betonSubTab, cementContent, cementFromWz, consClass, f_ck_t, f_cm_28, f_cm_t, finalFreshTemp, freshConcreteDensity, heat_agg, heat_cement, heat_ice_melting, heat_liquid_water, kAddType, kAddition, kCement, kWater, k_credited_addition, k_factor, k_max_allowed_addition, k_max_ratio, k_w_z_eq, k_w_z_pure, mAggregateInput, mCementInput, mIceInput, mLiquidWater, mWaterInput, maturityAge, maxGrainSize, maxWz, minCement, s_param, setBetonSubTab, setConsClass, setKAddType, setKAddition, setKCement, setKWater, setMIceInput, setMaxGrainSize, setStrengthCementType, setStrengthClassFck, setStrengthCureAge, setStrengthCureTemp, setTargetExposure, setTempAggregate, setTempCement, setTempWater, strengthCementType, strengthClassFck, strengthCureAge, strengthCureTemp, targetExposure, tempAggregate, tempCement, tempWater, total_heat, total_heat_capacity, waterDemand }: RechnungBetonProps) {
   return (
       <div className="space-y-6 animate-in fade-in duration-300">
         {/* SUB-NAVIGATION FOR BETON CALCULATIONS */}
@@ -563,6 +567,19 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
                   />
                   <div className="text-xxs text-text-main/70 font-mono text-right font-bold text-shiraz">{formatDeWert(strengthCureAge)} Tage</div>
                 </div>
+
+                {/* Ausschalvorgabe der Tragwerksplanung (T15-BE-2) */}
+                <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200">
+                  <label className="text-xs text-text-main/80 block font-bold"><MdText text={inhalt.texte.ausschalVorgabeLabel} /></label>
+                  <input aria-label={inhalt.werte.ausschalVorgabe}
+                    type="range" min="20" max="100" step="5"
+                    value={ausschalVorgabe}
+                    onChange={(e) => setAusschalVorgabe(Number(e.target.value))}
+                    className="w-full accent-shiraz"
+                  />
+                  <div className="text-xxs text-text-main/70 font-mono text-right font-bold text-shiraz">{formatDeWert(ausschalVorgabe)} %</div>
+                  <p className="text-xxs text-text-main/70"><MdText text={inhalt.texte.ausschalVorgabeHinweis} /></p>
+                </div>
               </div>
 
               {/* CALCULATIONS */}
@@ -598,8 +615,8 @@ export default function RechnungBeton({ V_a, V_air, V_c, V_w, actualWz, aggregat
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 mt-2 text-xs">
                   <span className="text-xxs font-bold text-slate-400 block uppercase tracking-wide mb-1"><MdText text={inhalt.texte.ausschaleignungCenRichtwert} /></span>
                   <div className="flex items-center gap-2 mt-1">
-                    <span className={`w-3 h-3 rounded-full ${beta_cc >= 0.5 ? 'bg-green-500' : 'bg-amber-500'}`} />
-                    <p className="font-normal"><MdText text={inhalt.texte.derBetonHat} /><strong>{formatDeZahl((beta_cc * 100), 1)}%</strong><MdText text={inhalt.texte.seiner28TageNennfestigkeit} />{beta_cc >= 0.5 ? (
+                    <span className={`w-3 h-3 rounded-full shrink-0 ${ausschal.erfuellt ? 'bg-green-500' : 'bg-amber-500'}`} />
+                    <p className="font-normal"><MdText text={inhalt.texte.derBetonHat} /><strong>{formatDeZahl(f_ck_t, 2)} N/mm²</strong> ({formatDeZahl(ausschal.anteil * 100, 1)} %<MdText text={inhalt.texte.seiner28TageNennfestigkeit} /><strong>{formatDeWert(ausschalVorgabe)} %</strong> = <strong>{formatDeZahl(ausschal.erforderlich, 2)} N/mm²</strong>.{ausschal.erfuellt ? (
                         <span className="text-green-800"><MdText text={inhalt.texte.einAusschalenTragenderBauteile} /></span>
                       ) : (
                         <span className="text-amber-800"><MdText text={inhalt.texte.einAusschalenTragenderBauteile2} /></span>
