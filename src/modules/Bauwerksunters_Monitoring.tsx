@@ -1,4 +1,5 @@
 import { carbonationK } from '@/src/utils/schadensKern';
+import { belegreifeGrenzeCM } from '@/src/calc/schutzInstandsetzung';
 import React, { useState, useMemo } from 'react';
 import { Activity, Layers, Hammer, Droplets, Ruler, ClipboardCheck, 
   Trees, 
@@ -109,26 +110,24 @@ export default function Bauwerksunters_Monitoring() {
 
   // Belegreife: CM-Grenzwerte nach Schnittstellenkoordination (BVF/ZDB u. a.), belagsabhängig
   const moistureEvaluation = useMemo(() => {
-    let limitCM = 2.0;
+    // CM-Richtwerte (Kern: src/calc/schutzInstandsetzung.ts)
+    const limitCM = belegreifeGrenzeCM(substrate, isHeated);
     let evalText = "";
     let isBelegreif = false;
     let hfIndication = "";
 
     if (substrate === 'cement') {
-      limitCM = isHeated ? 1.8 : 2.0;
       isBelegreif = measuredCM <= limitCM;
       evalText = isBelegreif 
         ? `Der Zementestrich ist mit ${formatDeWert(measuredCM)} CM-% belegreif (Richtwert Schnittstellenkoordination: ≤ ${formatDeWert(limitCM)} CM-%, belagsabhängig).` 
         : `Der Zementestrich ist mit ${formatDeWert(measuredCM)} CM-% NICHT belegreif! Es drohen Verformungen oder Haftungsabrisse im Oberbelag (Richtwert: ≤ ${formatDeWert(limitCM)} CM-%, belagsabhängig).`;
     } else if (substrate === 'anhydrite') {
-      limitCM = isHeated ? 0.3 : 0.5;
       isBelegreif = measuredCM <= limitCM;
       evalText = isBelegreif
         ? `Der Calciumsulfatestrich (Anhydrit) ist mit ${formatDeWert(measuredCM)} CM-% belegreif (Richtwert: ≤ ${formatDeWert(limitCM)} CM-%, belagsabhängig).`
-        : `Der Calciumsulfatestrich ist mit ${formatDeWert(measuredCM)} CM-% NICHT belegreif! Ein Einbau von Belägen führt zu mineralischer Nadelbildung (Ettringit-ähnlich) und Blasen (Richtwert: ≤ ${formatDeWert(limitCM)} CM-%, belagsabhängig).`;
+        : `Der Calciumsulfatestrich ist mit ${formatDeWert(measuredCM)} CM-% NICHT belegreif! Es drohen Erweichung der Estrichoberfläche, Haftungsverlust des Klebstoffs und Blasen im Belag; mit zementären Spachtelmassen kann sich zudem Ettringit bilden (Richtwert: ≤ ${formatDeWert(limitCM)} CM-%, belagsabhängig).`;
     } else {
       // Mauerwerk: keine Belegreife-Grenze; Beurteilung über Darr-Feuchte und Durchfeuchtungsgrad
-      limitCM = NaN;
       isBelegreif = false;
       evalText = `Für Mauerwerk gibt es keinen Belegreife-Grenzwert. Gemessen: ${formatDeWert(measuredCM)} CM-%. Feuchte über Darrprüfung (DIN EN ISO 12570) und Durchfeuchtungsgrad (Bezug auf Sättigungsfeuchte) beurteilen.`;
     }

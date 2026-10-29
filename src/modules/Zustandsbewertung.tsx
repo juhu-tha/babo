@@ -5,6 +5,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import inhalt from '@/content/zustandsbewertung/Zustandsbewertung.json';
+import { zustandsnote, schulnoteAusZustandsnote } from '@/src/calc/schutzInstandsetzung';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { ReiterLeiste, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
@@ -128,7 +129,7 @@ export default function Zustandsbewertung() {
             <div className="space-y-3">
               <div className="flex flex-col md:flex-row items-stretch gap-3">
                 <div className="w-full md:w-32 bg-emerald-500 text-white font-mono font-bold text-center py-3 rounded-lg flex flex-col justify-center items-center shrink-0">
-                  <span className="text-2xl">1,0 - 1.4</span>
+                  <span className="text-2xl">1,0–1,4</span>
                   <span className="text-xs uppercase font-bold tracking-wider">Sehr gut</span>
                 </div>
                 <div className="bg-off-white p-3.5 rounded-lg border border-home-grau/15 flex-1 flex flex-col justify-center">
@@ -138,7 +139,7 @@ export default function Zustandsbewertung() {
 
               <div className="flex flex-col md:flex-row items-stretch gap-3">
                 <div className="w-full md:w-32 bg-lime-500 text-text-main font-mono font-bold text-center py-3 rounded-lg flex flex-col justify-center items-center shrink-0">
-                  <span className="text-2xl">1,5 - 1.9</span>
+                  <span className="text-2xl">1,5–1,9</span>
                   <span className="text-xs uppercase font-bold tracking-wider">Gut</span>
                 </div>
                 <div className="bg-off-white p-3.5 rounded-lg border border-home-grau/15 flex-1 flex flex-col justify-center">
@@ -148,7 +149,7 @@ export default function Zustandsbewertung() {
 
               <div className="flex flex-col md:flex-row items-stretch gap-3">
                 <div className="w-full md:w-32 bg-yellow-400 text-text-main font-mono font-bold text-center py-3 rounded-lg flex flex-col justify-center items-center shrink-0">
-                  <span className="text-2xl">2,0 - 2.4</span>
+                  <span className="text-2xl">2,0–2,4</span>
                   <span className="text-xs uppercase font-bold tracking-wider">Befriedigend</span>
                 </div>
                 <div className="bg-off-white p-3.5 rounded-lg border border-home-grau/15 flex-1 flex flex-col justify-center">
@@ -158,7 +159,7 @@ export default function Zustandsbewertung() {
 
               <div className="flex flex-col md:flex-row items-stretch gap-3">
                 <div className="w-full md:w-32 bg-orange-400 text-white font-mono font-bold text-center py-3 rounded-lg flex flex-col justify-center items-center shrink-0">
-                  <span className="text-2xl">2,5 - 2.9</span>
+                  <span className="text-2xl">2,5–2,9</span>
                   <span className="text-xs uppercase font-bold tracking-wider">Ausreichend</span>
                 </div>
                 <div className="bg-off-white p-3.5 rounded-lg border border-home-grau/15 flex-1 flex flex-col justify-center">
@@ -168,7 +169,7 @@ export default function Zustandsbewertung() {
 
               <div className="flex flex-col md:flex-row items-stretch gap-3">
                 <div className="w-full md:w-32 bg-orange-600 text-white font-mono font-bold text-center py-3 rounded-lg flex flex-col justify-center items-center shrink-0">
-                  <span className="text-2xl">3,0 - 3.4</span>
+                  <span className="text-2xl">3,0–3,4</span>
                   <span className="text-xs uppercase font-bold tracking-wider"><MdText text={inhalt.texte.nichtAusreichend} /></span>
                 </div>
                 <div className="bg-off-white p-3.5 rounded-lg border border-home-grau/15 flex-1 flex flex-col justify-center">
@@ -178,7 +179,7 @@ export default function Zustandsbewertung() {
 
               <div className="flex flex-col md:flex-row items-stretch gap-3">
                 <div className="w-full md:w-32 bg-red-600 text-white font-mono font-bold text-center py-3 rounded-lg flex flex-col justify-center items-center shrink-0">
-                  <span className="text-2xl">3,5 - 4.0</span>
+                  <span className="text-2xl">3,5–4,0</span>
                   <span className="text-xs uppercase font-bold tracking-wider">Ungenügend</span>
                 </div>
                 <div className="bg-off-white p-3.5 rounded-lg border border-home-grau/15 flex-1 flex flex-col justify-center">
@@ -487,15 +488,10 @@ export default function Zustandsbewertung() {
 
             {/* Dynamic calculation states & helper helper */}
             {(() => {
-              const calculatedZustandsnote = Math.min(
-                4.0,
-                Math.max(1.0, Math.max(sScore, vScore, dScore) + additionalCount * 0.1)
-              );
-              const finalZustandsnote = Math.round(calculatedZustandsnote * 10) / 10;
+              // Zustandsnote und Schulnoten-Zuordnung (didaktisch; Kern: src/calc/schutzInstandsetzung.ts)
+              const finalZustandsnote = zustandsnote(sScore, vScore, dScore, additionalCount);
               const currentZ = calculatorTab === 'quick' ? zustandsnoteInput : finalZustandsnote;
-
-              // Kategoriale Zuordnung der RI-EBW-Notenbereiche zu Schulnoten (didaktisch, keine Regelwerksgröße)
-              const interpolatedSchulnote = currentZ < 1.5 ? 1 : currentZ < 2.0 ? 2 : currentZ < 2.5 ? 3 : currentZ < 3.0 ? 4 : currentZ < 3.5 ? 5 : 6;
+              const interpolatedSchulnote = schulnoteAusZustandsnote(currentZ);
 
               const getSchulnoteInfo = (zn: number) => {
                 if (zn < 1.5) {

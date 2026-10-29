@@ -32,10 +32,10 @@
     "dampfdiffusionsoffeneSchichtaufbautenZur": "Dampfdiffusionsoffene Schichtaufbauten zur Vermeidung von Tauwasserausfall",
     "t2ChemischerHolzschutzDin": "2. Chemischer Holzschutz (DIN 68800-3)",
     "nurZulässigWennGefährdung": "Nur zulässig, wenn Gefährdung vorliegt (GK 1 bis GK 4) und konstruktive Maßnahmen allein nicht ausreichen:",
-    "kesseldruckimprägnierungKdiVakuumDruck": "**Kesseldruckimprägnierung (KDI):** Vakuum-Druck-Verfahren zur Einbringung wasserlöslicher Kupfer- oder Borsalze bis in den Kern von Splintholz. Standard bei Erdkontakt (GK 4, Masten, Terrassenlager).",
+    "kesseldruckimprägnierungKdiVakuumDruck": "**Kesseldruckimprägnierung (KDI):** Vakuum-Druck-Verfahren zur Einbringung wasserlöslicher Kupfersalze bis in den Kern von Splintholz. Standard bei Erdkontakt (GK 4, Masten, Terrassenlager); Borsalze sind auswaschbar und nur bis GK 2 geeignet.",
     "wirkstoffprüfungZertifizierteHolzschutzm": "**Wirkstoffprüfung:** Zertifizierte Holzschutzmittel mit RAL-Gütezeichen (Prüfprädikate Iv = Insekten vorbeugend, P = Pilze vorbeugend, W = Witterungsbeständig).",
     "t3ModifizierteHölzerDauerhaftigkeitsklass": "3. Modifizierte Hölzer & Dauerhaftigkeitsklassen (DIN EN 350)",
-    "einsatzVonHölzernMit": "Einsatz von Hölzern mit natürlicher Dauerhaftigkeit (Klasse 1: Robinie, Teak; Klasse 2: Eiche, Lärche) oder technisch modifizierten Hölzern:<br>• *Thermoholz (TMT):* Thermische Behandlung bei 180–220 °C zerstört Hydroxylgruppen; Feuchteaufnahme sinkt um 50 %.<br>• *Acetyliertes Holz (Accoya):* Veresterung freier OH-Gruppen mit Essigsäureanhydrid; extreme Dimensionsstabilität und Pilzresistenz.",
+    "einsatzVonHölzernMit": "Einsatz von Hölzern mit natürlicher Dauerhaftigkeit (nach DIN EN 350:2016 z. B. Teak DC 1, Robinie DC 1–2, Eiche DC 2–4, Lärche DC 3–4) oder technisch modifizierten Hölzern:<br>• *Thermoholz (TMT):* Thermische Behandlung bei 180–220 °C zerstört Hydroxylgruppen; Feuchteaufnahme sinkt um 50 %.<br>• *Acetyliertes Holz (Accoya):* Veresterung freier OH-Gruppen mit Essigsäureanhydrid; extreme Dimensionsstabilität und Pilzresistenz.",
     "instandsetzungsverfahrenFürGeschädigteHo": "Instandsetzungsverfahren für geschädigte Holztragwerke",
     "bekämpfenderHolzschutzDin68800": " Bekämpfender Holzschutz (DIN 68800-4)",
     "bekämpfungEchterHausschwammBefallenes": "**Bekämpfung Echter Hausschwamm:** Befallenes Holz muss mindestens **1,0 Meter** über den sichtbaren Befall hinaus abgesägt und entsorgt werden. Angrenzendes Mauerwerk muss abgeflämmt, Fugen ausgekratzt und mit Schwammsperrmitteln (Bohrlochinjektion) behandelt werden.",
@@ -156,7 +156,7 @@
     "häufigerPraxisfehlerMangelhafterSchichte": " Häufiger Praxisfehler: Mangelhafter Schichtenverbund beim Asphalteinbau",
     "schadensbildNach2Bis": "**Schadensbild:** Nach 2 bis 4 Jahren schiebt sich die Asphaltdeckschicht vor Kreuzungen wellenförmig auf (\"Wellblechbildung\") oder platzt großflächig ab.",
     "ursacheVorDemEinbau": "**Ursache:** Vor dem Einbau der neuen Deckschicht wurde die Unterlage nicht ausreichend gekehrt oder die Bitumenemulsion zum Anspritzen wurde ungleichmäßig dosiert (Vorgabe: $150\\text{ bis }250\\text{ g/m}^2$ Restbindemittel). Zudem wurde der Asphalt eingebaut, bevor die Emulsion vollständig \"gebrochen\" (Wasser verdampft) war.",
-    "qualitätsprüfungNachZtvAsphalt": "**Qualitätsprüfung:** Nach ZTV Asphalt-StB muss der Schichtenverbund an Bohrkernen mittels **Schichtenverbundprüfung nach Leutner** nachgewiesen werden. Die dynamische Scherkraft muss mindestens $15\\text{ kN}$ erreichen.",
+    "qualitätsprüfungNachZtvAsphalt": "**Qualitätsprüfung:** Nach ZTV Asphalt-StB muss der Schichtenverbund an Bohrkernen mittels **Schichtenverbundprüfung nach Leutner** nachgewiesen werden. Die Scherkraft im statischen Abscherversuch muss mindestens $15\\text{ kN}$ erreichen.",
     "schutzInstandsetzungVonMauerwerk": " Schutz & Instandsetzung von Mauerwerk & Naturstein",
     "wtaMerkblätterReihe2": "WTA-Merkblätter Reihe 2 & 4 • DIN 18533",
     "mauerwerksUndNatursteinbautenZiegel": "Mauerwerks- und Natursteinbauten (Ziegel, Sandstein, Kalkstein, Tuff) leiden primär unter **aufsteigender Feuchtigkeit und bauschädlichen Salzen** (Chloride, Nitrate, Sulfate). Beim Verdunsten des Wassers kristallisieren die Salze im oberflächennahen Porenraum. Der **Kristallisationsdruck** ($\\sigma_{\\text{krist}} \\le 200\\text{ MPa}$) übersteigt die Zugfestigkeit des Steins ($f_{\\text{ct}} \\approx 1\\text{ bis }5\\text{ MPa}$) um ein Vielfaches und sprengt die Steinoberfläche ab.",
@@ -176,7 +176,7 @@
     "häufigerPraxisfehlerZementputzAuf": " Häufiger Praxisfehler: Zementputz auf salzbelastetem Feuchtmauerwerk",
     "fehlerAufFeuchtemSalzbelastetem": "**Fehler:** Auf feuchtem, salzbelastetem Altziegelmauerwerk wird ein dichter, starrer Zementputz aufgetragen, um die Feuchte \"einzusperren\".",
     "fataleFolgeZementputzBesitzt": "**Fatale Folge:** Zementputz besitzt einen sehr hohen Diffusionswiderstand. Die aufsteigende Feuchte steigt im Mauerwerk kapillar noch höher auf (teilweise bis ins 1. OG). Hinter dem dichten Putz reichern sich Salze an; der Kristallisationsdruck sprengt nach 2 bis 3 Wintern den Putz mitsamt den Ziegelstirnen ab.",
-    "lösungAltputzMindestens80": "**Lösung:** Altputz mindestens 80 cm über die Schadensgrenze abschlagen, Fugen 2 cm tief auskratzen, Mauerwerk trocken bürsten, WTA-zertifizierten Sanierputz aufbringen und Horizontalsperre herstellen."
+    "lösungAltputzMindestens80": "**Lösung:** Altputz mindestens 80 cm über die Schadensgrenze abschlagen (Maß vorläufig, F-Freigabe; im Modul WTA-Merkblätter 1 m – Normtext WTA 2-9 für Mauerwerk prüfen), Fugen 2 cm tief auskratzen, Mauerwerk trocken bürsten, WTA-zertifizierten Sanierputz aufbringen und Horizontalsperre herstellen."
   },
   "werte": {
     "beispiel1SchutzdauerEines": "Beispiel 1: Schutzdauer eines Duplex-Systems",

@@ -85,9 +85,9 @@
     "derBewehrungsstahlWirdDurch": "Der Bewehrungsstahl wird durch ein Gleichstromfeld zur Kathode polarisiert. Anode ist ein edles Titan-Mischoxid-Gitter (MMO) oder eine thermisch aufgespritzte Zinkschicht.<br>Reaktion an der Kathode (Stahl): $\\text{O}_2 + 2\\text{H}_2\\text{O} + 4e^- \\rightarrow 4\\text{OH}^-$ (Hydroxidbildung verhindert Säurefraß).<br>Reaktion an der Anode: $2\\text{H}_2\\text{O} \\rightarrow \\text{O}_2 + 4\\text{H}^+ + 4e^-$.<br>Der anodische Eisenabtrag ($\\text{Fe} \\rightarrow \\text{Fe}^{2+} + 2e^-$) wird thermodynamisch unterdrückt. Schutzkriterium: $E_{\\text{off}} \\le -720\\text{ mV}_{\\text{Ag/AgCl}}$ oder $\\Delta E_{\\text{depol}} \\ge 100\\text{ mV}$ innerhalb von 24 bis 72 h.",
     "t2GalvanischerOpferschutzFeuerverzinkung": "2. Galvanischer Opferschutz (Feuerverzinkung DIN EN ISO 1461:2022-12)",
     "zinkBesitztEinNegativeres": "Zink besitzt ein negativeres Normalpotenzial ($E^\\circ = -0{,}76\\text{ V}$) als Eisen ($E^\\circ = -0{,}44\\text{ V}$). Bei Verletzung der Zinkschicht (Kratzer, Schnittkanten bis ca. $1{,}5\\text{ bis }2{,}0\\text{ mm}$) bildet sich ein Lokalelement: Das unedlere Zink geht anodisch in Lösung ($\\text{Zn} \\rightarrow \\text{Zn}^{2+} + 2e^-$) und schützt den freiliegenden Stahl kathodisch vor Rost.",
-    "t3ElektrochemischeChloridextraktionEce": "3. Elektrochemische Chloridextraktion (ECE nach DIN EN 14038-1:2021-03)",
+    "t3ElektrochemischeChloridextraktionEce": "3. Elektrochemische Chloridextraktion (ECE nach DIN EN 14038-2)",
     "temporäreGleichstrombehandlung1textBis": "Temporäre Gleichstrombehandlung ($1\\text{ bis }2\\text{ A/m}^2$ Stahloberfläche über mehrere Wochen). Die negativ geladenen Chloridionen ($\\text{Cl}^-$) wandern durch Elektromigration von der negativ geladenen Bewehrung (Kathode) weg zur temporären Außenanode in den getränkten Zellstoffwickel.",
-    "t4ElektrochemischeRealkalisierungEr": "4. Elektrochemische Realkalisierung (ER nach DIN EN 14038-2:2020-09)",
+    "t4ElektrochemischeRealkalisierungEr": "4. Elektrochemische Realkalisierung (ER nach DIN EN 14038-1)",
     "temporärerGleichstromeinsatzAnKarbonatis": "Temporärer Gleichstromeinsatz an karbonatisiertem Beton. Durch Kathodenreaktionen ($2\\text{H}_2\\text{O} + 2e^- \\rightarrow \\text{H}_2 \\uparrow + 2\\text{OH}^-$) sowie elektrosmotischen Transport von Natrium- und Kaliumcarbonatlösungen wird der pH-Wert in der Bewehrungszone wieder von $\\approx 8{,}5$ auf über $12{,}5$ angehoben, sodass sich die Passivschicht regeneriert.",
     "t5WanderndeKorrosionsinhibitorenMci": "5. Wandernde Korrosionsinhibitoren (MCI)",
     "organischeAlkanolamineMitHohem": "Organische Alkanolamine mit hohem Dampfdruck diffundieren über die Gas- und Porenphase zur Bewehrung und bilden dort einen monomolekularen Adsorptionsfilm, der anodische und kathodische Teilreaktionen kinetisch blockiert.",
@@ -118,9 +118,9 @@
     "analogieAktiveUndPassive": "Analogie: Aktive und passive Schutzkonzepte in weiteren Baustoffdisziplinen",
     "holzschutzDin688002019": "Holzschutz (DIN 68800:2019-06)",
     "passivBaulichKonstruktivTeil": "Passiv (Baulich-konstruktiv, Teil 2):",
-    "dachüberständeTropfkantenSockelabstandGe": "Dachüberstände, Tropfkanten, Sockelabstand $\\ge 30\\text{ cm}$, Hinterlüftung. Hält die Holzfeuchte sicher unter $u < 20\\,\\%$ (Pilzbefall biologisch unmöglich).",
+    "dachüberständeTropfkantenSockelabstandGe": "Dachüberstände, Tropfkanten, Sockelabstand $\\ge 30\\text{ cm}$, Hinterlüftung. Hält die Holzfeuchte sicher unter $u < 20\\,\\%$ (Pilzbefall praktisch ausgeschlossen).",
     "aktivChemischTeil3": "Aktiv (Chemisch, Teil 3):",
-    "kesseldruckimprägnierungMitBiozidenBorat": "Kesseldruckimprägnierung mit Bioziden (Borate, Kupferverbindungen). Vergiftet die Nährstoffquelle für holzzerstörende Pilze und Insekten bei ständiger Nässe (GK 3/4).",
+    "kesseldruckimprägnierungMitBiozidenBorat": "Kesseldruckimprägnierung mit Bioziden (Kupferverbindungen; Borate sind auswaschbar und nur bis GK 2 geeignet). Vergiftet die Nährstoffquelle für holzzerstörende Pilze und Insekten bei ständiger Nässe (GK 3/4).",
     "brandschutzDin4102Din": "Brandschutz (DIN 4102 / DIN EN 13501)",
     "passivBaulichKonstruktiv": "Passiv (Baulich-konstruktiv):",
     "feuerwiderstandsfähigeBauteileRei30": "Feuerwiderstandsfähige Bauteile (REI 30 bis REI 120), Brandwände, Feuerschutztüren, Gipskartonbekleidungen, intumeszierende Dämmschichtbildner (schäumen bei Hitze zu Isolierschaum auf).",
@@ -167,7 +167,7 @@
     "nachträglicheInnenabdichtungKellersanier": "**Nachträgliche Innenabdichtung (Kellersanierung):** Dichtschlämmen nach WTA-Merkblatt 4-6 in Kombination mit Sanierputzsystemen.",
     "empfohlenePrinzipienBeiRissbildung": " Empfohlene Prinzipien bei Rissbildung & Fugenbewegungen",
     "füllenVonRissenDin": "**Füllen von Rissen (DIN EN 1504-5):**<br>• *Kraftschlüssiges Schließen (F):* Epoxidharz (EP) bei ruhenden Rissen zur Wiederherstellung der Zug- und Druckfestigkeit.<br>• *Dehnfähiges Schließen (D):* Polyurethanharz (PUR) bei dynamisch bewegten Rissen zur dauerhaften Abdichtung.",
-    "prinzip1PiRissüberbrückende": "**Prinzip 1 (PI):** Rissüberbrückende Oberflächenschutzsysteme Klasse OS 4 oder OS 5a/b (DIN V 18026).",
+    "prinzip1PiRissüberbrückende": "**Prinzip 1 (PI):** Rissüberbrückende Oberflächenschutzsysteme OS 5a/5b (nicht befahrbar) bzw. OS 10/OS 11 (befahrbar) nach DIN V 18026; OS 4 ist nicht rissüberbrückend.",
     "fugensanierungHeraustrennenGealterterFug": "**Fugensanierung:** Heraustrennen gealterter Fugenmassen, Einlegen von PE-Rundschnur (Zweiflankenhaftung!) und Neuverfugung nach DIN 18540.",
     "empfohlenePrinzipienBeiMechanischem": " Empfohlene Prinzipien bei mechanischem Verschleiß & Abrieb",
     "prinzip5PrApplikation": "**Prinzip 5 (PR):** Applikation von verschleißfesten Hartstoffestrichen nach DIN 18560 oder Reaktionsharzmörtelbelägen.",
@@ -294,7 +294,7 @@
       },
       {
         "formel": "E_{\\text{off}} \\le -720\\,\\text{mV}_{\\text{Ag/AgCl/0{,}5M KCl}} \\quad \\text{oder} \\quad \\Delta E_{\\text{depol}} \\ge 100\\,\\text{mV}",
-        "erklaerung": "KKS-Schutzkriterien (DIN EN ISO 12696): Ausschaltpotential negativer als −720 mV gegen Ag/AgCl/0,5 M KCl ODER Depolarisation ≥ 100 mV innerhalb von 24 h bis 72 h (-850 mV gegen CSE gilt für erdberührte Stähle).",
+        "erklaerung": "KKS-Schutzkriterien (DIN EN ISO 12696): Ausschaltpotential negativer als −720 mV gegen Ag/AgCl/0,5 M KCl ODER Depolarisation ≥ 100 mV innerhalb von 24 h bis 72 h (-850 mV gegen CSE gilt für erdberührte Stähle; Zeitfenster vorläufig, F-Freigabe: Normtext DIN EN ISO 12696 für Stahlbetonbauteile prüfen).",
         "quelle": "DIN EN ISO 12696"
       }
     ]

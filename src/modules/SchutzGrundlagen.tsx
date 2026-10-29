@@ -15,6 +15,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/schutzgrundlagen/SchutzGrundlagen.json';
+import { deSitterKosten } from '@/src/calc/schutzInstandsetzung';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
@@ -460,7 +461,7 @@ export default function SchutzGrundlagen() {
               <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
                 <span className="text-slate-500 font-bold block mb-1"><MdText text={inhalt.texte.vorSchadensbeginn5} /></span>
                 <span className="text-lg font-bold text-blue-700 block">
-                  {formatDeIntl(deSitterInitialCost * 5)} €
+                  {formatDeIntl(deSitterKosten(deSitterInitialCost, 1))} €
                 </span>
                 <span className="text-[11px] text-slate-500 block mt-1"><MdText text={inhalt.texte.präventiveHydrophobierungVorBeginn} /></span>
               </div>
@@ -468,7 +469,7 @@ export default function SchutzGrundlagen() {
               <div className="p-3 bg-off-white rounded-lg border border-home-grau/20 text-center">
                 <span className="text-slate-500 font-bold block mb-1"><MdText text={inhalt.texte.schadensfortschrittLokal25} /></span>
                 <span className="text-lg font-bold text-amber-700 block">
-                  {formatDeIntl(deSitterInitialCost * 25)} €
+                  {formatDeIntl(deSitterKosten(deSitterInitialCost, 2))} €
                 </span>
                 <span className="text-[11px] text-slate-500 block mt-1"><MdText text={inhalt.texte.lokaleBetoninstandsetzungBeiErsten} /></span>
               </div>
@@ -476,7 +477,7 @@ export default function SchutzGrundlagen() {
               <div className="p-3 bg-rose-50 rounded-lg border border-rose-200 text-center">
                 <span className="text-rose-800 font-bold block mb-1"><MdText text={inhalt.texte.umfassendeInstandsetzung125} /></span>
                 <span className="text-lg font-bold text-rose-700 block">
-                  {formatDeIntl(deSitterInitialCost * 125)} €
+                  {formatDeIntl(deSitterKosten(deSitterInitialCost, 3))} €
                 </span>
                 <span className="text-[11px] text-rose-700 block mt-1"><MdText text={inhalt.texte.umfassendeBetonsanierungQuerschnittsverl} /></span>
               </div>

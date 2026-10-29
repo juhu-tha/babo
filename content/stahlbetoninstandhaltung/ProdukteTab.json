@@ -15,7 +15,7 @@
     "chloridgehalt": "Chloridgehalt (%)",
     "adhäsionsHaftzugMpa": "Adhäsions-Haftzug (MPa)",
     "modulElastizitätGpa": "Modul Elastizität (GPa)",
-    "dieKlassenR3Und": "Die Klassen **R3** und **R4** stellen statisch relevante Mörtelsysteme dar. Nach der Instandhaltungsrichtlinie (IhR) der DAfStb müssen Mörtelsysteme nicht nur Druckkräfte, sondern auch den Verbundnachweis under dynamischen Einflüssen fehlerfrei bestehen."
+    "dieKlassenR3Und": "Die Klassen **R3** und **R4** stellen statisch relevante Mörtelsysteme dar. Nach der Instandhaltungsrichtlinie (IhR) der DAfStb müssen Mörtelsysteme nicht nur Druckkräfte, sondern auch den Verbundnachweis unter dynamischen Einflüssen fehlerfrei bestehen."
   },
   "werte": {
     "pccIiSpcc": "PCC II / SPCC",
@@ -28,11 +28,11 @@
     "händischerEinbauEinesCc": "Händischer Einbau eines CC-Reparaturmörtels (Klasse R3) möglich. Geringe Zugkräfte zu erwarten.",
     "standardAcrylatbeschichtungPrinzipC": "Standard-Acrylatbeschichtung (Prinzip C)",
     "pccIFließmörtelPc": "PCC I (Fließmörtel) / PC (Epoxid)",
-    "r4ExtremVerschleißfest": "R4 (Extrem verschleißfest)",
+    "r4ExtremVerschleißfest": "R4 nach DIN EN 1504-3; Verschleißwiderstand gesondert nachweisen",
     "hoheAnforderungenAnDynamische": "Hohe Anforderungen an dynamische Raddrucklasten und Tausalzbeständigkeit. Ein herkömmlicher CC-Mörtel bricht hier auf.",
     "zwingendOs8Oder": "Zwingend OS 8 oder OS 11 (befahrbarer Oberflächenschutz)",
     "pcMörtelEpoxidharzmörtel": "PC-Mörtel (Epoxidharzmörtel)",
-    "r4ChemischBeständigPh": "R4 (Chemisch beständig, pH-Wert < 4)",
+    "r4ChemischBeständigPh": "R4 nach DIN EN 1504-3; chemische Beständigkeit (pH < 4) gesondert nachweisen",
     "säurenImAbwasserZerstören": "Säuren im Abwasser zerstören das zementöse Zementstein-Gefüge (Säureangriff/Entkalkung). Harzbindung ist absolut resistent.",
     "t20MpaHaftuntergrund": "≥ 2,0 MPa (Haftuntergrund meist staub- und ölfrei)",
     "chemischeBeschichtungOderGfk": "Chemische Beschichtung oder GFK-Systemausmauerung",
@@ -58,7 +58,7 @@
       {
         "title": "PCC-Mörtel",
         "sub": "Polymer Cement Concrete",
-        "desc": "Kunststoffmodifizierter zementgebundener Mörtel (zweikomponentig). Standard bei dymamisch / thermisch belasteten Bauwerken.",
+        "desc": "Kunststoffmodifizierter zementgebundener Mörtel (zweikomponentig). Standard bei dynamisch / thermisch belasteten Bauwerken.",
         "binder": "Zement + Dispersionspulver/Acrylat",
         "density": "Mittel (~2,0 kg/dm³)",
         "thickness": "5 - 40 mm (mehrlagig)",

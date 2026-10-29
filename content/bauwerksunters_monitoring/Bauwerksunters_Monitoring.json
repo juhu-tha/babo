@@ -8,7 +8,7 @@
     "schadensFeuchterechner": "Schadens- & Feuchterechner",
     "zfpPrüfkatalogKonsolidiert": "ZfP-Prüfkatalog (Konsolidiert)",
     "zentralerZfpDiagnosemethodenkatalog": "Zentraler ZfP- & Diagnosemethodenkatalog",
-    "konsolidierterKatalogSämtlicher14": "Konsolidierter Katalog sämtlicher 14 Vor-Ort- und Laborprüfverfahren nach DGZfP, DBV und DIN EN – synchronisiert mit dem Modul *Bauen im Bestand > Bauwerksuntersuchung*. Hier stehen alle physikalischen Wirkprinzipien, Auswerteformeln, Systemgrenzen und interaktiven Rechner zur Verfügung.",
+    "konsolidierterKatalogSämtlicher14": "Konsolidierter Katalog sämtlicher 14 Vor-Ort- und Laborprüfverfahren nach DGZfP, DBV und DIN EN – synchronisiert mit dem Modul *Bauwerksdiagnose – Prüfverfahren-Katalog* (Gruppe Bauen im Bestand). Hier stehen alle physikalischen Wirkprinzipien, Auswerteformeln, Systemgrenzen und interaktiven Rechner zur Verfügung.",
     "interaktiverBohrwiderstandsSimulatorHolz": "Interaktiver Bohrwiderstands-Simulator (Holzuntersuchung)",
     "simulierenSieDasMechanische": "Simulieren Sie das mechanische Kraftprofil von **Resistographen-Prüfungen** im Inneren tragender Holzbauteile (z.B. Deckenbalken, Fachwerk, Brückenpfähle). Durch die Dichteunterschiede zwischen dichtem Spätholz und weicherem Frühholz oszilliert die Kurve; Fehlstellen, Fäule oder Insektenfraß führen zu charakteristischen Kurveneinbrüchen.",
     "holzartAuswählen": "Holzart auswählen:",
@@ -31,7 +31,7 @@
     "prüfvorschriftDin456691": "Prüfvorschrift: DIN 45669-1, VDI 2038 Blatt 1",
     "piezokeramischeBeschleunigungsgeberRegis": "**Piezokeramische Beschleunigungsgeber:** Registrieren von Eigenfrequenzen zur frühzeitigen Feststellung von Tragfähigkeitsminderungen.",
     "prüfvorschriftWtaMerkblatt4": "Prüfvorschrift: WTA-Merkblatt 4-11-16/D (Messung des Wassergehalts bzw. der Feuchte von mineralischen Baustoffen)",
-    "tdrFeuchtesondenMessenZeitlich": "**TDR-Feuchtesonden:** Messen zeitlich aufgelöste elektrolytische Bauwerksfeuchten direkt im Gefügeinneren.",
+    "tdrFeuchtesondenMessenZeitlich": "**TDR-Feuchtesonden:** Messen über die Dielektrizitätszahl zeitlich aufgelöst den volumetrischen Wassergehalt direkt im Gefügeinneren.",
     "ingenieurVorteilMonitoringErgänzt": "**Ingenieur-Vorteil:** Monitoring ergänzt die Prüfungen nach DIN 1076, ersetzt oder verlängert die Regelintervalle aber nicht; es kann Sonderprüfungen gezielt auslösen und Nutzungsauflagen absichern, da das Risikopotential transparent überwacht wird.",
     "dynamischesRissbreitenMonitoringTemperat": " Dynamisches Rissbreiten-Monitoring & Temperaturgang-Simulator",
     "risseInBauwerkenStehen": "Risse in Bauwerken stehen unter mechanischer Dehnung. Die größte Bewegungsamplitude entsteht jedoch meist nicht durch die Nutzlast, sondern durch die thermische Längenänderung der Bauteilkörper (**\"Riss-Atmung\"**). Betrachten Sie die periodische 24h-Kurve zwischen Bauteiltemperatur und LVDT-Rissöffnung:",
@@ -76,7 +76,7 @@
     "randzoneNichtKarbonatisiert": "Randzone nicht karbonatisiert",
     "dieUngestörteDämpfungskurveBeweist": "Die ungestörte Dämpfungskurve beweist eine intakte Faserstruktur des tragenden Bauteils. Die kleinen lokalen Ausschläge belegen die härteren Spätholzbänder, wodurch das Jahrringalter des Holzes gezählt werden kann.",
     "derCharakteristischeLanganhaltendeDichte": "Der charakteristische langanhaltende Dichteeinbruch zwischen 40mm und 95mm zeigt tiefgreifende Braunfäule oder Moderfäule im Kernbereich auf. Trotz anscheinend intakter Randschichten ist die Biegetragfähigkeit um bis zu 60% gemindert!",
-    "einTypischesSchadbildBei": "Ein typisches Schadbild bei historischem Nadelholz. Die äußeren Millimeter weisen extrem geringen Bohrwiderstand auf, was einem vollständigen Gefügebearbeitungsverlust durch Anobien (Holzwurm) entspricht.",
+    "einTypischesSchadbildBei": "Ein typisches Schadbild bei historischem Nadelholz. Die äußeren Millimeter weisen extrem geringen Bohrwiderstand auf, was einem vollständigen Gefügeverlust durch Anobien (Holzwurm) entspricht.",
     "derPlötzlicheAbfallDes": "Der plötzliche Abfall des Bohrwiderstands auf den Reibungswert der bloßen Nadelwelle (nahe 0%) signalisiert eine vollständige mechanische Entkopplung im Inneren (Spaltriss oder Hohlstamm).",
     "estrichBaustoffKlassifizierung": "Estrich / Baustoff-Klassifizierung",
     "mauerwerkKeineBelegreifeGrenze": "ℹ Mauerwerk: keine Belegreife-Grenze",
@@ -126,7 +126,7 @@
       },
       "kaefer": {
         "name": "Nagekäferbefall (Anobien, Anobium punctatum) bzw. Splintholzkäferbefall (Lyctus spp.)",
-        "desc": "Zerstörung der weicheren äußeren Splintholzzone durch Fraßgänge. Innerer Kern bleibt vorerst intakt."
+        "desc": "Zerstörung der weicheren äußeren Splintholzzone durch Fraßgänge. Innerer Kern bleibt vorerst intakt. Splintholzkäfer befallen nur stärkereiches Laubholz (z. B. Eiche, Esche); in Nadelholz sind Nagekäfer und Hausbock maßgebend."
       },
       "hohl": {
         "name": "Hohler Stamm / Riss",
@@ -163,8 +163,8 @@
       },
       {
         "titel": "Einordnung",
-        "erklaerung": "Orientierungswerte: hoher Widerstand bedeutet geringe Korrosionsgeschwindigkeit.",
-        "formel": "\\rho > 100\\,\\Omega\\text{m} \\Rightarrow \\text{eher geringes Risiko}"
+        "erklaerung": "Orientierungswerte nach RILEM TC 154-EMC (Portlandzementbeton, 20 °C): unter 100 Ωm hohes, 100 bis 500 Ωm mäßiges, 500 bis 1000 Ωm geringes, über 1000 Ωm vernachlässigbares Korrosionsrisiko.",
+        "formel": "100 < \\rho \\le 500\\,\\Omega\\text{m} \\Rightarrow \\text{mäßiges Korrosionsrisiko}"
       }
     ],
     "Bauwerksunters_Monitoring.literatur": [
