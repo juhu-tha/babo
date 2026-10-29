@@ -158,7 +158,7 @@
       {
         "name": "Blähperlit (Vulkanisches Granulat)",
         "abbreviation": "EP",
-        "standard": "DIN EN 13169",
+        "standard": "DIN EN 13169 (Platten) / DIN EN 14316-1 (Schüttung)",
         "lambdaRange": "0,040 - 0,050",
         "density": "70 - 150 kg/m³",
         "vaporResistance": "μ = 2 - 5",
@@ -183,7 +183,7 @@
       {
         "name": "Blähton (Leca-Schüttgut)",
         "abbreviation": "LE",
-        "standard": "DIN EN 13055",
+        "standard": "DIN EN 14063-1 (Schüttdämmung) / DIN EN 13055 (leichte Gesteinskörnung)",
         "lambdaRange": "0,080 - 0,160",
         "density": "200 - 800 kg/m³",
         "vaporResistance": "μ = 2",
