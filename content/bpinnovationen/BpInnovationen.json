@@ -20,7 +20,7 @@
     "treiberInnovationsEnabler": "Treiber & Innovations-Enabler",
     "baurechtNormung": "Baurecht & Normung",
     "konservativeDinEnNormen": "Konservative DIN EN-Normen, langwierige Zulassungsverfahren (abZ/aBG oft mehrere Jahre), hohe Prüfkosten.",
-    "reallaborGesetzeExperimentierklauselnIn": "Reallabor-Gesetze, Experimentierklauseln in den Landesbauordnungen (z. B. Gebäudetyps E), DIBt-Fast-Track für Nachhaltigkeit.",
+    "reallaborGesetzeExperimentierklauselnIn": "Reallabor-Gesetze, Experimentierklauseln in den Landesbauordnungen (z. B. Gebäudetyp E).",
     "haftungVersicherung": "Haftung & Versicherung",
     "mängelansprücheBeiBauwerkenVerjähren": "Mängelansprüche bei Bauwerken verjähren nach 5 Jahren (§ 634a BGB); Haftpflichtversicherer erwarten die Einhaltung der anerkannten Regeln der Technik.",
     "vorhabenbezogeneBauartgenehmigungenVbgHe": "Vorhabenbezogene Bauartgenehmigungen (vBG), herstellergestützte Systemgarantien und Zertifikate durch akkreditierte Prüfstellen (BAM, Fraunhofer).",
@@ -193,8 +193,7 @@
         "description": "Pilzmyzel (z. B. Ganoderma lucidum), das auf landwirtschaftlichen Reststoffen (Hanfschäben, Sägemehl, Stroh) wächst und diese zu druckfesten, formstabilen Dämm- und Akustikelementen verfilzt.",
         "advantages": [
           "100 % biobasiert, vollständig kompostierbar (Cradle-to-Cradle Gold-Potenzial)",
-          "Niedrige Wärmeleitfähigkeit (Lehrwert λ ≈ 0,038 bis 0,042 W/(mK); maßgebend ist die Herstellerangabe)",
-          "Natürlicher Brandschutz durch Chitinanteile in den Zellwänden (Klasse B2 / B1)"
+          "Niedrige Wärmeleitfähigkeit (Lehrwert λ ≈ 0,038 bis 0,042 W/(mK); maßgebend ist die Herstellerangabe)"
         ],
         "bottlenecks": [
           "Feuchteempfindlichkeit im ungeschützten Außenbereich (Gefahr von Schimmelwachstum)",

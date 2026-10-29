@@ -103,8 +103,8 @@ export default function Impressum() {
               <div className="flex items-start gap-3">
                 <LinkIcon className="w-5 h-5 text-home-prim/70 shrink-0 mt-0.5" />
                 <div>
-                  <a href="https://www.tha.de/hochschule/fakultaet/ab/kontakt/juergen-huber/" target="_blank" rel="noopener noreferrer" className="hover:text-shiraz transition-colors">
-                    Profil an der Technischen Hochschule Augsburg (THA)
+                  <a href="https://www.tha.de/hochschule/fakultaet/ab/" target="_blank" rel="noopener noreferrer" className="hover:text-shiraz transition-colors">
+                    Fakultät für Architektur und Bauwesen der Technischen Hochschule Augsburg (THA)
                   </a>
                 </div>
               </div>

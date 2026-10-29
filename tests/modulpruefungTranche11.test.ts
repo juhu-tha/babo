@@ -25,6 +25,13 @@ gilt(ea3.q_h === 10 && ea3.q_e === 9 && ea3.q_p === 16 && ea3.klasse === 'A+', `
 gilt(ea3.hinweise.some(h => h.feld === 'q_h'), 'EA3 Hinweis Mindestwert 10 kWh/(m²a)');
 const ea4 = energieausweis({ typ: 'mfh', flaeche: 1200, huelle: 'bestand_teilsaniert', lueftung: 'abluft', heizung: 'fernwaerme' });
 gilt(ea4.q_h === 34 && ea4.q_e === 58 && ea4.q_p === 28 && ea4.klasse === 'B', `EA4 ${ea4.q_h}/${ea4.q_e}/${ea4.q_p}/${ea4.klasse}`);
+// Umsetzung 29.10.2026 (T11-EA-2/-3): Rechtsstand ab 01.01.2027 und CO₂ nach Anlage 9 (eigenes Prüfskript)
+const ea2_27 = energieausweis({ typ: 'mfh', flaeche: 800, huelle: 'unsaniert', lueftung: 'fenster', heizung: 'oel_kessel', rechtsstand: 'ab_2027' });
+gilt(ea2.co2_emissionen === 58 && ea2_27.q_p === 208 && ea2_27.co2_emissionen === 58, `EA2 CO₂ 58, 2027 q_P 208: ${ea2.co2_emissionen}/${ea2_27.q_p}`);
+const ea3_27 = energieausweis({ typ: 'efh', flaeche: 150, huelle: 'effizienzhaus40', lueftung: 'kwl_wrg', heizung: 'wp_sole', rechtsstand: 'ab_2027' });
+gilt(ea3.co2_emissionen === 5 && ea3_27.q_p === 14 && ea3_27.co2_emissionen === 1, `EA3 CO₂ 5 (560 g/kWh), 2027 q_P 14 / CO₂ 1: ${ea3.co2_emissionen}/${ea3_27.q_p}/${ea3_27.co2_emissionen}`);
+const ea4_27 = energieausweis({ typ: 'mfh', flaeche: 1200, huelle: 'bestand_teilsaniert', lueftung: 'abluft', heizung: 'fernwaerme', rechtsstand: 'ab_2027' });
+gilt(ea4_27.q_p === 43 && ea4_27.klasse === 'B', `EA4 2027 Fernwärme f_p 0,7: ${ea4_27.q_p}`);
 gilt(effizienzklasse(30) === 'A+' && effizienzklasse(30.5) === 'A' && effizienzklasse(250) === 'G' && effizienzklasse(251) === 'H', 'EA5 Klassengrenzen Anlage 10');
 
 // 2. Thermische Kennwerte und Dämmdicke (Modulbeispiele Waermeeigenschaften)
@@ -47,16 +54,18 @@ pruefe('DV3 Taupunkt 20 °C / 50 %', taupunkt(20, 50), 9.26, 2e-3);
 pruefe('BP1 U KS + MW', uWert([{ d: 0.015, lambda: 0.70 }, { d: 0.175, lambda: 0.99 }, { d: 0.14, lambda: 0.035 }], 0.13, 0.04).U, 0.228927);
 pruefe('BP3 U Standardwand', uWert([{ d: 0.015, lambda: 0.35 }, { d: 0.24, lambda: 0.42 }, { d: 0.16, lambda: 0.035 }, { d: 0.02, lambda: 1.0 }], 0.13, 0.04).U, 0.186022);
 
-// 5. Materialoptimierung (DAfStb-Lehrrechner; Lehrwerte)
+// 5. Materialoptimierung (DAfStb-Lehrrechner; Lehrwerte vereinheitlicht am 29.10.2026, T11-MO-3: Beton 320·g_Z + 30, Stahl-Referenz 0,64)
 const mo1 = dafstbVergleich({ bauteil: 'decke', bauweise: 'hohlkoerper', zement: 'cem3_a', pruefalter: 56, stahlRoute: 'gruen_eaf' });
-gilt(mo1.refTotalGwp === 10863 && mo1.optTotalGwp === 3436 && mo1.optConcreteGwpPerM3 === 123 && mo1.efficiencyClass === 'Klasse A+', `MO1 ${mo1.refTotalGwp}/${mo1.optTotalGwp}/${mo1.efficiencyClass}`);
-pruefe('MO1 Δ %', mo1.diffPct, 68.3697);
+gilt(mo1.refTotalGwp === 9266 && mo1.optTotalGwp === 4118 && mo1.optConcreteGwpPerM3 === 158 && mo1.efficiencyClass === 'Klasse A+', `MO1 ${mo1.refTotalGwp}/${mo1.optTotalGwp}/${mo1.efficiencyClass}`);
+pruefe('MO1 Δ %', mo1.diffPct, 55.558);
 const mo2 = dafstbVergleich({ bauteil: 'stuetze', bauweise: 'hochfest_c50_schlank', zement: 'cem2_bs', pruefalter: 28, stahlRoute: 'standard_bof' });
-gilt(mo2.refTotalGwp === 1268 && mo2.optTotalGwp === 437, `MO2 ${mo2.refTotalGwp}/${mo2.optTotalGwp}`); pruefe('MO2 Δ %', mo2.diffPct, 65.5363);
+gilt(mo2.refTotalGwp === 1065 && mo2.optTotalGwp === 458, `MO2 ${mo2.refTotalGwp}/${mo2.optTotalGwp}`); pruefe('MO2 Δ %', mo2.diffPct, 56.9953);
 const mo3 = dafstbVergleich({ bauteil: 'bodenplatte', bauweise: 'optimiert_28', zement: 'cem2_all', pruefalter: 28, stahlRoute: 'standard_bof' });
-gilt(mo3.optTotalGwp === 11199 && mo3.efficiencyClass === 'Klasse B', `MO3 ${mo3.optTotalGwp}/${mo3.efficiencyClass}`); pruefe('MO3 Δ %', mo3.diffPct, 33.0364);
+gilt(mo3.optTotalGwp === 10258 && mo3.efficiencyClass === 'Klasse B', `MO3 ${mo3.optTotalGwp}/${mo3.efficiencyClass}`); pruefe('MO3 Δ %', mo3.diffPct, 28.9169);
 const mo4 = dafstbVergleich({ bauteil: 'wand', bauweise: 'optimiert_18', zement: 'cem1', pruefalter: 56, stahlRoute: 'standard_bof' });
-gilt(mo4.optConcreteGwpPerM3 === 282 && mo4.optTotalGwp === 3893 && mo4.hinweise.some(h => h.feld === 'pruefalter'), 'MO4 CEM I mit 56 d: Abschlag und Hinweis');
+gilt(mo4.optConcreteGwpPerM3 === 260 && mo4.optTotalGwp === 3655 && mo4.efficiencyClass === 'Klasse C' && mo4.hinweise.some(h => h.feld === 'pruefalter'), 'MO4 CEM I mit 56 d: Abschlag und Hinweis');
+const mo5 = dafstbVergleich({ bauteil: 'decke', bauweise: 'massiv', zement: 'cem2_all', pruefalter: 28, stahlRoute: 'eaf_de' });
+gilt(mo5.optTotalGwp === 6941 && mo5.efficiencyClass === 'Klasse B', `MO5 CEM II/A-LL (≈ ÖKOBAUDAT C25/30) ${mo5.optTotalGwp}`);
 
 // 6. Lebenszykluskosten (Barwertmethode, BNB 2.1.1: Steigerung ab dem 2. Jahr)
 pruefe('LCC5 RBF(2 %; 30 a)', rentenbarwertfaktor(0.02, 30), 22.3965);

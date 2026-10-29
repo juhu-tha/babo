@@ -2,8 +2,11 @@
  * Rechenkern Materialoptimierung – THG-Vergleich Referenz/optimiertes Bauteil (Z3), übernommen aus
  * src/modules/Materialoptimierung.tsx (DAfStb-Richtlinie, Lehrbeispiel):
  *  - Mengen je Bauteil und Bauweise (Beton in m³, Betonstahl in kg) wie im Modul
- *  - Beton: Referenz 310 kg CO₂e/m³ (CEM I), optimiert nach Zementart, bei Prüfalter 56 d ×0,91 (gerundet)
- *  - Betonstahl: 0,98 kg CO₂e/kg (Hochofen-Route), grüne Elektrostahl-Route 0,42
+ *  - Beton: GWP = 320 kg/m³ · GWP_Zement + 30 kg/m³ (Lehrbeispiel C30/37 wie Modul LCA-Grundlagen), Referenz CEM I = 286,
+ *    optimiert nach Zementart, bei Prüfalter 56 d ×0,91 (gerundet)
+ *  - Betonstahl: Referenz ÖKOBAUDAT „Bewehrungsstahl (de)“ 0,64 kg CO₂e/kg (überwiegend Elektrostahl); wählbar
+ *    Hochofen-Route (BOF) 0,98 und Elektrostahl mit Grünstrom 0,42 (Lehrwerte)
+ *  - Umsetzung 29.10.2026 (T11-MO-3): Lehrwerte vereinheitlicht (vorher Referenz 310 kg/m³ und BOF-Stahl)
  *  - Summen jeweils gerundet; Minderung ΔGWP = max(0; Ref − Opt), Δ% = max(0; (Ref − Opt)/Ref·100)
  *  - Klasse: ≥ 50 % A+, ≥ 40 % A, ≥ 25 % B, ≥ 10 % C, sonst Referenz (Lehreinteilung)
  * Einheiten: kg CO₂e; spezifisch je Bezugsgröße (m² bzw. m). Reiner Rechenkern – geprüft in tests/materialoptimierung.test.ts.
@@ -13,14 +16,26 @@ import { type Hinweis, hatFehler } from './plausibilitaet';
 export type DafstbBauteil = 'decke' | 'stuetze' | 'wand' | 'bodenplatte';
 export type DafstbZement = 'cem1' | 'cem2_all' | 'cem2_bs' | 'cem3_a' | 'cem2_cm';
 
+/** Zementgehalt des Lehrbetons (C30/37) in kg/m³ und pauschaler Anteil aus Gesteinskörnung, Wasser, Zusatzmitteln, Werkstransport */
+export const ZEMENTGEHALT_LEHR = 320;
+export const REST_GWP_LEHR = 30;
 /**
- * LEHRWERTE (Runde 5 gekennzeichnet, keine Normwerte): GWP A1–A3 eines Normalbetons je m³ nach Zementart [kg CO₂e/m³].
- * Größenordnung typischer Muster-EPD von Transportbeton C25/30–C30/37; projektbezogen sind die EPD des Betonwerks bzw. die
- * ÖKOBAUDAT-Datensätze maßgebend. Quelle der konkreten Zahlen offen – Prüfpunkt F-Freigabe (Fehlliste PR).
+ * LEHRWERTE GWP A1–A3 je kg Zement [kg CO₂e/kg]: CEM I 0,80 und CEM III/A 0,45 wie Modul LCA-Grundlagen; CEM II/A-LL 0,60
+ * (Größenordnung Hersteller-EPD; ergibt 222 kg/m³ wie ÖKOBAUDAT 2024-I „Transportbeton C25/30“, 221,7 kg/m³);
+ * CEM II/B-S 0,55 und CEM II/C-M 0,43 vorläufig, F-Freigabe. Projektbezogen gelten EPD des Betonwerks bzw. ÖKOBAUDAT.
  */
-export const ZEMENT_GWP: Readonly<Record<DafstbZement, number>> = { cem1: 310, cem2_all: 250, cem2_bs: 190, cem3_a: 135, cem2_cm: 105 };
-/** LEHRWERTE Betonstahl [kg CO₂e/kg]: Hochofenroute (BOF) bzw. Elektrostahl mit Schrott und Grünstrom (EAF); EPD des Herstellers maßgebend */
-export const STAHL_GWP = { standard_bof: 0.98, gruen_eaf: 0.42 } as const;
+export const ZEMENT_GWP_JE_KG: Readonly<Record<DafstbZement, number>> = { cem1: 0.80, cem2_all: 0.60, cem2_bs: 0.55, cem3_a: 0.45, cem2_cm: 0.43 };
+/** GWP A1–A3 des Lehrbetons je m³ nach Zementart [kg CO₂e/m³] = round(320 · GWP_Zement + 30): 286 / 222 / 206 / 174 / 168 */
+export const ZEMENT_GWP: Readonly<Record<DafstbZement, number>> = Object.fromEntries(
+  (Object.keys(ZEMENT_GWP_JE_KG) as DafstbZement[]).map(z => [z, Math.round(ZEMENTGEHALT_LEHR * ZEMENT_GWP_JE_KG[z] + REST_GWP_LEHR)]),
+) as Record<DafstbZement, number>;
+export type DafstbStahlRoute = 'eaf_de' | 'standard_bof' | 'gruen_eaf';
+/**
+ * Betonstahl [kg CO₂e/kg]: eaf_de = ÖKOBAUDAT 2023 „Bewehrungsstahl (de)“ 0,642 (Referenz, in Deutschland überwiegend
+ * Elektrostahl); standard_bof = Hochofen-/Oxygenstahl-Route, Lehrwert 0,98 (vorläufig, F-Freigabe: EPD bzw. ÖKOBAUDAT-Datensatz);
+ * gruen_eaf = Elektrostahl mit Grünstrom, Lehrwert 0,42 (EPD des Herstellers maßgebend)
+ */
+export const STAHL_GWP: Readonly<Record<DafstbStahlRoute, number>> = { eaf_de: 0.64, standard_bof: 0.98, gruen_eaf: 0.42 };
 /** LEHRWERT Abschlag auf das Beton-GWP bei Prüfalter 56 d (Zementreduktion durch Nacherhärtung) */
 export const ABSCHLAG_56D = 0.91;
 
@@ -44,7 +59,7 @@ export interface DafstbEingabe {
   bauweise: string;
   zement: DafstbZement;
   pruefalter: 28 | 56;
-  stahlRoute: 'standard_bof' | 'gruen_eaf';
+  stahlRoute: DafstbStahlRoute;
 }
 
 export interface DafstbErgebnis {
@@ -73,10 +88,10 @@ export function dafstbVergleich(e: DafstbEingabe): DafstbErgebnis {
   const opt = b.varianten[e.bauweise] ?? b.referenz;
   if (!(e.bauweise in b.varianten)) hinweise.push({ stufe: 'warnung', feld: 'bauweise', text: 'Bauweise für dieses Bauteil nicht hinterlegt: Es werden die Referenzmengen angesetzt.' });
   const optConcreteGwpPerM3 = Math.round(ZEMENT_GWP[e.zement] * (e.pruefalter === 56 ? ABSCHLAG_56D : 1.0));
-  const refSteel = STAHL_GWP.standard_bof;
+  const refSteel = STAHL_GWP.eaf_de;
   const optSteel = STAHL_GWP[e.stahlRoute];
-  hinweise.push({ stufe: 'warnung', feld: 'gwp', text: 'Lehrwerte: GWP-Faktoren für Beton (je Zementart), Betonstahl und den 56-Tage-Abschlag sind gerundete Lehrannahmen, keine EPD- oder Normwerte; Mengen und Klassengrenzen sind Lehrbeispiele.' });
-  const refConcreteGwpTotal = Math.round(b.referenz.betonM3 * 310);
+  hinweise.push({ stufe: 'warnung', feld: 'gwp', text: 'Lehrwerte: GWP-Faktoren für Beton (je Zementart, Lehrbeton mit 320 kg Zement), Betonstahl (Referenz ÖKOBAUDAT-Mittel Deutschland) und den 56-Tage-Abschlag sind gerundete Lehrannahmen, keine Projektwerte; Mengen und Klassengrenzen sind Lehrbeispiele.' });
+  const refConcreteGwpTotal = Math.round(b.referenz.betonM3 * ZEMENT_GWP.cem1);
   const refSteelGwpTotal = Math.round(b.referenz.stahlKg * refSteel);
   const refTotalGwp = refConcreteGwpTotal + refSteelGwpTotal;
   const optConcreteGwpTotal = Math.round(opt.betonM3 * optConcreteGwpPerM3);

@@ -5,6 +5,7 @@ import { FormulaText } from '@/src/components/ui/FormulaText';
 import inhalt from '@/content/rueckbau/RechnerTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
+import type { Massenkennwerte } from '@/src/calc/rueckbauMassen';
 
 export interface RechnerTabProps {
   setBuildingVolume: Dispatch<SetStateAction<number>>;
@@ -23,7 +24,7 @@ export interface RechnerTabProps {
   massMixed: number;
   setShowCalculations: Dispatch<SetStateAction<boolean>>;
   showCalculations: boolean;
-  currentDensity: { concrete: number; masonry: number; wood: number; metals: number; plastics: number; gypsum: number; hazardous: number; mixed: number; } | { concrete: number; masonry: number; wood: number; metals: number; plastics: number; gypsum: number; hazardous: number; mixed: number; } | { concrete: number; masonry: number; wood: number; metals: number; plastics: number; gypsum: number; hazardous: number; mixed: number; } | { concrete: number; masonry: number; wood: number; metals: number; plastics: number; gypsum: number; hazardous: number; mixed: number; };
+  currentDensity: Massenkennwerte;
 }
 
 export function RechnerTab({ setBuildingVolume, setStructureType, buildingVolume, structureType, totalMass, mineralPercentage, massConcrete, massMasonry, massWood, massMetals, massGypsum, massPlastics, massHazardous, massMixed, setShowCalculations, showCalculations, currentDensity }: RechnerTabProps) {
@@ -221,7 +222,7 @@ export function RechnerTab({ setBuildingVolume, setStructureType, buildingVolume
                     <span className="w-1.5 h-1.5 rounded-full bg-indigo-600"></span><MdText text={inhalt.texte.schritt3BerechnungDer} /><FormulaText text="m_i = V \cdot \rho_i" />)
                   </h5>
                   <p className="mb-2 text-text-main/75 text-xs"><MdText text={inhalt.texte.diePrognostiziertenMassenströmeErgeben} /></p>
-                  <FormulaText text={`m_{\\text{Beton}} = V \\cdot \\rho_{\\text{Beton}} = ${buildingVolume} \\text{ m}^3 \\cdot ${currentDensity.concrete} \\text{ t/m}^3 = ${massConcrete} \\text{ t}`} />
+                  <FormulaText text={`m_{\\text{Beton}} = V \\cdot \\rho_{\\text{Beton}} = ${formatDeTeXWert(buildingVolume)} \\text{ m}^3 \\cdot ${formatDeTeXWert(currentDensity.concrete)} \\text{ t/m}^3 = ${formatDeTeXWert(massConcrete)} \\text{ t}`} />
                 </div>
     
                 <div>

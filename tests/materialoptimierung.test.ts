@@ -1,5 +1,5 @@
 // Rechenkern Materialoptimierung (Z3): THG-Vergleich Referenz/optimiertes Bauteil
-import { dafstbVergleich, effizienzKlasseThg, DAFSTB_BAUTEILE, STAHL_GWP, ABSCHLAG_56D, type DafstbBauteil, type DafstbZement } from '../src/calc/materialoptimierung';
+import { dafstbVergleich, effizienzKlasseThg, DAFSTB_BAUTEILE, STAHL_GWP, ZEMENT_GWP, ABSCHLAG_56D, type DafstbBauteil, type DafstbZement } from '../src/calc/materialoptimierung';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -7,15 +7,17 @@ const nahe = (ist: number, soll: number, tol: number) => Math.abs(ist - soll) <=
 console.log('--- Test: Materialoptimierung ---');
 
 // 1. Handrechnung Startwerte: Decke, Hohlkörper, CEM III/A, 56 d, grüner Stahl
-//    Referenz: 26·310 = 8060; 2860·0,98 = 2802,8 → 2803; Summe 10 863 kg CO₂e (108,63 je m²)
-//    optimiert: round(135·0,91) = 123 kg/m³; 19,5·123 = 2398,5 → 2399; 2470·0,42 = 1037,4 → 1037; Summe 3436
-//    Minderung (10 863 − 3436)/10 863 = 68,37 % → Klasse A+
+//    Lehrwerte seit 29.10.2026 (T11-MO-3): Beton = round(320·GWP_Zement + 30), CEM I 286, CEM III/A 174; Stahl-Referenz ÖKOBAUDAT 0,64
+//    Referenz: 26·286 = 7436; 2860·0,64 = 1830,4 → 1830; Summe 9266 kg CO₂e (92,66 je m²)
+//    optimiert: round(174·0,91) = 158 kg/m³; 19,5·158 = 3081; 2470·0,42 = 1037,4 → 1037; Summe 4118
+//    Minderung (9266 − 4118)/9266 = 55,56 % → Klasse A+
 const r = dafstbVergleich({ bauteil: 'decke', bauweise: 'hohlkoerper', zement: 'cem3_a', pruefalter: 56, stahlRoute: 'gruen_eaf' });
-pruefe(r.optConcreteGwpPerM3 === 123 && r.refConcreteGwpTotal === 8060 && r.refSteelGwpTotal === 2803 && r.refTotalGwp === 10863, `Referenz ${JSON.stringify(r)}`);
-pruefe(r.optConcreteGwpTotal === 2399 && r.optSteelGwpTotal === 1037 && r.optTotalGwp === 3436 && r.diffAbs === 7427, `optimiert ${r.optConcreteGwpTotal} ${r.optSteelGwpTotal}`);
-pruefe(nahe(r.diffPct, 68.370, 1e-3) && r.efficiencyClass === 'Klasse A+' && nahe(r.refSpecificGwp, 108.63, 1e-9) && nahe(r.optSpecificGwp, 34.36, 1e-9), `Minderung ${r.diffPct}`);
-// 2. Referenzfall ohne Optimierung (CEM I, 28 d, BOF, Referenzmengen) → 0 % → Referenz
-const ref = dafstbVergleich({ bauteil: 'wand', bauweise: 'standard', zement: 'cem1', pruefalter: 28, stahlRoute: 'standard_bof' });
+pruefe(r.optConcreteGwpPerM3 === 158 && r.refConcreteGwpTotal === 7436 && r.refSteelGwpTotal === 1830 && r.refTotalGwp === 9266, `Referenz ${JSON.stringify(r)}`);
+pruefe(r.optConcreteGwpTotal === 3081 && r.optSteelGwpTotal === 1037 && r.optTotalGwp === 4118 && r.diffAbs === 5148, `optimiert ${r.optConcreteGwpTotal} ${r.optSteelGwpTotal}`);
+pruefe(nahe(r.diffPct, 55.558, 1e-3) && r.efficiencyClass === 'Klasse A+' && nahe(r.refSpecificGwp, 92.66, 1e-9) && nahe(r.optSpecificGwp, 41.18, 1e-9), `Minderung ${r.diffPct}`);
+pruefe(ZEMENT_GWP.cem1 === 286 && ZEMENT_GWP.cem2_all === 222 && ZEMENT_GWP.cem2_bs === 206 && ZEMENT_GWP.cem3_a === 174 && ZEMENT_GWP.cem2_cm === 168, `Beton-GWP je Zementart ${JSON.stringify(ZEMENT_GWP)}`);
+// 2. Referenzfall ohne Optimierung (CEM I, 28 d, Betonstahl DE, Referenzmengen) → 0 % → Referenz
+const ref = dafstbVergleich({ bauteil: 'wand', bauweise: 'standard', zement: 'cem1', pruefalter: 28, stahlRoute: 'eaf_de' });
 pruefe(ref.diffAbs === 0 && ref.diffPct === 0 && ref.efficiencyClass === 'Referenz' && ref.hinweise.some(x => x.feld === 'bauweise'), 'Referenzfall');
 pruefe(dafstbVergleich({ bauteil: 'decke', bauweise: 'massiv', zement: 'cem1', pruefalter: 56, stahlRoute: 'standard_bof' }).hinweise.some(x => x.feld === 'pruefalter'), 'CEM I mit 56 d → Hinweis');
 // 3. Klassengrenzen
@@ -38,7 +40,7 @@ for (const bt of Object.keys(DAFSTB_BAUTEILE) as DafstbBauteil[]) for (const bw 
 {
   const r = dafstbVergleich({ bauteil: 'decke', bauweise: 'massiv', zement: 'cem3_a', pruefalter: 28, stahlRoute: 'gruen_eaf' });
   pruefe(r.hinweise.some(x => x.feld === 'gwp' && /Lehrwerte/.test(x.text)), 'Lehrwert-Hinweis');
-  pruefe(STAHL_GWP.standard_bof === 0.98 && STAHL_GWP.gruen_eaf === 0.42 && ABSCHLAG_56D === 0.91 && r.optSteelGwpTotal === Math.round(2520 * 0.42), 'Lehrwert-Konstanten unverändert');
+  pruefe(STAHL_GWP.eaf_de === 0.64 && STAHL_GWP.standard_bof === 0.98 && STAHL_GWP.gruen_eaf === 0.42 && ABSCHLAG_56D === 0.91 && r.optSteelGwpTotal === Math.round(2520 * 0.42), 'Lehrwert-Konstanten');
 }
 
 if (fehler.length) { for (const x of fehler) console.error(`FAIL: ${x}`); process.exit(1); }

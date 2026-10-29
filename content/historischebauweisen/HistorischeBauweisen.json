@@ -124,7 +124,7 @@
     "dieBiegungIstBei": "Die Biegung ist bei historischen Decken selten maßgebend; kritisch sind Durchbiegung, Schwingungen und Balkenkopffäule im Mauerwerksauflager.",
     "technischeMechanikNachweisNach": "Technische Mechanik; Nachweis nach DIN EN 1995-1-1 mit NA",
     "beispiel2SchwindmaßEines": "Beispiel 2: Schwindmaß eines Deckenbalkens nach dem Austrocknen",
-    "rund1CmSchwinden": "Rund 1 cm Schwinden erklärt typische Risse, lockere Verbindungen und Fugen in Fachwerk und Dielenböden. Schwindrisse sind meist unkritisch, Verbindungsmittel sind aber nachzuziehen.",
+    "rund1CmSchwinden": "Rund 1,4 cm Schwinden erklärt typische Risse, lockere Verbindungen und Fugen in Fachwerk und Dielenböden. Schwindrisse sind meist unkritisch, Verbindungsmittel sind aber nachzuziehen.",
     "din68100201007": "DIN 68100:2010-07 (Schwind- und Quellmaße)",
     "oktober2026Ap8": "Oktober 2026 (AP 8 Bestand: Konstruktionsbeispiele und Quellen geprüft; fachliche Freigabe durch den Autor ausstehend)",
     "reiterBereiche": "Bereiche des Moduls Historische Bauweisen"
@@ -150,13 +150,13 @@
     "HistorischeBauweisen.schritte_2": [
       {
         "titel": "Gegeben",
-        "erklaerung": "Fichte, tangentiale Querschnittsabmessung 220 mm; Einbau mit u = 30 %, Ausgleichsfeuchte im beheizten Gebäude u = 12 %; differentielles Schwindmaß tangential ≈ 0,27 % je % Holzfeuchte (Richtwert, wie im Rechner).",
+        "erklaerung": "Fichte, tangentiale Querschnittsabmessung 220 mm; Einbau mit u = 30 %, Ausgleichsfeuchte im beheizten Gebäude u = 12 %; differentielles Schwindmaß tangential 0,36 % je % Holzfeuchte (Literaturwert nach TU München, Skript „Holz – Eigenschaften, Merkmale“, wie im Rechner und im Modul Holzbau).",
         "formel": "\\Delta u = 30 - 12 = 18\\,\\%"
       },
       {
         "titel": "Schwindmaß",
         "erklaerung": "Lineare Näherung unterhalb des Fasersättigungsbereichs:",
-        "formel": "\\Delta b = 220 \\cdot 0{,}0027 \\cdot 18 = 10{,}7\\,\\text{mm}"
+        "formel": "\\Delta b = 220 \\cdot 0{,}0036 \\cdot 18 = 14{,}3\\,\\text{mm}"
       }
     ],
     "HistorischeBauweisen.literatur": [

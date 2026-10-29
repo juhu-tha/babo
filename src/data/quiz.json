@@ -173,6 +173,211 @@
     "verified": true
   },
   {
+    "id": "qt_zfp_1",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "zfp",
+    "moduleTitle": "Zerstörungsfreie Prüfung (ZfP)",
+    "topic": "Georadar",
+    "difficulty": "Vertiefung",
+    "normRef": "DGZfP-Merkblatt B 10",
+    "question": "Georadar auf feuchtem Beton: relative Dielektrizitätszahl ε_r = 9, Laufzeit des Bewehrungsechos t = 2,0 ns, c₀ = 300 mm/ns. In welcher Tiefe liegt der Stab?",
+    "options": [
+      "d ≈ 200 mm",
+      "d ≈ 300 mm",
+      "d ≈ 33,3 mm",
+      "d ≈ 100 mm"
+    ],
+    "correctIdx": 3,
+    "explanation": "v = c₀/√ε_r = 300/3 = 100 mm/ns. Das Echo läuft hin und zurück: d = v · t/2 = 100 · 2,0/2 = 100 mm.",
+    "bloom": "Anwenden",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Hier fehlt die Halbierung: t ist die Laufzeit für Hin- und Rückweg.",
+      "Hier wurde mit der Lichtgeschwindigkeit im Vakuum ohne Wurzel aus ε_r gerechnet und nicht halbiert.",
+      "Hier wurde durch ε_r statt durch √ε_r geteilt (300/9 = 33 mm/ns).",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Georadar",
+      "misconception": "Die Ausbreitungsgeschwindigkeit wird ohne √ε_r oder die Laufzeit ohne Halbierung angesetzt.",
+      "coreRule": "Georadar: v = c₀/√ε_r, d = v · t/2.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Georadar (GPR)“ im Modul ZfP-Simulatoren & DGZfP noch einmal durch.",
+      "targetModuleTab": "zfp",
+      "targetModuleLabel": "ZfP-Simulatoren & DGZfP"
+    },
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-29",
+      "ergebnis": "ok",
+      "hinweis": "Neu 29.10.: Aufstockung des Teilmoduls auf 6 Fragen (QZ-6); mit src/calc/pruefverfahren.ts (georadar) nachgerechnet, tests/quizRechenfragen.test.ts"
+    }
+  },
+  {
+    "id": "qt_zfp_2",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "zfp",
+    "moduleTitle": "Zerstörungsfreie Prüfung (ZfP)",
+    "topic": "Betonwiderstand (Wenner-Sonde)",
+    "difficulty": "Vertiefung",
+    "normRef": "RILEM TC 154-EMC",
+    "question": "Wenner-Sonde mit Elektrodenabstand a = 50 mm, gemessener Widerstand R = 1000 Ω. Welcher spezifische Widerstand und welches Korrosionsrisiko ergeben sich nach dem Modul?",
+    "options": [
+      "ρ ≈ 50 Ω·m – hohes Korrosionsrisiko",
+      "ρ ≈ 314 Ω·m – mäßiges Korrosionsrisiko",
+      "ρ ≈ 31 Ω·m – hohes Korrosionsrisiko",
+      "ρ ≈ 314 Ω·m – vernachlässigbares Risiko"
+    ],
+    "correctIdx": 1,
+    "explanation": "ρ = 2π · a · R = 2π · 0,05 m · 1000 Ω = 314 Ω·m (= 31,4 kΩ·cm). Nach RILEM TC 154-EMC (OPC-Beton, 20 °C) liegt das im Bereich 100 … 500 Ω·m: mäßiges Risiko.",
+    "bloom": "Anwenden",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Hier fehlt der Faktor 2π: ρ = 2π · a · R.",
+      "",
+      "Einheitenfehler: 31,4 ist der Wert in kΩ·cm, in Ω·m sind es 314.",
+      "Vernachlässigbar ist das Risiko erst über 1000 Ω·m; 314 Ω·m liegen im Bereich 100 … 500 Ω·m."
+    ],
+    "gapAnalysis": {
+      "topic": "Betonwiderstand (Wenner-Sonde)",
+      "misconception": "Geometriefaktor oder Einheit des spezifischen Widerstands werden falsch angesetzt.",
+      "coreRule": "Wenner: ρ = 2π · a · R; < 100 Ω·m hoch, 100 … 500 mäßig, 500 … 1000 niedrig, > 1000 vernachlässigbar.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Betonwiderstand (Wenner-Sonde)“ im Modul ZfP-Simulatoren & DGZfP noch einmal durch.",
+      "targetModuleTab": "zfp",
+      "targetModuleLabel": "ZfP-Simulatoren & DGZfP"
+    },
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-29",
+      "ergebnis": "ok",
+      "hinweis": "Neu 29.10.: Aufstockung des Teilmoduls auf 6 Fragen (QZ-6); mit src/calc/pruefverfahren.ts (wenner) nachgerechnet, tests/quizRechenfragen.test.ts"
+    }
+  },
+  {
+    "id": "qt_zfp_3",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "zfp",
+    "moduleTitle": "Zerstörungsfreie Prüfung (ZfP)",
+    "topic": "Potentialmessung",
+    "difficulty": "Basis",
+    "normRef": "ASTM C876; DGZfP-Merkblatt B 03",
+    "question": "An einer Parkdeckplatte wird ein Halbzellenpotential von −280 mV gegen Cu/CuSO₄ gemessen. Wie ordnet das Modul diesen Wert ein?",
+    "options": [
+      "Hohe Korrosionswahrscheinlichkeit (> 90 %), da negativer als −200 mV",
+      "Ungewiss (10 … 90 %); Bewertung objektbezogen im Potentialfeld",
+      "Geringe Korrosionswahrscheinlichkeit (< 10 %), da positiver als −350 mV",
+      "Keine Aussage möglich, da nur Werte unter −500 mV auswertbar sind"
+    ],
+    "correctIdx": 1,
+    "explanation": "Nach ASTM C876 gilt: positiver als −200 mV gering, −350 … −200 mV ungewiss, negativer als −350 mV hoch. −280 mV liegt im Unsicherheitsbereich. Das DGZfP-Merkblatt B 03 empfiehlt ohnehin die objektbezogene Auswertung des Potentialfelds (Gradienten, Häufigkeitsverteilung) statt fester Grenzen.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Hoch ist die Wahrscheinlichkeit erst bei Potentialen negativer als −350 mV.",
+      "",
+      "Gering ist sie nur bei Potentialen positiver als −200 mV; −280 mV liegt dazwischen.",
+      "Auch Werte zwischen −200 und −350 mV sind auswertbar; sie gelten als Unsicherheitsbereich."
+    ],
+    "gapAnalysis": {
+      "topic": "Potentialmessung",
+      "misconception": "Die Grenzen der Potentialeinstufung werden vertauscht.",
+      "coreRule": "Potential (Cu/CuSO₄): > −200 mV gering, −350 … −200 mV ungewiss, < −350 mV hoch; objektbezogen auswerten.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Potentialmessung (Half-cell)“ im Modul ZfP-Simulatoren & DGZfP noch einmal durch.",
+      "targetModuleTab": "zfp",
+      "targetModuleLabel": "ZfP-Simulatoren & DGZfP"
+    },
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-29",
+      "ergebnis": "ok",
+      "hinweis": "Neu 29.10.: Aufstockung des Teilmoduls auf 6 Fragen (QZ-6); Einstufung mit src/calc/pruefverfahren.ts (potentialRisikoZfp) geprüft, tests/quizRechenfragen.test.ts"
+    }
+  },
+  {
+    "id": "qt_zfp_4",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "zfp",
+    "moduleTitle": "Zerstörungsfreie Prüfung (ZfP)",
+    "topic": "Gaspermeabilität (Torrent)",
+    "difficulty": "Transfer",
+    "normRef": "SIA 262/1 Anhang E",
+    "question": "Eine Torrent-Messung ergibt k_T = 0,05 · 10⁻¹⁶ m² bei einer Betonfeuchte von 90 %. Wie ist der Wert nach dem Modul zu bewerten?",
+    "options": [
+      "Gültig: sehr dichter Beton mit hohem Widerstand gegen Karbonatisierung",
+      "Ungültig: Porenwasser blockiert den Gasfluss, k_T fällt zu klein aus",
+      "Gültig, aber wegen der Feuchte ist k_T um den Faktor 2 bis 5 zu erhöhen",
+      "Ungültig: Feuchte erhöht den Gasfluss, k_T fällt künstlich groß aus"
+    ],
+    "correctIdx": 1,
+    "explanation": "Über 85 % Betonfeuchte ist die Messung nach dem Modul ungültig: Wasser füllt die Poren, der gemessene k_T-Wert geht gegen null und täuscht einen dichten Beton vor. Zwischen 70 und 85 % ist der reale Wert etwa 2- bis 5-mal höher als gemessen. Messung bei trockenerem Bauteil wiederholen.",
+    "bloom": "Analysieren",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Der kleine Wert ist ein Feuchteeffekt; bei 90 % Feuchte ist die Messung nicht verwertbar.",
+      "",
+      "Die Korrektur um den Faktor 2 bis 5 gilt nur zwischen 70 und 85 % Feuchte; über 85 % ist die Messung ungültig.",
+      "Richtung verwechselt: Porenwasser behindert den Gasfluss, k_T wird zu klein gemessen."
+    ],
+    "gapAnalysis": {
+      "topic": "Gaspermeabilität (Torrent)",
+      "misconception": "Ein niedriger k_T-Wert wird ohne Prüfung der Betonfeuchte als dichter Beton gedeutet.",
+      "coreRule": "Torrent: Betonfeuchte > 85 % → Messung ungültig; 70 … 85 % → realer k_T etwa 2- bis 5-mal höher.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Gaspermeabilität (Torrent)“ im Modul ZfP-Simulatoren & DGZfP noch einmal durch.",
+      "targetModuleTab": "zfp",
+      "targetModuleLabel": "ZfP-Simulatoren & DGZfP"
+    },
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-29",
+      "ergebnis": "ok",
+      "hinweis": "Neu 29.10.: Aufstockung des Teilmoduls auf 6 Fragen (QZ-6); Feuchtegrenzen aus src/calc/pruefverfahren.ts (torrentFeuchte) und content/zfp/ZfP.json"
+    }
+  },
+  {
+    "id": "qt_zfp_5",
+    "category": "baustoffkunde",
+    "categoryLabel": "Werkstoffmechanik & Physik",
+    "moduleId": "zfp",
+    "moduleTitle": "Zerstörungsfreie Prüfung (ZfP)",
+    "topic": "DGZfP-Merkblätter",
+    "difficulty": "Basis",
+    "normRef": "DGZfP-Merkblätter Reihe B",
+    "question": "Welche Zuordnung von DGZfP-Merkblatt (Reihe B, Bauwesen) und Thema trifft nach der Übersicht im Modul zu?",
+    "options": [
+      "B 01 – Dauerüberwachung von Ingenieurbauwerken",
+      "B 02 – Mobile Durchstrahlungsprüfung im Bauwesen",
+      "B 03 – Potentialmessung zur Korrosionsdetektion",
+      "B 09 – Betondeckungsmessung und Bewehrungsortung"
+    ],
+    "correctIdx": 2,
+    "explanation": "B 03 behandelt elektrochemische Potentialmessungen zur Detektion von Bewehrungsstahlkorrosion (Ausgabe 2025-05, Vorausgabe 2021-04 zurückgezogen). B 01 gilt der mobilen Durchstrahlungsprüfung, B 02 der Betondeckungsmessung und Bewehrungsortung, B 09 der Dauerüberwachung von Ingenieurbauwerken.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "B 01 behandelt die mobile Durchstrahlungsprüfung; die Dauerüberwachung regelt B 09.",
+      "B 02 behandelt Betondeckungsmessung und Bewehrungsortung; die Durchstrahlung steht in B 01.",
+      "",
+      "B 09 behandelt die Dauerüberwachung; Betondeckung und Bewehrungsortung stehen in B 02."
+    ],
+    "gapAnalysis": {
+      "topic": "DGZfP-Merkblätter",
+      "misconception": "Die Merkblätter der DGZfP-Reihe B werden verwechselt.",
+      "coreRule": "DGZfP Reihe B: B 01 Durchstrahlung, B 02 Betondeckung/Bewehrungsortung, B 03 Potentialmessung, B 09 Dauerüberwachung.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „DGZfP-Merkblätter und Leitfäden für das Bauwesen“ im Modul ZfP-Simulatoren & DGZfP noch einmal durch.",
+      "targetModuleTab": "zfp",
+      "targetModuleLabel": "ZfP-Simulatoren & DGZfP"
+    },
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-29",
+      "ergebnis": "ok",
+      "hinweis": "Neu 29.10.: Aufstockung des Teilmoduls auf 6 Fragen (QZ-6); Kennungen und Ausgaben aus content/zfp/DgzfpTab.json (Stand der Recherche 27.10.2026)"
+    }
+  },
+  {
     "id": "q_glas_1",
     "category": "baustoffkunde",
     "categoryLabel": "Werkstoffmechanik & Physik",
@@ -297,23 +502,29 @@
       "Extrudiertes Polystyrol (XPS)"
     ],
     "correctIdx": 3,
-    "explanation": "XPS besitzt durch das Extrusionsverfahren ein homogen geschlossenzelliges Gefüge. Es nimmt auch unter dauerhaftem hydrostatischem Druck und Frost-Tau-Wechseln praktisch kein Wasser auf (Diffusionsaufnahme < 1,5 Vol.-%) und behält seine Dämmwirkung im Erdreich.",
+    "explanation": "XPS besitzt durch das Extrusionsverfahren ein homogen geschlossenzelliges Gefüge. Es nimmt auch unter dauerhaftem hydrostatischem Druck und Frost-Tau-Wechseln praktisch kein Wasser auf (Diffusionsaufnahme < 1,5 Vol.-%) und behält seine Dämmwirkung im Erdreich. EPS-Perimeterdämmplatten sind mit Bauartgenehmigung ebenfalls zulässig, in der Regel bei Bodenfeuchte (W1-E); Standard-EPS ist dafür nicht geeignet.",
     "gapAnalysis": {
       "topic": "Einsatzgebiete von Dämmstoffen & Feuchteschutz",
       "misconception": "Gleichsetzung von EPS (Styropor, punktverschweißt, wasseraufnehmend) mit XPS (extrudiert, geschlossenzellig, wasserresistent).",
-      "coreRule": "Im Erdreich (Perimeter) und bei Umkehrdächern darf wegen Feuchtebeanspruchung nur geschlossenzelliges XPS oder Schaumglas eingesetzt werden.",
+      "coreRule": "Im Erdreich (Perimeter) und beim Umkehrdach werden wegen der Feuchtebeanspruchung vor allem geschlossenzelliges XPS oder Schaumglas eingesetzt; EPS-Perimeterdämmplatten nur mit Bauartgenehmigung (in der Regel bei Bodenfeuchte W1-E).",
       "actionableAdvice": "Prüfen Sie im Modul Dämmstoffe die Vergleichsmatrix EPS vs. XPS vs. Schaumglas bezüglich Wasseraufnahme und Druckfestigkeit.",
       "targetModuleTab": "bp_daemmung",
       "targetModuleLabel": "Dämmstoffe"
     },
-    "reviewer": "freigegeben",
-    "reviewedAt": "2026-09-28",
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok",
-      "hinweis": "Freigegebene Frage unverändert; Vorschlag zur Umformulierung der Distraktoren (Ratschen „Verhältnis > 1,2“/„Absolutwörter“) im Bericht docs/quiz-vorpruefung-cluster-I-III.md."
-    }
+      "am": "2026-10-29",
+      "ergebnis": "korrigiert",
+      "hinweis": "Freigegebene Frage unverändert; Vorschlag zur Umformulierung der Distraktoren (Ratschen „Verhältnis > 1,2“/„Absolutwörter“) im Bericht docs/quiz-vorpruefung-cluster-I-III.md. · Umsetzung 29.10.: Erklärung und Lernhilfe: EPS-Perimeterdämmplatten mit Bauartgenehmigung (in der Regel Bodenfeuchte W1-E) ergänzt, „nur XPS oder Schaumglas“ entfällt (T8-DA-1/T8-DA-Q2, QZ-3); Bloom-Stufe, Niveau und Rückmeldungen ergänzt – korrigiert"
+    },
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Standard-EPS ist punktverschweißt und nimmt mehr Wasser auf; EPS-Perimeterplatten sind nur mit Bauartgenehmigung, meist bei Bodenfeuchte, zulässig.",
+      "Holzfaserdämmplatten sind feuchteempfindlich und für Erdkontakt oder das Umkehrdach nicht geeignet.",
+      "Steinwolle ist offenporig; bei dauernder Feuchte- oder Wasserbeanspruchung verliert sie ihre Dämmwirkung.",
+      ""
+    ]
   },
   {
     "id": "q_kunststoff_1",
@@ -379,19 +590,25 @@
     "gapAnalysis": {
       "topic": "Straßenbau-Dimensionierung nach RStO 12/24",
       "misconception": "Annahme, dass Gesamtfahrzeugzahlen oder PKW-Mengen den Fahrbahnaufbau maßgeblich dimensionieren.",
-      "coreRule": "Eine 10-t-LKW-Achse schädigt die Straße rund 160 000-mal stärker als eine 1-t-PKW-Achse (4. Potenzgesetz: (10/1)^4 = 10 000 bis 160 000).",
+      "coreRule": "Eine 10-t-Lkw-Achse schädigt die Straße rund 10 000-mal stärker als eine 1-t-Pkw-Achse (4.-Potenz-Gesetz: (10/1)^4 = 10 000).",
       "actionableAdvice": "Lesen Sie im Modul RStO 12/24 das Berechnungsverfahren zur Ermittlung der dimensionierungsrelevanten Achsübergänge B.",
       "targetModuleTab": "bp_verkehr_rsto",
       "targetModuleLabel": "Verkehrswegebau (RStO 12/24)"
     },
-    "reviewer": "freigegeben",
-    "reviewedAt": "2026-09-28",
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok",
-      "hinweis": "Freigegebene Frage unverändert; Vorschlag zur Umformulierung der Distraktoren (Ratschen „Verhältnis > 1,2“/„Absolutwörter“) im Bericht docs/quiz-vorpruefung-cluster-I-III.md."
-    }
+      "am": "2026-10-29",
+      "ergebnis": "korrigiert",
+      "hinweis": "Freigegebene Frage unverändert; Vorschlag zur Umformulierung der Distraktoren (Ratschen „Verhältnis > 1,2“/„Absolutwörter“) im Bericht docs/quiz-vorpruefung-cluster-I-III.md. · Umsetzung 29.10.: Lernhilfe „rund 160 000-mal (… 10 000 bis 160 000)“ → „rund 10 000-mal ((10/1)^4 = 10 000)“, 160 000 wäre (20/1)^4 (T7-RS, QZ-1); Bloom-Stufe, Niveau und Rückmeldungen ergänzt – korrigiert"
+    },
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "",
+      "Der Niederschlag betrifft Entwässerung und Frostschutz, nicht die Belastungsklasse des Oberbaus.",
+      "Die Pkw-Geschwindigkeit geht nicht ein; Pkw-Achsen schädigen den Oberbau nach dem 4.-Potenz-Gesetz kaum.",
+      "Radverkehr erzeugt praktisch keine Oberbaubeanspruchung und geht nicht in B ein."
+    ]
   },
   {
     "id": "q_beton_1",
@@ -5431,19 +5648,17 @@
     "gapAnalysis": {
       "topic": "Effizienzklasse",
       "misconception": "Primär- und Endenergie werden verwechselt.",
-      "coreRule": "Effizienzklasse: Endenergie; Neubaunachweis: Primärenergie ≤ 0,55 · Referenzgebäude.",
+      "coreRule": "Effizienzklasse: Endenergie; Neubaunachweis bis 31.12.2026: Primärenergie ≤ 0,55 · Referenzgebäude.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Effizienzklasse“ im Modul Energieausweis noch einmal durch.",
       "targetModuleTab": "energieausweis",
       "targetModuleLabel": "Energieausweis"
     },
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok",
-      "hinweis": "Effizienzklassen A+ bis H gelten im GModG fort (Verbraucherzentrale); Anlagennummer im GModG nicht gesondert geprüft."
-    },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27"
+      "am": "2026-10-29",
+      "ergebnis": "korrigiert",
+      "hinweis": "Effizienzklassen A+ bis H gelten im GModG fort (Verbraucherzentrale); Anlagennummer im GModG nicht gesondert geprüft. · Umsetzung 29.10.: Lernhilfe um den Stichtag ergänzt: „Primärenergie ≤ 0,55 · Referenzgebäude“ gilt bis 31.12.2026 (T11-EA, QZ-2) – korrigiert"
+    }
   },
   {
     "id": "q_ea_2",
@@ -5462,7 +5677,7 @@
       "Es heißt nun GModG; §§ 15, 16 und 79–88 bleiben, Bestandsregeln teils neu nummeriert"
     ],
     "correctIdx": 3,
-    "explanation": "Das GModG wurde am 28.07.2026 verkündet und tritt gestaffelt in Kraft. Die 65-%-Vorgabe für neue Heizungen entfällt (Bio-Treppe für Gas- und Ölheizungen); §§ 15, 16 und 79 bis 88 bleiben inhaltlich bestehen.",
+    "explanation": "Das GModG wurde am 28.07.2026 verkündet und tritt gestaffelt in Kraft. Die 65-%-Vorgabe für neue Heizungen entfällt (Bio-Treppe für Gas- und Ölheizungen); §§ 15, 16 und 79 bis 88 bleiben in der Nummerierung bestehen; ab 01.01.2027 (bis 31.12.2026 gilt der bisherige Inhalt) ändern sich u. a. Referenzgebäude und Energieausweis.",
     "bloom": "Erinnern",
     "niveau": "B",
     "distraktorFeedback": [
@@ -5474,19 +5689,17 @@
     "gapAnalysis": {
       "topic": "Rechtsstand 2026",
       "misconception": "Die Gesetzesreform wird als Abschaffung aller energetischen Anforderungen verstanden.",
-      "coreRule": "GEG → GModG (2026): §§ 15, 16, 79–88 unverändert; Bestand: § 35 Nachrüstung, § 36 Änderung (vormals §§ 47, 48); § 72 (Betriebsverbot) weggefallen.",
+      "coreRule": "GEG → GModG (2026): §§ 15, 16, 79–88 in der Nummerierung erhalten (Inhalte ändern sich ab 01.01.2027); Bestand: § 35 Nachrüstung, § 36 Änderung (vormals §§ 47, 48); § 72 (Betriebsverbot) weggefallen.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Rechtsstand 2026“ im Modul Energieausweis noch einmal durch.",
       "targetModuleTab": "energieausweis",
       "targetModuleLabel": "Energieausweis"
     },
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-26",
-      "ergebnis": "ok",
-      "hinweis": "Verkündung am 28.07.2026 im BGBl. 2026 I Nr. 226 bestätigt (BIngK, IngKH), Umbenennung GEG → GModG (BMWSB). Inhaltsverzeichnis der nichtamtlichen Fassung (gmodg-info.de): §§ 15, 16 und 79–88 mit unveränderten Überschriften, Bestand als §§ 34–39 (§ 35 Nachrüstung, § 36 Änderung), §§ 47–55 und 71–73 weggefallen. Wortlautvergleich mit dem GEG nicht durchgeführt."
-    },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27"
+      "am": "2026-10-29",
+      "ergebnis": "korrigiert",
+      "hinweis": "Verkündung am 28.07.2026 im BGBl. 2026 I Nr. 226 bestätigt (BIngK, IngKH), Umbenennung GEG → GModG (BMWSB). Inhaltsverzeichnis der nichtamtlichen Fassung (gmodg-info.de): §§ 15, 16 und 79–88 mit unveränderten Überschriften, Bestand als §§ 34–39 (§ 35 Nachrüstung, § 36 Änderung), §§ 47–55 und 71–73 weggefallen. Wortlautvergleich mit dem GEG nicht durchgeführt. · Umsetzung 29.10.: Erklärung und Lernhilfe: „bleiben inhaltlich bestehen“ → „bleiben in der Nummerierung bestehen; ab 01.01.2027 ändern sich Referenzgebäude und Energieausweis“, Stichtag 31.12.2026 genannt (T11-EA, QZ-2) – korrigiert"
+    }
   },
   {
     "id": "q_ndr_1",
@@ -5564,12 +5777,14 @@
       "targetModuleTab": "nachhaltigkeit_daten_regeln",
       "targetModuleLabel": "Daten & Regeln"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen · Zweitprüfung 27.10.: Erklärung auf Referentenentwurf vom 26.10.2026 (Stellungnahmefrist 09.11.2026) präzisiert, unbelegte Prognose „Mitte 2027“ entfernt – korrigiert"
-    }
+    },
+    "reviewer": "freigegeben 28.10.2026 (Einzelfreigabe)",
+    "reviewedAt": "2026-10-28"
   },
   {
     "id": "q_ndr_3",
@@ -7177,6 +7392,211 @@
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
+    }
+  },
+  {
+    "id": "qt_pruefverfahren_katalog_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "pruefverfahren_katalog",
+    "moduleTitle": "Bauwerksdiagnose & ZfP",
+    "topic": "Ultraschall-Laufzeitmessung",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 12504-4",
+    "question": "Durchschallung einer Stütze: Messstrecke s = 0,40 m, Laufzeit Δt = 95 µs, ρ = 2400 kg/m³, ν = 0,2. Welche Auswertung liefert der Simulator?",
+    "options": [
+      "v_p ≈ 4210 m/s, E_dyn ≈ 43 GPa – gutes, dichtes Gefüge",
+      "v_p ≈ 2105 m/s, E_dyn ≈ 9,6 GPa – kritischer Gefügemangel",
+      "v_p ≈ 4210 m/s, E_dyn ≈ 38 GPa – gutes, dichtes Gefüge",
+      "v_p ≈ 421 m/s, E_dyn ≈ 0,4 GPa – kritischer Gefügemangel"
+    ],
+    "correctIdx": 2,
+    "explanation": "v_p = s/Δt = 0,40 m / 95 · 10⁻⁶ s = 4210 m/s (≥ 3800 m/s: gutes Gefüge im Simulator). E_dyn = ρ · v_p² · (1 + ν)(1 − 2ν)/(1 − ν) = 2400 · 4210² · 0,9 ≈ 38 GPa.",
+    "bloom": "Anwenden",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Hier fehlt der Querdehnungsfaktor (1 + ν)(1 − 2ν)/(1 − ν) = 0,9 im E-Modul.",
+      "Bei der Durchschallung ist s die einfache Strecke; die Laufzeit wird nicht als Hin- und Rückweg halbiert.",
+      "",
+      "Einheitenfehler: 95 µs sind 95 · 10⁻⁶ s, nicht 95 · 10⁻⁵ s."
+    ],
+    "gapAnalysis": {
+      "topic": "Ultraschall-Laufzeitmessung",
+      "misconception": "Querdehnung und Einheiten werden bei E_dyn aus der Schallgeschwindigkeit vernachlässigt.",
+      "coreRule": "v_p = s/Δt; E_dyn = ρ · v_p² · (1 + ν)(1 − 2ν)/(1 − ν).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Interaktiver Prüf- & Auswertungs-Simulator“ im Modul Prüfverfahren-Katalog noch einmal durch.",
+      "targetModuleTab": "pruefverfahren_katalog",
+      "targetModuleLabel": "Prüfverfahren-Katalog"
+    },
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-29",
+      "ergebnis": "ok",
+      "hinweis": "Neu 29.10.: Aufstockung des Teilmoduls auf 6 Fragen (QZ-6); mit src/calc/bauwerksuntersuchung.ts (ultraschall) nachgerechnet, tests/quizRechenfragen.test.ts"
+    }
+  },
+  {
+    "id": "qt_pruefverfahren_katalog_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "pruefverfahren_katalog",
+    "moduleTitle": "Bauwerksdiagnose & ZfP",
+    "topic": "Impact-Echo",
+    "difficulty": "Vertiefung",
+    "normRef": "ASTM C1383; DGZfP-B-LF 02",
+    "question": "Impact-Echo an einer 30 cm dicken Platte: dominante Frequenz f = 9,6 kHz, v_p = 4000 m/s, β = 0,96. Welche Auswertung trifft zu?",
+    "options": [
+      "d ≈ 40 cm: Reflexion hinter der Rückwand, Messung unplausibel",
+      "d ≈ 30 cm: Reflexion an der Rückwand, also keine innere Fehlstelle",
+      "d ≈ 21 cm: Reflexion vor der Rückwand, Hinweis auf Fehlstelle",
+      "d ≈ 20 cm: Reflexion vor der Rückwand, Hinweis auf Fehlstelle"
+    ],
+    "correctIdx": 3,
+    "explanation": "d = β · v_p/(2 · f) = 0,96 · 4000/(2 · 9600) = 0,20 m. Der Reflektor liegt rund 10 cm vor der Rückwand; das deutet auf eine Delamination oder Hohlstelle hin.",
+    "bloom": "Anwenden",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Hier fehlt der Faktor 2 im Nenner: Die Welle läuft hin und zurück.",
+      "Die Nenndicke wurde angenommen; aus f = 9,6 kHz folgt aber eine Reflexion in 20 cm Tiefe.",
+      "Hier wurde der Formfaktor β = 0,96 weggelassen (4000/19 200 = 0,208 m).",
+      ""
+    ],
+    "gapAnalysis": {
+      "topic": "Impact-Echo",
+      "misconception": "Die Resonanzfrequenz wird ohne Faktor 2 oder ohne Formfaktor in eine Tiefe umgerechnet.",
+      "coreRule": "Impact-Echo: d = β · v_p/(2 · f) mit β = 0,96; Reflexion vor der Rückwand = Fehlstelle.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Interaktiver Prüf- & Auswertungs-Simulator“ im Modul Prüfverfahren-Katalog noch einmal durch.",
+      "targetModuleTab": "pruefverfahren_katalog",
+      "targetModuleLabel": "Prüfverfahren-Katalog"
+    },
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-29",
+      "ergebnis": "ok",
+      "hinweis": "Neu 29.10.: Aufstockung des Teilmoduls auf 6 Fragen (QZ-6); mit src/calc/bauwerksuntersuchung.ts (impactEcho) nachgerechnet, tests/quizRechenfragen.test.ts"
+    }
+  },
+  {
+    "id": "qt_pruefverfahren_katalog_3",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "pruefverfahren_katalog",
+    "moduleTitle": "Bauwerksdiagnose & ZfP",
+    "topic": "Haftzugprüfung",
+    "difficulty": "Transfer",
+    "normRef": "DIN EN 1542",
+    "question": "Abreißversuch mit Stempel Ø 50 mm: Bruchkraft F = 3,5 kN, Bruch in der Klebefuge (Bruchbild Y). Wie ist das Ergebnis einzuordnen?",
+    "options": [
+      "f_ct ≈ 1,78 N/mm² ≥ 1,5 N/mm²: der Untergrund ist als tragfähig nachgewiesen",
+      "f_ct ≈ 0,45 N/mm² < 1,5 N/mm²: der Untergrund ist vollständig abzutragen",
+      "f_ct ≈ 1,78 N/mm² ist nur ein unterer Grenzwert; Prüfung wiederholen",
+      "f_ct ≈ 1,78 N/mm²; der Kleberbruch belegt eine feste Verbundzone"
+    ],
+    "correctIdx": 2,
+    "explanation": "f_ct = F/A = 3500 N / (π · 50²/4 mm²) = 3500/1963 = 1,78 N/mm². Beim Bruch im Kleber hat der Untergrund mindestens diese Spannung ertragen; seine Festigkeit bleibt unbekannt. Die Anforderung (≥ 1,5 N/mm² bei Bruch im Beton) ist damit nicht belegt – Stempel neu kleben und prüfen.",
+    "bloom": "Analysieren",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Der Wert genügt allein nicht: Nachgewiesen ist die Anforderung nur bei Bruch im Beton.",
+      "Hier wurde mit dem Durchmesser als Radius gerechnet (A = π · 50²); richtig ist A = π · d²/4.",
+      "",
+      "Ein Kleberbruch sagt nichts über die Verbundzone aus; er macht die Prüfung nur eingeschränkt verwertbar."
+    ],
+    "gapAnalysis": {
+      "topic": "Haftzugprüfung",
+      "misconception": "Die Abreißfestigkeit wird ohne Bruchbild bewertet.",
+      "coreRule": "Haftzug: f_ct = F/(π · d²/4); Anforderung nur mit Bruch im Beton erfüllt, Kleberbruch = Prüfung wiederholen.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Interaktiver Prüf- & Auswertungs-Simulator“ im Modul Prüfverfahren-Katalog noch einmal durch.",
+      "targetModuleTab": "pruefverfahren_katalog",
+      "targetModuleLabel": "Prüfverfahren-Katalog"
+    },
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-29",
+      "ergebnis": "ok",
+      "hinweis": "Neu 29.10.: Aufstockung des Teilmoduls auf 6 Fragen (QZ-6); mit src/calc/bauwerksuntersuchung.ts (haftzug) nachgerechnet, tests/quizRechenfragen.test.ts"
+    }
+  },
+  {
+    "id": "qt_pruefverfahren_katalog_4",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "pruefverfahren_katalog",
+    "moduleTitle": "Bauwerksdiagnose & ZfP",
+    "topic": "Chloridgehalt an der Bewehrung",
+    "difficulty": "Transfer",
+    "normRef": "DIN EN 14629; DIBt TR Instandhaltung",
+    "question": "In Bewehrungstiefe werden 0,3 M.-% Chlorid bezogen auf den Zement gemessen. Wie bewertet das Modul diesen Befund für Stahlbeton und für Spannbeton?",
+    "options": [
+      "Für beide unkritisch, da der Anhaltswert 0,5 M.-% nicht erreicht ist",
+      "Für beide kritisch, da jeder Chloridgehalt über 0,1 M.-% Lochfraß auslöst",
+      "Stahlbeton unter dem Anhaltswert; am Spannstahl (ab 0,2 M.-%) kritisch",
+      "Stahlbeton kritisch; Spannstahl ist durch Hüllrohr und Mörtel geschützt"
+    ],
+    "correctIdx": 2,
+    "explanation": "Für schlaff bewehrten Beton gilt der Anhaltswert ≈ 0,5 M.-% bez. Zement (kein Normwert, objektspezifisch festzulegen); 0,3 M.-% liegen darunter (Beobachtung, Prävention). Spannstahl ist empfindlicher (Spannungsrisskorrosion, Lochfraß); das Modul setzt die Grenze dort bei 0,2 M.-% und verlangt eine gesonderte Beurteilung.",
+    "bloom": "Analysieren",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Für Spannstahl gilt eine niedrigere Grenze (0,2 M.-%); 0,3 M.-% sind dort kritisch.",
+      "Eine pauschale Grenze von 0,1 M.-% sieht das Modul nicht vor; für Stahlbeton gilt ≈ 0,5 M.-%.",
+      "",
+      "Umgekehrt: Stahlbeton liegt unter 0,5 M.-%, Spannstahl ist empfindlicher und gesondert zu beurteilen."
+    ],
+    "gapAnalysis": {
+      "topic": "Chloridgehalt an der Bewehrung",
+      "misconception": "Für Spannstahl wird derselbe Chlorid-Anhaltswert wie für Betonstahl angenommen.",
+      "coreRule": "Chlorid bez. Zement: Anhaltswert Stahlbeton ≈ 0,5 M.-%, Spannstahl gesondert (Modul: 0,2 M.-%).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Interaktiver Prüf- & Auswertungs-Simulator“ im Modul Prüfverfahren-Katalog noch einmal durch.",
+      "targetModuleTab": "pruefverfahren_katalog",
+      "targetModuleLabel": "Prüfverfahren-Katalog"
+    },
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-29",
+      "ergebnis": "ok",
+      "hinweis": "Neu 29.10.: Aufstockung des Teilmoduls auf 6 Fragen (QZ-6); Grenzen aus src/calc/bauwerksuntersuchung.ts (chlorid) geprüft, tests/quizRechenfragen.test.ts"
+    }
+  },
+  {
+    "id": "qt_pruefverfahren_katalog_5",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "pruefverfahren_katalog",
+    "moduleTitle": "Bauwerksdiagnose & ZfP",
+    "topic": "Bohrkernprüfung",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 12504-1; DIN EN 13791:2020-02",
+    "question": "Ein Bohrkern D = 100 mm, L = 100 mm bricht in der Presse bei F = 275 kN. Welche Auswertung trifft nach dem Modul zu?",
+    "options": [
+      "f_c,core ≈ 35,0 N/mm², vergleichbar mit dem Zylinder 150/300",
+      "f_c,core ≈ 27,5 N/mm², vergleichbar mit dem Würfel (150 mm)",
+      "f_c,core ≈ 35,0 N/mm², vergleichbar mit dem Würfel (150 mm)",
+      "f_c,core ≈ 28,7 N/mm², auf den Zylinder umgerechnet (· 0,82)"
+    ],
+    "correctIdx": 2,
+    "explanation": "f_c,core = F/(π · D²/4) = 275 000 N / 7854 mm² = 35,0 N/mm². Mit L/D = 1 entspricht der Kern nach DIN EN 13791:2020 dem 150-mm-Würfel; ein Kern mit L/D = 2 entspräche dem Zylinder 150/300.",
+    "bloom": "Anwenden",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Ein Kern mit L/D = 1 entspricht dem Würfel; dem Zylinder 150/300 entspricht L/D = 2.",
+      "Hier wurde die Kraft auf D² = 10 000 mm² statt auf π · D²/4 bezogen.",
+      "",
+      "Der pauschale Faktor 0,82 entfällt; L/D = 1 entspricht direkt dem 150-mm-Würfel."
+    ],
+    "gapAnalysis": {
+      "topic": "Bohrkernprüfung",
+      "misconception": "Die Schlankheit des Kerns wird bei der Zuordnung zur Probekörperform übersehen.",
+      "coreRule": "Bohrkern: f = F/(π · D²/4); L/D = 1 ≙ Würfel 150 mm, L/D = 2 ≙ Zylinder 150/300.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Interaktiver Prüf- & Auswertungs-Simulator“ im Modul Prüfverfahren-Katalog noch einmal durch.",
+      "targetModuleTab": "pruefverfahren_katalog",
+      "targetModuleLabel": "Prüfverfahren-Katalog"
+    },
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-29",
+      "ergebnis": "ok",
+      "hinweis": "Neu 29.10.: Aufstockung des Teilmoduls auf 6 Fragen (QZ-6); mit src/calc/bauwerksuntersuchung.ts (bohrkern) nachgerechnet, tests/quizRechenfragen.test.ts"
     }
   },
   {
@@ -15997,22 +16417,22 @@
     "topic": "Adiabatische Temperaturerhöhung",
     "difficulty": "Vertiefung",
     "normRef": "Wärmebilanz",
-    "question": "z = 280 kg/m³ LH-Zement mit Q = 250 kJ/kg, c·ρ = 2500 kJ/(m³·K). Wie groß ist ΔT_ad?",
+    "question": "z = 280 kg/m³ LH-Zement mit Q = 250 kJ/kg, c·ρ = 2400 kJ/(m³·K). Wie groß ist ΔT_ad?",
     "options": [
-      "rund 14 K",
-      "rund 28 K",
-      "rund 56 K",
+      "rund 15 K",
+      "rund 29 K",
+      "rund 58 K",
       "rund 70 K"
     ],
     "correctIdx": 1,
-    "explanation": "280 · 250 = 70 000 kJ/m³; 70 000 / 2500 = 28 K.",
+    "explanation": "280 · 250 = 70 000 kJ/m³; 70 000 / 2400 = 29,2 K ≈ 29 K.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
-      "14 K entspräche nur der halben Wärmemenge; adiabatisch wird die gesamte Wärme 280 · 250 kJ/m³ angesetzt.",
+      "15 K entspräche nur der halben Wärmemenge; adiabatisch wird die gesamte Wärme 280 · 250 kJ/m³ angesetzt.",
       "",
-      "56 K ergäbe sich mit rund 500 kJ/kg, einem Wert für schnell erhärtenden CEM I, nicht für LH-Zement.",
-      "Hier wurde 70 000 kJ/m³ durch 1000 statt durch c·ρ = 2500 kJ/(m³·K) geteilt."
+      "58 K ergäbe sich mit rund 500 kJ/kg, einem Wert für schnell erhärtenden CEM I, nicht für LH-Zement.",
+      "Hier wurde 70 000 kJ/m³ durch 1000 statt durch c·ρ = 2400 kJ/(m³·K) geteilt."
     ],
     "gapAnalysis": {
       "topic": "Adiabatische Temperaturerhöhung",
@@ -16022,12 +16442,11 @@
       "targetModuleTab": "hydratation_folgen",
       "targetModuleLabel": "Hydratation & Folgen"
     },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27",
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-29",
+      "ergebnis": "korrigiert",
+      "hinweis": "Umsetzung 29.10.: c·ρ 2500 → 2400 kJ/(m³·K) wie im Rechenkern (T3-HY-2, QZ-4); neu gerechnet: ΔT_ad = 70 000/2400 = 29,2 K (vorher 28 K), Distraktoren 15/58/70 K – korrigiert"
     }
   },
   {
@@ -16080,21 +16499,21 @@
     "moduleTitle": "Hydratation & Folgen",
     "topic": "Kerntemperatur",
     "difficulty": "Vertiefung",
-    "question": "z = 320 kg/m³, Q = 350 kJ/kg, c·ρ = 2500 kJ/(m³·K), Frischbetontemperatur 15 °C. Welche Kerntemperatur ist näherungsweise zu erwarten?",
+    "question": "z = 320 kg/m³, Q = 350 kJ/kg, c·ρ = 2400 kJ/(m³·K), Frischbetontemperatur 15 °C. Welche Kerntemperatur ist näherungsweise zu erwarten?",
     "options": [
-      "etwa 45 °C",
-      "etwa 60 °C",
-      "etwa 30 °C",
+      "etwa 47 °C",
+      "etwa 62 °C",
+      "etwa 31 °C",
       "etwa 75 °C"
     ],
     "correctIdx": 1,
-    "explanation": "ΔT_ad = 320 · 350 / 2500 ≈ 45 K. Im Kern massiger Bauteile wird dieser Wert näherungsweise erreicht: 15 + 45 ≈ 60 °C.",
+    "explanation": "ΔT_ad = 320 · 350 / 2400 = 46,7 K ≈ 47 K. Im Kern massiger Bauteile wird dieser Wert näherungsweise erreicht: 15 + 47 ≈ 62 °C.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
-      "45 °C ist nur die Temperaturerhöhung ohne Frischbetontemperatur.",
+      "47 °C ist nur die Temperaturerhöhung ohne Frischbetontemperatur.",
       "",
-      "30 °C unterschätzt die Wärmeentwicklung um die Hälfte.",
+      "31 °C unterschätzt die Kerntemperatur um die Hälfte.",
       "75 °C würde rund 60 K Temperaturerhöhung voraussetzen."
     ],
     "gapAnalysis": {
@@ -16106,12 +16525,11 @@
       "targetModuleLabel": "Hydratation & Folgen"
     },
     "quelle": "Lehrwerte im Modul; DAfStb-Richtlinie Massige Bauteile aus Beton (2010)",
-    "verified": true,
-    "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
-    "reviewedAt": "2026-10-28",
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-26",
-      "ergebnis": "ok"
+      "am": "2026-10-29",
+      "ergebnis": "korrigiert",
+      "hinweis": "Umsetzung 29.10.: c·ρ 2500 → 2400 kJ/(m³·K) wie im Rechenkern (T3-HY-2, QZ-4); neu gerechnet: ΔT_ad = 112 000/2400 = 46,7 K, T_Kern ≈ 62 °C (vorher 60 °C), Distraktoren 47/31/75 °C – korrigiert"
     }
   },
   {
@@ -25934,12 +26352,14 @@
       "targetModuleTab": "lca_ingenieurbau",
       "targetModuleLabel": "LCA im Ingenieurbau (DIN EN 17472)"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Distraktoren angeglichen · Zweitprüfung 27.10.: Erklärung an Simulator angepasst (Netto 39 t, 5,76 kg; Rest 22 t aus A4–A5 und C statt nur C) – korrigiert"
-    }
+    },
+    "reviewer": "freigegeben 28.10.2026 (Einzelfreigabe)",
+    "reviewedAt": "2026-10-28"
   },
   {
     "id": "qn_lca_ingenieurbau_5",
@@ -39671,6 +40091,88 @@
     }
   },
   {
+    "id": "qt_spannbeton_kennwerte_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "spannbeton_kennwerte",
+    "moduleTitle": "Spannbeton",
+    "topic": "Relaxation des Spannstahls",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 1992-1-1 Gl. (3.29)",
+    "question": "Litze Y1860, Relaxationsklasse 2 (ρ₁₀₀₀ = 2,5 %), σ_pi = 1302 N/mm² (μ = 0,70). Welchen Relaxationsverlust Δσ_pr liefert EC2 Gl. (3.29) für den Endwert t = 500 000 h?",
+    "options": [
+      "Δσ_pr ≈ 13 N/mm²",
+      "Δσ_pr ≈ 163 N/mm²",
+      "Δσ_pr ≈ 51 N/mm²",
+      "Δσ_pr ≈ 247 N/mm²"
+    ],
+    "correctIdx": 2,
+    "explanation": "Δσ_pr/σ_pi = 0,66 · 2,5 · e^(9,1 · 0,70) · (500 000/1000)^(0,75 · 0,30) · 10⁻⁵ = 0,66 · 2,5 · 584 · 4,05 · 10⁻⁵ = 3,9 %. Δσ_pr = 0,039 · 1302 ≈ 51 N/mm². Der Endwert ist rund 4,1-mal so groß wie der 1000-h-Wert.",
+    "bloom": "Anwenden",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Das ist nur der 1000-h-Wert (Faktor (t/1000)^(0,75(1 − μ)) = 1); für den Endwert gilt t = 500 000 h.",
+      "Hier wurde ρ₁₀₀₀ = 8 % (Klasse 1) in Gl. (3.29) eingesetzt; moderne Litzen gehören zur Klasse 2 mit 2,5 %.",
+      "",
+      "Das ergäbe Gl. (3.28) für Klasse 1 (normale Relaxation); heutige Litzen sind Klasse 2."
+    ],
+    "gapAnalysis": {
+      "topic": "Relaxation des Spannstahls",
+      "misconception": "Der 1000-h-Wert wird als Endwert der Relaxation verwendet.",
+      "coreRule": "Δσ_pr/σ_pi = 0,66 · ρ₁₀₀₀ · e^(9,1μ) · (t/1000)^(0,75(1 − μ)) · 10⁻⁵ mit t = 500 000 h (Klasse 2).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „3. Relaxation des Spannstahls“ im Modul Spannbeton: Kennwerte & Rechner noch einmal durch.",
+      "targetModuleTab": "spannbeton_kennwerte",
+      "targetModuleLabel": "Spannbeton: Kennwerte & Rechner"
+    },
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-29",
+      "ergebnis": "ok",
+      "hinweis": "Neu 29.10.: Aufstockung des Teilmoduls auf 6 Fragen (QZ-6); mit src/utils/ec2Spannbeton.ts (relaxation) nachgerechnet, tests/quizRechenfragen.test.ts"
+    }
+  },
+  {
+    "id": "qt_spannbeton_kennwerte_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "spannbeton_kennwerte",
+    "moduleTitle": "Spannbeton",
+    "topic": "Einpressmörtel",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 447; DIN EN 445",
+    "question": "Welche Anforderungen an Zementeinpressmörtel für Spannglieder im Verbund nennt das Modul nach DIN EN 447?",
+    "options": [
+      "Wasserabsondern nach 3 h ≤ 3 %, Volumenänderung nach 24 h −5 % bis +1 %",
+      "Wasserabsondern nach 3 h ≤ 0,3 %, Volumenänderung nach 24 h −1 % bis +5 %",
+      "Fließzeit nach 30 min ≥ 25 s, damit der Mörtel im Hüllrohr nicht absackt",
+      "w/z mindestens 0,45, damit die Fließzeit im Trichterverfahren unter 25 s bleibt"
+    ],
+    "correctIdx": 1,
+    "explanation": "Einpressmörtel braucht hohe Fließfähigkeit bei wenig Wasser (w/z ≈ 0,35–0,40): Fließzeit t₀ und t₃₀ ≤ 25 s (Trichter nach DIN EN 445), Wasserabsondern nach 3 h ≤ 0,3 % und Volumenänderung nach 24 h zwischen −1 % und +5 %. So bleiben keine Wasserlinsen oder Schwindsäcke am Spannstahl.",
+    "bloom": "Erinnern",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Beide Grenzen sind falsch: Bluten höchstens 0,3 %, und der Mörtel darf nicht nennenswert schwinden (−1 % bis +5 %).",
+      "",
+      "Die Fließzeit ist eine Obergrenze: t₀ und t₃₀ dürfen 25 s nicht überschreiten.",
+      "Ein hoher w/z-Wert führt zu Bluten; das Modul nennt w/z ≈ 0,35–0,40 mit Einpresshilfe."
+    ],
+    "gapAnalysis": {
+      "topic": "Einpressmörtel",
+      "misconception": "Bluten und Schwinden des Einpressmörtels werden als unkritisch angesehen.",
+      "coreRule": "DIN EN 447: Fließzeit ≤ 25 s (t₀, t₃₀), Wasserabsondern ≤ 0,3 % nach 3 h, Volumenänderung −1 % … +5 % nach 24 h.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Einpressmörtel & Systembaustoffe im Spannbetonbau“ im Modul Spannbeton: Kennwerte & Rechner noch einmal durch.",
+      "targetModuleTab": "spannbeton_kennwerte",
+      "targetModuleLabel": "Spannbeton: Kennwerte & Rechner"
+    },
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-29",
+      "ergebnis": "ok",
+      "hinweis": "Neu 29.10.: Aufstockung des Teilmoduls auf 6 Fragen (QZ-6); Werte aus content/spannbeton/kennwerte/KennwerteEinpressmoertel.json"
+    }
+  },
+  {
     "id": "qn_spannbeton_7",
     "category": "bindemittel_beton",
     "categoryLabel": "Bindemittel & Betontechnologie",
@@ -41228,6 +41730,88 @@
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "normRef ergänzt"
+    }
+  },
+  {
+    "id": "qt_bauwerksdiagnose_1",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "bauwerksdiagnose",
+    "moduleTitle": "Bauwerksdiagnose & ZfP",
+    "topic": "Bohrmehlentnahme für Chlorid",
+    "difficulty": "Basis",
+    "normRef": "DIN EN 14629",
+    "question": "Warum wird Bohrmehl für die Chloridanalyse nach DIN EN 14629 trocken und in Tiefenstufen entnommen?",
+    "options": [
+      "Nassbohren erwärmt das Bohrmehl, sodass die Chloride als Chlorgas entweichen",
+      "Trockenes Bohrmehl lässt sich ohne Säureaufschluss direkt vor Ort titrieren",
+      "Spülwasser löst Chloride; Stufen trennen Randzone und Gehalt in Bewehrungstiefe",
+      "Die Tiefenstufen dienen allein der Karbonatisierungstiefe, nicht dem Chloridprofil"
+    ],
+    "correctIdx": 2,
+    "explanation": "Spülwasser löst wasserlösliche Chloride aus und verfälscht die Werte. Das Bohrloch wird je Tiefenstufe (z. B. 5 mm) abgesaugt, damit sich die Schichten nicht vermischen; das Profil zeigt Oberflächengehalt und Chloridgehalt in Höhe der Bewehrung. Im Labor folgen Trocknung bei 105 °C und Aufschluss mit Salpetersäure.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Chloride entweichen beim Bohren nicht als Gas; das Spülwasser wäscht sie aus.",
+      "Auch trockenes Bohrmehl wird im Labor getrocknet und mit Salpetersäure aufgeschlossen.",
+      "",
+      "Gerade das Chloridprofil braucht Tiefenstufen, um den Gehalt an der Bewehrung zu bestimmen."
+    ],
+    "gapAnalysis": {
+      "topic": "Bohrmehlentnahme für Chlorid",
+      "misconception": "Die Art der Probenentnahme wird für das Chloridergebnis für unerheblich gehalten.",
+      "coreRule": "Chlorid: Bohrmehl trocken, tiefengestaffelt, je Stufe absaugen; Bewertung in Bewehrungstiefe.",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Bohrmehlanalyse (Chloride)“ im Modul Bauwerksdiagnose noch einmal durch.",
+      "targetModuleTab": "bauwerksdiagnose",
+      "targetModuleLabel": "Bauwerksdiagnose"
+    },
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-29",
+      "ergebnis": "ok",
+      "hinweis": "Neu 29.10.: Aufstockung des Teilmoduls auf 6 Fragen (QZ-6); Inhalt aus content/bauwerksuntersuchung/ProbenahmePlaner.json (Konditionierung Bohrmehl)"
+    }
+  },
+  {
+    "id": "qt_bauwerksdiagnose_2",
+    "category": "bindemittel_beton",
+    "categoryLabel": "Bindemittel & Betontechnologie",
+    "moduleId": "bauwerksdiagnose",
+    "moduleTitle": "Bauwerksdiagnose & ZfP",
+    "topic": "Einstufung aus f_ck,is",
+    "difficulty": "Vertiefung",
+    "normRef": "DIN EN 13791:2020-02",
+    "question": "Für einen Prüfbereich ergibt die Auswertung nach DIN EN 13791:2020 f_ck,is = 26,5 N/mm². In welche Druckfestigkeitsklasse ist der Beton mit f_ck = f_ck,is/0,85 höchstens einzustufen?",
+    "options": [
+      "C25/30 (f_ck = 26,5 N/mm²)",
+      "C30/37 (f_ck ≈ 31 N/mm²)",
+      "C20/25 (f_ck ≈ 22,5 N/mm²)",
+      "C35/45 (f_ck ≈ 36,7 N/mm²)"
+    ],
+    "correctIdx": 1,
+    "explanation": "f_ck = f_ck,is/0,85 = 26,5/0,85 = 31,2 N/mm² ≥ 30 N/mm² → C30/37. Der Faktor 0,85 berücksichtigt, dass die Bauwerksfestigkeit unter der Festigkeit normgelagerter Probekörper liegt.",
+    "bloom": "Anwenden",
+    "niveau": "M",
+    "distraktorFeedback": [
+      "Hier wurde f_ck,is direkt als f_ck angesetzt; die In-situ-Festigkeit ist durch 0,85 zu teilen.",
+      "",
+      "Hier wurde mit 0,85 multipliziert statt dividiert (26,5 · 0,85 = 22,5).",
+      "Hier wurde zweimal durch 0,85 geteilt (26,5/0,85² = 36,7)."
+    ],
+    "gapAnalysis": {
+      "topic": "Einstufung aus f_ck,is",
+      "misconception": "In-situ-Festigkeit und charakteristische Festigkeit der Druckfestigkeitsklasse werden gleichgesetzt.",
+      "coreRule": "Einstufung im Bestand: f_ck = f_ck,is/0,85 (DIN EN 13791:2020-02).",
+      "actionableAdvice": "Arbeiten Sie den Abschnitt „Normative Begründung des Stichprobenumfangs“ im Modul Bauwerksdiagnose noch einmal durch.",
+      "targetModuleTab": "bauwerksdiagnose",
+      "targetModuleLabel": "Bauwerksdiagnose"
+    },
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-29",
+      "ergebnis": "ok",
+      "hinweis": "Neu 29.10.: Aufstockung des Teilmoduls auf 6 Fragen (QZ-6); Ansatz f_ck = f_ck,is/0,85 aus content/bauwerksuntersuchung/ProbenahmePlaner.json, nachgerechnet"
     }
   },
   {
@@ -44693,11 +45277,13 @@
       "targetModuleTab": "rechnung_holzbau",
       "targetModuleLabel": "Holzbau: Stützenknicken"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-25",
       "ergebnis": "ok"
-    }
+    },
+    "reviewer": "freigegeben 28.10.2026 (Einzelfreigabe)",
+    "reviewedAt": "2026-10-28"
   },
   {
     "id": "qn_rechnung_mauerwerk_1",
@@ -44903,12 +45489,14 @@
       "targetModuleTab": "rechnung_mauerwerk",
       "targetModuleLabel": "Mauerwerk: Tragfähigkeit"
     },
-    "verified": false,
+    "verified": true,
     "vorpruefung": {
       "am": "2026-10-27",
       "ergebnis": "korrigiert",
       "hinweis": "Zweitprüfung 27.10.: erweiterte Bedingungen für h > 2,75 m (DIN EN 1996-3/NA:2019-12, Tab. NA.2; KS-Merkblatt 04/2020) eingearbeitet; Beispiel auf Innenwand 115 mm mit h = 3,60 m und N_Ed = 120 kN/m umgestellt, Werte mit src/calc/mauerwerk.ts gerechnet (tests/quizRechenfragen.test.ts) – korrigiert"
-    }
+    },
+    "reviewer": "freigegeben 28.10.2026 (Einzelfreigabe)",
+    "reviewedAt": "2026-10-28"
   },
   {
     "id": "qn_rechnung_mauerwerk_6",
@@ -52085,7 +52673,9 @@
       "targetModuleTab": "normen_ausblick",
       "targetModuleLabel": "Ausblick: neue Normengeneration (Beton und Eurocodes)"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "freigegeben 28.10.2026 (Einzelfreigabe)",
+    "reviewedAt": "2026-10-28"
   },
   {
     "id": "qn_normen_ausblick_3",
@@ -52273,7 +52863,9 @@
       "targetModuleTab": "normen_ausblick",
       "targetModuleLabel": "Ausblick: neue Normengeneration (Beton und Eurocodes)"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "freigegeben 28.10.2026 (Einzelfreigabe)",
+    "reviewedAt": "2026-10-28"
   },
   {
     "id": "qn_zwang_1",
@@ -54062,7 +54654,9 @@
       "targetModuleTab": "lebensdauerbemessung",
       "targetModuleLabel": "Lebensdauerbemessung (fib Bulletin 34)"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "freigegeben 28.10.2026 (Einzelfreigabe)",
+    "reviewedAt": "2026-10-28"
   },
   {
     "id": "qn_lebensdauer_5",
@@ -54136,6 +54730,8 @@
       "targetModuleTab": "lebensdauerbemessung",
       "targetModuleLabel": "Lebensdauerbemessung (fib Bulletin 34)"
     },
-    "verified": false
+    "verified": true,
+    "reviewer": "freigegeben 28.10.2026 (Einzelfreigabe)",
+    "reviewedAt": "2026-10-28"
   }
 ]

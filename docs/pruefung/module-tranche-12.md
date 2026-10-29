@@ -96,6 +96,8 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T12-BE-1 und Klärung von T12-BE-2.
 
+**Umsetzung 29.10.2026 – T12-BE-2:** CO₂-Faktor Erdgas auf 0,24 kg CO₂-Äq./kWh angeglichen (GModG Anlage 9, 240 g/kWh; wie Beispiel 2). Neue Konstante `CO2_ERDGAS` in `src/utils/bestandKern.ts`, verwendet im Sanierungsrechner (`Bestand.tsx`, Heizungsart Erdgas) und im Modul Modernisierung (`Modernisierung.tsx`, bisher fest 0,22). Nachrechnung BE2: 7560 kWh/a · 0,24 = 1814 kg CO₂ (Test `tests/modulpruefungTranche12.test.ts`). Die übrigen Faktoren der Heizungsarten (Heizöl 0,28, Fernwärme, Strom) wurden nicht geändert. Status: erledigt.
+
 - [ ] Modul freigeben
 
 ## 3. Modernisierung & GModG (`modernisierung`)
@@ -220,6 +222,8 @@ Tab. D.1/D.2 der DIN EN 1990 im Kern vollständig richtig. Beispiele 1 (15,7 N/m
 
 - [ ] Modul freigeben
 
+**Umsetzung 29.10.2026 (Entscheidung 28.10., γ_c = 1,35 Bestandsbewertung):** Quelle des Bestandswerts im Labor-Rechner ist jetzt das DBV-Merkblatt „Modifizierte Teilsicherheitsbeiwerte für Stahlbetonbauteile“ (Deutscher Beton- und Bautechnik-Verein, Fassung März 2013, Merkblattreihe „Bauen im Bestand“; Titel und Ausgabe am öffentlichen Inhaltsverzeichnis bei DIN Media geprüft). Im Tipp (RechnerLaborTab.json), in `src/data/kennwerte.ts` und in den Regelwerken genannt: nur Widerstandsseite modifiziert, qualifizierte Bestandsaufnahme, Betondruckfestigkeit und Geometrie am Bauwerk ermittelt, γ_C,mod abhängig vom gemessenen Variationskoeffizienten. Zuordnung γ_c = 1,35 ↔ Grenze des Variationskoeffizienten: öffentlich nicht belegt, „vorläufig, F-Freigabe“. DIN EN 1992-1-1, Anhang A.2.2(2) (γ_C,red3 = 1,35, Geometrie gemessen, V_c ≤ 10 %) nur noch als Vergleich mit dem Hinweis, dass Anhang A in Deutschland nicht eingeführt ist. Rechenwert unverändert (f_cd = 0,85·f/1,35; tests/fcdModule.test.ts).
+
 ## 8. Historische Bauweisen (`historische_bauweisen`)
 
 **Prüfumfang:** Gewölbeschub-, Kappendecken- und Schwindrechner (inline), Fachtext, Beispiele.
@@ -230,6 +234,8 @@ Tab. D.1/D.2 der DIN EN 1990 im Kern vollständig richtig. Beispiele 1 (15,7 N/m
 - **offen – Frage T12-HB-1 (Schwindbeiwerte):** Der Rechner nutzt für Fichte radial 0,15 und tangential 0,27 %/%. Das ist die untere Grenze der Literaturspanne (radial 0,15–0,19, tangential 0,27–0,36 %/% nach Sell 1989, zitiert in [core.ac.uk 159145941](https://core.ac.uk/download/159145941.pdf)); für Fichte tangential wird auch 0,36 genannt ([Hausjournal](https://hausjournal.net/ausdehnung-holz-feuchtigkeit)). Auf Werte nach DIN 68100 umstellen (F-Freigabe)?
 
 **Empfehlung:** freigabefähig nach Klärung von T12-HB-1.
+
+**Umsetzung 29.10.2026 – T12-HB-1:** Schwindbeiwerte an die in Tranche 10 übernommenen Werte angeglichen (T10-HW-1; [TU München, Skript „Holz – Eigenschaften, Merkmale“](https://webarchiv.typo3.tum.de/ED/ARC/ls-ebb/fileadmin/w00cgv/ebb/Scripten_Allgemein/Holz_Eigenschaften_Merkmale.pdf)): Fichte radial/tangential 0,15/0,27 → 0,19/0,36, Kiefer 0,16/0,31 → 0,19/0,36, Eiche 0,18/0,34 unverändert. Gemeinsame Konstante `SCHWINDBEIWERTE` in `src/calc/holzphysik.ts`; der Test prüft die Gleichheit mit `content/holzbaubeta/HolzbauBeta.json`. Beispiel 2 neu: Δb = 220 · 0,0036 · 18 = 14,3 mm (vorher 10,7 mm), Ergebnishinweis „rund 1,4 cm“. Quizfragen nicht betroffen (`qn_historische_bauweisen_3` rechnet mit Eiche radial 0,18). Status: erledigt.
 
 - [ ] Modul freigeben
 
@@ -273,6 +279,8 @@ Tab. D.1/D.2 der DIN EN 1990 im Kern vollständig richtig. Beispiele 1 (15,7 N/m
 - **offen – Frage T12-RB-4 (Massenkennwerte Rückbaurechner):** Die spezifischen Massen je m³ Brutto-Rauminhalt summieren sich auf 1,8 t/m³ (Stahlbeton) bis 2,0 t/m³ (Mauerwerk); ein Einfamilienhaus mit 800 m³ ergibt so rund 1600 t. Das ist physikalisch kaum möglich (Mauerwerk 1,2 t/m³ BRI hieße rund zwei Drittel des Raums massives Mauerwerk). Nach meinem Kenntnisstand liegen Abbruchmassen von Wohngebäuden bei etwa 0,3 bis 0,6 t je m³ BRI; eine öffentliche Quelle für Kennwerte je Bauweise habe ich nicht gefunden. Bitte Kennwerte festlegen.
 
 **Empfehlung:** nach Klärung von T12-RB-4 freigabefähig (Korrekturen T12-RB-1 bis -3 erfolgt).
+
+**Umsetzung 29.10.2026 – T12-RB-4:** Massenkennwerte des Rückbaurechners auf 0,3–0,6 t je m³ BRI umgestellt: Stahlbetonbau und Mauerwerksbau (Massivbau, Standard) je 0,50, Mischbauweise 0,45, Holzständerbau 0,30 t/m³; die Aufteilung auf die acht Fraktionen bleibt anteilig wie bisher. Rechenkern neu `src/calc/rueckbauMassen.ts` (vorher inline in `Rueckbau.tsx`). Eine öffentliche Tabelle je Bauweise wurde nicht gefunden; als Plausibilisierung dient [Krause/Hafner 2022, Energies 15(16) 5825](https://doaj.org/article/1987d6eef64e4abfbfe815325e2a10a8) (0,61–1,95 t/m² BGF für Einfamilienhäuser, 1,36–1,54 t/m² BGF für Mehrfamilienhäuser, bei rund 3 m BRI je m² BGF etwa 0,2–0,65 t/m³). Im Rechenweg als „Lehrwerte, vorläufig, F-Freigabe“ gekennzeichnet; der Formelschritt zeigt die Werte jetzt im deutschen Zahlformat. Nachrechnung: EFH 800 m³ Mauerwerk 400 t (vorher rund 1600 t), mineralisch 84 %; Holzhaus 900 m³ 270 t (Test). Status: erledigt, Kennwerte vorläufig (F-Freigabe).
 
 - [ ] Modul freigeben
 
@@ -319,6 +327,13 @@ Tab. D.1/D.2 der DIN EN 1990 im Kern vollständig richtig. Beispiele 1 (15,7 N/m
 **F-Freigabe-Stellen:** EBV § 19 Abs. 8 (Sickerstrecke + 0,5 m Sicherheitsabstand), § 22 Mengenschwellen.
 
 **Empfehlung:** freigabefähig nach Korrektur T12-AB-1 bis -4 und Klärung von T12-AB-5.
+
+**Umsetzung 29.10.2026 – T12-AB-5:** Die drei Aussagen ließen sich nicht belegen und wurden gestrichen bzw. durch den Verordnungstext ersetzt ([Gesetze im Internet, § 22 EBV](https://www.gesetze-im-internet.de/ersatzbaustoffv/__22.html); [buzer, § 25 EBV](https://www.buzer.de/25_ErsatzbaustoffV.htm)):
+- „Kataster … 120 Jahre“ und „Aufbewahrung mind. 30 bis 40 Jahre“ (`EbvMantelverordnung.json`) → Grundstückseigentümer bewahrt Deckblatt und Lieferscheine auf, solange der Ersatzbaustoff eingebaut ist (§ 25 Abs. 4 Satz 2); Inverkehrbringer fünf Jahre (§ 25 Abs. 4 Satz 1); Übergabe der Anzeigen (§ 22 Abs. 5) und Mitteilung des Rückbaus binnen eines Jahres (§ 22 Abs. 6).
+- „HMVA-1 bereits ab 50 m³“ (`Abfaelle.json`, EBV-Einbaulogik) gestrichen; § 22 Abs. 1 nennt nur die Schwelle 250 m³.
+- Hinweis (nicht geändert): Die Einbaulogik führt HMVA-1 unter den ab 250 m³ anzeigepflichtigen Stoffen; § 22 Abs. 1 verweist auf die Stoffe nach § 20 Abs. 1 sowie BG-F3, BM-F3 und RC-3 – Zuordnung von HMVA-1 bei Gelegenheit am Verordnungstext prüfen.
+
+Status: erledigt.
 
 - [ ] Modul freigeben
 
@@ -376,9 +391,11 @@ Tab. D.1/D.2 der DIN EN 1990 im Kern vollständig richtig. Beispiele 1 (15,7 N/m
 **Befunde**
 - **offen – Frage T12-RE-1:** Der Simulator setzt für „RC-Beton“ 50 % der Gesteinskörnung als rezykliert an. Nach DAfStb-Richtlinie sind höchstens 45 Vol.-% (Typ 1) bzw. 35 Vol.-% (Typ 2) zulässig, je nach Expositionsklasse weniger. Auf 45 % (bzw. wählbar) begrenzen?
 
-**Umsetzung 29.10.2026 – T12-RE-1:** RC-Anteil im Bauteil-Simulator nach DIN 1045-2:2023-08, Anhang E: 45 Vol.-% der groben Gesteinskörnung (Typ 1, X0–XC4/XF1/XF3) bei 70 % Grobanteil (Lehrwert) = 31,5 % der Gesteinskörnung (vorher pauschal 50 %). Kern `src/calc/rcBeton.ts`; Standardplatte 120 m³: 68 t statt 108 t RC-Körnung; Text und Erkundungsauftrag angepasst. Test `tests/rcBeton.test.ts`, `tests/modulpruefungTranche9.test.ts` (RE1). Quelle: DIN 1045-2:2023-08, Anhang E (vorläufig, F-Freigabe; mit T9-GL-1).
+**Umsetzung 29.10.2026 – T12-RE-1:** RC-Anteil im Bauteil-Simulator nach DIN 1045-2:2023-08, Anhang E: 45 Vol.-% der groben Gesteinskörnung (Typ 1, X0–XC4/XF1/XF3) bei 70 % Grobanteil (Lehrwert) = 31,5 % der Gesteinskörnung (vorher pauschal 50 %). Kern `src/calc/rcGesteinskoernung.ts` (gemeinsam mit #252; die doppelte Fassung `rcBeton.ts` ist beim Zusammenführen entfallen); Standardplatte 120 m³: 68 t statt 108 t RC-Körnung; Text und Erkundungsauftrag angepasst. Test `tests/modulpruefungTranche9.test.ts` (RE1) und Tranche-12-Test. Quelle: DIN 1045-2:2023-08, Anhang E (vorläufig, F-Freigabe; mit T9-GL-1).
 
 **Empfehlung:** freigabefähig nach Klärung von T12-RE-1.
+
+**Umsetzung 29.10.2026 – T12-RE-1:** Der Bauteil-Simulator setzt den RC-Anteil nicht mehr pauschal mit 50 % an, sondern mit dem Höchstanteil nach DIN 1045-2:2023-08, Anhang E, wie im Modul Ausgangsstoffe (`grundlagen`): X0–XC4, XF1, XF3 ≤ 45/35 Vol.-%, XA1 ≤ 25/25, XD1/XD2/XS1/XS2/XF2/XF4 ≤ 30/20 Vol.-% (Typ 1/Typ 2) der groben Gesteinskörnung, nicht zulässig in XA2, XA3, XM. Typ und Expositionsklassen sind wählbar (Standard Typ 1, X0–XC4). Bezug auf die grobe Gesteinskörnung mit Grobkornanteil 0,7 (Lehrwert), Vol.-% ≈ M.-%. Rechenkern neu `src/calc/rcGesteinskoernung.ts`. Nachrechnung Platte 120 m³ (216 t Gesteinskörnung): Typ 1, X0–XC4 → 68,0 t RC-Körnung (vorher 108 t); Typ 2, XD/XS → 30,2 t (Test). Vorläufig bis zur Prüfung am Normtext (vgl. T9-GL-1), im Simulator als „vorläufig, F-Freigabe“ gekennzeichnet. Status: erledigt (vorläufig).
 
 - [ ] Modul freigeben
 
@@ -418,6 +435,8 @@ Tab. D.1/D.2 der DIN EN 1990 im Kern vollständig richtig. Beispiele 1 (15,7 N/m
 **Fakten-Stichprobe (Kenntnisstand):** NA-Zement ≤ 0,60 M.-% (DIN 1164-10), XF4 w/z ≤ 0,50 und LP ≥ 4,0 %, Alkali-Richtlinie 2013-10, Feuchtigkeitsklassen WO/WF/WA/WS – richtig.
 
 **Befunde:** keine. Hinweis: AKR-Gel-, Riss- und Abstandsfaktor-Simulation sind Lehrmodelle (im Text als solche erkennbar).
+
+**Umsetzung 29.10.2026 – AKR-1:** Die vorhandene Komponente `AkrGefuegeSimulator` in `src/modules/SchadreaktionenBeton.tsx` (Gel-Druck, Dehnung, Rissbild; Texte in `content/schadreaktionenbeton/SchadreaktionenBeton.json`) war nicht eingebunden. Versionsverlauf: Sie ist seit dem ersten Stand der Datei (8d8f29a5, 18.10.2026) definiert, der Reiterzustand kennt `akr_simulation`, eine Reiter-Schaltfläche oder ein Aufruf existierte aber in keinem Stand – auch nicht vor #231 (#231 hat die Datei nicht geändert). Eingebunden als eigener Reiter „AKR-Gefügesimulation“ (Symbol Mikroskop) nach „Alkalitreiben (AKR)“, ohne Neubau. Status: erledigt.
 
 **Empfehlung:** freigabefähig.
 

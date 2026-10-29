@@ -6,6 +6,7 @@ import { BlockMath, InlineMath } from 'react-katex';
 import inhalt from '@/content/baustoffkenngroessen/ThermischTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
+import { Fz } from '@/src/components/ui/Formelzeichen';
 
 export interface ThermischTabProps {
   alphaT: number;
@@ -253,11 +254,11 @@ export default function ThermischTab({ alphaT, deltaT, handleThermischPresetChan
             ) : (
               <div className="grid grid-cols-3 gap-2 text-center text-[11px] font-mono text-slate-600 pt-1.5">
                 <div className="bg-white p-1.5 rounded border border-home-grau/30">
-                  <span className="text-[9px] text-slate-400 block uppercase font-bold">λ (mK)</span>
+                  <span className="text-[9px] text-slate-400 block uppercase font-bold"><Fz>λ (mK)</Fz></span>
                   <strong>{formatDeZahl(thermischLambda, 3)}</strong>
                 </div>
                 <div className="bg-white p-1.5 rounded border border-home-grau/30">
-                  <span className="text-[9px] text-slate-400 block uppercase font-bold">ρ (kg/m³)</span>
+                  <span className="text-[9px] text-slate-400 block uppercase font-bold"><Fz>ρ (kg/m³)</Fz></span>
                   <strong>{formatDeWert(thermischRho)}</strong>
                 </div>
                 <div className="bg-white p-1.5 rounded border border-home-grau/30">

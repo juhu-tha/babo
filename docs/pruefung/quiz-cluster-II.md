@@ -1,10 +1,10 @@
 # Prüfliste Quiz – Cluster II: Materialien & Produkte
 
-Stand: 28.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
+Stand: 29.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster II umfasst 344 Fragen aus 56 Modulen. Aufgeführt sind 111 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster II umfasst 344 Fragen aus 56 Modulen. Aufgeführt sind 113 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 106 korrigiert, 0 fraglich, 16 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 108 korrigiert, 0 fraglich, 16 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -280,6 +280,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 106 korrigiert, 0 fraglich, 
 - [x] ok
 - [ ] ändern: …
 
+### q_daemm_1 · Dämmstoffe & Bauphysik
+
+- **Frage:** Welcher Dämmstoff eignet sich aufgrund seiner geschlossenzelligen Struktur und minimalen Wasseraufnahme besonders für die erdberührte Perimeterdämmung und das Umkehrdach?
+- **Richtige Antwort:** Extrudiertes Polystyrol (XPS)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Freigegebene Frage unverändert; Vorschlag zur Umformulierung der Distraktoren (Ratschen „Verhältnis > 1,2“/„Absolutwörter“) im Bericht docs/quiz-vorpruefung-cluster-I-III.md. · Umsetzung 29.10.: Erklärung und Lernhilfe: EPS-Perimeterdämmplatten mit Bauartgenehmigung (in der Regel Bodenfeuchte W1-E) ergänzt, „nur XPS oder Schaumglas“ entfällt (T8-DA-1/T8-DA-Q2, QZ-3); Bloom-Stufe, Niveau und Rückmeldungen ergänzt – korrigiert
+- [ ] ok
+- [ ] ändern: …
+
 ### q_dms_2 · Dämmstoffe
 
 - **Frage:** Welcher Dämmstoff eignet sich für Perimeterdämmung und Umkehrdächer?
@@ -454,6 +462,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 106 korrigiert, 0 fraglich, 
 - **Richtige Antwort:** 1,5–5,0 N/mm²
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### q_rsto_1 · Verkehrswegebau & RStO 12/24
+
+- **Frage:** Welche Eingangsgröße bestimmt in den Richtlinien für die Standardisierung des Oberbaus von Verkehrsflächen (RStO 12/24) maßgeblich die Belastungsklasse (Bk100 bis Bk0,3)?
+- **Richtige Antwort:** Die bemessungsrelevante Beanspruchung B in Form gewichteter äquivalenter 10-Tonnen-Achsübergänge des Schwerverkehrs über den Nutzungszeitraum.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Freigegebene Frage unverändert; Vorschlag zur Umformulierung der Distraktoren (Ratschen „Verhältnis > 1,2“/„Absolutwörter“) im Bericht docs/quiz-vorpruefung-cluster-I-III.md. · Umsetzung 29.10.: Lernhilfe „rund 160 000-mal (… 10 000 bis 160 000)“ → „rund 10 000-mal ((10/1)^4 = 10 000)“, 160 000 wäre (20/1)^4 (T7-RS, QZ-1); Bloom-Stufe, Niveau und Rückmeldungen ergänzt – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### q_vwb_6 · Verkehrswegebau

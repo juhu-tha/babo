@@ -145,9 +145,17 @@
 - **behoben – T8-DA-5:** Beispiel „Anforderung Bestand (GEG Anlage 7)“ an die Benennung im Modul angeglichen („Anlage 7 GModG, vormals GEG“).
 - **offen – Frage T8-DA-Q1:** Der CO₂-Faktor 0,22 kg/kWh („Gas/Öl-Mittel“) liegt unter den Emissionsfaktoren der Anlage 9 (Erdgas 0,240, Heizöl 0,310 kg/kWh). Zudem wird die Einsparung ΔU·84 kKh ohne Anlagenaufwand und ohne Temperatur-Korrekturfaktor (Kellerdecke gegen unbeheizt) gerechnet. Faktor auf 0,24 (Erdgas) setzen und Kellerdecke mit F_x ≈ 0,5 abmindern? (vorläufig, F-Freigabe)
 - **offen – Frage T8-DA-Q2:** Quizfrage `q_daemm_1` (freigegeben): Die Lernhilfe („coreRule“) sagt „im Erdreich … darf nur XPS oder Schaumglas eingesetzt werden“. Das widerspricht jetzt T8-DA-1. Die Frage selbst bleibt richtig; deshalb nicht geändert. Soll die Lernhilfe angepasst werden (Freigabe ginge verloren)?
+
+**Umsetzung 29.10.2026 (QZ-3, beantwortet T8-DA-Q2):** Erklärung und Lernhilfe von `q_daemm_1` ergänzt: EPS-Perimeterdämmplatten sind mit Bauartgenehmigung zulässig, in der Regel bei Bodenfeuchte (W1-E); „nur XPS oder Schaumglas“ entfällt. Frage und richtige Antwort (XPS) unverändert; Bloom-Stufe, Niveau und Rückmeldungen ergänzt. Freigabe zurückgenommen (verified false), Vorprüfung „korrigiert“. Quelle: wie T8-DA-1 (DIBt Z-23.33-2113).
+
 - Hinweis: Blähperlit als Schüttung fällt unter DIN EN 14316-1 (DIN EN 13169 gilt für Platten).
 
 **F-Freigabe-Stellen:** CO₂-Faktor und Einsparansatz (T8-DA-Q1).
+
+**Umsetzung 29.10.2026**
+- **T8-DA-Q1:** CO₂-Faktor 0,22 → 0,24 kg/kWh (Erdgas, Anlage 9 GModG; [buzer.de](https://www.buzer.de/Anlage_9_GModG.htm)). Einsparung jetzt ΔU · F_x · 84 kKh/a; für die Kellerdecke F_x = 0,5 (Größenordnung DIN V 4108-6, vorläufig, F-Freigabe), sonst 1,0; weiter ohne Anlagenaufwand (Hinweis im Berater). Kern `src/calc/bauprodukte.ts` (`fx`, `FX_KELLERDECKE`), Anzeige `DaemmungBerater.tsx`.
+- Nachrechnung (eigenes Skript): DA2 Einsparung 114,5 kWh/(m²a), CO₂ 27,48 kg/(m²a) (vorher 25,23); DA4 Kellerdecke 11 cm XPS mit F_x: 85,92 kWh/(m²a), CO₂ 20,62 kg/(m²a). Test `tests/modulpruefungTranche8.test.ts`.
+- T8-DA-Q2 (Quiz `q_daemm_1`) ist nicht Teil dieser Umsetzung (QZ-3).
 
 **Empfehlung:** freigabefähig nach Klärung von T8-DA-Q1 und Q2.
 
@@ -337,6 +345,9 @@
 - **offen – Frage T8-GL-Q1:** „Hohe Primärenergie bei Neualuminium (~14 kWh/kg)“: 14–15 kWh/kg ist etwa der Strombedarf der Elektrolyse; die Primärenergie von Primäraluminium liegt nach meinem Kenntnisstand deutlich höher. Wert mit EPD-/ÖKOBAUDAT-Quelle belegen oder als „Strombedarf der Elektrolyse“ bezeichnen?
 
 **F-Freigabe-Stellen:** Ψ-Werte (Lehrwerte, bereits in den Grenzen).
+
+**Umsetzung 29.10.2026**
+- **T8-GL-Q1:** Formulierung als Strombedarf der Elektrolyse: „Allein die Schmelzflusselektrolyse benötigt rund 14 kWh Strom je kg Aluminium; die Primärenergie der gesamten Herstellung liegt deutlich darüber.“ (`content/bpglaeser/BpGlaeser.json`).
 
 **Empfehlung:** freigabefähig nach Klärung von T8-GL-Q1.
 

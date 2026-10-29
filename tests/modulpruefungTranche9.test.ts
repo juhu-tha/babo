@@ -6,7 +6,7 @@ import { bemessungswerteBeton, festigkeitsentwicklung } from '../src/calc/pruefv
 import { festbetonStatistik, konformitaetDruck } from '../src/calc/festbetonStatistik';
 import { biokohleBilanz } from '../src/calc/biokohlebeton';
 import { carbonbetonBiegung } from '../src/calc/carbonbeton';
-import { rcAufteilung } from '../src/calc/rcBeton';
+import { rcBilanz } from '../src/calc/rcGesteinskoernung';
 
 const fehler: string[] = [];
 const nahe = (ist: number, soll: number, tol = 5e-3) => Math.abs(ist - soll) <= tol * Math.max(Math.abs(soll), 1e-9);
@@ -66,7 +66,7 @@ const cb = carbonbetonBiegung({ h: 40, c: 10, aTex: 100, fTk: 2500, eTexGPa: 200
 pruefe('CB3 x', cb.x, 8.204); pruefe('CB3 σ_tex', cb.sigmaTex, 1859.8); pruefe('CB3 m_Rd', cb.mRd, 4.969); pruefe('CB1 m_Rd ohne Kontrolle', cb.mRdOhneDehnungskontrolle, 5.117);
 gilt(cb.versagen === 'beton', 'CB2 Beton maßgebend');
 // T12-RE-1 (Betonteil, mit T9-GL-1): RC 45 Vol.-% der groben Gesteinskörnung (70 %) → 31,5 % der Gesteinskörnung
-pruefe('RE1 RC-Anteil', rcAufteilung(1, true).anteilGesamt, 0.315, 1e-9);
+pruefe('RE1 RC-Anteil', rcBilanz(1, 'typ1', 'x0_xc_xf1_xf3').anteilGesamt, 0.315, 1e-9);
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
 console.log('OK: Modulprüfung Tranche 9');

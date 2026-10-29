@@ -136,7 +136,7 @@
     "stufenweiseAbarbeitungUndPrüfung": "Stufenweise Abarbeitung und Prüfung wichtiger Meilensteine und rechtlicher Vorgaben im Ingenieursalltag.",
     "vermeidungVonFehlernSenkung": "Vermeidung von Fehlern, Senkung der Entsorgungs- und Haftungsrisiken sowie Gewährleistung maximaler Rechtssicherheit.",
     "keineAnzeigepflichtNach22": "Keine Anzeigepflicht nach § 22 EBV für diese Kombination (Anzeigepflicht nur für RC-3, BM-F3, BG-F3 und bestimmte Schlacken/Aschen ab Mengenschwelle sowie für Einbau in Schutzgebieten).",
-    "anzeigepflichtigNach22Ebv": "⚠️ ANZEIGEPFLICHTIG nach § 22 EBV (Gesamtvolumen ≥ 250 m³; HMVA-1 bereits ab 50 m³): Voranzeige mindestens vier Wochen vor Beginn des Einbaus nach Muster Anlage 8 sowie Abschlussanzeige nach Fertigstellung (Ermittlung binnen zwei Wochen) bei der zuständigen Behörde. Die Behörde führt ein Kataster.",
+    "anzeigepflichtigNach22Ebv": "⚠️ ANZEIGEPFLICHTIG nach § 22 EBV (Gesamtvolumen ≥ 250 m³): Voranzeige mindestens vier Wochen vor Beginn des Einbaus nach Muster Anlage 8 sowie Abschlussanzeige nach Fertigstellung (Ermittlung binnen zwei Wochen) bei der zuständigen Behörde. Die Behörde führt ein Kataster.",
     "keineMengenabhängigeAnzeigepflichtNach": "Keine mengenabhängige Anzeigepflicht nach § 22 Abs. 1 EBV für diese Materialklasse (Ausnahme: Einbau in Schutzgebieten, § 22 Abs. 2).",
     "zoneIVerbotenZone": "Zone I: verboten – Zone II: zulässig.",
     "inZoneIIst": "In Zone I ist jeder Einbau mineralischer Ersatzbaustoffe verboten; in Zone II sind nur BM-0, BG-0, GS-0 und Schmelzkammergranulat (SKG) sowie deren Gemische zulässig (§ 19 Abs. 6 EBV). Wasserrechtliche Schutzgebietsverordnungen haben Vorrang.",

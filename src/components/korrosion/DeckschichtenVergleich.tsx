@@ -11,6 +11,7 @@ import {
   Clock
 } from 'lucide-react';
 import { formatDeZahl } from '@/src/utils/numberFormat';
+import { Fz } from '@/src/components/ui/Formelzeichen';
 
 export interface MetalCorrosionProfile {
   id: string;
@@ -671,7 +672,7 @@ export function DeckschichtenVergleich() {
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-[10px] font-bold text-slate-600 uppercase">ρ_Metall (g/cm³)</label>
+            <label className="text-[10px] font-bold text-slate-600 uppercase"><Fz><>ρ<sub>Metall</sub> (g/cm³)</></Fz></label>
             <input aria-label="ρ_Metall (g/cm³)"
               type="number" min="0"
               step="0.01"
@@ -715,7 +716,7 @@ export function DeckschichtenVergleich() {
           </div>
 
           <div className="flex flex-col gap-1 col-span-2 sm:col-span-1">
-            <label className="text-[10px] font-bold text-slate-600 uppercase">ρ_Oxid (g/cm³)</label>
+            <label className="text-[10px] font-bold text-slate-600 uppercase"><Fz><>ρ<sub>Oxid</sub> (g/cm³)</></Fz></label>
             <input aria-label="ρ_Oxid (g/cm³)"
               type="number" min="0"
               step="0.01"

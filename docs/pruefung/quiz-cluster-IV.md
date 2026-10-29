@@ -1,10 +1,10 @@
 # Prüfliste Quiz – Cluster IV: Bestand & Nachhaltigkeit
 
-Stand: 28.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
+Stand: 29.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster IV umfasst 302 Fragen aus 50 Modulen. Aufgeführt sind 84 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster IV umfasst 314 Fragen aus 50 Modulen. Aufgeführt sind 96 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 76 korrigiert, 0 fraglich, 12 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 76 korrigiert, 0 fraglich, 11 mit offenem Prüfhinweis, 12 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -212,7 +212,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 76 korrigiert, 0 fraglich, 1
 
 - **Frage:** Wie ist der Rechtsstand des „Gebäudetyp E“ im Oktober 2026?
 - **Richtige Antwort:** Der Entwurf von 2024 ist erledigt; seit 10/2026 liegt ein neuer Entwurf zur Anhörung vor
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · Zweitprüfung 27.10.: Erklärung auf Referentenentwurf vom 26.10.2026 (Stellungnahmefrist 09.11.2026) präzisiert, unbelegte Prognose „Mitte 2027“ entfernt – korrigiert · Prüfhinweis: Gebäudetyp E – Stand des Gesetzgebungsverfahrens.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · Zweitprüfung 27.10.: Erklärung auf Referentenentwurf vom 26.10.2026 (Stellungnahmefrist 09.11.2026) präzisiert, unbelegte Prognose „Mitte 2027“ entfernt – korrigiert · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Erklärung präzisiert (Referentenentwurf BMJV 26.10.2026, Frist 09.11.2026; Prognose „Mitte 2027“ ohne Beleg entfernt), korrigiert
 
@@ -500,7 +500,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 76 korrigiert, 0 fraglich, 1
 
 - **Frage:** Bei 1500 m² Deckfläche und 100 Jahren liefert der Simulator für die Module A–C: Spannbeton 863 t (A1–A3: 400 t, B2–B5: 194 t, B8: 185 t) und Stahlverbund 825 t (A1–A3: 317 t, B2–B5: 233 t, B8: 212 t). Welche Analyse trifft zu?
 - **Richtige Antwort:** Ihr A1–A3-Vorteil wird durch Korrosionsschutz (B2–B5) und Stautage (B8) zum Großteil aufgezehrt.
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · Zweitprüfung 27.10.: Erklärung an Simulator angepasst (Netto 39 t, 5,76 kg; Rest 22 t aus A4–A5 und C statt nur C) – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · Zweitprüfung 27.10.: Erklärung an Simulator angepasst (Netto 39 t, 5,76 kg; Rest 22 t aus A4–A5 und C statt nur C) – korrigiert · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Erklärung nachgerechnet (Netto 39 t, 5,76 statt 5,75; 22 t aus A4–A5 und C, nicht nur aus C), korrigiert
 
@@ -678,6 +678,102 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 76 korrigiert, 0 fraglich, 1
 - **Richtige Antwort:** Sofortige Maßnahmen wie Absperrung, da die Verkehrssicherheit fehlt
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### qt_bauwerksdiagnose_1 · Bauwerksdiagnose & ZfP
+
+- **Frage:** Warum wird Bohrmehl für die Chloridanalyse nach DIN EN 14629 trocken und in Tiefenstufen entnommen?
+- **Richtige Antwort:** Spülwasser löst Chloride; Stufen trennen Randzone und Gehalt in Bewehrungstiefe
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_bauwerksdiagnose_2 · Bauwerksdiagnose & ZfP
+
+- **Frage:** Für einen Prüfbereich ergibt die Auswertung nach DIN EN 13791:2020 f_ck,is = 26,5 N/mm². In welche Druckfestigkeitsklasse ist der Beton mit f_ck = f_ck,is/0,85 höchstens einzustufen?
+- **Richtige Antwort:** C30/37 (f_ck ≈ 31 N/mm²)
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_pruefverfahren_katalog_1 · Bauwerksdiagnose & ZfP
+
+- **Frage:** Durchschallung einer Stütze: Messstrecke s = 0,40 m, Laufzeit Δt = 95 µs, ρ = 2400 kg/m³, ν = 0,2. Welche Auswertung liefert der Simulator?
+- **Richtige Antwort:** v_p ≈ 4210 m/s, E_dyn ≈ 38 GPa – gutes, dichtes Gefüge
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_pruefverfahren_katalog_2 · Bauwerksdiagnose & ZfP
+
+- **Frage:** Impact-Echo an einer 30 cm dicken Platte: dominante Frequenz f = 9,6 kHz, v_p = 4000 m/s, β = 0,96. Welche Auswertung trifft zu?
+- **Richtige Antwort:** d ≈ 20 cm: Reflexion vor der Rückwand, Hinweis auf Fehlstelle
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_pruefverfahren_katalog_3 · Bauwerksdiagnose & ZfP
+
+- **Frage:** Abreißversuch mit Stempel Ø 50 mm: Bruchkraft F = 3,5 kN, Bruch in der Klebefuge (Bruchbild Y). Wie ist das Ergebnis einzuordnen?
+- **Richtige Antwort:** f_ct ≈ 1,78 N/mm² ist nur ein unterer Grenzwert; Prüfung wiederholen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_pruefverfahren_katalog_4 · Bauwerksdiagnose & ZfP
+
+- **Frage:** In Bewehrungstiefe werden 0,3 M.-% Chlorid bezogen auf den Zement gemessen. Wie bewertet das Modul diesen Befund für Stahlbeton und für Spannbeton?
+- **Richtige Antwort:** Stahlbeton unter dem Anhaltswert; am Spannstahl (ab 0,2 M.-%) kritisch
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_pruefverfahren_katalog_5 · Bauwerksdiagnose & ZfP
+
+- **Frage:** Ein Bohrkern D = 100 mm, L = 100 mm bricht in der Presse bei F = 275 kN. Welche Auswertung trifft nach dem Modul zu?
+- **Richtige Antwort:** f_c,core ≈ 35,0 N/mm², vergleichbar mit dem Würfel (150 mm)
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_zfp_1 · Zerstörungsfreie Prüfung (ZfP)
+
+- **Frage:** Georadar auf feuchtem Beton: relative Dielektrizitätszahl ε_r = 9, Laufzeit des Bewehrungsechos t = 2,0 ns, c₀ = 300 mm/ns. In welcher Tiefe liegt der Stab?
+- **Richtige Antwort:** d ≈ 100 mm
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_zfp_2 · Zerstörungsfreie Prüfung (ZfP)
+
+- **Frage:** Wenner-Sonde mit Elektrodenabstand a = 50 mm, gemessener Widerstand R = 1000 Ω. Welcher spezifische Widerstand und welches Korrosionsrisiko ergeben sich nach dem Modul?
+- **Richtige Antwort:** ρ ≈ 314 Ω·m – mäßiges Korrosionsrisiko
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_zfp_3 · Zerstörungsfreie Prüfung (ZfP)
+
+- **Frage:** An einer Parkdeckplatte wird ein Halbzellenpotential von −280 mV gegen Cu/CuSO₄ gemessen. Wie ordnet das Modul diesen Wert ein?
+- **Richtige Antwort:** Ungewiss (10 … 90 %); Bewertung objektbezogen im Potentialfeld
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_zfp_4 · Zerstörungsfreie Prüfung (ZfP)
+
+- **Frage:** Eine Torrent-Messung ergibt k_T = 0,05 · 10⁻¹⁶ m² bei einer Betonfeuchte von 90 %. Wie ist der Wert nach dem Modul zu bewerten?
+- **Richtige Antwort:** Ungültig: Porenwasser blockiert den Gasfluss, k_T fällt zu klein aus
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
+- [ ] ändern: …
+
+### qt_zfp_5 · Zerstörungsfreie Prüfung (ZfP)
+
+- **Frage:** Welche Zuordnung von DGZfP-Merkblatt (Reihe B, Bauwesen) und Thema trifft nach der Übersicht im Modul zu?
+- **Richtige Antwort:** B 03 – Potentialmessung zur Korrosionsdetektion
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- [ ] ok
 - [ ] ändern: …
 
 ## B. Stichprobe unauffälliger Fragen (5)
