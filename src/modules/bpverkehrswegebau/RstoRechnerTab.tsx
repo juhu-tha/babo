@@ -65,7 +65,7 @@ export default function RstoRechnerTab({ activeProfile, bauweise, belastungsKlas
               onChange={(e) => setBelastungsKlasse(e.target.value)}
               className="p-2 text-xs border border-zinc-300 rounded-md bg-white text-text-main font-semibold"
             >
-              <option value="Bk100">Bk100 (z.B. Fernbahnen, Autobahnen, extreme Belastung)</option>
+              <option value="Bk100">Bk100 (z.B. hochbelastete Autobahnabschnitte, extreme Belastung)</option>
               <option value="Bk32">Bk32 (z.B. Bundesstraßen, vierspurige Straßen)</option>
               {bauweise === 'asphalt' && (
                 <>

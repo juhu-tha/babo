@@ -48,7 +48,7 @@
           {
             "name": "Asphaltdeckschicht (SMA 11 S oder AC 11 D S)",
             "thickness": 4,
-            "material": "Splittmastix- / Beton-Asphalt mit PmB oder 50/70",
+            "material": "Splittmastixasphalt bzw. Asphaltbeton mit PmB oder 50/70",
             "normRequirement": "PSV-Wert ≥ 51 (TL Gestein-StB; vorläufig, F-Freigabe), Einbaudicke ca. 4 cm nach ZTV Asphalt-StB",
             "bgClass": "bg-zinc-800 text-white",
             "borderColor": "border-zinc-900"
