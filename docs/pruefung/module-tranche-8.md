@@ -66,7 +66,7 @@
 
 **Empfehlung:** freigabefähig nach Klärung von T8-TB-Q1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 2. Putz und Estrich (`bp_putz_estrich`)
 
@@ -91,7 +91,7 @@
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 3. Abdichtung (`bp_abdichtung`)
 
@@ -159,7 +159,7 @@
 
 **Empfehlung:** freigabefähig nach Klärung von T8-DA-Q1 und Q2.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 5. Befestigung (`bp_befestigung`)
 
@@ -184,7 +184,7 @@
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 6. Klebstoffe (`bp_klebstoffe`)
 
@@ -239,7 +239,7 @@
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 8. Betonzusatzmittel (`bp_betonzusatzmittel`)
 
@@ -264,7 +264,7 @@
 
 **Empfehlung:** freigabefähig nach Klärung von T8-BZ-Q1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 9. Holzprodukte – Rest (`bp_holzprodukte`)
 
@@ -306,7 +306,7 @@
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 11. Mineralisch (`bp_mineralisch`)
 
@@ -323,7 +323,7 @@
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 12. Gläser (`bp_glaeser`)
 
@@ -351,7 +351,7 @@
 
 **Empfehlung:** freigabefähig nach Klärung von T8-GL-Q1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 13. Lehmbauprodukte (`bp_lehmbauprodukte`)
 
@@ -393,7 +393,7 @@
 
 **Empfehlung:** freigabefähig nach Klärung von T8-ME-Q1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 15. Stahlbauprofile (`bp_stahlbauprofile`)
 
@@ -415,7 +415,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T8-ST-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ---
 
@@ -456,3 +456,29 @@ Entscheidungen vom 28.10.2026 (nachts); Regressionstest `tests/modulpruefungTran
 - **T8-ME-Q1 (Metallisch):** Regelwerksangabe „Z-30.3-6 (Stand der Zulassung prüfen)“.
 - **T8-LE-Q1 (Lehmbau):** Rechner als „Lehrmodell, nicht DIN 18940“ gekennzeichnet (Reitername, Überschrift, f_k-Angabe, Rechenweg-Quelle); f_k, γ_M = 2,0, λ ≤ 21 und Φ bleiben als Lehrannahmen, Normwerte vorläufig, F-Freigabe.
 - **T8-LE-Q2 (Lehmbau, Normtext):** S I/S II mit Biegezug 0,3/0,4 N/mm², LPL1–LPL3, M 2,5 und Sockelhöhe 30 cm als „vorläufig, F-Freigabe am Normtext“ gekennzeichnet; Inhalt unverändert.
+
+## Freigabe 29.10.2026
+
+Entscheidung vom 28.10.2026: „Module ohne offene Frage freigeben“; Punkte, die nur am Normtext zu klären sind, blockieren die Freigabe (Prüfbogen Normtext, Abschnitt „Was ohne Normtext nicht weiterkommt“). Geprüft wurde je Modul: Empfehlung erfüllt (Korrekturen behoben, Klärungen entschieden und in den Abschnitten „Umsetzung 29.10.2026“ bzw. in den genannten PRs umgesetzt oder gekennzeichnet) und kein Normtextpunkt offen. Prüfvermerk in `src/data/pruefvermerke.ts`: „geprueft“, am 2026-10-29, passiv ohne Namen. Quizfreigaben sind davon getrennt.
+
+Freigegeben:
+
+- `bp_trockenbau` – T8-TB-Q1 umgesetzt (#251, Herstellerrichtwerte)
+- `bp_putz_estrich` – freigabefähig, keine Frage
+- `bp_daemmung` – T8-DA-Q1 umgesetzt (#250, Erdgas 0,24, F_x), T8-DA-Q2 über QZ-3 (#249, q_daemm_1 korrigiert)
+- `bp_befestigung` – freigabefähig, keine Frage
+- `bp_farben_lacke` – freigabefähig, keine Frage
+- `bp_betonzusatzmittel` – T8-BZ-Q1 umgesetzt (#251, Nachweis nach DIN EN 206/DIN 1045-2)
+- `bp_kunststoffe` – freigabefähig, keine Frage
+- `bp_mineralisch` – freigabefähig, keine Frage
+- `bp_glaeser` – T8-GL-Q1 umgesetzt (#250); Reiter U_w aus Tranche 3 (T3-UW-1 behoben, B-2 beantwortet)
+- `bp_metallisch` – T8-ME-Q1 umgesetzt (#251, „Stand der Zulassung prüfen“)
+- `bp_stahlbauprofile` – nach Korrektur T8-ST-1 (behoben)
+
+Nicht freigegeben:
+
+- `bp_abdichtung` – Prüfbogen: T8-AB-Q2 (Normtext DIN 18533-3)
+- `bp_klebstoffe` – Die Umsetzung von T8-KL-Q1 (#251) hat die Tabelle DIN 18540, Tab. 2 (Fugentiefe je Fugenbreite) eingefügt, „vorläufig, F-Freigabe am Normtext“ – derselbe Normtextpunkt wie T4-BC-2 (Prüfbogen Nr. 2); der Prüfbogen (Stand vor #251) erfasst ihn noch nicht
+- `bp_lehmbauprodukte` – Prüfbogen: T8-LE-Q1a–d, T8-LE-Q2a–d (Normtext)
+
+`bp_holzprodukte` (Nr. 9) trägt den Vermerk bereits seit 28.10.2026 (Tranche 2); nicht erneut gesetzt.

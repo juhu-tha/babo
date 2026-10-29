@@ -313,7 +313,7 @@ Die Nummern 1–3 schließen `stahlbeton_bemessung` ab; die 10 Bereiche des Auft
 
 **Empfehlung:** freigabefähig nach Klärung von T2-ST-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 10. Ökobilanz-Gebäuderechner (`lca_rechner`)
 
@@ -376,7 +376,7 @@ Der vorhandene Regressionstest gegen den öffentlichen QNG-Beispielbericht (EVEB
 
 **Empfehlung:** freigabefähig nach Klärung von T2-B-1 und T2-B-2.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 12. Glaser / Feuchteschutz – Vertiefung (`feuchteschutz`)
 
@@ -442,3 +442,19 @@ Nicht freigegeben, obwohl freigabefähig: die Reiter Rissbreite (Nr. 2) und σ-�
 ## Umsetzung 29.10.2026
 
 - **FR-1 (`bp_holzprodukte`):** Prüfvermerk bleibt. Durchbiegungsgrenzen l/300 (w_inst, w_net,fin) und l/200 (w_fin) als Empfehlungswerte nach DIN EN 1995-1-1, Tab. 7.2 mit NA (DE) gekennzeichnet (Ergebnisanzeige, Rechenbeispiel, Formelkasten, Grenzen); Rechnung unverändert.
+
+## Freigabe 29.10.2026
+
+Entscheidung vom 28.10.2026: „Module ohne offene Frage freigeben“; Punkte, die nur am Normtext zu klären sind, blockieren die Freigabe (Prüfbogen Normtext, Abschnitt „Was ohne Normtext nicht weiterkommt“). Geprüft wurde je Modul: Empfehlung erfüllt (Korrekturen behoben, Klärungen entschieden und in den Abschnitten „Umsetzung 29.10.2026“ bzw. in den genannten PRs umgesetzt oder gekennzeichnet) und kein Normtextpunkt offen. Prüfvermerk in `src/data/pruefvermerke.ts`: „geprueft“, am 2026-10-29, passiv ohne Namen. Quizfreigaben sind davon getrennt.
+
+Freigegeben:
+
+- `statistik` – T2-ST-1 umgesetzt (#239: Grubbs nach ISO 5725-2, 1-%-Grenze); keine F-Stelle
+- `bodenmechanik` – T2-B-1/-B-2 umgesetzt (#239); F-Stellen bleiben gekennzeichnet (deutsche Konsistenzbezeichnungen, OU/OH, Exponent Einpunktverfahren)
+
+Nicht freigegeben:
+
+- `lebensdauerbemessung` – nur Rechnung freigabefähig; Kennwerte vorläufig (p_SR am fib Bulletin 34)
+- `lca_rechner` – Empfehlung verlangt Klärung der F-Stellen – offen
+
+Bereits am 28.10.2026 freigegeben: `bp_holzprodukte`, `spannbeton_grundlagen`, `spannbeton_kennwerte`, `korrosion`, `schnellkarbonatisierung` (unverändert).

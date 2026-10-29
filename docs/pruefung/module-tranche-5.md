@@ -65,7 +65,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T5-GS-1 bis -3 (F-Stelle Sieblinien bleibt).
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 2. Keramik und Ziegel (`keramik_ziegel`)
 
@@ -90,7 +90,7 @@ Druckfestigkeitsklassen (Mittelwert = 1,25 · Klasse) und LD/HD-Ziegel stimmen. 
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 3. Putze & Mörtel (`putzemoertel`)
 
@@ -123,7 +123,7 @@ Druckfestigkeitsklassen (Mittelwert = 1,25 · Klasse) und LD/HD-Ziegel stimmen. 
 
 **Empfehlung:** freigabefähig nach Korrektur T5-PM-1 bis -4 und Klärung von T5-PM-5/-6.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 4. Gips (`gips`)
 
@@ -150,7 +150,7 @@ Druckfestigkeitsklassen (Mittelwert = 1,25 · Klasse) und LD/HD-Ziegel stimmen. 
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 5. Kalk (`kalk`)
 
@@ -174,7 +174,7 @@ Druckfestigkeitsklassen (Mittelwert = 1,25 · Klasse) und LD/HD-Ziegel stimmen. 
 
 **Empfehlung:** freigabefähig nach Korrektur T5-KA-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 6. Lehm (`lehm`)
 
@@ -233,7 +233,7 @@ Druckfestigkeitsklassen (Mittelwert = 1,25 · Klasse) und LD/HD-Ziegel stimmen. 
 
 **Empfehlung:** freigabefähig nach Korrektur T5-ER-1 und Klärung von T5-ER-2.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 8. Glas (`glas`)
 
@@ -261,7 +261,7 @@ Druckfestigkeitsklassen (Mittelwert = 1,25 · Klasse) und LD/HD-Ziegel stimmen. 
 
 **Empfehlung:** freigabefähig nach Korrektur T5-GL-1/-2 und Klärung von T5-GL-3.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 9. Stahl (`stahl`)
 
@@ -296,7 +296,7 @@ Kurzfassung (S355J2+N, B500A/B/C-Duktilität, CEV-Grenzen S235JR 0,35 / S355J2 0
 
 **Empfehlung:** freigabefähig nach Korrektur T5-ST-1/-2 und Klärung von T5-ST-3.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 10. Metalle (`metalle`)
 
@@ -322,7 +322,7 @@ Kurzfassung (S355J2+N, B500A/B/C-Duktilität, CEV-Grenzen S235JR 0,35 / S355J2 0
 
 **Empfehlung:** freigabefähig nach Korrektur T5-ME-1/-2.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ---
 
@@ -343,3 +343,23 @@ Kurzfassung (S355J2+N, B500A/B/C-Duktilität, CEV-Grenzen S235JR 0,35 / S355J2 0
 - Unabhängige Nachrechnung: eigenes Skript (Python) mit eigener Umsetzung der Norm- und Modellgleichungen; Vergleich gegen die Kernausgaben (62 Prüfungen in `tests/modulpruefungTranche5.test.ts`), Inline-Rechnungen über die Formeln abgeglichen.
 - Neue bzw. geänderte Tests: `tests/moertelbedarf.test.ts` (neu), `tests/erdbau.test.ts` (TA → F2, Fuzz-Monotonie ohne TA), `tests/modulpruefungTranche5.test.ts` (neu).
 - Öffentliche Quellen dieser Prüfung: [DIN Media, DIN EN 12620](https://www.dinmedia.de/de/norm/din-en-12620/103098198); [DIN Media, DIN 4226-101:2025-11](https://www.dinmedia.de/de/norm/din-4226-101/391976731); [DIN Media, DIN EN 14411](https://www.dinmedia.de/de/norm/din-en-14411/256449026); [DIN Media, DIN 20000-401 Entwurf](https://www.dinmedia.de/en/draft-standard/din-20000-401/406092747); [DIN Media, DIN 20000-412 Entwurf](https://www.dinmedia.de/de/norm-entwurf/din-20000-412/399667302); [Heidelberg Materials, Mauermörtel](https://www.heidelbergmaterials.de/sites/default/files/assets/document/ef/12/mauermoertel_bro_4s_a4.pdf); [Remmers, TM Sanierputz](https://media.remmers.com/celum/export/documents/TM_0402_de_CH_85532.pdf); [DIN Media, DIN EN 459-1](https://dinmedia.de/en/standard/din-en-459-1/233794596); [DIN Media, DIN 18945](https://www.dinmedia.de/de/norm/din-18945/376331208); [studenten365, Frostempfindlichkeitsklassen](https://studenten365.com/library/lecture/read/438429-warum-sind-bindige-boden-frostgefardet); [Bayern, Einführung ZTV E-StB 17](https://mobilitaet.bayern.de/assets/stmi/vum/strasse/bauunderhalt/49_ztve.pdf); [DIN Media, DIN 18134](https://www.dinmedia.de/de/norm/din-18134/149668370); [DIN Media, DIN 18008-3:2024-12](https://www.dinmedia.de/en/standard/din-18008-3/382246391); [AENOR, DIN 18008-4:2024-12](https://en.tienda.aenor.com/norma-din-18008-4-2024-12-382244655); [DIN Media, DIN EN 1993-1-1/NA:2026-04](https://www.dinmedia.de/de/norm/din-en-1993-1-1-na/399086476); [DIN Media, DIN 488-1](https://www.dinmedia.de/de/norm/din-488-1/117493908); [TWI, Heat input](https://twi-global.com/technical-knowledge/faqs/faq-what-is-the-difference-between-heat-input-and-arc-energy); [DIN Media, DIN EN 1993-1-4/NA:2026-11](https://www.dinmedia.de/en/standard/din-en-1993-1-4-na/404391737); [DIN Media, DIN EN 1999-1-1](https://www.dinmedia.de/de/norm/din-en-1999-1-1/356881996); [DIN Media, DIN EN 1999-1-1/NA](https://www.dinmedia.de/en/standard/din-en-1999-1-1-na/394180706).
+
+## Freigabe 29.10.2026
+
+Entscheidung vom 28.10.2026: „Module ohne offene Frage freigeben“; Punkte, die nur am Normtext zu klären sind, blockieren die Freigabe (Prüfbogen Normtext, Abschnitt „Was ohne Normtext nicht weiterkommt“). Geprüft wurde je Modul: Empfehlung erfüllt (Korrekturen behoben, Klärungen entschieden und in den Abschnitten „Umsetzung 29.10.2026“ bzw. in den genannten PRs umgesetzt oder gekennzeichnet) und kein Normtextpunkt offen. Prüfvermerk in `src/data/pruefvermerke.ts`: „geprueft“, am 2026-10-29, passiv ohne Namen. Quizfreigaben sind davon getrennt.
+
+Freigegeben:
+
+- `gesteine` – nach Korrektur T5-GS-1 bis -3 (behoben, #238); F-Stelle Sieblinien bleibt
+- `keramik_ziegel` – freigabefähig, keine Frage
+- `putzemoertel` – T5-PM-1 bis -4 behoben (#238), T5-PM-5/-6 umgesetzt (#254)
+- `gips` – freigabefähig, keine Frage
+- `kalk` – nach Korrektur T5-KA-1 (behoben, #238)
+- `erdbau` – T5-ER-1 behoben (#238), T5-ER-2 umgesetzt (#254, E_v2/E_v1 2,3/2,5, vorläufig gekennzeichnet)
+- `glas` – T5-GL-1/-2 behoben (#238), T5-GL-3 umgesetzt (#254, Hinweis MVV TB)
+- `stahl` – T5-ST-1/-2 behoben (#238), T5-ST-3 umgesetzt (#254, Verbundbedingungen EC 2, 8.4.2)
+- `metalle` – nach Korrektur T5-ME-1/-2 (behoben, #238)
+
+Nicht freigegeben:
+
+- `lehm` – Prüfbogen: T5-LE-2a/b (Normtext)

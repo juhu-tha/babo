@@ -98,7 +98,7 @@
 
 **Umsetzung 29.10.2026 – T12-BE-2:** CO₂-Faktor Erdgas auf 0,24 kg CO₂-Äq./kWh angeglichen (GModG Anlage 9, 240 g/kWh; wie Beispiel 2). Neue Konstante `CO2_ERDGAS` in `src/utils/bestandKern.ts`, verwendet im Sanierungsrechner (`Bestand.tsx`, Heizungsart Erdgas) und im Modul Modernisierung (`Modernisierung.tsx`, bisher fest 0,22). Nachrechnung BE2: 7560 kWh/a · 0,24 = 1814 kg CO₂ (Test `tests/modulpruefungTranche12.test.ts`). Die übrigen Faktoren der Heizungsarten (Heizöl 0,28, Fernwärme, Strom) wurden nicht geändert. Status: erledigt.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 3. Modernisierung & GModG (`modernisierung`)
 
@@ -122,7 +122,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T12-MO-1 (Frage T12-BE-2 gilt mit).
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 4. Bauwerkserfassung (`bauwerkserfassung`)
 
@@ -138,7 +138,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T12-BW-1/-2.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 5. Denkmalpflege (`denkmalpflege`)
 
@@ -152,7 +152,7 @@
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 6. Bauwerksdiagnose & ZfP (`bauwerksuntersuchung`; nach #231: `bauwerksdiagnose`, `pruefverfahren_katalog`, `zfp`)
 
@@ -193,9 +193,9 @@ Tab. 4.4DE (c_min,dur, Δc_dev), E_dyn-Formel, β = 0,96 und ASTM-C876-Grenzen i
 
 **Empfehlung:** freigabefähig nach Korrektur T12-BU-1 bis -6 und Klärung von T12-BU-7.
 
-- [ ] Modul freigeben (`bauwerksdiagnose`)
+- [x] Modul freigeben (`bauwerksdiagnose`; 29.10.2026)
 - [ ] Modul freigeben (`pruefverfahren_katalog`)
-- [ ] Modul freigeben (`zfp`)
+- [x] Modul freigeben (`zfp`; 29.10.2026)
 
 ## 7. Historische Kennwerte (`historisch`)
 
@@ -220,7 +220,7 @@ Tab. D.1/D.2 der DIN EN 1990 im Kern vollständig richtig. Beispiele 1 (15,7 N/m
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 **Umsetzung 29.10.2026 (Entscheidung 28.10., γ_c = 1,35 Bestandsbewertung):** Quelle des Bestandswerts im Labor-Rechner ist jetzt das DBV-Merkblatt „Modifizierte Teilsicherheitsbeiwerte für Stahlbetonbauteile“ (Deutscher Beton- und Bautechnik-Verein, Fassung März 2013, Merkblattreihe „Bauen im Bestand“; Titel und Ausgabe am öffentlichen Inhaltsverzeichnis bei DIN Media geprüft). Im Tipp (RechnerLaborTab.json), in `src/data/kennwerte.ts` und in den Regelwerken genannt: nur Widerstandsseite modifiziert, qualifizierte Bestandsaufnahme, Betondruckfestigkeit und Geometrie am Bauwerk ermittelt, γ_C,mod abhängig vom gemessenen Variationskoeffizienten. Zuordnung γ_c = 1,35 ↔ Grenze des Variationskoeffizienten: öffentlich nicht belegt, „vorläufig, F-Freigabe“. DIN EN 1992-1-1, Anhang A.2.2(2) (γ_C,red3 = 1,35, Geometrie gemessen, V_c ≤ 10 %) nur noch als Vergleich mit dem Hinweis, dass Anhang A in Deutschland nicht eingeführt ist. Rechenwert unverändert (f_cd = 0,85·f/1,35; tests/fcdModule.test.ts).
 
@@ -237,7 +237,7 @@ Tab. D.1/D.2 der DIN EN 1990 im Kern vollständig richtig. Beispiele 1 (15,7 N/m
 
 **Umsetzung 29.10.2026 – T12-HB-1:** Schwindbeiwerte an die in Tranche 10 übernommenen Werte angeglichen (T10-HW-1; [TU München, Skript „Holz – Eigenschaften, Merkmale“](https://webarchiv.typo3.tum.de/ED/ARC/ls-ebb/fileadmin/w00cgv/ebb/Scripten_Allgemein/Holz_Eigenschaften_Merkmale.pdf)): Fichte radial/tangential 0,15/0,27 → 0,19/0,36, Kiefer 0,16/0,31 → 0,19/0,36, Eiche 0,18/0,34 unverändert. Gemeinsame Konstante `SCHWINDBEIWERTE` in `src/calc/holzphysik.ts`; der Test prüft die Gleichheit mit `content/holzbaubeta/HolzbauBeta.json`. Beispiel 2 neu: Δb = 220 · 0,0036 · 18 = 14,3 mm (vorher 10,7 mm), Ergebnishinweis „rund 1,4 cm“. Quizfragen nicht betroffen (`qn_historische_bauweisen_3` rechnet mit Eiche radial 0,18). Status: erledigt.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 9. Historische Bauprodukte (`historische_bauprodukte`)
 
@@ -250,7 +250,7 @@ Tab. D.1/D.2 der DIN EN 1990 im Kern vollständig richtig. Beispiele 1 (15,7 N/m
 
 **Empfehlung:** freigabefähig nach Korrektur T12-HP-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 10. Bestands-Checklisten (`bestand_checklisten`)
 
@@ -282,7 +282,7 @@ Tab. D.1/D.2 der DIN EN 1990 im Kern vollständig richtig. Beispiele 1 (15,7 N/m
 
 **Umsetzung 29.10.2026 – T12-RB-4:** Massenkennwerte des Rückbaurechners auf 0,3–0,6 t je m³ BRI umgestellt: Stahlbetonbau und Mauerwerksbau (Massivbau, Standard) je 0,50, Mischbauweise 0,45, Holzständerbau 0,30 t/m³; die Aufteilung auf die acht Fraktionen bleibt anteilig wie bisher. Rechenkern neu `src/calc/rueckbauMassen.ts` (vorher inline in `Rueckbau.tsx`). Eine öffentliche Tabelle je Bauweise wurde nicht gefunden; als Plausibilisierung dient [Krause/Hafner 2022, Energies 15(16) 5825](https://doaj.org/article/1987d6eef64e4abfbfe815325e2a10a8) (0,61–1,95 t/m² BGF für Einfamilienhäuser, 1,36–1,54 t/m² BGF für Mehrfamilienhäuser, bei rund 3 m BRI je m² BGF etwa 0,2–0,65 t/m³). Im Rechenweg als „Lehrwerte, vorläufig, F-Freigabe“ gekennzeichnet; der Formelschritt zeigt die Werte jetzt im deutschen Zahlformat. Nachrechnung: EFH 800 m³ Mauerwerk 400 t (vorher rund 1600 t), mineralisch 84 %; Holzhaus 900 m³ 270 t (Test). Status: erledigt, Kennwerte vorläufig (F-Freigabe).
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 12. Boden- & Materialaufbereitung (`boden_materialaufbereitung`)
 
@@ -296,7 +296,7 @@ Tab. D.1/D.2 der DIN EN 1990 im Kern vollständig richtig. Beispiele 1 (15,7 N/m
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 13. Abfälle & Altlasten (`abfaelle`)
 
@@ -335,7 +335,7 @@ Tab. D.1/D.2 der DIN EN 1990 im Kern vollständig richtig. Beispiele 1 (15,7 N/m
 
 Status: erledigt.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 14. Schad- und Gefahrstoffe (`schadstoffe`)
 
@@ -350,7 +350,7 @@ Status: erledigt.
 
 **Empfehlung:** freigabefähig nach Korrektur T12-SS-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 15. Altholz-NIR & Urban Mining (`altholz_urban_mining`)
 
@@ -366,7 +366,7 @@ Status: erledigt.
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 16. PFAS in Baustoffen (`pfas_baustoffe`)
 
@@ -380,7 +380,7 @@ Status: erledigt.
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 17. Ressourceneffizienz (`ressourceneffizienz`)
 
@@ -426,7 +426,7 @@ Status: erledigt.
 
 **Empfehlung:** freigabefähig nach Korrektur T12-DH-1 bis -4.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 20. Betonkorrosion (`schadreaktionen_beton`)
 
@@ -464,7 +464,7 @@ Status: erledigt.
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 23. Korrosionsschutz durch Beschichtungen (`korrosionsschutz_beschichtungen`)
 
@@ -476,7 +476,7 @@ Status: erledigt.
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 24. Weitere Organik (`weitere_organik`)
 
@@ -488,7 +488,7 @@ Status: erledigt.
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ---
 
@@ -513,3 +513,38 @@ Status: erledigt.
 
 - Unabhängige Nachrechnung: eigenes Python-Skript (eigene Umsetzung der Gleichungen von DIN EN ISO 6946, Gradtagzahlverfahren, DIN EN 1990 Anhang C/D, DIN EN 1996-1-1, EC5, LAGA PN 98, Massenbilanz, TrinkwV-Summen, Zinkabtrag, Wurzel-t-Gesetz); 54 Prüfungen als `tests/modulpruefungTranche12.test.ts`, dazu Prüfung der BBodSchV-Werte im Inhalt.
 - Öffentliche Quellen dieser Prüfung: [buzer, Anlage 7 GModG](https://www.buzer.de/Anlage_7_GModG.htm); [buzer, GModG §§ 34–39](https://www.buzer.de/gesetz/14072/b36731.htm); [buzer, § 69 GModG](https://www.buzer.de/69_GModG.htm); [buzer, Inhaltsübersicht GModG](https://www.buzer.de/GModG.htm); [BauNetz Wissen, GModG](https://www.baunetzwissen.de/heizung/fachwissen/verordnungen-gesetze/gebaeudemodernisierungsgesetz-gmodg-10443988); [Forum Verlag, DIN 18202](https://forum-verlag.com/fachwissen/bau-und-gebaeudemanagement/din-18202/); [Datenblatt Leica BLK360 G2](https://www.arctron.de/wp-content/uploads/2023/05/Leica-BLK360-G2_Datenblatt.pdf); [Bayern.Recht, Art. 20 BayDSchG](https://www.gesetze-bayern.de/Content/Document/BayDSchG-20); [rulecalc, § 7i EStG](https://rulecalc.com/de/immobilien/estg-7i-absetzungen-baudenkmal); [DIN, DIN 1076:2026-01](https://6sku3uaup9f9.din.de/en/standard/din-1076/394559449); [DIN Media, DIN EN 12504-1](https://www.dinmedia.de/de/norm/din-en-12504-1/332723593); [DIN Media, DIN EN 12504-2](https://www.dinmedia.de/en/standard/din-en-12504-2/335978574); [DIN, DIN EN 12504-4](https://6sku3uaup9f9.din.de/en/standard/din-en-12504-4/335410052); [Understanding Cement, Carbonation](https://www.understanding-cement.com/carbonation.html); [ISO 12571, Leseprobe](https://cdn.standards.iteh.ai/samples/2408/034d346436884759aaeee0d823b48dff/ISO-12571-2000.pdf); [core.ac.uk 159145941](https://core.ac.uk/download/159145941.pdf); [Hausjournal, Holz und Feuchtigkeit](https://hausjournal.net/ausdehnung-holz-feuchtigkeit); [lxgesetze, § 5a GefStoffV](https://lxgesetze.de/gefstoffv/5a); [umwelt-online, TRGS 519 Änderung 28.01.2025](https://umwelt-online.de/recht/t_regeln/trgs/trgs500/z25_0144.htm); [Forum Verlag, TRGS 519](https://forum-verlag.com/fachwissen/arbeitsschutz/trgs-519/); [LAGA, HBCD](https://www.laga-online.de/documents/11-hbcd_2_1717078546.pdf); [BauNetz Wissen, Recyclingbeton](https://www.baunetzwissen.de/beton/fachwissen/betonarten/recyclingbeton-930267); [umwelt-online, LAGA PN 98 Teil 2](https://umwelt-online.de/recht/abfall/laga/pn98b.htm); [Gesetze im Internet, Anlage 1 EBV](https://www.gesetze-im-internet.de/ersatzbaustoffv/anlage_1.html); [Gesetze im Internet, Anlage 2 BBodSchV](https://www.gesetze-im-internet.de/bbodschv_2023/anlage_2.html); [LfU Bayern, FAQ EBV](https://www.lfu.bayern.de/abfall/ersatzbaustoffverordnung/faq_ersatzbaustoffverordnung/doc/faq_ebv_druckversion_nicht_bf.pdf); [EUWID, EBV-Novelle 2023](https://www.euwid-recycling.de/news/politik/bundesrat-beschliesst-ebv-novelle-ohne-weitere-aenderungen-100723/); [Bauindustrie, PM 15.12.2025](https://www.bauindustrie.de/fileadmin/bauindustrie.de/Media/Pressemitteilungen/PM_2025/2025-12-15_PM_Novelle_EBV_final.pdf); [Lobbyregister, RV0028510](https://www.lobbyregister.bundestag.de/media/a4/72/848515/Lobbyregister-Regelungsvorhaben-Detailansicht-RV0028510-2026-09-28_09-10-45.pdf).
+
+## Freigabe 29.10.2026
+
+Entscheidung vom 28.10.2026: „Module ohne offene Frage freigeben“; Punkte, die nur am Normtext zu klären sind, blockieren die Freigabe (Prüfbogen Normtext, Abschnitt „Was ohne Normtext nicht weiterkommt“). Geprüft wurde je Modul: Empfehlung erfüllt (Korrekturen behoben, Klärungen entschieden und in den Abschnitten „Umsetzung 29.10.2026“ bzw. in den genannten PRs umgesetzt oder gekennzeichnet) und kein Normtextpunkt offen. Prüfvermerk in `src/data/pruefvermerke.ts`: „geprueft“, am 2026-10-29, passiv ohne Namen. Quizfreigaben sind davon getrennt.
+
+Freigegeben:
+
+- `bestand` – T12-BE-1 behoben (#243), T12-BE-2 umgesetzt (#252, Erdgas 0,24)
+- `modernisierung` – T12-MO-1 behoben (#243), T12-BE-2 umgesetzt (#252)
+- `bauwerkserfassung` – T12-BW-1/-2 behoben (#243); F-Stelle DIN 18202 Zeile 5 laut Prüfbogen nicht blockierend
+- `denkmalpflege` – freigabefähig, keine Frage
+- `bauwerksdiagnose` – T12-BU-1, -5, -6 behoben (#243); k_n und M (DIN EN 13791) laut Prüfbogen nicht blockierend
+- `zfp` – von den Befunden T12-BU nicht betroffen
+- `historisch` – freigabefähig; γ_c-Quelle umgesetzt (#248), Zuordnung V_c ↔ 1,35 als F-Stelle, nicht blockierend markiert
+- `historische_bauweisen` – T12-HB-1 umgesetzt (#252, Schwindbeiwerte wie T10)
+- `historische_bauprodukte` – T12-HP-1 behoben (#243); DIN 105:1957 (T12-F-4) laut Prüfbogen nicht blockierend
+- `rueckbau` – T12-RB-1 bis -3 behoben (#243), T12-RB-4 umgesetzt (#252, 0,3–0,6 t/m³ BRI)
+- `boden_materialaufbereitung` – freigabefähig, keine Frage
+- `abfaelle` – T12-AB-1 bis -4 behoben (#243), T12-AB-5 umgesetzt (#252)
+- `schadstoffe` – nach Korrektur T12-SS-1 (behoben, #243)
+- `altholz_urban_mining` – freigabefähig (F-Stelle Anhang II bleibt)
+- `pfas_baustoffe` – freigabefähig, keine Frage
+- `dauerhaftigkeit` – nach Korrektur T12-DH-1 bis -4 (behoben, #243)
+- `metallkorrosion` – freigabefähig, keine Frage
+- `korrosionsschutz_beschichtungen` – freigabefähig, keine Frage
+- `weitere_organik` – freigabefähig, keine Frage
+
+Nicht freigegeben:
+
+- `pruefverfahren_katalog` – Prüfbogen: T12-BU-7 (Normtext DIN EN 12504-2)
+- `ressourceneffizienz` – Die Umsetzung T12-RE-1 (#252/#254) übernimmt die RC-Höchstanteile nach DIN 1045-2, Anhang E – derselbe Normtextpunkt wie T9-GL-1a (Prüfbogen Nr. 19), im Simulator „vorläufig bis zur Prüfung am Normtext“; der Prüfbogen (Stand vor der Umsetzung) erfasst das Modul noch nicht
+- `schadreaktionen_beton` – Der Reiter „AKR-Gefügesimulation“ ist erst mit AKR-1 (#252) sichtbar geworden und war nicht Teil der Modulprüfung Tranche 12 (Lehrmodell mit Gel-Druck bis 13,5 MPa, Rissbreiten, Schadensstufen; nicht als Lehrmodell gekennzeichnet) – fachliche Durchsicht des Reiters ausstehend
+- `holzkorrosion` – Prüfbogen: T12-HK-2a/b (Normtext DIN EN 351-1)
+
+Ohne Eintrag in `src/data/pruefvermerke.ts` (kein Fachmodul im Sinne der Prüfvermerke, daher kein Vermerk): `bestand_info`, `rueckbau_info`, `dauerhaftigkeit_info`, `bestand_checklisten`, `rueckbau_checklisten`.

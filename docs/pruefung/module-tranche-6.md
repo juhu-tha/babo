@@ -76,7 +76,7 @@ k_mod (Tab. 3.1), k_def (Tab. 3.2: Vollholz/BSH/FSH 0,6/0,8/2,0; OSB/3 1,5/2,25/
 
 **Empfehlung:** freigabefähig nach Klärung von T6-HO-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 2. Holzwerkstoffe (`holzwerkstoffe`)
 
@@ -105,7 +105,7 @@ k_mod (Tab. 3.1), k_def (Tab. 3.2: Vollholz/BSH/FSH 0,6/0,8/2,0; OSB/3 1,5/2,25/
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 3. Biogene Baustoffe (`nawaro`)
 
@@ -136,7 +136,7 @@ k_mod (Tab. 3.1), k_def (Tab. 3.2: Vollholz/BSH/FSH 0,6/0,8/2,0; OSB/3 1,5/2,25/
 
 **Empfehlung:** freigabefähig nach Korrektur T6-NA-1/-2.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 4. Kunststoffe (`kunststoffe`)
 
@@ -161,7 +161,7 @@ k_mod (Tab. 3.1), k_def (Tab. 3.2: Vollholz/BSH/FSH 0,6/0,8/2,0; OSB/3 1,5/2,25/
 
 **Empfehlung:** freigabefähig nach Klärung von T6-KU-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 5. Membranen & ETFE (`membranen_etfe`)
 
@@ -194,7 +194,7 @@ k_mod (Tab. 3.1), k_def (Tab. 3.2: Vollholz/BSH/FSH 0,6/0,8/2,0; OSB/3 1,5/2,25/
 
 **Empfehlung:** freigabefähig nach Klärung von T6-ME-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 6. Dämmstoffe (`daemmstoffe`)
 
@@ -216,7 +216,7 @@ k_mod (Tab. 3.1), k_def (Tab. 3.2: Vollholz/BSH/FSH 0,6/0,8/2,0; OSB/3 1,5/2,25/
 
 **Empfehlung:** freigabefähig (Hinweis T6-DA-1).
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 7. Ausbau & Abdichtung (`ausbau`)
 
@@ -247,7 +247,7 @@ k_mod (Tab. 3.1), k_def (Tab. 3.2: Vollholz/BSH/FSH 0,6/0,8/2,0; OSB/3 1,5/2,25/
 
 **Empfehlung:** freigabefähig nach Korrektur T6-AU-1/-2 und Klärung von T6-AU-3.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 8. Werkstoff-Kombinationen (`kombinationen`)
 
@@ -273,7 +273,7 @@ Faser- und Matrixkennwerte (Carbon HT 230 GPa/3 500 MPa, HM 390/2 500, E-Glas 73
 
 **Empfehlung:** freigabefähig nach Korrektur T6-KO-1 bis -3 und Klärung von T6-KO-4/-5.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 9. Materialität (Architektur) (`materialitaet_architektur`)
 
@@ -304,7 +304,7 @@ Faser- und Matrixkennwerte (Carbon HT 230 GPa/3 500 MPa, HM 390/2 500, E-Glas 73
 
 **Empfehlung:** freigabefähig nach Korrektur T6-MA-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 10. Sonstige & Innovationen (`sonstiges`)
 
@@ -335,7 +335,7 @@ Faser- und Matrixkennwerte (Carbon HT 230 GPa/3 500 MPa, HM 390/2 500, E-Glas 73
 
 **Empfehlung:** freigabefähig nach Korrektur T6-SO-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 11. Innenausbau (`innenausbau`)
 
@@ -408,3 +408,24 @@ Entscheidungen vom 28.10.2026 (nachts, „alle Vorschläge übernehmen“); Regr
 - **T6-KO-5 (Kombinationen):** Faserverbund und Schichtrechner rechnen im neuen Kern `src/calc/kombinationen.ts` (`faserverbund`, `schichtaufbau`) mit Plausibilitätsprüfung; die stille Eingabebegrenzung (`Math.max(1, … || 1)`) ist entfernt, unzulässige Eingaben (Dicke ≤ 0, λ ≤ 0, μ < 1, v_f außerhalb 0–100 %) werden gemeldet. Handwerte: CFK HT/EP 40 %: 93,92/5,284 GPa, 1 429,2 MPa; WDVS U = 0,17761 W/(m²K).
 - **T6-IA-3 (Innenausbau, Normtext):** Zuordnung bodengleicher Duschen und Klassenbeschreibungen als „vorläufig, F-Freigabe“ am Normtext DIN 18534-1:2025-10, Tab. 1 gekennzeichnet; Inhalt unverändert. `q_iax_3` bleibt unverändert (durch die Kennzeichnung nicht falsch). Fachgebiet: `DIN 18534` als Alternative an „Bauprodukte“ in `scripts/auditDaten.ts` angehängt.
 - **T6-IA-4 (Innenausbau, Normtext):** Einordnung der CM-Messung als Neben- oder Besondere Leistung nach DIN 18365, Abschnitt 4 als „vorläufig, F-Freigabe“ gekennzeichnet; Fachgebiet über die Alternative `DIN 18365`.
+
+## Freigabe 29.10.2026
+
+Entscheidung vom 28.10.2026: „Module ohne offene Frage freigeben“; Punkte, die nur am Normtext zu klären sind, blockieren die Freigabe (Prüfbogen Normtext, Abschnitt „Was ohne Normtext nicht weiterkommt“). Geprüft wurde je Modul: Empfehlung erfüllt (Korrekturen behoben, Klärungen entschieden und in den Abschnitten „Umsetzung 29.10.2026“ bzw. in den genannten PRs umgesetzt oder gekennzeichnet) und kein Normtextpunkt offen. Prüfvermerk in `src/data/pruefvermerke.ts`: „geprueft“, am 2026-10-29, passiv ohne Namen. Quizfreigaben sind davon getrennt.
+
+Freigegeben:
+
+- `holz` – T6-HO-1 umgesetzt (#251, Dickenrichtung getrennt, Lehrwerte vorläufig)
+- `holzwerkstoffe` – freigabefähig, keine Frage
+- `nawaro` – nach Korrektur T6-NA-1/-2 (behoben, #237)
+- `kunststoffe` – T6-KU-1 umgesetzt (#251, Plateau 80 MPa)
+- `membranen_etfe` – T6-ME-1 umgesetzt (#251, ohne Projektzuordnung)
+- `daemmstoffe` – freigabefähig (Hinweis T6-DA-1 ohne Entscheidungsbedarf)
+- `ausbau` – T6-AU-1/-2 behoben (#237), T6-AU-3 umgesetzt (#251, 0,5 mm/m)
+- `kombinationen` – T6-KO-1 bis -3 behoben (#237), T6-KO-4/-5 umgesetzt (#251, Kern kombinationen.ts)
+- `materialitaet_architektur` – nach Korrektur T6-MA-1 (behoben, #237)
+- `sonstiges` – nach Korrektur T6-SO-1 (behoben, #237)
+
+Nicht freigegeben:
+
+- `innenausbau` – Prüfbogen: T6-IA-3, T6-IA-4 (Normtext)

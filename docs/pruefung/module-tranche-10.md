@@ -111,7 +111,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T10-HW-1 bis -3 und Klärung von T10-HW-4.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 3. Konstruktionsweisen (`holzbau_konstruktion`)
 
@@ -131,7 +131,7 @@
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 4. Verbindungen & Anschlüsse (`holzbau_verbindung`)
 
@@ -187,7 +187,7 @@ Abbrandraten (β₀ 0,65/0,50; β_n 0,80/0,70/0,55), d₀ = 7 mm und k₀ = min(
 
 **Empfehlung:** freigabefähig für DIN EN 1995-1-2:2010-12 nach Klärung von T10-HB-1/-2.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 6. Mechanik Modulinfos (`mechanik_info`)
 
@@ -261,7 +261,7 @@ Abbrandraten (β₀ 0,65/0,50; β_n 0,80/0,70/0,55), d₀ = 7 mm und k₀ = min(
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 9. Materialmodelle (`materialmodelle`)
 
@@ -281,7 +281,7 @@ B500B (k ≥ 1,08, ε_uk ≥ 5 %), B500A (1,05; 2,5 %), Relaxationsklasse 2 (ρ�
 
 **Empfehlung:** freigabefähig nach Korrektur T10-MM-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 10. E-Modul & Mikromechanik (`emodul`)
 
@@ -300,7 +300,7 @@ Formeln der Hashin-Shtrikman-Schranken (K und G), Quellen (Voigt 1889, Reuss 192
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 11. Festigkeitsberechnungen (`festigkeit`)
 
@@ -321,7 +321,7 @@ Die Werkstoffwerte (fctm/Ecm C20/25 und C50/60, S690 f_u = 770, Kevlar 3 600 N/m
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 12. Baustatik (`baustatik`)
 
@@ -344,7 +344,7 @@ Beispiel 2 (M_B = −62,5 kNm, B = 1,25·q·l, H = 20 kN, M_Ecke = 80 kNm) ist r
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 13. Knicken (`knicken`)
 
@@ -363,7 +363,7 @@ Beispiel 2 (M_B = −62,5 kNm, B = 1,25·q·l, H = 20 kN, M_Ecke = 80 kNm) ist r
 
 **Empfehlung:** freigabefähig nach Korrektur T10-KN-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 14. Bruchmechanik (`bruchmechanik`)
 
@@ -382,7 +382,7 @@ Beispiel 2 (M_B = −62,5 kNm, B = 1,25·q·l, H = 20 kN, M_Ecke = 80 kNm) ist r
 
 **Empfehlung:** freigabefähig nach Korrektur T10-BM-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ---
 
@@ -417,3 +417,27 @@ Entscheidungen vom 28.10.2026 (nachts); Regressionstests `tests/modulpruefungTra
 - **T10-HB-2 (Bauphysik & Brandschutz):** Rollschubmodul G_r wählbar 50 N/mm² (Standard, viele ETAs/EC 5 Neuausgabe) oder 65 N/mm² (proHolz Austria 2018), `BSP_ROLLSCHUB` in `src/calc/bspSchwingung.ts`. Handwerte G_r = 50, BSP1: γ₁ = 0,918225, (EI)_γ = 2,36875·10⁶ Nm²/m, f₁ = 7,733 Hz (G_r = 65: 7,805 Hz).
 - **T10-MK-5 (Mechanische Kenngrößen):** φ∞ Kalksandstein 1,0–2,0 wie Leichtbeton als „vorläufig, F-Freigabe: Endkriechzahlen nach DIN EN 1996-1-1/NA“ gekennzeichnet.
 - **T10-MK-6 (Mechanische Kenngrößen):** Holz C24 in der Werkstoffmatrix: ν = 0,05 und Schwindmaß längs −0,20 ‰ als vorläufige Lehrwerte gekennzeichnet (mit Spannen); „Elastomer-Brückenlager bis zu 70 %“ als unbelegter Lehrwert (vorläufig) umformuliert.
+
+## Freigabe 29.10.2026
+
+Entscheidung vom 28.10.2026: „Module ohne offene Frage freigeben“; Punkte, die nur am Normtext zu klären sind, blockieren die Freigabe (Prüfbogen Normtext, Abschnitt „Was ohne Normtext nicht weiterkommt“). Geprüft wurde je Modul: Empfehlung erfüllt (Korrekturen behoben, Klärungen entschieden und in den Abschnitten „Umsetzung 29.10.2026“ bzw. in den genannten PRs umgesetzt oder gekennzeichnet) und kein Normtextpunkt offen. Prüfvermerk in `src/data/pruefvermerke.ts`: „geprueft“, am 2026-10-29, passiv ohne Namen. Quizfreigaben sind davon getrennt.
+
+Freigegeben:
+
+- `holzbau_werkstoffe` – T10-HW-1 bis -3 behoben (#241), T10-HW-4 umgesetzt (#251, „Lehrbeispiel, nicht klassifiziert“)
+- `holzbau_konstruktion` – freigabefähig, keine Frage
+- `holzbau_bauphysik` – T10-HB-1 bestätigt, T10-HB-2 umgesetzt (#251, G_r 50/65); freigegeben für DIN EN 1995-1-2:2010-12
+- `formaenderungen` – freigabefähig, keine Frage
+- `materialmodelle` – nach Korrektur T10-MM-1 (behoben, #241)
+- `emodul` – freigabefähig, keine Frage
+- `festigkeit` – freigabefähig, keine Frage
+- `baustatik` – freigabefähig, keine Frage
+- `knicken` – nach Korrektur T10-KN-1 (behoben, #241)
+- `bruchmechanik` – nach Korrektur T10-BM-1 (behoben, #241)
+
+Nicht freigegeben:
+
+- `holzbau_verbindung` – Prüfbogen: T10-HV-2a/b (Normtext)
+- `mechanische_kenngroessen` – Prüfbogen: T10-MK-5a/b, T10-MK-6a–c
+
+Ohne Eintrag in `src/data/pruefvermerke.ts` (kein Fachmodul im Sinne der Prüfvermerke, daher kein Vermerk): `holzbau_info`, `mechanik_info`.

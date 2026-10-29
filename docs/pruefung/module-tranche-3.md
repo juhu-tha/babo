@@ -85,7 +85,7 @@ Die Beispiele im Modul (0,078/0,061; 0,065/0,071; 0,059/0,084; „ohne Nachtlüf
 
 **Empfehlung:** freigabefähig für den Normenstand 2013-02 nach Klärung von T3-SW-2.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026)
 
 ## 2. U-Wert-Varianten (`rechnung_u_wert`, `bp_glaeser` Reiter U_w)
 
@@ -111,8 +111,8 @@ Die Beispiele im Modul (0,078/0,061; 0,065/0,071; 0,059/0,084; „ohne Nachtlüf
 
 **Empfehlung:** freigabefähig nach Korrektur T3-UW-1 (F-Stelle B-2 aus Tranche 1 gilt mit).
 
-- [ ] Modul freigeben (`rechnung_u_wert`)
-- [ ] Modul freigeben (`bp_glaeser`, nur Reiter U_w-Rechner; übrige Reiter nicht Teil dieser Prüfung)
+- [x] Modul freigeben (`rechnung_u_wert`; 29.10.2026)
+- [x] Modul freigeben (`bp_glaeser`, nur Reiter U_w-Rechner; übrige Reiter nicht Teil dieser Prüfung; 29.10.2026 mit dem ganzen Modul, Tranche 8)
 
 ## 3. Mauerwerk – Bemessungsreiter und erweiterte Bedingungen (`mauerwerk`)
 
@@ -384,3 +384,25 @@ Regressionstest: `tests/tranche3Entscheidungen.test.ts`.
 ## Freigabe 28.10.2026
 
 Freigegeben (Empfehlung „freigabefähig“, keine offenen Fragen; Prüfvermerk in `src/data/pruefvermerke.ts` „geprueft“, am 2026-10-28, passiv ohne Namen): `stahlbau_ec3` (Nr. 7). Alle übrigen Prüfeinheiten dieser Tranche sind erst nach Korrektur bzw. Klärung freigabefähig.
+
+## Freigabe 29.10.2026
+
+Entscheidung vom 28.10.2026: „Module ohne offene Frage freigeben“; Punkte, die nur am Normtext zu klären sind, blockieren die Freigabe (Prüfbogen Normtext, Abschnitt „Was ohne Normtext nicht weiterkommt“). Geprüft wurde je Modul: Empfehlung erfüllt (Korrekturen behoben, Klärungen entschieden und in den Abschnitten „Umsetzung 29.10.2026“ bzw. in den genannten PRs umgesetzt oder gekennzeichnet) und kein Normtextpunkt offen. Prüfvermerk in `src/data/pruefvermerke.ts`: „geprueft“, am 2026-10-29, passiv ohne Namen. Quizfreigaben sind davon getrennt.
+
+Freigegeben:
+
+- `sommerlicher_waermeschutz` – T3-SW-2 entschieden und umgesetzt (#247: bei 2013-02, Hinweis 2026-05); freigegeben für den Normenstand 2013-02
+- `rechnung_u_wert` – T3-UW-1 behoben; Frage B-2 (Anlage 7 GModG unverändert) in Tranche 12 und 8 am Gesetzestext beantwortet; Ψ-Tabellenwerte bleiben Lehrwerte
+
+Nicht freigegeben:
+
+- `mauerwerk` – Prüfbogen: #239-W-1, #239-MW-1 (Normtext)
+- `frischbeton` – T3-FB-2 (Grenzabmaße der Konsistenz am Normtext DIN EN 206) nicht entschieden
+- `hydratation_folgen` – T3-HY-1: gewogene Reife nach NEN 5970 vorläufig, Form und C am Normtext (F-Freigabe)
+- `expositionsklassen` – Prüfbogen: #247-5, #247-6 (Normtext)
+- `asphalt` – Empfehlung verlangt Klärung der F-Stelle – offen
+- `brandschutz` – Prüfbogen: #247-7, #247-8 (Normtext)
+- `rechnung_brandschutz` – Prüfbogen: #247-7, #247-8 (Normtext)
+- `rechnung_schallschutz` – Prüfbogen: #247-9 (Normtext)
+
+Bereits am 28.10.2026 freigegeben: `stahlbau_ec3` (unverändert). Der Reiter U_w-Rechner von `bp_glaeser` ist mit dem ganzen Modul freigegeben (Tranche 8).
