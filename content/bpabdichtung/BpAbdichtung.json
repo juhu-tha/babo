@@ -29,7 +29,7 @@
     "bauökologieSystemvorteileLösemittelfreiG": "**Bauökologie & Systemvorteile:** Lösemittelfrei, geruchsneutral, UV-beständig und verputzfähig. Durch Reaktionshärtung schnell regenfest und früh hinterfüllbar (Zeiten nach Herstellerangabe).",
     "musterSchichtdickenTrockenschichtdicke": "**Muster-Schichtdicken:** Trockenschichtdicke ",
     "beiW1EW4": " bei W1-E / W4-E. Unter mäßigem drückendem Wasser (W2.1-E) sind regelkonforme ",
-    "einzuhaltenUndBauaufsichtlichZu": " einzuhalten und bauaufsichtlich zu belegen (abP).",
+    "einzuhaltenUndBauaufsichtlichZu": " einzuhalten und bauaufsichtlich zu belegen (abP; ob das abP nach DIN 18533-3:2026-06 noch gefordert ist, am Normtext zu prüfen – vorläufig, F-Freigabe).",
     "regelwerkRichtlinieFürDie3": "**Regelwerk:** „Richtlinie für die Planung und Ausführung von Abdichtungen mit flexiblen polymermodifizierten Dickbeschichtungen (FPD), Deutsche Bauchemie e. V., 1. Ausgabe, Februar 2020“.",
     "synthetischeBahnenFlüssigkunststoff": "SYNTHETISCHE BAHNEN & FLÜSSIGKUNSTSTOFF",
     "kunststoffbahnenEpdmFpoPvc": "Kunststoffbahnen (EPDM, FPO, PVC) & FLK",
@@ -77,7 +77,7 @@
     "quellbänderProfileAusBentonit": "**Quellbänder:** Profile aus Bentonit oder quellfähigen Polymeren quellen bei Kontakt mit Feuchtigkeit auf und verpressen mechanisch den Hohlraum.**Fugendichtstoffe:** Hochelastische, einkomponentige Dichtstoffe (Polyurethan, MS-Polymer) für sichtbare Anschlussfugen an Fassaden und Böden.",
     "wichtigQuellbänderBenötigenEine": "**Wichtig:** Quellbänder benötigen eine ausreichende Betonüberdeckung gegen Abplatzen durch den Quelldruck (Mindestmaße nach abP/Herstellerangabe, häufig ca. 8–10 cm).",
     "t3InteraktiverFugenbandPlaner": "3. Interaktiver Fugenband-Planer (DIN 18197 & DIN 18533)",
-    "gebenSieDieBauteilabmessungen": "Geben Sie die Bauteilabmessungen und Wassereinwirkungen an, um Bandbreite und Mindestbauteildicke in Anlehnung an DIN 18197 abzuschätzen. Die Zuordnung der Bandbreite zum Wasserdruck und die Größtkornprüfung (3 · GK) sind Lehrannahmen; DIN 18197 bemisst über Diagramme aus Wasserdruck und Fugenverformung. Für innenliegende Bänder gilt d ≥ a, der Abstand zwischen Fugenband und Bewehrung beträgt allseitig mindestens 20 mm.",
+    "gebenSieDieBauteilabmessungen": "Geben Sie die Bauteilabmessungen und Wassereinwirkungen an, um Bandbreite und Mindestbauteildicke in Anlehnung an DIN 18197 abzuschätzen. Die Zuordnung der Bandbreite zum Wasserdruck und die Größtkornprüfung (3 · GK) sind Lehrannahmen; DIN 18197 bemisst über Diagramme aus Wasserdruck und Fugenverformung. Für innenliegende Bänder gilt d ≥ a; für D 320 genügen nach Herstellerangabe 30 cm (Sika, „Fugenband-Ratgeber für die Praxis“). Der Abstand zwischen Fugenband und Bewehrung beträgt allseitig mindestens 20 mm.",
     "arbeitsfugeStatisch": "Arbeitsfuge (statisch)",
     "dehnungsfugeBeweglich": "Dehnungsfuge (beweglich)",
     "barHydrostatischerDruck": " bar hydrostatischer Druck)",
@@ -90,6 +90,7 @@
     "normativeProduktbezeichnung": "Normative Produktbezeichnung:",
     "geforderteMindestdeckendicke": "Geforderte Mindestdeckendicke:",
     "cmSollDA": " cm (Soll: d ≥ a)",
+    "cmSollD320": " cm (D 320: ≥ 30 cm nach Herstellerangabe, Sika Fugenband-Ratgeber)",
     "mindestRandabstandGrößtkornCheck": "Mindest-Randabstand (Größtkorn check):",
     "bauteildickeKonformDieBauteildicke": "✓ **Bauteildicke konform:** Die Bauteildicke von d = ",
     "cmIstAusreichendGroß": " cm ist ausreichend groß, damit das Fugenband (",
@@ -107,7 +108,7 @@
     "prüfenSieDieMachbarkeit": "Prüfen Sie die Machbarkeit und Detailierungsrichtlinien für Verpressschläuche, um Ausbrüche und mangelhafte Injektionen auf der Baustelle zu vermeiden.",
     "standardrolleTypisch10M": "Standardrolle typisch 10 m",
     "abstandZumRand": "Abstand zum Rand:",
-    "wuRlFordertMin": "WU-RL fordert min. 8-10 cm",
+    "wuRlFordertMin": "Überdeckung nach Herstellerangabe (häufig 8–10 cm)",
     "maxAbstandZurLagestabilität": "Max. Abstand zur Lagestabilität",
     "evaluierungDesInjektionssystems": "Evaluierung des Injektionssystems:",
     "schlauchlänge": "Schlauchlänge (",
@@ -157,10 +158,10 @@
     "beiStarkemWasseraustrittVorinjizieren": "Bei starkem Wasseraustritt: Vorinjizieren mit einkomponentigem PU-Schnellschaum. Nach Kontakt mit Wasser quillt dieser extrem schnell auf und stoppt den Wasserfluss zeitweise.",
     "t4HauptinjektionDauerhaft": "4. Hauptinjektion (Dauerhaft)",
     "dauerhaftElastisches2kPolyurethanharz": "Dauerhaft elastisches 2K-Polyurethanharz durch die Packer pressen (von unten nach oben arbeiten). Sobald Harz am Nachbarpacker austritt, Pumpe umkoppeln. Nach Erhärtung Packer abschlagen.",
-    "interaktiverDin18533Planungsberater": "**Interaktiver DIN 18533 Planungsberater:** Ermitteln Sie die normgerechte Wasserbeanspruchungsklasse (W-E; in der Ausgabe 2017-07 noch „Wassereinwirkungsklasse“) sowie Anforderungsklasse für Ihr Kellerbauteil und erhalten Sie eine herstellerneutrale, wissenschaftlich fundierte Produkt- und Systemempfehlung.",
+    "interaktiverDin18533Planungsberater": "**Interaktiver DIN 18533 Planungsberater:** Ermitteln Sie die normgerechte Wasserbeanspruchungsklasse (W-E; in der Ausgabe 2017-07 noch „Wassereinwirkungsklasse“) sowie die Nutzungsklasse nach WU-Richtlinie (A/B; Beanspruchungsklasse 1/2 aus dem Wasserangriff) für Ihr Kellerbauteil und erhalten Sie eine herstellerneutrale, wissenschaftlich fundierte Produkt- und Systemempfehlung.",
     "t1WasserverhältnisseBaugrund": "1. Wasserverhältnisse & Baugrund",
     "welcheGeohydrologischenGewässerOder": "Welche geohydrologischen Gewässer- oder Sickerwasserverhältnisse liegen am Gebäude an?",
-    "t2RaumnutzungAnforderungsklasse": "2. Raumnutzung & Anforderungsklasse",
+    "t2RaumnutzungAnforderungsklasse": "2. Raumnutzung & Nutzungsklasse (WU-Richtlinie)",
     "welcherGradAnFeuchtetoleranz": "Welcher Grad an Feuchtetoleranz oder Trockenheit ist vertraglich einzuhalten?",
     "berechneteSystemempfehlungNachDin": "Berechnete Systemempfehlung nach DIN 18533",
     "bauaufsichtlicheEinstufung": "Bauaufsichtliche Einstufung",
@@ -208,9 +209,9 @@
     "acrylatgelHatEineSehr": "Acrylatgel hat eine sehr niedrige Viskosität. Mehrfach verpressbare Schläuche können nach dem Spülen bzw. Vakuumieren erneut injiziert werden; Acrylatgele dichten dauerhaft, solange sie feucht bleiben.",
     "polyurethanPurReagiertZäh": "Polyurethan (PUR) reagiert zäh-elastisch und bildet eine geschlossenzellige, wasserunlösliche Struktur. Es fängt dynamische Spannungsbewegungen in der Arbeitsfuge elastisch ab.",
     "epoxidharzEpHärtetVollkommen": "Epoxidharz (EP) härtet vollkommen spröde und starr aus. Es stellt ein hohes mechanisches Verbundleistungsvermögen dar, kann aber bei witterungsbedingten Fugendehnungen schnell erneut reißen.",
-    "hochwertigKlasseA": "Hochwertig (Klasse A)",
-    "standardKlasseB": "Standard (Klasse B)",
-    "einfachKlasseC": "Einfach (Klasse C)",
+    "hochwertigKlasseA": "Hochwertig (Nutzungsklasse A)",
+    "standardKlasseB": "Standard (Nutzungsklasse B)",
+    "einfachKlasseC": "Einfach (ohne WU-Anforderung)",
     "feuchtstellenAufInnenflächenVertraglich": "Feuchtstellen auf Innenflächen vertraglich ausgeschlossen (Wohnen).",
     "dunkleVerfärbungenAufWänden": "Dunkle Verfärbungen auf Wänden zeitweise gestattet.",
     "lokaleTropfenbildungenUndFeuchte": "Lokale Tropfenbildungen und feuchte Betonoberflächen unkritisch.",
@@ -387,17 +388,17 @@
     "BpAbdichtung_2": [
       {
         "id": "hochwertig",
-        "label": "Hochwertig (Anforderungsklasse A)",
+        "label": "Hochwertig (Nutzungsklasse A nach WU-Richtlinie)",
         "detail": "Wohnräume, Einliegerwohnungen, Büros, Archive. Absolut staubtrocken, keine Feuchtstellen."
       },
       {
         "id": "standard",
-        "label": "Standard (Anforderungsklasse B)",
+        "label": "Standard (Nutzungsklasse B nach WU-Richtlinie)",
         "detail": "Nutzungskeller, Technikräume, Werkbänke. Geringfügiger Feuchtefilm tolerierbar."
       },
       {
         "id": "kriechkeller",
-        "label": "Gering (Anforderungsklasse C)",
+        "label": "Gering (ohne WU-Anforderung)",
         "detail": "Kriechkeller, Installationsgänge oder offene Tiefgaragen."
       }
     ],
@@ -426,7 +427,8 @@
     "BpAbdichtung.literatur": [
       "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
       "Lohmeyer, G.; Ebeling, K.: Weiße Wannen – einfach und sicher. Planung und Konstruktion wasserundurchlässiger Bauwerke aus Beton. 11., überarb. Aufl., Düsseldorf: Verlag Bau+Technik 2018",
-      "Deutsche Bauchemie e. V.: Richtlinien für die Planung und Ausführung von Abdichtungen mit PMBC (4. Ausgabe, Dezember 2018), MDS (1. Ausgabe, Juli 2020) und FPD (1. Ausgabe, Februar 2020)"
+      "Deutsche Bauchemie e. V.: Richtlinien für die Planung und Ausführung von Abdichtungen mit PMBC (4. Ausgabe, Dezember 2018), MDS (1. Ausgabe, Juli 2020) und FPD (1. Ausgabe, Februar 2020)",
+      "Sika: Fugenband-Ratgeber für die Praxis (Herstellerangabe, Mindestbauteildicken je Fugenbandtyp; online: deu.sika.com)"
     ],
     "BpAbdichtung.regelwerke": [
       {

@@ -25,12 +25,16 @@ console.log('--- Test: Modulprüfung Tranche 10 (Nachrechnungen) ---');
 // 1. Holzschrauben DIN EN 1995-1-1, 8.7.2 (8.38–8.41) und 8.2.2 (Johansen mit Seileffekt), γ_M = 1,3
 const hs1 = holzschraube({ rhok: 350, d: 8, lef: 80, alpha: 90, n: 4, nkl: 1, kled: 'mtl' });
 pruefe('HS1 f_ax,k', hs1.f_ax_k, 12.8648); pruefe('HS1 F_ax,Rk je Schraube', hs1.F_ax_Rk_single_N, 8233.49);
-pruefe('HS1 F_ax,Rd Gruppe', hs1.F_ax_Rd_total_kN, 17.6435); pruefe('HS1 f_h,k', hs1.f_h_k, 26.404);
-pruefe('HS1 M_y,Rk', hs1.M_y_Rk, 26743.3); pruefe('HS1 F_v,Rk je Schraube', hs1.F_v_Rk_single_N, 5923.82); pruefe('HS1 F_v,Rd', hs1.F_v_Rd_total_kN, 14.5817);
+pruefe('HS1 F_ax,Rd Gruppe', hs1.F_ax_Rd_total_kN, 17.6435);
+// T10-HV-3 (Umsetzung 29.10.2026): Abscheren mit d_ef = 1,1·d₁, d₁ = 0,65·d (Lehrwert); d_ef = 5,72 mm ≤ 6 mm → Nagelregeln (8.15)
+pruefe('HS1 d_ef', hs1.d_ef, 5.72); gilt(hs1.lochleibungNach === 'nagel', 'HS1 Nagelregeln');
+pruefe('HS1 f_h,k', hs1.f_h_k, 17.00839); pruefe('HS1 M_y,Rk', hs1.M_y_Rk, 11179.21); pruefe('HS1 F_v,Rk je Schraube', hs1.F_v_Rk_single_N, 3392.17); pruefe('HS1 F_v,Rd', hs1.F_v_Rd_total_kN, 8.34996);
+const hs1k = holzschraube({ rhok: 350, d: 8, lef: 80, alpha: 90, n: 4, nkl: 1, kled: 'mtl', dKern: 5.4 });
+pruefe('HS1b d₁ = 5,4 mm: F_v,Rd', hs1k.F_v_Rd_total_kN, 8.88646); pruefe('HS1b F_ax,Rd unverändert', hs1k.F_ax_Rd_total_kN, 17.6435);
 const hs2 = holzschraube({ rhok: 385, d: 10, lef: 120, alpha: 45, n: 6, nkl: 2, kled: 'krt' });
-pruefe('HS2 F_ax,Rd (45°)', hs2.F_ax_Rd_total_kN, 45.1729); pruefe('HS2 F_v,Rd', hs2.F_v_Rd_total_kN, 38.3986);
+pruefe('HS2 F_ax,Rd (45°)', hs2.F_ax_Rd_total_kN, 45.1729); pruefe('HS2 F_v,Rd (d_ef = 7,15 mm, Bolzenregeln)', hs2.F_v_Rd_total_kN, 27.33009); gilt(hs2.lochleibungNach === 'bolzen', 'HS2 Bolzenregeln');
 const hs3 = holzschraube({ rhok: 380, d: 12, lef: 60, alpha: 90, n: 2, nkl: 3, kled: 'mtl' });
-pruefe('HS3 F_ax,Rd (NKL 3, k_mod = 0,65)', hs3.F_ax_Rd_total_kN, 7.75629); pruefe('HS3 F_v,Rd', hs3.F_v_Rd_total_kN, 10.2510);
+pruefe('HS3 F_ax,Rd (NKL 3, k_mod = 0,65)', hs3.F_ax_Rd_total_kN, 7.75629); pruefe('HS3 F_v,Rd (d_ef = 8,58 mm)', hs3.F_v_Rd_total_kN, 6.63232);
 gilt(hs3.hinweise.some(h => h.feld === 'lef'), 'HS3 Hinweis l_ef < 6·d');
 
 // 2. Abbrand mit reduziertem Querschnitt (DIN EN 1995-1-2:2010-12, 4.2.2)
@@ -44,11 +48,15 @@ const br4 = abbrandQuerschnitt('laub', 90, 100, 200, 4);
 pruefe('BR4 d_ef', br4.d_ef, 56.5); gilt(br4.isCollapsed && br4.stiffnessLossPercent === 100, 'BR4 kein Restquerschnitt');
 
 // 3. BSP-Deckenschwingung (proHolz Band II, Gl. 4.1/4.2; EN 1995-1-1 Gl. 7.5 und Anhang B)
-const bsp1 = bspSchwingung({ spannweite: 4.8, lagen: BSP_AUFBAUTEN.l5_150.lagen, deckenbreite: 5, zusatzmasse: 100, estrichDicke: 0, estrichArt: 'zement', verfahren: 'gamma' });
+const bsp1 = bspSchwingung({ spannweite: 4.8, lagen: BSP_AUFBAUTEN.l5_150.lagen, deckenbreite: 5, zusatzmasse: 100, estrichDicke: 0, estrichArt: 'zement', verfahren: 'gamma', GR: 65 });
 pruefe('BSP1 γ₁', bsp1.gamma_aussen ?? NaN, 0.935886); pruefe('BSP1 (EI)_γ', bsp1.EI_l, 2412811); pruefe('BSP1 m', bsp1.masse, 184.098);
 pruefe('BSP1 f₁', bsp1.f1, 7.80503); pruefe('BSP1 b_F', bsp1.b_F, 3.17433); pruefe('BSP1 w(1 kN)', bsp1.w1kN, 0.300820);
-const bsp2 = bspSchwingung({ spannweite: 3.5, lagen: [30, 40, 30], deckenbreite: 4, zusatzmasse: 50, estrichDicke: 0, estrichArt: 'zement', verfahren: 'gamma' });
+const bsp2 = bspSchwingung({ spannweite: 3.5, lagen: [30, 40, 30], deckenbreite: 4, zusatzmasse: 50, estrichDicke: 0, estrichArt: 'zement', verfahren: 'gamma', GR: 65 });
 pruefe('BSP2 γ (3-lagig)', bsp2.gamma_aussen ?? NaN, 0.920897); pruefe('BSP2 f₁', bsp2.f1, 11.3688); pruefe('BSP2 w(1 kN)', bsp2.w1kN, 0.645828);
+// T10-HB-2 (Umsetzung 29.10.2026): Standard G_r = 50 N/mm²; BSP1: γ₁ = 1/(1 + π²·11 550·0,03·0,03/(50·4,8²)) = 0,918225,
+// (EI)_γ = 11 550·10⁶·(6,75·10⁻⁶ + 2·0,918225·1,08·10⁻⁴) = 2,36875·10⁶ Nm²/m, f₁ = π/(2·4,8²)·√(EI/184,098) = 7,7334 Hz
+const bsp1s = bspSchwingung({ spannweite: 4.8, lagen: BSP_AUFBAUTEN.l5_150.lagen, deckenbreite: 5, zusatzmasse: 100, estrichDicke: 0, estrichArt: 'zement', verfahren: 'gamma' });
+pruefe('BSP1s γ₁ (G_r 50)', bsp1s.gamma_aussen ?? NaN, 0.918225); pruefe('BSP1s (EI)_γ', bsp1s.EI_l, 2368750); pruefe('BSP1s f₁', bsp1s.f1, 7.73344);
 
 // 4. Mechanische Kenngrößen (Beispiel 1 des Moduls und Druckstab C24)
 const s235 = MATERIALIEN.s235;

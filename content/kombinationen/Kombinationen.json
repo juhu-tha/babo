@@ -153,7 +153,9 @@
     "dieÄußerenSchichtenWeisen": "Die Schichtfolge erfüllt die vereinfachte s_d-Regel nicht: Die äußeren Schichten sind im Verhältnis zu den inneren zu diffusionsdicht (äußere Schichten: sd = ",
     "mVsInnereSchichten": " m vs. innere Schichten: sd = ",
     "mImWinterDiffundierender": " m). Im Winter diffundierender Wasserdampf kann nicht ungehindert nach außen entweichen und kondensiert an der Grenzfläche zur kalten Dämm- oder Putzschicht. **Empfehlung:** Außen diffusionsoffenere Schichten wählen oder innen eine Dampfbremse/Sperre anordnen.",
-    "dieSDWerte": "Die vereinfachte s_d-Regel ist eingehalten: Die inneren Schichten sind ausreichend diffusionsdichter als die äußeren, Wasserdampf kann nach außen abdiffundieren. Vereinfachte Prüfung (Schichten je zur Hälfte innen/außen gewertet) – ersetzt keinen Tauwassernachweis nach DIN 4108-3.",
+    "dieSDWerte": "Die vereinfachte s_d-Regel ist eingehalten: Die inneren Schichten sind ausreichend diffusionsdichter als die äußeren, Wasserdampf kann nach außen abdiffundieren. Vereinfachte Prüfung nach den nachweisfreien nicht belüfteten Dächern der DIN 4108-3, geteilt an der Dämmschicht (Schicht mit dem größten Wärmedurchlasswiderstand; s_d,i innen, s_d,e außen davon) – für Wände nur Orientierung, ersetzt keinen Tauwassernachweis.",
+    "außendämmungNachweisfrei": "Die Dämmschicht liegt außen auf der tragenden Schicht (z. B. WDVS auf Mauerwerk). Solche Außenwände gehören nach DIN 4108-3 zu den Konstruktionen ohne rechnerischen Tauwassernachweis; die Dachregel ist hier nicht maßgebend und wird nur zum Vergleich ausgegeben. Zuordnung im Einzelfall am Normtext prüfen.",
+    "innendämmungNachweisErforderlich": "Die Dämmschicht liegt innenseitig der tragenden Schicht (Innendämmung). Hier ist ein Tauwasser- bzw. hygrothermischer Nachweis zu führen (Glaser-Verfahren nach DIN 4108-3 oder Simulation nach DIN EN 15026); die s_d-Werte unten dienen nur der Orientierung.",
     "dieSDAmpel": "Die s_d-Ampel ist eine Lehrheuristik. Ob und wie viel Tauwasser im Bauteil ausfällt, zeigt erst das Glaser-Verfahren mit Temperatur- und Dampfdruckverlauf, Tauwassermasse und Verdunstungsbilanz nach DIN 4108-3 – es ist zentral im Modul Feuchteschutz umgesetzt."
   },
   "werte": {
@@ -186,7 +188,8 @@
     "dinEnIso6946": "DIN EN ISO 6946:2018-03, DIN 4108-3:2024-03 & VDI 2014",
     "uWertUndS": "U-Wert und s_d-Werte sind vereinfachte Berechnungen (ohne Wärmebrücken und ohne Tauwassernachweis).",
     "selbsttestWerkstoffKombinationenSchichte": "Selbsttest: Werkstoff-Kombinationen, Schichten & Verbunde",
-    "hinterlüfteteFassade": "Hinterlüftete Fassade"
+    "hinterlüfteteFassade": "Hinterlüftete Fassade",
+    "außendämmungÜberschrift": "Außenwand mit Außendämmung: Konstruktion ohne rechnerischen Tauwassernachweis (DIN 4108-3)"
   },
   "daten": {
     "Kombinationen.schritte": [

@@ -438,3 +438,7 @@ Nicht freigegeben, obwohl freigabefähig: die Reiter Rissbreite (Nr. 2) und σ-�
 
 - **T2-S-1:** α₆ nach NA DE Tab. 8.3DE (Zugstoß ≤ 33 %: 1,2/1,4 für Ø < 16/≥ 16 mm; > 33 %: 1,4/2,0; bei lichtem Stoßabstand ≥ 8Ø und Randabstand ≥ 4Ø 1,0 bzw. 1,4; Druckstoß 1,0), vorläufig, F-Freigabe. V3 (Ø 12, > 33 %): l₀ = 676,3 mm statt 724,6 mm.
 - **T2-S-2:** vereinfachte NA-Form l_bd = α₁·α₄·α₅·l_b,rqd·A_s,erf/A_s,vorh mit α₅ = 2/3 bei direkter Lagerung als wählbare Nachweisform; Mindestwerte max(0,3·α₁·α₄·l_b,rqd; 10Ø) bzw. 6,7Ø bei direkter Lagerung, Druck max(0,6·l_b,rqd; 10Ø), ohne 100 mm (vorläufig, F-Freigabe). α₄ (angeschweißte Querstäbe) ergänzt.
+
+## Umsetzung 29.10.2026
+
+- **FR-1 (`bp_holzprodukte`):** Prüfvermerk bleibt. Durchbiegungsgrenzen l/300 (w_inst, w_net,fin) und l/200 (w_fin) als Empfehlungswerte nach DIN EN 1995-1-1, Tab. 7.2 mit NA (DE) gekennzeichnet (Ergebnisanzeige, Rechenbeispiel, Formelkasten, Grenzen); Rechnung unverändert.
