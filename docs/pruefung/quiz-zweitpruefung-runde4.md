@@ -16,9 +16,9 @@ In dieser Runde wurde **nichts freigegeben**: `verified` bleibt `false`, `review
 
 | ok | korrigiert | hängt an Prüfbogen | Klärung | gesamt |
 |---:|---:|---:|---:|---:|
-| 62 | 7 | 1 | 4 | 74 |
+| 62 | 11 | 1 | 0 | 74 |
 
-Korrekturen stehen in `src/data/quiz.json` (`vorpruefung.ergebnis` „korrigiert“, `vorpruefung.hinweis` „Zweitprüfung 29.10.: … – korrigiert“, `verified` bleibt `false`). Bei keiner Korrektur ändern sich die richtige Antwort oder die Optionen.
+Korrekturen stehen in `src/data/quiz.json` (`vorpruefung.ergebnis` „korrigiert“, `vorpruefung.hinweis` „Zweitprüfung 29.10.: … – korrigiert“, `verified` bleibt `false`). Bei den ersten sieben Korrekturen ändern sich die richtige Antwort und die Optionen nicht. Nach der Entscheidung vom 29.10. zu den vier Klärungen wurde bei `qn_lca_ingenieurbau_1` und `qn_membranen_etfe_3` der Text der richtigen Option neu gefasst (Position unverändert), bei `_3` und `_5` nur Fragetext bzw. Erklärung.
 
 ## Prüftabelle
 
@@ -60,9 +60,9 @@ Korrekturen stehen in `src/data/quiz.json` (`vorpruefung.ergebnis` „korrigiert
 | `q_inw_1` | Entwicklungen (`innovative_werkstoffe`) | ok | 2200 · 9,81 · 1,5/√3 = 18 691 Pa ≈ 19 kPa; 11/32/56 kPa nachgerechnet (Roussel 2018). |
 | `q_bre_4` | Bauproduktenrecht (`bp_recht`) | ok | VO (EU) 2024/3110, Anhang IX: System 4 ohne notifizierte Stelle; Rollen in 1, 2+, 3 korrekt. |
 | `q_vwb_6` | Verkehrswegebau (`bp_verkehrswegebau`) | ok | Q = 0,9 · 150 · 0,1 = 13,5 l/s; 135/1,35/15,0 l/s nachgerechnet; normRef DWA-A 138-1:2024-10. |
-| `qn_lca_ingenieurbau_1` | LCA im Ingenieurbau (DIN EN 17472) (`lca_ingenieurbau`) | Klärung | Die richtige Option begründet den Unterschied mit dem Nutzermodul B8. EN 15978:2026 (CEN, veröffentlicht 24.03.2026, ersetzt EN 15978:2011) kennt B8 „Nutzeraktivitäten“ ebenfalls (optional). B8 ist damit kein Alleinstellungsmerkmal mehr. Vorschlag: richtige Option auf „eigene funktionelle Einheiten wie 1 m² Brückendeckfläche; Betrachtungszeitraum bei Brücken meist 80 bis 100 Jahre“ umstellen, Distraktor 3 anpassen, Ausgabe DIN EN 15978:2012-10 nennen; Differenzierungsmatrix im Modul prüfen. |
-| `qn_lca_ingenieurbau_3` | LCA im Ingenieurbau (DIN EN 17472) (`lca_ingenieurbau`) | Klärung | Rechnung stimmt mit `IngenieurbauLCA.tsx`: 108 d · 1800 · 0,95 = 184,7 t, Distraktoren 461,7/64,6/30,8 t. Offen bleibt wie in Runde 3: Sperrungsbedingte Stauemissionen als B8 sind eine Modellannahme des Moduls („vorläufig, F-Freigabe“). Vorschlag: Fragetext „die im Simulator als B8 geführten Stauemissionen“; dann freigabefähig. |
-| `qn_lca_ingenieurbau_5` | LCA im Ingenieurbau (DIN EN 17472) (`lca_ingenieurbau`) | Klärung | Summen nachgerechnet (Spannbeton 863/743 t, Stahlverbund 825/687 t, B8-Anteil 185/863 = 21 %). Offen bleibt die B8-Modellannahme wie bei `_3`. Vorschlag: Erklärung „B8 ist im Simulator ein maßgeblicher Bilanzanteil“; dann freigabefähig. |
+| `qn_lca_ingenieurbau_1` | LCA im Ingenieurbau (DIN EN 17472) (`lca_ingenieurbau`) | korrigiert (Klärung entschieden 29.10.: Vorschlag übernommen) | Die richtige Option begründet den Unterschied mit dem Nutzermodul B8. EN 15978:2026 (CEN, veröffentlicht 24.03.2026, ersetzt EN 15978:2011) kennt B8 „Nutzeraktivitäten“ ebenfalls (optional). B8 ist damit kein Alleinstellungsmerkmal mehr. Vorschlag: richtige Option auf „eigene funktionelle Einheiten wie 1 m² Brückendeckfläche; Betrachtungszeitraum bei Brücken meist 80 bis 100 Jahre“ umstellen, Distraktor 3 anpassen, Ausgabe DIN EN 15978:2012-10 nennen; Differenzierungsmatrix im Modul prüfen. |
+| `qn_lca_ingenieurbau_3` | LCA im Ingenieurbau (DIN EN 17472) (`lca_ingenieurbau`) | korrigiert (Klärung entschieden 29.10.: Vorschlag übernommen) | Rechnung stimmt mit `IngenieurbauLCA.tsx`: 108 d · 1800 · 0,95 = 184,7 t, Distraktoren 461,7/64,6/30,8 t. Offen bleibt wie in Runde 3: Sperrungsbedingte Stauemissionen als B8 sind eine Modellannahme des Moduls („vorläufig, F-Freigabe“). Vorschlag: Fragetext „die im Simulator als B8 geführten Stauemissionen“; dann freigabefähig. |
+| `qn_lca_ingenieurbau_5` | LCA im Ingenieurbau (DIN EN 17472) (`lca_ingenieurbau`) | korrigiert (Klärung entschieden 29.10.: Vorschlag übernommen) | Summen nachgerechnet (Spannbeton 863/743 t, Stahlverbund 825/687 t, B8-Anteil 185/863 = 21 %). Offen bleibt die B8-Modellannahme wie bei `_3`. Vorschlag: Erklärung „B8 ist im Simulator ein maßgeblicher Bilanzanteil“; dann freigabefähig. |
 | `qn_lca_regulatorik_2` | Rechtsrahmen, CRREM & Praxis (`lca_regulatorik`) | ok | Zielpfad aus `Nachhaltigkeit.tsx` nachgerechnet: 45 · 0,25 = 11,25 > 10,0 (2035), Pfad 2033/2034 13,2/11,6; Distraktoren 2023 (43,6) und 2028 (Hülle, 26,0) stimmen mit dem Simulator. Klärung Runde 3 erledigt. |
 | `qn_lca_regulatorik_3` | Rechtsrahmen, CRREM & Praxis (`lca_regulatorik`) | ok | Simulator nachgerechnet: Wohnen 30 → 2023, Opex 2026, Hülle 2028, Deep Capex 2036; Aussage „3–5 Jahre“ und „13 Jahre“ stimmen. Klärung Runde 3 erledigt. |
 | `qn_lca_regulatorik_5` | Rechtsrahmen, CRREM & Praxis (`lca_regulatorik`) | ok | 1000 · 0,8 · (80 − 20) = 48 000 €; 64 000/80 000/16 000 € nachgerechnet; Art. 9, 21, 31 VO (EU) 2023/956, CBAM-Faktor 2026 97,5 %. |
@@ -89,7 +89,7 @@ Korrekturen stehen in `src/data/quiz.json` (`vorpruefung.ergebnis` „korrigiert
 | `qn_ki_system_1` | Systemarchitektur (`ki_system`) | ok | cos θ: A 0,707, B 0,816, C 0,500; Skalarprodukt C = 3 als Distraktor richtig erklärt. |
 | `qn_oekobilanz_lca_fe1` | Ökobilanzierung (LCA): Grundlagen (`oekobilanz_lca`) | ok | Vergleich nur je funktioneller Einheit (1 m² Bauteil, gleicher U-Wert, Betrachtungszeitraum); Distraktoren eindeutig falsch. |
 | `qn_keramik_ziegel_5` | Keramik und Ziegel (`keramik_ziegel`) | ok | DIN 20000-401 als Anwendungsnorm zu DIN EN 771-1. DIN 105-100:2012-01 laut DIN Media zurückgezogen, ersetzt durch DIN 105-4:2019-01 und DIN 105-41:2019-01 – Rückmeldung bestätigt, Klärung Runde 3 erledigt. |
-| `qn_membranen_etfe_3` | Membranen und ETFE-Folien (`membranen_etfe`) | Klärung | Klares ETFE ist hoch UV-durchlässig. Floatglas lässt UV-A aber ebenfalls teilweise durch; es sperrt vor allem UV-B. „Deutlich unterscheidet … UV-A weitgehend“ ist daher unscharf (Vermerk der Erstprüfung). Vorschlag: richtige Option „Sie lässt auch UV-B-Strahlung weitgehend durch“ bzw. „UV-Strahlung (UV-A und UV-B)“, Rückmeldung zu Distraktor 3 entsprechend. |
+| `qn_membranen_etfe_3` | Membranen und ETFE-Folien (`membranen_etfe`) | korrigiert (Klärung entschieden 29.10.: Vorschlag übernommen) | Klares ETFE ist hoch UV-durchlässig. Floatglas lässt UV-A aber ebenfalls teilweise durch; es sperrt vor allem UV-B. „Deutlich unterscheidet … UV-A weitgehend“ ist daher unscharf (Vermerk der Erstprüfung). Vorschlag: richtige Option „Sie lässt auch UV-B-Strahlung weitgehend durch“ bzw. „UV-Strahlung (UV-A und UV-B)“, Rückmeldung zu Distraktor 3 entsprechend. |
 | `qn_sommerlicher_waermeschutz_1` | Sommerlicher Wärmeschutz (DIN 4108-2) (`sommerlicher_waermeschutz`) | ok | Frage nennt ausdrücklich DIN 4108-2:2013-02; § 14 GModG verweist auf genau diese Ausgabe (Modultext). S_vorh = Σ(A_w · g_tot)/A_G gegen S_zul (8.3) stimmt mit 2013-02. Neuausgabe 2026-05 berührt die Richtigkeit nicht (Klärung Runde 3 damit erledigt). |
 | `qn_sommerlicher_waermeschutz_2` | Sommerlicher Wärmeschutz (DIN 4108-2) (`sommerlicher_waermeschutz`) | ok | 5 · 0,60 · 0,25/20 = 0,0375 → 0,038; 0,150/0,009/0,750 nachgerechnet. Ausgabe 2013-02 ausdrücklich genannt, nach § 14 GModG maßgebend. |
 | `qn_sommerlicher_waermeschutz_3` | Sommerlicher Wärmeschutz (DIN 4108-2) (`sommerlicher_waermeschutz`) | ok | Erhöhte Nachtlüftung n ≥ 2 h⁻¹ geht in S1 (Tab. 8, 2013-02) ein; Ausgabe ausdrücklich genannt, nach § 14 GModG maßgebend. |
@@ -108,8 +108,12 @@ Korrekturen stehen in `src/data/quiz.json` (`vorpruefung.ergebnis` „korrigiert
 - [ ] `qn_bp_verkehr_tiefbau_3` freigeben (korrigiert)
 - [ ] `qn_bp_verkehr_tiefbau_6` freigeben (korrigiert)
 - [ ] `qn_frischbeton_4` freigeben (korrigiert)
+- [ ] `qn_lca_ingenieurbau_1` freigeben (korrigiert 29.10.)
+- [ ] `qn_lca_ingenieurbau_3` freigeben (korrigiert 29.10.)
+- [ ] `qn_lca_ingenieurbau_5` freigeben (korrigiert 29.10.)
+- [ ] `qn_membranen_etfe_3` freigeben (korrigiert 29.10.)
 
 ## Offen
 
-- **Klärung:** `qn_lca_ingenieurbau_1`, `qn_lca_ingenieurbau_3`, `qn_lca_ingenieurbau_5`, `qn_membranen_etfe_3` (Vorschläge in der Tabelle).
+- **Klärung:** keine mehr – die vier Klärungen (`qn_lca_ingenieurbau_1`, `_3`, `_5`, `qn_membranen_etfe_3`) wurden am 29.10. wie vorgeschlagen entschieden und korrigiert.
 - **Hängt an Prüfbogen:** `q_prob_4` → T4-PN-2 (DIN EN 12504-2:2021-10, Verwerfen der Messreihe).

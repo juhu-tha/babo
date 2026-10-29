@@ -26210,31 +26210,31 @@
       "Für Brücken wird die Betriebsenergie B6 zur dominierenden Lebenszyklusphase erklärt.",
       "Sie verwendet einen Betrachtungszeitraum von typisch 50 Jahren wie bei QNG und DGNB.",
       "Sie bezieht die Wirkungen auf 1 m² Nettoraumfläche des zugehörigen Betriebsgebäudes.",
-      "Sie kennt ein eigenes Nutzermodul B8; bei Brücken meist 80 bis 100 Jahre."
+      "Sie nutzt eigene funktionelle Einheiten, z. B. 1 m² Brückendeckfläche."
     ],
     "correctIdx": 3,
-    "explanation": "DIN EN 17472 kennt mit B8 ein eigenes Modul für die Nutzung des Bauwerks durch die Nutzer (im Modul vereinfacht als sperrungsbedingte Stauemissionen modelliert) und eigene funktionelle Einheiten wie 1 m² Brückendeckfläche. Den Betrachtungszeitraum legt der Auftraggeber fest (Begriff 3.69); bei Brücken sind 80 bis 100 Jahre üblich (DIN EN 1990, Kategorie 5: 100 Jahre).",
+    "explanation": "DIN EN 17472 bezieht die Ergebnisse auf eigene funktionelle Einheiten des Ingenieurbaus, z. B. 1 m² Brückendeckfläche, 1 km Trasse oder die Verkehrsleistung in tkm. Den Betrachtungszeitraum legt der Auftraggeber fest (Begriff 3.69); bei Brücken sind 80 bis 100 Jahre üblich (DIN EN 1990, Kategorie 5: 100 Jahre). Das Nutzermodul B8 ist kein Alleinstellungsmerkmal mehr: Auch DIN EN 15978 kennt es seit der Ausgabe 2026 (optional).",
     "bloom": "Verstehen",
     "niveau": "B",
     "distraktorFeedback": [
       "Bei Ingenieurbauwerken dominieren A1–A3, die Austauschzyklen B2–B5 und B8, nicht die Betriebsenergie.",
       "Die 50 Jahre sind typisch für Gebäude (QNG/DGNB); bei Brücken legt der Auftraggeber meist 80 bis 100 Jahre fest.",
-      "Bezugsgrößen sind z. B. 1 m² Brückendeckfläche, 1 km Trasse oder die Verkehrsleistung in tkm.",
+      "Die Nettoraumfläche ist eine Bezugsgröße des Hochbaus; Ingenieurbauwerke werden z. B. auf 1 m² Brückendeckfläche oder 1 km Trasse bezogen.",
       ""
     ],
     "gapAnalysis": {
       "topic": "Normenvergleich Hoch-/Tiefbau",
       "misconception": "Methodik des Hochbaus wird unverändert auf Infrastruktur übertragen.",
-      "coreRule": "DIN EN 17472: eigene funktionelle Einheiten, Betrachtungszeitraum vom Auftraggeber festgelegt (Brücken typisch 80–100 a), Nutzermodul B8.",
+      "coreRule": "DIN EN 17472: eigene funktionelle Einheiten (z. B. 1 m² Brückendeckfläche), Betrachtungszeitraum vom Auftraggeber festgelegt (Brücken typisch 80–100 a).",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Differenzierungsmatrix: Hochbau vs. Tiefbau“ im Modul LCA im Ingenieurbau (DIN EN 17472) noch einmal durch.",
       "targetModuleTab": "lca_ingenieurbau",
       "targetModuleLabel": "LCA im Ingenieurbau (DIN EN 17472)"
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-28",
+      "am": "2026-10-29",
       "ergebnis": "korrigiert",
-      "hinweis": "Zweitprüfung 28.10. (Abgleich Runde 3): Aussagen zu DIN EN 17472 vorsichtig formuliert: Betrachtungszeitraum vom Auftraggeber festgelegt (3.69), typisch 80–100 a; B8 als Nutzermodul, Stau-Zuordnung als Modellannahme – korrigiert"
+      "hinweis": "Zweitprüfung 29.10. (Runde 4, Klärung entschieden): richtige Option auf funktionelle Einheiten umgestellt, da EN 15978:2026 B8 ebenfalls (optional) kennt – korrigiert"
     }
   },
   {
@@ -26288,7 +26288,7 @@
     "topic": "Modul B8 berechnen",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 17472",
-    "question": "Spannbeton-Hohlkasten im Simulator: 100 Jahre, 6 Belagswechsel mit je 18 Tagen Teilsperrung, DTV-SV = 4500 LKW/d, davon 40 % im Stau, 0,95 kg CO₂-Äq. je Fahrzeug, konventionelle Baustellenführung. Wie hoch sind die B8-Stauemissionen?",
+    "question": "Spannbeton-Hohlkasten im Simulator: 100 Jahre, 6 Belagswechsel mit je 18 Tagen Teilsperrung, DTV-SV = 4500 LKW/d, davon 40 % im Stau, 0,95 kg CO₂-Äq. je Fahrzeug, konventionelle Baustellenführung. Wie hoch sind die im Simulator als B8 geführten Stauemissionen?",
     "options": [
       "rund 184,7 t CO₂-Äq.",
       "rund 461,7 t CO₂-Äq.",
@@ -26315,8 +26315,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-29",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 29.10. (Runde 4, Klärung entschieden): Fragetext: Stauemissionen „im Simulator als B8 geführt“ (Modellannahme des Moduls) – korrigiert"
     }
   },
   {
@@ -26379,7 +26380,7 @@
       "Im Schnellbau unterbietet Spannbeton sogar den konventionell gebauten Stahlverbund."
     ],
     "correctIdx": 3,
-    "explanation": "Spannbeton mit Schnellbau (743 t) liegt unter Stahlverbund konventionell (825 t). Bei hohem Schwerverkehr ist B8 ein maßgeblicher Bilanzanteil (z. B. 185 t von 863 t ≈ 21 %); Bauverfahren und Verkehrsführung müssen daher gemeinsam mit dem Tragwerk bewertet werden.",
+    "explanation": "Spannbeton mit Schnellbau (743 t) liegt unter Stahlverbund konventionell (825 t). Bei hohem Schwerverkehr ist B8 im Simulator ein maßgeblicher Bilanzanteil (z. B. 185 t von 863 t ≈ 21 %); Bauverfahren und Verkehrsführung müssen daher gemeinsam mit dem Tragwerk bewertet werden.",
     "bloom": "Bewerten",
     "niveau": "M",
     "distraktorFeedback": [
@@ -26398,8 +26399,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-29",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 29.10. (Runde 4, Klärung entschieden): Erklärung: B8 „im Simulator“ maßgeblicher Bilanzanteil (Modellannahme) – korrigiert"
     }
   },
   {
@@ -50190,32 +50192,33 @@
     "question": "Wodurch unterscheidet sich eine klare ETFE-Folie lichttechnisch deutlich von Floatglas?",
     "options": [
       "Sie lässt kaum sichtbares Licht durch.",
-      "Sie lässt UV-A-Strahlung weitgehend durch.",
+      "Sie lässt auch UV-B weitgehend durch.",
       "Sie filtert UV-A-Strahlung vollständig.",
       "Sie ist nur für Infrarotstrahlung durchlässig."
     ],
     "correctIdx": 1,
-    "explanation": "Klare ETFE-Folie lässt rund 90 bis 95 % des sichtbaren Lichts und einen großen Teil der UV-A-Strahlung durch – ein Grund für ihren Einsatz bei Pflanzenhäusern wie dem Eden Project.",
+    "explanation": "Klare ETFE-Folie lässt rund 90 bis 95 % des sichtbaren Lichts und einen großen Teil der UV-Strahlung durch, auch UV-B. Floatglas lässt UV-A teilweise durch, sperrt UV-B aber weitgehend. Deshalb eignet sich ETFE für Pflanzenhäuser wie das Eden Project.",
     "bloom": "Erinnern",
     "niveau": "B",
     "distraktorFeedback": [
       "Klare ETFE-Folie ist sehr lichtdurchlässig (rund 90 bis 95 % im sichtbaren Bereich).",
       "",
-      "Gerade die UV-A-Durchlässigkeit unterscheidet ETFE von Floatglas, das UV stärker absorbiert.",
+      "Klares ETFE ist gerade hoch UV-durchlässig (UV-A und UV-B); Floatglas sperrt vor allem UV-B.",
       "ETFE ist im sichtbaren Bereich hoch transparent; die Aussage trifft nicht zu."
     ],
     "gapAnalysis": {
       "topic": "Gewebe & ETFE",
       "misconception": "ETFE verhalte sich optisch wie Glas.",
-      "coreRule": "Klares ETFE: sichtbares Licht rund 90 bis 95 %, UV-A weitgehend durchlässig.",
+      "coreRule": "Klares ETFE: sichtbares Licht rund 90 bis 95 %, UV-A und UV-B weitgehend durchlässig; Floatglas sperrt UV-B weitgehend.",
       "actionableAdvice": "Arbeiten Sie den Reiter „Gewebe & ETFE“ im Modul Membranen und ETFE-Folien noch einmal durch.",
       "targetModuleTab": "membranen_etfe",
       "targetModuleLabel": "Membranen und ETFE-Folien"
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-29",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 29.10. (Runde 4, Klärung entschieden): richtige Option „auch UV-B weitgehend durchlässig“ statt nur UV-A – korrigiert"
     }
   },
   {
