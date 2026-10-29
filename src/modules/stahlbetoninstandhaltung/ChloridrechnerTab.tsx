@@ -226,7 +226,7 @@ export default function ChloridrechnerTab({ bauteilAlter, betondeckung, chloridC
 
                 {/* X-Axis ticks */}
                 {[0, 20, 40, 60, 80, 100].map((mm) => (
-                  <text key={mm} x={50 + mm * 4.2} y="195" fill="#64748b" fontSize="9" textAnchor="middle">{mm} mm</text>
+                  <text key={mm} x={50 + mm * 4.2} y="195" fill="#64748b" fontSize="9" textAnchor="middle">{formatDeWert(mm)} mm</text>
                 ))}
                 <text x="470" y="172" fill="#475569" fontSize="9" textAnchor="end">Tiefe x &rarr;</text>
               </svg>
