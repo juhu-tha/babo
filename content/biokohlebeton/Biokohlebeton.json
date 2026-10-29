@@ -75,9 +75,9 @@
     "wirkungImBeton": "Wirkung im Beton",
     "rechnerCoBilanz": "Rechner CO₂-Bilanz",
     "grenzenRegelwerk": "Grenzen & Regelwerk",
-    "cemIRichtwert0": "CEM I (Richtwert 0,80 kg CO₂e/kg)",
-    "cemIiBRichtwert": "CEM II/B (Richtwert 0,65 kg CO₂e/kg)",
-    "cemIiiARichtwert": "CEM III/A (Richtwert 0,45 kg CO₂e/kg)",
+    "cemIRichtwert0": "CEM I (0,665 kg CO₂e/kg, VDZ-Branchen-EPD 2022, netto)",
+    "cemIiBRichtwert": "CEM II/B (Lehrwert 0,53 kg CO₂e/kg, vorläufig)",
+    "cemIiiARichtwert": "CEM III/A (Lehrwert 0,40 kg CO₂e/kg, vorläufig)",
     "bereicheDesModulsBiokohlebeton": "Bereiche des Moduls Biokohlebeton",
     "bilanzrahmenÖkobilanzNachDin": "Bilanzrahmen: Ökobilanz nach DIN EN 15804",
     "zumModulÖkobilanz": "Zum Modul Ökobilanz",
@@ -129,8 +129,8 @@
     "Biokohlebeton.schritte": [
       {
         "titel": "Gegeben",
-        "erklaerung": "Kohle mit 80 % Kohlenstoff, F_perm = 0,80, Herstellung 0,3 kg CO₂e/kg; CEM I mit 0,80 kg CO₂e/kg (Richtwerte):",
-        "formel": "w_C = 0{,}80, \\quad F_{perm} = 0{,}80, \\quad e_{PK} = 0{,}3, \\quad GWP_Z = 0{,}80"
+        "erklaerung": "Kohle mit 80 % Kohlenstoff, F_perm = 0,80, Herstellung 0,3 kg CO₂e/kg (Richtwerte); CEM I mit 0,665 kg CO₂e/kg (VDZ-Branchen-EPD 2022, netto):",
+        "formel": "w_C = 0{,}80, \\quad F_{perm} = 0{,}80, \\quad e_{PK} = 0{,}3, \\quad GWP_Z = 0{,}665"
       },
       {
         "titel": "Netto-Senke je kg Kohle",
@@ -140,12 +140,12 @@
       {
         "titel": "Äquivalente Zementmenge",
         "erklaerung": "Netto-Senke geteilt durch das Treibhauspotenzial des Zements:",
-        "formel": "z_{\\ddot{a}q} = \\frac{2{,}05}{0{,}80} = 2{,}56\\,\\text{kg Zement je kg Kohle}"
+        "formel": "z_{\\ddot{a}q} = \\frac{2{,}05}{0{,}665} = 3{,}08\\,\\text{kg Zement je kg Kohle}"
       },
       {
         "titel": "Einordnung",
-        "erklaerung": "10 kg/m³ Pflanzenkohle wirken in der Bilanz wie rund 26 kg/m³ weniger CEM I – ohne den Mindestzementgehalt zu berühren:",
-        "formel": "10 \\cdot 2{,}05 = 20{,}5\\,\\tfrac{\\text{kg CO}_2}{\\text{m}^3} \\approx 25{,}6\\,\\tfrac{\\text{kg}}{\\text{m}^3}\\ \\text{CEM I}"
+        "erklaerung": "10 kg/m³ Pflanzenkohle wirken in der Bilanz wie rund 31 kg/m³ weniger CEM I – ohne den Mindestzementgehalt zu berühren:",
+        "formel": "10 \\cdot 2{,}05 = 20{,}5\\,\\tfrac{\\text{kg CO}_2}{\\text{m}^3} \\approx 30{,}8\\,\\tfrac{\\text{kg}}{\\text{m}^3}\\ \\text{CEM I}"
       }
     ],
     "Biokohlebeton.literatur": [

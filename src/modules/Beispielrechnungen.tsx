@@ -3,8 +3,10 @@ import { HOLZ_EN338, fcdBeton, FCD_MODUL } from '@/src/data/kennwerte';
 import { bemesseBiegung } from '@/src/calc/biegung';
 import { bemesseDruckstab } from '@/src/calc/holzbau';
 import { stoffraum, K_WERT_DIN1045_2, maxFaFaktor } from '@/src/calc/mischung';
-import { temperaturFaktor, betaCc, ZEMENT_S } from '@/src/calc/betonkennwerte';
-import { fckZumAlter } from '@/src/data/kennwerte';
+import { temperaturFaktor, betaCc, ZEMENT_S, ausschalVergleich, AUSSCHAL_VORGABE_LEHRANNAHME } from '@/src/calc/betonkennwerte';
+import { fckZumAlter, ALTBETON_ZUORDNUNG, type AltbetonKlasse } from '@/src/data/kennwerte';
+import { insituDruckfestigkeit13791 } from '@/src/calc/bauwerksuntersuchung';
+import { ZEMENT_GWP_KG } from '@/src/data/zementGwp';
 import { wandSchalldaemmung, PUTZ_MASSE_BEIDSEITIG } from '@/src/calc/schall';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { GruppierteModuleTabs } from '@/src/components/ui/GruppierteModuleTabs';
@@ -85,7 +87,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
   const maxWz = targetExposure === 'XC4' ? 0.60 : 0.45;
   const minCement = targetExposure === 'XC4' ? 280 : 320;
 
-  // Approximate water demand in kg/m³ (or l/m³) based on target consistency and max grain size (Walz / DBV guidance)
+  // Wasseranspruch in l/m³ nach Konsistenz und Größtkorn: Lehrwerte der Größenordnung, keine Normwerte (Entscheidung 29.10., T15-BE-6)
   const getWaterDemand = () => {
     if (maxGrainSize === 32) {
       if (consClass === 'F2') return 165;
@@ -183,6 +185,9 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
   const f_cm_28 = strengthClassFck + 8;
   const f_cm_t = beta_cc * f_cm_28;
   const f_ck_t = fckZumAlter(strengthClassFck, f_cm_t, maturityAge);
+  // Ausschalkriterium (Entscheidung 29.10., T15-BE-2): f_ck(t) gegen die Vorgabe der Tragwerksplanung in % von f_ck (Voreinstellung 50 % = Lehrannahme)
+  const [ausschalVorgabe, setAusschalVorgabe] = useState<number>(AUSSCHAL_VORGABE_LEHRANNAHME);
+  const ausschal = ausschalVergleich(strengthClassFck, f_ck_t, ausschalVorgabe);
 
   // --- 3. STATE FOR STAHLBETON-BIEGUNG ---
   const [mEd, setMEd] = useState<number>(160); // Bending moment in kNm
@@ -244,9 +249,10 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
   // GWP states:
   const [bauteilVol, setBauteilVol] = useState<number>(450); // m³
   const [cementGehaltA, setCementGehaltA] = useState<number>(340); // kg/m³
-  const [gwpZementA, setGwpZementA] = useState<number>(850); // kg CO2-eq/t
+  // Vorgaben aus src/data/zementGwp.ts (Entscheidung 29.10., T15-NH-3): CEM I 665 kg/t (VDZ-Branchen-EPD 2022, netto), CEM III/B Lehrwert 260 kg/t
+  const [gwpZementA, setGwpZementA] = useState<number>(Math.round(ZEMENT_GWP_KG['CEM I'] * 1000)); // kg CO2-eq/t
   const [cementGehaltB, setCementGehaltB] = useState<number>(350); // kg/m³
-  const [gwpZementB, setGwpZementB] = useState<number>(290); // kg CO2-eq/t
+  const [gwpZementB, setGwpZementB] = useState<number>(Math.round(ZEMENT_GWP_KG['CEM III/B'] * 1000)); // kg CO2-eq/t
 
   // Derived values for CO2 Karbonatisierung:
   const carbonationDepth = kFactor * Math.sqrt(durabilityYears); // in mm
@@ -266,52 +272,26 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
 
   // --- 7. STATE FOR BAUEN IM BESTAND ---
   const [bestandSubTab, setBestandSubTab] = useState<'beton' | 'stahl'>('beton');
-  // Beton states:
-  const [histBetonKlasse, setHistBetonKlasse] = useState<'B100' | 'B150' | 'B225' | 'B300' | 'B450' | 'B600'>('B225');
+  // Beton (Entscheidung 29.10.2026, T15-BS-3 bis -6): Zuordnung über die gemeinsame Tabelle ALTBETON_ZUORDNUNG
+  // (src/data/kennwerte.ts, Schnell/Fischer/Loch 2008, Tab. 2.1; vorher Lehransatz 0,8·β_W/0,95 − 3 N/mm²) und Prüfwert nach
+  // DIN EN 13791 mit n, s und kleinstem Einzelwert (insituDruckfestigkeit13791; vorher Mittelwert ohne Streuung)
+  const [histBetonKlasse, setHistBetonKlasse] = useState<AltbetonKlasse>('B225');
+  const [altbetonGrenze, setAltbetonGrenze] = useState<'unten' | 'oben'>('unten');
   const [hasPruefung, setHasPruefung] = useState<boolean>(false);
-  const [pruefFestigkeit, setPruefFestigkeit] = useState<number>(28.5); // f_cm,cube,150 in N/mm²
+  const [kernAnzahl, setKernAnzahl] = useState<number>(8);
+  const [pruefFestigkeit, setPruefFestigkeit] = useState<number>(28.5); // f_m,is der Kerne (h/d = 1 ≙ 150-mm-Würfel) in N/mm²
+  const [kernStreuung, setKernStreuung] = useState<number>(2.0); // s in N/mm²
+  const [kernKleinster, setKernKleinster] = useState<number>(25.5); // f_is,lowest in N/mm²
   // Stahl states:
   const [histStahlKlasse, setHistStahlKlasse] = useState<'BSt220' | 'BSt420' | 'BSt500'>('BSt220');
   const [diameterStahl, setDiameterStahl] = useState<number>(12); // mm
 
-  // Derived values for Beton Bestand:
-  const beta_WN = {
-    B100: 10.0,
-    B150: 15.0,
-    B225: 22.5,
-    B300: 30.0,
-    B450: 45.0,
-    B600: 60.0
-  }[histBetonKlasse];
-
-  // Convert 200-mm cube to standard 150-mm cube: beta_WN,150 = beta_WN,200 / 0.95
-  const beta_WN_150 = beta_WN / 0.95;
-  // Convert to standard cylinder: f_ck,cyl = 0.8 * beta_WN_150
-  const f_ck_cyl_raw = 0.8 * beta_WN_150;
-  // Apply DAfStb safety deduct if document-only:
-  const f_ck_act = hasPruefung ? 0 : f_ck_cyl_raw - 3.0;
-
-  let f_ck_tested = 8;
-  let testedKlasseLabel = 'C8/10';
-  if (pruefFestigkeit >= 37) {
-    f_ck_tested = 30;
-    testedKlasseLabel = 'C30/37';
-  } else if (pruefFestigkeit >= 30) {
-    f_ck_tested = 25;
-    testedKlasseLabel = 'C25/30';
-  } else if (pruefFestigkeit >= 25) {
-    f_ck_tested = 20;
-    testedKlasseLabel = 'C20/25';
-  } else if (pruefFestigkeit >= 20) {
-    f_ck_tested = 16;
-    testedKlasseLabel = 'C16/20';
-  } else if (pruefFestigkeit >= 15) {
-    f_ck_tested = 12;
-    testedKlasseLabel = 'C12/15';
-  }
-
-  const f_ck_final = hasPruefung ? f_ck_tested : f_ck_act;
-  const f_cd_bestand = fcdBeton(f_ck_final, FCD_MODUL.beispielBestand);
+  const altbeton = ALTBETON_ZUORDNUNG[histBetonKlasse];
+  const fckTabelle = altbetonGrenze === 'unten' ? altbeton.fckUnten : altbeton.fckOben;
+  const klasseTabelle = altbetonGrenze === 'unten' ? altbeton.klasseUnten : altbeton.klasseOben;
+  const insitu = insituDruckfestigkeit13791({ n: kernAnzahl, mittel: pruefFestigkeit, s: kernStreuung, kleinster: kernKleinster, bezug: 'wuerfel' });
+  const f_ck_final: number | null = hasPruefung ? (insitu.gueltig && insitu.klasse ? insitu.fck : null) : fckTabelle;
+  const f_cd_bestand: number | null = f_ck_final !== null ? fcdBeton(f_ck_final, FCD_MODUL.beispielBestand) : null;
 
   // Derived values for Stahl Bestand:
   const f_yk_stahl = {
@@ -391,7 +371,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
         {activeTab === 'u_wert' && <RechnungUWert R_T={R_T} R_concrete={R_concrete} R_insulation={R_insulation} R_plaster={R_plaster} U_value={U_value} gegLimit={gegLimit} setUConcreteThick={setUConcreteThick} setUInsuThick={setUInsuThick} setUPlasterThick={setUPlasterThick} uConcreteLambda={uConcreteLambda} uConcreteThick={uConcreteThick} uInsuLambda={uInsuLambda} uInsuThick={uInsuThick} uPlasterLambda={uPlasterLambda} uPlasterThick={uPlasterThick} />}
 
         {/* --- 2. TAB CONTENT: BETON TECHNOLOGIE --- */}
-        {activeTab === 'beton' && <RechnungBeton V_a={V_a} V_air={V_air} V_c={V_c} V_w={V_w} actualWz={actualWz} aggregateMass={aggregateMass} beta_cc={beta_cc} betonSubTab={betonSubTab} cementContent={cementContent} cementFromWz={cementFromWz} consClass={consClass} f_ck_t={f_ck_t} f_cm_28={f_cm_28} f_cm_t={f_cm_t} finalFreshTemp={finalFreshTemp} freshConcreteDensity={freshConcreteDensity} heat_agg={heat_agg} heat_cement={heat_cement} heat_ice_melting={heat_ice_melting} heat_liquid_water={heat_liquid_water} kAddType={kAddType} kAddition={kAddition} kCement={kCement} kWater={kWater} k_credited_addition={k_credited_addition} k_factor={k_factor} k_max_allowed_addition={k_max_allowed_addition} k_max_ratio={k_max_ratio} k_w_z_eq={k_w_z_eq} k_w_z_pure={k_w_z_pure} mAggregateInput={mAggregateInput} mCementInput={mCementInput} mIceInput={mIceInput} mLiquidWater={mLiquidWater} mWaterInput={mWaterInput} maturityAge={maturityAge} maxGrainSize={maxGrainSize} maxWz={maxWz} minCement={minCement} s_param={s_param} setBetonSubTab={setBetonSubTab} setConsClass={setConsClass} setKAddType={setKAddType} setKAddition={setKAddition} setKCement={setKCement} setKWater={setKWater} setMIceInput={setMIceInput} setMaxGrainSize={setMaxGrainSize} setStrengthCementType={setStrengthCementType} setStrengthClassFck={setStrengthClassFck} setStrengthCureAge={setStrengthCureAge} setStrengthCureTemp={setStrengthCureTemp} setTargetExposure={setTargetExposure} setTempAggregate={setTempAggregate} setTempCement={setTempCement} setTempWater={setTempWater} strengthCementType={strengthCementType} strengthClassFck={strengthClassFck} strengthCureAge={strengthCureAge} strengthCureTemp={strengthCureTemp} targetExposure={targetExposure} tempAggregate={tempAggregate} tempCement={tempCement} tempWater={tempWater} total_heat={total_heat} total_heat_capacity={total_heat_capacity} waterDemand={waterDemand} />}
+        {activeTab === 'beton' && <RechnungBeton ausschal={ausschal} ausschalVorgabe={ausschalVorgabe} setAusschalVorgabe={setAusschalVorgabe} V_a={V_a} V_air={V_air} V_c={V_c} V_w={V_w} actualWz={actualWz} aggregateMass={aggregateMass} beta_cc={beta_cc} betonSubTab={betonSubTab} cementContent={cementContent} cementFromWz={cementFromWz} consClass={consClass} f_ck_t={f_ck_t} f_cm_28={f_cm_28} f_cm_t={f_cm_t} finalFreshTemp={finalFreshTemp} freshConcreteDensity={freshConcreteDensity} heat_agg={heat_agg} heat_cement={heat_cement} heat_ice_melting={heat_ice_melting} heat_liquid_water={heat_liquid_water} kAddType={kAddType} kAddition={kAddition} kCement={kCement} kWater={kWater} k_credited_addition={k_credited_addition} k_factor={k_factor} k_max_allowed_addition={k_max_allowed_addition} k_max_ratio={k_max_ratio} k_w_z_eq={k_w_z_eq} k_w_z_pure={k_w_z_pure} mAggregateInput={mAggregateInput} mCementInput={mCementInput} mIceInput={mIceInput} mLiquidWater={mLiquidWater} mWaterInput={mWaterInput} maturityAge={maturityAge} maxGrainSize={maxGrainSize} maxWz={maxWz} minCement={minCement} s_param={s_param} setBetonSubTab={setBetonSubTab} setConsClass={setConsClass} setKAddType={setKAddType} setKAddition={setKAddition} setKCement={setKCement} setKWater={setKWater} setMIceInput={setMIceInput} setMaxGrainSize={setMaxGrainSize} setStrengthCementType={setStrengthCementType} setStrengthClassFck={setStrengthClassFck} setStrengthCureAge={setStrengthCureAge} setStrengthCureTemp={setStrengthCureTemp} setTargetExposure={setTargetExposure} setTempAggregate={setTempAggregate} setTempCement={setTempCement} setTempWater={setTempWater} strengthCementType={strengthCementType} strengthClassFck={strengthClassFck} strengthCureAge={strengthCureAge} strengthCureTemp={strengthCureTemp} targetExposure={targetExposure} tempAggregate={tempAggregate} tempCement={tempCement} tempWater={tempWater} total_heat={total_heat} total_heat_capacity={total_heat_capacity} waterDemand={waterDemand} />}
 
         {/* --- 3. TAB CONTENT: STAHLBETON-BIEGUNG --- */}
         {activeTab === 'stahlbeton' && <RechnungStahlbeton a_s_req={a_s_req} a_s_min={a_s_min} bWidth={bWidth} b_m={b_m} concreteClass={concreteClass} d1Margin={d1Margin} d_m={d_m} f_cd={f_cd} f_ck={f_ck} f_yd={f_yd} hHeight={hHeight} mEd={mEd} mu_Ed={mu_Ed} mu_lim={mu_lim} setBWidth={setBWidth} setConcreteClass={setConcreteClass} setHHeight={setHHeight} setMEd={setMEd} z_m={z_m} zeta={zeta} />}
@@ -406,7 +386,7 @@ export default function Beispielrechnungen({ forceTab }: BeispielrechnungenProps
         {activeTab === 'nachhaltigkeit' && <RechnungNachhaltigkeit bauteilVol={bauteilVol} caoAnteil={caoAnteil} caoMassPerM2={caoMassPerM2} carbGrad={carbGrad} carbonationDepth={carbonationDepth} cementGehalt={cementGehalt} cementGehaltA={cementGehaltA} cementGehaltB={cementGehaltB} cementMassPerM2={cementMassPerM2} co2SubTab={co2SubTab} co2UptakePerM2={co2UptakePerM2} deltaGwp={deltaGwp} durabilityYears={durabilityYears} gwpZementA={gwpZementA} gwpZementB={gwpZementB} kFactor={kFactor} percentSavings={percentSavings} reactedCaoMassPerM2={reactedCaoMassPerM2} setBauteilVol={setBauteilVol} setCaoAnteil={setCaoAnteil} setCarbGrad={setCarbGrad} setCementGehalt={setCementGehalt} setCementGehaltA={setCementGehaltA} setCementGehaltB={setCementGehaltB} setCo2SubTab={setCo2SubTab} setDurabilityYears={setDurabilityYears} setGwpZementA={setGwpZementA} setGwpZementB={setGwpZementB} setKFactor={setKFactor} totalCementA={totalCementA} totalCementB={totalCementB} totalGwpA={totalGwpA} totalGwpB={totalGwpB} />}
 
         {/* --- 7. TAB CONTENT: BAUEN IM BESTAND --- */}
-        {activeTab === 'bestand' && <RechnungBestand bestandSubTab={bestandSubTab} beta_WN={beta_WN} beta_WN_150={beta_WN_150} diameterStahl={diameterStahl} f_cd_bestand={f_cd_bestand} f_ck_act={f_ck_act} f_ck_cyl_raw={f_ck_cyl_raw} f_ck_final={f_ck_final} f_ck_tested={f_ck_tested} f_yd_stahl={f_yd_stahl} f_yk_stahl={f_yk_stahl} hasPruefung={hasPruefung} histBetonKlasse={histBetonKlasse} histStahlKlasse={histStahlKlasse} pruefFestigkeit={pruefFestigkeit} setBestandSubTab={setBestandSubTab} setDiameterStahl={setDiameterStahl} setHasPruefung={setHasPruefung} setHistBetonKlasse={setHistBetonKlasse} setHistStahlKlasse={setHistStahlKlasse} setPruefFestigkeit={setPruefFestigkeit} steelArea={steelArea} testedKlasseLabel={testedKlasseLabel} yieldCapacity={yieldCapacity} />}
+        {activeTab === 'bestand' && <RechnungBestand bestandSubTab={bestandSubTab} altbeton={altbeton} altbetonGrenze={altbetonGrenze} setAltbetonGrenze={setAltbetonGrenze} fckTabelle={fckTabelle} klasseTabelle={klasseTabelle} insitu={insitu} kernAnzahl={kernAnzahl} setKernAnzahl={setKernAnzahl} kernStreuung={kernStreuung} setKernStreuung={setKernStreuung} kernKleinster={kernKleinster} setKernKleinster={setKernKleinster} diameterStahl={diameterStahl} f_cd_bestand={f_cd_bestand} f_ck_final={f_ck_final} f_yd_stahl={f_yd_stahl} f_yk_stahl={f_yk_stahl} hasPruefung={hasPruefung} histBetonKlasse={histBetonKlasse} histStahlKlasse={histStahlKlasse} pruefFestigkeit={pruefFestigkeit} setBestandSubTab={setBestandSubTab} setDiameterStahl={setDiameterStahl} setHasPruefung={setHasPruefung} setHistBetonKlasse={setHistBetonKlasse} setHistStahlKlasse={setHistStahlKlasse} setPruefFestigkeit={setPruefFestigkeit} steelArea={steelArea} yieldCapacity={yieldCapacity} />}
 
         {/* --- 8. TAB CONTENT: SCHALLSCHUTZ (DIN 4109) --- */}
         {activeTab === 'schallschutz' && <RechnungSchallschutz schallDicke={schallDicke} schallFlanke={schallFlanke} schallPutz={schallPutz} schallRohdichte={schallRohdichte} schallSollTyp={schallSollTyp} schallWandTyp={schallWandTyp} schall_KF={schall_KF} schall_R_prime_w={schall_R_prime_w} schall_Rw={schall_Rw} schall_erf={schall_erf} schall_m0={schall_m0} schall_m_total={schall_m_total} schall_passed={schall_passed} schall_hinweise={schallErgebnis.hinweise} schall_soll_werte={schall_soll_werte} setSchallDicke={setSchallDicke} setSchallFlanke={setSchallFlanke} setSchallPutz={setSchallPutz} setSchallRohdichte={setSchallRohdichte} setSchallSollTyp={setSchallSollTyp} setSchallWandTyp={setSchallWandTyp} />}

@@ -4,6 +4,7 @@ import { formatDeIntl } from '../utils/numberFormat';
  * Reiner Rechenkern – geprüft in tests/mischung.test.ts. Die Anforderungen der Expositionsklassen bleiben im Modul.
  */
 import { type Hinweis, istEndlich } from './plausibilitaet';
+import { ZEMENT_GWP_KG } from '../data/zementGwp';
 
 export interface Fraktion { anteil: number; feuchte: number; wa: number } // M.-% der Gesteinskörnung, Gesamtfeuchte, Wasseraufnahme [M.-%]
 
@@ -28,18 +29,21 @@ export interface MischungEingabe {
   frostTausalz?: boolean;
 }
 
-/** Zementarten: Rohdichte [kg/dm³] und GWP-Lehrwert [kg CO₂-Äq./kg] */
+/**
+ * Zementarten: Rohdichte [kg/dm³] und GWP A1–A3 netto [kg CO₂-Äq./kg] aus der gemeinsamen Konstante src/data/zementGwp.ts
+ * (Entscheidung 29.10.2026, T15-NH-3: CEM I und CEM II/C-M nach VDZ-Branchen-EPD, übrige Lehrwerte; vorher CEM I 0,85)
+ */
 export const ZEMENT_DATA: Readonly<Record<string, { co2: number; rho: number }>> = {
-  'CEM I': { co2: 0.85, rho: 3.1 },
-  'CEM II/A': { co2: 0.75, rho: 3.05 },
-  'CEM II/B': { co2: 0.65, rho: 3.0 },
-  'CEM II/S': { co2: 0.65, rho: 3.0 },
-  'CEM II/C-M': { co2: 0.55, rho: 3.0 }, // DIN EN 197-5 (klinkereffizienter Portlandkompositzement)
-  'CEM III/A': { co2: 0.45, rho: 2.95 },
-  'CEM III/B': { co2: 0.35, rho: 2.9 },
-  'CEM IV': { co2: 0.50, rho: 2.9 },
-  'CEM V': { co2: 0.40, rho: 2.9 },
-  'CEM VI': { co2: 0.40, rho: 2.95 }, // DIN EN 197-5 (Kompositzement)
+  'CEM I': { co2: ZEMENT_GWP_KG['CEM I'], rho: 3.1 },
+  'CEM II/A': { co2: ZEMENT_GWP_KG['CEM II/A'], rho: 3.05 },
+  'CEM II/B': { co2: ZEMENT_GWP_KG['CEM II/B'], rho: 3.0 },
+  'CEM II/S': { co2: ZEMENT_GWP_KG['CEM II/B'], rho: 3.0 },
+  'CEM II/C-M': { co2: ZEMENT_GWP_KG['CEM II/C-M'], rho: 3.0 }, // DIN EN 197-5 (klinkereffizienter Portlandkompositzement)
+  'CEM III/A': { co2: ZEMENT_GWP_KG['CEM III/A'], rho: 2.95 },
+  'CEM III/B': { co2: ZEMENT_GWP_KG['CEM III/B'], rho: 2.9 },
+  'CEM IV': { co2: ZEMENT_GWP_KG['CEM IV'], rho: 2.9 },
+  'CEM V': { co2: ZEMENT_GWP_KG['CEM V'], rho: 2.9 },
+  'CEM VI': { co2: ZEMENT_GWP_KG['CEM VI'], rho: 2.95 }, // DIN EN 197-5 (Kompositzement)
 };
 
 /**

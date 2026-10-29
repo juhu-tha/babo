@@ -165,7 +165,7 @@ export default function TransportbetonLcaUebung() {
   const total_A1A5 = sum_A1A3 + sum_A4 + sum_A5;
 
   // Referenzwert zum Vergleich (Preset 1 Standard CEM I)
-  const refTotalA1A5 = 299.1; // kg CO2-eq/m³ – Ergebnis von Preset 1 mit den hinterlegten Kennwerten
+  const refTotalA1A5 = 239.9; // kg CO2-eq/m³ – Ergebnis von Preset 1 mit den hinterlegten Kennwerten (T15-NH-3: CEM I 0,665; vorher 299,1 mit 0,85)
   const savingPct = Math.max(0, ((refTotalA1A5 - total_A1A5) / refTotalA1A5) * 100);
   const projectTotalCO2Ton = (total_A1A5 * projectVolumeM3) / 1000;
   const projectSavedCO2Ton = Math.max(0, ((refTotalA1A5 - total_A1A5) * projectVolumeM3) / 1000);

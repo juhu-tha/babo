@@ -290,3 +290,41 @@ export const BSH_EN14080: Readonly<Record<BshKlasse, HolzKennwerte>> = {
 export function holzKennwerte(klasse: string): HolzKennwerte | undefined {
   return (HOLZ_EN338 as Record<string, HolzKennwerte>)[klasse] ?? (BSH_EN14080 as Record<string, HolzKennwerte>)[klasse];
 }
+
+// ---------------------------------------------------------------- Altbeton (Bauen im Bestand)
+/** Historische Betongüten nach DIN 1045 vor 1972 (Klassenwert = Mindestwert der 200-mm-Würfelserie in kp/cm²) */
+export type AltbetonKlasse = 'B120' | 'B160' | 'B225' | 'B300' | 'B450' | 'B600';
+export interface AltbetonZuordnung {
+  label: string;
+  /** Klassenwert in kp/cm² (200-mm-Würfel, 28 d) */
+  kpCm2: number;
+  /** charakteristische Druckfestigkeit f_ck [N/mm²] für die untere bzw. obere Grenze der Ausführungsqualität (null = nicht tabelliert) */
+  fckUnten: number | null;
+  fckOben: number | null;
+  /** zugeordnete Festigkeitsklasse (DIN EN 206-1) zur unteren bzw. oberen Grenze; null = keine Klasse; „≈“ = näherungsweise */
+  klasseUnten: string | null;
+  klasseOben: string | null;
+  /** Spannbetongüte (DIN 4227) – in der Zuordnungstabelle nicht enthalten */
+  spannbeton: boolean;
+}
+/**
+ * Gemeinsame Zuordnungstabelle alte Betongüten → heutige Festigkeitsklassen für die Module „Beispielrechnungen – Bauen im
+ * Bestand“ und „Historische Materialkennwerte“ (Entscheidung 29.10.2026, T15-BS-3/-4).
+ * Quelle: J. Schnell, A. Fischer, M. Loch: Anwendung von Teilsicherheitsbeiwerten auf Bestandsbauten im Hochbau.
+ * Kurzbericht zum Forschungsvorhaben (BBR), TU Kaiserslautern, August 2008, Tab. 2.1 „Zuordnung der Betonfestigkeiten
+ * verschiedener Betongüten und -klassen von 1916 bis 1972“ (Fraunhofer IRB, kbf F 2719): f_ck untere Grenze für kleinere
+ * Baustellen mit ausreichender Überwachung ohne Probenahme, obere Grenze für sehr gute Überwachung mit Güteprüfungen;
+ * Klasse nach DIN EN 206-1. Die Werte dienen nach der Quelle nur der Vorbemessung und sind durch eine Bauwerksuntersuchung
+ * zu bestätigen. B 450 und B 600 (Spannbeton nach DIN 4227) sind dort nicht enthalten.
+ */
+export const ALTBETON_ZUORDNUNG: Readonly<Record<AltbetonKlasse, AltbetonZuordnung>> = {
+  B120: { label: 'B 120', kpCm2: 120, fckUnten: 5.0, fckOben: 6.2, klasseUnten: null, klasseOben: null, spannbeton: false },
+  B160: { label: 'B 160', kpCm2: 160, fckUnten: 6.7, fckOben: 8.3, klasseUnten: null, klasseOben: 'C8/10', spannbeton: false },
+  B225: { label: 'B 225', kpCm2: 225, fckUnten: 10.1, fckOben: 12.3, klasseUnten: 'C8/10', klasseOben: 'C12/15', spannbeton: false },
+  B300: { label: 'B 300', kpCm2: 300, fckUnten: 15.5, fckOben: 18.0, klasseUnten: '≈ C16/20', klasseOben: 'C16/20', spannbeton: false },
+  B450: { label: 'B 450', kpCm2: 450, fckUnten: null, fckOben: null, klasseUnten: null, klasseOben: null, spannbeton: true },
+  B600: { label: 'B 600', kpCm2: 600, fckUnten: null, fckOben: null, klasseUnten: null, klasseOben: null, spannbeton: true },
+};
+export const ALTBETON_QUELLE = 'Schnell/Fischer/Loch, Kurzbericht BBR 2008, Tab. 2.1 (nur Vorbemessung)';
+/** 1 kp/cm² = 0,0980665 N/mm² */
+export const KP_CM2_IN_N_MM2 = 0.0980665;

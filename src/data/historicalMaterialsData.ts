@@ -1,3 +1,6 @@
+import { ALTBETON_ZUORDNUNG, KP_CM2_IN_N_MM2, type AltbetonKlasse } from './kennwerte';
+import { formatDeZahl } from '../utils/numberFormat';
+
 export type MaterialCategory = 'beton' | 'betonstahl' | 'baustahl' | 'holz' | 'mauerwerk';
 
 export interface HistoricalRecord {
@@ -16,19 +19,37 @@ export interface HistoricalCategoryData {
   data: HistoricalRecord[];
 }
 
+/**
+ * Zeilen B 120 … B 600 aus der gemeinsamen Zuordnungstabelle ALTBETON_ZUORDNUNG (src/data/kennwerte.ts; Entscheidung 29.10.2026,
+ * T15-BS-3/-4; Quelle Schnell/Fischer/Loch 2008, Tab. 2.1). Vorher u. a. „B 225 → C 20/25 (nicht konservativ – prüfen)“.
+ */
+const ALTBETON_ERKLAERUNG: Readonly<Record<AltbetonKlasse, string>> = {
+  B120: 'Früheres zulässiges Mindestglied für bewehrte Bauteile. Meistens sehr weiche Konsistenz und mangelnder Verdichtungsschutz.',
+  B160: 'Sehr häufiger Tragwerksbeton der Wiederaufbaujahre nach dem 2. Weltkrieg.',
+  B225: 'Standardbeton für mittelschwer beanspruchte Hochbauteile der 1950er und 1960er Jahre.',
+  B300: 'Sonderbeton für stark belastete Hallenbinder, weitgespannte Rippendecken oder Pfeiler.',
+  B450: 'Spannbetongüte nach DIN 4227; in der Zuordnungstabelle nicht enthalten – Festigkeit über Bohrkerne (DIN EN 13791) ermitteln.',
+  B600: 'Spannbetongüte nach DIN 4227; in der Zuordnungstabelle nicht enthalten – Festigkeit über Bohrkerne (DIN EN 13791) ermitteln.',
+};
+const klasseOderStrich = (k: string | null) => k ?? '–';
+const altbetonZeilen: HistoricalRecord[] = (Object.keys(ALTBETON_ZUORDNUNG) as AltbetonKlasse[]).map(k => {
+  const z = ALTBETON_ZUORDNUNG[k];
+  return z.spannbeton
+    ? { old: `${z.label} (DIN 1045 vor 1972, Spannbeton)`, new: '– (nicht tabelliert)', f_old: Math.round(z.kpCm2 * KP_CM2_IN_N_MM2 * 10) / 10, f_new: '–', explanation: ALTBETON_ERKLAERUNG[k] }
+    : { old: `${z.label} (DIN 1045 vor 1972)`, new: `${klasseOderStrich(z.klasseUnten)} bis ${klasseOderStrich(z.klasseOben)} (nur Vorbemessung)`, f_old: Math.round(z.kpCm2 * KP_CM2_IN_N_MM2 * 10) / 10,
+        f_new: `${formatDeZahl(z.fckUnten, 1)} – ${formatDeZahl(z.fckOben, 1)}`, explanation: ALTBETON_ERKLAERUNG[k] };
+});
+
 export const historicalData: Record<MaterialCategory, HistoricalCategoryData> = {
   beton: {
     title: 'Beton (Druckfestigkeiten)',
-    description: 'Vergleich alter Betonfestigkeitsklassen (Bn / B) nach DIN 1045 (1972/1988) sowie DDR-Klassen (BK) nach TGL mit aktuellen Klassen (C) nach Eurocode 2 (DIN EN 1992-1-1). Ältere Klassen bezogen sich auf die 28-Tage-Würfeldruckfestigkeit (200-mm-Würfel; bis 1943 Serienmittelwerte, ab 1972 Nennfestigkeit als 5-%-Fraktile), die heutigen C-Klassen auf f_ck (Zylinder) und f_ck,cube (150-mm-Würfel). Die Zuordnungen sind Orientierungswerte: Verbindlich ist die Zuordnungstabelle des DBV-Merkblatts „Bauen im Bestand – Beton und Betonstahl“ (03/2016, Kap. 2.1; TGL-Standards in Anhang C.3). Wo f_ck,cube der zugeordneten Klasse über dem Altwert liegt, ist die Zuordnung nicht konservativ und durch Bohrkernprüfung (DIN EN 13791) abzusichern.',
+    description: 'Vergleich alter Betonfestigkeitsklassen (Bn / B) nach DIN 1045 (1972/1988) sowie DDR-Klassen (BK) nach TGL mit aktuellen Klassen (C) nach Eurocode 2 (DIN EN 1992-1-1). Ältere Klassen bezogen sich auf die 28-Tage-Würfeldruckfestigkeit (200-mm-Würfel; bis 1943 Serienmittelwerte, ab 1972 Nennfestigkeit als 5-%-Fraktile), die heutigen C-Klassen auf f_ck (Zylinder) und f_ck,cube (150-mm-Würfel). Für die Güten vor 1972 (B 120 bis B 600) gilt die gemeinsame Zuordnungstabelle wie in der Beispielrechnung „Bauen im Bestand“: charakteristische Festigkeit f_ck (Spalte „Neu“, MPa) und Klasse für die untere bis obere Grenze der damaligen Ausführungsqualität nach Schnell/Fischer/Loch (Kurzbericht BBR 2008, Tab. 2.1), nur für die Vorbemessung; B 450 und B 600 (Spannbeton) sind dort nicht enthalten. Die übrigen Zuordnungen (Bn/B 1972–2001, TGL) sind Orientierungswerte; maßgebend sind das DBV-Merkblatt „Bauen im Bestand – Beton und Betonstahl“ (03/2016) bzw. eine Bohrkernprüfung (DIN EN 13791). Wo f_ck,cube der zugeordneten Klasse über dem Altwert liegt, ist die Zuordnung nicht konservativ und durch Bohrkernprüfung abzusichern.',
     normOld: 'Bestimmungen des Deutschen Ausschusses für Eisenbeton (ab 1916), DIN 1045 (1932 / 1943 / 1972 / 1988), TGL (DDR)',
     normNew: 'DIN EN 1992-1-1 (Eurocode 2)',
     data: [
       { old: 'Stampfbeton (vor 1900)', new: '-', f_old: 'ca. 5 - 10', f_new: '-', explanation: 'Hauptsächlich für unbewehrte Gründungen, Widerlager und Kellerwände genutzt. Handgemischt, oft stark streuende Qualität.' },
       { old: 'Kiesbeton (ca. 1916)', new: '-', f_old: '11 - 14', f_new: '-', explanation: 'Erste bewehrte Platten und Balken. Verbundversagen durch mangelhafte Kornzusammensetzung war damals ein Risiko.' },
-      { old: 'B 120 (DIN 1045:1932/1943)', new: 'C 8/10', f_old: 12, f_new: 8, explanation: 'Früheres zulässiges Mindestglied für bewehrte Bauteile. Meistens sehr weiche Konsistenz und mangelnder Verdichtungsschutz.' },
-      { old: 'B 160 (DIN 1045:1932/1943)', new: 'C 12/15', f_old: 16, f_new: 12, explanation: 'Sehr häufiger Tragwerksbeton der Wiederaufbaujahre nach dem 2. Weltkrieg.' },
-      { old: 'B 225 (DIN 1045:1932/1943)', new: 'C 20/25 (nicht konservativ – prüfen)', f_old: 22.5, f_new: 20, explanation: 'Standardbeton für mittelschwer beanspruchte Hochbauteile der 1950er und 1960er Jahre.' },
-      { old: 'B 300 (DIN 1045:1932/1943)', new: 'C 25/30', f_old: 30, f_new: 25, explanation: 'Sonderbeton für stark belastete Hallenbinder, weitgespannte Rippendecken oder Pfeiler.' },
+      ...altbetonZeilen,
       { old: 'BK 5 (TGL, DDR)', new: '-', f_old: 5, f_new: '-', explanation: 'Magerbetonklasse der DDR-Standards. Vorrangig als Füllbeton und Sauberkeitsschichten genutzt.' },
       { old: 'BK 7.5 (TGL, DDR)', new: 'C 8/10 (nicht konservativ – prüfen)', f_old: 7.5, f_new: 8, explanation: 'Unbewehrter Fundamentbeton und mäßig beanspruchter Massenbeton.' },
       { old: 'BK 12.5 (TGL, DDR)', new: 'C 12/15 (nicht konservativ – prüfen)', f_old: 12.5, f_new: 12, explanation: 'DDR-Standardbeton im Wohnungsbau für unbewehrte Trennwände und Kellerfundamente.' },

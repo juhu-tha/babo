@@ -2,13 +2,14 @@
  * Emissionsfaktoren der Transportbeton-Übung (TransportbetonLcaUebung). Eigene kleine Datei, damit die
  * Excel-Erzeugung (TransportbetonExcelExport.ts) überall nur dynamisch geladen wird (Code-Splitting).
  */
-// EPD Emission factors (ÖKOBAUDAT / DIN EN 15804 + A2)
+// Emissionsfaktoren (DIN EN 15804 + A2); Zement aus der gemeinsamen Konstante src/data/zementGwp.ts (T15-NH-3, netto)
+import { ZEMENT_GWP_KG } from '@/src/data/zementGwp';
 export const LCA_BENCHMARKS = {
   // A1: Rohstoffe (kg CO2-eq / kg Material)
-  gwp_cem_I: 0.850, // CEM I 42.5 R (hoher Klinkeranteil ~95%)
-  gwp_cem_II_ALL: 0.680, // CEM II/A-LL (Kalksteinmehl)
-  gwp_cem_III_A: 0.420, // CEM III/A (Hüttensand 36-65%)
-  gwp_cem_III_B: 0.280, // CEM III/B (Hüttensand 66-80%)
+  gwp_cem_I: ZEMENT_GWP_KG['CEM I'], // CEM I 42.5 R – VDZ-Branchen-EPD 2022: 0,665 (netto)
+  gwp_cem_II_ALL: ZEMENT_GWP_KG['CEM II/A'], // CEM II/A-LL (Kalksteinmehl) – Lehrwert 0,60
+  gwp_cem_III_A: ZEMENT_GWP_KG['CEM III/A'], // CEM III/A (Hüttensand 36-65%) – Lehrwert 0,40
+  gwp_cem_III_B: ZEMENT_GWP_KG['CEM III/B'], // CEM III/B (Hüttensand 66-80%) – Lehrwert 0,26
   gwp_aggregate_natural: 0.0035, // Kies / Sand gewaschen (3.5 kg CO2-eq/t)
   gwp_aggregate_rc: 0.0018, // Rezyklierte Körnung aufbereitet (1.8 kg CO2-eq/t)
   gwp_water: 0.0003, // Leitungswasser / Brunnenwasser

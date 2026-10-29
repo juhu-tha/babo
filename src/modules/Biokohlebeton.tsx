@@ -12,6 +12,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import inhalt from '@/content/biokohlebeton/Biokohlebeton.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { ZEMENT_GWP_KG } from '@/src/data/zementGwp';
 
 type Reiter = 'einfuehrung' | 'herstellung' | 'wirkung' | 'rechner' | 'grenzen';
 
@@ -28,11 +29,11 @@ const kasten = 'bg-off-white p-4 rounded-xl border border-home-grau/30 text-sm t
 const th = 'p-2.5 text-left text-xs font-bold text-text-main border-b border-home-grau/30 bg-off-white';
 const td = 'p-2.5 text-xs text-text-main/85 border-b border-home-grau/15 align-top';
 
-/** Zementarten für das Treibhauspotenzial (Richtwerte der Größenordnung; für Nachweise EPD des Herstellers verwenden) */
+/** Zementarten für das Treibhauspotenzial aus src/data/zementGwp.ts (T15-NH-3; für Nachweise EPD des Herstellers verwenden) */
 const ZEMENTE = [
-  { id: 'cem1', label: inhalt.werte.cemIRichtwert0, gwp: 0.8 },
-  { id: 'cem2', label: inhalt.werte.cemIiBRichtwert, gwp: 0.65 },
-  { id: 'cem3', label: inhalt.werte.cemIiiARichtwert, gwp: 0.45 },
+  { id: 'cem1', label: inhalt.werte.cemIRichtwert0, gwp: ZEMENT_GWP_KG['CEM I'] },
+  { id: 'cem2', label: inhalt.werte.cemIiBRichtwert, gwp: ZEMENT_GWP_KG['CEM II/B'] },
+  { id: 'cem3', label: inhalt.werte.cemIiiARichtwert, gwp: ZEMENT_GWP_KG['CEM III/A'] },
 ] as const;
 
 export default function Biokohlebeton() {
@@ -43,7 +44,7 @@ export default function Biokohlebeton() {
   const [ePK, setEPK] = useState(0.3);
   const [zRef, setZRef] = useState(320);
   const [deltaZ, setDeltaZ] = useState(10);
-  const [gwpZ, setGwpZ] = useState(0.8);
+  const [gwpZ, setGwpZ] = useState<number>(ZEMENT_GWP_KG['CEM I']);
   const [w, setW] = useState(160);
   const [wAufnahme, setWAufnahme] = useState(100);
 
@@ -332,7 +333,7 @@ export default function Biokohlebeton() {
                       {
                         titel: 'Zementreduktion',
                         erklaerung: inhalt.werte.vermiedeneEmissionDurchWeniger,
-                        formel: `E_Z = \\Delta z \\cdot GWP_Z = ${tex(deltaZ, 0)} \\cdot ${tex(gwpZ, 2)} = ${tex(erg.eZement, 2)}\\,\\tfrac{\\text{kg}}{\\text{m}^3}`,
+                        formel: `E_Z = \\Delta z \\cdot GWP_Z = ${tex(deltaZ, 0)} \\cdot ${tex(gwpZ, Math.abs(gwpZ * 100 - Math.round(gwpZ * 100)) > 1e-6 ? 3 : 2)} = ${tex(erg.eZement, 2)}\\,\\tfrac{\\text{kg}}{\\text{m}^3}`,
                       },
                       {
                         titel: inhalt.werte.minderungGesamt,

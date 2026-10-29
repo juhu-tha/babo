@@ -1203,9 +1203,9 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
   rechnung_bestand: {
     niveau: "B/M", minuten: 45, vorwissen: ["historisch", "bauwerksdiagnose", "stahlbeton_bemessung"],
     ziele: [
-      { stufe: "Anwenden", text: "historische Betonfestigkeitsklassen nach DIN 1045:1972 über Würfelnormierung und Zylinderumrechnung einer heutigen Festigkeitsklasse zuordnen." },
+      { stufe: "Anwenden", text: "historische Betongüten nach DIN 1045 vor 1972 mit einer Zuordnungstabelle einer heutigen Festigkeitsklasse zuordnen und den Einfluss der damaligen Ausführungsqualität erläutern." },
       { stufe: "Anwenden", text: "den Bemessungswert der Betondruckfestigkeit im Bestand mit und ohne Bohrkernprüfung berechnen." },
-      { stufe: "Bewerten", text: "den Nutzen einer zerstörenden Bauwerksprüfung gegenüber einer Einstufung nach Aktenlage mit pauschalem Abschlag beurteilen." },
+      { stufe: "Bewerten", text: "den Nutzen einer Bauwerksprüfung mit Auswertung nach DIN EN 13791 (Kernanzahl, Streuung, kleinster Einzelwert) gegenüber einer Einstufung nach Aktenlage beurteilen." },
       { stufe: "Anwenden", text: "für historische Betonstähle den Bemessungswert der Streckgrenze und die Zugkapazität eines Einzelstabs berechnen." },
       { stufe: "Bewerten", text: "die Schweißeignung und das Verbundverhalten historischer Betonstähle beurteilen und Konsequenzen für die Verankerung ableiten." },
     ],
@@ -1217,7 +1217,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
       { stufe: "Anwenden", text: "mit der Stoffraumrechnung den Gehalt an Gesteinskörnung je Kubikmeter Beton berechnen und die Frischbetonrohdichte plausibilisieren." },
       { stufe: "Anwenden", text: "den äquivalenten w/z-Wert bei Anrechnung von Flugasche oder Silikastaub mit dem k-Wert-Ansatz berechnen." },
       { stufe: "Anwenden", text: "die Frischbetontemperatur aus Massen, Temperaturen und Wärmekapazitäten der Ausgangsstoffe einschließlich Eiszugabe berechnen." },
-      { stufe: "Bewerten", text: "anhand des temperaturkorrigierten Reifealters die Festigkeitsentwicklung abschätzen und die Ausschaleignung eines Bauteils beurteilen." },
+      { stufe: "Bewerten", text: "anhand des temperaturkorrigierten Reifealters die Festigkeitsentwicklung abschätzen und f_ck(t) mit der Ausschalvorgabe der Tragwerksplanung vergleichen." },
     ],
   },
   rechnung_brandschutz: {

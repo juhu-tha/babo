@@ -248,8 +248,8 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
                     type="range" 
                     min="600" 
                     max="1000" 
-                    step="10" 
-                    value={gwpZementA} 
+                    step="5"
+                    value={gwpZementA}
                     onChange={(e) => setGwpZementA(parseInt(e.target.value))}
                     className="w-full accent-slate-600"
                   />
@@ -290,6 +290,7 @@ export default function RechnungNachhaltigkeit({ bauteilVol, caoAnteil, caoMassP
                     className="w-full accent-shiraz"
                   />
                 </div>
+                <p className="text-xxs text-slate-500 leading-relaxed"><MdText text={inhalt.texte.gwpVorgabenQuelle} /></p>
               </div>
             </div>
 

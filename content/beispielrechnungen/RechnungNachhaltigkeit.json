@@ -31,6 +31,7 @@
     "rezepturBHochofenzementCem": "Rezeptur B: Hochofenzement (CEM III/B)",
     "zementgehaltCB": "Zementgehalt c_B:",
     "spezifischerGwpBHüttensandreich": "Spezifischer GWP_B (hüttensandreich):",
+    "gwpVorgabenQuelle": "Vorgaben: CEM I 665 kg CO₂-Äq./t – VDZ-Branchen-EPD CEM I (2022, gültig bis 06/2027), GWP-total A1–A3 als Nettowert; brutto einschließlich CO₂ aus der Verbrennung von Abfällen 875 kg/t. CEM III/B 260 kg/t ist ein Lehrwert (vorläufig, F-Freigabe; zum Vergleich CEM II/C-M nach VDZ-Branchen-EPD 2023: 400 kg/t netto). Für Nachweise gelten die EPD des Herstellers.",
     "vergleichsrechnungGwpTreibhauspotenzial": "Vergleichsrechnung GWP (Treibhauspotenzial)",
     "berechnungRezepturACem": "**Berechnung Rezeptur A (CEM I):**",
     "berechnungRezepturBCem": "**Berechnung Rezeptur B (CEM III):**",
