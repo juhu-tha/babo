@@ -284,7 +284,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 108 korrigiert, 0 fraglich, 
 
 - **Frage:** Welcher Dämmstoff eignet sich aufgrund seiner geschlossenzelligen Struktur und minimalen Wasseraufnahme besonders für die erdberührte Perimeterdämmung und das Umkehrdach?
 - **Richtige Antwort:** Extrudiertes Polystyrol (XPS)
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Freigegebene Frage unverändert; Vorschlag zur Umformulierung der Distraktoren (Ratschen „Verhältnis > 1,2“/„Absolutwörter“) im Bericht docs/quiz-vorpruefung-cluster-I-III.md. · Umsetzung 29.10.: Erklärung und Lernhilfe: EPS-Perimeterdämmplatten mit Bauartgenehmigung (in der Regel Bodenfeuchte W1-E) ergänzt, „nur XPS oder Schaumglas“ entfällt (T8-DA-1/T8-DA-Q2, QZ-3); Bloom-Stufe, Niveau und Rückmeldungen ergänzt – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Freigegebene Frage unverändert; Vorschlag zur Umformulierung der Distraktoren (Ratschen „Verhältnis > 1,2“/„Absolutwörter“) im Bericht docs/quiz-vorpruefung-cluster-I-III.md. · Umsetzung 29.10.: Erklärung und Lernhilfe: EPS-Perimeterdämmplatten mit Bauartgenehmigung (in der Regel Bodenfeuchte W1-E) ergänzt, „nur XPS oder Schaumglas“ entfällt (T8-DA-1/T8-DA-Q2, QZ-3); Bloom-Stufe, Niveau und Rückmeldungen ergänzt – korrigiert · Zweitprüfung 29.10.: unbelegten Zahlenwert „Diffusionsaufnahme < 1,5 Vol.-%“ entfernt (nicht im Modul; die Diffusionsaufnahme ist eine produkt- und dickenabhängige Herstellerangabe) – korrigiert
 - [ ] ok
 - [ ] ändern: …
 
@@ -716,7 +716,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 108 korrigiert, 0 fraglich, 
 
 - **Frage:** Eine Asphaltfläche von 500 m² (ψ = 0,90) wird mit r_D = 200 l/(s·ha) über t_d = 15 min beregnet. Welches Zuflussvolumen ergibt der Rechner?
 - **Richtige Antwort:** 8,1 m³
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Abgleich Runde 3): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Abgleich Runde 3): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert – korrigiert · Zweitprüfung 29.10.: Tausendertrennung in Erklärung und Lernhilfe auf U+202F umgestellt – korrigiert
 - [ ] ok
 - [ ] ändern: …
 
@@ -740,7 +740,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 108 korrigiert, 0 fraglich, 
 
 - **Frage:** Was beschreibt der Abflussbeiwert ψ im Rigolenrechner?
 - **Richtige Antwort:** Den Anteil des Regens, der von der Fläche abfließt
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · Zweitprüfung 28.10. (Abgleich Runde 3): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert (Freigabe zurückgenommen) – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · Zweitprüfung 28.10. (Abgleich Runde 3): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert (Freigabe zurückgenommen) – korrigiert · Zweitprüfung 29.10.: Rückmeldung: Formelzeichen f_S → Zuschlagsfaktor f_Z wie im Modul und in DWA-A 138-1 – korrigiert
 - [x] ok
 - [ ] ändern: …
 

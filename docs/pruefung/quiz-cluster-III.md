@@ -212,7 +212,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 44 korrigiert, 0 fraglich, 0
 
 - **Frage:** XF4-Beton, D_max = 16 mm (Mindestluftgehalt 4,5 Vol.-%). Gemessen werden 9,0 Vol.-% nach Gesteinskorrektur. Wie ist der Wert zu bewerten?
 - **Richtige Antwort:** Mindestwert erfüllt, obere Grenze 8,5 % überschritten, als Einzelwert aber noch zulässig
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Tranche 3): „Richtwert“ → obere Grenze nach DIN EN 206, 5.4.3, Einzelwert +1,0 % – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Tranche 3): „Richtwert“ → obere Grenze nach DIN EN 206, 5.4.3, Einzelwert +1,0 % – korrigiert · Zweitprüfung 29.10.: Lernhilfe an die Erklärung angeglichen („Richtwert + 4 %“ → obere Grenze Mindestwert + 4 %, Einzelwert + 1,0 %) – korrigiert
 - [ ] ok
 - [ ] ändern: …
 

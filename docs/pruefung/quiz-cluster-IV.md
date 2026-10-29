@@ -2,9 +2,9 @@
 
 Stand: 29.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster IV umfasst 314 Fragen aus 50 Modulen. Aufgeführt sind 96 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster IV umfasst 314 Fragen aus 50 Modulen. Aufgeführt sind 97 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 76 korrigiert, 0 fraglich, 11 mit offenem Prüfhinweis, 12 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 78 korrigiert, 0 fraglich, 11 mit offenem Prüfhinweis, 12 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -29,6 +29,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 76 korrigiert, 0 fraglich, 1
 - **Frage:** Eine Bestandswand hat U = 1,40 W/(m²K). Sie erhält 12 cm Dämmung mit λ = 0,035 W/(m·K). Wie groß ist der neue U-Wert ungefähr?
 - **Richtige Antwort:** 0,24 W/(m²K)
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Runde 3): Rückmeldungen zu 0,29 und 0,35 W/(m²K) korrigiert (0,29 ist der Wert ohne R_alt, 0,35 entspräche rund 7,5 cm Dämmung) – korrigiert
+- [ ] ok
+- [ ] ändern: …
+
+### q_bst_5 · Altbauatlas
+
+- **Frage:** In einer Außenwandecke wird bei θ_i = 20 °C und θ_e = −5 °C eine Oberflächentemperatur von θ_si = 11,5 °C bestimmt. Ist der Mindestwärmeschutz nach DIN 4108-2:2013-02 (f_Rsi ≥ 0,70) eingehalten?
+- **Richtige Antwort:** Nein, denn f_Rsi = (11,5 + 5)/(20 + 5) = 0,66 liegt unter 0,70
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 29.10.: Ausgabe DIN 4108-2:2013-02 im Fragetext genannt (Neuausgabe 2026-05 erschienen, Zahlenwert öffentlich nicht prüfbar); Erklärung: aus f_Rsi = 0,70 folgen bei −5/20 °C 12,5 °C, 12,6 °C ist der Wert des 80-%-Kriteriums – korrigiert
 - [ ] ok
 - [ ] ändern: …
 
@@ -740,7 +748,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 76 korrigiert, 0 fraglich, 1
 
 - **Frage:** Georadar auf feuchtem Beton: relative Dielektrizitätszahl ε_r = 9, Laufzeit des Bewehrungsechos t = 2,0 ns, c₀ = 300 mm/ns. In welcher Tiefe liegt der Stab?
 - **Richtige Antwort:** d ≈ 100 mm
-- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Neu 29.10.: Aufstockung des Teilmoduls auf 6 Fragen (QZ-6); mit src/calc/pruefverfahren.ts (georadar) nachgerechnet, tests/quizRechenfragen.test.ts · Zweitprüfung 29.10.: Rückmeldung zu 300 mm berichtigt (Fehlerweg: ohne √ε_r, aber halbiert; ohne Halbierung ergäben sich 600 mm) – korrigiert · neu seit 26.10.2026 (Z24), noch nicht freigegeben
 - [ ] ok
 - [ ] ändern: …
 

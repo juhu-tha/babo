@@ -236,7 +236,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 72 korrigiert, 0 fraglich, 8
 
 - **Frage:** Beton: λ = 2,0 W/(m·K), ρ = 2400 kg/m³, c = 1000 J/(kg·K). Wie groß ist die Temperaturleitfähigkeit a?
 - **Richtige Antwort:** 8,3 · 10⁻⁷ m²/s
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Runde 3): Distraktor „1,2 · 10⁻³ m²/s“ passte zu keinem Rechenweg; durch 8,3 · 10⁻⁴ m²/s (λ/ρ ohne c) ersetzt, Rückmeldung entsprechend präzisiert – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Runde 3): Distraktor „1,2 · 10⁻³ m²/s“ passte zu keinem Rechenweg; durch 8,3 · 10⁻⁴ m²/s (λ/ρ ohne c) ersetzt, Rückmeldung entsprechend präzisiert – korrigiert · Zweitprüfung 29.10.: Zahlformat: 2400 ohne Tausendertrennung (vierstellig) – korrigiert
 - [ ] ok
 - [ ] ändern: …
 
