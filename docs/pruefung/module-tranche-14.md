@@ -64,6 +64,8 @@
 - **behoben – T14-SY-5:** „Rechtlich belastbare“, „formal unangreifbare“, „unterschriftsreife“ Bedenkenanzeigen → Entwurf zur Prüfung durch die Bauleitung.
 - Hinweis: Im Text werden Fachprogramme beim Namen genannt (Dlubal, Sofistik, Revit, Allplan, Qdrant, Chroma). Sie dienen als Beispiele; ob sie neutralisiert werden sollen, siehe Frage T14-SY-6.
 
+**Umsetzung 29.10.2026 (T14-SY-6):** Entscheidung: in der Systemarchitektur neutral, im Werkzeugkatalog `online_tools` belassen. In `content/ki/Systemarchitektur.json` und `src/modules/ki/Systemarchitektur.tsx` ersetzt: „Statik-APIs (Dlubal, Sofistik)“ → „Programmierschnittstellen (APIs) von Statiksoftware“; „Statikprogramme (Dlubal, Sofistik), BIM-Server (Revit, Allplan)“ → „Statiksoftware, BIM-Autorenwerkzeuge bzw. BIM-Server“; „Vektordatenbanken (Qdrant, Chroma[, Pinecone])“ → „Vektordatenbanken“ (2 Stellen); „quelloffene Spitzenmodelle (Qwen, Llama, DeepSeek)“ → „Sprachmodelle mit offenen Gewichten“; „NVIDIA RTX VRAM oder Apple Unified Memory“ → „VRAM einer Grafikkarte oder gemeinsamer Arbeits- und Grafikspeicher“; „NVIDIA CUDA / Tensor Cores“ → „Grafikprozessoren mit Tensor-Kernen“; „GPU (CUDA)“ → „GPU“; „llama.cpp, Ollama oder LM Studio … (kompatibel zu OpenAI-Standards)“ → „quelloffene Inferenz-Laufzeitumgebungen … (meist kompatibel zu verbreiteten Cloud-KI-Schnittstellen)“. Verfahrensnamen (YOLO, Mask R-CNN, MCP, GGUF/Q4_K_M) bleiben als Fachbegriffe. Keine Quizfrage `ki_system` nennt die entfernten Namen. Quelle: Entscheidung vom 29.10.2026. Ergebnis: kein offener Punkt mehr.
+
 **F-Freigabe-Stellen:** keine.
 
 **Empfehlung:** freigabefähig nach Korrektur T14-SY-1 bis -5 (T14-SY-6 nicht blockierend).
@@ -138,6 +140,8 @@
 - **behoben – T14-TH-4:** Zulässigkeit „an den meisten Hochschulen (z. B. TH Augsburg, TU München, RWTH Aachen)“ → allgemein, maßgeblich Prüfungsordnung; „Täuschungsversuch (0 Punkte)“ → Bewertung „nicht ausreichend“ nach Prüfungsordnung; Elicit-Indexgröße und Research-Rabbit-Umfang mit „Stand 10/2026“.
 - **offen – Frage T14-TH-5 (DIN EN 12390-13, Normtext):** Prompt und Musterlösung bestimmen den Sekantenmodul zwischen 0,05·f_cm und 0,33·f_cm aus der Bruchkurve. Die Norm misst nach meinem Kenntnisstand an eigenen Probekörpern mit Be- und Entlastungszyklen zwischen einer Unterspannung von etwa 0,10–0,15·f_c und f_c/3. Vorläufig als „vereinfacht in Anlehnung an DIN EN 12390-13“ gekennzeichnet. Grenzen am Normtext bestätigen?
 - Hinweis: Das Deklarationsformular (`KiDeklarationGuide`) ist mit einem Prüfernamen vorbelegt (Platzhalterwert); ggf. durch „[Name]“ ersetzen.
+
+**Umsetzung 29.10.2026 (Deklarationsformular):** Vorbelegung „Erstprüfer/in“ in `content/ki/KiDeklarationGuide.json` → „[Name]“ (Schlüssel `erstpruefungPlatzhalter`). App-weite Suche nach vorbelegten Personennamen in Formularen/Vorlagen (Vorbelegungen von Eingabefeldern und Mustervorlagen; Literaturangaben, Quellen, Impressum, Kontakt- und Verantwortlichenangaben ausgenommen): ebenso ersetzt in `content/bauschaeden/Bauschaeden.json` (Absender der Bedenkenanzeige „Ingenieurbüro [Name]“, 2 Stellen), `content/bodenmaterialaufbereitung/BodenMaterialAufbereitung.json` (Zeuge im Probenahmeprotokoll „[Name] (Untergeordnete Bodenschutzbehörde / Umweltamt)“), `content/bautagebuch/Bautagebuch.json` (Tragwerksplanung der drei Musterprojekte „… [Name]“, Eingabehilfe „z. B. [Name] ordnete …“). „Max Mustermann“ bleibt als üblicher Platzhalter. Test: `tests/modulpruefungTranche14.test.ts`. Ergebnis: kein offener Punkt mehr.
 
 **Empfehlung:** freigabefähig nach Korrektur T14-TH-1 bis -4 und Klärung von T14-TH-5.
 
@@ -243,6 +247,8 @@
 - **behoben – T14-OT-4:** „Bundesministerium für Digitales und Verkehr (BMV)“ → Bundesministerium für Verkehr (BMV); „CAD-CAD-Software“; „100 % Geprüfte Fachquellen“ → Fachquellen mit Normbezug; Wikipedia „Ökobilanz“ → „Lebenszyklusanalyse“ (dauerhafte Weiterleitung, Linkprüfung 10/2026, auch in `materialpaesse` und `dpp`).
 - Hinweis: `https://www.geoportal.de/` meldet in der Linkprüfung HTTP 400 (vermutlich Abwehr automatischer Abrufe) – manuell prüfen. Kommerzielle Anbieter (Dlubal, SkyCiv, Madaster, Concular) sind als Werkzeuge genannt, siehe Frage T14-SY-6.
 
+**Umsetzung 29.10.2026 (T14-SY-6):** Im Werkzeugkatalog bleiben die Anbieter- und Produktnamen (Entscheidung vom 29.10.2026); keine Änderung.
+
 **Empfehlung:** freigabefähig nach Korrektur T14-OT-1 bis -4.
 
 - [ ] Modul freigeben (`online_tools`)
@@ -267,6 +273,8 @@
 - **behoben – T14-BIM-3:** IFC-Ausschnitt ohne Einheitenzuweisung: YoungModulus 33 000 wäre in IFC-SI-Einheiten 33 000 Pa. Kommentar im erzeugten Text ergänzt (SI-Einheiten; MPa nur mit passender IFCUNITASSIGNMENT).
 - **offen – Frage T14-BIM-4:** GWP-Lehrwert Mineralwolle 42 kg CO₂-Äq./m³ bei 60 kg/m³ (= 0,7 kg/kg); im Modul Materialdatenbanken (Beispiel 2) stehen 1,20 kg/kg. Angleichen (dann ≈ 72 kg/m³)?
 
+**Umsetzung 29.10.2026 (T14-BIM-4):** Voreinstellung Mineralwolle in `content/bimbaustoffe/BimBaustoffe.json` 42 → 72 kg CO₂-Äq./m³. Nachrechnung: 1,20 kg CO₂-Äq./kg · 60 kg/m³ (Rohdichte der Voreinstellung im BIM-Modul) = 72,0 kg CO₂-Äq./m³ – gleicher Bezugswert wie Modul Materialdatenbanken, Beispiel 2 (1,20 kg/kg bei 30 kg/m³ → 36 kg/m³; Konsole Steinwolle 45,5 kg/m³ ≈ 38 kg/m³ · 1,20). GWP-Regler für Mineralwolle in 1er-Schritten (vorher 5er-Schritte, 72 wäre nicht einstellbar). Hinweis unter den Reglern ergänzt („gerundete Lehrwerte, z. B. Mineralwolle 1,20 kg/kg · 60 kg/m³ ≈ 72 kg/m³“). Test: `tests/modulpruefungTranche14.test.ts` (BIM4: 60 · 1,20 = 72, Rohdichte 60, Bezugswert im Modul Materialdatenbanken vorhanden). Ergebnis: kein offener Punkt mehr.
+
 **Empfehlung:** freigabefähig nach Korrektur T14-BIM-1 bis -3 und Klärung von T14-BIM-4.
 
 - [ ] Modul freigeben (`bim_baustoffe`)
@@ -290,6 +298,20 @@
 - **behoben – T14-MDB-3:** WECOBIS-Herkunft „BMWSB / BÄK“ → BMWSB / ByAK.
 - **behoben – T14-MDB-4:** Datensatz „Flachprodukt Stahl (B500B)“ (B500B ist Betonstahl) → Betonstahl B500B (Stabstahl); „herstellerspezifische EPD dieses Zementwerks … 180 kg/m³“ → EPD des Transportbetonwerks (mit dem verwendeten Zement); Einheiten AP/EP der Konsole als Indikatoren der Fassung EN 15804+A1 gekennzeichnet.
 - **offen – Frage T14-MDB-5:** Die Konsole zeigt Versauerung in kg SO₂-Äq. und Eutrophierung in kg PO₄-Äq. (Fassung A1); nach EN 15804+A2 gelten mol H⁺-Äq. bzw. kg P-Äq. (Süßwasser). Auf A2-Indikatoren mit neuen Lehrwerten umstellen?
+
+**Umsetzung 29.10.2026 (T14-MDB-5):** Konsole auf die Indikatoren der DIN EN 15804+A2 umgestellt: AP (kumulierte Überschreitung) in mol H⁺-Äq., EP-Süßwasser in kg P-Äq., EP-Meer in kg N-Äq., EP-terrestrisch in mol N-Äq. (vier Kacheln statt zwei; Werte unter 0,001 als Zehnerpotenz). Lehrwerte neu in `src/data/oekobaudatLehrwerteA2.ts`, gekennzeichnet als **„Lehrwerte, vorläufig“** (Hinweistext unter den Kacheln: Größenordnungen aus öffentlichen EPD nach EN 15804+A2, über das GWP-Verhältnis skaliert, gerundet, keine Planungswerte). Methode: Quellwert A1–A3 · (GWP Konsolendatensatz / GWP Quell-EPD), zwei geltende Ziffern; Holz unskaliert (GWP vom biogenen Kohlenstoff bestimmt); Betonstahl EP-Süßwasser von kg PO₄-Äq. in kg P-Äq. umgerechnet (· 30,97/94,97).
+
+| Datensatz | Quell-EPD (A1–A3) | Faktor | AP mol H⁺ | EP-Süßw. kg P | EP-Meer kg N | EP-terr. mol N |
+|---|---|---|---|---|---|---|
+| Normalbeton C25/30, m³ | [Transportbeton C30/37, EN 15804+A2](https://www.schwenk.de/wp-content/uploads/2017/03/3038_3130_NEPD-10791-10791-2_N44463200511_C30-37-F4-mittel-Dmax16-XC4-XF1-XA1-GWP-Beton-WU-Rili.pdf) (GWP 191; AP 0,216; 0,0189; 0,0698; 0,890) | 245/191 | 0,28 | 0,024 | 0,09 | 1,1 |
+| Brettschichtholz, m³ | [Konstruktionsvollholz, EN 15804+A2](https://www.rettenmeier.com/fileadmin/PDF/produktinformationen/EPD-konstruktionsvollholz-KVH-2026-de.pdf) (Summe A1–A3 aus Modulwerten: 0,468; 0,0917; 0,194; 2,16) | 1 | 0,47 | 0,092 | 0,19 | 2,2 |
+| Betonstahl B500B, t | [Betonstahl in Ringen, EN 15804+A2](https://www.feralpigroup.com/sites/default/files/ESF%20certificati/2023/EPD-ESF%20Elbe-Stahlwerke%20Feralpi-310-DE.pdf) (je kg; Summe GWP 0,599; AP 1,71·10⁻³; EP-fw 2,50·10⁻⁵ kg PO₄; 4,09·10⁻⁴; 4,69·10⁻³) | 1120/599 | 3,2 | 0,015 | 0,77 | 8,8 |
+| Steinwolle, m³ | [Steinwolle mittlere Rohdichte, 99 kg/m³](https://www.heinze.de/epd/pdf/rockwool-steinwolle-daemmstoffe-im-mittleren-rohdichtebereich/732dcc2d-1131-4a75-a669-e871675b5ba4/) (GWP 115; 0,815; 5,71·10⁻⁴; 0,0869; 2,35) | 45,5/115 | 0,32 | 2,3·10⁻⁴ | 0,034 | 0,93 |
+| CEM I, t | [Verbands-EPD CEM I (VDZ)](https://www.beton.org/fileadmin/beton-org/media/Dokumente/PDF/Wissen/Beton-Bautechnik/Nachhaltigkeit/2022-06-08-EPD-CEM_I-D.pdf) (GWP 665; 0,94; 7,01·10⁻⁴; 0,24; 3,07) | 680/665 | 0,96 | 7,2·10⁻⁴ | 0,25 | 3,1 |
+| Porenbeton, m³ | [Porenbeton 486 kg/m³, EN 15804+A2](https://www.heinze.de/epd/pdf/ytong-porenbeton-35050-ro/f6ec0adc-f1d2-453b-b834-f34bac094842) (GWP 176; 0,198; 4,82·10⁻⁵; 0,0664; 0,729) | 110/176 | 0,12 | 3,0·10⁻⁵ | 0,042 | 0,46 |
+| GKB 12,5 mm, m² | [Hartgipsplatte 12,5 mm, EN 15804+A2](https://www.heinze.de/epd/hartgipsplatte-tool/29248c83-68d5-4ff6-ae8d-cf91e54dd000/) (GWP 2,72; 4,54·10⁻³; 1,30·10⁻⁵; 1,43·10⁻³; 0,0152) | 1,85/2,72 | 0,0031 | 8,8·10⁻⁶ | 9,7·10⁻⁴ | 0,010 |
+
+Hinweis: EP-Süßwasser streut zwischen den Quell-EPD über mehrere Größenordnungen (Beton 0,019 und Holz 0,09 kg P-Äq./m³ gegenüber Porenbeton 4,8·10⁻⁵) – deshalb „vorläufig“; vor einer Verwendung über die Lehre hinaus gegen die aktuellen ÖKOBAUDAT-Datensätze tauschen. Nachrechnung per eigenem Skript (Python), Test: `tests/modulpruefungTranche14.test.ts` (MDB5: alle 28 Werte ± 5 % gegen Quellwert · Faktor, Einheiten in der Konsole, keine A1-Einheiten mehr, Kennzeichnung). Keine F-Freigabe-Marke (Kennzeichnung „Lehrwerte, vorläufig“ wie entschieden). Ergebnis: kein offener Punkt mehr.
 
 **F-Freigabe-Stellen (neu):** Rechenwerttabelle „gerundete Lehrwerte in Anlehnung an die ÖKOBAUDAT“ (Fachgebiet Nachhaltigkeit).
 
@@ -359,6 +381,8 @@ C-Speicher nach DIN EN 16449 (50 % C, 44/12) mit 0,5 t/m³ als darrtrockene Mass
 | T14-SY-6 | `ki_system`, `online_tools` | Firmen- und Produktnamen (Dlubal, Sofistik, Revit, Allplan, SkyCiv, Madaster, Concular) neutralisieren? | In Systemarchitektur neutral („Statik-API“, „BIM-Autorensoftware“); im Werkzeugkatalog `online_tools` belassen |
 | T14-BIM-4 | `bim_baustoffe` | Mineralwolle-GWP 0,7 kg/kg (BIM) gegenüber 1,20 kg/kg (Materialdatenbanken) | Einheitlich 1,20 kg/kg → 72 kg CO₂-Äq./m³ bei 60 kg/m³ |
 | T14-MDB-5 | `materialdatenbanken` | Konsole AP/EP auf EN 15804+A2-Indikatoren umstellen? | Ja: AP in mol H⁺-Äq., EP-Süßwasser in kg P-Äq., Lehrwerte aus aktuellen ÖKOBAUDAT-Datensätzen |
+
+T14-SY-6, T14-BIM-4 und T14-MDB-5 wurden am 29.10.2026 entschieden und umgesetzt (Abschnitte „Umsetzung 29.10.2026“ in den Modulen 1, 4, 9, 10 und 11); offen bleiben nur die Normtextpunkte T14-LP-7, T14-TH-5 und T14-RE-2.
 
 ## QA
 

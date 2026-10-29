@@ -215,7 +215,7 @@ export default function BimBaustoffe() {
                       type="range" 
                       min={selectedId === 'holz' ? -600 : selectedId === 'stahl' ? 2000 : 10} 
                       max={selectedId === 'holz' ? -200 : selectedId === 'stahl' ? 10000 : 400} 
-                      step={selectedId === 'stahl' ? 100 : 5}
+                      step={selectedId === 'stahl' ? 100 : selectedId === 'mineralwolle' ? 1 : 5}
                       value={gwp} 
                       onChange={(e) => setGwp(Number(e.target.value))}
                       className="cursor-pointer"
