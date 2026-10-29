@@ -17,11 +17,11 @@
 
 | Nr. | Modul | Rechnung | Empfehlung |
 |---|---|---|---|
-| 1 | `rechnung_beton` | jetzt Kerne `mischung.ts`, `betonkennwerte.ts`, `kennwerte.ts` | freigabefähig nach Korrektur T15-BE-1/-3 bis -5 und Klärung von T15-BE-2 und T15-BE-6 |
+| 1 | `rechnung_beton` | jetzt Kerne `mischung.ts`, `betonkennwerte.ts`, `kennwerte.ts` | freigabefähig (T15-BE-2 und T15-BE-6 am 29.10.2026 entschieden und umgesetzt) |
 | 2 | `rechnung_stahlbeton` | jetzt Kern `biegung.ts` | freigabefähig nach Korrektur T15-SB-1/-2 |
 | 3 | `rechnung_holzbau` | jetzt Kern `holzbau.ts` | freigabefähig |
-| 4 | `rechnung_nachhaltigkeit` | inline (Lehrmodell) | freigabefähig nach Korrektur T15-NH-1/-2 und Klärung von T15-NH-3 |
-| 5 | `rechnung_bestand` | inline (Lehransatz), `kennwerte.ts` | nach Klärung von T15-BS-3 bis -6 |
+| 4 | `rechnung_nachhaltigkeit` | inline (Lehrmodell), Zement-GWP aus `src/data/zementGwp.ts` | freigabefähig (T15-NH-3 am 29.10.2026 entschieden und umgesetzt) |
+| 5 | `rechnung_bestand` | `ALTBETON_ZUORDNUNG` (`kennwerte.ts`), `insituDruckfestigkeit13791` (`bauwerksuntersuchung.ts`) | freigabefähig (T15-BS-3 bis -6 am 29.10.2026 entschieden und umgesetzt; Mindeststandardabweichung DIN EN 13791 bleibt Normtextpunkt) |
 | 6 | `px_planung` | Rechenbeispiele | freigabefähig nach Korrektur T15-PP-1 |
 | 7 | `px_bauleitung` | Rechenbeispiele, Kern `verankerung.ts` (Abgleich) | freigabefähig nach Korrektur T15-PB-1 (α₆ bleibt F-Stelle wie T2-S-1) |
 | 8 | `px_bautagebuch` | gering (Bewertungsscore) | freigabefähig nach Korrektur T15-BT-1/-2 |
@@ -29,7 +29,7 @@
 | 10 | `px_karriere` | Rechenbeispiele | freigabefähig nach Klärung von T15-PK-1 (Normtext) |
 | 11 | `regularien` | – | freigabefähig nach Korrektur T15-RG-1 |
 | 12 | `normen_ausblick` | – | freigabefähig |
-| 13 | `labor_sicherheit` | – | freigabefähig nach Korrektur T15-LS-1 bis -3 und Klärung von T15-LS-4 |
+| 13 | `labor_sicherheit` | – | freigabefähig (T15-LS-4 am 29.10.2026 entschieden und umgesetzt) |
 
 **Behobene Fehler (dieser PR):**
 - **T15-BE-1 (gewichtig):** Festigkeitsentwicklung rechnete f_ck(t) = β_cc·f_ck; nach DIN EN 1992-1-1, 3.1.2(5) gilt f_ck(t) = f_cm(t) − 8 für t < 28 d (Kern `fckZumAlter`). Beispiel C25/30, Klasse N, 7 d, 12 °C: 15,11 statt 17,52 N/mm² (zu günstig um 2,4 N/mm²).
@@ -91,16 +91,18 @@ Nicht umgestellt: Frischbetontemperatur (kein Kern; reine Energiebilanz, nachger
 **Befunde**
 - **behoben – T15-BE-1:** f_ck(t) siehe oben. Formelanzeige t_T auf die Form von Gl. (B.10) umgestellt; Text nennt, dass EC2 t_T für Kriechen/Schwinden angibt und der Reifeansatz für die Festigkeit dem fib Model Code 2010 folgt (wie Schalter im Modul Betonkennwerte, Entscheidung 27.10.).
 - **offen – Frage T15-BE-2 (Ausschalkriterium):** „Ausschaleignung (CEN-Richtwert)“ und „nach DBV-Leitfaden im Regelfall zulässig (> 50 % Festigkeit)“ – keine Quelle gefunden; verglichen wurde β_cc (f_cm(t)/f_cm), der Text sprach von „charakteristischer Nennfestigkeit“. Jetzt „Ausschalhinweis (Lehrannahme, vorläufig)“, Bezug f_cm(t)/f_cm, maßgebend Tragwerksplanung und Festigkeitsnachweis nach DIN EN 13670/DIN 1045-3.
+- **Umsetzung 29.10.2026 – T15-BE-2:** Neue Eingabe „Vorgabe der Tragwerksplanung (% von f_ck)“ (20–100 %, Voreinstellung 50 % als Lehrannahme gekennzeichnet, vorläufig, F-Freigabe). Verglichen wird jetzt die charakteristische Festigkeit f_ck(t) (Kern `fckZumAlter`) mit p·f_ck – Kern `ausschalVergleich()` in `src/calc/betonkennwerte.ts`, nicht mehr β_cc. Beispiel C25/30, N, 7 d, 12 °C: f_ck(t) = 15,11 N/mm² ≥ 0,50·25 = 12,50 N/mm² (60,4 %); C30/37, R, 3 d, 20 °C: 17,18 < 18,00 N/mm² bei 60 %. Quelle: Entscheidung; Norm DIN EN 13670/DIN 1045-3 (Ausschalen nach ausreichender Festigkeit, Vorgabe der Tragwerksplanung). Grenzen ergänzt; Quiz `qn_rechnung_beton_6` angepasst.
 - **behoben – T15-BE-3:** Bewertungstext „Frischbetondichte 2000 bis 2600 kg/m³ nach DIN EN 206“ – DIN EN 206 grenzt Normalbeton über die Trockenrohdichte ab; „stellt sicher, dass … dauerhaft zu widerstehen“ → Grenzwerte als Voraussetzung, Eignung über Erstprüfung.
 - **behoben – T15-BE-4:** k-Wert-Text „Erhöhung des Zementvolumens um k·f“ → Anrechnung auf den Zementgehalt (DIN 1045-2); „fiktive Einsparung … Portlandzement-Klinker bei identischer hydratationschemischer Wirksamkeit“ → „bei gleichem äquivalentem w/z-Wert (rechnerische Anrechnung, keine chemische Gleichwertigkeit)“; Formel zeigte „0.33“/„0.4“ mit Dezimalpunkt.
 - **behoben – T15-BE-5:** Frischbetontemperatur wurde still auf −5 °C begrenzt; jetzt ungekürzt mit Hinweis „unter 0 °C gilt die Bilanz ohne Phasenwechsel nicht“. Englischer Text „Melting latent“ → „Schmelzwärme“; „setze Schuppeneis ein“ → „setzen Sie“; Bewertung „+5 bis +30 °C (DIN EN 206/DIN 1045-2; unter −3 °C Lufttemperatur mindestens +10 °C nach DIN 1045-3)“. Option „F3 (regelKonsistenz / weich)“ korrigiert.
 - **offen – Frage T15-BE-6 (Wasseranspruch):** Die Tabelle (32 mm: 165/175/185 l/m³; 16 mm: 180/190/200 l/m³ für F2/F3/F4) ist als „Erfahrungswerte nach DBV“ bezeichnet; eine öffentliche Fundstelle wurde nicht gefunden. Die Größenordnung ist plausibel.
+- **Umsetzung 29.10.2026 – T15-BE-6:** Text „Erfahrungswerte nach DBV“ ersetzt durch „Lehrwerte der Größenordnung (keine Normwerte; im Einzelfall über die Erstprüfung festlegen)“; Kommentar im Code und Rechnergrenzen entsprechend. Werte unverändert (165/175/185 bzw. 180/190/200 l/m³), Quizfrage `qn_rechnung_beton_1` bleibt richtig.
 
 **Grenzen:** ergänzt um t_T nach Gl. (B.10), f_ck(t) bis 28 d und „Frischbetontemperatur ohne Phasenwechsel“.
 
 **F-Freigabe-Stellen:** Ausschalhinweis (Lehrannahme 50 %).
 
-**Empfehlung:** freigabefähig nach Korrektur T15-BE-1/-3 bis -5 und Klärung von T15-BE-2 und T15-BE-6.
+**Empfehlung:** freigabefähig (T15-BE-2 und T15-BE-6 am 29.10.2026 umgesetzt; keine offene Frage).
 
 - [ ] Modul freigeben
 
@@ -147,8 +149,21 @@ Nicht umgestellt: Frischbetontemperatur (kein Kern; reine Energiebilanz, nachger
 - **behoben – T15-NH-1:** Richtwerte k vertauscht. Karbonatisierung ist bei mittlerer Feuchte am schnellsten, in beregnetem bzw. nassem Beton am langsamsten ([MATEC Web Conf. 289, 02001 (2019)](https://www.matec-conferences.org/articles/matecconf/pdf/2019/38/matecconf_cs18_02001.pdf): höchste Rate bei geschützter Außenlage, maßgebend die Luftfeuchte). Neu: „außen beregnet etwa 1–3, geschützt/innen etwa 3–8 mm/√a (Lehrwerte, vorläufig, F-Freigabe; Werte je Festigkeitsklasse in EN 16757)“.
 - **behoben – T15-NH-2:** Code rechnete mit 44,0/56,1, Rechenweg zeigt 44,01/56,08 ≈ 0,784 – angeglichen. Text zum Karbonatisierungsgrad ergänzt (Literatur im Mittel 50–60 %, Obergrenze häufig 75 % des CaO; [core.ac.uk 325948752](https://core.ac.uk/download/325948752.pdf)).
 - **offen – Frage T15-NH-3 (Zement-GWP):** Vorgaben 850 kg CO₂-Äq./t (CEM I) und 290 kg/t (CEM III/B). Die VDZ-Branchen-EPD CEM I (2022, gültig bis 06/2027) nennt 665 kg CO₂-Äq./t GWP-total A1–A3 (netto; brutto mit Abfallverbrennung 875) ([VDZ-EPD CEM I](https://www.beton.org/fileadmin/beton-org/media/Dokumente/PDF/Wissen/Beton-Bautechnik/Nachhaltigkeit/2022-06-08-EPD-CEM_I-D.pdf)). Andere Module verwenden 0,85 (Mischungsberechnung `ZEMENT_DATA`), 0,80 (Materialoptimierung), CEM III/B 0,35.
+- **Umsetzung 29.10.2026 – T15-NH-3:** Gemeinsame Konstante `ZEMENT_GWP_KG` in `src/data/zementGwp.ts` (Nettowerte GWP-total A1–A3). Belegt: CEM I 0,665 kg/kg (brutto mit Abfallverbrennung 0,875; EPD-VDZ-20220153-IAG1-DE, gültig bis 07.06.2027, [VDZ-EPD CEM I](https://www.beton.org/fileadmin/beton-org/media/Dokumente/PDF/Wissen/Beton-Bautechnik/Nachhaltigkeit/2022-06-08-EPD-CEM_I-D.pdf)) und CEM II/C-M 0,400 (brutto 0,510; EPD-VDZ-20230234-IAG1-DE, gültig bis 10.07.2028, [VDZ-EPD CEM II/C-M](https://www.beton.org/fileadmin/beton-org/media/Dokumente/PDF/Wissen/Beton-Bautechnik/Nachhaltigkeit/2023-07-15-EPD-CEM_IIC-M.pdf)). Eine VDZ-Branchen-EPD für CEM III/A bzw. CEM III/B war über die zugelassenen Suchtreffer nicht abrufbar; diese und die übrigen Zementarten sind Lehrwerte, linear über den mittleren Klinkeranteil zwischen den beiden EPD-Werten (CEM II/B 0,53, CEM III/A 0,40, CEM III/B 0,26, CEM IV 0,43, CEM V 0,41, CEM VI 0,35; CEM II/A 0,60 wie bisher in der Materialoptimierung, ÖKOBAUDAT-Abgleich) – vorläufig, F-Freigabe. Modul: Vorgaben 665 (A) und 260 kg/t (B), Quellenzeile mit netto/brutto, Regler A in 5er-Schritten. Neu gerechnet: NH3 (450 m³, 340·665 vs. 350·260) ΔGWP 60,80 t, 59,8 %; NH4 (c_B 450) 48,3 %; Erkundungsaufträge (60 %/48 %, 61/122 t).
+  - **Abgleich der übrigen Module** (alle rechneten Lehrwerte ohne Bruttokennzeichnung, keines bewusst brutto – daher überall angeglichen, keine Kennzeichnung nötig):
 
-**Empfehlung:** freigabefähig nach Korrektur T15-NH-1/-2 und Klärung von T15-NH-3.
+    | Modul / Datei | vorher (CEM I; weitere) | jetzt | neu gerechnet |
+    |---|---|---|---|
+    | Mischungsberechnung (`ZEMENT_DATA`, `src/calc/mischung.ts`) | 0,85; II/A 0,75, II/B 0,65, II/C-M 0,55, III/A 0,45, III/B 0,35, IV 0,50, V/VI 0,40 | aus `ZEMENT_GWP_KG` | Erkundung: CO₂ ≈ 219 → 245 kg/m³ (+12 %), vorher 278 → 312 |
+    | Materialoptimierung (`ZEMENT_GWP_JE_KG`) | 0,80; II/A-LL 0,60, II/B-S 0,55, III/A 0,45, II/C-M 0,43 | 0,665/0,60/0,53/0,40/0,40 → Beton 243/222/200/158/158 kg/m³ | Lehrbeispiel 61,4 → 35,2 kg/m² (−43 %), Tests MO1–MO5 (u. a. MO1 8148/3845, 52,8 %), Erkundungen 53/34 %, 22/12/53 %, 72/54 % |
+    | LCA-Grundlagen (Beispiel OE) | 0,80; III/A 0,45 | 0,665; 0,40 | 243 → 158 kg/m³ (−35 %) |
+    | Transportbeton-Übung (`LCA_BENCHMARKS`, Excel-Vorlage) | 0,85; II/A-LL 0,68, III/A 0,42, III/B 0,28 | 0,665/0,60/0,40/0,26 | Referenz Preset 1: 299,1 → 239,9 kg/m³; Preset 3: ≈ 100 kg/m³ |
+    | Biokohlebeton (Zementauswahl) | 0,80; II/B 0,65, III/A 0,45 | 0,665/0,53/0,40 | Beispiel: 2,05/0,665 = 3,08 kg Zement je kg Kohle; Erkundungen 27,1/33,0 kg/m³ (12,7/15,5 %), 19,2 %, 24,5 kg/m³ (19,1 %) |
+    | Übungsaufgabe `t_nh_gwp_cem_vergleich` | 850/290 | 665/260 | ΔGWP 60,80 t (≈ 60 %) |
+
+    Nicht geändert: Klinker-Emissionen „800–850 kg CO₂/t Klinker“ (BaustoffProfil; bezogen auf Klinker, nicht Zement), CBAM-Beispiel (direkte Emissionen nach CBAM-Methodik). Quiz angepasst: `qn_rechnung_nachhaltigkeit_4`, `q_mo_1`, `qn_materialoptimierung_3`, `qn_oekobilanz_lca_g1`, `qn_lca_rechner_3`.
+
+**Empfehlung:** freigabefähig (T15-NH-3 am 29.10.2026 umgesetzt; CEM-III/B-Wert ist gekennzeichneter Lehrwert, F-Stelle).
 
 - [ ] Modul freigeben
 
@@ -165,8 +180,12 @@ Nicht umgestellt: Frischbetontemperatur (kein Kern; reine Energiebilanz, nachger
 - **offen – Frage T15-BS-5 (Prüfwert):** Die Zuordnung über den Mittelwert einer Bohrkernserie ohne Streuung liegt auf der unsicheren Seite (vom Erkundungsauftrag selbst so beschrieben). Auf DIN EN 13791 (k_n, Kern `bauwerksuntersuchung.ts`, T12 geprüft) umstellen?
 - **offen – Frage T15-BS-6 (Verbund-Lehransätze):** 30 % (glatt) bzw. 70 % (BSt III) der heutigen Verbundspannung – Quelle (z. B. Nachrechnungsrichtlinie, DBV-Merkblatt) festlegen oder streichen.
 - Hinweis: 225 kp/cm² = 22,07 N/mm²; das Modul setzt 22,5 N/mm² (üblich gerundet, 2 % günstiger).
+- **Umsetzung 29.10.2026 – T15-BS-3 (Zuordnung):** Eine gemeinsame, belegte Tabelle `ALTBETON_ZUORDNUNG` in `src/data/kennwerte.ts` für `rechnung_bestand` und „Historische Materialkennwerte“ (`historicalMaterialsData.ts` erzeugt die Zeilen B 120 … B 600 daraus). Quelle: J. Schnell, A. Fischer, M. Loch, „Anwendung von Teilsicherheitsbeiwerten auf Bestandsbauten im Hochbau“, Kurzbericht (BBR), TU Kaiserslautern 2008, Tab. 2.1 ([Schnell/Fischer/Loch, Kurzbericht BBR 2008](https://www.irbnet.de/daten/kbf/kbf_d_F_2719.pdf)): f_ck untere/obere Grenze der Ausführungsqualität und Klasse nach DIN EN 206-1 – B 120: 5,0/6,2 (–/–), B 160: 6,7/8,3 (–/C8/10), B 225: 10,1/12,3 (C8/10/C12/15), B 300: 15,5/18,0 (≈ C16/20/C16/20); nach der Quelle nur für die Vorbemessung. Das DBV-Merkblatt bzw. Fingerloos/Hegger/Zilch waren öffentlich nicht abrufbar. Der Lehransatz 0,8·β_W/0,95 − 3 N/mm² und der pauschale Abschlag sind entfallen; im Modul wählt man die Ausführungsqualität (untere Grenze voreingestellt). Neu: B 225 untere Grenze f_ck 10,1 → f_cd 5,72 N/mm² (vorher 15,95/9,04); B 300 15,5 → 8,78 (vorher 22,26/12,62). Historische Kennwerte: B 225 „C8/10 bis C12/15“ statt „C 20/25 (nicht konservativ – prüfen)“, B 300 „≈ C16/20 bis C16/20“ statt „C 25/30“.
+- **Umsetzung 29.10.2026 – T15-BS-4 (Klassen):** Auswahl B 120, B 160, B 225, B 300; B 450 und B 600 als „Spannbeton (DIN 4227), nicht in der Zuordnungstabelle“ gekennzeichnet – ohne Bauwerksprüfung kein f_cd, nur Hinweis auf die Bohrkernprüfung. B 100/B 150 entfallen.
+- **Umsetzung 29.10.2026 – T15-BS-5 (Prüfwert):** Eingaben n (8–30), Mittelwert f_m,is, Standardabweichung s und kleinster Einzelwert; Auswertung mit dem neuen Kern `insituDruckfestigkeit13791()` in `src/calc/bauwerksuntersuchung.ts`, der k_n und M aus `kn13791`/`margin13791` (`src/utils/schadensKern.ts`, T12/Runde 5 geprüft) übernimmt: f_ck,is = min(f_m − k_n·s; f_lowest + M), Klasse über f_ck,is ≥ 0,85·f_ck,cube (Kern h/d = 1 ≙ 150-mm-Würfel). Beispiel n = 8, 28,5/2,0/25,5: f_ck,is = 24,5 → C20/25, f_cd 11,33 N/mm²; Mittel 30,0 → 26,0 → C25/30; s 3,0 → 24,0 → C20/25. Für n < 8 meldet der Kern „nicht abgebildet“. Mindeststandardabweichung nicht angesetzt (Normtextpunkt, vorläufig, F-Freigabe). Übungsaufgabe `t_hist_beton_umrechnung` (Modul Historische Kennwerte) ebenfalls korrigiert: k_n = 2,00 statt 1,48, Aktenlage nach Tabelle (f_cd 5,72 statt 6,8).
+- **Umsetzung 29.10.2026 – T15-BS-6 (Verbund):** Keine belegte Quelle für 30 %/70 % gefunden – gestrichen. Text jetzt: Verbundspannungen nach DIN EN 1992-1-1 gelten für Rippenstähle und sind auf glatte bzw. historisch gerippte Stäbe nicht übertragbar; Ansatz im Einzelfall durch die Tragwerksplanung. Quiz `qn_rechnung_bestand_1`, `_4` (Erklärung), `_5` angepasst; Erkundungsaufträge neu gerechnet.
 
-**Empfehlung:** nach Klärung von T15-BS-3 bis -6.
+**Empfehlung:** freigabefähig (T15-BS-3 bis -6 am 29.10.2026 umgesetzt; offen bleibt nur der Normtextpunkt Mindeststandardabweichung nach DIN EN 13791).
 
 - [ ] Modul freigeben
 
@@ -268,9 +287,10 @@ Nicht umgestellt: Frischbetontemperatur (kein Kern; reine Energiebilanz, nachger
 - **behoben – T15-LS-2:** Regelwerk „DGUV Regel 109-009 (Fahrzeuginstandhaltung / Hebebühnen und Krane)“ → DGUV Vorschrift 52 (Krane), DGUV Vorschrift 68 (Flurförderzeuge), Fahrausweis nach DGUV Grundsatz 308-001.
 - **behoben – T15-LS-3:** „Landesunfallkasse / Bayerische Unfallkasse“ → Bayerische Landesunfallkasse. Formelquelle „DIN EN 197-1 / TRGS 613“ → „Sicherheitsdatenblatt Zement (H315, H318); DIN EN 197-1“ (TRGS 613 nach Kenntnisstand aufgehoben).
 - **offen – Frage T15-LS-4 (lokale Angaben):** Namen, Durchwahlen, Räume (Ersthelfer, Hausservice), „Notruf 0-112“ und der Vermerk „geprüft durch Laborleitung Prof. Dr.-Ing. …“ sind öffentlich nicht prüfbar. Bitte bestätigen; Vermerk ohne Namen fassen (Grundsatz „keine Personennamen bei Prüfungen/Freigaben“)?
+- **Umsetzung 29.10.2026 – T15-LS-4:** Namen und Durchwahlen ersetzt durch Funktionsbezeichnungen: „Laborleitung des Baustofflabors“, „Ersthelfer/in des Baustofflabors bzw. des Gebäudes G2 (siehe Aushang)“, „Sicherheitsbeauftragte/r bzw. Laborpersonal vor Ort“, „Hausservice“, jeweils „erreichbar über die Hochschulzentrale“; personenbezogene Raumangaben und Suchbegriffe (Namen) entfernt. Vermerk jetzt „… Gebäude G2, TH Augsburg; durch die Laborleitung geprüft“. Notruf 112 (Festnetz ggf. 0-112) und Gebäudeangaben unverändert.
 - Hinweis: Die GefStoffV wird ohne Fassung genannt (Novelle mit Asbest-Regeln in Kraft seit 05.12.2024, Kenntnisstand); „Bei jedem Arztbesuch zwingend D-Arzt“ ist strenger als nötig, aber nicht gefährdend – unverändert.
 
-**Empfehlung:** freigabefähig nach Korrektur T15-LS-1 bis -3 und Klärung von T15-LS-4.
+**Empfehlung:** freigabefähig (T15-LS-4 am 29.10.2026 umgesetzt).
 
 - [ ] Modul freigeben
 
@@ -290,10 +310,13 @@ Nicht umgestellt: Frischbetontemperatur (kein Kern; reine Energiebilanz, nachger
 | T15-PK-1 | Karriere | ÜK 3 in DIN 1045-3:2023-08 (Normtext) | Am Normtext prüfen; bis dahin Satz „bis 2012 auch ÜK 3“ als vorläufig kennzeichnen |
 | T15-LS-4 | Laborsicherheit | Lokale Angaben und Vermerk „geprüft durch …“ mit Namen | Angaben durch die Laborleitung bestätigen; Vermerk „Stand Oktober 2026 (Laborleitung)“ ohne Namen |
 
+**Stand 29.10.2026:** T15-BE-2, T15-BE-6, T15-NH-3, T15-BS-3 bis -6 und T15-LS-4 entschieden und umgesetzt (Abschnitte „Umsetzung 29.10.2026“ oben); offen bleibt T15-PK-1 (Normtext).
+
 ## Hinweis Quiz
 
 - Geändert (je `verified: false`, `reviewer`/`reviewedAt` entfernt, `vorpruefung.hinweis` „Modulprüfung Tranche 15 (29.10.): … – korrigiert“): `qn_rechnung_bestand_4` (GU statt RU, Schweißen nur nach Werkstoffprüfung, ohne η₁), `qn_rechnung_bestand_6` (Bezeichnung GU), `qn_px_bauleitung_2` (Distraktor l₀ mit α₆ = 1,4: 790 statt 846 mm). Prüflisten Cluster V/VI mit `scripts/pruefliste.ts` neu geschrieben.
-- Geprüft, unverändert: `qn_rechnung_beton_6` (t_T ≈ 4,8 d, β_cc ≈ 0,70 bleiben richtig; Kriterium im Modul jetzt Lehrannahme), `qn_rechnung_stahlbeton_4/5`, `qn_rechnung_nachhaltigkeit_1/3`, `qn_rechnung_bestand_1/5`, `qn_labor_sicherheit_2`.
+- Umsetzung 29.10.2026 (je `verified: false`, `reviewer`/`reviewedAt` entfernt, `vorpruefung.hinweis` „Umsetzung 29.10.: … – korrigiert“): `qn_rechnung_beton_6` (Kriterium f_ck(t) gegen Vorgabe), `qn_rechnung_nachhaltigkeit_4` (665/260), `qn_rechnung_bestand_1` (Tabelle, f_cd 5,72), `qn_rechnung_bestand_4` (Erklärung ohne 30 %), `qn_rechnung_bestand_5` (kein Abschlag), `q_mo_1`, `qn_materialoptimierung_3`, `qn_oekobilanz_lca_g1`, `qn_lca_rechner_3` (Zement-GWP); Prüflisten mit `scripts/pruefliste.ts` neu geschrieben.
+- Geprüft, unverändert (Stand vor der Umsetzung): `qn_rechnung_beton_6` (t_T ≈ 4,8 d, β_cc ≈ 0,70 bleiben richtig; Kriterium im Modul jetzt Lehrannahme), `qn_rechnung_stahlbeton_4/5`, `qn_rechnung_nachhaltigkeit_1/3`, `qn_rechnung_bestand_1/5`, `qn_labor_sicherheit_2`.
 
 ## Nachweis der Prüfung
 

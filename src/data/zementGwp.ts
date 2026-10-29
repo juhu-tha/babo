@@ -8,7 +8,7 @@
  *  - CEM II/C-M (50 % Klinker): 400 kg CO₂-Äq./t netto; brutto 510 kg/t
  *    (EPD-VDZ-20230234-IAG1-DE, ausgestellt 11.07.2023, gültig bis 10.07.2028)
  *
- * Lehrwerte (vorläufig, F-Freigabe): Für die übrigen Zementarten wurde kein Wert einer VDZ-Branchen-EPD abgerufen.
+ * Lehrwerte (vorläufig, F-Freigabe): Für die übrigen Zementarten wurde kein Wert einer VDZ-Branchen-EPD (EN 15804) abgerufen.
  * Sie sind linear über den mittleren Klinkeranteil k (Bandmitte nach DIN EN 197-1/-5) zwischen den beiden EPD-Werten
  * inter- bzw. extrapoliert und auf 0,01 gerundet (lehrwertAusKlinker). Ausnahme CEM II/A: 0,60 wie bisher in der
  * Materialoptimierung (abgestimmt auf ÖKOBAUDAT 2024-I „Transportbeton C25/30“). Für Nachweise gelten die EPD des

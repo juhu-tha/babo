@@ -27,7 +27,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 24 korrigiert, 0 fraglich, 0
 ### qn_rechnung_bestand_5 · Bauen im Bestand
 
 - **Frage:** Ein Tragwerksplaner überlegt, ob sich Kernbohrungen in einer Stahlbetondecke aus den 1960er Jahren lohnen. Welches Argument stützt das Modul?
-- **Richtige Antwort:** Statt der Tabellenwerte der Aktenlage wird die oft höhere reale Festigkeit nutzbar
+- **Richtige Antwort:** Statt Tabellenwerten nach Aktenlage gilt die oft höhere reale Festigkeit
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: kein pauschaler Abschlag mehr, Aktenlage über Zuordnungstabelle, Prüfung nach DIN EN 13791 (T15-BS-3/-5) – korrigiert
 - [x] ok
 - [ ] ändern: …

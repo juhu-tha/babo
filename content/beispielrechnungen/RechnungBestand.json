@@ -7,7 +7,7 @@
     "damalsGemessenAnPrüfwürfeln": "Klassenwert: Mindestwert der Würfelserie (200-mm-Würfel, 28 Tage) in kp/cm². Die heutige Klasse folgt nicht aus einer Umrechnung dieses Werts, sondern aus der Zuordnungstabelle (unten) – abhängig von der damaligen Ausführungsqualität. B 450 und B 600 waren Spannbetongüten (DIN 4227) und sind dort nicht enthalten.",
     "bauwerksprüfungDurchgeführtZerstörendeKe": "Bauwerksprüfung durchgeführt (Bohrkerne, Auswertung nach DIN EN 13791)",
     "mittlerePrüffestigkeit150mmWürfel": "Mittelwert f_m,is (Kerne h/d = 1, entspricht 150-mm-Würfel):",
-    "mittlererWertFCm": "Auswertung nach DIN EN 13791 für n ≥ 8 Kerne (für 3 bis 7 Kerne sieht die Norm ein eigenes Verfahren vor). Eine Mindeststandardabweichung ist nicht angesetzt (am Normtext prüfen; vorläufig, F-Freigabe).",
+    "mittlererWertFCm": "Auswertung nach DIN EN 13791 (Prüfverfahren: Bohrkerne) für n ≥ 8 Kerne (für 3 bis 7 Kerne sieht die Norm ein eigenes Verfahren vor). Eine Mindeststandardabweichung ist nicht angesetzt (am Normtext prüfen; vorläufig, F-Freigabe).",
     "umrechnungNachDafstbRichtlinie": "Einstufung für die Bemessung nach DIN EN 1992-1-1",
     "dieHistorischeKantenlängeVon": "Mindestwert der 200-mm-Würfelserie in N/mm² (1 kp/cm² = 0,0981 N/mm²) – zur Einordnung, nicht zur Bemessung:",
     "schritt1NormierungDes": "**Schritt 1: Klassenwert der alten Güte**",

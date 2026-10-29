@@ -639,7 +639,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Nur die Expositionsklassen XC4 und XD3.",
       "Reife mit konstanter Temperatur (Arrhenius, t_T nach EC2 Gl. B.10); f_ck(t) = f_cm(t) − 8 bis 28 Tage.",
       "Frischbetontemperatur ohne Phasenwechsel; unter 0 °C nur Hinweis.",
-      "Ausschalen: Vergleich von f_ck(t) mit der Vorgabe der Tragwerksplanung in % von f_ck; Voreinstellung 50 % als Lehrannahme (vorläufig, F-Freigabe).",
+      "Ausschalen (DIN 1045-3): Vergleich von f_ck(t) mit der Vorgabe der Tragwerksplanung in % von f_ck; Voreinstellung 50 % als Lehrannahme (vorläufig, F-Freigabe).",
     ],
   },
   rechnung_stahlbeton: {
@@ -672,14 +672,14 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     kurz: "CO₂-Aufnahme durch Karbonatisierung und GWP-Vergleich zweier Zemente.",
     grenzen: [
       "Karbonatisierung nach √t-Gesetz mit konstantem k.",
-      "GWP-Vergleich nur über den Zement; Vorgaben CEM I 665 kg CO₂-Äq./t (VDZ-Branchen-EPD 2022, netto) und CEM III/B 260 kg/t (Lehrwert, vorläufig, F-Freigabe).",
+      "GWP-Vergleich nur über den Zement; Vorgaben CEM I 665 kg CO₂-Äq./t (VDZ-Branchen-EPD 2022 nach EN 15804, netto) und CEM III/B 260 kg/t (Lehrwert, vorläufig, F-Freigabe).",
     ],
   },
   rechnung_bestand: {
     kurz: "f_ck und f_cd aus historischen Betonklassen sowie Fließkraft historischer Betonstähle.",
     grenzen: [
       "Ohne Bauwerksprüfung: Zuordnung nach Tabelle (Schnell/Fischer/Loch 2008, Tab. 2.1; nur Vorbemessung); B 450/B 600 (Spannbeton) ohne Zuordnung.",
-      "Mit Bauwerksprüfung: DIN EN 13791 erst ab 8 Kernen, ohne Mindeststandardabweichung (vorläufig, F-Freigabe); Kerne h/d = 1 als 150-mm-Würfel.",
+      "Mit Bauwerksprüfung (Prüfverfahren Bohrkern): DIN EN 13791 erst ab 8 Kernen, ohne Mindeststandardabweichung (vorläufig, F-Freigabe); Kerne h/d = 1 als 150-mm-Würfel.",
     ],
   },
   rechnung_schallschutz: {

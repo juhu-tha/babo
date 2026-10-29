@@ -31,12 +31,13 @@ const ALTBETON_ERKLAERUNG: Readonly<Record<AltbetonKlasse, string>> = {
   B450: 'Spannbetongüte nach DIN 4227; in der Zuordnungstabelle nicht enthalten – Festigkeit über Bohrkerne (DIN EN 13791) ermitteln.',
   B600: 'Spannbetongüte nach DIN 4227; in der Zuordnungstabelle nicht enthalten – Festigkeit über Bohrkerne (DIN EN 13791) ermitteln.',
 };
-const klasseOderStrich = (k: string | null) => k ?? '–';
+const klasseOderStrich = (k: string | null) => k ?? 'unter C8/10';
+const klassenSpanne = (u: string | null, o: string | null) => (klasseOderStrich(u) === klasseOderStrich(o) ? klasseOderStrich(u) : `${klasseOderStrich(u)} bis ${klasseOderStrich(o)}`);
 const altbetonZeilen: HistoricalRecord[] = (Object.keys(ALTBETON_ZUORDNUNG) as AltbetonKlasse[]).map(k => {
   const z = ALTBETON_ZUORDNUNG[k];
   return z.spannbeton
     ? { old: `${z.label} (DIN 1045 vor 1972, Spannbeton)`, new: '– (nicht tabelliert)', f_old: Math.round(z.kpCm2 * KP_CM2_IN_N_MM2 * 10) / 10, f_new: '–', explanation: ALTBETON_ERKLAERUNG[k] }
-    : { old: `${z.label} (DIN 1045 vor 1972)`, new: `${klasseOderStrich(z.klasseUnten)} bis ${klasseOderStrich(z.klasseOben)} (nur Vorbemessung)`, f_old: Math.round(z.kpCm2 * KP_CM2_IN_N_MM2 * 10) / 10,
+    : { old: `${z.label} (DIN 1045 vor 1972)`, new: `${klassenSpanne(z.klasseUnten, z.klasseOben)} (nur Vorbemessung)`, f_old: Math.round(z.kpCm2 * KP_CM2_IN_N_MM2 * 10) / 10,
         f_new: `${formatDeZahl(z.fckUnten, 1)} – ${formatDeZahl(z.fckOben, 1)}`, explanation: ALTBETON_ERKLAERUNG[k] };
 });
 
