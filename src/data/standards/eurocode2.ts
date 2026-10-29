@@ -1,10 +1,13 @@
 /**
- * Zentrale Normen-Datenbank: DIN EN 1992-1-1:2023-08 (Eurocode 2)
- * inkl. Nationaler Anhang Deutschland (NA DE)
+ * Zentrale Normen-Datenbank: DIN EN 1992-1-1:2011-01 + A1:2015-03 (Eurocode 2, 1. Generation, bauaufsichtlich eingeführt)
+ * inkl. Nationaler Anhang Deutschland DIN EN 1992-1-1/NA:2013-04 + NA/A1:2015-12 (NA DE)
+ * (Konsistenzprüfung 29.10.2026: Ausgabeangabe vorher „2023-08“ – eine solche DIN-Ausgabe gibt es nicht; die 2. Generation
+ * ist DIN EN 1992-1-1:2025-09, siehe src/data/centralNormenRegistry.ts. ε_c1 für C12/15 … C45/55 an Tab. 3.1 angeglichen;
+ * maßgebend sind die Werte CONCRETE in src/utils/ec2Spannbeton.ts, Abgleich in tests/konsistenz1029.test.ts.)
  * Single Source of Truth für Festigkeits- und Verformungseigenschaften nach Tabelle 3.1,
  * Bemessungsbeiwerte, Querkraft-, Durchstanz- und Rissbreitenparameter.
  * 
- * Quelle: DIN EN 1992-1-1:2023-08, Tab. 3.1 & DIN EN 1992-1-1/NA:2023-08
+ * Quelle: DIN EN 1992-1-1:2011-01, Tab. 3.1 & DIN EN 1992-1-1/NA:2013-04
  */
 
 export interface BetonKennwertRecord {
@@ -26,7 +29,7 @@ export interface BetonKennwertRecord {
 }
 
 /**
- * Vollständige Kennwertematrix nach DIN EN 1992-1-1:2023-08 Tabelle 3.1
+ * Vollständige Kennwertematrix nach DIN EN 1992-1-1:2011-01 Tabelle 3.1
  * für Normalbetone C8/10 bis C100/115.
  */
 export const EUROCODE2_TABELLE_3_1: Record<string, BetonKennwertRecord> = {
@@ -56,7 +59,7 @@ export const EUROCODE2_TABELLE_3_1: Record<string, BetonKennwertRecord> = {
     f_ctk_0_05: 1.1,
     f_ctk_0_95: 2.0,
     E_cm: 27.0,
-    epsilon_c1: 1.6,
+    epsilon_c1: 1.8,
     epsilon_cu1: 3.5,
     epsilon_c2: 2.0,
     epsilon_cu2: 3.5,
@@ -73,7 +76,7 @@ export const EUROCODE2_TABELLE_3_1: Record<string, BetonKennwertRecord> = {
     f_ctk_0_05: 1.3,
     f_ctk_0_95: 2.5,
     E_cm: 29.0,
-    epsilon_c1: 1.7,
+    epsilon_c1: 1.9,
     epsilon_cu1: 3.5,
     epsilon_c2: 2.0,
     epsilon_cu2: 3.5,
@@ -90,7 +93,7 @@ export const EUROCODE2_TABELLE_3_1: Record<string, BetonKennwertRecord> = {
     f_ctk_0_05: 1.5,
     f_ctk_0_95: 2.9,
     E_cm: 30.0,
-    epsilon_c1: 1.8,
+    epsilon_c1: 2.0,
     epsilon_cu1: 3.5,
     epsilon_c2: 2.0,
     epsilon_cu2: 3.5,
@@ -107,7 +110,7 @@ export const EUROCODE2_TABELLE_3_1: Record<string, BetonKennwertRecord> = {
     f_ctk_0_05: 1.8,
     f_ctk_0_95: 3.3,
     E_cm: 31.0,
-    epsilon_c1: 1.9,
+    epsilon_c1: 2.1,
     epsilon_cu1: 3.5,
     epsilon_c2: 2.0,
     epsilon_cu2: 3.5,
@@ -124,7 +127,7 @@ export const EUROCODE2_TABELLE_3_1: Record<string, BetonKennwertRecord> = {
     f_ctk_0_05: 2.0,
     f_ctk_0_95: 3.8,
     E_cm: 33.0,
-    epsilon_c1: 2.0,
+    epsilon_c1: 2.2,
     epsilon_cu1: 3.5,
     epsilon_c2: 2.0,
     epsilon_cu2: 3.5,
@@ -141,7 +144,7 @@ export const EUROCODE2_TABELLE_3_1: Record<string, BetonKennwertRecord> = {
     f_ctk_0_05: 2.2,
     f_ctk_0_95: 4.2,
     E_cm: 34.0,
-    epsilon_c1: 2.1,
+    epsilon_c1: 2.25,
     epsilon_cu1: 3.5,
     epsilon_c2: 2.0,
     epsilon_cu2: 3.5,
@@ -158,7 +161,7 @@ export const EUROCODE2_TABELLE_3_1: Record<string, BetonKennwertRecord> = {
     f_ctk_0_05: 2.5,
     f_ctk_0_95: 4.6,
     E_cm: 35.0,
-    epsilon_c1: 2.2,
+    epsilon_c1: 2.3,
     epsilon_cu1: 3.5,
     epsilon_c2: 2.0,
     epsilon_cu2: 3.5,
@@ -175,7 +178,7 @@ export const EUROCODE2_TABELLE_3_1: Record<string, BetonKennwertRecord> = {
     f_ctk_0_05: 2.7,
     f_ctk_0_95: 4.9,
     E_cm: 36.0,
-    epsilon_c1: 2.3,
+    epsilon_c1: 2.4,
     epsilon_cu1: 3.5,
     epsilon_c2: 2.0,
     epsilon_cu2: 3.5,
@@ -305,10 +308,10 @@ export const EUROCODE2_TABELLE_3_1: Record<string, BetonKennwertRecord> = {
 };
 
 /**
- * Teilsicherheitsbeiwerte und Bemessungsbeiwerte nach DIN EN 1992-1-1:2023-08 & NA DE
+ * Teilsicherheitsbeiwerte und Bemessungsbeiwerte nach DIN EN 1992-1-1:2011-01 & NA DE
  */
 export const EUROCODE2_BEMESSUNGSPARAMETER = {
-  norm: 'DIN EN 1992-1-1:2023-08 & DIN EN 1992-1-1/NA:2023-08',
+  norm: 'DIN EN 1992-1-1:2011-01 + A1:2015-03 & DIN EN 1992-1-1/NA:2013-04 + NA/A1:2015-12',
   gammaC: 1.50, // Teilsicherheitsbeiwert Beton (GZT)
   gammaS: 1.15, // Teilsicherheitsbeiwert Betonstahl (GZT)
   alphaCC: 0.85, // Dauerstandsfaktor für Druckbeanspruchung (in Deutschland NA DE: alpha_cc = 0,85)

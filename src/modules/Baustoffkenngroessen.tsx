@@ -158,7 +158,7 @@ export default function Baustoffkenngroessen() {
     } else if (preset === 'eps') {
       setThermischLambda(0.035);
       setThermischRho(30);
-      setThermischC(1500);
+      setThermischC(1450); // DIN EN ISO 10456 (EPS), wie Modul Wärmeeigenschaften (Konsistenzprüfung 29.10.2026, vorher 1500)
     }
   };
 

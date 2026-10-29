@@ -5,8 +5,9 @@
  * Alle Ansätze sind Lehr- und Vorbemessungswerte (Quellen und Grenzen in den Modulen und in
  * docs/pruefung/module-tranche-8.md).
  */
+import { FAKTOREN } from './energieausweis';
 
-const r1 = (x: number) => parseFloat(x.toFixed(1));
+const r1 =(x: number) => parseFloat(x.toFixed(1));
 const r2 = (x: number) => Math.round(x * 100) / 100;
 
 // ── Trockenbau: Materialbedarf einer Metallständerwand (Herstellerrichtwerte, herstellerneutral zusammengefasst; T8-TB-Q1) ──
@@ -56,7 +57,7 @@ export interface DaemmEingabe {
  * F_x = 0,5 für die Kellerdecke gegen unbeheizten Keller (Größenordnung nach DIN V 4108-6; vorläufig, F-Freigabe).
  */
 export const HEIZGRADSTUNDEN_KKH = 84;
-export const CO2_FAKTOR_HEIZUNG = 0.24;
+export const CO2_FAKTOR_HEIZUNG = FAKTOREN.bis_2026.gas_brennwert.co2 / 1000; // 0,24 – aus dem Energieausweis-Kern (Konsistenzprüfung 29.10.2026)
 export const FX_KELLERDECKE = 0.5;
 export function daemmBerater(e: DaemmEingabe) {
   const rDaemm = (e.dickeCm / 100) / e.lambda;

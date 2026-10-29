@@ -542,7 +542,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     ],
   },
   modernisierung: {
-    kurz: "U-Wert nach Zusatzdämmung, Vergleich mit dem GEG-Höchstwert, Endenergieeinsparung, Kosten, CO₂ und statische Amortisation.",
+    kurz: "U-Wert nach Zusatzdämmung, Vergleich mit dem Höchstwert nach GModG (vormals GEG), Endenergieeinsparung, Kosten, CO₂ und statische Amortisation.",
     grenzen: [
       "U_neu = 1/(1/U_alt + d/λ) ohne Korrekturen nach DIN EN ISO 6946.",
       "Arbeitskosten pauschal 85 €/m², CO₂-Faktor 0,22 kg/kWh fest.",
