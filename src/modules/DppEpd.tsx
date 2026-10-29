@@ -818,7 +818,7 @@ export default function DppEpd({ view }: DppEpdProps = {}) {
         lastReviewed={inhalt.werte.oktober2026Ap13} 
         wikipedia={[
           { title: 'Umweltproduktdeklaration', url: 'https://de.wikipedia.org/wiki/Environmental_Product_Declaration' },
-          { title: 'Ökobilanz', url: 'https://de.wikipedia.org/wiki/%C3%96kobilanz' },
+          { title: 'Ökobilanz', url: 'https://de.wikipedia.org/wiki/Lebenszyklusanalyse' },
           { title: 'Treibhauspotenzial', url: 'https://de.wikipedia.org/wiki/Treibhauspotenzial' }
         ]}
         literatur={inhalt.daten["DppEpd.literatur"]}

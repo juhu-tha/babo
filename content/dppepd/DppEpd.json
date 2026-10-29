@@ -16,7 +16,7 @@
     "t2TechnischeUmsetzungStandardisierung": "2. Technische Umsetzung & Standardisierung",
     "identifikatorenSchnittstellenUndDatenstr": "Identifikatoren, Schnittstellen und Datenstrukturen",
     "dieUmsetzungDesDpp": "Die Umsetzung des DPP erfordert eine dezentrale und hochgradig standardisierte IT-Architektur. Es wird **keine** zentrale EU-Datenbank geben, die alle Produktdetails speichert. Stattdessen verbleiben die Daten dezentral beim Hersteller und sind über APIs abrufbar:",
-    "m2mInteroperabilitätDatenablageStrukturi": "**M2M-Interoperabilität:** Datenablage strukturiert nach dem concept der **Asset Administration Shell (AAS / Verwaltungsschale)** gemäß DIN EN IEC 63278.",
+    "m2mInteroperabilitätDatenablageStrukturi": "**M2M-Interoperabilität:** Datenablage strukturiert nach dem concept der **Asset Administration Shell (AAS / Verwaltungsschale)** gemäß DIN EN IEC 63278-1.",
     "eindeutigeIdentifikationVerwendungStanda": "**Eindeutige Identifikation:** Verwendung standardisierter Barcodes und Links (z. B. GS1 Digital Link) gekoppelt an GTIN- und UID-Schlüssel für jedes einzelne verbaute Element.",
     "bimIntegrationDirekteMaschinelle": "**BIM-Integration:** Direkte maschinelle Verknüpfung der Produktdatenblätter (Product Data Templates - PDT) mit den BIM-Gebäudemodellen über offene Dateiformate wie IFC.",
     "t3ZuDokumentierendeInhalte": "3. Zu dokumentierende Inhalte (Datenfelder)",
@@ -43,9 +43,9 @@
     "werIstWannZu": "Wer ist wann zu welchen Maßnahmen rechtlich verpflichtet?",
     "dieEinführungDesDpp": "Die Einführung des DPP bringt weitreichende rechtliche Pflichten für alle baubeteiligten Personengruppen mit sich:",
     "herstellungVertrieb": "Herstellung & Vertrieb",
-    "verpflichtetZurBereitstellungDer": "Verpflichtet zur Bereitstellung der Datenstrukturen und Anbringung unzerstörbarer Datenträger. Ohne DPP verliert das Produkt seine Verkehrs- und CE-Zulassung.",
+    "verpflichtetZurBereitstellungDer": "Verpflichtet zur Bereitstellung der Daten und eines dauerhaft angebrachten Datenträgers (z. B. QR-Code), sobald der DPP für die Produktfamilie vorgeschrieben ist; ohne vorgeschriebenen DPP darf das Produkt dann nicht in Verkehr gebracht werden.",
     "planungEntsorgung": "Planung & Entsorgung",
-    "planerMüssenDppWerte": "Planer müssen DPP-Werte (z.B. Recyclinganteile) für Gebäuderessourcenpässe konsolidieren. Entsorger scannen Bauteile für schadstofffreie Sortierungen.",
+    "planerMüssenDppWerte": "Planer können DPP-Werte (z. B. Recyclinganteile) für Gebäuderessourcenpässe zusammenführen (eine gesetzliche Pflicht zum Gebäuderessourcenpass besteht nicht, Stand 10/2026). Entsorger scannen Bauteile für schadstofffreie Sortierungen.",
     "expertentippDppDatenFließen": "Expertentipp: DPP-Daten fließen direkt in den Gebäuderessourcenpass (Madaster) ein und sind hochgradig DGNB/QNG-relevant.",
     "scannerAktiv": "Scanner aktiv",
     "cameraSimulator": "CAMERA: SIMULATOR",
@@ -56,7 +56,7 @@
     "stahlbetonstützeC3545": "Stahlbetonstütze C35/45",
     "precastSolutionsGmbhId": "Precast Solutions GmbH • ID: 1234-BETON",
     "woodbuildAgId5678": "WoodBuild AG • ID: 5678-HOLZ",
-    "integrierteDatenAuditsNach": "🔒 Integrierte Daten-Audits nach **DIN SPEC 91484** & **91525** standardgerechter Validierung.",
+    "integrierteDatenAuditsNach": "Simulation: Datenfelder in Anlehnung an **DIN SPEC 91484** (Bauteilerfassung vor Rückbau) und **DIN SPEC 91525** (Rückbaukonzept); keine Validierung.",
     "eindeutigeIdUid": "Eindeutige ID (UID): ",
     "verifiziertAktiv": " Verifiziert & Aktiv",
     "chargeAbnahme": "Charge / Abnahme",
@@ -178,7 +178,7 @@
         "name": "Normalbeton C25/30",
         "manufacturer": "MusterBeton GmbH",
         "validUntil": "2028-12-31",
-        "deklarationsnummer": "EPD-MBG-20230115-IBC1-DE",
+        "deklarationsnummer": "MUSTER-EPD-0001 (fiktiv)",
         "einheit": "1 m³",
         "phasen": {
           "a1a3": {
@@ -216,7 +216,7 @@
         "name": "Betonstahl B500B (100% Recycling)",
         "manufacturer": "EcoSteel AG",
         "validUntil": "2027-06-30",
-        "deklarationsnummer": "EPD-ECO-20220610-IBA1-DE",
+        "deklarationsnummer": "MUSTER-EPD-0002 (fiktiv)",
         "einheit": "1 t",
         "phasen": {
           "a1a3": {
@@ -254,7 +254,7 @@
         "name": "Brettschichtholz (BSH)",
         "manufacturer": "WoodBuild GmbH",
         "validUntil": "2029-03-15",
-        "deklarationsnummer": "EPD-WBG-20240315-IBA1-DE",
+        "deklarationsnummer": "MUSTER-EPD-0003 (fiktiv)",
         "einheit": "1 m³",
         "phasen": {
           "a1a3": {

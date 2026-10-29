@@ -19,7 +19,7 @@
     "rohdichteMassdensity": "Rohdichte (MassDensity):",
     "wärmeleitfähigkeit": "Wärmeleitfähigkeit (λ):",
     "coGwpA1A3": "CO₂-GWP (A1-A3):",
-    "dieseKennwerteSteuernBerechnungs": "Diese Kennwerte steuern Berechnungs-Engines für Statik (E-Modul), GEG-U-Wert (Wärmeleitfähigkeit) und Ökobilanzierung (CO₂).",
+    "dieseKennwerteSteuernBerechnungs": "Diese Kennwerte steuern Berechnungs-Engines für Statik (E-Modul), U-Wert (Wärmeleitfähigkeit) und Ökobilanzierung (CO₂).",
     "ifcExpressSchemaPhysical": "IFC-EXPRESS Schema Physical File (.ifc)",
     "iso1030321": "ISO 10303-21",
     "bauteilZuweisungsstrukturFürBuilding": "/* Bauteil-Zuweisungsstruktur für Building Information Modeling */",
@@ -103,7 +103,7 @@
         "defaultDensity": 7850,
         "defaultConductivity": 50,
         "defaultEModulus": 210000,
-        "defaultGwp": 1450,
+        "defaultGwp": 5000,
         "description": "Duktiler Tragwerkswerkstoff mit sehr guten Festigkeitseigenschaften, unbegrenzt kreislauffähig (Modul D Gutschriften), aber hoher Primärenergieherstellung.",
         "ifcClass": "IfcMaterial"
       }
@@ -184,7 +184,7 @@
       },
       {
         "formel": "U = \\frac{1}{R_{si} + \\sum_{j=1}^n \\frac{d_j}{\\lambda_j} + R_{se}} \\quad [\\text{W/(m}^2\\cdot\\text{K)}]",
-        "erklaerung": "Wärmedurchgangskoeffizient mehrschichtiger BIM-Bauteile (IfcWallStandardCase) aus den thermischen Materialeigenschaften.",
+        "erklaerung": "Wärmedurchgangskoeffizient mehrschichtiger BIM-Bauteile (IfcWall; IfcWallStandardCase ist in IFC 4.3 veraltet) aus den thermischen Materialeigenschaften.",
         "quelle": "DIN EN ISO 6946"
       }
     ]

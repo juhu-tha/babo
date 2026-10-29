@@ -7,6 +7,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import inhalt from '@/content/materialpaesse/Materialpaesse.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { materialpassBilanz } from '@/src/calc/materialpass';
 
 interface BuildingArchetype {
   id: string;
@@ -56,16 +57,6 @@ const ARCHETYPES: BuildingArchetype[] = [
   }
 ];
 
-// Mock values for commodity prices / recycling attributes
-const COMMODITY_PRICES = {
-  copper: 8400, // € per ton
-  steel: 650,   // € per ton
-  concreteRecycled: 18, // € per ton residual worth for clean crushed aggregate
-  concreteWaste: -35,   // € per ton tipping fee (disposal cost if glued/hazardous)
-  woodBiomass: 110,     // € per ton for energetic or particle use
-  woodReuse: 450,       // € per ton for actual direct element reuse
-};
-
 export default function Materialpaesse() {
   const [selectedArchId, setSelectedArchId] = useState<string>('massiv');
   const [gfa, setGfa] = useState<number>(2500); // Gross Floor Area m²
@@ -88,52 +79,9 @@ export default function Materialpaesse() {
     }
   };
 
-  // 1. Calculate materials inventory (tons)
-  const concreteDensity = 2.4; // t/m³
-  const woodDensity = 0.5; // t/m³
-  
-  const concreteTons = archetype.concreteVolume * gfa * concreteDensity;
-  const steelTons = (archetype.steelMass * gfa) / 1000;
-  const woodTons = archetype.woodVolume * gfa * woodDensity;
-  const copperTons = (archetype.copperMass * gfa) / 1000;
-  const totalWeightTons = concreteTons + steelTons + woodTons + copperTons;
-
-  // 2. Madaster Circularity Indikator Calculation (simplified but academically sound)
-  // Input circularity: Recycled content %
-  // Output circularity: based on connection/separation index (screwed = 90%, mortar = 50%, glued = 10%)
-  const outputCircularityMap = {
-    glued: 10,
-    mortar: 50,
-    screwed: 95
-  };
-  const outputCircularity = outputCircularityMap[joiningMethod];
-  const circularityIndex = Math.round((recycledInput + outputCircularity) / 2);
-
-  // 3. Biogenic CO2 carbon storage calculation
-  // Biogener Kohlenstoff: ca. 50 % C in darrtrockenem Holz -> 0,5 * 44/12 ≈ 1,83 t CO2 je t Holz
-  // (Rohdichte 0,5 t/m³ hier vereinfacht als darrtrockene Masse angesetzt; EN 16449)
-  const carbonStoredTons = Math.round(woodTons * 0.5 * 44 / 12);
-
-  // 4. Urban Mining Potential / Restwert calculation
-  // If glued, concrete has negative value (tipping fee) because you can't reuse or separate it.
-  // If screwed, it can be separated. Steel is highly recyclable (95% value).
-  const concreteRecoveryRate = joiningMethod === 'screwed' ? 0.90 : joiningMethod === 'mortar' ? 0.60 : 0.0;
-  const concreteValue = concreteRecoveryRate > 0 
-    ? concreteTons * concreteRecoveryRate * COMMODITY_PRICES.concreteRecycled
-    : concreteTons * COMMODITY_PRICES.concreteWaste; // pay to throw away!
-
-  const steelRecoveryRate = joiningMethod === 'screwed' ? 0.98 : joiningMethod === 'mortar' ? 0.80 : 0.50;
-  const steelValue = steelTons * steelRecoveryRate * COMMODITY_PRICES.steel;
-
-  const woodRecoveryRate = joiningMethod === 'screwed' ? 0.85 : joiningMethod === 'mortar' ? 0.40 : 0.05;
-  const woodValue = woodRecoveryRate > 0.5
-    ? woodTons * woodRecoveryRate * COMMODITY_PRICES.woodReuse
-    : woodTons * COMMODITY_PRICES.woodBiomass;
-
-  const copperValue = copperTons * 0.95 * COMMODITY_PRICES.copper;
-
-  const totalResidualValue = Math.round(concreteValue + steelValue + woodValue + copperValue);
-  const residualValuePerM2 = Math.round(totalResidualValue / gfa);
+  // Bilanz (Inventar, Zirkularität, biogener CO₂-Speicher, Restwert): Lehrmodell in src/calc/materialpass.ts
+  const { concreteTons, steelTons, woodTons, copperTons, totalWeightTons, circularityIndex, carbonStoredTons, totalResidualValue, residualValuePerM2 } =
+    materialpassBilanz(archetype, gfa, recycledInput, joiningMethod);
 
   return (
     <div className="flex flex-col gap-8 animate-in fade-in duration-300">
@@ -661,7 +609,7 @@ export default function Materialpaesse() {
           { title: 'Gebäuderessourcenpass' },
           { title: inhalt.werte.urbanMining, url: 'https://de.wikipedia.org/wiki/Urban_Mining' },
           { title: 'Kreislaufwirtschaft', url: 'https://de.wikipedia.org/wiki/Kreislaufwirtschaft' },
-          { title: 'Ökobilanz', url: 'https://de.wikipedia.org/wiki/%C3%96kobilanz' }
+          { title: 'Ökobilanz', url: 'https://de.wikipedia.org/wiki/Lebenszyklusanalyse' }
         ]}
         regelwerke={inhalt.daten["Materialpaesse.regelwerke"]}
         literatur={inhalt.daten["Materialpaesse.literatur"]}

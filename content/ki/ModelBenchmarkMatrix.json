@@ -54,7 +54,7 @@
     "openWeight14b": "Mittelgroßes Open-Weight-Modell (ca. 14B), lokal betreibbar",
     "openWeightsGgufC": "Open Weights (GGUF)",
     "t000LokalerStrom4": "0,00 € (Lokaler Strom)",
-    "t1012GbVram": "10–12 GB VRAM (RTX 3060/4060/5060)",
+    "t1012GbVram": "10–16 GB VRAM (z. B. RTX 3060 12 GB, RTX 4060 Ti/5060 Ti 16 GB)",
     "guterKompromissFürBüro": "Guter Kompromiss für Büro-PCs; Verarbeitung lokal ohne Drittlandübermittlung.",
     "herausragendesDeutschesNormenverständnis": "Für deutschsprachige Fachtexte gut nutzbar; Normbezüge (DIN, EC2, DAfStb) und Gleichungen stets gegenprüfen. Moderater Hardware-Bedarf."
   }

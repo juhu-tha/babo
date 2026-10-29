@@ -847,7 +847,7 @@ export default function OnlineTools() {
         wikipedia={[
           { title: 'Bausoftware', url: 'https://de.wikipedia.org/wiki/Bausoftware' },
           { title: inhalt.werte.buildingInformationModeling, url: 'https://de.wikipedia.org/wiki/Building_Information_Modeling' },
-          { title: 'Ökobilanz', url: 'https://de.wikipedia.org/wiki/%C3%96kobilanz' }
+          { title: 'Ökobilanz', url: 'https://de.wikipedia.org/wiki/Lebenszyklusanalyse' }
         ]}
         literatur={inhalt.daten["OnlineTools.literatur"]}
         regelwerke={inhalt.daten["OnlineTools.regelwerke"]}

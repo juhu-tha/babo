@@ -17,7 +17,7 @@
     "faltungsnetzeCnnsUndVision": "Faltungsnetze (CNNs) und Vision Transformer vermessen Rissbreiten ab 0,1 mm und gleichen Baustellen-Scans mit 4D-BIM ab.",
     "outputSchadenskatasterSollIst": "Output: Schadenskataster, Soll-Ist-Abweichung",
     "semantischeRagPipeline": "Semantische RAG-Pipeline",
-    "chunkingEmbeddingModelleUnd": "Chunking, Embedding-Modelle und Vektordatenbanken (Qdrant, Chroma) liefern normative Zitate aus Eurocodes ohne Halluzination.",
+    "chunkingEmbeddingModelleUnd": "Chunking, Embedding-Modelle und Vektordatenbanken (Qdrant, Chroma) liefern Originalabschnitte aus Eurocodes als Antwortgrundlage; Halluzinationen werden verringert, nicht ausgeschlossen.",
     "outputRelevanteOriginalabschnitteMit": "Output: Relevante Originalabschnitte mit Paragraf",
     "kognitiveSprachmodelleLlm": "Kognitive Sprachmodelle (LLM)",
     "transformerKerneAnalysierenWidersprüche": "Transformer-Kerne analysieren Widersprüche im Leistungsverzeichnis, formulieren Bedenkenanzeigen und synthetisieren Gutachten.",
@@ -92,7 +92,7 @@
     "transformerSelfAttention": "Transformer & Self-Attention",
     "großeSprachmodelleWandelnUnstrukturierte": "Große Sprachmodelle wandeln unstrukturierte Bautech-Texte, Regelwerke und Gutachten über selbstaufmerksamkeitsbasierte Transformer-Architekturen in strukturierte Fachanalysen um.",
     "retrievalAugmentedGenerationRag": "Retrieval-Augmented Generation (RAG)",
-    "quellentrunkeneWissenseinbettungÜberVekt": "Quellentrunkene Wissenseinbettung über Vektordatenbanken ohne Modell-Halluzination",
+    "quellentrunkeneWissenseinbettungÜberVekt": "Quellengestützte Wissenseinbettung über Vektordatenbanken (weniger, aber nicht null Halluzinationen)",
     "vektordatenbankSemantischeSuche": "Vektordatenbank & Semantische Suche",
     "ragVerbindetStatischeSprachmodelle": "RAG verbindet statische Sprachmodelle mit dynamischen, firmeneigenen Wissensarchiven (DIN-Normen, Baugrundberichte, Zulassungen), indem nur verifizierte Originaltexte als Antwortgrundlage injiziert werden.",
     "computerVisionMultimodaleBildverarbeitun": "Computer Vision & Multimodale Bildverarbeitung",
@@ -254,10 +254,10 @@
         "output": "Tabelle mit Abweichungen, Risikoeinschätzungen und Paragrafenverweisen"
       },
       {
-        "titel": "Rechtlich belastbare Bedenkenanzeigen nach § 4 Abs. 3 VOB/B",
+        "titel": "Entwürfe für Bedenkenanzeigen nach § 4 Abs. 3 VOB/B",
         "bereich": "Bauleitung & Projektmanagement",
-        "beschreibung": "Formulierung präziser, formal unangreifbarer Bedenkenanzeigen aus Stichpunkten des Baustellen-Tagebuchs (z. B. unzureichende Vorleistung, zu hohe Bauteilfeuchte vor Estrichverlegung).",
-        "output": "Fertiger, unterschriftsreifer Briefentwurf mit Fristsetzung"
+        "beschreibung": "Entwurf präziser Bedenkenanzeigen aus Stichpunkten des Baustellen-Tagebuchs (z. B. unzureichende Vorleistung, zu hohe Bauteilfeuchte vor Estrichverlegung).",
+        "output": "Briefentwurf mit Fristsetzung zur Prüfung durch die Bauleitung"
       },
       {
         "titel": "Gutachtensynthese & Befundauswertung",
@@ -268,7 +268,7 @@
     ],
     "Systemarchitektur.techDetails.llm.datenanforderungen": {
       "inputFormat": "Unstrukturierter Fließtext, Markdown, PDF-Extrakte, JSON",
-      "datenvolumen": "Kontextfenster von 8000 bis zu 2 000 000 Tokens (ganze Projektordner)",
+      "datenvolumen": "Kontextfenster von rund 8000 bis über 1 000 000 Tokens je nach Modell (Stand 10/2026)",
       "latenz": "15 bis 100 Tokens pro Sekunde (1–10 Sekunden pro Antwort)",
       "hardware": "Server-Cluster für Cloud-APIs oder High-End Workstation (VRAM-intensiv)"
     },
@@ -396,7 +396,7 @@
         },
         {
           "step": "4. Fehlerselbstkorrektur (Self-Correction Loop)",
-          "desc": "Ergibt der Nachweis eine Profilüberlastung (Ausnutzung η = 1.18 > 1.0), wählt der Agent automatisch das nächstgrößere Profil (z. B. HEB 320) und wiederholt die Bemessung."
+          "desc": "Ergibt der Nachweis eine Profilüberlastung (Ausnutzung η = 1,18 > 1,0), wählt der Agent automatisch das nächstgrößere Profil (z. B. HEB 320) und wiederholt die Bemessung."
         }
       ]
     },
@@ -411,7 +411,7 @@
         "titel": "BIM-Mengenermittlung & GAEB-Zuordnung",
         "bereich": "Kostenplanung & AVA (Lph 6–7 HOAI)",
         "beschreibung": "Agent liest IFC-Dateien aus, ermittelt Schalungs- und Betonvolumina, gleicht diese mit VOB/C-Abrechnungsregeln ab und ordnet sie den GAEB-Positionen zu.",
-        "output": "Fertig bepreiste GAEB DA XML (X83) Leistungsverzeichnis-Datei"
+        "output": "Fertig bepreiste GAEB DA XML (X84, Angebotsabgabe) Leistungsverzeichnis-Datei"
       },
       {
         "titel": "Vertrags- & Nachtragsprüfung im Baubetrieb",
@@ -475,7 +475,7 @@
       "inputFormat": "Sämtliche internen Firmenformate ohne externe Übertragungsbeschränkungen",
       "datenvolumen": "Beliebig – begrenzt nur durch lokale SSD-Speicherkapazität",
       "latenz": "20 bis 80 Tokens/Sekunde auf moderner Hardware",
-      "hardware": "Workstation mit 16–64 GB VRAM (RTX 4080/4090) oder Apple Silicon (M3/M4 Max)"
+      "hardware": "Workstation mit 16–32 GB Grafikspeicher oder Rechner mit 32–128 GB gemeinsamem Speicher (Stand 10/2026)"
     },
     "Systemarchitektur.techDetails.edge.grenzen": {
       "risiko": "Hardware-Begrenzung: Sehr große Frontier-Modelle (> 70 Milliarden Parameter) erfordern teurere Multi-GPU-Setups.",
@@ -485,7 +485,7 @@
       "König, M. et al.: Bauinformatik – Innovative Methoden für Planung, Bau und Betrieb (Springer Vieweg)",
       "Goodfellow, I., Bengio, Y., Courville, A.: Deep Learning (MIT Press)",
       "Vaswani, A. et al.: Attention Is All You Need (Advances in Neural Information Processing Systems)",
-      "Wendehorst Baustoffkunde: Werkstoffe, Prüfung und Dauerhaftigkeit (37. Auflage, Springer Vieweg)"
+      "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011"
     ],
     "Systemarchitektur.regelwerke": [
       {
