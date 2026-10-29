@@ -196,6 +196,8 @@ Die Beispiele im Modul (0,078/0,061; 0,065/0,071; 0,059/0,084; „ohne Nachtlüf
 
 **Umsetzung 29.10.2026 (QZ-4, Quizteil von T3-HY-2):** `q_hyf_2` und `q_hyf_4` rechnen jetzt wie der Kern mit c·ρ = 2400 kJ/(m³·K) (`WAERMEKAPAZITAET_VOL`, src/calc/hydratation.ts): ΔT_ad = 70 000/2400 = 29,2 K → „rund 29 K“ (vorher 28 K; Distraktoren 15/58/70 K); T_Kern = 15 + 112 000/2400 = 61,7 °C → „etwa 62 °C“ (vorher 60 °C; Distraktoren 47/31/75 °C). Nachrechnung in tests/quizRechenfragen.test.ts gegen den Kern. Freigaben zurückgenommen (verified false), Vorprüfung „korrigiert“. Das Anwendungsbeispiel im Modul ist nicht Teil dieser Umsetzung.
 
+**Umsetzung 29.10.2026 (T3-HY-2, Anwendungsbeispiel; Entscheidung 29.10.):** Das Anwendungsbeispiel „Adiabatische Temperaturerhöhung“ rechnet wie Kern und Quiz mit c·ρ = 2400 kJ/(m³K): z·Q = 320·350 = 112 000 kJ/m³, ΔT_ad = 112 000/2400 = 46,7 K ≈ 47 K, T_Kern = 15 + 46,7 = 61,7 °C ≈ 62 °C. Die Rechenschritte waren seit dem 28.10. auf 2400 umgestellt; der Ergebnishinweis nannte noch „rund 45 K … bis rund 60 °C“ (Wert mit 2 500) und ist jetzt „rund 47 K … bis rund 62 °C“; ebenso die Kurzfassung (`src/data/kurzfassung.ts`: „rund 47 K“). Test: `tests/entscheidungen1029.test.ts`. Das Modul bleibt wegen T3-HY-1 (NEN 5970, Prüfbogen) offen.
+
 - Hinweis (Kurzfassung): „E-Modul nach 2 Tagen etwa 70 bis 80 %“ – nach Gl. 3.2/3.5 sind es 73 % (S), 81 % (N) und 85 % (R). „Etwa 70 bis 85 %“ wäre genauer.
 
 **F-Freigabe-Stellen**
@@ -398,7 +400,7 @@ Nicht freigegeben:
 
 - `mauerwerk` – Prüfbogen: #239-W-1, #239-MW-1 (Normtext)
 - `frischbeton` – T3-FB-2 (Grenzabmaße der Konsistenz am Normtext DIN EN 206) nicht entschieden
-- `hydratation_folgen` – T3-HY-1: gewogene Reife nach NEN 5970 vorläufig, Form und C am Normtext (F-Freigabe)
+- `hydratation_folgen` – T3-HY-1: gewogene Reife nach NEN 5970 vorläufig, Form und C am Normtext (F-Freigabe); T3-HY-2 am 29.10. umgesetzt (c·ρ = 2400 im Anwendungsbeispiel)
 - `expositionsklassen` – Prüfbogen: #247-5, #247-6 (Normtext)
 - `asphalt` – Empfehlung verlangt Klärung der F-Stelle – offen
 - `brandschutz` – Prüfbogen: #247-7, #247-8 (Normtext)

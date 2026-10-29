@@ -244,7 +244,7 @@ Die Nummern 1–3 schließen `stahlbeton_bemessung` ab; die 10 Bereiche des Auft
 
 **Empfehlung:** Rechnung freigabefähig; die Kennwerte bleiben bis zur Recherche als „vorläufig“ gekennzeichnet (Teilfreigabe „Rechenweg“ möglich).
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026, Nachtrag)
 
 ## 7. Korrosion / Chloridrechner (`korrosion`)
 
@@ -348,7 +348,7 @@ Der vorhandene Regressionstest gegen den öffentlichen QNG-Beispielbericht (EVEB
 
 **Empfehlung:** freigabefähig nach Klärung der F-Stellen; für Wohngebäude mit Netzstrom/Fernwärme und BNB-gelisteten Baustoffen bereits jetzt freigabefähig.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026, Nachtrag)
 
 ## 11. Bodenmechanik / Atterberg (`bodenmechanik`)
 
@@ -443,6 +443,9 @@ Nicht freigegeben, obwohl freigabefähig: die Reiter Rissbreite (Nr. 2) und σ-�
 
 - **FR-1 (`bp_holzprodukte`):** Prüfvermerk bleibt. Durchbiegungsgrenzen l/300 (w_inst, w_net,fin) und l/200 (w_fin) als Empfehlungswerte nach DIN EN 1995-1-1, Tab. 7.2 mit NA (DE) gekennzeichnet (Ergebnisanzeige, Rechenbeispiel, Formelkasten, Grenzen); Rechnung unverändert.
 
+- **F-Stellen `lca_rechner` (Entscheidung 29.10.):** Modul-D-Verwertungsfaktoren (1,45 / 1,0 / 0,55 / 0,40) als Lehrwerte gekennzeichnet (Begründungstext Modul-D-Labor, `QUELLE_VERWERTUNGSFAKTOR`, Grenzen; Modul D wird nicht angerechnet und ändert den QNG-Kennwert nicht). Lkw-Faktoren Elektro 0,004 und H₂ 0,003 kg/(t·km) im Einzelbaustoff-Rechner als Lehrwert beschriftet (A4 nicht im QNG-Bilanzrahmen). QNG-Grenzen PLUS 24 / PREMIUM 20 mit Stand („QNG-Handbuch Anlage 3 v1.4; KfW 09/2025“, `QNG_STAND`) und dem Hinweis „vorübergehende Absenkung (seit 12/2025) nicht abgebildet“ unter den Grenzwerten. BBSR-Nutzungsdauern mit „Stand 2017“ (Fassung 24.02.2017; Neufassung 2025 nicht eingearbeitet, Umstellung als eigene Aufgabe). Werte unverändert. Quellen wie Befund T2 Nr. 10 (KfW, Anlage zum Merkblatt 296/498, 09/2025; BBSR-Tabelle 2017; § 6 KrWG, BNB 4.1.4).
+- **Kennwerte `lebensdauerbemessung` (Entscheidung 29.10.):** Lehrhinweis und Überschriften der Parametertabellen (Karbonatisierung, Chlorid) sowie Grenzen kennzeichnen die Kennwerte als „Lehrwerte nach fib Bulletin 34 (Sekundärquellen), vorläufig“; einzelne „vorläufig, F-Freigabe“-Kennzeichnungen (D_RCM,0, K_AC → R⁻¹, p_SR, ToW, C_S, C₀) bleiben. Rechenweg unverändert (Nachrechnung L1–L7).
+
 ## Freigabe 29.10.2026
 
 Entscheidung vom 28.10.2026: „Module ohne offene Frage freigeben“; Punkte, die nur am Normtext zu klären sind, blockieren die Freigabe (Prüfbogen Normtext, Abschnitt „Was ohne Normtext nicht weiterkommt“). Geprüft wurde je Modul: Empfehlung erfüllt (Korrekturen behoben, Klärungen entschieden und in den Abschnitten „Umsetzung 29.10.2026“ bzw. in den genannten PRs umgesetzt oder gekennzeichnet) und kein Normtextpunkt offen. Prüfvermerk in `src/data/pruefvermerke.ts`: „geprueft“, am 2026-10-29, passiv ohne Namen. Quizfreigaben sind davon getrennt.
@@ -454,7 +457,20 @@ Freigegeben:
 
 Nicht freigegeben:
 
-- `lebensdauerbemessung` – nur Rechnung freigabefähig; Kennwerte vorläufig (p_SR am fib Bulletin 34)
-- `lca_rechner` – Empfehlung verlangt Klärung der F-Stellen – offen
+- `lebensdauerbemessung` – nur Rechnung freigabefähig; Kennwerte vorläufig (p_SR am fib Bulletin 34) – am 29.10. entschieden, freigegeben im Nachtrag
+- `lca_rechner` – Empfehlung verlangt Klärung der F-Stellen – am 29.10. entschieden, freigegeben im Nachtrag
 
 Bereits am 28.10.2026 freigegeben: `bp_holzprodukte`, `spannbeton_grundlagen`, `spannbeton_kennwerte`, `korrosion`, `schnellkarbonatisierung` (unverändert).
+
+## Freigabe 29.10.2026 (Nachtrag)
+
+Entscheidungen des Professors vom 29.10.2026 („alle übernehmen“) zu den B-Fragen der offenen Fachmodule; umgesetzt im PR „Entscheidungen 29.10.: Lehrwert-Kennzeichnungen und Freigabe von vier Modulen“. Verfahren wie bei der Freigabe 29.10.2026: Prüfvermerk in `src/data/pruefvermerke.ts` „geprueft“, am 2026-10-29, passiv ohne Namen; Quizfreigaben sind davon getrennt. Regressionstest: `tests/entscheidungen1029.test.ts`.
+
+Freigegeben:
+
+- [x] `lca_rechner` – F-Stellen entschieden: Modul-D- und Lkw-Faktoren (E/H₂) Lehrwerte, QNG-Grenzen mit Stand und Hinweis „vorübergehende Absenkung nicht abgebildet“, BBSR-Nutzungsdauern Stand 2017 (Abschnitt „Umsetzung 29.10.2026“)
+- [x] `lebensdauerbemessung` – Kennwerte als „Lehrwerte nach fib Bulletin 34 (Sekundärquellen), vorläufig“ gekennzeichnet; Rechenweg geprüft
+
+Nicht freigegeben:
+
+- `stahlbeton_bemessung` (Reiter Verankerung, Rissbreite, σ-ε-Linien) – Prüfbogen: #242-1 bis -4 (Normtext NA DE)

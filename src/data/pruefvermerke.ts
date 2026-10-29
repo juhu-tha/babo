@@ -65,6 +65,8 @@ export function datumDe(iso: string | undefined): string {
 // 29.10.2026: Module ohne offene Frage nach den Modulprüfungen Tranche 1–12 und den Umsetzungen vom 29.10. freigegeben
 // (Entscheidung 28.10.: „Module ohne offene Frage freigeben“; Normtextpunkte des Prüfbogens blockieren); Abschnitte
 // „Freigabe 29.10.2026“ in docs/pruefung/module-tranche-<n>.md. Vermerk passiv ohne Namen.
+// 29.10.2026 (Nachtrag): betonkennwerte, mischungsberechnung, lca_rechner, lebensdauerbemessung nach den Entscheidungen vom
+// 29.10. (Lehrwert-Kennzeichnungen); Abschnitte „Freigabe 29.10.2026 (Nachtrag)“ in den Befundlisten Tranche 1 und 2.
 export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   abfaelle: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 12, freigegeben 29.10.2026 (docs/pruefung/module-tranche-12.md)
   altholz_urban_mining: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 12, freigegeben 29.10.2026 (docs/pruefung/module-tranche-12.md)
@@ -84,7 +86,7 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   zfp: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 12, freigegeben 29.10.2026 (docs/pruefung/module-tranche-12.md)
   bestand: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 12, freigegeben 29.10.2026 (docs/pruefung/module-tranche-12.md)
   beton_a_z: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 9, freigegeben 29.10.2026 (docs/pruefung/module-tranche-9.md)
-  betonkennwerte: { status: 'offen' },
+  betonkennwerte: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 1, freigegeben 29.10.2026 nach den Entscheidungen vom 29.10. (docs/pruefung/module-tranche-1.md, Nachtrag)
   betonpraxis: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 9, freigegeben 29.10.2026 (docs/pruefung/module-tranche-9.md)
   bim_baustoffe: { status: 'offen' },
   bindemittel: { status: 'offen' },
@@ -183,7 +185,7 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   labor: { status: 'offen' },
   labor_sicherheit: { status: 'offen' },
   lca_ingenieurbau: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 11, freigegeben 29.10.2026 (docs/pruefung/module-tranche-11.md)
-  lca_rechner: { status: 'offen' },
+  lca_rechner: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 2, freigegeben 29.10.2026 nach den Entscheidungen vom 29.10. (docs/pruefung/module-tranche-2.md, Nachtrag)
   lca_regulatorik: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 11, freigegeben 29.10.2026 (docs/pruefung/module-tranche-11.md)
   lebenszyklus_kosten: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 11, freigegeben 29.10.2026 (docs/pruefung/module-tranche-11.md)
   lehm: { status: 'offen' },
@@ -201,7 +203,7 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   messen_pruefen: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 4, freigegeben 29.10.2026 (docs/pruefung/module-tranche-4.md)
   metalle: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 5, freigegeben 29.10.2026 (docs/pruefung/module-tranche-5.md)
   metallkorrosion: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 12, freigegeben 29.10.2026 (docs/pruefung/module-tranche-12.md)
-  mischungsberechnung: { status: 'offen' },
+  mischungsberechnung: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 1, freigegeben 29.10.2026 nach den Entscheidungen vom 29.10. (docs/pruefung/module-tranche-1.md, Nachtrag)
   modernisierung: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 12, freigegeben 29.10.2026 (docs/pruefung/module-tranche-12.md)
   nachbehandlung: { status: 'offen' },
   nachhaltigkeit_daten_regeln: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 11, freigegeben 29.10.2026 (docs/pruefung/module-tranche-11.md)
@@ -236,7 +238,7 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   schadstoffe: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 12, freigegeben 29.10.2026 (docs/pruefung/module-tranche-12.md)
   schallschutz: { status: 'offen' },
   schnellkarbonatisierung: { status: 'geprueft', am: '2026-10-28' }, // Zweitprüfung, freigegeben 28.10.2026 (docs/pruefung/module-tranche-2.md)
-  lebensdauerbemessung: { status: 'offen' },
+  lebensdauerbemessung: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 2, freigegeben 29.10.2026 nach den Entscheidungen vom 29.10. (docs/pruefung/module-tranche-2.md, Nachtrag)
   labor_potentialmessung: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 4, freigegeben 29.10.2026 (docs/pruefung/module-tranche-4.md)
   labor_auslagerung: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 4, freigegeben 29.10.2026 (docs/pruefung/module-tranche-4.md)
   labor_frischbeton: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 4, freigegeben 29.10.2026 (docs/pruefung/module-tranche-4.md)
