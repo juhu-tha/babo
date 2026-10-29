@@ -2,9 +2,9 @@
 
 Stand: 29.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster IV umfasst 314 Fragen aus 50 Modulen. Aufgeführt sind 96 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster IV umfasst 314 Fragen aus 50 Modulen. Aufgeführt sind 99 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 76 korrigiert, 0 fraglich, 11 mit offenem Prüfhinweis, 12 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 80 korrigiert, 0 fraglich, 11 mit offenem Prüfhinweis, 12 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -29,6 +29,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 76 korrigiert, 0 fraglich, 1
 - **Frage:** Eine Bestandswand hat U = 1,40 W/(m²K). Sie erhält 12 cm Dämmung mit λ = 0,035 W/(m·K). Wie groß ist der neue U-Wert ungefähr?
 - **Richtige Antwort:** 0,24 W/(m²K)
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Runde 3): Rückmeldungen zu 0,29 und 0,35 W/(m²K) korrigiert (0,29 ist der Wert ohne R_alt, 0,35 entspräche rund 7,5 cm Dämmung) – korrigiert
+- [ ] ok
+- [ ] ändern: …
+
+### q_bst_5 · Altbauatlas
+
+- **Frage:** In einer Außenwandecke wird bei θ_i = 20 °C und θ_e = −5 °C eine Oberflächentemperatur von θ_si = 11,5 °C bestimmt. Ist der Mindestwärmeschutz nach DIN 4108-2:2013-02 (f_Rsi ≥ 0,70) eingehalten?
+- **Richtige Antwort:** Nein, denn f_Rsi = (11,5 + 5)/(20 + 5) = 0,66 liegt unter 0,70
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 29.10.: Ausgabe DIN 4108-2:2013-02 im Fragetext genannt (Neuausgabe 2026-05 erschienen, Zahlenwert öffentlich nicht prüfbar); Erklärung: aus f_Rsi = 0,70 folgen bei −5/20 °C 12,5 °C, 12,6 °C ist der Wert des 80-%-Kriteriums – korrigiert
 - [ ] ok
 - [ ] ändern: …
 
@@ -491,8 +499,16 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 76 korrigiert, 0 fraglich, 1
 ### qn_lca_ingenieurbau_1 · LCA im Ingenieurbau (DIN EN 17472)
 
 - **Frage:** Welches Merkmal unterscheidet die Ökobilanz von Ingenieurbauwerken nach DIN EN 17472 von der Gebäudebilanz nach DIN EN 15978?
-- **Richtige Antwort:** Sie kennt ein eigenes Nutzermodul B8; bei Brücken meist 80 bis 100 Jahre.
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Abgleich Runde 3): Aussagen zu DIN EN 17472 vorsichtig formuliert: Betrachtungszeitraum vom Auftraggeber festgelegt (3.69), typisch 80–100 a; B8 als Nutzermodul, Stau-Zuordnung als Modellannahme – korrigiert
+- **Richtige Antwort:** Sie nutzt eigene funktionelle Einheiten, z. B. 1 m² Brückendeckfläche.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 29.10. (Runde 4, Klärung entschieden): richtige Option auf funktionelle Einheiten umgestellt, da EN 15978:2026 B8 ebenfalls (optional) kennt – korrigiert
+- [ ] ok
+- [ ] ändern: …
+
+### qn_lca_ingenieurbau_3 · LCA im Ingenieurbau (DIN EN 17472)
+
+- **Frage:** Spannbeton-Hohlkasten im Simulator: 100 Jahre, 6 Belagswechsel mit je 18 Tagen Teilsperrung, DTV-SV = 4500 LKW/d, davon 40 % im Stau, 0,95 kg CO₂-Äq. je Fahrzeug, konventionelle Baustellenführung. Wie hoch sind die im Simulator als B8 geführten Stauemissionen?
+- **Richtige Antwort:** rund 184,7 t CO₂-Äq.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 29.10. (Runde 4, Klärung entschieden): Fragetext: Stauemissionen „im Simulator als B8 geführt“ (Modellannahme des Moduls) – korrigiert
 - [ ] ok
 - [ ] ändern: …
 
@@ -503,6 +519,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 76 korrigiert, 0 fraglich, 1
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · Zweitprüfung 27.10.: Erklärung an Simulator angepasst (Netto 39 t, 5,76 kg; Rest 22 t aus A4–A5 und C statt nur C) – korrigiert · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Erklärung nachgerechnet (Netto 39 t, 5,76 statt 5,75; 22 t aus A4–A5 und C, nicht nur aus C), korrigiert
+
+### qn_lca_ingenieurbau_5 · LCA im Ingenieurbau (DIN EN 17472)
+
+- **Frage:** Mit Schnellbau (−65 % Sperrzeit) sinkt die Summe A–C der Spannbetonbrücke im Simulator von 863 t auf 743 t, die der Stahlverbundbrücke von 825 t auf 687 t. Konventionell gebaut liegt Stahlverbund bei 825 t. Welche Bewertung ist fachlich am besten begründet?
+- **Richtige Antwort:** Im Schnellbau unterbietet Spannbeton sogar den konventionell gebauten Stahlverbund.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 29.10. (Runde 4, Klärung entschieden): Erklärung: B8 „im Simulator“ maßgeblicher Bilanzanteil (Modellannahme) – korrigiert
+- [ ] ok
+- [ ] ändern: …
 
 ### qn_lca_ingenieurbau_x_2 · LCA im Ingenieurbau (DIN EN 17472)
 
@@ -740,7 +764,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 76 korrigiert, 0 fraglich, 1
 
 - **Frage:** Georadar auf feuchtem Beton: relative Dielektrizitätszahl ε_r = 9, Laufzeit des Bewehrungsechos t = 2,0 ns, c₀ = 300 mm/ns. In welcher Tiefe liegt der Stab?
 - **Richtige Antwort:** d ≈ 100 mm
-- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Neu 29.10.: Aufstockung des Teilmoduls auf 6 Fragen (QZ-6); mit src/calc/pruefverfahren.ts (georadar) nachgerechnet, tests/quizRechenfragen.test.ts · Zweitprüfung 29.10.: Rückmeldung zu 300 mm berichtigt (Fehlerweg: ohne √ε_r, aber halbiert; ohne Halbierung ergäben sich 600 mm) – korrigiert · neu seit 26.10.2026 (Z24), noch nicht freigegeben
 - [ ] ok
 - [ ] ändern: …
 

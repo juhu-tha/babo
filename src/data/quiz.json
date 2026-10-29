@@ -194,7 +194,7 @@
     "niveau": "B",
     "distraktorFeedback": [
       "Hier fehlt die Halbierung: t ist die Laufzeit für Hin- und Rückweg.",
-      "Hier wurde mit der Lichtgeschwindigkeit im Vakuum ohne Wurzel aus ε_r gerechnet und nicht halbiert.",
+      "Hier wurde mit c₀ = 300 mm/ns ohne Division durch √ε_r gerechnet (300 · 2,0/2 = 300 mm).",
       "Hier wurde durch ε_r statt durch √ε_r geteilt (300/9 = 33 mm/ns).",
       ""
     ],
@@ -209,8 +209,8 @@
     "verified": false,
     "vorpruefung": {
       "am": "2026-10-29",
-      "ergebnis": "ok",
-      "hinweis": "Neu 29.10.: Aufstockung des Teilmoduls auf 6 Fragen (QZ-6); mit src/calc/pruefverfahren.ts (georadar) nachgerechnet, tests/quizRechenfragen.test.ts"
+      "ergebnis": "korrigiert",
+      "hinweis": "Neu 29.10.: Aufstockung des Teilmoduls auf 6 Fragen (QZ-6); mit src/calc/pruefverfahren.ts (georadar) nachgerechnet, tests/quizRechenfragen.test.ts · Zweitprüfung 29.10.: Rückmeldung zu 300 mm berichtigt (Fehlerweg: ohne √ε_r, aber halbiert; ohne Halbierung ergäben sich 600 mm) – korrigiert"
     }
   },
   {
@@ -502,7 +502,7 @@
       "Extrudiertes Polystyrol (XPS)"
     ],
     "correctIdx": 3,
-    "explanation": "XPS besitzt durch das Extrusionsverfahren ein homogen geschlossenzelliges Gefüge. Es nimmt auch unter dauerhaftem hydrostatischem Druck und Frost-Tau-Wechseln praktisch kein Wasser auf (Diffusionsaufnahme < 1,5 Vol.-%) und behält seine Dämmwirkung im Erdreich. EPS-Perimeterdämmplatten sind mit Bauartgenehmigung ebenfalls zulässig, in der Regel bei Bodenfeuchte (W1-E); Standard-EPS ist dafür nicht geeignet.",
+    "explanation": "XPS besitzt durch das Extrusionsverfahren ein homogen geschlossenzelliges Gefüge. Es nimmt auch unter dauerhaftem hydrostatischem Druck und Frost-Tau-Wechseln nur sehr wenig Wasser auf (geringe Langzeit-Wasseraufnahme durch Diffusion und Eintauchen) und behält seine Dämmwirkung im Erdreich. EPS-Perimeterdämmplatten sind mit Bauartgenehmigung ebenfalls zulässig, in der Regel bei Bodenfeuchte (W1-E); Standard-EPS ist dafür nicht geeignet.",
     "gapAnalysis": {
       "topic": "Einsatzgebiete von Dämmstoffen & Feuchteschutz",
       "misconception": "Gleichsetzung von EPS (Styropor, punktverschweißt, wasseraufnehmend) mit XPS (extrudiert, geschlossenzellig, wasserresistent).",
@@ -515,7 +515,7 @@
     "vorpruefung": {
       "am": "2026-10-29",
       "ergebnis": "korrigiert",
-      "hinweis": "Freigegebene Frage unverändert; Vorschlag zur Umformulierung der Distraktoren (Ratschen „Verhältnis > 1,2“/„Absolutwörter“) im Bericht docs/quiz-vorpruefung-cluster-I-III.md. · Umsetzung 29.10.: Erklärung und Lernhilfe: EPS-Perimeterdämmplatten mit Bauartgenehmigung (in der Regel Bodenfeuchte W1-E) ergänzt, „nur XPS oder Schaumglas“ entfällt (T8-DA-1/T8-DA-Q2, QZ-3); Bloom-Stufe, Niveau und Rückmeldungen ergänzt – korrigiert"
+      "hinweis": "Freigegebene Frage unverändert; Vorschlag zur Umformulierung der Distraktoren (Ratschen „Verhältnis > 1,2“/„Absolutwörter“) im Bericht docs/quiz-vorpruefung-cluster-I-III.md. · Umsetzung 29.10.: Erklärung und Lernhilfe: EPS-Perimeterdämmplatten mit Bauartgenehmigung (in der Regel Bodenfeuchte W1-E) ergänzt, „nur XPS oder Schaumglas“ entfällt (T8-DA-1/T8-DA-Q2, QZ-3); Bloom-Stufe, Niveau und Rückmeldungen ergänzt – korrigiert · Zweitprüfung 29.10.: unbelegten Zahlenwert „Diffusionsaufnahme < 1,5 Vol.-%“ entfernt (nicht im Modul; die Diffusionsaufnahme ist eine produkt- und dickenabhängige Herstellerangabe) – korrigiert"
     },
     "bloom": "Verstehen",
     "niveau": "B",
@@ -5008,7 +5008,7 @@
     "distraktorFeedback": [
       "",
       "4,8 · 10⁶ ist die volumenbezogene Wärmespeicherkapazität ρ·c in J/(m³K), nicht a.",
-      "Hier wurde durch ρ allein statt durch ρ·c geteilt (2,0/2 400); das Ergebnis ist um den Faktor c = 1000 zu groß.",
+      "Hier wurde durch ρ allein statt durch ρ·c geteilt (2,0/2400); das Ergebnis ist um den Faktor c = 1000 zu groß.",
       "Der Wert passt zu einem Metall mit hoher Wärmeleitfähigkeit, nicht zu Beton."
     ],
     "gapAnalysis": {
@@ -5022,9 +5022,9 @@
     "quelle": "DIN EN ISO 10456:2010-05; Willems: Lehrbuch der Bauphysik, 8. Aufl. 2017",
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-28",
+      "am": "2026-10-29",
       "ergebnis": "korrigiert",
-      "hinweis": "Zweitprüfung 28.10. (Runde 3): Distraktor „1,2 · 10⁻³ m²/s“ passte zu keinem Rechenweg; durch 8,3 · 10⁻⁴ m²/s (λ/ρ ohne c) ersetzt, Rückmeldung entsprechend präzisiert – korrigiert"
+      "hinweis": "Zweitprüfung 28.10. (Runde 3): Distraktor „1,2 · 10⁻³ m²/s“ passte zu keinem Rechenweg; durch 8,3 · 10⁻⁴ m²/s (λ/ρ ohne c) ersetzt, Rückmeldung entsprechend präzisiert – korrigiert · Zweitprüfung 29.10.: Zahlformat: 2400 ohne Tausendertrennung (vierstellig) – korrigiert"
     }
   },
   {
@@ -6979,7 +6979,7 @@
     "topic": "Temperaturfaktor f_Rsi",
     "difficulty": "Vertiefung",
     "normRef": "DIN 4108-2, 6.2",
-    "question": "In einer Außenwandecke wird bei θ_i = 20 °C und θ_e = −5 °C eine Oberflächentemperatur von θ_si = 11,5 °C bestimmt. Ist der Mindestwärmeschutz nach DIN 4108-2 (f_Rsi ≥ 0,70) eingehalten?",
+    "question": "In einer Außenwandecke wird bei θ_i = 20 °C und θ_e = −5 °C eine Oberflächentemperatur von θ_si = 11,5 °C bestimmt. Ist der Mindestwärmeschutz nach DIN 4108-2:2013-02 (f_Rsi ≥ 0,70) eingehalten?",
     "options": [
       "Ja, denn f_Rsi = 11,5/20 = 0,58 liegt über dem Bezugswert der Raumluft",
       "Ja, denn 11,5 °C liegt über dem Taupunkt von rund 9,3 °C bei 50 % Feuchte",
@@ -6987,7 +6987,7 @@
       "Nein, denn f_Rsi = 11,5/(20 + 5) = 0,46 liegt unter 0,70"
     ],
     "correctIdx": 2,
-    "explanation": "f_Rsi = (θ_si − θ_e)/(θ_i − θ_e) = 16,5/25 = 0,66 < 0,70. Gefordert wären θ_si ≥ 12,6 °C; das Kriterium beruht auf 80 % relativer Feuchte an der Oberfläche als Schimmelgrenze (bei 20 °C und 50 % Raumluftfeuchte).",
+    "explanation": "f_Rsi = (θ_si − θ_e)/(θ_i − θ_e) = 16,5/25 = 0,66 < 0,70. Gefordert wären θ_si ≥ −5 + 0,70 · 25 = 12,5 °C. Das Kriterium beruht auf 80 % relativer Feuchte an der Oberfläche als Schimmelgrenze; bei 20 °C und 50 % Raumluftfeuchte entspricht das θ_si ≈ 12,6 °C.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
@@ -6999,7 +6999,7 @@
     "gapAnalysis": {
       "topic": "Temperaturfaktor f_Rsi",
       "misconception": "Der Temperaturfaktor wird ohne Außentemperatur berechnet oder durch den Taupunkt ersetzt.",
-      "coreRule": "f_Rsi = (θ_si − θ_e)/(θ_i − θ_e) ≥ 0,70 → θ_si ≥ 12,6 °C.",
+      "coreRule": "f_Rsi = (θ_si − θ_e)/(θ_i − θ_e) ≥ 0,70 (Schimmelkriterium 80 % Oberflächenfeuchte, θ_si ≈ 12,6 °C).",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Schadenspotenziale im Altbaubestand“ im Modul Altbauatlas noch einmal durch.",
       "targetModuleTab": "bestand",
       "targetModuleLabel": "Altbauatlas"
@@ -7007,8 +7007,9 @@
     "quelle": "DIN 4108-2:2013-02, 6.2",
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-26",
-      "ergebnis": "ok"
+      "am": "2026-10-29",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 29.10.: Ausgabe DIN 4108-2:2013-02 im Fragetext genannt (Neuausgabe 2026-05 erschienen, Zahlenwert öffentlich nicht prüfbar); Erklärung: aus f_Rsi = 0,70 folgen bei −5/20 °C 12,5 °C, 12,6 °C ist der Wert des 80-%-Kriteriums – korrigiert"
     }
   },
   {
@@ -26209,31 +26210,31 @@
       "Für Brücken wird die Betriebsenergie B6 zur dominierenden Lebenszyklusphase erklärt.",
       "Sie verwendet einen Betrachtungszeitraum von typisch 50 Jahren wie bei QNG und DGNB.",
       "Sie bezieht die Wirkungen auf 1 m² Nettoraumfläche des zugehörigen Betriebsgebäudes.",
-      "Sie kennt ein eigenes Nutzermodul B8; bei Brücken meist 80 bis 100 Jahre."
+      "Sie nutzt eigene funktionelle Einheiten, z. B. 1 m² Brückendeckfläche."
     ],
     "correctIdx": 3,
-    "explanation": "DIN EN 17472 kennt mit B8 ein eigenes Modul für die Nutzung des Bauwerks durch die Nutzer (im Modul vereinfacht als sperrungsbedingte Stauemissionen modelliert) und eigene funktionelle Einheiten wie 1 m² Brückendeckfläche. Den Betrachtungszeitraum legt der Auftraggeber fest (Begriff 3.69); bei Brücken sind 80 bis 100 Jahre üblich (DIN EN 1990, Kategorie 5: 100 Jahre).",
+    "explanation": "DIN EN 17472 bezieht die Ergebnisse auf eigene funktionelle Einheiten des Ingenieurbaus, z. B. 1 m² Brückendeckfläche, 1 km Trasse oder die Verkehrsleistung in tkm. Den Betrachtungszeitraum legt der Auftraggeber fest (Begriff 3.69); bei Brücken sind 80 bis 100 Jahre üblich (DIN EN 1990, Kategorie 5: 100 Jahre). Das Nutzermodul B8 ist kein Alleinstellungsmerkmal mehr: Auch DIN EN 15978 kennt es seit der Ausgabe 2026 (optional).",
     "bloom": "Verstehen",
     "niveau": "B",
     "distraktorFeedback": [
       "Bei Ingenieurbauwerken dominieren A1–A3, die Austauschzyklen B2–B5 und B8, nicht die Betriebsenergie.",
       "Die 50 Jahre sind typisch für Gebäude (QNG/DGNB); bei Brücken legt der Auftraggeber meist 80 bis 100 Jahre fest.",
-      "Bezugsgrößen sind z. B. 1 m² Brückendeckfläche, 1 km Trasse oder die Verkehrsleistung in tkm.",
+      "Die Nettoraumfläche ist eine Bezugsgröße des Hochbaus; Ingenieurbauwerke werden z. B. auf 1 m² Brückendeckfläche oder 1 km Trasse bezogen.",
       ""
     ],
     "gapAnalysis": {
       "topic": "Normenvergleich Hoch-/Tiefbau",
       "misconception": "Methodik des Hochbaus wird unverändert auf Infrastruktur übertragen.",
-      "coreRule": "DIN EN 17472: eigene funktionelle Einheiten, Betrachtungszeitraum vom Auftraggeber festgelegt (Brücken typisch 80–100 a), Nutzermodul B8.",
+      "coreRule": "DIN EN 17472: eigene funktionelle Einheiten (z. B. 1 m² Brückendeckfläche), Betrachtungszeitraum vom Auftraggeber festgelegt (Brücken typisch 80–100 a).",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Differenzierungsmatrix: Hochbau vs. Tiefbau“ im Modul LCA im Ingenieurbau (DIN EN 17472) noch einmal durch.",
       "targetModuleTab": "lca_ingenieurbau",
       "targetModuleLabel": "LCA im Ingenieurbau (DIN EN 17472)"
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-28",
+      "am": "2026-10-29",
       "ergebnis": "korrigiert",
-      "hinweis": "Zweitprüfung 28.10. (Abgleich Runde 3): Aussagen zu DIN EN 17472 vorsichtig formuliert: Betrachtungszeitraum vom Auftraggeber festgelegt (3.69), typisch 80–100 a; B8 als Nutzermodul, Stau-Zuordnung als Modellannahme – korrigiert"
+      "hinweis": "Zweitprüfung 29.10. (Runde 4, Klärung entschieden): richtige Option auf funktionelle Einheiten umgestellt, da EN 15978:2026 B8 ebenfalls (optional) kennt – korrigiert"
     }
   },
   {
@@ -26287,7 +26288,7 @@
     "topic": "Modul B8 berechnen",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 17472",
-    "question": "Spannbeton-Hohlkasten im Simulator: 100 Jahre, 6 Belagswechsel mit je 18 Tagen Teilsperrung, DTV-SV = 4500 LKW/d, davon 40 % im Stau, 0,95 kg CO₂-Äq. je Fahrzeug, konventionelle Baustellenführung. Wie hoch sind die B8-Stauemissionen?",
+    "question": "Spannbeton-Hohlkasten im Simulator: 100 Jahre, 6 Belagswechsel mit je 18 Tagen Teilsperrung, DTV-SV = 4500 LKW/d, davon 40 % im Stau, 0,95 kg CO₂-Äq. je Fahrzeug, konventionelle Baustellenführung. Wie hoch sind die im Simulator als B8 geführten Stauemissionen?",
     "options": [
       "rund 184,7 t CO₂-Äq.",
       "rund 461,7 t CO₂-Äq.",
@@ -26314,8 +26315,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-29",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 29.10. (Runde 4, Klärung entschieden): Fragetext: Stauemissionen „im Simulator als B8 geführt“ (Modellannahme des Moduls) – korrigiert"
     }
   },
   {
@@ -26378,7 +26380,7 @@
       "Im Schnellbau unterbietet Spannbeton sogar den konventionell gebauten Stahlverbund."
     ],
     "correctIdx": 3,
-    "explanation": "Spannbeton mit Schnellbau (743 t) liegt unter Stahlverbund konventionell (825 t). Bei hohem Schwerverkehr ist B8 ein maßgeblicher Bilanzanteil (z. B. 185 t von 863 t ≈ 21 %); Bauverfahren und Verkehrsführung müssen daher gemeinsam mit dem Tragwerk bewertet werden.",
+    "explanation": "Spannbeton mit Schnellbau (743 t) liegt unter Stahlverbund konventionell (825 t). Bei hohem Schwerverkehr ist B8 im Simulator ein maßgeblicher Bilanzanteil (z. B. 185 t von 863 t ≈ 21 %); Bauverfahren und Verkehrsführung müssen daher gemeinsam mit dem Tragwerk bewertet werden.",
     "bloom": "Bewerten",
     "niveau": "M",
     "distraktorFeedback": [
@@ -26397,8 +26399,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-29",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 29.10. (Runde 4, Klärung entschieden): Erklärung: B8 „im Simulator“ maßgeblicher Bilanzanteil (Modellannahme) – korrigiert"
     }
   },
   {
@@ -34245,7 +34248,7 @@
       "8,1 m³"
     ],
     "correctIdx": 3,
-    "explanation": "A_red = 500 · 0,90 = 450 m²; Q = 450 · 200/10 000 = 9,0 l/s; V = 9,0 · 15 · 60 = 8100 l = 8,1 m³.",
+    "explanation": "A_red = 500 · 0,90 = 450 m²; Q = 450 · 200/10 000 = 9,0 l/s; V = 9,0 · 15 · 60 = 8100 l = 8,1 m³.",
     "bloom": "Anwenden",
     "niveau": "M",
     "distraktorFeedback": [
@@ -34257,16 +34260,16 @@
     "gapAnalysis": {
       "topic": "Zuflussvolumen",
       "misconception": "Der Abflussbeiwert oder die Zeitumrechnung wird vergessen.",
-      "coreRule": "V_zu = A · ψ · r_D/10 000 · t_d · 60 [l]; 1 ha = 10 000 m².",
+      "coreRule": "V_zu = A · ψ · r_D/10 000 · t_d · 60 [l]; 1 ha = 10 000 m².",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „II. Interaktives Planungs-Muster: Rigolenbemessung in Anlehnung an DWA-A 138-1“ im Modul Tiefbau & Entwässerung noch einmal durch.",
       "targetModuleTab": "bp_verkehr_tiefbau",
       "targetModuleLabel": "Tiefbau & Entwässerung"
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-28",
+      "am": "2026-10-29",
       "ergebnis": "korrigiert",
-      "hinweis": "Zweitprüfung 28.10. (Abgleich Runde 3): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert – korrigiert"
+      "hinweis": "Zweitprüfung 28.10. (Abgleich Runde 3): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert – korrigiert · Zweitprüfung 29.10.: Tausendertrennung in Erklärung und Lernhilfe auf U+202F umgestellt – korrigiert"
     }
   },
   {
@@ -34374,7 +34377,7 @@
     "distraktorFeedback": [
       "Der Hohlraumanteil ist der Speicherkoeffizient s_R.",
       "Die Durchlässigkeit beschreibt der k_f-Wert.",
-      "Ein Sicherheitsbeiwert ist eine eigene Größe (f_S), nicht ψ.",
+      "Ein Sicherheitszuschlag ist eine eigene Größe (Zuschlagsfaktor f_Z), nicht ψ.",
       ""
     ],
     "gapAnalysis": {
@@ -34387,9 +34390,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-28",
+      "am": "2026-10-29",
       "ergebnis": "korrigiert",
-      "hinweis": "normRef ergänzt · Zweitprüfung 28.10. (Abgleich Runde 3): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert (Freigabe zurückgenommen) – korrigiert"
+      "hinweis": "normRef ergänzt · Zweitprüfung 28.10. (Abgleich Runde 3): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert (Freigabe zurückgenommen) – korrigiert · Zweitprüfung 29.10.: Rückmeldung: Formelzeichen f_S → Zuschlagsfaktor f_Z wie im Modul und in DWA-A 138-1 – korrigiert"
     }
   },
   {
@@ -37626,16 +37629,16 @@
     "gapAnalysis": {
       "topic": "Luftgehalt",
       "misconception": "Mehr Luftporen werden ohne Obergrenze als vorteilhaft angesehen.",
-      "coreRule": "Luftgehalt ≥ Mindestwert, aber nicht deutlich darüber (Richtwert + 4 %): Festigkeitsverlust beachten.",
+      "coreRule": "Luftgehalt ≥ Mindestwert, obere Grenze Mindestwert + 4 % (Einzelwerte höchstens 1,0 % darüber): Festigkeitsverlust beachten.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Luftgehalt & Rohdichte“ im Modul Frischbeton noch einmal durch.",
       "targetModuleTab": "frischbeton",
       "targetModuleLabel": "Frischbeton"
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-28",
+      "am": "2026-10-29",
       "ergebnis": "korrigiert",
-      "hinweis": "Zweitprüfung 28.10. (Tranche 3): „Richtwert“ → obere Grenze nach DIN EN 206, 5.4.3, Einzelwert +1,0 % – korrigiert"
+      "hinweis": "Zweitprüfung 28.10. (Tranche 3): „Richtwert“ → obere Grenze nach DIN EN 206, 5.4.3, Einzelwert +1,0 % – korrigiert · Zweitprüfung 29.10.: Lernhilfe an die Erklärung angeglichen („Richtwert + 4 %“ → obere Grenze Mindestwert + 4 %, Einzelwert + 1,0 %) – korrigiert"
     }
   },
   {
@@ -50189,32 +50192,33 @@
     "question": "Wodurch unterscheidet sich eine klare ETFE-Folie lichttechnisch deutlich von Floatglas?",
     "options": [
       "Sie lässt kaum sichtbares Licht durch.",
-      "Sie lässt UV-A-Strahlung weitgehend durch.",
+      "Sie lässt auch UV-B weitgehend durch.",
       "Sie filtert UV-A-Strahlung vollständig.",
       "Sie ist nur für Infrarotstrahlung durchlässig."
     ],
     "correctIdx": 1,
-    "explanation": "Klare ETFE-Folie lässt rund 90 bis 95 % des sichtbaren Lichts und einen großen Teil der UV-A-Strahlung durch – ein Grund für ihren Einsatz bei Pflanzenhäusern wie dem Eden Project.",
+    "explanation": "Klare ETFE-Folie lässt rund 90 bis 95 % des sichtbaren Lichts und einen großen Teil der UV-Strahlung durch, auch UV-B. Floatglas lässt UV-A teilweise durch, sperrt UV-B aber weitgehend. Deshalb eignet sich ETFE für Pflanzenhäuser wie das Eden Project.",
     "bloom": "Erinnern",
     "niveau": "B",
     "distraktorFeedback": [
       "Klare ETFE-Folie ist sehr lichtdurchlässig (rund 90 bis 95 % im sichtbaren Bereich).",
       "",
-      "Gerade die UV-A-Durchlässigkeit unterscheidet ETFE von Floatglas, das UV stärker absorbiert.",
+      "Klares ETFE ist gerade hoch UV-durchlässig (UV-A und UV-B); Floatglas sperrt vor allem UV-B.",
       "ETFE ist im sichtbaren Bereich hoch transparent; die Aussage trifft nicht zu."
     ],
     "gapAnalysis": {
       "topic": "Gewebe & ETFE",
       "misconception": "ETFE verhalte sich optisch wie Glas.",
-      "coreRule": "Klares ETFE: sichtbares Licht rund 90 bis 95 %, UV-A weitgehend durchlässig.",
+      "coreRule": "Klares ETFE: sichtbares Licht rund 90 bis 95 %, UV-A und UV-B weitgehend durchlässig; Floatglas sperrt UV-B weitgehend.",
       "actionableAdvice": "Arbeiten Sie den Reiter „Gewebe & ETFE“ im Modul Membranen und ETFE-Folien noch einmal durch.",
       "targetModuleTab": "membranen_etfe",
       "targetModuleLabel": "Membranen und ETFE-Folien"
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-10-29",
+      "ergebnis": "korrigiert",
+      "hinweis": "Zweitprüfung 29.10. (Runde 4, Klärung entschieden): richtige Option „auch UV-B weitgehend durchlässig“ statt nur UV-A – korrigiert"
     }
   },
   {

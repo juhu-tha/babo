@@ -2,9 +2,9 @@
 
 Stand: 29.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster II umfasst 344 Fragen aus 56 Modulen. Aufgeführt sind 113 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster II umfasst 344 Fragen aus 56 Modulen. Aufgeführt sind 114 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 108 korrigiert, 0 fraglich, 16 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 109 korrigiert, 0 fraglich, 16 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -284,7 +284,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 108 korrigiert, 0 fraglich, 
 
 - **Frage:** Welcher Dämmstoff eignet sich aufgrund seiner geschlossenzelligen Struktur und minimalen Wasseraufnahme besonders für die erdberührte Perimeterdämmung und das Umkehrdach?
 - **Richtige Antwort:** Extrudiertes Polystyrol (XPS)
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Freigegebene Frage unverändert; Vorschlag zur Umformulierung der Distraktoren (Ratschen „Verhältnis > 1,2“/„Absolutwörter“) im Bericht docs/quiz-vorpruefung-cluster-I-III.md. · Umsetzung 29.10.: Erklärung und Lernhilfe: EPS-Perimeterdämmplatten mit Bauartgenehmigung (in der Regel Bodenfeuchte W1-E) ergänzt, „nur XPS oder Schaumglas“ entfällt (T8-DA-1/T8-DA-Q2, QZ-3); Bloom-Stufe, Niveau und Rückmeldungen ergänzt – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Freigegebene Frage unverändert; Vorschlag zur Umformulierung der Distraktoren (Ratschen „Verhältnis > 1,2“/„Absolutwörter“) im Bericht docs/quiz-vorpruefung-cluster-I-III.md. · Umsetzung 29.10.: Erklärung und Lernhilfe: EPS-Perimeterdämmplatten mit Bauartgenehmigung (in der Regel Bodenfeuchte W1-E) ergänzt, „nur XPS oder Schaumglas“ entfällt (T8-DA-1/T8-DA-Q2, QZ-3); Bloom-Stufe, Niveau und Rückmeldungen ergänzt – korrigiert · Zweitprüfung 29.10.: unbelegten Zahlenwert „Diffusionsaufnahme < 1,5 Vol.-%“ entfernt (nicht im Modul; die Diffusionsaufnahme ist eine produkt- und dickenabhängige Herstellerangabe) – korrigiert
 - [ ] ok
 - [ ] ändern: …
 
@@ -716,7 +716,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 108 korrigiert, 0 fraglich, 
 
 - **Frage:** Eine Asphaltfläche von 500 m² (ψ = 0,90) wird mit r_D = 200 l/(s·ha) über t_d = 15 min beregnet. Welches Zuflussvolumen ergibt der Rechner?
 - **Richtige Antwort:** 8,1 m³
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Abgleich Runde 3): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Abgleich Runde 3): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert – korrigiert · Zweitprüfung 29.10.: Tausendertrennung in Erklärung und Lernhilfe auf U+202F umgestellt – korrigiert
 - [ ] ok
 - [ ] ändern: …
 
@@ -740,7 +740,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 108 korrigiert, 0 fraglich, 
 
 - **Frage:** Was beschreibt der Abflussbeiwert ψ im Rigolenrechner?
 - **Richtige Antwort:** Den Anteil des Regens, der von der Fläche abfließt
-- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · Zweitprüfung 28.10. (Abgleich Runde 3): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert (Freigabe zurückgenommen) – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · Zweitprüfung 28.10. (Abgleich Runde 3): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert (Freigabe zurückgenommen) – korrigiert · Zweitprüfung 29.10.: Rückmeldung: Formelzeichen f_S → Zuschlagsfaktor f_Z wie im Modul und in DWA-A 138-1 – korrigiert
 - [x] ok
 - [ ] ändern: …
 
@@ -862,6 +862,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 108 korrigiert, 0 fraglich, 
 - **Richtige Antwort:** gegensinnig (antiklastisch)
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### qn_membranen_etfe_3 · Membranen und ETFE-Folien
+
+- **Frage:** Wodurch unterscheidet sich eine klare ETFE-Folie lichttechnisch deutlich von Floatglas?
+- **Richtige Antwort:** Sie lässt auch UV-B weitgehend durch.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 29.10. (Runde 4, Klärung entschieden): richtige Option „auch UV-B weitgehend durchlässig“ statt nur UV-A – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### qn_membranen_etfe_7 · Membranen und ETFE-Folien
