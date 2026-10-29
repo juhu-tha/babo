@@ -6,6 +6,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Monitor, Database, Settings, FileCode, Layers, ShieldCheck, Copy, Check, Download } from 'lucide-react';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import inhalt from '@/content/bimbaustoffe/BimBaustoffe.json';
+import { GWP_LEHRWERTE, type GwpLehrwertSchluessel } from '@/src/data/gwpLehrwerte';
 import { MdText } from '@/src/components/inhalt/MdText';
 
 interface MaterialArchetype {
@@ -19,14 +20,19 @@ interface MaterialArchetype {
   ifcClass: string;
 }
 
-const ARCHETYPES: MaterialArchetype[] = inhalt.daten.ARCHETYPES;
+// Beton C30/37 und BSH aus der gemeinsamen Lehrwerttabelle (Konsistenz 29.10.2026, F-4)
+const AUS_LEHRWERTTABELLE: Partial<Record<string, GwpLehrwertSchluessel>> = { beton: 'betonC3037CemI', holz: 'bsh' };
+const ARCHETYPES: MaterialArchetype[] = inhalt.daten.ARCHETYPES.map(a => {
+  const s = AUS_LEHRWERTTABELLE[a.id];
+  return s ? { ...a, defaultGwp: GWP_LEHRWERTE[s].gwp } : a;
+});
 
 export default function BimBaustoffe() {
   const [selectedId, setSelectedId] = useState<string>('beton');
   const [density, setDensity] = useState<number>(2400);
   const [conductivity, setConductivity] = useState<number>(2.10);
   const [eModulus, setEModulus] = useState<number>(33000);
-  const [gwp, setGwp] = useState<number>(245.0);
+  const [gwp, setGwp] = useState<number>(ARCHETYPES[0].defaultGwp);
   const [copied, setCopied] = useState(false);
 
   const archetype = ARCHETYPES.find(a => a.id === selectedId) || ARCHETYPES[0];
@@ -213,8 +219,8 @@ export default function BimBaustoffe() {
                     </div>
                     <input 
                       type="range" 
-                      min={selectedId === 'holz' ? -600 : selectedId === 'stahl' ? 2000 : 10} 
-                      max={selectedId === 'holz' ? -200 : selectedId === 'stahl' ? 10000 : 400} 
+                      min={selectedId === 'holz' ? -900 : selectedId === 'stahl' ? 2000 : 10} 
+                      max={selectedId === 'holz' ? -300 : selectedId === 'stahl' ? 10000 : 400} 
                       step={selectedId === 'stahl' ? 100 : selectedId === 'mineralwolle' ? 1 : 5}
                       value={gwp} 
                       onChange={(e) => setGwp(Number(e.target.value))}

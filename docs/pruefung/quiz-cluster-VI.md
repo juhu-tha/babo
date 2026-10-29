@@ -2,9 +2,9 @@
 
 Stand: 29.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster VI umfasst 60 Fragen aus 10 Modulen. Aufgeführt sind 24 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster VI umfasst 60 Fragen aus 10 Modulen. Aufgeführt sind 25 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 24 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 25 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -166,6 +166,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 24 korrigiert, 0 fraglich, 0
 - **Richtige Antwort:** Ohne Druckbewehrung unzulässig; Querschnitt vergrößern oder Druckbewehrung einlegen
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### qn_rechnung_u_wert_2 · Bauphysik: U-Wert
+
+- **Frage:** Eine Außenwand besteht aus 1,5 cm Kalkgipsputz (λ = 0,70 W/(mK)), 20 cm Stahlbeton (λ = 2,3 W/(mK)) und 14 cm EPS-Dämmung (λ = 0,035 W/(mK)). Welcher U-Wert ergibt sich mit R_si = 0,13 und R_se = 0,04 m²K/W?
+- **Richtige Antwort:** U = 0,234 W/(m²K)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Konsistenz 29.10.: Begriff zu λ = 2,3 W/(mK) „Stahlbeton“ statt „Normalbeton“ (DIN EN ISO 10456, bewehrt; F-1), Rechnung unverändert – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### qn_rechnung_u_wert_3 · Bauphysik: U-Wert

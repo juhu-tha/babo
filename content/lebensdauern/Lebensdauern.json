@@ -1,7 +1,7 @@
 {
   "texte": {
     "typischeLebensdauernAustauschzyklenAp": " Typische Lebensdauern & Austauschzyklen",
-    "richtwerteFürDieTechnische": "Richtwerte für die technische und wirtschaftliche Nutzungsdauer von Bauteilen und Konstruktionsschichten nach den offiziellen Vorgaben des **Bundesinstituts für Bau-, Stadt- und Raumforschung (BBSR / BNB)** und **VDI 2067**. Ermitteln Sie die Anzahl an Erneuerungszyklen über den Gebäudelebenszyklus zur fundierten Lebenszykluskostenrechnung (LCC) und Ökobilanzierung (LCA). Die Spannen sind Orientierungswerte; die Mittelwerte für Fenster (Holz und Kunststoff 40 a, Aluminium 50 a) folgen der BBSR-Tabelle nach einer Sekundärquelle, die übrigen Werte sind noch nicht einzeln gegen die BBSR-Tabelle (Stand 2017) abgeglichen (vorläufig).",
+    "richtwerteFürDieTechnische": "Richtwerte für die technische und wirtschaftliche Nutzungsdauer von Bauteilen und Konstruktionsschichten nach den offiziellen Vorgaben des **Bundesinstituts für Bau-, Stadt- und Raumforschung (BBSR / BNB)** und **VDI 2067**. Ermitteln Sie die Anzahl an Erneuerungszyklen über den Gebäudelebenszyklus zur fundierten Lebenszykluskostenrechnung (LCC) und Ökobilanzierung (LCA). Die Spannen sind Orientierungswerte; die Mittelwerte für Fenster (Holz und Kunststoff 40 a, Aluminium 50 a) folgen der BBSR-Tabelle nach einer Sekundärquelle, WDVS (40 a) der BNB-Tabelle 2017 (335.641) wie im LCA-Rechner, die übrigen Werte sind noch nicht einzeln gegen die BBSR-Tabelle (Stand 2017) abgeglichen (vorläufig, Normprüfung ausstehend).",
     "lebensdauerSpannenDiagramm": " Lebensdauer-Spannen (Diagramm)",
     "bauteiltabelleBnbBbsr": " Bauteiltabelle (BNB / BBSR)",
     "faktorenmethodeIso15686": " Faktorenmethode & ISO 15686",
@@ -46,7 +46,8 @@
     "dacheindeckungBlechKupferZink": "Dacheindeckung (Blech/Kupfer/Zink)",
     "flachdachabdichtungBitumenKunststoff": "Flachdachabdichtung (Bitumen/Kunststoff)",
     "dachbegrünungExtensiv": "Dachbegrünung (Extensiv)",
-    "fassadePutzWdvs": "Fassade (Putz/WDVS)",
+    "fassadeAussenputz": "Fassade (Außenputz)",
+    "fassadeWdvs": "Fassade (WDVS; BNB 2017: 40 a)",
     "fassadeKlinkerVormauerziegel": "Fassade (Klinker/Vormauerziegel)",
     "fassadeHolzschalung": "Fassade (Holzschalung)",
     "fassadeGlasPfostenRiegel": "Fassade (Glas/Pfosten-Riegel)",

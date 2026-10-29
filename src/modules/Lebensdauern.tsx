@@ -48,7 +48,8 @@ const lifespanData: LifespanItem[] = [
   { id: 'dach_flach', category: inhalt.werte.flachdachabdichtungBitumenKunststoff, group: 'Dach', min: 15, max: 30, avg: 20 },
   { id: 'dach_gruen', category: inhalt.werte.dachbegrünungExtensiv, group: 'Dach', min: 20, max: 40, avg: 30 },
   { id: 'dachfenster', category: 'Dachfenster', group: 'Dach', min: 20, max: 30, avg: 25 },
-  { id: 'fassade_putz', category: inhalt.werte.fassadePutzWdvs, group: 'Fassade', min: 20, max: 40, avg: 30 },
+  { id: 'fassade_putz', category: inhalt.werte.fassadeAussenputz, group: 'Fassade', min: 20, max: 40, avg: 30 }, // Lehrwert (vorläufig, Normprüfung ausstehend)
+  { id: 'fassade_wdvs', category: inhalt.werte.fassadeWdvs, group: 'Fassade', min: 30, max: 50, avg: 40 }, // BNB 2017, 335.641 WDVS: 40 a (Konsistenz 29.10.2026, F-5)
   { id: 'fassade_klinker', category: inhalt.werte.fassadeKlinkerVormauerziegel, group: 'Fassade', min: 50, max: 80, avg: 60 },
   { id: 'fassade_holz', category: inhalt.werte.fassadeHolzschalung, group: 'Fassade', min: 20, max: 40, avg: 30 },
   { id: 'fassade_glas', category: inhalt.werte.fassadeGlasPfostenRiegel, group: 'Fassade', min: 30, max: 50, avg: 40 },
@@ -85,11 +86,11 @@ export default function Lebensdauern() {
 
   // Chart setup
   const chartData = {
-    labels: lifespanData.slice(0, 15).map(item => item.category),
+    labels: lifespanData.slice(0, 16).map(item => item.category),
     datasets: [
       {
         label: inhalt.werte.lebensdauerSpannweiteMinMax,
-        data: lifespanData.slice(0, 15).map(item => [item.min, item.max]),
+        data: lifespanData.slice(0, 16).map(item => [item.min, item.max]),
         backgroundColor: 'rgba(158, 42, 43, 0.4)',
         borderColor: '#9E2A2B',
         borderWidth: 1,

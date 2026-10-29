@@ -14,13 +14,14 @@
  */
 import { type Hinweis, hatFehler } from './plausibilitaet';
 import { ZEMENT_GWP_KG } from '../data/zementGwp';
+import { GWP_LEHRWERTE, LEHRBETON_C3037 } from '../data/gwpLehrwerte';
 
 export type DafstbBauteil = 'decke' | 'stuetze' | 'wand' | 'bodenplatte';
 export type DafstbZement = 'cem1' | 'cem2_all' | 'cem2_bs' | 'cem3_a' | 'cem2_cm';
 
 /** Zementgehalt des Lehrbetons (C30/37) in kg/m³ und pauschaler Anteil aus Gesteinskörnung, Wasser, Zusatzmitteln, Werkstransport */
-export const ZEMENTGEHALT_LEHR = 320;
-export const REST_GWP_LEHR = 30;
+export const ZEMENTGEHALT_LEHR = LEHRBETON_C3037.zement;
+export const REST_GWP_LEHR = LEHRBETON_C3037.rest;
 /**
  * GWP A1–A3 je kg Zement [kg CO₂e/kg] aus src/data/zementGwp.ts (T15-NH-3): CEM I 0,665 und CEM II/C-M 0,40 nach
  * VDZ-Branchen-EPD (netto); CEM II/A-LL 0,60 (ergibt 222 kg/m³ wie ÖKOBAUDAT 2024-I „Transportbeton C25/30“, 221,7 kg/m³),
@@ -39,7 +40,7 @@ export type DafstbStahlRoute = 'eaf_de' | 'standard_bof' | 'gruen_eaf';
  * Elektrostahl); standard_bof = Hochofen-/Oxygenstahl-Route, Lehrwert 0,98 (vorläufig, F-Freigabe: EPD bzw. ÖKOBAUDAT-Datensatz);
  * gruen_eaf = Elektrostahl mit Grünstrom, Lehrwert 0,42 (EPD des Herstellers maßgebend)
  */
-export const STAHL_GWP: Readonly<Record<DafstbStahlRoute, number>> = { eaf_de: 0.64, standard_bof: 0.98, gruen_eaf: 0.42 };
+export const STAHL_GWP: Readonly<Record<DafstbStahlRoute, number>> = { eaf_de: GWP_LEHRWERTE.betonstahl.gwp / 1000, standard_bof: 0.98, gruen_eaf: 0.42 };
 /** LEHRWERT Abschlag auf das Beton-GWP bei Prüfalter 56 d (Zementreduktion durch Nacherhärtung) */
 export const ABSCHLAG_56D = 0.91;
 

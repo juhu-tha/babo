@@ -56,6 +56,7 @@ export const BNB_NUTZUNGSDAUER: Readonly<Record<string, NutzungsdauerAngabe>> = 
   'geopolymer-beton': { nd: 50, quelle: 'BNB 2017, 331.211 Betonwand analog (alkalisch aktivierte Bindemittel nicht gelistet): ≥ 50 a', vorlaeufig: true },
   ziegel: { nd: 50, quelle: 'BNB 2017, 331.111 Mauerwerkswand: ≥ 50 a', vorlaeufig: false },
   baustahl: { nd: 50, quelle: 'BNB 2017, 331.411 Stahlbauwand / 333.411 Stahlstütze: ≥ 50 a', vorlaeufig: false },
+  betonstahl: { nd: 50, quelle: 'BNB 2017, Bewehrung als Teil von 331.211 Betonwand / 351.1 Betondecke: ≥ 50 a', vorlaeufig: false },
   kvh: { nd: 50, quelle: 'BNB 2017, 331.311 Holzwand / 333.311 Holzstütze: ≥ 50 a', vorlaeufig: false },
   clt: { nd: 50, quelle: 'BNB 2017, 331.311 Holzwand / 351.411 Massivholzdecke: ≥ 50 a', vorlaeufig: false },
   'hbv-decke': { nd: 50, quelle: 'BNB 2017, 351.411 Holzdecken inkl. Holz-Beton-Verbunddecke: ≥ 50 a', vorlaeufig: false },
