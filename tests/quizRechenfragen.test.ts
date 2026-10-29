@@ -11,6 +11,10 @@ import { fdAusFk, phi2, bemesseWandVereinfacht, ZETA_MW, GAMMA_M_MW, SCHLANKHEIT
 import { rwMassiv, wandSchalldaemmung, PUTZ_MASSE_BEIDSEITIG } from '../src/calc/schall';
 import { istSieblinie, regelDurchgang } from '../src/calc/mischung';
 import { funktionelleEinheitBauteil } from '../src/calc/lca';
+import { relaxation } from '../src/utils/ec2Spannbeton';
+import { ultraschall, impactEcho, haftzug, chlorid, bohrkern } from '../src/calc/bauwerksuntersuchung';
+import { georadar, wenner, potentialRisikoZfp, torrentFeuchte } from '../src/calc/pruefverfahren';
+import { WAERMEKAPAZITAET_VOL } from '../src/calc/hydratation';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -176,6 +180,84 @@ const OHNE_RECHNUNG: Record<string, string> = {};
     frage: ['5,0 kg CO₂-Äq./kg', 'ρ = 20 kg/m³', 'd = 0,15 m', '40 Jahren'],
     erklaerung: ['3,0 kg/m²', 'n = ⌈50/40⌉ − 1 = 1'],
   });
+}
+
+// ------------------------------------------------------------------------------------------------
+// Hydratation (src/calc/hydratation.ts): ΔT_ad = z·Q/(c·ρ) mit c·ρ = 2400 kJ/(m³·K) (QZ-4, 29.10.2026)
+// ------------------------------------------------------------------------------------------------
+{
+  pruefe(WAERMEKAPAZITAET_VOL === 2400, 'Kern: c·ρ = 2400 kJ/(m³·K) erwartet');
+  const dT2 = (280 * 250) / WAERMEKAPAZITAET_VOL;
+  // Distraktoren: halbe Wärmemenge, 500 kJ/kg (CEM I), geteilt durch 1000
+  PRUEFUNGEN.push({
+    id: 'q_hyf_2', richtig: `rund ${z(dT2, 0)} K`,
+    optionen: [`rund ${z(dT2 / 2, 0)} K`, `rund ${z(dT2, 0)} K`, `rund ${z((280 * 500) / WAERMEKAPAZITAET_VOL, 0)} K`, `rund ${z((280 * 250) / 1000, 0)} K`],
+    frage: ['c·ρ = 2400'], erklaerung: ['/ 2400 = 29,2 K'],
+  });
+  const dT4 = (320 * 350) / WAERMEKAPAZITAET_VOL;
+  PRUEFUNGEN.push({
+    id: 'q_hyf_4', richtig: `etwa ${z(15 + dT4, 0)} °C`,
+    optionen: [`etwa ${z(dT4, 0)} °C`, `etwa ${z(15 + dT4, 0)} °C`, `etwa ${z((15 + dT4) / 2, 0)} °C`, 'etwa 75 °C'],
+    frage: ['c·ρ = 2400'], erklaerung: ['46,7 K'],
+  });
+}
+
+// ------------------------------------------------------------------------------------------------
+// Teilmodul-Aufstockung (QZ-6, 29.10.2026): Spannbeton-Kennwerte, Prüfverfahren-Katalog, ZfP, Bauwerksdiagnose
+// ------------------------------------------------------------------------------------------------
+{
+  // Relaxation Klasse 2, μ = 0,70, Endwert 500 000 h; Distraktoren: 1000-h-Wert, ρ₁₀₀₀ = 8 % in Gl. (3.29), Gl. (3.28) Klasse 1
+  const sp = 0.7 * 1860;
+  const r = relaxation(sp, 1860, 2).delta_sigma_pr, r1000 = relaxation(sp, 1860, 2, 1000).delta_sigma_pr;
+  const r8 = r * 8 / 2.5, rK1 = relaxation(sp, 1860, 1).delta_sigma_pr;
+  const ds = (x: number) => `Δσ_pr ≈ ${z(x, 0)} N/mm²`;
+  PRUEFUNGEN.push({ id: 'qt_spannbeton_kennwerte_1', richtig: ds(r), optionen: [ds(r1000), ds(r8), ds(r), ds(rK1)], frage: ['σ_pi = 1302 N/mm²', 'μ = 0,70'], erklaerung: ['3,9 %'] });
+
+  // In-situ-Festigkeit → Klasse: f_ck = f_ck,is/0,85
+  const fck = 26.5 / 0.85;
+  pruefe(fck >= 30 && fck < 35, 'qt_bauwerksdiagnose_2: f_ck nicht in C30/37');
+  PRUEFUNGEN.push({ id: 'qt_bauwerksdiagnose_2', richtig: `C30/37 (f_ck ≈ ${z(fck, 0)} N/mm²)`, frage: ['f_ck,is = 26,5'], erklaerung: [`= ${z(fck, 1)} N/mm²`] });
+
+  // Ultraschall: v_p = s/Δt, E_dyn mit ν = 0,2
+  const us = ultraschall(0.4, 95, 2400);
+  pruefe(us.stufe === 'gut', 'qt_pruefverfahren_katalog_1: Gefügestufe nicht „gut“');
+  PRUEFUNGEN.push({ id: 'qt_pruefverfahren_katalog_1', richtig: `v_p ≈ ${z(Math.round(us.vp / 10) * 10, 0)} m/s, E_dyn ≈ ${z(us.eDynGPa, 0)} GPa – gutes, dichtes Gefüge`, frage: ['s = 0,40 m', 'Δt = 95 µs'] });
+
+  // Impact-Echo: d = β·v_p/(2f)
+  const ie = impactEcho(9.6, 4000, 30);
+  pruefe(ie.delamination, 'qt_pruefverfahren_katalog_2: Kern meldet keine Fehlstelle');
+  PRUEFUNGEN.push({ id: 'qt_pruefverfahren_katalog_2', richtig: `d ≈ ${z(ie.dickeCm, 0)} cm: Reflexion vor der Rückwand, Hinweis auf Fehlstelle`, frage: ['f = 9,6 kHz', 'v_p = 4000 m/s'] });
+
+  // Haftzug mit Kleberbruch: Wert, aber Anforderung nicht erfüllt
+  const hz = haftzug(3.5, 'kleber');
+  pruefe(!hz.ok && hz.fct >= 1.5, 'qt_pruefverfahren_katalog_3: Kern-Einstufung abweichend');
+  PRUEFUNGEN.push({ id: 'qt_pruefverfahren_katalog_3', richtig: `f_ct ≈ ${z(hz.fct, 2)} N/mm² ist nur ein unterer Grenzwert; Prüfung wiederholen`, frage: ['F = 3,5 kN'] });
+
+  // Chlorid 0,3 M.-%: Stahlbeton unter Anhaltswert, Spannstahl überschritten
+  pruefe(!chlorid(0.3, false).ueberschritten && chlorid(0.3, true).ueberschritten, 'qt_pruefverfahren_katalog_4: Chlorid-Einstufung laut Kern abweichend');
+  PRUEFUNGEN.push({ id: 'qt_pruefverfahren_katalog_4', richtig: 'Stahlbeton unter dem Anhaltswert; am Spannstahl (ab 0,2 M.-%) kritisch', frage: ['0,3 M.-%'] });
+
+  // Bohrkern L/D = 1 → Würfel 150 mm
+  const bk = bohrkern(100, 100, 275);
+  pruefe(bk.bezug === 'wuerfel', 'qt_pruefverfahren_katalog_5: Bezugskörper laut Kern nicht Würfel');
+  PRUEFUNGEN.push({ id: 'qt_pruefverfahren_katalog_5', richtig: `f_c,core ≈ ${z(bk.festigkeit, 1)} N/mm², vergleichbar mit dem Würfel (150 mm)`, frage: ['D = 100 mm', 'F = 275 kN'] });
+
+  // Georadar: v = c/√ε_r, d = v·t/2; Distraktoren: ohne Halbierung, c₀·t ohne ε_r, durch ε_r statt √ε_r
+  const gr = georadar(9, 2);
+  PRUEFUNGEN.push({ id: 'qt_zfp_1', richtig: `d ≈ ${z(gr.depth, 0)} mm`, optionen: [`d ≈ ${z(gr.depth * 2, 0)} mm`, `d ≈ ${z(300 * 2 / 2, 0)} mm`, `d ≈ ${z((300 / 9) * 2 / 2, 1)} mm`, `d ≈ ${z(gr.depth, 0)} mm`], frage: ['ε_r = 9', 't = 2,0 ns'] });
+
+  // Wenner: ρ = 2π·a·R, Einstufung mäßig
+  const wn = wenner(50, 1000);
+  pruefe(wn.stufe === 'mittel', 'qt_zfp_2: Wenner-Stufe laut Kern nicht „mittel“');
+  PRUEFUNGEN.push({ id: 'qt_zfp_2', richtig: `ρ ≈ ${z(wn.rho, 0)} Ω·m – mäßiges Korrosionsrisiko`, frage: ['a = 50 mm', 'R = 1000 Ω'], erklaerung: [`${z(wn.rhoKohmCm, 1)} kΩ·cm`] });
+
+  // Potential −280 mV: ungewiss
+  pruefe(potentialRisikoZfp(-280) === 'mittel', 'qt_zfp_3: −280 mV laut Kern nicht „ungewiss“');
+  PRUEFUNGEN.push({ id: 'qt_zfp_3', richtig: 'Ungewiss (10 … 90 %); Bewertung objektbezogen im Potentialfeld', frage: ['−280 mV'] });
+
+  // Torrent: Feuchte 90 % → kritisch (Messung ungültig)
+  pruefe(torrentFeuchte(90) === 'kritisch', 'qt_zfp_4: 90 % Feuchte laut Kern nicht „kritisch“');
+  PRUEFUNGEN.push({ id: 'qt_zfp_4', richtig: 'Ungültig: Porenwasser blockiert den Gasfluss, k_T fällt zu klein aus', frage: ['90 %'] });
 }
 
 // ------------------------------------------------------------------------------------------------

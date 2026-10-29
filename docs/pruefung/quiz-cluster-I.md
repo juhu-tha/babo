@@ -1,10 +1,10 @@
 # Prüfliste Quiz – Cluster I: Grundlagen & Labor
 
-Stand: 28.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
+Stand: 29.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
 Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 76 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 1 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 71 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 1 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -108,7 +108,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 8
 
 - **Frage:** Welche Größe bestimmt bei Wohngebäuden die Energieeffizienzklasse (A+ bis H) im Energieausweis?
 - **Richtige Antwort:** Der Endenergiebedarf bzw. -verbrauch
-- **Auffälligkeit:** Prüfhinweis: GModG (Verkündung, Paragrafen, Inkrafttreten in Stufen) – Rechtsstand bestätigen; Stammtext q_ea_2 „seit dem 29. Juli 2026“. · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Effizienzklassen A+ bis H gelten im GModG fort (Verbraucherzentrale); Anlagennummer im GModG nicht gesondert geprüft. · Umsetzung 29.10.: Lernhilfe um den Stichtag ergänzt: „Primärenergie ≤ 0,55 · Referenzgebäude“ gilt bis 31.12.2026 (T11-EA, QZ-2) – korrigiert · Prüfhinweis: GModG (Verkündung, Paragrafen, Inkrafttreten in Stufen) – Rechtsstand bestätigen; Stammtext q_ea_2 „seit dem 29. Juli 2026“.
 - [x] ok
 - [ ] ändern: …
 
@@ -116,7 +116,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 69 korrigiert, 0 fraglich, 8
 
 - **Frage:** Was gilt seit dem 29. Juli 2026 für das Gebäudeenergiegesetz (GEG)?
 - **Richtige Antwort:** Es heißt nun GModG; §§ 15, 16 und 79–88 bleiben, Bestandsregeln teils neu nummeriert
-- **Auffälligkeit:** Prüfhinweis: GModG (Verkündung, Paragrafen, Inkrafttreten in Stufen) – Rechtsstand bestätigen; Stammtext q_ea_2 „seit dem 29. Juli 2026“. · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Verkündung am 28.07.2026 im BGBl. 2026 I Nr. 226 bestätigt (BIngK, IngKH), Umbenennung GEG → GModG (BMWSB). Inhaltsverzeichnis der nichtamtlichen Fassung (gmodg-info.de): §§ 15, 16 und 79–88 mit unveränderten Überschriften, Bestand als §§ 34–39 (§ 35 Nachrüstung, § 36 Änderung), §§ 47–55 und 71–73 weggefallen. Wortlautvergleich mit dem GEG nicht durchgeführt. · Umsetzung 29.10.: Erklärung und Lernhilfe: „bleiben inhaltlich bestehen“ → „bleiben in der Nummerierung bestehen; ab 01.01.2027 ändern sich Referenzgebäude und Energieausweis“, Stichtag 31.12.2026 genannt (T11-EA, QZ-2) – korrigiert · Prüfhinweis: GModG (Verkündung, Paragrafen, Inkrafttreten in Stufen) – Rechtsstand bestätigen; Stammtext q_ea_2 „seit dem 29. Juli 2026“.
 - [x] ok
 - [ ] ändern: …
 
