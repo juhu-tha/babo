@@ -19,6 +19,16 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { ARCHITEKTUR_MATERIALITAET } from '@/src/data/architekturMaterialitaet';
+import { GWP_LEHRWERTE } from '@/src/data/gwpLehrwerte';
+import { SCHWINDBEIWERTE } from '@/src/calc/holzphysik';
+import { formatDeZahl } from '@/src/utils/numberFormat';
+
+// Kennwerte im Steckbrief Holz aus den zentralen Konstanten (Durchsicht D 29.10.2026, DSD-HO-2/-3)
+const KVH_BIOGEN_T = formatDeZahl(-GWP_LEHRWERTE.kvh.biogen / 1000, 2);
+const KVH_ROHDICHTE = GWP_LEHRWERTE.kvh.rohdichte;
+const FICHTE_QT = formatDeZahl(SCHWINDBEIWERTE.fichte.tangential, 2);
+const FICHTE_QL = formatDeZahl(SCHWINDBEIWERTE.fichte.longitudinal, 2);
+const FICHTE_T_ZU_L = Math.round(SCHWINDBEIWERTE.fichte.tangential / SCHWINDBEIWERTE.fichte.longitudinal);
 
 import type { TabId } from '@/src/contexts/TabContext';
 export interface ProfilSection {
@@ -475,7 +485,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
   },
   titan: {
     name: "Titan",
-    subtitle: "Ultraleichtes, hochfestes Edelmetall der Extraklasse für chemischen Extremwiderstand und Prestigebauten",
+    subtitle: "Hochfestes Leichtmetall der Extraklasse für chemischen Extremwiderstand und Prestigebauten",
     sections: {
       rohstoffe: "Ausgangsmineralien sind primär Rutil (Titan(IV)-oxid) oder Ilmenit. Das Metall ist in der Erdkruste reichlich vorhanden, der chemische Extraktionsprozess ist jedoch extrem komplex.",
       herstellung: "Gewinnung über das aufwendige Kroll-Verfahren: Reduktion von Titantetrachlorid mit flüssigem Magnesium unter Argon-Schutzgas zu Titanschwamm. Anschließendes Vakuum-Umschmelzen und Walzen zu hochwertigsten Blechplatinen.",
@@ -484,13 +494,13 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
         oekologisch: "Der energie- und apparatetechnische Aufwand der Herstellung ist der absolut höchste unter allen Baumaterialien (immense graue Energie). Dieser wird im Bauwesen nur durch d. unbegrenzte Lebensdauer ohne jeglichen Schutzanstrich kompensiert."
       },
       anwendungen: "Architektonisch anspruchsvolle Premiumfassaden und Dacheindeckungen im Prestigebau (z. B. Guggenheim-Museum Bilbao), Tragelemene in extrem salzhaltiger Meeresluft sowie im hoch-korrosiven chemischen Anlagenbau.",
-      produkte: "Bleche und Platten aus Titan und Titanlegierungen (DIN EN ISO 21809), stranggepresste Stäbe und Profile sowie Spezialbefestigungsmittel für dauerhafte Verankerungen in Meeresnähe.",
+      produkte: "Bleche und Platten aus Titan und Titanlegierungen (Technische Lieferbedingungen DIN 17860; Ausgabe vorläufig, Normprüfung ausstehend), stranggepresste Stäbe und Profile sowie Spezialbefestigungsmittel für dauerhafte Verankerungen in Meeresnähe.",
       dauerhaftigkeit: "Die Korrosionsbeständigkeit ist sehr hoch und übertrifft in vielen Medien die von nichtrostendem Stahl bei Weitem. Titan bildet an Luft eine extrem stabile, inerte und dauerhafte Titanoxid-Schutzschicht, die gegen Chloride, Seewasser und Säuren absolut immun ist.",
       kosten: "Titan gehört zu den exklusivsten und teuersten Werkstoffen im Bauwesen. Hohe Material- und Verarbeitungskosten (Werkzeugverschleiß beim Schneiden) machen seinen Einsatz nur für Repräsentationsbauten wirtschaftlich darstellbar.",
       recycling: "Sehr gut recycelbar. Titan- und Legierungsschrotte werden in spezialisierten Vakuum-Umschmelzanlagen erfasst und stofflich hochwertig wiederverwendet. Aufgrund des hohen Materialwertes gibt es keinerlei Deponierungstendenzen.",
       besonderheiten: "Beim mechanischen Bearbeiten (Schneiden, Bohren) ist auf eine intensive Kühlung zu achten, da Titan eine geringe Wärmeleitfähigkeit besitzt und zum Festfressen von Werkzeugen neigt. Funkenflug beim Schleifen beachten!",
       innovationen: "Entwicklung von nanostrukturierten Titanoberflächen mit dauerhaft fotokatalytischer Aktivität zur selbstständigen Zersetzung von Umweltgiften (Stickoxiden) und Rußpartikeln direkt an d. Gebäudefassade im urbanen Ballungsraum.",
-      historie: "Das im Jahr 1791 entdeckte Edelmetall wurde erst im 20. Jahrhundert durch das Kroll-Verfahren in größeren Mengen extrahierbar. Nach jahrzehntelangem Einsatz in Luft- und Raumfahrt wird Titan auch in der Architektur eingesetzt, im Jahr 1997 mit dem schimmernden und absolut korrosionsfreien Guggenheimmuseum in Bilbao von Frank Gehry."
+      historie: "Das im Jahr 1791 entdeckte Leichtmetall (trotz seiner Beständigkeit kein Edelmetall, sondern ein unedles, sich selbst passivierendes Metall) wurde erst im 20. Jahrhundert durch das Kroll-Verfahren in größeren Mengen extrahierbar. Nach jahrzehntelangem Einsatz in Luft- und Raumfahrt wird Titan auch in der Architektur eingesetzt, im Jahr 1997 mit dem schimmernden und absolut korrosionsfreien Guggenheimmuseum in Bilbao von Frank Gehry."
     }
   },
   holz: {
@@ -501,14 +511,14 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       herstellung: "Einschlag im Forstfeuchtbestand, Ablängen im Sägewerk und Einschneiden zu Bauschnittholz (Kanthölzer, Bretter, Latten). Es erfolgt eine technische Kammertrocknung auf eine Ziel-Holzfeuchte von ca. 15 ± 3 % (KVH®) bzw. max. 18–20 % zur Schwindbegrenzung nach DIN 4074.",
       eigenschaften: {
         technisch: "Stark ausgeprägte Anisotropie (Festigkeiten längs zur Faser um ein Vielfaches höher als quer zur Faser: Biegefestigkeit f_mk ≈ 24 N/mm² bei C24, Querzugfestigkeit f_t90k ist minimal). Geringe Dichte (ca. 400-550 kg/m³). Hervorragendes Verhältnis von Tragkraft zu Eigengewicht.",
-        oekologisch: "Hervorragender Öko-Akteur. Holz speichert während des Baumwachstums CO2 (ca. 0,9 t CO2/m³ Holz) und speichert biogenen Kohlenstoff (in der Ökobilanz nach EN 15804+A2 getrennt ausgewiesen, am Lebensende wieder freigesetzt, sofern nicht weiterverwendet). Geringste Graue Energie bei lokaler Verarbeitung."
+        oekologisch: `Hervorragender Öko-Akteur. Holz bindet während des Baumwachstums CO₂ (rund ${KVH_BIOGEN_T} t CO₂ je m³ Konstruktionsvollholz mit ${KVH_ROHDICHTE} kg/m³ bei u = 12 %, DIN EN 16449) und speichert biogenen Kohlenstoff (in der Ökobilanz nach EN 15804+A2 getrennt ausgewiesen, am Lebensende wieder freigesetzt, sofern nicht weiterverwendet). Geringste Graue Energie bei lokaler Verarbeitung.`
       },
       anwendungen: "Tragwerke für Dachstühle (Sparren, Pfetten), Holzrahmenbauwände im Wohnungsbau, Deckenbalkenlagen, tragende Fachwerkbauten, feingliedrige Fassadenschalungen, Konstruktionsunterlagen, Terrassendielen im Außenbereich.",
       produkte: "Bauschnittholz (DIN 4074), Konstruktionsvollholz (KVH®) mit definierter Holzfeuchte und werkseitiger Keilzinkungsverbindung für anspruchsvolle Längen, Brettschichtholz (BSH) für extrem tragfeste Leimbinder.",
       dauerhaftigkeit: "Sehr hoch bei konsequentem konstruktivem Holzschutz (Bauteile müssen vor andauernder Feuchtigkeit geschützt sein und rasch abtrocknen können). Ab einer dauerhaften Holzfeuchte von > 20% droht der Befall durch holzzerstörende Pilze und Insekten.",
       kosten: "Vollholz als Rohstoff ist im mittleren Preissegment angesiedelt. Gutes KVH C24 liegt bei etwa 450-650 €/m³, Fichten-Bauschnittholz ist nochmals preiswerter. Die hocheffiziente, schnelle Montage auf der Baustelle senkt die Gesamtbauzeit spürbar.",
       recycling: "Sehr gut im Rahmen der Kaskadennutzung. Unbehandeltes Altholz kann werkstofflich zu Holzwerkstoffen (Spanplatten) weiterverarbeitet werden oder am Ende des Lebenszyklus als CO2-neutraler Biobrennstoff zur ökologischen Fernwärmerzeugung dienen.",
-      besonderheiten: "Konstruktionsfehler Nummer 1: Behinderung des natürlichen Quell- und Schwindverhaltens infolge Feuchtigkeitsschwankungen. Holz arbeitet im Querschnitt quer zur Faser tangential rund 30-mal stärker als längs zur Faser. Stoß- und Auflagerbereiche elastisch entkoppeln.",
+      besonderheiten: `Konstruktionsfehler Nummer 1: Behinderung des natürlichen Quell- und Schwindverhaltens infolge Feuchtigkeitsschwankungen. Holz arbeitet im Querschnitt quer zur Faser tangential rund ${FICHTE_T_ZU_L}-mal stärker als längs zur Faser (Fichte: ${FICHTE_QT} zu ${FICHTE_QL} % je % Holzfeuchte). Stoß- und Auflagerbereiche elastisch entkoppeln.`,
       innovationen: "Entwicklung hochfester Laubholz-Stabtragwerke (z.B. aus verklebter Buche) mit Tragfähigkeiten auf Augenhöhe mit Baustahl zur Realisierung extrem schlanker, weitgespannte Ingenieurholzbau-Hallentragwerke.",
       historie: "Zusammen mit Stein der älteste primäre Baustoff der Evolution. Vom steinzeitlichen Pfahlbau über gotische Sprengwerke bis hin zu komplexen Riegelverbindungen des historischen Zimmerhandwerks bildete Holz über Jahrhunderte das dominante Tragmedium des Hochbaus. Die moderne Normierung ab 1900 verwandelte den Rohstoff in ingenieurtechnisches Konstruktionsholz."
     }
@@ -568,7 +578,7 @@ export const DEFT_PROFILES: Record<string, MaterialProfil> = {
       dauerhaftigkeit: "Gegen Wasser, Pilze und fast alle bodenständigen Chemikalien unbegrenzt beständig (Lebensdauer > 50-100 Jahre im Erdreich). Kritischer Degradationsfeind ist die UV-Strahlung im Außenbereich: Ungeschützte Kunststoffe verspröden und reißen.",
       kosten: "Äußerst wirtschaftliche Systemkomponenten im Vergleich zu metallischen Alternativen. Kunststoffrohre weisen extreme Preisvorteile auf, sind sehr leichtgewichtig und lassen sich ohne Schweißgeräte per einfachem Steckmuffen-Verfahren verlegen.",
       recycling: "Werkstoffliches Recycling scheitert oft an Baustellen-Verunreinigungen und Verbundklebungen (WDVS). Sortenreines PVC (z.B. alte Fensterrahmen) wird erfolgreich im Closed-Loop-Verfahren zu Recyclingprofilen geschreddert. Sonstige gemischte Abfälle werden energetisch verwertet.",
-      besonderheiten: "Konstruktionsrelevanter Schadefaktor: Enorm hoher thermischer Längenausdehnungskoeffizient (bis zu 10-mal größer als Beton/Stahl). Bei freiverlegten Rohren und Hüllen sind Gleitbänder, Dehnungsschleifen und Expansionsfugen zwingend vorzusehen.",
+      besonderheiten: "Konstruktionsrelevanter Schadefaktor: Enorm hoher thermischer Längenausdehnungskoeffizient (etwa 7- bis 20-mal größer als Beton/Stahl, z. B. PVC-U rund 80 · 10⁻⁶/K). Bei freiverlegten Rohren und Hüllen sind Gleitbänder, Dehnungsschleifen und Expansionsfugen zwingend vorzusehen.",
       innovationen: "Biologisch abbaubare Hochleistungs-Spannbahnen. Selbstheilende Elastomerdichtungen im Tunnelbau. 3D-gedruckte Fassadensondertafeln aus recyceltem Meeresplastik zur architektonischen Profilierung von Gewerbeobjekten.",
       historie: "Die erste vollsynthetische Kunststoffherstellung (Bakelit) gelang im Jahr 1907. Ab den 1930er Jahren wurden mit PVC und Polystyrol kostengünstige, extrem langlebige Kunststoffe massenhaft erzeugt. Die Nachkriegsära (ab 1950) veränderte durch korrosionsfreie Rohrleitungssysteme, dichte Folien und hocheffiziente Dämmstoffe die gesamte Bautechnologie."
     }

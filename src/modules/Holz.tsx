@@ -45,12 +45,13 @@ ChartJS.register(
 );
 
 // Quell- und Schwindmaße Fichte/Kiefer/Eiche aus dem Kern (SCHWINDBEIWERTE, T10-HW-1; Konsistenzprüfung 29.10.2026,
-// vorher Fichte 0,16/0,33 und Kiefer 0,17/0,31); BSH aus Fichte wie Fichte. Buche: Modulwert (nicht im Kern).
+// vorher Fichte 0,16/0,33 und Kiefer 0,17/0,31); BSH aus Fichte wie Fichte. Buche ebenfalls aus dem Kern
+// (Durchsicht D 29.10.2026, DSD-HO-1; vorher Modulkopie 0,22/0,45 ohne Quelle, Holzbau-Modul 0,20/0,40).
 const schwindQ = (s: { radial: number; tangential: number; longitudinal: number }) => ({ qr: s.radial, qt: s.tangential, ql: s.longitudinal });
 const holzArten = {
   'Fichte (Vollholz)': { ...schwindQ(SCHWINDBEIWERTE.fichte), lambda: 0.13, rho: 450, beta0: 0.8 },
   'Kiefer (Vollholz)': { ...schwindQ(SCHWINDBEIWERTE.kiefer), lambda: 0.13, rho: 520, beta0: 0.8 },
-  'Buche (Vollholz)': { qr: 0.22, qt: 0.45, ql: 0.01, lambda: 0.17, rho: 720, beta0: 0.55 },
+  'Buche (Vollholz)': { ...schwindQ(SCHWINDBEIWERTE.buche), lambda: 0.17, rho: 720, beta0: 0.55 },
   'Eiche (Vollholz)': { ...schwindQ(SCHWINDBEIWERTE.eiche), lambda: 0.17, rho: 690, beta0: 0.55 },
   'Brettschichtholz (BSH)': { ...schwindQ(SCHWINDBEIWERTE.fichte), lambda: 0.13, rho: 450, beta0: 0.7 },
   // Holzwerkstoffe: qt/ql in Plattenebene, qr = Dickenrichtung (T6-HO-1, Kern src/calc/holzphysik.ts)
