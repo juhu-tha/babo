@@ -3,6 +3,8 @@
 // ----------------------------------------------------------------------
 // EC2 TABELLE 3.1: FESTIGKEITS- UND VERFORMUNGSEIGENSCHAFTEN FÜR BETON
 // (DIN EN 1992-1-1:2011-01 & NA:2013-04)
+// Entscheidung 29.10.2026: Werte bis C50/60 regulär; ab C55/67 „vorläufig, F-Freigabe“ (zusätzliche f_cd-Abminderung
+// bleibt aus, FCD_HOCHFEST_AKTIV); C100/115 ist Lehrwert (Dehnungswerte wie C90/105).
 // ----------------------------------------------------------------------
 export interface ConcreteClassData {
   name: string;

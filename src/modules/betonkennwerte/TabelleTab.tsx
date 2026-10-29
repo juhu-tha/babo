@@ -65,8 +65,13 @@ export default function TabelleTab({ selectedClassIdx, setSelectedClassIdx }: Ta
                     <td className="py-2 px-3 font-bold text-slate-900 flex items-center gap-1.5">
                       {c.name}
                       {isHighStrength && (
-                        <span className="text-[9px] bg-rose-200 text-rose-800 px-1 py-0.2 rounded font-extrabold uppercase">
+                        <span className="text-[9px] bg-rose-200 text-rose-800 px-1 py-0.2 rounded font-extrabold uppercase" title="Hochfester Beton: vorläufig, F-Freigabe">
                           HFB
+                        </span>
+                      )}
+                      {c.fck > 90 && (
+                        <span className="text-[9px] bg-slate-100 text-slate-700 border border-slate-300 px-1 py-0.2 rounded font-extrabold uppercase" title="Lehrwert: Dehnungswerte wie C90/105 (vorläufig, F-Freigabe)">
+                          Lehrwert
                         </span>
                       )}
                     </td>

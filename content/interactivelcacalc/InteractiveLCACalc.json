@@ -24,7 +24,7 @@
     "normierterLebenszyklusVergleichModule": "Vereinfachte Bilanz (A1–A3, B4, C3/C4, Sockelbetrag TGA und B6 mit Ihren Energieeingaben) im Vergleich mit den Anforderungswerten QNG-PLUS (≤ ",
     "undQngPremium": ") und QNG-PREMIUM (≤ ",
     "t4NutzungB4B6": "4. Nutzungsphase: Ersatz (B4) und Betrieb (B6)",
-    "ersatzB4Erlaeuterung": "Ersatzmaßnahmen je Baustoff: $n = \\lceil 50/ND \\rceil - 1$ (kein Ersatz im 50. Jahr); je Ersatz werden Herstellung (A1–A3) und Entsorgung (C3/C4) angesetzt. Nutzungsdauern nach der BNB-Tabelle (Stand 24.02.2017), je Baustoffzeile änderbar.",
+    "ersatzB4Erlaeuterung": "Ersatzmaßnahmen je Baustoff: $n = \\lceil 50/ND \\rceil - 1$ (kein Ersatz im 50. Jahr); je Ersatz werden Herstellung (A1–A3) und Entsorgung (C3/C4) angesetzt. Nutzungsdauern nach der BNB-Tabelle des BBSR (**Stand 2017**, Fassung 24.02.2017; die Neufassung 2025 ist nicht eingearbeitet), je Baustoffzeile änderbar.",
     "betriebB6Erlaeuterung": "Endenergie aus der GEG-Berechnung ohne selbst genutzten PV-Strom (B6.1) und pauschaler Nutzerstrom von 20 kWh je m² beheizte NRF und Jahr (B6.3), bewertet mit den QNG-Rechenwerten je kWh Endenergie."
   },
   "werte": {
@@ -77,6 +77,8 @@
     "tgaBis40": "Q_P ≤ 40 % von Q_P,Ref: 1,30 kg/(m²·a)",
     "ndLabel": "Nutzungsdauer (B4)",
     "ndVorlaeufig": "vorläufige Zuordnung",
+    "qngStandHinweis": "Stand der Anforderungswerte: ",
+    "qngAbsenkungHinweis": "; vorübergehende Absenkung (seit 12/2025) nicht abgebildet.",
     "ersatzKurz": "Ersatz"
   },
   "daten": {

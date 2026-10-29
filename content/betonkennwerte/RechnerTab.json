@@ -52,7 +52,8 @@
   },
   "werte": {
     "normalbetonC5060": "Normalbeton (≤ C50/60)",
-    "hochfesterBetonC5060": "Hochfester Beton (> C50/60)",
+    "hochfesterBetonC5060": "Hochfester Beton (≥ C55/67): Kennwerte vorläufig, F-Freigabe – die zusätzliche f_cd-Abminderung (1,1 − f_ck/500) ist nicht angesetzt (Schalter standardmäßig aus)",
+    "lehrwertC100115": "C100/115: Lehrwert – Dehnungswerte wie C90/105 gehalten; hochfester Beton, vorläufig, F-Freigabe; zusätzliche f_cd-Abminderung nicht angesetzt",
     "zementbeiwertSAbschnitt1": "Zementbeiwert s (Abschnitt 1)",
     "gesteinskörnungEAbschnitt3": "Gesteinskörnung α_E (Abschnitt 3)",
     "querschnittsflächeACM": "Querschnittsfläche A_c [m²]",

@@ -17,7 +17,7 @@
     "t1Wasserzementwert": "1. Wasserzementwert",
     "wirksamerWassergehaltBezogenAuf": "Wirksamer Wassergehalt bezogen auf den Zementgehalt.",
     "t2ÄquivalenterWasserzementwert": "2. Äquivalenter Wasserzementwert",
-    "angerechnetWerdenNurDie": "Angerechnet werden nur die zulässigen Mengen der Zusatzstoffe (Flugasche f/z ≤ 0,33).",
+    "angerechnetWerdenNurDie": "Angerechnet werden nur die zulässigen Mengen der Zusatzstoffe (Flugasche f/z ≤ 0,33; bei Zementen ohne Kennbuchstaben des Hauptbestandteils, hier CEM II/A und CEM II/B, als Lehrannahme f/z ≤ 0,25).",
     "t3MaßgebendeAnforderungen": "3. Maßgebende Anforderungen",
     "beideAnforderungenSindErfüllt": "Beide Anforderungen sind erfüllt.",
     "mindestensEineAnforderungIst": "Mindestens eine Anforderung ist nicht erfüllt – Rezeptur anpassen.",

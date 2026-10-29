@@ -41,7 +41,8 @@ export interface NutzungsdauerAngabe {
 /**
  * Nutzungsdauern der Baustoffe des LCA-Rechners nach „Nutzungsdauern von Bauteilen für Lebenszyklusanalysen nach BNB“
  * (BBSR, Stand 24.02.2017 – die in QNG-Anhang 3.1.1 v1.4 genannte Fassung). Hinweis: Die Neufassungen ab 25.09.2025
- * setzen WDVS auf ≥ 50 a herauf; bis zur Übernahme in die QNG-Regeln gilt hier der Wert 2017 (Prüfpunkt F-Freigabe).
+ * setzen WDVS auf ≥ 50 a herauf; bis zur Übernahme in die QNG-Regeln gilt hier der Wert 2017 (Entscheidung 29.10.2026: Stand
+ * „BBSR 2017“ ausgewiesen; Umstellung auf die Fassung 2025 ist eine eigene Aufgabe).
  * Abgleich 27.10.2026: Die Neuerhebung der BBSR-Tabelle ist öffentlich belegt (Lobbyregister, Stellungnahme
  * SG2505050004 des Bundesverbands der Deutschen Ziegelindustrie, 05.05.2025: „letzter Stand: 2017“); Inhalt und
  * Geltung der Neufassung für QNG sind öffentlich nicht bestätigt – Fassung 2017 bleibt, Zuordnungen mit
@@ -115,9 +116,12 @@ export const TGA_SOCKEL: Readonly<Record<TgaSockel, { gwp: number; gwpD: number 
  * projektspezifisch. Belegt: KfW, Anlage zum Merkblatt 296/498, Technische Mindestanforderungen, 09/2025, Tab. 1
  * (24 kg CO₂-Äq./(m²·a)); envisys-Infothek „QNG“, Stand 01/2026 (PLUS 24, PREMIUM 20). Laut envisys gelten „seit
  * 12/2025 vorübergehend geringere Anforderungen“; die Zahlenwerte sind öffentlich nicht beziffert gefunden und nicht
- * eingearbeitet (vorläufig, F-Freigabe: QNG-Handbuch Anlage 3 bzw. Infoblatt 12/2025 auf qng.info).
+ * eingearbeitet. Entscheidung 29.10.2026: Grenzen mit Stand ausweisen und Hinweis „vorübergehende Absenkung nicht abgebildet“
+ * (QNG_STAND).
  */
 export const QNG_WG = { plus: 24, premium: 20 } as const;
+/** Stand der QNG-Anforderungswerte im Rechner (Anzeige neben den Grenzen) */
+export const QNG_STAND = 'QNG-Handbuch Anlage 3 v1.4; KfW 09/2025';
 
 /**
  * Transportfaktoren A4 des Gebäuderechners [kg CO₂-Äq. je t·km], nicht Teil des QNG-Bilanzrahmens. Quelle: Umweltbundesamt,
@@ -139,12 +143,13 @@ export const A4_FAKTOR_GEBAEUDE = { lkw: 0.118, bahn: 0.014 } as const;
  * Rangfolge nach Abfallhierarchie § 6 Abs. 1 KrWG (Vorbereitung zur Wiederverwendung vor Recycling vor sonstiger, insbesondere
  * energetischer Verwertung) und BNB 4.1.4 (hochwertige vor minderwertiger vor thermischer Verwertung):
  * reuse > high_grade > downcycling > thermal. Korrektur 27.10.2026: thermisch vorher 0,85 (> Downcycling 0,55, Verstoß gegen
- * die Rangfolge), jetzt 0,40. Die Rangfolge ist belegt, die Beträge 1,45 / 0,55 / 0,40 sind Lehrwerte (vorläufig, F-Freigabe).
+ * die Rangfolge), jetzt 0,40. Die Rangfolge ist belegt, die Beträge 1,45 / 0,55 / 0,40 sind Lehrwerte (Entscheidung 29.10.2026;
+ * Modul D wird nicht angerechnet und ändert den QNG-Kennwert nicht).
  */
 export const VERWERTUNGSFAKTOR: Readonly<Record<Verwertung, number>> = { reuse: 1.45, high_grade: 1.0, downcycling: 0.55, thermal: 0.4 };
 /** Rangfolge der Verwertungswege nach § 6 Abs. 1 KrWG / BNB 4.1.4, höchste Stufe zuerst */
 export const VERWERTUNG_RANGFOLGE: readonly Verwertung[] = ['reuse', 'high_grade', 'downcycling', 'thermal'];
-export const QUELLE_VERWERTUNGSFAKTOR = 'Modul-D-Verwertungsfaktoren: Rangfolge nach § 6 KrWG und BNB 4.1.4 belegt, Beträge Lehrwerte (vorläufig, F-Freigabe)';
+export const QUELLE_VERWERTUNGSFAKTOR = 'Modul-D-Verwertungsfaktoren: Rangfolge nach § 6 KrWG und BNB 4.1.4 belegt, Beträge Lehrwerte';
 /** Bezugs-Sortenreinheit der Referenz-Gutschrift [%] */
 export const SORTENREINHEIT_REFERENZ = 85;
 
@@ -381,8 +386,8 @@ export function lcaBilanz(e: LcaEingabe): LcaErgebnis {
  * Transportfaktoren des Einzelbaustoff-Rechners (LCA-Grundlagen) [kg CO₂-Äq. je t·km]. Diesel-Lkw und Bahn nach UBA,
  * Güterverkehr 2024 (TREMOD 6.71B, wie A4_FAKTOR_GEBAEUDE): Last- und Sattelzüge 101 g/tkm („Diesel-Lkw 40 t“),
  * Lkw 3,5–7,5 t 561 g/tkm („Diesel-Lkw 7,5 t“), Güterbahnen 14 g/tkm. Vorher: 0,020 / 0,080 / 0,005 (Lehrwerte, um den
- * Faktor 3–7 zu niedrig). Elektro-Lkw (Ökostrom) 0,004 und H₂-Lkw 0,003 bleiben Lehrwerte ohne öffentliche Quelle
- * (vorläufig, F-Freigabe).
+ * Faktor 3–7 zu niedrig). Elektro-Lkw (Ökostrom) 0,004 und H₂-Lkw 0,003 sind Lehrwerte ohne öffentliche Quelle (Entscheidung
+ * 29.10.2026: als Lehrwert gekennzeichnet; A4 ist nicht Teil des QNG-Bilanzrahmens).
  */
 export const A4_FAKTOR_EINZEL = { 'lkw-heavy': 0.101, 'lkw-light': 0.561, 'strom-lkw': 0.004, 'h2-lkw': 0.003, zug: 0.014 } as const;
 export type TransportEinzel = keyof typeof A4_FAKTOR_EINZEL;

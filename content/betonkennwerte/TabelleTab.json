@@ -3,6 +3,6 @@
     "dinEn19921": "DIN EN 1992-1-1 Tabelle 3.1: Festigkeits- und Verformungseigenschaften",
     "vergleichendeÜbersichtAller15": "Vergleichende Übersicht aller 15 genormten Betonfestigkeitsklassen von Normal- bis Ultra-Hochleistungsbeton",
     "abschnitt7DerFormelsammlung": "Abschnitt 7 der Formelsammlung",
-    "hinweisZuHochleistungsbetonenC50": "**Hinweis zu Hochleistungsbetonen (> C50/60):** Beachten Sie das veränderte Verformungsverhalten. Die Bruchdehnung $\\varepsilon_{cu2}$ sinkt von 3,5 ‰ kontinuierlich auf bis zu 2,6 ‰ ab (spröderes Bruchverhalten), und der Exponent des Parabel-Rechteck-Diagramms $n$ sinkt von 2,0 auf 1,4."
+    "hinweisZuHochleistungsbetonenC50": "**Hinweis zu Hochleistungsbetonen (> C50/60):** Beachten Sie das veränderte Verformungsverhalten. Die Bruchdehnung $\\varepsilon_{cu2}$ sinkt von 3,5 ‰ kontinuierlich auf bis zu 2,6 ‰ ab (spröderes Bruchverhalten), und der Exponent des Parabel-Rechteck-Diagramms $n$ sinkt von 2,0 auf 1,4. Die Klassen ab C55/67 (HFB) sind **vorläufig, F-Freigabe**; die Spalte $f_{cd}$ (DE) rechnet ohne zusätzliche Abminderung $(1{,}1 - f_{ck}/500)$ (Schalter standardmäßig aus). **C100/115 ist ein Lehrwert:** Die Dehnungswerte sind von C90/105 übernommen, weil die Gleichungen der Tab. 3.1 nur bis $f_{ck} = 90$ N/mm² gelten. Werte bis C50/60 gelten uneingeschränkt."
   }
 }
