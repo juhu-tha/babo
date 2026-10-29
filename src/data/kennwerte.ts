@@ -155,11 +155,13 @@ export const FCD_MODUL = {
   /** Historische Materialkennwerte, Neubau-Ansatz γ_c = 1,5 */
   historischStandard: { hochfest: false },
   /**
-   * Historische Materialkennwerte, Bestandsbewertung mit γ_c = 1,35. Quelle: DIN EN 1992-1-1:2011-01, Anhang A.2.2(2),
-   * γ_C,red3 = 1,35 (Empfehlungswert), wenn die maßgebenden geometrischen Daten am fertigen Bauwerk gemessen sind und der
-   * Variationskoeffizient der Betondruckfestigkeit nachweislich ≤ 10 % beträgt; kein Wert aus Tab. 2.1DE. Für Bestandsbauten
-   * in Deutschland alternativ DBV-Merkblatt „Modifizierte Teilsicherheitsbeiwerte für Stahlbetonbauteile“ (03/2013) mit
-   * γ_C,mod abhängig vom gemessenen V_c. Anwendbarkeit von Anhang A nach NA DE: vorläufig, F-Freigabe.
+   * Historische Materialkennwerte, Bestandsbewertung mit γ_c = 1,35. Quelle (Entscheidung 28.10.2026): DBV-Merkblatt
+   * „Modifizierte Teilsicherheitsbeiwerte für Stahlbetonbauteile“, Deutscher Beton- und Bautechnik-Verein, Fassung März 2013
+   * (Merkblattreihe „Bauen im Bestand“): modifiziert wird nur die Widerstandsseite; Voraussetzung ist eine qualifizierte
+   * Bestandsaufnahme mit am Bauwerk ermittelter Betondruckfestigkeit und Geometrie, γ_C,mod hängt vom gemessenen
+   * Variationskoeffizienten ab. Zuordnung γ_c = 1,35 ↔ V_c-Grenze nach Merkblatt: vorläufig, F-Freigabe.
+   * Gleicher Zahlenwert γ_C,red3 = 1,35 in DIN EN 1992-1-1, Anhang A.2.2(2) (Geometrie gemessen, V_c ≤ 10 %) –
+   * Anhang A ist in Deutschland nicht eingeführt, daher nur Vergleich; kein Wert aus Tab. 2.1DE.
    */
   historischBewertung: { gammaC: 1.35, hochfest: false },
 } as const satisfies Record<string, FcdOptionen>;

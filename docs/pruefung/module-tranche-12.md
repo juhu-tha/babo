@@ -218,6 +218,8 @@ Tab. D.1/D.2 der DIN EN 1990 im Kern vollständig richtig. Beispiele 1 (15,7 N/m
 
 - [ ] Modul freigeben
 
+**Umsetzung 29.10.2026 (Entscheidung 28.10., γ_c = 1,35 Bestandsbewertung):** Quelle des Bestandswerts im Labor-Rechner ist jetzt das DBV-Merkblatt „Modifizierte Teilsicherheitsbeiwerte für Stahlbetonbauteile“ (Deutscher Beton- und Bautechnik-Verein, Fassung März 2013, Merkblattreihe „Bauen im Bestand“; Titel und Ausgabe am öffentlichen Inhaltsverzeichnis bei DIN Media geprüft). Im Tipp (RechnerLaborTab.json), in `src/data/kennwerte.ts` und in den Regelwerken genannt: nur Widerstandsseite modifiziert, qualifizierte Bestandsaufnahme, Betondruckfestigkeit und Geometrie am Bauwerk ermittelt, γ_C,mod abhängig vom gemessenen Variationskoeffizienten. Zuordnung γ_c = 1,35 ↔ Grenze des Variationskoeffizienten: öffentlich nicht belegt, „vorläufig, F-Freigabe“. DIN EN 1992-1-1, Anhang A.2.2(2) (γ_C,red3 = 1,35, Geometrie gemessen, V_c ≤ 10 %) nur noch als Vergleich mit dem Hinweis, dass Anhang A in Deutschland nicht eingeführt ist. Rechenwert unverändert (f_cd = 0,85·f/1,35; tests/fcdModule.test.ts).
+
 ## 8. Historische Bauweisen (`historische_bauweisen`)
 
 **Prüfumfang:** Gewölbeschub-, Kappendecken- und Schwindrechner (inline), Fachtext, Beispiele.

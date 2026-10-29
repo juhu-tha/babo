@@ -7,7 +7,7 @@
  */
 import type { AuditStatus, Phase } from './typen';
 
-export const UMSETZUNGSPLAN_STAND = '2026-10-28';
+export const UMSETZUNGSPLAN_STAND = '2026-10-29';
 /** zusammengeführte Pull Requests bis zum Stand (laut Audit-Stand) */
 export const PRS_GEMERGT = 'bis #214 (#189 und #190 über den Merge von #191)';
 
@@ -55,7 +55,7 @@ export const UMSETZUNGSPLAN: readonly Phase[] = [
     { ap: '4.1', titel: 'Reine Rechenkerne in src/calc (Muster und Tests)', status: 'erledigt', hinweis: 'Titel nicht im Code belegt' },
     { ap: '4.2', titel: 'Rechenkerne der Fachrechner (u. a. Bauglas, Schwinden/Kriechen)', status: 'erledigt' },
     { ap: '4.3', titel: 'Rechenkerne gegen Literatur prüfen', status: 'wartet', hinweis: 'Literaturauszüge (Z1–Z4, Fehlliste); öffentliche Belege für Mauerwerk, Querkraft, Sieblinien, Lebensdauer ergänzt (#213, #214)' },
-    { ap: '4.4', titel: 'Normtext-Prüfpunkte (NA DE)', status: 'wartet', hinweis: 'Normtextauszüge (Z1–Z4, docs/normwerte-belege.md)' },
+    { ap: '4.4', titel: 'Normtext-Prüfpunkte (NA DE)', status: 'in_arbeit', hinweis: 'Prüfbogen in Arbeit (Z1–Z4, docs/normwerte-belege.md; Abgleich in der Bachelorarbeit Z10/Z17, Teil E)' },
     { ap: '4.5', titel: 'Absicherung gegen unsinnige Eingaben', status: 'erledigt' },
     { ap: '4.6', titel: 'Rechenkern Schwingung Brettsperrholzdecke', status: 'erledigt' },
     { ap: '4.7', titel: 'Mauerwerk nach Eurocode 6', status: 'erledigt' },
@@ -63,7 +63,7 @@ export const UMSETZUNGSPLAN: readonly Phase[] = [
     { ap: '4.9', titel: 'Glaser-Verfahren als einziger Rechenkern (src/calc/glaser.ts)', status: 'erledigt' },
     { ap: '4.10', titel: 'Rechenkern Gebäude-Ökobilanz', status: 'erledigt' },
     { ap: '4.11', titel: 'Annahmen und Grenzen der Rechner', status: 'erledigt' },
-    { ap: '4.12', titel: 'Gegenrechnung von 10 Rechnern', status: 'wartet', hinweis: 'Bachelorarbeit, 12 ECTS, ohne Vergütung (Z10/Z17, Entscheidung 28.10.)' },
+    { ap: '4.12', titel: 'Gegenrechnung von 10 Rechnern', status: 'wartet', hinweis: 'Bachelorarbeit, 12 ECTS, ohne Vergütung (Z10/Z17, Entscheidung 28.10.); Ausschreibung fertig (#248)' },
   ] },
   { nr: 5, titel: 'Technik und Leistung', aps: [
     { ap: '5.1', titel: 'Typsicherheit: explizite any auf 0', status: 'erledigt' },
@@ -83,9 +83,9 @@ export const UMSETZUNGSPLAN: readonly Phase[] = [
     { ap: '6.5', titel: 'KI-Master: Grundlagen und Hands-on-Übungen', status: 'wartet', hinweis: 'Übungen mit neutralem „KI-Assistent der Hochschule“ (#212)' },
     { ap: '6.6', titel: 'Admin-Ansicht „Meine Module“, Paten je Cluster', status: 'wartet', hinweis: 'Prüfvermerke (Z38): 6 von 193 Fachmodulen fachlich geprüft (28.10.2026, Vermerk passiv ohne Namen)' },
     { ap: '6.7', titel: 'Halbjährlicher Normen- und Rechtsstand-Check', status: 'erledigt' },
-    { ap: '6.8', titel: 'Offene Lizenz', status: 'wartet', hinweis: 'THA-Klärung (Z13/Z45)' },
+    { ap: '6.8', titel: 'Offene Lizenz', status: 'wartet', hinweis: 'THA-Klärung (Z13/Z45); wird vom Professor gemeinsam versandt (Entscheidung 28.10.2026)' },
     { ap: '6.9', titel: 'Anonymer Kurzfragebogen', status: 'wartet', hinweis: 'DSB-Freigabe (Z11/Z39)' },
-    { ap: '6.10', titel: 'Seite „Forschung und Transfer“', status: 'erledigt', hinweis: 'Texte ersetzt (#192); URL der Personenseite offen (28.10.: öffentlich keine gültige Adresse gefunden)' },
+    { ap: '6.10', titel: 'Seite „Forschung und Transfer“', status: 'erledigt', hinweis: 'Texte ersetzt (#192); statt Personenseite Fakultätsseite verlinkt (Entscheidung 28.10., #248)' },
   ] },
 ];
 
