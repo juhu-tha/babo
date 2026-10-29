@@ -5,6 +5,11 @@ import { BlockMath, InlineMath } from 'react-katex';
 import inhalt from '@/content/historischematerialkennwerte/RechnerLaborTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../../components/ui/Auswahlgruppe';
+import { altbeton1972, fcdBeton, FCD_MODUL } from '@/src/data/kennwerte';
+
+// Beispiel 1: Bn 250 aus der gemeinsamen Zuordnungstabelle (Schnell/Fischer/Loch 2008, Tab. 2.2; Entscheidung 29.10.2026, Nachtrag)
+const BN250 = altbeton1972('Bn 250')!;
+const BN250_FCD = fcdBeton(BN250.fck, FCD_MODUL.historischStandard);
 
 type TestProbeType = 'beton_bohrkern' | 'mauerwerk_ziegel' | 'stahl_zugprobe';
 
@@ -636,9 +641,9 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                 <strong className="font-sans text-xs text-home-grau block uppercase"><MdText text={inhalt.texte.schritt1BestimmungDer} /></strong><MdText text={inhalt.texte.dieAlteKlasseBezieht} /><BlockMath math="\beta_{WN} = 25{,}0 \text{ N/mm}^2 \text{ (auf einen 200 mm Würfel)}" />
               </div>
               <div>
-                <strong className="font-sans text-xs text-home-grau block uppercase"><MdText text={inhalt.texte.schritt2UmrechnungAuf} /></strong><MdText text={inhalt.texte.dieAktuellenEurocode2} /><BlockMath math="f_{ck} = \beta_{WN} \cdot 0{,}80 = 25{,}0 \cdot 0{,}80 = 20{,}0 \text{ N/mm}^2" /><MdText text={inhalt.texte.damitEntsprichtDerBestandsbeton} /></div>
+                <strong className="font-sans text-xs text-home-grau block uppercase"><MdText text={inhalt.texte.schritt2UmrechnungAuf} /></strong><MdText text={inhalt.texte.dieAktuellenEurocode2} /><BlockMath math={`f_{ck} \\approx ${formatDeTeX(BN250.fck / BN250.nennfestigkeit, 2)} \\cdot \\beta_{WN} = ${formatDeTeX(BN250.fck, 1)} \\text{ N/mm}^2 \\quad (\\text{Tab. 2.2})`} /><MdText text={inhalt.texte.damitEntsprichtDerBestandsbeton} /></div>
               <div>
-                <strong className="font-sans text-xs text-home-grau block uppercase"><MdText text={inhalt.texte.schritt3BerechnungDes} /></strong><MdText text={inhalt.texte.derMaterialspezifischeBemessungswertF} /><BlockMath math="f_{cd} = \alpha_{cc} \cdot \frac{f_{ck}}{\gamma_c} = 0{,}85 \cdot \frac{20{,}0 \text{ N/mm}^2}{1{,}50} = 11{,}33 \text{ N/mm}^2" />
+                <strong className="font-sans text-xs text-home-grau block uppercase"><MdText text={inhalt.texte.schritt3BerechnungDes} /></strong><MdText text={inhalt.texte.derMaterialspezifischeBemessungswertF} /><BlockMath math={`f_{cd} = \\alpha_{cc} \\cdot \\frac{f_{ck}}{\\gamma_c} = 0{,}85 \\cdot \\frac{${formatDeTeX(BN250.fck, 1)} \\text{ N/mm}^2}{1{,}50} = ${formatDeTeX(BN250_FCD, 2)} \\text{ N/mm}^2`} />
                 <span className="font-sans text-xs text-home-grau block mt-1"><MdText text={inhalt.texte.tippWerdenImBestand} /></span>
               </div>
             </div>

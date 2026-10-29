@@ -224,6 +224,36 @@ Tab. D.1/D.2 der DIN EN 1990 im Kern vollständig richtig. Beispiele 1 (15,7 N/m
 
 **Umsetzung 29.10.2026 (Entscheidung 28.10., γ_c = 1,35 Bestandsbewertung):** Quelle des Bestandswerts im Labor-Rechner ist jetzt das DBV-Merkblatt „Modifizierte Teilsicherheitsbeiwerte für Stahlbetonbauteile“ (Deutscher Beton- und Bautechnik-Verein, Fassung März 2013, Merkblattreihe „Bauen im Bestand“; Titel und Ausgabe am öffentlichen Inhaltsverzeichnis bei DIN Media geprüft). Im Tipp (RechnerLaborTab.json), in `src/data/kennwerte.ts` und in den Regelwerken genannt: nur Widerstandsseite modifiziert, qualifizierte Bestandsaufnahme, Betondruckfestigkeit und Geometrie am Bauwerk ermittelt, γ_C,mod abhängig vom gemessenen Variationskoeffizienten. Zuordnung γ_c = 1,35 ↔ Grenze des Variationskoeffizienten: öffentlich nicht belegt, „vorläufig, F-Freigabe“. DIN EN 1992-1-1, Anhang A.2.2(2) (γ_C,red3 = 1,35, Geometrie gemessen, V_c ≤ 10 %) nur noch als Vergleich mit dem Hinweis, dass Anhang A in Deutschland nicht eingeführt ist. Rechenwert unverändert (f_cd = 0,85·f/1,35; tests/fcdModule.test.ts).
 
+### Nachtrag 29.10.2026: Bn-Zuordnung
+
+**Entscheidung 29.10.2026:** Die Zuordnung der Betonklassen 1972–2001 im Reiter Datenbank wird nach derselben Quelle wie die Güten vor 1972 korrigiert: J. Schnell, A. Fischer, M. Loch, „Anwendung von Teilsicherheitsbeiwerten auf Bestandsbauten im Hochbau“, Kurzbericht (BBR), TU Kaiserslautern 2008, Tab. 2.2 ([Schnell/Fischer/Loch, Kurzbericht BBR 2008](https://www.irbnet.de/daten/kbf/kbf_d_F_2719.pdf), S. 3–4). Da β_WN ab DIN 1045:1972 ein 5-%-Quantil ist, rechnet die Quelle nur Probeform und Lagerung um (f_ck ≈ 0,77·β_WN; DDR-Klassen 1981–1990 ≈ 0,74·Klassenwert).
+
+**Umsetzung:** Zweiter Teil der gemeinsamen Tabelle `ALTBETON_1972_2001` in `src/data/kennwerte.ts` (neben `ALTBETON_ZUORDNUNG`, Tab. 2.1); `historicalMaterialsData.ts` erzeugt die Zeilen Bn/B und Bk daraus, Beispiel 1 im Reiter Labor liest Bn 250 aus derselben Tabelle. Die bisherigen DDR-Zeilen BK 12.5, 17.5, 22.5, 27.5 und 37.5 (TGL) sind in der Quelle nicht enthalten und entfallen; ersetzt durch Bk 5 … Bk 55 nach Tab. 2.2. Dezimalwerte im Reiter Datenbank jetzt mit Komma (vorher z. B. „11.8“).
+
+| Klasse | vorher Klasse / f_ck | nachher f_ck (Tab. 2.2) | nachher Klasse |
+|---|---|---|---|
+| Bn 50 / B 5 | – / – | 3,9 | – |
+| Bn 100 / B 10 | C 8/10 / 8 | 7,7 | ≈ C8/10 |
+| Bn 150 / B 15 | C 12/15 / 12 | 11,6 | ≈ C12/15 |
+| Bn 250 / B 25 | C 20/25 / 20 | 19,3 | C16/20 |
+| Bn 350 / B 35 | C 30/37 / 30 | 27,1 | C25/30 |
+| Bn 450 / B 45 | C 35/45 / 35 | 34,8 | ≈ C35/45 |
+| Bn 550 / B 55 | C 45/55 / 45 | 42,5 | C40/50 |
+| Bk 5 / Bk 7,5 (DDR) | – / – bzw. C 8/10 / 8 | 3,7 / 5,5 | – / – |
+| Bk 10 / 15 / 20 | nicht enthalten | 7,4 / 11,0 / 14,7 | ≈ C8/10 / ≈ C12/15 / ≈ C12/15 |
+| Bk 25 / 35 / 45 / 55 | nicht enthalten | 18,4 / 25,8 / 33,1 / 40,5 | C16/20 / C25/30 / C30/37 / C40/50 |
+| BK 12.5 / 17.5 / 22.5 / 27.5 / 37.5 | C 12/15 … C 30/37 | entfallen (nicht belegt) | – |
+
+Die Quelle nennt für Bn 450 „~C35/40“ (keine Klasse nach DIN EN 206-1) und für B 45 „~C35/45“; übernommen ist für beide ≈ C35/45 (offensichtlicher Schreibfehler, Wert 34,8 identisch).
+
+**Nachrechnung Beispiel 1 (Bn 250, 1974):** f_ck = 19,3 N/mm² (vorher 0,80 · 25 = 20,0, „exakt C20/25“), Klasse C16/20; f_cd = 0,85 · 19,3 / 1,50 = 10,94 N/mm² (vorher 11,33), Bestandsbewertung mit γ_c = 1,35: 12,15 N/mm² (vorher 12,59). Text: frühere Gleichsetzung mit C20/25 liegt auf der unsicheren Seite; nur Vorbemessung, Bestätigung über Bohrkerne (DIN EN 13791). Aufgabe t22 (`src/data/tasks/bestandTasks.ts`, „B 25“ von 1975): „C16/20 bis C20/25 je nach Quelle“ → f_ck = 19,3 N/mm², C16/20. Literaturliste des Moduls um die Quelle ergänzt.
+
+**Erkundungen/Quiz:** Für `historisch` gibt es keine Erkundungsaufträge; die sechs Quizfragen `q_hk_1` … `q_hk_6` betreffen Bn-Klassen nicht und bleiben unverändert. Die Erkundung in `rechnung_bestand` (B 225 → B 300) nutzt Tab. 2.1 und ist nicht betroffen.
+
+**Test:** `tests/modulpruefungTranche12.test.ts` – alle 23 Bezeichnungen aus Tab. 2.2 von Hand, Gesamtfaktoren, Datenbankzeilen, Beispiel 1 (10,94/12,15 N/mm²), Aufgabe t22.
+
+**Freigabe:** bleibt bestehen (Zuordnung jetzt belegt, keine offene Frage).
+
 ## 8. Historische Bauweisen (`historische_bauweisen`)
 
 **Prüfumfang:** Gewölbeschub-, Kappendecken- und Schwindrechner (inline), Fachtext, Beispiele.

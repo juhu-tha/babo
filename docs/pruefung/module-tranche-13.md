@@ -59,7 +59,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T13-BS-1 und Klärung von T13-BS-2.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben – freigegeben 29.10.2026 (Nachtrag)
 
 ## 2. Typische Bauschäden (`schadensbilder`)
 
@@ -121,7 +121,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T13-ZB-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben – freigegeben 29.10.2026 (Nachtrag)
 
 ## 5. Große Materialschäden & Einstürze (`material_schaeden_gross`)
 
@@ -138,7 +138,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T13-GS-1/-2.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben – freigegeben 29.10.2026 (Nachtrag)
 
 ## 6. Schutz- & Instandsetzungs-Grundlagen (`schutz_grundlagen`)
 
@@ -258,7 +258,7 @@ Beispiele: DFG = 9,0/18,0 = 50 %; V_m = 8 · 1,0 · 1,1 = 8,8 l/m – richtig.
 
 **Empfehlung:** freigabefähig nach Korrektur T13-WU-1.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben – freigegeben 29.10.2026 (Nachtrag)
 
 ---
 
@@ -312,3 +312,25 @@ Entscheidungen vom 29.10.2026 zu den Fragen ohne Normtext; Regressionstest `test
 - Quiz: keine Frage durch die Änderungen falsch (geprüft u. a. `q_is_wta_6` Bohrtiefe/Bohrlöcher, `q_wub_4`); `quiz.json` unverändert.
 
 Damit ohne offene Frage (außer Normtextpunkten): `bauschaeden` (T13-BS-2 umgesetzt), `wu-bauwerke` (Grenzen und Kurzfassung ergänzt). `instandhaltung` und `wta` haben nur noch Normtextpunkte offen (T13-IH-10 bis -12 bzw. T13-WTA-4/-5); `bauwerksunters_monitoring` (T12-BU-7) und `schutz_grundlagen` (T13-IH-10) ebenfalls nur Normtext.
+
+---
+
+## Freigabe 29.10.2026 (Nachtrag)
+
+Entscheidung vom 28.10.2026: „Module ohne offene Frage freigeben“; Punkte, die nur am Normtext zu klären sind, blockieren die Freigabe (Prüfbogen Normtext, Abschnitt „Was ohne Normtext nicht weiterkommt“, und die für diese Tranchen ergänzten Normtextpunkte). Geprüft wurde je Modul: Empfehlung erfüllt (Korrekturen behoben, Klärungen entschieden und in den Abschnitten „Umsetzung 29.10.2026“ bzw. in #260–#265 umgesetzt (Befundlisten #260–#262, Umsetzungen #263–#265)) und kein Normtextpunkt offen. Verfahren wie #256/#259: Prüfvermerk in `src/data/pruefvermerke.ts` „geprueft“, am 2026-10-29, passiv ohne Namen; Quizfreigaben sind davon getrennt.
+
+Freigegeben:
+
+- [x] `vdi6200` – T13-ZB-1 behoben (Notenbereiche mit Dezimalkomma)
+- [x] `material_schaeden_gross` – T13-GS-1/-2 behoben
+- [x] `wu-bauwerke` – T13-WU-1 behoben; Grenzen und Kurzfassung ergänzt (#264); F-Stelle Tab. 1/w/z nicht blockierend
+- [x] `bauschaeden` – T13-BS-1 behoben, T13-BS-2 umgesetzt (#264, neutrale Platzhalter im Anzeigen-Generator). Hinweis: Die Faustregel Fugenbreite/Dichtstofftiefe (b : t) steht auch in `bauchemie` (T4-BC-2, Normtext); laut Prüfbogen dort blockierend, hier nur Folgeangabe
+
+Nicht freigegeben:
+
+- `schadensbilder` – T13-IH-12 (Normtext, Rissbreitengrenze Zementsuspension)
+- `bauwerksunters_monitoring` – T12-BU-7 (Normtext DIN EN 12504-2, eingebetteter Prüfkatalog)
+- `schutz_grundlagen` – T13-IH-10 (Normtext DIN EN ISO 12696)
+- `instandsetzung_materialien` – T13-WTA-5 (Normtext WTA 2-9)
+- `instandhaltung` – T13-IH-10 bis -12 (Normtext)
+- `wta` – T13-WTA-4/-5 (Normtext)
