@@ -185,3 +185,14 @@ Regressionstest: `tests/nachstichprobe20261029.test.ts` (Nachrechnungen der Rech
 | NS-BD-4 | `bauwerksdiagnose` | Phenolphthalein „karbonatisiert nach 5–10 min zurück“ | „sofort nach 30–60 s ablesen, Färbung verblasst“ |
 | NS-DH-2 | `dauerhaftigkeit` | K-Schleifen „+400 %“ unbelegt | qualitativ formulieren |
 | NS-LC-2 | `oekobilanz_lca` | EN 15978 „50 Jahre“ | 50 Jahre BNB/QNG zuordnen |
+
+## Umsetzung 29.10.2026
+
+| Kennung | Ergebnis | Datei |
+|---|---|---|
+| NS-BD-4 | „Ablesung nach 30–60 s! Die Färbung verblasst mit der Zeit – sofort ablesen und fotografieren.“ (Rückkarbonatisierung in Minuten gestrichen) | `content/bauwerksuntersuchung/ProbenahmePlaner.json` |
+| NS-DH-2 | „verringert Kantenfehler (Mikrorisse der Schnittkante) und erhöht die Thermobruchsicherheit (Werte herstellerspezifisch)“ statt „bis zu 400 %“ | `content/dauerhaftigkeit/Dauerhaftigkeit.json` |
+| NS-LC-2 | „… über den Betrachtungszeitraum (in Deutschland nach BNB/QNG **50 Jahre**)“ | `content/lca/LCA.json` |
+| Fußzeile `lca_rechner` | Doppelte Fußzeile entfernt: die Fußzeile des Rechners entfällt, die modulweite bleibt; Literatur, Formeln und die zusätzlichen Regelwerke (VDI 6210 / DIN SPEC 91484, ÖKOBAUDAT) des Rechners stehen im Teil „rechner“ in der modulweiten Fußzeile | `src/modules/InteractiveLCACalc.tsx`, `src/modules/OekobilanzLCA.tsx` |
+
+Quiz: keine Frage betroffen.

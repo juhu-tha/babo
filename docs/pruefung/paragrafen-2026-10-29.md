@@ -387,3 +387,16 @@ Erzeugt aus `node scripts/qa/paragrafen-zitate.mjs --json …` (Stand nach den K
 | § 404 Abs. 3 ZPO | content/bauschaeden/Bauschaeden.json:78,80 | Plausibilität (Gliederung des Gesetzes), kein Abruf | plausibel |
 | §§ 402 ff. ZPO | content/fortbildungen/Fortbildungen.json:357 | Plausibilität (Gliederung des Gesetzes), kein Abruf | plausibel |
 | §§ 485 ff. ZPO | content/bauschaeden/Bauschaeden.json:88<br>content/schaedenchecklisten/SchaedenChecklisten.json:60<br>src/data/quiz.json:10870,10879,10896 | Plausibilität (Gliederung des Gesetzes), kein Abruf | plausibel |
+
+## Umsetzung 29.10.2026
+
+| Frage | Ergebnis | Quelle | Datei |
+|---|---|---|---|
+| F-1 | „EBV Anlage 1 Tabelle 3 (Bodenmaterial) & BBodSchV Anlage 1: … Einbauklasse BM-0 bzw. BM-0*“; RC-1 gestrichen | wie Vorschlag | `content/bodenmaterialaufbereitung/BodenMaterialAufbereitung.json`, `content/schadstoffe/Schadstoffe.json` |
+| F-2 | Anlage 10a GModG als „vorläufig, Normprüfung ausstehend“ gekennzeichnet (Prüfung gegen die Fassung ab 01.01.2027 steht aus) | – | `content/energieausweis/Energieausweis.json` |
+| F-3 | Frist „18 Monate“ gestrichen; Satz auf „Einführung über delegierte Rechtsakte nach Art. 75 …“ gekürzt | Art. 75 VO (EU) 2024/3110 (gesetze.legal, s. o.) | `content/moduleinfo/daten.json`, `src/components/ui/RechtsrahmenKompendium.tsx` |
+| F-4 | Art. 18 BayHIG lautet „Diensterfindungen“; Satz 3: „Satz 2 findet auf vermögensrechtliche Befugnisse gemäß dem Urheberrechtsgesetz entsprechende Anwendung.“ → Zitat in `src/data/lizenz.ts` richtig, unverändert. Qualitätssicherung und Evaluation regelt Art. 7 BayHIG → Fußzeile Feedback „BayHIG – Art. 7 Qualitätssicherung“ | [BayHIG, Gesamtausgabe (gesetze-bayern.de)](https://www.gesetze-bayern.de/Content/Pdf/BayHIG?all=True) | `content/feedback/Feedback.json` |
+| F-5 | „Baugrundrisiken, die grundsätzlich der Besteller trägt (§§ 644, 645 BGB)“ | wie Vorschlag | `content/ki/ueberblick/daten.json` |
+| F-6 | „Abfalleinstufung (§§ 3–5 KrWG, § 3 AVV)“ | wie Vorschlag | `content/abfaelle/Checklisten.json` |
+
+Quiz: keine Frage betroffen.

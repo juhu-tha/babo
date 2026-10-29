@@ -163,7 +163,7 @@
             "Kammerfilterpresse: Eindickung des Schlamms zu hochkonzentriertem Filterkuchen (Klasse DK I/II oder Deponierung).",
             "Ausgangskontrolle: Analytik des gereinigten Sandes/Kieses zur Einstufung nach EBV (Ziel: BM-0 bzw. BM-0*)."
           ],
-          "rules": "EBV § 15 & BBodSchV Anlage 1: Gereinigte Sande sind mineralische Ersatzbaustoffe. Grenzwerte für Schwermetalle (As, Pb, Cd, Cu, Ni, Zn) im Eluat müssen sicher unterschritten werden, um Einbauklasse BM-0 oder RC-1 zu erhalten."
+          "rules": "EBV Anlage 1 Tabelle 3 (Bodenmaterial) & BBodSchV Anlage 1: Gereinigte Sande sind mineralische Ersatzbaustoffe. Grenzwerte für Schwermetalle (As, Pb, Cd, Cu, Ni, Zn) im Eluat müssen sicher unterschritten werden, um Einbauklasse BM-0 bzw. BM-0* zu erhalten."
         },
         "mkw_pak": {
           "method": "Mikrobiologische Mietenbehandlung (Bioremediation)",

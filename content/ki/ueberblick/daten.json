@@ -182,7 +182,7 @@
             "input": "Messdaten kontinuierlicher Drucksondierungen (Spitzenwiderstand q_c, Mantelreibung f_s, Porenwasserdruck u).",
             "process": "Kombination aus K-Nearest Neighbors und Kriging-Interpolation zur Konstruktion eines 3D-Bodensteifigkeitsmodells (E_s-Modul).",
             "output": "Kontinuierliche Verteilung des Bettungsmoduls k_s(x,y) zur Übergabe an die FE-Plattenstatik.",
-            "benefit": "Minimierung von Differenzsetzungen; signifikante Reduzierung unvorhersehbarer Baugrundrisiken nach § 644 BGB.",
+            "benefit": "Minimierung von Differenzsetzungen; signifikante Reduzierung unvorhersehbarer Baugrundrisiken, die grundsätzlich der Besteller trägt (§§ 644, 645 BGB).",
             "normRef": "DIN 4020 & DIN EN 1997-1 (Eurocode 7: Geotechnik)"
           }
         ],

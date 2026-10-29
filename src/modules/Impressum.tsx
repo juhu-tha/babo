@@ -170,6 +170,10 @@ export default function Impressum() {
               </p>
 
               <p>
+                <strong>Fachliche Prüfung:</strong> Die Inhalte wurden in einem dokumentierten Verfahren fachlich geprüft (Nachrechnung, Normstand, Quellen); offene Normstellen sind als „vorläufig“ gekennzeichnet. Der Vermerk „Fachlich geprüft am …“ im Kopf und in der Fußzeile eines Moduls nennt das Datum der abgeschlossenen Prüfung; bei Modulen ohne diesen Vermerk ist die fachliche Prüfung noch in Bearbeitung. Die Prüfung ersetzt keine projektbezogene Fachplanung (siehe „Haftung für Inhalte“).
+              </p>
+
+              <p>
                 <strong>Haftung für Inhalte:</strong> Die Inhalte dieser Webanwendung (Lern- und Rechenmodule, Kennwerte, Aufgaben) wurden mit größtmöglicher Sorgfalt erstellt. Sie dienen ausschließlich Lehr- und Informationszwecken im Rahmen des Studiums und der wissenschaftlichen Weiterbildung. Eine Gewähr für die Richtigkeit, Vollständigkeit, Aktualität und Eignung der Berechnungen für reale baupraktische Anwendungsfälle wird ausdrücklich nicht übernommen.
               </p>
               

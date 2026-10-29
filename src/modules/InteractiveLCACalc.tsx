@@ -1,5 +1,4 @@
 import React, { useState, useMemo } from "react";
-import { ModuleFooter } from "@/src/components/ui/ModuleFooter";
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { InlineMath, BlockMath } from "react-katex";
 import { InfoTooltip } from "@/src/components/ui/InfoTooltip";
@@ -760,18 +759,6 @@ export default function InteractiveLCACalc() {
         </div>
       )}
       </ModuleTabs>
-
-      <ModuleFooter
-        wikipedia={[
-          { title: "Ökobilanz", url: "https://de.wikipedia.org/wiki/%C3%96kobilanz" },
-          { title: "Treibhauspotenzial", url: "https://de.wikipedia.org/wiki/Treibhauspotenzial" },
-          { title: "Umweltproduktdeklaration" }
-        ]}
-        literatur={inhalt.daten["InteractiveLCACalc.literatur"]}
-        normIds={['DIN_EN_15804', 'DIN_EN_15978', 'DIN_EN_17472']}
-        regelwerke={inhalt.daten["InteractiveLCACalc.regelwerke"]}
-        formeln={inhalt.daten["InteractiveLCACalc.formeln"]}
-      />
     </div>
   );
 }
