@@ -47,7 +47,7 @@
         "step": 2,
         "title": "Erstzuordnung nach Herkunft (AVV Kap. 17)",
         "desc": "Suchen Sie die zutreffende Abfallbezeichnung im Kapitel 17 (Bau- und Abbruchabfälle inklusive Baustellenaushub) der Abfallverzeichnis-Verordnung heraus. Nutzen Sie z. B. 17 01 01 für reinen Beton, 17 01 02 für Ziegel oder 17 05 04 für Bodenaushub.",
-        "ref": "AVV Anhang 1 Kapitel 17"
+        "ref": "AVV Anlage (Abfallverzeichnis) Kapitel 17"
       },
       {
         "step": 3,
@@ -85,13 +85,13 @@
         "step": 2,
         "title": "Konformitätszertifikat & Laborwerte prüfen",
         "desc": "Sichten Sie die werkseigene Produktionskontrolle (WPK) und die Fremdüberwachungsberichte des Herstellers. Vergleichen Sie die deklarierte Materialklasse (z.B. RC-1, RC-2 oder BM-0) mitsamt den Laboranalysen.",
-        "ref": "EBV Anhang 1 Tabellen"
+        "ref": "EBV Anlage 1 Tabellen"
       },
       {
         "step": 3,
         "title": "Standortbezogene Schutzgebiete abgleichen",
         "desc": "Überprüfen Sie, ob sich der geplante Einbauort außerhalb von empfindlichen Wasserschutzgebieten (WSG Zone I, II, III/IIIA), Heilquellenschutzgebieten oder Überschwemmungsgebieten befindet. In Zone I ist der Einbau aller MEB verboten; in Zone II sind nur BM-0, BG-0, SKG und GS-0 sowie deren Gemische zulässig (§ 19 Abs. 6 EBV), in Zone III A/III B nur die nach Anlage 2 und 3 zulässigen Einbauweisen.",
-        "ref": "EBV § 19 & Anhang 2"
+        "ref": "EBV § 19 & Anlage 2"
       },
       {
         "step": 4,
@@ -185,7 +185,7 @@
         "step": 6,
         "title": "Eingangskontrolle &amp; Identitätsprüfung am Deponietor",
         "desc": "Jede LKW-Ladung wird am Deponietor visuell geprüft (Geruch, Fremdstoffanteil), gewogen und der Begleitschein elektronisch quittiert. Der Betreiber zieht unangekündigt Stichproben zur Absicherung (\"Rückstellproben\" für min. 1 Monat).",
-        "ref": "DepV § 12"
+        "ref": "DepV § 8 (Annahmeverfahren)"
       }
     ],
     "Checklisten_5": [

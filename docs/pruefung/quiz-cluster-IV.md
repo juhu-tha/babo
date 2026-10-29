@@ -2,9 +2,9 @@
 
 Stand: 29.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster IV umfasst 314 Fragen aus 50 Modulen. Aufgeführt sind 101 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster IV umfasst 314 Fragen aus 50 Modulen. Aufgeführt sind 102 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 82 korrigiert, 0 fraglich, 11 mit offenem Prüfhinweis, 12 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 83 korrigiert, 0 fraglich, 11 mit offenem Prüfhinweis, 12 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -263,6 +263,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 82 korrigiert, 0 fraglich, 1
 - **Auffälligkeit:** Prüfhinweis: 4. BImSchV – Zwölf-Monats-Regel vereinfacht. · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Frage auf Behandlung am Entstehungsort eingegrenzt (sonst gilt § 1 Abs. 1 Satz 2 4. BImSchV: Abfallanlagen Nr. 8 ab dem ersten Tag), korrigiert
+
+### q_rc_4 · Checklisten
+
+- **Frage:** Bei einem kleinen Umbau fallen insgesamt 8 m³ Bau- und Abbruchabfälle an. Was gilt nach § 8 GewAbfV?
+- **Richtige Antwort:** Getrennt sammeln ist Pflicht, die Dokumentationspflicht entfällt bis 10 m³
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: Paragrafenprüfung – Distraktor-Rückmeldung „Teil 3 … §§ 8 bis 10“ auf „Abschnitt 3 … §§ 8 und 9“ berichtigt (gesetze-im-internet.de, GewAbfV); Antwort unverändert – korrigiert
+- [ ] ok
+- [ ] ändern: …
 
 ### q_re_2 · Ressourceneffizienz
 

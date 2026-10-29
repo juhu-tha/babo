@@ -45,7 +45,7 @@
             "process": "Rechnerische Überprüfung der Fluchtweggeometrien (Lauflänge ≤ 35 m nach MBO), Brandabschnittstrennungen und Abstandsflächengeometrien (§ 6 LBO) mittels räumlicher Topologieabfragen.",
             "output": "Strukturierter Prüfbericht im BCF-Standard (BIM Collaboration Format) mit georeferenzierten Kollisionselementen.",
             "benefit": "Reduktion behördlicher Nachforderungszyklen um bis zu 75 %; Ausschluss formeller Planungsfehler im Genehmigungsverfahren.",
-            "normRef": "Musterbauordnung (MBO) § 33 & jeweilige Landesbauordnungen (LBO § 6)"
+            "normRef": "Musterbauordnung (MBO) §§ 33, 35 & jeweilige Landesbauordnungen (LBO § 6)"
           },
           {
             "title": "Topologieoptimierung im Grenzzustand der Tragfähigkeit (SIMP-Verfahren)",
@@ -64,8 +64,8 @@
             "input": "4D-BIM-Bauzeitenplan, betontechnologische Mindestausschalfristen (Reifegradberechnung, z. B. gewogene Reife nach NEN 5970), Wetterdaten und Krankapazitäten.",
             "process": "Monte-Carlo-Simulation von 10 000 Bauablaufszenarien zur stochastischen Ermittlung von Pufferzeitverbrauch und logistischen Engpässen.",
             "output": "Dynamisch angepasster Taktterminplan mit probabilistischer Eintrittswahrscheinlichkeit für Meilensteintermine.",
-            "benefit": "Minimierung von Bauzeitverzug und vertraglichen Pönalen nach VOB/B § 5; Vermeidung von Frischbeton-Verzögerungsschäden.",
-            "normRef": "VOB/B § 5 (Ausführungsfristen) & VDI 2552 (Building Information Modeling)"
+            "benefit": "Minimierung von Bauzeitverzug (Ausführungsfristen nach VOB/B § 5) und vertraglichen Pönalen (Vertragsstrafe nach VOB/B § 11); Vermeidung von Frischbeton-Verzögerungsschäden.",
+            "normRef": "VOB/B §§ 5, 11 (Ausführungsfristen, Vertragsstrafe) & VDI 2552 (Building Information Modeling)"
           }
         ],
         "classicVsAi": {
@@ -470,7 +470,7 @@
         "pitfalls": {
           "mainRisk": "Stochastische Konfabulation (Halluzination): Unverankerte Sprachmodelle neigen dazu, nicht existente Normabsätze, falsche Expositionsklassen-Zuordnungen oder fehlerhafte Sicherheitsbeiwerte mit hoher grammatikalischer Sicherheit zu behaupten.",
           "engineerDuty": "Ausschließliche Verwendung verankerter RAG-Systeme für rechts- und nachweisrelevante Ingenieurentscheidungen; persönliche Kontrolle aller numerischen Ausgaben.",
-          "standards": "VOB Teil A/B/C, DIN EN 1990–1999 (Eurocodes), HOAI § 634 BGB"
+          "standards": "VOB Teil A/B/C, DIN EN 1990–1999 (Eurocodes), HOAI, § 634 BGB"
         }
       },
       "rag": {
