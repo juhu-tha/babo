@@ -44,7 +44,7 @@ for (const datei of fs.readdirSync(pruefDir).filter(d => /^module-tranche-\d+\.m
     const iso = `${m[3]}-${m[2]}-${m[1]}`;
     const frei = m[4].split(/^Nicht freigegeben/m)[0];
     const ids = belegt.get(iso) ?? new Set<string>();
-    for (const t of frei.matchAll(/`([a-z0-9_]+)`/g)) ids.add(t[1]);
+    for (const t of frei.matchAll(/`([a-z0-9_-]+)`/g)) ids.add(t[1]); // auch IDs mit Bindestrich (wu-bauwerke)
     belegt.set(iso, ids);
   }
 }
@@ -56,7 +56,7 @@ for (const [id, v] of Object.entries(PRUEFVERMERKE)) {
 // 3. Anzeige-Logik
 pruefe(pruefvermerkFuer('start') === undefined && pruefvermerkFuer('impressum') === undefined, 'Nicht-Fachmodule bekommen einen Prüfvermerk');
 pruefe(!istFachmodul(MODUL_BY_ID.get('forschung_transfer')) && pruefvermerkFuer('forschung_transfer') === undefined, 'forschung_transfer (Info-Seite) wird als Fachmodul gezählt');
-pruefe(pruefvermerkFuer('ki_uebungen')?.status === 'offen', 'ki_uebungen: Prüfvermerk fehlt');
+pruefe(pruefvermerkFuer('ki_uebungen')?.status === 'geprueft', 'ki_uebungen: Prüfvermerk fehlt (freigegeben 29.10.2026, Nachtrag)');
 pruefe(datumDe('2026-11-03') === '03.11.2026', 'datumDe formatiert falsch');
 
 // 4. Paten-Zuordnung: alle Cluster vorhanden, Platzhalter erlaubt

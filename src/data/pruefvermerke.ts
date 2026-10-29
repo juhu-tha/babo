@@ -75,7 +75,7 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   ausbau: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 6, freigegeben 29.10.2026 (docs/pruefung/module-tranche-6.md)
   bauchemie: { status: 'offen' },
   bauphysik: { status: 'offen' },
-  bauschaeden: { status: 'offen' },
+  bauschaeden: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 13, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-13.md)
   baustatik: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 10, freigegeben 29.10.2026 (docs/pruefung/module-tranche-10.md)
   baustoffkenngroessen: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 4, freigegeben 29.10.2026 (docs/pruefung/module-tranche-4.md)
   baustoffkunde: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 4, freigegeben 29.10.2026 (docs/pruefung/module-tranche-4.md)
@@ -88,7 +88,7 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   beton_a_z: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 9, freigegeben 29.10.2026 (docs/pruefung/module-tranche-9.md)
   betonkennwerte: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 1, freigegeben 29.10.2026 nach den Entscheidungen vom 29.10. (docs/pruefung/module-tranche-1.md, Nachtrag)
   betonpraxis: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 9, freigegeben 29.10.2026 (docs/pruefung/module-tranche-9.md)
-  bim_baustoffe: { status: 'offen' },
+  bim_baustoffe: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 14, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-14.md)
   bindemittel: { status: 'offen' },
   biokohlebeton: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 9, freigegeben 29.10.2026 (docs/pruefung/module-tranche-9.md)
   boden_materialaufbereitung: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 12, freigegeben 29.10.2026 (docs/pruefung/module-tranche-12.md)
@@ -133,7 +133,7 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   daemmung_vergleich: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 11, freigegeben 29.10.2026 (docs/pruefung/module-tranche-11.md)
   dauerhaftigkeit: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 12, freigegeben 29.10.2026 (docs/pruefung/module-tranche-12.md)
   denkmalpflege: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 12, freigegeben 29.10.2026 (docs/pruefung/module-tranche-12.md)
-  dpp: { status: 'offen' },
+  dpp: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 14, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-14.md)
   einheiten: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 4, freigegeben 29.10.2026 (docs/pruefung/module-tranche-4.md)
   emodul: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 10, freigegeben 29.10.2026 (docs/pruefung/module-tranche-10.md)
   energieausweis: { status: 'offen' },
@@ -169,13 +169,13 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   kalk: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 5, freigegeben 29.10.2026 (docs/pruefung/module-tranche-5.md)
   keramik_ziegel: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 5, freigegeben 29.10.2026 (docs/pruefung/module-tranche-5.md)
   ki_llmpraxis: { status: 'offen' },
-  ki_lokal: { status: 'offen' },
-  ki_prompting: { status: 'offen' },
+  ki_lokal: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 14, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-14.md)
+  ki_prompting: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 14, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-14.md)
   ki_recht_ethik: { status: 'offen' },
-  ki_ressourcen: { status: 'offen' },
-  ki_system: { status: 'offen' },
+  ki_ressourcen: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 14, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-14.md)
+  ki_system: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 14, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-14.md)
   ki_thesen: { status: 'offen' },
-  ki_uebungen: { status: 'offen' },
+  ki_uebungen: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 14, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-14.md)
   knicken: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 10, freigegeben 29.10.2026 (docs/pruefung/module-tranche-10.md)
   kombinationen: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 6, freigegeben 29.10.2026 (docs/pruefung/module-tranche-6.md)
   korrosion: { status: 'geprueft', am: '2026-10-28' }, // Zweitprüfung, freigegeben 28.10.2026 (docs/pruefung/module-tranche-2.md)
@@ -183,19 +183,19 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   kreislauf_dpp: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 11, freigegeben 29.10.2026 (docs/pruefung/module-tranche-11.md)
   kunststoffe: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 6, freigegeben 29.10.2026 (docs/pruefung/module-tranche-6.md)
   labor: { status: 'offen' },
-  labor_sicherheit: { status: 'offen' },
+  labor_sicherheit: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 15, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-15.md)
   lca_ingenieurbau: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 11, freigegeben 29.10.2026 (docs/pruefung/module-tranche-11.md)
   lca_rechner: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 2, freigegeben 29.10.2026 nach den Entscheidungen vom 29.10. (docs/pruefung/module-tranche-2.md, Nachtrag)
   lca_regulatorik: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 11, freigegeben 29.10.2026 (docs/pruefung/module-tranche-11.md)
   lebenszyklus_kosten: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 11, freigegeben 29.10.2026 (docs/pruefung/module-tranche-11.md)
   lehm: { status: 'offen' },
-  material_schaeden_gross: { status: 'offen' },
-  materialdatenbanken: { status: 'offen' },
+  material_schaeden_gross: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 13, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-13.md)
+  materialdatenbanken: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 14, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-14.md)
   materialitaet_architektur: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 6, freigegeben 29.10.2026 (docs/pruefung/module-tranche-6.md)
   materialkennwerte: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 4, freigegeben 29.10.2026 (docs/pruefung/module-tranche-4.md)
   materialmodelle: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 10, freigegeben 29.10.2026 (docs/pruefung/module-tranche-10.md)
   materialoptimierung: { status: 'offen' },
-  materialpaesse: { status: 'offen' },
+  materialpaesse: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 14, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-14.md)
   mauerwerk: { status: 'offen' },
   mechanische_kenngroessen: { status: 'offen' },
   mechanische_pruefungen: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 4, freigegeben 29.10.2026 (docs/pruefung/module-tranche-4.md)
@@ -208,28 +208,28 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   nachbehandlung: { status: 'offen' },
   nachhaltigkeit_daten_regeln: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 11, freigegeben 29.10.2026 (docs/pruefung/module-tranche-11.md)
   nawaro: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 6, freigegeben 29.10.2026 (docs/pruefung/module-tranche-6.md)
-  normen_ausblick: { status: 'offen' },
+  normen_ausblick: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 15, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-15.md)
   oekobilanz_lca: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 11, freigegeben 29.10.2026 (docs/pruefung/module-tranche-11.md)
-  online_tools: { status: 'offen' },
+  online_tools: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 14, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-14.md)
   pfas_baustoffe: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 12, freigegeben 29.10.2026 (docs/pruefung/module-tranche-12.md)
   probenahme: { status: 'offen' },
   putzemoertel: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 5, freigegeben 29.10.2026 (docs/pruefung/module-tranche-5.md)
-  px_bauleitung: { status: 'offen' },
-  px_bautagebuch: { status: 'offen' },
+  px_bauleitung: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 15, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-15.md)
+  px_bautagebuch: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 15, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-15.md)
   px_karriere: { status: 'offen' },
-  px_planung: { status: 'offen' },
+  px_planung: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 15, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-15.md)
   px_produktion: { status: 'offen' },
   qualitaetssicherung: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 9, freigegeben 29.10.2026 (docs/pruefung/module-tranche-9.md)
   rechnung_bestand: { status: 'offen' },
-  rechnung_beton: { status: 'offen' },
+  rechnung_beton: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 15, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-15.md)
   rechnung_brandschutz: { status: 'offen' },
-  rechnung_holzbau: { status: 'offen' },
+  rechnung_holzbau: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 15, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-15.md)
   rechnung_mauerwerk: { status: 'offen' },
-  rechnung_nachhaltigkeit: { status: 'offen' },
+  rechnung_nachhaltigkeit: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 15, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-15.md)
   rechnung_schallschutz: { status: 'offen' },
-  rechnung_stahlbeton: { status: 'offen' },
+  rechnung_stahlbeton: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 15, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-15.md)
   rechnung_u_wert: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 3, freigegeben 29.10.2026 (docs/pruefung/module-tranche-3.md)
-  regularien: { status: 'offen' },
+  regularien: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 15, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-15.md)
   ressourcen_umwelt: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 11, freigegeben 29.10.2026 (docs/pruefung/module-tranche-11.md)
   ressourceneffizienz: { status: 'offen' },
   rueckbau: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 12, freigegeben 29.10.2026 (docs/pruefung/module-tranche-12.md)
@@ -256,9 +256,9 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   stahlbau_ec3: { status: 'geprueft', am: '2026-10-28' }, // Zweitprüfung, freigegeben 28.10.2026 (docs/pruefung/module-tranche-3.md)
   stahlbeton_bemessung: { status: 'offen' },
   statistik: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 2, freigegeben 29.10.2026 (docs/pruefung/module-tranche-2.md)
-  vdi6200: { status: 'offen' },
+  vdi6200: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 13, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-13.md)
   waermeeigenschaften: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 11, freigegeben 29.10.2026 (docs/pruefung/module-tranche-11.md)
   weitere_organik: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 12, freigegeben 29.10.2026 (docs/pruefung/module-tranche-12.md)
   wta: { status: 'offen' },
-  'wu-bauwerke': { status: 'offen' },
+  'wu-bauwerke': { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 13, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-13.md)
 };
