@@ -66,10 +66,10 @@
     "szenarioHinweiseLösungen": "Szenario-Hinweise & Lösungen",
     "empfohleneBaustoffParameter": "Empfohlene Baustoff-Parameter:",
     "vobAusdruckVorschau": "VOB-Ausdruck (Vorschau)",
-    "tagesberichtGerichtsicherZertifiziert": " Tagesbericht gerichtsicher zertifiziert",
+    "tagesberichtGerichtsicherZertifiziert": " Tagesbericht ausgewertet (Lehrbewertung, keine rechtliche Prüfung)",
     "dieserTagesbericht": "Dieser Tagesbericht #",
     "fürDasProjekt": " für das Projekt “",
-    "wurdeInDerDatenbank": "” wurde in der Datenbank verschlüsselt und für die Bauakte ablagefertig vorbereitet.",
+    "wurdeInDerDatenbank": "” wurde nur lokal in diesem Browser gespeichert (unverschlüsselt, ohne Übertragung an einen Server) und kann als Ausdruck für die Bauakte vorbereitet werden.",
     "berichtDruckenPdf": " Bericht drucken / PDF"
   },
   "werte": {
@@ -81,7 +81,7 @@
     "winterbaumaßnahmenNachDin1045": "Winterbaumaßnahmen nach DIN 1045-3 bei Betonarbeiten",
     "frischbetontemperaturGemessen": "Frischbetontemperatur gemessen",
     "cmMessungDurchgeführt": "CM-Messung durchgeführt",
-    "herausragendeLeistungIhrBautagebuch": "Herausragende Leistung! Ihr Bautagebuch entspricht vollumfänglich den rechtlichen Ansprüchen nach VOB/B, der HOAI Leistungsphase 8 sowie den einschlägigen technischen DIN-Normen. Damit ist der Bauablauf beweissicher dokumentiert.",
+    "herausragendeLeistungIhrBautagebuch": "Herausragende Leistung! Ihr Bautagebuch erfüllt alle Prüfpunkte dieser Lehrbewertung (VOB/B, HOAI Leistungsphase 8, DIN 1045-3). Der Bauablauf ist nachvollziehbar dokumentiert.",
     "sehrGuteAusarbeitungAlle": "Sehr gute Ausarbeitung. Alle sicherheitsrelevanten Witterungsverhältnisse und wesentlichen Bauabschnitte wurden erfasst. Kleinste formale Lücken.",
     "guteBauleiterqualitätDerBericht": "Gute Bauleiterqualität. Der Bericht ist absolut brauchbar und gerichtsverwertbar. Einige praxisnahe Detailhinweise zur Schadensminderung könnten tiefer ausfallen.",
     "durchsetzungsfähigAberMitMerklichen": "Durchsetzungsfähig, aber mit merklichen Auslassungen. Die Dokumentation ist im alltäglichen Regelbetrieb ausreichend, birgt aber feine rechtliche Schnittstellenschwächen im Streitfall.",

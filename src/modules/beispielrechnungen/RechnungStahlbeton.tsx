@@ -7,6 +7,8 @@ import { MdText } from '@/src/components/inhalt/MdText';
 
 interface RechnungStahlbetonProps {
   a_s_req: number;
+  /** Mindestbewehrung (Robustheit, NA DE) aus src/calc/biegung.ts in cm² */
+  a_s_min: number;
   bWidth: number;
   b_m: number;
   concreteClass: "C20/25" | "C25/30" | "C30/37";
@@ -27,7 +29,7 @@ interface RechnungStahlbetonProps {
   zeta: number;
 }
 
-export default function RechnungStahlbeton({ a_s_req, bWidth, b_m, concreteClass, d1Margin, d_m, f_cd, f_ck, f_yd, hHeight, mEd, mu_Ed, mu_lim, setBWidth, setConcreteClass, setHHeight, setMEd, z_m, zeta }: RechnungStahlbetonProps) {
+export default function RechnungStahlbeton({ a_s_req, a_s_min, bWidth, b_m, concreteClass, d1Margin, d_m, f_cd, f_ck, f_yd, hHeight, mEd, mu_Ed, mu_lim, setBWidth, setConcreteClass, setHHeight, setMEd, z_m, zeta }: RechnungStahlbetonProps) {
   return (
       <div className="space-y-6 animate-in fade-in duration-300">
         <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
@@ -119,7 +121,7 @@ export default function RechnungStahlbeton({ a_s_req, bWidth, b_m, concreteClass
               <BlockMath math={`\\mu_{Ed} = \\frac{\\color{#A3113E}{${formatDeTeX((mEd * 0.001), 3)}} \\, \\text{MNm}}{\\color{#A3113E}{${formatDeTeX(b_m, 2)}} \\, \\text{m} \\cdot (\\color{#A3113E}{${formatDeTeX(d_m, 3)}} \\, \\text{m})^2 \\cdot \\color{#A3113E}{${formatDeTeX(f_cd, 2)}} \\, \\text{MN/m}^2} = \\color{#A3113E}{${formatDeTeX(mu_Ed, 4)}}`} />
             </div>
 
-            <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt4HebelarmDer} />{mu_Ed < mu_lim ? (
+            <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt4HebelarmDer} />{mu_Ed <= mu_lim ? (
                 <>
                   <p className="mt-1">
                     Da <InlineMath math={`\\mu_{Ed} = ${formatDeTeX(mu_Ed, 4)} \\le \\mu_{lim} = ${formatDeTeX(mu_lim, 3)}`} /><MdText text={inhalt.texte.istGrenzeFürXi} /></p>
@@ -132,47 +134,47 @@ export default function RechnungStahlbeton({ a_s_req, bWidth, b_m, concreteClass
             </div>
 
             <div className="border-t border-slate-100 pt-3"><MdText text={inhalt.texte.schritt5ErforderlicheStahlfläche} /><BlockMath math={`A_{s,\\text{erf}} = \\frac{M_{Ed}}{f_{yd} \\cdot z}`} />
-              {mu_Ed < mu_lim ? (
+              {mu_Ed <= mu_lim ? (
                 <BlockMath math={`A_{s,\\text{erf}} = \\frac{\\color{#A3113E}{${mEd}} \\, \\text{kNm} \\cdot 10}{${formatDeTeX(f_yd, 1)} \\, \\text{N/mm}^2 \\cdot \\color{#A3113E}{${formatDeTeX(z_m, 3)}} \\, \\text{m}} = \\color{#A3113E}{${formatDeTeX(a_s_req, 2)}} \\, \\text{cm}^2`} />
               ) : (
-                <div className="text-center text-red-650 font-bold bg-red-50 p-3 rounded-lg border border-red-200"><MdText text={inhalt.texte.berechnungGesperrtWegenQuerschnitts} /></div>
+                <div className="text-center text-red-700 font-bold bg-red-50 p-3 rounded-lg border border-red-200"><MdText text={inhalt.texte.berechnungGesperrtWegenQuerschnitts} /></div>
               )}
             </div>
           </div>
         </div>
 
-        {/* EVALUATION OF REINFORCEMENT AREA */}
-        {mu_Ed < mu_lim && (
+        {/* EVALUATION OF REINFORCEMENT AREA (Modulprüfung T15-SB-2: Stabwahl aus A_s,erf statt fester Vorschläge) */}
+        {mu_Ed <= mu_lim && (() => {
+          const asMass = Math.max(a_s_req, a_s_min);
+          const vorschlaege = [
+            { label: inhalt.texte.optionAStandard, d: 16, farbe: 'text-shiraz' },
+            { label: inhalt.texte.optionBKompakt, d: 20, farbe: 'text-teal-700' },
+            { label: inhalt.texte.optionCMinimalistisch, d: 25, farbe: 'text-indigo-700' },
+          ].map(v => {
+            const a1 = (Math.PI * v.d * v.d) / 400; // cm² je Stab
+            const n = Math.max(2, Math.ceil(asMass / a1 - 1e-9));
+            return { ...v, n, as: n * a1 };
+          });
+          return (
           <div className="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs font-normal text-text-main/80 space-y-3">
             <span className="font-extrabold text-slate-800 block"><MdText text={inhalt.texte.ergebnisInterpretationKonstruktionsvorsc} /></span>
             <p><MdText text={inhalt.texte.dieStatischErforderlicheLängsbewehrung} /><strong>{formatDeZahl(a_s_req, 2)} cm²</strong><MdText text={inhalt.texte.imIngenieurbüroMussDiese} /></p>
+            <p><MdText text={inhalt.texte.mindestbewehrungAsMin} /><strong>{formatDeZahl(a_s_min, 2)} cm²</strong>{a_s_min > a_s_req ? <MdText text={inhalt.texte.mindestbewehrungMassgebend} /> : '.'}</p>
             <div className="p-3 bg-white border rounded-lg space-y-2.5 font-normal text-xxs">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                <div className="p-2 bg-slate-50 rounded-lg border text-center">
-                  <span className="block font-bold mb-1"><MdText text={inhalt.texte.optionAStandard} /></span>
-                  <strong className="text-shiraz">3 Ø 16</strong> (6,03 cm²)
-                  <span className={`block text-[10px] mt-1 ${6.03 >= a_s_req ? 'text-slate-400' : 'text-red-700 font-bold'}`}>
-                    {6.03 >= a_s_req ? `Auslastung: ${formatDeZahl((a_s_req / 6.03 * 100), 0)}%` : `Fläche unzureichend (${formatDeZahl((a_s_req / 6.03 * 100), 0)} %)!`}
-                  </span>
-                </div>
-                <div className="p-2 bg-slate-50 rounded-lg border text-center">
-                  <span className="block font-bold mb-1"><MdText text={inhalt.texte.optionBKompakt} /></span>
-                  <strong className="text-teal-700">2 Ø 20</strong> (6,28 cm²)
-                  <span className={`block text-[10px] mt-1 ${6.28 >= a_s_req ? 'text-slate-400' : 'text-red-700 font-bold'}`}>
-                    {6.28 >= a_s_req ? `Auslastung: ${formatDeZahl((a_s_req / 6.28 * 100), 0)}%` : `Fläche unzureichend (${formatDeZahl((a_s_req / 6.28 * 100), 0)} %)!`}
-                  </span>
-                </div>
-                <div className="p-2 bg-slate-50 rounded-lg border text-center">
-                  <span className="block font-bold mb-1"><MdText text={inhalt.texte.optionCMinimalistisch} /></span>
-                  <strong className="text-indigo-700">4 Ø 12</strong> (4,52 cm²)
-                  <span className="block text-[10px] text-slate-400 mt-1">
-                    {4.52 >= a_s_req ? `Auslastung: ${formatDeZahl((a_s_req / 4.52 * 100), 0)}%` : inhalt.werte.flächeUnzureichend}
-                  </span>
-                </div>
+                {vorschlaege.map(v => (
+                  <div key={v.d} className="p-2 bg-slate-50 rounded-lg border text-center">
+                    <span className="block font-bold mb-1"><MdText text={v.label} /></span>
+                    <strong className={v.farbe}>{formatDeWert(v.n)} Ø {formatDeWert(v.d)}</strong> ({formatDeZahl(v.as, 2)} cm²)
+                    <span className="block text-[10px] text-slate-500 mt-1">Auslastung: {formatDeZahl((asMass / v.as) * 100, 0)} %</span>
+                  </div>
+                ))}
               </div>
+              <p className="text-[10px] text-slate-500"><MdText text={inhalt.texte.stabwahlHinweis} /></p>
             </div>
           </div>
-        )}
+          );
+        })()}
       </div>
     );
 }

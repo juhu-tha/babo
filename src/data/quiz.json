@@ -45931,19 +45931,19 @@
     "topic": "Verbund und Schweißeignung",
     "difficulty": "Transfer",
     "normRef": "",
-    "question": "Bei einer Verstärkung sollen an vorhandene glatte Rundstähle BSt 220/340 RU neue Stäbe angeschweißt und gerade Stabenden über Verbund verankert werden. Wie ist das nach dem Modul zu beurteilen?",
+    "question": "Bei einer Verstärkung sollen an vorhandene glatte Rundstähle BSt 220/340 GU neue Stäbe angeschweißt und gerade Stabenden über Verbund verankert werden. Wie ist das nach dem Modul zu beurteilen?",
     "options": [
-      "Zulässig, da glatter Stahl wegen der niedrigen Festigkeit gut schweißbar ist",
+      "Zulässig, da glatter Stahl wegen der niedrigen Festigkeit ohne Weiteres schweißbar ist",
       "Zulässig, wenn die Verankerungslänge wie bei Rippenstahl um etwa 10 % verlängert wird",
-      "Unzulässig zum Schweißen; zudem ist der Verbund so gering, dass Haken nötig sind",
-      "Unzulässig zum Schweißen; der Verbund entspricht aber dem heutiger Rippenstähle"
+      "Schweißen nur nach Werkstoffprüfung; Verbund so gering, dass Haken nötig sind",
+      "Schweißen nur nach Werkstoffprüfung; der Verbund entspricht aber dem heutiger Rippenstähle"
     ],
     "correctIdx": 2,
-    "explanation": "Unberuhigt vergossener BSt 220 RU ist nicht schweißgeeignet (Sprödbruchgefahr). Wegen der glatten Oberfläche ist die Verbundspannung stark abgemindert (im Modul η_1 = 0,3); die Verankerung muss über Winkel- oder Endhaken erfolgen.",
+    "explanation": "Die Schweißeignung alter Stähle (u. a. Thomasstahl) ist nicht vorausgesetzt; geschweißt wird nur nach Werkstoffprüfung (chemische Analyse, Kerbschlagarbeit). Wegen der glatten Oberfläche ist die Verbundspannung stark abgemindert (Lehransatz im Modul: etwa 30 % gerippter Stäbe); verankert wird über Winkel- oder Endhaken.",
     "bloom": "Bewerten",
     "niveau": "M",
     "distraktorFeedback": [
-      "Niedrige Festigkeit bedeutet keine Schweißeignung; maßgebend ist die unberuhigte Erschmelzung.",
+      "Niedrige Festigkeit bedeutet keine Schweißeignung; maßgebend sind Erschmelzung und Alterungsneigung, die erst eine Werkstoffprüfung klärt.",
       "Die Verbundabminderung ist weit größer als 10 %; glatter Stahl braucht Endhaken.",
       "",
       "Glatte Oberflächen haben keine Rippen und damit einen deutlich schlechteren Verbund."
@@ -45951,17 +45951,16 @@
     "gapAnalysis": {
       "topic": "Verbund und Schweißeignung",
       "misconception": "Historische Stähle werden wie moderne gerippte, schweißgeeignete Betonstähle behandelt.",
-      "coreRule": "BSt 220 RU: nicht schweißgeeignet, geringer Verbund, Verankerung mit Haken.",
+      "coreRule": "BSt 220/340 GU: Schweißen nur nach Werkstoffprüfung, geringer Verbund, Verankerung mit Haken.",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Schritt 3: Verbund- und Schweißeigenschaften“ im Modul Bauen im Bestand noch einmal durch.",
       "targetModuleTab": "rechnung_bestand",
       "targetModuleLabel": "Bauen im Bestand"
     },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27",
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "korrigiert",
+      "hinweis": "Modulprüfung Tranche 15 (29.10.): Bezeichnung BSt 220/340 GU statt „RU“, „unberuhigt vergossen“ und „η_1 = 0,3“ entfallen; Schweißen nur nach Werkstoffprüfung (T15-BS-2) – korrigiert"
     }
   },
   {
@@ -46016,7 +46015,7 @@
     "topic": "Stahlsorten im Vergleich",
     "difficulty": "Vertiefung",
     "normRef": "",
-    "question": "Ein glatter BSt 220 RU Ø 20 mm wird mit einem kaltverformten BSt 500 RK Ø 12 mm verglichen. Welche Aussage trifft nach den Rechenwegen des Moduls zu?",
+    "question": "Ein glatter BSt 220/340 GU Ø 20 mm wird mit einem kaltverformten BSt 500 RK Ø 12 mm verglichen. Welche Aussage trifft nach den Rechenwegen des Moduls zu?",
     "options": [
       "BSt 220 Ø 20 trägt rund 60 kN, BSt 500 Ø 12 rund 49 kN; glatter Stab schwer verankerbar",
       "BSt 220 Ø 20 trägt rund 49 kN, BSt 500 Ø 12 rund 60 kN; der Rippenstab ist daher überlegen",
@@ -46041,12 +46040,11 @@
       "targetModuleTab": "rechnung_bestand",
       "targetModuleLabel": "Bauen im Bestand"
     },
-    "reviewer": "Zweitprüfung 27.10.2026; freigegeben 27.10.2026",
-    "reviewedAt": "2026-10-27",
-    "verified": true,
+    "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "korrigiert",
+      "hinweis": "Modulprüfung Tranche 15 (29.10.): Bezeichnung BSt 220/340 GU statt „BSt 220 RU“ (T15-BS-2) – korrigiert"
     }
   },
   {
@@ -48344,7 +48342,7 @@
     "options": [
       "l_b,rqd ≈ 2256 mm",
       "l_b,rqd ≈ 564 mm",
-      "l_b,rqd ≈ 846 mm",
+      "l_b,rqd ≈ 790 mm",
       "l_b,rqd ≈ 483 mm"
     ],
     "correctIdx": 1,
@@ -48354,23 +48352,22 @@
     "distraktorFeedback": [
       "Hier fehlt die Division des Durchmessers durch 4.",
       "",
-      "Das ist bereits die Übergreifungslänge mit α_6 = 1,5, nicht der Grundwert.",
+      "Das ist bereits die Übergreifungslänge mit α_6 = 1,4 (NA DE, Ø < 16 mm, Stoßanteil > 33 %), nicht der Grundwert.",
       "Dieser Wert gilt für Ø 12 mm aus dem Modulbeispiel."
     ],
     "gapAnalysis": {
       "topic": "Verankerungslänge",
       "misconception": "Grundwert der Verankerungslänge und Übergreifungslänge werden verwechselt.",
-      "coreRule": "l_b,rqd = (Ø/4) · (σ_sd/f_bd); l_0 = α_6 · l_b,rqd (vereinfacht).",
+      "coreRule": "l_b,rqd = (Ø/4) · (σ_sd/f_bd); l_0 = α_6 · l_b,rqd (vereinfacht; α_6 nach NA DE, Tab. 8.3DE).",
       "actionableAdvice": "Arbeiten Sie den Abschnitt „Beispiel 2: Grundwert der Verankerungslänge bei der Bewehrungsabnahme“ im Modul Bauleitung & Baustelle noch einmal durch.",
       "targetModuleTab": "px_bauleitung",
       "targetModuleLabel": "Bauleitung & Baustelle"
     },
-    "verified": true,
-    "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
-    "reviewedAt": "2026-10-28",
+    "verified": false,
     "vorpruefung": {
       "am": "2026-10-25",
-      "ergebnis": "ok"
+      "ergebnis": "korrigiert",
+      "hinweis": "Modulprüfung Tranche 15 (29.10.): Distraktor Übergreifungslänge mit α_6 = 1,4 nach NA DE (790 mm) statt 1,5 (846 mm), wie Modulbeispiel (T15-PB-1) – korrigiert"
     }
   },
   {

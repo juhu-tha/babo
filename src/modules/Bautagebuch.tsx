@@ -228,7 +228,7 @@ export default function Bautagebuch() {
     // Check 3: Active Scenario Specific Rules
     if (activeScenarioId === 'schlechtwetter') {
       // Must deny water addition
-      const deniedWater = fortschritt.toLowerCase().includes('wasser') || stoerungen.toLowerCase().includes('wasser') || fortschritt.toLowerCase().includes('fm') || fortschritt.toLowerCase().includes('fließmittel') || stoerungen.toLowerCase().includes('untersagt') || stoerungen.toLowerCase().includes('fließkraft');
+      const deniedWater = fortschritt.toLowerCase().includes('wasser') || stoerungen.toLowerCase().includes('wasser') || /\bfm\b/i.test(fortschritt) || fortschritt.toLowerCase().includes('fließmittel') || stoerungen.toLowerCase().includes('untersagt') || stoerungen.toLowerCase().includes('fließkraft');
       if (!deniedWater) {
         score -= 15;
         checks.push(inhalt.daten.handleAnalyzeAndSubmit_7);

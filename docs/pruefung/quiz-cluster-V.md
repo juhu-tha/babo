@@ -2,9 +2,9 @@
 
 Stand: 29.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster V umfasst 132 Fragen aus 22 Modulen. Aufgeführt sind 31 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster V umfasst 132 Fragen aus 22 Modulen. Aufgeführt sind 32 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 31 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 32 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -222,6 +222,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 31 korrigiert, 0 fraglich, 0
 - **Richtige Antwort:** Beton ohne Vereinbarung zurückweisen und den Vorgang dokumentieren
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### qn_px_bauleitung_2 · Bauleitung & Baustelle
+
+- **Frage:** Bei der Bewehrungsabnahme soll der Grundwert der Verankerungslänge für Ø 14 mm in C25/30 (guter Verbund, f_bd = 2,7 N/mm², σ_sd = 435 N/mm²) plausibilisiert werden. Welcher Wert ergibt sich?
+- **Richtige Antwort:** l_b,rqd ≈ 564 mm
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Modulprüfung Tranche 15 (29.10.): Distraktor Übergreifungslänge mit α_6 = 1,4 nach NA DE (790 mm) statt 1,5 (846 mm), wie Modulbeispiel (T15-PB-1) – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### qn_px_bauleitung_3 · Bauleitung & Baustelle

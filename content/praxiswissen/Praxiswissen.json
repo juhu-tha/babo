@@ -167,7 +167,7 @@
             "title": "Nachhaltigkeitsanforderungen (GWP / LCA) im LV forcieren",
             "description": "Vorgabe von CO₂-Grenzwerten (GWP-Wert in kg CO₂-eq/m³) für Tragwerksbetone und Primärbauteile. Spezifikation der EPD-Nachweise.",
             "standard": "DGNB / QNG-Schnittstelle / EPD",
-            "tip": "Für massige Innenbauteile CEM III/A (36–65 % Hüttensand nach DIN EN 197-1) oder klinkerreduzierte Zemente (z. B. CEM II/B-M, CEM II/C-M nach DIN EN 197-5) zulassen. Das senkt die Hydratationswärme und je nach Klinkeranteil das GWP des Zements deutlich; Werte über EPD nachweisen lassen."
+            "tip": "Für massige Innenbauteile CEM III/A (36–65 % Hüttensand nach DIN EN 197-1) oder klinkerreduzierte Zemente (z. B. CEM II/B-M nach DIN EN 197-1, CEM II/C-M nach DIN EN 197-5) zulassen. Das senkt die Hydratationswärme und je nach Klinkeranteil das GWP des Zements deutlich; Werte über EPD nachweisen lassen."
           },
           {
             "id": "pl_bst_4",
@@ -272,7 +272,7 @@
             "description": "Prüfung der Stoßbereiche der Bewehrungsmatten und -stäbe. Sind genügend Übergreifungslängen nach Statik-Bewehrungsplan vorhanden (z.B. min. 40-50d)?",
             "standard": "DIN EN 1992-1-1 (Eurocode 2)",
             "important": true,
-            "tip": "Die Übergreifungslänge l_0 hängt von Ø, Betonfestigkeit, Verbundbedingung, Ausnutzung und Stoßanteil ab. Beispiel Ø 12, C25/30, guter Verbund, volle Ausnutzung: l_b,rqd ≈ 48 cm; mit α_6 = 1,4 bis 1,5 ergibt sich l_0 ≈ 68 bis 72 cm. Maßgebend ist der Bewehrungsplan."
+            "tip": "Die Übergreifungslänge l_0 hängt von Ø, Betonfestigkeit, Verbundbedingung, Ausnutzung und Stoßanteil ab. Beispiel Ø 12, C25/30, guter Verbund, volle Ausnutzung: l_b,rqd ≈ 48 cm; mit α_6 = 1,4 (NA DE, Tab. 8.3DE: Ø < 16 mm, Stoßanteil > 33 %) ergibt sich l_0 ≈ 68 cm. Maßgebend ist der Bewehrungsplan."
           },
           {
             "id": "bl_bew_4",
@@ -418,7 +418,7 @@
             "title": "System-Konformitätsbewertung",
             "description": "Kenntnis über das geforderte System der Bewertung und Überprüfung der Leistungsbeständigkeit (System 1+, 1, 2+, 3, 4). Wann ist ein externer Zertifizierer zwingend erforderlich?",
             "standard": "Anhang V der BauPVO",
-            "tip": "Bei tragenden Bauteilen (z.B. Deckenplatten im System 2+) führt eine notifizierte Stelle (Überwachungsstelle) die Erstinspektion des Werkes sowie die laufende Überwachung der WPK (Häufigkeit nach hEN, häufig 1- bis 2-mal jährlich) durch und stellt das Konformitätszertifikat aus."
+            "tip": "Bei tragenden Bauteilen (z.B. Deckenplatten im System 2+) führt eine notifizierte Stelle (Überwachungsstelle) die Erstinspektion des Werkes sowie die laufende Überwachung der WPK (Häufigkeit nach hEN, häufig 1- bis 2-mal jährlich) durch und stellt das Zertifikat der Konformität der werkseigenen Produktionskontrolle aus (das Konformitätszertifikat für das Produkt gehört zu den Systemen 1+ und 1)."
           }
         ]
       },
@@ -467,9 +467,9 @@
           {
             "id": "pr_bta_3",
             "title": "Substitutionsraten von Recycling-Baustoffen (RC-Splitt)",
-            "description": "Strikte Einhaltung der maximal zulässigen Substitutionsraten bei der Zumischung von rezyklierten Gesteinskörnungen (Typ 1 und Typ 2 nach DAfStb-Richtlinie) zur Einhaltung der Betoneigenschaften.",
-            "standard": "DAfStb-Richtlinie (2010) / DIN 1045-2:2023-08",
-            "tip": "Die zulässigen Anteile rezyklierter Gesteinskörnung > 2 mm hängen von Typ, Expositions- und Feuchtigkeitsklasse ab (nach DAfStb-Richtlinie für Typ 1 etwa 25 bis 45 Vol.-%, für Typ 2 etwa 25 bis 35 Vol.-%). Die maßgebende Tabelle der geltenden Regel prüfen; die Erstprüfung bleibt erforderlich."
+            "description": "Strikte Einhaltung der maximal zulässigen Substitutionsraten bei der Zumischung von rezyklierten Gesteinskörnungen (Typ 1 und Typ 2 nach DIN 1045-2:2023-08, Anhang E) zur Einhaltung der Betoneigenschaften.",
+            "standard": "DIN 1045-2:2023-08, Anhang E (ersetzt die DAfStb-Richtlinie 2010)",
+            "tip": "Die zulässigen Anteile rezyklierter Gesteinskörnung > 2 mm hängen von Typ, Expositions- und Feuchtigkeitsklasse ab (nach DIN 1045-2:2023-08, Anhang E, für Typ 1 etwa 25 bis 45 Vol.-%, für Typ 2 etwa 20 bis 35 Vol.-%; in XA2, XA3 und XM nicht zulässig; vorläufig, F-Freigabe). Die maßgebende Tabelle der geltenden Regel prüfen; die Erstprüfung bleibt erforderlich."
           },
           {
             "id": "pr_bta_4",
@@ -652,8 +652,8 @@
       },
       {
         "titel": "Übergreifung",
-        "erklaerung": "Stoßanteil über 50 %, α_6 = 1,5 (übrige Beiwerte 1,0):",
-        "formel": "l_0 = 1{,}5 \\cdot 483 = 725\\,\\text{mm}"
+        "erklaerung": "Stoßanteil über 33 % (hier alle Stäbe in einem Schnitt), Ø < 16 mm: α_6 = 1,4 nach NA DE, Tab. 8.3DE (vorläufig, F-Freigabe; übrige Beiwerte 1,0):",
+        "formel": "l_0 = 1{,}4 \\cdot 483 = 677\\,\\text{mm}"
       }
     ],
     "Praxiswissen.schritte_5": [

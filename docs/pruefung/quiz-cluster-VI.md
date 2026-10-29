@@ -2,9 +2,9 @@
 
 Stand: 29.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster VI umfasst 60 Fragen aus 10 Modulen. Aufgeführt sind 22 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster VI umfasst 60 Fragen aus 10 Modulen. Aufgeführt sind 24 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 22 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 24 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -16,11 +16,27 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 22 korrigiert, 0 fraglich, 0
 - [x] ok
 - [ ] ändern: …
 
+### qn_rechnung_bestand_4 · Bauen im Bestand
+
+- **Frage:** Bei einer Verstärkung sollen an vorhandene glatte Rundstähle BSt 220/340 GU neue Stäbe angeschweißt und gerade Stabenden über Verbund verankert werden. Wie ist das nach dem Modul zu beurteilen?
+- **Richtige Antwort:** Schweißen nur nach Werkstoffprüfung; Verbund so gering, dass Haken nötig sind
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Modulprüfung Tranche 15 (29.10.): Bezeichnung BSt 220/340 GU statt „RU“, „unberuhigt vergossen“ und „η_1 = 0,3“ entfallen; Schweißen nur nach Werkstoffprüfung (T15-BS-2) – korrigiert
+- [x] ok
+- [ ] ändern: …
+
 ### qn_rechnung_bestand_5 · Bauen im Bestand
 
 - **Frage:** Ein Tragwerksplaner überlegt, ob sich Kernbohrungen in einer Stahlbetondecke aus den 1960er Jahren lohnen. Welches Argument stützt das Modul?
 - **Richtige Antwort:** Der pauschale Abschlag entfällt; die oft höhere reale Festigkeit wird nutzbar
 - **Auffälligkeit:** Vorprüfung „korrigiert“: normRef ergänzt · bereits freigegeben (verified)
+- [x] ok
+- [ ] ändern: …
+
+### qn_rechnung_bestand_6 · Bauen im Bestand
+
+- **Frage:** Ein glatter BSt 220/340 GU Ø 20 mm wird mit einem kaltverformten BSt 500 RK Ø 12 mm verglichen. Welche Aussage trifft nach den Rechenwegen des Moduls zu?
+- **Richtige Antwort:** BSt 220 Ø 20 trägt rund 60 kN, BSt 500 Ø 12 rund 49 kN; glatter Stab schwer verankerbar
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Modulprüfung Tranche 15 (29.10.): Bezeichnung BSt 220/340 GU statt „BSt 220 RU“ (T15-BS-2) – korrigiert
 - [x] ok
 - [ ] ändern: …
 
@@ -204,28 +220,28 @@ Auswahl deterministisch (Sortierung nach FNV-1a-Hash der Frage-ID), damit die St
 - [x] ok
 - [ ] ändern: …
 
-### qn_rechnung_bestand_4 · Bauen im Bestand
-
-- **Frage:** Bei einer Verstärkung sollen an vorhandene glatte Rundstähle BSt 220/340 RU neue Stäbe angeschweißt und gerade Stabenden über Verbund verankert werden. Wie ist das nach dem Modul zu beurteilen?
-- **Richtige Antwort:** Unzulässig zum Schweißen; zudem ist der Verbund so gering, dass Haken nötig sind
-- **Auffälligkeit:** keine – Vorprüfung „ok“
-- [x] ok
-- [ ] ändern: …
-
-### qn_rechnung_bestand_6 · Bauen im Bestand
-
-- **Frage:** Ein glatter BSt 220 RU Ø 20 mm wird mit einem kaltverformten BSt 500 RK Ø 12 mm verglichen. Welche Aussage trifft nach den Rechenwegen des Moduls zu?
-- **Richtige Antwort:** BSt 220 Ø 20 trägt rund 60 kN, BSt 500 Ø 12 rund 49 kN; glatter Stab schwer verankerbar
-- **Auffälligkeit:** keine – Vorprüfung „ok“
-- [x] ok
-- [ ] ändern: …
-
 ### qn_rechnung_nachhaltigkeit_1 · Nachhaltigkeit & Dauerhaftigkeit
 
 - **Frage:** Wie tief ist eine bewitterte Betonwand mit dem Karbonatisierungsbeiwert k = 4,0 mm/√a nach 50 Jahren nach dem Quadratwurzel-Zeit-Gesetz karbonatisiert?
 - **Richtige Antwort:** d_k ≈ 28,3 mm
 - **Auffälligkeit:** keine – Vorprüfung „ok“
 - [x] ok
+- [ ] ändern: …
+
+### qn_rechnung_nachhaltigkeit_3 · Nachhaltigkeit & Dauerhaftigkeit
+
+- **Frage:** Die Karbonatisierungstiefe beträgt 28,3 mm. Mit c = 300 kg/m³ Zement, 65 % CaO-Anteil, 60 % Karbonatisierungsgrad und dem Molmassenverhältnis 44/56: Wie viel CO₂ bindet 1 m² Wandfläche?
+- **Richtige Antwort:** ≈ 2,60 kg CO₂/m²
+- **Auffälligkeit:** keine – Vorprüfung „ok“
+- [ ] ok
+- [ ] ändern: …
+
+### qn_rechnung_nachhaltigkeit_2 · Nachhaltigkeit & Dauerhaftigkeit
+
+- **Frage:** Nach welcher Zeit erreicht die Karbonatisierungsfront bei k = 4,0 mm/√a eine Betondeckung von 30 mm?
+- **Richtige Antwort:** nach rund 56 Jahren
+- **Auffälligkeit:** keine – Vorprüfung „ok“
+- [ ] ok
 - [ ] ändern: …
 
 ## C. Lernziel-Stichprobe (5 Module)
