@@ -31,6 +31,10 @@ gilt(ab5.typ === 'D240' && ab5.dickeOk && ab5.randOk, 'AB5 D 240 bei 24 cm');
 const ab7 = fugenbandPruefung('dehnungsfuge', 5, 30, 16);
 gilt(ab7.typ === 'D320' && ab7.dickeMinCm === 30 && ab7.dickeOk, 'AB7 D 320 bei 30 cm'); pruefe('AB7 Rand', ab7.randCm, 7);
 gilt(!fugenbandPruefung('dehnungsfuge', 5, 29, 16).dickeOk, 'AB7b D 320 bei 29 cm zu dünn'); gilt(fugenbandPruefung('arbeitsfuge', 3, 30, 32).dickeMinCm === 20, 'AB7c A 200: d ≥ a'); pruefe('AB6 bar', fugenbandPruefung('arbeitsfuge', 3, 30, 16).druckBar, 0.3);
+// Umsetzung 29.10.2026 (Kleinpunkte): A 320 wie D 320 – Mindestbauteildicke 30 cm nach Herstellerangabe (vorher 32 cm)
+const ab8 = fugenbandPruefung('arbeitsfuge', 15, 30, 16);
+gilt(ab8.typ === 'A320' && ab8.dickeMinCm === 30 && ab8.dickeOk, 'AB8 A 320 bei 30 cm'); pruefe('AB8 Rand', ab8.randCm, 7);
+gilt(!fugenbandPruefung('arbeitsfuge', 15, 29, 16).dickeOk, 'AB8b A 320 bei 29 cm zu dünn'); gilt(fugenbandPruefung('arbeitsfuge', 8, 30, 16).dickeMinCm === 24, 'AB8c A 240: d ≥ a');
 
 // 3. Dämmung – U-Werte (DIN EN ISO 6946), Einsparung, Mindestdicke
 const da2 = daemmBerater({ rBestand: 0.47, dickeCm: 14, lambda: 0.032, rsi: 0.13, rse: 0.04, uZiel: 0.24, ohneBestand: false });
