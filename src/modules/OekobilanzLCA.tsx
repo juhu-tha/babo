@@ -10,7 +10,6 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import inhaltJson from '@/content/oekobilanzlca/OekobilanzLCA.json';
-import rechnerJson from '@/content/interactivelcacalc/InteractiveLCACalc.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 
 export type LcaTeil = 'grundlagen' | 'rechner' | 'ingenieurbau' | 'regulatorik';
@@ -50,11 +49,12 @@ const TEILE: Record<LcaTeil, { titel: string; text: React.ReactNode; tabs: { id:
 };
 
 /** Eine Fußzeile je Modul (Nachstichprobe 29.10.2026): Der LCA-Rechner hat keine eigene Fußzeile mehr; seine Literatur,
- *  Formeln und die zusätzlichen Regelwerke stehen im Teil „rechner“ in der modulweiten Fußzeile (Dubletten nach Norm-Nummer entfernt). */
-const normNummer = (t: string) => (t.match(/^(DIN EN(?: ISO)? \d+)/) || [t])[0];
-const rechnerRegelwerkeZusatz = rechnerJson.daten["InteractiveLCACalc.regelwerke"].filter(
-  r => !inhaltJson.daten["OekobilanzLCA.regelwerke"].some(m => normNummer(m.title) === normNummer(r.title) || (r.url !== undefined && 'url' in m && m.url === r.url)),
-);
+ *  Formeln und die zusätzlichen Regelwerke stehen im Teil „rechner“ in der modulweiten Fußzeile. */
+const RECHNER_FUSS = {
+  literatur: inhaltJson.daten["OekobilanzLCA.literatur_rechner"],
+  regelwerke: inhaltJson.daten["OekobilanzLCA.regelwerke_rechner"],
+  formeln: inhaltJson.daten["OekobilanzLCA.formeln_rechner"],
+};
 
 export default function OekobilanzLCA({ teil = 'grundlagen' }: { teil?: LcaTeil }) {
   const t = TEILE[teil];
@@ -117,11 +117,11 @@ export default function OekobilanzLCA({ teil = 'grundlagen' }: { teil?: LcaTeil 
           { title: 'Treibhauspotenzial', url: 'https://de.wikipedia.org/wiki/Treibhauspotenzial' },
           { title: inhaltJson.werte.graueEnergie, url: 'https://de.wikipedia.org/wiki/Graue_Energie' }
         ]}
-        literatur={teil === 'rechner' ? [...inhaltJson.daten["OekobilanzLCA.literatur"], ...rechnerJson.daten["InteractiveLCACalc.literatur"]] : inhaltJson.daten["OekobilanzLCA.literatur"]}
+        literatur={teil === 'rechner' ? [...inhaltJson.daten["OekobilanzLCA.literatur"], ...RECHNER_FUSS.literatur] : inhaltJson.daten["OekobilanzLCA.literatur"]}
         normIds={['DIN_EN_15804', 'DIN_EN_15978', 'DIN_EN_17472']}
-        regelwerke={teil === 'rechner' ? [...inhaltJson.daten["OekobilanzLCA.regelwerke"], ...rechnerRegelwerkeZusatz] : inhaltJson.daten["OekobilanzLCA.regelwerke"]}
+        regelwerke={teil === 'rechner' ? [...inhaltJson.daten["OekobilanzLCA.regelwerke"], ...RECHNER_FUSS.regelwerke] : inhaltJson.daten["OekobilanzLCA.regelwerke"]}
         weblinks={inhaltJson.daten["OekobilanzLCA.weblinks"]}
-        formeln={teil === 'rechner' ? [...inhaltJson.daten["OekobilanzLCA.formeln"], ...rechnerJson.daten["InteractiveLCACalc.formeln"]] : inhaltJson.daten["OekobilanzLCA.formeln"]}
+        formeln={teil === 'rechner' ? [...inhaltJson.daten["OekobilanzLCA.formeln"], ...RECHNER_FUSS.formeln] : inhaltJson.daten["OekobilanzLCA.formeln"]}
       />
     </div>
   );
