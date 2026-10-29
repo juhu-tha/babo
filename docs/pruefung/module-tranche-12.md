@@ -548,3 +548,47 @@ Nicht freigegeben:
 - `holzkorrosion` – Prüfbogen: T12-HK-2a/b (Normtext DIN EN 351-1)
 
 Ohne Eintrag in `src/data/pruefvermerke.ts` (kein Fachmodul im Sinne der Prüfvermerke, daher kein Vermerk): `bestand_info`, `rueckbau_info`, `dauerhaftigkeit_info`, `bestand_checklisten`, `rueckbau_checklisten`.
+
+---
+
+## Nachprüfung 29.10.2026: AKR-Gefügesimulation
+
+**Gegenstand:** Reiter „AKR-Gefügesimulation“ im Modul `schadreaktionen_beton` (Komponente `AkrGefuegeSimulator` in `src/modules/SchadreaktionenBeton.tsx`, eingebunden mit #252; Texte in `content/schadreaktionenbeton/SchadreaktionenBeton.json`). Branch `pruefung/akr-simulator-10-29`, Basis origin/main 9e2dac47.
+
+**Prüfumfang:** Darstellung der Alkali-Kieselsäure-Reaktion (Gelbildung, Quellung, Rissbild), Einflussgrößen (Na₂O-Äquivalent des Zements, Alkaliempfindlichkeitsklasse E I/E II/E III, Feuchtigkeitsklassen WO/WF/WA/WS nach DAfStb-Alkali-Richtlinie), Rechenwerte und Schwellen, Begriffe, Formelzeichen in Großschrift, Barrierefreiheit (hell, dunkel, mobil), Designgrundsatz „keine schwarzen Boxen“.
+
+**Rechenmodell:** Die Simulation rechnet ein reines Lehrmodell (Gel-Druck p_gel aus Alkaliüberschuss · Reaktivitätsfaktor · Feuchtefaktor, Zeitgesetz t^1,4 bis 15 Jahre, Riss ab f_ctm = 3,0 MPa, Rissweite w und Dehnung ε_AKR). Der Kern wurde unverändert in `src/calc/akrGefuege.ts` ausgelagert (bisher inline) und um WA ergänzt.
+
+**Nachrechnungen (eigenes Python-Skript, eigene Umsetzung der Gleichungen; 9 Fälle in `tests/akrGefuege.test.ts`, Toleranz 0,5 %):**
+
+| Na₂O-Äq. [M.-%] | Klasse | Jahre | Kl. E | p_gel [MPa] | w [mm] | ε [mm/m] | Stufe |
+|---|---|---|---|---|---|---|---|
+| 1,10 (Vorgabe) | WS | 8 | E III | 4,66 | 0,37 | 0,81 | Netzrisse |
+| 1,30 | WA | 20 | E III | 12,15 | 2,80 (Deckel) | 3,48 | stark |
+| 0,90 | WF | 15 | E II | 1,95 | 0 | 0 | Latenz |
+| 0,60 | WS | 25 | E III | 0 (nicht ausgelöst) | 0 | 0 | keine |
+| 1,60 | WS | 25 | E III | 13,5 (Deckel) | 2,80 | 3,48 | stark |
+| 1,00 | WA | 12 | E III | 5,56 | 0,86 | 1,34 | Netzrisse |
+
+Kern und Skript stimmen überein; die Zahlen sind in sich schlüssig (Riss erst ab p_gel ≥ f_ctm, monoton in Alkaligehalt, Feuchte und Zeit).
+
+**Fakten-Stichprobe:** NA-Zement nach DIN 1164-10: Na₂O-Äq. ≤ 0,60 M.-% gilt für CEM I, CEM II (außer B-S), CEM IV, CEM V; höhere Grenzen für CEM II/B-S (0,70) und CEM III (0,95 bis 2,00) – Quelle: InformationsZentrum Beton, Handout „Regelwerke – Alkali-Richtlinie“ (2025). Quelldrücke des Gels „bis 20 MPa“ (ebd.) – Fachtext „über 10 MPa“ und Deckel 13,5 MPa im Lehrmodell liegen in dieser Größenordnung. Maßnahmen nach Richtlinie (ebd., sinngemäß): E III-O in WF NA-Zement, in WA Austausch der Gesteinskörnung; WS betrifft die Klassen E I-S/E III-S. Gleichung, Netzrissbild und Gelaustritt – richtig.
+
+**Befunde**
+- **behoben – T12-AS-1:** Feuchtigkeitsklasse **WA** (feucht + Alkalizufuhr von außen) fehlte; die Simulation kannte nur WO/WF/WS. WA ergänzt (Faktor 1,5 zwischen WF und WS, Lehrmodell), Untertitel der vier Klassen nach Richtlinie (WS „wie WA + dynamisch (Fahrbahn)“ statt „Autobahnen“). Test: Reihenfolge und Monotonie der Feuchtefaktoren.
+- **behoben – T12-AS-2:** Klassen als „E1/E2/E3“ statt **E I/E II/E III** angezeigt. Das Korn im Bild hieß bei jeder Klasse „Reaktives Quarzkorn“ (bei E I mit Zusatz „Inertes Korn“; Opal ist nicht Quarz), bei E II „Grauwacke“, während der Schalter E II mit „Kies mit Flint“ erklärt (Grauwacke gehört zur Gruppe -S, dort gibt es nur E I-S/E III-S). Vereinheitlicht: „Reaktives Korn (Opalsandstein | Flint)“ bzw. „Unbedenkliches Korn (Quarz/Granit)“; Untertitel „Gesteinskorn im Zementsteingefüge (schematisch)“.
+- **behoben – T12-AS-3 (Formelzeichen in Großschrift):** In den `uppercase`-Kacheln wurde „Rissweite w“ zu „W“ und „Dehnung ε_AKR“ zu „Ε_AKR“ (griechisches Groß-Epsilon, Unterstrich roh); `fctm` ohne Index, im Bild `p_gel` roh. Jetzt `<Fz>w</Fz>`, `<Fz idx="AKR">ε</Fz>`, `<Fz idx="ctm">f</Fz>`, im SVG p mit tiefgestelltem „gel“.
+- **behoben – T12-AS-4:** Schieberegler-Marke „NA-Grenze: 0,60 %“ → „NA-Grenze CEM I: 0,60 %“ (andere Zementarten höhere Grenzen, s. o.).
+- **behoben – T12-AS-5 (Begriffe):** „Siloxanbrücken des amorphen Quarzes“ → „der amorphen bzw. kryptokristallinen Kieselsäure (z. B. Opal, Chalcedon)“ (Quarz ist kristallin); „Opalsandstein, Flinte“ → „reaktiver Flint“; Stufe „Strukturelles Versagen“ bei w ≥ 1 mm → „Starke Gefügeschädigung („Betonkrebs“) – Tragfähigkeit prüfen“ (eine Rissweite allein belegt kein Versagen).
+- **gekennzeichnet – T12-AS-6 (Lehrmodell, vorläufig, F-Freigabe):** Auslöseschwelle Na₂O-Äq. > 0,60 M.-%, Überschuss ab 0,50 M.-%, Faktoren E II 0,65 / E III 1,35 und WF 1,0 / WA 1,5 / WS 1,85, Vorfaktor 7,5, Deckel 13,5 MPa, Zeitgesetz (t/15)^1,4, Rissweite 0,28·(p − f_ctm)·t/10 (≤ 2,8 mm), Dehnung 0,4 + 1,1·w (≤ 3,5 mm/m), Stufengrenzen w = 0,3/1,0 mm – keine Quelle, schematisch. Hinweis im Einleitungstext und im Kopf von `src/calc/akrGefuege.ts`. Bekannte Vereinfachung: Dehnung springt beim Riss von 0 auf 0,4 mm/m (vor dem Riss keine Dehnung).
+- **gekennzeichnet – T12-AS-7 (Normtext):** Das Lehrmodell kennt nur Zementalkalien; mit NA-Zement (≤ 0,60 M.-%) zeigt es auch in WA/WS „Keine AKR“. Nach Richtlinie genügt dort ein NA-Zement nicht in jedem Fall (z. B. E III-O in WA: Austausch der Gesteinskörnung). Nicht geändert; für E II/E III in WA/WS ohne Auslösung steht jetzt „Keine AKR aus Zementalkalien (Lehrmodell)“ statt „Keine AKR (Dauerhaft)“, dazu ein Hinweis „Lehrmodell, vorläufig, F-Freigabe“ mit Verweis auf die Maßnahmentabelle (Reiter „Alkalitreiben (AKR)“).
+- **offen – Frage T12-AS-8 (Normtext):** Im Reiter „Alkalitreiben (AKR)“ heißen die Klassen „E II (bedenklich)“ und „E III (schädlich)“. Nach Kenntnisstand benennt die Alkali-Richtlinie Teil 1 sie „E I unbedenklich, E II bedingt brauchbar, E III bedenklich“ (das öffentlich gefundene Handout nennt nur die Kürzel). Nicht geändert, im Quelltext als „vorläufig, F-Freigabe“ vermerkt; die Simulation zeigt nur die Kürzel. Bitte am Normtext bestätigen.
+- **behoben – T12-AS-9 (Barrierefreiheit):** Klassen- und Feuchteschalter als Auswahlgruppe (`AuswahlGruppe`, radiogroup mit aria-checked und Pfeiltasten), Schieberegler mit Beschriftung und Wertetext, Pulsieren nur bei `motion-safe`; Feuchteschalter 2 × 2 (vorher drei schmale Spalten). Hell/dunkel/mobil ohne schwarze Boxen, keine waagrechte Bildlaufleiste bei 390 px.
+
+**QA:** tsc, npm test (inkl. `tests/akrGefuege.test.ts`, Formelzeichen-, Auswahlgruppen- und Audit-Test), check:formeln, check:zahlen (inkl. Tausender), check-design, check-verwaist --strict, check-any, Build, check-bundle; a11y-reiter `schadreaktionen_beton` (desk, mob, desk-dunkel): 0 Verstöße.
+
+**Quelle:** [InformationsZentrum Beton, Handout „Regelwerke – Alkali-Richtlinie“ (2025)](https://www.beton.org/fileadmin/beton-org/media/Organisation/InformationsZentrum-Beton/Handouts/2025/2025-09-Fachkundige_Person/07_Regelwerke_Alkali-Richtline-ROe.pdf); [DIN Media, DAfStb-Alkali-Richtlinie](https://www.dinmedia.de/de/technische-regel/dafstb-alkali-richtlinie/216669787) (Ausgabenachweis).
+
+**Empfehlung für `schadreaktionen_beton`:** freigabefähig nach Korrektur T12-AS-1 bis -5 und -9 (Simulation als Lehrmodell gekennzeichnet, T12-AS-6/-7) und Klärung von T12-AS-8 (Benennung E II/E III im Reiter „Alkalitreiben“; berührt die Simulation nicht).
+
+- [ ] Modul freigeben

@@ -1,19 +1,17 @@
 {
   "texte": {
-    "mikrostrukturelleSimulationDerAlkali": "**Mikrostrukturelle Simulation der Alkali-Kieselsäure-Reaktion (AKR / „Betonkrebs“):** Alkalilösliche Kieselsäure ($\\text{SiO}_2$) aus empfindlichen Gesteinskörnern (Opalsandstein, Flinte) reagiert mit Alkalihydroxiden ($\\text{Na}^+, \\text{K}^+, \\text{OH}^-$) aus dem Zement und externen Tausalzen. Das gebildete Alkali-Kieselsäure-Gel nimmt Feuchtigkeit auf und quillt enorm. Sobald der osmotische Quelldruck die Betonzugfestigkeit ($f_{\\text{ctm}} \\approx 3{,}0\\text{ MPa}$) übersteigt, entstehen charakteristische **Drei-Sterne-Radialrisse** und das typische netzartige Oberflächenrissmuster.",
+    "mikrostrukturelleSimulationDerAlkali": "**Mikrostrukturelle Simulation der Alkali-Kieselsäure-Reaktion (AKR / „Betonkrebs“):** Alkalilösliche Kieselsäure ($\\text{SiO}_2$) aus empfindlichen Gesteinskörnern (Opalsandstein, reaktiver Flint) reagiert mit Alkalihydroxiden ($\\text{Na}^+, \\text{K}^+, \\text{OH}^-$) aus dem Zement und externen Tausalzen. Das gebildete Alkali-Kieselsäure-Gel nimmt Feuchtigkeit auf und quillt enorm. Sobald der osmotische Quelldruck die Betonzugfestigkeit ($f_{\\text{ctm}} \\approx 3{,}0\\text{ MPa}$) übersteigt, entstehen charakteristische **Drei-Sterne-Radialrisse** und das typische netzartige Oberflächenrissmuster. *Lehrmodell, vorläufig, F-Freigabe:* Auslöseschwelle (Na₂O-Äq. > 0,60 M.-%, NA-Grenze für CEM I), Faktoren für Gesteinskörnung und Feuchtigkeitsklasse, Gel-Druck, Rissweite und Dehnung sind schematisch und nicht aus der Alkali-Richtlinie abgeleitet. Die Richtlinie legt Maßnahmen je Alkaliempfindlichkeitsklasse, Zementgehalt und Feuchtigkeitsklasse fest (Reiter „Alkalitreiben (AKR)“); für andere Zementarten gelten höhere NA-Grenzen (DIN 1164-10).",
     "t1Reaktionsbedingungen": " 1. Reaktionsbedingungen",
     "alkaligehaltNaOÄquivalent": "Alkaligehalt (Na₂O-Äquivalent):",
-    "naGrenze060": "NA-Grenze: 0,60 %",
+    "naGrenze060": "NA-Grenze CEM I: 0,60 %",
     "t160SehrHoch": "1,60 % (Sehr hoch)",
     "alkaliempfindlichkeitsklasseGestein": "Alkaliempfindlichkeitsklasse Gestein:",
     "feuchteTausalzExposition": "Feuchte- & Tausalz-Exposition:",
-    "fctm30Mpa": "fctm ≈ 3,0 MPa",
-    "dehnungAkr": "Dehnung ε_AKR",
     "t2MikrogefügeGelquellenMikroskopie": " 2. Mikrogefüge & Gelquellen (Mikroskopie)",
-    "reaktivesOpalkornImZementsteingefüge": "Reaktives Opalkorn im Zementsteingefüge",
+    "reaktivesOpalkornImZementsteingefüge": "Gesteinskorn im Zementsteingefüge (schematisch)",
     "vergrößerung200": "Vergrößerung: 200×",
     "schadensmechanismusDerAlkaliKieselsäure": "Schadensmechanismus der Alkali-Kieselsäure-Reaktion:",
-    "hydroxidionenSpaltenDieFesten": "Hydroxidionen spalten die festen Siloxanbrücken ($\\equiv\\text{Si}-\\text{O}-\\text{Si}\\equiv$) des amorphen Quarzes. Die positiv geladenen Alkali-Kationen ($\\text{Na}^+, \\text{K}^+$) lagern sich an die negativ geladenen Silanolatgruppen an. Das entstehende hygroskopische Gel saugt Porenwasser auf und baut Sprengdrücke von über $10\\text{ MPa}$ auf, die den Beton von innen her sprengen.",
+    "hydroxidionenSpaltenDieFesten": "Hydroxidionen spalten die festen Siloxanbrücken ($\\equiv\\text{Si}-\\text{O}-\\text{Si}\\equiv$) der amorphen bzw. kryptokristallinen Kieselsäure (z. B. Opal, Chalcedon). Die positiv geladenen Alkali-Kationen ($\\text{Na}^+, \\text{K}^+$) lagern sich an die negativ geladenen Silanolatgruppen an. Das entstehende hygroskopische Gel saugt Porenwasser auf und baut Sprengdrücke von über $10\\text{ MPa}$ auf, die den Beton von innen her sprengen.",
     "alkalitreibenAkr": " Alkalitreiben (AKR)",
     "eingabeparameterAkr": "Eingabeparameter (AKR)",
     "bewertungAlkalieintrag": "Bewertung & Alkalieintrag",
@@ -28,23 +26,18 @@
     "eingabeparameterSulfat": "Eingabeparameter (Sulfat)",
     "schematischeDarstellungSulfattreiben": "Schematische Darstellung: Sulfattreiben",
     "sulfationenReagierenMitC3a": "Sulfationen reagieren mit C3A aus dem Zement zu Ettringit. Diese Kristallbildung ist mit einer starken Volumenzunahme verbunden und sprengt das Gefüge.",
-    "bewertungExpositionsklasse": "Bewertung & Expositionsklasse"
+    "bewertungExpositionsklasse": "Bewertung & Expositionsklasse",
+    "akrSimAlkalizufuhrHinweis": "*Lehrmodell, vorläufig, F-Freigabe:* Die Simulation berücksichtigt nur die Alkalien aus dem Zement. In WA und WS kommen Alkalien von außen hinzu (Tausalz); nach der Alkali-Richtlinie genügt dann ein NA-Zement nicht in jedem Fall (z. B. E III-O in WA: Austausch der Gesteinskörnung). Maßgebend ist die Maßnahmentabelle (Reiter „Alkalitreiben (AKR)“)."
   },
   "werte": {
     "keineAkrDauerhaft": "Keine AKR (Dauerhaft)",
     "gelbildungsphaseLatenzzeit": "Gelbildungsphase (Latenzzeit)",
     "mikrorissbildungDreiSterneRisse": "Mikrorissbildung (Drei-Sterne-Risse)",
     "netzrissmusterGelaustritt": "Netzrissmuster & Gelaustritt",
-    "strukturellesVersagenBetonkrebs": "Strukturelles Versagen (\"Betonkrebs\")",
-    "eIUnbedenklich": "E I (unbedenklich)",
-    "eIiBedenklich": "E II (bedenklich)",
+    "strukturellesVersagenBetonkrebs": "Starke Gefügeschädigung („Betonkrebs“) – Tragfähigkeit prüfen",
     "zBKiesMit": "z. B. Kies mit Flint",
-    "eIiiSchädlich": "E III (schädlich)",
-    "woTrocken": "WO (Trocken)",
-    "wsTausalz": "WS (Tausalz)",
     "aktivQuellend": "Aktiv quellend",
     "inaktivStabil": "Inaktiv (Stabil)",
-    "inertesKorn": "Inertes Korn",
     "keineBesonderenMaßnahmenErforderlich": "Keine besonderen Maßnahmen erforderlich.",
     "betonIstTrockenKeine": "Beton ist trocken. Keine AKR möglich.",
     "unbedenklicheGesteinskörnungKeineWeitere": "Unbedenkliche Gesteinskörnung. Keine weiteren Maßnahmen erforderlich.",
@@ -87,7 +80,8 @@
     "beispiel2KritischerSättigungsgrad": "Beispiel 2: Kritischer Sättigungsgrad bei Frost",
     "deshalbFordertDin1045": "Deshalb fordert DIN 1045-2 bei XF2 bis XF4 (bzw. alternativ sehr dichten Beton bei XF3) Luftporenbildner mit einem Abstandsfaktor der Poren unter etwa 0,20 mm.",
     "powers1949Din1045": "Powers (1949); DIN 1045-2:2023-08",
-    "oktober2026Ap10": "Oktober 2026 (AP 10 Dauerhaftigkeit: AKR-Klassen nach Alkali-Richtlinie, Sulfat- und Frostangriff, Normausgaben geprüft; fachliche Freigabe durch den Autor ausstehend)"
+    "oktober2026Ap10": "Oktober 2026 (AP 10 Dauerhaftigkeit: AKR-Klassen nach Alkali-Richtlinie, Sulfat- und Frostangriff, Normausgaben geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "keineAkrAusZementalkalien": "Keine AKR aus Zementalkalien (Lehrmodell)"
   },
   "daten": {
     "SchadreaktionenBeton.schritte": [
