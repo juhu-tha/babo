@@ -23,6 +23,7 @@ import inhalt from '@/content/schadreaktionenbeton/SchadreaktionenBeton.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { Fz } from '@/src/components/ui/Formelzeichen';
+import { AuswahlGruppe, alsOption } from '@/src/components/ui/Auswahlgruppe';
 import { akrGefuege, type AkrFeuchte, type AkrKlasseE } from '@/src/calc/akrGefuege';
 
 ChartJS.register(
@@ -109,7 +110,7 @@ function AkrGefuegeSimulator() {
             {/* Aggregate Sensitivity Radio */}
             <div className="space-y-1.5 pt-2 border-t border-home-grau/20 text-xs">
               <span className="font-bold text-text-main block"><MdText text={inhalt.texte.alkaliempfindlichkeitsklasseGestein} /></span>
-              <div className="grid grid-cols-3 gap-1.5" role="group" aria-label="Alkaliempfindlichkeitsklasse der Gesteinskörnung">
+              <AuswahlGruppe label="Alkaliempfindlichkeitsklasse der Gesteinskörnung" className="grid grid-cols-3 gap-1.5">
                 {[
                   { id: 'E1', kurz: 'E I', sub: 'Quarz/Granit' },
                   { id: 'E2', kurz: 'E II', sub: inhalt.werte.zBKiesMit },
@@ -118,7 +119,7 @@ function AkrGefuegeSimulator() {
                   <button
                     key={item.id}
                     type="button"
-                    aria-pressed={aggregateSensitivity === item.id}
+                    {...alsOption(aggregateSensitivity === item.id)}
                     onClick={() => setAggregateSensitivity(item.id as typeof aggregateSensitivity)}
                     className={`p-2 rounded-xl border text-left cursor-pointer transition-all ${
                       aggregateSensitivity === item.id
@@ -130,13 +131,13 @@ function AkrGefuegeSimulator() {
                     <span className="text-[10px]">{item.sub}</span>
                   </button>
                 ))}
-              </div>
+              </AuswahlGruppe>
             </div>
 
             {/* Exposure Environment */}
             <div className="space-y-1.5 pt-2 border-t border-home-grau/20 text-xs">
               <span className="font-bold text-text-main block"><MdText text={inhalt.texte.feuchteTausalzExposition} /></span>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5" role="group" aria-label="Feuchtigkeitsklasse nach Alkali-Richtlinie">
+              <AuswahlGruppe label="Feuchtigkeitsklasse nach Alkali-Richtlinie" className="grid grid-cols-2 gap-1.5">
                 {[
                   { id: 'WO', sub: 'trocken, Innenräume' },
                   { id: 'WF', sub: 'feucht, Außenbauteile' },
@@ -146,7 +147,7 @@ function AkrGefuegeSimulator() {
                   <button
                     key={item.id}
                     type="button"
-                    aria-pressed={exposureEnv === item.id}
+                    {...alsOption(exposureEnv === item.id)}
                     onClick={() => setExposureEnv(item.id as typeof exposureEnv)}
                     className={`p-2 rounded-xl border text-left cursor-pointer transition-all ${
                       exposureEnv === item.id
@@ -158,7 +159,7 @@ function AkrGefuegeSimulator() {
                     <span className="text-[10px]">{item.sub}</span>
                   </button>
                 ))}
-              </div>
+              </AuswahlGruppe>
             </div>
 
             {/* Standzeit Slider */}
@@ -221,6 +222,11 @@ function AkrGefuegeSimulator() {
             <div className={`p-3 rounded-xl border text-xs font-semibold text-center ${simResults.badgeColor}`}>
               {simResults.damageLevel}
             </div>
+            {aggregateSensitivity !== 'E1' && (exposureEnv === 'WA' || exposureEnv === 'WS') && !simResults.akrTriggered && (
+              <p className="text-[11px] leading-snug text-text-main/80 bg-amber-50 border border-amber-300 rounded-xl p-2.5">
+                <MdText text={inhalt.texte.akrSimAlkalizufuhrHinweis} />
+              </p>
+            )}
 
           </div>
         </div>
@@ -685,6 +691,7 @@ export default function SchadreaktionenBeton() {
                     value={eKlasse}
                     onChange={(e) => setEKlasse(e.target.value)}
                   >
+                    {/* Benennung der Klassen (E II „bedenklich“, E III „schädlich“): vorläufig, F-Freigabe – am Normtext der Alkali-Richtlinie Teil 1 prüfen (Nachprüfung 29.10.2026, T12-AS-8) */}
                     <option value="E1">E I (unbedenklich)</option>
                     <option value="E2">E II (bedenklich)</option>
                     <option value="E3">E III (schädlich)</option>

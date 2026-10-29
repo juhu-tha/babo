@@ -26,7 +26,8 @@
     "eingabeparameterSulfat": "Eingabeparameter (Sulfat)",
     "schematischeDarstellungSulfattreiben": "Schematische Darstellung: Sulfattreiben",
     "sulfationenReagierenMitC3a": "Sulfationen reagieren mit C3A aus dem Zement zu Ettringit. Diese Kristallbildung ist mit einer starken Volumenzunahme verbunden und sprengt das Gefüge.",
-    "bewertungExpositionsklasse": "Bewertung & Expositionsklasse"
+    "bewertungExpositionsklasse": "Bewertung & Expositionsklasse",
+    "akrSimAlkalizufuhrHinweis": "*Lehrmodell, vorläufig, F-Freigabe:* Die Simulation berücksichtigt nur die Alkalien aus dem Zement. In WA und WS kommen Alkalien von außen hinzu (Tausalz); nach der Alkali-Richtlinie genügt dann ein NA-Zement nicht in jedem Fall (z. B. E III-O in WA: Austausch der Gesteinskörnung). Maßgebend ist die Maßnahmentabelle (Reiter „Alkalitreiben (AKR)“)."
   },
   "werte": {
     "keineAkrDauerhaft": "Keine AKR (Dauerhaft)",
