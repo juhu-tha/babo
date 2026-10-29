@@ -370,7 +370,7 @@
             "Transport unter lückenloser eANV-Nachweisüberwachung.",
             "Endlagerung in Monozellen auf zugelassenen Deponien ohne mechanische Nachbearbeitung."
           ],
-          "rules": "GefStoffV § 11 / REACH Anhang XVII Nr. 6 / DepV: Recycling oder Wiedereinbau asbesthaltiger Böden und Bauschuttgemische ist verboten; asbesthaltige Abfälle werden staubdicht verpackt deponiert."
+          "rules": "GefStoffV § 11a und Anhang II Nr. 1 / REACH Anhang XVII Nr. 6 / DepV: Recycling oder Wiedereinbau asbesthaltiger Böden und Bauschuttgemische ist verboten; asbesthaltige Abfälle werden staubdicht verpackt deponiert."
         },
         "gips_sulfat": {
           "method": "Nassklassierung & Flotation",

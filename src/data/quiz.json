@@ -9782,7 +9782,7 @@
       "",
       "Die 10-m³-Grenze befreit nur von der Dokumentation, nicht von der Getrennthaltung.",
       "Eine Schwelle von 1 m³ kennt § 8 GewAbfV nicht; die Dokumentation entfällt bis 10 m³.",
-      "Teil 3 der GewAbfV regelt ausdrücklich Bau- und Abbruchabfälle (§§ 8 bis 10)."
+      "Abschnitt 3 der GewAbfV regelt ausdrücklich Bau- und Abbruchabfälle (§§ 8 und 9)."
     ],
     "gapAnalysis": {
       "topic": "Getrennthaltung nach GewAbfV",
@@ -9793,12 +9793,11 @@
       "targetModuleLabel": "Rückbau-Checklisten"
     },
     "quelle": "Gewerbeabfallverordnung (GewAbfV) § 8 Abs. 1 bis 3",
-    "verified": true,
-    "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
-    "reviewedAt": "2026-10-28",
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-26",
-      "ergebnis": "ok"
+      "am": "2026-10-29",
+      "ergebnis": "korrigiert",
+      "hinweis": "Umsetzung 29.10.: Paragrafenprüfung – Distraktor-Rückmeldung „Teil 3 … §§ 8 bis 10“ auf „Abschnitt 3 … §§ 8 und 9“ berichtigt (gesetze-im-internet.de, GewAbfV); Antwort unverändert – korrigiert"
     }
   },
   {

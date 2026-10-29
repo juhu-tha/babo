@@ -7,7 +7,7 @@
  *  - Verluste Q = H·72 kKh/a/A_N; Gewinne η·(Q_S + 35) mit Q_S = A_F·(140 bzw. 160)/A_N
  *  - Q_h = max(10; round(Q_T + Q_V − η·Q_G)); Q_W = 12,5; Verteilverluste 7 bzw. 14; Hilfsstrom 2,5 (WP) bzw. 3,5
  *  - Endenergie Q_E = round((Q_h + Q_W + Q_d)/η bzw. /JAZ + W_Hilf); Primärenergie mit f_p (Hilfsstrom mit f_p Strom)
- *  - CO₂ = round(Q_E·Faktor/1000); Effizienzklasse aus Q_E nach GEG Anlage 10 (A+ ≤ 30 … G ≤ 250, sonst H)
+ *  - CO₂ = round(Q_E·Faktor/1000); Effizienzklasse aus Q_E nach GModG Anlage 10 (vormals GEG) (A+ ≤ 30 … G ≤ 250, sonst H)
  *  - Stichtagsschalter Rechtsstand (Umsetzung 29.10.2026, T11-EA-2/-3):
  *    „bis 31.12.2026“: f_p nach Anlage 4 GEG/GModG (Lesefassung, buzer.de): Gas/Öl 1,1, Holz 0,2, Netzstrom 1,8;
  *      CO₂ nach Anlage 9 (buzer.de): Erdgas 240, Heizöl 310, Holz 20, Netzstrom 560 g/kWh.
@@ -75,7 +75,7 @@ export const FP_STROM: Readonly<Record<Rechtsstand, number>> = { bis_2026: 1.8, 
 /** Interne Gewinne im Lehrmodell in kWh/(m²a) (Lehrwert, vorläufig, F-Freigabe: Nutzungsprofil DIN/TS 18599-10) */
 export const Q_INTERN = 35;
 
-/** Klassengrenzen der Endenergie in kWh/(m²a) nach GEG Anlage 10 */
+/** Klassengrenzen der Endenergie in kWh/(m²a) nach GModG Anlage 10 (vormals GEG) */
 export const EFFIZIENZKLASSEN: readonly (readonly [string, number])[] = [['A+', 30], ['A', 50], ['B', 75], ['C', 100], ['D', 130], ['E', 160], ['F', 200], ['G', 250]];
 
 export function effizienzklasse(qe: number): string {

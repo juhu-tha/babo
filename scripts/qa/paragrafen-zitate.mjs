@@ -64,6 +64,24 @@ const GESETZE = [
   ['CBAM', /\bCBAM\b|2023\/956/],
   ['BITV', /\bBITV\b/],
   ['TMG/DDG', /\bTMG\b|\bDDG\b/],
+  ['TDDDG', /\bTDDDG\b/],
+  ['MStV', /\bMStV\b/],
+  ['BayDSchG', /\bBayDSchG\b|Denkmalschutzgesetz/],
+  ['BayDiV', /\bBayDiV\b/],
+  ['BayBGG', /\bBayBGG\b/],
+  ['BayHIG', /\bBayHIG\b/],
+  ['NachwV', /\bNachwV\b|Nachweisverordnung/],
+  ['AltholzV', /\bAltholzV\b|Altholzverordnung/],
+  ['TrinkwV', /\bTrinkwV\b/],
+  ['ZPO', /\bZPO\b/],
+  ['StGB', /\bStGB\b/],
+  ['EStG/EStDV', /\bEStG\b|\bEStDV\b/],
+  ['GG', /\bGG\b|Grundgesetz/],
+  ['GewO', /\bGewO\b/],
+  ['VwVfG', /\bVwVfG\b/],
+  ['ProdHaftG', /\bProdHaftG\b/],
+  ['GeschGehG', /\bGeschGehG\b/],
+  ['ChemG', /\bChemG\b/],
 ];
 
 const KERN = /(§§?|Art\.|Artikel|Anlage|Anhang)\s?(\d+[a-z]?(?:\s?(?:bis|–|-|,|und|u\.)\s?\d+[a-z]?)*)((?:\s?(?:Abs\.|Absatz|Satz|S\.|Nr\.|Nummer|lit\.|Buchst\.|UAbs\.|Unterabs\.|Tab\.|Tabelle|Spalte|Teil|Abschnitt)\s?[\dIVXa-z]+[a-z]?\)?(?:\s?(?:und|bis|,|–)\s?\d+)?)*)(\s?ff?\.)?/g;
@@ -104,9 +122,11 @@ for (const ordner of ORDNER) {
         // Gesetz danach, aber nur bis zum nächsten Zitatkern
         const stopp = nach.search(/§|Art\.\s?\d|Artikel\s\d/);
         const fenster = stopp > 0 ? nach.slice(0, stopp) : nach;
-        let g = gesetzVon(fenster);
+        const vor = zeile.slice(Math.max(0, m.index - 25), m.index);
+        // „BGB § 633“: unmittelbar vorangestelltes Gesetz hat Vorrang vor einem späteren
+        const direkt = gesetzVon(vor, true);
+        let g = direkt && direkt.pos <= 22 && /\b[A-Za-zÄÖÜäöü/.\d-]+\)?\s?$/.test(vor) && GESETZE.find(([n]) => n === direkt.name)[1].test(vor.slice(-12)) ? direkt : gesetzVon(fenster);
         if (!g) {
-          const vor = zeile.slice(Math.max(0, m.index - 25), m.index);
           const gv = gesetzVon(vor, true);
           if (gv && /^[\s,(]*$/.test(vor.slice(vor.length - 3).replace(/[A-Za-zÄÖÜäöü/\-]/g, ''))) g = gv;
         }

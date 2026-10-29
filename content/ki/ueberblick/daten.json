@@ -64,8 +64,8 @@
             "input": "4D-BIM-Bauzeitenplan, betontechnologische Mindestausschalfristen (Reifegradberechnung, z. B. gewogene Reife nach NEN 5970), Wetterdaten und Krankapazitäten.",
             "process": "Monte-Carlo-Simulation von 10 000 Bauablaufszenarien zur stochastischen Ermittlung von Pufferzeitverbrauch und logistischen Engpässen.",
             "output": "Dynamisch angepasster Taktterminplan mit probabilistischer Eintrittswahrscheinlichkeit für Meilensteintermine.",
-            "benefit": "Minimierung von Bauzeitverzug und vertraglichen Pönalen nach VOB/B § 5; Vermeidung von Frischbeton-Verzögerungsschäden.",
-            "normRef": "VOB/B § 5 (Ausführungsfristen) & VDI 2552 (Building Information Modeling)"
+            "benefit": "Minimierung von Bauzeitverzug (Ausführungsfristen nach VOB/B § 5) und vertraglichen Pönalen (Vertragsstrafe nach VOB/B § 11); Vermeidung von Frischbeton-Verzögerungsschäden.",
+            "normRef": "VOB/B §§ 5, 11 (Ausführungsfristen, Vertragsstrafe) & VDI 2552 (Building Information Modeling)"
           }
         ],
         "classicVsAi": {
