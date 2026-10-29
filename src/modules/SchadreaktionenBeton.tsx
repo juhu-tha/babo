@@ -22,6 +22,9 @@ import {
 import inhalt from '@/content/schadreaktionenbeton/SchadreaktionenBeton.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { Fz } from '@/src/components/ui/Formelzeichen';
+import { AuswahlGruppe, alsOption } from '@/src/components/ui/Auswahlgruppe';
+import { akrGefuege, type AkrFeuchte, type AkrKlasseE } from '@/src/calc/akrGefuege';
 
 ChartJS.register(
   CategoryScale,
@@ -35,62 +38,32 @@ ChartJS.register(
 
 function AkrGefuegeSimulator() {
   const [alkaliContent, setAlkaliContent] = useState(1.10); // Na2O-Äquivalent in M.-%
-  const [exposureEnv, setExposureEnv] = useState<'WO' | 'WF' | 'WS'>('WS');
+  const [exposureEnv, setExposureEnv] = useState<AkrFeuchte>('WS');
   const [years, setYears] = useState(8);
-  const [aggregateSensitivity, setAggregateSensitivity] = useState<'E1' | 'E2' | 'E3'>('E3');
+  const [aggregateSensitivity, setAggregateSensitivity] = useState<AkrKlasseE>('E3');
 
+  // Lehrmodell, vorläufig – Rechenkern src/calc/akrGefuege.ts (geprüft in tests/akrGefuege.test.ts)
   const simResults = useMemo(() => {
-    const isReactive = aggregateSensitivity !== 'E1';
-    const hasMoisture = exposureEnv !== 'WO';
-    const isAlkaliCritical = alkaliContent > 0.60;
-
-    const akrTriggered = isReactive && hasMoisture && isAlkaliCritical;
-
-    // Environmental acceleration factor
-    const envFactor = exposureEnv === 'WO' ? 0.0 : exposureEnv === 'WF' ? 1.0 : 1.85;
-    const aggFactor = aggregateSensitivity === 'E1' ? 0.0 : aggregateSensitivity === 'E2' ? 0.65 : 1.35;
-    const alkaliExcess = Math.max(0, alkaliContent - 0.50);
-
-    // Gel swelling pressure build-up (MPa)
-    const timeProgress = Math.min(1.0, years / 15);
-    const maxGelPressure = akrTriggered ? Math.min(13.5, alkaliExcess * aggFactor * envFactor * 7.5) : 0;
-    const currentGelPressure = maxGelPressure * Math.pow(timeProgress, 1.4);
-
-    // Concrete tensile strength ~ 3.0 MPa
-    const fctm = 3.0;
-    const isCracked = currentGelPressure >= fctm;
-    const crackWidthMm = isCracked ? Math.min(2.8, (currentGelPressure - fctm) * 0.28 * (years / 10)) : 0;
-    const expansionEpsMm = isCracked ? Math.min(3.5, 0.4 + crackWidthMm * 1.1) : 0;
-
-    let damageLevel = inhalt.werte.keineAkrDauerhaft;
-    let badgeColor = 'bg-emerald-50 text-emerald-800 border-emerald-300';
-
-    if (akrTriggered) {
-      if (currentGelPressure < fctm) {
-        damageLevel = inhalt.werte.gelbildungsphaseLatenzzeit;
-        badgeColor = 'bg-amber-50 text-amber-800 border-amber-300';
-      } else if (crackWidthMm < 0.3) {
-        damageLevel = inhalt.werte.mikrorissbildungDreiSterneRisse;
-        badgeColor = 'bg-orange-50 text-orange-800 border-orange-300';
-      } else if (crackWidthMm < 1.0) {
-        damageLevel = inhalt.werte.netzrissmusterGelaustritt;
-        badgeColor = 'bg-rose-50 text-rose-800 border-rose-300 font-bold';
-      } else {
-        damageLevel = inhalt.werte.strukturellesVersagenBetonkrebs;
-        badgeColor = 'bg-red-100 text-red-800 border-red-500 font-bold animate-pulse';
-      }
-    }
-
+    const r = akrGefuege(alkaliContent, exposureEnv, years, aggregateSensitivity);
+    const stufen = {
+      keine: { text: inhalt.werte.keineAkrDauerhaft, farbe: 'bg-emerald-50 text-emerald-800 border-emerald-300' },
+      latenz: { text: inhalt.werte.gelbildungsphaseLatenzzeit, farbe: 'bg-amber-50 text-amber-800 border-amber-300' },
+      mikroriss: { text: inhalt.werte.mikrorissbildungDreiSterneRisse, farbe: 'bg-orange-50 text-orange-800 border-orange-300' },
+      netzriss: { text: inhalt.werte.netzrissmusterGelaustritt, farbe: 'bg-rose-50 text-rose-800 border-rose-300 font-bold' },
+      stark: { text: inhalt.werte.strukturellesVersagenBetonkrebs, farbe: 'bg-red-100 text-red-800 border-red-500 font-bold motion-safe:animate-pulse' },
+    } as const;
     return {
-      akrTriggered,
-      currentGelPressure,
-      isCracked,
-      crackWidthMm,
-      expansionEpsMm,
-      damageLevel,
-      badgeColor,
+      akrTriggered: r.ausgeloest,
+      currentGelPressure: r.pGel,
+      isCracked: r.gerissen,
+      crackWidthMm: r.w,
+      expansionEpsMm: r.dehnung,
+      damageLevel: stufen[r.stufe].text,
+      badgeColor: stufen[r.stufe].farbe,
     };
   }, [alkaliContent, exposureEnv, years, aggregateSensitivity]);
+  // Alkalizufuhr von außen (WA/WS) bildet das Lehrmodell nicht ab – Hinweis statt „Keine AKR (dauerhaft)“
+  const aussenAlkaliHinweis = aggregateSensitivity !== 'E1' && (exposureEnv === 'WA' || exposureEnv === 'WS') && !simResults.akrTriggered;
 
   return (
     <div className="flex flex-col gap-6 animate-in fade-in duration-300">
@@ -125,6 +98,8 @@ function AkrGefuegeSimulator() {
                 step={0.05}
                 value={alkaliContent}
                 onChange={(e) => setAlkaliContent(Number(e.target.value))}
+                aria-label="Alkaligehalt des Zements, Na₂O-Äquivalent in M.-%"
+                aria-valuetext={`${formatDeZahl(alkaliContent, 2)} M.-%`}
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
               <div className="flex justify-between text-[10px] text-text-main/60">
@@ -137,14 +112,16 @@ function AkrGefuegeSimulator() {
             {/* Aggregate Sensitivity Radio */}
             <div className="space-y-1.5 pt-2 border-t border-home-grau/20 text-xs">
               <span className="font-bold text-text-main block"><MdText text={inhalt.texte.alkaliempfindlichkeitsklasseGestein} /></span>
-              <div className="grid grid-cols-3 gap-1.5">
+              <AuswahlGruppe label="Alkaliempfindlichkeitsklasse der Gesteinskörnung" className="grid grid-cols-3 gap-1.5">
                 {[
-                  { id: 'E1', label: inhalt.werte.eIUnbedenklich, sub: 'Quarz/Granit' },
-                  { id: 'E2', label: inhalt.werte.eIiBedenklich, sub: inhalt.werte.zBKiesMit },
-                  { id: 'E3', label: inhalt.werte.eIiiSchädlich, sub: 'Opalsandstein' },
+                  { id: 'E1', kurz: 'E I', sub: 'Quarz/Granit' },
+                  { id: 'E2', kurz: 'E II', sub: inhalt.werte.zBKiesMit },
+                  { id: 'E3', kurz: 'E III', sub: 'Opalsandstein' },
                 ].map((item) => (
                   <button
                     key={item.id}
+                    type="button"
+                    {...alsOption(aggregateSensitivity === item.id)}
                     onClick={() => setAggregateSensitivity(item.id as typeof aggregateSensitivity)}
                     className={`p-2 rounded-xl border text-left cursor-pointer transition-all ${
                       aggregateSensitivity === item.id
@@ -152,24 +129,27 @@ function AkrGefuegeSimulator() {
                         : 'bg-off-white text-text-main border-home-grau/30 hover:bg-slate-100'
                     }`}
                   >
-                    <span className="block text-xs">{item.id}</span>
+                    <span className="block text-xs">{item.kurz}</span>
                     <span className="text-[10px]">{item.sub}</span>
                   </button>
                 ))}
-              </div>
+              </AuswahlGruppe>
             </div>
 
             {/* Exposure Environment */}
             <div className="space-y-1.5 pt-2 border-t border-home-grau/20 text-xs">
               <span className="font-bold text-text-main block"><MdText text={inhalt.texte.feuchteTausalzExposition} /></span>
-              <div className="grid grid-cols-3 gap-1.5">
+              <AuswahlGruppe label="Feuchtigkeitsklasse nach Alkali-Richtlinie" className="grid grid-cols-2 gap-1.5">
                 {[
-                  { id: 'WO', label: inhalt.werte.woTrocken, sub: 'Innenräume' },
-                  { id: 'WF', label: 'WF (Feucht)', sub: 'Außenbauteile' },
-                  { id: 'WS', label: inhalt.werte.wsTausalz, sub: 'Autobahnen' },
+                  { id: 'WO', sub: 'trocken, Innenräume' },
+                  { id: 'WF', sub: 'feucht, Außenbauteile' },
+                  { id: 'WA', sub: 'feucht + Alkalizufuhr (Tausalz)' },
+                  { id: 'WS', sub: 'wie WA + dynamisch (Fahrbahn)' },
                 ].map((item) => (
                   <button
                     key={item.id}
+                    type="button"
+                    {...alsOption(exposureEnv === item.id)}
                     onClick={() => setExposureEnv(item.id as typeof exposureEnv)}
                     className={`p-2 rounded-xl border text-left cursor-pointer transition-all ${
                       exposureEnv === item.id
@@ -181,7 +161,7 @@ function AkrGefuegeSimulator() {
                     <span className="text-[10px]">{item.sub}</span>
                   </button>
                 ))}
-              </div>
+              </AuswahlGruppe>
             </div>
 
             {/* Standzeit Slider */}
@@ -199,6 +179,7 @@ function AkrGefuegeSimulator() {
                 step={1}
                 value={years}
                 onChange={(e) => setYears(Number(e.target.value))}
+                aria-label="Expositionsdauer in Jahren"
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-shiraz"
               />
             </div>
@@ -212,11 +193,11 @@ function AkrGefuegeSimulator() {
                 }`}>
                   {formatDeZahl(simResults.currentGelPressure, 1)} MPa
                 </span>
-                <span className="text-[9px] text-text-main/70 block"><MdText text={inhalt.texte.fctm30Mpa} /></span>
+                <span className="text-[9px] text-text-main/70 block">Rissschwelle <Fz idx="ctm">f</Fz> ≈ 3,0 MPa</span>
               </div>
 
               <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
-                <span className="text-[10px] uppercase font-bold text-text-main/60 block">Rissweite w</span>
+                <span className="text-[10px] uppercase font-bold text-text-main/60 block">Rissweite <Fz>w</Fz></span>
                 <span className="text-xl font-mono font-bold text-shiraz">
                   {formatDeZahl(simResults.crackWidthMm, 2)} mm
                 </span>
@@ -224,7 +205,7 @@ function AkrGefuegeSimulator() {
               </div>
 
               <div className="bg-off-white p-2.5 rounded-xl border border-home-grau/20">
-                <span className="text-[10px] uppercase font-bold text-text-main/60 block"><MdText text={inhalt.texte.dehnungAkr} /></span>
+                <span className="text-[10px] uppercase font-bold text-text-main/60 block">Dehnung <Fz idx="AKR">ε</Fz></span>
                 <span className="text-xl font-mono font-bold text-amber-700">
                   {formatDeZahl(simResults.expansionEpsMm, 2)} mm/m
                 </span>
@@ -241,8 +222,13 @@ function AkrGefuegeSimulator() {
 
             {/* Status Banner */}
             <div className={`p-3 rounded-xl border text-xs font-semibold text-center ${simResults.badgeColor}`}>
-              {simResults.damageLevel}
+              {aussenAlkaliHinweis ? inhalt.werte.keineAkrAusZementalkalien : simResults.damageLevel}
             </div>
+            {aussenAlkaliHinweis && (
+              <p className="text-[11px] leading-snug text-text-main/80 bg-amber-50 border border-amber-300 rounded-xl p-2.5">
+                <MdText text={inhalt.texte.akrSimAlkalizufuhrHinweis} />
+              </p>
+            )}
 
           </div>
         </div>
@@ -360,7 +346,7 @@ function AkrGefuegeSimulator() {
                     cy="190"
                     r={68 + (simResults.currentGelPressure / 14) * 22}
                     fill="url(#gelGrad)"
-                    className={simResults.currentGelPressure > 3.0 ? 'animate-pulse' : ''}
+                    className={simResults.currentGelPressure > 3.0 ? 'motion-safe:animate-pulse' : ''}
                   />
                 )}
 
@@ -375,10 +361,10 @@ function AkrGefuegeSimulator() {
                     strokeWidth="3"
                   />
                   <text x="0" y="-8" fill="#0f172a" fontSize="11" fontWeight="bold" textAnchor="middle">
-                    Reaktives Quarzkorn
+                    {aggregateSensitivity === 'E1' ? 'Unbedenkliches Korn' : 'Reaktives Korn'}
                   </text>
                   <text x="0" y="8" fill="#334155" fontSize="10" className="font-mono" textAnchor="middle">
-                    ({aggregateSensitivity === 'E3' ? 'Opalsandstein' : aggregateSensitivity === 'E2' ? 'Grauwacke' : inhalt.werte.inertesKorn})
+                    ({aggregateSensitivity === 'E3' ? 'Opalsandstein' : aggregateSensitivity === 'E2' ? 'Flint' : 'Quarz/Granit'})
                   </text>
 
                   {/* Internal pressure radial arrows if swelling */}
@@ -394,7 +380,7 @@ function AkrGefuegeSimulator() {
                       <polygon points="-46,38 -58,40 -50,30" fill="#b91c1c" />
 
                       <text x="0" y="28" fill="#991b1b" fontSize="10" fontWeight="bold" textAnchor="middle">
-                        p_gel = {formatDeZahl(simResults.currentGelPressure, 1)} MPa
+                        <tspan fontStyle="italic">p</tspan><tspan baselineShift="sub" fontSize="7">gel</tspan> = {formatDeZahl(simResults.currentGelPressure, 1)} MPa
                       </text>
                     </g>
                   )}
@@ -707,6 +693,7 @@ export default function SchadreaktionenBeton() {
                     value={eKlasse}
                     onChange={(e) => setEKlasse(e.target.value)}
                   >
+                    {/* Benennung der Klassen (E II „bedenklich“, E III „schädlich“): vorläufig, F-Freigabe – am Normtext der Alkali-Richtlinie Teil 1 prüfen (Nachprüfung 29.10.2026, T12-AS-8) */}
                     <option value="E1">E I (unbedenklich)</option>
                     <option value="E2">E II (bedenklich)</option>
                     <option value="E3">E III (schädlich)</option>
