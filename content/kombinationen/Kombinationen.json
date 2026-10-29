@@ -138,7 +138,7 @@
     "t3GrenzflächenhaftungAbreißversuchNach": "3. Grenzflächenhaftung & Abreißversuch nach DIN EN 1542",
     "dieLeistungsfähigkeitJederBeschichtung": "Die Leistungsfähigkeit jeder Beschichtung, jedes Putzes und jedes Reparaturmörtels steht und fällt mit der Haftzugfestigkeit an der Grenzfläche zum Untergrund. Nach DIN EN 1542 wird ein kreisrunder Prüfstempel ($\\varnothing 50\\,\\text{mm}$) auf die eingeschnittene Schicht geklebt und per Abreißprüfgerät zentrisch auf Zug belastet.",
     "berechnungDerAbreißfestigkeit": "Berechnung der Abreißfestigkeit:",
-    "haftzugAnforderung": "Anforderung an die vorbereitete Betonrandzone bei befahrbaren Oberflächenschutzsystemen (OS 8, OS 11): im Mittel mindestens 1,5 N/mm², kleinster Einzelwert 1,0 N/mm²; für nicht befahrbare Systeme gelten geringere Werte nach TR Instandhaltung (vorläufig, Normprüfung ausstehend).",
+    "haftzugAnforderung": "Anforderung an die vorbereitete Betonrandzone bei befahrbaren Oberflächenschutzsystemen (OS 8, OS 11): im Mittel mindestens 1,5 N/mm², kleinster Einzelwert 1,0 N/mm²; für nicht befahrbare Systeme gelten geringere Werte nach TR Instandhaltung und DIN EN 1504-10 (vorläufig, Normprüfung ausstehend).",
     "bruchImUntergrundBeton": "• *Bruch im Untergrund (Beton):* Optimal! Verbund > Betonzugfestigkeit.",
     "adhäsionsbruchAnDerGrenze": "• *Adhäsionsbruch an der Grenze:* Mangelhafte Oberflächenvorbereitung (z. B. Zementschlämme nicht gestrahlt).",
     "kohäsionsbruchInDerSchicht": "• *Kohäsionsbruch in der Schicht:* Schichtmaterial innerlich zu schwach.",
