@@ -3,7 +3,7 @@
 // Die Sollwerte stammen aus einem eigenen Prüfskript (eigene Umsetzung der Gleichungen in Python, math.erf),
 // nicht aus den Kernen oder vorhandenen Tests übernommen.
 import {
-  erf, chloridGehalt, chloridAuswertung, rissinjektionPlan, wtaBohrplan, wtaKombiBewertung, wuNachweis,
+  erf, chloridGehalt, chloridAuswertung, rissinjektionPlan, wtaBohrplan, wtaKombiBewertung, wtaZertifikatsstufe, wuNachweis,
   zustandsnote, schulnoteAusZustandsnote, deSitterKosten, belegreifeGrenzeCM,
 } from '../src/calc/schutzInstandsetzung';
 import { carbonationK } from '../src/utils/schadensKern';
@@ -25,8 +25,15 @@ pruefe('CL2 C(50 mm)', chloridGehalt(2.5, 2.0, 25, 50), 0.933588);
 pruefe('CL3 C(40 mm) C_s 1,5 / D 1 / 50 a', chloridGehalt(1.5, 1.0, 50, 40), 0.714655);
 pruefe('CL4 C(60 mm) C_s 4 / D 3 / 40 a', chloridGehalt(4.0, 3.0, 40, 60), 1.9622);
 const cl1 = chloridAuswertung(2.5, 2.0, 25, 35);
-gilt(cl1.rebarStatus === 'critical' && cl1.depassivatedDepth === 65 && cl1.erfAbtrag === 80, `CL1 Auswertung: ${cl1.rebarStatus}/${cl1.depassivatedDepth}/${cl1.erfAbtrag}`);
-gilt(chloridAuswertung(1.5, 1.0, 50, 40).depassivatedDepth === 52.5, 'CL3 depassivierte Tiefe 52,5 mm');
+// Umsetzung 29.10.2026 (T13-IH-13): Raster bis 100 mm statt 65 mm. Handrechnung (Python, math.erf): Front C = 0,5 bei
+// x = 2·√(D·t)·erfinv(1 − 0,5/C_s) = 71,99 mm → Rasterwert 70 mm, Abtrag 85 mm (bisher gedeckelt 65/80 mm).
+gilt(cl1.rebarStatus === 'critical' && cl1.depassivatedDepth === 70 && cl1.erfAbtrag === 85 && !cl1.ueberRaster, `CL1 Auswertung: ${cl1.rebarStatus}/${cl1.depassivatedDepth}/${cl1.erfAbtrag}`);
+gilt(cl1.points.length === 41 && cl1.points[40].x === 100, 'CL1 Raster 0 bis 100 mm in 2,5-mm-Schritten');
+gilt(chloridAuswertung(1.5, 1.0, 50, 40).depassivatedDepth === 52.5, 'CL3 depassivierte Tiefe 52,5 mm (exakt 54,35 mm)');
+const cl5 = chloridAuswertung(3.0, 2.0, 30, 40);
+gilt(cl5.depassivatedDepth === 85 && cl5.erfAbtrag === 100 && !cl5.ueberRaster, `CL5 C_s 3 / D 2 / 30 a: Front 85,11 mm → 85/100 mm (${cl5.depassivatedDepth}/${cl5.erfAbtrag})`);
+const cl6 = chloridAuswertung(4.0, 3.0, 40, 60);
+gilt(cl6.depassivatedDepth === 100 && cl6.erfAbtrag === 115 && cl6.ueberRaster, `CL6 C_s 4 / D 3 / 40 a: Front 133,5 mm > Raster → „≥ 100 mm“ (${cl6.depassivatedDepth}/${cl6.ueberRaster})`);
 gilt(chloridAuswertung(1.0, 1.0, 25, 50).rebarStatus === 'ok', 'CL Status ok bei geringer Belastung');
 for (const [h, p, a] of [[150, 12, 75], [300, 24, 150], [400, 32, 200], [800, 35, 400]] as const) {
   const plan = rissinjektionPlan(h);
@@ -41,6 +48,13 @@ const w51 = wtaBohrplan(51, 'mixed');
 gilt(w51.drillDepth === 46 && w51.holesPerMeter === 10, 'WTA d 51 cm Mischmauerwerk'); pruefe('WTA d 51 cm V je m', w51.creamConsumption, 0.598285);
 const w24 = wtaBohrplan(24, 'hollow');
 gilt(w24.holesPerMeter === 13, 'WTA d 24 cm Lochstein n 13'); pruefe('WTA d 24 cm V je m', w24.creamConsumption, 0.321253);
+// Umsetzung 29.10.2026 (T13-WTA-6): Bohrlochvolumen = Untergrenze; Herstellerangabe 15 ml/(m·cm) · d: 36 cm → 0,54 l/m,
+// 51 cm → 0,765 l/m, 24 cm → 0,36 l/m (Handrechnung). Zuordnung nach Zertifikatsstufe 60/80/95 % DFG, darüber vortrocknen.
+pruefe('WTA d 36 cm Herstellerrichtwert', w36.herstellerRichtwert, 0.54); pruefe('WTA d 51 cm Herstellerrichtwert', w51.herstellerRichtwert, 0.765);
+pruefe('WTA d 24 cm Herstellerrichtwert', w24.herstellerRichtwert, 0.36);
+gilt([w36, w51, w24].every(w => w.creamConsumption < w.herstellerRichtwert), 'WTA Bohrlochvolumen liegt unter der Herstellerangabe (Untergrenze)');
+gilt(wtaZertifikatsstufe(55) === 60 && wtaZertifikatsstufe(60) === 60 && wtaZertifikatsstufe(65) === 80 && wtaZertifikatsstufe(80) === 80
+  && wtaZertifikatsstufe(90) === 95 && wtaZertifikatsstufe(95) === 95 && wtaZertifikatsstufe(100) === null, 'WTA Zertifikatsstufen 60/80/95 % DFG');
 const k1 = wtaKombiBewertung('calciumsilicat', 'ok', 'medium', 'group2');
 gilt(k1.score === 100 && k1.stufe === 'gruen' && k1.alarme.length === 0, `Kombi Calciumsilicat: ${k1.score}`);
 const k2 = wtaKombiBewertung('pur_foelie', 'none', 'high', 'group3');

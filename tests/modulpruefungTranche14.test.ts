@@ -138,8 +138,8 @@ gilt(mdb.texte.lehrwerteA2Hinweis.includes('Lehrwerte, vorläufig'), 'MDB5 Kennz
 // Umsetzung 29.10.2026: Formulare/Vorlagen ohne vorbelegte Personennamen („[Name]“)
 const namen: [string, string][] = [
   ['content/ki/KiDeklarationGuide.json', 'erstpruefungPlatzhalter'],
-  ['content/bauschaeden/Bauschaeden.json', 'ingenieurbüroDrIngM'],
-  ['content/bodenmaterialaufbereitung/BodenMaterialAufbereitung.json', 'frDrMeierUntergeordnete'],
+  ['content/bauschaeden/Bauschaeden.json', 'musterAbsender'],
+  ['content/bodenmaterialaufbereitung/BodenMaterialAufbereitung.json', 'musterBehoerde'],
 ];
 for (const [datei, schluessel] of namen) {
   const j = JSON.parse(readFileSync(datei, 'utf-8')) as { werte: Record<string, string> };

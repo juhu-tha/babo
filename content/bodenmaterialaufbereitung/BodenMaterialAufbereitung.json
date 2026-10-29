@@ -103,10 +103,10 @@
   },
   "werte": {
     "erweiterungThaCampusBaufeld": "Erweiterung THA Campus - Baufeld B2",
-    "thomasWagnerZertifizierterProbennehmer": "Thomas Wagner (Zertifizierter Probennehmer nach LAGA)",
+    "musterProbennehmer": "[Name] (zertifizierter Probennehmer nach LAGA)",
     "augsburgAnDerHochschule": "Augsburg, An der Hochschule 1",
     "trockenLeichtBewölktCa": "Trocken, leicht bewölkt, ca. 18°C",
-    "frDrMeierUntergeordnete": "[Name] (Untergeordnete Bodenschutzbehörde / Umweltamt)",
+    "musterBehoerde": "[Name] (Untere Bodenschutzbehörde / Umweltamt)",
     "aushubhaufwerkNr4Vorsortierter": "Aushubhaufwerk Nr. 4 (vorsortierter sandiger Erdaushub)",
     "sandigerKiesigerBodenErdaushub": "Sandiger / kiesiger Boden (Erdaushub)",
     "gutWaschbaresGekörntesMaterial": "Gut waschbares, gekörntes Material",

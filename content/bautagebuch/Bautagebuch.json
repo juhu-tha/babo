@@ -53,7 +53,7 @@
     "eingeleiteteGüteprüfungenSchnelltestsGew": "Eingeleitete Güteprüfungen / Schnelltests (Gewerke-QS)",
     "t5BesondereVorkommnisseBaurechtliches": "5. Besondere Vorkommnisse & Baurechtliches",
     "vobB46": "VOB/B § 4 & § 6",
-    "mündlicheAnweisungenBaustellenbeschlüsse": "Mündliche Anweisungen / Baustellenbeschlüsse (z.B. Schmidt)",
+    "mündlicheAnweisungenBaustellenbeschlüsse": "Mündliche Anweisungen / Baustellenbeschlüsse (z. B. [Name])",
     "unvorhergeseheneStörungenHavarienGerätes": "Unvorhergesehene Störungen / Havarien / Geräteschäden",
     "formelleBehinderungsanzeigeErforderlich": "Formelle Behinderungsanzeige erforderlich?",
     "bedenkenanmeldungErhebenSicherheitsaussc": "Bedenkenanmeldung erheben (Sicherheitsausschluss)?",
@@ -74,7 +74,7 @@
   },
   "werte": {
     "keineBeeinflussung": "Keine Beeinflussung",
-    "bauunternehmungMüllerGmbh1": "Bauunternehmung Müller GmbH: 1 Polier, 4 Betonbauer\nTGA-Elektro Schmidt: 2 Monteure",
+    "musterNachunternehmer1": "Bauunternehmung [Firma]: 1 Polier, 4 Betonbauer\nTGA-Elektro [Firma]: 2 Monteure",
     "deckeÜberUgBewehrungsabnahme": "Decke über UG: Bewehrungsabnahme durch Prüfstatiker ohne gravierende Rügen erfolgt. Beginn Vorbereitungen Betonguss.",
     "keineBeeinflussung2": "Keine Beeinflussung",
     "temperaturangabenVorhanden": "Temperaturangaben vorhanden",
@@ -88,7 +88,7 @@
     "ausreichendGeradeNochBestanden": "Ausreichend (Gerade noch bestanden). Sie haben den Bericht ausgefüllt, jedoch gravierende Aspekte wie Mindest-Betonpflegeregeln oder formale VOB-Fristhinderungen vernachlässigt. Bitte überarbeiten!",
     "mangelhaftIhrBerichtIst": "Mangelhaft. Ihr Bericht ist rechtlich lückenhaft und bautechnisch fahrlässig. Bei Schadensfällen am Tragwerk oder Feuchtigkeitseinbruch haftet Ihre Bauleitung vollumfänglich. Nutzen Sie die Tipps und probieren Sie es erneut!",
     "keineBeeinflussung3": "Keine Beeinflussung",
-    "bauunternehmungMüllerGmbh12": "Bauunternehmung Müller GmbH: 1 Polier, 4 Betonbauer\nTGA-Elektro Schmidt: 2 Monteure",
+    "musterNachunternehmer12": "Bauunternehmung [Firma]: 1 Polier, 4 Betonbauer\nTGA-Elektro [Firma]: 2 Monteure",
     "carbonbeton": "🔺 Carbonbeton",
     "mensaUmbau": "🏛️ Mensa Umbau",
     "berichtLöschen": "Bericht löschen",
@@ -103,7 +103,7 @@
     "cmMessungDurchgeführt2": "CM-Messung durchgeführt",
     "haftzugprüfungVorgenommen": "Haftzugprüfung vorgenommen",
     "holzfeuchtigkeitsbestimmungGemessen": "Holzfeuchtigkeitsbestimmung gemessen",
-    "werHatWasVeranlasst": "Wer hat was veranlasst? (z.B. [Name] ordnete mündlich den Verzicht auf...)",
+    "werHatWasVeranlasst": "Wer hat was veranlasst? (z. B. [Name] ordnete mündlich den Verzicht auf...)",
     "zBRohrbruchIm": "z.B. Rohrbruch im Kellerbereich, Ausfall Hauptkran Liebherr...",
     "begründungNach6Abs": "Begründung nach § 6 Abs. 1 VOB/B...",
     "technischeBedenkenNach4": "Technische Bedenken nach § 4 Abs. 3 VOB/B...",
@@ -205,7 +205,7 @@
         ],
         "objective": "Tragen Sie die gefahrvolle baustoffliche Abweichung ein. Melden Sie als ausführendes Unternehmen schriftlich Bedenken nach VOB/B § 4 Abs. 3 an und begründen Sie diese baustofflich (Kapillarer Feuchtigkeitstransport, Frostabplatzungen im Trass-Kalk-Mörtel und massive Zerstörung des Putzgefüges).",
         "hints": [
-          "Wer schreibt, der bleibt! Notieren Sie den Namen des Projektleiters Schmidt und die unsachgemäße Anordnung.",
+          "Wer schreibt, der bleibt! Notieren Sie den Namen der anordnenden Projektleitung ([Name]) und die unsachgemäße Anordnung.",
           "Setzen Sie den Haken bei \"Bedenkenanmeldung erheben\" auf AKTIV.",
           "Begründen Sie baustofflich mit den Verletzungen der DIN 18533 (Bauwerksabdichtung) und drohenden Schädlings- und Schimmelbefällen."
         ]

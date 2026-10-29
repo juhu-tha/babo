@@ -34,9 +34,9 @@ export default function Bauschaeden() {
 
   // Schriftverkehr-States
   const [noticeType, setNoticeType] = useState<'bedenken' | 'behinderung' | 'mangel' | 'nachtrag'>('bedenken');
-  const [senderName, setSenderName] = useState(inhalt.werte.ingenieurbüroDrIngM);
-  const [recipientName, setRecipientName] = useState(inhalt.werte.bauwerksgesellschaftNordGmbhCo);
-  const [projectName, setProjectName] = useState(inhalt.werte.thAugsburgModernisierungTrakt);
+  const [senderName, setSenderName] = useState(inhalt.werte.musterAbsender);
+  const [recipientName, setRecipientName] = useState(inhalt.werte.musterEmpfaenger);
+  const [projectName, setProjectName] = useState(inhalt.werte.musterObjekt);
   const [affectedTrade, setAffectedTrade] = useState(inhalt.werte.bodenbelagsarbeitenGewerk036Vorleistung);
   const [noticeDetail, setNoticeDetail] = useState(inhalt.werte.dieRohbetondeckeWeistAn);
   const [consequenceText, setConsequenceText] = useState(inhalt.werte.gefahrVonBlasenbildungHaftungsverlust);
@@ -50,9 +50,9 @@ export default function Bauschaeden() {
   };
 
   const handleReset = () => {
-    setSenderName(inhalt.werte.ingenieurbüroDrIngM2);
-    setRecipientName(inhalt.werte.bauwerksgesellschaftNordGmbhCo2);
-    setProjectName(inhalt.werte.thAugsburgModernisierungTrakt2);
+    setSenderName(inhalt.werte.musterAbsender2);
+    setRecipientName(inhalt.werte.musterEmpfaenger2);
+    setProjectName(inhalt.werte.musterObjekt2);
     if (noticeType === 'bedenken') {
       setAffectedTrade(inhalt.werte.bodenbelagsarbeitenGewerk036Vorleistung2);
       setNoticeDetail(inhalt.werte.dieRohbetondeckeWeistAn2);
