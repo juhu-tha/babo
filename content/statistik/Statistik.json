@@ -67,10 +67,10 @@
     "beispiel2IstDer": "Beispiel 2: Ist der Höchstwert ein Ausreißer? (Grubbs-Test)",
     "derTestZeigtNur": "Der Test zeigt nur statistische Auffälligkeit. Gestrichen werden darf der Wert erst, wenn eine technische Ursache belegt ist (z. B. Prüffehler, falsch gekennzeichneter Probekörper) – sonst verfälscht das Streichen die Streuung nach unten.",
     "grubbsTestKritischeWerte": "Grubbs-Test, kritische Werte für einen Ausreißer nach ISO 5725-2, Tab. 5 (α = 5 %: auffällig; α = 1 %: Ausreißer)",
-    "oktober2026Ap4": "Oktober 2026 (AP 4 Labor: Lage- und Streumaße, Fraktilfaktoren nach DIN EN 1990 Anhang D, Ausreißertests geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "oktober2026Ap4": "Oktober 2026 (AP 4 Labor: Lage- und Streumaße, Fraktilfaktoren nach DIN EN 1990 Anhang D, Ausreißertests geprüft)",
     "anzahlDerPrüfwerteN": "Anzahl der Prüfwerte (n)",
     "vereinfachtOhneKMod": " (vereinfacht ohne k_mod nach DIN EN 1995-1-1)",
-    "oktober2026Ap42": "Oktober 2026 (AP 4 Labor: Probengenerator, Ausreißertests und Fraktilwerte geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "oktober2026Ap42": "Oktober 2026 (AP 4 Labor: Probengenerator, Ausreißertests und Fraktilwerte geprüft)",
     "statistischeVersuchsplanung": "Statistische Versuchsplanung"
   },
   "daten": {

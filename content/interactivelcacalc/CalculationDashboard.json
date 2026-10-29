@@ -13,7 +13,7 @@
     "coBilanzNachLebenszyklusphasen": "Treibhauspotenzial nach Modulen (kg CO₂-eq je m² NRF(R) und Jahr)",
     "nettobilanzCoAusstoßA1": "Summe über den Betrachtungszeitraum (A1–A3, B4, C3/C4, TGA, B6):",
     "teilbilanzTitel": "Teilbilanz (ohne B4 und/oder B6) – kein Vergleich mit dem QNG-Anforderungswert",
-    "vorlaeufigTitel": "Vorläufige Werte (fachliche Freigabe ausstehend):",
+    "vorlaeufigTitel": "Vorläufige Werte (Abgleich mit der Quelle offen):",
     "bezugGebaeudeTitel": "**Bezogen auf:** funktionales Äquivalent (DIN EN 15978) – 1 m² NRF(R) und Jahr über Δt = ",
     "bezugGebaeudeDaten": "Baustoffdaten je **deklarierter Einheit** der EPD (1 m³ bzw. 1 t; A1–A3, C3/C4, D).",
     "bezugGebaeudeOhneB4": "Ohne Ersatz B4 ist die Nutzungsdauer nicht berücksichtigt – keine vollständige funktionelle Bezugsgröße.",

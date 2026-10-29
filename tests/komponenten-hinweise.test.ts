@@ -20,11 +20,12 @@ t.test('ModuleFooter: Norm aus Registry, „1 Eintrag“, eingeklappt, Prüfdatu
   const s = text(html);
   sicher(s.includes('Regelwerke & Normen') && s.includes('1 Eintrag'), 'Abschnitt/Anzahl fehlt');
   sicher(html.includes('aria-expanded="false"') && !html.includes('<ul'), 'Abschnitt muss eingeklappt sein');
-  sicher(s.includes('Inhaltlich zuletzt geprüft: 2026-10'), 'Prüfdatum fehlt');
+  sicher(s.includes('Inhaltsstand: 10/2026') && !s.includes('zuletzt geprüft'), 'Inhaltsstand fehlt');
   sicher(s.includes('Haftungsausschluss lesen'), 'Haftungshinweis fehlt');
 });
-t.test('ModuleFooter: Standard-Prüfvermerk „nicht geprüft“', () => {
-  sicher(text(rendere(h(ModuleFooter, { regelwerke: ['Eigene Richtlinie'] }))).includes('zuletzt geprüft: nicht geprüft'), 'Standardvermerk fehlt');
+t.test('ModuleFooter: ohne Fachmodul kein Prüfvermerk, kein „nicht geprüft“ (Gutachten 29.10.2026)', () => {
+  const s = text(rendere(h(ModuleFooter, { regelwerke: ['Eigene Richtlinie'] })));
+  sicher(!s.includes('nicht geprüft') && !s.includes('Fachlich geprüft') && s.includes('Maßgebend sind'), 'Fußzeile ohne Fachmodul falsch');
 });
 t.test('ModuleFooter: Plural „Einträge“, „Formeln“ und Schnellauswahl bei mehreren Abschnitten', () => {
   const s = text(rendere(h(ModuleFooter, {

@@ -37,7 +37,7 @@
     "glaserDiagrammTauwasserbilanzDin": " Glaser-Diagramm & Tauwasserbilanz (DIN 4108-3)",
     "schichtaufbauAusDerS": "Schichtaufbau aus der s_d-Sandbox, aufgetragen über der diffusionsäquivalenten Luftschichtdicke s_d: Sättigungsdampfdruck p_sat aus dem Temperaturverlauf (Feuchteschutz: R_si = 0,25, R_se = 0,04 m²K/W) und Dampfdruck p. Der Dampfdruckverlauf ergibt sich aus der Tangentenkonstruktion als straff gespannter Faden von p_i nach p_e unterhalb von p_sat. Berührt er die Sättigungslinie in einem Punkt, liegt dort eine Tauwasserebene; folgt er ihr über eine Strecke, ein Tauwasserbereich.",
     "dauerDerTauperiode": "Dauer der Tauperiode:",
-    "klassischesGlaserKlima90": "Normklima nach DIN 4108-3 (seit Ausgabe 2014): Tauperiode 90 Tage mit innen 20 °C / 50 % und außen −5 °C / 80 %; Verdunstungsperiode 90 Tage mit p_i = p_e = 1200 Pa und 1700 Pa (Wand) bzw. 2000 Pa (Dach) in der Tauwasserzone. Werte aus öffentlichen Sekundärquellen, Abgleich mit DIN 4108-3:2024-03 vorläufig (fachliche Freigabe ausstehend).",
+    "klassischesGlaserKlima90": "Normklima nach DIN 4108-3 (seit Ausgabe 2014): Tauperiode 90 Tage mit innen 20 °C / 50 % und außen −5 °C / 80 %; Verdunstungsperiode 90 Tage mit p_i = p_e = 1200 Pa und 1700 Pa (Wand) bzw. 2000 Pa (Dach) in der Tauwasserzone. Werte aus öffentlichen Sekundärquellen, Abgleich mit DIN 4108-3:2024-03 offen (vorläufig).",
     "keinTauwasserInDer": "Kein Tauwasser in der Tauperiode",
     "anKeinerSchichtgrenzeErreicht": "An keiner Stelle des Bauteils erreicht der Dampfdruck p den Sättigungsdampfdruck (",
     "rechnerischeTauwassermasse0G": "). Rechnerische Tauwassermasse 0 kg/m².",
@@ -93,7 +93,7 @@
     "beispiel2SD": "Beispiel 2: s_d-Werte und die Regel „innen dichter als außen“",
     "dieFaustregelGiltVor": "Die Faustregel gilt vor allem für Holzbau und Innendämmung. WDVS auf Mauerwerk zählt nach DIN 4108-3 zu den Konstruktionen ohne rechnerischen Tauwassernachweis; maßgebend ist der Temperaturverlauf, nicht allein das s_d-Verhältnis.",
     "bemessungswerteNachDin4108": "Bemessungswerte nach DIN 4108-4:2020-11; Nachweisfreiheit nach DIN 4108-3:2024-03",
-    "oktober2026Ap6": "Oktober 2026 (AP 6 Bauphysik: Magnus-Formel über Eis ergänzt, Glaser-Bewertung korrigiert, Normausgaben aktualisiert; fachliche Freigabe durch den Autor ausstehend)",
+    "oktober2026Ap6": "Oktober 2026 (AP 6 Bauphysik: Magnus-Formel über Eis ergänzt, Glaser-Bewertung korrigiert, Normausgaben aktualisiert)",
     "glaserKlimaWahl": "Klima für das Glaser-Verfahren",
     "glaserKlimaNorm": "Normklima DIN 4108-3",
     "glaserKlimaRegler": "Innenklima aus den Reglern (Lehrvariante)",
@@ -201,7 +201,7 @@
       },
       {
         "formel": "M_{ev} = \\delta_0 \\cdot t_{ev} \\cdot \\left( \\frac{p_{sat,c} - p_i}{s_{d,i}} + \\frac{p_{sat,c} - p_e}{s_{d,e}} \\right)",
-        "erklaerung": "Verdunstungsmasse M_ev [kg/m²] der Verdunstungsperiode mit t_ev = 2160 h, p_i = p_e = 1200 Pa und p_sat,c = 1700 Pa (Wand) bzw. 2000 Pa (Dach) in der Tauwasserzone (Werte vorläufig, fachliche Freigabe ausstehend).",
+        "erklaerung": "Verdunstungsmasse M_ev [kg/m²] der Verdunstungsperiode mit t_ev = 2160 h, p_i = p_e = 1200 Pa und p_sat,c = 1700 Pa (Wand) bzw. 2000 Pa (Dach) in der Tauwasserzone (Werte vorläufig, Abgleich mit dem Normtext offen).",
         "quelle": "DIN 4108-3:2018-10 (öffentliche Wiedergabe: ubakus.de, BaunetzWissen)"
       }
     ]
