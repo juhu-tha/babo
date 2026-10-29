@@ -119,6 +119,50 @@ export const CONCRETE: Record<string, ConcreteClassData> = {
   }
 };
 
+// --- Spannstahl und Spannungsgrenzen (zentral; Durchsicht A 29.10.2026, DSA-SB-7) ----------------------
+
+/** E-Modul Spannstahl (Litzen) nach DIN EN 1992-1-1, 3.3.6(3): 195 000 N/mm² (Drähte/Stäbe 205 000 N/mm²) */
+export const E_SPANNSTAHL = 195000;
+
+/**
+ * Litzenspannstahl nach allgemeiner bauaufsichtlicher Zulassung (DIBt; Bezeichnung wie prEN 10138-3):
+ * Zugfestigkeit f_pk und 0,1-%-Dehngrenze f_p0,1k in N/mm².
+ */
+export const SPANNSTAHL: Readonly<Record<'Y1770' | 'Y1860', { fpk: number; fp01k: number }>> = {
+  Y1770: { fpk: 1770, fp01k: 1520 },
+  Y1860: { fpk: 1860, fp01k: 1600 },
+};
+
+/** Relaxation nach 1000 h ρ_1000 nach DIN EN 1992-1-1, 3.3.2(6): Klasse 1 = 8 %, Klasse 2 = 2,5 %, Klasse 3 = 4 % */
+export const RHO_1000: Readonly<Record<RelaxationClass, number>> = { 1: 0.08, 2: 0.025, 3: 0.04 };
+
+/**
+ * Spannungsgrenzen nach DIN EN 1992-1-1 mit NA (DE), als Faktor auf f_pk, f_p0,1k bzw. f_ck:
+ *  - Presse σ_p,max = min(k1·f_pk; k2·f_p0,1k), 5.10.2.1(1), Gl. (5.41), NDP: k1 = 0,80, k2 = 0,90
+ *  - nach dem Verankern σ_pm0 = min(k7·f_pk; k8·f_p0,1k), 5.10.3(2), Gl. (5.43), NDP: k7 = 0,75, k8 = 0,85
+ *  - Beton beim Vorspannen σ_c ≤ 0,60·f_ck(t), 5.10.2.2(5)
+ *  - Beton, charakteristische (seltene) Kombination σ_c ≤ k1·f_ck = 0,60·f_ck, 7.2(2)
+ *  - Beton, quasi-ständige Kombination σ_c ≤ k2·f_ck = 0,45·f_ck (lineares Kriechen), 7.2(3)
+ *  - Spannstahl, charakteristische Kombination σ_p ≤ k5·f_pk = 0,75·f_pk, 7.2(5)
+ *  - Spannstahl, quasi-ständige Kombination nach Abzug der Verluste σ_p ≤ 0,65·f_pk, NA DE (NCI zu 7.2(5))
+ */
+export const SPANNUNGSGRENZEN = {
+  presseFpk: 0.80, presseFp01k: 0.90,
+  verankertFpk: 0.75, verankertFp01k: 0.85,
+  betonVorspannen: 0.60,
+  betonSelten: 0.60,
+  betonQuasiStaendig: 0.45,
+  spannstahlCharakteristisch: 0.75,
+  spannstahlQuasiStaendig: 0.65,
+} as const;
+
+/** σ_p,max an der Presse nach Gl. (5.41) [N/mm²] */
+export const sigmaPMax = (fpk: number, fp01k: number) =>
+  Math.min(SPANNUNGSGRENZEN.presseFpk * fpk, SPANNUNGSGRENZEN.presseFp01k * fp01k);
+/** σ_pm0 nach dem Verankern nach Gl. (5.43) [N/mm²] */
+export const sigmaPm0Grenze = (fpk: number, fp01k: number) =>
+  Math.min(SPANNUNGSGRENZEN.verankertFpk * fpk, SPANNUNGSGRENZEN.verankertFp01k * fp01k);
+
 /**
  * Zementbeiwert s nach EC2 3.1.2(6)
  */
@@ -396,19 +440,9 @@ export function relaxation(
   const mu = sigma_pi / fpk;
   if (mu <= 0.50) return { delta_sigma_pr: 0, pctLoss: 0 };
 
-  let rho1000 = 0.025; // 2.5% für Klasse 2
-  let k_exp = 0.75;
-
-  if (relClass === 1) {
-    rho1000 = 0.08;
-    k_exp = 0.75;
-  } else if (relClass === 2) {
-    rho1000 = 0.025;
-    k_exp = 0.75;
-  } else {
-    rho1000 = 0.04;
-    k_exp = 0.75;
-  }
+  // ρ_1000 nach 3.3.2(6) (zentral RHO_1000); Zeitexponent 0,75·(1 − μ) in allen drei Klassen
+  const rho1000 = RHO_1000[relClass] ?? RHO_1000[2];
+  const k_exp = 0.75;
 
   // Delta_sigma_pr / sigma_pi = 0.66 * rho1000 * e^(9.1 * mu) * (t / 1000)^k * 10^-5
   // Nach EC2 Gl. (3.29) für Klasse 2:
