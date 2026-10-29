@@ -2,7 +2,7 @@ import { Flame, Volume2 } from 'lucide-react';
 import { InlineMath } from 'react-katex';
 import { formatDeWert, formatDeTeXWert, formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
 import type { Dispatch, SetStateAction } from 'react';
-import { BSP_AUFBAUTEN, BSP_ROLLSCHUB, type BspSchwingungErgebnis, type EiVerfahren, type Estrichart } from '@/src/calc/bspSchwingung';
+import { BSP_AUFBAUTEN, BSP_ROLLSCHUB, BSP_KENNWERTSAETZE, type BspKennwertsatz, type BspSchwingungErgebnis, type EiVerfahren, type Estrichart } from '@/src/calc/bspSchwingung';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import inhalt from '@/content/holzbaubeta/HolzbauBauphysik.json';
 import { MdText } from '@/src/components/inhalt/MdText';
@@ -32,6 +32,7 @@ export interface BspSchwingungZustand {
   estrichArt: Estrichart; setEstrichArt: Dispatch<SetStateAction<Estrichart>>;
   verfahren: EiVerfahren; setVerfahren: Dispatch<SetStateAction<EiVerfahren>>;
   rollschub: number; setRollschub: Dispatch<SetStateAction<number>>;
+  kennwerte: BspKennwertsatz; setKennwerte: Dispatch<SetStateAction<BspKennwertsatz>>;
   ergebnis: BspSchwingungErgebnis;
 }
 
@@ -338,6 +339,20 @@ export default function HolzbauBauphysik({ fireB, fireH, fireResults, fireSides,
                 </select>
               </div>
 
+              {/* Kennwertsatz E-Modul und Masse (Umsetzung 29.10.2026) */}
+              <div className="flex flex-col gap-1">
+                <label className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.bspKennwerte} /></label>
+                <select aria-label={inhalt.werte.bspKennwerte}
+                  value={vib.kennwerte}
+                  onChange={(e) => vib.setKennwerte(e.target.value as BspKennwertsatz)}
+                  className="border border-home-grau/30 bg-white text-xs p-2 rounded-lg text-text-main font-semibold"
+                >
+                  <option value="proHolz">{inhalt.werte.bspKennwerteProHolz}</option>
+                  <option value="lehrbeispiel">{inhalt.werte.bspKennwerteLehrbeispiel}</option>
+                </select>
+                <p className="text-[10px] text-text-main/70 leading-snug"><MdText text={inhalt.texte.bspKennwerteHinweis} /></p>
+              </div>
+
               {/* Deckenbreite */}
               <div className="flex flex-col gap-1">
                 <label className="text-xs font-bold text-text-main"><MdText text={inhalt.texte.bspDeckenbreite} /></label>
@@ -407,7 +422,7 @@ export default function HolzbauBauphysik({ fireB, fireH, fireResults, fireSides,
               <div className="bg-white p-4 rounded-xl border border-home-grau/20 flex flex-col gap-3 shadow-xs text-xs">
                 {/* Mass */}
                 <div className="flex justify-between items-center text-text-main/80">
-                  <span><MdText text={inhalt.texte.auswertbareDeckenEigenmasseG} /></span>
+                  <span><MdText text={inhalt.texte.auswertbareDeckenEigenmasseG} /> ({vib.kennwerte === 'proHolz' ? `Wichte ${formatDeZahl(BSP_KENNWERTSAETZE.proHolz.wichte, 1)} kN/m³` : 'ρ_mean = 450 kg/m³'}, E = {formatDeWert(BSP_KENNWERTSAETZE[vib.kennwerte].E0mean)} N/mm²):</span>
                   <span className="font-mono font-bold text-text-main">{formatDeZahl(vib.ergebnis.eigenmasse, 1)} kg/m²</span>
                 </div>
                 <div className="flex justify-between items-center text-text-main/80 border-b border-home-grau/10 pb-2">

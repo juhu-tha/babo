@@ -6,6 +6,7 @@
 import { formatDeZahl } from '../utils/numberFormat';
 import { type Hinweis, hatFehler, istEndlich, muss, bereich } from './plausibilitaet';
 import { BAUSTAHL_EC3, E_BAUSTAHL } from '../data/kennwerte';
+import { GWP_LEHRWERTE } from '../data/gwpLehrwerte';
 
 /** Teilsicherheitsbeiwerte nach DIN EN 1993-1-1/NA (DE) und E-Modul nach 3.2.6 (zentral in src/data/kennwerte.ts) */
 export const EC3_NA_DE = { E: E_BAUSTAHL, gammaM0: 1.0, gammaM1: 1.1, gammaM2: 1.25 } as const;
@@ -269,4 +270,20 @@ export function plastischeKapazitaet(WplCm3: number, Acm2: number, fy: number, g
     NplRd: (Acm2 * fy) / gammaM0 / 10,
     steigerungGegenS235: ((fy - 235) / 235) * 100,
   };
+}
+
+/** GWP A1–A3 Profilstahl [kg CO₂-Äq./kg] – zentraler Lehrwert (src/data/gwpLehrwerte.ts, NP2-ST-2) */
+export const GWP_PROFILSTAHL_KG = GWP_LEHRWERTE.profilstahl.gwp / 1000;
+
+/**
+ * Massenanteil, der beim Ersatz eines Profils durch ein leichteres entfällt: 1 − g_neu/g_alt
+ * (IPE 300 → IPE 200: 1 − 22,4/42,2 = 0,469).
+ */
+export function einsparanteilProfil(gewichtAltKgM: number, gewichtNeuKgM: number): number {
+  return gewichtAltKgM > 0 ? Math.max(0, 1 - gewichtNeuKgM / gewichtAltKgM) : 0;
+}
+
+/** Vermiedene Herstellungsemissionen A1–A3 je m Träger [kg CO₂-Äq./m] = Gewicht · Einsparanteil · GWP je kg */
+export function co2VorteilProfil(gewichtKgM: number, einsparanteil: number, gwpKgJeKg: number = GWP_PROFILSTAHL_KG): number {
+  return gewichtKgM * einsparanteil * gwpKgJeKg;
 }
