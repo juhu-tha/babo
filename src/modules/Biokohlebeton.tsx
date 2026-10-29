@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { BookOpen, Flame, FlaskConical, Calculator, ShieldAlert, Leaf, Info, GraduationCap } from 'lucide-react';
 import { BlockMath } from 'react-katex';
 import { formatDeZahl, formatDeTeX } from '@/src/utils/numberFormat';
-import { biokohleBilanz, F_PERM_IPCC, CO2_JE_C } from '@/src/calc/biokohlebeton';
+import { biokohleBilanz, F_PERM_IPCC, CO2_JE_C, PK_LEHRWERT } from '@/src/calc/biokohlebeton';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
@@ -39,9 +39,9 @@ const ZEMENTE = [
 export default function Biokohlebeton() {
   const [reiter, setReiter] = useState<Reiter>('einfuehrung');
   const [mPK, setMPK] = useState(10);
-  const [cGehalt, setCGehalt] = useState(80);
-  const [fPerm, setFPerm] = useState(0.8);
-  const [ePK, setEPK] = useState(0.3);
+  const [cGehalt, setCGehalt] = useState<number>(PK_LEHRWERT.cGehalt);
+  const [fPerm, setFPerm] = useState<number>(PK_LEHRWERT.fPerm);
+  const [ePK, setEPK] = useState<number>(PK_LEHRWERT.ePK);
   const [zRef, setZRef] = useState(320);
   const [deltaZ, setDeltaZ] = useState(10);
   const [gwpZ, setGwpZ] = useState<number>(ZEMENT_GWP_KG['CEM I']);

@@ -1,5 +1,6 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { maxFaFaktor, stoffraum, REGELSIEBLINIEN, istSieblinie } from '@/src/calc/mischung';
+import { PK_NETTO_SENKE_KG } from '@/src/calc/biokohlebeton';
 import React, { useState, useMemo } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement, LogarithmicScale, RadialLinearScale, Filler } from 'chart.js';
 import '@/src/lib/chartSetup';
@@ -299,7 +300,8 @@ export default function Mischungsberechnung() {
     const co2Fa = fa * 0.01;
     const co2Sf = sf * 0.02;
     const co2Ksm = hues * 0.03;
-    const co2Biochar = biochar * -2.5; // Biochar speichert CO2 (negative Emissionen, ca. -2.5 kg CO2 pro kg)
+    // Netto-Senke je kg Pflanzenkohle aus den Lehrwerten des Moduls Biokohlebeton (≈ 2,05 kg CO₂e/kg; Nachprüfung 29.10.2026, NP2-MB-1)
+    const co2Biochar = biochar * -PK_NETTO_SENKE_KG;
     const co2Gestein = masseGesteinTrocken * 0.003; // ca. 3 kg CO2 pro Tonne Gestein
     const co2Wasser = wasserTrocken * 0.0003; // ca. 0.3 kg CO2 pro m³ Wasser
     const co2ZM = zusatzmittel * 1.5; // ca. 1.5 kg CO2 pro kg ZM

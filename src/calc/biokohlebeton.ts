@@ -135,3 +135,12 @@ export function biokohleBilanz(e: BiokohleEingabe): BiokohleErgebnis {
 
 /** CO₂ je kg Pflanzenkohle aus Kohlenstoffgehalt (M.-%) und Permanenzfaktor */
 export const co2JeKgPK = (cGehalt: number, fPerm = 1) => cGehalt / 100 * CO2_JE_C * fPerm;
+
+/**
+ * Lehrwerte der Pflanzenkohle als gemeinsame Vorgabe (Modul Biokohlebeton; Erweiterte Nachprüfung 29.10.2026, NP2-MB-1):
+ * 80 M.-% Kohlenstoff, F_perm = 0,80 (IPCC 2019, Pyrolyse 450–600 °C), Herstellung 0,3 kg CO₂e/kg.
+ */
+export const PK_LEHRWERT = { cGehalt: 80, fPerm: 0.8, ePK: 0.3 } as const;
+
+/** Netto-Senke je kg Pflanzenkohle mit den Lehrwerten [kg CO₂e/kg] ≈ 2,05 – für Module ohne eigene Pflanzenkohle-Eingaben (Mischungsberechnung) */
+export const PK_NETTO_SENKE_KG = co2JeKgPK(PK_LEHRWERT.cGehalt, PK_LEHRWERT.fPerm) - PK_LEHRWERT.ePK;

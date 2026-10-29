@@ -203,7 +203,7 @@
         "bridging": "Keine Rissüberbrückung (starr)",
         "trafficable": true,
         "mainBinders": "2K-Epoxidharz (EP), lösungsmittelfrei",
-        "consumption": "Primer: 0,4 kg/m² | Basisschicht: 1,6 kg/m² | Quarzsand (0,4-0,8mm): 4,0 kg/m² | Kopfversiegelung: 0,7 kg/m²",
+        "consumption": "Grundierung: 0,45 kg/m² | Kratzspachtel: 1,25 kg/m² | Basisschicht: 1,65 kg/m² | Quarzsand (0,4-0,8 mm): 4,5 kg/m² | Kopfversiegelung: 0,7 kg/m² (Lehrwerte wie im Materialrechner, herstellerabhängig)",
         "layers": [
           "Untergrundvorbereitung (Kugelstrahlen verpflichtend, Haftzugfestigkeit ≥ 1,5 N/mm²)",
           "Porenfüllende Grundierung mit lösungsmittelfreiem 2K-Epoxidharz (EP)",
@@ -223,7 +223,7 @@
         "bridging": "Erhöhte dynamische Rissüberbrückung (Klasse B3.2 bei −20 °C)",
         "trafficable": true,
         "mainBinders": "2K-Polyurethan (PU) oder PU-Polyurea-Hybride",
-        "consumption": "Grundierung: 0,4 kg/m² | Dichtungsschicht (Membran): 2,0 kg/m² | Verschleißschicht: 1,6 kg/m² | Quarzsandabstreuung: 4,5 kg/m² | Kopfversiegelung: 0,8 kg/m²",
+        "consumption": "Grundierung: 0,4 kg/m² | Dichtungsschicht (Membran): 2,0 kg/m² | Verschleißschicht: 1,6 kg/m² | Quarzsandabstreuung: 5,0 kg/m² | Kopfversiegelung: 0,8 kg/m² (Lehrwerte wie im Materialrechner, herstellerabhängig)",
         "layers": [
           "Untergrundvorbereitung (Kugelstrahlen, Haftzugfestigkeit ≥ 1,5 N/mm²)",
           "Systemgrundierung mit EP-Harz, leicht abgesandet",
@@ -243,7 +243,7 @@
         "bridging": "Mäßige dynamische Rissüberbrückung (Klasse B3.1 bei -20 °C)",
         "trafficable": true,
         "mainBinders": "Hochelastisch eingestelltes 2K-Polyurethan (PU)",
-        "consumption": "Grundierung: 0,4 kg/m² | Kombi-Verschleißschicht: 2,2 kg/m² | Quarzsandabstreuung: 4,5 kg/m² | Kopfversiegelung: 0,8 kg/m²",
+        "consumption": "Grundierung: 0,4 kg/m² | Kombi-Verschleißschicht: 2,3 kg/m² | Quarzsandabstreuung: 5,0 kg/m² | Kopfversiegelung: 0,85 kg/m² (Lehrwerte wie im Materialrechner, herstellerabhängig)",
         "layers": [
           "Untergrundvorbereitung (Kugelstrahlen)",
           "EP-Grundierung mit Haftbrücke",
