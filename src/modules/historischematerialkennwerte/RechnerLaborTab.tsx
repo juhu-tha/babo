@@ -641,9 +641,9 @@ export function RechnerLaborTab({ probeType, setProbeType, setCoreDiameter, core
                 <strong className="font-sans text-xs text-home-grau block uppercase"><MdText text={inhalt.texte.schritt1BestimmungDer} /></strong><MdText text={inhalt.texte.dieAlteKlasseBezieht} /><BlockMath math="\beta_{WN} = 25{,}0 \text{ N/mm}^2 \text{ (auf einen 200 mm Würfel)}" />
               </div>
               <div>
-                <strong className="font-sans text-xs text-home-grau block uppercase"><MdText text={inhalt.texte.schritt2UmrechnungAuf} /></strong><MdText text={inhalt.texte.dieAktuellenEurocode2} /><BlockMath math={`f_{ck} \approx ${formatDeTeX(BN250.fck / BN250.nennfestigkeit, 2)} \cdot \beta_{WN} = ${formatDeTeX(BN250.fck, 1)} \text{ N/mm}^2 \quad (\text{Tab. 2.2})`} /><MdText text={inhalt.texte.damitEntsprichtDerBestandsbeton} /></div>
+                <strong className="font-sans text-xs text-home-grau block uppercase"><MdText text={inhalt.texte.schritt2UmrechnungAuf} /></strong><MdText text={inhalt.texte.dieAktuellenEurocode2} /><BlockMath math={`f_{ck} \\approx ${formatDeTeX(BN250.fck / BN250.nennfestigkeit, 2)} \\cdot \\beta_{WN} = ${formatDeTeX(BN250.fck, 1)} \\text{ N/mm}^2 \\quad (\\text{Tab. 2.2})`} /><MdText text={inhalt.texte.damitEntsprichtDerBestandsbeton} /></div>
               <div>
-                <strong className="font-sans text-xs text-home-grau block uppercase"><MdText text={inhalt.texte.schritt3BerechnungDes} /></strong><MdText text={inhalt.texte.derMaterialspezifischeBemessungswertF} /><BlockMath math={`f_{cd} = \alpha_{cc} \cdot \frac{f_{ck}}{\gamma_c} = 0{,}85 \cdot \frac{${formatDeTeX(BN250.fck, 1)} \text{ N/mm}^2}{1{,}50} = ${formatDeTeX(BN250_FCD, 2)} \text{ N/mm}^2`} />
+                <strong className="font-sans text-xs text-home-grau block uppercase"><MdText text={inhalt.texte.schritt3BerechnungDes} /></strong><MdText text={inhalt.texte.derMaterialspezifischeBemessungswertF} /><BlockMath math={`f_{cd} = \\alpha_{cc} \\cdot \\frac{f_{ck}}{\\gamma_c} = 0{,}85 \\cdot \\frac{${formatDeTeX(BN250.fck, 1)} \\text{ N/mm}^2}{1{,}50} = ${formatDeTeX(BN250_FCD, 2)} \\text{ N/mm}^2`} />
                 <span className="font-sans text-xs text-home-grau block mt-1"><MdText text={inhalt.texte.tippWerdenImBestand} /></span>
               </div>
             </div>
