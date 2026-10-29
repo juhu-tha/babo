@@ -2,7 +2,11 @@
 // Rückbau & Schadstoffe und Dauerhaftigkeit (Befundliste docs/pruefung/module-tranche-12.md).
 // Die Sollwerte stammen aus einem eigenen Prüfskript (eigene Umsetzung der Gleichungen in Python),
 // nicht aus den Kernen oder vorhandenen Tests übernommen.
-import { uRetrofit, dRequired, savings, charValue, designLognormal, fkMasonry, GMODG_ANLAGE7 } from '../src/utils/bestandKern';
+import { uRetrofit, dRequired, savings, charValue, designLognormal, fkMasonry, GMODG_ANLAGE7, CO2_ERDGAS } from '../src/utils/bestandKern';
+import { SCHWINDBEIWERTE } from '../src/calc/holzphysik';
+import { MASSENKENNWERTE_BRI, massenkennwertSumme, rueckbauMassen, type Bauweise } from '../src/calc/rueckbauMassen';
+import { rcBilanz, RC_HOECHSTANTEIL } from '../src/calc/rcGesteinskoernung';
+import holzbau from '../content/holzbaubeta/HolzbauBeta.json';
 import { rueckprallRichtungskorrektur, rueckprall, ultraschall, impactEcho, haftzug, karbonatisierung, bohrkern, karsten, betondeckung } from '../src/calc/bauwerksuntersuchung';
 import { pn98Probenzahl, pn98Mindestvolumen } from '../src/calc/probenahme';
 import { sortierbilanz } from '../src/calc/altholz';
@@ -87,6 +91,34 @@ gilt(b.spielplatz.values['Cadmium (Cd)'] === 10 && b.spielplatz.values['Benzo(a)
 gilt(b.industrie.values['Quecksilber (Hg)'] === 100 && b.industrie.values['Chrom (Cr)'] === 200 && b.industrie.values['Benzo(a)pyren'] === 5, 'BBodSchV Industrie');
 gilt(b.grundwasser.values['Cadmium (Cd)'] === 3 && b.grundwasser.values['Quecksilber (Hg)'] === 1 && b.grundwasser.values.PFNA === 0.06, 'BBodSchV Sickerwasser');
 gilt(b.nutzpflanze.values['Quecksilber (Hg)'] === 5, 'BBodSchV Nutzpflanze Hg (Königswasser)');
+
+// 10. Umsetzung 29.10.2026 (Entscheidungen 28.10. nachts)
+// T12-BE-2: Erdgas 0,24 kg CO₂-Äq./kWh (GModG Anlage 9); BE2: ΔU 0,90, A 100 m², G 3500 Kd/a, F_x 1, η 1
+gilt(CO2_ERDGAS === 0.24, 'T12-BE-2 CO₂-Faktor Erdgas 0,24');
+const be2 = savings({ uOld: 1.5, uNew: 0.6, A: 100, bauteil: 'aussenwand', Gt: 3500, etaSys: 1, price: 0.11, co2: CO2_ERDGAS, invest: 0 });
+pruefe('BE2 ΔQ', be2.qEnd, 7560); pruefe('BE2 CO₂', be2.co2kg, 1814.4);
+// T12-HB-1: Schwindbeiwerte wie Tranche 10 (T10-HW-1), Beispiel 2: 220 · 0,36 · 18 / 100 = 14,256 mm
+gilt(SCHWINDBEIWERTE.fichte.tangential === 0.36 && SCHWINDBEIWERTE.fichte.radial === 0.19, 'T12-HB-1 Fichte 0,19/0,36');
+const hbJson = (holzbau as { daten: Record<string, Record<string, { radial: number; tangential: number }>> }).daten['HolzbauBeta.shrinkageCoeffs'];
+for (const art of ['fichte', 'kiefer', 'eiche'] as const) {
+  gilt(hbJson[art].radial === SCHWINDBEIWERTE[art].radial && hbJson[art].tangential === SCHWINDBEIWERTE[art].tangential, `T12-HB-1 ${art} gleich Holzbau-Modul`);
+}
+pruefe('HB2 Δb Fichte tangential', 220 * SCHWINDBEIWERTE.fichte.tangential * 18 / 100, 14.256);
+// T12-RB-4: Massenkennwerte 0,3–0,6 t/m³ BRI, Massivbau 0,5
+const summen: Record<Bauweise, number> = { concrete: 0.5, masonry: 0.5, timber: 0.3, composite: 0.45 };
+for (const b of Object.keys(MASSENKENNWERTE_BRI) as Bauweise[]) {
+  pruefe(`RB4 Summe ${b}`, massenkennwertSumme(b), summen[b], 1e-9);
+  gilt(massenkennwertSumme(b) >= 0.3 - 1e-9 && massenkennwertSumme(b) <= 0.6 + 1e-9, `RB4 ${b} im Bereich 0,3–0,6 t/m³`);
+}
+const efh = rueckbauMassen(800, 'masonry');
+gilt(efh.gesamt === 400, `RB4 EFH 800 m³ Mauerwerk: ${efh.gesamt} t (soll 400 t)`); gilt(efh.mineralischProzent === 84, `RB4 mineralisch ${efh.mineralischProzent} %`);
+gilt(rueckbauMassen(900, 'timber').gesamt === 270, `RB4 Holzhaus 900 m³: ${rueckbauMassen(900, 'timber').gesamt} t`);
+// T12-RE-1: RC-Höchstanteile DIN 1045-2:2023-08 Anhang E (Vol.-% der groben GK), 120 m³ Platte, 1,8 t GK/m³, Grobanteil 0,7
+gilt(RC_HOECHSTANTEIL.x0_xc_xf1_xf3.typ1 === 0.45 && RC_HOECHSTANTEIL.x0_xc_xf1_xf3.typ2 === 0.35 && RC_HOECHSTANTEIL.xa1.typ2 === 0.25 && RC_HOECHSTANTEIL.xd_xs_xf2_xf4.typ1 === 0.30 && RC_HOECHSTANTEIL.xd_xs_xf2_xf4.typ2 === 0.20, 'T12-RE-1 Höchstanteile wie Modul Ausgangsstoffe');
+const re1 = rcBilanz(120, 'typ1', 'x0_xc_xf1_xf3');
+pruefe('RE1 sekundär Typ 1 X0–XC4', re1.sekundaer, 68.04); pruefe('RE1 primär', re1.primaer, 147.96);
+pruefe('RE1 sekundär Typ 2 XD/XS/XF2/XF4', rcBilanz(120, 'typ2', 'xd_xs_xf2_xf4').sekundaer, 30.24);
+gilt(rcBilanz(120, 'typ1', 'xa2_xa3_xm').sekundaer === 0 && rcBilanz(120, 'typ1', 'x0_xc_xf1_xf3', false).sekundaer === 0, 'RE1 XA2/XA3/XM und ohne RC: 0 t');
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
 console.log('OK: Modulprüfung Tranche 12');

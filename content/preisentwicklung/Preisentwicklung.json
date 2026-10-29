@@ -26,7 +26,7 @@
   "daten": {
     "Preisentwicklung.regelwerke": [
       {
-        "title": "Baupreisindizes des Statistischen Bundesamtes (Destatis Fachserie 17 Reihe 4)",
+        "title": "Baupreisindizes des Statistischen Bundesamtes (GENESIS-Online, Tabellen 61261; die frühere Fachserie 17 Reihe 4 ist eingestellt)",
         "url": "https://www.destatis.de/"
       },
       {
@@ -47,8 +47,8 @@
       },
       {
         "formel": "K_t = K_0 \\cdot \\frac{I_t}{I_0} \\quad \\text{bzw.} \\quad \\Delta K = K_0 \\cdot \\left(\\frac{I_t - I_0}{I_0}\\right)",
-        "erklaerung": "Preisgleitklausel-Berechnung zur Anpassung von Bauwerksverträgen bei unvorhersehbaren Baustoffpreiserhöhungen.",
-        "quelle": "VOB/B § 2 / BGB"
+        "erklaerung": "Preisgleitklausel-Berechnung zur Anpassung von Bauverträgen bei unvorhersehbaren Baustoffpreiserhöhungen. Die Preisgleitung muss vertraglich vereinbart sein (z. B. Stoffpreisgleitklausel nach VHB Bund, Formblatt 225; Zulässigkeit nach § 9d VOB/A); VOB/B § 2 Abs. 3 regelt dagegen Mengenabweichungen.",
+        "quelle": "§ 9d VOB/A, VHB Bund Formblatt 225"
       }
     ]
   }

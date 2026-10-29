@@ -132,12 +132,12 @@ for (const m of fach) {
   pruefe(qs.length >= mindestFragen(m.id), `${m.id}: nur ${qs.length} Fragen`);
   if (m.baum?.typ === 'calculator' || grenzenFuer(m.id)) pruefe(qs.some(istRechenfrage), `${m.id}: Rechner-Modul ohne Rechenfrage`);
 }
-// 7b. Aufgeteilte Module (src/registry/teilmodule.ts, 28.10.2026): Die Fragen des früheren Moduls wurden ohne neue
+// 7b. Aufgeteilte Module (src/registry/teilmodule.ts, 28.10.2026): Die Fragen des früheren Moduls wurden zunächst ohne neue
 //     Fragen auf die Teile verteilt. Mindestzahl (Spannbeton 10) und Rechenfrage gelten für die Familie; je Teil
 //     mindestens 1 Frage. Teile unter 6 Fragen stehen in TEIL_UNTER_MINDEST (Ratsche: Liste darf nur kürzer werden;
-//     Aufstockung offen, docs/entwuerfe/lange-module-aufteilung.md).
+//     29.10.2026 (QZ-6): alle Teile auf ≥ 6 Fragen aufgestockt (qt_*), Liste leer.
 const MINDEST_TEIL = 6;
-const TEIL_UNTER_MINDEST: ReadonlySet<string> = new Set(['spannbeton_kennwerte', 'bauwerksdiagnose', 'pruefverfahren_katalog', 'zfp']);
+const TEIL_UNTER_MINDEST: ReadonlySet<string> = new Set<string>([]);
 for (const f of TEILMODULE) {
   const jeTeil = f.teile.map(id => proRoute.get(id) ?? []);
   const alle = jeTeil.flat();

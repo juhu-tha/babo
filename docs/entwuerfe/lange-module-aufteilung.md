@@ -84,9 +84,10 @@ bündelt Kennwerte und Rechner (Spannkraftverluste, Randspannungen). Drei Teile 
 
 ### Offene Punkte
 
-- **Quizfragen aufstocken** (Ziel ≥ 6 je Teil): `spannbeton_kennwerte` 4, `bauwerksdiagnose` 4,
-  `pruefverfahren_katalog` 1, `zfp` 1 – zusammen mindestens 14 neue Fragen. Die Ratsche verlangt, die Teile nach der
-  Aufstockung aus `TEIL_UNTER_MINDEST` zu streichen.
+- ~~**Quizfragen aufstocken**~~ – **Umsetzung 29.10.2026 (QZ-6):** 14 neue Fragen `qt_*` (`spannbeton_kennwerte` +2,
+  `bauwerksdiagnose` +2, `pruefverfahren_katalog` +5, `zfp` +5), alle Teile jetzt mit 6 Fragen; `TEIL_UNTER_MINDEST` ist
+  leer. Rechenfragen gegen die Kerne in `tests/quizRechenfragen.test.ts`; die Fragen sind noch nicht fachlich
+  freigegeben (Prüflisten, `NEU_SEIT_26_10` in scripts/auditDaten.ts).
 - **Neu formulierte Einträge prüfen**: Lernziele (`spannbeton_kennwerte` Ziel 1, `pruefverfahren_katalog` Ziel 2,
   `zfp` Ziel 2), Erkundungsaufträge (`spannbeton_grundlagen` 2, `bauwerksdiagnose` 2) und die Kurzbeschreibungen der
   Rechnergrenzen `spannbeton_grundlagen`, `bauwerksdiagnose`, `pruefverfahren_katalog`. Die Zahlen der Aufträge sind

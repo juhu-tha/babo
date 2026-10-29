@@ -65,18 +65,18 @@
     "Materialoptimierung.schritte": [
       {
         "titel": "Standard",
-        "erklaerung": "Vollplatte 20 cm, C25/30 mit CEM I (Lehrwert 245 kg CO₂-Äq./m³), Bewehrung 20 kg/m² (Elektrostahl, Lehrwert 0,7 kg CO₂-Äq./kg):",
-        "formel": "0{,}20 \\cdot 245 + 20 \\cdot 0{,}7 = 49{,}0 + 14{,}0 = 63{,}0\\,\\text{kg CO}_2\\text{-Äq./m}^2"
+        "erklaerung": "Vollplatte 20 cm, C30/37 mit 320 kg CEM I je m³ (Lehrwert 320 · 0,80 + 30 = 286 kg CO₂-Äq./m³), Bewehrung 20 kg/m² (Betonstahl, ÖKOBAUDAT „Bewehrungsstahl (de)“ 0,64 kg CO₂-Äq./kg):",
+        "formel": "0{,}20 \\cdot 286 + 20 \\cdot 0{,}64 = 57{,}2 + 12{,}8 = 70{,}0\\,\\text{kg CO}_2\\text{-Äq./m}^2"
       },
       {
         "titel": "Optimiert",
-        "erklaerung": "Hohlkörperdecke mit 25 % weniger Beton (0,15 m³/m²), CEM III/A (174 kg CO₂-Äq./m³), Bewehrung 18 kg/m²:",
-        "formel": "0{,}15 \\cdot 174 + 18 \\cdot 0{,}7 = 26{,}1 + 12{,}6 = 38{,}7\\,\\text{kg CO}_2\\text{-Äq./m}^2"
+        "erklaerung": "Hohlkörperdecke mit 25 % weniger Beton (0,15 m³/m²), CEM III/A (320 · 0,45 + 30 = 174 kg CO₂-Äq./m³), Bewehrung 18 kg/m²:",
+        "formel": "0{,}15 \\cdot 174 + 18 \\cdot 0{,}64 = 26{,}1 + 11{,}5 = 37{,}6\\,\\text{kg CO}_2\\text{-Äq./m}^2"
       },
       {
         "titel": "Einsparung",
         "erklaerung": "Relative Minderung:",
-        "formel": "\\frac{63{,}0 - 38{,}7}{63{,}0} = 39\\,\\%"
+        "formel": "\\frac{70{,}0 - 37{,}6}{70{,}0} = 46\\,\\%"
       }
     ],
     "Materialoptimierung.schritte_2": [

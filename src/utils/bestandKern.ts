@@ -18,6 +18,9 @@ export const GMODG_ANLAGE7 = {
 } as const;
 export type Bauteil = keyof typeof GMODG_ANLAGE7;
 
+/** Emissionsfaktor Erdgas [kg CO₂-Äq./kWh] nach GModG Anlage 9 (240 g/kWh, wie zuvor GEG Anlage 9). */
+export const CO2_ERDGAS = 0.24;
+
 /** Temperatur-Korrekturfaktor Fx (DIN V 4108-6, Tab. 3, Auswahl). */
 export const FX: Partial<Record<Bauteil, number>> = {
   aussenwand: 1.0, steildach_oGD: 0.8, flachdach: 1.0, kellerdecke_erdreich: 0.6, decke_aussenluft: 1.0,

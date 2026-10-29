@@ -8,8 +8,7 @@ import {
   Download,
   FileText,
   Info,
-  ArrowUpFromLine,
-  Disc
+  ArrowUpFromLine
 } from 'lucide-react';
 import { InlineMath } from 'react-katex';
 import {
@@ -28,6 +27,9 @@ import '@/src/lib/chartSetup';
 import { validateMechanicalTestIntegrity, exportToCSV, LabProtocolRecord } from '@/src/utils/labExportUtils';
 import { saveStoredLabProtocol } from '@/src/utils/studyStorage';
 import { AuswahlGruppe, alsOption } from '../ui/Auswahlgruppe';
+import { Fz } from '../ui/Formelzeichen';
+import { hoechstwert } from '@/src/calc/laborVersuch';
+import { useDiagrammFarben, linAchse, PfeilDefs, Masslinie, useSchriftFaktor } from './laborGrafik';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -55,7 +57,8 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
   const [currentStressMPa, setCurrentStressMPa] = useState(0);
   const [isDetached, setIsDetached] = useState(false);
 
-  const [curveData, setCurveData] = useState<{ x: number; y: number }[]>([]);
+  // Messreihe: Abhebung x (mm), Kraft F (kN) und Spannung σ (N/mm²) – die Diagrammart wählt nur die Darstellung
+  const [curveData, setCurveData] = useState<{ x: number; f: number; s: number }[]>([]);
   const [savedSuccess, setSavedSuccess] = useState(false);
   const [chartMode, setChartMode] = useState<'stress' | 'force'>('stress');
   const [showGrid, setShowGrid] = useState(false);
@@ -209,7 +212,7 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
     setSavedSuccess(false);
 
     const steps = 70;
-    const targetData: { x: number; y: number; forceKN: number; stressMPa: number }[] = [];
+    const targetData: { x: number; forceKN: number; stressMPa: number }[] = [];
 
     for (let i = 0; i <= steps; i++) {
       const frac = i / steps;
@@ -234,7 +237,6 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
       const force = (stress * stubArea) / 1000;
       targetData.push({
         x: Number(disp.toFixed(4)),
-        y: Number((chartMode === 'stress' ? stress : force).toFixed(3)),
         forceKN: Number(force.toFixed(3)),
         stressMPa: Number(stress.toFixed(3))
       });
@@ -245,7 +247,7 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
     intervalRef.current = setInterval(() => {
       if (currentStep < targetData.length) {
         const pt = targetData[currentStep];
-        setCurveData(targetData.slice(0, currentStep + 1).map(d => ({ x: d.x, y: d.y })));
+        setCurveData(targetData.slice(0, currentStep + 1).map(d => ({ x: d.x, f: d.forceKN, s: d.stressMPa })));
         const prog = (currentStep / steps) * 100;
         setProgress(prog);
 
@@ -280,24 +282,16 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
 
   useEffect(() => {
     handleReset();
-  }, [substrateSystem, stubDiameter, drillDepthMm, chartMode]);
+  }, [substrateSystem, stubDiameter, drillDepthMm]);
 
   useEffect(() => {
     return () => clearCurrentInterval();
   }, []);
 
-  // Observed peak metrics
-  const maxStressObserved = useMemo(() => {
-    if (curveData.length === 0) return 0;
-    if (chartMode === 'stress') {
-      return Math.max(...curveData.map(d => d.y), 0);
-    }
-    return (Math.max(...curveData.map(d => d.y), 0) * 1000) / stubArea;
-  }, [curveData, chartMode, stubArea]);
-
-  const maxForceObserved = useMemo(() => {
-    return (maxStressObserved * stubArea) / 1000;
-  }, [maxStressObserved, stubArea]);
+  // Höchstwerte der aufgezeichneten Kurve (nach dem Abriss fällt die Kraft auf 0)
+  const maxStressObserved = useMemo(() => Math.max(hoechstwert(curveData.map(d => ({ x: d.x, y: d.s }))).y, 0), [curveData]);
+  const maxForceObserved = useMemo(() => Math.max(hoechstwert(curveData.map(d => ({ x: d.x, y: d.f }))).y, 0), [curveData]);
+  const chartPunkte = useMemo(() => curveData.map(d => ({ x: d.x, y: chartMode === 'stress' ? d.s : d.f })), [curveData, chartMode]);
 
   // Archive protocol
   const handleArchive = () => {
@@ -332,8 +326,8 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
         'Bruchbild': systemConfig.fractureShare
       },
       metrics: {
-        'Haftzugfestigkeit fh (MPa)': formatDeZahl(maxStressObserved, 2),
-        'Abreißkraft Fmax (kN)': formatDeZahl(maxForceObserved, 2),
+        'Haftzugfestigkeit f_h (N/mm²)': formatDeZahl(maxStressObserved, 2),
+        'Abreißkraft F_max (kN)': formatDeZahl(maxForceObserved, 2),
         'Max. Stempelabhebung (mm)': formatDeZahl(currentDisplacementMm, 3),
         'Anforderungswert des Systems (Einzelversuch)': systemConfig.compliantTR ? 'Erfüllt' : 'Nicht erfüllt',
         'Prüfstatus': systemConfig.validTest ? 'Gültiger Versuch' : 'Ungültig (Kleberversagen)'
@@ -355,35 +349,21 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
     setTimeout(() => setSavedSuccess(false), 4000);
   };
 
+  const farben = useDiagrammFarben();
+  const fs = useSchriftFaktor();
+  const zeile = 20 * fs;
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
     animation: { duration: 0 },
     scales: {
-      x: {
-        type: 'linear' as const,
-        title: {
-          display: true,
-          text: 'Stempelabhebung / Mikrodehnung ΔL (mm)',
-          font: { weight: 'bold' as const, size: 12 }
-        },
-        min: 0,
-        max: maxDisplacementMm * 1.15,
-        grid: { display: showGrid, color: 'rgba(0,0,0,0.06)' }
-      },
-      y: {
-        type: 'linear' as const,
-        title: {
-          display: true,
-          text: chartMode === 'stress' ? 'Haftzugspannung σ (MPa = N/mm²)' : 'Zugkraft F (kN)',
-          font: { weight: 'bold' as const, size: 12 }
-        },
-        min: 0,
-        max: chartMode === 'stress'
-          ? Math.max(systemConfig.nominalStrength * 1.25, 3.0)
-          : Math.max(peakForceKN * 1.25, 5.0),
-        grid: { display: showGrid, color: 'rgba(0,0,0,0.06)' }
-      }
+      x: linAchse(farben, 'Stempelabhebung ΔL in mm', maxDisplacementMm * 1.05, showGrid),
+      y: linAchse(
+        farben,
+        chartMode === 'stress' ? 'σ in N/mm²' : 'F in kN',
+        chartMode === 'stress' ? Math.max(systemConfig.nominalStrength * 1.1, 3.0) : Math.max(peakForceKN * 1.1, 5.0),
+        showGrid
+      ),
     },
     plugins: {
       legend: { display: false },
@@ -391,12 +371,55 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
         callbacks: {
           title: (items: TooltipItem<'line'>[]) => `Abhebung ΔL = ${formatDeZahl(Number(items[0].parsed.x), 3)} mm`,
           label: (ctx: TooltipItem<'line'>) => chartMode === 'stress'
-            ? `Haftzugspannung: ${formatDeZahl(Number(ctx.parsed.y), 2)} MPa`
+            ? `Haftzugspannung: ${formatDeZahl(Number(ctx.parsed.y), 2)} N/mm²`
             : `Zugkraft: ${formatDeZahl(Number(ctx.parsed.y), 2)} kN`
         }
       }
     }
   };
+
+  // Schnitt durch Prüfstelle (Maßstab 2 px = 1 mm): Schicht oben, Untergrund unten, Ringnut, Prüfstempel, Abreißgerät
+  const CXH = 220;
+  const dPx = stubDiameter * 2;
+  const halb = dPx / 2;
+  const nut = 5;
+  const schichtOben = 128;
+  const schichtDicke = 30;
+  const fuge = schichtOben + schichtDicke;
+  const nutTiefe = drillDepthMm * 2;
+  const nutUnten = fuge + nutTiefe;
+  const fussAbstand = halb + 34;
+  // Bruchebene nach überwiegendem Bruchanteil: Untergrund (A), Kontaktfuge (A/B), Schicht (B) oder Klebefuge (Y)
+  const anteile: [number, number][] = [
+    [systemConfig.concreteShare, fuge + nutTiefe * 0.55],
+    [systemConfig.interfaceShare, fuge],
+    [systemConfig.mortarShare, schichtOben + schichtDicke * 0.5],
+    [systemConfig.glueShare, schichtOben],
+  ];
+  const bruchY = anteile.reduce((a, b) => (b[0] > a[0] ? b : a))[1];
+  const hub = isDetached ? 26 : 0;
+  const schichtFarbe = substrateSystem === 'os8_parkdeck' ? 'var(--pg-stahl3)' : 'var(--pg-beton)';
+  const haftLabel = `Schnitt durch die Prüfstelle: ${systemConfig.layerTopName} auf ${systemConfig.layerSubstrateName}, Ringnut ${formatDeWert(drillDepthMm)} mm in den Untergrund, aufgeklebter Prüfstempel Ø ${stubDiameter} mm, Abreißgerät mit Kraftmessdose 10 kN. `
+    + (testStatus === 'idle' ? 'Versuch noch nicht gestartet.' : isDetached ? `Stempel abgerissen, ${systemConfig.fractureType}: ${systemConfig.fractureShare}; Haftzugfestigkeit ${formatDeZahl(maxStressObserved, 2)} N/mm².` : `Zugkraft ${formatDeZahl(currentForceKN, 2)} kN.`);
+
+  // Bruchfläche an der Stempelunterseite als Kreisdiagramm der Bruchanteile
+  const bruchSegmente = [
+    { anteil: systemConfig.concreteShare, farbe: 'var(--pg-beton2)', name: 'Untergrund (A)' },
+    { anteil: systemConfig.interfaceShare, farbe: 'var(--pg-hartfaser)', name: 'Kontaktfuge (A/B)' },
+    { anteil: systemConfig.mortarShare, farbe: 'var(--pg-beton)', name: 'Schicht (B)' },
+    { anteil: systemConfig.glueShare, farbe: 'var(--pg-stahl3)', name: 'Klebefuge (Y)' },
+  ].filter(s => s.anteil > 0);
+  const kreisSektoren = (() => {
+    let start = -Math.PI / 2;
+    return bruchSegmente.map(s => {
+      const w = (s.anteil / 100) * Math.PI * 2;
+      const ende = start + w;
+      const p = (a: number) => `${48 + 40 * Math.cos(a)} ${48 + 40 * Math.sin(a)}`;
+      const d = s.anteil >= 100 ? 'M 8 48 A 40 40 0 1 1 88 48 A 40 40 0 1 1 8 48 Z' : `M 48 48 L ${p(start)} A 40 40 0 ${w > Math.PI ? 1 : 0} 1 ${p(ende)} Z`;
+      start = ende;
+      return { ...s, d };
+    });
+  })();
 
   return (
     <div className="flex flex-col gap-6 animate-in fade-in duration-300">
@@ -547,169 +570,88 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
             {/* Visual SVG Cross-Section & Apparatus */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-5 my-4 flex-1">
               
-              {/* SVG Simulator (12 cols) */}
-              <div className="md:col-span-12 bg-gradient-to-b from-slate-100 via-slate-50 to-slate-200 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 dark:bg-slate-900 p-4 rounded-xl border border-slate-300 dark:border-slate-800 flex flex-col items-center justify-center relative shadow-inner overflow-hidden min-h-[260px]">
-                
-                <svg width="100%" height="240" viewBox="0 0 600 240" className="overflow-visible select-none">
+              {/* Prüfstelle im Schnitt mit Abreißgerät */}
+              <figure className="pruefgeraet md:col-span-12 p-3 rounded-xl border flex flex-col items-center justify-center gap-2 m-0">
+                <svg viewBox={`0 0 440 ${fs > 1 ? 330 : 310}`} className="w-full max-w-[560px] h-auto select-none" role="img" aria-label={haftLabel}>
+                  <title>{haftLabel}</title>
+                  <PfeilDefs praefix="hzp" />
                   <defs>
-                    <linearGradient id="concreteGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#94a3b8" />
-                      <stop offset="100%" stopColor="#64748b" />
-                    </linearGradient>
-                    <linearGradient id="mortarGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#cbd5e1" />
-                      <stop offset="100%" stopColor="#94a3b8" />
-                    </linearGradient>
-                    <linearGradient id="steelStubGrad" x1="0" y1="0" x2="1" y2="0">
-                      <stop offset="0%" stopColor="#475569" />
-                      <stop offset="50%" stopColor="#94a3b8" />
-                      <stop offset="100%" stopColor="#334155" />
-                    </linearGradient>
-                    <pattern id="concretePatt" width="20" height="20" patternUnits="userSpaceOnUse">
-                      <circle cx="4" cy="4" r="2" fill="#475569" opacity="0.35" />
-                      <circle cx="14" cy="12" r="3" fill="#334155" opacity="0.4" />
-                      <circle cx="10" cy="18" r="1.5" fill="#1e293b" opacity="0.3" />
+                    <pattern id="hzp-beton" width="14" height="14" patternUnits="userSpaceOnUse">
+                      <circle cx="3" cy="4" r="2" fill="var(--pg-korn)" opacity="0.5" />
+                      <circle cx="10" cy="10" r="2.6" fill="var(--pg-korn)" opacity="0.45" />
                     </pattern>
+                    <clipPath id="hzp-kern"><rect x={CXH - halb} y="0" width={dPx} height={bruchY} /></clipPath>
                   </defs>
 
-                  {/* 1. Base Concrete Substrate (Altbeton) */}
-                  <rect x="40" y="140" width="520" height="90" fill="url(#concreteGrad)" rx="4" />
-                  <rect x="40" y="140" width="520" height="90" fill="url(#concretePatt)" rx="4" />
-                  <text x="50" y="215" fill="#ffffff" fontSize="11" fontWeight="bold" opacity="0.8">
-                    {systemConfig.layerSubstrateName}
-                  </text>
+                  {/* Untergrund und Schicht */}
+                  <rect x="20" y={fuge} width="400" height={238 - fuge} fill="var(--pg-beton2)" stroke="var(--pg-kontur)" strokeWidth="1.2" />
+                  <rect x="20" y={fuge} width="400" height={238 - fuge} fill="url(#hzp-beton)" />
+                  <rect x="20" y={schichtOben} width="400" height={schichtDicke} fill={schichtFarbe} stroke="var(--pg-kontur)" strokeWidth="1.2" />
+                  <line x1="20" y1={fuge} x2="420" y2={fuge} stroke="var(--pg-kontur)" strokeWidth="1.2" strokeDasharray="4 3" />
 
-                  {/* 2. Top Coating / Instandsetzungsmörtel Layer */}
-                  <rect x="40" y="110" width="520" height="30" fill={substrateSystem === 'os8_parkdeck' ? '#475569' : 'url(#mortarGrad)'} opacity="0.9" />
-                  {/* Interface Line (Verbundfuge) */}
-                  <line x1="40" y1="140" x2="560" y2="140" stroke="#64748b" strokeWidth="2" strokeDasharray="3,3" />
+                  {/* Ringnut (Kernbohrung) */}
+                  <rect x={CXH - halb - nut} y={schichtOben} width={nut} height={nutUnten - schichtOben} fill="var(--pg-grund)" stroke="var(--pg-kontur)" strokeWidth="0.8" />
+                  <rect x={CXH + halb} y={schichtOben} width={nut} height={nutUnten - schichtOben} fill="var(--pg-grund)" stroke="var(--pg-kontur)" strokeWidth="0.8" />
+                  <Masslinie praefix="hzp" schrift={12 * fs} x1={CXH + halb + nut + 10} y1={fuge} x2={CXH + halb + nut + 10} y2={nutUnten} text={`t = ${formatDeWert(drillDepthMm)} mm`} />
 
-                  <text x="50" y="128" fill={substrateSystem === 'os8_parkdeck' ? '#ffffff' : '#1e293b'} fontSize="11" fontWeight="bold">
-                    {systemConfig.layerTopName}
-                  </text>
-
-                  {/* 3. Core drill circular slot (Kernbohrung-Freischnitt Ringnut) */}
-                  {/* Left notch */}
-                  <rect x="230" y="105" width="8" height="50" fill="#1e293b" opacity="0.75" />
-                  {/* Right notch */}
-                  <rect x="362" y="105" width="8" height="50" fill="#1e293b" opacity="0.75" />
-
-                  {/* Dimension marker of drill depth */}
-                  <line x1="222" y1="110" x2="222" y2="155" stroke="#A3113E" strokeWidth="1.5" />
-                  <line x1="218" y1="110" x2="226" y2="110" stroke="#A3113E" strokeWidth="1.5" />
-                  <line x1="218" y1="155" x2="226" y2="155" stroke="#A3113E" strokeWidth="1.5" />
-                  <text x="180" y="136" fill="#A3113E" fontSize="10" fontWeight="bold">
-                    t = {formatDeWert(drillDepthMm)} mm
-                  </text>
-
-                  {/* 4. Pull-off Cylindrical Core (der freigebohrte Kern) */}
-                  {/* Dynamic vertical translation when detached */}
-                  <g transform={`translate(0, ${isDetached ? -28 : 0})`} className="transition-transform duration-500 ease-out">
-                    
-                    {/* Drilled concrete core portion (Unterer Betonkern) */}
-                    <rect
-                      x="238"
-                      y="140"
-                      width="124"
-                      height="15"
-                      fill={isDetached && systemConfig.concreteShare > 50 ? '#64748b' : 'url(#concreteGrad)'}
-                    />
-                    <rect x="238" y="140" width="124" height="15" fill="url(#concretePatt)" />
-
-                    {/* Drilled top layer portion (Oberer Schichtkern) */}
-                    <rect
-                      x="238"
-                      y="110"
-                      width="124"
-                      height="30"
-                      fill={substrateSystem === 'os8_parkdeck' ? '#475569' : 'url(#mortarGrad)'}
-                    />
-
-                    {/* Epoxy adhesive layer (Montagekleber für Prüfstempel) */}
-                    <rect x="238" y="106" width="124" height="4" fill="#64748b" stroke="#475569" strokeWidth="0.5" />
-
-                    {/* Steel Pull Stub (Prüfstempel aus Stahl) */}
-                    <rect x="238" y="80" width="124" height="26" fill="url(#steelStubGrad)" rx="3" stroke="#334155" strokeWidth="1.5" />
-                    
-                    {/* Stub Diameter label */}
-                    <text x="300" y="97" fill="#ffffff" fontSize="11" fontWeight="bold" textAnchor="middle">
-                      Ø {stubDiameter} mm Stempel
-                    </text>
-
-                    {/* Pull Lug / Adapter (Zugöse) */}
-                    <rect x="286" y="62" width="28" height="18" fill="#475569" rx="2" stroke="#1e293b" />
-                    <circle cx="300" cy="71" r="5" fill="#f1f5f9" stroke="#334155" strokeWidth="2" />
-
-                    {/* Pull Rod / Loading shaft */}
-                    <line x1="300" y1="62" x2="300" y2="20" stroke="#0f172a" strokeWidth="4" />
-
-                    {/* Tensile Force Vector Arrow */}
-                    {testStatus === 'running' && (
-                      <g className="animate-bounce">
-                        <polygon points="300,5 292,20 308,20" fill="#A3113E" />
-                        <text x="318" y="18" fill="#A3113E" fontSize="12" fontWeight="bold">
-                          F = {formatDeZahl(currentForceKN, 2)} kN
-                        </text>
-                      </g>
-                    )}
-
-                    {/* Fractured rough edge visual on detachment */}
-                    {isDetached && (
-                      <path
-                        d="M 238,155 Q 260,158 280,153 T 320,157 T 362,154"
-                        stroke="#A3113E"
-                        strokeWidth="2.5"
-                        fill="none"
-                      />
-                    )}
-                  </g>
-
-                  {/* Reaction frame / Testing device legs (Abreißprüfgerät Stützfüße) */}
-                  <g opacity="0.85">
-                    {/* Left foot */}
-                    <rect x="190" y="70" width="16" height="40" fill="#334155" rx="2" />
-                    <rect x="182" y="106" width="32" height="4" fill="#1e293b" rx="1" />
-                    {/* Right foot */}
-                    <rect x="394" y="70" width="16" height="40" fill="#334155" rx="2" />
-                    <rect x="386" y="106" width="32" height="4" fill="#1e293b" rx="1" />
-                    {/* Upper bridge / load cell box */}
-                    <rect x="175" y="45" width="250" height="26" fill="#1e293b" rx="4" stroke="#475569" strokeWidth="1.5" />
-                    <text x="300" y="62" fill="#64748b" fontSize="10" fontFamily="monospace" fontWeight="bold" textAnchor="middle">
-                      {testStatus === 'running'
-                        ? `KRAFT: ${formatDeZahl(currentForceKN, 2)} kN | ${formatDeZahl((currentStressMPa), 2)} MPa`
-                        : testStatus === 'finished'
-                        ? `MAX: ${formatDeZahl(maxForceObserved, 2)} kN | ${formatDeZahl(maxStressObserved, 2)} MPa`
-                        : 'KRAFTMESSDOSE 10 kN (BEREIT)'}
-                    </text>
-                  </g>
-
-                  {/* Failure Plane Marker after detachment */}
+                  {/* abgerissener Teil: Kern oberhalb der Bruchebene mit Kleber und Stempel */}
                   {isDetached && (
-                    <g>
-                      <rect x="420" y="15" width="170" height="52" fill="#ffffff" rx="8" stroke="#cbd5e1" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.1))" />
-                      <text x="430" y="32" fill="#A3113E" fontSize="11" fontWeight="bold">
-                        Bruch: {systemConfig.fractureType}
-                      </text>
-                      <text x="430" y="48" fill="#475569" fontSize="9">
-                        {systemConfig.fractureShare}
-                      </text>
-                      <text x="430" y="60" fill="#0f172a" fontSize="10" fontWeight="bold">
-                        f_h = {formatDeZahl(maxStressObserved, 2)} MPa
-                      </text>
-                    </g>
+                    <rect x={CXH - halb} y={schichtOben} width={dPx} height={bruchY - schichtOben + 3} fill="var(--pg-grund)" />
                   )}
+                  <g transform={`translate(0 ${-hub})`} className="transition-transform duration-500 ease-out">
+                    <g clipPath="url(#hzp-kern)">
+                      <rect x={CXH - halb} y={schichtOben} width={dPx} height={schichtDicke} fill={schichtFarbe} />
+                      <rect x={CXH - halb} y={fuge} width={dPx} height={nutTiefe + 4} fill="var(--pg-beton2)" />
+                      <rect x={CXH - halb} y={fuge} width={dPx} height={nutTiefe + 4} fill="url(#hzp-beton)" />
+                      <line x1={CXH - halb} y1={fuge} x2={CXH + halb} y2={fuge} stroke="var(--pg-kontur)" strokeWidth="1.2" strokeDasharray="4 3" />
+                    </g>
+                    {isDetached && (
+                      <path d={`M ${CXH - halb} ${bruchY} l ${dPx * 0.2} 3 l ${dPx * 0.2} -4 l ${dPx * 0.2} 4 l ${dPx * 0.2} -3 l ${dPx * 0.2} 2`} stroke="var(--pg-akzent)" strokeWidth="2" fill="none" />
+                    )}
+                    {/* Kleber und Prüfstempel */}
+                    <rect x={CXH - halb} y={schichtOben - 4} width={dPx} height="4" fill="var(--pg-hartfaser)" stroke="var(--pg-hartfaser-rand)" strokeWidth="0.6" />
+                    <rect x={CXH - halb} y={schichtOben - 24} width={dPx} height="20" rx="2" fill="var(--pg-stahl)" stroke="var(--pg-kontur)" strokeWidth="1.5" />
+                    {dPx >= 150 && <text x={CXH} y={schichtOben - 10} textAnchor="middle" fontSize={12 * fs} fill="var(--pg-text)">Stempel Ø {stubDiameter} mm</text>}
+                    <rect x={CXH - 9} y={schichtOben - 38} width="18" height="14" rx="2" fill="var(--pg-stahl2)" stroke="var(--pg-kontur)" strokeWidth="1" />
+                    <line x1={CXH} y1={schichtOben - 38} x2={CXH} y2="70" stroke="var(--pg-kontur)" strokeWidth="3.5" />
+                  </g>
+
+
+                  {/* Abreißgerät: Traverse mit Kraftmessdose auf zwei Füßen */}
+                  <rect x={CXH - fussAbstand - 8} y="70" width="16" height={schichtOben - 74} fill="var(--pg-stahl2)" stroke="var(--pg-kontur)" strokeWidth="1.2" />
+                  <rect x={CXH + fussAbstand - 8} y="70" width="16" height={schichtOben - 74} fill="var(--pg-stahl2)" stroke="var(--pg-kontur)" strokeWidth="1.2" />
+                  <rect x={CXH - fussAbstand - 16} y={schichtOben - 6} width="32" height="6" rx="1" fill="var(--pg-stahl3)" stroke="var(--pg-kontur)" strokeWidth="1" />
+                  <rect x={CXH + fussAbstand - 16} y={schichtOben - 6} width="32" height="6" rx="1" fill="var(--pg-stahl3)" stroke="var(--pg-kontur)" strokeWidth="1" />
+                  <rect x={CXH - Math.max(fussAbstand + 16, 100)} y="40" width={2 * Math.max(fussAbstand + 16, 100)} height="30" rx="4" fill="var(--pg-stahl)" stroke="var(--pg-kontur)" strokeWidth="1.5" />
+                  <text x={CXH} y="60" textAnchor="middle" fontSize={13 * fs} fontWeight="bold" fill="var(--pg-text)">
+                    {testStatus === 'running'
+                      ? `F = ${formatDeZahl(currentForceKN, 2)} kN`
+                      : testStatus === 'finished'
+                        ? <>F<tspan fontSize={10 * fs} dy="3">max</tspan><tspan dy="-3"> = {formatDeZahl(maxForceObserved, 2)} kN</tspan></>
+                        : 'Kraftmessdose 10 kN'}
+                  </text>
+
+                  {/* Zugkraft */}
+                  <line x1={CXH} y1="38" x2={CXH} y2="6" stroke="var(--pg-akzent)" strokeWidth="2.5" markerEnd="url(#hzp-pfeil)" opacity={testStatus === 'idle' ? 0.45 : 1} />
+                  <text x={CXH + 10} y="22" fontSize={12 * fs} fontWeight="bold" fill="var(--pg-akzent)">Zugkraft F</text>
+
+                  {/* Legende */}
+                  <rect x="20" y={252} width="16" height="10" fill={schichtFarbe} stroke="var(--pg-kontur)" strokeWidth="0.8" />
+                  <text x="42" y={261 + (fs - 1) * 4} fontSize={12 * fs} fill="var(--pg-text)">{systemConfig.layerTopName}</text>
+                  <rect x="20" y={252 + zeile} width="16" height="10" fill="var(--pg-beton2)" stroke="var(--pg-kontur)" strokeWidth="0.8" />
+                  <text x="42" y={261 + zeile + (fs - 1) * 4} fontSize={12 * fs} fill="var(--pg-text)">{systemConfig.layerSubstrateName}</text>
+                  <rect x="20" y={252 + 2 * zeile} width="16" height="6" fill="var(--pg-stahl)" stroke="var(--pg-kontur)" strokeWidth="0.8" />
+                  <rect x="20" y={258 + 2 * zeile} width="16" height="3" fill="var(--pg-hartfaser)" stroke="var(--pg-hartfaser-rand)" strokeWidth="0.5" />
+                  <text x="42" y={261 + 2 * zeile + (fs - 1) * 4} fontSize={12 * fs} fill="var(--pg-text)">Prüfstempel Ø {stubDiameter} mm (aufgeklebt)</text>
                 </svg>
 
-                {/* Progress bar during test */}
+                {/* Fortschritt */}
                 {testStatus === 'running' && (
-                  <div className="w-full max-w-md bg-slate-200 h-2 rounded-full overflow-hidden mt-2 border border-slate-300">
-                    <div
-                      className="bg-shiraz h-full transition-all duration-75"
-                      style={{ width: `${progress}%` }}
-                    />
+                  <div className="w-full max-w-md bg-slate-200 h-2 rounded-full overflow-hidden border border-slate-300" aria-hidden="true">
+                    <div className="bg-shiraz h-full transition-all duration-75" style={{ width: `${progress}%` }} />
                   </div>
                 )}
-              </div>
+              </figure>
 
               {/* Chart Section (12 cols) */}
               <div className="md:col-span-12 bg-white p-4 rounded-xl border border-home-grau/30 shadow-xs flex flex-col gap-3">
@@ -729,7 +671,7 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
                           chartMode === 'stress' ? 'bg-shiraz text-white shadow-xs' : 'text-text-main/70 hover:text-text-main'
                         }`}
                       >
-                        Spannung (MPa)
+                        Spannung (N/mm²)
                       </button>
                       <button {...alsOption(chartMode === 'force')}
                         onClick={() => setChartMode('force')}
@@ -759,10 +701,10 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
                     data={{
                       datasets: [
                         {
-                          label: chartMode === 'stress' ? 'Haftzugspannung σ (MPa)' : 'Prüfkraft F (kN)',
-                          data: curveData,
-                          borderColor: '#A3113E', // Shiraz
-                          backgroundColor: 'rgba(139, 21, 56, 0.1)',
+                          label: chartMode === 'stress' ? 'Haftzugspannung σ (N/mm²)' : 'Prüfkraft F (kN)',
+                          data: chartPunkte,
+                          borderColor: farben.linie,
+                          backgroundColor: farben.flaeche,
                           borderWidth: 2.5,
                           pointRadius: 0,
                           tension: 0.1
@@ -777,28 +719,28 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
               {/* Real-time Telemetry Cards (12 cols) */}
               <div className="md:col-span-12 grid grid-cols-2 sm:grid-cols-4 gap-3">
                 <div className="bg-off-white p-3 rounded-xl border border-home-grau/20">
-                  <span className="text-[10px] uppercase font-bold text-text-main/60 block">Aktuelle Zugkraft F</span>
+                  <span className="text-[11px] uppercase font-bold text-text-main/60 block">Aktuelle Zugkraft <Fz>F</Fz></span>
                   <span className="text-xl font-bold font-mono text-text-main">
                     {formatDeZahl(currentForceKN, 2)} <span className="text-xs font-normal">kN</span>
                   </span>
                 </div>
 
                 <div className="bg-off-white p-3 rounded-xl border border-home-grau/20">
-                  <span className="text-[10px] uppercase font-bold text-text-main/60 block">Haftzugspannung σ</span>
+                  <span className="text-[11px] uppercase font-bold text-text-main/60 block">Haftzug&shy;spannung <Fz>σ</Fz></span>
                   <span className="text-xl font-bold font-mono text-shiraz">
-                    {formatDeZahl(currentStressMPa, 2)} <span className="text-xs font-normal">MPa</span>
+                    {formatDeZahl(currentStressMPa, 2)} <span className="text-xs font-normal">N/mm²</span>
                   </span>
                 </div>
 
                 <div className="bg-off-white p-3 rounded-xl border border-home-grau/20">
-                  <span className="text-[10px] uppercase font-bold text-text-main/60 block">Höchstwert f_h</span>
+                  <span className="text-[11px] uppercase font-bold text-text-main/60 block">Höchstwert <Fz idx="h">f</Fz></span>
                   <span className="text-xl font-bold font-mono text-emerald-700">
                     {formatDeZahl(maxStressObserved, 2)} <span className="text-xs font-normal">N/mm²</span>
                   </span>
                 </div>
 
                 <div className="bg-off-white p-3 rounded-xl border border-home-grau/20">
-                  <span className="text-[10px] uppercase font-bold text-text-main/60 block">Bruchtyp nach EN 1542</span>
+                  <span className="text-[11px] uppercase font-bold text-text-main/60 block">Bruchtyp nach EN 1542</span>
                   <span className="text-sm font-bold font-mono text-text-main block truncate">
                     {testStatus === 'finished' ? systemConfig.fractureType : '–'}
                   </span>
@@ -808,36 +750,23 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
               {/* Fracture Surface Inspection (Bruchflächen-Analyse des Stempels) */}
               {testStatus === 'finished' && (
                 <div className="md:col-span-12 bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row items-center gap-5">
-                  <div className="flex-shrink-0 flex flex-col items-center">
-                    <div className="w-24 h-24 rounded-full border-4 border-slate-700 shadow-md relative overflow-hidden flex items-center justify-center bg-slate-300">
-                      {/* Visual representations of fracture shares */}
-                      {systemConfig.concreteShare > 0 && (
-                        <div
-                          className="absolute inset-0 bg-slate-500 opacity-90"
-                          style={{ clipPath: `inset(0 0 ${100 - systemConfig.concreteShare}% 0)` }}
-                        />
-                      )}
-                      {systemConfig.interfaceShare > 0 && (
-                        <div
-                          className="absolute inset-0 bg-amber-400 opacity-90"
-                          style={{ clipPath: `inset(${systemConfig.concreteShare}% 0 0 0)` }}
-                        />
-                      )}
-                      {systemConfig.mortarShare > 0 && (
-                        <div
-                          className="absolute inset-0 bg-slate-400 opacity-90"
-                          style={{ clipPath: `inset(${systemConfig.concreteShare + systemConfig.interfaceShare}% 0 0 0)` }}
-                        />
-                      )}
-                      {systemConfig.glueShare > 0 && (
-                        <div className="absolute inset-0 bg-amber-500 opacity-95" />
-                      )}
-                      <Disc size={36} className="text-white/40 absolute" />
-                    </div>
-                    <span className="text-[10px] font-mono font-bold text-slate-500 mt-1">
+                  <figure className="pruefgeraet flex-shrink-0 flex flex-col items-center m-0 p-2 rounded-xl border">
+                    <svg viewBox="0 0 96 96" className="w-24 h-24" role="img" aria-label={`Bruchfläche an der Stempelunterseite: ${bruchSegmente.map(s => `${s.name} ${s.anteil} %`).join(', ')}`}>
+                      {kreisSektoren.map(s => <path key={s.name} d={s.d} fill={s.farbe} stroke="var(--pg-kontur)" strokeWidth="0.8" />)}
+                      <circle cx="48" cy="48" r="40" fill="none" stroke="var(--pg-kontur)" strokeWidth="2.5" />
+                    </svg>
+                    <figcaption className="text-[11px] font-mono font-bold mt-1" style={{ color: 'var(--pg-text2)' }}>
                       Stempelunterseite Ø {stubDiameter} mm
-                    </span>
-                  </div>
+                    </figcaption>
+                    <ul className="mt-1 space-y-0.5 text-[11px]" style={{ color: 'var(--pg-text)' }}>
+                      {bruchSegmente.map(s => (
+                        <li key={s.name} className="flex items-center gap-1.5">
+                          <svg width="10" height="10" aria-hidden="true"><rect width="10" height="10" fill={s.farbe} stroke="var(--pg-kontur)" strokeWidth="1" /></svg>
+                          {s.name}
+                        </li>
+                      ))}
+                    </ul>
+                  </figure>
 
                   <div className="flex-1 space-y-1.5 text-xs text-text-main">
                     <div className="flex items-center justify-between">
@@ -900,8 +829,8 @@ export default function HaftzugPruefung({ onNavigateToProtocols }: { onNavigateT
                   <button
                     onClick={() => {
                       if (curveData.length === 0) return;
-                      const rows = curveData.map(d => [d.x, d.y, ((d.y * 1000) / stubArea).toFixed(3)]);
-                      exportToCSV(`Haftzug_${substrateSystem}_d${stubDiameter}`, ['Abhebung_mm', 'Kraft_kN', 'Spannung_MPa'], rows);
+                      const rows = curveData.map(d => [d.x, d.f, d.s.toFixed(3)]);
+                      exportToCSV(`Haftzug_${substrateSystem}_d${stubDiameter}`, ['Abhebung_mm', 'Kraft_kN', 'Spannung_N_mm2'], rows);
                     }}
                     disabled={curveData.length === 0}
                     className="py-2.5 px-3.5 bg-off-white hover:bg-slate-200 text-text-main border border-home-grau/30 rounded-xl font-bold text-xs transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50"

@@ -1,39 +1,41 @@
-# Entwurf: Ausschreibung Bachelorarbeit „Unabhängige Prüfung des BaustoffBoards“
+# Ausschreibung Bachelorarbeit „Unabhängige Prüfung des BaustoffBoards“
 
-Stand: 28.10.2026 · Entwurf für Prof. Dr.-Ing. Jürgen Huber · Entscheidung 28.10.2026: als Bachelorarbeit (12 ECTS, ohne Vergütung), einschließlich manueller BITV-Stichprobe · Teil A ist der Ausschreibungstext, Teil B bis E sind die Arbeitsunterlagen, Teil F die Quellen.
+Stand: 29.10.2026 · Entscheidung 28.10.2026: Bachelorarbeit (12 ECTS, ohne Vergütung), Beginn ab sofort (WiSe 2026/27), einschließlich BITV-Stichprobe und Abgleich eines Normtext-Prüfbogens · Teil A ist der Ausschreibungstext (eine Seite), Teil B bis F sind die Arbeitsunterlagen, Teil G die Quellen.
 
 ---
 
 ## A. Ausschreibungstext
 
-**Technische Hochschule Augsburg · Professur für Werkstoffe und Stoffkreisläufe im Bauwesen · Prof. Dr.-Ing. Jürgen Huber**
+**Technische Hochschule Augsburg · Fakultät für Architektur und Bauwesen · Lehrgebiet Werkstoffe und Stoffkreisläufe im Bauwesen**
 
-### Bachelorarbeit (12 ECTS): Gegenrechnung, Nutzertest und Barrierefreiheitsprüfung einer Lernplattform für Baustoffkunde
+### Bachelorarbeit (12 ECTS): Prüfung einer Lernplattform für Baustoffkunde – Gegenrechnung, Nutzertest, Barrierefreiheit, Normabgleich
 
-Das BaustoffBoard (www.baustoffboard.de) ist die interaktive Lernplattform der Professur für Baustoffkunde, Bauen im Bestand und nachhaltiges Bauen. Sie enthält über 50 Rechenkerne, zum Beispiel für Biegebemessung, Mischungsberechnung, Glaser-Verfahren und Mauerwerk. Die Rechenkerne sind mit automatischen Tests abgesichert, die Barrierefreiheit mit automatischen Prüfwerkzeugen. Was noch fehlt, ist eine **unabhängige Gegenrechnung von Hand**, ein **Test mit Studierenden** und eine **manuelle Prüfung mit Screenreadern**.
+Das BaustoffBoard (www.baustoffboard.de) ist die Lernplattform des Lehrgebiets für Baustoffkunde, Bauen im Bestand und nachhaltiges Bauen. Sie enthält über 50 Rechenkerne, unter anderem für Biegebemessung, Mischungsberechnung, Glaser-Verfahren und Mauerwerk. Die Rechenkerne sind mit automatischen Tests abgesichert, die Barrierefreiheit mit automatischen Prüfwerkzeugen. Gegenstand der Arbeit ist eine unabhängige Prüfung von Hand.
 
-**Aufgaben**
+**Inhalte**
 
-1. **Gegenrechnung (Teil B):** Sie rechnen 10 Rechner der Plattform unabhängig nach: von Hand oder mit einer eigenen Tabellenkalkulation, auf Grundlage der Normen und Fachliteratur aus der Hochschulbibliothek. Je Rechner gibt es drei Fälle: einen Regelfall, einen Randfall und einen Fall an der Anwendungsgrenze. Sie dokumentieren Abweichungen und begründen sie (Rundung, Vereinfachung, Fehler).
-2. **Nutzertest (Teil C):** Sie führen einen moderierten Nutzertest mit 5 Studierenden durch. Dazu gehören ein Testskript mit 9 Aufgaben, ein Beobachtungsbogen und der System Usability Scale (SUS). Sie werten den Test aus und leiten priorisierte Verbesserungsvorschläge ab.
-3. **BITV-Stichprobe (Teil D):** Sie prüfen 8 ausgewählte Seiten von Hand auf Barrierefreiheit nach BITV 2.0 bzw. den §§ 9 bis 11 BayDiV (Prüfmaßstab EN 301 549, Kapitel 9, entspricht WCAG 2.1 Stufe AA): mit Tastatur, Vergrößerung und zwei Screenreadern (NVDA mit Firefox unter Windows, VoiceOver mit Safari unter macOS).
-4. **Bachelorarbeit (Teil E):** Sie fassen die drei Teile in der Arbeit zusammen. Kern ist eine gemeinsame Mängelliste mit Fundstelle, Schweregrad und Vorschlag.
+1. **Gegenrechnung von 10 Rechnern (Teil B):** je Rechner drei Fälle (Regelfall, Randfall, Anwendungsgrenze), von Hand oder mit eigener Tabellenkalkulation auf Grundlage von Normen und Fachliteratur; Abweichungen dokumentieren und begründen.
+2. **Nutzertest mit 5 Studierenden (Teil C):** moderierter Test mit 9 Aufgaben, Beobachtungsbogen und System Usability Scale (SUS); Auswertung und priorisierte Verbesserungsvorschläge.
+3. **BITV-Stichprobe (Teil D):** manuelle Prüfung von 8 Seiten nach BITV 2.0 bzw. §§ 9 bis 11 BayDiV (EN 301 549, Kapitel 9, entspricht WCAG 2.1 Stufe AA) mit Tastatur, Vergrößerung und zwei Screenreadern.
+4. **Abgleich eines Normtext-Prüfbogens (Teil E):** rund 35 Fundstellen, an denen die Plattform Werte oder Regeln als „vorläufig“ kennzeichnet, werden mit dem Normtext verglichen (Normen über die Hochschulbibliothek).
+
+Ergebnis ist eine gemeinsame Mängelliste mit Fundstelle, Schweregrad und Vorschlag (Teil F).
 
 **Voraussetzungen**
 
-- Bachelorstudium Bauingenieurwesen, Architektur oder E2D; Zulassung zur Bachelorarbeit nach der Studien- und Prüfungsordnung. Baustoffkunde und Grundlagen der Bemessung (Stahlbeton, Holz, Mauerwerk, Bauphysik) sind abgeschlossen.
-- Sorgfältiges, nachvollziehbares Arbeiten; sicherer Umgang mit Tabellenkalkulation.
-- Programmierkenntnisse und Vorkenntnisse in Barrierefreiheit sind nicht erforderlich. Die Einarbeitung in die Screenreader gehört zur Arbeit.
+- Bachelorstudium Bauingenieurwesen, Architektur oder E2D; Zulassung zur Bachelorarbeit nach der Studien- und Prüfungsordnung (SPO).
+- Baustoffkunde und Grundlagen der Bemessung (Stahlbeton, Holz, Mauerwerk, Bauphysik) abgeschlossen; sicherer Umgang mit Tabellenkalkulation.
+- Programmierkenntnisse und Vorkenntnisse in Barrierefreiheit sind nicht erforderlich.
 
 **Rahmen**
 
-- **Bachelorarbeit mit 12 ECTS, ohne Vergütung.** Bearbeitungszeit und Anmeldung nach der Studien- und Prüfungsordnung des Studiengangs [bitte ergänzen: Studiengang, Bearbeitungszeit nach SPO].
-- Arbeitsaufwand bei 12 ECTS rund 360 h (30 h je ECTS-Punkt). Richtwerte: Einarbeitung und Literatur 30 h, Gegenrechnung 150 h, Nutzertest mit Auswertung 50 h, BITV-Stichprobe 60 h, Niederschrift 70 h.
-- Möglicher Titel: „Verifikation, Gebrauchstauglichkeit und Barrierefreiheit digitaler Lehrwerkzeuge in der Baustoffkunde am Beispiel des BaustoffBoards“.
-- Beginn: [bitte ergänzen]
-- Die Ergebnisse fließen in die Plattform ein. Auf Wunsch werden Sie in der Versionshistorie als Mitwirkende/r genannt.
+- Bachelorarbeit mit 12 ECTS, ohne Vergütung; Anmeldung und Bearbeitungszeit nach der SPO des Studiengangs.
+- Arbeitsaufwand rund 360 h (30 h je ECTS-Punkt). Richtwerte: Einarbeitung 25 h, Gegenrechnung 120 h, Nutzertest 45 h, BITV-Stichprobe 50 h, Normabgleich 50 h, Niederschrift 70 h.
+- Beginn: ab sofort (Wintersemester 2026/27).
+- Betreuung: Lehrgebiet Werkstoffe und Stoffkreisläufe im Bauwesen; Zweitprüfung nach SPO.
+- Die Ergebnisse fließen in die Plattform ein.
 
-**Kontakt:** Prof. Dr.-Ing. Jürgen Huber, [bitte ergänzen: Raum, Sprechstunde]
+**Kontakt:** über das Lehrgebiet Werkstoffe und Stoffkreisläufe im Bauwesen, Fakultät für Architektur und Bauwesen.
 
 ---
 
@@ -61,7 +63,7 @@ Ersatzkandidaten, falls ein Rechner während der Arbeit überarbeitet wird: Lebe
 1. Die Eingaben im Rechner einstellen und einen Bildschirmausschnitt des Ergebnisses ablegen.
 2. Die Handrechnung unabhängig führen, ohne den Programmcode zu lesen. Grundlage sind Norm, Fachbuch oder Herstellerunterlage.
 3. Den App-Wert eintragen und die Abweichung als Prozentwert bilden: (App − Hand) / Hand · 100 %.
-4. Bewerten: Bis ±1 % gilt die Abweichung als Rundung. Bei ±1 % bis ±5 % ist sie zu begründen (Vereinfachung, anderer Beiwert). Ab ±5 % liegt ein Befund für Prof. Huber vor.
+4. Bewerten: Bis ±1 % gilt die Abweichung als Rundung. Bei ±1 % bis ±5 % ist sie zu begründen (Vereinfachung, anderer Beiwert). Ab ±5 % liegt ein Befund vor, der dem Lehrgebiet gemeldet wird.
 5. Erst danach in `src/data/rechnerGrenzen.ts` und im Hinweistext des Rechners nachsehen, ob die Abweichung als Vereinfachung dokumentiert ist.
 
 **Protokollvorlage Gegenrechnung**
@@ -200,22 +202,42 @@ Die Versionen von System, Browser und Screenreader stehen im Protokoll.
 
 ---
 
-## E. Ablauf, Betreuung und Ergebnisformat
+## E. Abgleich des Normtext-Prüfbogens
+
+**Gegenstand:** Die Plattform kennzeichnet Werte, Tabellen und Regeln, die nur mit dem Normtext bestätigt werden können, als „vorläufig, F-Freigabe“. Das Lehrgebiet stellt daraus einen Prüfbogen mit rund 35 Fundstellen zusammen (Rechner und Lernmodule; jeweils Fundstelle, Aussage der Plattform, Norm mit Ausgabe und Abschnitt bzw. Tabelle).
+
+**Vorgehen je Fundstelle**
+
+1. Norm in der gültigen Ausgabe mit Nationalem Anhang über die Hochschulbibliothek einsehen; Ausgabe und Abschnitt notieren.
+2. Aussage der Plattform mit dem Normtext vergleichen: bestätigt / abweichend / nicht in dieser Norm geregelt.
+3. Bei Abweichung den richtigen Wert bzw. die richtige Regel mit Fundstelle angeben, ohne den Normtext wörtlich zu übernehmen (Urheberrecht).
+
+**Protokollvorlage Normabgleich**
+
+| Nr. | Fundstelle (Modul bzw. Rechner) | Aussage der Plattform | Norm, Ausgabe, Abschnitt/Tabelle | Ergebnis (bestätigt / abweichend / nicht geregelt) | Bemerkung, Vorschlag |
+|---|---|---|---|---|---|
+| N1 | … | … | … | … | … |
+| … | … | … | … | … | … |
+
+---
+
+## F. Ablauf, Betreuung und Ergebnisformat
 
 **Ablauf** (Richtwert für rund 20 Wochen Bearbeitungszeit; an die SPO anpassen)
 
 | Phase | Inhalt | Wochen | Meilenstein |
 |---|---|---|---|
 | 1 | Einarbeitung: Plattform, Normen, SUS, WCAG/EN 301 549, Grundbedienung der Screenreader | 1–2 | Arbeitsplan und Gliederung abgestimmt |
-| 2 | Gegenrechnung Rechner 1–5 | 3–6 | Zwischenstand 1: 15 Fälle mit Rechenweg |
-| 3 | Gegenrechnung Rechner 6–10 | 7–10 | 30 Fälle vollständig |
-| 4 | Nutzertest: Vorbereitung, Probelauf, 5 Sitzungen, Auswertung | 9–13 | Zwischenstand 2: Nutzertest ausgewertet |
-| 5 | BITV-Stichprobe in U1 bis U3 | 12–15 | Protokoll vollständig |
-| 6 | Mängelliste zusammenführen, Niederschrift, Abgabe | 16–20 | Abgabe |
+| 2 | Gegenrechnung Rechner 1–5 | 3–5 | Zwischenstand 1: 15 Fälle mit Rechenweg |
+| 3 | Gegenrechnung Rechner 6–10 | 6–8 | 30 Fälle vollständig |
+| 4 | Nutzertest: Vorbereitung, Probelauf, 5 Sitzungen, Auswertung | 8–11 | Zwischenstand 2: Nutzertest ausgewertet |
+| 5 | BITV-Stichprobe in U1 bis U3 | 11–13 | Protokoll vollständig |
+| 6 | Abgleich des Normtext-Prüfbogens | 13–16 | rund 35 Fundstellen bewertet |
+| 7 | Mängelliste zusammenführen, Niederschrift, Abgabe | 17–20 | Abgabe |
 
 **Betreuung**
 
-- Erstbetreuung: Prof. Dr.-Ing. Jürgen Huber; Zweitprüfer/in [bitte ergänzen].
+- Betreuung durch das Lehrgebiet Werkstoffe und Stoffkreisläufe im Bauwesen; Zweitprüfung nach SPO.
 - Abstimmung alle zwei Wochen (30 min) und nach jedem Meilenstein.
 - Befunde ab Schweregrad 3 und Abweichungen ab ±5 % werden zeitnah gemeldet, damit sie noch während der Arbeit behoben werden können. Behobene Punkte bleiben in der Mängelliste mit dem Vermerk „behoben in Version …“.
 - Für die Gegenrechnung ist kein Zugriff auf den Programmcode nötig (Teil B, Schritt 2). Wird ein Rechner während der Arbeit überarbeitet, tritt ein Ersatzkandidat aus Teil B an seine Stelle.
@@ -223,14 +245,14 @@ Die Versionen von System, Browser und Screenreader stehen im Protokoll.
 
 **Ergebnisformat**
 
-1. **Bachelorarbeit** (PDF, Umfang nach SPO): Einleitung, Grundlagen, Methode, Ergebnisse der drei Teile, Diskussion, Fazit.
-2. **Mängelliste** als Tabelle (CSV oder XLSX) mit den Spalten Nr., Teil (B/C/D), Seite bzw. Rechner, Fundstelle, Beschreibung, Schweregrad (1–4), Abweichung in % (nur Teil B), WCAG-Kriterium (nur Teil D), Vorschlag, Status.
-3. **Anlagen:** Rechenwege der 30 Fälle mit Quellen, ausgefüllte Beobachtungs- und SUS-Bögen (ohne Namen), BITV-Protokoll mit den Versionen der Prüfumgebungen, Bildschirmausschnitte.
+1. **Bachelorarbeit** (PDF, Umfang nach SPO): Einleitung, Grundlagen, Methode, Ergebnisse der vier Teile, Diskussion, Fazit.
+2. **Mängelliste** als Tabelle (CSV oder XLSX) mit den Spalten Nr., Teil (B/C/D/E), Seite bzw. Rechner, Fundstelle, Beschreibung, Schweregrad (1–4), Abweichung in % (nur Teil B), WCAG-Kriterium (nur Teil D), Norm und Abschnitt (nur Teil E), Vorschlag, Status.
+3. **Anlagen:** Rechenwege der 30 Fälle mit Quellen, ausgefüllte Beobachtungs- und SUS-Bögen (ohne Namen), BITV-Protokoll mit den Versionen der Prüfumgebungen, Protokoll des Normabgleichs, Bildschirmausschnitte.
 4. **Kurzfassung** (1 Seite) für die Versionshistorie der Plattform.
 
 ---
 
-## F. Quellen
+## G. Quellen
 
 - Brooke, J.: SUS – A quick and dirty usability scale. In: Jordan, P. W. u. a. (Hrsg.): Usability Evaluation in Industry. London: Taylor & Francis, 1996, S. 189–194.
 - Rummel, B.: System Usability Scale – jetzt auch auf Deutsch. SAP Community (Übersetzung von 2013), <https://community.sap.com/t5/additional-blog-posts-by-sap/system-usability-scale-jetzt-auch-auf-deutsch/ba-p/13487686>

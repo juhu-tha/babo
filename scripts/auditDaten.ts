@@ -53,11 +53,11 @@ function dateienIn(wurzel: string, ordner: string, endung: RegExp): string[] {
 /** Fachgebiet je Fundstelle: zuerst nach Dateipfad, sonst nach Stichworten im Kontext (Reihenfolge = Vorrang) */
 export const FACHGEBIETE: readonly { name: string; datei: RegExp; text: RegExp }[] = [
   { name: 'Bauphysik – Schallschutz', datei: /schall/i, text: /Trittschall|DIN 4109|L′_n,w|L'_n,w/ },
-  { name: 'Bauphysik – Feuchteschutz', datei: /glaser|feuchte/i, text: /Glaser|DIN 4108-3|Tauwasser/ },
+  { name: 'Bauphysik – Feuchteschutz', datei: /glaser|feuchte/i, text: /Glaser|DIN 4108-3|Tauwasser|DIN EN ISO 10456/ },
   { name: 'Holzbau', datei: /holz|bspSchwingung/i, text: /Holzbau|DIN EN 1995|Brettsperrholz/ },
   { name: 'Mauerwerk', datei: /mauerwerk/i, text: /Mauerwerk|DIN EN 1996|KS-Tragfähigkeit/ },
   { name: 'Geotechnik', datei: /boden|atterberg/i, text: /Fließgrenze|Atterberg|17892|DIN 18122|14688|Zustandsform/ },
-  { name: 'Nachhaltigkeit (LCA/LCC)', datei: /lca|lcc|materialoptimierung|oekobilanz|modulD|dafstb|cbam/i, text: /QNG|ÖKOBAUDAT|Ökobilanz|Restwert|Modul D|EN 15804|KrWG|CBAM/ },
+  { name: 'Nachhaltigkeit (LCA/LCC)', datei: /lca|lcc|materialoptimierung|oekobilanz|modulD|dafstb|cbam|energieausweis/i, text: /QNG|ÖKOBAUDAT|Ökobilanz|Restwert|Modul D|EN 15804|KrWG|CBAM|GModG|DIN\/TS 18599/ },
   { name: 'Stahl & Korrosionsschutz', datei: /korrosionsschutz|eisenKohlenstoff|stahlbau/i, text: /ISO 12944|DIN EN 10025|Eisen-Kohlenstoff/ },
   { name: 'Prüfverfahren & Bauwerksdiagnostik', datei: /pruefverfahren|bauwerksuntersuchung|karsten|zfp/i, text: /Prüfverfahren|Rückprall|Karsten/ },
   { name: 'Verkehrswege- & Tunnelbau', datei: /verkehrswegebau|tunnel|tiefbau|asphalt/i, text: /Tunnel|ZTV-ING|RStO|DWA-A 138|Rigole|f_Ort|ZTV Asphalt|Bitumen/ },
@@ -160,10 +160,11 @@ export function prueflistenKopf(text: string): QuizClusterZaehlung['liste'] {
 
 /**
  * Fragen, die seit den Prüflisten vom 26./27.10.2026 (#186) neu hinzugekommen sind: Z24-Themen aus #190
- * (qz24_*: t-Test, Trittschall, Atterberg) und #191 (Mohr-Coulomb, Bruchlinien, Eisen-Kohlenstoff).
+ * (qz24_*: t-Test, Trittschall, Atterberg) und #191 (Mohr-Coulomb, Bruchlinien, Eisen-Kohlenstoff); qt_*: Aufstockung der
+ * Teilmodule auf je 6 Fragen (QZ-6, 29.10.2026).
  * Neue Fragen werden auffällig, solange sie nicht freigegeben sind (verified ≠ true). Weitere neue Fragenblöcke hier ergänzen.
  */
-export const NEU_SEIT_26_10 = /^(qz24_|qn_festigkeit_mohr_|qn_formaenderungen_bl_|qn_stahl_fec_)/;
+export const NEU_SEIT_26_10 = /^(qz24_|qn_festigkeit_mohr_|qn_formaenderungen_bl_|qn_stahl_fec_|qt_)/;
 
 /** Auffällig = Vorprüfung „korrigiert“/„fraglich“, offener Prüfhinweis oder neu seit 26.10. und nicht freigegeben (gleiche Regel wie scripts/pruefliste.ts) */
 export function istAuffaellig(q: Frage, hinweise: ReadonlySet<string>): boolean {

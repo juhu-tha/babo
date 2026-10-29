@@ -243,7 +243,7 @@ export default function Bauphysik() {
       ? inhalt.werte.zuVielNachhallDie 
       : T < minTarget 
         ? inhalt.werte.zuTrockenAkustischÜberdämpft 
-        : inhalt.werte.nachhallzeitImToleranzbereichNach;
+        : roomType === 'office' ? inhalt.werte.nachhallzeitImOrientierungsbereich : inhalt.werte.nachhallzeitImToleranzbereichNach;
 
     return {
       volume,
@@ -820,6 +820,7 @@ export default function Bauphysik() {
                     <span className="font-semibold text-slate-800"><MdText text={inhalt.texte.fichtenholzMassivholz} /></span>
                     <span className="font-mono font-bold text-slate-700"><MdText text={inhalt.texte.c1600JKg} /></span>
                   </div>
+                  <p className="py-1.5 text-[10px] text-slate-500"><MdText text={inhalt.texte.cWerteLehrwerte} /></p>
                   <div className="py-1.5 flex justify-between">
                     <span className="font-semibold text-slate-800"><MdText text={inhalt.texte.normalbetonStahlbeton} /></span>
                     <span className="font-mono font-bold text-slate-700"><MdText text={inhalt.texte.c1000JKg} /></span>
@@ -1187,7 +1188,7 @@ export default function Bauphysik() {
                 </span>
                 
                 <span className="text-xs bg-white border border-home-grau/30 text-text-main font-bold font-mono px-3 py-1 rounded-full flex items-center gap-1">
-                  Typ: {acousticsResults.roomLabel}<MdText text={inhalt.texte.dinEmpfehlung} />{formatDeZahl(acousticsResults.T_target, 2)} s ({formatDeZahl(acousticsResults.minTarget, 2)} s - {formatDeZahl(acousticsResults.maxTarget, 2)} s)
+                  Typ: {acousticsResults.roomLabel}<MdText text={roomType === 'office' ? inhalt.werte.orientierungswert : inhalt.texte.dinEmpfehlung} />{formatDeZahl(acousticsResults.T_target, 2)} s ({formatDeZahl(acousticsResults.minTarget, 2)} s - {formatDeZahl(acousticsResults.maxTarget, 2)} s)
                 </span>
               </div>
 
@@ -1223,7 +1224,7 @@ export default function Bauphysik() {
               {/* Dynamic Octave-Band Reverberation DIN 18041 Corridor Chart */}
               <div className="mt-6 pt-5 border-t border-slate-150">
                 <h4 className="text-xs font-extrabold text-slate-800 uppercase tracking-widest mb-3 flex items-center justify-between">
-                  <span><MdText text={inhalt.texte.sollKorridorDerNachhallzeit} /></span>
+                  <span><MdText text={inhalt.texte.sollKorridorDerNachhallzeit} />{roomType === 'office' && <span className="block normal-case font-semibold tracking-normal text-slate-500"><MdText text={inhalt.werte.korridorGruppeBHinweis} /></span>}</span>
                   <span className="text-[9px] font-mono text-slate-400 font-bold bg-slate-50 border border-slate-200 px-1.5 py-0.5 rounded"><MdText text={inhalt.texte.frequenzbereich125Hz4000} /></span>
                 </h4>
                 <div className="h-[250px] w-full relative">

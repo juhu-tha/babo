@@ -17,6 +17,9 @@ import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
 import { LabProtocolRecord, generateIntegrityChecksum } from '@/src/utils/labExportUtils';
 import { saveStoredLabProtocol } from '@/src/utils/studyStorage';
+import { Fz } from '../ui/Formelzeichen';
+import { useDiagrammFarben, linAchse } from './laborGrafik';
+import { AusbreitDraufsicht, AusbreitSeitenansicht, SetzversuchAnsicht, SetzFormen } from './FrischbetonGeraete';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -35,6 +38,8 @@ export default function FrischbetonPruefung() {
   const [coneLifted, setConeLifted] = useState<boolean>(false);
   const [spreadDiameterMm, setSpreadDiameterMm] = useState<number>(200); // Initialer Kegelfuß = 200 mm
   const [isShocking, setIsShocking] = useState<boolean>(false);
+  // nur Darstellung: Tischplatte kurz angehoben (Hubschlag)
+  const [platteOben, setPlatteOben] = useState<boolean>(false);
 
   // --- Slump (Setzversuch) State ---
   const [slumpLifted, setSlumpLifted] = useState<boolean>(false);
@@ -81,6 +86,8 @@ export default function FrischbetonPruefung() {
   const doSingleShock = () => {
     if (!coneLifted || shocksDone >= 15 || isShocking) return;
     setIsShocking(true);
+    setPlatteOben(true);
+    setTimeout(() => setPlatteOben(false), 120);
 
     setTimeout(() => {
       setShocksDone(prev => {
@@ -104,6 +111,8 @@ export default function FrischbetonPruefung() {
       if (count < 15) {
         count++;
         setShocksDone(count);
+        setPlatteOben(true);
+        setTimeout(() => setPlatteOben(false), 110);
         const remainingSpread = targetSpread - (200 + (targetSpread - 200) * 0.25);
         const currentAddition = (remainingSpread / 15) * count;
         setSpreadDiameterMm(Math.round(200 + (targetSpread - 200) * 0.25 + currentAddition));
@@ -151,6 +160,10 @@ export default function FrischbetonPruefung() {
   // Bingham Rheology Data
   const binghamYieldStress = Math.max(15, 280 - (wzValue - 0.35) * 450 - fließmittelPCE * 180); // Pa
   const binghamPlasticViscosity = Math.max(8, 65 - (wzValue - 0.35) * 70 - fließmittelPCE * 18); // Pa*s
+
+  const farben = useDiagrammFarben();
+  // Darstellung der Setzform: ab S5 (≥ 220 mm) fällt der Kegel in sich zusammen; Scherung wird nicht simuliert
+  const setzForm = slumpMm >= 220 ? 'zusammenbruch' as const : 'setzung' as const;
 
   const rheoPoints = [0, 5, 10, 15, 20, 25, 30, 40, 50].map(gammaDot => ({
     x: gammaDot,
@@ -211,7 +224,7 @@ export default function FrischbetonPruefung() {
         {[
           { id: 'ausbreittisch', label: 'Ausbreittisch (DIN EN 12350-5)', norm: 'F1 - F6' },
           { id: 'slump', label: 'Setzversuch Slump (DIN EN 12350-2)', norm: 'S1 - S5' },
-          { id: 'rheologie', label: 'Bingham-Rheologie (τ0 & μp)', norm: 'Schubspannung' }
+          { id: 'rheologie', label: 'Bingham-Rheologie (τ₀ und μₚ)', norm: 'Schubspannung' }
         ].map(t => (
           <button
             key={t.id}
@@ -325,7 +338,7 @@ export default function FrischbetonPruefung() {
                 <p className="text-xs text-text-main/70">
                   {activeTest === 'ausbreittisch' && '15 Hubschläge (je Hub etwa 1 bis 3 s) breiten den Beton auf dem Ausbreittisch aus'}
                   {activeTest === 'slump' && 'Senkrechtes Heben des Abrams-Trichters in 2 bis 5 Sekunden'}
-                  {activeTest === 'rheologie' && 'Bingham-Modell (Lehrwerte): τ = τ0 + μp · γ̇'}
+                  {activeTest === 'rheologie' && 'Bingham-Modell (Lehrwerte): τ = τ₀ + μₚ · γ̇'}
                 </p>
               </div>
 
@@ -340,65 +353,18 @@ export default function FrischbetonPruefung() {
             {activeTest === 'ausbreittisch' && (
               <div className="flex flex-col gap-4 my-3 flex-1">
                 
-                {/* Visualizer Table Top View SVG */}
-                <div className="bg-stone-200 p-5 rounded-xl border border-stone-300 flex flex-col items-center justify-center relative shadow-inner min-h-[300px]">
-                  
-                  {/* Table outline 700x700 mm */}
-                  <div className="relative w-[280px] h-[280px] bg-slate-300 rounded-lg border-2 border-slate-500 shadow-md flex items-center justify-center overflow-hidden">
-                    
-                    {/* Metal plate shine */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-black/5 via-transparent to-white/20"></div>
-
-                    {/* Centering crosslines engraved in plate */}
-                    <line className="stroke-slate-400 stroke-1" x1="0" y1="140" x2="280" y2="140" />
-                    <line className="stroke-slate-400 stroke-1" x1="140" y1="0" x2="140" y2="280" />
-
-                    {/* Scale Circle for 700 mm limit */}
-                    <circle cx="140" cy="140" r="135" fill="none" stroke="#94a3b8" strokeDasharray="3,3" />
-
-                    {/* Concrete Spread Circle */}
-                    <div
-                      className="rounded-full shadow-lg transition-all duration-300 flex items-center justify-center relative border border-stone-500"
-                      style={{
-                        width: `${(spreadDiameterMm / 700) * 270}px`,
-                        height: `${(spreadDiameterMm / 700) * 270}px`,
-                        backgroundColor: '#94a3b8',
-                        backgroundImage: 'radial-gradient(#475569 1px, transparent 1px)',
-                        backgroundSize: '8px 8px'
-                      }}
-                    >
-                      {/* Flow rings */}
-                      {coneLifted && (
-                        <div className="w-3/4 h-3/4 rounded-full border border-stone-400/50"></div>
-                      )}
-                      
-                      {/* Trichter silhouette before lifting */}
-                      {!coneLifted && (
-                        <div className="w-16 h-16 rounded-full border-2 border-amber-600 bg-amber-700/80 flex items-center justify-center text-white text-[9px] font-bold">
-                          Kegel
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Measuring Dimension Line */}
-                    {coneLifted && (
-                      <div
-                        className="absolute h-0.5 bg-shiraz transition-all duration-300 flex items-center justify-between"
-                        style={{ width: `${(spreadDiameterMm / 700) * 270}px` }}
-                      >
-                        <div className="w-2 h-2 rounded-full bg-shiraz"></div>
-                        <span className="text-[10px] font-mono font-bold bg-white text-shiraz px-1.5 py-0.5 rounded shadow-sm border border-shiraz/30">
-                          Ø {formatDeWert(spreadDiameterMm)} mm
-                        </span>
-                        <div className="w-2 h-2 rounded-full bg-shiraz"></div>
-                      </div>
-                    )}
+                {/* Ausbreittisch: Draufsicht und Seitenansicht */}
+                <figure className="pruefgeraet p-3 rounded-xl border flex flex-col sm:flex-row sm:flex-wrap items-center justify-center gap-4 m-0">
+                  <div className="w-full sm:w-auto sm:flex-[3] flex justify-center min-w-0">
+                    <AusbreitDraufsicht ausbreitmass={spreadDiameterMm} kegelGehoben={coneLifted} hubschlaege={shocksDone} />
                   </div>
-
-                  <div className="mt-2 text-[11px] text-stone-600 font-bold">
-                    Stahl-Tischplatte 700 × 700 mm (Hubhöhe 40 mm)
+                  <div className="w-full sm:w-auto sm:flex-[2] flex justify-center min-w-0">
+                    <AusbreitSeitenansicht ausbreitmass={spreadDiameterMm} kegelGehoben={coneLifted} hubschlaege={shocksDone} gehoben={platteOben} />
                   </div>
-                </div>
+                  <figcaption className="w-full text-[11px] text-center leading-snug" style={{ color: 'var(--pg-text2)' }}>
+                    Ausbreitmaß f = Mittel aus zwei Durchmessern d1 und d2, parallel zu den Tischkanten gemessen (DIN EN 12350-5).
+                  </figcaption>
+                </figure>
 
                 {/* Ausbreittisch Interactive Controls */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
@@ -433,12 +399,12 @@ export default function FrischbetonPruefung() {
                 {coneLifted && (
                   <div className="p-3.5 bg-off-white rounded-xl border border-home-grau/30 flex flex-wrap items-center justify-between gap-3 text-xs">
                     <div>
-                      <span className="text-text-main/60 block text-[10px] uppercase font-bold">Ausbreitmaß d</span>
+                      <span className="text-text-main/60 block text-[11px] uppercase font-bold">Ausbreitmaß <Fz>f</Fz></span>
                       <strong className="text-xl text-shiraz font-mono">{formatDeWert(spreadDiameterMm)} mm</strong>
                     </div>
 
                     <div>
-                      <span className="text-text-main/60 block text-[10px] uppercase font-bold">Konsistenzklasse</span>
+                      <span className="text-text-main/60 block text-[11px] uppercase font-bold">Konsistenzklasse</span>
                       <strong className="text-base text-text-main font-bold">
                         {consistencyClass(spreadDiameterMm).code} ({consistencyClass(spreadDiameterMm).name})
                       </strong>
@@ -462,51 +428,16 @@ export default function FrischbetonPruefung() {
             {activeTest === 'slump' && (
               <div className="flex flex-col gap-4 my-3 flex-1">
                 
-                {/* Slump Simulator Visualizer */}
-                <div className="bg-stone-200 p-5 rounded-xl border border-stone-300 flex flex-col items-center justify-center relative shadow-inner min-h-[300px]">
-                  
-                  <div className="relative w-full max-w-[340px] h-[240px] flex items-end justify-center">
-                    
-                    {/* Floor Plate */}
-                    <div className="absolute bottom-0 w-full h-4 bg-slate-700 rounded shadow"></div>
-
-                    {/* Abrams Cone Outline (height = 300 mm scaled) */}
-                    <div className="absolute bottom-4 w-40 h-[190px] border-2 border-dashed border-slate-500 rounded-t-sm pointer-events-none flex flex-col justify-between items-center py-1">
-                      <span className="text-[9px] font-mono text-slate-500">Trichteroberkante (h = 300 mm)</span>
-                      <span className="text-[9px] font-mono text-slate-500">Bodenplatte</span>
-                    </div>
-
-                    {/* Slump Concrete Cone Body */}
-                    <div
-                      className="bg-stone-400 border-2 border-stone-600 transition-all duration-500 flex flex-col items-center justify-center shadow-lg relative"
-                      style={{
-                        width: `${Math.min(240, 120 + slumpMm * 0.45)}px`,
-                        height: `${Math.max(40, 190 - (slumpMm / 300) * 190)}px`,
-                        borderRadius: slumpMm > 150 ? '30px 30px 4px 4px' : '15px 15px 2px 2px'
-                      }}
-                    >
-                      <span className="text-[10px] font-bold text-stone-800">
-                        {slumpLifted ? `${formatDeWert(slumpMm)} mm Setzmaß` : 'Gefüllter Trichter'}
-                      </span>
-                    </div>
-
-                    {/* Measuring Ruler (slump height difference) */}
-                    {slumpLifted && (
-                      <div
-                        className="absolute right-6 top-[46px] flex items-center transition-all duration-300"
-                        style={{ height: `${(slumpMm / 300) * 190}px` }}
-                      >
-                        <div className="w-1 bg-red-600 h-full relative">
-                          <div className="absolute -top-1 -left-1 w-3 h-1 bg-red-600"></div>
-                          <div className="absolute -bottom-1 -left-1 w-3 h-1 bg-red-600"></div>
-                        </div>
-                        <span className="ml-2 text-xs font-mono font-bold text-red-600 bg-white px-1.5 py-0.5 rounded shadow border border-red-300">
-                          s = {formatDeWert(slumpMm)} mm
-                        </span>
-                      </div>
-                    )}
+                {/* Setzversuch: Abrams-Trichter und Setzmaß */}
+                <figure className="pruefgeraet p-3 rounded-xl border flex flex-col items-center justify-center gap-3 m-0">
+                  <SetzversuchAnsicht setzmass={slumpMm} gezogen={slumpLifted} form={setzForm} />
+                  <div className="w-full max-w-[460px]">
+                    <SetzFormen aktiv={slumpLifted ? setzForm : null} />
                   </div>
-                </div>
+                  <figcaption className="text-[11px] text-center leading-snug" style={{ color: 'var(--pg-text2)' }}>
+                    Setzmaß h: Abstand von der Oberkante des daneben gestellten Trichters bis zur höchsten Stelle des Betons (DIN EN 12350-2).
+                  </figcaption>
+                </figure>
 
                 {/* Slump Control Button */}
                 {!slumpLifted ? (
@@ -519,12 +450,12 @@ export default function FrischbetonPruefung() {
                 ) : (
                   <div className="p-3.5 bg-off-white rounded-xl border border-home-grau/30 flex flex-wrap items-center justify-between gap-3 text-xs">
                     <div>
-                      <span className="text-text-main/60 block text-[10px] uppercase font-bold">Setzmaß s</span>
+                      <span className="text-text-main/60 block text-[11px] uppercase font-bold">Setzmaß <Fz>h</Fz></span>
                       <strong className="text-xl text-shiraz font-mono">{formatDeWert(slumpMm)} mm</strong>
                     </div>
 
                     <div>
-                      <span className="text-text-main/60 block text-[10px] uppercase font-bold">Setzmaßklasse</span>
+                      <span className="text-text-main/60 block text-[11px] uppercase font-bold">Setzmaßklasse</span>
                       <strong className="text-base text-text-main font-bold">
                         {slumpClass(slumpMm).code} ({slumpClass(slumpMm).name})
                       </strong>
@@ -550,8 +481,8 @@ export default function FrischbetonPruefung() {
                 
                 <div className="grid grid-cols-2 gap-3 text-xs">
                   <div className="bg-off-white text-text-main p-3 rounded-xl border border-home-grau/30 shadow-inner">
-                    <span className="text-[10px] font-mono text-slate-600 font-bold uppercase tracking-wider block">
-                      Fließgrenze τ0 (Yield Stress)
+                    <span className="text-[11px] font-mono text-slate-600 font-bold uppercase tracking-wider block">
+                      Fließgrenze <Fz idx="0">τ</Fz>
                     </span>
                     <span className="text-xl font-mono font-bold text-amber-700">
                       {formatDeZahl(binghamYieldStress, 0)} <span className="text-xs text-slate-700 font-normal">Pa</span>
@@ -560,8 +491,8 @@ export default function FrischbetonPruefung() {
                   </div>
 
                   <div className="bg-off-white text-text-main p-3 rounded-xl border border-home-grau/30 shadow-inner">
-                    <span className="text-[10px] font-mono text-slate-600 font-bold uppercase tracking-wider block">
-                      Plastische Viskosität μp
+                    <span className="text-[11px] font-mono text-slate-600 font-bold uppercase tracking-wider block">
+                      Plastische Viskosität <Fz idx="p">μ</Fz>
                     </span>
                     <span className="text-xl font-mono font-bold text-emerald-700">
                       {formatDeZahl(binghamPlasticViscosity, 1)} <span className="text-xs text-slate-700 font-normal">Pa·s</span>
@@ -577,8 +508,9 @@ export default function FrischbetonPruefung() {
                         {
                           label: 'Bingham-Fließkurve τ(γ̇)',
                           data: rheoPoints,
-                          borderColor: '#A3113E',
-                          backgroundColor: 'rgba(163, 17, 62, 0.08)',
+                          borderColor: farben.linie,
+                          backgroundColor: farben.flaeche,
+                          pointBackgroundColor: farben.linie,
                           borderWidth: 2.8,
                           pointRadius: 3,
                           fill: true
@@ -589,20 +521,8 @@ export default function FrischbetonPruefung() {
                       responsive: true,
                       maintainAspectRatio: false,
                       scales: {
-                        x: {
-                          type: 'linear' as const,
-                          title: { display: true, text: 'Schergeschwindigkeit γ̇ (1/s)', font: { weight: 'bold' as const, size: 12 } },
-                          min: 0,
-                          max: 55,
-                          grid: { color: 'rgba(0,0,0,0.06)' }
-                        },
-                        y: {
-                          type: 'linear' as const,
-                          title: { display: true, text: 'Schubspannung τ (Pa)', font: { weight: 'bold' as const, size: 12 } },
-                          min: 0,
-                          max: Math.max(500, binghamYieldStress + binghamPlasticViscosity * 55 * 1.15),
-                          grid: { color: 'rgba(0,0,0,0.06)' }
-                        }
+                        x: linAchse(farben, 'Schergeschwindigkeit in 1/s', 50, true),
+                        y: linAchse(farben, 'Schubspannung τ in Pa', Math.max(500, binghamYieldStress + binghamPlasticViscosity * 50 * 1.05), true),
                       },
                       plugins: {
                         legend: { display: false },

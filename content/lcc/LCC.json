@@ -28,7 +28,7 @@
     "wissenschaftlicheParameter": "Wissenschaftliche Parameter",
     "coSchattenpreisTextCo": "CO₂-Schattenpreis ($\\text{CO}_2$)",
     "coBasispreisStart": "CO₂-Basispreis (Start):",
-    "ubaKostenansatzCa180": "UBA-Kostenansatz: ca. 180-200 €/t Schadensäquivalent.",
+    "ubaKostenansatzCa180": "UBA-Klimakosten (Methodenkonvention 4.0, 2026): 350 €/t CO₂-Äq. für 2026 bei 1 % reiner Zeitpräferenz, 1000 €/t bei 0 % (Euro 2025).",
     "jährlicheCoTeuerung": "Jährliche CO₂-Teuerung:",
     "staatlKfwFörderung": "Staatl. KfW-Förderung",
     "zuschussAufOptionB": "Zuschuss auf Option B:",
@@ -245,7 +245,7 @@
     "LCC.literatur": [
       "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
       "Pelzeter, A. (2006): Lebenszykluskosten von Immobilien (Fraunhofer IRB Verlag)",
-      "DGNB Handbuch: Kriterium ENV2.1 / ECO1.1 Lebenszykluskosten"
+      "DGNB Handbuch: Kriterium ECO1.1 Gebäudebezogene Kosten im Lebenszyklus"
     ],
     "LCC.formeln": [
       {

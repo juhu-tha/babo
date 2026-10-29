@@ -18,7 +18,7 @@
     "eigenschaftenDieLieferungErfolgt": "**Eigenschaften:** Die Lieferung erfolgt in der Regel als \"Beton nach Eigenschaften\". Der Besteller legt bestimmte Eigenschaften (Festigkeit, Konsistenz, Expositionsklassen), fest, und das Betonwerk ist für die Rezeptur verantwortlich.",
     "zusammensetzungSeltenerIstBeton": "**Zusammensetzung:** Seltener ist \"Beton nach Zusammensetzung\", bei dem der Besteller dem Werk die exakte Rezeptur (z. B. Zementgehalt, w/z-Wert) vorgibt.",
     "üZeichenBetonNach": "**Ü-Zeichen:** Beton nach DIN 1045-2 ist ein geregeltes Bauprodukt und wird in Deutschland mit dem Übereinstimmungszeichen (Ü-Zeichen) gekennzeichnet (Lieferschein).",
-    "nachhaltigkeitCscImmerÖfter": "**Nachhaltigkeit (CSC):** Immer öfter wird von Herstellern ein CSC-Zertifikat (Concrete Sustainability Council) gefordert, welches die ökologisch, sozial und ökonomisch verantwortungsvolle Herstellung belegt (relevant für QNG/DGNB).",
+    "nachhaltigkeitCscImmerÖfter": "**Nachhaltigkeit (CSC):** Immer öfter wird von Herstellern ein CSC-Zertifikat (Concrete Sustainability Council) gefordert, welches die ökologisch, sozial und ökonomisch verantwortungsvolle Herstellung belegt (anrechenbar u. a. bei DGNB und BNB im Kriterium verantwortungsbewusste Ressourcengewinnung).",
     "detaillierteInformationenZuFrischbeton": "Detaillierte Informationen zu Frischbeton, Festbeton, Dauerhaftigkeit und Mischungsberechnungen finden Sie in den entsprechenden Hauptmodulen zur Baustoffkunde."
   },
   "werte": {

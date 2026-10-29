@@ -92,6 +92,9 @@
 - behoben: keine.
 - **offen – Frage T7-BI-1:** Die Kennzahlen „rund 140 000–150 000 Beschäftigte, rund 38 Mrd. € Umsatz (bbs, Stand 10/2026)“ waren öffentlich nicht nachprüfbar. Belegt ist nur eine bbs-Umsatzstatistik nach Wirtschaftszweigen für Januar bis Juni 2022 (8,1 Mrd. €, Betriebe ab 50 Beschäftigten; [bbs-Umsatzstatistik über kalksandstein.de](https://kalksandstein.de/media/user_upload/bundesverband_baustoffe_-_steine_und_erden_-_umsatz_nach_wirtschaftszweigen.pdf)). Die Tabelle (Summe 28,7 Mrd. €) und der Text (38 Mrd. €) passen nicht zusammen. Frage: Zahlen am aktuellen bbs-Jahresbericht bestätigen oder die Tabelle als Größenordnung ohne Summe kennzeichnen?
 
+**Umsetzung 29.10.2026**
+- **T7-BI-1:** Kennzahlen belegt und angeglichen: rund 150 000 Beschäftigte in rund 6000 Betrieben, rund 40 Mrd. € Jahresumsatz (Selbstangabe des bbs im Lobbyregister des Bundestages, Stand 2024; [Lobbyregister R000810](https://www.lobbyregister.bundestag.de/media/bb/e6/269106/Lobbyregister-Detailansicht-R000810-2024-04-25_16-36-40.pdf)). Die Tabelle bleibt Größenordnung; der Text sagt jetzt, dass ihre Summe (rund 29 Mrd. €) nicht der Branchenumsatz ist.
+
 **Empfehlung:** freigabefähig nach Klärung von T7-BI-1. (Kein Prüfvermerk vorhanden, Info-Modul.)
 
 ## 3. Innovationen & F&E (`bp_innovationen`)
@@ -115,6 +118,9 @@
 - **behoben – T7-IN-3:** Die TRL-Skala wird nicht „von der Europäischen Kommission nach ISO 16290 standardisiert“. Die Kommission hat sie für ihre Forschungsrahmenprogramme übernommen, ISO 16290:2013 normt sie. Außerdem: „AVCP-Systeme (1+ … 4)“ um 3+ ergänzt.
 - **offen – Frage T7-IN-4:** Myzel „natürlicher Brandschutz durch Chitin (Klasse B2/B1)“ mischt DIN-4102-Klassen in eine Euroklassen-Umgebung und ist ohne Prüfnachweis nicht belegbar. Ebenso „DIBt-Fast-Track für Nachhaltigkeit“ (kein öffentliches Verfahren dieses Namens gefunden). Streichen oder belegen?
 - Hinweis: Der Reifegrad-Check wertet die höchste angekreuzte Stufe, auch ohne die Vorstufen (Lehrwerkzeug). Eine Prüfung der Reihenfolge wäre möglich, ist aber kein Fehler.
+
+**Umsetzung 29.10.2026**
+- **T7-IN-4:** Gestrichen: Myzel „Natürlicher Brandschutz durch Chitinanteile (Klasse B2/B1)“ und „DIBt-Fast-Track für Nachhaltigkeit“ (nicht belegbar). Nebenbei „Gebäudetyps E“ → „Gebäudetyp E“ (`content/bpinnovationen/BpInnovationen.json`).
 
 **Empfehlung:** freigabefähig nach Korrektur T7-IN-1/-2/-3 und Klärung von T7-IN-4.
 
@@ -224,6 +230,9 @@
 - behoben: keine.
 - **offen – Frage T7-BE-1:** „CSC-Zertifikat … relevant für QNG/DGNB“. Für DGNB ist das belegt (Kriterium verantwortungsbewusste Ressourcengewinnung). Für QNG war keine öffentliche Anforderung an CSC auffindbar. Auf „DGNB/BNB“ einschränken?
 - Hinweis: Der Normbezug „DIN EN 206 / DIN 1045-2“ ohne Ausgabe ist korrekt; DIN 1045-2:2023-08 ist laut Modul Dauerhaftigkeit über die MVV TB 2024/1 eingeführt.
+
+**Umsetzung 29.10.2026**
+- **T7-BE-1:** CSC „relevant für QNG/DGNB“ → „anrechenbar u. a. bei DGNB und BNB im Kriterium verantwortungsbewusste Ressourcengewinnung“ (`content/bpbeton/BpBeton.json`). Quelle: Prüfung oben (DGNB belegt, QNG ohne öffentliche CSC-Anforderung).
 
 **Empfehlung:** freigabefähig nach Klärung von T7-BE-1.
 
@@ -351,6 +360,9 @@
 
   Betonbauweise (Tafel 2, Zeile 1, Betondecke auf HGT): Bk100 hat im Modul 30 cm, nach meinem Kenntnisstand gelten 27 cm (Bk32: 26 cm). Die Gesamtdicken 85/75/65/60/55/50 cm sind keine Tafelwerte; sie ergeben sich erst aus der Mindestdicke des frostsicheren Oberbaus mit Mehr- und Minderdicken. Frage: Tafelwerte am Regelwerkstext übernehmen (dann auch Bk1,8 ergänzen) oder die Profile ausdrücklich als „vereinfachte Lehraufbauten, nicht Tafel 1/2“ kennzeichnen? Die Grenzen sagen bereits „vereinfachte Lehrwerte“.
 - Hinweis Quiz (nicht geändert): Die Erklärung von `q_rsto_1` nennt „rund 160 000-mal stärker (4. Potenzgesetz: (10/1)^4 = 10 000 bis 160 000)“. Nach dem 4.-Potenz-Gesetz ergibt sich für eine 10-t- gegenüber einer 1-t-Achse der Faktor 10 000; 160 000 ist (20/1)^4. Für den laufenden Quiz-Abgleich.
+
+**Umsetzung 29.10.2026 (QZ-1):** Lernhilfe von `q_rsto_1` berichtigt: „rund 10 000-mal stärker (4.-Potenz-Gesetz: (10/1)^4 = 10 000)“; Bloom-Stufe, Niveau und Rückmeldungen ergänzt. Freigabe zurückgenommen (verified false), Vorprüfung „korrigiert“. Quelle: 4.-Potenz-Gesetz (AASHO Road Test), Rechnung (10/1)^4.
+
 
 **F-Freigabe-Stellen:** Schichtdicken RStO 12/24, Tafel 1 und 2 (T7-RS-2); Lastkollektivquotienten q_Bm je Straßenklasse (in der Aufgabe als Annahme).
 

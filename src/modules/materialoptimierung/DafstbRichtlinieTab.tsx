@@ -6,6 +6,7 @@ import inhalt from '@/content/materialoptimierung/DafstbRichtlinieTab.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import type { Hinweis } from '@/src/calc/plausibilitaet';
+import { ZEMENT_GWP, type DafstbStahlRoute } from '@/src/calc/materialoptimierung';
 
 export interface DafstbRichtlinieTabProps {
   dafstbCalc: { label: string; areaUnit: string; refArea: number; refBetonVol: number; refStahlKg: number; optBetonVol: number; optStahlKg: number; optConcreteGwpPerM3: number; refTotalGwp: number; optTotalGwp: number; refConcreteGwpTotal: number; optConcreteGwpTotal: number; refSteelGwpTotal: number; optSteelGwpTotal: number; refSpecificGwp: number; optSpecificGwp: number; diffAbs: number; diffPct: number; efficiencyClass: string; efficiencyBadge: string; classLabel: string; classStar: string; hinweise: readonly Hinweis[]; };
@@ -17,8 +18,8 @@ export interface DafstbRichtlinieTabProps {
   setDafstbZement: Dispatch<SetStateAction<"cem1" | "cem2_all" | "cem2_bs" | "cem3_a" | "cem2_cm">>;
   dafstbPruefalter: 28 | 56;
   setDafstbPruefalter: Dispatch<SetStateAction<28 | 56>>;
-  dafstbStahlRoute: "standard_bof" | "gruen_eaf";
-  setDafstbStahlRoute: Dispatch<SetStateAction<"standard_bof" | "gruen_eaf">>;
+  dafstbStahlRoute: DafstbStahlRoute;
+  setDafstbStahlRoute: Dispatch<SetStateAction<DafstbStahlRoute>>;
 }
 
 export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBauteil, setDafstbBauweise, dafstbBauweise, dafstbZement, setDafstbZement, dafstbPruefalter, setDafstbPruefalter, dafstbStahlRoute, setDafstbStahlRoute }: DafstbRichtlinieTabProps) {
@@ -290,11 +291,11 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
               onChange={(e) => setDafstbZement(e.target.value as "cem1" | "cem2_all" | "cem2_bs" | "cem3_a" | "cem2_cm")}
               className="w-full text-xs font-bold p-2.5 rounded-lg border border-home-grau/30 bg-white text-slate-800 focus:outline-none focus:ring-1 focus:ring-shiraz"
             >
-              <option value="cem1">CEM I (Klinker 95% - Ref. 310 kg/m³)</option>
-              <option value="cem2_all">CEM II/A-LL (Kalkstein - 250 kg/m³)</option>
-              <option value="cem2_bs">CEM II/B-S (Hüttensand - 190 kg/m³)</option>
-              <option value="cem3_a">CEM III/A (Hochofenzement - 135 kg/m³)</option>
-              <option value="cem2_cm">CEM II/C-M / LC3 (Ultra-Low - 105 kg/m³)</option>
+              <option value="cem1">CEM I (Klinker 95 % – Ref. {formatDeWert(ZEMENT_GWP.cem1)} kg/m³)</option>
+              <option value="cem2_all">CEM II/A-LL (Kalkstein – {formatDeWert(ZEMENT_GWP.cem2_all)} kg/m³)</option>
+              <option value="cem2_bs">CEM II/B-S (Hüttensand – {formatDeWert(ZEMENT_GWP.cem2_bs)} kg/m³)</option>
+              <option value="cem3_a">CEM III/A (Hochofenzement – {formatDeWert(ZEMENT_GWP.cem3_a)} kg/m³)</option>
+              <option value="cem2_cm">CEM II/C-M / LC3 (klinkerarm – {formatDeWert(ZEMENT_GWP.cem2_cm)} kg/m³)</option>
             </select>
             <span className="text-[10px] text-slate-500 block"><MdText text={inhalt.texte.klinkerersatzNachDinEn} /></span>
           </div>
@@ -313,11 +314,12 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
               </select>
               <select aria-label="Stahlroute"
                 value={dafstbStahlRoute}
-                onChange={(e) => setDafstbStahlRoute(e.target.value as "standard_bof" | "gruen_eaf")}
+                onChange={(e) => setDafstbStahlRoute(e.target.value as DafstbStahlRoute)}
                 className="w-1/2 text-xs font-bold p-2 rounded-lg border border-home-grau/30 bg-white text-slate-800 focus:outline-none focus:ring-1 focus:ring-shiraz"
               >
-                <option value="standard_bof">BOF-Stahl (0,98 kg)</option>
-                <option value="gruen_eaf">EAF Grün (0,42 kg)</option>
+                <option value="eaf_de">{inhalt.werte.eafDe064}</option>
+                <option value="standard_bof">{inhalt.werte.bofStandard098}</option>
+                <option value="gruen_eaf">{inhalt.werte.eafGrün042}</option>
               </select>
             </div>
             <span className="text-[10px] text-slate-500 block"><MdText text={inhalt.texte.nachweispfadSchrottElektroofenstahl} /></span>
@@ -462,7 +464,7 @@ export function DafstbRichtlinieTab({ dafstbCalc, dafstbBauteil, setDafstbBautei
             </div>
             <div className="flex items-center gap-1.5">
               <span className="w-3 h-3 rounded bg-teal-500"></span>
-              <span><MdText text={inhalt.texte.bewehrungsstahl} />{dafstbStahlRoute === 'gruen_eaf' ? inhalt.werte.eafGrün042 : inhalt.werte.bofStandard098})</span>
+              <span><MdText text={inhalt.texte.bewehrungsstahl} />{dafstbStahlRoute === 'gruen_eaf' ? inhalt.werte.eafGrün042 : dafstbStahlRoute === 'eaf_de' ? inhalt.werte.eafDe064 : inhalt.werte.bofStandard098})</span>
             </div>
             <div className="flex items-center gap-1.5 ml-auto font-mono">
               Betonvolumen: {formatDeZahl(dafstbCalc.optBetonVol, 1)} m³ (Ref: {formatDeZahl(dafstbCalc.refBetonVol, 1)} m³)

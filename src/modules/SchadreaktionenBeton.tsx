@@ -153,7 +153,7 @@ function AkrGefuegeSimulator() {
                     }`}
                   >
                     <span className="block text-xs">{item.id}</span>
-                    <span className="text-[9px] opacity-75">{item.sub}</span>
+                    <span className="text-[10px]">{item.sub}</span>
                   </button>
                 ))}
               </div>
@@ -178,7 +178,7 @@ function AkrGefuegeSimulator() {
                     }`}
                   >
                     <span className="block text-xs">{item.id}</span>
-                    <span className="text-[9px] opacity-80">{item.sub}</span>
+                    <span className="text-[10px]">{item.sub}</span>
                   </button>
                 ))}
               </div>
@@ -464,6 +464,7 @@ function AkrGefuegeSimulator() {
 
 const REITER = [
   { id: 'akr', label: inhalt.texte.alkalitreibenAkr, icon: Sparkles },
+  { id: 'akr_simulation', label: 'AKR-Gefügesimulation', icon: Microscope },
   { id: 'frost', label: 'Frost-Tau-Widerstand', icon: Snowflake },
   { id: 'sulfat', label: 'Sulfattreiben', icon: AlertTriangle },
 ] as const;
@@ -755,6 +756,8 @@ export default function SchadreaktionenBeton() {
           </div>
         </div>
       )}
+
+      {activeTab === 'akr_simulation' && <AkrGefuegeSimulator />}
 
       {activeTab === 'frost' && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

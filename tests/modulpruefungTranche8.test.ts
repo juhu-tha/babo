@@ -35,11 +35,15 @@ gilt(!fugenbandPruefung('dehnungsfuge', 5, 29, 16).dickeOk, 'AB7b D 320 bei 29 c
 // 3. Dämmung – U-Werte (DIN EN ISO 6946), Einsparung, Mindestdicke
 const da2 = daemmBerater({ rBestand: 0.47, dickeCm: 14, lambda: 0.032, rsi: 0.13, rse: 0.04, uZiel: 0.24, ohneBestand: false });
 pruefe('DA2 U_alt', da2.uAlt, 1 / 0.64); pruefe('DA2 U_neu', da2.uNeu, 1 / (0.47 + 4.375 + 0.17));
-gilt(da2.erfuellt, 'DA2 erfüllt'); pruefe('DA2 Einsparung', da2.einsparung, 114.7, 2e-3); pruefe('DA2 CO2', da2.co2, 25.23, 2e-3);
+gilt(da2.erfuellt, 'DA2 erfüllt'); pruefe('DA2 Einsparung', da2.einsparung, 114.7, 2e-3); pruefe('DA2 CO2 (Erdgas 0,24 kg/kWh, Umsetzung 29.10.2026)', da2.co2, 27.48, 2e-3);
 const da3 = daemmBerater({ rBestand: 0.47, dickeCm: 10, lambda: 0.040, rsi: 0.13, rse: 0.04, uZiel: 0.24, ohneBestand: false });
 gilt(da3.empfDickeCm === 15 && !da3.erfuellt, 'DA3 Holzfaser: 15 cm erforderlich, 10 cm nicht erfüllt');
 const da4 = daemmBerater({ rBestand: 0.09, dickeCm: 11, lambda: 0.035, rsi: 0.17, rse: 0.17, uZiel: 0.30, ohneBestand: false });
 gilt(da4.empfDickeCm === 11 && da4.erfuellt, 'DA4 Kellerdecke 11 cm XPS'); pruefe('DA4 U', da4.uNeu, 0.2802, 2e-3);
+// Umsetzung 29.10.2026 (T8-DA-Q1): Kellerdecke mit F_x = 0,5: ΔU = 1/0,43 − 0,27989 = 2,04569; · 0,5 · 84 = 85,92 kWh/(m²a); CO₂ 20,62 kg/(m²a)
+const da4x = daemmBerater({ rBestand: 0.09, dickeCm: 11, lambda: 0.035, rsi: 0.17, rse: 0.17, uZiel: 0.30, ohneBestand: false, fx: 0.5 });
+pruefe('DA4 Einsparung mit F_x', da4x.einsparung, 85.92, 1e-3); pruefe('DA4 CO₂ mit F_x', da4x.co2, 20.62, 1e-3);
+pruefe('DA4 F_x halbiert die Einsparung', da4x.einsparung / da4.einsparung, 0.5, 1e-3);
 gilt(daemmBerater({ rBestand: 0, dickeCm: 20, lambda: 0.035, rsi: 0.13, rse: 0.04, uZiel: 0.24, ohneBestand: true }).einsparung === 0, 'DA5 ohne Bestand keine Einsparung');
 
 // 4. Farben und Lacke – Nassschichtdicke und Menge

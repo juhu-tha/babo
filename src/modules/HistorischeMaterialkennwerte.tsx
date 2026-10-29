@@ -206,7 +206,7 @@ export default function HistorischeMaterialkennwerte() {
 
     // Eurocode EC2 Design stress recalculations
     // f_cd zentral (src/data/kennwerte.ts, α_cc = 0,85): Neubau-Ansatz γ_c = 1,5 und Bestandsbewertung mit
-    // γ_c = 1,35 = γ_C,red3 nach DIN EN 1992-1-1 Anhang A.2.2(2) (gemessene Geometrie, V_c ≤ 10 %); Quelle siehe kennwerte.ts.
+    // γ_c = 1,35 nach DBV-Merkblatt „Modifizierte Teilsicherheitsbeiwerte für Stahlbetonbauteile“ (2013); Quelle siehe kennwerte.ts.
     const fCdStandard = fcdBeton(fIsCyl, FCD_MODUL.historischStandard);
     const fCdAssessment = fcdBeton(fIsCyl, FCD_MODUL.historischBewertung);
 

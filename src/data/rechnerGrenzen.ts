@@ -417,7 +417,9 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Hüllflächen pauschal aus der Nutzfläche, U-Werte je Standard fest.",
       "Klimafaktor und Gewinne pauschal; Warmwasser, Verluste und Hilfsstrom als feste Werte.",
       "Kein Nachweis nach DIN V 18599.",
-      "Primärenergiefaktoren und Klassengrenzen nach dem Stand bis 31.12.2026 (ab 01.01.2027 u. a. Strom 1,5); CO₂-Faktoren sind Lehrwerte (Strom 380 g/kWh), nicht die Werte der Anlage 9.",
+      "Stichtagsschalter GModG: bis 31.12.2026 f_p nach Anlage 4, CO₂ nach Anlage 9 (Strom 1,8 / 560 g/kWh); ab 01.01.2027 neue Anlage 4 (Strom 1,5, Holz 0,7, Fernwärme 0,7). Klassen Anlage 10 unverändert.",
+      "CO₂-Faktor Netzstrom ab 2027 (100 g/kWh) vorläufig, F-Freigabe (GModG Anlage 9, Fassung 2027); Fernwärme bis 2026 mit Lehrwerten f_p 0,4 und 120 g/kWh; das neue Referenzgebäude ist nicht abgebildet.",
+      "Interne Gewinne pauschal 35 kWh/(m²a) statt Nutzungsprofil nach DIN/TS 18599-10 (Lehrwert, vorläufig, F-Freigabe); CO₂ mit dem Faktor des Hauptenergieträgers auf die gesamte Endenergie.",
     ],
   },
   materialoptimierung: {
@@ -426,7 +428,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Beton- und Stahlmengen je Bauteil fest hinterlegt, keine Bemessung.",
       "Beton-GWP nur nach Zementart, unabhängig von der Festigkeitsklasse.",
       "Bewertungsklassen über modellinterne Schwellen (Lehreinteilung, nicht die Treibhausgas-Minderungsklassen der DAfStb-Richtlinie).",
-      "GWP-Faktoren (Beton je Zementart, Betonstahl, 56-d-Abschlag) sind gerundete Lehrwerte ohne EPD-Bezug.",
+      "GWP-Lehrwerte: Beton = 320 kg Zement · GWP_Zement + 30 kg/m³ (CEM II/A-LL ≈ ÖKOBAUDAT C25/30), Stahl-Referenz ÖKOBAUDAT 0,64 kg/kg; Hochofen 0,98, CEM II/B-S, II/C-M, 56-d-Abschlag vorläufig (F-Freigabe).",
     ],
   },
   oekobilanz_lca: {
@@ -599,7 +601,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
   ressourceneffizienz: {
     kurz: "CO₂ und Primärgesteinsbedarf eines Bauteils im Vergleich mit einem Standardfall sowie eine grobe Kosten-Nutzen-Schätzung.",
     grenzen: [
-      "Bauteilvolumen, Optimierungs- und RC-Anteile pauschal.",
+      "Bauteilvolumen und Optimierung pauschal; RC-Anteil als Höchstanteil nach DIN 1045-2 Anhang E bezogen auf einen Grobkornanteil von 70 % (Lehrwert), Vol.-% gleich M.-% gesetzt.",
       "Feste CO₂-Faktoren für Beton, Stahl und Transport.",
       "Kosten-Nutzen-Werte und Förderbonus sind fiktive Lehrwerte.",
     ],

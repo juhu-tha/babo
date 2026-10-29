@@ -56,9 +56,9 @@ const lifespanData: LifespanItem[] = [
   { id: 'daemmung_natur', category: inhalt.werte.dämmungHolzfaserZellulose, group: 'Dämmung', min: 30, max: 50, avg: 40 },
   { id: 'daemmung_pur', category: inhalt.werte.dämmungPurPir, group: 'Dämmung', min: 30, max: 50, avg: 40 },
   { id: 'daemmung_schaumglas', category: inhalt.werte.dämmungSchaumglas, group: 'Dämmung', min: 40, max: 60, avg: 50 },
-  { id: 'fenster_holz', category: inhalt.werte.fensterHolz, group: 'Ausbau', min: 25, max: 40, avg: 30 },
-  { id: 'fenster_kunststoff', category: inhalt.werte.fensterKunststoff, group: 'Ausbau', min: 25, max: 40, avg: 30 },
-  { id: 'fenster_alu', category: inhalt.werte.fensterAluminium, group: 'Ausbau', min: 30, max: 50, avg: 40 },
+  { id: 'fenster_holz', category: inhalt.werte.fensterHolz, group: 'Ausbau', min: 25, max: 40, avg: 40 }, // BBSR 40 a (Umsetzung 29.10.2026, T11-LCA-2)
+  { id: 'fenster_kunststoff', category: inhalt.werte.fensterKunststoff, group: 'Ausbau', min: 25, max: 40, avg: 40 }, // BBSR 40 a
+  { id: 'fenster_alu', category: inhalt.werte.fensterAluminium, group: 'Ausbau', min: 30, max: 50, avg: 50 }, // BBSR ≥ 50 a
   { id: 'sonnenschutz', category: inhalt.werte.sonnenschutzAußenjalousien, group: 'Ausbau', min: 15, max: 25, avg: 20 },
   { id: 'tueren_innen', category: inhalt.werte.innentürenHolzRöhrenspan, group: 'Ausbau', min: 20, max: 40, avg: 30 },
   { id: 'tueren_aussen', category: inhalt.werte.außentürenAluStahl, group: 'Ausbau', min: 30, max: 50, avg: 40 },
