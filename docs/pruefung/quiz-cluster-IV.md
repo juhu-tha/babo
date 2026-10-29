@@ -843,7 +843,7 @@ Niveau B · 120 min · Vorwissen: schutz_grundlagen, holzkorrosion, metallkorros
 
 - (Verstehen) Sie können präventive Schutzmaßnahmen und Instandsetzungsverfahren für Holz, Stahl, Kunststoffe, Asphalt und Mauerwerk unterscheiden.
 - (Anwenden) Sie können geeignete Korrosionsschutzsysteme nach DIN EN ISO 12944 einschließlich Duplexsystemen auswählen.
-- (Anwenden) Sie können den Restquerschnitt eines geschädigten Stahlbauteils ermitteln und mit dem Ausgangsquerschnitt vergleichen.
+- (Anwenden) Sie können die verbleibende Biegetragfähigkeit eines angefaulten Holzbalkens aus dem Restquerschnitt ermitteln und mit dem Ausgangsquerschnitt vergleichen.
 - (Bewerten) Sie können passende Instandsetzungsverfahren für Holztragwerke nach DIN 68800, für Asphaltbeläge nach ZTV BEA-StB und für Mauerwerk nach WTA begründet auswählen.
 
 - [x] ok
