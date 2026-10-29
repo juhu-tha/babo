@@ -36,24 +36,31 @@ export interface ChloridAuswertung {
   points: { x: number; c: number }[];
   cAtRebar: number;
   rebarStatus: 'ok' | 'warning' | 'critical';
-  /** größte Tiefe des 2,5-mm-Rasters (0 bis 65 mm) mit C ≥ C_krit */
+  /** größte Tiefe des 2,5-mm-Rasters (0 bis CHLORID_RASTER_MAX_MM) mit C ≥ C_krit */
   depassivatedDepth: number;
   /** Abtragstiefe für Prinzip R: depassivierte Tiefe + 15 mm (Lehransatz) */
   erfAbtrag: number;
+  /** true, wenn C_krit auch am Rasterende noch erreicht ist: Front liegt tiefer, Tiefe und Abtrag sind Mindestwerte („≥“) */
+  ueberRaster: boolean;
   critLimit: number;
 }
+
+/** Rasterende des Chloridprofils in mm (Umsetzung 29.10.2026, T13-IH-13: bisher 65 mm, Abtrag wurde dadurch gedeckelt). */
+export const CHLORID_RASTER_MAX_MM = 100;
 
 export function chloridAuswertung(cs: number, d12: number, tJahre: number, deckungMm: number): ChloridAuswertung {
   const points: { x: number; c: number }[] = [];
   let depassivatedDepth = 0;
-  for (let x = 0; x <= 65; x += 2.5) {
+  for (let i = 0; i * 2.5 <= CHLORID_RASTER_MAX_MM; i++) {
+    const x = i * 2.5;
     const c = chloridGehalt(cs, d12, tJahre, x);
     points.push({ x, c });
     if (c >= CHLORID_KRITISCH) depassivatedDepth = x;
   }
   const cAtRebar = chloridGehalt(cs, d12, tJahre, deckungMm);
   const rebarStatus = cAtRebar >= CHLORID_KRITISCH ? 'critical' : cAtRebar >= CHLORID_WARNUNG ? 'warning' : 'ok';
-  return { points, cAtRebar, rebarStatus, depassivatedDepth, erfAbtrag: depassivatedDepth > 0 ? depassivatedDepth + 15 : 0, critLimit: CHLORID_KRITISCH };
+  const ueberRaster = chloridGehalt(cs, d12, tJahre, CHLORID_RASTER_MAX_MM) >= CHLORID_KRITISCH;
+  return { points, cAtRebar, rebarStatus, depassivatedDepth, erfAbtrag: depassivatedDepth > 0 ? depassivatedDepth + 15 : 0, ueberRaster, critLimit: CHLORID_KRITISCH };
 }
 
 // ---------- Stahlbetoninstandhaltung: Rissinjektion (Lehrwerte) ----------
@@ -76,10 +83,19 @@ export interface WtaBohrplan {
   drillDiameter: number; // cm
   holesPerMeter: number;
   singleHoleVolume: number; // cm³
+  /** Untergrenze aus dem Bohrlochvolumen (l/m); der tatsächliche Verbrauch liegt nach Herstellerangaben höher */
   creamConsumption: number; // l/m
+  /** Vergleichswert nach Herstellerangabe für die Mauerwerksinjektion ≈ 15 ml je m und cm Wanddicke (l/m; Lehrwert, vorläufig, F-Freigabe) */
+  herstellerRichtwert: number; // l/m
 }
 
-/** Bohrtiefe = Wanddicke − 5 cm; Abstand 12/10/8 cm; Ø 12 mm; Bedarf = Bohrlochvolumen · n · 1,15 (Lehrmodell). */
+/** Herstellerangabe Injektionscreme ≈ 15 ml je m Wandlänge und cm Wanddicke (technisches Merkblatt 04/2026; Lehrwert, maßgebend ist das Merkblatt des Stoffs). */
+export const WTA_HERSTELLER_ML_JE_M_CM = 15;
+
+/**
+ * Bohrtiefe = Wanddicke − 5 cm; Abstand 12/10/8 cm; Ø 12 mm; Bedarf = Bohrlochvolumen · n · 1,15 (Lehrmodell).
+ * Umsetzung 29.10.2026 (T13-WTA-6): Der Bedarf aus dem Bohrlochvolumen ist eine Untergrenze; Vergleichswert nach Herstellerangabe.
+ */
 export function wtaBohrplan(wanddickeCm: number, gefuege: Mauergefuege): WtaBohrplan {
   const drillDepth = Math.max(1, wanddickeCm - 5);
   const drillSpacing = gefuege === 'mixed' ? 10 : gefuege === 'hollow' ? 8 : 12;
@@ -87,7 +103,20 @@ export function wtaBohrplan(wanddickeCm: number, gefuege: Mauergefuege): WtaBohr
   const holesPerMeter = Math.ceil(100 / drillSpacing);
   const singleHoleVolume = (Math.PI * drillDiameter ** 2 / 4) * drillDepth;
   const creamConsumption = (singleHoleVolume * holesPerMeter) / 1000 * 1.15;
-  return { drillDepth, drillSpacing, drillDiameter, holesPerMeter, singleHoleVolume, creamConsumption };
+  const herstellerRichtwert = (WTA_HERSTELLER_ML_JE_M_CM * wanddickeCm) / 1000;
+  return { drillDepth, drillSpacing, drillDiameter, holesPerMeter, singleHoleVolume, creamConsumption, herstellerRichtwert };
+}
+
+/**
+ * Umsetzung 29.10.2026 (T13-WTA-6): Das Verfahren richtet sich nach dem WTA-Zertifikat bzw. der Herstellerangabe des
+ * Injektionsstoffs, nicht starr nach dem Durchfeuchtungsgrad. Ergebnis: kleinste übliche Prüfstufe des Zertifikats
+ * (60, 80 oder 95 % DFG), die den gemessenen DFG abdeckt; über 95 % DFG keine Stufe (vortrocknen). Lehransatz, vorläufig.
+ */
+export function wtaZertifikatsstufe(dfgProzent: number): 60 | 80 | 95 | null {
+  if (dfgProzent <= 60) return 60;
+  if (dfgProzent <= 80) return 80;
+  if (dfgProzent <= 95) return 95;
+  return null;
 }
 
 // ---------- WTA-Kombi-Planer (eigenes Lehrmodell, keine Bewertung der WTA) ----------

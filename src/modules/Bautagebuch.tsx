@@ -94,7 +94,7 @@ export default function Bautagebuch() {
   const [weatherEinfluss, setWeatherEinfluss] = useState<string>(inhalt.werte.keineBeeinflussung);
   const [arbeiterEigene, setArbeiterEigene] = useState<number>(4);
   const [arbeiterSubStr, setArbeiterSubStr] = useState<string>(
-    inhalt.werte.bauunternehmungMüllerGmbh1
+    inhalt.werte.musterNachunternehmer1
   );
   const [fortschritt, setFortschritt] = useState<string>(
     inhalt.werte.deckeÜberUgBewehrungsabnahme
@@ -366,7 +366,7 @@ export default function Bautagebuch() {
     setSelectedWeather(['Sunny']);
     setWeatherEinfluss(inhalt.werte.keineBeeinflussung3);
     setArbeiterEigene(4);
-    setArbeiterSubStr(inhalt.werte.bauunternehmungMüllerGmbh12);
+    setArbeiterSubStr(inhalt.werte.musterNachunternehmer12);
     const proj = PROJECTS.find(p => p.id === selectedProjectId);
     setFortschritt(proj ? `Arbeiten an: ${proj.defaultTasks[0]} heute durchgeführt.` : '');
     setStoerungen('');
@@ -821,7 +821,7 @@ export default function Bautagebuch() {
                       rows={3}
                       value={arbeiterSubStr}
                       onChange={(e) => setArbeiterSubStr(e.target.value)}
-                      placeholder="z.B. Müller Erdbau GmbH: 1 Polier, 3 Baggerfahrer&#10;TGA Elektro Schmidt: 2 Monteure"
+                      placeholder="z. B. Erdbau [Firma]: 1 Polier, 3 Baggerfahrer&#10;TGA-Elektro [Firma]: 2 Monteure"
                       className="w-full bg-white border border-slate-300 rounded-lg p-3 text-xs text-slate-800 font-mono"
                     />
                     <p className="text-xs text-slate-600 mt-1"><MdText text={inhalt.texte.gebenSieDasExakte} /></p>

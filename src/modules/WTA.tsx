@@ -21,7 +21,7 @@ import inhalt from '@/content/wta/WTA.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
-import { wtaBohrplan, wtaKombiBewertung, type Daemmstoff, type SperreStatus, type Salzklasse, type Regengruppe, type KombiAlarm, type KombiEmpfehlung } from '@/src/calc/schutzInstandsetzung';
+import { wtaBohrplan, wtaKombiBewertung, wtaZertifikatsstufe, type Daemmstoff, type SperreStatus, type Salzklasse, type Regengruppe, type KombiAlarm, type KombiEmpfehlung } from '@/src/calc/schutzInstandsetzung';
 
 // Kombi-Planer: Punkteschema im Kern src/calc/schutzInstandsetzung.ts (eigenes Lehrmodell, keine Bewertung der WTA)
 const ALARMTEXT: Record<KombiAlarm, string> = {
@@ -78,30 +78,24 @@ export default function WTA() {
   const [masonryType, setMasonryType] = useState<'brick' | 'mixed' | 'hollow'>('brick');
   
   // Bohrrechner (Lehrmodell nach WTA-Merkblatt 4-10; Kern: src/calc/schutzInstandsetzung.ts)
-  const { drillDepth, drillSpacing, drillDiameter, holesPerMeter, singleHoleVolume, creamConsumption } = wtaBohrplan(wallThicknessInput, masonryType);
+  const { drillDepth, drillSpacing, drillDiameter, holesPerMeter, singleHoleVolume, creamConsumption, herstellerRichtwert } = wtaBohrplan(wallThicknessInput, masonryType);
 
-  // Infiltration selection logic based on WTA 4-10 moisture (DF) limits
+  // Verfahren laut WTA-Zertifikat/Herstellerangabe (Umsetzung 29.10.2026, T13-WTA-6): nicht starr nach DFG,
+  // sondern Stoff mit Zertifikat für den gemessenen DFG (übliche Prüfstufen 60/80/95 %); darüber vortrocknen.
+  const zertifikatsstufe = wtaZertifikatsstufe(moistureLevel);
   let injectionMethod = '';
   let maxDFAllowed = '';
   let angleSpec = '';
-  let wtaClassification = '';
   let preheatRequired = false;
-  
-  if (moistureLevel <= 60) {
-    injectionMethod = inhalt.werte.druckloseKapillareInjektionInjektionscre;
-    maxDFAllowed = inhalt.werte.geeignetBisZuEinem;
+
+  if (zertifikatsstufe !== null) {
+    injectionMethod = inhalt.werte.verfahrenLautZertifikat;
+    maxDFAllowed = `${inhalt.werte.stoffMitZertifikatFuerDfg} ${formatDeWert(zertifikatsstufe)} % ${inhalt.werte.stoffMitZertifikatErlaeuterung}`;
     angleSpec = masonryType === 'brick' ? inhalt.werte.horizontal0Bis5 : inhalt.werte.horizontal0UnmittelbarIn;
-    wtaClassification = inhalt.werte.zulässigesWtaKlassifizierungsverfahrenDr;
-  } else if (moistureLevel > 60 && moistureLevel <= 95) {
-    injectionMethod = inhalt.werte.druckinjektionNiederOderMitteldruckverfa;
-    maxDFAllowed = inhalt.werte.grenzbereichDesFüllungsgrades60;
-    angleSpec = inhalt.werte.leichtGeneigt5Bis;
-    wtaClassification = inhalt.werte.zulässigesWtaKlassifizierungsverfahrenDr2;
   } else {
     injectionMethod = inhalt.werte.zweistufigesVerfahrenThermischeMechanisc;
     maxDFAllowed = inhalt.werte.kritischerFüllungsgradDf95;
     angleSpec = inhalt.werte.keinDirekterInjektionserfolgVortrocknen;
-    wtaClassification = inhalt.werte.erfordertFlankierendeBautechnischeMaßnah;
     preheatRequired = true;
   }
 
@@ -379,8 +373,9 @@ export default function WTA() {
                   <div className="bg-white p-3 rounded border border-home-grau/20 flex flex-col justify-between relative overflow-hidden">
                     <div className="absolute right-1 bottom-1 bg-shiraz/5 p-2 rounded-tl-lg text-xs font-black text-shiraz/30">Creme</div>
                     <span className="text-home-grau text-xs uppercase font-bold tracking-tight"><MdText text={inhalt.texte.wirkstoffbedarfSilanCremeV} /></span>
-                    <span className="text-xl font-mono font-black text-shiraz mt-1">{formatDeZahl(creamConsumption, 2)} Liter / m</span>
+                    <span className="text-xl font-mono font-black text-shiraz mt-1">≥ {formatDeZahl(creamConsumption, 2)} Liter / m</span>
                     <p className="text-xs text-slate-500 mt-1"><MdText text={inhalt.texte.inklusive115erSicherheitsbeiwert} /></p>
+                    <p className="text-xs text-slate-700 mt-1"><MdText text={inhalt.texte.herstellerVergleich} /> <strong className="font-mono">≈ {formatDeZahl(herstellerRichtwert, 2)} Liter / m</strong><MdText text={inhalt.texte.herstellerVergleichQuelle} /></p>
                   </div>
                 </div>
 

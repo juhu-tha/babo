@@ -136,6 +136,14 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "Instandsetzungsmörtel CC, PCC, SPCC und PC werden nach DIN EN 1504-3 in R1 bis R4 eingeteilt; statisch relevant sind R3 und R4, R4 erfordert mindestens 2,0 MPa Haftzug.",
     "Für KKS sind etwa 2 bis 20 mA/m² Stahloberfläche üblich; Schutzkriterium nach DIN EN ISO 12696 ist ein Ausschaltpotenzial unter −720 mV oder eine Depolarisation ≥ 100 mV.",
   ],
+  // Umsetzung 29.10.2026 (Modulprüfung Tranche 13, Hinweis zu wu-bauwerke)
+  'wu-bauwerke': [
+    "Eine Weiße Wanne aus WU-Beton übernimmt Tragwerk und Abdichtung zugleich ohne zusätzliche Außenabdichtung; Grundlage ist die DAfStb-Richtlinie Wasserundurchlässige Bauwerke aus Beton (2017-12).",
+    "Beanspruchungsklasse 1 gilt für drückendes und aufstauendes Sickerwasser, Klasse 2 für Bodenfeuchte und nichtstauendes Sickerwasser; die Nutzungsklassen A und B legen fest, ob Feuchtstellen zulässig sind.",
+    "Vor der Detailplanung wird ein Entwurfsgrundsatz festgelegt: a) Trennrisse vermeiden, b) Trennrissbreiten so begrenzen, dass Selbstheilung eintritt, oder c) Risse zulassen und planmäßig abdichten.",
+    "Das Druckgefälle I = h_w/h bestimmt die Rissbreite für Selbstheilung: I ≤ 10 erlaubt w_k ≤ 0,20 mm, I ≤ 15 erlaubt 0,15 mm und I ≤ 25 erlaubt 0,10 mm; darüber ist Selbstheilung nicht planbar.",
+    "Undicht werden Weiße Wannen meist an Fugen und Durchdringungen: Ein geschlossenes Fugenkonzept nach DIN 18197 ist so wichtig wie Mindestdicken und ein WU-Beton mit geringer Hydratationswärme.",
+  ],
   ki_ueberblick: [
     "KI ist der Oberbegriff; Machine Learning, Deep Learning und Large Language Models bilden nach dem Zwiebelschalen-Modell jeweils engere Teilmengen davon.",
     "ML-Modelle gelten nur innerhalb ihres Trainingsbereichs; bei neuartigen Zementen oder Zusatzmitteln liefern sie scheinbar plausible, physikalisch aber falsche Kennwerte.",
