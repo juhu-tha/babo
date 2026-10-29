@@ -441,7 +441,7 @@ export default function Materialdatenbanken() {
                     <span className="text-[9px] text-slate-600 leading-tight block mt-0.5"><MdText text={inhalt.texte.stickstoffeintragInBöden} /></span>
                   </div>
                 </div>
-                <p className="text-[10px] text-slate-600 leading-snug mt-1.5"><MdText text={inhalt.texte.lehrwerteA2Hinweis} /></p>
+                <p className="text-[10px] text-slate-600 leading-snug mt-1.5 font-sans"><MdText text={inhalt.texte.lehrwerteA2Hinweis} /></p>
               </div>
             </div>
 
