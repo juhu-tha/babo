@@ -6,6 +6,7 @@ import inhalt from '@/content/forschungtransfer/ForschungTransfer.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 // Nur die Versionsnummer aus package.json (wie in src/App.tsx, zur Build-Zeit eingesetzt)
 import { version as PAKET_VERSION } from '../../package.json';
+import { isoZuDe, tagIso } from '../data/stand';
 
 // Seite „Forschung und Transfer“ (Umsetzungsplan Phase 6, AP 6.10 Sichtbarkeit).
 // Info-Seite ohne Fachinhalt (kein Prüfvermerk, siehe istFachmodul in src/data/pruefvermerke.ts).
@@ -136,7 +137,7 @@ export default function ForschungTransfer() {
           <Abschnitt id="ft-zitieren" icon={Quote} titel="BaustoffBoard zitieren">
             <p><MdText text={inhalt.texte.zitierenEinleitung} /></p>
             <p className="p-4 bg-off-white rounded-xl border border-home-grau/20 text-text-main">
-              <MdText text={inhalt.texte.zitatVorVersion} />{PAKET_VERSION}<MdText text={inhalt.texte.zitatNachVersion} />
+              <MdText text={inhalt.texte.zitatVorVersion} />{PAKET_VERSION}<MdText text={`${inhalt.texte.zitatNachVersion}${isoZuDe(tagIso())}.`} />
             </p>
             <p className="text-xs"><MdText text={inhalt.texte.zitierenHinweisDatum} /></p>
           </Abschnitt>

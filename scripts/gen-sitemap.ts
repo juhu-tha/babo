@@ -6,7 +6,6 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { AKTIVE_MODULE, NAV_GRUPPEN, type ModulEintrag } from '../src/registry/modules';
-import { CURRENT_RELEASE_DATE } from '../src/data/versionData';
 
 const BASIS = 'https://baustoffboard.de/';
 
@@ -15,11 +14,13 @@ export function sitemapEintraege(): ModulEintrag[] {
   return AKTIVE_MODULE.filter(m => m.meta && m.id !== 'start' && m.id !== 'admin' && !m.id.startsWith('divider_'));
 }
 
+/**
+ * Ohne <lastmod>: das Datum setzt erst der Build (scripts/sitemapStand.ts, Build-Datum), damit public/sitemap.xml
+ * nicht täglich veraltet und kein festes Datum im Quelltext steht.
+ */
 export function erzeugeSitemap(): string {
-  const [t, mo, j] = CURRENT_RELEASE_DATE.split('.');
-  const lastmod = `${j}-${mo}-${t}`;
   const url = (loc: string, freq: string, prio: string) =>
-    `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${freq}</changefreq>\n    <priority>${prio}</priority>\n  </url>`;
+    `  <url>\n    <loc>${loc}</loc>\n    <changefreq>${freq}</changefreq>\n    <priority>${prio}</priority>\n  </url>`;
   const teile: string[] = ['<?xml version="1.0" encoding="UTF-8"?>', '<!-- Generiert aus src/registry/modules.ts (npm run gen:sitemap) – nicht von Hand bearbeiten -->', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">', url(BASIS, 'daily', '1.0')];
   const eintraege = sitemapEintraege();
   for (const g of [...NAV_GRUPPEN, undefined]) {

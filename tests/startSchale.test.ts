@@ -3,7 +3,7 @@
 import fs from 'fs';
 import vm from 'vm';
 import { erzeugeSchale, KOPF_ANKER, SCHALE_STIL } from '../scripts/startSchale';
-import { CURRENT_VERSION } from '../src/data/versionData';
+import { APP_VERSION, STAND_DE } from '../src/data/stand';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -35,7 +35,7 @@ for (const k of ['min-h-screen bg-off-white dark:bg-slate-950 text-text-main dar
 
 // 3. eingesetzte Version und Boot-Skript
 const { kopf, root: html } = await erzeugeSchale();
-pruefe(html.includes(`Version ${CURRENT_VERSION.version} (${CURRENT_VERSION.date})`), 'Version nicht eingesetzt');
+pruefe(html.includes(`Version ${APP_VERSION} (${STAND_DE})`), 'Version nicht eingesetzt');
 pruefe(html.startsWith('<div id="root"><div data-schale inert>') && !html.includes('<script'), 'Aufbau der Schale (Wurzel)');
 pruefe(kopf.includes('<script>') && !kopf.includes('<script src') && kopf.includes(`<style>${SCHALE_STIL}</style>`), 'Aufbau der Schale (Kopf)');
 // Kopfteil steht im Build vor jedem Stylesheet (sonst würde das Skript erst nach dem CSS laufen)

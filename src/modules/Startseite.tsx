@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import { useTabContext } from '../contexts/TabContext';
 import { useLanguage } from '../contexts/LanguageContext';
-import { CURRENT_VERSION } from '../data/versionData';
+import { APP_VERSION, STAND_DE } from '../data/stand';
 import { META_CLUSTERS } from '../data/metaClusters';
 import { NAV_TAB_GRUPPEN, MODUL_KERN } from '../registry/kern';
 import type { ModulId } from '../registry/modules';
@@ -53,7 +53,7 @@ export default function Startseite() {
             title="Zum Changelog & zur Revisionshistorie"
           >
             <Tag size={13} className="text-slate-400" />
-            <span>Version {CURRENT_VERSION.version} ({CURRENT_VERSION.date})</span>
+            <span>Version {APP_VERSION} ({STAND_DE})</span>
           </button>
         </div>
         
@@ -227,7 +227,7 @@ export default function Startseite() {
             title="Changelog & Revisionshistorie öffnen"
           >
             <Clock size={12} />
-            <span>BaustoffBoard {CURRENT_VERSION.version} • Stand: {CURRENT_VERSION.date}</span>
+            <span>BaustoffBoard {APP_VERSION} • Stand: {STAND_DE}</span>
           </button>
           <span className="text-text-main/30">•</span>
           <button

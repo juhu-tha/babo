@@ -11,9 +11,15 @@ import {registryKernPlugin} from './scripts/registryKern';
 import {startSchalePlugin} from './scripts/startSchale';
 import {vorrendernPlugin} from './scripts/vorrendernPlugin';
 import {auditDatenPlugin} from './scripts/auditDaten';
+import {sitemapStandPlugin} from './scripts/sitemapStand';
+import {tagIso} from './src/data/stand';
 
 export default defineConfig(() => {
+  // Stand = Build-Datum (src/data/stand.ts); über die Umgebung an Vorrendern (Kindprozess) und Schale weitergereicht
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(process.env.BB_STAND ?? '')) process.env.BB_STAND = tagIso();
+  const stand = process.env.BB_STAND as string;
   return {
+    define: { __BB_STAND__: JSON.stringify(stand) },
     // quizPoolPlugin: Fragenpool quiz.json je Modul bzw. in Teilpaketen nachladen (docs/architektur.md)
     // modulKopfPlugin: Lernziele/Kurzfassung/Erkundung/Grenzen je Modul (AP 5.5)
     // modulVorladenPlugin: Modul-Chunks anhand des URL-Hashes früh vorladen (AP 5.5, scripts/vorladen-boot.js)
@@ -22,8 +28,9 @@ export default defineConfig(() => {
     // registryKernPlugin: schlanker Registry-Auszug im Einstieg, volle Registry bei Bedarf (AP 5.5 Nachtrag)
     // inhaltEinbettenPlugin: Werte aus content/**.json an den Verweisstellen einsetzen (AP 5.3)
     // auditDatenPlugin: Kennzahlen des Admin-Bereichs „Audit“ aus dem Quelltext (virtual:audit-daten, dist/audit-bundle.json)
+    // sitemapStandPlugin: dist/sitemap.xml mit <lastmod> = Build-Datum (public/sitemap.xml ohne lastmod)
     // vorrendernPlugin: nach dem Build je Modul dist/modul/<id>.html vorrendern (Z52, scripts/vorrendern.ts)
-    plugins: [inhaltEinbettenPlugin(), bedarfsLadenPlugin(), registryKernPlugin(), react(), tailwindcss(), quizPoolPlugin(), modulKopfPlugin(), modulVorladenPlugin(), startSchalePlugin(), auditDatenPlugin(), vorrendernPlugin()],
+    plugins: [inhaltEinbettenPlugin(), bedarfsLadenPlugin(), registryKernPlugin(), react(), tailwindcss(), quizPoolPlugin(), modulKopfPlugin(), modulVorladenPlugin(), startSchalePlugin(), auditDatenPlugin(), sitemapStandPlugin(() => stand), vorrendernPlugin()],
     // Hinweis: GEMINI_API_KEY wird bewusst NICHT per `define` in das Frontend geschrieben.
     // Der Schlüssel wird nur im Server (server.ts) verwendet.
     resolve: {
