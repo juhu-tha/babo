@@ -256,6 +256,8 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
   // QNG-Nachweis Simulator Calculations
   const qngComputation = useMemo(() => {
     // 1. Material-based footprint estimation (kg CO₂/m² NRF/year) over 50 years standard lifetime
+    // Alle Werte dieses Schnellrechners (Konstruktion, Heizung, PV-Gutschrift 0,28 je kWp, Deckel 4,5) sind Lehrwerte ohne
+    // Datenbankbezug; der Nachweis erfolgt mit dem LCA-Rechner bzw. nach QNG-Handbuch Anlage 3 (Durchsicht B, DSB-LR-3)
     let materialGwpAnnual = 0;
     if (constructionType === 'holzbau') materialGwpAnnual = 5.5; // low, sequestering offsets some elements
     else if (constructionType === 'hybrid') materialGwpAnnual = 11.2;
@@ -323,7 +325,8 @@ export default function Nachhaltigkeit({ bereiche = ALLE_BEREICHE }: { bereiche?
 
     const isOffice = crremBuildingType === 'office';
 
-    // Target intensity curves [kg CO2e/m²_NFA/a]
+    // Target intensity curves [kg CO2e/m²_NFA/a]: Stützwerte 2020/2025/2030/2035/2040/2045/2050 als Lehrwerte in der
+    // Größenordnung des CRREM-Pfads (1,5 °C, Deutschland), linear interpoliert; nicht aus dem CRREM-Tool abgerufen (Durchsicht B, DSB-LR-3)
     const getTargetForYear = (year: number): number => {
       if (year <= 2020) return isOffice ? 52.0 : 35.0;
       if (year <= 2025) {

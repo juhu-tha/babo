@@ -237,6 +237,8 @@ export default function BodenMaterialAufbereitung() {
                       <span className="px-2 py-1 bg-white border border-home-grau/30 rounded font-bold font-mono text-slate-700">Kosten: {TREATMENT_OPTIONS[treatmentMaterial][treatmentContaminant].cost}</span>
                     </div>
                   </div>
+                  {/* DSB-BM-2: Spannen ohne Quelle als Lehrwerte kennzeichnen */}
+                  <p className="text-xxs text-slate-500 -mt-2 mb-3"><MdText text={inhalt.texte.co2KostenLehrwerte} /></p>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div className="bg-white p-4 rounded-xl border border-home-grau/20">

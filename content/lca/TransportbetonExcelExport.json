@@ -72,7 +72,7 @@
         "Blatt 3 [Aufgabe_Studierende]: Interaktive Übung zur Mischungsoptimierung für eine Tiefgaragen-Bodenplatte (C30/37)"
       ],
       [
-        "Blatt 4 [EPD_Stammdaten]: Amtliche ÖKOBAUDAT-Emissionsfaktoren für GWP, Primärenergie (PENRT) und Transportaufwände"
+        "Blatt 4 [EPD_Stammdaten]: Lehr-Emissionsfaktoren (Größenordnung ÖKOBAUDAT/EPD) für GWP, Primärenergie (PENRT) und Transportaufwände"
       ],
       [],
       [
@@ -536,7 +536,7 @@
         }
       ],
       [
-        "Spezifisches GWP pro Festigkeitsklasse (C25/30 = 30 N/mm²)",
+        "Spezifisches GWP je N/mm² Würfeldruckfestigkeit (C25/30: f_ck,cube = 30 N/mm²)",
         "kg CO2/(m³·MPa)",
         "",
         "",
@@ -595,10 +595,10 @@
         "die folgende Bedingungen erfüllt:"
       ],
       [
-        "a) Mindestzementgehalt nach DIN 1045-2: mindestens 280 kg/m³ (bei Verwendung von CEM II/A-LL oder CEM III/A)"
+        "a) Mindestzementgehalt nach DIN 1045-2 für die maßgebende Klasse XD1: 300 kg/m³; bei Anrechnung von Flugasche (k-Wert) 270 kg/m³ (vorläufig, Normprüfung ausstehend; DIN 1045-2:2023-08, Ökobilanz-Übung)"
       ],
       [
-        "b) Maximaler äquivalenter Wasserzementwert (w/z)_eq <= 0.50"
+        "b) Maximaler äquivalenter Wasserzementwert (w/z)_eq <= 0,55 (maßgebend XD1; XC4 und XF1: 0,60)"
       ],
       [
         "c) Ziel: Mindestens 35 % CO2-Reduktion gegenüber der Ausgangsrezeptur (Referenz)"
@@ -626,11 +626,11 @@
         0.665,
         340,
         {
-          "f": "C17*D17"
+          "f": "C19*D19"
         },
         0,
         {
-          "f": "C17*F17"
+          "f": "C19*F19"
         },
         "Klinkerreich"
       ],
@@ -640,11 +640,11 @@
         0.6,
         0,
         {
-          "f": "C18*D18"
+          "f": "C20*D20"
         },
         0,
         {
-          "f": "C18*F18"
+          "f": "C20*F20"
         },
         "Mittlerer Klinker"
       ],
@@ -654,11 +654,11 @@
         0.4,
         0,
         {
-          "f": "C19*D19"
+          "f": "C21*D21"
         },
         290,
         {
-          "f": "C19*F19"
+          "f": "C21*F21"
         },
         "Klinkerarm (Empfohlen)"
       ],
@@ -668,11 +668,11 @@
         0.015,
         0,
         {
-          "f": "C20*D20"
+          "f": "C22*D22"
         },
         40,
         {
-          "f": "C20*F20"
+          "f": "C22*F22"
         },
         "k-Wert = 0.4 anrechenbar"
       ],
@@ -682,11 +682,11 @@
         0.0035,
         700,
         {
-          "f": "C21*D21"
+          "f": "C23*D23"
         },
         680,
         {
-          "f": "C21*F21"
+          "f": "C23*F23"
         },
         "Kornaufbau nach Fuller"
       ],
@@ -696,11 +696,11 @@
         0.0035,
         1140,
         {
-          "f": "C22*D22"
+          "f": "C24*D24"
         },
         700,
         {
-          "f": "C22*F22"
+          "f": "C24*F24"
         },
         "Kornzusammensetzung"
       ],
@@ -710,11 +710,11 @@
         0.0018,
         0,
         {
-          "f": "C23*D23"
+          "f": "C25*D25"
         },
         450,
         {
-          "f": "C23*F23"
+          "f": "C25*F25"
         },
         "DIN 4226-101"
       ],
@@ -724,11 +724,11 @@
         1.65,
         2,
         {
-          "f": "C24*D24"
+          "f": "C26*D26"
         },
         3.2,
         {
-          "f": "C24*F24"
+          "f": "C26*F26"
         },
         "Konsistenz F3/F4"
       ],
@@ -738,11 +738,11 @@
         0.0003,
         170,
         {
-          "f": "C25*D25"
+          "f": "C27*D27"
         },
         155,
         {
-          "f": "C25*F25"
+          "f": "C27*F27"
         },
         "(w/z) = 155 / 290 = 0.53"
       ],
@@ -762,11 +762,11 @@
         0.185,
         18,
         {
-          "f": "C27*D27"
+          "f": "C29*D29"
         },
         18,
         {
-          "f": "C27*F27"
+          "f": "C29*F29"
         },
         "Baustellen-Distanz"
       ],
@@ -782,16 +782,16 @@
       ],
       [],
       [
-        "ERGEBNIS PRO m³ BETON (A1-A5):",
+        "ERGEBNIS PRO m³ BETON (A1, A3-A5; A2 hier nicht erfasst):",
         "",
         "",
         "",
         {
-          "f": "SUM(E17:E28)"
+          "f": "SUM(E19:E30)"
         },
         "",
         {
-          "f": "SUM(G17:G28)"
+          "f": "SUM(G19:G30)"
         },
         "kg CO2-eq/m³"
       ],
@@ -803,7 +803,7 @@
         "",
         "",
         {
-          "f": "(E30-G30)/E30*100"
+          "f": "(E32-G32)/E32*100"
         },
         "% Reduktion"
       ],
@@ -824,7 +824,7 @@
         "",
         "",
         {
-          "f": "E30*850/1000"
+          "f": "E32*850/1000"
         },
         "",
         "",
@@ -838,7 +838,7 @@
         "",
         "",
         {
-          "f": "G30*850/1000"
+          "f": "G32*850/1000"
         },
         "Tonnen CO2-eq"
       ],
@@ -850,7 +850,7 @@
         "",
         "",
         {
-          "f": "E34-G35"
+          "f": "E36-G37"
         },
         "Tonnen CO2 eingespart!"
       ],
@@ -859,18 +859,18 @@
         "Selbstkontrolle für die Abgabe:"
       ],
       [
-        "- Liegt Ihre CO2-Minderung bei mindestens 35 %? (Aktuell: siehe Zelle G31)"
+        "- Liegt Ihre CO2-Minderung bei mindestens 35 %? (Aktuell: siehe Zelle G33)"
       ],
       [
-        "- Entspricht der Zementgehalt mindestens 280 kg/m³? (Zelle F19)"
+        "- Entspricht der Zementgehalt dem Mindestwert (300 kg/m³, mit Flugasche-Anrechnung 270 kg/m³)? (Zellen F19 bis F21)"
       ],
       [
-        "- Ist der w/z-Wert normgerecht? (Wassergehalt F25 geteilt durch Zement F19)"
+        "- Ist der w/z-Wert normgerecht? (Wassergehalt F27 geteilt durch Zement F19 bis F21 plus 0,4 · Flugasche F22; Grenzwert 0,55)"
       ]
     ],
     "generateTransportbetonExcel.ws4_data": [
       [
-        "ÖKOBAUDAT / DIN EN 15804 STAMMDATENBANK (Stand 2024/2025)"
+        "LEHR-STAMMDATEN NACH DIN EN 15804 (Größenordnung ÖKOBAUDAT/EPD; Zemente aus der VDZ-Branchen-EPD bzw. Lehrwerte)"
       ],
       [
         "Kennwerte für die Ökobilanzierung mineralischer Baustoffe"
@@ -994,17 +994,17 @@
         0.98,
         0.00018,
         0.00004,
-        "TREMOD / ÖKOBAUDAT"
+        "Lehrwert der Übung (voll ausgelastet); Mittel Last- und Sattelzüge UBA 2024: 0,101"
       ],
       [
         "Transport Güterzug elektrisch (D-Strommix)",
         "Transport",
         "1 t · km",
-        0.018,
+        0.014,
         0.24,
         0.00005,
         0.00001,
-        "TREMOD / Deutsche Bahn"
+        "UBA 2024 (TREMOD 6.71B), Güterbahnen"
       ],
       [
         "Transport Binnenschiff",
@@ -1014,7 +1014,7 @@
         0.18,
         0.00008,
         0.00002,
-        "TREMOD"
+        "Lehrwert"
       ],
       [
         "Fahrmischer-Transport Frischbeton",
@@ -1024,7 +1024,7 @@
         2.85,
         0.00055,
         0.00012,
-        "BTB Bundesverband Transportbeton"
+        "Lehrwert"
       ],
       [
         "Betonförderung Betonpumpe 36m Mast",
@@ -1034,7 +1034,7 @@
         48,
         0.0095,
         0.0022,
-        "ZTV-ING / ÖKOBAUDAT"
+        "Lehrwert"
       ]
     ]
   }

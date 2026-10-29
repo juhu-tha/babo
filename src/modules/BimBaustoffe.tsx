@@ -20,11 +20,15 @@ interface MaterialArchetype {
   ifcClass: string;
 }
 
-// Beton C30/37 und BSH aus der gemeinsamen Lehrwerttabelle (Konsistenz 29.10.2026, F-4)
-const AUS_LEHRWERTTABELLE: Partial<Record<string, GwpLehrwertSchluessel>> = { beton: 'betonC3037CemI', holz: 'bsh' };
+// Beton C30/37 und BSH aus der gemeinsamen Lehrwerttabelle (Konsistenz 29.10.2026, F-4); Baustahl S355 (Walzprofile) mit dem
+// zentralen Profilstahl-Lehrwert 1,1 kg CO₂-Äq./kg (Entscheidung 29.10.2026, NP2-ST-2) statt 0,64 kg/kg (Betonstahl-Referenz),
+// je m³ über die Rohdichte der Voreinstellung (Durchsicht B 29.10.2026, DSB-BIM-1)
+const AUS_LEHRWERTTABELLE: Partial<Record<string, GwpLehrwertSchluessel>> = { beton: 'betonC3037CemI', holz: 'bsh', stahl: 'profilstahl' };
 const ARCHETYPES: MaterialArchetype[] = inhalt.daten.ARCHETYPES.map(a => {
   const s = AUS_LEHRWERTTABELLE[a.id];
-  return s ? { ...a, defaultGwp: GWP_LEHRWERTE[s].gwp } : a;
+  if (!s) return a;
+  const w = GWP_LEHRWERTE[s];
+  return { ...a, defaultGwp: w.einheit === 't' ? Math.round((w.gwp / 1000) * a.defaultDensity) : w.gwp };
 });
 
 export default function BimBaustoffe() {
@@ -221,7 +225,7 @@ export default function BimBaustoffe() {
                       type="range" 
                       min={selectedId === 'holz' ? -900 : selectedId === 'stahl' ? 2000 : 10} 
                       max={selectedId === 'holz' ? -300 : selectedId === 'stahl' ? 10000 : 400} 
-                      step={selectedId === 'stahl' ? 100 : selectedId === 'mineralwolle' ? 1 : 5}
+                      step={selectedId === 'mineralwolle' ? 1 : 5}
                       value={gwp} 
                       onChange={(e) => setGwp(Number(e.target.value))}
                       className="cursor-pointer"

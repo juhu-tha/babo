@@ -24,6 +24,7 @@
     "kmLkw40t2": "km (Lkw 40t)",
     "betonwerkBaustelleA4": "Betonwerk ➔ Baustelle (A4):",
     "kmFahrmischer": "km (Fahrmischer)",
+    "hinweisLkwFaktor": "**Lkw-Faktor in A2:** Die Übung rechnet mit {uebung} kg CO₂-Äq./(t·km), einem Lehrwert für einen voll ausgelasteten 40-t-Sattelzug Euro 6 im Direktverkehr. Der Einzelbaustoff-Rechner der Ökobilanz-Grundlagen setzt für den Transport (A4) den Mittelwert des Umweltbundesamts 2024 für alle Last- und Sattelzüge einschließlich Leerfahrten und Teilbeladung an: {zentral} kg CO₂-Äq./(t·km). Mit diesem Wert läge A2 hier bei {a2zentral} statt {a2} kg CO₂-Äq./m³ – für die Rezepturbewertung nachrangig, für Projektwerte gilt die EPD bzw. der tatsächliche Transport.",
     "gwpGesamtModulA1": "GWP Gesamt (Modul A1–A5):",
     "kgCoEqM": "kg CO₂-eq / m³",
     "äquivalenterWZEq": "Äquivalenter (w/z)_eq:",
@@ -45,13 +46,13 @@
     "blatt3ÜbungsaufgabeAugsburg": "Blatt 3: Übungsaufgabe Augsburg",
     "konkreteFallstudie850M": "Konkrete Fallstudie: 850 m³ Bodenplatte C30/37, Selbstkontrolle, Ziel: ≥ 35% CO₂-Minderung.",
     "blatt4EpdStammdaten": "Blatt 4: EPD-Stammdaten",
-    "amtlicheÖkobaudatEmissionsfaktorenFür": "Amtliche ÖKOBAUDAT-Emissionsfaktoren für Bindemittel, Gesteine, Transporte und Baustellengeräte."
+    "amtlicheÖkobaudatEmissionsfaktorenFür": "Lehr-Emissionsfaktoren in der Größenordnung von ÖKOBAUDAT und EPD für Bindemittel, Gesteine, Transporte und Baustellengeräte (Zemente nach VDZ-Branchen-EPD bzw. Lehrwert)."
   },
   "werte": {
     "t1StandardC2530": "1. Standard C25/30 (Referenz CEM I)",
     "konventionellerTransportbetonMitReinem": "Konventioneller Transportbeton mit reinem Portlandzement und 100% Natursteinkörnung. Sehr hoher Klinkeranteil.",
     "t2KlinkereffizientC2530": "2. Klinkereffizient C25/30 (CEM III/A + Flugasche)",
-    "klimaschonenderBetonMitHüttensandreichem": "Klimaschonender Beton mit hüttensandreichem Zement CEM III/A und Flugasche. Reduziert A1 um ~45%.",
+    "klimaschonenderBetonMitHüttensandreichem": "Klimaschonender Beton mit hüttensandreichem Zement CEM III/A und Flugasche. Senkt A1 um rund 43 % (Zementanteil um rund 45 %).",
     "t3ZirkulärerÖkoBeton": "3. Zirkulärer Öko-Beton (CEM III/B + 45% RC-Gestein)",
     "maximalRessourcenUndKlimaschonend": "Maximal ressourcen- und klimaschonend mit Hüttensandzement CEM III/B und hochwertig aufbereitetem RC-Kies.",
     "excelDateiHeruntergeladen": "Excel-Datei heruntergeladen!",

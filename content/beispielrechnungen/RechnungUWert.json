@@ -28,6 +28,6 @@
     "bestandenGegKonform": "Bestanden (Höchstwert Anlage 7 GModG eingehalten)",
     "nichtBestandenGegenGeg": "Nicht bestanden (Höchstwert Anlage 7 GModG überschritten)",
     "dieDämmstoffstärkeIstEnergetisch": "Die Dämmstoffstärke ist energetisch ausreichend dimensioniert. Das Risiko von Oberflächenkondensat an der Innenseite bei üblichen Raumklimaten (20°C, 50% r.F.) ist in der ungestörten Wandfläche gering; Wärmebrücken (Anschlüsse, Ecken) sind gesondert nach DIN 4108-2 zu prüfen.",
-    "dieDämmwirkungIstUnzureichend": "Die Dämmwirkung ist unzureichend. Erhöhen Sie die Dicke der EPS-Dämmung (Schicht 2) im interaktiven Regler auf mindestens 14 cm, um den Höchstwert nach Anlage 7 GModG einzuhalten. Der Mindestwärmeschutz für Außenwände (DIN 4108-2:2013-02, Tab. 3: R ≥ 1,2 m²K/W) ist dagegen schon mit wenigen Zentimetern Dämmung erfüllt."
+    "dieDämmwirkungIstUnzureichend": "Die Dämmwirkung ist unzureichend. Erhöhen Sie die Dicke der EPS-Dämmung (Schicht 2) im interaktiven Regler auf mindestens 14 cm, um den Höchstwert nach Anlage 7 GModG einzuhalten. Der Mindestwärmeschutz für Außenwände (DIN 4108-2:2013-02, Tab. 3, Neuausgabe 2026-05 manuell abgleichen: R ≥ 1,2 m²K/W) ist dagegen schon mit wenigen Zentimetern Dämmung erfüllt."
   }
 }

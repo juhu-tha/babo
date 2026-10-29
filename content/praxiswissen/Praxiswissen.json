@@ -124,7 +124,7 @@
             "title": "Expositionsklassen von Beton exakt ausschreiben",
             "description": "Spezifizierung aller relevanten Expositionsklassen (z.B. XC4, XD3, XF4) anstelle von pauschalen Festigkeitsvorgaben. Keine unnötig hohen Klassen wählen, das treibt Zementgehalt und Rissrisiko hoch.",
             "standard": "DIN 1045-2 / DIN EN 206",
-            "tip": "Für erdberührte Gründungsbauteile ohne betonangreifendes Grundwasser genügt meist XC2 (nach DIN 1045-2:2008 min. C16/20, w/z ≤ 0,75); nur bei Frostbeanspruchung kommt XF1 hinzu (C25/30, w/z ≤ 0,60). Maßgebend ist die strengste Klasse; Werte der Ausgabe 2023-08 prüfen. Ein Ausschreiben von XF4 ohne Tausalzkontakt zieht unnötige Luftporenbildner nach sich."
+            "tip": "Für erdberührte Gründungsbauteile ohne betonangreifendes Grundwasser genügt meist XC2 (nach DIN 1045-2:2023-08 min. C16/20, w/z ≤ 0,75); nur bei Frostbeanspruchung kommt XF1 hinzu (C25/30, w/z ≤ 0,60). Maßgebend ist die strengste Klasse. Ein Ausschreiben von XF4 ohne Tausalzkontakt zieht unnötige Luftporenbildner nach sich."
           },
           {
             "id": "pl_lv_3",
@@ -635,7 +635,7 @@
       },
       {
         "titel": "Bewertung",
-        "erklaerung": "Für XC4 gilt nach DIN 1045-2:2008 ein Höchstwert von 0,60; die Reserve ist fast aufgebraucht:",
+        "erklaerung": "Für XC4 gilt nach DIN 1045-2:2023-08 ein Höchstwert von 0,60; die Reserve ist fast aufgebraucht:",
         "formel": "0{,}58 \\to 0{,}60"
       }
     ],
