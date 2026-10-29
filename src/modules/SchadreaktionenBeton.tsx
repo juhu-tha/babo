@@ -62,6 +62,8 @@ function AkrGefuegeSimulator() {
       badgeColor: stufen[r.stufe].farbe,
     };
   }, [alkaliContent, exposureEnv, years, aggregateSensitivity]);
+  // Alkalizufuhr von außen (WA/WS) bildet das Lehrmodell nicht ab – Hinweis statt „Keine AKR (dauerhaft)“
+  const aussenAlkaliHinweis = aggregateSensitivity !== 'E1' && (exposureEnv === 'WA' || exposureEnv === 'WS') && !simResults.akrTriggered;
 
   return (
     <div className="flex flex-col gap-6 animate-in fade-in duration-300">
@@ -220,9 +222,9 @@ function AkrGefuegeSimulator() {
 
             {/* Status Banner */}
             <div className={`p-3 rounded-xl border text-xs font-semibold text-center ${simResults.badgeColor}`}>
-              {simResults.damageLevel}
+              {aussenAlkaliHinweis ? inhalt.werte.keineAkrAusZementalkalien : simResults.damageLevel}
             </div>
-            {aggregateSensitivity !== 'E1' && (exposureEnv === 'WA' || exposureEnv === 'WS') && !simResults.akrTriggered && (
+            {aussenAlkaliHinweis && (
               <p className="text-[11px] leading-snug text-text-main/80 bg-amber-50 border border-amber-300 rounded-xl p-2.5">
                 <MdText text={inhalt.texte.akrSimAlkalizufuhrHinweis} />
               </p>
