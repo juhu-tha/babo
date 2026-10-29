@@ -200,7 +200,7 @@
     "vermeidungDerDreiflankenhaftungSchlüssel": " Vermeidung der Dreiflankenhaftung (Schlüsselfehler!)",
     "haftetDerDichtstoffAn": "Haftet der Dichtstoff an beiden Fugenflanken *und* am Fugenboden (Dreiflankenhaftung), führt eine Dehnung zu unzulässig hohen multiaxialen Spannungsspitzen im Dichtstoffkern. Folge: Abriss an den Flanken oder Längsriss im Dichtstoff.",
     "abhilfeEinbringenEinerGeschlossenzellige": "Abhilfe: Einbringen einer geschlossenzelligen PE-Rundschnur (Hinterfüllmaterial) oder eines Antihaft-Trennstreifens am Fugenboden!",
-    "fugenbreitenZuTiefenVerhältnis": "Faustregel Fugenbreite zu Dichtstoffdicke (Lehrwert; DIN 18540 tabelliert die Dichtstoffdicke je Fugenbreite mit Grenzabmaßen – Tabellenwerte am Normtext prüfen, vorläufig, F-Freigabe):",
+    "fugenbreitenZuTiefenVerhältnis": "Faustregel Fugenbreite zu Dichtstoffdicke (Lehrwert; DIN 18540 tabelliert die Dichtstoffdicke je Fugenbreite mit Grenzabmaßen – Tabellenwerte am Normtext prüfen, vorläufig, Normprüfung ausstehend):",
     "fürFugenbreitenBLe": "Für Fugenbreiten $b \\le 10\\,\\text{mm}$: $b : t \\approx 1 : 1$",
     "fürFugenbreitenB10": "Für Fugenbreiten $b > 10\\,\\text{mm}$: $b : t \\approx 2 : 1$ (z. B. Breite 20 mm → Tiefe 10 mm)",
     "wichtigeNormenPrüfungen": "Wichtige Normen & Prüfungen",
@@ -242,7 +242,7 @@
     "dinEn19921": "DIN EN 1992-1-1/NA, Tab. 4.4DE (c_min,dur), 4.4.1.3 (Δc_dev)",
     "beispiel2WieViel": "Beispiel 2: Wie viel CO₂ bindet Portlandit bei der Karbonatisierung?",
     "stöchiometrieDinEn16757": "Stöchiometrie; DIN EN 16757 (Produktkategorieregeln Beton)",
-    "oktober2026Ap3": "Oktober 2026 (AP 3 Grundlagen: Hydratation, Zusatzmittel, Korrosions- und Klebstoffchemie gegen Fachliteratur geprüft)"
+    "oktober2026Ap3": "Oktober 2026 (Hydratation, Zusatzmittel, Korrosions- und Klebstoffchemie gegen Fachliteratur geprüft)"
   },
   "daten": {
     "Bauchemie.schritte": [

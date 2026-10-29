@@ -135,7 +135,7 @@
       },
       {
         "formel": "t_e = \\sum \\Delta t \\cdot C^{\\frac{T_c - 20}{10}}",
-        "erklaerung": "Äquivalentalter aus der gewogenen Reife nach NEN 5970 (Verfahren nach de Vree) als Temperaturfaktor bezogen auf 20 °C, wie im Rechner verwendet: zementabhängige Konstante C = 1,15 … 1,75, Standard 1,45 (einstellbar). Vorläufig, F-Freigabe: Die integrierte Reife der NEN 5970 in °C·h ist öffentlich nicht vollständig wiedergegeben.",
+        "erklaerung": "Äquivalentalter aus der gewogenen Reife nach NEN 5970 (Verfahren nach de Vree) als Temperaturfaktor bezogen auf 20 °C, wie im Rechner verwendet: zementabhängige Konstante C = 1,15 … 1,75, Standard 1,45 (einstellbar). Vorläufig, Normprüfung ausstehend: Die integrierte Reife der NEN 5970 in °C·h ist öffentlich nicht vollständig wiedergegeben.",
         "quelle": "NEN 5970:2001; Giatec Scientific, Concrete Maturity Calculation Methods; Kasal, ČVUT Praha 2020"
       },
       {

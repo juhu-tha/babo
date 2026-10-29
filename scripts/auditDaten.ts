@@ -32,7 +32,11 @@ export const BUNDLE_DATEI = 'audit-bundle.json';
 export const F_ORDNER = ['src/calc', 'src/data', 'content'];
 /** eigene Audit-Daten (beschreiben die Prüfpunkte nur) nicht mitzählen */
 const F_AUSNAHMEN = [/^src\/data\/audit\//];
-export const F_MARKE = /F-Freigabe/;
+/**
+ * Marke eines Prüfpunkts: im Code „F-Freigabe“ (Kommentare), in öffentlichen Texten seit 29.10.2026
+ * „Normprüfung ausstehend“ (z. B. „vorläufig, Normprüfung ausstehend“) – beide zählen als Fundstelle.
+ */
+export const F_MARKE = /F-Freigabe|Normprüfung ausstehend/;
 
 // ---------------------------------------------------------------- Hilfen
 const rel = (wurzel: string, p: string) => path.relative(wurzel, p).split(path.sep).join('/');
@@ -94,10 +98,13 @@ export function sammleFFreigabe(wurzel = process.cwd()): AuditDaten['fFreigabe']
       const text = fs.readFileSync(path.join(wurzel, datei), 'utf8');
       if (!F_MARKE.test(text)) continue;
       const zeilen = text.split('\n');
+      // Fachgebiet aus dem Kontext mit der Code-Marke: der längere öffentliche Wortlaut verschiebt sonst den
+      // Ausschnitt langer Zeilen und damit die Stichworte (Zuordnung wie vor der Umstellung am 29.10.2026)
+      const alsCodeMarke = zeilen.map(z => z.replace(/Normprüfung ausstehend/g, 'F-Freigabe'));
       zeilen.forEach((z, i) => {
         if (!F_MARKE.test(z)) return;
         const kontext = kontextVon(zeilen, i);
-        funde.push({ datei, zeile: i + 1, kontext, fachgebiet: fachgebietVon(datei, kontext) });
+        funde.push({ datei, zeile: i + 1, kontext, fachgebiet: fachgebietVon(datei, kontextVon(alsCodeMarke, i)) });
       });
     }
   }

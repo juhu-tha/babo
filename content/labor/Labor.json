@@ -23,7 +23,7 @@
     "dasEntsprichtECm": "Das entspricht E_cm = 33 GPa für C30/37 nach DIN EN 1992-1-1, Tab. 3.1. Der Anfangsmodul E_C,0 aus der Erstbelastung ist wegen bleibender Verformungen etwas kleiner.",
     "dinEn1239013": "DIN EN 12390-13:2021-09",
     "konsistenzBeton": "Konsistenz (Beton)",
-    "oktober2026Ap4": "Oktober 2026 (AP 4 Labor: Prüfnormen, Simulationsannahmen und Protokollfunktion geprüft)"
+    "oktober2026Ap4": "Oktober 2026 (Prüfnormen, Simulationsannahmen und Protokollfunktion geprüft)"
   },
   "daten": {
     "Labor.schritte": [

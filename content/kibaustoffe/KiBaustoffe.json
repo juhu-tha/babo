@@ -162,7 +162,7 @@
     "dinEn206Din": "DIN EN 206 / DIN 1045-2:2023-08 (Erstprüfung)",
     "beispiel2ModellgüteMit": "Beispiel 2: Modellgüte mit MAE und RMSE",
     "derRmseGewichtetGroße": "Der RMSE gewichtet große Ausreißer stärker. Validierungsdaten dürfen nicht zum Training verwendet worden sein, sonst wird die Güte überschätzt.",
-    "oktober2026Ap14": "Oktober 2026 (AP 14 KI: KI-VO-Fristen inkl. Digital Omnibus, Art. 50/14, DSGVO-Artikel, UrhG § 44b, Modellangaben auf reale Modellfamilien zurückgeführt)",
+    "oktober2026Ap14": "Oktober 2026 (KI-VO-Fristen inkl. Digital Omnibus, Art. 50/14, DSGVO-Artikel, UrhG § 44b, Modellangaben auf reale Modellfamilien zurückgeführt)",
     "künstlicheIntelligenz": "Künstliche Intelligenz",
     "maschinellesLernen": "Maschinelles Lernen"
   },

@@ -30,9 +30,9 @@ pruefe('F-1: f_cd C100/115', fcdBeton(100), 56.6667);
 const c100 = EC2_CONCRETE_CLASSES.find(c => c.name === 'C100/115');
 const c90 = EC2_CONCRETE_CLASSES.find(c => c.name === 'C90/105');
 gilt(!!c100 && !!c90 && c100.epsC2 === c90.epsC2 && c100.epsCu2 === c90.epsCu2 && c100.n === c90.n, 'F-1: C100/115 Dehnungswerte wie C90/105');
-gilt(rechnerTab.werte.hochfesterBetonC5060.includes('C55/67') && rechnerTab.werte.hochfesterBetonC5060.includes('vorläufig, F-Freigabe'), 'F-1: Kennzeichnung ab C55/67');
+gilt(rechnerTab.werte.hochfesterBetonC5060.includes('C55/67') && rechnerTab.werte.hochfesterBetonC5060.includes('vorläufig, Normprüfung ausstehend'), 'F-1: Kennzeichnung ab C55/67');
 gilt(rechnerTab.werte.lehrwertC100115.includes('Lehrwert'), 'F-1: C100/115 als Lehrwert');
-gilt(tabelleTab.texte.hinweisZuHochleistungsbetonenC50.includes('C100/115 ist ein Lehrwert') && tabelleTab.texte.hinweisZuHochleistungsbetonenC50.includes('vorläufig, F-Freigabe'), 'F-1: Tabellenhinweis');
+gilt(tabelleTab.texte.hinweisZuHochleistungsbetonenC50.includes('C100/115 ist ein Lehrwert') && tabelleTab.texte.hinweisZuHochleistungsbetonenC50.includes('vorläufig, Normprüfung ausstehend'), 'F-1: Tabellenhinweis');
 
 // 2. mischungsberechnung: f/z-Lehrannahme 0,25 ohne Kennbuchstaben (CEM II/A, CEM II/B)
 pruefe('f/z CEM II/A', maxFaFaktor('CEM II/A'), 0.25);
@@ -53,7 +53,7 @@ gilt(mischErgebnisse.texte.sieblinienQuelle.includes('Lehrbuchwerte (DIN 1045-2,
 gilt(mischEingaben.werte.kWertHuesLehrannahme.includes('Anrechnung nur nach abZ/aBG'), 'k-Wert HüS Hinweis');
 gilt(mischEingaben.werte.fzLehrannahme.includes('0,25'), 'f/z-Hinweis');
 const gMisch = RECHNER_GRENZEN.mischungsberechnung.grenzen.join(' ');
-gilt(gMisch.includes('Lehrannahme mit der Grenze f/z ≤ 0,25') && gMisch.includes('Anrechnung nur nach abZ/aBG') && !gMisch.includes('F-Freigabe'), 'Grenzen Mischung');
+gilt(gMisch.includes('Lehrannahme mit der Grenze f/z ≤ 0,25') && gMisch.includes('Anrechnung nur nach abZ/aBG') && !/F-Freigabe|Normprüfung ausstehend/.test(gMisch), 'Grenzen Mischung');
 
 // 3. lca_rechner: Lehrwerte, Stand QNG, BBSR 2017
 gilt(QNG_WG.plus === 24 && QNG_WG.premium === 20 && QNG_STAND.includes('Anlage 3'), 'QNG-Grenzen mit Stand');

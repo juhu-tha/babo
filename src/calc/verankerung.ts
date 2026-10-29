@@ -66,9 +66,9 @@ export function pruefeVerankerung(e: VerankerungEingabe): Hinweis[] {
     bereich(h, 'alpha3', e.alpha3, 0.7, 1.0, 'α3 liegt nach Tabelle 8.2 zwischen 0,7 und 1,0.');
     bereich(h, 'alpha5', e.alpha5, 0.7, 1.0, 'α5 liegt nach Tabelle 8.2 zwischen 0,7 und 1,0.');
   } else {
-    h.push({ stufe: 'warnung', feld: 'verfahren', text: 'Vereinfachte NA-Form mit α₅ = 2/3 bei direkter Lagerung und Mindestwerten ohne 100 mm: vorläufig, Bestätigung am Normtext (F-Freigabe) ausstehend.' });
+    h.push({ stufe: 'warnung', feld: 'verfahren', text: 'Vereinfachte NA-Form mit α₅ = 2/3 bei direkter Lagerung und Mindestwerten ohne 100 mm: vorläufig, Normprüfung ausstehend.' });
   }
-  if (e.art === 'uebergreifung') h.push({ stufe: 'warnung', feld: 'alpha6', text: 'α₆ nach NA DE Tab. 8.3DE: vorläufig, Bestätigung am Normtext (F-Freigabe) ausstehend.' });
+  if (e.art === 'uebergreifung') h.push({ stufe: 'warnung', feld: 'alpha6', text: 'α₆ nach NA DE Tab. 8.3DE: vorläufig, Normprüfung ausstehend.' });
   bereich(h, 'phi', e.phi, 6, 40, 'Stabdurchmesser außerhalb des üblichen Bereichs 6–40 mm.');
   if (e.fck > 60) h.push({ stufe: 'warnung', feld: 'fck', text: 'Oberhalb C60/75 wird f_ctd nach 8.4.2(2) auf den Wert für C60/75 begrenzt.' });
   return h;

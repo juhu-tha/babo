@@ -49,7 +49,7 @@
     "beispiel2SchrankenFür": "Beispiel 2: Schranken für den E-Modul aus Gestein und Zementstein",
     "derWahreWertLiegt": "Der wahre Wert liegt dazwischen, nach Hashin-Shtrikman enger eingegrenzt. Gemessene Betonwerte (≈ 33 GPa) liegen oft sogar darunter – Ursache sind Poren und die weichere Kontaktzone zwischen Korn und Zementstein.",
     "mikromechanikVoigt1889Reuss": "Mikromechanik (Voigt 1889, Reuss 1929, Hashin & Shtrikman 1963)",
-    "oktober2026Ap5": "Oktober 2026 (AP 5 Mechanik: E-Modul nach DIN EN 1992-1-1 und Mehrphasenmodelle geprüft)"
+    "oktober2026Ap5": "Oktober 2026 (E-Modul nach DIN EN 1992-1-1 und Mehrphasenmodelle geprüft)"
   },
   "daten": {
     "EModul.schritte": [

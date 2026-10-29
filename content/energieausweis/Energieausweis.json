@@ -46,7 +46,7 @@
     "fürWohngebäudeGiltIm": "Für Wohngebäude gilt im Heizfall eine Raum-Solltemperatur von **$\\theta_{i} = 20^\\circ\\text{C}$** (DIN V 18599-10); Nachtabsenkung und eingeschränkter Heizbetrieb werden rechnerisch berücksichtigt, sodass die wirksame Mitteltemperatur darunter liegt (im früheren Monatsbilanzverfahren nach DIN V 4108-6 pauschal 19 °C).",
     "standardmäßigWirdEinLuftwechsel": "Standardmäßig wird ein Luftwechsel von **$n = 0{,}5\\,\\text{h}^{-1}$** unterstellt (alle zwei Stunden wird das Raumvolumen einmal komplett gegen kalte Außenluft ausgetauscht). Mit geprüfter Lüftungsanlage und WRG sinkt dieser Verlustfaktor rechnerisch beträchtlich.",
     "interneWärmegewinneQI": " Interne Wärmegewinne ($q_i$)",
-    "körperwärmeAnwesenderPersonenLampen": "Körperwärme anwesender Personen, Lampen und Elektrogeräte heizen das Gebäude mit. Pauschaler Ansatz im vereinfachten Verfahren nach DIN V 4108-6: **$q_i = 5\\,\\text{W/m}^2$** Gebäudenutzfläche (über die Heizperiode rund 25 bis 30 kWh/(m²·a)). DIN V 18599-10 setzt nutzungsabhängige Tageswerte an (Wohnen: EFH 45 Wh/(m²·d), MFH 90 Wh/(m²·d)). Der Rechner setzt pauschal 35 kWh/(m²·a) an; maßgebend ist das Nutzungsprofil nach DIN/TS 18599-10 (Lehrwert, vorläufig, F-Freigabe).",
+    "körperwärmeAnwesenderPersonenLampen": "Körperwärme anwesender Personen, Lampen und Elektrogeräte heizen das Gebäude mit. Pauschaler Ansatz im vereinfachten Verfahren nach DIN V 4108-6: **$q_i = 5\\,\\text{W/m}^2$** Gebäudenutzfläche (über die Heizperiode rund 25 bis 30 kWh/(m²·a)). DIN V 18599-10 setzt nutzungsabhängige Tageswerte an (Wohnen: EFH 45 Wh/(m²·d), MFH 90 Wh/(m²·d)). Der Rechner setzt pauschal 35 kWh/(m²·a) an; maßgebend ist das Nutzungsprofil nach DIN/TS 18599-10 (Lehrwert, vorläufig, Normprüfung ausstehend).",
     "warmwasserbedarfQW": " Warmwasserbedarf ($q_w$)",
     "imVereinfachtenVerfahrenDin": "Im vereinfachten Verfahren (DIN V 4108-6 / DIN V 4701-10) wird der Nutzenergiebedarf für Trinkwarmwasser pauschal mit**$q_w = 12{,}5\\,\\text{kWh}/(\\text{m}^2\\cdot\\text{a})$** bezogen auf die Gebäudenutzfläche $A_N$ angesetzt; DIN V 18599-10 verwendet nutzungsabhängige Werte.",
     "gebäudenutzflächeAN": " Gebäudenutzfläche ($A_N$)",
@@ -118,7 +118,7 @@
     "rechtsstandBis2026Info": "Anlage 4/9 bisherige Fassung",
     "rechtsstandAb2027": "ab 01.01.2027",
     "rechtsstandAb2027Info": "Anlage 4 GModG 2027",
-    "rechtsstandHinweis": "**Faktoren je Rechtsstand.** Bis 31.12.2026: $f_P$ nach Anlage 4 (Gas/Öl 1,1, Holz 0,2, Netzstrom 1,8) und CO₂ nach Anlage 9 (Erdgas 240, Heizöl 310, Holz 20, Netzstrom 560 g/kWh). Ab 01.01.2027: $f_P$ nach neuer Anlage 4 GModG (Gas/Öl 1,1, Holz 0,7, Netzstrom 1,5, Fernwärme 0,7); CO₂-Faktor Netzstrom 100 g/kWh (vorläufig, F-Freigabe: Anlage 9 in der Fassung ab 2027 am Gesetzestext bestätigen). Fernwärme bis 2026 mit Lehrwerten ($f_P$ 0,4; 120 g/kWh), weil Anlage 4/9 nach Erzeugungsart unterscheiden. Das neue Referenzgebäude ohne den Faktor 0,55 ist im Lehrmodell nicht abgebildet.",
+    "rechtsstandHinweis": "**Faktoren je Rechtsstand.** Bis 31.12.2026: $f_P$ nach Anlage 4 (Gas/Öl 1,1, Holz 0,2, Netzstrom 1,8) und CO₂ nach Anlage 9 (Erdgas 240, Heizöl 310, Holz 20, Netzstrom 560 g/kWh). Ab 01.01.2027: $f_P$ nach neuer Anlage 4 GModG (Gas/Öl 1,1, Holz 0,7, Netzstrom 1,5, Fernwärme 0,7); CO₂-Faktor Netzstrom 100 g/kWh (vorläufig, Normprüfung ausstehend: Anlage 9 in der Fassung ab 2027 am Gesetzestext bestätigen). Fernwärme bis 2026 mit Lehrwerten ($f_P$ 0,4; 120 g/kWh), weil Anlage 4/9 nach Erzeugungsart unterscheiden. Das neue Referenzgebäude ohne den Faktor 0,55 ist im Lehrmodell nicht abgebildet.",
     "coFaktor": " (Faktor ",
     "gKwh": " g/kWh)",
     "ergebnisEnergieausweis": "Ergebnis Energieausweis",
@@ -169,7 +169,7 @@
     "beispiel2GebäudenutzflächeUnd": "Beispiel 2: Gebäudenutzfläche und Gültigkeit des Energieausweises",
     "derBezugAufA": "Der Bezug auf A_N statt Wohnfläche ist eine häufige Ursache für Missverständnisse beim Vergleich von Energieausweis und Heizkostenabrechnung.",
     "gmodgGebäudenutzflächeAN": "GModG: Gebäudenutzfläche A_N § 3 Abs. 1 Nr. 10 und § 25 Abs. 10 (DIN V 18599-1, Gl. 30); § 79 Abs. 3 (Gültigkeit 10 Jahre)",
-    "oktober2026Ap6": "Oktober 2026 (AP 6 Bauphysik: GEG → GModG, Paragrafen, Primärenergiefaktoren und Effizienzklassen gegen die Lesefassung geprüft)",
+    "oktober2026Ap6": "Oktober 2026 (GEG → GModG, Paragrafen, Primärenergiefaktoren und Effizienzklassen gegen die Lesefassung geprüft)",
     "reiterBereiche": "Bereiche des Moduls Energieausweis"
   },
   "daten": {

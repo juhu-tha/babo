@@ -632,7 +632,7 @@ export function DynamischerAufgabenGenerator() {
           </div>
 
           <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-[11px] text-slate-600">
-            <strong>Didaktischer Tipp:</strong> Bei Rechenaufgaben in Prüfungen stammen über 70% der Punktabzüge nicht aus Formelfehlern, sondern aus unvollständigen Einheitenumrechnungen (z. B. Meter vs. Millimeter oder Kilonewton vs. Newton).
+            <strong>Didaktischer Tipp:</strong> Bei Rechenaufgaben entstehen viele Fehler nicht in der Formel, sondern bei der Umrechnung der Einheiten (z. B. Meter und Millimeter oder Kilonewton und Newton). Prüfen Sie die Einheiten vor dem Einsetzen.
           </div>
         </div>
       </div>

@@ -43,7 +43,10 @@ const html = await page.evaluate(() => {
   return root.innerHTML;
 });
 await browser.close();
-const schale = html.replace(/Version v[\d.]+ \([\d.]+\)/, 'Version %BB_VERSION%');
+// Druckzeilen (Datum, Version) ebenfalls als Platzhalter – scripts/startSchale.ts setzt sie beim Build
+const schale = html.replace(/Version v[\d.]+ \([\d.]+\)/, 'Version %BB_VERSION%')
+  .replace(/ · \d{2}\.\d{2}\.\d{4} · v[\d.]+</, ' · %BB_DATUM% · %BB_VNR%<')
+  .replace(/(Datum|Date): [\d./]+</, '$1: %BB_DATUM%<');
 if (!schale.includes('%BB_VERSION%')) { console.error('Versionszeile nicht gefunden'); process.exit(1); }
 const datei = path.join(ROOT, 'scripts/startschale.html');
 fs.writeFileSync(datei, schale + '\n');

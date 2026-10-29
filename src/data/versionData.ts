@@ -106,12 +106,12 @@ export const VERSION_HISTORY: VersionItem[] = [
   {
     version: 'v3.24.0',
     date: '22.10.2026',
-    title: 'Master-Audit 2026: Gesamtrevision AP 1–19, Wissenspool-Ausbau & Rechner-Stabilität',
+    title: 'Master-Audit 2026: Gesamtrevision, Wissenspool-Ausbau & Rechner-Stabilität',
     badge: 'minor',
     changes: [
-      'Didaktik- & Prüfungs-Offensive (AP 18/19): Ausbau des zentralen Prüfungsfragenpools von 26 auf 233 Fachfragen inkl. balancierter Antwortverteilung und dynamischer Zufallsmischung (mischeAntworten); Ausstattung von 80 Fachmodulen mit strukturierten Selbsttests (ModulTest) und 178 einklappbaren Rechenbeispielen (FormulaDerivationBox).',
-      'Berechnungs- & Formelpräzision (AP 2/5/6): Durchgängige Implementierung der formatDeZahl-Formatierung (DIN 1333, deutsches Dezimalkomma), NaN- und Nulldivisionsschutz für alle interaktiven Rechnerwerkzeuge sowie fehlerfreie Validierung von 3103 KaTeX-Formeln.',
-      'Normen- & Rechtsaktualisierung (AP 1/3/7/11/14): Bereinigung und Umstellung von 749 Normenverweisen auf das verifizierte DIN-Media-Suchschema; Einarbeitung aktueller Regelwerke wie DIN 1076:2026-01 (Ingenieurbauwerke), DIN EN 15978:2026-09 (Gebäudeökobilanz), GefStoffV 2024, EU-KI-Verordnung (Digital Omnibus) sowie GModG/GEG.',
+      'Didaktik- & Prüfungs-Offensive: Ausbau des zentralen Prüfungsfragenpools von 26 auf 233 Fachfragen inkl. balancierter Antwortverteilung und dynamischer Zufallsmischung (mischeAntworten); Ausstattung von 80 Fachmodulen mit strukturierten Selbsttests (ModulTest) und 178 einklappbaren Rechenbeispielen (FormulaDerivationBox).',
+      'Berechnungs- & Formelpräzision: Durchgängige Implementierung der formatDeZahl-Formatierung (DIN 1333, deutsches Dezimalkomma), NaN- und Nulldivisionsschutz für alle interaktiven Rechnerwerkzeuge sowie fehlerfreie Validierung von 3103 KaTeX-Formeln.',
+      'Normen- & Rechtsaktualisierung: Bereinigung und Umstellung von 749 Normenverweisen auf das verifizierte DIN-Media-Suchschema; Einarbeitung aktueller Regelwerke wie DIN 1076:2026-01 (Ingenieurbauwerke), DIN EN 15978:2026-09 (Gebäudeökobilanz), GefStoffV 2024, EU-KI-Verordnung (Digital Omnibus) sowie GModG/GEG.',
       'Chart.js- & Performance-Härtung: Zentrale Chart.js-Registrierung (chartSetup.ts) zur Vermeidung redundanter Re-Registrierungen und Verhinderung von Canvas-Rendering-Kollisionen bei Diagrammaufrufen.'
     ]
   },
@@ -140,11 +140,11 @@ export const VERSION_HISTORY: VersionItem[] = [
   {
     version: 'v3.23.0',
     date: '20.10.2026',
-    title: 'Systemweit einklappbare Formelherleitungen, AP 10 Dauerhaftigkeit & Prüfungsfragen-Ausbau',
+    title: 'Systemweit einklappbare Formelherleitungen, Dauerhaftigkeit & Prüfungsfragen-Ausbau',
     badge: 'minor',
     changes: [
       'UI-Architektur & Didaktik: Systemweite Umstellung aller Formelherleitungen (FormulaDerivationBox) auf standardmäßig eingeklappten Zustand für ein aufgeräumtes Leselayout – per Mausklick jederzeit individuell auf- und zuklappbar.',
-      'Dauerhaftigkeit & Korrosionsschutz (AP 10): Normative Schärfung der Expositionsklassen (DIN 1045-2:2023-08, c_nom = 55 mm für XD3), PREN-Lochfraßformel für Edelstähle, Holzschutz nach DIN 68800-1 bis -4 sowie DAfStb-Alkali-Richtlinie.',
+      'Dauerhaftigkeit & Korrosionsschutz: Normative Schärfung der Expositionsklassen (DIN 1045-2:2023-08, c_nom = 55 mm für XD3), PREN-Lochfraßformel für Edelstähle, Holzschutz nach DIN 68800-1 bis -4 sowie DAfStb-Alkali-Richtlinie.',
       'Aufgaben- & Prüfungsbestand: Integration von 14 neuen Fachprüfungsfragen in quiz.json und Ausbau praxisnaher Berechnungsaufgaben zu Fick-II-Chloriddiffusion, Betondeckungsnachweisen und Hausschwamm-Sanierung.'
     ]
   }

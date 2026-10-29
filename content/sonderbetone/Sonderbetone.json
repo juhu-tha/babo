@@ -328,7 +328,7 @@
       },
       {
         "formel": "E_{\\text{cm,RC}} = E_{\\text{cm}} \\cdot \\left( 1 - \\alpha_{\\text{RC}} \\cdot \\frac{\\text{RC\\%}}{100} \\right)",
-        "erklaerung": "Abminderung des statischen E-Moduls infolge des geringeren E-Moduls der Altmörtel- und Ziegelphasen (α_RC ≈ 0,25 bis 0,40 je nach Typ 1 oder 2; Lehrmodell, vorläufig, F-Freigabe).",
+        "erklaerung": "Abminderung des statischen E-Moduls infolge des geringeren E-Moduls der Altmörtel- und Ziegelphasen (α_RC ≈ 0,25 bis 0,40 je nach Typ 1 oder 2; Lehrmodell, vorläufig, Normprüfung ausstehend).",
         "quelle": "Lehrmodell (Näherung; Quelle zu belegen)"
       },
       {

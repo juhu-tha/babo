@@ -45,6 +45,9 @@ if (sonst) console.warn(`Hinweis: ${sonst.eintraege.length} F-Freigabe-Fundstell
 pruefe(kontextVon([' * erste Zeile mit Wert 0,121', ' *   vorläufig, F-Freigabe'], 1) === 'erste Zeile mit Wert 0,121 vorläufig, F-Freigabe', 'kontextVon: Kommentar-Fortsetzung');
 pruefe(kontextVon(['x'.repeat(500) + ' F-Freigabe ' + 'y'.repeat(100)], 0).includes('F-Freigabe'), 'kontextVon: Kürzung verliert die Marke');
 pruefe(fachgebietVon('src/calc/schall.ts', '') === 'Bauphysik – Schallschutz', 'fachgebietVon: Datei');
+// öffentlicher Wortlaut seit 29.10.2026 („vorläufig, Normprüfung ausstehend“) zählt wie die Code-Marke
+pruefe(F_MARKE.test('vorläufig, F-Freigabe') && F_MARKE.test('Wert vorläufig, Normprüfung ausstehend.') && !F_MARKE.test('vorläufig'), 'F_MARKE: beide Wortlaute');
+pruefe(kontextVon(['x'.repeat(500) + ' Normprüfung ausstehend ' + 'y'.repeat(100)], 0).includes('Normprüfung ausstehend'), 'kontextVon: Kürzung verliert die öffentliche Marke');
 pruefe(fachgebietVon('src/data/rechnerGrenzen.ts', 'Fließgrenze: Einpunktverfahren') === 'Geotechnik', 'fachgebietVon: Kontext');
 
 // 2. Quiz-Prüflisten: Zählungen = quiz.json

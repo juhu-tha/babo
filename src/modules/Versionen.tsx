@@ -1,7 +1,8 @@
 import React from 'react';
 import { Clock, Milestone, Calendar, HardDrive } from 'lucide-react';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
-import { VERSION_HISTORY, CURRENT_VERSION } from '@/src/data/versionData';
+import { VERSION_HISTORY } from '@/src/data/versionData';
+import { APP_VERSION, STAND_DE } from '@/src/data/stand';
 import inhalt from '@/content/versionen/Versionen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 
@@ -22,7 +23,7 @@ export default function Versionen() {
           </div>
           <div className="flex items-center gap-2 text-xs bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg text-slate-700 font-mono font-medium">
             <HardDrive className="w-3.5 h-3.5 text-slate-500" />
-            <span><MdText text={inhalt.texte.aktuellerStand} />{CURRENT_VERSION.version} ({CURRENT_VERSION.date})</span>
+            <span><MdText text={inhalt.texte.aktuellerStand} />{APP_VERSION} ({STAND_DE})</span>
           </div>
         </div>
 

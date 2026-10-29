@@ -104,9 +104,9 @@ export const U_PROG_TRITTSCHALL = 3;
  */
 export const ANFORDERUNGEN_TRITTSCHALL = [
   { id: 'wtd_2018', label: 'Wohnungstrenndecke, Mehrfamilienhaus (DIN 4109-1:2018-01)', wert: 50, quelle: 'DIN 4109-1:2018-01, Tab. 2 (Standard; bestätigt 27.10.2026)' },
-  { id: 'treppe_2018', label: 'Treppenlauf/-podest, Mehrfamilienhaus (DIN 4109-1:2018-01)', wert: 53, quelle: 'Schöck, „Trittschallschutz Normen“ (Wiedergabe DIN 4109-1) – vorläufig, F-Freigabe' },
+  { id: 'treppe_2018', label: 'Treppenlauf/-podest, Mehrfamilienhaus (DIN 4109-1:2018-01)', wert: 53, quelle: 'Schöck, „Trittschallschutz Normen“ (Wiedergabe DIN 4109-1) – vorläufig, Normprüfung ausstehend' },
   { id: 'wtd_1989', label: 'Wohnungstrenndecke nach DIN 4109:1989-11 (Bestand)', wert: 53, quelle: 'DIN 4109:1989-11, Tab. 3 (historische Option; bestätigt 27.10.2026)' },
-  { id: 'treppe_rh', label: 'Treppe, Reihen-/Doppelhaus (DIN 4109-1:2018-01)', wert: 46, quelle: 'Schöck, „Trittschallschutz Normen“ (Wiedergabe DIN 4109-1) – vorläufig, F-Freigabe' },
+  { id: 'treppe_rh', label: 'Treppe, Reihen-/Doppelhaus (DIN 4109-1:2018-01)', wert: 46, quelle: 'Schöck, „Trittschallschutz Normen“ (Wiedergabe DIN 4109-1) – vorläufig, Normprüfung ausstehend' },
 ] as const;
 
 export interface TrittschallEingabe {
