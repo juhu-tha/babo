@@ -492,7 +492,7 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "Kombinierte Werkstoffe müssen thermisch, chemisch und hygrisch verträglich und schubsteif verbunden sein; Beton und Stahl haben eine ähnliche Wärmedehnzahl, und das alkalische Porenwasser passiviert den Stahl.",
     "In Faserverbunden trägt die Faser die Zugkraft, die Matrix überträgt Schub; in Faserrichtung gilt die Voigt-, quer dazu die Reuss-Mischungsregel, deshalb sind Faserverbunde stark anisotrop.",
     "Oberflächenschutz nach DIN EN 1504-2 reicht von der diffusionsoffenen Hydrophobierung über die Imprägnierung bis zur Beschichtung; Stahl schützen nach DIN EN ISO 12944 Barriere, Inhibition oder Zink als Opferanode.",
-    "Die Haftzugfestigkeit im Abreißversuch nach DIN EN 1542 entscheidet über die Leistung jeder Schicht; unter befahrbaren Oberflächenschutzsystemen muss die Betonrandzone im Mittel mindestens 1,5 N/mm² erreichen, ein Bruch im Untergrund zeigt guten Verbund.",
+    "Die Haftzugfestigkeit im Abreißversuch nach DIN EN 1542 entscheidet über die Leistung jeder Schicht; unter befahrbaren OS-Systemen sind im Mittel 1,5 N/mm² gefordert, ein Bruch im Untergrund zeigt guten Verbund.",
   ],
   korrosionsschutz_beschichtungen: [
     "Beschichtungen und Zinküberzüge schützen Stahl durch Barrierewirkung, Inhibierung oder kathodisch, weil Zink als unedleres Metall an Fehlstellen als Opferanode wirkt.",

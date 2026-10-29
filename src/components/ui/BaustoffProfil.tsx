@@ -25,10 +25,10 @@ import { formatDeZahl } from '@/src/utils/numberFormat';
 
 // Kennwerte im Steckbrief Holz aus den zentralen Konstanten (Durchsicht D 29.10.2026, DSD-HO-2/-3)
 const KVH_BIOGEN_T = formatDeZahl(-GWP_LEHRWERTE.kvh.biogen / 1000, 2);
-const KVH_ROHDICHTE = GWP_LEHRWERTE.kvh.rohdichte;
+const KVH_ROHDICHTE = formatDeZahl(GWP_LEHRWERTE.kvh.rohdichte, 0);
 const FICHTE_QT = formatDeZahl(SCHWINDBEIWERTE.fichte.tangential, 2);
 const FICHTE_QL = formatDeZahl(SCHWINDBEIWERTE.fichte.longitudinal, 2);
-const FICHTE_T_ZU_L = Math.round(SCHWINDBEIWERTE.fichte.tangential / SCHWINDBEIWERTE.fichte.longitudinal);
+const FICHTE_T_ZU_L = formatDeZahl(SCHWINDBEIWERTE.fichte.tangential / SCHWINDBEIWERTE.fichte.longitudinal, 0);
 
 import type { TabId } from '@/src/contexts/TabContext';
 export interface ProfilSection {
