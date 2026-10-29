@@ -124,8 +124,8 @@ for (const ordner of ORDNER) {
         const fenster = stopp > 0 ? nach.slice(0, stopp) : nach;
         const vor = zeile.slice(Math.max(0, m.index - 25), m.index);
         // „BGB § 633“: unmittelbar vorangestelltes Gesetz hat Vorrang vor einem späteren
-        const direkt = gesetzVon(vor, true);
-        let g = direkt && direkt.pos <= 22 && /\b[A-Za-zÄÖÜäöü/.\d-]+\)?\s?$/.test(vor) && GESETZE.find(([n]) => n === direkt.name)[1].test(vor.slice(-12)) ? direkt : gesetzVon(fenster);
+        const direkt = GESETZE.find(([, re]) => new RegExp(`(?:${re.source})\\)?\\s?$`).test(vor));
+        let g = direkt ? { name: direkt[0], pos: 0 } : gesetzVon(fenster);
         if (!g) {
           const gv = gesetzVon(vor, true);
           if (gv && /^[\s,(]*$/.test(vor.slice(vor.length - 3).replace(/[A-Za-zÄÖÜäöü/\-]/g, ''))) g = gv;

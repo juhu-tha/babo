@@ -45,7 +45,7 @@
             "process": "Rechnerische Überprüfung der Fluchtweggeometrien (Lauflänge ≤ 35 m nach MBO), Brandabschnittstrennungen und Abstandsflächengeometrien (§ 6 LBO) mittels räumlicher Topologieabfragen.",
             "output": "Strukturierter Prüfbericht im BCF-Standard (BIM Collaboration Format) mit georeferenzierten Kollisionselementen.",
             "benefit": "Reduktion behördlicher Nachforderungszyklen um bis zu 75 %; Ausschluss formeller Planungsfehler im Genehmigungsverfahren.",
-            "normRef": "Musterbauordnung (MBO) § 33 & jeweilige Landesbauordnungen (LBO § 6)"
+            "normRef": "Musterbauordnung (MBO) §§ 33, 35 & jeweilige Landesbauordnungen (LBO § 6)"
           },
           {
             "title": "Topologieoptimierung im Grenzzustand der Tragfähigkeit (SIMP-Verfahren)",
@@ -470,7 +470,7 @@
         "pitfalls": {
           "mainRisk": "Stochastische Konfabulation (Halluzination): Unverankerte Sprachmodelle neigen dazu, nicht existente Normabsätze, falsche Expositionsklassen-Zuordnungen oder fehlerhafte Sicherheitsbeiwerte mit hoher grammatikalischer Sicherheit zu behaupten.",
           "engineerDuty": "Ausschließliche Verwendung verankerter RAG-Systeme für rechts- und nachweisrelevante Ingenieurentscheidungen; persönliche Kontrolle aller numerischen Ausgaben.",
-          "standards": "VOB Teil A/B/C, DIN EN 1990–1999 (Eurocodes), HOAI § 634 BGB"
+          "standards": "VOB Teil A/B/C, DIN EN 1990–1999 (Eurocodes), HOAI, § 634 BGB"
         }
       },
       "rag": {
