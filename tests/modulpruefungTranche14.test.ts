@@ -135,5 +135,20 @@ gilt(mdbTsx.includes('mol H⁺-Äq.') && mdbTsx.includes('kg P-Äq.') && mdbTsx.
 gilt(!mdbTsx.includes('SO₂-eq') && !mdbTsx.includes('PO₄-eq'), 'MDB5 keine A1-Einheiten mehr in der Konsole');
 gilt(mdb.texte.lehrwerteA2Hinweis.includes('Lehrwerte, vorläufig'), 'MDB5 Kennzeichnung „Lehrwerte, vorläufig“');
 
+// Umsetzung 29.10.2026: Formulare/Vorlagen ohne vorbelegte Personennamen („[Name]“)
+const namen: [string, string][] = [
+  ['content/ki/KiDeklarationGuide.json', 'erstpruefungPlatzhalter'],
+  ['content/bauschaeden/Bauschaeden.json', 'ingenieurbüroDrIngM'],
+  ['content/bodenmaterialaufbereitung/BodenMaterialAufbereitung.json', 'frDrMeierUntergeordnete'],
+];
+for (const [datei, schluessel] of namen) {
+  const j = JSON.parse(readFileSync(datei, 'utf-8')) as { werte: Record<string, string> };
+  gilt(j.werte[schluessel]?.includes('[Name]'), `Formular ${datei}: ${schluessel} ohne Platzhalter „[Name]“`);
+}
+const kiDekl = readFileSync('content/ki/KiDeklarationGuide.json', 'utf-8');
+gilt(!/Prof\. Dr\.-Ing\. [A-ZÄÖÜ]/.test(kiDekl), 'KI-Deklarationsformular mit vorbelegtem Prüfernamen');
+const btb = JSON.parse(readFileSync('content/bautagebuch/Bautagebuch.json', 'utf-8')) as { daten: { PROJECTS: { structuralEngineer: string }[] } };
+gilt(btb.daten.PROJECTS.every(p => p.structuralEngineer.includes('[Name]')), 'Bautagebuch: Tragwerksplanung ohne Platzhalter „[Name]“');
+
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
 console.log('OK: Modulprüfung Tranche 14');
