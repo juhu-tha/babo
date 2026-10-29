@@ -26,11 +26,11 @@ interface SealantZgv {
 }
 
 const SUBSTRATES: Record<string, SubstrateMaterial> = {
-  concrete: { name: 'Normalbeton / Stahlbeton', alpha: 12, description: 'Tragender Baustoff mit mäßiger thermischer Ausdehnung.' },
+  concrete: { name: 'Normalbeton / Stahlbeton', alpha: 10, description: 'Tragender Baustoff mit mäßiger thermischer Ausdehnung (α_T = 10 · 10⁻⁶ 1/K nach DIN EN 1992-1-1, 3.1.3(5)).' }, // Konsistenzprüfung 29.10.2026: vorher 12, wie Rechenbeispiel des Moduls
   brick: { name: 'Ziegelmauerwerk / Klinker', alpha: 6, description: 'Geringe Formänderung bei Temperaturschwankungen.' },
   vulkan: { name: 'Porenbeton / Gasbeton', alpha: 8, description: 'Mittlere Dehnung, hochporöser, saugfähiger Untergrund.' },
   aluminium: { name: 'Aluminium (eloxiert / roh)', alpha: 23, description: 'Metalle weisen extreme thermische Bewegung auf.' },
-  steel: { name: 'Konstruktionsstahl', alpha: 12, description: 'Verhält sich thermisch wie Beton (ideal für Verbundfugen).' },
+  steel: { name: 'Konstruktionsstahl', alpha: 12, description: 'Verhält sich thermisch nahezu wie Beton (12 statt 10 · 10⁻⁶ 1/K).' },
   pvc: { name: 'Hart-PVC / Kunststoffprofile', alpha: 80, description: 'Enormer Ausdehnungskoeffizient, extrem bewegungsfreudig.' },
   wood: { name: 'Nadelholz (senkrecht zur Faser)', alpha: 35, description: 'Quellt und schwindet zusätzlich stark hygrisch.' }
 };
