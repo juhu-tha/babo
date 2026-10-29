@@ -20,7 +20,7 @@ const TGAInteraction = () => {
     let mass = 100;
     mass -= 2 * anteil(30, 105);   // freies (verdampfbares) Wasser
     mass -= 4 * anteil(105, 400);  // chemisch gebundenes Wasser aus C-S-H, Ettringit, AFm
-    mass -= 2.5 * anteil(400, 500); // Ca(OH)2 → CaO + H2O
+    mass -= 2.5 * anteil(400, 500); // Ca(OH)2 → CaO + H2O (Lehrmodell: Massenanteil 2,5 %, wie Beispiel 1)
     mass -= 6 * anteil(600, 800);  // CaCO3 → CaO + CO2 (Karbonatisierung bzw. kalkst. Gesteinskörnung)
     return formatDeZahl(mass, 1);
   };

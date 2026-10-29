@@ -273,10 +273,13 @@ function LokalelementSimulator() {
 
                 {/* Rebar Center Y based on cover */}
                 {(() => {
-                  const rebarCenterY = 40 + coverMm * 3.5 + 45;
+                  const rebarCenterY = 40 + coverMm * 3.5 + 45; // Darstellungsfaktor 3,5 px je mm
                   const rebarRadius = 45;
                   const rustThickness = isDepassivated ? Math.min(22, 4 + rustWedgeThicknessMm * 8) : 0;
-                  const isSpalled = radialStressMPa >= fctm * 2.8;
+                  // Schadensstufen aus dem Rechenkern (schadensStufe: 0,7 / 1,5 / 2,8 · f_ctm, Lehrmodell) statt eigener Schwellen
+                  const isSpalled = lok.stufe === 'abplatzung';
+                  const zeigtRiss = lok.stufe === 'rissbildung' || lok.stufe === 'oberflaechenriss' || isSpalled;
+                  const zeigtSchraegriss = lok.stufe === 'oberflaechenriss' || isSpalled;
 
                   return (
                     <g>
@@ -293,7 +296,7 @@ function LokalelementSimulator() {
                       )}
 
                       {/* Radial Spalling Cracks propagating from Rebar to Surface */}
-                      {radialStressMPa >= fctm * 0.7 && (
+                      {zeigtRiss && (
                         <g>
                           {/* Main Vertical Crack */}
                           <path
@@ -303,7 +306,7 @@ function LokalelementSimulator() {
                             fill="none"
                           />
                           {/* Diagonal Shear Cracks */}
-                          {radialStressMPa >= fctm * 1.5 && (
+                          {zeigtSchraegriss && (
                             <>
                               <path
                                 d={`M 240 ${rebarCenterY - rebarRadius * 0.7} L 180 40`}

@@ -82,7 +82,7 @@ export default function Statistik() {
 
   const pdfScale = useMemo(() => {
     const peakDensity = normalPDF(intStats.mean, intStats.mean, intStats.stdDev);
-    return peakDensity > 0 ? (75 / peakDensity) * (1 - Math.min(0.25, intStats.stdDev / 120)) : 1000;
+    return peakDensity > 0 ? (75 / peakDensity) * (1 - Math.min(0.25, intStats.stdDev / 120)) : 1000; // Darstellungsfaktor: Kurvenhöhe 75 px
   }, [intStats.mean, intStats.stdDev]);
 
   const curvePoints = useMemo(() => {
@@ -664,7 +664,7 @@ export default function Statistik() {
                   const ptY =
                     interactiveChartMode === 'pdf'
                       ? 115 - normalPDF(v, intStats.mean, intStats.stdDev) * pdfScale
-                      : 115 - normalCDF(v, intStats.mean, intStats.stdDev) * 80;
+                      : 115 - normalCDF(v, intStats.mean, intStats.stdDev) * 80; // Darstellungsfaktor: 80 px Höhe der Verteilungsfunktion
 
                   return (
                     <g key={idx}>

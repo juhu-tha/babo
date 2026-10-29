@@ -560,7 +560,7 @@ export default function InnovativeWerkstoffe() {
               
               // simplified self-weight elastic buckling height for column of thickness b:
               // 0,653 = 7,837/12 (Suiker 2018: H_cr = (7,837·E·I/(ρ·g·A))^(1/3) mit I/A = b²/12 für die Rechteckwand)
-              const H_critical_buckling = Math.pow((0.653 * E_mod_base * b_m * b_m * shapeFactor) / (concreteDensity * gVal), 1/3);
+              const H_critical_buckling = Math.pow((0.653 * E_mod_base * b_m * b_m * shapeFactor) / (concreteDensity * gVal), 1/3); // Faktor 7,837/12
               const sfBucklingVal = H_critical_buckling / targetHeight;
               
               // Overall State evaluation
