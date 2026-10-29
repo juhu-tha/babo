@@ -50,6 +50,7 @@ export default function BimBaustoffe() {
 #140 = IFCRELASSOCIATESMATERIAL('3J7y$', #15, 'Material_Assoc', $, (#100), #120);
 
 /* Property-Set: Mechanische Werkstoffdaten fuer Statik */
+/* Einheiten: IFC rechnet in SI (MassDensity kg/m3, YoungModulus Pa); E in MPa nur mit passender IFCUNITASSIGNMENT (PRESSUREUNIT, Praefix MEGA) */
 #150 = IFCMATERIALPROPERTIES('Pset_MaterialCommon', $, (#160), #110);
 #160 = IFCPROPERTYSINGLEVALUE('MassDensity', $, IFCMASSDENSITYMEASURE(${density.toFixed(1)}), $);
 #155 = IFCMATERIALPROPERTIES('Pset_MaterialMechanical', $, (#170), #110);
@@ -208,13 +209,13 @@ export default function BimBaustoffe() {
                     <div className="flex justify-between items-center mb-1 text-xs">
                       <span className="font-semibold text-slate-900 flex items-center gap-1"><MdText text={inhalt.texte.coGwpA1A3} /><InfoTooltip text={inhalt.werte.treibhauspotenzialDesBaustoffsGlobal} />
                       </span>
-                      <span className="font-mono text-xs text-shiraz font-bold">{formatDeZahl(gwp, 1)} kg/m³</span>
+                      <span className="font-mono text-xs text-shiraz font-bold">{formatDeZahl(gwp, 1)} kg CO₂-Äq./m³</span>
                     </div>
                     <input 
                       type="range" 
-                      min={selectedId === 'holz' ? -600 : selectedId === 'stahl' ? 500 : 10} 
-                      max={selectedId === 'holz' ? -200 : selectedId === 'stahl' ? 2500 : 400} 
-                      step={selectedId === 'stahl' ? 50 : 5}
+                      min={selectedId === 'holz' ? -600 : selectedId === 'stahl' ? 2000 : 10} 
+                      max={selectedId === 'holz' ? -200 : selectedId === 'stahl' ? 10000 : 400} 
+                      step={selectedId === 'stahl' ? 100 : 5}
                       value={gwp} 
                       onChange={(e) => setGwp(Number(e.target.value))}
                       className="cursor-pointer"

@@ -414,7 +414,7 @@ export default function Materialdatenbanken() {
                   <div className="bg-white border border-home-grau/30 p-2.5 rounded-xl">
                     <span className="text-[9px] text-slate-600 uppercase font-semibold block"><MdText text={inhalt.texte.apVersauerung} /></span>
                     <strong className="text-base text-blue-700 font-bold block mt-0.5">
-                      {formatDeZahl(activeRecord.ap, 3)} <span className="text-[10px] text-slate-700 font-normal">kg SO₂-eq</span>
+                      {formatDeZahl(activeRecord.ap, 3)} <span className="text-[10px] text-slate-700 font-normal">kg SO₂-eq (Indikator EN 15804+A1)</span>
                     </strong>
                     <span className="text-[9px] text-slate-600 leading-tight block mt-0.5"><MdText text={inhalt.texte.saurerRegenBelastung} /></span>
                   </div>
@@ -422,7 +422,7 @@ export default function Materialdatenbanken() {
                   <div className="bg-white border border-home-grau/30 p-2.5 rounded-xl">
                     <span className="text-[9px] text-slate-600 uppercase font-semibold block"><MdText text={inhalt.texte.epEutrophierung} /></span>
                     <strong className="text-base text-purple-700 font-bold block mt-0.5">
-                      {formatDeZahl(activeRecord.ep, 3)} <span className="text-[10px] text-slate-700 font-normal">kg PO₄-eq</span>
+                      {formatDeZahl(activeRecord.ep, 3)} <span className="text-[10px] text-slate-700 font-normal">kg PO₄-eq (Indikator EN 15804+A1)</span>
                     </strong>
                     <span className="text-[9px] text-slate-600 leading-tight block mt-0.5"><MdText text={inhalt.texte.nährstoffeintragInGewässer} /></span>
                   </div>

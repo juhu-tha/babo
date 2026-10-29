@@ -40,7 +40,7 @@ export const KI_UEBUNG_REGELN: readonly string[] = [
   'Werkzeug ist der KI-Assistent der Hochschule; er wird an der THA derzeit über die Hochschullizenz bereitgestellt. Melden Sie sich mit Ihrem Hochschulkonto an und achten Sie auf den Datenschutzhinweis im Chatfenster. Weitere Konten, API-Schlüssel oder Programmierkenntnisse sind nicht nötig.',
   'Geben Sie keine personenbezogenen Daten ein (Namen, Adressen, Fotos von Personen, Matrikelnummern) – auch nicht von Bauherren, Kolleginnen oder Kollegen.',
   'Fügen Sie keine vertraulichen Projektunterlagen aus Praktikum oder Werkstudententätigkeit ein. Alle Projektangaben in den Vorlagen sind fiktiv; ersetzen Sie sie nur durch ebenso fiktive Werte.',
-  'Normen sind urheberrechtlich geschützt und lizenziert. Kopieren Sie keine Normvolltexte in den Chat, sondern höchstens kurze, selbst formulierte Zusammenfassungen oder frei zugängliche Rechtstexte (z. B. Landesbauordnung, GEG, EU-Verordnungen).',
+  'Normen sind urheberrechtlich geschützt und lizenziert. Kopieren Sie keine Normvolltexte in den Chat, sondern höchstens kurze, selbst formulierte Zusammenfassungen oder frei zugängliche Rechtstexte (z. B. Landesbauordnung, GModG – vormals GEG –, EU-Verordnungen).',
   'KI-Antworten sind Entwürfe. Jede fachliche Aussage, Zahl und Quelle prüfen Sie selbst – dafür ist jeder Übung eine Verifikations-Checkliste beigefügt.',
 ];
 
@@ -229,7 +229,7 @@ GRENZEN: Keine Aktionen, die Dritte kontaktieren oder Geld kosten.`,
     minuten: 60,
     material: [
       'KI-Assistent der Hochschule (Hochschulkonto)',
-      'frei zugänglicher Rechtstext, z. B. ein bis zwei Artikel der Bayerischen Bauordnung (gesetze-bayern.de) oder ein Paragraf des GEG (gesetze-im-internet.de) – keine DIN-Volltexte',
+      'frei zugänglicher Rechtstext, z. B. ein bis zwei Artikel der Bayerischen Bauordnung (gesetze-bayern.de) oder ein Paragraf des GModG (vormals GEG; z. B. buzer.de) – keine DIN-Volltexte',
       'Liste mit fünf eigenen Fragen, davon mindestens eine, die der Auszug nicht beantwortet',
     ],
     schritte: [
