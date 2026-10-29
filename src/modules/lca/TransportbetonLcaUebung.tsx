@@ -12,6 +12,7 @@ import {
   Info
 } from 'lucide-react';
 import { LCA_BENCHMARKS, LKW_FAKTOR_UEBUNG, LKW_FAKTOR_ZENTRAL } from './transportbetonKennwerte';
+import { K_WERT_DIN1045_2 } from '@/src/calc/mischung';
 import inhalt from '@/content/lca/TransportbetonLcaUebung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 
@@ -170,8 +171,8 @@ export default function TransportbetonLcaUebung() {
   const projectTotalCO2Ton = (total_A1A5 * projectVolumeM3) / 1000;
   const projectSavedCO2Ton = Math.max(0, ((refTotalA1A5 - total_A1A5) * projectVolumeM3) / 1000);
 
-  // w/z-Wert Berechnung (mit anrechenbarer Flugasche k=0.4)
-  const effectiveCem = cemAmount + 0.4 * flyAsh;
+  // w/z-Wert Berechnung (mit anrechenbarer Flugasche, k-Wert nach DIN 1045-2 aus src/calc/mischung.ts, DSB-LC-8)
+  const effectiveCem = cemAmount + K_WERT_DIN1045_2.kF * flyAsh;
   const wz_eq = effectiveCem > 0 ? (water / effectiveCem) : 0;
 
   const handleDownload = () => {
