@@ -46,7 +46,7 @@
   },
   "werte": {
     "fernwärmeMix": "Fernwärme (Mix)",
-    "wärmepumpeJaz35": "Wärmepumpe (JAZ 3.5)",
+    "wärmepumpeJaz35": "Wärmepumpe (JAZ 3,5)",
     "außenwandUWertW": "Außenwand U-Wert [W/(m²K)]",
     "dachUWertW": "Dach U-Wert [W/(m²K)]",
     "gmodgGrenzwertAußenwand0": "GModG Grenzwert Außenwand (0,24 W/(m²K))",
