@@ -1,0 +1,697 @@
+# Kurzfassungen „Das Wichtigste in 5 Punkten“ für Rechner- und Kernmodule (Entwurf zur Freigabe, Stand 29.10.2026)
+
+Anlass: Gutachten vom 29.10.2026, Mangel 1 der Didaktik und Maßnahme 9 („Kurzfassungen für alle Kern- und Rechnermodule, zuerst `feuchteschutz`, `statistik`, `knicken`, `lehm`, `holzbau_verbindung`, `energieausweis`“). Die Texte sind Entwürfe; sie stehen bereits in `src/data/kurzfassung.ts` und erscheinen im Modulkopf unter „Das Wichtigste in 5 Punkten“.
+
+## Auswahl
+
+- Grundlage sind alle Fachmodule aus `src/registry/modules.ts` (`FACHMODULE` in `src/data/pruefvermerke.ts`).
+- Module mit mehr als 3000 Wörtern Ansichtsumfang (Zählung `ansichtWoerter`, `tests/hilfen/fliesstext.ts`) hatten bereits alle eine Kurzfassung (Ratsche Z53 in `tests/kurzfassung.test.ts`); hier fehlte keines.
+- Ohne Kurzfassung waren 58 der 72 Rechnermodule (Registry-Typ `calculator`). Sie sind alle ergänzt.
+- Zusätzlich ergänzt ist das im Gutachten ausdrücklich genannte Kernmodul ohne Rechner: `lehm`.
+- Zusammen: **59 Module**, je 5 Punkte.
+
+Regeln für die Texte: aus dem Modulinhalt abgeleitet, keine Zahl, die nicht im Modul steht, Zahlen wie im Modul, Tausendertrennung mit schmalem geschütztem Leerzeichen ab 5 Stellen, keine internen Kürzel, keine Firmen-, Partner- oder Projektangaben. Eine maschinelle Gegenprobe hat jede Zahl der Punkte im Text des jeweiligen Moduls wiedergefunden. Wo ein Punkt auf einem im Modul als vorläufig gekennzeichneten Wert beruht, steht ein Hinweis.
+
+Neue Ratsche: `tests/kurzfassung.test.ts` verlangt jetzt für jedes Rechnermodul und für `lehm` eine Kurzfassung (keine Ausnahmeliste).
+
+## Übersicht
+
+| Nr. | Modul (ID) | Menügruppe | Typ | Wörter |
+|---:|---|---|---|---:|
+| 1 | Modernisierung & GModG (`modernisierung`) | Bauen im Bestand | Rechner | 1736 |
+| 2 | Bauphysik (Wärme & Akustik) (`bauphysik`) | Bauphysik | Rechner | 1052 |
+| 3 | Energieausweis (`energieausweis`) | Bauphysik | Rechner | 1930 |
+| 4 | Feuchteschutz & Tauwasser (`feuchteschutz`) | Bauphysik | Rechner | 1213 |
+| 5 | Schallschutz (`schallschutz`) | Bauphysik | Rechner | 1192 |
+| 6 | Sommerlicher Wärmeschutz (`sommerlicher_waermeschutz`) | Bauphysik | Rechner | 1484 |
+| 7 | Gläser & Fenster (`bp_glaeser`) | Bauprodukte | Rechner | 2645 |
+| 8 | Erdbau & Böden (`erdbau`) | Baustoffe | Rechner | 662 |
+| 9 | Keramik und Ziegel (`keramik_ziegel`) | Baustoffe | Rechner | 2346 |
+| 10 | Lehm (`lehm`) | Baustoffe | Kernmodul | 634 |
+| 11 | Membranen & ETFE (`membranen_etfe`) | Baustoffe | Rechner | 1654 |
+| 12 | Werkstoff-Kombinationen (`kombinationen`) | Baustoffe | Rechner | 1946 |
+| 13 | Bauakustik: Schallschutz (`rechnung_schallschutz`) | Beispielrechnungen | Rechner | 607 |
+| 14 | Bauen im Bestand (`rechnung_bestand`) | Beispielrechnungen | Rechner | 870 |
+| 15 | Bauphysik: U-Wert (`rechnung_u_wert`) | Beispielrechnungen | Rechner | 579 |
+| 16 | Beton: Mischungsentwurf (`rechnung_beton`) | Beispielrechnungen | Rechner | 1233 |
+| 17 | Brandschutz: Heißbemessung (`rechnung_brandschutz`) | Beispielrechnungen | Rechner | 655 |
+| 18 | Holzbau: Stützenknicken (`rechnung_holzbau`) | Beispielrechnungen | Rechner | 521 |
+| 19 | Massivbau: Biegung (`rechnung_stahlbeton`) | Beispielrechnungen | Rechner | 588 |
+| 20 | Mauerwerk: Tragfähigkeit (`rechnung_mauerwerk`) | Beispielrechnungen | Rechner | 760 |
+| 21 | Nachhaltigkeit & Dauerhaftigkeit (`rechnung_nachhaltigkeit`) | Beispielrechnungen | Rechner | 656 |
+| 22 | Betonkennwerte (EC2) (`betonkennwerte`) | Betontechnologie | Rechner | 1397 |
+| 23 | Biokohlebeton (`biokohlebeton`) | Betontechnologie | Rechner | 1611 |
+| 24 | Expositionsklassen (`expositionsklassen`) | Betontechnologie | Rechner | 2335 |
+| 25 | Frischbeton (`frischbeton`) | Betontechnologie | Rechner | 1579 |
+| 26 | Korrosionsschutz (Beschichtungen) (`korrosionsschutz_beschichtungen`) | Dauerhaftigkeit | Rechner | 1920 |
+| 27 | Schnellkarbonatisierung (`schnellkarbonatisierung`) | Dauerhaftigkeit | Rechner | 1452 |
+| 28 | Digitaler Produktpass (DPP) (`dpp`) | Digitales | Rechner | 1100 |
+| 29 | Online-Tools & Rechner (`online_tools`) | Digitales | Rechner | 2740 |
+| 30 | Einheiten (`einheiten`) | Grundlagen | Rechner | 558 |
+| 31 | Bauphysik & Brandschutz (`holzbau_bauphysik`) | Holzbau | Rechner | 1069 |
+| 32 | Bemessung (EC5) (`holzbau_bemessung`) | Holzbau | Rechner | 925 |
+| 33 | Verbindungen & Anschlüsse (`holzbau_verbindung`) | Holzbau | Rechner | 1064 |
+| 34 | Prompting-Praxis (`ki_prompting`) | KI im Bauwesen | Rechner | 1973 |
+| 35 | Auslagerungsversuch (`labor_auslagerung`) | Labor & Auswertung | Rechner | 327 |
+| 36 | Festbeton (Statistik) (`festbeton_statistik`) | Labor & Auswertung | Rechner | 682 |
+| 37 | Frischbetonprüfungen (`labor_frischbeton`) | Labor & Auswertung | Rechner | 241 |
+| 38 | Mörtelprismen (`labor_moertelprismen`) | Labor & Auswertung | Rechner | 259 |
+| 39 | Potentialmessung (`labor_potentialmessung`) | Labor & Auswertung | Rechner | 483 |
+| 40 | Statistik (`statistik`) | Labor & Auswertung | Rechner | 1828 |
+| 41 | Virtuelle Versuche (`labor`) | Labor & Auswertung | Rechner | 1035 |
+| 42 | Würfeldruckfestigkeit (`labor_druckfestigkeit`) | Labor & Auswertung | Rechner | 309 |
+| 43 | Baustatik (`baustatik`) | Mechanik | Rechner | 527 |
+| 44 | Bodenmechanik (`bodenmechanik`) | Mechanik | Rechner | 1457 |
+| 45 | E-Modul & Mikromechanik (`emodul`) | Mechanik | Rechner | 542 |
+| 46 | Festigkeitsberechnungen (`festigkeit`) | Mechanik | Rechner | 1061 |
+| 47 | Formänderungen (`formaenderungen`) | Mechanik | Rechner | 910 |
+| 48 | Knicken (Euler) (`knicken`) | Mechanik | Rechner | 557 |
+| 49 | Mechan. Kenngrößen (`mechanische_kenngroessen`) | Mechanik | Rechner | 2819 |
+| 50 | Stahlbau EC 3 (`stahlbau_ec3`) | Mechanik | Rechner | 1219 |
+| 51 | Zustandsbewertung (`vdi6200`) | Mängel & Schäden | Rechner | 2404 |
+| 52 | LCA: Ingenieurbau (`lca_ingenieurbau`) | Nachhaltigkeit | Rechner | 1036 |
+| 53 | Lebenszyklus & Kosten (`lebenszyklus_kosten`) | Nachhaltigkeit | Rechner | 2237 |
+| 54 | Materialoptimierung (`materialoptimierung`) | Nachhaltigkeit | Rechner | 2793 |
+| 55 | Bautagebuch (`px_bautagebuch`) | Praxiswissen | Rechner | 2056 |
+| 56 | Altholz-NIR & Urban Mining (`altholz_urban_mining`) | Rückbau & Schadstoffe | Rechner | 1734 |
+| 57 | Boden- & Materialaufbereitung (`boden_materialaufbereitung`) | Rückbau & Schadstoffe | Rechner | 2858 |
+| 58 | PFAS in Baustoffen (`pfas_baustoffe`) | Rückbau & Schadstoffe | Rechner | 1475 |
+| 59 | Ressourceneffizienz (`ressourceneffizienz`) | Rückbau & Schadstoffe | Rechner | 1902 |
+
+## Einträge
+
+### 1. Modernisierung & GModG (`modernisierung`)
+
+1. Die Merkhilfe SANREMO unterscheidet Sanierung als Mängelbeseitigung, Renovierung als Oberflächenerneuerung und Modernisierung als Aufwertung nach § 555b BGB, mit unterschiedlichen miet- und steuerrechtlichen Folgen.
+2. Das GModG, bis 28. Juli 2026 GEG, verlangt als Nachrüstpflicht die Dämmung oberster Geschossdecken auf U ≤ 0,24 W/(m²K) und die Dämmung zugänglicher Heizungs- und Warmwasserleitungen in unbeheizten Räumen.
+3. Werden mehr als 10 % eines Außenbauteils erneuert, gelten nach § 36 GModG Höchstwerte, etwa U ≤ 0,24 W/(m²K) für Außenwände; eine Altbauwand mit U = 1,40 W/(m²K) braucht dafür 14 cm EPS 032.
+4. Die 65-%-Pflicht für neue Heizungen entfällt; neue Gas- und Ölheizungen müssen über die Bio-Treppe ab 2029 steigende Anteile klimaneutraler Brennstoffe nutzen, von 10 % bis 60 % im Jahr 2040.
+5. Der Sanierungsfahrplan folgt der Regel „Hülle vor Technik“; fallen Gerüst und Putz ohnehin an, amortisiert sich die Fassadendämmung im Beispiel statt in 7,6 Jahren schon in 1,3 Jahren.
+
+- [ ] freigegeben
+
+### 2. Bauphysik (Wärme & Akustik) (`bauphysik`)
+
+1. Der U-Wert mehrschichtiger Bauteile folgt nach DIN EN ISO 6946 aus U = 1/R_T mit den Übergangswiderständen und den Schichtwiderständen d/λ; das Modul vergleicht ihn mit dem Höchstwert nach Anlage 7 GModG.
+2. Gegen Schimmel fordert DIN 4108-2 mit dem erhöhten Übergangswiderstand R*_si = 0,25 m²K/W einen Temperaturfaktor f_Rsi ≥ 0,70; maßgebend sind in der Praxis Wärmebrücken an Ecken, Laibungen und Sockeln.
+3. Im Beispiel erreicht eine Kalksandsteinwand mit 14 cm Mineralwolle U = 0,229 W/(m²K) ≤ 0,24 und f_Rsi = 0,94; den Tauwassernachweis nach dem Glaser-Verfahren führt das Modul Feuchteschutz.
+4. Im sommerlichen Wärmeschutz dämpfen schwere, speicherfähige Schichten die Temperaturwelle und verzögern sie; eine Phasenverschiebung ab 10 Stunden gilt hier als hervorragend, unter 6 Stunden als mangelhaft.
+5. Die Nachhallzeit folgt nach Sabine aus T = 0,163 · V/A; ein schallharter Klassenraum mit 189 m³ hallt 2,78 s nach, mit vollflächiger Akustikdecke nur 0,48 s, im Toleranzbereich der DIN 18041.
+
+- [ ] freigegeben
+
+### 3. Energieausweis (`energieausweis`)
+
+1. Der Bedarfsausweis bilanziert Gebäudehülle und Anlagentechnik nach DIN V 18599 nutzerunabhängig mit Normrandbedingungen; der Verbrauchsausweis beruht auf Heizkostenabrechnungen und hängt stark vom Nutzerverhalten ab.
+2. Gerechnet wird in drei Stufen: Nutzwärme Q_h aus Transmissions- und Lüftungsverlusten abzüglich nutzbarer Gewinne, Endenergie Q_E mit den Anlagenverlusten und Primärenergie Q_P = Σ Q_E · f_P.
+3. Die Effizienzklasse A+ bis H richtet sich bei Wohngebäuden nach der Endenergie; im Beispiel erreicht die Wärmepumpe mit 26,7 kWh/(m²a) die Klasse A+, der Gas-Brennwertkessel mit 86,8 kWh/(m²a) die Klasse C.
+4. Das GEG heißt seit der Verkündung am 28. Juli 2026 Gebäudemodernisierungsgesetz; die 65-%-Vorgabe entfällt, ab 1. Januar 2027 gelten ein neues Referenzgebäude und neue Primärenergiefaktoren, etwa 1,5 für Netzstrom.
+5. Energieausweise gelten längstens 10 Jahre und sind bei Verkauf oder Neuvermietung schon bei der Besichtigung vorzulegen; reale Verbräuche weichen durch Prebound- und Rebound-Effekt oft deutlich vom Bedarf ab.
+
+Hinweis: Punkt 4: Rechtsstand GModG laut Modul (Lesefassung Stand 29.07.2026).
+
+- [ ] freigegeben
+
+### 4. Feuchteschutz & Tauwasser (`feuchteschutz`)
+
+1. Feuchte im Bauteil führt zu Bauschäden und Schimmel; das Modul bestimmt Taupunkt und Schimmelgrenze mit der Magnus-Formel und die Tauwasserbilanz geschichteter Bauteile nach dem Glaser-Verfahren der DIN 4108-3.
+2. Bei 20 °C und 50 % relativer Luftfeuchte liegt der Taupunkt bei 9,3 °C; Schimmel droht schon ab 80 % Oberflächenfeuchte, hier also unter 12,6 °C Oberflächentemperatur, deutlich oberhalb des Taupunkts.
+3. Die diffusionsäquivalente Luftschichtdicke s_d = μ · d beschreibt den Dampfdiffusionswiderstand einer Schicht; die Faustregel „innen dichter als außen“ gilt vor allem für Holzbau und Innendämmung.
+4. Das Normklima der DIN 4108-3 setzt eine Tauperiode von 90 Tagen mit innen 20 °C / 50 % und außen −5 °C / 80 % an, danach eine Verdunstungsperiode von ebenfalls 90 Tagen.
+5. Der Aufbau ist nachgewiesen, wenn die Tauwassermasse die Verdunstungsmasse nicht übersteigt und höchstens 1,0 kg/m² beträgt, an nicht kapillar wasseraufnahmefähigen Schichtgrenzen höchstens 0,5 kg/m².
+
+Hinweis: Punkt 4: Das Normklima ist im Modul aus Sekundärquellen übernommen; der Abgleich mit DIN 4108-3:2024-03 ist dort als vorläufig gekennzeichnet.
+
+- [ ] freigegeben
+
+### 5. Schallschutz (`schallschutz`)
+
+1. Die Luftschalldämmung einschaliger, biegesteifer Bauteile hängt vor allem von der flächenbezogenen Masse m′ ab; DIN 4109-32 gibt dafür R_w = 30,9 · lg(m′/1 kg/m²) − 22,2 dB für 65 bis 720 kg/m² an.
+2. Eine Kalksandsteinwand mit 17,5 cm und beidseitigem Gipsputz erreicht mit 380 kg/m² R_w = 57,5 dB und im Bau etwa 54 bis 55 dB, mehr als die für Wohnungstrennwände geforderten 53 dB.
+3. Nach der Massekurve bringt jede Verdopplung der Masse etwa 9 dB; Dämmschichten dürfen nicht einfach als Masse addiert werden, ihr Einfluss wie beim WDVS ist nach DIN 4109-34 nachzuweisen.
+4. Beim Trittschall gilt: je kleiner L′_n,w, desto besser; er folgt aus L′_n,w = L_n,eq,0,w − ΔL_w + K und wird mit u_prog = 3 dB gegen zulässig 50 dB zwischen fremden Wohnungen nachgewiesen.
+5. Ein schwimmender Estrich wirkt als Masse-Feder-System mit f₀ ≈ 160 · √(s′/m′); weiche Dämmschichten und schwere Estriche verbessern die Minderung, Schallbrücken wie fehlende Randstreifen heben sie teilweise auf.
+
+- [ ] freigegeben
+
+### 6. Sommerlicher Wärmeschutz (`sommerlicher_waermeschutz`)
+
+1. Nach § 14 GModG ist bei Neubauten der Sonneneintrag durch baulichen sommerlichen Wärmeschutz zu begrenzen; nachgewiesen wird nach DIN 4108-2:2013-02, Abschnitt 8, für den kritischen Raum.
+2. Der Nachweis entfällt bei kleinem Fensterflächenanteil oder bei Wohnräumen mit außenliegendem Sonnenschutz und höchstens 35 % Fensterflächenanteil; sonst gilt S_vorh ≤ S_zul, alternativ eine thermische Simulation.
+3. Der vorhandene Kennwert ist S_vorh = Σ A_w · g_tot / A_G mit g_tot = g · F_C; der zulässige folgt als Summe anteiliger Kennwerte aus Klimaregion, Bauart, Nachtlüftung und Fenstereigenschaften.
+4. Im Beispiel eines Wohnzimmers mit 44 % Fensterflächenanteil reicht ein Rollladen allein nicht; erst Raffstore und schwere Bauart erfüllen den Nachweis mit S_vorh = 0,065 ≤ S_zul = 0,071.
+5. Bei der Simulation sind im Wohnbau höchstens 1200 Kh/a Übertemperaturgradstunden zulässig; die Neuausgabe DIN 4108-2:2026-05 gliedert den Abschnitt neu, das GModG verweist weiterhin auf die Ausgabe 2013-02.
+
+Hinweis: Die Tabellenwerte des Moduls folgen DIN 4108-2:2013-02; der Abgleich mit der Ausgabe 2026-05 steht im Modul noch aus.
+
+- [ ] freigegeben
+
+### 7. Gläser & Fenster (`bp_glaeser`)
+
+1. Mehrscheiben-Isolierglas nach DIN EN 1279 ist ein gasgefüllter, hermetisch abgeschlossener Verbund; die Glasoberflächen werden von außen nach innen nummeriert, die Low-E-Schicht liegt geschützt im Scheibenzwischenraum.
+2. Gesputterte Silberschichten senken die Emissivität des Glases auf etwa 0,01 bis 0,04; mit Argon im Scheibenzwischenraum erreicht 3-fach-Isolierglas U_g = 0,6 bis 0,7 W/(m²K).
+3. Der Fensterwert U_w setzt sich nach DIN EN ISO 10077-1 aus Glas, Rahmen und dem Glasrandverbund Ψ_g zusammen; die „warme Kante“ mindert die Wärmebrücke gegenüber Aluminium-Abstandhaltern deutlich.
+4. Floatglas hat f_k = 45 N/mm², TVG 70 N/mm² und ESG 120 N/mm²; ESG zerfällt krümelig ohne Resttragfähigkeit, deshalb wird für Überkopf- und absturzsichernde Verglasungen VSG, etwa aus TVG, eingesetzt.
+5. Die Bemessung regelt DIN 18008; im Beispiel ergeben sich bei Windlast f_g,d = 31,5 N/mm² für linienförmig gelagertes Floatglas, 46,7 N/mm² für TVG und 80 N/mm² für ESG.
+
+- [ ] freigegeben
+
+### 8. Erdbau & Böden (`erdbau`)
+
+1. Böden werden nach DIN EN ISO 14688 in grob-, fein- und gemischtkörnige sowie organische Böden eingeteilt; Kies und Sand tragen gut, Schluff und Ton sind setzungs- und frostempfindlich, Torf ist meist ungeeignet.
+2. Nach DIN 18196 entscheidet der Feinanteil unter 0,063 mm über die Gruppe: bis 5 % grobkörnig, 5 bis 15 % und 15 bis 40 % gemischtkörnig, über 40 % feinkörnig.
+3. Der Proctorversuch liefert die größte Trockendichte beim optimalen Wassergehalt; der Verdichtungsgrad D_Pr vergleicht die Trockendichte vor Ort damit, üblich sind 97 bis 100 %.
+4. Vor Ort ist zuerst die Trockendichte zu bilden: 2,05 t/m³ bei 8,0 % Wassergehalt ergeben 1,90 t/m³ und D_Pr = 97,3 %; der direkte Vergleich der Feuchtdichte täuscht 105 % vor.
+5. Frostschäden entstehen durch Eislinsen bei frostempfindlichem Boden, Wasser und Frost; die Dicke des frostsicheren Oberbaus nach RStO 12/24 hängt von Belastungsklasse, Frostzone und Klasse F1 bis F3 ab.
+
+- [ ] freigegeben
+
+### 9. Keramik und Ziegel (`keramik_ziegel`)
+
+1. Keramik entsteht aus tonhaltigen Rohstoffen durch Formen, Trocknen und Brennen; bei etwa 450 bis 650 °C geben die Tonminerale ihr Kristallwasser ab, und der Ton ist irreversibel nicht mehr plastisch.
+2. Ab etwa 1000 bis 1100 °C sintert der Scherben: Flussmittel bilden eine Schmelze, Wasseraufnahme und Porosität sinken; Ziegel bleiben porös, Klinker, Steinzeug und Feinsteinzeug brennen dicht.
+3. Fliesen werden nach DIN EN 14411 nach Formgebung und Wasseraufnahme E_b eingeteilt; Feinsteinzeug der Gruppe BIa hat E_b ≤ 0,5 %, im Beispiel 0,28 %, Gruppe BIII eignet sich nur für Innenwände.
+4. Mauerziegel regelt die Produktnorm DIN EN 771-1 mit Kategorien für Frostwiderstand F0 bis F2 und lösliche Salze S0 bis S2; die Anwendung in Deutschland regelt DIN 20000-401 mit Rohdichte- und Festigkeitsklassen.
+5. Beim Brand entsteht CO₂ aus dem Brennstoff und aus Carbonaten im Ton, je kg Calciumcarbonat 0,44 kg; Ziegelbruch wird wiederverwendet, als Schamotte zurückgeführt oder als rezyklierte Gesteinskörnung genutzt.
+
+- [ ] freigegeben
+
+### 10. Lehm (`lehm`)
+
+1. Im Lehm bilden Sand und Kies das tragende Gerüst, Schluff füllt die Hohlräume und Ton wirkt als reversibles Bindemittel; Lehm härtet nur durch Trocknen aus und lässt sich nach dem Rückbau wieder aufbereiten.
+2. Lehm puffert Raumfeuchte gut und speichert Wärme, ist aber wasserempfindlich und weniger fest; konstruktiver Witterungsschutz mit Dachüberstand, Sockel und Spritzwasserschutz ist Voraussetzung.
+3. Seit DIN 18940:2023-06 ist tragendes Lehmsteinmauerwerk in Gebäuden bis 13,0 m Höhe, also Gebäudeklasse 1 bis 4, normiert bemessbar; Keller-, Brand- und freistehende Wände sind ausgenommen.
+4. Bentonit ist ein stark quellfähiges Tonmineralgemisch aus Montmorillonit, thixotrop und gequollen nahezu wasserundurchlässig; es dient als Stützflüssigkeit, zur Fugen- und Flächenabdichtung und im Deponiebau.
+5. Lehmputz trocknet nur physikalisch: 100 m² Putz mit 20 mm Dicke geben beim Trocknen von 18 auf 1,5 M.-% rund 560 kg Wasser ab, die über Lüftung abzuführen sind, sonst droht Schimmel.
+
+Hinweis: Punkt 3 stützt sich auf die im Modul als vorläufig gekennzeichneten Anwendungsgrenzen der DIN 18940 (13,0 m, Gebäudeklasse 1 bis 4).
+
+- [ ] freigegeben
+
+### 11. Membranen & ETFE (`membranen_etfe`)
+
+1. Textile Membranen und ETFE-Folien sind biegeweiche Flächentragwerke, die Lasten nur über Zugkräfte in ihrer Ebene abtragen; tragfähig werden sie erst durch Vorspannung und Krümmung, mechanisch oder pneumatisch.
+2. Mechanisch vorgespannte Flächen sind antiklastisch, also sattelförmig gekrümmt, pneumatisch vorgespannte Kissen synklastisch; das Gleichgewicht beschreibt die Membrangleichung n₁/R₁ + n₂/R₂ = p.
+3. Beschichtete Gewebe aus PVC/PES, PTFE/Glas oder Silikon/Glas sind in Kette und Schuss anisotrop; ETFE-Folien von meist 100 bis 300 µm sind nahezu isotrop, hoch dehnfähig und lassen rund 90 bis 95 % des Lichts durch.
+4. Die Kesselformel liefert die Membrankraft n = p · r am Zylinder und n = p · r/2 an der Kugel; eine Traglufthalle mit 18 m Radius trägt bei 300 Pa Innendruck 5,4 kN/m, große Radien sind ungünstig.
+5. Für Membranwerkstoffe gibt es keine harmonisierte Produktnorm mit vollständiger Bemessung; nachgewiesen wird über Zulassung oder Bauartgenehmigung, die Bemessung beschreibt DIN CEN/TS 19102, Tragluftbauten regelt DIN 4134-1.
+
+- [ ] freigegeben
+
+### 12. Werkstoff-Kombinationen (`kombinationen`)
+
+1. Selten erfüllt ein Werkstoff allein alle Anforderungen; moderne Konstruktionen kombinieren Schicht-, Faser- und Makroverbunde sowie Schutzschichten nach dem Prinzip „Tragen, Dämmen, Schützen“.
+2. Kombinierte Werkstoffe müssen thermisch, chemisch und hygrisch verträglich und schubsteif verbunden sein; Beton und Stahl haben eine ähnliche Wärmedehnzahl, und das alkalische Porenwasser passiviert den Stahl.
+3. In Faserverbunden trägt die Faser die Zugkraft, die Matrix überträgt Schub; in Faserrichtung gilt die Voigt-, quer dazu die Reuss-Mischungsregel, deshalb sind Faserverbunde stark anisotrop.
+4. Oberflächenschutz nach DIN EN 1504-2 reicht von der diffusionsoffenen Hydrophobierung über die Imprägnierung bis zur Beschichtung; Stahl schützen nach DIN EN ISO 12944 Barriere, Inhibition oder Zink als Opferanode.
+5. Die Haftzugfestigkeit im Abreißversuch nach DIN EN 1542 entscheidet über die Leistung jeder Schicht; für die Betoninstandsetzung gilt mindestens 1,5 MPa, ein Bruch im Untergrund zeigt guten Verbund.
+
+- [ ] freigegeben
+
+### 13. Bauakustik: Schallschutz (`rechnung_schallschutz`)
+
+1. Bei einschaligen, biegesteifen Massivbauteilen bestimmt die flächenbezogene Masse m′ die Luftschalldämmung: Je schwerer das Bauteil je Quadratmeter, desto höher das Schalldämm-Maß.
+2. Nach DIN 4109-32:2016-07 gilt R_w = 30,9 · lg(m′/m′₀) − 22,2 mit m′₀ = 1 kg/m² für 65 bis 720 kg/m²; die frühere Näherung aus Beiblatt 1 gilt nur noch als früherer Stand.
+3. Das Bauschalldämm-Maß R′_w = R_w − K_F berücksichtigt die Flankenübertragung, von 0 dB bei entkoppelten Flanken bis 4 dB bei leichten Flankenbauteilen.
+4. DIN 4109-1 fordert etwa R′_w ≥ 53 dB für Wohnungstrennwände, R′_w ≥ 52 dB für Treppenraumwände und R′_w ≥ 59 dB für zweischalige Haustrennwände.
+5. Bei Hochlochziegeln hängt die Schalldämmung auch von Lochbild, Lochanteil und Füllung ab; die Massekurve gilt dort nur eingeschränkt, maßgebend sind Prüfwerte des Herstellers.
+
+- [ ] freigegeben
+
+### 14. Bauen im Bestand (`rechnung_bestand`)
+
+1. Historische Betongüten nach DIN 1045 vor 1972 werden nicht umgerechnet, sondern über eine Zuordnungstabelle je nach damaliger Ausführungsqualität einer heutigen Festigkeitsklasse zugeordnet, nur für die Vorbemessung.
+2. Belastbar wird die Bewertung erst mit Bohrkernen: Nach DIN EN 13791 ist f_ck,is der kleinere Wert aus f_m,is − k_n · s und kleinstem Einzelwert plus M, eingestuft wird über f_ck,is ≥ 0,85 · f_ck,cube.
+3. Der Bemessungswert für Eurocode 2 folgt aus f_cd = 0,85 · f_ck / 1,5; die alten Klassenwerte in kp/cm² lassen sich mit 1 kp/cm² = 0,0981 N/mm² nur zur Einordnung umrechnen.
+4. Historische Betonstähle reichen vom glatten Betonstahl I (BSt 220/340 GU) über den naturharten BSt 420/500 RU bis zum kaltverformten BSt 500 RK; die Zugkapazität folgt mit γ_S = 1,15 aus f_yd = f_yk/γ_S.
+5. Glatte Stäbe übertragen Kräfte nur über Haftung und Reibung und wurden mit Endhaken verankert; Verbundspannungen und Schweißeignung heutiger Stähle sind ohne Nachweis nicht auf Altstähle übertragbar.
+
+Hinweis: Punkt 2: Das Modul setzt keine Mindeststandardabweichung an (dort als vorläufig gekennzeichnet).
+
+- [ ] freigegeben
+
+### 15. Bauphysik: U-Wert (`rechnung_u_wert`)
+
+1. Der U-Wert beschreibt den stationären Wärmestrom durch ein Bauteil bei 1 K Temperaturdifferenz; je kleiner er ist, desto besser dämmt das Bauteil.
+2. Nach DIN EN ISO 6946 werden für Außenwände R_si = 0,13 m²K/W und R_se = 0,04 m²K/W mit den Schichtwiderständen R_i = d_i/λ_i zu R_T aufsummiert, und es gilt U = 1/R_T.
+3. Im Beispiel liefert die EPS-Dämmung mit λ = 0,035 W/(mK) fast den gesamten Widerstand, Normalbeton mit λ = 2,3 W/(mK) und Kalkgipsputz mit 0,70 W/(mK) tragen wenig bei.
+4. Bei der Änderung von Außenwänden begrenzt Anlage 7 GModG den U-Wert auf 0,24 W/(m²K); für Neubauten gilt kein Bauteilhöchstwert, sondern der Nachweis über das Referenzgebäude.
+5. Der Mindestwärmeschutz nach DIN 4108-2 mit R ≥ 1,2 m²K/W ist schon mit wenigen Zentimetern Dämmung erfüllt; Wärmebrücken an Anschlüssen und Ecken sind gesondert zu prüfen.
+
+- [ ] freigegeben
+
+### 16. Beton: Mischungsentwurf (`rechnung_beton`)
+
+1. Der Mischungsentwurf nach dem Stoffraumverfahren stellt sicher, dass Zement, Wasser, Luftporen und Gesteinskörnung verdichtet genau 1000 dm³ je Kubikmeter Frischbeton ausfüllen.
+2. Aus dem Wasseranspruch nach Größtkorn und Konsistenz und dem höchstzulässigen w/z-Wert der Expositionsklasse folgt der Zementgehalt, mindestens aber der Mindestzementgehalt nach DIN 1045-2.
+3. Das Restvolumen nach Abzug von Zement mit 3,10 kg/dm³, Wasser und 1,5 % Verdichtungsporen entfällt auf die Gesteinskörnung, deren Masse sich mit einer Reindichte von 2,65 kg/dm³ ergibt.
+4. Der k-Wert-Ansatz rechnet Flugasche mit k = 0,4 und Silikastaub mit k = 1,0 bis zu einer Höchstmenge auf den äquivalenten w/z-Wert an; Mindestzementgehalt und Erstprüfung bleiben maßgebend.
+5. Die Frischbetontemperatur folgt aus einer Energiebilanz und soll zwischen +5 °C und +30 °C liegen; die Festigkeitsentwicklung bei anderer Bauteiltemperatur schätzt das wirksame Alter t_T nach Gl. (B.10) ab.
+
+- [ ] freigegeben
+
+### 17. Brandschutz: Heißbemessung (`rechnung_brandschutz`)
+
+1. Die Heißbemessung weist die Feuerwiderstandsdauer R30 bis R120 unter der Einheits-Temperaturzeitkurve nach, im Holzbau mit dem effektiven Restquerschnitt, im Stahlbetonbau über tabellierte Mindestmaße.
+2. Die ideelle Abbrandtiefe ist d_ef = β_n · t + d₀ mit d₀ = 7 mm; die Abbrandraten β_n betragen 0,80 mm/min für Nadelvollholz, 0,70 mm/min für Brettschichtholz und 0,55 mm/min für Buche.
+3. Am Restquerschnitt wird das Widerstandsmoment W_ef gebildet und M_fi,Rd mit der Einwirkung im Brandfall verglichen, die der Rechner vereinfacht mit 0,60 · M_Ed ansetzt.
+4. Im Stahlbetonbau halten Mindestbreite und Achsabstand der Bewehrung nach DIN EN 1992-1-2 die Stahltemperatur unter 500 °C; breitere Balken erlauben kleinere Achsabstände, für R90 etwa 200/45 oder 300/40 mm.
+5. Stützen werden nach Methode A abhängig vom Ausnutzungsgrad μ_fi bemessen, μ_fi = 0,7 ist der sichere Ansatz; hochfester Beton mit mehr als 6 M.-% Silikastaub braucht Maßnahmen gegen Abplatzungen.
+
+Hinweis: Punkt 5: Die Stützenwerte nach Tab. 5.2a mit NA DE sind im Modul als vorläufig gekennzeichnet.
+
+- [ ] freigegeben
+
+### 18. Holzbau: Stützenknicken (`rechnung_holzbau`)
+
+1. Schlanke Holzstützen versagen meist nicht durch Materialstauchung, sondern durch seitliches Ausknicken; nachgewiesen wird mit dem Ersatzstabverfahren und dem Abminderungsbeiwert k_c nach Eurocode 5.
+2. Der Bemessungswert der Druckfestigkeit ist f_c,0,d = k_mod · f_c,0,k / 1,3; für Nutzungsklasse 1 oder 2 und kurze Lasteinwirkung gilt k_mod = 0,9, bei ständiger bzw. langer Einwirkung 0,6 bzw. 0,7.
+3. Aus Knicklänge und Trägheitsradius i = h/√12 folgt die Schlankheit λ = s_k/i, daraus mit f_c,0,k und E₀,₀₅ die bezogene Schlankheit λ_rel = (λ/π) · √(f_c,0,k/E₀,₀₅).
+4. Mit dem Imperfektionsbeiwert β_c = 0,2 für Vollholz ergibt sich k = 0,5 · [1 + β_c · (λ_rel − 0,3) + λ_rel²] und daraus der Knickbeiwert k_c = 1/(k + √(k² − λ_rel²)).
+5. Ist der Nachweis σ_c,0,d / (k_c · f_c,0,d) ≤ 1 nicht erfüllt, helfen ein größerer Querschnitt oder eine kürzere Knicklänge durch konstruktive Zwischenhalterungen.
+
+- [ ] freigegeben
+
+### 19. Massivbau: Biegung (`rechnung_stahlbeton`)
+
+1. Beton hat eine geringe Zugfestigkeit; bei Biegung nimmt eingelegter Betonstahl die Zugkräfte auf, die Längsbewehrung wird im Grenzzustand der Tragfähigkeit mit dem μ-Verfahren bemessen.
+2. Bemessungswerte sind f_cd = 0,85 · f_ck / 1,5 für Beton und f_yd = 500/1,15 N/mm² für Betonstahl; die Nutzhöhe d ist der Abstand vom gedrückten Rand zum Schwerpunkt der Zugbewehrung.
+3. Das bezogene Moment μ_Ed = M_Ed / (b · d² · f_cd) zeigt, ob die Druckzone ohne Druckbewehrung ausreicht; die Grenze folgt aus ξ_lim = 0,45 nach NA DE.
+4. Mit dem Hebelarmbeiwert ζ = (1 + √(1 − 2 · μ_Ed))/2 und z = ζ · d folgt die erforderliche Stahlfläche A_s = M_Ed / (f_yd · z), die in Stabdurchmesser umgesetzt wird.
+5. Zusätzlich ist die Mindestbewehrung für Robustheit A_s,min = M_cr / (f_yk · 0,9 · d) einzuhalten; Stababstände, Betondeckung, Rissbreite und Querkraft prüft das Beispiel nicht.
+
+- [ ] freigegeben
+
+### 20. Mauerwerk: Tragfähigkeit (`rechnung_mauerwerk`)
+
+1. Die Tragfähigkeit einer unbewehrten Mauerwerkswand unter Vertikallast wird im vereinfachten Verfahren nach DIN EN 1996-3/NA als aufnehmbare Normalkraft n_Rd = Φ · t · f_d je Meter Wandlänge nachgewiesen.
+2. Die Druckfestigkeit f_k folgt in Deutschland aus den Tabellen des Nationalen Anhangs oder einer Zulassung; der Bemessungswert ist f_d = ζ · f_k / γ_M mit ζ = 0,85 und γ_M = 1,5.
+3. Die Knicklänge ist h_ef = ρ₂ · h, bei voll aufliegender Decke mit ρ₂ = 0,75 bis 175 mm Wanddicke; die Schlankheit h_ef/t darf 27 nicht überschreiten.
+4. Maßgebend ist Φ = min(Φ₁; Φ₂): Φ₁ erfasst die Deckenverdrehung am Endauflager, unter der Dachdecke 0,333 und an Innenwänden 0,9, Φ₂ das Knicken in Wandmitte.
+5. Das Verfahren gilt im Regelfall bis 2,75 m lichter Wandhöhe; unter erweiterten Bedingungen sind Innenwände mit t ≥ 115 mm bis 3,60 m möglich, mit t ≥ 240 mm ohne Einschränkung der Wandhöhe.
+
+- [ ] freigegeben
+
+### 21. Nachhaltigkeit & Dauerhaftigkeit (`rechnung_nachhaltigkeit`)
+
+1. Beton nimmt über die Nutzungsdauer durch Re-Karbonatisierung wieder CO₂ auf; die Karbonatisierungstiefe folgt dem Quadratwurzel-Zeit-Gesetz d_k = k · √t.
+2. Aus der Zementmasse im karbonatisierten Volumen, dem CaO-Anteil und dem Karbonatisierungsgrad folgt die gebundene CO₂-Menge mit dem Molmassenverhältnis 44,01/56,08 ≈ 0,784.
+3. Die Karbonatisierung mildert die Herstellungsbilanz nachträglich, senkt aber die Alkalität und depassiviert den Bewehrungsstahl, sobald die Front die Bewehrungslage erreicht.
+4. Im GWP-Vergleich setzt der Rechner CEM I mit 665 kg CO₂-Äq./t nach der Branchen-EPD und CEM III/B mit dem Lehrwert 260 kg/t an; maßgebend für Nachweise sind die EPD der Hersteller.
+5. CEM III/B reagiert langsam und mindert die Hydratationswärme massiger Bauteile, verlangt aber eine deutlich längere Nachbehandlung, etwa 7 bis 10 statt 3 Tage.
+
+Hinweis: Punkt 4: CEM III/B mit 260 kg/t ist im Modul ein vorläufiger Lehrwert (im Punkt als Lehrwert benannt).
+
+- [ ] freigegeben
+
+### 22. Betonkennwerte (EC2) (`betonkennwerte`)
+
+1. Im Eurocode 2 folgen alle Kennwerte von Normalbeton C12/15 bis C100/115 aus der charakteristischen 28-Tage-Zylinderdruckfestigkeit f_ck, etwa f_cm = f_ck + 8 MPa und f_cd = α_cc · f_ck / γ_c.
+2. In Deutschland gelten α_cc = 0,85 und γ_c = 1,50; für C30/37 ergeben sich f_cd = 17,0 N/mm², f_ctm = 2,9 N/mm² und ein E-Modul von rund 33 GPa bei quarzitischer Gesteinskörnung.
+3. Der E-Modul hängt von der Gesteinskörnung ab: Quarzit α_E = 1,0, Kalkstein 0,9, Sandstein 0,7 und Basalt 1,2; Kriechen vermindert die wirksame Steifigkeit auf E_c,eff = E_cm / (1 + φ).
+4. Das Gesamtschwinden setzt sich aus Trocknungsschwinden durch Wasserabgabe und autogenem Schwinden durch chemische Kontraktion zusammen; Kriechen und Trocknungsschwinden hängen von h₀ = 2 · A_c/u und der Luftfeuchte ab.
+5. Übersteigt die Dauerspannung 0,45 · f_ck(t₀), wächst die Kriechzahl nichtlinear mit exp(1,5 · (k_σ − 0,45)); die 2. Generation des Eurocode 2 bringt unter anderem einen neuen E-Modul-Ansatz.
+
+Hinweis: Punkt 1: Die Klassen ab C55/67 sind im Modul vorläufig, C100/115 ist ein Lehrwert.
+
+- [ ] freigegeben
+
+### 23. Biokohlebeton (`biokohlebeton`)
+
+1. Pflanzenkohle entsteht durch Pyrolyse von Biomasse unter Sauerstoffmangel; in Beton eingebunden wird sie zum Kohlenstoffspeicher, solange der Kohlenstoff auch am Lebensende nicht verbrannt oder abgebaut wird.
+2. Pflanzenkohle ist kein Bindemittel, sondern ein poröser Füller; sie saugt Anmachwasser auf und wird deshalb vorgenässt, das gespeicherte Wasser kann als innere Nachbehandlung wirken.
+3. Kleine Zugaben lassen die Festigkeit teils unverändert, höhere Gehalte erhöhen Wasseranspruch und Porosität und senken sie; der Karbonatisierungswiderstand ist je Rezeptur zu prüfen, etwa nach DIN EN 12390-12.
+4. Die CO₂-Bilanz rechnet m_CO₂ = m_PK · w_C · 44/12 · F_perm abzüglich der Herstellungsemission; im Beispiel bindet 1 kg Kohle netto 2,05 kg CO₂ und wirkt wie rund 3,08 kg weniger CEM I.
+5. Pflanzenkohle ist weder Zement nach DIN EN 197-1 noch ein Zusatzstoff mit k-Wert und zählt nicht zum w/z-Wert; bei bauaufsichtlich relevanter Verwendung kann eine Zulassung oder Zustimmung im Einzelfall nötig sein.
+
+Hinweis: Punkt 4: Das Rechenbeispiel beruht auf Richtwerten (Kohlenstoffgehalt, Permanenzfaktor, Herstellungsemission).
+
+- [ ] freigegeben
+
+### 24. Expositionsklassen (`expositionsklassen`)
+
+1. Nach DIN EN 206 und DIN 1045-2 werden alle Umwelteinflüsse Expositionsklassen (X0, XC, XD, XS, XF, XA, XM) und Feuchtigkeitsklassen (WO, WF, WA, WS) zugeordnet, die Grenzwerte für w/z-Wert, Festigkeit und Zementgehalt festlegen.
+2. Treffen mehrere Klassen zu, ist der jeweils strengste Grenzwert maßgebend; für eine Außenwand mit XC4 und XF1 gelten C25/30, (w/z)eq ≤ 0,60 und mindestens 280 kg/m³ Zement.
+3. Das Nennmaß der Betondeckung ist c_nom = max{c_min,b; c_min,dur; 10 mm} + Δc_dev; im Beispiel ergeben 25 mm für XC4 und 15 mm Vorhaltemaß ein Nennmaß von 40 mm.
+4. Frost-Tausalz-Angriff XF4 ist nur mit Luftporenbeton zulässig; XF2 und XF3 dürfen ohne Luftporen mit (w/z)eq ≤ 0,50, C35/45 und z ≥ 320 kg/m³ ausgeführt werden.
+5. Beim k-Wert-Ansatz wird Flugasche mit k = 0,40 bis f/z ≤ 0,33 und Silikastaub bis s/z ≤ 0,11 auf den äquivalenten w/z-Wert angerechnet; bei Sulfat über 600 mg/l im Wasser ist SR-Zement nötig.
+
+- [ ] freigegeben
+
+### 25. Frischbeton (`frischbeton`)
+
+1. Die Konsistenz von Frischbeton wird nach DIN EN 206 über Ausbreit-, Verdichtungs-, Setz- und Setzfließmaß in Klassen eingeteilt; im Hochbau gilt F3 mit 420 bis 480 mm als bewährte Regelkonsistenz.
+2. Zielwerte haben Grenzabmaße, etwa ± 30 mm beim Ausbreitmaß von 410 bis 540 mm; ist der Beton zu steif, darf nur dokumentiert Fließmittel nachdosiert werden, nie eigenmächtig Wasser.
+3. Für XF2 und XF4 sind Luftporen nötig, je nach Größtkorn mindestens 4,0 bis 5,5 Vol.-%; die obere Grenze liegt beim Mindestwert plus 4 %, denn jedes Prozent Luft kostet etwa 3 bis 5 N/mm² Festigkeit.
+4. Der Luftgehalt nach DIN EN 12350-7 ist die Manometerablesung abzüglich Gesteinskorrektur; im Beispiel ergeben 4,8 % minus 0,2 % einen Wert von 4,6 %, der die Anforderung für XF4 bei 32 mm Größtkorn erfüllt.
+5. Der Frischbetondruck nach DIN 18218 steigt bis zur Tiefe h_s hydrostatisch an und bleibt dann konstant; für F3 mit 2 m/h Steiggeschwindigkeit ergeben sich 46 kN/m² ab 1,84 m Tiefe.
+
+Hinweis: Punkt 2: Die Grenzabmaße tragen im Modul den Hinweis, sie am Normtext zu prüfen.
+
+- [ ] freigegeben
+
+### 26. Korrosionsschutz (Beschichtungen) (`korrosionsschutz_beschichtungen`)
+
+1. Beschichtungen und Zinküberzüge schützen Stahl durch Barrierewirkung, Inhibierung oder kathodisch, weil Zink als unedleres Metall an Fehlstellen als Opferanode wirkt.
+2. Nach DIN EN ISO 12944 wird zuerst die Umgebung in die Kategorien C1 bis CX bzw. Im1 bis Im4 eingestuft, dann die Schutzdauer festgelegt und danach das System gewählt; die Schutzdauer ist keine Gewährleistungsfrist.
+3. Ohne Oberflächenvorbereitung, in der Regel Sa 2½ nach DIN EN ISO 8501-1, versagt auch ein dickes System vorzeitig; ein dreischichtiges Lehrbeispiel erreicht eine Sollschichtdicke von 240 µm.
+4. Die Schutzdauer einer Feuerverzinkung wächst linear mit der Zinkschichtdicke und sinkt mit der Abtragsrate; 85 µm Zink erreichen in C3 mindestens 40,5 Jahre und damit die Klasse VH.
+5. In C5 reicht Zink allein ungünstig nur für 10,1 Jahre; erst das Duplex-System aus Verzinkung und Beschichtung erreicht mit einem Synergiefaktor von 1,5 aus der Literatur 30,2 Jahre.
+
+- [ ] freigegeben
+
+### 27. Schnellkarbonatisierung (`schnellkarbonatisierung`)
+
+1. CO₂ dringt in den Beton ein, reagiert mit Calciumhydroxid und senkt den pH-Wert von etwa 12,5 bis 13,5 auf unter 9; erreicht die Karbonatisierungsfront die Bewehrung, geht deren Passivschicht verloren.
+2. DIN EN 12390-12 beschleunigt die Prüfung mit (3,0 ± 0,5) Vol.-% CO₂ bei 57 % relativer Luftfeuchte und 20 °C; gemessen wird mit Phenolphthalein an frischen Bruchflächen zu mehreren Zeitpunkten.
+3. Der Karbonatisierungskoeffizient K_AC in mm/√d ist die Steigung der Regression der Tiefen über √t; im Beispiel ergeben Messungen nach 7, 28 und 70 Tagen K_AC = 0,903 mm/√d.
+4. Auf natürliche CO₂-Konzentration und Jahre umgerechnet gilt näherungsweise K_nat ≈ 2,2 · K_AC; mit 1,99 mm/√a erreicht die Front eine Deckung von 25 mm erst nach rund 158 Jahren.
+5. Doppelte Deckung bedeutet die vierfache Zeit bis zur Depassivierung; die Umrechnung erfasst aber nur die Konzentration, nicht Feuchte, Beregnung und Ausführung, und ersetzt keinen Dauerhaftigkeitsnachweis.
+
+- [ ] freigegeben
+
+### 28. Digitaler Produktpass (DPP) (`dpp`)
+
+1. Der Digitale Produktpass ist ein Instrument der EU-Ökodesign-Verordnung (EU) 2024/1781; er stellt Produktdaten über den Lebenszyklus maschinenlesbar bereit und fördert Rückverfolgbarkeit und Kreislaufwirtschaft.
+2. Für Bauprodukte führt ihn die Bauprodukteverordnung (EU) 2024/3110 ein, anwendbar seit 8. Januar 2026; verpflichtend wird er je Produktfamilie über delegierte Rechtsakte, feste Termine stehen noch nicht fest.
+3. Eine zentrale EU-Datenbank gibt es nicht: Die Daten bleiben beim Hersteller, sind über Schnittstellen abrufbar, nach der Verwaltungsschale strukturiert und über einen dauerhaften Datenträger wie einen QR-Code erreichbar.
+4. Der Pass enthält Herstellerdaten und Leistungserklärung, die Stückliste mit Recyclinganteilen und Schadstoffen, Verweise auf EPD-Kennwerte wie GWP und PENRT sowie Hinweise zu Demontage und Entsorgung.
+5. Eine EPD nach DIN EN 15804 weist Umweltwirkungen je Lebenszyklusmodul aus; Modul D wird nicht mit A bis C saldiert, und PENRT = PENRE + PENRM trennt energetisch und stofflich genutzte Primärenergie.
+
+- [ ] freigegeben
+
+### 29. Online-Tools & Rechner (`online_tools`)
+
+1. Das Modul bündelt kostenlose oder quelloffene Online-Werkzeuge für Statik, Bauphysik, Ökobilanz, BIM und Geodaten sowie das Baustofflabor, filterbar nach Kategorie, Norm und Herausgeber.
+2. Online-Rechner eignen sich für Vorbemessung und Plausibilitätskontrolle; ihre Ergebnisse sind mit einer Handrechnung zu vergleichen, denn Abweichungen beruhen oft auf Einheitenfehlern oder falschen Lagerungen.
+3. Viele Programme verlangen charakteristische Lasten und bilden die Kombination selbst; wer vorher q_Ed = 1,35 · g_k + 1,5 · q_k eingibt, setzt die Teilsicherheitsbeiwerte doppelt an.
+4. Die ÖKOBAUDAT ist die offizielle Bundesdatenbank für Ökobilanzdaten nach DIN EN 15804 mit öffentlicher REST-Schnittstelle; Python-Beispiele zeigen den automatisierten Abruf von EPD-Datensätzen.
+5. Mit offenen Bibliotheken lassen sich Mengen aus IFC-Modellen auslesen, U-Werte nach DIN EN ISO 6946 berechnen und Träger vorbemessen; im Kontrollbeispiel biegt sich ein Holzbalken C24 um 16,1 mm bei zulässigen 20 mm durch.
+
+- [ ] freigegeben
+
+### 30. Einheiten (`einheiten`)
+
+1. Das Internationale Einheitensystem bildet die Grundlage aller Berechnungen; seit der SI-Revision 2019 sind alle sieben Basiseinheiten über Naturkonstanten definiert, das Kilogramm etwa über die Planck-Konstante.
+2. Temperaturdifferenzen sind in Kelvin und Grad Celsius zahlengleich; deshalb stehen Wärmedehnzahlen und U-Werte mit „K“ im Nenner, die Celsius-Temperatur folgt aus T/K − 273,15.
+3. Spannungen und Festigkeiten werden in N/mm² oder MPa angegeben: 1 MPa = 1 N/mm² = 1000 kN/m² = 10 bar; Bodenpressungen und Flächenlasten stehen dagegen meist in kN/m².
+4. Bewährte Regel: alle Größen zuerst in N und mm umrechnen, dann ergibt sich jede Spannung direkt in N/mm²; 500 kN auf einem Querschnitt von 30 cm × 30 cm ergeben so 5,56 N/mm².
+5. Wer kN durch cm² teilt, erhält kN/cm² und einen um den Faktor 10 kleineren Zahlenwert; Momente sind mit 1 kNm = 10⁶ Nmm umzurechnen, das Kilopond begegnet nur noch in Altstatiken.
+
+- [ ] freigegeben
+
+### 31. Bauphysik & Brandschutz (`holzbau_bauphysik`)
+
+1. Holz brennt bei größeren Querschnitten mit annähernd konstanter Geschwindigkeit ab; die Kohleschicht leitet Wärme schlecht und schützt den Restquerschnitt, das Holz dahinter ist aber bereits geschwächt.
+2. Nach DIN EN 1995-1-2 gelten ideelle Abbrandraten β_n von 0,80 mm/min für Nadelvollholz, 0,70 mm/min für Brettschichtholz und 0,55 mm/min für Laubholz mit ρ_k ≥ 450 kg/m³.
+3. Die ideelle Abbrandtiefe ist d_ef = β_n · t + k₀ · d₀ mit d₀ = 7 mm und k₀ = min(1; t/20); der verbleibende Querschnitt wird mit k_mod,fi = 1,0 und γ_M,fi = 1,0 nachgewiesen.
+4. Wegen des geringen Eigengewichts ist der Schallschutz die größte Herausforderung im mehrgeschossigen Holzbau; gebundene Schüttungen bringen Masse, Elastomerlager entkoppeln den Körperschall.
+5. Für Wohnungsdecken verlangt Eurocode 5 einen Schwingungsnachweis, der nur für f₁ > 8 Hz gilt; der Rechner bestimmt f₁ und die Durchbiegung unter 1 kN für einen Deckenstreifen aus Brettsperrholz.
+
+- [ ] freigegeben
+
+### 32. Bemessung (EC5) (`holzbau_bemessung`)
+
+1. Schlanke Holzdruckstäbe werden nach dem Ersatzstabverfahren der DIN EN 1995-1-1 nachgewiesen; der Knickbeiwert k_c folgt aus der bezogenen Schlankheit λ_rel um die schwache Achse.
+2. Die Bemessungsfestigkeit f_c,0,d = k_mod · f_c,0,k / γ_M hängt über k_mod von Nutzungsklasse und Lastdauer ab; für Vollholz und Brettschichtholz gilt γ_M = 1,3.
+3. Bis λ_rel ≤ 0,3 gibt es keinen Knickeinfluss und k_c = 1,0; der Imperfektionsbeiwert β_c beträgt 0,2 für Vollholz und 0,1 für Brettschichtholz.
+4. Im Beispiel hat eine Stütze C24 120/160 mm mit 3,0 m Knicklänge λ_rel = 1,47 und k_c = 0,39; sie trägt 97,6 kN statt rund 248 kN ohne Knicken und ist mit 50 kN zu rund 51 % ausgenutzt.
+5. Quer zur Faser ist Holz deutlich weniger druckfest; der Querpressungsnachweis darf eine um bis zu 30 mm je Überstandsseite verlängerte Kontaktlänge und den Beiwert k_c,90 ansetzen.
+
+- [ ] freigegeben
+
+### 33. Verbindungen & Anschlüsse (`holzbau_verbindung`)
+
+1. Stabförmige Verbindungsmittel wie Stabdübel, Bolzen und Schrauben werden nach der Johansen-Theorie des Eurocode 5 bemessen; die Grenzlast hängt vom Fließmoment des Stahls und der Lochleibungsfestigkeit des Holzes ab.
+2. Eurocode 5 unterscheidet reine Lochleibung bei geradem Stift sowie Versagen mit einem oder zwei Fließgelenken im Stift; zwei Fließgelenke ergeben das duktilste Tragverhalten.
+3. Spröde Versagensarten wie Aufspalten und Blockscheren werden über Mindestabstände ausgeschlossen, für Stabdübel etwa a_1 ≥ (3 + 2 |cos α|) · d parallel und a_2 ≥ 3 · d rechtwinklig zur Faser.
+4. Vollgewindeschrauben tragen über die ganze Gewindelänge hohe Axialkräfte; unter 45° eingedreht, wird die Scherkraft überwiegend als Zug oder Druck in der Schraube abgetragen, bemessen wird nach ETA.
+5. Der Rechner weist das Herausziehen mit der Ausziehfestigkeit f_ax,k und der wirksamen Anzahl n_ef = n^0,9 nach, das Abscheren mit d_ef = 1,1 · d₁ samt Seileffekt; kombinierte Beanspruchung ist nicht abgebildet.
+
+- [ ] freigegeben
+
+### 34. Prompting-Praxis (`ki_prompting`)
+
+1. Gute Ergebnisse aus Sprachmodellen verlangen strukturierte Arbeitsanweisungen mit Rolle, Aufgabe, Randbedingungen und Soll-Format, ähnlich einem präzisen Leistungsverzeichnis; reines Chatten liefert oft allgemeine Antworten.
+2. Bewährte Taktiken sind Rückfragen vor der Bearbeitung, ein zweiter Prüfdurchlauf gegen das Regelwerk, ausgeschriebene Herleitungsschritte (Chain of Thought) und Vorgabemuster für Aufbau und Tiefe (Few-Shot).
+3. Sprachmodelle können Normnummern und Rechenergebnisse plausibel erfinden; KI-Ergebnisse gehören nie ungeprüft in statische Nachweise, im Beispiel waren 6 von 50 Normzitaten falsch oder veraltet.
+4. RAG stützt die Antwort auf gefundene Abschnitte eigener Dokumente; eine hohe Kosinus-Ähnlichkeit zeigt aber nur thematische Nähe, nicht fachliche Richtigkeit, und die Fundstelle muss der aktuellen Normausgabe entstammen.
+5. Ein Kontextfenster von 128 000 Token fasst nach Abzug von Systemprompt und Antwortreserve rund 157 Seiten; ein 300-seitiges Baugrundgutachten verlangt daher RAG oder eine kapitelweise Bearbeitung.
+
+- [ ] freigegeben
+
+### 35. Auslagerungsversuch (`labor_auslagerung`)
+
+1. Der vierwöchige Auslagerungsversuch bestimmt gravimetrisch Massenverlust und Abtragsrate von Betonstahl in alkalischen und chloridhaltigen Medien und ergänzt damit die Potentialmessung.
+2. Das Potential zeigt, ob der Stahl aktiv korrodiert, der Massenverlust, wie viel Metall verloren geht; die Werte sind Vergleichswerte und nicht unmittelbar auf Stahl im Beton übertragbar.
+3. Der Massenverlust wird um den Beizabtrag einer Blindprobe korrigiert, Δm = m₀ − m₁ − m_Blind; gebeizt wird nach DIN EN ISO 8407, ausgewertet nach ASTM G1 und G31.
+4. Die Massenverlustrate r = Δm/(A · t) in g/(m²·d) bezieht sich auf die Oberfläche aus Mantel und zwei Stirnflächen; die Abtragsrate in µm/a setzt einen gleichmäßigen Abtrag voraus.
+5. Je Medium sind mindestens drei Parallelproben nötig, sonst ist keine belastbare Streuungsangabe möglich; Proben derselben Charge eignen sich für den Vergleich mit der Potentialmessung.
+
+- [ ] freigegeben
+
+### 36. Festbeton (Statistik) (`festbeton_statistik`)
+
+1. Betonfestigkeit streut; aus Mittelwert und Standardabweichung vieler Prüfungen folgt bei Normalverteilung die charakteristische Festigkeit als 5-%-Quantil f_ck = f_cm − 1,645 · σ.
+2. Würfel liefern höhere Festigkeiten als Zylinder, weil die Reibung an den Druckplatten die Querdehnung im ganzen Probekörper behindert; bemessen wird stets mit der Zylinderfestigkeit.
+3. Bei Erstherstellung gilt nach DIN EN 206, Tab. 14 für Gruppen von drei Ergebnissen f_cm ≥ f_ck + 4 und kein Einzelwert unter f_ck − 4; im Beispiel erfüllen 41,2 und 39,5 N/mm² beide Kriterien.
+4. Bei stetiger Herstellung mit n ≥ 15 und σ aus mindestens 35 Ergebnissen gilt f_cm ≥ f_ck + 1,48 · σ; für C30/37 mit σ = 4,0 N/mm² sind im Mittel mindestens 42,9 N/mm² nötig.
+5. Der Bemessungswert f_cd = α_cc · f_ck / γ_c beträgt mit α_cc = 0,85 und γ_c = 1,5 für C30/37 17,0 N/mm²; die Konformität wird dagegen im Format der Prüfkörper nachgewiesen.
+
+- [ ] freigegeben
+
+### 37. Frischbetonprüfungen (`labor_frischbeton`)
+
+1. Ausbreitmaß nach DIN EN 12350-5, Frischbetonrohdichte nach DIN EN 12350-6 und Luftgehalt nach DIN EN 12350-7 werden an derselben Probe direkt nacheinander geprüft.
+2. Die drei Prüfungen entscheiden auf der Baustelle über die Annahme des Betons und im Labor über die Eignung eines Mischungsentwurfs.
+3. Das Ausbreitmaß ist das Mittel zweier Durchmesser f = (d₁ + d₂)/2, auf 10 mm gerundet, und ordnet den Beton einer Ausbreitmaßklasse nach DIN EN 206 zu.
+4. Die Rohdichte folgt aus D = (m₂ − m₁)/V, auf 10 kg/m³ gerundet; der Luftgehalt ist der Ablesewert im Druckausgleichsverfahren minus Korrekturfaktor der Gesteinskörnung.
+5. Als Gegenprobe lässt sich der Luftgehalt aus gemessener und luftporenfreier Soll-Rohdichte schätzen; Abweichungen im Wassergehalt verschieben ihn um mehrere Zehntel Prozent.
+
+- [ ] freigegeben
+
+### 38. Mörtelprismen (`labor_moertelprismen`)
+
+1. Mit Normmörtel nach DIN EN 196-1 wird die Festigkeit des Zements unabhängig von Gesteinskörnung und Rezeptur bestimmt; sie ist die Grundlage der Festigkeitsklassen 32,5, 42,5 und 52,5.
+2. Geprüft werden Prismen 40 mm × 40 mm × 160 mm zuerst im Dreipunkt-Biegeversuch, R_f = 1,5 · F_f · l / b³ mit l = 100 mm und b = 40 mm.
+3. Die beiden Prismenhälften werden anschließend auf Druck geprüft, R_c = F_c / 1600 mm²; die Ergebnisse werden auf 0,1 MPa angegeben.
+4. Die Druckwerte müssen innerhalb von ±10 % um ihr Mittel liegen: Ein stärker abweichender Einzelwert wird verworfen, im ungünstigen Fall die ganze Serie.
+5. Die Festigkeitsklasse richtet sich nach der Untergrenze der Normfestigkeit nach 28 Tagen gemäß DIN EN 197-1; die Anfangsfestigkeit nach 2 bzw. 7 Tagen unterscheidet L, N und R.
+
+- [ ] freigegeben
+
+### 39. Potentialmessung (`labor_potentialmessung`)
+
+1. Gesättigte Calciumhydroxidlösung bildet vereinfacht die alkalische Porenlösung nach; der Stahl ist darin passiv, und schrittweise zugegebene Chloridionen können die Passivschicht örtlich durchbrechen.
+2. Das gemessene Ruhepotential wird über die Bezugselektrode auf die Standardwasserstoffelektrode und auf die Kupfer/Kupfersulfat-Elektrode umgerechnet, E_CSE = E_SHE − 316 mV.
+3. Nach ASTM C876 gelten die Bereichsgrenzen −200 mV und −350 mV gegen CSE zwischen geringer und hoher Korrosionswahrscheinlichkeit; im Lösungsversuch dienen sie nur der Orientierung.
+4. Eine Depassivierung wird vermutet, wenn das Potential zwischen zwei NaCl-Stufen sprunghaft fällt; das Cl⁻/OH⁻-Verhältnis liegt dann nach Hausmann als Richtwert bei etwa 0,6.
+5. Maßgebend sind der Verlauf und die Begutachtung der Probe, nicht ein einzelner Grenzwert; der Modellversuch kommt ohne Beton, Feuchtegradienten und Chloridbindung aus.
+
+- [ ] freigegeben
+
+### 40. Statistik (`statistik`)
+
+1. Das Modul wertet Baustoffprüfungen statistisch aus: Mittelwert, Median, Standardabweichung mit dem Nenner n − 1 und Variationskoeffizient beschreiben Lage und Streuung, ergänzt um t-Test und Versuchsplanung.
+2. Der charakteristische Wert ist das 5-%-Quantil X_k = x̄ − k_n · s nach DIN EN 1990, Anhang D; zehn Bohrkerne mit 38,2 N/mm² und s = 3,1 N/mm² ergeben mit k_n = 1,92 einen Wert von 32,2 N/mm².
+3. Mehr Proben lohnen sich: Mit nur drei Kernen wäre k_n = 3,37 und X_k = 27,8 N/mm²; der Bemessungswert X_d = X_k / γ_M beträgt im Beispiel mit γ_M = 1,5 für Beton 21,5 N/mm².
+4. Der Grubbs-Test nach ISO 5725-2 zeigt Ausreißer nur statistisch an; gestrichen werden darf ein Wert erst, wenn eine technische Ursache wie ein Prüffehler belegt ist, sonst wird die Streuung zu klein.
+5. Der t-Test vergleicht Mittelwerte von Prüfserien, voreingestellt als Welch-Test für ungleiche Varianzen; ein signifikanter Unterschied ist noch kein technisch relevanter, und der p-Wert ist keine Wahrscheinlichkeit für H₀.
+
+- [ ] freigegeben
+
+### 41. Virtuelle Versuche (`labor`)
+
+1. Das digitale Prüflabor simuliert normgerechte Versuche: Druck an der Universalprüfmaschine, Spaltzug nach DIN EN 12390-6, Biegezug nach DIN EN 12390-5, Haftzug, Rückprallhammer sowie Frischbeton- und Bitumenprüfungen.
+2. Die Haftzugfestigkeit nach DIN EN 1542 ist f_h = 4 · F / (π · d²); im Beispiel ergeben 3,20 kN am Stempel mit 50 mm Durchmesser 1,63 N/mm² bei Bruch im Altbeton, über dem Richtwert von 1,5 N/mm².
+3. Der stabilisierte Sekanten-E-Modul nach DIN EN 12390-13 folgt aus dem dritten Lastzyklus zwischen 10 % und einem Drittel der Druckfestigkeit; im Beispiel ergeben sich rund 33,0 GPa.
+4. Bei der 4-Punkt-Biegung herrscht im mittleren Drittel reines Biegemoment ohne Querkraft; die Spaltzugfestigkeit eines Zylinders unter Linienlast folgt aus f_ct,sp = 2 · F / (π · d · L).
+5. Bitumen wird über die Nadelpenetration bei 25 °C und den Erweichungspunkt Ring und Kugel eingestuft; alle Versuche sind Lehrsimulationen und ersetzen keine Prüfung in einer anerkannten Prüfstelle.
+
+- [ ] freigegeben
+
+### 42. Würfeldruckfestigkeit (`labor_druckfestigkeit`)
+
+1. Die Würfeldruckfestigkeit ist der wichtigste Kennwert des Festbetons; geprüft wird nach DIN EN 12390-3, f_c = F/A_c wird mit den gemessenen Kantenlängen gebildet und auf 0,1 MPa gerundet.
+2. Trocken gelagerte Würfel werden für Normalbeton bis C50/60 mit dem Faktor 0,92 auf Wasserlagerung umgerechnet, darüber mit 0,95; wassergelagerte Würfel bilden die Referenz.
+3. Die Klasse wird vereinfacht nach den Kriterien für die Erstherstellung zugeordnet: Mittelwert f_cm ≥ f_ck,cube + 4 und kleinster Einzelwert f_ci ≥ f_ck,cube − 4.
+4. Erreicht ist die höchste Klasse, deren beide Kriterien erfüllt sind; zusätzlich gibt das Handout die Rohdichte jedes Würfels und die Standardabweichung der Serie aus.
+5. Die Zuordnung ist eine Lehrvereinfachung und keine Konformitätsbewertung; für eine laufende Produktion gelten Kriterien mit Standardabweichung und mindestens 15 Ergebnissen.
+
+- [ ] freigegeben
+
+### 43. Baustatik (`baustatik`)
+
+1. Die Baustatik liefert Biegemoment, Querkraft und Normalkraft für die Bemessung; das Modul untersucht Einfeldträger, Kragarm und Dreigelenkrahmen sowie den statisch unbestimmten Zweifeldträger.
+2. Ein Loslager nimmt eine Kraft auf, ein Festlager zwei und eine Einspannung zusätzlich ein Moment; die Auflagerkräfte statisch bestimmter Systeme folgen allein aus den Gleichgewichtsbedingungen.
+3. Das Biegemoment ist dort am größten, wo die Querkraft das Vorzeichen wechselt (dM/dx = V); im Beispiel mit 6 m Stützweite, 10 kN/m und 50 kN Einzellast ergibt sich M_max = 106,7 kNm.
+4. Beim Zweifeldträger liefert die Dreimomentengleichung das Stützmoment, bei zwei Feldern mit 5 m und 20 kN/m −62,5 kNm; das Mittelauflager erhält 1,25 · q · l statt q · l.
+5. Beim Dreigelenkrahmen ist das Moment im Scheitelgelenk null; der Horizontalschub H = q · L² / (8 · H_Stiel) erzeugt die Eckmomente, im Beispiel 20 kN Schub und 80 kNm Eckmoment.
+
+- [ ] freigegeben
+
+### 44. Bodenmechanik (`bodenmechanik`)
+
+1. Die Zustandsgrenzen nach Atterberg trennen die Zustandsformen bindiger Böden: Die Fließgrenze w_L liegt zwischen flüssig und bildsam, die Ausrollgrenze w_P zwischen bildsam und halbfest.
+2. Die Fließgrenze ist im Casagrande-Versuch der Wassergehalt bei 25 Schlägen; Plastizitätszahl I_P = w_L − w_P und Konsistenzzahl I_C = (w_L − w)/I_P beschreiben Bereich und Zustand, ab I_C = 0,75 ist der Boden halbfest.
+3. Im Plastizitätsdiagramm nach DIN 18196 trennt die A-Linie I_P = 0,73 · (w_L − 20) Tone von Schluffen; im Beispiel mit w_L = 45 % und I_P = 25 % ergibt sich ein mittelplastischer Ton TM.
+4. Die Scherfestigkeit folgt aus τ = c + σ · tan φ nach Mohr-Coulomb; der aktive Erddruck nach Rankine mit K_a = tan²(45° − φ/2) beträgt für φ = 30° und 5 m Wandhöhe 83,3 kN/m.
+5. Wassergesättigte Tone setzen sich zeitverzögert durch Konsolidierung: 4 m Ton mit E_s = 5 MN/m² setzen sich unter 50 kN/m² um 40 mm, zu 90 % bei zweiseitiger Entwässerung nach 1,70 Jahren.
+
+Hinweis: Punkt 2: Die deutschen Bezeichnungen der Zustandsformen sind im Modul vorläufig.
+
+- [ ] freigegeben
+
+### 45. E-Modul & Mikromechanik (`emodul`)
+
+1. Der E-Modul beschreibt die Steifigkeit eines Werkstoffs; bei Beton setzt er sich aus den Steifigkeiten von Gesteinskörnung und Zementstein und deren Volumenanteilen zusammen.
+2. Normativ gilt nach DIN EN 1992-1-1 E_cm = α_E · 22 · (f_cm/10)^0,3 in GPa; für C30/37 mit Quarzit ergeben sich rund 33 GPa, mit Kalkstein nach 10 % Abminderung 29,5 GPa.
+3. Die Gesteinsart wirkt über den Beiwert α_E: Basalt 1,20, Quarzit 1,00, Kalkstein 0,90 und Sandstein 0,70; mit Sandstein läge ein C30/37 nur bei rund 23 GPa.
+4. Das Voigt-Modell mit gleicher Dehnung liefert die obere, das Reuss-Modell mit gleicher Spannung die untere Schranke; für 70 % Gestein mit 60 GPa und Zementstein mit 20 GPa sind das 48,0 und 37,5 GPa.
+5. Die Hashin-Shtrikman-Schranken engen den Bereich ein; gemessene Betonwerte liegen meist nahe der unteren Schranke oder darunter, weil Poren und die weichere Kontaktzone zwischen Korn und Zementstein mitwirken.
+
+- [ ] freigegeben
+
+### 46. Festigkeitsberechnungen (`festigkeit`)
+
+1. Festigkeitsnachweise zeigen, dass die Spannungen im Bauteil die Festigkeit nicht überschreiten; die Gedankenexperimente des Moduls arbeiten bewusst ohne Teilsicherheitsbeiwerte und ohne Stabilitätsversagen.
+2. Unter Eigengewicht kürzt sich die Querschnittsfläche heraus: Die Grenzhöhe einer Säule ist H = f_c/(ρ · g), für Beton C20/25 theoretisch 849 m, mit Bemessungswerten nur rund 356 m.
+3. Die Reißlänge L = f_t/(ρ · g) ist eine spezifische Festigkeit; Baustahl S235 erreicht rund 4,7 km, leichte Fasern wie CFK oder Aramid schneiden um ein Vielfaches besser ab.
+4. Im ebenen Spannungszustand bestimmen σ_x, σ_y und τ_xy die Spannungen in jedem Schnitt; der Mohr’sche Spannungskreis zeigt Hauptspannungen, Hauptrichtung und größte Schubspannung auf einen Blick.
+5. Für duktile Werkstoffe wie Baustahl wird die Vergleichsspannung nach von Mises mit der Streckgrenze verglichen; die Richtung der Hauptzugspannung erklärt etwa schräge Schubrisse im Balkensteg.
+
+- [ ] freigegeben
+
+### 47. Formänderungen (`formaenderungen`)
+
+1. Formänderungen werden nach Ursache, zeitlichem Verlauf und Reversibilität eingeteilt: elastisch, plastisch, verzögert elastisch und viskos sowie spannungsunabhängig durch Wärme, Feuchte und chemische Reaktionen.
+2. Kriechen setzt sich aus dem verzögert elastischen, umkehrbaren und dem viskosen, bleibenden Anteil zusammen; bei Beton mit φ = 2,0 verdreifacht es die Stauchung auf etwa 0,87 ‰.
+3. Die Wärmedehnung Δl = α_T · ΔT · l verlängert eine 30 m lange Betonwand bei 40 K um 12 mm; vollständig behindert entstünden 13,2 N/mm², weit über der Betonzugfestigkeit, daher Fugen oder Bewehrung.
+4. Die Biegelinie folgt aus E · I · w″ = −M; der E-Modul geht linear, die Bauteilhöhe beim Rechteck mit der dritten Potenz ein, doppelte Höhe ergibt ein Achtel der Durchbiegung.
+5. Bei gleichem Querschnitt biegt sich Holz rund 19-mal stärker durch als Stahl; bei Holz kommen Kriechen und Schubverformung hinzu, bei Stahlbeton Rissbildung im Zustand II und Kriechen.
+
+- [ ] freigegeben
+
+### 48. Knicken (Euler) (`knicken`)
+
+1. Knicken ist ein plötzliches Stabilitätsversagen schlanker Druckstäbe: Erreicht die Normalkraft N_Ed die ideale Euler-Knicklast F_K = π² · E · I / (β · l)², weicht der Stab seitlich aus.
+2. Die Lagerung bestimmt die Knicklänge l_k = β · l: Kragarm β = 2,0, beidseitig gelenkig β = 1,0, eingespannt und gelenkig β ≈ 0,7, beidseitig eingespannt β = 0,5.
+3. Die Lagerung wirkt quadratisch: Im Beispiel trägt die beidseitig gelenkige Stahlstütze mit 3,5 m Länge ideal 1438 kN, als Kragstütze nur ein Viertel, also 360 kN.
+4. Nach Theorie II. Ordnung wächst eine Vorkrümmung mit dem Faktor 1/(1 − N_Ed/F_K); bei 65 % der Knicklast vergrößert sich w₀ = l/300 von 11,7 mm auf 33,3 mm.
+5. Die Euler-Last ist eine ideale Obergrenze; weil das Zusatzmoment N · w den Querschnitt vorher zum Fließen bringen kann, rechnet der Eurocode 3 mit Abminderungsbeiwerten χ < 1.
+
+- [ ] freigegeben
+
+### 49. Mechan. Kenngrößen (`mechanische_kenngroessen`)
+
+1. Spannung ist Kraft je Fläche, Dehnung die relative Längenänderung; im linear-elastischen Bereich verknüpft das Hookesche Gesetz σ = E · ε beide, die Querdehnzahl ν beschreibt die Querkontraktion.
+2. Für isotrope Werkstoffe genügen zwei elastische Konstanten: Aus E und ν folgen Schubmodul G = E/(2 · (1 + ν)) und Kompressionsmodul K; Baustahl hat in allen Festigkeitsklassen E = 210 000 MPa.
+3. Die Dehnsteifigkeit EA wächst linear mit der Bauteilhöhe, die Biegesteifigkeit EI mit der dritten Potenz; ein Zugstab S235 mit 30 mm Durchmesser und 4,00 m Länge verlängert sich unter 120 kN um 3,23 mm.
+4. Kriechen ist die Verformungszunahme unter Dauerlast, Schwinden die lastfreie Volumenabnahme, Relaxation der Spannungsabbau bei konstanter Dehnung; mit φ = 2,0 sinkt der wirksame E-Modul von Beton von 33 000 auf 11 000 MPa.
+5. Das Maxwell-Modell mit Feder und Dämpfer in Reihe beschreibt die Relaxation, das Kelvin-Voigt-Modell mit paralleler Anordnung die verzögerte Elastizität; Spannstahl der Klasse 2 hat ρ₁₀₀₀ = 2,5 %.
+
+- [ ] freigegeben
+
+### 50. Stahlbau EC 3 (`stahlbau_ec3`)
+
+1. Stahltragwerke werden nach DIN EN 1993-1-1 mit NA DE bemessen; das Modul behandelt Querschnittsklassen, Zug, Biegung um die starke Achse und Biegeknicken gewalzter I- und H-Profile.
+2. Nach NA DE gelten γ_M0 = 1,0 für das Fließen, γ_M1 = 1,1 für Stabilitätsversagen und γ_M2 = 1,25 für den Bruch im Nettoquerschnitt, weil dieser ohne Vorankündigung eintritt.
+3. Die Querschnittsklassen 1 bis 4 folgen aus den c/t-Verhältnissen von Flansch und Steg; nur in Klasse 1 und 2 darf die plastische Reserve genutzt werden, für einen IPE 300 aus S235 ist M_pl,Rd = 147,7 kNm.
+4. Beim Zugstab ist der kleinere Wert aus Fließen im Brutto- und Bruch im Nettoquerschnitt maßgebend; im Beispiel macht schon ein Schraubenloch den Nettoquerschnitt mit 254,0 kN maßgebend.
+5. Beim Biegeknicken mindert der Beiwert χ aus bezogener Schlankheit und Knicklinie den Widerstand; eine Stütze HEB 200 aus S235 mit 4,0 m Knicklänge erreicht N_b,Rd = 1063 kN statt 1835 kN.
+
+- [ ] freigegeben
+
+### 51. Zustandsbewertung (`vdi6200`)
+
+1. Ingenieurbauwerke im Straßennetz werden nach DIN 1076:2026-01 überwacht: Hauptprüfung alle 6 Jahre, einfache Prüfung 3 Jahre danach, jährliche Besichtigung, laufende Beobachtung und anlassbezogene Sonderprüfungen.
+2. Jeder Mangel wird nach RI-EBW-PRÜF für Standsicherheit, Verkehrssicherheit und Dauerhaftigkeit mit 0 bis 4 bewertet; die Bauwerksnote von 1,0 bis 4,0 richtet sich nach der ungünstigsten Bauteilgruppe.
+3. Im Hoch- und Industriebau regelt VDI 6200 die regelmäßige Überprüfung der Standsicherheit; sie ist keine Rechtsnorm, konkretisiert aber die Instandhaltungspflicht des Eigentümers und gilt als anerkannte Regel der Technik.
+4. VDI 6200 reicht von der Sichtkontrolle durch den Eigentümer bis zur eingehenden Überprüfung durch eine besonders fachkundige Person, bei Schadensfolgeklasse CC3 alle 6 bis 9 Jahre, bei CC2 alle 12 bis 15 Jahre.
+5. Neben der Schadensfolgeklasse zählt die Robustheit des Tragwerks: Statisch bestimmte, spröde Systeme der Klasse RC 1 ohne Systemreserven sprechen für Prüfintervalle an der unteren Grenze.
+
+- [ ] freigegeben
+
+### 52. LCA: Ingenieurbau (`lca_ingenieurbau`)
+
+1. DIN EN 17472:2024-06 regelt die Ökobilanz von Ingenieurbauwerken wie Brücken, Tunneln, Straßen und Bahntrassen; sie ist innerhalb der Normenfamilie des CEN/TC 350 das Gegenstück zur DIN EN 15978 für Gebäude.
+2. Den Betrachtungszeitraum legt der Auftraggeber fest, bei Brücken typisch 80 bis 100 Jahre; bezogen wird etwa auf 1 m² Brückendeckfläche und Jahr, damit unterschiedliche Tragwerke vergleichbar werden.
+3. Maßgebend sind neben der Herstellung A1 bis A3 die Austauschzyklen B2 bis B5, etwa der Fahrbahnbelag nach 12 bis 15 Jahren oder Lager und Übergänge nach 25 bis 30 Jahren.
+4. Das Modul B8 erfasst die Nutzung durch die Nutzer; der Simulator bildet damit vereinfacht Stauemissionen bei Sperrungen ab, die bei viel Schwerverkehr einen großen Teil der Bilanz ausmachen.
+5. Schnellbau mit Fertigteilen, integrale Brücken ohne Lager und Übergänge sowie langlebige Beläge senken die Lebenszyklusemissionen; Stahlverbundbrücken punkten zudem mit einer hohen Gutschrift in Modul D.
+
+- [ ] freigegeben
+
+### 53. Lebenszyklus & Kosten (`lebenszyklus_kosten`)
+
+1. Die Lebenszykluskostenrechnung bewertet neben den Anschaffungskosten alle Nutzungs-, Instandsetzungs- und Entsorgungskosten und zinst sie mit der Barwertmethode auf heute ab, typisch über 50 Jahre.
+2. Ein höherer Kalkulationszins wertet ferne Kosten stark ab: 2000 € Heizkosten jährlich über 30 Jahre haben bei 2 % einen Barwert von 44 800 €, ohne Abzinsung wären es 60 000 €.
+3. DIN 18960 gliedert die Nutzungskosten in Kapital-, Objektmanagement-, Betriebs- und Instandsetzungskosten; im BNB wird über 50 Jahre mit einem Kalkulationszins von 1,5 % gerechnet.
+4. Bauteile mit kürzerer Nutzungsdauer als der Betrachtungszeitraum werden mehrfach ersetzt; die Nutzungsdauern nach BNB bzw. VDI 2067 und die Faktorenmethode nach ISO 15686-1 bestimmen die Austauschzyklen.
+5. Späte Ersatzinvestitionen erscheinen im Barwert günstig: Ein Fenstertausch für 20 000 € nach 30 Jahren zählt bei 3 % nur mit 8240 €; Baupreisindizes zeigen zudem starke Schwankungen der Baustoffpreise.
+
+- [ ] freigegeben
+
+### 54. Materialoptimierung (`materialoptimierung`)
+
+1. Stoffoptimierung setzt bereits in der Tragwerksplanung an und stützt sich auf vier Säulen: Suffizienz, Effizienz, Konsistenz und Resilienz; Hauptemittent des Betons ist der Zementklinker.
+2. Die DAfStb-Richtlinie „Treibhausgasreduzierte Tragwerke“ vom August 2024 regelt die Ermittlung der Emissionen von Tragwerken und Deckenbauteilen und führt Minderungsklassen gegenüber einem Referenzniveau 2020 ein.
+3. Die Bauteilbilanz folgt aus GWP = V_c · gwp_c + m_s · gwp_s; Planungshebel sind Geometrie und Leichtbau, Klinkerersatz mit einem Prüfalter von 56 Tagen sowie die Herstellroute des Bewehrungsstahls.
+4. Im Beispiel senken eine Hohlkörperdecke mit 25 % weniger Beton und CEM III/A die Emissionen von 61,4 auf 35,2 kg CO₂-Äq./m², also um 43 %; Geometrie und Zementart wirken multiplikativ.
+5. Der k-Wert-Ansatz rechnet Flugasche mit k = 0,4 auf den äquivalenten w/z-Wert an und spart so Klinker ohne Dauerhaftigkeitsverlust; klinkerarme Betone brauchen eine längere Nachbehandlung nach DIN EN 13670.
+
+Hinweis: Punkt 4: Der GWP-Wert für CEM III/A ist im Modul ein vorläufiger Lehrwert.
+
+- [ ] freigegeben
+
+### 55. Bautagebuch (`px_bautagebuch`)
+
+1. Das Bautagebuch ist die beweissichere, tagesaktuelle Dokumentation aller Vorgänge auf der Baustelle und gehört nach HOAI zu den Grundleistungen der Leistungsphase 8, der Objektüberwachung.
+2. Pflichtinhalte sind die Witterung mit Mindest- und Höchsttemperatur, Personal und Gewerke, die räumlich genau beschriebene Tagesleistung sowie Abweichungen und Störungen.
+3. Ohne schriftliche Behinderungsanzeige nach § 6 VOB/B zählen Behinderungen nur, wenn sie dem Auftraggeber offenkundig bekannt waren; Bedenken gegen Anordnungen sind nach § 4 Abs. 3 VOB/B schriftlich anzumelden.
+4. Bei Temperaturen unter +5 °C sind Wärmeschutz und Nachbehandlung nach DIN 1045-3 zu dokumentieren und die Frischbetontemperatur zu messen; eigenmächtige Wasserzugabe am Fahrmischer ist zu untersagen.
+5. Dokumentierte Temperaturen begründen längere Ausschalfristen: Bei 5 °C mittlerer Betontemperatur verdoppelt der Faktor f_T = 30/(T + 10) eine planerische Frist von 3 auf 6 Tage.
+
+- [ ] freigegeben
+
+### 56. Altholz-NIR & Urban Mining (`altholz_urban_mining`)
+
+1. Altholz wird nach § 2 AltholzV in die Kategorien A I bis A IV und PCB-Altholz eingeteilt; A IV ist gefährlicher Abfall, und ein Gemisch mit A IV gilt insgesamt als A IV.
+2. Stofflich verwertbar sind A I und A II, A III nur nach weitgehender Entfernung der Beschichtung; Holzwerkstoffwerke dürfen nur Späne einsetzen, die die Grenzwerte des Anhangs II AltholzV einhalten.
+3. Die NIR-Spektroskopie erkennt an Banden von C–H-, O–H- und N–H-Bindungen Vollholz, Holzwerkstoffe und Beschichtungen; eine Hyperspektralkamera misst je Bildpunkt, Druckluftdüsen schleusen die Stücke aus.
+4. NIR sieht nur die Oberfläche: Tiefe Imprägnierungen, anorganische Holzschutzsalze und Wirkstoffe im mg/kg-Bereich bleiben verborgen; die Sortierung ergänzt Eingangskontrolle und Laboranalytik, ersetzt sie aber nicht.
+5. Urban Mining versteht Bauwerke als Rohstofflager, 2010 waren in Deutschland rund 51,7 Mrd. t Material gebunden; Materialkataster schätzen Rückbaumengen als Summe aus Bruttogrundfläche mal Materialintensität.
+
+Hinweis: Punkt 5: Die Lagergröße 2010 ist eine Schätzung des Umweltbundesamts, wie im Modul angegeben.
+
+- [ ] freigegeben
+
+### 57. Boden- & Materialaufbereitung (`boden_materialaufbereitung`)
+
+1. Seit dem 1. August 2023 regeln Ersatzbaustoffverordnung, Bundes-Bodenschutzverordnung und Gewerbeabfallverordnung Herstellung, Güteüberwachung und Einbau mineralischer Ersatzbaustoffe sowie die Getrenntsammlung.
+2. Das Verfahren richtet sich nach Bodenmatrix und Leitkontaminante: Sandige Böden werden gewaschen, bindige immobilisiert oder thermisch desorbiert, organische Schadstoffe auch biologisch in Mieten abgebaut.
+3. Asbesthaltige Böden und Bauschuttgemische dürfen nach TRGS 519 weder zerkleinert noch aufbereitet werden; sie sind staubdicht verpackt als gefährlicher Abfall zu deponieren.
+4. Die Probenahme ist die häufigste Fehlerquelle der Deklaration: LAGA PN 98 legt Misch- und Einzelproben nach dem Haufwerksvolumen fest, bei 120 m³ etwa fünf Mischproben aus 20 Einzelproben.
+5. Bei leichtflüchtigen Schadstoffen werden keine Mischproben gebildet; Feststoffwerte beziehen sich auf die Trockenmasse, so werden 18 mg/kg Originalsubstanz bei 15 % Wassergehalt zu 20,7 mg/kg Trockenmasse.
+
+- [ ] freigegeben
+
+### 58. PFAS in Baustoffen (`pfas_baustoffe`)
+
+1. PFAS sind nach OECD fluorierte Stoffe mit mindestens einem vollständig fluorierten Methyl- oder Methylen-Kohlenstoffatom, mehr als 10 000 Einzelstoffe; wegen der sehr stabilen C–F-Bindung werden sie praktisch nicht abgebaut.
+2. Im Bauwesen stecken PFAS in Fluorpolymer-Beschichtungen, Imprägnierungen, Dichtstoffen, Membranen und Kabeln; die größten Altlasten stammen von wasserfilmbildenden Löschschäumen an Übungsflächen, Flughäfen und Tanklagern.
+3. PFOS, PFOA und PFHxS sind als persistente organische Schadstoffe weitgehend verboten; der universelle Beschränkungsvorschlag für die gesamte Stoffgruppe ist noch nicht in Kraft.
+4. Die Trinkwasserverordnung begrenzt die Summe PFAS-20 auf 0,1 µg/l und die Summe PFAS-4 aus PFOA, PFNA, PFHxS und PFOS auf 0,02 µg/l; eine Probe kann PFAS-20 einhalten und PFAS-4 dennoch überschreiten.
+5. Belastete Bauteile sind im Rückbau zu erkunden, zu beproben und getrennt zu halten und gehören nicht in offene Bauweisen: 0,4 g aus 400 t Betonbruch könnten rechnerisch 20 Mio. Liter Wasser auf den Grenzwert belasten.
+
+- [ ] freigegeben
+
+### 59. Ressourceneffizienz (`ressourceneffizienz`)
+
+1. Mineralische Bau- und Abbruchabfälle sind der mit Abstand größte Abfallstrom; sie werden zu einem hohen Anteil verwertet, fließen aber überwiegend in Straßen- und Erdbau statt als RC-Beton in den Hochbau.
+2. Die R-Strategien ordnen den Kreislauf von der Vermeidung R0 über Wiederverwendung, Reparatur und Aufbereitung bis zur energetischen Verwertung R9; je höher die Stufe, desto stärker werden Ressourcen geschont.
+3. Der Material Circularity Indicator MCI = 1 − LFI · F(X) bewertet Rezyklateinsatz, Verwertung und Nutzungsdauer; im Beispiel steigt er durch doppelte Nutzungsdauer von 0,55 auf 0,78.
+4. Rezyklierte Gesteinskörnung ersetzt Primärkies: 35 % der groben Körnung in 2500 m³ Beton sparen 1619 t Kies und 65 Lkw-Fahrten, die CO₂-Bilanz des Betons sinkt dadurch aber nur wenig.
+5. Größere Hebel liegen bei klinkerarmen Zementen und schlanker Bemessung; RC-Beton braucht wegen der höheren Wasseraufnahme der rezyklierten Körnung eine ausreichende Nachbehandlung.
+
+- [ ] freigegeben

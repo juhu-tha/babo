@@ -51,6 +51,19 @@ for (const m of FACHMODULE) {
   if (!a.reiter) fehler.push(`${m.id}: ${a.woerter} Wörter (> ${FLIESSTEXT_SCHWELLE}) ohne Reitergliederung (ModuleTabs/GruppierteModuleTabs) – gliedern, teilen oder in AUSNAHMEN begründen`);
 }
 for (const id of Object.keys(AUSNAHMEN)) if (!FACHMODULE.some(m => m.id === id)) fehler.push(`AUSNAHMEN: ${id} ist kein Fachmodul`);
+
+// Ratsche Gutachten 29.10.2026 (Maßnahme 9 „Kurzfassungen für alle Kern- und Rechnermodule“): Jedes Fachmodul mit
+// Rechner (Registry-Typ calculator) braucht die Kurzfassung, unabhängig vom Umfang; dazu die im Gutachten
+// ausdrücklich genannten Kernmodule ohne Rechner. Keine Ausnahmen.
+const KERNMODULE_GUTACHTEN: readonly string[] = ['lehm'];
+let rechner = 0;
+for (const m of FACHMODULE) {
+  if (m.typ !== 'calculator') continue;
+  rechner++;
+  if (!KURZFASSUNG[m.id]) fehler.push(`${m.id}: Rechnermodul ohne Kurzfassung`);
+}
+for (const id of KERNMODULE_GUTACHTEN) if (!KURZFASSUNG[id]) fehler.push(`${id}: Kernmodul ohne Kurzfassung`);
+if (rechner < 60) fehler.push(`nur ${rechner} Rechnermodule erkannt – Registry-Typ prüfen`);
 if (lang < 30) fehler.push(`nur ${lang} lange Fachmodule erkannt – Zählung in tests/hilfen/fliesstext.ts prüfen`);
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
