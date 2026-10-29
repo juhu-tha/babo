@@ -5,6 +5,9 @@ import { FormulaText } from './FormulaText';
 import { BlockMath } from 'react-katex';
 import { getNormById, NormRecord } from '@/src/data/centralNormenRegistry';
 import { resolveBibReference } from '@/src/data/bibliography';
+import { pruefvermerkFuer } from '@/src/data/pruefvermerke';
+import { inhaltsstandAus, istGeprueft, pruefvermerkText } from './pruefvermerkText';
+import { PruefverfahrenHinweis } from './PruefVermerk';
 
 interface ModuleFooterProps {
   /**
@@ -20,9 +23,12 @@ interface ModuleFooterProps {
   wikipedia?: { title: string; url?: string }[];
   weblinks?: { title: string; url?: string }[];
   /**
-   * Revision date according to P22 requirement 4. Default: "nicht geprüft"
+   * Inhaltsstand (P22 Anforderung 4), z. B. „Oktober 2026 (…)“: angezeigt wird nur „Stand Monat JJJJ“.
+   * Die fachliche Prüfaussage kommt NICHT von hier, sondern aus pruefvermerkFuer(moduleId) (Gutachten 29.10.2026).
    */
   lastReviewed?: string;
+  /** Modul-ID für den Prüfvermerk; ohne Angabe das aktive Modul (TabContext) */
+  moduleId?: string;
   /**
    * Hide formula block if on meta/study/general pages according to P24 requirement 3
    */
@@ -36,10 +42,14 @@ export function ModuleFooter({
   formeln = [],
   wikipedia = [],
   weblinks = [],
-  lastReviewed = 'nicht geprüft',
+  lastReviewed,
+  moduleId,
   hideFormeln = false
 }: ModuleFooterProps) {
-  const { setActiveTab } = useTabContext();
+  const { setActiveTab, activeTab } = useTabContext();
+  // Prüfvermerk aus derselben Quelle wie der Modulkopf (ModulKopf → PruefVermerk); Nicht-Fachmodule ohne Vermerk
+  const vermerk = pruefvermerkFuer(moduleId ?? activeTab);
+  const inhaltsstand = inhaltsstandAus(lastReviewed);
   const [showDisclaimerModal, setShowDisclaimerModal] = useState(false);
   const [openRegelwerke, setOpenRegelwerke] = useState(false);
   const [openLiteratur, setOpenLiteratur] = useState(false);
@@ -385,7 +395,14 @@ export function ModuleFooter({
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-text-main/65 text-[11px]">
           <div className="flex items-center gap-2">
             <ShieldCheck size={14} className="text-shiraz shrink-0" />
-            <span>Inhaltlich zuletzt geprüft: {lastReviewed}. Maßgebend sind die unter „Regelwerke“ genannten Normausgaben.</span>
+            <span>
+              {vermerk && <><span data-pruefvermerk="fuss">{pruefvermerkText(vermerk)}</span>. </>}
+              {inhaltsstand && <>Inhaltsstand: {inhaltsstand}. </>}
+              Maßgebend sind die unter „Regelwerke“ genannten Normausgaben.
+              {vermerk && (istGeprueft(vermerk) || vermerk.status === 're-review') && (
+                <> <PruefverfahrenHinweis className="align-middle" /></>
+              )}
+            </span>
           </div>
           <div className="flex items-center gap-3 font-medium flex-wrap">
             <button

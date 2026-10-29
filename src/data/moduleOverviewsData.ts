@@ -338,7 +338,7 @@ export const MODULE_OVERVIEWS: Record<string, ModuleOverviewData> = {
         desc: 'Lieferscheinkontrolle auf der Baustelle, Übereinstimmungsbestätigung des Unternehmers.',
         iconName: 'CheckCircle2',
         keyFacts: ['Lieferscheinabgleich', 'Bautagebucheintrag', 'Haftungsausschluss Planer'],
-        normOrFormula: 'VOB/B § 4 Nr. 2',
+        normOrFormula: 'VOB/B § 4 Abs. 2',
         color: 'from-emerald-600 to-emerald-700'
       }
     ],

@@ -70,7 +70,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T14-SY-1 bis -5 (T14-SY-6 nicht blockierend).
 
-- [ ] Modul freigeben (`ki_system`)
+- [x] Modul freigeben (`ki_system`) – freigegeben 29.10.2026 (Nachtrag)
 
 ## 2. Prompting-Praxis (`ki_prompting`)
 
@@ -90,7 +90,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T14-PR-1.
 
-- [ ] Modul freigeben (`ki_prompting`)
+- [x] Modul freigeben (`ki_prompting`) – freigegeben 29.10.2026 (Nachtrag)
 
 ## 3. LLM-Praxis (`ki_llmpraxis`)
 
@@ -191,7 +191,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T14-LK-1 bis -3.
 
-- [ ] Modul freigeben (`ki_lokal`)
+- [x] Modul freigeben (`ki_lokal`) – freigegeben 29.10.2026 (Nachtrag)
 
 ## 7. Unabhängige KI-Seiten (`ki_ressourcen`)
 
@@ -210,7 +210,7 @@
 
 **Empfehlung:** freigabefähig.
 
-- [ ] Modul freigeben (`ki_ressourcen`)
+- [x] Modul freigeben (`ki_ressourcen`) – freigegeben 29.10.2026 (Nachtrag)
 
 ## 8. Hands-on-Übungen KI (`ki_uebungen`)
 
@@ -225,7 +225,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T14-UE-1.
 
-- [ ] Modul freigeben (`ki_uebungen`)
+- [x] Modul freigeben (`ki_uebungen`) – freigegeben 29.10.2026 (Nachtrag)
 
 ## 9. Online-Tools & Rechner (`online_tools`)
 
@@ -251,7 +251,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T14-OT-1 bis -4.
 
-- [ ] Modul freigeben (`online_tools`)
+- [x] Modul freigeben (`online_tools`) – freigegeben 29.10.2026 (Nachtrag)
 
 ## 10. BIM für Baustoffe (`bim_baustoffe`)
 
@@ -277,7 +277,7 @@
 
 **Empfehlung:** freigabefähig nach Korrektur T14-BIM-1 bis -3 und Klärung von T14-BIM-4.
 
-- [ ] Modul freigeben (`bim_baustoffe`)
+- [x] Modul freigeben (`bim_baustoffe`) – freigegeben 29.10.2026 (Nachtrag)
 
 ## 11. Materialdatenbanken (`materialdatenbanken`)
 
@@ -317,7 +317,7 @@ Hinweis: EP-Süßwasser streut zwischen den Quell-EPD über mehrere Größenordn
 
 **Empfehlung:** freigabefähig nach Korrektur T14-MDB-1 bis -4 und Klärung von T14-MDB-5.
 
-- [ ] Modul freigeben (`materialdatenbanken`)
+- [x] Modul freigeben (`materialdatenbanken`) – freigegeben 29.10.2026 (Nachtrag)
 
 ## 12. Materialpässe & Gebäudepass (`materialpaesse`)
 
@@ -345,7 +345,7 @@ C-Speicher nach DIN EN 16449 (50 % C, 44/12) mit 0,5 t/m³ als darrtrockene Mass
 
 **Empfehlung:** freigabefähig nach Korrektur T14-MP-1 bis -4.
 
-- [ ] Modul freigeben (`materialpaesse`)
+- [x] Modul freigeben (`materialpaesse`) – freigegeben 29.10.2026 (Nachtrag)
 
 ## 13. Digitaler Produktpass (`dpp`)
 
@@ -367,7 +367,7 @@ C-Speicher nach DIN EN 16449 (50 % C, 44/12) mit 0,5 t/m³ als darrtrockene Mass
 
 **Empfehlung:** freigabefähig nach Korrektur T14-DPP-1 bis -3.
 
-- [ ] Modul freigeben (`dpp`)
+- [x] Modul freigeben (`dpp`) – freigegeben 29.10.2026 (Nachtrag)
 
 ---
 
@@ -387,3 +387,28 @@ T14-SY-6, T14-BIM-4 und T14-MDB-5 wurden am 29.10.2026 entschieden und umgesetzt
 ## QA
 
 tsc, `npm test` (153 Testdateien, inkl. `tests/modulpruefungTranche14.test.ts` und `tests/auditDaten.test.ts`), check:formeln (4486 Formeln, 0 Fehler), check:zahlen inkl. Tausender-Ratsche, check-design, check-verwaist --strict, check-any, Build, check-bundle (Budget eingehalten), a11y-reiter auf den 13 Routen (desk, mob, desk-dunkel; 165 Reiterprüfungen, 0 Verstöße).
+
+---
+
+## Freigabe 29.10.2026 (Nachtrag)
+
+Entscheidung vom 28.10.2026: „Module ohne offene Frage freigeben“; Punkte, die nur am Normtext zu klären sind, blockieren die Freigabe (Prüfbogen Normtext, Abschnitt „Was ohne Normtext nicht weiterkommt“, und die für diese Tranchen ergänzten Normtextpunkte). Geprüft wurde je Modul: Empfehlung erfüllt (Korrekturen behoben, Klärungen entschieden und in den Abschnitten „Umsetzung 29.10.2026“ bzw. in #260–#265 umgesetzt (Befundlisten #260–#262, Umsetzungen #263–#265)) und kein Normtextpunkt offen. Verfahren wie #256/#259: Prüfvermerk in `src/data/pruefvermerke.ts` „geprueft“, am 2026-10-29, passiv ohne Namen; Quizfreigaben sind davon getrennt.
+
+Freigegeben:
+
+- [x] `ki_system` – T14-SY-1 bis -5 behoben, T14-SY-6 umgesetzt (#263, Produktnamen neutral)
+- [x] `ki_prompting` – T14-PR-1 behoben
+- [x] `ki_ressourcen` – freigabefähig, keine Frage
+- [x] `ki_lokal` – T14-LK-1 bis -3 behoben
+- [x] `ki_uebungen` – T14-UE-1 behoben
+- [x] `online_tools` – T14-OT-1 bis -4 behoben; T14-SY-6 entschieden (Werkzeugkatalog mit Anbieternamen belassen, keine Änderung)
+- [x] `bim_baustoffe` – T14-BIM-1 bis -3 behoben, T14-BIM-4 umgesetzt (#263, Mineralwolle 1,20 kg/kg)
+- [x] `materialdatenbanken` – T14-MDB-1 bis -4 behoben, T14-MDB-5 umgesetzt (#263, EN 15804+A2-Indikatoren)
+- [x] `materialpaesse` – T14-MP-1 bis -4 behoben
+- [x] `dpp` – T14-DPP-1 bis -3 behoben
+
+Nicht freigegeben:
+
+- `ki_llmpraxis` – T14-LP-7 (Normtext DIN 18202)
+- `ki_thesen` – T14-TH-5 (Normtext DIN EN 12390-13)
+- `ki_recht_ethik` – T14-RE-2 (Normtext NA DE, γ_c für Fertigteile)

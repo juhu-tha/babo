@@ -101,7 +101,7 @@
     "beispiel2GemesseneVorverformung": "Beispiel 2: Gemessene Vorverformung als Zusatzmoment",
     "dieGemesseneVerformungErhöht": "Mit der gemessenen Vorverformung ist das Ersatzstabverfahren nach DIN EN 1995-1-1, 6.3.2 nicht erfüllt (1,22 > 1). Ohne Knickbeiwert hätte der reine Querschnittsnachweis (6.19) mit 0,91 eine Reserve vorgetäuscht. Der interaktive Rechner zeigt beide Wege und zusätzlich Theorie II. Ordnung nach 5.4.4.",
     "dinEn199512": "DIN EN 1995-1-1:2010-12, 6.3.2, Gl. (6.21) und (6.23)",
-    "oktober2026Ap8": "Oktober 2026 (AP 8 Bestand: Holznachweise und Quellen geprüft; Genauigkeitsstufen nach Eckstein manuell abgleichen; fachliche Freigabe durch den Autor ausstehend)",
+    "oktober2026Ap8": "Oktober 2026 (AP 8 Bestand: Holznachweise und Quellen geprüft; Genauigkeitsstufen nach Eckstein manuell abgleichen)",
     "eurocode5Holzbau": "Eurocode 5 (Holzbau)",
     "reiterBereiche": "Bereiche des Moduls Bauwerkserfassung"
   },

@@ -91,7 +91,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       'Glaser-Verfahren (Periodenbilanz) mit Tangentenkonstruktion über der s_d-Achse; Tauwasserebenen und -bereiche werden erkannt, die p_sat-Kurve wird je Schicht in 40 Teilpunkten aufgelöst.',
       'Tauperiode nach DIN 4108-3 (seit 2014): 2160 h, innen 20 °C / 50 %, außen −5 °C / 80 %, R_si = 0,25 und R_se = 0,04 m²K/W.',
       'Verdunstungsperiode: 2160 h, p_i = p_e = 1200 Pa, 1700 Pa (Wand) bzw. 2000 Pa (Dach) in der Tauwasserzone.',
-      'Klimawerte belegt durch BaunetzWissen und den Forschungsbericht T 3288 (Fraunhofer IRB 2012); Abgleich mit dem Normtext DIN 4108-3:2024-03 vorläufig (fachliche Freigabe ausstehend).',
+      'Klimawerte belegt durch BaunetzWissen und den Forschungsbericht T 3288 (Fraunhofer IRB 2012); Abgleich mit dem Normtext DIN 4108-3:2024-03 offen (vorläufig).',
       'Nicht abgebildet (DIN 4108-3:2024-03): Begrenzung des Verfahrens auf Höhenlagen bis 700 m und neue Außendampfdrücke für verschattete oder helle Dächer (Anhang A).',
       'Mehrere Tauwasserzonen: Verdunstung vereinfacht gemeinsam (innerste Zone nach innen, äußerste nach außen); der zeitliche Ablauf des Austrocknens ist nicht abgebildet.',
       'Nicht geprüft: Feuchteerhöhung von Holz und Holzwerkstoffen, Anwendungsgrenzen (z. B. Gründächer, unbelüftete Dächer mit dichter Deckung), Sonderregeln für Schichten mit sehr kleinem s_d-Wert.',

@@ -206,7 +206,7 @@
     "beispiel2SchichtmittelwertUnd": "Beispiel 2: Schichtmittelwert und Bewertungsindex für A-Staub beim Stemmen",
     "technischeMaßnahmenGehenVor": "Technische Maßnahmen gehen vor (STOP): Absaugung an der Maschine mit Entstauber Staubklasse H, Befeuchtung, dann Atemschutz. Für Asbest gilt statt des AGW das risikobasierte Maßnahmenkonzept (Akzeptanz- und Toleranzkonzentration).",
     "trgs402Trgs900": "TRGS 402; TRGS 900; TRGS 910",
-    "oktober2026Ap9": "Oktober 2026 (AP 9 Rückbau & Schadstoffe: GefStoffV 2024 §§ 5a/11a, TRGS 519/521/524-Fassungen, KMF-Einstufung geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "oktober2026Ap9": "Oktober 2026 (AP 9 Rückbau & Schadstoffe: GefStoffV 2024 §§ 5a/11a, TRGS 519/521/524-Fassungen, KMF-Einstufung geprüft)",
     "polychlorierteBiphenyle": "Polychlorierte Biphenyle",
     "polyzyklischeAromatischeKohlenwasserstof": "Polyzyklische aromatische Kohlenwasserstoffe"
   },
@@ -340,7 +340,7 @@
             "Kammerfilterpresse: Eindickung des Schlamms zu hochkonzentriertem Filterkuchen (Klasse DK I/II oder Deponierung).",
             "Ausgangskontrolle: Analytik des gereinigten Sandes/Kieses zur Einstufung nach EBV (Ziel: BM-0 bzw. BM-0*)."
           ],
-          "rules": "EBV § 15 & BBodSchV Anh. 1: Gereinigte Sande sind mineralische Ersatzbaustoffe. Grenzwerte für Schwermetalle (As, Pb, Cd, Cu, Ni, Zn) im Eluat müssen sicher unterschritten werden, um Einbauklasse BM-0 oder RC-1 zu erhalten."
+          "rules": "EBV § 15 & BBodSchV Anlage 1: Gereinigte Sande sind mineralische Ersatzbaustoffe. Grenzwerte für Schwermetalle (As, Pb, Cd, Cu, Ni, Zn) im Eluat müssen sicher unterschritten werden, um Einbauklasse BM-0 oder RC-1 zu erhalten."
         },
         "mkw_pak": {
           "method": "Mikrobiologische Mietenbehandlung (Bioremediation)",
@@ -370,7 +370,7 @@
             "Transport unter lückenloser eANV-Nachweisüberwachung.",
             "Endlagerung in Monozellen auf zugelassenen Deponien ohne mechanische Nachbearbeitung."
           ],
-          "rules": "GefStoffV § 11 / REACH Anhang XVII Nr. 6 / DepV: Recycling oder Wiedereinbau asbesthaltiger Böden und Bauschuttgemische ist verboten; asbesthaltige Abfälle werden staubdicht verpackt deponiert."
+          "rules": "GefStoffV § 11a und Anhang II Nr. 1 / REACH Anhang XVII Nr. 6 / DepV: Recycling oder Wiedereinbau asbesthaltiger Böden und Bauschuttgemische ist verboten; asbesthaltige Abfälle werden staubdicht verpackt deponiert."
         },
         "gips_sulfat": {
           "method": "Nassklassierung & Flotation",
@@ -448,7 +448,7 @@
             "Kontinuierliche Setzungsmessungen.",
             "Güteüberwachung mittels Eluattests über min. 28 Tage."
           ],
-          "rules": "EBV Anhang 1: Sulfatreicher bindiger Erdaushub wird üblicherweise den Klassen BM-F2 oder BM-F3 (erheblich eingeschränkter Einbau) zugewiesen und erfordert strenge bautechnische Absicherungen gegen Grundwasserleiter."
+          "rules": "EBV Anlage 1: Sulfatreicher bindiger Erdaushub wird üblicherweise den Klassen BM-F2 oder BM-F3 (erheblich eingeschränkter Einbau) zugewiesen und erfordert strenge bautechnische Absicherungen gegen Grundwasserleiter."
         }
       },
       "bauschutt_gemisch": {

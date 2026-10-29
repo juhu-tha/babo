@@ -36,7 +36,7 @@
     "beispiel2CharakteristischeIn": "Beispiel 2: Charakteristische In-situ-Druckfestigkeit aus Bohrkernen",
     "fürDieNachrechnungWird": "Für die Nachrechnung wird die In-situ-Festigkeit direkt verwendet; Probenanzahl, Bohrkernlage und Bewehrungsfreiheit bestimmen die Aussagekraft. Faktoren und Mindeststandardabweichung nach DIN EN 13791 sind am Normtext zu prüfen.",
     "dinEn137912020": "DIN EN 13791:2020-02 + A20:2022-04; DIN EN 12504-1:2021-02",
-    "oktober2026Ap8": "Oktober 2026 (AP 8 Bestand: ZfP-Normausgaben, WTA-Zuordnung, Karbonatisierungs- und Bohrkernauswertung geprüft; fachliche Freigabe durch den Autor ausstehend)",
+    "oktober2026Ap8": "Oktober 2026 (AP 8 Bestand: ZfP-Normausgaben, WTA-Zuordnung, Karbonatisierungs- und Bohrkernauswertung geprüft)",
     "zerstörungsfreieWerkstoffprüfung": "Zerstörungsfreie Werkstoffprüfung",
     "reiterBereiche": "Bereiche des Moduls Bauwerksuntersuchung"
   },
@@ -105,7 +105,7 @@
     "Bauwerksuntersuchung.schritte_2": [
       {
         "titel": "Prüfergebnisse",
-        "erklaerung": "8 Bohrkerne (h/d = 1), Mittelwert 31,0 N/mm², Standardabweichung 2,5 N/mm² (≥ Mindestwert bei V = 8 %), kleinster Wert 28,0 N/mm².",
+        "erklaerung": "8 Bohrkerne Ø 100 mm mit h/d = 2 (Bezug Zylinderfestigkeit wie DIN EN 13791:2020-02), Mittelwert 31,0 N/mm², Standardabweichung 2,5 N/mm² (≥ Mindestwert bei V = 8 %), kleinster Wert 28,0 N/mm².",
         "formel": "f_{m,is} = 31{,}0,\\; s = 2{,}5,\\; f_{is,lowest} = 28{,}0\\,\\text{N/mm}^2"
       },
       {
@@ -115,7 +115,7 @@
       },
       {
         "titel": "Einstufung",
-        "erklaerung": "Umrechnung auf die Druckfestigkeitsklasse (Faktor 0,85):",
+        "erklaerung": "Umrechnung auf die Druckfestigkeitsklasse (Faktor 0,85, Zylinderwert der Klasse). Kerne mit h/d = 1 hätten einen anderen Bezug (Würfel); dieselben Zahlen ergäben dann nur C25/30:",
         "formel": "f_{ck} = \\frac{26{,}0}{0{,}85} = 30{,}6\\,\\text{N/mm}^2 \\ge 30 \\Rightarrow \\text{C30/37}"
       }
     ],

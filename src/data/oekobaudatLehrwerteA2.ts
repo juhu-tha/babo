@@ -27,7 +27,7 @@ export const LEHRWERTE_A2: Record<string, LehrwertA2> = {
     quelle: 'https://www.schwenk.de/wp-content/uploads/2017/03/3038_3130_NEPD-10791-10791-2_N44463200511_C30-37-F4-mittel-Dmax16-XC4-XF1-XA1-GWP-Beton-WU-Rili.pdf' },
   // Brettschichtholz, 1 m³: Quelle Konstruktionsvollholz (EN 15804+A2), unskaliert
   'o-2': { ap: 0.47, epSuesswasser: 0.092, epMeer: 0.19, epLand: 2.2, faktor: 1,
-    quelle: 'https://www.rettenmeier.com/fileadmin/PDF/produktinformationen/EPD-konstruktionsvollholz-KVH-2026-de.pdf' },
+    quelle: 'https://www.rettenmeier.com/fileadmin/PDF/produktinformationen/2026-EPD-konstruktionsvollholz-KVH-de-en-it.pdf' },
   // Betonstahl B500B, 1 t: Quelle Betonstahl Elektrostahlroute (GWP 599 je t) · 640/599 (Konsistenz 29.10.2026, F-3: Konsolenwert
   // 1120 → 640 nach ÖKOBAUDAT „Bewehrungsstahl (de)“, vorher · 1120/599); EP-Süßwasser von kg PO₄-Äq. in kg P-Äq. umgerechnet (· 30,97/94,97)
   'o-3': { ap: 1.8, epSuesswasser: 0.0087, epMeer: 0.44, epLand: 5.0, faktor: 1.07,
