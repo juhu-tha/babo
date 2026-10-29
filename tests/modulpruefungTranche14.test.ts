@@ -10,6 +10,8 @@ import mp from '../content/materialpaesse/Materialpaesse.json';
 import dpp from '../content/dppepd/DppEpd.json';
 import ot from '../content/onlinetools/OnlineTools.json';
 import { KI_UEBUNGEN as UEBUNGEN } from '../src/data/kiUebungen';
+import { LEHRWERTE_A2 } from '../src/data/oekobaudatLehrwerteA2';
+import { readFileSync } from 'node:fs';
 
 const fehler: string[] = [];
 const nahe = (ist: number, soll: number, tol = 5e-3) => Math.abs(ist - soll) <= tol * Math.max(Math.abs(soll), 1e-9);
@@ -86,6 +88,11 @@ zeigt('BIM', [...b['BimBaustoffe.schritte'], ...b['BimBaustoffe.schritte_2']], '
 // T14-BIM-1: GWP-Lehrwert Baustahl ≈ 0,64 kg CO₂-Äq./kg · 7850 kg/m³ (ÖKOBAUDAT-Referenz wie src/data/rechnerGrenzen.ts)
 const stahl = (bim.daten.ARCHETYPES as { id: string; defaultGwp: number; defaultDensity: number }[]).find(a => a.id === 'stahl');
 gilt(!!stahl && nahe(stahl.defaultGwp / stahl.defaultDensity, 0.64, 0.03), `BIM3 Stahl-GWP ${stahl?.defaultGwp} kg/m³ ≠ 0,64 kg/kg`);
+// T14-BIM-4 (Umsetzung 29.10.2026): Mineralwolle einheitlich mit Materialdatenbanken 1,20 kg CO₂-Äq./kg → 60 kg/m³ · 1,20 = 72 kg/m³
+const mw = (bim.daten.ARCHETYPES as { id: string; defaultGwp: number; defaultDensity: number }[]).find(a => a.id === 'mineralwolle');
+pruefe('BIM4 Mineralwolle GWP/m³', mw?.defaultGwp ?? NaN, 60 * 1.2);
+gilt(!!mw && mw.defaultDensity === 60, `BIM4 Mineralwolle Rohdichte ${mw?.defaultDensity} (soll 60)`);
+gilt(JSON.stringify(mdb).includes('Mineralwolle: 1,20 kg CO₂e je kg'), 'BIM4 Bezugswert 1,20 kg/kg im Modul Materialdatenbanken');
 const m = mdb.daten as Record<string, { formel: string }[]>;
 pruefe('MDB1 GWP Außenwand', 0.175 * 1800 * 0.13 + 0.14 * 20 * 3.3, 50.19);
 zeigt('MDB', [...m['Materialdatenbanken.schritte'], ...m['Materialdatenbanken.schritte_2']], '50,2', '5,76');
@@ -98,6 +105,35 @@ zeigt('DPP', [...e['DppEpd.schritte'], ...e['DppEpd.schritte_2']], '257', '2000'
 // T14-MDB-1: QNG-Bilanzumfang ohne A4/A5 und C1/C2
 const qng = mdb.texte.dasQualitätssiegelNachhaltigesGebäude;
 gilt(qng.includes('B4') && qng.includes('B6') && qng.includes('C3/C4') && !qng.includes('A4-A5') && !qng.includes('C1-C4'), 'MDB QNG-Lebenszyklusmodule');
+
+// T14-MDB-5 (Umsetzung 29.10.2026): Konsole mit EN 15804+A2-Indikatoren. Sollwerte aus eigenem Skript:
+// Quellwert der öffentlichen EPD (A1–A3) · GWP-Verhältnis, gerundet auf zwei geltende Ziffern.
+const P_JE_PO4 = 30.974 / 94.971;
+const quellA2: [string, number, number, number, number, number][] = [
+  // id, Faktor GWP Datensatz/Quelle, AP, EP-Süßwasser, EP-Meer, EP-terrestrisch (Quell-EPD)
+  ['o-1', 245 / 191, 0.216, 0.0189, 0.0698, 0.890],
+  ['o-2', 1, 0.468, 0.0917, 0.194, 2.16],
+  ['o-3', 1120 / 598.8, 1.711, 25.03e-3 * P_JE_PO4, 0.4093, 4.687],
+  ['o-4', 45.5 / 115, 0.815, 5.71e-4, 0.0869, 2.35],
+  ['o-5', 680 / 665, 0.94, 7.01e-4, 0.24, 3.07],
+  ['o-6', 110 / 176, 0.198, 4.82e-5, 0.0664, 0.729],
+  ['o-7', 1.85 / 2.72236, 0.0045448, 1.29796e-5, 0.00143098, 0.0152224],
+];
+for (const [id, f, ap, fw, mr, la] of quellA2) {
+  const w = LEHRWERTE_A2[id];
+  gilt(!!w, `MDB5 ${id} fehlt`);
+  if (!w) continue;
+  // Rundung auf zwei geltende Ziffern → Abweichung ≤ 5 %
+  pruefe(`MDB5 ${id} AP`, w.ap, ap * f, 0.05);
+  pruefe(`MDB5 ${id} EP-Süßwasser`, w.epSuesswasser, fw * f, 0.05);
+  pruefe(`MDB5 ${id} EP-Meer`, w.epMeer, mr * f, 0.05);
+  pruefe(`MDB5 ${id} EP-terrestrisch`, w.epLand, la * f, 0.05);
+  pruefe(`MDB5 ${id} Faktor`, w.faktor, f, 0.01);
+}
+const mdbTsx = readFileSync('src/modules/Materialdatenbanken.tsx', 'utf-8');
+gilt(mdbTsx.includes('mol H⁺-Äq.') && mdbTsx.includes('kg P-Äq.') && mdbTsx.includes('kg N-Äq.') && mdbTsx.includes('mol N-Äq.'), 'MDB5 Einheiten EN 15804+A2 in der Konsole');
+gilt(!mdbTsx.includes('SO₂-eq') && !mdbTsx.includes('PO₄-eq'), 'MDB5 keine A1-Einheiten mehr in der Konsole');
+gilt(mdb.texte.lehrwerteA2Hinweis.includes('Lehrwerte, vorläufig'), 'MDB5 Kennzeichnung „Lehrwerte, vorläufig“');
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
 console.log('OK: Modulprüfung Tranche 14');

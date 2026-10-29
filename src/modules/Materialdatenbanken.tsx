@@ -7,6 +7,18 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import inhalt from '@/content/materialdatenbanken/Materialdatenbanken.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
+import { LEHRWERTE_A2 } from '@/src/data/oekobaudatLehrwerteA2';
+
+/** Kleine Indikatorwerte mit zwei geltenden Ziffern; unter 0,001 als Zehnerpotenz (z. B. 8,8 · 10⁻⁶) */
+const HOCH: Record<string, string> = { '-': '⁻', '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴', '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹' };
+function formatKlein(v: number): string {
+  if (v !== 0 && Math.abs(v) < 0.001) {
+    const e = Math.floor(Math.log10(Math.abs(v)));
+    const m = v / 10 ** e;
+    return `${formatDeIntl(m, { maximumSignificantDigits: 2 })} · 10${String(e).split('').map(z => HOCH[z]).join('')}`;
+  }
+  return formatDeIntl(v, { maximumSignificantDigits: 2 });
+}
 
 const DATABASES = [
   {
@@ -74,8 +86,6 @@ interface OekobaudatRecord {
   unit: string;
   gwp: number; // kg CO2-eq
   penrt: number; // MJ
-  ap: number; // kg SO2-eq
-  ep: number; // kg PO4-eq
   recycledContent: number; // %
   wecobisSafety: string[];
 }
@@ -90,8 +100,6 @@ const MOCK_MOCK_RECORDS: OekobaudatRecord[] = [
     unit: '1 m³',
     gwp: 245.0,
     penrt: 1350,
-    ap: 0.28,
-    ep: 0.08,
     recycledContent: 0,
     wecobisSafety: [inhalt.werte.freiVonOrganischenLösemitteln, inhalt.werte.keinVocDampf, inhalt.werte.nichtBrennbarA1]
   },
@@ -104,8 +112,6 @@ const MOCK_MOCK_RECORDS: OekobaudatRecord[] = [
     unit: '1 m³',
     gwp: -482.0, // Biogenes CO2
     penrt: 2600,
-    ap: 0.45,
-    ep: 0.15,
     recycledContent: 0,
     wecobisSafety: [inhalt.werte.biogenerCo2Speicher, inhalt.werte.formaldehydKlasseE1, inhalt.werte.pefcFscZertifiziert]
   },
@@ -118,8 +124,6 @@ const MOCK_MOCK_RECORDS: OekobaudatRecord[] = [
     unit: '1 t',
     gwp: 1120.0,
     penrt: 14200,
-    ap: 1.85,
-    ep: 0.54,
     recycledContent: 85,
     wecobisSafety: [inhalt.werte.unbegrenztRecyclingfähig, 'Schwermetallfrei', inhalt.werte.dgnbVocKonform]
   },
@@ -132,8 +136,6 @@ const MOCK_MOCK_RECORDS: OekobaudatRecord[] = [
     unit: '1 m³',
     gwp: 45.5,
     penrt: 820,
-    ap: 0.12,
-    ep: 0.03,
     recycledContent: 15,
     wecobisSafety: ['Biopersistenzfrei', 'Recyclingfähig', inhalt.werte.ausgezeichneterBrandschutz]
   },
@@ -146,8 +148,6 @@ const MOCK_MOCK_RECORDS: OekobaudatRecord[] = [
     unit: '1 t',
     gwp: 680.0,
     penrt: 3340,
-    ap: 0.98,
-    ep: 0.24,
     recycledContent: 5,
     wecobisSafety: [inhalt.werte.chromatarmNachEgVo, inhalt.werte.aerosolarmBeiAnmischung]
   },
@@ -160,8 +160,6 @@ const MOCK_MOCK_RECORDS: OekobaudatRecord[] = [
     unit: '1 m³',
     gwp: 110.0,
     penrt: 780,
-    ap: 0.15,
-    ep: 0.04,
     recycledContent: 8,
     wecobisSafety: [inhalt.werte.ecoInstitutCertified, inhalt.werte.freiVonKrebserzeugendenStoffen, inhalt.werte.sehrEmissionsarm]
   },
@@ -174,8 +172,6 @@ const MOCK_MOCK_RECORDS: OekobaudatRecord[] = [
     unit: '1 m²',
     gwp: 1.85,
     penrt: 34.0,
-    ap: 0.005,
-    ep: 0.001,
     recycledContent: 25,
     wecobisSafety: [inhalt.werte.fgdGipsAnteilRea, inhalt.werte.institutBauenUndUmwelt, inhalt.werte.geringeTvocEmissionen]
   }
@@ -228,6 +224,8 @@ export default function Materialdatenbanken() {
   });
 
   const activeRecord = MOCK_MOCK_RECORDS.find(r => r.id === selectedRecordId) || MOCK_MOCK_RECORDS[0];
+  const a2 = LEHRWERTE_A2[activeRecord.id];
+  const einheit = activeRecord.unit.split(' ').pop();
 
   return (
     <div className="flex flex-col gap-8">
@@ -414,7 +412,7 @@ export default function Materialdatenbanken() {
                   <div className="bg-white border border-home-grau/30 p-2.5 rounded-xl">
                     <span className="text-[9px] text-slate-600 uppercase font-semibold block"><MdText text={inhalt.texte.apVersauerung} /></span>
                     <strong className="text-base text-blue-700 font-bold block mt-0.5">
-                      {formatDeZahl(activeRecord.ap, 3)} <span className="text-[10px] text-slate-700 font-normal">kg SO₂-eq (Indikator EN 15804+A1)</span>
+                      {formatKlein(a2.ap)} <span className="text-[10px] text-slate-700 font-normal">mol H⁺-Äq./{einheit}</span>
                     </strong>
                     <span className="text-[9px] text-slate-600 leading-tight block mt-0.5"><MdText text={inhalt.texte.saurerRegenBelastung} /></span>
                   </div>
@@ -422,11 +420,28 @@ export default function Materialdatenbanken() {
                   <div className="bg-white border border-home-grau/30 p-2.5 rounded-xl">
                     <span className="text-[9px] text-slate-600 uppercase font-semibold block"><MdText text={inhalt.texte.epEutrophierung} /></span>
                     <strong className="text-base text-purple-700 font-bold block mt-0.5">
-                      {formatDeZahl(activeRecord.ep, 3)} <span className="text-[10px] text-slate-700 font-normal">kg PO₄-eq (Indikator EN 15804+A1)</span>
+                      {formatKlein(a2.epSuesswasser)} <span className="text-[10px] text-slate-700 font-normal">kg P-Äq./{einheit}</span>
                     </strong>
                     <span className="text-[9px] text-slate-600 leading-tight block mt-0.5"><MdText text={inhalt.texte.nährstoffeintragInGewässer} /></span>
                   </div>
+
+                  <div className="bg-white border border-home-grau/30 p-2.5 rounded-xl">
+                    <span className="text-[9px] text-slate-600 uppercase font-semibold block"><MdText text={inhalt.texte.epMeerwasser} /></span>
+                    <strong className="text-base text-purple-700 font-bold block mt-0.5">
+                      {formatKlein(a2.epMeer)} <span className="text-[10px] text-slate-700 font-normal">kg N-Äq./{einheit}</span>
+                    </strong>
+                    <span className="text-[9px] text-slate-600 leading-tight block mt-0.5"><MdText text={inhalt.texte.stickstoffeintragInsMeer} /></span>
+                  </div>
+
+                  <div className="bg-white border border-home-grau/30 p-2.5 rounded-xl">
+                    <span className="text-[9px] text-slate-600 uppercase font-semibold block"><MdText text={inhalt.texte.epTerrestrisch} /></span>
+                    <strong className="text-base text-purple-700 font-bold block mt-0.5">
+                      {formatKlein(a2.epLand)} <span className="text-[10px] text-slate-700 font-normal">mol N-Äq./{einheit}</span>
+                    </strong>
+                    <span className="text-[9px] text-slate-600 leading-tight block mt-0.5"><MdText text={inhalt.texte.stickstoffeintragInBöden} /></span>
+                  </div>
                 </div>
+                <p className="text-[10px] text-slate-600 leading-snug mt-1.5"><MdText text={inhalt.texte.lehrwerteA2Hinweis} /></p>
               </div>
             </div>
 
