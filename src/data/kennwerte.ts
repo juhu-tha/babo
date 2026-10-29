@@ -326,5 +326,50 @@ export const ALTBETON_ZUORDNUNG: Readonly<Record<AltbetonKlasse, AltbetonZuordnu
   B600: { label: 'B 600', kpCm2: 600, fckUnten: null, fckOben: null, klasseUnten: null, klasseOben: null, spannbeton: true },
 };
 export const ALTBETON_QUELLE = 'Schnell/Fischer/Loch, Kurzbericht BBR 2008, Tab. 2.1 (nur Vorbemessung)';
+
+/** Betonklassen 1972–2001 (DIN 1045:1972 Bn, DIN 1045:1978/1988 B) und DDR 1981–1990 (Bk) */
+export interface AltbetonKlasse1972 {
+  /** Bezeichnung(en), z. B. „Bn 250 / B 25“ */
+  label: string;
+  /** Regelwerk und Zeitraum */
+  regelwerk: string;
+  /** Nennfestigkeit β_WN bzw. Klassenwert [N/mm²] */
+  nennfestigkeit: number;
+  /** Rechenwert der charakteristischen Zylinderdruckfestigkeit f_ck [N/mm²] nach Tab. 2.2 */
+  fck: number;
+  /** zugeordnete Festigkeitsklasse nach DIN EN 206-1; null = keine Klasse; „≈“ = näherungsweise */
+  klasse: string | null;
+}
+/**
+ * Zweiter Teil der gemeinsamen Zuordnungstabelle (Entscheidung 29.10.2026, Nachtrag): Betonklassen 1972–2001 nach
+ * Schnell/Fischer/Loch, Kurzbericht BBR 2008 (s. o.), Tab. 2.2 „Zuordnung der Betonfestigkeit für verschiedene
+ * Betonklassen von 1972 bis 2001 in die Festigkeitsklassen nach DIN EN 206-1; 2001-07“. Da β_WN ab DIN 1045:1972 als
+ * 5-%-Quantil definiert ist, berücksichtigt die Quelle nur Probeform und Lagerung (f_ck ≈ 0,77·β_WN; DDR-Klassen ≈ 0,74).
+ * Bn 1972–1978 und B 1978–2001 haben dieselben Werte und stehen in einer Zeile. Abweichung: Die Quelle nennt für
+ * Bn 450 „~C35/40“ (keine Klasse nach DIN EN 206-1), für B 45 „~C35/45“; hier für beide ≈ C35/45.
+ */
+export const ALTBETON_1972_2001: readonly AltbetonKlasse1972[] = [
+  { label: 'Bn 50 / B 5', regelwerk: 'DIN 1045:1972/1988', nennfestigkeit: 5, fck: 3.9, klasse: null },
+  { label: 'Bn 100 / B 10', regelwerk: 'DIN 1045:1972/1988', nennfestigkeit: 10, fck: 7.7, klasse: '≈ C8/10' },
+  { label: 'Bn 150 / B 15', regelwerk: 'DIN 1045:1972/1988', nennfestigkeit: 15, fck: 11.6, klasse: '≈ C12/15' },
+  { label: 'Bn 250 / B 25', regelwerk: 'DIN 1045:1972/1988', nennfestigkeit: 25, fck: 19.3, klasse: 'C16/20' },
+  { label: 'Bn 350 / B 35', regelwerk: 'DIN 1045:1972/1988', nennfestigkeit: 35, fck: 27.1, klasse: 'C25/30' },
+  { label: 'Bn 450 / B 45', regelwerk: 'DIN 1045:1972/1988', nennfestigkeit: 45, fck: 34.8, klasse: '≈ C35/45' },
+  { label: 'Bn 550 / B 55', regelwerk: 'DIN 1045:1972/1988', nennfestigkeit: 55, fck: 42.5, klasse: 'C40/50' },
+  { label: 'Bk 5', regelwerk: 'TGL, DDR 1981–1990', nennfestigkeit: 5, fck: 3.7, klasse: null },
+  { label: 'Bk 7,5', regelwerk: 'TGL, DDR 1981–1990', nennfestigkeit: 7.5, fck: 5.5, klasse: null },
+  { label: 'Bk 10', regelwerk: 'TGL, DDR 1981–1990', nennfestigkeit: 10, fck: 7.4, klasse: '≈ C8/10' },
+  { label: 'Bk 15', regelwerk: 'TGL, DDR 1981–1990', nennfestigkeit: 15, fck: 11.0, klasse: '≈ C12/15' },
+  { label: 'Bk 20', regelwerk: 'TGL, DDR 1981–1990', nennfestigkeit: 20, fck: 14.7, klasse: '≈ C12/15' },
+  { label: 'Bk 25', regelwerk: 'TGL, DDR 1981–1990', nennfestigkeit: 25, fck: 18.4, klasse: 'C16/20' },
+  { label: 'Bk 35', regelwerk: 'TGL, DDR 1981–1990', nennfestigkeit: 35, fck: 25.8, klasse: 'C25/30' },
+  { label: 'Bk 45', regelwerk: 'TGL, DDR 1981–1990', nennfestigkeit: 45, fck: 33.1, klasse: 'C30/37' },
+  { label: 'Bk 55', regelwerk: 'TGL, DDR 1981–1990', nennfestigkeit: 55, fck: 40.5, klasse: 'C40/50' },
+];
+export const ALTBETON_1972_QUELLE = 'Schnell/Fischer/Loch, Kurzbericht BBR 2008, Tab. 2.2';
+/** Zeile der Tabelle 1972–2001 nach Bezeichnung (erster Teil des Labels, z. B. 'Bn 250' oder 'Bk 25') */
+export function altbeton1972(bezeichnung: string): AltbetonKlasse1972 | undefined {
+  return ALTBETON_1972_2001.find(z => z.label.split(' / ').includes(bezeichnung));
+}
 /** 1 kp/cm² = 0,0980665 N/mm² */
 export const KP_CM2_IN_N_MM2 = 0.0980665;
