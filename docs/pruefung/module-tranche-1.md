@@ -161,7 +161,7 @@ Expositionstabelle (daten.json, 20 Klassen) abgeglichen: w/z, Mindestzementgehal
 
 **Empfehlung:** freigabefähig nach Klärung von M-5 bis M-7 und der F-Stellen.
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026, Nachtrag)
 
 ## 6. Betonkennwerte (`betonkennwerte`)
 
@@ -186,7 +186,7 @@ Expositionstabelle (daten.json, 20 Klassen) abgeglichen: w/z, Mindestzementgehal
 
 **Empfehlung:** freigabefähig nach Klärung der F-Stellen (für Normalbeton ≤ C50/60 uneingeschränkt freigabefähig).
 
-- [ ] Modul freigeben
+- [x] Modul freigeben (29.10.2026, Nachtrag)
 
 ## 7. Mauerwerk (`rechnung_mauerwerk`; Kern auch im Modul `mauerwerk`)
 
@@ -339,6 +339,13 @@ Freigegeben wurden Module mit Empfehlung „freigabefähig“ ohne offene Fragen
 
 - **#239-H-3 (Holzbau, Querdruck):** BSH-Einzelauflager mit Auflagerlänge l > 400 mm: k_c,90 = 1,0 (die Erhöhung auf 1,75 gilt nach DIN EN 1995-1-1, 6.1.5(4) nur für l ≤ 400 mm); vorher wurde 1,75 mit Warnung angesetzt. Kern `bemesseQuerdruck` in `src/calc/holzbau.ts`, Test `tests/kleinfragenTranche1bis3.test.ts`: l = 450 mm → F_c,90,Rd = 110,77 kN; l = 400 mm → 172,31 kN (b = 160 mm, GL, NKL 1, mittel).
 
+- **F-1 (`betonkennwerte`, hochfester Beton; Entscheidung 29.10.):** Werte bis C50/60 regulär; Klassen ab C55/67 im Rechner (Hinweis unter der Klassenwahl) und in der Tabelle (Kennzeichen HFB, Tabellenhinweis) als „vorläufig, F-Freigabe“ gekennzeichnet. Der Schalter `FCD_HOCHFEST_AKTIV` (zusätzliche Abminderung (1,1 − f_ck/500), `src/data/kennwerte.ts`) bleibt standardmäßig aus; f_cd(C55/67) = 0,85·55/1,5 = 31,17 N/mm², f_cd(C100/115) = 56,67 N/mm² (unverändert). C100/115 als Lehrwert gekennzeichnet (Kennzeichen „Lehrwert“, Dehnungswerte wie C90/105, weil die Gleichungen der Tab. 3.1 nur bis f_ck = 90 N/mm² gelten). Im Reiter Stütze von `stahlbeton_bemessung` zeigte die Erläuterung den Faktor (1,1 − f_ck/500) auch bei ausgeschaltetem Schalter an, obwohl er nicht gerechnet wurde; die Anzeige folgt jetzt dem Schalter (Rechnung unverändert). Quelle: DIN EN 1992-1-1, Tab. 3.1, mit NA (DE); Befund T1 Nr. 6.
+- **F-Stellen `mischungsberechnung` (Entscheidung 29.10.):**
+  - Regelsieblinien A/B/C 8, 16, 32 als „Lehrbuchwerte (DIN 1045-2, Anhang L)“ gekennzeichnet (Ergebnisse, Grenzen, Kern); Werte unverändert.
+  - f/z-Zuordnung: Zemente ohne Kennbuchstaben des Hauptbestandteils (CEM II/A, CEM II/B) als Lehrannahme mit der Grenze f/z ≤ 0,25; CEM II/A vorher 0,33. CEM I, CEM II/S, CEM III/A und CEM III/B bleiben bei 0,33 (Hauptbestandteil eindeutig, ohne P/V/D). Handrechnung z = 300, f = 100, w = 165, k_f = 0,4: CEM II/A (w/z)_eq = 165/(300 + 0,4·75) = 0,500 (vorher 165/339,6 = 0,486). Hinweis im Eingabebereich bei Flugasche und CEM II/A bzw. II/B. Die Beispiele mit CEM II/A enthalten keine Flugasche (Werte unverändert).
+  - k-Wert Hüttensandmehl als Eingabe-Lehrannahme mit dem Hinweis „Anrechnung nur nach abZ/aBG“ (Eingabe, Tooltip, Grenzen).
+  - Quelle: DIN 1045-2, 5.2.5.2.2 (Wiedergabe umwelt-online; UniBw München, Lehrunterlage „Flugasche“), wie Runde 5 (Z55).
+
 ## Freigabe 29.10.2026
 
 Entscheidung vom 28.10.2026: „Module ohne offene Frage freigeben“; Punkte, die nur am Normtext zu klären sind, blockieren die Freigabe (Prüfbogen Normtext, Abschnitt „Was ohne Normtext nicht weiterkommt“). Geprüft wurde je Modul: Empfehlung erfüllt (Korrekturen behoben, Klärungen entschieden und in den Abschnitten „Umsetzung 29.10.2026“ bzw. in den genannten PRs umgesetzt oder gekennzeichnet) und kein Normtextpunkt offen. Prüfvermerk in `src/data/pruefvermerke.ts`: „geprueft“, am 2026-10-29, passiv ohne Namen. Quizfreigaben sind davon getrennt.
@@ -349,10 +356,23 @@ Freigegeben:
 
 Nicht freigegeben:
 
-- `stahlbeton_bemessung` – Prüfbogen: #242-1 bis -4 (Normtext NA DE); F-1 (hochfester Beton) offen
-- `mischungsberechnung` – Empfehlung verlangt Klärung der F-Stellen (Regelsieblinien, Zementzuordnung f/z, k-Wert Hüttensand) – offen
-- `betonkennwerte` – Empfehlung verlangt Klärung der F-Stellen (f_cd-Abminderung ab C55/67, C100/115) – offen
+- `stahlbeton_bemessung` – Prüfbogen: #242-1 bis -4 (Normtext NA DE); F-1 (hochfester Beton) am 29.10. entschieden (Kennzeichnung), Modul bleibt wegen des Prüfbogens offen
+- `mischungsberechnung` – Empfehlung verlangt Klärung der F-Stellen (Regelsieblinien, Zementzuordnung f/z, k-Wert Hüttensand) – am 29.10. entschieden, freigegeben im Nachtrag
+- `betonkennwerte` – Empfehlung verlangt Klärung der F-Stellen (f_cd-Abminderung ab C55/67, C100/115) – am 29.10. entschieden, freigegeben im Nachtrag
 - `rechnung_mauerwerk` – Prüfbogen: #239-W-1, #239-MW-1 (Normtext)
 - `bauphysik` – Prüfbogen: T11-BP-2 (Normtext); zudem F-Stellen DIN 4108-3:2024-03 aus T1
 - `feuchteschutz` – Empfehlung verlangt Klärung der F-Stellen DIN 4108-3:2024-03 (Klimarandbedingungen, δ₀) – offen
 - `schallschutz` – Prüfbogen: #247-9 (Normtext); F-Stellen Trittschall
+
+## Freigabe 29.10.2026 (Nachtrag)
+
+Entscheidungen des Professors vom 29.10.2026 („alle übernehmen“) zu den B-Fragen der offenen Fachmodule; umgesetzt im PR „Entscheidungen 29.10.: Lehrwert-Kennzeichnungen und Freigabe von vier Modulen“. Verfahren wie bei der Freigabe 29.10.2026: Prüfvermerk in `src/data/pruefvermerke.ts` „geprueft“, am 2026-10-29, passiv ohne Namen; Quizfreigaben sind davon getrennt. Regressionstest: `tests/entscheidungen1029.test.ts`.
+
+Freigegeben:
+
+- [x] `betonkennwerte` – F-1 entschieden: bis C50/60 regulär, ab C55/67 „vorläufig, F-Freigabe“ (Schalter f_cd-Abminderung aus), C100/115 Lehrwert (Abschnitt „Umsetzung 29.10.2026“)
+- [x] `mischungsberechnung` – M-5 bis M-7 am 28.10. umgesetzt; F-Stellen entschieden: Regelsieblinien Lehrbuchwerte (DIN 1045-2, Anhang L), f/z-Lehrannahme 0,25 ohne Kennbuchstaben, k-Wert Hüttensandmehl Lehrannahme („Anrechnung nur nach abZ/aBG“)
+
+Nicht freigegeben:
+
+- `stahlbeton_bemessung` – Prüfbogen: #242-1 bis -4 (Normtext NA DE); F-1 entschieden

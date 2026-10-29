@@ -89,7 +89,7 @@ export default function HydratationFolgen() {
         zielGleichung="\Delta T_{ad} = \frac{z \cdot Q}{c \cdot \rho}"
         normQuelle={inhalt.werte.wärmebilanzLehrwerteRichtwerteDafstb}
         schritte={inhalt.daten["HydratationFolgen.schritte_2"]}
-        ergebnisHinweis={inhalt.werte.rund45KBei}
+        ergebnisHinweis={inhalt.werte.rund47KBei}
       />
 
       <ModulTest moduleId="hydratation_folgen" />

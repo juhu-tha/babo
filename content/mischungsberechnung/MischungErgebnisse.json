@@ -32,7 +32,7 @@
     "luftporenLuftgehalt": "Luftporen (Luftgehalt)",
     "davonAusGestein": "davon aus Gestein: ",
     "sieblinienEinordnung": "Einordnung der Ist-Sieblinie an den Sieben ab 4 mm (unterhalb 4 mm wäre die Sieblinie des Sandes nötig):",
-    "sieblinienQuelle": "Regelsieblinien A, B, C nach DIN 1045-2, Anhang L (Bilder L.1–L.3, informativ); hinterlegt sind die üblichen Lehrbuchwerte, z. B. A16/B16/C16 bei 4/8 mm = 36/60, 56/76 und 74/88 %. **Vorläufig (F-Freigabe):** Der Abgleich mit den Normbildern steht aus. Günstig ist der Bereich zwischen A und B; zwischen B und C brauchbar, aber mit höherem Wasser- und Zementleimbedarf."
+    "sieblinienQuelle": "Regelsieblinien A, B, C: **Lehrbuchwerte (DIN 1045-2, Anhang L)**. Anhang L (Bilder L.1–L.3, informativ) stellt die Linien nur als Diagramm dar; hinterlegt sind die üblichen Lehrbuchwerte, z. B. A16/B16/C16 bei 4/8 mm = 36/60, 56/76 und 74/88 %. Günstig ist der Bereich zwischen A und B; zwischen B und C brauchbar, aber mit höherem Wasser- und Zementleimbedarf."
   },
   "werte": {
     "ergebnisseProMBeton": "Ergebnisse (pro m³ Beton)",

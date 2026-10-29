@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 import { MATERIAL_DATABASE, CustomRow, ScenarioPreset, PRESETS, alsLcaBaustoff } from './interactivelcacalc/daten';
 import {
-  lcaBilanz, A4_FAKTOR_GEBAEUDE, B6_FAKTOREN, BNB_NUTZUNGSDAUER, QNG_WG, SORTENREINHEIT_REFERENZ, ersatzzyklen,
+  lcaBilanz, A4_FAKTOR_GEBAEUDE, B6_FAKTOREN, BNB_NUTZUNGSDAUER, QNG_WG, QNG_STAND, SORTENREINHEIT_REFERENZ, ersatzzyklen,
   type LcaEingabe, type LcaErgebnis, type LcaZeile, type Energietraeger, type TgaSockel,
 } from '@/src/calc/lca';
 import { CalculationDashboard } from './interactivelcacalc/CalculationDashboard';
@@ -365,6 +365,9 @@ export default function InteractiveLCACalc() {
             PLUS &le; {formatDeZahl(qngThresholds.plus, 1)} kg/(m²·a)
           </span>
         </div>
+        {buildingType === "wohnbau" && (
+          <p className="text-[11px] text-text-main/70" data-testid="qng-stand">{inhalt.werte.qngStandHinweis}{QNG_STAND}{inhalt.werte.qngAbsenkungHinweis}</p>
+        )}
       </div>
 
       {/* Quick Presets / Click-Scenarios */}

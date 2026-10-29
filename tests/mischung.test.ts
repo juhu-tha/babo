@@ -66,7 +66,7 @@ for (const b of BENCHMARK_EXAMPLES) {
 // 2c. k-Wert-Ansatz DIN 1045-2 (Runde 5, Z55; öffentliche Quellen: UniBw München „Flugasche“, umwelt-online DIN 1045-2 5.2.5):
 //     k_f = 0,4, k_s = 1,0, f/z ≤ 0,33 (ohne P/V/D), s/z ≤ 0,11; gemeinsam f/z ≤ 3·(0,22 − s/z) (CEM I) bzw. 3·(0,15 − s/z)
 pruefe(K_WERT_DIN1045_2.kF === 0.4 && K_WERT_DIN1045_2.kS === 1.0 && K_WERT_DIN1045_2.maxSfFaktor === 0.11, 'k-Werte');
-pruefe(maxFaFaktor('CEM I') === 0.33 && maxFaFaktor('CEM III/A') === 0.33 && maxFaFaktor('CEM II/B') === 0.25 && maxFaFaktor('CEM IV') === 0, 'f/z-Grenzen je Zementart');
+pruefe(maxFaFaktor('CEM I') === 0.33 && maxFaFaktor('CEM III/A') === 0.33 && maxFaFaktor('CEM II/A') === 0.25 && maxFaFaktor('CEM II/B') === 0.25 && maxFaFaktor('CEM IV') === 0, 'f/z-Grenzen je Zementart');
 pruefe(kombinationsGrenze('CEM I') === 0.22 && kombinationsGrenze('CEM III/A') === 0.15 && kombinationsGrenze('CEM II/B') === null, 'Kombinationsgrenzen');
 //     Handbeispiel CEM I, z = 320, s = 25 (s/z = 0,078): f ≤ 3·(0,22 − 0,078125)·320 = 136,2 kg/m³ → f = 100 zulässig, f = 140 nicht;
 //     anrechenbar f ≤ 0,33·320 = 105,6 → (w/z)_eq = 160/(320 + 0,4·100 + 1,0·25) = 0,4156

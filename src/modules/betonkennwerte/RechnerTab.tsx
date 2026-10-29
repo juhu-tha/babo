@@ -84,7 +84,7 @@ export default function RechnerTab({ aggregateType, ambientTempT, festigkeitMitT
               ))}
             </select>
             <span className="text-[10px] text-slate-500">
-              {baseConcrete.fck <= 50 ? inhalt.werte.normalbetonC5060 : inhalt.werte.hochfesterBetonC5060}
+              {baseConcrete.fck <= 50 ? inhalt.werte.normalbetonC5060 : baseConcrete.fck > 90 ? inhalt.werte.lehrwertC100115 : inhalt.werte.hochfesterBetonC5060}
             </span>
           </div>
 

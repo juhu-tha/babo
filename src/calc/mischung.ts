@@ -47,14 +47,21 @@ export const ZEMENT_DATA: Readonly<Record<string, { co2: number; rho: number }>>
  * Lehrunterlage „Flugasche“, und umwelt-online, DIN 1045-2 Abschnitt 5.2.5): f/z ≤ 0,33 für Zemente ohne die Hauptbestandteile
  * P, V oder D; ≤ 0,25 mit P oder V (ohne D); ≤ 0,15 mit D. Zugelassen sind u. a. CEM I, CEM II-S, CEM II/A-D, CEM II-T,
  * CEM II/A-LL, CEM II/A-P, CEM II/A-V, CEM II-M (ausgewählte), CEM III/A und CEM III/B (Hüttensand < 70 M.-%).
- * Die Zementarten des Rechners sind ohne Hauptbestandteil-Kennbuchstaben angegeben; angesetzt wird:
- *   CEM I, CEM II/A, CEM II/S, CEM III/A, CEM III/B → 0,33 (ohne P/V/D angenommen); CEM II/B → 0,25 (mit P/V angenommen);
+ * Die Zementarten des Rechners sind teils ohne Hauptbestandteil-Kennbuchstaben angegeben. Lehrannahme (Entscheidung
+ * 29.10.2026): Wo der Kennbuchstabe fehlt, gilt die konservative Grenze 0,25 (Zement mit P oder V angenommen):
+ *   CEM I, CEM II/S, CEM III/A, CEM III/B → 0,33 (Hauptbestandteil eindeutig, ohne P/V/D);
+ *   CEM II/A, CEM II/B → 0,25 (Kennbuchstabe fehlt, Lehrannahme);
  *   CEM II/C-M, CEM IV, CEM V, CEM VI → 0 (k-Wert-Ansatz nicht geregelt).
- * Vorher: CEM III/A und CEM III/B → 0, CEM II/S → 0 (vorläufig, F-Freigabe: Zuordnung je Hauptbestandteil).
+ * Vorher: CEM II/A → 0,33 (bis 29.10.2026); CEM III/A und CEM III/B → 0, CEM II/S → 0 (bis Runde 5).
  */
 export function maxFaFaktor(zementArt: string): number {
-  if (['CEM I', 'CEM II/A', 'CEM II/S', 'CEM III/A', 'CEM III/B'].includes(zementArt)) return 0.33;
-  return zementArt === 'CEM II/B' ? 0.25 : 0;
+  if (['CEM I', 'CEM II/S', 'CEM III/A', 'CEM III/B'].includes(zementArt)) return 0.33;
+  return ['CEM II/A', 'CEM II/B'].includes(zementArt) ? 0.25 : 0;
+}
+
+/** Lehrannahme der f/z-Zuordnung (Entscheidung 29.10.2026): true, wenn der Kennbuchstabe des Hauptbestandteils fehlt */
+export function fzLehrannahme(zementArt: string): boolean {
+  return ['CEM II/A', 'CEM II/B'].includes(zementArt);
 }
 
 /** k-Werte und Grenzen nach DIN 1045-2 (k-Wert-Ansatz): k_f = 0,4, k_s = 1,0, s/z ≤ 0,11 */
@@ -65,7 +72,7 @@ export const K_WERT_DIN1045_2 = { kF: 0.4, kS: 1.0, maxSfFaktor: 0.11 } as const
  * f/z ≤ 3·(0,22 − s/z) für CEM I, f/z ≤ 3·(0,15 − s/z) für CEM II-S, CEM II/A-D, CEM II-T, CEM II/A-LL und CEM III/A;
  * mit anderen Zementen ist die Kombination nicht zulässig. Rückgabe: Grenzwert der Konstanten (0,22 bzw. 0,15) oder null.
  * Zuordnung der Rechner-Zementarten: CEM I → 0,22; CEM II/S, CEM II/A, CEM III/A → 0,15 (CEM II/A als II/A-LL bzw. II/A-D
- * angenommen); übrige → null (vorläufig, F-Freigabe).
+ * angenommen; Lehrannahme, Entscheidung 29.10.2026); übrige → null.
  */
 export function kombinationsGrenze(zementArt: string): number | null {
   if (zementArt === 'CEM I') return 0.22;
@@ -213,8 +220,8 @@ export function walzKurve(wz: number, klasse: WalzKlasse) {
  * Siebdurchgänge in M.-% der Regelsieblinien. DIN 1045-2 stellt sie in Anhang L (informativ) nur als Diagramm dar;
  * hinterlegt sind die üblichen Lehrbuchwerte der Regelsieblinien (bereits in DIN 1045:1988 enthalten), z. B. A16/B16/C16
  * bei 4/8 mm = 36/60, 56/76, 74/88 %.
- * Vorläufig, F-Freigabe: Abgleich mit den Bildern L.1–L.3 der DIN 1045-2 steht aus (öffentlich nur ohne Zahlenwerte
- * zugänglich). Bis 27.10.2026 standen im Modul abweichende Werte (z. B. A16/B16/C16 bei 4/8 mm = 35/50, 50/71, 71/85 %).
+ * Gekennzeichnet als „Lehrbuchwerte (DIN 1045-2, Anhang L)“ (Entscheidung 29.10.2026); die Bilder L.1–L.3 sind öffentlich
+ * nur ohne Zahlenwerte zugänglich. Bis 27.10.2026 standen im Modul abweichende Werte (z. B. A16/B16/C16 bei 4/8 mm = 35/50, 50/71, 71/85 %).
  * Siebweiten in mm; das oberste Sieb 31,5 mm wird wie bei den Fraktionen des Moduls als 32 mm geführt.
  */
 export type Groesstkorn = 8 | 16 | 32;

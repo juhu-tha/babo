@@ -1,5 +1,6 @@
 import type { Hinweis } from '@/src/calc/plausibilitaet';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
+import { fzLehrannahme } from '@/src/calc/mischung';
 import { rezepturen, BAUTEILE, allExpClasses, EXPOSITIONSKLASSEN, zementData, festigkeitsklassen, KONSISTENZ_DATA } from './daten';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import { Radar } from 'react-chartjs-2';
@@ -386,6 +387,9 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
               <div className="text-xs text-torch-red mt-1"><MdText text={inhalt.texte.anrechenbarMax} />{formatDeZahl(results.maxFa, 0)} kg/m³ bei {formatDeWert(zement)} kg/m³ {zementArt})
               </div>
             )}
+            {fa > 0 && fzLehrannahme(zementArt) && (
+              <div className="text-xs text-home-grau mt-1">{inhalt.werte.fzLehrannahme}</div>
+            )}
           </div>
           <div className="flex flex-col gap-2 pdf-parameter">
             <div className="flex justify-between items-center">
@@ -455,6 +459,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
               unit="-" 
               onChange={(e) => setKKsm(Number(e.target.value))} 
             />
+            <div className="text-xs text-home-grau">{inhalt.werte.kWertHuesLehrannahme}</div>
           </div>
         </div>
 
