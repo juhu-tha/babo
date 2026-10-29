@@ -120,6 +120,10 @@
 **F-Freigabe-Stellen**
 - c-Werte Holzfaser und Holz nach DIN EN ISO 10456 bzw. DIN 4108-4 (T11-BP-2).
 
+**Umsetzung 29.10.2026**
+- **T11-BP-1:** Der Korridor 0,60 bis 0,85 s für Gruppe B bleibt als **Orientierungswert**. Raumtyp, Ergebniszeile („Orientierungswert“ statt „DIN-Empfehlung“), Bewertungstext und Diagramm weisen jetzt aus, dass DIN 18041 für Gruppe B keine Soll-Nachhallzeit nennt, sondern A/V-Empfehlungen (`content/bauphysik/Bauphysik.json`, `src/modules/Bauphysik.tsx`). Quelle: DIN 18041:2016-03 (Gliederung Gruppe A/B, wie in der Prüfung oben).
+- **T11-BP-2 (Normtext):** Werte unverändert; die c-Werte Holzfaser 2100 und Fichte 1600 J/(kgK) sind im Reiter Sommer als Lehrwerte gekennzeichnet („Abgleich mit DIN EN ISO 10456 Tab. 3 bzw. DIN 4108-4 ausstehend, vorläufig, F-Freigabe“). Fachgebiet der neuen F-Freigabe-Stelle: „Bauphysik – Feuchteschutz“ (Alternative `DIN EN ISO 10456` an den Suchtext angehängt).
+
 **Empfehlung:** freigabefähig nach Klärung von T11-BP-1 und T11-BP-2.
 
 - [ ] Modul freigeben
@@ -213,6 +217,12 @@
 - Anlage 4 GModG (Fassung 01.01.2027): f_P,tot je Energieträger (T11-EA-2).
 - Anlage 9 GModG: CO₂-Emissionsfaktoren (T11-EA-3).
 
+**Umsetzung 29.10.2026**
+- **T11-EA-2:** Stichtagsschalter „bis 31.12.2026 / ab 01.01.2027“ im Rechner (`src/calc/energieausweis.ts`, `rechtsstand`, Standard nach heutigem Datum). Ab 01.01.2027 f_p nach neuer Anlage 4 GModG: Erdgas/Heizöl 1,1, Holz/feste Biomasse 0,7, Netzstrom 1,5 (auch Hilfsstrom), Fernwärme 0,7 ([Haufe, Synopse Anlage 4 GEG/GModG](https://www.haufe.de/id/beitrag/synopse-geg-gmodg-anlage-4-zu-22-absatz-1-primaerenergiefaktoren-HI17241000.html)). Bis 31.12.2026 unverändert Gas/Öl 1,1, Holz 0,2, Strom 1,8 ([buzer.de, Anlage 4 GModG](https://www.buzer.de/Anlage_4_GModG.htm)); Fernwärme 0,4 bleibt Lehrwert. Das neue Referenzgebäude (ohne Faktor 0,55) ist im Lehrmodell nicht abgebildet; Hinweis im Rechner und in den Grenzen.
+- **T11-EA-3:** CO₂-Faktoren nach Anlage 9: Erdgas 240, Heizöl 310, Holz 20 (vorher 30), Netzstrom 560 g/kWh (vorher Lehrwert 380) ([buzer.de, Anlage 9 GModG](https://www.buzer.de/Anlage_9_GModG.htm)). Ab 2027 Netzstrom 100 g/kWh nach Ökozentrum NRW (Fassung 2027 der Anlage 9 öffentlich nicht abrufbar: vorläufig, F-Freigabe). Fernwärme 120 g/kWh bleibt Lehrwert (Anlage 9 unterscheidet nach Erzeugung: 40 bis 400 g/kWh).
+- **T11-EA-4 (Normtext):** Wert 35 kWh/(m²a) unverändert; im Kern, in den Grenzen und im Text „Interne Wärmegewinne“ als Lehrwert gekennzeichnet (maßgebend: Nutzungsprofil nach DIN/TS 18599-10; vorläufig, F-Freigabe).
+- Nachrechnung (eigenes Skript): EA1 Gas 2027 q_P 63; EA2 Öl CO₂ 58, 2027 q_P 208; EA3 Sole-WP CO₂ 5 (2026) bzw. 1 (2027), q_P 16 bzw. 14; EA4 Fernwärme 2027 q_P 43; Startwerte WP: CO₂ 10 (vorher 7), 2027 q_P 27, CO₂ 2. Tests: `tests/energieausweis.test.ts`, `tests/modulpruefungTranche11.test.ts`.
+
 **Empfehlung:** freigabefähig für den Rechtsstand bis 31.12.2026 nach Korrektur T11-EA-1. Vor dem 01.01.2027 sind T11-EA-2 und T11-EA-3 zu klären.
 
 - [ ] Modul freigeben
@@ -258,6 +268,9 @@
 - **offen – F-Stelle Gebäudetyp E:** Der Stand „neuer Entwurf in Ressortabstimmung, nicht veröffentlicht (10/2026)“ ließ sich mit öffentlichen Quellen weder bestätigen noch widerlegen. Bitte bestätigen.
 - Hinweis: Das CRREM-Beispiel rechnet linear 52 → 18 (2020 bis 2030). Der Simulator im Modul `lca_regulatorik` nutzt Stützwerte 52 → 38 (2025) → 18. Beides ist als Lehrwert gekennzeichnet.
 
+**Umsetzung 29.10.2026**
+- **GT-E:** Gebäudetyp E überall als „Gesetzentwurf, Stand 10/2026“ bezeichnet (Rechtsrahmen-Kompendium: Kurzname, Norm, Zusammenfassung, Meilensteine; Daten & Regeln Reiter 5; Leitfaden-Daten; Praxis-Reiter; Moduleinleitung Nachhaltigkeit). Der Regierungsentwurf 2024 (BT-Drs. 20/13959, § 650o BGB-E) ist als erledigt ausgewiesen. Quelle: Modultext Praxis/Gebäudetyp E (Stand Prüfung 28.10.).
+
 **Empfehlung:** freigabefähig nach Korrektur T11-NDR-1 bis -4 (F-Stelle Gebäudetyp E).
 
 - [ ] Modul freigeben
@@ -292,6 +305,11 @@
 **F-Freigabe-Stellen**
 - Treibhausgas-Minderungsklassen der DAfStb-Richtlinie (neu als „vorläufig, F-Freigabe“ gekennzeichnet).
 - GWP-Lehrwerte Beton je Zementart, Betonstahl, 56-d-Abschlag (bereits im Kern als offen markiert).
+
+**Umsetzung 29.10.2026**
+- **T11-MO-2 (Normtext):** nicht geändert; die Lehreinteilung ist bereits als „vorläufig, F-Freigabe“ gekennzeichnet (`DafstbRichtlinieTab.json`).
+- **T11-MO-3:** Lehrwerte vereinheitlicht. Beton = 320 kg Zement · GWP_Zement + 30 kg/m³ (Lehrbeton C30/37 wie Beispiel OE-B1 im Modul LCA-Grundlagen und die Quizerklärung „286 auf 174“): CEM I 0,80 → 286; CEM II/A-LL 0,60 → 222 (entspricht ÖKOBAUDAT 2024-I „Transportbeton C25/30“ 221,7 kg/m³, [climatiq, ÖKOBAUDAT-Datensatz](https://www.climatiq.io/data/emission-factor/0dc72c3f-b968-441b-8e9b-2e22573a51c0)); CEM II/B-S 0,55 → 206 und CEM II/C-M 0,43 → 168 (vorläufig, F-Freigabe); CEM III/A 0,45 → 174. Vorher 310/250/190/135/105. Betonstahl getrennt nach Route: Referenz ÖKOBAUDAT „Bewehrungsstahl (de)“ 0,64 kg/kg (0,642; [Bauer, Artikel mit ÖKOBAUDAT-Angabe](https://geotechnical-solutions.bauer.de/de/media/7315/download)), Hochofenroute 0,98 (Lehrwert, vorläufig, F-Freigabe), Elektrostahl mit Grünstrom 0,42 (Lehrwert). Beispiel 1 auf dieselben Werte umgestellt: 70,0 → 37,6 kg CO₂-Äq./m² (−46 %). Erkundungsaufträge neu gerechnet (56 %/34 %, 23 %/14 %, 73 %/54 %).
+- Nachrechnung (eigenes Skript): MO1 Ref 9266, Opt 4118, 55,56 % (A+); MO2 1065/458, 57,0 %; MO3 Opt 10 258, 28,9 % (B); MO4 Opt 3655, 24,7 % (C); MO5 Decke massiv CEM II/A-LL, Stahl DE: 6941 (B).
 
 **Empfehlung:** freigabefähig nach Korrektur T11-MO-1 und Klärung von T11-MO-2 und T11-MO-3.
 
@@ -328,6 +346,9 @@
 - Hinweis: „Kombinierte DoPC: Pflicht zur Ausweisung von Umweltindikatoren (insb. GWP)“ – die Pflicht entsteht erst schrittweise über delegierte Rechtsakte je Produktfamilie. Der Text könnte „schrittweise“ ergänzen.
 
 **F-Freigabe-Stellen:** BBSR-Nutzungsdauern (T11-LCA-2).
+
+**Umsetzung 29.10.2026**
+- **T11-LCA-2:** Leitfaden: Außenfenster Holz-Aluminium 50 a (vorher 25 a), Holz und Kunststoff 40 a, im Betrachtungszeitraum kein Austausch; Flachdachabdichtung 20 a als Lehrwert gekennzeichnet. Beide „vorläufig, F-Freigabe“, weil die BBSR-Tabelle (Stand 2017) selbst nicht abgerufen wurde; Fensterwerte nach [42watt, Rahmenmaterialien mit BBSR-Werten](https://42watt.de/magazin/fensterrahmen-material-vergleich). Reiter Lebensdauern (`lebenszyklus_kosten`): Mittelwerte Fenster Holz/Kunststoff 30 → 40 a, Aluminium 40 → 50 a; Hinweis, dass die übrigen Spannen noch nicht einzeln abgeglichen sind.
 
 **Empfehlung:** freigabefähig nach Korrektur T11-LCA-1 und Klärung von T11-LCA-2.
 
@@ -401,6 +422,11 @@
 
 **F-Freigabe-Stellen:** keine neuen.
 
+**Umsetzung 29.10.2026** (PR #247 war gemergt; main vorher eingemergt)
+- **T11-LR-2:** Bio-Treppe 10/15/30/60 % (2029 bis 2040) als beschlossen; „100 % 2045“ nur noch als Ziel der geplanten, noch nicht beschlossenen Grüngasquote (Zusammenfassung, Pflichten, Meilenstein 2045). Quelle: BDB und Ökozentrum NRW wie oben.
+- **T11-LR-3:** CSRD/CSDDD nach Omnibus-Richtlinie (EU) 2026/470 (Amtsblatt 26.02.2026): CSRD > 1000 Beschäftigte und > 450 Mio. € Umsatz, spätestens ab Geschäftsjahr 2027, Umsetzungsfrist 19.03.2027; CSDDD > 5000 Beschäftigte und > 1,5 Mrd. €, Anwendung einheitlich ab 26.07.2029 ([Rödl & Partner](https://www.roedl.com/insights/csrd-omnibus-aenderungsrichtlinie-eu-amtsblatt/)). Beschlossenes und Geplantes (vereinfachte ESRS, deutsches Umsetzungsgesetz) getrennt; „rund 50 000 Unternehmen“ und „> 250 MA“ entfernt.
+- **T11-LR-4:** „EMoCo“ ersetzt durch „Embodied Carbon (graue Emissionen)“ als Sammelbegriff ohne eigenen Rechtsakt; EPBD Art. 7 (Lebenszyklus-GWP, nationale Fahrpläne mit Grenzwerten ab 2030) statt „EU-Höchstwerte 2030“. BauPVO: Rezyklat-Beispiele ersetzt durch die Ermächtigung zu Mindestanforderungen über delegierte Rechtsakte. ETS II: Verschiebung durch Art. 2 der Verordnung (EU) 2026/667 vom 11.03.2026 (Änderung des Klimagesetzes (EU) 2021/1119), das ETS II selbst in der Richtlinie 2003/87/EG i. d. F. 2023/959 ([nexvyra, ETS2](https://nexvyra.de/fakten/eu-emissionshandel-ets2-2023-959.html); Sekundärquelle, im Modul als „am Amtsblatt zu bestätigen“ vermerkt).
+
 **Empfehlung:** freigabefähig nach Korrektur T11-LR-1 und Klärung von T11-LR-2 bis -4.
 
 - [ ] Modul freigeben
@@ -431,6 +457,9 @@
 
 **F-Freigabe-Stellen:** QNG-Anforderung nachhaltige Holzbeschaffung, Schadstoffanforderungen (T11-ZS-2).
 
+**Umsetzung 29.10.2026**
+- **T11-ZS-2:** „Schadstoff-Steckbrief 313“ → QNG-Anhangdokument 3.1.3 „Schadstoffvermeidung in Baumaterialien“ (Anforderungen je Produktposition, u. a. AgBB, Formaldehyd, REACH; [QNG-ready-Zertifikat mit Anhangsangabe](https://www.pfleiderer.com/file_pim/Dokumente/qng-ready-premiumboard-mfp-living-p5-im0032536.pdf)). Holzquote 80/90 % öffentlich nicht belegt: als „vorläufig, F-Freigabe“ gekennzeichnet, Grundsatz (FSC/PEFC mit Chain-of-Custody) bleibt.
+
 **Empfehlung:** freigabefähig nach Korrektur T11-ZS-1 und Klärung von T11-ZS-2. Kein Eintrag in `pruefvermerke.ts`.
 
 - [ ] Modul freigeben
@@ -453,6 +482,9 @@
 - Hinweis: Die Aussage „Bausektor über 50 % des weltweiten Ressourcenverbrauchs und Abfallaufkommens“ entspricht gängigen Sekundärangaben (z. B. UNEP). Das Abfallaufkommen ist in Deutschland mit rund 55 % belegt.
 
 **F-Freigabe-Stellen:** keine.
+
+**Umsetzung 29.10.2026**
+- **T11-KW-2:** Re-Use-Demo neutralisiert: „Endpoint (Beispiel): api.example.org/v1/sync“, Überschriften und Texte ohne Firmennamen („Schnittstellen-Demo Bauteilbörse“, „Lehrdemo: Es wird keine Verbindung aufgebaut“); die Superlative „Deutschlands führender Marktplatz“ entfällt (`content/kreislaufwirtschaft/Kreislaufwirtschaft.json`).
 
 **Empfehlung:** freigabefähig nach Korrektur T11-KW-1 und Klärung von T11-KW-2.
 
@@ -509,6 +541,10 @@
 - Hinweis: Die Lebensdauer-Spannen im Reiter Lebensdauern (z. B. Flachdach 15 bis 30 a) sind nicht einzeln gegen die BBSR-Tabelle belegt (siehe T11-LCA-2).
 
 **F-Freigabe-Stellen:** BBSR-Nutzungsdauern (gemeinsam mit T11-LCA-2).
+
+**Umsetzung 29.10.2026**
+- **T11-LZK-2:** UBA-Klimakosten nach Methodenkonvention 4.0 (2026): 350 €/t CO₂-Äq. für 2026 bei 1 % reiner Zeitpräferenz, 1000 €/t bei 0 % (Euro 2025) ([UBA, Tabelle Klimakosten 06.07.2026](https://www.umweltbundesamt.de/system/files/medien/384/bilder/dateien/6_Tab_UBA-Empfehlung-Klimakosten_2026-07-06.pdf)); Eingabewert des Rechners unverändert. DGNB-Literatur auf ECO1.1 „Gebäudebezogene Kosten im Lebenszyklus“. Destatis: GENESIS-Tabellen 61261 statt eingestellter Fachserie 17 Reihe 4. Preisgleitformel: Quelle § 9d VOB/A und Stoffpreisgleitklausel VHB Bund Formblatt 225; VOB/B § 2 Abs. 3 nur noch als Regel zu Mengenabweichungen.
+- Lebensdauern: siehe T11-LCA-2.
 
 **Empfehlung:** freigabefähig nach Korrektur T11-LZK-1 und Klärung von T11-LZK-2.
 

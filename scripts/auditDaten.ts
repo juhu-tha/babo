@@ -53,11 +53,11 @@ function dateienIn(wurzel: string, ordner: string, endung: RegExp): string[] {
 /** Fachgebiet je Fundstelle: zuerst nach Dateipfad, sonst nach Stichworten im Kontext (Reihenfolge = Vorrang) */
 export const FACHGEBIETE: readonly { name: string; datei: RegExp; text: RegExp }[] = [
   { name: 'Bauphysik – Schallschutz', datei: /schall/i, text: /Trittschall|DIN 4109|L′_n,w|L'_n,w/ },
-  { name: 'Bauphysik – Feuchteschutz', datei: /glaser|feuchte/i, text: /Glaser|DIN 4108-3|Tauwasser/ },
+  { name: 'Bauphysik – Feuchteschutz', datei: /glaser|feuchte/i, text: /Glaser|DIN 4108-3|Tauwasser|DIN EN ISO 10456/ },
   { name: 'Holzbau', datei: /holz|bspSchwingung/i, text: /Holzbau|DIN EN 1995|Brettsperrholz/ },
   { name: 'Mauerwerk', datei: /mauerwerk/i, text: /Mauerwerk|DIN EN 1996|KS-Tragfähigkeit/ },
   { name: 'Geotechnik', datei: /boden|atterberg/i, text: /Fließgrenze|Atterberg|17892|DIN 18122|14688|Zustandsform/ },
-  { name: 'Nachhaltigkeit (LCA/LCC)', datei: /lca|lcc|materialoptimierung|oekobilanz|modulD|dafstb|cbam/i, text: /QNG|ÖKOBAUDAT|Ökobilanz|Restwert|Modul D|EN 15804|KrWG|CBAM/ },
+  { name: 'Nachhaltigkeit (LCA/LCC)', datei: /lca|lcc|materialoptimierung|oekobilanz|modulD|dafstb|cbam|energieausweis/i, text: /QNG|ÖKOBAUDAT|Ökobilanz|Restwert|Modul D|EN 15804|KrWG|CBAM|GModG|DIN\/TS 18599/ },
   { name: 'Stahl & Korrosionsschutz', datei: /korrosionsschutz|eisenKohlenstoff|stahlbau/i, text: /ISO 12944|DIN EN 10025|Eisen-Kohlenstoff/ },
   { name: 'Prüfverfahren & Bauwerksdiagnostik', datei: /pruefverfahren|bauwerksuntersuchung|karsten|zfp/i, text: /Prüfverfahren|Rückprall|Karsten/ },
   { name: 'Verkehrswege- & Tunnelbau', datei: /verkehrswegebau|tunnel|tiefbau|asphalt/i, text: /Tunnel|ZTV-ING|RStO|DWA-A 138|Rigole|f_Ort|ZTV Asphalt|Bitumen/ },

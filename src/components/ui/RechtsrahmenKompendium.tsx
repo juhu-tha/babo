@@ -205,9 +205,9 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     audiences: ['bestand', 'baustoffe', 'planer'],
     primaryTarget: 'Gebäudeeigentümer, Bauherren, Handwerk, Fachplaner',
     leadQuote: 'Ablösung des GEG 2024: Entfall des 65-%-EE-Zwangs, Einführung der Bio-Treppe ab 2029 und modernisierte Hüllanforderungen (§§ 35, 36 GModG).',
-    coreSummary: 'Das GModG regelt die energetischen Anforderungen an Gebäude in Deutschland und löst das GEG 2024 („Heizungsgesetz“) ab. Die starre 65-%-EE-Pflicht beim Heizungstausch ist entfallen. Neue Gas- und Ölheizungen dürfen weiter eingebaut werden, müssen jedoch ab 2029 nach der gesetzlichen Bio-Treppe schrittweise steigende Anteile klimaneutraler Brennstoffe (10 % bis 100 % im Jahr 2045) nutzen. Bei Sanierung von mehr als 10 % der Außenbauteilfläche greifen die Höchstwerte des Wärmedurchgangskoeffizienten nach § 36 GModG.',
+    coreSummary: 'Das GModG regelt die energetischen Anforderungen an Gebäude in Deutschland und löst das GEG 2024 („Heizungsgesetz“) ab. Die starre 65-%-EE-Pflicht beim Heizungstausch ist entfallen. Neue Gas- und Ölheizungen dürfen weiter eingebaut werden, müssen jedoch ab 2029 nach der gesetzlichen Bio-Treppe schrittweise steigende Anteile klimaneutraler Brennstoffe nutzen (10 % ab 2029 bis 60 % ab 2040). 100 % im Jahr 2045 sind ein Ziel, das über eine geplante Grüngasquote erreicht werden soll; ein Gesetz dazu liegt noch nicht vor (Auftrag an die Bundesregierung nach § 42a GModG). Bei Sanierung von mehr als 10 % der Außenbauteilfläche greifen die Höchstwerte des Wärmedurchgangskoeffizienten nach § 36 GModG.',
     keyDuties: [
-      'Stufenweise Bio-Treppe für flüssige/gasförmige Neuanlagen ab 2029 (10 % in 2029, 15 % in 2030, 30 % in 2035, 60 % in 2040, 100 % in 2045).',
+      'Stufenweise Bio-Treppe für flüssige/gasförmige Neuanlagen ab 2029 (10 % in 2029, 15 % in 2030, 30 % in 2035, 60 % in 2040); 100 % in 2045 nur als Ziel der geplanten, noch nicht beschlossenen Grüngasquote.',
       'Unbedingte Nachrüstpflicht: Dämmung der obersten Geschossdecke (§ 35 GModG, U ≤ 0,24 W/m²K) und von Wärmeverteilungsleitungen (§ 69 GModG).',
       'Bedingte Sanierungspflicht: Einhaltung der Bauteil-U-Werte nach § 36 GModG bei mehr als 10 % Flächenänderung (Außenwand U ≤ 0,24, Steildach U ≤ 0,24, Flachdach U ≤ 0,20, Fenster Uw ≤ 1,30 W/m²K).',
       'Ausnahmeregelung für Alt-Eigentümer (Stichtag 01.02.2002) mit 2-Jahres-Erfüllungsfrist bei Eigentumsübergang (§ 35 Abs. 3, § 69 Abs. 3 GModG).',
@@ -220,7 +220,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
       { year: '2030', text: 'Stufe 2 der Bio-Treppe: mind. 15 % erneuerbare Brennstoffe.' },
       { year: '2035', text: 'Stufe 3 der Bio-Treppe: mind. 30 % erneuerbare Brennstoffe.' },
       { year: '2040', text: 'Stufe 4 der Bio-Treppe: mind. 60 % erneuerbare Brennstoffe.' },
-      { year: '2045', text: 'Zieljahr Klimaneutralität: 100 % erneuerbare Brennstoffe für alle Gebäudeheizungen.' }
+      { year: '2045', text: 'Ziel Klimaneutralität: 100 % klimafreundliche Brennstoffe über eine geplante Grüngasquote (noch nicht beschlossen).' }
     ]
   },
   {
@@ -326,7 +326,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
       'Verpflichtende Ausweisung von Umwelt- und Klimadaten nach EN 15804 in der CE-Kennzeichnung.',
       'Einführung des Digitalen Bauproduktpasses (Digital Construction Product Passport) mit QR-Code am Bauteil.',
       'Ermächtigung der EU-Kommission zur Festlegung verbindlicher THG-Höchstgrenzen für Bauprodukte.',
-      'Rezyklatmindestanteile für spezifische Produktgruppen (z. B. mineralische Dämmstoffe, Betonbauteile).',
+      'Ermächtigung zu Mindestanforderungen an Produktfamilien (z. B. Rezyklatanteile) über delegierte Rechtsakte; konkrete Vorgaben für einzelne Bauprodukte stehen noch aus.',
       'Bevorzugung wiederverwendeter und wiederaufbereiteter Bauprodukte im Binnenmarkt.'
     ],
     impactOnMaterials: 'Hersteller müssen für jedes Bauprodukt verifizierte EPD-Daten liefern. Klinkerreiche Zemente oder ungedeckte Baustoffe riskieren den Verlust der CE-Marktfähigkeit bei Einführung von Produkt-Emissionsgrenzen.',
@@ -364,7 +364,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
   },
   {
     id: 'emoco_embodied',
-    shortName: 'EMoCo / Embodied Carbon',
+    shortName: 'Embodied Carbon (graue Emissionen)',
     fullName: 'Embodied Carbon Frameworks & Grenzwerte für graue Emissionen',
     norm: 'EPBD Art. 7 Lebenszyklus-GWP, EN 15978 / RE2020 / BR18 / QNG',
     level: 'ebene_3_baustoffe',
@@ -373,7 +373,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     audiences: ['baustoffe', 'planer', 'bestand'],
     primaryTarget: 'Tragwerksplaner, Architekten, Baustoffhersteller, Zertifizierungsstellen',
     leadQuote: 'Vom Betriebsenergie-Fokus zur harten Begrenzung des Herstellungskohlenstoffs pro Quadratmeter.',
-    coreSummary: 'Unter EMoCo (Embodied Carbon / Embedded Carbon) bündeln sich die europäischen und nationalen Rechtsakte zur Begrenzung von grauen Treibhausgasen (Module A1–A5 Herstellung und Errichtung, B1–B7 Nutzung, C1–C4 Entsorgung). Während in Frankreich (RE2020) und Dänemark (BR18) bereits progressive CO₂-Obergrenzen pro Quadratmeter gesetzlich gelten, bereitet die EU-Kommission verbindliche EU-Höchstwerte für 2030 vor.',
+    coreSummary: 'Unter dem Begriff Embodied Carbon (graue Emissionen) werden hier die europäischen und nationalen Regeln zur Begrenzung grauer Treibhausgase zusammengefasst; ein eigener Rechtsakt dieses Namens besteht nicht (Module A1–A5 Herstellung und Errichtung, B1–B7 Nutzung, C1–C4 Entsorgung). Während in Frankreich (RE2020) und Dänemark (BR18) bereits CO₂-Obergrenzen pro Quadratmeter gesetzlich gelten, verlangt die EPBD (Art. 7) die Berechnung des Lebenszyklus-GWP neuer Gebäude und von den Mitgliedstaaten Fahrpläne mit Grenzwerten ab 2030.',
     keyDuties: [
       'Ganzheitliche Ökobilanzierung (LCA) aller Konstruktions- und Dämmschichten vor Baubeginn.',
       'Einhaltung maximaler CO₂e-Grenzwerte pro Quadratmeter Bruttogrundfläche (BGF) oder Nettoraumfläche (NRF).',
@@ -385,7 +385,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
       { year: '2022', text: 'Frankreich führt RE2020 mit verbindlichem Grenzwert für Neubauten ein.' },
       { year: '2023', text: 'Dänemark setzt BR18-Grenzwert von 12 kg CO₂e/(m²·a) gesetzlich in Kraft.' },
       { year: '2027', text: 'Vorlage des EU-Berichts mit Entwurf für europaweite Embodied-Carbon-Grenzwerte.' },
-      { year: '2030', text: 'Einführung verbindlicher Höchstgrenzen für graue Emissionen in der EU.' }
+      { year: '2030', text: 'Grenzwerte für das Lebenszyklus-GWP neuer Gebäude nach den nationalen Fahrplänen (EPBD Art. 7).' }
     ],
     formula: {
       math: '\\text{GWP}_{\\text{emb}} = \\sum_{i=1}^n \\left( m_i \\cdot \\text{GWP}_{\\text{spec}, i}^{\\text{A1-A3}} \\right) \\le \\text{Limit}_{\\text{LCA}} \\quad [\\text{kg CO}_2\\text{e/m}^2]',
@@ -486,7 +486,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     audiences: ['bestand', 'finanzen', 'planer'],
     primaryTarget: 'Brennstoffhändler (Gas, Öl, Kohle), Immobilieneigentümer, Vermieter',
     leadQuote: 'Das europaweite Preissignal ab 2028: Fossile Heizenergie im Gebäudebestand wird marktgetrieben verteuert.',
-    coreSummary: 'Ursprünglich für 2027 geplant, durch Verordnung (EU) 2026/667 (politische Einigung November 2025) auf 2028 verschoben. Dann startet das EU-ETS II als eigenständiges Handelssystem für Brennstoffe, die in Gebäuden verbrannt werden. Inverkehrbringer fossiler Brennstoffe müssen Zertifikate erwerben. Die Kosten werden auf die Heizkosten umgelegt. Ein Marktstabilitätsmechanismus soll Preisspitzen dämpfen (Richtwert 45 € je Tonne in Preisen von 2020); die schrittweise Mengenverknappung verteuert den Betrieb unsanierter Bestandsgebäude dennoch deutlich.',
+    coreSummary: 'Ursprünglich für 2027 geplant, auf 2028 verschoben: Die Verschiebung steht in Art. 2 der Verordnung (EU) 2026/667 vom 11.03.2026 (Änderung des Europäischen Klimagesetzes, Verordnung (EU) 2021/1119; Angabe nach Sekundärquelle, am Amtsblatt zu bestätigen); geregelt ist das ETS II selbst in der Richtlinie 2003/87/EG in der Fassung der Richtlinie (EU) 2023/959. Dann startet das EU-ETS II als eigenständiges Handelssystem für Brennstoffe, die in Gebäuden verbrannt werden. Inverkehrbringer fossiler Brennstoffe müssen Zertifikate erwerben. Die Kosten werden auf die Heizkosten umgelegt. Ein Marktstabilitätsmechanismus soll Preisspitzen dämpfen (Richtwert 45 € je Tonne in Preisen von 2020); die schrittweise Mengenverknappung verteuert den Betrieb unsanierter Bestandsgebäude dennoch deutlich.',
     keyDuties: [
       'Inverkehrbringer von Brennstoffen müssen ab Start des ETS II für die mit Gas und Öl verbundenen Emissionen Zertifikate abgeben; bis dahin gilt in Deutschland das BEHG.',
       'Strikte jährliche Reduktion der Zertifikatemenge um über 5 % pro Jahr.',
@@ -496,7 +496,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     impactOnMaterials: 'Erhöht die Wirtschaftlichkeit energetischer Dämmmaßnahmen dramatisch. Die statische und dynamische Amortisationszeit von Fassaden- und Dachdämmungen sinkt durch hohe fossile Heizkosten um 30–50 %.',
     milestones: [
       { year: '2025', text: 'Start der Zertifikatsüberwachung und Monitoring-Pflicht der Brennstoffhändler.' },
-      { year: '2027', text: 'Ursprünglich geplanter Handelsstart (durch VO (EU) 2026/667 verschoben).' },
+      { year: '2027', text: 'Ursprünglich geplanter Handelsstart (verschoben durch Art. 2 der Verordnung (EU) 2026/667).' },
       { year: '2028', text: 'Start des Handels (Auktionierung der Brennstoffzertifikate).' },
       { year: '2030', text: 'Freie Preisbildung; Marktanalysen prognostizieren 100–200 €/t CO₂.' }
     ]
@@ -590,14 +590,14 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     id: 'csrd_esrs',
     shortName: 'CSRD / ESRS E1',
     fullName: 'Corporate Sustainability Reporting Directive & ESRS E1 Klimawandel',
-    norm: 'Richtlinie (EU) 2022/2464 & Delegierte Verordnung (EU) 2023/2772',
+    norm: 'Richtlinie (EU) 2022/2464, geändert durch Omnibus-Richtlinie (EU) 2026/470; Delegierte Verordnung (EU) 2023/2772',
     level: 'ebene_5_finanzen',
     levelLabel: 'Ebene 5: Finanzen, Vergabe & Lieferketten',
     legalType: 'EU-Richtlinie (national umzusetzen)',
     audiences: ['finanzen', 'baustoffe'],
     primaryTarget: 'Börsennotierte und große Bauunternehmen, Wohnungsbaugesellschaften, Baustoffindustrie',
     leadQuote: 'Doppelte Wesentlichkeit und auditierte Offenlegung der Scope-3-Emissionen der Lieferkette.',
-    coreSummary: 'Die CSRD löst die bisherige NFRD ab und zwingt rund 50 000 Unternehmen in Europa zu einer extern geprüften Nachhaltigkeitsberichterstattung im Lagebericht. Baukonzerne und Bestandshalter müssen nach Standard ESRS E1 ihre vor- und nachgelagerten Scope-3-Emissionen quantifizieren – das umfasst alle grauen Emissionen der eingekauften Baustoffe und Nachunternehmerleistungen.',
+    coreSummary: 'Die CSRD löst die bisherige NFRD ab und verpflichtet große Unternehmen zu einer extern geprüften Nachhaltigkeitsberichterstattung im Lagebericht. Beschlossen (Omnibus-Richtlinie (EU) 2026/470, Amtsblatt 26.02.2026): Berichtspflichtig sind nur noch Unternehmen mit mehr als 1000 Beschäftigten und mehr als 450 Mio. € Umsatz, spätestens ab Geschäftsjahr 2027; der Anwenderkreis sinkt um rund 90 %. Geplant bzw. ausstehend: vereinfachte ESRS als delegierter Rechtsakt und die Umsetzung in deutsches Recht (Frist 19.03.2027). Baukonzerne und Bestandshalter müssen nach Standard ESRS E1 ihre vor- und nachgelagerten Scope-3-Emissionen quantifizieren – das umfasst alle grauen Emissionen der eingekauften Baustoffe und Nachunternehmerleistungen.',
     keyDuties: [
       'Berichterstattung nach dem Prinzip der doppelten Wesentlichkeit (Impact & Financial Materiality).',
       'Detaillierte Bilanzierung von Scope 1, Scope 2 und vor allem Scope 3 (eingekaufte Güter & Baustoffe).',
@@ -606,16 +606,16 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     ],
     impactOnMaterials: 'Baustoffhersteller, die ihren Kunden keine auditierten CO₂-Kennwerte (EPDs) liefern können, scheiden aus den Bieterlisten großer Baukonzerne und Wohnungsbaugesellschaften aus.',
     milestones: [
-      { year: '2024', text: 'Große kapitalmarktorientierte Unternehmen (> 500 MA) berichten erstmals.' },
-      { year: '2025', text: 'Alle großen Unternehmen (> 250 MA / 50 Mio. € Umsatz) unterliegen der CSRD.' },
-      { year: '2026', text: 'Börsennotierte KMU folgen mit vereinfachten Standards.' }
+      { year: '2024', text: 'Große kapitalmarktorientierte Unternehmen (> 500 MA) berichten erstmals (Geschäftsjahr 2024).' },
+      { year: '2026', text: 'Beschlossen: Omnibus-Richtlinie (EU) 2026/470 – Schwellen > 1000 MA und > 450 Mio. € Umsatz; Mitgliedstaaten können nicht mehr erfasste Unternehmen für 2025 und 2026 befreien.' },
+      { year: '2027', text: 'Anwendung der neuen Schwellen spätestens ab Geschäftsjahr 2027; Umsetzungsfrist 19.03.2027 (deutsches Umsetzungsgesetz ausstehend).' }
     ]
   },
   {
     id: 'csddd_lksg',
     shortName: 'CSDDD & LkSG',
     fullName: 'EU-Lieferkettenrichtlinie (CSDDD) & deutsches Lieferkettensorgfaltspflichtengesetz',
-    norm: 'Richtlinie (EU) 2024/1760 & deutsches LkSG vom 16.07.2021',
+    norm: 'Richtlinie (EU) 2024/1760, geändert durch Omnibus-Richtlinie (EU) 2026/470; deutsches LkSG vom 16.07.2021',
     level: 'ebene_5_finanzen',
     levelLabel: 'Ebene 5: Finanzen, Vergabe & Lieferketten',
     legalType: 'EU-Richtlinie (national umzusetzen)',
@@ -633,8 +633,8 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     milestones: [
       { year: '2023', text: 'LkSG gilt in DE für Unternehmen > 3000 Mitarbeiter.' },
       { year: '2024', text: 'LkSG-Schwelle sinkt in DE auf Unternehmen > 1000 Mitarbeiter.' },
-      { year: '2027', text: 'Start der CSDDD für Konzerne > 5000 MA und 1,5 Mrd. € Umsatz.' },
-      { year: '2029', text: 'Vollständige Anwendbarkeit der CSDDD (> 1000 MA / 450 Mio. € Umsatz).' }
+      { year: '2026', text: 'Beschlossen: Omnibus-Richtlinie (EU) 2026/470 – CSDDD nur noch für Unternehmen > 5000 MA und > 1,5 Mrd. € Umsatz (Anwenderkreis rund −70 %).' },
+      { year: '2029', text: 'Einheitlicher Anwendungsbeginn der CSDDD am 26.07.2029.' }
     ]
   },
   {
@@ -664,16 +664,16 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
   },
   {
     id: 'gebaeudetyp_e',
-    shortName: 'Gebäudetyp E (§ 650o BGB)',
+    shortName: 'Gebäudetyp E (Gesetzentwurf, Stand 10/2026)',
     fullName: 'Gebäudetyp-E-Gesetz – Gesetz zur Erleichterung des einfachen Bauens (Entwurf)',
-    norm: 'Entwurf § 650o BGB (BMJ Initiative 2024)',
+    norm: 'Gesetzentwurf, Stand 10/2026 (Regierungsentwurf 2024 mit § 650o BGB-E erledigt; neuer Entwurf zum Bauvertragsrecht §§ 650a ff. BGB)',
     level: 'ebene_5_finanzen',
     levelLabel: 'Ebene 5: Finanzen, Vergabe & Lieferketten',
     legalType: 'Gesetzesinitiative',
     audiences: ['planer', 'bestand', 'baustoffe'],
     primaryTarget: 'Architekten, Ingenieure, Bauherren, Bauunternehmer, Wohnungsbau',
     leadQuote: 'Rechtlich belastbares Abweichen von übertriebenen Komfortnormen für ressourcenschonendes, einfaches Bauen.',
-    coreSummary: 'Das geplante Gebäudetyp-E-Gesetz (Stand Oktober 2026 noch nicht in Kraft) schafft nach dem Entwurf eine zivilrechtliche Grundlage im Werkvertragsrecht (§ 650o BGB), damit Vertragsparteien wirksam von nicht-sicherheitsrelevanten Komfort- und Ausstattungsnormen (z. B. überdimensionierter Trittschallschutz, überbordende Elektroinstallationen) abweichen können. Die Haftungsfalle der "anerkannten Regeln der Technik" (aRdT) wird entschärft, ohne Standards bei Brandschutz und Statik zu senken.',
+    coreSummary: 'Das geplante Gebäudetyp-E-Gesetz (Gesetzentwurf, Stand 10/2026; nicht beschlossen, nicht in Kraft) soll eine zivilrechtliche Grundlage im Werkvertragsrecht schaffen (Entwurf 2024: § 650o BGB-E), damit Vertragsparteien wirksam von nicht-sicherheitsrelevanten Komfort- und Ausstattungsnormen (z. B. überdimensionierter Trittschallschutz, überbordende Elektroinstallationen) abweichen können. Die Haftungsfalle der "anerkannten Regeln der Technik" (aRdT) wird entschärft, ohne Standards bei Brandschutz und Statik zu senken.',
     keyDuties: [
       'Möglichkeit der vertraglichen Vereinbarung einfacher, suffizienter Bauweisen zwischen Fachkundigen.',
       'Abweichung von Komfortstandards führt nicht mehr automatisch zum Sachmangel nach BGB.',
@@ -682,8 +682,8 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     ],
     impactOnMaterials: 'Ermöglicht den Einsatz monolithischer Wandaufbauten (z. B. ungedämmter porosierter Hochlochziegel oder tragender Lehmbau DIN 18940), spart graue Energie in der TGA und senkt die Baukosten um bis zu 25 %.',
     milestones: [
-      { year: '2024', text: 'Vorlage des Regierungsentwurfs für § 650o BGB durch das BMJ.' },
-      { year: '2026', text: 'Gesetzgebungsverfahren noch nicht abgeschlossen (Stand Oktober 2026); Übernahme in Landesbauordnungen offen.' }
+      { year: '2024', text: 'Regierungsentwurf mit § 650o BGB-E (BT-Drs. 20/13959); mit Ablauf der 20. Wahlperiode erledigt.' },
+      { year: '2026', text: 'Gesetzentwurf, Stand 10/2026: Gesetzgebungsverfahren nicht abgeschlossen; Übernahme in Landesbauordnungen offen.' }
     ]
   }
 ];
@@ -1162,7 +1162,7 @@ export const RechtsrahmenKompendium: React.FC = () => {
                   3. Baustoffe &amp; Ökodesign
                 </span>
                 <h6 className="font-bold text-xs text-amber-950">
-                  BauPVO 2024 &bull; ESPR &bull; EMoCo &bull; EBV
+                  BauPVO 2024 &bull; ESPR &bull; Embodied Carbon &bull; EBV
                 </h6>
                 <p className="text-[11px] text-amber-900/80 leading-relaxed">
                   <strong>Anforderung:</strong> CE-Umweltdeklaration (GWP), Digitaler Bauproduktpass (DPP), Begrenzung grauer Emissionen (Embodied Carbon), Ersatzbaustoffe.
@@ -1264,7 +1264,7 @@ export const RechtsrahmenKompendium: React.FC = () => {
                 badgeColor: 'bg-blue-100 text-blue-800 border-blue-300',
                 items: [
                   'EPBD Subventionsstopp: Ab 01.01.2025 dürfen die EU-Staaten keine finanziellen Anreize mehr für eigenständige fossile Kessel gewähren.',
-                  'CSRD Ausweitung: Große nicht-kapitalmarktorientierte Unternehmen (> 250 MA) müssen Scope-3-Emissionen erfassen.',
+                  'CSRD: Mit der Omnibus-Richtlinie (EU) 2026/470 berichten nur noch Unternehmen mit > 1000 MA und > 450 Mio. € Umsatz (spätestens ab Geschäftsjahr 2027).',
                   'ETS II Monitoring: Start der behördlichen Emissionserfassung für Brennstoffhändler.',
                   'EUDR Entwaldung: Scharfstellung für Großunternehmen beim Inverkehrbringen von Holzprodukten.'
                 ]

@@ -42,21 +42,31 @@ export function fugenbandPruefung(art: Fugenart, wasserdruckM: number, dickeCm: 
 }
 
 // ── Dämmung: U-Wert vor/nach Dämmung, Einsparung und Mindestdicke (Dämmstoff-Berater) ──
-export interface DaemmEingabe { rBestand: number; dickeCm: number; lambda: number; rsi: number; rse: number; uZiel: number; ohneBestand: boolean }
-/** Heizgradstunden-Ansatz: 84 kKh/a ≈ Gradtagzahl 3 500 Kd (Lehrwert); CO₂-Faktor 0,22 kg/kWh (Lehrwert, F-Freigabe) */
+export interface DaemmEingabe {
+  rBestand: number; dickeCm: number; lambda: number; rsi: number; rse: number; uZiel: number; ohneBestand: boolean;
+  /** Temperatur-Korrekturfaktor F_x gegen unbeheizte Räume (Kellerdecke 0,5; Standard 1,0 gegen Außenluft) */
+  fx?: number;
+}
+/**
+ * Heizgradstunden-Ansatz: 84 kKh/a ≈ Gradtagzahl 3 500 Kd (Lehrwert), Einsparung = ΔU · F_x · 84 kWh/(m²a) ohne Anlagenaufwand.
+ * CO₂-Faktor 0,24 kg/kWh = Erdgas nach Anlage 9 GModG (Umsetzung 29.10.2026, T8-DA-Q1; vorher Lehrwert 0,22).
+ * F_x = 0,5 für die Kellerdecke gegen unbeheizten Keller (Größenordnung nach DIN V 4108-6; vorläufig, F-Freigabe).
+ */
 export const HEIZGRADSTUNDEN_KKH = 84;
-export const CO2_FAKTOR_HEIZUNG = 0.22;
+export const CO2_FAKTOR_HEIZUNG = 0.24;
+export const FX_KELLERDECKE = 0.5;
 export function daemmBerater(e: DaemmEingabe) {
   const rDaemm = (e.dickeCm / 100) / e.lambda;
   const uNeu = 1 / (e.rBestand + rDaemm + e.rsi + e.rse);
   const rAlt = e.rBestand + e.rsi + e.rse;
   const uAlt = rAlt > 0 ? 1 / rAlt : 10;
   const dU = uAlt - uNeu;
-  const einsparung = e.ohneBestand || dU <= 0 ? 0 : r2(dU * HEIZGRADSTUNDEN_KKH);
+  const fx = e.fx ?? 1.0;
+  const einsparung = e.ohneBestand || dU <= 0 ? 0 : r2(dU * fx * HEIZGRADSTUNDEN_KKH);
   const co2 = r2(einsparung * CO2_FAKTOR_HEIZUNG);
   const rErf = 1 / e.uZiel - e.rBestand - e.rsi - e.rse;
   const empfDickeCm = rErf <= 0 ? 2 : Math.max(2, Math.ceil(rErf * e.lambda * 100));
-  return { rDaemm, uNeu, uAlt, erfuellt: uNeu <= e.uZiel, einsparung, co2, empfDickeCm };
+  return { rDaemm, uNeu, uAlt, erfuellt: uNeu <= e.uZiel, einsparung, co2, empfDickeCm, fx };
 }
 
 // ── Farben und Lacke: Nassschichtdicke und Materialbedarf ──
