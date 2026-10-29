@@ -117,6 +117,10 @@ Druckfestigkeitsklassen (Mittelwert = 1,25 · Klasse) und LD/HD-Ziegel stimmen. 
 **F-Freigabe-Stellen**
 - Mindestdruckfestigkeitsklasse der Leichtmauermörtel nach DIN 20000-412 (Entwurf 2026-04 liegt vor, [DIN Media](https://www.dinmedia.de/de/norm-entwurf/din-20000-412/399667302)).
 
+**Umsetzung 29.10.2026 – T5-PM-5:** Wasserbedarf je Putzart im Kern `src/calc/moertelbedarf.ts` (`WASSER_PUTZ_L_JE_KG`, Lehrwerte): Gips 0,6, Luftkalk 0,22, Kalkzement 0,2, Zement 0,16, Sanierputz 0,2, Aerogel-Dämmputz 1,0 l/kg; Dünnbettmörtel bleibt 0,26 l/kg. Beispiel Gipsputz 50 m², 15 mm: 495 statt 214,5 l Wasser. Beschriftung „Wasserbedarf ca. (Lehrwert je Putzart)“. Test `tests/moertelbedarf.test.ts`. Quelle: Entscheidung 28.10. (Gips ≈ 0,6 l/kg); [HAGATHERM Typ Aerogel, technisches Merkblatt](https://prd-media.crb.ch/media/111640/HAGATHERM_Typ_Aerogel.pdf) (7 l Wasser je 7-kg-Sack).
+
+**Umsetzung 29.10.2026 – T5-PM-6:** Steckbrief-, System- und Fachtexte sachlich überarbeitet (rund 90 Werte, Schlüssel unverändert): werbende Wörter („Hochleistungs-“, „extrem“, „vollständig“, „optimal“, „hervorragend“, „Spitzenputz“) entfernt; „Carbonatisierungskatalyse“, „Gips-Zellmatrix atmet aktiv“, CSH „extreme Druckfestigkeit“ ersetzt; Ansprache „Erfahre“ entfernt. Fachliche Präzisierungen: Zementputz ersetzt keine Abdichtung (DIN 18533); Sanierputz mit begrenzter Salzaufnahme, Luftporengehalt Frischmörtel > 25 Vol.-% / Porosität ≥ 40 Vol.-%; Regelwerk „DIN V 18550-2“ → DIN EN 998-1 (Typ R); WDVS-Verwendbarkeit nach abZ/aBG bzw. ETA; Dünnbettfuge 1–3 mm; Künzel-Kriterien nach DIN 4108-3. Quelle: DIN EN 998-1/-2, DIN 4108-3, WTA-Merkblatt 2-9, DIN 18533.
+
 **Empfehlung:** freigabefähig nach Korrektur T5-PM-1 bis -4 und Klärung von T5-PM-5/-6.
 
 - [ ] Modul freigeben
@@ -192,6 +196,10 @@ Druckfestigkeitsklassen (Mittelwert = 1,25 · Klasse) und LD/HD-Ziegel stimmen. 
 **F-Freigabe-Stellen**
 - T5-LE-2 (Normtext DIN 18940/18945).
 
+**Umsetzung 29.10.2026 – T5-LE-1:** Schätzmodell als Kern `src/calc/lehm.ts` (`lehmSchaetzmodell`), Formeln unverändert, als **Lehrmodell ohne Normbezug** gekennzeichnet; die unwirksamen `Math.max`-Untergrenzen entfallen, außerhalb des Reglerbereichs warnt der Kern; Hinweis auf 2–4 N/mm² für Stampflehm; Sorption heißt jetzt „Feuchtepuffer-Kennzahl (Lehrmodell, ohne Zeitbezug)“ mit Verweis auf die Zeitstufen der DIN 18947. Grenzen-Eintrag `lehm` neu. Test `tests/lehm.test.ts`. Quelle: Tranche 5, L1–L3.
+
+**Umsetzung 29.10.2026 – T5-LE-2:** Normtext: Anwendungsgrenzen DIN 18940 (13 m, GK 1–4) und Druckfestigkeitsklassen DIN 18945 im Modul als „vorläufig, F-Freigabe“ gekennzeichnet; Werte unverändert. Quelle: DIN 18940:2023-06, DIN 18945:2024-03 + A1:2026-06 (Normtext).
+
 **Empfehlung:** freigabefähig nach Klärung von T5-LE-1/-2.
 
 - [ ] Modul freigeben
@@ -221,6 +229,8 @@ Druckfestigkeitsklassen (Mittelwert = 1,25 · Klasse) und LD/HD-Ziegel stimmen. 
 **F-Freigabe-Stellen**
 - T5-ER-2 (ZTV E-StB 17, Abschnitt Verdichtungsanforderungen); Fußnote der Tab. 1 zu ST/GT/SU/GU (unter bestimmten Bedingungen F1) ist nicht abgebildet.
 
+**Umsetzung 29.10.2026 – T5-ER-2:** Formelbox: E_v2/E_v1 ≤ **2,3** bei D_Pr ≥ 100 % und ≤ **2,5** bei D_Pr ≥ 98 %; höhere Werte zulässig, wenn E_v1 ≥ 0,6·E_v2 (vorher ≤ 2,2). Als „vorläufig, F-Freigabe“ gekennzeichnet; Fachgebiet Geotechnik um `ZTV E-StB` ergänzt. Der Wert 2,2 für Frostschutzschichten nach ZTV SoB-StB (Verkehrswegebau) bleibt unberührt. Quelle: ZTV E-StB 17, Verdichtungsanforderungen (Normtext).
+
 **Empfehlung:** freigabefähig nach Korrektur T5-ER-1 und Klärung von T5-ER-2.
 
 - [ ] Modul freigeben
@@ -246,6 +256,8 @@ Druckfestigkeitsklassen (Mittelwert = 1,25 · Klasse) und LD/HD-Ziegel stimmen. 
 
 **F-Freigabe-Stellen**
 - T5-GL-3; Schubmoduln PVB bleiben Lehrwerte (Grenzen).
+
+**Umsetzung 29.10.2026 – T5-GL-3:** Regelwerkseinträge DIN 18008-3/-4:2024-12 ergänzt: „ersetzt 2013-07. Bauaufsichtlich maßgebend ist die in der MVV TB bzw. der Verwaltungsvorschrift des Landes eingeführte Ausgabe – Einführung der Ausgabe 2024-12 prüfen, bis dahin gilt ggf. 2013-07“. Quelle: MVV TB (Einführung prüfen).
 
 **Empfehlung:** freigabefähig nach Korrektur T5-GL-1/-2 und Klärung von T5-GL-3.
 
@@ -279,6 +291,8 @@ Kurzfassung (S355J2+N, B500A/B/C-Duktilität, CEV-Grenzen S235JR 0,35 / S355J2 0
 
 **F-Freigabe-Stellen** (aus Kern, unverändert)
 - CEV-Grenzwerte gegen DIN EN 10025-2:2019-10 (Kern: „vorläufig, F-Freigabe“).
+
+**Umsetzung 29.10.2026 – T5-ST-3:** Verbundbedingungen nach DIN EN 1992-1-1, 8.4.2 (Bild 8.2) ausformuliert: gut bei 45°–90° Neigung; bei flacheren Stäben alle Stäbe für h ≤ 250 mm, für 250 < h ≤ 600 mm die unteren 250 mm, für h > 600 mm Stäbe mindestens 300 mm unter der Oberseite; sonst mäßig (η₁ = 0,7). Quelle: DIN EN 1992-1-1, 8.4.2.
 
 **Empfehlung:** freigabefähig nach Korrektur T5-ST-1/-2 und Klärung von T5-ST-3.
 

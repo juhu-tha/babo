@@ -514,7 +514,8 @@ export function verdunstungsrate(e: VerdunstungEingabe): VerdunstungErgebnis {
 // ---------------------------------------------------------------------------------------------
 
 export type Festigkeitsentwicklung = 'schnell' | 'mittel' | 'langsam' | 'sehr_langsam';
-export type ExpositionNB = 'x0_xc1' | 'andere' | 'xm';
+/** xf34: XF3/XF4 – Verdopplung wie XM (Umsetzung 29.10.2026, T9-NB-1; vorläufig, F-Freigabe Beton DIN 1045-3, Tab. 3) */
+export type ExpositionNB = 'x0_xc1' | 'andere' | 'xm' | 'xf34';
 export type OberflaechenTemp = 'ge25' | '15_25' | '10_15' | '5_10' | '<5';
 
 /** Klasse der Festigkeitsentwicklung aus r = f_cm,2/f_cm,28 (r ≥ 0,50 schnell, ≥ 0,30 mittel, ≥ 0,15 langsam) */
@@ -543,14 +544,19 @@ export interface NachbehandlungErgebnis {
 
 /**
  * Mindestdauer der Nachbehandlung nach DIN 1045-3: Tabellenwert je Oberflächentemperatur und Festigkeitsentwicklung,
- * X0/XC1 pauschal 0,5 d, XM doppelte Dauer; unter 5 °C Sondermaßnahmen.
+ * X0/XC1 pauschal 0,5 d, XM und (vorläufig) XF3/XF4 doppelte Dauer; unter 5 °C kein Tabellenwert: Die Dauer ist um die
+ * Zeit unter 5 °C zu verlängern, zusätzlich sind Winterbaumaßnahmen nötig (Hinweis, Umsetzung 29.10.2026, T9-NB-1).
  */
 export function nachbehandlungsdauer(entwicklung: Festigkeitsentwicklung, exposition: ExpositionNB, oberflaeche: OberflaechenTemp): NachbehandlungErgebnis {
   const hinweise: Hinweis[] = [];
-  if (oberflaeche === '<5') return { tage: null, sondermassnahmen: true, hinweise };
+  if (oberflaeche === '<5') {
+    hinweise.push({ stufe: 'warnung', feld: 'oberflaeche', text: 'Unter 5 °C: Nachbehandlungsdauer um die Zeit verlängern, in der die Oberflächentemperatur unter 5 °C lag; Winterbaumaßnahmen (Wärmedämmung, Beheizung) zusätzlich.' });
+    return { tage: null, sondermassnahmen: true, hinweise };
+  }
   if (exposition === 'x0_xc1') return { tage: DIN1045_3_NACHBEHANDLUNG.x0_xc1_tage, sondermassnahmen: false, hinweise };
   const tage = DIN1045_3_NACHBEHANDLUNG.mindestdauerTage[oberflaeche][entwicklung];
-  return { tage: exposition === 'xm' ? tage * 2 : tage, sondermassnahmen: false, hinweise };
+  if (exposition === 'xf34') hinweise.push({ stufe: 'warnung', feld: 'exposition', text: 'Verdopplung für XF3/XF4 wie für XM nach der Wiedergabe der DIN 1045-3, Tab. 3 (vorläufig, Normtext prüfen).' });
+  return { tage: exposition === 'xm' || exposition === 'xf34' ? tage * 2 : tage, sondermassnahmen: false, hinweise };
 }
 
 // ---------------------------------------------------------------------------------------------

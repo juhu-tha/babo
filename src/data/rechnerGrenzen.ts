@@ -242,7 +242,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     kurz: "Bemessungswert der Einwirkungen nach DIN EN 1990, Gl. 6.10, aus einer ständigen und zwei veränderlichen Einwirkungen.",
     grenzen: [
       "Nur Grundkombination Gl. 6.10 (ständige und vorübergehende Situation); keine Gl. 6.10a/b, keine außergewöhnliche oder Erdbebensituation.",
-      "Q_k,1 ist fest die Leiteinwirkung; welche Einwirkung maßgebend ist, muss durch Vertauschen selbst geprüft werden.",
+      "Zwei veränderliche Einwirkungen; beide Kombinationen (Q_k,1 bzw. Q_k,2 als Leiteinwirkung) werden gerechnet, das Maximum wird angezeigt.",
       "Eine ständige Einwirkung mit einem γ_G für alle Anteile; günstig wirkende Anteile mit γ_G,inf = 1,00 nur über die Auswahl.",
     ],
   },
@@ -259,6 +259,15 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     grenzen: [
       "TGA: feste Massenanteile einer Lehrprobe mit linearen Stufen; keine Heizrate, keine Überlappung der Zersetzungsbereiche.",
       "MIP: Zylinderporenmodell mit γ = 0,485 N/m und θ = 140°; erfasst werden Porenzugänge, nicht die Porenkörper (Flaschenhals-Effekt).",
+    ],
+  },
+  lehm: {
+    kurz: "Lehrmodell Stampflehm: Tendenzen von Rohdichte, Druckfestigkeit, Schwindmaß, Wärmeleitfähigkeit und Feuchtepuffer aus Ton-, Schluff- und Sandanteil.",
+    grenzen: [
+      "Lehrmodell mit linearen Ansätzen ohne Quelle und ohne Normbezug; keine Bemessungswerte nach DIN 18940/18945.",
+      "Druckfestigkeit des Modells etwa 0,6 bis 2,2 N/mm²; für Stampflehm nennt die Fachliteratur etwa 2 bis 4 N/mm².",
+      "Feuchtepuffer-Kennzahl ohne Zeitbezug; Sorptionsklassen nach DIN 18947 beziehen sich auf Zeitstufen bis 12 h.",
+      "Außerhalb des Reglerbereichs (Ton 3–60 %, Sand 15–85 %, Herstellfeuchte 5–25 %) warnt der Kern.",
     ],
   },
   erdbau: {
@@ -283,7 +292,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
     kurz: "Zeigt fest hinterlegte Schichtaufbauten je Belastungsklasse; es wird nichts gerechnet.",
     rechnet: false,
     grenzen: [
-      "Schichtdicken sind vereinfachte Lehrwerte, maßgebend sind die Tafeln der RStO 12/24.",
+      "Gebundene Schichten nach RStO 12/24, Tafel 1/2, Zeile 1 (vorläufig); Gesamtdicken und Frostschutzschicht sind Lehrannahmen.",
       "Frostzone, Frostempfindlichkeit und Wasserverhältnisse beeinflussen den Aufbau nicht.",
     ],
   },

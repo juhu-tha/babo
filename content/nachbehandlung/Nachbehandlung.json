@@ -9,7 +9,7 @@
     "festigkeitsentwicklungR": "Festigkeitsentwicklung (r)",
     "ergebnisNachbehandlungsdauer": "Ergebnis (Nachbehandlungsdauer)",
     "erforderlicheMindestdauer": "Erforderliche Mindestdauer:",
-    "beiOberflächentemperaturenUnter5": "Bei Oberflächentemperaturen unter 5°C kommt die Festigkeitsentwicklung nahezu zum Erliegen. Beton darf nicht gefrieren! Es sind **Winterbaumaßnahmen** (Wärmedämmung, Beheizung) erforderlich.",
+    "beiOberflächentemperaturenUnter5": "Bei Oberflächentemperaturen unter 5°C kommt die Festigkeitsentwicklung nahezu zum Erliegen. Beton darf nicht gefrieren! Die Nachbehandlungsdauer ist um die Zeit zu verlängern, in der die Oberflächentemperatur unter 5 °C lag; zusätzlich sind **Winterbaumaßnahmen** (Wärmedämmung, Beheizung) erforderlich (DIN 1045-3:2023-08; vorläufig, F-Freigabe).",
     "x0UndXc10": "X0 und XC1: 0,5 Tage (12 Stunden), sofern die Verarbeitbarkeitszeit unter 5 Stunden liegt und die Oberflächentemperatur mindestens 5 °C beträgt.",
     "normtabelleAnzeigenDin1045": "Normtabelle anzeigen (DIN 1045-3, Mindestdauer in Tagen; X0/XC1: 0,5 Tage; XM: doppelte Werte)",
     "werteNachDin1045": "Werte nach DIN 1045-3:2023-08, Abschn. 9.6 (Nachbehandlungsklasse 3).",

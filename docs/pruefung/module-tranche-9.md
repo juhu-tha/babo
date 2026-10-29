@@ -120,6 +120,8 @@
 
 **F-Freigabe-Stellen:** Entfall der Mehlkorn-Höchstwerte und Mindest-Leimvolumen in DIN 1045-2:2023-08 (aus früherer Runde).
 
+**Umsetzung 29.10.2026 – T9-GL-1:** Normtext: Bezug zur Betonklasse ergänzt – in BK-N nach DIN 1045-1000 rezyklierte Gesteinskörnung nur bis 25 Vol.-% (WO, WF), höhere Anteile setzen BK-E voraus (Anhang E, Tab. E.2.5); Werte „vorläufig, F-Freigabe“. Mit T12-RE-1 (Ressourcen-Simulator) abgestimmt. Quelle: [IFEU, Das neue Regelwerk DIN 1045-2](https://kreislaufwirtschaft-bau.rlp.de/fileadmin/kreislaufwirtschaft-bau/Startseite/Service/Fachgespraeche/neues_Regelwerk/220920_IFEU_Das_neue_Regelwerk_DIN_1045-2.pdf); Normtext DIN 1045-2:2023-08.
+
 **Empfehlung:** freigabefähig nach Klärung von T9-GL-1.
 
 - [ ] Modul freigeben
@@ -144,6 +146,8 @@
 - Hinweis: Die schematische Wärmekurve endet für C₃A bei 900 J/g und für C₂S bei 200 J/g, der Text nennt rund 1 350 und 250 J/g (vollständige Hydratation). Als „schematische Lehrkurve“ gekennzeichnet, kein Befund.
 
 **F-Freigabe-Stellen:** Anrechnung von Zusatzstoffen bei XF2/XF4 (Frage M-6 aus Tranche 1, gilt mit).
+
+**Umsetzung 29.10.2026 – T9-BM-1:** Normtext: Hinweis der Zementkarten „manuell prüfen“ → „vorläufig, F-Freigabe am Normtext“ (Anwendungstabellen DIN 1045-2:2023-08); Karteninhalte unverändert. Quelle: DIN 1045-2:2023-08 (Normtext).
 
 **Empfehlung:** freigabefähig nach Klärung von T9-BM-1.
 
@@ -194,6 +198,8 @@ Die Tabelle (1/2/2/3, 1/2/4/5, 2/4/7/10, 3/6/10/15 d), X0/XC1 0,5 d und die Zuor
 - **offen – Frage T9-NB-1 (Temperaturen < 5 °C, XF3/XF4):** (a) Der Kern meldet unter 5 °C „Sondermaßnahmen“ ohne Dauer. Nach DIN 1045-3 ist die Dauer um die Zeit unter 5 °C zu verlängern; Winterbaumaßnahmen sind zusätzlich nötig. (b) Nach der Wiedergabe bei SCHWENK gilt die 70-%-Regel bzw. Verdopplung ohne genaueren Nachweis für XM **und XF3/XF4** (Nachbehandlungsklasse 4: XM1–XM3, XF4 bei langsamen und sehr langsamen Betonen). Der Rechner verdoppelt nur bei XM. Soll die Auswahl um XF4 (bzw. XF3) ergänzt und der Text zur Verlängerung unter 5 °C angepasst werden? (c) Betone ab C70/85: mindestens 1 Tag.
 
 **F-Freigabe-Stellen:** Abschnittsnummer „DIN 1045-3:2023-08, Abschn. 9.6“; Zuordnung XF3/XF4 zur Nachbehandlungsklasse 4.
+
+**Umsetzung 29.10.2026 – T9-NB-1:** Kern `nachbehandlungsdauer`: neue Auswahl **XF3, XF4** mit doppelter Dauer wie XM (vorläufig, Hinweis im Ergebnis); unter 5 °C Hinweis „Dauer um die Zeit unter 5 °C verlängern, Winterbaumaßnahmen zusätzlich“ (Kern und Modultext). „Andere“ nennt jetzt XF1, XF2. Tests `tests/hydratation.test.ts`, `tests/modulpruefungTranche9.test.ts` (NB7, NB8). Offen bleibt (c) Mindestdauer ab C70/85. Quelle: DIN 1045-3:2023-08, Tab. 3 (Normtext; Wiedergabe SCHWENK).
 
 **Empfehlung:** freigabefähig nach Klärung von T9-NB-1.
 
@@ -288,6 +294,8 @@ Die Tabelle (1/2/2/3, 1/2/4/5, 2/4/7/10, 3/6/10/15 d), X0/XC1 0,5 d und die Zuor
 
 **F-Freigabe-Stellen:** keine.
 
+**Umsetzung 29.10.2026 – T9-IW-1:** „bis 0,8 mm Breite autonom abdichtet“ → „verschließt feine Risse selbstständig (Laborwerte um 0,5 mm Rissbreite, Jonkers)“. Quelle: Entscheidung 28.10..
+
 **Empfehlung:** freigabefähig nach Korrektur T9-IW-2/-3 und Klärung von T9-IW-1.
 
 - [ ] Modul freigeben
@@ -311,6 +319,8 @@ Die Tabelle (1/2/2/3, 1/2/4/5, 2/4/7/10, 3/6/10/15 d), X0/XC1 0,5 d und die Zuor
 - **offen – Frage T9-BK-1 (Projekthinweis):** Das Modul enthält einen Projekthinweis mit Nennung der Hochschule und des Transferzentrums. Soll dieser Hinweis bleiben? Sonstige projektbezogene Angaben enthält das Modul nicht.
 
 **F-Freigabe-Stellen:** keine neuen (Permanenz im Beton bleibt Richtwert).
+
+**Umsetzung 29.10.2026 – T9-BK-1:** Projekthinweis mit Nennung von Hochschule und Transferzentrum entfernt; der neutrale Hinweis („öffentlich zugänglicher Stand …, ersetzt keine Eignungsprüfung“) bleibt. Quelle: Entscheidung 28.10..
 
 **Empfehlung:** freigabefähig nach Klärung von T9-BK-1.
 
@@ -337,6 +347,8 @@ Identitätskriterien (n = 1: f_ci ≥ f_ck − 4; n = 2–4: f_cm ≥ f_ck + 1; 
 
 **F-Freigabe-Stellen:** Tabellennummer „DIN 1045-3, Tabelle 2“ (Nachbehandlung) im Reiter Betonbauklassen.
 
+**Umsetzung 29.10.2026 – T9-QS-3:** „BBQ-Koordinator“ → „bereichsübergreifender Fachkoordinator“ (drei Stellen im Reiter Betonbauklassen). Quelle: DIN 1045-1000:2023-08 (öffentliche Wiedergaben).
+
 **Empfehlung:** freigabefähig nach Korrektur T9-QS-1/-2 und Klärung von T9-QS-3.
 
 - [ ] Modul freigeben
@@ -360,6 +372,8 @@ Identitätskriterien (n = 1: f_ci ≥ f_ck − 4; n = 2–4: f_cm ≥ f_ck + 1; 
 - Hinweis: Die Krell-Regeln (Zusatzwasser, Luftgehalt, Trittfestigkeit) sind als Praxis- bzw. Lehrwerte gekennzeichnet.
 
 **F-Freigabe-Stellen:** Bohrkernkriterien DIN EN 13791:2020-02 (im Modul „manuell prüfen“).
+
+**Umsetzung 29.10.2026 – T9-BP-2:** WU-Fußnote: Abminderung der Ortbetonwand auf 200 mm betrifft **BK 1** (240 → 200 mm) bei besonderen betontechnischen und ausführungstechnischen Maßnahmen (vorher „BK 2“); „vorläufig, F-Freigabe am Richtlinientext“. Quelle: DAfStb-Richtlinie Wasserundurchlässige Bauwerke aus Beton (2017).
 
 **Empfehlung:** freigabefähig nach Korrektur T9-BP-1 und Klärung von T9-BP-2.
 
@@ -397,6 +411,8 @@ Identitätskriterien (n = 1: f_ci ≥ f_ck − 4; n = 2–4: f_cm ≥ f_ck + 1; 
 - **offen – Frage T9-CB-1 (Dehnungsgrenze):** Der Rechner setzt voraus, dass das Textil f_td erreicht, prüft aber nicht, ob der Beton vorher ε_cu3 = 3,5 ‰ erreicht. Bei den Standardwerten ist das der Fall (ε_c = 3,8 ‰), m_Rd liegt 3 % auf der unsicheren Seite. Vorschlag: Dehnungskontrolle in einen Kern `src/calc/carbonbeton.ts` mit Test übernehmen und bei Betonversagen das Gleichgewicht mit σ_tex = E_tex·ε_tex rechnen. γ_tex = 1,3 bleibt Lehrannahme (maßgebend Richtlinie bzw. Zulassung).
 
 **F-Freigabe-Stellen:** γ_tex und Dauerstandsbeiwerte nach DAfStb-Richtlinie Teil 1 (nicht öffentlich).
+
+**Umsetzung 29.10.2026 – T9-CB-1:** Neuer Kern `src/calc/carbonbeton.ts` (`carbonbetonBiegung`) mit Dehnungskontrolle ε_c ≤ 3,5 ‰: Erreicht der Beton die Grenzdehnung vor dem Textilbruch, folgt das Gleichgewicht mit σ_tex = E_tex·ε_tex < f_td. Standardfall: m_Rd = **4,97** statt 5,12 kNm/m (Beton maßgebend, x = 8,20 mm, σ_tex = 1 860 N/mm²). Anzeige von ε_c, σ_tex und maßgebendem Versagen, Beispiel um die Dehnungskontrolle ergänzt, neue Formel. f_cd weiter über `FCD_MODUL.carbonbeton` (Test `fcdModule` auf den Kern umgestellt). Tests `tests/carbonbeton.test.ts` (Standard, Textilversagen, Stetigkeit am Übergang, Grenzen, Fuzz 1 000) und `tests/modulpruefungTranche9.test.ts` (CB-Fälle). Quelle: Tranche 9, CB1–CB3; DIN EN 1992-1-1, 3.1.7/6.1 (analog).
 
 **Empfehlung:** freigabefähig nach Korrektur T9-CB-2 und Klärung von T9-CB-1.
 

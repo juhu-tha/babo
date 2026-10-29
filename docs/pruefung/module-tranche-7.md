@@ -276,6 +276,8 @@
   - Rohrstatik: „ATV-DVWK-A 127“ → „DWA-A 127-1, früher ATV-DVWK-A 127“, wie bereits in der Literaturliste.
 - **offen – Frage T7-BW-2:** „Prüfdruck ≥ 0,5 bar (Kanal)“ bei Betonrohren nach DIN EN 1916. Für die Produktprüfung der Wasserdichtheit ist nach meinem Kenntnisstand ein Innendruck von 1 bar (100 kPa) vorgesehen; 0,5 bar entspricht eher der Leitungsprüfung nach DIN EN 1610. Bitte am Normtext bestätigen. F-Freigabe: zusätzlich der Einzelwert der Abwitterung (≤ 1,5 kg/m²), der im Modul nicht genannt ist.
 
+**Umsetzung 29.10.2026 – T7-BW-2:** Normtext: „Prüfdruck ≥ 0,5 bar (Kanal)“ als „Prüfdruck der Produktprüfung nach DIN EN 1916 vorläufig, F-Freigabe“ gekennzeichnet; Einzelwert der Abwitterung ≤ 1,5 kg/m² ergänzt (vorläufig, F-Freigabe). Quelle: DIN EN 1916, DIN EN 1338/1339 (Normtext).
+
 **Empfehlung:** freigabefähig nach Korrektur T7-BW-1 und Klärung von T7-BW-2.
 
 - [ ] Modul freigeben
@@ -296,6 +298,10 @@
 - **behoben – T7-MW-1:** Die Kerndämmung (Steinwolle, EPS oder PUR) war mit „Klasse A1 bis A2“ beschriftet. EPS ist nicht A1/A2. Jetzt: „A1 (Mineralwolle) bis E (EPS); PUR je nach Produkt“.
 - **offen – Frage T7-MW-2 (WDVS):** Die WDVS-Karte nennt „A1 bis B1“ und mischt damit Euroklassen und DIN 4102. Vorschlag: „A2-s1,d0 (Mineralwolle-WDVS) bis B-s1,d0 (EPS-WDVS)“. Die Systemeinstufung steht in der jeweiligen abZ/aBG bzw. ETA. Außerdem: Sind DIN EN 13499/13500 noch die geltende Grundlage (DIN EN 17237)?
 - **offen – Frage T7-MW-3 (Kennwerte):** Lehmstein „λ 0,47–0,81 W/(mK) bei 1200–1800 kg/m³“. Nach DIN 4108-4 (Lehmbaustoffe) gehört 0,81 nach meinem Kenntnisstand zu 1700 kg/m³, 1800 kg/m³ hat 0,91. Klinker „Wasseraufnahme ≤ 6 M.-%“ (DIN 105-100 bzw. DIN 20000-401). Bitte beide Werte am Normtext bestätigen (F-Freigabe).
+
+**Umsetzung 29.10.2026 – T7-MW-2:** WDVS-Brandverhalten „A1 bis B1“ (Mischung Euroklassen/DIN 4102) → „A2-s1,d0 (Mineralwolle-WDVS) bis B-s1,d0 (EPS-WDVS); maßgebend ist die Einstufung des Systems in abZ/aBG bzw. ETA“ (neuer Textschlüssel `wdvsBrandklasse`). Offen bleibt die Normfrage DIN EN 13499/13500 gegenüber DIN EN 17237 (Bezeichnung unverändert). Quelle: DIN EN 13501-1; Verwendbarkeitsnachweise.
+
+**Umsetzung 29.10.2026 – T7-MW-3:** Normtext: Lehmstein-λ (Zuordnung von 0,81 W/(mK) zur Rohdichte) und Klinker-Wasseraufnahme ≤ 6 M.-% als „vorläufig, F-Freigabe“ gekennzeichnet; Werte unverändert. Quelle: DIN 4108-4, DIN 105-100 bzw. DIN 20000-401 (Normtext).
 
 **Empfehlung:** freigabefähig nach Korrektur T7-MW-1 und Klärung von T7-MW-2/-3.
 
@@ -366,6 +372,8 @@
 
 **F-Freigabe-Stellen:** Schichtdicken RStO 12/24, Tafel 1 und 2 (T7-RS-2); Lastkollektivquotienten q_Bm je Straßenklasse (in der Aufgabe als Annahme).
 
+**Umsetzung 29.10.2026 – T7-RS-2:** Gebundene Schichten nach RStO 12/24, Tafel 1, Zeile 1 (Deck/Binder/Trag in cm): Bk100 4/8/22, Bk32 4/8/18, Bk10 4/8/14, Bk3,2 4/6/12, **Bk1,8 4/6/10 (neu, auch in der Auswahl)**, Bk1,0 4/–/14, Bk0,3 4/–/10; Betonbauweise Tafel 2, Zeile 1: Bk100 27 cm, Bk32 26 cm. Alle Dickenangaben „vorläufig, F-Freigabe“. Gesamtdicken bleiben Lehrannahmen (Bk1,8: 60 cm); die Frostschutzschicht füllt die Differenz. Einleitung und Grenzen angepasst. Quelle: RStO 12/24, Tafel 1/2 (Vorschlag der Prüfung, Normtext).
+
 **Empfehlung:** freigabefähig nach Korrektur T7-RS-1 und Klärung von T7-RS-2.
 
 - [ ] Modul freigeben
@@ -391,6 +399,8 @@
 **Befunde**
 - behoben: keine.
 - **offen – Frage T7-BT-1:** „Autobahndeckschichten zwingend: PSV-Wert ≥ 51 oder ≥ 54“ (auch in der Kurzfassung). Die Kategorien und ihre Zuordnung zu Belastungsklassen stehen in TL Gestein-StB 04/23 (Anhang) bzw. ZTV Asphalt-StB 26. Öffentlich nicht nachprüfbar. Bitte bestätigen (F-Freigabe), sonst auf „hoher PSV-Wert nach TL Gestein-StB“ zurücknehmen. Dasselbe gilt für die Profilangaben „PSV ≥ 51 / ≥ 48 / ≥ 45“ im RStO-Reiter.
+
+**Umsetzung 29.10.2026 – T7-BT-1:** Normtext: PSV-Anforderungen (≥ 51/54 im Bitumen-Reiter und in der Kurzfassung, ≥ 51/48/45 in den RStO-Profilen) als „TL Gestein-StB; vorläufig, F-Freigabe“ gekennzeichnet; Fachgebiet Verkehrswegebau um `TL Gestein` ergänzt. Quelle: TL Gestein-StB 04/23, ZTV Asphalt-StB 26 (Normtext).
 
 **Empfehlung:** freigabefähig nach Klärung von T7-BT-1.
 
@@ -444,6 +454,10 @@
 
 **F-Freigabe-Stellen:** Fugenabstand, Spaltzug/Biegezug, LP-Grenzen nach ZTV/TL Beton-StB 26; zulässige Spannung 2,25 N/mm² bleibt eine Lehrannahme (Grenzen).
 
+**Umsetzung 29.10.2026 – T7-BD-2:** Normtext: Fugenabstand bleibt Lehrannahme min(25·h; 5,0 m); Hinweis „Höchstwert nach ZTV Beton-StB 26 vorläufig, F-Freigabe“ ergänzt. Kern und Quizfrage unverändert. Quelle: ZTV Beton-StB 26 (Normtext).
+
+**Umsetzung 29.10.2026 – T7-BD-3:** Normtext: „Biegezugprüfung m_fct,sp ≥ 4,5 MPa“ unverändert mit „Kenngröße und Wert nach TL Beton-StB 26 vorläufig, F-Freigabe“ gekennzeichnet. Quelle: TL Beton-StB 26 (Normtext).
+
 **Empfehlung:** freigabefähig nach Korrektur T7-BD-1 und Klärung von T7-BD-2/-3.
 
 - [ ] Modul freigeben
@@ -489,6 +503,8 @@
 **Befunde**
 - behoben: keine.
 - **offen – Frage T7-BA-1:** Gleisschotter „Flachheitskennzahl ≤ 20 % und Widerstand gegen Schlagzertrümmerung SZ ≤ 20 %“. Die Kategorien nach DIN EN 13450 und die Anforderungen der DB (TL 918 061) waren öffentlich nicht nachprüfbar. Bitte bestätigen (F-Freigabe). Die Knickgrenzen 90/135 N/mm² sind als Lehrwerte im Kern gekennzeichnet.
+
+**Umsetzung 29.10.2026 – T7-BA-1:** Normtext: Flachheitskennzahl ≤ 20 % und SZ ≤ 20 % mit „Kategorien nach DIN EN 13450 und DB-Anforderungen vorläufig, F-Freigabe“ gekennzeichnet; Fachgebiet Verkehrswegebau um `DIN EN 13450` ergänzt. Quelle: DIN EN 13450, DB TL 918 061 (Normtext).
 
 **Empfehlung:** freigabefähig nach Klärung von T7-BA-1.
 

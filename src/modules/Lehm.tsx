@@ -11,6 +11,8 @@ import BaustoffProfil from '@/src/components/ui/BaustoffProfil';
 import inhalt from '@/content/lehm/Lehm.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { lehmSchaetzmodell } from '@/src/calc/lehm';
 function Pie({ data }: { data: { datasets: { data: number[] }[] }; options?: unknown }) {
   return (
     <div className="text-center font-semibold text-xs text-stone-650 bg-stone-100 p-2 rounded-xl">
@@ -32,28 +34,9 @@ export default function Lehm() {
   const [sand, setSand] = useState(50);
   const [wasser, setWasser] = useState(12);
 
-  // Normalize percentages
-  const total = ton + schluff + sand;
-  const tonNorm = (ton / total) * 100;
-  const schluffNorm = (schluff / total) * 100;
-  const sandNorm = (sand / total) * 100;
-
-  const results = useMemo(() => {
-    // Schätzwerte für Stampflehm
-    const rohdichte = 1700 + sandNorm * 5 - tonNorm * 2; // kg/m³
-    const druckfestigkeit = 1.0 + (tonNorm / 100) * 3.0 - (wasser / 100) * 2.0; // MPa
-    const schwinden = (tonNorm / 100) * 4.0 + (wasser / 100) * 2.0; // %
-    const lambda = 0.15 + 0.0004 * Math.max(1200, rohdichte); // W/(mK)
-    const sorption = tonNorm * 0.8; // g/m² (vereinfachte Sorptionsfähigkeit)
-
-    return { 
-      rohdichte: Math.max(1200, rohdichte), 
-      druckfestigkeit: Math.max(0.5, druckfestigkeit), 
-      schwinden: Math.max(0.1, schwinden),
-      lambda: lambda,
-      sorption: sorption
-    };
-  }, [tonNorm, sandNorm, wasser]);
+  // Lehrmodell Stampflehm im Kern src/calc/lehm.ts (Umsetzung 29.10.2026, T5-LE-1)
+  const results = useMemo(() => lehmSchaetzmodell({ ton, schluff, sand, wasser }), [ton, schluff, sand, wasser]);
+  const tonNorm = results.tonProzent, schluffNorm = results.schluffProzent, sandNorm = results.sandProzent;
 
   const chartData = useMemo(() => {
     return {
@@ -143,6 +126,7 @@ export default function Lehm() {
                 <div className="col-span-2"><div className="text-white/70 text-sm"><MdText text={inhalt.texte.sorptionsfähigkeitFeuchtepuffer} /></div><div className="text-2xl font-bold">{formatDeZahl(results.sorption, 1)} g/m²</div></div>
               </div>
             </div>
+            <EingabeHinweise hinweise={results.hinweise} />
             
             <div className="bg-white p-6 rounded-xl border border-home-grau/30 shadow-sm">
               <h3 className="text-sm font-bold text-text-main uppercase tracking-wider mb-4">Zusammensetzung</h3>

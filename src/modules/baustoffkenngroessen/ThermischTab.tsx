@@ -142,7 +142,7 @@ export default function ThermischTab({ alphaT, deltaT, handleThermischPresetChan
                 className="w-full accent-shiraz"
               />
               <div className="flex gap-1.5 flex-wrap mt-1">
-                <button onClick={() => setSpezKapazitaetC(480)} className="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-[10px] font-medium text-slate-700"><MdText text={inhalt.texte.stahlC480} /></button>
+                <button onClick={() => setSpezKapazitaetC(450)} className="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-[10px] font-medium text-slate-700"><MdText text={inhalt.texte.stahlC480} /></button>
                 <button onClick={() => setSpezKapazitaetC(1000)} className="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-[10px] font-medium text-slate-700"><MdText text={inhalt.texte.betonZiegelC1000} /></button>
                 <button onClick={() => setSpezKapazitaetC(1600)} className="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-[10px] font-medium text-slate-700"><MdText text={inhalt.texte.holzC1600} /></button>
                 <button onClick={() => setSpezKapazitaetC(2100)} className="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-[10px] font-medium text-slate-700"><MdText text={inhalt.texte.strohDämmungC2100} /></button>

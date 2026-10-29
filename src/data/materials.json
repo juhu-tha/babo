@@ -141,7 +141,7 @@
         "eModul": 8000,
         "compressive": 12,
         "tensile": 1,
-        "thermalCond": 0.9,
+        "thermalCond": 0.99,
         "thermalExp": 8,
         "heatCap": 1000
       },
@@ -156,7 +156,7 @@
         "eModul": 4000,
         "compressive": 12,
         "tensile": 0.5,
-        "thermalCond": 0.5,
+        "thermalCond": 0.68,
         "thermalExp": 6,
         "heatCap": 1000
       },
@@ -308,7 +308,7 @@
         "tensile": 360,
         "thermalCond": 50,
         "thermalExp": 12,
-        "heatCap": 440
+        "heatCap": 450
       },
       "metadata": {}
     },
@@ -323,7 +323,7 @@
         "tensile": 1770,
         "thermalCond": 50,
         "thermalExp": 12,
-        "heatCap": 440
+        "heatCap": 450
       },
       "metadata": {}
     },

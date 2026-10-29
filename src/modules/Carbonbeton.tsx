@@ -1,7 +1,8 @@
 import { Layers } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
-import { fcdBeton, FCD_MODUL } from '@/src/data/kennwerte';
+import { carbonbetonBiegung } from '@/src/calc/carbonbeton';
+import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
@@ -42,30 +43,10 @@ export default function Carbonbeton() {
   const [fCk, setFCk] = useState(50); // MPa
 
   const results = useMemo(() => {
-    // Bemessungswerte
-    const gammaTex = 1.3; // Lehrannahme – maßgebend: DAfStb-Richtlinie (2024) bzw. Zulassung
-
-    const fTd = fTk / gammaTex;
-    const fCd = fcdBeton(fCk, FCD_MODUL.carbonbeton); // α_cc = 0,85, γ_c = 1,5 (zentral, src/data/kennwerte.ts)
-
-    const d = h - c; // statische Nutzhöhe in mm
-
-    // Zugkraft Textil (N/m)
-    const fT_N = aTex * fTd;
-
-    // Höhe des rechteckigen Spannungsblocks y (mm)
-    // F_c = b * y * f_cd = 1000 * y * f_cd
-    // F_c = F_t -> y = fT_N / (1000 * fCd)
-    const y = fT_N / (1000 * fCd);
-    
-    // Nulllinientiefe x (mm) - vereinfacht mit Faktor 0.8 für fck <= 50
-    const x = y / 0.8;
-
-    // Innerer Hebelarm z (mm)
-    const z = Math.max(1.0, d - 0.5 * y);
-
-    // Aufnehmbares Moment m_Rd (kNm/m)
-    const mRd = (fT_N * z) / 1e6;
+    // Biegetragfähigkeit mit Dehnungskontrolle ε_c ≤ 3,5 ‰ im Kern src/calc/carbonbeton.ts (Umsetzung 29.10.2026, T9-CB-1);
+    // γ_tex = 1,3 Lehrannahme – maßgebend: DAfStb-Richtlinie (2024) bzw. Zulassung
+    const kern = carbonbetonBiegung({ h, c, aTex, fTk, eTexGPa: eTex, fCk });
+    const { d, fTd, x, y, z, mRd } = kern;
 
     // Querschnitt für SVG berechnen (Balkenhöhe 160px h-Äquivalent)
     const mmToPx = 160 / h;
@@ -116,6 +97,7 @@ export default function Carbonbeton() {
     }
 
     return {
+      kern,
       d,
       fTd,
       x,
@@ -266,7 +248,20 @@ export default function Carbonbeton() {
                   <span>Bemessungsfestigkeit <FormulaText text="f_{td}" /></span>
                   <span className="font-medium">{formatDeZahl(results.fTd, 0)} MPa</span>
                 </div>
+                <div className="flex justify-between border-b border-home-grau/10 pb-1">
+                  <span>Betonranddehnung <FormulaText text="\varepsilon_c" /></span>
+                  <span className="font-medium">{formatDeZahl(results.kern.epsC * 1000, 2)} ‰</span>
+                </div>
+                <div className="flex justify-between border-b border-home-grau/10 pb-1">
+                  <span>Textilspannung <FormulaText text="\sigma_{tex}" /></span>
+                  <span className="font-medium">{formatDeZahl(results.kern.sigmaTex, 0)} MPa</span>
+                </div>
+                <div className="col-span-2 flex justify-between border-b border-home-grau/10 pb-1">
+                  <span>Maßgebendes Versagen</span>
+                  <span className="font-medium">{results.kern.versagen === "beton" ? "Beton (ε_c = 3,5 ‰)" : "Textil (f_td erreicht)"}</span>
+                </div>
               </div>
+              <EingabeHinweise hinweise={results.kern.hinweise} />
 
               {/* Graphic */}
               <div className="mt-6 border-t border-home-grau/30 pt-6">
@@ -375,7 +370,7 @@ export default function Carbonbeton() {
 
       <FormulaDerivationBox
         title={inhalt.werte.anwendungsbeispielCarbonbetonplatteStand}
-        zielGleichung="m_{Rd} = a_{tex} \cdot f_{td} \cdot z"
+        zielGleichung="m_{Rd} = a_{tex} \cdot \sigma_{tex} \cdot z,\; \sigma_{tex} \le f_{td}"
         normQuelle={inhalt.werte.gleichgewichtAmRechteckquerschnittTex}
         schritte={inhalt.daten["Carbonbeton.schritte"]}
         ergebnisHinweis={inhalt.werte.mRd51}

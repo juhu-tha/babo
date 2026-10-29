@@ -305,7 +305,7 @@ export default function BpMauerwerk() {
                     <p className="text-xxs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.derDämmstoffEpsMineralfaser} /></p>
                     <div className="grid grid-cols-2 gap-2 text-[10px] bg-white p-2 rounded-lg border border-slate-100 font-medium">
                       <div>🌡️ λ-Wert: <span className="font-mono font-bold text-indigo-700">0,022 - 0,040</span></div>
-                      <div><MdText text={inhalt.texte.brandschutz} /><span className="font-bold text-slate-700">A1 bis B1</span></div>
+                      <div><MdText text={inhalt.texte.brandschutz} /><span className="font-bold text-slate-700"><MdText text={inhalt.texte.wdvsBrandklasse} /></span></div>
                     </div>
                   </div>
                   <div className="space-y-1.5 pt-2 border-t border-slate-200/60 text-xxs">
