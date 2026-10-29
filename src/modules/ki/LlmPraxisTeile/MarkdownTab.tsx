@@ -85,7 +85,7 @@ export function MarkdownTab({ markdownView, setMarkdownView, calcDocPages, setCa
                             <span><MdText text={inhalt.texte.schlechterPdfTextOcr} /></span>
                             <span className="text-[10px] bg-rose-200/60 px-1.5 py-0.5 rounded"><MdText text={inhalt.texte.t1400Tokens} /></span>
                           </div>
-                          <p className="leading-relaxed bg-white/80 p-2.5 rounded border border-rose-200/60"><MdText text={inhalt.texte.headerBaugrundinstitutDrMuelller} /></p>
+                          <p className="leading-relaxed bg-white/80 p-2.5 rounded border border-rose-200/60"><MdText text={inhalt.texte.headerBaugrundinstitutMuster} /></p>
                           <span className="text-[10px] text-rose-700 block"><MdText text={inhalt.texte.gefahrFragmenteImTabellenumbruch} /></span>
                         </div>
     

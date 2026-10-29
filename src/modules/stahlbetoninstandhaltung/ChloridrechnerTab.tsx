@@ -18,7 +18,7 @@ export interface ChloridrechnerTabProps {
   bauteilAlter: number;
   betondeckung: number;
   chloridCs: number;
-  chloridStats: { points: { x: number; c: number; }[]; cAtRebar: number; rebarStatus: 'ok' | 'warning' | 'critical'; depassivatedDepth: number; erfAbtrag: number; critLimit: number; };
+  chloridStats: { points: { x: number; c: number; }[]; cAtRebar: number; rebarStatus: 'ok' | 'warning' | 'critical'; depassivatedDepth: number; erfAbtrag: number; ueberRaster: boolean; critLimit: number; };
   diffD: number;
   setBauteilAlter: React.Dispatch<React.SetStateAction<number>>;
   setBetondeckung: React.Dispatch<React.SetStateAction<number>>;
@@ -193,8 +193,8 @@ export default function ChloridrechnerTab({ bauteilAlter, betondeckung, chloridC
 
                 {/* Rebar Position Vertical Line */}
                 {(() => {
-                  // x in 0..65 mm mapped to 50..470 px (420px for 65mm -> 6.46 px/mm)
-                  const pxRebar = 50 + betondeckung * (420 / 65);
+                  // x in 0..100 mm mapped to 50..470 px (4,2 px/mm; Raster bis 100 mm, T13-IH-13)
+                  const pxRebar = 50 + betondeckung * (420 / 100);
                   return (
                     <g>
                       <line x1={pxRebar} y1="20" x2={pxRebar} y2="180" stroke="#475569" strokeWidth="2" strokeDasharray="4,3" />
@@ -209,7 +209,7 @@ export default function ChloridrechnerTab({ bauteilAlter, betondeckung, chloridC
                 {/* Chloride Curve */}
                 {(() => {
                   const pathData = chloridStats.points.map((pt, idx) => {
-                    const px = 50 + pt.x * (420 / 65);
+                    const px = 50 + pt.x * (420 / 100);
                     const py = Math.max(25, 180 - Math.min(3.2, pt.c) * 50);
                     return `${idx === 0 ? 'M' : 'L'} ${px} ${py}`;
                   }).join(' ');
@@ -225,10 +225,9 @@ export default function ChloridrechnerTab({ bauteilAlter, betondeckung, chloridC
                 })()}
 
                 {/* X-Axis ticks */}
-                <text x="50" y="195" fill="#64748b" fontSize="9" textAnchor="middle">0 mm</text>
-                <text x="179" y="195" fill="#64748b" fontSize="9" textAnchor="middle">20 mm</text>
-                <text x="308" y="195" fill="#64748b" fontSize="9" textAnchor="middle">40 mm</text>
-                <text x="438" y="195" fill="#64748b" fontSize="9" textAnchor="middle">60 mm</text>
+                {[0, 20, 40, 60, 80, 100].map((mm) => (
+                  <text key={mm} x={50 + mm * 4.2} y="195" fill="#64748b" fontSize="9" textAnchor="middle">{formatDeWert(mm)} mm</text>
+                ))}
                 <text x="470" y="172" fill="#475569" fontSize="9" textAnchor="end">Tiefe x &rarr;</text>
               </svg>
             </div>
@@ -246,10 +245,13 @@ export default function ChloridrechnerTab({ bauteilAlter, betondeckung, chloridC
               <p className="text-slate-700 leading-relaxed text-[11px]"><MdText text={inhalt.texte.konventionellerVollständigerAbtragDes} /><FormulaText text="C \ge 0.50\,\text{M.-\%}" />.
               </p>
               <div className="p-2.5 bg-white rounded-lg border border-home-grau/20 text-[11px] space-y-1">
-                <div><MdText text={inhalt.texte.erforderlicheAbtragstiefe} /><strong className="text-slate-900 font-mono">{formatDeWert(chloridStats.erfAbtrag)} mm</strong>
+                <div><MdText text={inhalt.texte.erforderlicheAbtragstiefe} /><strong className="text-slate-900 font-mono">{chloridStats.ueberRaster ? '≥ ' : ''}{formatDeWert(chloridStats.erfAbtrag)} mm</strong>
                 </div>
                 <div className="text-[10px] text-slate-500">
-                  (Depassivierungstiefe {formatDeZahl(chloridStats.depassivatedDepth, 0)}<MdText text={inhalt.texte.mm15MmHinterstemmung} /></div>
+                  (Depassivierungstiefe {chloridStats.ueberRaster ? '≥ ' : ''}{formatDeWert(chloridStats.depassivatedDepth)}<MdText text={inhalt.texte.mm15MmHinterstemmung} /></div>
+                {chloridStats.ueberRaster && (
+                  <div className="text-[10px] text-rose-700"><MdText text={inhalt.texte.frontTieferAlsRaster} /></div>
+                )}
               </div>
               <span className="text-[10px] text-rose-700 block font-medium"><MdText text={inhalt.texte.hoherSubstanzverlustSprießungsaufwandBau} /></span>
             </div>

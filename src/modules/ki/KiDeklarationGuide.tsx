@@ -14,7 +14,7 @@ export default function KiDeklarationGuide() {
   const [matrikelNr, setMatrikelNr] = useState<string>('1234567');
   const [thesisTitle, setThesisTitle] = useState<string>(inhalt.werte.ökobilanzierungUndFestigkeitsentwicklung);
   const [degreeProgram, setDegreeProgram] = useState<string>(inhalt.werte.bauingenieurwesenBEngM);
-  const [advisorName, setAdvisorName] = useState<string>(inhalt.werte.profDrIngJürgen);
+  const [advisorName, setAdvisorName] = useState<string>(inhalt.werte.erstpruefungPlatzhalter);
   const [selectedTools, setSelectedTools] = useState<string[]>(['NotebookLM', 'DeepL', inhalt.werte.pythonCursor]);
   const [copied, setCopied] = useState<boolean>(false);
 

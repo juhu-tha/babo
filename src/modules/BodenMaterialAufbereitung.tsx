@@ -29,11 +29,11 @@ export default function BodenMaterialAufbereitung() {
 
   // Probenahmeprotokoll fields
   const [pProject, setPProject] = useState<string>(inhalt.werte.erweiterungThaCampusBaufeld);
-  const [pSampler, setPSampler] = useState<string>(inhalt.werte.thomasWagnerZertifizierterProbennehmer);
+  const [pSampler, setPSampler] = useState<string>(inhalt.werte.musterProbennehmer);
   const [pDate, setPDate] = useState<string>('2026-06-03');
   const [pLocation, setPLocation] = useState<string>(inhalt.werte.augsburgAnDerHochschule);
   const [pWeather, setPWeather] = useState<string>(inhalt.werte.trockenLeichtBewölktCa);
-  const [pWitness, setPWitness] = useState<string>(inhalt.werte.frDrMeierUntergeordnete);
+  const [pWitness, setPWitness] = useState<string>(inhalt.werte.musterBehoerde);
   const [pNotes, setPNotes] = useState<string>(inhalt.werte.aushubhaufwerkNr4Vorsortierter);
   const [isFinalized, setIsFinalized] = useState<boolean>(false);
 

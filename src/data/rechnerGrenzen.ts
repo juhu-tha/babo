@@ -616,6 +616,47 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Kosten-Nutzen-Werte und Förderbonus sind fiktive Lehrwerte.",
     ],
   },
+  // Umsetzung 29.10.2026 (Modulprüfung Tranche 13): Grenzen der rechnenden Module „Mängel & Schäden“ / „Schutz & Instandsetzung“
+  bauwerksunters_monitoring: {
+    kurz: 'Belegreife aus CM-Messung und HF-Digits, Karbonatisierungskoeffizient aus Rückprall und Karbonatisierungstiefe sowie Simulatoren für Rissbewegung und Bohrwiderstand.',
+    grenzen: [
+      'CM-Richtwerte belagsabhängig (Zementestrich 2,0/1,8, Calciumsulfatestrich 0,5/0,3 CM-%); maßgebend ist die Vereinbarung der Schnittstellenkoordination, Mauerwerk ohne Grenzwert.',
+      'HF-Grenzen 40/80 Digits sind gerätespezifische Näherungen und dienen nur der Eingrenzung feuchter Zonen, nicht der Freigabe.',
+      'Karbonatisierung nach dem Wurzel-t-Gesetz (k_c = x_c/√t) bei gleichbleibenden Umgebungsbedingungen; Rückprall nur als Einstufung, Festigkeit nur über Bohrkerne nach DIN EN 13791.',
+      'Rissbewegungs- und Bohrwiderstandsanzeige sind qualitative Lehrsimulatoren ohne Gerätekalibrierung.',
+    ],
+  },
+  instandhaltung: {
+    kurz: 'Chloridprofil nach dem 2. Fickschen Gesetz mit Depassivierungstiefe und Abtragstiefe sowie Packerabstand und Verpressdruck einer Rissinjektion.',
+    grenzen: [
+      'Chlorid: C₀ = 0, C_s und D konstant (ohne Alterungsexponent, Temperatur und Konvektionszone); C_krit = 0,5 M.-%/z als Anhaltswert, kein Normwert.',
+      'Raster 2,5 mm bis 100 mm: Tiefe auf den Rasterpunkt abgerundet; liegt die Front tiefer, sind Tiefe und Abtrag (Front + 15 mm, Lehransatz) nur Mindestwerte („≥“).',
+      'Rissinjektion: Packerabstand ≈ halbe Bauteildicke, Verpressdruck 0,08 bar je mm (12 bis 35 bar) sind Lehrwerte, keine Regelwerksgrößen; maßgebend sind TR Instandhaltung und Stoffangaben.',
+    ],
+  },
+  wta: {
+    kurz: 'Bohrplan einer Horizontalsperre (Bohrtiefe, Abstand, Wirkstoffbedarf) mit Verfahrenshinweis nach Durchfeuchtungsgrad sowie ein Punkteschema für Innendämmung im Bestand.',
+    grenzen: [
+      'Bohrtiefe Wand − 5 cm, Abstände 12/10/8 cm und Ø 12 mm fest; Bedarf aus dem Bohrlochvolumen · 1,15 ist eine Untergrenze, Herstellerangaben liegen höher (≈ 15 ml je m und cm).',
+      'Verfahren und zulässiger DFG des Mauerwerks laut WTA-Zertifikat bzw. Herstellerangabe des Stoffs (Prüfstufen 60/80/95 %); die Anzeige der Stufe ist ein Lehransatz (vorläufig, F-Freigabe).',
+      'Kombi-Planer: eigenes Punkteschema, keine Bewertung der WTA; Salzstufen im Mauerwerk vereinfacht für alle Salze gemeinsam (vorläufig, F-Freigabe).',
+    ],
+  },
+  'wu-bauwerke': {
+    kurz: 'Druckgefälle, Mindestdicke und Rechenwert der Trennrissbreite für Selbstheilung nach DAfStb-WU-Richtlinie 2017-12.',
+    grenzen: [
+      'Rissbreite w_k wird eingegeben, nicht nach DIN EN 1992-1-1 berechnet; Selbstheilungsstufen I ≤ 10/15/25 → 0,20/0,15/0,10 mm nur für Beanspruchungsklasse 1.',
+      'Beanspruchungsklasse 2 mit Orientierungswert 0,30 mm; die Nutzungsklasse (A/B) geht nicht in die Rechnung ein.',
+      'Mindestdicken nach Tab. 1 der Richtlinie; Fugen, Durchdringungen, Betontechnologie und Zwang aus Hydratation werden nicht nachgewiesen.',
+    ],
+  },
+  schutz_grundlagen: {
+    kurz: 'Kostensteigerung nach der Fünferregel von de Sitter (K_n = K₀ · 5ⁿ) für Maßnahmen in vier Lebensphasen.',
+    grenzen: [
+      'Faktor 5 je Phase ist eine Modellvorstellung (de Sitter 1984), kein Kostenansatz; reale Kosten hängen von Bauteil, Zugänglichkeit und Schadensbild ab.',
+      'Tuutti-Kurve qualitativ (Einleitungs- und Schädigungsphase), ohne Berechnung der Lebensdauer.',
+    ],
+  },
   vdi6200: {
     kurz: "Zustandsnote aus den Einzelbewertungen S/V/D in Anlehnung an RI-EBW-PRÜF.",
     grenzen: [

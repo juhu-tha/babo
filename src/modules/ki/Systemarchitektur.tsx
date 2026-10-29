@@ -579,7 +579,7 @@ export default function Systemarchitektur() {
                 <td className="py-2.5 px-3 font-bold text-slate-900"><MdText text={inhalt.texte.deepLearning} /></td>
                 <td className="py-2.5 px-3 font-mono"><MdText text={inhalt.texte.mlpCnnBackpropagation} /></td>
                 <td className="py-2.5 px-3 font-mono text-emerald-700 font-semibold">2–50 ms</td>
-                <td className="py-2.5 px-3">GPU (CUDA)</td>
+                <td className="py-2.5 px-3">GPU</td>
                 <td className="py-2.5 px-3 text-amber-700">Black-Box-Intransparenz</td>
                 <td className="py-2.5 px-3"><MdText text={inhalt.texte.feSurrogatstatikTopologie} /></td>
               </tr>

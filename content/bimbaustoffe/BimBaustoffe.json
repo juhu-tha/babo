@@ -19,7 +19,7 @@
     "rohdichteMassdensity": "Rohdichte (MassDensity):",
     "wärmeleitfähigkeit": "Wärmeleitfähigkeit (λ):",
     "coGwpA1A3": "CO₂-GWP (A1-A3):",
-    "dieseKennwerteSteuernBerechnungs": "Diese Kennwerte steuern Berechnungs-Engines für Statik (E-Modul), U-Wert (Wärmeleitfähigkeit) und Ökobilanzierung (CO₂).",
+    "dieseKennwerteSteuernBerechnungs": "Diese Kennwerte steuern Berechnungs-Engines für Statik (E-Modul), U-Wert (Wärmeleitfähigkeit) und Ökobilanzierung (CO₂). Die Voreinstellungen sind gerundete Lehrwerte, z. B. Mineralwolle 1,20 kg CO₂-Äq./kg · 60 kg/m³ ≈ 72 kg CO₂-Äq./m³ (wie im Modul Materialdatenbanken).",
     "ifcExpressSchemaPhysical": "IFC-EXPRESS Schema Physical File (.ifc)",
     "iso1030321": "ISO 10303-21",
     "bauteilZuweisungsstrukturFürBuilding": "/* Bauteil-Zuweisungsstruktur für Building Information Modeling */",
@@ -93,7 +93,7 @@
         "defaultDensity": 60,
         "defaultConductivity": 0.035,
         "defaultEModulus": 5,
-        "defaultGwp": 42,
+        "defaultGwp": 72,
         "description": "Hochleistungsdämmstoff zur thermischen Trennung und Minimierung der Transmissionswärmeverluste der thermischen Gebäudehülle.",
         "ifcClass": "IfcMaterial"
       },
