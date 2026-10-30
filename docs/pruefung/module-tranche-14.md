@@ -412,3 +412,11 @@ Nicht freigegeben:
 - `ki_llmpraxis` – T14-LP-7 (Normtext DIN 18202)
 - `ki_thesen` – T14-TH-5 (Normtext DIN EN 12390-13)
 - `ki_recht_ethik` – T14-RE-2 (Normtext NA DE, γ_c für Fertigteile)
+
+## Freigabe 30.10.2026
+
+Entscheidung vom 30.10.2026 zur gezielten Durchsicht A–D: Prüfvermerk behalten, Prüfdatum auf 2026-10-30 gesetzt (`src/data/pruefvermerke.ts`, „geprueft“, passiv ohne Namen). Die gewichtigen Befunde der Durchsicht sind behoben bzw. umgesetzt; Belege in `docs/pruefung/durchsicht-A-2026-10-29.md` und `-B-` (Abschnitte „Umsetzung 30.10.2026“). Quizfreigaben sind davon getrennt.
+
+Freigegeben:
+
+- `bim_baustoffe` – Durchsicht B: DSB-BIM-1 (Baustahl mit Profilstahl-Lehrwert) behoben; Mineralwolle aus zentralem Lehrwert (DSB-LC-10), Vergleichswert Profilstahl angezeigt

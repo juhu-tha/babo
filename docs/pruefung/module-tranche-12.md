@@ -622,3 +622,11 @@ Kern und Skript stimmen überein; die Zahlen sind in sich schlüssig (Riss erst 
 **Empfehlung für `schadreaktionen_beton`:** freigabefähig nach Korrektur T12-AS-1 bis -5 und -9 (Simulation als Lehrmodell gekennzeichnet, T12-AS-6/-7) und Klärung von T12-AS-8 (Benennung E II/E III im Reiter „Alkalitreiben“; berührt die Simulation nicht).
 
 - [ ] Modul freigeben
+
+## Freigabe 30.10.2026
+
+Entscheidung vom 30.10.2026 zur gezielten Durchsicht A–D: Prüfvermerk behalten, Prüfdatum auf 2026-10-30 gesetzt (`src/data/pruefvermerke.ts`, „geprueft“, passiv ohne Namen). Die gewichtigen Befunde der Durchsicht sind behoben bzw. umgesetzt; Belege in `docs/pruefung/durchsicht-A-2026-10-29.md` und `-B-` (Abschnitte „Umsetzung 30.10.2026“). Quizfreigaben sind davon getrennt.
+
+Freigegeben:
+
+- `boden_materialaufbereitung` – Durchsicht B: DSB-BM-1 (Rechtsgrundlagen Asbest) behoben, DSB-BM-2 gekennzeichnet; Doppelkopie in `schadstoffe` entfernt (DSB-SS-1)
