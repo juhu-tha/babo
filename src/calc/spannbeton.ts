@@ -321,3 +321,54 @@ export function lastausgleich(L: number, g: number, f: number) {
   const mNetto = Math.round(((g - u) * Math.pow(L, 2)) / 8);
   return { P, u, mNetto, litzen: litzenAnzahl(P), gueltig: true, hinweise };
 }
+
+// --- Betondeckung von Spanngliedern (Reiter Dauerhaftigkeit; Durchsicht A 29.10.2026, DSA-SB-2) ---------------
+
+/**
+ * c_min,dur für Betonstahl nach DIN EN 1992-1-1/NA:2013-04, Tab. 4.4DE – dieselben Werte wie die zentralen
+ * Expositionsklassen-Daten (src/modules/expositionsklassen/daten.ts, minCoverDurMm) und DECKUNG in
+ * src/calc/bauwerksuntersuchung.ts (Gleichheit geprüft in tests/durchsichtA.test.ts).
+ * Vorher im Modul: Werte der EN-Empfehlung Tab. 4.4N für Klasse S4 (15/25/30/35/40/45 mm).
+ */
+export const C_MIN_DUR_BETONSTAHL_NA = { XC1: 10, XC2: 20, XC3: 20, XC4: 25, XD1: 40, XD2: 40, XD3: 40 } as const;
+export type DeckungKarbonatisierung = 'XC1' | 'XC2' | 'XC3' | 'XC4';
+export type DeckungChlorid = 'XD0' | 'XD1' | 'XD2' | 'XD3';
+export type Spannverfahren = 'post_tensioned' | 'pre_tensioned' | 'unbonded';
+
+export interface SpanngliedDeckungEingabe {
+  bauwerk: 'hochbau' | 'bruecke';
+  verfahren: Spannverfahren;
+  huellrohrMm: number;      // Hüllrohrdurchmesser (nachträglicher Verbund)
+  litzeMm: number;          // Litzen-/Drahtdurchmesser (sofortiger Verbund, ohne Verbund)
+  xc: DeckungKarbonatisierung;
+  xd: DeckungChlorid;
+  betonklasse: string;
+}
+
+/**
+ * Mindest- und Nennmaß der Betondeckung für Spannglieder (Lehrwerkzeug):
+ *  - c_min,b: Hüllrohr rund = Durchmesser, höchstens 80 mm; sofortiger Verbund 2,0·Ø (Litzen, glatte Drähte)
+ *    nach DIN EN 1992-1-1, 4.4.1.2(3); ohne Verbund 1,5·Ø (Lehrannahme, vorläufig – maßgebend ist die ETA)
+ *  - c_min,dur = Tab. 4.4DE (Betonstahl) + Δc_dur,γ = +10 mm für Spannstahl im Verbund (wie bisher im Modul);
+ *    +5 mm für 100 Jahre Nutzungsdauer bei Brücken und −5 mm für C45/55 und C50/60 (vorläufig, Normprüfung
+ *    ausstehend: DIN EN 1992-2/NA bzw. DIN EN 1992-1-1/NA, 4.4.1.2)
+ *  - c_min = max(c_min,b; c_min,dur; 10 mm), c_nom = c_min + Δc_dev, Δc_dev nach NA DE 10 mm (XC1, Hochbau), sonst 15 mm
+ */
+export function spanngliedDeckung(e: SpanngliedDeckungEingabe) {
+  const hinweise: Hinweis[] = [];
+  muss(hinweise, istEndlich(e.huellrohrMm, e.litzeMm) && e.huellrohrMm > 0 && e.litzeMm > 0, 'durchmesser', 'Hüllrohr- und Litzendurchmesser müssen größer als 0 sein.');
+  let c_min_b: number;
+  if (e.verfahren === 'post_tensioned') c_min_b = Math.min(80, e.huellrohrMm);
+  else if (e.verfahren === 'pre_tensioned') c_min_b = Math.round(2.0 * e.litzeMm); // 4.4.1.2(3): 2,0·Ø
+  else c_min_b = Math.round(1.5 * e.litzeMm); // Lehrannahme (vorläufig), Monolitze nach ETA
+  let baseDur: number = C_MIN_DUR_BETONSTAHL_NA[e.xc];
+  if (e.xd !== 'XD0') baseDur = Math.max(baseDur, C_MIN_DUR_BETONSTAHL_NA[e.xd]);
+  const delta_dur_100 = e.bauwerk === 'bruecke' ? 5 : 0; // vorläufig, Normprüfung ausstehend
+  const delta_dur_gamma = e.verfahren === 'unbonded' ? 0 : 10; // Spannstahl im Verbund (+10 mm)
+  const delta_dur_fck = e.betonklasse === 'C45/55' || e.betonklasse === 'C50/60' ? 5 : 0; // vorläufig, Normprüfung ausstehend
+  const c_min_dur = Math.max(10, baseDur + delta_dur_100 + delta_dur_gamma - delta_dur_fck);
+  const c_min = Math.max(c_min_b, c_min_dur, 10);
+  const delta_c_dev = e.bauwerk === 'bruecke' ? 15 : (e.xc === 'XC1' ? 10 : 15);
+  const c_nom = c_min + delta_c_dev;
+  return { c_min_b, baseDur, delta_dur_gamma, delta_dur_100, delta_dur_fck, c_min_dur, c_min, delta_c_dev, c_nom, gueltig: !hatFehler(hinweise), hinweise };
+}

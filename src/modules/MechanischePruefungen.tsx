@@ -77,7 +77,7 @@ export default function MechanischePruefungen() {
   const [boreDirection, setBoreDirection] = useState<'vertikal' | 'horizontal'>('vertikal');
 
   // Rechenkern src/calc/pruefverfahren.ts: Schlankheitsfaktor ASTM C42 (h/d < 1 → NaN „–“, h/d > 2 → 1,0),
-  // Lehrfaktoren Bewehrung (+3,5 % je Stab) und Bohrrichtung (BS 1881-120: 1,085), Würfelwert ≈ f_c/0,82
+  // Lehrfaktoren Bewehrung (+3,5 % je Stab) und Bohrrichtung (BS 1881-120: 1,085); Würfel ↔ Zylinder über die Klassenverhältnisse der Tab. 3.1
   const concreteRes = useMemo(
     () => bohrkernPruefung({ dMm: concreteDiam, hMm: concreteHeight, kraftKn: concreteForce, staebe: concreteRebars, richtung: boreDirection }),
     [concreteDiam, concreteHeight, concreteForce, concreteRebars, boreDirection],

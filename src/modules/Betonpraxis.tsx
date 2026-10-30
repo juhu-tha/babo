@@ -24,6 +24,8 @@ import {
 } from 'lucide-react';
 import { useTabContext } from '@/src/contexts/TabContext';
 import { DIN1045_3_NACHBEHANDLUNG } from '@/src/data/normParams';
+import { LP_FESTIGKEITSVERLUST_JE_PROZENT } from '@/src/calc/mischung';
+import { CONCRETE } from '@/src/utils/ec2Spannbeton';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { ExpositionsKurzkarte } from '@/src/components/ui/ExpositionsKurzkarte';
@@ -195,13 +197,14 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
   }
 
   // --- Calculations for site water addition --
-  const predictedFlowIncrease = (waterAddition / 2.25) * 10; // +10mm flow spread for every 2 to 2.5 l/m³
+  const predictedFlowIncrease = (waterAddition / 2.25) * 10; // Lehrwert (Faustregel): +10 mm Ausbreitmaß je 2 bis 2,5 l/m³
   const predictedStrengthLoss = (waterAddition / 10) * 3.5; // -3 to -4 N/mm² for 10 l/m³
   const predictedShrinkageIncrease = (waterAddition / 10) * 0.1; // +0.1 mm/m for 10 l/m³
   const waterBleedingOut = waterAddition / 2; // half of added water bleeds out!
 
   // --- Calculations for air content change ---
-  const predictedAirStrengthLoss = airAddition * 2; // -2 N/mm² per 1 Vol-%
+  // Durchsicht A 29.10.2026 (DSA-BP-1): zentral 5 % je Vol.-% (LP_FESTIGKEITSVERLUST_JE_PROZENT), bezogen auf C30/37 (f_cm = 38 N/mm²)
+  const predictedAirStrengthLoss = airAddition * (LP_FESTIGKEITSVERLUST_JE_PROZENT / 100) * CONCRETE['C30/37'].fcm;
 
   // --- Walkability calculations based on temperature ---
   // Baseline is at 20°C -> 4 hours for walkable (Trittfestigkeit)
@@ -220,16 +223,16 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
     walkTimeFactor = 4.0 - ((tempWalk - 5) / 5) * 2.0;
   } else {
     // Below 5°C reaction slows down drastically
-    walkTimeFactor = 4.0 + ((5 - tempWalk) * 0.8);
+    walkTimeFactor = 4.0 + ((5 - tempWalk) * 0.8); // Lehrannahme: +0,8 je K unter 5 °C (Näherung)
   }
   const calcSettingTimeHours = 4 * walkTimeFactor;
 
   // --- Calculations for Bohrkernprüfung DIN EN 13791 ---
   // BK_min >= 0.85 * (fck - 4)
-  const reqBkMin = 0.85 * (fck - 4);
+  const reqBkMin = 0.85 * (fck - 4); // Faktor 0,85 nach DIN EN 13791:2020-02 (In-situ/Normprobe)
   // Mittelwert-Anforderung (DIN EN 13791:2020-02 – manuell prüfen):
   // 2 - 4 Kerne: f_m(n),is >= 0,85 * (fck + 1); 5 - 6 Kerne: >= 0,85 * (fck + 2)
-  const reqBkMedian = coresTested <= 4 ? 0.85 * (fck + 1) : 0.85 * (fck + 2);
+  const reqBkMedian = coresTested <= 4 ? 0.85 * (fck + 1) : 0.85 * (fck + 2); // Faktor 0,85 nach DIN EN 13791:2020-02
 
   // --- Calculations for WU-Richtlinie ---
   const getWuMindestdicke = (): { dicke: number; core?: number; comment: string } => {

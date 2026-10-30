@@ -62,7 +62,7 @@ export default function Schnellkarbonatisierung() {
 
   // Diagramm 1: x über √t mit Regressionsgerade
   const B = 320, H = 190, L = 40, U = 28, O = 10, R = 10;
-  const sMax = Math.max(1, ...punkte.map(p => Math.sqrt(Math.max(p.tTage, 0)))) * 1.08;
+  const sMax = Math.max(1, ...punkte.map(p => Math.sqrt(Math.max(p.tTage, 0)))) * 1.08; // Darstellungsfaktor (Achsenreserve)
   const xMax = Math.max(1, ...punkte.map(p => (Number.isFinite(p.xMm) ? p.xMm : 0))) * 1.2;
   const px = (s: number) => L + s / sMax * (B - L - R);
   const py = (v: number) => H - U - v / xMax * (H - U - O);

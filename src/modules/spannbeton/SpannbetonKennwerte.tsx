@@ -4,6 +4,11 @@ import BeiwerteKatalog from './BeiwerteKatalog';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import {
   CONCRETE,
+  E_SPANNSTAHL,
+  SPANNSTAHL,
+  LITZE,
+  betaCc,
+  SPANNUNGSGRENZEN,
   fckT,
   fcmT,
   fctmT,
@@ -52,7 +57,7 @@ export default function SpannbetonKennwerte() {
   const groutCalculations = useMemo(() => {
     // 1. Querschnitt & Hohlraumvolumen
     const ductArea = Math.PI * Math.pow(groutDuctDia / 2, 2); // mm²
-    const strandArea = groutStrandCount * 150; // mm² (150 mm² je 0.6" Litze)
+    const strandArea = groutStrandCount * LITZE.Ap; // mm² (zentral LITZE.Ap = 150 mm² je 0,6″-Litze)
     const netVoidArea = Math.max(100, ductArea - strandArea); // mm² freier Hohlquerschnitt
     const netVoidVolumeLiter = Number(((netVoidArea * (groutTendonLength * 1000)) / 1e6).toFixed(1)); // Liter Mörtel
 
@@ -65,7 +70,7 @@ export default function SpannbetonKennwerte() {
     const totalCementKg = Math.round(netVoidVolumeLiter * cementPerLiter);
     const totalWaterLiter = Math.round(netVoidVolumeLiter * waterPerLiter);
     const totalAdmixtureKg = Number(((totalCementKg * groutAdmixturePct) / 100).toFixed(1));
-    const cementBags25 = Math.ceil(totalCementKg / 25);
+    const cementBags25 = Math.ceil(totalCementKg / 25); // Sackware 25 kg (Annahme der Mengenermittlung)
 
     // Gütekriterien-Simulation nach DIN EN 447 & DIN EN 445:
     // Trichterverfahren nach DIN EN 445, Auslaufzeit t0 und t30 [s] (DIN EN 447: ≤ 25 s)
@@ -146,12 +151,8 @@ export default function SpannbetonKennwerte() {
     // Äquivalentes Betonalter unter Temperatur T nach Arrhenius (EC2 Gl. B.10):
     const t_eff = tempAdjustedAge(matAgeDays, matTemp);
 
-    // s-Wert für Zementklasse
-    const sMap: Record<CementClass, number> = { R: 0.20, N: 0.25, S: 0.38 };
-    const s = sMap[matCement as CementClass] || 0.25;
-
-    // beta_cc(t) nach DIN EN 1992-1-1 Gl. (3.2)
-    const beta_cc = Math.exp(s * (1 - Math.sqrt(28 / Math.max(0.1, t_eff))));
+    // beta_cc(t) nach DIN EN 1992-1-1 Gl. (3.2), s nach 3.1.2(6) – zentral (betaCc)
+    const beta_cc = betaCc(Math.max(0.1, t_eff), matCement as CementClass);
 
     // Normkonforme fck(t) mit fckT() (fcm(t) - 8 nach EC2 3.1.2(5)):
     const fcm_t = Number(fcmT(activeMatData.fck, t_eff, matCement as CementClass).toFixed(1));
@@ -179,12 +180,13 @@ export default function SpannbetonKennwerte() {
     // Reifegrad bezogen auf 28-Tage-fck:
     const maturity_pct = Number(((fck_t / activeMatData.fck) * 100).toFixed(1));
 
-    // Kriterium für Spannfreigabe nach EC2 Abs. 5.10.2.2:
+    // Spannfreigabe ab 70 % bzw. 80 % von f_ck: Lehrannahme (die Mindestfestigkeit beim Spannen legt die Zulassung/ETA
+    // des Spannverfahrens fest):
     const releaseReady = maturity_pct >= 70;
     const releaseOptimum = maturity_pct >= 80;
 
-    // Maximal zulässige Betondruckspannung beim Vorspannen (EC2 Abs. 5.10.2.2(4)):
-    const sigma_c_zul = Number((0.60 * fck_t).toFixed(1));
+    // Maximal zulässige Betondruckspannung beim Vorspannen (EC2 Abs. 5.10.2.2(5), zentral SPANNUNGSGRENZEN):
+    const sigma_c_zul = Number((SPANNUNGSGRENZEN.betonVorspannen * fck_t).toFixed(1));
 
     return {
       t_eff: Number(t_eff.toFixed(1)),
@@ -213,7 +215,7 @@ export default function SpannbetonKennwerte() {
     const Ecm = matMaturity.Ecm_t;
     const eps_c1 = activeMatData.eps_c1; // in ‰
     const eps_cu1 = activeMatData.eps_cu1; // in ‰
-    const k = (1.05 * Ecm * (eps_c1 / 1000)) / fcm;
+    const k = (1.05 * Ecm * (eps_c1 / 1000)) / fcm; // Gl. (3.14): k = 1,05·E_cm·|ε_c1|/f_cm
 
     const points: { eps: number; sigma: number; sigma_parabel: number }[] = [];
     const steps = 40;
@@ -263,22 +265,18 @@ export default function SpannbetonKennwerte() {
   const [exP0, setExP0] = useState<number>(5000); // kN Nennkraft an der Presse
 
   const exConc = useMemo(() => {
-    if (exConcreteClass === 'C35/45') {
-      return { fck: 35, fcm: 43, Ecm: 34000, alpha_p: 195000 / 34000 };
-    }
-    if (exConcreteClass === 'C70/85') {
-      return { fck: 70, fcm: 78, Ecm: 41000, alpha_p: 195000 / 41000 };
-    }
-    return { fck: 45, fcm: 53, Ecm: 36000, alpha_p: 195000 / 36000 };
+    // Kennwerte zentral aus Tab. 3.1 (CONCRETE), α_p = E_p/E_cm mit E_p = 195 000 N/mm² (EC2 3.3.6(3))
+    const c = CONCRETE[exConcreteClass] ?? CONCRETE['C45/55'];
+    return { fck: c.fck, fcm: c.fcm, Ecm: c.Ecm, alpha_p: E_SPANNSTAHL / c.Ecm };
   }, [exConcreteClass]);
 
   const exCalc = useMemo(() => {
-    const Ap = 3600; // mm² (2 x 12 x 150)
+    const Ap = 2 * 12 * LITZE.Ap; // mm² (2 × 12 Litzen à 150 mm² = 3600 mm²)
     const Ac = 500000; // mm²
     const Ic = 8.5e10; // mm⁴
     const ep = 450; // mm
-    const Ep = 195000; // N/mm²
-    const fpk = 1860; // N/mm²
+    const Ep = E_SPANNSTAHL; // N/mm², zentral
+    const fpk = SPANNSTAHL.Y1860.fpk; // N/mm², zentral
 
     const sigma_p0 = (exP0 * 1000) / Ap; // N/mm²
     // Unmittelbare Verluste (Reibung + Schlupf + elastische Stauchung)
@@ -303,18 +301,19 @@ export default function SpannbetonKennwerte() {
 
     // Relaxation
     const mu = sigma_pm0 / fpk;
+    // Gl. (3.29), Klasse 2 (ρ_1000 = 2,5 %), t = 500 000 h → t/1000 = 500
     const delta_sig_pr = Number((0.66 * 2.5 * Math.exp(9.1 * mu) * Math.pow(500, 0.75 * (1 - mu)) * 1e-5 * sigma_pm0).toFixed(1));
 
     // DIN EN 1992-1-1 Gl. (5.46)
     // Zähler
     const term_schwinden = eps_cs * Ep;
     const term_kriechen = phi * exConc.alpha_p * sig_c_p0;
-    const term_relaxation = 0.8 * delta_sig_pr;
+    const term_relaxation = 0.8 * delta_sig_pr; // Gl. (5.46): 0,8·Δσ_pr
     const zaehler = term_schwinden + term_kriechen + term_relaxation;
 
     // Nenner
     const k_geom = 1 + (Ac * ep * ep) / Ic;
-    const nenner = 1 + exConc.alpha_p * (Ap / Ac) * k_geom * (1 + 0.8 * phi);
+    const nenner = 1 + exConc.alpha_p * (Ap / Ac) * k_geom * (1 + 0.8 * phi); // Gl. (5.46): Nenner mit [1 + 0,8·φ]
 
     const delta_sig_csr = Number((zaehler / nenner).toFixed(1));
     const sigma_pminf = Number((sigma_pm0 - delta_sig_csr).toFixed(1));
@@ -353,13 +352,16 @@ export default function SpannbetonKennwerte() {
     };
   }, [exP0, exSpanT0, exSpanRH, exConc]);
 
-  // Quick estimation logic for the interactive micro-calc
+  // Überschlag für den Explorer (Lehrnäherung, vorläufig – keine Normformel; Durchsicht A 29.10.2026, DSA-SB-7):
+  // φ(∞) als Potenzansatz in t_0 und f_ck (an Anhang B für h_0 ≈ 300 mm angelehnt), ε_cs(∞) als Pauschalwert je Klima;
+  // genaue Werte nach Anhang B in den Reitern Kriechen, Schwinden und Beispielrechnung.
   const estPhi = calcRH === 50 
-    ? Math.max(1.8, 3.2 * Math.pow(calcT0, -0.22) * (45 / calcFck))
-    : Math.max(1.2, 2.0 * Math.pow(calcT0, -0.20) * (45 / calcFck));
-  const estEpsCs = calcRH === 50 ? 0.00038 : 0.00022; // m/m
-  const approxInitialPrestress = 1350; // N/mm²
-  const estCsrLossPct = Math.min(30, Math.max(8, (estPhi * 3.8 + estEpsCs * 195000 / approxInitialPrestress * 100 * 0.7 + calcSteelLoss * 0.8)));
+    ? Math.max(1.8, 3.2 * Math.pow(calcT0, -0.22) * (45 / calcFck)) // Näherung RH 50 %
+    : Math.max(1.2, 2.0 * Math.pow(calcT0, -0.20) * (45 / calcFck)); // Näherung RH 80 %
+  const estEpsCs = calcRH === 50 ? 0.00038 : 0.00022; // m/m, Lehrwert (Näherung)
+  const approxInitialPrestress = 1350; // N/mm², Lehrannahme: σ_pm0 nach Sofortverlusten (unter 1 360 N/mm² nach Gl. 5.43)
+  // Näherung: Verlust in % ≈ 3,8·φ + 0,7·ε_cs·E_p/σ_pm0·100 + 0,8·Δσ_pr/σ_pm0 (Faktoren 3,8 und 0,7: Lehrannahme, vorläufig)
+  const estCsrLossPct = Math.min(30, Math.max(8, (estPhi * 3.8 + estEpsCs * E_SPANNSTAHL / approxInitialPrestress * 100 * 0.7 + calcSteelLoss * 0.8)));
 
   return (
     <div className="space-y-6">

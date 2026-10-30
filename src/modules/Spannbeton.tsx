@@ -24,7 +24,8 @@ const ladeReiter = (bereiche: readonly string[]) => {
 };
 const Reiterplatz = () => <div className="min-h-screen" aria-busy="true" />;
 import SpannbetonNullBisHundert from './spannbeton/SpannbetonNullBisHundert';
-import { fckT, creep, shrinkage, relaxation, frictionSlip, timeDependentLoss, CONCRETE, pruefeSpannbeton, type RelaxationClass } from '@/src/calc/spannbeton';
+import { fckT, betaCc as betaCcT, EcmT, creep, shrinkage, relaxation, frictionSlip, timeDependentLoss, CONCRETE, pruefeSpannbeton, type RelaxationClass,
+  E_SPANNSTAHL, SPANNSTAHL, RHO_1000, SPANNUNGSGRENZEN as SG, sigmaPMax, sigmaPm0Grenze } from '@/src/calc/spannbeton';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { NachErstemBild } from '@/src/components/ui/NachErstemBild';
 import {
@@ -89,9 +90,10 @@ interface SteelData {
   Ep: number;     // Elastizitätsmodul des Spannstahls (N/mm²)
 }
 
+// Spannstahlkennwerte zentral (src/utils/ec2Spannbeton.ts: SPANNSTAHL, E_SPANNSTAHL nach EC2 3.3.6(3))
 const STEEL_GRADES: Record<string, SteelData> = {
-  'Y1770': { fpk: 1770, fp01k: 1520, Ep: 195000 },
-  'Y1860': { fpk: 1860, fp01k: 1600, Ep: 195000 },
+  'Y1770': { ...SPANNSTAHL.Y1770, Ep: E_SPANNSTAHL },
+  'Y1860': { ...SPANNSTAHL.Y1860, Ep: E_SPANNSTAHL },
 };
 
 const REITER = [
@@ -170,19 +172,17 @@ export default function Spannbeton({ bereiche }: { bereiche: readonly Spannbeton
 
     // 2. Betonreife zum Zeitpunkt des Spannens t_0 (Maturity Calculation according to EC2)
     // Festigkeitsverlauf nach DIN EN 1992-1-1, Kap. 3.1.2(5) mit fckT()
-    const sMap = { R: 0.20, N: 0.25, S: 0.38 };
-    const s = sMap[cementType];
-    const betaCc = Math.exp(s * (1 - Math.sqrt(28 / concreteAge)));
+    // β_cc(t_0) nach Gl. (3.2), s nach 3.1.2(6) – zentral (betaCc in src/utils/ec2Spannbeton.ts)
+    const betaCc = betaCcT(concreteAge, cementType);
     const fck_t0 = fckT(conc.fck, concreteAge, cementType); // fcm(t) - 8 nach EC2 3.1.2(5)
 
     // E-Modul-Entwicklung im Alter t_0 nach EC2: Ecm(t_0) = (fcm(t_0)/fcm)^0.3 * Ecm
-    const fcm = conc.fck + 8;
-    const fcm_t0 = fck_t0 + 8;
-    const Ecm_t0 = Math.max(15000, Math.pow(fcm_t0 / fcm, 0.3) * conc.Ecm);
+    // zentral EcmT() (Gl. 3.5); für t_0 ≥ 28 d höchstens E_cm (wie bisher: f_ck(t_0) = f_ck)
+    const Ecm_t0 = Math.max(15000, concreteAge >= 28 ? conc.Ecm : EcmT(conc.fck, concreteAge, cementType)); // Untergrenze 15 000 N/mm² als Plausibilitätsgrenze
 
     // 3. Spannstahlfläche Ap aus der Pressenkraft P0 bei σ_p,max = min(0,80·f_pk; 0,90·f_p0,1k)
     //    (DIN EN 1992-1-1/NA, 5.10.2.1) – Nachweis σ_pm0 ≤ min(0,75·f_pk; 0,85·f_p0,1k) siehe unten
-    const sigmaPmax = Math.min(0.80 * steel.fpk, 0.90 * steel.fp01k);
+    const sigmaPmax = sigmaPMax(steel.fpk, steel.fp01k); // Gl. (5.41), zentral
     const sigmaP0 = sigmaPmax; // Bezugsspannung an der Presse für alle %-Angaben
     const ap = (p0 * 1000) / sigmaP0; // mm²
 
@@ -227,7 +227,7 @@ export default function Spannbeton({ bereiche }: { bereiche: readonly Spannbeton
     // Relaxation Gl. (3.28)–(3.30) für t = 500 000 h (≈ 57 Jahre), Ausgangsspannung σ_pm0
     const relax = relaxation(sigmaPm0, steel.fpk, relaxationClass as RelaxationClass, 500000);
     const deltaSigmaPr = relax.delta_sigma_pr;
-    const rho1000 = relaxationClass === 1 ? 0.08 : relaxationClass === 2 ? 0.025 : 0.04;
+    const rho1000 = RHO_1000[relaxationClass as RelaxationClass]; // EC2 3.3.2(6), zentral
 
     // Betonspannung in Spanngliedhöhe unter quasi-ständiger Last (P_m0 + M_perm), Druck positiv
     const sigmaCQP = Math.max(0,
@@ -244,7 +244,7 @@ export default function Spannbeton({ bereiche }: { bereiche: readonly Spannbeton
     const totalLossPct = totalImmediateLossPct + lossCsrPct;
     const csrLossPct = lossCsrPct;
     const isLossHigh = totalLossPct > 35;
-    const isPm0Ok = sigmaPm0 <= Math.min(0.75 * steel.fpk, 0.85 * steel.fp01k);
+    const isPm0Ok = sigmaPm0 <= sigmaPm0Grenze(steel.fpk, steel.fp01k); // Gl. (5.43), zentral
 
     // Effektive Spannkräfte
     const pEff0 = p0 * (1 - totalImmediateLossPct / 100); // Nach allen Sofortverlusten (t = t0)
@@ -261,7 +261,7 @@ export default function Spannbeton({ bereiche }: { bereiche: readonly Spannbeton
     const sigmaTotalTop_t0 = sigmaN_t0 + sigmaMPTop_t0 + sigmaMG1Top;
     const sigmaTotalBot_t0 = sigmaN_t0 + sigmaMPBot_t0 + sigmaMG1Bot;
     const maxCompStress_t0 = Math.max(Math.abs(sigmaTotalTop_t0), Math.abs(sigmaTotalBot_t0));
-    const permCompStress_t0 = 0.60 * fck_t0; // EC2 5.10.2.2: 0.60 * f_ck(t0)
+    const permCompStress_t0 = SG.betonVorspannen * fck_t0; // EC2 5.10.2.2(5): 0,60 · f_ck(t0)
     const isTransferStressOk = maxCompStress_t0 <= permCompStress_t0;
 
     // 2. Charakteristische Kombination (Endzustand t = ∞): Kombination P_m∞ + M_char
@@ -275,7 +275,7 @@ export default function Spannbeton({ bereiche }: { bereiche: readonly Spannbeton
     const sigmaTotalTop_char = sigmaN_inf + sigmaMPTop_inf + sigmaMCharTop;
     const sigmaTotalBot_char = sigmaN_inf + sigmaMPBot_inf + sigmaMCharBot;
     const maxCompStress_char = Math.max(Math.abs(sigmaTotalTop_char), Math.abs(sigmaTotalBot_char));
-    const permCompStressRare = 0.60 * conc.fck; // EC2 7.2: 0.60 * f_ck
+    const permCompStressRare = SG.betonSelten * conc.fck; // EC2 7.2(2): 0,60 · f_ck
     const isRareStressOk = maxCompStress_char <= permCompStressRare;
 
     // 3. Quasi-ständige Kombination (Endzustand t = ∞): Kombination P_m∞ + M_perm
@@ -285,7 +285,7 @@ export default function Spannbeton({ bereiche }: { bereiche: readonly Spannbeton
     const sigmaTotalTop_perm = sigmaN_inf + sigmaMPTop_inf + sigmaMPermTop;
     const sigmaTotalBot_perm = sigmaN_inf + sigmaMPBot_inf + sigmaMPermBot;
     const maxCompStress_perm = Math.max(Math.abs(sigmaTotalTop_perm), Math.abs(sigmaTotalBot_perm));
-    const permCompStressQuasi = 0.45 * conc.fck; // EC2 7.2: 0.45 * f_ck (lineares Kriechen)
+    const permCompStressQuasi = SG.betonQuasiStaendig * conc.fck; // EC2 7.2(3): 0,45 · f_ck (lineares Kriechen)
     const isQuasiStressOk = maxCompStress_perm <= permCompStressQuasi;
 
     // 4. Dekompressionsnachweis nach DIN EN 1992-1-1/NA (NCI zu 7.3.1, Tab. 7.1DE):
@@ -301,10 +301,10 @@ export default function Spannbeton({ bereiche }: { bereiche: readonly Spannbeton
     const isDecompressed = sigmaTendonZone_perm <= 0;
 
     // 5. Spannstahlspannungen
-    const sigmaP_max_transfer = Math.min(0.75 * steel.fpk, 0.85 * steel.fp01k);
+    const sigmaP_max_transfer = sigmaPm0Grenze(steel.fpk, steel.fp01k); // Gl. (5.43)
     const sigmaP_inf = (pEffInf * 1000) / ap;
-    const sigmaP_perm_char = 0.75 * steel.fpk;
-    const sigmaP_perm_quasi = 0.65 * steel.fpk;
+    const sigmaP_perm_char = SG.spannstahlCharakteristisch * steel.fpk; // EC2 7.2(5): 0,75 · f_pk
+    const sigmaP_perm_quasi = SG.spannstahlQuasiStaendig * steel.fpk; // NA DE, NCI zu 7.2(5): 0,65 · f_pk
     const isSteelStressOk = sigmaP_inf <= sigmaP_perm_quasi;
     const isSteelCharStressOk = sigmaP_inf <= sigmaP_perm_char;
 

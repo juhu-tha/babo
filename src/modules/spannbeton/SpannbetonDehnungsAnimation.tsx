@@ -475,10 +475,7 @@ export default function SpannbetonDehnungsAnimation() {
 
               {/* Träger-Ober- und Unterkante (deformiert gemäß Biegelinie) */}
               <path
-                d={`M 30,${24 + beamDeflectPx * 0.4} 
-                    Q 310,${24 + beamDeflectPx} 590,${24 + beamDeflectPx * 0.4} 
-                    L 590,${66 + beamDeflectPx * 0.4} 
-                    Q 310,${66 + beamDeflectPx} 30,${66 + beamDeflectPx * 0.4} Z`}
+                d={`M 30,${24 + beamDeflectPx * 0.4} Q 310,${24 + beamDeflectPx} 590,${24 + beamDeflectPx * 0.4} L 590,${66 + beamDeflectPx * 0.4} Q 310,${66 + beamDeflectPx} 30,${66 + beamDeflectPx * 0.4} Z`}
                 fill="#f1f5f9"
                 stroke="#64748b"
                 strokeWidth="1.5"
@@ -562,7 +559,7 @@ export default function SpannbetonDehnungsAnimation() {
                         {prestressForce > 200 && (
                           <>
                             {[170, 240, 310, 380, 450].map((xPos) => {
-                              const arrowLen = Math.min(22, (prestressForce / 3000) * 22);
+                              const arrowLen = Math.min(22, (prestressForce / 3000) * 22); // Darstellungsfaktor: Pfeillänge bis 22 px bei 3000 kN
                               const localY = 45 + offsetPx * (1 - Math.pow((xPos - 310) / 280, 2)) + beamDeflectPx;
                               return (
                                 <g key={xPos}>

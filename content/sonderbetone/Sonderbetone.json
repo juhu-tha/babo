@@ -308,7 +308,7 @@
       },
       {
         "formel": "\\lambda_{10,dry} \\approx 0{,}12 - 0{,}18\\,\\text{W/(m}\\cdot\\text{K)}",
-        "erklaerung": "Sehr niedrige Bemessungswerte der Wärmeleitfähigkeit ermöglichen monolithische Außenwände (U-Wert < 0,24 W/(m²K) bei Wandstärken um 40-50 cm) ohne Zusatzdämmung.",
+        "erklaerung": "Sehr niedrige Bemessungswerte der Wärmeleitfähigkeit ermöglichen monolithische Außenwände ohne Zusatzdämmung (bei 50 cm Wandstärke U ≈ 0,23 bis 0,34 W/(m²K) für λ = 0,12 bis 0,18 W/(m·K), mit R_si + R_se = 0,17 m²K/W).",
         "quelle": "Schlaich & Hückler (2018)"
       },
       {
@@ -423,7 +423,7 @@
       },
       {
         "formel": "m_{\\text{Zement}} \\ge 325 - 375\\,\\text{kg/m}^3 \\quad (w/z \\le 0{,}60)",
-        "erklaerung": "Mindestzementgehalt nach DIN EN 1536 / DIN 1045-2 in Abhängigkeit vom Größtkorn (16 bzw. 32 mm) und dem Einbauverfahren (trocken oder unter Stützflüssigkeit).",
+        "erklaerung": "Mindestzementgehalt nach DIN EN 1536 / DIN 1045-2 in Abhängigkeit vom Einbauverfahren: 325 kg/m³ im Trockenen, 375 kg/m³ unter Wasser bzw. Stützflüssigkeit (wie im Reiter Bohrpfahlbeton); vom Größtkorn hängt der Mindestmehlkorngehalt ab (400 bzw. 450 kg/m³).",
         "quelle": "DIN EN 1536 / DIN 1045-2"
       },
       {

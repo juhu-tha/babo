@@ -522,8 +522,8 @@ export default function MessenPruefen() {
 
                       {/* Current Laboratory Point (Highlighted) */}
                       {(() => {
-                        const curX = Math.max(35, Math.min(425, 230 + (rvStats.currentLab.a - 50.0) * 28));
-                        const curY = Math.max(25, Math.min(195, 110 - (rvStats.currentLab.b - 48.0) * 28));
+                        const curX = Math.max(35, Math.min(425, 230 + (rvStats.currentLab.a - 50.0) * 28)); // Darstellungsfaktor: Plotmitte 50,0 MPa, 28 px je MPa
+                        const curY = Math.max(25, Math.min(195, 110 - (rvStats.currentLab.b - 48.0) * 28)); // Darstellungsfaktor: Plotmitte 48,0 MPa, 28 px je MPa
                         const col = rvStats.zStatus === 'ok' ? 'var(--bu-ok)' : rvStats.zStatus === 'warning' ? 'var(--bu-warn)' : 'var(--bu-fehler)';
                         return (
                           <g>

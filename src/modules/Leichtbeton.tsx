@@ -9,8 +9,8 @@ export default function Leichtbeton() {
   const [dichte, setDichte] = useState(1.4);
 
   // estimate compressive strength based on density (very rough linear approx for learning)
-  const fc = Math.max(2, (dichte - 0.8) * 35); 
-  const lambda = Math.max(0.15, (dichte - 0.4) * 0.4); // thermal conductivity
+  const fc = Math.max(2, (dichte - 0.8) * 35); // Lehrnäherung (linear, nicht normativ): +35 N/mm² je kg/dm³ über 0,8
+  const lambda = Math.max(0.15, (dichte - 0.4) * 0.4); // Wärmeleitfähigkeit, Lehrnäherung (nicht normativ, Bemessungswerte nach DIN 4108-4)
 
   return (
     <div className="flex flex-col gap-8">

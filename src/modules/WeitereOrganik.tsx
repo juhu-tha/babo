@@ -57,7 +57,7 @@ function DynamicInteractiveDegradationCalculator() {
     ) / 10;
 
     // Lifetime years (base reduced by degradation)
-    const factorRatio = Math.max(0.15, 1 - (degradationScore / 6.5));
+    const factorRatio = Math.max(0.15, 1 - (degradationScore / 6.5)); // Lehrmodell (qualitativ): Faktor 6,5 = Punktzahl ohne Restnutzung
     const projectedLifetime = Math.round(baseLifetime[material] * factorRatio);
 
     // Degradation rate % per 10 years

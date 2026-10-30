@@ -52,7 +52,7 @@
     "plastischGründungen": "Plastisch (Gründungen)",
     "weichKlassischerHochbauWände": "Weich (Klassischer Hochbau, Wände/Decken)",
     "sehrWeichSchlankeStützen": "Sehr weich (Schlanke Stützen, dichte Bewehrung)",
-    "fließfähigSelbstverdichtenderBetonSvb": "Sehr fließfähig (F5) / fließfähig (F6); SVB wird über das Setzfließmaß (SF1 bis SF3) eingeteilt",
+    "fließfähigSelbstverdichtenderBetonSvb": "Fließfähig (F5) / sehr fließfähig (F6); SVB wird über das Setzfließmaß (SF1 bis SF3) eingeteilt",
     "t4FestbetonFestigkeitsentwicklungElastisc": "4. Festbeton: Festigkeitsentwicklung & elastisches Tragverhalten",
     "festbetonkenngrößenÖffnen": "Festbetonkenngrößen öffnen ",
     "dieVerfestigungDesZementleims": "Die Verfestigung des Zementleims zu wasserunlöslichem Zementstein bestimmt die statischen Trageigenschaften. Dabei hängen die Druck- und Zugfestigkeiten maßgeblich vom Hydratationstyp, dem Reifealter und der Temperaturhistorie ab. Nach Eurocode 2 (DIN EN 1992-1-1) wird die zeitliche Festigkeitsentwicklung mit der Funktion β_cc(t) beschrieben; der Beiwert s hängt von der Zementklasse R, N oder S ab.",
