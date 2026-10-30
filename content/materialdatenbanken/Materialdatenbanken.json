@@ -43,7 +43,7 @@
     "penrtA1A3": "PENRT (A1-A3)",
     "mengeEingeben": "Menge eingeben",
     "didaktischerHinweisZurÖkobilanzierung": "Didaktischer Hinweis zur Ökobilanzierung:",
-    "negativeGwpWerteZ": "Negative GWP-Werte (z.B. beim Holz oder Stroh) beruhen auf dem Photosynthese-Effekt: Pflanzen speichern atmosphärischen Kohlenstoff während ihres Wachstums. Bei der Berechnung der Netto-LCA über das gesamte Gebäudeleben (Module A-D) müssen diese Speicher im Rückbau (Modul C3/C4) im Falle thermischer Verwertung bilanziell wieder freigelassen werden. Die nachhaltige Kaskadennutzung (z.B. Weiternutzung statt Verbrennung) ist der Schlüssel zur dauerhaften Kohlenstoffspeicherung.",
+    "negativeGwpWerteZ": "Negative GWP-Werte (z.B. beim Holz oder Stroh) beruhen auf dem Photosynthese-Effekt: Pflanzen speichern atmosphärischen Kohlenstoff während ihres Wachstums. Nach DIN EN 15804+A2 wird der gespeicherte biogene Kohlenstoff am Lebensende wieder ausgebucht, sobald das Material das Produktsystem verlässt – bei Verbrennung ebenso wie bei stofflicher Verwertung (Abgang in Modul C1 bis C3, je nach Ende der Abfalleigenschaft, bzw. C4); über A1–C ergibt sich für den biogenen Kohlenstoff netto null. Eine Kaskadennutzung (z. B. Weiternutzung statt Verbrennung) verlängert die tatsächliche Speicherdauer; in der Bilanz erscheint ihr Nutzen getrennt in Modul D bzw. im Folgeprodukt.",
     "datenartenInDerÖkobilanzierung": "Datenarten in der Ökobilanzierung",
     "generischeDaten": "Generische Daten",
     "durchschnittswerteFürEineBestimmte": "Durchschnittswerte für eine bestimmte Produktgruppe (z.B. \"Normalbeton C25/30\"). Sie werden oft in frühen Planungsphasen verwendet, wenn das genaue Fabrikat noch nicht feststeht.",

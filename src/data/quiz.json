@@ -939,17 +939,28 @@
     ],
     "correctIdx": 2,
     "explanation": "Nachwachsende Rohstoffe absorbieren während ihres biologischen Wachstums CO₂ aus der Atmosphäre. Dies wird nach DIN EN 15804 als negativer Treibhausbeitrag (GWP-biogen) in den Herstellungsphasen A1-A3 bilanziert. Am Lebensende (Modul C3/C4) wird dieses CO₂ bei thermischer Verwertung wieder freigesetzt.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Transporte gehen als positive Emissionen in A2 bzw. A4 ein; sie können ein GWP nicht negativ machen.",
+      "Biogene Baustoffe verdampfen nicht; bei Verbrennung oder Verrottung am Lebensende (C3/C4) wird das gespeicherte CO₂ wieder freigesetzt.",
+      "",
+      "Der Energieaufwand der Sägewerke wird in A3 vollständig bilanziert; negativ wird das GWP allein durch den biogenen Kohlenstoff."
+    ],
     "gapAnalysis": {
       "topic": "Biogener Kohlenstoffspeicher in Ökobilanzen",
       "misconception": "Verwechslung von fossilen Emissionen mit dem bilanziellen Kohlenstoffspeichereffekt nachwachsender Rohstoffe.",
-      "coreRule": "Photosynthese entzieht der Luft CO2. 1 m³ Fichtenholz bindet ca. 800-900 kg CO2-Äquivalente temporär als Kohlenstoffsenke.",
+      "coreRule": "Photosynthese entzieht der Luft CO₂. Nach DIN EN 16449 speichert 1 m³ Nadelholz rund 740 kg (Fichte, 450 kg/m³) bis 820 kg CO₂ (KVH, 500 kg/m³) temporär als Kohlenstoffsenke.",
       "actionableAdvice": "Gehen Sie im Modul Ökobilanzierung (LCA) die Modulstruktur nach DIN EN 15804 (A1 bis D) durch.",
       "targetModuleTab": "oekobilanz_lca",
       "targetModuleLabel": "Ökobilanzierung (LCA)"
     },
-    "reviewer": "freigegeben",
-    "reviewedAt": "2026-09-28",
-    "verified": true
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-30",
+      "ergebnis": "korrigiert",
+      "hinweis": "Abgleich 30.10.: Lernhilfe „1 m³ Fichtenholz bindet ca. 800–900 kg CO₂“ an DIN EN 16449 und den zentralen Lehrwert angeglichen (KVH 500 kg/m³ −820 kg, Fichte 450 kg/m³ rund 740 kg; Durchsicht D, DSD-HO-2) – korrigiert (Bloom-Stufe, Niveau und Rückmeldungen ergänzt)"
+    }
   },
   {
     "id": "q_lca_2",
@@ -37607,14 +37618,14 @@
       "Unkritisch, weil sich zusätzliche Luftporen kaum auf die Druckfestigkeit auswirken"
     ],
     "correctIdx": 2,
-    "explanation": "Der Mindestwert 4,5 % ist eingehalten. Nach DIN EN 206, 5.4.3, ist die obere Grenze des Luftgehalts der Mindestwert plus 4 % absolut (hier 8,5 %); Einzelwerte dürfen sie um höchstens 1,0 % überschreiten (bis 9,5 %). 9,0 % ist als Einzelwert also noch zulässig, mindert aber die Druckfestigkeit (je Prozent Luft etwa 3–5 N/mm²).",
+    "explanation": "Der Mindestwert 4,5 % ist eingehalten. Nach DIN EN 206, 5.4.3, ist die obere Grenze des Luftgehalts der Mindestwert plus 4 % absolut (hier 8,5 %); Einzelwerte dürfen sie um höchstens 1,0 % überschreiten (bis 9,5 %). 9,0 % ist als Einzelwert also noch zulässig, mindert aber die Druckfestigkeit (je Prozent Luft etwa 4–5 %, bei C30/37 rund 2 N/mm²).",
     "bloom": "Bewerten",
     "niveau": "B",
     "distraktorFeedback": [
       "Ab einem ausreichenden Porensystem steigt der Frostwiderstand kaum weiter, die Festigkeit sinkt aber deutlich.",
       "Die Grenzabweichung −0,5 % gilt für die Unterschreitung des Mindestwerts; über der oberen Grenze sind Einzelwerte bis +1,0 % zulässig.",
       "",
-      "Jedes zusätzliche Prozent Luft mindert die Druckfestigkeit um etwa 3–5 N/mm²."
+      "Jedes zusätzliche Prozent Luft mindert die Druckfestigkeit um etwa 4–5 % (bei C30/37 rund 2 N/mm²)."
     ],
     "gapAnalysis": {
       "topic": "Luftgehalt",
@@ -37626,9 +37637,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-29",
+      "am": "2026-10-30",
       "ergebnis": "korrigiert",
-      "hinweis": "Zweitprüfung 28.10. (Tranche 3): „Richtwert“ → obere Grenze nach DIN EN 206, 5.4.3, Einzelwert +1,0 % – korrigiert · Zweitprüfung 29.10.: Lernhilfe an die Erklärung angeglichen („Richtwert + 4 %“ → obere Grenze Mindestwert + 4 %, Einzelwert + 1,0 %) – korrigiert"
+      "hinweis": "Zweitprüfung 28.10. (Tranche 3): „Richtwert“ → obere Grenze nach DIN EN 206, 5.4.3, Einzelwert +1,0 % – korrigiert · Zweitprüfung 29.10.: Lernhilfe an die Erklärung angeglichen („Richtwert + 4 %“ → obere Grenze Mindestwert + 4 %, Einzelwert + 1,0 %) – korrigiert · Abgleich 30.10.: Festigkeitsverlust je Prozent Luft „3–5 N/mm²“ an den zentralen Wert in Prozent angeglichen (rund 5 % je Vol.-%, bei C30/37 rund 2 N/mm²; Entscheidung Luftporen #278, Durchsicht A DSA-BP-1) – korrigiert"
     }
   },
   {
