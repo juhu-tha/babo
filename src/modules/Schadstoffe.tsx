@@ -99,8 +99,6 @@ const SCHADSTOFFE_DATA = [
   }
 ];
 
-const TREATMENT_OPTIONS = inhalt.daten.TREATMENT_OPTIONS;
-
 type SchadstoffReiter = 'fasern' | 'pak' | 'pcb' | 'pfas' | 'chlorparaffine' | 'quecksilber' | 'biogefahren';
 const SCHADSTOFF_REITER: { id: SchadstoffReiter; label: string; icon: typeof Wind; stoffe: string[] }[] = [
   { id: 'fasern', label: inhalt.werte.asbestKmfFasern, icon: Wind, stoffe: ['asbest', 'kmf'] },

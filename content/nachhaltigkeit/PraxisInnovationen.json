@@ -53,7 +53,7 @@
     "vorzeigeprojektFürKommunalenKlimaschutz": "Vorzeigeprojekt für kommunalen Klimaschutz",
     "frankfurt14100M": "Frankfurt • 14 100 m² BGF",
     "timberPioneerEuropaviertel": "Timber Pioneer (Europaviertel)",
-    "erstesHolzHybridBürogebäude": "Erstes Holz-Hybrid-Bürogebäude Frankfurts. 1800 m³ Holz binden dauerhaft ca. **1800 t CO₂**. Mit nur **300 kg/m²** ist die Tragstruktur 57 % leichter als ein Massivbau (ca. 700 kg/m²). Ausgezeichnet mit DGNB Gold.",
+    "erstesHolzHybridBürogebäude": "Erstes Holz-Hybrid-Bürogebäude Frankfurts. 1800 m³ Holz speichern rund **{co2Speicher} t CO₂** (biogener Kohlenstoff nach DIN EN 16449 bei 500 kg/m³ und u = 12 %; temporär gespeichert, Freisetzung am Lebensende in Modul C3). Mit nur **300 kg/m²** ist die Tragstruktur 57 % leichter als ein Massivbau (ca. 700 kg/m²). Ausgezeichnet mit DGNB Gold.",
     "t57GewichtsersparnisBeiDecken": "57 % Gewichtsersparnis bei Decken",
     "diedorfPlusenergiehaus": "Diedorf • Plusenergiehaus",
     "schmuttertalGymnasiumNaglerKaufmann": "Schmuttertal-Gymnasium (Nagler & Kaufmann)",

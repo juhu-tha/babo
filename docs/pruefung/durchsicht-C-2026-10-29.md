@@ -140,3 +140,19 @@ Die neue Kennzeichnung bei DSC-ZF-2 ist über das Stichwort „Prüfverfahren“
 - Prüfskripte (Sitzungsablage, nicht im Repository): `scratchpad/dsc/dump.sh` und `ex.py` (Auszug aller Strings mit Zahlen/Normverweisen je Modul), `nachrechnung.py` (101 Nachrechnungen), Profilkonsistenz `bp_stahlbauprofile` (Inline-Skript).
 - Regressionstest: `tests/durchsichtC.test.ts`.
 - Quellen der Webrecherche: [DIN Media, DIN EN 1990-1:2026-12](https://www.dinmedia.de/en/standard/din-en-1990-1-a1/400467169) (Titel, Ausgabe, „ersetzt DIN EN 1990:2021-10“); [genorma, EN 1990-1:2023+A1:2026](https://genorma.com/en/standards/en-1990-1-2023-a1-2026).
+
+## Umsetzung 30.10.2026
+
+Entscheidung 30.10.2026: alle Vorschläge übernommen (Branch `umsetzung/durchsicht-10-30`). Regressionstest `tests/umsetzungDurchsicht_20261030.test.ts`.
+
+| Kennung | Ergebnis | Quelle |
+|---|---|---|
+| DSC-BZ-2 | LP-Festigkeitsverlust einheitlich „rund 4–5 % je Vol.-%“, Rechenwert 5 % (`LP_FESTIGKEITSVERLUST_JE_PROZENT`), bei 40 N/mm² rund 2 N/mm²: Betonzusatzmittel, Mischungsberechnung, Betonpraxis; Quiz `qn_frischbeton_4` („3–5 N/mm²“ → 4–5 %) korrigiert | Faustregel (Lehrwert), wie A/BP-1 |
+| DSC-DM-2 | `modernisierung`: Wand 12–14 cm, Steildach 14–16 cm (zwischen Sparren) richtig zugeordnet; Herleitung d = λ · (1/U_max − 1/U₀) im Modul (Wand 0,117–0,126 m); `bp_daemmung` Steildach mit Hinweis Holzanteil | GModG Anlage 7; DIN EN ISO 6946 |
+| DSC-ME-1 | λ Aluminium 160 W/(mK) zentral (`LAMBDA_ALUMINIUM`, `src/data/kennwerte.ts`); Materialdatenbank (vorher 200), Modul Metalle (vorher 235), Bauprodukte metallisch (vorher 220) | DIN EN ISO 10456 (Bemessungswert Aluminiumlegierungen) |
+| DSC-HP-1 | Torstahl als historische Handels-/Zulassungsbezeichnung gekennzeichnet, Zuordnung zu BSt 42/50 (IIIb) bzw. St III-T/St IV-T der zentralen Tabelle | `historicalMaterialsData` |
+| DSC-HB-1 | σ_zul = 120 N/mm² als benannter Lehrwert `SIGMA_ZUL_ZUGBAND_LEHRWERT` (ohne Normbeleg) in Code und Text | – (Quelle fehlt) |
+| DSC-BE-1 | Calciumsilikat λ = 0,065 W/(mK) aus einer Quelle in Rechnerauswahl und Beispiel 1; Beispiel neu gerechnet: R_D 0,92, U 0,63, θ_si 18,0 °C, ΔQ 7308 kWh/a, 1754 kg CO₂-Äq./a | [Baunetz Wissen, Innendämmung ohne Feuchteschäden](https://www.baunetzwissen.de/drucken/innendaemmung-ohne-feuchteschaeden-1568073) |
+| DSC-BK-1 (Normtext) | Formelquelle α_T als „vorläufig, Normprüfung ausstehend“ gekennzeichnet, Hinweis DIN EN 1993-1-1, 3.2.6 | – |
+| DSC-VK-1 (Hinweis) | Dickenregler Betondecken: Beschriftung „Autobahn Bk100: 27 cm (RStO 12/24, Tafel 2, Zeile 1; vorläufig)“, Bereich 18–35 cm enthält den RStO-Wert | `RSTO_CONCRETE_DATA` |
+| `statistik` (Hinweis) | Nachfolger als DIN EN 1990-1:2026-12 (EN 1990-1:2023+A1:2026), NA im Entwurf | wie DSC-NA-1 |

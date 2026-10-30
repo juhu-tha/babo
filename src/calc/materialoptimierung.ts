@@ -2,7 +2,7 @@
  * Rechenkern Materialoptimierung – THG-Vergleich Referenz/optimiertes Bauteil (Z3), übernommen aus
  * src/modules/Materialoptimierung.tsx (DAfStb-Richtlinie, Lehrbeispiel):
  *  - Mengen je Bauteil und Bauweise (Beton in m³, Betonstahl in kg) wie im Modul
- *  - Beton: GWP = 320 kg/m³ · GWP_Zement + 30 kg/m³ (Lehrbeispiel C30/37 wie Modul LCA-Grundlagen), Referenz CEM I = 243,
+ *  - Beton: GWP = 320 kg/m³ · GWP_Zement + 45 kg/m³ (Lehrbeton C30/37, Rest einheitlich seit 30.10.2026), Referenz CEM I = 258,
  *    optimiert nach Zementart, bei Prüfalter 56 d ×0,91 (gerundet)
  *  - Betonstahl: Referenz ÖKOBAUDAT „Bewehrungsstahl (de)“ 0,64 kg CO₂e/kg (überwiegend Elektrostahl); wählbar
  *    Hochofen-Route (BOF) 0,98 und Elektrostahl mit Grünstrom 0,42 (Lehrwerte)
@@ -24,13 +24,13 @@ export const ZEMENTGEHALT_LEHR = LEHRBETON_C3037.zement;
 export const REST_GWP_LEHR = LEHRBETON_C3037.rest;
 /**
  * GWP A1–A3 je kg Zement [kg CO₂e/kg] aus src/data/zementGwp.ts (T15-NH-3): CEM I 0,665 und CEM II/C-M 0,40 nach
- * VDZ-Branchen-EPD (netto); CEM II/A-LL 0,60 (ergibt 222 kg/m³ wie ÖKOBAUDAT 2024-I „Transportbeton C25/30“, 221,7 kg/m³),
+ * VDZ-Branchen-EPD (netto); CEM II/A-LL 0,60 (mit 300 kg Zement und Rest 45: 225 kg/m³ ≈ ÖKOBAUDAT 2024-I „Transportbeton C25/30“, 221,7 kg/m³),
  * CEM II/B-S 0,53 und CEM III/A 0,40 Lehrwerte (vorläufig, F-Freigabe). Projektbezogen gelten EPD des Betonwerks bzw. ÖKOBAUDAT.
  */
 export const ZEMENT_GWP_JE_KG: Readonly<Record<DafstbZement, number>> = {
   cem1: ZEMENT_GWP_KG['CEM I'], cem2_all: ZEMENT_GWP_KG['CEM II/A'], cem2_bs: ZEMENT_GWP_KG['CEM II/B'], cem3_a: ZEMENT_GWP_KG['CEM III/A'], cem2_cm: ZEMENT_GWP_KG['CEM II/C-M'],
 };
-/** GWP A1–A3 des Lehrbetons je m³ nach Zementart [kg CO₂e/m³] = round(320 · GWP_Zement + 30): 243 / 222 / 200 / 158 / 158 */
+/** GWP A1–A3 des Lehrbetons je m³ nach Zementart [kg CO₂e/m³] = round(320 · GWP_Zement + 45): 258 / 237 / 215 / 173 / 173 */
 export const ZEMENT_GWP: Readonly<Record<DafstbZement, number>> = Object.fromEntries(
   (Object.keys(ZEMENT_GWP_JE_KG) as DafstbZement[]).map(z => [z, Math.round(ZEMENTGEHALT_LEHR * ZEMENT_GWP_JE_KG[z] + REST_GWP_LEHR)]),
 ) as Record<DafstbZement, number>;

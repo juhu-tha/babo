@@ -17,6 +17,7 @@ import {
   Layers
 } from "lucide-react";
 import { MATERIAL_DATABASE, CustomRow, ScenarioPreset, PRESETS, alsLcaBaustoff } from './interactivelcacalc/daten';
+import { PROFILSTAHL_HINWEIS } from '@/src/data/gwpLehrwerte';
 import {
   lcaBilanz, A4_FAKTOR_GEBAEUDE, B6_FAKTOREN, BNB_NUTZUNGSDAUER, QNG_WG, QNG_STAND, SORTENREINHEIT_REFERENZ, ersatzzyklen,
   type LcaEingabe, type LcaErgebnis, type LcaZeile, type Energietraeger, type TgaSockel,
@@ -502,6 +503,7 @@ export default function InteractiveLCACalc() {
                             <span>EoL C: <strong className="text-slate-800">+{formatDeZahl(currentMat.gwpC, 0)} kg</strong></span>
                             <span>·</span>
                             <span>Modul D: <strong className="text-teal-700">{formatDeZahl(currentMat.gwpD, 0)} kg</strong></span>
+                            {currentMat.id === 'baustahl' && <span className="font-sans">(Lehrwert; {PROFILSTAHL_HINWEIS})</span>}
                           </div>
                           <div className="flex items-center gap-2">
                             <span className="px-1.5 py-0.2 rounded bg-slate-200 text-slate-700 font-bold">UMI: {formatDeZahl(currentMat.umiScore, 0)}%</span>

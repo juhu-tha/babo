@@ -124,25 +124,25 @@ gilt(!lcaTsx.includes('materialId: "baustahl", quantity: 1.8'), 'F-3 Standardauf
 // A2-Lehrwerte o-3 mit 640/598,8 neu skaliert (Quell-EPD Feralpi: AP 1,711; EP-Süßwasser 25,03 g PO₄ · 30,97/94,97; EP-Meer 0,4093; EP-terr. 4,687)
 const o3 = LEHRWERTE_A2['o-3'], fa = 640 / 598.8;
 pruefe('F-3 o-3 Faktor', o3.faktor, fa, 0.01); pruefe('F-3 o-3 AP', o3.ap, 1.711 * fa, 0.05); pruefe('F-3 o-3 EP-Meer', o3.epMeer, 0.4093 * fa, 0.05);
-// Erkundung LCA-Rechner nachgerechnet (Standardaufbau mit 1,8 t Betonstahl): A1–A3 + C + A4 je m² und Jahr 2,42 / 2,26 / 4,84
+// Erkundung LCA-Rechner nachgerechnet (Standardaufbau mit 1,8 t Betonstahl; EPS seit 30.10.2026 mit 65 kg/m³ = 3,25 · 20): A1–A3 + C + A4 je m² und Jahr 2,40 / 2,24 / 4,80
 {
   const zeile = (id: string, menge: number, q: number, s: number, v: 'downcycling' | 'high_grade' | 'thermal') => ({ baustoff: alsLcaBaustoff(lcaMat(id)!), menge, kreislaufquote: q, sortenreinheit: s, verwertung: v });
   const std = (z2 = 'ziegel') => [zeile('beton-cem1', 24, 65, 85, 'downcycling'), zeile(z2, 38, 55, 75, 'downcycling'), zeile('betonstahl', 1.8, 95, 95, 'high_grade'), zeile('eps-daemmung', 12, 25, 60, 'thermal')];
   const b = (zeilen: ReturnType<typeof std>, tf = A4_FAKTOR_GEBAEUDE.lkw, nrf = 140) => lcaBilanz({ zeilen, nrfR: nrf, betrachtungszeitraum: 50, transportDistanz: 120, transportFaktor: tf, mitB4: true, energie: { stromGeg: 2400, pvEigennutzung: 900, waerme: 0, waermeTraeger: 'netzstrom', nutzerstrom: true }, tgaSockel: 'ep_bis40', gebaeudeart: 'wohnbau' });
   const s = b(std()), bahn = b(std(), A4_FAKTOR_GEBAEUDE.bahn), kvh = b(std('kvh'));
-  pruefe('Erk. A–C+A4 Lkw', (s.a1a3 + s.c3c4 + s.a4) / 7000, 2.42, 0.003);
-  pruefe('Erk. A–C+A4 Bahn', (s.a1a3 + s.c3c4 + bahn.a4) / 7000, 2.26, 0.003);
-  pruefe('Erk. NRF 70', (s.a1a3 + s.c3c4 + s.a4) / 3500, 4.84, 0.003);
-  pruefe('Erk. Konstruktion', s.spez.konstruktion, 3.77, 0.003);
-  pruefe('Erk. KVH Konstruktion', kvh.spez.konstruktion, 3.27, 0.003);
-  pruefe('Erk. KVH mit D', kvh.spez.konstruktion + kvh.spez.d, 1.79, 0.003);
-  gilt(erk.includes('von etwa 2,42 auf 2,26') && erk.includes('von etwa 2,42 auf 4,84') && erk.includes('von etwa 3,77 auf 3,27') && erk.includes('etwa 1,79'), 'Erkundung LCA-Rechner nachgerechnet');
+  pruefe('Erk. A–C+A4 Lkw', (s.a1a3 + s.c3c4 + s.a4) / 7000, 2.40, 0.003);
+  pruefe('Erk. A–C+A4 Bahn', (s.a1a3 + s.c3c4 + bahn.a4) / 7000, 2.24, 0.003);
+  pruefe('Erk. NRF 70', (s.a1a3 + s.c3c4 + s.a4) / 3500, 4.80, 0.003);
+  pruefe('Erk. Konstruktion', s.spez.konstruktion, 3.73, 0.003);
+  pruefe('Erk. KVH Konstruktion', kvh.spez.konstruktion, 3.22, 0.003);
+  pruefe('Erk. KVH mit D', kvh.spez.konstruktion + kvh.spez.d, 1.75, 0.003);
+  gilt(erk.includes('von etwa 2,40 auf 2,24') && erk.includes('von etwa 2,40 auf 4,80') && erk.includes('von etwa 3,73 auf 3,22') && erk.includes('etwa 1,75'), 'Erkundung LCA-Rechner nachgerechnet');
 }
 
 // F-4: gemeinsame Lehrwerttabelle; alle Module lesen daraus
 pruefe('F-4 C25/30', GWP_LEHRWERTE.betonC2530CemI.gwp, 245);
-pruefe('F-4 C30/37', GWP_LEHRWERTE.betonC3037CemI.gwp, Math.round(320 * gz + 30));
-pruefe('F-4 BSH', GWP_LEHRWERTE.bsh.gwp, -650); pruefe('F-4 KVH', GWP_LEHRWERTE.kvh.gwp, -740);
+pruefe('F-4 C30/37', GWP_LEHRWERTE.betonC3037CemI.gwp, Math.round(320 * gz + 45)); // Rest einheitlich 45 seit 30.10.2026
+pruefe('F-4 BSH', GWP_LEHRWERTE.bsh.gwp, -680); // DIN EN 16449, 480 kg/m³ (Umsetzung 30.10.2026, DSB-RU-1) pruefe('F-4 KVH', GWP_LEHRWERTE.kvh.gwp, -740);
 for (const [k, w] of Object.entries(GWP_LEHRWERTE)) gilt(w.biogen <= 0 && w.gwp >= w.biogen && w.quelle.length > 10, `F-4 ${k} plausibel`);
 pruefe('F-4 LCA-Rechner C25/30', lcaMat('beton-cem1')?.gwpA1A3 ?? NaN, GWP_LEHRWERTE.betonC2530CemI.gwp);
 pruefe('F-4 LCA-Rechner RC', lcaMat('rc-beton')?.gwpA1A3 ?? NaN, GWP_LEHRWERTE.betonRcC2530.gwp);
@@ -151,14 +151,14 @@ pruefe('F-4 LCA-Rechner KVH', lcaMat('kvh')?.gwpA1A3 ?? NaN, GWP_LEHRWERTE.kvh.g
 gilt(['gwp: GWP.betonC2530CemI.gwp,', 'gwp: GWP.betonC3037CemIII.gwp,', 'gwp: GWP.kvh.gwp, penrt: 1950, biogenicC: GWP.kvh.biogen,', 'gwp: GWP.bsh.gwp, penrt: 2400, biogenicC: GWP.bsh.biogen,', 'gwp: GWP.bsh.gwp, // inkl. biogenem CO₂'].every(t => mdbTsx.includes(t))
   && !/gwp: (235|-620|-580|-482\.0),/.test(mdbTsx), 'F-4 Materialdatenbanken aus der Lehrwerttabelle');
 pruefe('F-4 Wand C25/30 je kg', EPD_DATABASE.concrete_cem1.gwp_fossil_a1a3 * EPD_DATABASE.concrete_cem1.density, 245);
-pruefe('F-4 Wand BSH je kg', (EPD_DATABASE.bsh_softwood.gwp_fossil_a1a3 + EPD_DATABASE.bsh_softwood.gwp_biogenic_a1a3) * EPD_DATABASE.bsh_softwood.density, -650);
+pruefe('F-4 Wand BSH je kg', (EPD_DATABASE.bsh_softwood.gwp_fossil_a1a3 + EPD_DATABASE.bsh_softwood.gwp_biogenic_a1a3) * EPD_DATABASE.bsh_softwood.density, -680);
 for (const datei of ['src/modules/LCA.tsx', 'src/modules/DppEpd.tsx', 'src/modules/BimBaustoffe.tsx', 'src/modules/Materialdatenbanken.tsx', 'src/modules/nachhaltigkeit/daten.ts', 'src/modules/interactivelcacalc/daten.ts']) gilt(lies(datei).includes("@/src/data/gwpLehrwerte'"), `F-4 ${datei} importiert die Lehrwerttabelle`);
 // Inhaltskopien stimmen mit der Tabelle überein (keine verdeckten Altwerte)
 const lcaJson = JSON.parse(lies('content/lca/LCA.json')).daten.REFERENZEN_EPD as { id: string; gwp_total: number }[];
-pruefe('F-4 LCA.json BSH', lcaJson.find(e => e.id === 'bsh-softwood')!.gwp_total, -650);
+pruefe('F-4 LCA.json BSH', lcaJson.find(e => e.id === 'bsh-softwood')!.gwp_total, GWP_LEHRWERTE.bsh.gwp);
 const bimJson = JSON.parse(lies('content/bimbaustoffe/BimBaustoffe.json')).daten.ARCHETYPES as { id: string; defaultGwp: number }[];
 pruefe('F-4 BIM Beton', bimJson.find(a => a.id === 'beton')!.defaultGwp, GWP_LEHRWERTE.betonC3037CemI.gwp);
-pruefe('F-4 BIM BSH', bimJson.find(a => a.id === 'holz')!.defaultGwp, -650);
+pruefe('F-4 BIM BSH', bimJson.find(a => a.id === 'holz')!.defaultGwp, GWP_LEHRWERTE.bsh.gwp);
 
 // F-5: Lebensdauern – Außenputz und WDVS getrennt, WDVS 40 a (BNB 2017, 335.641)
 const ld = lies('src/modules/Lebensdauern.tsx');

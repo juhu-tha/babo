@@ -37,7 +37,7 @@
     "t300KgCo": "3,00 kg CO₂-eq/(m²·a)",
     "ersatzaufwand50Jahre180": "Ersatzaufwand (50 Jahre): 180 t CO₂-Äq.",
     "schrittCBetriebB6": "Schritt C: Betrieb (B6)",
-    "endenergieStromHeizungWarmwasser": "Endenergie Strom (Heizung, Warmwasser, Hilfsstrom) aus GEG-Berechnung: 18 kWh/(m²NRF·a). Emissionsfaktor Strommix (50 a gewichtet sinkend): 0,43 kg CO₂-Äq./kWh.",
+    "endenergieStromHeizungWarmwasser": "Endenergie Strom (Heizung, Warmwasser, Hilfsstrom) aus GEG-Berechnung: 18 kWh/(m²NRF·a). Emissionsfaktor Strommix (50 a gewichtet sinkend): 0,43 kg CO₂-Äq./kWh (Bezeichnung und Wert vorläufig, Normprüfung ausstehend; Abgleich mit dem ÖKOBAUDAT-Datensatz Strom nach QNG-Rechenregel offen).",
     "t18KwhMA": "→ 18 kWh/m²a * 0,43 kg/kWh =",
     "t774KgCo": "7,74 kg CO₂-eq/(m²·a)",
     "stromverbrauchB6": "Stromverbrauch (B6):",

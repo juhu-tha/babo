@@ -16,9 +16,14 @@ export interface MaterialData {
 
 // Beton und BSH je kg aus der gemeinsamen Lehrwerttabelle (Konsistenz 29.10.2026, F-4: 245, 195 und −650 kg CO₂-Äq./m³)
 const AUS_LEHRWERTTABELLE: Partial<Record<string, GwpLehrwertSchluessel>> = { concrete_cem1: 'betonC2530CemI', concrete_rc: 'betonRcC2530', bsh_softwood: 'bsh' };
+// Dämmstoffe je kg aus der Lehrwerttabelle, Rohdichte bleibt die des Produkts (Umsetzung 30.10.2026, DSB-LC-10:
+// EPS 3,25 und Mineralwolle 1,20 kg CO₂-Äq./kg; vorher Glaswolle 0,96)
+const JE_KG_AUS_LEHRWERTTABELLE: Partial<Record<string, 'eps' | 'mineralwolle'>> = { mineral_wool: 'mineralwolle', eps_styropor: 'eps' };
 
 export const EPD_DATABASE: Record<string, MaterialData> = Object.fromEntries(
   Object.entries(inhalt.daten.EPD_DATABASE as Record<string, MaterialData>).map(([k, m]) => {
+    const d = JE_KG_AUS_LEHRWERTTABELLE[k];
+    if (d) return [k, { ...m, gwp_fossil_a1a3: gwpJeKg(d).fossil, gwp_biogenic_a1a3: 0 }];
     const s = AUS_LEHRWERTTABELLE[k];
     if (!s) return [k, m];
     const j = gwpJeKg(s);

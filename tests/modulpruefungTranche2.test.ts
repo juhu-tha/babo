@@ -123,7 +123,9 @@ const zeilen: LcaZeile[] = [
 ];
 const lca = lcaBilanz({ zeilen, nrfR: 1000, nrfBeheizt: 900, betrachtungszeitraum: 50, transportDistanz: 50, transportFaktor: 0.118, mitB4: true,
   energie: { stromGeg: 12000, pvEigennutzung: 3000, waerme: 30000, waermeTraeger: 'fw_erdgas_kwk', nutzerstrom: true }, tgaSockel: 'ep_ueber40', gebaeudeart: 'wohnbau' });
-pruefe('LCA B4', lca.b4, 2720); pruefe('LCA B6', lca.b6, 939888.93); pruefe('LCA D', lca.d, -25809.827); pruefe('LCA QNG', lca.spez.qng, 22.23458);
+// Umsetzung 30.10.2026 (DSB-LC-10): EPS A1–A3 65 statt 78 kg/m³ → B4 = 20 · (65 + 58) = 2460 (vorher 2720);
+// QNG-Wert um (20 · 13 · 2)/(1000 · 50) = 0,0104 geringer: 22,23458 − 0,0104 = 22,22418
+pruefe('LCA B4', lca.b4, 2460); pruefe('LCA B6', lca.b6, 939888.93); pruefe('LCA D', lca.d, -25809.827); pruefe('LCA QNG', lca.spez.qng, 22.22418);
 
 // 10. Boden: Mehrpunktverfahren (Ausgleichsgerade w über lg N) → w_L = 43,27 %, I_C = 0,715 (weich), TM
 const a1 = atterberg({ w: 28, versuche: [{ schlaege: 16, w: 46.1 }, { schlaege: 22, w: 44.0 }, { schlaege: 29, w: 42.4 }, { schlaege: 37, w: 40.8 }], ausroll: [21.5, 22.3], organisch: false });

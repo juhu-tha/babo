@@ -147,3 +147,14 @@ Regressionstest: `tests/durchsichtD.test.ts` (Nachrechnungen über `festigkeitsw
 - **H-3 (`erdbau`, Steckbrief):** „Abfuhr- und Deponiekosten … je nach Schadstoffklasse wie Z0–Z5“ – Z3 bis Z5 stammen aus älteren LAGA-Fassungen; seit 1. August 2023 gelten für Bodenmaterial die Klassen der Ersatzbaustoffverordnung (BM-0 bis BM-F3). Bei Gelegenheit neutral fassen.
 - **H-4 (`kombinationen`, Steckbrief Faserverbund):** Produktname eines GFK-Bewehrungsstabs genannt – falls der Grundsatz „herstellerneutral“ auch für Steckbriefe gilt, neutral fassen.
 - **H-5 (`materialmodelle`):** Fließgrenze SVB „τ₀ ≈ 0–60 Pa“ und „rund 10 bis 50 Pa“ an zwei Stellen – verträglich, bei Gelegenheit einheitlich fassen.
+
+## Umsetzung 30.10.2026
+
+Entscheidung 30.10.2026: alle Vorschläge übernommen; die Normtext-Punkte bleiben inhaltlich unverändert.
+
+| Kennung | Ergebnis | Quelle |
+|---|---|---|
+| DSD-KO-1 (Normtext) | Kennzeichnung „vorläufig, Normprüfung ausstehend“ bereits vorhanden (Karte Hydrophobierung); unverändert | – |
+| DSD-HW-1 (Normtext) | Kennzeichnung bereits vorhanden; unverändert | – |
+| DSD-ME-1 (Normtext) | Ausgabe DIN 17860 bereits als vorläufig gekennzeichnet; unverändert | – |
+| H-1 (Hinweis) | BSH-Lehrwert jetzt aus DIN EN 16449 mit festgelegter Rohdichte 480 kg/m³ (`biogenesCo2DinEn16449`, siehe Durchsicht B, DSB-RU-1); NaWaRo-Reiter (GL24h 420 kg/m³) rechnet mit derselben Formel | DIN EN 16449 |

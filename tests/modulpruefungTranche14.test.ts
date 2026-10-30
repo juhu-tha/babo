@@ -96,7 +96,7 @@ gilt(!!mw && mw.defaultDensity === 60, `BIM4 Mineralwolle Rohdichte ${mw?.defaul
 gilt(JSON.stringify(mdb).includes('Mineralwolle: 1,20 kg CO₂e je kg'), 'BIM4 Bezugswert 1,20 kg/kg im Modul Materialdatenbanken');
 const m = mdb.daten as Record<string, { formel: string }[]>;
 pruefe('MDB1 GWP Außenwand', 0.175 * 1800 * 0.13 + 0.14 * 20 * 3.3, 50.19);
-zeigt('MDB', [...m['Materialdatenbanken.schritte'], ...m['Materialdatenbanken.schritte_2']], '50,2', '5,76');
+zeigt('MDB', [...m['Materialdatenbanken.schritte'], ...m['Materialdatenbanken.schritte_2']], '50,1', '5,76'); // EPS 3,25 seit 30.10.2026 (DSB-LC-10)
 const p = mp.daten as Record<string, { formel: string }[]>;
 pruefe('MP-B1 Recyclingquote', (300 * 0.9 + 20 * 0.95 + 5 * 0.6) / 327, 0.89297);
 pruefe('MP-B2 MCI', 1 - (0.7 + 0.3) / 2 * 0.9, 0.55);

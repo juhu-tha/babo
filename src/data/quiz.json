@@ -6061,7 +6061,7 @@
       "Rezyklierte Gesteinskörnung statt Kies und Splitt"
     ],
     "correctIdx": 2,
-    "explanation": "Der Zement verursacht 80 bis 90 % des Beton-GWP; im Lehrbeispiel sinkt das GWP mit CEM III/A von 243 auf 158 kg CO₂-Äq./m³ (−35 %).",
+    "explanation": "Der Zement verursacht 80 bis 90 % des Beton-GWP; im Lehrbeispiel sinkt das GWP mit CEM III/A von 258 auf 173 kg CO₂-Äq./m³ (−33 %).",
     "bloom": "Verstehen",
     "niveau": "B",
     "distraktorFeedback": [
@@ -6080,9 +6080,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-29",
+      "am": "2026-10-30",
       "ergebnis": "korrigiert",
-      "hinweis": "Umsetzung 29.10.: Lehrbeispiel mit Zement-GWP CEM I 0,665 (VDZ-Branchen-EPD) und CEM III/A 0,40 kg/kg neu gerechnet (T15-NH-3) – korrigiert"
+      "hinweis": "Umsetzung 29.10.: Lehrbeispiel mit Zement-GWP CEM I 0,665 (VDZ-Branchen-EPD) und CEM III/A 0,40 kg/kg neu gerechnet (T15-NH-3) – korrigiert · Umsetzung 30.10.: Lehrbeton C30/37 mit einheitlichem Restanteil 45 kg/m³ (258/173 statt 243/158) – korrigiert"
     }
   },
   {
@@ -40426,20 +40426,20 @@
     "topic": "THG-Bilanz eines Bauteils",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 15804+A2",
-    "question": "Eine Hohlkörperdecke enthält 19,5 m³ Beton (CEM III/A, Prüfalter 56 d: 144 kg CO₂-Äq./m³) und 2470 kg Betonstahl (Elektroofenstahl mit Grünstrom, Lehrwert 0,42 kg CO₂-Äq./kg). Wie groß ist das GWP A1–A3 nach GWP = V_c · gwp_c + m_s · gwp_s?",
+    "question": "Eine Hohlkörperdecke enthält 19,5 m³ Beton (CEM III/A, Prüfalter 56 d: 157 kg CO₂-Äq./m³) und 2470 kg Betonstahl (Elektroofenstahl mit Grünstrom, Lehrwert 0,42 kg CO₂-Äq./kg). Wie groß ist das GWP A1–A3 nach GWP = V_c · gwp_c + m_s · gwp_s?",
     "options": [
-      "rund 2810 kg CO₂-Äq.",
-      "rund 4120 kg CO₂-Äq.",
-      "rund 4390 kg CO₂-Äq.",
-      "rund 3850 kg CO₂-Äq."
+      "rund 3060 kg CO₂-Äq.",
+      "rund 4410 kg CO₂-Äq.",
+      "rund 4640 kg CO₂-Äq.",
+      "rund 4100 kg CO₂-Äq."
     ],
     "correctIdx": 3,
-    "explanation": "Beton: 19,5 · 144 = 2808 kg; Stahl: 2470 · 0,42 = 1037,4 kg; Summe ≈ 3845 kg CO₂-Äq.",
+    "explanation": "Beton: 19,5 · 157 = 3061,5 kg; Stahl: 2470 · 0,42 = 1037,4 kg; Summe ≈ 4099 kg CO₂-Äq.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
-      "Das ist nur der Betonanteil (19,5 · 144); der Bewehrungsstahl fehlt in der Summe.",
-      "Hier wurde der Beton mit 158 kg/m³ (Prüfalter 28 d) statt mit 144 kg/m³ angesetzt.",
+      "Das ist nur der Betonanteil (19,5 · 157); der Bewehrungsstahl fehlt in der Summe.",
+      "Hier wurde der Beton mit 173 kg/m³ (Prüfalter 28 d) statt mit 157 kg/m³ angesetzt.",
       "Hier wurde der Stahl mit 0,64 (ÖKOBAUDAT „Bewehrungsstahl (de)“) statt mit 0,42 kg CO₂-Äq./kg gerechnet.",
       ""
     ],
@@ -40453,9 +40453,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-29",
+      "am": "2026-10-30",
       "ergebnis": "korrigiert",
-      "hinweis": "Umsetzung 29.10.: Beton-GWP CEM III/A bei 56 d jetzt 144 statt 123 kg/m³ (Zement-GWP nach T15-NH-3) – korrigiert · Zweitprüfung 29.10. (Runde 5): Stahlkennwert 0,42 wie im Modul als „Elektroofenstahl mit Grünstrom (Lehrwert)“ bezeichnet; 0,64 (ÖKOBAUDAT „Bewehrungsstahl (de)“) ist ebenfalls überwiegend Elektroofenstahl – korrigiert"
+      "hinweis": "Umsetzung 29.10.: Beton-GWP CEM III/A bei 56 d jetzt 144 statt 123 kg/m³ (Zement-GWP nach T15-NH-3) – korrigiert · Zweitprüfung 29.10. (Runde 5): Stahlkennwert 0,42 wie im Modul als „Elektroofenstahl mit Grünstrom (Lehrwert)“ bezeichnet; 0,64 (ÖKOBAUDAT „Bewehrungsstahl (de)“) ist ebenfalls überwiegend Elektroofenstahl – korrigiert · Umsetzung 30.10.: Beton-GWP CEM III/A bei 56 d jetzt 157 statt 144 kg/m³ (Lehrbeton-Rest einheitlich 45 kg/m³), Antworten neu gerechnet – korrigiert"
     }
   },
   {
@@ -48952,20 +48952,20 @@
     "topic": "Zementanteil am Beton-GWP",
     "difficulty": "Vertiefung",
     "normRef": "DIN EN 15804+A2",
-    "question": "1 m³ C30/37 enthält 320 kg Zement. Mit GWP CEM I = 0,665 (VDZ-Branchen-EPD, netto) und CEM III/A = 0,40 kg CO₂-Äq./kg (Lehrwert) sowie pauschal 30 kg CO₂-Äq./m³ für die übrigen Bestandteile: Um wie viel Prozent sinkt das GWP (A1–A3) beim Wechsel auf CEM III/A?",
+    "question": "1 m³ C30/37 enthält 320 kg Zement. Mit GWP CEM I = 0,665 (VDZ-Branchen-EPD, netto) und CEM III/A = 0,40 kg CO₂-Äq./kg (Lehrwert) sowie pauschal 45 kg CO₂-Äq./m³ für die übrigen Bestandteile: Um wie viel Prozent sinkt das GWP (A1–A3) beim Wechsel auf CEM III/A?",
     "options": [
       "um rund 40 %",
-      "um rund 47 %",
-      "um rund 35 %",
+      "um rund 50 %",
+      "um rund 33 %",
       "um rund 60 %"
     ],
     "correctIdx": 2,
-    "explanation": "CEM I: 320 · 0,665 + 30 = 242,8 ≈ 243; CEM III/A: 320 · 0,40 + 30 = 158 kg CO₂-Äq./m³. Minderung (243 − 158)/243 ≈ 35 %. Ohne die übrigen Bestandteile ergäben sich rund 40 %.",
+    "explanation": "CEM I: 320 · 0,665 + 45 = 257,8 ≈ 258; CEM III/A: 320 · 0,40 + 45 = 173 kg CO₂-Äq./m³. Minderung (258 − 173)/258 ≈ 33 %. Ohne die übrigen Bestandteile ergäben sich rund 40 %.",
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
-      "40 % ist die Minderung des Zement-GWP allein (0,265/0,665); der Pauschalanteil von 30 kg bleibt gleich und verdünnt die Wirkung.",
-      "47 % entsteht ((243 − 128)/243), wenn die 30 kg nur bei CEM I addiert werden; sie gelten für beide Varianten.",
+      "40 % ist die Minderung des Zement-GWP allein (0,265/0,665); der Pauschalanteil von 45 kg bleibt gleich und verdünnt die Wirkung.",
+      "50 % entsteht ((258 − 128)/258), wenn die 45 kg nur bei CEM I addiert werden; sie gelten für beide Varianten.",
       "",
       "60 % ist das Verhältnis der Zementfaktoren (0,40/0,665), nicht die Minderung."
     ],
@@ -48979,9 +48979,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-29",
+      "am": "2026-10-30",
       "ergebnis": "korrigiert",
-      "hinweis": "Umsetzung 29.10.: Lehrbeispiel mit CEM I 0,665 (VDZ-Branchen-EPD, netto) und CEM III/A 0,40 kg/kg neu gerechnet (T15-NH-3) – korrigiert"
+      "hinweis": "Umsetzung 29.10.: Lehrbeispiel mit CEM I 0,665 (VDZ-Branchen-EPD, netto) und CEM III/A 0,40 kg/kg neu gerechnet (T15-NH-3) – korrigiert · Umsetzung 30.10.: Restanteil der Lehrbetone einheitlich 45 kg/m³ (258/173, Minderung 33 %) – korrigiert"
     }
   },
   {

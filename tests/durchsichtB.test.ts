@@ -150,7 +150,8 @@ zeigt('DSB-LR-1', innovationen.texte, 'DIN 18945:2024-03', 'DIN 18946:2024-03', 
 gilt(/vorläufig, Normprüfung ausstehend/.test(innovationen.texte.fürTragendesMauerwerkSind), 'DSB-LR-1: SFK-3-Aussage gekennzeichnet');
 
 // ------------------------------------------------------------------------------------------------ Rückbau & Schadstoffe
-gilt(JSON.stringify(boden.daten.TREATMENT_OPTIONS) === JSON.stringify(schadstoffe.daten.TREATMENT_OPTIONS), 'DSB-BM-1: Behandlungsoptionen in Boden und Schadstoffe gleich');
+// Umsetzung 30.10.2026 (DSB-SS-1): ungenutzte Doppelkopie in content/schadstoffe entfernt; einzige Quelle ist das Modul Bodenmaterial
+gilt(!('TREATMENT_OPTIONS' in schadstoffe.daten) && !!boden.daten.TREATMENT_OPTIONS, 'DSB-SS-1: Behandlungsoptionen nur noch in boden_materialaufbereitung');
 gilt(!JSON.stringify(boden).includes('ausnahmslos ILLEGAL'), 'DSB-BM-1: berichtigte Rechtsgrundlage Asbest');
 zeigt('DSB-BM-2', boden.texte, 'Lehrwerte');
 zeigt('DSB-RB-1', rueckbauDaten, 'DIN 1045-2:2023-08, Anhang E');
@@ -187,7 +188,7 @@ pruefe('RN GWP-Vergleich Δ', 450 * 340 / 1000 * ZEMENT_GWP_KG['CEM I'] - 450 * 
 // ------------------------------------------------------------------------------------------------ Nachhaltigkeit Daten & Regeln
 pruefe('NR CRREM 2026', 52 - 3.4 * 6, 31.6);
 pruefe('NR Schnittjahr', 2020 + (52 - 20) / 3.4, 2029.41, 1e-4);
-zeigt('DSB-NR-1', datenRegeln.texte, 'Lehrwert 45 kg je t');
+zeigt('DSB-NR-1', datenRegeln.texte, 'Lehrwerte', 'Primärkies'); // Umsetzung 30.10.2026 (DSB-NR-2): Herleitung statt 45 kg je t
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }
 console.log('OK: Durchsicht Tranche B 29.10.2026');

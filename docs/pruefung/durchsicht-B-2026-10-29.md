@@ -191,3 +191,21 @@ R_T = 0,71 / 2,21 m²K/W, θ_si 15,4 / 18,5 °C, Grenzschicht 1,5 bzw. 12,4 °C;
 | DSB-NR-2 | `nachhaltigkeit_daten_regeln` | 45 kg CO₂/t vermiedene Transporte/Abbau | rund 6 kg/t oder Herleitung |
 | DSB-RU-1 | zentral (`gwpLehrwerte.ts`) | BSH biogen −760 bei 480 kg/m³ (EN 16449: −786) | aus EN 16449 und festgelegter Rohdichte bilden |
 | DSB-SS-1 | `schadstoffe` | ungenutzte Doppelkopie der Behandlungsoptionen | entfernen |
+
+## Umsetzung 30.10.2026
+
+Entscheidung 30.10.2026: alle Vorschläge übernommen. Regressionstest `tests/umsetzungDurchsicht_20261030.test.ts`; nachgezogen `tests/lca.test.ts`, `tests/konsistenz1029.test.ts`, `tests/materialoptimierung.test.ts`, `tests/modulpruefungTranche2.test.ts`, `-11`, `-14`, `tests/umsetzungNachpruefung2_20261029.test.ts`, `tests/durchsichtB.test.ts`, `tests/durchsichtC.test.ts`.
+
+| Kennung | Ergebnis | Quelle |
+|---|---|---|
+| DSB-LC-9 | Web-Übung bewertet (w/z)_eq gegen die Fallstudie XC4/XD1/XF1: maßgebend XD1, ≤ 0,55 (`getMassgebendeAnforderung`, vorher fest 0,50) | DIN 1045-2:2023-08 (`din1045_2.ts`) |
+| DSB-LC-10 | EPS 3,25 und Mineralwolle 1,20 kg CO₂-Äq./kg zentral (`GWP_LEHRWERTE.eps`/`.mineralwolle`, `daemmstoffGwpJeM3`); Rohdichte je Produkt. Folgewerte: Wandkonfigurator Glaswolle 0,96 → 1,20; LCA-Rechner EPS 78 → 65 kg/m³ (Erkundung 2,42/2,26/4,84 → 2,40/2,24/4,80; 3,77/3,27/1,79 → 3,73/3,22/1,75); EPD-Musterdatenbank Glaswolle 48 → 60 kg/m³; Bezugseinheit EPS 3,0 → 3,25 (82,8 → 84,2 kg/m², 1,66 → 1,68 kg/(m²·a)); Materialdatenbanken EPS 3,3 → 3,25 (9,24 → 9,10; Summe 50,2 → 50,1), QNG-Tabelle Mineralwolle 45 → 46, EPS 95 → 65 kg/m³, Konsole Steinwolle 45,5 → 45,6 kg/m³; BIM 72 (aus Konstante) | ÖKOBAUDAT/EPD-Größenordnung (Steinwolle 115 kg je 99 kg = 1,16), Lehrwerte |
+| DSB-LI-2 | Zählweise ⌊T/ND⌋ belassen und im Simulatortext benannt (Vergleich ⌈T/ND⌉ − 1 der Gebäuderechner) | – |
+| DSB-LR-2 | „1800 m³ Holz speichern rund 1500 t CO₂ (DIN EN 16449, 500 kg/m³, u = 12 %; temporär, Freisetzung in C3)“ – Wert im Modul aus `biogenesCo2DinEn16449` gerechnet (1473 t, auf 100 t gerundet) | DIN EN 16449 |
+| DSB-NR-2 | Stoffstrom-Rechner: 45 kg/t → 3,5 kg/t Primärkies A1–A3 (`LCA_BENCHMARKS.gwp_aggregate_natural`) + 0,101 kg/(t·km) · 25 km Lkw (`A4_FAKTOR_EINZEL['lkw-heavy']`) = 6,0 kg/t; Herleitung sichtbar unter dem Ergebnis | UBA 2024 (A4), Lehrwert Primärkies |
+| DSB-RU-1 | BSH biogen aus DIN EN 16449 mit festgelegter Rohdichte 480 kg/m³ (`BSH_LEHR_ROHDICHTE`): 785,7 → −790 (vorher −760), GWP-total −680 (vorher −650); KVH mit derselben Formel −820 (unverändert). Folgewerte: DPP-Muster 0,8 m³ · −680 = −544 kg (vorher −520; begründet über den zentralen Lehrwert), Muster-EPD A1–A3 −680, C3 800 (= 790 + 10); EPD-Musterdatenbank, Konsole, Wandkonfigurator, BIM aus der Konstante | DIN EN 16449 |
+| DSB-SS-1 | Ungenutzte Kopie `TREATMENT_OPTIONS` in `content/schadstoffe/Schadstoffe.json` und `Schadstoffe.tsx` entfernt; Test prüft, dass nur `boden_materialaufbereitung` die Daten hält | – |
+| DSB-LC-12 (Normtext) | Strommix 0,43 „50 a gewichtet sinkend“ als „vorläufig, Normprüfung ausstehend“ gekennzeichnet (Abgleich ÖKOBAUDAT-Datensatz Strom nach QNG-Rechenregel offen) | – |
+| Lehrbeton-Rest (NP2-LC-1, #278) | Ein Restanteil `LEHRBETON_REST` = 45 kg CO₂-Äq./m³ für C25/30 und C30/37, Zementanteil aus `ZEMENT_GWP_KG`. C30/37: CEM I 243 → 258, CEM III/A 158 → 173 (Minderung 35 → 33 %); Materialoptimierung je Zementart 258/237/215/173/173, Beispiel Decke 61,4/35,2 → 64,4/37,5 kg/m² (43 → 42 %), Erkundung (53/34 → 52/34 %, 39/54 → 41/56 kg/m², 22/12/53 → 23/13/52 %, 72 → 71 %); Quiz `q_mo_1`, `qn_materialoptimierung_3` (144 → 157 kg/m³, Summe 3845 → 4099), `qn_oekobilanz_lca_g1` (Rest 30 → 45, 35 → 33 %) korrigiert | ÖKOBAUDAT 2024-I „Transportbeton C25/30“ 221,7 ≈ 300 · 0,60 + 45 |
+| Profilstahl | Lehrwert 1,1 bleibt; `PROFILSTAHL_EPD_ELEKTROSTAHL` = 0,56 mit Hinweistext „EPD Elektrostahl rund 0,56 kg CO₂e/kg als Vergleichswert“ in Stahl-Modul (CO₂-Vorteil), LCA-Rechner (Materialzeile und Beschreibung), BIM-Baustoffe (Baustahl) | EPD bauforumstahl EPD-BFS-20230271-IBG19 |
+| Freigaben | `lca_rechner`, `boden_materialaufbereitung`, `bim_baustoffe`: Prüfvermerk behalten, Prüfdatum 2026-10-30 | Entscheidung 30.10.2026 |

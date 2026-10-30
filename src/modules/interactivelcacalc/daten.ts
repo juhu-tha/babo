@@ -1,6 +1,6 @@
 import inhalt from '@/content/interactivelcacalc/daten.json';
 import type { LcaBaustoff } from '@/src/calc/lca';
-import { GWP_LEHRWERTE as GWP } from '@/src/data/gwpLehrwerte';
+import { GWP_LEHRWERTE as GWP, PROFILSTAHL_HINWEIS, daemmstoffGwpJeM3 } from '@/src/data/gwpLehrwerte';
 export interface MaterialDefinition {
   id: string;
   name: string;
@@ -135,7 +135,7 @@ export const MATERIAL_DATABASE: MaterialDefinition[] = [
     biogenicContent: 0,
     umiScore: 95,
     penrt: 18500,
-    description: inhalt.werte.konstruktionsstahlEnormerSpezifischerEne,
+    description: `${inhalt.werte.konstruktionsstahlEnormerSpezifischerEne} ${PROFILSTAHL_HINWEIS}.`, // Entscheidung 30.10.2026
     defaultCircularQuota: 95,
     substitutesPrimary: inhalt.werte.primärRohstahlHochofenRoute,
     defaultRecoveryType: "high_grade"
@@ -248,7 +248,7 @@ export const MATERIAL_DATABASE: MaterialDefinition[] = [
     category: inhalt.werte.wärmedämmungFossil,
     unit: "m³",
     densityKg: 20,
-    gwpA1A3: 78,
+    gwpA1A3: Math.round(daemmstoffGwpJeM3('eps', 20)), // EPS-Lehrwert 3,25 kg/kg · 20 kg/m³ = 65 (Umsetzung 30.10.2026, DSB-LC-10; vorher 78)
     gwpC: 58,    // Incineration at End of Life releases carbon
     gwpD: -25,
     biogenicContent: 0,

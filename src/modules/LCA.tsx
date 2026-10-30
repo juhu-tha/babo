@@ -13,12 +13,19 @@ import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../components/ui/Auswahlgruppe';
 
 // Comprehensive EPD Reference Database representing realistic German ÖKOBAUDAT entries for students
-// Beton und BSH aus der gemeinsamen Lehrwerttabelle (Konsistenz 29.10.2026, F-4); übrige Datensätze aus dem Inhalt
-const AUS_LEHRWERTTABELLE: Partial<Record<string, GwpLehrwertSchluessel>> = { 'beton-cem1': 'betonC2530CemI', 'beton-rc': 'betonRcC2530', 'bsh-softwood': 'bsh' };
+// Beton und BSH aus der gemeinsamen Lehrwerttabelle (Konsistenz 29.10.2026, F-4); Dämmstoffe EPS und Mineralwolle je kg
+// zentral, je m³ über die Rohdichte des Datensatzes (Umsetzung 30.10.2026, DSB-LC-10); übrige Datensätze aus dem Inhalt
+const AUS_LEHRWERTTABELLE: Partial<Record<string, GwpLehrwertSchluessel>> = {
+  'beton-cem1': 'betonC2530CemI', 'beton-rc': 'betonRcC2530', 'bsh-softwood': 'bsh', 'mineralwolle-glass': 'mineralwolle', 'eps-polystyrol': 'eps',
+};
 const REFERENZEN_EPD = inhalt.daten.REFERENZEN_EPD.map(e => {
   const s = AUS_LEHRWERTTABELLE[e.id];
   if (!s) return e;
   const w = GWP_LEHRWERTE[s];
+  if (w.einheit === 't') {
+    const g = Math.round((w.gwp / 1000) * e.density);
+    return { ...e, gwp_total: g, gwp_biogenic: 0, gwp_fossil: g };
+  }
   return { ...e, gwp_total: w.gwp, gwp_biogenic: w.biogen, gwp_fossil: w.gwp - w.biogen };
 });
 

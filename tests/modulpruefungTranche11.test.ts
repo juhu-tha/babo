@@ -56,18 +56,19 @@ pruefe('BP3 U Standardwand', uWert([{ d: 0.015, lambda: 0.35 }, { d: 0.24, lambd
 
 // 5. Materialoptimierung (DAfStb-Lehrrechner; Lehrwerte vereinheitlicht am 29.10.2026, T11-MO-3: Beton 320·g_Z + 30, Stahl-Referenz 0,64)
 //    Umsetzung 29.10.2026 (T15-NH-3): Zement-GWP CEM I 0,665 (VDZ-Branchen-EPD), CEM II/B-S 0,53, CEM III/A 0,40 → Beton 243/200/158 kg/m³
-//    Handrechnung MO1: Ref 26·243 + round(2860·0,64) = 6318 + 1830 = 8148; opt round(158·0,91) = 144 → 19,5·144 + round(2470·0,42) = 2808 + 1037 = 3845
+//    Umsetzung 30.10.2026: Lehrbeton-Rest einheitlich 45 → Beton 258/237/215/173 kg/m³
+//    Handrechnung MO1: Ref 26·258 + round(2860·0,64) = 6708 + 1830 = 8538; opt round(173·0,91) = 157 → round(19,5·157) + round(2470·0,42) = 3062 + 1037 = 4099
 const mo1 = dafstbVergleich({ bauteil: 'decke', bauweise: 'hohlkoerper', zement: 'cem3_a', pruefalter: 56, stahlRoute: 'gruen_eaf' });
-gilt(mo1.refTotalGwp === 8148 && mo1.optTotalGwp === 3845 && mo1.optConcreteGwpPerM3 === 144 && mo1.efficiencyClass === 'Klasse A+', `MO1 ${mo1.refTotalGwp}/${mo1.optTotalGwp}/${mo1.efficiencyClass}`);
-pruefe('MO1 Δ %', mo1.diffPct, 52.8105);
+gilt(mo1.refTotalGwp === 8538 && mo1.optTotalGwp === 4099 && mo1.optConcreteGwpPerM3 === 157 && mo1.efficiencyClass === 'Klasse A+', `MO1 ${mo1.refTotalGwp}/${mo1.optTotalGwp}/${mo1.efficiencyClass}`);
+pruefe('MO1 Δ %', mo1.diffPct, 51.9911);
 const mo2 = dafstbVergleich({ bauteil: 'stuetze', bauweise: 'hochfest_c50_schlank', zement: 'cem2_bs', pruefalter: 28, stahlRoute: 'standard_bof' });
-gilt(mo2.refTotalGwp === 943 && mo2.optTotalGwp === 450, `MO2 ${mo2.refTotalGwp}/${mo2.optTotalGwp}`); pruefe('MO2 Δ %', mo2.diffPct, 52.2800);
+gilt(mo2.refTotalGwp === 985 && mo2.optTotalGwp === 469, `MO2 ${mo2.refTotalGwp}/${mo2.optTotalGwp}`); pruefe('MO2 Δ %', mo2.diffPct, 52.3858);
 const mo3 = dafstbVergleich({ bauteil: 'bodenplatte', bauweise: 'optimiert_28', zement: 'cem2_all', pruefalter: 28, stahlRoute: 'standard_bof' });
-gilt(mo3.optTotalGwp === 10258 && mo3.refTotalGwp === 12625 && mo3.efficiencyClass === 'Klasse C', `MO3 ${mo3.optTotalGwp}/${mo3.efficiencyClass}`); pruefe('MO3 Δ %', mo3.diffPct, 18.7485);
+gilt(mo3.optTotalGwp === 10762 && mo3.refTotalGwp === 13255 && mo3.efficiencyClass === 'Klasse C', `MO3 ${mo3.optTotalGwp}/${mo3.efficiencyClass}`); pruefe('MO3 Δ %', mo3.diffPct, 18.8080);
 const mo4 = dafstbVergleich({ bauteil: 'wand', bauweise: 'optimiert_18', zement: 'cem1', pruefalter: 56, stahlRoute: 'standard_bof' });
-gilt(mo4.optConcreteGwpPerM3 === 221 && mo4.optTotalGwp === 3234 && mo4.efficiencyClass === 'Klasse C' && mo4.hinweise.some(h => h.feld === 'pruefalter'), 'MO4 CEM I mit 56 d: Abschlag und Hinweis');
+gilt(mo4.optConcreteGwpPerM3 === 235 && mo4.optTotalGwp === 3385 && mo4.efficiencyClass === 'Klasse C' && mo4.hinweise.some(h => h.feld === 'pruefalter'), 'MO4 CEM I mit 56 d: Abschlag und Hinweis');
 const mo5 = dafstbVergleich({ bauteil: 'decke', bauweise: 'massiv', zement: 'cem2_all', pruefalter: 28, stahlRoute: 'eaf_de' });
-gilt(mo5.optTotalGwp === 6941 && mo5.efficiencyClass === 'Klasse C', `MO5 CEM II/A-LL (≈ ÖKOBAUDAT C25/30) ${mo5.optTotalGwp}`);
+gilt(mo5.optTotalGwp === 7301 && mo5.efficiencyClass === 'Klasse C', `MO5 CEM II/A-LL (≈ ÖKOBAUDAT C25/30) ${mo5.optTotalGwp}`);
 
 // 6. Lebenszykluskosten (Barwertmethode, BNB 2.1.1: Steigerung ab dem 2. Jahr)
 pruefe('LCC5 RBF(2 %; 30 a)', rentenbarwertfaktor(0.02, 30), 22.3965);

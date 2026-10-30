@@ -31,23 +31,23 @@
     "OekobilanzLCA.schritte": [
       {
         "titel": "Annahmen (Lehrwerte)",
-        "erklaerung": "C30/37 mit 320 kg Zement je m³; GWP CEM I 0,665 kg CO₂-Äq./kg (VDZ-Branchen-EPD 2022, netto; brutto mit Abfallverbrennung 0,875), CEM III/A 0,40 kg CO₂-Äq./kg (Lehrwert, vorläufig); Gesteinskörnung, Wasser, Zusatzmittel und Werkstransport pauschal 30 kg CO₂-Äq./m³. Projektwerte stets aus EPD bzw. ÖKOBAUDAT.",
+        "erklaerung": "C30/37 mit 320 kg Zement je m³; GWP CEM I 0,665 kg CO₂-Äq./kg (VDZ-Branchen-EPD 2022, netto; brutto mit Abfallverbrennung 0,875), CEM III/A 0,40 kg CO₂-Äq./kg (Lehrwert, vorläufig); Gesteinskörnung, Wasser, Zusatzmittel und Werkstransport pauschal 45 kg CO₂-Äq./m³ (Restanteil aller Lehrbetone). Projektwerte stets aus EPD bzw. ÖKOBAUDAT.",
         "formel": "m_Z = 320\\,\\text{kg/m}^3"
       },
       {
         "titel": "CEM I",
         "erklaerung": "Portlandzement:",
-        "formel": "\\text{GWP} = 320 \\cdot 0{,}665 + 30 = 242{,}8 \\approx 243\\,\\text{kg CO}_2\\text{-Äq./m}^3"
+        "formel": "\\text{GWP} = 320 \\cdot 0{,}665 + 45 = 257{,}8 \\approx 258\\,\\text{kg CO}_2\\text{-Äq./m}^3"
       },
       {
         "titel": "CEM III/A",
         "erklaerung": "Hochofenzement mit etwa 50 % Hüttensand:",
-        "formel": "\\text{GWP} = 320 \\cdot 0{,}40 + 30 = 158\\,\\text{kg CO}_2\\text{-Äq./m}^3"
+        "formel": "\\text{GWP} = 320 \\cdot 0{,}40 + 45 = 173\\,\\text{kg CO}_2\\text{-Äq./m}^3"
       },
       {
         "titel": "Einsparung",
         "erklaerung": "Relative Minderung durch die Zementwahl:",
-        "formel": "\\frac{243 - 158}{243} = 35\\,\\%"
+        "formel": "\\frac{258 - 173}{258} = 33\\,\\%"
       }
     ],
     "OekobilanzLCA.schritte_2": [

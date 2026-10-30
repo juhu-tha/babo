@@ -88,10 +88,10 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   beton_a_z: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 9, freigegeben 29.10.2026 (docs/pruefung/module-tranche-9.md)
   betonkennwerte: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 1, freigegeben 29.10.2026 nach den Entscheidungen vom 29.10. (docs/pruefung/module-tranche-1.md, Nachtrag)
   betonpraxis: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 9, freigegeben 29.10.2026 (docs/pruefung/module-tranche-9.md)
-  bim_baustoffe: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 14, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-14.md)
+  bim_baustoffe: { status: 'geprueft', am: '2026-10-30' }, // Modulprüfung Tranche 14, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-14.md)
   bindemittel: { status: 'offen' },
   biokohlebeton: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 9, freigegeben 29.10.2026 (docs/pruefung/module-tranche-9.md)
-  boden_materialaufbereitung: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 12, freigegeben 29.10.2026 (docs/pruefung/module-tranche-12.md)
+  boden_materialaufbereitung: { status: 'geprueft', am: '2026-10-30' }, // Modulprüfung Tranche 12, freigegeben 29.10.2026 (docs/pruefung/module-tranche-12.md)
   bodenmechanik: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 2, freigegeben 29.10.2026 (docs/pruefung/module-tranche-2.md)
   bp_abdichtung: { status: 'offen' },
   bp_befestigung: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 8, freigegeben 29.10.2026 (docs/pruefung/module-tranche-8.md)
@@ -185,7 +185,7 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   labor: { status: 'offen' },
   labor_sicherheit: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 15, freigegeben 29.10.2026 (Nachtrag; docs/pruefung/module-tranche-15.md)
   lca_ingenieurbau: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 11, freigegeben 29.10.2026 (docs/pruefung/module-tranche-11.md)
-  lca_rechner: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 2, freigegeben 29.10.2026 nach den Entscheidungen vom 29.10. (docs/pruefung/module-tranche-2.md, Nachtrag)
+  lca_rechner: { status: 'geprueft', am: '2026-10-30' }, // Modulprüfung Tranche 2, freigegeben 29.10.2026 nach den Entscheidungen vom 29.10. (docs/pruefung/module-tranche-2.md, Nachtrag)
   lca_regulatorik: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 11, freigegeben 29.10.2026 (docs/pruefung/module-tranche-11.md)
   lebenszyklus_kosten: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 11, freigegeben 29.10.2026 (docs/pruefung/module-tranche-11.md)
   lehm: { status: 'offen' },
@@ -250,7 +250,7 @@ export const PRUEFVERMERKE: Record<string, Pruefvermerk> = {
   sommerlicher_waermeschutz: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 3, freigegeben 29.10.2026 (docs/pruefung/module-tranche-3.md)
   sonderbetone: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 9, freigegeben 29.10.2026 (docs/pruefung/module-tranche-9.md)
   sonstiges: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 6, freigegeben 29.10.2026 (docs/pruefung/module-tranche-6.md)
-  spannbeton_grundlagen: { status: 'geprueft', am: '2026-10-28' }, // Zweitprüfung, freigegeben 28.10.2026 (docs/pruefung/module-tranche-2.md; Modul „spannbeton“, seit 28.10. in zwei Teilen)
+  spannbeton_grundlagen: { status: 'geprueft', am: '2026-10-30' }, // Zweitprüfung, freigegeben 28.10.2026 (docs/pruefung/module-tranche-2.md; Modul „spannbeton“, seit 28.10. in zwei Teilen)
   spannbeton_kennwerte: { status: 'geprueft', am: '2026-10-28' }, // Zweitprüfung, freigegeben 28.10.2026 (docs/pruefung/module-tranche-2.md; Modul „spannbeton“, seit 28.10. in zwei Teilen)
   stahl: { status: 'geprueft', am: '2026-10-29' }, // Modulprüfung Tranche 5, freigegeben 29.10.2026 (docs/pruefung/module-tranche-5.md)
   stahlbau_ec3: { status: 'geprueft', am: '2026-10-28' }, // Zweitprüfung, freigegeben 28.10.2026 (docs/pruefung/module-tranche-3.md)

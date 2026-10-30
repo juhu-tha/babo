@@ -160,7 +160,7 @@
             "recycledContent": "0%"
           }
         ],
-        "carbonFootprint": "−520 kg CO₂-Äqv. (A1–A3 inkl. biogener Kohlenstoff; 0,8 m³ · −650 kg/m³, Lehrwert BSH wie Muster-EPD)",
+        "carbonFootprint": "−544 kg CO₂-Äqv. (A1–A3 inkl. biogener Kohlenstoff; 0,8 m³ · −680 kg/m³, Lehrwert BSH wie Muster-EPD: biogen −790 nach DIN EN 16449 bei 480 kg/m³, fossil +110)",
         "circularity": {
           "recyclability": "80%",
           "instructions": "Kaskadennutzung empfohlen. Zuerst Wiederverwendung als Bauteil, danach stoffliche Verwertung (Spanplatten), zuletzt thermische Verwertung."
@@ -259,7 +259,7 @@
         "phasen": {
           "a1a3": {
             "name": "Herstellung (A1-A3)",
-            "gwp": -650,
+            "gwp": -680,
             "penrt": 3100,
             "ap": 0.8,
             "ep": 0.25
@@ -273,7 +273,7 @@
           },
           "c3": {
             "name": "Abfallbehandlung (C3)",
-            "gwp": 770,
+            "gwp": 800,
             "penrt": 150,
             "ap": 0.1,
             "ep": 0.05

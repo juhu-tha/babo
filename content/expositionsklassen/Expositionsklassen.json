@@ -119,8 +119,8 @@
       },
       {
         "titel": "2. Wirkungsfaktor für Silikastaub (k_s)",
-        "formel": "k_s = 1{,}0 \\text{ (für } w/z \\le 0{,}45\\text{)} \\quad \\text{bzw.} \\quad k_s = 2{,}0 \\text{ (für } w/z > 0{,}45\\text{)}, \\quad s / z \\le 0{,}11",
-        "erklaerung": "Hochfeiner Silikastaub nach DIN EN 13263-1 weist eine extrem hohe puzzolanische Reaktivität auf. Die anrechenbare Menge ist auf 11 % des Zementgewichts begrenzt."
+        "formel": "k_s = 1{,}0 \\quad (\\text{DIN 1045-2}), \\quad s / z \\le 0{,}11",
+        "erklaerung": "Hochfeiner Silikastaub nach DIN EN 13263-1 weist eine extrem hohe puzzolanische Reaktivität auf. Nach DIN 1045-2 (NA DE) gilt k_s = 1,0 unabhängig vom w/z-Wert; bei XF2 und XF4 ist Silikastaub nicht anrechenbar. Die anrechenbare Menge ist auf 11 % des Zementgewichts begrenzt. Hinweis: DIN EN 206 nennt als Empfehlungswert k_s = 2,0 (bei w/z > 0,45 in XC und XF 1,0; vorläufig, Normprüfung ausstehend) – in Deutschland gilt dieser Wert nicht."
       },
       {
         "titel": "3. Mindestzementgehalt-Prüfung",
