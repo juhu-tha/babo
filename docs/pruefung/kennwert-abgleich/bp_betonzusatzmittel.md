@@ -12,7 +12,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
 | (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 0 (0) |
-| (3) Normverweise / Hinweise | 60 / 1 |
+| (3) Normverweise / Hinweise | 61 / 1 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
 
@@ -27,7 +27,7 @@ Keine erkannt.
 | Norm | Ausgabe | Tabelle/Abschnitt/Gleichung | Anzahl | Hinweis |
 |---|---|---|---|---|
 | DIN 934-2 | – | – | 2 |  |
-| DIN 1045-2 | – | – | 7 |  |
+| DIN 1045-2 | – | Tab. F.2.1 | 8 |  |
 | DIN 1045-2 | 2023-08 | – | 2 | Ausgaben uneinheitlich |
 | EN 206 | – | – | 12 |  |
 | EN 447 | – | – | 1 |  |
@@ -42,7 +42,7 @@ Keine erkannt.
 
 ### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
 
-- **DIN 1045-2:** 2008 (2×), 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (139×, teils mit Hinweis auf andere Ausgabe)
+- **DIN 1045-2:** 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (145×, teils mit Hinweis auf andere Ausgabe)
   - 2023-08: `content/bpbetonzusatzmittel/BpBetonzusatzmittel.json › texte.istZuHochZusatzmittel` – …wiesen ist (Nachweis nach DIN EN 206/DIN 1045-2; Höchstdosierung nach DIN 1045-2:2023-08, 5.2.6 am Normtext zu prüfen – vorläufi…
   - 2023-08: `content/bpbetonzusatzmittel/BpBetonzusatzmittel.json › daten.BpBetonzusatzmittel.formeln.0.quelle` – DIN 1045-2:2023-08 / DIN EN 206
 

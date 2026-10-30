@@ -42,7 +42,7 @@ Keine erkannt.
 
 ### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
 
-- **DIN 1045-2:** 2008 (2×), 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (139×, teils mit Hinweis auf andere Ausgabe)
+- **DIN 1045-2:** 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (145×, teils mit Hinweis auf andere Ausgabe)
   - 2023-08 (mit Hinweis): `content/festbetonstatistik/FestbetonStatistik.json › texte.maßgebendBleibenDinEn` – Maßgebend bleiben DIN EN 206:2021-06 mit DIN 1045-2:2023-08 und DIN EN 1992-1-1:2011-01 mit NA. Was…
   - 2023-08: `content/festbetonstatistik/FestbetonStatistik.json › daten.FestbetonStatistik.regelwerke.1.title` – DIN 1045-2:2023-08 (Tragwerke aus Beton, Stahlbeton und Sp…
 - **EN 1992-1-1:** 2011 (7×), 2011-01 (49×, teils mit Hinweis auf andere Ausgabe), 2023 (23×, teils mit Hinweis auf andere Ausgabe), 2025-09 (25×, teils mit Hinweis auf andere Ausgabe)

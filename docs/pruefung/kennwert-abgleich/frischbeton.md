@@ -67,7 +67,7 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 
 ### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
 
-- **DIN 1045-2:** 2008 (2×), 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (139×, teils mit Hinweis auf andere Ausgabe)
+- **DIN 1045-2:** 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (145×, teils mit Hinweis auf andere Ausgabe)
   - 2023-08: `content/frischbeton/Frischbeton.json › texte.vollständigePrüfungKonsistenzklassifizie` – …nzklassifizierung, Toleranzabgleich nach **DIN EN 206:2021-06** und **DIN 1045-2:2023-08**, Luftporen- und Rohdichtebestimmung n…
   - 2023-08: `content/frischbeton/Frischbeton.json › texte.konsistenzbereicheNachDinEn` – Konsistenzbereiche nach DIN EN 206 / DIN 1045-2:2023-08
   - 2023-08: `content/frischbeton/Frischbeton.json › texte.zulässigeGrenzabmaßeFürZielwerte` – Zulässige Grenzabmaße für Zielwerte (DIN EN 206 / DIN 1045-2:2023-08)

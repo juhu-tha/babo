@@ -12,7 +12,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
 | (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 0 (0) |
-| (3) Normverweise / Hinweise | 90 / 11 |
+| (3) Normverweise / Hinweise | 98 / 10 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
 
@@ -37,8 +37,13 @@ Keine erkannt.
 | EN 206-100 | – | – | 2 |  |
 | EN 206 | – | – | 7 |  |
 | EN 206 | 2021-06 | – | 7 |  |
-| EN 1990 | – | – | 4 |  |
-| EN 1990 | 2023 | – | 4 | Ausgaben uneinheitlich |
+| EN 1990-1 | – | – | 1 |  |
+| EN 1990-1 | 2023 | – | 4 |  |
+| EN 1990-1 | 2026-12 | – | 4 |  |
+| EN 1990-2 | – | – | 2 |  |
+| EN 1990 | – | – | 3 |  |
+| EN 1990 | 2021-10 | – | 1 |  |
+| EN 1990 | 2023 | – | 1 |  |
 | EN 1992-1-1/NA | – | – | 1 |  |
 | EN 1992-1-1 | 2011-01 | – | 1 | Ausgaben uneinheitlich |
 | EN 1992-1-1 | 2023 | – | 5 | Ausgaben uneinheitlich; Registry 2011-01 |
@@ -58,18 +63,13 @@ Keine erkannt.
 
 ### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
 
-- **DIN 1045-2:** 2008 (2×), 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (139×, teils mit Hinweis auf andere Ausgabe)
+- **DIN 1045-2:** 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (145×, teils mit Hinweis auf andere Ausgabe)
   - 2023-08: `content/normenausblick/NormenAusblick.json › texte.standOktober2026Für` – …chtlich eingeführten Ausgaben (MVV TB 2025/1): DIN EN 206:2021-06 mit DIN 1045-2:2023-08 und die Eurocodes der Ausgaben ab 2010-…
   - 2023-08: `content/normenausblick/NormenAusblick.json › texte.dieDeutschenGrenzwerteStehen` – Die deutschen Grenzwerte stehen bis auf Weiteres in DIN 1045-2:2023-08.
   - 2023-08: `content/normenausblick/NormenAusblick.json › texte.dieHeuteGeltendenGrenzwerte` – Die heute geltenden Grenzwerte nach DIN 1045-2:2023-08 und die Mindestbetondeckung nach DIN EN…
   - 2023-08: `content/normenausblick/NormenAusblick.json › werte.dinEn2062021` – DIN EN 206:2021-06 zusammen mit DIN 1045-2:2023-08
   - 2023-08 (mit Hinweis): `src/data/quiz.json › qn_normen_ausblick_1` – …tion ist bauaufsichtlich maßgebend? DIN EN 206:2021-06 zusammen mit DIN 1045-2:2023-08 Die Neuausgaben DIN EN 206-1/-2:2026-…
   - 2023-08 (mit Hinweis): `src/data/quiz.json › qn_normen_ausblick_1` – …:2026-07 sind erschienen, aber noch nicht bauaufsichtlich eingeführt. DIN 1045-2:2023-08 ist auf DIN EN 206:2021-06 abgestimmt;…
-- **EN 1990:** 2010-12 (2×, teils mit Hinweis auf andere Ausgabe), 2021-10 (9×, teils mit Hinweis auf andere Ausgabe), 2023 (6×, teils mit Hinweis auf andere Ausgabe)
-  - 2023: `content/normenausblick/NormenAusblick.json › texte.ec0En19902023` – EC0 – EN 1990:2023
-  - 2023 (mit Hinweis): `content/normenausblick/NormenAusblick.json › werte.en19902023Erschienen` – EN 1990:2023 erschienen; die Deutsche Fassung führt…
-  - 2023 (mit Hinweis): `content/normenausblick/NormenAusblick.json › daten.NormenAusblick.regelwerke.6.title` – DIN EN 1990 mit NA (1. Generation, eingeführt); EN 1990:2023 (2. Generation, DIN-Fassung angekündigt…
-  - 2023 (mit Hinweis): `content/normenausblick/NormenAusblick.json › daten.NormenAusblick.weblinks.6.title` – DIN Media: DIN EN 1990 (Deutsche Fassung EN 1990:2023, vorbestellbar)
 - **EN 1992-1-1:** 2011 (7×), 2011-01 (49×, teils mit Hinweis auf andere Ausgabe), 2023 (23×, teils mit Hinweis auf andere Ausgabe), 2025-09 (25×, teils mit Hinweis auf andere Ausgabe)
   - 2023 (mit Hinweis): `content/normenausblick/NormenAusblick.json › texte.dieErsteEurocodeGeneration` – …en sind aufeinander bezogen: EN 206-1:2026 wurde an die überarbeitete EN 1992-1-1:2023 angeglichen.
   - 2023: `content/normenausblick/NormenAusblick.json › texte.anhangMBestimmungenAm` – …ungsort) in die Einleitung, Anhang L in den Haupttext; Angleichung an EN 1992-1-1:2023.

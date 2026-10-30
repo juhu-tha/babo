@@ -11,7 +11,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte abweichend von zentraler Konstante | 0 |
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 8 |
-| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 0 (0) |
+| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 1 (0) |
 | (3) Normverweise / Hinweise | 17 / 2 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
@@ -24,7 +24,7 @@ Keine Abweichung erkannt.
 |---|---|---|
 | `content/materialdatenbanken/Materialdatenbanken.json › texte.sieMultiplizierenIhreAbgerufene` | 245 kg CO₂/m³ | …ankwert, um die CO₂-Emissionen der Stützen zu ermitteln: <br>`10 m³ × 245 kg CO₂/m³ = 2450 kg CO₂`. |
 | `content/materialdatenbanken/Materialdatenbanken.json › daten.Materialdatenbanken.schritte.0.erklaerung` | 0,13 kg CO₂e/kg | d = 0,175 m, ρ = 1800 kg/m³, gwp = 0,13 kg CO₂e/kg (Lehrwert): |
-| `content/materialdatenbanken/Materialdatenbanken.json › daten.Materialdatenbanken.schritte.1.erklaerung` | 3,3 kg CO₂e/kg | d = 0,14 m, ρ = 20 kg/m³, gwp = 3,3 kg CO₂e/kg (Lehrwert): |
+| `content/materialdatenbanken/Materialdatenbanken.json › daten.Materialdatenbanken.schritte.1.erklaerung` | 3,25 kg CO₂e/kg | d = 0,14 m, ρ = 20 kg/m³, gwp = 3,25 kg CO₂e/kg (EPS-Lehrwert wie in allen Modulen): |
 | `content/materialdatenbanken/Materialdatenbanken.json › daten.Materialdatenbanken.schritte_2.0.erklaerung` | 1,20 kg CO₂e je kg | Mineralwolle: 1,20 kg CO₂e je kg (A1–A3), Rohdichte 30 kg/m³: |
 | `content/materialdatenbanken/Materialdatenbanken.json › daten.Materialdatenbanken.schritte_2.0.formel` | 1,20 kg CO₂e/kg | gwp_m = 1,20 kg CO₂e/kg |
 | `src/data/quiz.json › q_dg_db_1` | 1,20 kg CO₂e/kg | Eine EPD nennt 1,20 kg CO₂e/kg für Mineralwolle (30 kg/m³). Wie groß i… |
@@ -33,7 +33,11 @@ Keine Abweichung erkannt.
 
 ## 2 Fest verdrahtete Faktoren im Code
 
-Keine erkannt.
+Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen Daten. „Kommentar“ = Quell- oder Einheitenhinweis in der Zeile.
+
+| Fundstelle | Literal | Kommentar | Zeile |
+|---|---|---|---|
+| `src/modules/Materialdatenbanken.tsx:139` | `38` | ja | `gwp: Math.round(daemmstoffGwpJeM3('mineralwolle', 38) * 10) / 10,` |
 
 ## 3 Normverweise
 

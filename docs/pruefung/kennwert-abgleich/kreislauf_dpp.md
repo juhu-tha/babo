@@ -11,7 +11,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte abweichend von zentraler Konstante | 0 |
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
-| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 2 (2) |
+| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 2 (0) |
 | (3) Normverweise / Hinweise | 10 / 0 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
@@ -24,8 +24,8 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 
 | Fundstelle | Literal | Kommentar | Zeile |
 |---|---|---|---|
-| `src/modules/Kreislaufwirtschaft.tsx:57` | `0.9` | – | `const f_u = utility > 0 ? (0.9 / utility) : 0.9;` |
-| `src/modules/Kreislaufwirtschaft.tsx:248` | `1.5` | – | `estimatedRevenueEur += comp.quantity * 1.5;` |
+| `src/modules/Kreislaufwirtschaft.tsx:57` | `0.9` | ja | `const f_u = utility > 0 ? (0.9 / utility) : 0.9; // F(X) = 0,9/X nach Ellen MacArthur Foundation/Granta (2015), wie formeln.1` |
+| `src/modules/Kreislaufwirtschaft.tsx:250` | `1.5` | ja | `estimatedRevenueEur += comp.quantity * 1.5; // Lehrwert: Erlös Recycling je Stück [€]` |
 
 ## 3 Normverweise
 

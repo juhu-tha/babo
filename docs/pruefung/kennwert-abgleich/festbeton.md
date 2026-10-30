@@ -11,7 +11,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte abweichend von zentraler Konstante | 0 |
 | (1) Kennwerte übereinstimmend | 2 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
-| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 5 (5) |
+| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 5 (4) |
 | (3) Normverweise / Hinweise | 36 / 2 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
@@ -26,7 +26,7 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 
 | Fundstelle | Literal | Kommentar | Zeile |
 |---|---|---|---|
-| `src/modules/Festbeton.tsx:163` | `1.05` | – | `data: [{ x: statDisplayFck, y: 0 }, { x: statDisplayFck, y: Math.max(...yValues) * 1.05 }],` |
+| `src/modules/Festbeton.tsx:163` | `1.05` | ja | `data: [{ x: statDisplayFck, y: 0 }, { x: statDisplayFck, y: Math.max(...yValues) * 1.05 }], // Darstellungsfaktor (Linienhöhe)` |
 | `src/modules/Festbeton.tsx:255` | `206` | – | `Festigkeitsklassen für Normal- und Schwerbeton (DIN EN 206 / EC2 Tab. 3.1)` |
 | `src/modules/Festbeton.tsx:311` | `28` | – | `Für Leichtbeton gelten die Bezeichnungen <strong>LC8/9</strong> bis <strong>LC80/88</strong> (z. B. LC25/28, LC30/33).` |
 | `src/modules/Festbeton.tsx:311` | `33` | – | `Für Leichtbeton gelten die Bezeichnungen <strong>LC8/9</strong> bis <strong>LC80/88</strong> (z. B. LC25/28, LC30/33).` |
@@ -52,7 +52,7 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 
 ### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
 
-- **DIN 1045-2:** 2008 (2×), 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (139×, teils mit Hinweis auf andere Ausgabe)
+- **DIN 1045-2:** 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (145×, teils mit Hinweis auf andere Ausgabe)
   - 2023-08: `src/modules/Festbeton.tsx:224` – …stigkeitsklassen nach <strong>DIN EN 206:2021-06</strong> und <strong>DIN 1045-2:2023-08</strong>,
   - 2023-08: `src/modules/Festbeton.tsx:698` – …sName="text-shiraz" /> Konformitätskriterien nach DIN EN 206 Abs. 8 / DIN 1045-2:2023-08
   - 2023-08 (mit Hinweis): `src/modules/Festbeton.tsx:904` – …sZentrum Beton: Betontechnische Daten (Stand 2022 / aktualisiert nach DIN 1045-2:2023-08)',

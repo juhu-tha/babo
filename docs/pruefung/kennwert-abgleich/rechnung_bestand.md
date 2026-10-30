@@ -12,7 +12,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte übereinstimmend | 15 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
 | (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 5 (1) |
-| (3) Normverweise / Hinweise | 111 / 4 |
+| (3) Normverweise / Hinweise | 111 / 3 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
 
@@ -77,13 +77,9 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 ### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
 
 - **DIN 4108-2:** 2013-02 (25×, teils mit Hinweis auf andere Ausgabe), 2026-05 (10×, teils mit Hinweis auf andere Ausgabe)
-  - 2013-02: `content/beispielrechnungen/RechnungUWert.json › werte.dieDämmwirkungIstUnzureichend` – …ch Anlage 7 GModG einzuhalten. Der Mindestwärmeschutz für Außenwände (DIN 4108-2:2013-02, Tab. 3: R ≥ 1,2 m²K/W) ist dagegen sch…
+  - 2013-02 (mit Hinweis): `content/beispielrechnungen/RechnungUWert.json › werte.dieDämmwirkungIstUnzureichend` – …ch Anlage 7 GModG einzuhalten. Der Mindestwärmeschutz für Außenwände (DIN 4108-2:2013-02, Tab. 3, Neuausgabe 2026-05 manuell abg…
 - **DIN 4109:** 1989 (3×), 1989-11 (1×, teils mit Hinweis auf andere Ausgabe), 2018 (2×)
   - 2018: `content/beispielrechnungen/RechnungSchallschutz.json › texte.bauakustikLuftschalldämmungMassiverBaute` – Bauakustik: Luftschalldämmung massiver Bauteile nach DIN 4109:2018
-
-### Abweichend von der Normen-Registry (ohne Hinweis auf andere Ausgabe)
-
-- DIN 4108-2:2013-02 (Registry 2026-05): `content/beispielrechnungen/RechnungUWert.json › werte.dieDämmwirkungIstUnzureichend` – …ch Anlage 7 GModG einzuhalten. Der Mindestwärmeschutz für Außenwände (DIN 4108-2:2013-02, Tab. 3: R ≥ 1,2 m²K/W) ist dagegen sch…
 
 ### Dieselbe Tabelle unter verschiedenen Normteilen (app-weit)
 

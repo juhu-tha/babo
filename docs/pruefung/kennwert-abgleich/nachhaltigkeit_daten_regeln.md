@@ -4,21 +4,28 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 
 - **Modul-IDs:** `nachhaltigkeit_daten_regeln` (Nachhaltigkeit, geprueft)
 - **Komponente:** `src/modules/NachhaltigkeitDatenRegeln.tsx`
-- **Dateien (6):** `content/nachhaltigkeitdatenregeln/DefinitionenTab.json`, `content/nachhaltigkeitdatenregeln/NachhaltigkeitDatenRegeln.json`, `content/nachhaltigkeitdatenregeln/daten.json`, `src/modules/NachhaltigkeitDatenRegeln.tsx`, `src/modules/nachhaltigkeitdatenregeln/DefinitionenTab.tsx`, `src/modules/nachhaltigkeitdatenregeln/daten.ts`
+- **Dateien (7):** `content/nachhaltigkeitdatenregeln/DefinitionenTab.json`, `content/nachhaltigkeitdatenregeln/NachhaltigkeitDatenRegeln.json`, `content/nachhaltigkeitdatenregeln/daten.json`, `src/modules/NachhaltigkeitDatenRegeln.tsx`, `src/modules/lca/transportbetonKennwerte.ts`, `src/modules/nachhaltigkeitdatenregeln/DefinitionenTab.tsx`, `src/modules/nachhaltigkeitdatenregeln/daten.ts`
 
 | Kategorie | Anzahl |
 |---|---|
 | (1) Kennwerte abweichend von zentraler Konstante | 0 |
-| (1) Kennwerte übereinstimmend | 1 |
-| (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
-| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 2 (2) |
-| (3) Normverweise / Hinweise | 54 / 2 |
+| (1) Kennwerte übereinstimmend | 2 |
+| (1) GWP-/Transportwerte ohne zentrale Zuordnung | 2 |
+| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 1 (0) |
+| (3) Normverweise / Hinweise | 55 / 2 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
 
 Keine Abweichung erkannt.
 
-Übereinstimmend (1): `QNG_WG.plus` ×1
+Übereinstimmend (2): `A4_FAKTOR_EINZEL['lkw-heavy']` ×1, `QNG_WG.plus` ×1
+
+### GWP- und Transportwerte ohne zentrale Zuordnung (Quelle im Modul prüfen)
+
+| Fundstelle | Wert | Ausschnitt |
+|---|---|---|
+| `src/modules/NachhaltigkeitDatenRegeln.tsx:33` | 6,0 kg CO₂-Äq./t | * = 3,5 + 2,5 ≈ 6,0 kg CO₂-Äq./t. Die Transportstrecke ist eine Lehranna… |
+| `src/modules/lca/transportbetonKennwerte.ts:11` | 0,068 kg CO₂-Äq./(t·km) | * Unterschied im Text ausweisen): 0,068 kg CO₂-Äq./(t·km) gilt für einen voll ausgelasteten 40-t-… |
 
 ## 2 Fest verdrahtete Faktoren im Code
 
@@ -26,8 +33,7 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 
 | Fundstelle | Literal | Kommentar | Zeile |
 |---|---|---|---|
-| `src/modules/NachhaltigkeitDatenRegeln.tsx:45` | `0.65` | – | `const calculatedRcBeton = formatDeZahl(interactiveMasse * 0.65, 0);` |
-| `src/modules/NachhaltigkeitDatenRegeln.tsx:48` | `0.045` | – | `const savedCo2Tons = formatDeZahl(interactiveMasse * 0.045, 1);` |
+| `src/modules/NachhaltigkeitDatenRegeln.tsx:63` | `0.65` | ja | `const calculatedRcBeton = formatDeZahl(interactiveMasse * 0.65, 0);` |
 
 ## 3 Normverweise
 
@@ -46,7 +52,7 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 | EN 13501 | – | – | 1 |  |
 | EN 15643 | – | – | 5 |  |
 | EN 15643 | 2021-12 | – | 2 |  |
-| EN 15804 | – | – | 6 |  |
+| EN 15804 | – | – | 7 |  |
 | EN 15804 | 2012 | – | 1 | Ausgaben uneinheitlich; Registry 2022-03 |
 | EN 15804 | 2022-03 | – | 1 | Ausgaben uneinheitlich |
 | EN 15978 | – | – | 5 |  |

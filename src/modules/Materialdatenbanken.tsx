@@ -111,7 +111,7 @@ const MOCK_MOCK_RECORDS: OekobaudatRecord[] = [
     type: 'Generisch',
     manufacturer: inhalt.werte.bbsrGenerischerDatensatz2,
     unit: '1 m³',
-    gwp: GWP.bsh.gwp, // inkl. biogenem CO₂; Konsistenz 29.10.: −482 → −650 (gemeinsame Lehrwerttabelle, F-4)
+    gwp: GWP.bsh.gwp, // inkl. biogenem CO₂; Konsistenz 29.10.: −482 → −650 (gemeinsame Lehrwerttabelle, F-4); seit 30.10. −680 (DIN EN 16449, DSB-RU-1)
     penrt: 2600,
     recycledContent: 0,
     wecobisSafety: [inhalt.werte.biogenerCo2Speicher, inhalt.werte.formaldehydKlasseE1, inhalt.werte.pefcFscZertifiziert]

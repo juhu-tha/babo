@@ -11,7 +11,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte abweichend von zentraler Konstante | 0 |
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
-| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 1 (1) |
+| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 1 (0) |
 | (3) Normverweise / Hinweise | 18 / 2 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
@@ -24,7 +24,7 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 
 | Fundstelle | Literal | Kommentar | Zeile |
 |---|---|---|---|
-| `src/modules/Schnellkarbonatisierung.tsx:65` | `1.08` | – | `const sMax = Math.max(1, ...punkte.map(p => Math.sqrt(Math.max(p.tTage, 0)))) * 1.08;` |
+| `src/modules/Schnellkarbonatisierung.tsx:65` | `1.08` | ja | `const sMax = Math.max(1, ...punkte.map(p => Math.sqrt(Math.max(p.tTage, 0)))) * 1.08; // Darstellungsfaktor (Achsenreserve)` |
 
 ## 3 Normverweise
 

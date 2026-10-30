@@ -14,7 +14,7 @@ export interface MaterialData {
   circularity_pct: number;  // Inherent recyclability or circularity score (0 - 100%)
 }
 
-// Beton und BSH je kg aus der gemeinsamen Lehrwerttabelle (Konsistenz 29.10.2026, F-4: 245, 195 und −650 kg CO₂-Äq./m³)
+// Beton und BSH je kg aus der gemeinsamen Lehrwerttabelle (Konsistenz 29.10.2026, F-4: 245, 195 und BSH −680 kg CO₂-Äq./m³ seit 30.10.2026, DSB-RU-1)
 const AUS_LEHRWERTTABELLE: Partial<Record<string, GwpLehrwertSchluessel>> = { concrete_cem1: 'betonC2530CemI', concrete_rc: 'betonRcC2530', bsh_softwood: 'bsh' };
 // Dämmstoffe je kg aus der Lehrwerttabelle, Rohdichte bleibt die des Produkts (Umsetzung 30.10.2026, DSB-LC-10:
 // EPS 3,25 und Mineralwolle 1,20 kg CO₂-Äq./kg; vorher Glaswolle 0,96)

@@ -12,7 +12,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
 | (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 0 (0) |
-| (3) Normverweise / Hinweise | 18 / 3 |
+| (3) Normverweise / Hinweise | 18 / 2 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
 
@@ -31,7 +31,7 @@ Keine erkannt.
 | DIN 18008 | – | – | 1 |  |
 | EN 206 | – | – | 1 |  |
 | EN 1337-3 | – | – | 1 |  |
-| EN 1990 | 2021-10 | – | 1 | Ausgaben uneinheitlich |
+| EN 1990 | 2021-10 | – | 1 |  |
 | EN 1992-1-1 | – | Anhang C, Bild 3.8 | 5 |  |
 | EN 1992-1-1 | 2011-01 | – | 1 | Ausgaben uneinheitlich |
 | EN 1992-1-1 | 2025-09 | – | 1 | Ausgaben uneinheitlich; Registry 2011-01 |
@@ -43,8 +43,6 @@ Keine erkannt.
 
 ### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
 
-- **EN 1990:** 2010-12 (2×, teils mit Hinweis auf andere Ausgabe), 2021-10 (9×, teils mit Hinweis auf andere Ausgabe), 2023 (6×, teils mit Hinweis auf andere Ausgabe)
-  - 2021-10: `content/materialmodelle/Materialmodelle.json › daten.Materialmodelle.regelwerke.0.title` – DIN EN 1990:2021-10 (Eurocode 0: Grundlagen der Tragwerkspl…
 - **EN 1992-1-1:** 2011 (7×), 2011-01 (49×, teils mit Hinweis auf andere Ausgabe), 2023 (23×, teils mit Hinweis auf andere Ausgabe), 2025-09 (25×, teils mit Hinweis auf andere Ausgabe)
   - 2011-01: `content/materialmodelle/Materialmodelle.json › daten.Materialmodelle.regelwerke.1.title` – DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04 (Eurocode 2…
   - 2025-09 (mit Hinweis): `content/materialmodelle/Materialmodelle.json › daten.Materialmodelle.regelwerke.1.title` – …04 (Eurocode 2, 3.1.5 / 3.1.7 / 3.2.7 Arbeitslinien); neue Generation DIN EN 1992-1-1:2025-09

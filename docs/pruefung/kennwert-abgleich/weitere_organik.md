@@ -11,7 +11,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte abweichend von zentraler Konstante | 0 |
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
-| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 3 (1) |
+| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 3 (0) |
 | (3) Normverweise / Hinweise | 9 / 0 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
@@ -24,7 +24,7 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 
 | Fundstelle | Literal | Kommentar | Zeile |
 |---|---|---|---|
-| `src/modules/WeitereOrganik.tsx:60` | `6.5` | – | `const factorRatio = Math.max(0.15, 1 - (degradationScore / 6.5));` |
+| `src/modules/WeitereOrganik.tsx:60` | `6.5` | ja | `const factorRatio = Math.max(0.15, 1 - (degradationScore / 6.5)); // Lehrmodell (qualitativ): Faktor 6,5 = Punktzahl ohne Restnutzung` |
 | `src/modules/WeitereOrganik.tsx:64` | `4.5` | ja | `const 十YearsDegradation = Math.min(100, Math.round((degradationScore / 4.5) * 45));` |
 | `src/modules/WeitereOrganik.tsx:64` | `45` | ja | `const 十YearsDegradation = Math.min(100, Math.round((degradationScore / 4.5) * 45));` |
 

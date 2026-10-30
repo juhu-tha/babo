@@ -18,7 +18,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 
 | Fundstelle | Wert im Text | zentral | Konstante | Ausschnitt |
 |---|---|---|---|---|
-| `src/data/quiz.json › qn_materialoptimierung_3` | 144 kg CO₂-Äq./m³) | 165 / 158 | `GWP_LEHRWERTE.betonCemIIIA / .betonC3037CemIII` | …ine Hohlkörperdecke enthält 19,5 m³ Beton (CEM III/A, Prüfalter 56 d: 144 kg CO₂-Äq./m³) und 2470 kg Betonstahl (Elektroofenstah… |
+| `src/data/quiz.json › qn_materialoptimierung_3` | 157 kg CO₂-Äq./m³) | 165 / 173 | `GWP_LEHRWERTE.betonCemIIIA / .betonC3037CemIII` | …ine Hohlkörperdecke enthält 19,5 m³ Beton (CEM III/A, Prüfalter 56 d: 157 kg CO₂-Äq./m³) und 2470 kg Betonstahl (Elektroofenstah… |
 | `src/data/quiz.json › qn_materialoptimierung_3` | 0,42 kg CO₂-Äq./kg) | 0,64 / 0,642 | `GWP_LEHRWERTE.betonstahl` | …/m³) und 2470 kg Betonstahl (Elektroofenstahl mit Grünstrom, Lehrwert 0,42 kg CO₂-Äq./kg). Wie groß ist das GWP A1–A3 nach GWP =… |
 
 Übereinstimmend (5): `GWP_LEHRWERTE.betonC2530CemI / .betonC3037CemI` ×1, `GWP_LEHRWERTE.betonCemIIIA / .betonC3037CemIII` ×2, `GWP_LEHRWERTE.betonstahl` ×2
@@ -49,7 +49,7 @@ Keine erkannt.
 
 ### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
 
-- **DIN 1045-2:** 2008 (2×), 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (139×, teils mit Hinweis auf andere Ausgabe)
+- **DIN 1045-2:** 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (145×, teils mit Hinweis auf andere Ausgabe)
   - 2023-08 (mit Hinweis): `content/materialoptimierung/Materialoptimierung.json › texte.maßgebendBleibenDinEn` – Maßgebend bleiben DIN EN 206:2021-06 mit DIN 1045-2:2023-08 und DIN EN 1992-1-1:2011-01 mit NA. Was…
   - 2023-08: `content/materialoptimierung/Materialoptimierung.json › werte.dinEn2062021` – DIN EN 206:2021-06 / DIN 1045-2:2023-08 (k-Wert-Ansatz)
   - 2023-08 (mit Hinweis): `content/materialoptimierung/Materialoptimierung.json › daten.Materialoptimierung.regelwerke.2.title` – DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton – Festlegung, Eigenschaften, Her…

@@ -101,7 +101,7 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 
 ### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
 
-- **DIN 1045-2:** 2008 (2×), 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (139×, teils mit Hinweis auf andere Ausgabe)
+- **DIN 1045-2:** 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (145×, teils mit Hinweis auf andere Ausgabe)
   - 2023: `content/ki/ueberblick/daten.json › daten.ragDemonstrations.rc_beton.rag.source` – DIN 1045-2:2023, Abs. 5.1.3 & DAfStb-RC-Richtlinie
   - 2023-08: `content/kibaustoffe/KiBaustoffe.json › werte.dinEn206Din` – DIN EN 206 / DIN 1045-2:2023-08 (Erstprüfung)
 - **DIN 18533-1:** 2017-07 (2×, teils mit Hinweis auf andere Ausgabe), 2026-06 (4×, teils mit Hinweis auf andere Ausgabe)

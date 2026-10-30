@@ -12,7 +12,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
 | (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 1 (1) |
-| (3) Normverweise / Hinweise | 20 / 2 |
+| (3) Normverweise / Hinweise | 21 / 2 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
 
@@ -35,7 +35,7 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 | DIN 4108-3 | – | – | 1 |  |
 | DIN 18533 | – | – | 1 |  |
 | DIN TS 18599 | – | – | 1 |  |
-| EN ISO 6946 | – | – | 6 |  |
+| EN ISO 6946 | – | – | 7 |  |
 | EN ISO 6946 | 2018-03 | – | 2 |  |
 | EN ISO 10077-1 | – | – | 1 |  |
 | VDI 2067 | – | – | 2 |  |

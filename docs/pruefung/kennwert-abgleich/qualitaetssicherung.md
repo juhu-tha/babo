@@ -11,8 +11,8 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte abweichend von zentraler Konstante | 0 |
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
-| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 4 (4) |
-| (3) Normverweise / Hinweise | 74 / 2 |
+| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 4 (0) |
+| (3) Normverweise / Hinweise | 75 / 2 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
 
@@ -24,10 +24,10 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 
 | Fundstelle | Literal | Kommentar | Zeile |
 |---|---|---|---|
-| `src/modules/CscZertifizierung.tsx:19` | `0.35` | – | `(umweltScore * 0.35) +` |
-| `src/modules/CscZertifizierung.tsx:20` | `0.15` | – | `(sozialesScore * 0.15) +` |
-| `src/modules/CscZertifizierung.tsx:22` | `0.30` | – | `(supplyChainScore * 0.30)` |
-| `src/modules/Konformitaetskontrolle.tsx:217` | `1.48` | – | `requiredMean = fck + 1.48 * stdDevUsed;` |
+| `src/modules/CscZertifizierung.tsx:19` | `0.35` | ja | `(umweltScore * 0.35) + // Gewichtung Lehrannahme` |
+| `src/modules/CscZertifizierung.tsx:20` | `0.15` | ja | `(sozialesScore * 0.15) + // Gewichtung Lehrannahme` |
+| `src/modules/CscZertifizierung.tsx:22` | `0.30` | ja | `(supplyChainScore * 0.30) // Gewichtung Lehrannahme` |
+| `src/modules/Konformitaetskontrolle.tsx:217` | `1.48` | ja | `requiredMean = fck + 1.48 * stdDevUsed; // Kriterium 1 stetige Herstellung, DIN EN 206, 8.2.1.3 (Faktor 1,48)` |
 
 ## 3 Normverweise
 
@@ -43,7 +43,7 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 | DIN 1045-100 | – | – | 14 |  |
 | DIN 1045 | – | – | 5 |  |
 | DIN 1045 | 2023-08 | – | 1 | Ausgaben uneinheitlich |
-| EN 206 | – | Abschn. 8.2.1, Anhang B | 17 |  |
+| EN 206 | – | Abschn. 8.2.1, Anhang B | 18 |  |
 | EN 206 | 2021-06 | – | 1 |  |
 | EN 1992-1-1 | – | – | 1 |  |
 | EN 12390-3 | 2019-10 | – | 1 |  |
@@ -56,7 +56,7 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 
 - **DIN 1045:** 1937 (2×), 1959 (1×, teils mit Hinweis auf andere Ausgabe), 1972 (4×), 1978 (2×), 1988 (1×), 2023 (1×, teils mit Hinweis auf andere Ausgabe), 2023-08 (1×)
   - 2023-08: `content/betonbauklassen/Betonbauklassen.json › texte.wichtigesNormenUpdateDin` – Wichtiges Normen-Update (DIN 1045:2023-08)
-- **DIN 1045-2:** 2008 (2×), 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (139×, teils mit Hinweis auf andere Ausgabe)
+- **DIN 1045-2:** 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (145×, teils mit Hinweis auf andere Ausgabe)
   - 2023 (mit Hinweis): `content/betonbauklassen/Betonbauklassen.json › texte.dasBbqPlanungskonzeptVerknüpft` – …ton (Tragwerk & Dauerhaftigkeit nach Eurocode 2 / DIN EN 1992-1-1 und DIN 1045-2:2023) bereits in der Entwurfsphase direkt mi…
   - 2023-08: `content/betonbauklassen/Betonbauklassen.json › texte.zBC5567` – …on allein ist kein BBQ-S-Merkmal: Für C70/85 bis C100/115 gelten nach DIN 1045-2:2023-08 die Zusatzregeln der Betonklasse BK-E (…
   - 2023-08: `content/qualitaetssicherung/Qualitaetssicherung.json › daten.Qualitaetssicherung.regelwerke.0.title` – DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton – Festlegung, Eigenschaften, Her…

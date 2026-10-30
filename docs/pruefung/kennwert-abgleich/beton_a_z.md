@@ -37,7 +37,7 @@ Keine erkannt.
 
 ### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
 
-- **DIN 1045-2:** 2008 (2×), 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (139×, teils mit Hinweis auf andere Ausgabe)
+- **DIN 1045-2:** 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (145×, teils mit Hinweis auf andere Ausgabe)
   - 2023-08: `content/betonaz/BetonAZ.json › texte.statusNormgrundlageDinEn` – 📅 Status: Normgrundlage DIN EN 206 / DIN 1045-2:2023-08
   - 2023-08: `content/betonaz/BetonAZ.json › daten.BetonAZ.formeln.0.erklaerung` – Stoffraumrechnungsformel für dichten Frischbeton je Kubikmeter nach DIN 1045-2:2023-08. Summe aller absoluten Volumina ergibt…
   - 2023-08: `content/betonaz/BetonAZ.json › daten.BetonAZ.formeln.0.quelle` – DIN 1045-2:2023-08

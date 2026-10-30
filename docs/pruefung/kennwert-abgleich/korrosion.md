@@ -11,7 +11,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte abweichend von zentraler Konstante | 0 |
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
-| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 4 (4) |
+| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 1 (0) |
 | (3) Normverweise / Hinweise | 14 / 2 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
@@ -24,10 +24,7 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 
 | Fundstelle | Literal | Kommentar | Zeile |
 |---|---|---|---|
-| `src/modules/Korrosion.tsx:276` | `3.5` | – | `const rebarCenterY = 40 + coverMm * 3.5 + 45;` |
-| `src/modules/Korrosion.tsx:279` | `2.8` | – | `const isSpalled = radialStressMPa >= fctm * 2.8;` |
-| `src/modules/Korrosion.tsx:296` | `0.7` | – | `{radialStressMPa >= fctm * 0.7 && (` |
-| `src/modules/Korrosion.tsx:306` | `1.5` | – | `{radialStressMPa >= fctm * 1.5 && (` |
+| `src/modules/Korrosion.tsx:276` | `3.5` | ja | `const rebarCenterY = 40 + coverMm * 3.5 + 45; // Darstellungsfaktor 3,5 px je mm` |
 
 ## 3 Normverweise
 

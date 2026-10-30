@@ -11,7 +11,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte abweichend von zentraler Konstante | 0 |
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
-| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 1 (1) |
+| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 1 (0) |
 | (3) Normverweise / Hinweise | 27 / 0 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
@@ -24,7 +24,7 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 
 | Fundstelle | Literal | Kommentar | Zeile |
 |---|---|---|---|
-| `src/modules/Metallkorrosion.tsx:122` | `0.4` | – | `setAnodeErosion(prev => Math.min(45, prev + speed * 0.4));` |
+| `src/modules/Metallkorrosion.tsx:122` | `0.4` | ja | `setAnodeErosion(prev => Math.min(45, prev + speed * 0.4)); // Darstellungsfaktor der Animation` |
 
 ## 3 Normverweise
 

@@ -55,7 +55,7 @@ Keine erkannt.
 
 ### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
 
-- **DIN 1045-2:** 2008 (2×), 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (139×, teils mit Hinweis auf andere Ausgabe)
+- **DIN 1045-2:** 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (145×, teils mit Hinweis auf andere Ausgabe)
   - 2023-08 (mit Hinweis): `content/dauerhaftigkeit/Dauerhaftigkeit.json › texte.maßgebendBleibenDinEn` – Maßgebend bleiben DIN EN 206:2021-06 mit DIN 1045-2:2023-08 und DIN EN 1992-1-1:2011-01 mit NA. Was…
   - 2023-08: `content/dauerhaftigkeit/Dauerhaftigkeit.json › werte.dinEn19921` – DIN EN 1992-1-1:2011-01 + NA, 4.4.1; DIN 1045-2:2023-08
   - 2023-08: `content/dauerhaftigkeit/Dauerhaftigkeit.json › werte.oktober2026Ap10` – Oktober 2026 (Expositionsklassen nach DIN 1045-2:2023-08, Betondeckung, XA-Grenzen, Korrosivität…

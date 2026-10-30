@@ -11,7 +11,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte abweichend von zentraler Konstante | 0 |
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
-| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 7 (1) |
+| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 2 (0) |
 | (3) Normverweise / Hinweise | 13 / 2 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
@@ -24,13 +24,8 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 
 | Fundstelle | Literal | Kommentar | Zeile |
 |---|---|---|---|
-| `src/modules/Carbonbeton.tsx:52` | `160` | ja | `const mmToPx = 160 / h;` |
-| `src/modules/Carbonbeton.tsx:69` | `40` | ja | `const hStahl = Math.max(100, h + 2 * 40 - 2 * c);` |
-| `src/modules/Carbonbeton.tsx:89` | `500` | ja | `const epsFlies = (500 / 200000) * 1000; // 2.5 ‰` |
-| `src/modules/Carbonbeton.tsx:89` | `200000` | ja | `const epsFlies = (500 / 200000) * 1000; // 2.5 ‰` |
-| `src/modules/Carbonbeton.tsx:91` | `200000` | – | `stressSteel.push(eps * 1e-3 * 200000);` |
-| `src/modules/Carbonbeton.tsx:94` | `40` | ja | `const stress = 500 + (eps - epsFlies) * (40 / (50 - epsFlies));` |
-| `src/modules/Carbonbeton.tsx:94` | `50` | ja | `const stress = 500 + (eps - epsFlies) * (40 / (50 - epsFlies));` |
+| `src/modules/Carbonbeton.tsx:53` | `160` | ja | `const mmToPx = 160 / h;` |
+| `src/modules/Carbonbeton.tsx:70` | `40` | ja | `const hStahl = Math.max(100, h + 2 * 40 - 2 * c);` |
 
 ## 3 Normverweise
 
@@ -47,7 +42,7 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 
 ### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
 
-- **DIN 1045-2:** 2008 (2×), 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (139×, teils mit Hinweis auf andere Ausgabe)
+- **DIN 1045-2:** 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (145×, teils mit Hinweis auf andere Ausgabe)
   - 2023-08: `content/carbonbeton/Carbonbeton.json › texte.regelwerkCarbonbeton` – …N EN 13670 mit DIN 1045-3. Der Beton richtet sich nach DIN EN 206 mit DIN 1045-2:2023-08 (kein Leichtbeton), die Betonbauqualitä…
   - 2023-08: `content/carbonbeton/Carbonbeton.json › daten.Carbonbeton.regelwerke.3.title` – DIN 1045-2:2023-08 (Beton – Anwendungsregeln zu DIN EN 206…
 - **EN 1992-1-1:** 2011 (7×), 2011-01 (49×, teils mit Hinweis auf andere Ausgabe), 2023 (23×, teils mit Hinweis auf andere Ausgabe), 2025-09 (25×, teils mit Hinweis auf andere Ausgabe)

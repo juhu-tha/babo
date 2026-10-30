@@ -12,7 +12,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
 | (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 0 (0) |
-| (3) Normverweise / Hinweise | 50 / 0 |
+| (3) Normverweise / Hinweise | 52 / 0 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
 
@@ -58,6 +58,7 @@ Keine erkannt.
 | EN ISO 1461 | – | – | 2 |  |
 | EN ISO 8044 | – | – | 2 |  |
 | EN ISO 9223 | – | – | 1 |  |
+| EN ISO 10456 | – | – | 2 |  |
 | EN ISO 12944 | – | – | 3 |  |
 | EN ISO 28438 | – | – | 1 |  |
 | ISO 12944 | – | – | 1 |  |

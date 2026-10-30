@@ -11,7 +11,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte abweichend von zentraler Konstante | 0 |
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
-| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 4 (4) |
+| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 4 (0) |
 | (3) Normverweise / Hinweise | 41 / 0 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
@@ -24,10 +24,10 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 
 | Fundstelle | Literal | Kommentar | Zeile |
 |---|---|---|---|
-| `src/modules/MessenPruefen.tsx:525` | `50.0` | – | `const curX = Math.max(35, Math.min(425, 230 + (rvStats.currentLab.a - 50.0) * 28));` |
-| `src/modules/MessenPruefen.tsx:525` | `28` | – | `const curX = Math.max(35, Math.min(425, 230 + (rvStats.currentLab.a - 50.0) * 28));` |
-| `src/modules/MessenPruefen.tsx:526` | `48.0` | – | `const curY = Math.max(25, Math.min(195, 110 - (rvStats.currentLab.b - 48.0) * 28));` |
-| `src/modules/MessenPruefen.tsx:526` | `28` | – | `const curY = Math.max(25, Math.min(195, 110 - (rvStats.currentLab.b - 48.0) * 28));` |
+| `src/modules/MessenPruefen.tsx:525` | `50.0` | ja | `const curX = Math.max(35, Math.min(425, 230 + (rvStats.currentLab.a - 50.0) * 28)); // Darstellungsfaktor: Plotmitte 50,0 MPa, 28 px je MPa` |
+| `src/modules/MessenPruefen.tsx:525` | `28` | ja | `const curX = Math.max(35, Math.min(425, 230 + (rvStats.currentLab.a - 50.0) * 28)); // Darstellungsfaktor: Plotmitte 50,0 MPa, 28 px je MPa` |
+| `src/modules/MessenPruefen.tsx:526` | `48.0` | ja | `const curY = Math.max(25, Math.min(195, 110 - (rvStats.currentLab.b - 48.0) * 28)); // Darstellungsfaktor: Plotmitte 48,0 MPa, 28 px je MPa` |
+| `src/modules/MessenPruefen.tsx:526` | `28` | ja | `const curY = Math.max(25, Math.min(195, 110 - (rvStats.currentLab.b - 48.0) * 28)); // Darstellungsfaktor: Plotmitte 48,0 MPa, 28 px je MPa` |
 
 ## 3 Normverweise
 
