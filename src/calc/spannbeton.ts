@@ -363,16 +363,16 @@ export function spanngliedDeckung(e: SpanngliedDeckungEingabe) {
   }
   let c_min_b: number;
   if (e.verfahren === 'post_tensioned') c_min_b = Math.min(80, e.huellrohrMm);
-  else if (e.verfahren === 'pre_tensioned') c_min_b = Math.round(2.0 * e.litzeMm); // 4.4.1.2(3): 2,0·Ø
+  else if (e.verfahren === 'pre_tensioned') c_min_b = Math.round(2.0 * e.litzeMm); // 4.4.1.2(3): 2,0·Ø; NA DE ggf. 2,5·Ø – vorläufig, Normprüfung ausstehend (GC-SB-2)
   else c_min_b = Math.round(1.5 * e.litzeMm); // Lehrannahme (vorläufig), Monolitze nach ETA
   let baseDur: number = C_MIN_DUR_BETONSTAHL_NA[e.xc];
   if (e.xd !== 'XD0') baseDur = Math.max(baseDur, C_MIN_DUR_BETONSTAHL_NA[e.xd]);
   const delta_dur_100 = e.bauwerk === 'bruecke' ? 5 : 0; // vorläufig, Normprüfung ausstehend
   const delta_dur_gamma = e.verfahren === 'unbonded' ? 0 : 10; // Spannstahl im Verbund (+10 mm)
-  const delta_dur_fck = e.betonklasse === 'C45/55' || e.betonklasse === 'C50/60' ? 5 : 0; // vorläufig, Normprüfung ausstehend
+  const delta_dur_fck = e.betonklasse === 'C45/55' || e.betonklasse === 'C50/60' ? 5 : 0; // vorläufig, Normprüfung ausstehend (DSA-SB-2a, GC-SB-4: Mindestklasse + 2, nicht XC1?)
   const c_min_dur = Math.max(10, baseDur + delta_dur_100 + delta_dur_gamma - delta_dur_fck);
   const c_min = Math.max(c_min_b, c_min_dur, 10);
-  const delta_c_dev = e.bauwerk === 'bruecke' ? 15 : (e.xc === 'XC1' ? 10 : 15);
+  const delta_c_dev = e.bauwerk === 'bruecke' ? 15 : (e.xc === 'XC1' ? 10 : 15); // Δc_dev bei maßgebendem c_min,b: vorläufig, Normprüfung ausstehend (GC-SB-3)
   const c_nom = c_min + delta_c_dev;
   return { c_min_b, baseDur, delta_dur_gamma, delta_dur_100, delta_dur_fck, c_min_dur, c_min, delta_c_dev, c_nom, gueltig: !hatFehler(hinweise), hinweise };
 }
