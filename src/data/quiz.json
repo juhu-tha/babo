@@ -939,17 +939,28 @@
     ],
     "correctIdx": 2,
     "explanation": "Nachwachsende Rohstoffe absorbieren während ihres biologischen Wachstums CO₂ aus der Atmosphäre. Dies wird nach DIN EN 15804 als negativer Treibhausbeitrag (GWP-biogen) in den Herstellungsphasen A1-A3 bilanziert. Am Lebensende (Modul C3/C4) wird dieses CO₂ bei thermischer Verwertung wieder freigesetzt.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Transporte gehen als positive Emissionen in A2 bzw. A4 ein; sie können ein GWP nicht negativ machen.",
+      "Biogene Baustoffe verdampfen nicht; bei Verbrennung oder Verrottung am Lebensende (C3/C4) wird das gespeicherte CO₂ wieder freigesetzt.",
+      "",
+      "Der Energieaufwand der Sägewerke wird in A3 vollständig bilanziert; negativ wird das GWP allein durch den biogenen Kohlenstoff."
+    ],
     "gapAnalysis": {
       "topic": "Biogener Kohlenstoffspeicher in Ökobilanzen",
       "misconception": "Verwechslung von fossilen Emissionen mit dem bilanziellen Kohlenstoffspeichereffekt nachwachsender Rohstoffe.",
-      "coreRule": "Photosynthese entzieht der Luft CO2. 1 m³ Fichtenholz bindet ca. 800-900 kg CO2-Äquivalente temporär als Kohlenstoffsenke.",
+      "coreRule": "Photosynthese entzieht der Luft CO₂. Nach DIN EN 16449 speichert 1 m³ Nadelholz rund 740 kg (Fichte, 450 kg/m³) bis 820 kg CO₂ (KVH, 500 kg/m³) temporär als Kohlenstoffsenke.",
       "actionableAdvice": "Gehen Sie im Modul Ökobilanzierung (LCA) die Modulstruktur nach DIN EN 15804 (A1 bis D) durch.",
       "targetModuleTab": "oekobilanz_lca",
       "targetModuleLabel": "Ökobilanzierung (LCA)"
     },
-    "reviewer": "freigegeben",
-    "reviewedAt": "2026-09-28",
-    "verified": true
+    "verified": false,
+    "vorpruefung": {
+      "am": "2026-10-30",
+      "ergebnis": "korrigiert",
+      "hinweis": "Abgleich 30.10.: Lernhilfe „1 m³ Fichtenholz bindet ca. 800–900 kg CO₂“ an DIN EN 16449 und den zentralen Lehrwert angeglichen (KVH 500 kg/m³ −820 kg, Fichte 450 kg/m³ rund 740 kg; Durchsicht D, DSD-HO-2) – korrigiert (Bloom-Stufe, Niveau und Rückmeldungen ergänzt)"
+    }
   },
   {
     "id": "q_lca_2",
@@ -8734,7 +8745,7 @@
       "targetModuleTab": "abfaelle",
       "targetModuleLabel": "Abfälle & Altlasten"
     },
-    "quelle": "KrWG § 9a; GefStoffV Anhang II Nr. 1; AVV 17 06 05*",
+    "quelle": "KrWG § 9a; GefStoffV § 11 (bis 04.12.2024 Anhang II Nr. 1); AVV 17 06 05*",
     "verified": true,
     "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
     "reviewedAt": "2026-10-28",
