@@ -357,6 +357,10 @@ export interface SpanngliedDeckungEingabe {
 export function spanngliedDeckung(e: SpanngliedDeckungEingabe) {
   const hinweise: Hinweis[] = [];
   muss(hinweise, istEndlich(e.huellrohrMm, e.litzeMm) && e.huellrohrMm > 0 && e.litzeMm > 0, 'durchmesser', 'Hüllrohr- und Litzendurchmesser müssen größer als 0 sein.');
+  // Ungültige Eingabe: kein Ergebnis (vorher c_nom aus c_min,dur trotz gueltig = false; Gegenprüfung 30.10.2026)
+  if (hatFehler(hinweise)) {
+    return { c_min_b: NaN, baseDur: NaN, delta_dur_gamma: NaN, delta_dur_100: NaN, delta_dur_fck: NaN, c_min_dur: NaN, c_min: NaN, delta_c_dev: NaN, c_nom: NaN, gueltig: false, hinweise };
+  }
   let c_min_b: number;
   if (e.verfahren === 'post_tensioned') c_min_b = Math.min(80, e.huellrohrMm);
   else if (e.verfahren === 'pre_tensioned') c_min_b = Math.round(2.0 * e.litzeMm); // 4.4.1.2(3): 2,0·Ø
