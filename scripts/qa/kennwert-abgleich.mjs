@@ -206,7 +206,8 @@ export async function ladeReferenzen() {
   }
   // Schwind- und Quellmaße [% je %]
   for (const [art, w] of Object.entries(holz.SCHWINDBEIWERTE)) for (const [richtung, v] of Object.entries(w)) {
-    const artRe = { fichte: /Fichte|Tanne|Nadelholz/, kiefer: /Kiefer/, eiche: /Eiche/ }[art];
+    const artRe = { fichte: /Fichte|Tanne|Nadelholz/, kiefer: /Kiefer/, laerche: /Lärche/, buche: /Buche/, eiche: /Eiche/ }[art]
+      ?? new RegExp(art, 'i'); // neue Holzarten in SCHWINDBEIWERTE (Durchsicht D: Lärche, Buche)
     const rRe = { radial: /radial/i, tangential: /tangential/i, longitudinal: /längs|longitudinal|axial/i }[richtung];
     add({ familie: 'schwind', kennung: `${art} ${richtung}`, bezeichnung: `Schwindmaß ${art} ${richtung}`, konstante: `SCHWINDBEIWERTE.${art}.${richtung}`, werte: [v],
       klasse: 'schwind', bezug: ['%/%'], kontext: artRe, nah: rRe, schluessel: richtung });

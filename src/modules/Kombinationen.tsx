@@ -809,7 +809,9 @@ export default function Kombinationen({ initialTab = 'ueberblick' }: Kombination
               <div className="p-4 bg-off-white rounded-xl border border-home-grau/25 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
                 <div>
                   <div className="font-bold text-text-main mb-1"><MdText text={inhalt.texte.berechnungDerAbreißfestigkeit} /></div>
-                  <BlockMath math="f_{\text{ct,surf}} = \frac{4 \cdot F_{\text{fail}}}{\pi \cdot d^2} \ge 1{,}5\,\text{MPa} \quad (\text{Mindestanforderung Betoninstandsetzung})" />
+                  <BlockMath math="f_{\text{ct,surf}} = \frac{4 \cdot F_{\text{fail}}}{\pi \cdot d^2}" />
+                  {/* Durchsicht D 29.10.2026, DSD-KO-2: Anforderungswert wie in bp_farben_lacke (NP2-FL-1), nicht pauschal für jede Instandsetzung */}
+                  <p className="text-[11px] text-text-main/75 mt-1"><MdText text={inhalt.texte.haftzugAnforderung} /></p>
                 </div>
                 <div className="text-text-main/75 space-y-1 border-l md:border-l-2 border-home-grau/30 pl-4">
                   <div><strong>Bruchbild-Analyse:</strong></div>

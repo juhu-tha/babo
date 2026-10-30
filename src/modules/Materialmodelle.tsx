@@ -29,6 +29,7 @@ import {
 import inhalt from '@/content/materialmodelle/Materialmodelle.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { bilinearVerfestigung, bilinearKurve, lehrkurve, thixotropieKurve } from '@/src/calc/werkstoffmodelle';
+import { BAUSTAHL_EC3, BETONSTAHL, E_BAUSTAHL, E_BETONSTAHL } from '@/src/data/kennwerte';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 
@@ -378,27 +379,28 @@ export default function Materialmodelle() {
 
   // Interaktive Parameter für "Elasto-Plastisch mit Verfestigung"
   const [epPreset, setEpPreset] = useState<'b500b' | 's355' | 's235' | 'alu' | 'custom'>('b500b');
-  const [fyVal, setFyVal] = useState<number>(500); // MPa
-  const [eModVal, setEModVal] = useState<number>(200000); // MPa
+  const [fyVal, setFyVal] = useState<number>(BETONSTAHL.B500B.fyk); // MPa
+  const [eModVal, setEModVal] = useState<number>(E_BETONSTAHL); // MPa
   const [etModVal, setEtModVal] = useState<number>(1600); // MPa (Verfestigungsmodul, Preset B500B)
   const [appliedMaxEpsPromille, setAppliedMaxEpsPromille] = useState<number>(50); // max. Dehnung in Promille (Preset B500B: ε_uk = 50 ‰)
 
   // Preset-Wechsel für Elasto-Plastisch mit Verfestigung
   const handleSelectEpPreset = (preset: 'b500b' | 's355' | 's235' | 'alu' | 'custom') => {
     setEpPreset(preset);
+    // f_y und E aus src/data/kennwerte.ts (Durchsicht D 29.10.2026, DSD-MM-1); Verfestigungsmoduln sind Lehrwerte
     if (preset === 'b500b') {
-      setFyVal(500);
-      setEModVal(200000);
+      setFyVal(BETONSTAHL.B500B.fyk);
+      setEModVal(E_BETONSTAHL);
       setEtModVal(1600); // ca. (540 - 500) / (0.050 - 0.0025) ≈ 840-2000 MPa
       setAppliedMaxEpsPromille(50); // ε_uk ≥ 5 % → k sichtbar ≥ 1,08
     } else if (preset === 's355') {
-      setFyVal(355);
-      setEModVal(210000);
+      setFyVal(BAUSTAHL_EC3.S355.fy);
+      setEModVal(E_BAUSTAHL);
       setEtModVal(2500);
       setAppliedMaxEpsPromille(15);
     } else if (preset === 's235') {
-      setFyVal(235);
-      setEModVal(210000);
+      setFyVal(BAUSTAHL_EC3.S235.fy);
+      setEModVal(E_BAUSTAHL);
       setEtModVal(2000);
       setAppliedMaxEpsPromille(15);
     } else if (preset === 'alu') {

@@ -1,5 +1,5 @@
 import type { Hinweis } from '@/src/calc/plausibilitaet';
-import type { DruckstabErgebnis } from '@/src/calc/holzbau';
+import { BETA_C, GAMMA_M_HOLZ, type DruckstabErgebnis } from '@/src/calc/holzbau';
 import { Calculator, ShieldAlert, Scale } from 'lucide-react';
 import { formatDeWert, formatDeZahl, formatDeTeX, formatDeTeXWert } from '@/src/utils/numberFormat';
 import { InlineMath } from 'react-katex';
@@ -43,6 +43,8 @@ interface HolzbauBemessungProps {
 }
 
 export default function HolzbauBemessung({ calculationResults, colB, colH, colLen, currentMaterial, designLoad, eulerCase, loadDuration, qpB, qpConfig, qpForce, qpL, qpOverhang, qpResults, serviceClass, setColB, setColH, setColLen, setDesignLoad, setEulerCase, setLoadDuration, setQpB, setQpConfig, setQpForce, setQpL, setQpOverhang, setServiceClass, setWoodClass, woodClass }: HolzbauBemessungProps) {
+  // β_c aus dem Rechenkern (src/calc/holzbau.ts) statt fest verdrahtet (Durchsicht D 29.10.2026, DSD-HB-1)
+  const betaC = currentMaterial.class.startsWith('GL') ? BETA_C.bsh : BETA_C.vollholz;
   return (
       <div className="flex flex-col gap-6 animate-in fade-in duration-300" id="holz_tab_bemessung">
 
@@ -186,7 +188,7 @@ export default function HolzbauBemessung({ calculationResults, colB, colH, colLe
               <div className="text-xs text-text-main/70">
                 <span className="font-bold text-text-main block"><MdText text={inhalt.texte.t1BemessungsfestigkeitFC} /></span>
                 <div className="my-1 text-center bg-off-white py-1 rounded border border-home-grau/10">
-                  <InlineMath math={`f_{c,0,d} = k_{mod} \\times \\frac{f_{c,0,k}}{\\gamma_{M}} = ${calculationResults.k_mod} \\times \\frac{${currentMaterial.f_c0k}}{${calculationResults.gamma_M}} = ${formatDeZahl(calculationResults.f_c0d, 2)}\\text{ N/mm}^2`} />
+                  <InlineMath math={`f_{c,0,d} = k_{mod} \\times \\frac{f_{c,0,k}}{\\gamma_{M}} = ${formatDeTeX(calculationResults.k_mod, 2)} \\times \\frac{${formatDeTeXWert(currentMaterial.f_c0k)}}{${formatDeTeX(calculationResults.gamma_M, 1)}} = ${formatDeTeX(calculationResults.f_c0d, 2)}\\text{ N/mm}^2`} />
                 </div>
               </div>
 
@@ -248,7 +250,7 @@ export default function HolzbauBemessung({ calculationResults, colB, colH, colLe
               schritte={[
                 {
                   titel: inhalt.werte.bemessungswertDerDruckfestigkeit,
-                  erklaerung: `${currentMaterial.class}, Nutzungsklasse ${formatDeZahl(serviceClass, 0)}: k_mod = ${formatDeZahl(calculationResults.k_mod, 2)}, γ_M = 1,3.`,
+                  erklaerung: `${currentMaterial.class}, Nutzungsklasse ${formatDeZahl(serviceClass, 0)}: k_mod = ${formatDeZahl(calculationResults.k_mod, 2)}, γ_M = ${formatDeZahl(GAMMA_M_HOLZ, 1)}.`,
                   formel: `f_{c,0,d} = \\frac{${formatDeTeX(calculationResults.k_mod, 2)} \\cdot ${formatDeTeX(currentMaterial.f_c0k, 1)}}{${formatDeTeX(calculationResults.gamma_M, 1)}} = ${formatDeTeX(calculationResults.f_c0d, 2)}\\,\\text{N/mm}^2`,
                 },
                 {
@@ -268,7 +270,7 @@ export default function HolzbauBemessung({ calculationResults, colB, colH, colLe
                     : `Imperfektionsbeiwert β_c = ${currentMaterial.class.startsWith('GL') ? inhalt.werte.t01Brettschichtholz : inhalt.werte.t02Vollholz}.`,
                   formel: calculationResults.lambda_rel_z <= 0.3
                     ? 'k_c = 1{,}0'
-                    : `k = 0{,}5 \\,[1 + ${currentMaterial.class.startsWith('GL') ? '0{,}1' : '0{,}2'} \\cdot (${formatDeTeX(calculationResults.lambda_rel_z, 3)} - 0{,}3) + ${formatDeTeX(calculationResults.lambda_rel_z, 3)}^2] = ${formatDeTeX(0.5 * (1 + (currentMaterial.class.startsWith('GL') ? 0.1 : 0.2) * (calculationResults.lambda_rel_z - 0.3) + calculationResults.lambda_rel_z ** 2), 3)};\\quad k_c = ${formatDeTeX(calculationResults.k_cz, 4)}`,
+                    : `k = 0{,}5 \\,[1 + ${formatDeTeX(betaC, 1)} \\cdot (${formatDeTeX(calculationResults.lambda_rel_z, 3)} - 0{,}3) + ${formatDeTeX(calculationResults.lambda_rel_z, 3)}^2] = ${formatDeTeX(0.5 * (1 + betaC * (calculationResults.lambda_rel_z - 0.3) + calculationResults.lambda_rel_z ** 2), 3)};\\quad k_c = ${formatDeTeX(calculationResults.k_cz, 4)}`,
                 },
                 {
                   titel: inhalt.werte.knicktragfähigkeitUndAusnutzung,
@@ -390,7 +392,7 @@ export default function HolzbauBemessung({ calculationResults, colB, colH, colLe
                   <p className="text-[11px] leading-relaxed"><MdText text={inhalt.texte.wertFürHolzart} /><span className="font-bold">{woodClass}</span> (<InlineMath math={`f_{c,90,k} = ${qpResults.f_c90k}\\text{ N/mm}^2`} /><MdText text={inhalt.texte.modifiziertMit} /><InlineMath math={`k_{mod} = ${formatDeTeXWert(calculationResults.k_mod)}`} />:
                   </p>
                   <div className="my-1 bg-[#fef3c7]/20 p-1.5 rounded border border-[#fef3c7] text-center font-mono text-[11px]">
-                    <InlineMath math={`f_{c,90,d} = ${calculationResults.k_mod} \\times \\frac{${qpResults.f_c90k}}{${qpResults.gamma_M}} = ${formatDeZahl(qpResults.f_c90d, 2)}\\text{ N/mm}^2`} />
+                    <InlineMath math={`f_{c,90,d} = ${formatDeTeX(calculationResults.k_mod, 2)} \\times \\frac{${formatDeTeXWert(qpResults.f_c90k)}}{${formatDeTeX(qpResults.gamma_M, 1)}} = ${formatDeTeX(qpResults.f_c90d, 2)}\\text{ N/mm}^2`} />
                   </div>
                 </div>
 
