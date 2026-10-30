@@ -1,10 +1,10 @@
 # Prüfliste Quiz – Cluster IV: Bestand & Nachhaltigkeit
 
-Stand: 29.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
+Stand: 30.10.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster IV umfasst 314 Fragen aus 50 Modulen. Aufgeführt sind 102 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster IV umfasst 314 Fragen aus 50 Modulen. Aufgeführt sind 103 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 83 korrigiert, 0 fraglich, 11 mit offenem Prüfhinweis, 12 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 84 korrigiert, 0 fraglich, 11 mit offenem Prüfhinweis, 12 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -142,6 +142,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 83 korrigiert, 0 fraglich, 1
 - **Richtige Antwort:** Salze im Putz einlagern, Feuchte verdampfen lassen; Oberfläche trocken, salzfrei
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### q_lca_1 · Ökobilanzierung (LCA & EPD)
+
+- **Frage:** Warum deklarieren Umweltproduktdeklarationen (EPDs) nachwachsender Rohstoffe wie Holz oder Stroh in Phase A1-A3 oft negative GWP-Werte?
+- **Richtige Antwort:** Weil Bäume während des Wachstums CO2 via Photosynthese absorbieren und als biogenen Kohlenstoff physisch im Bauteil speichern (temporäre Kohlenstoffsenke).
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Abgleich 30.10.: Lernhilfe „1 m³ Fichtenholz bindet ca. 800–900 kg CO₂“ an DIN EN 16449 und den zentralen Lehrwert angeglichen (KVH 500 kg/m³ −820 kg, Fichte 450 kg/m³ rund 740 kg; Durchsicht D, DSD-HO-2) – korrigiert
+- [ ] ok
 - [ ] ändern: …
 
 ### q_mo_1 · Materialoptimierung
