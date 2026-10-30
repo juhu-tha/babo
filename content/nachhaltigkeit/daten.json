@@ -170,7 +170,7 @@
         "circularity_pct": 100
       },
       "baustahl": {
-        "name": "Baustahl (Elektrookoroute - 100% RC)",
+        "name": "Baustahl (Elektrostahlroute, 100 % Schrott)",
         "category": "Metalle",
         "density": 7850,
         "lambda": 50,

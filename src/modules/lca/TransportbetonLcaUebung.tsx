@@ -11,7 +11,8 @@ import {
   ArrowRight,
   Info
 } from 'lucide-react';
-import { LCA_BENCHMARKS } from './transportbetonKennwerte';
+import { LCA_BENCHMARKS, LKW_FAKTOR_UEBUNG, LKW_FAKTOR_ZENTRAL } from './transportbetonKennwerte';
+import { K_WERT_DIN1045_2 } from '@/src/calc/mischung';
 import inhalt from '@/content/lca/TransportbetonLcaUebung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 
@@ -142,7 +143,7 @@ export default function TransportbetonLcaUebung() {
   const sum_A1 = gwp_A1_cement + gwp_A1_flyAsh + gwp_A1_sand + gwp_A1_gravel + gwp_A1_rcGravel + gwp_A1_water + gwp_A1_admixture;
 
   // Berechnung Modul A2 (Transport zum Betonwerk)
-  // Lkw 40t, 0.068 kg CO2/tkm
+  // Lkw 40t, 0.068 kg CO2/tkm (Lehrwert der Übung; zentraler A4-Faktor 0,101 – Hinweis unter den Eingaben, DSB-LC-3)
   const mass_cement_ton = cemAmount / 1000;
   const mass_aggregates_ton = (sand + gravel + rcGravel) / 1000;
   const gwp_A2_cement = mass_cement_ton * distA2Cement * LCA_BENCHMARKS.transport_truck_40t;
@@ -170,8 +171,8 @@ export default function TransportbetonLcaUebung() {
   const projectTotalCO2Ton = (total_A1A5 * projectVolumeM3) / 1000;
   const projectSavedCO2Ton = Math.max(0, ((refTotalA1A5 - total_A1A5) * projectVolumeM3) / 1000);
 
-  // w/z-Wert Berechnung (mit anrechenbarer Flugasche k=0.4)
-  const effectiveCem = cemAmount + 0.4 * flyAsh;
+  // w/z-Wert Berechnung (mit anrechenbarer Flugasche, k-Wert nach DIN 1045-2 aus src/calc/mischung.ts, DSB-LC-8)
+  const effectiveCem = cemAmount + K_WERT_DIN1045_2.kF * flyAsh;
   const wz_eq = effectiveCem > 0 ? (water / effectiveCem) : 0;
 
   const handleDownload = () => {
@@ -418,6 +419,14 @@ export default function TransportbetonLcaUebung() {
                 </div>
               </div>
             </div>
+            {/* DSB-LC-3: Lkw-Faktor der Übung belassen (Entscheidung zu NP2-LC-2), Unterschied zum zentralen A4-Faktor ausweisen */}
+            <p className="text-xxs text-slate-500 leading-relaxed">
+              <MdText text={inhalt.texte.hinweisLkwFaktor
+                .replace('{uebung}', formatDeZahl(LKW_FAKTOR_UEBUNG, 3))
+                .replace('{zentral}', formatDeZahl(LKW_FAKTOR_ZENTRAL, 3))
+                .replace('{a2}', formatDeZahl(sum_A2, 1))
+                .replace('{a2zentral}', formatDeZahl(sum_A2 * LKW_FAKTOR_ZENTRAL / LKW_FAKTOR_UEBUNG, 1))} />
+            </p>
           </div>
 
         </div>

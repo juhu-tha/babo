@@ -127,6 +127,8 @@ export default function InteractiveLCACalc() {
   };
 
   // Set global circular quota preset for all rows
+  // Szenariofaktoren der Voreinstellungen (0,4 / 1,15 / 1,3 auf die Standard-Kreislaufquote, Sortierraten 50/85/95/98 %):
+  // didaktische Annahmen zum Vergleich von Rückbaustrategien, keine Kennwerte (Durchsicht B, DSB-LC-8)
   const setGlobalModulDStrategy = (strategy: 'linear' | 'standard' | 'selective' | 'pioneer') => {
     setRows(rows.map(row => {
       const mat = MATERIAL_DATABASE.find(m => m.id === row.materialId);

@@ -16,6 +16,7 @@
     "t1DasAusgangsSubstrat": "1. Das Ausgangs-Substrat (Boden / Material)",
     "t2DieHauptbelastungLeitkontaminante": "2. Die Hauptbelastung (Leitkontaminante)",
     "optimalesBehandlungsverfahren": "Optimales Behandlungsverfahren",
+    "co2KostenLehrwerte": "CO₂- und Kostenangaben: gerundete Spannen je Tonne behandeltes Material (Lehrwerte ohne Projekt- oder Anlagenbezug); maßgebend sind Angebote und Nachweise der Behandlungsanlage.",
     "rechtlicheVorgabenEbvBbodschv": "Rechtliche Vorgaben & EBV / BBodSchV",
     "chronologischerVerfahrensablauf": "Chronologischer Verfahrensablauf",
     "hinweisZuAsbestFasern": "Hinweis zu Asbest/Fasern: Das Zerkleinern und Wiederaufbereiten asbesthaltiger Boden- und Demontagematerialien stellt in Deutschland gem. TRGS 519 eine schwerwiegende Ordnungswidrigkeit bzw. Umweltstraftat dar. Solche Vorkommen müssen strikt separat deponiert werden.",
@@ -193,7 +194,7 @@
             "Transport unter lückenloser eANV-Nachweisüberwachung.",
             "Endlagerung in Monozellen auf zugelassenen Deponien ohne mechanische Nachbearbeitung."
           ],
-          "rules": "TRGS 519 / DepV: Ein Recycling von asbesthaltigen Böden oder Bauschuttgemischen ist ausnahmslos ILLEGAL. Es gilt ein striktes Wiederverwendungsverbot für asbesthaltige Materialien in ganz Europa."
+          "rules": "GefStoffV § 11a und Anhang II Nr. 1 / REACH Anhang XVII Nr. 6 / DepV: Recycling oder Wiedereinbau asbesthaltiger Böden und Bauschuttgemische ist verboten; asbesthaltige Abfälle werden staubdicht verpackt deponiert."
         },
         "gips_sulfat": {
           "method": "Nassklassierung & Flotation",
@@ -301,7 +302,7 @@
             "Grobbruch und Aussortierung nicht-mineralischer Störstoffe.",
             "Mechanische Oberflächenreinigung (z.B. Kugelstrahlen/Fräsen) falls kontaminierte Flächen lokalisiert sind.",
             "Thermische Behandlung des Feinkorns im Drehrohr zur PAK-Vergasung.",
-            "Rauchgasreinigung und Abgaswäsche zur sicheren Dioxin- und furanfreien Verbrennung.",
+            "Rauchgasreinigung und Abgaswäsche zur sicheren Dioxin- und Furanvermeidung.",
             "Gütemäßige Abschlussprüfung auf PAK16 (Materialwert RC-1: ≤ 10 mg/kg im Feststoff, EBV Anlage 1)."
           ],
           "rules": "Gewerbeabfallverordnung (GewAbfV) / Ersatzbaustoffverordnung: Teer- und PAK-belastete Bauschutt-Gemische dürfen unter keinen Umständen unaufbereitet verwertet werden. Grenzwertüberschreitungen führen zur Einstufung als gefährlicher Abfall."
@@ -319,7 +320,7 @@
             "Doppelte Verpackung in zertifizierte Asbest-Big-Bags.",
             "Direkter Transport zur zugelassenen Deponie."
           ],
-          "rules": "GefStoffV / TRGS 519: Verstöße gegen das Wiederverwendungsverbot für asbesthaltigen Bauschutt stellen einen Straftatbestand dar. Aufbereitungsanlagen weisen Lkw mit Asbestverdacht strikt ab."
+          "rules": "GefStoffV / TRGS 519: Verstöße gegen das Verwendungsverbot für asbesthaltigen Bauschutt sind Ordnungswidrigkeiten oder Straftaten (u. a. ChemG, § 326 StGB). Aufbereitungsanlagen weisen Lkw mit Asbestverdacht ab."
         },
         "gips_sulfat": {
           "method": "Trockenmechanische Sortierung (NIR-Sensorik)",
@@ -346,7 +347,7 @@
           "cost": "Sehr teuer (75 - 120 €/t)",
           "principles": "Altablagerungen sind extrem heterogen und enthalten organische Abfälle gepaart mit Bauschutt und Erden. Ein nassmechanisches Trennverfahren separiert den mineralisch-schweren Anteil, während Schwermetalle in den Feinfraktionen verbleiben und dort immobilisiert werden müssen.",
           "steps": [
-            "Ausgrabung unter Geruchs- und Emissionsschutzschutz (ggf. Absaugung).",
+            "Ausgrabung unter Geruchs- und Emissionsschutz (ggf. Absaugung).",
             "Mechanische Grobsortierung von Hausmüll- und Metallfraktionen.",
             "Nassklassierung zur Separation von Sanden und RC-Gesteinen.",
             "Spezifische Schwefelwasserstoff-Neutralisierung des Kreislaufwassers.",
