@@ -1,4 +1,4 @@
-import { erddruckRankine, konsolidierung, mohrCoulomb, zustandsgrenzen } from '@/src/calc/boden';
+import { aLinie, erddruckRankine, konsolidierung, mohrCoulomb, zustandsgrenzen } from '@/src/calc/boden';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
@@ -388,13 +388,13 @@ export default function Bodenmechanik() {
                 },
                 {
                   titel: 'Zustandsform',
-                  erklaerung: `Einordnung nach den Grenzen 0 / 0,50 / 0,75 / 1,00: Der Boden ist ${results.zustand}.`,
+                  erklaerung: `Einordnung nach den Grenzen 0 / 0,25 / 0,50 / 0,75 / 1,00 (DIN EN ISO 14688-2): Der Boden ist ${results.zustand}.`,
                   formel: `I_C = ${formatDeTeX(results.iC, 2)} \\;\\Rightarrow\\; \\text{${results.zustand}}`
                 },
                 {
                   titel: inhalt.werte.lageZurALinie,
                   erklaerung: `Liegt I_P über der A-Linie (und I_P ≥ 7 %), handelt es sich um einen Ton, sonst um einen Schluff: ${results.klasse}.`,
-                  formel: `I_{P,A} = 0{,}73 \\cdot (${formatDeTeX(wL, 1)} - 20) = ${formatDeTeX(0.73 * (wL - 20), 1)}\\,\\% \\quad I_P = ${formatDeTeX(results.iP, 1)}\\,\\% ${results.iP >= 0.73 * (wL - 20) ? '\\ge' : '<'} I_{P,A}`
+                  formel: `I_{P,A} = 0{,}73 \\cdot (${formatDeTeX(wL, 1)} - 20) = ${formatDeTeX(aLinie(wL), 1)}\\,\\% \\quad I_P = ${formatDeTeX(results.iP, 1)}\\,\\% ${results.iP >= aLinie(wL) ? '\\ge' : '<'} I_{P,A}`
                 }
               ]}
               ergebnisHinweis={inhalt.werte.plastizitätsdiagrammNachDin18196}

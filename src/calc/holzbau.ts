@@ -20,10 +20,13 @@ export const GAMMA_M_HOLZ = 1.3;
 import { EULER_BETA } from './stabilitaet';
 export { EULER_BETA };
 
-/** k_c nach (6.25)–(6.29); β_c = 0,2 Vollholz, 0,1 BSH */
+/** Imperfektionsbeiwert β_c nach (6.29): 0,2 Vollholz, 0,1 Brettschichtholz und Furnierschichtholz */
+export const BETA_C = { vollholz: 0.2, bsh: 0.1 } as const;
+
+/** k_c nach (6.25)–(6.29); β_c nach BETA_C */
 export function knickbeiwert(lambdaRel: number, brettschichtholz: boolean): number {
   if (lambdaRel <= 0.3) return 1.0;
-  const bc = brettschichtholz ? 0.1 : 0.2;
+  const bc = brettschichtholz ? BETA_C.bsh : BETA_C.vollholz;
   const k = 0.5 * (1 + bc * (lambdaRel - 0.3) + lambdaRel * lambdaRel);
   return Math.min(1.0, 1 / (k + Math.sqrt(k * k - lambdaRel * lambdaRel)));
 }
