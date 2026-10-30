@@ -322,13 +322,13 @@ export default function Modernisierung() {
                       <td className="p-3 font-medium"><MdText text={inhalt.texte.außenwandPutzWdvsBekleidung} /></td>
                       <td className="p-3 font-mono font-bold text-shiraz"><MdText text={inhalt.texte.u024W} /></td>
                       <td className="p-3 font-mono"><MdText text={inhalt.texte.t120180} /></td>
-                      <td className="p-3 font-mono"><MdText text={inhalt.texte.t1416CmWlg} /></td>
+                      <td className="p-3 font-mono"><MdText text={inhalt.texte.t1214CmWlg} /></td>
                     </tr>
                     <tr className="hover:bg-slate-50">
                       <td className="p-3 font-medium"><MdText text={inhalt.texte.steildachObersteGeschossdecke} /></td>
                       <td className="p-3 font-mono font-bold text-shiraz"><MdText text={inhalt.texte.u024W2} /></td>
                       <td className="p-3 font-mono"><MdText text={inhalt.texte.t100160} /></td>
-                      <td className="p-3 font-mono"><MdText text={inhalt.texte.t1214CmWlg} /></td>
+                      <td className="p-3 font-mono"><MdText text={inhalt.texte.t1416CmWlg} /></td>
                     </tr>
                     <tr className="hover:bg-slate-50">
                       <td className="p-3 font-medium"><MdText text={inhalt.texte.flachdachWarmUmkehrdach} /></td>
@@ -363,6 +363,8 @@ export default function Modernisierung() {
                   </tbody>
                 </table>
               </div>
+              {/* Umsetzung 30.10.2026 (DSC-DM-2): Dämmdicken Wand/Dach richtig zugeordnet und aus der Formel hergeleitet */}
+              <p className="text-xs text-text-main/70"><MdText text={inhalt.texte.daemmdickeHerleitung} /></p>
             </div>
 
           </div>

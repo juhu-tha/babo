@@ -45,7 +45,7 @@
     "dieSphärischenLuftporenVerbessern": "Die sphärischen Luftporen verbessern die Gleitfähigkeit der Gesteinskörner und verringern das Bluten (Bleeding).",
     "wasserersparnisFürKonsistenz": "Wasserersparnis für Konsistenz ",
     "t4Festigkeitseinfluss": "4. Festigkeitseinfluss",
-    "jedesVolLuftporenKostet": "Jedes zusätzliche Vol.-% Luftporen mindert die Druckfestigkeit um rund 5 % (Faustregel 4–5 %, wie im Modul Betonzusatzmittel). DIN 1045-2 kompensiert dies normativ:",
+    "jedesVolLuftporenKostet": "Jedes zusätzliche Vol.-% Luftporen mindert die Druckfestigkeit um rund 4–5 % (Faustregel; der Rechner setzt 5 % an, bei 40 N/mm² rund 2 N/mm²; wie im Modul Betonzusatzmittel). DIN 1045-2 kompensiert dies normativ:",
     "xf2Xf3C2530": "XF2/XF3: **C25/30** statt C35/45; XF4 ist nur als LP-Beton geregelt (C30/37)",
     "faserbewehrungMetallPp": "Faserbewehrung (Metall & PP)",
     "dmMStoffraum": " dm³/m³ Stoffraum",

@@ -37607,14 +37607,14 @@
       "Unkritisch, weil sich zusätzliche Luftporen kaum auf die Druckfestigkeit auswirken"
     ],
     "correctIdx": 2,
-    "explanation": "Der Mindestwert 4,5 % ist eingehalten. Nach DIN EN 206, 5.4.3, ist die obere Grenze des Luftgehalts der Mindestwert plus 4 % absolut (hier 8,5 %); Einzelwerte dürfen sie um höchstens 1,0 % überschreiten (bis 9,5 %). 9,0 % ist als Einzelwert also noch zulässig, mindert aber die Druckfestigkeit (je Prozent Luft etwa 3–5 N/mm²).",
+    "explanation": "Der Mindestwert 4,5 % ist eingehalten. Nach DIN EN 206, 5.4.3, ist die obere Grenze des Luftgehalts der Mindestwert plus 4 % absolut (hier 8,5 %); Einzelwerte dürfen sie um höchstens 1,0 % überschreiten (bis 9,5 %). 9,0 % ist als Einzelwert also noch zulässig, mindert aber die Druckfestigkeit (je Vol.-% Luft rund 4–5 %, bei 40 N/mm² also rund 2 N/mm²).",
     "bloom": "Bewerten",
     "niveau": "B",
     "distraktorFeedback": [
       "Ab einem ausreichenden Porensystem steigt der Frostwiderstand kaum weiter, die Festigkeit sinkt aber deutlich.",
       "Die Grenzabweichung −0,5 % gilt für die Unterschreitung des Mindestwerts; über der oberen Grenze sind Einzelwerte bis +1,0 % zulässig.",
       "",
-      "Jedes zusätzliche Prozent Luft mindert die Druckfestigkeit um etwa 3–5 N/mm²."
+      "Jedes zusätzliche Vol.-% Luft mindert die Druckfestigkeit um rund 4–5 % (bei 40 N/mm² rund 2 N/mm²)."
     ],
     "gapAnalysis": {
       "topic": "Luftgehalt",
@@ -37626,9 +37626,9 @@
     },
     "verified": false,
     "vorpruefung": {
-      "am": "2026-10-29",
+      "am": "2026-10-30",
       "ergebnis": "korrigiert",
-      "hinweis": "Zweitprüfung 28.10. (Tranche 3): „Richtwert“ → obere Grenze nach DIN EN 206, 5.4.3, Einzelwert +1,0 % – korrigiert · Zweitprüfung 29.10.: Lernhilfe an die Erklärung angeglichen („Richtwert + 4 %“ → obere Grenze Mindestwert + 4 %, Einzelwert + 1,0 %) – korrigiert"
+      "hinweis": "Zweitprüfung 28.10. (Tranche 3): „Richtwert“ → obere Grenze nach DIN EN 206, 5.4.3, Einzelwert +1,0 % – korrigiert · Zweitprüfung 29.10.: Lernhilfe an die Erklärung angeglichen („Richtwert + 4 %“ → obere Grenze Mindestwert + 4 %, Einzelwert + 1,0 %) – korrigiert · Umsetzung 30.10.: LP-Festigkeitsverlust einheitlich rund 4–5 % je Vol.-% (DSC-BZ-2) statt „3–5 N/mm²“ – korrigiert"
     }
   },
   {

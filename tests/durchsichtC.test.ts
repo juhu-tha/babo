@@ -28,8 +28,9 @@ const text = (o: unknown) => JSON.stringify(o);
 console.log('--- Test: Durchsicht Tranche C 29.10.2026 (Nachrechnungen und Korrekturen) ---');
 
 // bestand: Beispiel 1 (Calciumsilikat) und 2 (Gradtagzahl, Erdgas 0,24 kg/kWh)
-pruefe('BE1 U_neu', uRetrofit(1.5, 0.06, 0.06), 0.6);
-pruefe('BE2 CO₂', 0.9 * 100 * 3500 * 24 / 1000 * CO2_ERDGAS, 1814.4);
+// Umsetzung 30.10.2026 (DSC-BE-1): Calciumsilikat λ = 0,065 (Baunetz Wissen) statt 0,060
+pruefe('BE1 U_neu', uRetrofit(1.5, 0.06, 0.065), 0.629);
+pruefe('BE2 CO₂', 0.87 * 100 * 3500 * 24 / 1000 * CO2_ERDGAS, 1753.9);
 // modernisierung: Beispiel 1 (d_erf) und 2 (Endenergie, Amortisation)
 pruefe('MO1 d_erf', dRequired(1.4, GMODG_ANLAGE7.aussenwand, 0.032), 0.11048);
 const uMo = uRetrofit(1.4, 0.14, 0.032);

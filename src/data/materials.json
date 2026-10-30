@@ -366,7 +366,7 @@
         "eModul": 70000,
         "compressive": 160,
         "tensile": 190,
-        "thermalCond": 200,
+        "thermalCond": 160,
         "thermalExp": 23,
         "heatCap": 900
       },

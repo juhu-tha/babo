@@ -239,7 +239,7 @@
           "Bessere Verarbeitbarkeit und Pumpbarkeit"
         ],
         "disadvantages": [
-          "Druckfestigkeitsreduktion: Jedes zusätzliche Vol.-% Luftporen mindert die Festigkeit um ca. 5 %",
+          "Druckfestigkeitsreduktion: Jedes zusätzliche Vol.-% Luftporen mindert die Druckfestigkeit um rund 4–5 % (Rechenwert 5 %; bei 40 N/mm² rund 2 N/mm²)",
           "Sehr reaktive Störanfälligkeit bei Änderungen der Temperatur, der Mischzeit oder feinsten Flugaschen"
         ],
         "classificationCode": "Wirkungsgruppe LP - DIN EN 934-2 Tab. 5"
