@@ -8,10 +8,9 @@ import { MODUL_KERN } from '../registry/kern';
 import { Target, ListChecks, FlaskConical, SlidersHorizontal } from 'lucide-react';
 import { CalculatorDisclaimerBanner, RechnerGrenzenListe, hatGrenzen } from '../components/ui/CalculatorDisclaimerBanner';
 import { LernzieleMeta, LernzieleZiele } from '../components/ui/ModulLernziele';
-import { ErkundungAuftraege, alleAuftraege } from '../components/ui/ErkundungsAuftrag';
+import { ErkundungAuftraege } from '../components/ui/ErkundungsAuftrag';
 import { KurzfassungPunkte } from '../components/ui/ModulKurzfassung';
 import { ModulKopfLeiste, type KopfEintrag } from '../components/ui/ModulKopfLeiste';
-import { formatDeWert } from '../utils/numberFormat';
 import { kopfDatenSofort, ladeKopfDaten } from './modulKopfDaten';
 import { PruefVermerk } from '../components/ui/PruefVermerk';
 import { pruefvermerkFuer } from '../data/pruefvermerke';
@@ -29,7 +28,7 @@ export default function ModulKopf({ activeTab, setActiveTab }: { activeTab: TabI
     inhalt: <><LernzieleMeta moduleId={activeTab} daten={lernziele} /><LernzieleZiele daten={lernziele} oeffneModul={oeffne} /></> });
   if (kurzfassung) eintraege.push({ id: 'kurzfassung', label: 'Das Wichtigste', icon: <ListChecks size={14} aria-hidden="true" />,
     inhalt: <KurzfassungPunkte punkte={kurzfassung} /> });
-  if (erkundung) eintraege.push({ id: 'ausprobieren', label: 'Ausprobieren', zusatz: formatDeWert(alleAuftraege(erkundung).length),
+  if (erkundung) eintraege.push({ id: 'ausprobieren', label: 'Ausprobieren',
     icon: <FlaskConical size={14} aria-hidden="true" />, inhalt: <ErkundungAuftraege daten={erkundung} /> });
   if (hatGrenzen(grenzen)) eintraege.push({ id: 'annahmen', label: 'Annahmen des Rechners',
     icon: <SlidersHorizontal size={14} aria-hidden="true" />, inhalt: <RechnerGrenzenListe grenzen={grenzen} /> });
