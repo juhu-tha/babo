@@ -84,7 +84,7 @@ t.test('ModulLernziele: Kopf mit Niveau, Dauer und Selbsttest-Anzahl', () => {
   const n = QUIZ_QUESTIONS.filter(q => q.route === lzId).length;
   sicher(anzahlFragenRoute(lzId) === n, 'Index-Anzahl je Route weicht ab');
   sicher(s.includes('Lernziele') && s.includes(niveau), 'Titel/Niveau fehlt');
-  sicher(s.includes(`ca. ${lz.minuten} min`), 'Bearbeitungsdauer fehlt');
+  sicher(!s.includes(' min'), 'Zeitangabe entfernt (Entscheidung 30.10.2026)');
   sicher(s.includes(`Selbsttest: ${n} ${n === 1 ? 'Frage' : 'Fragen'}`), `Selbsttest-Anzahl ${n} fehlt`);
 });
 t.test('ModulLernziele: eingeklappt, Ziele erst nach Aufklappen; ARIA-Verknüpfung', () => {
@@ -128,7 +128,7 @@ const [kfId, kf] = Object.entries(KURZFASSUNG)[0];
 t.test('ModulKurzfassung: standardmäßig eingeklappt, 5 Punkte in Reihenfolge im HTML (hidden)', () => {
   const html = rendere(h(ModulKurzfassung, { punkte: kf }));
   const s = text(html);
-  sicher(html.includes('aria-expanded="false"') && html.includes('aria-controls=') && html.includes('hidden=""') && html.includes('aria-label="Das Wichtigste in 5 Punkten"'), 'ARIA/Label/hidden fehlt');
+  sicher(html.includes('aria-expanded="false"') && html.includes('aria-controls=') && html.includes('hidden=""') && html.includes('aria-label="Das Wichtigste"'), 'ARIA/Label/hidden fehlt');
   sicher(anzahl(html, /<li>/) === 5, `${kfId}: 5 Listenpunkte erwartet`);
   const pos = kf.map(p => s.indexOf(kompakt(p)));
   sicher(pos.every((p, i) => p >= 0 && (i === 0 || p > pos[i - 1])), 'Punkte fehlen oder falsche Reihenfolge');
@@ -142,7 +142,7 @@ t.test('ModulKurzfassung: Sonderzeichen werden maskiert', () => {
 t.test('ModulKopfLeiste: Schaltflächen nebeneinander, alles eingeklappt, Inhalte im HTML (hidden) und verknüpft', () => {
   const html = rendere(h(ModulKopfLeiste, { eintraege: [
     { id: 'lernziele', label: 'Lernziele', icon: null, inhalt: h('p', null, 'Ziel A') },
-    { id: 'kurzfassung', label: 'Das Wichtigste in 5 Punkten', icon: null, inhalt: h('p', null, 'Punkt B') },
+    { id: 'kurzfassung', label: 'Das Wichtigste', icon: null, inhalt: h('p', null, 'Punkt B') },
     { id: 'ausprobieren', label: 'Ausprobieren', zusatz: '3', icon: null, inhalt: h('p', null, 'Auftrag C') },
     { id: 'annahmen', label: 'Annahmen des Rechners', zusatz: '4', icon: null, inhalt: h('p', null, 'Grenze D') },
   ] }));
