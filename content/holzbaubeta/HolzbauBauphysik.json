@@ -43,7 +43,7 @@
     "tippEineSchwereZementschüttung": "*Tipp: Eine schwere Schüttung verbessert den Trittschallschutz, senkt aber die Eigenfrequenz. Nur ständige Lasten ansetzen, keine Nutzlast.",
     "dynamischeEigenfrequenzermittlung": "Dynamische Eigenfrequenzermittlung",
     "gebrauchstauglichkeitsnachweisEc5": "Frequenz- und Steifigkeitskriterium (Lehrrechnung)",
-    "auswertbareDeckenEigenmasseG": "Eigenmasse BSP (Wichte 5,5 kN/m³):",
+    "auswertbareDeckenEigenmasseG": "Eigenmasse BSP",
     "gesamtmasseMTotInkl": "Masse $m$ aus ständigen Lasten:",
     "biegesteifigkeitEiLPro": "Biegesteifigkeit je m Plattenbreite ($E_{0,mean}$ = 11 550 N/mm², $G_{r,mean}$ nach Auswahl 50 oder 65 N/mm²):",
     "grundfrequenzF1Einer": "Erste Eigenfrequenz $f_{1}$ des Einfeldträgers (DIN EN 1995-1-1, Gl. 7.5):",
@@ -61,7 +61,9 @@
     "bspEiQuer": "$(EI)_b$ quer (Querlagen + Estrich)",
     "steifigkeitskriteriumW1kN": "Steifigkeitskriterium: Durchbiegung unter 1 kN in Feldmitte (Hamm/Richter):",
     "bspOrientierungNeutral": "Orientierungswerte nach Hamm/Richter (2009), aufgenommen in ÖNORM B 1995-1-1:2015: $f_{1}$ ≥ 8 Hz bzw. 6 Hz und $w$ ≤ 0,25 mm bzw. 0,50 mm unter 1 kN (Deckenklasse I bzw. II). Für DIN EN 1995-1-1 mit NA (DE) gelten eigene Grenzwerte (vorläufig, Normprüfung ausstehend). Nicht erfasst sind Beschleunigungs- und Geschwindigkeitskriterium, Durchlaufwirkung, vierseitige Lagerung und Schubverformung bei 7 und mehr Lagen (Schubanalogieverfahren nach Kreuzinger).",
-    "bspRollschub": "Rollschubmodul $G_{r,mean}$ der Querlagen"
+    "bspRollschub": "Rollschubmodul $G_{r,mean}$ der Querlagen",
+    "bspKennwerte": "Kennwerte für Steifigkeit und Masse",
+    "bspKennwerteHinweis": "Für die Eigenfrequenz ist die mittlere Masse maßgebend. Der Satz „proHolz“ rechnet mit der Wichte für Lastannahmen (5,5 kN/m³, auf der sicheren Seite); der Satz „Lehrbeispiel“ mit den Werten der Quizaufgabe (E = 11 000 N/mm², ρ_mean = 450 kg/m³; vorläufig, Normprüfung ausstehend). Die Quizaufgabe rechnet zudem vereinfacht mit dem Vollquerschnitt, der Rechner nur mit den Längslagen."
   },
   "werte": {
     "materialtypUndAbbrandrate": "Materialtyp und Abbrandrate",
@@ -87,6 +89,9 @@
     "bspWUeberII": "w über Orientierungswert Klasse II",
     "bspRollschub": "Rollschubmodul der Querlagen",
     "bspRollschubStandard": "50 N/mm² (viele ETAs, EC 5 Neuausgabe; Standard)",
-    "bspRollschubProHolz": "65 N/mm² (proHolz Austria 2018)"
+    "bspRollschubProHolz": "65 N/mm² (proHolz Austria 2018)",
+    "bspKennwerte": "Kennwerte für Steifigkeit und Masse",
+    "bspKennwerteProHolz": "proHolz Austria 2018: E₀,mean = 11 550 N/mm², Wichte 5,5 kN/m³ (Standard)",
+    "bspKennwerteLehrbeispiel": "Lehrbeispiel wie Quiz: E = 11 000 N/mm², ρ_mean = 450 kg/m³"
   }
 }

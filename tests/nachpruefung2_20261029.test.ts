@@ -72,7 +72,8 @@ pruefe('MB Netto-Senke = Kern Biokohlebeton', bk.nettoPK, PK_NETTO_SENKE_KG, 1e-
 gilt(!/-2,5 kg/.test(mischEingaben.werte.biocharBindetDauerhaftCo2) && /Biokohlebeton/.test(mischEingaben.werte.biocharBindetDauerhaftCo2), 'NP2-MB-1: Info-Text mit der Netto-Senke des Moduls Biokohlebeton');
 
 // lca_rechner: Minderung CEM III/A aus den Lehrwerten (Frage NP2-LC-1, Wert dokumentiert)
-pruefe('LC Minderung CEM III/A (Lehrwerte)', 1 - GWP_LEHRWERTE.betonCemIIIA.gwp / GWP_LEHRWERTE.betonC2530CemI.gwp, 0.44898);
+// Umsetzung 29.10. (NP2-LC-1): CEM-III/A-Lehrbeton aus 300 kg · 0,40 + 45 = 165 kg/m³ → Minderung (245 − 165)/245 = 32,7 % (vorher 135 kg/m³, 44,9 %)
+pruefe('LC Minderung CEM III/A (Lehrwerte)', 1 - GWP_LEHRWERTE.betonCemIIIA.gwp / GWP_LEHRWERTE.betonC2530CemI.gwp, 0.32653);
 
 // Korrekturen
 gilt(!/DIN 1045-3/.test(farben.texte.ausführungskriterienBetonvorbereitungDin) && /TR Instandhaltung/.test(farben.texte.ausführungskriterienBetonvorbereitungDin), 'NP2-FL-1: Untergrundvorbereitung nach TR Instandhaltung, nicht DIN 1045-3');

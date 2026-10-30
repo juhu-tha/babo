@@ -49,7 +49,8 @@ export const MATERIAL_DATABASE: MaterialDefinition[] = [
     biogenicContent: 0,
     umiScore: 70,
     penrt: 780,
-    description: inhalt.werte.betonMitHohemHüttensand,
+    // Minderung aus den Lehrwerten gerechnet (NP2-LC-1), nicht als feste Zahl im Text
+    description: `${inhalt.werte.betonMitHohemHüttensand} ${Math.round((1 - GWP.betonCemIIIA.gwp / GWP.betonC2530CemI.gwp) * 100)} %.`,
     defaultCircularQuota: 70,
     substitutesPrimary: inhalt.werte.primärkiesSchotter,
     defaultRecoveryType: "downcycling"
@@ -128,7 +129,7 @@ export const MATERIAL_DATABASE: MaterialDefinition[] = [
     category: "Metallisch",
     unit: "t",
     densityKg: 7850,
-    gwpA1A3: 1100, // Lehrwert Profilstahl 1,1 kg CO₂-Äq./kg (vorläufig, Normprüfung ausstehend); Betonstahl getrennt (Konsistenz 29.10., F-3)
+    gwpA1A3: GWP.profilstahl.gwp, // Lehrwert Profilstahl zentral (src/data/gwpLehrwerte.ts, NP2-ST-2; vorläufig, Normprüfung ausstehend); Betonstahl getrennt (Konsistenz 29.10., F-3)
     gwpC: 45,
     gwpD: -750, // High recycling recovery credits
     biogenicContent: 0,

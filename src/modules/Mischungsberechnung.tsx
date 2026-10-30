@@ -1,5 +1,5 @@
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
-import { maxFaFaktor, stoffraum, REGELSIEBLINIEN, istSieblinie } from '@/src/calc/mischung';
+import { maxFaFaktor, stoffraum, REGELSIEBLINIEN, istSieblinie, lpFestigkeitsverlust } from '@/src/calc/mischung';
 import { PK_NETTO_SENKE_KG } from '@/src/calc/biokohlebeton';
 import React, { useState, useMemo } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement, LogarithmicScale, RadialLinearScale, Filler } from 'chart.js';
@@ -204,7 +204,7 @@ export default function Mischungsberechnung() {
   const deltaGesteinMasse = deltaLuftVol * rhoGestein; // kg/m³ Masseverlust Gestein
   const empfohleneSandReduktion = Math.max(0, Math.round((luft - 1.5) * 1.0)); // M.-% Sandreduktion nach Walz
   const wasserEinsparungLP = isLpActive ? Math.max(0, (luft - 1.5) * 2.5) : 0; // L/m³
-  const festigkeitsVerlustLP = isLpActive ? Math.max(0, (luft - 1.5) * 4.0) : 0; // MPa
+  const festigkeitsVerlustLP = isLpActive ? lpFestigkeitsverlust(luft) : 0; // % der Druckfestigkeit (Faustregel 5 % je Vol.-% LP)
 
   const applyWalzSandReduction = () => {
     if (empfohleneSandReduktion <= 0) return;
