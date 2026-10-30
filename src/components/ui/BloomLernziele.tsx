@@ -1,6 +1,6 @@
 import { formatDeWert } from '@/src/utils/numberFormat';
 import React, { useState, useEffect } from 'react';
-import { Target, CheckCircle2, ChevronDown, ChevronUp, Clock, Award, BookOpen, Layers, Calculator, ShieldCheck } from 'lucide-react';
+import { Target, CheckCircle2, ChevronDown, ChevronUp, Award, BookOpen, Layers, Calculator, ShieldCheck } from 'lucide-react';
 import { getBloomCompleted, setBloomCompleted } from '@/src/utils/studyStorage';
 
 export interface BloomGoalItem {
@@ -14,6 +14,7 @@ export interface BloomLernzieleProps {
   moduleId: string;
   moduleTitle: string;
   studyLevel?: 'Bachelor Basis (1.-2. Semester)' | 'Vertiefung (3.-4. Semester)' | 'Master & Praxis (5.+ Semester)';
+  /** nicht mehr angezeigt (Entscheidung 30.10.2026) */
   timeMinutes?: number;
   ects?: number;
   goals?: BloomGoalItem[];
@@ -66,7 +67,6 @@ export const BloomLernziele: React.FC<BloomLernzieleProps> = ({
   moduleId,
   moduleTitle,
   studyLevel = 'Bachelor Basis (1.-2. Semester)',
-  timeMinutes = 45,
   ects,
   goals
 }) => {
@@ -113,9 +113,6 @@ export const BloomLernziele: React.FC<BloomLernzieleProps> = ({
 
         <div className="flex items-center gap-3">
           <div className="hidden sm:flex items-center gap-2 text-xs text-text-main/70">
-            <span className="flex items-center gap-1">
-              <Clock size={13} className="text-home-grau" /> ca. {formatDeWert(timeMinutes)} Min.
-            </span>
             {ects && (
               <span className="flex items-center gap-1">
                 <Award size={13} className="text-home-grau" /> {formatDeWert(ects)} ECTS
