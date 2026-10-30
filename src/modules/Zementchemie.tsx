@@ -1,4 +1,4 @@
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberFormat';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, LinearScale } from 'chart.js';
@@ -175,7 +175,7 @@ function GefuegebildungSimulator() {
               </div>
             </div>
             <div className="text-[11px] text-text-main/70 bg-off-white p-2.5 rounded-xl border border-home-grau/20 space-y-1">
-              <p><MdText text={inhalt.texte.kapillarporositätNachPowers} /><InlineMath math={`p = \\frac{w/z - 0{,}36\\,\\alpha}{w/z + 0{,}32} = \\frac{${formatDeZahl(wzRatio, 2).replace(',', '{,}')} - 0{,}36 \\cdot ${formatDeZahl(currentStage.alpha / 100, 2).replace(',', '{,}')}}{${formatDeZahl(wzRatio, 2).replace(',', '{,}')} + 0{,}32} = ${formatDeZahl(effectivePorosity, 1).replace(',', '{,}')}\\,\\%`} /><MdText text={inhalt.texte.volumenanteilImZementstein} /></p>
+              <p><MdText text={inhalt.texte.kapillarporositätNachPowers} /><InlineMath math={`p = \\frac{w/z - 0{,}36\\,\\alpha}{w/z + 0{,}32} = \\frac{${formatDeTeX(wzRatio, 2)} - 0{,}36 \\cdot ${formatDeTeX(currentStage.alpha / 100, 2)}}{${formatDeTeX(wzRatio, 2)} + 0{,}32} = ${formatDeTeX(effectivePorosity, 1)}\\,\\%`} /><MdText text={inhalt.texte.volumenanteilImZementstein} /></p>
               <p><MdText text={inhalt.texte.qualitativeLehrsimulationHydratationsgra} /></p>
             </div>
 
@@ -741,12 +741,12 @@ export default function Zementchemie() {
               zielGleichung="\text{C}_3\text{S} = 4{,}071\,\text{CaO} - 7{,}600\,\text{SiO}_2 - 6{,}718\,\text{Al}_2\text{O}_3 - 1{,}430\,\text{Fe}_2\text{O}_3 - 2{,}852\,\text{SO}_3"
               normQuelle={inhalt.werte.bogue1929FormelnFür}
               schritte={results.afRatio >= 0.64 ? [
-                { titel: inhalt.werte.t1ModulAF, formel: `\\text{Al}_2\\text{O}_3/\\text{Fe}_2\\text{O}_3 = ${formatDeZahl(al2o3, 1).replace(',', '{,}')}/${formatDeZahl(fe2o3, 1).replace(',', '{,}')} = ${formatDeZahl(results.afRatio, 2).replace(',', '{,}')} \\ge 0{,}64`, erklaerung: inhalt.werte.damitGeltenDieStandardgleichungen },
-                { titel: '2. Alit', formel: `\\text{C}_3\\text{S} = 4{,}071 \\cdot ${formatDeZahl(cao, 1).replace(',', '{,}')} - 7{,}600 \\cdot ${formatDeZahl(sio2, 1).replace(',', '{,}')} - 6{,}718 \\cdot ${formatDeZahl(al2o3, 1).replace(',', '{,}')} - 1{,}430 \\cdot ${formatDeZahl(fe2o3, 1).replace(',', '{,}')} - 2{,}852 \\cdot ${formatDeZahl(so3, 1).replace(',', '{,}')} = ${formatDeZahl(results.c3s, 1).replace(',', '{,}')}\\,\\%`, erklaerung: inhalt.werte.eingesetztSindDieOxidgehalte },
-                { titel: '3. Belit', formel: `\\text{C}_2\\text{S} = 2{,}867 \\cdot ${formatDeZahl(sio2, 1).replace(',', '{,}')} - 0{,}7544 \\cdot ${formatDeZahl(results.c3s, 1).replace(',', '{,}')} = ${formatDeZahl(results.c2s, 1).replace(',', '{,}')}\\,\\%`, erklaerung: inhalt.werte.sioDasNichtIm },
-                { titel: inhalt.werte.t4AluminatUndFerrit, formel: `\\text{C}_3\\text{A} = 2{,}650 \\cdot ${formatDeZahl(al2o3, 1).replace(',', '{,}')} - 1{,}692 \\cdot ${formatDeZahl(fe2o3, 1).replace(',', '{,}')} = ${formatDeZahl(results.c3a, 1).replace(',', '{,}')}\\,\\%; \\quad \\text{C}_4\\text{AF} = 3{,}043 \\cdot ${formatDeZahl(fe2o3, 1).replace(',', '{,}')} = ${formatDeZahl(results.c4af, 1).replace(',', '{,}')}\\,\\%`, erklaerung: inhalt.werte.negativeErgebnisseWerdenIm },
+                { titel: inhalt.werte.t1ModulAF, formel: `\\text{Al}_2\\text{O}_3/\\text{Fe}_2\\text{O}_3 = ${formatDeTeX(al2o3, 1)}/${formatDeTeX(fe2o3, 1)} = ${formatDeTeX(results.afRatio, 2)} \\ge 0{,}64`, erklaerung: inhalt.werte.damitGeltenDieStandardgleichungen },
+                { titel: '2. Alit', formel: `\\text{C}_3\\text{S} = 4{,}071 \\cdot ${formatDeTeX(cao, 1)} - 7{,}600 \\cdot ${formatDeTeX(sio2, 1)} - 6{,}718 \\cdot ${formatDeTeX(al2o3, 1)} - 1{,}430 \\cdot ${formatDeTeX(fe2o3, 1)} - 2{,}852 \\cdot ${formatDeTeX(so3, 1)} = ${formatDeTeX(results.c3s, 1)}\\,\\%`, erklaerung: inhalt.werte.eingesetztSindDieOxidgehalte },
+                { titel: '3. Belit', formel: `\\text{C}_2\\text{S} = 2{,}867 \\cdot ${formatDeTeX(sio2, 1)} - 0{,}7544 \\cdot ${formatDeTeX(results.c3s, 1)} = ${formatDeTeX(results.c2s, 1)}\\,\\%`, erklaerung: inhalt.werte.sioDasNichtIm },
+                { titel: inhalt.werte.t4AluminatUndFerrit, formel: `\\text{C}_3\\text{A} = 2{,}650 \\cdot ${formatDeTeX(al2o3, 1)} - 1{,}692 \\cdot ${formatDeTeX(fe2o3, 1)} = ${formatDeTeX(results.c3a, 1)}\\,\\%; \\quad \\text{C}_4\\text{AF} = 3{,}043 \\cdot ${formatDeTeX(fe2o3, 1)} = ${formatDeTeX(results.c4af, 1)}\\,\\%`, erklaerung: inhalt.werte.negativeErgebnisseWerdenIm },
               ] : [
-                { titel: inhalt.werte.t1ModulAF2, formel: `\\text{Al}_2\\text{O}_3/\\text{Fe}_2\\text{O}_3 = ${formatDeZahl(results.afRatio, 2).replace(',', '{,}')} < 0{,}64`, erklaerung: inhalt.werte.esBildetSichKein },
+                { titel: inhalt.werte.t1ModulAF2, formel: `\\text{Al}_2\\text{O}_3/\\text{Fe}_2\\text{O}_3 = ${formatDeTeX(results.afRatio, 2)} < 0{,}64`, erklaerung: inhalt.werte.esBildetSichKein },
               ]}
               ergebnisHinweis={inhalt.werte.bogueLiefertPotenziellePhasengehalte}
             />

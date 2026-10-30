@@ -2,7 +2,7 @@
 import { Sliders, TrendingDown, AlertTriangle, Scale, Compass, GitCommit } from 'lucide-react';
 import { InlineMath } from 'react-katex';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberFormat';
 import { EC2_CONCRETE_CLASSES, type ConcreteClassData } from './daten';
 import { Ec2ParameterSkizze } from './Ec2ParameterSkizze';
 import inhalt from '@/content/betonkennwerte/RechnerTab.json';
@@ -275,9 +275,9 @@ export default function RechnerTab({ aggregateType, ambientTempT, festigkeitMitT
       {calcResults.isNonlinearCreep && (
         <div className="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-xl flex items-start gap-3 shadow-xs">
           <AlertTriangle className="text-amber-600 shrink-0 mt-0.5" size={20} />
-          <div className="text-xs text-amber-900 leading-relaxed"><MdText text={inhalt.texte.nachweisNachEc2Abschnitt} /><p className="mt-1"><MdText text={inhalt.texte.dieEinwirkendeDauerdruckspannung} /><InlineMath math={`\\sigma_c = ${formatDeZahl(axialStressSigmaC, 1)}\\text{ MPa}`} /><MdText text={inhalt.texte.liegtÜberDerLinearitätsgrenze} /><InlineMath math={`0{,}45 \\cdot f_{ck}(t_0) = ${formatDeZahl(calcResults.stressLimitLin, 1)}\\text{ MPa}`} /> (mit <InlineMath math={`k_\\sigma = \\sigma_c / f_{ck}(t_0) = ${formatDeZahl(calcResults.kSigma, 2)}`} /><MdText text={inhalt.texte.dieKriechzahlVergrößertSich} /></p>
+          <div className="text-xs text-amber-900 leading-relaxed"><MdText text={inhalt.texte.nachweisNachEc2Abschnitt} /><p className="mt-1"><MdText text={inhalt.texte.dieEinwirkendeDauerdruckspannung} /><InlineMath math={`\\sigma_c = ${formatDeTeX(axialStressSigmaC, 1)}\\text{ MPa}`} /><MdText text={inhalt.texte.liegtÜberDerLinearitätsgrenze} /><InlineMath math={`0{,}45 \\cdot f_{ck}(t_0) = ${formatDeTeX(calcResults.stressLimitLin, 1)}\\text{ MPa}`} /> (mit <InlineMath math={`k_\\sigma = \\sigma_c / f_{ck}(t_0) = ${formatDeTeX(calcResults.kSigma, 2)}`} /><MdText text={inhalt.texte.dieKriechzahlVergrößertSich} /></p>
             <div className="mt-2 font-mono font-bold bg-white/80 p-2 rounded border border-amber-200 inline-block">
-              <InlineMath math={`\\varphi_k(t, t_0) = \\varphi(t, t_0) \\cdot \\exp\\left(1{,}5 \\cdot (k_\\sigma - 0{,}45)\\right) = ${formatDeZahl(calcResults.phiLinear, 2)} \\cdot \\exp(${formatDeZahl(1.5 * (calcResults.kSigma - 0.45), 3)}) = ${formatDeZahl(calcResults.phiFinal, 2)}`} />
+              <InlineMath math={`\\varphi_k(t, t_0) = \\varphi(t, t_0) \\cdot \\exp\\left(1{,}5 \\cdot (k_\\sigma - 0{,}45)\\right) = ${formatDeTeX(calcResults.phiLinear, 2)} \\cdot \\exp(${formatDeTeX(1.5 * (calcResults.kSigma - 0.45), 3)}) = ${formatDeTeX(calcResults.phiFinal, 2)}`} />
             </div>
           </div>
         </div>
