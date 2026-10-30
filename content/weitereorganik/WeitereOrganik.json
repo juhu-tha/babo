@@ -47,8 +47,8 @@
     "undDerSchichtdicke": " und der Schichtdicke ",
     "abIntegrierteUvStabilisatoren": " ab. Integrierte UV-Stabilisatoren (z. B. HALS) fangen gebildete Radikale ab und senken die Quantenausbeute ",
     "t3BiologischerAbbauVon": "3. Biologischer Abbau von NaWaRo (vereinfachter Lehransatz in Anlehnung an das Isoplethenmodell nach Sedlbauer 2001)",
-    "vSubBioSub": "v<sub>Bio</sub> = M<sub>crit</sub> · [φ<sub>Wood</sub> − φ<sub>crit</sub>(T)] · f<sub>pH</sub>",
-    "subWoodSub20": "φ<sub>Wood</sub> ≥ 20 % Holzfeuchte",
+    "vSubBioSub": "v<sub>Bio</sub> = M<sub>crit</sub> · [φ − φ<sub>crit</sub>(T)] · f<sub>pH</sub> (für φ > φ<sub>crit</sub>; φ = relative Luftfeuchte an der Oberfläche)",
+    "subWoodSub20": "(Richtwert u ≥ 20 % Materialfeuchte)",
     "subCritSubT": "φ<sub>crit</sub>(T) (LIM - Lowest Isopleth for Mold)",
     "giltFürHanffasernUnd": "Gilt für Hanffasern und Stroh. Mikrobieller Pilzabbau setzt kritische Substratfeuchte ",
     "vorausDieWachstumsgeschwindigkeitDes": " voraus. Die Wachstumsgeschwindigkeit des Myzels ",
@@ -114,7 +114,7 @@
     "t2Moderfäule": "2. Moderfäule",
     "wirdDurchAscomycetenIm": "Wird durch Ascomyceten im direkten Erdkontakt (Dauernässe) hervorgerufen. Sie dringen in sekundäre Zellwände ein und erweichen Faserbündel vollständig hydroenzymatisch.",
     "t3Trockenfäule": "3. Trockenfäule",
-    "erregerWieDerBraunk": "Erreger wie der Braunk things (Kellerschwamm) bauen Zellulose unter Freisetzung von Säuren ab - es verbleibt der typische würfelartige Bruch („Staubende Zerstörung“).",
+    "erregerWieDerBraunk": "Typischer Erreger ist der Echte Hausschwamm (Braunfäule): Er baut Zellulose unter Bildung von Säuren ab – es verbleibt der typische Würfelbruch. Er kommt mit vergleichsweise geringer Holzfeuchte aus und kann Mauerwerk durchwachsen. Der Braune Kellerschwamm erzeugt ebenfalls Braunfäule mit Würfelbruch, braucht aber deutlich höhere Holzfeuchte (Nassfäulepilz).",
     "derChemischeHolzUnd": "*„Der chemische Holz- und Faserschutz (Biozide, Fungizide) kann konstruktive Planungsfehler nie langfristig korrigieren. Nur der konsequente, bauliche Feuchteschutz (Hinterlüftung, Trockenhalten, Verhinderung stehender Nässe) schützt Naturbaustoffe dauerhaft vor biologischer Korrosion.“*",
     "zentralerLeitsatzDerÖkologischen": "**Zentraler Leitsatz der Ökologischen Bauchemie:**",
     "brandschutzVsBioschutz": "Brandschutz vs. Bioschutz",
@@ -157,7 +157,7 @@
         "title": "NaWaRo / Hanf- & Strohdämmstoffe",
         "agingMechanism": "Biologischer Pilzabbau (Zellulose-Zersetzung bei u > 15%), Kapillarfäule, Schimmelbildung.",
         "warningSign": "Dunkelbraune Zersetzungsflecken, modriger Geruch, Bausch-Volumenkollaps, Feuchtenester.",
-        "remedy": "Konstruktive Entwässerung (Hinterlüftung), Soda- oder Ammoniumsalz-Imprägnierung (Borratsalze)."
+        "remedy": "Konstruktive Entwässerung (Hinterlüftung), Imprägnierung mit Soda, Borsalzen oder Ammoniumsalzen."
       },
       "cork": {
         "title": "Naturkorkplatten (Naturmaterial)",

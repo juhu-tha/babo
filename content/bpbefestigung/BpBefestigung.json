@@ -12,7 +12,7 @@
     "versagensmodiVonBetonverankerungenNach": " Versagensmodi von Betonverankerungen nach DIN EN 1992-4",
     "beiDerBemessungEiner": "Bei der Bemessung einer Befestigung in Beton werden die Versagensarten unter Zuglast (1–4) und unter Querlast (z. B. 5) rechnerisch nachgewiesen:",
     "t1Stahlversagen": "1. Stahlversagen",
-    "derZugbolzenReißtMechanisch": "Der Zugbolzen reißt mechanisch ab, weil seine Zugstreckgrenze überschritten wurde (N_Rk,s = A_s * f_uk).",
+    "derZugbolzenReißtMechanisch": "Der Zugbolzen reißt mechanisch ab, weil seine Zugfestigkeit erreicht wird (N_Rk,s = A_s · f_uk mit der charakteristischen Zugfestigkeit f_uk).",
     "t2Herausziehen": "2. Herausziehen",
     "derAnkerRutschtMitsamt": "Der Anker rutscht mitsamt dem Spreizkeil schlupfartig aus dem Bohrloch (Herausziehwiderstand N_Rk,p).",
     "t3Betonausbruch": "3. Betonausbruch",
@@ -101,7 +101,7 @@
         ]
       },
       {
-        "name": "Hinterschnittanker (z. B. Zykon-System als Beispiel)",
+        "name": "Hinterschnittanker",
         "category": "Dauerwechsel-Schwerlastanker",
         "standard": "DIN EN 1992-4 (Zulassung)",
         "loadCapacity": "15,0 kN - 80,0 kN (Extrem sicher)",
