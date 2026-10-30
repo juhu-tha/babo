@@ -13,7 +13,7 @@
     "heutigerStandardDieLitzen": "**Heutiger Standard:** Die Litzen werden nach dem Ziehen unter ständiger Zugspannung kurz auf ca. 350 °C erwärmt („thermisches Stabilisieren“). Versetzungen werden blockiert.",
     "klasse3WarmgewalzteSpannstähle": "Klasse 3: Warmgewalzte Spannstähle",
     "t40": "ρ₁₀₀₀ ≈ 4,0 %",
-    "spannstäbeMitWarmAufgewalztem": "Spannstäbe mit warm aufgewalztem Gewinde (z. B. Dywidag-Gewindestangen SAS).",
+    "spannstäbeMitWarmAufgewalztem": "Spannstäbe mit warm aufgewalztem Gewinde (Gewindestäbe, z. B. Güte 950/1050).",
     "berechnungNachEurocode2": "Berechnung nach Eurocode 2 (DIN EN 1992-1-1 Gl. 3.29 für Klasse 2):",
     "tZeitInStunden": "t = Zeit in Stunden",
     "wobeiMuSigmaPi": "wobei $\\mu = \\sigma_{pi} / f_{pk}$ das Ausnutzungsverhältnis der Vorspannung darstellt. Für den Endwert setzt EC2 3.3.2(8) $t = 500\\,000\\text{ h} \\approx 57\\text{ Jahre}$ in Gl. (3.28)–(3.30) ein; der Faktor gegenüber dem 1000-h-Wert hängt von μ ab (μ = 0,70 → ≈ 4,1; μ = 0,75 → ≈ 3,2; μ = 0,80 → ≈ 2,5). In Deutschland gelten die Relaxationswerte der abZ des Spannstahls:",

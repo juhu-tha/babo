@@ -96,8 +96,8 @@
     "kalkulierterGesamtbedarfFür": "Kalkulierter Gesamtbedarf für ",
     "komponenteSchichtleistung": "Komponente / Schichtleistung",
     "zusammenfassungHarzSand": "ZUSAMMENFASSUNG HARZ & SAND:",
-    "ausführungskriterienBetonvorbereitungDin": " Ausführungskriterien & Betonvorbereitung (DIN 1045-3):",
-    "untergrundfestigkeitDieHaftzugfestigkeit": "**Untergrundfestigkeit:** Die Haftzugfestigkeit (Abreißtest) der vorbereiteten Betonrandzone muss im Mittel mindestens **1,5 N/mm²** betragen (kleinster Einzelwert > 1,0 N/mm²).",
+    "ausführungskriterienBetonvorbereitungDin": " Ausführungskriterien & Untergrundvorbereitung (TR Instandhaltung, DIN EN 1504-10):",
+    "untergrundfestigkeitDieHaftzugfestigkeit": "**Untergrundfestigkeit:** Die Haftzugfestigkeit (Abreißtest) der vorbereiteten Betonrandzone muss bei befahrbaren Systemen (OS 8, OS 11) im Mittel mindestens **1,5 N/mm²** betragen (kleinster Einzelwert 1,0 N/mm²); für nicht befahrbare Systeme gelten geringere Werte nach TR Instandhaltung (Werte vorläufig, Normprüfung ausstehend).",
     "rautiefeEgalisierungBeiGrobem": "**Rautiefe (Egalisierung):** Bei grobem Betonprofil muss zwingend eine OS-Ausgleichsspachtelung aus feinkörnigem Reaktionsharzmörtel appliziert werden, da ansonsten Deckungsfehlstellen durch Porenblasen (\"Pinholes\") entstehen.",
     "taupunktRegelEineKondensatbildung": "**Taupunkt-Regel:** Eine Kondensatbildung auf dem Beton führt bei EP/PU-Harzen zur sofortigen Enthaftung (Ablösen). Die Bauteiloberfläche muss mindestens 3 K wärmer sein als die Taupunkttemperatur.",
     "witterungRelativeLuftfeuchte80": "**Witterung:** Relative Luftfeuchte < 80 % zur Vermeidung von Carbamatbildung (Klebriger Schleier an der Oberfläche von Epoxidharzen) einhalten."

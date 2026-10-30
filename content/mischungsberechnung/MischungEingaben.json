@@ -83,7 +83,7 @@
     "kWertHuesLehrannahme": "Lehrannahme – Anrechnung nur nach abZ/aBG",
     "fzLehrannahme": "Lehrannahme: Bei Zementen ohne Kennbuchstaben des Hauptbestandteils (CEM II/A, CEM II/B) gilt die konservative Grenze f/z ≤ 0,25.",
     "pflanzenkohleBiochar": "Pflanzenkohle (Biochar)",
-    "biocharBindetDauerhaftCo2": "Biochar bindet dauerhaft CO2 im Beton (ca. -2,5 kg CO2 pro kg Biochar) und dient als hochfeiner Zusatzstoff.",
+    "biocharBindetDauerhaftCo2": "Biochar bindet dauerhaft CO₂ im Beton (netto rund −2,0 kg CO₂e je kg Biochar: 80 M.-% Kohlenstoff, Permanenzfaktor 0,80, Herstellung 0,3 kg CO₂e/kg – Lehrwerte wie im Modul Biokohlebeton) und dient als hochfeiner Zusatzstoff.",
     "pflanzenkohleBiocharAktuellKein": "Pflanzenkohle (Biochar): Aktuell kein generischer k-Wert in DIN 1045-2 festgelegt. Eine Anrechnung auf Mindestzement und w/z-Wert bedarf in Deutschland einer abZ/aBG. In wissenschaftlichen Studien liegt der Wirksamkeitsfaktor k typischerweise zwischen 0,0 (inerter Füllstoff) und 0,2–0,3 (heterogene Keimbildungseffekte bei Feinstmahlung). Negative k-Werte bilden Festigkeitsverluste bei unkompensierter Zementsubstitution ab.",
     "gesamtfeuchteBiochar": "Gesamtfeuchte Biochar",
     "gesamterWassergehaltDerPflanzenkohle": "Gesamter Wassergehalt der Pflanzenkohle.",
