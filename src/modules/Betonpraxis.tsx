@@ -29,7 +29,7 @@ import { CONCRETE } from '@/src/utils/ec2Spannbeton';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 import { ExpositionsKurzkarte } from '@/src/components/ui/ExpositionsKurzkarte';
-import { formatDeZahl, formatDeWert, formatDeTeXWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeTeXWert, formatDeTeX } from '@/src/utils/numberFormat';
 import inhalt from '@/content/betonpraxis/Betonpraxis.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
@@ -481,7 +481,7 @@ export default function Betonpraxis({ initialSubTab }: BetonpraxisProps = {}) {
                   {
                     titel: inhalt.werte.t3ÜberschusswasserQuotientBerechnen,
                     erklaerung: inhalt.werte.dieEmpirischeKonstante70,
-                    formel: `k = \\frac{${formatDeTeXWert(calcW)} - 70}{${formatDeTeXWert(calcMK)}} = \\frac{${formatDeTeXWert(calcW - 70)}}{${formatDeTeXWert(calcMK)}} = ${formatDeZahl(kValue, 3)}`,
+                    formel: `k = \\frac{${formatDeTeXWert(calcW)} - 70}{${formatDeTeXWert(calcMK)}} = \\frac{${formatDeTeXWert(calcW - 70)}}{${formatDeTeXWert(calcMK)}} = ${formatDeTeX(kValue, 3)}`,
                     einheit: "[-]"
                   },
                   inhalt.daten["Betonpraxis.schritte.3"]

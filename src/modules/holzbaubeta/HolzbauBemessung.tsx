@@ -205,7 +205,7 @@ export default function HolzbauBemessung({ calculationResults, colB, colH, colLe
               <div className="text-xs text-text-main/70">
                 <span className="font-bold text-text-main block"><MdText text={inhalt.texte.t3KnickWiderstandskraftF} /></span>
                 <div className="my-1 text-center bg-off-white py-1 rounded border border-home-grau/10">
-                  <InlineMath math={`F_{c,R,d} = k_{c,z} \\times A \\times f_{c,0,d} = ${formatDeZahl(calculationResults.k_cz, 4)} \\times ${formatDeZahl(calculationResults.A, 0)}\\text{ mm}^2 \\times ${formatDeZahl(calculationResults.f_c0d, 2)}\\text{ N/mm}^2 = ${formatDeZahl(calculationResults.F_c_R_d_kN, 1)}\\text{ kN}`} />
+                  <InlineMath math={`F_{c,R,d} = k_{c,z} \\times A \\times f_{c,0,d} = ${formatDeTeX(calculationResults.k_cz, 4)} \\times ${formatDeTeX(calculationResults.A, 0)}\\text{ mm}^2 \\times ${formatDeTeX(calculationResults.f_c0d, 2)}\\text{ N/mm}^2 = ${formatDeTeX(calculationResults.F_c_R_d_kN, 1)}\\text{ kN}`} />
                 </div>
               </div>
             </div>

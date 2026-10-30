@@ -4,7 +4,7 @@ import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Slider } from '@/src/components/ui/Slider';
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeTeX } from '@/src/utils/numberFormat';
 import { BlockMath } from 'react-katex';
 import { Line } from 'react-chartjs-2';
 import '@/src/lib/chartSetup';
@@ -540,17 +540,17 @@ export default function Bestand() {
                       <span className="font-bold text-slate-900 block"><MdText text={inhalt.texte.schrittweiseHerleitungDesSanierungsbedin} /></span>
                       
                       <p><MdText text={inhalt.texte.t1WärmedurchgangswiderstandDesUngedämmten} /></p>
-                      <BlockMath math={`R_{\\text{alt}} = \\frac{1}{U_{\\text{alt}}} = \\frac{1}{${formatDeZahl(sanierungResults.originalU, 2)}} \\approx ${formatDeZahl(1 / sanierungResults.originalU, 3)} \\text{ m}^2\\text{K/W}`} />
+                      <BlockMath math={`R_{\\text{alt}} = \\frac{1}{U_{\\text{alt}}} = \\frac{1}{${formatDeTeX(sanierungResults.originalU, 2)}} \\approx ${formatDeTeX(1 / sanierungResults.originalU, 3)} \\text{ m}^2\\text{K/W}`} />
 
                       <p><MdText text={inhalt.texte.t2ZusätzlicherWärmedurchlasswiderstandDer} />{formatDeWert(thickness)} mm = {formatDeZahl(thickness / 1000, 3)} m):
                       </p>
-                      <BlockMath math={`R_{\\text{Dämm}} = \\frac{d}{\\lambda_D} = \\frac{${formatDeZahl(thickness / 1000, 3)}}{${formatDeZahl(lambda, 3)}} \\approx ${formatDeZahl((thickness / 1000) / lambda, 3)} \\text{ m}^2\\text{K/W}`} />
+                      <BlockMath math={`R_{\\text{Dämm}} = \\frac{d}{\\lambda_D} = \\frac{${formatDeTeX(thickness / 1000, 3)}}{${formatDeTeX(lambda, 3)}} \\approx ${formatDeTeX((thickness / 1000) / lambda, 3)} \\text{ m}^2\\text{K/W}`} />
 
                       <p><MdText text={inhalt.texte.t3GesamtwiderstandUndNeuer} /></p>
-                      <BlockMath math={`U_{\\text{neu}} = \\frac{1}{R_{\\text{alt}} + R_{\\text{Dämm}}} = \\frac{1}{${formatDeZahl(1 / sanierungResults.originalU, 3)} + ${formatDeZahl((thickness / 1000) / lambda, 3)}} \\approx ${formatDeZahl(sanierungResults.newU, 3)} \\text{ W/(m}^2\\text{K)}`} />
+                      <BlockMath math={`U_{\\text{neu}} = \\frac{1}{R_{\\text{alt}} + R_{\\text{Dämm}}} = \\frac{1}{${formatDeTeX(1 / sanierungResults.originalU, 3)} + ${formatDeTeX((thickness / 1000) / lambda, 3)}} \\approx ${formatDeTeX(sanierungResults.newU, 3)} \\text{ W/(m}^2\\text{K)}`} />
 
                       <p><MdText text={inhalt.texte.t4JährlicheHeizwärmeeinsparungMit} /></p>
-                      <BlockMath math={`\\Delta Q = \\Delta U \\cdot A \\cdot F_x \\cdot G_t \\cdot 0{,}024 = (${formatDeZahl(sanierungResults.originalU, 2)} - ${formatDeZahl(sanierungResults.newU, 3)}) \\cdot ${area} \\cdot ${formatDeZahl(sanierungResults.fx, 1)} \\cdot 3500 \\cdot 0{,}024 \\approx ${formatDeZahl(sanierungResults.annualEnergySavings, 0)} \\text{ kWh/a}`} />
+                      <BlockMath math={`\\Delta Q = \\Delta U \\cdot A \\cdot F_x \\cdot G_t \\cdot 0{,}024 = (${formatDeTeX(sanierungResults.originalU, 2)} - ${formatDeTeX(sanierungResults.newU, 3)}) \\cdot ${area} \\cdot ${formatDeTeX(sanierungResults.fx, 1)} \\cdot 3500 \\cdot 0{,}024 \\approx ${formatDeTeX(sanierungResults.annualEnergySavings, 0)} \\text{ kWh/a}`} />
                     </div>
                   )}
                 </div>
