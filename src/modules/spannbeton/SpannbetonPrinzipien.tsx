@@ -1,7 +1,7 @@
 import React, { useId, useState } from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
-import { fckT, betaCc, CementClass } from '@/src/calc/spannbeton';
+import { fckT, betaCc, CementClass, CONCRETE, SPANNSTAHL, SPANNUNGSGRENZEN as SG } from '@/src/calc/spannbeton';
 import SpannbetonDehnungsAnimation from './SpannbetonDehnungsAnimation';
 import {
   Info,
@@ -39,7 +39,7 @@ export default function SpannbetonPrinzipien() {
     beamCrossH = 1,
     beamAc = beamCrossB * beamCrossH,
     beamWc = beamCrossB * Math.pow(beamCrossH, 2) / 6,
-    beamFctm = 3.5,
+    beamFctm = CONCRETE['C40/50'].fctm, // 3,5 N/mm², Tab. 3.1 zentral
     beamMqMid = .125 * beamLoadLevel * Math.pow(beamSpanL, 2),
     beamSigmaN = -(beamPrestressForce / (beamAc * 1e3)),
     effectiveEccMid = beamTendonTrajectory === "centric" ? 0 : beamPrestressEccentricity / 1e3,
@@ -74,25 +74,17 @@ export default function SpannbetonPrinzipien() {
     b500ResidualPct = Math.max(0, Number((100 - b500LossPct).toFixed(1))),
     tendonLossPct = Number((creepShrinkStrain / tendonElasticStrain * 100).toFixed(1)),
     tendonResidualPct = Number((100 - tendonLossPct).toFixed(1)),
-    currentFck = {
-      "C30/37": 30,
-      "C35/45": 35,
-      "C40/50": 40,
-      "C45/55": 45,
-      "C50/60": 50,
-      "C60/75": 60,
-      "C70/85": 70
-    }[concreteGrade] || 45,
+    currentFck = CONCRETE[concreteGrade]?.fck ?? 45, // Tab. 3.1 zentral
     betaCcSls = betaCc(Math.max(1, t0Age), cementClass),
     currentFckT0 = Number(fckT(currentFck, Math.max(1, t0Age), cementClass).toFixed(1)),
-    currentFpk = steelGrade === "Y1860" ? 1860 : 1770,
-    currentFp01k = steelGrade === "Y1860" ? 1600 : 1520,
-    sigmaPmax = Math.min(Math.round(.8 * currentFpk), Math.round(.9 * currentFp01k)),
-    sigmaPm0 = Math.min(Math.round(.75 * currentFpk), Math.round(.85 * currentFp01k)),
-    sigmaPinf = Math.round(.65 * currentFpk),
-    sigmaCZulSpannen = Number((.6 * currentFckT0).toFixed(1));
-  Number((.6 * currentFck).toFixed(1));
-  const sigmaCZulQuasi = Number((.45 * currentFck).toFixed(1));
+    // Spannstahl und Spannungsgrenzen zentral (src/utils/ec2Spannbeton.ts: SPANNSTAHL, SPANNUNGSGRENZEN)
+    currentFpk = SPANNSTAHL[steelGrade === "Y1860" ? "Y1860" : "Y1770"].fpk,
+    currentFp01k = SPANNSTAHL[steelGrade === "Y1860" ? "Y1860" : "Y1770"].fp01k,
+    sigmaPmax = Math.min(Math.round(SG.presseFpk * currentFpk), Math.round(SG.presseFp01k * currentFp01k)),
+    sigmaPm0 = Math.min(Math.round(SG.verankertFpk * currentFpk), Math.round(SG.verankertFp01k * currentFp01k)),
+    sigmaPinf = Math.round(SG.spannstahlQuasiStaendig * currentFpk),
+    sigmaCZulSpannen = Number((SG.betonVorspannen * currentFckT0).toFixed(1));
+  const sigmaCZulQuasi = Number((SG.betonQuasiStaendig * currentFck).toFixed(1));
     return (
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* 1. Header & Subtab Navigation */}
@@ -280,8 +272,8 @@ export default function SpannbetonPrinzipien() {
                   <div className="pt-2 border-t border-emerald-200 flex justify-between items-center font-bold text-emerald-800">
                     <span><MdText text={inhalt.texte.nutzbareInitialdehnung} /></span>
                     <div className="text-right">
-                      <InlineMath math="\varepsilon_{p0} = \frac{\sigma_{p0}}{E_p} = \frac{1400}{195\,000} \approx 7{,}18 \cdot 10^{-3}" />
-                      <span className="ml-1.5 font-sans font-extrabold text-emerald-700">(= 7,18 ‰)</span>
+                      <InlineMath math="\varepsilon_{pm0} = \frac{\sigma_{pm0}}{E_p} = \frac{1360}{195\,000} \approx 6{,}97 \cdot 10^{-3}" />
+                      <span className="ml-1.5 font-sans font-extrabold text-emerald-700">(= 6,97 ‰)</span>
                     </div>
                   </div>
                 </div>

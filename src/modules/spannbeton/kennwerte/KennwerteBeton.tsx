@@ -385,11 +385,11 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
 
                   {/* Gitternetzlinien Y (Spannungsskalierung dynamisch an matMaturity.fcm_t) */}
                   {(() => {
-                    const maxSigmaY = Math.max(50, Math.ceil(matMaturity.fcm_t * 1.15 / 10) * 10);
+                    const maxSigmaY = Math.max(50, Math.ceil(matMaturity.fcm_t * 1.15 / 10) * 10); // Darstellungsfaktor Achsenskalierung
                     const yTicks = [
                       Math.round(maxSigmaY * 0.25),
                       Math.round(maxSigmaY * 0.5),
-                      Math.round(maxSigmaY * 0.75),
+                      Math.round(maxSigmaY * 0.75), // Achsenteilung (Faktor der Darstellung)
                       maxSigmaY
                     ];
 
@@ -406,9 +406,9 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
 
                   {/* Skalierungsfunktionen */}
                   {(() => {
-                    const maxSigmaY = Math.max(50, Math.ceil(matMaturity.fcm_t * 1.15 / 10) * 10);
-                    const getX = (eps: number) => 70 + (eps / 4.0) * 560;
-                    const getY = (sig: number) => 240 - (sig / maxSigmaY) * 200;
+                    const maxSigmaY = Math.max(50, Math.ceil(matMaturity.fcm_t * 1.15 / 10) * 10); // Darstellungsfaktor Achsenskalierung
+                    const getX = (eps: number) => 70 + (eps / 4.0) * 560; // Darstellungsfaktor: 0 … 4 ‰ auf 560 px
+                    const getY = (sig: number) => 240 - (sig / maxSigmaY) * 200; // Darstellungsfaktor: 200 px Höhe
 
                     // Kurven-Pfade
                     const pts = stressStrainCurvePoints.points;
@@ -429,7 +429,7 @@ export default function KennwerteBeton({ activeMatData, concDatabase, matAgeDays
                     // Ultimate Point Coordinates
                     const ultX = getX(activeMatData.eps_cu1);
                     const ultPt = pts[pts.length - 1];
-                    const ultY = getY(ultPt ? ultPt.sigma : matMaturity.fcm_t * 0.85);
+                    const ultY = getY(ultPt ? ultPt.sigma : matMaturity.fcm_t * 0.85); // Ersatzlage nur für die Darstellung (Faktor)
 
                     // Design strength line
                     const fcdY = getY(matMaturity.fcd_t);

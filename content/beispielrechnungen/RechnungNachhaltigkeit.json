@@ -8,7 +8,7 @@
     "nutzungsdauerT": "Nutzungsdauer t:",
     "zementgehaltC": "Zementgehalt c:",
     "caoAnteilImZement": "CaO-Anteil im Zement:",
-    "anteilReaktivesCalciumoxidIm": "Anteil reaktives Calciumoxid im Zementstein (standardmäßig ca. 65%).",
+    "anteilReaktivesCalciumoxidIm": "Masseanteil CaO bezogen auf den Zement (Zementgehalt je m³ Beton; Lehrwert für CEM I rund 65 %, Hüttensandzemente deutlich weniger).",
     "prozentsatzDesReaktionsfähigenCao": "Prozentsatz des CaO, der tatsächlich zu CaCO₃ reagiert (Lehrannahme; Literatur zum Karbonatisierungsgrad nennt im Mittel etwa 50 bis 60 %, als Obergrenze wird häufig 75 % des CaO angesetzt, z. B. Pade/Guimarães 2007).",
     "berechnungCo2UptakeBilanz": "Berechnung & CO2-Uptake-Bilanz",
     "dieTiefenwirkungDerKarbonatisierung": "Die Tiefenwirkung der Karbonatisierung folgt dem Quadratwurzel-Zeit-Gesetz (Fick'sche Diffusion):",

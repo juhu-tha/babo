@@ -24,7 +24,8 @@
     "gutschriftenAusModulD": "Gutschriften aus Modul D dürfen nicht verrechnet werden. Neben dem GWP sind PENRT (≤ 96 bzw. 64 kWh/(m²a)) und die übrigen QNG-Anforderungen (Schadstoffe, Barrierefreiheit u. a.) nachzuweisen.",
     "qngHandbuchAnlage3": "QNG-Handbuch Anlage 3, v1.4 (WG23); DIN EN 15978",
     "oktober2026Ap7": "Oktober 2026 (QNG-Anforderungswerte vereinheitlicht (WG23: 24/20 kg CO₂-Äq./(m² NRF·a)), DIN EN 15978:2026-09 ergänzt, Literatur korrigiert)",
-    "graueEnergie": "Graue Energie"
+    "graueEnergie": "Graue Energie",
+    "umweltproduktdeklarationEpd": "Umweltproduktdeklaration (EPD)"
   },
   "daten": {
     "OekobilanzLCA.schritte": [
@@ -73,7 +74,9 @@
     ],
     "OekobilanzLCA.literatur": [
       "Klöpffer, W.; Grahl, B.: Ökobilanz (LCA) – Ein Leitfaden für Ausbildung und Beruf. Weinheim: Wiley-VCH 2009",
-      "Hauschild, M. Z.; Rosenbaum, R. K.; Olsen, S. I. (Hrsg.): Life Cycle Assessment – Theory and Practice. Cham: Springer 2018"
+      "Hauschild, M. Z.; Rosenbaum, R. K.; Olsen, S. I. (Hrsg.): Life Cycle Assessment – Theory and Practice. Cham: Springer 2018",
+      "Borrmann, A. et al.: Handbuch Building Information Modeling (Springer Vieweg)",
+      "Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen (BMWSB): QNG Rechenregeln für die Ökobilanzierung"
     ],
     "OekobilanzLCA.regelwerke": [
       {
@@ -117,6 +120,10 @@
       {
         "title": "One Click LCA: Infrastructure LCA nach EN 17472 (Systemgrenze Modul B8)",
         "url": "https://help.oneclicklca.com/en/articles/275776-infrastructure-lca-en-17472"
+      },
+      {
+        "title": "openLCA – Open-Source Software für Lebenszyklusanalysen",
+        "url": "https://www.openlca.org/"
       }
     ],
     "OekobilanzLCA.formeln": [
@@ -124,6 +131,16 @@
         "formel": "GWP_{\\text{Bauwerk}} = \\sum_{i} m_i \\cdot \\text{GWP}_i + \\sum_{a=1}^{50} E_a \\cdot f_{\\text{PE,CO2}} \\quad [\\text{kg CO}_2\\text{-eq}]",
         "erklaerung": "Lebenszyklus-Treibhausgasbilanzierung über einen Betrachtungszeitraum von 50 Jahren (QNG, BNB, DGNB) unter Berücksichtigung von grauer Energie (Herstellung A1-A3, Rückbau C3/C4) und Betriebsenergie (Modul B6).",
         "quelle": "DIN EN 15978; QNG; DGNB ENV1.1"
+      },
+      {
+        "formel": "GWP_{\\text{gesamt}} = \\sum_i \\left( m_i \\cdot gwp_{\\text{spec},i} \\right) + \\sum_j \\left( m_j \\cdot d_j \\cdot e_{\\text{trans},j} \\right) \\quad [\\text{kg CO}_2\\text{-eq}]",
+        "erklaerung": "Gesamt-Treibhauspotenzial der Herstellungs- und Transportphasen (A1-A3 und A4) gemäß DIN EN 15804.",
+        "quelle": "DIN EN 15804 / DIN EN 15978"
+      },
+      {
+        "formel": "GWP_{\\text{Gebäude}} = \\frac{\\sum_{k} GWP_k}{NRF \\cdot t_{\\text{ref}}} \\le GWP_{\\text{Grenzwert}} \\quad [\\text{kg CO}_2\\text{-eq/(m}^2\\cdot\\text{a)}]",
+        "erklaerung": "Auf Nettoraumfläche (NRF nach DIN 277) und Referenznutzungszeitraum tref (z.B. 50 Jahre) normierter Treibhausgaswert für das Qualitätssiegel Nachhaltiges Gebäude (QNG).",
+        "quelle": "QNG Anhang 3.1.3"
       },
       {
         "formel": "GWP_{\\text{Ing}} = \\frac{\\text{GWP}_{\\text{A1-A5}} + \\sum_{k} \\text{GWP}_{\\text{B2-B5},k} + \\text{GWP}_{\\text{B8}} + \\text{GWP}_{\\text{C1-C4}}}{A_{\\text{Deck}} \\cdot t_{\\text{ref}}} \\quad [\\text{kg CO}_2\\text{-eq/(m}^2\\cdot\\text{a)}]",

@@ -39,7 +39,7 @@ function auswerten(stand: ProtokollStand): AuswertungsAnsicht {
 
   // Diagramm E_CSE über NaCl-Zugabe
   const B = 360, H = 210, L = 46, U = 30, O = 10, R = 12;
-  const mMax = Math.max(1, ...erg.punkte.map(p => p.mNaCl)) * 1.08;
+  const mMax = Math.max(1, ...erg.punkte.map(p => p.mNaCl)) * 1.08; // Darstellungsfaktor (Achsenreserve)
   const eMin = Math.min(-450, ...erg.punkte.map(p => p.eCSE)) - 20;
   const eMax = Math.max(0, ...erg.punkte.map(p => p.eCSE)) + 20;
   const px = (m: number) => L + m / mMax * (B - L - R);

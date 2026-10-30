@@ -287,7 +287,7 @@ export default function BpFarbenLacke() {
                   <p className="text-text-main/70 leading-relaxed"><MdText text={inhalt.texte.derGiscodeDientHandwerkern} /></p>
                   <ul className="list-disc list-inside space-y-1 font-normal text-text-main/80 pl-2">
                     <li><MdText text={inhalt.texte.bsw10Bsw20WässrigeBeschichtungsstoffe} /></li>
-                    <li><MdText text={inhalt.texte.bsl25LösemittelbasierteBautenschutzlacke} /></li>
+                    <li><MdText text={inhalt.texte.bsl20LoesemittelbasierteBeschichtungsstoffe} /></li>
                     <li><MdText text={inhalt.texte.re30EpoxidharzprodukteSensibilisierendZw} /></li>
                   </ul>
                 </div>

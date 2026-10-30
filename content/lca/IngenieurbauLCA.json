@@ -59,7 +59,7 @@
     "t3HochleistungsAsphaltbelägeSma": "3. Hochleistungs-Asphaltbeläge (SMA / Kompaktasphalt):",
     "einsatzVonPolymermodifiziertenBitumen": "Einsatz von polymermodifizierten Bitumen (PmB) zur Verlängerung der Liegedauer der Deckschicht von 12 auf 20 Jahre.",
     "interaktiverBrückenLcaSimulator": "Interaktiver Brücken-LCA-Simulator (100 Jahre nach DIN EN 17472)",
-    "vergleichSpannbetonHohlkastenVs": "Vergleich: **Spannbeton-Hohlkasten** vs. **Stahlverbundbrücke** über den Lebenszyklus.",
+    "vergleichSpannbetonHohlkastenVs": "Vergleich: **Spannbeton-Hohlkasten** vs. **Stahlverbundbrücke** über den Lebenszyklus. Die Kennwerte je m² Brückendeckfläche, Austauschintervalle und Sperrtage sind gerundete Lehrwerte ohne Projekt- oder Datenbankbezug; für eine Ökobilanz nach DIN EN 17472 gelten Bauwerksmengen und EPD.",
     "brückendeckflächeATextDeck": "Brückendeckfläche ($A_{\\text{Deck}}$):",
     "betrachtungszeitraumTTextRef": "Betrachtungszeitraum ($t_{\\text{ref}}$):",
     "dinEn1990100": "DIN EN 1990: 100 a",

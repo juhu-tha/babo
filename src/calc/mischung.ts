@@ -265,3 +265,16 @@ export function istSieblinie(dmax: Groesstkorn, fraktionen: { f04: number; f48: 
   const bereich: SieblinienBereich | undefined = bereiche.size === 1 ? eingeordnet[0]?.bereich : undefined;
   return { punkte, eingeordnet, bereich };
 }
+
+/**
+ * Faustregel Luftporen: rund 5 % Druckfestigkeitsverlust je Vol.-% Luft über dem Grundluftgehalt (übliche Spanne 4–5 %;
+ * einheitlich in Mischungsberechnung, Betonzusatzmittel und Quiz, Umsetzung 29.10.2026). Lehrwert, kein Normwert.
+ */
+export const LP_FESTIGKEITSVERLUST_JE_PROZENT = 5;
+/** Grundluftgehalt ohne LP-Mittel im Lehrmodell [Vol.-%] */
+export const GRUNDLUFT_PROZENT = 1.5;
+
+/** Relativer Festigkeitsverlust [%] durch künstliche Luftporen: (Luft − Grundluft) · 5 % */
+export function lpFestigkeitsverlust(luftProzent: number, grundluft: number = GRUNDLUFT_PROZENT): number {
+  return Math.max(0, luftProzent - grundluft) * LP_FESTIGKEITSVERLUST_JE_PROZENT;
+}

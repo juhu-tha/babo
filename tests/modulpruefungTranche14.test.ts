@@ -85,9 +85,10 @@ const b = bim.daten as Record<string, { formel: string }[]>;
 pruefe('BIM1 GWP Wand', 12 * 3 * 0.24 * 280, 2419.2);
 pruefe('BIM2 U', 1 / (0.13 + 0.015 / 0.7 + 0.2 / 2.3 + 0.16 / 0.035 + 0.04), 0.206193);
 zeigt('BIM', [...b['BimBaustoffe.schritte'], ...b['BimBaustoffe.schritte_2']], '2419', '4,85', '0,21');
-// T14-BIM-1: GWP-Lehrwert Baustahl ≈ 0,64 kg CO₂-Äq./kg · 7850 kg/m³ (ÖKOBAUDAT-Referenz wie src/data/rechnerGrenzen.ts)
+// T14-BIM-1, fortgeschrieben in der Durchsicht B 29.10.2026 (DSB-BIM-1): Baustahl S355 (Walzprofile) mit dem zentralen
+// Profilstahl-Lehrwert 1,1 kg CO₂-Äq./kg (NP2-ST-2) · 7850 kg/m³ = 8635 kg CO₂-Äq./m³ (vorher 0,64 kg/kg, Betonstahl-Referenz)
 const stahl = (bim.daten.ARCHETYPES as { id: string; defaultGwp: number; defaultDensity: number }[]).find(a => a.id === 'stahl');
-gilt(!!stahl && nahe(stahl.defaultGwp / stahl.defaultDensity, 0.64, 0.03), `BIM3 Stahl-GWP ${stahl?.defaultGwp} kg/m³ ≠ 0,64 kg/kg`);
+gilt(!!stahl && nahe(stahl.defaultGwp / stahl.defaultDensity, 1.1, 0.01), `BIM3 Stahl-GWP ${stahl?.defaultGwp} kg/m³ ≠ 1,1 kg/kg`);
 // T14-BIM-4 (Umsetzung 29.10.2026): Mineralwolle einheitlich mit Materialdatenbanken 1,20 kg CO₂-Äq./kg → 60 kg/m³ · 1,20 = 72 kg/m³
 const mw = (bim.daten.ARCHETYPES as { id: string; defaultGwp: number; defaultDensity: number }[]).find(a => a.id === 'mineralwolle');
 pruefe('BIM4 Mineralwolle GWP/m³', mw?.defaultGwp ?? NaN, 60 * 1.2);

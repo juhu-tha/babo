@@ -14,6 +14,23 @@ import inhalt from '@/content/lca/IngenieurbauLCA.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, ReiterLeiste, alsOption, alsReiter, reiterPanel } from '../../components/ui/Auswahlgruppe';
 
+/**
+ * Lehrwerte des Brücken-Simulators je m² Brückendeckfläche [kg CO₂-Äq./m²] bzw. je Zyklus (Durchsicht B 29.10.2026,
+ * DSB-LI-1): gerundete Größenordnungen für den Variantenvergleich, keine Projekt- oder Datenbankwerte und ohne abgerufene
+ * Quelle (Lehrwerte). Werte unverändert aus der Prüfung T11 (Quiz qn_lca_ingenieurbau_* rechnet damit). Für Nachweise gelten
+ * die Mengen des Bauwerks und EPD bzw. ÖKOBAUDAT-Datensätze; Stauemissionen (B8) als Modellansatz, vorläufig.
+ */
+const BRUECKE_LEHRWERTE = {
+  /** Austauschintervalle [a]; gezählt werden volle Intervalle (abgerundet) */
+  intervall: { belag: 15, lager: 30, korrosionsschutz: 25 },
+  spannbeton: { a1a3: 266.4, a4a5: 25.0, c: 32.0, d: -38.0, betonsanierungJe100a: 12.0 },
+  stahlverbund: { a1a3: 211.3, a4a5: 18.0, c: 24.0, d: -85.0, korrosionsschutzJeZyklus: 9.5 },
+  /** für beide Varianten */
+  belagJeZyklus: 12.35, kappenJe100a: 28.0, lagerJeZyklus: 5.0,
+  /** B8: Sperrtage je Belagswechsel bzw. je Korrosionsschutz-Erneuerung, Anteil betroffener Lkw, Mehremission je Lkw [kg] */
+  sperrtageBelag: 18, sperrtageKorrosionsschutz: 4, anteilLkwImStau: 0.4, co2JeLkw: 0.95, faktorSchnellbau: 0.35,
+} as const;
+
 export default function IngenieurbauLCA() {
   // Simulator State
   const [deckArea, setDeckArea] = useState<number>(1500); // m²
@@ -25,36 +42,37 @@ export default function IngenieurbauLCA() {
   // Simulation Calculations
   const results = useMemo(() => {
     // Cycles in reference study period
-    const asphaltCycles = Math.floor(studyPeriod / 15);
-    const bearingCycles = Math.floor(studyPeriod / 30);
-    const coatingCycles = Math.floor(studyPeriod / 25);
+    const L = BRUECKE_LEHRWERTE;
+    const asphaltCycles = Math.floor(studyPeriod / L.intervall.belag);
+    const bearingCycles = Math.floor(studyPeriod / L.intervall.lager);
+    const coatingCycles = Math.floor(studyPeriod / L.intervall.korrosionsschutz);
 
     // Stautage-Faktor abhängig von der Baustellenstrategie
-    const stauTageFactor = constructionStrategy === 'accelerated' ? 0.35 : 1.0;
+    const stauTageFactor = constructionStrategy === 'accelerated' ? L.faktorSchnellbau : 1.0;
     // Zusätzlicher CO2-Ausstoß pro im Stau stehendem LKW/Tag (ca. 0,95 kg CO2e / Fahrzeug durch Stop-and-Go und Umwege)
-    const co2PerDelayedVehicle = 0.95; // kg CO2e / Fahrzeug
+    const co2PerDelayedVehicle = L.co2JeLkw; // kg CO2e / Fahrzeug
 
     // --- VARIANTE A: Spannbeton-Hohlkastenbrücke ---
     // A1-A3: Massiver Beton C35/45 (klinkerreduziert) + Betonstahl + Spannstahl
-    const gwpA1A3_Beton = deckArea * 266.4; // kg CO2e
+    const gwpA1A3_Beton = deckArea * L.spannbeton.a1a3; // kg CO2e
     // A4-A5: Schalung, Gerüst, Transport
-    const gwpA4A5_Beton = deckArea * 25.0;
+    const gwpA4A5_Beton = deckArea * L.spannbeton.a4a5;
     // B2-B5: Instandhaltung & Austauschzyklen
-    const gwpB_Asphalt_Beton = deckArea * (asphaltCycles * 12.35);
-    const gwpB_Kappen_Beton = deckArea * 28.0 * (studyPeriod / 100);
-    const gwpB_Lager_Beton = deckArea * (bearingCycles * 5.0);
-    const gwpB_Betonsanierung = deckArea * 12.0 * (studyPeriod / 100);
+    const gwpB_Asphalt_Beton = deckArea * (asphaltCycles * L.belagJeZyklus);
+    const gwpB_Kappen_Beton = deckArea * L.kappenJe100a * (studyPeriod / 100);
+    const gwpB_Lager_Beton = deckArea * (bearingCycles * L.lagerJeZyklus);
+    const gwpB_Betonsanierung = deckArea * L.spannbeton.betonsanierungJe100a * (studyPeriod / 100);
     const gwpB2B5_Beton = gwpB_Asphalt_Beton + gwpB_Kappen_Beton + gwpB_Lager_Beton + gwpB_Betonsanierung;
 
     // Modul B8: Nutzer-Stauemissionen während Instandsetzungen
     // Bei Spannbeton: je Belagswechsel 18 Tage Teilsperrung (Fugen- und Lagerwechsel im Modell nicht gesondert erfasst)
-    const stautage_Beton = asphaltCycles * 18 * stauTageFactor;
-    const gwpB8_Beton = stautage_Beton * (dtvSchwerverkehr * 0.4) * co2PerDelayedVehicle;
+    const stautage_Beton = asphaltCycles * L.sperrtageBelag * stauTageFactor;
+    const gwpB8_Beton = stautage_Beton * (dtvSchwerverkehr * L.anteilLkwImStau) * co2PerDelayedVehicle;
 
     // C1-C4: Abbruch & Entsorgung
-    const gwpC_Beton = deckArea * 32.0;
+    const gwpC_Beton = deckArea * L.spannbeton.c;
     // Modul D: Gutschrift für Stahlschrott & RC-Korn
-    const gwpD_Beton = -deckArea * 38.0;
+    const gwpD_Beton = deckArea * L.spannbeton.d;
 
     const totalGwp_Beton = gwpA1A3_Beton + gwpA4A5_Beton + gwpB2B5_Beton + gwpB8_Beton + gwpC_Beton;
     const netGwp_Beton = totalGwp_Beton + gwpD_Beton;
@@ -62,26 +80,26 @@ export default function IngenieurbauLCA() {
 
     // --- VARIANTE B: Stahlverbundbrücke (S355/S460 + Ortbeton-Fahrbahnplatte) ---
     // A1-A3: Schlankere Betonplatte + vorgefertigte Baustahlträger
-    const gwpA1A3_Stahl = deckArea * 211.3;
+    const gwpA1A3_Stahl = deckArea * L.stahlverbund.a1a3;
     // A4-A5: Vormontage, Einhub, schnellere Baustelleneinrichtung
-    const gwpA4A5_Stahl = deckArea * 18.0;
+    const gwpA4A5_Stahl = deckArea * L.stahlverbund.a4a5;
     // B2-B5: Instandhaltung & Austauschzyklen
-    const gwpB_Asphalt_Stahl = deckArea * (asphaltCycles * 12.35);
-    const gwpB_Kappen_Stahl = deckArea * 28.0 * (studyPeriod / 100);
-    const gwpB_Lager_Stahl = deckArea * (bearingCycles * 5.0);
+    const gwpB_Asphalt_Stahl = deckArea * (asphaltCycles * L.belagJeZyklus);
+    const gwpB_Kappen_Stahl = deckArea * L.kappenJe100a * (studyPeriod / 100);
+    const gwpB_Lager_Stahl = deckArea * (bearingCycles * L.lagerJeZyklus);
     // Erneuerung des Korrosionsschutzes (DIN EN ISO 12944) alle 25 Jahre
-    const gwpB_Coating_Stahl = deckArea * (coatingCycles * 9.5);
+    const gwpB_Coating_Stahl = deckArea * (coatingCycles * L.stahlverbund.korrosionsschutzJeZyklus);
     const gwpB2B5_Stahl = gwpB_Asphalt_Stahl + gwpB_Kappen_Stahl + gwpB_Lager_Stahl + gwpB_Coating_Stahl;
 
     // Modul B8: Nutzer-Stauemissionen während Instandsetzungen
     // Stahlverbundbrücke: Belagswechsel wie Beton, zusätzlich 4 Sperrtage je Korrosionsschutz-Erneuerung (Lagerwechsel im Modell nicht gesondert erfasst)
-    const stautage_Stahl = (asphaltCycles * 18 + coatingCycles * 4) * stauTageFactor;
-    const gwpB8_Stahl = stautage_Stahl * (dtvSchwerverkehr * 0.4) * co2PerDelayedVehicle;
+    const stautage_Stahl = (asphaltCycles * L.sperrtageBelag + coatingCycles * L.sperrtageKorrosionsschutz) * stauTageFactor;
+    const gwpB8_Stahl = stautage_Stahl * (dtvSchwerverkehr * L.anteilLkwImStau) * co2PerDelayedVehicle;
 
     // C1-C4: Schnellerer Rückbau per Autokran
-    const gwpC_Stahl = deckArea * 24.0;
+    const gwpC_Stahl = deckArea * L.stahlverbund.c;
     // Modul D: Hohe Gutschrift durch 100% sortenreines Einschmelzen des Baustahls im EAF
-    const gwpD_Stahl = -deckArea * 85.0;
+    const gwpD_Stahl = deckArea * L.stahlverbund.d;
 
     const totalGwp_Stahl = gwpA1A3_Stahl + gwpA4A5_Stahl + gwpB2B5_Stahl + gwpB8_Stahl + gwpC_Stahl;
     const netGwp_Stahl = totalGwp_Stahl + gwpD_Stahl;

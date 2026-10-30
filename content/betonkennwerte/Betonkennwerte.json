@@ -3,7 +3,7 @@
     "betonkennwerteNachEurocode2": "Betonkennwerte nach Eurocode 2 (DIN EN 1992-1-1)",
     "vollständigeBerechnungMechanischerZeitab": "Vollständige Berechnung mechanischer & zeitabhängiger Parameter nach Abs. 3.1 & Anhang B (inkl. DIN EN 1992-1-1/NA)",
     "ec220112013Ec2": "EC2 (2011/2013) & EC2 Gen 2 (2025)",
-    "dieBerechnungSämtlicherKennwerte": "Die Berechnung sämtlicher Kennwerte für Normalbeton (**C12/15 bis C100/115**) basiert im Eurocode 2 auf einer einzigen primären Eingangsgröße: der **charakteristischen 28-Tage-Zylinderdruckfestigkeit $f_{ck}$**. Dieses Modul implementiert die vollständige Gleichungsfolge der bauaufsichtlich eingeführten Normengeneration (DIN EN 1992-1-1 mit NA) für Tragfähigkeits- und Gebrauchstauglichkeitsnachweise (GZT/GZG) sowie zeitabhängige Verformungen aus Schwinden und Kriechen.",
+    "dieBerechnungSämtlicherKennwerte": "Die Berechnung sämtlicher Kennwerte für Normalbeton (**C12/15 bis C90/105** nach Tab. 3.1; C100/115 als Lehrwert) basiert im Eurocode 2 auf einer einzigen primären Eingangsgröße: der **charakteristischen 28-Tage-Zylinderdruckfestigkeit $f_{ck}$**. Dieses Modul implementiert die vollständige Gleichungsfolge der bauaufsichtlich eingeführten Normengeneration (DIN EN 1992-1-1 mit NA) für Tragfähigkeits- und Gebrauchstauglichkeitsnachweise (GZT/GZG) sowie zeitabhängige Verformungen aus Schwinden und Kriechen.",
     "t1InteraktiverKennwertrechner": " 1. Interaktiver Kennwertrechner",
     "t2Ec2Tabelle3": " 2. EC2 Tabelle 3.1 Matrix",
     "t3ZeitverläufeTheorie": " 3. Zeitverläufe & Theorie",

@@ -657,7 +657,7 @@ export default function MischungEingaben({ applyWalzSandReduction, bauteil, bioc
                 <div>
                   <div className="font-bold text-xs text-text-main flex items-center justify-between">
                     <span><MdText text={inhalt.texte.t4Festigkeitseinfluss} /></span>
-                    <span className="text-orange-700 font-mono font-bold">-{formatDeZahl(festigkeitsVerlustLP, 0)} MPa</span>
+                    <span className="text-orange-700 font-mono font-bold">−{formatDeZahl(festigkeitsVerlustLP, 0)} %</span>
                   </div>
                   <p className="text-[11px] text-text-main/70 mt-1 leading-snug"><MdText text={inhalt.texte.jedesVolLuftporenKostet} /></p>
                 </div>

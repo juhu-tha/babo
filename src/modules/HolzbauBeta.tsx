@@ -1,13 +1,14 @@
 import { useState, useMemo } from 'react';
 import { Trees } from 'lucide-react';
 import { abbrandQuerschnitt, bemesseDruckstab, bemesseQuerdruck, holzschraube, type AbbrandArt, type KLED, type Nutzungsklasse, type Querdruckfall } from '@/src/calc/holzbau';
-import { bspSchwingung, BSP_AUFBAUTEN, BSP_ROLLSCHUB, type EiVerfahren, type Estrichart } from '@/src/calc/bspSchwingung';
+import { bspSchwingung, BSP_AUFBAUTEN, BSP_ROLLSCHUB, BSP_KENNWERTSAETZE, type BspKennwertsatz, type EiVerfahren, type Estrichart } from '@/src/calc/bspSchwingung';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { Querverweis } from '@/src/components/ui/Querverweis';
 import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { woodMaterials, dataholzConstructions } from './holzbaubeta/daten';
 import { HOLZ_EN338, holzKennwerte } from '@/src/data/kennwerte';
+import { SCHWINDBEIWERTE } from '@/src/calc/holzphysik';
 import HolzbauInfo from './holzbaubeta/HolzbauInfo';
 import HolzbauWerkstoffe from './holzbaubeta/HolzbauWerkstoffe';
 import HolzbauKonstruktion from './holzbaubeta/HolzbauKonstruktion';
@@ -51,7 +52,12 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
   const [shreHDir, setShreHDir] = useState<string>('tangential');
 
   // Swelling/Shrinking coefficients database (per 1% moisture change below FSP ~ 30%)
-  const shrinkageCoeffs: Record<string, { radial: number; tangential: number; longitudinal: number; label: string }> = inhalt.daten["HolzbauBeta.shrinkageCoeffs"];
+  // Werte zentral aus SCHWINDBEIWERTE (src/calc/holzphysik.ts, Durchsicht D 29.10.2026, DSD-HO-1); aus dem Inhalt nur die Bezeichnung
+  const shrinkageCoeffs: Record<string, { radial: number; tangential: number; longitudinal: number; label: string }> = Object.fromEntries(
+    Object.entries(inhalt.daten["HolzbauBeta.shrinkageCoeffs"] as Record<string, { label: string }>).map(([art, eintrag]) => [
+      art, { ...(SCHWINDBEIWERTE[art as keyof typeof SCHWINDBEIWERTE] ?? SCHWINDBEIWERTE.fichte), label: eintrag.label },
+    ]),
+  );
 
   const shrinkResults = useMemo(() => {
     const coeffs = shrinkageCoeffs[shreWoodType] || shrinkageCoeffs.fichte;
@@ -121,6 +127,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
   const [vibEstrichArt, setVibEstrichArt] = useState<Estrichart>('zement');
   const [vibVerfahren, setVibVerfahren] = useState<EiVerfahren>('gamma');
   const [vibRollschub, setVibRollschub] = useState<number>(BSP_ROLLSCHUB.standard); // G_r [N/mm²], T10-HB-2
+  const [vibKennwerte, setVibKennwerte] = useState<BspKennwertsatz>('proHolz'); // E-Modul und Masse (Umsetzung 29.10.2026)
 
   // Derived Materials values
   const currentMaterial = useMemo(() => {
@@ -156,7 +163,8 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
   const vibResults = useMemo(() => bspSchwingung({
     spannweite: vibSpan, lagen: (BSP_AUFBAUTEN[vibAufbau] ?? BSP_AUFBAUTEN.l5_150).lagen, deckenbreite: vibBreite,
     zusatzmasse: vibExtraMass, estrichDicke: vibEstrichDicke, estrichArt: vibEstrichArt, verfahren: vibVerfahren, GR: vibRollschub,
-  }), [vibSpan, vibAufbau, vibBreite, vibExtraMass, vibEstrichDicke, vibEstrichArt, vibVerfahren, vibRollschub]);
+    E0mean: BSP_KENNWERTSAETZE[vibKennwerte].E0mean, wichte: BSP_KENNWERTSAETZE[vibKennwerte].wichte,
+  }), [vibSpan, vibAufbau, vibBreite, vibExtraMass, vibEstrichDicke, vibEstrichArt, vibVerfahren, vibRollschub, vibKennwerte]);
 
   // Eurocode 5 Knicknachweis (Rechenkern src/calc/holzbau.ts)
   const calculationResults = useMemo(() => bemesseDruckstab({
@@ -211,7 +219,7 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
 
       {activeSubTab === 'verbindung' && <HolzbauVerbindung connAngle={connAngle} connCount={connCount} connD={connD} connDKern={connDKern} setConnDKern={setConnDKern} connForce={connForce} connLef={connLef} connLoadDuration={connLoadDuration} connResults={connResults} connServiceClass={connServiceClass} connWoodClass={connWoodClass} setConnAngle={setConnAngle} setConnCount={setConnCount} setConnD={setConnD} setConnForce={setConnForce} setConnLef={setConnLef} setConnLoadDuration={setConnLoadDuration} setConnServiceClass={setConnServiceClass} setConnWoodClass={setConnWoodClass} />}
 
-      {activeSubTab === 'bauphysik' && <HolzbauBauphysik fireB={fireB} fireH={fireH} fireResults={fireResults} fireSides={fireSides} fireTime={fireTime} fireType={fireType} setFireB={setFireB} setFireH={setFireH} setFireSides={setFireSides} setFireTime={setFireTime} setFireType={setFireType} vib={{ aufbau: vibAufbau, setAufbau: setVibAufbau, span: vibSpan, setSpan: setVibSpan, extraMass: vibExtraMass, setExtraMass: setVibExtraMass, breite: vibBreite, setBreite: setVibBreite, estrichDicke: vibEstrichDicke, setEstrichDicke: setVibEstrichDicke, estrichArt: vibEstrichArt, setEstrichArt: setVibEstrichArt, verfahren: vibVerfahren, setVerfahren: setVibVerfahren, rollschub: vibRollschub, setRollschub: setVibRollschub, ergebnis: vibResults }} />}
+      {activeSubTab === 'bauphysik' && <HolzbauBauphysik fireB={fireB} fireH={fireH} fireResults={fireResults} fireSides={fireSides} fireTime={fireTime} fireType={fireType} setFireB={setFireB} setFireH={setFireH} setFireSides={setFireSides} setFireTime={setFireTime} setFireType={setFireType} vib={{ aufbau: vibAufbau, setAufbau: setVibAufbau, span: vibSpan, setSpan: setVibSpan, extraMass: vibExtraMass, setExtraMass: setVibExtraMass, breite: vibBreite, setBreite: setVibBreite, estrichDicke: vibEstrichDicke, setEstrichDicke: setVibEstrichDicke, estrichArt: vibEstrichArt, setEstrichArt: setVibEstrichArt, verfahren: vibVerfahren, setVerfahren: setVibVerfahren, rollschub: vibRollschub, setRollschub: setVibRollschub, kennwerte: vibKennwerte, setKennwerte: setVibKennwerte, ergebnis: vibResults }} />}
 
       {activeSubTab === 'bemessung' && (
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-home-grau/30">

@@ -63,8 +63,8 @@
     "verbesserteHinweiseZurDauerhaftigkeit": "verbesserte Hinweise zur Dauerhaftigkeit",
     "neueRegelnFürDurchbrüche": "neue Regeln für Durchbrüche, Verstärkungen, zimmermannsmäßige Verbindungen, eingeklebte Stahlstäbe und Holzpfähle",
     "erweiterteQuerdrucknachweiseSchwingungsn": "erweiterte Querdrucknachweise, Schwingungsnachweis überarbeitet, Ermüdungsnachweis neu, Robustheit verbessert",
-    "ec0En19902023": "EC0 – EN 1990:2023",
-    "geänderterAnsatzFürDen": "Geänderter Ansatz für den Nachweis im Grenzzustand der Tragfähigkeit, ergänzte Festlegungen zu Robustheit, Ermüdung, geotechnischen Bauwerken, Nachhaltigkeit und Zuverlässigkeitsanalyse; Anwendungsbereich um Lager erweitert. DIN-Fassung angekündigt. ",
+    "ec0En19902023": "EC0 – EN 1990-1:2023+A1:2026",
+    "geänderterAnsatzFürDen": "Geänderter Ansatz für den Nachweis im Grenzzustand der Tragfähigkeit, ergänzte Festlegungen zu Robustheit, Ermüdung, geotechnischen Bauwerken, Nachhaltigkeit und Zuverlässigkeitsanalyse; Anwendungsbereich um Lager erweitert. Mit der Änderung A1:2026 heißt die Norm EN 1990-1 (Teil 1: Neubauten); die Bewertung bestehender Tragwerke regelt der neue Teil EN 1990-2. Die Deutsche Fassung DIN EN 1990-1:2026-12 ist angekündigt (ersetzt DIN EN 1990:2021-10), der Nationale Anhang liegt als Entwurf vor. ",
     "ec3DinEn1993": "EC3 – DIN EN 1993-1-1:2025-04",
     "stahlsortenBisS700Elliptische": "Stahlsorten bis S700, elliptische Hohlprofile, neue Verfahren für Querschnitte der Klasse 3 und für den Biegedrillknicknachweis, Ablaufdiagramm zur Tragwerksberechnung.",
     "teilsicherheitsbeiwerteUndKombinationsre": "Teilsicherheitsbeiwerte und Kombinationsregeln nach der eingeführten DIN EN 1990 mit NA behandelt das Modul Eurocode-Sicherheitskonzept.",
@@ -93,7 +93,7 @@
     "dinEn20612": "DIN EN 206-1:2026-07 und DIN EN 206-2:2026-07 (ersetzen DIN EN 206:2021-06 teilweise); EN 206-3 (Geotechnik): DIN-Ausgabe hier nicht geprüft",
     "eurocode0GrundlagenDer": "Eurocode 0: Grundlagen der Tragwerksplanung",
     "dinEn19901": "DIN EN 1990 (1. Generation, aktuelle DIN-Ausgabe 2021-10) mit NA",
-    "en19902023Erschienen": "EN 1990:2023 erschienen; die Deutsche Fassung führt DIN Media als „vorbestellbar“ (Ausgabedatum noch nicht genannt)",
+    "en19902023Erschienen": "EN 1990-1:2023+A1:2026 (Teil 1: Neubauten; vormals EN 1990:2023); Deutsche Fassung DIN EN 1990-1:2026-12 angekündigt (DIN Media: vorbestellbar), NA im Entwurf",
     "eurocode2Betonbau": "Eurocode 2: Betonbau",
     "dinEn19921": "DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA:2013-04",
     "dinEn199212": "DIN EN 1992-1-1:2025-09 (Deutsche Fassung EN 1992-1-1:2023; ersetzt auch DIN EN 1992-2 und DIN EN 1992-3); neuer NA: noch offen",
@@ -186,7 +186,7 @@
       "DIN_EN_1993_1_1",
       "DIN_EN_1995_1_1",
       {
-        "title": "DIN EN 1990 mit NA (1. Generation, eingeführt); EN 1990:2023 (2. Generation, DIN-Fassung angekündigt)"
+        "title": "DIN EN 1990 mit NA (1. Generation, eingeführt); EN 1990-1:2023+A1:2026 (2. Generation, Teil 1: Neubauten; DIN EN 1990-1:2026-12 angekündigt) und EN 1990-2 (bestehende Tragwerke)"
       },
       {
         "title": "DIN EN 12390-12:2020-04 (Prüfung von Festbeton - Teil 12: Bestimmung des Karbonatisierungswiderstandes von Beton - Beschleunigtes Karbonatisierungsverfahren)"
@@ -200,8 +200,8 @@
       "url": "https://eurocodes.jrc.ec.europa.eu/second-generation-eurocodes"
     },
     "NormenAusblick.weblinks.6": {
-      "title": "DIN Media: DIN EN 1990 (Deutsche Fassung EN 1990:2023, vorbestellbar)",
-      "url": "https://www.dinmedia.de/de/norm/din-en-1990/357122321"
+      "title": "DIN Media: DIN EN 1990-1:2026-12 (Deutsche Fassung EN 1990-1:2023+A1:2026, vorbestellbar)",
+      "url": "https://www.dinmedia.de/en/standard/din-en-1990-1-a1/400467169"
     },
     "NormenAusblick.weblinks.11": {
       "title": "Genorma: CEN-Projekt EN 206-100 (ERC-Beton, gelöscht 2024)",

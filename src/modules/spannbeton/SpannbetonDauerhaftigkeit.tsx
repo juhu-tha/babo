@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import inhalt from '@/content/spannbeton/SpannbetonDauerhaftigkeit.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { spanngliedDeckung } from '@/src/calc/spannbeton';
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 const REITER = [
@@ -56,64 +57,12 @@ export default function SpannbetonDauerhaftigkeit() {
   >('lufteinschluss');
 
   // Calculation of cover according to DIN EN 1992-1-1 + NA & DIN EN 1992-2 (Bridge Standard)
-  const coverCalculation = useMemo(() => {
-    // 1. Verbundanforderung c_min,b nach DIN EN 1992-1-1 Tab. 4.2:
-    let c_min_b = 0;
-    if (prestressSystem === 'post_tensioned') {
-      // Runde Hüllrohre: c_min,b = Durchmesser des Hüllrohrs, jedoch nicht mehr als 80 mm (EC2 Tab. 4.2)
-      c_min_b = Math.min(80, ductDiameter);
-    } else if (prestressSystem === 'pre_tensioned') {
-      // Sofortiger Verbund: 2.0 * Litzen-/Drahtdurchmesser (3.0 * bei gerippten Drähten)
-      c_min_b = Math.round(2.0 * strandDiameter);
-    } else {
-      // Ohne Verbund / Monolitzen: 1.5 * Außendurchmesser
-      c_min_b = Math.round(1.5 * strandDiameter);
-    }
-
-    // 2. Dauerhaftigkeitsanforderung c_min,dur (Basiswerte für 50 Jahre Nutzungsdauer)
-    // Grundwert für schlaffe Bewehrung:
-    let baseDur = 15; // XC1
-    if (carbonationClass === 'XC2' || carbonationClass === 'XC3') baseDur = 25;
-    if (carbonationClass === 'XC4') baseDur = 30;
-
-    // Chloride erhöhen die Anforderung drastisch:
-    if (chlorideClass === 'XD1') baseDur = Math.max(baseDur, 35);
-    if (chlorideClass === 'XD2') baseDur = Math.max(baseDur, 40);
-    if (chlorideClass === 'XD3') baseDur = Math.max(baseDur, 45);
-
-    // Zuschlag für 100 Jahre Entwurfslebensdauer bei Brücken (DIN EN 1992-2 / ZTV-ING):
-    const delta_dur_100 = structureType === 'bruecke' ? 5 : 0;
-
-    // Normativer Erhöhungszuschlag für Spannstahl nach DIN EN 1992-1-1 Abs. 4.4.1.2(5):
-    // Bei Spanngliedern im Verbund: Delta c_dur,gamma = +10 mm
-    const delta_dur_gamma = prestressSystem === 'unbonded' ? 0 : 10;
-
-    // Abminderung bei hochfestem Beton (Mindestdruckfestigkeitsklassen-Vorteil nach EC2 Tab. 4.3ND)
-    let delta_dur_fck = 0;
-    if (concreteGrade === 'C45/55' || concreteGrade === 'C50/60') delta_dur_fck = 5;
-
-    const c_min_dur = Math.max(10, baseDur + delta_dur_100 + delta_dur_gamma - delta_dur_fck);
-
-    // c_min = max(c_min,b; c_min,dur; 10 mm)
-    const c_min = Math.max(c_min_b, c_min_dur, 10);
-
-    // Vorhaltemaß Delta c_dev nach NA(DE): 10 mm bei XC1 im Hochbau, sonst 15 mm
-    const delta_c_dev = structureType === 'bruecke' ? 15 : (carbonationClass === 'XC1' ? 10 : 15);
-
-    const c_nom = c_min + delta_c_dev;
-
-    return {
-      c_min_b,
-      baseDur,
-      delta_dur_gamma,
-      delta_dur_100,
-      delta_dur_fck,
-      c_min_dur,
-      c_min,
-      delta_c_dev,
-      c_nom
-    };
-  }, [structureType, prestressSystem, ductDiameter, strandDiameter, carbonationClass, chlorideClass, concreteGrade]);
+  // Betondeckung nach DIN EN 1992-1-1 + NA (DE): Rechenkern spanngliedDeckung (src/calc/spannbeton.ts),
+  // c_min,dur aus Tab. 4.4DE wie die zentralen Expositionsklassen-Daten (Durchsicht A 29.10.2026, DSA-SB-2)
+  const coverCalculation = useMemo(() => spanngliedDeckung({
+    bauwerk: structureType, verfahren: prestressSystem, huellrohrMm: ductDiameter, litzeMm: strandDiameter,
+    xc: carbonationClass, xd: chlorideClass, betonklasse: concreteGrade,
+  }), [structureType, prestressSystem, ductDiameter, strandDiameter, carbonationClass, chlorideClass, concreteGrade]);
 
   return (
     <div className="space-y-6">

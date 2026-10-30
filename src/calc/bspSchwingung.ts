@@ -30,6 +30,18 @@ export const BSP_KENNWERTE = {
 } as const;
 
 /**
+ * Kennwertsätze für Steifigkeit und Masse (Umsetzung 29.10.2026, Hinweis der Nachprüfung 2): proHolz Austria (Standard,
+ * E_0,mean 11 550 N/mm², Masse aus der Wichte für Lastannahmen 5,5 kN/m³ ≙ 561 kg/m³, auf der sicheren Seite) oder
+ * Lehrbeispiel wie Quiz qn_holzbau_bauphysik_4 (E = 11 000 N/mm² wie C24, mittlere Rohdichte 450 kg/m³ – für die
+ * Eigenfrequenz ist die mittlere Masse maßgebend; Lehrwert, vorläufig, Normprüfung ausstehend).
+ */
+export const BSP_KENNWERTSAETZE = {
+  proHolz: { E0mean: BSP_KENNWERTE.E0mean, wichte: BSP_KENNWERTE.wichte },
+  lehrbeispiel: { E0mean: 11000, wichte: (450 * 9.81) / 1000 },
+} as const;
+export type BspKennwertsatz = keyof typeof BSP_KENNWERTSAETZE;
+
+/**
  * Rollschubmodul wählbar (T10-HB-2, Umsetzung 29.10.2026): 50 N/mm² wie in vielen ETAs und der Neuausgabe von EC 5
  * (Standard), 65 N/mm² nach proHolz Austria (2018).
  */

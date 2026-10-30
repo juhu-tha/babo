@@ -1,6 +1,5 @@
 import React, { useState, useMemo } from 'react';
 import { Leaf, Activity, Recycle, FileText, ShieldCheck, Scale, Award, Info, Search, GraduationCap, Calculator, HelpCircle, Milestone } from 'lucide-react';
-import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
 import { BlockMath, InlineMath } from 'react-katex';
 import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
 import IngenieurbauLCA from './lca/IngenieurbauLCA';
@@ -958,6 +957,7 @@ export default function LCA() {
                       <p className="leading-relaxed"><MdText text={inhalt.texte.sehrGuteHolzwahlDurch} />{formatDeWert(calcDistance)}<MdText text={inhalt.texte.kmMitKleintransporternDer} /></p>
                     ) : (
                       <div>
+                        {/* Hinweisschwelle des Tutors: A4 über 30 % von A1–A3 (Darstellungsgröße, kein Kennwert) */}
                         {calcResults.gwpA4 > (calcResults.gwpA1A3 * 0.3) ? (
                           <p className="leading-relaxed"><MdText text={inhalt.texte.achtungDieTransportEmissionen} />{formatDeWert(calcDistance)}<MdText text={inhalt.texte.kmIstEinUmstieg} /></p>
                         ) : (
@@ -1012,17 +1012,7 @@ export default function LCA() {
       )}
       </ModuleTabs>
 
-      <ModuleFooter
-        wikipedia={[
-          { title: inhalt.werte.ökobilanzLca, url: 'https://de.wikipedia.org/wiki/%C3%96kobilanz' },
-          { title: inhalt.werte.umweltproduktdeklarationEpd, url: 'https://de.wikipedia.org/wiki/Environmental_Product_Declaration' }
-        ]}
-        literatur={inhalt.daten["LCA.literatur"]}
-        normIds={['DIN_EN_15804', 'DIN_EN_15978', 'DIN_EN_17472']}
-        regelwerke={inhalt.daten["LCA.regelwerke"]}
-        weblinks={inhalt.daten["LCA.weblinks"]}
-        formeln={inhalt.daten["LCA.formeln"]}
-      />
+      {/* Fußzeile: nur die modulweite in OekobilanzLCA.tsx (Nachprüfung 29.10.2026, doppelte Fußzeile entfernt) */}
     </div>
   );
 }

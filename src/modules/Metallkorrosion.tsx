@@ -119,7 +119,7 @@ export default function Metallkorrosion() {
     
     const interval = setInterval(() => {
       setRustThickness(prev => Math.min(100, prev + speed));
-      setAnodeErosion(prev => Math.min(45, prev + speed * 0.4));
+      setAnodeErosion(prev => Math.min(45, prev + speed * 0.4)); // Darstellungsfaktor der Animation
     }, 1000);
     
     return () => clearInterval(interval);

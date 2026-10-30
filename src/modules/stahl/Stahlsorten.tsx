@@ -1,4 +1,4 @@
-import { plastischeKapazitaet } from '@/src/calc/stahlbau';
+import { plastischeKapazitaet, co2VorteilProfil, einsparanteilProfil, GWP_PROFILSTAHL_KG } from '@/src/calc/stahlbau';
 import { BookOpen, Sparkles, Layers, Flame, Activity, Scale, Check, TrendingDown } from 'lucide-react';
 import { InlineMath } from 'react-katex';
 import { extendedSteelGrades, structuralProfiles } from './daten';
@@ -25,6 +25,11 @@ interface StahlsortenProps {
   setSteelCatalogFilter: Dispatch<SetStateAction<"baustahl" | "bewehrung" | "spannstahl" | "edelstahl" | "all">>;
   steelCatalogFilter: "baustahl" | "bewehrung" | "spannstahl" | "edelstahl" | "all";
 }
+
+// Einsparanteil des Optimierungsbeispiels aus den Profilgewichten (IPE 300 → IPE 200 in S690), NP2-ST-2
+const IPE_ALT = structuralProfiles.find(p => p.id === 'IPE300')!;
+const IPE_NEU = structuralProfiles.find(p => p.id === 'IPE200')!;
+const EINSPARANTEIL = einsparanteilProfil(IPE_ALT.weight, IPE_NEU.weight);
 
 export default function Stahlsorten({ activeGradedData, activeProfile, designMoment, filteredSteelGrades, reinforcementDeepDiveTab, selectedProfileId, selectedStahlsorteId, setDesignMoment, setReinforcementDeepDiveTab, setSelectedProfileId, setSelectedStahlsorteId, setSteelCatalogFilter, steelCatalogFilter }: StahlsortenProps) {
   return (
@@ -625,9 +630,9 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1">
                 <Flame size={11} className="text-shiraz" /><MdText text={inhalt.texte.coEmissionsvorteilBeiOptimierung} /></span>
               <span className="text-xl font-mono font-black text-emerald-600">
-                ~ {formatDeZahl(((activeProfile.weight * 1.8) * 0.45), 1)} kg CO₂ / m
+                ~ {formatDeZahl(co2VorteilProfil(activeProfile.weight, EINSPARANTEIL), 1)} kg CO₂-Äq./m
               </span>
-              <span className="text-[11px] text-slate-500 leading-normal font-normal"><MdText text={inhalt.texte.vermeideteCoEmissionenDurch} /></span>
+              <span className="text-[11px] text-slate-500 leading-normal font-normal"><MdText text={inhalt.texte.vermeideteCoEmissionenDurch} /> ({formatDeZahl(GWP_PROFILSTAHL_KG, 1)} kg CO₂-Äq./kg · {formatDeZahl(EINSPARANTEIL * 100, 0)} %)</span>
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@ import { Layers } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/src/components/ui/Slider';
 import { carbonbetonBiegung } from '@/src/calc/carbonbeton';
+import { BETONSTAHL, E_BETONSTAHL } from '@/src/data/kennwerte';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
 import { FormulaText } from '@/src/components/ui/FormulaText';
 import { ModuleFooter } from '@/src/components/ui/ModuleFooter';
@@ -86,12 +87,13 @@ export default function Carbonbeton() {
       }
 
       // Stahl: B500B
-      const epsFlies = (500 / 200000) * 1000; // 2.5 ‰
+      const epsFlies = (BETONSTAHL.B500B.fyk / E_BETONSTAHL) * 1000; // 2,5 ‰ (zentral, src/data/kennwerte.ts)
       if (eps <= epsFlies) {
-        stressSteel.push(eps * 1e-3 * 200000);
+        stressSteel.push(eps * 1e-3 * E_BETONSTAHL);
       } else {
-        // Verfestigung bis 540 MPa bei 50‰ (vereinfacht)
-        const stress = 500 + (eps - epsFlies) * (40 / (50 - epsFlies));
+        // Verfestigung bis f_tk = 540 N/mm² bei ε_uk = 50 ‰ (B500B, zentral; vereinfacht linear)
+        const B = BETONSTAHL.B500B;
+        const stress = B.fyk + (eps - epsFlies) * ((B.ftk - B.fyk) / (B.euk - epsFlies));
         stressSteel.push(stress);
       }
     }

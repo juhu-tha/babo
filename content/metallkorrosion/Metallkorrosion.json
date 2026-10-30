@@ -48,7 +48,7 @@
     "schritt3DehydratisierungZum": "Schritt 3: Dehydratisierung zum Endprodukt (Rost)",
     "dasInstabileEisenIii": "Das instabile Eisen(III)-hydroxid spaltet unter Wasserverlust molekulare Anteile ab und geht in stabiles Goethit (FeO(OH)) bzw. wasserhaltige Eisen(III)-oxide über (Endstufe \"Rost\"):",
     "goethitEisenIiiHydroxidoxid": "Goethit (Eisen(III)-hydroxidoxid)",
-    "volumendehnungseffektBauteilsprengungRos": "**Volumendehnungseffekt & Bauteilsprengung:** Rost beansprucht je nach Hydratationsgrad das **4- bis 6-fache Volumen** des ursprünglichen Eisengitters. Im Stahlbetonbau führt dieser expansive Kristallisationsdruck (oft weit über 100 MPa) zu einer gewaltigen Radialspannung um die Bewehrung. Sobald dieser Druck die Betonzugfestigkeit (ca. 2–4 MPa) überschreitet, reißt die Betondeckung auf und platzt flächig ab (Sprengeffekt).",
+    "volumendehnungseffektBauteilsprengungRos": "**Volumendehnungseffekt & Bauteilsprengung:** Rost beansprucht je nach Oxid und Hydratationsgrad das **2- bis 6-fache Volumen** des ursprünglichen Eisengitters. Im Stahlbetonbau führt dieser expansive Kristallisationsdruck (oft weit über 100 MPa) zu einer gewaltigen Radialspannung um die Bewehrung. Sobald dieser Druck die Betonzugfestigkeit (ca. 2–4 MPa) überschreitet, reißt die Betondeckung auf und platzt flächig ab (Sprengeffekt).",
     "einflussfaktorenAufDieKorrosionsgeschwin": "Einflussfaktoren auf die Korrosionsgeschwindigkeit",
     "dieKinetikDerKorrosion": "Die Kinetik der Korrosion wird nach den BGRCI-Richtlinien maßgeblich durch vier thermodynamische und chemische Leitgrößen gesteuert:",
     "phWertSäuregrad": "pH-Wert (Säuregrad)",

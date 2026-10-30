@@ -380,13 +380,13 @@ export default function StahlbauEC3() {
                   schritte={[
                     {
                       titel: 'Bezugsschlankheit',
-                      erklaerung: `Für ${guete} mit f_y = ${formatDeWert(r.fy)} N/mm² und E = 210 000 N/mm²:`,
-                      formel: `\\lambda_1 = \\pi \\sqrt{\\frac{210\\,000}{${tex(r.fy, 0)}}} = ${tex(r.lambda1, 2)}`,
+                      erklaerung: `Für ${guete} mit f_y = ${formatDeWert(r.fy)} N/mm² und E = ${formatDeWert(EC3_NA_DE.E)} N/mm²:`,
+                      formel: `\\lambda_1 = \\pi \\sqrt{\\frac{${tex(EC3_NA_DE.E, 0)}}{${tex(r.fy, 0)}}} = ${tex(r.lambda1, 2)}`,
                     },
                     {
                       titel: inhalt.werte.idealeVerzweigungslast,
                       erklaerung: `Maßgebend ist die Achse ${r.massgebend}–${r.massgebend} mit i = ${formatDeZahl(iM, 2)} cm und L_cr = ${formatDeZahl(m.Lcr, 2)} m (I = A · i²):`,
-                      formel: `N_{cr} = \\frac{\\pi^2 \\cdot 210\\,000 \\cdot ${tex(p.A * 100, 0)} \\cdot ${tex(iM * 10, 1)}^2}{${tex(m.Lcr * 1000, 0)}^2} = ${tex(m.Ncr, 0)}\\,\\text{kN}`,
+                      formel: `N_{cr} = \\frac{\\pi^2 \\cdot ${tex(EC3_NA_DE.E, 0)} \\cdot ${tex(p.A * 100, 0)} \\cdot ${tex(iM * 10, 1)}^2}{${tex(m.Lcr * 1000, 0)}^2} = ${tex(m.Ncr, 0)}\\,\\text{kN}`,
                     },
                     {
                       titel: inhalt.werte.bezogenerSchlankheitsgrad2,
@@ -405,8 +405,8 @@ export default function StahlbauEC3() {
                     },
                     {
                       titel: inhalt.werte.knickwiderstandUndNachweis,
-                      erklaerung: `γ_M1 = 1,1 nach NA (DE); N_Ed = ${formatDeZahl(nEd, 0)} kN:`,
-                      formel: `N_{b,Rd} = \\frac{${tex(m.chi, 3)} \\cdot ${tex(p.A * 100, 0)} \\cdot ${tex(r.fy, 0)}}{1{,}1} = ${tex(r.NbRd, 1)}\\,\\text{kN}, \\quad \\frac{N_{Ed}}{N_{b,Rd}} = ${tex(r.ausnutzung, 2)}`,
+                      erklaerung: `γ_M1 = ${formatDeZahl(EC3_NA_DE.gammaM1, 1)} nach NA (DE); N_Ed = ${formatDeZahl(nEd, 0)} kN:`,
+                      formel: `N_{b,Rd} = \\frac{${tex(m.chi, 3)} \\cdot ${tex(p.A * 100, 0)} \\cdot ${tex(r.fy, 0)}}{${tex(EC3_NA_DE.gammaM1, 1)}} = ${tex(r.NbRd, 1)}\\,\\text{kN}, \\quad \\frac{N_{Ed}}{N_{b,Rd}} = ${tex(r.ausnutzung, 2)}`,
                     },
                   ]}
                   ergebnisHinweis={inhalt.werte.querschnittsklasse4ErfordertA}

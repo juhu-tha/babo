@@ -54,7 +54,7 @@ export default function Kreislaufwirtschaft() {
   const W = 1 - (mciRecycledOut + mciReusedOut) / 100;
   const lfi = Math.max(0, Math.min(1, (V + W) / 2));
   const utility = (lifespan / (avgLifespan || 1)) * (intensity / (avgIntensity || 1));
-  const f_u = utility > 0 ? (0.9 / utility) : 0.9;
+  const f_u = utility > 0 ? (0.9 / utility) : 0.9; // F(X) = 0,9/X nach Ellen MacArthur Foundation/Granta (2015), wie formeln.1
   const circularityIndex = Math.max(0, Math.min(100, (1 - lfi * f_u) * 100));
 
   // Rückbauplanung & Re-Use (DIN SPEC 91484 & DIN SPEC 91525) States
@@ -227,6 +227,8 @@ export default function Kreislaufwirtschaft() {
       if (!isHazardous && comp.targetChannel === 'reuse') {
         totalReusableWeightTons += weightTons * connectionRatingFactor;
 
+        // Vermiedene Herstellungsemissionen je kg Bauteil bei Wiederverwendung [kg CO₂-Äq./kg], Erlöse je Stück [€]: gerundete
+        // Lehrwerte des Rückbau-Audits ohne Datenbankbezug (Durchsicht B 29.10.2026, DSB-KD-1)
         let embodiedCarbonFactor = 0.8;
         if (comp.category === 'Metall') embodiedCarbonFactor = 4.3;
         else if (comp.category === 'Holz') embodiedCarbonFactor = 1.45;
@@ -245,7 +247,7 @@ export default function Kreislaufwirtschaft() {
       } else if (!isHazardous && comp.targetChannel === 'recycle') {
         const recycleCarbonFactor = comp.category === 'Metall' ? 1.0 : 0.08;
         totalAvoidedCo2Kg += weightKg * recycleCarbonFactor;
-        estimatedRevenueEur += comp.quantity * 1.5;
+        estimatedRevenueEur += comp.quantity * 1.5; // Lehrwert: Erlös Recycling je Stück [€]
       } else if (isHazardous) {
         estimatedRevenueEur -= comp.quantity * 12;
       }

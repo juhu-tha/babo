@@ -59,7 +59,7 @@ export default function Recyclingbeton() {
       // Typ 2: Bau- und Abbruchbruch (Mauerwerk etc., schlechtere Qualität)
       maxAnteil = maxNachKlasse;
       eModulReduktion = rcAnteil * 0.40; // ca. 40% Reduktion bei 100% RC
-      wasseranspruchErhoehung = rcAnteil * 0.30;
+      wasseranspruchErhoehung = rcAnteil * 0.30; // ca. 30% mehr Wasserbedarf bei 100% (Lehrannahme)
       schwindenErhoehung = rcAnteil * 0.50; // ca. 50% mehr Schwinden bei 100%
       rohdichteReduktion = rcAnteil * 0.12; // ca. 12% geringere Dichte bei 100%
     }

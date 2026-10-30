@@ -3,6 +3,7 @@ import { formatDeWert, formatDeZahl } from '@/src/utils/numberFormat';
 import type { Dispatch, SetStateAction } from 'react';
 import inhalt from '@/content/spannbeton/kennwerte/KennwerteRechner.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { E_SPANNSTAHL } from '@/src/calc/spannbeton';
 
 interface KennwerteRechnerProps {
   calcFck: number;
@@ -128,7 +129,7 @@ export default function KennwerteRechner({ calcFck, calcRH, calcSteelLoss, calcT
               <span className="text-xs text-blue-800 font-medium"><MdText text={inhalt.texte.gesamtschwindmaßCs} /></span>
               <div className="text-2xl font-bold font-mono text-blue-900">{formatDeZahl((estEpsCs * 1000), 2)} mm/m</div>
               <p className="text-[10px] text-blue-700">
-                Entspricht {formatDeZahl((estEpsCs * 195000), 0)}<MdText text={inhalt.texte.nMmTheoretischemSpannungsabfall} /></p>
+                Entspricht {formatDeZahl((estEpsCs * E_SPANNSTAHL), 0)}<MdText text={inhalt.texte.nMmTheoretischemSpannungsabfall} /></p>
             </div>
 
             <div className="p-4 rounded-xl bg-purple-50/60 border border-purple-200 space-y-1">
