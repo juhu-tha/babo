@@ -939,6 +939,14 @@
     ],
     "correctIdx": 2,
     "explanation": "Nachwachsende Rohstoffe absorbieren während ihres biologischen Wachstums CO₂ aus der Atmosphäre. Dies wird nach DIN EN 15804 als negativer Treibhausbeitrag (GWP-biogen) in den Herstellungsphasen A1-A3 bilanziert. Am Lebensende (Modul C3/C4) wird dieses CO₂ bei thermischer Verwertung wieder freigesetzt.",
+    "bloom": "Verstehen",
+    "niveau": "B",
+    "distraktorFeedback": [
+      "Transporte gehen als positive Emissionen in A2 bzw. A4 ein; sie können ein GWP nicht negativ machen.",
+      "Biogene Baustoffe verdampfen nicht; bei Verbrennung oder Verrottung am Lebensende (C3/C4) wird das gespeicherte CO₂ wieder freigesetzt.",
+      "",
+      "Der Energieaufwand der Sägewerke wird in A3 vollständig bilanziert; negativ wird das GWP allein durch den biogenen Kohlenstoff."
+    ],
     "gapAnalysis": {
       "topic": "Biogener Kohlenstoffspeicher in Ökobilanzen",
       "misconception": "Verwechslung von fossilen Emissionen mit dem bilanziellen Kohlenstoffspeichereffekt nachwachsender Rohstoffe.",
@@ -951,7 +959,7 @@
     "vorpruefung": {
       "am": "2026-10-30",
       "ergebnis": "korrigiert",
-      "hinweis": "Abgleich 30.10.: Lernhilfe „1 m³ Fichtenholz bindet ca. 800–900 kg CO₂“ an DIN EN 16449 und den zentralen Lehrwert angeglichen (KVH 500 kg/m³ −820 kg, Fichte 450 kg/m³ rund 740 kg; Durchsicht D, DSD-HO-2) – korrigiert"
+      "hinweis": "Abgleich 30.10.: Lernhilfe „1 m³ Fichtenholz bindet ca. 800–900 kg CO₂“ an DIN EN 16449 und den zentralen Lehrwert angeglichen (KVH 500 kg/m³ −820 kg, Fichte 450 kg/m³ rund 740 kg; Durchsicht D, DSD-HO-2) – korrigiert (Bloom-Stufe, Niveau und Rückmeldungen ergänzt)"
     }
   },
   {

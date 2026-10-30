@@ -148,7 +148,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 84 korrigiert, 0 fraglich, 1
 
 - **Frage:** Warum deklarieren Umweltproduktdeklarationen (EPDs) nachwachsender Rohstoffe wie Holz oder Stroh in Phase A1-A3 oft negative GWP-Werte?
 - **Richtige Antwort:** Weil Bäume während des Wachstums CO2 via Photosynthese absorbieren und als biogenen Kohlenstoff physisch im Bauteil speichern (temporäre Kohlenstoffsenke).
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Abgleich 30.10.: Lernhilfe „1 m³ Fichtenholz bindet ca. 800–900 kg CO₂“ an DIN EN 16449 und den zentralen Lehrwert angeglichen (KVH 500 kg/m³ −820 kg, Fichte 450 kg/m³ rund 740 kg; Durchsicht D, DSD-HO-2) – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Abgleich 30.10.: Lernhilfe „1 m³ Fichtenholz bindet ca. 800–900 kg CO₂“ an DIN EN 16449 und den zentralen Lehrwert angeglichen (KVH 500 kg/m³ −820 kg, Fichte 450 kg/m³ rund 740 kg; Durchsicht D, DSD-HO-2) – korrigiert (Bloom-Stufe, Niveau und Rückmeldungen ergänzt)
 - [ ] ok
 - [ ] ändern: …
 
