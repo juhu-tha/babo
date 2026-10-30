@@ -48,6 +48,15 @@ const TEILE: Record<LcaTeil, { titel: string; text: React.ReactNode; tabs: { id:
   },
 };
 
+/** Eine Fußzeile je Modul (Nachstichprobe 29.10.2026): Der LCA-Rechner hat keine eigene Fußzeile mehr; seine Literatur,
+ *  Formeln und die zusätzlichen Regelwerke stehen im Teil „rechner“ in der modulweiten Fußzeile.
+ *  Klammern um die Verweise beim Spread: das Einbetten (scripts/inhaltEinbetten.ts) ersetzt nur Verweise ohne Punkt davor. */
+const RECHNER_FUSS = {
+  literatur: inhaltJson.daten["OekobilanzLCA.literatur_rechner"],
+  regelwerke: inhaltJson.daten["OekobilanzLCA.regelwerke_rechner"],
+  formeln: inhaltJson.daten["OekobilanzLCA.formeln_rechner"],
+};
+
 export default function OekobilanzLCA({ teil = 'grundlagen' }: { teil?: LcaTeil }) {
   const t = TEILE[teil];
   const [activeTab, setActiveTab] = useState<LcaTab>(t.tabs[0].id);
@@ -109,11 +118,11 @@ export default function OekobilanzLCA({ teil = 'grundlagen' }: { teil?: LcaTeil 
           { title: 'Treibhauspotenzial', url: 'https://de.wikipedia.org/wiki/Treibhauspotenzial' },
           { title: inhaltJson.werte.graueEnergie, url: 'https://de.wikipedia.org/wiki/Graue_Energie' }
         ]}
-        literatur={inhaltJson.daten["OekobilanzLCA.literatur"]}
+        literatur={teil === 'rechner' ? [...(inhaltJson.daten["OekobilanzLCA.literatur"]), ...RECHNER_FUSS.literatur] : inhaltJson.daten["OekobilanzLCA.literatur"]}
         normIds={['DIN_EN_15804', 'DIN_EN_15978', 'DIN_EN_17472']}
-        regelwerke={inhaltJson.daten["OekobilanzLCA.regelwerke"]}
+        regelwerke={teil === 'rechner' ? [...(inhaltJson.daten["OekobilanzLCA.regelwerke"]), ...RECHNER_FUSS.regelwerke] : inhaltJson.daten["OekobilanzLCA.regelwerke"]}
         weblinks={inhaltJson.daten["OekobilanzLCA.weblinks"]}
-        formeln={inhaltJson.daten["OekobilanzLCA.formeln"]}
+        formeln={teil === 'rechner' ? [...(inhaltJson.daten["OekobilanzLCA.formeln"]), ...RECHNER_FUSS.formeln] : inhaltJson.daten["OekobilanzLCA.formeln"]}
       />
     </div>
   );
