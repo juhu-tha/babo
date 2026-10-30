@@ -51,7 +51,7 @@
     "mauersteinDruckfestigkeitFP": "Mauerstein-Druckfestigkeit f_p",
     "wanddruckfestigkeitFK": "Wanddruckfestigkeit f_k",
     "rechnerischerAnsatzNachEurocode": "Rechnerischer Ansatz nach Eurocode 6 (DIN EN 1996-1-1)",
-    "t1ProbenFormbeiwertD": "1. Proben-Formbeiwert d: ",
+    "t1ProbenFormbeiwertD": "1. Proben-Formbeiwert d (Näherung über h/w; DIN EN 772-1, Tab. A.1 unterscheidet Höhe und Breite der Probe, z. B. Reichsformat 65/120 mm etwa 0,81 – Formbeiwert für Mauerwerk vorläufig, Normprüfung ausstehend): ",
     "t2DeklarierteSteinfestigkeitF": "2. Deklarierte Steinfestigkeit f_b: ",
     "mauerwerkgrundformelMörtelklasseM": "Mauerwerkgrundformel (Mörtelklasse M",
     "statischZulässigesSpannungsniveauF": "Statisch zulässiges Spannungsniveau ($f_{d} = f_k / \\gamma_M$)",

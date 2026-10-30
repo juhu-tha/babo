@@ -46,7 +46,7 @@
     "zweiVölligUnterschiedlichePhilosophien": "**Zwei völlig unterschiedliche Philosophien im Betonbau:**",
     "bewehrungsstahlB500bB500aB500c": "Bewehrungsstahl (B500B / B500A / B500C):",
     "arbeitetImGerissenenBeton": "Arbeitet im gerissenen Beton (Zustand II). Beton nimmt den Druck auf, Stahl die Zugkräfte. Verlangt hohe Rippung zur Rissbreitenbegrenzung und garantierte Duktilität ($A_{gt} \\ge 5\\%$), um bei Rissbildung Verformungsenergie aufzunehmen.",
-    "spannstahlY1860S7Sas": "Spannstahl (Y1860 S7 / SAS 670):",
+    "spannstahlY1860S7Sas": "Spannstahl (Y1860 S7) und Gewindestab (SAS 670/800):",
     "wirdVorwegAktivAuf": "Wird vorweg aktiv auf ca. 70–80 % seiner Zugfestigkeit ($\\approx 1400\\text{ MPa}$) gedehnt, um den Beton künstlich zu überdrücken. Verhindert Risse komplett (Zustand I). Verlangt minimale Relaxation ($\\le 2{,}5\\%$) und darf wegen Sprödbruchgefahr **unter keinen Umständen geschweißt** werden!"
   },
   "werte": {
