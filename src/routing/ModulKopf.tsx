@@ -27,11 +27,11 @@ export default function ModulKopf({ activeTab, setActiveTab }: { activeTab: TabI
   const eintraege: KopfEintrag[] = [];
   if (lernziele) eintraege.push({ id: 'lernziele', label: 'Lernziele', icon: <Target size={14} aria-hidden="true" />,
     inhalt: <><LernzieleMeta moduleId={activeTab} daten={lernziele} /><LernzieleZiele daten={lernziele} oeffneModul={oeffne} /></> });
-  if (kurzfassung) eintraege.push({ id: 'kurzfassung', label: 'Das Wichtigste in 5 Punkten', icon: <ListChecks size={14} aria-hidden="true" />,
+  if (kurzfassung) eintraege.push({ id: 'kurzfassung', label: 'Das Wichtigste', icon: <ListChecks size={14} aria-hidden="true" />,
     inhalt: <KurzfassungPunkte punkte={kurzfassung} /> });
   if (erkundung) eintraege.push({ id: 'ausprobieren', label: 'Ausprobieren', zusatz: formatDeWert(alleAuftraege(erkundung).length),
     icon: <FlaskConical size={14} aria-hidden="true" />, inhalt: <ErkundungAuftraege daten={erkundung} /> });
-  if (hatGrenzen(grenzen)) eintraege.push({ id: 'annahmen', label: 'Annahmen des Rechners', zusatz: formatDeWert(grenzen.grenzen.length),
+  if (hatGrenzen(grenzen)) eintraege.push({ id: 'annahmen', label: 'Annahmen des Rechners',
     icon: <SlidersHorizontal size={14} aria-hidden="true" />, inhalt: <RechnerGrenzenListe grenzen={grenzen} /> });
   return (
     <>
