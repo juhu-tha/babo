@@ -19,7 +19,7 @@
     "co2KostenLehrwerte": "CO₂- und Kostenangaben: gerundete Spannen je Tonne behandeltes Material (Lehrwerte ohne Projekt- oder Anlagenbezug); maßgebend sind Angebote und Nachweise der Behandlungsanlage.",
     "rechtlicheVorgabenEbvBbodschv": "Rechtliche Vorgaben & EBV / BBodSchV",
     "chronologischerVerfahrensablauf": "Chronologischer Verfahrensablauf",
-    "hinweisZuAsbestFasern": "Hinweis zu Asbest/Fasern: Das Zerkleinern und Wiederaufbereiten asbesthaltiger Boden- und Demontagematerialien stellt in Deutschland gem. TRGS 519 eine schwerwiegende Ordnungswidrigkeit bzw. Umweltstraftat dar. Solche Vorkommen müssen strikt separat deponiert werden.",
+    "hinweisZuAsbestFasern": "Hinweis zu Asbest/Fasern: Das Zerkleinern und Wiederaufbereiten asbesthaltiger Boden- und Demontagematerialien ist in Deutschland nach § 11 Abs. 1 GefStoffV verboten (die TRGS 519 konkretisiert die Schutzmaßnahmen bei Abbruch-, Sanierungs- und Instandhaltungsarbeiten); Verstöße sind Ordnungswidrigkeiten oder Straftaten (GefStoffV in Verbindung mit dem ChemG, gegebenenfalls § 326 StGB). Solche Vorkommen müssen strikt separat deponiert werden.",
     "qualitätssicherungGüteüberwachungProdukt": "Qualitätssicherung & Güteüberwachung (Produktkreislauf)",
     "dieGesetzlicheQualitätssicherungsschleif": "Die gesetzliche Qualitätssicherungsschleife zur Freigabe mineralischer Sekundärbaustoffe",
     "damitMineralischeErsatzbaustoffeMeb": "Damit mineralische Ersatzbaustoffe (MEB) anstelle von Primärkiestypen rechtlich belastbar verbaut werden können, schreibt die EBV einen vierstufigen Gütekreislauf vor. Hierdurch verliert der recycelte Baustoff rechtlich seine Abfalleigenschaft und wird zum normgerechten Bauprodukt.",
@@ -194,7 +194,7 @@
             "Transport unter lückenloser eANV-Nachweisüberwachung.",
             "Endlagerung in Monozellen auf zugelassenen Deponien ohne mechanische Nachbearbeitung."
           ],
-          "rules": "GefStoffV § 11a und Anhang II Nr. 1 / REACH Anhang XVII Nr. 6 / DepV: Recycling oder Wiedereinbau asbesthaltiger Böden und Bauschuttgemische ist verboten; asbesthaltige Abfälle werden staubdicht verpackt deponiert."
+          "rules": "GefStoffV § 11 Abs. 1 Nr. 1 und 2 (Verwendungs- und Tätigkeitsbeschränkungen für Asbest; bis 04.12.2024 Anhang II Nr. 1) / REACH Anhang XVII Nr. 6 / DepV: Recycling oder Wiedereinbau asbesthaltiger Böden und Bauschuttgemische ist verboten; asbesthaltige Abfälle werden staubdicht verpackt deponiert."
         },
         "gips_sulfat": {
           "method": "Nassklassierung & Flotation",

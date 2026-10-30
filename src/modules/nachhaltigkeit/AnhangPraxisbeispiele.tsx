@@ -209,7 +209,7 @@ export default function AnhangPraxisbeispiele() {
               </div>
               <div className="grid grid-cols-3 text-xs py-0.5 text-slate-800">
                 <div><MdText text={inhalt.texte.anlagenBetriebB6} /></div>
-                <div className="text-center font-mono font-medium">7,75</div>
+                <div className="text-center font-mono font-medium">7,74</div>
                 <div className="text-right font-mono text-slate-500 font-semibold">34 %</div>
               </div>
               <div className="grid grid-cols-3 text-xs font-bold pt-2 border-t border-stone-250 text-slate-900 bg-slate-50 -mx-3 -mb-3 p-3">
