@@ -424,7 +424,7 @@
       "properties": {
         "density": 640,
         "eModul": 11000,
-        "compressive": 23,
+        "compressive": 24,
         "tensile": 18,
         "thermalCond": 0.17,
         "thermalExp": 5,

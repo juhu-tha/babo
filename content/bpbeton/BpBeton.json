@@ -32,7 +32,7 @@
       {
         "titel": "1. Prüfergebnisse",
         "formel": "f_{cm} = 38{,}5\\,\\text{N/mm}^2,\\; s = 5{,}0\\,\\text{N/mm}^2",
-        "erklaerung": "Mittelwert und Standardabweichung einer Produktionsserie."
+        "erklaerung": "Mittelwert und Standardabweichung einer Produktionsserie, geprüft an Zylindern 150/300 mm (Vergleich mit f_ck; bei 150-mm-Würfeln wäre mit f_ck,cube = 37 N/mm² zu vergleichen)."
       },
       {
         "titel": "2. 5-%-Quantil",

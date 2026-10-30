@@ -957,6 +957,7 @@ export default function LCA() {
                       <p className="leading-relaxed"><MdText text={inhalt.texte.sehrGuteHolzwahlDurch} />{formatDeWert(calcDistance)}<MdText text={inhalt.texte.kmMitKleintransporternDer} /></p>
                     ) : (
                       <div>
+                        {/* Hinweisschwelle des Tutors: A4 über 30 % von A1–A3 (Darstellungsgröße, kein Kennwert) */}
                         {calcResults.gwpA4 > (calcResults.gwpA1A3 * 0.3) ? (
                           <p className="leading-relaxed"><MdText text={inhalt.texte.achtungDieTransportEmissionen} />{formatDeWert(calcDistance)}<MdText text={inhalt.texte.kmIstEinUmstieg} /></p>
                         ) : (

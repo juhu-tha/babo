@@ -26,10 +26,14 @@ export const HOLZWERKSTOFF_SCHWINDMASSE: Readonly<Record<'FSH' | 'OSB', Schwindm
  * Differentielle Schwind- und Quellmaße [% je % Holzfeuchte] für die Rechner „Historische Bauweisen“ und „Holzbau“,
  * Werte wie in Tranche 10 übernommen (T10-HW-1; TU München, Skript „Holz – Eigenschaften, Merkmale“).
  * Längs: Lehrwert 0,01. Quelle des Holzbau-Moduls: content/holzbaubeta/HolzbauBeta.json (shrinkageCoeffs).
+ * Lärche und Buche (Durchsicht D 29.10.2026, DSD-HO-1) wie im Holzbau-Modul (T10-HW-1, gleiche Quelle); das Modul Holz
+ * führte für Buche zuvor eine eigene Kopie 0,22/0,45 ohne Quelle.
  */
 export const SCHWINDBEIWERTE = {
   fichte: { radial: 0.19, tangential: 0.36, longitudinal: 0.01 },
   kiefer: { radial: 0.19, tangential: 0.36, longitudinal: 0.01 },
+  laerche: { radial: 0.14, tangential: 0.29, longitudinal: 0.01 },
+  buche: { radial: 0.20, tangential: 0.40, longitudinal: 0.01 },
   eiche: { radial: 0.18, tangential: 0.34, longitudinal: 0.01 },
 } as const;
 

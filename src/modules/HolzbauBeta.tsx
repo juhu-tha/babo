@@ -8,6 +8,7 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { woodMaterials, dataholzConstructions } from './holzbaubeta/daten';
 import { HOLZ_EN338, holzKennwerte } from '@/src/data/kennwerte';
+import { SCHWINDBEIWERTE } from '@/src/calc/holzphysik';
 import HolzbauInfo from './holzbaubeta/HolzbauInfo';
 import HolzbauWerkstoffe from './holzbaubeta/HolzbauWerkstoffe';
 import HolzbauKonstruktion from './holzbaubeta/HolzbauKonstruktion';
@@ -51,7 +52,12 @@ export default function HolzbauBeta({ activeSubTab = 'info' }: SubTabProps) {
   const [shreHDir, setShreHDir] = useState<string>('tangential');
 
   // Swelling/Shrinking coefficients database (per 1% moisture change below FSP ~ 30%)
-  const shrinkageCoeffs: Record<string, { radial: number; tangential: number; longitudinal: number; label: string }> = inhalt.daten["HolzbauBeta.shrinkageCoeffs"];
+  // Werte zentral aus SCHWINDBEIWERTE (src/calc/holzphysik.ts, Durchsicht D 29.10.2026, DSD-HO-1); aus dem Inhalt nur die Bezeichnung
+  const shrinkageCoeffs: Record<string, { radial: number; tangential: number; longitudinal: number; label: string }> = Object.fromEntries(
+    Object.entries(inhalt.daten["HolzbauBeta.shrinkageCoeffs"] as Record<string, { label: string }>).map(([art, eintrag]) => [
+      art, { ...(SCHWINDBEIWERTE[art as keyof typeof SCHWINDBEIWERTE] ?? SCHWINDBEIWERTE.fichte), label: eintrag.label },
+    ]),
+  );
 
   const shrinkResults = useMemo(() => {
     const coeffs = shrinkageCoeffs[shreWoodType] || shrinkageCoeffs.fichte;

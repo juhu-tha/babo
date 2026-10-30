@@ -52,7 +52,7 @@
     "aufbereitungsanlageBrecheranlagenBackenb": "**Aufbereitungsanlage:** Brecheranlagen (Backenbrecher/Prallmühle) zerkleinern den Beton. Magnetabscheider sortieren den Bewehrungsstahl aus. Windsichter entfernen Störstoffe (Plastikfetzen, Holzreste).",
     "siebungTrennungInNorm": "**Siebung:** Trennung in Norm-Körnungen (z.B. Sand 0/4, Kies 4/8, 8/16, 16/32).",
     "vomBauschuttZumR": "Vom Bauschutt zum R-Beton",
-    "rezyklierteGesteinskörnungenKönnenNormge": "Rezyklierte Gesteinskörnungen können normgerecht zur Herstellung von neuem Konstruktionsbeton genutzt werden (DIN EN 206 / DIN 1045-2 / DAfStb-Richtlinie).",
+    "rezyklierteGesteinskörnungenKönnenNormge": "Rezyklierte Gesteinskörnungen können normgerecht zur Herstellung von neuem Konstruktionsbeton genutzt werden (DIN EN 206 / DIN 1045-2:2023-08, Anhang E; ersetzt die DAfStb-Richtlinie).",
     "typ1Betonsplitt": "Typ 1 (Betonsplitt)",
     "mind90ReinerBeton": "Mind. 90% reiner Beton/Trockenmauermörtel. Max. RC-Anteil (Austausch in grober Körnung) liegt je nach Expositionsklasse bei bis zu 45%.",
     "typ2Bauwerksbruch": "Typ 2 (Bauwerksbruch)",

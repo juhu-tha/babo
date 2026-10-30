@@ -42,6 +42,8 @@ export default function NachhaltigkeitDatenRegeln() {
   const [interactiveMasse, setInteractiveMasse] = useState<number>(1000); // Tonnen Bauschutt
 
   // Calculation for waste recycling potential
+  // Szenario mit Lehrwerten (Durchsicht B 29.10.2026, DSB-NR-1): 65 % R-Beton-Gesteinskörnung, 25 % Tragschichten, 10 % Deponie,
+  // 0,045 t CO₂-Äq. je t vermiedene Transporte und Rohstoffabbau – ohne abgerufene Quelle (Primärkies A1–A3 allein ≈ 3,5 kg/t)
   const calculatedRcBeton = formatDeZahl(interactiveMasse * 0.65, 0);
   const calculatedUnterbau = formatDeZahl(interactiveMasse * 0.25, 0);
   const calculatedDeponie = formatDeZahl(interactiveMasse * 0.10, 0);

@@ -20,6 +20,7 @@ import {
 } from 'chart.js';
 import inhalt from '@/content/emodul/EModul.json';
 import { emodul } from '@/src/calc/emodul';
+import { ALPHA_E } from '@/src/calc/betonkennwerte';
 import { MdText } from '@/src/components/inhalt/MdText';
 
 ChartJS.register(
@@ -123,10 +124,11 @@ export default function EModul() {
                   onChange={(e) => setAlphaE(Number(e.target.value))}
                   className="w-full p-2 border border-home-grau/30 rounded-lg text-sm bg-white text-text-main focus:outline-none focus:ring-2 focus:ring-brand-blue"
                 >
-                  <option value={1.2}>Basalt (α_E = 1,20)</option>
-                  <option value={1.0}>Quarzit (α_E = 1,00 – Bezugswert)</option>
-                  <option value={0.9}>Kalkstein (α_E = 0,90)</option>
-                  <option value={0.7}>Sandstein (α_E = 0,70)</option>
+                  {/* α_E zentral aus src/calc/betonkennwerte.ts (DIN EN 1992-1-1, 3.1.3(2); Durchsicht D 29.10.2026, DSD-EM-1) */}
+                  <option value={ALPHA_E.basalt}>Basalt (α_E = {formatDeZahl(ALPHA_E.basalt, 2)})</option>
+                  <option value={ALPHA_E.quarzit}>Quarzit (α_E = {formatDeZahl(ALPHA_E.quarzit, 2)} – Bezugswert)</option>
+                  <option value={ALPHA_E.kalkstein}>Kalkstein (α_E = {formatDeZahl(ALPHA_E.kalkstein, 2)})</option>
+                  <option value={ALPHA_E.sandstein}>Sandstein (α_E = {formatDeZahl(ALPHA_E.sandstein, 2)})</option>
                 </select>
               </div>
               <div className="mt-4 p-3 bg-white rounded-lg border border-home-grau/30">

@@ -103,7 +103,7 @@
         "defaultDensity": 7850,
         "defaultConductivity": 50,
         "defaultEModulus": 210000,
-        "defaultGwp": 5000,
+        "defaultGwp": 8635,
         "description": "Duktiler Tragwerkswerkstoff mit sehr guten Festigkeitseigenschaften, unbegrenzt kreislauffähig (Modul D Gutschriften), aber hoher Primärenergieherstellung.",
         "ifcClass": "IfcMaterial"
       }

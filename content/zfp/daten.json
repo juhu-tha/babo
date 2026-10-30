@@ -142,7 +142,7 @@
         "category": "destructive",
         "categoryLabel": "Zerstörend & Laborchemie",
         "desc": "Prüfung der Oberflächenzugfestigkeit von Betonuntergründen und Verbundfestigkeit von Beschichtungen.",
-        "norm": "DIN EN 1542 / Richtlinie SIB / ZTV-ING",
+        "norm": "DIN EN 1542 / TR Instandhaltung (vormals Rili-SIB) / ZTV-ING",
         "useCase": "Qualitätsnachweis vor und nach Betoninstandsetzungsmassnahmen und dem Aufkleben von CFK-Lamellen.",
         "details": [
           "Aufkleben von standardisierten Prüfstempeln (Ø 50 mm) mittels Epoxidharzklebstoff.",
@@ -157,7 +157,7 @@
         "category": "spezial",
         "categoryLabel": "Spezialdiagnostik",
         "desc": "Laserbasierte präzise Oberflächenprofilanalyse zur Qualitätssicherung bei Beschichtungen.",
-        "norm": "DIN EN 1766 / DBV-Merkblatt 'Betoninstandsetzung'",
+        "norm": "TR Instandhaltung (Prüfverfahren Rautiefe, Bezug Sandflächenverfahren; vorläufig, Normprüfung ausstehend)",
         "useCase": "Detektion der Rautiefe (z.B. Sandstrahlen) vor Applikation von Schutzsystemen (PCC, OS 8, OS 11).",
         "details": [
           "Einsatz von hochpräzisen Lasertriangulations-Distanzsensoren.",
@@ -367,7 +367,7 @@
         "category": "zfp",
         "categoryLabel": "Zerstörungsfreie ZfP",
         "desc": "Wasseraufnahme-Messverfahren für mineralische Baustoffe und Oberflächenbeschichtungen unter hydrostatischem Druck.",
-        "norm": "DIN 52617 / RILEM No. II.4",
+        "norm": "RILEM-Prüfverfahren II.4 (Laborwert w nach DIN EN ISO 15148, früher DIN 52617)",
         "useCase": "Bestimmung des kapillaren Aufsauglast-Verhaltens von Betonoberflächen, Mauerwerk, Ziegelstoffen und Fassadenputzen.",
         "details": [
           "Einfache Baustellenmontage mittels dichte-elastischem Plastilin-Klebepads auf trockenen Untergründen.",
