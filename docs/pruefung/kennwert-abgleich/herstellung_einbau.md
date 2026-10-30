@@ -33,8 +33,8 @@ Keine erkannt.
 
 ### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
 
-- **DIN 1045-2:** 2008 (2×), 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (139×, teils mit Hinweis auf andere Ausgabe)
-  - 2023-08: `content/herstellungeinbau/HerstellungEinbau.json › daten.HerstellungEinbau.formeln.1.erklaerung` – …erzementwert mit Anrechnung von Flugasche (k = 0,4; f/z ≤ 0,33). Nach DIN 1045-2:2023-08 ist nur Flugasche anrechenbar; Herleitu…
+- **DIN 1045-2:** 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (145×, teils mit Hinweis auf andere Ausgabe)
+  - 2023-08: `content/herstellungeinbau/HerstellungEinbau.json › daten.HerstellungEinbau.formeln.1.erklaerung` – …Anrechnung von Flugasche (k = 0,4; f/z ≤ 0,33). Silikastaub darf nach DIN 1045-2:2023-08 mit k = 1,0 angerechnet werden (s ≤ 0,1…
   - 2023-08: `content/herstellungeinbau/HerstellungEinbau.json › daten.HerstellungEinbau.formeln.1.quelle` – DIN 1045-2:2023-08
 
 ## Prüfbogen (Ergänzung, Fehlerarten a–c)

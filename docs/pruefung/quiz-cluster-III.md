@@ -228,7 +228,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 46 korrigiert, 0 fraglich, 0
 
 - **Frage:** XF4-Beton, D_max = 16 mm (Mindestluftgehalt 4,5 Vol.-%). Gemessen werden 9,0 Vol.-% nach Gesteinskorrektur. Wie ist der Wert zu bewerten?
 - **Richtige Antwort:** Mindestwert erfüllt, obere Grenze 8,5 % überschritten, als Einzelwert aber noch zulässig
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Tranche 3): „Richtwert“ → obere Grenze nach DIN EN 206, 5.4.3, Einzelwert +1,0 % – korrigiert · Zweitprüfung 29.10.: Lernhilfe an die Erklärung angeglichen („Richtwert + 4 %“ → obere Grenze Mindestwert + 4 %, Einzelwert + 1,0 %) – korrigiert · Abgleich 30.10.: Festigkeitsverlust je Prozent Luft „3–5 N/mm²“ an den zentralen Wert in Prozent angeglichen (rund 5 % je Vol.-%, bei C30/37 rund 2 N/mm²; Entscheidung Luftporen #278, Durchsicht A DSA-BP-1) – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Tranche 3): „Richtwert“ → obere Grenze nach DIN EN 206, 5.4.3, Einzelwert +1,0 % – korrigiert · Zweitprüfung 29.10.: Lernhilfe an die Erklärung angeglichen („Richtwert + 4 %“ → obere Grenze Mindestwert + 4 %, Einzelwert + 1,0 %) – korrigiert · Umsetzung 30.10.: LP-Festigkeitsverlust einheitlich rund 4–5 % je Vol.-% (DSC-BZ-2) statt „3–5 N/mm²“ – korrigiert
 - [ ] ok
 - [ ] ändern: …
 

@@ -137,3 +137,14 @@ Lehrnäherungen in Leichtbeton und Recyclingbeton als solche kommentiert.
 - [x] (b) Normverweise in Überschriften, Karten und Tabellen (Teil, Tabelle, Ausgabe) geprüft; uneinheitliche Ausgaben im Bogen betreffen nur andere Module bzw. sind Ausblicke auf die 2. Generation
 - [x] (c) Kennwerte gegen zentrale Konstanten: abweichende behoben, Tabellen-Duplikate per Test gebunden
 - [x] fest verdrahtete Faktoren belegt, zentral übernommen oder als Darstellungsgröße kommentiert
+
+## Umsetzung 30.10.2026
+
+Entscheidung 30.10.2026: alle Vorschläge übernommen.
+
+| Kennung | Ergebnis | Quelle |
+|---|---|---|
+| DSA-X-1 | `content/expositionsklassen/Expositionsklassen.json`: k_s = 1,0 nach DIN 1045-2 (NA DE) unabhängig vom w/z-Wert, bei XF2/XF4 keine Anrechnung; EN-Empfehlungswert 2,0 nur als Hinweis (vorläufig, Normprüfung ausstehend) – wie Kern `K_WERT_DIN1045_2.kS` | DIN 1045-2:2023-08 |
+| DSA-SB-2a, DSA-SB-6 (Normtext) | Kennzeichnung bereits vorhanden (Deckungsrechner +5/−5 mm; Koppelfugen 1,50 m); unverändert | – |
+| Freigabe `spannbeton_grundlagen` | Prüfvermerk behalten, Prüfdatum 2026-10-30 (`src/data/pruefvermerke.ts`) | Entscheidung 30.10.2026 |
+| DSC-BZ-2 (übergreifend) | Betonpraxis nennt jetzt „rund 4–5 %“ mit Rechenwert 5 % (DSA-BP-1 unverändert) | – |

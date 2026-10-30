@@ -11,7 +11,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte abweichend von zentraler Konstante | 0 |
 | (1) Kennwerte übereinstimmend | 8 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
-| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 1 (1) |
+| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 0 (0) |
 | (3) Normverweise / Hinweise | 120 / 7 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
@@ -22,11 +22,7 @@ Keine Abweichung erkannt.
 
 ## 2 Fest verdrahtete Faktoren im Code
 
-Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen Daten. „Kommentar“ = Quell- oder Einheitenhinweis in der Zeile.
-
-| Fundstelle | Literal | Kommentar | Zeile |
-|---|---|---|---|
-| `src/modules/holzbaubeta/HolzbauBemessung.tsx:271` | `0.2` | – | `: 'k = 0{,}5 \\,[1 + ${currentMaterial.class.startsWith('GL') ? '0{,}1' : '0{,}2'} \\cdot (${formatDeTeX(calculationResults.lambda_rel_z, 3)` |
+Keine erkannt.
 
 ## 3 Normverweise
 
@@ -98,7 +94,7 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 
 ### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
 
-- **DIN 1045-2:** 2008 (2×), 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (139×, teils mit Hinweis auf andere Ausgabe)
+- **DIN 1045-2:** 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (145×, teils mit Hinweis auf andere Ausgabe)
   - 2023: `src/data/moduleHistoryData.ts:258` – keyReference: 'DIN EN 197-5 / DIN 1045-2:2023'
 - **EN 1992-1-1:** 2011 (7×), 2011-01 (49×, teils mit Hinweis auf andere Ausgabe), 2023 (23×, teils mit Hinweis auf andere Ausgabe), 2025-09 (25×, teils mit Hinweis auf andere Ausgabe)
   - 2011: `src/data/moduleHistoryData.ts:299` – keyReference: 'DIN EN 1992-1-1:2011 (Eurocode 2)'

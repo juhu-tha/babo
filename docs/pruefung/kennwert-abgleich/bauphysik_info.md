@@ -219,7 +219,7 @@ Keine erkannt.
 
 ### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
 
-- **DIN 1045-2:** 2008 (2×), 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (139×, teils mit Hinweis auf andere Ausgabe)
+- **DIN 1045-2:** 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (145×, teils mit Hinweis auf andere Ausgabe)
   - 2023-08: `content/moduleinfo/daten.json › werte.dinEn2062021` – DIN EN 206:2021-06 / DIN 1045-2:2023-08 / DIN EN 1992-1-1 + NA
   - 2023-08: `content/moduleinfo/daten.json › daten.MODULES_DATA.stahlbeton.regelwerke.3.title` – DIN 1045-2:2023-08 (Beton) und DIN 1045-3:2023-08 (Bauausf…
   - 2023-08: `content/moduleinfo/daten.json › daten.MODULES_DATA.dauerhaftigkeit.regelwerke.2.title` – DIN 1045-2:2023-08: Tragwerke aus Beton, Stahlbeton und Sp…

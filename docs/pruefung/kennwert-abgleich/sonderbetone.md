@@ -11,8 +11,8 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte abweichend von zentraler Konstante | 0 |
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
-| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 10 (4) |
-| (3) Normverweise / Hinweise | 82 / 2 |
+| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 10 (0) |
+| (3) Normverweise / Hinweise | 83 / 2 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
 
@@ -24,14 +24,14 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 
 | Fundstelle | Literal | Kommentar | Zeile |
 |---|---|---|---|
-| `src/modules/Leichtbeton.tsx:12` | `0.8` | – | `const fc = Math.max(2, (dichte - 0.8) * 35);` |
-| `src/modules/Leichtbeton.tsx:12` | `35` | – | `const fc = Math.max(2, (dichte - 0.8) * 35);` |
-| `src/modules/Leichtbeton.tsx:13` | `0.4` | – | `const lambda = Math.max(0.15, (dichte - 0.4) * 0.4); // thermal conductivity` |
+| `src/modules/Leichtbeton.tsx:12` | `0.8` | ja | `const fc = Math.max(2, (dichte - 0.8) * 35); // Lehrnäherung (linear, nicht normativ): +35 N/mm² je kg/dm³ über 0,8` |
+| `src/modules/Leichtbeton.tsx:12` | `35` | ja | `const fc = Math.max(2, (dichte - 0.8) * 35); // Lehrnäherung (linear, nicht normativ): +35 N/mm² je kg/dm³ über 0,8` |
+| `src/modules/Leichtbeton.tsx:13` | `0.4` | ja | `const lambda = Math.max(0.15, (dichte - 0.4) * 0.4); // Wärmeleitfähigkeit, Lehrnäherung (nicht normativ, Bemessungswerte nach DIN 4108-4)` |
 | `src/modules/Recyclingbeton.tsx:55` | `0.15` | ja | `wasseranspruchErhoehung = rcAnteil * 0.15; // ca. 15% mehr Wasserbedarf` |
 | `src/modules/Recyclingbeton.tsx:56` | `0.30` | ja | `schwindenErhoehung = rcAnteil * 0.30; // ca. 30% mehr Schwinden bei 100%` |
 | `src/modules/Recyclingbeton.tsx:57` | `0.06` | ja | `rohdichteReduktion = rcAnteil * 0.06; // ca. 6% geringere Dichte bei 100%` |
 | `src/modules/Recyclingbeton.tsx:61` | `0.40` | ja | `eModulReduktion = rcAnteil * 0.40; // ca. 40% Reduktion bei 100% RC` |
-| `src/modules/Recyclingbeton.tsx:62` | `0.30` | – | `wasseranspruchErhoehung = rcAnteil * 0.30;` |
+| `src/modules/Recyclingbeton.tsx:62` | `0.30` | ja | `wasseranspruchErhoehung = rcAnteil * 0.30; // ca. 30% mehr Wasserbedarf bei 100% (Lehrannahme)` |
 | `src/modules/Recyclingbeton.tsx:64` | `0.12` | ja | `rohdichteReduktion = rcAnteil * 0.12; // ca. 12% geringere Dichte bei 100%` |
 | `src/modules/Recyclingbeton.tsx:75` | `1800` | ja | `const zusatzWasser = (rcAnteil / 100) * 1800 * (wa24 / 100); // grobe Schätzung: 1800 kg/m³ Gestein gesamt` |
 
@@ -41,6 +41,7 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 |---|---|---|---|---|
 | DIN 1045-2 | – | – | 10 |  |
 | DIN 1045-2 | 2023-08 | Abschn. 5.2.3.4 | 9 | Ausgaben uneinheitlich |
+| DIN 4108-4 | – | – | 1 |  |
 | DIN 4226-101 | – | – | 1 |  |
 | DIN 6847-2 | 2008-03 | – | 1 |  |
 | DIN 18314 | – | – | 1 |  |
@@ -74,7 +75,7 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 
 ### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
 
-- **DIN 1045-2:** 2008 (2×), 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (139×, teils mit Hinweis auf andere Ausgabe)
+- **DIN 1045-2:** 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (145×, teils mit Hinweis auf andere Ausgabe)
   - 2023-08: `content/bohrpfahlbeton/Bohrpfahlbeton.json › texte.mindestzementgehalt325KgM` – …mm) bzw. ≥ 450 kg/m³ (D ≤ 8 mm), w/z(eq) ≤ 0,60 (DIN EN 1536 i. V. m. DIN 1045-2:2023-08).
   - 2023-08 (mit Hinweis): `content/sonderbetone/Sonderbetone.json › werte.lehrwerteZulässigeAnteileNach` – Lehrwerte; zulässige Anteile nach DIN 1045-2:2023-08, Abschn. 5.2.3.4 und Anhang E (Tab. E.5…
   - 2023-08: `content/sonderbetone/Sonderbetone.json › daten.Sonderbetone.regelwerke.0.title` – DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Leichtbetonklassen LC8/9 bis LC80/88,…

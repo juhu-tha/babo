@@ -24,6 +24,22 @@ import { ALL_17_SDGS } from './nachhaltigkeitdatenregeln/daten';
 import { DefinitionenTab } from './nachhaltigkeitdatenregeln/DefinitionenTab';
 import inhalt from '@/content/nachhaltigkeitdatenregeln/NachhaltigkeitDatenRegeln.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { A4_FAKTOR_EINZEL } from '@/src/calc/lca';
+import { LCA_BENCHMARKS } from './lca/transportbetonKennwerte';
+
+/**
+ * Umsetzung 30.10.2026 (DSB-NR-2): vermiedene Emissionen je t Bauschutt aus zentralen Werten statt 45 kg/t ohne Quelle –
+ * Primärkies A1–A3 (Lehrwert der Transportbeton-Übung, 3,5 kg/t) + Lkw-Transport 25 km (A4_FAKTOR_EINZEL, UBA 2024: 0,101 kg/(t·km))
+ * = 3,5 + 2,5 ≈ 6,0 kg CO₂-Äq./t. Die Transportstrecke ist eine Lehrannahme.
+ */
+const KIES_A1A3_KG_JE_T = LCA_BENCHMARKS.gwp_aggregate_natural * 1000;
+const STOFFSTROM_LKW_KM = 25;
+const VERMIEDEN_KG_JE_T = KIES_A1A3_KG_JE_T + A4_FAKTOR_EINZEL['lkw-heavy'] * STOFFSTROM_LKW_KM;
+const VERMIEDEN_HERLEITUNG = inhalt.texte.vermiedeneTransporteAbbau
+  .replace('{kies}', formatDeZahl(KIES_A1A3_KG_JE_T, 1))
+  .replace('{lkw}', formatDeZahl(A4_FAKTOR_EINZEL['lkw-heavy'], 3))
+  .replace('{km}', formatDeZahl(STOFFSTROM_LKW_KM, 0))
+  .replace('{summe}', formatDeZahl(VERMIEDEN_KG_JE_T, 1));
 import { ModuleTabs } from '@/src/components/ui/ModuleTabs';
 
 export type DatenRegelnTab = 
@@ -43,11 +59,11 @@ export default function NachhaltigkeitDatenRegeln() {
 
   // Calculation for waste recycling potential
   // Szenario mit Lehrwerten (Durchsicht B 29.10.2026, DSB-NR-1): 65 % R-Beton-Gesteinskörnung, 25 % Tragschichten, 10 % Deponie,
-  // 0,045 t CO₂-Äq. je t vermiedene Transporte und Rohstoffabbau – ohne abgerufene Quelle (Primärkies A1–A3 allein ≈ 3,5 kg/t)
+  // vermiedene Transporte und Rohstoffabbau je t: VERMIEDEN_KG_JE_T (rund 6 kg/t, Herleitung oben; vorher 45 kg/t ohne Quelle)
   const calculatedRcBeton = formatDeZahl(interactiveMasse * 0.65, 0);
   const calculatedUnterbau = formatDeZahl(interactiveMasse * 0.25, 0);
   const calculatedDeponie = formatDeZahl(interactiveMasse * 0.10, 0);
-  const savedCo2Tons = formatDeZahl(interactiveMasse * 0.045, 1);
+  const savedCo2Tons = formatDeZahl((interactiveMasse * VERMIEDEN_KG_JE_T) / 1000, 1);
 
   return (
     <div className="flex flex-col gap-6 animate-in fade-in duration-300 font-normal">
@@ -228,7 +244,7 @@ export default function NachhaltigkeitDatenRegeln() {
                 <div className="bg-white p-3 rounded-lg border border-emerald-150 shadow-2xs">
                   <span className="text-[10px] text-slate-500 block"><MdText text={inhalt.texte.eingespartesPrimärCo} /></span>
                   <strong className="text-sm font-mono font-bold text-emerald-700">~{savedCo2Tons} t CO₂e</strong>
-                  <span className="text-[9px] text-slate-400 block mt-0.5"><MdText text={inhalt.texte.vermiedeneTransporteAbbau} /></span>
+                  <span className="text-[9px] text-slate-400 block mt-0.5"><MdText text={VERMIEDEN_HERLEITUNG} /></span>
                 </div>
               </div>
             </div>

@@ -12,7 +12,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
 | (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 0 (0) |
-| (3) Normverweise / Hinweise | 22 / 4 |
+| (3) Normverweise / Hinweise | 22 / 0 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
 
@@ -30,25 +30,12 @@ Keine erkannt.
 | DIN 18940 | 2023-06 | – | 3 |  |
 | DIN 18945-189 | – | – | 2 |  |
 | DIN 18945 | – | – | 1 |  |
-| DIN 18945 | 2024-03 | – | 3 | Ausgaben uneinheitlich |
-| DIN 18946 | 2024-03 | – | 1 | Ausgaben uneinheitlich |
+| DIN 18945 | 2024-03 | – | 3 |  |
+| DIN 18946 | 2024-03 | – | 1 |  |
 | DIN 18947 | – | – | 1 |  |
-| DIN 18947 | 2024-03 | – | 1 | Ausgaben uneinheitlich |
-| DIN 18948 | 2024-03 | – | 1 | Ausgaben uneinheitlich |
+| DIN 18947 | 2024-03 | – | 1 |  |
+| DIN 18948 | 2024-03 | – | 1 |  |
 | EN 1996 | – | – | 1 |  |
-
-### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
-
-- **DIN 18945:** 2018-12 (1×), 2024-03 (4×)
-  - 2024-03: `content/lehm/Lehm.json › texte.anwendungsDruckfestigkeitsklassenLehmste` – …m² mittlerer Steindruckfestigkeit; vorläufig, Normprüfung ausstehend, DIN 18945:2024-03 mit A1:2026-06) eingeteilt. Die charakt…
-  - 2024-03: `content/lehm/Lehm.json › daten.Lehm.regelwerke.1.title` – DIN 18945:2024-03 mit A1:2026-06 (Lehmsteine - Anforderun…
-  - 2024-03: `content/lehm/Lehm.json › daten.Lehm.formeln.0.quelle` – DIN 18945:2024-03
-- **DIN 18946:** 2018-12 (1×), 2024-03 (3×)
-  - 2024-03: `content/lehm/Lehm.json › daten.Lehm.regelwerke.2.title` – DIN 18946:2024-03 (Lehmmauermörtel - Anforderungen, Prüfu…
-- **DIN 18947:** 2018-12 (1×), 2024-03 (2×)
-  - 2024-03: `content/lehm/Lehm.json › daten.Lehm.regelwerke.3.title` – DIN 18947:2024-03 (Lehmputzmörtel - Anforderungen, Prüfun…
-- **DIN 18948:** 2018-12 (1×), 2024-03 (2×)
-  - 2024-03: `content/lehm/Lehm.json › daten.Lehm.regelwerke.4.title` – DIN 18948:2024-03 (Lehmplatten - Anforderungen, Prüfung u…
 
 ## Prüfbogen (Ergänzung, Fehlerarten a–c)
 

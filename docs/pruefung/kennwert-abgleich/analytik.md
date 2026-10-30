@@ -11,7 +11,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte abweichend von zentraler Konstante | 0 |
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
-| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 1 (1) |
+| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 1 (0) |
 | (3) Normverweise / Hinweise | 17 / 0 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
@@ -24,7 +24,7 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 
 | Fundstelle | Literal | Kommentar | Zeile |
 |---|---|---|---|
-| `src/modules/Analytik.tsx:23` | `2.5` | – | `mass -= 2.5 * anteil(400, 500); // Ca(OH)2 → CaO + H2O` |
+| `src/modules/Analytik.tsx:23` | `2.5` | ja | `mass -= 2.5 * anteil(400, 500); // Ca(OH)2 → CaO + H2O (Lehrmodell: Massenanteil 2,5 %, wie Beispiel 1)` |
 
 ## 3 Normverweise
 

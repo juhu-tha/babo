@@ -78,7 +78,7 @@
         "category": "Dämmung",
         "density": 50,
         "lambda": 0.035,
-        "gwp_fossil_a1a3": 0.96,
+        "gwp_fossil_a1a3": 1.2,
         "gwp_biogenic_a1a3": 0,
         "gwp_c3c4": 0.04,
         "gwp_d": -0.05,

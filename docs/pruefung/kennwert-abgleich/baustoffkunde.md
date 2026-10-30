@@ -12,7 +12,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
 | (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 0 (0) |
-| (3) Normverweise / Hinweise | 7 / 0 |
+| (3) Normverweise / Hinweise | 8 / 0 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
 
@@ -31,6 +31,7 @@ Keine erkannt.
 | EN 197-1 | – | – | 1 |  |
 | EN 1990 | – | – | 1 |  |
 | EN 1992-1-1 | – | – | 1 |  |
+| EN 1993-1-1 | – | – | 1 |  |
 | EN 13501-1 | – | – | 1 |  |
 
 ## Prüfbogen (Ergänzung, Fehlerarten a–c)

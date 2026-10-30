@@ -12,7 +12,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
 | (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 1 (1) |
-| (3) Normverweise / Hinweise | 102 / 2 |
+| (3) Normverweise / Hinweise | 105 / 2 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
 
@@ -30,7 +30,7 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 
 | Norm | Ausgabe | Tabelle/Abschnitt/Gleichung | Anzahl | Hinweis |
 |---|---|---|---|---|
-| DIN 1045-2 | – | Anhang D, Tab. F.2.1, Tab. F.2.2 | 40 |  |
+| DIN 1045-2 | – | Anhang D, Tab. F.2.1, Tab. F.2.2 | 42 |  |
 | DIN 1045-2 | 2023-08 | Tab. F.2.1 | 7 | Ausgaben uneinheitlich |
 | DIN 1100 | – | – | 3 |  |
 | DIN 1164-10 | – | – | 2 |  |
@@ -41,7 +41,7 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 | DIN CEN/TS 12390-9 | – | – | 1 |  |
 | EN 196-2 | – | – | 2 |  |
 | EN 197-1 | – | – | 1 |  |
-| EN 206 | – | Tab. 2 | 12 |  |
+| EN 206 | – | Tab. 2 | 13 |  |
 | EN 206 | 2021-06 | Abschn. 5.2.5.2, Tab. 2 | 4 |  |
 | EN 450-1 | – | – | 1 |  |
 | EN 480-11 | – | – | 1 |  |
@@ -58,7 +58,7 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 
 ### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
 
-- **DIN 1045-2:** 2008 (2×), 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (139×, teils mit Hinweis auf andere Ausgabe)
+- **DIN 1045-2:** 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (145×, teils mit Hinweis auf andere Ausgabe)
   - 2023-08: `content/expositionsklassen/Expositionsklassen.json › texte.din104522023` – DIN 1045-2:2023-08 (Tab. F.2.1/F.2.2)
   - 2023-08: `content/expositionsklassen/Expositionsklassen.json › werte.dinEn2062021` – DIN EN 206:2021-06 (Abschnitt 5.2.5.2) & DIN 1045-2:2023-08
   - 2023-08: `content/expositionsklassen/Expositionsklassen.json › daten.Expositionsklassen.regelwerke.1.title` – DIN 1045-2:2023-08 (Tragwerke aus Beton, Stahlbeton und Sp…

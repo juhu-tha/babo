@@ -65,18 +65,18 @@
     "Materialoptimierung.schritte": [
       {
         "titel": "Standard",
-        "erklaerung": "Vollplatte 20 cm, C30/37 mit 320 kg CEM I je m³ (320 · 0,665 + 30 = 243 kg CO₂-Äq./m³; CEM I nach VDZ-Branchen-EPD 2022, netto), Bewehrung 20 kg/m² (Betonstahl, ÖKOBAUDAT „Bewehrungsstahl (de)“ 0,64 kg CO₂-Äq./kg):",
-        "formel": "0{,}20 \\cdot 243 + 20 \\cdot 0{,}64 = 48{,}6 + 12{,}8 = 61{,}4\\,\\text{kg CO}_2\\text{-Äq./m}^2"
+        "erklaerung": "Vollplatte 20 cm, C30/37 mit 320 kg CEM I je m³ (320 · 0,665 + 45 = 258 kg CO₂-Äq./m³, Restanteil 45 kg/m³ wie alle Lehrbetone; CEM I nach VDZ-Branchen-EPD 2022, netto), Bewehrung 20 kg/m² (Betonstahl, ÖKOBAUDAT „Bewehrungsstahl (de)“ 0,64 kg CO₂-Äq./kg):",
+        "formel": "0{,}20 \\cdot 258 + 20 \\cdot 0{,}64 = 51{,}6 + 12{,}8 = 64{,}4\\,\\text{kg CO}_2\\text{-Äq./m}^2"
       },
       {
         "titel": "Optimiert",
-        "erklaerung": "Hohlkörperdecke mit 25 % weniger Beton (0,15 m³/m²), CEM III/A (Lehrwert 320 · 0,40 + 30 = 158 kg CO₂-Äq./m³, vorläufig), Bewehrung 18 kg/m²:",
-        "formel": "0{,}15 \\cdot 158 + 18 \\cdot 0{,}64 = 23{,}7 + 11{,}5 = 35{,}2\\,\\text{kg CO}_2\\text{-Äq./m}^2"
+        "erklaerung": "Hohlkörperdecke mit 25 % weniger Beton (0,15 m³/m²), CEM III/A (Lehrwert 320 · 0,40 + 45 = 173 kg CO₂-Äq./m³, vorläufig), Bewehrung 18 kg/m²:",
+        "formel": "0{,}15 \\cdot 173 + 18 \\cdot 0{,}64 = 26{,}0 + 11{,}5 = 37{,}5\\,\\text{kg CO}_2\\text{-Äq./m}^2"
       },
       {
         "titel": "Einsparung",
         "erklaerung": "Relative Minderung:",
-        "formel": "\\frac{61{,}4 - 35{,}2}{61{,}4} = 43\\,\\%"
+        "formel": "\\frac{64{,}4 - 37{,}5}{64{,}4} = 42\\,\\%"
       }
     ],
     "Materialoptimierung.schritte_2": [

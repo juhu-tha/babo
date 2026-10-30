@@ -69,11 +69,11 @@ pruefe(nahe(R.spez.d, -1.022, 0.001) && relNahe(R.spez.d, -1.03, 0.10), `Bericht
 pruefe(R.vollstaendig && R.aussage === 'plus', `Bericht: Aussage ${R.aussage}`);
 
 // 3. Handbeispiel (nachvollziehbar): 100 m² NRF(R), 50 a, 10 m³ Beton (A1–A3 245, C 15 kg/m³, ND ≥ 50),
-//    2 m³ EPS im WDVS (A1–A3 78, C 58 kg/m³, ND 40 → 1 Ersatz), ohne Transport, ohne TGA-Sockel.
-//    A1–A3 = 2 450 + 156 = 2 606; C = 150 + 116 = 266; B4 = 1 · (156 + 116) = 272 kg
+//    2 m³ EPS im WDVS (A1–A3 65 = 3,25 kg/kg · 20 kg/m³, Umsetzung 30.10.2026 DSB-LC-10, vorher 78; C 58 kg/m³, ND 40 → 1 Ersatz),
+//    ohne Transport, ohne TGA-Sockel. A1–A3 = 2 450 + 130 = 2 580; C = 150 + 116 = 266; B4 = 1 · (130 + 116) = 246 kg
 //    B6 (Netzstrom 0,53203 kg/kWh, QNG-Rechenwerte 2023 v1.3): Strom 2 000 kWh/a, PV 500 → 1 500 · 0,53203 · 50 = 39 902,25;
 //    Nutzerstrom 20 · 100 · 0,53203 · 50 = 53 203 kg
-//    Konstruktion (2 606 + 272 + 266)/5 000 = 0,6288; B6 93 105,25/5 000 = 18,62105; QNG-Wert 19,24985 → ≤ 20 (PREMIUM-Wert)
+//    Konstruktion (2 580 + 246 + 266)/5 000 = 0,6184; B6 93 105,25/5 000 = 18,62105; QNG-Wert 19,23945 → ≤ 20 (PREMIUM-Wert)
 const beton = MATERIAL_DATABASE.find(m => m.id === 'beton-cem1')!;
 const eps = MATERIAL_DATABASE.find(m => m.id === 'eps-daemmung')!;
 const alsBaustoff = alsLcaBaustoff;
@@ -87,8 +87,8 @@ const HAND: LcaEingabe = {
   tgaSockel: 'keiner', gebaeudeart: 'wohnbau',
 };
 const H = lcaBilanz(HAND);
-pruefe(H.gueltig && nahe(H.a1a3, 2606, 1e-9) && nahe(H.c3c4, 266, 1e-9) && nahe(H.b4, 272, 1e-9), `Hand: A/B4/C ${H.a1a3} ${H.b4} ${H.c3c4}`);
-pruefe(nahe(H.b6_1, 39902.25, 1e-6) && nahe(H.b6_3, 53203, 1e-6) && nahe(H.spez.konstruktion, 0.6288, 1e-9) && nahe(H.spez.qng, 19.24985, 1e-9), `Hand: B6/QNG ${H.b6} ${H.spez.qng}`);
+pruefe(H.gueltig && nahe(H.a1a3, 2580, 1e-9) && nahe(H.c3c4, 266, 1e-9) && nahe(H.b4, 246, 1e-9), `Hand: A/B4/C ${H.a1a3} ${H.b4} ${H.c3c4}`);
+pruefe(nahe(H.b6_1, 39902.25, 1e-6) && nahe(H.b6_3, 53203, 1e-6) && nahe(H.spez.konstruktion, 0.6184, 1e-9) && nahe(H.spez.qng, 19.23945, 1e-9), `Hand: B6/QNG ${H.b6} ${H.spez.qng}`);
 pruefe(B6_FAKTOREN.netzstrom.gwp === 0.53203 && !B6_FAKTOREN.netzstrom.vorlaeufig && !H.vorlaeufig.some(v => v.includes('Netzstrom')), 'Netzstrom 0,53203 belegt, nicht mehr vorläufig');
 pruefe(H.aussage === 'premium' && H.zeilen[1].ersatz === 1 && H.zeilen[0].ersatz === 0, `Hand: Aussage ${H.aussage}`);
 //    D: Referenz-Gutschrift gilt für den deklarierten Weg (Beton Downcycling, EPS thermisch) → Wegfaktor 1:
@@ -124,7 +124,7 @@ pruefe(h60.aussage === 'neutral' && h60.hinweise.some(x => x.feld === 'betrachtu
 pruefe(lcaBilanz({ ...HAND, energie: { ...HAND.energie!, stromGeg: 12000 } }).aussage === 'ueberschritten', 'hoher Strombedarf → überschritten');
 pruefe(lcaBilanz({ ...HAND, mitB4: false }).b4 === 0, 'ohne B4 → B4 = 0');
 // Grenze: knapp unter/über 24 bzw. 20 kg/(m²·a) (Vergleich mit ≤)
-const mitWert = (ziel: number) => { const netz = ((ziel - 0.6288) * 5000 - 53203) / (0.53203 * 50); return lcaBilanz({ ...HAND, energie: { ...HAND.energie!, stromGeg: netz + 500, pvEigennutzung: 500 } }); };
+const mitWert = (ziel: number) => { const netz = ((ziel - 0.6184) * 5000 - 53203) / (0.53203 * 50); return lcaBilanz({ ...HAND, energie: { ...HAND.energie!, stromGeg: netz + 500, pvEigennutzung: 500 } }); };
 pruefe(nahe(mitWert(24).spez.qng, 24, 1e-9), `Grenze: Rückrechnung ${mitWert(24).spez.qng}`);
 pruefe(mitWert(24 - 1e-6).aussage === 'plus' && mitWert(24 + 1e-6).aussage === 'ueberschritten', 'Grenze PLUS 24');
 pruefe(mitWert(20 - 1e-6).aussage === 'premium' && mitWert(20 + 1e-6).aussage === 'plus', 'Grenze PREMIUM 20');
@@ -142,7 +142,7 @@ const fw = lcaBilanz({ ...HAND, energie: { stromGeg: 0, pvEigennutzung: 0, waerm
 pruefe(nahe(fw.b6, 5000 * 0.14776562 * 50, 1e-6), `Fernwärme Erdgas KWK ${fw.b6}`);
 pruefe(lcaBilanz({ ...HAND, nrfBeheizt: 150 }).hinweise.some(x => x.feld === 'nrfBeheizt'), 'beheizte NRF > NRF(R) → Hinweis');
 // Sockel TGA EH40: 1,30 kg/(m²·a)
-pruefe(nahe(lcaBilanz({ ...HAND, tgaSockel: 'ep_bis40' }).spez.konstruktion, 0.6288 + 1.30, 1e-9), 'Sockel TGA EH40');
+pruefe(nahe(lcaBilanz({ ...HAND, tgaSockel: 'ep_bis40' }).spez.konstruktion, 0.6184 + 1.30, 1e-9), 'Sockel TGA EH40');
 
 // 6. Datenbank: jede Baustoff-ID hat eine BNB-Nutzungsdauer mit Quelle
 for (const m of MATERIAL_DATABASE) {
@@ -201,17 +201,17 @@ pruefe(nahe(mengeJeM2Bauteil('kg', 0.2, 2400), 480, 1e-9), 'Menge kg: 480 kg/m²
 pruefe(mengeJeM2Bauteil('m²', 0, 0) === 1, 'Menge m²: 1 m² Dämmung mit festgelegtem R-Wert je m² Bauteil');
 pruefe(Number.isNaN(mengeJeM2Bauteil('m³', 0, 2400)) && Number.isNaN(mengeJeM2Bauteil('kg', 0.1, 0)) && Number.isNaN(mengeJeM2Bauteil('t', -0.1, 2400)), 'Menge: unzulässige Dicke/Rohdichte → NaN');
 // Handbeispiel Außenwand (Lehrwerte): Stahlbeton 20 cm (DE 1 m³: A1–A3 250, C3/C4 10 kg CO₂-Äq., ND ≥ 50 a)
-// + EPS 14 cm (DE 1 kg, ρ = 20 kg/m³: A1–A3 3,0, C3/C4 2,5 kg CO₂-Äq./kg, ND 40 a → n = 1)
-// Beton: 0,20 m³/m² · 260 = 52,0; EPS: 2,8 kg/m² · 5,5 = 15,4, × (1 + 1) = 30,8; Summe 82,8 kg/m²; je Jahr 1,656 kg/(m²·a)
+// + EPS 14 cm (DE 1 kg, ρ = 20 kg/m³: A1–A3 3,25 = GWP_LEHRWERTE.eps (Umsetzung 30.10.2026, DSB-LC-10), C3/C4 2,5 kg CO₂-Äq./kg, ND 40 a → n = 1)
+// Beton: 0,20 m³/m² · 260 = 52,0; EPS: 2,8 kg/m² · 5,75 = 16,1, × (1 + 1) = 32,2; Summe 84,2 kg/m²; je Jahr 1,684 kg/(m²·a)
 const WAND: FeSchicht[] = [
   { name: 'Stahlbeton', einheit: 'm³', dickeM: 0.2, rohdichte: 2400, gwpA1A3: 250, gwpC: 10, nutzungsdauer: 50 },
-  { name: 'EPS', einheit: 'kg', dickeM: 0.14, rohdichte: 20, gwpA1A3: 3.0, gwpC: 2.5, nutzungsdauer: 40 },
+  { name: 'EPS', einheit: 'kg', dickeM: 0.14, rohdichte: 20, gwpA1A3: 3.25, gwpC: 2.5, nutzungsdauer: 40 },
 ];
 const FE = funktionelleEinheitBauteil(WAND, 50);
 pruefe(FE.gueltig && FE.hinweise.length === 0, 'FE: gültig ohne Hinweise');
 pruefe(nahe(FE.schichten[0].summe, 52, 1e-9) && FE.schichten[0].ersatz === 0, `FE: Beton ${FE.schichten[0].summe}`);
-pruefe(nahe(FE.schichten[1].menge, 2.8, 1e-12) && FE.schichten[1].ersatz === 1 && nahe(FE.schichten[1].b4, 15.4, 1e-9) && nahe(FE.schichten[1].summe, 30.8, 1e-9), `FE: EPS ${FE.schichten[1].summe}`);
-pruefe(nahe(FE.summe, 82.8, 1e-9) && nahe(FE.jeJahr, 1.656, 1e-12) && nahe(FE.a1a3 + FE.c + FE.b4, FE.summe, 1e-9), `FE: Summe ${FE.summe}, je Jahr ${FE.jeJahr}`);
+pruefe(nahe(FE.schichten[1].menge, 2.8, 1e-12) && FE.schichten[1].ersatz === 1 && nahe(FE.schichten[1].b4, 16.1, 1e-9) && nahe(FE.schichten[1].summe, 32.2, 1e-9), `FE: EPS ${FE.schichten[1].summe}`);
+pruefe(nahe(FE.summe, 84.2, 1e-9) && nahe(FE.jeJahr, 1.684, 1e-12) && nahe(FE.a1a3 + FE.c + FE.b4, FE.summe, 1e-9), `FE: Summe ${FE.summe}, je Jahr ${FE.jeJahr}`);
 // Grenze: ND = T → kein Ersatz; ND knapp unter T → ein Ersatz
 pruefe(funktionelleEinheitBauteil([{ ...WAND[1], nutzungsdauer: 50 }]).schichten[0].ersatz === 0 && funktionelleEinheitBauteil([{ ...WAND[1], nutzungsdauer: 49 }]).schichten[0].ersatz === 1, 'FE: Grenze ND = 50 a / 49 a');
 pruefe(!funktionelleEinheitBauteil([{ ...WAND[0], dickeM: 0 }]).gueltig && !funktionelleEinheitBauteil([{ ...WAND[1], nutzungsdauer: 0 }]).gueltig && !funktionelleEinheitBauteil([]).gueltig, 'FE: Dicke 0, ND 0, leer → ungültig');

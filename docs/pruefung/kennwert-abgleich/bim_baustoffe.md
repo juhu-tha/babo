@@ -9,7 +9,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | Kategorie | Anzahl |
 |---|---|
 | (1) Kennwerte abweichend von zentraler Konstante | 0 |
-| (1) Kennwerte übereinstimmend | 0 |
+| (1) Kennwerte übereinstimmend | 1 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 6 |
 | (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 0 (0) |
 | (3) Normverweise / Hinweise | 13 / 2 |
@@ -17,6 +17,8 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 ## 1 Kennwerte gegen zentrale Konstanten
 
 Keine Abweichung erkannt.
+
+Übereinstimmend (1): `GWP_LEHRWERTE.profilstahl` ×1
 
 ### GWP- und Transportwerte ohne zentrale Zuordnung (Quelle im Modul prüfen)
 

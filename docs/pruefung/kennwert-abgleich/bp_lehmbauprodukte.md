@@ -12,7 +12,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
 | (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 0 (0) |
-| (3) Normverweise / Hinweise | 41 / 4 |
+| (3) Normverweise / Hinweise | 41 / 0 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
 
@@ -30,25 +30,13 @@ Keine erkannt.
 | DIN 18940 | 2023-06 | – | 3 |  |
 | DIN 18945-189 | – | – | 1 |  |
 | DIN 18945 | – | – | 6 |  |
-| DIN 18945 | 2024-03 | – | 1 | Ausgaben uneinheitlich |
+| DIN 18945 | 2024-03 | – | 1 |  |
 | DIN 18946 | – | – | 3 |  |
-| DIN 18946 | 2024-03 | – | 2 | Ausgaben uneinheitlich |
+| DIN 18946 | 2024-03 | – | 2 |  |
 | DIN 18947 | – | – | 4 |  |
-| DIN 18947 | 2024-03 | – | 1 | Ausgaben uneinheitlich |
+| DIN 18947 | 2024-03 | – | 1 |  |
 | DIN 18948 | – | – | 2 |  |
-| DIN 18948 | 2024-03 | – | 1 | Ausgaben uneinheitlich |
-
-### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
-
-- **DIN 18945:** 2018-12 (1×), 2024-03 (4×)
-  - 2024-03: `content/bplehmbauprodukte/BpLehmbauprodukte.json › daten.BpLehmbauprodukte.regelwerke.1.title` – DIN 18945:2024-03: Lehmsteine - Anforderungen, Prüfung un…
-- **DIN 18946:** 2018-12 (1×), 2024-03 (3×)
-  - 2024-03: `content/bplehmbauprodukte/BpLehmbauprodukte.json › daten.LOAM_STANDARDS_DB.1.classes` – Lehmmauermörtel nach DIN 18946:2024-03 (Normal-, Leicht- und Dünnbettmörtel; F…
-  - 2024-03: `content/bplehmbauprodukte/BpLehmbauprodukte.json › daten.BpLehmbauprodukte.regelwerke.2.title` – DIN 18946:2024-03: Lehmmauermörtel - Anforderungen, Prüfu…
-- **DIN 18947:** 2018-12 (1×), 2024-03 (2×)
-  - 2024-03: `content/bplehmbauprodukte/BpLehmbauprodukte.json › daten.BpLehmbauprodukte.regelwerke.3.title` – DIN 18947:2024-03: Lehmputzmörtel - Anforderungen, Prüfun…
-- **DIN 18948:** 2018-12 (1×), 2024-03 (2×)
-  - 2024-03: `content/bplehmbauprodukte/BpLehmbauprodukte.json › daten.BpLehmbauprodukte.regelwerke.4.title` – DIN 18948:2024-03: Lehmplatten - Anforderungen, Prüfung u…
+| DIN 18948 | 2024-03 | – | 1 |  |
 
 ## Prüfbogen (Ergänzung, Fehlerarten a–c)
 

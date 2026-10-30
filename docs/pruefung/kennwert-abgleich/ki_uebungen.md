@@ -32,7 +32,7 @@ Keine erkannt.
 
 ### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
 
-- **DIN 1045-2:** 2008 (2×), 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (139×, teils mit Hinweis auf andere Ausgabe)
+- **DIN 1045-2:** 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (145×, teils mit Hinweis auf andere Ausgabe)
   - 2008-08: `src/data/kiUebungen.ts:359` – …tigkeit von 37 N/mm². Die Anforderungen an die Zusammensetzung regelt DIN 1045-2:2008-08. Ein höherer Wasserzementwert steigert…
   - 2023-08 (mit Hinweis): `src/data/kiUebungen.ts:372` – 'Fehler 2 (veraltete Ausgabe): maßgeblich ist DIN 1045-2:2023-08 bzw. die bauaufsichtlich eingeführte Fa…
 

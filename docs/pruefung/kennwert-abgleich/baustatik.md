@@ -12,7 +12,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
 | (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 2 (2) |
-| (3) Normverweise / Hinweise | 5 / 2 |
+| (3) Normverweise / Hinweise | 5 / 1 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
 
@@ -31,7 +31,7 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 
 | Norm | Ausgabe | Tabelle/Abschnitt/Gleichung | Anzahl | Hinweis |
 |---|---|---|---|---|
-| EN 1990 | 2021-10 | – | 1 | Ausgaben uneinheitlich |
+| EN 1990 | 2021-10 | – | 1 |  |
 | EN 1991-1-1 | 2010-12 | – | 1 |  |
 | EN 1993-1-1 | – | – | 1 |  |
 | EN 1993-1-1 | 2010-12 | – | 1 | Ausgaben uneinheitlich |
@@ -39,8 +39,6 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 
 ### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
 
-- **EN 1990:** 2010-12 (2×, teils mit Hinweis auf andere Ausgabe), 2021-10 (9×, teils mit Hinweis auf andere Ausgabe), 2023 (6×, teils mit Hinweis auf andere Ausgabe)
-  - 2021-10: `content/baustatik/Baustatik.json › daten.Baustatik.regelwerke.0.title` – DIN EN 1990:2021-10 (Eurocode 0: Grundlagen der Tragwerkspl…
 - **EN 1993-1-1:** 2010-12 (9×, teils mit Hinweis auf andere Ausgabe), 2022 (1×, teils mit Hinweis auf andere Ausgabe), 2025-04 (12×, teils mit Hinweis auf andere Ausgabe)
   - 2010-12 (mit Hinweis): `content/baustatik/Baustatik.json › daten.Baustatik.regelwerke.2.title` – DIN EN 1993-1-1:2010-12 + A1:2014-07 mit NA (Eurocode 3, bauauf…
   - 2025-04 (mit Hinweis): `content/baustatik/Baustatik.json › daten.Baustatik.regelwerke.2.title` – …4-07 mit NA (Eurocode 3, bauaufsichtlich eingeführt); neue Generation DIN EN 1993-1-1:2025-04

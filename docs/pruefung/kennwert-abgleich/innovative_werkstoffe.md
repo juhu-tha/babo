@@ -11,7 +11,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte abweichend von zentraler Konstante | 0 |
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
-| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 3 (2) |
+| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 3 (0) |
 | (3) Normverweise / Hinweise | 10 / 0 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
@@ -24,9 +24,9 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 
 | Fundstelle | Literal | Kommentar | Zeile |
 |---|---|---|---|
-| `src/modules/InnovativeWerkstoffe.tsx:291` | `130` | – | `const stars = Math.min(5, Math.max(1, Math.round((score / 130) * 5 * 10) / 10));` |
+| `src/modules/InnovativeWerkstoffe.tsx:291` | `130` | ja | `const stars = Math.min(5, Math.max(1, Math.round((score / 130) * 5 * 10) / 10)); // Darstellungsfaktor: Punktzahl 130 = 5 Sterne` |
 | `src/modules/InnovativeWerkstoffe.tsx:557` | `1200` | ja | `const E_mod_base = 1200 * developedYieldBase; // in Pa` |
-| `src/modules/InnovativeWerkstoffe.tsx:562` | `0.653` | – | `const H_critical_buckling = Math.pow((0.653 * E_mod_base * b_m * b_m * shapeFactor) / (concreteDensity * gVal), 1/3);` |
+| `src/modules/InnovativeWerkstoffe.tsx:563` | `0.653` | ja | `const H_critical_buckling = Math.pow((0.653 * E_mod_base * b_m * b_m * shapeFactor) / (concreteDensity * gVal), 1/3); // Faktor 7,837/12` |
 
 ## 3 Normverweise
 

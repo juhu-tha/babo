@@ -6,6 +6,20 @@
 import { type Hinweis, bereich, hatFehler, istEndlich, muss } from './plausibilitaet';
 import { formatDeZahl } from '../utils/numberFormat';
 
+/** Kohlenstoffanteil der darrtrockenen Holzmasse nach DIN EN 16449 (cf = 0,5) */
+export const CF_HOLZ = 0.5;
+/** Verhältnis der molaren Massen CO₂/C (44/12) */
+export const CO2_JE_C_HOLZ = 44 / 12;
+
+/**
+ * Biogenes CO₂ im Holz nach DIN EN 16449: P_CO₂ = 44/12 · cf · ρ_ω · V_ω/(1 + ω/100) [kg CO₂].
+ * ρ_ω Rohdichte bei Holzfeuchte ω [kg/m³], ω [%], V_ω [m³]. Umsetzung 30.10.2026 (DSB-RU-1): Grundlage der
+ * Lehrwerte BSH und KVH in src/data/gwpLehrwerte.ts. Beispiel: ρ = 500 kg/m³, ω = 12 % → 818,5 kg CO₂ je m³.
+ */
+export function biogenesCo2DinEn16449(rhoOmega: number, omega = 12, volumen = 1, cf = CF_HOLZ): number {
+  return (CO2_JE_C_HOLZ * cf * rhoOmega * volumen) / (1 + omega / 100);
+}
+
 /** Obergrenze der schwindwirksamen Holzfeuchte [%] (Fasersättigung, Lehrwert; artabhängig etwa 22–35 %) */
 export const FASERSAETTIGUNG = 30;
 

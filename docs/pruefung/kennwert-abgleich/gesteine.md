@@ -50,7 +50,7 @@ Keine erkannt.
 
 ### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
 
-- **DIN 1045-2:** 2008 (2×), 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (139×, teils mit Hinweis auf andere Ausgabe)
+- **DIN 1045-2:** 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (145×, teils mit Hinweis auf andere Ausgabe)
   - 2023-08: `content/gesteine/Gesteine.json › texte.regelsieblinienDin10452` – …lenwerte vorläufig, Normprüfung ausstehend (Abgleich mit dem Normtext DIN 1045-2:2023-08).<br>- **A-Linie:** gröberes Gemisch, w…
   - 2023-08: `content/gesteine/Gesteine.json › daten.Gesteine.formeln.3.quelle` – Fuller und Thompson (1907); Regelsieblinien nach DIN 1045-2:2023-08
 

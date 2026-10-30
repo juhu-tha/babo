@@ -12,7 +12,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte übereinstimmend | 2 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
 | (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 0 (0) |
-| (3) Normverweise / Hinweise | 25 / 3 |
+| (3) Normverweise / Hinweise | 25 / 2 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
 
@@ -31,7 +31,7 @@ Keine erkannt.
 | Norm | Ausgabe | Tabelle/Abschnitt/Gleichung | Anzahl | Hinweis |
 |---|---|---|---|---|
 | EN 1990 | – | – | 1 |  |
-| EN 1990 | 2021-10 | – | 1 | Ausgaben uneinheitlich |
+| EN 1990 | 2021-10 | – | 1 |  |
 | EN 1993-1-1 | – | Gl. 6.6, Gl. 6.13, Gl. 6.47 | 15 |  |
 | EN 1993-1-1 | 2010-12 | – | 2 | Ausgaben uneinheitlich |
 | EN 1993-1-1 | 2025-04 | – | 2 | Ausgaben uneinheitlich; Registry 2010-12 |
@@ -43,8 +43,6 @@ Keine erkannt.
 
 - **EN 10025-2:** 2004 (1×), 2019-10 (2×)
   - 2019-10: `content/stahlbauec3/StahlbauEC3.json › daten.StahlbauEC3.regelwerke.2.title` – DIN EN 10025-2:2019-10 (Warmgewalzte Erzeugnisse aus Baustähle…
-- **EN 1990:** 2010-12 (2×, teils mit Hinweis auf andere Ausgabe), 2021-10 (9×, teils mit Hinweis auf andere Ausgabe), 2023 (6×, teils mit Hinweis auf andere Ausgabe)
-  - 2021-10: `content/stahlbauec3/StahlbauEC3.json › daten.StahlbauEC3.regelwerke.1.title` – DIN EN 1990:2021-10 mit NA (Eurocode 0: Grundlagen der Trag…
 - **EN 1993-1-1:** 2010-12 (9×, teils mit Hinweis auf andere Ausgabe), 2022 (1×, teils mit Hinweis auf andere Ausgabe), 2025-04 (12×, teils mit Hinweis auf andere Ausgabe)
   - 2025-04 (mit Hinweis): `content/stahlbauec3/StahlbauEC3.json › texte.dieZweiteEurocodeGeneration` – Die zweite Eurocode-Generation (DIN EN 1993-1-1:2025-04) ist erschienen, aber noch nicht bauauf…
   - 2010-12 (mit Hinweis): `content/stahlbauec3/StahlbauEC3.json › texte.dieZweiteEurocodeGeneration` – …hienen, aber noch nicht bauaufsichtlich eingeführt; maßgebend bleiben DIN EN 1993-1-1:2010-12 mit A1:2014-07 und NA.

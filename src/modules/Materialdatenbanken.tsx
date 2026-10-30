@@ -8,7 +8,7 @@ import inhalt from '@/content/materialdatenbanken/Materialdatenbanken.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { AuswahlGruppe, alsOption } from '../components/ui/Auswahlgruppe';
 import { LEHRWERTE_A2 } from '@/src/data/oekobaudatLehrwerteA2';
-import { GWP_LEHRWERTE as GWP } from '@/src/data/gwpLehrwerte';
+import { GWP_LEHRWERTE as GWP, daemmstoffGwpJeM3 } from '@/src/data/gwpLehrwerte';
 
 /** Kleine Indikatorwerte mit zwei geltenden Ziffern; unter 0,001 als Zehnerpotenz (z. B. 8,8 · 10⁻⁶) */
 const HOCH: Record<string, string> = { '-': '⁻', '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴', '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹' };
@@ -111,7 +111,7 @@ const MOCK_MOCK_RECORDS: OekobaudatRecord[] = [
     type: 'Generisch',
     manufacturer: inhalt.werte.bbsrGenerischerDatensatz2,
     unit: '1 m³',
-    gwp: GWP.bsh.gwp, // inkl. biogenem CO₂; Konsistenz 29.10.: −482 → −650 (gemeinsame Lehrwerttabelle, F-4)
+    gwp: GWP.bsh.gwp, // inkl. biogenem CO₂; Konsistenz 29.10.: −482 → −650 (gemeinsame Lehrwerttabelle, F-4); seit 30.10. −680 (DIN EN 16449, DSB-RU-1)
     penrt: 2600,
     recycledContent: 0,
     wecobisSafety: [inhalt.werte.biogenerCo2Speicher, inhalt.werte.formaldehydKlasseE1, inhalt.werte.pefcFscZertifiziert]
@@ -135,7 +135,8 @@ const MOCK_MOCK_RECORDS: OekobaudatRecord[] = [
     type: 'Generisch',
     manufacturer: inhalt.werte.bbsrGenerischerDatensatz3,
     unit: '1 m³',
-    gwp: 45.5,
+    // Umsetzung 30.10.2026 (DSB-LC-10): Mineralwolle-Lehrwert 1,20 kg/kg · 38 kg/m³ (Rohdichte des Datensatzes) = 45,6; vorher 45,5
+    gwp: Math.round(daemmstoffGwpJeM3('mineralwolle', 38) * 10) / 10,
     penrt: 820,
     recycledContent: 15,
     wecobisSafety: ['Biopersistenzfrei', 'Recyclingfähig', inhalt.werte.ausgezeichneterBrandschutz]
@@ -200,8 +201,10 @@ export const QNG_DATA: QngMaterial[] = [
   { name: inhalt.werte.brettschichtholzBshBrettschichtholz, category: 'Holz & Organisch', unit: 'm³', gwp: GWP.bsh.gwp, penrt: 2400, biogenicC: GWP.bsh.biogen, rec: inhalt.werte.hochwertigLangfristigeStofflicheKaskaden2 },
   { name: inhalt.werte.strohballendämmungBaustrohGepresst, category: 'Dämmstoffe', unit: 't', gwp: -1100, penrt: 2100, biogenicC: -1300, rec: inhalt.werte.exzellentBiologischerAbbauVollständige },
   { name: inhalt.werte.holzweichfaserdämmplatteWfFlexibel, category: 'Dämmstoffe', unit: 'm³', gwp: -210, penrt: 4100, biogenicC: -460, rec: inhalt.werte.gutThermischeVerwertbarkeitNach },
-  { name: inhalt.werte.mineralwolleSteinwolleDämmplatte, category: 'Dämmstoffe', unit: 'm³', gwp: 45, penrt: 750, rec: inhalt.werte.mittelSchmelzRecyclingIm },
-  { name: inhalt.werte.epsHartschaumplatteErdölbasiert, category: 'Dämmstoffe', unit: 'm³', gwp: 95, penrt: 2800, rec: inhalt.werte.geringMeistThermischeVerwertung },
+  // Dämmstoffe je kg aus der Lehrwerttabelle (Umsetzung 30.10.2026, DSB-LC-10): Mineralwolle 1,20 · 38 kg/m³ = 46 (vorher 45),
+  // EPS 3,25 · 20 kg/m³ = 65 (vorher 95 ohne Rohdichteangabe)
+  { name: inhalt.werte.mineralwolleSteinwolleDämmplatte, category: 'Dämmstoffe', unit: 'm³', gwp: Math.round(daemmstoffGwpJeM3('mineralwolle', 38)), penrt: 750, rec: inhalt.werte.mittelSchmelzRecyclingIm },
+  { name: inhalt.werte.epsHartschaumplatteErdölbasiert, category: 'Dämmstoffe', unit: 'm³', gwp: Math.round(daemmstoffGwpJeM3('eps', 20)), penrt: 2800, rec: inhalt.werte.geringMeistThermischeVerwertung },
   { name: inhalt.werte.zweifachWärmeschutzglasUg1, category: 'Fenster & Glas', unit: 'm²', gwp: 32, penrt: 580, rec: inhalt.werte.gutSauerstoffSchmelzkreislaufIm },
   { name: inhalt.werte.dreifachWärmeschutzglasUg0, category: 'Fenster & Glas', unit: 'm²', gwp: 48, penrt: 850, rec: inhalt.werte.gutSauerstoffSchmelzkreislaufIm2 }
 ];

@@ -409,7 +409,7 @@ export default function Bestand() {
                       <option value={0.032}>λ = 0,032 (EPS WLG 032 / Mineralwolle 032)</option>
                       <option value={0.035}>λ = 0,035 (Standard Mineralwolle / EPS 035)</option>
                       <option value={0.040}>λ = 0,040 (Holzfaser / Zellulose / Hanf 040)</option>
-                      <option value={0.045}>λ = 0,045 (Calciumsilikat-Innendämmung 045)</option>
+                      <option value={0.065}>λ = 0,065 (Calciumsilikatplatte, kapillaraktive Innendämmung)</option>
                     </select>
                   </div>
 

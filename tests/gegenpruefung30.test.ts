@@ -52,7 +52,8 @@ pruefe('LC-1 Handrechnung Entwurf', 290 * 0.4 + 40 * 0.015 + 680 * 0.0035 + 700 
 
 // ---------------------------------------------------------------- 2. boden_materialaufbereitung, Asbest (DSB-BM-1)
 // GefStoffV seit 05.12.2024: Verbote in § 11 (Anhang II Nr. 1 weggefallen), Anforderungen an Tätigkeiten § 11a mit Anhang I Nr. 3
-gilt(JSON.stringify(boden.daten.TREATMENT_OPTIONS) === JSON.stringify(schadstoffe.daten.TREATMENT_OPTIONS), 'BM-1: beide Kopien gleich');
+// Doppelkopie in schadstoffe entfernt (DSB-SS-1, Umsetzung 30.10.2026): nur noch eine Quelle
+gilt(!('TREATMENT_OPTIONS' in (schadstoffe.daten as Record<string, unknown>)), 'BM-1: keine zweite Kopie in schadstoffe');
 const bodenText = JSON.stringify(boden);
 gilt(!/§ 11a und Anhang II Nr\. 1/.test(bodenText), 'BM-1: „§ 11a und Anhang II Nr. 1“ als geltende Fundstelle entfernt');
 gilt(/§ 11 Abs\. 1 Nr\. 1 und 2/.test(boden.daten.TREATMENT_OPTIONS.erdaushub_sand.asbest_faser.rules), 'BM-1: Verbot nach § 11 Abs. 1 GefStoffV');

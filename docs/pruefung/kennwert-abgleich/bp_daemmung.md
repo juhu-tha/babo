@@ -12,7 +12,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
 | (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 0 (0) |
-| (3) Normverweise / Hinweise | 27 / 0 |
+| (3) Normverweise / Hinweise | 29 / 0 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
 
@@ -40,8 +40,10 @@ Keine erkannt.
 | EN 13169 | – | – | 1 |  |
 | EN 13170 | – | – | 1 |  |
 | EN 13171 | – | – | 2 |  |
+| EN 14063-1 | – | – | 1 |  |
 | EN 14306 | – | – | 1 |  |
 | EN 14313 | – | – | 1 |  |
+| EN 14316-1 | – | – | 1 |  |
 | EN 15101-1 | – | – | 1 |  |
 | EN ISO 6946 | – | Gl. 1, Gl. 3 | 3 |  |
 

@@ -8,15 +8,16 @@ console.log('--- Test: Materialoptimierung ---');
 
 // 1. Handrechnung Startwerte: Decke, Hohlkörper, CEM III/A, 56 d, grüner Stahl
 //    Lehrwerte seit 29.10.2026 (T11-MO-3): Beton = round(320·GWP_Zement + 30); Stahl-Referenz ÖKOBAUDAT 0,64
-//    Zement-GWP seit 29.10.2026 (T15-NH-3, src/data/zementGwp.ts): CEM I 0,665 → 243, CEM III/A 0,40 → 158 kg/m³
-//    Referenz: 26·243 = 6318; 2860·0,64 = 1830,4 → 1830; Summe 8148 kg CO₂e (81,48 je m²)
-//    optimiert: round(158·0,91) = 144 kg/m³; 19,5·144 = 2808; 2470·0,42 = 1037,4 → 1037; Summe 3845
-//    Minderung (8148 − 3845)/8148 = 52,81 % → Klasse A+
+//    Zement-GWP seit 29.10.2026 (T15-NH-3, src/data/zementGwp.ts); Lehrbeton-Rest seit 30.10.2026 einheitlich 45 kg/m³:
+//    CEM I 320·0,665 + 45 = 257,8 → 258, CEM III/A 320·0,40 + 45 = 173 kg/m³
+//    Referenz: 26·258 = 6708; 2860·0,64 = 1830,4 → 1830; Summe 8538 kg CO₂e (85,38 je m²)
+//    optimiert: round(173·0,91) = round(157,43) = 157 kg/m³; 19,5·157 = 3061,5 → 3062; 2470·0,42 = 1037,4 → 1037; Summe 4099
+//    Minderung (8538 − 4099)/8538 = 51,99 % → Klasse A+
 const r = dafstbVergleich({ bauteil: 'decke', bauweise: 'hohlkoerper', zement: 'cem3_a', pruefalter: 56, stahlRoute: 'gruen_eaf' });
-pruefe(r.optConcreteGwpPerM3 === 144 && r.refConcreteGwpTotal === 6318 && r.refSteelGwpTotal === 1830 && r.refTotalGwp === 8148, `Referenz ${JSON.stringify(r)}`);
-pruefe(r.optConcreteGwpTotal === 2808 && r.optSteelGwpTotal === 1037 && r.optTotalGwp === 3845 && r.diffAbs === 4303, `optimiert ${r.optConcreteGwpTotal} ${r.optSteelGwpTotal}`);
-pruefe(nahe(r.diffPct, 52.8105, 1e-3) && r.efficiencyClass === 'Klasse A+' && nahe(r.refSpecificGwp, 81.48, 1e-9) && nahe(r.optSpecificGwp, 38.45, 1e-9), `Minderung ${r.diffPct}`);
-pruefe(ZEMENT_GWP.cem1 === 243 && ZEMENT_GWP.cem2_all === 222 && ZEMENT_GWP.cem2_bs === 200 && ZEMENT_GWP.cem3_a === 158 && ZEMENT_GWP.cem2_cm === 158, `Beton-GWP je Zementart ${JSON.stringify(ZEMENT_GWP)}`);
+pruefe(r.optConcreteGwpPerM3 === 157 && r.refConcreteGwpTotal === 6708 && r.refSteelGwpTotal === 1830 && r.refTotalGwp === 8538, `Referenz ${JSON.stringify(r)}`);
+pruefe(r.optConcreteGwpTotal === 3062 && r.optSteelGwpTotal === 1037 && r.optTotalGwp === 4099 && r.diffAbs === 4439, `optimiert ${r.optConcreteGwpTotal} ${r.optSteelGwpTotal}`);
+pruefe(nahe(r.diffPct, 51.9911, 1e-3) && r.efficiencyClass === 'Klasse A+' && nahe(r.refSpecificGwp, 85.38, 1e-9) && nahe(r.optSpecificGwp, 40.99, 1e-9), `Minderung ${r.diffPct}`);
+pruefe(ZEMENT_GWP.cem1 === 258 && ZEMENT_GWP.cem2_all === 237 && ZEMENT_GWP.cem2_bs === 215 && ZEMENT_GWP.cem3_a === 173 && ZEMENT_GWP.cem2_cm === 173, `Beton-GWP je Zementart ${JSON.stringify(ZEMENT_GWP)}`);
 // 2. Referenzfall ohne Optimierung (CEM I, 28 d, Betonstahl DE, Referenzmengen) → 0 % → Referenz
 const ref = dafstbVergleich({ bauteil: 'wand', bauweise: 'standard', zement: 'cem1', pruefalter: 28, stahlRoute: 'eaf_de' });
 pruefe(ref.diffAbs === 0 && ref.diffPct === 0 && ref.efficiencyClass === 'Referenz' && ref.hinweise.some(x => x.feld === 'bauweise'), 'Referenzfall');

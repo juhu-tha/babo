@@ -12,7 +12,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
 | (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 0 (0) |
-| (3) Normverweise / Hinweise | 89 / 4 |
+| (3) Normverweise / Hinweise | 89 / 2 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
 
@@ -27,8 +27,7 @@ Keine erkannt.
 | Norm | Ausgabe | Tabelle/Abschnitt/Gleichung | Anzahl | Hinweis |
 |---|---|---|---|---|
 | DIN 1045-2 | – | – | 9 |  |
-| DIN 1045-2 | 2008 | – | 2 | Ausgaben uneinheitlich; Registry 2023-08 |
-| DIN 1045-2 | 2023-08 | Anhang E | 4 | Ausgaben uneinheitlich |
+| DIN 1045-2 | 2023-08 | Anhang E | 6 | Ausgaben uneinheitlich |
 | DIN 1045-3 | – | – | 8 |  |
 | DIN 1045-3 | 2023 | – | 1 |  |
 | DIN 1045-3 | 2023-08 | – | 2 |  |
@@ -71,20 +70,15 @@ Keine erkannt.
 
 ### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
 
-- **DIN 1045-2:** 2008 (2×), 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (139×, teils mit Hinweis auf andere Ausgabe)
-  - 2008: `content/praxiswissen/Praxiswissen.json › daten.DATA_PLANUNG.sections.1.items.1.tip` – …ngsbauteile ohne betonangreifendes Grundwasser genügt meist XC2 (nach DIN 1045-2:2008 min. C16/20, w/z ≤ 0,75); nur bei Frost…
+- **DIN 1045-2:** 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (145×, teils mit Hinweis auf andere Ausgabe)
+  - 2023-08: `content/praxiswissen/Praxiswissen.json › daten.DATA_PLANUNG.sections.1.items.1.tip` – …ngsbauteile ohne betonangreifendes Grundwasser genügt meist XC2 (nach DIN 1045-2:2023-08 min. C16/20, w/z ≤ 0,75); nur bei Frost…
   - 2023-08: `content/praxiswissen/Praxiswissen.json › daten.DATA_PRODUKTION.sections.3.items.2.description` – …r Zumischung von rezyklierten Gesteinskörnungen (Typ 1 und Typ 2 nach DIN 1045-2:2023-08, Anhang E) zur Einhaltung der Betoneige…
   - 2023-08 (mit Hinweis): `content/praxiswissen/Praxiswissen.json › daten.DATA_PRODUKTION.sections.3.items.2.standard` – DIN 1045-2:2023-08, Anhang E (ersetzt die DAfStb-Richtlini…
   - 2023-08: `content/praxiswissen/Praxiswissen.json › daten.DATA_PRODUKTION.sections.3.items.2.tip` – …> 2 mm hängen von Typ, Expositions- und Feuchtigkeitsklasse ab (nach DIN 1045-2:2023-08, Anhang E, für Typ 1 etwa 25 bis 45 Vol…
-  - 2008: `content/praxiswissen/Praxiswissen.json › daten.Praxiswissen.schritte_3.2.erklaerung` – Für XC4 gilt nach DIN 1045-2:2008 ein Höchstwert von 0,60; die Reserve is…
+  - 2023-08: `content/praxiswissen/Praxiswissen.json › daten.Praxiswissen.schritte_3.2.erklaerung` – Für XC4 gilt nach DIN 1045-2:2023-08 ein Höchstwert von 0,60; die Reserve is…
   - 2023-08: `content/praxiswissen/Praxiswissen.json › daten.Praxiswissen.regelwerke.1.title` – DIN EN 206:2021-06 und DIN 1045-2:2023-08 (Beton – Festlegung, Eigenschaften, Her…
 - **DIN 18533-1:** 2017-07 (2×, teils mit Hinweis auf andere Ausgabe), 2026-06 (4×, teils mit Hinweis auf andere Ausgabe)
   - 2026-06: `content/praxiswissen/Praxiswissen.json › daten.DATA_PLANUNG.sections.0.items.1.tip` – …m über die Geländeoberfläche geführt. Tür- und Fensteranschlüsse nach DIN 18533-1:2026-06, Abschnitt 9: grundsätzlich h ≥ 15 cm ü…
-
-### Abweichend von der Normen-Registry (ohne Hinweis auf andere Ausgabe)
-
-- DIN 1045-2:2008 (Registry 2023-08): `content/praxiswissen/Praxiswissen.json › daten.DATA_PLANUNG.sections.1.items.1.tip` – …ngsbauteile ohne betonangreifendes Grundwasser genügt meist XC2 (nach DIN 1045-2:2008 min. C16/20, w/z ≤ 0,75); nur bei Frost…
-- DIN 1045-2:2008 (Registry 2023-08): `content/praxiswissen/Praxiswissen.json › daten.Praxiswissen.schritte_3.2.erklaerung` – Für XC4 gilt nach DIN 1045-2:2008 ein Höchstwert von 0,60; die Reserve is…
 
 ## Prüfbogen (Ergänzung, Fehlerarten a–c)
 

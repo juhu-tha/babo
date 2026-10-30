@@ -4,6 +4,13 @@ import { InlineMath } from 'react-katex';
 import type { Dispatch, SetStateAction } from 'react';
 import inhalt from '@/content/nachhaltigkeit/PraxisInnovationen.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { biogenesCo2DinEn16449 } from '@/src/calc/holzphysik';
+import { KVH_LEHR_ROHDICHTE } from '@/src/data/gwpLehrwerte';
+import { formatDeZahl } from '@/src/utils/numberFormat';
+
+/** Umsetzung 30.10.2026 (DSB-LR-2): Holzvolumen des Leuchtturmprojekts und biogener Speicher nach DIN EN 16449, auf 100 t gerundet */
+const LEUCHTTURM_HOLZ_M3 = 1800;
+const LEUCHTTURM_CO2_T = Math.round(biogenesCo2DinEn16449(KVH_LEHR_ROHDICHTE, 12, LEUCHTTURM_HOLZ_M3) / 1000 / 100) * 100;
 
 interface PraxisInnovationenProps {
   praxisCategory: "gebaeudetyp_e" | "urban_mining" | "lehmbau" | "holz_hybrid";
@@ -221,7 +228,7 @@ export default function PraxisInnovationen({ praxisCategory, setPraxisCategory }
                   <div className="flex flex-col gap-2">
                     <span className="text-[10px] font-bold text-blue-700 bg-blue-100 px-2 py-0.5 rounded self-start"><MdText text={inhalt.texte.frankfurt14100M} /></span>
                     <h4 className="text-sm font-bold text-slate-900"><MdText text={inhalt.texte.timberPioneerEuropaviertel} /></h4>
-                    <p className="text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.erstesHolzHybridBürogebäude} /></p>
+                    <p className="text-xs text-slate-600 leading-relaxed"><MdText text={inhalt.texte.erstesHolzHybridBürogebäude.replace('{co2Speicher}', formatDeZahl(LEUCHTTURM_CO2_T, 0))} /></p>
                   </div>
                   <div className="text-[10px] font-mono text-slate-500 border-t border-slate-200 pt-2 font-bold"><MdText text={inhalt.texte.t57GewichtsersparnisBeiDecken} /></div>
                 </div>

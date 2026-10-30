@@ -36,8 +36,8 @@ gilt(!/\* 1\.8\)|\* 0\.45\)/.test(fs.readFileSync('src/modules/stahl/Stahlsorten
 pruefe('LC-1 C25/30 CEM I', GWP_LEHRWERTE.betonC2530CemI.gwp, 245);         // 300 · 0,665 + 45 = 244,5 → 245
 pruefe('LC-1 C25/30 CEM II/C-M', GWP_LEHRWERTE.betonC2530CemIICM.gwp, 165); // 300 · 0,40 + 45
 pruefe('LC-1 C25/30 CEM III/A', GWP_LEHRWERTE.betonCemIIIA.gwp, 165);       // 300 · 0,40 + 45
-pruefe('LC-1 C30/37 CEM III/A', GWP_LEHRWERTE.betonC3037CemIII.gwp, 158);   // 320 · 0,40 + 30
-pruefe('LC-1 C30/37 CEM I', GWP_LEHRWERTE.betonC3037CemI.gwp, 243);         // 320 · 0,665 + 30 = 242,8
+pruefe('LC-1 C30/37 CEM III/A', GWP_LEHRWERTE.betonC3037CemIII.gwp, 173);   // 320 · 0,40 + 45 (Rest einheitlich seit 30.10.2026)
+pruefe('LC-1 C30/37 CEM I', GWP_LEHRWERTE.betonC3037CemI.gwp, 258);         // 320 · 0,665 + 45 = 257,8
 pruefe('LC-1 C25/30 CEM II/A (Plausibilität ÖKOBAUDAT 221,7)', lehrbetonGwp(LEHRBETON_C2530, 'CEM II/A'), 225);
 pruefe('LC-1 Materialoptimierung = QNG-Tabelle', ZEMENT_GWP.cem3_a, GWP_LEHRWERTE.betonC3037CemIII.gwp);
 pruefe('LC-1 LCA-Rechner CEM III/A', lca('beton-cem3')?.gwpA1A3 ?? NaN, 165);
@@ -47,7 +47,7 @@ gilt(/rund 33 %\.$/.test(lca('beton-cem3')?.description ?? ''), `LC-1 Minderung 
 pruefe('LP Faustregel', LP_FESTIGKEITSVERLUST_JE_PROZENT, 5);
 pruefe('LP 6 % Luft', lpFestigkeitsverlust(6), 22.5); // (6 − 1,5) · 5 %
 pruefe('LP ohne Zusatzluft', lpFestigkeitsverlust(1.5), 0);
-gilt(/rund 5 %/.test(mischEingaben.texte.jedesVolLuftporenKostet) && !/MPa/.test(mischEingaben.texte.jedesVolLuftporenKostet), 'LP Text in % je % LP');
+gilt(/rund 4–5 %/.test(mischEingaben.texte.jedesVolLuftporenKostet) && /5 %/.test(mischEingaben.texte.jedesVolLuftporenKostet) && !/MPa/.test(mischEingaben.texte.jedesVolLuftporenKostet), 'LP Text in % je % LP');
 
 // BSP-Schwingung: Kennwertsatz wie Quiz wählbar, Standard unverändert
 pruefe('BSP Lehrbeispiel Masse', (BSP_KENNWERTSAETZE.lehrbeispiel.wichte * 1000) / 9.81, 450);

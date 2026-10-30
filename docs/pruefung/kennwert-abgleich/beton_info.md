@@ -96,7 +96,7 @@ Keine erkannt.
 
 ### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
 
-- **DIN 1045-2:** 2008 (2×), 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (139×, teils mit Hinweis auf andere Ausgabe)
+- **DIN 1045-2:** 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (145×, teils mit Hinweis auf andere Ausgabe)
   - 2023-08 (mit Hinweis): `content/betoninfo/BetonInfo.json › texte.expositionsklassenGrenzwerteFürWasser` – …cherung des Betonentwurfs zur Lebensdauerprognose nach DIN EN 206 und DIN 1045-2:2023-08.
   - 2023-08: `content/betoninfo/BetonInfo.json › texte.kWertAnsätzeZusatzstoffregelungen` – k-Wert-Ansätze & Zusatzstoffregelungen (Typ II) nach DIN 1045-2:2023-08
   - 2023-08: `content/betoninfo/BetonInfo.json › texte.zurDekarbonisierungErlaubtDin` – DIN 1045-2:2023-08 erlaubt die Anrechnung von Typ-II-Zusat…

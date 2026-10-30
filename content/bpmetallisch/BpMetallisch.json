@@ -27,7 +27,7 @@
     "bruchdehnungDuktilität": "Bruchdehnung (Duktilität)",
     "recyclingZirkularität": "Recycling & Zirkularität",
     "praxisAusführungshinweis": "Praxis- & Ausführungshinweis: ",
-    "aluminiumWeistEineUm": "Aluminium weist eine um ein Vielfaches höhere Wärmeleitung (220 W/(m·K)) auf als Edelstahl (15 W/(m·K)). Wärmebrücken an Fassadenkonsolen müssen daher thermisch entkoppelt werden!",
+    "aluminiumWeistEineUm": "Aluminium weist eine um ein Vielfaches höhere Wärmeleitung (160 W/(m·K), Bemessungswert für Aluminiumlegierungen nach DIN EN ISO 10456) auf als Edelstahl (15 W/(m·K)). Wärmebrücken an Fassadenkonsolen müssen daher thermisch entkoppelt werden!",
     "opferanodenKontaktkorrosionsPrüfung": " Opferanoden & Kontaktkorrosions-Prüfung",
     "interaktiveVerbindungsmittelKompatibilit": "Interaktive Verbindungsmittel-Kompatibilitätsprüfung nach der galvanischen Spannungsreihe (Lehrmodell; Begriffe nach DIN EN ISO 8044)",
     "verbindungspaarAuswählen": "Verbindungspaar auswählen",
@@ -135,7 +135,7 @@
       "elongationAtBreak": "A50 ≥ 8 – 12 % (aushärtbare Knetlegierung)",
       "recyclingRate": "> 95 % (Sekundäraluminium spart 95 % Schmelzenergie)",
       "description": "Leichtmetall mit kubisch-flächenzentriertem Gitter, sehr guter Kaltumformbarkeit und hoher Zähigkeit ohne Tieftemperaturversprödung. Bei Luftkontakt bildet Aluminium binnen Millisekunden eine porenfreie, transparente Passivschicht aus Aluminiumoxid (Al₂O₃, ca. 5–20 nm dünn), die das Metall im neutralen pH-Bereich (pH 4,5–8,5) vor atmosphärischem Abtrag schützt.\n\nAggressive Zersetzungsmechanismen: Im stark alkalischen Milieu (z.B. flüssiger Zementleim, frischer Beton oder Mauermörtel mit pH 12,5–13,5) löst sich die amphotere Oxidschicht unter Wasserstoffbildung auf (2 Al + 2 OH⁻ + 6 H₂O → 2 [Al(OH)₄]⁻ + 3 H₂↑). Aluminium darf daher niemals ungeschützt in Mörtel oder Beton eingebettet werden.\n\nIn der Baupraxis wird Aluminium überwiegend eloxiert (anodische Oxidation, Schichtdicke 15–25 µm nach DIN 17611) oder einbrennpulverbeschichtet. Aufgrund des niedrigen E-Moduls (ca. 1/3 des Stahls) sind Profile mit größeren Trägheitsmomenten Iy auszuführen. Die Wärmedehnung ist mit 23 × 10⁻⁶/K fast doppelt so hoch wie bei Baustahl.",
-      "practicalAdvice": "Aluminium-Fassadenunterkonstruktionen stellen erhebliche Wärmebrücken dar (hohe Wärmeleitfähigkeit λ = 220 W/(m·K)) und müssen zwingend mit thermischen Trennelementen (Thermostopps) an der Massivwand verankert werden."
+      "practicalAdvice": "Aluminium-Fassadenunterkonstruktionen stellen erhebliche Wärmebrücken dar (hohe Wärmeleitfähigkeit λ = 160 W/(m·K), DIN EN ISO 10456) und müssen zwingend mit thermischen Trennelementen (Thermostopps) an der Massivwand verankert werden."
     },
     "metalsDb.steel": {
       "id": "steel",

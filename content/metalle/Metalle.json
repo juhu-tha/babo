@@ -36,7 +36,7 @@
         "symbol": "Al",
         "density": 2700,
         "eModul": 70000,
-        "thermalConductivity": 235,
+        "thermalConductivity": 160,
         "meltingPoint": 660,
         "corrosionBehavior": "Bildet an der Luft spontan eine dichte, transparente Oxidschicht (Al₂O₃, 5–20 nm), die im neutralen pH-Bereich (pH 4,5–8,5) passivierend wirkt. Stark gefährdet bei direktem Kontakt mit edleren Metallen (Kupfer, Edelstahl) unter Feuchtigkeit (Bimetallkorrosion) sowie in chloridreicher Meeresluft (Lochfraß). Im stark alkalischen Milieu von frischem Zementmörtel oder Beton (pH > 12,5) löst sich die Oxidschicht stürmisch unter Freisetzung von brennbarem Wasserstoffgas auf.",
         "corrosionProtection": "Künstliche Verstärkung der Oxidschicht durch Eloxieren (Anodisieren, 15–25 µm Schichtdicke) oder hochwertige Pulverbeschichtung. Bei Einbau in feuchtes Mauerwerk oder Kontakt mit edleren Metallen ist zwingend eine elektrische und stoffliche Trennung (EPDM-Dichtscheiben, Isolierhülsen, Folien) vorzusehen.",

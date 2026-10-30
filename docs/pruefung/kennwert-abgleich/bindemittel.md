@@ -72,7 +72,7 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 
 ### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
 
-- **DIN 1045-2:** 2008 (2×), 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (139×, teils mit Hinweis auf andere Ausgabe)
+- **DIN 1045-2:** 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (145×, teils mit Hinweis auf andere Ausgabe)
   - 2023-08: `content/bindemittel/Bindemittel.json › texte.normzementeNachDinEn` – Normzemente nach DIN EN 197-1 / DIN EN 197-5 & DIN 1045-2:2023-08
   - 2023-08: `content/bindemittel/Bindemittel.json › texte.din104522023` – DIN 1045-2:2023-08
   - 2023-08: `content/bindemittel/Bindemittel.json › texte.gültigerAktuellerNormenstandDin` – Gültiger aktueller Normenstand (DIN 1045-2:2023-08 & DIN EN 197-5:2021):

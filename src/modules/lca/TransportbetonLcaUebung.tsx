@@ -13,6 +13,14 @@ import {
 } from 'lucide-react';
 import { LCA_BENCHMARKS, LKW_FAKTOR_UEBUNG, LKW_FAKTOR_ZENTRAL } from './transportbetonKennwerte';
 import { K_WERT_DIN1045_2 } from '@/src/calc/mischung';
+import { getMassgebendeAnforderung } from '@/src/data/standards/din1045_2';
+
+/**
+ * Umsetzung 30.10.2026 (DSB-LC-9): w/z-Grenze der Web-Übung an die Fallstudie gekoppelt – Expositionsklassen
+ * XC4/XD1/XF1, maßgebend XD1 nach DIN 1045-2:2023-08 mit (w/z)_eq ≤ 0,55 (vorher fest 0,50 ohne Klasse).
+ */
+const FALLSTUDIE_EXPOSITION = ['XC4', 'XD1', 'XF1'] as const;
+const WZ_GRENZE_FALLSTUDIE = getMassgebendeAnforderung([...FALLSTUDIE_EXPOSITION]).maxWz ?? 0.55;
 import inhalt from '@/content/lca/TransportbetonLcaUebung.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 
@@ -456,10 +464,10 @@ export default function TransportbetonLcaUebung() {
             <div className="grid grid-cols-2 gap-2 pt-3 border-t border-home-grau/20 text-xxs">
               <div>
                 <span className="text-text-main/70 block"><MdText text={inhalt.texte.äquivalenterWZEq} /></span>
-                <span className={`font-mono font-bold text-xs ${wz_eq <= 0.50 ? 'text-emerald-700' : 'text-amber-700'}`}>
+                <span className={`font-mono font-bold text-xs ${wz_eq <= WZ_GRENZE_FALLSTUDIE ? 'text-emerald-700' : 'text-amber-700'}`}>
                   {formatDeZahl(wz_eq, 2)}
                 </span>
-                <span className="text-[10px] text-text-main/60 block">{wz_eq <= 0.50 ? inhalt.werte.normkonform050 : inhalt.werte.warnung050}</span>
+                <span className="text-[10px] text-text-main/60 block">{wz_eq <= WZ_GRENZE_FALLSTUDIE ? inhalt.werte.normkonform050 : inhalt.werte.warnung050}</span>
               </div>
               <div>
                 <span className="text-text-main/70 block"><MdText text={inhalt.texte.cradleToGateA1} /></span>

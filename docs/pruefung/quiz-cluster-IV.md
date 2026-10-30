@@ -156,7 +156,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 84 korrigiert, 0 fraglich, 1
 
 - **Frage:** Welche Maßnahme senkt das GWP (A1–A3) von Transportbeton meist am stärksten?
 - **Richtige Antwort:** Geringerer Klinkeranteil, z. B. CEM III/A statt CEM I
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: Lehrbeispiel mit Zement-GWP CEM I 0,665 (VDZ-Branchen-EPD) und CEM III/A 0,40 kg/kg neu gerechnet (T15-NH-3) – korrigiert
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: Lehrbeispiel mit Zement-GWP CEM I 0,665 (VDZ-Branchen-EPD) und CEM III/A 0,40 kg/kg neu gerechnet (T15-NH-3) – korrigiert · Umsetzung 30.10.: Lehrbeton C30/37 mit einheitlichem Restanteil 45 kg/m³ (258/173 statt 243/158) – korrigiert
 - [ ] ok
 - [ ] ändern: …
 
@@ -626,9 +626,9 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 84 korrigiert, 0 fraglich, 1
 
 ### qn_materialoptimierung_3 · Materialoptimierung
 
-- **Frage:** Eine Hohlkörperdecke enthält 19,5 m³ Beton (CEM III/A, Prüfalter 56 d: 144 kg CO₂-Äq./m³) und 2470 kg Betonstahl (Elektroofenstahl mit Grünstrom, Lehrwert 0,42 kg CO₂-Äq./kg). Wie groß ist das GWP A1–A3 nach GWP = V_c · gwp_c + m_s · gwp_s?
-- **Richtige Antwort:** rund 3850 kg CO₂-Äq.
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: Beton-GWP CEM III/A bei 56 d jetzt 144 statt 123 kg/m³ (Zement-GWP nach T15-NH-3) – korrigiert · Zweitprüfung 29.10. (Runde 5): Stahlkennwert 0,42 wie im Modul als „Elektroofenstahl mit Grünstrom (Lehrwert)“ bezeichnet; 0,64 (ÖKOBAUDAT „Bewehrungsstahl (de)“) ist ebenfalls überwiegend Elektroofenstahl – korrigiert
+- **Frage:** Eine Hohlkörperdecke enthält 19,5 m³ Beton (CEM III/A, Prüfalter 56 d: 157 kg CO₂-Äq./m³) und 2470 kg Betonstahl (Elektroofenstahl mit Grünstrom, Lehrwert 0,42 kg CO₂-Äq./kg). Wie groß ist das GWP A1–A3 nach GWP = V_c · gwp_c + m_s · gwp_s?
+- **Richtige Antwort:** rund 4100 kg CO₂-Äq.
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: Beton-GWP CEM III/A bei 56 d jetzt 144 statt 123 kg/m³ (Zement-GWP nach T15-NH-3) – korrigiert · Zweitprüfung 29.10. (Runde 5): Stahlkennwert 0,42 wie im Modul als „Elektroofenstahl mit Grünstrom (Lehrwert)“ bezeichnet; 0,64 (ÖKOBAUDAT „Bewehrungsstahl (de)“) ist ebenfalls überwiegend Elektroofenstahl – korrigiert · Umsetzung 30.10.: Beton-GWP CEM III/A bei 56 d jetzt 157 statt 144 kg/m³ (Lehrbeton-Rest einheitlich 45 kg/m³), Antworten neu gerechnet – korrigiert
 - [x] ok
 - [ ] ändern: …
 
@@ -650,9 +650,9 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 84 korrigiert, 0 fraglich, 1
 
 ### qn_oekobilanz_lca_g1 · Ökobilanzierung (LCA): Grundlagen
 
-- **Frage:** 1 m³ C30/37 enthält 320 kg Zement. Mit GWP CEM I = 0,665 (VDZ-Branchen-EPD, netto) und CEM III/A = 0,40 kg CO₂-Äq./kg (Lehrwert) sowie pauschal 30 kg CO₂-Äq./m³ für die übrigen Bestandteile: Um wie viel Prozent sinkt das GWP (A1–A3) beim Wechsel auf CEM III/A?
-- **Richtige Antwort:** um rund 35 %
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: Lehrbeispiel mit CEM I 0,665 (VDZ-Branchen-EPD, netto) und CEM III/A 0,40 kg/kg neu gerechnet (T15-NH-3) – korrigiert
+- **Frage:** 1 m³ C30/37 enthält 320 kg Zement. Mit GWP CEM I = 0,665 (VDZ-Branchen-EPD, netto) und CEM III/A = 0,40 kg CO₂-Äq./kg (Lehrwert) sowie pauschal 45 kg CO₂-Äq./m³ für die übrigen Bestandteile: Um wie viel Prozent sinkt das GWP (A1–A3) beim Wechsel auf CEM III/A?
+- **Richtige Antwort:** um rund 33 %
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 29.10.: Lehrbeispiel mit CEM I 0,665 (VDZ-Branchen-EPD, netto) und CEM III/A 0,40 kg/kg neu gerechnet (T15-NH-3) – korrigiert · Umsetzung 30.10.: Restanteil der Lehrbetone einheitlich 45 kg/m³ (258/173, Minderung 33 %) – korrigiert
 - [x] ok
 - [ ] ändern: …
 

@@ -63,7 +63,7 @@
     "extraWasserAufDer": "Extra Wasser auf der Baustelle",
     "zusatzwasserVerändertDenW": "Zusatzwasser verändert den w/z-Wert und verschlechtert alle Dauerhaftigkeitswerte extrem.",
     "setzenSie20L": "Setzen Sie \"20 l/m³\" (Verbotenes Maß)",
-    "jedesZusätzlicheProzentPorenluft": "Jedes zusätzliche Prozent Porenluft mindert die Druckfestigkeit des erhärteten Betons im Bauteil um rund 5 % (Faustregel wie in der Mischungsberechnung; hier bezogen auf C30/37 mit f_cm = 38 N/mm², also rund 1,9 N/mm² je Vol.-%).",
+    "jedesZusätzlicheProzentPorenluft": "Jedes zusätzliche Prozent Porenluft mindert die Druckfestigkeit des erhärteten Betons im Bauteil um rund 4–5 % (Faustregel wie in der Mischungsberechnung, Rechenwert 5 %; hier bezogen auf C30/37 mit f_cm = 38 N/mm², also rund 1,9 N/mm² je Vol.-%).",
     "simuliertesResultatKombinierteDefizite": "Simuliertes Resultat (Kombinierte Defizite):",
     "flüssigerKonsistenzfluss": "Flüssiger Konsistenzfluss",
     "freigesetztesBlutungswasser": "Freigesetztes Blutungswasser",

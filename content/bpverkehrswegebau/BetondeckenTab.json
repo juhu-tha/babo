@@ -12,7 +12,7 @@
     "berechnetDieKritischeBiegezugspannung": "Berechnet die kritische Biegezugspannung am unbelasteten Plattenrand (kritischster Lastfall im Fugenkantenbereich) nach der klassischen Westergaard-Gleichung für den Plattenrand (Lehrmodell).",
     "deckendickeH": "Deckendicke (h):",
     "typischBk0318": "Typisch Bk0.3: 18-20 cm",
-    "autobahnBk1002830": "Autobahn Bk100: 28-30 cm/WASH-Beton",
+    "autobahnBk1002830": "Autobahn Bk100: 27 cm (RStO 12/24, Tafel 2, Zeile 1; vorläufig, Normprüfung ausstehend)",
     "bemessungsAchsübergangPAchse": "Bemessungs-Achsübergang (P_achse):",
     "radlastPRadP": "Radlast (P_rad) = P_achse / 2 = ",
     "knTypischesLkwRad": " kN. Typisches Lkw-Rad für Dimensionierungen.",

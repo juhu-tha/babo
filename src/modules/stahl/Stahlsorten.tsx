@@ -1,4 +1,5 @@
 import { plastischeKapazitaet, co2VorteilProfil, einsparanteilProfil, GWP_PROFILSTAHL_KG } from '@/src/calc/stahlbau';
+import { PROFILSTAHL_HINWEIS } from '@/src/data/gwpLehrwerte';
 import { BookOpen, Sparkles, Layers, Flame, Activity, Scale, Check, TrendingDown } from 'lucide-react';
 import { InlineMath } from 'react-katex';
 import { extendedSteelGrades, structuralProfiles } from './daten';
@@ -632,7 +633,7 @@ export default function Stahlsorten({ activeGradedData, activeProfile, designMom
               <span className="text-xl font-mono font-black text-emerald-600">
                 ~ {formatDeZahl(co2VorteilProfil(activeProfile.weight, EINSPARANTEIL), 1)} kg CO₂-Äq./m
               </span>
-              <span className="text-[11px] text-slate-500 leading-normal font-normal"><MdText text={inhalt.texte.vermeideteCoEmissionenDurch} /> ({formatDeZahl(GWP_PROFILSTAHL_KG, 1)} kg CO₂-Äq./kg · {formatDeZahl(EINSPARANTEIL * 100, 0)} %)</span>
+              <span className="text-[11px] text-slate-500 leading-normal font-normal"><MdText text={inhalt.texte.vermeideteCoEmissionenDurch} /> ({formatDeZahl(GWP_PROFILSTAHL_KG, 1)} kg CO₂-Äq./kg · {formatDeZahl(EINSPARANTEIL * 100, 0)} %; {PROFILSTAHL_HINWEIS})</span>
             </div>
           </div>
         </div>

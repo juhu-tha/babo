@@ -183,13 +183,13 @@
       },
       {
         "titel": "EPS-Dämmung",
-        "erklaerung": "d = 0,14 m, ρ = 20 kg/m³, gwp = 3,3 kg CO₂e/kg (Lehrwert):",
-        "formel": "0{,}14 \\cdot 20 \\cdot 3{,}3 = 9{,}24\\,\\text{kg CO}_2\\text{e/m}^2"
+        "erklaerung": "d = 0,14 m, ρ = 20 kg/m³, gwp = 3,25 kg CO₂e/kg (EPS-Lehrwert wie in allen Modulen):",
+        "formel": "0{,}14 \\cdot 20 \\cdot 3{,}25 = 9{,}10\\,\\text{kg CO}_2\\text{e/m}^2"
       },
       {
         "titel": "Summe A1–A3",
         "erklaerung": "Ohne Putz und Befestigung:",
-        "formel": "GWP_A = 50{,}2\\,\\text{kg CO}_2\\text{e/m}^2"
+        "formel": "GWP_A = 40{,}95 + 9{,}10 \\approx 50{,}1\\,\\text{kg CO}_2\\text{e/m}^2"
       }
     ],
     "Materialdatenbanken.schritte_2": [

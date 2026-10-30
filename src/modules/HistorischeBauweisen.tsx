@@ -12,6 +12,9 @@ import { SCHWINDBEIWERTE } from '@/src/calc/holzphysik';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
 
+/** Lehrwert σ_zul = 120 N/mm² für historische Zugbänder (Schweißeisen/Flussstahl), ohne Normbeleg (DSC-HB-1) */
+const SIGMA_ZUL_ZUGBAND_LEHRWERT = 120;
+
 type BauweisenReiter = 'massivbau' | 'fachwerk' | 'decken' | 'dachwerke';
 const REITER: readonly ModulTab<BauweisenReiter>[] = [
   { id: 'massivbau', label: inhalt.werte.massivbauMauerwerk, icon: Building2 },
@@ -132,8 +135,9 @@ export default function HistorischeBauweisen() {
     // Cross-sectional area of the round tie rod (A = pi * d^2 / 4)
     const rodAreaSqMm = (Math.PI * dRod * dRod) / 4;
 
-    // Allowable steel stress for historical steel/iron (approx. 100-140 N/mm²)
-    const sigmaAllowable = 120.0; // N/mm²
+    // LEHRWERT (Umsetzung 30.10.2026, DSC-HB-1): zulässige Spannung für historisches Schweißeisen/Flussstahl,
+    // ohne Normbeleg (Quelle der Altnorm nicht ermittelt); maßgebend sind Bestandsunterlagen bzw. Werkstoffprüfung
+    const sigmaAllowable = SIGMA_ZUL_ZUGBAND_LEHRWERT; // N/mm²
 
     // Tension capacity of the tie-rod (kN)
     const tieRodCapacityKn = (rodAreaSqMm * sigmaAllowable) / 1000;

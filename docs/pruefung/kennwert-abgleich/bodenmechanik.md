@@ -11,8 +11,8 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte abweichend von zentraler Konstante | 0 |
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
-| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 2 (2) |
-| (3) Normverweise / Hinweise | 45 / 0 |
+| (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 1 (1) |
+| (3) Normverweise / Hinweise | 46 / 0 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
 
@@ -25,7 +25,6 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 | Fundstelle | Literal | Kommentar | Zeile |
 |---|---|---|---|
 | `src/modules/Bodenmechanik.tsx:75` | `1.2` | – | `const maxSigma = Math.max(300, sigma1 * 1.2, sigma1_f * 1.2);` |
-| `src/modules/Bodenmechanik.tsx:397` | `0.73` | – | `formel: 'I_{P,A} = 0{,}73 \\cdot (${formatDeTeX(wL, 1)} - 20) = ${formatDeTeX(0.73 * (wL - 20), 1)}\\,\\% \\quad I_P = ${formatDeTeX(results` |
 
 ## 3 Normverweise
 
@@ -44,7 +43,7 @@ Zahlliterale in Rechenausdrücken außerhalb von `src/calc/` und der zentralen D
 | EN 1997-1 | 2009-09 | – | 1 | Registry 2014-03 |
 | EN 1997-1 | 2014-03 | – | 1 |  |
 | EN 1997-1 | 2024 | – | 1 | Registry 2014-03 |
-| EN ISO 14688-2 | – | – | 8 |  |
+| EN ISO 14688-2 | – | – | 9 |  |
 | EN ISO 17892-12 | – | – | 5 |  |
 | EN ISO 17892-12 | 2022-08 | – | 3 |  |
 

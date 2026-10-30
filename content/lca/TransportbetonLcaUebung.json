@@ -64,8 +64,8 @@
     "zementwerkBetonwerkA2": "Zementwerk ➔ Betonwerk (A2)",
     "kieswerkBetonwerkA2": "Kieswerk ➔ Betonwerk (A2)",
     "betonwerkBaustelleA4": "Betonwerk ➔ Baustelle (A4)",
-    "normkonform050": "Normkonform ≤ 0,50",
-    "warnung050": "Warnung: > 0,50",
+    "normkonform050": "Normkonform ≤ 0,55 (XD1 maßgebend, DIN 1045-2)",
+    "warnung050": "Warnung: > 0,55 (XD1, DIN 1045-2)",
     "hochrechnungGesamtbauwerk": "Hochrechnung Gesamtbauwerk"
   }
 }

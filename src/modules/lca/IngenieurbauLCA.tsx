@@ -43,6 +43,7 @@ export default function IngenieurbauLCA() {
   const results = useMemo(() => {
     // Cycles in reference study period
     const L = BRUECKE_LEHRWERTE;
+    // Zählweise ⌊T/ND⌋ (Entscheidung 30.10.2026, DSB-LI-2: belassen und im Simulatortext benannt; Gebäuderechner ⌈T/ND⌉ − 1)
     const asphaltCycles = Math.floor(studyPeriod / L.intervall.belag);
     const bearingCycles = Math.floor(studyPeriod / L.intervall.lager);
     const coatingCycles = Math.floor(studyPeriod / L.intervall.korrosionsschutz);

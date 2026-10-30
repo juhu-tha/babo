@@ -12,7 +12,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte übereinstimmend | 1 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
 | (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 0 (0) |
-| (3) Normverweise / Hinweise | 48 / 2 |
+| (3) Normverweise / Hinweise | 50 / 2 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
 
@@ -35,8 +35,9 @@ Keine erkannt.
 | DIN 18516-1 | – | – | 2 |  |
 | DIN 18516-1 | 2010-06 | – | 1 |  |
 | DIN 55699 | – | – | 1 |  |
-| EN 1504-2 | – | – | 4 |  |
+| EN 1504-2 | – | – | 5 |  |
 | EN 1504-2 | 2005-01 | – | 1 |  |
+| EN 1504-10 | – | – | 1 |  |
 | EN 1542 | – | – | 3 |  |
 | EN 1542 | 1999-07 | – | 2 |  |
 | EN 1992-1-1 | 2011-01 | – | 1 | Ausgaben uneinheitlich |

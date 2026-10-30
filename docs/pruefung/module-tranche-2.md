@@ -474,3 +474,12 @@ Freigegeben:
 Nicht freigegeben:
 
 - `stahlbeton_bemessung` (Reiter Verankerung, Rissbreite, σ-ε-Linien) – Prüfbogen: #242-1 bis -4 (Normtext NA DE)
+
+## Freigabe 30.10.2026
+
+Entscheidung vom 30.10.2026 zur gezielten Durchsicht A–D: Prüfvermerk behalten, Prüfdatum auf 2026-10-30 gesetzt (`src/data/pruefvermerke.ts`, „geprueft“, passiv ohne Namen). Die gewichtigen Befunde der Durchsicht sind behoben bzw. umgesetzt; Belege in `docs/pruefung/durchsicht-A-2026-10-29.md` und `-B-` (Abschnitte „Umsetzung 30.10.2026“). Quizfreigaben sind davon getrennt.
+
+Freigegeben:
+
+- `lca_rechner` – Durchsicht B: DSB-LC-1 (Excel-Bezüge) behoben; DSB-LC-9, -10 umgesetzt, DSB-LC-12 gekennzeichnet
+- `spannbeton_grundlagen` – Durchsicht A: DSA-SB-2 (Deckungsrechner nach Tab. 4.4DE) behoben; DSA-SB-2a und -6 gekennzeichnet

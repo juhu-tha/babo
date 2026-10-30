@@ -438,7 +438,7 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Beton- und Stahlmengen je Bauteil fest hinterlegt, keine Bemessung.",
       "Beton-GWP nur nach Zementart, unabhängig von der Festigkeitsklasse.",
       "Bewertungsklassen über modellinterne Schwellen (Lehreinteilung, nicht die Treibhausgas-Minderungsklassen der DAfStb-Richtlinie).",
-      "GWP-Lehrwerte: Beton = 320 kg Zement · GWP_Zement + 30 kg/m³ (CEM II/A-LL ≈ ÖKOBAUDAT C25/30), Stahl-Referenz ÖKOBAUDAT 0,64 kg/kg; Hochofen 0,98, CEM II/B-S, II/C-M, 56-d-Abschlag vorläufig (Normprüfung ausstehend).",
+      "GWP-Lehrwerte: Beton = 320 kg Zement · GWP_Zement + 45 kg/m³ (Rest wie alle Lehrbetone), Stahl-Referenz ÖKOBAUDAT 0,64 kg/kg; Hochofen 0,98, CEM II/B-S, II/C-M, 56-d-Abschlag vorläufig (Normprüfung ausstehend).",
     ],
   },
   oekobilanz_lca: {

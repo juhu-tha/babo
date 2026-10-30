@@ -561,7 +561,7 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "Stoffoptimierung setzt bereits in der Tragwerksplanung an und stützt sich auf vier Säulen: Suffizienz, Effizienz, Konsistenz und Resilienz; Hauptemittent des Betons ist der Zementklinker.",
     "Die DAfStb-Richtlinie „Treibhausgasreduzierte Tragwerke“ vom August 2024 regelt die Ermittlung der Emissionen von Tragwerken und Deckenbauteilen und führt Minderungsklassen gegenüber einem Referenzniveau 2020 ein.",
     "Die Bauteilbilanz folgt aus GWP = V_c · gwp_c + m_s · gwp_s; Planungshebel sind Geometrie und Leichtbau, Klinkerersatz mit einem Prüfalter von 56 Tagen sowie die Herstellroute des Bewehrungsstahls.",
-    "Im Beispiel senken eine Hohlkörperdecke mit 25 % weniger Beton und CEM III/A die Emissionen von 61,4 auf 35,2 kg CO₂-Äq./m², also um 43 %; Geometrie und Zementart wirken multiplikativ.",
+    "Im Beispiel senken eine Hohlkörperdecke mit 25 % weniger Beton und CEM III/A die Emissionen von 64,4 auf 37,5 kg CO₂-Äq./m², also um 42 %; Geometrie und Zementart wirken multiplikativ.",
     "Der k-Wert-Ansatz rechnet Flugasche mit k = 0,4 auf den äquivalenten w/z-Wert an und spart so Klinker ohne Dauerhaftigkeitsverlust; klinkerarme Betone brauchen eine längere Nachbehandlung nach DIN EN 13670.",
   ],
   mechanische_kenngroessen: [

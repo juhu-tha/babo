@@ -6,7 +6,7 @@ import { ModulTest } from '@/src/components/quiz/ModulTest';
 import { Monitor, Database, Settings, FileCode, Layers, ShieldCheck, Copy, Check, Download } from 'lucide-react';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import inhalt from '@/content/bimbaustoffe/BimBaustoffe.json';
-import { GWP_LEHRWERTE, type GwpLehrwertSchluessel } from '@/src/data/gwpLehrwerte';
+import { GWP_LEHRWERTE, PROFILSTAHL_HINWEIS, type GwpLehrwertSchluessel } from '@/src/data/gwpLehrwerte';
 import { MdText } from '@/src/components/inhalt/MdText';
 
 interface MaterialArchetype {
@@ -22,8 +22,9 @@ interface MaterialArchetype {
 
 // Beton C30/37 und BSH aus der gemeinsamen Lehrwerttabelle (Konsistenz 29.10.2026, F-4); Baustahl S355 (Walzprofile) mit dem
 // zentralen Profilstahl-Lehrwert 1,1 kg CO₂-Äq./kg (Entscheidung 29.10.2026, NP2-ST-2) statt 0,64 kg/kg (Betonstahl-Referenz),
-// je m³ über die Rohdichte der Voreinstellung (Durchsicht B 29.10.2026, DSB-BIM-1)
-const AUS_LEHRWERTTABELLE: Partial<Record<string, GwpLehrwertSchluessel>> = { beton: 'betonC3037CemI', holz: 'bsh', stahl: 'profilstahl' };
+// je m³ über die Rohdichte der Voreinstellung (Durchsicht B 29.10.2026, DSB-BIM-1); Mineralwolle 1,20 kg/kg zentral
+// (Umsetzung 30.10.2026, DSB-LC-10) · 60 kg/m³ = 72
+const AUS_LEHRWERTTABELLE: Partial<Record<string, GwpLehrwertSchluessel>> = { beton: 'betonC3037CemI', holz: 'bsh', stahl: 'profilstahl', mineralwolle: 'mineralwolle' };
 const ARCHETYPES: MaterialArchetype[] = inhalt.daten.ARCHETYPES.map(a => {
   const s = AUS_LEHRWERTTABELLE[a.id];
   if (!s) return a;
@@ -230,6 +231,9 @@ export default function BimBaustoffe() {
                       onChange={(e) => setGwp(Number(e.target.value))}
                       className="cursor-pointer"
                     />
+                    {selectedId === 'stahl' && (
+                      <p className="text-[10px] text-slate-600 mt-1">Lehrwert Profilstahl {formatDeZahl(GWP_LEHRWERTE.profilstahl.gwp / 1000, 1)} kg CO₂e/kg · Rohdichte; {PROFILSTAHL_HINWEIS}.</p>
+                    )}
                   </div>
                 </div>
               </div>

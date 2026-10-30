@@ -233,6 +233,15 @@ export const BAUSTAHL_EC3: Readonly<Record<BaustahlGuete, { fy: number; fu: numb
 /** Elastizitätsmodul von Baustahl E = 210 000 N/mm² nach DIN EN 1993-1-1, 3.2.6 */
 export const E_BAUSTAHL = 210000;
 
+/**
+ * Wärmeleitfähigkeit von Aluminiumlegierungen, Bemessungswert λ = 160 W/(mK) nach DIN EN ISO 10456 (Tabelle der
+ * Bemessungswerte für Metalle). Entscheidung 30.10.2026 (Durchsicht C, DSC-ME-1): einheitlich für Materialdatenbank
+ * (src/data/materials.json, EN AW-6060) und Fließtext (Bauprodukte metallisch); vorher 200 bzw. 220 W/(mK).
+ * Reinaluminium und einzelne Knetlegierungen liegen höher (Herstellerangaben); für Wärmebrückennachweise gilt der Bemessungswert.
+ * Gleichheit mit materials.json prüft tests/umsetzungDurchsicht_20261030.test.ts.
+ */
+export const LAMBDA_ALUMINIUM = 160;
+
 export type BetonstahlSorte = 'B500A' | 'B500B';
 
 /** Elastizitätsmodul von Betonstahl E_s = 200 000 N/mm² nach DIN EN 1992-1-1, 3.2.7(4) */

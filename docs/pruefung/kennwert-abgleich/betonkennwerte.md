@@ -42,7 +42,7 @@ Keine erkannt.
 
 ### Uneinheitliche Ausgaben (app-weit; Fundstellen in diesem Modul)
 
-- **DIN 1045-2:** 2008 (2×), 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (139×, teils mit Hinweis auf andere Ausgabe)
+- **DIN 1045-2:** 2008-08 (5×), 2023 (6×, teils mit Hinweis auf andere Ausgabe), 2023-08 (145×, teils mit Hinweis auf andere Ausgabe)
   - 2023-08: `content/betonkennwerte/Betonkennwerte.json › daten.Betonkennwerte.regelwerke.3.title` – DIN EN 206:2021-06 / DIN 1045-2:2023-08 (Beton - Festlegung, Eigenschaften, Her…
 - **EN 1992-1-1:** 2011 (7×), 2011-01 (49×, teils mit Hinweis auf andere Ausgabe), 2023 (23×, teils mit Hinweis auf andere Ausgabe), 2025-09 (25×, teils mit Hinweis auf andere Ausgabe)
   - 2025-09 (mit Hinweis): `content/betonkennwerte/Ausblick2025Tab.json › texte.abschnitt8WesentlicheNeuerungen` – Abschnitt 8: Wesentliche Neuerungen in Eurocode 2 der 2. Generation (DIN EN 1992-1-1:2025-09)

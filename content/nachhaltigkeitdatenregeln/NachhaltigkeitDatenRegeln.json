@@ -45,7 +45,7 @@
     "restfraktionDeponie": "Restfraktion (Deponie):",
     "feinanteileStörstoffe": "Feinanteile / Störstoffe",
     "eingespartesPrimärCo": "Eingespartes Primär-CO₂:",
-    "vermiedeneTransporteAbbau": "vermiedene Transporte/Abbau (Lehrwert 45 kg je t)",
+    "vermiedeneTransporteAbbau": "vermiedener Kiesabbau und Transport je t: {kies} kg (Primärkies A1–A3) + {lkw} kg/(t·km) · {km} km Lkw (UBA 2024) ≈ {summe} kg CO₂e (Lehrwerte)",
     "dieInternationaleKlimadiplomatieUnd": "Die internationale Klimadiplomatie und ihre Auswirkung auf das Bauen",
     "vonDerUnKlimarahmenkonvention": "Von der UN-Klimarahmenkonvention (UNFCCC) bis zum Pariser 1,5 °C-Ziel.",
     "die17UnNachhaltigkeitsziele": "Die 17 UN-Nachhaltigkeitsziele (SDGs) im Bauingenieurwesen",

@@ -12,7 +12,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte übereinstimmend | 1 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
 | (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 0 (0) |
-| (3) Normverweise / Hinweise | 11 / 1 |
+| (3) Normverweise / Hinweise | 12 / 1 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
 
@@ -30,7 +30,7 @@ Keine erkannt.
 
 | Norm | Ausgabe | Tabelle/Abschnitt/Gleichung | Anzahl | Hinweis |
 |---|---|---|---|---|
-| EN 1992-1-1 | – | Tab. 3.1 | 8 |  |
+| EN 1992-1-1 | – | Tab. 3.1 | 9 |  |
 | EN 1992-1-1 | 2011-01 | – | 2 | Ausgaben uneinheitlich |
 | EN 12390-13 | 2021-09 | – | 1 |  |
 

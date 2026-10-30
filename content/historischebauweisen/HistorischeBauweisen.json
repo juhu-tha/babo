@@ -93,7 +93,7 @@
     "erforderlicheAnzahlZugbänder": "Erforderliche Anzahl Zugbänder:",
     "fürDieTrägergesamtlängeVon": "Für die Trägergesamtlänge von ",
     "mSindMindestens": " m sind mindestens ",
-    "mmAnzuordnenHistorischerVergleich": " mm anzuordnen (historischer Vergleich mit zulässiger Spannung $\\sigma_{zul} = 120\\text{ N/mm}^2$ für Schweißeisen/Flussstahl; ein Nachweis nach Eurocode 3 erfolgt dagegen mit Bemessungslasten und $f_y/\\gamma_{M0}$, bei Gewindestangen mit dem Spannungsquerschnitt im Gewinde). Zugbänder sind nur in Endfeldern und an freien Rändern erforderlich; in Innenfeldern heben sich die Horizontalschübe benachbarter Kappen weitgehend auf.",
+    "mmAnzuordnenHistorischerVergleich": " mm anzuordnen (historischer Vergleich mit zulässiger Spannung $\\sigma_{zul} = 120\\text{ N/mm}^2$ für Schweißeisen/Flussstahl – Lehrwert ohne Normbeleg, maßgebend sind Bestandsunterlagen oder eine Werkstoffprüfung; ein Nachweis nach Eurocode 3 erfolgt dagegen mit Bemessungslasten und $f_y/\\gamma_{M0}$, bei Gewindestangen mit dem Spannungsquerschnitt im Gewinde). Zugbänder sind nur in Endfeldern und an freien Rändern erforderlich; in Innenfeldern heben sich die Horizontalschübe benachbarter Kappen weitgehend auf.",
     "historischeHolzdachwerkeTypologieUnd": " Historische Holzdachwerke: Typologie und Tragverhalten",
     "derHistorischeZimmermannEntwickelte": "Der historische Zimmermann entwickelte hochkomplexe Systeme zur schadfreien Überbrückung weiter Spannweiten. Grundsätzlich unterscheidet man zwischen zwei statischen Grundsystemen, die bis heute den Großteil des Altbaubestands ausmachen.",
     "dasSparrenKehlbalkendach": "Das Sparren- & Kehlbalkendach",

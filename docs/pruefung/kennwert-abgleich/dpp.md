@@ -12,7 +12,7 @@ Erzeugt mit `node scripts/qa/kennwert-abgleich.mjs` (heuristische Prüfliste, ke
 | (1) Kennwerte übereinstimmend | 0 |
 | (1) GWP-/Transportwerte ohne zentrale Zuordnung | 0 |
 | (2) fest verdrahtete Faktoren (davon ohne Quellkommentar) | 0 (0) |
-| (3) Normverweise / Hinweise | 19 / 1 |
+| (3) Normverweise / Hinweise | 20 / 1 |
 
 ## 1 Kennwerte gegen zentrale Konstanten
 
@@ -32,6 +32,7 @@ Keine erkannt.
 | EN 14080 | – | – | 1 |  |
 | EN 15804 | – | Tab. 4 | 9 |  |
 | EN 15804 | 2022-03 | – | 3 | Ausgaben uneinheitlich |
+| EN 16449 | – | – | 1 |  |
 | EN IEC 63278-1 | – | – | 1 |  |
 | EN ISO 14025 | – | – | 1 |  |
 | EN ISO 14040 | – | – | 1 |  |
