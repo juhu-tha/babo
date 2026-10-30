@@ -1,5 +1,5 @@
 import React, { useId, useState } from 'react';
-import { ChevronDown, Clock, Target } from 'lucide-react';
+import { ChevronDown, Target } from 'lucide-react';
 import type { ModulLernziele as Daten } from '@/src/data/lernziele';
 import { MODUL_KERN } from '@/src/registry/kern';
 import { anzahlFragenRoute } from '@/src/data/quizLader';
@@ -18,7 +18,6 @@ export function ModulLernziele({ moduleId, daten, oeffneModul }: { moduleId: str
         className="w-full flex flex-wrap items-center gap-x-4 gap-y-1 px-4 py-2.5 text-left">
         <span className="flex items-center gap-2 font-bold text-shiraz"><Target size={16} aria-hidden="true" /> Lernziele</span>
         <span className="text-xs text-text-main/70">{NIVEAU[daten.niveau]}</span>
-        <span className="text-xs text-text-main/70 flex items-center gap-1"><Clock size={13} aria-hidden="true" /> ca. {formatDeWert(daten.minuten)} min</span>
         {fragen > 0 && <span className="text-xs text-text-main/70">Selbsttest: {formatDeWert(fragen)} {fragen === 1 ? "Frage" : "Fragen"}</span>}
         <ChevronDown size={16} aria-hidden="true" className={`ml-auto transition-transform ${offen ? 'rotate-180' : ''}`} />
       </button>
@@ -61,13 +60,12 @@ export function LernzieleZiele({ daten, oeffneModul }: { daten: Daten; oeffneMod
   );
 }
 
-/** Kopfzeilen-Angaben der Lernziele (Niveau, Dauer, Selbsttest) als kurze Zeile */
+/** Kopfzeilen-Angaben der Lernziele (Niveau, Selbsttest; ohne Zeitangabe, Entscheidung 30.10.2026) als kurze Zeile */
 export function LernzieleMeta({ moduleId, daten }: { moduleId: string; daten: Daten }) {
   const fragen = anzahlFragenRoute(moduleId);
   return (
     <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-text-main/70">
       <span>{NIVEAU[daten.niveau]}</span>
-      <span className="flex items-center gap-1"><Clock size={13} aria-hidden="true" /> ca. {formatDeWert(daten.minuten)} min</span>
       {fragen > 0 && <span>Selbsttest: {formatDeWert(fragen)} {fragen === 1 ? 'Frage' : 'Fragen'}</span>}
     </p>
   );
