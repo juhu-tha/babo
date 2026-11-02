@@ -50,9 +50,10 @@ type Material = {
 // Holz C24 nach DIN EN 338:2016-07 wie src/data/kennwerte.ts (HOLZ_EN338.C24: f_t,0,k = 14,5, f_c,0,k = 21 N/mm²,
 // Eigengewicht mit ρ_mean = 420 kg/m³; Abgleich in tests/kennwerte.test.ts), Aluminium EN AW-6060 T6 aus dem zentralen
 // Lehrwert ALUMINIUM_6060_T6 (R_p0,2 / R_m nach DIN EN 755-2), übrige Werte typische Literaturwerte (Größenordnung).
+const MATERIALIEN_INHALT: Record<string, Material> = inhalt.daten.materials;
 const materials: Record<string, Material> = {
-  ...inhalt.daten.materials,
-  alu: { ...inhalt.daten.materials.alu, fc: ALUMINIUM_6060_T6.f02, ft: ALUMINIUM_6060_T6.fu },
+  ...MATERIALIEN_INHALT,
+  alu: { ...MATERIALIEN_INHALT.alu, fc: ALUMINIUM_6060_T6.f02, ft: ALUMINIUM_6060_T6.fu },
 };
 
 type Reiter = 'eigengewicht' | 'spannungszustand';
