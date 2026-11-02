@@ -187,7 +187,7 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "Typischer Fehler: Schon 0,1 % Asbest im Putz kann bei unerkundetem Abbruch den gesamten Ziegel- und Betonbruch zu gefährlichem Abfall für die Deponie DK III machen.",
   ],
   schadensbilder: [
-    "Das Modul gliedert typische Bauschäden in Feuchte und Schimmel, Risse, Korrosion und Betonschäden, stoffliche Unverträglichkeiten sowie Schäden im Tief- und Ingenieurbau.",
+    "Neben Feuchte, Rissen, Korrosion, Unverträglichkeit und Tiefbau behandelt das Modul Kleb- und Dichtstoffschäden: typisch ist die Dreiflankenhaftung ohne Hinterfüllung, die Mindestfugenbreite folgt aus ΔL/ZGV (4,8 mm bei 25 % → rund 20 mm).",
     "Gegen Schimmel an Wärmebrücken verlangt DIN 4108-2 f_Rsi ≥ 0,70, also θ_si ≥ 12,6 °C; Tauwasser im Bauteil wird nach Glaser gemäß DIN 4108-3 auf höchstens 1,0 kg/m² begrenzt.",
     "Risse unter 0,1 mm gelten meist als unkritisch, ab 0,3 mm ist die Ursache statisch-konstruktiv zu prüfen; entscheidend ist, ob der Riss ruht oder sich bewegt.",
     "Nach DIN EN 1504-5 verbindet EP ruhende Risse kraftschlüssig, PUR dichtet wasserführende oder bewegte Risse, Zementsuspension füllt Risse über 0,8 mm und Hohlräume.",
@@ -222,7 +222,7 @@ export const KURZFASSUNG: Readonly<Record<string, readonly string[]>> = {
     "Mängelansprüche verjähren ab Abnahme nach BGB in 5 Jahren, nach VOB/B in 4 Jahren; eine schriftliche Mängelrüge setzt nach § 13 Abs. 5 VOB/B eine neue Frist von 2 Jahren in Gang.",
     "Geschuldet sind mangels abweichender Vereinbarung die anerkannten Regeln der Technik zum Zeitpunkt der Abnahme; eine eingehaltene, aber veraltete DIN-Norm schützt nicht vor Haftung.",
     "Schriftliche Anzeigen sichern Rechte: Bedenkenanmeldung (§ 4 Abs. 3 VOB/B), Behinderungsanzeige (§ 6 Abs. 1), Mängelrüge (§ 13) und Nachtragsanzeige (§ 2), stets auch direkt an den Bauherrn.",
-    "Typischer Fugenfehler ist die Dreiflankenhaftung ohne Hinterfüllung; die Mindestfugenbreite folgt aus ΔL/ZGV, im Beispiel ergeben 4,8 mm bei 25 % zulässiger Gesamtverformung rund 20 mm.",
+    "Mit der Abnahme kehrt sich die Beweislast um: Danach muss der Bauherr nachweisen, dass der Mangel schon bei Abnahme angelegt war; Gerichte ziehen nach § 404 Abs. 3 ZPO vorrangig öffentlich bestellte Sachverständige heran.",
   ],
   baustoffkenngroessen: [
     "Baustoffkenngrößen beschreiben physikalische, mechanische, hygrische, thermische und zeitabhängige Eigenschaften und sind Grundlage jeder statischen und bauphysikalischen Bemessung.",
