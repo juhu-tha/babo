@@ -29,7 +29,7 @@ gilt(gesperrt(mk) && mk.vorpruefung!.ergebnis === 'fraglich', 'qn_grundlagen_2: 
 gilt(mk.explanation.includes(VORL) && (mk.normRef ?? '').includes(VORL), 'qn_grundlagen_2: Vorbehalt fehlt in Erklärung oder normRef');
 gilt(mk.options[mk.correctIdx] === '430 kg/m³' && nahe(400 + (330 - 300) / (350 - 300) * 50, 430, 1e-9), 'qn_grundlagen_2: Antwort oder Interpolation geändert');
 const mkModul = (grundlagen as { texte: Record<string, string> }).texte.zwischenwerteWerdenLinearInterpoliert;
-gilt(mkModul.includes('DIN 1045-2:2008-08') && mkModul.includes(`erweiterte Erstprüfung (Angaben zur Ausgabe 2023-08 ${VORL})`),
+gilt(mkModul.includes('DIN 1045-2:2008-08') && mkModul.includes(`erweiterte Erstprüfung (Angaben zur Ausgabe DIN 1045-2:2023-08 ${VORL})`),
   'Modul Ausgangsstoffe: Angaben zur Ausgabe 2023-08 nicht als vorläufig gekennzeichnet');
 
 // 2. qn_holzbau_verbindung_4: Erklärung nennt beide Rechenwege, Antwort bleibt 10,4 kN

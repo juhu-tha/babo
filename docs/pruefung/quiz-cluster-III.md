@@ -244,7 +244,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 46 korrigiert, 1 fraglich, 0
 
 - **Frage:** C30/37, XF1, D_max = 16 mm, Zementgehalt z = 330 kg/m³. Höchstwerte: 400 kg/m³ bei z ≤ 300 kg/m³ und 450 kg/m³ bei z ≥ 350 kg/m³. Welcher höchstzulässige Mehlkorngehalt ergibt sich?
 - **Richtige Antwort:** 430 kg/m³
-- **Auffälligkeit:** Vorprüfung „fraglich“: Höchstwerte 400/450 kg/m³ (XF/XM, D_max ≥ 16 mm, bis C50/60) und Interpolationsregel nach aktuellem Tabellenwerk bestätigt (Heidelberg Materials, Betontechnische Daten 6.3.4); normRef auf die Registry-Ausgabe 2023-08 umgestellt. Tabellennummer der Ausgabe 2023-08 öffentlich nicht verifizierbar und daher weggelassen (2008-08: Tab. F.4.1). · Umsetzung 02.11.: Quiz (Ausgabe 2023-08) und Modul (Werte aus 2008-08, Höchstwerte 2023-08 entfallen) widersprechen sich in der Normausgabe; beide Stellen als „vorläufig, Normprüfung ausstehend“ gekennzeichnet, Inhalt unverändert – am Normtext DIN 1045-2:2023-08 klären
+- **Auffälligkeit:** Vorprüfung „fraglich“: Höchstwerte 400/450 kg/m³ (XF/XM, D_max ≥ 16 mm, bis C50/60) und Interpolationsregel nach aktuellem Tabellenwerk bestätigt (Heidelberg Materials, Betontechnische Daten 6.3.4); normRef auf die Registry-Ausgabe 2023-08 umgestellt. Tabellennummer der Ausgabe 2023-08 öffentlich nicht verifizierbar und daher weggelassen (2008-08: Tab. F.4.1). · Umsetzung 02.11.: Quiz (DIN 1045-2:2023-08) und Modul (Werte aus DIN 1045-2:2008-08, Höchstwerte in 2023-08 entfallen) widersprechen sich in der Normausgabe; beide Stellen als „vorläufig, Normprüfung ausstehend“ gekennzeichnet, Inhalt unverändert – am Normtext DIN 1045-2:2023-08 klären
 - [x] ok
 - [ ] ändern: …
 
