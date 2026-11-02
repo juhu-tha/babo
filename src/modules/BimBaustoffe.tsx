@@ -30,7 +30,10 @@ const ARCHETYPES: MaterialArchetype[] = inhalt.daten.ARCHETYPES.map(a => {
   const s = AUS_LEHRWERTTABELLE[a.id];
   if (!s) return a;
   const w = GWP_LEHRWERTE[s];
-  return { ...a, defaultGwp: w.einheit === 't' ? Math.round((w.gwp / 1000) * a.defaultDensity) : w.gwp };
+  // Holz: Rohdichte der Voreinstellung = Rohdichte des BSH-Lehrwerts (480 kg/m³, DIN EN 16449), damit Rohdichte, GWP −680
+  // und IFC-Ausgabe zusammenpassen (Umsetzung 02.11.2026; vorher 450 kg/m³)
+  const defaultDensity = s === 'bsh' ? w.rohdichte : a.defaultDensity;
+  return { ...a, defaultDensity, defaultGwp: w.einheit === 't' ? Math.round((w.gwp / 1000) * defaultDensity) : w.gwp };
 });
 
 export default function BimBaustoffe() {
