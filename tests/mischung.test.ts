@@ -81,7 +81,7 @@ pruefe(stoffraum({ ...basis, sf: 50 }).hinweise.some(x => x.feld === 'sf' && x.t
 // 3. Unsinnige Eingaben
 for (const u of [{ zement: 0 }, { wasser: 0 }, { rhoZement: 0 }, { luft: -1 }, { zement: 3000 }, { wasser: NaN }] as Partial<MischungEingabe>[]) {
   const ru = stoffraum({ ...basis, ...u });
-  pruefe(ru.hinweise.some(x => x.stufe === 'fehler') && ru.masseGestein === 0, JSON.stringify(u));
+  pruefe(ru.hinweise.some(x => x.stufe === 'fehler') && Number.isNaN(ru.masseGestein), JSON.stringify(u)); // Grenzfallprüfung 02.11.2026: NaN statt 0
 }
 pruefe(stoffraum({ ...basis, fraktionen: basis.fraktionen.map((f, i) => ({ ...f, anteil: i ? f.anteil : 30 })) }).hinweise.some(x => x.feld === 'fraktionen'), 'Summe ≠ 100 %');
 let seed = 23;

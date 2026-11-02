@@ -1,5 +1,6 @@
 // Rechenkern Rissbreite (Umsetzungsplan Phase 4, AP 4.3)
 import { bemesseRiss, xZustandII, type RissEingabe } from '../src/calc/rissbreite';
+import { keinErgebnis, zahlenPassen } from './hilfen/keinErgebnis';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -40,14 +41,14 @@ pruefe(bemesseRiss({ ...basis, sigmaS: 300 }).wkCalc > r.wkCalc, 'Monotonie σ_s
 // 3. Unsinnige Eingaben
 for (const u of [{ abstand: 0 }, { phi: 0 }, { cNom: 120 }, { sigmaS: 0 }, { ecm: 0 }, { h: 0 }, { wkReq: 0 }, { h: NaN }] as Partial<RissEingabe>[]) {
   const ru = bemesseRiss({ ...basis, ...u });
-  pruefe([ru.wkCalc, ru.srMax, ru.asMinReq].every(Number.isFinite) && ru.hinweise.some(x => x.stufe === 'fehler'), JSON.stringify(u));
+  pruefe(keinErgebnis([ru.wkCalc, ru.srMax, ru.asMinReq]) && ru.hinweise.some(x => x.stufe === 'fehler'), JSON.stringify(u));
 }
 let seed = 13;
 const z = (a: number, c: number) => { seed = (seed * 1103515245 + 12345) % 2147483648; return a + (c - a) * (seed / 2147483648); };
 for (let i = 0; i < 1000; i++) {
   const ru = bemesseRiss({ h: z(-10, 1200), b: z(-10, 2000), cNom: z(-5, 80), phi: z(-2, 40), abstand: z(-2, 40), sigmaS: z(-50, 600), fctEff: z(-1, 6), ecm: z(-1000, 45000),
     beanspruchung: i % 2 ? 'biegung' : 'zug', zwangNach28d: i % 3 === 0, kt: z(0, 1), wkReq: z(-0.1, 0.5) });
-  if (![ru.wkCalc, ru.srMax, ru.asMinReq, ru.x].every(Number.isFinite)) { pruefe(false, `Fuzz ${i}`); break; }
+  if (!zahlenPassen(ru, [ru.wkCalc, ru.srMax, ru.asMinReq, ru.x])) { pruefe(false, `Fuzz ${i}`); break; }
 }
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }

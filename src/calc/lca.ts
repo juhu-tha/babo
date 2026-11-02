@@ -14,7 +14,7 @@
  * Einheiten: Massen t, Mengen je Baustoffeinheit (m³ oder t), GWP in kg CO₂-Äq., Energie in kWh.
  * Reiner Rechenkern – geprüft in tests/lca.test.ts (Regressionstest gegen einen öffentlichen QNG-Beispielbericht).
  */
-import { type Hinweis, bereich, hatFehler, istEndlich, muss } from './plausibilitaet';
+import { type Hinweis, bereich, hatFehler, istEndlich, muss, nurGueltig } from './plausibilitaet';
 
 export type Verwertung = 'high_grade' | 'downcycling' | 'reuse' | 'thermal';
 export type Gebaeudeart = 'wohnbau' | 'nichtwohnbau';
@@ -305,7 +305,7 @@ export function lcaBilanz(e: LcaEingabe): LcaErgebnis {
     biogenGespeichert: NaN, penrtMJ: NaN, spez: SPEZ_NULL, strom: NaN, nutzerstromKWh: NaN, penrtKwhJeM2a: NaN, rueckgewonnen: NaN, kreislaufquoteGebaeude: NaN, umi: NaN,
     enthaeltB4: e.mitB4, enthaeltB6: e.energie !== null, vollstaendig: false, aussage: 'neutral', vorlaeufig,
   };
-  if (hatFehler(hinweise)) return leer;
+  if (hatFehler(hinweise)) return nurGueltig(leer);
 
   const T = e.betrachtungszeitraum;
   const zeilen: LcaZeilenErgebnis[] = [];
@@ -374,13 +374,13 @@ export function lcaBilanz(e: LcaEingabe): LcaErgebnis {
     hinweise.push({ stufe: 'warnung', feld: 'gebaeudeart', text: 'Für Nichtwohngebäude wird der QNG-Anforderungswert projektspezifisch ermittelt (Anhang 3.2.1.2); der Rechner zeigt nur einen Lehrwert.' });
   }
 
-  return {
+  return nurGueltig({
     gueltig: true, hinweise, zeilen, masse, a1a3, a4, b4, c3c4, sockelTga, b6_1, b6_3, b6, d, dSockel,
     biogenGespeichert: biogen, penrtMJ: penrt, spez, strom, nutzerstromKWh,
     penrtKwhJeM2a: penrt / flaecheJahre / 3.6,
     rueckgewonnen: rueck, kreislaufquoteGebaeude: masse > 0 ? (rueck / masse) * 100 : 0, umi: masse > 0 ? Math.round(umiSumme / masse) : 0,
     enthaeltB4, enthaeltB6, vollstaendig, aussage, vorlaeufig,
-  };
+  });
 }
 
 /**
@@ -411,18 +411,18 @@ export function einzelbaustoffA1A4(e: EinzelbaustoffEingabe) {
   const hinweise: Hinweis[] = [];
   muss(hinweise, istEndlich(e.menge) && e.menge > 0, 'menge', 'Die Menge muss größer als 0 sein.');
   muss(hinweise, istEndlich(e.distanz) && e.distanz >= 0, 'distanz', 'Die Transportdistanz darf nicht negativ sein.');
-  if (hatFehler(hinweise)) return { gueltig: false, hinweise, masse: NaN, gwpA1A3: NaN, gwpA4: NaN, gesamt: NaN, anteilA1A3: NaN, anteilA4: NaN, penrt: NaN, faktor: NaN };
+  if (hatFehler(hinweise)) return nurGueltig({ gueltig: false, hinweise, masse: NaN, gwpA1A3: NaN, gwpA4: NaN, gesamt: NaN, anteilA1A3: NaN, anteilA4: NaN, penrt: NaN, faktor: NaN });
   const masse = e.volumenbezogen ? (e.menge * e.rohdichte) / 1000 : e.menge;
   const faktor = A4_FAKTOR_EINZEL[e.transport];
   const gwpA1A3 = e.gwpA1A3 * e.menge;
   const gwpA4 = masse * e.distanz * faktor;
   const betrag = Math.abs(gwpA1A3) + Math.abs(gwpA4);
-  return {
+  return nurGueltig({
     gueltig: true, hinweise, masse, gwpA1A3, gwpA4, gesamt: gwpA1A3 + gwpA4,
     anteilA1A3: betrag > 0 ? (Math.abs(gwpA1A3) / betrag) * 100 : 0,
     anteilA4: betrag > 0 ? (Math.abs(gwpA4) / betrag) * 100 : 0,
     penrt: e.penrt * e.menge, faktor,
-  };
+  });
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -508,7 +508,7 @@ export function funktionelleEinheitBauteil(schichten: readonly FeSchicht[], betr
     muss(hinweise, istEndlich(s.gwpA1A3, s.gwpC), `gwp${i}`, `${n}: Die GWP-Werte müssen endlich sein.`);
     muss(hinweise, istEndlich(s.nutzungsdauer) && s.nutzungsdauer > 0, `nd${i}`, `${n}: Die Nutzungsdauer muss größer als 0 sein.`);
   });
-  if (hatFehler(hinweise)) return { gueltig: false, hinweise, schichten: [], betrachtungszeitraum, a1a3: NaN, c: NaN, b4: NaN, summe: NaN, jeJahr: NaN };
+  if (hatFehler(hinweise)) return nurGueltig({ gueltig: false, hinweise, schichten: [], betrachtungszeitraum, a1a3: NaN, c: NaN, b4: NaN, summe: NaN, jeJahr: NaN });
   const T = betrachtungszeitraum;
   const ergebnis = schichten.map((s): FeSchichtErgebnis => {
     const menge = mengeJeM2Bauteil(s.einheit, s.dickeM, s.rohdichte);
@@ -521,5 +521,5 @@ export function funktionelleEinheitBauteil(schichten: readonly FeSchicht[], betr
   const sum = (f: (x: FeSchichtErgebnis) => number) => ergebnis.reduce((a, x) => a + f(x), 0);
   const summe = sum(x => x.summe);
   if (T !== BETRACHTUNGSZEITRAUM_QNG) hinweise.push({ stufe: 'warnung', feld: 'betrachtungszeitraum', text: 'Betrachtungszeitraum abweichend von 50 a (QNG) – Ergebnisse nur untereinander vergleichbar.' });
-  return { gueltig: true, hinweise, schichten: ergebnis, betrachtungszeitraum: T, a1a3: sum(x => x.a1a3), c: sum(x => x.c), b4: sum(x => x.b4), summe, jeJahr: summe / T };
+  return nurGueltig({ gueltig: true, hinweise, schichten: ergebnis, betrachtungszeitraum: T, a1a3: sum(x => x.a1a3), c: sum(x => x.c), b4: sum(x => x.b4), summe, jeJahr: summe / T });
 }

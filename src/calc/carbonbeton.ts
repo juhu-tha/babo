@@ -13,7 +13,7 @@
  * bzw. Zulassung); ε_cu3, λ und η sind für f_ck > 50 N/mm² vereinfacht nicht abgemindert (Hinweis).
  * Reiner Rechenkern – geprüft in tests/carbonbeton.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, muss, nurGueltig } from './plausibilitaet';
 import { fcdBeton, FCD_MODUL } from '../data/kennwerte';
 
 export const GAMMA_TEX_LEHRWERT = 1.3;
@@ -50,7 +50,7 @@ export interface CarbonbetonErgebnis {
   hinweise: Hinweis[];
 }
 
-const leer = (hinweise: Hinweis[]): CarbonbetonErgebnis => ({ d: NaN, fTd: NaN, fCd: NaN, x: NaN, y: NaN, z: NaN, mRd: NaN, epsC: NaN, epsTex: NaN, sigmaTex: NaN, versagen: 'textil', mRdOhneDehnungskontrolle: NaN, gueltig: false, hinweise });
+const leer = (hinweise: Hinweis[]): CarbonbetonErgebnis => nurGueltig(({ d: NaN, fTd: NaN, fCd: NaN, x: NaN, y: NaN, z: NaN, mRd: NaN, epsC: NaN, epsTex: NaN, sigmaTex: NaN, versagen: 'textil', mRdOhneDehnungskontrolle: NaN, gueltig: false, hinweise }));
 
 export function carbonbetonBiegung(e: CarbonbetonEingabe): CarbonbetonErgebnis {
   const h: Hinweis[] = [];
@@ -85,5 +85,5 @@ export function carbonbetonBiegung(e: CarbonbetonEingabe): CarbonbetonErgebnis {
   const z = d - 0.5 * y;
   const mRd = (e.aTex * sigmaTex * z) / 1e6;
   if (e.fCk > 50) h.push({ stufe: 'warnung', feld: 'fCk', text: 'f_ck > 50 N/mm²: ε_cu3, λ und η nach DIN EN 1992-1-1, Tab. 3.1/3.1.7 wären kleiner; der Kern rechnet vereinfacht mit 3,5 ‰, 0,8 und 1,0.' });
-  return { d, fTd, fCd, x, y, z, mRd, epsC, epsTex, sigmaTex, versagen, mRdOhneDehnungskontrolle: mRdOhne, gueltig: true, hinweise: h };
+  return nurGueltig({ d, fTd, fCd, x, y, z, mRd, epsC, epsTex, sigmaTex, versagen, mRdOhneDehnungskontrolle: mRdOhne, gueltig: true, hinweise: h });
 }

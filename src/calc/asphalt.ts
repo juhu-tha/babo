@@ -8,10 +8,10 @@
  *    der TRGS 900 (1,5 mg/m³), Energiebedarf, CO₂-Bilanz und Verdichtungszeitfenster (Newton-Abkühlung)
  * Reiner Rechenkern – geprüft in tests/asphalt.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, muss, nurGueltig } from './plausibilitaet';
 
 export interface Ergebnis { gueltig: boolean; hinweise: Hinweis[] }
-const abschluss = (h: Hinweis[]): Ergebnis => ({ gueltig: !hatFehler(h), hinweise: h });
+const abschluss = (h: Hinweis[]): Ergebnis => nurGueltig(({ gueltig: !hatFehler(h), hinweise: h }));
 
 // ---------------------------------------------------------------- Rohdichte / Raumdichte
 /** Hohlraumfreie Rohdichte in g/cm³ aus Massenanteilen (M.-%) und Dichten (g/cm³) von Gestein und Bitumen */
@@ -43,7 +43,7 @@ export function asphaltRaumdichte(e: RaumdichteEingabe): RaumdichteErgebnis {
   const rohdichte = asphaltRohdichte(100 - e.bitumen, e.bitumen, e.rhoGestein, e.rhoBitumen);
   // V_ges = V_fest/(1 − V_m/100) → ρ_b = 100/V_ges = ρ_m·(1 − V_m/100)
   const raumdichte = 100 / (feststoffVolumen / (1 - e.hohlraum / 100));
-  return { feststoffVolumen, rohdichte, raumdichte, ...abschluss(h) };
+  return nurGueltig({ feststoffVolumen, rohdichte, raumdichte, ...abschluss(h) });
 }
 
 // ---------------------------------------------------------------- Marshall (Lehrkurve)
@@ -155,10 +155,10 @@ export function ntaModell(e: NtaEingabe): NtaErgebnis {
 
   if (T < 100 || T > 180) h.push({ stufe: 'warnung', feld: 'temperatur', text: 'Das Lehrmodell ist für Mischguttemperaturen von 100 bis 180 °C angelegt.' });
   if (co2Energie - e.rcAnteil * NTA.co2JeProzentRc < NTA.co2Min) h.push({ stufe: 'warnung', feld: 'rcAnteil', text: 'Die CO₂-Bilanz erreicht die Modelluntergrenze von 3,5 kg/t.' });
-  return {
+  return nurGueltig({
     viskositaet, bewertung, aerosol, aerosolAnteilAgw, aerosolMinderung,
     energie, energieEinsparung, heizoelJeT, heizoelJe1000t: heizoelJeT * 1000,
     co2, co2Einsparung, co2VermiedenJe1000t: (NTA.co20 - co2) * 1000,
     grenzTemperatur, verdichtungsfenster, ...abschluss(h),
-  };
+  });
 }

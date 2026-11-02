@@ -65,7 +65,7 @@ pruefe(ohne.untereGrenze === 0 && ohne.obereGrenze === 0 && ohne.ausreisser.leng
 
 // 5. Randfälle
 const leer = statistikAuswertung({ werte: [], methode: '2sigma', material: 'beton', ausreisserPruefen: true });
-pruefe(!leer.gueltig && leer.sauber.mittelwert === 0 && Number.isNaN(leer.xk), 'keine Werte → Fehler');
+pruefe(!leer.gueltig && Number.isNaN(leer.sauber.mittelwert) && Number.isNaN(leer.xk), 'keine Werte → Fehler, kein Zahlenergebnis');
 pruefe(!statistikAuswertung({ werte: [1, NaN, 3], methode: '2sigma', material: 'beton', ausreisserPruefen: true }).gueltig, 'NaN-Wert → Fehler');
 const zwei = statistikAuswertung({ werte: [30, 32], methode: 'grubbs', material: 'beton', ausreisserPruefen: true });
 pruefe(zwei.gueltig && Number.isNaN(zwei.kn) && zwei.hinweise.some(x => x.feld === 'werte'), 'n = 2 → k_n NaN, Warnung');

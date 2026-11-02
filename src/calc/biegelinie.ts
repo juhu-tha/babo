@@ -15,7 +15,7 @@
  * E-Moduln aus src/data/kennwerte.ts (DIN EN 1993-1-1, DIN EN 338, DIN EN 14080, DIN EN 1992-1-1 Tab. 3.1).
  * Reiner Rechenkern – geprüft in tests/biegelinie.test.ts.
  */
-import { type Hinweis, istEndlich, muss, hatFehler, bereich } from './plausibilitaet';
+import { type Hinweis, istEndlich, istAnzahl, muss, hatFehler, bereich, nurGueltig, MAX_STUETZSTELLEN } from './plausibilitaet';
 import { E_BAUSTAHL, HOLZ_EN338, BSH_EN14080, betonNachKlasse } from '../data/kennwerte';
 import { WALZPROFILE } from './stahlbau';
 
@@ -102,7 +102,7 @@ export function biegungAn(e: BiegelinieEingabe, x: number, EI: number): { w: num
 export const LAGERUNGEN: readonly Lagerung[] = ['einfeldtraeger', 'kragarm'];
 export const istLagerung = (l: unknown): l is Lagerung => (LAGERUNGEN as readonly unknown[]).includes(l);
 
-const LEER = (hinweise: Hinweis[]): BiegelinieErgebnis => ({ EI: NaN, verlauf: [], wMax: NaN, xWMax: NaN, wKenn: NaN, phiA: NaN, phiB: NaN, lDurchW: NaN, hinweise });
+const LEER = (hinweise: Hinweis[]): BiegelinieErgebnis => nurGueltig(({ EI: NaN, verlauf: [], wMax: NaN, xWMax: NaN, wKenn: NaN, phiA: NaN, phiB: NaN, lDurchW: NaN, hinweise }));
 
 /** Biegelinie mit n Abschnitten (n + 1 Punkte); w_max über die Stützstellen und Nullstelle von w' */
 export function biegelinie(e: BiegelinieEingabe, n = 200): BiegelinieErgebnis {
@@ -114,6 +114,8 @@ export function biegelinie(e: BiegelinieEingabe, n = 200): BiegelinieErgebnis {
   muss(hinweise, e.E > 0, 'E', 'Der E-Modul muss größer als 0 sein.');
   muss(hinweise, e.I > 0, 'I', 'Das Trägheitsmoment muss größer als 0 sein.');
   muss(hinweise, e.a >= 0 && e.a <= e.L, 'a', 'Die Einzellast muss zwischen den Trägerenden stehen (0 ≤ a ≤ L).');
+  // Grenzfallprüfung 02.11.2026: Stützstellenzahl begrenzen (vorher Endlosschleife bei n = ∞)
+  muss(hinweise, Number.isFinite(n) && n <= MAX_STUETZSTELLEN, 'n', `Die Stützstellenzahl muss höchstens ${MAX_STUETZSTELLEN} betragen.`);
   if (hatFehler(hinweise)) return LEER(hinweise);
 
   const EI = biegesteifigkeit(e.E, e.I);
@@ -156,7 +158,7 @@ export function biegelinie(e: BiegelinieEingabe, n = 200): BiegelinieErgebnis {
   if (Number.isFinite(lDurchW) && lDurchW < grenze) {
     hinweise.push({ stufe: 'warnung', feld: 'I', text: `Durchbiegung größer als ${e.lagerung === 'einfeldtraeger' ? 'L/300' : 'L/150 (Kragarm)'} – häufig verwendeter Orientierungswert; maßgebend sind die Grenzwerte der Eurocodes und ihrer NA.` });
   }
-  return { EI, verlauf, wMax, xWMax, wKenn, phiA, phiB, lDurchW, hinweise };
+  return nurGueltig({ EI, verlauf, wMax, xWMax, wKenn, phiA, phiB, lDurchW, hinweise });
 }
 
 // ---------------------------------------------------------------------------------------------

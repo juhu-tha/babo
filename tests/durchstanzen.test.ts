@@ -1,5 +1,6 @@
 // Rechenkern Durchstanzen (Umsetzungsplan Phase 4, AP 4.3)
 import { bemesseDurchstanzen, type DurchstanzEingabe } from '../src/calc/durchstanzen';
+import { keinErgebnis, zahlenPassen } from './hilfen/keinErgebnis';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -68,13 +69,13 @@ pruefe(nahe(bemesseDurchstanzen({ ...basis, rhoL: 0.03 }).rhoL_eff, 0.5 * 17 / (
 // 4. Unsinnige Eingaben
 for (const u of [{ d: 0 }, { c: 0 }, { vEd: -5 }, { fck: 0 }, { rhoL: -0.01 }, { beta: 0.5 }, { d: NaN }] as Partial<DurchstanzEingabe>[]) {
   const ru = bemesseDurchstanzen({ ...basis, ...u });
-  pruefe([ru.vRdc, ru.vEd_stress, ru.asw_req_ring].every(Number.isFinite) && ru.hinweise.some(x => x.stufe === 'fehler'), JSON.stringify(u));
+  pruefe(keinErgebnis([ru.vRdc, ru.vEd_stress, ru.asw_req_ring]) && ru.hinweise.some(x => x.stufe === 'fehler'), JSON.stringify(u));
 }
 let seed = 11;
 const z = (a: number, c: number) => { seed = (seed * 1103515245 + 12345) % 2147483648; return a + (c - a) * (seed / 2147483648); };
 for (let i = 0; i < 1000; i++) {
   const ru = bemesseDurchstanzen({ form: i % 2 ? 'rund' : 'rechteckig', vEd: z(-100, 5000), d: z(-10, 1000), c: z(-10, 1200), cx: z(-10, 1200), cy: z(-10, 1200), fck: z(-5, 90), rhoL: z(-0.01, 0.05), beta: i % 4 ? z(0, 2) : undefined, lage: (['innen', 'rand', 'ecke'] as const)[i % 3], aRand: z(-50, 1500) });
-  if (![ru.vRdc, ru.vEd_stress, ru.asw_req_ring, ru.vRdMax, ru.u1].every(Number.isFinite)) { pruefe(false, `Fuzz ${i}`); break; }
+  if (!zahlenPassen(ru, [ru.vRdc, ru.vEd_stress, ru.asw_req_ring, ru.vRdMax, ru.u1])) { pruefe(false, `Fuzz ${i}`); break; }
 }
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }

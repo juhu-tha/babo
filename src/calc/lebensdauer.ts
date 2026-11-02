@@ -18,7 +18,7 @@
  * Lehr- und Vorbemessungswerkzeug – kein Ersatz für einen Nachweis nach den bauaufsichtlich eingeführten Regeln.
  * Reiner Rechenkern ohne React – geprüft in tests/lebensdauer.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, nurGueltig } from './plausibilitaet';
 
 // ------------------------------------------------------------------ Konstanten
 
@@ -176,13 +176,14 @@ export function keFeuchte(rh: number, k = KE_FEUCHTE): number {
 export const kcNachbehandlung = (tc: number, bc: number) => Math.pow(tc / 7, bc);
 
 /** Exponent der Wetterfunktion w = (p_SR · ToW)^b_w / 2 (geschützt bzw. innen: p_SR · ToW = 0 → w = 0) */
-export const wetterExponent = (pSR: number, tow: number, bw: number) => (pSR * tow > 0 ? Math.pow(pSR * tow, bw) / 2 : 0);
+export const wetterExponent = (pSR: number, tow: number, bw: number) => (Number.isNaN(pSR * tow * bw) ? NaN : pSR * tow > 0 ? Math.pow(pSR * tow, bw) / 2 : 0); // NaN nicht als 0 (Grenzfallprüfung 02.11.2026)
 
 /** Wetterfunktion W(t) = (t₀/t)^w; für t ≤ t₀ gilt W = 1 */
-export const wetterfunktion = (t: number, w: number, t0 = T0_JAHRE) => (t > t0 ? Math.pow(t0 / t, w) : 1);
+export const wetterfunktion = (t: number, w: number, t0 = T0_JAHRE) => (Number.isNaN(t) || Number.isNaN(w) ? NaN : t > t0 ? Math.pow(t0 / t, w) : 1); // NaN nicht als 1 (Grenzfallprüfung 02.11.2026)
 
 /** Karbonatisierungsgeschwindigkeit ohne Wetterfunktion √(2·k_e·k_c·(k_t·R⁻¹ + ε_t)·C_S) in mm/√a; R⁻¹, ε_t in (mm²/a)/(kg/m³) */
 export function karbonatisierungsrate(ke: number, kc: number, kt: number, rInvMm2A: number, epsTMm2A: number, cS: number): number {
+  if (Number.isNaN(ke) || Number.isNaN(kc) || Number.isNaN(kt) || Number.isNaN(rInvMm2A) || Number.isNaN(epsTMm2A) || Number.isNaN(cS)) return NaN; // Grenzfallprüfung 02.11.2026: NaN-Eingabe nicht als Zahl ausgeben
   const innen = 2 * ke * kc * (kt * rInvMm2A + epsTMm2A) * cS;
   return innen > 0 ? Math.sqrt(innen) : 0;
 }
@@ -209,7 +210,7 @@ export function rInvAusKac(kacMmWurzelTag: number, cAccVolProzent = 3): number {
 export const keTemperatur = (tRealK: number, be: number, tRefK = T_REF_K) => Math.exp(be * (1 / tRefK - 1 / tRealK));
 
 /** Alterungsfunktion A(t) = (t₀/t)^a (für t ≤ t₀ gilt A = 1) */
-export const alterungsfaktor = (t: number, a: number, t0 = T0_JAHRE) => (t > t0 ? Math.pow(t0 / t, a) : 1);
+export const alterungsfaktor = (t: number, a: number, t0 = T0_JAHRE) => (Number.isNaN(t) || Number.isNaN(a) ? NaN : t > t0 ? Math.pow(t0 / t, a) : 1); // NaN nicht als 1 (Grenzfallprüfung 02.11.2026)
 
 /**
  * Chloridgehalt C(x, t) in der Einheit von C_S (M.-% bez. auf Bindemittel); x, Δx in mm, D_app in mm²/a.
@@ -503,7 +504,7 @@ export function lebensdauerbemessung(e: LebensdauerEingabe): LebensdauerErgebnis
     if (Number.isFinite(k.tReal.m) && (k.tReal.m < -20 || k.tReal.m > 40)) h.push({ stufe: 'warnung', feld: 'tReal', text: 'Mittlere Bauteiltemperatur außerhalb −20 … 40 °C.' });
     if (Number.isFinite(k.dRcm.m) && k.dRcm.m > 40) h.push({ stufe: 'warnung', feld: 'dRcm', text: 'D_RCM,0 über 40 · 10⁻¹² m²/s: außerhalb der tabellierten Betone.' });
   }
-  if (hatFehler(h)) return leer;
+  if (hatFehler(h)) return nurGueltig(leer);
 
   const n = e.laeufe;
   const u = zufallsgenerator(e.startwert);
@@ -523,14 +524,14 @@ export function lebensdauerbemessung(e: LebensdauerEingabe): LebensdauerErgebnis
   if (n < 10000) h.push({ stufe: 'warnung', feld: 'laeufe', text: 'Weniger als 10 000 Läufe: Der Standardfehler von p_f ist groß.' });
   if (erfDeckung === null) h.push({ stufe: 'warnung', feld: 'deckung', text: 'Auch mit 400 mm Deckung wird β₀ nicht erreicht.' });
 
-  return {
+  return nurGueltig({
     gueltig: true, hinweise: h,
     pf: amEnde.pf, beta: amEnde.beta, betaUntergrenze: amEnde.untergrenze,
     standardfehler: Math.sqrt(Math.max(amEnde.pf * (1 - amEnde.pf), 0) / n),
     pfZiel, nachweis: amEnde.pf <= pfZiel,
     kurve, erfDeckung, lebensdauer,
     mittelwerte: mittelwertrechnung(e),
-  };
+  });
 }
 
 // ------------------------------------------------------------------ Kennwerte (öffentliche Wiedergaben von fib 34)
