@@ -21,7 +21,7 @@
  * (lineare Abschreibung der Anfangs- bzw. Ersatzinvestition bis zum Ende des Berechnungszeitraums, abgezinst auf den Beginn).
  * Lehr- und Vorbemessungswerkzeug; ersetzt keine Wirtschaftlichkeitsberechnung nach DIN 18960 / ISO 15686-5.
  */
-import { type Hinweis, bereich, hatFehler, istEndlich, muss } from './plausibilitaet';
+import { type Hinweis, bereich, hatFehler, istEndlich, muss, nurGueltig } from './plausibilitaet';
 import { ersatzzyklen } from './lca';
 import { GWP_LEHRWERTE } from '../data/gwpLehrwerte';
 
@@ -162,9 +162,14 @@ export interface LccOptionErgebnis {
 }
 
 /** Barwert-LCC einer Option; foerderung in % mindert die Investition (im Modul nur für Option B) */
+/** Technische Obergrenze des Betrachtungszeitraums in Jahren (Rechengrenze, kein Fachwert) */
+export const LCC_MAX_JAHRE = 1000;
+
 export function lccOption(opt: LccOption, p: LccParameter, foerderung: number): LccOptionErgebnis {
-  const { r, e, i, N } = p;
-  const capex = foerderung > 0 ? opt.capex * (1 - foerderung / 100) : opt.capex;
+  const { r, e, i } = p;
+  // Grenzfallprüfung 02.11.2026: ungültiger Zeitraum → keine Jahresschleife (vorher Endlosschleife bei N = ∞); lccVergleich prüft N mit Hinweis
+  const N = Number.isInteger(p.N) && p.N >= 0 && p.N <= LCC_MAX_JAHRE ? p.N : NaN;
+  const capex = Number.isNaN(foerderung) ? NaN : foerderung > 0 ? opt.capex * (1 - foerderung / 100) : opt.capex; // Grenzfallprüfung 02.11.2026: NaN nicht als 0 %
 
   let cumulativeOpEx = 0, cumulativeOpExDiscounted = 0;
   let cumulativeMaintenance = 0, cumulativeMaintenanceDiscounted = 0;
@@ -252,6 +257,8 @@ export function pruefeLcc(a: LccOption, b: LccOption, p: LccParameter): Hinweis[
   const h: Hinweis[] = [];
   muss(h, istEndlich(p.r, p.e, p.i, p.N, p.co2Preis, p.co2Steigerung, p.foerderungB), 'parameter', 'Alle Parameter müssen Zahlen sein.');
   muss(h, Number.isInteger(p.N) && p.N >= 1, 'N', 'Der Betrachtungszeitraum muss eine ganze Zahl von mindestens 1 Jahr sein.');
+  // Grenzfallprüfung 02.11.2026: technische Obergrenze (vorher Endlosschleife bei sehr großem N)
+  muss(h, !(p.N > LCC_MAX_JAHRE), 'N', `Der Betrachtungszeitraum ist auf höchstens ${LCC_MAX_JAHRE} Jahre begrenzt (Rechengrenze).`);
   muss(h, p.r > -1 && p.e > -1 && p.i > -1 && p.co2Steigerung > -1, 'r', 'Zins- und Steigerungsraten müssen größer als −100 % sein.');
   muss(h, p.foerderungB >= 0 && p.foerderungB <= 100, 'foerderungB', 'Die Förderquote muss zwischen 0 und 100 % liegen.');
   muss(h, p.co2Preis >= 0, 'co2Preis', 'Der CO₂-Preis darf nicht negativ sein.');
@@ -294,7 +301,7 @@ export function lccVergleich(a: LccOption, b: LccOption, p: LccParameter): LccVe
   if (hatFehler(hinweise)) {
     const leer = lccOption({ ...a, maintenanceInterval: 1, lifespan: 1 }, { ...p, N: 0 }, 0);
     const nan = { ...leer, totalLCCDiscounted: NaN };
-    return { resultA: nan, resultB: nan, saving: NaN, percentSaving: NaN, gueltig: false, hinweise };
+    return nurGueltig({ resultA: nan, resultB: nan, saving: NaN, percentSaving: NaN, gueltig: false, hinweise });
   }
   const resultA = lccOption(a, p, 0);
   const resultB = lccOption(b, p, p.foerderungB);
@@ -302,5 +309,5 @@ export function lccVergleich(a: LccOption, b: LccOption, p: LccParameter): LccVe
   let percentSaving = NaN;
   if (resultA.totalLCCDiscounted > 0) percentSaving = (saving / resultA.totalLCCDiscounted) * 100;
   else hinweise.push({ stufe: 'warnung', feld: 'optionA', text: 'Der Barwert von Option A ist nicht positiv – eine prozentuale Ersparnis ist nicht aussagekräftig.' });
-  return { resultA, resultB, saving, percentSaving, gueltig: true, hinweise };
+  return nurGueltig({ resultA, resultB, saving, percentSaving, gueltig: true, hinweise });
 }

@@ -3,7 +3,7 @@
  * Dreigelenkrahmen mit Gelenk in Riegelmitte. Reiner Rechenkern – geprüft in tests/statik.test.ts.
  * Vorzeichen: M positiv bei Zug unten, M0 im Uhrzeigersinn positiv (Sprung +M0 im Momentenverlauf).
  */
-import { type Hinweis, istEndlich, muss, hatFehler } from './plausibilitaet';
+import { type Hinweis, istEndlich, muss, hatFehler, nurGueltig } from './plausibilitaet';
 
 export type Traegersystem = 'einfeld' | 'kragarm' | 'zweifeld';
 export interface TraegerEingabe { system: Traegersystem; l: number; l1: number; q: number; f: number; a: number; m0: number; am: number }
@@ -16,7 +16,7 @@ export function traeger(e: TraegerEingabe) {
     muss(hinweise, e.a >= 0 && e.a <= e.l && e.am >= 0 && e.am <= e.l, 'a', 'Die Laststellungen müssen auf dem Träger liegen (0 ≤ a ≤ l).');
     if (e.system === 'zweifeld') muss(hinweise, e.l1 > 0 && e.l1 < e.l, 'l1', 'Das Mittelauflager muss zwischen den Endauflagern liegen (0 < l₁ < l).');
   }
-  if (hatFehler(hinweise)) return { A: NaN, B: NaN, C: NaN, MA: NaN, MB: NaN, M: (_: number) => NaN, V: (_: number) => NaN, hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ A: NaN, B: NaN, C: NaN, MA: NaN, MB: NaN, M: (_: number) => NaN, V: (_: number) => NaN, hinweise });
 
   const { l, q, f, a, m0, am } = e;
   let A = 0, B = 0, C = 0, MA = 0, MB = 0;
@@ -46,14 +46,14 @@ export function traeger(e: TraegerEingabe) {
   const V = (x: number) => A - q * x + (e.system === 'zweifeld' && x > L1 ? B : 0) - (x > a ? f : 0);
   const M = (x: number) => A * x - (q * x * x) / 2 + (e.system === 'kragarm' ? MA : 0) + (e.system === 'zweifeld' && x > L1 ? B * (x - L1) : 0)
     - (x > a ? f * (x - a) : 0) + (x > am ? m0 : 0);
-  return { A, B, C, MA, MB, M, V, hinweise };
+  return nurGueltig({ A, B, C, MA, MB, M, V, hinweise });
 }
 
 /** Dreigelenkrahmen (Stiele h, Riegel l, Gelenk in Riegelmitte): Gleichlast q auf dem Riegel, Horizontallast W an der linken Ecke */
 export function dreigelenkrahmen(h: number, l: number, q: number, w: number) {
   const hinweise: Hinweis[] = [];
   muss(hinweise, istEndlich(h, l, q, w) && h > 0 && l > 0, 'eingabe', 'Höhe und Breite des Rahmens müssen größer als 0 sein.');
-  if (hatFehler(hinweise)) return { Av: NaN, Ah: NaN, Bv: NaN, Bh: NaN, M_Ecke_Links: NaN, M_Ecke_Rechts: NaN, M_Feld_Max: NaN, x_max: NaN, hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ Av: NaN, Ah: NaN, Bv: NaN, Bh: NaN, M_Ecke_Links: NaN, M_Ecke_Rechts: NaN, M_Feld_Max: NaN, x_max: NaN, hinweise });
   const Bv = (q * l) / 2 + (w * h) / l;
   const Av = q * l - Bv;
   const Bh = ((q * l * l) / 8 + (w * h) / 2) / h;
@@ -61,5 +61,5 @@ export function dreigelenkrahmen(h: number, l: number, q: number, w: number) {
   const M_Ecke_Links = Ah * h, M_Ecke_Rechts = Bh * h;
   const x_max = q > 0 ? Math.min(Math.max(Av / q, 0), l) : 0;
   const M_Feld_Max = M_Ecke_Links + Av * x_max - (q * x_max * x_max) / 2;
-  return { Av, Ah, Bv, Bh, M_Ecke_Links, M_Ecke_Rechts, M_Feld_Max, x_max, hinweise };
+  return nurGueltig({ Av, Ah, Bv, Bh, M_Ecke_Links, M_Ecke_Rechts, M_Feld_Max, x_max, hinweise });
 }

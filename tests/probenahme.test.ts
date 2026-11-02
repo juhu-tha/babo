@@ -1,5 +1,6 @@
 // Rechenkern Probenahme LAGA PN 98 (Runde 5): Tabelle 2 (Probenzahl je Untersuchungseinheit) und Tabelle 3 (Mindestvolumen)
 import { pn98Probenzahl, pn98Plan, pn98Mindestvolumen } from '../src/calc/probenahme';
+import { zahlenPassen } from './hilfen/keinErgebnis';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -45,7 +46,7 @@ let seed = 11;
 const z = (a: number, c: number) => { seed = (seed * 1103515245 + 12345) % 2147483648; return a + (c - a) * (seed / 2147483648); };
 for (let i = 0; i < 1000; i++) {
   const p = pn98Plan({ volumenM3: z(-100, 20000), maxUeM3: z(-100, 5000) });
-  if (![p.einheiten, p.volumenJeUe, p.gesamt.einzelproben, p.gesamt.laborproben].every(Number.isFinite)) { pruefe(false, `Fuzz ${i}`); break; }
+  if (!zahlenPassen(p, [p.einheiten, p.volumenJeUe, p.gesamt.einzelproben, p.gesamt.laborproben])) { pruefe(false, `Fuzz ${i}`); break; }
 }
 
 if (fehler.length) { for (const x of fehler) console.error(`FAIL: ${x}`); process.exit(1); }

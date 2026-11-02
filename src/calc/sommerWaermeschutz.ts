@@ -7,7 +7,7 @@
  * stimmen bei S1 bis S6 und bei den außenliegenden F_C-Werten überein. Die Neuausgabe DIN 4108-2:2026-05
  * (Abschnitte neu nummeriert) ist nicht eingearbeitet.
  */
-import { type Hinweis, istEndlich } from './plausibilitaet';
+import { type Hinweis, istEndlich, nurGueltig } from './plausibilitaet';
 
 export type Nutzung = 'wohn' | 'nichtwohn';
 export type Klimaregion = 'A' | 'B' | 'C';
@@ -155,7 +155,7 @@ export function sonneneintrag(r: Raum) {
     Svorh: NaN, S1: NaN, S2: NaN, S3: NaN, S4: NaN, S5: NaN, S6: NaN, Szul: NaN, erfuellt: false,
     verzicht: { grenzeTab6: NaN, tab6: false, wohn35: false, entbehrlich: false },
   };
-  if (hinweise.some(x => x.stufe === 'fehler')) return leer;
+  if (hinweise.some(x => x.stufe === 'fehler')) return nurGueltig(leer);
 
   const fenster: FensterErgebnis[] = r.fenster.map((f, i) => {
     const fc = f.fcEigen ?? fcAusTabelle(f.schutz, f.g, f.scheiben);
@@ -197,11 +197,11 @@ export function sonneneintrag(r: Raum) {
   // Runde 28.10. (Entscheidung T3-SW-2): Rechner bleibt bei der Ausgabe 2013-02, Hinweis auf die Neuausgabe 2026-05
   hinweise.push({ stufe: 'warnung', feld: 'normstand', text: 'Normenstand: Gerechnet wird nach DIN 4108-2:2013-02, auf die § 14 GModG verweist. Die Neuausgabe DIN 4108-2:2026-05 ist erschienen (sommerlicher Wärmeschutz neu gegliedert, u. a. Verzicht 8.3.2/Tab. 7, F_C in 8.6); ihre Tabellenwerte sind hier nicht eingearbeitet.' });
 
-  return {
+  return nurGueltig({
     gueltig: true as const, hinweise, fenster, AW, fWG, fNeig, fNord, fSSG,
     Svorh, S1, S2, S3, S4, S5, S6, Szul, erfuellt: Svorh <= Szul + 1e-12,
     verzicht: { grenzeTab6, tab6, wohn35, entbehrlich: tab6 || wohn35 },
-  };
+  });
 }
 
 /** Einstufung der Bauart aus der wirksamen Wärmespeicherfähigkeit C_wirk/A_G [Wh/(m²K)] */

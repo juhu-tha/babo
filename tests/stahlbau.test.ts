@@ -3,6 +3,7 @@ import {
   bemesseDruckstab, bemesseZugstab, biegewiderstandY, biegeknicken, chi, klassifiziere, knicklinieNachTab62,
   profil, lambda1, ALPHA, STAHLGUETEN, EC3_NA_DE, WALZPROFILE, KNICKLINIEN, type DruckstabEingabe, type Stahlguete,
 } from '../src/calc/stahlbau';
+import { istUngueltig, keinErgebnis, zahlenPassen } from './hilfen/keinErgebnis';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -88,11 +89,11 @@ pruefe(m.klasse.klasse === 1 && nahe(m.McRd, 147.674, 1e-6) && nahe(m.MelRd, 130
 // 8. Unsinnige Eingaben
 for (const u of [{ LcrY: 0 }, { LcrZ: -1 }, { nEd: -5 }, { nEd: NaN }, { profil: 'HEB 999' }, { guete: 'S999' as Stahlguete }, { knicklinieY: 'x' as 'a' }] as Partial<DruckstabEingabe>[]) {
   const ru = bemesseDruckstab({ ...basis, ...u });
-  pruefe([ru.NbRd, ru.ausnutzung, ru.y.chi, ru.z.lambdaQuer].every(Number.isFinite) && ru.hinweise.some(x => x.stufe === 'fehler'), JSON.stringify(u));
+  pruefe(keinErgebnis([ru.NbRd, ru.ausnutzung, ru.y.chi, ru.z.lambdaQuer]) && ru.hinweise.some(x => x.stufe === 'fehler'), JSON.stringify(u));
 }
 for (const u of [{ A: 0 }, { Anet: 20 }, { nEd: -1 }, { A: NaN }]) {
   const ru = bemesseZugstab({ A: 12, Anet: 9.8, guete: 'S235', nEd: 100, ...u });
-  pruefe([ru.NtRd, ru.ausnutzung].every(Number.isFinite) && ru.hinweise.some(x => x.stufe === 'fehler'), `Zug ${JSON.stringify(u)}`);
+  pruefe(keinErgebnis([ru.NtRd, ru.ausnutzung]) && ru.hinweise.some(x => x.stufe === 'fehler'), `Zug ${JSON.stringify(u)}`);
 }
 
 // 9. Fuzz (1000 Zufallseingaben, auch unzulässige): Ergebnisse endlich, χ ∈ [0, 1], N_b,Rd ≤ A·f_y/γ_M1
@@ -107,12 +108,12 @@ for (let i = 0; i < 1000; i++) {
     knicklinieY: i % 4 === 0 ? KNICKLINIEN[i % 5] : undefined, knicklinieZ: i % 6 === 0 ? KNICKLINIEN[(i + 2) % 5] : undefined,
   };
   const ru = bemesseDruckstab(e);
-  const ok = [ru.NbRd, ru.ausnutzung, ru.NcRd, ru.y.chi, ru.z.chi, ru.y.lambdaQuer, ru.z.lambdaQuer, ru.y.Ncr, ru.z.Ncr].every(Number.isFinite)
-    && ru.y.chi >= 0 && ru.y.chi <= 1 && ru.z.chi >= 0 && ru.z.chi <= 1
-    && (!ru.p || ru.NbRd <= (ru.p.A * 100 * ru.fy) / 1.1 / 1000 + 1e-9);
+  const ok = zahlenPassen(ru, [ru.NbRd, ru.ausnutzung, ru.NcRd, ru.y.chi, ru.z.chi, ru.y.lambdaQuer, ru.z.lambdaQuer, ru.y.Ncr, ru.z.Ncr])
+    && (istUngueltig(ru) || (ru.y.chi >= 0 && ru.y.chi <= 1 && ru.z.chi >= 0 && ru.z.chi <= 1
+    && (!ru.p || ru.NbRd <= (ru.p.A * 100 * ru.fy) / 1.1 / 1000 + 1e-9)));
   if (!ok) { pruefe(false, `Fuzz ${i}: ${JSON.stringify(e)}`); break; }
   const rz = bemesseZugstab({ A: zf(-5, 300), Anet: zf(-5, 300), guete: gueten[i % 3], nEd: zf(-100, 5000) });
-  if (![rz.NplRd, rz.NuRd, rz.NtRd, rz.ausnutzung].every(Number.isFinite)) { pruefe(false, `Fuzz Zug ${i}`); break; }
+  if (!zahlenPassen(rz, [rz.NplRd, rz.NuRd, rz.NtRd, rz.ausnutzung])) { pruefe(false, `Fuzz Zug ${i}`); break; }
 }
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }

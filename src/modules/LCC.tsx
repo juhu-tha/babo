@@ -18,7 +18,6 @@ import { FormulaDerivationBox } from '@/src/components/ui/FormulaDerivationBox';
 /** KaTeX-Summe mit korrekten Vorzeichen (für den Live-Rechenweg) */
 const texSumme = (werte: number[], n = 0) =>
   werte.map((w, k) => (k === 0 ? formatDeTeX(w, n) : w < 0 ? ` - ${formatDeTeX(-w, n)}` : ` + ${formatDeTeX(w, n)}`)).join('');
-import { exportToPDF } from '../lib/pdfExport';
 import inhalt from '@/content/lcc/LCC.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
@@ -68,6 +67,8 @@ export default function LCC() {
   const handleExportPDF = async () => {
     setIsExporting(true);
     try {
+      // jsPDF/html-to-image (≈ 140 kB gzip) erst beim Export laden, nicht im Erstpfad der Modulseite (LCP 02.11.2026)
+      const { exportToPDF } = await import('../lib/pdfExport');
       await exportToPDF('lcc-print-area', `LCC-Gutachten_${selectedScenarioId}`);
     } catch (err) {
       console.error(err);

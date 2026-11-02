@@ -15,7 +15,7 @@
  * Technische Mechanik 2, Übungen 2.3/2.5, Hochschule München (öffentlich, wandinger.userweb.mwn.de).
  * Reiner Rechenkern – geprüft in tests/spannungszustand.test.ts.
  */
-import { type Hinweis, istEndlich, muss, hatFehler, bereich } from './plausibilitaet';
+import { type Hinweis, istEndlich, istAnzahl, muss, hatFehler, bereich, nurGueltig } from './plausibilitaet';
 
 export interface EbenerSpannungszustand {
   /** Normalspannung in x-Richtung [N/mm²] */
@@ -89,10 +89,10 @@ export function vonMises(z: EbenerSpannungszustand): number {
   return Math.sqrt(Math.max(0, z.sx * z.sx + z.sy * z.sy - z.sx * z.sy + 3 * z.txy * z.txy));
 }
 
-const LEER = (hinweise: Hinweis[]): Spannungsergebnis => ({
+const LEER = (hinweise: Hinweis[]): Spannungsergebnis => nurGueltig(({
   sigmaM: NaN, R: NaN, sigma1: NaN, sigma2: NaN, phi1Grad: NaN, phi2Grad: NaN, phiTauGrad: NaN,
   tauMax: NaN, tauMaxRaeumlich: NaN, sigmaVMises: NaN, sigmaVTresca: NaN, eta: NaN, hinweise,
-});
+}));
 
 /** Hauptspannungen, Hauptrichtung, τ_max und Vergleichsspannungen; optional Ausnutzung gegen f_y [N/mm²] */
 export function hauptspannungen(z: EbenerSpannungszustand, fy?: number): Spannungsergebnis {
@@ -120,12 +120,14 @@ export function hauptspannungen(z: EbenerSpannungszustand, fy?: number): Spannun
   if (sigma1 < 0 && sigma2 < 0 && tauMaxRaeumlich > R) hinweise.push({ stufe: 'warnung', feld: 'txy', text: 'Beide Hauptspannungen sind Druck: Die größte Schubspannung tritt räumlich mit σ₃ = 0 auf (τ = |σ₂|/2), nicht in der Ebene.' });
   if (fy !== undefined && eta > 1) hinweise.push({ stufe: 'warnung', feld: 'fy', text: 'Die Vergleichsspannung nach von Mises überschreitet die Streckgrenze – der Werkstoff fließt (ohne Teilsicherheitsbeiwerte).' });
 
-  return { sigmaM, R, sigma1, sigma2, phi1Grad, phi2Grad, phiTauGrad, tauMax: R, tauMaxRaeumlich, sigmaVMises, sigmaVTresca, eta, hinweise };
+  return nurGueltig({ sigmaM, R, sigma1, sigma2, phi1Grad, phi2Grad, phiTauGrad, tauMax: R, tauMaxRaeumlich, sigmaVMises, sigmaVTresca, eta, hinweise });
 }
 
 /** Punkte des Mohr'schen Kreises (σ, τ) für die Zeichnung, n Stützstellen */
 export function kreisPunkte(z: EbenerSpannungszustand, n = 72): { sigma: number; tau: number }[] {
   const { sigmaM, R } = mohrKreis(z);
+  // Grenzfallprüfung 02.11.2026: ungültige Punktzahl → keine Punkte (vorher Ausnahme)
+  if (!istAnzahl(n, 1)) return [];
   return Array.from({ length: n + 1 }, (_, i) => {
     const w = (2 * Math.PI * i) / n;
     return { sigma: sigmaM + R * Math.cos(w), tau: R * Math.sin(w) };

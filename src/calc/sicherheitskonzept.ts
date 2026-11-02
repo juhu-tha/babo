@@ -9,7 +9,7 @@
  * maßgebend ist der größere Bemessungswert. Ein gemeinsames γ_G, ein gemeinsames γ_Q.
  * Reiner Rechenkern – geprüft in tests/sicherheitskonzept.test.ts.
  */
-import { type Hinweis, istEndlich, muss, hatFehler } from './plausibilitaet';
+import { type Hinweis, istEndlich, muss, hatFehler, nurGueltig } from './plausibilitaet';
 
 export interface Kombination610Eingabe {
   gk: number; qk1: number; qk2: number;
@@ -42,7 +42,7 @@ export function kombination610(e: Kombination610Eingabe): Kombination610 {
   muss(hinweise, e.psi01 >= 0 && e.psi01 <= 1 && e.psi02 >= 0 && e.psi02 <= 1, 'psi0', 'ψ₀ muss zwischen 0 und 1 liegen.');
   muss(hinweise, e.gammaG > 0 && e.gammaQ > 0, 'gamma', 'Teilsicherheitsbeiwerte müssen größer als 0 sein.');
   if (hatFehler(hinweise)) {
-    return { staendig: NaN, leit: NaN, begleit: NaN, ed: NaN, edLeit1: NaN, edLeit2: NaN, edMax: NaN, massgebend: 1, gueltig: false, hinweise };
+    return nurGueltig({ staendig: NaN, leit: NaN, begleit: NaN, ed: NaN, edLeit1: NaN, edLeit2: NaN, edMax: NaN, massgebend: 1, gueltig: false, hinweise });
   }
   const staendig = e.gammaG * e.gk;
   const edLeit1 = staendig + e.gammaQ * e.qk1 + e.gammaQ * e.psi02 * e.qk2;
@@ -55,5 +55,5 @@ export function kombination610(e: Kombination610Eingabe): Kombination610 {
   if (Math.abs(ed - edMax) > 1e-12) {
     hinweise.push({ feld: 'leit', stufe: 'warnung', text: `Maßgebend ist die andere Kombination (Q_k,${massgebend} als Leiteinwirkung).` });
   }
-  return { staendig, leit, begleit, ed, edLeit1, edLeit2, edMax, massgebend, gueltig: true, hinweise };
+  return nurGueltig({ staendig, leit, begleit, ed, edLeit1, edLeit2, edMax, massgebend, gueltig: true, hinweise });
 }

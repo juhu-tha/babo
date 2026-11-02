@@ -10,7 +10,7 @@
  * nicht eindeutig. Maßgebend für die Bewertung einer Probe sind die Vorgaben der TrinkwV und des Labors.
  * Reiner Rechenkern – geprüft in tests/pfas.test.ts.
  */
-import { type Hinweis, istEndlich, muss, hatFehler } from './plausibilitaet';
+import { type Hinweis, istEndlich, muss, hatFehler, nurGueltig } from './plausibilitaet';
 
 /** Die 20 PFAS der Summe „PFAS-20“ (TrinkwV Anlage 2 Teil I, entspricht Richtlinie (EU) 2020/2184) */
 export const PFAS20 = [
@@ -85,7 +85,7 @@ export interface PfasErgebnis {
 }
 
 const LEERE_SUMME = (grenzwert: number): PfasSumme => ({ summe: NaN, unten: NaN, oben: NaN, grenzwert, eta: NaN, ok: false, uneindeutig: false, nKleinerBg: 0 });
-const LEER = (hinweise: Hinweis[]): PfasErgebnis => ({ pfas20: LEERE_SUMME(PFAS_GRENZWERTE.pfas20), pfas4: LEERE_SUMME(PFAS_GRENZWERTE.pfas4), anteilKurzkettig: NaN, hinweise });
+const LEER = (hinweise: Hinweis[]): PfasErgebnis => nurGueltig(({ pfas20: LEERE_SUMME(PFAS_GRENZWERTE.pfas20), pfas4: LEERE_SUMME(PFAS_GRENZWERTE.pfas4), anteilKurzkettig: NaN, hinweise }));
 
 /** Ersatzwert für „< BG“ */
 export function ersatzwert(bg: number, ansatz: BgAnsatz): number {
@@ -126,7 +126,7 @@ export function pfasSummenbewertung(e: PfasEingabe): PfasErgebnis {
   if (pfas20.uneindeutig || pfas4.uneindeutig) warnung(hinweise, 'ansatz', 'Die Bewertung hängt vom Ansatz der Werte unter der Bestimmungsgrenze ab – empfindlichere Analytik oder Wiederholungsmessung.');
   if (gemessen.some(w => w > 10000)) warnung(hinweise, 'werte', 'Einzelwert über 10 µg/l: typisch für Sickerwasser oder Grundwasser an Löschschaum-Altlasten, nicht für Trinkwasser.');
 
-  return { pfas20, pfas4, anteilKurzkettig: pfas20.summe > 0 ? kurz / pfas20.summe : 0, hinweise };
+  return nurGueltig({ pfas20, pfas4, anteilKurzkettig: pfas20.summe > 0 ? kurz / pfas20.summe : 0, hinweise });
 }
 
 function warnung(h: Hinweis[], feld: string, text: string) {

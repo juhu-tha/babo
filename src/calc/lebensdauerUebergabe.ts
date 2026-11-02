@@ -10,7 +10,7 @@
  *
  * Reiner Rechenkern ohne React – geprüft in tests/lebensdauerUebergabe.test.ts.
  */
-import { type Hinweis, istEndlich } from './plausibilitaet';
+import { type Hinweis, istEndlich, nurGueltig } from './plausibilitaet';
 import { FIB_CHLORID, type Mechanismus } from './lebensdauer';
 import { modulPfad } from '../routing/pfad';
 
@@ -110,12 +110,12 @@ const deZahl = (v: number) => String(Number(v.toPrecision(4))).replace('.', ',')
 export function leseUebergabe(suche: string): UebergabeLesen {
   const hinweise: Hinweis[] = [];
   let p: URLSearchParams;
-  try { p = new URLSearchParams(suche); } catch { return { daten: null, hinweise }; }
+  try { p = new URLSearchParams(suche); } catch { return nurGueltig({ daten: null, hinweise }); }
   const von = p.get('von');
-  if (von === null) return { daten: null, hinweise };
+  if (von === null) return nurGueltig({ daten: null, hinweise });
   if (!(von in UEBERGABE_QUELLEN)) {
     hinweise.push({ stufe: 'warnung', feld: 'von', text: `Übergabe aus unbekanntem Modul „${von.slice(0, 40)}“ – keine Werte übernommen.` });
-    return { daten: null, hinweise };
+    return nurGueltig({ daten: null, hinweise });
   }
   const d: LebensdauerUebergabe = { quelle: von as UebergabeQuelle };
   const mech = p.get('mech');
@@ -148,7 +148,7 @@ export function leseUebergabe(suche: string): UebergabeLesen {
     if (gut.length) d.expo = gut;
   }
   if (d.cAcc !== undefined && d.kac === undefined) delete d.cAcc;
-  return { daten: d, hinweise };
+  return nurGueltig({ daten: d, hinweise });
 }
 
 /** nächstliegendes Bindemittel zum Alterungsexponenten a (Mittelwerte nach fib 34: CEM I 0,30; CEM III/B 0,45; Flugasche 0,60) */
@@ -250,5 +250,5 @@ export function vorgabeAusUebergabe(u: LebensdauerUebergabe): VorgabeErgebnis {
     const zone = chloridKlasse.some(c => c === 'XD3' || c === 'XS3') ? 'spritz' : chloridKlasse.length ? 'nebel' : undefined;
     if (zone) { v.zone = zone; liste.push(zone === 'spritz' ? 'Spritzwasser (Konvektionszone Δx)' : 'ohne Konvektionszone (Δx = 0)'); }
   }
-  return { vorgabe: v, uebernommen: liste, kNat: u.kNat ?? null, hinweise };
+  return nurGueltig({ vorgabe: v, uebernommen: liste, kNat: u.kNat ?? null, hinweise });
 }

@@ -11,7 +11,7 @@ import { formatDeIntl } from '../utils/numberFormat';
  * Einheiten: Gehalte in kg/m³, Luftgehalt in Vol.-%, Deckung in mm. Die Klassendaten werden übergeben (Daten liegen im Modul).
  * Reiner Rechenkern – geprüft in tests/expositionsklassen.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, muss, nurGueltig } from './plausibilitaet';
 
 /** Rangfolge der Festigkeitsklassen für den Hüllwert-Vergleich (wie im Modul) */
 export const FESTIGKEITS_RANG: Readonly<Record<string, number>> = {
@@ -86,7 +86,7 @@ export function huellwerte(alle: readonly ExpositionsAnforderung[], gewaehlt: re
   if (xfOhneLp && (has('XF2') || has('XF3'))) specialReqs.push(has('XF4') ? 'XF2/XF3 ohne LP gewählt, wegen XF4 bleibt LP-Beton erforderlich.' : 'XF2/XF3 ohne LP: (w/z)_eq ≤ 0,50, C35/45, z ≥ 320 kg/m³ (DIN 1045-2, Tab. F.2.1).');
   if (has('XC1') && maxCoverDur <= 10) specialReqs.push('Nur XC1: Δc_dev darf auf 10 mm verringert werden.');
   if (matched.length < gewaehlt.length) hinweise.push({ stufe: 'warnung', feld: 'klassen', text: 'Mindestens eine gewählte Klasse ist in den Daten nicht vorhanden.' });
-  return { minWzEq, highestClass, maxCement, requiresLP, minAirVal, maxCoverDur, cNom, specialReqs, gueltig: !hatFehler(hinweise), hinweise };
+  return nurGueltig({ minWzEq, highestClass, maxCement, requiresLP, minAirVal, maxCoverDur, cNom, specialReqs, gueltig: !hatFehler(hinweise), hinweise });
 }
 
 export interface KWertEingabe {
@@ -125,5 +125,5 @@ export function kWertAnsatz(e: KWertEingabe): KWertErgebnis {
   const maxFKombination = Math.max(0, 0.66 * e.zement - 3 * e.silika);
   if (e.flugasche > 0 && e.silika > 0 && e.flugasche > maxFKombination + 1e-9) hinweise.push({ stufe: 'warnung', feld: 'flugasche', text: `Flugasche und Silikastaub gemeinsam: f ≤ 0,66·z − 3·s = ${formatDeIntl(Math.round(maxFKombination))} kg/m³ (CEM I, DIN 1045-2) ist überschritten; mit CEM II-S, II/A-D, II-T, II/A-LL, III/A gilt f ≤ 0,45·z − 3·s.` });
   else if (e.flugasche > 0 && e.silika > 0) hinweise.push({ stufe: 'warnung', feld: 'flugasche', text: 'Flugasche und Silikastaub gemeinsam: f ≤ 0,66·z − 3·s (CEM I) eingehalten; mit CEM II-S, II/A-D, II-T, II/A-LL, III/A gilt die strengere Grenze f ≤ 0,45·z − 3·s.' });
-  return { rawWz, maxF, effectiveF, kF, maxS, effectiveS, kS, beq, wzEq, gueltig: !hatFehler(hinweise), hinweise };
+  return nurGueltig({ rawWz, maxF, effectiveF, kF, maxS, effectiveS, kS, beq, wzEq, gueltig: !hatFehler(hinweise), hinweise });
 }

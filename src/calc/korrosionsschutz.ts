@@ -6,7 +6,7 @@
  * Duplex-System: t_D = f · (t_Zn + t_B) mit Synergiefaktor f (Literaturwert, nicht normativ).
  * Reiner Rechenkern – geprüft in tests/korrosionsschutz.test.ts.
  */
-import { type Hinweis, istEndlich, muss, hatFehler, bereich } from './plausibilitaet';
+import { type Hinweis, istEndlich, muss, hatFehler, bereich, nurGueltig } from './plausibilitaet';
 
 export type Kategorie = 'C1' | 'C2' | 'C3' | 'C4' | 'C5' | 'CX';
 export type Schutzdauerklasse = 'L' | 'M' | 'H' | 'VH';
@@ -94,16 +94,18 @@ export interface Abnahme8020 {
 export function abnahme8020(messwerte: readonly number[], ndft: number): Abnahme8020 {
   const hinweise: Hinweis[] = [];
   const werte = messwerte.filter(Number.isFinite);
+  // Grenzfallprüfung 02.11.2026: übersprungene Einträge vorher ohne Hinweis
+  if (werte.length < messwerte.length) hinweise.push({ stufe: 'warnung', feld: 'messwerte', text: `${messwerte.length - werte.length === 1 ? 'Ein Messwert ist keine Zahl und wird' : `${messwerte.length - werte.length} Messwerte sind keine Zahlen und werden`} nicht berücksichtigt.` });
   muss(hinweise, Number.isFinite(ndft) && ndft > 0, 'ndft', 'Die Sollschichtdicke NDFT muss größer als 0 µm sein.');
   muss(hinweise, werte.length > 0 && werte.every(w => w >= 0), 'messwerte', 'Mindestens ein Messwert ≥ 0 µm ist erforderlich.');
-  if (hatFehler(hinweise)) return { n: 0, anteilUnterNdft: 0, minimum: 0, grenze80: 0, erfuellt: false, hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ n: 0, anteilUnterNdft: 0, minimum: 0, grenze80: 0, erfuellt: false, hinweise });
   const unter = werte.filter(w => w < ndft).length;
   const anteilUnterNdft = (unter / werte.length) * 100;
   const minimum = Math.min(...werte);
   const grenze80 = 0.8 * ndft;
   const erfuellt = anteilUnterNdft <= 20 + 1e-9 && minimum >= grenze80 - 1e-9;
   if (werte.length < 5) hinweise.push({ stufe: 'warnung', feld: 'messwerte', text: 'Wenige Messwerte: Anzahl und Verteilung der Messstellen richten sich nach ISO 19840 (Prüffläche).' });
-  return { n: werte.length, anteilUnterNdft, minimum, grenze80, erfuellt, hinweise };
+  return nurGueltig({ n: werte.length, anteilUnterNdft, minimum, grenze80, erfuellt, hinweise });
 }
 
 /** Synergiefaktor von Duplex-Systemen: Literaturspanne (Institut Feuerverzinken 2023: 1,2 bis 2; Fachliteratur bis 2,5) */
@@ -161,7 +163,7 @@ export function zinkSchutzdauer(e: ZinkEingabe): ZinkErgebnis {
     if (e.stahlDickeMm !== undefined) muss(hinweise, e.stahlDickeMm > 0, 'stahlDickeMm', 'Die Stahldicke muss größer als 0 mm sein.');
   }
   if (hatFehler(hinweise)) {
-    return { gueltig: false, rMin: 0, rMax: 0, tMin: 0, tMax: null, tDuplexMin: 0, tDuplexMax: null, tMassgebend: 0, klasseUnguenstig: 'L', klasseGuenstig: 'L', bewertung: 'nicht_erfuellt', hinweise };
+    return nurGueltig({ gueltig: false, rMin: 0, rMax: 0, tMin: 0, tMax: null, tDuplexMin: 0, tDuplexMax: null, tMassgebend: 0, klasseUnguenstig: 'L', klasseGuenstig: 'L', bewertung: 'nicht_erfuellt', hinweise });
   }
 
   const [rMin, rMax] = kat.zink;
@@ -189,5 +191,5 @@ export function zinkSchutzdauer(e: ZinkEingabe): ZinkErgebnis {
   }
   if (e.kategorie === 'CX') hinweise.push({ stufe: 'warnung', feld: 'kategorie', text: 'In CX streut der Zinkabtrag sehr stark (8,4 bis 25 µm/a); Zink allein reicht hier kaum, Systeme nach DIN EN ISO 12944-9 bzw. Einzelfallbetrachtung.' });
 
-  return { gueltig: true, rMin, rMax, tMin, tMax, tDuplexMin, tDuplexMax, tMassgebend, klasseUnguenstig, klasseGuenstig, bewertung, mindest1461, hinweise };
+  return nurGueltig({ gueltig: true, rMin, rMax, tMin, tMax, tDuplexMin, tDuplexMax, tMassgebend, klasseUnguenstig, klasseGuenstig, bewertung, mindest1461, hinweise });
 }
