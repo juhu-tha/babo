@@ -113,6 +113,9 @@ export function validateMechanicalTestIntegrity(
  */
 export function exportToCSV(filename: string, headers: string[], rows: (string | number)[][]): void {
   const escapeCell = (val: string | number) => {
+    // kein Zahlenergebnis (NaN/∞, auch als Text aus toFixed) → leeres Feld statt „NaN“ (Prüfung 02.11.2026)
+    if (typeof val === 'number' && !Number.isFinite(val)) return '';
+    if (typeof val === 'string' && /^-?(NaN|Infinity)$/.test(val.trim())) return '';
     const s = String(val ?? '');
     if (s.includes(';') || s.includes('"') || s.includes('\n')) {
       return `"${s.replace(/"/g, '""')}"`;
