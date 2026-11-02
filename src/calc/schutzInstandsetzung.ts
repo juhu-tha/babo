@@ -173,7 +173,7 @@ export interface WuNachweis {
  * I ≤ 10 → 0,20 mm, ≤ 15 → 0,15 mm, ≤ 25 → 0,10 mm; BK 2 Orientierungswert 0,30 mm.
  */
 export function wuNachweis(hwM: number, hMm: number, rissbreiteMm: number, bk: '1' | '2', bauteil: 'Wand' | 'Bodenplatte', bauart: 'ortbeton' | 'elementwand'): WuNachweis {
-  const druckgefaelle = hMm > 0 ? hwM / (hMm / 1000) : 0;
+  const druckgefaelle = hMm > 0 ? hwM / (hMm / 1000) : Number.isNaN(hMm) ? NaN : 0; // Grenzfallprüfung 02.11.2026: NaN nicht als 0
   const mindestDicke = bk === '1' ? (bauteil === 'Wand' ? 240 : 250) : (bauteil === 'Wand' ? (bauart === 'ortbeton' ? 200 : 240) : 150);
   let zulRissbreite = 0.30;
   let selbstheilungMoeglich = true;

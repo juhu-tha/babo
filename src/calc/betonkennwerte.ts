@@ -29,7 +29,7 @@
  * gemeldet, wenn sie greifen. h_0 wird seit Runde 5 wie in kriechenSchwinden.ts nicht mehr begrenzt (Anhang B kennt keine
  * Begrenzung von h_0; k_h nach Tab. 3.3 ist ab h_0 ≥ 500 mm konstant 0,70, β_H ≤ 1500·α_3). Reiner Rechenkern – geprüft in tests/betonkennwerte.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, muss, nurGueltig } from './plausibilitaet';
 import { formatDeZahl } from '../utils/numberFormat';
 import { fckZumAlter, dehnungsKennwerte, fcdBeton } from '../data/kennwerte';
 import {
@@ -245,7 +245,7 @@ export function betonkennwerte(e: BetonkennwerteEingabe): BetonkennwerteErgebnis
   if (sigmaC < 0) hinweise.push({ stufe: 'warnung', feld: 'sigmaC', text: 'σ_c < 0: Als Druckspannung ist ein positiver Betrag einzugeben.' });
 
   const gueltig = !hatFehler(hinweise);
-  return {
+  return nurGueltig({
     fck, fcm, fcd, tT: tTemp, t0T: t0Temp, tFestigkeit: tFest, t0Festigkeit: t0Fest, s, betaCcT0, fcmT0, fckT0, betaCcT, fcmT, fckT,
     fctm, fctk005, fctk095, fctd, fctmFl, fctSp, fctmT,
     alphaE, Ecm, Ec0, EcmT0, EcmT, Gcm,
@@ -254,5 +254,5 @@ export function betonkennwerte(e: BetonkennwerteEingabe): BetonkennwerteErgebnis
     phi0, phiLinear, phiFinal, isNonlinearCreep, stressLimitLin, stressLimitMax, kSigma,
     epsCc, deltaLCreepMm, EcEff, EcEffZwang, Ecm2025, etaFc2025,
     gueltig, hinweise,
-  };
+  });
 }

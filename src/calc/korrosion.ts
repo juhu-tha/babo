@@ -17,7 +17,7 @@
  *    alle Beiwerte sind Lehrannahmen, keine Normwerte.
  * Lehr- und Vorbemessungswerkzeug; ersetzt keine Dauerhaftigkeitsbemessung oder Bauwerksuntersuchung.
  */
-import { type Hinweis, hatFehler, istEndlich, muss } from './plausibilitaet';
+import { type Hinweis, hatFehler, istEndlich, istAnzahl, muss, nurGueltig, MAX_STUETZSTELLEN } from './plausibilitaet';
 import { tiefeNach, umrechnungsfaktor } from './schnellkarbonatisierung';
 import { chloridgehalt, alterungsfaktor, T0_JAHRE, D_EINHEIT_MM2_A } from './lebensdauer';
 
@@ -103,10 +103,10 @@ export function chloridProfil(e: ChloridEingabe): ChloridErgebnis {
     muss(hinweise, e.a >= 0 && e.a < 1, 'a', 'Der Alterungsexponent muss zwischen 0 und 1 liegen.');
   }
   const tiefen = Array.from({ length: 101 }, (_, i) => i);
-  if (hatFehler(hinweise)) return { tiefen, profil: tiefen.map(() => NaN), cBewehrung: NaN, depassiviert: false, gueltig: false, hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ tiefen, profil: tiefen.map(() => NaN), cBewehrung: NaN, depassiviert: false, gueltig: false, hinweise });
   const profil = tiefen.map(x => chloridGehalt(x, e.t, e.dApp, e.cS, e.a));
   const cBewehrung = chloridGehalt(e.cNom, e.t, e.dApp, e.cS, e.a);
-  return { tiefen, profil, cBewehrung, depassiviert: cBewehrung >= CL_KRITISCH, gueltig: true, hinweise };
+  return nurGueltig({ tiefen, profil, cBewehrung, depassiviert: cBewehrung >= CL_KRITISCH, gueltig: true, hinweise });
 }
 
 // ---------------------------------------------------------------------------------------------------
@@ -132,9 +132,9 @@ export function karbonatisierungsFront(k: number, tJahre: number, deckungMm: num
     muss(hinweise, tJahre >= 0, 't', 'Die Zeit darf nicht negativ sein.');
     muss(hinweise, deckungMm > 0, 'deckung', 'Die Betondeckung muss größer als 0 sein.');
   }
-  if (hatFehler(hinweise)) return { xc: NaN, tDeckung: NaN, depassiviert: false, gueltig: false, hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ xc: NaN, tDeckung: NaN, depassiviert: false, gueltig: false, hinweise });
   const xc = tiefeNach(k, tJahre);
-  return { xc, tDeckung: k > 0 ? (deckungMm / k) ** 2 : Infinity, depassiviert: xc >= deckungMm, gueltig: true, hinweise };
+  return nurGueltig({ xc, tDeckung: k > 0 ? (deckungMm / k) ** 2 : Infinity, depassiviert: xc >= deckungMm, gueltig: true, hinweise });
 }
 
 export interface KarbonatisierungsLebensdauer extends KarbonatisierungsFront {
@@ -155,14 +155,15 @@ export function karbonatisierungsLebensdauer(k: number, tJahre: number, deckungM
     front.hinweise.push({ stufe: 'fehler', feld: 'k', text: 'Der Karbonatisierungskoeffizient muss größer als 0 sein.' });
     front.gueltig = false;
   }
-  if (!front.gueltig) return { ...front, tKrit: NaN, restJahre: NaN };
+  if (!front.gueltig) return nurGueltig({ ...front, tKrit: NaN, restJahre: NaN }); // Grenzfallprüfung 02.11.2026: x_c nachträglich ungültig
   const tKrit = Math.round(front.tDeckung);
   if (tKrit > 200) front.hinweise.push({ stufe: 'warnung', feld: 'k', text: 'Rechnerische Zeit bis zur Depassivierung über 200 Jahre – das Wurzel-t-Gesetz ist so weit nicht abgesichert.' });
   return { ...front, tKrit, restJahre: tKrit - tJahre };
 }
 
 /** Kurve x_c(t) für t = 0 … tMax (ganzzahlige Schritte) */
-export const karbonatisierungsKurve = (k: number, tMax: number) => Array.from({ length: tMax + 1 }, (_, t) => tiefeNach(k, t));
+/** Karbonatisierungstiefe je Jahr 0 … t_max; ungültiges t_max → leere Liste (Grenzfallprüfung 02.11.2026, vorher Ausnahme) */
+export const karbonatisierungsKurve = (k: number, tMax: number) => istAnzahl(tMax) ? Array.from({ length: tMax + 1 }, (_, t) => tiefeNach(k, t)) : [];
 
 export interface SchnellUmrechnung {
   /** K_nat [mm/√a] */
@@ -186,18 +187,20 @@ export function schnellUmrechnung(kAcc: number, cAcc: number, cNat: number, tage
   const hinweise: Hinweis[] = [];
   muss(hinweise, istEndlich(kAcc, cAcc, cNat) && kAcc >= 0, 'kAcc', 'Der Koeffizient muss eine nicht negative Zahl sein.');
   muss(hinweise, cAcc > 0 && cNat > 0, 'cAcc', 'Die CO₂-Konzentrationen müssen größer als 0 sein.');
-  const tage = Array.from({ length: tageMax + 1 }, (_, i) => i);
-  if (hatFehler(hinweise)) return { kNat: NaN, tiefenSchnell: tage.map(() => NaN), tiefenNat: tage.map(() => NaN), gueltig: false, hinweise };
+  // Grenzfallprüfung 02.11.2026: Tageszahl begrenzen (vorher Ausnahme bei ∞)
+  muss(hinweise, istAnzahl(tageMax), 'tageMax', `Die Prüfdauer muss eine ganze Zahl von 0 bis ${MAX_STUETZSTELLEN} Tagen sein.`);
+  const tage = Array.from({ length: istAnzahl(tageMax) ? tageMax + 1 : 0 }, (_, i) => i);
+  if (hatFehler(hinweise)) return nurGueltig({ kNat: NaN, tiefenSchnell: tage.map(() => NaN), tiefenNat: tage.map(() => NaN), gueltig: false, hinweise });
   if (cNat >= cAcc) hinweise.push({ stufe: 'warnung', feld: 'cNat', text: 'Die natürliche CO₂-Konzentration ist nicht kleiner als die Prüfkonzentration – die Umrechnung ist dann keine Schnellprüfung mehr.' });
   if (Math.abs(cAcc - CO2_KAMMER_EN12390_12) > 0.5) hinweise.push({ stufe: 'warnung', feld: 'cAcc', text: 'DIN EN 12390-12 prüft bei (3,0 ± 0,5) Vol.-% CO₂; bei anderen Kammerkonzentrationen ist die Übertragbarkeit eingeschränkt.' });
   const kNat = kAcc * umrechnungsfaktor(cAcc, cNat);
-  return {
+  return nurGueltig({
     kNat,
     tiefenSchnell: tage.map(d => kAcc * Math.sqrt(d)),
     tiefenNat: tage.map(d => tiefeNach(kNat, d / 365)),
     gueltig: true,
     hinweise,
-  };
+  });
 }
 
 // ---------------------------------------------------------------------------------------------------
@@ -274,7 +277,7 @@ export function lokalelement(e: LokalelementEingabe): LokalelementErgebnis {
     muss(hinweise, e.jahre >= 0, 'jahre', 'Die Dauer darf nicht negativ sein.');
   }
   if (hatFehler(hinweise)) {
-    return { depassiviert: false, iCorr: NaN, vCorr: NaN, abtrag: NaN, rostDicke: NaN, sigmaRadial: NaN, stufe: 'passiv', gueltig: false, hinweise };
+    return nurGueltig({ depassiviert: false, iCorr: NaN, vCorr: NaN, abtrag: NaN, rostDicke: NaN, sigmaRadial: NaN, stufe: 'passiv', gueltig: false, hinweise });
   }
   const depassiviert = e.clGehalt >= CL_DEPASSIVIERUNG;
   const iCorr = iCorrLehrmodell(e.clGehalt, e.relFeuchte);
@@ -283,5 +286,5 @@ export function lokalelement(e: LokalelementEingabe): LokalelementErgebnis {
   const rostDicke = (abtrag * LOKALELEMENT.rostFaktor) / 1000;
   // Lehrmodell Hohlzylinder: σ ≈ E_eff · (Rostdicke/10) / c  (Ansatz unverändert aus dem Modul)
   const sigmaRadial = depassiviert ? Math.min(LOKALELEMENT.sigmaMax, (LOKALELEMENT.eEff * (rostDicke / 10)) / e.deckungMm) : 0;
-  return { depassiviert, iCorr, vCorr, abtrag, rostDicke, sigmaRadial, stufe: schadensStufe(depassiviert, sigmaRadial), gueltig: true, hinweise };
+  return nurGueltig({ depassiviert, iCorr, vCorr, abtrag, rostDicke, sigmaRadial, stufe: schadensStufe(depassiviert, sigmaRadial), gueltig: true, hinweise });
 }

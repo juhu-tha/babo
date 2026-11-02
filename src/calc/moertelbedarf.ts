@@ -12,7 +12,7 @@
  *    (50 m² · 15 mm · 1,1 ergab 825,0000000000001 kg und damit 34 statt 33 Säcke).
  * Reiner Rechenkern – geprüft in tests/moertelbedarf.test.ts. Orientierungswerte, keine Ausschreibungsmengen.
  */
-import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, muss, nurGueltig } from './plausibilitaet';
 
 /** Verbrauchsrichtwerte in kg je m² und mm Putzdicke (Herstellerangaben, Größenordnung) */
 export const PUTZ_VERBRAUCH = { gips: 1.1, luftkalk: 1.3, kalkzement: 1.25, zement: 1.6, sanier: 1.2, aerogel: 0.28 } as const;
@@ -59,7 +59,7 @@ export interface BedarfErgebnis {
   hinweise: Hinweis[];
 }
 
-const leer = (hinweise: Hinweis[]): BedarfErgebnis => ({ masse: NaN, saecke: NaN, wasser: NaN, gueltig: false, hinweise });
+const leer = (hinweise: Hinweis[]): BedarfErgebnis => nurGueltig(({ masse: NaN, saecke: NaN, wasser: NaN, gueltig: false, hinweise }));
 
 export function putzbedarf(e: { flaeche: number; dickeMm: number; art: Putzart }): BedarfErgebnis {
   const hinweise: Hinweis[] = [];
@@ -69,7 +69,7 @@ export function putzbedarf(e: { flaeche: number; dickeMm: number; art: Putzart }
   muss(hinweise, istEndlich(e.dickeMm) && e.dickeMm > 0, 'dicke', 'Die Schichtdicke muss größer als 0 mm sein.');
   if (hatFehler(hinweise)) return leer(hinweise);
   const masse = e.flaeche * e.dickeMm * f;
-  return { masse: r1(masse), saecke: sackanzahl(masse), wasser: r1(masse * WASSER_PUTZ_L_JE_KG[e.art]), gueltig: true, hinweise };
+  return nurGueltig({ masse: r1(masse), saecke: sackanzahl(masse), wasser: r1(masse * WASSER_PUTZ_L_JE_KG[e.art]), gueltig: true, hinweise });
 }
 
 export function mauermoertelNormalfuge(e: { flaeche: number; wanddicke: Wanddicke; format: Steinformat }): BedarfErgebnis {
@@ -82,7 +82,7 @@ export function mauermoertelNormalfuge(e: { flaeche: number; wanddicke: Wanddick
   if (hatFehler(hinweise)) return leer(hinweise);
   const liter = e.flaeche * v0 * kt;
   const masse = liter * TROCKENMOERTEL_KG_JE_L;
-  return { liter: r1(liter), masse: r1(masse), saecke: sackanzahl(masse), wasser: r1(masse * WASSER_MAUERMOERTEL_L_JE_KG), gueltig: true, hinweise };
+  return nurGueltig({ liter: r1(liter), masse: r1(masse), saecke: sackanzahl(masse), wasser: r1(masse * WASSER_MAUERMOERTEL_L_JE_KG), gueltig: true, hinweise });
 }
 
 export function duennbettmoertel(e: { flaeche: number; wanddickeCm: number }): BedarfErgebnis {
@@ -91,5 +91,5 @@ export function duennbettmoertel(e: { flaeche: number; wanddickeCm: number }): B
   muss(hinweise, istEndlich(e.wanddickeCm) && e.wanddickeCm > 0, 'wanddicke', 'Die Wanddicke muss größer als 0 cm sein.');
   if (hatFehler(hinweise)) return leer(hinweise);
   const masse = e.flaeche * (e.wanddickeCm / 10) * DUENNBETT_KG_JE_M2_UND_10CM;
-  return { masse: r1(masse), saecke: sackanzahl(masse), wasser: r1(masse * WASSER_DUENNBETT_L_JE_KG), gueltig: true, hinweise };
+  return nurGueltig({ masse: r1(masse), saecke: sackanzahl(masse), wasser: r1(masse * WASSER_DUENNBETT_L_JE_KG), gueltig: true, hinweise });
 }

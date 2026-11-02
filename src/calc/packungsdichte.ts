@@ -13,7 +13,7 @@
  *    γ = γ_ideal − i·(γ_ideal − γ_linear)·1,5 − 0,05·y1·y2·(1 − i) mit i = min(1; d1/d2) (Veranschaulichung)
  * Reiner Rechenkern – geprüft in tests/packungsdichte.test.ts. Lehr- und Vorbemessungswerkzeug.
  */
-import { type Hinweis, istEndlich, hatFehler, muss, bereich } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, muss, bereich, nurGueltig } from './plausibilitaet';
 
 /** Siebgrößen [mm] einschließlich Feinstbereich */
 export const SIEBE = [0.001, 0.01, 0.063, 0.125, 0.25, 0.5, 1, 2, 4, 8, 16] as const;
@@ -31,6 +31,7 @@ export const RHO_ZEMENT = 3.1, RHO_GESTEIN = 2.65; // kg/dm³
 
 /** Modifizierte Andreasen-Kurve; 0 für d ≤ d_min, 100 für d ≥ D */
 export function andreasenModifiziert(d: number, q: number, dMin: number, dMax: number): number {
+  if (Number.isNaN(d) || Number.isNaN(q) || Number.isNaN(dMin) || Number.isNaN(dMax)) return NaN; // Grenzfallprüfung 02.11.2026: NaN-Eingabe nicht als Zahl ausgeben
   if (d <= dMin) return 0;
   if (d >= dMax) return 100;
   return ((Math.pow(d, q) - Math.pow(dMin, q)) / (Math.pow(dMax, q) - Math.pow(dMin, q))) * 100;
@@ -83,7 +84,7 @@ export function sieblinienOptimierung(e: SieblinienEingabe): SieblinienErgebnis 
     muss(hinweise, dMin >= 0 && dMax > dMin, 'dMax', 'Es muss 0 ≤ d_min < D_max gelten.');
   }
   const leer: SieblinienErgebnis = { aZement: 0, aZusatz: 0, aSand: 0, aKies1: 0, aKies2: 0, gekappt: false, mZement: 0, mZusatz: 0, mSand: 0, mKies1: 0, mKies2: 0, mTotal: 0, sieblinie: [], rmseAA: 0, rmseFuller: 0, packungsdichte: 0, gueltig: false, hinweise };
-  if (hatFehler(hinweise)) return leer;
+  if (hatFehler(hinweise)) return nurGueltig(leer);
 
   let aZement = e.zement, aZusatz = e.zusatz, aSand = e.sand, aKies1 = e.kies1;
   if (aZement > 100) aZement = 100;
@@ -105,13 +106,13 @@ export function sieblinienOptimierung(e: SieblinienEingabe): SieblinienErgebnis 
 
   bereich(hinweise, 'q', e.q, 0.2, 0.5, 'Übliche Verteilungsmoduln liegen bei q = 0,20 … 0,50 (UHPC etwa 0,23 … 0,28).');
   bereich(hinweise, 'vFest', e.vFest, 600, 850, 'Übliche Betone enthalten etwa 600 … 850 l Feststoff je m³.');
-  return {
+  return nurGueltig({
     aZement, aZusatz, aSand, aKies1, aKies2, gekappt,
     mZement, mZusatz, mSand, mKies1, mKies2, mTotal: mZement + mZusatz + mSand + mKies1 + mKies2,
     sieblinie: SIEBE.map((d, i) => ({ d, gemisch: gemisch[i], andreasen: aa[i], fuller: fu[i] })),
     rmseAA, rmseFuller, packungsdichte: packungsdichteSchaetzung(rmseAA, e.kornform),
     gueltig: true, hinweise,
-  };
+  });
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -146,7 +147,7 @@ export function zweikornMischung(e: ZweikornEingabe): ZweikornErgebnis {
     muss(hinweise, e.d1 > 0 && e.d2 > 0, 'd', 'Die Korndurchmesser müssen größer als 0 sein.');
     muss(hinweise, e.phi1 > 0 && e.phi1 < 1 && e.phi2 > 0 && e.phi2 < 1, 'phi', 'Die Eigenpackungsdichten müssen zwischen 0 und 1 liegen.');
   }
-  if (hatFehler(hinweise)) return { verhaeltnis: 0, interaktion: 0, punkte: [], maximum: { y1: 0, gamma: 0 }, gueltig: false, hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ verhaeltnis: 0, interaktion: 0, punkte: [], maximum: { y1: 0, gamma: 0 }, gueltig: false, hinweise });
   const verhaeltnis = e.d1 / e.d2;
   const interaktion = Math.min(1, Math.max(0, verhaeltnis));
   const punkte: ZweikornErgebnis['punkte'] = [];
@@ -158,5 +159,5 @@ export function zweikornMischung(e: ZweikornEingabe): ZweikornErgebnis {
     punkte.push({ x, ideal: ideal * 100, real: real * 100, linear: linear * 100 });
   }
   if (verhaeltnis >= 1) hinweise.push({ stufe: 'warnung', feld: 'd1', text: 'Das Feinkorn ist nicht kleiner als das Grobkorn: Die Fraktionen sind zu tauschen.' });
-  return { verhaeltnis, interaktion, punkte, maximum: furnasMaximum(e.phi1, e.phi2), gueltig: true, hinweise };
+  return nurGueltig({ verhaeltnis, interaktion, punkte, maximum: furnasMaximum(e.phi1, e.phi2), gueltig: true, hinweise });
 }

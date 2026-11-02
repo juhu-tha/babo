@@ -11,7 +11,7 @@
  *      die Schranke mit der steiferen Phase als Bezugsphase ist die obere (Vertauschung über min/max).
  * Einheiten: Moduln in GPa, Volumenanteile in %. Reiner Rechenkern – geprüft in tests/emodul.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, muss, nurGueltig } from './plausibilitaet';
 
 /** E_cm in GPa nach DIN EN 1992-1-1 (f_ck in N/mm²) */
 export function ecmEc2(fck: number, alphaE = 1.0): number {
@@ -70,5 +70,5 @@ export function emodul(e: EModulEingabe): EModulErgebnis {
   const kurve: EModulErgebnis['kurve'] = [];
   for (let v = 0; v <= 100; v += 5) kurve.push({ vG: v, ...verbundSchranken(e.eGestein, e.eMatrix, v / 100) });
   if (e.volGestein < 55 || e.volGestein > 80) hinweise.push({ stufe: 'warnung', feld: 'volGestein', text: 'Übliche Betone enthalten etwa 60 … 75 Vol.-% Gesteinskörnung.' });
-  return { ecm, ...s, kurve, gueltig: !hatFehler(hinweise), hinweise };
+  return nurGueltig({ ecm, ...s, kurve, gueltig: !hatFehler(hinweise), hinweise });
 }

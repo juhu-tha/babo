@@ -14,7 +14,7 @@
  * Alle Standardwerte sind Richtwerte aus der öffentlichen Literatur, keine Produkt- oder Projektdaten.
  * Reiner Rechenkern – geprüft in tests/biokohlebeton.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, nurGueltig } from './plausibilitaet';
 
 /** Verhältnis der molaren Massen CO₂ / C */
 export const CO2_JE_C = 44 / 12;
@@ -90,7 +90,7 @@ export function biokohleBilanz(e: BiokohleEingabe): BiokohleErgebnis {
 
   if (!istEndlich(e.mPK, e.cGehalt, e.fPerm, e.ePK, e.zRef, e.deltaZ, e.gwpZ, e.w, e.wAufnahme)) {
     hinweise.push({ stufe: 'fehler', text: 'Alle Eingaben müssen endliche Zahlen sein.' });
-    return leer;
+    return nurGueltig(leer);
   }
   if (e.mPK < 0) hinweise.push({ stufe: 'fehler', feld: 'mPK', text: 'Die Dosierung der Pflanzenkohle darf nicht negativ sein.' });
   if (e.cGehalt < 0 || e.cGehalt > 100) hinweise.push({ stufe: 'fehler', feld: 'cGehalt', text: 'Der Kohlenstoffgehalt muss zwischen 0 und 100 M.-% liegen.' });
@@ -102,7 +102,7 @@ export function biokohleBilanz(e: BiokohleEingabe): BiokohleErgebnis {
   if (e.gwpZ < 0) hinweise.push({ stufe: 'fehler', feld: 'gwpZ', text: 'Das Treibhauspotenzial des Zements darf nicht negativ sein.' });
   if (e.w <= 0) hinweise.push({ stufe: 'fehler', feld: 'w', text: 'Der wirksame Wassergehalt muss größer als 0 sein.' });
   if (e.wAufnahme < 0) hinweise.push({ stufe: 'fehler', feld: 'wAufnahme', text: 'Die Wasseraufnahme der Pflanzenkohle darf nicht negativ sein.' });
-  if (hatFehler(hinweise)) return leer;
+  if (hatFehler(hinweise)) return nurGueltig(leer);
 
   const co2Brutto = e.mPK * e.cGehalt / 100 * CO2_JE_C;
   const co2Speicher = co2Brutto * e.fPerm;
@@ -130,7 +130,7 @@ export function biokohleBilanz(e: BiokohleEingabe): BiokohleErgebnis {
   if (e.deltaZ > 0 && zNeu < 280) hinweise.push({ stufe: 'warnung', feld: 'deltaZ', text: 'Der Zementgehalt der Variante liegt unter 280 kg/m³ – Mindestzementgehalt der Expositionsklasse nach DIN 1045-2 prüfen.' });
   if (e.wAufnahme > 300) hinweise.push({ stufe: 'warnung', feld: 'wAufnahme', text: 'Wasseraufnahmen über 300 M.-% sind auch für sehr poröse Pflanzenkohle ungewöhnlich – Prüfwert kontrollieren.' });
 
-  return { co2Brutto, co2Speicher, ePK, nettoPK, eZement, gwpRef, gwpNeu, minderung, minderungProzent, zNeu, dosierungZ, wVornass, wzRef, wzNeu, gueltig: true, hinweise };
+  return nurGueltig({ co2Brutto, co2Speicher, ePK, nettoPK, eZement, gwpRef, gwpNeu, minderung, minderungProzent, zNeu, dosierungZ, wVornass, wzRef, wzNeu, gueltig: true, hinweise });
 }
 
 /** CO₂ je kg Pflanzenkohle aus Kohlenstoffgehalt (M.-%) und Permanenzfaktor */

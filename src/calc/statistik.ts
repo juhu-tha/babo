@@ -13,7 +13,7 @@
  *  - t-Test (Z24, unten): t-Verteilung numerisch, Ein- und Zweistichproben-t-Test (Student, Welch), p-Wert, t_krit, Konfidenzintervall
  * Einheiten: wie die Messwerte (z. B. N/mm²); V in %. Reiner Rechenkern – geprüft in tests/statistik.test.ts.
  */
-import { type Hinweis, hatFehler, istEndlich, muss } from './plausibilitaet';
+import { type Hinweis, hatFehler, istEndlich, muss, nurGueltig } from './plausibilitaet';
 import { formatDeZahl } from '../utils/numberFormat';
 import { GAMMA_C } from '../data/kennwerte';
 import { EC2_NA_DE } from '../data/normParams';
@@ -87,6 +87,7 @@ export const GRUBBS_TAB_1: readonly (readonly [number, number])[] = [[3, 1.155],
 
 /** G_krit für n Werte und α = 5 % (Standard) oder 1 %; n < 3 → Wert für 3, n > 50 → Wert für 50, dazwischen linear in n. */
 export function grubbsKritisch(n: number, alpha: 0.05 | 0.01 = 0.05): number {
+  if (Number.isNaN(n)) return NaN; // Grenzfallprüfung 02.11.2026: NaN vorher als Tabellenendwert
   const tab = alpha === 0.01 ? GRUBBS_TAB_1 : GRUBBS_TAB;
   let gCrit = tab[tab.length - 1][1];
   if (n <= tab[0][0]) gCrit = tab[0][1];
@@ -210,7 +211,7 @@ export function statistikAuswertung(e: StatistikEingabe): StatistikErgebnis {
   if (e.ausreisserPruefen && e.methode === 'grubbs' && ausreisser.length > 0) hinweise.push({ stufe: 'warnung', feld: 'werte', text: 'Werte jenseits der 1-%-Grenze sind statistische Ausreißer und hier entfernt; streichen nur nach technischer Prüfung (z. B. Prüffehler) und im Bericht dokumentieren.' });
   if (e.ausreisserPruefen && ausreisser.length > 0 && ausreisser.length >= e.werte.length / 2) hinweise.push({ stufe: 'warnung', feld: 'werte', text: 'Mindestens die Hälfte der Werte gilt als Ausreißer – Stichprobe prüfen.' });
 
-  return { roh, untereGrenze, obereGrenze, gKrit, gKrit5, untereGrenze5, obereGrenze5, bereinigt, ausreisser, auffaellig, sauber, kn, xk, xd, gammaM, gueltig: !hatFehler(hinweise), hinweise };
+  return nurGueltig({ roh, untereGrenze, obereGrenze, gKrit, gKrit5, untereGrenze5, obereGrenze5, bereinigt, ausreisser, auffaellig, sauber, kn, xk, xd, gammaM, gueltig: !hatFehler(hinweise), hinweise });
 }
 
 /* ────────────────────────────────────────────────────────────────────────────────────────────────
@@ -329,7 +330,7 @@ export interface TTestErgebnis {
   hinweise: Hinweis[];
 }
 
-const leerT = (hinweise: Hinweis[]): TTestErgebnis => ({ t: NaN, nu: NaN, p: NaN, tKrit: NaN, differenz: NaN, standardfehler: NaN, kiUnten: NaN, kiOben: NaN, verworfen: false, gueltig: false, hinweise });
+const leerT = (hinweise: Hinweis[]): TTestErgebnis => nurGueltig(({ t: NaN, nu: NaN, p: NaN, tKrit: NaN, differenz: NaN, standardfehler: NaN, kiUnten: NaN, kiOben: NaN, verworfen: false, gueltig: false, hinweise }));
 
 function pruefeAlpha(hinweise: Hinweis[], alpha: number) {
   muss(hinweise, Number.isFinite(alpha) && alpha > 0 && alpha < 0.5, 'alpha', 'Das Signifikanzniveau α muss zwischen 0 und 0,5 liegen.');
@@ -368,7 +369,7 @@ export function einstichprobenTTestKennwerte(k: TKennwerte, mu0: number, alpha: 
   const t = differenz / se;
   const a = auswerten(t, nu, alpha, alt);
   if (k.n < 5) hinweise.push({ stufe: 'warnung', feld: 'werte', text: 'Weniger als 5 Werte: Die Normalverteilungsannahme lässt sich kaum prüfen, der Test hat geringe Trennschärfe.' });
-  return { t, nu, ...a, differenz, standardfehler: se, ...intervall(k.mittelwert, se, a.tKrit, alt), gueltig: true, hinweise };
+  return nurGueltig({ t, nu, ...a, differenz, standardfehler: se, ...intervall(k.mittelwert, se, a.tKrit, alt), gueltig: true, hinweise });
 }
 
 /** Zweistichproben-t-Test aus Kennwerten: H₀ μ₁ = μ₂ (z. B. Vergleich zweier Betonserien) */
@@ -398,7 +399,7 @@ export function zweistichprobenTTestKennwerte(k1: TKennwerte, k2: TKennwerte, al
   if (variante === 'student' && vq > 4) hinweise.push({ stufe: 'warnung', feld: 'variante', text: `Die Varianzen unterscheiden sich um mehr als den Faktor 4 (${Number.isFinite(vq) ? formatDeZahl(vq, 1) : '∞'}): Der Student-Test setzt gleiche Varianzen voraus – Welch-Test verwenden.` });
   else if (variante === 'student' && vq > 2 && k1.n !== k2.n) hinweise.push({ stufe: 'warnung', feld: 'variante', text: 'Ungleiche Stichprobenumfänge und deutlich verschiedene Varianzen: Der Welch-Test ist robuster.' });
   if (k1.n < 5 || k2.n < 5) hinweise.push({ stufe: 'warnung', feld: 'werte', text: 'Eine Serie hat weniger als 5 Werte: geringe Trennschärfe, Normalverteilungsannahme kaum prüfbar.' });
-  return { t, nu, ...a, differenz, standardfehler: se, ...intervall(differenz, se, a.tKrit, alt), varianzVerhaeltnis, gueltig: true, hinweise };
+  return nurGueltig({ t, nu, ...a, differenz, standardfehler: se, ...intervall(differenz, se, a.tKrit, alt), varianzVerhaeltnis, gueltig: true, hinweise });
 }
 
 /** Kennwerte aus Rohwerten (Fehlerhinweis bei nicht endlichen Werten) */
@@ -412,8 +413,8 @@ function kennwerteAus(werte: readonly number[], hinweise: Hinweis[], feld: strin
 export function einstichprobenTTest(werte: readonly number[], mu0: number, alpha: number, alt: TTestAlternative = 'zweiseitig'): TTestErgebnis & { kennwerte: TKennwerte } {
   const vorab: Hinweis[] = [];
   const kennwerte = kennwerteAus(werte, vorab, 'werte', 'Stichprobe');
-  if (hatFehler(vorab)) return { ...leerT(vorab), kennwerte };
-  return { ...einstichprobenTTestKennwerte(kennwerte, mu0, alpha, alt), kennwerte };
+  if (hatFehler(vorab)) return nurGueltig({ ...leerT(vorab), kennwerte }); // Grenzfallprüfung 02.11.2026: Kennwerte ohne Zahl
+  return nurGueltig({ ...einstichprobenTTestKennwerte(kennwerte, mu0, alpha, alt), kennwerte }); // Grenzfallprüfung 02.11.2026: ungültiger Test ohne Kennwerte
 }
 
 /** Zweistichproben-t-Test aus Messwerten */
@@ -421,6 +422,6 @@ export function zweistichprobenTTest(serie1: readonly number[], serie2: readonly
   const vorab: Hinweis[] = [];
   const kennwerte1 = kennwerteAus(serie1, vorab, 'serie1', 'Serie 1');
   const kennwerte2 = kennwerteAus(serie2, vorab, 'serie2', 'Serie 2');
-  if (hatFehler(vorab)) return { ...leerT(vorab), kennwerte1, kennwerte2 };
-  return { ...zweistichprobenTTestKennwerte(kennwerte1, kennwerte2, alpha, variante, alt), kennwerte1, kennwerte2 };
+  if (hatFehler(vorab)) return nurGueltig({ ...leerT(vorab), kennwerte1, kennwerte2 });
+  return nurGueltig({ ...zweistichprobenTTestKennwerte(kennwerte1, kennwerte2, alpha, variante, alt), kennwerte1, kennwerte2 }); // Grenzfallprüfung 02.11.2026: ungültiger Test ohne Kennwerte
 }

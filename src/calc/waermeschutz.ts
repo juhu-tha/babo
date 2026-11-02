@@ -3,7 +3,7 @@
  * Reiner Rechenkern – geprüft in tests/waermeschutz.test.ts. Das Glaser-Verfahren liegt in src/calc/glaser.ts
  * (AP 4.9, einzige Implementierung der Plattform) und nutzt psat() von hier.
  */
-import { type Hinweis, istEndlich } from './plausibilitaet';
+import { type Hinweis, istEndlich, nurGueltig } from './plausibilitaet';
 
 export interface Schicht { name?: string; d: number; lambda: number; mu?: number }
 export type Bauteil = 'wall' | 'pitched_roof' | 'flat_roof' | 'basement';
@@ -42,9 +42,11 @@ export function pruefeSchichten(schichten: readonly Schicht[]): Hinweis[] {
 
 export function uWert(schichten: readonly Schicht[], Rsi: number, Rse: number) {
   const hinweise = pruefeSchichten(schichten);
-  if (hinweise.some(x => x.stufe === 'fehler')) return { R_T: NaN, U: NaN, gueltig: false, hinweise };
+  // Grenzfallprüfung 02.11.2026: Wärmeübergangswiderstände prüfen (vorher NaN bzw. U = ∞ ohne Hinweis)
+  if (!istEndlich(Rsi, Rse) || Rsi < 0 || Rse < 0) hinweise.push({ stufe: 'fehler', feld: 'R', text: 'Die Wärmeübergangswiderstände R_si und R_se müssen Zahlen ≥ 0 sein.' });
+  if (hinweise.some(x => x.stufe === 'fehler')) return nurGueltig({ R_T: NaN, U: NaN, gueltig: false, hinweise });
   const R_T = Rsi + Rse + schichten.reduce((a, s) => a + s.d / s.lambda, 0);
-  return { R_T, U: 1 / R_T, gueltig: true, hinweise };
+  return nurGueltig({ R_T, U: 1 / R_T, gueltig: true, hinweise });
 }
 
 /** Temperaturen an Oberflächen und Schichtgrenzen (innen → außen) */
@@ -101,11 +103,11 @@ export function thermischeKennwerte(lambda: number, rho: number, c: number, thet
   const hinweise: Hinweis[] = [];
   if (!istEndlich(lambda, rho, c, thetaStoff)) hinweise.push({ stufe: 'fehler', feld: 'eingabe', text: 'λ, ρ und c müssen Zahlen sein.' });
   else if (!(lambda > 0 && rho > 0 && c > 0)) hinweise.push({ stufe: 'fehler', feld: 'lambda', text: 'λ, ρ und c müssen größer als 0 sein.' });
-  if (hinweise.length) return { C: 0, C_MJ: 0, a: 0, a_mm2s: 0, b: 0, thetaKontakt: 0, hinweise };
+  if (hinweise.length) return nurGueltig({ C: 0, C_MJ: 0, a: 0, a_mm2s: 0, b: 0, thetaKontakt: 0, hinweise });
   const C = waermespeicherVolumen(rho, c);
   const a = temperaturleitfaehigkeit(lambda, rho, c);
   const b = waermeeindringkoeffizient(lambda, rho, c);
-  return { C, C_MJ: C / 1e6, a, a_mm2s: a * 1e6, b, thetaKontakt: kontakttemperatur(HAUT.b, HAUT.theta, b, thetaStoff), hinweise };
+  return nurGueltig({ C, C_MJ: C / 1e6, a, a_mm2s: a * 1e6, b, thetaKontakt: kontakttemperatur(HAUT.b, HAUT.theta, b, thetaStoff), hinweise });
 }
 
 /**
@@ -121,11 +123,11 @@ export function erforderlicheDaemmdicke(uZiel: number, dBestandM: number, lambda
     if (!(dBestandM >= 0 && lambdaBestand > 0)) hinweise.push({ stufe: 'fehler', feld: 'lambdaBestand', text: 'Dicke ≥ 0 und λ > 0 der Bestandswand erforderlich.' });
     if (lambdaDaemm.some(l => !(l > 0))) hinweise.push({ stufe: 'fehler', feld: 'lambdaDaemm', text: 'Die Wärmeleitfähigkeit der Dämmstoffe muss größer als 0 sein.' });
   }
-  if (hinweise.length) return { RsiRse: Rsi + Rse, rBestand: 0, rGesamtErf: 0, rDaemmErf: 0, erreicht: false, dickenCm: lambdaDaemm.map(() => 0), hinweise };
+  if (hinweise.length) return nurGueltig({ RsiRse: Rsi + Rse, rBestand: 0, rGesamtErf: 0, rDaemmErf: 0, erreicht: false, dickenCm: lambdaDaemm.map(() => 0), hinweise });
   const rBestand = dBestandM / lambdaBestand;
   const rGesamtErf = 1 / uZiel;
   const rDaemmErf = rGesamtErf - (Rsi + Rse) - rBestand;
   const erreicht = rDaemmErf <= 0;
-  return { RsiRse: Rsi + Rse, rBestand, rGesamtErf, rDaemmErf, erreicht, dickenCm: lambdaDaemm.map(l => (erreicht ? 0 : rDaemmErf * l * 100)), hinweise };
+  return nurGueltig({ RsiRse: Rsi + Rse, rBestand, rGesamtErf, rDaemmErf, erreicht, dickenCm: lambdaDaemm.map(l => (erreicht ? 0 : rDaemmErf * l * 100)), hinweise });
 }
 

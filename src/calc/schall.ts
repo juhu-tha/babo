@@ -4,7 +4,7 @@
  * Trittschall nach DIN 4109-2 (Z24) siehe unten.
  * Reiner Rechenkern – geprüft in tests/schall.test.ts.
  */
-import { type Hinweis, istEndlich, muss, bereich, hatFehler } from './plausibilitaet';
+import { type Hinweis, istEndlich, muss, bereich, hatFehler, nurGueltig } from './plausibilitaet';
 import { formatDeZahl } from '../utils/numberFormat';
 
 export interface MasseSchicht { name?: string; d: number; density: number } // d [m], ρ [kg/m³]
@@ -18,13 +18,13 @@ export function schalldaemmung(schichten: readonly MasseSchicht[]) {
     const n = s.name ?? `Schicht ${i + 1}`;
     if (!istEndlich(s.d, s.density) || s.d <= 0 || s.density <= 0) hinweise.push({ stufe: 'fehler', feld: `schicht${i}`, text: `${n}: Dicke und Rohdichte müssen größer als 0 sein.` });
   });
-  if (hinweise.some(x => x.stufe === 'fehler')) return { mStrich: NaN, Rw: NaN, gueltig: false, hinweise };
+  if (hinweise.some(x => x.stufe === 'fehler')) return nurGueltig({ mStrich: NaN, Rw: NaN, gueltig: false, hinweise });
   const mStrich = schichten.reduce((a, s) => a + s.d * s.density, 0);
   const Rw = rwMassiv(mStrich);
   if (mStrich < 65 || mStrich > 720) hinweise.push({ stufe: 'warnung', feld: 'm', text: `m' = ${Math.round(mStrich)} kg/m² liegt außerhalb des Gültigkeitsbereichs 65–720 kg/m² der Gleichung (DIN 4109-32).` });
   const weich = schichten.filter(s => s.density < 300 && s.d >= 0.02);
   if (weich.length) hinweise.push({ stufe: 'warnung', feld: 'aufbau', text: 'Der Aufbau enthält leichte Dämm- oder Holzschichten: Die Massekurve gilt nur für einschalige, biegesteife Bauteile. Vorsatzschalen, WDVS und Holzbau verändern R_w (Resonanz, Korrekturwerte ΔR_w nach DIN 4109-34) – Ergebnis nur als Orientierung.' });
-  return { mStrich, Rw, gueltig: true, hinweise };
+  return nurGueltig({ mStrich, Rw, gueltig: true, hinweise });
 }
 
 /** Gültigkeitsbereich der Massekurve nach DIN 4109-32 in kg/m² */
@@ -56,12 +56,12 @@ export function wandSchalldaemmung(e: WandSchallEingabe) {
     muss(hinweise, e.dicke > 0 && e.rohdichte > 0, 'dicke', 'Wanddicke und Rohdichte müssen größer als 0 sein.');
     muss(hinweise, e.putzMasse >= 0 && e.kF >= 0, 'kF', 'Putzmasse und Flankenabzug dürfen nicht negativ sein.');
   }
-  if (hatFehler(hinweise)) return { m0: NaN, mStrich: NaN, Rw: NaN, RwStrich: NaN, gueltig: false, hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ m0: NaN, mStrich: NaN, Rw: NaN, RwStrich: NaN, gueltig: false, hinweise });
   const m0 = e.dicke * e.rohdichte;
   const mStrich = m0 + e.putzMasse;
   const Rw = rwMassiv(mStrich);
   bereich(hinweise, 'm', mStrich, RW_MASSIV_BEREICH.min, RW_MASSIV_BEREICH.max, `m′ = ${formatDeZahl(mStrich, 0)} kg/m² liegt außerhalb des Gültigkeitsbereichs 65–720 kg/m² der Massekurve (DIN 4109-32); das Ergebnis ist nur eine Orientierung.`);
-  return { m0, mStrich, Rw, RwStrich: Rw - e.kF, gueltig: true, hinweise };
+  return nurGueltig({ m0, mStrich, Rw, RwStrich: Rw - e.kF, gueltig: true, hinweise });
 }
 
 /* ────────────────────────────────────────────────────────────────────────────────────────────────
@@ -157,7 +157,7 @@ export function trittschall(e: TrittschallEingabe): TrittschallErgebnis {
     muss(hinweise, e.mFlanke > 0, 'mFlanke', 'Die flächenbezogene Masse der flankierenden Bauteile muss größer als 0 sein.');
     muss(hinweise, e.zulLnw > 0, 'zulLnw', 'Die Anforderung zul. L\'_n,w muss größer als 0 sein.');
   }
-  if (hatFehler(hinweise)) return leer;
+  if (hatFehler(hinweise)) return nurGueltig(leer);
 
   const mDecke = e.dDecke * e.rhoDecke + e.mZusatz;
   const mEstrich = e.dEstrich * e.rhoEstrich;
@@ -179,5 +179,5 @@ export function trittschall(e: TrittschallEingabe): TrittschallErgebnis {
   if (f0 > 100) hinweise.push({ stufe: 'warnung', feld: 'f0', text: `f₀ = ${formatDeZahl(f0, 0)} Hz: Eine hohe Resonanzfrequenz verringert die Trittschallminderung im bauakustisch wichtigen tiefen Frequenzbereich – weichere Dämmschicht oder schwereren Estrich wählen.` });
   if (deltaLw <= 0) hinweise.push({ stufe: 'warnung', feld: 'deltaLw', text: 'Die Näherung liefert keine Trittschallminderung – Eingaben prüfen.' });
 
-  return { mDecke, lnEq0w: ln0, mEstrich, f0, deltaLw, k, lnwStrich, uProg: U_PROG_TRITTSCHALL, nachweis, erfuellt: reserve >= 0, reserve, gueltig: true, hinweise };
+  return nurGueltig({ mDecke, lnEq0w: ln0, mEstrich, f0, deltaLw, k, lnwStrich, uProg: U_PROG_TRITTSCHALL, nachweis, erfuellt: reserve >= 0, reserve, gueltig: true, hinweise });
 }

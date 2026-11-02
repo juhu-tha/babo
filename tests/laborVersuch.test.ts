@@ -26,7 +26,7 @@ pruefe(hoechstwert([{ x: 0, y: -3 }, { x: 1, y: -1 }]).y === -1, 'nur negative W
 const F = spaltkraft(3.22, 150, 300);
 pruefe(nahe(F, 227.6084, 1e-3), `Spaltkraft ${F}`);
 pruefe(nahe(spaltzugfestigkeit(F, 150, 300), 3.22, 1e-12), 'Rückrechnung f_ct,sp');
-pruefe(spaltzugfestigkeit(100, 0, 300) === 0 && spaltzugfestigkeit(NaN, 150, 300) === 0, 'ungültige Geometrie → 0');
+pruefe(spaltzugfestigkeit(100, 0, 300) === 0 && Number.isNaN(spaltzugfestigkeit(NaN, 150, 300)), 'ungültige Geometrie → 0, NaN-Eingabe → NaN (Grenzfallprüfung 02.11.2026)');
 
 // 3. Glatte Achsen: krumme Höchstwerte aus dem Ist-Stand (56,3 / 4,02 / 3000,4 / 0,37 / 0,21 / 39,4)
 const faelle: [number, number, number][] = [

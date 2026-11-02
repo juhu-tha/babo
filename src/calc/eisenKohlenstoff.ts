@@ -16,7 +16,7 @@
  * Kohlenstoffäquivalent CEV = C + Mn/6 + (Cr + Mo + V)/5 + (Ni + Cu)/15 (IIW; Grenzwerte nach DIN EN 10025-2).
  * Reiner Rechenkern – geprüft in tests/eisenKohlenstoff.test.ts.
  */
-import { type Hinweis, istEndlich, muss, hatFehler } from './plausibilitaet';
+import { type Hinweis, istEndlich, muss, hatFehler, nurGueltig } from './plausibilitaet';
 
 export interface FeCPunkt { c: number; t: number }
 
@@ -66,6 +66,7 @@ export function liquidus(c: number): number {
 
 /** Solidustemperatur [°C] zum C-Gehalt (AHIECF) */
 export function solidus(c: number): number {
+  if (Number.isNaN(c)) return NaN; // Grenzfallprüfung 02.11.2026: NaN-Eingabe nicht als Zahl ausgeben
   if (c <= P.H.c) return tBei(P.A, P.H, c);
   if (c <= P.I.c) return P.H.t;
   if (c <= P.E.c) return tBei(P.I, P.E, c);
@@ -113,8 +114,8 @@ export function feCZustand(c: number, t: number): FeCZustand {
     muss(hinweise, t >= 0 && t <= 1700, 't', 'Die Temperatur muss zwischen 0 und 1700 °C liegen.');
   }
   const werkstoff: FeCZustand['werkstoff'] = c <= P.E.c ? 'Stahl' : 'Gusseisen';
-  if (hatFehler(hinweise)) return { phasen: [], feld: '–', gefuege: '–', werkstoff, hinweise };
-  const z = (phasen: Phase[], feld: string, gefuege: string, k?: FeCZustand['konode']): FeCZustand => ({ phasen, feld, gefuege, konode: k, werkstoff, hinweise });
+  if (hatFehler(hinweise)) return nurGueltig({ phasen: [], feld: '–', gefuege: '–', werkstoff, hinweise });
+  const z = (phasen: Phase[], feld: string, gefuege: string, k?: FeCZustand['konode']): FeCZustand => nurGueltig(({ phasen, feld, gefuege, konode: k, werkstoff, hinweise }));
 
   const tL = liquidus(c);
   if (t >= tL) return z(['Schmelze'], 'S', 'Schmelze');
@@ -243,9 +244,9 @@ export function cevBewertung(l: Legierung): CevErgebnis {
   const werte = [l.C, l.Mn, l.Cr ?? 0, l.Mo ?? 0, l.V ?? 0, l.Ni ?? 0, l.Cu ?? 0];
   muss(hinweise, istEndlich(...werte), 'eingabe', 'Alle Gehalte müssen Zahlen sein.');
   if (!hatFehler(hinweise)) muss(hinweise, werte.every(w => w >= 0), 'eingabe', 'Gehalte können nicht negativ sein.');
-  if (hatFehler(hinweise)) return { cev: NaN, stufe: 'schlecht', vorwaermen: '–', hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ cev: NaN, stufe: 'schlecht', vorwaermen: '–', hinweise });
   const w = cev(l);
   if (l.C > 0.25) hinweise.push({ stufe: 'warnung', feld: 'C', text: 'Über 0,25 % C liegt der Gehalt oberhalb der Höchstwerte unlegierter Baustähle nach DIN EN 10025-2 (0,17–0,24 %).' });
   if (l.Mn > 1.7) hinweise.push({ stufe: 'warnung', feld: 'Mn', text: 'Mangan über 1,7 % ist für unlegierte Baustähle unüblich – Eingabe prüfen.' });
-  return { cev: w, ...schweisseignung(w), hinweise };
+  return nurGueltig({ cev: w, ...schweisseignung(w), hinweise });
 }

@@ -9,7 +9,7 @@
  * wasserhemmend 0,5 < w ≤ 2,0, darüber „wassersaugend“ (kein Normbegriff).
  * Das Röhrchen liefert nur einen Schätzwert (Vor-Ort-Verfahren, kein Normprüfverfahren). Reiner Rechenkern – geprüft in tests/karsten.test.ts.
  */
-import { type Hinweis, istEndlich, muss } from './plausibilitaet';
+import { type Hinweis, istEndlich, muss, nurGueltig } from './plausibilitaet';
 
 /** Prüffläche des Karsten-Röhrchens [cm²] (Lehrwert, geräteabhängig) */
 export const KARSTEN_FLAECHE_CM2 = 5.73;
@@ -32,9 +32,9 @@ export function saugKlasse(w: number): SaugKlasse {
 export function karstenAuswertung(wasserMl: number, zeitMin: number, flaecheCm2: number = KARSTEN_FLAECHE_CM2) {
   const hinweise: Hinweis[] = [];
   muss(hinweise, istEndlich(wasserMl, zeitMin, flaecheCm2) && zeitMin > 0 && wasserMl >= 0 && flaecheCm2 > 0, 'karsten', 'Prüfzeit > 0, Prüffläche > 0 und Wassermenge ≥ 0 erforderlich.');
-  if (hinweise.length) return { w: 0, tHours: 0, klasse: 'wasserabweisend' as SaugKlasse, hinweise };
+  if (hinweise.length) return nurGueltig({ w: 0, tHours: 0, klasse: 'wasserabweisend' as SaugKlasse, hinweise });
   const tHours = zeitMin / 60;
   const w = wWertAusKarsten(wasserMl, tHours, flaecheCm2);
   hinweise.push({ stufe: 'warnung', feld: 'w', text: 'Das Karsten-Röhrchen liefert nur einen Schätzwert (Prüffläche geräteabhängig); der w-Wert nach DIN 4108-3 wird nach DIN EN ISO 15148 bestimmt.' });
-  return { w, tHours, klasse: saugKlasse(w), hinweise };
+  return nurGueltig({ w, tHours, klasse: saugKlasse(w), hinweise });
 }
