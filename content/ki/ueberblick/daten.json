@@ -82,8 +82,8 @@
             "Topologieoptimierte Querschnittssynthese führt zu signifikanten Masseneinsparungen bei voller Normkonformität.",
             "Ingenieur agiert als evaluierende Instanz und fokussiert auf komplexe bautechnische Detaillösungen."
           ],
-          "aiAdvantage": "Faktor 20 gesteigerte Prüfgeschwindigkeit, 100 % Prüfdichte, nachweisbare Werkstoff- und CO2-Einsparung.",
-          "roiSummary": "70–80 % Zeitersparnis bei der Modellvalidierung und Bauantragsvorbereitung."
+          "aiAdvantage": "Schnellere Prüfung, vollständige Prüfdichte im Modell, Hinweise auf Werkstoff- und CO₂-Einsparpotenziale.",
+          "roiSummary": "Erwartung: weniger Zeitaufwand bei Modellvalidierung und Bauantragsvorbereitung"
         },
         "math": {
           "formula": "\\mathcal{A}^* = \\arg\\max_{a \\in \\mathcal{A}} \\mathbb{E}\\left[\\sum_{t=0}^T \\gamma^t R(s_t, a_t)\\right]",
@@ -201,7 +201,7 @@
             "Gezielte Klinkersubstitution ermöglicht CO2-reduzierte Betone bei nachgewiesener Festigkeitskonformität."
           ],
           "aiAdvantage": "Verlässliche Frühfestigkeits-Inferenz, beschleunigte Taktzyklen, planbare Bindemitteloptimierung.",
-          "roiSummary": "15 % Klinkereinsparung und 2–3 Tage Bauzeitverkürzung pro Geschosstakt."
+          "roiSummary": "Erwartung: geringerer Klinkereinsatz und kürzere Taktzeiten"
         },
         "math": {
           "formula": "y = f(\\mathbf{x}) + \\varepsilon \\quad \\text{mit} \\quad \\min_{\\mathbf{w}} \\frac{1}{N}\\sum_{i=1}^N \\left(y_i - \\mathbf{w}^T \\phi(\\mathbf{x}_i)\\right)^2 + \\lambda \\|\\mathbf{w}\\|_2^2",
@@ -318,8 +318,8 @@
             "Neuronale Netze vermessen zehntausende Risse pixelgenau und klassifizieren Schadensursachen.",
             "Automatischer digitaler Schadenskataster-Export direkt in Bauwerksdatenbanken (z. B. SIB-Bauwerke)."
           ],
-          "aiAdvantage": "Vollständig reproduzierbar, 100 % Prüfdichte, null Verkehrsbeeinträchtigung.",
-          "roiSummary": "70 % Kosteneinsparung bei Bauwerkshauptprüfungen nach DIN 1076."
+          "aiAdvantage": "Reproduzierbare Befundung, flächige Erfassung, weniger Verkehrsbeeinträchtigung.",
+          "roiSummary": "Erwartung: geringerer Aufwand bei Bauwerksprüfungen nach DIN 1076"
         },
         "math": {
           "formula": "\\mathbf{a}^{(l)} = \\sigma\\left(\\mathbf{W}^{(l)} \\mathbf{a}^{(l-1)} + \\mathbf{b}^{(l)}\\right) \\quad \\text{mit} \\quad \\mathcal{L}_{BCE} = -\\frac{1}{N}\\sum_{i=1}^N \\left[y_i \\ln(\\hat{y}_i) + (1-y_i)\\ln(1-\\hat{y}_i)\\right]",
@@ -436,8 +436,8 @@
             "Semantische Prüfung von Leistungsbeschreibungen und Bauverträgen auf Vollständigkeit und Normkonformität.",
             "Der Ingenieur agiert als qualitätssichernde Prüf- und Freigabeinstanz."
           ],
-          "aiAdvantage": "Faktor 10 gesteigerte Effizienz bei technischen Berichten, Ausschreibungstexten und Skripten.",
-          "roiSummary": "80 % Zeitersparnis bei der Erstellung von Standardberichten und Leistungsverzeichnissen."
+          "aiAdvantage": "Höhere Effizienz bei technischen Berichten, Ausschreibungstexten und Skripten.",
+          "roiSummary": "Erwartung: weniger Zeitaufwand für Standardberichte und Leistungsverzeichnisse"
         },
         "math": {
           "formula": "\\text{Attention}(Q, K, V) = \\text{softmax}\\left(\\frac{QK^T}{\\sqrt{d_k}}\\right)V \\quad \\text{mit} \\quad P(w_t \\mid w_1, \\dots, w_{t-1})",
@@ -555,7 +555,7 @@
             "Unternehmenseigenes Wissensmanagement wird zu einer strukturierten, abfragbaren Wissensbasis."
           ],
           "aiAdvantage": "Weniger Halluzinationen durch Quellenbindung, verifizierbare Zitate, nachvollziehbare Belege (Prüfung durch den Ingenieur bleibt erforderlich).",
-          "roiSummary": "90 % Zeitersparnis bei Normen- und Aktenrecherchen im Büro."
+          "roiSummary": "Erwartung: schnellere Normen- und Aktenrecherche im Büro"
         },
         "math": {
           "formula": "\\text{sim}(\\mathbf{q}, \\mathbf{d}) = \\cos(\\theta) = \\frac{\\mathbf{q} \\cdot \\mathbf{d}}{\\|\\mathbf{q}\\| \\|\\mathbf{d}\\|} = \\frac{\\sum_{i=1}^n q_i d_i}{\\sqrt{\\sum_{i=1}^n q_i^2} \\sqrt{\\sum_{i=1}^n d_i^2}}",
@@ -667,8 +667,8 @@
             "Computer-Vision-Pipelines verknüpfen jeden Pixel mit dem digitalen 4D-BIM-Bauwerksmodell.",
             "Objektive, automatisierte Toleranzprüfungen und Massenermittlungen auf Knopfdruck."
           ],
-          "aiAdvantage": "Vollständige Transparenz, objektive Beweissicherung, 0 unbemerkte Ausführungsfehler.",
-          "roiSummary": "4 Stunden Bauleiterzeit pro Woche eingespart, 90 % weniger Abnahmestreitigkeiten."
+          "aiAdvantage": "Mehr Transparenz, lückenlosere Beweissicherung, frühere Erkennung von Ausführungsfehlern.",
+          "roiSummary": "Erwartung: weniger Dokumentationsaufwand und weniger Abnahmestreitigkeiten"
         },
         "math": {
           "formula": "\\text{IoU} = \\frac{\\text{Area}(B_p \\cap B_{gt})}{\\text{Area}(B_p \\cup B_{gt})} \\quad \\text{und} \\quad \\text{mAP} = \\frac{1}{|C|} \\sum_{c \\in C} \\int_0^1 p_c(r) \\, dr",
@@ -785,8 +785,8 @@
             "Vollständige Automation iterativer Optimierungsschleifen bis zur Konvergenz der Grenzzustände.",
             "Der Bauingenieur fungiert als leitender Systemarchitekt, definiert Randbedingungen und verifiziert Endresultate."
           ],
-          "aiAdvantage": "Vollständige Automation repetitiver Programmier- und Berechnungsroutinen.",
-          "roiSummary": "Faktor 10 schnellere Bemessungs- und Nachweiszyklen."
+          "aiAdvantage": "Automatisierung wiederkehrender Programmier- und Berechnungsroutinen.",
+          "roiSummary": "Erwartung: schnellere Bemessungs- und Nachweiszyklen"
         },
         "math": {
           "formula": "\\tau = (o_0, a_0, r_0, o_1, a_1, r_1, \\dots) \\quad \\text{mit} \\quad a_t = \\arg\\max_a P(a \\mid h_t, \\text{Tool-Feedback})",

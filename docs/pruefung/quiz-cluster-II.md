@@ -20,7 +20,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 110 korrigiert, 0 fraglich, 
 
 - **Frage:** Welche Wasserbeanspruchungsklasse gilt für drückendes Wasser mit einer Eintauchtiefe von 2,5 m?
 - **Richtige Antwort:** W2.1-E
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Begriff an DIN 18533-1:2026-06 angepasst („Wasserbeanspruchungsklasse“, DIN Media). Grundstruktur W1-E bis W4-E bestätigt (Bauprofessor 16.09.2026); Unterklassen W2.1-E/W2.2-E mit 3-m-Grenze nur durch Herstellerbeitrag bestätigt (MC-Bauchemie, Stand 05.08.2026) – Abgleich am Normtext offen. · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Begriff an DIN 18533-1:2026-06 angepasst („Wasserbeanspruchungsklasse“, DIN Media). Grundstruktur W1-E bis W4-E bestätigt (Bauprofessor 16.09.2026); Unterklassen W2.1-E/W2.2-E mit 3-m-Grenze nur durch Herstellerbeitrag bestätigt (MC-Bauchemie, Stand 05.08.2026) – Abgleich am Normtext offen. Begriff angeglichen 02.11. · bereits freigegeben (verified)
 - [x] ok
 - [ ] ändern: …
 
@@ -500,7 +500,7 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 110 korrigiert, 0 fraglich, 
 
 - **Frage:** Ein Keller steht in wenig durchlässigem Lehmboden; eine funktionsfähige Dränung nach DIN 4095 ist vorhanden. Welche Wasserbeanspruchungsklasse ergibt der Berater?
 - **Richtige Antwort:** W1-E: Bodenfeuchte, die Dränung verhindert den Aufstau
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Begriff an DIN 18533-1:2026-06 angepasst („Wasserbeanspruchungsklasse“, DIN Media); Grundstruktur W1-E bis W4-E bestätigt (Bauprofessor 16.09.2026). Unterklasse W1.2-E (mit Dränung) nur durch Herstellerbeitrag bestätigt (MC-Bauchemie, 08/2026). · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Begriff an DIN 18533-1:2026-06 angepasst („Wasserbeanspruchungsklasse“, DIN Media); Grundstruktur W1-E bis W4-E bestätigt (Bauprofessor 16.09.2026). Unterklasse W1.2-E (mit Dränung) nur durch Herstellerbeitrag bestätigt (MC-Bauchemie, 08/2026). Begriff angeglichen 02.11. · bereits freigegeben (verified)
 - [x] ok
 - [ ] ändern: …
 

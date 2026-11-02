@@ -775,6 +775,11 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://baustoffboard.de/modul/nachhaltigkeit_checklisten</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
   <!-- Bauen im Bestand -->
   <url>
@@ -1453,11 +1458,6 @@
   </url>
   <url>
     <loc>https://baustoffboard.de/modul/kriechen</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://baustoffboard.de/modul/nachhaltigkeit_checklisten</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>

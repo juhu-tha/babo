@@ -716,7 +716,7 @@ export const MODULE_HISTORY_DATA: Record<string, GroupHistory> = {
         keyReference: 'Untersuchungsausschuss Kongresshalle Berlin'
       },
       {
-        era: '1976',
+        era: '1970er Jahre',
         title: 'Gründung der WTA (Wissenschaftlich-Technische Arbeitsgemeinschaft)',
         category: 'Normung',
         description: 'Gründung der WTA e.V. zur interdisziplinären Erforschung und Schließung von Regelungslücken in Bauwerkserhaltung, Denkmalpflege und Sanierungspraxis.',
