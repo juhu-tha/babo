@@ -2,9 +2,9 @@
 
 Stand: 02.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster III umfasst 194 Fragen aus 33 Modulen. Aufgeführt sind 48 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster III umfasst 194 Fragen aus 33 Modulen. Aufgeführt sind 49 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 46 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 2 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 47 korrigiert, 0 fraglich, 0 mit offenem Prüfhinweis, 2 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -31,6 +31,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 46 korrigiert, 0 fraglich, 0
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 27.10.: richtige Option und Erklärung an q_hee_2 und das Modul Herstellung & Einbau angeglichen (Fließmittel nur unter Verantwortung des Herstellers, Vermerk auf dem Lieferschein, DIN 1045-2, 7.5) korrigiert. · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: an q_hee_2 angeglichen – Fließmittel nur unter Herstellerverantwortung mit Lieferscheinvermerk (DIN 1045-2, 7.5), korrigiert
+
+### q_bpx_5 · Betonpraxis
+
+- **Frage:** w = 175 kg/m³, Mehlkorn MK = 380 kg/m³. Wie groß ist K = (w − 70)/MK?
+- **Richtige Antwort:** 0,28
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Umsetzung 02.11.: Einordnung von K = 0,276 nach der Einteilung des Moduls („normales Zusammenhaltevermögen“ statt „geringes Bluten“), Antwort unverändert (NS4-BP-2) – korrigiert
+- [ ] ok
+- [ ] ändern: …
 
 ### q_cbm_2 · Carbonbeton
 

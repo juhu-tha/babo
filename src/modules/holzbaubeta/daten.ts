@@ -99,7 +99,7 @@ export const dataholzConstructions: DataholzConstruction[] = [
     name: inhalt.werte.steildachMitZwischenUnd,
     type: 'Dach',
     structure: inhalt.werte.ziegeldeckUnterdachbahnSparren200,
-    uValue: 0.14,
+    uValue: 0.16, // Lehrbeispiel, nicht klassifiziert; nachgerechnet nach DIN EN ISO 6946 mit Sparrenanteil 80/750 = 10,7 % (λ: KVH 0,13, flexible Holzfaser 0,038, Unterdeckplatte 0,045, Hanf 0,040, GKF 0,25; R_si = R_se = 0,10; R_T = (R′ + R″)/2 → U = 0,156), vorher 0,14 ohne Sparrenanteil – Umsetzung 02.11.2026 (NS4-HW-1)
     fireClass: 'REI 30',
     soundRating: 46,
     components: [
