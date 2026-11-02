@@ -45,17 +45,20 @@ pruefe(index.includes(KOPF_ANKER) && !/<link[^>]*stylesheet|<style/.test(index.s
 // 4. Boot-Skript: Schale nur auf der Startseite mit Standardeinstellungen
 const boot = fs.readFileSync('scripts/startschale-boot.js', 'utf8');
 // pfad/seite: Adresse und Inhalt der Datei (<meta name="bb-vorgerendert">, Modulseiten aus scripts/vorrendern.ts, Z52)
-function laufe(hash: string, search: string, speicher: Record<string, string> | null, pathname = '/', seite?: string, systemDunkel = false, nurHell = false): 'behalten' | 'entfernt' {
+function laufe(hash: string, search: string, speicher: Record<string, string> | null, pathname = '/', seite?: string, systemDunkel = false, nurHell = false, nurBreit = false): 'behalten' | 'entfernt' {
   const klassen = new Set<string>();
   // speicher null: Zugriff auf localStorage wirft (gesperrter Speicher)
   const ls = { getItem: (k: string) => { if (speicher === null) throw new Error('gesperrt'); return k in speicher ? speicher[k] : null; } };
-  const meta = seite === undefined ? null : { getAttribute: (n: string) => (n === 'content' ? seite : null), hasAttribute: (n: string) => n === 'data-nur-hell' && nurHell };
+  const meta = seite === undefined ? null : { getAttribute: (n: string) => (n === 'content' ? seite : null), hasAttribute: (n: string) => (n === 'data-nur-hell' && nurHell) || (n === 'data-nur-breit' && nurBreit) };
   const document = { documentElement: { classList: { add: (k: string) => klassen.add(k) } }, querySelector: (q: string) => (q === 'meta[name="bb-vorgerendert"]' ? meta : null) };
   vm.runInNewContext(boot, { document, location: { hash, search, pathname }, window: { localStorage: ls, matchMedia: (q: string) => ({ matches: systemDunkel && q.includes('dark') }) }, decodeURIComponent });
   letzteDunkel = klassen.has('dark');
+  letzteBreite = [...klassen].filter(k => k.startsWith('bb-breite-'));
   return klassen.has('bb-schale') ? 'behalten' : 'entfernt';
 }
 let letzteDunkel = false;
+let letzteBreite: string[] = [];
+const breiteIst = (b: string) => letzteBreite.length === 1 && letzteBreite[0] === `bb-breite-${b}`;
 pruefe(laufe('', '', {}) === 'behalten', 'Startseite ohne Hash: Schale fehlt');
 pruefe(laufe('#start', '', { baustoffboard_screen_width: 'wide' }) === 'behalten', '#start: Schale fehlt');
 pruefe(laufe('#glas', '', {}) === 'entfernt', '#glas: Schale bleibt');
@@ -67,8 +70,18 @@ pruefe(laufe('', '', { theme: 'dark' }) === 'behalten' && letzteDunkel, 'Dunkelm
 pruefe(laufe('', '', {}, '/', undefined, true) === 'behalten' && letzteDunkel, 'System dunkel: Schale fehlt oder kein dark');
 pruefe(laufe('', '', { theme: 'light' }, '/', undefined, true) === 'behalten' && !letzteDunkel, 'System dunkel, Wahl hell: Schale fehlt oder dark gesetzt');
 pruefe(laufe('', '', {}, '/', undefined, false) === 'behalten' && !letzteDunkel, 'System hell: dark gesetzt');
-pruefe(laufe('', '', { baustoffboard_screen_width: 'full' }) === 'entfernt', 'Vollbreite: Schale bleibt');
-pruefe(laufe('', '', { baustoffboard_fluid_width: 'false' }) === 'entfernt', 'alte Breiten-Einstellung: Schale bleibt');
+// Seitenbreite (02.11.2026): Klasse an <html> vor dem ersten Bild, Schale in jeder Breite (Markup gleich)
+pruefe(laufe('', '', {}) === 'behalten' && breiteIst('wide'), 'Voreinstellung: Schale fehlt oder nicht bb-breite-wide');
+pruefe(laufe('', '', { baustoffboard_screen_width: 'full' }) === 'behalten' && breiteIst('full'), 'Vollbreite: Schale fehlt oder Klasse falsch');
+pruefe(laufe('', '', { baustoffboard_screen_width: 'standard' }) === 'behalten' && breiteIst('standard'), 'Standardbreite: Schale fehlt oder Klasse falsch');
+pruefe(laufe('', '', { baustoffboard_fluid_width: 'false' }) === 'behalten' && breiteIst('standard'), 'alte Breiten-Einstellung (false): Standard erwartet');
+pruefe(laufe('', '', { baustoffboard_fluid_width: 'true' }) === 'behalten' && breiteIst('full'), 'alte Breiten-Einstellung (true): Vollbreite erwartet');
+pruefe(laufe('', '', { baustoffboard_screen_width: 'xyz' }) === 'behalten' && breiteIst('wide'), 'ungültige Breite: Breit erwartet');
+pruefe(laufe('', '', { baustoffboard_screen_width: 'full', theme: 'dark' }, '/modul/glas', 'glas') === 'behalten' && letzteDunkel && breiteIst('full'), 'Modulseite dunkel + Vollbreite: Schale fehlt');
+// Modulseite, deren Markup in anderer Breite abweicht (data-nur-breit): nur in Breit
+pruefe(laufe('', '', { baustoffboard_screen_width: 'standard' }, '/modul/glas', 'glas', false, false, true) === 'entfernt', 'data-nur-breit in Standardbreite: Schale bleibt');
+pruefe(laufe('', '', { baustoffboard_screen_width: 'full' }, '/modul/glas', 'glas', false, false, true) === 'entfernt', 'data-nur-breit in Vollbreite: Schale bleibt');
+pruefe(laufe('', '', {}, '/modul/glas', 'glas', false, false, true) === 'behalten', 'data-nur-breit in Breit: Schale fehlt');
 // Modulseiten (Z52): nur die zur Adresse passende vorgerenderte Datei zeigen
 pruefe(laufe('', '', {}, '/modul/glas', 'glas') === 'behalten', '/modul/glas: vorgerenderte Seite fehlt');
 pruefe(laufe('', '', {}, '/modul/Glas/', 'glas') === 'behalten', '/modul/Glas/: Groß-/Kleinschreibung, Schrägstrich');
@@ -82,7 +95,7 @@ pruefe(laufe('', '', { theme: 'dark' }, '/modul/glas', 'glas', false, true) === 
 pruefe(laufe('', '', {}, '/modul/glas', 'glas', true, true) === 'entfernt', 'data-nur-hell, System dunkel: Schale bleibt');
 pruefe(laufe('', '', {}, '/modul/glas', 'glas', false, true) === 'behalten', 'data-nur-hell im Hellmodus: Schale fehlt');
 // gesperrter Speicher: ohne Schale, aber Systemeinstellung dunkel greift trotzdem vor dem ersten Bild
-pruefe(laufe('', '', null, '/', undefined, true) === 'entfernt' && letzteDunkel, 'Speicher gesperrt: Schale bleibt oder kein dark');
+pruefe(laufe('', '', null, '/', undefined, true) === 'entfernt' && letzteDunkel && breiteIst('wide'), 'Speicher gesperrt: Schale bleibt, kein dark oder keine Breitenklasse');
 pruefe(laufe('', '?poll=x', {}, '/modul/glas', 'glas') === 'entfernt', 'Modulseite mit Umfrage: Schale bleibt');
 
 if (fehler.length) {
