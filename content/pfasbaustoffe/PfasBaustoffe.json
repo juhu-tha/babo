@@ -10,7 +10,7 @@
     "polymereFluorpolymereMitFluorierter": "**Polymere:** Fluorpolymere mit fluorierter Hauptkette (PTFE, PVDF, ETFE, FEP) und Polymere mit fluorierten Seitenketten (z. B. Fluoracrylate in Imprägnierungen).",
     "warumEwigkeitschemikalien": "Warum „Ewigkeitschemikalien“?",
     "cFBindungDie": "**C–F-Bindung:** Die Kohlenstoff-Fluor-Bindung gehört zu den stärksten Einfachbindungen der organischen Chemie. PFAA werden in der Umwelt praktisch nicht abgebaut.",
-    "mobilitätKurzkettigePfasC4": "**Mobilität:** Kurzkettige PFAS (C4–C7) sind gut wasserlöslich und gelangen schnell ins Grundwasser; langkettige reichern sich stärker in Organismen an.",
+    "mobilitätKurzkettigePfasC4": "**Mobilität:** Kurzkettige PFAS (Carbonsäuren C4–C7, Sulfonsäuren C4–C5) sind gut wasserlöslich und gelangen schnell ins Grundwasser; langkettige reichern sich stärker in Organismen an.",
     "gesundheitDieEuropäischeBehörde": "**Gesundheit:** Die Europäische Behörde für Lebensmittelsicherheit (EFSA) hat 2020 für die Summe aus PFOA, PFNA, PFHxS und PFOS eine tolerierbare wöchentliche Aufnahme von 4,4 ng je kg Körpergewicht abgeleitet. Daraus leitet sich die Summe „PFAS-4“ ab.",
     "woPfasImBauwesen": "Wo PFAS im Bauwesen vorkommen",
     "übersichtNachAnwendungenOb": "Übersicht nach Anwendungen; ob ein konkretes Produkt PFAS enthält, zeigen nur Sicherheitsdatenblatt, Herstellerangabe oder Analyse.",
@@ -82,7 +82,7 @@
     "messwerteInNgL": "Messwerte in ng/l",
     "beispielLaden": "Beispiel laden",
     "leeresFeldOderBg": "Leeres Feld oder „< BG“ = unter der Bestimmungsgrenze. Fett: Stoffe der Summe PFAS-4. Beispiel: fiktive Grundwasserprobe.",
-    "anteilKurzkettigerPfasC4": "Anteil kurzkettiger PFAS (C4–C7) an PFAS-20: ",
+    "anteilKurzkettigerPfasC4": "Anteil kurzkettiger PFAS (Carbonsäuren C4–C7, Sulfonsäuren C4–C5) an PFAS-20: ",
     "stoffeBg": " · Stoffe < BG: ",
     "keineBerechnungMöglich": "Keine Berechnung möglich."
   },
