@@ -2,9 +2,9 @@
 
 Stand: 02.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster IV umfasst 314 Fragen aus 50 Modulen. Aufgeführt sind 105 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster IV umfasst 332 Fragen aus 50 Modulen. Aufgeführt sind 123 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 86 korrigiert, 0 fraglich, 11 mit offenem Prüfhinweis, 12 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 86 korrigiert, 0 fraglich, 11 mit offenem Prüfhinweis, 30 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -326,6 +326,150 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 86 korrigiert, 0 fraglich, 1
 - **Richtige Antwort:** Zusätzlich müssen die besonderen QNG-Anforderungen erfüllt und zertifiziert sein
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
 - [x] ok
+- [ ] ändern: …
+
+### qlz_abfaelle_1 · Abfälle & Altlasten
+
+- **Frage:** Ein homogenes Haufwerk Betonbruch umfasst 250 m³, das Größtkorn beträgt 63 mm. Welchen Beprobungsumfang ergibt der Planer des Moduls nach LAGA PN 98?
+- **Richtige Antwort:** 28 Einzel-, 7 Misch-, 7 Laborproben; Einzelprobe mindestens 5 l
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bauwerksunters_monitoring_1 · Tragwerksmonitoring (SHM)
+
+- **Frage:** Ein Riss in einer Stützwand soll über ein Jahr daraufhin überwacht werden, ob er sich bewegt. Welche Verfahrenswahl ist nach dem Modul am besten begründet?
+- **Richtige Antwort:** LVDT-Rissmonitoring mit Datenlogger, Temperatur mitmessen und saisonal deuten
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bestand_1 · Altbauatlas
+
+- **Frage:** Eine Außenwand (A = 100 m², F_x = 1,0) wird gedämmt, ΔU = 1,16 W/(m²K). Welche jährliche Einsparung (G_t20/15 = 3500 Kd/a) und welche CO₂-Minderung bei Erdgas (0,24 kg/kWh) ergibt der Rechner?
+- **Richtige Antwort:** rund 9744 kWh/a und rund 2,3 t CO₂/a
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_bestand_2 · Altbauatlas
+
+- **Frage:** Für eine ungedämmte Altbau-Außenwand (U = 1,40 W/(m²K)) werden verglichen: (A) 12 cm WDVS außen, U_neu ≈ 0,24 W/(m²K); (B) 4 cm Innendämmung ohne Feuchtenachweis, U_neu ≈ 0,55 W/(m²K). Wie ist das zu beurteilen?
+- **Richtige Antwort:** Nur A ist konform; B verfehlt 0,24 W/(m²K) und erhöht das Tauwasserrisiko innen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_boden_materialaufbereitung_1 · Boden- & Materialaufbereitung
+
+- **Frage:** Ein Recyclingwerk möchte auf die Fremdüberwachung verzichten, weil seine tägliche werkseigene Kontrolle bereits Sieblinie und Eluat-Schnelltests umfasst. Wie ist das nach dem Modul zu bewerten?
+- **Richtige Antwort:** Nicht zulässig: erst unabhängige, unangekündigte Prüfungen belegen die Güte
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_dauerhaftigkeit_1 · Dauerhaftigkeit & Korrosionsschutz
+
+- **Frage:** Welche Zuordnung von Maßnahme und Schutzprinzip entspricht dem Modul?
+- **Richtige Antwort:** Opferanode als aktiver Schutz, Feuerverzinkung als passive Barriere
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_historische_bauweisen_1 · Hist. Bauweisen
+
+- **Frage:** Ein Deckenbalken 14/20 cm liegt im Abstand 0,90 m, Spannweite 4,00 m, Eigenlast 1,5 kN/m², Nutzlast 2,0 kN/m² (charakteristisch). Welche Biegespannung σ_m = M/W ergibt sich als Einfeldträger?
+- **Richtige Antwort:** σ_m ≈ 6,75 N/mm²
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_holzkorrosion_1 · Holzkorrosion
+
+- **Frage:** In einem Dachstuhl wird aktiver Befall durch Echten Hausschwamm festgestellt; das Myzel ist bereits ins Mauerwerk gewachsen. Welches Vorgehen begründet das Modul nach DIN 68800-4?
+- **Richtige Antwort:** Holz 1,00 m über den Befallsrand absägen, Mauerwerk mit „M“-Mittel sperren, Holz als A IV entsorgen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_korrosion_1 · Bewehrungskorrosion
+
+- **Frage:** Wie verläuft nach dem Modul die Schädigung durch Bewehrungskorrosion, und welche Besonderheit gilt beim chloridinduzierten Lochfraß?
+- **Richtige Antwort:** Depassivierung, Rost mit 2- bis 6-fachem Volumen, Risse, Abplatzung; Lochfraß oft ohne Vorwarnung
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_korrosionsschutz_beschichtungen_1 · Korrosionsschutz durch Beschichtungen
+
+- **Frage:** Ein Stahlträger in Kategorie C4 soll mindestens 40 Jahre geschützt sein. Die Feuerverzinkung hat 85 µm, der Zinkabtrag beträgt 2,1 bis 4,2 µm/a. Genügt die Verzinkung allein?
+- **Richtige Antwort:** Nein: Ungünstig nur rund 20 Jahre; ein Duplex-System mit Beschichtung wählen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_lebenszyklus_kosten_1 · Lebenszyklus & Kosten
+
+- **Frage:** Ein Fensterflügel wird planmäßig nach 30 Jahren ausgetauscht. In welche Kostengruppe der Nutzungskosten nach DIN 18960 gehört dieser Austausch nach dem Modul?
+- **Richtige Antwort:** KG 400 Instandsetzungskosten (Soll-Zustand herstellen)
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_material_schaeden_gross_1 · Große Materialschäden & Einstürze
+
+- **Frage:** Eine Halle aus den 1970er-Jahren hat Brettschichtholzbinder mit UF-Klebstoff; das Hallenklima ist feucht (Nutzungsklasse 2). Welche Folgerung aus dem Fall Bad Reichenhall ist nach dem Modul am besten begründet?
+- **Richtige Antwort:** UF eignet sich nur für NKL 1; Binder untersuchen und regelmäßig nach VDI 6200 prüfen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_metallkorrosion_1 · Metallkorrosion
+
+- **Frage:** In der Korrosionssimulation des Moduls wird die Umgebung von „Trocken“ über „Feucht“ bis „Salzwasser“ umgestellt. Welche Deutung von Rostbildung und Anodenabtrag passt zum Modul?
+- **Richtige Antwort:** Trocken kein Abtrag; mit Elektrolyt beginnt er, Chloride steigern die Leitfähigkeit
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_modernisierung_1 · Modernisierung & GModG
+
+- **Frage:** Eine Wand mit U = 1,40 W/(m²K) soll U ≤ 0,24 W/(m²K) erreichen. Wie verhalten sich die erforderlichen Dicken von PUR (λ = 0,024 W/(mK)) und Holzfaser (λ = 0,045 W/(mK))?
+- **Richtige Antwort:** PUR rund 8,3 cm, Holzfaser rund 15,5 cm: Die Dicke wächst proportional mit λ
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_pruefverfahren_katalog_1 · Bauwerksdiagnose & ZfP
+
+- **Frage:** Für eine Umnutzung soll die Betondruckfestigkeit einer Decke belastbar bestimmt werden; Kernbohrungen sind nur an wenigen Stellen möglich. Welches Vorgehen ist nach dem Katalog am besten begründet?
+- **Richtige Antwort:** Rückprall im Raster zur Bereichsbildung, Festigkeit an Bohrkernen kalibrieren
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_schadstoffe_1 · Schadstoffe & Sanierung (TRGS 519)
+
+- **Frage:** Vor dem Umbau eines Bürogebäudes (Baujahr 1975) sollen Putze und Fliesenkleber auf Asbest geprüft und später der Bauschutt im Haufwerk für die Entsorgung beprobt werden. Welches Vorgehen ist nach dem Modul sachgerecht?
+- **Richtige Antwort:** PSF-Mischproben nach VDI 6202 Blatt 3 in der Planung, Haufwerk nach LAGA PN 98
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_schutz_grundlagen_1 · Schutz- & Instands.-Grundlagen
+
+- **Frage:** Eine Parkhausstütze ist bis in Bewehrungstiefe chloridbelastet; ein großflächiger Betonabtrag würde aufwendige Abstützungen erfordern. Welches Instandsetzungsprinzip ist nach dem Modul am besten begründet?
+- **Richtige Antwort:** Prinzip 10 (CP): KKS, der chloridhaltige Beton darf im Bauteil verbleiben
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_zfp_1 · Zerstörungsfreie Prüfung (ZfP)
+
+- **Frage:** An einer Tiefgaragendecke soll vor der Instandsetzungsplanung flächig festgestellt werden, wo die Bewehrung bereits aktiv korrodiert. Welche Verfahrenswahl ist nach dem Modul am besten begründet?
+- **Richtige Antwort:** Potentialfeldmessung als Farbkarte, Kontakt an freigelegter Bewehrung, Befunde öffnen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
 - [ ] ändern: …
 
 ### qn_altholz_urban_mining_1 · Altholz-NIR-Sortierung und Urban Mining

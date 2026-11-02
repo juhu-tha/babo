@@ -28,6 +28,12 @@ import { abtragsrateFaraday, querschnittsverlust, chloridGehalt, karbonatisierun
 import { wurzelZeitRegression } from '../src/calc/schnellkarbonatisierung';
 import { rentenbarwertfaktor } from '../src/calc/lcc';
 import { zwangSpannung } from '../src/calc/zwang';
+// Lernziel-Abdeckung 03.11.2026 (docs/pruefung/lernziel-abdeckung-2026-11-03.md): neue Rechenfragen qlz_*
+import { bemesseBiegung } from '../src/calc/biegung';
+import { mauermoertelNormalfuge, TROCKENMOERTEL_KG_JE_L } from '../src/calc/moertelbedarf';
+import { pn98Probenzahl } from '../src/calc/probenahme';
+import { huellwerte } from '../src/calc/expositionsklassen';
+import { NORMATIVE_EXPOSURE_CLASSES } from '../src/modules/expositionsklassen/daten';
 import { hauptspannungen, vonMises } from '../src/calc/spannungszustand';
 import { gefuegeAnteile, cev } from '../src/calc/eisenKohlenstoff';
 import { bilinearVerfestigung, binghamScherrate, maxwellSpannung, abminderungStahlBrand } from '../src/calc/werkstoffmodelle';
@@ -479,6 +485,21 @@ const zm = (x: number, n: number) => (x < 0 ? `−${z(-x, n)}` : z(x, n)); // Mi
   PRUEFUNGEN.push({ id: 'qn_formaenderungen_bl_1', richtig: `w ≈ ${z(einfeldQ(2, 4, 10, 10000).w * 1000, 2)} mm` });
   const kr = kragF(2, 12, 2, 4000);
   PRUEFUNGEN.push({ id: 'qn_formaenderungen_bl_2', richtig: `w = ${z(kr.w * 1000, 1)} mm; φ = ${z(kr.phi * 1000, 1)} mrad` });
+}
+
+// ------------------------------------------------------------------------------------------------
+// Lernziel-Abdeckung 03.11.2026: neue Rechenfragen (qlz_*) gegen die Kerne
+// ------------------------------------------------------------------------------------------------
+{
+  const b = bemesseBiegung({ b: 25, h: 60, d1: 5, d2: 5, med: 180, fck: 25, bewehrung: 'Stahl', fyk: 500, ftk: 0, gammaFRP: 1.3 });
+  pruefe(nahe(b.mu_Ed, 0.168, 0.005) && nahe(b.omega, 0.185, 0.005), `qlz_stahlbeton_1: μ = ${b.mu_Ed}, ω = ${b.omega}`);
+  PRUEFUNGEN.push({ id: 'qlz_stahlbeton_1', richtig: `A_s1 ≈ ${z(b.as1_req, 1)} cm²`, erklaerung: [z(b.mu_Ed, 3), z(b.omega, 3)] });
+  const m = mauermoertelNormalfuge({ flaeche: 20, wanddicke: '24.0', format: 'nf' });
+  PRUEFUNGEN.push({ id: 'qlz_putzemoertel_1', richtig: `${z(m.liter!, 0)} l → ${z(m.masse, 0)} kg → ${m.saecke} Säcke`, frage: [z(TROCKENMOERTEL_KG_JE_L, 2)] });
+  const p = pn98Probenzahl(250);
+  PRUEFUNGEN.push({ id: 'qlz_abfaelle_1', richtig: `${p.einzelproben} Einzel-, ${p.mischproben} Misch-, ${p.laborproben} Laborproben; Einzelprobe mindestens 5 l` });
+  const h = huellwerte(NORMATIVE_EXPOSURE_CLASSES, ['XC4', 'XD1', 'XF1'], 32, 15)!;
+  PRUEFUNGEN.push({ id: 'qlz_expositionsklassen_1', richtig: `(w/z)_eq ≤ ${z(h.minWzEq!, 2)}, z ≥ ${h.maxCement} kg/m³, mindestens ${h.highestClass}` });
 }
 
 // ------------------------------------------------------------------------------------------------

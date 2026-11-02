@@ -168,10 +168,10 @@ export function prueflistenKopf(text: string): QuizClusterZaehlung['liste'] {
 /**
  * Fragen, die seit den Prüflisten vom 26./27.10.2026 (#186) neu hinzugekommen sind: Z24-Themen aus #190
  * (qz24_*: t-Test, Trittschall, Atterberg) und #191 (Mohr-Coulomb, Bruchlinien, Eisen-Kohlenstoff); qt_*: Aufstockung der
- * Teilmodule auf je 6 Fragen (QZ-6, 29.10.2026).
+ * Teilmodule auf je 6 Fragen (QZ-6, 29.10.2026); qlz_*: Lernziel-Abdeckung (03.11.2026, docs/pruefung/lernziel-abdeckung-2026-11-03.md).
  * Neue Fragen werden auffällig, solange sie nicht freigegeben sind (verified ≠ true). Weitere neue Fragenblöcke hier ergänzen.
  */
-export const NEU_SEIT_26_10 = /^(qz24_|qn_festigkeit_mohr_|qn_formaenderungen_bl_|qn_stahl_fec_|qt_)/;
+export const NEU_SEIT_26_10 = /^(qz24_|qn_festigkeit_mohr_|qn_formaenderungen_bl_|qn_stahl_fec_|qt_|qlz_)/;
 
 /** Auffällig = Vorprüfung „korrigiert“/„fraglich“, offener Prüfhinweis oder neu seit 26.10. und nicht freigegeben (gleiche Regel wie scripts/pruefliste.ts) */
 export function istAuffaellig(q: Frage, hinweise: ReadonlySet<string>): boolean {

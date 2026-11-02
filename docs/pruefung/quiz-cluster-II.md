@@ -2,9 +2,9 @@
 
 Stand: 02.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster II umfasst 344 Fragen aus 56 Modulen. Aufgeführt sind 115 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster II umfasst 350 Fragen aus 56 Modulen. Aufgeführt sind 121 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 110 korrigiert, 0 fraglich, 16 mit offenem Prüfhinweis, 0 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 110 korrigiert, 0 fraglich, 16 mit offenem Prüfhinweis, 6 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -477,6 +477,54 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 110 korrigiert, 0 fraglich, 
 - **Frage:** Asphaltfläche 1000 m² (Abflussbeiwert 0,9), Bemessungsregen 150 l/(s·ha). Wie groß ist der Zufluss zur Versickerungsanlage?
 - **Richtige Antwort:** 13,5 l/s
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Abgleich Runde 3): normRef DWA-A 138 (2005, zurückgezogen) → DWA-A 138-1:2024-10; Rechenweg der Frage unverändert – korrigiert
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_asphalt_1 · Asphalt & Bitumen
+
+- **Frage:** Asphalt verhält sich viskoelastisch. Welche Folge für das Verhalten im Straßenbau beschreibt das Modul?
+- **Richtige Antwort:** Hohe Temperatur, lange Last: viskos, Spurrinnen; Kälte, kurze Last: elastisch, Kälterisse
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_gesteine_1 · Gesteine
+
+- **Frage:** Warum ist ein hochporöser Sandstein nach dem Modul meist weniger frostbeständig als ein dichter Granit?
+- **Richtige Antwort:** Hohe offene Porosität bedeutet hohe Wasseraufnahme; gefrierendes Wasser sprengt das Gefüge
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_keramik_ziegel_1 · Keramik und Ziegel
+
+- **Frage:** Ein Ziegel soll im gebrannten Zustand 115 mm breit sein. Der Ton schwindet beim Trocknen um 5 % und beim Brand um 3 %. Welches Formmaß l₀ = l_Brand/((1 − s_T)(1 − s_B)) muss der Rohling haben?
+- **Richtige Antwort:** rund 124,8 mm
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_keramik_ziegel_2 · Keramik und Ziegel
+
+- **Frage:** Welche Zuordnung von Ziegelart, Eigenschaft und Einsatz entspricht der Tabelle im Modul?
+- **Richtige Antwort:** Klinker: bis zur Sinterung gebrannt, sehr geringe Wasseraufnahme, für Sockel und Pflaster
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_kunststoffe_1 · Kunststoffe
+
+- **Frage:** Welche Zuordnung von Baukunststoff und typischem Einsatzbereich trifft nach dem Modul zu?
+- **Richtige Antwort:** EPDM: Flachdachbahnen; PVC-U: Rohre; ETFE: Folienkissen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_putzemoertel_1 · Putze & Mörtel
+
+- **Frage:** Eine 24 cm dicke Wand aus NF-Steinen soll auf 20 m² gemauert werden. Der Rechner setzt 30 l/m² Grundbedarf (11,5 cm), den Wanddickenfaktor 2,1 und 1,55 kg Trockenmörtel je Liter an. Welches Ergebnis liefert er (25-kg-Säcke)?
+- **Richtige Antwort:** 1260 l → 1953 kg → 79 Säcke
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
 - [ ] ok
 - [ ] ändern: …
 

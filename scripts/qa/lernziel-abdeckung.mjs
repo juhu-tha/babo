@@ -100,6 +100,10 @@ export const ZUORDNUNG_MANUELL = {
   q_bst_6: ['bestand#1'],
   qn_labor_sicherheit_4: ['labor_sicherheit#1'],
   qn_ki_lokal_2: ['ki_lokal#5'], qn_ki_lokal_1: ['ki_lokal#5'],
+  // Neue Fragen (Lernziel-Abdeckung 03.11.2026), die der Stichwortabgleich einem Nachbarziel zuordnet
+  qlz_zfp_1: ['zfp#3'], qlz_pruefverfahren_katalog_1: ['pruefverfahren_katalog#3'], qlz_sonderbetone_1: ['sonderbetone#4'],
+  qlz_mechanische_kenngroessen_1: ['mechanische_kenngroessen#5'], qlz_material_schaeden_gross_1: ['material_schaeden_gross#5'],
+  qlz_stahlbeton_1: ['stahlbeton_bemessung#2'], qlz_bauwerksunters_monitoring_1: ['bauwerksunters_monitoring#5'],
 };
 
 /** Gesichtete Inhaltsfundstellen, wo der Stichwortabgleich unter 50 % bleibt (Ziel → Fundstelle) */
@@ -114,7 +118,7 @@ export const INHALT_GESICHTET = {
 export const ERKUNDUNG_BEZUG_GESICHTET = {
   'labor_moertelprismen#3': 4, 'stahlbeton_bemessung#1': 2, 'bauchemie#1': 2, 'bauchemie#2': 2, 'bauwerksdiagnose#1': 2,
   'zfp#2': 2, 'betonkennwerte#3': 4, 'dpp#2': 2, 'festigkeit#4': 5, 'holzbau_bauphysik#3': 3, 'hydratation_folgen#1': 5,
-  'mischungsberechnung#1': 3, 'rechnung_u_wert#2': 3, 'schallschutz#4': 5, 'stahl#6': 5,
+  'mischungsberechnung#1': 3, 'rechnung_u_wert#2': 3, 'schallschutz#4': 5, 'stahl#6': 5, 'baustoffkenngroessen#1': 3,
 };
 
 /** Bezeichner in „…“, die kein Bedienelement sind (Freitext-Eingaben u. Ä.) */

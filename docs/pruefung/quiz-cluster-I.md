@@ -2,9 +2,9 @@
 
 Stand: 02.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 80 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster I umfasst 267 Fragen aus 38 Modulen. Aufgeführt sind 87 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 75 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 1 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 75 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 8 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -237,6 +237,62 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 75 korrigiert, 0 fraglich, 8
 - **Frage:** Beton: λ = 2,0 W/(m·K), ρ = 2400 kg/m³, c = 1000 J/(kg·K). Wie groß ist die Temperaturleitfähigkeit a?
 - **Richtige Antwort:** 8,3 · 10⁻⁷ m²/s
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Zweitprüfung 28.10. (Runde 3): Distraktor „1,2 · 10⁻³ m²/s“ passte zu keinem Rechenweg; durch 8,3 · 10⁻⁴ m²/s (λ/ρ ohne c) ersetzt, Rückmeldung entsprechend präzisiert – korrigiert · Zweitprüfung 29.10.: Zahlformat: 2400 ohne Tausendertrennung (vierstellig) – korrigiert
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_brandschutz_1 · Brandschutz
+
+- **Frage:** Welche Brandraumtemperatur ergibt die Einheitstemperaturzeitkurve θ_g = 20 + 345 · lg(8t + 1) nach t = 120 Minuten?
+- **Richtige Antwort:** rund 1049 °C
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_labor_druckfestigkeit_1 · Handout Druckfestigkeit an Würfeln
+
+- **Frage:** Ein Würfel zeigt nach der Druckprüfung einen senkrechten Zugriss und Abplatzungen nur an einer Seitenfläche; die übrigen Seiten sind kaum beschädigt. Wie ist das nach dem Handout einzuordnen?
+- **Richtige Antwort:** Unregelmäßig: im Bericht vermerken; Maße oder Lasteinleitung prüfen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_labor_moertelprismen_1 · Handout Mörtelprismen (DIN EN 196-1)
+
+- **Frage:** Wie folgt R_f = 1,5 · F_f · l/b³ aus der Biegespannung des Prismas (Einzellast F_f in Feldmitte, Stützweite l, quadratischer Querschnitt b × b)?
+- **Richtige Antwort:** M = F_f·l/4 und W = b³/6, also σ = M/W = 6·F_f·l/(4·b³)
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_mechanische_kenngroessen_1 · Mechanische Kenngrößen
+
+- **Frage:** Ein Biegeträger soll bei möglichst geringem Eigengewicht möglichst steif sein (Kennzahl E/ρ). Welche Wahl stützt die Werkstoffmatrix des Moduls?
+- **Richtige Antwort:** CFK-Lamelle, da E/ρ rund 103 beträgt, etwa das Vierfache von Stahl und Holz
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_normen_ausblick_1 · Ausblick: neue Normengeneration (Beton und Eurocodes)
+
+- **Frage:** Ein Planungsbüro sammelt Aussagen zur Einführung der Eurocodes der 2. Generation. Welche Einordnung nach der Quelle entspricht dem Modul (Stand November 2026)?
+- **Richtige Antwort:** CEN-Zurückziehung bis 30.03.2028: festgelegt; Einführung 2027 laut RWTH: erwartet; MVV TB 2026/1: offen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_probenahme_1 · Probenahme & Erkundung
+
+- **Frage:** An einer Parkdeckstütze soll die Chloridbelastung bis in Bewehrungstiefe beurteilt werden. Welches Beprobungsvorgehen begründet das Modul?
+- **Richtige Antwort:** Bohrmehl in Tiefenstufen an mindestens 3, besser 5 Stellen je Stützenabschnitt entnehmen
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
+- [ ] ok
+- [ ] ändern: …
+
+### qlz_sicherheitskonzept_1 · Eurocode – Sicherheitskonzept
+
+- **Frage:** Im Lehrbeispiel des Moduls ergibt sich für eine Innenstütze 35 × 35 cm aus C30/37 der Ausnutzungsgrad η = N_Ed/N_Rd = 1530/2083 = 0,73. Wie ist dieses Ergebnis zu beurteilen?
+- **Richtige Antwort:** Nur als Größenordnung: Bewehrung, Mindestausmitte und Knicken fehlen noch
+- **Auffälligkeit:** neu seit 26.10.2026 (Z24), noch nicht freigegeben, ohne Vorprüfung
 - [ ] ok
 - [ ] ändern: …
 
