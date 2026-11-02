@@ -53,8 +53,8 @@ gilt(!/18 Monate nach dem delegierten/.test(lies('content/moduleinfo/daten.json'
 
 // B1 F_x: Steildach 1,0, oberste Geschossdecke 0,8; Höchstwert für beide 0,24
 gilt(FX.steildach === 1.0 && FX.oberste_geschossdecke === 0.8 && GMODG_ANLAGE7.steildach_oGD === 0.24, 'B1: F_x-Werte');
-let wirft = false; try { fxBauteilVon('steildach_oGD'); } catch { wirft = true; }
-gilt(wirft, 'B1: steildach_oGD ohne F_x-Bauteil muss abgelehnt werden');
+gilt(fxBauteilVon('steildach_oGD') === undefined && fxBauteilVon('aussenwand') === 'aussenwand', 'B1: steildach_oGD ohne F_x-Bauteil ohne Zuordnung');
+gilt(Number.isNaN(savings({ uOld: 1.2, uNew: 0.2, A: 100, bauteil: 'steildach_oGD', Gt: 3500, etaSys: 1, price: 0.1, co2: 0.2, invest: 0 }).qNutz), 'B1: ohne F_x-Bauteil kein stiller Rückfall');
 // Handwert: ΔU = 1,0 W/(m²K), A = 100 m², G_t = 3500 Kd/a, η = 1 → ΔQ = 1,0·100·F_x·3500·24/1000 = 8400·F_x kWh/a
 const sv = (fxBauteil: 'steildach' | 'oberste_geschossdecke') => savings({ uOld: 1.2, uNew: 0.2, A: 100, bauteil: 'steildach_oGD', fxBauteil, Gt: 3500, etaSys: 1, price: 0.1, co2: 0.2, invest: 0 });
 gilt(nahe(sv('steildach').qNutz, 8400, 1e-9) && nahe(sv('oberste_geschossdecke').qNutz, 6720, 1e-9), 'B1: Einsparung 8400 / 6720 kWh/a');
