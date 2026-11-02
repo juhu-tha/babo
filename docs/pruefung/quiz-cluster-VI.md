@@ -162,9 +162,9 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 25 korrigiert, 0 fraglich, 0
 
 ### qn_rechnung_stahlbeton_4 · Massivbau: Biegung
 
-- **Frage:** Ein Balken b/h = 25/45 cm (C25/30, d = 40,5 cm) soll M_Ed = 300 kNm aufnehmen. Das bezogene Moment beträgt μ_Ed = 0,516. Wie ist das Ergebnis mit μ_lim = 0,296 (ξ_lim = 0,45, NA DE) aus dem Modul zu bewerten?
+- **Frage:** Ein Balken b/h = 25/45 cm (C25/30, d = 40,5 cm) soll M_Ed = 300 kNm aufnehmen. Das bezogene Moment beträgt μ_Ed = 0,516. Wie ist das Ergebnis mit μ_lim = 0,295 (ξ_lim = 0,45, NA DE) aus dem Modul zu bewerten?
 - **Richtige Antwort:** Ohne Druckbewehrung unzulässig; Querschnitt vergrößern oder Druckbewehrung einlegen
-- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · bereits freigegeben (verified)
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Distraktoren angeglichen · Umsetzung 02.11.: μ_lim = 0,295 wie Modul und Kern (0,8 · 0,45 · (1 − 0,4 · 0,45) = 0,2952) statt 0,296, Ergebnis unverändert (NS4-RS-1) – korrigiert
 - [x] ok
 - [ ] ändern: …
 
