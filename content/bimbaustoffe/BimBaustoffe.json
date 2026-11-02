@@ -80,7 +80,7 @@
       {
         "id": "holz",
         "name": "Brettschichtholz (Fichte)",
-        "defaultDensity": 450,
+        "defaultDensity": 480,
         "defaultConductivity": 0.13,
         "defaultEModulus": 11000,
         "defaultGwp": -680,
