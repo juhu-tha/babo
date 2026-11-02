@@ -409,7 +409,7 @@
       {
         "formel": "\\Delta T_{\\text{Kern-Rand}} \\le 15 - 20\\,\\text{K}",
         "erklaerung": "Kritische Begrenzung der Temperaturdifferenz zwischen Bauteilkern und Oberfläche zur Vermeidung von Trennrissen durch Eigenspannungen.",
-        "quelle": "DAfStb Heft 555"
+        "quelle": "DAfStb-Richtlinie Massige Bauteile aus Beton (Ausgabe April 2010)"
       },
       {
         "formel": "\\Delta p = \\frac{2 \\cdot \\tau_0 \\cdot L}{R} + \\frac{8 \\cdot \\mu \\cdot Q \\cdot L}{\\pi \\cdot R^4}",
