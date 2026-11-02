@@ -3,6 +3,7 @@
 import {
   HAUT, erforderlicheDaemmdicke, kontakttemperatur, temperaturleitfaehigkeit, thermischeKennwerte, waermeeindringkoeffizient, waermespeicherVolumen,
 } from '../src/calc/waermeschutz';
+import { istUngueltig, keinErgebnis, zahlenPassen } from './hilfen/keinErgebnis';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -44,7 +45,7 @@ for (let i = 0; i < 1000; i++) {
   const k = thermischeKennwerte(z(-1, 60), z(-10, 8000), z(-100, 5000));
   const e = erforderlicheDaemmdicke(z(-0.1, 3), z(-0.1, 1), z(-0.1, 3), [z(-0.01, 0.1), z(0.01, 0.1)]);
   const werte = [k.C, k.a, k.b, k.thetaKontakt, e.rDaemmErf, ...e.dickenCm];
-  if (!werte.every(Number.isFinite)) { pruefe(false, `Fuzz ${i}: ${JSON.stringify(werte)}`); break; }
+  if (!(zahlenPassen(k, [k.C, k.a, k.b, k.thetaKontakt]) && zahlenPassen(e, [e.rDaemmErf, ...e.dickenCm]))) { pruefe(false, `Fuzz ${i}: ${JSON.stringify(werte)}`); break; }
 }
 
 if (fehler.length) { for (const x of fehler) console.error(`FAIL: ${x}`); process.exit(1); }

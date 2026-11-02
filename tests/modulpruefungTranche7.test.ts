@@ -22,7 +22,8 @@ pruefe('PR1 ρ_m', pr1.maxDichte, 2.45982); pruefe('PR1 V', pr1.hohlraum, 2.0254
 const pr2 = asphaltHohlraum({ gesteinAnteil: 95, bitumenAnteil: 5, rhoGestein: 2.70, rhoBitumen: 1.02, raumdichteMischung: 2.40 });
 pruefe('PR2 ρ_m', pr2.maxDichte, 2.49457); pruefe('PR2 V', pr2.hohlraum, 3.79085);
 const pr3 = asphaltHohlraum({ gesteinAnteil: 93, bitumenAnteil: 7, rhoGestein: 2.65, rhoBitumen: 1.03, raumdichteMischung: 2.39 });
-pruefe('PR3 ρ_m', pr3.maxDichte, 2.38718); gilt(!pr3.gueltig && pr3.hohlraum < 0, 'PR3 Raumdichte > Rohdichte → Fehler');
+// Grenzfallprüfung 02.11.2026: ungültig → kein Zahlenergebnis (vorher ρ_m = 2,38718 und V < 0 trotz Fehler)
+gilt(!pr3.gueltig && Number.isNaN(pr3.maxDichte) && Number.isNaN(pr3.hohlraum) && pr3.hinweise.some(h => h.stufe === 'fehler'), 'PR3 Raumdichte > Rohdichte → Fehler ohne Zahlenergebnis');
 
 // 2. Betondecken: Westergaard-Randspannung mit Ersatzradius b (ν = 0,15, E = 34 000 N/mm², p = 0,8 N/mm²)
 const wg1 = westergaardRand({ dickeCm: 26, achslastKn: 120, bettungMNm3: 80 });

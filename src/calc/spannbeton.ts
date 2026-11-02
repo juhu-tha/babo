@@ -5,7 +5,7 @@
  * Geprüft in tests/ec2Spannbeton.test.ts und tests/spannbeton.test.ts.
  */
 export * from '../utils/ec2Spannbeton';
-import { type Hinweis, istEndlich, muss, hatFehler } from './plausibilitaet';
+import { type Hinweis, istEndlich, muss, hatFehler, nurGueltig } from './plausibilitaet';
 import { CONCRETE, fctmFl } from '../utils/ec2Spannbeton';
 
 export interface SpannbetonEingabe {
@@ -242,7 +242,7 @@ export function dehnungsZustand(e: DehnungsEingabe): DehnungsErgebnis {
     hinweise.push({ stufe: 'warnung', feld: 'P', text: 'Randzugspannung über f_ctm,fl (DIN EN 1992-1-1, 3.1.8): Die Spannungen gelten für den ungerissenen Querschnitt (Zustand I) und sind nach der Rissbildung nur noch qualitativ.' });
   }
 
-  return {
+  return nurGueltig({
     effectiveEpMid, effectiveEpSup, activeEp, u_kN_m, w_u_m,
     Mq: activeMq, Mp: activeMp, Mnet: activeMnet, Mq_mid, Mp_mid, Mnet_mid,
     sigma_N, sigma_M_top, sigma_M_bot, sigma_top, sigma_bot, sigma_top_support, hasSupportHeadCracks,
@@ -250,7 +250,7 @@ export function dehnungsZustand(e: DehnungsEingabe): DehnungsErgebnis {
     sigma_Mp: (-activeMp * 1e6) / Wc, sigma_Mq: (activeMq * 1e6) / Wc,
     neutralAxisDepth, P_dek, P_cr, P_bal, w_net_mm, zustand,
     gueltig: !hatFehler(hinweise), hinweise,
-  };
+  });
 }
 
 // --- „Spannbeton von 0 bis 100“ ---------------------------------------------------------------------
@@ -285,7 +285,7 @@ export function stauchungsVerlust(stauchungPromille: number) {
   if (!hatFehler(hinweise) && b500.deltaSigma >= DILEMMA_STAHL.b500.sigma0) {
     hinweise.push({ stufe: 'warnung', feld: 'stauchung', text: 'Die Stauchung zehrt die Vordehnung des B500 vollständig auf – angezeigt sind 100 % Verlust.' });
   }
-  return { b500, y1860, gueltig: !hatFehler(hinweise), hinweise };
+  return nurGueltig({ b500, y1860, gueltig: !hatFehler(hinweise), hinweise });
 }
 
 /**
@@ -315,11 +315,11 @@ export function lastausgleich(L: number, g: number, f: number) {
     muss(hinweise, g >= 0, 'g', 'Die Last darf nicht negativ sein.');
     muss(hinweise, f > 0, 'f', 'Der Parabelstich muss größer als 0 sein.');
   }
-  if (hatFehler(hinweise)) return { P: NaN, u: NaN, mNetto: NaN, litzen: NaN, gueltig: false, hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ P: NaN, u: NaN, mNetto: NaN, litzen: NaN, gueltig: false, hinweise });
   const P = Math.round((g * Math.pow(L, 2)) / (8 * f));
   const u = Math.round(((8 * P * f) / Math.pow(L, 2)) * 10) / 10;
   const mNetto = Math.round(((g - u) * Math.pow(L, 2)) / 8);
-  return { P, u, mNetto, litzen: litzenAnzahl(P), gueltig: true, hinweise };
+  return nurGueltig({ P, u, mNetto, litzen: litzenAnzahl(P), gueltig: true, hinweise });
 }
 
 // --- Betondeckung von Spanngliedern (Reiter Dauerhaftigkeit; Durchsicht A 29.10.2026, DSA-SB-2) ---------------
@@ -359,7 +359,7 @@ export function spanngliedDeckung(e: SpanngliedDeckungEingabe) {
   muss(hinweise, istEndlich(e.huellrohrMm, e.litzeMm) && e.huellrohrMm > 0 && e.litzeMm > 0, 'durchmesser', 'Hüllrohr- und Litzendurchmesser müssen größer als 0 sein.');
   // Ungültige Eingabe: kein Ergebnis (vorher c_nom aus c_min,dur trotz gueltig = false; Gegenprüfung 30.10.2026)
   if (hatFehler(hinweise)) {
-    return { c_min_b: NaN, baseDur: NaN, delta_dur_gamma: NaN, delta_dur_100: NaN, delta_dur_fck: NaN, c_min_dur: NaN, c_min: NaN, delta_c_dev: NaN, c_nom: NaN, gueltig: false, hinweise };
+    return nurGueltig({ c_min_b: NaN, baseDur: NaN, delta_dur_gamma: NaN, delta_dur_100: NaN, delta_dur_fck: NaN, c_min_dur: NaN, c_min: NaN, delta_c_dev: NaN, c_nom: NaN, gueltig: false, hinweise });
   }
   let c_min_b: number;
   if (e.verfahren === 'post_tensioned') c_min_b = Math.min(80, e.huellrohrMm);
@@ -374,5 +374,5 @@ export function spanngliedDeckung(e: SpanngliedDeckungEingabe) {
   const c_min = Math.max(c_min_b, c_min_dur, 10);
   const delta_c_dev = e.bauwerk === 'bruecke' ? 15 : (e.xc === 'XC1' ? 10 : 15); // Δc_dev bei maßgebendem c_min,b: vorläufig, Normprüfung ausstehend (GC-SB-3)
   const c_nom = c_min + delta_c_dev;
-  return { c_min_b, baseDur, delta_dur_gamma, delta_dur_100, delta_dur_fck, c_min_dur, c_min, delta_c_dev, c_nom, gueltig: !hatFehler(hinweise), hinweise };
+  return nurGueltig({ c_min_b, baseDur, delta_dur_gamma, delta_dur_100, delta_dur_fck, c_min_dur, c_min, delta_c_dev, c_nom, gueltig: !hatFehler(hinweise), hinweise });
 }

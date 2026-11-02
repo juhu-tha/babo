@@ -17,7 +17,7 @@
  * 3. Thermische Zwängungsspannung bei voll behinderter Dehnung: σ_T ≈ E · α_T · ΔT.
  * Lehr- und Vorbemessungswerkzeug; ersetzt keinen Standsicherheitsnachweis nach DIN 18008.
  */
-import { type Hinweis, bereich, hatFehler, istEndlich, muss } from './plausibilitaet';
+import { type Hinweis, bereich, hatFehler, istEndlich, muss, nurGueltig } from './plausibilitaet';
 
 /** E-Modul Kalk-Natron-Silikatglas [MPa] */
 export const E_GLAS = 70000;
@@ -69,11 +69,11 @@ export function weibull(e: WeibullEingabe): WeibullErgebnis {
     muss(hinweise, e.m > 0, 'm', 'Der Weibull-Modul muss größer als 0 sein.');
     muss(hinweise, e.A > 0, 'A', 'Die Scheibenfläche muss größer als 0 sein.');
   }
-  if (hatFehler(hinweise)) return { pf: NaN, kurve: [], gueltig: false, hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ pf: NaN, kurve: [], gueltig: false, hinweise });
   bereich(hinweise, 'm', e.m, 3, 25, 'Weibull-Modul außerhalb 3 … 25 – für Floatglas werden meist Werte um 5 … 8 angegeben.');
   const kurve: { x: number; y: number }[] = [];
   for (let s = 0; s <= 120; s += 2) kurve.push({ x: s, y: bruchwahrscheinlichkeit(s, e.sigma0, e.m, e.A) * 100 });
-  return { pf: bruchwahrscheinlichkeit(e.sigma, e.sigma0, e.m, e.A), kurve, gueltig: true, hinweise };
+  return nurGueltig({ pf: bruchwahrscheinlichkeit(e.sigma, e.sigma0, e.m, e.A), kurve, gueltig: true, hinweise });
 }
 
 // ---------------------------------------------------------------------------------------------------
@@ -150,11 +150,11 @@ export function vsgEffektiveDicke(e: VsgEingabe): VsgErgebnis {
     muss(hinweise, e.hv > 0, 'hv', 'Die Foliendicke muss größer als 0 sein.');
     muss(hinweise, e.a > 0, 'a', 'Die Stützweite muss größer als 0 sein.');
   }
-  if (hatFehler(hinweise)) return { G: NaN, Gamma: NaN, hef_w: NaN, gueltig: false, hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ G: NaN, Gamma: NaN, hef_w: NaN, gueltig: false, hinweise });
   if (e.T < 0 || e.T > 60) hinweise.push({ stufe: 'warnung', feld: 'T', text: 'Temperatur außerhalb 0 … 60 °C: Der Schubmodul wird mit dem Randwert fortgesetzt.' });
   const G = schubmodulPvb(e.T, e.dauer);
   const Gamma = schubverbundGamma(e.h1, e.h2, e.hv, G, e.a);
-  return { G, Gamma, hef_w: effektiveDickeW(e.h1, e.h2, e.hv, Gamma), gueltig: true, hinweise };
+  return nurGueltig({ G, Gamma, hef_w: effektiveDickeW(e.h1, e.h2, e.hv, Gamma), gueltig: true, hinweise });
 }
 
 // ---------------------------------------------------------------------------------------------------

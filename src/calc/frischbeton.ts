@@ -13,7 +13,7 @@
  * „Mindestluftporengehalt unterschritten“ gemeldet.
  * Reiner Rechenkern – geprüft in tests/frischbeton.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, muss, nurGueltig } from './plausibilitaet';
 
 export type LpKlasse = 'XF2' | 'XF4' | 'X0_XF1_XF3';
 export type GroesstkornLp = 8 | 16 | 32 | 63;
@@ -77,7 +77,7 @@ export function bewerteLuftgehalt(e: LuftgehaltEingabe): LuftgehaltErgebnis {
   const obergrenze = ohne ? NaN : mindestwert + LP_SPANNE_OBERGRENZE;
   const einzelwertMax = ohne ? NaN : obergrenze + LP_UEBERSCHREITUNG_EINZELWERT;
   if (hatFehler(hinweise)) {
-    return { luftgehalt: NaN, mindestwert, einzelwertMin, obergrenze, einzelwertMax, bewertung: 'keineAnforderung', einzelwertKonform: false, gueltig: false, hinweise };
+    return nurGueltig({ luftgehalt: NaN, mindestwert, einzelwertMin, obergrenze, einzelwertMax, bewertung: 'keineAnforderung', einzelwertKonform: false, gueltig: false, hinweise });
   }
   const L = e.ablesung - e.gesteinskorrektur;
   const tol = 1e-9;
@@ -89,5 +89,5 @@ export function bewerteLuftgehalt(e: LuftgehaltEingabe): LuftgehaltErgebnis {
   else if (L <= einzelwertMax + tol) bewertung = 'ueberObergrenze';
   else bewertung = 'ueberschritten';
   const einzelwertKonform = bewertung !== 'unterschritten' && bewertung !== 'ueberschritten';
-  return { luftgehalt: L, mindestwert, einzelwertMin, obergrenze, einzelwertMax, bewertung, einzelwertKonform, gueltig: true, hinweise };
+  return nurGueltig({ luftgehalt: L, mindestwert, einzelwertMin, obergrenze, einzelwertMax, bewertung, einzelwertKonform, gueltig: true, hinweise });
 }

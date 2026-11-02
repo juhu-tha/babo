@@ -11,7 +11,7 @@
 import { formatDeZahl } from '../utils/numberFormat';
 import { EC2_NA_DE } from '../data/normParams';
 import { fctmVonFck, fcdBeton, fcdHochfestHinweis } from '../data/kennwerte';
-import { type Hinweis, bereich, hatFehler, istEndlich, muss } from './plausibilitaet';
+import { type Hinweis, bereich, hatFehler, istEndlich, muss, nurGueltig } from './plausibilitaet';
 import { type Bewehrung } from './biegung';
 
 export interface QuerkraftEingabe {
@@ -97,7 +97,7 @@ export function bemesseQuerkraft(e: QuerkraftEingabe): QuerkraftErgebnis {
     d: 0, z: 0, z09d: 0, zMaxNA: NaN, cvl: e.cvl ?? QUERKRAFT_CVL_STANDARD, zMassgebend: '0,9·d', fcd: 0, fyd: 0, fctm: 0, fcd_vRdMax: 0, vRd_max: 0, vRd_c: 0, vRd_cc_kN: 0, cot_theta: 0, cot_theta_eff: 0, theta_eff_deg: 0, cot_theta_max: 0, theta_min_deg: 0,
     isCotThetaExceeded: false, asw_req: 0, asw_min: 0, asw_final: 0, isVRdcExceeded: false, isVRdMaxExceeded: false, hinweise,
   };
-  if (hatFehler(hinweise)) return leer;
+  if (hatFehler(hinweise)) return nurGueltig(leer);
 
   const isStahl = e.bewehrung === 'Stahl';
   const b_m = e.b / 100;
@@ -155,11 +155,11 @@ export function bemesseQuerkraft(e: QuerkraftEingabe): QuerkraftErgebnis {
   if (isVRdMaxExceeded) {
     hinweise.push({ stufe: 'warnung', feld: 'vRdMax', text: 'V_Ed überschreitet die Druckstrebentragfähigkeit V_Rd,max. Querschnitt vergrößern, Betonfestigkeit erhöhen oder θ steiler wählen.' });
   }
-  return {
+  return nurGueltig({
     d: d_cm, z: z * 100, z09d, zMaxNA: zMax, cvl, zMassgebend, fcd, fyd, fctm, fcd_vRdMax: fcdOhneHf,
     vRd_max: vRd_max * 1000, vRd_c: vRdc * 1000, vRd_cc_kN: vRd_cc_N / 1000,
     cot_theta, cot_theta_eff, theta_eff_deg, cot_theta_max, theta_min_deg, isCotThetaExceeded,
     asw_req, asw_min, asw_final: isVRdcExceeded ? Math.max(asw_req, asw_min) : asw_min,
     isVRdcExceeded, isVRdMaxExceeded, hinweise,
-  };
+  });
 }

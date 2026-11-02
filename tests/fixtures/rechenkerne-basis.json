@@ -1,0 +1,13946 @@
+{
+ "stand": "2026-11-02",
+ "hinweis": "Erzeugt mit scripts/qa/rechenkerne-basis.ts – nicht von Hand ändern",
+ "basis": {
+  "src/calc/akrGefuege.ts": {
+   "akrGefuege": {
+    "args": [
+     1,
+     "WO",
+     1,
+     "E1"
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   }
+  },
+  "src/calc/asphalt.ts": {
+   "asphaltRaumdichte": {
+    "args": [
+     {
+      "bitumen": 1,
+      "hohlraum": 1,
+      "rhoGestein": 1,
+      "rhoBitumen": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "bitumen"
+     ],
+     [
+      0,
+      "hohlraum"
+     ],
+     [
+      0,
+      "rhoGestein"
+     ],
+     [
+      0,
+      "rhoBitumen"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "marshallKurve": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   },
+   "ntaModell": {
+    "args": [
+     {
+      "verfahren": "standard",
+      "temperatur": 1,
+      "rcAnteil": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "temperatur"
+     ],
+     [
+      0,
+      "rcAnteil"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "asphaltRohdichte": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "marshallLehrmodell": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/bauchemie.ts": {
+   "stellmittelRheologie": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "akrDehnung": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "akrKurve": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "zeitBisBewehrung": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "stellmittelViskositaet": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "karbonatisierungstiefe": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "phAusHydroxid": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "hydroxidAusPh": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "phAusOxonium": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "oxoniumAusPh": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/bauprodukte.ts": {
+   "trockenbauBedarf": {
+    "args": [
+     {
+      "flaeche": 1,
+      "lagen": 1,
+      "achsabstand": 62.5,
+      "daemmung": false
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "flaeche"
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   },
+   "fugenbandPruefung": {
+    "args": [
+     "arbeitsfuge",
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "daemmBerater": {
+    "args": [
+     {
+      "rBestand": 1,
+      "dickeCm": 1,
+      "lambda": 1,
+      "rsi": 1,
+      "rse": 1,
+      "uZiel": 1,
+      "ohneBestand": false,
+      "fx": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "rBestand"
+     ],
+     [
+      0,
+      "dickeCm"
+     ],
+     [
+      0,
+      "lambda"
+     ],
+     [
+      0,
+      "rsi"
+     ],
+     [
+      0,
+      "rse"
+     ],
+     [
+      0,
+      "uZiel"
+     ],
+     [
+      0,
+      "fx"
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "beschichtungsmenge": {
+    "args": [
+     {
+      "dft": 1,
+      "vs": 1,
+      "verduennung": 1,
+      "verlust": 1,
+      "flaeche": 1,
+      "anstriche": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "dft"
+     ],
+     [
+      0,
+      "vs"
+     ],
+     [
+      0,
+      "verduennung"
+     ],
+     [
+      0,
+      "verlust"
+     ],
+     [
+      0,
+      "flaeche"
+     ],
+     [
+      0,
+      "anstriche"
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "zusatzmittelWz": {
+    "args": [
+     {
+      "zement": 1,
+      "dosierung": 1,
+      "dichte": 1,
+      "wasseranteil": 1,
+      "wasser": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "zement"
+     ],
+     [
+      0,
+      "dosierung"
+     ],
+     [
+      0,
+      "dichte"
+     ],
+     [
+      0,
+      "wasseranteil"
+     ],
+     [
+      0,
+      "wasser"
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "belagMasse": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "burgersDehnung": {
+    "args": [
+     {
+      "E1": 1,
+      "E2": 1,
+      "eta1": 1,
+      "eta2": 1
+     },
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      "E1"
+     ],
+     [
+      0,
+      "E2"
+     ],
+     [
+      0,
+      "eta1"
+     ],
+     [
+      0,
+      "eta2"
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   },
+   "lehmWand": {
+    "args": [
+     1,
+     1,
+     1,
+     false
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   },
+   "blechMasse": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "randspannung": {
+    "args": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ],
+     [
+      5
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "laengenaenderungMm": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "potentialDifferenz": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/bauwerksuntersuchung.ts": {
+   "rueckprallRichtungskorrektur": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "rueckprallKorrekturtabelle": {
+    "args": [
+     [
+      1,
+      2,
+      3
+     ]
+    ],
+    "pfade": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.02
+   },
+   "rueckprallLehrkurve": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "rueckprallKalibrierung": {
+    "args": [
+     [
+      {
+       "r": 1,
+       "fKern": 1
+      },
+      {
+       "r": 2,
+       "fKern": 2
+      },
+      {
+       "r": 3,
+       "fKern": 3
+      }
+     ]
+    ],
+    "pfade": [
+     [
+      0,
+      0,
+      "r"
+     ],
+     [
+      0,
+      0,
+      "fKern"
+     ],
+     [
+      0,
+      1,
+      "r"
+     ],
+     [
+      0,
+      1,
+      "fKern"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "rueckprallMesssatz": {
+    "args": [
+     [
+      1,
+      2,
+      3
+     ]
+    ],
+    "pfade": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "rueckprall": {
+    "args": [
+     1,
+     "horiz",
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "dynamischerEModul": {
+    "args": [
+     10,
+     10,
+     10
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "ultraschall": {
+    "args": [
+     0.3,
+     0.3,
+     0.3,
+     0.3
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.03
+   },
+   "betondeckung": {
+    "args": [
+     "XC1",
+     30
+    ],
+    "pfade": [
+     [
+      1
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "chlorid": {
+    "args": [
+     1,
+     false
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "haftzug": {
+    "args": [
+     1,
+     "beton",
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "karsten": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "karbonatisierung": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "bohrkern": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "insituDruckfestigkeit13791": {
+    "args": [
+     {
+      "n": 10,
+      "mittel": 10,
+      "s": 10,
+      "kleinster": 10,
+      "bezug": "wuerfel"
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "n"
+     ],
+     [
+      0,
+      "mittel"
+     ],
+     [
+      0,
+      "s"
+     ],
+     [
+      0,
+      "kleinster"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.55
+   },
+   "impactEcho": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "probenahmeUmfang": {
+    "args": [
+     {
+      "ziel": "druckfestigkeit",
+      "verfahren": "verfahrenA",
+      "flaecheM2": 1,
+      "bauteilAnzahl": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "flaecheM2"
+     ],
+     [
+      0,
+      "bauteilAnzahl"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "befundSynthese": {
+    "args": [
+     {
+      "chlorid": 1,
+      "deckung": 1,
+      "karbonatisierung": 1,
+      "fckIs": 1,
+      "fckPlan": 1,
+      "potential": 1,
+      "haftzug": 1,
+      "bruchTyp": "A",
+      "holzRest": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "chlorid"
+     ],
+     [
+      0,
+      "deckung"
+     ],
+     [
+      0,
+      "karbonatisierung"
+     ],
+     [
+      0,
+      "fckIs"
+     ],
+     [
+      0,
+      "fckPlan"
+     ],
+     [
+      0,
+      "potential"
+     ],
+     [
+      0,
+      "haftzug"
+     ],
+     [
+      0,
+      "holzRest"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   }
+  },
+  "src/calc/betonkennwerte.ts": {
+   "temperaturFaktor": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "betaCc": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "ausschalVergleich": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "ecmVonFcm": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "betonkennwerte": {
+    "args": [
+     {
+      "fck": 1,
+      "zementklasse": "S",
+      "gestein": "quarzit",
+      "rh": 1,
+      "ac": 1,
+      "u": 1,
+      "h": 1,
+      "ts": 1,
+      "t0": 1,
+      "t": 1,
+      "temperatur": 1,
+      "sigmaC": 1,
+      "laenge": 1,
+      "festigkeitMitWirksamemAlter": false
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "fck"
+     ],
+     [
+      0,
+      "rh"
+     ],
+     [
+      0,
+      "ac"
+     ],
+     [
+      0,
+      "u"
+     ],
+     [
+      0,
+      "h"
+     ],
+     [
+      0,
+      "ts"
+     ],
+     [
+      0,
+      "t0"
+     ],
+     [
+      0,
+      "t"
+     ],
+     [
+      0,
+      "temperatur"
+     ],
+     [
+      0,
+      "sigmaC"
+     ],
+     [
+      0,
+      "laenge"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.05
+   }
+  },
+  "src/calc/biegelinie.ts": {
+   "einfeldQ": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "einfeldF": {
+    "args": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "kragQ": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "kragF": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "biegungAn": {
+    "args": [
+     {
+      "lagerung": "einfeldtraeger",
+      "L": 1,
+      "F": 1,
+      "a": 1,
+      "q": 1,
+      "E": 1,
+      "I": 1
+     },
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      "L"
+     ],
+     [
+      0,
+      "F"
+     ],
+     [
+      0,
+      "a"
+     ],
+     [
+      0,
+      "q"
+     ],
+     [
+      0,
+      "E"
+     ],
+     [
+      0,
+      "I"
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "biegelinie": {
+    "args": [
+     {
+      "lagerung": "einfeldtraeger",
+      "L": 1,
+      "F": 1,
+      "a": 1,
+      "q": 1,
+      "E": 1,
+      "I": 1
+     },
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      "L"
+     ],
+     [
+      0,
+      "F"
+     ],
+     [
+      0,
+      "a"
+     ],
+     [
+      0,
+      "q"
+     ],
+     [
+      0,
+      "E"
+     ],
+     [
+      0,
+      "I"
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.1
+   },
+   "werkstoffVergleich": {
+    "args": [
+     {
+      "lagerung": "einfeldtraeger",
+      "L": 1,
+      "F": 1,
+      "a": 1,
+      "q": 1,
+      "I": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "L"
+     ],
+     [
+      0,
+      "F"
+     ],
+     [
+      0,
+      "a"
+     ],
+     [
+      0,
+      "q"
+     ],
+     [
+      0,
+      "I"
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.38
+   },
+   "biegesteifigkeit": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "traegheitRechteck": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/biegung.ts": {
+   "spannungsblock": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "muLimit": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "xiLimit": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/biokohlebeton.ts": {
+   "co2JeKgPK": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/boden.ts": {
+   "fliessgrenze": {
+    "args": [
+     [
+      {
+       "schlaege": 1,
+       "w": 1
+      },
+      {
+       "schlaege": 2,
+       "w": 2
+      },
+      {
+       "schlaege": 3,
+       "w": 3
+      }
+     ]
+    ],
+    "pfade": [
+     [
+      0,
+      0,
+      "schlaege"
+     ],
+     [
+      0,
+      0,
+      "w"
+     ],
+     [
+      0,
+      1,
+      "schlaege"
+     ],
+     [
+      0,
+      1,
+      "w"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.04
+   },
+   "ausrollgrenze": {
+    "args": [
+     [
+      1,
+      2,
+      3
+     ]
+    ],
+    "pfade": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "bodengruppePlastizitaet": {
+    "args": [
+     1,
+     1,
+     false
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "atterberg": {
+    "args": [
+     {
+      "w": 1,
+      "versuche": [
+       {
+        "schlaege": 1,
+        "w": 1
+       },
+       {
+        "schlaege": 2,
+        "w": 2
+       },
+       {
+        "schlaege": 3,
+        "w": 3
+       }
+      ],
+      "ausroll": [
+       1,
+       2,
+       3
+      ],
+      "organisch": false
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "w"
+     ],
+     [
+      0,
+      "versuche",
+      0,
+      "schlaege"
+     ],
+     [
+      0,
+      "versuche",
+      0,
+      "w"
+     ],
+     [
+      0,
+      "versuche",
+      1,
+      "schlaege"
+     ],
+     [
+      0,
+      "versuche",
+      1,
+      "w"
+     ],
+     [
+      0,
+      "ausroll",
+      0
+     ],
+     [
+      0,
+      "ausroll",
+      1
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.11
+   },
+   "mohrCoulomb": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "erddruckRankine": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "konsolidierungsgrad": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "konsolidierung": {
+    "args": [
+     1,
+     1,
+     1,
+     1,
+     "einseitig"
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.03
+   },
+   "aLinie": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "fliessgrenzeEinpunkt": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/bspSchwingung.ts": {
+   "bspSchwingung": {
+    "args": [
+     {
+      "spannweite": 1,
+      "lagen": [
+       1,
+       2,
+       3
+      ],
+      "deckenbreite": 1,
+      "zusatzmasse": 1,
+      "estrichDicke": 1,
+      "estrichArt": "zement",
+      "verfahren": "netto",
+      "E0mean": 1,
+      "GR": 1,
+      "wichte": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "spannweite"
+     ],
+     [
+      0,
+      "lagen",
+      0
+     ],
+     [
+      0,
+      "lagen",
+      1
+     ],
+     [
+      0,
+      "deckenbreite"
+     ],
+     [
+      0,
+      "zusatzmasse"
+     ],
+     [
+      0,
+      "estrichDicke"
+     ],
+     [
+      0,
+      "E0mean"
+     ],
+     [
+      0,
+      "GR"
+     ],
+     [
+      0,
+      "wichte"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.03
+   }
+  },
+  "src/calc/cbam.ts": {
+   "cbamKosten": {
+    "args": [
+     {
+      "jahr": 2026,
+      "mengeT": 1,
+      "emissionen": 1,
+      "benchmark": 1,
+      "preisCbam": 1,
+      "preisHerkunft": 1,
+      "cscf": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "mengeT"
+     ],
+     [
+      0,
+      "emissionen"
+     ],
+     [
+      0,
+      "benchmark"
+     ],
+     [
+      0,
+      "preisCbam"
+     ],
+     [
+      0,
+      "preisHerkunft"
+     ],
+     [
+      0,
+      "cscf"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "cbamJahrespfad": {
+    "args": [
+     {
+      "mengeT": 1,
+      "emissionen": 1,
+      "benchmark": 1,
+      "preisCbam": 1,
+      "preisHerkunft": 1,
+      "cscf": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "mengeT"
+     ],
+     [
+      0,
+      "emissionen"
+     ],
+     [
+      0,
+      "benchmark"
+     ],
+     [
+      0,
+      "preisCbam"
+     ],
+     [
+      0,
+      "preisHerkunft"
+     ],
+     [
+      0,
+      "cscf"
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.02
+   }
+  },
+  "src/calc/durchstanzen.ts": {
+   "betaNaDe": {
+    "args": [
+     "innen"
+    ],
+    "pfade": [],
+    "art": "formel",
+    "ms": 0
+   },
+   "rundschnitte": {
+    "args": [
+     "rund",
+     "innen",
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ],
+     [
+      5
+     ],
+     [
+      6
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "bemesseDurchstanzen": {
+    "args": [
+     {
+      "form": "rund",
+      "vEd": 1,
+      "d": 1,
+      "c": 1,
+      "cx": 1,
+      "cy": 1,
+      "fck": 1,
+      "rhoL": 1,
+      "beta": 1,
+      "fyk": 1,
+      "lage": "innen",
+      "aRand": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "vEd"
+     ],
+     [
+      0,
+      "d"
+     ],
+     [
+      0,
+      "c"
+     ],
+     [
+      0,
+      "cx"
+     ],
+     [
+      0,
+      "cy"
+     ],
+     [
+      0,
+      "fck"
+     ],
+     [
+      0,
+      "rhoL"
+     ],
+     [
+      0,
+      "beta"
+     ],
+     [
+      0,
+      "fyk"
+     ],
+     [
+      0,
+      "aRand"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.02
+   }
+  },
+  "src/calc/eigenspannungen.ts": {
+   "eigenspannungsVerlauf": {
+    "args": [
+     {
+      "tInnen": 10,
+      "tMitte": 10,
+      "tAussen": 10,
+      "eModul": 10,
+      "dicke": 10,
+      "epsCsPromille": 10,
+      "punkte": 10
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "tInnen"
+     ],
+     [
+      0,
+      "tMitte"
+     ],
+     [
+      0,
+      "tAussen"
+     ],
+     [
+      0,
+      "eModul"
+     ],
+     [
+      0,
+      "dicke"
+     ],
+     [
+      0,
+      "epsCsPromille"
+     ],
+     [
+      0,
+      "punkte"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.08
+   }
+  },
+  "src/calc/eisenKohlenstoff.ts": {
+   "liquidus": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "solidus": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "feCZustand": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "gefuegeAnteile": {
+    "args": [
+     1,
+     "lehrbuch"
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "cev": {
+    "args": [
+     {
+      "C": 1,
+      "Mn": 1,
+      "Cr": 1,
+      "Mo": 1,
+      "V": 1,
+      "Ni": 1,
+      "Cu": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "C"
+     ],
+     [
+      0,
+      "Mn"
+     ],
+     [
+      0,
+      "Cr"
+     ],
+     [
+      0,
+      "Mo"
+     ],
+     [
+      0,
+      "V"
+     ],
+     [
+      0,
+      "Ni"
+     ],
+     [
+      0,
+      "Cu"
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "cevBewertung": {
+    "args": [
+     {
+      "C": 1,
+      "Mn": 1,
+      "Cr": 1,
+      "Mo": 1,
+      "V": 1,
+      "Ni": 1,
+      "Cu": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "C"
+     ],
+     [
+      0,
+      "Mn"
+     ],
+     [
+      0,
+      "Cr"
+     ],
+     [
+      0,
+      "Mo"
+     ],
+     [
+      0,
+      "V"
+     ],
+     [
+      0,
+      "Ni"
+     ],
+     [
+      0,
+      "Cu"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   }
+  },
+  "src/calc/emodul.ts": {
+   "ecmEc2": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "verbundSchranken": {
+    "args": [
+     10,
+     10,
+     10,
+     10
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   },
+   "emodul": {
+    "args": [
+     {
+      "fck": 1,
+      "alphaE": 1,
+      "eGestein": 1,
+      "eMatrix": 1,
+      "volGestein": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "fck"
+     ],
+     [
+      0,
+      "alphaE"
+     ],
+     [
+      0,
+      "eGestein"
+     ],
+     [
+      0,
+      "eMatrix"
+     ],
+     [
+      0,
+      "volGestein"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.06
+   }
+  },
+  "src/calc/energieausweis.ts": {
+   "energieausweis": {
+    "args": [
+     {
+      "typ": "efh",
+      "flaeche": 1,
+      "huelle": "unsaniert",
+      "lueftung": "fenster",
+      "heizung": "gas_brennwert",
+      "rechtsstand": "bis_2026"
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "flaeche"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.02
+   }
+  },
+  "src/calc/erdbau.ts": {
+   "frostschutz": {
+    "args": [
+     {
+      "frostzone": 1,
+      "bauklasse": "Bk100",
+      "bodengruppe": "F2",
+      "wasser": "guenstig"
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "frostzone"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   }
+  },
+  "src/calc/expositionsklassen.ts": {
+   "huellwerte": {
+    "args": [
+     [
+      {
+       "code": "x",
+       "maxWzEq": 1,
+       "minStrengthClass": "x",
+       "minCement": 1,
+       "minAirContent": {
+        "dmax32": 1,
+        "dmax16": 1,
+        "dmax8": 1
+       },
+       "requiresAirEntrainment": false,
+       "minCoverDurMm": 1,
+       "ohneLp": {
+        "maxWzEq": 1,
+        "minStrengthClass": "x",
+        "minCement": 1
+       }
+      },
+      {
+       "code": "x",
+       "maxWzEq": 2,
+       "minStrengthClass": "x",
+       "minCement": 2,
+       "minAirContent": {
+        "dmax32": 2,
+        "dmax16": 2,
+        "dmax8": 2
+       },
+       "requiresAirEntrainment": false,
+       "minCoverDurMm": 2,
+       "ohneLp": {
+        "maxWzEq": 2,
+        "minStrengthClass": "x",
+        "minCement": 2
+       }
+      },
+      {
+       "code": "x",
+       "maxWzEq": 3,
+       "minStrengthClass": "x",
+       "minCement": 3,
+       "minAirContent": {
+        "dmax32": 3,
+        "dmax16": 3,
+        "dmax8": 3
+       },
+       "requiresAirEntrainment": false,
+       "minCoverDurMm": 3,
+       "ohneLp": {
+        "maxWzEq": 3,
+        "minStrengthClass": "x",
+        "minCement": 3
+       }
+      }
+     ],
+     [
+      "x",
+      "x",
+      "x"
+     ],
+     8,
+     1,
+     false
+    ],
+    "pfade": [
+     [
+      0,
+      0,
+      "maxWzEq"
+     ],
+     [
+      0,
+      0,
+      "minCement"
+     ],
+     [
+      0,
+      0,
+      "minAirContent",
+      "dmax32"
+     ],
+     [
+      0,
+      0,
+      "minAirContent",
+      "dmax16"
+     ],
+     [
+      0,
+      0,
+      "minAirContent",
+      "dmax8"
+     ],
+     [
+      0,
+      0,
+      "minCoverDurMm"
+     ],
+     [
+      0,
+      0,
+      "ohneLp",
+      "maxWzEq"
+     ],
+     [
+      0,
+      0,
+      "ohneLp",
+      "minCement"
+     ],
+     [
+      0,
+      1,
+      "maxWzEq"
+     ],
+     [
+      0,
+      1,
+      "minCement"
+     ],
+     [
+      0,
+      1,
+      "minAirContent",
+      "dmax32"
+     ],
+     [
+      0,
+      1,
+      "minAirContent",
+      "dmax16"
+     ],
+     [
+      0,
+      1,
+      "minAirContent",
+      "dmax8"
+     ],
+     [
+      0,
+      1,
+      "minCoverDurMm"
+     ],
+     [
+      0,
+      1,
+      "ohneLp",
+      "maxWzEq"
+     ],
+     [
+      0,
+      1,
+      "ohneLp",
+      "minCement"
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.03
+   },
+   "kWertAnsatz": {
+    "args": [
+     {
+      "zement": 1,
+      "wasser": 1,
+      "flugasche": 1,
+      "silika": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "zement"
+     ],
+     [
+      0,
+      "wasser"
+     ],
+     [
+      0,
+      "flugasche"
+     ],
+     [
+      0,
+      "silika"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.04
+   }
+  },
+  "src/calc/fenster.ts": {
+   "uwFenster": {
+    "args": [
+     {
+      "breite": 1,
+      "hoehe": 1,
+      "rahmenMm": 1,
+      "ug": 1,
+      "uf": 1,
+      "psi": 1,
+      "g": 1,
+      "strahlung": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "breite"
+     ],
+     [
+      0,
+      "hoehe"
+     ],
+     [
+      0,
+      "rahmenMm"
+     ],
+     [
+      0,
+      "ug"
+     ],
+     [
+      0,
+      "uf"
+     ],
+     [
+      0,
+      "psi"
+     ],
+     [
+      0,
+      "g"
+     ],
+     [
+      0,
+      "strahlung"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   }
+  },
+  "src/calc/festbetonStatistik.ts": {
+   "faktorWuerfel": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "festbetonStatistik": {
+    "args": [
+     {
+      "fcm": 1,
+      "sigma": 1,
+      "format": "wuerfel",
+      "alphaCc": 1,
+      "gammaC": 1,
+      "pruefArt": "erst"
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "fcm"
+     ],
+     [
+      0,
+      "sigma"
+     ],
+     [
+      0,
+      "alphaCc"
+     ],
+     [
+      0,
+      "gammaC"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.04
+   },
+   "konformitaetDruck": {
+    "args": [
+     {
+      "werte": [
+       1,
+       2,
+       3
+      ],
+      "fckCube": 1,
+      "pruefArt": "erst",
+      "sigmaVorserie": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "werte",
+      0
+     ],
+     [
+      0,
+      "werte",
+      1
+     ],
+     [
+      0,
+      "fckCube"
+     ],
+     [
+      0,
+      "sigmaVorserie"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   }
+  },
+  "src/calc/festigkeitsvergleich.ts": {
+   "grenzhoehen": {
+    "args": [
+     {
+      "rho": 1,
+      "fc": 1,
+      "ft": 1,
+      "E": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "rho"
+     ],
+     [
+      0,
+      "fc"
+     ],
+     [
+      0,
+      "ft"
+     ],
+     [
+      0,
+      "E"
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "wuerfelstapel": {
+    "args": [
+     {
+      "rho": 1,
+      "fc": 1,
+      "ft": 1,
+      "E": 1
+     },
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      "rho"
+     ],
+     [
+      0,
+      "fc"
+     ],
+     [
+      0,
+      "ft"
+     ],
+     [
+      0,
+      "E"
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   }
+  },
+  "src/calc/frischbeton.ts": {
+   "mindestLuftgehalt": {
+    "args": [
+     "XF2",
+     8
+    ],
+    "pfade": [],
+    "art": "formel",
+    "ms": 0
+   },
+   "bewerteLuftgehalt": {
+    "args": [
+     {
+      "ablesung": 1,
+      "gesteinskorrektur": 1,
+      "klasse": "XF2",
+      "dmax": 8
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "ablesung"
+     ],
+     [
+      0,
+      "gesteinskorrektur"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   }
+  },
+  "src/calc/glas.ts": {
+   "weibull": {
+    "args": [
+     {
+      "sigma": 1,
+      "sigma0": 1,
+      "m": 1,
+      "A": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "sigma"
+     ],
+     [
+      0,
+      "sigma0"
+     ],
+     [
+      0,
+      "m"
+     ],
+     [
+      0,
+      "A"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.02
+   },
+   "schubmodulPvb": {
+    "args": [
+     1,
+     "short"
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "steinerAnteil": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "schubverbundGamma": {
+    "args": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ],
+     [
+      5
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "effektiveDickeW": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "vsgEffektiveDicke": {
+    "args": [
+     {
+      "T": 1,
+      "dauer": "short",
+      "h1": 1,
+      "h2": 1,
+      "hv": 1,
+      "a": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "T"
+     ],
+     [
+      0,
+      "h1"
+     ],
+     [
+      0,
+      "h2"
+     ],
+     [
+      0,
+      "hv"
+     ],
+     [
+      0,
+      "a"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "sigma0Lehrmodell": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "bruchwahrscheinlichkeit": {
+    "args": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "thermischeSpannung": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/glaser.ts": {
+   "verdunstungDin4108_3": {
+    "args": [
+     "wand"
+    ],
+    "pfade": [],
+    "art": "formel",
+    "ms": 0
+   },
+   "sdRegel": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.08
+   }
+  },
+  "src/calc/holzbau.ts": {
+   "knickbeiwert": {
+    "args": [
+     1,
+     false
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "bemesseDruckstab": {
+    "args": [
+     {
+      "b": 1,
+      "h": 1,
+      "laenge": 1,
+      "eulerFall": 3,
+      "nEd": 1,
+      "fc0k": 1,
+      "E005": 1,
+      "brettschichtholz": false,
+      "nkl": 3,
+      "kled": "stnd"
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "b"
+     ],
+     [
+      0,
+      "h"
+     ],
+     [
+      0,
+      "laenge"
+     ],
+     [
+      0,
+      "nEd"
+     ],
+     [
+      0,
+      "fc0k"
+     ],
+     [
+      0,
+      "E005"
+     ]
+    ],
+    "art": "kern",
+    "ms": 1.05
+   },
+   "bemesseQuerdruck": {
+    "args": [
+     {
+      "F": 1,
+      "b": 1,
+      "l": 1,
+      "fall": "schwelle",
+      "ueberstand": false,
+      "fc90k": 1,
+      "art": "nadelvollholz",
+      "nkl": 3,
+      "kled": "stnd"
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "F"
+     ],
+     [
+      0,
+      "b"
+     ],
+     [
+      0,
+      "l"
+     ],
+     [
+      0,
+      "fc90k"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "bemessungswert": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "druckUnterWinkel": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "festigkeitswerte": {
+    "args": [
+     {
+      "fm": 1,
+      "ft0": 1,
+      "ft90": 1,
+      "fc0": 1,
+      "fc90": 1,
+      "fv": 1,
+      "gammaM": 1,
+      "nkl": 3,
+      "kled": "stnd",
+      "kc90": 1,
+      "winkel": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "fm"
+     ],
+     [
+      0,
+      "ft0"
+     ],
+     [
+      0,
+      "ft90"
+     ],
+     [
+      0,
+      "fc0"
+     ],
+     [
+      0,
+      "fc90"
+     ],
+     [
+      0,
+      "fv"
+     ],
+     [
+      0,
+      "gammaM"
+     ],
+     [
+      0,
+      "kc90"
+     ],
+     [
+      0,
+      "winkel"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.04
+   },
+   "kdefFuer": {
+    "args": [
+     "x",
+     3
+    ],
+    "pfade": [],
+    "art": "formel",
+    "ms": 0
+   },
+   "rissfaktor": {
+    "args": [
+     1,
+     false
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "abbrandQuerschnitt": {
+    "args": [
+     "bsh",
+     1,
+     1,
+     1,
+     3
+    ],
+    "pfade": [
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   }
+  },
+  "src/calc/holzphysik.ts": {
+   "biogenesCo2DinEn16449": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "gleichgewichtsfeuchte": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "sorptionHailwoodHorrobin": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "zeitkonstanteFeuchte": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "feuchteNachLagerung": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "schwindmass": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "schwinden": {
+    "args": [
+     {
+      "uStart": 1,
+      "uEnde": 1,
+      "breite": 1,
+      "dicke": 1,
+      "laenge": 1,
+      "qt": 1,
+      "qr": 1,
+      "ql": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "uStart"
+     ],
+     [
+      0,
+      "uEnde"
+     ],
+     [
+      0,
+      "breite"
+     ],
+     [
+      0,
+      "dicke"
+     ],
+     [
+      0,
+      "laenge"
+     ],
+     [
+      0,
+      "qt"
+     ],
+     [
+      0,
+      "qr"
+     ],
+     [
+      0,
+      "ql"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   }
+  },
+  "src/calc/hydratation.ts": {
+   "temperaturfaktorReife": {
+    "args": [
+     "Arrhenius",
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "wirksamesAlterKonstant": {
+    "args": [
+     "Arrhenius",
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "zementbeiwertS": {
+    "args": [
+     "32.5",
+     "N"
+    ],
+    "pfade": [],
+    "art": "formel",
+    "ms": 0
+   },
+   "betaCcBegrenzt": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "zugExponent": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "kennwerte28": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "kennwerteZumAlter": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   },
+   "waermeKennwerte": {
+    "args": [
+     "CEM I",
+     "N",
+     "Ohne",
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      3
+     ],
+     [
+      4
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "hydratationswaerme": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "hydratationsgrad": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "adiabatischeErwaermung": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "hydratation": {
+    "args": [
+     {
+      "zement": 1,
+      "tempUmgebung": 1,
+      "tempFrischbeton": 1,
+      "zementArt": "CEM I",
+      "festigkeitsklasse": "32.5",
+      "erhaertung": "N",
+      "zusatzstoff": "Ohne",
+      "zusatzstoffMenge": 1,
+      "bauteildicke": 1,
+      "ausschalAnteil": 1,
+      "reifeVerfahren": "Arrhenius",
+      "aktivierungsEnergie": 1,
+      "cGewogen": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "zement"
+     ],
+     [
+      0,
+      "tempUmgebung"
+     ],
+     [
+      0,
+      "tempFrischbeton"
+     ],
+     [
+      0,
+      "zusatzstoffMenge"
+     ],
+     [
+      0,
+      "bauteildicke"
+     ],
+     [
+      0,
+      "ausschalAnteil"
+     ],
+     [
+      0,
+      "aktivierungsEnergie"
+     ],
+     [
+      0,
+      "cGewogen"
+     ]
+    ],
+    "art": "kern",
+    "ms": 1.98
+   },
+   "reissrahmen": {
+    "args": [
+     {
+      "zement": {
+       "name": "x",
+       "baseHeat": 1,
+       "hydrationSpeed": 1,
+       "strengthSpeed": 1
+      },
+      "tFrisch": 1,
+      "tUmgebung": 1,
+      "fasergehalt": 1,
+      "festhaltegrad": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "zement",
+      "baseHeat"
+     ],
+     [
+      0,
+      "zement",
+      "hydrationSpeed"
+     ],
+     [
+      0,
+      "zement",
+      "strengthSpeed"
+     ],
+     [
+      0,
+      "tFrisch"
+     ],
+     [
+      0,
+      "tUmgebung"
+     ],
+     [
+      0,
+      "fasergehalt"
+     ],
+     [
+      0,
+      "festhaltegrad"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.06
+   },
+   "verdunstungsrate": {
+    "args": [
+     {
+      "tLuft": 1,
+      "tBeton": 1,
+      "rh": 1,
+      "wind": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "tLuft"
+     ],
+     [
+      0,
+      "tBeton"
+     ],
+     [
+      0,
+      "rh"
+     ],
+     [
+      0,
+      "wind"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "nachbehandlungsdauer": {
+    "args": [
+     "mittel",
+     "x0_xc1",
+     "ge25"
+    ],
+    "pfade": [],
+    "art": "kern",
+    "ms": 0
+   }
+  },
+  "src/calc/karsten.ts": {
+   "wWertAusKarsten": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "karstenAuswertung": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   }
+  },
+  "src/calc/keramik.ts": {
+   "formmass": {
+    "args": [
+     10,
+     10,
+     10
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "schwindmass": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/kombinationen.ts": {
+   "faserverbund": {
+    "args": [
+     {
+      "ef": 1,
+      "sf": 1,
+      "rhoF": 1,
+      "em": 1,
+      "sm": 1,
+      "rhoM": 1,
+      "vf": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "ef"
+     ],
+     [
+      0,
+      "sf"
+     ],
+     [
+      0,
+      "rhoF"
+     ],
+     [
+      0,
+      "em"
+     ],
+     [
+      0,
+      "sm"
+     ],
+     [
+      0,
+      "rhoM"
+     ],
+     [
+      0,
+      "vf"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "schichtaufbau": {
+    "args": [
+     [
+      {
+       "dicke": 1,
+       "lambda": 1,
+       "mu": 1,
+       "kategorie": "tragend"
+      },
+      {
+       "dicke": 2,
+       "lambda": 2,
+       "mu": 2,
+       "kategorie": "tragend"
+      },
+      {
+       "dicke": 3,
+       "lambda": 3,
+       "mu": 3,
+       "kategorie": "tragend"
+      }
+     ],
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      0,
+      "dicke"
+     ],
+     [
+      0,
+      0,
+      "lambda"
+     ],
+     [
+      0,
+      0,
+      "mu"
+     ],
+     [
+      0,
+      1,
+      "dicke"
+     ],
+     [
+      0,
+      1,
+      "lambda"
+     ],
+     [
+      0,
+      1,
+      "mu"
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.13
+   },
+   "eModulLaengs": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "eModulQuer": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/korrosion.ts": {
+   "abtragsrateFaraday": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "querschnittsverlust": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "chloridGehalt": {
+    "args": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "chloridProfil": {
+    "args": [
+     {
+      "t": 0.5,
+      "cNom": 0.5,
+      "dApp": 0.5,
+      "cS": 0.5,
+      "a": 0.5
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "t"
+     ],
+     [
+      0,
+      "cNom"
+     ],
+     [
+      0,
+      "dApp"
+     ],
+     [
+      0,
+      "cS"
+     ],
+     [
+      0,
+      "a"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.06
+   },
+   "karbonatisierungsFront": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "karbonatisierungsLebensdauer": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "schnellUmrechnung": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "feuchteFaktor": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "iCorrLehrmodell": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "lokalelement": {
+    "args": [
+     {
+      "clGehalt": 1,
+      "relFeuchte": 1,
+      "deckungMm": 1,
+      "jahre": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "clGehalt"
+     ],
+     [
+      0,
+      "relFeuchte"
+     ],
+     [
+      0,
+      "deckungMm"
+     ],
+     [
+      0,
+      "jahre"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.02
+   },
+   "dAppAlterung": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "karbonatisierungsKurve": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/korrosionsschutz.ts": {
+   "zinkMindestschicht": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "abnahme8020": {
+    "args": [
+     [
+      1,
+      2,
+      3
+     ],
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "zinkSchutzdauer": {
+    "args": [
+     {
+      "dZn": 1,
+      "kategorie": "C1",
+      "ziel": "L",
+      "duplex": false,
+      "tBeschichtung": 1,
+      "synergie": 1,
+      "stahlDickeMm": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "dZn"
+     ],
+     [
+      0,
+      "tBeschichtung"
+     ],
+     [
+      0,
+      "synergie"
+     ],
+     [
+      0,
+      "stahlDickeMm"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   }
+  },
+  "src/calc/kriechenSchwinden.ts": {
+   "beiwertKh": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "alphaBeiwerte": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "phiRH": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "betaFcm": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "wirksamesBelastungsalter": {
+    "args": [
+     1,
+     "S"
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "betaT0": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "betaH": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "betaC": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "betaRH": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "epsCd0": {
+    "args": [
+     1,
+     1,
+     "S"
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "betaDs": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "epsCaUnendlich": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "betaAs": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "eModulEcm": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "kriechSchwindModell": {
+    "args": [
+     {
+      "fck": 1,
+      "rh": 1,
+      "h0": 1,
+      "t0": 1,
+      "ts": 1,
+      "zement": "S"
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "fck"
+     ],
+     [
+      0,
+      "rh"
+     ],
+     [
+      0,
+      "h0"
+     ],
+     [
+      0,
+      "t0"
+     ],
+     [
+      0,
+      "ts"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.02
+   },
+   "kriechzahl": {
+    "args": [
+     {
+      "eingabe": {
+       "fck": 1,
+       "rh": 1,
+       "h0": 1,
+       "t0": 1,
+       "ts": 1,
+       "zement": "S"
+      },
+      "fcm": 1,
+      "Ecm": 1,
+      "alpha1": 1,
+      "alpha2": 1,
+      "alpha3": 1,
+      "phiRH": 1,
+      "betaFcm": 1,
+      "t0eff": 1,
+      "betaT0": 1,
+      "phi0": 1,
+      "betaH": 1,
+      "betaRH": 1,
+      "epsCd0": 1,
+      "kh": 1,
+      "epsCaInf": 1,
+      "gueltig": false,
+      "hinweise": [
+       {
+        "stufe": "fehler",
+        "feld": "x",
+        "text": "x"
+       },
+       {
+        "stufe": "fehler",
+        "feld": "x",
+        "text": "x"
+       },
+       {
+        "stufe": "fehler",
+        "feld": "x",
+        "text": "x"
+       }
+      ]
+     },
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      "eingabe",
+      "fck"
+     ],
+     [
+      0,
+      "eingabe",
+      "rh"
+     ],
+     [
+      0,
+      "eingabe",
+      "h0"
+     ],
+     [
+      0,
+      "eingabe",
+      "t0"
+     ],
+     [
+      0,
+      "eingabe",
+      "ts"
+     ],
+     [
+      0,
+      "fcm"
+     ],
+     [
+      0,
+      "Ecm"
+     ],
+     [
+      0,
+      "alpha1"
+     ],
+     [
+      0,
+      "alpha2"
+     ],
+     [
+      0,
+      "alpha3"
+     ],
+     [
+      0,
+      "phiRH"
+     ],
+     [
+      0,
+      "betaFcm"
+     ],
+     [
+      0,
+      "t0eff"
+     ],
+     [
+      0,
+      "betaT0"
+     ],
+     [
+      0,
+      "phi0"
+     ],
+     [
+      0,
+      "betaH"
+     ],
+     [
+      0,
+      "betaRH"
+     ],
+     [
+      0,
+      "epsCd0"
+     ],
+     [
+      0,
+      "kh"
+     ],
+     [
+      0,
+      "epsCaInf"
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "trocknungsschwinden": {
+    "args": [
+     {
+      "eingabe": {
+       "fck": 1,
+       "rh": 1,
+       "h0": 1,
+       "t0": 1,
+       "ts": 1,
+       "zement": "S"
+      },
+      "fcm": 1,
+      "Ecm": 1,
+      "alpha1": 1,
+      "alpha2": 1,
+      "alpha3": 1,
+      "phiRH": 1,
+      "betaFcm": 1,
+      "t0eff": 1,
+      "betaT0": 1,
+      "phi0": 1,
+      "betaH": 1,
+      "betaRH": 1,
+      "epsCd0": 1,
+      "kh": 1,
+      "epsCaInf": 1,
+      "gueltig": false,
+      "hinweise": [
+       {
+        "stufe": "fehler",
+        "feld": "x",
+        "text": "x"
+       },
+       {
+        "stufe": "fehler",
+        "feld": "x",
+        "text": "x"
+       },
+       {
+        "stufe": "fehler",
+        "feld": "x",
+        "text": "x"
+       }
+      ]
+     },
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      "eingabe",
+      "fck"
+     ],
+     [
+      0,
+      "eingabe",
+      "rh"
+     ],
+     [
+      0,
+      "eingabe",
+      "h0"
+     ],
+     [
+      0,
+      "eingabe",
+      "t0"
+     ],
+     [
+      0,
+      "eingabe",
+      "ts"
+     ],
+     [
+      0,
+      "fcm"
+     ],
+     [
+      0,
+      "Ecm"
+     ],
+     [
+      0,
+      "alpha1"
+     ],
+     [
+      0,
+      "alpha2"
+     ],
+     [
+      0,
+      "alpha3"
+     ],
+     [
+      0,
+      "phiRH"
+     ],
+     [
+      0,
+      "betaFcm"
+     ],
+     [
+      0,
+      "t0eff"
+     ],
+     [
+      0,
+      "betaT0"
+     ],
+     [
+      0,
+      "phi0"
+     ],
+     [
+      0,
+      "betaH"
+     ],
+     [
+      0,
+      "betaRH"
+     ],
+     [
+      0,
+      "epsCd0"
+     ],
+     [
+      0,
+      "kh"
+     ],
+     [
+      0,
+      "epsCaInf"
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "autogenesSchwinden": {
+    "args": [
+     {
+      "eingabe": {
+       "fck": 1,
+       "rh": 1,
+       "h0": 1,
+       "t0": 1,
+       "ts": 1,
+       "zement": "S"
+      },
+      "fcm": 1,
+      "Ecm": 1,
+      "alpha1": 1,
+      "alpha2": 1,
+      "alpha3": 1,
+      "phiRH": 1,
+      "betaFcm": 1,
+      "t0eff": 1,
+      "betaT0": 1,
+      "phi0": 1,
+      "betaH": 1,
+      "betaRH": 1,
+      "epsCd0": 1,
+      "kh": 1,
+      "epsCaInf": 1,
+      "gueltig": false,
+      "hinweise": [
+       {
+        "stufe": "fehler",
+        "feld": "x",
+        "text": "x"
+       },
+       {
+        "stufe": "fehler",
+        "feld": "x",
+        "text": "x"
+       },
+       {
+        "stufe": "fehler",
+        "feld": "x",
+        "text": "x"
+       }
+      ]
+     },
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      "eingabe",
+      "fck"
+     ],
+     [
+      0,
+      "eingabe",
+      "rh"
+     ],
+     [
+      0,
+      "eingabe",
+      "h0"
+     ],
+     [
+      0,
+      "eingabe",
+      "t0"
+     ],
+     [
+      0,
+      "eingabe",
+      "ts"
+     ],
+     [
+      0,
+      "fcm"
+     ],
+     [
+      0,
+      "Ecm"
+     ],
+     [
+      0,
+      "alpha1"
+     ],
+     [
+      0,
+      "alpha2"
+     ],
+     [
+      0,
+      "alpha3"
+     ],
+     [
+      0,
+      "phiRH"
+     ],
+     [
+      0,
+      "betaFcm"
+     ],
+     [
+      0,
+      "t0eff"
+     ],
+     [
+      0,
+      "betaT0"
+     ],
+     [
+      0,
+      "phi0"
+     ],
+     [
+      0,
+      "betaH"
+     ],
+     [
+      0,
+      "betaRH"
+     ],
+     [
+      0,
+      "epsCd0"
+     ],
+     [
+      0,
+      "kh"
+     ],
+     [
+      0,
+      "epsCaInf"
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "gesamtschwinden": {
+    "args": [
+     {
+      "eingabe": {
+       "fck": 1,
+       "rh": 1,
+       "h0": 1,
+       "t0": 1,
+       "ts": 1,
+       "zement": "S"
+      },
+      "fcm": 1,
+      "Ecm": 1,
+      "alpha1": 1,
+      "alpha2": 1,
+      "alpha3": 1,
+      "phiRH": 1,
+      "betaFcm": 1,
+      "t0eff": 1,
+      "betaT0": 1,
+      "phi0": 1,
+      "betaH": 1,
+      "betaRH": 1,
+      "epsCd0": 1,
+      "kh": 1,
+      "epsCaInf": 1,
+      "gueltig": false,
+      "hinweise": [
+       {
+        "stufe": "fehler",
+        "feld": "x",
+        "text": "x"
+       },
+       {
+        "stufe": "fehler",
+        "feld": "x",
+        "text": "x"
+       },
+       {
+        "stufe": "fehler",
+        "feld": "x",
+        "text": "x"
+       }
+      ]
+     },
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      "eingabe",
+      "fck"
+     ],
+     [
+      0,
+      "eingabe",
+      "rh"
+     ],
+     [
+      0,
+      "eingabe",
+      "h0"
+     ],
+     [
+      0,
+      "eingabe",
+      "t0"
+     ],
+     [
+      0,
+      "eingabe",
+      "ts"
+     ],
+     [
+      0,
+      "fcm"
+     ],
+     [
+      0,
+      "Ecm"
+     ],
+     [
+      0,
+      "alpha1"
+     ],
+     [
+      0,
+      "alpha2"
+     ],
+     [
+      0,
+      "alpha3"
+     ],
+     [
+      0,
+      "phiRH"
+     ],
+     [
+      0,
+      "betaFcm"
+     ],
+     [
+      0,
+      "t0eff"
+     ],
+     [
+      0,
+      "betaT0"
+     ],
+     [
+      0,
+      "phi0"
+     ],
+     [
+      0,
+      "betaH"
+     ],
+     [
+      0,
+      "betaRH"
+     ],
+     [
+      0,
+      "epsCd0"
+     ],
+     [
+      0,
+      "kh"
+     ],
+     [
+      0,
+      "epsCaInf"
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "wirksamerEModul": {
+    "args": [
+     {
+      "eingabe": {
+       "fck": 1,
+       "rh": 1,
+       "h0": 1,
+       "t0": 1,
+       "ts": 1,
+       "zement": "S"
+      },
+      "fcm": 1,
+      "Ecm": 1,
+      "alpha1": 1,
+      "alpha2": 1,
+      "alpha3": 1,
+      "phiRH": 1,
+      "betaFcm": 1,
+      "t0eff": 1,
+      "betaT0": 1,
+      "phi0": 1,
+      "betaH": 1,
+      "betaRH": 1,
+      "epsCd0": 1,
+      "kh": 1,
+      "epsCaInf": 1,
+      "gueltig": false,
+      "hinweise": [
+       {
+        "stufe": "fehler",
+        "feld": "x",
+        "text": "x"
+       },
+       {
+        "stufe": "fehler",
+        "feld": "x",
+        "text": "x"
+       },
+       {
+        "stufe": "fehler",
+        "feld": "x",
+        "text": "x"
+       }
+      ]
+     },
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      "eingabe",
+      "fck"
+     ],
+     [
+      0,
+      "eingabe",
+      "rh"
+     ],
+     [
+      0,
+      "eingabe",
+      "h0"
+     ],
+     [
+      0,
+      "eingabe",
+      "t0"
+     ],
+     [
+      0,
+      "eingabe",
+      "ts"
+     ],
+     [
+      0,
+      "fcm"
+     ],
+     [
+      0,
+      "Ecm"
+     ],
+     [
+      0,
+      "alpha1"
+     ],
+     [
+      0,
+      "alpha2"
+     ],
+     [
+      0,
+      "alpha3"
+     ],
+     [
+      0,
+      "phiRH"
+     ],
+     [
+      0,
+      "betaFcm"
+     ],
+     [
+      0,
+      "t0eff"
+     ],
+     [
+      0,
+      "betaT0"
+     ],
+     [
+      0,
+      "phi0"
+     ],
+     [
+      0,
+      "betaH"
+     ],
+     [
+      0,
+      "betaRH"
+     ],
+     [
+      0,
+      "epsCd0"
+     ],
+     [
+      0,
+      "kh"
+     ],
+     [
+      0,
+      "epsCaInf"
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "diagrammZeitpunkte": {
+    "args": [],
+    "pfade": [],
+    "art": "formel",
+    "ms": 0
+   },
+   "kriechSchwindVerlauf": {
+    "args": [
+     {
+      "eingabe": {
+       "fck": 1,
+       "rh": 1,
+       "h0": 1,
+       "t0": 1,
+       "ts": 1,
+       "zement": "S"
+      },
+      "fcm": 1,
+      "Ecm": 1,
+      "alpha1": 1,
+      "alpha2": 1,
+      "alpha3": 1,
+      "phiRH": 1,
+      "betaFcm": 1,
+      "t0eff": 1,
+      "betaT0": 1,
+      "phi0": 1,
+      "betaH": 1,
+      "betaRH": 1,
+      "epsCd0": 1,
+      "kh": 1,
+      "epsCaInf": 1,
+      "gueltig": false,
+      "hinweise": [
+       {
+        "stufe": "fehler",
+        "feld": "x",
+        "text": "x"
+       },
+       {
+        "stufe": "fehler",
+        "feld": "x",
+        "text": "x"
+       },
+       {
+        "stufe": "fehler",
+        "feld": "x",
+        "text": "x"
+       }
+      ]
+     },
+     [
+      1,
+      2,
+      3
+     ]
+    ],
+    "pfade": [
+     [
+      0,
+      "eingabe",
+      "fck"
+     ],
+     [
+      0,
+      "eingabe",
+      "rh"
+     ],
+     [
+      0,
+      "eingabe",
+      "h0"
+     ],
+     [
+      0,
+      "eingabe",
+      "t0"
+     ],
+     [
+      0,
+      "eingabe",
+      "ts"
+     ],
+     [
+      0,
+      "fcm"
+     ],
+     [
+      0,
+      "Ecm"
+     ],
+     [
+      0,
+      "alpha1"
+     ],
+     [
+      0,
+      "alpha2"
+     ],
+     [
+      0,
+      "alpha3"
+     ],
+     [
+      0,
+      "phiRH"
+     ],
+     [
+      0,
+      "betaFcm"
+     ],
+     [
+      0,
+      "t0eff"
+     ],
+     [
+      0,
+      "betaT0"
+     ],
+     [
+      0,
+      "phi0"
+     ],
+     [
+      0,
+      "betaH"
+     ],
+     [
+      0,
+      "betaRH"
+     ],
+     [
+      0,
+      "epsCd0"
+     ],
+     [
+      0,
+      "kh"
+     ],
+     [
+      0,
+      "epsCaInf"
+     ],
+     [
+      1,
+      0
+     ],
+     [
+      1,
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   },
+   "stuetzenVerformung": {
+    "args": [
+     {
+      "eingabe": {
+       "fck": 1,
+       "rh": 1,
+       "h0": 1,
+       "t0": 1,
+       "ts": 1,
+       "zement": "S"
+      },
+      "fcm": 1,
+      "Ecm": 1,
+      "alpha1": 1,
+      "alpha2": 1,
+      "alpha3": 1,
+      "phiRH": 1,
+      "betaFcm": 1,
+      "t0eff": 1,
+      "betaT0": 1,
+      "phi0": 1,
+      "betaH": 1,
+      "betaRH": 1,
+      "epsCd0": 1,
+      "kh": 1,
+      "epsCaInf": 1,
+      "gueltig": false,
+      "hinweise": [
+       {
+        "stufe": "fehler",
+        "feld": "x",
+        "text": "x"
+       },
+       {
+        "stufe": "fehler",
+        "feld": "x",
+        "text": "x"
+       },
+       {
+        "stufe": "fehler",
+        "feld": "x",
+        "text": "x"
+       }
+      ]
+     },
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      "eingabe",
+      "fck"
+     ],
+     [
+      0,
+      "eingabe",
+      "rh"
+     ],
+     [
+      0,
+      "eingabe",
+      "h0"
+     ],
+     [
+      0,
+      "eingabe",
+      "t0"
+     ],
+     [
+      0,
+      "eingabe",
+      "ts"
+     ],
+     [
+      0,
+      "fcm"
+     ],
+     [
+      0,
+      "Ecm"
+     ],
+     [
+      0,
+      "alpha1"
+     ],
+     [
+      0,
+      "alpha2"
+     ],
+     [
+      0,
+      "alpha3"
+     ],
+     [
+      0,
+      "phiRH"
+     ],
+     [
+      0,
+      "betaFcm"
+     ],
+     [
+      0,
+      "t0eff"
+     ],
+     [
+      0,
+      "betaT0"
+     ],
+     [
+      0,
+      "phi0"
+     ],
+     [
+      0,
+      "betaH"
+     ],
+     [
+      0,
+      "betaRH"
+     ],
+     [
+      0,
+      "epsCd0"
+     ],
+     [
+      0,
+      "kh"
+     ],
+     [
+      0,
+      "epsCaInf"
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "spannstahlRelaxation": {
+    "args": [
+     "1",
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "relaxationsVerlauf": {
+    "args": [
+     "1",
+     0.5,
+     [
+      0.5,
+      1,
+      1.5
+     ]
+    ],
+    "pfade": [
+     [
+      1
+     ],
+     [
+      2,
+      0
+     ],
+     [
+      2,
+      1
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "rheologieKennwerte": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.04
+   },
+   "maxwellRelaxation": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "zenerRelaxation": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "kelvinKriechen": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "maxwellKriechen": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "zenerKriechen": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "halbwertszeit": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "lehrDehnungPromille": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/laborVersuch.ts": {
+   "hoechstwert": {
+    "args": [
+     [
+      {
+       "x": 1,
+       "y": 1
+      },
+      {
+       "x": 2,
+       "y": 2
+      },
+      {
+       "x": 3,
+       "y": 3
+      }
+     ]
+    ],
+    "pfade": [
+     [
+      0,
+      0,
+      "x"
+     ],
+     [
+      0,
+      0,
+      "y"
+     ],
+     [
+      0,
+      1,
+      "x"
+     ],
+     [
+      0,
+      1,
+      "y"
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   },
+   "schoeneAchse": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   },
+   "spaltzugfestigkeit": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "spaltkraft": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "ausbreitDurchmesser": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "ausbreitAuswertung": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   },
+   "ringKugelZustand": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/laborversuche.ts": {
+   "bezugselektrode": {
+    "args": [
+     "x"
+    ],
+    "pfade": [],
+    "art": "formel",
+    "ms": 0
+   },
+   "umrechnenPotential": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "potentialReihe": {
+    "args": [
+     {
+      "messungen": [
+       {
+        "mNaCl": 10,
+        "eMess": 10
+       },
+       {
+        "mNaCl": 20,
+        "eMess": 20
+       },
+       {
+        "mNaCl": 30,
+        "eMess": 30
+       }
+      ],
+      "eBezugSHE": 10,
+      "volumen": 10,
+      "pH": 10,
+      "sprung": 10
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "messungen",
+      0,
+      "mNaCl"
+     ],
+     [
+      0,
+      "messungen",
+      0,
+      "eMess"
+     ],
+     [
+      0,
+      "messungen",
+      1,
+      "mNaCl"
+     ],
+     [
+      0,
+      "messungen",
+      1,
+      "eMess"
+     ],
+     [
+      0,
+      "eBezugSHE"
+     ],
+     [
+      0,
+      "volumen"
+     ],
+     [
+      0,
+      "pH"
+     ],
+     [
+      0,
+      "sprung"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.07
+   },
+   "auslagerung": {
+    "args": [
+     {
+      "proben": [
+       {
+        "d": 1,
+        "l": 1,
+        "m0": 1,
+        "m1": 1
+       },
+       {
+        "d": 2,
+        "l": 2,
+        "m0": 2,
+        "m1": 2
+       },
+       {
+        "d": 3,
+        "l": 3,
+        "m0": 3,
+        "m1": 3
+       }
+      ],
+      "tage": 1,
+      "rho": 1,
+      "blind": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "proben",
+      0,
+      "d"
+     ],
+     [
+      0,
+      "proben",
+      0,
+      "l"
+     ],
+     [
+      0,
+      "proben",
+      0,
+      "m0"
+     ],
+     [
+      0,
+      "proben",
+      0,
+      "m1"
+     ],
+     [
+      0,
+      "proben",
+      1,
+      "d"
+     ],
+     [
+      0,
+      "proben",
+      1,
+      "l"
+     ],
+     [
+      0,
+      "proben",
+      1,
+      "m0"
+     ],
+     [
+      0,
+      "proben",
+      1,
+      "m1"
+     ],
+     [
+      0,
+      "tage"
+     ],
+     [
+      0,
+      "rho"
+     ],
+     [
+      0,
+      "blind"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.27
+   },
+   "druckpruefung": {
+    "args": [
+     {
+      "wuerfel": [
+       {
+        "a": 1,
+        "b": 1,
+        "h": 1,
+        "m": 1,
+        "F": 1
+       },
+       {
+        "a": 2,
+        "b": 2,
+        "h": 2,
+        "m": 2,
+        "F": 2
+       },
+       {
+        "a": 3,
+        "b": 3,
+        "h": 3,
+        "m": 3,
+        "F": 3
+       }
+      ],
+      "trocken": false,
+      "zielklasse": "x"
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "wuerfel",
+      0,
+      "a"
+     ],
+     [
+      0,
+      "wuerfel",
+      0,
+      "b"
+     ],
+     [
+      0,
+      "wuerfel",
+      0,
+      "h"
+     ],
+     [
+      0,
+      "wuerfel",
+      0,
+      "m"
+     ],
+     [
+      0,
+      "wuerfel",
+      0,
+      "F"
+     ],
+     [
+      0,
+      "wuerfel",
+      1,
+      "a"
+     ],
+     [
+      0,
+      "wuerfel",
+      1,
+      "b"
+     ],
+     [
+      0,
+      "wuerfel",
+      1,
+      "h"
+     ],
+     [
+      0,
+      "wuerfel",
+      1,
+      "m"
+     ],
+     [
+      0,
+      "wuerfel",
+      1,
+      "F"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.35
+   },
+   "rundeAuf": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "stabflaeche": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "abtragsrate": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "ausbreitmass": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "frischRohdichte": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "druckfestigkeit": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "trockenFaktor": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "biegezugPrisma": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "druckPrisma": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/lca.ts": {
+   "ersatzzyklen": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "nutzungsdauerVon": {
+    "args": [
+     {
+      "baustoff": {
+       "id": "x",
+       "einheit": "m³",
+       "rohdichte": 1,
+       "gwpA1A3": 1,
+       "gwpC": 1,
+       "gwpD": 1,
+       "biogen": 1,
+       "penrt": 1,
+       "refKreislaufquote": 1,
+       "refVerwertung": "high_grade"
+      },
+      "menge": 1,
+      "kreislaufquote": 1,
+      "sortenreinheit": 1,
+      "verwertung": "high_grade",
+      "nutzungsdauer": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "baustoff",
+      "rohdichte"
+     ],
+     [
+      0,
+      "baustoff",
+      "gwpA1A3"
+     ],
+     [
+      0,
+      "baustoff",
+      "gwpC"
+     ],
+     [
+      0,
+      "baustoff",
+      "gwpD"
+     ],
+     [
+      0,
+      "baustoff",
+      "biogen"
+     ],
+     [
+      0,
+      "baustoff",
+      "penrt"
+     ],
+     [
+      0,
+      "baustoff",
+      "refKreislaufquote"
+     ],
+     [
+      0,
+      "menge"
+     ],
+     [
+      0,
+      "kreislaufquote"
+     ],
+     [
+      0,
+      "sortenreinheit"
+     ],
+     [
+      0,
+      "nutzungsdauer"
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "lcaBilanz": {
+    "args": [
+     {
+      "zeilen": [
+       {
+        "baustoff": {
+         "id": "x",
+         "einheit": "m³",
+         "rohdichte": 1,
+         "gwpA1A3": 1,
+         "gwpC": 1,
+         "gwpD": 1,
+         "biogen": 1,
+         "penrt": 1,
+         "refKreislaufquote": 1,
+         "refVerwertung": "high_grade"
+        },
+        "menge": 1,
+        "kreislaufquote": 1,
+        "sortenreinheit": 1,
+        "verwertung": "high_grade",
+        "nutzungsdauer": 1
+       },
+       {
+        "baustoff": {
+         "id": "x",
+         "einheit": "m³",
+         "rohdichte": 2,
+         "gwpA1A3": 2,
+         "gwpC": 2,
+         "gwpD": 2,
+         "biogen": 2,
+         "penrt": 2,
+         "refKreislaufquote": 2,
+         "refVerwertung": "high_grade"
+        },
+        "menge": 2,
+        "kreislaufquote": 2,
+        "sortenreinheit": 2,
+        "verwertung": "high_grade",
+        "nutzungsdauer": 2
+       },
+       {
+        "baustoff": {
+         "id": "x",
+         "einheit": "m³",
+         "rohdichte": 3,
+         "gwpA1A3": 3,
+         "gwpC": 3,
+         "gwpD": 3,
+         "biogen": 3,
+         "penrt": 3,
+         "refKreislaufquote": 3,
+         "refVerwertung": "high_grade"
+        },
+        "menge": 3,
+        "kreislaufquote": 3,
+        "sortenreinheit": 3,
+        "verwertung": "high_grade",
+        "nutzungsdauer": 3
+       }
+      ],
+      "nrfR": 1,
+      "nrfBeheizt": 1,
+      "betrachtungszeitraum": 1,
+      "transportDistanz": 1,
+      "transportFaktor": 1,
+      "mitB4": false,
+      "energie": {
+       "stromGeg": 1,
+       "pvEigennutzung": 1,
+       "waerme": 1,
+       "waermeTraeger": "netzstrom",
+       "nutzerstrom": false
+      },
+      "tgaSockel": "keiner",
+      "gebaeudeart": "wohnbau"
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "zeilen",
+      0,
+      "baustoff",
+      "rohdichte"
+     ],
+     [
+      0,
+      "zeilen",
+      0,
+      "baustoff",
+      "gwpA1A3"
+     ],
+     [
+      0,
+      "zeilen",
+      0,
+      "baustoff",
+      "gwpC"
+     ],
+     [
+      0,
+      "zeilen",
+      0,
+      "baustoff",
+      "gwpD"
+     ],
+     [
+      0,
+      "zeilen",
+      0,
+      "baustoff",
+      "biogen"
+     ],
+     [
+      0,
+      "zeilen",
+      0,
+      "baustoff",
+      "penrt"
+     ],
+     [
+      0,
+      "zeilen",
+      0,
+      "baustoff",
+      "refKreislaufquote"
+     ],
+     [
+      0,
+      "zeilen",
+      0,
+      "menge"
+     ],
+     [
+      0,
+      "zeilen",
+      0,
+      "kreislaufquote"
+     ],
+     [
+      0,
+      "zeilen",
+      0,
+      "sortenreinheit"
+     ],
+     [
+      0,
+      "zeilen",
+      0,
+      "nutzungsdauer"
+     ],
+     [
+      0,
+      "zeilen",
+      1,
+      "baustoff",
+      "rohdichte"
+     ],
+     [
+      0,
+      "zeilen",
+      1,
+      "baustoff",
+      "gwpA1A3"
+     ],
+     [
+      0,
+      "zeilen",
+      1,
+      "baustoff",
+      "gwpC"
+     ],
+     [
+      0,
+      "zeilen",
+      1,
+      "baustoff",
+      "gwpD"
+     ],
+     [
+      0,
+      "zeilen",
+      1,
+      "baustoff",
+      "biogen"
+     ],
+     [
+      0,
+      "zeilen",
+      1,
+      "baustoff",
+      "penrt"
+     ],
+     [
+      0,
+      "zeilen",
+      1,
+      "baustoff",
+      "refKreislaufquote"
+     ],
+     [
+      0,
+      "zeilen",
+      1,
+      "menge"
+     ],
+     [
+      0,
+      "zeilen",
+      1,
+      "kreislaufquote"
+     ],
+     [
+      0,
+      "zeilen",
+      1,
+      "sortenreinheit"
+     ],
+     [
+      0,
+      "zeilen",
+      1,
+      "nutzungsdauer"
+     ],
+     [
+      0,
+      "nrfR"
+     ],
+     [
+      0,
+      "nrfBeheizt"
+     ],
+     [
+      0,
+      "betrachtungszeitraum"
+     ],
+     [
+      0,
+      "transportDistanz"
+     ],
+     [
+      0,
+      "transportFaktor"
+     ],
+     [
+      0,
+      "energie",
+      "stromGeg"
+     ],
+     [
+      0,
+      "energie",
+      "pvEigennutzung"
+     ],
+     [
+      0,
+      "energie",
+      "waerme"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.08
+   },
+   "einzelbaustoffA1A4": {
+    "args": [
+     {
+      "menge": 1,
+      "volumenbezogen": false,
+      "rohdichte": 1,
+      "gwpA1A3": 1,
+      "penrt": 1,
+      "distanz": 1,
+      "transport": "lkw-heavy"
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "menge"
+     ],
+     [
+      0,
+      "rohdichte"
+     ],
+     [
+      0,
+      "gwpA1A3"
+     ],
+     [
+      0,
+      "penrt"
+     ],
+     [
+      0,
+      "distanz"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "mengeJeM2Bauteil": {
+    "args": [
+     "m³",
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "funktionelleEinheitBauteil": {
+    "args": [
+     [
+      {
+       "name": "x",
+       "einheit": "m³",
+       "dickeM": 1,
+       "rohdichte": 1,
+       "gwpA1A3": 1,
+       "gwpC": 1,
+       "nutzungsdauer": 1
+      },
+      {
+       "name": "x",
+       "einheit": "m³",
+       "dickeM": 2,
+       "rohdichte": 2,
+       "gwpA1A3": 2,
+       "gwpC": 2,
+       "nutzungsdauer": 2
+      },
+      {
+       "name": "x",
+       "einheit": "m³",
+       "dickeM": 3,
+       "rohdichte": 3,
+       "gwpA1A3": 3,
+       "gwpC": 3,
+       "nutzungsdauer": 3
+      }
+     ],
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      0,
+      "dickeM"
+     ],
+     [
+      0,
+      0,
+      "rohdichte"
+     ],
+     [
+      0,
+      0,
+      "gwpA1A3"
+     ],
+     [
+      0,
+      0,
+      "gwpC"
+     ],
+     [
+      0,
+      0,
+      "nutzungsdauer"
+     ],
+     [
+      0,
+      1,
+      "dickeM"
+     ],
+     [
+      0,
+      1,
+      "rohdichte"
+     ],
+     [
+      0,
+      1,
+      "gwpA1A3"
+     ],
+     [
+      0,
+      1,
+      "gwpC"
+     ],
+     [
+      0,
+      1,
+      "nutzungsdauer"
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.06
+   }
+  },
+  "src/calc/lcc.ts": {
+   "rentenbarwertfaktor": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "barwertfaktorPreissteigerung": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "restwertLinear": {
+    "args": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "lccOption": {
+    "args": [
+     {
+      "capex": 1,
+      "opex0": 1,
+      "maintenanceInterval": 1,
+      "maintenanceCost": 1,
+      "lifespan": 1,
+      "replacementCost": 1,
+      "eolCost": 1,
+      "embodiedCO2": 1,
+      "operatingCO2": 1
+     },
+     {
+      "r": 1,
+      "e": 1,
+      "i": 1,
+      "N": 1,
+      "co2Bepreisung": false,
+      "co2Preis": 1,
+      "co2Steigerung": 1,
+      "foerderungB": 1,
+      "restwertLinear": false
+     },
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      "capex"
+     ],
+     [
+      0,
+      "opex0"
+     ],
+     [
+      0,
+      "maintenanceInterval"
+     ],
+     [
+      0,
+      "maintenanceCost"
+     ],
+     [
+      0,
+      "lifespan"
+     ],
+     [
+      0,
+      "replacementCost"
+     ],
+     [
+      0,
+      "eolCost"
+     ],
+     [
+      0,
+      "embodiedCO2"
+     ],
+     [
+      0,
+      "operatingCO2"
+     ],
+     [
+      1,
+      "r"
+     ],
+     [
+      1,
+      "e"
+     ],
+     [
+      1,
+      "i"
+     ],
+     [
+      1,
+      "N"
+     ],
+     [
+      1,
+      "co2Preis"
+     ],
+     [
+      1,
+      "co2Steigerung"
+     ],
+     [
+      1,
+      "foerderungB"
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.03
+   },
+   "lccVergleich": {
+    "args": [
+     {
+      "capex": 1,
+      "opex0": 1,
+      "maintenanceInterval": 1,
+      "maintenanceCost": 1,
+      "lifespan": 1,
+      "replacementCost": 1,
+      "eolCost": 1,
+      "embodiedCO2": 1,
+      "operatingCO2": 1
+     },
+     {
+      "capex": 1,
+      "opex0": 1,
+      "maintenanceInterval": 1,
+      "maintenanceCost": 1,
+      "lifespan": 1,
+      "replacementCost": 1,
+      "eolCost": 1,
+      "embodiedCO2": 1,
+      "operatingCO2": 1
+     },
+     {
+      "r": 1,
+      "e": 1,
+      "i": 1,
+      "N": 1,
+      "co2Bepreisung": false,
+      "co2Preis": 1,
+      "co2Steigerung": 1,
+      "foerderungB": 1,
+      "restwertLinear": false
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "capex"
+     ],
+     [
+      0,
+      "opex0"
+     ],
+     [
+      0,
+      "maintenanceInterval"
+     ],
+     [
+      0,
+      "maintenanceCost"
+     ],
+     [
+      0,
+      "lifespan"
+     ],
+     [
+      0,
+      "replacementCost"
+     ],
+     [
+      0,
+      "eolCost"
+     ],
+     [
+      0,
+      "embodiedCO2"
+     ],
+     [
+      0,
+      "operatingCO2"
+     ],
+     [
+      1,
+      "capex"
+     ],
+     [
+      1,
+      "opex0"
+     ],
+     [
+      1,
+      "maintenanceInterval"
+     ],
+     [
+      1,
+      "maintenanceCost"
+     ],
+     [
+      1,
+      "lifespan"
+     ],
+     [
+      1,
+      "replacementCost"
+     ],
+     [
+      1,
+      "eolCost"
+     ],
+     [
+      1,
+      "embodiedCO2"
+     ],
+     [
+      1,
+      "operatingCO2"
+     ],
+     [
+      2,
+      "r"
+     ],
+     [
+      2,
+      "e"
+     ],
+     [
+      2,
+      "i"
+     ],
+     [
+      2,
+      "N"
+     ],
+     [
+      2,
+      "co2Preis"
+     ],
+     [
+      2,
+      "co2Steigerung"
+     ],
+     [
+      2,
+      "foerderungB"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.04
+   },
+   "steigerungsfaktor": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "abzinsungsfaktor": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "annuitaetenfaktor": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/lebensdauer.ts": {
+   "lognormalParameter": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "erfc": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "phiInvers": {
+    "args": [
+     0.5
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "keFeuchte": {
+    "args": [
+     1,
+     {
+      "rhRef": 65,
+      "fe": 5,
+      "ge": 2.5
+     }
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "karbonatisierungsrate": {
+    "args": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ],
+     [
+      5
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "rInvAusKac": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "chloridgehalt": {
+    "args": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ],
+     [
+      5
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "deckungAusZ": {
+    "args": [
+     {
+      "typ": "konstant",
+      "m": 1,
+      "s": 1
+     },
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      "m"
+     ],
+     [
+      0,
+      "s"
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "mittelwertrechnung": {
+    "args": [
+     {
+      "mechanismus": "chlorid",
+      "karbonatisierung": {
+       "deckung": {
+        "typ": "konstant",
+        "m": 1,
+        "s": 1
+       },
+       "rh": {
+        "typ": "konstant",
+        "m": 1
+       },
+       "tc": 1,
+       "bc": {
+        "typ": "konstant",
+        "m": 1
+       },
+       "kt": {
+        "typ": "konstant",
+        "m": 1
+       },
+       "rInv": {
+        "typ": "konstant",
+        "m": 1
+       },
+       "epsT": {
+        "typ": "konstant",
+        "m": 1
+       },
+       "cS": {
+        "typ": "konstant",
+        "m": 1
+       },
+       "pSR": 1,
+       "tow": 1,
+       "bw": {
+        "typ": "konstant",
+        "m": 1
+       }
+      },
+      "chlorid": {
+       "deckung": {
+        "typ": "konstant",
+        "m": 1,
+        "s": 1
+       },
+       "cCrit": {
+        "typ": "konstant",
+        "m": 1
+       },
+       "c0": 1,
+       "cS": {
+        "typ": "konstant",
+        "m": 1
+       },
+       "dx": {
+        "typ": "konstant",
+        "m": 1
+       },
+       "dRcm": {
+        "typ": "konstant",
+        "m": 1
+       },
+       "a": {
+        "typ": "konstant",
+        "m": 1
+       },
+       "be": {
+        "typ": "konstant",
+        "m": 1
+       },
+       "tReal": {
+        "typ": "konstant",
+        "m": 1
+       },
+       "kt": 1
+      },
+      "nutzungsdauer": 1,
+      "betaZiel": 1,
+      "laeufe": 1,
+      "startwert": 1,
+      "tMax": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "karbonatisierung",
+      "deckung",
+      "m"
+     ],
+     [
+      0,
+      "karbonatisierung",
+      "deckung",
+      "s"
+     ],
+     [
+      0,
+      "karbonatisierung",
+      "tc"
+     ],
+     [
+      0,
+      "karbonatisierung",
+      "pSR"
+     ],
+     [
+      0,
+      "karbonatisierung",
+      "tow"
+     ],
+     [
+      0,
+      "chlorid",
+      "deckung",
+      "m"
+     ],
+     [
+      0,
+      "chlorid",
+      "deckung",
+      "s"
+     ],
+     [
+      0,
+      "chlorid",
+      "c0"
+     ],
+     [
+      0,
+      "chlorid",
+      "kt"
+     ],
+     [
+      0,
+      "nutzungsdauer"
+     ],
+     [
+      0,
+      "betaZiel"
+     ],
+     [
+      0,
+      "laeufe"
+     ],
+     [
+      0,
+      "startwert"
+     ],
+     [
+      0,
+      "tMax"
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   },
+   "erf": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "phi": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "betaAusPf": {
+    "args": [
+     0.5
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "pfAusBeta": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "erfInvers": {
+    "args": [
+     0.5
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "kcNachbehandlung": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "wetterExponent": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "wetterfunktion": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "karbonatisierungstiefe": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "rInvAusAcc": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "keTemperatur": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "alterungsfaktor": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "rInvStreuung": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/lebensdauerUebergabe.ts": {
+   "vorgabeAusUebergabe": {
+    "args": [
+     {
+      "quelle": "schnellkarbonatisierung",
+      "mech": "chlorid",
+      "tSL": 1,
+      "deckM": 1,
+      "deckS": 1,
+      "kac": 1,
+      "cAcc": 1,
+      "xcAcc": 1,
+      "rInv": 1,
+      "kNat": 1,
+      "drcm": 1,
+      "cS": 1,
+      "a": 1,
+      "binder": "cemI",
+      "expo": [
+       "x",
+       "x",
+       "x"
+      ]
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "tSL"
+     ],
+     [
+      0,
+      "deckM"
+     ],
+     [
+      0,
+      "deckS"
+     ],
+     [
+      0,
+      "kac"
+     ],
+     [
+      0,
+      "cAcc"
+     ],
+     [
+      0,
+      "xcAcc"
+     ],
+     [
+      0,
+      "rInv"
+     ],
+     [
+      0,
+      "kNat"
+     ],
+     [
+      0,
+      "drcm"
+     ],
+     [
+      0,
+      "cS"
+     ],
+     [
+      0,
+      "a"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.02
+   }
+  },
+  "src/calc/lehm.ts": {
+   "lehmSchaetzmodell": {
+    "args": [
+     {
+      "ton": 1,
+      "schluff": 1,
+      "sand": 1,
+      "wasser": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "ton"
+     ],
+     [
+      0,
+      "schluff"
+     ],
+     [
+      0,
+      "sand"
+     ],
+     [
+      0,
+      "wasser"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   }
+  },
+  "src/calc/materialoptimierung.ts": {
+   "dafstbVergleich": {
+    "args": [
+     {
+      "bauteil": "wand",
+      "bauweise": "x",
+      "zement": "cem1",
+      "pruefalter": 28,
+      "stahlRoute": "eaf_de"
+     }
+    ],
+    "pfade": [],
+    "art": "kern",
+    "ms": 0.02
+   }
+  },
+  "src/calc/materialpass.ts": {
+   "materialpassBilanz": {
+    "args": [
+     {
+      "concreteVolume": 1,
+      "steelMass": 1,
+      "woodVolume": 1,
+      "copperMass": 1
+     },
+     1,
+     1,
+     "glued"
+    ],
+    "pfade": [
+     [
+      0,
+      "concreteVolume"
+     ],
+     [
+      0,
+      "steelMass"
+     ],
+     [
+      0,
+      "woodVolume"
+     ],
+     [
+      0,
+      "copperMass"
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   }
+  },
+  "src/calc/mauerwerk.ts": {
+   "fkEmpfehlungEN": {
+    "args": [
+     1,
+     1,
+     1,
+     "NM",
+     false
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "fkEmpfehlungENGenormt": {
+    "args": [
+     1,
+     1,
+     1,
+     "NM",
+     false
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "fvk0NA": {
+    "args": [
+     "NM",
+     1
+    ],
+    "pfade": [
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "phiAusmitte": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "rho2": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "phi1": {
+    "args": [
+     "innen",
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "phi2": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "fdAusFk": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/mechanischeKenngroessen.ts": {
+   "stabKenngroessen": {
+    "args": [
+     {
+      "werkstoff": {
+       "kategorie": "Metall",
+       "E": 0.3,
+       "nu": 0.3,
+       "fy": 0.3,
+       "fu": 0.3,
+       "dichte": 0.3
+      },
+      "lastArt": "zug",
+      "kraftKn": 0.3,
+      "laengeM": 0.3,
+      "querschnitt": "rund",
+      "durchmesserMm": 0.3,
+      "breiteMm": 0.3,
+      "hoeheMm": 0.3,
+      "kriechZahl": 0.3,
+      "schwindPromille": 0.3
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "werkstoff",
+      "E"
+     ],
+     [
+      0,
+      "werkstoff",
+      "nu"
+     ],
+     [
+      0,
+      "werkstoff",
+      "fy"
+     ],
+     [
+      0,
+      "werkstoff",
+      "fu"
+     ],
+     [
+      0,
+      "werkstoff",
+      "dichte"
+     ],
+     [
+      0,
+      "kraftKn"
+     ],
+     [
+      0,
+      "laengeM"
+     ],
+     [
+      0,
+      "durchmesserMm"
+     ],
+     [
+      0,
+      "breiteMm"
+     ],
+     [
+      0,
+      "hoeheMm"
+     ],
+     [
+      0,
+      "kriechZahl"
+     ],
+     [
+      0,
+      "schwindPromille"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.43
+   }
+  },
+  "src/calc/membran.ts": {
+   "radiusAusStich": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "membranKraft": {
+    "args": [
+     "zylinder",
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "membranNachweis": {
+    "args": [
+     {
+      "geometrie": "kugel",
+      "p": 1,
+      "radius": 1,
+      "spannweite": 1,
+      "stich": 1,
+      "werkstoff": "folie",
+      "festigkeitGewebe": 1,
+      "dickeUm": 1,
+      "festigkeitFolie": 1,
+      "gamma": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "p"
+     ],
+     [
+      0,
+      "radius"
+     ],
+     [
+      0,
+      "spannweite"
+     ],
+     [
+      0,
+      "stich"
+     ],
+     [
+      0,
+      "festigkeitGewebe"
+     ],
+     [
+      0,
+      "dickeUm"
+     ],
+     [
+      0,
+      "festigkeitFolie"
+     ],
+     [
+      0,
+      "gamma"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.03
+   }
+  },
+  "src/calc/mischung.ts": {
+   "maxFaFaktor": {
+    "args": [
+     "x"
+    ],
+    "pfade": [],
+    "art": "formel",
+    "ms": 0
+   },
+   "stoffraum": {
+    "args": [
+     {
+      "zement": 1,
+      "rhoZement": 1,
+      "wasser": 1,
+      "fa": 1,
+      "sf": 1,
+      "hues": 1,
+      "biochar": 1,
+      "zusatzmittel": 1,
+      "luft": 1,
+      "stahlfaser": 1,
+      "ppFaser": 1,
+      "rhoGestein": 1,
+      "fraktionen": [
+       {
+        "anteil": 1,
+        "feuchte": 1,
+        "wa": 1
+       },
+       {
+        "anteil": 2,
+        "feuchte": 2,
+        "wa": 2
+       },
+       {
+        "anteil": 3,
+        "feuchte": 3,
+        "wa": 3
+       }
+      ],
+      "biocharFeuchte": 1,
+      "biocharWa": 1,
+      "k": {
+       "fa": 1,
+       "sf": 1,
+       "hues": 1,
+       "biochar": 1
+      },
+      "maxFaFaktor": 1,
+      "zementArt": "x",
+      "frostTausalz": false
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "zement"
+     ],
+     [
+      0,
+      "rhoZement"
+     ],
+     [
+      0,
+      "wasser"
+     ],
+     [
+      0,
+      "fa"
+     ],
+     [
+      0,
+      "sf"
+     ],
+     [
+      0,
+      "hues"
+     ],
+     [
+      0,
+      "biochar"
+     ],
+     [
+      0,
+      "zusatzmittel"
+     ],
+     [
+      0,
+      "luft"
+     ],
+     [
+      0,
+      "stahlfaser"
+     ],
+     [
+      0,
+      "ppFaser"
+     ],
+     [
+      0,
+      "rhoGestein"
+     ],
+     [
+      0,
+      "fraktionen",
+      0,
+      "anteil"
+     ],
+     [
+      0,
+      "fraktionen",
+      0,
+      "feuchte"
+     ],
+     [
+      0,
+      "fraktionen",
+      0,
+      "wa"
+     ],
+     [
+      0,
+      "fraktionen",
+      1,
+      "anteil"
+     ],
+     [
+      0,
+      "fraktionen",
+      1,
+      "feuchte"
+     ],
+     [
+      0,
+      "fraktionen",
+      1,
+      "wa"
+     ],
+     [
+      0,
+      "biocharFeuchte"
+     ],
+     [
+      0,
+      "biocharWa"
+     ],
+     [
+      0,
+      "k",
+      "fa"
+     ],
+     [
+      0,
+      "k",
+      "sf"
+     ],
+     [
+      0,
+      "k",
+      "hues"
+     ],
+     [
+      0,
+      "k",
+      "biochar"
+     ],
+     [
+      0,
+      "maxFaFaktor"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.27
+   },
+   "walzStuetzstellen": {
+    "args": [],
+    "pfade": [],
+    "art": "formel",
+    "ms": 0.01
+   },
+   "walzKurve": {
+    "args": [
+     1,
+     32.5
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.03
+   },
+   "regelDurchgang": {
+    "args": [
+     8,
+     "A",
+     1
+    ],
+    "pfade": [
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "istSieblinie": {
+    "args": [
+     8,
+     {
+      "f04": 1,
+      "f48": 1,
+      "f816": 1,
+      "f1632": 1
+     }
+    ],
+    "pfade": [
+     [
+      1,
+      "f04"
+     ],
+     [
+      1,
+      "f48"
+     ],
+     [
+      1,
+      "f816"
+     ],
+     [
+      1,
+      "f1632"
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.03
+   },
+   "lpFestigkeitsverlust": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "walzFestigkeit": {
+    "args": [
+     1,
+     32.5
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/moertelbedarf.ts": {
+   "sackanzahl": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "putzbedarf": {
+    "args": [
+     {
+      "flaeche": 1,
+      "dickeMm": 1,
+      "art": "zement"
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "flaeche"
+     ],
+     [
+      0,
+      "dickeMm"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "mauermoertelNormalfuge": {
+    "args": [
+     {
+      "flaeche": 1,
+      "wanddicke": "11.5",
+      "format": "df"
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "flaeche"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "duennbettmoertel": {
+    "args": [
+     {
+      "flaeche": 1,
+      "wanddickeCm": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "flaeche"
+     ],
+     [
+      0,
+      "wanddickeCm"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   }
+  },
+  "src/calc/packungsdichte.ts": {
+   "andreasenModifiziert": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "rmse": {
+    "args": [
+     [
+      1,
+      2,
+      3
+     ],
+     [
+      1,
+      2,
+      3
+     ]
+    ],
+    "pfade": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      0
+     ],
+     [
+      1,
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.04
+   },
+   "packungsdichteSchaetzung": {
+    "args": [
+     1,
+     "rund"
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "furnasIdeal": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "furnasMaximum": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "zweikornMischung": {
+    "args": [
+     {
+      "d1": 0.5,
+      "d2": 0.5,
+      "phi1": 0.5,
+      "phi2": 0.5
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "d1"
+     ],
+     [
+      0,
+      "d2"
+     ],
+     [
+      0,
+      "phi1"
+     ],
+     [
+      0,
+      "phi2"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.03
+   },
+   "fuller": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/pfas.ts": {
+   "ersatzwert": {
+    "args": [
+     1,
+     "null"
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "pfasSummenbewertung": {
+    "args": [
+     {
+      "werte": {},
+      "bg": 1,
+      "ansatz": "null"
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "bg"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.02
+   }
+  },
+  "src/calc/probenahme.ts": {
+   "pn98Probenzahl": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "pn98Plan": {
+    "args": [
+     {
+      "volumenM3": 1,
+      "maxUeM3": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "volumenM3"
+     ],
+     [
+      0,
+      "maxUeM3"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "pn98Mindestvolumen": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/pruefverfahren.ts": {
+   "rueckprallKorrektur": {
+    "args": [
+     "0",
+     1
+    ],
+    "pfade": [
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "rueckprallFestigkeitLehr": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "rueckprallZfp": {
+    "args": [
+     1,
+     "0"
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "rueckprallKurven": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "ultraschallZfp": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "impactEchoZfp": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "bewehrungsSignal": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "georadar": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "wenner": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "torrentKlasse": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "karstenZfp": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "durchstrahlung": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "gumMessunsicherheit": {
+    "args": [
+     [
+      1,
+      2,
+      3
+     ],
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "ringversuch": {
+    "args": [
+     {
+      "x": 1,
+      "X": 1,
+      "sigmaPt": 1,
+      "uLab": 1,
+      "uRef": 1,
+      "offsetB": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "x"
+     ],
+     [
+      0,
+      "X"
+     ],
+     [
+      0,
+      "sigmaPt"
+     ],
+     [
+      0,
+      "uLab"
+     ],
+     [
+      0,
+      "uRef"
+     ],
+     [
+      0,
+      "offsetB"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.02
+   },
+   "werkzeugToleranz": {
+    "args": [
+     "meterstab",
+     1
+    ],
+    "pfade": [
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "schlankheitsfaktorAstm": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "bohrkernPruefung": {
+    "args": [
+     {
+      "dMm": 1,
+      "hMm": 1,
+      "kraftKn": 1,
+      "staebe": 1,
+      "richtung": "vertikal"
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "dMm"
+     ],
+     [
+      0,
+      "hMm"
+     ],
+     [
+      0,
+      "kraftKn"
+     ],
+     [
+      0,
+      "staebe"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "spaltzugfestigkeit": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "biegezug4Punkt": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "marshallQuotient": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "zugversuchStahl": {
+    "args": [
+     {
+      "dMm": 1,
+      "kraftReKn": 1,
+      "kraftRmKn": 1,
+      "l0Mm": 1,
+      "luMm": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "dMm"
+     ],
+     [
+      0,
+      "kraftReKn"
+     ],
+     [
+      0,
+      "kraftRmKn"
+     ],
+     [
+      0,
+      "l0Mm"
+     ],
+     [
+      0,
+      "luMm"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "holzSchaetzung": {
+    "args": [
+     {
+      "rohdichte": 1,
+      "feuchte": 1,
+      "bMm": 1,
+      "hMm": 1,
+      "stuetzweiteMm": 1,
+      "kraftKn": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "rohdichte"
+     ],
+     [
+      0,
+      "feuchte"
+     ],
+     [
+      0,
+      "bMm"
+     ],
+     [
+      0,
+      "hMm"
+     ],
+     [
+      0,
+      "stuetzweiteMm"
+     ],
+     [
+      0,
+      "kraftKn"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "bemessungswerteBeton": {
+    "args": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "geometrieFaktor": {
+    "args": [
+     "zyl_150",
+     1
+    ],
+    "pfade": [
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "festigkeitsentwicklung": {
+    "args": [
+     {
+      "fck": 1,
+      "alterTage": 1,
+      "zement": "S",
+      "geometrie": "zyl_150",
+      "lagerung": "norm"
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "fck"
+     ],
+     [
+      0,
+      "alterTage"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   }
+  },
+  "src/calc/querkraft.ts": {
+   "kappa1Vmin": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "zMaxNA": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/rcGesteinskoernung.ts": {
+   "rcBilanz": {
+    "args": [
+     1,
+     "typ1",
+     "x0_xc_xf1_xf3",
+     false
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/rissbreite.ts": {
+   "xZustandII": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "rissbreiteFuerAs": {
+    "args": [
+     {
+      "h": 1,
+      "b": 1,
+      "cNom": 1,
+      "phi": 1,
+      "abstand": 1,
+      "sigmaS": 1,
+      "fctEff": 1,
+      "ecm": 1,
+      "beanspruchung": "zug",
+      "zwangNach28d": false,
+      "kt": 1,
+      "wkReq": 1
+     },
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      "h"
+     ],
+     [
+      0,
+      "b"
+     ],
+     [
+      0,
+      "cNom"
+     ],
+     [
+      0,
+      "phi"
+     ],
+     [
+      0,
+      "abstand"
+     ],
+     [
+      0,
+      "sigmaS"
+     ],
+     [
+      0,
+      "fctEff"
+     ],
+     [
+      0,
+      "ecm"
+     ],
+     [
+      0,
+      "kt"
+     ],
+     [
+      0,
+      "wkReq"
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   }
+  },
+  "src/calc/rueckbauMassen.ts": {
+   "rueckbauMassen": {
+    "args": [
+     1,
+     "concrete"
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   },
+   "massenkennwertSumme": {
+    "args": [
+     "concrete"
+    ],
+    "pfade": [],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/schall.ts": {
+   "schalldaemmung": {
+    "args": [
+     [
+      {
+       "name": "x",
+       "d": 1,
+       "density": 1
+      },
+      {
+       "name": "x",
+       "d": 2,
+       "density": 2
+      },
+      {
+       "name": "x",
+       "d": 3,
+       "density": 3
+      }
+     ]
+    ],
+    "pfade": [
+     [
+      0,
+      0,
+      "d"
+     ],
+     [
+      0,
+      0,
+      "density"
+     ],
+     [
+      0,
+      1,
+      "d"
+     ],
+     [
+      0,
+      1,
+      "density"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "wandSchalldaemmung": {
+    "args": [
+     {
+      "dicke": 1,
+      "rohdichte": 1,
+      "putzMasse": 1,
+      "kF": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "dicke"
+     ],
+     [
+      0,
+      "rohdichte"
+     ],
+     [
+      0,
+      "putzMasse"
+     ],
+     [
+      0,
+      "kF"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.04
+   },
+   "trittschall": {
+    "args": [
+     {
+      "dDecke": 1,
+      "rhoDecke": 1,
+      "mZusatz": 1,
+      "dEstrich": 1,
+      "rhoEstrich": 1,
+      "sStrich": 1,
+      "mFlanke": 1,
+      "zulLnw": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "dDecke"
+     ],
+     [
+      0,
+      "rhoDecke"
+     ],
+     [
+      0,
+      "mZusatz"
+     ],
+     [
+      0,
+      "dEstrich"
+     ],
+     [
+      0,
+      "rhoEstrich"
+     ],
+     [
+      0,
+      "sStrich"
+     ],
+     [
+      0,
+      "mFlanke"
+     ],
+     [
+      0,
+      "zulLnw"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.15
+   },
+   "rwMassiv": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "lnEq0w": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "resonanzfrequenzEstrich": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "deltaLwNassestrich": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "deltaLFrequenz": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "korrekturwertK": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/schnellkarbonatisierung.ts": {
+   "wurzelZeitRegression": {
+    "args": [
+     [
+      {
+       "tTage": 1,
+       "xMm": 1
+      },
+      {
+       "tTage": 2,
+       "xMm": 2
+      },
+      {
+       "tTage": 3,
+       "xMm": 3
+      }
+     ],
+     false
+    ],
+    "pfade": [
+     [
+      0,
+      0,
+      "tTage"
+     ],
+     [
+      0,
+      0,
+      "xMm"
+     ],
+     [
+      0,
+      1,
+      "tTage"
+     ],
+     [
+      0,
+      1,
+      "xMm"
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   },
+   "umrechnungsfaktor": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "tiefeNach": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "zeitBisTiefe": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "koeffizientAusTiefe": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/schutzInstandsetzung.ts": {
+   "erf": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "chloridGehalt": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "chloridAuswertung": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.02
+   },
+   "rissinjektionPlan": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "wtaBohrplan": {
+    "args": [
+     1,
+     "mixed"
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "wtaZertifikatsstufe": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "wtaKombiBewertung": {
+    "args": [
+     "calciumsilicat",
+     "ok",
+     "medium",
+     "group1"
+    ],
+    "pfade": [],
+    "art": "formel",
+    "ms": 0
+   },
+   "wuNachweis": {
+    "args": [
+     1,
+     1,
+     1,
+     "1",
+     "Wand",
+     "ortbeton"
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "zustandsnote": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "schulnoteAusZustandsnote": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "belegreifeGrenzeCM": {
+    "args": [
+     "cement",
+     false
+    ],
+    "pfade": [],
+    "art": "formel",
+    "ms": 0
+   },
+   "deSitterKosten": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/sicherheitskonzept.ts": {
+   "kombination610": {
+    "args": [
+     {
+      "gk": 1,
+      "qk1": 1,
+      "qk2": 1,
+      "psi01": 1,
+      "psi02": 1,
+      "gammaG": 1,
+      "gammaQ": 1,
+      "getauscht": false
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "gk"
+     ],
+     [
+      0,
+      "qk1"
+     ],
+     [
+      0,
+      "qk2"
+     ],
+     [
+      0,
+      "psi01"
+     ],
+     [
+      0,
+      "psi02"
+     ],
+     [
+      0,
+      "gammaG"
+     ],
+     [
+      0,
+      "gammaQ"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   }
+  },
+  "src/calc/sommerWaermeschutz.ts": {
+   "sonneneintrag": {
+    "args": [
+     {
+      "nutzung": "wohn",
+      "region": "A",
+      "bauart": "mittel",
+      "nachtlueftung": "hoch",
+      "passiveKuehlung": false,
+      "AG": 0.3,
+      "fenster": [
+       {
+        "name": "x",
+        "A": 0.3,
+        "g": 0.3,
+        "scheiben": 3,
+        "orientierung": "S",
+        "neigung": 0.3,
+        "schutz": "x",
+        "fcEigen": 0.3,
+        "verschattet": false
+       },
+       {
+        "name": "x",
+        "A": 0.6,
+        "g": 0.6,
+        "scheiben": 3,
+        "orientierung": "S",
+        "neigung": 0.6,
+        "schutz": "x",
+        "fcEigen": 0.6,
+        "verschattet": false
+       },
+       {
+        "name": "x",
+        "A": 0.8999999999999999,
+        "g": 0.8999999999999999,
+        "scheiben": 3,
+        "orientierung": "S",
+        "neigung": 0.8999999999999999,
+        "schutz": "x",
+        "fcEigen": 0.8999999999999999,
+        "verschattet": false
+       }
+      ]
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "AG"
+     ],
+     [
+      0,
+      "fenster",
+      0,
+      "A"
+     ],
+     [
+      0,
+      "fenster",
+      0,
+      "g"
+     ],
+     [
+      0,
+      "fenster",
+      0,
+      "neigung"
+     ],
+     [
+      0,
+      "fenster",
+      0,
+      "fcEigen"
+     ],
+     [
+      0,
+      "fenster",
+      1,
+      "A"
+     ],
+     [
+      0,
+      "fenster",
+      1,
+      "g"
+     ],
+     [
+      0,
+      "fenster",
+      1,
+      "neigung"
+     ],
+     [
+      0,
+      "fenster",
+      1,
+      "fcEigen"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.04
+   }
+  },
+  "src/calc/spannbeton.ts": {
+   "rechteckQuerschnitt": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "freyssinetSpannungen": {
+    "args": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ],
+     [
+      5
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "dehnungsZustand": {
+    "args": [
+     {
+      "P": 1,
+      "q": 1,
+      "ep": 1,
+      "lage": "centric",
+      "schnitt": "midspan"
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "P"
+     ],
+     [
+      0,
+      "q"
+     ],
+     [
+      0,
+      "ep"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.03
+   },
+   "stauchungsVerlust": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "lastausgleich": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "spanngliedDeckung": {
+    "args": [
+     {
+      "bauwerk": "hochbau",
+      "verfahren": "post_tensioned",
+      "huellrohrMm": 1,
+      "litzeMm": 1,
+      "xc": "XC1",
+      "xd": "XD1",
+      "betonklasse": "x"
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "huellrohrMm"
+     ],
+     [
+      0,
+      "litzeMm"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "dekompressionsKraft": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "litzenAnzahl": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/spannungszustand.ts": {
+   "richtungGrad": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "transformiere": {
+    "args": [
+     {
+      "sx": 1,
+      "sy": 1,
+      "txy": 1
+     },
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      "sx"
+     ],
+     [
+      0,
+      "sy"
+     ],
+     [
+      0,
+      "txy"
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "mohrKreis": {
+    "args": [
+     {
+      "sx": 1,
+      "sy": 1,
+      "txy": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "sx"
+     ],
+     [
+      0,
+      "sy"
+     ],
+     [
+      0,
+      "txy"
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "vonMises": {
+    "args": [
+     {
+      "sx": 1,
+      "sy": 1,
+      "txy": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "sx"
+     ],
+     [
+      0,
+      "sy"
+     ],
+     [
+      0,
+      "txy"
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "hauptspannungen": {
+    "args": [
+     {
+      "sx": 1,
+      "sy": 1,
+      "txy": 1
+     },
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      "sx"
+     ],
+     [
+      0,
+      "sy"
+     ],
+     [
+      0,
+      "txy"
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "kreisPunkte": {
+    "args": [
+     {
+      "sx": 1,
+      "sy": 1,
+      "txy": 1
+     },
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      "sx"
+     ],
+     [
+      0,
+      "sy"
+     ],
+     [
+      0,
+      "txy"
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   }
+  },
+  "src/calc/stabilitaet.ts": {
+   "eulerEigenform": {
+    "args": [
+     3,
+     1
+    ],
+    "pfade": [
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/stahlbau.ts": {
+   "chi": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "klassifiziere": {
+    "args": [
+     {
+      "name": "x",
+      "reihe": "IPE",
+      "h": 1,
+      "b": 1,
+      "tw": 1,
+      "tf": 1,
+      "r": 1,
+      "A": 1,
+      "Iy": 1,
+      "Iz": 1,
+      "Wely": 1,
+      "Wply": 1,
+      "iy": 1,
+      "iz": 1
+     },
+     1,
+     "druck"
+    ],
+    "pfade": [
+     [
+      0,
+      "h"
+     ],
+     [
+      0,
+      "b"
+     ],
+     [
+      0,
+      "tw"
+     ],
+     [
+      0,
+      "tf"
+     ],
+     [
+      0,
+      "r"
+     ],
+     [
+      0,
+      "A"
+     ],
+     [
+      0,
+      "Iy"
+     ],
+     [
+      0,
+      "Iz"
+     ],
+     [
+      0,
+      "Wely"
+     ],
+     [
+      0,
+      "Wply"
+     ],
+     [
+      0,
+      "iy"
+     ],
+     [
+      0,
+      "iz"
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   },
+   "bemesseZugstab": {
+    "args": [
+     {
+      "A": 1,
+      "Anet": 1,
+      "guete": "S235",
+      "nEd": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "A"
+     ],
+     [
+      0,
+      "Anet"
+     ],
+     [
+      0,
+      "nEd"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "biegewiderstandY": {
+    "args": [
+     {
+      "name": "x",
+      "reihe": "IPE",
+      "h": 1,
+      "b": 1,
+      "tw": 1,
+      "tf": 1,
+      "r": 1,
+      "A": 1,
+      "Iy": 1,
+      "Iz": 1,
+      "Wely": 1,
+      "Wply": 1,
+      "iy": 1,
+      "iz": 1
+     },
+     "S235"
+    ],
+    "pfade": [
+     [
+      0,
+      "h"
+     ],
+     [
+      0,
+      "b"
+     ],
+     [
+      0,
+      "tw"
+     ],
+     [
+      0,
+      "tf"
+     ],
+     [
+      0,
+      "r"
+     ],
+     [
+      0,
+      "A"
+     ],
+     [
+      0,
+      "Iy"
+     ],
+     [
+      0,
+      "Iz"
+     ],
+     [
+      0,
+      "Wely"
+     ],
+     [
+      0,
+      "Wply"
+     ],
+     [
+      0,
+      "iy"
+     ],
+     [
+      0,
+      "iz"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "biegeknicken": {
+    "args": [
+     1,
+     1,
+     1,
+     1,
+     "a",
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      5
+     ],
+     [
+      6
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   },
+   "plastischeKapazitaet": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "einsparanteilProfil": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "co2VorteilProfil": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "epsilon": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "lambda1": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/statik.ts": {
+   "traeger": {
+    "args": [
+     {
+      "system": "kragarm",
+      "l": 1,
+      "l1": 1,
+      "q": 1,
+      "f": 1,
+      "a": 1,
+      "m0": 1,
+      "am": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "l"
+     ],
+     [
+      0,
+      "l1"
+     ],
+     [
+      0,
+      "q"
+     ],
+     [
+      0,
+      "f"
+     ],
+     [
+      0,
+      "a"
+     ],
+     [
+      0,
+      "m0"
+     ],
+     [
+      0,
+      "am"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "dreigelenkrahmen": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   }
+  },
+  "src/calc/statistik.ts": {
+   "erf": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "normalCDF": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "normalPDF": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "stichprobe": {
+    "args": [
+     [
+      1,
+      2,
+      3
+     ]
+    ],
+    "pfade": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   },
+   "grubbsKritisch": {
+    "args": [
+     1,
+     0.01
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "fraktilfaktorKn": {
+    "args": [
+     10
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   },
+   "ausreisserGrenzen": {
+    "args": [
+     {
+      "n": 1,
+      "sortiert": [
+       1,
+       2,
+       3
+      ],
+      "mittelwert": 1,
+      "median": 1,
+      "stdAbw": 1,
+      "vk": 1
+     },
+     "2sigma"
+    ],
+    "pfade": [
+     [
+      0,
+      "n"
+     ],
+     [
+      0,
+      "sortiert",
+      0
+     ],
+     [
+      0,
+      "sortiert",
+      1
+     ],
+     [
+      0,
+      "mittelwert"
+     ],
+     [
+      0,
+      "median"
+     ],
+     [
+      0,
+      "stdAbw"
+     ],
+     [
+      0,
+      "vk"
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "statistikAuswertung": {
+    "args": [
+     {
+      "werte": [
+       1,
+       2,
+       3
+      ],
+      "methode": "2sigma",
+      "material": "beton",
+      "ausreisserPruefen": false
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "werte",
+      0
+     ],
+     [
+      0,
+      "werte",
+      1
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "lnGamma": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.02
+   },
+   "betaRegularisiert": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "tCDF": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   },
+   "tPDF": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "tQuantil": {
+    "args": [
+     0.5,
+     0.5
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "einstichprobenTTest": {
+    "args": [
+     [
+      0.3,
+      0.6,
+      0.8999999999999999
+     ],
+     0.3,
+     0.3,
+     "zweiseitig"
+    ],
+    "pfade": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.67
+   },
+   "zweistichprobenTTest": {
+    "args": [
+     [
+      0.3,
+      0.6,
+      0.8999999999999999
+     ],
+     [
+      0.3,
+      0.6,
+      0.8999999999999999
+     ],
+     0.3,
+     "student",
+     "zweiseitig"
+    ],
+    "pfade": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      0
+     ],
+     [
+      1,
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.3
+   }
+  },
+  "src/calc/stuetze.ts": {
+   "betonDruckPR": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "interaktionskurve": {
+    "args": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     "parabelRechteck"
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ],
+     [
+      5
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.09
+   },
+   "muGrenze": {
+    "args": [
+     {
+      "omega": 1,
+      "points": [
+       {
+        "x": 1,
+        "y": 1
+       },
+       {
+        "x": 2,
+        "y": 2
+       },
+       {
+        "x": 3,
+        "y": 3
+       }
+      ],
+      "nu_comp": 1,
+      "isRequired": false
+     },
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      "omega"
+     ],
+     [
+      0,
+      "points",
+      0,
+      "x"
+     ],
+     [
+      0,
+      "points",
+      0,
+      "y"
+     ],
+     [
+      0,
+      "points",
+      1,
+      "x"
+     ],
+     [
+      0,
+      "points",
+      1,
+      "y"
+     ],
+     [
+      0,
+      "nu_comp"
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/verankerung.ts": {
+   "alpha6NaDe": {
+    "args": [
+     1,
+     "bis33",
+     false,
+     "zug"
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "bemesseVerankerung": {
+    "args": [
+     {
+      "fck": 1,
+      "fyk": 1,
+      "phi": 1,
+      "verbund": "gut",
+      "beanspruchung": "zug",
+      "art": "verankerung",
+      "form": "gerade",
+      "alpha2": 1,
+      "alpha3": 1,
+      "alpha5": 1,
+      "stossanteil": "bis33",
+      "stossAbstandGross": false,
+      "querstab": false,
+      "verfahren": "en",
+      "lagerung": "direkt",
+      "asErf": 1,
+      "asVorh": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "fck"
+     ],
+     [
+      0,
+      "fyk"
+     ],
+     [
+      0,
+      "phi"
+     ],
+     [
+      0,
+      "alpha2"
+     ],
+     [
+      0,
+      "alpha3"
+     ],
+     [
+      0,
+      "alpha5"
+     ],
+     [
+      0,
+      "asErf"
+     ],
+     [
+      0,
+      "asVorh"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.03
+   }
+  },
+  "src/calc/verkehrswegebau.ts": {
+   "schienenTemperatur": {
+    "args": [
+     1,
+     1,
+     "schotter_mager"
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "westergaardErsatzradius": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "westergaardSpannungen": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "westergaardRand": {
+    "args": [
+     {
+      "dickeCm": 0.3,
+      "achslastKn": 0.3,
+      "bettungMNm3": 0.3,
+      "E": 0.3,
+      "nu": 0.3,
+      "reifendruck": 0.3,
+      "zulaessig": 0.3
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "dickeCm"
+     ],
+     [
+      0,
+      "achslastKn"
+     ],
+     [
+      0,
+      "bettungMNm3"
+     ],
+     [
+      0,
+      "E"
+     ],
+     [
+      0,
+      "nu"
+     ],
+     [
+      0,
+      "reifendruck"
+     ],
+     [
+      0,
+      "zulaessig"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "rigole": {
+    "args": [
+     {
+      "flaecheM2": 1,
+      "psi": 1,
+      "regenspende": 1,
+      "dauerMin": 1,
+      "speicherKoeff": 1,
+      "kf": 1,
+      "fOrt": 1,
+      "fMethode": 1,
+      "fZ": 1,
+      "breiteM": 1,
+      "hoeheM": 1,
+      "vollDurchsickert": false
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "flaecheM2"
+     ],
+     [
+      0,
+      "psi"
+     ],
+     [
+      0,
+      "regenspende"
+     ],
+     [
+      0,
+      "dauerMin"
+     ],
+     [
+      0,
+      "speicherKoeff"
+     ],
+     [
+      0,
+      "kf"
+     ],
+     [
+      0,
+      "fOrt"
+     ],
+     [
+      0,
+      "fMethode"
+     ],
+     [
+      0,
+      "fZ"
+     ],
+     [
+      0,
+      "breiteM"
+     ],
+     [
+      0,
+      "hoeheM"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   }
+  },
+  "src/calc/waermeschutz.ts": {
+   "uebergang": {
+    "args": [
+     "wall"
+    ],
+    "pfade": [],
+    "art": "formel",
+    "ms": 0
+   },
+   "psat": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "uWert": {
+    "args": [
+     [
+      {
+       "name": "x",
+       "d": 1,
+       "lambda": 1,
+       "mu": 1
+      },
+      {
+       "name": "x",
+       "d": 2,
+       "lambda": 2,
+       "mu": 2
+      },
+      {
+       "name": "x",
+       "d": 3,
+       "lambda": 3,
+       "mu": 3
+      }
+     ],
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      0,
+      "d"
+     ],
+     [
+      0,
+      0,
+      "lambda"
+     ],
+     [
+      0,
+      0,
+      "mu"
+     ],
+     [
+      0,
+      1,
+      "d"
+     ],
+     [
+      0,
+      1,
+      "lambda"
+     ],
+     [
+      0,
+      1,
+      "mu"
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "temperaturverlauf": {
+    "args": [
+     [
+      {
+       "name": "x",
+       "d": 1,
+       "lambda": 1,
+       "mu": 1
+      },
+      {
+       "name": "x",
+       "d": 2,
+       "lambda": 2,
+       "mu": 2
+      },
+      {
+       "name": "x",
+       "d": 3,
+       "lambda": 3,
+       "mu": 3
+      }
+     ],
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      0,
+      "d"
+     ],
+     [
+      0,
+      0,
+      "lambda"
+     ],
+     [
+      0,
+      0,
+      "mu"
+     ],
+     [
+      0,
+      1,
+      "d"
+     ],
+     [
+      0,
+      1,
+      "lambda"
+     ],
+     [
+      0,
+      1,
+      "mu"
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.02
+   },
+   "temperaturBeiPsat": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "taupunkt": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "waermespeicherVolumen": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "temperaturleitfaehigkeit": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "waermeeindringkoeffizient": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "kontakttemperatur": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "thermischeKennwerte": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "erforderlicheDaemmdicke": {
+    "args": [
+     1,
+     1,
+     1,
+     [
+      1,
+      2,
+      3
+     ]
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3,
+      0
+     ],
+     [
+      3,
+      1
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   }
+  },
+  "src/calc/werkstoffmodelle.ts": {
+   "abminderungStahlBrand": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "stahlLinieVereinfacht": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "stahlBrand": {
+    "args": [
+     {
+      "fy": 1,
+      "fu": 1,
+      "theta": 1,
+      "E": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "fy"
+     ],
+     [
+      0,
+      "fu"
+     ],
+     [
+      0,
+      "theta"
+     ],
+     [
+      0,
+      "E"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   },
+   "woehlerSpannung": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "woehlerEc3": {
+    "args": [
+     {
+      "deltaSigmaC": 1,
+      "m": 1,
+      "deltaSigma": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "deltaSigmaC"
+     ],
+     [
+      0,
+      "m"
+     ],
+     [
+      0,
+      "deltaSigma"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.1
+   },
+   "walzEigenspannung": {
+    "args": [
+     1,
+     "h",
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "schweissEigenspannung": {
+    "args": [
+     {
+      "fy": 1,
+      "streckenenergie": 1,
+      "blechdicke": 1
+     },
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      "fy"
+     ],
+     [
+      0,
+      "streckenenergie"
+     ],
+     [
+      0,
+      "blechdicke"
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.04
+   },
+   "stahlSpannungBeiDehnung": {
+    "args": [
+     {
+      "id": "x",
+      "E": 1,
+      "fy": 1,
+      "fu": 1,
+      "A": 1,
+      "sh_strain": 1,
+      "fu_strain": 1,
+      "frac_stress": 1,
+      "yieldType": "ausgeprägt"
+     },
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      "E"
+     ],
+     [
+      0,
+      "fy"
+     ],
+     [
+      0,
+      "fu"
+     ],
+     [
+      0,
+      "A"
+     ],
+     [
+      0,
+      "sh_strain"
+     ],
+     [
+      0,
+      "fu_strain"
+     ],
+     [
+      0,
+      "frac_stress"
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "stahlKennlinienPunkte": {
+    "args": [
+     {
+      "id": "x",
+      "E": 1,
+      "fy": 1,
+      "fu": 1,
+      "A": 1,
+      "sh_strain": 1,
+      "fu_strain": 1,
+      "frac_stress": 1,
+      "yieldType": "ausgeprägt"
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "E"
+     ],
+     [
+      0,
+      "fy"
+     ],
+     [
+      0,
+      "fu"
+     ],
+     [
+      0,
+      "A"
+     ],
+     [
+      0,
+      "sh_strain"
+     ],
+     [
+      0,
+      "fu_strain"
+     ],
+     [
+      0,
+      "frac_stress"
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.07
+   },
+   "betonSdParameter": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   },
+   "betonParabelRechteck": {
+    "args": [
+     1,
+     {
+      "fcd": 1,
+      "fcm": 1,
+      "Ecm": 1,
+      "ec2": 1,
+      "ecu2": 1,
+      "n": 1,
+      "ec1": 1,
+      "ecu1": 1,
+      "k": 1
+     }
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1,
+      "fcd"
+     ],
+     [
+      1,
+      "fcm"
+     ],
+     [
+      1,
+      "Ecm"
+     ],
+     [
+      1,
+      "ec2"
+     ],
+     [
+      1,
+      "ecu2"
+     ],
+     [
+      1,
+      "n"
+     ],
+     [
+      1,
+      "ec1"
+     ],
+     [
+      1,
+      "ecu1"
+     ],
+     [
+      1,
+      "k"
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "betonNichtlinear": {
+    "args": [
+     10,
+     {
+      "fcd": 10,
+      "fcm": 10,
+      "Ecm": 10,
+      "ec2": 10,
+      "ecu2": 10,
+      "n": 10,
+      "ec1": 10,
+      "ecu1": 10,
+      "k": 10
+     }
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1,
+      "fcd"
+     ],
+     [
+      1,
+      "fcm"
+     ],
+     [
+      1,
+      "Ecm"
+     ],
+     [
+      1,
+      "ec2"
+     ],
+     [
+      1,
+      "ecu2"
+     ],
+     [
+      1,
+      "n"
+     ],
+     [
+      1,
+      "ec1"
+     ],
+     [
+      1,
+      "ecu1"
+     ],
+     [
+      1,
+      "k"
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "betonSdLinien": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.03
+   },
+   "betonstahlParameter": {
+    "args": [
+     "B500A"
+    ],
+    "pfade": [],
+    "art": "formel",
+    "ms": 0
+   },
+   "betonstahlSpannung": {
+    "args": [
+     1,
+     {
+      "E": 1,
+      "fy": 1,
+      "fu": 1,
+      "k": 1,
+      "eu": 1,
+      "ey": 1,
+      "fyd": 1,
+      "eyd": 1,
+      "eud": 1
+     }
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1,
+      "E"
+     ],
+     [
+      1,
+      "fy"
+     ],
+     [
+      1,
+      "fu"
+     ],
+     [
+      1,
+      "k"
+     ],
+     [
+      1,
+      "eu"
+     ],
+     [
+      1,
+      "ey"
+     ],
+     [
+      1,
+      "fyd"
+     ],
+     [
+      1,
+      "eyd"
+     ],
+     [
+      1,
+      "eud"
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "betonstahlLinien": {
+    "args": [
+     "B500A"
+    ],
+    "pfade": [],
+    "art": "formel",
+    "ms": 0.27
+   },
+   "emodulKunststoff": {
+    "args": [
+     "amorphous",
+     1
+    ],
+    "pfade": [
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "kunststoffTemperatur": {
+    "args": [
+     "amorphous",
+     1
+    ],
+    "pfade": [
+     [
+      1
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.17
+   },
+   "bilinearSpannung": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "bilinearVerfestigung": {
+    "args": [
+     {
+      "fy": 1,
+      "E": 1,
+      "Et": 1,
+      "epsMaxPromille": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "fy"
+     ],
+     [
+      0,
+      "E"
+     ],
+     [
+      0,
+      "Et"
+     ],
+     [
+      0,
+      "epsMaxPromille"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0
+   },
+   "bilinearKurve": {
+    "args": [
+     {
+      "fy": 1,
+      "E": 1,
+      "Et": 1,
+      "epsMaxPromille": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "fy"
+     ],
+     [
+      0,
+      "E"
+     ],
+     [
+      0,
+      "Et"
+     ],
+     [
+      0,
+      "epsMaxPromille"
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   },
+   "lehrkurveSpannung": {
+    "args": [
+     "linear",
+     1
+    ],
+    "pfade": [
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "binghamScherrate": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "proportionalAnteil": {
+    "args": [
+     {
+      "id": "x",
+      "E": 1,
+      "fy": 1,
+      "fu": 1,
+      "A": 1,
+      "sh_strain": 1,
+      "fu_strain": 1,
+      "frac_stress": 1,
+      "yieldType": "ausgeprägt"
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "E"
+     ],
+     [
+      0,
+      "fy"
+     ],
+     [
+      0,
+      "fu"
+     ],
+     [
+      0,
+      "A"
+     ],
+     [
+      0,
+      "sh_strain"
+     ],
+     [
+      0,
+      "fu_strain"
+     ],
+     [
+      0,
+      "frac_stress"
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "pren": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "waermedehnung": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "lehrkurve": {
+    "args": [
+     "linear"
+    ],
+    "pfade": [],
+    "art": "formel",
+    "ms": 0.01
+   },
+   "thixotropie": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "rheopexie": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "thixotropieKurve": {
+    "args": [],
+    "pfade": [],
+    "art": "formel",
+    "ms": 0.01
+   },
+   "maxwellSpannung": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "maxwellHalbwertszeit": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/calc/zwang.ts": {
+   "zwangSpannung": {
+    "args": [
+     {
+      "deltaT": 1,
+      "epsCsPromille": 1,
+      "eModul": 1,
+      "festhaltungProzent": 1,
+      "fct": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "deltaT"
+     ],
+     [
+      0,
+      "epsCsPromille"
+     ],
+     [
+      0,
+      "eModul"
+     ],
+     [
+      0,
+      "festhaltungProzent"
+     ],
+     [
+      0,
+      "fct"
+     ]
+    ],
+    "art": "kern",
+    "ms": 0.01
+   }
+  },
+  "src/utils/bestandKern.ts": {
+   "savings": {
+    "args": [
+     {
+      "uOld": 1,
+      "uNew": 1,
+      "A": 1,
+      "bauteil": "fenster",
+      "Gt": 1,
+      "etaSys": 1,
+      "price": 1,
+      "co2": 1,
+      "invest": 1,
+      "sowiesoKosten": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "uOld"
+     ],
+     [
+      0,
+      "uNew"
+     ],
+     [
+      0,
+      "A"
+     ],
+     [
+      0,
+      "Gt"
+     ],
+     [
+      0,
+      "etaSys"
+     ],
+     [
+      0,
+      "price"
+     ],
+     [
+      0,
+      "co2"
+     ],
+     [
+      0,
+      "invest"
+     ],
+     [
+      0,
+      "sowiesoKosten"
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "charValue": {
+    "args": [
+     [
+      1,
+      2,
+      3
+     ],
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.16
+   },
+   "designFromTests": {
+    "args": [
+     [
+      1,
+      2,
+      3
+     ],
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   },
+   "uRetrofit": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "dRequired": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "checkGModG": {
+    "args": [
+     "fenster",
+     1
+    ],
+    "pfade": [
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "kn": {
+    "args": [
+     10,
+     false
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "kdn": {
+    "args": [
+     10,
+     false
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "designLognormal": {
+    "args": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "fckFromInSitu": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "fkMasonry": {
+    "args": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "fdMasonry": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "bendingRatio": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/utils/ec2Spannbeton.ts": {
+   "getCementS": {
+    "args": [
+     "S"
+    ],
+    "pfade": [],
+    "art": "formel",
+    "ms": 0
+   },
+   "betaCc": {
+    "args": [
+     1,
+     "S"
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "fcmT": {
+    "args": [
+     1,
+     1,
+     "S"
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "fckT": {
+    "args": [
+     1,
+     1,
+     "S"
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "EcmT": {
+    "args": [
+     1,
+     1,
+     "S"
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "fctmT": {
+    "args": [
+     1,
+     1,
+     "S"
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "tempAdjustedAge": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "fctmFl": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "creep": {
+    "args": [
+     1,
+     1,
+     "S",
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "shrinkage": {
+    "args": [
+     1,
+     "S",
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "frictionSlip": {
+    "args": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ],
+     [
+      5
+     ],
+     [
+      6
+     ],
+     [
+      7
+     ],
+     [
+      8
+     ]
+    ],
+    "art": "formel",
+    "ms": 0.01
+   },
+   "elasticLoss": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "relaxation": {
+    "args": [
+     1,
+     1,
+     3,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "timeDependentLoss": {
+    "args": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ],
+     [
+      5
+     ],
+     [
+      6
+     ],
+     [
+      7
+     ],
+     [
+      8
+     ],
+     [
+      9
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "sigmaPMax": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "sigmaPm0Grenze": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  },
+  "src/utils/rheologySim.ts": {
+   "loadShape": {
+    "args": [
+     "kriechen",
+     1
+    ],
+    "pfade": [
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "simulate": {
+    "args": [
+     "hooke",
+     "kriechen",
+     {
+      "E": 1,
+      "E1": 1,
+      "E2": 1,
+      "eta": 1,
+      "fy": 1,
+      "Et": 1,
+      "sigma0": 1,
+      "eps0": 1
+     },
+     "stress"
+    ],
+    "pfade": [
+     [
+      2,
+      "E"
+     ],
+     [
+      2,
+      "E1"
+     ],
+     [
+      2,
+      "E2"
+     ],
+     [
+      2,
+      "eta"
+     ],
+     [
+      2,
+      "fy"
+     ],
+     [
+      2,
+      "Et"
+     ],
+     [
+      2,
+      "sigma0"
+     ],
+     [
+      2,
+      "eps0"
+     ]
+    ],
+    "art": "formel",
+    "ms": 8.28
+   }
+  },
+  "src/utils/schadensKern.ts": {
+   "crackWidthEC2": {
+    "args": [
+     {
+      "sigmaS": 1,
+      "fctEff": 1,
+      "rhoPEff": 1,
+      "phi": 1,
+      "c": 1,
+      "Es": 1,
+      "Ecm": 1,
+      "kt": 1,
+      "k1": 1,
+      "k2": 1
+     }
+    ],
+    "pfade": [
+     [
+      0,
+      "sigmaS"
+     ],
+     [
+      0,
+      "fctEff"
+     ],
+     [
+      0,
+      "rhoPEff"
+     ],
+     [
+      0,
+      "phi"
+     ],
+     [
+      0,
+      "c"
+     ],
+     [
+      0,
+      "Es"
+     ],
+     [
+      0,
+      "Ecm"
+     ],
+     [
+      0,
+      "kt"
+     ],
+     [
+      0,
+      "k1"
+     ],
+     [
+      0,
+      "k2"
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "kn13791": {
+    "args": [
+     10
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "chlorideByCement": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "din1076Plan": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "slitFlow": {
+    "args": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "deltaL": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "jointWidth": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "eDynUltrasound": {
+    "args": [
+     10,
+     10,
+     10
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "wennerResistivity": {
+    "args": [
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "carbonationK": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "carbonationDepth": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "timeToDepassivation": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "corrosionRate_um_a": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "coreStrength": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "margin13791": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "fckEquivalent": {
+    "args": [
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "pullOff": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "darrMoisture": {
+    "args": [
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "bendingRatio": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   },
+   "stiffnessRatio": {
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "pfade": [
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "art": "formel",
+    "ms": 0
+   }
+  }
+ },
+ "ohneBasis": {
+  "src/calc/altholz.ts": [
+   "sortierbilanz"
+  ],
+  "src/calc/bauchemie.ts": [
+   "molmasse",
+   "stoffumsatz"
+  ],
+  "src/calc/bauwerksuntersuchung.ts": [
+   "potentialStufe",
+   "potentialStatus"
+  ],
+  "src/calc/biegelinie.ts": [
+   "istLagerung"
+  ],
+  "src/calc/biegung.ts": [
+   "pruefeBiegung",
+   "bemesseBiegung"
+  ],
+  "src/calc/biokohlebeton.ts": [
+   "biokohleBilanz"
+  ],
+  "src/calc/boden.ts": [
+   "zustandsformISO14688",
+   "zustandsgrenzen"
+  ],
+  "src/calc/carbonbeton.ts": [
+   "carbonbetonBiegung"
+  ],
+  "src/calc/durchstanzen.ts": [
+   "pruefeDurchstanzen"
+  ],
+  "src/calc/einheiten.ts": [
+   "umrechnen",
+   "umrechnung",
+   "einheitVon"
+  ],
+  "src/calc/eisenKohlenstoff.ts": [
+   "gefuegeRaumtemperatur",
+   "schweisseignung"
+  ],
+  "src/calc/energieausweis.ts": [
+   "rechtsstandAm",
+   "effizienzklasse"
+  ],
+  "src/calc/erdbau.ts": [
+   "bodengruppe"
+  ],
+  "src/calc/festbetonStatistik.ts": [
+   "pruefwerteAusText"
+  ],
+  "src/calc/glaser.ts": [
+   "pruefeGlaser",
+   "glaser"
+  ],
+  "src/calc/holzbau.ts": [
+   "bemesseEinfeldbalken",
+   "verformterDruckstab",
+   "holzschraube"
+  ],
+  "src/calc/hydratation.ts": [
+   "rissgefahrAusDeltaT",
+   "festigkeitsentwicklungAusR",
+   "oberflaechenTempBereich",
+   "praxisbeispielMassigesBauteil"
+  ],
+  "src/calc/karsten.ts": [
+   "saugKlasse"
+  ],
+  "src/calc/keramik.ts": [
+   "fliesenGruppe",
+   "scherbenTyp",
+   "keramikKennwerte"
+  ],
+  "src/calc/korrosion.ts": [
+   "schadensStufe"
+  ],
+  "src/calc/korrosionsschutz.ts": [
+   "schutzdauerklasse"
+  ],
+  "src/calc/kriechenSchwinden.ts": [
+   "h0Hinweise"
+  ],
+  "src/calc/laborversuche.ts": [
+   "bereichCSE",
+   "ausbreitklasse",
+   "frischbeton",
+   "druckMittel196",
+   "moertelprismen"
+  ],
+  "src/calc/lca.ts": [
+   "pruefeLca"
+  ],
+  "src/calc/lcc.ts": [
+   "pruefeLcc"
+  ],
+  "src/calc/lebensdauer.ts": [
+   "zufallsgenerator",
+   "standardNormal",
+   "gammaZufall",
+   "betaFormparameter",
+   "pruefeVerteilung",
+   "ziehe",
+   "kritischeTiefe",
+   "lebensdauerbemessung"
+  ],
+  "src/calc/lebensdauerUebergabe.ts": [
+   "uebergabeSuche",
+   "leseUebergabe",
+   "bindemittelAusAlterung",
+   "uebergabeAdresse"
+  ],
+  "src/calc/materialoptimierung.ts": [
+   "effizienzKlasseThg"
+  ],
+  "src/calc/mauerwerk.ts": [
+   "fkNA",
+   "normalmoertelGruppe",
+   "bemesseWandVereinfacht"
+  ],
+  "src/calc/mischung.ts": [
+   "fzLehrannahme",
+   "kombinationsGrenze",
+   "pruefeMischung",
+   "bereichAmSieb"
+  ],
+  "src/calc/packungsdichte.ts": [
+   "sieblinienOptimierung"
+  ],
+  "src/calc/plausibilitaet.ts": [
+   "hatFehler",
+   "bereich",
+   "muss",
+   "unvollstaendigeZeilen",
+   "ohneZahlen",
+   "mitPruefung",
+   "nurGueltig",
+   "istEndlich",
+   "istAnzahl"
+  ],
+  "src/calc/pruefverfahren.ts": [
+   "potentialRisikoZfp",
+   "torrentFeuchte",
+   "thermografieStufe",
+   "messwerteAusText"
+  ],
+  "src/calc/querkraft.ts": [
+   "pruefeQuerkraft",
+   "bemesseQuerkraft"
+  ],
+  "src/calc/rissbreite.ts": [
+   "pruefeRiss",
+   "bemesseRiss"
+  ],
+  "src/calc/schnellkarbonatisierung.ts": [
+   "schnellkarbonatisierung"
+  ],
+  "src/calc/sommerWaermeschutz.ts": [
+   "fcAusTabelle",
+   "pruefeRaum",
+   "bauartAusCwirk"
+  ],
+  "src/calc/spannbeton.ts": [
+   "pruefeSpannbeton",
+   "pruefeDehnung"
+  ],
+  "src/calc/stahlbau.ts": [
+   "knicklinieNachTab62",
+   "pruefeDruckstab",
+   "bemesseDruckstab",
+   "profil"
+  ],
+  "src/calc/statistik.ts": [
+   "einstichprobenTTestKennwerte",
+   "zweistichprobenTTestKennwerte"
+  ],
+  "src/calc/stuetze.ts": [
+   "pruefeStuetze",
+   "bemesseStuetze"
+  ],
+  "src/calc/verankerung.ts": [
+   "pruefeVerankerung"
+  ],
+  "src/calc/verkehrswegebau.ts": [
+   "asphaltHohlraum",
+   "betondeckenFugen",
+   "spritzbetonRing"
+  ],
+  "src/calc/waermeschutz.ts": [
+   "pruefeSchichten"
+  ],
+  "src/calc/werkstoffmodelle.ts": [
+   "stahlVerformungsphase",
+   "gefuegeklasse"
+  ],
+  "src/utils/bestandKern.ts": [
+   "classFor"
+  ],
+  "src/utils/rheologySim.ts": [
+   "controlFor"
+  ],
+  "src/utils/schadensKern.ts": [
+   "fckIs13791",
+   "riebwClass"
+  ]
+ }
+}

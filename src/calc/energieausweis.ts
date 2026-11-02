@@ -20,7 +20,7 @@
  * Einheiten: Flächen m², U in W/(m²K), H in W/K, Energiekennwerte in kWh/(m²a), CO₂ in kg/(m²a).
  * Reiner Rechenkern – geprüft in tests/energieausweis.test.ts.
  */
-import { type Hinweis, hatFehler, muss } from './plausibilitaet';
+import { type Hinweis, hatFehler, muss, nurGueltig } from './plausibilitaet';
 
 export type Gebaeudetyp = 'efh' | 'mfh';
 export type Huellstandard = 'unsaniert' | 'bestand_teilsaniert' | 'geg_standard' | 'effizienzhaus40';
@@ -141,10 +141,10 @@ export function energieausweis(e: EnergieausweisEingabe): EnergieausweisErgebnis
   if (q_t_roh + q_v_roh - q_gewinne_roh < 10) hinweise.push({ stufe: 'warnung', feld: 'q_h', text: 'Rechnerischer Heizwärmebedarf unter 10 kWh/(m²a): Das Lehrmodell setzt mindestens 10 an.' });
   hinweise.push({ stufe: 'warnung', feld: 'klasse', text: 'Lehrmodell mit Pauschalflächen und Gradstunden – kein Energieausweis nach GModG/DIN V 18599.' });
   if (rechtsstand === 'ab_2027') hinweise.push({ stufe: 'warnung', feld: 'rechtsstand', text: 'Rechtsstand ab 01.01.2027: f_p nach Anlage 4 GModG 2027; CO₂-Faktor Strom 100 g/kWh vorläufig. Das neue Referenzgebäude (Anlagen 1 und 2) ist im Lehrmodell nicht abgebildet.' });
-  return {
+  return nurGueltig({
     h_t, h_t_prime, h_v, n_eff, v_netto, f_klima_k, q_t_roh, q_v_roh, q_solar, q_intern, eta_ausnutzung, q_gewinne_roh,
     q_t_jahr: Math.round(q_t_roh), q_v_jahr: Math.round(q_v_roh), q_gewinne: Math.round(q_gewinne_roh),
     q_h, q_w, q_verlust_netz, w_hilfsstrom, jaz: erz.jaz, eta_erzeuger: erz.eta, f_p: fak.fp,
     q_e, q_p, co2_emissionen, co2_faktor: fak.co2, fp_strom, rechtsstand, klasse, istWP, gueltig: !hatFehler(hinweise), hinweise,
-  };
+  });
 }

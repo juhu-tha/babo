@@ -3,6 +3,7 @@ import {
   bemessungswert, druckUnterWinkel, festigkeitswerte, KDEF, kdefFuer, rissfaktor, bemesseEinfeldbalken, verformterDruckstab, holzschraube,
   KLED_NAME, type EinfeldbalkenEingabe, type VerformterStabEingabe,
 } from '../src/calc/holzbau';
+import { istUngueltig, keinErgebnis, zahlenPassen } from './hilfen/keinErgebnis';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -113,8 +114,10 @@ for (let i = 0; i < 1000; i++) {
   const b = bemesseEinfeldbalken({ l: z(-1, 12), abstand: z(-0.2, 1.5), gk: z(-1, 3), qk: z(-1, 10), b: z(-10, 300), h: z(-10, 600), fmk: z(-5, 40), fvk: z(-1, 5), E0mean: z(-100, 15000), rhoMean: z(-10, 700), brettschichtholz: i % 2 === 0, nkl, kled, gammaM: z(-0.1, 1.5) });
   const c = verformterDruckstab({ b: z(-10, 300), h: z(-10, 400), l: z(-100, 8000), nd: z(-10, 300), qd: z(-1, 10), e0: z(-5, 100), fmk: z(-5, 40), fc0k: z(-5, 30), E0mean: z(-100, 15000), E005: z(-100, 12000), kmod: z(-0.1, 1.1), gammaM: z(-0.1, 1.5) });
   const d = holzschraube({ rhok: z(-10, 700), d: z(-1, 16), lef: z(-10, 300), alpha: z(-10, 100), n: Math.round(z(-1, 10)), nkl, kled });
-  const werte = [a.fcad, a.fmd, ...a.kurve.map(k => k.fcad), b.eta_m, b.eta_v, b.eta_w, b.w_inst, b.w_fin, b.w_net_fin, c.limitRatio, c.limitRatioIdeal, c.magFactor, c.N_crit_kN, c.etaErsatzstab, c.k_cy, d.F_ax_Rd_total_kN, d.F_v_Rd_total_kN];
-  if (!werte.every(Number.isFinite)) { pruefe(false, `Fuzz ${i}: ${JSON.stringify(werte)}`); break; }
+  // Grenzfallprüfung 02.11.2026: ungültig → kein Zahlenergebnis (NaN), gültig → endlich
+  const ok = zahlenPassen(a, [a.fcad, a.fmd, ...a.kurve.map(k => k.fcad)]) && zahlenPassen(b, [b.eta_m, b.eta_v, b.eta_w, b.w_inst, b.w_fin, b.w_net_fin])
+    && zahlenPassen(c, [c.limitRatio, c.limitRatioIdeal, c.magFactor, c.N_crit_kN, c.etaErsatzstab, c.k_cy]) && zahlenPassen(d, [d.F_ax_Rd_total_kN, d.F_v_Rd_total_kN]);
+  if (!ok) { pruefe(false, `Fuzz ${i}: ${JSON.stringify([a.fcad, b.eta_m, c.limitRatio, d.F_ax_Rd_total_kN])}`); break; }
 }
 
 if (fehler.length) { for (const x of fehler) console.error(`FAIL: ${x}`); process.exit(1); }

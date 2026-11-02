@@ -2,7 +2,7 @@
  * Wärmedurchgangskoeffizient von Fenstern nach DIN EN ISO 10077-1:
  * U_w = (A_g·U_g + A_f·U_f + l_g·Ψ_g) / (A_g + A_f). Reiner Rechenkern – geprüft in tests/fenster.test.ts.
  */
-import { type Hinweis, istEndlich, muss, hatFehler, bereich } from './plausibilitaet';
+import { type Hinweis, istEndlich, muss, hatFehler, bereich, nurGueltig } from './plausibilitaet';
 
 /** Lineare Wärmedurchgangskoeffizienten Ψ_g des Glasrandverbunds [W/(mK)] (Lehrwerte nach DIN EN ISO 10077-1, Anhang) */
 export const PSI_ABSTANDHALTER = { alu: 0.08, edelstahl: 0.06, warm_edge_kunststoff: 0.038 } as const;
@@ -20,7 +20,7 @@ export function uwFenster(e: FensterEingabe) {
     muss(hinweise, e.ug > 0 && e.uf > 0 && e.psi >= 0, 'ug', 'U_g und U_f müssen größer als 0 sein, Ψ ≥ 0.');
     muss(hinweise, e.g >= 0 && e.g <= 1, 'g', 'Der g-Wert liegt zwischen 0 und 1.');
   }
-  if (hatFehler(hinweise)) return { A: NaN, Ag: NaN, Af: NaN, lg: NaN, uw: NaN, phiGlas: NaN, phiRahmen: NaN, phiRand: NaN, solar: NaN, gegKonform: false, passivhaus: false, hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ A: NaN, Ag: NaN, Af: NaN, lg: NaN, uw: NaN, phiGlas: NaN, phiRahmen: NaN, phiRand: NaN, solar: NaN, gegKonform: false, passivhaus: false, hinweise });
   const A = e.breite * e.hoehe;
   const b = e.rahmenMm / 1000;
   const gb = e.breite - 2 * b, gh = e.hoehe - 2 * b;
@@ -29,5 +29,5 @@ export function uwFenster(e: FensterEingabe) {
   const uw = (phiGlas + phiRahmen + phiRand) / A;
   bereich(hinweise, 'ug', e.ug, 0.4, 6, 'U_g außerhalb des üblichen Bereichs (0,4–6 W/(m²K)).');
   if (Af / A > 0.5) hinweise.push({ stufe: 'warnung', feld: 'rahmenMm', text: 'Der Rahmenanteil liegt über 50 % – für Fenster unüblich.' });
-  return { A, Ag, Af, lg, uw, phiGlas, phiRahmen, phiRand, solar: Ag * e.g * e.strahlung, gegKonform: uw <= GEG_UW_MAX, passivhaus: uw <= 0.8, hinweise };
+  return nurGueltig({ A, Ag, Af, lg, uw, phiGlas, phiRahmen, phiRand, solar: Ag * e.g * e.strahlung, gegKonform: uw <= GEG_UW_MAX, passivhaus: uw <= 0.8, hinweise });
 }

@@ -9,7 +9,7 @@
  */
 import { EC2_NA_DE } from '../data/normParams';
 import { betonNachFck, fctmVonFck } from '../data/kennwerte';
-import { type Hinweis, bereich, hatFehler, istEndlich, muss } from './plausibilitaet';
+import { type Hinweis, bereich, hatFehler, istEndlich, muss, nurGueltig } from './plausibilitaet';
 
 export type Stossanteil = 'bis33' | 'ueber33';
 
@@ -79,7 +79,7 @@ export function bemesseVerankerung(e: VerankerungEingabe): VerankerungErgebnis {
   const leer: VerankerungErgebnis = {
     fctk005: 0, fctd: 0, fbd: 0, lbRqd: 0, alphaProduct: 0, totalAlpha: 0, a4: 0, a5: 0, a6: 0, asRatio: 0, lbMin: 0, lbd: 0, currentAlpha1: 0, hinweise,
   };
-  if (hatFehler(hinweise)) return leer;
+  if (hatFehler(hinweise)) return nurGueltig(leer);
 
   // f_bd = 2,25·η1·η2·f_ctd (8.2); f_ctd = α_ct·f_ctk;0,05/γc mit α_ct = 1,0 (NA DE), f_ck ≤ 60 (8.4.2(2))
   const fckB = Math.min(e.fck, 60);
@@ -123,5 +123,5 @@ export function bemesseVerankerung(e: VerankerungEingabe): VerankerungErgebnis {
   }
   const lbd = Math.max(totalAlpha * lbRqd * asRatio, lbMin);
 
-  return { fctk005, fctd, fbd, lbRqd, alphaProduct, totalAlpha, a4, a5, a6, asRatio, lbMin, lbd, currentAlpha1: a1, hinweise };
+  return nurGueltig({ fctk005, fctd, fbd, lbRqd, alphaProduct, totalAlpha, a4, a5, a6, asRatio, lbMin, lbd, currentAlpha1: a1, hinweise });
 }

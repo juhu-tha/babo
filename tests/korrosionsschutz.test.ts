@@ -1,5 +1,6 @@
 // Rechenkern Korrosionsschutz: Zinkschutzdauer, Duplex, Schutzdauerklassen (AP 3.13)
 import { zinkSchutzdauer, schutzdauerklasse, zinkMindestschicht, abnahme8020, ZINK_1461_GUSS, KORROSIVITAET, KATEGORIEN, KLASSEN, type ZinkEingabe } from '../src/calc/korrosionsschutz';
+import { istUngueltig, keinErgebnis, zahlenPassen } from './hilfen/keinErgebnis';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -52,7 +53,7 @@ const z = (a: number, c: number) => { seed = (seed * 1103515245 + 12345) % 21474
 for (let i = 0; i < 1000; i++) {
   const r = zinkSchutzdauer({ dZn: z(-20, 400), kategorie: KATEGORIEN[i % 6], ziel: KLASSEN[i % 4], duplex: i % 2 === 0, tBeschichtung: z(-5, 60), synergie: z(-0.5, 3.5), stahlDickeMm: i % 3 ? z(-1, 40) : undefined });
   const werte = [r.tMin, r.tDuplexMin, r.tMassgebend, r.rMin, r.rMax, r.tMax ?? 0, r.tDuplexMax ?? 0];
-  if (!werte.every(Number.isFinite)) { pruefe(false, `Fuzz ${i}`); break; }
+  if (!zahlenPassen(r, werte)) { pruefe(false, `Fuzz ${i}`); break; }
 }
 
 // Runde 5: DIN EN ISO 1461:2022, Tab. 3 (öffentlich: Wedge Galvanizing, „HDG to EN ISO 1461:2022“, 10/2024)

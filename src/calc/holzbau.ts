@@ -2,7 +2,7 @@
  * Holzbau nach DIN EN 1995-1-1 + NA (DE): k_mod, Knicknachweis (Ersatzstabverfahren 6.3.2) und Querdruck (6.1.5).
  * Vollholz (EN 338) und Brettschichtholz (EN 14080). Reiner Rechenkern – geprüft in tests/holzbau.test.ts.
  */
-import { type Hinweis, bereich, hatFehler, istEndlich, muss } from './plausibilitaet';
+import { type Hinweis, bereich, hatFehler, istEndlich, muss, nurGueltig } from './plausibilitaet';
 import { formatDeZahl } from '../utils/numberFormat';
 
 export type Nutzungsklasse = 1 | 2 | 3;
@@ -61,7 +61,9 @@ export function bemesseDruckstab(e: DruckstabEingabe): DruckstabErgebnis {
     k_mod: 0, gamma_M: GAMMA_M_HOLZ, f_c0d: 0, E_05: 0, A: 0, iy: 0, iz: 0, l_ef: 0, lambda_z: 0, sigma_c_crit: 0, lambda_rel_z: 0,
     k_cz: 0, F_c_R_d_kN: 0, utilization: 0, isUnsafe: false, hinweise,
   };
-  if (hatFehler(hinweise)) return leer;
+  // Grenzfallprüfung 02.11.2026: unbekannte Nutzungsklasse vorher Ausnahme; ungültige Eingabe ohne Zahlenergebnis (vorher 0)
+  muss(hinweise, KMOD[e.nkl]?.[e.kled] !== undefined, 'nkl', 'Nutzungsklasse 1 bis 3 und eine Klasse der Lasteinwirkungsdauer wählen.');
+  if (hatFehler(hinweise)) return nurGueltig(leer);
 
   const k_mod = KMOD[e.nkl][e.kled];
   const f_c0d = (k_mod * e.fc0k) / GAMMA_M_HOLZ;
@@ -78,7 +80,7 @@ export function bemesseDruckstab(e: DruckstabEingabe): DruckstabErgebnis {
   // H-2 (28.10.2026): EN 1995-1-1 und NA DE nennen keine Grenzschlankheit für Druckstäbe; λ > 200 ist nur ein Lehrhinweis (keine Normgröße).
   bereich(hinweise, 'laenge', lambda_z, 0, 200, 'Schlankheit λ > 200: Für Druckstäbe außergewöhnlich schlank; Ausführung und Imperfektionen gesondert prüfen.');
   if (lambda_rel_z > 0.3) hinweise.push({ stufe: 'warnung', feld: 'info', text: 'Nachgewiesen wird nur zentrischer Druck um die schwache Achse; Biegung aus Exzentrizität oder Querlast und Kippen sind nicht enthalten.' });
-  return { k_mod, gamma_M: GAMMA_M_HOLZ, f_c0d, E_05: e.E005, A, iy, iz, l_ef, lambda_z, sigma_c_crit, lambda_rel_z, k_cz, F_c_R_d_kN, utilization, isUnsafe: utilization > 100, hinweise };
+  return nurGueltig({ k_mod, gamma_M: GAMMA_M_HOLZ, f_c0d, E_05: e.E005, A, iy, iz, l_ef, lambda_z, sigma_c_crit, lambda_rel_z, k_cz, F_c_R_d_kN, utilization, isUnsafe: utilization > 100, hinweise });
 }
 
 /**
@@ -108,8 +110,10 @@ export function bemesseQuerdruck(e: QuerdruckEingabe) {
   const hinweise: Hinweis[] = [];
   muss(hinweise, istEndlich(e.F, e.b, e.l, e.fc90k) && e.b > 0 && e.l > 0 && e.fc90k > 0, 'b', 'Auflagerbreite, Auflagerlänge und f_c,90,k müssen größer als 0 sein.');
   muss(hinweise, e.F >= 0, 'F', 'Die Auflagerkraft muss ≥ 0 sein.');
+  // Grenzfallprüfung 02.11.2026: unbekannte Nutzungsklasse vorher Ausnahme
+  muss(hinweise, KMOD[e.nkl]?.[e.kled] !== undefined, 'nkl', 'Nutzungsklasse 1 bis 3 und eine Klasse der Lasteinwirkungsdauer wählen.');
   if (hatFehler(hinweise)) {
-    return { f_c90k: e.fc90k, f_c90d: 0, k_c90: 1, l_ef: 0, A_ef: 0, sigma_c90d: 0, stressLimit: 0, F_c90Rd_kN: 0, utilization: 0, gamma_M: GAMMA_M_HOLZ, isUnsafe: false, hinweise };
+    return nurGueltig({ f_c90k: e.fc90k, f_c90d: 0, k_c90: 1, l_ef: 0, A_ef: 0, sigma_c90d: 0, stressLimit: 0, F_c90Rd_kN: 0, utilization: 0, gamma_M: GAMMA_M_HOLZ, isUnsafe: false, hinweise });
   }
   const k_mod = KMOD[e.nkl][e.kled];
   const f_c90d = (k_mod * e.fc90k) / GAMMA_M_HOLZ;
@@ -124,10 +128,10 @@ export function bemesseQuerdruck(e: QuerdruckEingabe) {
   const stressLimit = k_c90 * f_c90d;
   if (einzelauflager && e.art === 'bsh' && e.l > 400) hinweise.push({ stufe: 'warnung', feld: 'l', text: 'Auflagerlänge l > 400 mm: k_c,90 = 1,75 (BSH) gilt nur für l ≤ 400 mm, angesetzt ist k_c,90 = 1,0.' });
   if (einzelauflager && k_c90 > 1) hinweise.push({ stufe: 'warnung', feld: 'fall', text: 'Erhöhter Beiwert k_c,90 nur, wenn der Abstand l₁ zur nächsten Druckfläche mindestens 2h beträgt (DIN EN 1995-1-1, 6.1.5); sonst Fall „Allgemein“ (k_c,90 = 1,0) wählen.' });
-  return {
+  return nurGueltig({
     f_c90k: e.fc90k, f_c90d, k_c90, l_ef, A_ef, sigma_c90d, stressLimit, F_c90Rd_kN: (stressLimit * A_ef) / 1000,
     utilization: (sigma_c90d / stressLimit) * 100, gamma_M: GAMMA_M_HOLZ, isUnsafe: sigma_c90d > stressLimit, hinweise,
-  };
+  });
 }
 
 // ---------------------------------------------------------------------------------------------------------------
@@ -164,18 +168,20 @@ export function festigkeitswerte(e: FestigkeitswerteEingabe) {
     muss(hinweise, e.kc90 >= 1 && e.kc90 <= 1.75, 'kc90', 'k_c,90 liegt nach 6.1.5 zwischen 1,0 und 1,75.');
     muss(hinweise, e.winkel >= 0 && e.winkel <= 90, 'winkel', 'Der Faserwinkel muss zwischen 0° und 90° liegen.');
   }
-  const kmod = KMOD[e.nkl][e.kled];
+  // Grenzfallprüfung 02.11.2026: unbekannte Nutzungsklasse vorher Ausnahme
+  muss(hinweise, KMOD[e.nkl]?.[e.kled] !== undefined, 'nkl', 'Nutzungsklasse 1 bis 3 und eine Klasse der Lasteinwirkungsdauer wählen.');
+  const kmod = KMOD[e.nkl]?.[e.kled] ?? NaN;
   if (hatFehler(hinweise)) {
-    return { kmod, fmd: 0, ft0d: 0, ft90d: 0, fc0d: 0, fc90d: 0, fvd: 0, fcad: 0, kurve: [] as { winkel: number; fcad: number }[], hinweise };
+    return nurGueltig({ kmod, fmd: 0, ft0d: 0, ft90d: 0, fc0d: 0, fc90d: 0, fvd: 0, fcad: 0, kurve: [] as { winkel: number; fcad: number }[], hinweise });
   }
   const d = (x: number) => bemessungswert(x, kmod, e.gammaM);
   const fc0d = d(e.fc0), fc90d = d(e.fc90);
   const kurve: { winkel: number; fcad: number }[] = [];
   for (let w = 0; w <= 90; w += 5) kurve.push({ winkel: w, fcad: druckUnterWinkel(fc0d, fc90d, e.kc90, w) });
-  return {
+  return nurGueltig({
     kmod, fmd: d(e.fm), ft0d: d(e.ft0), ft90d: d(e.ft90), fc0d, fc90d, fvd: d(e.fv),
     fcad: druckUnterWinkel(fc0d, fc90d, e.kc90, e.winkel), kurve, hinweise,
-  };
+  });
 }
 
 export type KdefProdukt = 'vollholz' | 'bsh' | 'fsh' | 'osb';
@@ -258,7 +264,7 @@ export function bemesseEinfeldbalken(e: EinfeldbalkenEingabe) {
     w_inst_G: 0, w_inst_Q: 0, w_inst: 0, w_fin: 0, w_net_fin: 0, w_grenz: 0, w_grenz_fin: 0, w_grenz_net: 0,
     eta_m: 0, eta_v: 0, eta_w_inst: 0, eta_w_fin: 0, eta_w_net: 0, eta_w: 0, eta_max: 0, ok: false, hinweise,
   };
-  if (hatFehler(hinweise)) return leer;
+  if (hatFehler(hinweise)) return nurGueltig(leer);
 
   const masse = ((e.b * e.h) / 1e6) * e.rhoMean;      // [kg/m]
   const g_k = masse * G_KN_PRO_KG + e.gk * e.abstand; // ständig: Eigengewicht + Ausbau [kN/m]
@@ -300,12 +306,12 @@ export function bemesseEinfeldbalken(e: EinfeldbalkenEingabe) {
   bereich(hinweise, 'h', e.h / e.b, 0, 10, 'Verhältnis h/b > 10: Kippen (6.3.3) und seitliche Halterung gesondert prüfen.');
   if (e.nkl === 3) hinweise.push({ stufe: 'warnung', feld: 'nkl', text: 'Nutzungsklasse 3: k_def = 2,0 – die Kriechverformung wird maßgebend; der Schwingungsnachweis (7.3) ist nicht enthalten.' });
   if (kombination === 'G') hinweise.push({ stufe: 'warnung', feld: 'kled', text: 'Maßgebend ist die ständige Kombination 1,35·g_k mit k_mod(ständig) – die Nutzlast ist im Verhältnis zur ständigen Last klein.' });
-  return {
+  return nurGueltig({
     masse, g_k, q_k, q_d, q_inst, M_Ed, V_Ed, W, I, kmod, kdef, psi2, sigma_md, f_md, k_cr, tau_d, f_vd,
     kombination, kmodGQ, kmodG, q_d_GQ, q_d_G, eta_m_GQ, eta_m_G,
     w_inst_G, w_inst_Q, w_inst, w_fin, w_net_fin, w_grenz, w_grenz_fin, w_grenz_net,
     eta_m, eta_v, eta_w_inst, eta_w_fin, eta_w_net, eta_w, eta_max, ok: eta_max <= 100, hinweise,
-  };
+  });
 }
 
 export interface VerformterStabEingabe {
@@ -344,7 +350,7 @@ export function verformterDruckstab(e: VerformterStabEingabe) {
     N_crit_kN: 0, magFactor: 0, limitRatio: 0, limitRatioIdeal: 0, unsafeRatioDelta: 0,
     lambda_y: 0, lambda_rel_y: 0, k_cy: 0, etaErsatzstab: 0, gueltig: false, hinweise,
   };
-  if (hatFehler(hinweise)) return leer;
+  if (hatFehler(hinweise)) return nurGueltig(leer);
 
   const N = e.nd * 1000;  // [N]
   const q = e.qd;         // kN/m = N/mm
@@ -359,7 +365,7 @@ export function verformterDruckstab(e: VerformterStabEingabe) {
   const k_cy = knickbeiwert(lambda_rel_y, !!e.brettschichtholz);
   if (N >= N_crit) {
     hinweise.push({ stufe: 'fehler', feld: 'nd', text: 'Die Normalkraft erreicht die Knicklast N_cr,d = π²·E_d·I/l² – nach Theorie II. Ordnung ist kein Gleichgewicht möglich (Stab instabil).' });
-    return { ...leer, A, W, I, E_d, e_imp, e_ansatz, N_crit_kN: N_crit / 1000, lambda_y, lambda_rel_y, k_cy };
+    return nurGueltig({ ...leer, A, W, I, E_d, e_imp, e_ansatz, N_crit_kN: N_crit / 1000, lambda_y, lambda_rel_y, k_cy }); // Grenzfallprüfung 02.11.2026: Fehler → ohne Zwischenwerte
   }
   const magFactor = 1 / (1 - N / N_crit); // = α_cr/(α_cr − 1); N = 0 → 1
   const sigma_c_d = N / A;
@@ -371,11 +377,11 @@ export function verformterDruckstab(e: VerformterStabEingabe) {
   if (N / N_crit > 0.5) hinweise.push({ stufe: 'warnung', feld: 'nd', text: 'N_d liegt über der Hälfte der Knicklast N_cr,d; der Vergrößerungsfaktor reagiert dann sehr empfindlich auf E-Modul und Knicklänge.' });
   if (N > 0 && e.e0 < e_imp) hinweise.push({ stufe: 'warnung', feld: 'e0', text: `Die gemessene Vorverformung ist kleiner als die Ersatzimperfektion 0,0025·l = ${formatDeZahl(e_imp, 1)} mm; nach Theorie II. Ordnung wird die Ersatzimperfektion angesetzt.` });
   hinweise.push({ stufe: 'warnung', feld: 'info', text: 'Knicken in der Biegeebene (y-Achse); seitliche Halterung durch Schalung bzw. Lattung vorausgesetzt. Kippen (6.3.3) und Knicken um die z-Achse sind nicht enthalten.' });
-  return {
+  return nurGueltig({
     A, W, I, f_md, f_c0d, E_d, e_imp, e_ansatz, sigma_c_d, sigma_m_d_primary: M_q / W, sigma_m_d_eccentric: (N * e.e0) / W, sigma_m_d_total,
     N_crit_kN: N_crit / 1000, magFactor, limitRatio: limitRatio * 100, limitRatioIdeal: limitRatioIdeal * 100,
     unsafeRatioDelta: (limitRatio - limitRatioIdeal) * 100, lambda_y, lambda_rel_y, k_cy, etaErsatzstab: etaErsatzstab * 100, gueltig: true, hinweise,
-  };
+  });
 }
 
 // ---------------------------------------------------------------------------------------------------------------
@@ -424,7 +430,7 @@ export function holzschraube(e: HolzschraubeEingabe) {
     k_mod: 0, rho_k: e.rhok, f_ax_k: 0, k_d: 0, n_ef: 0, factor_alpha: 0, f_ax_alpha_k: 0, F_ax_Rk_single_N: 0, F_ax_Rk_total_kN: 0, F_ax_Rd_total_kN: 0,
     d_kern: dKern, d_ef: 0, lochleibungNach: 'nagel' as 'nagel' | 'bolzen', f_h_k: 0, M_y_Rk: 0, F_v_Rk_1: 0, johansen: 0, rope_effect: 0, F_v_Rk_single_N: 0, F_v_Rk_total_kN: 0, F_v_Rd_total_kN: 0, hinweise,
   };
-  if (hatFehler(hinweise)) return leer;
+  if (hatFehler(hinweise)) return nurGueltig(leer);
 
   const k_mod = KMOD[e.nkl][e.kled];
   const rad = (e.alpha * Math.PI) / 180;
@@ -454,10 +460,10 @@ export function holzschraube(e: HolzschraubeEingabe) {
   const kv = dKern / e.d;
   if (kv < 0.6 - 1e-9 || kv > 0.75 + 1e-9) hinweise.push({ stufe: 'warnung', feld: 'dKern', text: 'Kerndurchmesser außerhalb 0,6·d … 0,75·d: Gl. (8.38) gilt nicht, Werte der ETA verwenden.' });
   hinweise.push({ stufe: 'warnung', feld: 'info', text: 'Normformeln ohne ETA; Hersteller deklarieren meist höhere Auszieh- und Fließmomentwerte. Mindestabstände, n_ef beim Abscheren und Blockscherversagen sind nicht nachgewiesen.' });
-  return {
+  return nurGueltig({
     k_mod, rho_k: e.rhok, f_ax_k, k_d, n_ef, factor_alpha, f_ax_alpha_k, F_ax_Rk_single_N, F_ax_Rk_total_kN, F_ax_Rd_total_kN,
     d_kern: dKern, d_ef, lochleibungNach, f_h_k, M_y_Rk, F_v_Rk_1, johansen, rope_effect, F_v_Rk_single_N, F_v_Rk_total_kN, F_v_Rd_total_kN, hinweise,
-  };
+  });
 }
 
 /** Werkstoffgruppen des Abbrandrechners (Modul holzbau_bauphysik) */

@@ -9,7 +9,7 @@
 import { EC2_NA_DE } from '../data/normParams';
 import { fctmVonFck, dehnungsKennwerte, fcdBeton, fcdHochfestHinweis } from '../data/kennwerte';
 import { formatDeWert, formatDeZahl } from '../utils/numberFormat';
-import { type Hinweis, bereich, hatFehler, istEndlich, muss } from './plausibilitaet';
+import { type Hinweis, bereich, hatFehler, istEndlich, muss, nurGueltig } from './plausibilitaet';
 
 export type Bewehrung = 'Stahl' | 'Carbon' | 'GFK' | 'Basalt';
 
@@ -87,7 +87,7 @@ export function bemesseBiegung(e: BiegungEingabe): BiegungErgebnis {
     d: e.h - e.d1, fcd: 0, fyd: 0, mu_Ed: 0, omega: 0, lambda: LAMBDA, eta: 1, xiLim: XI_LIM, muLim: MU_LIM_STAHL, epsCu3: 3.5, as1_req: 0, as2_req: 0, as_min: 0, as_min_ec: 0,
     mcr_kNm: 0, as_final: 0, x: 0, sigma_s2: 0, isPossible: false, message: 'Eingaben unzulässig', hinweise,
   };
-  if (hatFehler(hinweise)) return leer;
+  if (hatFehler(hinweise)) return nurGueltig(leer);
 
   const isStahl = e.bewehrung === 'Stahl';
   const Es = e.Es ?? 200000;
@@ -178,7 +178,7 @@ export function bemesseBiegung(e: BiegungEingabe): BiegungErgebnis {
   };
   if (isPossible && !istEndlich(as_final, x, mu_Ed)) {
     hinweise.push({ stufe: 'fehler', feld: 'eingabe', text: 'Die Berechnung liefert keinen endlichen Wert – Eingaben prüfen.' });
-    return { ...leer, hinweise };
+    return nurGueltig({ ...leer, hinweise });
   }
   return ergebnis;
 }

@@ -1,5 +1,6 @@
 // Rechenkern Schwingung Brettsperrholzdecke (Umsetzungsplan Phase 4, AP 4.6)
 import { bspSchwingung, BSP_AUFBAUTEN, ORIENTIERUNG, type BspSchwingungEingabe } from '../src/calc/bspSchwingung';
+import { keinErgebnis, zahlenPassen } from './hilfen/keinErgebnis';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -66,7 +67,7 @@ pruefe(ORIENTIERUNG.wKlasseI === 0.25 && ORIENTIERUNG.f1KlasseI === 8, 'Orientie
 // 4. Unsinnige Eingaben
 for (const u of [{ spannweite: 0 }, { lagen: [30, 30] }, { lagen: [30, 0, 30] }, { zusatzmasse: -1 }, { deckenbreite: NaN }, { estrichDicke: -5 }, { GR: 0 }] as Partial<BspSchwingungEingabe>[]) {
   const r = bspSchwingung({ ...beispiel, ...u });
-  pruefe([r.f1, r.w1kN, r.EI_l].every(Number.isFinite) && r.hinweise.some(h => h.stufe === 'fehler'), JSON.stringify(u));
+  pruefe(keinErgebnis([r.f1, r.w1kN, r.EI_l]) && r.hinweise.some(h => h.stufe === 'fehler'), JSON.stringify(u));
 }
 
 // 5. Fuzz: 1 000 Zufallseingaben ohne NaN/∞
@@ -79,7 +80,7 @@ for (let i = 0; i < 1000; i++) {
     spannweite: z(-1, 15), lagen, deckenbreite: z(-1, 12), zusatzmasse: z(-20, 400), estrichDicke: z(-10, 100),
     estrichArt: (['zement', 'anhydrit', 'gussasphalt'] as const)[i % 3], verfahren: i % 2 ? 'gamma' : 'netto',
   });
-  if (![r.f1, r.w1kN, r.EI_l, r.b_F, r.b_ef, r.masse].every(Number.isFinite)) { pruefe(false, `Fuzz ${i}: ${JSON.stringify(r)}`); break; }
+  if (!zahlenPassen(r, [r.f1, r.w1kN, r.EI_l, r.b_F, r.b_ef, r.masse])) { pruefe(false, `Fuzz ${i}: ${JSON.stringify(r)}`); break; }
 }
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }

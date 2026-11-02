@@ -4,6 +4,7 @@ import {
   bemesseWandVereinfacht, phi1, phi2, rho2, fdAusFk, fkNA, fkEmpfehlungEN, phiAusmitte, FK_TAFEL_NA,
   type WandEingabe, type WandLage,
 } from '../src/calc/mauerwerk';
+import { keinErgebnis, zahlenPassen } from './hilfen/keinErgebnis';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -99,7 +100,7 @@ pruefe(bemesseWandVereinfacht({ ...aw, h: 3.2 }).hinweise.some(x => x.feld === '
 pruefe(H_REGEL_MAX === 2.75 && H_ERWEITERT_INNEN_MAX === 3.6 && T_INNEN_OHNE_HOEHENGRENZE === 240, 'Konstanten Wandhöhe');
 for (const u of [{ t: 0 }, { a: 0 }, { a: 200 }, { fk: 0 }, { nEd: -1 }, { h: NaN }, { lf: 0 }] as Partial<WandEingabe>[]) {
   const ru = bemesseWandVereinfacht({ ...aw, ...u });
-  pruefe([ru.nRd, ru.phi, ru.eta].every(Number.isFinite) && ru.hinweise.some(x => x.stufe === 'fehler'), `unzulässig ${JSON.stringify(u)}`);
+  pruefe(keinErgebnis([ru.nRd, ru.phi, ru.eta]) && ru.hinweise.some(x => x.stufe === 'fehler'), `unzulässig ${JSON.stringify(u)}`);
 }
 
 // 7. Fuzz: 1 000 Zufallseingaben ohne NaN/∞
@@ -109,7 +110,7 @@ const lagen: WandLage[] = ['zwischen', 'dach', 'innen'];
 for (let i = 0; i < 1000; i++) {
   const t = z(-20, 500);
   const ru = bemesseWandVereinfacht({ lage: lagen[i % 3], h: z(-0.5, 6), t, a: t * z(-0.2, 1.2), lf: z(-1, 9), fk: z(-1, 20), nEd: z(-100, 1500) });
-  if (![ru.nRd, ru.phi, ru.phi1, ru.phi2, ru.eta, ru.hEf, ru.schlankheit, ru.tafelwert].every(Number.isFinite)) { pruefe(false, `Fuzz ${i}: ${JSON.stringify(ru)}`); break; }
+  if (!zahlenPassen(ru, [ru.nRd, ru.phi, ru.phi1, ru.phi2, ru.eta, ru.hEf, ru.schlankheit, ru.tafelwert])) { pruefe(false, `Fuzz ${i}: ${JSON.stringify(ru)}`); break; }
 }
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }

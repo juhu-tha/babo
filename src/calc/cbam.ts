@@ -13,7 +13,7 @@
  *    weißer Zement 0,859 t CO₂e/t (Durchführungs-VO (EU) 2025/2620, Anhang Nr. 5.3, Spalte B).
  * Einheiten: Masse in t, Emissionen in t CO₂e/t, Preise in €/t CO₂e. Geprüft in tests/cbam.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, muss, nurGueltig } from './plausibilitaet';
 
 export const CBAM_JAHRE = [2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034] as const;
 export type CbamJahr = (typeof CBAM_JAHRE)[number];
@@ -76,12 +76,12 @@ export function cbamKosten(e: CbamEingabe): CbamErgebnis {
   if (e.emissionen > 0 && e.emissionen < sefa) h.push({ stufe: 'warnung', feld: 'emissionen', text: 'Die eingebetteten Emissionen liegen unter der Anpassung an die kostenlose Zuteilung; es sind keine Zertifikate abzugeben.' });
   if (pH > e.preisCbam) h.push({ stufe: 'warnung', feld: 'preisHerkunft', text: 'Der Herkunftspreis übersteigt den CBAM-Preis; angerechnet wird höchstens bis zu Kosten null.' });
   h.push({ stufe: 'warnung', feld: 'cbam', text: 'Lehrmodell: Anrechnung des Herkunftspreises auf die gesamten eingebetteten Emissionen (Art. 9 vereinfacht, vorläufig); Standardwert-Aufschläge, Schwellenwert 50 t je Jahr (VO (EU) 2025/2083) und Quartals- bzw. Wochenpreise nicht abgebildet.' });
-  return {
+  return nurGueltig({
     faktor, sefa, pflichtigJeT, zertifikate, brutto, anrechnung, kosten,
     kostenJeT: e.mengeT > 0 ? kosten / e.mengeT : 0,
     anteilEndzustand: endzustand > 0 ? kosten / endzustand : 0,
     gueltig: !hatFehler(h), hinweise: h,
-  };
+  });
 }
 
 /** Jahrespfad 2026–2034 bei sonst gleichen Eingaben */

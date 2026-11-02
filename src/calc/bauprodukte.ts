@@ -142,6 +142,8 @@ export const potentialDifferenz = (u1: number, u2: number) => Math.abs(u1 - u2);
 // ── Stahlbauprofile: elastische Randspannung σ = N/A + M/W_y ──
 /** A [cm²], W_y [cm³], N [kN], M [kNm] → Spannungen [N/mm²], Ausnutzung [%] */
 export function randspannung(nKn: number, mKnm: number, aCm2: number, wyCm3: number, fy: number, gammaM0: number) {
+  // Grenzfallprüfung 02.11.2026: NaN-Eingaben nicht als 0 (vorher σ = 0 bei A = NaN)
+  if ([nKn, mKnm, aCm2, wyCm3, fy, gammaM0].some(Number.isNaN)) return { sigmaN: NaN, sigmaM: NaN, sigma: NaN, fyd: NaN, eta: NaN };
   const sigmaN = aCm2 > 0 ? (nKn * 1000) / (aCm2 * 100) : 0;
   const sigmaM = wyCm3 > 0 ? (mKnm * 1e6) / (wyCm3 * 1000) : 0;
   const sigma = sigmaN + sigmaM;

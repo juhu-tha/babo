@@ -8,7 +8,7 @@
 import { EC2_NA_DE } from '../data/normParams';
 import { E_BETONSTAHL, fcdBeton, fcdHochfestHinweis } from '../data/kennwerte';
 import { formatDeZahl } from '../utils/numberFormat';
-import { type Hinweis, hatFehler, istEndlich, muss, bereich } from './plausibilitaet';
+import { type Hinweis, hatFehler, istEndlich, muss, bereich, nurGueltig } from './plausibilitaet';
 
 export interface StuetzeEingabe {
   b: number; h: number; d1: number; // [cm]
@@ -121,7 +121,7 @@ export function bemesseStuetze(e: StuetzeEingabe): StuetzeErgebnis {
     req_omega: 0, as_tot_req: 0, as_min: 0, as_max: 0, as_final: 0, isPossible: false, interactionCurves: [],
     req_omega_block: -1, as_tot_req_block: 0, hinweise,
   };
-  if (hatFehler(hinweise)) return leer;
+  if (hatFehler(hinweise)) return nurGueltig(leer);
 
   const b_m = e.b / 100, h_m = e.h / 100, d1_m = e.d1 / 100;
   // f_cd zentral (src/data/kennwerte.ts): α_cc·f_ck/γ_c, ab C55/67 · (1,1 − f_ck/500) (vorläufig, F-Freigabe)
@@ -174,8 +174,8 @@ export function bemesseStuetze(e: StuetzeEingabe): StuetzeErgebnis {
   } else if (as_final > as_max) {
     hinweise.push({ stufe: 'warnung', feld: 'nEd', text: `A_s,tot = ${formatDeZahl(as_final, 1)} cm² überschreitet A_s,max = 0,09·A_c = ${formatDeZahl(as_max, 1)} cm² (NA DE 9.5.2(3)).` });
   }
-  return {
+  return nurGueltig({
     nu_Ed, mu_Ed, mEd_1, e0_mm: e0_m * 1000, ei_mm: ei_m * 1000, lambda, lambda_lim, isTheorie2Ordnung,
     req_omega, as_tot_req, as_min, as_max, as_final, isPossible, interactionCurves, req_omega_block, as_tot_req_block, hinweise,
-  };
+  });
 }

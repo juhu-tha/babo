@@ -12,7 +12,7 @@
  * (Abminderungsbeiwerte für Dauerlast, Temperatur, Alterung, Fügung) bzw. künftig nach EN 19102.
  * Reiner Rechenkern – geprüft in tests/membran.test.ts.
  */
-import { type Hinweis, istEndlich, muss, hatFehler, bereich } from './plausibilitaet';
+import { type Hinweis, istEndlich, muss, hatFehler, bereich, nurGueltig } from './plausibilitaet';
 
 export type MembranGeometrie = 'zylinder' | 'kugel';
 export type MembranWerkstoff = 'gewebe' | 'folie';
@@ -80,7 +80,7 @@ export function membranKraft(geometrie: MembranGeometrie, p: number, r: number):
   return geometrie === 'zylinder' ? p * r : (p * r) / 2;
 }
 
-const LEER = (hinweise: Hinweis[]): MembranErgebnis => ({ r: NaN, n: NaN, nKN: NaN, nZul: NaN, sigma: NaN, eta: NaN, ok: false, hinweise });
+const LEER = (hinweise: Hinweis[]): MembranErgebnis => nurGueltig(({ r: NaN, n: NaN, nKN: NaN, nZul: NaN, sigma: NaN, eta: NaN, ok: false, hinweise }));
 
 export function membranNachweis(e: MembranEingabe): MembranErgebnis {
   const hinweise: Hinweis[] = [];
@@ -122,7 +122,7 @@ export function membranNachweis(e: MembranEingabe): MembranErgebnis {
   if (!mitRadius && f / L < 0.05) warnung(hinweise, 'stich', 'Sehr flache Wölbung (f/L < 1/20): Der Radius und damit die Membrankraft werden groß.');
 
   const eta = n / nZul;
-  return { r, n, nKN: n / 1000, nZul, sigma, eta, ok: eta <= 1, hinweise };
+  return nurGueltig({ r, n, nKN: n / 1000, nZul, sigma, eta, ok: eta <= 1, hinweise });
 }
 
 function warnung(h: Hinweis[], feld: string, text: string) {

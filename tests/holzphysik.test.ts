@@ -1,5 +1,6 @@
 // Rechenkern Holzphysik: Gleichgewichtsfeuchte, Feuchteangleich, Quellen und Schwinden (Umsetzungsplan Phase 4, AP 4.2)
 import { FASERSAETTIGUNG, gleichgewichtsfeuchte, sorptionHailwoodHorrobin, feuchteNachLagerung, zeitkonstanteFeuchte, schwinden, schwindmass } from '../src/calc/holzphysik';
+import { istUngueltig, keinErgebnis, zahlenPassen } from './hilfen/keinErgebnis';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -62,8 +63,9 @@ for (let i = 0; i < 1000; i++) {
   const g = gleichgewichtsfeuchte(z(-20, 120), z(-40, 200));
   const l = feuchteNachLagerung(z(-5, 60), g.u, z(-10, 1000), z(-10, 500));
   const r = schwinden({ uStart: z(-5, 60), uEnde: l.u, qt: z(-0.1, 0.6), qr: z(-0.1, 0.4), ql: z(-0.01, 0.05), breite: z(-10, 500), dicke: z(-10, 300), laenge: z(-10, 5000) });
-  const werte = [g.u, l.u, l.tau, r.deltaU, r.epsT, r.epsV, r.neueBreite, r.neueDicke, r.neueLaenge, r.mikroT];
-  if (!werte.every(Number.isFinite)) { pruefe(false, `Fuzz ${i}: ${JSON.stringify(werte)}`); break; }
+  // Grenzfallprüfung 02.11.2026: ungültig → kein Zahlenergebnis (NaN), gültig → endlich
+  const ok = zahlenPassen(g, [g.u]) && zahlenPassen(l, [l.u, l.tau]) && zahlenPassen(r, [r.deltaU, r.epsT, r.epsV, r.neueBreite, r.neueDicke, r.neueLaenge, r.mikroT]);
+  if (!ok) { pruefe(false, `Fuzz ${i}: ${JSON.stringify([g.u, l.u, l.tau, r.deltaU])}`); break; }
 }
 
 if (fehler.length) { for (const x of fehler) console.error(`FAIL: ${x}`); process.exit(1); }
