@@ -79,13 +79,23 @@ export interface PfasSumme {
 export interface PfasErgebnis {
   pfas20: PfasSumme;
   pfas4: PfasSumme;
-  /** Anteil kurzkettiger PFAS (C4–C7) an der Summe PFAS-20 [-] */
+  /** Anteil kurzkettiger PFAS (Carbonsäuren C4–C7, Sulfonsäuren C4–C5) an der Summe PFAS-20 [-] */
   anteilKurzkettig: number;
   hinweise: Hinweis[];
 }
 
 const LEERE_SUMME = (grenzwert: number): PfasSumme => ({ summe: NaN, unten: NaN, oben: NaN, grenzwert, eta: NaN, ok: false, uneindeutig: false, nKleinerBg: 0 });
 const LEER = (hinweise: Hinweis[]): PfasErgebnis => nurGueltig(({ pfas20: LEERE_SUMME(PFAS_GRENZWERTE.pfas20), pfas4: LEERE_SUMME(PFAS_GRENZWERTE.pfas4), anteilKurzkettig: NaN, hinweise }));
+
+/**
+ * Kurzkettig nach OECD (2013) bzw. UBA (PFAS-Portal): Perfluorcarbonsäuren bis C7 (PFBA–PFHpA, weniger als sieben
+ * perfluorierte C-Atome), Perfluorsulfonsäuren nur bis C5 (PFBS, PFPeS; weniger als sechs C-Atome). PFHxS und PFHpS
+ * sind langkettige Sulfonsäuren (PFHxS ist POP und Teil von PFAS-4). Nachstichprobe 5c 02.11.2026, NS5C-PF-1;
+ * vorher wurden die Sulfonsäuren bis C7 als kurzkettig gezählt.
+ */
+export function istKurzkettig(s: { c: number; gruppe: string }): boolean {
+  return s.gruppe === 'Sulfonsäure' ? s.c <= 5 : s.c <= 7;
+}
 
 /** Ersatzwert für „< BG“ */
 export function ersatzwert(bg: number, ansatz: BgAnsatz): number {
@@ -119,7 +129,7 @@ export function pfasSummenbewertung(e: PfasEingabe): PfasErgebnis {
   const alle = PFAS20.map(s => s.id);
   const pfas20 = summiere(alle, e, PFAS_GRENZWERTE.pfas20);
   const pfas4 = summiere(PFAS4, e, PFAS_GRENZWERTE.pfas4);
-  const kurz = summiere(PFAS20.filter(s => s.c <= 7).map(s => s.id), e, PFAS_GRENZWERTE.pfas20).summe;
+  const kurz = summiere(PFAS20.filter(istKurzkettig).map(s => s.id), e, PFAS_GRENZWERTE.pfas20).summe;
 
   if (gemessen.some(w => w > 0 && w < e.bg)) warnung(hinweise, 'werte', 'Ein Messwert liegt unter der Bestimmungsgrenze – solche Werte als „< BG“ eintragen.');
   if (e.bg > 10) warnung(hinweise, 'bg', 'Bestimmungsgrenze über 10 ng/l (Lehrannahme): Für die Bewertung gegen 20 ng/l (PFAS-4) ist die Analytik zu unempfindlich.');

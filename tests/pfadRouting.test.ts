@@ -69,6 +69,24 @@ wirft = false;
 try { baueSeite(vorlage.replace(startRoot, '<div id="root"></div>'), startRoot, { id: 'glas', label: 'Glas' }, ''); } catch { wirft = true; }
 pruefe(wirft, 'fehlende Startseiten-Schale wird nicht erkannt');
 
+// 4a. Vorlade-Karte der Modulseite (LCP 02.11.2026): nur das eigene Modul, Block hinter dem Stylesheet
+{
+  const karte = { b: '/assets/', d: ['ModulInhalt.js', 'Glas.js', 'icons.js', 'Holz.js', 'kopf-glas.js', 'Aufgaben.js', 'kopf-holz.js'], i: [0], k: [], c: [[1, 2], [3, 2], [5]], t: { glas: 0, holz: 1 }, p: [['aufgaben', 2]], h: { glas: 4, holz: 6 } };
+  const mitKarte = vorlage.replace('<title>', `<script type="module" crossorigin src="/assets/app.js"></script>\n    <script type="application/json" id="modul-vorladen">${JSON.stringify(karte)}</script>\n    <script>vorladen()</script><link rel="stylesheet" crossorigin href="/assets/app.css"><title>`);
+  const s = baueSeite(mitKarte, startRoot, { id: 'glas', label: 'Glas' }, '<p>X</p>');
+  const m = /<script type="application\/json" id="modul-vorladen">([^<]*)<\/script>/.exec(s);
+  const neu = m && JSON.parse(m[1]);
+  const pfade = (k: typeof karte, id: string) => { const c = k.t[id as 'glas'] ?? k.p.find(([p]) => id.startsWith(p))?.[1]; return [...k.i, ...k.k, ...k.c[c!], ...(id in k.h ? [k.h[id as 'glas']] : [])].map(i => k.d[i]); };
+  pruefe(!!neu && JSON.stringify(pfade(neu, 'glas')) === JSON.stringify(pfade(karte, 'glas')), `Karte der Modulseite lädt anders vor: ${m?.[1]}`);
+  pruefe(!!neu && Object.keys(neu.t).join() === 'glas' && neu.p.length === 0 && neu.d.length === 4, 'Karte enthält fremde Module');
+  pruefe(s.indexOf('href="/assets/app.css"') < s.indexOf('id="modul-vorladen"') && s.indexOf('id="modul-vorladen"') < s.indexOf('<script>vorladen()</script>'), 'Vorlade-Block nicht hinter dem Stylesheet');
+  pruefe(s.indexOf('<script type="module"') < s.indexOf('href="/assets/app.css"') && s.split('vorladen()').length === 2, 'Einstieg verschoben oder Vorlade-Skript doppelt');
+  const a = baueSeite(mitKarte, startRoot, { id: 'aufgaben_quiz', label: 'Quiz' }, '<p>X</p>');
+  const ka = JSON.parse(/id="modul-vorladen">([^<]*)</.exec(a)![1]);
+  pruefe(JSON.stringify(pfade(ka, 'aufgaben_quiz')) === JSON.stringify(['ModulInhalt.js', 'Aufgaben.js']), `Präfix-Modul: ${JSON.stringify(ka)}`);
+  pruefe(baueSeite(vorlage, startRoot, { id: 'glas', label: 'Glas' }, '<p>X</p>') === baueSeite(vorlage, startRoot, { id: 'glas', label: 'Glas' }, '<p>X</p>') && !baueSeite(vorlage, startRoot, { id: 'glas', label: 'Glas' }, '').includes('modul-vorladen'), 'ohne Karte verändert');
+}
+
 // 5. keine alten Hash-Links mehr in Sitemap und index.html (Crawler sehen nur echte Pfade)
 pruefe(!/baustoffboard\.de\/#/.test(erzeugeSitemap()) && erzeugeSitemap().includes('https://baustoffboard.de/modul/glas<'), 'Sitemap mit Hash-Links');
 const index = fs.readFileSync('index.html', 'utf8');

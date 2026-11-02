@@ -162,7 +162,7 @@ const INITIAL_CHECKLISTS: Record<string, ChecklistSection> = {
         id: 'kreislauf_3',
         task: inhalt.werte.sortenreineTrennbarkeitAnWdvs,
         description: inhalt.werte.befürwortungMechanischVerdübelterDämmsys,
-        ref: inhalt.werte.vdi6205Rückbaubarkeit,
+        ref: inhalt.werte.vdi6210Rückbaubarkeit,
         status: 'mandatory'
       },
       {

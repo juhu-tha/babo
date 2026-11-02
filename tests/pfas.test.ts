@@ -26,8 +26,9 @@ const a = pfasSummenbewertung(basis);
 pruefe(nahe(a.pfas20.summe, 82.5) && nahe(a.pfas20.unten, 77) && nahe(a.pfas20.oben, 88) && a.pfas20.nKleinerBg === 11, `Σ20 ${a.pfas20.summe}`);
 pruefe(nahe(a.pfas20.eta, 0.825) && a.pfas20.ok && !a.pfas20.uneindeutig, `η20 ${a.pfas20.eta}`);
 pruefe(nahe(a.pfas4.summe, 28) && nahe(a.pfas4.eta, 1.4) && !a.pfas4.ok && a.pfas4.nKleinerBg === 0, `Σ4 ${a.pfas4.summe}`);
-// kurzkettig: Carbonsäuren C4–C7 = 12+8+15+4 = 39; Sulfonsäuren C4–C7: PFBS 10, PFPeS <BG (0,5), PFHxS 6, PFHpS <BG (0,5) → 17; Σ = 56
-pruefe(nahe(a.anteilKurzkettig, 56 / 82.5), `kurzkettig ${a.anteilKurzkettig}`);
+// kurzkettig (OECD/UBA): Carbonsäuren C4–C7 = 12+8+15+4 = 39; Sulfonsäuren nur C4–C5: PFBS 10, PFPeS <BG (0,5) → 10,5;
+// Σ = 49,5 (PFHxS und PFHpS sind langkettig; NS5C-PF-1, vorher 56 mit Sulfonsäuren bis C7)
+pruefe(nahe(a.anteilKurzkettig, 49.5 / 82.5), `kurzkettig ${a.anteilKurzkettig}`);
 pruefe(!a.hinweise.some(h => h.stufe === 'fehler'), 'keine Fehler');
 
 // 2. Ansätze für < BG

@@ -7,11 +7,15 @@
  *   BB_STATISCH=1 npm run build && rm -f dist/server.cjs && cp dist/index.html dist/404.html   (= buildCommand)
  *   PORT=4501 node scripts/qa/vercel-vorschau.mjs [dist]
  *
+ * Kompression wie Vercel: Brotli (bzw. gzip) für Text-Typen, wenn der Browser es anbietet (Ladezeitmessung mit
+ * scripts/qa/perf-messung.mjs unter „Fast 3G“, docs/pruefung/lcp-module-2026-11-02.md). Ergebnis je Datei zwischengespeichert.
+ *
  * Nachbildung nur für die in vercel.json benutzten Muster (feste Pfade und „/<präfix>/(.*)“).
  */
 import fs from 'fs';
 import http from 'http';
 import path from 'path';
+import zlib from 'zlib';
 
 const wurzel = path.resolve(process.argv[2] ?? 'dist');
 const konfig = JSON.parse(fs.readFileSync(path.resolve('vercel.json'), 'utf8'));
@@ -37,12 +41,35 @@ function datei(p) {
   try { return fs.statSync(f).isFile() ? f : null; } catch { return null; }
 }
 
+const KOMPRIMIERBAR = /^(text\/|application\/(json|javascript|xml|manifest\+json)|image\/svg)/;
+const gepackt = new Map();
+/** Datei als Brotli/gzip (Qualität wie typische CDN-Einstellung), zwischengespeichert nach Pfad und Verfahren */
+function packen(f, verfahren) {
+  const k = verfahren + ':' + f;
+  if (!gepackt.has(k)) {
+    const roh = fs.readFileSync(f);
+    gepackt.set(k, verfahren === 'br'
+      ? zlib.brotliCompressSync(roh, { params: { [zlib.constants.BROTLI_PARAM_QUALITY]: 6 } })
+      : zlib.gzipSync(roh, { level: 6 }));
+  }
+  return gepackt.get(k);
+}
+
 let host = '';
+let annahme = '';
 function senden(res, pfad, status, f, kopf = {}) {
   for (const r of kopfRegeln) if (r.re.test(pfad) && hostPasst(r.has, host)) for (const h of r.headers) res.setHeader(h.key, h.value);
   for (const [k, v] of Object.entries(kopf)) res.setHeader(k, v);
   if (!f) { res.writeHead(status); return res.end(); }
-  res.setHeader('Content-Type', TYPEN[path.extname(f).toLowerCase()] ?? 'application/octet-stream');
+  const typ = TYPEN[path.extname(f).toLowerCase()] ?? 'application/octet-stream';
+  res.setHeader('Content-Type', typ);
+  const verfahren = !KOMPRIMIERBAR.test(typ) ? '' : /\bbr\b/.test(annahme) ? 'br' : /\bgzip\b/.test(annahme) ? 'gzip' : '';
+  if (verfahren) {
+    res.setHeader('Content-Encoding', verfahren);
+    res.setHeader('Vary', 'Accept-Encoding');
+    res.writeHead(status);
+    return res.end(packen(f, verfahren));
+  }
   res.writeHead(status);
   fs.createReadStream(f).pipe(res);
 }
@@ -50,6 +77,7 @@ function senden(res, pfad, status, f, kopf = {}) {
 http.createServer((req, res) => {
   const url = new URL(req.url ?? '/', 'http://x');
   host = String(req.headers.host ?? '').replace(/:\d+$/, '');
+  annahme = String(req.headers['accept-encoding'] ?? '');
   let pfad;
   try { pfad = decodeURIComponent(url.pathname); } catch { return senden(res, url.pathname, 400, null); }
   const suche = url.search;
