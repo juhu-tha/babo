@@ -3,8 +3,8 @@
  * Hinweise zu DSB-BIM-1):
  *  - Schritt 1 statt 5 für Beton, Holz und Mineralwolle, damit die Voreinstellung aus der Lehrwerttabelle (z. B. Beton C30/37
  *    CEM I 258) auf dem Raster liegt – vorher zeigte der Regler den gerundeten Rasterwert, die IFC-Ausgabe den Lehrwert.
- *  - Stahl bis 23 000, damit die Spanne des Profilstahl-Lehrwerts bis rund 2,9 kg/kg (≈ 22 800 kg/m³ bei 7850 kg/m³)
- *    einstellbar ist (vorher Ende bei 10 000).
+ *  - Stahl bis 23 000, damit die Spanne des Profilstahl-Lehrwerts bis rund 2,9 kg/kg (≈ 22 800 kg/m³ bei 7850 kg/m³)
+ *    einstellbar ist (vorher Ende bei 10 000).
  */
 export interface GwpReglerBereich {
   min: number;
