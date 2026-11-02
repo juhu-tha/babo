@@ -181,7 +181,7 @@ export function BetonDauerhaftigkeitsSimulator() {
                   <>
                     Nach ca. <strong>{formatDeWert(tCrit)} Jahren</strong><MdText text={inhalt.texte.hatDieSaureFront} /></>
                 ) : (
-                  <><MdText text={inhalt.texte.dieAlkalitätSchütztDie} /><strong>{safeYearsRemaining > 200 ? '>200' : safeYearsRemaining} Jahre</strong><MdText text={inhalt.texte.schwelleBeiT} />{formatDeWert(tCrit)} Jahren).
+                  <><MdText text={inhalt.texte.dieAlkalitätSchütztDie} /><strong>{safeYearsRemaining > 200 ? '>200' : formatDeWert(safeYearsRemaining)} Jahre</strong><MdText text={inhalt.texte.schwelleBeiT} />{formatDeWert(tCrit)} Jahren).
                   </>
                 )}
               </p>
@@ -229,9 +229,9 @@ export function BetonDauerhaftigkeitsSimulator() {
                 <div className="bg-white p-3 rounded-lg border border-slate-200 font-mono text-center text-slate-800 font-bold my-1 text-xs"><MdText text={inhalt.texte.tCritCNom} />{formatDeWert(cnom)} / {formatDeWert(k)})² = {formatDeWert(tCrit)} Jahre
                 </div>
                 <p className="text-xs text-slate-500 leading-relaxed mt-1"><MdText text={inhalt.texte.rechnerischVerbleibendeRestlebensdauerVo} />{safeYearsRemaining > 0 ? (
-                    <span><strong>{safeYearsRemaining} Jahre</strong>.</span>
+                    <span><strong>{formatDeWert(safeYearsRemaining)} Jahre</strong>.</span>
                   ) : (
-                    <span><MdText text={inhalt.texte.dasBauteilBefindetSich} /><strong>{Math.abs(safeYearsRemaining)} Jahren</strong><MdText text={inhalt.texte.imUngeschütztenZustand} /></span>
+                    <span><MdText text={inhalt.texte.dasBauteilBefindetSich} /><strong>{formatDeWert(Math.abs(safeYearsRemaining))} Jahren</strong><MdText text={inhalt.texte.imUngeschütztenZustand} /></span>
                   )}
                 </p>
               </div>

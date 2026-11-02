@@ -1,4 +1,4 @@
-import { formatDeZahl, formatDeTeX, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeTeX, formatDeWert, formatDeTeXWert } from '@/src/utils/numberFormat';
 import { lehmWand } from '@/src/calc/bauprodukte';
 import React, { useState } from 'react';
 import { 
@@ -330,7 +330,7 @@ export default function BpLehmbauprodukte() {
                     <div className="text-[13px] overflow-x-auto py-1">
                       <BlockMath math={`h_{ef} = \\beta \\cdot h = ${formatDeTeX(effectiveHeightBeiwert, 2)} \\cdot ${formatDeTeX(height, 2)} = ${formatDeTeX(effectiveHeight, 2)}\\text{ m}`} />
                       <BlockMath math={`\\lambda = \\frac{h_{ef}}{t} = \\frac{${formatDeTeX(effectiveHeight, 2)}}{${formatDeTeX(wallThicknessM, 3)}} = ${formatDeTeX(slenderness, 1)} \\leq 21`} />
-                      <BlockMath math={`N_{Rd} = \\Phi \\cdot t \\cdot f_d = ${formatDeTeX(phi, 3)} \\cdot ${formatDeTeX(wallThicknessM, 3)} \\text{ m} \\cdot ${f_d * 1000} \\text{ kN/m}^2 = ${formatDeTeX(n_Rd, 1)} \\text{ kN/m}`} />
+                      <BlockMath math={`N_{Rd} = \\Phi \\cdot t \\cdot f_d = ${formatDeTeX(phi, 3)} \\cdot ${formatDeTeX(wallThicknessM, 3)} \\text{ m} \\cdot ${formatDeTeXWert(f_d * 1000)} \\text{ kN/m}^2 = ${formatDeTeX(n_Rd, 1)} \\text{ kN/m}`} />
                     </div>
                   </div>
                 </div>
@@ -360,7 +360,7 @@ export default function BpLehmbauprodukte() {
                           isCapacityOk 
                             ? `Die bemessene Wandstärke von ${thickness} cm hält mit einer rechnerischen Wandkapazität von ${formatDeZahl(n_Rd, 1)} kN/m der Traglast von ${designLoad} kN/m einwandfrei stand.`
                             : `Die berechnete Wandtragfähigkeit beträgt nur ${formatDeZahl(n_Rd, 1)} kN/m. Dies reicht für die äußere Belastung von ${designLoad} kN/m nicht aus!`
-                        ) : `Der berechnete Schlankheitsgrad beträgt ${formatDeZahl(slenderness, 1)}, der über dem im Rechner angesetzten Grenzwert 21 liegt (Lehrannahme, Grenzwert nach DIN 18940 manuell prüfen). Erhöhen Sie die Wanddicke.`}
+                        ) : `Der berechnete Schlankheitsgrad beträgt ${formatDeZahl(slenderness, 1)}, der über dem im Rechner angesetzten Grenzwert 21 liegt (Lehrannahme; Grenzwert nach DIN 18940 vorläufig, Normprüfung ausstehend). Erhöhen Sie die Wanddicke.`}
                       </p>
                     </div>
                   </div>

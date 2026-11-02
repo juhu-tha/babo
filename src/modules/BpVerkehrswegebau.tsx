@@ -100,7 +100,7 @@ export default function BpVerkehrswegebau({ initialTab }: BpVerkehrswegebauProps
     const e = asphaltHohlraum(asphaltMischung);
     return {
       maxDichte: formatDeZahl(e.maxDichte, 3),
-      luftporen: e.hohlraum.toFixed(2),
+      luftporen: formatDeZahl(e.hohlraum, 2),
       isOk: e.ok
     };
   }, [asphaltMischung]);

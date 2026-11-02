@@ -111,7 +111,7 @@ export default function MechanischePruefungen() {
   // Hinweis: Die Norm verlangt charakteristische Werte (Quantile) aus Prüfserien.
   const steelRes = useMemo(() => {
     const r = zugversuchStahl({ dMm: steelDiam, kraftReKn: steelForceYield, kraftRmKn: steelForceUltimate, l0Mm: steelLength0, luMm: steelLengthU });
-    const complianceClass = r.einstufung === 'B500B' ? inhalt.werte.einzelwertErfülltB500bHochduktil
+    const complianceClass = r.einstufung === '–' ? '–' : r.einstufung === 'B500B' ?inhalt.werte.einzelwertErfülltB500bHochduktil
       : r.einstufung === 'B500A' ? inhalt.werte.einzelwertErfülltB500aNormalduktil : inhalt.werte.anforderungenB500aB500bNicht;
     return { ...r, complianceClass };
   }, [steelDiam, steelForceYield, steelForceUltimate, steelLength0, steelLengthU]);
@@ -131,7 +131,7 @@ export default function MechanischePruefungen() {
     const r = holzSchaetzung({ rohdichte: woodDensity, feuchte: woodMoisture, bMm: woodWidth, hMm: woodHeight, stuetzweiteMm: woodSpan, kraftKn: woodBendingForce });
     const klassenText = {
       laubholz: inhalt.werte.laubholzDKlassen, C30: inhalt.werte.niveauC30Einzelwert, C24: inhalt.werte.niveauC24Einzelwert,
-      C18: inhalt.werte.niveauC18Einzelwert, unterC18: inhalt.werte.unterC18Einzelwert,
+      C18: inhalt.werte.niveauC18Einzelwert, unterC18: inhalt.werte.unterC18Einzelwert, '–': '–',
     } as const;
     return { ...r, strengthClassName: klassenText[r.niveau] };
   }, [woodDensity, woodMoisture, woodWidth, woodHeight, woodSpan, woodBendingForce]);

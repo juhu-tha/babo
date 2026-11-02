@@ -18,6 +18,7 @@ const th = 'p-2 text-left text-xs font-bold text-text-main border-b border-home-
 const td = 'p-2 text-xs text-text-main/85 border-b border-home-grau/15 font-mono';
 
 const BEREICH_TEXT: Record<PotentialBereich, string> = {
+  '–': '–', // F-1: keine Zahl → keine Einstufung
   gering: inhaltJson.werte.geringeKorrosionswahrscheinlichkeit,
   unsicher: inhaltJson.werte.unsichererBereich,
   hoch: inhaltJson.werte.hoheKorrosionswahrscheinlichkeit,

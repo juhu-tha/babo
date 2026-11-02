@@ -31,7 +31,7 @@
     "cloudPlattformHyperscaler": "Cloud-Plattform eines Hyperscalers",
     "ca050Bis": "ca. 0,50 € bis 2,00 €",
     "apiKeyEuRegion": "API-Key / EU-Region wählbar (z. B. Frankfurt)",
-    "sehrGroßesKontextfensterGrößenordnung": "Sehr großes Kontextfenster (Größenordnung 10⁶ Token; Stand prüfen) für vollständige Normensammlungen, hunderte Bauakten, Punktwolken & Live-CAD.",
+    "sehrGroßesKontextfensterGrößenordnung": "Sehr großes Kontextfenster (Größenordnung 10⁶ Token, Stand 10/2026) für vollständige Normensammlungen, hunderte Bauakten, Punktwolken & Live-CAD.",
     "schnelleLatenzNativerMultimodal": "Schnelle Latenz, nativer Multimodal-Core für CAD/Punktwolken und integriertes adaptives Denken mit günstigem Preis-Leistungs-Verhältnis.",
     "openWeightReasoning": "Open-Weight-Reasoning-Modell (Destillat), lokal betreibbar",
     "openWeightsGguf": "Open Weights (GGUF)",

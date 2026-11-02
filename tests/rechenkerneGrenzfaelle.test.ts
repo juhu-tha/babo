@@ -343,7 +343,7 @@ const AUSNAHMEN: Record<string, string> = {
   // Klassifizierer und Texte (Ergebnis ist keine Zahl) – Verhalten bei NaN siehe Bericht, Frage F-1
   'src/calc/bauwerksuntersuchung.ts:potentialStufe': 'Klassifizierer (F-1)', 'src/calc/bauwerksuntersuchung.ts:potentialStatus': 'Klassifizierer (F-1)',
   'src/calc/boden.ts:zustandsformISO14688': 'Klassifizierer (F-1)', 'src/calc/eisenKohlenstoff.ts:gefuegeRaumtemperatur': 'Klassifizierer (F-1)',
-  'src/calc/eisenKohlenstoff.ts:schweisseignung': 'Klassifizierer (F-1)', 'src/calc/energieausweis.ts:effizienzklasse': 'Klassifizierer (F-1)',
+  'src/calc/eisenKohlenstoff.ts:schweisseignung': 'Klassifizierer (F-1)', 'src/calc/pfas.ts:istKurzkettig': 'Klassifizierer Kettenlänge (boolesch), in pfasSummenbewertung und tests/nachstichprobe5c.test.ts','src/calc/energieausweis.ts:effizienzklasse': 'Klassifizierer (F-1)',
   'src/calc/erdbau.ts:bodengruppe': 'Klassifizierer (F-1)', 'src/calc/hydratation.ts:rissgefahrAusDeltaT': 'Klassifizierer (F-1)',
   'src/calc/hydratation.ts:festigkeitsentwicklungAusR': 'Klassifizierer (F-1)', 'src/calc/hydratation.ts:oberflaechenTempBereich': 'Klassifizierer (F-1)',
   'src/calc/karsten.ts:saugKlasse': 'Klassifizierer (F-1)', 'src/calc/keramik.ts:fliesenGruppe': 'Klassifizierer (F-1)', 'src/calc/keramik.ts:scherbenTyp': 'Klassifizierer (F-1)',

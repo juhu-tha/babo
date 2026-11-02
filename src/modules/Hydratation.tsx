@@ -585,7 +585,7 @@ export default function Hydratation() {
           </div>
           <div className="flex justify-between items-center mb-2">
             <span className="text-text-main/80">Rissgefahr:</span>
-            <span className={`font-bold ${rissgefahr === 'Hoch' ? 'text-red-500' : rissgefahr === 'Mittel' ? 'text-yellow-500' : 'text-green-500'}`}>{rissgefahr}</span>
+            <span className={`font-bold ${rissgefahr === '–' ? 'text-slate-700' : rissgefahr === 'Hoch' ? 'text-red-500' : rissgefahr === 'Mittel' ? 'text-yellow-500' : 'text-green-500'}`}>{rissgefahr}</span>
           </div>
           <p className="text-text-main/80 text-xs mt-2"><MdText text={inhalt.texte.einTemperaturunterschiedVonMehr} /></p>
         </div>

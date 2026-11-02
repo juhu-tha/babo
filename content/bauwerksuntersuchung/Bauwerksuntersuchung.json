@@ -110,7 +110,7 @@
       },
       {
         "titel": "Charakteristischer Wert",
-        "erklaerung": "Mit k_n = 2,00 für n = 8 Kerne und M = 4 N/mm² (DIN EN 13791:2020-02; Tabellenwerte am Normtext prüfen):",
+        "erklaerung": "Mit k_n = 2,00 für n = 8 Kerne und M = 4 N/mm² (DIN EN 13791:2020-02; Tabellenwerte vorläufig, Normprüfung ausstehend):",
         "formel": "f_{ck,is} = \\min(31{,}0 - 2{,}00 \\cdot 2{,}5;\\; 28{,}0 + 4) = \\min(26{,}0;\\; 32{,}0) = 26{,}0\\,\\text{N/mm}^2"
       },
       {
@@ -121,7 +121,7 @@
     ],
     "Bauwerksuntersuchung.literatur": [
       "Neroth, G.; Vollenschaar, D. (Hrsg.): Wendehorst Baustoffkunde. 27. Aufl., Wiesbaden: Vieweg+Teubner 2011",
-      "Rinn, F.: Bohrwiderstandsmessung an Holz (Resistograph) – Originalpatent/Quelle prüfen"
+      "Rinn, F. (1993): Catalogue of relative density profiles of trees, poles and timber derived from RESISTOGRAPH micro-drillings. Proceedings of the 9th International Symposium on Nondestructive Testing of Wood, Wisconsin (USA), S. 61–67"
     ],
     "Bauwerksuntersuchung.regelwerke": [
       {

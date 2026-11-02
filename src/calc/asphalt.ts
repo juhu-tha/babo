@@ -8,7 +8,7 @@
  *    der TRGS 900 (1,5 mg/m³), Energiebedarf, CO₂-Bilanz und Verdichtungszeitfenster (Newton-Abkühlung)
  * Reiner Rechenkern – geprüft in tests/asphalt.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler, muss, nurGueltig } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, muss, nurGueltig, type KeineKlasse } from './plausibilitaet';
 
 export interface Ergebnis { gueltig: boolean; hinweise: Hinweis[] }
 const abschluss = (h: Hinweis[]): Ergebnis => nurGueltig(({ gueltig: !hatFehler(h), hinweise: h }));
@@ -95,7 +95,7 @@ export const NTA = {
   abkuehlMin: 38,
 } as const;
 
-export type NtaBewertung = 'optimal' | 'erschwert' | 'blockiert';
+export type NtaBewertung = 'optimal' | 'erschwert' | 'blockiert' | KeineKlasse;
 
 export interface NtaEingabe {
   verfahren: NtaVerfahren;
@@ -160,5 +160,5 @@ export function ntaModell(e: NtaEingabe): NtaErgebnis {
     energie, energieEinsparung, heizoelJeT, heizoelJe1000t: heizoelJeT * 1000,
     co2, co2Einsparung, co2VermiedenJe1000t: (NTA.co20 - co2) * 1000,
     grenzTemperatur, verdichtungsfenster, ...abschluss(h),
-  });
+  }, ['bewertung']);
 }

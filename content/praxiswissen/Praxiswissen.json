@@ -382,7 +382,7 @@
             "description": "Regelmäßige Überprüfung und Kalibrierung der Zement-, Wasser- und Zusatzmittelwaagen zur Vermeidung von Fehlmischungen.",
             "standard": "DIN EN 206 (Dosiergenauigkeit) / DIN 1045-2",
             "important": true,
-            "tip": "Nach DIN EN 206 (Tabelle zur Dosiergenauigkeit) gelten ±3 % für Zement, Wasser, die Gesamtmenge der Gesteinskörnung und Zusatzstoffe über 5 % des Zementgehalts sowie ±5 % für Zusatzmittel und Zusatzstoffe bis 5 % (Werte am Normtext prüfen)."
+            "tip": "Nach DIN EN 206 (Tabelle zur Dosiergenauigkeit) gelten ±3 % für Zement, Wasser, die Gesamtmenge der Gesteinskörnung und Zusatzstoffe über 5 % des Zementgehalts sowie ±5 % für Zusatzmittel und Zusatzstoffe bis 5 % (vorläufig, Normprüfung ausstehend)."
           },
           {
             "id": "pr_wpk_3",

@@ -380,7 +380,9 @@ export default function MessenPruefen() {
                   
                   {/* Card 1: z-Score */}
                   <div className={`p-4 rounded-xl border flex flex-col justify-between transition-all ${
-                    rvStats.zStatus === 'ok' 
+                    rvStats.zStatus === '–'
+                      ? 'bg-off-white border-home-grau/30'
+                      : rvStats.zStatus === 'ok'
                       ? 'bg-emerald-50/70 border-emerald-300' 
                       : rvStats.zStatus === 'warning' 
                         ? 'bg-amber-50/70 border-amber-300' 
@@ -392,10 +394,11 @@ export default function MessenPruefen() {
                           Leistungsbewertung
                         </span>
                         <span className={`text-[11px] font-bold font-mono px-2 py-0.5 rounded-full ${
+                          rvStats.zStatus === '–' ? 'bg-slate-100 text-slate-700' :
                           rvStats.zStatus === 'ok' ? 'bg-emerald-600 text-white' :
                           rvStats.zStatus === 'warning' ? 'bg-amber-600 text-white' : 'bg-rose-600 text-white animate-pulse'
                         }`}>
-                          {rvStats.zStatus === 'ok' ? 'Zufriedenstellend' : rvStats.zStatus === 'warning' ? 'Warnsignal' : inhalt.werte.nichtAkzeptabel}
+                          {rvStats.zStatus === '–' ? '–' : rvStats.zStatus === 'ok' ? 'Zufriedenstellend' : rvStats.zStatus === 'warning'? 'Warnsignal' : inhalt.werte.nichtAkzeptabel}
                         </span>
                       </div>
                       
@@ -431,7 +434,9 @@ export default function MessenPruefen() {
 
                   {/* Card 2: En-Zahl */}
                   <div className={`p-4 rounded-xl border flex flex-col justify-between transition-all ${
-                    rvStats.enStatus === 'ok' 
+                    rvStats.enStatus === '–'
+                      ? 'bg-off-white border-home-grau/30'
+                      : rvStats.enStatus === 'ok'
                       ? 'bg-blue-50/70 border-blue-300' 
                       : 'bg-rose-50/70 border-rose-300'
                   }`}>
@@ -441,9 +446,9 @@ export default function MessenPruefen() {
                           Messunsicherheits-Check
                         </span>
                         <span className={`text-[11px] font-bold font-mono px-2 py-0.5 rounded-full ${
-                          rvStats.enStatus === 'ok' ? 'bg-blue-600 text-white' : 'bg-rose-600 text-white animate-pulse'
+                          rvStats.enStatus === '–' ? 'bg-slate-100 text-slate-700' : rvStats.enStatus === 'ok' ? 'bg-blue-600 text-white' : 'bg-rose-600 text-white animate-pulse'
                         }`}>
-                          {rvStats.enStatus === 'ok' ? inhalt.werte.en10Zufriedenstellend : inhalt.werte.en10Nicht}
+                          {rvStats.enStatus === '–' ? '–' : rvStats.enStatus === 'ok' ? inhalt.werte.en10Zufriedenstellend : inhalt.werte.en10Nicht}
                         </span>
                       </div>
 
@@ -462,7 +467,7 @@ export default function MessenPruefen() {
                     </div>
 
                     <div className="mt-4 pt-3 border-t border-slate-200/70 text-[11px] text-slate-700 leading-snug">
-                      {rvStats.enStatus === 'ok' ? (
+                      {rvStats.enStatus === '–' ? null : rvStats.enStatus === 'ok' ? (
                         <span className="text-blue-900 font-medium flex items-center gap-1.5">
                           <CheckCircle2 size={14} className="shrink-0 text-blue-700" /><MdText text={inhalt.texte.dieDeklarierteMessunsicherheitDeckt} /></span>
                       ) : (
@@ -521,7 +526,7 @@ export default function MessenPruefen() {
                       })}
 
                       {/* Current Laboratory Point (Highlighted) */}
-                      {(() => {
+                      {rvStats.gueltig && (() => {
                         const curX = Math.max(35, Math.min(425, 230 + (rvStats.currentLab.a - 50.0) * 28)); // Darstellungsfaktor: Plotmitte 50,0 MPa, 28 px je MPa
                         const curY = Math.max(25, Math.min(195, 110 - (rvStats.currentLab.b - 48.0) * 28)); // Darstellungsfaktor: Plotmitte 48,0 MPa, 28 px je MPa
                         const col = rvStats.zStatus === 'ok' ? 'var(--bu-ok)' : rvStats.zStatus === 'warning' ? 'var(--bu-warn)' : 'var(--bu-fehler)';

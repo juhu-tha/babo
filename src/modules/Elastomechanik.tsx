@@ -410,7 +410,7 @@ export default function Elastomechanik({ embedMode = false }: ElastomechanikProp
                   </div>
                   <div className="text-xs text-text-main/70 grid grid-cols-2 gap-2 mt-2 pt-2 border-t border-shiraz/10 max-w-xs mx-auto">
                     <div>Prozent: <span className="font-bold">{formatDeZahl(strainCalculated.percent, 4)} %</span></div>
-                    <div>Dimensionslos: <span className="font-bold font-mono">{strainCalculated.raw.toExponential(3)}</span></div>
+                    <div>Dimensionslos: <span className="font-bold font-mono">{Number.isFinite(strainCalculated.raw) ? strainCalculated.raw.toExponential(3) : '–'}</span></div>
                   </div>
                   
                   <div className="mt-4 pt-3 border-t border-shiraz/10 text-xs font-mono text-slate-600 bg-white/75 rounded p-2 text-left">

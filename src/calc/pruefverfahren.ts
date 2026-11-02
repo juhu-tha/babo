@@ -32,7 +32,7 @@
  *    Würfel 150 über f_ck,cube/f_ck der Festigkeitsklasse (statt pauschal 1,25), Lagerungsfaktoren
  * Reiner Rechenkern ohne Rundung – geprüft in tests/pruefverfahren.test.ts.
  */
-import { type Hinweis, istEndlich, istAnzahl, hatFehler, muss, bereich, nurGueltig, MAX_STUETZSTELLEN } from './plausibilitaet';
+import { type Hinweis, istEndlich, istAnzahl, hatFehler, muss, bereich, nurGueltig, MAX_STUETZSTELLEN, KEINE_KLASSE, type KeineKlasse } from './plausibilitaet';
 import { dynamischerEModul, impactEcho, bohrkern, rueckprallLehrkurve, rueckprallRichtungskorrektur, RUECKPRALL_LEHRKURVE, RUECKPRALL_HINWEIS_SCHAETZUNG, potentialStufe } from './bauwerksuntersuchung';
 import { fckZumAlter, fckCubeVonFck, fckVonFckCube, BETONSTAHL } from '../data/kennwerte';
 import { betaCc, ZEMENT_S } from './betonkennwerte';
@@ -124,16 +124,16 @@ export function georadar(epsilonR: number, laufzeitNs: number): RadarErgebnis {
 }
 
 // ---------------------------------------------------------------- Potentialfeld, Wenner, Torrent
-export type PotentialRisiko = 'gering' | 'mittel' | 'hoch';
+export type PotentialRisiko = 'gering' | 'mittel' | 'hoch' | KeineKlasse;
 /** Einstufung im Modul ZfP (mV gegen Cu/CuSO₄) mit den einheitlichen Grenzen nach ASTM C876 (potentialStufe):
  *  < −350 hoch, −350 … −200 mittel (ungewiss), > −200 gering. Vorher galt −200 mV selbst als „gering“. */
 export function potentialRisikoZfp(potentialMv: number): PotentialRisiko {
   const s = potentialStufe(potentialMv);
-  return s === 'hoch' ? 'hoch' : s === 'ungewiss' ? 'mittel' : 'gering';
+  return s === KEINE_KLASSE ? KEINE_KLASSE : s === 'hoch' ? 'hoch' : s === 'ungewiss' ? 'mittel' : 'gering';
 }
 /** Grenzen des Korrosionsrisikos aus dem Betonwiderstand in Ω·m (RILEM TC 154-EMC, Polder 2000, Tab. 2; OPC-Beton, 20 °C) */
 export const WENNER_GRENZEN_OHM_M = { hoch: 100, maessig: 500, niedrig: 1000 } as const;
-export type WennerStufe = 'sehr_hoch' | 'mittel' | 'niedrig' | 'vernachlaessigbar';
+export type WennerStufe = 'sehr_hoch' | 'mittel' | 'niedrig' | 'vernachlaessigbar' | KeineKlasse;
 export interface WennerErgebnis extends PruefErgebnis { /** Ω·m */ rho: number; /** kΩ·cm */ rhoKohmCm: number; stufe: WennerStufe }
 /** Elektrodenabstand a in mm, Widerstand R in Ω */
 export function wenner(abstandMm: number, widerstandOhm: number): WennerErgebnis {
@@ -143,10 +143,11 @@ export function wenner(abstandMm: number, widerstandOhm: number): WennerErgebnis
   const g = WENNER_GRENZEN_OHM_M;
   const stufe: WennerStufe = rho < g.hoch ? 'sehr_hoch' : rho < g.maessig ? 'mittel' : rho < g.niedrig ? 'niedrig' : 'vernachlaessigbar';
   if (!hatFehler(h)) h.push({ stufe: 'warnung', feld: 'wenner', text: 'Klassengrenzen nach RILEM TC 154-EMC als Anhalt für OPC-Beton bei 20 °C; Feuchte, Temperatur und Zementart verschieben den Widerstand stark.' });
-  return nurGueltig({ rho, rhoKohmCm: rho / 10, stufe, ...abschluss(h) });
+  return nurGueltig({ rho, rhoKohmCm: rho / 10, stufe, ...abschluss(h) }, ['stufe']);
 }
 /** Permeabilitätsklasse 1 … 5 (sehr niedrig … sehr hoch) aus k_T in 10⁻¹⁶ m² */
-export function torrentKlasse(kT: number): 1 | 2 | 3 | 4 | 5 {
+export function torrentKlasse(kT: number): 1 | 2 | 3 | 4 | 5 | KeineKlasse {
+  if (!Number.isFinite(kT)) return KEINE_KLASSE; // F-1 (02.11.2026): keine Zahl → keine Klasse
   if (kT >= 10.0) return 5;
   if (kT >= 1.0) return 4;
   if (kT >= 0.1) return 3;
@@ -154,12 +155,13 @@ export function torrentKlasse(kT: number): 1 | 2 | 3 | 4 | 5 {
   return 1;
 }
 /** Betonfeuchte in %: > 85 kritisch, > 70 hoch */
-export function torrentFeuchte(feuchteProzent: number): 'normal' | 'hoch' | 'kritisch' {
+export function torrentFeuchte(feuchteProzent: number): 'normal' | 'hoch' | 'kritisch' | KeineKlasse {
+  if (!Number.isFinite(feuchteProzent)) return KEINE_KLASSE; // F-1 (02.11.2026): keine Zahl → keine Klasse
   return feuchteProzent > 85 ? 'kritisch' : feuchteProzent > 70 ? 'hoch' : 'normal';
 }
 
 // ---------------------------------------------------------------- Karsten-Röhrchen
-export type KarstenStufe = 'abweisend' | 'hemmend' | 'saugend';
+export type KarstenStufe = 'abweisend' | 'hemmend' | 'saugend' | KeineKlasse;
 export interface KarstenZfpErgebnis extends PruefErgebnis { /** kg/(m²·√h) */ w: number; tHours: number; stufe: KarstenStufe }
 /** Prüfzeit in min, aufgenommene Wassermenge in ml */
 export function karstenZfp(zeitMin: number, wasserMl: number): KarstenZfpErgebnis {
@@ -171,23 +173,24 @@ export function karstenZfp(zeitMin: number, wasserMl: number): KarstenZfpErgebni
   const klasse = saugKlasse(k.w);
   const stufe: KarstenStufe = klasse === 'wassersaugend' ? 'saugend' : klasse === 'wasserhemmend' ? 'hemmend' : 'abweisend';
   if (!hatFehler(h)) h.push(...k.hinweise);
-  return nurGueltig({ w: hatFehler(h) ? 0 : k.w, tHours, stufe, ...abschluss(h) });
+  return nurGueltig({ w: hatFehler(h) ? 0 : k.w, tHours, stufe, ...abschluss(h) }, ['stufe']);
 }
 
 // ---------------------------------------------------------------- Thermografie und Durchstrahlung
 /** Temperaturkontrast ΔT in K: > 2 deutlich, > 0,5 möglich */
-export function thermografieStufe(deltaT: number): 'unauffaellig' | 'moeglich' | 'deutlich' {
+export function thermografieStufe(deltaT: number): 'unauffaellig' | 'moeglich' | 'deutlich' | KeineKlasse {
+  if (!Number.isFinite(deltaT)) return KEINE_KLASSE; // F-1 (02.11.2026): keine Zahl → keine Klasse
   return deltaT > 2.0 ? 'deutlich' : deltaT > 0.5 ? 'moeglich' : 'unauffaellig';
 }
-export interface DurchstrahlungErgebnis extends PruefErgebnis { /** % */ transmission: number; stufe: 'gut' | 'ausreichend' | 'schlecht' }
+export interface DurchstrahlungErgebnis extends PruefErgebnis { /** % */ transmission: number; stufe: 'gut' | 'ausreichend' | 'schlecht' | KeineKlasse }
 /** Bauteildicke in cm, Strahlungsenergie in MeV */
 export function durchstrahlung(dickeCm: number, energieMeV: number): DurchstrahlungErgebnis {
   const h: Hinweis[] = [];
   muss(h, istEndlich(dickeCm, energieMeV) && energieMeV > 0 && dickeCm >= 0, 'radiation', 'Energie > 0 und Dicke ≥ 0 erforderlich.');
   const mu = 0.15 / energieMeV;
   const transmission = Math.exp(-mu * dickeCm) * 100;
-  const stufe = transmission < 1 ? 'schlecht' : transmission < 5 ? 'ausreichend' : 'gut';
-  return nurGueltig({ transmission, stufe, ...abschluss(h) });
+  const stufe: DurchstrahlungErgebnis['stufe'] = transmission < 1 ? 'schlecht' : transmission < 5 ? 'ausreichend' : 'gut';
+  return nurGueltig({ transmission, stufe, ...abschluss(h) }, ['stufe']);
 }
 
 // ================================================================ Messen & Prüfen
@@ -233,8 +236,8 @@ export interface RingversuchEingabe {
   /** Versatz Probe B für den Youden-Plot */ offsetB: number;
 }
 export interface RingversuchErgebnis extends PruefErgebnis {
-  dVal: number; zScore: number; absZ: number; zStatus: 'ok' | 'warning' | 'critical';
-  denomEn: number; enScore: number; absEn: number; enStatus: 'ok' | 'critical';
+  dVal: number; zScore: number; absZ: number; zStatus: 'ok' | 'warning' | 'critical' | KeineKlasse;
+  denomEn: number; enScore: number; absEn: number; enStatus: 'ok' | 'critical' | KeineKlasse;
   /** eigener Punkt im Youden-Plot (Probe A, Probe B) */
   currentLab: { a: number; b: number };
 }
@@ -252,7 +255,7 @@ export function ringversuch(e: RingversuchEingabe): RingversuchErgebnis {
   const enScore = denomEn > 0 ? dVal / denomEn : 0;
   const absEn = Math.abs(enScore);
   const currentLab = { a: e.x, b: e.X + e.offsetB + dVal * 0.95 };
-  return nurGueltig({ dVal, zScore, absZ, zStatus, denomEn, enScore, absEn, enStatus: absEn <= 1.0 ? 'ok' : 'critical', currentLab, ...abschluss(h) });
+  return nurGueltig({ dVal, zScore, absZ, zStatus, denomEn, enScore, absEn, enStatus: absEn <= 1.0 ? 'ok' : 'critical', currentLab, ...abschluss(h) }, ['zStatus', 'enStatus']);
 }
 
 export type Messwerkzeug = 'meterstab' | 'messschieber' | 'laser' | 'risslupe' | 'nivellier';
@@ -337,7 +340,7 @@ export function marshallQuotient(stabilitaetKn: number, fliesswertMm: number): n
   return stabilitaetKn / fliesswertMm;
 }
 
-export type StahlEinstufung = 'nicht' | 'B500A' | 'B500B';
+export type StahlEinstufung = 'nicht' | 'B500A' | 'B500B' | KeineKlasse;
 /** luMm: Messlänge L_m unter Höchstkraft F_m (Extensometer) in mm – daraus die Gesamtdehnung bei Höchstkraft A_gt */
 export interface ZugversuchEingabe { dMm: number; kraftReKn: number; kraftRmKn: number; l0Mm: number; luMm: number }
 export interface ZugversuchErgebnis extends PruefErgebnis {
@@ -362,10 +365,10 @@ export function zugversuchStahl(e: ZugversuchEingabe): ZugversuchErgebnis {
   if (e.kraftRmKn < e.kraftReKn) h.push({ stufe: 'warnung', feld: 'steelForceUltimate', text: 'F_m < F_e: Die Höchstkraft liegt unter der Streckgrenzenkraft.' });
   h.push({ stufe: 'warnung', feld: 'elongation', text: 'A_gt = (L_m − L₀)/L₀ aus der Messlänge unter Höchstkraft (einschließlich elastischem Anteil). Die Bruchdehnung A nach dem Bruch ist größer und darf nicht mit den A_gt-Grenzen der DIN 488-1 verglichen werden. Einzelwert – die Norm bewertet charakteristische Werte aus Prüfserien.' });
   if (einstufung === 'B500B' && yieldStrength > 1.3 * B.fyk) h.push({ stufe: 'warnung', feld: 'steelForceYield', text: 'R_e > 1,30·R_e,nenn: Die Obergrenze R_e,ist/R_e,nenn für B500B ist zu prüfen (vorläufig, Normprüfung ausstehend).' });
-  return nurGueltig({ area, yieldStrength, ultimateStrength, ratio, elongation, yieldPassed: yieldStrength >= B.fyk, ratiosPassed: ratio >= B.k, elongationPassed: elongation >= B.euk / 10, einstufung, ...abschluss(h) });
+  return nurGueltig({ area, yieldStrength, ultimateStrength, ratio, elongation, yieldPassed: yieldStrength >= B.fyk, ratiosPassed: ratio >= B.k, elongationPassed: elongation >= B.euk / 10, einstufung, ...abschluss(h) }, ['einstufung']);
 }
 
-export type HolzNiveau = 'unterC18' | 'laubholz' | 'C30' | 'C24' | 'C18';
+export type HolzNiveau = 'unterC18' | 'laubholz' | 'C30' | 'C24' | 'C18' | KeineKlasse;
 export interface HolzEingabe { rohdichte: number; feuchte: number; bMm: number; hMm: number; stuetzweiteMm: number; kraftKn: number }
 export interface HolzErgebnis extends PruefErgebnis {
   feuchteFaktor: number; fc0_actual: number; f_bending: number; e_modul: number; niveau: HolzNiveau;
@@ -380,7 +383,7 @@ export function holzSchaetzung(e: HolzEingabe): HolzErgebnis {
   const f_bending = biegezug4Punkt(e.kraftKn, e.stuetzweiteMm, e.bMm, e.hMm);
   const niveau: HolzNiveau = e.rohdichte >= 0.65 ? 'laubholz' : f_bending >= 30 ? 'C30' : f_bending >= 24 ? 'C24' : f_bending >= 18 ? 'C18' : 'unterC18';
   if (e.feuchte > 28) h.push({ stufe: 'warnung', feld: 'woodMoisture', text: 'Holzfeuchte über Fasersättigung (≈ 28 %): Der Feuchtefaktor wird nicht weiter abgemindert.' });
-  return nurGueltig({ feuchteFaktor, fc0_actual: fc0Basis * feuchteFaktor, f_bending, e_modul: 25000 * e.rohdichte * feuchteFaktor, niveau, ...abschluss(h) });
+  return nurGueltig({ feuchteFaktor, fc0_actual: fc0Basis * feuchteFaktor, f_bending, e_modul: 25000 * e.rohdichte * feuchteFaktor, niveau, ...abschluss(h) }, ['niveau']);
 }
 
 // ================================================================ Festbeton

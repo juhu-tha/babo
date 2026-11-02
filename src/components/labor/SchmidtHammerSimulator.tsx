@@ -175,7 +175,7 @@ export default function SchmidtHammerSimulator() {
       status: stats.seriesInvalid ? 'Ungültig' : 'Plausibel',
       validationNotes: [
         stats.seriesInvalid
-          ? 'Mehr als 20 % der Einzelwerte weichen um mehr als 6 Einheiten vom Median ab: Messsatz nach DIN EN 12504-2 verwerfen und wiederholen (Schwelle vorläufig, am Normtext zu bestätigen).'
+          ? 'Mehr als 20 % der Einzelwerte weichen um mehr als 6 Einheiten vom Median ab: Messsatz nach DIN EN 12504-2 verwerfen und wiederholen (Schwelle nach DIN EN 12504-2:2012; vorläufig, Normprüfung ausstehend – nach Sekundärquellen nennt die Ausgabe 2021-10 statt 6 Einheiten 25 % des Medians).'
           : 'Messreihe mit 9 Schlägen; Verwerfungskriterium nach DIN EN 12504-2 nicht erfüllt, Median ist gültiger Kennwert.',
         `Schätzwert ${formatDeZahl(stats.estFck, 1)} MPa aus einer Lehr-Näherung – eine Festigkeitsaussage erfordert die Kalibrierung an Bohrkernen nach DIN EN 13791.`
       ],

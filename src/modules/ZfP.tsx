@@ -143,7 +143,8 @@ export default function ZfP() {
   // Potentialmessung
   const potentialResults = useMemo(() => {
     const stufe = potentialRisikoZfp(potential);
-    if (stufe === 'hoch') return { risk: inhalt.werte.hoch90, color: "bg-red-600" };
+    if (stufe === '–') return { risk: '–', color: "bg-slate-400" }; // F-1: keine Zahl → keine Einstufung
+    if (stufe === 'hoch')return { risk: inhalt.werte.hoch90, color: "bg-red-600" };
     if (stufe === 'mittel') return { risk: inhalt.werte.mittelUnsicher, color: "bg-yellow-500" };
     return { risk: inhalt.werte.gering10, color: "bg-green-500" };
   }, [potential]);
@@ -156,6 +157,7 @@ export default function ZfP() {
       mittel: { rate: "Mittel", color: "bg-amber-500", textClass: "text-amber-800 bg-amber-50 border-amber-200", description: inhalt.werte.durchschnittlicherFeuchteUndCarbonatisie },
       niedrig: { rate: "Niedrig", color: "bg-emerald-500", textClass: "text-emerald-800 bg-emerald-50 border-emerald-100", description: inhalt.werte.vorwiegendTrockenHoheBetondichte },
       vernachlaessigbar: { rate: "Vernachlässigbar", color: "bg-green-600", textClass: "text-green-800 bg-green-50", description: inhalt.werte.sehrTrockenesBauteilOder },
+      '–': { rate: '–', color: "bg-slate-400", textClass: 'text-slate-700 bg-off-white border-home-grau/30', description: '' },
     }[w.stufe];
     return { rho: w.rho, rhoKohmCm: w.rhoKohmCm, ...anzeige };
   }, [wennerSpacing, wennerResistance]);
@@ -168,6 +170,7 @@ export default function ZfP() {
       3: { klassifizierung: inhalt.werte.klasseIiiMittel, bewertung: "Durchschnittlich", textClass: "text-amber-700 bg-amber-50 border-amber-200", description: inhalt.werte.durchschnittlicherBetonüberdeckungswider },
       2: { klassifizierung: inhalt.werte.klasseIiNiedrig, bewertung: inhalt.werte.guteQualität, textClass: "text-emerald-700 bg-emerald-50 border-emerald-200", description: inhalt.werte.sicheresBauteilverhaltenAusreichenderPor },
       1: { klassifizierung: inhalt.werte.klasseISehrNiedrig, bewertung: inhalt.werte.hervorragendDicht, textClass: "text-green-800 bg-green-50 border-green-200", description: inhalt.werte.maximaleDauerhaftigkeitDasBauteil },
+      '–': { klassifizierung: '–', bewertung: '–', textClass: 'text-slate-700 bg-off-white border-home-grau/30', description: '' },
     }[torrentKlasse(torrentKt)];
     const feuchte = torrentFeuchte(torrentMoisture);
     const moistureWarning = feuchte === 'kritisch' ? inhalt.werte.kritischeBetonfeuchte85Die : feuchte === 'hoch' ? inhalt.werte.hoheBetonfeuchte70Die : null;
@@ -181,6 +184,7 @@ export default function ZfP() {
       saugend: { eingruppierung: inhalt.werte.starkSaugendAbsorbierend, textClass: "text-red-800 bg-red-50 border-red-200", color: "bg-red-600", detailtext: inhalt.werte.baustoffSaugtFeuchtigkeitGierig },
       hemmend: { eingruppierung: "Wasserhemmend", textClass: "text-amber-700 bg-amber-50 border-amber-200", color: "bg-amber-500", detailtext: inhalt.werte.ausreichendeReduzierungDerSaugwirkung },
       abweisend: { eingruppierung: inhalt.werte.wasserabweisendHydrophob, textClass: "text-green-800 bg-green-50 border-green-200", color: "bg-green-600", detailtext: inhalt.werte.sehrGuteSperrwirkungGegen },
+      '–': { eingruppierung: '–', textClass: 'text-slate-700 bg-off-white border-home-grau/30', color: "bg-slate-400", detailtext: '' },
     }[k.stufe];
     return { w: k.w, tHours: k.tHours, hinweise: k.hinweise, ...anzeige };
   }, [karstenTime, karstenAbsorbed]);
@@ -188,7 +192,8 @@ export default function ZfP() {
   // Thermografie
   const thermographyResults = useMemo(() => {
     const stufe = thermografieStufe(tempDiff);
-    if (stufe === 'deutlich') return { indication: inhalt.werte.deutlicherHohlraumAblösung, color: "bg-red-600" };
+    if (stufe === '–') return { indication: '–', color: "bg-slate-400" }; // F-1
+    if (stufe === 'deutlich')return { indication: inhalt.werte.deutlicherHohlraumAblösung, color: "bg-red-600" };
     if (stufe === 'moeglich') return { indication: inhalt.werte.möglicheFehlstelle, color: "bg-yellow-500" };
     return { indication: inhalt.werte.keineAuffälligkeiten, color: "bg-green-500" };
   }, [tempDiff]);
@@ -203,6 +208,7 @@ export default function ZfP() {
       schlecht: { quality: inhalt.werte.schlechtZuDickDicht, color: "bg-red-600" },
       ausreichend: { quality: "Ausreichend", color: "bg-yellow-500" },
       gut: { quality: "Gut", color: "bg-green-500" },
+      '–': { quality: '–', color: "bg-slate-400" },
     }[d.stufe];
     return { transmission: d.transmission, ...anzeige };
   }, [thickness, radiationEnergy]);

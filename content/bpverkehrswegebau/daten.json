@@ -285,7 +285,7 @@
             "name": "Hydraulisch gebundene Tragschicht (HGT)",
             "thickness": 15,
             "material": "Zementgebundenes Gesteinsgemisch",
-            "normRequirement": "Druckfestigkeit nach TL Beton-StB (Lehrwert ca. 7–12 MPa, manuell prüfen)",
+            "normRequirement": "Druckfestigkeit nach TL/ZTV Beton-StB (Lehrwert ca. 7–12 MPa; vorläufig, Normprüfung ausstehend)",
             "bgClass": "bg-slate-400 text-slate-800",
             "borderColor": "border-home-grau/30"
           },

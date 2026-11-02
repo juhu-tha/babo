@@ -1,5 +1,5 @@
 // Ausgelagert aus src/modules/BpVerkehrswegebau.tsx (AP 5.2)
-import { formatDeZahl, formatDeWert } from '@/src/utils/numberFormat';
+import { formatDeZahl, formatDeWert, formatDeGanzzahl } from '@/src/utils/numberFormat';
 import React from 'react';
 import { Layers, Calculator, AlertTriangle, Milestone, Droplets } from 'lucide-react';
 import inhalt from '@/content/bpverkehrswegebau/BetondeckenTab.json';
@@ -299,8 +299,8 @@ export default function BetondeckenTab({ betonAchslast, betonAggregate, betonBet
                     <div className="border-t border-zinc-200 pt-2.5 space-y-1.5 font-sans">
                       <span className="font-bold text-zinc-700 block text-xs"><MdText text={inhalt.texte.konstruktiveFugenausführungProPlatte} /></span>
                       <ul className="list-disc pl-4 space-y-1 text-[11px] text-zinc-650 font-sans">
-                        <li>Querscheinfugen: <strong>{dowelCount}<MdText text={inhalt.texte.xRunddübel25Mm} /></strong><MdText text={inhalt.texte.aufDübelkörbenSieÜbertragen} /></li>
-                        <li>Längsscheinfugen: <strong>{tieBarCount}<MdText text={inhalt.texte.xProfilierteAnker20} /></strong><MdText text={inhalt.texte.zurVerhinderungVonLängskampf} /></li>
+                        <li>Querscheinfugen: <strong>{formatDeGanzzahl(dowelCount)}<MdText text={inhalt.texte.xRunddübel25Mm} /></strong><MdText text={inhalt.texte.aufDübelkörbenSieÜbertragen} /></li>
+                        <li>Längsscheinfugen: <strong>{formatDeGanzzahl(tieBarCount)}<MdText text={inhalt.texte.xProfilierteAnker20} /></strong><MdText text={inhalt.texte.zurVerhinderungVonLängskampf} /></li>
                       </ul>
                     </div>
                   </div>

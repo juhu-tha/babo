@@ -16,7 +16,7 @@
  * Kohlenstoffäquivalent CEV = C + Mn/6 + (Cr + Mo + V)/5 + (Ni + Cu)/15 (IIW; Grenzwerte nach DIN EN 10025-2).
  * Reiner Rechenkern – geprüft in tests/eisenKohlenstoff.test.ts.
  */
-import { type Hinweis, istEndlich, muss, hatFehler, nurGueltig } from './plausibilitaet';
+import { type Hinweis, istEndlich, muss, hatFehler, nurGueltig, KEINE_KLASSE, type KeineKlasse } from './plausibilitaet';
 
 export interface FeCPunkt { c: number; t: number }
 
@@ -85,7 +85,7 @@ export interface FeCZustand {
   /** Konode im Zweiphasenfeld: Zusammensetzung der beiden Phasen [% C] und Massenanteile [-] */
   konode?: { cLinks: number; cRechts: number; anteilLinks: number; anteilRechts: number };
   /** Stahl (≤ 2,06 % C) oder Gusseisen */
-  werkstoff: 'Stahl' | 'Gusseisen';
+  werkstoff: 'Stahl' | 'Gusseisen' | KeineKlasse;
   hinweise: Hinweis[];
 }
 
@@ -96,6 +96,7 @@ const konode = (c: number, cl: number, cr: number) => {
 
 /** Gefügebezeichnung unterhalb von 723 °C (langsame Abkühlung, metastabil) */
 export function gefuegeRaumtemperatur(c: number): string {
+  if (!Number.isFinite(c)) return KEINE_KLASSE; // F-1 (02.11.2026): keine Zahl → keine Klasse
   if (c <= P.P.c) return 'Ferrit (ggf. mit Tertiärzementit)';
   if (c < P.S.c) return 'Ferrit + Perlit (untereutektoid)';
   if (c === P.S.c) return 'Perlit (eutektoid)';
@@ -114,7 +115,7 @@ export function feCZustand(c: number, t: number): FeCZustand {
     muss(hinweise, t >= 0 && t <= 1700, 't', 'Die Temperatur muss zwischen 0 und 1700 °C liegen.');
   }
   const werkstoff: FeCZustand['werkstoff'] = c <= P.E.c ? 'Stahl' : 'Gusseisen';
-  if (hatFehler(hinweise)) return nurGueltig({ phasen: [], feld: '–', gefuege: '–', werkstoff, hinweise });
+  if (hatFehler(hinweise)) return nurGueltig({ phasen: [], feld: '–', gefuege: '–', werkstoff: KEINE_KLASSE, hinweise });
   const z = (phasen: Phase[], feld: string, gefuege: string, k?: FeCZustand['konode']): FeCZustand => nurGueltig(({ phasen, feld, gefuege, konode: k, werkstoff, hinweise }));
 
   const tL = liquidus(c);
@@ -227,10 +228,11 @@ export const CEV_GRENZEN = {
   S355J2: { cevBis30: 0.45, cevBis40: 0.47, cMax: 0.2 },
 } as const;
 
-export type Schweisseignung = 'ausgezeichnet' | 'sehr gut' | 'gut' | 'mäßig' | 'schlecht';
+export type Schweisseignung = 'ausgezeichnet' | 'sehr gut' | 'gut' | 'mäßig' | 'schlecht' | KeineKlasse;
 
 /** Einstufung nach üblicher Lehrbuchskala (IIW-Formel): ≤ 0,35 ausgezeichnet … > 0,50 schlecht */
 export function schweisseignung(cevWert: number): { stufe: Schweisseignung; vorwaermen: string } {
+  if (!Number.isFinite(cevWert)) return { stufe: KEINE_KLASSE, vorwaermen: KEINE_KLASSE }; // F-1 (02.11.2026)
   const stufe: Schweisseignung = cevWert <= 0.35 ? 'ausgezeichnet' : cevWert <= 0.4 ? 'sehr gut' : cevWert <= 0.45 ? 'gut' : cevWert <= 0.5 ? 'mäßig' : 'schlecht';
   const vorwaermen = cevWert <= 0.4 ? 'in der Regel ohne Vorwärmen schweißbar' : cevWert <= 0.6 ? 'Vorwärmen kann erforderlich sein (Blechdicke, Wasserstoff, Wärmeeinbringung)' : 'Vorwärmen erforderlich, ggf. Wärmenachbehandlung';
   return { stufe, vorwaermen };
@@ -244,9 +246,9 @@ export function cevBewertung(l: Legierung): CevErgebnis {
   const werte = [l.C, l.Mn, l.Cr ?? 0, l.Mo ?? 0, l.V ?? 0, l.Ni ?? 0, l.Cu ?? 0];
   muss(hinweise, istEndlich(...werte), 'eingabe', 'Alle Gehalte müssen Zahlen sein.');
   if (!hatFehler(hinweise)) muss(hinweise, werte.every(w => w >= 0), 'eingabe', 'Gehalte können nicht negativ sein.');
-  if (hatFehler(hinweise)) return nurGueltig({ cev: NaN, stufe: 'schlecht', vorwaermen: '–', hinweise });
+  if (hatFehler(hinweise)) return nurGueltig({ cev: NaN, stufe: KEINE_KLASSE, vorwaermen: KEINE_KLASSE, hinweise });
   const w = cev(l);
   if (l.C > 0.25) hinweise.push({ stufe: 'warnung', feld: 'C', text: 'Über 0,25 % C liegt der Gehalt oberhalb der Höchstwerte unlegierter Baustähle nach DIN EN 10025-2 (0,17–0,24 %).' });
   if (l.Mn > 1.7) hinweise.push({ stufe: 'warnung', feld: 'Mn', text: 'Mangan über 1,7 % ist für unlegierte Baustähle unüblich – Eingabe prüfen.' });
-  return nurGueltig({ cev: w, ...schweisseignung(w), hinweise });
+  return nurGueltig({ cev: w, ...schweisseignung(w), hinweise }, ['stufe']);
 }

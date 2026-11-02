@@ -85,7 +85,11 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
     let status = inhalt.werte.hervorragendesSehrDichtesBetongefüge;
     let color = 'text-emerald-600 bg-emerald-50 border-emerald-200';
-    if (stufe === 'kritisch') {
+    if (stufe === '–') {
+      // F-1: ungültige Eingabe → keine Einstufung
+      status = '–';
+      color = 'text-slate-700 bg-off-white border-home-grau/30';
+    } else if (stufe === 'kritisch') {
       status = inhalt.werte.kritischerGefügemangelAusgeprägteHohlste;
       color = 'text-rose-600 bg-rose-50 border-rose-200';
     } else if (stufe === 'maessig') {
@@ -110,7 +114,10 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
     let badgeColor = 'bg-emerald-500 text-white';
     let borderColor = 'border-emerald-200 bg-emerald-50/50';
 
-    if (stufe === 'hoch') {
+    if (stufe === '–') {
+      // F-1: keine Zahl → keine Einstufung (vorher „sehr gering“)
+      prob = '–'; state = '–'; badgeColor = 'bg-slate-100 text-slate-700'; borderColor = 'border-home-grau/30 bg-off-white';
+    } else if (stufe === 'hoch') {
       prob = inhalt.werte.sehrHoch90;
       state = inhalt.werte.akuteFortschreitendeLochfraßkorrosionAno;
       badgeColor = 'bg-rose-600 text-white';
@@ -144,7 +151,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
     const c = chlorid(chlorideVal, isPrestressed);
     const limit = c.grenze;
     const isExceeded = c.ueberschritten;
-    const stufe = c.stufe === 'unkritisch' ? 'unkritisch' : c.stufe === 'Beobachtung / Prävention' ? inhalt.werte.beobachtungPrävention : inhalt.werte.korrosionWahrscheinlich;
+    const stufe = c.stufe === '–' ? '–' : c.stufe === 'unkritisch' ? 'unkritisch' :c.stufe === 'Beobachtung / Prävention' ? inhalt.werte.beobachtungPrävention : inhalt.werte.korrosionWahrscheinlich;
     const ratio = formatDeZahl(c.verhaeltnis, 1) + ' (' + stufe + ')';
 
     return {
@@ -175,7 +182,11 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
     // Einstufung nach DIN 4108-3: w ≤ 0,5 wasserabweisend, w ≤ 2,0 wasserhemmend, darüber wassersaugend
     let evalText = inhalt.werte.wasserabweisendW05;
     let badgeClass = 'bg-emerald-100 text-emerald-800 border-emerald-300';
-    if (klasse === 'wassersaugend') {
+    if (klasse === '–') {
+      // F-1: ungültige Eingabe → keine Einstufung
+      evalText = '–';
+      badgeClass = 'bg-slate-100 text-slate-700 border-home-grau/30';
+    } else if (klasse === 'wassersaugend') {
       evalText = inhalt.werte.wassersaugendW20;
       badgeClass = 'bg-rose-100 text-rose-800 border-rose-300';
     } else if (klasse === 'wasserhemmend') {
@@ -214,7 +225,8 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
 
     return {
       area: Math.round(area),
-      lambda: lambda.toFixed(2),
+      lambda: formatDeZahl(lambda, 2),
+      lambdaWert: lambda,
       rawStrength: formatDeZahl(rawStrength, 1),
       f_corr: formatDeZahl(f_corr, 1)
     };
@@ -425,7 +437,9 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
               </h5>
             </div>
             <div className="text-[11px] text-slate-600 pt-3 border-t border-slate-200/60">
-              {potentialStufeAktuell === 'hoch'
+              {potentialStufeAktuell === '–'
+                ? '–'
+                : potentialStufeAktuell === 'hoch'
                 ? inhalt.werte.handlungsbedarfBetondeckungPartiellAbtra
                 : potentialStufeAktuell === 'ungewiss'
                 ? inhalt.werte.kontrollbefundErhöhteFeuchteOder
@@ -801,7 +815,7 @@ export function PruefverfahrenSimulator({ method }: SimulatorProps) {
                 <span className="text-3xl font-black text-shiraz font-mono">{bohrkernCalc.f_corr}</span>
                 <span className="text-xs font-bold text-slate-600">N/mm² (MPa)</span>
               </div>
-              <div className="text-xs text-slate-600"><MdText text={inhalt.texte.schlankheitLD} />{formatDeZahl(Number(bohrkernCalc.lambda), 2)}: {Math.abs(Number(bohrkernCalc.lambda) - 1) < 0.05 ? inhalt.werte.entsprichtEtwaEinem150 : Math.abs(Number(bohrkernCalc.lambda) - 2) < 0.1 ? inhalt.werte.entsprichtEtwaEinemZylinder : inhalt.werte.keinBezugskörperNachDin}
+              <div className="text-xs text-slate-600"><MdText text={inhalt.texte.schlankheitLD} />{bohrkernCalc.lambda}: {!Number.isFinite(bohrkernCalc.lambdaWert) ? '–' : Math.abs(bohrkernCalc.lambdaWert - 1) < 0.05 ? inhalt.werte.entsprichtEtwaEinem150 : Math.abs(bohrkernCalc.lambdaWert - 2) < 0.1 ? inhalt.werte.entsprichtEtwaEinemZylinder : inhalt.werte.keinBezugskörperNachDin}
               </div>
             </div>
             <div className="text-[11px] text-slate-500 pt-2 border-t border-slate-100"><MdText text={inhalt.texte.referenzverfahrenCharakteristischerWertE} /></div>

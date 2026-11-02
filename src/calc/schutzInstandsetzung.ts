@@ -3,6 +3,8 @@
 // WTA-Merkblätter (Bohrrechner, Kombi-Planer), WU-Bauwerke (Nachweis), Zustandsbewertung (Zustandsnote),
 // Schutz-Grundlagen (Fünferregel) und Tragwerksmonitoring (Belegreife-Richtwerte). Prüfung: tests/modulpruefungTranche13.test.ts.
 
+import { KEINE_KLASSE, type KeineKlasse } from './plausibilitaet';
+
 /** Gaußsche Fehlerfunktion, Näherung nach Abramowitz/Stegun 7.1.26 (|Fehler| < 1,5 · 10⁻⁷). */
 export function erf(x: number): number {
   const a1 = 0.254829592;
@@ -195,7 +197,8 @@ export function zustandsnote(s: number, v: number, d: number, weitereSchaeden: n
 }
 
 /** Kategoriale Zuordnung der sechs RI-EBW-Notenbereiche zu Schulnoten (didaktisch, keine Regelwerksgröße). */
-export function schulnoteAusZustandsnote(z: number): 1 | 2 | 3 | 4 | 5 | 6 {
+export function schulnoteAusZustandsnote(z: number): 1 | 2 | 3 | 4 | 5 | 6 | KeineKlasse {
+  if (!Number.isFinite(z)) return KEINE_KLASSE; // F-1 (02.11.2026): keine Zahl → keine Klasse
   return z < 1.5 ? 1 : z < 2.0 ? 2 : z < 2.5 ? 3 : z < 3.0 ? 4 : z < 3.5 ? 5 : 6;
 }
 
