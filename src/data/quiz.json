@@ -52100,7 +52100,7 @@
     "bloom": "Anwenden",
     "niveau": "B",
     "distraktorFeedback": [
-      "Die Fläche wurde in cm² statt mm² eingesetzt und die Kraft nicht in N umgerechnet.",
+      "6,0 entsteht, wenn die Kraft (900 kN) nur durch die Kantenlänge 150 mm statt durch die Fläche 22 500 mm² geteilt wird.",
       "Hier wurde nur durch 15 000 statt 22 500 mm² geteilt.",
       "",
       "Bei der Umrechnung von kN auf N fehlt eine Zehnerpotenz."
@@ -52113,12 +52113,11 @@
       "targetModuleTab": "labor_druckfestigkeit",
       "targetModuleLabel": "Handout Druckfestigkeit an Würfeln"
     },
-    "verified": true,
-    "reviewer": "freigegeben 28.10.2026 (Zweitprüfung)",
-    "reviewedAt": "2026-10-28",
+    "verified": false,
     "vorpruefung": {
-      "am": "2026-10-25",
-      "ergebnis": "ok"
+      "am": "2026-11-02",
+      "ergebnis": "korrigiert",
+      "hinweis": "Nachstichprobe 5b 02.11.: Rückmeldung zu 6,0 MPa berichtigt (bisher „Fläche in cm², Kraft nicht in N“ – das ergibt 900/225 = 4,0; 6,0 = 900/150, Kantenlänge statt Fläche; NS5B-LD-1) – korrigiert"
     }
   },
   {

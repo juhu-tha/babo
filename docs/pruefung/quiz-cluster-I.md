@@ -2,9 +2,9 @@
 
 Stand: 02.11.2026 · Grundlage: `src/data/quiz.json` (Felder `vorpruefung` und `verified`), `docs/quiz-pruefhinweise.md`, Lernziele aus `src/data/lernziele.ts`. Erzeugt mit `npx tsx scripts/pruefliste.ts`; gesetzte Kreuze übernimmt das Skript beim nächsten Lauf. quiz.json wurde für diese Liste nicht verändert.
 
-Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 78 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
+Cluster I umfasst 260 Fragen aus 38 Modulen. Aufgeführt sind 79 auffällige Fragen (Vorprüfung „korrigiert“ oder „fraglich“, offener Prüfhinweis oder neu seit 26.10.2026 ohne Freigabe) und eine Stichprobe von 5 unauffälligen Fragen. Entscheidung je Frage ankreuzen; bei „ändern“ den Änderungswunsch in die Zeile darunter schreiben.
 
-Auffällig im Einzelnen (Mehrfachnennung möglich): 73 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 1 neu seit 26.10.2026.
+Auffällig im Einzelnen (Mehrfachnennung möglich): 74 korrigiert, 0 fraglich, 8 mit offenem Prüfhinweis, 1 neu seit 26.10.2026.
 
 ## A. Auffällige Fragen
 
@@ -503,6 +503,14 @@ Auffällig im Einzelnen (Mehrfachnennung möglich): 73 korrigiert, 0 fraglich, 8
 - **Auffälligkeit:** Vorprüfung „korrigiert“: Rückmeldung zu Option 1 berichtigt; Distraktor 3: 1000 → 780 µm/a; Zweitprüfung 27.10.: Distraktor 1: 9,9 → 10 µm/a (99,6/10 gerundet) korrigiert · bereits freigegeben (verified)
 - [ ] ok
 - [x] ändern: Distraktor 1 9,9 → 10 µm/a, korrigiert
+
+### qn_labor_druckfestigkeit_1 · Handout Druckfestigkeit an Würfeln
+
+- **Frage:** Ein Würfel mit 150 mm × 150 mm Druckfläche bricht bei F = 900 kN. Wie groß ist seine Druckfestigkeit?
+- **Richtige Antwort:** 40,0 MPa
+- **Auffälligkeit:** Vorprüfung „korrigiert“: Nachstichprobe 5b 02.11.: Rückmeldung zu 6,0 MPa berichtigt (bisher „Fläche in cm², Kraft nicht in N“ – das ergibt 900/225 = 4,0; 6,0 = 900/150, Kantenlänge statt Fläche; NS5B-LD-1) – korrigiert
+- [ ] ok
+- [ ] ändern: …
 
 ### qn_labor_frischbeton_4 · Handout Frischbetonprüfungen
 
