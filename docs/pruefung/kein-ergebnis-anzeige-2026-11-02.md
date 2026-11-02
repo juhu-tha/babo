@@ -281,3 +281,7 @@ Nachlauf auf dem Endstand (nach main-Merge und allen Korrekturen): `spannbeton_k
 ## 5. Nebenbefund aus main
 
 Mit Nachstichprobe 5c (#307) kam `pfas.istKurzkettig` hinzu; der Grenzfalltest aus #305 (R7 Vollständigkeit) meldete die Funktion ohne Basis. Eingetragen als begründete Ausnahme (Prädikat über die Stoffdaten der PFAS-20-Liste, keine Nutzereingabe).
+
+## 6. QA (lokal, Stand nach main-Merge 85cae6db)
+
+`tsc --noEmit` 0 Fehler; `npm test` 186/186; `check:formeln`, `check:zahlen`, `check-design` (0 neu), `check-verwaist --strict`, `check-any` je 0; Build und `check-bundle` ok; a11y-reiter auf den 37 geänderten Routen (desk, mob, desk-dunkel): 630 Reiter-Prüfungen, 0 Verstöße.
