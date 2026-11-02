@@ -1,0 +1,89 @@
+{
+  "texte": {
+    "titel": "Bohrkernserie auswerten – charakteristische In-situ-Druckfestigkeit nach DIN EN 13791:2020-02",
+    "einleitung": "Für die Nachrechnung eines Bestandstragwerks wird die Betondruckfestigkeit am Bauwerk bestimmt: Bohrkerne aus einem Prüfbereich werden nach DIN EN 12504-1 entnommen und nach DIN EN 12390-3 geprüft. Aus den Einzelwerten folgt die charakteristische In-situ-Druckfestigkeit $f_{\\mathrm{ck,is}}$ und daraus eine Druckfestigkeitsklasse. Die Zuordnung alter Güten wie B 225 über Tabellen ersetzt diese Prüfung nicht; sie dient nur der Vorbemessung.",
+    "vorlaeufig": "**Stand der Belege:** Der Normtext DIN EN 13791:2020-02 und die nationale Ergänzung DIN EN 13791/A20:2022-04 lagen nicht vor. Alle Zahlenwerte dieses Reiters stammen aus Sekundärquellen (Fachaufsätze, Leitfäden von Verbänden und Prüfinstituten, siehe unten) und sind als **vorläufig, Normprüfung ausstehend** gekennzeichnet. Die nationalen Regeln nach A20 (u. a. NA.8.1 für weniger als 8 Kerne, NA.8.3) sind nicht abgebildet.",
+    "hProbenanzahl": "1  Prüfbereich und Anzahl der Proben",
+    "prüfbereich": "Ein **Prüfbereich** umfasst ein oder mehrere gleichartige Bauteile, deren Beton als eine Grundgesamtheit (eine Festigkeitsklasse, gleiche Bauzeit) gelten kann – z. B. alle Decken eines Bauabschnitts. Die Auswertung gilt nur für diesen Bereich; unterschiedliche Bauteile oder Betonierabschnitte werden getrennt beprobt. Mehr als zwei Ausreißer deuten auf mehr als eine Festigkeitsklasse im Prüfbereich hin.",
+    "entnahme": "**Lage und Entnahme:** Kerne zufällig über den Prüfbereich verteilt entnehmen, nicht nur an gut zugänglichen Stellen; vor dem Bohren die Bewehrung orten (Bewehrungsscanner) und Stäbe im Kern vermeiden; Bohrstellen statisch verträglich wählen (nicht im Bereich hoher Beanspruchung) und anschließend kraftschlüssig verschließen. Kerne nach DIN EN 12504-1 entnehmen, beurteilen (Risse, Kiesnester, Bewehrung), ablängen und planschleifen; Druckprüfung nach DIN EN 12390-3.",
+    "hAnsaetze": "Ansätze nach Abschnitt 8",
+    "hStatistik": "2  Statistik: von den Einzelwerten zu f_ck,is",
+    "statistikText": "Bei mindestens 8 Kernen (Ansatz A) ist $f_{\\mathrm{ck,is}}$ der kleinere Wert aus dem Streuungskriterium und dem Kleinstwertkriterium. Der Faktor $k_n$ folgt dem 5-%-Quantil bei unbekannter Streuung (Student-Verteilung, wie DIN EN 1990, Anhang D) und sinkt mit der Kernanzahl von 2,00 (8 Kerne) auf 1,64. Zwischenwerte interpoliert der App-Kern linear in 1/n (Kern aus der Modulprüfung T12). $M$ hängt vom kleinsten Einzelwert ab.",
+    "mindestStreuungText": "**Mindeststandardabweichung:** Nach den Sekundärquellen ist $s$ nicht kleiner als $0{,}08 \\cdot f_{\\mathrm{m(n),is}}$ anzusetzen (Variationskoeffizient 8 %). Die übrigen Rechner der App (Beispielrechnung „Bauen im Bestand“, Bauwerksdiagnose) setzen diese Untergrenze bisher nicht an; der Punkt steht im Prüfbogen Normtext offen (T15-BS-5, NS-BD-2). Hier ist er schaltbar und standardmäßig angesetzt – vorläufig, Normprüfung ausstehend.",
+    "zuordnungText": "**Zuordnung zur Druckfestigkeitsklasse:** DIN EN 13791 setzt für das Verhältnis der Bauwerksfestigkeit zur Festigkeit getrennt hergestellter Probekörper den Wert 0,85 an. Eine Klasse gilt als erreicht, wenn $f_{\\mathrm{ck,is}} \\ge 0{,}85 \\cdot f_{\\mathrm{ck}}$ der Klasse ist (Zylinderwert bei Kernen h/d = 2, Würfelwert beim Würfelbezug). Der App-Kern rechnet mit den exakten Produkten 0,85 · f_ck; ob die Normtabelle gerundete Werte enthält, ist am Normtext zu prüfen (vorläufig, Normprüfung ausstehend). Der Faktor 0,85 ist **nicht** α_cc aus Eurocode 2.",
+    "bezugText": "**Kernschlankheit:** Nach den Sekundärquellen beruht die Ausgabe 2020 auf Kernen h/d = 2 (Zylinderbezug); Kerne h/d = 1 werden mit dem Kernlängenfaktor 0,82 umgerechnet. Die Rechner der App ordnen Kerne h/d = 1 bisher dem 150-mm-Würfel zu (Ansatz der Fassung 2008). Beide Lesarten stehen hier zur Wahl; welche gilt, ist am Normtext zu prüfen (NS-BD-3, vorläufig, Normprüfung ausstehend).",
+    "hRechner": "3  Rechner: Bohrkernserie auswerten",
+    "lehrbeispiele": "Lehrbeispiele:",
+    "eigeneWerte": "Eigene Werte",
+    "werteLabel": "Kerndruckfestigkeiten f_is der gültigen Kerne in N/mm² (durch Semikolon oder Leerzeichen getrennt)",
+    "ansatzLabel": "Ansatz",
+    "bezugLabel": "Bezugskörper",
+    "durchmesserLabel": "Kerndurchmesser in mm",
+    "groesstkornLabel": "Größtkorn D_max in mm",
+    "volumenLabel": "Volumen des Prüfbereichs in m³",
+    "mindestStreuungLabel": "Mindeststandardabweichung s ≥ 0,08 · f_m(n),is ansetzen (vorläufig, Normprüfung ausstehend)",
+    "kerneAnzahl": "Kerne n (Mindestanzahl)",
+    "mittelwert": "Mittelwert f_m(n),is",
+    "streuung": "Standardabweichung s (angesetzt)",
+    "fckis": "f_ck,is",
+    "klasse": "Zuordnung",
+    "verhaeltnis": "Verhältnis f_ck,is / f_ck",
+    "ohneMindest": "ohne Mindeststandardabweichung:",
+    "naechste": "Nächsthöhere Klasse ab f_ck,is ≥",
+    "unterMindestanzahl": "Unter der Mindestanzahl der Kerne – Ergebnis nicht normgerecht.",
+    "keinErgebnis": "Kein Ergebnis – Eingaben prüfen.",
+    "rechenwegTitel": "Rechenweg Bohrkernserie (DIN EN 13791:2020-02)",
+    "rechenwegHinweis": "Werte nach Sekundärquellen – vorläufig, Normprüfung ausstehend. Die Bewertung einzelner Werte als Ausreißer (Ausreißertest der Norm) ist nicht enthalten.",
+    "hLehrbeispiele": "4  Nachgerechnete Lehrbeispiele",
+    "hQuellen": "Belege (Sekundärquellen)"
+  },
+  "werte": {
+    "ansatzKerne": "A: nur Bohrkerne (n ≥ 8)",
+    "ansatzKlein": "Kleiner Prüfbereich (≤ 10 m³)",
+    "ansatzIndirekt": "B: indirekte Prüfung + ≥ 3 Kerne (≤ 30 m³)",
+    "bezugZylinder": "Kerne h/d = 2 (Zylinderbezug)",
+    "bezugWuerfel": "Kerne h/d = 1 als 150-mm-Würfel (bisheriger App-Ansatz)",
+    "bezugKern11": "Kerne h/d = 1, × 0,82 auf h/d = 2 umgerechnet",
+    "massgebendStreuung": "Streuungskriterium maßgebend",
+    "massgebendKleinstwert": "Kleinstwertkriterium maßgebend",
+    "massgebendKleinBereich": "Kleinster Kernwert (kleiner Prüfbereich)",
+    "massgebendMittelBereich": "Mittelwert der Kerne an der schwächsten Stelle",
+    "unterC8": "unter C8/10",
+    "normQuelle": "DIN EN 13791:2020-02, Abschnitt 8 (nach Sekundärquellen); DIN EN 12504-1; DIN EN 12390-3"
+  },
+  "daten": {
+    "probenanzahl": [
+      { "merkmal": "Mindestanzahl Kerne je Prüfbereich (Ansatz A, nur Kerne)", "wert": "8 Kerne mit Ø ≥ 75 mm; 12 Kerne bei 50 ≤ Ø < 75 mm", "quelle": "BRMCA 2020; DIN Media, Produktseite A20:2022" },
+      { "merkmal": "Empfohlene Anzahl", "wert": "mindestens 2 Kerne über der Mindestanzahl (Reserve für Ausreißer), z. B. 10", "quelle": "BRMCA 2020" },
+      { "merkmal": "Kleiner Prüfbereich (1–3 Bauteile, ≤ 10 m³)", "wert": "≥ 3 Kerne; f_ck,is = kleinster Wert, wenn die Spannweite ≤ 15 % des Mittelwerts ist", "quelle": "Sefrin et al. 2022; TFB 2021; BRMCA" },
+      { "merkmal": "Ansatz B: indirekte Prüfung + Kerne (≤ 30 m³)", "wert": "Rückprall (DIN EN 12504-2) oder Ultraschall (DIN EN 12504-4) über den Prüfbereich; ≥ 3 Kerne an der Stelle der geringsten Werte; f_ck,is = Mittelwert der Kerne, Spannweite ≤ 15 %", "quelle": "Sefrin et al. 2022; BRMCA" },
+      { "merkmal": "Kalibrierte Beziehung indirekt ↔ Kern (Abschnitt 8.2)", "wert": "Beziehung an Kernen aus demselben Prüfbereich kalibrieren; Anzahl der Wertepaare am Normtext prüfen (hier nicht berechnet)", "quelle": "Inhaltsübersicht prEN 13791; TFB 2021" },
+      { "merkmal": "Kerndurchmesser", "wert": "bevorzugt ≥ 75 mm, mindestens 50 mm, ≥ 3 · D_max; im Zweifel üblich 100 mm", "quelle": "BRMCA 2020 (DIN EN 12504-1)" },
+      { "merkmal": "Schlankheit h/d", "wert": "2:1 (1,95 … 2,05) oder 1:1 (0,90 … 1,10); Umrechnung 1:1 → 2:1 mit 0,82", "quelle": "BRMCA 2020; TFB 2021" }
+    ],
+    "ansaetze": [
+      { "titel": "Ansatz A – nur Bohrkerne (n ≥ 8)", "text": "Statistische Auswertung aller Kerne des Prüfbereichs: $f_{\\mathrm{ck,is}} = \\min(f_{\\mathrm{m(n),is}} - k_n \\cdot s;\\; f_{\\mathrm{is,lowest}} + M)$." },
+      { "titel": "Kleiner Prüfbereich – ab 3 Kernen", "text": "Für 1–3 Bauteile mit zusammen höchstens 10 m³ Beton: der kleinste Kernwert, sofern die Spannweite höchstens 15 % des Mittelwerts beträgt." },
+      { "titel": "Ansatz B – indirekte Prüfung und Kerne", "text": "Rückprall- oder Ultraschallmessungen zeigen die schwächste Stelle; dort mindestens 3 Kerne. Bis 30 m³ gilt der Mittelwert dieser Kerne (Spannweite ≤ 15 %). Mit einer kalibrierten Beziehung (8.2) lassen sich größere Bereiche bewerten; das ist hier nicht abgebildet." }
+    ],
+    "kn": [
+      { "n": "8", "k": "2,00" }, { "n": "10", "k": "1,92" }, { "n": "12", "k": "1,87" }, { "n": "16", "k": "1,81" },
+      { "n": "20", "k": "1,76" }, { "n": "30", "k": "1,73" }, { "n": "∞", "k": "1,64" }
+    ],
+    "m": [
+      { "bereich": "f_is,lowest ≥ 20 N/mm²", "M": "4" }, { "bereich": "16 ≤ f_is,lowest < 20", "M": "3" },
+      { "bereich": "12 ≤ f_is,lowest < 16", "M": "2" }, { "bereich": "f_is,lowest < 12", "M": "1" }
+    ],
+    "beispiele": [
+      { "id": "b225_decke", "text": "**Beispiel 1 – Decke Baujahr 1963, Plan „B 225“:** 10 Kerne Ø 100 mm, h/d = 2, Größtkorn 32 mm. $f_{\\mathrm{m(n),is}} = 186{,}5/10 = 18{,}65$ N/mm², $s = 1{,}96$ N/mm² (V = 10,5 % > 8 %, die Untergrenze greift nicht). $k_n = 1{,}92$: $18{,}65 - 1{,}92 \\cdot 1{,}96 = 14{,}88$ N/mm²; Kleinstwert $15{,}9 + 2 = 17{,}9$ N/mm². Maßgebend $f_{\\mathrm{ck,is}} = 14{,}9$ N/mm² ≥ 0,85 · 16 = 13,6 → **C16/20** (für C20/25 wären 17,0 N/mm² nötig). Die Zuordnungstabelle für die Vorbemessung nennt für B 225 nur C8/10 bis C12/15 – die Prüfung belegt hier mehr. Der Mittelwert allein (18,65 ≥ 17,0) hätte C20/25 vorgetäuscht." },
+      { "id": "b300_unterzug", "text": "**Beispiel 2 – Unterzüge Baujahr 1968, Plan „B 300“:** 8 Kerne Ø 100 mm, h/d = 1, sehr geringe Streuung. $f_{\\mathrm{m(n),is}} = 230{,}5/8 = 28{,}81$ N/mm², gemessen $s = 0{,}88$ N/mm², Untergrenze $0{,}08 \\cdot 28{,}81 = 2{,}31$ N/mm². Würfelbezug: $28{,}81 - 2{,}00 \\cdot 2{,}31 = 24{,}2$ N/mm² ≥ 0,85 · 25 = 21,25 → **C20/25**; ohne Untergrenze wären es 27,1 N/mm² ≥ 25,5 → C25/30. Umgerechnet mit 0,82 auf h/d = 2: $f_{\\mathrm{m(n),is}} = 23{,}63$, $f_{\\mathrm{ck,is}} = 19{,}8$ N/mm² ≥ 17,0 → ebenfalls **C20/25** (ohne Untergrenze 22,2 → C25/30). Die offene Frage der Mindeststandardabweichung entscheidet hier über eine Klasse, die Lesart der Kernschlankheit nicht." }
+    ],
+    "quellen": [
+      { "title": "BRMCA: Draft Guide to BS EN 13791 Clause 8 – Estimation of compressive strength for structural assessment (2020)", "url": "https://brmca.org.uk/documents/DRAFT_BRMCA_GUIDE_EN_13791_Clause_8_Estimation_of_compressive_strength_for_structural_assessment_v200123.pdf" },
+      { "title": "BRMCA: Assessment of in-situ concrete strength – revised BS EN 13791 and BS EN 12504-1 (Concrete, April 2020)", "url": "https://brmca.org.uk/documents/Assessment_of_in-situ_concrete_strength-revised_BS_EN_13791_and_BS_EN_12504-1_Concrete_April2020.pdf" },
+      { "title": "TFB-Bulletin 1/2021: Bewertung der Druckfestigkeit im Bauwerk – die neue SN EN 13791", "url": "https://www.tfb.ch/Htdocs/Files/v/10943.pdf/Info/TFB-Bulletin-1.2021_d-Bewertung-der-Druckfestigkeit-im-Bauwerk--die-neue-SN-EN-13791.pdf" },
+      { "title": "Sefrin, R. et al.: Characteristic concrete compressive strength of existing structures – Evaluation of EN 13791:2019 for small sample sizes. Structural Concrete (2022)", "url": "https://d-nb.info/1249177952/34" },
+      { "title": "DIN Media: DIN EN 13791/A20:2022-04, Produktseite (Inhaltsangabe der nationalen Ergänzung)", "url": "https://www.dinmedia.de/en/standard/din-en-13791-a20/351305107" }
+    ]
+  }
+}

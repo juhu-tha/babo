@@ -4,6 +4,7 @@
     "forschungswerkzeugFürDasBauen": "Forschungswerkzeug für das Bauen im Bestand, die Festigkeitseinstufung historischer Baustoffe und die Auswertung experimenteller Bauwerkproben.",
     "historischeMaterialdatenbank": " Historische Materialdatenbank",
     "rechnerLaborprüfungen": " Rechner & Laborprüfungen",
+    "bohrkernserieDinEn13791": " Bohrkernserie (DIN EN 13791)",
     "statischeNachweiseImBestand": " Statische Nachweise im Bestand (DBV & EN 1990-2:2026)"
   },
   "werte": {
@@ -74,12 +75,9 @@
       {
         "title": "DIN EN 1992-1-1:2011-01 + A1:2015-03 mit NA (Eurocode 2); neue Generation 2025-09 – Anhang A.2.2(2): γ_C,red3 = 1,35 bei am Bauwerk gemessener Geometrie und V_c ≤ 10 % (Anhang A in Deutschland nicht eingeführt; nur Vergleich)"
       },
-      {
-        "title": "DIN EN 13791:2020-02 + A20:2022-04 (Bewertung der In-situ-Druckfestigkeit in Bauwerken)"
-      },
-      {
-        "title": "DIN EN 12504-1:2021-02 (Prüfung von Beton in Bauwerken – Teil 1: Bohrkernproben)"
-      },
+      "DIN_EN_13791",
+      "DIN_EN_12504_1",
+      "DIN_EN_12390_3",
       {
         "title": "DIN EN 1996-1-1 (Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten)"
       },

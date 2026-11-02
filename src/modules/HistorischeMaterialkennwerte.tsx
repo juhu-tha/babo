@@ -38,6 +38,7 @@ import { MaterialCategory, historicalData } from '@/src/data/historicalMaterials
 import { NachweisBestandTab } from './historischematerialkennwerte/NachweisBestandTab';
 import { RechnerLaborTab } from './historischematerialkennwerte/RechnerLaborTab';
 import { DatenbankTab } from './historischematerialkennwerte/DatenbankTab';
+import { BohrkernserieTab } from './historischematerialkennwerte/BohrkernserieTab';
 import inhalt from '@/content/historischematerialkennwerte/HistorischeMaterialkennwerte.json';
 import { MdText } from '@/src/components/inhalt/MdText';
 import { ModuleTabs, type ModulTab } from '@/src/components/ui/ModuleTabs';
@@ -52,10 +53,12 @@ ChartJS.register(
   Legend
 );
 
-type KennwerteReiter = 'datenbank' | 'rechner_labor' | 'nachweis_bestand';
+type KennwerteReiter = 'datenbank' | 'rechner_labor' | 'bohrkernserie' | 'nachweis_bestand';
 const REITER: readonly ModulTab<KennwerteReiter>[] = [
   { id: 'datenbank', label: inhalt.texte.historischeMaterialdatenbank.trim(), icon: Database },
   { id: 'rechner_labor', label: inhalt.texte.rechnerLaborprüfungen.trim(), icon: Calculator },
+  // Ergänzung 02.11.2026: Probenanzahl und Statistik nach DIN EN 13791:2020-02
+  { id: 'bohrkernserie', label: inhalt.texte.bohrkernserieDinEn13791.trim(), icon: Activity },
   { id: 'nachweis_bestand', label: inhalt.texte.statischeNachweiseImBestand.trim(), icon: ShieldCheck },
 ];
 
@@ -377,6 +380,8 @@ export default function HistorischeMaterialkennwerte() {
         )}
 
         {/* -------------------- TAB 3: STATISCHE NACHWEISE IM BESTAND (DBV & EN 1990-2:2026) -------------------- */}
+        {mainTab === 'bohrkernserie' && <BohrkernserieTab />}
+
         {mainTab === 'nachweis_bestand' && (
           <NachweisBestandTab setNachweisMaterial={setNachweisMaterial} setSampleMean={setSampleMean} setSampleCov={setSampleCov} nachweisMaterial={nachweisMaterial} failureDuctility={failureDuctility} setFailureDuctility={setFailureDuctility} measuredGeometry={measuredGeometry} setMeasuredGeometry={setMeasuredGeometry} sampleMean={sampleMean} sampleCov={sampleCov} targetBeta={targetBeta} setTargetBeta={setTargetBeta} gammaRd={gammaRd} setGammaRd={setGammaRd} alphaR={alphaR} nachweisCalc={nachweisCalc} />
         )}

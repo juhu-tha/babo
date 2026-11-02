@@ -1561,7 +1561,7 @@ export const LERNZIELE: Readonly<Record<string, ModulLernziele>> = {
       { stufe: "Anwenden", text: "aus Bohrkernen, Mauersteinprüfungen und Zugversuchen an Stahlproben Kennwerte nach DIN EN 13791, Eurocode 6 und DIN EN ISO 6892-1 ermitteln." },
       { stufe: "Anwenden", text: "den lognormalen Bemessungswert einer Bestandsfestigkeit aus Mittelwert, Variationskoeffizient, α_R und β berechnen." },
       { stufe: "Analysieren", text: "die konventionelle Neubaubemessung, modifizierte Teilsicherheitsbeiwerte nach DBV-Merkblatt und die versuchsgestützte Bemessung nach EN 1990-2:2026 vergleichen." },
-      { stufe: "Bewerten", text: "beurteilen, wann Stichprobenumfang und Streuung eine Tragreserve im Bestand belegen und warum aus einem einzelnen Kern keine Festigkeitsklasse folgt." },
+      { stufe: "Bewerten", text: "Kernanzahl und Streuung einer Bohrkernserie nach DIN EN 13791 beurteilen, f_ck,is über k_n und Kleinstwertkriterium einer Klasse zuordnen und begründen, warum ein einzelner Kern keine Klasse belegt." },
     ],
   },
   abfaelle: {
