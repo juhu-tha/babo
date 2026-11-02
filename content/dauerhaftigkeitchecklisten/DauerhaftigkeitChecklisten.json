@@ -45,7 +45,7 @@
     "verwendungVonZementenMit": "Verwendung von Zementen mit geringer Hydratationswärmeentwicklung (LH-Zemente) sowie niedrigen Bauteilbetonierungstemperaturen zur Verhinderung von Thermo-Rissen.",
     "din10452Dafstb": "DIN 1045-2 / DAfStb-Richtlinie Massige Bauteile aus Beton",
     "kritischHaftungsrelevant": "Kritisch / Haftungsrelevant",
-    "gesetzlichVerpflichtend": "Gesetzlich verpflichtend",
+    "gesetzlichVerpflichtend": "Pflichtpunkt (Norm)",
     "standDerTechnik": "Stand der Technik",
     "beispiel1MaßgebendeBetonanforderungen": "Beispiel 1: Maßgebende Betonanforderungen bei mehreren Expositionsklassen",
     "dieBetondeckungRichtetSich": "Die Betondeckung richtet sich nach der Klasse mit der größten Anforderung (hier XD1: c_min,dur = 40 mm, c_nom = 55 mm). Werte nach DIN 1045-2, Tabellen F.2.1/F.2.2 – am Normtext der Ausgabe 2023-08 prüfen.",

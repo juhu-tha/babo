@@ -12,6 +12,7 @@ import { Lock, AlertTriangle } from 'lucide-react';
 import { InfoTooltip } from '@/src/components/ui/InfoTooltip';
 import inhalt from '@/content/zwang/Zwang.json';
 import { MdText } from '@/src/components/inhalt/MdText';
+import { zwangSpannung } from '@/src/calc/zwang';
 
 export function ZwangCalculator() {
   const [deltaT, setDeltaT] = useState(20); // Temperaturänderung in K
@@ -19,38 +20,21 @@ export function ZwangCalculator() {
   const [eModulus, setEModulus] = useState(30000); // E-Modul in MPa
   const [restraint, setRestraint] = useState(100); // Festhaltungsgrad in %
   const [fct, setFct] = useState(3.0); // Zugfestigkeit in MPa
-  
-  const alphaT = 0.00001; // Wärmedehnungskoeffizient für Beton (10^-5 1/K)
 
+  // Rechnung: src/calc/zwang.ts (σ_z = (α_T·ΔT + ε_cs)·E·R), geprüft in tests/tranche16.test.ts
   const calcData = useMemo(() => {
-    // Dehnung durch Temperatur: epsilon_T = alpha_T * deltaT
-    const epsT = alphaT * deltaT;
-    
-    // Dehnung durch Schwinden: epsilon_S = shrinkage / 1000
-    const epsS = shrinkage / 1000;
-    
-    // Gesamte freie Dehnung (die verhindert wird)
-    const epsTotal = epsT + epsS;
-    
-    // Zwangspannung: sigma_Z = epsTotal * E * (R / 100)
-    const sigmaZ = epsTotal * eModulus * (restraint / 100);
-    
-    // Rissprüfung
-    const isCracked = sigmaZ >= fct;
-
-    // Für das Diagramm: Verlauf der Spannung über den Festhaltungsgrad (0 bis 100%)
-    const restraintLevels = Array.from({ length: 11 }, (_, i) => i * 10);
-    const stressProfile = restraintLevels.map(r => epsTotal * eModulus * (r / 100));
-    const strengthProfile = restraintLevels.map(() => fct);
+    const z = zwangSpannung({ deltaT, epsCsPromille: shrinkage, eModul: eModulus, festhaltungProzent: restraint, fct });
+    const stressProfile = z.verlauf.map(p => p.sigma);
+    const strengthProfile = z.verlauf.map(() => fct);
 
     return {
-      epsT,
-      epsS,
-      epsTotal,
-      sigmaZ,
-      isCracked,
+      epsT: z.epsT,
+      epsS: z.epsS,
+      epsTotal: z.epsFrei,
+      sigmaZ: z.sigma,
+      isCracked: z.gerissen,
       chartData: {
-        labels: restraintLevels.map(r => `${r}%`),
+        labels: z.verlauf.map(p => `${p.festhaltungProzent}%`),
         datasets: [
           {
             label: inhalt.werte.zwangspannungZMpa,
@@ -98,7 +82,7 @@ export function ZwangCalculator() {
                 <InfoTooltip text={inhalt.werte.ursachenDieZuEiner} />
               </h3>
               
-              <Slider label={<FormulaText text="Temperaturabfluss \Delta T" />} info={inhalt.werte.temperaturabfallDesBauteilsBspw}
+              <Slider label={<FormulaText text="Temperaturabfall \Delta T" />} info={inhalt.werte.temperaturabfallDesBauteilsBspw}
                 min={0} max={50} step={1} 
                 value={deltaT} unit="K" 
                 onChange={(e) => setDeltaT(Number(e.target.value))} 
@@ -154,7 +138,7 @@ export function ZwangCalculator() {
                 <div>
                   <div className="text-white/70 text-sm mb-1">Zustand</div>
                   <div className="text-xl font-bold mt-2">
-                    {calcData.isCracked ? 'Gerissen' : 'Ungerrissen'}
+                    {calcData.isCracked ? 'Gerissen' : 'Ungerissen'}
                   </div>
                 </div>
               </div>

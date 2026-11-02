@@ -356,8 +356,24 @@ export const RECHNER_GRENZEN: Readonly<Record<string, RechnerGrenzen>> = {
       "Nur lineares Kriechen (σ_c ≤ 0,45·f_ck(t₀)); kein nichtlineares Kriechen nach Gl. (3.7).",
       "Konstante Temperatur von 20 °C (keine Temperaturanpassung von t₀ nach Gl. B.10), E_cm für quarzitische Gesteinskörnung.",
       "h₀ wird direkt vorgegeben; k_h nach Tab. 3.3 mit 1,0 unter 100 mm und 0,70 über 500 mm.",
-      "Stützenbeispiel: ε_tot = σ_c/E_cm·(1 + φ) + ε_cs mit σ_c = 8,5 N/mm² und L = 3 m als Lehrannahmen; ohne Bewehrung.",
+      "Stützenbeispiel: ε_tot = σ_c/E_cm + φ·σ_c/(1,05·E_cm) + ε_cs (3.1.4(3)) mit σ_c = 8,5 N/mm² und L = 3 m als Lehrannahmen; ohne Bewehrung.",
       "Relaxation: Verlust für σ_pi/f_pk ≤ 0,5 vernachlässigt; ohne Temperatureinfluss und ohne Kopplung an Kriechen und Schwinden.",
+    ],
+  },
+  zwang: {
+    kurz: "Zwangspannung σ_z = (α_T·ΔT + ε_cs)·E·R aus behindertem Abkühlen und Schwinden mit Vergleich gegen die Zugfestigkeit f_ct.",
+    grenzen: [
+      "Lehrmodell: konstante Dehnung über den Querschnitt, linear-elastisch; E als wirksamer E-Modul (z. B. E_cm/(1 + φ)) vorgegeben.",
+      "α_T = 10·10⁻⁶ 1/K (EC2 3.1.3(5)); Festhaltungsgrad R vorgegeben, nicht aus der Bauteilgeometrie ermittelt.",
+      "Nur Zug aus Verkürzung; keine Rissbreite, keine Mindestbewehrung (dafür Reiter Rissbreite bzw. Hydratation & Folgen).",
+    ],
+  },
+  eigenspannungen: {
+    kurz: "Eigenspannungen σ_V aus dem nichtlinearen Anteil einer parabolischen Temperaturverteilung und aus ungleichmäßigem Schwinden über die Bauteildicke.",
+    grenzen: [
+      "Lehrmodell: Temperaturparabel durch drei Werte (innen, Mitte, außen), Schwinden parabolisch (Rand ε_cs, Kern 0), linear-elastisch.",
+      "E_c,eff und f_ctm(t) werden vorgegeben (keine Reife- oder Relaxationsrechnung); α_T = 10·10⁻⁶ 1/K.",
+      "Zwangsanteile σ_N und σ_M nur zum Vergleich bei voller Behinderung mit 20 °C Bezugstemperatur (Lehrannahme).",
     ],
   },
   expositionsklassen: {

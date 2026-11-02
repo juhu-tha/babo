@@ -22,7 +22,7 @@
     "normenrechercheMitRagAuffinden": "**Normenrecherche mit RAG:** Auffinden exakter Paragraphen in kuratierten Normensammlungen.",
     "vorentwurfsvariantenGenerierenVielerGebä": "**Vorentwurfsvarianten:** Generieren vieler Gebäudegeometrien zur Beschattungs- und Windoptimierung.",
     "aktuelleGrenzenNoGos": "Aktuelle Grenzen & No-Gos:",
-    "keineUngeprüfteStatikEine": "**Keine ungeprüfte Statik:** Eine KI haftet nicht nach BGB/HOAI. Jede statische Berechnung muss von einem bauvorlageberechtigten Ingenieur gegengezeichnet werden.",
+    "keineUngeprüfteStatikEine": "**Keine ungeprüfte Statik:** Eine KI trägt keine Verantwortung. Den Standsicherheitsnachweis verantwortet die Tragwerksplanung; je nach Bauvorhaben muss ihn eine nach Landesbauordnung nachweisberechtigte Person aufstellen (z. B. Art. 62a BayBO) und ggf. prüfen lassen.",
     "blackboxProblemNeuronaleNetze": "**Blackbox-Problem:** Neuronale Netze können meist nicht begründen, *warum* sie eine Festigkeit vorhersagen (mangelnde Nachvollziehbarkeit).",
     "halluzinationenBeiZahlenReines": "**Halluzinationen bei Zahlen:** Reines LLM ohne RAG erfindet bei Spezialnormen mitunter fiktive Beiwerte ($\\gamma_c$, $\\alpha_{cc}$).",
     "datenschutzBetriebsgeheimnisKeineVertrau": "**Datenschutz & Betriebsgeheimnis:** Keine vertraulichen Pläne in öffentliche Cloud-Chats hochladen (Lösung: Lokale LLMs oder Enterprise-Lizenzen)."
