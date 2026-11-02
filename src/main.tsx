@@ -59,7 +59,17 @@ if (vorgerendert) {
   starte();
 }
 
+// Vorgerendert: Schrift erst einsetzen, wenn React die statische Seite ersetzt hat (src/lib/schriften.ts)
+const ausgetauscht = !vorgerendert ? undefined : new Promise<void>(fertig => {
+  const wurzel = document.getElementById('root');
+  const weg = () => !wurzel?.querySelector(':scope > [data-schale]');
+  if (!wurzel || weg()) { fertig(); return; }
+  const beobachter = new MutationObserver(() => { if (weg()) { beobachter.disconnect(); fertig(); } });
+  beobachter.observe(wurzel, { childList: true });
+  setTimeout(() => { beobachter.disconnect(); fertig(); }, 15_000);
+});
+
 // Schrift Inter nach dem ersten Bild nachladen (Text statt Binärdatei, siehe src/lib/schriftDaten.ts)
-const schriftenSpaeter = () => { void ladeSchriften(); };
+const schriftenSpaeter = () => { void ladeSchriften(ausgetauscht); };
 if ('requestIdleCallback' in window) window.requestIdleCallback(schriftenSpaeter, { timeout: 2000 });
 else setTimeout(schriftenSpaeter, 200);
