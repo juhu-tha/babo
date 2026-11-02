@@ -7,7 +7,7 @@
  *   1 psi = 1 lbf/in², 1 kcal (IT) = 4 186,8 J, T[K] = (T[°F] + 459,67)·5/9.
  * Reiner Rechenkern – geprüft in tests/einheiten.test.ts (inkl. Rundreise jeder Umrechnung).
  */
-import { type Hinweis, hatFehler, muss } from './plausibilitaet';
+import { type Hinweis, hatFehler, muss, nurGueltig } from './plausibilitaet';
 
 export type Groessenart = 'Länge' | 'Fläche' | 'Volumen' | 'Kraft' | 'Spannung/Druck' | 'Masse' | 'Dichte' | 'Moment' | 'Energie' | 'Temperatur';
 
@@ -132,5 +132,5 @@ export function umrechnung(wert: number, art: Groessenart, von: string, nach: st
   const basis = a ? wert * a.faktor + (a.offset ?? 0) : NaN;
   if (art === 'Temperatur' && basis < -1e-9) h.push({ stufe: 'fehler', feld: 'wert', text: 'Temperaturen unter dem absoluten Nullpunkt (0 K = −273,15 °C) gibt es nicht.' });
   if (NICHT_NEGATIV.has(art) && wert < 0) h.push({ stufe: 'warnung', feld: 'wert', text: `Negative Werte sind für die Größenart ${art} physikalisch nicht sinnvoll.` });
-  return { wert: umrechnen(wert, art, von, nach), basis, gueltig: !hatFehler(h), hinweise: h };
+  return nurGueltig({ wert: umrechnen(wert, art, von, nach), basis, gueltig: !hatFehler(h), hinweise: h });
 }

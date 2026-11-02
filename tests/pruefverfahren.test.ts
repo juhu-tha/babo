@@ -97,8 +97,8 @@ pruefe(nahe(g.mean, 38.8, 1e-12) && nahe(g.sampleStdDev, Math.sqrt(1.9 / 4), 1e-
 pruefe(nahe(g.uc, Math.sqrt(1.9 / 20 + 0.01 / 12 + 0.075 ** 2), 1e-12) && nahe(g.expandedU, 0.6371, 1e-4) && nahe(g.maxInterval - g.minInterval, 2 * g.expandedU, 1e-12), `GUM u_c/U ${g.uc} ${g.expandedU}`);
 pruefe(g.gueltig && g.hinweise.some(h => h.feld === 'messwerte'), 'n = 5, u_A dominiert → Hinweis zu k');
 const g1 = gumMessunsicherheit([40], 0.1, 0.15);
-pruefe(!g1.gueltig && g1.mean === 40 && g1.expandedU === 0, 'n = 1 → Fehler, Mittel = Einzelwert (wie bisher)');
-pruefe(gumMessunsicherheit([], 0.1, 0.15).mean === 0 && !gumMessunsicherheit([1, 2], -0.1, 0).gueltig, 'n = 0, d < 0');
+pruefe(!g1.gueltig && Number.isNaN(g1.mean) && Number.isNaN(g1.expandedU), 'n = 1 → Fehler, kein Zahlenergebnis (Grenzfallprüfung 02.11.2026; vorher Mittel = Einzelwert)');
+pruefe(Number.isNaN(gumMessunsicherheit([], 0.1, 0.15).mean) && !gumMessunsicherheit([1, 2], -0.1, 0).gueltig, 'n = 0, d < 0');
 pruefe(nahe(gumMessunsicherheit([5, 5, 5], 0.1, 0).uc, 0.1 / Math.sqrt(12), 1e-15), 'konstante Reihe → nur Auflösung');
 
 // Ringversuch, DIN EN ISO 13528: x = 48,2, X = 50, σ_pt = 1,8 → z = −1,0 (zufriedenstellend); E_n = −1,8/√(1,96 + 0,36) = −1,182

@@ -1,5 +1,6 @@
 // Rechenkern Querkraftbemessung (Umsetzungsplan Phase 4, AP 4.3)
 import { bemesseQuerkraft, kappa1Vmin, zMaxNA, QUERKRAFT_CVL_STANDARD, type QuerkraftEingabe } from '../src/calc/querkraft';
+import { keinErgebnis, zahlenPassen } from './hilfen/keinErgebnis';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -76,7 +77,7 @@ pruefe(bemesseQuerkraft({ ...basis, h: 10, cvl: 4 }).hinweise.some(x => x.stufe 
 // 3. Unsinnige Eingaben
 for (const u of [{ d1: 50 }, { b: 0 }, { h: -1 }, { fck: 0 }, { theta: 0 }, { theta: 90 }, { vEd: -1 }, { asl: -1 }, { vEd: NaN }] as Partial<QuerkraftEingabe>[]) {
   const ru = bemesseQuerkraft({ ...basis, ...u });
-  pruefe([ru.asw_final, ru.vRd_c, ru.vRd_max].every(Number.isFinite) && ru.hinweise.some(x => x.stufe === 'fehler'), `${JSON.stringify(u)}`);
+  pruefe(keinErgebnis([ru.asw_final, ru.vRd_c, ru.vRd_max]) && ru.hinweise.some(x => x.stufe === 'fehler'), `${JSON.stringify(u)}`);
 }
 // 4. Fuzz
 let seed = 7;
@@ -85,7 +86,7 @@ for (let i = 0; i < 1000; i++) {
   const e: QuerkraftEingabe = { b: z(-5, 100), h: z(-5, 150), d1: z(-2, 30), fck: z(-5, 100), bewehrung: (['Stahl', 'GFK'] as const)[i % 2],
     fyk: z(-5, 700), ftk: z(-5, 2000), gammaFRP: z(-1, 2), asl: z(-5, 80), vEd: z(-100, 3000), theta: z(-10, 100), cvl: i % 3 === 0 ? undefined : z(-1, 10) };
   const ru = bemesseQuerkraft(e);
-  if (![ru.asw_final, ru.vRd_c, ru.vRd_max, ru.cot_theta_max, ru.z].every(Number.isFinite) || ru.z < 0) { pruefe(false, `Fuzz ${JSON.stringify(e)}`); break; }
+  if (!zahlenPassen(ru, [ru.asw_final, ru.vRd_c, ru.vRd_max, ru.cot_theta_max, ru.z]) || ru.z < 0) { pruefe(false, `Fuzz ${JSON.stringify(e)}`); break; }
 }
 
 if (fehler.length) { for (const f of fehler) console.error(`FAIL: ${f}`); process.exit(1); }

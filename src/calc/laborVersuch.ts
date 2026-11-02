@@ -47,12 +47,14 @@ export function schoeneAchse(maxWert: number, zielTeile = 6): Achse {
 
 /** Spaltzugfestigkeit f_ct,sp in N/mm² aus Höchstkraft F in kN, Länge L und Durchmesser d in mm (DIN EN 12390-6) */
 export function spaltzugfestigkeit(fKN: number, dMm: number, lMm: number): number {
+  if (Number.isNaN(fKN) || Number.isNaN(dMm) || Number.isNaN(lMm)) return NaN; // Grenzfallprüfung 02.11.2026: NaN-Eingabe nicht als Zahl ausgeben
   if (!(dMm > 0) || !(lMm > 0) || !Number.isFinite(fKN)) return 0;
   return (2 * fKN * 1000) / (Math.PI * lMm * dMm);
 }
 
 /** Spaltkraft F in kN zu einer Spaltzugspannung σ in N/mm² (Umkehrung von spaltzugfestigkeit) */
 export function spaltkraft(sigma: number, dMm: number, lMm: number): number {
+  if (Number.isNaN(sigma) || Number.isNaN(dMm) || Number.isNaN(lMm)) return NaN; // Grenzfallprüfung 02.11.2026: NaN-Eingabe nicht als Zahl ausgeben
   if (!Number.isFinite(sigma)) return 0;
   return (sigma * Math.PI * dMm * lMm) / 2000;
 }
@@ -62,6 +64,7 @@ export function spaltkraft(sigma: number, dMm: number, lMm: number): number {
  * mit f = (d1 + d2)/2. Der Kuchen ist in der Simulation leicht oval (± 2 %); f selbst bleibt unverändert.
  */
 export function ausbreitDurchmesser(f: number): { d1: number; d2: number } {
+  if (Number.isNaN(f)) return { d1: NaN, d2: NaN }; // Grenzfallprüfung 02.11.2026: NaN-Eingabe nicht als Zahl ausgeben
   if (!Number.isFinite(f) || f <= 0) return { d1: 0, d2: 0 };
   const delta = Math.round(f * 0.02);
   return { d1: f + delta, d2: f - delta };
@@ -83,6 +86,7 @@ export interface AusbreitAuswertung {
  * (DIN EN 12350-5), Klasse aus dem gerundeten Ausbreitmaß. Nicht positive Eingaben → alles 0, Klasse „–“.
  */
 export function ausbreitAuswertung(fSim: number): AusbreitAuswertung {
+  if (Number.isNaN(fSim)) return { d1: NaN, d2: NaN, fRoh: NaN, f: NaN, klasse: '–' }; // Grenzfallprüfung 02.11.2026: NaN-Eingabe nicht als Zahl ausgeben
   if (!Number.isFinite(fSim) || fSim <= 0) return { d1: 0, d2: 0, fRoh: 0, f: 0, klasse: '–' };
   const { d1, d2 } = ausbreitDurchmesser(fSim);
   const f = ausbreitmass(d1, d2);

@@ -7,7 +7,12 @@ const base64ZuBytes = (b64: string): Uint8Array => {
   return bytes;
 };
 
-export async function ladeSchriften(): Promise<void> {
+/**
+ * @param einsetzenNach erst danach einsetzen (vorgerenderte Modulseite: nach dem Austausch durch React). Sonst
+ * zeichnet React seine neuen Knoten schon in Inter, etwas breiter als die Ersatzschrift der statischen Seite, und der
+ * Browser meldet sie als neues, späteres LCP-Element (gemessen bis +3 s, docs/pruefung/lcp-module-2026-11-02.md).
+ */
+export async function ladeSchriften(einsetzenNach?: Promise<unknown>): Promise<void> {
   if (typeof document === 'undefined' || !('fonts' in document) || typeof FontFace === 'undefined') return;
   try {
     const { INTER_REGULAR_WOFF2, INTER_BOLD_WOFF2 } = await import('./schriftDaten');
@@ -15,7 +20,9 @@ export async function ladeSchriften(): Promise<void> {
       new FontFace('Inter', base64ZuBytes(INTER_REGULAR_WOFF2), { weight: '400 500', style: 'normal', display: 'swap' }),
       new FontFace('Inter', base64ZuBytes(INTER_BOLD_WOFF2), { weight: '600 700', style: 'normal', display: 'swap' }),
     ];
-    for (const f of flaechen) document.fonts.add(await f.load());
+    const geladen = await Promise.all(flaechen.map(f => f.load()));
+    if (einsetzenNach) await einsetzenNach.catch(() => {});
+    for (const f of geladen) document.fonts.add(f);
   } catch {
     // Schrift ist Gestaltung, keine Funktion: bei Fehlern bleibt die Ersatzschrift.
   }

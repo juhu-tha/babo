@@ -9,7 +9,7 @@
  * Einheiten: ΔT in K (Abkühlung positiv), ε_cs in ‰ (Verkürzung positiv), E und f_ct in N/mm², R in %.
  * Reiner Rechenkern – geprüft in tests/tranche16.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, muss, nurGueltig } from './plausibilitaet';
 
 /** Wärmedehnzahl von Beton α_T = 10·10⁻⁶ 1/K (DIN EN 1992-1-1, 3.1.3(5)) */
 export const ALPHA_T_BETON = 1e-5;
@@ -54,5 +54,5 @@ export function zwangSpannung(e: ZwangEingabe): ZwangErgebnis {
   const spannungBei = (rProzent: number) => epsFrei * eModul * (rProzent / 100);
   const sigma = spannungBei(festhaltungProzent);
   const verlauf = Array.from({ length: 11 }, (_, i) => ({ festhaltungProzent: i * 10, sigma: spannungBei(i * 10) }));
-  return { epsT, epsS, epsFrei, sigma, gerissen: sigma >= fct, verlauf, gueltig: !hatFehler(hinweise), hinweise };
+  return nurGueltig({ epsT, epsS, epsFrei, sigma, gerissen: sigma >= fct, verlauf, gueltig: !hatFehler(hinweise), hinweise });
 }

@@ -65,6 +65,7 @@ const KN_VUNKNOWN = [NaN, NaN, 3.37, 2.63, 2.33, 2.18, 2.00, 1.92, 1.76, 1.73, 1
 const KDN_VKNOWN   = [4.36, 3.77, 3.56, 3.44, 3.37, 3.33, 3.27, 3.23, 3.16, 3.13, 3.04];
 const KDN_VUNKNOWN = [NaN, NaN, NaN, 11.40, 7.85, 6.36, 5.07, 4.51, 3.64, 3.44, 3.04];
 function interp(n: number, tab: number[]) {
+  if (Number.isNaN(n)) return NaN; // Grenzfallprüfung 02.11.2026: NaN vorher als Tabellenendwert
   for (let i = 0; i < N_TAB.length - 1; i++) {
     const a = N_TAB[i], b = N_TAB[i + 1];
     if (n === a) return tab[i];

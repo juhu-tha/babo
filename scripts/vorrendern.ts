@@ -82,6 +82,44 @@ const ersetze = (html: string, muster: RegExp, neu: string, name: string): strin
   return html.replace(muster, () => neu);
 };
 
+/** Vorlade-Karte (scripts/modulVorladen.ts), wie sie scripts/vorladen-boot.js liest */
+interface VorladeKarte { b: string; d: string[]; i: number[]; k: number[]; c: number[][]; t: Record<string, number>; p: Array<[string, number]>; h: Record<string, number> }
+const KARTE_BLOCK = /\n\s*<script type="application\/json" id="modul-vorladen">([\s\S]*?)<\/script>(\n\s*<script>[\s\S]*?<\/script>)/;
+
+/**
+ * Vorlade-Karte einer Modulseite (LCP 02.11.2026, docs/pruefung/lcp-module-2026-11-02.md):
+ * 1. nur noch die Einträge dieses Moduls (gleicher Aufbau, das Inline-Skript bleibt unverändert; spart ≈ 10 kB
+ *    komprimiert je Seite – die volle Karte kennt alle Module),
+ * 2. Karte und Vorlade-Skript hinter das Stylesheet: Das Skript läuft dann erst nach dem CSS, die Modul-Chunks
+ *    teilen sich die Bandbreite nicht mehr mit HTML und CSS. Das erste Bild (= LCP) der vorgerenderten Seite braucht
+ *    nur HTML und CSS; React übernimmt ohnehin erst, wenn alle Chunks da sind (src/main.tsx).
+ * Ohne Karte in der Vorlage (Tests, Build ohne Plugin) bleibt die Seite unverändert.
+ */
+export function vorladenFuerSeite(html: string, id: string): string {
+  const m = KARTE_BLOCK.exec(html);
+  if (!m) return html;
+  const k = JSON.parse(m[1]) as VorladeKarte;
+  const hat = (o: object, s: string) => Object.prototype.hasOwnProperty.call(o, s);
+  let c = hat(k.t, id) ? k.t[id] : undefined;
+  if (c === undefined) c = k.p.find(([p]) => id.startsWith(p))?.[1];
+  const neu: VorladeKarte = { b: k.b, d: [], i: [], k: [], c: [], t: {}, p: [], h: {} };
+  const idx = new Map<number, number>();
+  const nr = (alt: number) => { if (!idx.has(alt)) { idx.set(alt, neu.d.length); neu.d.push(k.d[alt]); } return idx.get(alt)!; };
+  if (c !== undefined) {
+    neu.i = k.i.map(nr);
+    neu.k = k.k.map(nr);
+    neu.c = [k.c[c].map(nr)];
+    neu.t = { [id]: 0 };
+    if (hat(k.h, id)) neu.h = { [id]: nr(k.h[id]) };
+  }
+  const block = `\n    <script type="application/json" id="modul-vorladen">${JSON.stringify(neu).replace(/</g, '\\u003c')}</script>${m[2]}`;
+  const ohne = html.slice(0, m.index) + html.slice(m.index + m[0].length);
+  const css = [...ohne.slice(0, ohne.indexOf('</head>')).matchAll(/<link rel="stylesheet"[^>]*>/g)].at(-1);
+  if (!css || css.index === undefined) return ohne.slice(0, m.index) + block + ohne.slice(m.index);
+  const ende = css.index + css[0].length;
+  return ohne.slice(0, ende) + block + ohne.slice(ende);
+}
+
 /** vollständige HTML-Datei einer Modulseite aus dist/index.html */
 export function baueSeite(vorlage: string, startRoot: string, route: RouteInfo, schale: string): string {
   if (!vorlage.includes(startRoot)) throw new Error('baueSeite: Startseiten-Schale nicht in dist/index.html gefunden');
@@ -102,7 +140,7 @@ export function baueSeite(vorlage: string, startRoot: string, route: RouteInfo, 
     s = ersetze(s, /<meta property="og:description" content="[^"]*"/, `<meta property="og:description" content="${b}"`, 'og:description');
     s = ersetze(s, /<meta name="twitter:description" content="[^"]*"/, `<meta name="twitter:description" content="${b}"`, 'twitter:description');
   }
-  return s;
+  return vorladenFuerSeite(s, route.id);
 }
 
 interface Eintrag {

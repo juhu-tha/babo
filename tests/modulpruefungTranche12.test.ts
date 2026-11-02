@@ -77,7 +77,7 @@ const werte: Partial<Record<PfasId, number>> = { PFBA: 12, PFPeA: 8, PFHxA: 15, 
 const pf = pfasSummenbewertung({ werte, bg: 1, ansatz: 'halb' });
 pruefe('PF Σ PFAS-20', pf.pfas20.summe, 82.5); pruefe('PF untere Schranke', pf.pfas20.unten, 77); pruefe('PF obere Schranke', pf.pfas20.oben, 88);
 pruefe('PF Σ PFAS-4', pf.pfas4.summe, 28); gilt(pf.pfas20.ok && !pf.pfas4.ok, 'PF PFAS-20 eingehalten, PFAS-4 überschritten');
-pruefe('PF Anteil kurzkettig', pf.anteilKurzkettig, 0.678788);
+pruefe('PF Anteil kurzkettig', pf.anteilKurzkettig, 0.6); // 49,5/82,5; Sulfonsäuren nur bis C5 kurzkettig (NS5C-PF-1, vorher 0,678788)
 
 // 7. Zinkschutzdauer (DIN EN ISO 9223 Tab. 2, DIN EN ISO 12944-1)
 const z1 = zinkSchutzdauer({ dZn: 85, kategorie: 'C3', ziel: 'VH', duplex: false, tBeschichtung: 0, synergie: 1 });

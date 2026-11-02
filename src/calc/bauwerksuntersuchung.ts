@@ -20,14 +20,14 @@
  *  - Probenahmeplaner (Lehransätze) und Befundsynthese des Interpretations-Navigators
  * Einheiten stehen an den Feldern. Reiner Rechenkern – geprüft in tests/bauwerksuntersuchung.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, muss, nurGueltig } from './plausibilitaet';
 import { saugKlasse, wWertAusKarsten, type SaugKlasse } from './karsten';
 import { koeffizientAusTiefe, zeitBisTiefe } from './schnellkarbonatisierung';
 import { kn13791, margin13791 } from '../utils/schadensKern';
 import { C_CLASSES } from '../utils/bestandKern';
 
 export interface Ergebnis { gueltig: boolean; hinweise: Hinweis[] }
-const abschluss = (h: Hinweis[]): Ergebnis => ({ gueltig: !hatFehler(h), hinweise: h });
+const abschluss = (h: Hinweis[]): Ergebnis => nurGueltig(({ gueltig: !hatFehler(h), hinweise: h }));
 
 // ---------------------------------------------------------------- Rückprallhammer
 export type Schlagrichtung = 'horiz' | 'down' | 'up';
@@ -92,12 +92,12 @@ export function rueckprallKalibrierung(paare: readonly KalibrierPaar[]): Kalibri
   const h: Hinweis[] = [];
   muss(h, paare.every(p => istEndlich(p.r, p.fKern) && p.fKern > 0), 'kalibrierung', 'Rückprallwerte und Kernfestigkeiten müssen Zahlen sein, die Kernfestigkeit > 0.');
   muss(h, paare.length >= 3, 'kalibrierung', 'Für die Verschiebung der Kurve sind mindestens drei Kalibrierkerne erforderlich (DIN EN 13791:2020, 8.3).');
-  if (hatFehler(h)) return { n: paare.length, deltaF: 0, sDelta: 0, ...abschluss(h) };
+  if (hatFehler(h)) return nurGueltig({ n: paare.length, deltaF: 0, sDelta: 0, ...abschluss(h) });
   const d = paare.map(p => p.fKern - rueckprallLehrkurve(p.r));
   const deltaF = d.reduce((a, x) => a + x, 0) / d.length;
   const sDelta = d.length > 1 ? Math.sqrt(d.reduce((a, x) => a + (x - deltaF) ** 2, 0) / (d.length - 1)) : 0;
   h.push({ stufe: 'warnung', feld: 'kalibrierung', text: 'Verschiebung Δf als Mittelwert der Differenzen; der Abschlag für die Aussagewahrscheinlichkeit nach DIN EN 13791 ist nicht enthalten (Lehrdarstellung).' });
-  return { n: paare.length, deltaF, sDelta, ...abschluss(h) };
+  return nurGueltig({ n: paare.length, deltaF, sDelta, ...abschluss(h) });
 }
 
 /**
@@ -118,7 +118,7 @@ export interface RueckprallMesssatzErgebnis extends Ergebnis {
 export function rueckprallMesssatz(werte: readonly number[]): RueckprallMesssatzErgebnis {
   const h: Hinweis[] = [];
   muss(h, werte.length > 0 && werte.every(v => Number.isFinite(v)), 'messsatz', 'Der Messsatz braucht mindestens einen Rückprallwert, alle Werte als Zahl.');
-  if (hatFehler(h)) return { n: werte.length, median: NaN, abweichend: [], anteil: NaN, verworfen: false, ...abschluss(h) };
+  if (hatFehler(h)) return nurGueltig({ n: werte.length, median: NaN, abweichend: [], anteil: NaN, verworfen: false, ...abschluss(h) });
   const s = [...werte].sort((a, b) => a - b);
   const m = Math.floor(s.length / 2);
   const median = s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
@@ -127,7 +127,7 @@ export function rueckprallMesssatz(werte: readonly number[]): RueckprallMesssatz
   const verworfen = anteil > RUECKPRALL_MESSSATZ.anteilMax + 1e-12;
   if (werte.length < RUECKPRALL_MESSSATZ.nMin) h.push({ stufe: 'warnung', feld: 'messsatz', text: `Weniger als ${RUECKPRALL_MESSSATZ.nMin} Einzelwerte: DIN EN 12504-2 verlangt mindestens 9 gültige Schläge je Prüffläche.` });
   if (verworfen) h.push({ stufe: 'warnung', feld: 'messsatz', text: 'Mehr als 20 % der Einzelwerte weichen um mehr als 6 Einheiten vom Median ab: Messsatz verwerfen und wiederholen (DIN EN 12504-2; vorläufig, Normtext prüfen).' });
-  return { n: werte.length, median, abweichend, anteil, verworfen, ...abschluss(h) };
+  return nurGueltig({ n: werte.length, median, abweichend, anteil, verworfen, ...abschluss(h) });
 }
 
 export function rueckprall(rueckprallwert: number, richtung: Schlagrichtung, karbTiefeMm: number): RueckprallErgebnis {
@@ -147,7 +147,7 @@ export function rueckprall(rueckprallwert: number, richtung: Schlagrichtung, kar
   else if (fcSchaetz >= 20) klasse = 'C20/25';
   if (rueckprallwert < 20 || rueckprallwert > 55) h.push({ stufe: 'warnung', feld: 'rueckprall', text: 'Rückprallwert außerhalb 20 … 55: Die Lehr-Näherung ist dort nicht abgesichert.' });
   h.push({ stufe: 'warnung', feld: 'fcSchaetz', text: RUECKPRALL_HINWEIS_SCHAETZUNG });
-  return { rKorr, kKarb, rFinal, fcSchaetz, klasse, ...abschluss(h) };
+  return nurGueltig({ rKorr, kKarb, rFinal, fcSchaetz, klasse, ...abschluss(h) });
 }
 
 // ---------------------------------------------------------------- Ultraschall
@@ -166,11 +166,13 @@ export function dynamischerEModul(dichte: number, vp: number, nu = 0.2): number 
 export function ultraschall(abstandM: number, laufzeitUs: number, dichte: number, nu = 0.2): UltraschallErgebnis {
   const h: Hinweis[] = [];
   muss(h, istEndlich(abstandM, laufzeitUs, dichte) && laufzeitUs > 0 && abstandM > 0, 'laufzeitUs', 'Messstrecke und Laufzeit müssen größer als 0 sein.');
+  // Grenzfallprüfung 02.11.2026: Dichte und Querdehnzahl prüfen (vorher NaN ohne Hinweis)
+  muss(h, istEndlich(dichte, nu) && dichte > 0 && nu >= 0 && nu < 0.5, 'dichte', 'Die Dichte muss größer als 0 sein, die Querdehnzahl zwischen 0 und 0,5.');
   const vp = abstandM / (laufzeitUs * 1e-6);
   const eDynGPa = dynamischerEModul(dichte, vp, nu) * 1e-9;
   const stufe: GefuegeStufe = vp < 3000 ? 'kritisch' : vp < 3800 ? 'maessig' : 'gut';
   if (vp > 5500) h.push({ stufe: 'warnung', feld: 'vp', text: 'v_p > 5500 m/s ist für Beton unplausibel – Messstrecke oder Laufzeit prüfen.' });
-  return { vp, eDynGPa, stufe, ...abschluss(h) };
+  return nurGueltig({ vp, eDynGPa, stufe, ...abschluss(h) });
 }
 
 // ---------------------------------------------------------------- Potentialfeld
@@ -208,7 +210,7 @@ export function betondeckung(klasse: DeckungsKlasse, gemessenMm: number): Deckun
   const r = DECKUNG[klasse];
   const differenz = gemessenMm - r.req;
   h.push({ stufe: 'warnung', feld: 'cMin', text: 'c_min,b (≥ Stabdurchmesser) ist nicht berücksichtigt.' });
-  return { cMin: r.min, cNom: r.req, differenz, ok: differenz >= 0, ...abschluss(h) };
+  return nurGueltig({ cMin: r.min, cNom: r.req, differenz, ok: !hatFehler(h) && differenz >= 0, ...abschluss(h) });
 }
 
 // ---------------------------------------------------------------- Chlorid
@@ -220,7 +222,7 @@ export function chlorid(gehaltProzent: number, vorgespannt: boolean): ChloridErg
   const grenze = 0.5;
   const ueberschritten = vorgespannt ? gehaltProzent >= 0.2 : gehaltProzent >= grenze;
   const stufe = gehaltProzent < 0.2 ? 'unkritisch' : gehaltProzent < 0.5 ? 'Beobachtung / Prävention' : 'Korrosion wahrscheinlich';
-  return { grenze, ueberschritten, verhaeltnis: gehaltProzent / grenze, stufe, ...abschluss(h) };
+  return nurGueltig({ grenze, ueberschritten, verhaeltnis: gehaltProzent / grenze, stufe, ...abschluss(h) });
 }
 
 // ---------------------------------------------------------------- Haftzug
@@ -229,10 +231,12 @@ export interface HaftzugErgebnis extends Ergebnis { flaecheMm2: number; fct: num
 export function haftzug(kraftKn: number, bruch: HaftBruch, stempelMm = 50): HaftzugErgebnis {
   const h: Hinweis[] = [];
   muss(h, Number.isFinite(kraftKn) && kraftKn >= 0, 'kraftKn', 'Die Abreißkraft muss ≥ 0 kN sein.');
+  // Grenzfallprüfung 02.11.2026: Stempeldurchmesser prüfen (vorher f_ct = ∞ und „ok“ bei 0 mm)
+  muss(h, Number.isFinite(stempelMm) && stempelMm > 0, 'stempelMm', 'Der Stempeldurchmesser muss größer als 0 mm sein.');
   const flaecheMm2 = (Math.PI * Math.pow(stempelMm, 2)) / 4;
   const fct = (kraftKn * 1000) / flaecheMm2;
   if (bruch === 'kleber') h.push({ stufe: 'warnung', feld: 'bruch', text: 'Bruch im Kleber: Die Haftzugfestigkeit ist nur ein unterer Grenzwert, Prüfung wiederholen.' });
-  return { flaecheMm2, fct, ok: fct >= 1.5 && bruch === 'beton', ...abschluss(h) };
+  return nurGueltig({ flaecheMm2, fct, ok: !hatFehler(h) && fct >= 1.5 && bruch === 'beton', ...abschluss(h) });
 }
 
 // ---------------------------------------------------------------- Karsten
@@ -245,7 +249,7 @@ export function karsten(wasserMl60: number): KarstenErgebnis {
   const w = Number.isFinite(wasserMl60) && wasserMl60 >= 0 ? wWertAusKarsten(wasserMl60, 1) : 0;
   const klasse: SaugKlasse = saugKlasse(w);
   h.push({ stufe: 'warnung', feld: 'w', text: 'Das Karsten-Röhrchen liefert nur einen Schätzwert (Prüffläche geräteabhängig); der w-Wert nach DIN 4108-3 wird nach DIN EN ISO 15148 bestimmt.' });
-  return { w, klasse, ...abschluss(h) };
+  return nurGueltig({ w, klasse, ...abschluss(h) });
 }
 
 // ---------------------------------------------------------------- Karbonatisierung
@@ -267,7 +271,7 @@ export function karbonatisierung(tiefeMm: number, alterJahre: number, deckungMm:
   const tDepass = zeitBisTiefe(deckungMm, Math.max(0.1, k));
   const restJahre = Math.max(0, Math.round(tDepass - alterJahre));
   if (k < 0.1) h.push({ stufe: 'warnung', feld: 'tiefeMm', text: 'K < 0,1 mm/√a: Für die Prognose wird K = 0,1 mm/√a angesetzt.' });
-  return { k, tDepass, restJahre, depassiviert: deckungMm <= tiefeMm, ...abschluss(h) };
+  return nurGueltig({ k, tDepass, restJahre, depassiviert: deckungMm <= tiefeMm, ...abschluss(h) });
 }
 
 // ---------------------------------------------------------------- Bohrkern
@@ -280,7 +284,7 @@ export function bohrkern(durchmesserMm: number, laengeMm: number, kraftKn: numbe
   const schlankheit = laengeMm / durchmesserMm;
   const bezug = Math.abs(schlankheit - 1) < 0.05 ? 'wuerfel' : Math.abs(schlankheit - 2) < 0.1 ? 'zylinder' : 'keiner';
   if (bezug === 'keiner') h.push({ stufe: 'warnung', feld: 'laengeMm', text: 'Kein Bezugskörper nach DIN EN 13791 – Kern auf L/D = 1 oder 2 ablängen.' });
-  return { flaecheMm2, festigkeit, schlankheit, bezug, ...abschluss(h) };
+  return nurGueltig({ flaecheMm2, festigkeit, schlankheit, bezug, ...abschluss(h) });
 }
 
 // ---------------------------------------------------------------- In-situ-Druckfestigkeit (DIN EN 13791)
@@ -312,7 +316,7 @@ export function insituDruckfestigkeit13791(e: InsituEingabe): InsituErgebnis {
   for (const [zyl, wue] of C_CLASSES) {
     if (0.85 * (e.bezug === 'wuerfel' ? wue : zyl) <= fckIs + 1e-9) { klasse = `C${zyl}/${wue}`; fck = zyl; fckCube = wue; }
   }
-  return { kn, M, ausStreuung, ausKleinstwert, fckIs, klasse, fck, fckCube, ...abschluss(h) };
+  return nurGueltig({ kn, M, ausStreuung, ausKleinstwert, fckIs, klasse, fck, fckCube, ...abschluss(h) });
 }
 
 // ---------------------------------------------------------------- Impact-Echo
@@ -320,9 +324,11 @@ export interface ImpactEchoErgebnis extends Ergebnis { dickeCm: number; delamina
 export function impactEcho(frequenzKHz: number, vp: number, nennDickeCm: number, beta = 0.96): ImpactEchoErgebnis {
   const h: Hinweis[] = [];
   muss(h, istEndlich(frequenzKHz, vp, nennDickeCm) && frequenzKHz > 0 && vp > 0, 'frequenzKHz', 'Frequenz und Wellengeschwindigkeit müssen größer als 0 sein.');
+  // Grenzfallprüfung 02.11.2026: Formfaktor β prüfen (vorher NaN bzw. ∞ ohne Hinweis)
+  muss(h, Number.isFinite(beta) && beta > 0, 'beta', 'Der Formfaktor β muss größer als 0 sein.');
   const dickeCm = ((beta * vp) / (2 * (frequenzKHz * 1000))) * 100;
-  const delamination = Math.abs(dickeCm - nennDickeCm) > 4.0 && dickeCm < nennDickeCm;
-  return { dickeCm, delamination, ...abschluss(h) };
+  const delamination = !hatFehler(h) && Math.abs(dickeCm - nennDickeCm) > 4.0 && dickeCm < nennDickeCm;
+  return nurGueltig({ dickeCm, delamination, ...abschluss(h) });
 }
 
 // ---------------------------------------------------------------- Probenahmeplaner
@@ -357,7 +363,7 @@ export function probenahmeUmfang(e: ProbenahmeEingabe): ProbenahmeErgebnis {
   if (ziel === 'haftzug') haftzugStempel = Math.max(5, Math.round(5 + flaecheM2 / 100));
   else if (ziel === 'chlorid' || ziel === 'druckfestigkeit') haftzugStempel = Math.max(3, Math.round(3 + flaecheM2 / 250));
   h.push({ stufe: 'warnung', feld: 'zfpPunkte', text: 'Lehransatz: Die Messpunktzahl entspricht nicht dem angegebenen Rastermaß (vollflächiges Raster ergibt deutlich mehr Punkte).' });
-  return { bohrkerne, zfpPunkte, bohrmehlStellen, haftzugStempel, rasterMass, ...abschluss(h) };
+  return nurGueltig({ bohrkerne, zfpPunkte, bohrmehlStellen, haftzugStempel, rasterMass, ...abschluss(h) });
 }
 
 // ---------------------------------------------------------------- Befundsynthese (Interpretations-Navigator)
@@ -420,11 +426,11 @@ export function befundSynthese(e: BefundEingabe): BefundErgebnis {
   if (!haftzugGemessen) h.push({ stufe: 'warnung', feld: 'haftzug', text: 'Haftzug = 0 gilt als „nicht gemessen“ und geht nicht in die Risikostufe ein.' });
   if (!deckungGemessen) h.push({ stufe: 'warnung', feld: 'deckung', text: 'Betondeckung = 0 gilt als „nicht gemessen“: keine Aussage zur Depassivierung.' });
   if (!festigkeitGemessen) h.push({ stufe: 'warnung', feld: 'fckIs', text: 'In-situ- oder Planfestigkeit = 0 gilt als „nicht gemessen“: kein Festigkeitsvergleich.' });
-  return {
+  return nurGueltig({
     passivierungsReserve, isCarbDepassivated, isChlorideCritical, isChlorideSevere, potentialStatus: pStatus,
     festigkeitsVerhaeltnis, isStrengthDeficient, isHaftzugOk, isHaftzugFailed, isHolzCrit,
     deckungGemessen, haftzugGemessen, festigkeitGemessen,
     holzRestWiderstand: Math.pow(e.holzRest / 100, 2) * 100,
     overallRisk, ...abschluss(h),
-  };
+  });
 }

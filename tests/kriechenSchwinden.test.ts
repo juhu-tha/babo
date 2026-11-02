@@ -162,7 +162,7 @@ for (const fck of [12, 90]) for (const rh of [20, 100]) for (const h0 of [50, 10
 pruefe(nahe(spannstahlRelaxation('2', 0.7, 1000), 0.9637, 1e-3) && nahe(spannstahlRelaxation('1', 0.7, 1000), 4.694, 1e-3) && nahe(spannstahlRelaxation('3', 0.7, 1000), 2.142, 1e-3), 'Relaxation 1000 h');
 //    Klasse 2, μ = 0,7, t = 500 000 h: Faktor (500)^(0,225) = 4,050 → 3,90 %
 pruefe(nahe(spannstahlRelaxation('2', 0.7, 500000), 0.9637 * Math.pow(500, 0.225), 1e-3), 'Relaxation 500 000 h');
-pruefe(spannstahlRelaxation('2', 0.5, 1000) === 0 && spannstahlRelaxation('1', 0.45, 1e5) === 0 && spannstahlRelaxation('2', NaN, 1000) === 0, 'μ ≤ 0,5 → 0');
+pruefe(spannstahlRelaxation('2', 0.5, 1000) === 0 && spannstahlRelaxation('1', 0.45, 1e5) === 0 && Number.isNaN(spannstahlRelaxation('2', NaN, 1000)), 'μ ≤ 0,5 → 0, NaN → NaN (Grenzfallprüfung 02.11.2026)');
 for (const k of ['1', '2', '3'] as Relaxationsklasse[]) for (const mu of [0.4, 0.5, 0.55, 0.6, 0.7, 0.75, 0.8]) for (const t of RELAXATION_ZEITPUNKTE_H) {
   pruefe(relNahe(spannstahlRelaxation(k, mu, t), modulRelaxation(k, mu, t)), `Relaxation Modul ${k}/${mu}/${t}`);
 }

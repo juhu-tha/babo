@@ -333,7 +333,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     milestones: [
       { year: '2024', text: 'Finale Verabschiedung der revidierten Verordnung im EU-Parlament/Rat.' },
       { year: '2025', text: 'Start der Überarbeitung harmonisierter europäischer Produktnormen (hEN).' },
-      { year: 'ab 2027', text: 'Schrittweise Einführung des Digitalen Produktpasses je Produktfamilie über delegierte Rechtsakte nach Art. 75 Abs. 1 VO (EU) 2024/3110 (Stand 10/2026 noch nicht erlassen).' },
+      { year: 'ab 2027', text: 'Schrittweise Einführung des Digitalen Produktpasses je Produktfamilie über delegierte Rechtsakte nach Art. 75 Abs. 1 VO (EU) 2024/3110 (Stand 11/2026 noch nicht erlassen, vorläufig; ein delegierter Rechtsakt zu DPP-Diensteanbietern wird für das 4. Quartal 2026 erwartet).' },
       { year: '2040', text: 'Spätestes Ende der schrittweisen Aufhebung der VO (EU) 305/2011 (2026 bis 2040); bis dahin gelten für Produkte unter alten harmonisierten Normen Übergangsregeln.' }
     ]
   },
@@ -664,16 +664,17 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
   },
   {
     id: 'gebaeudetyp_e',
-    shortName: 'Gebäudetyp E (Gesetzentwurf, Stand 10/2026)',
-    fullName: 'Gebäudetyp-E-Gesetz – Gesetz zur Erleichterung des einfachen Bauens (Entwurf)',
-    norm: 'Gesetzentwurf, Stand 10/2026 (Regierungsentwurf 2024 mit § 650o BGB-E erledigt; neuer Entwurf zum Bauvertragsrecht §§ 650a ff. BGB)',
+    shortName: 'Gebäudetyp E (Referentenentwurf 26.10.2026)',
+    // Titel des Referentenentwurfs vom 26.10.2026 (BMJV mit BMWSB; Quelle: mtrlegal.com, abgerufen 02.11.2026)
+    fullName: 'Entwurf eines Gesetzes zur Regelung des gesetzlichen Basisstandards (Gebäudetyp E) im Bürgerlichen Gesetzbuch',
+    norm: 'Referentenentwurf vom 26.10.2026, Stellungnahmen bis 09.11.2026 (Regierungsentwurf 2024 mit § 650o BGB-E erledigt; neuer Entwurf zum Bauvertragsrecht §§ 650a ff. BGB)',
     level: 'ebene_5_finanzen',
     levelLabel: 'Ebene 5: Finanzen, Vergabe & Lieferketten',
     legalType: 'Gesetzesinitiative',
     audiences: ['planer', 'bestand', 'baustoffe'],
     primaryTarget: 'Architekten, Ingenieure, Bauherren, Bauunternehmer, Wohnungsbau',
     leadQuote: 'Rechtlich belastbares Abweichen von übertriebenen Komfortnormen für ressourcenschonendes, einfaches Bauen.',
-    coreSummary: 'Das geplante Gebäudetyp-E-Gesetz (Gesetzentwurf, Stand 10/2026; nicht beschlossen, nicht in Kraft) soll eine zivilrechtliche Grundlage im Werkvertragsrecht schaffen (Entwurf 2024: § 650o BGB-E), damit Vertragsparteien wirksam von nicht-sicherheitsrelevanten Komfort- und Ausstattungsnormen (z. B. überdimensionierter Trittschallschutz, überbordende Elektroinstallationen) abweichen können. Die Haftungsfalle der "anerkannten Regeln der Technik" (aRdT) wird entschärft, ohne Standards bei Brandschutz und Statik zu senken.',
+    coreSummary: 'Das geplante Gebäudetyp-E-Gesetz (Referentenentwurf vom 26.10.2026, Stand 11/2026; nicht beschlossen, nicht in Kraft) soll eine zivilrechtliche Grundlage im Werkvertragsrecht schaffen (Entwurf 2024: § 650o BGB-E), damit Vertragsparteien wirksam von nicht-sicherheitsrelevanten Komfort- und Ausstattungsnormen (z. B. überdimensionierter Trittschallschutz, überbordende Elektroinstallationen) abweichen können. Die Haftungsfalle der "anerkannten Regeln der Technik" (aRdT) wird entschärft, ohne Standards bei Brandschutz und Statik zu senken.',
     keyDuties: [
       'Möglichkeit der vertraglichen Vereinbarung einfacher, suffizienter Bauweisen zwischen Fachkundigen.',
       'Abweichung von Komfortstandards führt nicht mehr automatisch zum Sachmangel nach BGB.',
@@ -683,7 +684,7 @@ export const LEGAL_INSTRUMENTS: LegalInstrument[] = [
     impactOnMaterials: 'Ermöglicht den Einsatz monolithischer Wandaufbauten (z. B. ungedämmter porosierter Hochlochziegel oder tragender Lehmbau DIN 18940), spart graue Energie in der TGA und senkt die Baukosten um bis zu 25 %.',
     milestones: [
       { year: '2024', text: 'Regierungsentwurf mit § 650o BGB-E (BT-Drs. 20/13959); mit Ablauf der 20. Wahlperiode erledigt.' },
-      { year: '2026', text: 'Gesetzentwurf, Stand 10/2026: Gesetzgebungsverfahren nicht abgeschlossen; Übernahme in Landesbauordnungen offen.' }
+      { year: '2026', text: 'Referentenentwurf von BMJV und BMWSB vom 26.10.2026 (gesetzlicher Basisstandard im BGB), Stellungnahmen der Länder und Verbände bis 09.11.2026; Kabinettsbeschluss und parlamentarisches Verfahren stehen aus (Stand 11/2026).' }
     ]
   }
 ];

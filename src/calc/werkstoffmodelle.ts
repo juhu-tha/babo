@@ -37,7 +37,7 @@
  */
 import { EC2_NA_DE } from '../data/normParams';
 import { BETONSTAHL, E_BETONSTAHL, E_BAUSTAHL, dehnungsKennwerte, fcdBeton } from '../data/kennwerte';
-import { type Hinweis, istEndlich, hatFehler, muss, bereich } from './plausibilitaet';
+import { type Hinweis, istEndlich, istAnzahl, hatFehler, muss, bereich, nurGueltig, MAX_STUETZSTELLEN } from './plausibilitaet';
 import { formatDeZahl } from '../utils/numberFormat';
 import { maxwellRelaxation } from './kriechenSchwinden';
 
@@ -97,7 +97,7 @@ export function stahlBrand(e: StahlBrandEingabe): StahlBrandErgebnis {
     muss(hinweise, E0 > 0, 'E', 'Der E-Modul muss größer als 0 sein.');
     bereich(hinweise, 'theta', e.theta, 20, 1200, 'Tab. 3.1 der DIN EN 1993-1-2 gilt für 20 … 1200 °C; außerhalb werden die Randwerte angesetzt.');
   }
-  if (hatFehler(hinweise)) return { ky: 0, kE: 0, fyT: 0, ET: 0, fuT: 0, kurve: [], gueltig: false, hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ ky: 0, kE: 0, fyT: 0, ET: 0, fuT: 0, kurve: [], gueltig: false, hinweise });
   const { ky, kE } = abminderungStahlBrand(e.theta);
   const fyT = e.fy * ky, ET = E0 * kE, fuT = e.fu * ky;
   const kurve: StahlBrandErgebnis['kurve'] = [];
@@ -106,7 +106,7 @@ export function stahlBrand(e: StahlBrandEingabe): StahlBrandErgebnis {
     const eps = i * 0.005;
     kurve.push({ eps, sig20: stahlLinieVereinfacht(eps, e.fy, e.fu, E0), sigT: stahlLinieVereinfacht(eps, fyT, fuT, ET) });
   }
-  return { ky, kE, fyT, ET, fuT, kurve, gueltig: true, hinweise };
+  return nurGueltig({ ky, kE, fyT, ET, fuT, kurve, gueltig: true, hinweise });
 }
 
 // =============================================================================================
@@ -128,6 +128,7 @@ export interface WoehlerErgebnis {
 
 /** Δσ_R(N) der Wöhlerlinie für N ≤ 10⁸ (darüber Δσ_L) */
 export function woehlerSpannung(N: number, deltaSigmaC: number, m: number): number {
+  if ([N, deltaSigmaC, m].some(Number.isNaN)) return NaN; // Grenzfallprüfung 02.11.2026: NaN vorher als Dauerfestigkeit
   const dD = deltaSigmaC * Math.pow(N_C / N_D, 1 / m);
   if (N <= N_D) return deltaSigmaC * Math.pow(N_C / N, 1 / m);
   if (N <= N_L) return dD * Math.pow(N_D / N, 1 / 5);
@@ -142,7 +143,7 @@ export function woehlerEc3(e: WoehlerEingabe): WoehlerErgebnis {
     muss(hinweise, e.m > 0, 'm', 'Die Neigung m muss größer als 0 sein.');
     muss(hinweise, e.deltaSigma >= 0, 'deltaSigma', 'Die Spannungsschwingbreite Δσ ist ein Betrag (≥ 0).');
   }
-  if (hatFehler(hinweise)) return { deltaSigmaD: 0, deltaSigmaL: 0, nR: 0, kurve: [], bereich: 'ohne', gueltig: false, hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ deltaSigmaD: 0, deltaSigmaL: 0, nR: 0, kurve: [], bereich: 'ohne', gueltig: false, hinweise });
   const deltaSigmaD = e.deltaSigmaC * Math.pow(N_C / N_D, 1 / e.m);
   const deltaSigmaL = deltaSigmaD * Math.pow(N_D / N_L, 1 / 5);
   let nR = 0;
@@ -154,7 +155,7 @@ export function woehlerEc3(e: WoehlerEingabe): WoehlerErgebnis {
   }
   const kurve = [1e4, 1e5, 2e6, 5e6, 1e7, 1e8].map(N => ({ N, deltaSigma: woehlerSpannung(N, e.deltaSigmaC, e.m) }));
   if (e.m !== 3) hinweise.push({ stufe: 'warnung', feld: 'm', text: `Mit m = ${formatDeZahl(e.m, 0)} verschiebt sich auch Δσ_D = Δσ_C·(2/5)^(1/m); DIN EN 1993-1-9 bildet Normalspannungen mit m = 3 und m = 5 ab.` });
-  return { deltaSigmaD, deltaSigmaL, nR, kurve, bereich: ber, gueltig: true, hinweise };
+  return nurGueltig({ deltaSigmaD, deltaSigmaL, nR, kurve, bereich: ber, gueltig: true, hinweise });
 }
 
 // =============================================================================================
@@ -174,6 +175,8 @@ export function walzEigenspannung(fy: number, typ: Walzprofiltyp, punkte = 50): 
   const maxZug = (r / 2) * fy;
   const a = (maxDruck - maxZug) / Math.pow(50, 2);
   const verlauf: WalzErgebnis['verlauf'] = [];
+  // Grenzfallprüfung 02.11.2026: ungültige Punktzahl → kein Verlauf (vorher Endlosschleife)
+  if (!istAnzahl(punkte, 1)) return { maxDruck, maxZug, verlauf };
   for (let i = 0; i <= punkte; i++) {
     const x = (i / punkte) * 100 - 50;
     verlauf.push({ x, sigma: a * x * x + maxZug });
@@ -200,7 +203,9 @@ export function schweissEigenspannung(e: SchweissEingabe, punkte = 200, abstand 
     muss(hinweise, e.streckenenergie >= 0, 'streckenenergie', 'Die Streckenenergie muss ≥ 0 sein.');
     muss(hinweise, e.blechdicke > 0, 'blechdicke', 'Die Blechdicke muss größer als 0 sein.');
   }
-  if (hatFehler(hinweise)) return { bt: 0, mindestbreiteAktiv: false, verlauf: [], gueltig: false, hinweise };
+  // Grenzfallprüfung 02.11.2026: Punktzahl begrenzen (vorher Endlosschleife), Abstand endlich und > 0
+  muss(hinweise, istAnzahl(punkte, 1) && Number.isFinite(abstand) && abstand > 0, 'punkte', `Punktzahl (1 … ${MAX_STUETZSTELLEN}) und Abstand (> 0) des Verlaufs sind ungültig.`);
+  if (hatFehler(hinweise)) return nurGueltig({ bt: 0, mindestbreiteAktiv: false, verlauf: [], gueltig: false, hinweise });
   const bRoh = (e.streckenenergie / e.blechdicke) * 0.15;
   const bt = Math.max(SCHWEISS_MINDESTBREITE, bRoh);
   const mindestbreiteAktiv = bRoh < SCHWEISS_MINDESTBREITE;
@@ -211,7 +216,7 @@ export function schweissEigenspannung(e: SchweissEingabe, punkte = 200, abstand 
     verlauf.push({ x, sigma: e.fy * (1 - q * q) * Math.exp(-0.5 * q * q) });
   }
   if (mindestbreiteAktiv) hinweise.push({ stufe: 'warnung', feld: 'streckenenergie', text: `0,15·Q/t = ${formatDeZahl(bRoh, 1)} mm liegt unter der Mindestbreite des Lehrmodells; angesetzt wird b = ${SCHWEISS_MINDESTBREITE} mm.` });
-  return { bt, mindestbreiteAktiv, verlauf, gueltig: true, hinweise };
+  return nurGueltig({ bt, mindestbreiteAktiv, verlauf, gueltig: true, hinweise });
 }
 
 // =============================================================================================
@@ -232,6 +237,7 @@ export const proportionalAnteil = (s: StahlKennlinie) => (s.id === 'Edelstahl' ?
 
 /** Spannung [MPa] bei Dehnung ε [%]; 0 für ε ≤ 0 und nach dem Bruch (ε > A) */
 export function stahlSpannungBeiDehnung(s: StahlKennlinie, eps: number): number {
+  if ([eps, s.E, s.fy, s.fu, s.A, s.sh_strain, s.fu_strain, s.frac_stress].some(Number.isNaN)) return NaN; // Grenzfallprüfung 02.11.2026
   if (eps <= 0) return 0;
   if (eps > s.A) return 0;
   if (s.yieldType === 'ausgeprägt') {
@@ -278,6 +284,8 @@ export function stahlVerformungsphase(s: StahlKennlinie, eps: number): Verformun
 
 /** Punktreihe für das Diagramm, streng aufsteigend in x; ausgeprägte Streckgrenze mit Spitze R_eH = 1,035·f_y */
 export function stahlKennlinienPunkte(s: StahlKennlinie): { x: number; y: number }[] {
+  // Grenzfallprüfung 02.11.2026: nicht endliche oder widersprüchliche Kennwerte (A_g, ε_sh nicht in 0 … A) → keine Punkte (vorher Endlosschleife)
+  if (!istEndlich(s.A, s.fy, s.E, s.fu_strain, s.sh_strain) || !(s.A >= 0 && s.A <= 1000) || !(s.E > 0) || !(s.fu_strain >= 0 && s.fu_strain <= s.A) || !(s.sh_strain >= 0 && s.sh_strain <= s.A)) return [];
   const xSet = new Set<number>();
   const add = (x: number) => { if (x >= 0 && x <= s.A) xSet.add(Number(x.toFixed(3))); };
   add(0);
@@ -369,7 +377,7 @@ export function betonSdLinien(fck: number): BetonSdErgebnis {
   muss(hinweise, istEndlich(fck), 'fck', 'f_ck muss eine endliche Zahl sein.');
   if (!hatFehler(hinweise)) muss(hinweise, fck > 0, 'fck', 'f_ck muss größer als 0 sein.');
   const param = betonSdParameter(hatFehler(hinweise) ? 30 : fck);
-  if (hatFehler(hinweise)) return { param, punkte: [], gueltig: false, hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ param, punkte: [], gueltig: false, hinweise });
   // geändert: Schrittzählung über den Index statt aufsummierter 0,1 ‰
   const punkte: BetonSdErgebnis['punkte'] = [];
   for (let i = 0; i <= 50; i++) {
@@ -380,7 +388,7 @@ export function betonSdLinien(fck: number): BetonSdErgebnis {
     ? 'f_ck > 90 N/mm²: Tab. 3.1 der DIN EN 1992-1-1 reicht bis C90/105; ε_c2, ε_cu2 und n werden mit den Werten von C90/105 gehalten.'
     : 'Tab. 3.1 der DIN EN 1992-1-1 gilt für C12/15 bis C90/105; unterhalb sind die Parameter extrapoliert.');
   if (fck > 50 && fck <= 90) hinweise.push({ stufe: 'warnung', feld: 'fck', text: 'Hochfester Beton (f_ck > 50 N/mm²): ε_c2, ε_cu2 und n nach den Formeln der Tab. 3.1; die Linie wird spröder.' });
-  return { param, punkte, gueltig: true, hinweise };
+  return nurGueltig({ param, punkte, gueltig: true, hinweise });
 }
 
 export type Betonstahlsorte = 'B500A' | 'B500B';
@@ -409,6 +417,7 @@ export function betonstahlParameter(sorte: Betonstahlsorte): BetonstahlParameter
 
 /** Charakteristische Linie (mit Verfestigung) und Bemessungslinie (horizontal), ε in ‰; null jenseits des Endpunkts */
 export function betonstahlSpannung(eps: number, p: BetonstahlParameter): { char: number | null; bemessung: number | null } {
+  if ([eps, p.E, p.fy, p.fu, p.ey, p.eu, p.eyd, p.eud, p.fyd].some(Number.isNaN)) return { char: NaN, bemessung: NaN }; // Grenzfallprüfung 02.11.2026
   const char = eps <= p.ey ? p.E * (eps / 1000) : eps <= p.eu ? p.fy + (p.fu - p.fy) * (eps - p.ey) / (p.eu - p.ey) : null;
   const bemessung = eps <= p.eyd ? p.E * (eps / 1000) : eps <= p.eud ? p.fyd : null;
   return { char, bemessung };
@@ -474,13 +483,13 @@ export function kunststoffTemperatur(typ: Kunststofftyp, T: number): KunststoffE
   const modell = KUNSTSTOFF_MODELLE[typ];
   muss(hinweise, !!modell, 'typ', 'Unbekannter Kunststofftyp.');
   muss(hinweise, istEndlich(T), 'T', 'Die Temperatur muss eine endliche Zahl sein.');
-  if (hatFehler(hinweise)) return { E: 0, modell, kurve: [], index: -1, gueltig: false, hinweise };
+  if (hatFehler(hinweise)) return nurGueltig({ E: 0, modell, kurve: [], index: -1, gueltig: false, hinweise });
   const kurve: KunststoffErgebnis['kurve'] = [];
   for (let t = -100; t <= 300; t += 2) kurve.push({ T: t, E: emodulKunststoff(typ, t) });
   const E = emodulKunststoff(typ, T);
   bereich(hinweise, 'T', T, -100, 300, 'Das Lehrmodell ist für −100 … 300 °C dargestellt.');
   if (modell.Tab !== undefined && T >= modell.Tab - 10) hinweise.push({ stufe: 'warnung', feld: 'T', text: `Nahe oder oberhalb ${formatDeZahl(modell.Tab, 0)} °C fließt bzw. schmilzt der Thermoplast – keine Tragfunktion.` });
-  return { E, modell, kurve, index: kurve.findIndex(p => p.T >= T), gueltig: true, hinweise };
+  return nurGueltig({ E, modell, kurve, index: kurve.findIndex(p => p.T >= T), gueltig: true, hinweise });
 }
 
 /** Wärmedehnung ΔL = L_0·α_T·ΔT (Einheit von ΔL wie L_0) */
@@ -524,12 +533,12 @@ export function bilinearVerfestigung(e: BilinearEingabe): BilinearErgebnis {
   const sigmaMax = bilinearSpannung(epsMax, e.fy, e.E, e.Et);
   const epsElastisch = sigmaMax / e.E;
   const epsPlastisch = Math.max(0, epsMax - epsElastisch);
-  return {
+  return nurGueltig({
     epsYPromille: (e.fy / e.E) * 1000,
     epsElastischPromille: epsElastisch * 1000,
     epsPlastischPromille: epsPlastisch * 1000,
     sigmaMax, k: sigmaMax / e.fy, gueltig: !hatFehler(h), hinweise: h,
-  };
+  });
 }
 
 export interface BilinearPunkt {
@@ -545,7 +554,8 @@ export function bilinearKurve(e: BilinearEingabe): BilinearPunkt[] {
   const sigmaMax = bilinearSpannung(epsMax, e.fy, e.E, e.Et);
   const epsRest = Math.max(0, epsMax - sigmaMax / e.E);
   const bis = Math.max(e.epsMaxPromille + 5, 25);
-  const n = Number.isFinite(bis) ? Math.floor(bis / 0.5) + 1 : 0;
+  // Grenzfallprüfung 02.11.2026: Stützstellen begrenzen (vorher Ausnahme „Invalid array length“ bei sehr großem ε_max)
+  const n = Number.isFinite(bis) && bis / 0.5 < MAX_STUETZSTELLEN ? Math.floor(bis / 0.5) + 1 : 0;
   return Array.from({ length: n }, (_, i) => {
     const ep = i * 0.5;
     const eps = ep / 1000;

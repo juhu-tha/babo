@@ -1,6 +1,7 @@
 import { FCD_HOCHFEST_AKTIV } from '../src/data/kennwerte';
 // Rechenkern Biegebemessung gegen unabhängige Referenzen (Umsetzungsplan Phase 4, AP 4.3/4.5)
 import { bemesseBiegung, MU_LIM_STAHL, spannungsblock, muLimit, xiLimit, type BiegungEingabe } from '../src/calc/biegung';
+import { keinErgebnis, zahlenPassen } from './hilfen/keinErgebnis';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -46,7 +47,7 @@ pruefe(nahe(rd.sigma_s2, 500 / 1.15, 1e-9), `σ_s2 ${rd.sigma_s2}`);
 const rd2 = bemesseBiegung({ ...basis, med: 400, d2: 12 });
 pruefe(rd2.sigma_s2 < 500 / 1.15 && rd2.hinweise.some(x => x.feld === 'd2'), 'σ_s2-Abminderung bei großem d2');
 
-// 5. Absicherung gegen unsinnige Eingaben (AP 4.5): kein NaN/∞, stattdessen Fehlerhinweis
+// 5. Absicherung gegen unsinnige Eingaben (AP 4.5): Fehlerhinweis und kein Zahlenergebnis (Grenzfallprüfung 02.11.2: NaN statt 0)
 const unsinn: Partial<BiegungEingabe>[] = [
   { d1: 50 }, { d1: 60 }, { d2: 45 }, { d2: 50 }, { b: 0 }, { h: 0 }, { fck: 0 }, { fyk: 0 }, { med: -5 }, { med: NaN },
   { med: 400, d2: 25 },
@@ -54,7 +55,7 @@ const unsinn: Partial<BiegungEingabe>[] = [
 for (const u of unsinn) {
   const ru = bemesseBiegung({ ...basis, ...u });
   const werte = [ru.as_final, ru.as1_req, ru.as2_req, ru.x, ru.mu_Ed, ru.omega];
-  pruefe(werte.every(Number.isFinite), `${JSON.stringify(u)}: nicht endliche Ausgabe`);
+  pruefe(keinErgebnis(werte), `${JSON.stringify(u)}: Zahlenergebnis trotz Fehler`);
   pruefe(ru.hinweise.some(x => x.stufe === 'fehler'), `${JSON.stringify(u)}: kein Fehlerhinweis`);
 }
 // Warnung oberhalb C50/60
@@ -95,7 +96,7 @@ for (let i = 0; i < 1000; i++) {
   const ein: BiegungEingabe = { b: zufall(-5, 120), h: zufall(-5, 150), d1: zufall(-2, 40), d2: zufall(-2, 40), med: zufall(-50, 3000),
     fck: zufall(-5, 100), bewehrung: arten[i % 4], fyk: zufall(-10, 700), ftk: zufall(-10, 3000), gammaFRP: zufall(-0.5, 2) };
   const rz = bemesseBiegung(ein);
-  const ok = [rz.as_final, rz.as1_req, rz.as2_req, rz.x, rz.mu_Ed, rz.omega, rz.as_min].every(Number.isFinite);
+  const ok = zahlenPassen(rz, [rz.as_final, rz.as1_req, rz.as2_req, rz.x, rz.mu_Ed, rz.omega, rz.as_min]);
   if (!ok) { pruefe(false, `Fuzz ${i}: ${JSON.stringify(ein)}`); break; }
 }
 

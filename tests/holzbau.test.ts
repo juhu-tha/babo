@@ -1,5 +1,6 @@
 // Rechenkern Holzbau EC 5 (Umsetzungsplan Phase 4, AP 4.3)
 import { bemesseDruckstab, bemesseQuerdruck, knickbeiwert, KMOD, EULER_BETA, type DruckstabEingabe, holzschraube, KERN_VERHAELTNIS_SCHRAUBE } from '../src/calc/holzbau';
+import { keinErgebnis, zahlenPassen } from './hilfen/keinErgebnis';
 
 const fehler: string[] = [];
 const pruefe = (ok: boolean, msg: string) => { if (!ok) fehler.push(msg); };
@@ -36,13 +37,13 @@ pruefe(nahe(q.sigma_c90d, 1.6667, 1e-4) && nahe(q.stressLimit, 1.9231, 1e-4) && 
 // 5. Unsinnige Eingaben und Fuzz
 for (const u of [{ b: 0 }, { laenge: 0 }, { nEd: -1 }, { E005: 0 }, { h: NaN }] as Partial<DruckstabEingabe>[]) {
   const ru = bemesseDruckstab({ ...basis, ...u });
-  pruefe([ru.F_c_R_d_kN, ru.k_cz, ru.utilization].every(Number.isFinite) && ru.hinweise.some(x => x.stufe === 'fehler'), JSON.stringify(u));
+  pruefe(keinErgebnis([ru.F_c_R_d_kN, ru.k_cz, ru.utilization]) && ru.hinweise.some(x => x.stufe === 'fehler'), JSON.stringify(u));
 }
 let seed = 17;
 const z = (a: number, c: number) => { seed = (seed * 1103515245 + 12345) % 2147483648; return a + (c - a) * (seed / 2147483648); };
 for (let i = 0; i < 1000; i++) {
   const ru = bemesseDruckstab({ b: z(-10, 400), h: z(-10, 600), laenge: z(-1, 15), eulerFall: ((i % 4) + 1) as 1 | 2 | 3 | 4, nEd: z(-50, 2000), fc0k: z(-5, 35), E005: z(-100, 12000), brettschichtholz: i % 2 === 0, nkl: ((i % 3) + 1) as 1 | 2 | 3, kled: 'mtl' });
-  if (![ru.F_c_R_d_kN, ru.k_cz, ru.utilization, ru.lambda_rel_z].every(Number.isFinite)) { pruefe(false, `Fuzz ${i}: ${JSON.stringify(ru)}`); break; }
+  if (!zahlenPassen(ru, [ru.F_c_R_d_kN, ru.k_cz, ru.utilization, ru.lambda_rel_z])) { pruefe(false, `Fuzz ${i}: ${JSON.stringify(ru)}`); break; }
 }
 
 // Holzschraube: Eingabe Kerndurchmesser d₁ (Entscheidung 29.10.2026), d_ef = 1,1·d₁; leer → Lehrwert 0,65·d

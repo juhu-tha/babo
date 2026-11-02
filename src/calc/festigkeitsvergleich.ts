@@ -7,7 +7,7 @@
  * Einheiten: ρ in kg/m³, f und E in N/mm², a in cm; Ergebnisse H/L in m, δ in mm, σ in N/mm².
  * Reiner Rechenkern – geprüft in tests/festigkeitsvergleich.test.ts.
  */
-import { type Hinweis, istEndlich, hatFehler, muss } from './plausibilitaet';
+import { type Hinweis, istEndlich, hatFehler, muss, nurGueltig } from './plausibilitaet';
 
 export const G_ERDE = 9.81;
 
@@ -53,5 +53,5 @@ export function wuerfelstapel(m: Festigkeitswerkstoff, kanteCm: number): Wuerfel
   const delta_total = faktor * (N_max * (N_max + 1) / 2) * 1000;
   const delta_total_exakt = faktor * (N_max * N_max / 2) * 1000;
   if (N_max > 0) hinweise.push({ stufe: 'warnung', feld: 'delta_total', text: 'Die Gesamtstauchung setzt je Würfel die Spannung an seiner Unterseite an und überschätzt sie um den Faktor (N + 1)/N.' });
-  return { a, N_max_exact, N_max, H_total, delta_bottom, delta_total, delta_total_exakt, sigma_bottom: sigmaPa / 1e6, gueltig: !hatFehler(hinweise), hinweise };
+  return nurGueltig({ a, N_max_exact, N_max, H_total, delta_bottom, delta_total, delta_total_exakt, sigma_bottom: sigmaPa / 1e6, gueltig: !hatFehler(hinweise), hinweise });
 }
