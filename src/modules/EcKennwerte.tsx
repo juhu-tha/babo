@@ -92,7 +92,7 @@ function KennwertTabelle({ zeilen, titel }: { zeilen: readonly EcZeile[]; titel:
           <tr key={z.zeichen} className={z.art === 'bemessung' ? 'bg-shiraz/5' : ''}>
             <th scope="row" className={td}><MdText text={`$${z.zeichen}$`} /></th>
             <td className={td}>{z.text} <span className="text-text-main/60">({ART_NAME[z.art]})</span></td>
-            <td className={`${td} font-mono font-bold`}>{zahl(z.wert, z.art === 'beiwert' || z.wert < 10 ? 2 : 1)}</td>
+            <td className={`${td} font-mono font-bold`}>{zahl(z.wert, z.art === 'steifigkeit' ? 0 : z.art === 'beiwert' || z.wert < 10 ? 2 : 1)}</td>
             <td className={td}>{z.einheit}</td>
           </tr>
         ))}</tbody>
@@ -446,7 +446,7 @@ export default function EcKennwerte() {
                       ))}
                     </div>
                     <KennwertTabelle zeilen={erg.zeilen} titel={`${BAUSTOFF_NAME[baustoff]} ${erg.gueltig ? klassenName(baustoff, klasse) : '–'}`} />
-                    <FormulaDerivationBox live title={inhalt.werte.rechenweg} zielGleichung="X_d = \eta \cdot X_k / \gamma_M" schritte={schritte} normQuelle={REGEL[baustoff].regel} />
+                    <FormulaDerivationBox live title={inhalt.werte.rechenweg} zielGleichung={`X_d = \\eta \\cdot X_k / \\gamma_M = ${tex(erg.beiwert, 2)} \\cdot ${tex(erg.xk, 1)} / ${tex(erg.gamma, 2)} = ${tex(erg.xd, 2)}\\,\\text{N/mm}^2`} schritte={schritte} normQuelle={REGEL[baustoff].regel} />
                   </div>
                 </div>
 
