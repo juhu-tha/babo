@@ -161,9 +161,7 @@
       {
         "title": "DIN EN 197-1:2011-11 (Zement - Teil 1: Zusammensetzung, Anforderungen und Konformitätskriterien von Normalzement)"
       },
-      {
-        "title": "DIN EN 12390-12:2020-04 (Prüfung von Festbeton - Teil 12: Bestimmung des Karbonatisierungswiderstandes von Beton - Beschleunigtes Karbonatisierungsverfahren)"
-      }
+      "DIN_EN_12390_12"
     ],
     "Biokohlebeton.formeln": [
       {

@@ -161,9 +161,9 @@
       {
         "title": "DAfStb-Richtlinie Beton nach DIN EN 206-1 und DIN 1045-2 mit rezyklierten Gesteinskörnungen nach DIN EN 12620 (2010-09)"
       },
-      {
-        "title": "DIN EN 12620:2008-07 / DIN 4226-101/-102:2017-08 (Rezyklierte Gesteinskörnungen Typ 1 und Typ 2)"
-      },
+      "DIN_EN_12620",
+      "DIN_4226_101",
+      "DIN_4226_102",
       {
         "title": "DIN 1045-2:2023-08 (Beton mit rezyklierter Gesteinskörnung Typ 1/Typ 2: Abschn. 5.2.3.4 und Anhang E)"
       },
