@@ -11,6 +11,10 @@ export interface NormRecord {
   relevanteModule: string[];
 }
 
+// Ausgabenprüfung 11/2026 (docs/pruefung/normausgaben-2026-11.md): neue Entwürfe zu DIN EN 197-1,
+// DIN EN 196-1, DIN EN 1992-1-1 (NA1, A1), DIN EN 1995-1-1/A1, DIN EN 1996-1-1/A1, DIN 4109-1 sowie
+// Normungsprojekt DIN 1045-2/A1 eingetragen (Quellen: Produkt- und Projektseiten DIN Media / DIN,
+// TRIS-Notifizierung 2026/0349/DE zur MVV TB 2026/1). Maßgebende Ausgaben unverändert.
 export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
   // -------------------------------------------------------------
   // BETON, ZEMENT, BINDEMITTEL & MÖRTEL
@@ -22,7 +26,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'beton',
     ausgabeStand: '2023-08',
     status: 'gueltig',
-    beschreibung: 'Zentrales Regelwerk für Expositionsklassen (XC, XD, XS, XF, XA, XM), w/z-Werte, Mindestdruckfestigkeiten und Konformitätskriterien im DACH-Raum. Maßgebend bleibt die aufeinander abgestimmte Kombination DIN EN 206:2021-06 mit DIN 1045-2:2023-08. Neue Ausgabe 2026-07 erschienen (EN 206 in Teile 1 bis 3 aufgeteilt; DIN EN 206-1 und -2 ersetzen DIN EN 206:2021-06 teilweise; u. a. neue Bindemittel-Terminologie und CO2-Klassen); die passende Neufassung von DIN 1045-2 und die bauaufsichtliche Einführung stehen noch aus.',
+    beschreibung: 'Zentrales Regelwerk für Expositionsklassen (XC, XD, XS, XF, XA, XM), w/z-Werte, Mindestdruckfestigkeiten und Konformitätskriterien im DACH-Raum. Maßgebend bleibt die aufeinander abgestimmte Kombination DIN EN 206:2021-06 mit DIN 1045-2:2023-08. Neue Ausgabe 2026-07 erschienen (EN 206 in Teile 1 bis 3 aufgeteilt; DIN EN 206-1 und -2 ersetzen DIN EN 206:2021-06 teilweise; u. a. neue Bindemittel-Terminologie und CO2-Klassen); die passende Neufassung von DIN 1045-2 und die bauaufsichtliche Einführung stehen noch aus (Normungsprojekt DIN 1045-2/A1 seit 07/2026 in Bearbeitung).',
     relevanteModule: ['beton_a_z', 'mischungsberechnung', 'dauerhaftigkeit', 'labor', 'sonderbetone']
   },
   'DIN_1045_3': {
@@ -63,7 +67,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'beton',
     ausgabeStand: '2021-07',
     status: 'gueltig',
-    beschreibung: 'Klassifiziert CEM I bis CEM VI sowie moderne klinkerreduzierte CEM II/C-M Kompositzemente zur CO2-Minderung.',
+    beschreibung: 'Klassifiziert CEM I bis CEM VI sowie moderne klinkerreduzierte CEM II/C-M Kompositzemente zur CO2-Minderung. Entwurf DIN EN 197-1:2026-08 (prEN 197-1:2026) liegt vor (u. a. Weißzement, CEM II/C-M und CEM VI aufgenommen, Recyclingbetonmehl als Hauptbestandteil, neu definierte Festigkeitsklassen); maßgebend bleiben die Ausgaben 2011-11 und 2021-07.',
     relevanteModule: ['zementchemie', 'bindemittel', 'hydratation', 'lca']
   },
   'DIN_EN_450_1': {
@@ -103,7 +107,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'beton',
     ausgabeStand: '2025-09',
     status: 'in_ueberarbeitung',
-    beschreibung: 'Tragwerksnorm für Biegung, Querkraft, Durchstanzen und Rissbreitennachweis. Die deutsche Fassung der 2. Generation (DIN EN 1992-1-1:2025-09, EN 1992-1-1:2023) ist erschienen; bauaufsichtlich maßgebend bleibt bis zur Einführung in die MVV TB die Fassung 2011-01 + A1:2015-03 mit Nationalem Anhang.',
+    beschreibung: 'Tragwerksnorm für Biegung, Querkraft, Durchstanzen und Rissbreitennachweis. Die deutsche Fassung der 2. Generation (DIN EN 1992-1-1:2025-09, EN 1992-1-1:2023) ist erschienen; bauaufsichtlich maßgebend bleibt bis zur Einführung in die MVV TB die Fassung 2011-01 + A1:2015-03 mit Nationalem Anhang. Entwürfe zur 2. Generation: DIN EN 1992-1-1/NA1:2025-08 (Nationaler Anhang) und DIN EN 1992-1-1/A1:2026-05 (prA1:2026); der Entwurf der MVV TB 2026/1 ist notifiziert, aber noch nicht veröffentlicht.',
     relevanteModule: ['biegebemessung', 'querkraft', 'durchstanzen', 'rissbreite', 'verankerungslaenge']
   },
   'DIN_EN_459_1': {
@@ -187,7 +191,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'beton',
     ausgabeStand: '2016-11',
     status: 'gueltig',
-    beschreibung: 'Normmörtel (450 g Zement, 1350 g CEN-Normsand, 225 g Wasser), Prismen 40 × 40 × 160 mm, Biegezug- und Druckfestigkeit; Entwurf prEN 196-1:2026 liegt vor.',
+    beschreibung: 'Normmörtel (450 g Zement, 1350 g CEN-Normsand, 225 g Wasser), Prismen 40 × 40 × 160 mm, Biegezug- und Druckfestigkeit; Entwurf DIN EN 196-1:2026-08 (prEN 196-1:2026) liegt vor.',
     relevanteModule: ['labor_moertelprismen', 'bindemittel']
   },
   'DIN_EN_ISO_8407': {
@@ -211,7 +215,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'mauerwerk',
     ausgabeStand: '2013-02',
     status: 'gueltig',
-    beschreibung: 'Regelt die Standsicherheit, Knicksicherheit, und konstruktive Ausbildung von tragendem und nichttragendem Mauerwerk.',
+    beschreibung: 'Regelt die Standsicherheit, Knicksicherheit, und konstruktive Ausbildung von tragendem und nichttragendem Mauerwerk. Zur 2. Generation (EN 1996-1-1:2022) liegt der Änderungsentwurf DIN EN 1996-1-1/A1:2026-05 vor; eine deutsche Ausgabe der 2. Generation und deren Einführung sind nicht belegt (vorläufig, Normprüfung ausstehend).',
     relevanteModule: ['mauerwerk', 'bp_mauerwerk', 'bestand']
   },
   'DIN_EN_771': {
@@ -245,7 +249,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'holz',
     ausgabeStand: '2026-09',
     status: 'gueltig',
-    beschreibung: 'Planung, Bemessung und Detailkonstruktionen von Holzkonstruktionen und Ingenieurholzbau-Systemen. Bauaufsichtlich eingeführt (MVV TB 2025/1) ist DIN EN 1995-1-1:2010-12 + A2:2014-07 mit DIN EN 1995-1-1/NA:2013-08. Neue Ausgabe 2026-09 erschienen (2. Generation, Deutsche Fassung EN 1995-1-1:2025, u. a. Brettsperrholz, Ermüdung, Holzpfähle); bauaufsichtlich noch nicht eingeführt, NA ausstehend.',
+    beschreibung: 'Planung, Bemessung und Detailkonstruktionen von Holzkonstruktionen und Ingenieurholzbau-Systemen. Bauaufsichtlich eingeführt (MVV TB 2025/1) ist DIN EN 1995-1-1:2010-12 + A2:2014-07 mit DIN EN 1995-1-1/NA:2013-08. Neue Ausgabe 2026-09 erschienen (2. Generation, Deutsche Fassung EN 1995-1-1:2025, u. a. Brettsperrholz, Ermüdung, Holzpfähle); bauaufsichtlich noch nicht eingeführt, NA ausstehend. Änderungsentwurf DIN EN 1995-1-1/A1:2026-10 (prA1:2026) liegt vor.',
     relevanteModule: ['holz', 'holzwerkstoffe', 'holzbau_beta', 'knicken']
   },
   'DIN_1052': {
@@ -355,7 +359,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'bauphysik',
     ausgabeStand: '2026-05',
     status: 'gueltig',
-    beschreibung: 'Regelt Mindest-Wärmedurchlasswiderstände, f_Rsi-Faktor (>=0,70 Schimmelschutz) und das Glaser-Verfahren nach DIN 4108-3.',
+    beschreibung: 'Regelt Mindest-Wärmedurchlasswiderstände, f_Rsi-Faktor (>=0,70 Schimmelschutz) und das Glaser-Verfahren nach DIN 4108-3. DIN 4108-2:2026-05 ersetzt DIN 4108-2:2013-02.',
     relevanteModule: ['bauphysik', 'daemmstoffe', 'feuchteschutz', 'rechnung_u_wert']
   },
   'DIN_4109_1': {
@@ -365,7 +369,7 @@ export const CENTRAL_NORMEN_REGISTRY: Record<string, NormRecord> = {
     category: 'bauphysik',
     ausgabeStand: '2018-01',
     status: 'gueltig',
-    beschreibung: 'Bauordnungsrechtlich geschuldete Mindestanforderungen an Luft- und Trittschalldämmung (R\'w, L\'n,w).',
+    beschreibung: 'Bauordnungsrechtlich geschuldete Mindestanforderungen an Luft- und Trittschalldämmung (R\'w, L\'n,w). Entwurf DIN 4109-1:2026-09 liegt vor (Titel „Anforderungen“, Anforderungswerte der Tabellen 2 bis 12 teils geändert oder gestrichen, Abschnitt Außenlärm neu gefasst); maßgebend bleibt die Ausgabe 2018-01.',
     relevanteModule: ['schallschutz', 'bauphysik', 'ausbau']
   },
   'DIN_4102_1': {
