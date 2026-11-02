@@ -165,6 +165,7 @@ const HAND: { datei: string; name: string; args: unknown[]; fest?: string[]; wer
   { datei: 'src/calc/holzbau.ts', name: 'holzschraube', args: [{ rhok: 350, d: 8, lef: 80, alpha: 90, n: 4, nkl: 1, kled: 'mtl' }], fest: ['nkl'] },
   { datei: 'src/calc/keramik.ts', name: 'keramikKennwerte', args: [{ mt: 200, mn: 210, ma: 118, rhoRein: 2.65, formgebung: 'B' }] },
   { datei: 'src/calc/lebensdauer.ts', name: 'lebensdauerbemessung', args: [lebensdauerBasis()], werte: [NaN, 0, -1] },
+  { datei: 'src/calc/ecKennwerte.ts', name: 'ecKennwerte', args: [{ baustoff: 'mauerwerk', klasse: 'frei', situation: 'staendig', fk: 5, zeta: 0.85 }] },
   { datei: 'src/calc/mauerwerk.ts', name: 'bemesseWandVereinfacht', args: [{ lage: 'innen', h: 2.5, t: 240, a: 160, lf: 5, fk: 5, nEd: 200 }] },
   { datei: 'src/calc/packungsdichte.ts', name: 'sieblinienOptimierung', args: [{ zement: 12, zusatz: 5, sand: 33, kies1: 20, q: 0.3, kornform: 'rund', vFest: 750 }] },
   { datei: 'src/calc/querkraft.ts', name: 'bemesseQuerkraft', args: [{ b: 30, h: 50, d1: 5, fck: 30, bewehrung: 'Stahl', fyk: 500, ftk: 3000, gammaFRP: 1.3, asl: 6, vEd: 250, theta: 40 }] },
