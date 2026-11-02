@@ -44,7 +44,7 @@ export function rechnerRouten() {
   }
   const mi = path.join(ROOT, 'src/routing/ModulInhalt.tsx');
   const src = fs.readFileSync(mi, 'utf8');
-  const komp = new Map([...src.matchAll(/const (\w+) = React\.lazy\(\(\) => import\('([^']+)'\)\)/g)].map((m) => [m[1], aufloesen(mi, m[2])]));
+  const komp = new Map([...src.matchAll(/const (\w+) = React\.lazy\(\(\) => import\('([^']+)'\)/g)].map((m) => [m[1], aufloesen(mi, m[2])]));
   const aus = [];
   const paare = [...src.matchAll(/activeTab === '([a-z0-9_-]+)' && <(\w+)/g)].map((m) => [m[1], m[2]]);
   // Sammelzeilen: {(activeTab === 'a' || activeTab === 'b') && ( <Komponente …

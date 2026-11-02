@@ -27,6 +27,7 @@ import SpannbetonNullBisHundert from './spannbeton/SpannbetonNullBisHundert';
 import { fckT, betaCc as betaCcT, EcmT, creep, shrinkage, relaxation, frictionSlip, timeDependentLoss, CONCRETE, pruefeSpannbeton, type RelaxationClass,
   E_SPANNSTAHL, SPANNSTAHL, RHO_1000, SPANNUNGSGRENZEN as SG, sigmaPMax, sigmaPm0Grenze } from '@/src/calc/spannbeton';
 import { EingabeHinweise } from '@/src/components/ui/EingabeHinweise';
+import { hatFehler, ohneZahlen } from '@/src/calc/plausibilitaet';
 import { NachErstemBild } from '@/src/components/ui/NachErstemBild';
 import {
   Settings,
@@ -160,7 +161,7 @@ export default function Spannbeton({ bereiche }: { bereiche: readonly Spannbeton
     p0, b, h, ep, mG1, mPerm, mChar, concreteAge, spanLength, frictionCoeff, wobbleCoeff, totalCurvature, anchorSlip, nTendons,
   }), [p0, b, h, ep, mG1, mPerm, mChar, concreteAge, spanLength, frictionCoeff, wobbleCoeff, totalCurvature, anchorSlip, nTendons]);
 
-  const materialResults = useMemo(() => {
+  const materialResultsRoh = useMemo(() => {
     const conc = CONCRETE_CLASSES[concreteClass] || CONCRETE_CLASSES['C40/50'];
     const steel = STEEL_GRADES[steelGrade] || STEEL_GRADES['Y1860'];
 
@@ -357,6 +358,10 @@ export default function Spannbeton({ bereiche }: { bereiche: readonly Spannbeton
     p0, h, b, ep, mG1, mPerm, mChar, concreteClass, steelGrade, relaxationClass, environmentRH, timeState,
     cementType, concreteAge, tendonSystem, frictionCoeff, wobbleCoeff, spanLength, totalCurvature, anchorSlip, nTendons
   ]);
+  // Fehlerhinweis (z. B. |e_p| ≥ h/2): kein Zahlenergebnis und keine Nachweisaussage (vorher „✓ OK“ trotz Fehler;
+  // Prüfung „Kein Ergebnis in der Anzeige“ 02.11.2026)
+  const ergebnisGueltig = !hatFehler(eingabeHinweise);
+  const materialResults = useMemo(() => (ergebnisGueltig ? materialResultsRoh : ohneZahlen(materialResultsRoh)), [ergebnisGueltig, materialResultsRoh]);
 
   // Diagramm-Daten präparieren
   const chartData = useMemo(() => {
@@ -879,7 +884,7 @@ export default function Spannbeton({ bereiche }: { bereiche: readonly Spannbeton
             </div>
 
             {/* Quick state indicators */}
-            <div className="grid grid-cols-2 gap-4 text-xs font-mono">
+            {ergebnisGueltig && <div className="grid grid-cols-2 gap-4 text-xs font-mono">
               <div className={`p-3 rounded-lg border ${materialResults.isCrackedTop ? 'bg-red-50 border-red-200 text-red-800' : 'bg-emerald-50 border-emerald-200 text-emerald-800'}`}>
                 <div className="font-bold mb-1"><MdText text={inhalt.texte.obererRandH2} /></div>
                 <div className="text-sm font-semibold">{formatDeZahl(materialResults.sigmaTotalTop, 2)} MPa</div>
@@ -903,7 +908,7 @@ export default function Spannbeton({ bereiche }: { bereiche: readonly Spannbeton
                       : inhalt.werte.komplettÜberdrücktZustandI2}
                 </div>
               </div>
-            </div>
+            </div>}
           </div>
 
           <FormulaDerivationBox
@@ -953,6 +958,7 @@ export default function Spannbeton({ bereiche }: { bereiche: readonly Spannbeton
               <span className="text-[11px] font-mono bg-slate-100 px-2.5 py-0.5 rounded text-slate-700 font-bold"><MdText text={inhalt.texte.dinEn19921} /></span>
             </div>
 
+            {ergebnisGueltig ? (<>
             {/* 4 Status-Badges */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
               <div className={`p-2.5 rounded-lg border ${materialResults.isTransferStressOk ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-red-50 border-red-200 text-red-800'}`}>
@@ -1037,6 +1043,7 @@ export default function Spannbeton({ bereiche }: { bereiche: readonly Spannbeton
                 </tbody>
               </table>
             </div>
+            </>) : <p className="text-sm text-text-main">–</p>}
           </div>
 
           {/* Card B: Loss Breakdown Panel */}
